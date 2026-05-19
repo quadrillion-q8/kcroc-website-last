@@ -60,7 +60,7 @@ export default function Gallery() {
         alt: "Graphics card repair Kuwait - GPU maintenance service"
       },
       {
-        url: "/images/WirelessKeyboard.jpg",
+        url: "https://ui-avatars.com/api/?name=Wireless+Keyboard&background=1a1a2e&color=00D9FF&size=400&format=png",
         caption: "Wireless computer keyboard replacement - Salmiya service",
         alt: "Wireless keyboard Kuwait - computer peripheral replacement"
       },
@@ -75,7 +75,7 @@ export default function Gallery() {
         alt: "Desktop memory upgrade Kuwait - RAM installation service"
       },
       {
-        url: "/images/CPUInstallation.jpg",
+        url: "https://ui-avatars.com/api/?name=CPU+Install&background=1a1a2e&color=00D9FF&size=400&format=png",
         caption: "Desktop CPU processor installation service - Kuwait City",
         alt: "CPU installation Kuwait - processor upgrade service"
       },
@@ -95,17 +95,17 @@ export default function Gallery() {
         alt: "ASUS laptop battery replacement Kuwait - genuine parts"
       },
       {
-        url: "/images/ASUSlaptopbatteryreplacement.jpg",
+        url: "https://ui-avatars.com/api/?name=ASUS+Battery&background=1a1a2e&color=00D9FF&size=400&format=png",
         caption: "Original ASUS laptop battery replacement - Ahmadi customer",
         alt: "ASUS battery replacement Kuwait - original parts service"
       },
       {
-        url: "/images/LaptopBatteryReplacement.jpg",
+        url: "https://ui-avatars.com/api/?name=Dell+Battery&background=1a1a2e&color=00D9FF&size=400&format=png",
         caption: "Dell laptop 42Wh battery replacement - Kuwait City service",
         alt: "Dell laptop battery replacement Kuwait - 42Wh battery"
       },
       {
-        url: "/images/DellLaptopBattery.jpg",
+        url: "https://ui-avatars.com/api/?name=Dell+42Wh&background=1a1a2e&color=00D9FF&size=400&format=png",
         caption: "New Dell laptop battery 42Wh installation - Jahra pickup",
         alt: "Dell battery installation Kuwait - genuine 42Wh battery"
       },
@@ -127,7 +127,7 @@ export default function Gallery() {
         alt: "Acer power adapter Kuwait - laptop charger replacement"
       },
       {
-        url: "/images/AcerASUSlaptopcharger.jpg",
+        url: "https://ui-avatars.com/api/?name=ASUS+Charger&background=1a1a2e&color=00D9FF&size=400&format=png",
         caption: "ASUS laptop power adapter charger - Kuwait City stock",
         alt: "ASUS laptop charger Kuwait - power adapter replacement"
       },

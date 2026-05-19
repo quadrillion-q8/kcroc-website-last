@@ -10,6 +10,9 @@ import BatteryReplacement from './pages/BatteryReplacement';
 import GamingPCCooling from './pages/GamingPCCooling';
 import WebDesignKuwait from './pages/WebDesignKuwait';
 import BookingPage from './pages/BookingPage';
+import LaptopRepair from './pages/LaptopRepair';
+import MacBookRepair from './pages/MacBookRepair';
+import ScreenReplacement from './pages/ScreenReplacement';
 import NotFound from './pages/NotFound';
 import FloatingActions from './components/FloatingActions';
 import './styles/kcroc.css';
@@ -29,6 +32,9 @@ const App = () => (
         <Route path="/gaming-pc-cooling" element={<GamingPCCooling />} />
         <Route path="/web-design-kuwait" element={<WebDesignKuwait />} />
         <Route path="/book" element={<BookingPage />} />
+        <Route path="/laptop-repair" element={<LaptopRepair />} />
+        <Route path="/macbook-repair" element={<MacBookRepair />} />
+        <Route path="/screen-replacement" element={<ScreenReplacement />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </main>
@@ -58,6 +64,9 @@ const App = () => (
               <li><a href="/pricing">Pricing</a></li>
               <li><a href="/about">About</a></li>
               <li><a href="/gallery">Gallery</a></li>
+              <li><a href="/laptop-repair">Laptop Repair</a></li>
+              <li><a href="/macbook-repair">MacBook Repair</a></li>
+              <li><a href="/screen-replacement">Screen Replacement</a></li>
               <li><a href="/battery-replacement">Battery Guide</a></li>
               <li><a href="/gaming-pc-cooling">Gaming PC Cooling</a></li>
               <li><a href="/web-design-kuwait">Web Design</a></li>

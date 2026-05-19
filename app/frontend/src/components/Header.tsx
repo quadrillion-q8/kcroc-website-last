@@ -22,6 +22,9 @@ export default function Header() {
 
   /* Overflow items grouped under "More" dropdown */
   const moreNav = [
+    { href: '/laptop-repair', label: 'Laptop Repair' },
+    { href: '/macbook-repair', label: 'MacBook Repair' },
+    { href: '/screen-replacement', label: 'Screen Replacement' },
     { href: '/battery-replacement', label: 'Battery Guide' },
     { href: '/gaming-pc-cooling', label: 'Gaming PC Cooling' },
     { href: '/web-design-kuwait', label: 'Web Design Kuwait' },
