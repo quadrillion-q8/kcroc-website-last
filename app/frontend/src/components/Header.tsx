@@ -1,16 +1,13 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Button } from '@/components/ui/button';
-import { Phone, ChevronDown } from 'lucide-react';
+import { Phone } from 'lucide-react';
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [moreOpen, setMoreOpen] = useState(false);
-  const moreRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
 
-  /* Primary nav items shown directly */
-  const primaryNav = [
+  /* All nav items in a single flat list */
+  const allNav = [
     { href: '/', label: 'Home' },
     { href: '/services', label: 'Services' },
     { href: '/pricing', label: 'Pricing' },
@@ -18,10 +15,6 @@ export default function Header() {
     { href: '/gallery', label: 'Gallery' },
     { href: '/contact', label: 'Contact' },
     { href: '/book', label: 'Book Now' },
-  ];
-
-  /* Overflow items grouped under "More" dropdown */
-  const moreNav = [
     { href: '/laptop-repair', label: 'Laptop Repair' },
     { href: '/macbook-repair', label: 'MacBook Repair' },
     { href: '/screen-replacement', label: 'Screen Replacement' },
@@ -30,28 +23,12 @@ export default function Header() {
     { href: '/web-design-kuwait', label: 'Web Design Kuwait' },
   ];
 
-  /* All items for mobile menu */
-  const allNav = [...primaryNav, ...moreNav];
-
   const isActive = (path: string) => location.pathname === path;
-  const isMoreActive = moreNav.some((item) => location.pathname === item.href);
 
-  // Close menus when route changes
+  // Close mobile menu when route changes
   useEffect(() => {
     setMobileOpen(false);
-    setMoreOpen(false);
   }, [location.pathname]);
-
-  // Close "More" dropdown on outside click
-  useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      if (moreRef.current && !moreRef.current.contains(e.target as Node)) {
-        setMoreOpen(false);
-      }
-    };
-    if (moreOpen) document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, [moreOpen]);
 
   // Lock body scroll when mobile menu is open
   useEffect(() => {
@@ -59,22 +36,19 @@ export default function Header() {
     return () => { document.body.style.overflow = 'unset'; };
   }, [mobileOpen]);
 
-  // Escape key closes menus
+  // Escape key closes menu
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        setMobileOpen(false);
-        setMoreOpen(false);
-      }
+      if (e.key === 'Escape') setMobileOpen(false);
     };
     document.addEventListener('keydown', handleEscape);
     return () => document.removeEventListener('keydown', handleEscape);
   }, []);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-emerald-900 shadow-lg">
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between py-3">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2 shrink-0">
             <img
@@ -89,83 +63,49 @@ export default function Header() {
             />
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden xl:flex items-center space-x-5">
-            {primaryNav.map((item) => (
+          {/* Desktop Navigation - Two-line flex-wrap layout */}
+          <nav className="hidden lg:flex flex-wrap items-center justify-end gap-x-5 gap-y-3 max-w-[75%]">
+            {allNav.map((item) => (
               <Link
                 key={item.href}
                 to={item.href}
                 className={`text-sm font-medium transition-colors whitespace-nowrap ${
                   isActive(item.href)
-                    ? 'text-emerald-600'
-                    : 'text-slate-700 hover:text-slate-900'
+                    ? 'text-cyan-300'
+                    : 'text-white hover:text-cyan-200'
                 }`}
               >
                 {item.label}
               </Link>
             ))}
 
-            {/* More Dropdown */}
-            <div ref={moreRef} className="relative">
-              <button
-                type="button"
-                onClick={() => setMoreOpen(!moreOpen)}
-                className={`flex items-center gap-1 text-sm font-medium transition-colors whitespace-nowrap ${
-                  isMoreActive
-                    ? 'text-emerald-600'
-                    : 'text-slate-700 hover:text-slate-900'
-                }`}
-              >
-                More
-                <ChevronDown
-                  className={`w-4 h-4 transition-transform ${moreOpen ? 'rotate-180' : ''}`}
-                />
-              </button>
-
-              {moreOpen && (
-                <div className="absolute top-full right-0 mt-2 w-52 bg-white border border-slate-200 rounded-lg shadow-xl overflow-hidden z-50">
-                  {moreNav.map((item) => (
-                    <Link
-                      key={item.href}
-                      to={item.href}
-                      className={`block px-4 py-3 text-sm transition-colors ${
-                        isActive(item.href)
-                          ? 'text-emerald-600 bg-emerald-50'
-                          : 'text-slate-700 hover:text-slate-900 hover:bg-slate-50'
-                      }`}
-                    >
-                      {item.label}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            <Button asChild size="sm" className="bg-blue-600 hover:bg-blue-700 text-white">
-              <a href="tel:+96555301913">
-                <Phone className="w-4 h-4 mr-2" />
-                Call Now
-              </a>
-            </Button>
+            <a
+              href="tel:+96555301913"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold rounded-lg transition-colors whitespace-nowrap"
+            >
+              <Phone className="w-4 h-4" />
+              Call Now
+            </a>
           </nav>
 
-          {/* Mobile / Tablet Hamburger Button (below xl) */}
+          {/* Mobile / Tablet Hamburger Button (below lg) */}
           <button
             type="button"
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="xl:hidden inline-flex items-center justify-center rounded-full border border-slate-300 bg-slate-100 px-3 py-2 text-slate-700 shadow-sm transition hover:bg-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2"
+            className="lg:hidden inline-flex items-center justify-center rounded-full border border-white/30 bg-white/10 px-3 py-2 text-white shadow-sm transition hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-emerald-900"
+            aria-label="Toggle navigation menu"
           >
-            <div className="flex flex-col justify-center items-center w-6 h-6 space-y-1.5">
-              <div className={`w-6 h-0.5 transition-colors duration-200 ${mobileOpen ? 'bg-emerald-600' : 'bg-slate-700'}`} />
-              <div className={`w-6 h-0.5 transition-colors duration-200 ${mobileOpen ? 'bg-emerald-600' : 'bg-slate-700'}`} />
-              <div className={`w-6 h-0.5 transition-colors duration-200 ${mobileOpen ? 'bg-emerald-600' : 'bg-slate-700'}`} />
+            <div className="flex flex-col justify-center items-center w-6 h-5 space-y-1.5">
+              <div className={`w-6 h-0.5 bg-white transition-transform duration-200 ${mobileOpen ? 'rotate-45 translate-y-2' : ''}`} />
+              <div className={`w-6 h-0.5 bg-white transition-opacity duration-200 ${mobileOpen ? 'opacity-0' : ''}`} />
+              <div className={`w-6 h-0.5 bg-white transition-transform duration-200 ${mobileOpen ? '-rotate-45 -translate-y-2' : ''}`} />
             </div>
           </button>
         </div>
 
-        {/* Mobile menu (shows ALL nav items including Web Design) */}
+        {/* Mobile menu */}
         {mobileOpen && (
-          <div className="xl:hidden mt-3 rounded-2xl border border-white/20 bg-emerald-950/95 shadow-2xl backdrop-blur-md mb-4">
+          <div className="lg:hidden mt-1 rounded-2xl border border-white/20 bg-emerald-950/95 shadow-2xl backdrop-blur-md mb-4">
             <nav className="flex flex-col divide-y divide-white/10">
               {allNav.map((item) => (
                 <Link
@@ -174,8 +114,8 @@ export default function Header() {
                   onClick={() => setMobileOpen(false)}
                   className={`px-4 py-3 text-left text-sm transition-colors ${
                     isActive(item.href)
-                      ? 'text-emerald-400 bg-emerald-900/70'
-                      : 'text-emerald-50 hover:bg-emerald-900/70'
+                      ? 'text-cyan-300 bg-emerald-900/70'
+                      : 'text-white hover:bg-emerald-900/70'
                   }`}
                 >
                   {item.label}
