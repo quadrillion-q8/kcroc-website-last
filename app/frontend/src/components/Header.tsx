@@ -1,13 +1,16 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Phone } from 'lucide-react';
+import { Phone, ChevronDown } from 'lucide-react';
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const servicesRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
 
-  /* All nav items in a single flat list */
-  const allNav = [
+  /* Primary nav items (single row on desktop) */
+  const primaryNav = [
     { href: '/', label: 'Home' },
     { href: '/services', label: 'Services' },
     { href: '/pricing', label: 'Pricing' },
@@ -15,6 +18,10 @@ export default function Header() {
     { href: '/gallery', label: 'Gallery' },
     { href: '/contact', label: 'Contact' },
     { href: '/book', label: 'Book Now' },
+  ];
+
+  /* Service sub-links (dropdown / accordion) */
+  const serviceLinks = [
     { href: '/laptop-repair', label: 'Laptop Repair' },
     { href: '/macbook-repair', label: 'MacBook Repair' },
     { href: '/screen-replacement', label: 'Screen Replacement' },
@@ -23,12 +30,28 @@ export default function Header() {
     { href: '/web-design-kuwait', label: 'Web Design Kuwait' },
   ];
 
-  const isActive = (path: string) => location.pathname === path;
 
-  // Close mobile menu when route changes
+
+  const isActive = (path: string) => location.pathname === path;
+  const isServiceActive = serviceLinks.some((item) => location.pathname === item.href);
+
+  // Close menus on route change
   useEffect(() => {
     setMobileOpen(false);
+    setServicesOpen(false);
+    setMobileServicesOpen(false);
   }, [location.pathname]);
+
+  // Close desktop dropdown on outside click
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (servicesRef.current && !servicesRef.current.contains(e.target as Node)) {
+        setServicesOpen(false);
+      }
+    };
+    if (servicesOpen) document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [servicesOpen]);
 
   // Lock body scroll when mobile menu is open
   useEffect(() => {
@@ -36,10 +59,13 @@ export default function Header() {
     return () => { document.body.style.overflow = 'unset'; };
   }, [mobileOpen]);
 
-  // Escape key closes menu
+  // Escape key closes menus
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setMobileOpen(false);
+      if (e.key === 'Escape') {
+        setMobileOpen(false);
+        setServicesOpen(false);
+      }
     };
     document.addEventListener('keydown', handleEscape);
     return () => document.removeEventListener('keydown', handleEscape);
@@ -48,7 +74,7 @@ export default function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-emerald-900 shadow-lg">
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between py-3">
+        <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2 shrink-0">
             <img
@@ -63,21 +89,76 @@ export default function Header() {
             />
           </Link>
 
-          {/* Desktop Navigation - Two-line flex-wrap layout */}
-          <nav className="hidden lg:flex flex-wrap items-center justify-end gap-x-5 gap-y-3 max-w-[75%]">
-            {allNav.map((item) => (
-              <Link
-                key={item.href}
-                to={item.href}
-                className={`text-sm font-medium transition-colors whitespace-nowrap ${
-                  isActive(item.href)
-                    ? 'text-cyan-300'
-                    : 'text-white hover:text-cyan-200'
-                }`}
-              >
-                {item.label}
-              </Link>
-            ))}
+          {/* Desktop Navigation - Single line, no wrapping */}
+          <nav className="hidden lg:flex items-center space-x-5">
+            {primaryNav.map((item) =>
+              item.label === 'Services' ? (
+                /* Services Dropdown */
+                <div
+                  key={item.href}
+                  ref={servicesRef}
+                  className="relative"
+                  onMouseEnter={() => setServicesOpen(true)}
+                  onMouseLeave={() => setServicesOpen(false)}
+                >
+                  <button
+                    type="button"
+                    onClick={() => setServicesOpen(!servicesOpen)}
+                    className={`flex items-center gap-1 text-sm font-medium transition-colors whitespace-nowrap ${
+                      isActive(item.href) || isServiceActive
+                        ? 'text-cyan-300'
+                        : 'text-white hover:text-cyan-200'
+                    }`}
+                  >
+                    Services
+                    <ChevronDown
+                      className={`w-4 h-4 transition-transform duration-200 ${servicesOpen ? 'rotate-180' : ''}`}
+                    />
+                  </button>
+
+                  {servicesOpen && (
+                    <div className="absolute top-full left-0 mt-2 w-56 bg-emerald-800 border border-emerald-700 rounded-lg shadow-xl overflow-hidden z-50">
+                      {/* Link to main services page */}
+                      <Link
+                        to="/services"
+                        className={`block px-4 py-3 text-sm font-semibold border-b border-emerald-700 transition-colors ${
+                          isActive('/services')
+                            ? 'text-cyan-300 bg-emerald-900/50'
+                            : 'text-white hover:text-cyan-200 hover:bg-emerald-900/50'
+                        }`}
+                      >
+                        All Services
+                      </Link>
+                      {serviceLinks.map((sub) => (
+                        <Link
+                          key={sub.href}
+                          to={sub.href}
+                          className={`block px-4 py-3 text-sm transition-colors ${
+                            isActive(sub.href)
+                              ? 'text-cyan-300 bg-emerald-900/50'
+                              : 'text-white hover:text-cyan-200 hover:bg-emerald-900/50'
+                          }`}
+                        >
+                          {sub.label}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <Link
+                  key={item.href}
+                  to={item.href}
+                  className={`text-sm font-medium transition-colors whitespace-nowrap ${
+                    isActive(item.href)
+                      ? 'text-cyan-300'
+                      : 'text-white hover:text-cyan-200'
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              )
+            )}
 
             <a
               href="tel:+96555301913"
@@ -88,7 +169,7 @@ export default function Header() {
             </a>
           </nav>
 
-          {/* Mobile / Tablet Hamburger Button (below lg) */}
+          {/* Mobile Hamburger Button */}
           <button
             type="button"
             onClick={() => setMobileOpen(!mobileOpen)}
@@ -103,24 +184,89 @@ export default function Header() {
           </button>
         </div>
 
-        {/* Mobile menu */}
+        {/* Mobile Menu */}
         {mobileOpen && (
-          <div className="lg:hidden mt-1 rounded-2xl border border-white/20 bg-emerald-950/95 shadow-2xl backdrop-blur-md mb-4">
+          <div className="lg:hidden mt-1 rounded-2xl border border-white/20 bg-emerald-950/95 shadow-2xl backdrop-blur-md mb-4 max-h-[80vh] overflow-y-auto">
             <nav className="flex flex-col divide-y divide-white/10">
-              {allNav.map((item) => (
-                <Link
-                  key={item.href}
-                  to={item.href}
-                  onClick={() => setMobileOpen(false)}
-                  className={`px-4 py-3 text-left text-sm transition-colors ${
-                    isActive(item.href)
+              {/* Home */}
+              <Link
+                to="/"
+                onClick={() => setMobileOpen(false)}
+                className={`px-4 py-3 text-left text-sm transition-colors ${
+                  isActive('/') ? 'text-cyan-300 bg-emerald-900/70' : 'text-white hover:bg-emerald-900/70'
+                }`}
+              >
+                Home
+              </Link>
+
+              {/* Services Accordion */}
+              <div>
+                <button
+                  type="button"
+                  onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
+                  className={`w-full flex items-center justify-between px-4 py-3 text-left text-sm transition-colors ${
+                    isActive('/services') || isServiceActive
                       ? 'text-cyan-300 bg-emerald-900/70'
                       : 'text-white hover:bg-emerald-900/70'
                   }`}
                 >
-                  {item.label}
-                </Link>
-              ))}
+                  Services
+                  <ChevronDown
+                    className={`w-4 h-4 transition-transform duration-200 ${mobileServicesOpen ? 'rotate-180' : ''}`}
+                  />
+                </button>
+
+                {/* Accordion content */}
+                <div
+                  className={`overflow-hidden transition-all duration-300 ${
+                    mobileServicesOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                  }`}
+                >
+                  <Link
+                    to="/services"
+                    onClick={() => setMobileOpen(false)}
+                    className={`block pl-8 pr-4 py-2.5 text-sm transition-colors ${
+                      isActive('/services')
+                        ? 'text-cyan-300 bg-emerald-900/50'
+                        : 'text-white/80 hover:text-white hover:bg-emerald-900/50'
+                    }`}
+                  >
+                    All Services
+                  </Link>
+                  {serviceLinks.map((sub) => (
+                    <Link
+                      key={sub.href}
+                      to={sub.href}
+                      onClick={() => setMobileOpen(false)}
+                      className={`block pl-8 pr-4 py-2.5 text-sm transition-colors ${
+                        isActive(sub.href)
+                          ? 'text-cyan-300 bg-emerald-900/50'
+                          : 'text-white/80 hover:text-white hover:bg-emerald-900/50'
+                      }`}
+                    >
+                      {sub.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+              {/* Remaining primary links */}
+              {primaryNav
+                .filter((i) => i.label !== 'Home' && i.label !== 'Services')
+                .map((item) => (
+                  <Link
+                    key={item.href}
+                    to={item.href}
+                    onClick={() => setMobileOpen(false)}
+                    className={`px-4 py-3 text-left text-sm transition-colors ${
+                      isActive(item.href)
+                        ? 'text-cyan-300 bg-emerald-900/70'
+                        : 'text-white hover:bg-emerald-900/70'
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
 
               {/* Call to Action Buttons */}
               <div className="px-4 py-4 space-y-3">
