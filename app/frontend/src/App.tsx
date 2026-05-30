@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import Header from './components/Header';
 import Home from './pages/Home';
 import Services from './pages/Services';
@@ -130,6 +131,7 @@ const App = () => (
 
     <FloatingActions />
     <Analytics />
+    <SpeedInsights />
   </BrowserRouter>
 );
 
