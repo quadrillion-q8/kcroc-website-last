@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Analytics } from '@vercel/analytics/react';
 import Header from './components/Header';
 import Home from './pages/Home';
 import Services from './pages/Services';
@@ -128,6 +129,7 @@ const App = () => (
     </footer>
 
     <FloatingActions />
+    <Analytics />
   </BrowserRouter>
 );
 
