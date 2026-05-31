@@ -127,6 +127,17 @@ const App = () => (
           </div>
         </div>
       </div>
+      <div style={{ fontSize: '0.85rem', opacity: 0.7, marginTop: '20px', textAlign: 'center' }}>
+  <p><strong>Kuwait Computer Repair On Call</strong> | Hawalli, Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19</p>
+  <span>Local Tech Guides: </span>
+  <a 
+    href="/best-laptop-repair-ibn-khaldoun-hawalli" 
+    style={{ color: 'inherit', textDecoration: 'underline' }}
+  >
+    Best Laptop Repair in Hawalli
+  </a>
+</div>
+
     </footer>
 
     <FloatingActions />
