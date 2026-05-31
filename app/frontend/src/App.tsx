@@ -131,10 +131,10 @@ const App = () => (
   <p><strong>Kuwait Computer Repair On Call</strong> | Hawalli, Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19</p>
   <span>Local Tech Guides: </span>
   <a 
-    href="/best-laptop-repair-ibn-khaldoun-hawalli" 
+    href="/laptop-repair-hawalli-kuwait" 
     style={{ color: 'inherit', textDecoration: 'underline' }}
   >
-    Best Laptop Repair in Hawalli
+    Laptop Repair Hawalli Kuwait
   </a>
   <span> | </span>
   <a 
@@ -144,6 +144,7 @@ const App = () => (
     Chip-Level Motherboard Repair
   </a>
 </div>
+
 
     </footer>
 
