@@ -18,11 +18,10 @@ export default function Header() {
     { href: '/gallery', label: 'Gallery' },
     { href: '/contact', label: 'Contact' },
     { href: '/book', label: 'Book Now' },
-  ];
-
-  /* Service sub-links (dropdown / accordion) */
+  ]
+    /* Service sub-links (dropdown / accordion) */
   const serviceLinks = [
-    { href: '/laptop-repair', label: 'Laptop Repair' },
+    { href: '/laptop-repair-hawalli-kuwait', label: 'Laptop Repair' },
     { href: '/macbook-repair', label: 'MacBook Repair' },
     { href: '/screen-replacement', label: 'Screen Replacement' },
     { href: '/battery-replacement', label: 'Battery Guide' },
