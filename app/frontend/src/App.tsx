@@ -136,6 +136,13 @@ const App = () => (
   >
     Best Laptop Repair in Hawalli
   </a>
+  <span> | </span>
+  <a 
+    href="/chip-level-motherboard-repair-hawalli" 
+    style={{ color: 'inherit', textDecoration: 'underline' }}
+  >
+    Chip-Level Motherboard Repair
+  </a>
 </div>
 
     </footer>
