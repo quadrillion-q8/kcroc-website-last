@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
+import { HelmetProvider } from 'react-helmet-async';
 import Header from './components/Header';
 import Home from './pages/Home';
 import Services from './pages/Services';
@@ -15,11 +16,13 @@ import BookingPage from './pages/BookingPage';
 import LaptopRepair from './pages/LaptopRepair';
 import MacBookRepair from './pages/MacBookRepair';
 import ScreenReplacement from './pages/ScreenReplacement';
+import PrivacySecurity from './pages/PrivacySecurity';
 import NotFound from './pages/NotFound';
 import FloatingActions from './components/FloatingActions';
 import './styles/kcroc.css';
 
 const App = () => (
+  <HelmetProvider>
   <BrowserRouter>
     <Header />
     <main style={{ paddingTop: '4rem', paddingBottom: '5rem' }}>
@@ -37,6 +40,7 @@ const App = () => (
         <Route path="/laptop-repair" element={<LaptopRepair />} />
         <Route path="/macbook-repair" element={<MacBookRepair />} />
         <Route path="/screen-replacement" element={<ScreenReplacement />} />
+        <Route path="/data-security" element={<PrivacySecurity />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </main>
@@ -152,6 +156,7 @@ const App = () => (
     <Analytics />
     <SpeedInsights />
   </BrowserRouter>
+  </HelmetProvider>
 );
 
 export default App;
