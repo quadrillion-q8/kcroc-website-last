@@ -17,6 +17,7 @@ export default function Header() {
     { href: '/about', label: 'About' },
     { href: '/gallery', label: 'Gallery' },
     { href: '/contact', label: 'Contact' },
+    { href: '/data-security', label: 'Privacy & Security' },
     { href: '/book', label: 'Book Now' },
   ]
     /* Service sub-links (dropdown / accordion) */
