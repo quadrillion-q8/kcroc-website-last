@@ -15,6 +15,7 @@ import BookingPage from './pages/BookingPage';
 import LaptopRepair from './pages/LaptopRepair';
 import MacBookRepair from './pages/MacBookRepair';
 import ScreenReplacement from './pages/ScreenReplacement';
+import PrivacySecurity from './pages/PrivacySecurity';
 import NotFound from './pages/NotFound';
 import FloatingActions from './components/FloatingActions';
 import './styles/kcroc.css';
@@ -37,6 +38,7 @@ const App = () => (
         <Route path="/laptop-repair" element={<LaptopRepair />} />
         <Route path="/macbook-repair" element={<MacBookRepair />} />
         <Route path="/screen-replacement" element={<ScreenReplacement />} />
+        <Route path="/data-security" element={<PrivacySecurity />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </main>
