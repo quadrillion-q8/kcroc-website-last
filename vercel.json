@@ -1,8 +1,5 @@
 {
   "rewrites": [
-    {
-      "source": "/((?!laptop-repair-hawalli-kuwait|chip-level-motherboard-repair-hawalli|robots.txt|sitemap.xml|favicon.svg|_redirects).*)" ,
-      "destination": "/index.html"
-    }
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
