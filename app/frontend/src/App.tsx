@@ -156,7 +156,7 @@ const App = () => (
     <Analytics />
     <SpeedInsights />
   </BrowserRouter>
- <HelmetProvider>
+  </HelmetProvider>
 );
 
 export default App;
