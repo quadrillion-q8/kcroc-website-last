@@ -39,21 +39,6 @@ export default function Header() {
     setMobileServicesOpen(false);
   }, [location.pathname]);
 
-  useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      if (servicesRef.current && !servicesRef.current.contains(e.target as Node)) {
-        setServicesOpen(false);
-      }
-    };
-    if (servicesOpen) document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, [servicesOpen]);
-
-  useEffect(() => {
-    document.body.style.overflow = mobileOpen ? 'hidden' : 'unset';
-    return () => { document.body.style.overflow = 'unset'; };
-  }, [mobileOpen]);
-
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-emerald-900 shadow-lg">
       <div className="container mx-auto px-4">
@@ -64,19 +49,18 @@ export default function Header() {
               alt="KCROC - Computer Repair Kuwait"
               width="140"
               height="auto"
-              loading="eager"
-              decoding="async"
               style={{ width: '140px', height: 'auto' }}
+              decoding="async"
             />
           </Link>
 
+          {/* Desktop Nav */}
           <nav className="hidden lg:flex items-center space-x-5">
             {primaryNav.map((item) =>
               item.label === 'Services' ? (
                 <div key={item.href} ref={servicesRef} className="relative" onMouseEnter={() => setServicesOpen(true)} onMouseLeave={() => setServicesOpen(false)}>
-                  <button type="button" onClick={() => setServicesOpen(!servicesOpen)} className={`flex items-center gap-1 text-sm font-medium transition-colors ${isActive(item.href) || isServiceActive ? 'text-cyan-300' : 'text-white'}`}>
-                    Services
-                    <ChevronDown className={`w-4 h-4 transition-transform ${servicesOpen ? 'rotate-180' : ''}`} />
+                  <button type="button" onClick={() => setServicesOpen(!servicesOpen)} className={`flex items-center gap-1 text-sm font-medium ${isActive(item.href) || isServiceActive ? 'text-cyan-300' : 'text-white'}`}>
+                    Services <ChevronDown className={`w-4 h-4 transition-transform ${servicesOpen ? 'rotate-180' : ''}`} />
                   </button>
                   {servicesOpen && (
                     <div className="absolute top-full left-0 mt-2 w-56 bg-emerald-800 border border-emerald-700 rounded-lg shadow-xl overflow-hidden z-50">
@@ -88,12 +72,15 @@ export default function Header() {
                   )}
                 </div>
               ) : (
-                <Link key={item.href} to={item.href} className={`text-sm font-medium transition-colors ${isActive(item.href) ? 'text-cyan-300' : 'text-white'}`}>{item.label}</Link>
+                <Link key={item.href} to={item.href} className={`text-sm font-medium ${isActive(item.href) ? 'text-cyan-300' : 'text-white'}`}>{item.label}</Link>
               )
             )}
-            <a href="tel:+96555301913" className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white text-sm font-semibold rounded-lg"><Phone className="w-4 h-4" /> Call Now</a>
+            <a href="tel:+96555301913" className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white text-sm font-semibold rounded-lg">
+              <Phone className="w-4 h-4" /> Call Now
+            </a>
           </nav>
 
+          {/* Mobile Toggle */}
           <button type="button" onClick={() => setMobileOpen(!mobileOpen)} className="lg:hidden p-2 text-white">
             <div className="w-6 h-5 flex flex-col justify-between">
               <div className={`w-6 h-0.5 bg-white transition-transform ${mobileOpen ? 'rotate-45 translate-y-2' : ''}`} />
