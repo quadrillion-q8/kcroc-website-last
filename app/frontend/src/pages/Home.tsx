@@ -177,6 +177,20 @@ export default function Home() {
     const timer = setTimeout(() => setStatsAnimated(true), 1000);
     return () => clearTimeout(timer);
   }, []);
+
+  // ------------------------------------------
+  // NEW: Google Ads Tracking Function Added Here
+  // ------------------------------------------
+  const trackConversion = () => {
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', 'conversion', {
+          'send_to': 'AW-402583081/SWdgCPrgwrMcEKnc-78B',
+          'value': 1.0,
+          'currency': 'USD'
+      });
+      console.log('Google Ads Conversion Tracked!');
+    }
+  };
   
   // Structured Schema Configurations
   const schemaGraph = {
@@ -266,12 +280,26 @@ export default function Home() {
             Get professional diagnostics and reliable hardware repairs handled by experienced technicians. We make it completely hassle-free with 100% free pickup and delivery straight to your door anywhere in Kuwait.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4 pt-2">
-            <a href="https://wa.me/96555301913" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
+            
+            {/* NEW: onClick added to Hero WhatsApp Button */}
+            <a 
+              href="https://wa.me/96555301913" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="w-full sm:w-auto"
+              onClick={trackConversion}
+            >
               <Button size="lg" className="bg-green-500 hover:bg-green-600 text-white font-bold w-full">
                 <MessageCircle className="mr-2 h-5 w-5" /> WhatsApp Us Now
               </Button>
             </a>
-            <a href="tel:+96555301913" className="w-full sm:w-auto">
+            
+            {/* NEW: onClick added to Hero Phone Button */}
+            <a 
+              href="tel:+96555301913" 
+              className="w-full sm:w-auto"
+              onClick={trackConversion}
+            >
               <Button size="lg" variant="outline" className="border-blue-500/50 text-blue-400 hover:bg-blue-500/10 w-full">
                 <Phone className="mr-2 h-5 w-5" /> Call 5530 1913
               </Button>
@@ -540,12 +568,26 @@ export default function Home() {
             Contact KCROC today. We manage technical pickups and safe drop-off logistics anywhere across Kuwait completely free of charge.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4 pt-2">
-             <a href="https://wa.me/96555301913" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
+             
+             {/* NEW: onClick added to CTA WhatsApp Button */}
+             <a 
+               href="https://wa.me/96555301913" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               className="w-full sm:w-auto"
+               onClick={trackConversion}
+             >
               <Button size="lg" className="bg-green-500 hover:bg-green-600 text-white font-bold w-full">
                 <MessageCircle className="mr-2 h-5 w-5" /> Chat on WhatsApp
               </Button>
             </a>
-            <a href="tel:+96555301913" className="w-full sm:w-auto">
+            
+            {/* NEW: onClick added to CTA Phone Button */}
+            <a 
+              href="tel:+96555301913" 
+              className="w-full sm:w-auto"
+              onClick={trackConversion}
+            >
               <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/10 w-full">
                 <Phone className="mr-2 h-5 w-5" /> Call +965 5530 1913
               </Button>
