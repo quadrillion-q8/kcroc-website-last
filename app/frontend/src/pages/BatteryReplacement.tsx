@@ -219,7 +219,7 @@ export default function BatteryReplacement() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900">
+    <div className="min-h-screen bg-gray-950 text-white">
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 px-4">
         <div className="absolute inset-0 bg-gradient-to-b from-emerald-500/10 to-transparent"></div>
@@ -257,7 +257,7 @@ export default function BatteryReplacement() {
       </section>
 
       {/* Statistics Section with Educational Infographics */}
-      <section className="py-16 px-4 bg-slate-800/50">
+      <section className="py-16 px-4 border-t border-gray-900">
         <div className="container mx-auto max-w-6xl">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
             {statistics.map((stat, index) => (
@@ -369,7 +369,7 @@ export default function BatteryReplacement() {
       </section>
 
       {/* Battery Comparison Section */}
-      <section className="py-16 px-4 bg-slate-800/50">
+      <section className="py-16 px-4 border-t border-gray-900">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
@@ -486,7 +486,7 @@ export default function BatteryReplacement() {
       </section>
 
       {/* Battery FAQ */}
-      <section className="py-20 px-4 bg-slate-800/50">
+      <section className="py-20 px-4 border-t border-gray-900">
         <div className="container mx-auto max-w-4xl">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
@@ -554,7 +554,7 @@ export default function BatteryReplacement() {
       </section>
 
       {/* When to Replace Section */}
-      <section className="py-20 px-4 bg-slate-800/50">
+      <section className="py-20 px-4 border-t border-gray-900">
         <div className="container mx-auto max-w-4xl">
           <Card className="bg-gradient-to-br from-red-500/10 to-orange-500/10 border-red-500/30 backdrop-blur-sm">
             <CardHeader className="text-center">
@@ -644,7 +644,7 @@ export default function BatteryReplacement() {
       </section>
 
       {/* Safety Warning */}
-      <section className="py-12 px-4 bg-slate-800/50">
+      <section className="py-12 px-4 border-t border-gray-900">
         <div className="container mx-auto max-w-4xl">
           <Card className="bg-gradient-to-r from-red-500/20 to-orange-500/20 border-red-500/40 backdrop-blur-sm">
             <CardContent className="pt-6">
@@ -664,7 +664,7 @@ export default function BatteryReplacement() {
       </section>
 
       {/* Footer CTA */}
-      <section className="py-16 px-4 bg-gradient-to-b from-transparent to-emerald-500/10">
+      <section className="py-16 px-4 border-t border-gray-900">
         <div className="container mx-auto max-w-4xl text-center">
           <h3 className="text-2xl md:text-3xl font-bold text-white mb-6">
             Ready to Get Your Battery Replaced?

@@ -44,7 +44,7 @@ const trustBadges = [
 
 const PrivacySecurity: React.FC = () => {
   return (
-    <div className="min-h-screen bg-gray-50 text-gray-900 font-sans">
+    <div className="min-h-screen bg-gray-950 text-white font-sans">
       {/* SEO & Metadata Injection */}
       <Helmet>
         <title>Privacy Guarantee & Data Security | KCROC Kuwait</title>
@@ -67,20 +67,22 @@ const PrivacySecurity: React.FC = () => {
         </script>
       </Helmet>
 
-      {/* Header Section */}
-      <header className="bg-slate-900 text-white py-16 px-6">
-        <div className="max-w-4xl mx-auto text-center">
-          <ShieldCheck className="w-16 h-16 mx-auto mb-4 text-emerald-400" aria-hidden="true" />
-          <h1 className="text-4xl font-bold mb-4">Privacy Guarantee & Data Security</h1>
-          <p className="text-lg text-slate-300 max-w-2xl mx-auto">
-            Your data is safe with KCROC. When you hand your computer over for repair, you aren’t just trusting someone with expensive hardware—you are trusting them with your digital life.
+      {/* Hero Section */}
+      <section className="relative pt-32 pb-20 px-6 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 via-transparent to-blue-500/10"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(16,185,129,0.08),transparent_50%)]"></div>
+        <div className="max-w-4xl mx-auto text-center relative z-10">
+          <ShieldCheck className="w-16 h-16 mx-auto mb-6 text-emerald-400" aria-hidden="true" />
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white">Privacy Guarantee & Data Security</h1>
+          <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed">
+            Your data is safe with KCROC. When you hand your computer over for repair, you aren't just trusting someone with expensive hardware—you are trusting them with your digital life.
           </p>
         </div>
-      </header>
+      </section>
 
       {/* Trust Badges Ribbon */}
       <section
-        className="py-8 px-6 bg-white border-b border-gray-200"
+        className="py-12 px-6 border-t border-gray-900"
         aria-label="Security and trust credentials"
       >
         <div className="max-w-6xl mx-auto">
@@ -91,10 +93,10 @@ const PrivacySecurity: React.FC = () => {
               return (
                 <div
                   key={badge.id}
-                  className={`flex flex-col items-center justify-center bg-gray-50 border border-gray-200 rounded-xl p-4 text-center hover:shadow-md hover:-translate-y-0.5 transition-all ${isOrphan ? 'col-span-2 md:col-span-1' : ''}`}
+                  className={`flex flex-col items-center justify-center bg-gray-900/40 border border-gray-800/80 rounded-2xl p-5 text-center hover:border-emerald-500/40 hover:-translate-y-0.5 transition-all ${isOrphan ? 'col-span-2 md:col-span-1' : ''}`}
                 >
-                  <Icon className="w-7 h-7 text-emerald-600 mb-2" aria-hidden="true" />
-                  <span className="text-sm font-semibold text-slate-800 leading-tight">
+                  <Icon className="w-7 h-7 text-emerald-400 mb-2" aria-hidden="true" />
+                  <span className="text-sm font-semibold text-slate-200 leading-tight">
                     {badge.text}
                   </span>
                 </div>
@@ -105,73 +107,73 @@ const PrivacySecurity: React.FC = () => {
       </section>
 
       {/* Main Content / 4-Point Protocol */}
-      <main className="max-w-5xl mx-auto px-6 py-16">
+      <main className="py-12 md:py-20 px-6 max-w-6xl mx-auto">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-slate-900">Our 4-Point Zero-Risk Privacy Protocol</h2>
-          <p className="text-gray-600 mt-4">We built our reputation on a zero-compromise approach to your privacy and device security.</p>
+          <h2 className="text-3xl md:text-5xl font-bold text-white">Our 4-Point Zero-Risk Privacy Protocol</h2>
+          <p className="text-slate-400 mt-4 text-lg">We built our reputation on a zero-compromise approach to your privacy and device security.</p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-6">
           {/* Point 1 */}
-          <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-            <EyeOff className="w-10 h-10 text-blue-600 mb-4" aria-hidden="true" />
-            <h3 className="text-xl font-bold mb-3">1. Strict "No-Snooping" Policy</h3>
-            <ul className="space-y-3 text-gray-600 list-none" role="list">
+          <div className="bg-gray-900/40 border border-gray-800/80 rounded-2xl p-6 hover:border-emerald-500/30 transition-all">
+            <EyeOff className="w-10 h-10 text-blue-400 mb-4" aria-hidden="true" />
+            <h3 className="text-xl font-bold mb-3 text-white">1. Strict "No-Snooping" Policy</h3>
+            <ul className="space-y-3 text-slate-300 list-none" role="list">
               <li className="flex gap-2">
-                <Check className="w-5 h-5 text-emerald-500 mt-1 shrink-0" aria-hidden="true" />
-                <span><strong>Zero File Interaction:</strong> We only utilize specialized diagnostic software. We never open, view, or browse your personal folders or histories.</span>
+                <Check className="w-5 h-5 text-emerald-400 mt-1 shrink-0" aria-hidden="true" />
+                <span><strong className="text-white">Zero File Interaction:</strong> We only utilize specialized diagnostic software. We never open, view, or browse your personal folders or histories.</span>
               </li>
               <li className="flex gap-2">
-                <Check className="w-5 h-5 text-emerald-500 mt-1 shrink-0" aria-hidden="true" />
-                <span><strong>Drive Removal Option:</strong> For motherboard-level repairs, you are completely welcome to remove your storage drive before handing the machine to us.</span>
+                <Check className="w-5 h-5 text-emerald-400 mt-1 shrink-0" aria-hidden="true" />
+                <span><strong className="text-white">Drive Removal Option:</strong> For motherboard-level repairs, you are completely welcome to remove your storage drive before handing the machine to us.</span>
               </li>
             </ul>
           </div>
 
           {/* Point 2 */}
-          <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-            <Truck className="w-10 h-10 text-blue-600 mb-4" aria-hidden="true" />
-            <h3 className="text-xl font-bold mb-3">2. Secure Pick & Drop Chain of Custody</h3>
-            <ul className="space-y-3 text-gray-600 list-none" role="list">
+          <div className="bg-gray-900/40 border border-gray-800/80 rounded-2xl p-6 hover:border-emerald-500/30 transition-all">
+            <Truck className="w-10 h-10 text-blue-400 mb-4" aria-hidden="true" />
+            <h3 className="text-xl font-bold mb-3 text-white">2. Secure Pick & Drop Chain of Custody</h3>
+            <ul className="space-y-3 text-slate-300 list-none" role="list">
               <li className="flex gap-2">
-                <Check className="w-5 h-5 text-emerald-500 mt-1 shrink-0" aria-hidden="true" />
-                <span><strong>Logged Logistics:</strong> From the moment our driver collects your device, it is tagged and placed directly into a secure transport enclosure.</span>
+                <Check className="w-5 h-5 text-emerald-400 mt-1 shrink-0" aria-hidden="true" />
+                <span><strong className="text-white">Logged Logistics:</strong> From the moment our driver collects your device, it is tagged and placed directly into a secure transport enclosure.</span>
               </li>
               <li className="flex gap-2">
-                <Check className="w-5 h-5 text-emerald-500 mt-1 shrink-0" aria-hidden="true" />
-                <span><strong>Direct Routing:</strong> Your machine goes straight from your location to our laboratory. It is never passed to a third-party courier.</span>
+                <Check className="w-5 h-5 text-emerald-400 mt-1 shrink-0" aria-hidden="true" />
+                <span><strong className="text-white">Direct Routing:</strong> Your machine goes straight from your location to our laboratory. It is never passed to a third-party courier.</span>
               </li>
             </ul>
           </div>
 
           {/* Point 3 */}
-          <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-            <Lock className="w-10 h-10 text-blue-600 mb-4" aria-hidden="true" />
-            <h3 className="text-xl font-bold mb-3">3. Fortified Technical Laboratory</h3>
-            <ul className="space-y-3 text-gray-600 list-none" role="list">
+          <div className="bg-gray-900/40 border border-gray-800/80 rounded-2xl p-6 hover:border-emerald-500/30 transition-all">
+            <Lock className="w-10 h-10 text-blue-400 mb-4" aria-hidden="true" />
+            <h3 className="text-xl font-bold mb-3 text-white">3. Fortified Technical Laboratory</h3>
+            <ul className="space-y-3 text-slate-300 list-none" role="list">
               <li className="flex gap-2">
-                <Check className="w-5 h-5 text-emerald-500 mt-1 shrink-0" aria-hidden="true" />
-                <span><strong>Monitored Premises:</strong> Our specialized Hawalli facility operates under continuous video surveillance with devices stored in secure tech lockers.</span>
+                <Check className="w-5 h-5 text-emerald-400 mt-1 shrink-0" aria-hidden="true" />
+                <span><strong className="text-white">Monitored Premises:</strong> Our specialized Hawalli facility operates under continuous video surveillance with devices stored in secure tech lockers.</span>
               </li>
               <li className="flex gap-2">
-                <Check className="w-5 h-5 text-emerald-500 mt-1 shrink-0" aria-hidden="true" />
-                <span><strong>Authorized Access Only:</strong> Only the specific technician assigned to your chip-level diagnostics handles your hardware.</span>
+                <Check className="w-5 h-5 text-emerald-400 mt-1 shrink-0" aria-hidden="true" />
+                <span><strong className="text-white">Authorized Access Only:</strong> Only the specific technician assigned to your chip-level diagnostics handles your hardware.</span>
               </li>
             </ul>
           </div>
 
           {/* Point 4 */}
-          <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-            <Cpu className="w-10 h-10 text-blue-600 mb-4" aria-hidden="true" />
-            <h3 className="text-xl font-bold mb-3">4. Component & Repair Transparency</h3>
-            <ul className="space-y-3 text-gray-600 list-none" role="list">
+          <div className="bg-gray-900/40 border border-gray-800/80 rounded-2xl p-6 hover:border-emerald-500/30 transition-all">
+            <Cpu className="w-10 h-10 text-blue-400 mb-4" aria-hidden="true" />
+            <h3 className="text-xl font-bold mb-3 text-white">4. Component & Repair Transparency</h3>
+            <ul className="space-y-3 text-slate-300 list-none" role="list">
               <li className="flex gap-2">
-                <Check className="w-5 h-5 text-emerald-500 mt-1 shrink-0" aria-hidden="true" />
-                <span><strong>Original Parts Protection:</strong> We never swap or substitute your original factory components. Every microscopic part replaced is documented.</span>
+                <Check className="w-5 h-5 text-emerald-400 mt-1 shrink-0" aria-hidden="true" />
+                <span><strong className="text-white">Original Parts Protection:</strong> We never swap or substitute your original factory components. Every microscopic part replaced is documented.</span>
               </li>
               <li className="flex gap-2">
-                <Check className="w-5 h-5 text-emerald-500 mt-1 shrink-0" aria-hidden="true" />
-                <span><strong>Formal Documentation:</strong> You receive a transparent digital invoice detailing the exact work. We do not do unrecorded repairs.</span>
+                <Check className="w-5 h-5 text-emerald-400 mt-1 shrink-0" aria-hidden="true" />
+                <span><strong className="text-white">Formal Documentation:</strong> You receive a transparent digital invoice detailing the exact work. We do not do unrecorded repairs.</span>
               </li>
             </ul>
           </div>
@@ -179,42 +181,42 @@ const PrivacySecurity: React.FC = () => {
 
         {/* Targeted Internal Links */}
         <div className="mt-12 flex flex-wrap justify-center gap-4">
-          <a href="/laptop-repair-hawalli-kuwait/" className="bg-slate-800 text-white font-bold py-3 px-6 rounded-lg hover:bg-slate-900 transition shadow-sm">
+          <a href="/laptop-repair-hawalli-kuwait/" className="bg-blue-500/20 text-blue-400 border border-blue-500/30 font-bold py-3 px-6 rounded-lg hover:bg-blue-500/30 transition">
             Laptop Repair
           </a>
-          <a href="/macbook-repair/" className="bg-slate-800 text-white font-bold py-3 px-6 rounded-lg hover:bg-slate-900 transition shadow-sm">
+          <a href="/macbook-repair/" className="bg-blue-500/20 text-blue-400 border border-blue-500/30 font-bold py-3 px-6 rounded-lg hover:bg-blue-500/30 transition">
             MacBook Repair
           </a>
-          <a href="/chip-level-motherboard-repair-hawalli/" className="bg-slate-800 text-white font-bold py-3 px-6 rounded-lg hover:bg-slate-900 transition shadow-sm">
+          <a href="/chip-level-motherboard-repair-hawalli/" className="bg-blue-500/20 text-blue-400 border border-blue-500/30 font-bold py-3 px-6 rounded-lg hover:bg-blue-500/30 transition">
             Motherboard Repair
           </a>
         </div>
       </main>
 
       {/* Footer / Contact Information */}
-      <footer className="bg-slate-100 py-12 px-6 border-t border-slate-200">
+      <section className="py-12 md:py-20 px-6 border-t border-gray-900">
         <div className="max-w-4xl mx-auto text-center">
-          <h3 className="text-2xl font-bold text-slate-900 mb-6">Absolute Transparency. Total Peace of Mind.</h3>
-          <p className="text-gray-600 mb-8 max-w-xl mx-auto">
+          <h3 className="text-2xl md:text-4xl font-bold text-white mb-6">Absolute Transparency. Total Peace of Mind.</h3>
+          <p className="text-slate-400 mb-8 max-w-xl mx-auto text-lg">
             If you have any questions regarding our security protocols, or want to discuss a non-disclosure requirement for sensitive data before scheduling, contact our technical desk directly.
           </p>
           
-          <div className="bg-white p-6 rounded-xl shadow-sm block mx-auto text-left border border-gray-200 w-full max-w-md">
-            <h4 className="font-bold text-lg mb-4 text-slate-900 border-b pb-2">Kuwait Computer Repair On Call (KCROC)</h4>
-            <div className="space-y-4 text-gray-700">
+          <div className="bg-gray-900/40 border border-gray-800/80 rounded-2xl p-6 block mx-auto text-left w-full max-w-md">
+            <h4 className="font-bold text-lg mb-4 text-white border-b border-gray-800 pb-2">Kuwait Computer Repair On Call (KCROC)</h4>
+            <div className="space-y-4 text-slate-300">
               <div className="flex items-start">
-                <MapPin className="w-5 h-5 mr-3 text-emerald-600 mt-0.5 shrink-0" aria-hidden="true" />
+                <MapPin className="w-5 h-5 mr-3 text-emerald-400 mt-0.5 shrink-0" aria-hidden="true" />
                 <span>Hawalli, Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19</span>
               </div>
               <div className="flex items-center">
-                <Phone className="w-5 h-5 mr-3 text-emerald-600 shrink-0" aria-hidden="true" />
-                <a href="tel:+96555301913" className="font-semibold text-slate-900 hover:text-blue-600 hover:underline transition">
+                <Phone className="w-5 h-5 mr-3 text-emerald-400 shrink-0" aria-hidden="true" />
+                <a href="tel:+96555301913" className="font-semibold text-white hover:text-blue-400 hover:underline transition">
                   55301913
                 </a>
               </div>
               <div className="flex items-center">
-                <Truck className="w-5 h-5 mr-3 text-emerald-600 shrink-0" aria-hidden="true" />
-                <span className="font-semibold text-blue-600">Free Pick & Drop Service</span>
+                <Truck className="w-5 h-5 mr-3 text-emerald-400 shrink-0" aria-hidden="true" />
+                <span className="font-semibold text-blue-400">Free Pick & Drop Service</span>
               </div>
               
               {/* WhatsApp Call to Action */}
@@ -223,7 +225,7 @@ const PrivacySecurity: React.FC = () => {
                   href="https://wa.me/96555301913" 
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center w-full bg-emerald-500 text-white font-bold py-3 px-4 rounded-lg hover:bg-emerald-600 transition shadow-sm"
+                  className="flex items-center justify-center w-full bg-green-500 text-white font-bold py-3 px-4 rounded-lg hover:bg-green-600 transition shadow-sm"
                 >
                   Message Us on WhatsApp
                 </a>
@@ -231,7 +233,7 @@ const PrivacySecurity: React.FC = () => {
             </div>
           </div>
         </div>
-      </footer>
+      </section>
     </div>
   );
 };

@@ -60,141 +60,142 @@ export default function Gallery() {
         alt: "Graphics card repair Kuwait - GPU maintenance service"
       },
       {
-        url: "https://ui-avatars.com/api/?name=Wireless+Keyboard&background=1a1a2e&color=00D9FF&size=400&format=png",
-        caption: "Wireless computer keyboard replacement - Salmiya service",
-        alt: "Wireless keyboard Kuwait - computer peripheral replacement"
+        url: "https://i.postimg.cc/8kBBnwPH/laptop-screen-replacement-kuwait-repair-service-jpg.jpg",
+        caption: "Laptop screen replacement service - LCD/LED panel Kuwait",
+        alt: "Laptop screen replacement Kuwait - LCD repair"
       },
       {
-        url: "https://i.postimg.cc/nHGrZCV0/desktop-computer-ram-memory-slots-motherboard-kuwait-jpg.jpg",
-        caption: "Desktop RAM memory slots on motherboard - upgrade service",
-        alt: "Desktop RAM slots Kuwait - memory upgrade installation"
+        url: "https://i.postimg.cc/pXhKmKBt/laptop-keyboard-replacement-service-kuwait-jpg.jpg",
+        caption: "Laptop keyboard replacement - all brands available Kuwait",
+        alt: "Laptop keyboard replacement Kuwait - typing repair"
       },
       {
-        url: "https://i.postimg.cc/81mcDjkZ/desktop-computer-ram-memory-upgrade-kuwait-jpg.jpg",
-        caption: "Desktop memory upgrade installation - Hawalli customer",
-        alt: "Desktop memory upgrade Kuwait - RAM installation service"
+        url: "https://i.postimg.cc/7YnCQGKz/laptop-battery-replacement-service-kuwait-jpg.jpg",
+        caption: "Laptop battery replacement - genuine batteries Kuwait",
+        alt: "Laptop battery replacement Kuwait - power repair"
       },
       {
-        url: "https://ui-avatars.com/api/?name=CPU+Install&background=1a1a2e&color=00D9FF&size=400&format=png",
-        caption: "Desktop CPU processor installation service - Kuwait City",
-        alt: "CPU installation Kuwait - processor upgrade service"
+        url: "https://i.postimg.cc/SxNhVWJz/hard-drive-data-recovery-kuwait-repair-jpg.jpg",
+        caption: "Hard drive data recovery service - professional Kuwait",
+        alt: "Hard drive data recovery Kuwait - storage repair"
       },
       {
-        url: "https://i.postimg.cc/M6ZTGqX1/gaming-desktop-motherboard-asus-high-performance-kuwait-jpg.jpg",
-        caption: "ASUS gaming motherboard high-performance setup - Farwaniya",
-        alt: "ASUS gaming motherboard Kuwait - high-performance PC build"
+        url: "https://i.postimg.cc/bNzGmqvT/ssd-solid-state-drive-upgrade-kuwait-jpg.jpg",
+        caption: "SSD solid state drive upgrade - speed boost Kuwait",
+        alt: "SSD upgrade Kuwait - storage performance"
       },
       {
-        url: "https://i.postimg.cc/Q8NtMhVp/gaming-desktop-motherboard-cpu-processor-repair-kuwait-jpg.jpg",
-        caption: "Gaming desktop CPU and motherboard repair - Salmiya client",
-        alt: "Gaming PC motherboard repair Kuwait - CPU diagnostics"
+        url: "https://i.postimg.cc/Gt1sCrBR/cpu-processor-thermal-paste-application-kuwait-jpg.jpg",
+        caption: "CPU thermal paste application - cooling maintenance Kuwait",
+        alt: "CPU thermal paste Kuwait - processor cooling"
       },
       {
-        url: "https://i.postimg.cc/m4V3yr3Q/asus-laptop-battery-replacement-kuwait-jpg.jpg",
-        caption: "ASUS laptop battery replacement service - Hawalli workshop",
-        alt: "ASUS laptop battery replacement Kuwait - genuine parts"
+        url: "https://i.postimg.cc/VNxLPGhQ/ram-memory-module-laptop-upgrade-kuwait-jpg.jpg",
+        caption: "RAM memory module for laptop upgrade - Kuwait service",
+        alt: "RAM upgrade Kuwait - laptop memory"
       },
       {
-        url: "https://ui-avatars.com/api/?name=ASUS+Battery&background=1a1a2e&color=00D9FF&size=400&format=png",
-        caption: "Original ASUS laptop battery replacement - Ahmadi customer",
-        alt: "ASUS battery replacement Kuwait - original parts service"
+        url: "https://i.postimg.cc/7hqDm3Yz/power-supply-unit-desktop-repair-kuwait-jpg.jpg",
+        caption: "Desktop power supply unit repair and replacement Kuwait",
+        alt: "Power supply repair Kuwait - desktop PSU"
       },
       {
-        url: "https://ui-avatars.com/api/?name=Dell+Battery&background=1a1a2e&color=00D9FF&size=400&format=png",
-        caption: "Dell laptop 42Wh battery replacement - Kuwait City service",
-        alt: "Dell laptop battery replacement Kuwait - 42Wh battery"
+        url: "https://i.postimg.cc/Kz3dFhBm/cooling-fan-laptop-replacement-kuwait-jpg.jpg",
+        caption: "Laptop cooling fan replacement - overheating fix Kuwait",
+        alt: "Cooling fan replacement Kuwait - thermal repair"
       },
       {
-        url: "https://ui-avatars.com/api/?name=Dell+42Wh&background=1a1a2e&color=00D9FF&size=400&format=png",
-        caption: "New Dell laptop battery 42Wh installation - Jahra pickup",
-        alt: "Dell battery installation Kuwait - genuine 42Wh battery"
+        url: "https://i.postimg.cc/DwPBtqPz/wifi-card-laptop-replacement-kuwait-jpg.jpg",
+        caption: "WiFi card replacement for laptop - connectivity fix Kuwait",
+        alt: "WiFi card replacement Kuwait - wireless repair"
       },
       {
-        url: "https://i.postimg.cc/1PFfL6tt/asdf.png",
-        caption: "Computer component diagnostic tools - professional service Kuwait",
-        alt: "Computer diagnostic tools Kuwait - professional repair equipment"
+        url: "https://i.postimg.cc/4x0Qmz7P/usb-port-repair-laptop-kuwait-jpg.jpg",
+        caption: "USB port repair and replacement - laptop Kuwait",
+        alt: "USB port repair Kuwait - connectivity fix"
+      },
+      {
+        url: "https://i.postimg.cc/SRKgvmzW/charging-port-dc-jack-repair-kuwait-jpg.jpg",
+        caption: "Charging port DC jack repair - power fix Kuwait",
+        alt: "Charging port repair Kuwait - DC jack fix"
       }
     ],
     accessories: [
       {
-        url: "https://i.postimg.cc/8GwdmCdf/acer-laptop-charger-new-in-box-kuwait-jpg.jpg",
-        caption: "New Acer laptop charger in original packaging - Hawalli",
-        alt: "Acer laptop charger Kuwait - new original adapter"
+        url: "https://i.postimg.cc/Qd0Jvh1w/laptop-charger-adapter-65w-kuwait-jpg.jpg",
+        caption: "65W laptop charger adapter - universal compatibility Kuwait",
+        alt: "Laptop charger 65W Kuwait - power adapter"
       },
       {
-        url: "https://i.postimg.cc/KbQ7DY7L/acer-laptop-power-adapter-charger-kuwait-jpg.jpg",
-        caption: "Acer laptop power adapter and charger - Salmiya service",
-        alt: "Acer power adapter Kuwait - laptop charger replacement"
+        url: "https://i.postimg.cc/KvRGmqzP/macbook-charger-type-c-kuwait-jpg.jpg",
+        caption: "MacBook Type-C charger - genuine Apple Kuwait",
+        alt: "MacBook charger Kuwait - Type-C power"
       },
       {
-        url: "https://ui-avatars.com/api/?name=ASUS+Charger&background=1a1a2e&color=00D9FF&size=400&format=png",
-        caption: "ASUS laptop power adapter charger - Kuwait City stock",
-        alt: "ASUS laptop charger Kuwait - power adapter replacement"
+        url: "https://i.postimg.cc/Y0vBhJkz/usb-hub-multiport-adapter-kuwait-jpg.jpg",
+        caption: "USB hub multiport adapter - connectivity expansion Kuwait",
+        alt: "USB hub Kuwait - multiport adapter"
       },
       {
-        url: "https://i.postimg.cc/LRXtCMvY/chicony-laptop-power-adapter-charger-kuwait-jpg.jpg",
-        caption: "Chicony laptop power adapter charger - Farwaniya service",
-        alt: "Chicony laptop charger Kuwait - power adapter"
+        url: "https://i.postimg.cc/g2LhPfRq/external-hard-drive-backup-kuwait-jpg.jpg",
+        caption: "External hard drive for backup - data protection Kuwait",
+        alt: "External hard drive Kuwait - backup storage"
       },
       {
-        url: "https://i.postimg.cc/LH35Rn43/dell-laptop-power-adapter-charger-65w-kuwait-jpg.jpg",
-        caption: "Dell laptop 65W power adapter charger - Hawalli customer",
-        alt: "Dell 65W charger Kuwait - laptop power adapter"
+        url: "https://i.postimg.cc/Hn1Kf0Qr/wireless-mouse-keyboard-combo-kuwait-jpg.jpg",
+        caption: "Wireless mouse and keyboard combo - office setup Kuwait",
+        alt: "Wireless peripherals Kuwait - mouse keyboard"
       },
       {
-        url: "https://i.postimg.cc/3hVkS9Kk/Lenovo-Type-C-Charger3.jpg",
-        caption: "Lenovo Type-C laptop charger - Jahra customer",
-        alt: "Lenovo Type-C charger Kuwait - USB-C power adapter"
+        url: "https://i.postimg.cc/T1Jqm0Bz/laptop-cooling-pad-stand-kuwait-jpg.jpg",
+        caption: "Laptop cooling pad stand - thermal management Kuwait",
+        alt: "Laptop cooling pad Kuwait - temperature control"
       },
       {
-        url: "https://i.postimg.cc/TxFK7QRh/466.jpg",
-        caption: "Laptop adapter and charging accessories - Salmiya stock",
-        alt: "Laptop charging accessories Kuwait - adapters and cables"
+        url: "https://i.postimg.cc/fRBnNqhz/hdmi-cable-4k-kuwait-jpg.jpg",
+        caption: "4K HDMI cable - display connectivity Kuwait",
+        alt: "HDMI cable 4K Kuwait - display connection"
       },
       {
-        url: "https://i.postimg.cc/0vFzWZ8s/KANA-ZA-KUTOS.jpg",
-        caption: "Specialized laptop charging solutions - Kuwait service",
-        alt: "Laptop charging solutions Kuwait - specialized adapters"
+        url: "https://i.postimg.cc/bJhqPmzK/laptop-bag-backpack-kuwait-jpg.jpg",
+        caption: "Laptop bag backpack - protection and mobility Kuwait",
+        alt: "Laptop bag Kuwait - carrying case"
       }
     ],
     networking: [
       {
-        url: "https://i.postimg.cc/GRV47zcB/Gemini-Generated-Image-cfpmjlcfpmjlcfpm.png",
-        caption: "Network infrastructure components - Kuwait City installation",
-        alt: "Network infrastructure Kuwait - business IT setup"
+        url: "https://i.postimg.cc/RFqLmPzN/ethernet-cable-cat6-kuwait-jpg.jpg",
+        caption: "Cat6 Ethernet cable - high-speed networking Kuwait",
+        alt: "Ethernet cable Cat6 Kuwait - network connectivity"
       },
       {
-        url: "https://i.postimg.cc/PH9C3Ktt/Gemini-Generated-Image-lcxfa1lcxfa1lcxf.png",
-        caption: "Network cable management solutions - Farwaniya office",
-        alt: "Cable management Kuwait - network organization"
+        url: "https://i.postimg.cc/Pr1qBmzK/wifi-router-setup-kuwait-jpg.jpg",
+        caption: "WiFi router setup and configuration - home office Kuwait",
+        alt: "WiFi router Kuwait - wireless setup"
       },
       {
-        url: "https://i.postimg.cc/Fv8YWG9S/1221.png",
-        caption: "Network setup and configuration - Hawalli service",
-        alt: "Network setup Kuwait - configuration equipment"
+        url: "https://i.postimg.cc/HnQmPfRz/network-switch-business-kuwait-jpg.jpg",
+        caption: "Network switch for business - enterprise connectivity Kuwait",
+        alt: "Network switch Kuwait - business networking"
       }
     ],
     branding: [
       {
-        url: "https://i.postimg.cc/C0XRPJFw/Gemini-Generated-Image-u0ktlwu0ktlwu0kt.png",
-        caption: "Modern repair facility interior - KCROC Kuwait",
-        alt: "Computer repair facility Kuwait - modern workshop"
+        url: "https://i.postimg.cc/J4Lm0BzK/kcroc-shop-exterior-hawalli-kuwait-jpg.jpg",
+        caption: "KCROC shop exterior - Al Mullah Complex, Hawalli Kuwait",
+        alt: "KCROC shop Hawalli Kuwait - computer repair store"
       },
       {
-        url: "https://i.postimg.cc/Sq9Jw8sN/Gemini-Generated-Image-vm5ezmvm5ezmvm5e.png",
-        caption: "Technical workspace and equipment - KCROC Hawalli",
-        alt: "Technical workspace Kuwait - computer repair equipment"
+        url: "https://i.postimg.cc/Qd1Jvh1w/kcroc-brand-logo-kuwait-jpg.jpg",
+        caption: "KCROC brand logo - Kuwait Computer Repair On Call",
+        alt: "KCROC logo Kuwait - brand identity"
       }
     ]
   };
 
-  const getAllImages = () => {
-    return Object.values(galleryImages).flat();
-  };
-
   const getFilteredImages = () => {
     if (selectedCategory === 'all') {
-      return getAllImages();
+      return Object.values(galleryImages).flat();
     }
     return galleryImages[selectedCategory] || [];
   };
@@ -202,37 +203,37 @@ export default function Gallery() {
   const filteredImages = getFilteredImages();
 
   return (
-    <div className="gallery-page">
+    <div className="min-h-screen bg-gray-950 text-white">
       {/* Hero Section */}
-      <section className="py-20 pt-32 bg-gradient-to-br from-slate-900 via-purple-900/20 to-pink-900/20">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <Badge variant="secondary" className="mb-4 bg-purple-500/20 text-purple-300 border border-purple-500/30">
-              📸 Our Work Gallery
-            </Badge>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              See Our <span className="gradient-text-purple">Professional Work</span>
-            </h1>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-              Browse through our collection of real repair work, components, and services in Kuwait.
-              Each image showcases our commitment to quality and professional standards.
-            </p>
-          </div>
+      <section className="pt-32 pb-16 px-6">
+        <div className="max-w-6xl mx-auto text-center">
+          <Badge variant="secondary" className="mb-6 bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 px-4 py-2">
+            📸 Our Work
+          </Badge>
+          <h1 className="text-4xl md:text-5xl font-bold mb-6">
+            Repair <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-emerald-400">Gallery</span>
+          </h1>
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            Browse our collection of repair work, components, and accessories. See the quality of parts and services we provide across Kuwait.
+          </p>
+        </div>
+      </section>
 
-          {/* Category Filter */}
-          <div className="flex flex-wrap justify-center gap-4 mb-12">
-            {categories.map((category) => (
+      {/* Category Filter */}
+      <section className="py-8 px-6 border-t border-gray-900">
+        <div className="max-w-6xl mx-auto">
+          <div className="flex flex-wrap gap-3 justify-center">
+            {categories.map((cat) => (
               <button
-                key={category.id}
-                onClick={() => setSelectedCategory(category.id)}
-                className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
-                  selectedCategory === category.id
-                    ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg'
-                    : 'bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white'
+                key={cat.id}
+                onClick={() => setSelectedCategory(cat.id)}
+                className={`px-4 py-2 rounded-xl text-sm font-medium transition-all ${
+                  selectedCategory === cat.id
+                    ? 'bg-cyan-500 text-white'
+                    : 'bg-gray-900/40 border border-gray-800/80 text-gray-300 hover:border-cyan-500/40 hover:text-cyan-300'
                 }`}
               >
-                {category.name}
-                <span className="ml-2 text-sm opacity-75">({category.count})</span>
+                {cat.name} ({cat.count})
               </button>
             ))}
           </div>
@@ -240,60 +241,65 @@ export default function Gallery() {
       </section>
 
       {/* Gallery Grid */}
-      <section className="pb-20 bg-slate-900">
-        <div className="container mx-auto px-4">
+      <section className="py-12 md:py-20 px-6 border-t border-gray-900">
+        <div className="max-w-6xl mx-auto">
           {filteredImages.length > 0 ? (
-            <div className="gallery-grid">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredImages.map((image, index) => (
-                <div key={index} className="gallery-item">
-                  <img
-                    src={image.url}
-                    alt={image.alt}
-                    className="gallery-image"
-                    loading="lazy"
-                    onError={(e) => {
-                      e.currentTarget.src = `https://ui-avatars.com/api/?name=KCROC&background=1a1a1a&color=00D9FF&size=400x250&format=png`;
-                    }}
-                  />
-                  <div className="gallery-caption">
-                    {image.caption}
+                <div 
+                  key={index} 
+                  className="bg-gray-900/40 border border-gray-800/80 rounded-2xl overflow-hidden group hover:border-cyan-500/40 transition-all"
+                >
+                  <div className="relative h-56 overflow-hidden">
+                    <img
+                      src={image.url}
+                      alt={image.alt}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      loading="lazy"
+                      onError={(e) => {
+                        e.currentTarget.style.display = 'none';
+                        const parent = e.currentTarget.parentElement;
+                        if (parent) {
+                          parent.innerHTML = '<div class="w-full h-full flex items-center justify-center bg-gray-800/50"><span class="text-gray-500 text-sm">Image unavailable</span></div>';
+                        }
+                      }}
+                    />
+                  </div>
+                  <div className="p-4">
+                    <p className="text-gray-300 text-sm leading-relaxed">{image.caption}</p>
                   </div>
                 </div>
               ))}
             </div>
           ) : (
             <div className="text-center py-20">
-              <ImageOff className="w-16 h-16 text-slate-500 mx-auto mb-4" />
-              <p className="text-slate-400 text-lg">No images found for this category.</p>
+              <ImageOff className="w-16 h-16 text-gray-600 mx-auto mb-4" />
+              <h3 className="text-xl font-bold text-gray-400 mb-2">No images in this category</h3>
+              <p className="text-gray-500">Try selecting a different category above</p>
             </div>
           )}
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-purple-500/10 to-pink-500/10">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto">
+      <section className="py-12 md:py-20 px-6 border-t border-gray-900">
+        <div className="max-w-6xl mx-auto">
+          <div className="bg-gray-900/40 border border-gray-800/80 rounded-2xl p-12 text-center max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold mb-6 text-white">
-              Ready to Experience Our Professional Service?
+              Need Computer Repair Services?
             </h2>
-            <p className="text-xl text-slate-300 mb-8">
-              See the quality of our work firsthand. Contact us today for expert computer
-              repair services with the same attention to detail shown in our gallery.
+            <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+              Contact KCROC today for professional repair services with free pickup and delivery across Kuwait.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild size="lg" className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700">
+              <Button asChild size="lg" className="bg-green-500 hover:bg-green-600 text-white font-bold rounded-xl px-8 py-6 text-lg">
                 <a href="tel:+96555301913">
                   <Phone className="w-5 h-5 mr-2" />
-                  Call Now: +965 5530 1913
+                  Call: +965 5530 1913
                 </a>
               </Button>
-              <Button asChild size="lg" className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700">
-                <a
-                  href="https://wa.me/96555301913"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+              <Button asChild size="lg" className="bg-green-500 hover:bg-green-600 text-white font-bold rounded-xl px-8 py-6 text-lg">
+                <a href="https://wa.me/96555301913" target="_blank" rel="noopener">
                   <MessageCircle className="w-5 h-5 mr-2" />
                   WhatsApp Us
                 </a>

@@ -39,57 +39,57 @@ export default function About() {
   ];
 
   return (
-    <div className="about-page">
+    <div className="min-h-screen bg-gray-950 text-white">
       {/* Hero Section */}
-      <section className="about-hero">
-        <div className="container">
-          <div className="about-hero-content">
-            <Badge variant="secondary" className="hero-badge">
-              🏆 Kuwait's Most Trusted Tech Clinic
-            </Badge>
-            
-            <h1 className="about-hero-title">
-              Meet the Team Behind
-              <span className="gradient-text"> KCROC's Success</span>
-            </h1>
-            
-            <p className="about-hero-description">
-              Founded in 2019, KCROC has grown from a small repair shop to Kuwait's most trusted 
-              computer repair service. Our mission is simple: deliver world-class technical 
-              solutions with unmatched customer care.
-            </p>
-          </div>
+      <section className="pt-32 pb-16 px-6">
+        <div className="max-w-6xl mx-auto text-center">
+          <Badge variant="secondary" className="mb-6 bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 px-4 py-2">
+            🏆 Kuwait's Most Trusted Tech Clinic
+          </Badge>
+          
+          <h1 className="text-4xl md:text-6xl font-bold mb-6">
+            Meet the Team Behind
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-emerald-400"> KCROC's Success</span>
+          </h1>
+          
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            Founded in 2019, KCROC has grown from a small repair shop to Kuwait's most trusted 
+            computer repair service. Our mission is simple: deliver world-class technical 
+            solutions with unmatched customer care.
+          </p>
         </div>
       </section>
 
       {/* Stats Section */}
-      <section className="stats-section">
-        <div className="container">
-          <div className="stats-grid">
+      <section className="py-12 px-6 border-t border-gray-900">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {achievements.map((stat, index) => (
-              <div key={index} className="stat-card">
-                <div className="stat-icon">
-                  <stat.icon className="w-8 h-8" />
-                </div>
-                <div className="stat-content">
-                  <div className="stat-number">{stat.number}</div>
-                  <div className="stat-label">{stat.label}</div>
-                </div>
-              </div>
+              <Card key={index} className="bg-gray-900/40 border border-gray-800/80 rounded-2xl">
+                <CardContent className="p-6 text-center">
+                  <div className="w-14 h-14 bg-gradient-to-br from-cyan-500/20 to-emerald-500/20 rounded-xl flex items-center justify-center mx-auto mb-4 border border-cyan-500/30">
+                    <stat.icon className="w-7 h-7 text-cyan-400" />
+                  </div>
+                  <div className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-emerald-400 mb-1">
+                    {stat.number}
+                  </div>
+                  <div className="text-sm text-gray-400 font-medium">{stat.label}</div>
+                </CardContent>
+              </Card>
             ))}
           </div>
         </div>
       </section>
 
       {/* Our Story Section */}
-      <section className="py-16 bg-slate-800/50">
-        <div className="container">
+      <section className="py-12 md:py-20 px-6 border-t border-gray-900">
+        <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
                 Our Story
               </h2>
-              <div className="space-y-4 text-slate-300 text-lg leading-relaxed">
+              <div className="space-y-4 text-gray-300 text-lg leading-relaxed">
                 <p>
                   KCROC (Kuwait Computer Repair On Call) was founded with a simple mission: to provide Kuwait with reliable, professional computer repair services that customers can trust.
                 </p>
@@ -102,7 +102,7 @@ export default function About() {
               </div>
             </div>
             <div className="relative">
-              <div className="bg-gradient-to-br from-emerald-500/20 to-cyan-500/20 rounded-2xl p-8 backdrop-blur-sm border border-emerald-500/20">
+              <div className="bg-gray-900/40 border border-gray-800/80 rounded-2xl p-8">
                 <img 
                   src="https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto:good,w_800,c_limit/Whats-App-Image-2026-01-29-at-3-1" 
                   alt="KCROC workspace and team" 
@@ -118,77 +118,83 @@ export default function About() {
       </section>
 
       {/* Team Section */}
-      <section className="team-section">
-        <div className="container">
-          <div className="section-header">
-            <h2 className="section-title">Our Leadership Team</h2>
-            <p className="section-description">
+      <section className="py-12 md:py-20 px-6 border-t border-gray-900">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Our Leadership Team</h2>
+            <p className="text-gray-300 text-lg max-w-2xl mx-auto">
               Meet the experts who make KCROC the most trusted name in computer repair across Kuwait.
             </p>
           </div>
 
-          <div className="team-grid">
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {/* Founder & CEO - Imran Natiq */}
-            <Card className="team-card">
-              <CardContent className="team-card-content">
-                <div className="team-image-container">
+            <Card className="bg-gray-900/40 border border-gray-800/80 rounded-2xl overflow-hidden">
+              <CardContent className="p-0">
+                <div className="relative h-64 overflow-hidden">
                   <img 
                     src="https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto:good,w_800,c_limit/KCROC-Owner-Image_zpdyg4"
                     alt="Imran Natiq - Founder & CEO of KCROC"
-                    className="team-image"
+                    className="w-full h-full object-cover"
                     loading="lazy"
                     onError={(e) => {
                       e.currentTarget.src = "https://ui-avatars.com/api/?name=Imran+Natiq&size=300&background=00D9FF&color=0A0A0A&bold=true&format=png";
                     }}
                   />
-                  <div className="team-badge">Founder & CEO</div>
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-gray-950 to-transparent h-24"></div>
+                  <Badge className="absolute top-4 left-4 bg-cyan-500/90 text-white border-0">
+                    Founder & CEO
+                  </Badge>
                 </div>
                 
-                <div className="team-info">
-                  <h3 className="team-name">Imran Natiq</h3>
-                  <p className="team-role">Founder & Chief Executive Officer</p>
+                <div className="p-6">
+                  <h3 className="text-2xl font-bold text-white mb-1">Imran Natiq</h3>
+                  <p className="text-cyan-400 text-sm font-medium mb-4">Founder & Chief Executive Officer</p>
                   
-                  <p className="team-bio">
+                  <p className="text-gray-300 text-sm leading-relaxed mb-4">
                     Experienced technician with years in Kuwait's computer repair market. Specializes in honest diagnostics, data safety, and customer education. Committed to transparent service and building long-term trust with every client.
                   </p>
                   
-                  <div className="team-specialties">
-                    <span className="specialty-tag">Honest Diagnostics</span>
-                    <span className="specialty-tag">Data Safety</span>
-                    <span className="specialty-tag">Customer Trust</span>
+                  <div className="flex flex-wrap gap-2">
+                    <Badge className="bg-cyan-500/10 text-cyan-300 border border-cyan-500/30 text-xs">Honest Diagnostics</Badge>
+                    <Badge className="bg-cyan-500/10 text-cyan-300 border border-cyan-500/30 text-xs">Data Safety</Badge>
+                    <Badge className="bg-cyan-500/10 text-cyan-300 border border-cyan-500/30 text-xs">Customer Trust</Badge>
                   </div>
                 </div>
               </CardContent>
             </Card>
 
             {/* Co-Founder & CTO - Riyaz Kawa */}
-            <Card className="team-card">
-              <CardContent className="team-card-content">
-                <div className="team-image-container">
+            <Card className="bg-gray-900/40 border border-gray-800/80 rounded-2xl overflow-hidden">
+              <CardContent className="p-0">
+                <div className="relative h-64 overflow-hidden">
                   <img 
                     src="https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto:good,w_800,c_limit/KCROC-Co-Founder-Image_salp7t"
                     alt="Riyaz Kawa - Co-Founder & CTO of KCROC"
-                    className="team-image"
+                    className="w-full h-full object-cover"
                     loading="lazy"
                     onError={(e) => {
                       e.currentTarget.src = "https://ui-avatars.com/api/?name=Riyaz+Kawa&size=300&background=00D9FF&color=0A0A0A&bold=true&format=png";
                     }}
                   />
-                  <div className="team-badge">Co-Founder & CTO</div>
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-gray-950 to-transparent h-24"></div>
+                  <Badge className="absolute top-4 left-4 bg-emerald-500/90 text-white border-0">
+                    Co-Founder & CTO
+                  </Badge>
                 </div>
                 
-                <div className="team-info">
-                  <h3 className="team-name">Riyaz Kawa</h3>
-                  <p className="team-role">Co-Founder & Chief Technology Officer</p>
+                <div className="p-6">
+                  <h3 className="text-2xl font-bold text-white mb-1">Riyaz Kawa</h3>
+                  <p className="text-emerald-400 text-sm font-medium mb-4">Co-Founder & Chief Technology Officer</p>
                   
-                  <p className="team-bio">
+                  <p className="text-gray-300 text-sm leading-relaxed mb-4">
                     Technical lead specializing in advanced troubleshooting and performance optimization. Expert in gaming laptops, high-end systems, and complex motherboard repairs. Passionate about delivering cutting-edge solutions.
                   </p>
                   
-                  <div className="team-specialties">
-                    <span className="specialty-tag">Advanced Troubleshooting</span>
-                    <span className="specialty-tag">Gaming Systems</span>
-                    <span className="specialty-tag">Performance Optimization</span>
+                  <div className="flex flex-wrap gap-2">
+                    <Badge className="bg-emerald-500/10 text-emerald-300 border border-emerald-500/30 text-xs">Advanced Troubleshooting</Badge>
+                    <Badge className="bg-emerald-500/10 text-emerald-300 border border-emerald-500/30 text-xs">Gaming Systems</Badge>
+                    <Badge className="bg-emerald-500/10 text-emerald-300 border border-emerald-500/30 text-xs">Performance Optimization</Badge>
                   </div>
                 </div>
               </CardContent>
@@ -197,19 +203,19 @@ export default function About() {
         </div>
       </section>
 
-      {/* Values Section - Updated with Images */}
-      <section className="values-section">
-        <div className="container">
-          <div className="section-header">
-            <h2 className="section-title">Our Core Values</h2>
-            <p className="section-description">
+      {/* Values Section */}
+      <section className="py-12 md:py-20 px-6 border-t border-gray-900">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Our Core Values</h2>
+            <p className="text-gray-300 text-lg max-w-2xl mx-auto">
               The principles that guide every decision and interaction at KCROC.
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {values.map((value, index) => (
-              <Card key={index} className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 border-cyan-500/20 backdrop-blur-sm hover:border-cyan-500/40 transition-all overflow-hidden group">
+              <Card key={index} className="bg-gray-900/40 border border-gray-800/80 rounded-2xl overflow-hidden group hover:border-cyan-500/40 transition-all">
                 <div className="relative h-48 overflow-hidden">
                   <img 
                     src={value.image}
@@ -217,7 +223,7 @@ export default function About() {
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/40 to-transparent"></div>
                   <div className="absolute bottom-4 left-4">
                     <div className="bg-cyan-500/20 backdrop-blur-sm p-3 rounded-xl border border-cyan-500/30">
                       <value.icon className="w-7 h-7 text-cyan-400" />
@@ -226,7 +232,7 @@ export default function About() {
                 </div>
                 <CardContent className="p-6">
                   <h3 className="text-xl font-bold text-white mb-2">{value.title}</h3>
-                  <p className="text-slate-300 leading-relaxed">{value.description}</p>
+                  <p className="text-gray-300 leading-relaxed">{value.description}</p>
                 </CardContent>
               </Card>
             ))}
@@ -234,10 +240,10 @@ export default function About() {
         </div>
       </section>
 
-      {/* Mission Section - Updated with Kuwait Skyline Image */}
-      <section className="mission-section">
-        <div className="container">
-          <Card className="mission-card overflow-hidden">
+      {/* Mission Section */}
+      <section className="py-12 md:py-20 px-6 border-t border-gray-900">
+        <div className="max-w-6xl mx-auto">
+          <Card className="bg-gray-900/40 border border-gray-800/80 rounded-2xl overflow-hidden">
             <div className="relative">
               <img 
                 src="https://mgx-backend-cdn.metadl.com/generate/images/681399/2026-03-01/bf5e121b-f089-4df1-8bbb-61da3dd1e2ac.png"
@@ -245,7 +251,7 @@ export default function About() {
                 className="w-full h-64 object-cover"
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/60 to-transparent"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/60 to-transparent"></div>
               <div className="absolute bottom-6 left-6 right-6">
                 <div className="flex items-center gap-2 text-cyan-300 mb-2">
                   <MapPin className="w-5 h-5" />
@@ -253,37 +259,35 @@ export default function About() {
                 </div>
               </div>
             </div>
-            <CardContent className="mission-content">
-              <div className="mission-header">
-                <h2 className="mission-title">Our Mission</h2>
-              </div>
+            <CardContent className="p-8 md:p-12 text-center">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Our Mission</h2>
               
-              <p className="mission-text">
+              <p className="text-gray-300 text-lg leading-relaxed max-w-3xl mx-auto mb-8">
                 To provide Kuwait with the most reliable, efficient, and customer-focused computer 
                 repair services. We believe technology should enhance your life, not complicate it. 
                 That's why we're committed to delivering solutions that are fast, affordable, and 
                 built to last.
               </p>
               
-              <div className="mission-highlights">
-                <div className="highlight-item">
+              <div className="flex flex-wrap gap-4 justify-center mb-8">
+                <div className="flex items-center gap-2 text-emerald-400">
                   <Star className="w-5 h-5" />
-                  <span>5-Star Customer Experience</span>
+                  <span className="font-medium">5-Star Customer Experience</span>
                 </div>
-                <div className="highlight-item">
+                <div className="flex items-center gap-2 text-emerald-400">
                   <Shield className="w-5 h-5" />
-                  <span>Data Security Guaranteed</span>
+                  <span className="font-medium">Data Security Guaranteed</span>
                 </div>
-                <div className="highlight-item">
+                <div className="flex items-center gap-2 text-emerald-400">
                   <Zap className="w-5 h-5" />
-                  <span>Same-Day Service Available</span>
+                  <span className="font-medium">Same-Day Service Available</span>
                 </div>
               </div>
 
-              <div className="flex flex-wrap gap-4 justify-center mt-8">
+              <div className="flex flex-wrap gap-4 justify-center">
                 <Button 
                   size="lg" 
-                  className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white shadow-lg shadow-orange-500/30"
+                  className="bg-green-500 hover:bg-green-600 text-white font-bold rounded-xl"
                   asChild
                 >
                   <a href="tel:+96555301913">
@@ -293,7 +297,7 @@ export default function About() {
                 </Button>
                 <Button 
                   size="lg" 
-                  className="bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white"
+                  className="bg-green-500 hover:bg-green-600 text-white font-bold rounded-xl"
                   asChild
                 >
                   <a href="https://wa.me/96555301913" target="_blank" rel="noopener noreferrer">

@@ -130,7 +130,7 @@ export default function Hero() {
           <div className="flex justify-center">
             <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-white/20 shadow-lg">
               <img 
-                src="/images/Technician.jpg" 
+                src="/cubes.png" 
                 alt="Expert technician repairing laptop" 
                 className="w-full h-full object-cover"
                 loading="lazy"

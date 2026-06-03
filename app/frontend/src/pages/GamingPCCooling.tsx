@@ -261,7 +261,7 @@ export default function GamingPCCooling() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
+    <div className="min-h-screen bg-gray-950 text-white">
       {/* Hero Section */}
       <section className="relative pt-32 pb-24 px-4 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-transparent to-orange-500/10"></div>
@@ -565,7 +565,7 @@ export default function GamingPCCooling() {
       </section>
 
       {/* Gaming Brands with ASUS ROG Image */}
-      <section className="py-24 px-4 bg-slate-900/50 backdrop-blur-sm">
+      <section className="py-24 px-4 border-t border-gray-900">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-16">
             <Badge className="bg-cyan-500/20 text-cyan-300 border-cyan-500/30 px-4 py-2 text-sm mb-4">
@@ -665,7 +665,7 @@ export default function GamingPCCooling() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-24 px-4 bg-slate-900/50 backdrop-blur-sm">
+      <section className="py-24 px-4 border-t border-gray-900">
         <div className="container mx-auto max-w-4xl">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
@@ -744,7 +744,7 @@ export default function GamingPCCooling() {
       </section>
 
       {/* Footer CTA */}
-      <section className="py-16 px-4 bg-gradient-to-b from-transparent to-cyan-500/10">
+      <section className="py-16 px-4 border-t border-gray-900">
         <div className="container mx-auto max-w-4xl text-center">
           <h3 className="text-3xl md:text-4xl font-bold text-white mb-6">
             Protect Your Gaming Investment Today

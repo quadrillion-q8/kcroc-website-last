@@ -177,33 +177,31 @@ export default function Services() {
   ];
 
   return (
-    <div className="services-page">
+    <div className="min-h-screen bg-gray-950 text-white">
       {/* Hero Section */}
-      <section className="py-20 pt-32 bg-gradient-to-br from-slate-900 via-blue-900/20 to-emerald-900/20">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <Badge variant="secondary" className="mb-4 bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">
-              🔧 Our Services
-            </Badge>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Professional <span className="gradient-text">Computer Repair</span> Services
-            </h1>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-              Comprehensive laptop, desktop, and MacBook repair services in Kuwait with free pickup and delivery across all governorates
-            </p>
-          </div>
+      <section className="pt-32 pb-16 px-6">
+        <div className="max-w-6xl mx-auto text-center">
+          <Badge variant="secondary" className="mb-6 bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 px-4 py-2">
+            🔧 Our Services
+          </Badge>
+          <h1 className="text-4xl md:text-5xl font-bold mb-6">
+            Professional <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-emerald-400">Computer Repair</span> Services
+          </h1>
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            Comprehensive laptop, desktop, and MacBook repair services in Kuwait with free pickup and delivery across all governorates
+          </p>
         </div>
       </section>
 
       {/* Services Grid */}
-      <section className="py-20 bg-slate-900">
-        <div className="container mx-auto px-4">
+      <section className="py-12 md:py-20 px-6 border-t border-gray-900">
+        <div className="max-w-6xl mx-auto">
           <div className="space-y-16">
-            {services.map((service, index) => {
+            {services.map((service) => {
               const Icon = service.icon;
               return (
                 <div key={service.id} id={service.id} className="scroll-mt-20">
-                  <Card className="glass-card overflow-hidden">
+                  <Card className="bg-gray-900/40 border border-gray-800/80 rounded-2xl overflow-hidden">
                     <div className="grid lg:grid-cols-2 gap-0">
                       {/* Image */}
                       <div className="relative h-64 lg:h-auto">
@@ -213,9 +211,9 @@ export default function Services() {
                           className="w-full h-full object-cover"
                           loading="lazy"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/80 to-transparent"></div>
+                        <div className="absolute inset-0 bg-gradient-to-r from-gray-950/80 to-transparent"></div>
                         <div className="absolute top-6 left-6">
-                          <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-cyan-500 rounded-xl flex items-center justify-center neon-glow-blue">
+                          <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-cyan-500 rounded-xl flex items-center justify-center shadow-lg shadow-cyan-500/20">
                             <Icon className="w-8 h-8 text-white" />
                           </div>
                         </div>
@@ -227,7 +225,7 @@ export default function Services() {
                           <CardTitle className="text-3xl font-black text-white mb-3">
                             {service.title}
                           </CardTitle>
-                          <p className="text-slate-300 text-lg">{service.description}</p>
+                          <p className="text-gray-300 text-lg">{service.description}</p>
                         </CardHeader>
 
                         {/* Common Issues */}
@@ -238,7 +236,7 @@ export default function Services() {
                           </h3>
                           <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                             {service.commonIssues.map((issue, idx) => (
-                              <div key={idx} className="flex items-start gap-2 text-slate-300 text-sm">
+                              <div key={idx} className="flex items-start gap-2 text-gray-300 text-sm">
                                 <span className="text-emerald-400 mt-1">•</span>
                                 <span>{issue}</span>
                               </div>
@@ -247,21 +245,21 @@ export default function Services() {
                         </div>
 
                         {/* Approach */}
-                        <div className="mb-6 p-4 bg-slate-800/50 rounded-lg border border-slate-700/50">
+                        <div className="mb-6 p-4 bg-gray-800/50 rounded-xl border border-gray-700/50">
                           <h4 className="text-lg font-bold text-white mb-2">Our Approach:</h4>
-                          <p className="text-slate-300 text-sm leading-relaxed">{service.approach}</p>
+                          <p className="text-gray-300 text-sm leading-relaxed">{service.approach}</p>
                         </div>
 
                         {/* Turnaround & Price */}
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                          <div className="flex items-start gap-3 p-4 bg-blue-500/10 rounded-lg border border-blue-500/30">
+                          <div className="flex items-start gap-3 p-4 bg-blue-500/10 rounded-xl border border-blue-500/30">
                             <Clock className="w-5 h-5 text-blue-400 flex-shrink-0 mt-1" />
                             <div>
                               <h5 className="text-white font-semibold text-sm mb-1">Turnaround Time:</h5>
-                              <p className="text-slate-300 text-xs">{service.turnaround}</p>
+                              <p className="text-gray-300 text-xs">{service.turnaround}</p>
                             </div>
                           </div>
-                          <div className="flex items-start gap-3 p-4 bg-emerald-500/10 rounded-lg border border-emerald-500/30">
+                          <div className="flex items-start gap-3 p-4 bg-emerald-500/10 rounded-xl border border-emerald-500/30">
                             <DollarSign className="w-5 h-5 text-emerald-400 flex-shrink-0 mt-1" />
                             <div>
                               <h5 className="text-white font-semibold text-sm mb-1">Starting Price:</h5>
@@ -275,13 +273,13 @@ export default function Services() {
 
                         {/* CTA Buttons */}
                         <div className="flex flex-col sm:flex-row gap-3">
-                          <Button asChild className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 flex-1">
+                          <Button asChild className="bg-green-500 hover:bg-green-600 text-white font-bold rounded-xl flex-1">
                             <a href="tel:+96555301913">
                               <Phone className="w-4 h-4 mr-2" />
                               Call Now
                             </a>
                           </Button>
-                          <Button asChild className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 flex-1">
+                          <Button asChild className="bg-green-500 hover:bg-green-600 text-white font-bold rounded-xl flex-1">
                             <a href={`https://wa.me/96555301913?text=I need ${service.title.toLowerCase()} service. Please arrange free pickup.`} target="_blank" rel="noopener noreferrer">
                               <MessageCircle className="w-4 h-4 mr-2" />
                               WhatsApp
@@ -299,13 +297,13 @@ export default function Services() {
       </section>
 
       {/* Quick Links to Services */}
-      <section className="py-16 bg-gradient-to-br from-slate-800 via-slate-900 to-slate-800">
-        <div className="container mx-auto px-4">
+      <section className="py-12 md:py-20 px-6 border-t border-gray-900">
+        <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-white mb-4">
-              Jump to <span className="gradient-text">Specific Service</span>
+              Jump to <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-emerald-400">Specific Service</span>
             </h2>
-            <p className="text-slate-300">Quick navigation to find exactly what you need</p>
+            <p className="text-gray-300">Quick navigation to find exactly what you need</p>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 max-w-6xl mx-auto">
@@ -315,7 +313,7 @@ export default function Services() {
                 <a
                   key={service.id}
                   href={`#${service.id}`}
-                  className="glass-card hover-lift p-4 rounded-xl text-center transition-all duration-300 hover:border-cyan-400"
+                  className="bg-gray-900/40 border border-gray-800/80 hover:border-cyan-500/40 p-4 rounded-2xl text-center transition-all duration-300"
                 >
                   <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-cyan-500 rounded-lg flex items-center justify-center mx-auto mb-3">
                     <Icon className="w-6 h-6 text-white" />
@@ -329,24 +327,24 @@ export default function Services() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-cyan-500/10 to-blue-500/10">
-        <div className="container mx-auto px-4">
-          <Card className="glass-card max-w-4xl mx-auto">
+      <section className="py-12 md:py-20 px-6 border-t border-gray-900">
+        <div className="max-w-6xl mx-auto">
+          <Card className="bg-gray-900/40 border border-gray-800/80 rounded-2xl max-w-4xl mx-auto">
             <CardContent className="p-12 text-center">
               <h2 className="text-4xl font-bold mb-6 text-white">
                 Need Professional Computer Repair?
               </h2>
-              <p className="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">
+              <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
                 Contact KCROC today for expert repair services with free pickup and delivery across Kuwait. Same-day diagnostics available.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button asChild size="lg" className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 px-8 py-6 text-lg">
+                <Button asChild size="lg" className="bg-green-500 hover:bg-green-600 text-white font-bold rounded-xl px-8 py-6 text-lg">
                   <a href="tel:+96555301913">
                     <Phone className="w-5 h-5 mr-2" />
                     Call: +965 5530 1913
                   </a>
                 </Button>
-                <Button asChild size="lg" className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 px-8 py-6 text-lg">
+                <Button asChild size="lg" className="bg-green-500 hover:bg-green-600 text-white font-bold rounded-xl px-8 py-6 text-lg">
                   <a href="https://wa.me/96555301913" target="_blank" rel="noopener">
                     <MessageCircle className="w-5 h-5 mr-2" />
                     WhatsApp Us
@@ -359,15 +357,15 @@ export default function Services() {
       </section>
 
       {/* Gallery CTA */}
-      <section className="py-16 bg-slate-900">
-        <div className="container mx-auto px-4 text-center">
+      <section className="py-12 px-6 border-t border-gray-900">
+        <div className="max-w-6xl mx-auto text-center">
           <h3 className="text-2xl font-bold text-white mb-4">
             See Our Work in Action
           </h3>
-          <p className="text-slate-300 mb-6">
+          <p className="text-gray-300 mb-6">
             Browse our gallery to see real repair work and customer results
           </p>
-          <Button asChild variant="outline" className="border-purple-500/30 text-purple-400 hover:bg-purple-500/10">
+          <Button asChild className="border border-blue-500/50 text-blue-400 hover:bg-blue-500/10 rounded-xl bg-transparent">
             <Link to="/gallery">
               View Our Work Gallery
             </Link>

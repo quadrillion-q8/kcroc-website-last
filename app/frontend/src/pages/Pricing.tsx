@@ -94,313 +94,132 @@ export default function Pricing() {
     };
   }, []);
 
+  const getColorClasses = (color: string) => {
+    switch (color) {
+      case 'blue':
+        return { badge: 'bg-blue-500/20 text-blue-300 border-blue-500/30', icon: 'from-blue-500 to-blue-600', border: 'border-blue-500/30' };
+      case 'cyan':
+        return { badge: 'bg-cyan-500/20 text-cyan-300 border-cyan-500/30', icon: 'from-cyan-500 to-cyan-600', border: 'border-cyan-500/50' };
+      case 'emerald':
+        return { badge: 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30', icon: 'from-emerald-500 to-emerald-600', border: 'border-emerald-500/30' };
+      default:
+        return { badge: 'bg-gray-500/20 text-gray-300 border-gray-500/30', icon: 'from-gray-500 to-gray-600', border: 'border-gray-500/30' };
+    }
+  };
+
   return (
-    <div className="pricing-page">
+    <div className="min-h-screen bg-gray-950 text-white">
       {/* Hero Section */}
-      <section className="pricing-hero">
-        <div className="container">
-          <div className="pricing-hero-content">
-            <Badge variant="secondary" className="hero-badge">
-              💰 Transparent Pricing
-            </Badge>
-            
-            <h1 className="pricing-hero-title">
-              Simple, Honest Pricing for
-              <span className="gradient-text"> Every Budget</span>
-            </h1>
-            
-            <p className="pricing-hero-description">
-              No hidden fees, no surprises. Choose the service level that fits your needs 
-              and budget. All prices include free diagnosis and consultation.
-            </p>
-
-            <div className="pricing-guarantee">
-              <div className="guarantee-item">
-                <Check className="w-5 h-5 text-emerald-400" />
-                <span>30-Day Money Back Guarantee</span>
-              </div>
-              <div className="guarantee-item">
-                <Check className="w-5 h-5 text-emerald-400" />
-                <span>Free Pickup & Delivery</span>
-              </div>
-              <div className="guarantee-item">
-                <Check className="w-5 h-5 text-emerald-400" />
-                <span>No Fix, No Fee Policy</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Before/After Showcase */}
-      <section className="py-16 px-4 bg-slate-900/50">
-        <div className="container mx-auto max-w-6xl">
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div className="relative overflow-hidden rounded-2xl">
-              <img 
-                src="https://mgx-backend-cdn.metadl.com/generate/images/681399/2026-03-01/c06ce520-4418-4e6b-936b-50b9d603d515.png"
-                alt="Before and after laptop repair comparison showing quality results"
-                className="w-full h-80 object-cover rounded-2xl"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent"></div>
-              <div className="absolute bottom-4 left-4 right-4">
-                <Badge className="bg-emerald-500/90 text-white border-0 text-sm px-3 py-1">
-                  Before & After Results
-                </Badge>
-              </div>
-            </div>
-            <div className="space-y-6">
-              <h2 className="text-3xl md:text-4xl font-bold text-white">
-                See the Difference <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-emerald-400">Quality Service</span> Makes
-              </h2>
-              <p className="text-slate-300 text-lg leading-relaxed">
-                Every repair at KCROC is backed by our commitment to excellence. From cracked screens to complete system overhauls, we restore your devices to like-new condition with genuine parts and expert craftsmanship.
-              </p>
-              <div className="flex flex-wrap gap-3">
-                <Badge className="bg-cyan-500/20 text-cyan-300 border-cyan-500/30 px-4 py-2">
-                  <Check className="w-4 h-4 mr-2" /> Genuine Parts
-                </Badge>
-                <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30 px-4 py-2">
-                  <Check className="w-4 h-4 mr-2" /> 90-Day Warranty
-                </Badge>
-                <Badge className="bg-orange-500/20 text-orange-300 border-orange-500/30 px-4 py-2">
-                  <Check className="w-4 h-4 mr-2" /> Expert Technicians
-                </Badge>
-              </div>
-            </div>
-          </div>
+      <section className="pt-32 pb-16 px-6">
+        <div className="max-w-6xl mx-auto text-center">
+          <Badge variant="secondary" className="mb-6 bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 px-4 py-2">
+            💰 Transparent Pricing
+          </Badge>
+          <h1 className="text-4xl md:text-5xl font-bold mb-6">
+            Simple, <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-emerald-400">Honest Pricing</span>
+          </h1>
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            No hidden fees. No surprises. Just professional computer repair services at fair prices with free pickup and delivery across Kuwait.
+          </p>
         </div>
       </section>
 
       {/* Pricing Cards */}
-      <section className="pricing-cards-section">
-        <div className="container">
-          <div className="pricing-grid">
-            {pricingPlans.map((plan, index) => (
-              <Card key={index} className={`pricing-card ${plan.popular ? 'pricing-card-popular' : ''}`}>
-                {plan.popular && (
-                  <div className="popular-badge">
-                    <Star className="w-4 h-4" />
-                    Most Popular
-                  </div>
-                )}
-                
-                <CardHeader className="pricing-card-header">
-                  <div className="pricing-icon">
-                    <plan.icon className="w-8 h-8" />
-                  </div>
-                  
-                  <CardTitle className="pricing-plan-name">{plan.name}</CardTitle>
-                  
-                  <div className="pricing-amount-container">
-                    <div className="pricing-amount">
-                      <span className="currency">KD</span>
-                      <span className="price">{plan.price}</span>
+      <section className="py-12 md:py-20 px-6 border-t border-gray-900">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-8">
+            {pricingPlans.map((plan, index) => {
+              const colors = getColorClasses(plan.color);
+              const Icon = plan.icon;
+              return (
+                <Card 
+                  key={index} 
+                  className={`bg-gray-900/40 border rounded-2xl relative overflow-hidden ${plan.popular ? colors.border : 'border-gray-800/80'}`}
+                >
+                  {plan.popular && (
+                    <div className="absolute top-0 left-0 right-0 bg-gradient-to-r from-cyan-500 to-emerald-500 text-white text-center py-2 text-sm font-bold">
+                      ⭐ Most Popular
                     </div>
-                    {plan.originalPrice && (
-                      <div className="original-price">
-                        <span>KD {plan.originalPrice}</span>
+                  )}
+                  <CardHeader className={`p-6 ${plan.popular ? 'pt-12' : ''}`}>
+                    <div className={`w-14 h-14 bg-gradient-to-br ${colors.icon} rounded-xl flex items-center justify-center mb-4`}>
+                      <Icon className="w-7 h-7 text-white" />
+                    </div>
+                    <CardTitle className="text-2xl font-bold text-white mb-2">{plan.name}</CardTitle>
+                    <p className="text-gray-400 text-sm">{plan.description}</p>
+                    <div className="mt-4">
+                      <div className="flex items-baseline gap-2">
+                        <span className="text-4xl font-black text-white">{plan.price}</span>
+                        <span className="text-lg text-gray-400">KD</span>
+                      </div>
+                      <p className="text-gray-500 text-sm line-through">Was {plan.originalPrice} KD</p>
+                    </div>
+                  </CardHeader>
+                  <CardContent className="p-6 pt-0">
+                    {/* Included Features */}
+                    <div className="space-y-3 mb-6">
+                      {plan.features.map((feature, idx) => (
+                        <div key={idx} className="flex items-start gap-3">
+                          <Check className="w-5 h-5 text-emerald-400 flex-shrink-0 mt-0.5" />
+                          <span className="text-gray-300 text-sm">{feature}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Not Included */}
+                    {plan.notIncluded.length > 0 && (
+                      <div className="space-y-3 mb-6 pt-4 border-t border-gray-800">
+                        {plan.notIncluded.map((feature, idx) => (
+                          <div key={idx} className="flex items-start gap-3">
+                            <X className="w-5 h-5 text-gray-600 flex-shrink-0 mt-0.5" />
+                            <span className="text-gray-500 text-sm">{feature}</span>
+                          </div>
+                        ))}
                       </div>
                     )}
-                  </div>
-                  
-                  <p className="pricing-description">{plan.description}</p>
-                </CardHeader>
 
-                <CardContent className="pricing-card-content">
-                  <div className="features-section">
-                    <h4 className="features-title">What's Included:</h4>
-                    <ul className="features-list">
-                      {plan.features.map((feature, featureIndex) => (
-                        <li key={featureIndex} className="feature-item included">
-                          <Check className="w-4 h-4 feature-icon" />
-                          <span>{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-
-                    {plan.notIncluded.length > 0 && (
-                      <>
-                        <h4 className="features-title not-included-title">Not Included:</h4>
-                        <ul className="features-list">
-                          {plan.notIncluded.map((feature, featureIndex) => (
-                            <li key={featureIndex} className="feature-item not-included">
-                              <X className="w-4 h-4 feature-icon" />
-                              <span>{feature}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </>
-                    )}
-                  </div>
-
-                  <Button 
-                    className={`pricing-cta-button ${plan.popular ? 'popular-button' : ''}`}
-                    size="lg"
-                    asChild
-                  >
-                    <a href="tel:+96555301913">
-                      Choose {plan.name}
-                    </a>
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
+                    {/* CTA Button */}
+                    <Button 
+                      asChild 
+                      className={`w-full font-bold rounded-xl ${plan.popular ? 'bg-green-500 hover:bg-green-600 text-white' : 'border border-blue-500/50 text-blue-400 hover:bg-blue-500/10 bg-transparent'}`}
+                    >
+                      <a href={`https://wa.me/96555301913?text=Hi! I'm interested in the ${plan.name} plan (${plan.price} KD). Please let me know the next steps.`} target="_blank" rel="noopener noreferrer">
+                        <MessageCircle className="w-4 h-4 mr-2" />
+                        Get Started
+                      </a>
+                    </Button>
+                  </CardContent>
+                </Card>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* Service Process with Images */}
-      <section className="py-16 px-4 bg-slate-900/50">
-        <div className="container mx-auto max-w-6xl">
+      {/* Add-Ons Section */}
+      <section className="py-12 md:py-20 px-6 border-t border-gray-900">
+        <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <Badge className="bg-cyan-500/20 text-cyan-300 border-cyan-500/30 px-4 py-2 text-sm mb-4">
-              How It Works
-            </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Our Simple 3-Step Process
+            <h2 className="text-3xl font-bold text-white mb-4">
+              Optional <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-emerald-400">Add-Ons</span>
             </h2>
-            <p className="text-slate-300 text-lg max-w-2xl mx-auto">
-              Getting your device repaired has never been easier. Here's how it works.
-            </p>
+            <p className="text-gray-300">Enhance your service with these optional extras</p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            <Card className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 border-cyan-500/20 backdrop-blur-sm overflow-hidden group">
-              <div className="relative h-48 overflow-hidden">
-                <img 
-                  src="https://mgx-backend-cdn.metadl.com/generate/images/681399/2026-03-01/3ddd029d-1ed9-44d7-845e-911732d5888d.png"
-                  alt="Free pickup and delivery service across Kuwait"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/30 to-transparent"></div>
-                <div className="absolute top-4 left-4">
-                  <div className="bg-cyan-500 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg">1</div>
-                </div>
-              </div>
-              <CardContent className="p-6">
-                <h3 className="text-xl font-bold text-white mb-2">Free Pickup</h3>
-                <p className="text-slate-300">We pick up your device from anywhere in Kuwait — completely free of charge.</p>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 border-cyan-500/20 backdrop-blur-sm overflow-hidden group">
-              <div className="relative h-48 overflow-hidden">
-                <img 
-                  src="https://mgx-backend-cdn.metadl.com/generate/images/681399/2026-03-01/fe0f254d-ca91-4dbb-a283-49603f110dab.png"
-                  alt="Professional repair tools and expert technicians at work"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/30 to-transparent"></div>
-                <div className="absolute top-4 left-4">
-                  <div className="bg-orange-500 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg">2</div>
-                </div>
-              </div>
-              <CardContent className="p-6">
-                <h3 className="text-xl font-bold text-white mb-2">Expert Repair</h3>
-                <p className="text-slate-300">Our certified technicians diagnose and repair your device using genuine parts.</p>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 border-cyan-500/20 backdrop-blur-sm overflow-hidden group">
-              <div className="relative h-48 overflow-hidden">
-                <img 
-                  src="https://mgx-backend-cdn.metadl.com/generate/images/681399/2026-03-01/40780580-7370-475d-b516-fa2d41e142ba.png"
-                  alt="Happy customer receiving repaired device"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/30 to-transparent"></div>
-                <div className="absolute top-4 left-4">
-                  <div className="bg-emerald-500 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg">3</div>
-                </div>
-              </div>
-              <CardContent className="p-6">
-                <h3 className="text-xl font-bold text-white mb-2">Free Delivery</h3>
-                <p className="text-slate-300">Your repaired device is delivered back to you with a warranty guarantee.</p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Book Online 24/7 Section */}
-      <section id="book-online" className="py-16 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-8">
-            <Badge variant="secondary" className="mb-4 bg-emerald-500/20 text-emerald-400 border-emerald-500/30">
-              <Calendar className="w-4 h-4 mr-2" />
-              24/7 Online Booking
-            </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Book Your Appointment Online
-            </h2>
-            <p className="text-slate-300 text-lg max-w-2xl mx-auto">
-              Schedule your computer repair service at your convenience. Choose a time that works best for you, 
-              and we'll confirm your appointment immediately.
-            </p>
-          </div>
-
-          <div className="max-w-5xl mx-auto bg-white rounded-2xl shadow-2xl overflow-hidden">
-            <div 
-              className="calendly-inline-widget" 
-              data-url="https://calendly.com/quadrillion1980" 
-              style={{ minWidth: '320px', height: '700px' }}
-            ></div>
-          </div>
-
-          <div className="mt-8 text-center">
-            <p className="text-slate-400 text-sm">
-              Prefer to call? Reach us at{' '}
-              <a href="tel:+96555301913" className="text-emerald-400 hover:text-emerald-300 font-semibold">
-                +965 5530 1913
-              </a>
-              {' '}or{' '}
-              <a 
-                href="https://wa.me/96555301913" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-emerald-400 hover:text-emerald-300 font-semibold"
-              >
-                WhatsApp us
-              </a>
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Add-ons Section */}
-      <section className="addons-section">
-        <div className="container">
-          <div className="section-header">
-            <h2 className="section-title">Optional Add-ons</h2>
-            <p className="section-description">
-              Enhance your service with these optional upgrades available for any plan.
-            </p>
-          </div>
-
-          <div className="addons-grid">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {addOns.map((addon, index) => {
               const Icon = addon.icon;
               return (
-                <Card key={index} className="addon-card">
-                  <CardContent className="addon-content">
-                    <div className="addon-header">
-                      <div className="flex items-center gap-3">
-                        <div className="bg-cyan-500/10 p-2 rounded-lg">
-                          <Icon className="w-5 h-5 text-cyan-400" />
-                        </div>
-                        <h3 className="addon-name">{addon.name}</h3>
-                      </div>
-                      <div className="addon-price">
-                        <span className="currency">KD</span>
-                        <span className="price">{addon.price}</span>
-                      </div>
+                <Card key={index} className="bg-gray-900/40 border border-gray-800/80 rounded-2xl hover:border-cyan-500/40 transition-all">
+                  <CardContent className="p-6 text-center">
+                    <div className="w-12 h-12 bg-gradient-to-br from-cyan-500/20 to-emerald-500/20 rounded-xl flex items-center justify-center mx-auto mb-4 border border-cyan-500/30">
+                      <Icon className="w-6 h-6 text-cyan-400" />
                     </div>
-                    <p className="addon-description">{addon.description}</p>
+                    <h3 className="text-white font-bold mb-2">{addon.name}</h3>
+                    <p className="text-gray-400 text-sm mb-3">{addon.description}</p>
+                    <p className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-emerald-400">
+                      +{addon.price} KD
+                    </p>
                   </CardContent>
                 </Card>
               );
@@ -410,69 +229,95 @@ export default function Pricing() {
       </section>
 
       {/* FAQ Section */}
-      <section className="pricing-faq">
-        <div className="container">
-          <div className="section-header">
-            <h2 className="section-title">Frequently Asked Questions</h2>
+      <section className="py-12 md:py-20 px-6 border-t border-gray-900">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-white mb-4">Frequently Asked Questions</h2>
+            <p className="text-gray-300">Common questions about our pricing and services</p>
           </div>
 
-          <div className="faq-grid">
-            <div className="faq-item">
-              <h3 className="faq-question">What if my device can't be repaired?</h3>
-              <p className="faq-answer">
-                We follow a "No Fix, No Fee" policy. If we can't repair your device, 
-                you only pay for the diagnostic fee (which is waived for most cases).
-              </p>
-            </div>
+          <div className="space-y-4">
+            {[
+              {
+                q: "Is the diagnostic fee included in the repair cost?",
+                a: "Yes! If you proceed with the repair, the diagnostic fee is waived and included in your repair package price."
+              },
+              {
+                q: "Do you offer free pickup and delivery?",
+                a: "Absolutely! We provide free pickup and delivery across all Kuwait governorates for Standard and Premium plans."
+              },
+              {
+                q: "What if the repair costs more than estimated?",
+                a: "We always provide a detailed quote before proceeding. If additional issues are found, we'll contact you for approval before any extra charges."
+              },
+              {
+                q: "How long does a typical repair take?",
+                a: "Most common repairs are completed within 24-48 hours. Complex issues like motherboard repair or data recovery may take 3-5 days."
+              },
+              {
+                q: "What warranty do you provide?",
+                a: "Basic plans include a 7-day warranty, Standard includes 30 days, and Premium includes 90 days. Extended 1-year warranty is available as an add-on."
+              }
+            ].map((faq, index) => (
+              <Card key={index} className="bg-gray-900/40 border border-gray-800/80 rounded-2xl">
+                <CardContent className="p-6">
+                  <h3 className="text-white font-bold mb-2">{faq.q}</h3>
+                  <p className="text-gray-300 text-sm leading-relaxed">{faq.a}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
 
-            <div className="faq-item">
-              <h3 className="faq-question">Do you offer payment plans?</h3>
-              <p className="faq-answer">
-                Yes! We offer flexible payment options including installment plans 
-                for repairs over KD 100. Contact us to discuss your options.
-              </p>
-            </div>
-
-            <div className="faq-item">
-              <h3 className="faq-question">What's covered under warranty?</h3>
-              <p className="faq-answer">
-                Our warranty covers all repair work and replacement parts. If the same 
-                issue occurs within the warranty period, we'll fix it free of charge.
-              </p>
-            </div>
-
-            <div className="faq-item">
-              <h3 className="faq-question">How long does a typical repair take?</h3>
-              <p className="faq-answer">
-                Most repairs are completed within 24-48 hours. Complex issues may take 
-                up to 5 business days. Express service is available for urgent repairs.
-              </p>
-            </div>
+      {/* Calendly Section */}
+      <section className="py-12 md:py-20 px-6 border-t border-gray-900">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <Badge variant="secondary" className="mb-4 bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-4 py-2">
+              <Calendar className="w-4 h-4 mr-2 inline" />
+              Schedule Online
+            </Badge>
+            <h2 className="text-3xl font-bold text-white mb-4">Book Your Appointment</h2>
+            <p className="text-gray-300 max-w-2xl mx-auto">
+              Choose a convenient time and we'll arrange free pickup from your location
+            </p>
+          </div>
+          <div className="max-w-4xl mx-auto bg-gray-900/40 border border-gray-800/80 rounded-2xl overflow-hidden p-4">
+            <div 
+              className="calendly-inline-widget" 
+              data-url="https://calendly.com/kcroc-kw/30min"
+              style={{ minWidth: '320px', height: '700px' }}
+            ></div>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="pricing-cta">
-        <div className="container">
-          <Card className="cta-card">
-            <CardContent className="cta-content">
-              <h2 className="cta-title">Ready to Get Started?</h2>
-              <p className="cta-description">
-                Contact us today for a free consultation and diagnostic. 
-                Our experts are standing by to help solve your tech problems.
+      <section className="py-12 md:py-20 px-6 border-t border-gray-900">
+        <div className="max-w-6xl mx-auto">
+          <Card className="bg-gray-900/40 border border-gray-800/80 rounded-2xl max-w-4xl mx-auto">
+            <CardContent className="p-12 text-center">
+              <div className="flex items-center justify-center gap-1 mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-6 h-6 text-yellow-400 fill-current" />
+                ))}
+              </div>
+              <h2 className="text-4xl font-bold mb-6 text-white">
+                Ready to Fix Your Device?
+              </h2>
+              <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+                Contact us today for a free consultation. No obligation, just honest advice about your computer issue.
               </p>
-              
-              <div className="cta-buttons">
-                <Button size="lg" className="cta-primary" asChild>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button asChild size="lg" className="bg-green-500 hover:bg-green-600 text-white font-bold rounded-xl px-8 py-6 text-lg">
                   <a href="tel:+96555301913">
                     <Phone className="w-5 h-5 mr-2" />
-                    Call Now: +965 5530 1913
+                    Call: +965 5530 1913
                   </a>
                 </Button>
-                
-                <Button size="lg" variant="outline" className="cta-secondary" asChild>
-                  <a href="https://wa.me/96555301913" target="_blank" rel="noopener noreferrer">
+                <Button asChild size="lg" className="bg-green-500 hover:bg-green-600 text-white font-bold rounded-xl px-8 py-6 text-lg">
+                  <a href="https://wa.me/96555301913" target="_blank" rel="noopener">
                     <MessageCircle className="w-5 h-5 mr-2" />
                     WhatsApp Us
                   </a>

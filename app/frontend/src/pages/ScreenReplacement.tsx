@@ -1,7 +1,11 @@
-import { useEffect } from 'react';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Monitor, Apple, Smartphone, Zap, Cable, Tv, Phone, MessageCircle, CheckCircle2, Clock, Shield, Truck } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
 
-const ScreenReplacement = () => {
+export default function ScreenReplacement() {
   useEffect(() => {
     document.title = 'Screen Replacement Kuwait | Laptop & MacBook Screen Fix – KCROC';
     const metaDesc = document.querySelector('meta[name="description"]');
@@ -14,84 +18,207 @@ const ScreenReplacement = () => {
     };
   }, []);
 
+  const services = [
+    { icon: Monitor, title: 'Laptop LCD/LED Screen', desc: 'Cracked, broken, or dead pixel screens replaced for all laptop brands. Starting 20 KD (model dependent).', color: 'text-blue-400', bgColor: 'bg-blue-500/10' },
+    { icon: Apple, title: 'MacBook Retina Display', desc: 'MacBook Air and Pro Retina display replacement with genuine panels. Starting 45 KD.', color: 'text-purple-400', bgColor: 'bg-purple-500/10' },
+    { icon: Smartphone, title: 'Touch Screen Repair', desc: 'Touch-enabled laptop screens repaired or replaced. Digitizer and panel replacement available.', color: 'text-emerald-400', bgColor: 'bg-emerald-500/10' },
+    { icon: Zap, title: 'Flickering & Lines Fix', desc: 'Screen flickering, horizontal/vertical lines, or backlight issues diagnosed and fixed.', color: 'text-orange-400', bgColor: 'bg-orange-500/10' },
+    { icon: Cable, title: 'Display Cable Repair', desc: 'Loose or damaged display cables causing intermittent screen issues. Quick cable replacement.', color: 'text-cyan-400', bgColor: 'bg-cyan-500/10' },
+    { icon: Tv, title: 'External Monitor Setup', desc: 'Temporary external display setup while your screen is being repaired. Free with any screen service.', color: 'text-pink-400', bgColor: 'bg-pink-500/10' },
+  ];
+
+  const brands = ['HP', 'Dell', 'Lenovo', 'ASUS', 'Acer', 'MSI', 'MacBook Air', 'MacBook Pro', 'Samsung', 'Toshiba', 'Huawei', 'LG'];
+
+  const whyChooseUs = [
+    { icon: Truck, text: 'Free Pickup & Delivery across all Kuwait' },
+    { icon: CheckCircle2, text: 'Genuine & high-grade compatible screens' },
+    { icon: Shield, text: '90-Day Warranty on all screen replacements' },
+    { icon: Zap, text: 'Same/Next-Day service available' },
+    { icon: Clock, text: 'Expert screen calibration included' },
+    { icon: Phone, text: 'Free diagnosis before any repair' },
+  ];
+
   return (
-    <div className="service-page">
-      {/* Hero */}
-      <section style={{ background: 'linear-gradient(135deg, #1e293b 0%, #0f172a 100%)', padding: '80px 20px', textAlign: 'center', color: 'white' }}>
-        <div style={{ maxWidth: '900px', margin: '0 auto' }}>
-          <div style={{ fontSize: '3rem', marginBottom: '16px' }}>🖥️</div>
-          <h1 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: 700, marginBottom: '16px', lineHeight: 1.2 }}>
-            Screen Replacement Kuwait
-          </h1>
-          <p style={{ fontSize: '1.1rem', opacity: 0.85, marginBottom: '8px' }}>
-            تبديل شاشة لاب توب في الكويت – All laptop and MacBook screens replaced with free pickup
-          </p>
-          <p style={{ fontSize: '1rem', opacity: 0.7, marginBottom: '32px' }}>
-            HP, Dell, Lenovo, ASUS, Acer, MacBook Air, MacBook Pro & more
-          </p>
-          <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <a href="tel:+96555301913" style={{ background: '#3b82f6', color: 'white', padding: '14px 28px', borderRadius: '8px', textDecoration: 'none', fontWeight: 600 }}>Call +965 5530 1913</a>
-            <a href="https://wa.me/96555301913?text=I%20need%20screen%20replacement.%20Please%20arrange%20free%20pickup." target="_blank" rel="noopener noreferrer" style={{ background: '#22c55e', color: 'white', padding: '14px 28px', borderRadius: '8px', textDecoration: 'none', fontWeight: 600 }}>WhatsApp Now</a>
+    <div className="min-h-screen bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900">
+      {/* Hero Section */}
+      <section className="relative pt-32 pb-20 px-4">
+        <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-transparent to-blue-500/10"></div>
+        <div className="container mx-auto max-w-5xl relative z-10">
+          <div className="text-center space-y-6">
+            <Badge className="bg-cyan-500/20 text-cyan-300 border-cyan-500/30 px-4 py-2 text-sm">
+              🖥️ Screen Replacement Experts
+            </Badge>
+            <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight">
+              Screen Replacement Kuwait
+            </h1>
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+              تبديل شاشة لاب توب في الكويت – All laptop and MacBook screens replaced with free pickup
+            </p>
+            <p className="text-lg text-slate-400">
+              HP, Dell, Lenovo, ASUS, Acer, MacBook Air, MacBook Pro & more
+            </p>
+            <div className="flex flex-wrap gap-4 justify-center pt-4">
+              <Button
+                size="lg"
+                className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white text-lg px-8 py-6"
+                asChild
+              >
+                <a href="tel:+96555301913">
+                  <Phone className="w-5 h-5 mr-2" />
+                  Call +965 5530 1913
+                </a>
+              </Button>
+              <Button
+                size="lg"
+                className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white text-lg px-8 py-6"
+                asChild
+              >
+                <a href="https://wa.me/96555301913?text=I%20need%20screen%20replacement.%20Please%20arrange%20free%20pickup." target="_blank" rel="noopener noreferrer">
+                  <MessageCircle className="w-5 h-5 mr-2" />
+                  WhatsApp Now
+                </a>
+              </Button>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Services */}
-      <section style={{ padding: '60px 20px', background: '#f8fafc' }}>
-        <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
-          <h2 style={{ textAlign: 'center', fontSize: '2rem', fontWeight: 700, marginBottom: '12px', color: '#1e293b' }}>Screen Replacement Services in Kuwait</h2>
-          <p style={{ textAlign: 'center', color: '#64748b', marginBottom: '40px' }}>تبديل شاشة – Fast, professional screen replacement for all brands</p>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px' }}>
-            {[
-              { icon: '💻', title: 'Laptop LCD/LED Screen', desc: 'Cracked, broken, or dead pixel screens replaced for all laptop brands. Starting 20 KD (model dependent).' },
-              { icon: '🍎', title: 'MacBook Retina Display', desc: 'MacBook Air and Pro Retina display replacement with genuine panels. Starting 45 KD.' },
-              { icon: '🔲', title: 'Touch Screen Repair', desc: 'Touch-enabled laptop screens repaired or replaced. Digitizer and panel replacement available.' },
-              { icon: '⚡', title: 'Flickering & Lines Fix', desc: 'Screen flickering, horizontal/vertical lines, or backlight issues diagnosed and fixed.' },
-              { icon: '🔌', title: 'Display Cable Repair', desc: 'Loose or damaged display cables causing intermittent screen issues. Quick cable replacement.' },
-              { icon: '🖥️', title: 'External Monitor Setup', desc: 'Temporary external display setup while your screen is being repaired. Free with any screen service.' },
-            ].map((s, i) => (
-              <div key={i} style={{ background: 'white', borderRadius: '12px', padding: '24px', boxShadow: '0 2px 12px rgba(0,0,0,0.08)', border: '1px solid #e2e8f0' }}>
-                <div style={{ fontSize: '2rem', marginBottom: '12px' }}>{s.icon}</div>
-                <h3 style={{ fontSize: '1.1rem', fontWeight: 600, color: '#1e293b', marginBottom: '8px' }}>{s.title}</h3>
-                <p style={{ color: '#64748b', fontSize: '0.95rem', lineHeight: 1.6 }}>{s.desc}</p>
+      {/* Services Section */}
+      <section className="py-20 px-4 bg-slate-800/50">
+        <div className="container mx-auto max-w-6xl">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
+              Screen Replacement Services in Kuwait
+            </h2>
+            <p className="text-xl text-slate-300">
+              تبديل شاشة – Fast, professional screen replacement for all brands
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {services.map((service, index) => {
+              const Icon = service.icon;
+              return (
+                <Card key={index} className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 border-cyan-500/20 backdrop-blur-sm hover:border-cyan-500/40 transition-all">
+                  <CardHeader>
+                    <div className="flex items-center gap-4 mb-2">
+                      <div className={`${service.bgColor} p-3 rounded-lg`}>
+                        <Icon className={`w-6 h-6 ${service.color}`} />
+                      </div>
+                    </div>
+                    <CardTitle className="text-xl text-white">{service.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-slate-300 leading-relaxed">{service.desc}</p>
+                  </CardContent>
+                </Card>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Brands Section */}
+      <section className="py-16 px-4">
+        <div className="container mx-auto max-w-5xl">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              Screens We Replace
+            </h2>
+            <p className="text-slate-300">All major brands and screen types</p>
+          </div>
+          <div className="flex flex-wrap gap-3 justify-center">
+            {brands.map((brand, index) => (
+              <Badge
+                key={index}
+                variant="secondary"
+                className="bg-slate-800/80 text-slate-300 border border-slate-700 px-4 py-2 text-sm hover:border-cyan-500/40 transition-all"
+              >
+                {brand}
+              </Badge>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Us */}
+      <section className="py-20 px-4 bg-slate-800/50">
+        <div className="container mx-auto max-w-5xl">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              Why Choose KCROC for Screen Replacement?
+            </h2>
+            <p className="text-slate-300">Kuwait's trusted screen repair specialist – تبديل شاشة لاب توب بالكويت</p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {whyChooseUs.map((item, index) => {
+              const Icon = item.icon;
+              return (
+                <Card key={index} className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 border-cyan-500/20 backdrop-blur-sm">
+                  <CardContent className="pt-6 flex items-center gap-4">
+                    <div className="bg-cyan-500/10 p-3 rounded-lg flex-shrink-0">
+                      <Icon className="w-6 h-6 text-cyan-400" />
+                    </div>
+                    <p className="text-slate-300 font-medium">{item.text}</p>
+                  </CardContent>
+                </Card>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 px-4">
+        <div className="container mx-auto max-w-4xl">
+          <Card className="bg-gradient-to-br from-cyan-500/20 via-blue-500/20 to-purple-500/20 border-cyan-500/30 backdrop-blur-sm">
+            <CardContent className="p-12 text-center">
+              <h2 className="text-4xl font-bold text-white mb-6">
+                Need a Screen Replacement in Kuwait?
+              </h2>
+              <p className="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">
+                تواصل معنا – Free pickup from anywhere in Kuwait. Call or WhatsApp for a free quote.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button
+                  size="lg"
+                  className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white text-lg px-8 py-6"
+                  asChild
+                >
+                  <a href="tel:+96555301913">
+                    <Phone className="w-5 h-5 mr-2" />
+                    Call +965 5530 1913
+                  </a>
+                </Button>
+                <Button
+                  size="lg"
+                  className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white text-lg px-8 py-6"
+                  asChild
+                >
+                  <a href="https://wa.me/96555301913?text=I%20need%20screen%20replacement.%20Please%20arrange%20free%20pickup." target="_blank" rel="noopener noreferrer">
+                    <MessageCircle className="w-5 h-5 mr-2" />
+                    WhatsApp Us
+                  </a>
+                </Button>
               </div>
-            ))}
-          </div>
+            </CardContent>
+          </Card>
         </div>
       </section>
 
-      {/* Brands */}
-      <section style={{ padding: '40px 20px', background: 'white', textAlign: 'center' }}>
-        <div style={{ maxWidth: '900px', margin: '0 auto' }}>
-          <h2 style={{ fontSize: '1.8rem', fontWeight: 700, marginBottom: '12px', color: '#1e293b' }}>Screens We Replace</h2>
-          <p style={{ color: '#64748b', marginBottom: '24px' }}>All major brands and screen types</p>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', justifyContent: 'center' }}>
-            {['HP', 'Dell', 'Lenovo', 'ASUS', 'Acer', 'MSI', 'MacBook Air', 'MacBook Pro', 'Samsung', 'Toshiba', 'Huawei', 'LG'].map((b, i) => (
-              <span key={i} style={{ background: '#f1f5f9', border: '1px solid #e2e8f0', borderRadius: '20px', padding: '8px 18px', color: '#475569', fontWeight: 500 }}>{b}</span>
-            ))}
+      {/* Footer Navigation */}
+      <section className="py-8 px-4 bg-slate-900/50">
+        <div className="container mx-auto max-w-4xl text-center">
+          <div className="flex flex-wrap gap-4 justify-center">
+            <Button asChild variant="outline" className="border-cyan-500/30 text-cyan-400 hover:bg-cyan-500/10">
+              <Link to="/">← Back to Home</Link>
+            </Button>
+            <Button asChild variant="outline" className="border-cyan-500/30 text-cyan-400 hover:bg-cyan-500/10">
+              <Link to="/services">All Services</Link>
+            </Button>
           </div>
         </div>
       </section>
-
-      {/* CTA */}
-      <section style={{ padding: '60px 20px', background: 'linear-gradient(135deg, #1e3a8a 0%, #1e293b 100%)', textAlign: 'center', color: 'white' }}>
-        <div style={{ maxWidth: '700px', margin: '0 auto' }}>
-          <h2 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '16px' }}>Need a Screen Replacement in Kuwait?</h2>
-          <p style={{ opacity: 0.85, marginBottom: '32px', fontSize: '1.1rem' }}>تواصل معنا – Free pickup from anywhere in Kuwait. Call or WhatsApp for a free quote.</p>
-          <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <a href="tel:+96555301913" style={{ background: 'white', color: '#1e3a8a', padding: '14px 28px', borderRadius: '8px', textDecoration: 'none', fontWeight: 700 }}>Call +965 5530 1913</a>
-            <a href="https://wa.me/96555301913?text=I%20need%20screen%20replacement.%20Please%20arrange%20free%20pickup." target="_blank" rel="noopener noreferrer" style={{ background: '#22c55e', color: 'white', padding: '14px 28px', borderRadius: '8px', textDecoration: 'none', fontWeight: 700 }}>WhatsApp Us</a>
-          </div>
-        </div>
-      </section>
-
-      <div style={{ padding: '20px', textAlign: 'center' }}>
-        <Link to="/" style={{ color: '#3b82f6', textDecoration: 'none' }}>← Back to Home</Link>
-        {' | '}
-        <Link to="/services" style={{ color: '#3b82f6', textDecoration: 'none' }}>All Services</Link>
-      </div>
     </div>
   );
-};
-
-export default ScreenReplacement;
+}
