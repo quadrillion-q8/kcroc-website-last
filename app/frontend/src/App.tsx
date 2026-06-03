@@ -16,7 +16,7 @@ import Contact from './pages/Contact';
 import Gallery from './pages/Gallery';
 import BatteryReplacement from './pages/BatteryReplacement';
 import GamingPCCooling from './pages/GamingPCCooling';
-import GamingPC from './pages/GamingPC'; // New Page Imported
+import GamingPC from './pages/GamingPC';
 import WebDesignKuwait from './pages/WebDesignKuwait';
 import BookingPage from './pages/BookingPage';
 import LaptopRepair from './pages/LaptopRepair';
@@ -42,7 +42,7 @@ const App = () => (
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/battery-replacement" element={<BatteryReplacement />} />
           <Route path="/gaming-pc-cooling" element={<GamingPCCooling />} />
-          <Route path="/gaming-pc-repair-kuwait" element={<GamingPC />} /> {/* New Route Added */}
+          <Route path="/gaming-pc-repair-kuwait" element={<GamingPC />} />
           <Route path="/web-design-kuwait" element={<WebDesignKuwait />} />
           <Route path="/book" element={<BookingPage />} />
           <Route path="/laptop-repair" element={<LaptopRepair />} />
@@ -53,7 +53,6 @@ const App = () => (
         </Routes>
       </main>
       
-      {/* Footer */}
       <footer className="footer">
         <div className="container">
           <div className="footer-grid">
@@ -94,7 +93,7 @@ const App = () => (
               <h4>Contact Us</h4>
               <ul>
                 <li>📞 <a href="tel:+96555301913">+965 5530 1913</a></li>
-                <li title="Business Email">✉️ <a href="mailto:quadrillion1980@gmail.com">quadrillion1980@gmail.com</a> <span style={{ fontSize: '0.75rem', color: '#94a3b8', marginLeft: '0.25rem' }}>(Business Email)</span></li>
+                <li title="Business Email">✉️ <a href="mailto:quadrillion1980@gmail.com">quadrillion1980@gmail.com</a></li>
                 <li>📍 Al Mullah Complex, Ibn Khaldoun St, Hawalli, Kuwait</li>
               </ul>
             </div>
@@ -102,50 +101,20 @@ const App = () => (
             <div className="footer-column">
               <h4>Business Hours</h4>
               <ul>
-                <li>Saturday - Thursday</li>
-                <li>10:00 AM - 10:00 PM</li>
-                <li style={{ marginTop: '0.5rem' }}>Friday</li>
-                <li>6:00 PM - 10:00 PM</li>
+                <li>Saturday - Thursday: 10:00 AM - 10:00 PM</li>
+                <li>Friday: 6:00 PM - 10:00 PM</li>
               </ul>
             </div>
           </div>
 
           <div className="footer-bottom">
-            <p>&copy; {new Date().getFullYear()} KCROC - Kuwait Computer Repair On Call. All rights reserved.</p>
+            <p>&copy; {new Date().getFullYear()} KCROC. All rights reserved.</p>
             <div className="footer-social">
-              <a 
-                href="https://www.facebook.com/profile.php?id=61572103117031" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                aria-label="Follow us on Facebook"
-              >
-                📘
-              </a>
-              <a 
-                href="https://www.instagram.com/quadrillion.q8/" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                aria-label="Follow us on Instagram"
-              >
-                📷
-              </a>
-              <a 
-                href="https://www.tiktok.com/@computer.q8?is_from_webapp=1&sender_device=pc" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                aria-label="Follow us on TikTok"
-              >
-                🎵
-              </a>
+              <a href="https://www.facebook.com/profile.php?id=61572103117031" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><span>📘</span></a>
+              <a href="https://www.instagram.com/quadrillion.q8/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><span>📷</span></a>
+              <a href="https://www.tiktok.com/@computer.q8" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><span>🎵</span></a>
             </div>
           </div>
-        </div>
-        <div style={{ fontSize: '0.85rem', opacity: 0.7, marginTop: '20px', textAlign: 'center' }}>
-          <p><strong>Kuwait Computer Repair On Call</strong> | Hawalli, Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19</p>
-          <span>Local Tech Guides: </span>
-          <a href="/laptop-repair-hawalli-kuwait" style={{ color: 'inherit', textDecoration: 'underline' }}>Laptop Repair Hawalli Kuwait</a>
-          <span> | </span>
-          <a href="/chip-level-motherboard-repair-hawalli" style={{ color: 'inherit', textDecoration: 'underline' }}>Chip-Level Motherboard Repair</a>
         </div>
       </footer>
 
@@ -153,62 +122,6 @@ const App = () => (
       <Analytics />
       <SpeedInsights />
     </BrowserRouter>
-  </HelmetProvider>
-);
-
-export default App;
-            <a 
-              href="https://www.facebook.com/profile.php?id=61572103117031" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              aria-label="Follow us on Facebook"
-            >
-              📘
-            </a>
-            <a 
-              href="https://www.instagram.com/quadrillion.q8/" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              aria-label="Follow us on Instagram"
-            >
-              📷
-            </a>
-            <a 
-              href="https://www.tiktok.com/@computer.q8?is_from_webapp=1&sender_device=pc" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              aria-label="Follow us on TikTok"
-            >
-              🎵
-            </a>
-          </div>
-        </div>
-      </div>
-      <div style={{ fontSize: '0.85rem', opacity: 0.7, marginTop: '20px', textAlign: 'center' }}>
-  <p><strong>Kuwait Computer Repair On Call</strong> | Hawalli, Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19</p>
-  <span>Local Tech Guides: </span>
-  <a 
-    href="/laptop-repair-hawalli-kuwait" 
-    style={{ color: 'inherit', textDecoration: 'underline' }}
-  >
-    Laptop Repair Hawalli Kuwait
-  </a>
-  <span> | </span>
-  <a 
-    href="/chip-level-motherboard-repair-hawalli" 
-    style={{ color: 'inherit', textDecoration: 'underline' }}
-  >
-    Chip-Level Motherboard Repair
-  </a>
-</div>
-
-
-    </footer>
-
-    <FloatingActions />
-    <Analytics />
-    <SpeedInsights />
-  </BrowserRouter>
   </HelmetProvider>
 );
 
