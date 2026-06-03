@@ -31,7 +31,6 @@ export default function Header() {
   ];
 
   const isActive = (path: string) => location.pathname === path;
-  const isServiceActive = serviceLinks.some((item) => location.pathname === item.href);
 
   useEffect(() => {
     setMobileOpen(false);
@@ -44,52 +43,53 @@ export default function Header() {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <Link to="/" className="flex items-center space-x-2 shrink-0">
-            <img
-              src="https://res.cloudinary.com/dsbwzags3/image/upload/v1769908596/logo_btpfls.png"
-              alt="KCROC - Computer Repair Kuwait"
-              width="140"
-              height="auto"
-              style={{ width: '140px', height: 'auto' }}
-              decoding="async"
-            />
+            <img src="https://res.cloudinary.com/dsbwzags3/image/upload/v1769908596/logo_btpfls.png" alt="KCROC" width="140" height="auto" style={{ width: '140px' }} decoding="async" />
           </Link>
 
           {/* Desktop Nav */}
           <nav className="hidden lg:flex items-center space-x-5">
             {primaryNav.map((item) =>
               item.label === 'Services' ? (
-                <div key={item.href} ref={servicesRef} className="relative" onMouseEnter={() => setServicesOpen(true)} onMouseLeave={() => setServicesOpen(false)}>
-                  <button type="button" onClick={() => setServicesOpen(!servicesOpen)} className={`flex items-center gap-1 text-sm font-medium ${isActive(item.href) || isServiceActive ? 'text-cyan-300' : 'text-white'}`}>
-                    Services <ChevronDown className={`w-4 h-4 transition-transform ${servicesOpen ? 'rotate-180' : ''}`} />
-                  </button>
+                <div key={item.href} className="relative" onMouseEnter={() => setServicesOpen(true)} onMouseLeave={() => setServicesOpen(false)}>
+                  <button className="text-white text-sm font-medium">Services</button>
                   {servicesOpen && (
-                    <div className="absolute top-full left-0 mt-2 w-56 bg-emerald-800 border border-emerald-700 rounded-lg shadow-xl overflow-hidden z-50">
-                      <Link to="/services" className="block px-4 py-3 text-sm text-white hover:bg-emerald-900/50">All Services</Link>
-                      {serviceLinks.map((sub) => (
-                        <Link key={sub.href} to={sub.href} className="block px-4 py-3 text-sm text-white hover:bg-emerald-900/50">{sub.label}</Link>
-                      ))}
+                    <div className="absolute top-full left-0 mt-2 w-56 bg-emerald-800 border rounded-lg shadow-xl z-50">
+                      {serviceLinks.map((sub) => <Link key={sub.href} to={sub.href} className="block px-4 py-3 text-sm text-white hover:bg-emerald-900">{sub.label}</Link>)}
                     </div>
                   )}
                 </div>
               ) : (
-                <Link key={item.href} to={item.href} className={`text-sm font-medium ${isActive(item.href) ? 'text-cyan-300' : 'text-white'}`}>{item.label}</Link>
+                <Link key={item.href} to={item.href} className="text-sm font-medium text-white">{item.label}</Link>
               )
             )}
-            <a href="tel:+96555301913" className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white text-sm font-semibold rounded-lg">
-              <Phone className="w-4 h-4" /> Call Now
-            </a>
           </nav>
 
-          {/* Mobile Toggle */}
+          {/* Mobile Toggle Button */}
           <button type="button" onClick={() => setMobileOpen(!mobileOpen)} className="lg:hidden p-2 text-white">
-            <div className="w-6 h-5 flex flex-col justify-between">
-              <div className={`w-6 h-0.5 bg-white transition-transform ${mobileOpen ? 'rotate-45 translate-y-2' : ''}`} />
-              <div className={`w-6 h-0.5 bg-white ${mobileOpen ? 'opacity-0' : ''}`} />
-              <div className={`w-6 h-0.5 bg-white transition-transform ${mobileOpen ? '-rotate-45 -translate-y-2' : ''}`} />
-            </div>
+            Menu
           </button>
         </div>
       </div>
+
+      {/* FIXED MOBILE MENU */}
+      {mobileOpen && (
+        <div className="lg:hidden bg-emerald-950 border-t border-white/10 p-4">
+          <nav className="flex flex-col space-y-4">
+            {primaryNav.map((item) => (
+              item.label === 'Services' ? (
+                <div key={item.href}>
+                  <button onClick={() => setMobileServicesOpen(!mobileServicesOpen)} className="text-white w-full text-left">Services ▾</button>
+                  {mobileServicesOpen && serviceLinks.map((sub) => (
+                    <Link key={sub.href} to={sub.href} onClick={() => setMobileOpen(false)} className="block pl-4 py-2 text-white">{sub.label}</Link>
+                  ))}
+                </div>
+              ) : (
+                <Link key={item.href} to={item.href} onClick={() => setMobileOpen(false)} className="text-white">{item.label}</Link>
+              )
+            ))}
+          </nav>
+        </div>
+      )}
     </header>
   );
 }
