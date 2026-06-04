@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Phone, X, Menu } from 'lucide-react';
+import { X, Menu } from 'lucide-react';
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
 
-  const primaryNav = [
+  // Ensure ALL your pages are represented here
+  const navLinks = [
     { href: '/', label: 'Home' },
     { href: '/services', label: 'Services' },
     { href: '/pricing', label: 'Pricing' },
@@ -25,7 +26,6 @@ export default function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-emerald-900 shadow-lg h-16 flex items-center">
       <div className="container mx-auto px-4 flex justify-between items-center">
-        {/* Logo */}
         <Link to="/" className="flex items-center">
           <img 
             src="https://res.cloudinary.com/dsbwzags3/image/upload/v1769908596/logo_btpfls.png" 
@@ -36,25 +36,27 @@ export default function Header() {
           />
         </Link>
 
-        {/* Desktop Navigation - Hidden on mobile, flex on large screens */}
+        {/* Desktop Navigation */}
         <nav className="hidden lg:flex items-center gap-6">
-          {primaryNav.map((item) => (
+          {navLinks.map((item) => (
             <Link key={item.href} to={item.href} className="text-white font-medium hover:text-cyan-300 transition-colors">
               {item.label}
             </Link>
           ))}
         </nav>
 
-        {/* Mobile Toggle Button */}
+        {/* Mobile Toggle */}
         <button onClick={toggleMenu} className="lg:hidden text-white p-2">
           {mobileOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
 
-        {/* Mobile Menu Panel */}
+        {/* Mobile Menu */}
         {mobileOpen && (
-          <div className="absolute top-16 left-0 w-full bg-emerald-900 p-6 flex flex-col gap-3 lg:hidden border-t border-emerald-800 z-50">
-            {primaryNav.map((item) => (
-              <Link key={item.href} to={item.href} onClick={toggleMenu} className="text-white font-medium">{item.label}</Link>
+          <div className="absolute top-16 left-0 w-full bg-emerald-900 p-6 flex flex-col gap-4 lg:hidden border-t border-emerald-800 z-50">
+            {navLinks.map((item) => (
+              <Link key={item.href} to={item.href} onClick={toggleMenu} className="text-white text-lg font-medium">
+                {item.label}
+              </Link>
             ))}
           </div>
         )}
