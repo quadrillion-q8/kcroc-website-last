@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { X, Menu, ChevronDown } from 'lucide-react';
+import { X, Menu, ChevronDown, Phone } from 'lucide-react';
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -52,10 +52,30 @@ export default function Header() {
               )}
             </div>
           ))}
+          {/* Direct Call-to-Action for Desktop */}
+          <a href="tel:+96555301913" className="flex items-center gap-2 bg-emerald-600 text-white px-4 py-2 rounded-lg font-bold hover:bg-emerald-500 transition-colors">
+            <Phone size={18} /> Call Now
+          </a>
         </nav>
 
+        {/* Mobile Toggle */}
         <button onClick={() => setMobileOpen(!mobileOpen)} className="lg:hidden text-white"><Menu size={28} /></button>
       </div>
+
+      {/* Mobile Menu Panel */}
+      {mobileOpen && (
+        <div className="absolute top-16 left-0 w-full bg-emerald-900 p-6 flex flex-col gap-4 lg:hidden border-t border-emerald-800 z-50">
+          {primaryNav.map((item) => (
+            <Link key={item.href} to={item.href} onClick={() => setMobileOpen(false)} className="text-white text-lg font-medium block">
+              {item.label}
+            </Link>
+          ))}
+          {/* Direct Call-to-Action for Mobile */}
+          <a href="tel:+96555301913" className="flex items-center justify-center gap-2 bg-emerald-600 text-white p-3 rounded-lg font-bold">
+            <Phone size={20} /> Call Now (+965 5530 1913)
+          </a>
+        </div>
+      )}
     </header>
   );
 }
