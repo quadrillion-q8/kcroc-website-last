@@ -63,10 +63,10 @@ export default function Header() {
               src="https://res.cloudinary.com/dsbwzags3/image/upload/v1769908596/logo_btpfls.png"
               alt="KCROC - Computer Repair Kuwait"
               width="140"
-              height="auto"
+              height="91"
               loading="eager"
               decoding="async"
-              style={{ width: '140px', height: 'auto' }}
+              style={{ width: '140px', height: '91px' }}
               className="logo-image"
             />
           </Link>
