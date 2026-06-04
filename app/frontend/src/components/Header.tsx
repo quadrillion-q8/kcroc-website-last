@@ -16,16 +16,6 @@ export default function Header() {
     { href: '/book', label: 'Book Now' },
   ];
 
-  const serviceLinks = [
-    { href: '/laptop-repair-hawalli-kuwait', label: 'Laptop Repair' },
-    { href: '/macbook-repair', label: 'MacBook Repair' },
-    { href: '/screen-replacement', label: 'Screen Replacement' },
-    { href: '/battery-replacement', label: 'Battery Guide' },
-    { href: '/gaming-pc-cooling', label: 'Gaming PC Cooling' },
-    { href: '/gaming-pc-repair-kuwait', label: 'Gaming PC Repair' },
-    { href: '/web-design-kuwait', label: 'Web Design Kuwait' },
-  ];
-
   const toggleMenu = () => setMobileOpen(!mobileOpen);
 
   useEffect(() => {
@@ -35,16 +25,27 @@ export default function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-emerald-900 shadow-lg h-16 flex items-center">
       <div className="container mx-auto px-4 flex justify-between items-center">
-        <Link to="/">
+        {/* Logo */}
+        <Link to="/" className="flex items-center">
           <img 
             src="https://res.cloudinary.com/dsbwzags3/image/upload/v1769908596/logo_btpfls.png" 
             alt="KCROC Logo" 
             width="140" 
-            height="91" 
-            style={{ width: '140px', height: '91px' }} 
+            height="50" 
+            style={{ width: '140px', height: 'auto' }} 
           />
         </Link>
 
+        {/* Desktop Navigation - Hidden on mobile, flex on large screens */}
+        <nav className="hidden lg:flex items-center gap-6">
+          {primaryNav.map((item) => (
+            <Link key={item.href} to={item.href} className="text-white font-medium hover:text-cyan-300 transition-colors">
+              {item.label}
+            </Link>
+          ))}
+        </nav>
+
+        {/* Mobile Toggle Button */}
         <button onClick={toggleMenu} className="lg:hidden text-white p-2">
           {mobileOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
@@ -54,10 +55,6 @@ export default function Header() {
           <div className="absolute top-16 left-0 w-full bg-emerald-900 p-6 flex flex-col gap-3 lg:hidden border-t border-emerald-800 z-50">
             {primaryNav.map((item) => (
               <Link key={item.href} to={item.href} onClick={toggleMenu} className="text-white font-medium">{item.label}</Link>
-            ))}
-            <hr className="border-emerald-800 my-2" />
-            {serviceLinks.map((sub) => (
-              <Link key={sub.href} to={sub.href} onClick={toggleMenu} className="text-emerald-200 text-sm">{sub.label}</Link>
             ))}
           </div>
         )}
