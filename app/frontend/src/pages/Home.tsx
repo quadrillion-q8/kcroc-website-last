@@ -2,32 +2,29 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { 
-  Cpu, Gamepad2, Laptop, Monitor, Database, ShieldAlert, ArrowRight, Star, CheckCircle,
-  MessageCircle, Phone, MapPin, Truck, Shield, Package, ThumbsUp, Sparkles, Gauge
+  Cpu, Gamepad2, Laptop, Monitor, Database, ShieldAlert, Star, 
+  MessageCircle, Truck, Shield, Package, ThumbsUp, Sparkles, Gauge
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 // --- Static Data ---
 const services = [
-  { title: 'Chip-Level Motherboard Repair', description: 'Advanced logic board diagnostics, micro-soldering, and professional BIOS flashing.', icon: Cpu, path: '/motherboard-repair-kuwait', gradient: 'from-green-500/20 to-emerald-500/5', borderColor: 'group-hover:border-green-500/50' },
-  { title: 'Gaming PC & Workstation Tuning', description: 'GPU troubleshooting, liquid cooling loop maintenance, and high-performance optimization.', icon: Gamepad2, path: '/gaming-pc-repair-kuwait', gradient: 'from-purple-500/20 to-indigo-500/5', borderColor: 'group-hover:border-purple-500/50' },
-  { title: 'MacBook Professional Repair', description: 'Expert logic board repair, hardware diagnostics, and component replacement for all Mac models.', icon: Laptop, path: '/macbook-repair-kuwait', gradient: 'from-blue-500/20 to-cyan-500/5', borderColor: 'group-hover:border-blue-500/50' },
-  { title: 'Screen & Glass Replacement', description: 'Crisp, high-quality replacement displays for premium laptops, MacBooks, and monitors.', icon: Monitor, path: '/screen-replacement-kuwait', gradient: 'from-amber-500/20 to-orange-500/5', borderColor: 'group-hover:border-amber-500/50' },
-  { title: 'Advanced Data Recovery', description: 'Secure retrieval of critical files from failing hard drives, SSDs, and corrupted media.', icon: Database, path: '/data-recovery-kuwait', gradient: 'from-red-500/20 to-rose-500/5', borderColor: 'group-hover:border-red-500/50' },
-  { title: 'OS Restoration & Virus Removal', description: 'Complete system cleanups, malware elimination, and clean operating system deployments.', icon: ShieldAlert, path: '/virus-removal-kuwait', gradient: 'from-teal-500/20 to-cyan-500/5', borderColor: 'group-hover:border-teal-500/50' }
+  { title: 'Chip-Level Motherboard Repair', description: 'Advanced logic board diagnostics, micro-soldering, and professional BIOS flashing.', icon: Cpu, path: '/motherboard-repair-kuwait' },
+  { title: 'Gaming PC & Workstation Tuning', description: 'GPU troubleshooting, liquid cooling loop maintenance, and high-performance optimization.', icon: Gamepad2, path: '/gaming-pc-repair-kuwait' },
+  { title: 'MacBook Professional Repair', description: 'Expert logic board repair, hardware diagnostics, and component replacement for all Mac models.', icon: Laptop, path: '/macbook-repair-kuwait' },
+  { title: 'Screen & Glass Replacement', description: 'Crisp, high-quality replacement displays for premium laptops, MacBooks, and monitors.', icon: Monitor, path: '/screen-replacement-kuwait' },
+  { title: 'Advanced Data Recovery', description: 'Secure retrieval of critical files from failing hard drives, SSDs, and corrupted media.', icon: Database, path: '/data-recovery-kuwait' },
+  { title: 'OS Restoration & Virus Removal', description: 'Complete system cleanups, malware elimination, and clean operating system deployments.', icon: ShieldAlert, path: '/virus-removal-kuwait' }
 ];
 
 const faqs = [
-  { question: "Do you offer free pickup and delivery in Kuwait?", answer: "Yes! We provide completely free pickup and delivery service across all Kuwait governorates including Hawalli, Salmiya, Farwaniya, Kuwait City, Jahra, Ahmadi, and Mubarak Al-Kabeer." },
-  { question: "How long do repairs usually take?", answer: "Most laptop diagnostics are completed same-day. Common repairs like screen replacement, battery replacement, or Windows reinstall typically take 24-48 hours." },
+  { question: "Do you offer free pickup and delivery in Kuwait?", answer: "Yes! We provide completely free pickup and delivery service across all Kuwait governorates." },
+  { question: "How long do repairs usually take?", answer: "Most laptop diagnostics are completed same-day. Common repairs typically take 24-48 hours." },
   { question: "Is my data safe during repair?", answer: "Absolutely. Data safety is our top priority. We never access, copy, or modify your personal files." },
-  { question: "Do you repair Apple MacBooks?", answer: "Yes, we specialize in MacBook repairs including screen replacement, battery replacement, keyboard repair, liquid damage repair, and logic board diagnostics for all MacBook models." },
-  { question: "Do you repair gaming PCs and custom builds?", answer: "Yes! We are experts in gaming laptop and desktop PC repair." },
-  { question: "What areas of Kuwait do you cover?", answer: "We serve all Kuwait governorates: Hawalli, Salmiya, Farwaniya, Kuwait City, Jahra, Ahmadi, and Mubarak Al-Kabeer with free pickup and delivery service." },
-  { question: "Do you offer emergency or after-hours service?", answer: "Yes, we offer emergency service for critical business systems. Contact us at +965 5530 1913." }
+  { question: "Do you repair Apple MacBooks?", answer: "Yes, we specialize in MacBook repairs including screen, battery, keyboard, and liquid damage." },
+  { question: "Do you repair gaming PCs?", answer: "Yes! We are experts in gaming laptop and desktop PC repair." }
 ];
 
-const brands = ["Apple MacBooks", "ASUS ROG Gaming Laptops", "MSI Gaming Systems", "Acer Predator Laptops", "HP Laptops", "Dell Inspiron & XPS", "Lenovo ThinkPad", "Alienware Gaming PCs", "Custom Desktop Computers"];
 const reviews = [
   { name: 'Dr. Ghanim Al-Khaledi', text: 'They fixed my Predator Helios motherboard... competent, reliable, and HONEST.', rating: 5 },
   { name: 'Mohammed Sabil', text: 'I had given my laptop for a motherboard replacement. They managed to find a compatible motherboard and replace it successfully.', rating: 5 },
@@ -42,8 +39,6 @@ const whyKCROC = [
   { icon: Sparkles, title: 'Gaming & MacBook Specialists', description: 'Experts in gaming laptops and MacBooks' },
   { icon: Gauge, title: 'Same/Next-Day Service', description: 'Fast turnaround for most jobs' }
 ];
-
-const serviceAreas = ['Hawalli', 'Salmiya', 'Kuwait City', 'Farwaniya', 'Jahra', 'Ahmadi', 'Mubarak Al-Kabeer'];
 
 // --- Counter Component ---
 const Counter = ({ end, suffix = '', animated }: { end: number; suffix?: string; animated: boolean }) => {
@@ -112,23 +107,21 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Brands & Why Choose */}
-      <section className="py-20 max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12">
-        <div>
-          <h2 className="text-2xl font-bold mb-6">Why Choose KCROC?</h2>
-          <div className="space-y-4">
-            {whyKCROC.map((f, i) => <div key={i} className="flex gap-4"><f.icon className="text-blue-500"/><div><h4 className="font-bold">{f.title}</h4><p className="text-sm text-gray-400">{f.description}</p></div></div>)}
-          </div>
-        </div>
-        <div>
-          <h2 className="text-2xl font-bold mb-6">Brands We Repair</h2>
-          <div className="grid grid-cols-2 gap-4">
-            {brands.map((b, i) => <div key={i} className="p-3 bg-gray-900 rounded-lg text-sm">✓ {b}</div>)}
-          </div>
+      {/* Reviews */}
+      <section className="py-20 max-w-6xl mx-auto px-6 border-t border-gray-800">
+        <h2 className="text-3xl font-bold text-center mb-12">What Our Customers Say</h2>
+        <div className="grid md:grid-cols-3 gap-6">
+          {reviews.map((r, i) => (
+            <div key={i} className="bg-gray-900/40 p-6 rounded-2xl border border-gray-800">
+              <div className="flex text-yellow-500 mb-4">{[...Array(r.rating)].map((_, i) => <Star key={i} className="w-4 h-4 fill-current" />)}</div>
+              <p className="text-gray-300 italic mb-4">"{r.text}"</p>
+              <p className="font-bold text-blue-400">- {r.name}</p>
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* FAQ Section */}
+      {/* FAQ */}
       <section className="py-20 max-w-3xl mx-auto px-6 border-t border-gray-800">
         <h2 className="text-3xl font-bold text-center mb-12">Frequently Asked Questions</h2>
         <div className="space-y-4">
