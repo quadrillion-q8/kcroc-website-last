@@ -12,6 +12,8 @@ export default function Header() {
     { href: '/services', label: 'Services', isDropdown: true },
     { href: '/pricing', label: 'Pricing' },
     { href: '/about', label: 'About' },
+    { href: '/gallery', label: 'Gallery' },
+    { href: '/contact', label: 'Contact' },
     { href: '/book', label: 'Book Now' },
   ];
 
@@ -19,7 +21,9 @@ export default function Header() {
     { href: '/laptop-repair-hawalli-kuwait', label: 'Laptop Repair' },
     { href: '/macbook-repair', label: 'MacBook Repair' },
     { href: '/gaming-pc-repair-kuwait', label: 'Gaming PC Repair' },
+    { href: '/gaming-pc-cooling', label: 'Gaming PC Cooling' },
     { href: '/screen-replacement', label: 'Screen Replacement' },
+    { href: '/battery-replacement', label: 'Battery Replacement' },
   ];
 
   useEffect(() => {
@@ -39,11 +43,10 @@ export default function Header() {
               <Link to={item.href} className="text-white font-medium flex items-center gap-1 hover:text-cyan-300">
                 {item.label} {item.isDropdown && <ChevronDown size={16} />}
               </Link>
-              {/* Dropdown Hubs */}
               {item.isDropdown && dropdownOpen && (
-                <div className="absolute top-full left-0 bg-emerald-800 p-4 w-48 shadow-xl rounded-b-lg flex flex-col gap-2">
+                <div className="absolute top-full left-0 bg-emerald-800 p-4 w-52 shadow-xl rounded-b-lg flex flex-col gap-3 z-50">
                   {serviceHubs.map(hub => (
-                    <Link key={hub.href} to={hub.href} className="text-white hover:text-cyan-300 text-sm">{hub.label}</Link>
+                    <Link key={hub.href} to={hub.href} className="text-white hover:text-cyan-300 text-sm block">{hub.label}</Link>
                   ))}
                 </div>
               )}
