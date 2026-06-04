@@ -13,16 +13,16 @@ export default function Header() {
     { href: '/about', label: 'About' },
     { href: '/gallery', label: 'Gallery' },
     { href: '/contact', label: 'Contact' },
+    { href: '/book', label: 'Book Now' },
   ];
 
-  // Updated to match your file structure from 207304.jpg
   const serviceLinks = [
-    { href: '/laptop-repair', label: 'Laptop Repair' },
+    { href: '/laptop-repair-hawalli-kuwait', label: 'Laptop Repair' },
     { href: '/macbook-repair', label: 'MacBook Repair' },
     { href: '/screen-replacement', label: 'Screen Replacement' },
     { href: '/battery-replacement', label: 'Battery Guide' },
-    { href: '/gaming-pc-repair', label: 'Gaming PC Repair' },
     { href: '/gaming-pc-cooling', label: 'Gaming PC Cooling' },
+    { href: '/gaming-pc-repair-kuwait', label: 'Gaming PC Repair' },
     { href: '/web-design-kuwait', label: 'Web Design Kuwait' },
   ];
 
@@ -55,7 +55,7 @@ export default function Header() {
             {primaryNav.map((item) => (
               <Link key={item.href} to={item.href} onClick={toggleMenu} className="text-white font-medium">{item.label}</Link>
             ))}
-            <hr className="border-emerald-800" />
+            <hr className="border-emerald-800 my-2" />
             {serviceLinks.map((sub) => (
               <Link key={sub.href} to={sub.href} onClick={toggleMenu} className="text-emerald-200 text-sm">{sub.label}</Link>
             ))}
