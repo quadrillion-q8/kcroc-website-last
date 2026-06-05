@@ -260,11 +260,19 @@ export default function BookingPage() {
       </a>
       
       <main id="main-content" className="min-h-screen bg-gray-950 text-white">
-        <Helmet>
+        {/* SEO, Localization & JSON-LD Injection */}
+        <Helmet htmlAttributes={{ lang: 'en' }}>
           <title>Book Laptop & Computer Repair Pickup in Kuwait | KCROC</title>
           <meta name="description" content="Book free laptop and computer repair pickup anywhere in Kuwait. Same-day diagnostics. 30-day warranty." />
           <link rel="canonical" href="https://www.computerrepairkuwait.com/book" />
           
+          {/* Hreflang and Localization Signals */}
+          <meta property="og:locale" content="en_KW" />
+          <meta property="og:locale:alternate" content="ar_KW" />
+          <link rel="alternate" hreflang="en-kw" href="https://www.computerrepairkuwait.com/book" />
+          <link rel="alternate" hreflang="ar-kw" href="https://www.computerrepairkuwait.com/ar/book" />
+          <link rel="alternate" hreflang="x-default" href="https://www.computerrepairkuwait.com/book" />
+
           <meta property="og:title" content="Book Laptop & Computer Repair Pickup in Kuwait | KCROC" />
           <meta property="og:description" content="Free pickup across Kuwait. Same-day diagnostics. 30-day warranty." />
           <meta property="og:type" content="website" />
