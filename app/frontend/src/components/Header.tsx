@@ -18,6 +18,7 @@ export default function Header() {
     { href: '/book', label: 'Book Now' },
   ];
 
+  // The new Motherboard Repair link is added to this array
   const serviceHubs = [
     { href: '/laptop-repair-hawalli-kuwait', label: 'Laptop Repair' },
     { href: '/macbook-repair', label: 'MacBook Repair' },
@@ -25,6 +26,7 @@ export default function Header() {
     { href: '/gaming-pc-cooling', label: 'Gaming PC Cooling' },
     { href: '/screen-replacement', label: 'Screen Replacement' },
     { href: '/battery-replacement', label: 'Battery Replacement' },
+    { href: '/chip-level-motherboard-repair-hawalli', label: 'Motherboard Repair' },
   ];
 
   useEffect(() => {
@@ -35,27 +37,60 @@ export default function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-emerald-900 shadow-lg h-16 flex items-center">
       <div className="container mx-auto px-4 flex justify-between items-center">
-        <Link to="/"><img src="https://res.cloudinary.com/dsbwzags3/image/upload/v1769908596/logo_btpfls.png" alt="KCROC Logo" width="140" height="50" /></Link>
+        <Link to="/">
+          <img 
+            src="https://res.cloudinary.com/dsbwzags3/image/upload/v1769908596/logo_btpfls.png" 
+            alt="KCROC Logo" 
+            width="140" 
+            height="50" 
+          />
+        </Link>
 
         {/* Desktop Nav */}
         <nav className="hidden lg:flex items-center gap-6 relative">
           {primaryNav.map((item) => (
-            <div key={item.href} className="relative" onMouseEnter={() => item.isDropdown && setDropdownOpen(true)} onMouseLeave={() => setDropdownOpen(false)}>
-              <Link to={item.href} className="text-white font-medium flex items-center gap-1 hover:text-cyan-300">
+            <div 
+              key={item.href} 
+              className="relative" 
+              onMouseEnter={() => item.isDropdown && setDropdownOpen(true)} 
+              onMouseLeave={() => setDropdownOpen(false)}
+            >
+              <Link 
+                to={item.href} 
+                className="text-white font-medium flex items-center gap-1 hover:text-emerald-400 transition-colors"
+              >
                 {item.label} {item.isDropdown && <ChevronDown size={16} />}
               </Link>
               {item.isDropdown && dropdownOpen && (
                 <div className="absolute top-full left-0 bg-emerald-800 p-4 w-52 shadow-xl rounded-b-lg flex flex-col gap-3 z-50">
-                  {serviceHubs.map(hub => <Link key={hub.href} to={hub.href} className="text-white hover:text-cyan-300 text-sm block">{hub.label}</Link>)}
+                  {serviceHubs.map(hub => (
+                    <Link 
+                      key={hub.href} 
+                      to={hub.href} 
+                      className="text-white hover:text-emerald-400 text-sm block transition-colors"
+                    >
+                      {hub.label}
+                    </Link>
+                  ))}
                 </div>
               )}
             </div>
           ))}
-          <a href="tel:+96555301913" className="flex items-center gap-2 bg-emerald-600 text-white px-4 py-2 rounded-lg font-bold hover:bg-emerald-500 transition-colors"><Phone size={18} /> Call Now</a>
+          <a 
+            href="tel:+96555301913" 
+            className="flex items-center gap-2 bg-emerald-600 text-white px-4 py-2 rounded-lg font-bold hover:bg-emerald-500 transition-colors"
+          >
+            <Phone size={18} /> Call Now
+          </a>
         </nav>
 
         {/* Mobile Toggle */}
-        <button onClick={() => setMobileOpen(!mobileOpen)} className="lg:hidden text-white"><Menu size={28} /></button>
+        <button 
+          onClick={() => setMobileOpen(!mobileOpen)} 
+          className="lg:hidden text-white"
+        >
+          {mobileOpen ? <X size={28} /> : <Menu size={28} />}
+        </button>
       </div>
 
       {/* Mobile Menu Panel */}
@@ -64,21 +99,44 @@ export default function Header() {
           {primaryNav.map((item) => (
             <div key={item.href}>
               <div className="flex justify-between items-center">
-                <Link to={item.href} onClick={() => !item.isDropdown && setMobileOpen(false)} className="text-white text-lg font-medium">{item.label}</Link>
+                <Link 
+                  to={item.href} 
+                  onClick={() => !item.isDropdown && setMobileOpen(false)} 
+                  className="text-white text-lg font-medium"
+                >
+                  {item.label}
+                </Link>
                 {item.isDropdown && (
-                  <button onClick={() => setMobileServicesOpen(!mobileServicesOpen)} className="text-white">
+                  <button 
+                    onClick={() => setMobileServicesOpen(!mobileServicesOpen)} 
+                    className="text-white p-2"
+                  >
                     {mobileServicesOpen ? <ChevronUp /> : <ChevronDown />}
                   </button>
                 )}
               </div>
               {item.isDropdown && mobileServicesOpen && (
-                <div className="flex flex-col gap-2 mt-2 ml-4">
-                  {serviceHubs.map(hub => <Link key={hub.href} to={hub.href} onClick={() => setMobileOpen(false)} className="text-cyan-200 text-sm">{hub.label}</Link>)}
+                <div className="flex flex-col gap-3 mt-3 ml-4 border-l-2 border-emerald-700 pl-4">
+                  {serviceHubs.map(hub => (
+                    <Link 
+                      key={hub.href} 
+                      to={hub.href} 
+                      onClick={() => setMobileOpen(false)} 
+                      className="text-emerald-100 hover:text-emerald-400 text-sm block py-1"
+                    >
+                      {hub.label}
+                    </Link>
+                  ))}
                 </div>
               )}
             </div>
           ))}
-          <a href="tel:+96555301913" className="flex items-center justify-center gap-2 bg-emerald-600 text-white p-3 rounded-lg font-bold"><Phone size={20} /> Call Now</a>
+          <a 
+            href="tel:+96555301913" 
+            className="flex items-center justify-center gap-2 bg-emerald-600 text-white p-3 rounded-lg font-bold mt-4"
+          >
+            <Phone size={20} /> Call Now (+965 5530 1913)
+          </a>
         </div>
       )}
     </header>
