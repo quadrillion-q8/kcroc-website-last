@@ -24,6 +24,7 @@ const LaptopRepair = lazy(() => import('./pages/LaptopRepair'));
 const MacBookRepair = lazy(() => import('./pages/MacBookRepair'));
 const ScreenReplacement = lazy(() => import('./pages/ScreenReplacement'));
 const PrivacySecurity = lazy(() => import('./pages/PrivacySecurity'));
+const MotherboardRepair = lazy(() => import('./pages/MotherboardRepair'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 import './styles/kcroc.css';
@@ -50,6 +51,7 @@ const App = () => (
             <Route path="/macbook-repair" element={<MacBookRepair />} />
             <Route path="/screen-replacement" element={<ScreenReplacement />} />
             <Route path="/data-security" element={<PrivacySecurity />} />
+            <Route path="/chip-level-motherboard-repair-hawalli" element={<MotherboardRepair />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
