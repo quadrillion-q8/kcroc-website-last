@@ -5,7 +5,6 @@ import {
   Cpu, Gamepad2, Laptop, Monitor, Database, ShieldAlert, Star, 
   MessageCircle, Truck, Shield, Package, ThumbsUp, Sparkles, Gauge
 } from 'lucide-react';
-import { Button } from '@/components/ui/button';
 
 // --- Static Data ---
 const services = [
@@ -107,10 +106,19 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gray-950 text-white">
-      {/* SEO & JSON-LD Injection */}
-      <Helmet>
+      {/* SEO, Localization & JSON-LD Injection */}
+      <Helmet htmlAttributes={{ lang: 'en' }}>
         <title>Expert Computer & Laptop Repair in Kuwait | KCROC</title>
+        <meta name="description" content="Professional diagnostics and free pickup/delivery anywhere in Kuwait. Same-day laptop, MacBook & PC repair." />
         <link rel="canonical" href="https://www.computerrepairkuwait.com" />
+        
+        {/* Hreflang and Localization Signals */}
+        <meta property="og:locale" content="en_KW" />
+        <meta property="og:locale:alternate" content="ar_KW" />
+        <link rel="alternate" hreflang="en-kw" href="https://www.computerrepairkuwait.com" />
+        <link rel="alternate" hreflang="ar-kw" href="https://www.computerrepairkuwait.com/ar" />
+        <link rel="alternate" hreflang="x-default" href="https://www.computerrepairkuwait.com" />
+
         <script type="application/ld+json">
           {JSON.stringify(localBusinessSchema)}
         </script>
