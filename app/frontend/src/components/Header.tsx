@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { X, Menu, ChevronDown, Phone } from 'lucide-react';
+import { X, Menu, ChevronDown, ChevronUp, Phone } from 'lucide-react';
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const location = useLocation();
 
@@ -28,7 +29,7 @@ export default function Header() {
 
   useEffect(() => {
     setMobileOpen(false);
-    setDropdownOpen(false);
+    setMobileServicesOpen(false);
   }, [location.pathname]);
 
   return (
@@ -45,17 +46,12 @@ export default function Header() {
               </Link>
               {item.isDropdown && dropdownOpen && (
                 <div className="absolute top-full left-0 bg-emerald-800 p-4 w-52 shadow-xl rounded-b-lg flex flex-col gap-3 z-50">
-                  {serviceHubs.map(hub => (
-                    <Link key={hub.href} to={hub.href} className="text-white hover:text-cyan-300 text-sm block">{hub.label}</Link>
-                  ))}
+                  {serviceHubs.map(hub => <Link key={hub.href} to={hub.href} className="text-white hover:text-cyan-300 text-sm block">{hub.label}</Link>)}
                 </div>
               )}
             </div>
           ))}
-          {/* Direct Call-to-Action for Desktop */}
-          <a href="tel:+96555301913" className="flex items-center gap-2 bg-emerald-600 text-white px-4 py-2 rounded-lg font-bold hover:bg-emerald-500 transition-colors">
-            <Phone size={18} /> Call Now
-          </a>
+          <a href="tel:+96555301913" className="flex items-center gap-2 bg-emerald-600 text-white px-4 py-2 rounded-lg font-bold hover:bg-emerald-500 transition-colors"><Phone size={18} /> Call Now</a>
         </nav>
 
         {/* Mobile Toggle */}
@@ -66,14 +62,23 @@ export default function Header() {
       {mobileOpen && (
         <div className="absolute top-16 left-0 w-full bg-emerald-900 p-6 flex flex-col gap-4 lg:hidden border-t border-emerald-800 z-50">
           {primaryNav.map((item) => (
-            <Link key={item.href} to={item.href} onClick={() => setMobileOpen(false)} className="text-white text-lg font-medium block">
-              {item.label}
-            </Link>
+            <div key={item.href}>
+              <div className="flex justify-between items-center">
+                <Link to={item.href} onClick={() => !item.isDropdown && setMobileOpen(false)} className="text-white text-lg font-medium">{item.label}</Link>
+                {item.isDropdown && (
+                  <button onClick={() => setMobileServicesOpen(!mobileServicesOpen)} className="text-white">
+                    {mobileServicesOpen ? <ChevronUp /> : <ChevronDown />}
+                  </button>
+                )}
+              </div>
+              {item.isDropdown && mobileServicesOpen && (
+                <div className="flex flex-col gap-2 mt-2 ml-4">
+                  {serviceHubs.map(hub => <Link key={hub.href} to={hub.href} onClick={() => setMobileOpen(false)} className="text-cyan-200 text-sm">{hub.label}</Link>)}
+                </div>
+              )}
+            </div>
           ))}
-          {/* Direct Call-to-Action for Mobile */}
-          <a href="tel:+96555301913" className="flex items-center justify-center gap-2 bg-emerald-600 text-white p-3 rounded-lg font-bold">
-            <Phone size={20} /> Call Now (+965 5530 1913)
-          </a>
+          <a href="tel:+96555301913" className="flex items-center justify-center gap-2 bg-emerald-600 text-white p-3 rounded-lg font-bold"><Phone size={20} /> Call Now</a>
         </div>
       )}
     </header>
