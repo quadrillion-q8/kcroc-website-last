@@ -31,15 +31,6 @@ const reviews = [
   { name: 'Ayman Elnagar', text: 'The best IT support and laptop repair shop I’ve visited in Kuwait.', rating: 5 }
 ];
 
-const whyKCROC = [
-  { icon: Truck, title: 'Free Pickup & Delivery', description: 'Across all Kuwait governorates' },
-  { icon: Package, title: 'Genuine Parts', description: 'Genuine or high-grade compatible parts' },
-  { icon: ThumbsUp, title: 'Clear Explanations', description: 'Issues explained before any repair' },
-  { icon: Shield, title: '30-Day Warranty', description: 'Extended warranty on all repairs' },
-  { icon: Sparkles, title: 'Gaming & MacBook Specialists', description: 'Experts in gaming laptops and MacBooks' },
-  { icon: Gauge, title: 'Same/Next-Day Service', description: 'Fast turnaround for most jobs' }
-];
-
 // --- Counter Component ---
 const Counter = ({ end, suffix = '', animated }: { end: number; suffix?: string; animated: boolean }) => {
   const [count, setCount] = useState(0);
@@ -70,16 +61,75 @@ export default function Home() {
     return () => observer.disconnect();
   }, []);
 
+  // --- Dynamic JSON-LD Schema Generation ---
+  const localBusinessSchema = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "KCROC - Kuwait Computer Repair On Call",
+    "image": "https://res.cloudinary.com/dsbwzags3/image/upload/v1769908596/logo_btpfls.png",
+    "@id": "https://www.computerrepairkuwait.com/#business",
+    "url": "https://www.computerrepairkuwait.com",
+    "telephone": "+96555301913",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Al Mullah Complex, Ibn Khaldoun St",
+      "addressLocality": "Hawalli",
+      "addressCountry": "KW"
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"],
+        "opens": "10:00",
+        "closes": "22:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Friday",
+        "opens": "18:00",
+        "closes": "22:00"
+      }
+    ]
+  };
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map((faq) => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  };
+
   return (
     <div className="min-h-screen bg-gray-950 text-white">
-      <Helmet><title>Expert Computer & Laptop Repair in Kuwait | KCROC</title></Helmet>
+      {/* SEO & JSON-LD Injection */}
+      <Helmet>
+        <title>Expert Computer & Laptop Repair in Kuwait | KCROC</title>
+        <link rel="canonical" href="https://www.computerrepairkuwait.com" />
+        <script type="application/ld+json">
+          {JSON.stringify(localBusinessSchema)}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify(faqSchema)}
+        </script>
+      </Helmet>
       
       {/* Hero */}
       <section className="py-24 bg-gradient-to-br from-gray-900 to-black text-center">
         <h1 className="text-4xl md:text-7xl font-black">Kuwait Computer Repair On Call</h1>
         <p className="mt-6 text-xl text-gray-400">Professional diagnostics and free pickup/delivery anywhere in Kuwait.</p>
         <div className="flex justify-center gap-4 mt-8">
-            <Button size="lg" className="bg-green-500 hover:bg-green-600"><MessageCircle className="mr-2" /> WhatsApp Us</Button>
+            <a href="https://wa.me/96555301913" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 h-10 px-8 py-2 bg-green-500 text-white hover:bg-green-600">
+              <MessageCircle className="mr-2 h-5 w-5" /> WhatsApp Us
+            </a>
+            <a href="tel:+96555301913" className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 h-10 px-8 py-2 bg-emerald-700 text-white hover:bg-emerald-600">
+              Call Now
+            </a>
         </div>
       </section>
 
@@ -98,8 +148,8 @@ export default function Home() {
         <h2 className="text-3xl font-bold text-center mb-12">Professional Hardware Solutions</h2>
         <div className="grid md:grid-cols-3 gap-6">
           {services.map((s, i) => (
-            <Link key={i} to={s.path} className="bg-gray-900/40 p-6 rounded-2xl border border-gray-800 hover:border-blue-500 transition-all">
-              <s.icon className="w-10 h-10 mb-4 text-blue-400" />
+            <Link key={i} to={s.path} className="bg-gray-900/40 p-6 rounded-2xl border border-gray-800 hover:border-emerald-500 transition-all group">
+              <s.icon className="w-10 h-10 mb-4 text-emerald-400 group-hover:scale-110 transition-transform" />
               <h3 className="text-xl font-bold mb-2">{s.title}</h3>
               <p className="text-gray-400 text-sm">{s.description}</p>
             </Link>
@@ -115,7 +165,7 @@ export default function Home() {
             <div key={i} className="bg-gray-900/40 p-6 rounded-2xl border border-gray-800">
               <div className="flex text-yellow-500 mb-4">{[...Array(r.rating)].map((_, i) => <Star key={i} className="w-4 h-4 fill-current" />)}</div>
               <p className="text-gray-300 italic mb-4">"{r.text}"</p>
-              <p className="font-bold text-blue-400">- {r.name}</p>
+              <p className="font-bold text-emerald-400">- {r.name}</p>
             </div>
           ))}
         </div>
@@ -126,9 +176,12 @@ export default function Home() {
         <h2 className="text-3xl font-bold text-center mb-12">Frequently Asked Questions</h2>
         <div className="space-y-4">
           {faqs.map((f, i) => (
-            <details key={i} className="bg-gray-900/40 p-5 rounded-lg cursor-pointer">
-              <summary className="font-bold">{f.question}</summary>
-              <p className="text-gray-400 text-sm mt-3">{f.answer}</p>
+            <details key={i} className="bg-gray-900/40 p-5 rounded-lg cursor-pointer group">
+              <summary className="font-bold list-none flex justify-between items-center">
+                {f.question}
+                <span className="text-emerald-500 group-open:rotate-45 transition-transform duration-300">+</span>
+              </summary>
+              <p className="text-gray-400 text-sm mt-3 leading-relaxed">{f.answer}</p>
             </details>
           ))}
         </div>
