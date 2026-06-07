@@ -90,7 +90,7 @@ export default function Contact() {
                 <div>
                   <h4 className="font-semibold text-slate-900 mb-2">Address</h4>
                   <p className="text-slate-700">
-                    Basement Shop #4, Al Mullah Complex<br />
+                    Basement Shop #19, Al Mullah Complex<br />
                     Ibn Khaldoun St., Hawalli, Kuwait
                   </p>
                 </div>
@@ -100,8 +100,8 @@ export default function Contact() {
                   <div>
                     <h4 className="font-semibold text-slate-900 mb-2">Business Hours</h4>
                     <div className="space-y-1 text-slate-700">
-                      <p>Saturday – Thursday: 09:00 – 22:00</p>
-                      <p>Friday: 17:00 – 22:00</p>
+                      <p>Saturday – Thursday: 10:00 AM – 10:00 PM</p>
+                      <p>Friday: 6:00 PM – 10:00 PM</p>
                     </div>
                   </div>
                 </div>
@@ -146,7 +146,7 @@ export default function Contact() {
                   size="lg"
                   className="w-full bg-white text-emerald-600 hover:bg-emerald-50 font-bold"
                 >
-                  <a href="tel:+96555301913">
+                  <a href="tel:+96555301913" className="flex items-center justify-center w-full cursor-pointer">
                     <Phone className="w-5 h-5 mr-2" />
                     Call Now
                   </a>
@@ -155,9 +155,9 @@ export default function Contact() {
                   asChild
                   size="lg"
                   variant="outline"
-                  className="w-full border-white text-white hover:bg-white hover:text-emerald-600 font-bold"
+                  className="w-full border-2 border-white bg-transparent text-white hover:bg-white hover:text-emerald-600 font-bold"
                 >
-                  <a href="https://wa.me/96555301913" target="_blank" rel="noopener">
+                  <a href="https://wa.me/96555301913" target="_blank" rel="noopener" className="flex items-center justify-center w-full cursor-pointer">
                     <MessageCircle className="w-5 h-5 mr-2" />
                     WhatsApp
                   </a>
@@ -174,8 +174,8 @@ export default function Contact() {
                 <div className="aspect-square bg-gradient-to-br from-slate-100 to-slate-200 rounded-lg flex items-center justify-center">
                   <div className="text-center text-slate-500">
                     <MapPin className="w-12 h-12 mx-auto mb-2" />
-                    <p className="font-medium">Interactive Map</p>
-                    <p className="text-sm">Coming Soon</p>
+                    <p className="font-medium">Al Mullah Complex</p>
+                    <p className="text-sm">Hawalli</p>
                   </div>
                 </div>
                 <Button 
@@ -186,6 +186,7 @@ export default function Contact() {
                     href="https://g.page/r/CWbK8KGjkYY2EBE" 
                     target="_blank" 
                     rel="noopener"
+                    className="flex items-center justify-center w-full cursor-pointer"
                   >
                     <ExternalLink className="w-4 h-4 mr-2" />
                     View on Google Maps
@@ -203,10 +204,10 @@ export default function Contact() {
                   </div>
                   <h3 className="font-bold text-slate-900">Trusted Service</h3>
                   <div className="space-y-2 text-sm text-slate-700">
-                    <p>✓ Licensed Technicians</p>
+                    <p>✓ Certified Technicians</p>
                     <p>✓ Data Privacy Guaranteed</p>
                     <p>✓ Warranty on All Repairs</p>
-                    <p>✓ 100+ Satisfied Customers</p>
+                    <p>✓ 500+ Satisfied Customers</p>
                   </div>
                 </div>
               </CardContent>
