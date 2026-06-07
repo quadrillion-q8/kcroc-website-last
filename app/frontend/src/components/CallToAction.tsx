@@ -7,14 +7,14 @@ export default function CallToAction() {
   return (
     <section id="book-repair" className="py-20 bg-gradient-to-br from-emerald-600 via-emerald-700 to-emerald-800 text-white relative overflow-hidden">
       {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-10">
+      <div className="absolute inset-0 opacity-10 pointer-events-none">
         <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full -translate-x-48 -translate-y-48"></div>
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full translate-x-48 translate-y-48"></div>
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
-          <Badge variant="secondary" className="bg-white/20 text-white px-4 py-2 mb-4">
+          <Badge variant="secondary" className="bg-white/20 text-white px-4 py-2 mb-4 backdrop-blur-sm border-0 border-white/30">
             🚀 Ready to Get Started?
           </Badge>
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
@@ -29,7 +29,7 @@ export default function CallToAction() {
         {/* Features Grid */}
         <div className="grid md:grid-cols-3 gap-6 mb-12">
           <div className="text-center">
-            <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 backdrop-blur-sm">
               <Clock className="w-8 h-8 text-white" />
             </div>
             <h3 className="text-lg font-semibold mb-2">Fast Response</h3>
@@ -37,7 +37,7 @@ export default function CallToAction() {
           </div>
           
           <div className="text-center">
-            <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 backdrop-blur-sm">
               <Truck className="w-8 h-8 text-white" />
             </div>
             <h3 className="text-lg font-semibold mb-2">Free Pickup</h3>
@@ -45,7 +45,7 @@ export default function CallToAction() {
           </div>
           
           <div className="text-center">
-            <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 backdrop-blur-sm">
               <Shield className="w-8 h-8 text-white" />
             </div>
             <h3 className="text-lg font-semibold mb-2">Guaranteed Work</h3>
@@ -59,13 +59,13 @@ export default function CallToAction() {
             <Button 
               asChild
               size="lg"
-              className="bg-white text-emerald-700 hover:bg-emerald-50 font-bold px-8 py-6 text-lg shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105"
+              className="bg-white text-emerald-700 hover:bg-emerald-50 font-bold px-8 py-8 w-full sm:w-auto shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105"
             >
-              <a href="tel:+96555301913" className="flex items-center gap-3">
+              <a href="tel:+96555301913" className="flex items-center justify-center gap-3 w-full cursor-pointer">
                 <Phone className="w-6 h-6" />
                 <div className="text-left">
-                  <div className="text-lg font-bold">Call Now</div>
-                  <div className="text-sm opacity-80">+965 5530 1913</div>
+                  <div className="text-lg font-bold leading-none mb-1">Call Now</div>
+                  <div className="text-sm opacity-80 leading-none">+965 5530 1913</div>
                 </div>
               </a>
             </Button>
@@ -76,18 +76,18 @@ export default function CallToAction() {
               asChild
               size="lg"
               variant="outline"
-              className="border-2 border-white text-white hover:bg-white hover:text-emerald-700 font-bold px-8 py-6 text-lg shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105"
+              className="border-2 border-white bg-transparent text-white hover:bg-white hover:text-emerald-700 font-bold px-8 py-8 w-full sm:w-auto shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 group"
             >
               <a 
                 href="https://wa.me/96555301913" 
                 target="_blank" 
                 rel="noopener"
-                className="flex items-center gap-3"
+                className="flex items-center justify-center gap-3 w-full cursor-pointer"
               >
-                <MessageCircle className="w-6 h-6" />
-                <div className="text-left">
-                  <div className="text-lg font-bold">WhatsApp</div>
-                  <div className="text-sm opacity-80">Message Us</div>
+                <MessageCircle className="w-6 h-6 group-hover:text-emerald-700" />
+                <div className="text-left group-hover:text-emerald-700">
+                  <div className="text-lg font-bold leading-none mb-1">WhatsApp</div>
+                  <div className="text-sm opacity-80 leading-none">Message Us</div>
                 </div>
               </a>
             </Button>
@@ -99,7 +99,7 @@ export default function CallToAction() {
         </div>
 
         {/* Urgency Card */}
-        <Card className="mt-12 bg-white/10 backdrop-blur-sm border-white/20 max-w-2xl mx-auto">
+        <Card className="mt-12 bg-white/10 backdrop-blur-md border-white/20 max-w-2xl mx-auto">
           <CardContent className="p-6 text-center">
             <h3 className="text-xl font-bold text-white mb-2">
               🚨 Emergency Repair Service Available
@@ -108,7 +108,7 @@ export default function CallToAction() {
               Need your device fixed urgently? We offer same-day and emergency repair services 
               for critical business and personal needs.
             </p>
-            <Badge variant="secondary" className="bg-red-500 text-white px-4 py-2">
+            <Badge variant="secondary" className="bg-red-500 hover:bg-red-600 border-0 text-white px-4 py-2 text-sm font-bold shadow-md">
               Same-Day Service Available
             </Badge>
           </CardContent>
