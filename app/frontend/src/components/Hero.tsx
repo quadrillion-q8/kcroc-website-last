@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Phone, MessageCircle, Users, Truck, Zap, Shield, Award, Clock } from 'lucide-react';
+import { Phone, MessageCircle, Users, Truck, Zap, Shield, Award, MapPin } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
 export default function Hero() {
@@ -74,17 +74,13 @@ export default function Hero() {
         <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 via-blue-700/30 to-slate-900/40"></div>
         
         <div className="container mx-auto px-4 relative z-10">
-          {/* Logo Row */}
-          <div className="flex justify-center mb-4">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-emerald-500 rounded-xl flex items-center justify-center">
-                <span className="text-white font-black text-lg">KC</span>
-              </div>
-              <div>
-                <div className="text-white font-black text-lg">KCROC</div>
-                <div className="text-blue-100 text-xs font-medium">Premium Tech Clinic</div>
-              </div>
-            </div>
+          {/* Logo Row - Updated to official logo */}
+          <div className="flex justify-center mb-6">
+            <img 
+              src="https://res.cloudinary.com/dsbwzags3/image/upload/v1769908596/logo_btpfls.png" 
+              alt="Kuwait Computer Repair On Call Logo" 
+              className="h-16 w-auto object-contain drop-shadow-xl"
+            />
           </div>
 
           {/* Headline */}
@@ -125,21 +121,6 @@ export default function Hero() {
           <p className="text-white/70 text-sm text-center font-medium mt-3 mb-6">
             4.9★ Google rating · Trusted by 500+ customers across Kuwait
           </p>
-
-          {/* Optional Supporting Image */}
-          <div className="flex justify-center">
-            <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-white/20 shadow-lg">
-              <img 
-                src="/cubes.png" 
-                alt="Expert technician repairing laptop" 
-                className="w-full h-full object-cover"
-                loading="lazy"
-                onError={(e) => {
-                  e.currentTarget.src = `https://ui-avatars.com/api/?name=Tech&background=00D9FF&color=fff&size=96&format=png`;
-                }}
-              />
-            </div>
-          </div>
         </div>
       </section>
 
@@ -219,13 +200,14 @@ export default function Hero() {
                   </div>
                 </div>
                 
+                {/* Updated to show Physical Lab Location */}
                 <div className="glass-card hover-lift p-4 rounded-xl stagger-animation stagger-delay-6">
-                  <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-lg flex items-center justify-center mb-3 neon-glow-purple">
-                    <Zap className="w-6 h-6 text-white" />
+                  <div className="w-12 h-12 bg-gradient-to-br from-red-500 to-red-600 rounded-lg flex items-center justify-center mb-3 neon-glow-red">
+                    <MapPin className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-white mb-1">Lightning Service</h3>
-                    <p className="text-sm text-slate-400">Same-day repairs</p>
+                    <h3 className="font-bold text-white mb-1">Visit Our Lab</h3>
+                    <p className="text-sm text-slate-400">Al Mullah Complex, Basement Shop 19</p>
                   </div>
                 </div>
               </div>
