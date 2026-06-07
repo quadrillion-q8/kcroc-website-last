@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { X, Menu, ChevronDown, ChevronUp, Phone } from 'lucide-react';
+import { X, Menu, ChevronDown, ChevronUp, Phone, BookOpen } from 'lucide-react';
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -19,15 +19,20 @@ export default function Header() {
     { href: '/book', label: 'Book Now' },
   ];
 
-  const serviceHubs = [
+  // Separated Core Services
+  const repairServices = [
     { href: '/laptop-repair-hawalli-kuwait', label: 'Laptop Repair' },
     { href: '/macbook-repair', label: 'MacBook Repair' },
     { href: '/gaming-pc-repair-kuwait', label: 'Gaming PC Repair' },
-    { href: '/gaming-pc-cooling', label: 'Gaming PC Cooling' },
     { href: '/screen-replacement', label: 'Screen Replacement' },
-    { href: '/battery-replacement', label: 'Battery Replacement' },
     { href: '/chip-level-motherboard-repair-hawalli', label: 'Motherboard Repair' },
     { href: '/web-design-kuwait', label: 'Web Design' },
+  ];
+
+  // Separated Informative Blogs/Guides
+  const techGuides = [
+    { href: '/gaming-pc-cooling', label: 'Gaming PC Cooling Guide' },
+    { href: '/battery-replacement', label: 'Battery Replacement Guide' },
   ];
 
   // Close mobile menus whenever the route changes
@@ -85,16 +90,40 @@ export default function Header() {
                   
                   {/* Desktop Dropdown Menu */}
                   {item.isDropdown && (
-                    <div className={`absolute top-[70px] left-0 bg-gray-900 border border-gray-800 p-3 w-64 shadow-2xl rounded-xl flex flex-col gap-1 z-50 transition-all duration-200 origin-top ${dropdownOpen ? 'opacity-100 scale-y-100 visible' : 'opacity-0 scale-y-95 invisible'}`}>
-                      {serviceHubs.map(hub => (
+                    <div className={`absolute top-[70px] left-0 bg-gray-900 border border-gray-800 p-3 w-72 shadow-2xl rounded-xl flex flex-col gap-1 z-50 transition-all duration-200 origin-top ${dropdownOpen ? 'opacity-100 scale-y-100 visible' : 'opacity-0 scale-y-95 invisible'}`}>
+                      
+                      {/* Core Services Section */}
+                      <div className="px-4 pb-1 pt-2">
+                        <span className="text-xs font-bold text-gray-500 uppercase tracking-wider">Core Services</span>
+                      </div>
+                      {repairServices.map(service => (
                         <Link 
-                          key={hub.href} 
-                          to={hub.href} 
-                          className="text-gray-300 hover:text-emerald-400 hover:bg-gray-800/50 px-4 py-3 rounded-lg text-sm font-medium transition-colors"
+                          key={service.href} 
+                          to={service.href} 
+                          className="text-gray-300 hover:text-emerald-400 hover:bg-gray-800/50 px-4 py-2.5 rounded-lg text-sm font-medium transition-colors"
                         >
-                          {hub.label}
+                          {service.label}
                         </Link>
                       ))}
+
+                      {/* Divider */}
+                      <div className="w-full h-px bg-gray-800 my-2"></div>
+
+                      {/* Tech Guides Section */}
+                      <div className="px-4 pb-1">
+                        <span className="text-xs font-bold text-gray-500 uppercase tracking-wider">Tech Guides & Blogs</span>
+                      </div>
+                      {techGuides.map(guide => (
+                        <Link 
+                          key={guide.href} 
+                          to={guide.href} 
+                          className="flex items-center gap-2 text-gray-400 hover:text-emerald-400 hover:bg-gray-800/50 px-4 py-2.5 rounded-lg text-sm font-medium transition-colors"
+                        >
+                          <BookOpen size={14} />
+                          {guide.label}
+                        </Link>
+                      ))}
+
                     </div>
                   )}
                 </div>
@@ -154,15 +183,32 @@ export default function Header() {
               
               {/* Mobile Dropdown Links */}
               {item.isDropdown && mobileServicesOpen && (
-                <div className="flex flex-col gap-3 mt-2 ml-4 border-l-2 border-emerald-500/30 pl-4 mb-2">
-                  {serviceHubs.map(hub => (
+                <div className="flex flex-col gap-2 mt-2 ml-4 border-l-2 border-emerald-500/30 pl-4 mb-2">
+                  
+                  {/* Mobile Core Services */}
+                  <span className="text-xs font-bold text-gray-500 uppercase tracking-wider mt-2 mb-1">Core Services</span>
+                  {repairServices.map(service => (
                     <Link 
-                      key={hub.href} 
-                      to={hub.href} 
+                      key={service.href} 
+                      to={service.href} 
                       onClick={() => setMobileOpen(false)} 
-                      className="text-gray-400 hover:text-emerald-400 text-base font-medium block py-2 transition-colors"
+                      className="text-gray-300 hover:text-emerald-400 text-base font-medium block py-1.5 transition-colors"
                     >
-                      {hub.label}
+                      {service.label}
+                    </Link>
+                  ))}
+
+                  {/* Mobile Tech Guides */}
+                  <span className="text-xs font-bold text-gray-500 uppercase tracking-wider mt-4 mb-1">Tech Guides & Blogs</span>
+                  {techGuides.map(guide => (
+                    <Link 
+                      key={guide.href} 
+                      to={guide.href} 
+                      onClick={() => setMobileOpen(false)} 
+                      className="flex items-center gap-2 text-gray-400 hover:text-emerald-400 text-base font-medium block py-1.5 transition-colors"
+                    >
+                      <BookOpen size={14} className="shrink-0" />
+                      {guide.label}
                     </Link>
                   ))}
                 </div>
