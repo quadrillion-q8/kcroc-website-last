@@ -4,22 +4,10 @@ import { X, Menu, ChevronDown, ChevronUp, Phone, BookOpen } from 'lucide-react';
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [activeMobileDropdown, setActiveMobileDropdown] = useState<string | null>(null);
   const location = useLocation();
 
-  const primaryNav = [
-    { href: '/', label: 'Home' },
-    // isDropdown triggers special button behavior instead of a standard link
-    { href: '#', label: 'Services', isDropdown: true },
-    { href: '/pricing', label: 'Pricing' },
-    { href: '/about', label: 'About' },
-    { href: '/gallery', label: 'Gallery' },
-    { href: '/contact', label: 'Contact' },
-    { href: '/book', label: 'Book Now' },
-  ];
-
-  // Separated Core Services
   const repairServices = [
     { href: '/laptop-repair-hawalli-kuwait', label: 'Laptop Repair' },
     { href: '/macbook-repair', label: 'MacBook Repair' },
@@ -29,16 +17,28 @@ export default function Header() {
     { href: '/web-design-kuwait', label: 'Web Design' },
   ];
 
-  // Separated Informative Blogs/Guides
   const techGuides = [
     { href: '/gaming-pc-cooling', label: 'Gaming PC Cooling Guide' },
     { href: '/battery-replacement', label: 'Battery Replacement Guide' },
   ];
 
-  // Close mobile menus whenever the route changes
+  // Upgraded primaryNav structure to support multiple dynamic dropdowns
+  const primaryNav = [
+    { href: '/', label: 'Home' },
+    { href: '#', label: 'Services', isDropdown: true, dropdownItems: repairServices },
+    { href: '#', label: 'Tech Guides', isDropdown: true, dropdownItems: techGuides },
+    { href: '/pricing', label: 'Pricing' },
+    { href: '/about', label: 'About' },
+    { href: '/gallery', label: 'Gallery' },
+    { href: '/contact', label: 'Contact' },
+    { href: '/book', label: 'Book Now' },
+  ];
+
+  // Close all menus whenever the route changes
   useEffect(() => {
     setMobileOpen(false);
-    setMobileServicesOpen(false);
+    setActiveDropdown(null);
+    setActiveMobileDropdown(null);
   }, [location.pathname]);
 
   return (
@@ -56,28 +56,30 @@ export default function Header() {
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden xl:flex items-center justify-between flex-1 ml-12">
+        <nav className="hidden xl:flex items-center justify-between flex-1 ml-8">
           {/* Main Links Container */}
-          <div className="flex items-center gap-8">
+          <div className="flex items-center gap-5">
             {primaryNav.map((item) => {
-              const isActive = location.pathname === item.href || (item.isDropdown && location.pathname.includes(item.label.toLowerCase()));
+              // Active state logic to highlight the current page or its parent dropdown
+              const isActive = location.pathname === item.href || 
+                (item.isDropdown && item.dropdownItems?.some(sub => location.pathname.includes(sub.href)));
               
               return (
                 <div 
                   key={item.label} 
                   className="relative group py-6" 
-                  onMouseEnter={() => item.isDropdown && setDropdownOpen(true)} 
-                  onMouseLeave={() => setDropdownOpen(false)}
+                  onMouseEnter={() => item.isDropdown && setActiveDropdown(item.label)} 
+                  onMouseLeave={() => setActiveDropdown(null)}
                 >
                   {item.isDropdown ? (
                     // Button element ensures touch compatibility on iPads/tablets
                     <button 
                       className={`font-semibold flex items-center gap-1 transition-colors ${isActive ? 'text-emerald-400' : 'text-gray-300 hover:text-emerald-400'}`}
-                      onClick={() => setDropdownOpen(!dropdownOpen)}
+                      onClick={() => setActiveDropdown(activeDropdown === item.label ? null : item.label)}
                       aria-haspopup="true"
-                      aria-expanded={dropdownOpen}
+                      aria-expanded={activeDropdown === item.label}
                     >
-                      {item.label} <ChevronDown size={16} className={`transition-transform duration-200 ${dropdownOpen ? 'rotate-180' : ''}`} />
+                      {item.label} <ChevronDown size={14} className={`transition-transform duration-200 ${activeDropdown === item.label ? 'rotate-180' : ''}`} />
                     </button>
                   ) : (
                     <Link 
@@ -90,40 +92,18 @@ export default function Header() {
                   
                   {/* Desktop Dropdown Menu */}
                   {item.isDropdown && (
-                    <div className={`absolute top-[70px] left-0 bg-gray-900 border border-gray-800 p-3 w-72 shadow-2xl rounded-xl flex flex-col gap-1 z-50 transition-all duration-200 origin-top ${dropdownOpen ? 'opacity-100 scale-y-100 visible' : 'opacity-0 scale-y-95 invisible'}`}>
-                      
-                      {/* Core Services Section */}
-                      <div className="px-4 pb-1 pt-2">
-                        <span className="text-xs font-bold text-gray-500 uppercase tracking-wider">Core Services</span>
-                      </div>
-                      {repairServices.map(service => (
+                    <div className={`absolute top-[70px] left-0 bg-gray-900 border border-gray-800 p-3 w-64 shadow-2xl rounded-xl flex flex-col gap-1 z-50 transition-all duration-200 origin-top ${activeDropdown === item.label ? 'opacity-100 scale-y-100 visible' : 'opacity-0 scale-y-95 invisible'}`}>
+                      {item.dropdownItems?.map(subItem => (
                         <Link 
-                          key={service.href} 
-                          to={service.href} 
-                          className="text-gray-300 hover:text-emerald-400 hover:bg-gray-800/50 px-4 py-2.5 rounded-lg text-sm font-medium transition-colors"
+                          key={subItem.href} 
+                          to={subItem.href} 
+                          className="text-gray-300 hover:text-emerald-400 hover:bg-gray-800/50 px-4 py-3 rounded-lg text-sm font-medium transition-colors flex items-center gap-2"
                         >
-                          {service.label}
+                          {/* Render book icon only in the Tech Guides dropdown */}
+                          {item.label === 'Tech Guides' && <BookOpen size={14} className="shrink-0" />}
+                          {subItem.label}
                         </Link>
                       ))}
-
-                      {/* Divider */}
-                      <div className="w-full h-px bg-gray-800 my-2"></div>
-
-                      {/* Tech Guides Section */}
-                      <div className="px-4 pb-1">
-                        <span className="text-xs font-bold text-gray-500 uppercase tracking-wider">Tech Guides & Blogs</span>
-                      </div>
-                      {techGuides.map(guide => (
-                        <Link 
-                          key={guide.href} 
-                          to={guide.href} 
-                          className="flex items-center gap-2 text-gray-400 hover:text-emerald-400 hover:bg-gray-800/50 px-4 py-2.5 rounded-lg text-sm font-medium transition-colors"
-                        >
-                          <BookOpen size={14} />
-                          {guide.label}
-                        </Link>
-                      ))}
-
                     </div>
                   )}
                 </div>
@@ -134,7 +114,7 @@ export default function Header() {
           {/* CTA Button */}
           <a 
             href="tel:+96555301913" 
-            className="flex items-center gap-2 bg-emerald-500 text-gray-950 px-6 py-2.5 rounded-lg font-bold hover:bg-emerald-400 transition-colors shadow-lg hover:shadow-emerald-500/20 shrink-0"
+            className="flex items-center gap-2 bg-emerald-500 text-gray-950 px-5 py-2.5 rounded-lg font-bold hover:bg-emerald-400 transition-colors shadow-lg hover:shadow-emerald-500/20 shrink-0"
           >
             <Phone size={18} /> Call Now
           </a>
@@ -157,17 +137,17 @@ export default function Header() {
             <div key={item.label} className="border-b border-gray-800 pb-2 mb-2">
               <div className="flex justify-between items-center">
                 {item.isDropdown ? (
-                  // Clicking anywhere on this row triggers the mobile dropdown
+                  // Clicking anywhere on this row triggers the mobile dropdown accordion
                   <button 
                     onClick={(e) => {
                       e.preventDefault();
-                      setMobileServicesOpen(!mobileServicesOpen);
+                      setActiveMobileDropdown(activeMobileDropdown === item.label ? null : item.label);
                     }} 
                     className="text-gray-200 text-lg font-semibold w-full text-left flex justify-between items-center py-2"
                   >
                     {item.label}
                     <span className="p-2 text-emerald-400">
-                      {mobileServicesOpen ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+                      {activeMobileDropdown === item.label ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
                     </span>
                   </button>
                 ) : (
@@ -182,33 +162,17 @@ export default function Header() {
               </div>
               
               {/* Mobile Dropdown Links */}
-              {item.isDropdown && mobileServicesOpen && (
+              {item.isDropdown && activeMobileDropdown === item.label && (
                 <div className="flex flex-col gap-2 mt-2 ml-4 border-l-2 border-emerald-500/30 pl-4 mb-2">
-                  
-                  {/* Mobile Core Services */}
-                  <span className="text-xs font-bold text-gray-500 uppercase tracking-wider mt-2 mb-1">Core Services</span>
-                  {repairServices.map(service => (
+                  {item.dropdownItems?.map(subItem => (
                     <Link 
-                      key={service.href} 
-                      to={service.href} 
-                      onClick={() => setMobileOpen(false)} 
-                      className="text-gray-300 hover:text-emerald-400 text-base font-medium block py-1.5 transition-colors"
-                    >
-                      {service.label}
-                    </Link>
-                  ))}
-
-                  {/* Mobile Tech Guides */}
-                  <span className="text-xs font-bold text-gray-500 uppercase tracking-wider mt-4 mb-1">Tech Guides & Blogs</span>
-                  {techGuides.map(guide => (
-                    <Link 
-                      key={guide.href} 
-                      to={guide.href} 
+                      key={subItem.href} 
+                      to={subItem.href} 
                       onClick={() => setMobileOpen(false)} 
                       className="flex items-center gap-2 text-gray-400 hover:text-emerald-400 text-base font-medium block py-1.5 transition-colors"
                     >
-                      <BookOpen size={14} className="shrink-0" />
-                      {guide.label}
+                      {item.label === 'Tech Guides' && <BookOpen size={14} className="shrink-0" />}
+                      {subItem.label}
                     </Link>
                   ))}
                 </div>
