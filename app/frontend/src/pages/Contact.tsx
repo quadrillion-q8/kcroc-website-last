@@ -3,61 +3,125 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { Phone, Mail, MapPin, Clock, MessageCircle, Send, Star } from 'lucide-react';
-import { useState } from 'react';
+import {
+  Phone,
+  Mail,
+  MapPin,
+  Clock,
+  MessageCircle,
+  Send,
+  Star,
+  Loader2
+} from 'lucide-react';
+import { useMemo, useState } from 'react';
+
+type FormData = {
+  name: string;
+  email: string;
+  phone: string;
+  subject: string;
+  message: string;
+};
+
+const BUSINESS = {
+  name: 'Kuwait Computer Repair on Call',
+  shortName: 'KCROC',
+  phone: '+96555301913',
+  phoneDisplay: '+965 5530 1913',
+  whatsapp: '96555301913',
+  email: 'quadrillion1980@gmail.com',
+  addressLines: [
+    'Hawalli, Ibn Khaldoun St',
+    'Al Mullah Complex',
+    'Basement Shop 19',
+    'Kuwait'
+  ],
+  mapTitle: 'Kuwait Computer Repair on Call - Hawalli, Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19',
+  whatsappUrl: 'https://wa.me/96555301913',
+  reviewsUrl: 'https://share.google/a1XlHbHRHMPrrNfpr',
+  websiteUrl: 'https://www.computerrepairkuwait.com',
+  emergencyText: 'Emergency Computer Repair Needed',
+};
+
+const initialFormData: FormData = {
+  name: '',
+  email: '',
+  phone: '',
+  subject: '',
+  message: '',
+};
 
 export default function Contact() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    subject: '',
-    message: ''
-  });
+  const [formData, setFormData] = useState<FormData>(initialFormData);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const whatsappMessage = useMemo(() => {
+    return `Hello ${BUSINESS.shortName}!
+
+Name: ${formData.name}
+Email: ${formData.email}
+Phone: ${formData.phone}
+Subject: ${formData.subject}
+
+Message: ${formData.message}`;
+  }, [formData]);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const whatsappMessage = `Hello KCROC! \n\nName: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nSubject: ${formData.subject}\n\nMessage: ${formData.message}`;
-    
-    const encodedMessage = encodeURIComponent(whatsappMessage);
-    window.open(`https://wa.me/96555301913?text=${encodedMessage}`, '_blank');
+    setIsSubmitting(true);
+
+    try {
+      const encodedMessage = encodeURIComponent(whatsappMessage);
+      const url = `${BUSINESS.whatsappUrl}?text=${encodedMessage}`;
+      const popup = window.open(url, '_blank', 'noopener,noreferrer');
+
+      if (!popup) {
+        window.location.href = url;
+      }
+    } finally {
+      setTimeout(() => setIsSubmitting(false), 800);
+    }
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
 
   return (
     <div className="min-h-screen bg-gray-950 text-white">
-      {/* Hero Section */}
       <section className="pt-32 pb-16 px-6">
         <div className="max-w-6xl mx-auto text-center">
-          <Badge variant="secondary" className="mb-6 bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 px-4 py-2">
+          <Badge
+            variant="secondary"
+            className="mb-6 bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 px-4 py-2"
+          >
             📞 Get In Touch
           </Badge>
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            Contact <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-emerald-400">KCROC</span>
+            Contact <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-emerald-400">{BUSINESS.name}</span>
           </h1>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Need computer repair services? We're here to help! Reach out through any method below and we'll get back to you quickly.
+            Need computer repair services in Kuwait? Reach out by phone, WhatsApp, or email for quick support and pickup options.
           </p>
         </div>
       </section>
 
-      {/* Contact Section */}
       <section className="py-12 md:py-20 px-6 border-t border-gray-900">
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-start">
-            {/* Contact Form */}
             <Card className="bg-gray-900/40 border border-gray-800/80 rounded-2xl">
               <CardContent className="p-8">
                 <h2 className="text-2xl font-bold mb-4 text-white">Send us a Message</h2>
                 <p className="text-gray-400 mb-6">
-                  Send your issue and we'll reply on WhatsApp or phone with a quick diagnosis and pickup time.
+                  Send your issue and we&apos;ll reply on WhatsApp or phone with a quick diagnosis and pickup time.
                 </p>
+
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
@@ -75,6 +139,7 @@ export default function Contact() {
                         placeholder="Enter your full name"
                       />
                     </div>
+
                     <div>
                       <label className="block text-sm font-medium text-gray-300 mb-2">
                         Phone Number *
@@ -137,17 +202,24 @@ export default function Contact() {
                     />
                   </div>
 
-                  <Button type="submit" size="lg" className="w-full bg-green-500 hover:bg-green-600 text-white font-bold rounded-xl">
-                    <Send className="w-5 h-5 mr-2" />
-                    Send Message via WhatsApp
+                  <Button
+                    type="submit"
+                    size="lg"
+                    disabled={isSubmitting}
+                    className="w-full bg-green-500 hover:bg-green-600 text-white font-bold rounded-xl disabled:opacity-70"
+                  >
+                    {isSubmitting ? (
+                      <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                    ) : (
+                      <Send className="w-5 h-5 mr-2" />
+                    )}
+                    {isSubmitting ? 'Opening WhatsApp...' : 'Send Message via WhatsApp'}
                   </Button>
                 </form>
               </CardContent>
             </Card>
 
-            {/* Contact Information */}
             <div className="space-y-6">
-              {/* Quick Contact */}
               <Card className="bg-gray-900/40 border border-gray-800/80 rounded-2xl">
                 <CardContent className="p-8">
                   <h3 className="text-xl font-bold mb-6 text-white">Quick Contact</h3>
@@ -158,8 +230,8 @@ export default function Contact() {
                       </div>
                       <div>
                         <p className="font-medium text-white">Phone</p>
-                        <a href="tel:+96555301913" className="text-cyan-400 hover:text-cyan-300 transition-colors">
-                          +965 5530 1913
+                        <a href={`tel:${BUSINESS.phone}`} className="text-cyan-400 hover:text-cyan-300 transition-colors">
+                          {BUSINESS.phoneDisplay}
                         </a>
                       </div>
                     </div>
@@ -170,13 +242,13 @@ export default function Contact() {
                       </div>
                       <div>
                         <p className="font-medium text-white">WhatsApp</p>
-                        <a 
-                          href="https://wa.me/96555301913" 
-                          target="_blank" 
+                        <a
+                          href={BUSINESS.whatsappUrl}
+                          target="_blank"
                           rel="noopener noreferrer"
                           className="text-green-400 hover:text-green-300 transition-colors"
                         >
-                          +965 5530 1913
+                          {BUSINESS.phoneDisplay}
                         </a>
                       </div>
                     </div>
@@ -187,12 +259,12 @@ export default function Contact() {
                       </div>
                       <div>
                         <p className="font-medium text-white">Business Email</p>
-                        <a 
-                          href="mailto:quadrillion1980@gmail.com" 
+                        <a
+                          href={`mailto:${BUSINESS.email}`}
                           className="text-purple-400 hover:text-purple-300 transition-colors"
                           title="Business Email"
                         >
-                          quadrillion1980@gmail.com
+                          {BUSINESS.email}
                         </a>
                       </div>
                     </div>
@@ -200,7 +272,6 @@ export default function Contact() {
                 </CardContent>
               </Card>
 
-              {/* Location & Hours */}
               <Card className="bg-gray-900/40 border border-gray-800/80 rounded-2xl">
                 <CardContent className="p-8">
                   <h3 className="text-xl font-bold mb-6 text-white">Visit Our Shop</h3>
@@ -212,13 +283,12 @@ export default function Contact() {
                       <div>
                         <p className="font-medium text-white mb-2">Address</p>
                         <p className="text-gray-300 leading-relaxed">
-                          Kuwait Computer Repair On Call (KCROC)<br />
-                          Al Mullah Complex<br />
-                          Ibn Khaldoun St<br />
-                          Hawalli, Kuwait
-                        </p>
-                        <p className="text-gray-500 text-sm mt-2">
-                          Near Chinese Michael iPhone Repair Shop
+                          {BUSINESS.addressLines.map((line) => (
+                            <span key={line}>
+                              {line}
+                              <br />
+                            </span>
+                          ))}
                         </p>
                       </div>
                     </div>
@@ -239,46 +309,48 @@ export default function Contact() {
                 </CardContent>
               </Card>
 
-              {/* Google Reviews CTA */}
               <Card className="bg-gray-900/40 border border-emerald-500/30 rounded-2xl">
                 <CardContent className="p-8">
                   <div className="flex items-center gap-3 mb-4">
                     <Star className="w-8 h-8 text-yellow-400 fill-current" />
                     <div>
-                      <h3 className="text-xl font-bold text-white">5.0 Rating</h3>
-                      <p className="text-gray-400 text-sm">500+ Google Reviews</p>
+                      <h3 className="text-xl font-bold text-white">Trusted Local Service</h3>
+                      <p className="text-gray-400 text-sm">See customer feedback on Google</p>
                     </div>
                   </div>
                   <p className="text-gray-300 mb-4">
-                    See what our customers say about our service
+                    Browse reviews and customer experiences before booking your repair.
                   </p>
                   <Button asChild className="w-full border border-emerald-500/50 text-emerald-400 hover:bg-emerald-500/10 rounded-xl bg-transparent">
-                    <a href="https://share.google/rE2M4xOsiQQ4mdnLv" target="_blank" rel="noopener noreferrer">
+                    <a href={BUSINESS.reviewsUrl} target="_blank" rel="noopener noreferrer">
                       <Star className="w-4 h-4 mr-2 fill-current" />
-                      View All Reviews on Google
+                      View Reviews on Google
                     </a>
                   </Button>
                 </CardContent>
               </Card>
 
-              {/* Emergency Contact */}
               <Card className="bg-gray-900/40 border border-red-500/30 rounded-2xl">
                 <CardContent className="p-8">
                   <h3 className="text-xl font-bold mb-4 text-white flex items-center gap-2">
                     🚨 Emergency Service
                   </h3>
                   <p className="text-gray-300 mb-4">
-                    Need urgent computer repair for critical business systems or urgent home office issues in Kuwait? We offer emergency services.
+                    Need urgent computer repair for critical business systems or home office issues in Kuwait? We offer emergency support.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-3">
                     <Button asChild size="lg" className="bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl">
-                      <a href="tel:+96555301913">
+                      <a href={`tel:${BUSINESS.phone}`}>
                         <Phone className="w-4 h-4 mr-2" />
                         Emergency Call
                       </a>
                     </Button>
                     <Button asChild size="lg" className="border border-red-500/50 text-red-400 hover:bg-red-500/10 rounded-xl bg-transparent">
-                      <a href="https://wa.me/96555301913?text=Emergency%20Computer%20Repair%20Needed" target="_blank" rel="noopener">
+                      <a
+                        href={`${BUSINESS.whatsappUrl}?text=${encodeURIComponent(BUSINESS.emergencyText)}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
                         <MessageCircle className="w-4 h-4 mr-2" />
                         Emergency WhatsApp
                       </a>
@@ -291,13 +363,12 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* Map Section */}
       <section className="py-12 md:py-20 px-6 border-t border-gray-900">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4 text-white">Find Us on the Map</h2>
             <p className="text-gray-300 max-w-2xl mx-auto">
-              Located in the heart of Hawalli, near Chinese Michael iPhone Repair Shop, with free pickup and delivery across all Kuwait governorates.
+              Located in Hawalli at Al Mullah Complex on Ibn Khaldoun Street, with free pickup and delivery across Kuwait.
             </p>
           </div>
 
@@ -311,14 +382,13 @@ export default function Contact() {
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="KCROC Location - Al Mullah Complex, Ibn Khaldoun St, Hawalli, Kuwait"
+                title={BUSINESS.mapTitle}
               />
             </div>
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
       <section className="py-12 md:py-20 px-6 border-t border-gray-900">
         <div className="max-w-6xl mx-auto">
           <Card className="bg-gray-900/40 border border-gray-800/80 rounded-2xl max-w-4xl mx-auto">
@@ -327,18 +397,17 @@ export default function Contact() {
                 Ready to Get Started?
               </h2>
               <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-                Don't let computer problems slow you down. Contact KCROC today for fast, 
-                reliable repair services with free pickup and delivery across Kuwait.
+                Don&apos;t let computer problems slow you down. Contact {BUSINESS.shortName} today for fast, reliable repair services with free pickup and delivery across Kuwait.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button asChild size="lg" className="bg-green-500 hover:bg-green-600 text-white font-bold rounded-xl px-8 py-6 text-lg">
-                  <a href="tel:+96555301913">
+                  <a href={`tel:${BUSINESS.phone}`}>
                     <Phone className="w-5 h-5 mr-2" />
-                    Call Now: +965 5530 1913
+                    Call Now: {BUSINESS.phoneDisplay}
                   </a>
                 </Button>
                 <Button asChild size="lg" className="bg-green-500 hover:bg-green-600 text-white font-bold rounded-xl px-8 py-6 text-lg">
-                  <a href="https://wa.me/96555301913" target="_blank" rel="noopener">
+                  <a href={BUSINESS.whatsappUrl} target="_blank" rel="noopener noreferrer">
                     <MessageCircle className="w-5 h-5 mr-2" />
                     WhatsApp Us
                   </a>
