@@ -1,3 +1,4 @@
+import { useMemo, useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -11,9 +12,8 @@ import {
   MessageCircle,
   Send,
   Star,
-  Loader2
+  Loader2,
 } from 'lucide-react';
-import { useMemo, useState } from 'react';
 
 type FormData = {
   name: string;
@@ -34,9 +34,10 @@ const BUSINESS = {
     'Hawalli, Ibn Khaldoun St',
     'Al Mullah Complex',
     'Basement Shop 19',
-    'Kuwait'
+    'Kuwait',
   ],
-  mapTitle: 'Kuwait Computer Repair on Call - Hawalli, Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19',
+  mapTitle:
+    'Kuwait Computer Repair on Call - Hawalli, Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19',
   whatsappUrl: 'https://wa.me/96555301913',
   reviewsUrl: 'https://share.google/a1XlHbHRHMPrrNfpr',
   websiteUrl: 'https://www.computerrepairkuwait.com',
@@ -55,18 +56,20 @@ export default function Contact() {
   const [formData, setFormData] = useState<FormData>(initialFormData);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const whatsappMessage = useMemo(() => {
-    return `Hello ${BUSINESS.shortName}!
+  const whatsappMessage = useMemo(
+    () =>
+      `Hello ${BUSINESS.shortName}!
 
 Name: ${formData.name}
 Email: ${formData.email}
 Phone: ${formData.phone}
 Subject: ${formData.subject}
 
-Message: ${formData.message}`;
-  }, [formData]);
+Message: ${formData.message}`,
+    [formData]
+  );
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
 
@@ -79,6 +82,7 @@ Message: ${formData.message}`;
         window.location.href = url;
       }
     } finally {
+      // Small delay just to keep the loading state visible briefly
       setTimeout(() => setIsSubmitting(false), 800);
     }
   };
@@ -95,6 +99,7 @@ Message: ${formData.message}`;
 
   return (
     <div className="min-h-screen bg-gray-950 text-white">
+      {/* Hero / intro */}
       <section className="pt-32 pb-16 px-6">
         <div className="max-w-6xl mx-auto text-center">
           <Badge
@@ -104,31 +109,44 @@ Message: ${formData.message}`;
             📞 Get In Touch
           </Badge>
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            Contact <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-emerald-400">{BUSINESS.name}</span>
+            Contact{' '}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-emerald-400">
+              {BUSINESS.name}
+            </span>
           </h1>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Need computer repair services in Kuwait? Reach out by phone, WhatsApp, or email for quick support and pickup options.
+            Need computer repair services in Kuwait? Reach out by phone,
+            WhatsApp, or email for quick support and pickup options.
           </p>
         </div>
       </section>
 
+      {/* Form + side info */}
       <section className="py-12 md:py-20 px-6 border-t border-gray-900">
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-start">
+            {/* Form card */}
             <Card className="bg-gray-900/40 border border-gray-800/80 rounded-2xl">
               <CardContent className="p-8">
-                <h2 className="text-2xl font-bold mb-4 text-white">Send us a Message</h2>
+                <h2 className="text-2xl font-bold mb-4 text-white">
+                  Send us a Message
+                </h2>
                 <p className="text-gray-400 mb-6">
-                  Send your issue and we'll reply on WhatsApp or phone with a quick diagnosis and pickup time.
+                  Send your issue and we'll reply on WhatsApp or phone with a
+                  quick diagnosis and pickup time.
                 </p>
 
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-sm font-medium text-gray-300 mb-2">
+                      <label
+                        htmlFor="name"
+                        className="block text-sm font-medium text-gray-300 mb-2"
+                      >
                         Full Name *
                       </label>
                       <Input
+                        id="name"
                         type="text"
                         name="name"
                         autoComplete="name"
@@ -141,10 +159,14 @@ Message: ${formData.message}`;
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-gray-300 mb-2">
+                      <label
+                        htmlFor="phone"
+                        className="block text-sm font-medium text-gray-300 mb-2"
+                      >
                         Phone Number *
                       </label>
                       <Input
+                        id="phone"
                         type="tel"
                         name="phone"
                         autoComplete="tel"
@@ -158,10 +180,14 @@ Message: ${formData.message}`;
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-300 mb-2">
+                    <label
+                      htmlFor="email"
+                      className="block text-sm font-medium text-gray-300 mb-2"
+                    >
                       Email Address
                     </label>
                     <Input
+                      id="email"
                       type="email"
                       name="email"
                       autoComplete="email"
@@ -173,10 +199,14 @@ Message: ${formData.message}`;
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-300 mb-2">
+                    <label
+                      htmlFor="subject"
+                      className="block text-sm font-medium text-gray-300 mb-2"
+                    >
                       Subject *
                     </label>
                     <Input
+                      id="subject"
                       type="text"
                       name="subject"
                       value={formData.subject}
@@ -188,10 +218,14 @@ Message: ${formData.message}`;
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-300 mb-2">
+                    <label
+                      htmlFor="message"
+                      className="block text-sm font-medium text-gray-300 mb-2"
+                    >
                       Message *
                     </label>
                     <Textarea
+                      id="message"
                       name="message"
                       value={formData.message}
                       onChange={handleInputChange}
@@ -213,16 +247,22 @@ Message: ${formData.message}`;
                     ) : (
                       <Send className="w-5 h-5 mr-2" />
                     )}
-                    {isSubmitting ? 'Opening WhatsApp...' : 'Send Message via WhatsApp'}
+                    {isSubmitting
+                      ? 'Opening WhatsApp...'
+                      : 'Send Message via WhatsApp'}
                   </Button>
                 </form>
               </CardContent>
             </Card>
 
+            {/* Side column: quick contact, address, rating, emergency */}
             <div className="space-y-6">
+              {/* Quick contact */}
               <Card className="bg-gray-900/40 border border-gray-800/80 rounded-2xl">
                 <CardContent className="p-8">
-                  <h3 className="text-xl font-bold mb-6 text-white">Quick Contact</h3>
+                  <h3 className="text-xl font-bold mb-6 text-white">
+                    Quick Contact
+                  </h3>
                   <div className="space-y-6">
                     <div className="flex items-center gap-4">
                       <div className="w-12 h-12 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-xl flex items-center justify-center">
@@ -230,7 +270,10 @@ Message: ${formData.message}`;
                       </div>
                       <div>
                         <p className="font-medium text-white">Phone</p>
-                        <a href={`tel:${BUSINESS.phone}`} className="text-cyan-400 hover:text-cyan-300 transition-colors">
+                        <a
+                          href={`tel:${BUSINESS.phone}`}
+                          className="text-cyan-400 hover:text-cyan-300 transition-colors"
+                        >
                           {BUSINESS.phoneDisplay}
                         </a>
                       </div>
@@ -272,9 +315,12 @@ Message: ${formData.message}`;
                 </CardContent>
               </Card>
 
+              {/* Address + hours */}
               <Card className="bg-gray-900/40 border border-gray-800/80 rounded-2xl">
                 <CardContent className="p-8">
-                  <h3 className="text-xl font-bold mb-6 text-white">Visit Our Shop</h3>
+                  <h3 className="text-xl font-bold mb-6 text-white">
+                    Visit Our Shop
+                  </h3>
                   <div className="space-y-6">
                     <div className="flex items-start gap-4">
                       <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-red-600 rounded-xl flex items-center justify-center">
@@ -298,7 +344,9 @@ Message: ${formData.message}`;
                         <Clock className="w-6 h-6 text-white" />
                       </div>
                       <div>
-                        <p className="font-medium text-white mb-2">Business Hours</p>
+                        <p className="font-medium text-white mb-2">
+                          Business Hours
+                        </p>
                         <div className="text-gray-300 space-y-1">
                           <p>Saturday - Thursday: 10:00 AM - 10:00 PM</p>
                           <p>Friday: 6:00 PM - 10:00 PM</p>
@@ -309,24 +357,38 @@ Message: ${formData.message}`;
                 </CardContent>
               </Card>
 
-              {/* 4.9 Google Rating Card with 150+ Reviews added back! */}
+              {/* Google rating */}
               <Card className="bg-gray-900/40 border border-emerald-500/30 rounded-2xl">
                 <CardContent className="p-8">
                   <div className="flex items-center gap-3 mb-4">
                     <Star className="w-8 h-8 text-yellow-400 fill-current" />
                     <div>
                       <div className="flex items-baseline gap-2">
-                        <h3 className="text-xl font-bold text-white">4.9 Google Rating</h3>
-                        <span className="text-emerald-400 font-semibold text-sm">(150+ Reviews)</span>
+                        <h3 className="text-xl font-bold text-white">
+                          4.9 Google Rating
+                        </h3>
+                        <span className="text-emerald-400 font-semibold text-sm">
+                          (150+ Reviews)
+                        </span>
                       </div>
-                      <p className="text-gray-400 text-sm">Top-rated by Kuwait locals</p>
+                      <p className="text-gray-400 text-sm">
+                        Top-rated by Kuwait locals
+                      </p>
                     </div>
                   </div>
                   <p className="text-gray-300 mb-4">
-                    We take pride in our service. Browse our real customer feedback before booking your repair.
+                    We take pride in our service. Browse our real customer
+                    feedback before booking your repair.
                   </p>
-                  <Button asChild className="w-full border border-emerald-500/50 text-emerald-400 hover:bg-emerald-500/10 rounded-xl bg-transparent">
-                    <a href={BUSINESS.reviewsUrl} target="_blank" rel="noopener noreferrer">
+                  <Button
+                    asChild
+                    className="w-full border border-emerald-500/50 text-emerald-400 hover:bg-emerald-500/10 rounded-xl bg-transparent"
+                  >
+                    <a
+                      href={BUSINESS.reviewsUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       <Star className="w-4 h-4 mr-2 fill-current" />
                       View Reviews on Google
                     </a>
@@ -334,24 +396,36 @@ Message: ${formData.message}`;
                 </CardContent>
               </Card>
 
+              {/* Emergency card */}
               <Card className="bg-gray-900/40 border border-red-500/30 rounded-2xl">
                 <CardContent className="p-8">
                   <h3 className="text-xl font-bold mb-4 text-white flex items-center gap-2">
                     🚨 Emergency Service
                   </h3>
                   <p className="text-gray-300 mb-4">
-                    Need urgent computer repair for critical business systems or home office issues in Kuwait? We offer emergency support.
+                    Need urgent computer repair for critical business systems or
+                    home office issues in Kuwait? We offer emergency support.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-3">
-                    <Button asChild size="lg" className="bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl">
+                    <Button
+                      asChild
+                      size="lg"
+                      className="bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl"
+                    >
                       <a href={`tel:${BUSINESS.phone}`}>
                         <Phone className="w-4 h-4 mr-2" />
                         Emergency Call
                       </a>
                     </Button>
-                    <Button asChild size="lg" className="border border-red-500/50 text-red-400 hover:bg-red-500/10 rounded-xl bg-transparent">
+                    <Button
+                      asChild
+                      size="lg"
+                      className="border border-red-500/50 text-red-400 hover:bg-red-500/10 rounded-xl bg-transparent"
+                    >
                       <a
-                        href={`${BUSINESS.whatsappUrl}?text=${encodeURIComponent(BUSINESS.emergencyText)}`}
+                        href={`${BUSINESS.whatsappUrl}?text=${encodeURIComponent(
+                          BUSINESS.emergencyText
+                        )}`}
                         target="_blank"
                         rel="noopener noreferrer"
                       >
@@ -367,13 +441,16 @@ Message: ${formData.message}`;
         </div>
       </section>
 
-      {/* Map Section with live source link preserved! */}
+      {/* Map */}
       <section className="py-12 md:py-20 px-6 border-t border-gray-900">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4 text-white">Find Us on the Map</h2>
+            <h2 className="text-3xl font-bold mb-4 text-white">
+              Find Us on the Map
+            </h2>
             <p className="text-gray-300 max-w-2xl mx-auto">
-              Located in Hawalli at Al Mullah Complex on Ibn Khaldoun Street, with free pickup and delivery across Kuwait.
+              Located in Hawalli at Al Mullah Complex on Ibn Khaldoun Street,
+              with free pickup and delivery across Kuwait.
             </p>
           </div>
 
@@ -394,6 +471,7 @@ Message: ${formData.message}`;
         </div>
       </section>
 
+      {/* Bottom CTA */}
       <section className="py-12 md:py-20 px-6 border-t border-gray-900">
         <div className="max-w-6xl mx-auto">
           <Card className="bg-gray-900/40 border border-gray-800/80 rounded-2xl max-w-4xl mx-auto">
@@ -402,17 +480,31 @@ Message: ${formData.message}`;
                 Ready to Get Started?
               </h2>
               <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-                Don't let computer problems slow you down. Contact {BUSINESS.shortName} today for fast, reliable repair services with free pickup and delivery across Kuwait.
+                Don't let computer problems slow you down. Contact{' '}
+                {BUSINESS.shortName} today for fast, reliable repair services
+                with free pickup and delivery across Kuwait.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button asChild size="lg" className="bg-green-500 hover:bg-green-600 text-white font-bold rounded-xl px-8 py-6 text-lg">
+                <Button
+                  asChild
+                  size="lg"
+                  className="bg-green-500 hover:bg-green-600 text-white font-bold rounded-xl px-8 py-6 text-lg"
+                >
                   <a href={`tel:${BUSINESS.phone}`}>
                     <Phone className="w-5 h-5 mr-2" />
                     Call Now: {BUSINESS.phoneDisplay}
                   </a>
                 </Button>
-                <Button asChild size="lg" className="bg-green-500 hover:bg-green-600 text-white font-bold rounded-xl px-8 py-6 text-lg">
-                  <a href={BUSINESS.whatsappUrl} target="_blank" rel="noopener noreferrer">
+                <Button
+                  asChild
+                  size="lg"
+                  className="bg-green-500 hover:bg-green-600 text-white font-bold rounded-xl px-8 py-6 text-lg"
+                >
+                  <a
+                    href={BUSINESS.whatsappUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <MessageCircle className="w-5 h-5 mr-2" />
                     WhatsApp Us
                   </a>
