@@ -309,7 +309,6 @@ Message: ${formData.message}`;
                 </CardContent>
               </Card>
 
-              {/* UPDATED: 4.9 Google Rating Card */}
               <Card className="bg-gray-900/40 border border-emerald-500/30 rounded-2xl">
                 <CardContent className="p-8">
                   <div className="flex items-center gap-3 mb-4">
@@ -364,6 +363,7 @@ Message: ${formData.message}`;
         </div>
       </section>
 
+      {/* Map Section with live source link */}
       <section className="py-12 md:py-20 px-6 border-t border-gray-900">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
@@ -374,10 +374,9 @@ Message: ${formData.message}`;
           </div>
 
           <div className="max-w-4xl mx-auto">
-            <div className="rounded-2xl overflow-hidden border border-gray-800/80">
-              {/* Note: This iframe src might need an actual Google Maps embed link to display properly! */}
+            <div className="rounded-2xl overflow-hidden border border-gray-800/80 shadow-2xl">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1738.9867253939326!2d48.00931473858233!3d29.341773831937658!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3fcf9b4a9072aacd%3A0x368691a3a1f0ca66!2sKuwait%20Computer%20Repair%20on%20Call!5e0!3m2!1sen!2skw!4v1769645097684!5m2!1sen!2skw"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3477.976237935758!2d48.00761257498341!3d29.3416921515256!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3fcf9b4a9072aacd%3A0x368691a3a1f0ca66!2sKuwait%20Computer%20Repair%20on%20Call!5e0!3m2!1sen!2skw!4v1780875998873!5m2!1sen!2skw"
                 width="100%"
                 height="450"
                 style={{ border: 0 }}
