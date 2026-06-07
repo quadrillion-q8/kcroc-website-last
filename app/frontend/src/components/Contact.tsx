@@ -207,7 +207,7 @@ export default function Contact() {
                     <p>✓ Certified Technicians</p>
                     <p>✓ Data Privacy Guaranteed</p>
                     <p>✓ Warranty on All Repairs</p>
-                    <p>✓ 500+ Satisfied Customers</p>
+                    <p>✓ 100% Satisfaction Focus</p>
                   </div>
                 </div>
               </CardContent>
