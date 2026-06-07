@@ -99,7 +99,7 @@ const App = () => (
               <ul>
                 <li>📞 <a href="tel:+96555301913">+965 5530 1913</a></li>
                 <li title="Business Email">✉️ <a href="mailto:quadrillion1980@gmail.com">quadrillion1980@gmail.com</a> <span style={{ fontSize: '0.75rem', color: '#94a3b8', marginLeft: '0.25rem' }}>(Business Email)</span></li>
-                <li>📍 Al Mullah Complex, Ibn Khaldoun St, Hawalli, Kuwait</li>
+                <li>📍 Hawalli, Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19</li>
               </ul>
             </div>
 
@@ -118,7 +118,7 @@ const App = () => (
             <p>&copy; {new Date().getFullYear()} KCROC - Kuwait Computer Repair On Call. All rights reserved.</p>
             <div className="footer-social">
               <a 
-                href="https://www.facebook.com/profile.php?id=61572103117031" 
+                href="https://www.facebook.com/computerrepairkuwait" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 aria-label="Follow us on Facebook"
@@ -126,7 +126,7 @@ const App = () => (
                 <span>📘</span>
               </a>
               <a 
-                href="https://www.instagram.com/quadrillion.q8/" 
+                href="https://www.instagram.com/computerrepairkuwait" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 aria-label="Follow us on Instagram"
