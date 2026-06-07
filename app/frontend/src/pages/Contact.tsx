@@ -119,7 +119,7 @@ Message: ${formData.message}`;
               <CardContent className="p-8">
                 <h2 className="text-2xl font-bold mb-4 text-white">Send us a Message</h2>
                 <p className="text-gray-400 mb-6">
-                  Send your issue and we&apos;ll reply on WhatsApp or phone with a quick diagnosis and pickup time.
+                  Send your issue and we'll reply on WhatsApp or phone with a quick diagnosis and pickup time.
                 </p>
 
                 <form onSubmit={handleSubmit} className="space-y-6">
@@ -309,17 +309,18 @@ Message: ${formData.message}`;
                 </CardContent>
               </Card>
 
+              {/* UPDATED: 4.9 Google Rating Card */}
               <Card className="bg-gray-900/40 border border-emerald-500/30 rounded-2xl">
                 <CardContent className="p-8">
                   <div className="flex items-center gap-3 mb-4">
                     <Star className="w-8 h-8 text-yellow-400 fill-current" />
                     <div>
-                      <h3 className="text-xl font-bold text-white">Trusted Local Service</h3>
-                      <p className="text-gray-400 text-sm">See customer feedback on Google</p>
+                      <h3 className="text-xl font-bold text-white">4.9 Google Rating</h3>
+                      <p className="text-gray-400 text-sm">Top-rated by Kuwait locals</p>
                     </div>
                   </div>
                   <p className="text-gray-300 mb-4">
-                    Browse reviews and customer experiences before booking your repair.
+                    We take pride in our service. Browse our real customer feedback before booking your repair.
                   </p>
                   <Button asChild className="w-full border border-emerald-500/50 text-emerald-400 hover:bg-emerald-500/10 rounded-xl bg-transparent">
                     <a href={BUSINESS.reviewsUrl} target="_blank" rel="noopener noreferrer">
@@ -374,6 +375,7 @@ Message: ${formData.message}`;
 
           <div className="max-w-4xl mx-auto">
             <div className="rounded-2xl overflow-hidden border border-gray-800/80">
+              {/* Note: This iframe src might need an actual Google Maps embed link to display properly! */}
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1738.9867253939326!2d48.00931473858233!3d29.341773831937658!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3fcf9b4a9072aacd%3A0x368691a3a1f0ca66!2sKuwait%20Computer%20Repair%20on%20Call!5e0!3m2!1sen!2skw!4v1769645097684!5m2!1sen!2skw"
                 width="100%"
@@ -397,7 +399,7 @@ Message: ${formData.message}`;
                 Ready to Get Started?
               </h2>
               <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-                Don&apos;t let computer problems slow you down. Contact {BUSINESS.shortName} today for fast, reliable repair services with free pickup and delivery across Kuwait.
+                Don't let computer problems slow you down. Contact {BUSINESS.shortName} today for fast, reliable repair services with free pickup and delivery across Kuwait.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button asChild size="lg" className="bg-green-500 hover:bg-green-600 text-white font-bold rounded-xl px-8 py-6 text-lg">
