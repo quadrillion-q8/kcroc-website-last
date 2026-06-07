@@ -309,12 +309,16 @@ Message: ${formData.message}`;
                 </CardContent>
               </Card>
 
+              {/* 4.9 Google Rating Card with 150+ Reviews added back! */}
               <Card className="bg-gray-900/40 border border-emerald-500/30 rounded-2xl">
                 <CardContent className="p-8">
                   <div className="flex items-center gap-3 mb-4">
                     <Star className="w-8 h-8 text-yellow-400 fill-current" />
                     <div>
-                      <h3 className="text-xl font-bold text-white">4.9 Google Rating</h3>
+                      <div className="flex items-baseline gap-2">
+                        <h3 className="text-xl font-bold text-white">4.9 Google Rating</h3>
+                        <span className="text-emerald-400 font-semibold text-sm">(150+ Reviews)</span>
+                      </div>
                       <p className="text-gray-400 text-sm">Top-rated by Kuwait locals</p>
                     </div>
                   </div>
@@ -363,7 +367,7 @@ Message: ${formData.message}`;
         </div>
       </section>
 
-      {/* Map Section with live source link */}
+      {/* Map Section with live source link preserved! */}
       <section className="py-12 md:py-20 px-6 border-t border-gray-900">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
