@@ -291,28 +291,6 @@ export default function Hero() {
           </div>
         </div>
       </section>
-
-      {/* Sticky Bottom Bar - Mobile Only */}
-      <div className="fixed bottom-0 left-0 right-0 z-50 lg:hidden bg-white shadow-lg border-t border-gray-200">
-        <div className="flex h-16">
-          <a 
-            href="tel:+96555301913" 
-            className="flex-1 flex items-center justify-center gap-2 bg-blue-600 text-white font-bold text-lg hover:bg-blue-700 transition-colors min-h-[44px]"
-          >
-            <Phone className="w-5 h-5" />
-            Call
-          </a>
-          <a 
-            href="https://wa.me/96555301913" 
-            target="_blank" 
-            rel="noopener" 
-            className="flex-1 flex items-center justify-center gap-2 bg-green-600 text-white font-bold text-lg hover:bg-green-700 transition-colors min-h-[44px]"
-          >
-            <MessageCircle className="w-5 h-5" />
-            WhatsApp
-          </a>
-        </div>
-      </div>
     </>
   );
 }
