@@ -22,11 +22,11 @@ export default function Header() {
     { href: '/battery-replacement', label: 'Battery Replacement Guide' },
   ];
 
-  // Upgraded primaryNav structure to support multiple dynamic dropdowns
+  // Upgraded primaryNav structure: "Tech Guides" renamed to "Blogs"
   const primaryNav = [
     { href: '/', label: 'Home' },
     { href: '#', label: 'Services', isDropdown: true, dropdownItems: repairServices },
-    { href: '#', label: 'Tech Guides', isDropdown: true, dropdownItems: techGuides },
+    { href: '#', label: 'Blogs', isDropdown: true, dropdownItems: techGuides },
     { href: '/pricing', label: 'Pricing' },
     { href: '/about', label: 'About' },
     { href: '/gallery', label: 'Gallery' },
@@ -99,8 +99,8 @@ export default function Header() {
                           to={subItem.href} 
                           className="text-gray-300 hover:text-emerald-400 hover:bg-gray-800/50 px-4 py-3 rounded-lg text-sm font-medium transition-colors flex items-center gap-2"
                         >
-                          {/* Render book icon only in the Tech Guides dropdown */}
-                          {item.label === 'Tech Guides' && <BookOpen size={14} className="shrink-0" />}
+                          {/* Render book icon only in the Blogs dropdown */}
+                          {item.label === 'Blogs' && <BookOpen size={14} className="shrink-0" />}
                           {subItem.label}
                         </Link>
                       ))}
@@ -171,7 +171,7 @@ export default function Header() {
                       onClick={() => setMobileOpen(false)} 
                       className="flex items-center gap-2 text-gray-400 hover:text-emerald-400 text-base font-medium block py-1.5 transition-colors"
                     >
-                      {item.label === 'Tech Guides' && <BookOpen size={14} className="shrink-0" />}
+                      {item.label === 'Blogs' && <BookOpen size={14} className="shrink-0" />}
                       {subItem.label}
                     </Link>
                   ))}
