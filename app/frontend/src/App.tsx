@@ -21,7 +21,6 @@ const GamingPC = lazy(() => import('./pages/GamingPC'));
 const WebDesignKuwait = lazy(() => import('./pages/WebDesignKuwait'));
 const LaptopRepair = lazy(() => import('./pages/LaptopRepair'));
 const MacBookRepair = lazy(() => import('./pages/MacBookRepair'));
-const ScreenReplacement = lazy(() => import('./pages/ScreenReplacement'));
 const PrivacySecurity = lazy(() => import('./pages/PrivacySecurity'));
 const MotherboardRepair = lazy(() => import('./pages/MotherboardRepair'));
 const BlogScreenProtection = lazy(() => import('./pages/BlogScreenProtection'));
@@ -49,7 +48,6 @@ const App = () => (
             <Route path="/web-design-kuwait" element={<WebDesignKuwait />} />
             <Route path="/laptop-repair-hawalli-kuwait" element={<LaptopRepair />} />
             <Route path="/macbook-repair" element={<MacBookRepair />} />
-            <Route path="/screen-replacement" element={<ScreenReplacement />} />
             <Route path="/data-security" element={<PrivacySecurity />} />
             <Route path="/chip-level-motherboard-repair-hawalli" element={<MotherboardRepair />} />
             <Route path="/blog/how-to-protect-laptop-screen" element={<BlogScreenProtection />} />
