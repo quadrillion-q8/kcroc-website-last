@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { 
   Cpu, Gamepad2, Laptop, Monitor, Database, ShieldAlert, Star, 
-  MessageCircle, Truck, Shield, Package, ThumbsUp, Sparkles, Gauge
+  MessageCircle, BookOpen, Phone
 } from 'lucide-react';
 
 // --- Static Data ---
@@ -60,95 +60,45 @@ export default function Home() {
     return () => observer.disconnect();
   }, []);
 
-  // --- Dynamic JSON-LD Schema Generation ---
-  const localBusinessSchema = {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "KCROC - Kuwait Computer Repair On Call",
-    "image": "https://res.cloudinary.com/dsbwzags3/image/upload/v1769908596/logo_btpfls.png",
-    "@id": "https://www.computerrepairkuwait.com/#business",
-    "url": "https://www.computerrepairkuwait.com",
-    "telephone": "+96555301913",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Al Mullah Complex, Ibn Khaldoun St",
-      "addressLocality": "Hawalli",
-      "addressCountry": "KW"
-    },
-    "openingHoursSpecification": [
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"],
-        "opens": "10:00",
-        "closes": "22:00"
-      },
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": "Friday",
-        "opens": "18:00",
-        "closes": "22:00"
-      }
-    ]
-  };
-
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": faqs.map((faq) => ({
-      "@type": "Question",
-      "name": faq.question,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": faq.answer
-      }
-    }))
-  };
-
   return (
     <div className="min-h-screen bg-gray-950 text-white">
-      {/* SEO, Localization & JSON-LD Injection */}
       <Helmet htmlAttributes={{ lang: 'en' }}>
         <title>Expert Computer & Laptop Repair in Kuwait | KCROC</title>
-        <meta name="description" content="Professional diagnostics and free pickup/delivery anywhere in Kuwait. Same-day laptop, MacBook & PC repair." />
-        <link rel="canonical" href="https://www.computerrepairkuwait.com" />
-        
-        {/* Hreflang and Localization Signals */}
-        <meta property="og:locale" content="en_KW" />
-        <meta property="og:locale:alternate" content="ar_KW" />
-        <link rel="alternate" hreflang="en-kw" href="https://www.computerrepairkuwait.com" />
-        <link rel="alternate" hreflang="ar-kw" href="https://www.computerrepairkuwait.com/ar" />
-        <link rel="alternate" hreflang="x-default" href="https://www.computerrepairkuwait.com" />
-
-        <script type="application/ld+json">
-          {JSON.stringify(localBusinessSchema)}
-        </script>
-        <script type="application/ld+json">
-          {JSON.stringify(faqSchema)}
-        </script>
+        <meta name="description" content="Professional diagnostics and free pickup/delivery anywhere in Kuwait. Same-day laptop, MacBook & PC repair. 4.9 Star Rated." />
       </Helmet>
       
       {/* Hero */}
-      <section className="py-24 bg-gradient-to-br from-gray-900 to-black text-center">
+      <section className="py-24 bg-gradient-to-br from-gray-900 to-black text-center px-6">
         <h1 className="text-4xl md:text-7xl font-black">Kuwait Computer Repair On Call</h1>
         <p className="mt-6 text-xl text-gray-400">Professional diagnostics and free pickup/delivery anywhere in Kuwait.</p>
         <div className="flex justify-center gap-4 mt-8">
-            <a href="https://wa.me/96555301913" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 h-10 px-8 py-2 bg-green-500 text-white hover:bg-green-600">
-              <MessageCircle className="mr-2 h-5 w-5" /> WhatsApp Us
+            <a href="https://wa.me/96555301913" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 bg-green-500 px-8 py-3 rounded-xl font-bold hover:bg-green-600 transition-all">
+              <MessageCircle className="h-5 w-5" /> WhatsApp Us
             </a>
-            <a href="tel:+96555301913" className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 h-10 px-8 py-2 bg-emerald-700 text-white hover:bg-emerald-600">
-              Call Now
+            <a href="tel:+96555301913" className="flex items-center gap-2 bg-emerald-700 px-8 py-3 rounded-xl font-bold hover:bg-emerald-600 transition-all">
+              <Phone className="h-5 w-5" /> Call Now
             </a>
         </div>
       </section>
 
-      {/* Stats */}
+      {/* UPDATED: Reputation Stats */}
       <section ref={statsRef} className="py-12 max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 border-y border-gray-800">
-        {[ { end: 500, suf: '+', label: 'Repairs' }, { end: 98, suf: '%', label: 'Success' }, { end: 0, suf: ' KD', label: 'Pick & Drop' }, { end: 30, suf: ' Days', label: 'Warranty' } ].map((s, i) => (
-          <div key={i} className="text-center">
-            <div className="text-4xl font-bold"><Counter end={s.end} suffix={s.suf} animated={statsAnimated} /></div>
-            <div className="text-sm text-gray-400 uppercase mt-2">{s.label}</div>
-          </div>
-        ))}
+        <div className="text-center">
+          <div className="text-4xl font-bold text-emerald-400">4.9</div>
+          <div className="text-sm text-gray-400 uppercase mt-2">Google Rating</div>
+        </div>
+        <div className="text-center">
+          <div className="text-4xl font-bold"><Counter end={150} suffix="+" animated={statsAnimated} /></div>
+          <div className="text-sm text-gray-400 uppercase mt-2">Verified Reviews</div>
+        </div>
+        <div className="text-center">
+          <div className="text-4xl font-bold">Free</div>
+          <div className="text-sm text-gray-400 uppercase mt-2">Pick & Drop</div>
+        </div>
+        <div className="text-center">
+          <div className="text-4xl font-bold">30 Days</div>
+          <div className="text-sm text-gray-400 uppercase mt-2">Warranty</div>
+        </div>
       </section>
 
       {/* Services Grid */}
