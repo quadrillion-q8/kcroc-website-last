@@ -24,6 +24,7 @@ const MacBookRepair = lazy(() => import('./pages/MacBookRepair'));
 const ScreenReplacement = lazy(() => import('./pages/ScreenReplacement'));
 const PrivacySecurity = lazy(() => import('./pages/PrivacySecurity'));
 const MotherboardRepair = lazy(() => import('./pages/MotherboardRepair'));
+const BlogScreenProtection = lazy(() => import('./pages/BlogScreenProtection'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 import './styles/kcroc.css';
@@ -31,9 +32,7 @@ import './styles/kcroc.css';
 const App = () => (
   <HelmetProvider>
     <BrowserRouter>
-      {/* Layout handles: Header, Main Content Padding, Footer, FloatingActions
-         Everything inside <Layout> will be passed as 'children'
-      */}
+      {/* Layout handles: Header, Main Content Padding, Footer, FloatingActions */}
       <Layout>
         <Suspense fallback={<div className="p-20 text-center text-emerald-500">Loading...</div>}>
           <Routes>
@@ -53,12 +52,12 @@ const App = () => (
             <Route path="/screen-replacement" element={<ScreenReplacement />} />
             <Route path="/data-security" element={<PrivacySecurity />} />
             <Route path="/chip-level-motherboard-repair-hawalli" element={<MotherboardRepair />} />
+            <Route path="/blog/how-to-protect-laptop-screen" element={<BlogScreenProtection />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
       </Layout>
       
-      {/* Analytics components are global and don't need to be in the layout */}
       <Analytics />
       <SpeedInsights />
     </BrowserRouter>
