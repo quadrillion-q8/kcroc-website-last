@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { 
   Cpu, Gamepad2, Laptop, Monitor, Database, ShieldAlert, Star, 
-  MessageCircle, BookOpen, Phone
+  MessageCircle, Phone, ArrowRight, CheckCircle2
 } from 'lucide-react';
 
 // --- Static Data ---
@@ -30,7 +30,6 @@ const reviews = [
   { name: 'Ayman Elnagar', text: 'The best IT support and laptop repair shop I’ve visited in Kuwait.', rating: 5 }
 ];
 
-// --- Counter Component ---
 const Counter = ({ end, suffix = '', animated }: { end: number; suffix?: string; animated: boolean }) => {
   const [count, setCount] = useState(0);
   useEffect(() => {
@@ -61,86 +60,81 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-950 text-white">
-      <Helmet htmlAttributes={{ lang: 'en' }}>
+    <div className="min-h-screen bg-gray-950 text-white font-sans">
+      <Helmet>
         <title>Expert Computer & Laptop Repair in Kuwait | KCROC</title>
-        <meta name="description" content="Professional diagnostics and free pickup/delivery anywhere in Kuwait. Same-day laptop, MacBook & PC repair. 4.9 Star Rated." />
+        <meta name="description" content="Professional diagnostics and free pickup/delivery anywhere in Kuwait. 4.9 Star Rated." />
       </Helmet>
       
       {/* Hero */}
-      <section className="py-24 bg-gradient-to-br from-gray-900 to-black text-center px-6">
-        <h1 className="text-4xl md:text-7xl font-black">Kuwait Computer Repair On Call</h1>
-        <p className="mt-6 text-xl text-gray-400">Professional diagnostics and free pickup/delivery anywhere in Kuwait.</p>
-        <div className="flex justify-center gap-4 mt-8">
-            <a href="https://wa.me/96555301913" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 bg-green-500 px-8 py-3 rounded-xl font-bold hover:bg-green-600 transition-all">
+      <section className="pt-32 pb-20 px-6 text-center">
+        <div className="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/20 px-4 py-1.5 rounded-full text-emerald-400 text-sm font-medium mb-6">
+          <Star size={14} className="fill-emerald-400" />
+          <span>Rated 4.9/5 by 150+ Kuwait Customers</span>
+        </div>
+        <h1 className="text-5xl md:text-7xl font-black max-w-4xl mx-auto tracking-tight">
+          Reliable Computer Repair <span className="text-emerald-500">On Call</span>
+        </h1>
+        <p className="mt-6 text-xl text-gray-400 max-w-2xl mx-auto">
+          Professional hardware diagnostics and free pick & drop service anywhere in Kuwait.
+        </p>
+        <div className="flex flex-col sm:flex-row justify-center gap-4 mt-10">
+            <a href="https://wa.me/96555301913" className="flex items-center justify-center gap-2 bg-green-500 px-8 py-4 rounded-full font-bold text-lg hover:bg-green-600 transition-all shadow-lg hover:shadow-green-500/20">
               <MessageCircle className="h-5 w-5" /> WhatsApp Us
             </a>
-            <a href="tel:+96555301913" className="flex items-center gap-2 bg-emerald-700 px-8 py-3 rounded-xl font-bold hover:bg-emerald-600 transition-all">
+            <a href="tel:+96555301913" className="flex items-center justify-center gap-2 bg-gray-800 px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-700 transition-all border border-gray-700">
               <Phone className="h-5 w-5" /> Call Now
             </a>
         </div>
       </section>
 
-      {/* UPDATED: Reputation Stats */}
-      <section ref={statsRef} className="py-12 max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 border-y border-gray-800">
-        <div className="text-center">
-          <div className="text-4xl font-bold text-emerald-400">4.9</div>
-          <div className="text-sm text-gray-400 uppercase mt-2">Google Rating</div>
-        </div>
-        <div className="text-center">
-          <div className="text-4xl font-bold"><Counter end={150} suffix="+" animated={statsAnimated} /></div>
-          <div className="text-sm text-gray-400 uppercase mt-2">Verified Reviews</div>
-        </div>
-        <div className="text-center">
-          <div className="text-4xl font-bold">Free</div>
-          <div className="text-sm text-gray-400 uppercase mt-2">Pick & Drop</div>
-        </div>
-        <div className="text-center">
-          <div className="text-4xl font-bold">30 Days</div>
-          <div className="text-sm text-gray-400 uppercase mt-2">Warranty</div>
-        </div>
+      {/* Stats Section */}
+      <section ref={statsRef} className="py-12 max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 px-6">
+        {[ { end: 4.9, suf: '', label: 'Rating' }, { end: 150, suf: '+', label: 'Verified Reviews' }, { end: 0, suf: ' KD', label: 'Free Pick & Drop' }, { end: 30, suf: ' Days', label: 'Warranty' } ].map((s, i) => (
+          <div key={i} className="bg-gray-900/40 p-6 rounded-2xl border border-gray-800 text-center hover:border-emerald-500/30 transition-colors">
+            <div className="text-4xl font-black text-white"><Counter end={s.end} suffix={s.suf} animated={statsAnimated} /></div>
+            <div className="text-xs text-gray-400 uppercase tracking-widest mt-2">{s.label}</div>
+          </div>
+        ))}
       </section>
 
       {/* Services Grid */}
       <section className="py-20 max-w-6xl mx-auto px-6">
-        <h2 className="text-3xl font-bold text-center mb-12">Professional Hardware Solutions</h2>
-        <div className="grid md:grid-cols-3 gap-6">
+        <h2 className="text-4xl font-bold text-center mb-4">Professional Hardware Solutions</h2>
+        <p className="text-gray-400 text-center mb-16">High-precision repairs for laptops, desktops, and gaming rigs.</p>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((s, i) => (
-            <Link key={i} to={s.path} className="bg-gray-900/40 p-6 rounded-2xl border border-gray-800 hover:border-emerald-500 transition-all group">
-              <s.icon className="w-10 h-10 mb-4 text-emerald-400 group-hover:scale-110 transition-transform" />
-              <h3 className="text-xl font-bold mb-2">{s.title}</h3>
-              <p className="text-gray-400 text-sm">{s.description}</p>
+            <Link key={i} to={s.path} className="bg-gray-900/30 p-8 rounded-3xl border border-gray-800 hover:border-emerald-500/50 hover:bg-gray-900/60 transition-all group">
+              <div className="bg-gray-800/50 w-14 h-14 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-emerald-500/20 transition-colors">
+                <s.icon className="w-7 h-7 text-emerald-400" />
+              </div>
+              <h3 className="text-xl font-bold mb-3">{s.title}</h3>
+              <p className="text-gray-400 text-sm leading-relaxed mb-4">{s.description}</p>
+              <div className="text-emerald-500 text-sm font-bold flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                Learn more <ArrowRight size={14} />
+              </div>
             </Link>
           ))}
         </div>
       </section>
 
-      {/* Reviews */}
-      <section className="py-20 max-w-6xl mx-auto px-6 border-t border-gray-800">
-        <h2 className="text-3xl font-bold text-center mb-12">What Our Customers Say</h2>
-        <div className="grid md:grid-cols-3 gap-6">
+      {/* Reviews Section */}
+      <section className="py-20 max-w-6xl mx-auto px-6 border-t border-gray-900">
+        <h2 className="text-4xl font-bold text-center mb-16">What Our Customers Say</h2>
+        <div className="grid md:grid-cols-3 gap-8">
           {reviews.map((r, i) => (
-            <div key={i} className="bg-gray-900/40 p-6 rounded-2xl border border-gray-800">
-              <div className="flex text-yellow-500 mb-4">{[...Array(r.rating)].map((_, i) => <Star key={i} className="w-4 h-4 fill-current" />)}</div>
-              <p className="text-gray-300 italic mb-4">"{r.text}"</p>
-              <p className="font-bold text-emerald-400">- {r.name}</p>
+            <div key={i} className="bg-gray-900/40 p-8 rounded-3xl border border-gray-800 flex flex-col h-full">
+              <div className="flex text-yellow-500 mb-6 gap-1">
+                {[...Array(r.rating)].map((_, i) => <Star key={i} className="w-5 h-5 fill-current" />)}
+              </div>
+              <p className="text-gray-300 italic mb-8 flex-grow">"{r.text}"</p>
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center font-bold text-emerald-400">
+                  {r.name.charAt(0)}
+                </div>
+                <p className="font-bold">{r.name}</p>
+              </div>
             </div>
-          ))}
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <section className="py-20 max-w-3xl mx-auto px-6 border-t border-gray-800">
-        <h2 className="text-3xl font-bold text-center mb-12">Frequently Asked Questions</h2>
-        <div className="space-y-4">
-          {faqs.map((f, i) => (
-            <details key={i} className="bg-gray-900/40 p-5 rounded-lg cursor-pointer group">
-              <summary className="font-bold list-none flex justify-between items-center">
-                {f.question}
-                <span className="text-emerald-500 group-open:rotate-45 transition-transform duration-300">+</span>
-              </summary>
-              <p className="text-gray-400 text-sm mt-3 leading-relaxed">{f.answer}</p>
-            </details>
           ))}
         </div>
       </section>
