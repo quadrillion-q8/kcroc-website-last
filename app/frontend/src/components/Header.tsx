@@ -40,7 +40,7 @@ export default function Header() {
   }, [location.pathname]);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-gray-950/80 backdrop-blur-md border-b border-gray-800 h-20 flex items-center">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-gray-950/80 backdrop-blur-md border-b border-gray-800 h-20 flex items-center transition-all duration-300">
       <div className="container mx-auto px-6 flex justify-between items-center w-full">
         {/* Logo */}
         <Link to="/" className="shrink-0 transition-opacity hover:opacity-90">
@@ -89,7 +89,7 @@ export default function Header() {
                       <Link 
                         key={subItem.href} 
                         to={subItem.href} 
-                        className="text-gray-400 hover:text-white hover:bg-gray-800 px-4 py-3 rounded-lg text-sm font-medium transition-colors flex items-center gap-2"
+                        className="text-gray-400 hover:text-white hover:bg-gray-800 px-4 py-3 rounded-xl text-sm font-medium transition-colors flex items-center gap-2"
                       >
                         {item.label === 'Blogs' && <BookOpen size={14} />}
                         {subItem.label}
