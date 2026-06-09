@@ -1,7 +1,6 @@
 import React, { ReactNode } from 'react';
 import Header from './Header';
-// If you have a Footer component, keep this import:
-// import Footer from './Footer'; 
+import Footer from './Footer'; // Restored the Footer import
 
 interface LayoutProps {
   children: ReactNode;
@@ -9,21 +8,16 @@ interface LayoutProps {
 
 export default function Layout({ children }: LayoutProps) {
   return (
-    // Changed from gray-950 to slate-950 for a richer, more premium background
-    <div className="min-h-screen bg-slate-950 text-slate-200 font-sans selection:bg-cyan-500/30">
+    <div className="min-h-screen bg-slate-950 text-slate-200 font-sans selection:bg-cyan-500/30 flex flex-col">
       <Header />
       
-      {/* This wrapper ensures your content doesn't get hidden behind the fixed header. 
-        It provides a smooth visual canvas for your pages.
-      */}
-      <div className="flex flex-col min-h-screen">
-        <main className="flex-grow flex flex-col">
-          {children}
-        </main>
-      </div>
+      {/* Added pt-20 to ensure content isn't hidden under the floating glass header */}
+      <main className="flex-grow flex flex-col pt-20">
+        {children}
+      </main>
       
-      {/* If you have a Footer component, uncomment this: */}
-      {/* <Footer /> */}
+      {/* Restored the Footer component */}
+      <Footer />
     </div>
   );
 }
