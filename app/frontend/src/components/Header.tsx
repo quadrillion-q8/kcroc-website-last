@@ -1,102 +1,140 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { X, Menu, ChevronDown, ChevronUp, Phone } from 'lucide-react';
+import { Menu, X, ChevronDown, Phone, CalendarCheck } from 'lucide-react';
 
 export default function Header() {
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const [activeMobileDropdown, setActiveMobileDropdown] = useState<string | null>(null);
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
   const location = useLocation();
 
-  const serviceHubs = [
-    { href: '/laptop-repair-hawalli-kuwait', label: 'Laptop Repair' },
-    { href: '/macbook-repair', label: 'MacBook Repair' },
-    { href: '/gaming-pc-repair-kuwait', label: 'Gaming PC Repair' },
-    { href: '/gaming-pc-cooling', label: 'Gaming PC Cooling' },
-    { href: '/screen-replacement', label: 'Screen Replacement' },
-    { href: '/battery-replacement', label: 'Battery Replacement' },
-    { href: '/chip-level-motherboard-repair-hawalli', label: 'Motherboard Repair' },
-  ];
-
-  const blogHubs = [
-    { href: '/gaming-pc-cooling', label: 'Gaming PC Cooling Guide' },
-    { href: '/battery-replacement', label: 'Battery Replacement Guide' },
-    { href: '/blog/how-to-protect-laptop-screen', label: 'Screen Protection Guide' },
-  ];
-
-  const navItems = [
-    { label: 'Home', href: '/' },
-    { label: 'Services', href: '/services', subItems: serviceHubs },
-    { label: 'Blogs', href: '#', subItems: blogHubs },
-    { label: 'Pricing', href: '/pricing' },
-    { label: 'Gallery', href: '/gallery' },
-    { label: 'Contact', href: '/contact' },
-    { label: 'Book Now', href: '/book' },
-  ];
-
+  // Close mobile menu when route changes
   useEffect(() => {
-    setMobileOpen(false);
-    setActiveMobileDropdown(null);
+    setIsOpen(false);
+    setServicesOpen(false);
   }, [location.pathname]);
 
-  return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-emerald-900 shadow-lg h-16 flex items-center">
-      <div className="container mx-auto px-4 flex justify-between items-center">
-        <Link to="/"><img src="https://res.cloudinary.com/dsbwzags3/image/upload/v1769908596/logo_btpfls.png" alt="KCROC Logo" width="140" height="50" /></Link>
+  // Add frosted glass effect on scroll
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
-        {/* Desktop Nav */}
-        <nav className="hidden lg:flex items-center gap-6">
-          {navItems.map((item) => (
-            <div key={item.label} className="relative group">
-              <Link to={item.href} className="text-white font-medium flex items-center gap-1 hover:text-emerald-400">
-                {item.label} {item.subItems && <ChevronDown size={16} />}
-              </Link>
-              {item.subItems && (
-                <div className="absolute top-full left-0 bg-emerald-800 p-4 w-52 shadow-xl rounded-b-lg hidden group-hover:flex flex-col gap-3 z-50">
-                  {item.subItems.map(sub => (
-                    <Link key={sub.href} to={sub.href} className="text-white hover:text-emerald-400 text-sm">{sub.label}</Link>
+  const services = [
+    { name: 'Laptop Repair', path: '/laptop-repair-hawalli-kuwait' },
+    { name: 'MacBook Repair', path: '/macbook-repair' },
+    { name: 'Screen Replacement', path: '/screen-replacement' },
+    { name: 'Battery Replacement', path: '/battery-replacement' },
+    { name: 'Motherboard Repair', path: '/chip-level-motherboard-repair-hawalli' },
+  ];
+
+  return (
+    <header 
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+        scrolled 
+          ? 'bg-slate-950/80 backdrop-blur-md border-b border-slate-800 shadow-lg' 
+          : 'bg-transparent border-b border-transparent'
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-20">
+          
+          {/* Logo Area */}
+          <Link to="/" className="flex items-center gap-2 group">
+            {/* If you have a logo image, uncomment the line below and remove the text */}
+            {/* <img src="/logo.png" alt="KCROC Logo" className="h-12 w-auto" /> */}
+            <div className="flex flex-col">
+              <span className="text-2xl font-black text-white tracking-tight group-hover:text-cyan-400 transition-colors">
+                KCROC
+              </span>
+              <span className="text-[10px] text-slate-400 uppercase tracking-widest">
+                Computer Repair
+              </span>
+            </div>
+          </Link>
+
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center gap-8">
+            <Link to="/" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Home</Link>
+            
+            {/* Services Dropdown */}
+            <div 
+              className="relative group"
+              onMouseEnter={() => setServicesOpen(true)}
+              onMouseLeave={() => setServicesOpen(false)}
+            >
+              <button className="flex items-center gap-1 text-sm font-medium text-slate-300 hover:text-white py-8 transition-colors">
+                Services <ChevronDown size={14} className={`transition-transform duration-200 ${servicesOpen ? 'rotate-180 text-cyan-400' : ''}`} />
+              </button>
+              
+              <div className={`absolute top-[80px] left-0 w-64 bg-slate-900 border border-slate-800 rounded-2xl shadow-xl transition-all duration-200 ${servicesOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible translate-y-2'}`}>
+                <div className="py-2">
+                  {services.map((s) => (
+                    <Link 
+                      key={s.path} 
+                      to={s.path}
+                      className="block px-5 py-3 text-sm text-slate-300 hover:bg-slate-800 hover:text-cyan-400 transition-colors"
+                    >
+                      {s.name}
+                    </Link>
                   ))}
                 </div>
-              )}
+              </div>
             </div>
-          ))}
-          <a href="tel:+96555301913" className="bg-emerald-600 text-white px-4 py-2 rounded-lg font-bold hover:bg-emerald-500 transition-colors flex items-center gap-2">
-            <Phone size={18} /> Call Now
-          </a>
-        </nav>
 
-        {/* Mobile Toggle */}
-        <button onClick={() => setMobileOpen(!mobileOpen)} className="lg:hidden text-white"><Menu size={28} /></button>
+            <Link to="/pricing" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Pricing</Link>
+            <Link to="/about" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">About</Link>
+          </nav>
+
+          {/* Desktop CTA Buttons */}
+          <div className="hidden md:flex items-center gap-4">
+            <a href="tel:+96555301913" className="text-slate-300 hover:text-white flex items-center gap-2 text-sm font-bold transition-colors">
+              <Phone size={16} className="text-cyan-400" /> 5530 1913
+            </a>
+            <Link to="/book" className="bg-emerald-600 hover:bg-emerald-500 text-white px-5 py-2.5 rounded-full text-sm font-bold transition-all shadow-lg hover:shadow-emerald-500/25 flex items-center gap-2">
+              <CalendarCheck size={16} /> Book Now
+            </Link>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button 
+            className="md:hidden text-slate-300 hover:text-white p-2"
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label="Toggle menu"
+          >
+            {isOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
+        </div>
       </div>
 
-      {/* Mobile Menu Panel */}
-      {mobileOpen && (
-        <div className="absolute top-16 left-0 w-full bg-emerald-950 p-6 flex flex-col gap-4 lg:hidden border-t border-emerald-800 z-50 h-[calc(100vh-4rem)] overflow-y-auto">
-          {navItems.map((item) => (
-            <div key={item.label}>
-              <div className="flex justify-between items-center py-2">
-                <Link to={item.href} onClick={() => !item.subItems && setMobileOpen(false)} className="text-white text-lg font-medium">{item.label}</Link>
-                {item.subItems && (
-                  <button onClick={() => setActiveMobileDropdown(activeMobileDropdown === item.label ? null : item.label)} className="text-white p-2">
-                    {activeMobileDropdown === item.label ? <ChevronUp /> : <ChevronDown />}
-                  </button>
-                )}
-              </div>
-              
-              {/* Expandable Content */}
-              {item.subItems && activeMobileDropdown === item.label && (
-                <div className="flex flex-col gap-3 mt-2 ml-4 border-l-2 border-emerald-700 pl-4">
-                  {item.subItems.map(sub => (
-                    <Link key={sub.href} to={sub.href} onClick={() => setMobileOpen(false)} className="text-emerald-200 text-sm py-1 hover:text-white">{sub.label}</Link>
-                  ))}
-                </div>
-              )}
+      {/* Mobile Navigation Drawer */}
+      <div className={`md:hidden fixed inset-0 top-20 bg-slate-950/95 backdrop-blur-xl transition-all duration-300 ${isOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
+        <nav className="flex flex-col p-6 gap-2 h-full overflow-y-auto">
+          <Link to="/" className="text-xl font-bold text-white py-4 border-b border-slate-800">Home</Link>
+          
+          <div className="py-4 border-b border-slate-800">
+            <div className="text-xl font-bold text-white mb-4">Services</div>
+            <div className="flex flex-col gap-3 pl-4 border-l-2 border-slate-800">
+              {services.map((s) => (
+                <Link key={s.path} to={s.path} className="text-slate-400 hover:text-cyan-400 py-2">{s.name}</Link>
+              ))}
             </div>
-          ))}
-          <a href="tel:+96555301913" className="flex items-center justify-center gap-2 bg-emerald-600 text-white p-3 rounded-lg font-bold mt-4">
-            <Phone size={20} /> Call Now (+965 5530 1913)
-          </a>
-        </div>
-      )}
+          </div>
+
+          <Link to="/pricing" className="text-xl font-bold text-white py-4 border-b border-slate-800">Pricing</Link>
+          <Link to="/about" className="text-xl font-bold text-white py-4 border-b border-slate-800">About</Link>
+          
+          <div className="mt-8 flex flex-col gap-4">
+            <a href="tel:+96555301913" className="flex items-center justify-center gap-2 bg-slate-800 text-white py-4 rounded-xl font-bold">
+              <Phone size={20} /> Call 5530 1913
+            </a>
+            <Link to="/book" className="flex items-center justify-center gap-2 bg-emerald-600 text-white py-4 rounded-xl font-bold">
+              <CalendarCheck size={20} /> Book Free Pickup
+            </Link>
+          </div>
+        </nav>
+      </div>
     </header>
   );
 }
