@@ -1,12 +1,11 @@
 import { useState } from 'react';
 import { createClient } from '@metagptx/web-sdk';
 import { Helmet } from 'react-helmet-async';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Calendar, Clock, Laptop, Phone, Mail, User, MessageSquare, CheckCircle, Loader2, MessageCircle, Truck, Shield, HelpCircle, Star, PhoneCall } from 'lucide-react';
+import { 
+  Calendar, Clock, Laptop, Phone, Mail, User, 
+  MessageSquare, CheckCircle, Loader2, MessageCircle, 
+  Truck, Shield, HelpCircle, Star, PhoneCall 
+} from 'lucide-react';
 
 const client = createClient();
 
@@ -52,14 +51,14 @@ const pageSchema = {
   "@type": "WebPage",
   "name": "Book Laptop & Computer Repair Pickup in Kuwait | KCROC",
   "url": "https://www.computerrepairkuwait.com/book",
-  "description": "Book free laptop and computer repair pickup anywhere in Kuwait. Same-day diagnostics. 30-day warranty.",
+  "description": "Book free laptop and computer repair pickup anywhere in Kuwait. Same-day hardware assessment. 30-day warranty.",
   "mainEntity": {
     "@type": "LocalBusiness",
     "name": "Kuwait Computer Repair On Call (KCROC)",
     "telephone": "+96555301913",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19",
+      "streetAddress": "Al Mullah Complex, Ibn Khaldoun Street, Basement Shop 19",
       "addressLocality": "Hawalli",
       "addressCountry": "KW"
     }
@@ -77,7 +76,7 @@ const serviceSchema = {
     "url": "https://www.computerrepairkuwait.com",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19",
+      "streetAddress": "Al Mullah Complex, Ibn Khaldoun Street, Basement Shop 19",
       "addressLocality": "Hawalli",
       "addressCountry": "KW"
     }
@@ -101,7 +100,7 @@ const faqSchema = {
       "name": "How long will my computer repair take?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "We provide same-day diagnostics for all devices. Repair times vary based on the issue and parts availability, but most standard repairs are completed within 24 to 48 hours."
+        "text": "We provide same-day hardware testing for all devices. Repair times vary based on the issue and parts availability, but most standard repairs are completed within 24 to 48 hours."
       }
     }
   ]
@@ -204,69 +203,75 @@ export default function BookingPage() {
     }
   };
 
+  // SUCCESS SCREEN
   if (submitted) {
     return (
-      <main className="min-h-screen bg-gray-950 text-white flex items-center justify-center px-6 pt-20">
-        <Card className="bg-gray-900/40 border border-gray-800/80 rounded-2xl max-w-xl w-full shadow-2xl">
-          <CardContent className="p-6 md:p-12 text-center">
-            <div className="w-20 h-20 bg-gradient-to-br from-emerald-500 to-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
-              <CheckCircle className="w-10 h-10 text-white" />
-            </div>
-            <h2 className="text-3xl font-bold text-white mb-4">Booking Confirmed!</h2>
-            <p className="text-gray-300 mb-6 leading-relaxed">
-              Thank you, <strong className="text-white">{form.customer_name}</strong>! Your repair booking has been received. 
-              We'll contact you on <strong className="text-emerald-400">{form.customer_phone}</strong> to confirm your pickup details.
-            </p>
+      <main className="min-h-screen bg-slate-950 text-white flex items-center justify-center px-6 pt-20 font-sans">
+        <div className="bg-slate-900/40 border border-slate-800 rounded-3xl max-w-xl w-full shadow-2xl p-8 md:p-12 text-center">
+          <div className="w-20 h-20 bg-emerald-500/20 rounded-full flex items-center justify-center mx-auto mb-6 border border-emerald-500/30">
+            <CheckCircle className="w-10 h-10 text-emerald-400" />
+          </div>
+          <h2 className="text-3xl font-black text-white mb-4 tracking-tight">Booking Confirmed!</h2>
+          <p className="text-slate-400 mb-8 leading-relaxed">
+            Thank you, <strong className="text-white">{form.customer_name}</strong>! Your hardware assessment booking has been received. 
+            We'll contact you on <strong className="text-emerald-400">{form.customer_phone}</strong> to confirm your pickup details.
+          </p>
 
-            <div className="bg-gray-800/50 rounded-xl p-6 mb-8 text-left space-y-4">
-              <h3 className="text-white font-semibold flex items-center gap-2 mb-2">
-                <HelpCircle className="w-5 h-5 text-emerald-400" /> Need immediate assistance?
-              </h3>
-              <div className="flex flex-col sm:flex-row gap-3">
-                <Button asChild className="bg-emerald-600 hover:bg-emerald-700 text-white flex-1 transition-colors">
-                  <a href="tel:+96555301913">
-                    <PhoneCall className="w-4 h-4 mr-2" />
-                    Call +965 55301913
-                  </a>
-                </Button>
-                <Button asChild className="bg-green-500 hover:bg-green-600 text-white flex-1 transition-colors">
-                  <a href="https://wa.me/96555301913" target="_blank" rel="noopener noreferrer">
-                    <MessageCircle className="w-4 h-4 mr-2" />
-                    WhatsApp Us
-                  </a>
-                </Button>
-              </div>
+          <div className="bg-slate-950 rounded-2xl p-6 mb-8 text-left space-y-4 border border-slate-800 shadow-inner">
+            <h3 className="text-white font-bold flex items-center gap-2 mb-4">
+              <HelpCircle className="w-5 h-5 text-emerald-400" /> Need immediate assistance?
+            </h3>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <a 
+                href="tel:+96555301913" 
+                className="flex items-center justify-center bg-slate-800 hover:bg-slate-700 text-white font-bold py-3 rounded-xl flex-1 transition-all border border-slate-700"
+              >
+                <PhoneCall className="w-4 h-4 mr-2 text-cyan-400" />
+                Call +965 5530 1913
+              </a>
+              <a 
+                href="https://wa.me/96555301913" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center justify-center bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 rounded-xl flex-1 transition-all shadow-lg shadow-emerald-900/20"
+              >
+                <MessageCircle className="w-4 h-4 mr-2" />
+                WhatsApp Us
+              </a>
             </div>
+          </div>
 
-            <div className="border-t border-gray-800 pt-6">
-              <p className="text-gray-400 text-sm mb-4">Happy with our easy booking process? Help us grow!</p>
-              <Button asChild variant="outline" className="w-full border-yellow-500/50 text-yellow-500 hover:bg-yellow-500/10 transition-colors">
-                <a href="https://g.page/r/CWbK8KGjkYY2EAE/review" target="_blank" rel="noopener noreferrer" aria-label="Leave KCROC a review on Google">
-                  <Star className="w-4 h-4 mr-2 fill-yellow-500" />
-                  Leave us a Google Review
-                </a>
-              </Button>
-            </div>
-          </CardContent>
-        </Card>
+          <div className="border-t border-slate-800 pt-8">
+            <p className="text-slate-500 text-sm mb-4">Happy with our easy booking process? Help us grow!</p>
+            <a 
+              href="https://g.page/r/CWbK8KGjkYY2EAE/review" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              aria-label="Leave KCROC a review on Google"
+              className="flex items-center justify-center w-full border border-yellow-500/30 text-yellow-500 hover:bg-yellow-500/10 font-bold py-3 rounded-xl transition-all"
+            >
+              <Star className="w-4 h-4 mr-2 fill-yellow-500" />
+              Leave us a Google Review
+            </a>
+          </div>
+        </div>
       </main>
     );
   }
 
+  // BOOKING FORM SCREEN
   return (
     <>
       <a href="#main-content" className="sr-only focus:not-sr-only absolute z-50 p-4 bg-emerald-600 text-white">
         Skip to main content
       </a>
       
-      <main id="main-content" className="min-h-screen bg-gray-950 text-white">
-        {/* SEO, Localization & JSON-LD Injection */}
+      <main id="main-content" className="min-h-screen bg-slate-950 text-white font-sans">
         <Helmet htmlAttributes={{ lang: 'en' }}>
           <title>Book Laptop & Computer Repair Pickup in Kuwait | KCROC</title>
-          <meta name="description" content="Book free laptop and computer repair pickup anywhere in Kuwait. Same-day diagnostics. 30-day warranty." />
+          <meta name="description" content="Book free laptop and computer repair pickup anywhere in Kuwait. Same-day hardware assessment. 30-day warranty." />
           <link rel="canonical" href="https://www.computerrepairkuwait.com/book" />
           
-          {/* Hreflang and Localization Signals */}
           <meta property="og:locale" content="en_KW" />
           <meta property="og:locale:alternate" content="ar_KW" />
           <link rel="alternate" hreflang="en-kw" href="https://www.computerrepairkuwait.com/book" />
@@ -274,165 +279,238 @@ export default function BookingPage() {
           <link rel="alternate" hreflang="x-default" href="https://www.computerrepairkuwait.com/book" />
 
           <meta property="og:title" content="Book Laptop & Computer Repair Pickup in Kuwait | KCROC" />
-          <meta property="og:description" content="Free pickup across Kuwait. Same-day diagnostics. 30-day warranty." />
+          <meta property="og:description" content="Free pickup across Kuwait. Same-day hardware assessment. 30-day warranty." />
           <meta property="og:type" content="website" />
           <meta property="og:url" content="https://www.computerrepairkuwait.com/book" />
-          <meta property="og:image" content="https://res.cloudinary.com/dsbwzags3/image/upload/v1769908596/logo_btpfls.png" />
+          <meta property="og:image" content="https://www.computerrepairkuwait.com/kcroc-logo.png" />
 
           <script type="application/ld+json">{JSON.stringify(pageSchema)}</script>
           <script type="application/ld+json">{JSON.stringify(serviceSchema)}</script>
           <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
         </Helmet>
 
-        <section className="pt-20 md:pt-32 pb-16 px-6">
+        {/* Hero Section */}
+        <section className="pt-32 pb-16 px-6">
           <div className="max-w-6xl mx-auto text-center">
-            <Badge variant="secondary" className="mb-6 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-4 py-2">
-              📅 Book a Repair
-            </Badge>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Schedule Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-green-400">Free Pickup</span>
+            <div className="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/20 px-4 py-1.5 rounded-full text-emerald-400 text-sm font-medium mb-6">
+              <Calendar size={14} />
+              <span>Book a Service</span>
+            </div>
+            <h1 className="text-4xl md:text-6xl font-black mb-6 tracking-tight">
+              Schedule Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-emerald-400">Free Pickup</span>
             </h1>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Fill in the form below and we'll arrange a free pickup from your location. Same-day diagnostics available.
+            <p className="text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed">
+              Fill in the form below and we'll arrange a free collection from your location. Same-day initial assessment available across all governorates.
             </p>
           </div>
         </section>
 
-        <section className="py-8 px-6 border-t border-gray-900">
+        {/* Trust Strip */}
+        <section className="py-8 px-6 border-y border-slate-800 bg-slate-900/30">
           <div className="max-w-4xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="flex items-center gap-3 bg-gray-900/40 border border-gray-800/80 rounded-xl p-4">
-                <Truck className="w-8 h-8 text-emerald-400" />
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="flex items-center justify-center gap-3">
+                <Truck className="w-6 h-6 text-cyan-400" />
                 <div>
-                  <p className="text-white font-semibold text-sm">Free Pickup</p>
-                  <p className="text-gray-400 text-xs">All Kuwait areas</p>
+                  <p className="text-white font-bold text-sm">Free Pickup</p>
+                  <p className="text-slate-500 text-xs">All Kuwait areas</p>
                 </div>
               </div>
-              <div className="flex items-center gap-3 bg-gray-900/40 border border-gray-800/80 rounded-xl p-4">
-                <Clock className="w-8 h-8 text-emerald-400" />
+              <div className="flex items-center justify-center gap-3">
+                <Clock className="w-6 h-6 text-emerald-400" />
                 <div>
-                  <p className="text-white font-semibold text-sm">Same-Day Diagnostics</p>
-                  <p className="text-gray-400 text-xs">Fast turnaround</p>
+                  <p className="text-white font-bold text-sm">Same-Day Assessment</p>
+                  <p className="text-slate-500 text-xs">Fast turnaround</p>
                 </div>
               </div>
-              <div className="flex items-center gap-3 bg-gray-900/40 border border-gray-800/80 rounded-xl p-4">
-                <Shield className="w-8 h-8 text-emerald-400" />
+              <div className="flex items-center justify-center gap-3">
+                <Shield className="w-6 h-6 text-cyan-400" />
                 <div>
-                  <p className="text-white font-semibold text-sm">30-Day Warranty</p>
-                  <p className="text-gray-400 text-xs">On all repairs</p>
+                  <p className="text-white font-bold text-sm">30-Day Warranty</p>
+                  <p className="text-slate-500 text-xs">On all repairs</p>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        <section className="py-12 px-6 border-t border-gray-900">
+        {/* Form Section */}
+        <section className="py-16 px-6">
           <div className="max-w-3xl mx-auto">
-            <Card className="bg-gray-900/40 border border-gray-800/80 rounded-2xl">
-              <CardContent className="p-6 md:p-8">
-                <h2 className="text-2xl font-bold text-white mb-6">Booking Details</h2>
+            <div className="bg-slate-900/40 border border-slate-800 rounded-3xl p-8 md:p-12 shadow-2xl">
+              <h2 className="text-2xl font-black text-white mb-8">Booking Details</h2>
 
-                {error && (
-                  <div className="mb-6 p-4 bg-red-500/10 border border-red-500/30 rounded-xl text-red-400 text-sm">
-                    {error}
+              {error && (
+                <div className="mb-8 p-4 bg-red-500/10 border border-red-500/30 rounded-xl text-red-400 text-sm font-medium">
+                  {error}
+                </div>
+              )}
+
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <input 
+                  type="text" 
+                  name="honeypot" 
+                  style={{ display: 'none' }} 
+                  tabIndex={-1} 
+                  autoComplete="off"
+                  value={form.honeypot} 
+                  onChange={handleChange} 
+                />
+
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <label htmlFor="customer_name" className="flex items-center gap-2 text-sm font-bold text-slate-300 mb-2">
+                      <User className="w-4 h-4 text-cyan-400" /> Full Name *
+                    </label>
+                    <input 
+                      id="customer_name" 
+                      type="text" 
+                      name="customer_name" 
+                      autoComplete="name" 
+                      value={form.customer_name} 
+                      onChange={handleChange} 
+                      required 
+                      className="w-full bg-slate-950 border border-slate-700 text-white px-4 py-3 rounded-xl focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-all placeholder-slate-600" 
+                      placeholder="Your full name" 
+                    />
                   </div>
-                )}
+                  <div>
+                    <label htmlFor="customer_phone" className="flex items-center gap-2 text-sm font-bold text-slate-300 mb-2">
+                      <Phone className="w-4 h-4 text-cyan-400" /> Phone Number *
+                    </label>
+                    <input 
+                      id="customer_phone" 
+                      type="tel" 
+                      name="customer_phone" 
+                      pattern="^\+?[0-9\s-]{8,15}$" 
+                      autoComplete="tel" 
+                      value={form.customer_phone} 
+                      onChange={handleChange} 
+                      required 
+                      className="w-full bg-slate-950 border border-slate-700 text-white px-4 py-3 rounded-xl focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-all placeholder-slate-600" 
+                      placeholder="+965 XXXX XXXX" 
+                    />
+                  </div>
+                </div>
 
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <div>
+                  <label htmlFor="customer_email" className="flex items-center gap-2 text-sm font-bold text-slate-300 mb-2">
+                    <Mail className="w-4 h-4 text-cyan-400" /> Email (Optional)
+                  </label>
                   <input 
-                    type="text" 
-                    name="honeypot" 
-                    style={{ display: 'none' }} 
-                    tabIndex={-1} 
-                    autoComplete="off"
-                    value={form.honeypot} 
+                    id="customer_email" 
+                    type="email" 
+                    name="customer_email" 
+                    autoComplete="email" 
+                    value={form.customer_email} 
                     onChange={handleChange} 
+                    className="w-full bg-slate-950 border border-slate-700 text-white px-4 py-3 rounded-xl focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-all placeholder-slate-600" 
+                    placeholder="your.email@example.com" 
                   />
+                </div>
 
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div>
-                      <label htmlFor="customer_name" className="flex items-center gap-2 text-sm font-medium text-gray-300 mb-2">
-                        <User className="w-4 h-4 text-emerald-400" /> Full Name *
-                      </label>
-                      <Input id="customer_name" type="text" name="customer_name" autoComplete="name" value={form.customer_name} onChange={handleChange} required className="bg-gray-800/50 border-gray-700 text-white placeholder-gray-500 focus:border-emerald-500 rounded-xl" placeholder="Your full name" />
-                    </div>
-                    <div>
-                      <label htmlFor="customer_phone" className="flex items-center gap-2 text-sm font-medium text-gray-300 mb-2">
-                        <Phone className="w-4 h-4 text-emerald-400" /> Phone Number *
-                      </label>
-                      <Input id="customer_phone" type="tel" name="customer_phone" pattern="^\+?[0-9\s-]{8,15}$" autoComplete="tel" value={form.customer_phone} onChange={handleChange} required className="bg-gray-800/50 border-gray-700 text-white placeholder-gray-500 focus:border-emerald-500 rounded-xl" placeholder="+965 XXXX XXXX" />
-                    </div>
-                  </div>
+                <div>
+                  <label htmlFor="device_type" className="flex items-center gap-2 text-sm font-bold text-slate-300 mb-2">
+                    <Laptop className="w-4 h-4 text-cyan-400" /> Device Type *
+                  </label>
+                  <select 
+                    id="device_type" 
+                    name="device_type" 
+                    value={form.device_type} 
+                    onChange={handleChange} 
+                    required 
+                    className="w-full bg-slate-950 border border-slate-700 text-white px-4 py-3 rounded-xl focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-all appearance-none"
+                  >
+                    <option value="" className="bg-slate-900">Select device type...</option>
+                    {DEVICE_TYPES.map((type) => (
+                      <option key={type} value={type} className="bg-slate-900">{type}</option>
+                    ))}
+                  </select>
+                </div>
 
+                <div>
+                  <label htmlFor="issue_description" className="flex items-center gap-2 text-sm font-bold text-slate-300 mb-2">
+                    <MessageSquare className="w-4 h-4 text-cyan-400" /> Describe the Issue *
+                  </label>
+                  <textarea 
+                    id="issue_description" 
+                    name="issue_description" 
+                    value={form.issue_description} 
+                    onChange={handleChange} 
+                    required 
+                    rows={4} 
+                    className="w-full bg-slate-950 border border-slate-700 text-white px-4 py-3 rounded-xl focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-all placeholder-slate-600 resize-y" 
+                    placeholder="Describe the hardware or software problem..." 
+                  />
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="customer_email" className="flex items-center gap-2 text-sm font-medium text-gray-300 mb-2">
-                      <Mail className="w-4 h-4 text-emerald-400" /> Email (Optional)
+                    <label htmlFor="pickup_date" className="flex items-center gap-2 text-sm font-bold text-slate-300 mb-2">
+                      <Calendar className="w-4 h-4 text-cyan-400" /> Preferred Pickup Date *
                     </label>
-                    <Input id="customer_email" type="email" name="customer_email" autoComplete="email" value={form.customer_email} onChange={handleChange} className="bg-gray-800/50 border-gray-700 text-white placeholder-gray-500 focus:border-emerald-500 rounded-xl" placeholder="your.email@example.com" />
+                    <input 
+                      id="pickup_date" 
+                      type="date" 
+                      name="pickup_date" 
+                      value={form.pickup_date} 
+                      onChange={handleChange} 
+                      min={getTodayDate()} 
+                      required 
+                      className="w-full bg-slate-950 border border-slate-700 text-white px-4 py-3 rounded-xl focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-all [color-scheme:dark]" 
+                    />
                   </div>
-
                   <div>
-                    <label htmlFor="device_type" className="flex items-center gap-2 text-sm font-medium text-gray-300 mb-2">
-                      <Laptop className="w-4 h-4 text-emerald-400" /> Device Type *
+                    <label htmlFor="pickup_time_slot" className="flex items-center gap-2 text-sm font-bold text-slate-300 mb-2">
+                      <Clock className="w-4 h-4 text-cyan-400" /> Preferred Time Slot *
                     </label>
-                    <select id="device_type" name="device_type" value={form.device_type} onChange={handleChange} required className="w-full bg-gray-800/50 border border-gray-700 text-white rounded-xl px-4 py-3 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500">
-                      <option value="" className="bg-gray-900">Select device type...</option>
-                      {DEVICE_TYPES.map((type) => (
-                        <option key={type} value={type} className="bg-gray-900">{type}</option>
+                    <select 
+                      id="pickup_time_slot" 
+                      name="pickup_time_slot" 
+                      value={form.pickup_time_slot} 
+                      onChange={handleChange} 
+                      required 
+                      className="w-full bg-slate-950 border border-slate-700 text-white px-4 py-3 rounded-xl focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-all appearance-none"
+                    >
+                      <option value="" className="bg-slate-900">Select time slot...</option>
+                      {TIME_SLOTS.map((slot) => (
+                        <option key={slot.value} value={slot.value} className="bg-slate-900">{slot.label}</option>
                       ))}
                     </select>
                   </div>
+                </div>
 
-                  <div>
-                    <label htmlFor="issue_description" className="flex items-center gap-2 text-sm font-medium text-gray-300 mb-2">
-                      <MessageSquare className="w-4 h-4 text-emerald-400" /> Describe the Issue *
-                    </label>
-                    <Textarea id="issue_description" name="issue_description" value={form.issue_description} onChange={handleChange} required rows={4} className="bg-gray-800/50 border-gray-700 text-white placeholder-gray-500 focus:border-emerald-500 rounded-xl" placeholder="Describe the problem you're experiencing..." />
-                  </div>
-
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div>
-                      <label htmlFor="pickup_date" className="flex items-center gap-2 text-sm font-medium text-gray-300 mb-2">
-                        <Calendar className="w-4 h-4 text-emerald-400" /> Preferred Pickup Date *
-                      </label>
-                      <Input id="pickup_date" type="date" name="pickup_date" value={form.pickup_date} onChange={handleChange} min={getTodayDate()} required className="bg-gray-800/50 border-gray-700 text-white rounded-xl [color-scheme:dark] focus:border-emerald-500" />
-                    </div>
-                    <div>
-                      <label htmlFor="pickup_time_slot" className="flex items-center gap-2 text-sm font-medium text-gray-300 mb-2">
-                        <Clock className="w-4 h-4 text-emerald-400" /> Preferred Time Slot *
-                      </label>
-                      <select id="pickup_time_slot" name="pickup_time_slot" value={form.pickup_time_slot} onChange={handleChange} required className="w-full bg-gray-800/50 border border-gray-700 text-white rounded-xl px-4 py-3 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500">
-                        <option value="" className="bg-gray-900">Select time slot...</option>
-                        {TIME_SLOTS.map((slot) => (
-                          <option key={slot.value} value={slot.value} className="bg-gray-900">{slot.label}</option>
-                        ))}
-                      </select>
-                    </div>
-                  </div>
-
-                  <Button type="submit" size="lg" disabled={submitting} className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl py-6 text-lg transition-colors disabled:opacity-50">
-                    {submitting ? <><Loader2 className="w-5 h-5 mr-2 animate-spin" /> Submitting...</> : <><CheckCircle className="w-5 h-5 mr-2" /> Book Free Pickup</>}
-                  </Button>
-                </form>
-              </CardContent>
-            </Card>
+                <button 
+                  type="submit" 
+                  disabled={submitting} 
+                  className="w-full flex items-center justify-center bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl py-4 transition-all disabled:opacity-50 mt-4 shadow-lg shadow-emerald-900/20"
+                >
+                  {submitting ? (
+                    <><Loader2 className="w-5 h-5 mr-2 animate-spin" /> Processing...</>
+                  ) : (
+                    <><CheckCircle className="w-5 h-5 mr-2" /> Submit Booking Request</>
+                  )}
+                </button>
+              </form>
+            </div>
           </div>
         </section>
 
-        <section className="py-12 md:py-20 px-6 border-t border-gray-900 bg-gray-950">
+        {/* FAQ Section */}
+        <section className="py-20 px-6 border-t border-slate-800 bg-slate-900/20">
           <div className="max-w-3xl mx-auto">
-            <div className="flex items-center gap-2 justify-center mb-8">
-               <HelpCircle className="w-6 h-6 text-emerald-400" />
-               <h2 className="text-2xl font-bold text-center">Frequently Asked Booking Questions</h2>
+            <div className="flex items-center gap-3 justify-center mb-10">
+               <HelpCircle className="w-6 h-6 text-cyan-400" />
+               <h2 className="text-3xl font-black text-center text-white">Booking FAQs</h2>
             </div>
             <div className="space-y-4">
-              <div className="p-5 bg-gray-900/50 border border-gray-800 rounded-xl hover:border-emerald-900/50 transition-colors">
-                <h3 className="text-lg font-semibold text-white mb-2">Is the pickup and delivery truly free in Kuwait?</h3>
-                <p className="text-gray-400 text-sm">Yes, KCROC offers completely free pickup and delivery across all Kuwait governorates including Kuwait City, Hawalli, Salmiya, Farwaniya, and Jahra. There are no hidden charges for collection or return.</p>
+              <div className="p-6 bg-slate-900/40 border border-slate-800 rounded-2xl hover:border-cyan-500/30 transition-colors">
+                <h3 className="text-lg font-bold text-white mb-2">Is the pickup and delivery truly free in Kuwait?</h3>
+                <p className="text-slate-400 text-sm leading-relaxed">Yes, KCROC offers completely free pickup and delivery across all Kuwait governorates including Kuwait City, Hawalli, Salmiya, Farwaniya, and Jahra. There are no hidden charges for collection or return.</p>
               </div>
-              <div className="p-5 bg-gray-900/50 border border-gray-800 rounded-xl hover:border-emerald-900/50 transition-colors">
-                <h3 className="text-lg font-semibold text-white mb-2">How long will my computer repair take?</h3>
-                <p className="text-gray-400 text-sm">We provide same-day diagnostics for all devices. Repair times vary based on the issue and parts availability, but most standard repairs are completed within 24 to 48 hours.</p>
+              <div className="p-6 bg-slate-900/40 border border-slate-800 rounded-2xl hover:border-cyan-500/30 transition-colors">
+                <h3 className="text-lg font-bold text-white mb-2">How long will my computer repair take?</h3>
+                <p className="text-slate-400 text-sm leading-relaxed">We provide same-day hardware assessment for all devices. Repair times vary based on the fault and component availability, but most standard repairs are completed within 24 to 48 hours.</p>
               </div>
             </div>
           </div>
