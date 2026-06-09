@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Laptop, Monitor, HardDrive, Wrench, Network, Printer, Apple, Clock, DollarSign, CheckCircle, Phone, MessageCircle } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
+import { 
+  Laptop, Monitor, HardDrive, Wrench, Network, Printer, 
+  Apple, Clock, DollarSign, CheckCircle, Phone, MessageCircle 
+} from 'lucide-react';
 
 export default function Services() {
   const services = [
@@ -22,15 +23,15 @@ export default function Services() {
         'Liquid damage and corrosion',
         'Broken hinges and casing'
       ],
-      approach: 'We start with comprehensive diagnostics to identify the root cause. Our technicians use genuine or high-grade compatible parts and explain all issues before proceeding with repairs. Data safety is our priority throughout the process.',
-      turnaround: 'Most laptop diagnostics same-day, common repairs within 24-48 hours',
+      approach: 'We start with comprehensive hardware testing to identify the root cause. Our technicians use genuine or high-grade compatible parts and explain all issues before proceeding with repairs. Data safety is our priority throughout the process.',
+      turnaround: 'Most initial assessments same-day, common repairs within 24-48 hours',
       startingPrice: '15',
       features: [
         'Screen replacement (LCD/LED)',
         'Keyboard and touchpad repair',
         'Battery replacement',
         'Charging port repair',
-        'Motherboard diagnostics',
+        'Motherboard assessment',
         'Hinge and casing repair'
       ]
     },
@@ -50,14 +51,14 @@ export default function Services() {
         'Storage drive failures',
         'RAM and memory errors'
       ],
-      approach: 'We perform detailed hardware diagnostics, thermal testing, and component analysis. Services include cleaning, thermal paste replacement, component upgrades, and complete system optimization with driver updates.',
-      turnaround: 'Desktop diagnostics typically same-day, repairs 1-3 days depending on parts availability',
+      approach: 'We perform detailed hardware testing, thermal analysis, and component inspection. Services include cleaning, thermal paste replacement, component upgrades, and complete system optimization with driver updates.',
+      turnaround: 'Desktop inspection typically same-day, repairs 1-3 days depending on parts',
       startingPrice: '20',
       features: [
         'Custom PC builds',
         'Gaming PC optimization',
         'Hardware upgrades',
-        'System diagnostics',
+        'System assessment',
         'Cable management',
         'Performance tuning'
       ]
@@ -67,7 +68,7 @@ export default function Services() {
       title: 'MacBook & Apple Device Repair',
       icon: Apple,
       image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600',
-      description: 'Specialized MacBook repair services including screen replacement, battery replacement, and logic board diagnostics.',
+      description: 'Specialized MacBook repair services including screen replacement, battery replacement, and logic board repair.',
       commonIssues: [
         'Cracked or broken Retina display',
         'Battery swelling or not charging',
@@ -78,14 +79,14 @@ export default function Services() {
         'Overheating and thermal throttling',
         'USB-C port failures'
       ],
-      approach: 'Our Apple-certified technicians use specialized tools and genuine Apple parts where possible. We handle all MacBook models including Air, Pro, and newer M1/M2 chip models with expertise in logic board micro-soldering.',
-      turnaround: 'MacBook diagnostics 1-2 days, repairs 2-5 days depending on parts availability',
+      approach: 'Our technicians use specialized tools and genuine Apple parts where possible. We handle all MacBook models including Air, Pro, and newer M-series models with expertise in logic board micro-soldering.',
+      turnaround: 'MacBook inspection 1-2 days, repairs 2-5 days depending on parts',
       startingPrice: '30',
       features: [
         'Retina display replacement',
         'Battery replacement',
         'Keyboard repair',
-        'Logic board diagnostics',
+        'Logic board assessment',
         'SSD upgrade',
         'macOS installation'
       ]
@@ -106,8 +107,8 @@ export default function Services() {
         'Physical drive damage',
         'RAID array failures'
       ],
-      approach: 'We use advanced data recovery tools and clean room facilities for physical drive repairs. Our process includes drive imaging, file system analysis, and secure data extraction with complete confidentiality.',
-      turnaround: 'Initial assessment 1-2 days, recovery time varies based on damage severity (2-7 days typical)',
+      approach: 'We use advanced data recovery tools and clean facilities for physical drive repairs. Our process includes drive imaging, file system analysis, and secure data extraction with complete confidentiality.',
+      turnaround: 'Initial assessment 1-2 days, recovery time varies based on damage (2-7 days typical)',
       startingPrice: '50',
       features: [
         'Hard drive recovery',
@@ -131,7 +132,7 @@ export default function Services() {
         'Printer and peripheral setup',
         'Workstation performance issues',
         'Software installation and updates',
-        'Security and antivirus setup',
+        'Security and firewall setup',
         'Backup system configuration'
       ],
       approach: 'Our technicians visit your business location in Hawalli, Salmiya, Kuwait City, or anywhere in Kuwait. We provide rapid response for critical business systems with minimal downtime and professional service.',
@@ -177,148 +178,147 @@ export default function Services() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-950 text-white">
+    <div className="w-full bg-slate-950 text-white font-sans">
+      <Helmet>
+        <title>All Computer Repair Services | KCROC Kuwait</title>
+        <meta name="description" content="View all computer, laptop, and MacBook repair services offered by KCROC in Kuwait. We fix motherboards, screens, batteries, and recover data." />
+      </Helmet>
+
       {/* Hero Section */}
-      <section className="pt-32 pb-16 px-6">
+      <section className="pt-32 pb-16 px-6 border-b border-slate-800">
         <div className="max-w-6xl mx-auto text-center">
-          <Badge variant="secondary" className="mb-6 bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 px-4 py-2">
-            🔧 Our Services
-          </Badge>
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            Professional <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-emerald-400">Computer Repair</span> Services
+          <div className="inline-flex items-center gap-2 bg-cyan-500/10 border border-cyan-500/20 px-4 py-1.5 rounded-full text-cyan-400 text-sm font-medium mb-6">
+            <Wrench size={14} />
+            <span>Our Complete Service Catalog</span>
+          </div>
+          <h1 className="text-4xl md:text-5xl font-black mb-6 tracking-tight">
+            Professional <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-emerald-400">Hardware Solutions</span>
           </h1>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Comprehensive laptop, desktop, and MacBook repair services in Kuwait with free pickup and delivery across all governorates
+          <p className="text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed">
+            Comprehensive laptop, desktop, and MacBook engineering services in Kuwait with free pickup and delivery across all governorates.
           </p>
         </div>
       </section>
 
-      {/* Services Grid */}
-      <section className="py-12 md:py-20 px-6 border-t border-gray-900">
-        <div className="max-w-6xl mx-auto">
-          <div className="space-y-16">
-            {services.map((service) => {
-              const Icon = service.icon;
-              return (
-                <div key={service.id} id={service.id} className="scroll-mt-20">
-                  <Card className="bg-gray-900/40 border border-gray-800/80 rounded-2xl overflow-hidden">
-                    <div className="grid lg:grid-cols-2 gap-0">
-                      {/* Image */}
-                      <div className="relative h-64 lg:h-auto">
-                        <img 
-                          src={service.image} 
-                          alt={service.title} 
-                          className="w-full h-full object-cover"
-                          loading="lazy"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-r from-gray-950/80 to-transparent"></div>
-                        <div className="absolute top-6 left-6">
-                          <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-cyan-500 rounded-xl flex items-center justify-center shadow-lg shadow-cyan-500/20">
-                            <Icon className="w-8 h-8 text-white" />
+      {/* Services Master Grid */}
+      <section className="py-20 px-6">
+        <div className="max-w-6xl mx-auto space-y-16">
+          {services.map((service) => {
+            const Icon = service.icon;
+            return (
+              <div key={service.id} id={service.id} className="scroll-mt-32">
+                <div className="bg-slate-900/40 border border-slate-800 rounded-3xl overflow-hidden shadow-2xl">
+                  <div className="grid lg:grid-cols-2 gap-0">
+                    
+                    {/* Image Half */}
+                    <div className="relative h-64 lg:h-auto border-b lg:border-b-0 lg:border-r border-slate-800">
+                      <img 
+                        src={service.image} 
+                        alt={service.title} 
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-r from-slate-950/80 to-transparent"></div>
+                      <div className="absolute top-6 left-6">
+                        <div className="w-16 h-16 bg-slate-900 border border-slate-700 rounded-2xl flex items-center justify-center shadow-lg">
+                          <Icon className="w-8 h-8 text-cyan-400" />
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Content Half */}
+                    <div className="p-8 lg:p-10 flex flex-col h-full">
+                      <div className="mb-8">
+                        <h2 className="text-3xl font-black text-white mb-4">{service.title}</h2>
+                        <p className="text-slate-400 text-lg leading-relaxed">{service.description}</p>
+                      </div>
+
+                      {/* Common Issues */}
+                      <div className="mb-8">
+                        <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                          <CheckCircle className="w-5 h-5 text-emerald-400" />
+                          Common Issues We Resolve:
+                        </h3>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                          {service.commonIssues.map((issue, idx) => (
+                            <div key={idx} className="flex items-start gap-2 text-slate-300 text-sm">
+                              <span className="text-emerald-400 mt-1">•</span>
+                              <span>{issue}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Approach Panel */}
+                      <div className="mb-8 p-6 bg-slate-950/50 rounded-2xl border border-slate-800/50">
+                        <h4 className="text-sm font-black text-cyan-400 uppercase tracking-widest mb-2">Our Engineering Approach</h4>
+                        <p className="text-slate-300 text-sm leading-relaxed">{service.approach}</p>
+                      </div>
+
+                      {/* Turnaround & Price Footer */}
+                      <div className="mt-auto pt-8 border-t border-slate-800 grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                        <div className="flex items-start gap-3">
+                          <Clock className="w-6 h-6 text-cyan-400 flex-shrink-0" />
+                          <div>
+                            <h5 className="text-white font-bold mb-1">Turnaround Time</h5>
+                            <p className="text-slate-400 text-sm">{service.turnaround}</p>
+                          </div>
+                        </div>
+                        <div className="flex items-start gap-3">
+                          <DollarSign className="w-6 h-6 text-emerald-400 flex-shrink-0" />
+                          <div>
+                            <h5 className="text-white font-bold mb-1">Starting Price</h5>
+                            <p className="text-emerald-400 font-black text-xl mb-1">{service.startingPrice} KD</p>
+                            <Link to="/pricing" className="text-slate-500 text-xs hover:text-cyan-400 transition-colors">View detailed pricing →</Link>
                           </div>
                         </div>
                       </div>
 
-                      {/* Content */}
-                      <CardContent className="p-8">
-                        <CardHeader className="p-0 mb-6">
-                          <CardTitle className="text-3xl font-black text-white mb-3">
-                            {service.title}
-                          </CardTitle>
-                          <p className="text-gray-300 text-lg">{service.description}</p>
-                        </CardHeader>
+                      {/* CTA Buttons */}
+                      <div className="flex flex-col sm:flex-row gap-3">
+                        <a 
+                          href="tel:+96555301913" 
+                          className="flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 text-white font-bold rounded-xl py-3 px-6 transition-all flex-1 border border-slate-700"
+                        >
+                          <Phone className="w-5 h-5" /> Call Now
+                        </a>
+                        <a 
+                          href={`https://wa.me/96555301913?text=${encodeURIComponent(`Hi! I need ${service.title.toLowerCase()} service. Please arrange free pickup.`)}`} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl py-3 px-6 transition-all flex-1 shadow-lg shadow-emerald-900/20"
+                        >
+                          <MessageCircle className="w-5 h-5" /> WhatsApp Us
+                        </a>
+                      </div>
 
-                        {/* Common Issues */}
-                        <div className="mb-6">
-                          <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
-                            <CheckCircle className="w-5 h-5 text-emerald-400" />
-                            Common Issues We Fix:
-                          </h3>
-                          <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                            {service.commonIssues.map((issue, idx) => (
-                              <div key={idx} className="flex items-start gap-2 text-gray-300 text-sm">
-                                <span className="text-emerald-400 mt-1">•</span>
-                                <span>{issue}</span>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-
-                        {/* Approach */}
-                        <div className="mb-6 p-4 bg-gray-800/50 rounded-xl border border-gray-700/50">
-                          <h4 className="text-lg font-bold text-white mb-2">Our Approach:</h4>
-                          <p className="text-gray-300 text-sm leading-relaxed">{service.approach}</p>
-                        </div>
-
-                        {/* Turnaround & Price */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                          <div className="flex items-start gap-3 p-4 bg-blue-500/10 rounded-xl border border-blue-500/30">
-                            <Clock className="w-5 h-5 text-blue-400 flex-shrink-0 mt-1" />
-                            <div>
-                              <h5 className="text-white font-semibold text-sm mb-1">Turnaround Time:</h5>
-                              <p className="text-gray-300 text-xs">{service.turnaround}</p>
-                            </div>
-                          </div>
-                          <div className="flex items-start gap-3 p-4 bg-emerald-500/10 rounded-xl border border-emerald-500/30">
-                            <DollarSign className="w-5 h-5 text-emerald-400 flex-shrink-0 mt-1" />
-                            <div>
-                              <h5 className="text-white font-semibold text-sm mb-1">Starting Price:</h5>
-                              <p className="text-emerald-400 font-bold text-lg">{service.startingPrice} KD</p>
-                              <Link to="/pricing" className="text-cyan-400 text-xs hover:text-cyan-300">
-                                View full pricing →
-                              </Link>
-                            </div>
-                          </div>
-                        </div>
-
-                        {/* CTA Buttons */}
-                        <div className="flex flex-col sm:flex-row gap-3">
-                          <Button asChild className="bg-green-500 hover:bg-green-600 text-white font-bold rounded-xl flex-1">
-                            <a href="tel:+96555301913">
-                              <Phone className="w-4 h-4 mr-2" />
-                              Call Now
-                            </a>
-                          </Button>
-                          <Button asChild className="bg-green-500 hover:bg-green-600 text-white font-bold rounded-xl flex-1">
-                            <a href={`https://wa.me/96555301913?text=I need ${service.title.toLowerCase()} service. Please arrange free pickup.`} target="_blank" rel="noopener noreferrer">
-                              <MessageCircle className="w-4 h-4 mr-2" />
-                              WhatsApp
-                            </a>
-                          </Button>
-                        </div>
-                      </CardContent>
                     </div>
-                  </Card>
+                  </div>
                 </div>
-              );
-            })}
-          </div>
+              </div>
+            );
+          })}
         </div>
       </section>
 
-      {/* Quick Links to Services */}
-      <section className="py-12 md:py-20 px-6 border-t border-gray-900">
+      {/* Jump Menu / Sticky Footer Alternative */}
+      <section className="py-16 px-6 bg-slate-900/30 border-t border-slate-800">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-white mb-4">
-              Jump to <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-emerald-400">Specific Service</span>
-            </h2>
-            <p className="text-gray-300">Quick navigation to find exactly what you need</p>
+          <div className="text-center mb-10">
+            <h2 className="text-2xl font-bold text-white mb-2">Service Quick Links</h2>
+            <p className="text-slate-400 text-sm">Jump directly to the hardware solution you need.</p>
           </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 max-w-6xl mx-auto">
+          <div className="flex flex-wrap justify-center gap-3">
             {services.map((service) => {
               const Icon = service.icon;
               return (
                 <a
                   key={service.id}
                   href={`#${service.id}`}
-                  className="bg-gray-900/40 border border-gray-800/80 hover:border-cyan-500/40 p-4 rounded-2xl text-center transition-all duration-300"
+                  className="flex items-center gap-2 bg-slate-900 border border-slate-800 hover:border-cyan-500/40 hover:bg-slate-800 px-5 py-3 rounded-full transition-all duration-300"
                 >
-                  <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-cyan-500 rounded-lg flex items-center justify-center mx-auto mb-3">
-                    <Icon className="w-6 h-6 text-white" />
-                  </div>
-                  <h4 className="text-white font-semibold text-sm">{service.title}</h4>
+                  <Icon className="w-4 h-4 text-cyan-400" />
+                  <span className="text-slate-300 font-medium text-sm">{service.title}</span>
                 </a>
               );
             })}
@@ -326,50 +326,21 @@ export default function Services() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-12 md:py-20 px-6 border-t border-gray-900">
-        <div className="max-w-6xl mx-auto">
-          <Card className="bg-gray-900/40 border border-gray-800/80 rounded-2xl max-w-4xl mx-auto">
-            <CardContent className="p-12 text-center">
-              <h2 className="text-4xl font-bold mb-6 text-white">
-                Need Professional Computer Repair?
-              </h2>
-              <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-                Contact KCROC today for expert repair services with free pickup and delivery across Kuwait. Same-day diagnostics available.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button asChild size="lg" className="bg-green-500 hover:bg-green-600 text-white font-bold rounded-xl px-8 py-6 text-lg">
-                  <a href="tel:+96555301913">
-                    <Phone className="w-5 h-5 mr-2" />
-                    Call: +965 5530 1913
-                  </a>
-                </Button>
-                <Button asChild size="lg" className="bg-green-500 hover:bg-green-600 text-white font-bold rounded-xl px-8 py-6 text-lg">
-                  <a href="https://wa.me/96555301913" target="_blank" rel="noopener">
-                    <MessageCircle className="w-5 h-5 mr-2" />
-                    WhatsApp Us
-                  </a>
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
-      {/* Gallery CTA */}
-      <section className="py-12 px-6 border-t border-gray-900">
-        <div className="max-w-6xl mx-auto text-center">
-          <h3 className="text-2xl font-bold text-white mb-4">
-            See Our Work in Action
-          </h3>
-          <p className="text-gray-300 mb-6">
-            Browse our gallery to see real repair work and customer results
+      {/* Final Massive CTA */}
+      <section className="py-24 px-6 border-t border-slate-800">
+        <div className="max-w-4xl mx-auto text-center bg-gradient-to-br from-slate-900 to-slate-950 border border-slate-800 p-12 rounded-3xl">
+          <h2 className="text-4xl font-black mb-6 text-white">Device Failing? We Can Fix It.</h2>
+          <p className="text-lg text-slate-400 mb-10 max-w-2xl mx-auto">
+            Contact KCROC today for expert hardware repair with free pickup and delivery across all Kuwait governorates. If we can't fix it, you pay nothing.
           </p>
-          <Button asChild className="border border-blue-500/50 text-blue-400 hover:bg-blue-500/10 rounded-xl bg-transparent">
-            <Link to="/gallery">
-              View Our Work Gallery
-            </Link>
-          </Button>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="tel:+96555301913" className="flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 text-white font-bold rounded-full px-8 py-4 text-lg border border-slate-700 transition-all">
+              <Phone className="w-5 h-5" /> 5530 1913
+            </a>
+            <a href="https://wa.me/96555301913" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-full px-8 py-4 text-lg transition-all shadow-lg">
+              <MessageCircle className="w-5 h-5" /> WhatsApp Us
+            </a>
+          </div>
         </div>
       </section>
     </div>
