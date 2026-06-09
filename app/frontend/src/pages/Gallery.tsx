@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import { Phone, MessageCircle, ImageOff } from 'lucide-react';
+import { Phone, MessageCircle, ImageOff, Camera } from 'lucide-react';
 
 export default function Gallery() {
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -65,7 +63,7 @@ export default function Gallery() {
   const filteredImages = selectedCategory === 'all' ? Object.values(galleryImages).flat() : galleryImages[selectedCategory] || [];
 
   return (
-    <main className="min-h-screen bg-gray-950 text-white">
+    <main className="w-full bg-slate-950 text-white font-sans">
       <Helmet htmlAttributes={{ lang: 'en' }}>
         <title>Repair Gallery | Computer & Laptop Repair Images in Kuwait | KCROC</title>
         <meta name="description" content="Explore our computer repair gallery. View images of MacBook repairs, motherboard soldering, component replacements, and our Hawalli shop location in Kuwait." />
@@ -75,21 +73,24 @@ export default function Gallery() {
         <link rel="alternate" hreflang="ar-kw" href="https://www.computerrepairkuwait.com/ar/gallery" />
       </Helmet>
 
-      <section className="pt-32 pb-16 px-6" aria-labelledby="gallery-title">
+      {/* Hero Section */}
+      <section className="pt-32 pb-16 px-6 border-b border-slate-800" aria-labelledby="gallery-title">
         <div className="max-w-6xl mx-auto text-center">
-          <Badge variant="secondary" className="mb-6 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-4 py-2">
-            📸 Our Work
-          </Badge>
-          <h1 id="gallery-title" className="text-4xl md:text-5xl font-bold mb-6">
-            Repair <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-green-400">Gallery</span>
+          <div className="inline-flex items-center gap-2 bg-cyan-500/10 border border-cyan-500/20 px-4 py-1.5 rounded-full text-cyan-400 text-sm font-medium mb-6">
+            <Camera size={16} />
+            <span>Our Work</span>
+          </div>
+          <h1 id="gallery-title" className="text-4xl md:text-5xl font-black mb-6 tracking-tight">
+            Repair <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-emerald-400">Gallery</span>
           </h1>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed">
             Browse our collection of repair work, components, and accessories. See the quality of parts and services we provide across Kuwait.
           </p>
         </div>
       </section>
 
-      <section className="py-8 px-6 border-t border-gray-900" aria-label="Gallery filters">
+      {/* Filter Buttons */}
+      <section className="py-8 px-6 bg-slate-900/30 border-b border-slate-800" aria-label="Gallery filters">
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-wrap gap-3 justify-center">
             {categories.map((cat) => (
@@ -98,65 +99,73 @@ export default function Gallery() {
                 onClick={() => setSelectedCategory(cat.id)}
                 aria-label={`Filter by ${cat.name}`}
                 aria-pressed={selectedCategory === cat.id}
-                className={`px-4 py-2 rounded-xl text-sm font-medium transition-all ${
+                className={`px-5 py-2.5 rounded-full text-sm font-bold transition-all duration-300 ${
                   selectedCategory === cat.id
-                    ? 'bg-emerald-600 text-white'
-                    : 'bg-gray-900/40 border border-gray-800/80 text-gray-300 hover:border-emerald-500/40 hover:text-emerald-400'
+                    ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-900/20 border border-emerald-500'
+                    : 'bg-slate-900/40 border border-slate-800 text-slate-400 hover:border-cyan-500/40 hover:text-cyan-400'
                 }`}
               >
-                {cat.name} ({cat.count})
+                {cat.name} <span className="opacity-60 font-normal ml-1">({cat.count})</span>
               </button>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="py-12 md:py-20 px-6 border-t border-gray-900" aria-label="Gallery images">
+      {/* Gallery Grid */}
+      <section className="py-20 px-6" aria-label="Gallery images">
         <div className="max-w-6xl mx-auto">
           {filteredImages.length > 0 ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredImages.map((image, index) => (
-                <div key={index} className="bg-gray-900/40 border border-gray-800/80 rounded-2xl overflow-hidden group hover:border-emerald-500/40 transition-all">
-                  <div className="relative h-56 overflow-hidden">
+                <div key={index} className="bg-slate-900/40 border border-slate-800 rounded-3xl overflow-hidden group hover:border-cyan-500/40 transition-all shadow-lg hover:shadow-cyan-500/10">
+                  <div className="relative h-60 overflow-hidden border-b border-slate-800">
                     <img
                       src={image.url}
                       alt={image.alt}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                       loading="lazy"
                     />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   </div>
-                  <div className="p-4">
-                    <p className="text-gray-300 text-sm leading-relaxed">{image.caption}</p>
+                  <div className="p-5">
+                    <p className="text-slate-300 text-sm leading-relaxed">{image.caption}</p>
                   </div>
                 </div>
               ))}
             </div>
           ) : (
-            <div className="text-center py-20">
-              <ImageOff className="w-16 h-16 text-gray-600 mx-auto mb-4" />
-              <h3 className="text-xl font-bold text-gray-400 mb-2">No images found</h3>
+            <div className="text-center py-24 bg-slate-900/30 border border-slate-800 rounded-3xl">
+              <ImageOff className="w-16 h-16 text-slate-600 mx-auto mb-4" />
+              <h3 className="text-xl font-bold text-slate-300 mb-2">No images found</h3>
+              <p className="text-slate-500">Try selecting a different category.</p>
             </div>
           )}
         </div>
       </section>
 
-      <section className="py-12 md:py-20 px-6 border-t border-gray-900">
-        <div className="max-w-4xl mx-auto text-center bg-gray-900/40 border border-gray-800/80 rounded-2xl p-12">
-          <h2 className="text-3xl font-bold mb-6">Need Computer Repair Services?</h2>
-          <p className="text-xl text-gray-300 mb-8">
-            Contact KCROC for professional repair services with free pickup and delivery across Kuwait.
+      {/* Final CTA */}
+      <section className="py-24 px-6 border-t border-slate-800">
+        <div className="max-w-4xl mx-auto text-center bg-gradient-to-br from-slate-900 to-slate-950 border border-slate-800 p-12 rounded-3xl">
+          <h2 className="text-3xl md:text-4xl font-black mb-6 text-white">Need Computer Repair Services?</h2>
+          <p className="text-lg text-slate-400 mb-10 max-w-2xl mx-auto">
+            Contact KCROC for professional hardware testing and repair services with free pickup and delivery across Kuwait.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" className="bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl px-8 py-6 text-lg" aria-label="Call KCROC">
-              <a href="tel:+96555301913">
-                <Phone className="w-5 h-5 mr-2" /> Call Now
-              </a>
-            </Button>
-            <Button asChild size="lg" className="bg-green-500 hover:bg-green-600 text-white font-bold rounded-xl px-8 py-6 text-lg" aria-label="Contact KCROC via WhatsApp">
-              <a href="https://wa.me/96555301913" target="_blank" rel="noopener noreferrer">
-                <MessageCircle className="w-5 h-5 mr-2" /> WhatsApp
-              </a>
-            </Button>
+            <a 
+              href="tel:+96555301913" 
+              className="flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 text-white font-bold rounded-full px-8 py-4 text-lg border border-slate-700 transition-all"
+            >
+              <Phone className="w-5 h-5" /> Call Now
+            </a>
+            <a 
+              href="https://wa.me/96555301913" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-full px-8 py-4 text-lg transition-all shadow-lg shadow-emerald-900/20"
+            >
+              <MessageCircle className="w-5 h-5" /> WhatsApp Us
+            </a>
           </div>
         </div>
       </section>
