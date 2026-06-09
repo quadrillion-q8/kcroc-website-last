@@ -7,6 +7,7 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const [mobileBlogsOpen, setMobileBlogsOpen] = useState(false);
+  const [logoError, setLogoError] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -48,24 +49,35 @@ export default function Header() {
           
           {/* Logo Area */}
           <Link to="/" className="flex items-center z-50">
-            <img 
-              src="/logo.png" 
-              alt="KCROC Logo" 
-              className="h-16 w-auto object-contain" 
-            />
+            {!logoError ? (
+              <img 
+                /* 👇 CHANGE THIS PATH TO MATCH YOUR ACTUAL IMAGE NAME 👇 */
+                src="/logo.png" 
+                alt="KCROC Logo" 
+                className="h-16 w-auto object-contain" 
+                onError={() => setLogoError(true)}
+              />
+            ) : (
+              /* This premium text fallback shows up instantly if the image path is wrong */
+              <div className="flex flex-col group">
+                <span className="text-2xl font-black text-white tracking-tight group-hover:text-cyan-400 transition-colors">
+                  KCROC
+                </span>
+                <span className="text-[10px] text-slate-400 uppercase tracking-widest">
+                  Computer Repair
+                </span>
+              </div>
+            )}
           </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-8 h-full">
             <Link to="/" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Home</Link>
             
-            {/* Bulletproof Dropdown: Services */}
             <div className="relative group h-full flex items-center">
               <button className="flex items-center gap-1 text-sm font-medium text-slate-300 group-hover:text-white h-full px-2 transition-colors">
                 Services <ChevronDown size={14} className="transition-transform duration-200 group-hover:rotate-180 group-hover:text-cyan-400" />
               </button>
-              
-              {/* The pt-4 creates an invisible bridge so your mouse never leaves the hover state */}
               <div className="absolute top-full left-0 w-64 pt-4 opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-200">
                 <div className="bg-slate-900 border border-slate-800 rounded-2xl shadow-xl overflow-hidden py-2">
                   {services.map((s) => (
@@ -77,12 +89,10 @@ export default function Header() {
               </div>
             </div>
 
-            {/* Bulletproof Dropdown: Blogs */}
             <div className="relative group h-full flex items-center">
               <button className="flex items-center gap-1 text-sm font-medium text-slate-300 group-hover:text-white h-full px-2 transition-colors">
                 Blogs <ChevronDown size={14} className="transition-transform duration-200 group-hover:rotate-180 group-hover:text-cyan-400" />
               </button>
-              
               <div className="absolute top-full left-0 w-64 pt-4 opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-200">
                 <div className="bg-slate-900 border border-slate-800 rounded-2xl shadow-xl overflow-hidden py-2">
                   {blogs.map((b) => (
