@@ -10,12 +10,10 @@ export default function Header() {
   const [logoError, setLogoError] = useState(false);
   const location = useLocation();
 
-  // Close mobile menus when route changes
   useEffect(() => {
     setIsOpen(false);
   }, [location.pathname]);
 
-  // Handle scroll for frosted glass effect
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
@@ -59,7 +57,6 @@ export default function Header() {
                 onError={() => setLogoError(true)}
               />
             ) : (
-              /* Text Fallback (Only shows if image fails to load) */
               <div className="flex flex-col group ml-2">
                 <span className="text-2xl font-black text-white tracking-tight group-hover:text-cyan-400 transition-colors">
                   KCROC
@@ -72,24 +69,17 @@ export default function Header() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-8 h-full">
+          <nav className="hidden lg:flex items-center gap-6 xl:gap-8 h-full">
             <Link to="/" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Home</Link>
             
-            {/* Bulletproof Dropdown: Services */}
             <div className="relative group h-full flex items-center">
               <button className="flex items-center gap-1 text-sm font-medium text-slate-300 group-hover:text-white h-full px-2 transition-colors">
                 Services <ChevronDown size={14} className="transition-transform duration-200 group-hover:rotate-180 group-hover:text-cyan-400" />
               </button>
-              
-              {/* Invisible bridge (pt-4) to prevent hover dead-zones */}
               <div className="absolute top-full left-0 w-64 pt-4 opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-200">
                 <div className="bg-slate-900 border border-slate-800 rounded-2xl shadow-xl overflow-hidden py-2">
                   {services.map((s) => (
-                    <Link 
-                      key={s.path} 
-                      to={s.path}
-                      className="block px-5 py-3 text-sm text-slate-300 hover:bg-slate-800 hover:text-cyan-400 transition-colors"
-                    >
+                    <Link key={s.path} to={s.path} className="block px-5 py-3 text-sm text-slate-300 hover:bg-slate-800 hover:text-cyan-400 transition-colors">
                       {s.name}
                     </Link>
                   ))}
@@ -97,21 +87,14 @@ export default function Header() {
               </div>
             </div>
 
-            {/* Bulletproof Dropdown: Blogs */}
             <div className="relative group h-full flex items-center">
               <button className="flex items-center gap-1 text-sm font-medium text-slate-300 group-hover:text-white h-full px-2 transition-colors">
                 Blogs <ChevronDown size={14} className="transition-transform duration-200 group-hover:rotate-180 group-hover:text-cyan-400" />
               </button>
-              
-              {/* Invisible bridge (pt-4) to prevent hover dead-zones */}
               <div className="absolute top-full left-0 w-64 pt-4 opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-200">
                 <div className="bg-slate-900 border border-slate-800 rounded-2xl shadow-xl overflow-hidden py-2">
                   {blogs.map((b) => (
-                    <Link 
-                      key={b.path} 
-                      to={b.path}
-                      className="block px-5 py-3 text-sm text-slate-300 hover:bg-slate-800 hover:text-cyan-400 transition-colors"
-                    >
+                    <Link key={b.path} to={b.path} className="block px-5 py-3 text-sm text-slate-300 hover:bg-slate-800 hover:text-cyan-400 transition-colors">
                       {b.name}
                     </Link>
                   ))}
@@ -120,7 +103,9 @@ export default function Header() {
             </div>
 
             <Link to="/pricing" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Pricing</Link>
+            <Link to="/gallery" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Gallery</Link>
             <Link to="/about" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">About</Link>
+            <Link to="/contact" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Contact</Link>
           </nav>
 
           {/* Desktop CTA Buttons */}
@@ -134,11 +119,7 @@ export default function Header() {
           </div>
 
           {/* Mobile Menu Button */}
-          <button 
-            className="lg:hidden text-slate-300 hover:text-white p-2 z-50 relative"
-            onClick={() => setIsOpen(!isOpen)}
-            aria-label="Toggle menu"
-          >
+          <button className="lg:hidden text-slate-300 hover:text-white p-2 z-50 relative" onClick={() => setIsOpen(!isOpen)} aria-label="Toggle menu">
             {isOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
@@ -149,42 +130,29 @@ export default function Header() {
         <nav className="flex flex-col p-6 gap-2 h-full overflow-y-auto pb-24">
           <Link to="/" className="text-xl font-bold text-white py-4 border-b border-slate-800">Home</Link>
           
-          {/* Mobile Services Accordion */}
           <div className="py-4 border-b border-slate-800">
-            <button 
-              onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
-              className="w-full flex items-center justify-between text-xl font-bold text-white"
-            >
-              Services
-              <ChevronDown size={20} className={`transition-transform duration-300 ${mobileServicesOpen ? 'rotate-180 text-cyan-400' : 'text-slate-500'}`} />
+            <button onClick={() => setMobileServicesOpen(!mobileServicesOpen)} className="w-full flex items-center justify-between text-xl font-bold text-white">
+              Services <ChevronDown size={20} className={`transition-transform duration-300 ${mobileServicesOpen ? 'rotate-180 text-cyan-400' : 'text-slate-500'}`} />
             </button>
             <div className={`flex flex-col gap-3 pl-4 border-l-2 border-slate-800 mt-4 overflow-hidden transition-all duration-300 ${mobileServicesOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}>
-              {services.map((s) => (
-                <Link key={s.path} to={s.path} className="text-slate-400 hover:text-cyan-400 py-2">{s.name}</Link>
-              ))}
+              {services.map((s) => <Link key={s.path} to={s.path} className="text-slate-400 hover:text-cyan-400 py-2">{s.name}</Link>)}
             </div>
           </div>
 
-          {/* Mobile Blogs Accordion */}
           <div className="py-4 border-b border-slate-800">
-            <button 
-              onClick={() => setMobileBlogsOpen(!mobileBlogsOpen)}
-              className="w-full flex items-center justify-between text-xl font-bold text-white"
-            >
-              Blogs
-              <ChevronDown size={20} className={`transition-transform duration-300 ${mobileBlogsOpen ? 'rotate-180 text-cyan-400' : 'text-slate-500'}`} />
+            <button onClick={() => setMobileBlogsOpen(!mobileBlogsOpen)} className="w-full flex items-center justify-between text-xl font-bold text-white">
+              Blogs <ChevronDown size={20} className={`transition-transform duration-300 ${mobileBlogsOpen ? 'rotate-180 text-cyan-400' : 'text-slate-500'}`} />
             </button>
             <div className={`flex flex-col gap-3 pl-4 border-l-2 border-slate-800 mt-4 overflow-hidden transition-all duration-300 ${mobileBlogsOpen ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'}`}>
-              {blogs.map((b) => (
-                <Link key={b.path} to={b.path} className="text-slate-400 hover:text-cyan-400 py-2">{b.name}</Link>
-              ))}
+              {blogs.map((b) => <Link key={b.path} to={b.path} className="text-slate-400 hover:text-cyan-400 py-2">{b.name}</Link>)}
             </div>
           </div>
 
           <Link to="/pricing" className="text-xl font-bold text-white py-4 border-b border-slate-800">Pricing</Link>
+          <Link to="/gallery" className="text-xl font-bold text-white py-4 border-b border-slate-800">Gallery</Link>
           <Link to="/about" className="text-xl font-bold text-white py-4 border-b border-slate-800">About</Link>
+          <Link to="/contact" className="text-xl font-bold text-white py-4 border-b border-slate-800">Contact</Link>
           
-          {/* Mobile CTA Buttons */}
           <div className="mt-8 flex flex-col gap-4">
             <a href="tel:+96555301913" className="flex items-center justify-center gap-2 bg-slate-800 text-white py-4 rounded-xl font-bold">
               <Phone size={20} /> Call 5530 1913
