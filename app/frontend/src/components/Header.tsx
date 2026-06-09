@@ -5,17 +5,13 @@ import { Menu, X, ChevronDown, Phone, CalendarCheck } from 'lucide-react';
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [servicesOpen, setServicesOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
-  const [blogsOpen, setBlogsOpen] = useState(false);
   const [mobileBlogsOpen, setMobileBlogsOpen] = useState(false);
   const location = useLocation();
 
-  // Close menus when route changes
+  // Close mobile menus when route changes
   useEffect(() => {
     setIsOpen(false);
-    setServicesOpen(false);
-    setBlogsOpen(false);
   }, [location.pathname]);
 
   // Handle scroll for glass effect
@@ -42,61 +38,168 @@ export default function Header() {
   ];
 
   return (
-    <>
-      {/* ─── Top Navigation Bar ─── */}
-      <header 
-        className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-          scrolled || isOpen
-            ? 'bg-slate-950/95 backdrop-blur-md border-b border-slate-800 shadow-lg' 
-            : 'bg-slate-950/70 backdrop-blur-sm border-b border-transparent'
-        }`}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-20">
-            
-            {/* Logo Area */}
-            <Link to="/" className="flex items-center z-50">
-              {/* =================================================
-                🚨 REPLACE THIS SRC WITH YOUR ACTUAL LOGO PATH 🚨
-                =================================================
-              */}
-              <img 
-                src="/your-logo-file.png" 
-                alt="KCROC Logo" 
-                className="h-16 w-auto object-contain" 
-              />
-            </Link>
+    <header 
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+        scrolled 
+          ? '!bg-slate-950/90 backdrop-blur-md border-b border-slate-800 shadow-lg' 
+          : '!bg-slate-950/70 backdrop-blur-sm border-b border-transparent'
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-20">
+          
+          {/* Logo Area */}
+          <Link to="/" className="flex items-center z-50">
+            <img 
+              src="/logo.png" 
+              alt="KCROC Logo" 
+              className="h-16 w-auto object-contain" 
+              onError={(e) => {
+                e.currentTarget.style.display = 'none';
+                const nextEl = e.currentTarget.nextElementSibling as HTMLElement;
+                if (nextEl) nextEl.style.display = 'flex';
+              }} 
+            />
+            {/* Text Fallback (Only shows if image fails to load) */}
+            <div className="hidden flex-col group">
+              <span className="text-2xl font-black text-white tracking-tight group-hover:text-cyan-400 transition-colors">
+                KCROC
+              </span>
+              <span className="text-[10px] text-slate-400 uppercase tracking-widest">
+                Computer Repair
+              </span>
+            </div>
+          </Link>
 
-            {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center gap-8">
-              <Link to="/" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Home</Link>
+          {/* Desktop Navigation */}
+          <nav className="hidden lg:flex items-center gap-8 h-full">
+            <Link to="/" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Home</Link>
+            
+            {/* Pure CSS Dropdown: Services */}
+            <div className="relative group h-full flex items-center">
+              <button className="flex items-center gap-1 text-sm font-medium text-slate-300 group-hover:text-white py-8 transition-colors">
+                Services <ChevronDown size={14} className="transition-transform duration-200 group-hover:rotate-180 group-hover:text-cyan-400" />
+              </button>
               
-              {/* Services Dropdown */}
-              <div 
-                className="relative group"
-                onMouseEnter={() => setServicesOpen(true)}
-                onMouseLeave={() => setServicesOpen(false)}
-              >
-                <button className="flex items-center gap-1 text-sm font-medium text-slate-300 hover:text-white py-8 transition-colors">
-                  Services <ChevronDown size={14} className={`transition-transform duration-200 ${servicesOpen ? 'rotate-180 text-cyan-400' : ''}`} />
-                </button>
-                
-                <div className={`absolute top-[80px] left-0 w-64 bg-slate-900 border border-slate-800 rounded-2xl shadow-xl transition-all duration-200 ${servicesOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible translate-y-2 pointer-events-none'}`}>
-                  <div className="py-2">
-                    {services.map((s) => (
-                      <Link key={s.path} to={s.path} className="block px-5 py-3 text-sm text-slate-300 hover:bg-slate-800 hover:text-cyan-400 transition-colors">
-                        {s.name}
-                      </Link>
-                    ))}
-                  </div>
+              {/* Invisible bridge to prevent hover dead-zones */}
+              <div className="absolute top-[calc(100%-10px)] left-0 w-full h-[20px] bg-transparent"></div>
+              
+              {/* Dropdown Menu */}
+              <div className="absolute top-full left-0 w-64 bg-slate-900 border border-slate-800 rounded-2xl shadow-xl opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-200">
+                <div className="py-2">
+                  {services.map((s) => (
+                    <Link 
+                      key={s.path} 
+                      to={s.path}
+                      className="block px-5 py-3 text-sm text-slate-300 hover:bg-slate-800 hover:text-cyan-400 transition-colors"
+                    >
+                      {s.name}
+                    </Link>
+                  ))}
                 </div>
               </div>
+            </div>
 
-              {/* Blogs Dropdown */}
-              <div 
-                className="relative group"
-                onMouseEnter={() => setBlogsOpen(true)}
-                onMouseLeave={() => setBlogsOpen(false)}
-              >
-                <button className="flex items-center gap-1 text-sm font-medium text-slate-300 hover:text-white py-8 transition-colors">
-                  Blogs <ChevronDown size={14} className={`transition-transform duration-
+            {/* Pure CSS Dropdown: Blogs */}
+            <div className="relative group h-full flex items-center">
+              <button className="flex items-center gap-1 text-sm font-medium text-slate-300 group-hover:text-white py-8 transition-colors">
+                Blogs <ChevronDown size={14} className="transition-transform duration-200 group-hover:rotate-180 group-hover:text-cyan-400" />
+              </button>
+              
+              {/* Invisible bridge to prevent hover dead-zones */}
+              <div className="absolute top-[calc(100%-10px)] left-0 w-full h-[20px] bg-transparent"></div>
+              
+              {/* Dropdown Menu */}
+              <div className="absolute top-full left-0 w-64 bg-slate-900 border border-slate-800 rounded-2xl shadow-xl opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-200">
+                <div className="py-2">
+                  {blogs.map((b) => (
+                    <Link 
+                      key={b.path} 
+                      to={b.path}
+                      className="block px-5 py-3 text-sm text-slate-300 hover:bg-slate-800 hover:text-cyan-400 transition-colors"
+                    >
+                      {b.name}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <Link to="/pricing" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Pricing</Link>
+            <Link to="/about" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">About</Link>
+          </nav>
+
+          {/* Desktop CTA Buttons */}
+          <div className="hidden lg:flex items-center gap-4">
+            <a href="tel:+96555301913" className="text-slate-300 hover:text-white flex items-center gap-2 text-sm font-bold transition-colors">
+              <Phone size={16} className="text-cyan-400" /> 5530 1913
+            </a>
+            <Link to="/book" className="bg-emerald-600 hover:bg-emerald-500 text-white px-5 py-2.5 rounded-full text-sm font-bold transition-all shadow-lg hover:shadow-emerald-500/25 flex items-center gap-2">
+              <CalendarCheck size={16} /> Book Now
+            </Link>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button 
+            className="lg:hidden text-slate-300 hover:text-white p-2 z-50 relative"
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label="Toggle menu"
+          >
+            {isOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Navigation Drawer */}
+      <div className={`lg:hidden fixed inset-0 top-0 pt-20 bg-slate-950/98 backdrop-blur-xl transition-all duration-300 ${isOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
+        <nav className="flex flex-col p-6 gap-2 h-full overflow-y-auto pb-24">
+          <Link to="/" className="text-xl font-bold text-white py-4 border-b border-slate-800">Home</Link>
+          
+          {/* Mobile Services Accordion */}
+          <div className="py-4 border-b border-slate-800">
+            <button 
+              onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
+              className="w-full flex items-center justify-between text-xl font-bold text-white"
+            >
+              Services
+              <ChevronDown size={20} className={`transition-transform duration-300 ${mobileServicesOpen ? 'rotate-180 text-cyan-400' : 'text-slate-500'}`} />
+            </button>
+            <div className={`flex flex-col gap-3 pl-4 border-l-2 border-slate-800 mt-4 overflow-hidden transition-all duration-300 ${mobileServicesOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}>
+              {services.map((s) => (
+                <Link key={s.path} to={s.path} className="text-slate-400 hover:text-cyan-400 py-2">{s.name}</Link>
+              ))}
+            </div>
+          </div>
+
+          {/* Mobile Blogs Accordion */}
+          <div className="py-4 border-b border-slate-800">
+            <button 
+              onClick={() => setMobileBlogsOpen(!mobileBlogsOpen)}
+              className="w-full flex items-center justify-between text-xl font-bold text-white"
+            >
+              Blogs
+              <ChevronDown size={20} className={`transition-transform duration-300 ${mobileBlogsOpen ? 'rotate-180 text-cyan-400' : 'text-slate-500'}`} />
+            </button>
+            <div className={`flex flex-col gap-3 pl-4 border-l-2 border-slate-800 mt-4 overflow-hidden transition-all duration-300 ${mobileBlogsOpen ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'}`}>
+              {blogs.map((b) => (
+                <Link key={b.path} to={b.path} className="text-slate-400 hover:text-cyan-400 py-2">{b.name}</Link>
+              ))}
+            </div>
+          </div>
+
+          <Link to="/pricing" className="text-xl font-bold text-white py-4 border-b border-slate-800">Pricing</Link>
+          <Link to="/about" className="text-xl font-bold text-white py-4 border-b border-slate-800">About</Link>
+          
+          <div className="mt-8 flex flex-col gap-4">
+            <a href="tel:+96555301913" className="flex items-center justify-center gap-2 bg-slate-800 text-white py-4 rounded-xl font-bold">
+              <Phone size={20} /> Call 5530 1913
+            </a>
+            <Link to="/book" className="flex items-center justify-center gap-2 bg-emerald-600 text-white py-4 rounded-xl font-bold">
+              <CalendarCheck size={20} /> Book Free Pickup
+            </Link>
+          </div>
+        </nav>
+      </div>
+    </header>
+  );
+}
