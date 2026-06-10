@@ -58,37 +58,37 @@ export default function Header() {
         </div>
       </header>
 
-      {/* Full Screen Mobile Overlay */}
+      {/* Tightened Full Screen Mobile Overlay */}
       <div className={`lg:hidden fixed inset-0 z-[99999] bg-slate-950 h-screen w-screen flex flex-col transition-all duration-300 ${isOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}`}>
-        <div className="absolute top-6 right-6">
+        <div className="absolute top-4 right-4">
           <button className="text-white p-2" onClick={() => setIsOpen(false)}>
-            <X size={40} />
+            <X size={32} />
           </button>
         </div>
         
-        {/* Navigation Wrapper with Scroll */}
-        <nav className="flex flex-col items-center justify-start h-full pt-24 pb-12 gap-6 w-full overflow-y-auto px-6">
-          <Link to="/" className="text-3xl font-black text-white" onClick={() => setIsOpen(false)}>Home</Link>
+        {/* Navigation Wrapper: Reduced pt-24 to pt-16, gap-6 to gap-3 */}
+        <nav className="flex flex-col items-center justify-center h-full pt-16 pb-8 gap-3 w-full overflow-y-auto px-6">
+          <Link to="/" className="text-2xl font-black text-white" onClick={() => setIsOpen(false)}>Home</Link>
           
-          <div className="flex flex-col items-center gap-4 w-full">
-            <button onClick={() => setMobileServicesOpen(!mobileServicesOpen)} className="text-3xl font-black text-white flex items-center gap-2">Services <ChevronDown /></button>
-            <div className={`flex flex-col items-center gap-3 transition-all ${mobileServicesOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
-                {services.map(s => <Link key={s.path} to={s.path} className="text-slate-400 text-lg hover:text-cyan-400" onClick={() => setIsOpen(false)}>{s.name}</Link>)}
+          <div className="flex flex-col items-center gap-2 w-full">
+            <button onClick={() => setMobileServicesOpen(!mobileServicesOpen)} className="text-2xl font-black text-white flex items-center gap-1">Services <ChevronDown size={20} /></button>
+            <div className={`flex flex-col items-center gap-2 transition-all ${mobileServicesOpen ? 'max-h-[300px] opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
+                {services.map(s => <Link key={s.path} to={s.path} className="text-slate-400 text-base" onClick={() => setIsOpen(false)}>{s.name}</Link>)}
             </div>
           </div>
           
-          <div className="flex flex-col items-center gap-4 w-full">
-            <button onClick={() => setMobileBlogsOpen(!mobileBlogsOpen)} className="text-3xl font-black text-white flex items-center gap-2">Blogs <ChevronDown /></button>
-            <div className={`flex flex-col items-center gap-3 transition-all ${mobileBlogsOpen ? 'max-h-[300px] opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
-                {blogs.map(b => <Link key={b.path} to={b.path} className="text-slate-400 text-lg hover:text-cyan-400" onClick={() => setIsOpen(false)}>{b.name}</Link>)}
+          <div className="flex flex-col items-center gap-2 w-full">
+            <button onClick={() => setMobileBlogsOpen(!mobileBlogsOpen)} className="text-2xl font-black text-white flex items-center gap-1">Blogs <ChevronDown size={20} /></button>
+            <div className={`flex flex-col items-center gap-2 transition-all ${mobileBlogsOpen ? 'max-h-[200px] opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
+                {blogs.map(b => <Link key={b.path} to={b.path} className="text-slate-400 text-base" onClick={() => setIsOpen(false)}>{b.name}</Link>)}
             </div>
           </div>
 
-          <Link to="/pricing" className="text-3xl font-black text-white" onClick={() => setIsOpen(false)}>Pricing</Link>
-          <Link to="/gallery" className="text-3xl font-black text-white" onClick={() => setIsOpen(false)}>Gallery</Link>
-          <Link to="/about" className="text-3xl font-black text-white" onClick={() => setIsOpen(false)}>About</Link>
-          <Link to="/contact" className="text-3xl font-black text-white" onClick={() => setIsOpen(false)}>Contact</Link>
-          <Link to="/book" className="text-3xl font-black text-emerald-400" onClick={() => setIsOpen(false)}>Booking</Link>
+          <Link to="/pricing" className="text-2xl font-black text-white" onClick={() => setIsOpen(false)}>Pricing</Link>
+          <Link to="/gallery" className="text-2xl font-black text-white" onClick={() => setIsOpen(false)}>Gallery</Link>
+          <Link to="/about" className="text-2xl font-black text-white" onClick={() => setIsOpen(false)}>About</Link>
+          <Link to="/contact" className="text-2xl font-black text-white" onClick={() => setIsOpen(false)}>Contact</Link>
+          <Link to="/book" className="text-2xl font-black text-emerald-400" onClick={() => setIsOpen(false)}>Booking</Link>
         </nav>
       </div>
     </>
