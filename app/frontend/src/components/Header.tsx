@@ -6,12 +6,14 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const [mobileBlogsOpen, setMobileBlogsOpen] = useState(false);
   const [logoError, setLogoError] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
     setIsOpen(false);
     setMobileServicesOpen(false);
+    setMobileBlogsOpen(false);
   }, [location.pathname]);
 
   useEffect(() => {
@@ -25,8 +27,14 @@ export default function Header() {
     { name: 'Laptop Repair', path: '/laptop-repair-hawalli-kuwait' },
     { name: 'MacBook Repair', path: '/macbook-repair' },
     { name: 'Gaming PC Repair', path: '/gaming-pc-repair-kuwait' },
+    { name: 'Gaming PC Cooling', path: '/gaming-pc-cooling' },
     { name: 'Screen Replacement', path: '/screen-replacement' },
+    { name: 'Battery Replacement', path: '/battery-replacement' },
+    { name: 'Motherboard Repair', path: '/chip-level-motherboard-repair-hawalli' },
+    { name: 'Data Security', path: '/data-security' },
   ];
+
+  const blogs = [{ name: 'Screen Protection', path: '/blog/how-to-protect-laptop-screen' }];
 
   return (
     <>
@@ -48,22 +56,32 @@ export default function Header() {
         </div>
       </header>
 
-      {/* FIXED: Solid Background (no transparency) and full screen coverage */}
-      <div className={`lg:hidden fixed inset-0 z-[99999] bg-slate-950 h-screen w-screen flex flex-col items-center justify-center transition-all duration-300 ${isOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}`}>
-        <button className="absolute top-6 right-6 text-white p-2" onClick={() => setIsOpen(false)}>
-          <X size={40} />
-        </button>
+      {/* Full Screen Mobile Overlay */}
+      <div className={`lg:hidden fixed inset-0 z-[99999] bg-slate-950 h-screen w-screen flex flex-col transition-all duration-300 ${isOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}`}>
+        <div className="absolute top-6 right-6">
+          <button className="text-white p-2" onClick={() => setIsOpen(false)}>
+            <X size={40} />
+          </button>
+        </div>
         
-        <nav className="flex flex-col items-center gap-6 text-center">
+        {/* Navigation Wrapper with Scroll */}
+        <nav className="flex flex-col items-center justify-start h-full pt-24 pb-12 gap-6 w-full overflow-y-auto px-6">
           <Link to="/" className="text-3xl font-black text-white" onClick={() => setIsOpen(false)}>Home</Link>
           
-          <div className="flex flex-col items-center gap-4">
+          <div className="flex flex-col items-center gap-4 w-full">
             <button onClick={() => setMobileServicesOpen(!mobileServicesOpen)} className="text-3xl font-black text-white flex items-center gap-2">Services <ChevronDown /></button>
-            <div className={`flex flex-col items-center gap-3 transition-all ${mobileServicesOpen ? 'max-h-[300px] opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
-                {services.map(s => <Link key={s.path} to={s.path} className="text-slate-400 text-lg" onClick={() => setIsOpen(false)}>{s.name}</Link>)}
+            <div className={`flex flex-col items-center gap-3 transition-all ${mobileServicesOpen ? 'max-h-[600px] opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
+                {services.map(s => <Link key={s.path} to={s.path} className="text-slate-400 text-lg hover:text-cyan-400" onClick={() => setIsOpen(false)}>{s.name}</Link>)}
             </div>
           </div>
           
+          <div className="flex flex-col items-center gap-4 w-full">
+            <button onClick={() => setMobileBlogsOpen(!mobileBlogsOpen)} className="text-3xl font-black text-white flex items-center gap-2">Blogs <ChevronDown /></button>
+            <div className={`flex flex-col items-center gap-3 transition-all ${mobileBlogsOpen ? 'max-h-[200px] opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
+                {blogs.map(b => <Link key={b.path} to={b.path} className="text-slate-400 text-lg hover:text-cyan-400" onClick={() => setIsOpen(false)}>{b.name}</Link>)}
+            </div>
+          </div>
+
           <Link to="/pricing" className="text-3xl font-black text-white" onClick={() => setIsOpen(false)}>Pricing</Link>
           <Link to="/gallery" className="text-3xl font-black text-white" onClick={() => setIsOpen(false)}>Gallery</Link>
           <Link to="/about" className="text-3xl font-black text-white" onClick={() => setIsOpen(false)}>About</Link>
