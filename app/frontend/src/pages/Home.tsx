@@ -1,51 +1,21 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import {
-  Cpu, Gamepad2, Laptop, Monitor, Database, ShieldAlert, Star,
-  MessageCircle, Phone, ArrowRight, BadgeCheck, Zap, RefreshCcw,
-  Truck, ChevronDown, MapPin, CheckCircle2
+import { 
+  Cpu, Gamepad2, Laptop, Monitor, Database, ShieldAlert, Star, 
+  MessageCircle, Phone, ArrowRight, BadgeCheck, Zap, RefreshCcw, 
+  Truck, ChevronDown, MapPin 
 } from 'lucide-react';
 
 // ─── Static Data ────────────────────────────────────────────────────────────
 
 const services = [
-  { 
-    title: 'Chip-Level Motherboard Repair', 
-    description: 'Advanced logic board diagnostics, micro-soldering, and professional BIOS flashing.', 
-    icon: Cpu, 
-    path: '/chip-level-motherboard-repair-hawalli' // Corrected from App.tsx
-  },
-  { 
-    title: 'Gaming PC & Tuning', 
-    description: 'GPU troubleshooting, liquid cooling loop maintenance, and high-performance optimization.', 
-    icon: Gamepad2, 
-    path: '/gaming-pc-repair-kuwait' // Corrected from App.tsx
-  },
-  { 
-    title: 'MacBook Professional Repair', 
-    description: 'Expert logic board repair, hardware diagnostics, and component replacement for all models.', 
-    icon: Laptop, 
-    path: '/macbook-repair' // Corrected from App.tsx
-  },
-  { 
-    title: 'Screen Replacement', 
-    description: 'High-quality replacement displays for premium laptops, MacBooks, and monitors.', 
-    icon: Monitor, 
-    path: '/screen-replacement' // Corrected from App.tsx
-  },
-  { 
-    title: 'Data Recovery & Security', 
-    description: 'Secure retrieval of critical files from failing SSDs, HDDs, and corrupted media.', 
-    icon: Database, 
-    path: '/data-security' // Corrected from App.tsx
-  },
-  { 
-    title: 'All Repair Services', 
-    description: 'Complete system cleanups, battery replacements, virus removal, and OS deployments.', 
-    icon: ShieldAlert, 
-    path: '/services' // Fallback to general services page
-  },
+  { title: 'Chip-Level Motherboard Repair', description: 'Advanced logic board diagnostics, micro-soldering, and professional BIOS flashing.', icon: Cpu, path: '/chip-level-motherboard-repair-hawalli' },
+  { title: 'Gaming PC & Tuning', description: 'GPU troubleshooting, liquid cooling loop maintenance, and high-performance optimization.', icon: Gamepad2, path: '/gaming-pc-repair-kuwait' },
+  { title: 'MacBook Professional Repair', description: 'Expert logic board repair, hardware diagnostics, and component replacement for all models.', icon: Laptop, path: '/macbook-repair' },
+  { title: 'Screen Replacement', description: 'High-quality replacement displays for premium laptops, MacBooks, and monitors.', icon: Monitor, path: '/screen-replacement' },
+  { title: 'Data Recovery & Security', description: 'Secure retrieval of critical files from failing SSDs, HDDs, and corrupted media.', icon: Database, path: '/data-security' },
+  { title: 'All Repair Services', description: 'Complete system cleanups, battery replacements, virus removal, and OS deployments.', icon: ShieldAlert, path: '/services' },
 ];
 
 const trustPoints = [
@@ -56,7 +26,7 @@ const trustPoints = [
 ];
 
 const faqs = [
-  { q: "Do you offer free pickup anywhere in Kuwait?", a: "Yes. We offer free pickup and delivery across all governorates including Hawalli, Capital, Farwaniya, Ahmadi, Jahra, and Mubarak Al-Kabeer." },
+  { q: "Do you offer free pickup anywhere in Kuwait?", a: "Yes. We offer free pickup and delivery across all governorates including Kuwait City, Hawalli, Salmiya, Farwaniya, and Jahra. There are no hidden charges for collection or return." },
   { q: "What happens if you can't fix my device?", a: "Our No Fix, No Fee guarantee means you pay nothing if we cannot repair your device." },
   { q: "How long does a typical repair take?", a: "Most screen replacements and SSD upgrades are same-day. Complex motherboard repairs take 1-3 business days." }
 ];
@@ -78,8 +48,6 @@ const targetAreas = [
   { name: 'Ahmadi', text: 'Computer Maintenance Ahmadi' }
 ];
 
-// ─── Schema Objects ─────────────────────────────────────────────────────────
-
 const graphSchema = {
   "@context": "https://schema.org",
   "@graph": [
@@ -97,11 +65,9 @@ const graphSchema = {
       "name": "Kuwait Computer Repair On Call (KCROC)",
       "telephone": "+96555301913",
       "url": "https://www.computerrepairkuwait.com",
-      "logo": "https://www.computerrepairkuwait.com/logo.png",
-      "image": "https://www.computerrepairkuwait.com/og-image.jpg",
       "address": { 
         "@type": "PostalAddress", 
-        "streetAddress": "Al Mullah Complex, Ibn Khaldoun St, Basement Shop 19", 
+        "streetAddress": "Al Mullah Complex, Ibn Khaldoun Street, Basement Shop 19", 
         "addressLocality": "Hawalli", 
         "addressCountry": "KW" 
       },
@@ -109,40 +75,16 @@ const graphSchema = {
         "@type": "AggregateRating", 
         "ratingValue": "4.9", 
         "reviewCount": "150" 
-      },
-      "sameAs": [
-        "https://maps.google.com/?cid=13346903770453509930", // Replace with actual CID link
-        "https://www.facebook.com/kcrockw",
-        "https://www.instagram.com/kcrockw"
-      ]
-    },
-    {
-      "@type": "RepairService",
-      "name": "Computer & Laptop Repair Services",
-      "provider": { "@id": "https://www.computerrepairkuwait.com/#business" },
-      "areaServed": [
-        { "@type": "AdministrativeArea", "name": "Hawalli" },
-        { "@type": "AdministrativeArea", "name": "Capital" },
-        { "@type": "AdministrativeArea", "name": "Farwaniya" }
-      ]
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": faqs.map(f => ({ 
-        "@type": "Question", 
-        "name": f.q, 
-        "acceptedAnswer": { "@type": "Answer", "text": f.a } 
-      }))
+      }
     }
   ]
 };
 
-// ─── Sub-Components ─────────────────────────────────────────────────────────
+// ─── Components ─────────────────────────────────────────────────────────────
 
 const FadeIn = ({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) => {
   const [visible, setVisible] = useState(false);
   const ref = useRef<HTMLDivElement | null>(null);
-
   useEffect(() => {
     const observer = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) { setVisible(true); observer.disconnect(); }
@@ -150,47 +92,31 @@ const FadeIn = ({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
   }, []);
-
   return <div ref={ref} className={`transition-all duration-700 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`} style={{ transitionDelay: `${delay}ms` }}>{children}</div>;
 };
 
 const FAQItem = ({ q, a, index }: { q: string; a: string; index: number }) => {
   const [open, setOpen] = useState(false);
-  const panelId = `faq-panel-${index}`;
-  
   return (
     <div className="border border-slate-800 rounded-2xl overflow-hidden bg-slate-900/20">
-      <button
-        onClick={() => setOpen(!open)}
-        className="w-full flex items-center justify-between p-6 text-left hover:bg-slate-800/50 transition-colors"
-        aria-expanded={open}
-        aria-controls={panelId}
-      >
+      <button onClick={() => setOpen(!open)} className="w-full flex items-center justify-between p-6 text-left hover:bg-slate-800/50 transition-colors">
         <span className="font-semibold text-white pr-4">{q}</span>
         <ChevronDown size={20} className={`text-cyan-400 flex-shrink-0 transition-transform duration-300 ${open ? 'rotate-180' : ''}`} />
       </button>
-      <div 
-        id={panelId}
-        aria-hidden={!open}
-        className={`px-6 text-slate-400 text-sm leading-relaxed border-t border-slate-800/50 transition-all duration-200 ease-in-out ${
-          open ? 'max-h-96 pb-6 pt-4 opacity-100' : 'max-h-0 opacity-0 pointer-events-none overflow-hidden border-none'
-        }`}
-      >
+      <div className={`px-6 text-slate-400 text-sm leading-relaxed border-t border-slate-800/50 transition-all duration-200 ${open ? 'max-h-96 pb-6 pt-4 opacity-100' : 'max-h-0 opacity-0 pointer-events-none'}`}>
         {a}
       </div>
     </div>
   );
 };
 
-// ─── Page Component ─────────────────────────────────────────────────────────
+// ─── Main Page ──────────────────────────────────────────────────────────────
 
 export default function Home() {
-  const finalCtaWaLink = `https://wa.me/96555301913?text=${encodeURIComponent("Hi! I need help with my computer/laptop. Can you arrange a pickup?")}`;
+  const finalCtaWaLink = `https://wa.me/96555301913?text=${encodeURIComponent("Hi! I need help with my computer. Can you arrange a pickup?")}`;
 
   return (
-    <div className="w-full">
-      <a href="#main" className="sr-only focus:not-sr-only fixed top-4 left-4 z-50 bg-emerald-600 px-4 py-2 text-white">Skip to content</a>
-      
+    <div className="w-full bg-slate-950">
       <Helmet>
         <title>Computer & Laptop Repair in Kuwait | MacBook, Motherboard & Data Recovery | KCROC</title>
         <meta name="description" content="Professional computer and laptop repair in Kuwait. MacBook repair, motherboard repair, gaming PC repair, data recovery, and no-fix-no-fee service with free pickup." />
@@ -199,9 +125,9 @@ export default function Home() {
       </Helmet>
 
       {/* Hero Section */}
-      <section id="main" className="pt-32 pb-20 px-6 text-center" aria-label="Hero Section">
+      <section className="pt-32 pb-20 px-6 text-center">
         <FadeIn>
-          <div className="inline-flex items-center gap-2 bg-slate-800/50 border border-slate-700/50 px-4 py-1.5 rounded-full text-slate-300 text-sm font-medium mb-8">
+          <div className="inline-flex items-center gap-2 bg-slate-900 border border-slate-800 px-4 py-1.5 rounded-full text-slate-300 text-sm font-medium mb-8">
             <Star size={14} className="text-yellow-400 fill-current" />
             <span>Rated 4.9/5 by 150+ Kuwait Customers</span>
           </div>
@@ -209,13 +135,13 @@ export default function Home() {
             Expert Computer & Laptop Repair in <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-emerald-400">Kuwait</span>
           </h1>
           <p className="mt-6 text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed">
-            Professional diagnostics, motherboard micro-soldering, MacBook logic board repair, and secure data recovery with free home pickup.
+            Professional hardware assessment, motherboard micro-soldering, MacBook logic board repair, and secure data recovery with free home pickup.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4 mt-10">
-            <a href={finalCtaWaLink} target="_blank" rel="noopener noreferrer" aria-label="Contact KCROC via WhatsApp" className="flex items-center justify-center gap-2 bg-emerald-600 px-8 py-4 rounded-full font-bold text-lg hover:bg-emerald-500 transition-all text-white shadow-lg shadow-emerald-900/20">
+            <a href={finalCtaWaLink} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 bg-emerald-600 px-8 py-4 rounded-full font-bold text-lg hover:bg-emerald-500 transition-all text-white shadow-lg shadow-emerald-900/20">
               <MessageCircle className="h-5 w-5" /> WhatsApp Us
             </a>
-            <a href="tel:+96555301913" aria-label="Call KCROC" className="flex items-center justify-center gap-2 bg-slate-800 px-8 py-4 rounded-full font-bold text-lg hover:bg-slate-700 transition-all border border-slate-700 text-white">
+            <a href="tel:+96555301913" className="flex items-center justify-center gap-2 bg-slate-800 px-8 py-4 rounded-full font-bold text-lg hover:bg-slate-700 transition-all border border-slate-700 text-white">
               <Phone className="h-5 w-5" /> Call Now
             </a>
           </div>
@@ -223,17 +149,16 @@ export default function Home() {
       </section>
 
       {/* Services Section */}
-      <section className="py-20 max-w-7xl mx-auto px-6">
+      <section className="py-20 max-w-7xl mx-auto px-6 border-t border-slate-800">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Professional Hardware Solutions</h2>
+          <h2 className="text-3xl md:text-4xl font-black text-white mb-4">Professional Hardware Solutions</h2>
           <p className="text-slate-400 max-w-2xl mx-auto">We specialize in advanced repairs that other shops reject. From liquid damage to complete logic board rebuilds.</p>
         </div>
-        
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((s, i) => (
             <FadeIn key={i} delay={i * 50}>
               <Link to={s.path} className="block bg-slate-900/40 p-8 rounded-3xl border border-slate-800 hover:border-cyan-500/30 hover:bg-slate-800/50 transition-all group h-full">
-                <div className="w-12 h-12 rounded-2xl bg-slate-800 flex items-center justify-center mb-6 group-hover:bg-cyan-500/10 transition-colors">
+                <div className="w-12 h-12 rounded-2xl bg-slate-900 flex items-center justify-center mb-6 group-hover:bg-cyan-500/10 transition-colors">
                   <s.icon className="w-6 h-6 text-cyan-400" />
                 </div>
                 <h3 className="text-xl font-bold text-white mb-3 group-hover:text-cyan-300 transition-colors">{s.title}</h3>
@@ -284,18 +209,12 @@ export default function Home() {
             </div>
           ))}
         </div>
-        <div className="text-center mt-12">
-           <a href="https://g.page/r/CWbK8KGjkYY2EAE/review" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-cyan-400 font-bold hover:text-cyan-300 transition-colors">
-             Read More Google Reviews <ArrowRight size={16} />
-           </a>
-        </div>
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 max-w-3xl mx-auto px-6" aria-labelledby="faq-title">
+      <section className="py-20 max-w-3xl mx-auto px-6 border-t border-slate-800">
         <div className="text-center mb-12">
-          <h2 id="faq-title" className="text-3xl font-bold text-white mb-4">Frequently Asked Questions</h2>
-          <p className="text-slate-400">Everything you need to know about our repair process.</p>
+          <h2 className="text-3xl font-bold text-white mb-4">Frequently Asked Questions</h2>
         </div>
         <div className="space-y-3">
           {faqs.map((faq, i) => (
@@ -313,34 +232,11 @@ export default function Home() {
           </div>
           <div className="flex flex-wrap justify-center gap-2">
             {targetAreas.map((area) => (
-              <span key={area.name} title={area.text}
-                className="px-3 py-1.5 rounded-full text-xs font-medium bg-slate-900 border border-slate-800 text-slate-400 hover:text-cyan-400 hover:border-cyan-500/30 transition-colors cursor-help">
-                {area.name}
-              </span>
+              <span key={area.name} className="px-3 py-1.5 rounded-full text-xs font-medium bg-slate-900 border border-slate-800 text-slate-400">{area.name}</span>
             ))}
           </div>
         </div>
       </section>
-
-      {/* Final CTA */}
-      <footer className="py-24 px-6 text-center">
-        <div className="max-w-3xl mx-auto bg-gradient-to-br from-slate-900 to-slate-950 border border-slate-800 rounded-3xl p-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Ready to Fix Your Device?</h2>
-          <p className="text-slate-400 mb-10 max-w-lg mx-auto">Contact us now for a free diagnostic. If we can't fix it, you pay absolutely nothing.</p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4 mb-12">
-              <a href={finalCtaWaLink} target="_blank" rel="noopener noreferrer" aria-label="Contact KCROC via WhatsApp" className="flex items-center justify-center gap-2 bg-emerald-600 px-8 py-4 rounded-full font-bold hover:bg-emerald-500 text-white transition-all">
-                <MessageCircle size={20} /> WhatsApp Us
-              </a>
-              <a href="tel:+96555301913" aria-label="Call KCROC" className="flex items-center justify-center gap-2 bg-slate-800 px-8 py-4 rounded-full font-bold hover:bg-slate-700 text-white border border-slate-700 transition-all">
-                <Phone size={20} /> Call Now
-              </a>
-          </div>
-          <div className="text-slate-500 text-sm space-y-2">
-            <p className="font-bold text-slate-300">Kuwait Computer Repair On Call (KCROC)</p>
-            <p>Al Mullah Complex, Ibn Khaldoun Street, Basement Shop 19, Hawalli</p>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }
