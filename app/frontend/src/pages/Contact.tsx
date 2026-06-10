@@ -20,20 +20,19 @@ type FormData = {
 };
 
 const BUSINESS = {
-  name: 'Kuwait Computer Repair on Call',
+  name: 'Kuwait Computer Repair On Call',
   shortName: 'KCROC',
   phone: '+96555301913',
   phoneDisplay: '+965 5530 1913',
   whatsapp: '96555301913',
   email: 'quadrillion1980@gmail.com',
   addressLines: [
-    'Hawalli, Ibn Khaldoun St',
-    'Al Mullah Complex',
+    'Al Mullah Complex, Ibn Khaldoun Street',
     'Basement Shop 19',
-    'Kuwait',
+    'Hawalli, Kuwait',
   ],
   mapTitle:
-    'Kuwait Computer Repair on Call - Hawalli, Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19',
+    'Kuwait Computer Repair On Call - Hawalli, Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19',
   whatsappUrl: 'https://wa.me/96555301913',
   reviewsUrl: 'https://share.google/a1XlHbHRHMPrrNfpr',
   websiteUrl: 'https://www.computerrepairkuwait.com',
@@ -242,4 +241,133 @@ Message: ${formData.message}`,
                 <h3 className="text-xl font-bold mb-6 text-white">
                   Direct Contact
                 </h3>
-                <div
+                <div className="space-y-6">
+                  <div className="flex items-center gap-4 group">
+                    <div className="w-12 h-12 bg-slate-800 border border-slate-700 rounded-xl flex items-center justify-center group-hover:border-cyan-500 transition-colors">
+                      <Phone className="w-5 h-5 text-cyan-400" />
+                    </div>
+                    <div>
+                      <p className="font-medium text-slate-400 text-sm">Call Us</p>
+                      <a href={`tel:${BUSINESS.phone}`} className="text-white font-bold hover:text-cyan-400 transition-colors">
+                        {BUSINESS.phoneDisplay}
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-4 group">
+                    <div className="w-12 h-12 bg-slate-800 border border-slate-700 rounded-xl flex items-center justify-center group-hover:border-emerald-500 transition-colors">
+                      <MessageCircle className="w-5 h-5 text-emerald-400" />
+                    </div>
+                    <div>
+                      <p className="font-medium text-slate-400 text-sm">WhatsApp</p>
+                      <a href={BUSINESS.whatsappUrl} target="_blank" rel="noopener noreferrer" className="text-white font-bold hover:text-emerald-400 transition-colors">
+                        {BUSINESS.phoneDisplay}
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-4 group">
+                    <div className="w-12 h-12 bg-slate-800 border border-slate-700 rounded-xl flex items-center justify-center group-hover:border-purple-500 transition-colors">
+                      <Mail className="w-5 h-5 text-purple-400" />
+                    </div>
+                    <div>
+                      <p className="font-medium text-slate-400 text-sm">Email</p>
+                      <a href={`mailto:${BUSINESS.email}`} className="text-white font-bold hover:text-purple-400 transition-colors">
+                        {BUSINESS.email}
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Address + hours */}
+              <div className="bg-slate-900/40 border border-slate-800 rounded-3xl p-8">
+                <h3 className="text-xl font-bold mb-6 text-white">Visit Our Lab</h3>
+                <div className="space-y-6">
+                  <div className="flex items-start gap-4 group cursor-default">
+                    <div className="w-12 h-12 bg-slate-800 border border-slate-700 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:border-red-500 transition-colors">
+                      <MapPin className="w-5 h-5 text-red-400" />
+                    </div>
+                    <div>
+                      <p className="font-medium text-slate-400 text-sm mb-1">Address</p>
+                      <p className="text-white font-medium leading-relaxed">
+                        {BUSINESS.addressLines.map((line) => (
+                          <span key={line}>{line}<br /></span>
+                        ))}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-4 group cursor-default">
+                    <div className="w-12 h-12 bg-slate-800 border border-slate-700 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:border-blue-500 transition-colors">
+                      <Clock className="w-5 h-5 text-blue-400" />
+                    </div>
+                    <div>
+                      <p className="font-medium text-slate-400 text-sm mb-1">Business Hours</p>
+                      <div className="text-white font-medium space-y-1">
+                        <p>Sat - Thu: 10:00 AM - 10:00 PM</p>
+                        <p>Friday: 6:00 PM - 10:00 PM</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Google rating */}
+              <div className="bg-slate-900/40 border border-yellow-500/30 rounded-3xl p-8">
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="w-12 h-12 bg-yellow-500/10 rounded-xl flex items-center justify-center border border-yellow-500/20">
+                    <Star className="w-6 h-6 text-yellow-400 fill-current" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-white flex items-baseline gap-2">
+                      4.9 Rating <span className="text-yellow-400 font-semibold text-sm">(150+ Reviews)</span>
+                    </h3>
+                    <p className="text-slate-400 text-sm">Top-rated by Kuwait locals</p>
+                  </div>
+                </div>
+                <a
+                  href={BUSINESS.reviewsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 w-full border border-yellow-500/50 text-yellow-400 hover:bg-yellow-500 hover:text-slate-950 font-bold py-3 rounded-xl transition-all mt-6"
+                >
+                  Read Google Reviews
+                </a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Map */}
+      <section className="py-20 px-6 border-t border-slate-800">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4 text-white">Find Us on the Map</h2>
+            <p className="text-slate-400 max-w-2xl mx-auto">
+              Located in Hawalli at Al Mullah Complex on Ibn Khaldoun Street,
+              with free pickup and delivery across Kuwait.
+            </p>
+          </div>
+
+          <div className="max-w-5xl mx-auto">
+            <div className="rounded-3xl overflow-hidden border border-slate-800 shadow-2xl bg-slate-900 p-2">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3477.976237935758!2d48.00761257498341!3d29.3416921515256!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3fcf9b4a9072aacd%3A0x368691a3a1f0ca66!2sKuwait%20Computer%20Repair%20on%20Call!5e0!3m2!1sen!2skw!4v1780875998873!5m2!1sen!2skw"
+                width="100%"
+                height="450"
+                style={{ border: 0, borderRadius: '1rem' }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title={BUSINESS.mapTitle}
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
