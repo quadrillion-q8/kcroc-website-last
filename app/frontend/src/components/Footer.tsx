@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Phone, Mail, MapPin } from 'lucide-react';
+import { Phone, Mail, MapPin, MessageCircle } from 'lucide-react';
 
 export default function Footer() {
   return (
@@ -10,15 +10,24 @@ export default function Footer() {
         <div className="space-y-5">
           <img 
             src="/kcroc-logo.png" 
-            alt="KCROC Logo" 
+            alt="KCROC - Kuwait Computer Repair On Call" 
             className="h-14 w-auto object-contain rounded-xl shadow-lg border border-slate-700/50 bg-slate-900/50" 
+            loading="lazy" 
           />
           <p className="text-slate-400 text-sm leading-relaxed max-w-xs">
-            Professional computer and laptop hardware testing in Kuwait. We offer free pick-up and delivery for all your tech needs.
+            Professional computer and laptop repair in Kuwait. Free pickup & delivery across all governorates. No Fix, No Fee.
           </p>
+          <a 
+            href="https://wa.me/96555301913" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/20 hover:bg-emerald-500 hover:border-emerald-500 text-emerald-400 hover:text-white px-4 py-2 rounded-full text-xs font-bold transition-all"
+          >
+            <MessageCircle size={13} /> WhatsApp Us
+          </a>
         </div>
 
-        {/* Services Column (404 Routes Fixed!) */}
+        {/* Services Column */}
         <div>
           <h4 className="text-white font-bold mb-6">Services</h4>
           <ul className="space-y-3 text-sm text-slate-400">
@@ -26,6 +35,9 @@ export default function Footer() {
             <li><Link to="/macbook-repair" className="hover:text-cyan-400 transition-colors">MacBook Repair</Link></li>
             <li><Link to="/gaming-pc-repair-kuwait" className="hover:text-cyan-400 transition-colors">Gaming PC Repair</Link></li>
             <li><Link to="/screen-replacement" className="hover:text-cyan-400 transition-colors">Screen Replacement</Link></li>
+            <li><Link to="/laptop-repair-kuwait" className="hover:text-cyan-400 transition-colors">Laptop Repair</Link></li>
+            <li><Link to="/data-security" className="hover:text-cyan-400 transition-colors">Data Recovery</Link></li>
+            <li><Link to="/pricing" className="hover:text-cyan-400 transition-colors">Pricing</Link></li>
           </ul>
         </div>
 
@@ -45,14 +57,16 @@ export default function Footer() {
           <h4 className="text-white font-bold mb-6">Contact Us</h4>
           <div className="space-y-4 text-sm text-slate-400">
             <a href="tel:+96555301913" className="flex items-center gap-3 hover:text-cyan-400 transition-colors group">
-              <Phone size={16} className="text-cyan-500 group-hover:text-cyan-400" /> +965 5530 1913
+              <Phone size={16} className="text-emerald-500 flex-shrink-0" /> +965 5530 1913
             </a>
             <a href="mailto:quadrillion1980@gmail.com" className="flex items-center gap-3 hover:text-cyan-400 transition-colors group">
-              <Mail size={16} className="text-cyan-500 group-hover:text-cyan-400" /> quadrillion1980@gmail.com
+              <Mail size={16} className="text-emerald-500 flex-shrink-0" /> Email Support
             </a>
-            <div className="flex items-start gap-3 group cursor-default">
-              <MapPin size={16} className="mt-1 flex-shrink-0 text-cyan-500" />
-              <span className="hover:text-cyan-400 transition-colors">Hawalli, Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19</span>
+            <div className="flex items-start gap-3">
+              <MapPin size={16} className="mt-0.5 flex-shrink-0 text-emerald-500" />
+              <span className="leading-relaxed">
+                Al Mullah Complex, Ibn Khaldoun St,<br /> Basement Shop 19, Hawalli
+              </span>
             </div>
           </div>
         </div>
@@ -60,7 +74,7 @@ export default function Footer() {
 
       {/* Bottom Bar */}
       <div className="max-w-7xl mx-auto border-t border-slate-800/50 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500">
-        <p>© {new Date().getFullYear()} KCROC - Kuwait Computer Repair On Call. All rights reserved.</p>
+        <p>© {new Date().getFullYear()} KCROC – Kuwait Computer Repair On Call.</p>
         <div className="flex gap-6">
           <Link to="/privacy" className="hover:text-slate-300 transition-colors">Privacy Policy</Link>
           <Link to="/terms" className="hover:text-slate-300 transition-colors">Terms of Service</Link>
