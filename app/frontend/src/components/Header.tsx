@@ -41,7 +41,7 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           
-          <Link to="/" className="flex items-center z-50">
+          <Link to="/" className="flex items-center z-[1000] relative">
             {!logoError ? (
               <img src="/kcroc-logo.png" alt="KCROC Logo" className="h-14 md:h-16 w-auto object-contain rounded-xl shadow-lg border border-slate-700/50 bg-slate-900/50" onError={() => setLogoError(true)} />
             ) : (
@@ -56,7 +56,6 @@ export default function Header() {
           <nav className="hidden lg:flex items-center gap-6 xl:gap-8 h-full">
             <Link to="/" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">Home</Link>
             
-            {/* Services Dropdown */}
             <div className="relative group h-full flex items-center">
               <button className="flex items-center gap-1 text-sm font-medium text-slate-300 group-hover:text-white h-full px-2 transition-colors">
                 Services <ChevronDown size={14} className="transition-transform duration-200 group-hover:rotate-180 group-hover:text-cyan-400" />
@@ -68,7 +67,6 @@ export default function Header() {
               </div>
             </div>
 
-            {/* Blogs Dropdown */}
             <div className="relative group h-full flex items-center">
               <button className="flex items-center gap-1 text-sm font-medium text-slate-300 group-hover:text-white h-full px-2 transition-colors">
                 Blogs <ChevronDown size={14} className="transition-transform duration-200 group-hover:rotate-180 group-hover:text-cyan-400" />
@@ -96,14 +94,14 @@ export default function Header() {
             </Link>
           </div>
 
-          <button className="lg:hidden text-slate-300 hover:text-white p-2 z-50 relative" onClick={() => setIsOpen(!isOpen)} aria-label="Toggle menu">
+          <button className="lg:hidden text-slate-300 hover:text-white p-2 z-[1001] relative" onClick={() => setIsOpen(!isOpen)} aria-label="Toggle menu">
             {isOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Navigation Drawer */}
-      <div className={`lg:hidden fixed inset-0 top-0 pt-20 bg-slate-950/98 backdrop-blur-xl transition-all duration-300 ${isOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
+      {/* Mobile Navigation Drawer with forced high z-index */}
+      <div className={`lg:hidden fixed inset-0 top-0 pt-20 bg-slate-950/98 backdrop-blur-xl transition-all duration-300 z-[999] ${isOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
         <nav className="flex flex-col p-6 gap-2 h-full overflow-y-auto pb-24">
           <Link to="/" className="text-xl font-bold text-white py-4 border-b border-slate-800">Home</Link>
           <div className="py-4 border-b border-slate-800">
