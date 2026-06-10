@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ChevronDown, Phone, CalendarCheck } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -27,14 +27,16 @@ export default function Header() {
     { name: 'Laptop Repair', path: '/laptop-repair-hawalli-kuwait' },
     { name: 'MacBook Repair', path: '/macbook-repair' },
     { name: 'Gaming PC Repair', path: '/gaming-pc-repair-kuwait' },
-    { name: 'Gaming PC Cooling', path: '/gaming-pc-cooling' },
     { name: 'Screen Replacement', path: '/screen-replacement' },
-    { name: 'Battery Replacement', path: '/battery-replacement' },
     { name: 'Motherboard Repair', path: '/chip-level-motherboard-repair-hawalli' },
     { name: 'Data Security', path: '/data-security' },
   ];
 
-  const blogs = [{ name: 'Screen Protection', path: '/blog/how-to-protect-laptop-screen' }];
+  const blogs = [
+    { name: 'Screen Protection', path: '/blog/how-to-protect-laptop-screen' },
+    { name: 'Gaming PC Cooling', path: '/gaming-pc-cooling' },
+    { name: 'Battery Replacement', path: '/battery-replacement' },
+  ];
 
   return (
     <>
@@ -70,14 +72,14 @@ export default function Header() {
           
           <div className="flex flex-col items-center gap-4 w-full">
             <button onClick={() => setMobileServicesOpen(!mobileServicesOpen)} className="text-3xl font-black text-white flex items-center gap-2">Services <ChevronDown /></button>
-            <div className={`flex flex-col items-center gap-3 transition-all ${mobileServicesOpen ? 'max-h-[600px] opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
+            <div className={`flex flex-col items-center gap-3 transition-all ${mobileServicesOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
                 {services.map(s => <Link key={s.path} to={s.path} className="text-slate-400 text-lg hover:text-cyan-400" onClick={() => setIsOpen(false)}>{s.name}</Link>)}
             </div>
           </div>
           
           <div className="flex flex-col items-center gap-4 w-full">
             <button onClick={() => setMobileBlogsOpen(!mobileBlogsOpen)} className="text-3xl font-black text-white flex items-center gap-2">Blogs <ChevronDown /></button>
-            <div className={`flex flex-col items-center gap-3 transition-all ${mobileBlogsOpen ? 'max-h-[200px] opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
+            <div className={`flex flex-col items-center gap-3 transition-all ${mobileBlogsOpen ? 'max-h-[300px] opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
                 {blogs.map(b => <Link key={b.path} to={b.path} className="text-slate-400 text-lg hover:text-cyan-400" onClick={() => setIsOpen(false)}>{b.name}</Link>)}
             </div>
           </div>
