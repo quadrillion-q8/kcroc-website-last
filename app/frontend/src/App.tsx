@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import { HelmetProvider } from 'react-helmet-async';
+import { Loader2 } from 'lucide-react';
 
 // Layout & Wrapper
 import Layout from './components/Layout'; 
@@ -21,9 +22,7 @@ const GamingPC = lazy(() => import('./pages/GamingPC'));
 const WebDesignKuwait = lazy(() => import('./pages/WebDesignKuwait'));
 const LaptopRepair = lazy(() => import('./pages/LaptopRepair'));
 const MacBookRepair = lazy(() => import('./pages/MacBookRepair'));
-// --- ADDED THIS LINE BACK ---
 const ScreenReplacement = lazy(() => import('./pages/ScreenReplacement'));
-// ----------------------------
 const PrivacySecurity = lazy(() => import('./pages/PrivacySecurity'));
 const MotherboardRepair = lazy(() => import('./pages/MotherboardRepair'));
 const BlogScreenProtection = lazy(() => import('./pages/BlogScreenProtection'));
@@ -31,11 +30,19 @@ const NotFound = lazy(() => import('./pages/NotFound'));
 
 import './styles/kcroc.css';
 
+// Premium Loading Fallback
+const PageLoader = () => (
+  <div className="min-h-screen bg-slate-950 flex flex-col items-center justify-center">
+    <Loader2 className="w-12 h-12 text-cyan-400 animate-spin mb-4" />
+    <p className="text-slate-500 font-bold uppercase tracking-widest text-sm">Loading Interface...</p>
+  </div>
+);
+
 const App = () => (
   <HelmetProvider>
     <BrowserRouter>
       <Layout>
-        <Suspense fallback={<div className="p-20 text-center text-emerald-500">Loading...</div>}>
+        <Suspense fallback={<PageLoader />}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/services" element={<Services />} />
@@ -50,9 +57,7 @@ const App = () => (
             <Route path="/web-design-kuwait" element={<WebDesignKuwait />} />
             <Route path="/laptop-repair-hawalli-kuwait" element={<LaptopRepair />} />
             <Route path="/macbook-repair" element={<MacBookRepair />} />
-            {/* --- ADDED THIS ROUTE BACK --- */}
             <Route path="/screen-replacement" element={<ScreenReplacement />} />
-            {/* ----------------------------- */}
             <Route path="/data-security" element={<PrivacySecurity />} />
             <Route path="/chip-level-motherboard-repair-hawalli" element={<MotherboardRepair />} />
             <Route path="/blog/how-to-protect-laptop-screen" element={<BlogScreenProtection />} />
