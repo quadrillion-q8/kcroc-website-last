@@ -51,6 +51,16 @@ export default function Header() {
               )}
             </Link>
 
+            {/* Desktop Menu */}
+            <nav className="hidden lg:flex items-center gap-8">
+              <Link to="/services" className="text-sm font-bold text-white hover:text-emerald-400 transition-colors">Services</Link>
+              <Link to="/pricing" className="text-sm font-bold text-white hover:text-emerald-400 transition-colors">Pricing</Link>
+              <Link to="/gallery" className="text-sm font-bold text-white hover:text-emerald-400 transition-colors">Gallery</Link>
+              <Link to="/about" className="text-sm font-bold text-white hover:text-emerald-400 transition-colors">About</Link>
+              <Link to="/contact" className="text-sm font-bold text-white hover:text-emerald-400 transition-colors">Contact</Link>
+              <Link to="/book" className="bg-emerald-600 hover:bg-emerald-500 text-white px-5 py-2.5 rounded-full text-sm font-bold transition-all">Booking</Link>
+            </nav>
+
             <button className="lg:hidden text-white p-2" onClick={() => setIsOpen(true)}>
               <Menu size={32} />
             </button>
@@ -58,7 +68,7 @@ export default function Header() {
         </div>
       </header>
 
-      {/* Tightened Full Screen Mobile Overlay */}
+      {/* Mobile Overlay */}
       <div className={`lg:hidden fixed inset-0 z-[99999] bg-slate-950 h-screen w-screen flex flex-col transition-all duration-300 ${isOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}`}>
         <div className="absolute top-4 right-4">
           <button className="text-white p-2" onClick={() => setIsOpen(false)}>
@@ -66,7 +76,6 @@ export default function Header() {
           </button>
         </div>
         
-        {/* Navigation Wrapper: Reduced pt-24 to pt-16, gap-6 to gap-3 */}
         <nav className="flex flex-col items-center justify-center h-full pt-16 pb-8 gap-3 w-full overflow-y-auto px-6">
           <Link to="/" className="text-2xl font-black text-white" onClick={() => setIsOpen(false)}>Home</Link>
           
