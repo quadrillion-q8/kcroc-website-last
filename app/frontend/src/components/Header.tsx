@@ -25,11 +25,11 @@ export default function Header() {
   const services = [
     { name: 'All Services', path: '/services' },
     { name: 'Laptop Repair', path: '/laptop-repair-hawalli-kuwait' },
-    { name: 'MacBook Repair', path: '/macbook-repair' },
+    { name: 'MacBook Repair', path: '/macbook-repair-kuwait' },
     { name: 'Gaming PC Repair', path: '/gaming-pc-repair-kuwait' },
-    { name: 'Screen Replacement', path: '/screen-replacement' },
+    { name: 'Screen Replacement', path: '/screen-replacement-kuwait' },
     { name: 'Motherboard Repair', path: '/chip-level-motherboard-repair-hawalli' },
-    { name: 'Data Security', path: '/data-security' },
+    { name: 'Data Security', path: '/data-recovery-kuwait' },
   ];
 
   const blogs = [
@@ -43,7 +43,7 @@ export default function Header() {
       <header className={`fixed top-0 w-full z-[1000] transition-all duration-300 ${scrolled ? 'bg-slate-950/95 border-b border-slate-800' : 'bg-slate-950 border-b border-transparent'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
-            <Link to="/" className="flex items-center">
+            <Link to="/" className="flex items-center" aria-label="KCROC Homepage">
               {!logoError ? (
                 <img src="/kcroc-logo.png" alt="KCROC Logo" className="h-14 w-auto object-contain rounded-xl" onError={() => setLogoError(true)} />
               ) : (
@@ -61,7 +61,12 @@ export default function Header() {
               <Link to="/book" className="bg-emerald-600 hover:bg-emerald-500 text-white px-5 py-2.5 rounded-full text-sm font-bold transition-all">Booking</Link>
             </nav>
 
-            <button className="lg:hidden text-white p-2" onClick={() => setIsOpen(true)}>
+            {/* Hamburger Button with ARIA label */}
+            <button 
+              className="lg:hidden text-white p-2" 
+              onClick={() => setIsOpen(true)}
+              aria-label="Open mobile menu"
+            >
               <Menu size={32} />
             </button>
           </div>
@@ -71,7 +76,12 @@ export default function Header() {
       {/* Mobile Overlay */}
       <div className={`lg:hidden fixed inset-0 z-[99999] bg-slate-950 h-screen w-screen flex flex-col transition-all duration-300 ${isOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}`}>
         <div className="absolute top-4 right-4">
-          <button className="text-white p-2" onClick={() => setIsOpen(false)}>
+          {/* Close Button with ARIA label */}
+          <button 
+            className="text-white p-2" 
+            onClick={() => setIsOpen(false)}
+            aria-label="Close mobile menu"
+          >
             <X size={32} />
           </button>
         </div>
@@ -80,14 +90,26 @@ export default function Header() {
           <Link to="/" className="text-2xl font-black text-white" onClick={() => setIsOpen(false)}>Home</Link>
           
           <div className="flex flex-col items-center gap-2 w-full">
-            <button onClick={() => setMobileServicesOpen(!mobileServicesOpen)} className="text-2xl font-black text-white flex items-center gap-1">Services <ChevronDown size={20} /></button>
+            <button 
+              onClick={() => setMobileServicesOpen(!mobileServicesOpen)} 
+              className="text-2xl font-black text-white flex items-center gap-1"
+              aria-expanded={mobileServicesOpen}
+            >
+              Services <ChevronDown size={20} />
+            </button>
             <div className={`flex flex-col items-center gap-2 transition-all ${mobileServicesOpen ? 'max-h-[300px] opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
                 {services.map(s => <Link key={s.path} to={s.path} className="text-slate-400 text-base" onClick={() => setIsOpen(false)}>{s.name}</Link>)}
             </div>
           </div>
           
           <div className="flex flex-col items-center gap-2 w-full">
-            <button onClick={() => setMobileBlogsOpen(!mobileBlogsOpen)} className="text-2xl font-black text-white flex items-center gap-1">Blogs <ChevronDown size={20} /></button>
+            <button 
+              onClick={() => setMobileBlogsOpen(!mobileBlogsOpen)} 
+              className="text-2xl font-black text-white flex items-center gap-1"
+              aria-expanded={mobileBlogsOpen}
+            >
+              Blogs <ChevronDown size={20} />
+            </button>
             <div className={`flex flex-col items-center gap-2 transition-all ${mobileBlogsOpen ? 'max-h-[200px] opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
                 {blogs.map(b => <Link key={b.path} to={b.path} className="text-slate-400 text-base" onClick={() => setIsOpen(false)}>{b.name}</Link>)}
             </div>
