@@ -1,4 +1,6 @@
 User-agent: *
-Allow: /
+Disallow: /api/
+Disallow: /private/
+Disallow: /cdn-cgi/
 
 Sitemap: https://www.computerrepairkuwait.com/sitemap.xml
