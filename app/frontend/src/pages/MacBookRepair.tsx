@@ -296,16 +296,16 @@ export default function MacBookRepair() {
       
       <Helmet htmlAttributes={{ lang: 'en' }}>
         <title>MacBook Repair Kuwait | Logic Board Experts | KCROC</title>
-        <meta name="description" content="Expert Apple MacBook repair in Kuwait. Logic board micro-soldering, liquid damage recovery, and full data preservation. Free pickup across Kuwait. No Fix, No Charge." />
+        <meta name="description" content="Expert Apple MacBook repair in Kuwait. We fix dead MacBooks via logic board micro-soldering, liquid damage recovery, and preserve your data. Free Pickup." />
         <link rel="canonical" href="https://www.computerrepairkuwait.com/macbook-repair-kuwait" />
         <script type="application/ld+json">{JSON.stringify(schema)}</script>
       </Helmet>
 
       {/* HERO SECTION */}
-      <header className="pt-32 pb-20 px-6 text-center border-b border-gray-800 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-gray-900 via-gray-950 to-gray-950">
+      <header className="pt-48 md:pt-56 pb-20 px-6 text-center border-b border-gray-800 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-gray-900 via-gray-950 to-gray-950">
         <div className="max-w-4xl mx-auto animate-in fade-in slide-in-from-bottom-4 duration-700">
           <Badge className="mb-6 bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 px-4 py-2 font-bold uppercase tracking-widest text-xs shadow-sm">
-            <Laptop className="w-4 h-4 mr-2 inline" /> Apple Logic Board Specialists
+            <Laptop className="w-4 h-4 mr-2 inline" /> Independent Apple Specialists
           </Badge>
           
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-white tracking-tight mb-6">
