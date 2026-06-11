@@ -21,6 +21,7 @@ export default function Footer() {
             href="https://wa.me/96555301913" 
             target="_blank" 
             rel="noopener noreferrer" 
+            aria-label="Chat with us on WhatsApp for repair services"
             className="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/20 hover:bg-emerald-500 hover:border-emerald-500 text-emerald-400 hover:text-white px-4 py-2 rounded-full text-xs font-bold transition-all"
           >
             <MessageCircle size={13} /> WhatsApp Us
@@ -32,11 +33,11 @@ export default function Footer() {
           <h4 className="text-white font-bold mb-6">Services</h4>
           <ul className="space-y-3 text-sm text-slate-400">
             <li><Link to="/chip-level-motherboard-repair-hawalli" className="hover:text-cyan-400 transition-colors">Motherboard Repair</Link></li>
-            <li><Link to="/macbook-repair" className="hover:text-cyan-400 transition-colors">MacBook Repair</Link></li>
+            <li><Link to="/macbook-repair-kuwait" className="hover:text-cyan-400 transition-colors">MacBook Repair</Link></li>
             <li><Link to="/gaming-pc-repair-kuwait" className="hover:text-cyan-400 transition-colors">Gaming PC Repair</Link></li>
-            <li><Link to="/screen-replacement" className="hover:text-cyan-400 transition-colors">Screen Replacement</Link></li>
+            <li><Link to="/screen-replacement-kuwait" className="hover:text-cyan-400 transition-colors">Screen Replacement</Link></li>
             <li><Link to="/laptop-repair-kuwait" className="hover:text-cyan-400 transition-colors">Laptop Repair</Link></li>
-            <li><Link to="/data-security" className="hover:text-cyan-400 transition-colors">Data Recovery</Link></li>
+            <li><Link to="/data-recovery-kuwait" className="hover:text-cyan-400 transition-colors">Data Recovery</Link></li>
             <li><Link to="/pricing" className="hover:text-cyan-400 transition-colors">Pricing</Link></li>
           </ul>
         </div>
@@ -56,10 +57,10 @@ export default function Footer() {
         <div>
           <h4 className="text-white font-bold mb-6">Contact Us</h4>
           <div className="space-y-4 text-sm text-slate-400">
-            <a href="tel:+96555301913" className="flex items-center gap-3 hover:text-cyan-400 transition-colors group">
+            <a href="tel:+96555301913" aria-label="Call KCROC support at +965 5530 1913" className="flex items-center gap-3 hover:text-cyan-400 transition-colors group">
               <Phone size={16} className="text-emerald-500 flex-shrink-0" /> +965 5530 1913
             </a>
-            <a href="mailto:quadrillion1980@gmail.com" className="flex items-center gap-3 hover:text-cyan-400 transition-colors group">
+            <a href="mailto:quadrillion1980@gmail.com" aria-label="Send an email to KCROC support" className="flex items-center gap-3 hover:text-cyan-400 transition-colors group">
               <Mail size={16} className="text-emerald-500 flex-shrink-0" /> Email Support
             </a>
             <div className="flex items-start gap-3">
