@@ -51,16 +51,21 @@ const App = () => (
             <Route path="/contact" element={<Contact />} />
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/book" element={<BookingPage />} />
+            
+            {/* SEO Aligned Routes: Matching your sitemap.xml */}
+            <Route path="/macbook-repair-kuwait" element={<MacBookRepair />} />
+            <Route path="/laptop-repair-kuwait" element={<LaptopRepair />} />
+            <Route path="/gaming-pc-repair-kuwait" element={<GamingPC />} />
+            <Route path="/screen-replacement-kuwait" element={<ScreenReplacement />} />
+            <Route path="/data-recovery-kuwait" element={<PrivacySecurity />} />
+            <Route path="/chip-level-motherboard-repair-hawalli" element={<MotherboardRepair />} />
+            
+            {/* Supporting & Blog Routes */}
             <Route path="/battery-replacement" element={<BatteryReplacement />} />
             <Route path="/gaming-pc-cooling" element={<GamingPCCooling />} />
-            <Route path="/gaming-pc-repair-kuwait" element={<GamingPC />} />
             <Route path="/web-design-kuwait" element={<WebDesignKuwait />} />
-            <Route path="/laptop-repair-hawalli-kuwait" element={<LaptopRepair />} />
-            <Route path="/macbook-repair" element={<MacBookRepair />} />
-            <Route path="/screen-replacement" element={<ScreenReplacement />} />
-            <Route path="/data-security" element={<PrivacySecurity />} />
-            <Route path="/chip-level-motherboard-repair-hawalli" element={<MotherboardRepair />} />
             <Route path="/blog/how-to-protect-laptop-screen" element={<BlogScreenProtection />} />
+            
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
