@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Phone, MessageCircle } from 'lucide-react';
+import { Phone, MessageCircle, Camera } from 'lucide-react';
 
 // ─── Schema ──────────────────────────────────────────────────────────────────
 const schemaData = {
@@ -56,6 +56,7 @@ const WA_LINK =
   'https://wa.me/96555301913?text=Hi%2C+I+need+a+repair.+Please+arrange+free+pickup.';
 
 const images = [
+  // ── Shop & Facility ──────────────────────────────────────────────────────
   {
     src: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1769908594/KCROC_shop_exterior_and_storefront_-_Al_Mullah_Complex_Hawalli_ewah64.png',
     alt: 'KCROC shop exterior – Al Mullah Complex, Hawalli Kuwait',
@@ -65,9 +66,71 @@ const images = [
     alt: 'Modern repair facility interior – KCROC Kuwait, Hawalli',
   },
   {
-    src: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1769908594/Professional_network_installation_-_Ahmadi_business_client_kaphu7.jpg',
-    alt: 'Professional network installation – Ahmadi business client',
+    src: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1769908594/Professional_service_environment_-_KCROC_workshop_Hawalli_xi7rhy.jpg',
+    alt: 'Professional service environment – KCROC workshop, Hawalli',
   },
+  {
+    src: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1769908596/Whats-App-Image-2026-01-29-at-3-19-40-AM_i2mpms.jpg',
+    alt: 'KCROC repair workshop – Kuwait Computer Repair On Call, Hawalli',
+  },
+  // ── New uploads ──────────────────────────────────────────────────────────
+  {
+    src: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1781139062/2026-01-22_11_k6dvsz.jpg',
+    alt: 'KCROC computer repair work – Kuwait',
+  },
+  {
+    src: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1781139061/2026-01-22_10_betuoi.jpg',
+    alt: 'KCROC computer repair work – Kuwait',
+  },
+  {
+    src: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1781139061/2026-01-22_9_qfanpt.jpg',
+    alt: 'KCROC computer repair work – Kuwait',
+  },
+  {
+    src: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1781139061/2026-01-22_8_jn8uu2.jpg',
+    alt: 'KCROC computer repair work – Kuwait',
+  },
+  {
+    src: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1781139060/2026-01-22_7_s7a6ed.jpg',
+    alt: 'KCROC computer repair work – Kuwait',
+  },
+  {
+    src: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1781139059/2026-01-22_6_mx8bxj.jpg',
+    alt: 'KCROC computer repair work – Kuwait',
+  },
+  {
+    src: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1781139058/2026-01-22_5_znlovp.jpg',
+    alt: 'KCROC computer repair work – Kuwait',
+  },
+  {
+    src: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1781139060/2026-01-22_4_uezhno.jpg',
+    alt: 'KCROC computer repair work – Kuwait',
+  },
+  {
+    src: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1781139058/2026-01-22_3_ooiy7d.jpg',
+    alt: 'KCROC computer repair work – Kuwait',
+  },
+  {
+    src: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1781139058/2026-01-22_2_wcnani.jpg',
+    alt: 'KCROC computer repair work – Kuwait',
+  },
+  {
+    src: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1781139058/2026-01-22_1_jeaf3i.jpg',
+    alt: 'KCROC computer repair work – Kuwait',
+  },
+  {
+    src: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1781139058/2026-01-22_nynw7n.jpg',
+    alt: 'KCROC computer repair work – Kuwait',
+  },
+  {
+    src: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1781139060/2025-11-03_1_wrihqk.jpg',
+    alt: 'KCROC computer repair work – Kuwait',
+  },
+  {
+    src: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1781139059/2025-09-01_e6nvya.jpg',
+    alt: 'KCROC computer repair work – Kuwait',
+  },
+  // ── Repair Work ──────────────────────────────────────────────────────────
   {
     src: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1769908596/Professional_laptop_motherboard_soldering_repair_-_Hawalli_service_vropbf.jpg',
     alt: 'Professional laptop motherboard soldering repair – Hawalli',
@@ -108,6 +171,7 @@ const images = [
     src: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1769908593/HP_laptop_small_pin_power_connector_-_Ahmadi_service_du0imp.jpg',
     alt: 'HP laptop power connector repair – Ahmadi service',
   },
+  // ── Parts & Stock ────────────────────────────────────────────────────────
   {
     src: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1769908595/Various_computer_hardware_repair_components_-_Hawalli_stock_clrf5g.jpg',
     alt: 'Various computer hardware repair components – Hawalli stock',
@@ -124,14 +188,28 @@ const images = [
     src: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1769908595/Laptop_protective_packaging_for_safe_transport_-_free_pickup_service_bpm4vw.jpg',
     alt: 'Laptop protective packaging for safe transport – free pickup service Kuwait',
   },
+  // ── Networking ───────────────────────────────────────────────────────────
   {
-    src: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1769908596/Whats-App-Image-2026-01-29-at-3-19-40-AM_i2mpms.jpg',
-    alt: 'KCROC repair workshop – Kuwait Computer Repair On Call, Hawalli',
+    src: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1769908594/Professional_network_installation_-_Ahmadi_business_client_kaphu7.jpg',
+    alt: 'Professional network installation – Ahmadi business client',
   },
   {
     src: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1769908593/Network_infrastructure_components_-_Kuwait_City_installation_bwi8pd.png',
     alt: 'Network infrastructure components – Kuwait City installation',
   },
+  {
+    src: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1769908593/Network_CAT-6_cables_for_high-speed_connectivity_-_Kuwait_installation_xyxhir.jpg',
+    alt: 'Network CAT-6 cables for high-speed connectivity – Kuwait installation',
+  },
+  {
+    src: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1769908592/Wireless_networking_equipment_-_Salmiya_customer_pg4hly.jpg',
+    alt: 'Wireless networking equipment – Salmiya customer',
+  },
+  {
+    src: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1769908592/Network_setup_and_configuration_tools_-_Hawalli_service_nxlzhv.jpg',
+    alt: 'Network setup and configuration tools – Hawalli service',
+  },
+  // ── Team ─────────────────────────────────────────────────────────────────
   {
     src: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1769908603/KCROC-Owner-Image_zpdyg4.png',
     alt: 'Imran Natiq – Founder and CEO of KCROC Kuwait',
@@ -172,7 +250,7 @@ export default function Gallery() {
       <section className="pt-32 pb-16 px-6 text-center">
         <div className="max-w-4xl mx-auto">
           <Badge className="mb-6 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-4 py-2">
-            📷 Our Work
+            <Camera className="w-4 h-4 mr-2 inline" /> Our Work
           </Badge>
           <h1 className="text-4xl md:text-6xl font-black mb-6 tracking-tight">
             Repair Work{' '}
