@@ -2,16 +2,12 @@ import { useRef, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { 
-  Cpu, Gamepad2, Laptop, Monitor, ShieldAlert, Star, 
-  MessageCircle, Phone, ArrowRight, BadgeCheck, Zap, RefreshCcw, 
-  Truck, CheckCircle, MapPin, ChevronDown 
+  Cpu, Gamepad2, Laptop, Monitor, ShieldAlert, ChevronDown 
 } from 'lucide-react';
 
 // ─── Constants & Data ────────────────────────────────────────────────────────
 
-const BUSINESS_NAME = "Kuwait Computer Repair On Call (KCROC)";
 const BUSINESS_PHONE = "+96555301913";
-const CANONICAL_URL = "https://www.computerrepairkuwait.com";
 
 const services = [
   { title: 'Motherboard Repair Kuwait', description: 'Advanced logic board diagnostics, micro-soldering, and professional BIOS flashing.', icon: Cpu, path: '/motherboard-repair-kuwait' },
@@ -69,47 +65,51 @@ export default function Home() {
   const waLink = `https://wa.me/${BUSINESS_PHONE.replace('+', '')}?text=Hi! I need help with my computer. Can you arrange a free pickup?`;
 
   return (
-    <div className="w-full bg-slate-950">
+    <div className="w-full bg-slate-950 min-h-screen flex flex-col items-center">
       <Helmet>
         <title>KCROC | Kuwait Computer Repair On Call</title>
         <meta name="description" content="Professional laptop, MacBook, and motherboard repair services in Hawalli, Kuwait. Free pickup and delivery across Kuwait." />
       </Helmet>
 
-      {/* Hero Section */}
-      <section className="pt-32 pb-12 px-6 text-center">
-        <FadeIn>
-          <h1 className="text-5xl md:text-7xl font-black text-white mb-6">Expert Computer Repair in Kuwait</h1>
-          <p className="mt-6 text-xl text-slate-400 max-w-2xl mx-auto mb-10">Professional hardware assessment and component-level repairs with Free Pickup & Delivery.</p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4 mb-10">
-            <a href={waLink} className="bg-emerald-600 px-8 py-4 rounded-full font-bold text-lg text-white">Book Free Pickup</a>
-            <a href={`tel:${BUSINESS_PHONE}`} className="bg-slate-800 px-8 py-4 rounded-full font-bold text-lg text-white border border-slate-700">Get Free Diagnostic</a>
-          </div>
-          <div className="flex flex-wrap justify-center gap-6 text-sm text-slate-300">
-            {['✓ Free Pickup & Delivery', '✓ No Fix, No Fee', '✓ Same-Day Repairs', '✓ Apple & Windows Specialists'].map(t => <span key={t}>{t}</span>)}
-          </div>
-        </FadeIn>
-      </section>
+      <div className="w-full max-w-7xl px-6">
+        {/* Hero Section */}
+        <section className="pt-32 pb-12 text-center">
+          <FadeIn>
+            <h1 className="text-5xl md:text-7xl font-black text-white mb-6">Expert Computer Repair in Kuwait</h1>
+            <p className="mt-6 text-xl text-slate-400 max-w-2xl mx-auto mb-10">Professional hardware assessment and component-level repairs with Free Pickup & Delivery.</p>
+            <div className="flex flex-col sm:flex-row justify-center gap-4 mb-10">
+              <a href={waLink} className="bg-emerald-600 px-8 py-4 rounded-full font-bold text-lg text-white">Book Free Pickup</a>
+              <a href={`tel:${BUSINESS_PHONE}`} className="bg-slate-800 px-8 py-4 rounded-full font-bold text-lg text-white border border-slate-700">Get Free Diagnostic</a>
+            </div>
+            <div className="flex flex-wrap justify-center gap-6 text-sm text-slate-300">
+              {['✓ Free Pickup & Delivery', '✓ No Fix, No Fee', '✓ Same-Day Repairs', '✓ Apple & Windows Specialists'].map(t => <span key={t}>{t}</span>)}
+            </div>
+          </FadeIn>
+        </section>
 
-      {/* Services Section */}
-      <section className="py-20 max-w-7xl mx-auto px-6 border-t border-slate-800">
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((s) => (
-            <Link key={s.path} to={s.path} className="block bg-slate-900/40 p-8 rounded-3xl border border-slate-800 hover:border-cyan-500/30 transition-all">
-              <s.icon className="w-8 h-8 text-cyan-400 mb-6" />
-              <h3 className="text-xl font-bold text-white mb-3">{s.title}</h3>
-              <p className="text-slate-400 text-sm">{s.description}</p>
-            </Link>
-          ))}
-        </div>
-      </section>
+        {/* Services Section */}
+        <section className="py-20 border-t border-slate-800">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {services.map((s) => (
+              <FadeIn key={s.path}>
+                <Link to={s.path} className="block bg-slate-900/40 p-8 rounded-3xl border border-slate-800 hover:border-cyan-500/30 transition-all h-full">
+                  <s.icon className="w-8 h-8 text-cyan-400 mb-6" />
+                  <h3 className="text-xl font-bold text-white mb-3">{s.title}</h3>
+                  <p className="text-slate-400 text-sm">{s.description}</p>
+                </Link>
+              </FadeIn>
+            ))}
+          </div>
+        </section>
 
-      {/* FAQ Section */}
-      <section className="py-20 max-w-3xl mx-auto px-6 border-t border-slate-800">
-        <h2 className="text-3xl font-bold text-white text-center mb-12">Frequently Asked Questions</h2>
-        <div className="space-y-3">
-          {faqs.map((faq) => <FAQItem key={faq.q} q={faq.q} a={faq.a} />)}
-        </div>
-      </section>
+        {/* FAQ Section */}
+        <section className="py-20 max-w-3xl mx-auto border-t border-slate-800">
+          <h2 className="text-3xl font-bold text-white text-center mb-12">Frequently Asked Questions</h2>
+          <div className="space-y-3">
+            {faqs.map((faq) => <FAQItem key={faq.q} q={faq.q} a={faq.a} />)}
+          </div>
+        </section>
+      </div>
     </div>
   );
 }
