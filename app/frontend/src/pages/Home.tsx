@@ -3,15 +3,13 @@ import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { 
   Cpu, Gamepad2, Laptop, Monitor, ShieldAlert, Star, 
-  MessageCircle, Phone, ArrowRight, BadgeCheck, Zap, RefreshCcw, 
-  Truck, CheckCircle, MapPin 
+  MessageCircle, Phone, ChevronDown, CheckCircle 
 } from 'lucide-react';
 
 // ─── Constants & Data ────────────────────────────────────────────────────────
 
 const BUSINESS_NAME = "Kuwait Computer Repair On Call (KCROC)";
 const BUSINESS_PHONE = "+96555301913";
-const BUSINESS_ADDRESS = "Al Mullah Complex, Ibn Khaldoun Street, Basement Shop 19, Hawalli, Kuwait";
 const CANONICAL_URL = "https://www.computerrepairkuwait.com";
 
 const services = [
@@ -26,44 +24,43 @@ const faqs = [
   { q: "Do you repair MacBooks?", a: "Yes, we specialize in Apple MacBook repair including logic board micro-soldering, screen replacements, and battery service." },
   { q: "Do you offer same-day repair?", a: "Yes, common repairs like screen replacements and SSD upgrades are often completed the same day." },
   { q: "Do you repair gaming PCs?", a: "Absolutely. We handle custom gaming PC troubleshooting, cooling loops, GPU repairs, and performance tuning." },
-  { q: "Do you offer warranty?", a: "Yes, all our repairs are backed by a 30-day parts and labour warranty for your peace of mind." },
+  { q: "Do you offer warranty?", a: "Yes, all our repairs are backed by a 30-day parts and labour warranty." },
   { q: "How much does motherboard repair cost?", a: "Motherboard repair pricing is diagnostic-first. We assess the damage and provide a quote before proceeding." },
-  { q: "Do you provide free pickup and delivery?", a: "Yes, we offer free pickup and delivery across all Kuwait governorates including Hawalli, Salmiya, and Kuwait City." },
+  { q: "Do you provide free pickup and delivery?", a: "Yes, we offer free pickup and delivery across all Kuwait governorates." },
   { q: "What happens if my device cannot be repaired?", a: "Our No Fix, No Fee policy ensures you pay nothing if we cannot successfully repair your device." }
 ];
-
-const schemaData = {
-  "@context": "https://schema.org",
-  "@graph": [
-    { "@type": "Organization", "name": BUSINESS_NAME, "url": CANONICAL_URL, "telephone": BUSINESS_PHONE },
-    {
-      "@type": "LocalBusiness",
-      "@id": `${CANONICAL_URL}/#business`,
-      "name": BUSINESS_NAME,
-      "telephone": BUSINESS_PHONE,
-      "url": CANONICAL_URL,
-      "address": { "@type": "PostalAddress", "streetAddress": "Al Mullah Complex, Ibn Khaldoun Street, Shop 19", "addressLocality": "Hawalli", "addressRegion": "Hawalli", "addressCountry": "KW" }
-    },
-    { "@type": "Service", "name": "Motherboard Repair", "provider": { "@id": `${CANONICAL_URL}/#business` } },
-    { "@type": "Service", "name": "MacBook Repair", "provider": { "@id": `${CANONICAL_URL}/#business` } },
-    { "@type": "Service", "name": "Laptop Screen Repair", "provider": { "@id": `${CANONICAL_URL}/#business` } }
-  ]
-};
 
 // ─── Components ─────────────────────────────────────────────────────────────
 
 const FadeIn = ({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) => {
   const [visible, setVisible] = useState(false);
   const ref = useRef<HTMLDivElement | null>(null);
+  
   useEffect(() => {
-    if (typeof IntersectionObserver === 'undefined') { setVisible(true); return; }
+    if (typeof IntersectionObserver === 'undefined') {
+      setVisible(true);
+      return;
+    }
     const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) { setVisible(true); observer.disconnect(); }
+      if (entry.isIntersecting) { 
+        setVisible(true); 
+        observer.disconnect(); 
+      }
     }, { threshold: 0.1 });
+    
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
   }, []);
-  return <div ref={ref} className={`transition-all duration-700 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`} style={{ transitionDelay: `${delay}ms` }}>{children}</div>;
+  
+  return (
+    <div 
+      ref={ref} 
+      className={`transition-all duration-700 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`} 
+      style={{ transitionDelay: `${delay}ms` }}
+    >
+      {children}
+    </div>
+  );
 };
 
 const FAQItem = ({ q, a }: { q: string; a: string }) => {
@@ -98,75 +95,34 @@ export default function Home() {
   const waLink = `https://wa.me/${BUSINESS_PHONE.replace('+', '')}?text=Hi! I need help with my computer. Can you arrange a free pickup?`;
 
   return (
-    <div className="w-full bg-slate-950">
+    <div className="w-full bg-slate-950 min-h-screen">
       <Helmet>
         <title>KCROC | Kuwait Computer Repair On Call</title>
         <meta name="description" content="Professional laptop, MacBook, and motherboard repair services in Hawalli, Kuwait. Free pickup and delivery across Kuwait. No Fix, No Charge." />
         <link rel="canonical" href={CANONICAL_URL} />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content="KCROC | Kuwait Computer Repair On Call" />
-        <meta property="og:description" content="Professional laptop, MacBook, and motherboard repair services in Hawalli, Kuwait. Free pickup and delivery across Kuwait." />
-        <meta property="og:url" content={CANONICAL_URL} />
-        <meta property="og:image" content={`${CANONICAL_URL}/og-image.jpg`} />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="robots" content="index,follow,max-image-preview:large" />
-        <meta name="theme-color" content="#020617" />
-        <meta name="author" content="KCROC" />
-        <script type="application/ld+json">{JSON.stringify(schemaData)}</script>
       </Helmet>
 
-      {/* Hero Section */}
       <section className="pt-32 pb-12 px-6 text-center">
-        <FadeIn>
-          <h1 className="text-5xl md:text-7xl font-black max-w-4xl mx-auto tracking-tight mb-6 text-white">
-            Expert Computer Repair in <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-emerald-400">Kuwait</span>
-          </h1>
-          <p className="mt-6 text-xl text-slate-400 max-w-2xl mx-auto mb-10">Professional hardware assessment and component-level repairs with Free Pickup & Delivery.</p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4 mb-10">
-            <a href={waLink} className="bg-emerald-600 px-8 py-4 rounded-full font-bold text-lg text-white hover:bg-emerald-500">Book Free Pickup</a>
-            <a href={`tel:${BUSINESS_PHONE}`} className="bg-slate-800 px-8 py-4 rounded-full font-bold text-lg text-white hover:bg-slate-700 border border-slate-700">Get Free Diagnostic</a>
-          </div>
-          <div className="flex flex-wrap justify-center gap-6 text-sm text-slate-300">
-            {['✓ Free Pickup & Delivery', '✓ No Fix, No Fee', '✓ Same-Day Repairs', '✓ Apple & Windows Specialists'].map(t => <span key={t}>{t}</span>)}
-          </div>
-        </FadeIn>
+        <h1 className="text-5xl md:text-7xl font-black text-white mb-6">Expert Computer Repair in Kuwait</h1>
+        <p className="mt-6 text-xl text-slate-400 max-w-2xl mx-auto mb-10">Professional hardware assessment and component-level repairs with Free Pickup & Delivery.</p>
+        <div className="flex flex-col sm:flex-row justify-center gap-4">
+          <a href={waLink} className="bg-emerald-600 px-8 py-4 rounded-full font-bold text-lg text-white">Book Free Pickup</a>
+          <a href={`tel:${BUSINESS_PHONE}`} className="bg-slate-800 px-8 py-4 rounded-full font-bold text-lg text-white border border-slate-700">Get Free Diagnostic</a>
+        </div>
       </section>
 
-      {/* Entity Reinforcement */}
-      <section className="py-8 max-w-4xl mx-auto px-6 text-center text-slate-400">
-        <h2>Professional Computer Repair Services Across Kuwait</h2>
-        <p className="mt-4">Looking for specialised repairs? Explore our 
-          <Link to="/motherboard-repair-kuwait" className="text-cyan-400 hover:underline mx-1">Motherboard Repair Kuwait</Link>, 
-          <Link to="/macbook-repair-kuwait" className="text-cyan-400 hover:underline mx-1">MacBook Repair Kuwait</Link>, and 
-          <Link to="/laptop-screen-repair-kuwait" className="text-cyan-400 hover:underline mx-1">Laptop Screen Repair Kuwait</Link> services.
-        </p>
-      </section>
-
-      {/* Services Section */}
       <section className="py-20 max-w-7xl mx-auto px-6 border-t border-slate-800">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((s) => (
-            <FadeIn key={s.path}>
-              <Link to={s.path} className="block bg-slate-900/40 p-8 rounded-3xl border border-slate-800 hover:border-cyan-500/30 transition-all h-full">
-                <s.icon className="w-8 h-8 text-cyan-400 mb-6" />
-                <h3 className="text-xl font-bold text-white mb-3">{s.title}</h3>
-                <p className="text-slate-400 text-sm">{s.description}</p>
-              </Link>
-            </FadeIn>
+            <Link key={s.path} to={s.path} className="block bg-slate-900/40 p-8 rounded-3xl border border-slate-800 hover:border-cyan-500/30 transition-all">
+              <s.icon className="w-8 h-8 text-cyan-400 mb-6" />
+              <h3 className="text-xl font-bold text-white mb-3">{s.title}</h3>
+              <p className="text-slate-400 text-sm">{s.description}</p>
+            </Link>
           ))}
         </div>
       </section>
 
-      {/* Areas Section */}
-      <section className="py-12 bg-slate-900/30 border-y border-slate-800 text-center px-6">
-        <h2 className="text-2xl font-bold text-white mb-6">Serving Customers Across Kuwait</h2>
-        <p className="text-slate-400 max-w-2xl mx-auto mb-8">{BUSINESS_NAME} provides free pickup and delivery throughout Hawalli, Salmiya, Kuwait City, Farwaniya, Jahra, Ahmadi, and Mubarak Al-Kabeer.</p>
-        <div className="flex flex-wrap justify-center gap-3">
-          {['Hawalli', 'Salmiya', 'Farwaniya', 'Kuwait City', 'Jahra', 'Ahmadi', 'Mubarak Al-Kabeer'].map(area => <span key={area} className="px-4 py-2 rounded-full bg-slate-900 border border-slate-800 text-slate-300 text-sm">{area}</span>)}
-        </div>
-      </section>
-
-      {/* FAQ Section */}
       <section className="py-20 max-w-3xl mx-auto px-6">
         <h2 className="text-3xl font-bold text-white text-center mb-12">Frequently Asked Questions</h2>
         <div className="space-y-3">
