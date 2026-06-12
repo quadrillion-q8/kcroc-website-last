@@ -37,7 +37,7 @@ export default function Footer() {
             <li><Link to="/gaming-pc-repair-kuwait" className="hover:text-cyan-400 transition-colors">Gaming PC Repair</Link></li>
             <li><Link to="/screen-replacement-kuwait" className="hover:text-cyan-400 transition-colors">Screen Replacement</Link></li>
             <li><Link to="/laptop-repair-kuwait" className="hover:text-cyan-400 transition-colors">Laptop Repair</Link></li>
-            <li><Link to="/data-recovery-kuwait" className="hover:text-cyan-400 transition-colors">Data Recovery</Link></li>
+            <li><Link to="/data-recovery-kuwait" className="hover:text-cyan-400 transition-colors">Data Privacy</Link></li>
             <li><Link to="/pricing" className="hover:text-cyan-400 transition-colors">Pricing</Link></li>
           </ul>
         </div>
