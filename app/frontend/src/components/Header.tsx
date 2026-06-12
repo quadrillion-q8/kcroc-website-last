@@ -33,6 +33,7 @@ export default function Header() {
   ];
 
   const blogs = [
+    { name: 'Laptop Repair Guide', path: '/blog/laptop-repair-kuwait-2026' }, // Added this
     { name: 'Screen Protection', path: '/blog/how-to-protect-laptop-screen' },
     { name: 'Gaming PC Cooling', path: '/gaming-pc-cooling' },
     { name: 'Battery Replacement', path: '/battery-replacement' },
@@ -61,7 +62,7 @@ export default function Header() {
               <Link to="/book" className="bg-emerald-600 hover:bg-emerald-500 text-white px-5 py-2.5 rounded-full text-sm font-bold transition-all">Booking</Link>
             </nav>
 
-            {/* Hamburger Button with ARIA label */}
+            {/* Hamburger Button */}
             <button 
               className="lg:hidden text-white p-2" 
               onClick={() => setIsOpen(true)}
@@ -76,7 +77,6 @@ export default function Header() {
       {/* Mobile Overlay */}
       <div className={`lg:hidden fixed inset-0 z-[99999] bg-slate-950 h-screen w-screen flex flex-col transition-all duration-300 ${isOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}`}>
         <div className="absolute top-4 right-4">
-          {/* Close Button with ARIA label */}
           <button 
             className="text-white p-2" 
             onClick={() => setIsOpen(false)}
@@ -110,7 +110,7 @@ export default function Header() {
             >
               Blogs <ChevronDown size={20} />
             </button>
-            <div className={`flex flex-col items-center gap-2 transition-all ${mobileBlogsOpen ? 'max-h-[200px] opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
+            <div className={`flex flex-col items-center gap-2 transition-all ${mobileBlogsOpen ? 'max-h-[250px] opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
                 {blogs.map(b => <Link key={b.path} to={b.path} className="text-slate-400 text-base" onClick={() => setIsOpen(false)}>{b.name}</Link>)}
             </div>
           </div>
