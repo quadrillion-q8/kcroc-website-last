@@ -2,12 +2,15 @@ import { useRef, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { 
-  Cpu, Gamepad2, Laptop, Monitor, ShieldAlert, ChevronDown 
+  Cpu, Gamepad2, Laptop, Monitor, ShieldAlert, 
+  ChevronDown 
 } from 'lucide-react';
 
 // ─── Constants & Data ────────────────────────────────────────────────────────
 
+const BUSINESS_NAME = "Kuwait Computer Repair On Call (KCROC)";
 const BUSINESS_PHONE = "+96555301913";
+const CANONICAL_URL = "https://www.computerrepairkuwait.com";
 
 const services = [
   { title: 'Motherboard Repair Kuwait', description: 'Advanced logic board diagnostics, micro-soldering, and professional BIOS flashing.', icon: Cpu, path: '/motherboard-repair-kuwait' },
@@ -32,27 +35,54 @@ const faqs = [
 const FadeIn = ({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) => {
   const [visible, setVisible] = useState(false);
   const ref = useRef<HTMLDivElement | null>(null);
+  
   useEffect(() => {
-    if (typeof IntersectionObserver === 'undefined') { setVisible(true); return; }
+    if (typeof IntersectionObserver === 'undefined') { 
+      setVisible(true); 
+      return; 
+    }
     const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) { setVisible(true); observer.disconnect(); }
+      if (entry.isIntersecting) { 
+        setVisible(true); 
+        observer.disconnect(); 
+      }
     }, { threshold: 0.1 });
+    
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
   }, []);
-  return <div ref={ref} className={`transition-all duration-700 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`} style={{ transitionDelay: `${delay}ms` }}>{children}</div>;
+  
+  return (
+    <div 
+      ref={ref} 
+      className={`transition-all duration-700 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`} 
+      style={{ transitionDelay: `${delay}ms` }}
+    >
+      {children}
+    </div>
+  );
 };
 
 const FAQItem = ({ q, a }: { q: string; a: string }) => {
   const [open, setOpen] = useState(false);
   const id = q.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+  
   return (
     <div className="border border-slate-800 rounded-2xl overflow-hidden bg-slate-900/20">
-      <button onClick={() => setOpen(!open)} aria-expanded={open} aria-controls={`${id}-panel`} className="w-full flex items-center justify-between p-6 text-left hover:bg-slate-800/50 transition-colors">
+      <button 
+        onClick={() => setOpen(!open)} 
+        aria-expanded={open} 
+        aria-controls={`${id}-panel`} 
+        className="w-full flex items-center justify-between p-6 text-left hover:bg-slate-800/50 transition-colors"
+      >
         <span className="font-semibold text-white pr-4">{q}</span>
         <ChevronDown size={20} className={`text-cyan-400 flex-shrink-0 transition-transform duration-300 ${open ? 'rotate-180' : ''}`} />
       </button>
-      <div id={`${id}-panel`} hidden={!open} className="px-6 text-slate-400 text-sm leading-relaxed border-t border-slate-800/50">
+      <div 
+        id={`${id}-panel`} 
+        hidden={!open} 
+        className="px-6 text-slate-400 text-sm leading-relaxed border-t border-slate-800/50"
+      >
         <div className="py-4">{a}</div>
       </div>
     </div>
@@ -65,31 +95,34 @@ export default function Home() {
   const waLink = `https://wa.me/${BUSINESS_PHONE.replace('+', '')}?text=Hi! I need help with my computer. Can you arrange a free pickup?`;
 
   return (
-    <div className="w-full bg-slate-950 min-h-screen flex flex-col items-center">
+    <div className="w-full bg-slate-950 min-h-screen">
       <Helmet>
         <title>KCROC | Kuwait Computer Repair On Call</title>
         <meta name="description" content="Professional laptop, MacBook, and motherboard repair services in Hawalli, Kuwait. Free pickup and delivery across Kuwait." />
+        <link rel="canonical" href={CANONICAL_URL} />
       </Helmet>
 
-      <div className="w-full max-w-7xl px-6">
-        {/* Hero Section */}
-        <section className="pt-32 pb-12 text-center">
+      {/* Hero Section */}
+      <section className="pt-32 pb-16 px-6">
+        <div className="max-w-4xl mx-auto text-center">
           <FadeIn>
             <h1 className="text-5xl md:text-7xl font-black text-white mb-6">Expert Computer Repair in Kuwait</h1>
-            <p className="mt-6 text-xl text-slate-400 max-w-2xl mx-auto mb-10">Professional hardware assessment and component-level repairs with Free Pickup & Delivery.</p>
+            <p className="mt-6 text-xl text-slate-400 mb-10">Professional hardware assessment and component-level repairs with Free Pickup & Delivery.</p>
             <div className="flex flex-col sm:flex-row justify-center gap-4 mb-10">
-              <a href={waLink} className="bg-emerald-600 px-8 py-4 rounded-full font-bold text-lg text-white">Book Free Pickup</a>
-              <a href={`tel:${BUSINESS_PHONE}`} className="bg-slate-800 px-8 py-4 rounded-full font-bold text-lg text-white border border-slate-700">Get Free Diagnostic</a>
+              <a href={waLink} className="bg-emerald-600 px-8 py-4 rounded-full font-bold text-lg text-white hover:bg-emerald-500 transition-colors">Book Free Pickup</a>
+              <a href={`tel:${BUSINESS_PHONE}`} className="bg-slate-800 px-8 py-4 rounded-full font-bold text-lg text-white border border-slate-700 hover:bg-slate-700 transition-colors">Get Free Diagnostic</a>
             </div>
             <div className="flex flex-wrap justify-center gap-6 text-sm text-slate-300">
               {['✓ Free Pickup & Delivery', '✓ No Fix, No Fee', '✓ Same-Day Repairs', '✓ Apple & Windows Specialists'].map(t => <span key={t}>{t}</span>)}
             </div>
           </FadeIn>
-        </section>
+        </div>
+      </section>
 
-        {/* Services Section */}
-        <section className="py-20 border-t border-slate-800">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {/* Services Section */}
+      <section className="py-20 px-6 border-t border-slate-800">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((s) => (
               <FadeIn key={s.path}>
                 <Link to={s.path} className="block bg-slate-900/40 p-8 rounded-3xl border border-slate-800 hover:border-cyan-500/30 transition-all h-full">
@@ -100,16 +133,18 @@ export default function Home() {
               </FadeIn>
             ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* FAQ Section */}
-        <section className="py-20 max-w-3xl mx-auto border-t border-slate-800">
+      {/* FAQ Section */}
+      <section className="py-20 px-6 border-t border-slate-800">
+        <div className="max-w-3xl mx-auto">
           <h2 className="text-3xl font-bold text-white text-center mb-12">Frequently Asked Questions</h2>
           <div className="space-y-3">
             {faqs.map((faq) => <FAQItem key={faq.q} q={faq.q} a={faq.a} />)}
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
     </div>
   );
 }
