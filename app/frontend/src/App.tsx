@@ -28,6 +28,7 @@ const ScreenReplacement = lazy(() => import('./pages/ScreenReplacement'));
 const PrivacySecurity = lazy(() => import('./pages/PrivacySecurity'));
 const MotherboardRepair = lazy(() => import('./pages/MotherboardRepair'));
 const BlogScreenProtection = lazy(() => import('./pages/BlogScreenProtection'));
+const BlogLaptopRepair = lazy(() => import('./pages/BlogLaptopRepair')); // Added Blog Import
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 // Global Styles
@@ -44,9 +45,6 @@ const PageLoader = () => (
 const App = () => (
   <HelmetProvider>
     <BrowserRouter>
-      {/* Strict Root Wrapper: 
-        Forces the app to take exactly 100% width and prevents right-shifting/horizontal scrolling 
-      */}
       <div className="w-full min-h-screen flex flex-col overflow-x-hidden bg-slate-950 m-0 p-0">
         <Layout>
           <Suspense fallback={<PageLoader />}>
@@ -59,10 +57,10 @@ const App = () => (
               <Route path="/gallery" element={<Gallery />} />
               <Route path="/book" element={<BookingPage />} />
               
-              {/* SEO Aligned Routes: Matching your sitemap.xml */}
+              {/* SEO Aligned Routes */}
               <Route path="/macbook-repair-kuwait" element={<MacBookRepair />} />
               
-              {/* Bulletproof Laptop Repair Routes: Catches both URL variations to prevent 404s */}
+              {/* Bulletproof Laptop Repair Routes */}
               <Route path="/laptop-repair-kuwait" element={<LaptopRepair />} />
               <Route path="/laptop-repair-hawalli-kuwait" element={<LaptopRepair />} />
               
@@ -71,7 +69,8 @@ const App = () => (
               <Route path="/data-recovery-kuwait" element={<PrivacySecurity />} />
               <Route path="/chip-level-motherboard-repair-hawalli" element={<MotherboardRepair />} />
               
-              {/* Supporting & Blog Routes */}
+              {/* Blog & Supporting Routes */}
+              <Route path="/blog/laptop-repair-kuwait-2026" element={<BlogLaptopRepair />} />
               <Route path="/battery-replacement" element={<BatteryReplacement />} />
               <Route path="/gaming-pc-cooling" element={<GamingPCCooling />} />
               <Route path="/web-design-kuwait" element={<WebDesignKuwait />} />
