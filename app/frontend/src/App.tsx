@@ -61,7 +61,11 @@ const App = () => (
               
               {/* SEO Aligned Routes: Matching your sitemap.xml */}
               <Route path="/macbook-repair-kuwait" element={<MacBookRepair />} />
+              
+              {/* Bulletproof Laptop Repair Routes: Catches both URL variations to prevent 404s */}
               <Route path="/laptop-repair-kuwait" element={<LaptopRepair />} />
+              <Route path="/laptop-repair-hawalli-kuwait" element={<LaptopRepair />} />
+              
               <Route path="/gaming-pc-repair-kuwait" element={<GamingPC />} />
               <Route path="/screen-replacement-kuwait" element={<ScreenReplacement />} />
               <Route path="/data-recovery-kuwait" element={<PrivacySecurity />} />
