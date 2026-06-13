@@ -11,6 +11,8 @@ import {
 const BUSINESS_NAME = "Kuwait Computer Repair On Call (KCROC)";
 const BUSINESS_PHONE = "+96555301913";
 const CANONICAL_URL = "https://www.computerrepairkuwait.com";
+// Added optimized Cloudinary Logo URL
+const CLOUDINARY_LOGO = "https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto/v1769908596/logo_btpfls.png";
 
 const services = [
   { title: 'Motherboard Repair Kuwait', description: 'Advanced logic board diagnostics, micro-soldering, and professional BIOS flashing.', icon: Cpu, path: '/motherboard-repair-kuwait' },
@@ -54,7 +56,7 @@ const schemaData = {
       "@id": `${CANONICAL_URL}/#organization`,
       "name": BUSINESS_NAME,
       "url": CANONICAL_URL,
-      "logo": `${CANONICAL_URL}/logo.jpg`,
+      "logo": CLOUDINARY_LOGO,
       "telephone": BUSINESS_PHONE,
       "sameAs": [
         "https://maps.google.com/?cid=3928987856909945446",
@@ -67,7 +69,7 @@ const schemaData = {
       "@id": `${CANONICAL_URL}/#website`,
       "url": CANONICAL_URL,
       "name": BUSINESS_NAME,
-      "image": `${CANONICAL_URL}/logo.jpg`,
+      "image": CLOUDINARY_LOGO,
       "potentialAction": {
         "@type": "SearchAction",
         "target": `${CANONICAL_URL}/search?q={query}`,
@@ -78,7 +80,7 @@ const schemaData = {
       "@type": "LocalBusiness",
       "@id": `${CANONICAL_URL}/#business`,
       "name": BUSINESS_NAME,
-      "image": `${CANONICAL_URL}/logo.jpg`,
+      "image": CLOUDINARY_LOGO,
       "telephone": BUSINESS_PHONE,
       "url": CANONICAL_URL,
       "priceRange": "$$",
@@ -215,7 +217,6 @@ export default function Home() {
   const waLink = `https://wa.me/${BUSINESS_PHONE.replace('+', '')}?text=${waMessage}`;
 
   return (
-    // Added pb-24 to ensure footer isn't blocked by the sticky mobile CTA
     <div className="w-full bg-slate-950 flex flex-col items-center overflow-x-hidden pb-24 md:pb-0">
       <Helmet>
         <title>KCROC | Kuwait Computer Repair On Call</title>
@@ -225,7 +226,8 @@ export default function Home() {
         <meta property="og:title" content="KCROC | Kuwait Computer Repair On Call" />
         <meta property="og:description" content="Professional laptop, MacBook, and motherboard repair services in Hawalli, Kuwait. Free pickup and delivery across Kuwait." />
         <meta property="og:url" content={CANONICAL_URL} />
-        <meta property="og:image" content={`${CANONICAL_URL}/logo.jpg`} />
+        {/* Updated Open Graph image */}
+        <meta property="og:image" content={CLOUDINARY_LOGO} />
         <meta name="twitter:card" content="summary_large_image" />
         <script type="application/ld+json">{JSON.stringify(schemaData)}</script>
       </Helmet>
