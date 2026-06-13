@@ -11,7 +11,6 @@ const aboutSchema = {
       "name": "Kuwait Computer Repair On Call (KCROC)",
       "url": "https://computerrepairkuwait.com",
       "telephone": "+96555301913",
-      // Removed the unbranded Gmail address for E-E-A-T compliance
       "address": { 
         "@type": "PostalAddress", 
         "streetAddress": "Al Mullah Complex, Ibn Khaldoun St, Shop 19", 
@@ -71,7 +70,6 @@ export default function About() {
         <title>About KCROC | Expert Computer Repair Team in Kuwait</title>
         <meta name="description" content="Meet the expert technicians behind KCROC. 20+ years experience, 4.9-star rating, free pickup across all Kuwait. Hawalli, Ibn Khaldoun St." />
         <link rel="canonical" href="https://computerrepairkuwait.com/about" />
-        {/* Added Open Graph Tags for Social Sharing */}
         <meta property="og:type" content="website" />
         <meta property="og:title" content="About KCROC | Expert Computer Repair Team in Kuwait" />
         <meta property="og:description" content="Meet the expert technicians behind KCROC. 20+ years experience, 4.9-star rating, free pickup across all Kuwait." />
@@ -122,10 +120,11 @@ export default function About() {
             </div>
           </div>
           <div className="bg-slate-900 border border-slate-800 rounded-3xl p-2 shadow-2xl">
+            {/* The image URL and alt text have been updated here */}
             <img 
-              src="https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto:good,w_800,c_limit/Whats-App-Image-2026-01-29-at-3-1" 
-              alt="KCROC repair workspace" 
-              loading="lazy" /* Added for mobile speed optimization */
+              src="https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1769908596/Whats-App-Image-2026-01-29-at-3-19-40-AM_i2mpms.jpg" 
+              alt="KCROC repair workshop – Kuwait Computer Repair On Call, Hawalli" 
+              loading="lazy"
               className="w-full h-[400px] object-cover rounded-2xl"
               onError={(e) => { e.currentTarget.src = 'https://ui-avatars.com/api/?name=KCROC&size=400&background=10b981&color=fff&bold=true'; }}
             />
