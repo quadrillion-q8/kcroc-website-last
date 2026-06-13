@@ -14,8 +14,9 @@ const schemaData = {
       alternateName: 'KCROC',
       url: 'https://www.computerrepairkuwait.com',
       telephone: '+96555301913',
-      email: 'quadrillion1980@gmail.com',
-      image: 'https://www.computerrepairkuwait.com/logo.png',
+      // Removed the unbranded Gmail address to satisfy the E-E-A-T audit
+      // Updated schema image to the optimized Cloudinary logo
+      image: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto/v1769908596/logo_btpfls.png',
       priceRange: '$$',
       address: {
         '@type': 'PostalAddress',
@@ -134,7 +135,14 @@ export default function Gallery() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {images.map((img, i) => (
               <div key={i} className="group relative aspect-video bg-gray-900 rounded-3xl overflow-hidden border border-gray-800 hover:border-emerald-500/40 transition-all">
-                <img src={img.src} alt={img.alt} loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                {/* Dynamically applying loading and fetchpriority based on position */}
+                <img 
+                  src={img.src} 
+                  alt={img.alt} 
+                  loading={i < 6 ? "eager" : "lazy"} 
+                  fetchpriority={i < 2 ? "high" : "auto"}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
+                />
                 <div className="absolute inset-0 bg-gradient-to-t from-gray-950 to-transparent opacity-60" />
                 <div className="absolute bottom-4 left-4 right-4">
                   <p className="text-white font-semibold text-sm leading-snug">{img.alt}</p>
