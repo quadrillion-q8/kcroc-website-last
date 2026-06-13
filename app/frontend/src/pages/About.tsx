@@ -11,7 +11,7 @@ const aboutSchema = {
       "name": "Kuwait Computer Repair On Call (KCROC)",
       "url": "https://computerrepairkuwait.com",
       "telephone": "+96555301913",
-      "email": "quadrillion1980@gmail.com",
+      // Removed the unbranded Gmail address for E-E-A-T compliance
       "address": { 
         "@type": "PostalAddress", 
         "streetAddress": "Al Mullah Complex, Ibn Khaldoun St, Shop 19", 
@@ -71,6 +71,12 @@ export default function About() {
         <title>About KCROC | Expert Computer Repair Team in Kuwait</title>
         <meta name="description" content="Meet the expert technicians behind KCROC. 20+ years experience, 4.9-star rating, free pickup across all Kuwait. Hawalli, Ibn Khaldoun St." />
         <link rel="canonical" href="https://computerrepairkuwait.com/about" />
+        {/* Added Open Graph Tags for Social Sharing */}
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="About KCROC | Expert Computer Repair Team in Kuwait" />
+        <meta property="og:description" content="Meet the expert technicians behind KCROC. 20+ years experience, 4.9-star rating, free pickup across all Kuwait." />
+        <meta property="og:url" content="https://computerrepairkuwait.com/about" />
+        <meta property="og:image" content="https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto/v1769908596/logo_btpfls.png" />
         <script type="application/ld+json">{JSON.stringify(aboutSchema)}</script>
       </Helmet>
 
@@ -119,6 +125,7 @@ export default function About() {
             <img 
               src="https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto:good,w_800,c_limit/Whats-App-Image-2026-01-29-at-3-1" 
               alt="KCROC repair workspace" 
+              loading="lazy" /* Added for mobile speed optimization */
               className="w-full h-[400px] object-cover rounded-2xl"
               onError={(e) => { e.currentTarget.src = 'https://ui-avatars.com/api/?name=KCROC&size=400&background=10b981&color=fff&bold=true'; }}
             />
