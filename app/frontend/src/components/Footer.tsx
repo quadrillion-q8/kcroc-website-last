@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { MapPin, Phone, MessageCircle, CalendarClock, ShieldCheck } from 'lucide-react';
 
@@ -6,6 +7,8 @@ const cleanPhone = BUSINESS_PHONE.replace(/\D/g, '');
 const WA_LINK = `https://wa.me/${cleanPhone}?text=${encodeURIComponent("Hi KCROC, I need computer repair assistance in Kuwait.")}`;
 
 export default function Footer() {
+  const [logoError, setLogoError] = useState(false);
+
   return (
     <footer className="bg-slate-950 border-t border-slate-900 pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -13,10 +16,21 @@ export default function Footer() {
           
           {/* Brand Info */}
           <div>
-            <div className="flex items-center gap-2 mb-6">
-              <ShieldCheck className="w-8 h-8 text-cyan-400" />
-              <span className="text-2xl font-black text-white tracking-tight">KCROC</span>
-            </div>
+            <Link to="/" className="flex items-center mb-6 block w-fit">
+              {!logoError ? (
+                <img 
+                  src="/kcroc-logo.png" 
+                  alt="KCROC Logo" 
+                  className="h-14 w-auto object-contain rounded-xl" 
+                  onError={() => setLogoError(true)} 
+                />
+              ) : (
+                <div className="flex items-center gap-2">
+                  <ShieldCheck className="w-8 h-8 text-cyan-400" />
+                  <span className="text-2xl font-black text-white tracking-tight">KCROC</span>
+                </div>
+              )}
+            </Link>
             <p className="text-slate-400 text-sm leading-relaxed mb-6">
               Professional computer and laptop repair in Kuwait. Free pickup & delivery across all governorates. No Fix, No Fee.
             </p>
@@ -51,7 +65,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Contact (Removed Gmail, Added Booking) */}
+          {/* Contact */}
           <div>
             <h3 className="text-white font-bold mb-6 uppercase tracking-wider text-sm">Connect</h3>
             <ul className="space-y-4">
