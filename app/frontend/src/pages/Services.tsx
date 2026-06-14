@@ -18,7 +18,6 @@ const cleanPhone = BUSINESS_PHONE.replace(/\D/g, '');
 const buildWaLink = (message: string) => `https://wa.me/${cleanPhone}?text=${encodeURIComponent(message)}`;
 const DEFAULT_WA_LINK = buildWaLink("Hi KCROC, I need help with a computer repair. Please arrange a free diagnostic & pickup in Kuwait.");
 
-// Restored: Your original, highly-detailed SEO copy
 const SERVICES = [
   {
     id: 'laptop-repair',
@@ -122,15 +121,12 @@ const SERVICES = [
   }
 ];
 
-// Restored: Original detailed FAQS
 const FAQS = [
   { q: "Do you offer free pickup and delivery in Kuwait?", a: "Yes, we offer completely free pickup and delivery across all governorates in Kuwait, including Hawalli, Salmiya, and Kuwait City." },
   { q: "What is your turnaround time for repairs?", a: "Most diagnostic assessments are completed the same day. Standard repairs like screen or battery replacements take 24-48 hours." },
   { q: "Do I pay if my computer cannot be fixed?", a: "No. We operate on a strict No Fix, No Fee policy. If we cannot repair your device, you pay absolutely nothing." },
   { q: "Do you provide a warranty on repairs?", a: "Yes, all our hardware repairs and replacement parts come with a 30-day warranty for your peace of mind." }
 ];
-
-// ─── Restored: SEO Schema Graph ──────────────────────────────────────────────
 
 const structuredData = {
   "@context": "https://schema.org",
@@ -184,13 +180,12 @@ const structuredData = {
 // ─── Sub-Components ──────────────────────────────────────────────────────────
 
 const HeroSection = () => (
-  <section className="relative pt-20 pb-20 px-6 flex justify-center overflow-hidden border-b border-slate-800/50">
-    {/* Abstract Tech Grid Background */}
-    <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:3rem_3rem] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_0%,#000_70%,transparent_100%)] opacity-30 pointer-events-none"></div>
+  // IMPLMEMENTED GLOBAL RULE: pt-20 mt-2 min-h-[80vh] for mobile, md:pt-32 md:mt-8 md:min-h-[90vh] for desktop
+  <section className="relative pt-20 md:pt-32 pb-20 px-6 mt-2 md:mt-8 min-h-[80vh] md:min-h-[90vh] flex flex-col justify-center items-center overflow-hidden border-b border-slate-800/50">
     {/* Core Electric Glow */}
     <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[600px] h-[500px] bg-cyan-600/20 blur-[120px] rounded-full pointer-events-none"></div>
     
-    <div className="relative w-full max-w-4xl text-center z-10">
+    <div className="relative w-full max-w-4xl text-center z-10 flex flex-col items-center">
       <div className="inline-flex items-center gap-2 bg-slate-900/80 backdrop-blur-md border border-cyan-500/30 px-5 py-2 rounded-full text-cyan-400 text-xs font-black uppercase tracking-widest mb-8 shadow-[0_0_15px_rgba(34,211,238,0.1)]">
         <ShieldCheck className="w-4 h-4" /> Component-Level Diagnostic Lab
       </div>
@@ -199,11 +194,11 @@ const HeroSection = () => (
         Professional <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-emerald-400">Hardware Solutions.</span>
       </h1>
       
-      <p className="text-lg md:text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed mb-10 font-medium">
+      <p className="text-base md:text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed mb-10 font-medium">
         Stop struggling with broken tech. We provide elite laptop, desktop, and MacBook engineering services in Kuwait with free pickup and delivery across all governorates.
       </p>
 
-      <div className="flex flex-wrap justify-center gap-6 md:gap-10 text-xs text-emerald-400 font-bold tracking-widest uppercase">
+      <div className="flex flex-wrap justify-center gap-4 md:gap-10 text-xs text-emerald-400 font-bold tracking-widest uppercase">
         <span className="flex items-center gap-2"><CheckCircle className="w-4 h-4"/> No Fix, No Fee</span>
         <span className="flex items-center gap-2"><Truck className="w-4 h-4"/> Free Kuwait Pickup</span>
         <span className="flex items-center gap-2"><Clock className="w-4 h-4"/> Same-Day Slots</span>
@@ -362,9 +357,8 @@ const FAQSection = () => (
   </section>
 );
 
-// Restored: Premium Final CTA Section
 const FinalCTASection = () => (
-  <section className="relative py-24 px-6 border-t border-slate-800/50 flex justify-center overflow-hidden bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-cyan-900/10 via-slate-950 to-slate-950">
+  <section className="relative py-24 px-6 border-t border-slate-800/50 flex justify-center overflow-hidden bg-slate-900/10">
     {/* Bottom Glow Effect */}
     <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-cyan-900/20 blur-[100px] rounded-full pointer-events-none"></div>
     
@@ -420,14 +414,14 @@ export default function Services() {
         <meta property="og:type" content="website" />
         <meta property="og:image" content={`${CANONICAL_URL}/og-image.jpg`} />
         <meta name="twitter:card" content="summary_large_image" />
-        {/* Restored: Full JSON-LD Script */}
         <script type="application/ld+json">{JSON.stringify(structuredData)}</script>
       </Helmet>
 
-      <main className="w-full bg-[#0a0f1c] text-white font-sans pb-24 md:pb-0 overflow-x-hidden selection:bg-cyan-500/30">
+      {/* IMPLMEMENTED GLOBAL RULE: bg-transparent wrapper to allow animated particles to show through */}
+      <main className="w-full bg-transparent text-white font-sans pb-24 md:pb-0 overflow-x-hidden selection:bg-cyan-500/30">
         
-        {/* Restored: Visible Breadcrumb Navigation with Premium Styling */}
-        <div className="w-full bg-slate-900/30 backdrop-blur-sm pt-32 pb-4 px-6 border-b border-slate-800/50 flex justify-center relative z-10">
+        {/* Visible Breadcrumb Navigation with Premium Styling */}
+        <div className="w-full bg-slate-900/30 backdrop-blur-sm pt-28 pb-4 px-6 border-b border-slate-800/50 flex justify-center relative z-10">
           <nav aria-label="Breadcrumb" className="w-full max-w-6xl text-sm text-slate-500 font-medium">
             <Link to="/" className="hover:text-cyan-400 transition-colors">Home</Link> 
             <span className="mx-2 opacity-50" aria-hidden="true">/</span> 
