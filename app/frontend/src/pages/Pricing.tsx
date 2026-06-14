@@ -296,7 +296,6 @@ export default function Pricing() {
   const finalCtaWaLink = `https://wa.me/96555301913?text=${encodeURIComponent("Hi! I'd like a repair quote. My device has:")}`;
 
   return (
-    /* GLOBAL UPGRADE: Swapped bg-gray-950 out for bg-transparent framework */
     <div className="min-h-screen bg-transparent text-white font-sans selection:bg-cyan-500/30">
       <Helmet>
         <title>Computer Repair Prices in Kuwait | KCROC – Free Diagnosis</title>
@@ -308,8 +307,9 @@ export default function Pricing() {
         <script type="application/ld+json">{JSON.stringify(schemaOrg)}</script>
       </Helmet>
 
-      {/* GLOBAL UPGRADE: Fixed Hero padding & matching min-height boundaries for mobile clearance */}
-      <section className="relative pt-20 md:pt-32 pb-16 px-6 mt-2 md:mt-8 min-h-[80vh] md:min-h-[90vh] flex flex-col justify-center items-center overflow-hidden text-center">
+      {/* FIXED: Removed the min-h-[80vh] and justify-center that caused the massive vertical gaps.
+          Used standard pt-32 to clear the header cleanly. */}
+      <section className="relative pt-32 pb-12 px-6 flex flex-col items-center overflow-hidden text-center z-10">
         {/* Core Electric Glow Container */}
         <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[600px] h-[500px] bg-cyan-600/20 blur-[120px] rounded-full pointer-events-none"></div>
 
