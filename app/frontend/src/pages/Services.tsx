@@ -180,10 +180,10 @@ const structuredData = {
 // ─── Sub-Components ──────────────────────────────────────────────────────────
 
 const HeroSection = () => (
-  // IMPLMEMENTED GLOBAL RULE: pt-20 mt-2 min-h-[80vh] for mobile, md:pt-32 md:mt-8 md:min-h-[90vh] for desktop
-  <section className="relative pt-20 md:pt-32 pb-20 px-6 mt-2 md:mt-8 min-h-[80vh] md:min-h-[90vh] flex flex-col justify-center items-center overflow-hidden border-b border-slate-800/50">
+  // Removed huge top margins/padding here, relying on standard py-12 to sit nicely below breadcrumbs
+  <section className="relative py-12 md:py-24 px-6 flex flex-col justify-center items-center overflow-hidden border-b border-slate-800/50">
     {/* Core Electric Glow */}
-    <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[600px] h-[500px] bg-cyan-600/20 blur-[120px] rounded-full pointer-events-none"></div>
+    <div className="absolute top-[10%] left-1/2 -translate-x-1/2 w-[600px] h-[500px] bg-cyan-600/20 blur-[120px] rounded-full pointer-events-none"></div>
     
     <div className="relative w-full max-w-4xl text-center z-10 flex flex-col items-center">
       <div className="inline-flex items-center gap-2 bg-slate-900/80 backdrop-blur-md border border-cyan-500/30 px-5 py-2 rounded-full text-cyan-400 text-xs font-black uppercase tracking-widest mb-8 shadow-[0_0_15px_rgba(34,211,238,0.1)]">
@@ -417,10 +417,9 @@ export default function Services() {
         <script type="application/ld+json">{JSON.stringify(structuredData)}</script>
       </Helmet>
 
-      {/* IMPLMEMENTED GLOBAL RULE: bg-transparent wrapper to allow animated particles to show through */}
       <main className="w-full bg-transparent text-white font-sans pb-24 md:pb-0 overflow-x-hidden selection:bg-cyan-500/30">
         
-        {/* Visible Breadcrumb Navigation with Premium Styling */}
+        {/* Breadcrumb block already handles fixed header clearance with pt-28 */}
         <div className="w-full bg-slate-900/30 backdrop-blur-sm pt-28 pb-4 px-6 border-b border-slate-800/50 flex justify-center relative z-10">
           <nav aria-label="Breadcrumb" className="w-full max-w-6xl text-sm text-slate-500 font-medium">
             <Link to="/" className="hover:text-cyan-400 transition-colors">Home</Link> 
