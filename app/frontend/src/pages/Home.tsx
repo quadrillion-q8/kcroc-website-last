@@ -214,7 +214,6 @@ export default function Home() {
   const waLink = `https://wa.me/${cleanPhoneStr}?text=${waMessage}`;
 
   return (
-    {/* CHANGED bg-[#0a0f1c] to bg-transparent here so particles show through! */}
     <div className="w-full bg-transparent flex flex-col items-center overflow-x-hidden pb-24 md:pb-0 selection:bg-cyan-500/30">
       <Helmet>
         <title>KCROC | Premium Computer Repair On Call in Kuwait</title>
