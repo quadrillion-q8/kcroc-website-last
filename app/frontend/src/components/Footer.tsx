@@ -10,7 +10,8 @@ export default function Footer() {
   const [logoError, setLogoError] = useState(false);
 
   return (
-    <footer className="bg-slate-950 border-t border-slate-900 pt-16 pb-8">
+    // Updated background and top border for premium feel
+    <footer className="relative bg-[#0a0f1c]/80 backdrop-blur-md border-t border-slate-800/50 pt-16 pb-8 z-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           
@@ -19,7 +20,7 @@ export default function Footer() {
             <Link to="/" className="flex items-center mb-6 block w-fit">
               {!logoError ? (
                 <img 
-                  src="/kcroc-logo.png" 
+                  src="https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto/v1769908596/logo_btpfls.png" 
                   alt="KCROC Logo" 
                   className="h-14 w-auto object-contain rounded-xl" 
                   onError={() => setLogoError(true)} 
@@ -34,7 +35,7 @@ export default function Footer() {
             <p className="text-slate-400 text-sm leading-relaxed mb-6">
               Professional computer and laptop repair in Kuwait. Free pickup & delivery across all governorates. No Fix, No Fee.
             </p>
-            <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 font-bold transition-colors">
+            <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-bold transition-colors">
               <MessageCircle size={20} />
               WhatsApp Us
             </a>
@@ -78,20 +79,20 @@ export default function Footer() {
                 <a href={`tel:${cleanPhone}`} className="hover:text-white transition-colors">{BUSINESS_PHONE}</a>
               </li>
               <li className="flex items-center gap-3 text-slate-400 text-sm mt-4">
-                <CalendarClock className="w-5 h-5 text-emerald-400 flex-shrink-0" />
-                <Link to="/book" className="text-emerald-400 font-bold hover:text-emerald-300 transition-colors">Book Free Pickup Now</Link>
+                <CalendarClock className="w-5 h-5 text-cyan-400 flex-shrink-0 drop-shadow-[0_0_8px_rgba(34,211,238,0.5)]" />
+                <Link to="/book" className="text-cyan-400 font-bold hover:text-cyan-300 transition-colors drop-shadow-[0_0_8px_rgba(34,211,238,0.3)]">Book Free Pickup Now</Link>
               </li>
             </ul>
           </div>
         </div>
 
-        <div className="border-t border-slate-900 pt-8 mt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="border-t border-slate-800/50 pt-8 mt-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-slate-500 text-sm">
             © {new Date().getFullYear()} KCROC – Kuwait Computer Repair On Call.
           </p>
           <div className="flex gap-6">
-            <span className="text-slate-600 text-sm cursor-not-allowed">Privacy Policy</span>
-            <span className="text-slate-600 text-sm cursor-not-allowed">Terms of Service</span>
+            <span className="text-slate-600 text-sm cursor-not-allowed hover:text-cyan-500 transition-colors">Privacy Policy</span>
+            <span className="text-slate-600 text-sm cursor-not-allowed hover:text-cyan-500 transition-colors">Terms of Service</span>
           </div>
         </div>
       </div>
