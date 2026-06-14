@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
+import { Link } from 'react-router-dom';
 import { 
   AlertTriangle, ChevronDown, Phone, MessageCircle, Wrench, 
-  MapPin, Laptop, Monitor, Cpu, Battery, Settings 
+  Cpu, Settings, Laptop, Monitor, Battery, MapPin 
 } from 'lucide-react';
 
 // ─── Constants & Schema ──────────────────────────────────────────────────────
@@ -38,32 +39,26 @@ const schemaData = {
   ]
 };
 
-const ISSUES = [
-  { icon: Cpu, t: "Not Turning On", d: "Often a motherboard, power jack, or battery failure." },
-  { icon: Settings, t: "Overheating & Loud Fans", d: "Kuwait's dust and heat clog cooling systems faster." },
-  { icon: Laptop, t: "Slow Performance", d: "Failing HDD, low RAM, or Windows bloat." },
-  { icon: AlertTriangle, t: "System Crashes", d: "Windows corruption or driver conflicts." },
-  { icon: Monitor, t: "Broken Screen", d: "Cracked displays or flickering panels." },
-  { icon: Battery, t: "Battery Issues", d: "Charging port damage or dead cells." }
-];
-
-const PROCESS_STEPS = [
-  { s: "Free Pickup & Diagnosis", d: "Book before 11 AM and we collect your laptop from anywhere in Kuwait." },
-  { s: "Clear, No-Obligation Quote", d: "We confirm the exact price before starting — no fix, no fee." },
-  { s: "Professional Repair", d: "Experienced technicians and quality replacement parts." },
-  { s: "Testing & Free Delivery", d: "Every repair is tested and backed by a 30-day warranty." }
-];
-
 const FAQItem = ({ q, a }: { q: string; a: string }) => {
   const [open, setOpen] = useState(false);
   const id = q.toLowerCase().replace(/[^a-z0-9]+/g, '-');
   return (
     <div className="bg-slate-900/30 backdrop-blur-md p-6 rounded-2xl border border-slate-800 hover:border-cyan-500/40 transition-all">
-      <button onClick={() => setOpen(!open)} aria-expanded={open} aria-controls={`${id}-panel`} className="w-full flex justify-between items-center font-black text-white hover:text-cyan-400 transition-colors focus:outline-none">
+      <button 
+        onClick={() => setOpen(!open)}
+        aria-expanded={open}
+        aria-controls={`${id}-panel`}
+        className="w-full flex justify-between items-center font-black text-white hover:text-cyan-400 transition-colors focus:outline-none"
+      >
         <span>{q}</span>
         <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${open ? 'rotate-180' : ''}`} aria-hidden="true" />
       </button>
-      <div id={`${id}-panel`} role="region" hidden={!open} className={`grid transition-all duration-300 ease-in-out ${open ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}>
+      <div 
+        id={`${id}-panel`}
+        role="region"
+        hidden={!open}
+        className={`grid transition-all duration-300 ease-in-out ${open ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}
+      >
         <p className="text-slate-400 text-sm leading-relaxed overflow-hidden mt-3">{a}</p>
       </div>
     </div>
@@ -75,7 +70,7 @@ export default function BlogLaptopRepair() {
     <main className="w-full min-h-screen bg-transparent text-slate-200 selection:bg-cyan-500/30">
       <Helmet>
         <title>Laptop Repair in Kuwait – Same-Day Service Guide 2026 | KCROC</title>
-        <meta name="description" content="Laptop repair in Kuwait: overheating, slow performance, screen replacement & SSD upgrades. Free pickup & delivery, same-day service, 30-day warranty. Call 55301913." />
+        <meta name="description" content="Expert laptop repair guide in Kuwait. Learn how to fix overheating, slow performance, screen replacement & SSD upgrades. Free pickup & delivery, same-day service, 30-day warranty. Call 55301913." />
         <link rel="canonical" href={PAGE_URL} />
         <script type="application/ld+json">{JSON.stringify(schemaData)}</script>
       </Helmet>
@@ -85,12 +80,12 @@ export default function BlogLaptopRepair() {
         <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[600px] h-[500px] bg-cyan-600/20 blur-[120px] rounded-full pointer-events-none"></div>
         <div className="max-w-4xl mx-auto relative z-10">
           <span className="text-cyan-400 font-black tracking-widest uppercase text-xs">Kuwait Repair Guide 2026</span>
-          <h1 className="text-4xl md:text-6xl font-black text-white mt-4 mb-6 leading-tight tracking-tight">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-white mt-4 mb-6 leading-tight tracking-tight">
             Laptop Repair in Kuwait: <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-emerald-400 drop-shadow-[0_0_25px_rgba(34,211,238,0.4)]">Same-Day, No Fix No Fee</span>
           </h1>
           <p className="text-base md:text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed">
-            Kuwait's heat and dust shorten laptop lifespans fast. Here's how to spot the warning signs early and get your laptop fixed the same day by our Hawalli workshop.
+            Kuwait's heat and dust shorten laptop lifespans fast. Get your laptop fixed the same day by a Hawalli technician with 20+ years of local experience.
           </p>
         </div>
       </section>
@@ -108,7 +103,14 @@ export default function BlogLaptopRepair() {
             <AlertTriangle className="text-amber-400" /> Common Laptop Problems in Kuwait
           </h2>
           <div className="grid md:grid-cols-2 gap-4">
-            {ISSUES.map((issue) => (
+            {[
+              { icon: Cpu, t: "Not Turning On", d: "Often motherboard, power jack, or battery failure after power surges." },
+              { icon: Settings, t: "Overheating & Loud Fans", d: "Kuwait's dust and heat clog cooling systems rapidly." },
+              { icon: Laptop, t: "Slow Performance", d: "Failing HDD, low RAM, or Windows bloat." },
+              { icon: AlertTriangle, t: "System Crashes", d: "Corrupted Windows files or driver conflicts." },
+              { icon: Monitor, t: "Broken Screen", d: "Cracked displays or flickering panels." },
+              { icon: Battery, t: "Battery Issues", d: "Charging port damage or dead cells." }
+            ].map((issue) => (
               <div key={issue.t} className="bg-slate-900/30 backdrop-blur-md p-6 rounded-2xl border border-slate-800 hover:border-cyan-500/40 transition-all">
                 <issue.icon className="text-cyan-400 mb-3" />
                 <h4 className="font-bold text-white">{issue.t}</h4>
@@ -120,7 +122,12 @@ export default function BlogLaptopRepair() {
           <section className="mt-16">
             <h2 className="text-3xl font-black text-white mb-8">Our Repair Process</h2>
             <div className="space-y-4">
-              {PROCESS_STEPS.map((step, i) => (
+              {[
+                { s: "Free Pickup & Diagnosis", d: "Book before 11 AM and we collect your laptop from anywhere in Kuwait." },
+                { s: "Clear, No-Obligation Quote", d: "We confirm the exact price before starting — no fix, no fee." },
+                { s: "Professional Repair", d: "Certified technicians and quality tested components." },
+                { s: "Testing & Free Delivery", d: "Every repair is tested and backed by a 30-day warranty." }
+              ].map((step, i) => (
                 <div key={step.s} className="flex gap-4 items-start bg-slate-900/30 backdrop-blur-md p-6 rounded-2xl border border-slate-800">
                   <div className="bg-cyan-500/10 text-cyan-400 font-black w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 text-sm border border-cyan-500/40">
                     {i + 1}
