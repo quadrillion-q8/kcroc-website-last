@@ -65,7 +65,8 @@ export default function About() {
   const waLink = 'https://wa.me/96555301913?text=Hi!+I+have+a+repair+enquiry.+Please+help.';
 
   return (
-    <main className="min-h-screen bg-slate-950 text-slate-200">
+    /* GLOBAL UPGRADE: Transparent background for particles */
+    <main className="w-full min-h-screen bg-transparent text-white font-sans selection:bg-cyan-500/30">
       <Helmet>
         <title>About KCROC | Expert Computer Repair Team in Kuwait</title>
         <meta name="description" content="Meet the expert technicians behind KCROC. 20+ years experience, 4.9-star rating, free pickup across all Kuwait. Hawalli, Ibn Khaldoun St." />
@@ -78,87 +79,94 @@ export default function About() {
         <script type="application/ld+json">{JSON.stringify(aboutSchema)}</script>
       </Helmet>
 
-      {/* Hero */}
-      <section className="pt-32 pb-16 px-6 text-center">
-        <div className="max-w-6xl mx-auto">
-          <span className="inline-flex items-center gap-2 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-6">
+      {/* Hero: Gap-free padding (pt-20 md:pt-32 pb-16) perfectly clears header without vertical spaces */}
+      <section className="relative pt-20 md:pt-32 pb-16 px-6 text-center overflow-hidden z-10">
+        {/* Core Electric Glow Container */}
+        <div className="absolute top-[0%] left-1/2 -translate-x-1/2 w-[600px] h-[500px] bg-cyan-600/20 blur-[120px] rounded-full pointer-events-none"></div>
+
+        <div className="relative z-10 max-w-6xl mx-auto flex flex-col items-center">
+          <span className="inline-flex items-center gap-2 bg-slate-900/80 backdrop-blur-md text-cyan-400 border border-cyan-500/30 px-5 py-2 rounded-full text-xs font-black uppercase tracking-widest mb-6 shadow-[0_0_15px_rgba(34,211,238,0.1)]">
             <Award size={14} className="mr-2" /> Kuwait's Trusted Hardware Lab
           </span>
-          <h1 className="text-4xl md:text-6xl font-black text-white mb-6 tracking-tight">
-            Meet the Team Behind <span className="text-cyan-400">KCROC</span>
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-white mb-6 tracking-tight leading-[1.1]">
+            Meet the Team Behind <span className="text-cyan-400 drop-shadow-[0_0_25px_rgba(34,211,238,0.4)]">KCROC</span>
           </h1>
-          <p className="text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-base md:text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed">
             Hawalli's premier computer and MacBook repair lab. With 20+ years of technician experience, we deliver fast, transparent, and guaranteed repairs across all Kuwait.
           </p>
         </div>
       </section>
 
-      {/* Stats */}
-      <section className="py-12 px-6 border-t border-slate-800">
+      {/* Stats - Premium Glassmorphism Cards */}
+      <section className="py-16 px-6 border-t border-slate-800/50 bg-slate-900/10 backdrop-blur-sm relative z-10">
         <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6">
           {stats.map((stat, i) => (
-            <div key={i} className="bg-slate-900/40 border border-slate-800 p-6 rounded-3xl text-center">
-              <div className="w-14 h-14 bg-slate-950 rounded-2xl flex items-center justify-center mx-auto mb-4 border border-slate-800">
-                <stat.icon className="w-7 h-7 text-emerald-400" />
+            <div key={i} className="bg-slate-900/30 backdrop-blur-md border border-slate-800 p-6 rounded-3xl text-center hover:border-cyan-500/40 hover:shadow-[0_0_30px_rgba(34,211,238,0.05)] transition-all duration-300">
+              <div className="w-14 h-14 bg-slate-950 rounded-2xl flex items-center justify-center mx-auto mb-5 border border-slate-800">
+                <stat.icon className="w-6 h-6 text-cyan-400 drop-shadow-[0_0_8px_rgba(34,211,238,0.5)]" />
               </div>
-              <div className="text-3xl font-black text-white mb-1">{stat.number}</div>
-              <div className="text-xs text-slate-500 font-bold uppercase tracking-widest">{stat.label}</div>
+              <div className="text-3xl md:text-4xl font-black text-white mb-2">{stat.number}</div>
+              <div className="text-[10px] md:text-xs text-slate-400 font-bold uppercase tracking-widest">{stat.label}</div>
             </div>
           ))}
         </div>
       </section>
 
       {/* Our Story */}
-      <section className="py-12 md:py-20 px-6 border-t border-slate-800 bg-slate-900/20">
+      <section className="py-20 md:py-24 px-6 border-t border-slate-800/50 relative z-10">
         <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
           <div>
-            <h2 className="text-3xl md:text-4xl font-black text-white mb-6">Our Story</h2>
-            <div className="space-y-6 text-slate-400 text-lg leading-relaxed">
+            <h2 className="text-3xl md:text-4xl font-black text-white mb-8 tracking-tight">Our Story</h2>
+            <div className="space-y-6 text-slate-400 text-base md:text-lg leading-relaxed">
               <p>KCROC was founded with a simple mission: provide Kuwait with reliable, professional hardware repair that customers can actually trust.</p>
               <p>What started as a small operation has grown into Kuwait's premier computer repair service — serving customers across Hawalli, Salmiya, Kuwait City, Farwaniya, and beyond with same-day service and a 30-day warranty.</p>
               <p>Our commitment to engineering excellence and absolute data privacy has made KCROC the go-to choice for individuals and businesses.</p>
             </div>
           </div>
-          <div className="bg-slate-900 border border-slate-800 rounded-3xl p-2 shadow-2xl">
-            {/* The image URL and alt text have been updated here */}
+          <div className="bg-slate-900/30 backdrop-blur-sm border border-slate-800 rounded-3xl p-3 shadow-2xl relative group">
+            <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl pointer-events-none"></div>
             <img 
               src="https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1769908596/Whats-App-Image-2026-01-29-at-3-19-40-AM_i2mpms.jpg" 
               alt="KCROC repair workshop – Kuwait Computer Repair On Call, Hawalli" 
               loading="lazy"
-              className="w-full h-[400px] object-cover rounded-2xl"
-              onError={(e) => { e.currentTarget.src = 'https://ui-avatars.com/api/?name=KCROC&size=400&background=10b981&color=fff&bold=true'; }}
+              className="w-full h-[400px] object-cover rounded-2xl opacity-90 transition-opacity duration-500 group-hover:opacity-100"
+              onError={(e) => { e.currentTarget.src = 'https://ui-avatars.com/api/?name=KCROC&size=400&background=06b6d4&color=fff&bold=true'; }}
             />
           </div>
         </div>
       </section>
 
       {/* Team */}
-      <section className="py-20 px-6 border-t border-slate-800">
+      <section className="py-24 px-6 border-t border-slate-800/50 bg-slate-900/10 backdrop-blur-sm relative z-10">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-black text-white mb-16 text-center">Our Leadership Team</h2>
+          <h2 className="text-3xl md:text-4xl font-black text-white mb-16 text-center tracking-tight">Our Leadership Team</h2>
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {teamMembers.map((member, i) => (
-              <div key={i} className="bg-slate-900/40 border border-slate-800 rounded-3xl overflow-hidden hover:border-emerald-500/30 transition-all">
-                <div className="relative h-72 overflow-hidden border-b border-slate-800">
+              <div key={i} className="group bg-slate-900/30 backdrop-blur-md border border-slate-800 rounded-3xl overflow-hidden hover:border-cyan-500/40 hover:shadow-[0_0_30px_rgba(34,211,238,0.05)] transition-all duration-300">
+                <div className="relative h-80 overflow-hidden border-b border-slate-800/50">
                   <img 
                     src={member.image} 
                     alt={`${member.name} - ${member.role} at KCROC Kuwait`}
-                    className="w-full h-full object-cover" 
+                    className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-90 group-hover:opacity-100" 
                     loading="lazy"
-                    onError={(e) => { e.currentTarget.src = `https://ui-avatars.com/api/?name=${member.fallback}&size=300&background=10b981&color=0A0A0A&bold=true&format=png`; }}
+                    onError={(e) => { e.currentTarget.src = `https://ui-avatars.com/api/?name=${member.fallback}&size=300&background=06b6d4&color=0A0A0A&bold=true&format=png`; }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 to-transparent opacity-80" />
-                  <div className="absolute bottom-6 left-6">
-                    <span className="bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest">
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent opacity-90" />
+                  <div className="absolute bottom-8 left-8">
+                    <span className="bg-slate-950/80 backdrop-blur-sm text-cyan-400 border border-cyan-500/30 px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-widest shadow-[0_0_10px_rgba(34,211,238,0.1)]">
                       {member.role}
                     </span>
-                    <h3 className="text-3xl font-black text-white mt-3">{member.name}</h3>
+                    <h3 className="text-3xl md:text-4xl font-black text-white mt-4 tracking-tight">{member.name}</h3>
                   </div>
                 </div>
-                <div className="p-8">
-                  <p className="text-slate-400 text-sm leading-relaxed mb-6">{member.bio}</p>
+                <div className="p-8 md:p-10 bg-slate-950/50">
+                  <p className="text-slate-400 text-sm md:text-base leading-relaxed mb-8">{member.bio}</p>
                   <div className="flex flex-wrap gap-2">
-                    {member.skills.map((skill) => <span key={skill} className="bg-slate-950 border border-slate-800 text-slate-300 px-3 py-1 rounded-full text-xs">{skill}</span>)}
+                    {member.skills.map((skill) => (
+                      <span key={skill} className="bg-slate-900/80 border border-slate-800 text-slate-300 px-4 py-1.5 rounded-full text-xs font-medium">
+                        {skill}
+                      </span>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -168,18 +176,22 @@ export default function About() {
       </section>
 
       {/* Final CTA Strip */}
-      <section className="py-24 px-6 border-t border-slate-800">
-        <div className="max-w-3xl mx-auto text-center bg-slate-900/40 border border-slate-800 rounded-3xl p-12">
-            <h2 className="text-3xl font-black text-white mb-8">Need Expert Repairs?</h2>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="tel:+96555301913" className="bg-emerald-600 hover:bg-emerald-500 text-white px-8 py-4 rounded-full font-bold transition-all flex items-center justify-center">
-                    <Phone className="mr-2" size={20} /> Call 55301913
-                </a>
-                <a href={waLink} className="bg-slate-800 hover:bg-slate-700 text-white px-8 py-4 rounded-full font-bold transition-all flex items-center justify-center">
-                    <MessageCircle className="mr-2" size={20} /> WhatsApp
-                </a>
+      <section className="py-24 px-6 border-t border-slate-800/50 relative z-10">
+        <div className="max-w-3xl mx-auto text-center bg-slate-900/20 backdrop-blur-md border border-slate-800 rounded-3xl p-8 md:p-12 relative overflow-hidden">
+            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[400px] h-[200px] bg-cyan-900/10 blur-[80px] rounded-full pointer-events-none"></div>
+            
+            <div className="relative z-10">
+              <h2 className="text-3xl md:text-4xl font-black text-white mb-10 tracking-tight">Need Expert Repairs?</h2>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <a href="tel:+96555301913" className="bg-slate-900 border border-slate-700 hover:bg-slate-800 text-white px-8 py-4 rounded-full font-bold text-base transition-all flex items-center justify-center">
+                      <Phone className="mr-2 h-5 w-5 text-cyan-400" /> Call 55301913
+                  </a>
+                  <a href={waLink} target="_blank" rel="noopener noreferrer" className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 px-8 py-4 rounded-full font-black text-base transition-all shadow-[0_0_20px_rgba(6,182,212,0.3)] hover:scale-[1.02] flex items-center justify-center">
+                      <MessageCircle className="mr-2 h-5 w-5" /> WhatsApp
+                  </a>
+              </div>
+              <p className="text-slate-500 text-xs font-medium tracking-wide mt-10">Hawalli, Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19. Open daily 10 AM – 10 PM.</p>
             </div>
-            <p className="text-slate-500 text-sm mt-8">Hawalli, Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19. Open daily 10 AM – 10 PM.</p>
         </div>
       </section>
     </main>
