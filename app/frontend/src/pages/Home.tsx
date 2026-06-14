@@ -214,7 +214,8 @@ export default function Home() {
   const waLink = `https://wa.me/${cleanPhoneStr}?text=${waMessage}`;
 
   return (
-    <div className="w-full bg-[#0a0f1c] flex flex-col items-center overflow-x-hidden pb-24 md:pb-0 selection:bg-cyan-500/30">
+    {/* CHANGED bg-[#0a0f1c] to bg-transparent here so particles show through! */}
+    <div className="w-full bg-transparent flex flex-col items-center overflow-x-hidden pb-24 md:pb-0 selection:bg-cyan-500/30">
       <Helmet>
         <title>KCROC | Premium Computer Repair On Call in Kuwait</title>
         <meta name="description" content="Professional laptop, MacBook, motherboard, and gaming PC repair services in Hawalli, Kuwait. Free pickup and delivery across Kuwait." />
@@ -230,9 +231,6 @@ export default function Home() {
 
       {/* Premium Hero Section - Adjusted padding and margin for mobile */}
       <section className="relative w-full pt-20 md:pt-32 pb-16 flex flex-col items-center px-6 min-h-[80vh] md:min-h-[90vh] justify-center overflow-hidden">
-        
-        {/* Abstract Tech Grid Background */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:3rem_3rem] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_0%,#000_70%,transparent_100%)] opacity-30 pointer-events-none"></div>
         
         {/* Core Electric Glow */}
         <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[600px] h-[500px] bg-cyan-600/20 blur-[120px] rounded-full pointer-events-none"></div>
