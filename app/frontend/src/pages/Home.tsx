@@ -14,11 +14,11 @@ const CANONICAL_URL = "https://www.computerrepairkuwait.com";
 const CLOUDINARY_LOGO = "https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto/v1769908596/logo_btpfls.png";
 
 const services = [
-  { title: 'Motherboard Repair Kuwait', description: 'Advanced logic board diagnostics, micro-soldering, and professional BIOS flashing.', icon: Cpu, path: '/motherboard-repair-kuwait' },
-  { title: 'Gaming PC Repair Kuwait', description: 'GPU troubleshooting, liquid cooling maintenance, and performance tuning.', icon: Gamepad2, path: '/gaming-pc-repair-kuwait' },
-  { title: 'MacBook Repair Kuwait', description: 'Expert Apple logic board repair and genuine component replacement.', icon: Laptop, path: '/macbook-repair-kuwait' },
-  { title: 'Laptop Screen Repair Kuwait', description: 'High-quality replacement displays for premium laptops and MacBooks.', icon: Monitor, path: '/laptop-screen-repair-kuwait' },
-  { title: 'Hawalli Computer Repair', description: 'Complete system cleanups, battery replacements, virus removal, and OS deployments.', icon: ShieldAlert, path: '/services' },
+  { title: 'Motherboard Repair', description: 'Advanced logic board diagnostics, micro-soldering, and professional BIOS flashing.', icon: Cpu, path: '/motherboard-repair-kuwait' },
+  { title: 'Gaming PC Tuning', description: 'GPU troubleshooting, liquid cooling maintenance, and performance tuning.', icon: Gamepad2, path: '/gaming-pc-repair-kuwait' },
+  { title: 'MacBook Repair', description: 'Expert Apple logic board repair and genuine component replacement.', icon: Laptop, path: '/macbook-repair-kuwait' },
+  { title: 'Screen Replacement', description: 'High-quality replacement displays for premium laptops and MacBooks.', icon: Monitor, path: '/laptop-screen-repair-kuwait' },
+  { title: 'System Diagnostics', description: 'Complete system cleanups, battery replacements, and virus removal.', icon: ShieldAlert, path: '/services' },
 ];
 
 const faqs = [
@@ -149,19 +149,16 @@ const useFadeIn = () => {
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-
     if (typeof IntersectionObserver === 'undefined') {
       setVisible(true);
       return;
     }
-
     const observer = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) {
         setVisible(true);
         observer.unobserve(entry.target);
       }
     }, { threshold: 0.1 });
-
     observer.observe(el);
     return () => { if (el) observer.unobserve(el); };
   }, []);
@@ -231,8 +228,8 @@ export default function Home() {
         <script type="application/ld+json">{JSON.stringify(schemaData)}</script>
       </Helmet>
 
-      {/* Premium Hero Section */}
-      <section className="relative w-full pt-32 pb-20 flex flex-col items-center px-6 min-h-[90vh] justify-center overflow-hidden">
+      {/* Premium Hero Section - Adjusted padding and margin for mobile */}
+      <section className="relative w-full pt-20 md:pt-32 pb-16 flex flex-col items-center px-6 min-h-[80vh] md:min-h-[90vh] justify-center overflow-hidden">
         
         {/* Abstract Tech Grid Background */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:3rem_3rem] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_0%,#000_70%,transparent_100%)] opacity-30 pointer-events-none"></div>
@@ -240,7 +237,7 @@ export default function Home() {
         {/* Core Electric Glow */}
         <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[600px] h-[500px] bg-cyan-600/20 blur-[120px] rounded-full pointer-events-none"></div>
 
-        <div className="relative w-full max-w-3xl text-center z-10 flex flex-col items-center mt-8">
+        <div className="relative w-full max-w-3xl text-center z-10 flex flex-col items-center mt-2 md:mt-8">
           <FadeIn>
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-white mb-6 tracking-tight leading-[1.1]">
               Premium computer repair <br className="hidden md:block"/>
@@ -248,7 +245,7 @@ export default function Home() {
               in Kuwait.
             </h1>
             
-            <p className="mt-6 text-base md:text-lg text-slate-400 mb-10 max-w-2xl mx-auto leading-relaxed">
+            <p className="mt-4 md:mt-6 text-base md:text-lg text-slate-400 mb-8 max-w-2xl mx-auto leading-relaxed">
               Professional laptop & desktop repair, data recovery, and IT solutions — delivered with speed, precision, and the care your devices deserve.
             </p>
             
@@ -278,7 +275,7 @@ export default function Home() {
               </a>
             </div>
 
-            <div className="flex flex-wrap justify-center gap-6 text-sm text-slate-300 font-medium">
+            <div className="flex flex-wrap justify-center gap-4 md:gap-6 text-xs md:text-sm text-slate-300 font-medium">
               {['✓ Free Pickup & Delivery', '✓ No Fix, No Fee', '✓ Same-Day Repairs', '✓ Apple & Windows Specialists'].map(t => <span key={t}>{t}</span>)}
             </div>
 
