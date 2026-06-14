@@ -47,7 +47,7 @@ const schemaOrg = {
         "reviewCount": "150" 
       },
       "sameAs": [
-        "https://maps.google.com/?cid=13346903770453509930", // Replace with your exact Google Business CID link
+        "https://maps.google.com/?cid=13346903770453509930",
         "https://www.facebook.com/kcrockw",
         "https://www.instagram.com/kcrockw"
       ]
@@ -264,23 +264,23 @@ const FAQItem = ({ q, a, index }: { q: string; a: string; index: number }) => {
   const panelId = `faq-panel-${index}`;
   
   return (
-    <div className="border border-gray-800 rounded-2xl overflow-hidden">
+    <div className="border border-slate-800/80 rounded-2xl overflow-hidden bg-slate-900/30 backdrop-blur-sm mb-3 transition-colors hover:border-slate-700">
       <button
         onClick={() => setOpen(!open)}
-        className="w-full flex items-center justify-between p-6 text-left hover:bg-gray-900/40 transition-colors"
+        className="w-full flex items-center justify-between p-6 text-left focus:outline-none"
         aria-expanded={open}
         aria-controls={panelId}
       >
-        <span className="font-semibold text-white pr-4">{q}</span>
+        <span className="font-bold text-white pr-4 text-sm tracking-wide">{q}</span>
         <ChevronDown
-          size={20}
-          className={`text-emerald-400 flex-shrink-0 transition-transform duration-300 ${open ? 'rotate-180' : ''}`}
+          size={18}
+          className={`text-cyan-400 flex-shrink-0 transition-transform duration-300 ${open ? 'rotate-180' : ''}`}
         />
       </button>
       <div 
         id={panelId}
         aria-hidden={!open}
-        className={`px-6 text-gray-400 text-sm leading-relaxed border-t border-gray-800/50 transition-all duration-200 ease-in-out ${
+        className={`px-6 text-slate-400 text-sm leading-relaxed border-t border-slate-800/50 transition-all duration-200 ease-in-out ${
           open ? 'max-h-96 pb-6 pt-4 opacity-100' : 'max-h-0 opacity-0 pointer-events-none overflow-hidden border-none'
         }`}
       >
@@ -296,7 +296,8 @@ export default function Pricing() {
   const finalCtaWaLink = `https://wa.me/96555301913?text=${encodeURIComponent("Hi! I'd like a repair quote. My device has:")}`;
 
   return (
-    <div className="min-h-screen bg-gray-950 text-white font-sans">
+    /* GLOBAL UPGRADE: Swapped bg-gray-950 out for bg-transparent framework */
+    <div className="min-h-screen bg-transparent text-white font-sans selection:bg-cyan-500/30">
       <Helmet>
         <title>Computer Repair Prices in Kuwait | KCROC – Free Diagnosis</title>
         <meta
@@ -307,31 +308,36 @@ export default function Pricing() {
         <script type="application/ld+json">{JSON.stringify(schemaOrg)}</script>
       </Helmet>
 
-      {/* ── Hero ── */}
-      <section className="pt-32 pb-16 px-6 text-center">
-        <div className="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/20 px-4 py-1.5 rounded-full text-emerald-400 text-sm font-medium mb-6">
-          <CheckCircle2 size={14} />
-          <span>Free Diagnosis · No Fix, No Fee · 30-Day Warranty</span>
+      {/* GLOBAL UPGRADE: Fixed Hero padding & matching min-height boundaries for mobile clearance */}
+      <section className="relative pt-20 md:pt-32 pb-16 px-6 mt-2 md:mt-8 min-h-[80vh] md:min-h-[90vh] flex flex-col justify-center items-center overflow-hidden text-center">
+        {/* Core Electric Glow Container */}
+        <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[600px] h-[500px] bg-cyan-600/20 blur-[120px] rounded-full pointer-events-none"></div>
+
+        <div className="relative z-10 flex flex-col items-center">
+          <div className="inline-flex items-center gap-2 bg-slate-900/80 backdrop-blur-md border border-cyan-500/30 px-5 py-2 rounded-full text-cyan-400 text-xs font-black uppercase tracking-widest mb-8 shadow-[0_0_15px_rgba(34,211,238,0.1)]">
+            <CheckCircle2 size={14} />
+            <span>Free Diagnosis · No Fix, No Fee · 30-Day Warranty</span>
+          </div>
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-black max-w-3xl mx-auto tracking-tight mb-6 leading-[1.1]">
+            Computer Repair Prices{' '}
+            <span className="text-cyan-400 drop-shadow-[0_0_25px_rgba(34,211,238,0.4)]">in Kuwait</span>
+          </h1>
+          <p className="mt-4 md:mt-6 text-base md:text-lg text-slate-400 mb-8 max-w-2xl mx-auto leading-relaxed">
+            Fixed quotes before we start. Free pickup across all Kuwait governorates.
+            You only pay if we fix it.
+          </p>
         </div>
-        <h1 className="text-4xl md:text-6xl font-black max-w-3xl mx-auto tracking-tight mb-6">
-          Computer Repair Prices{' '}
-          <span className="text-emerald-500">in Kuwait</span>
-        </h1>
-        <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-          Fixed quotes before we start. Free pickup across all Kuwait governorates.
-          You only pay if we fix it.
-        </p>
       </section>
 
       {/* ── Trust Strip ── */}
-      <div className="border-y border-gray-800 bg-gray-900/30">
+      <div className="border-y border-slate-800/50 bg-slate-900/10 backdrop-blur-sm relative z-10">
         <div className="max-w-5xl mx-auto px-6 py-5 grid grid-cols-2 md:grid-cols-4 gap-4">
           {guarantees.map((g, i) => (
             <div key={i} className="flex items-center gap-3">
-              <Check className="w-5 h-5 text-emerald-400 flex-shrink-0" />
+              <Check className="w-5 h-5 text-cyan-400 flex-shrink-0" />
               <div>
                 <div className="text-sm font-bold text-white">{g.label}</div>
-                <div className="text-xs text-gray-500">{g.sub}</div>
+                <div className="text-xs text-slate-500">{g.sub}</div>
               </div>
             </div>
           ))}
@@ -339,10 +345,10 @@ export default function Pricing() {
       </div>
 
       {/* ── Service Pricing ── */}
-      <section className="py-20 max-w-6xl mx-auto px-6">
-        <div className="text-center mb-14">
-          <h2 className="text-3xl md:text-4xl font-bold mb-3">Repair Prices by Service</h2>
-          <p className="text-gray-400 max-w-xl mx-auto">
+      <section className="py-24 max-w-6xl mx-auto px-6 relative z-10">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-black text-white mb-4 tracking-tight">Repair Prices by Service</h2>
+          <p className="text-slate-400 max-w-xl mx-auto text-sm md:text-base">
             All prices are starting rates. We give you a fixed quote after free diagnosis — no surprises.
           </p>
         </div>
@@ -351,29 +357,29 @@ export default function Pricing() {
           {services.map((s, i) => (
             <div
               key={i}
-              className="bg-gray-900/40 rounded-3xl border border-gray-800 hover:border-emerald-500/40 transition-all flex flex-col group"
+              className="relative bg-slate-900/30 backdrop-blur-md rounded-3xl border border-slate-800 hover:border-cyan-500/40 transition-all duration-300 flex flex-col group hover:shadow-[0_0_30px_rgba(34,211,238,0.05)]"
             >
               {/* Card header */}
               <div className="p-7 pb-5">
                 <div className="flex items-start justify-between mb-5">
-                  <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center group-hover:bg-emerald-500/20 transition-colors">
-                    <s.icon className="w-6 h-6 text-emerald-400" />
+                  <div className="w-12 h-12 rounded-2xl bg-slate-950 border border-slate-800 flex items-center justify-center group-hover:border-cyan-500/30 transition-colors">
+                    <s.icon className="w-6 h-6 text-cyan-400 drop-shadow-[0_0_8px_rgba(34,211,238,0.5)]" />
                   </div>
                   <div className="text-right">
-                    <div className="text-xs text-gray-500 uppercase tracking-widest mb-1">From</div>
-                    <div className="text-2xl font-black text-white">{s.from} <span className="text-sm font-normal text-gray-400">KD</span></div>
+                    <div className="text-[10px] text-slate-500 uppercase tracking-widest font-bold mb-1">From</div>
+                    <div className="text-2xl font-black text-white">{s.from} <span className="text-sm font-normal text-slate-400">KD</span></div>
                   </div>
                 </div>
-                <h3 className="text-lg font-bold text-white mb-1">{s.title}</h3>
-                <p className="text-sm text-gray-400">{s.subtitle}</p>
+                <h3 className="text-lg font-bold text-white mb-1 tracking-tight">{s.title}</h3>
+                <p className="text-xs text-slate-400">{s.subtitle}</p>
               </div>
 
               {/* Feature list */}
               <div className="px-7 pb-5 flex-grow">
-                <ul className="space-y-2.5">
+                <ul className="space-y-3">
                   {s.items.map((item, j) => (
-                    <li key={j} className="flex items-start gap-2.5 text-sm text-gray-300">
-                      <Check className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
+                    <li key={j} className="flex items-start gap-2.5 text-sm text-slate-300">
+                      <span className="text-cyan-400 mt-0.5 opacity-70">✓</span>
                       {item}
                     </li>
                   ))}
@@ -381,15 +387,15 @@ export default function Pricing() {
               </div>
 
               {/* Note + CTA */}
-              <div className="px-7 pb-7 pt-4 border-t border-gray-800/60 mt-auto">
-                <p className="text-xs text-gray-500 mb-4">{s.note}</p>
+              <div className="px-7 pb-7 pt-4 border-t border-slate-800/50 mt-auto">
+                <p className="text-[11px] text-slate-500 mb-4 font-medium">{s.note}</p>
                 <a
                   href={`https://wa.me/96555301913?text=${encodeURIComponent(s.wa)}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 w-full bg-emerald-500/10 border border-emerald-500/30 hover:bg-emerald-500 hover:border-emerald-500 text-emerald-400 hover:text-white font-bold py-3 rounded-xl transition-all text-sm"
+                  className="flex items-center justify-center gap-2 w-full bg-slate-900 border border-slate-700/50 hover:bg-slate-800 text-slate-200 px-4 py-3 rounded-xl font-bold text-xs uppercase tracking-wider transition-all hover:border-cyan-500/30"
                 >
-                  <MessageCircle size={15} />
+                  <MessageCircle size={15} className="text-cyan-400" />
                   Get a Quote
                 </a>
               </div>
@@ -399,20 +405,20 @@ export default function Pricing() {
       </section>
 
       {/* ── How Pricing Works ── */}
-      <section className="py-16 bg-gray-900/30 border-y border-gray-800">
+      <section className="py-24 border-y border-slate-800/50 bg-slate-900/10 backdrop-blur-sm relative z-10">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-3xl font-bold mb-3">How Our Pricing Works</h2>
-          <p className="text-gray-400 mb-12">No hidden fees. No commitment to repair until you approve the quote.</p>
+          <h2 className="text-3xl font-black text-white mb-4 tracking-tight">How Our Pricing Works</h2>
+          <p className="text-slate-400 mb-12 text-sm md:text-base">No hidden fees. No commitment to repair until you approve the quote.</p>
           <div className="grid md:grid-cols-3 gap-6 text-left">
             {[
               { n: '01', title: 'Free Diagnosis', body: 'We collect your device and run full hardware diagnostics at no charge. You get a clear fault report.' },
               { n: '02', title: 'Fixed Quote', body: 'We send you a fixed price before touching anything. No work starts until you approve it.' },
               { n: '03', title: 'Repair & Return', body: 'Repair is completed, tested, and delivered back to you with a 30-day warranty — often same day.' },
             ].map((step, i) => (
-              <div key={i} className="bg-gray-950/60 rounded-2xl border border-gray-800 p-6">
-                <div className="text-xs font-black text-emerald-500 tracking-widest mb-3">{step.n}</div>
-                <h3 className="font-bold text-white mb-2">{step.title}</h3>
-                <div className="text-gray-400 text-sm leading-relaxed">{step.body}</div>
+              <div key={i} className="bg-slate-950/60 rounded-2xl border border-slate-800 p-6 backdrop-blur-sm">
+                <div className="text-xs font-black text-cyan-400 tracking-widest mb-3 drop-shadow-[0_0_8px_rgba(34,211,238,0.3)]">{step.n}</div>
+                <h3 className="font-bold text-white mb-2 tracking-tight">{step.title}</h3>
+                <div className="text-slate-400 text-sm leading-relaxed">{step.body}</div>
               </div>
             ))}
           </div>
@@ -420,42 +426,42 @@ export default function Pricing() {
       </section>
 
       {/* ── Google Rating Bar ── */}
-      <section className="py-12 max-w-4xl mx-auto px-6">
-        <div className="bg-gray-900/40 border border-gray-800 rounded-2xl p-8 flex flex-col md:flex-row items-center gap-6 justify-between">
+      <section className="py-16 max-w-4xl mx-auto px-6 relative z-10">
+        <div className="bg-slate-900/30 backdrop-blur-md border border-slate-800 rounded-3xl p-8 flex flex-col md:flex-row items-center gap-6 justify-between">
           <div className="flex items-center gap-4">
             <div className="text-5xl font-black text-white">4.9</div>
             <div>
               <div className="flex gap-1 mb-1">
                 {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
+                  <Star key={i} className="w-5 h-5 text-yellow-400 fill-current drop-shadow-[0_0_8px_rgba(250,204,21,0.4)]" />
                 ))}
               </div>
-              <div className="text-sm text-gray-400">150+ verified Google reviews</div>
+              <div className="text-sm text-slate-400">150+ verified Google reviews</div>
             </div>
           </div>
-          <div className="flex flex-col sm:flex-row gap-3">
+          <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
             <a
               href="https://wa.me/96555301913"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 px-6 py-3 rounded-full font-bold text-sm transition-all text-white"
+              className="flex-1 sm:flex-none flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-400 px-6 py-3 rounded-full font-black text-sm text-slate-950 shadow-[0_0_15px_rgba(6,182,212,0.3)] transition-all hover:scale-105"
             >
               <MessageCircle size={16} /> WhatsApp Us
             </a>
             <a
               href="tel:+96555301913"
-              className="flex items-center justify-center gap-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 px-6 py-3 rounded-full font-bold text-sm transition-all text-white"
+              className="flex-1 sm:flex-none flex items-center justify-center gap-2 bg-slate-900 border border-slate-700 px-6 py-3 rounded-full font-bold text-sm transition-all text-white hover:bg-slate-800"
             >
-              <Phone size={16} /> 55301913
+              <Phone size={16} className="text-cyan-400" /> 55301913
             </a>
           </div>
         </div>
       </section>
 
       {/* ── FAQ ── */}
-      <section className="py-16 max-w-3xl mx-auto px-6">
-        <h2 className="text-3xl font-bold text-center mb-3">Pricing FAQs</h2>
-        <p className="text-gray-400 text-center mb-10">Common questions about repair costs and how we work.</p>
+      <section className="py-16 max-w-3xl mx-auto px-6 relative z-10">
+        <h2 className="text-3xl font-black text-center mb-4 tracking-tight">Pricing FAQs</h2>
+        <p className="text-slate-400 text-center mb-10 text-sm">Common questions about repair costs and how we work.</p>
         <div className="space-y-3">
           {faqs.map((f, i) => (
             <FAQItem key={i} index={i} q={f.q} a={f.a} />
@@ -464,18 +470,18 @@ export default function Pricing() {
       </section>
 
       {/* ── Areas ── */}
-      <section className="py-12 bg-gray-900/30 border-t border-gray-800">
+      <section className="py-16 border-t border-slate-800/50 bg-slate-900/10 backdrop-blur-sm relative z-10">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <div className="flex items-center justify-center gap-2 mb-3">
-            <MapPin className="w-4 h-4 text-emerald-400" />
-            <span className="text-sm font-semibold text-emerald-400 uppercase tracking-widest">Free Pickup Across Kuwait</span>
+            <MapPin className="w-4 h-4 text-cyan-400" />
+            <span className="text-xs font-black text-cyan-400 uppercase tracking-widest">Free Pickup Across Kuwait</span>
           </div>
           <div className="flex flex-wrap justify-center gap-2 mt-4">
             {targetAreas.map((area) => (
               <span 
                 key={area.name} 
                 title={area.text} 
-                className="px-3 py-1.5 rounded-full text-xs font-medium bg-gray-900 border border-gray-800 text-gray-400 transition-colors hover:text-emerald-400 hover:border-emerald-500/30 cursor-help"
+                className="px-4 py-2 rounded-full text-xs font-medium bg-slate-950/80 border border-slate-800 text-slate-300 transition-colors hover:border-cyan-500/30 cursor-help"
               >
                 {area.name}
               </span>
@@ -485,36 +491,40 @@ export default function Pricing() {
       </section>
 
       {/* ── Final CTA ── */}
-      <section className="py-24 px-6">
-        <div className="max-w-3xl mx-auto text-center bg-gradient-to-br from-emerald-500/10 to-gray-900/0 border border-emerald-500/20 rounded-3xl p-12">
-          <div className="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/20 px-4 py-1.5 rounded-full text-emerald-400 text-sm font-medium mb-6">
-            <CheckCircle2 size={14} />
-            <span>No Fix, No Fee · Free Pickup · 30-Day Warranty</span>
+      <section className="py-24 px-6 relative z-10">
+        <div className="max-w-3xl mx-auto text-center bg-slate-900/20 border border-slate-800 rounded-3xl p-8 md:p-12 backdrop-blur-sm relative overflow-hidden">
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[400px] h-[200px] bg-cyan-900/10 blur-[80px] rounded-full pointer-events-none"></div>
+          
+          <div className="relative z-10">
+            <div className="inline-flex items-center gap-2 bg-slate-900/80 border border-slate-800 px-4 py-1.5 rounded-full text-cyan-400 text-xs font-bold uppercase tracking-wider mb-6">
+              <CheckCircle2 size={14} />
+              <span>No Fix, No Fee · Free Pickup · 30-Day Warranty</span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-black mb-4 tracking-tight">Get a Free Quote Today</h2>
+            <p className="text-slate-400 text-sm md:text-base mb-10 max-w-xl mx-auto leading-relaxed">
+              Describe your issue and we'll give you a price before collecting your device.
+              No commitment required.
+            </p>
+            <div className="flex flex-col sm:flex-row justify-center gap-4 max-w-md mx-auto sm:max-w-none">
+              <a
+                href={finalCtaWaLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-400 px-8 py-4 rounded-full font-black text-base text-slate-950 shadow-[0_0_20px_rgba(6,182,212,0.3)] transition-all hover:scale-[1.02]"
+              >
+                <MessageCircle className="h-5 w-5" /> WhatsApp: 55301913
+              </a>
+              <a
+                href="tel:+96555301913"
+                className="flex items-center justify-center gap-2 bg-slate-900 border border-slate-700 px-8 py-4 rounded-full font-bold text-base transition-all text-white hover:bg-slate-800"
+              >
+                <Phone className="h-5 w-5 text-cyan-400" /> Call: 55301913
+              </a>
+            </div>
+            <p className="text-slate-500 text-xs mt-8 font-medium tracking-wide">
+              Hawalli, Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19
+            </p>
           </div>
-          <h2 className="text-4xl md:text-5xl font-black mb-4">Get a Free Quote Today</h2>
-          <p className="text-gray-400 text-lg mb-10 max-w-xl mx-auto">
-            Describe your issue and we'll give you a price before collecting your device.
-            No commitment required.
-          </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <a
-              href={finalCtaWaLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 px-8 py-4 rounded-full font-bold text-lg transition-all shadow-lg hover:shadow-green-500/30 text-white"
-            >
-              <MessageCircle className="h-5 w-5" /> WhatsApp: 55301913
-            </a>
-            <a
-              href="tel:+96555301913"
-              className="flex items-center justify-center gap-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 px-8 py-4 rounded-full font-bold text-lg transition-all text-white"
-            >
-              <Phone className="h-5 w-5" /> Call: 55301913
-            </a>
-          </div>
-          <p className="text-gray-600 text-sm mt-6">
-            Hawalli, Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19
-          </p>
         </div>
       </section>
     </div>
