@@ -27,8 +27,12 @@ const MacBookRepair = lazy(() => import('./pages/MacBookRepair'));
 const ScreenReplacement = lazy(() => import('./pages/ScreenReplacement'));
 const PrivacySecurity = lazy(() => import('./pages/PrivacySecurity'));
 const MotherboardRepair = lazy(() => import('./pages/MotherboardRepair'));
+
+// Blog Components
+const Blog = lazy(() => import('./pages/Blog')); // Added Main Blog Hub
 const BlogScreenProtection = lazy(() => import('./pages/BlogScreenProtection'));
-const BlogLaptopRepair = lazy(() => import('./pages/BlogLaptopRepair')); // Added Blog Import
+const BlogLaptopRepair = lazy(() => import('./pages/BlogLaptopRepair')); 
+
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 // Global Styles
@@ -69,12 +73,15 @@ const App = () => (
               <Route path="/data-recovery-kuwait" element={<PrivacySecurity />} />
               <Route path="/chip-level-motherboard-repair-hawalli" element={<MotherboardRepair />} />
               
-              {/* Blog & Supporting Routes */}
+              {/* Blog Hub & Supporting Routes */}
+              <Route path="/blog" element={<Blog />} />
               <Route path="/blog/laptop-repair-kuwait-2026" element={<BlogLaptopRepair />} />
+              <Route path="/blog/how-to-protect-laptop-screen" element={<BlogScreenProtection />} />
+              
+              {/* General Tech Pages */}
               <Route path="/battery-replacement" element={<BatteryReplacement />} />
               <Route path="/gaming-pc-cooling" element={<GamingPCCooling />} />
               <Route path="/web-design-kuwait" element={<WebDesignKuwait />} />
-              <Route path="/blog/how-to-protect-laptop-screen" element={<BlogScreenProtection />} />
               
               <Route path="*" element={<NotFound />} />
             </Routes>
