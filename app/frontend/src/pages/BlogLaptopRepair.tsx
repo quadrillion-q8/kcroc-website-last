@@ -19,6 +19,8 @@ import {
 const CANONICAL_URL = "https://www.computerrepairkuwait.com";
 const PAGE_URL = `${CANONICAL_URL}/blog/laptop-repair-kuwait-2026`;
 const BUSINESS_PHONE = "+96555301913";
+const CLOUDINARY_LOGO = "https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto/v1769908596/logo_btpfls.png";
+const HERO_IMAGE_URL = "/images/blog/laptop-repair-kuwait.webp";
 const WA_LINK = `https://wa.me/96555301913?text=${encodeURIComponent("Hi KCROC, I read your guide on laptop repair and have a question.")}`;
 
 const ISSUES = [
@@ -35,7 +37,10 @@ const PROCESS_STEPS = [
 
 const FAQ_ITEMS = [
   { q: "Why do laptops overheat so quickly in Kuwait?", a: "Intense ambient heat and pervasive particulate dust clog the internal cooling fins. This starves the fans of air, causing the processor to artificially lower its speed to prevent melting." },
-  { q: "What happens to thermal paste in Kuwait's heat?", a: "Thermal paste slowly shifts under repeated heat cycles. The extreme temperature swings push the paste away from the processor, creating dry air gaps that destroy cooling efficiency." }
+  { q: "What happens to thermal paste in Kuwait's heat?", a: "Thermal paste slowly shifts under repeated heat cycles. The extreme temperature swings push the paste away from the processor, creating dry air gaps that destroy cooling efficiency." },
+  { q: "Do you offer free pickup and delivery?", a: "Yes, we offer 100% free pickup and delivery across all Kuwait governorates including Hawalli, Salmiya, and Kuwait City." },
+  { q: "How fast can I get my laptop back?", a: "If you book a free pickup before 11:00 AM, common repairs like screen replacements and SSD upgrades are often returned the exact same day." },
+  { q: "What does 'No Fix, No Fee' mean?", a: "It means our chip-level diagnostics are risk-free. If your laptop is catastrophically damaged and we cannot repair it, you pay absolutely nothing." }
 ];
 
 // ─── JSON-LD SCHEMA ─────────────────────────────────────────────────────────
@@ -62,7 +67,7 @@ const schemaData = {
       "mainEntityOfPage": { "@id": PAGE_URL },
       "headline": "Laptop Repair in Kuwait: A Guide to Hardware Preservation",
       "description": "Based on real repair cases in our Kuwait workshop. Learn how Kuwait's climate impacts laptops and how we perform chip-level diagnostics.",
-      "image": `${CANONICAL_URL}/images/blog/laptop-repair-kuwait.webp`,
+      "image": `${CANONICAL_URL}${HERO_IMAGE_URL}`,
       "author": { "@type": "Organization", "name": "KCROC", "@id": `${CANONICAL_URL}/#organization` },
       "publisher": { "@id": `${CANONICAL_URL}/#organization` },
       "datePublished": "2026-06-14T08:00:00+03:00",
@@ -106,10 +111,10 @@ const schemaData = {
       "name": "KCROC",
       "telephone": BUSINESS_PHONE,
       "url": CANONICAL_URL,
-      "image": `${CANONICAL_URL}/images/blog/laptop-repair-kuwait.webp`,
+      "image": `${CANONICAL_URL}${HERO_IMAGE_URL}`,
       "logo": { 
         "@type": "ImageObject", 
-        "url": `${CANONICAL_URL}/logo.png`,
+        "url": CLOUDINARY_LOGO,
         "width": 512,
         "height": 512
       },
@@ -117,7 +122,7 @@ const schemaData = {
       "areaServed": ["Hawalli", "Salmiya", "Farwaniya", "Kuwait City", "Mangaf", "Fahaheel"],
       "address": { 
         "@type": "PostalAddress", 
-        "streetAddress": "Ibn Khaldoun St, Al Mullah Complex Basement Shop 19", 
+        "streetAddress": "Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19", 
         "addressLocality": "Hawalli", 
         "addressCountry": "KW" 
       },
@@ -191,7 +196,7 @@ export default function BlogLaptopRepair() {
         <title>Laptop Repair Kuwait | Workshop Guide & Maintenance 2026 | KCROC</title>
         <meta name="description" content="Based on real repair cases in our Kuwait workshop. Learn about thermal management, dust mitigation, and how we actually perform chip-level repair." />
         <link rel="canonical" href={PAGE_URL} />
-        <link rel="preload" as="image" href="/images/blog/laptop-repair-kuwait.webp" />
+        <link rel="preload" as="image" href={HERO_IMAGE_URL} />
         <meta name="robots" content="index,follow,max-image-preview:large" />
         <meta name="author" content="KCROC" />
         
@@ -200,7 +205,7 @@ export default function BlogLaptopRepair() {
         <meta property="og:title" content="Laptop Repair in Kuwait: A Workshop Guide" />
         <meta property="og:description" content="Based on real repair cases in our Kuwait workshop. Learn how Kuwait's climate impacts laptops and how we fix them." />
         <meta property="og:url" content={PAGE_URL} />
-        <meta property="og:image" content={`${CANONICAL_URL}/images/blog/laptop-repair-kuwait.webp`} />
+        <meta property="og:image" content={`${CANONICAL_URL}${HERO_IMAGE_URL}`} />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="Laptop motherboard repair and thermal maintenance in Kuwait" />
@@ -209,7 +214,7 @@ export default function BlogLaptopRepair() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Laptop Repair Kuwait | Workshop Guide" />
         <meta name="twitter:description" content="Based on real repair cases: laptop failures, thermal management and professional repair." />
-        <meta name="twitter:image" content={`${CANONICAL_URL}/images/blog/laptop-repair-kuwait.webp`} />
+        <meta name="twitter:image" content={`${CANONICAL_URL}${HERO_IMAGE_URL}`} />
         <meta name="twitter:image:alt" content="Laptop motherboard repair and thermal maintenance in Kuwait" />
         
         {/* JSON-LD Schema */}
@@ -250,7 +255,7 @@ export default function BlogLaptopRepair() {
           </div>
           
           <img 
-            src="/images/blog/laptop-repair-kuwait.webp" 
+            src={HERO_IMAGE_URL} 
             alt="Laptop motherboard repair and thermal maintenance in Kuwait" 
             width="1200" 
             height="630" 
@@ -345,24 +350,24 @@ export default function BlogLaptopRepair() {
           <h2 className="text-2xl font-black text-white mb-6">Related Guides</h2>
           <div className="grid md:grid-cols-3 gap-4">
             <Link 
-              to="/services/laptop-repair" 
+              to="/laptop-screen-repair-kuwait" 
               className="group bg-slate-950 p-6 rounded-2xl border border-slate-700 hover:border-cyan-500/50 hover:shadow-[0_0_20px_rgba(34,211,238,0.15)] transition-all flex justify-between items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
             >
-              <span className="font-bold text-slate-300 group-hover:text-cyan-400 transition-colors">Laptop Repair Services</span>
+              <span className="font-bold text-slate-300 group-hover:text-cyan-400 transition-colors">Laptop Screen Repair</span>
               <span className="text-cyan-500 group-hover:translate-x-1 transition-transform" aria-hidden="true">→</span>
             </Link>
             <Link 
-              to="/services/macbook-repair" 
+              to="/macbook-repair-kuwait" 
               className="group bg-slate-950 p-6 rounded-2xl border border-slate-700 hover:border-cyan-500/50 hover:shadow-[0_0_20px_rgba(34,211,238,0.15)] transition-all flex justify-between items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
             >
               <span className="font-bold text-slate-300 group-hover:text-cyan-400 transition-colors">MacBook Repair</span>
               <span className="text-cyan-500 group-hover:translate-x-1 transition-transform" aria-hidden="true">→</span>
             </Link>
             <Link 
-              to="/blog/macbook-overheating-kuwait" 
+              to="/motherboard-repair-kuwait" 
               className="group bg-slate-950 p-6 rounded-2xl border border-slate-700 hover:border-cyan-500/50 hover:shadow-[0_0_20px_rgba(34,211,238,0.15)] transition-all flex justify-between items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
             >
-              <span className="font-bold text-slate-300 group-hover:text-cyan-400 transition-colors">Why MacBooks Overheat in Kuwait</span>
+              <span className="font-bold text-slate-300 group-hover:text-cyan-400 transition-colors">Motherboard Repair</span>
               <span className="text-cyan-500 group-hover:translate-x-1 transition-transform" aria-hidden="true">→</span>
             </Link>
           </div>
@@ -375,13 +380,13 @@ export default function BlogLaptopRepair() {
           <div className="flex flex-col md:flex-row items-start md:items-center gap-8">
             <div className="flex-shrink-0">
               <img 
-                src="/logo.png" 
-                alt="KCROC Author Logo" 
+                src={CLOUDINARY_LOGO} 
+                alt="KCROC Logo" 
                 width="96" 
                 height="96" 
                 loading="lazy"
                 decoding="async"
-                className="w-24 h-24 rounded-full border-2 border-cyan-500/50 shadow-[0_0_15px_rgba(34,211,238,0.2)]" 
+                className="w-24 h-24 rounded-full border-2 border-cyan-500/50 shadow-[0_0_15px_rgba(34,211,238,0.2)] object-contain bg-slate-900 p-2" 
               />
             </div>
             <div>
