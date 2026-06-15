@@ -62,6 +62,10 @@ export default function Header() {
               <Link to="/pricing" className="text-sm font-bold text-slate-200 hover:text-cyan-400 transition-colors">Pricing</Link>
               <Link to="/gallery" className="text-sm font-bold text-slate-200 hover:text-cyan-400 transition-colors">Gallery</Link>
               <Link to="/about" className="text-sm font-bold text-slate-200 hover:text-cyan-400 transition-colors">About</Link>
+              
+              {/* Added Blog Link Here */}
+              <Link to="/blog" className="text-sm font-bold text-slate-200 hover:text-cyan-400 transition-colors">Blog</Link>
+              
               <Link to="/contact" className="text-sm font-bold text-slate-200 hover:text-cyan-400 transition-colors">Contact</Link>
               <Link to="/book" className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 px-6 py-2.5 rounded-full text-sm font-black transition-all shadow-[0_0_15px_rgba(6,182,212,0.3)] hover:scale-105">Book Repair</Link>
             </nav>
