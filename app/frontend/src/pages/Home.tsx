@@ -235,8 +235,8 @@ export default function Home() {
               Professional laptop & desktop repair, chip-level diagnostics, and IT solutions — delivered with speed, precision, and the care your devices deserve.
             </p>
             
-            {/* Desktop-optimized Button Layout */}
-            <div className="flex flex-col sm:flex-row justify-center items-center gap-4 w-full max-w-xl mx-auto mb-10">
+            {/* Desktop-optimized Button Layout (Restored 3 Buttons) */}
+            <div className="flex flex-col sm:flex-row flex-wrap justify-center items-center gap-4 w-full max-w-3xl mx-auto mb-10">
               <Link 
                 to="/services" 
                 className="flex items-center justify-center gap-2 w-full sm:w-auto bg-cyan-500 hover:bg-cyan-400 text-slate-950 px-8 py-4 rounded-full font-black text-base transition-all shadow-[0_0_20px_rgba(6,182,212,0.3)] hover:scale-[1.02] focus-visible:ring-2 focus-visible:ring-cyan-400"
@@ -251,6 +251,13 @@ export default function Home() {
                 className="flex items-center justify-center gap-3 w-full sm:w-auto bg-slate-900/60 backdrop-blur-md border border-slate-700/50 hover:bg-slate-800 text-slate-200 px-8 py-4 rounded-full font-bold text-base transition-all hover:border-cyan-500/30 focus-visible:ring-2 focus-visible:ring-cyan-400"
               >
                 <MessageCircle className="w-5 h-5 text-cyan-400" aria-hidden="true" /> WhatsApp us
+              </a>
+
+              <a 
+                href={`tel:${BUSINESS_PHONE}`} 
+                className="flex items-center justify-center gap-3 w-full sm:w-auto bg-slate-900/60 backdrop-blur-md border border-slate-700/50 hover:bg-slate-800 text-slate-200 px-8 py-4 rounded-full font-bold text-base transition-all hover:border-cyan-500/30 focus-visible:ring-2 focus-visible:ring-cyan-400"
+              >
+                <Phone className="w-5 h-5 text-cyan-400" aria-hidden="true" /> Call now
               </a>
             </div>
 
