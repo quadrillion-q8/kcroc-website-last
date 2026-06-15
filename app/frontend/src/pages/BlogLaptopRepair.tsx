@@ -19,7 +19,9 @@ import {
 const CANONICAL_URL = "https://www.computerrepairkuwait.com";
 const PAGE_URL = `${CANONICAL_URL}/blog/laptop-repair-kuwait-2026`;
 const BUSINESS_PHONE = "+96555301913";
-const CLOUDINARY_LOGO = "https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto/v1769908596/logo_btpfls.png";
+
+// FIXED: Switched from broken Cloudinary link to the local logo you just uploaded to GitHub
+const LOCAL_LOGO_URL = "/logo.png"; 
 const HERO_IMAGE_URL = "/images/blog/laptop-repair-kuwait.webp";
 const WA_LINK = `https://wa.me/96555301913?text=${encodeURIComponent("Hi KCROC, I read your guide on laptop repair and have a question.")}`;
 
@@ -114,7 +116,7 @@ const schemaData = {
       "image": `${CANONICAL_URL}${HERO_IMAGE_URL}`,
       "logo": { 
         "@type": "ImageObject", 
-        "url": CLOUDINARY_LOGO,
+        "url": `${CANONICAL_URL}${LOCAL_LOGO_URL}`,
         "width": 512,
         "height": 512
       },
@@ -349,8 +351,9 @@ export default function BlogLaptopRepair() {
         <div className="bg-slate-900/30 backdrop-blur-md p-8 rounded-3xl border border-slate-800">
           <h2 className="text-2xl font-black text-white mb-6">Related Guides</h2>
           <div className="grid md:grid-cols-3 gap-4">
+            {/* FIXED: Mapped to your exact live URLs */}
             <Link 
-              to="/laptop-screen-repair-kuwait" 
+              to="/screen-replacement-kuwait" 
               className="group bg-slate-950 p-6 rounded-2xl border border-slate-700 hover:border-cyan-500/50 hover:shadow-[0_0_20px_rgba(34,211,238,0.15)] transition-all flex justify-between items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
             >
               <span className="font-bold text-slate-300 group-hover:text-cyan-400 transition-colors">Laptop Screen Repair</span>
@@ -364,7 +367,7 @@ export default function BlogLaptopRepair() {
               <span className="text-cyan-500 group-hover:translate-x-1 transition-transform" aria-hidden="true">→</span>
             </Link>
             <Link 
-              to="/motherboard-repair-kuwait" 
+              to="/chip-level-motherboard-repair-hawalli" 
               className="group bg-slate-950 p-6 rounded-2xl border border-slate-700 hover:border-cyan-500/50 hover:shadow-[0_0_20px_rgba(34,211,238,0.15)] transition-all flex justify-between items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
             >
               <span className="font-bold text-slate-300 group-hover:text-cyan-400 transition-colors">Motherboard Repair</span>
@@ -379,8 +382,9 @@ export default function BlogLaptopRepair() {
         <div className="bg-slate-900/40 backdrop-blur-md p-8 rounded-3xl border border-cyan-500/30">
           <div className="flex flex-col md:flex-row items-start md:items-center gap-8">
             <div className="flex-shrink-0">
+              {/* FIXED: Mapped to your verified local logo file */}
               <img 
-                src={CLOUDINARY_LOGO} 
+                src={LOCAL_LOGO_URL} 
                 alt="KCROC Logo" 
                 width="96" 
                 height="96" 
