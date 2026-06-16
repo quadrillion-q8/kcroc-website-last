@@ -1,241 +1,241 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { ShieldCheck, EyeOff, Truck, Lock, Cpu, Phone, MapPin, Check } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { 
+  ShieldCheck, EyeOff, Truck, Lock, Cpu, Phone, 
+  MessageCircle, Check, HardDrive, Database, ExternalLink 
+} from 'lucide-react';
+import { BUSINESS_INFO } from '../constants/data';
 
-// Define schema data outside the component to prevent recreation on every render
-const schemaData = {
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "name": "Kuwait Computer Repair On Call",
-  "alternateName": "KCROC",
-  "image": "https://www.computerrepairkuwait.com/logo.jpg",
-  "telephone": "+96555301913",
-  "openingHours": "Mo-Su 10:00-22:00",
-  "url": "https://www.computerrepairkuwait.com",
-  "priceRange": "$$",
-  "areaServed": "Kuwait",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19",
-    "addressLocality": "Hawalli",
-    "addressRegion": "Hawalli Governorate",
-    "addressCountry": "KW"
+/* ─────────────────────────────────────────────────────────────────────────────
+   1. PAGE DATA (Frozen for performance)
+───────────────────────────────────────────────────────────────────────────── */
+
+const TRUST_BADGES = Object.freeze([
+  { id: 'recovery', icon: HardDrive,   text: "Dead Drive Recovery" },
+  { id: 'cctv',     icon: ShieldCheck, text: "CCTV Monitored Lab" },
+  { id: 'nodata',   icon: EyeOff,      text: "Strict No-Snoop Policy" },
+  { id: 'esd',      icon: Cpu,         text: "ESD Safe Environment" },
+  { id: 'auth',     icon: Lock,        text: "Authorized Techs Only" },
+]);
+
+const PROTOCOL_POINTS = Object.freeze([
+  {
+    icon: EyeOff,
+    title: "1. Strict 'No-Snooping' Policy",
+    points: [
+      "Zero File Interaction: We only utilize specialized diagnostic software. We never open, view, or browse your personal folders or histories.",
+      "Drive Removal Option: For motherboard-level repairs, you are completely welcome to remove your storage drive before handing the machine to us."
+    ]
   },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 29.3356,
-    "longitude": 48.0250
+  {
+    icon: Truck,
+    title: "2. Secure Pick & Drop Custody",
+    points: [
+      "Logged Logistics: From the moment our driver collects your device, it is tagged and placed directly into a secure transport enclosure.",
+      "Direct Routing: Your machine goes straight from your location to our laboratory. It is never passed to a third-party courier."
+    ]
   },
-  "sameAs": [
-    "https://maps.google.com/?cid=3928987856909945446",
-    "https://www.facebook.com/computerrepairkuwait",
-    "https://www.instagram.com/computerrepairkuwait"
-  ]
-};
+  {
+    icon: Lock,
+    title: "3. Fortified Technical Laboratory",
+    points: [
+      "Monitored Premises: Our specialized Hawalli facility operates under continuous video surveillance with devices stored in secure tech lockers.",
+      "Authorized Access Only: Only the specific technician assigned to your chip-level diagnostics handles your hardware."
+    ]
+  },
+  {
+    icon: Cpu,
+    title: "4. Component Transparency",
+    points: [
+      "Original Parts Protection: We never swap or substitute your original factory components. Every microscopic part replaced is documented.",
+      "Formal Documentation: You receive a transparent digital invoice detailing the exact work. We do not do unrecorded repairs."
+    ]
+  }
+]);
 
-// Trust Badges Data
-const trustBadges = [
-  { id: 'pickup',  icon: Truck,       text: "Free Pickup Across Kuwait" },
-  { id: 'cctv',    icon: ShieldCheck, text: "CCTV Monitored" },
-  { id: 'nodata',  icon: EyeOff,      text: "No Data Access" },
-  { id: 'esd',     icon: Cpu,         text: "ESD Safe Lab" },
-  { id: 'auth',    icon: Lock,        text: "Authorized Technicians Only" },
-];
+const DATA_SERVICES = Object.freeze([
+  { title: "Dead Motherboard Extraction", desc: "If your laptop is completely dead, we can safely extract your NVMe/SATA SSD and recover your files to an external drive." },
+  { title: "Corrupted OS Recovery", desc: "Windows Blue Screen loop? Mac stuck on the Apple logo? We can bypass the OS and pull your critical data before reinstalling the system." },
+  { title: "Liquid Damage Data Rescue", desc: "If liquid destroyed your logic board, we use ultrasonic cleaning to temporarily revive the board just long enough to extract your soldered data." }
+]);
 
-const PrivacySecurity: React.FC = () => {
+/* ─────────────────────────────────────────────────────────────────────────────
+   2. MAIN PAGE COMPONENT
+───────────────────────────────────────────────────────────────────────────── */
+
+export default function PrivacySecurity() {
+  const pageUrl = `${BUSINESS_INFO.url}/data-recovery-kuwait`;
+  const waMessage = encodeURIComponent("Hi KCROC, I need help recovering data from a broken computer/drive. Please arrange a free diagnostic.");
+  const waLink = `https://wa.me/${BUSINESS_INFO.cleanPhone}?text=${waMessage}`;
+
+  const SCHEMA_DATA = useMemo(() => ({
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": `${pageUrl}#webpage`,
+        "name": "Data Recovery & Privacy Security Kuwait | KCROC",
+        "url": pageUrl,
+        "description": "Secure data recovery and zero-risk privacy protocol in Kuwait. We extract data from dead laptops and MacBooks with absolute privacy guaranteed.",
+        "isPartOf": { "@id": `${BUSINESS_INFO.url}/#website` },
+        "breadcrumb": { "@id": `${pageUrl}#breadcrumb` }
+      },
+      {
+        "@type": "Service",
+        "@id": `${pageUrl}#service`,
+        "name": "Data Recovery & Security Services",
+        "provider": {
+          "@type": "LocalBusiness",
+          "name": BUSINESS_INFO.name,
+          "image": BUSINESS_INFO.logo,
+          "telephone": BUSINESS_INFO.phone,
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Ibn Khaldoun St, Basement Shop 19",
+            "addressLocality": "Hawalli",
+            "addressCountry": "KW"
+          }
+        },
+        "areaServed": "Kuwait",
+        "description": "Secure data recovery from dead motherboards, corrupted operating systems, and liquid-damaged devices in Kuwait.",
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${pageUrl}#breadcrumb`,
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": BUSINESS_INFO.url },
+          { "@type": "ListItem", "position": 2, "name": "Services", "item": `${BUSINESS_INFO.url}/services` },
+          { "@type": "ListItem", "position": 3, "name": "Data Recovery & Security", "item": pageUrl }
+        ]
+      }
+    ]
+  }), [pageUrl]);
+
   return (
-    <div className="min-h-screen bg-gray-950 text-white font-sans">
-      {/* SEO & Metadata Injection */}
+    <main className="w-full min-h-screen bg-transparent text-slate-200 selection:bg-cyan-500/30 pt-32 pb-24 font-sans">
       <Helmet>
-        <title>Privacy Guarantee & Data Security | KCROC Kuwait</title>
-        <meta 
-          name="description" 
-          content="Your data is safe with Kuwait Computer Repair On Call. Read our 4-Point Zero-Risk Privacy Protocol for chip-level repairs." 
-        />
-        <link rel="canonical" href="https://www.computerrepairkuwait.com/data-security/" />
-        
-        {/* Open Graph Tags */}
-        <meta property="og:title" content="Privacy Guarantee & Data Security | KCROC Kuwait" />
-        <meta property="og:description" content="Your data is safe with Kuwait Computer Repair On Call. Read our 4-Point Zero-Risk Privacy Protocol." />
-        <meta property="og:image" content="https://www.computerrepairkuwait.com/logo.jpg" />
-        <meta property="og:url" content="https://www.computerrepairkuwait.com/data-security/" />
-        <meta property="og:type" content="website" />
-
-        {/* JSON-LD Schema */}
-        <script type="application/ld+json">
-          {JSON.stringify(schemaData)}
-        </script>
+        <title>Data Recovery & Privacy Security Kuwait | KCROC</title>
+        <meta name="description" content="Secure data recovery and zero-risk privacy protocol in Kuwait. We extract data from dead laptops and MacBooks with absolute privacy guaranteed." />
+        <link rel="canonical" href={pageUrl} />
+        <script type="application/ld+json">{JSON.stringify(SCHEMA_DATA)}</script>
       </Helmet>
 
-      {/* Hero Section */}
-      <section className="relative pt-32 pb-20 px-6 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 via-transparent to-blue-500/10"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(16,185,129,0.08),transparent_50%)]"></div>
-        <div className="max-w-4xl mx-auto text-center relative z-10">
-          <ShieldCheck className="w-16 h-16 mx-auto mb-6 text-emerald-400" aria-hidden="true" />
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white">Privacy Guarantee & Data Security</h1>
-          <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed">
-            Your data is safe with KCROC. When you hand your computer over for repair, you aren't just trusting someone with expensive hardware—you are trusting them with your digital life.
+      {/* ─── BREADCRUMBS ─── */}
+      <nav aria-label="Breadcrumb" className="max-w-6xl mx-auto px-6 mb-8 relative z-10">
+        <ol className="flex items-center space-x-2 text-sm text-slate-400 font-medium">
+          <li><Link to="/" className="hover:text-cyan-400 transition-colors">Home</Link></li>
+          <li><span className="text-slate-600">/</span></li>
+          <li><Link to="/services" className="hover:text-cyan-400 transition-colors">Services</Link></li>
+          <li><span className="text-slate-600">/</span></li>
+          <li aria-current="page" className="text-cyan-400">Data Recovery</li>
+        </ol>
+      </nav>
+
+      {/* ─── HERO SECTION ─── */}
+      <section className="relative px-6 text-center z-10 mb-16">
+        <div className="absolute top-[-50%] left-1/2 -translate-x-1/2 w-[600px] h-[500px] bg-cyan-600/20 blur-[80px] rounded-full pointer-events-none transform-gpu translate-z-0"></div>
+        <div className="max-w-4xl mx-auto relative z-10">
+          <ShieldCheck className="w-16 h-16 mx-auto mb-6 text-cyan-400 drop-shadow-[0_0_15px_rgba(34,211,238,0.3)]" aria-hidden="true" />
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-white mb-6 tracking-tight leading-tight">
+            Data Recovery & <br className="hidden md:block" />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-emerald-400">Privacy Guarantee</span>
+          </h1>
+          <p className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed font-medium">
+            Your data is safe with KCROC. When you hand your computer over for recovery or repair, you aren't just trusting us with expensive hardware—you are trusting us with your digital life.
           </p>
         </div>
       </section>
 
-      {/* Trust Badges Ribbon */}
-      <section
-        className="py-12 px-6 border-t border-gray-900"
-        aria-label="Security and trust credentials"
-      >
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-            {trustBadges.map((badge, index) => {
-              const Icon = badge.icon;
-              const isOrphan = index === trustBadges.length - 1 && trustBadges.length % 2 !== 0;
-              return (
-                <div
-                  key={badge.id}
-                  className={`flex flex-col items-center justify-center bg-gray-900/40 border border-gray-800/80 rounded-2xl p-5 text-center hover:border-emerald-500/40 hover:-translate-y-0.5 transition-all ${isOrphan ? 'col-span-2 md:col-span-1' : ''}`}
-                >
-                  <Icon className="w-7 h-7 text-emerald-400 mb-2" aria-hidden="true" />
-                  <span className="text-sm font-semibold text-slate-200 leading-tight">
-                    {badge.text}
-                  </span>
-                </div>
-              );
-            })}
-          </div>
+      {/* ─── TRUST BADGES ─── */}
+      <section className="max-w-6xl mx-auto px-6 relative z-10 mb-24">
+        <div className="flex flex-wrap justify-center gap-4">
+          {TRUST_BADGES.map((badge, idx) => (
+            <div key={idx} className="flex flex-col items-center justify-center bg-slate-900/40 backdrop-blur-md border border-slate-800 rounded-2xl p-5 text-center hover:border-cyan-500/40 transition-colors min-w-[160px] flex-1 max-w-[200px]">
+              <badge.icon className="w-8 h-8 text-cyan-400 mb-3" aria-hidden="true" />
+              <span className="text-sm font-bold text-slate-300 leading-tight">{badge.text}</span>
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* Main Content / 4-Point Protocol */}
-      <main className="py-12 md:py-20 px-6 max-w-6xl mx-auto">
+      {/* ─── DATA RECOVERY SERVICES ─── */}
+      <section className="max-w-6xl mx-auto px-6 relative z-10 mb-24">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-5xl font-bold text-white">Our 4-Point Zero-Risk Privacy Protocol</h2>
-          <p className="text-slate-400 mt-4 text-lg">We built our reputation on a zero-compromise approach to your privacy and device security.</p>
+          <Database className="w-10 h-10 text-cyan-400 mx-auto mb-4" />
+          <h2 className="text-3xl md:text-4xl font-black text-white mb-4">Device Dead? We Recover Your Files.</h2>
+          <p className="text-slate-400">Secure data extraction from catastrophically damaged hardware.</p>
+        </div>
+        <div className="grid md:grid-cols-3 gap-6">
+          {DATA_SERVICES.map((service, idx) => (
+            <div key={idx} className="bg-slate-900/30 backdrop-blur-md border border-slate-800 p-8 rounded-3xl hover:border-cyan-500/30 transition-colors h-full flex flex-col">
+              <h3 className="text-xl font-black text-white mb-4">{service.title}</h3>
+              <p className="text-slate-400 text-sm leading-relaxed flex-grow">{service.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ─── 4-POINT PRIVACY PROTOCOL ─── */}
+      <section className="max-w-6xl mx-auto px-6 relative z-10 mb-24">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-5xl font-black text-white mb-4 tracking-tight">Our 4-Point Zero-Risk Privacy Protocol</h2>
+          <p className="text-slate-400 text-lg">We built our reputation on a zero-compromise approach to your privacy.</p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-6">
-          {/* Point 1 */}
-          <div className="bg-gray-900/40 border border-gray-800/80 rounded-2xl p-6 hover:border-emerald-500/30 transition-all">
-            <EyeOff className="w-10 h-10 text-blue-400 mb-4" aria-hidden="true" />
-            <h3 className="text-xl font-bold mb-3 text-white">1. Strict "No-Snooping" Policy</h3>
-            <ul className="space-y-3 text-slate-300 list-none" role="list">
-              <li className="flex gap-2">
-                <Check className="w-5 h-5 text-emerald-400 mt-1 shrink-0" aria-hidden="true" />
-                <span><strong className="text-white">Zero File Interaction:</strong> We only utilize specialized diagnostic software. We never open, view, or browse your personal folders or histories.</span>
-              </li>
-              <li className="flex gap-2">
-                <Check className="w-5 h-5 text-emerald-400 mt-1 shrink-0" aria-hidden="true" />
-                <span><strong className="text-white">Drive Removal Option:</strong> For motherboard-level repairs, you are completely welcome to remove your storage drive before handing the machine to us.</span>
-              </li>
-            </ul>
-          </div>
-
-          {/* Point 2 */}
-          <div className="bg-gray-900/40 border border-gray-800/80 rounded-2xl p-6 hover:border-emerald-500/30 transition-all">
-            <Truck className="w-10 h-10 text-blue-400 mb-4" aria-hidden="true" />
-            <h3 className="text-xl font-bold mb-3 text-white">2. Secure Pick & Drop Chain of Custody</h3>
-            <ul className="space-y-3 text-slate-300 list-none" role="list">
-              <li className="flex gap-2">
-                <Check className="w-5 h-5 text-emerald-400 mt-1 shrink-0" aria-hidden="true" />
-                <span><strong className="text-white">Logged Logistics:</strong> From the moment our driver collects your device, it is tagged and placed directly into a secure transport enclosure.</span>
-              </li>
-              <li className="flex gap-2">
-                <Check className="w-5 h-5 text-emerald-400 mt-1 shrink-0" aria-hidden="true" />
-                <span><strong className="text-white">Direct Routing:</strong> Your machine goes straight from your location to our laboratory. It is never passed to a third-party courier.</span>
-              </li>
-            </ul>
-          </div>
-
-          {/* Point 3 */}
-          <div className="bg-gray-900/40 border border-gray-800/80 rounded-2xl p-6 hover:border-emerald-500/30 transition-all">
-            <Lock className="w-10 h-10 text-blue-400 mb-4" aria-hidden="true" />
-            <h3 className="text-xl font-bold mb-3 text-white">3. Fortified Technical Laboratory</h3>
-            <ul className="space-y-3 text-slate-300 list-none" role="list">
-              <li className="flex gap-2">
-                <Check className="w-5 h-5 text-emerald-400 mt-1 shrink-0" aria-hidden="true" />
-                <span><strong className="text-white">Monitored Premises:</strong> Our specialized Hawalli facility operates under continuous video surveillance with devices stored in secure tech lockers.</span>
-              </li>
-              <li className="flex gap-2">
-                <Check className="w-5 h-5 text-emerald-400 mt-1 shrink-0" aria-hidden="true" />
-                <span><strong className="text-white">Authorized Access Only:</strong> Only the specific technician assigned to your chip-level diagnostics handles your hardware.</span>
-              </li>
-            </ul>
-          </div>
-
-          {/* Point 4 */}
-          <div className="bg-gray-900/40 border border-gray-800/80 rounded-2xl p-6 hover:border-emerald-500/30 transition-all">
-            <Cpu className="w-10 h-10 text-blue-400 mb-4" aria-hidden="true" />
-            <h3 className="text-xl font-bold mb-3 text-white">4. Component & Repair Transparency</h3>
-            <ul className="space-y-3 text-slate-300 list-none" role="list">
-              <li className="flex gap-2">
-                <Check className="w-5 h-5 text-emerald-400 mt-1 shrink-0" aria-hidden="true" />
-                <span><strong className="text-white">Original Parts Protection:</strong> We never swap or substitute your original factory components. Every microscopic part replaced is documented.</span>
-              </li>
-              <li className="flex gap-2">
-                <Check className="w-5 h-5 text-emerald-400 mt-1 shrink-0" aria-hidden="true" />
-                <span><strong className="text-white">Formal Documentation:</strong> You receive a transparent digital invoice detailing the exact work. We do not do unrecorded repairs.</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        {/* Targeted Internal Links */}
-        <div className="mt-12 flex flex-wrap justify-center gap-4">
-          <a href="/laptop-repair-hawalli-kuwait/" className="bg-blue-500/20 text-blue-400 border border-blue-500/30 font-bold py-3 px-6 rounded-lg hover:bg-blue-500/30 transition">
-            Laptop Repair
-          </a>
-          <a href="/macbook-repair/" className="bg-blue-500/20 text-blue-400 border border-blue-500/30 font-bold py-3 px-6 rounded-lg hover:bg-blue-500/30 transition">
-            MacBook Repair
-          </a>
-          <a href="/chip-level-motherboard-repair-hawalli/" className="bg-blue-500/20 text-blue-400 border border-blue-500/30 font-bold py-3 px-6 rounded-lg hover:bg-blue-500/30 transition">
-            Motherboard Repair
-          </a>
-        </div>
-      </main>
-
-      {/* Footer / Contact Information */}
-      <section className="py-12 md:py-20 px-6 border-t border-gray-900">
-        <div className="max-w-4xl mx-auto text-center">
-          <h3 className="text-2xl md:text-4xl font-bold text-white mb-6">Absolute Transparency. Total Peace of Mind.</h3>
-          <p className="text-slate-400 mb-8 max-w-xl mx-auto text-lg">
-            If you have any questions regarding our security protocols, or want to discuss a non-disclosure requirement for sensitive data before scheduling, contact our technical desk directly.
-          </p>
-          
-          <div className="bg-gray-900/40 border border-gray-800/80 rounded-2xl p-6 block mx-auto text-left w-full max-w-md">
-            <h4 className="font-bold text-lg mb-4 text-white border-b border-gray-800 pb-2">Kuwait Computer Repair On Call (KCROC)</h4>
-            <div className="space-y-4 text-slate-300">
-              <div className="flex items-start">
-                <MapPin className="w-5 h-5 mr-3 text-emerald-400 mt-0.5 shrink-0" aria-hidden="true" />
-                <span>Hawalli, Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19</span>
-              </div>
-              <div className="flex items-center">
-                <Phone className="w-5 h-5 mr-3 text-emerald-400 shrink-0" aria-hidden="true" />
-                <a href="tel:+96555301913" className="font-semibold text-white hover:text-blue-400 hover:underline transition">
-                  55301913
-                </a>
-              </div>
-              <div className="flex items-center">
-                <Truck className="w-5 h-5 mr-3 text-emerald-400 shrink-0" aria-hidden="true" />
-                <span className="font-semibold text-blue-400">Free Pick & Drop Service</span>
-              </div>
-              
-              {/* WhatsApp Call to Action */}
-              <div className="pt-2">
-                <a 
-                  href="https://wa.me/96555301913" 
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center w-full bg-green-500 text-white font-bold py-3 px-4 rounded-lg hover:bg-green-600 transition shadow-sm"
-                >
-                  Message Us on WhatsApp
-                </a>
-              </div>
+          {PROTOCOL_POINTS.map((point, idx) => (
+            <div key={idx} className="bg-slate-900/40 backdrop-blur-md border border-slate-800 rounded-3xl p-8 hover:border-emerald-500/30 transition-all">
+              <point.icon className="w-10 h-10 text-cyan-400 mb-6" aria-hidden="true" />
+              <h3 className="text-2xl font-black mb-4 text-white">{point.title}</h3>
+              <ul className="space-y-4">
+                {point.points.map((p, i) => {
+                  const [boldPart, rest] = p.split(':');
+                  return (
+                    <li key={i} className="flex gap-3 text-slate-400 text-sm leading-relaxed">
+                      <Check className="w-5 h-5 text-emerald-400 mt-0.5 shrink-0" aria-hidden="true" />
+                      <span><strong className="text-white">{boldPart}:</strong>{rest}</span>
+                    </li>
+                  );
+                })}
+              </ul>
             </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ─── INTERNAL LINKING CARDS ─── */}
+      <section className="max-w-5xl mx-auto px-6 relative z-10 mb-24">
+        <div className="grid sm:grid-cols-3 gap-4">
+          <Link to="/laptop-repair-kuwait" className="bg-slate-900/50 border border-slate-800 text-center font-bold py-6 px-6 rounded-2xl hover:bg-slate-800 hover:border-cyan-500/40 text-slate-300 transition-all">
+            Laptop Repair
+          </Link>
+          <Link to="/macbook-repair-kuwait" className="bg-slate-900/50 border border-slate-800 text-center font-bold py-6 px-6 rounded-2xl hover:bg-slate-800 hover:border-cyan-500/40 text-slate-300 transition-all">
+            MacBook Repair
+          </Link>
+          <Link to="/chip-level-motherboard-repair-hawalli" className="bg-slate-900/50 border border-slate-800 text-center font-bold py-6 px-6 rounded-2xl hover:bg-slate-800 hover:border-cyan-500/40 text-slate-300 transition-all">
+            Motherboard Repair
+          </Link>
+        </div>
+      </section>
+
+      {/* ─── CTA FOOTER ─── */}
+      <section className="max-w-4xl mx-auto px-6 relative z-10">
+        <div className="bg-gradient-to-br from-cyan-900/40 to-slate-900/80 backdrop-blur-xl p-10 md:p-16 rounded-3xl border border-cyan-500/30 text-center shadow-[0_0_40px_rgba(34,211,238,0.1)]">
+          <h2 className="text-3xl md:text-4xl font-black text-white mb-6 tracking-tight">Absolute Transparency. Total Peace of Mind.</h2>
+          <p className="text-lg text-slate-300 mb-10 max-w-xl mx-auto">
+            If you require a Non-Disclosure Agreement (NDA) for sensitive corporate data before scheduling a recovery, contact our technical desk directly.
+          </p>
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <a href={waLink} target="_blank" rel="noopener noreferrer" className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black px-8 py-4 rounded-full transition-all shadow-[0_0_20px_rgba(34,211,238,0.3)] hover:scale-105 flex justify-center items-center gap-2">
+              Message on WhatsApp <ExternalLink size={20} />
+            </a>
+            <a href={`tel:${BUSINESS_INFO.phone}`} className="bg-slate-900 border border-slate-700 hover:border-cyan-500/50 text-white font-bold px-8 py-4 rounded-full transition-all flex items-center justify-center gap-2">
+              <Phone size={20} className="text-cyan-400" /> Call {BUSINESS_INFO.phone}
+            </a>
           </div>
         </div>
       </section>
-    </div>
+    </main>
   );
-};
-
-export default PrivacySecurity;
+}
