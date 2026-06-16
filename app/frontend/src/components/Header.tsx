@@ -8,12 +8,15 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const [mobileBlogsOpen, setMobileBlogsOpen] = useState(false);
   const location = useLocation();
 
-  // Reset states on route change
   useEffect(() => {
     setIsOpen(false);
     setIsSearchOpen(false);
+    setMobileServicesOpen(false);
+    setMobileBlogsOpen(false);
     setSearchTerm('');
   }, [location.pathname]);
 
@@ -40,7 +43,6 @@ export default function Header() {
     { name: 'Battery Replacement', path: '/battery-replacement' },
   ];
 
-  // Combine for search
   const allItems = [...services, ...blogs];
   const filteredItems = searchTerm.length > 0 
     ? allItems.filter(item => item.name.toLowerCase().includes(searchTerm.toLowerCase()))
@@ -55,14 +57,15 @@ export default function Header() {
               <img src={logo} alt="KCROC Logo" className="h-14 w-auto object-contain rounded-xl" />
             </Link>
 
+            {/* Desktop Nav */}
             <nav className="hidden lg:flex items-center gap-8">
               <Link to="/services" className="text-sm font-bold text-slate-200 hover:text-cyan-400 transition-colors">Services</Link>
               <Link to="/pricing" className="text-sm font-bold text-slate-200 hover:text-cyan-400 transition-colors">Pricing</Link>
               <Link to="/gallery" className="text-sm font-bold text-slate-200 hover:text-cyan-400 transition-colors">Gallery</Link>
               <Link to="/about" className="text-sm font-bold text-slate-200 hover:text-cyan-400 transition-colors">About</Link>
               <Link to="/blog" className="text-sm font-bold text-slate-200 hover:text-cyan-400 transition-colors">Blog</Link>
+              <Link to="/contact" className="text-sm font-bold text-slate-200 hover:text-cyan-400 transition-colors">Contact</Link>
               
-              {/* Search Trigger */}
               <button onClick={() => setIsSearchOpen(true)} className="text-slate-200 hover:text-cyan-400 transition-colors">
                 <Search size={20} />
               </button>
@@ -70,9 +73,7 @@ export default function Header() {
               <Link to="/book" className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 px-6 py-2.5 rounded-full text-sm font-black transition-all shadow-[0_0_15px_rgba(6,182,212,0.3)] hover:scale-105">Book Repair</Link>
             </nav>
 
-            <button className="lg:hidden text-white p-2" onClick={() => setIsOpen(true)}>
-              <Menu size={32} />
-            </button>
+            <button className="lg:hidden text-white p-2" onClick={() => setIsOpen(true)}><Menu size={32} /></button>
           </div>
         </div>
       </header>
@@ -102,7 +103,36 @@ export default function Header() {
         </div>
       )}
 
-      {/* Mobile Menu remains the same ... */}
+      {/* Mobile Menu */}
+      <div className={`lg:hidden fixed inset-0 z-[99999] bg-[#0a0f1c]/95 backdrop-blur-2xl h-screen w-screen flex flex-col transition-all duration-300 ${isOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}`}>
+        <div className="absolute top-4 right-4"><button className="text-slate-300 hover:text-cyan-400 transition-colors p-2" onClick={() => setIsOpen(false)}><X size={32} /></button></div>
+        
+        <nav className="flex flex-col items-center justify-center h-full pt-16 pb-8 gap-4 w-full overflow-y-auto px-6">
+          <Link to="/" className="text-2xl font-black text-white hover:text-cyan-400 transition-colors" onClick={() => setIsOpen(false)}>Home</Link>
+          
+          <div className="flex flex-col items-center gap-2 w-full">
+            <button onClick={() => setMobileServicesOpen(!mobileServicesOpen)} className="text-2xl font-black text-white hover:text-cyan-400 transition-colors flex items-center gap-1">
+              Services <ChevronDown size={20} className={mobileServicesOpen ? 'rotate-180' : ''} />
+            </button>
+            <div className={`flex flex-col items-center gap-3 transition-all ${mobileServicesOpen ? 'max-h-[300px] opacity-100 mt-2' : 'max-h-0 opacity-0 overflow-hidden'}`}>
+                {services.map(s => <Link key={s.path} to={s.path} className="text-slate-400 hover:text-cyan-400 text-base" onClick={() => setIsOpen(false)}>{s.name}</Link>)}
+            </div>
+          </div>
+          
+          <div className="flex flex-col items-center gap-2 w-full">
+            <button onClick={() => setMobileBlogsOpen(!mobileBlogsOpen)} className="text-2xl font-black text-white hover:text-cyan-400 transition-colors flex items-center gap-1">
+              Blogs <ChevronDown size={20} className={mobileBlogsOpen ? 'rotate-180' : ''} />
+            </button>
+            <div className={`flex flex-col items-center gap-3 transition-all ${mobileBlogsOpen ? 'max-h-[250px] opacity-100 mt-2' : 'max-h-0 opacity-0 overflow-hidden'}`}>
+                {blogs.map(b => <Link key={b.path} to={b.path} className="text-slate-400 hover:text-cyan-400 text-base" onClick={() => setIsOpen(false)}>{b.name}</Link>)}
+            </div>
+          </div>
+
+          <Link to="/pricing" className="text-2xl font-black text-white hover:text-cyan-400 transition-colors" onClick={() => setIsOpen(false)}>Pricing</Link>
+          <Link to="/about" className="text-2xl font-black text-white hover:text-cyan-400 transition-colors" onClick={() => setIsOpen(false)}>About</Link>
+          <Link to="/book" className="text-2xl font-black text-cyan-400 mt-4 px-8 py-3 border border-cyan-500/30 rounded-full" onClick={() => setIsOpen(false)}>Book Repair</Link>
+        </nav>
+      </div>
     </>
   );
 }
