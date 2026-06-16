@@ -9,7 +9,7 @@ export const BUSINESS_INFO = {
   phone: "+96555301913",
   cleanPhone: "96555301913",
   url: "https://www.computerrepairkuwait.com",
-  logo: "https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto/v1769908596/logo_btpfls.png",
+  logo: "https://www.computerrepairkuwait.com/logo.png", // The fixed logo path!
   address: "Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19, Hawalli, Kuwait",
   coords: { lat: 29.3356, lng: 48.0250 },
   googleReviewUrl: "https://search.google.com/local/writereview?placeid=YOUR_PLACE_ID" // Update with actual Place ID
