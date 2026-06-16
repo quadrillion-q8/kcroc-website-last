@@ -41,10 +41,9 @@ const NotFound = lazy(() => import('./pages/NotFound'));
 // Global Styles
 import './styles/kcroc.css';
 
-// Premium Loading Fallback
+// Premium Loading Fallback (FIXED)
 const PageLoader = () => (
   <div className="min-h-screen w-full bg-slate-950 flex flex-col items-center justify-center">
-    <Flexible className="w-12 h-12 text-cyan-400 animate-spin mb-4" />
     <Loader2 className="w-12 h-12 text-cyan-400 animate-spin mb-4" />
     <p className="text-slate-500 font-bold uppercase tracking-widest text-sm">Loading Interface...</p>
   </div>
@@ -77,8 +76,7 @@ const App = () => (
               <Route path="/data-recovery-kuwait" element={<PrivacySecurity />} />
               <Route path="/chip-level-motherboard-repair-hawalli" element={<MotherboardRepair />} />
               
-              {/* 
-                Programmatic SEO Dynamic Route 
+              {/* Programmatic SEO Dynamic Route 
                 Catches URLs like /macbook-repair-in-salmiya or /laptop-screen-replacement-in-jahra 
               */}
               <Route path="/:service-in-:city" element={<LocationTemplate />} />
