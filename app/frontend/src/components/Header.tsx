@@ -47,7 +47,8 @@ export default function Header() {
           <div className="flex justify-between items-center h-20">
             <Link to="/" className="flex items-center" aria-label="KCROC Homepage">
               {!logoError ? (
-                <img src="https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto/v1769908596/logo_btpfls.png" alt="KCROC Logo" className="h-14 w-auto object-contain rounded-xl" onError={() => setLogoError(true)} />
+                // UPDATED LOGO PATH HERE
+                <img src="/logo.png" alt="KCROC Logo" className="h-14 w-auto object-contain rounded-xl" onError={() => setLogoError(true)} />
               ) : (
                 <div className="flex items-center gap-2">
                   <ShieldCheck className="w-8 h-8 text-cyan-400" />
