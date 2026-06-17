@@ -1,7 +1,7 @@
-import { Helmet } from 'react-helmet-async';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Phone, MessageCircle, Camera } from 'lucide-react';
+import MetaSEO from '../components/seo/MetaSEO'; // 1. Added MetaSEO Import
 
 // ─── Schema ──────────────────────────────────────────────────────────────────
 const schemaData = {
@@ -14,8 +14,6 @@ const schemaData = {
       alternateName: 'KCROC',
       url: 'https://www.computerrepairkuwait.com',
       telephone: '+96555301913',
-      // Removed the unbranded Gmail address to satisfy the E-E-A-T audit
-      // Updated schema image to the optimized Cloudinary logo
       image: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto/v1769908596/logo_btpfls.png',
       priceRange: '$$',
       address: {
@@ -99,23 +97,15 @@ const images = [
 
 export default function Gallery() {
   return (
-    /* GLOBAL UPGRADE: Transparent background for particles */
     <main className="w-full min-h-screen bg-transparent text-white font-sans selection:bg-cyan-500/30">
-      <Helmet>
-        <title>Gallery | KCROC Computer Repair Work in Kuwait</title>
-        <meta name="description" content="See our professional computer and laptop repair work in Kuwait. Motherboard soldering, battery replacement, screen repair, and more. Free pickup across all Kuwait. KCROC Hawalli." />
-        <link rel="canonical" href="https://www.computerrepairkuwait.com/gallery" />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content="Gallery | KCROC Computer Repair Work in Kuwait" />
-        <meta property="og:description" content="See our professional computer and laptop repair work in Kuwait. Motherboard soldering, battery replacement, screen repair, and more. Free pickup across all Kuwait." />
-        <meta property="og:url" content="https://www.computerrepairkuwait.com/gallery" />
-        <meta property="og:image" content="https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_1200/v1769908594/Modern_repair_facility_interior_-_KCROC_Kuwait_tkxkat.jpg" />
-        <script type="application/ld+json">{JSON.stringify(schemaData)}</script>
-      </Helmet>
+      <MetaSEO 
+        title="Gallery | KCROC Computer Repair Work in Kuwait" 
+        description="See our professional computer and laptop repair work in Kuwait. Motherboard soldering, battery replacement, screen repair, and more. Free pickup across all Kuwait. KCROC Hawalli." 
+        canonical="https://www.computerrepairkuwait.com/gallery"
+      />
+      <script type="application/ld+json">{JSON.stringify(schemaData)}</script>
 
-      {/* GLOBAL UPGRADE: Adjusted padding (pt-20 md:pt-32 pb-16) to prevent vertical gaps */}
       <section className="relative pt-20 md:pt-32 pb-16 px-6 flex flex-col items-center overflow-hidden text-center z-10">
-        {/* Core Electric Glow Container */}
         <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[600px] h-[500px] bg-cyan-600/20 blur-[120px] rounded-full pointer-events-none"></div>
 
         <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center">
@@ -135,13 +125,11 @@ export default function Gallery() {
         </div>
       </section>
 
-      {/* Grid section with updated glassmorphism hover effects */}
       <section className="py-16 px-6 relative z-10">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {images.map((img, i) => (
               <div key={i} className="group relative aspect-video bg-slate-900/30 backdrop-blur-sm rounded-3xl overflow-hidden border border-slate-800 hover:border-cyan-500/40 transition-all duration-300 hover:shadow-[0_0_30px_rgba(34,211,238,0.05)]">
-                {/* Dynamically applying loading and fetchpriority based on position */}
                 <img 
                   src={img.src} 
                   alt={img.alt} 
@@ -159,7 +147,6 @@ export default function Gallery() {
         </div>
       </section>
 
-      {/* CTA section with new premium button styles */}
       <section className="py-24 px-6 mt-8 border-t border-slate-800/50 bg-slate-900/10 backdrop-blur-sm relative z-10">
         <div className="container mx-auto max-w-2xl text-center">
           <h2 className="text-3xl md:text-4xl font-black mb-4 tracking-tight">Need a repair?</h2>
