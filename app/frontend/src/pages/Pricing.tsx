@@ -1,10 +1,10 @@
 import { useState, useMemo } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
-import {
-  Check, Truck, Clock, Laptop, Cpu, HardDrive, Keyboard,
-  Search, MapPin, ArrowRight, Phone,
-  MessageCircle, ChevronDown, BadgeCheck, CheckCircle
+import { 
+  Check, Truck, Clock, Laptop, Cpu, HardDrive, Keyboard, 
+  Search, MapPin, ArrowRight, Phone, MessageCircle, ChevronDown, 
+  BadgeCheck, CheckCircle, ShieldCheck 
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -310,6 +310,9 @@ export default function Pricing() {
       {/* Explore Services */}
       <section className="px-6 py-16 max-w-5xl mx-auto">
         <h2 className="text-3xl font-black mb-4 text-center">Explore Our Services</h2>
+        <p className="text-slate-400 text-center mb-10">
+          Professional repair services for laptops, MacBooks, gaming PCs, motherboards and storage devices.
+        </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {serviceLinks.map((link, i) => (
             <Link
