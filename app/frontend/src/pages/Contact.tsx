@@ -1,5 +1,4 @@
 import { useMemo, useState } from 'react';
-import { Helmet } from 'react-helmet-async';
 import {
   Phone,
   Mail,
@@ -10,6 +9,7 @@ import {
   Star,
   Loader2,
 } from 'lucide-react';
+import MetaSEO from '../components/seo/MetaSEO'; // 1. Added MetaSEO Component
 
 type FormData = {
   name: string;
@@ -86,10 +86,11 @@ export default function Contact() {
 
   return (
     <main className="w-full min-h-screen bg-transparent text-white font-sans selection:bg-cyan-500/30">
-      <Helmet>
-        <title>Contact KCROC | Computer Repair in Hawalli, Kuwait</title>
-        <meta name="description" content="Contact Kuwait Computer Repair On Call (KCROC). Call us, WhatsApp us, or visit our shop in Hawalli for expert tech support and free pickup." />
-      </Helmet>
+      <MetaSEO 
+        title="Contact KCROC | Computer Repair in Hawalli, Kuwait" 
+        description="Contact Kuwait Computer Repair On Call (KCROC). Call us, WhatsApp us, or visit our shop in Hawalli for expert tech support and free pickup." 
+        canonical="https://computerrepairkuwait.com/contact"
+      />
 
       {/* Hero / intro - Fixed padding to remove gaps */}
       <section className="relative pt-20 md:pt-32 pb-16 px-6 mt-2 md:mt-8 flex flex-col items-center text-center z-10">
