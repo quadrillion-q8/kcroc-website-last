@@ -2,6 +2,7 @@ import React, { ReactNode } from 'react';
 import Header from './Header';
 import Footer from './Footer';
 import ParticleBackground from './ParticleBackground'; 
+import StickyCTA from './ui/StickyCTA'; // 1. Import the new component
 
 interface LayoutProps {
   children: ReactNode;
@@ -23,6 +24,9 @@ export default function Layout({ children }: LayoutProps) {
       </main>
       
       <Footer />
+      
+      {/* 2. Added StickyCTA here so it persists across all pages */}
+      <StickyCTA /> 
     </div>
   );
 }
