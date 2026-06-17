@@ -80,12 +80,12 @@ export default function Hero() {
             />
           </div>
 
-          {/* Headline - Phase 6 SEO Upgrade */}
+          {/* Headline */}
           <h1 className="text-white text-2xl font-bold text-center leading-tight mt-4 mb-2">
             Laptop Repair, MacBook Repair &<br />Computer Repair in Kuwait
           </h1>
 
-          {/* Trust Signals - Phase 6 */}
+          {/* Trust Signals */}
           <div className="flex flex-wrap justify-center gap-2 mb-4 text-xs font-semibold text-emerald-100">
              <span className="flex items-center"><Clock className="w-3 h-3 mr-1"/> Same Day Repair</span>
              <span className="flex items-center"><ShieldCheck className="w-3 h-3 mr-1"/> No Fix No Fee</span>
@@ -98,7 +98,7 @@ export default function Hero() {
             Free pickup & delivery. Expert engineer. Data-safe repairs for home and office.
           </p>
 
-          {/* Primary CTAs - Phase 6 Conversion Upgrade */}
+          {/* Primary CTAs */}
           <div className="space-y-3 mb-3">
             <Button 
               size="lg" 
@@ -122,16 +122,16 @@ export default function Hero() {
             </Button>
           </div>
 
-          {/* Social Proof Row */}
+          {/* Corrected Social Proof Row (Mobile) */}
           <p className="text-white/70 text-sm text-center font-medium mt-3 mb-6">
-            4.9★ Google rating · Trusted by 500+ customers across Kuwait
+            4.9★ Google rating · Trusted by 150+ verified customers
           </p>
         </div>
       </section>
 
       {/* Desktop Hero Section - Background set to transparent */}
       <section className="hidden lg:block min-h-screen bg-transparent pt-24 pb-16 relative overflow-hidden">
-        {/* Animated Background Elements - Kept for the glowing orbs effect */}
+        {/* Animated Background Elements */}
         <div className="absolute inset-0 transform-gpu translate-z-0">
           <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-[80px] animate-pulse transform-gpu"></div>
           <div className="absolute bottom-20 right-10 w-96 h-96 bg-emerald-500/10 rounded-full blur-[80px] animate-pulse transform-gpu" style={{ animationDelay: '1s' }}></div>
@@ -157,7 +157,7 @@ export default function Hero() {
                   🏆 Kuwait's Most Trusted Tech Clinic
                 </Badge>
 
-                {/* Headline - Phase 6 SEO Upgrade */}
+                {/* Headline */}
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight">
                   <span className="gradient-text">Laptop Repair,</span><br />
                   <span className="gradient-text-purple">MacBook Repair &</span><br />
@@ -165,7 +165,7 @@ export default function Hero() {
                   <span className="gradient-text">in Kuwait.</span>
                 </h1>
                 
-                {/* Trust Signals - Phase 6 */}
+                {/* Trust Signals */}
                 <div className="flex flex-wrap gap-4 text-sm font-bold text-emerald-400 uppercase tracking-widest mt-4">
                   <span className="flex items-center gap-2"><Clock size={16}/> Same Day Repair</span>
                   <span className="flex items-center gap-2"><ShieldCheck size={16}/> No Fix No Fee</span>
@@ -224,7 +224,6 @@ export default function Hero() {
                   </div>
                 </div>
                 
-                {/* Updated to show Physical Lab Location */}
                 <div className="glass-card hover-lift p-4 rounded-xl stagger-animation stagger-delay-6">
                   <div className="w-12 h-12 bg-gradient-to-br from-red-500 to-red-600 rounded-lg flex items-center justify-center mb-3 neon-glow-red">
                     <MapPin className="w-6 h-6 text-white" />
@@ -302,10 +301,11 @@ export default function Hero() {
                       </Button>
                     </div>
 
+                    {/* Corrected Social Proof Row (Desktop) */}
                     <div className="text-center pt-4 border-t border-slate-700">
                       <p className="text-sm text-slate-400 flex items-center justify-center gap-2">
                         <Award className="w-4 h-4 text-emerald-400" />
-                        ⭐ Rated 5/5 by 500+ power users
+                        ⭐ Rated 4.9/5 by 150+ verified customers
                       </p>
                     </div>
                   </div>
