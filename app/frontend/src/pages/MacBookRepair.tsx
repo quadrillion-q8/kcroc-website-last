@@ -4,7 +4,7 @@ import {
   Laptop, CheckCircle, ShieldCheck, Cpu, Wrench, Droplets, Activity, MessageCircle, Phone, HelpCircle, ChevronDown
 } from 'lucide-react';
 import { BUSINESS_INFO } from '../constants/data';
-import MetaSEO from '../components/seo/MetaSEO'; // New reusable SEO component
+import MetaSEO from '../components/seo/MetaSEO';
 
 /* ─────────────────────────────────────────────────────────────────────────────
    1. PAGE DATA
@@ -120,14 +120,116 @@ export default function MacBookRepair() {
         </ol>
       </nav>
 
-      {/* ... (Keep existing sections below here exactly as they were) ... */}
-      
       {/* ─── HERO SECTION ─── */}
       <section className="relative px-6 text-center z-10 mb-24">
-         {/* ... (rest of your section content) ... */}
+        <div className="absolute top-[-50%] left-1/2 -translate-x-1/2 w-[600px] h-[500px] bg-cyan-600/20 blur-[80px] rounded-full pointer-events-none transform-gpu translate-z-0"></div>
+        <div className="max-w-4xl mx-auto relative z-10">
+          <div className="inline-flex items-center gap-2 bg-slate-900/80 backdrop-blur-md border border-cyan-500/30 px-5 py-2 rounded-full text-cyan-400 text-xs font-black uppercase tracking-widest mb-6 shadow-[0_0_15px_rgba(34,211,238,0.1)]">
+            <Laptop size={16} aria-hidden="true" /> Apple Logic Board Specialists
+          </div>
+          <h1 className="text-4xl md:text-6xl font-black text-white mb-6 tracking-tight leading-tight">
+            Premium <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-emerald-400">MacBook Repair</span><br />
+            in Kuwait
+          </h1>
+          <p className="text-lg text-slate-400 max-w-2xl mx-auto mb-10">
+            Authorized centers replace your entire logic board, permanently deleting your data. We utilize chip-level micro-soldering to fix your original board, preserving your files and saving your budget.
+          </p>
+          <div className="flex flex-wrap justify-center gap-4 text-sm font-bold text-emerald-400 uppercase tracking-widest">
+            <span className="flex items-center gap-2"><CheckCircle size={16}/> M-Series Specialists</span>
+            <span className="flex items-center gap-2"><CheckCircle size={16}/> Intel Legacy</span>
+            <span className="flex items-center gap-2"><CheckCircle size={16}/> Component Level</span>
+          </div>
+        </div>
       </section>
 
-      {/* ... continue your existing JSX structure ... */}
+      {/* ─── COMMON FAILURES GRID ─── */}
+      <section className="max-w-6xl mx-auto px-6 relative z-10 mb-24">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-black text-white mb-4">Common Logic Board Failures</h2>
+          <p className="text-slate-400">Why MacBooks suddenly stop turning on, and how we fix them.</p>
+        </div>
+        <div className="grid md:grid-cols-3 gap-6">
+          {MACBOOK_FAILURES.map((issue, idx) => (
+            <div key={idx} className="bg-slate-900/30 backdrop-blur-md p-8 rounded-3xl border border-slate-800 hover:border-cyan-500/30 transition-colors group flex flex-col">
+              <div className="w-14 h-14 bg-slate-950 border border-slate-800 rounded-2xl flex items-center justify-center mb-6 shadow-inner group-hover:border-cyan-500/50 transition-colors">
+                <issue.icon className="w-6 h-6 text-cyan-400" aria-hidden="true" />
+              </div>
+              <h3 className="text-xl font-black text-white mb-3">{issue.type}</h3>
+              <p className="text-slate-400 text-sm leading-relaxed mb-6 flex-grow">{issue.vuln}</p>
+              <span className="text-xs font-bold text-cyan-300 bg-cyan-950/30 px-3 py-2 rounded-md border border-cyan-900/50 inline-block text-center mt-auto">
+                Fix: {issue.remedy}
+              </span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ─── TOOLS & MATRIX ─── */}
+      <section className="max-w-6xl mx-auto px-6 relative z-10 mb-24 grid lg:grid-cols-2 gap-12">
+        <div>
+          <h2 className="text-2xl font-black text-white mb-6">Diagnostic Lab Tools</h2>
+          <div className="space-y-4">
+            {DIAGNOSTIC_TOOLS.map((t, i) => (
+              <div key={i} className="p-6 border border-slate-800 bg-slate-900/30 rounded-2xl">
+                <h3 className="font-bold text-white flex items-center gap-3 mb-2">
+                  <t.icon size={18} className="text-cyan-400" /> {t.name}
+                </h3>
+                <p className="text-sm text-slate-400 leading-relaxed mb-3">{t.useCase}</p>
+                <span className="text-xs font-bold text-emerald-400">{t.metric}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div>
+          <h2 className="text-2xl font-black text-white mb-6">Repair vs. Replacement</h2>
+          <div className="overflow-hidden border border-slate-800 rounded-3xl bg-slate-900/30 backdrop-blur-md">
+            <table className="w-full text-left text-sm">
+              <thead>
+                <tr className="bg-slate-950/50 text-slate-300 font-bold border-b border-slate-800">
+                  <th className="p-5">Service Path</th>
+                  <th className="p-5">Cost</th>
+                  <th className="p-5">Data Outcome</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-800 text-slate-400">
+                {DECISION_MATRIX.map((row, i) => (
+                  <tr key={i} className="hover:bg-slate-800/30 transition-colors">
+                    <td className="p-5 font-bold text-white">{row.path}</td>
+                    <td className="p-5 text-emerald-400 font-semibold">{row.cost}</td>
+                    <td className="p-5">{row.data}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── FAQ ─── */}
+      <section className="max-w-3xl mx-auto px-6 relative z-10 mb-24">
+        <div className="text-center mb-10">
+          <h2 className="text-3xl font-black text-white mb-4">MacBook Repair FAQs</h2>
+          <p className="text-slate-400">Clear answers regarding logic board repairs and data safety.</p>
+        </div>
+        <FAQAccordion items={FAQS} />
+      </section>
+
+      {/* ─── CTA FOOTER ─── */}
+      <section className="max-w-4xl mx-auto px-6 relative z-10">
+        <div className="bg-gradient-to-br from-cyan-900/40 to-slate-900/80 backdrop-blur-xl p-10 rounded-3xl border border-cyan-500/30 text-center shadow-[0_0_40px_rgba(34,211,238,0.1)]">
+          <ShieldCheck className="w-12 h-12 text-cyan-400 mx-auto mb-4" />
+          <h2 className="text-3xl font-black text-white mb-4">Don't Write Off Your MacBook.</h2>
+          <p className="text-slate-300 mb-8 max-w-xl mx-auto">Get a professional, chip-level diagnostic from KCROC. Free pickup available across Kuwait.</p>
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <a href={waLink} target="_blank" rel="noopener noreferrer" className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black px-8 py-4 rounded-full transition-all shadow-[0_0_20px_rgba(34,211,238,0.3)] hover:scale-105 flex justify-center items-center gap-2">
+              <MessageCircle size={20} /> Request Free Pickup
+            </a>
+            <a href={`tel:${BUSINESS_INFO.phone}`} className="bg-slate-900 border border-slate-700 hover:border-cyan-500/50 text-white font-bold px-8 py-4 rounded-full transition-all flex items-center justify-center gap-2">
+              <Phone size={20} /> Call Technician
+            </a>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }
