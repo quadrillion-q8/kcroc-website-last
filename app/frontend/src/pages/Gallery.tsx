@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Phone, MessageCircle, Camera } from 'lucide-react';
-import MetaSEO from '../components/seo/MetaSEO'; // 1. Added MetaSEO Import
+import MetaSEO from '../components/seo/MetaSEO';
 
 // ─── Schema ──────────────────────────────────────────────────────────────────
 const schemaData = {
@@ -132,9 +132,13 @@ export default function Gallery() {
               <div key={i} className="group relative aspect-video bg-slate-900/30 backdrop-blur-sm rounded-3xl overflow-hidden border border-slate-800 hover:border-cyan-500/40 transition-all duration-300 hover:shadow-[0_0_30px_rgba(34,211,238,0.05)]">
                 <img 
                   src={img.src} 
-                  alt={img.alt} 
+                  alt={img.alt}
+                  width="400"
+                  height="225"
+                  decoding="async"
                   loading={i < 6 ? "eager" : "lazy"} 
                   fetchpriority={i < 2 ? "high" : "auto"}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-90 group-hover:opacity-100" 
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent opacity-80 pointer-events-none" />
