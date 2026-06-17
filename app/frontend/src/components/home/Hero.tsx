@@ -26,7 +26,7 @@ export default function Hero() {
 
   const trustBadges = [
     { icon: Shield, text: "Data Privacy First" },
-    { icon: Zap, text: "ESD-Safe Lab" },
+    { icon: Zap, text: "ESD-Safe Workshop" }, // Updated from Lab to Workshop
     { icon: Award, text: "Original Parts Only" }
   ];
 
@@ -63,12 +63,12 @@ export default function Hero() {
 
   return (
     <>
-      {/* Mobile Hero Section - Removed min-h-screen and adjusted padding for tighter layout */}
+      {/* Mobile Hero Section */}
       <section className="bg-transparent pt-32 pb-8 relative overflow-hidden lg:hidden">
         
         <div className="container mx-auto px-4 relative z-10">
           
-          {/* Headline - Moved to top since redundant logo was removed */}
+          {/* Headline */}
           <h1 className="text-white text-2xl font-bold text-center leading-tight mb-3">
             Laptop Repair, MacBook Repair &<br />Computer Repair in Kuwait
           </h1>
@@ -110,14 +110,13 @@ export default function Hero() {
             </Button>
           </div>
 
-          {/* Corrected Social Proof Row (Mobile) */}
           <p className="text-white/70 text-sm text-center font-medium mt-2">
             4.9★ Google rating · Trusted by 150+ verified customers
           </p>
         </div>
       </section>
 
-      {/* Desktop Hero Section - Remains unchanged */}
+      {/* Desktop Hero Section */}
       <section className="hidden lg:block min-h-screen bg-transparent pt-24 pb-16 relative overflow-hidden">
         {/* Animated Background Elements */}
         <div className="absolute inset-0 transform-gpu translate-z-0">
@@ -169,7 +168,8 @@ export default function Hero() {
               </div>
 
               {/* Stats Counter with Loading States */}
-              <div className="stats-grid py-6">
+              {/* Removed the 24/7 Support stat to align with your business operations */}
+              <div className="flex gap-12 py-6">
                 <div className="text-center stagger-animation stagger-delay-3">
                   <div className={`stat-number gradient-text mb-1 ${statsLoading ? 'loading-state' : ''}`}>
                     <Counter end={500} suffix="+" />
@@ -182,12 +182,6 @@ export default function Hero() {
                   </div>
                   <div className="text-sm text-slate-400 font-medium">Success Rate</div>
                 </div>
-                 <div className="text-center stagger-animation stagger-delay-5">
-                  <div className={`stat-number gradient-text mb-1 ${statsLoading ? 'loading-state' : ''}`}>
-                    <Counter end={24} suffix="/7" />
-                  </div>
-                  <div className="text-sm text-slate-400 font-medium">Support Available</div>
-                </div>
               </div>
 
               {/* Features Grid */}
@@ -197,8 +191,9 @@ export default function Hero() {
                     <Users className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-white mb-1">Elite Technicians</h3>
-                    <p className="text-sm text-slate-400">Certified professionals</p>
+                    {/* Updated from Elite Technicians / Certified professionals */}
+                    <h3 className="font-bold text-white mb-1">Pro Technicians</h3>
+                    <p className="text-sm text-slate-400">Experienced professionals</p>
                   </div>
                 </div>
                 
@@ -207,7 +202,8 @@ export default function Hero() {
                     <Truck className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-white mb-1">VIP Pickup & Delivery</h3>
+                    {/* Updated from VIP Pickup & Delivery */}
+                    <h3 className="font-bold text-white mb-1">FREE Pickup & Delivery</h3>
                     <p className="text-sm text-slate-400">Anywhere in Kuwait</p>
                   </div>
                 </div>
@@ -289,7 +285,6 @@ export default function Hero() {
                       </Button>
                     </div>
 
-                    {/* Corrected Social Proof Row (Desktop) */}
                     <div className="text-center pt-4 border-t border-slate-700">
                       <p className="text-sm text-slate-400 flex items-center justify-center gap-2">
                         <Award className="w-4 h-4 text-emerald-400" />
