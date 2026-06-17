@@ -5,7 +5,7 @@ import { ShieldAlert, ArrowRight, Home } from 'lucide-react';
 export default function NotFound() {
   return (
     <div className="min-h-screen bg-slate-950 flex flex-col items-center justify-center p-6 text-center">
-      {/* Icon with subtle pulse */}
+      {/* Icon with subtle pulse for visual interest */}
       <div className="mb-8 animate-pulse">
         <ShieldAlert className="w-24 h-24 text-cyan-500" />
       </div>
@@ -20,7 +20,7 @@ export default function NotFound() {
         We couldn't find the page you're looking for, but we're experts at recovering lost data and fixing broken systems. Let's get you back to the right place.
       </p>
 
-      {/* Conversion Actions */}
+      {/* Conversion Actions - Designed to keep users on-site */}
       <div className="flex flex-col sm:flex-row gap-4">
         <Link 
           to="/" 
