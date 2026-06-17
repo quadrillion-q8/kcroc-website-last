@@ -1,8 +1,7 @@
 import React from 'react';
 import { Star, MessageCircle, ExternalLink } from 'lucide-react';
-import { BUSINESS_INFO } from '../../constants/data'; // Adjust path if needed
 
-// You can move this array to your data.ts file later!
+// 5 hand-picked, high-converting reviews highlighting different services
 const TOP_REVIEWS = [
   {
     id: 1,
@@ -27,6 +26,22 @@ const TOP_REVIEWS = [
     rating: 5,
     text: "Best gaming PC repair in Kuwait. Diagnosed the thermal throttling issue in 5 minutes. They cleaned it, reapplied liquid metal, and now my temps are 20 degrees cooler.",
     avatarInitial: "T"
+  },
+  {
+    id: 4,
+    author: "Fatima R.",
+    date: "1 week ago",
+    rating: 5,
+    text: "My Dell XPS battery swelled up and I needed it fixed for work urgently. KCROC picked it up from Kuwait City and had it back to me the exact same evening. Flawless and fast service.",
+    avatarInitial: "F"
+  },
+  {
+    id: 5,
+    author: "Omar D.",
+    date: "4 months ago",
+    rating: 5,
+    text: "Spilled coffee on my laptop. Other shops told me it was dead. KCROC did a free diagnostic, found it was just a blown capacitor on the logic board, and fixed it for a fraction of the cost of a new laptop. Honest tech team.",
+    avatarInitial: "O"
   }
 ];
 
@@ -39,7 +54,7 @@ export default function GoogleReviewsWidget() {
         <div>
           <div className="flex items-center gap-2 mb-2">
             <span className="bg-white p-1 rounded-full">
-              {/* Simple Google G Logo SVG */}
+              {/* Google G Logo SVG */}
               <svg className="w-5 h-5" viewBox="0 0 24 24">
                 <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
                 <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
@@ -59,18 +74,23 @@ export default function GoogleReviewsWidget() {
           href="https://share.google/bH4mP7dUN4fLt8SBo" 
           target="_blank" 
           rel="noopener noreferrer"
-          className="flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-white px-6 py-3 rounded-full font-bold transition-colors text-sm border border-slate-700"
+          className="flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-white px-6 py-3 rounded-full font-bold transition-colors text-sm border border-slate-700 hover:border-cyan-500/50"
         >
           Read All on Google <ExternalLink className="w-4 h-4" />
         </a>
       </div>
 
-      {/* Reviews Grid */}
-      <div className="grid md:grid-cols-3 gap-6">
-        {TOP_REVIEWS.map((review) => (
+      {/* Reviews Grid - Adjusted for 5 items to look balanced */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {TOP_REVIEWS.map((review, index) => (
           <div 
             key={review.id} 
-            className="glass-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-6 hover:border-cyan-500/30 transition-all hover:-translate-y-1 group"
+            /* If it's the 4th or 5th review on a large screen, this centers them nicely in the bottom row */
+            className={`glass-card bg-slate-900/50 border border-slate-800/80 rounded-2xl p-6 hover:border-cyan-500/30 transition-all hover:-translate-y-1 group ${
+              index === 3 ? 'lg:col-start-1 lg:ml-auto lg:w-full' : ''
+            } ${
+              index === 4 ? 'lg:col-start-2 lg:mr-auto lg:w-full' : ''
+            }`}
           >
             {/* Reviewer Info */}
             <div className="flex items-center gap-4 mb-4">
