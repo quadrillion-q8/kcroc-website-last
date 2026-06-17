@@ -3,7 +3,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Phone, MessageCircle, Users, Truck, Zap, Shield, Award, MapPin, Clock, Wrench, ShieldCheck } from 'lucide-react';
 import { useState, useEffect } from 'react';
-import { BUSINESS_INFO, TRUST_STATS, REVIEWS } from '../../constants/data'; // Ensure this path is correct based on your folder structure
+import { BUSINESS_INFO, TRUST_STATS, REVIEWS } from '../../constants/data'; 
 
 export default function Hero() {
   const [statsAnimated, setStatsAnimated] = useState(false);
@@ -63,10 +63,8 @@ export default function Hero() {
 
   return (
     <>
-      {/* Mobile Hero Section */}
-      <section className="min-h-screen bg-gradient-to-br from-blue-400 via-blue-600 to-slate-900 pt-20 pb-16 relative overflow-hidden lg:hidden">
-        {/* Background Elements */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 via-blue-700/30 to-slate-900/40"></div>
+      {/* Mobile Hero Section - Background set to transparent */}
+      <section className="min-h-screen bg-transparent pt-20 pb-16 relative overflow-hidden lg:hidden">
         
         <div className="container mx-auto px-4 relative z-10">
           {/* Logo Row - Updated to official logo */}
@@ -131,9 +129,9 @@ export default function Hero() {
         </div>
       </section>
 
-      {/* Desktop Hero Section */}
-      <section className="hidden lg:block min-h-screen bg-gradient-to-br from-slate-900 via-blue-900/20 to-emerald-900/20 pt-24 pb-16 relative overflow-hidden">
-        {/* Animated Background Elements - Phase 8 Optimization */}
+      {/* Desktop Hero Section - Background set to transparent */}
+      <section className="hidden lg:block min-h-screen bg-transparent pt-24 pb-16 relative overflow-hidden">
+        {/* Animated Background Elements - Kept for the glowing orbs effect */}
         <div className="absolute inset-0 transform-gpu translate-z-0">
           <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-[80px] animate-pulse transform-gpu"></div>
           <div className="absolute bottom-20 right-10 w-96 h-96 bg-emerald-500/10 rounded-full blur-[80px] animate-pulse transform-gpu" style={{ animationDelay: '1s' }}></div>
@@ -184,7 +182,6 @@ export default function Hero() {
 
               {/* Stats Counter with Loading States */}
               <div className="stats-grid py-6">
-                {/* Assuming your original stats array was here, using hardcoded for now, but should ideally pull from TRUST_STATS */}
                 <div className="text-center stagger-animation stagger-delay-3">
                   <div className={`stat-number gradient-text mb-1 ${statsLoading ? 'loading-state' : ''}`}>
                     <Counter end={500} suffix="+" />
