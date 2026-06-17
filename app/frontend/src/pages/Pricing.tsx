@@ -4,9 +4,21 @@ import { Check, Truck, Clock } from 'lucide-react';
 import MetaSEO from '../components/seo/MetaSEO';
 
 const pricingPlans = [
-  { name: 'Basic Diagnostics', price: 'Free', features: ['System Check', 'Issue Identification', 'No obligation to fix'] },
-  { name: 'Laptop Repair', price: 'From 15 KD', features: ['Hardware Repair', 'Component Testing', '30-Day Warranty'] },
-  { name: 'MacBook/Gaming PC', price: 'From 25 KD', features: ['Advanced Diagnostics', 'Board-level repair', 'Optimized Performance'] },
+  { 
+    name: 'Basic Diagnostics', 
+    price: 'Free', 
+    features: ['System Check', 'Issue Identification', 'No obligation to fix'] 
+  },
+  { 
+    name: 'Laptop Repair', 
+    price: 'From 15 KD', 
+    features: ['Hardware Repair', 'Component Testing', '30-Day Warranty'] 
+  },
+  { 
+    name: 'MacBook/Gaming PC', 
+    price: 'From 25 KD', 
+    features: ['Advanced Diagnostics', 'Board-level repair', 'Optimized Performance'] 
+  },
 ];
 
 export default function Pricing() {
@@ -31,7 +43,9 @@ export default function Pricing() {
             <div className="text-4xl font-black text-cyan-400 mb-6">{plan.price}</div>
             <ul className="space-y-4 mb-8">
               {plan.features.map((f, idx) => (
-                <li key={idx} className="flex items-center text-slate-300 text-sm"><Check className="w-4 h-4 mr-2 text-cyan-500" /> {f}</li>
+                <li key={idx} className="flex items-center text-slate-300 text-sm">
+                  <Check className="w-4 h-4 mr-2 text-cyan-500" /> {f}
+                </li>
               ))}
             </ul>
             <Button className="w-full bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black">Book Now</Button>
