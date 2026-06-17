@@ -8,6 +8,7 @@ import TrustStats from '../components/home/TrustStats';
 import MobileCTA from '../components/home/MobileCTA'; 
 
 // 2. Lazy Imports (Below the fold - loads in the background)
+const GoogleReviewsWidget = lazy(() => import('../components/GoogleReviewsWidget'));
 const ServicesGrid = lazy(() => import('../components/home/ServicesGrid'));
 const RecentBlogs = lazy(() => import('../components/home/RecentBlogs'));
 const Reviews = lazy(() => import('../components/home/Reviews'));
@@ -125,6 +126,10 @@ export default function Home() {
 
       {/* 4. Render Non-Critical Components Lazily */}
       <Suspense fallback={<div className="w-full h-32 flex items-center justify-center text-cyan-500 animate-pulse mt-10">Loading content...</div>}>
+        
+        {/* NEW: Google Reviews Widget placed prominently below the Hero stats */}
+        <GoogleReviewsWidget />
+        
         <ServicesGrid />
         <RecentBlogs />
         <Reviews />
