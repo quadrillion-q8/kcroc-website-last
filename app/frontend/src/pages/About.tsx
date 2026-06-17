@@ -1,5 +1,5 @@
-import { Helmet } from 'react-helmet-async';
 import { Award, Users, Clock, Shield, Zap, Heart, Star, MapPin, Phone, MessageCircle, Wrench } from 'lucide-react';
+import MetaSEO from '../components/seo/MetaSEO'; // Updated import
 
 // ─── Schema Module Scope ────────────────────────────────────────────────────
 const aboutSchema = {
@@ -65,23 +65,16 @@ export default function About() {
   const waLink = 'https://wa.me/96555301913?text=Hi!+I+have+a+repair+enquiry.+Please+help.';
 
   return (
-    /* GLOBAL UPGRADE: Transparent background for particles */
     <main className="w-full min-h-screen bg-transparent text-white font-sans selection:bg-cyan-500/30">
-      <Helmet>
-        <title>About KCROC | Expert Computer Repair Team in Kuwait</title>
-        <meta name="description" content="Meet the expert technicians behind KCROC. 20+ years experience, 4.9-star rating, free pickup across all Kuwait. Hawalli, Ibn Khaldoun St." />
-        <link rel="canonical" href="https://computerrepairkuwait.com/about" />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content="About KCROC | Expert Computer Repair Team in Kuwait" />
-        <meta property="og:description" content="Meet the expert technicians behind KCROC. 20+ years experience, 4.9-star rating, free pickup across all Kuwait." />
-        <meta property="og:url" content="https://computerrepairkuwait.com/about" />
-        <meta property="og:image" content="https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto/v1769908596/logo_btpfls.png" />
-        <script type="application/ld+json">{JSON.stringify(aboutSchema)}</script>
-      </Helmet>
+      <MetaSEO 
+        title="About Us | Expert Computer Repair in Hawalli, Kuwait | KCROC" 
+        description="Meet the expert technicians behind KCROC. 20+ years experience, 4.9-star rating, free pickup across all Kuwait. Hawalli, Ibn Khaldoun St." 
+        canonical="https://computerrepairkuwait.com/about"
+      />
+      <script type="application/ld+json">{JSON.stringify(aboutSchema)}</script>
 
-      {/* Hero: Gap-free padding (pt-20 md:pt-32 pb-16) perfectly clears header without vertical spaces */}
+      {/* Hero */}
       <section className="relative pt-20 md:pt-32 pb-16 px-6 text-center overflow-hidden z-10">
-        {/* Core Electric Glow Container */}
         <div className="absolute top-[0%] left-1/2 -translate-x-1/2 w-[600px] h-[500px] bg-cyan-600/20 blur-[120px] rounded-full pointer-events-none"></div>
 
         <div className="relative z-10 max-w-6xl mx-auto flex flex-col items-center">
