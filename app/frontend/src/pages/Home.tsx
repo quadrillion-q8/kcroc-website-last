@@ -1,6 +1,5 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Star } from 'lucide-react';
 import { BUSINESS_INFO, SERVICES, REVIEWS, SERVICE_AREAS } from '../constants/data';
 
 // Component Imports
@@ -118,17 +117,7 @@ export default function Home() {
         <script type="application/ld+json">{JSON.stringify(SCHEMA_DATA)}</script>
       </Helmet>
 
-      {/* CRO: Sticky Desktop Review Badge */}
-      <a href={BUSINESS_INFO.googleReviewUrl} target="_blank" rel="noopener noreferrer" className="hidden md:flex fixed right-0 top-1/3 z-50 bg-slate-900/90 backdrop-blur-md border border-cyan-500/50 p-3 rounded-l-2xl shadow-[0_0_20px_rgba(34,211,238,0.2)] hover:scale-105 transition-transform items-center gap-3 group focus-visible:ring-2 focus-visible:ring-cyan-400">
-        <div className="flex flex-col items-center">
-          <span className="text-white font-black text-sm group-hover:text-cyan-400 transition-colors">4.9/5</span>
-          <div className="flex text-cyan-400 my-1">
-            {[...Array(5)].map((_, i) => <Star key={i} className="w-3 h-3 fill-current" />)}
-          </div>
-          <span className="text-slate-400 text-[10px] uppercase tracking-wider">150+ Reviews</span>
-        </div>
-      </a>
-
+      {/* Components */}
       <Hero />
       <TrustStats />
       <ServicesGrid />
