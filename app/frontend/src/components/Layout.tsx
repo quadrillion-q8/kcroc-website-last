@@ -2,7 +2,8 @@ import React, { ReactNode } from 'react';
 import Header from './Header';
 import Footer from './Footer';
 import ParticleBackground from './ParticleBackground'; 
-import StickyCTA from './ui/StickyCTA'; // 1. Import the new component
+import StickyCTA from './ui/StickyCTA';
+import GMBRating from './layout/GMBRating'; 
 
 interface LayoutProps {
   children: ReactNode;
@@ -17,15 +18,21 @@ export default function Layout({ children }: LayoutProps) {
         <ParticleBackground />
       </div>
       
+      {/* Global Navigation */}
       <Header />
       
+      {/* Global GMB Rating - Visible across all pages */}
+      <GMBRating />
+      
+      {/* Main Content Area */}
       <main className="flex-grow flex flex-col relative z-10">
         {children}
       </main>
       
+      {/* Global Footer */}
       <Footer />
       
-      {/* 2. Added StickyCTA here so it persists across all pages */}
+      {/* Global Sticky Call-to-Action */}
       <StickyCTA /> 
     </div>
   );
