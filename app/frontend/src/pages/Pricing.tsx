@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import {
   Check, Truck, Clock, Laptop, Cpu, HardDrive, Keyboard,
-  Database, ShieldCheck, Search, MapPin, ArrowRight, Phone,
+  Search, MapPin, ArrowRight, Phone,
   MessageCircle, ChevronDown, BadgeCheck, CheckCircle
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -12,7 +12,6 @@ import MetaSEO from '../components/seo/MetaSEO';
 
 // ─── Data Arrays ─────────────────────────────────────────────────────────────
 
-// Display-only pricing (for UI)
 const pricingPlans = [
   {
     name: 'Basic Diagnostics',
@@ -48,11 +47,11 @@ const pricingPlans = [
   },
   {
     name: 'SSD Upgrade',
-    priceLabel: 'From 10 KWD',
+    priceLabel: 'From 18 KWD',
     features: ['SSD Installation', 'Windows Migration', 'Faster Boot', 'Data Safety'],
     icon: HardDrive,
     hasPrice: true,
-    numericPrice: 10,
+    numericPrice: 18,
   },
   {
     name: 'Keyboard Replacement',
@@ -70,14 +69,6 @@ const pricingPlans = [
     hasPrice: true,
     numericPrice: 25,
   },
-  {
-    name: 'Data Recovery',
-    priceLabel: 'From 25 KWD',
-    features: ['HDD Recovery', 'SSD Recovery', 'Deleted Files', 'Secure Recovery'],
-    icon: Database,
-    hasPrice: true,
-    numericPrice: 25,
-  },
 ];
 
 const trustItems = [
@@ -90,18 +81,9 @@ const trustItems = [
 ];
 
 const locations = [
-  'Kuwait City',
-  'Salmiya',
-  'Hawally',
-  'Farwaniya',
-  'Fahaheel',
-  'Mangaf',
-  'Mahboula',
-  'Abu Halifa',
-  'Khaitan',
-  'Jahra',
-  'Sabah Al Salem',
-  'Egaila',
+  'Kuwait City', 'Salmiya', 'Hawally', 'Farwaniya', 'Fahaheel', 
+  'Mangaf', 'Mahboula', 'Abu Halifa', 'Khaitan', 'Jahra', 
+  'Sabah Al Salem', 'Egaila',
 ];
 
 const faqs = [
@@ -117,7 +99,6 @@ const serviceLinks = [
   { title: 'MacBook Repair', path: '/macbook-repair-kuwait', icon: Laptop, desc: 'Logic board, display, and thermal service.' },
   { title: 'Motherboard Repair', path: '/motherboard-repair-kuwait', icon: Cpu, desc: 'Microsoldering and IC replacement.' },
   { title: 'Gaming PC Repair', path: '/gaming-pc-repair-kuwait', icon: Cpu, desc: 'GPU diagnostics and FPS optimization.' },
-  { title: 'Data Recovery', path: '/data-recovery-kuwait', icon: Database, desc: 'Secure HDD/SSD recovery services.' },
 ];
 
 const whatsappUrl = `https://wa.me/96555301913?text=${encodeURIComponent("Hi KCROC, I need laptop repair. Please arrange free pickup.")}`;
@@ -158,14 +139,12 @@ export default function Pricing() {
       ]
     };
 
-    // Add Service entries for your main repair types
     const serviceNames = [
       'Laptop Repair',
       'Computer Repair',
       'MacBook Repair',
       'Gaming PC Repair',
       'Motherboard Repair',
-      'Data Recovery',
     ];
 
     const services = serviceNames.map(name => ({
@@ -178,7 +157,6 @@ export default function Pricing() {
       "areaServed": "Kuwait",
     }));
 
-    // Add Offer entries only for services with a real numeric price > 0
     const offers = pricingPlans
       .filter(p => p.hasPrice && p.numericPrice !== undefined && p.numericPrice > 0)
       .map(p => ({
@@ -217,7 +195,6 @@ export default function Pricing() {
 
       {/* Hero */}
       <section className="relative px-6 pt-32 pb-20 text-center">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-cyan-600/10 blur-[120px] rounded-full pointer-events-none" />
         <Badge className="bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 px-6 py-2 mb-6">Transparent Pricing</Badge>
         <h1 className="text-4xl md:text-7xl font-black mb-6 tracking-tight">
           Laptop & Computer Repair <br />
@@ -333,10 +310,7 @@ export default function Pricing() {
       {/* Explore Services */}
       <section className="px-6 py-16 max-w-5xl mx-auto">
         <h2 className="text-3xl font-black mb-4 text-center">Explore Our Services</h2>
-        <p className="text-slate-400 text-center mb-10">
-          Professional repair services for laptops, MacBooks, gaming PCs, motherboards and storage devices.
-        </p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {serviceLinks.map((link, i) => (
             <Link
               key={i}
