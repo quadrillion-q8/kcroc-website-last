@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, Search, X } from 'lucide-react';
 import logo from '../assets/logo.png';
-import MobileMenu from './MobileMenu'; // Importing the standalone component
+import MobileMenu from './layout/MobileMenu'; // Updated path to match file structure
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -78,7 +78,7 @@ export default function Header() {
       {/* Search Overlay */}
       {isSearchOpen && (
         <div className="fixed inset-0 z-[2000] bg-[#0a0f1c]/95 backdrop-blur-2xl p-6 pt-24">
-          <button className="absolute top-6 right-6 text-white" onClick={() => setIsOpen(false)}><X size={32} /></button>
+          <button className="absolute top-6 right-6 text-white" onClick={() => setIsSearchOpen(false)}><X size={32} /></button>
           <div className="max-w-2xl mx-auto">
             <input 
               type="text" 
