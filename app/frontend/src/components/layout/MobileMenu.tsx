@@ -43,7 +43,9 @@ export default function MobileMenu({ isOpen, onClose, services, blogs }: MobileM
         </div>
 
         <Link to="/pricing" className="text-2xl font-black text-white hover:text-cyan-400 transition-colors" onClick={onClose}>Pricing</Link>
+        <Link to="/gallery" className="text-2xl font-black text-white hover:text-cyan-400 transition-colors" onClick={onClose}>Gallery</Link>
         <Link to="/about" className="text-2xl font-black text-white hover:text-cyan-400 transition-colors" onClick={onClose}>About</Link>
+        <Link to="/contact" className="text-2xl font-black text-white hover:text-cyan-400 transition-colors" onClick={onClose}>Contact</Link>
         <Link to="/book" className="text-2xl font-black text-cyan-400 mt-4 px-8 py-3 border border-cyan-500/30 rounded-full" onClick={onClose}>Book Repair</Link>
       </nav>
     </div>
