@@ -6,7 +6,7 @@ import {
   BarChart4, Search, Settings, CheckCircle2, MessageCircle, Phone, Gamepad2
 } from 'lucide-react';
 import { BUSINESS_INFO } from '../constants/data';
-import MetaSEO from '../components/seo/MetaSEO'; // 1. Import new component
+import MetaSEO from '../components/seo/MetaSEO';
 
 /* ─────────────────────────────────────────────────────────────────────────────
    1. PAGE DATA
@@ -103,7 +103,6 @@ export default function GamingPC() {
 
   return (
     <main className="w-full min-h-screen bg-transparent text-slate-200 selection:bg-cyan-500/30 pt-32 pb-24 font-sans">
-      {/* 2. Add the component at the top */}
       <MetaSEO 
         title="Gaming PC Repair in Kuwait | FPS & Thermal Tuning | KCROC" 
         description="Stop stuttering and thermal throttling. Elite component-level gaming PC repair, liquid cooling maintenance, and FPS tuning in Kuwait. Free pickup available." 
@@ -122,7 +121,44 @@ export default function GamingPC() {
         </ol>
       </nav>
 
-      {/* ... (Keep rest of existing JSX section content) ... */}
+      {/* Hero Section */}
+      <section className="relative px-6 text-center z-10 mb-24">
+        <div className="absolute top-[-50%] left-1/2 -translate-x-1/2 w-[600px] h-[500px] bg-purple-600/20 blur-[80px] rounded-full pointer-events-none transform-gpu translate-z-0"></div>
+        <div className="max-w-5xl mx-auto relative z-10">
+          <div className="inline-flex items-center gap-2 bg-slate-900/80 backdrop-blur-md border border-purple-500/30 px-5 py-2 rounded-full text-purple-400 text-xs font-black uppercase tracking-widest mb-6 shadow-[0_0_15px_rgba(168,85,247,0.1)]">
+            <ShieldCheck size={16} aria-hidden="true" /> Component-Level Diagnostic Lab
+          </div>
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-white mb-6 tracking-tight leading-tight">
+            Eliminate FPS Drops,<br className="hidden md:block" /> Overheating & <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400">Crashes.</span>
+          </h1>
+          <p className="text-lg md:text-xl text-slate-400 max-w-3xl mx-auto mb-10 leading-relaxed font-medium">
+            Stop losing to hardware bottlenecks. We provide elite performance tuning, custom cooling restoration, and advanced motherboard repair to keep your rig running icy and flawless.
+          </p>
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-8">
+            <a href={waLink} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 w-full sm:w-auto bg-purple-600 hover:bg-purple-500 text-white px-8 py-4 rounded-full font-black text-base transition-all shadow-[0_0_20px_rgba(147,51,234,0.3)] hover:scale-[1.02]">
+              Fix My PC Now <ExternalLink size={20} />
+            </a>
+            <a href={`tel:${BUSINESS_INFO.phone}`} className="flex items-center justify-center gap-3 w-full sm:w-auto bg-slate-900/60 backdrop-blur-md border border-slate-700/50 hover:bg-slate-800 text-slate-200 px-8 py-4 rounded-full font-bold text-base transition-all hover:border-purple-500/30">
+              <Phone size={20} className="text-purple-400" /> Call Technician
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Scenarios */}
+      <section className="max-w-5xl mx-auto px-6 relative z-10 mb-24">
+        <h3 className="text-center text-3xl font-black text-white mb-10">We Solve Real Gaming Frustrations</h3>
+        <div className="grid md:grid-cols-2 gap-6">
+          {SCENARIOS.map((s, i) => (
+            <div key={i} className="bg-slate-900/30 p-8 rounded-3xl border border-slate-800">
+               <p className="text-red-400 font-bold mb-2">Issue: {s.issue}</p>
+               <p className="text-slate-400 text-sm">Fix: {s.fix}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Footer */}
     </main>
   );
 }
