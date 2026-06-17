@@ -11,7 +11,6 @@ import MobileCTA from '../components/home/MobileCTA';
 const GoogleReviewsWidget = lazy(() => import('../components/GoogleReviewsWidget'));
 const ServicesGrid = lazy(() => import('../components/home/ServicesGrid'));
 const RecentBlogs = lazy(() => import('../components/home/RecentBlogs'));
-const Reviews = lazy(() => import('../components/home/Reviews'));
 const AreasServed = lazy(() => import('../components/home/AreasServed'));
 const FAQSection = lazy(() => import('../components/home/FAQSection'));
 const LocalSEOFooter = lazy(() => import('../components/home/LocalSEOFooter'));
@@ -132,7 +131,6 @@ export default function Home() {
         
         <ServicesGrid />
         <RecentBlogs />
-        <Reviews />
         <AreasServed />
         <FAQSection />
         <LocalSEOFooter />
