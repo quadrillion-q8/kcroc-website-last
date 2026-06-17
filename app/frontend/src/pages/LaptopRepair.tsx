@@ -1,8 +1,8 @@
 import React from 'react';
-import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { Laptop, Cpu, ThermometerSnowflake, BatteryWarning, ShieldCheck, CheckCircle, ArrowRight, MessageCircle, Phone } from 'lucide-react';
 import { BUSINESS_INFO } from '../constants/data';
+import MetaSEO from '../components/seo/MetaSEO'; // Imported your new reusable SEO component
 
 export default function LaptopRepair() {
   const waMessage = encodeURIComponent("Hi KCROC, I need help with my Windows laptop. Please arrange a free diagnostic & pickup.");
@@ -36,12 +36,15 @@ export default function LaptopRepair() {
 
   return (
     <main className="w-full min-h-screen bg-transparent text-slate-200 selection:bg-cyan-500/30 pt-32 pb-24">
-      <Helmet>
-        <title>Expert Laptop Repair in Kuwait | Free Pickup - KCROC</title>
-        <meta name="description" content="Professional Windows laptop repair in Kuwait. We fix overheating, dead batteries, broken hinges, and motherboard failures. Free pickup and delivery." />
-        <link rel="canonical" href={`${BUSINESS_INFO.url}/laptop-repair-kuwait`} />
-        <script type="application/ld+json">{JSON.stringify(STRUCTURED_DATA)}</script>
-      </Helmet>
+      {/* Dynamic SEO implementation */}
+      <MetaSEO 
+        title="Expert Laptop Repair in Kuwait | Free Pickup - KCROC" 
+        description="Professional Windows laptop repair in Kuwait. We fix overheating, dead batteries, broken hinges, and motherboard failures. Free pickup and delivery." 
+        canonical={`${BUSINESS_INFO.url}/laptop-repair-kuwait`}
+      />
+      
+      {/* Structured Data for Google */}
+      <script type="application/ld+json">{JSON.stringify(STRUCTURED_DATA)}</script>
 
       {/* ─── BREADCRUMBS ─── */}
       <nav aria-label="Breadcrumb" className="max-w-6xl mx-auto px-6 mb-8 relative z-10">
