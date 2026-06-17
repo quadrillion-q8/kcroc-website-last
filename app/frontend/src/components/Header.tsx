@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, Search, X } from 'lucide-react';
 import logo from '../assets/logo.png';
-import MobileMenu from './layout/MobileMenu'; // Updated path to match file structure
+import MobileMenu from './layout/MobileMenu';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -50,8 +50,13 @@ export default function Header() {
       <header className={`fixed top-0 w-full z-[1000] transition-all duration-300 ${scrolled ? 'bg-[#0a0f1c]/80 backdrop-blur-xl border-b border-slate-800/50 shadow-[0_4px_30px_rgba(0,0,0,0.3)]' : 'bg-transparent border-b border-transparent'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
-            <Link to="/" className="flex items-center">
-              <img src={logo} alt="KCROC Logo" className="h-14 w-auto object-contain rounded-xl" />
+            {/* Logo Section - Enhanced with glow effect */}
+            <Link to="/" className="flex items-center group">
+              <img 
+                src={logo} 
+                alt="KCROC Logo" 
+                className="h-12 md:h-16 w-auto object-contain transition-all duration-300 drop-shadow-[0_0_8px_rgba(255,255,255,0.2)] hover:drop-shadow-[0_0_15px_rgba(6,182,212,0.6)] hover:scale-105" 
+              />
             </Link>
 
             {/* Desktop Nav */}
