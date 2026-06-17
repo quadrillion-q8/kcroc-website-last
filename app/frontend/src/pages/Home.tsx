@@ -1,17 +1,19 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { BUSINESS_INFO, SERVICES, REVIEWS, SERVICE_AREAS } from '../constants/data';
 
-// Component Imports
+// 1. Synchronous Imports (Critical for Initial Paint)
 import Hero from '../components/home/Hero';
 import TrustStats from '../components/home/TrustStats';
-import ServicesGrid from '../components/home/ServicesGrid';
-import RecentBlogs from '../components/home/RecentBlogs';
-import Reviews from '../components/home/Reviews';
-import AreasServed from '../components/home/AreasServed';
-import FAQSection from '../components/home/FAQSection';
-import LocalSEOFooter from '../components/home/LocalSEOFooter';
-import MobileCTA from '../components/home/MobileCTA';
+import MobileCTA from '../components/home/MobileCTA'; 
+
+// 2. Lazy Imports (Below the fold - loads in the background)
+const ServicesGrid = lazy(() => import('../components/home/ServicesGrid'));
+const RecentBlogs = lazy(() => import('../components/home/RecentBlogs'));
+const Reviews = lazy(() => import('../components/home/Reviews'));
+const AreasServed = lazy(() => import('../components/home/AreasServed'));
+const FAQSection = lazy(() => import('../components/home/FAQSection'));
+const LocalSEOFooter = lazy(() => import('../components/home/LocalSEOFooter'));
 
 export default function Home() {
   // Advanced Dynamic Schema Generation
@@ -117,15 +119,21 @@ export default function Home() {
         <script type="application/ld+json">{JSON.stringify(SCHEMA_DATA)}</script>
       </Helmet>
 
-      {/* Components */}
+      {/* 3. Render Critical Components Immediately */}
       <Hero />
       <TrustStats />
-      <ServicesGrid />
-      <RecentBlogs />
-      <Reviews />
-      <AreasServed />
-      <FAQSection />
-      <LocalSEOFooter />
+
+      {/* 4. Render Non-Critical Components Lazily */}
+      <Suspense fallback={<div className="w-full h-32 flex items-center justify-center text-cyan-500 animate-pulse mt-10">Loading content...</div>}>
+        <ServicesGrid />
+        <RecentBlogs />
+        <Reviews />
+        <AreasServed />
+        <FAQSection />
+        <LocalSEOFooter />
+      </Suspense>
+
+      {/* Mobile CTA remains synchronous to ensure the sticky buttons are always ready */}
       <MobileCTA />
     </main>
   );
