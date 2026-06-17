@@ -63,25 +63,13 @@ export default function Hero() {
 
   return (
     <>
-      {/* Mobile Hero Section - Background set to transparent */}
-      <section className="min-h-screen bg-transparent pt-20 pb-16 relative overflow-hidden lg:hidden">
+      {/* Mobile Hero Section - Removed min-h-screen and adjusted padding for tighter layout */}
+      <section className="bg-transparent pt-32 pb-8 relative overflow-hidden lg:hidden">
         
         <div className="container mx-auto px-4 relative z-10">
-          {/* Logo Row - Updated to official logo */}
-          <div className="flex justify-center mb-6">
-            <img 
-              src={BUSINESS_INFO.logo} 
-              alt="Kuwait Computer Repair On Call Logo" 
-              className="h-16 w-auto object-contain drop-shadow-xl"
-              width="200"
-              height="64"
-              fetchpriority="high"
-              decoding="async"
-            />
-          </div>
-
-          {/* Headline */}
-          <h1 className="text-white text-2xl font-bold text-center leading-tight mt-4 mb-2">
+          
+          {/* Headline - Moved to top since redundant logo was removed */}
+          <h1 className="text-white text-2xl font-bold text-center leading-tight mb-3">
             Laptop Repair, MacBook Repair &<br />Computer Repair in Kuwait
           </h1>
 
@@ -94,12 +82,12 @@ export default function Hero() {
           </div>
 
           {/* Subheadline */}
-          <p className="text-blue-100 text-base text-center leading-relaxed mb-5">
+          <p className="text-blue-100 text-base text-center leading-relaxed mb-6">
             Free pickup & delivery. Expert engineer. Data-safe repairs for home and office.
           </p>
 
           {/* Primary CTAs */}
-          <div className="space-y-3 mb-3">
+          <div className="space-y-3 mb-4">
             <Button 
               size="lg" 
               asChild
@@ -123,13 +111,13 @@ export default function Hero() {
           </div>
 
           {/* Corrected Social Proof Row (Mobile) */}
-          <p className="text-white/70 text-sm text-center font-medium mt-3 mb-6">
+          <p className="text-white/70 text-sm text-center font-medium mt-2">
             4.9★ Google rating · Trusted by 150+ verified customers
           </p>
         </div>
       </section>
 
-      {/* Desktop Hero Section - Background set to transparent */}
+      {/* Desktop Hero Section - Remains unchanged */}
       <section className="hidden lg:block min-h-screen bg-transparent pt-24 pb-16 relative overflow-hidden">
         {/* Animated Background Elements */}
         <div className="absolute inset-0 transform-gpu translate-z-0">
