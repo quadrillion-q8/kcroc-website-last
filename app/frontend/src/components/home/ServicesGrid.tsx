@@ -4,14 +4,14 @@ import { ArrowRight } from 'lucide-react';
 import { SERVICES } from '../../constants/data';
 import { useFadeIn } from '../../hooks/useFadeIn';
 
-// 1. IMPORT YOUR IMAGES HERE
-import motherboardImg from '../../assets/Motherboard Repair.webp';
-import laptopImg from '../../assets/Laptop Repair.webp';
+// 1. IMPORT YOUR IMAGES HERE with hyphenated, lowercase filenames
+import motherboardImg from '../../assets/motherboard-repair.webp';
+import laptopImg from '../../assets/laptop-repair.webp';
 
 const ServiceCard = ({ service, idx }: { service: any, idx: number }) => {
   const { ref, visible } = useFadeIn();
   
-  // 2. SMART CHECKS: Look at the title to determine which image to use
+  // 2. SMART CHECKS
   const titleLower = service.title.toLowerCase();
   
   let bgImage = null;
