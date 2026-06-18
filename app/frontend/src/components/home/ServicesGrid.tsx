@@ -20,22 +20,22 @@ const ServiceCard = ({ service, idx }: { service: any, idx: number }) => {
         className="group block relative overflow-hidden bg-slate-900/30 backdrop-blur-sm p-8 rounded-3xl border border-slate-800 hover:border-cyan-500/40 transition-all duration-300 h-full hover:shadow-[0_0_30px_rgba(34,211,238,0.05)] focus-visible:ring-2 focus-visible:ring-cyan-400"
       >
         
-        {/* BACKGROUND IMAGE LAYER (Only renders for the Motherboard card) */}
+        {/* BACKGROUND IMAGE LAYER */}
         {isMotherboard && (
           <div className="absolute inset-0 z-0 overflow-hidden rounded-3xl">
             <img 
               src={motherboardImg} 
               alt="Motherboard Repair in Kuwait" 
-              // We use opacity-20 so it's subtle, and increase to opacity-40 and scale it up when the user hovers!
-              className="w-full h-full object-cover opacity-20 group-hover:opacity-40 group-hover:scale-105 transition-all duration-700"
+              // INCREASED OPACITY: Now starts at 60% and jumps to 90% on hover!
+              className="w-full h-full object-cover opacity-60 group-hover:opacity-90 group-hover:scale-105 transition-all duration-700"
               loading="lazy" 
             />
-            {/* Gradient overlay to ensure your white text stays perfectly readable */}
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/80 to-slate-900/20"></div>
+            {/* LIGHTER GRADIENT: Dark at the bottom for text, completely transparent at the top */}
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent group-hover:via-slate-950/40 transition-colors duration-700"></div>
           </div>
         )}
 
-        {/* FOREGROUND CONTENT (Kept z-10 so it sits on top of the image) */}
+        {/* FOREGROUND CONTENT */}
         <div className="relative z-10 flex flex-col h-full">
           <div className="w-14 h-14 bg-slate-950/80 backdrop-blur-md border border-slate-800 rounded-2xl flex items-center justify-center mb-6 group-hover:border-cyan-500/30 transition-colors shadow-inner">
             <service.icon className="w-6 h-6 text-cyan-400" aria-hidden="true" />
@@ -43,10 +43,10 @@ const ServiceCard = ({ service, idx }: { service: any, idx: number }) => {
           <h3 className="text-2xl font-black text-white mb-3 tracking-tight group-hover:text-cyan-400 transition-colors">
             {service.title}
           </h3>
-          <p className="text-slate-400 text-sm leading-relaxed mb-6">
+          <p className="text-slate-200 font-medium text-sm leading-relaxed mb-6 drop-shadow-md">
             {service.description}
           </p>
-          <div className="flex items-center text-cyan-500 font-bold text-sm mt-auto">
+          <div className="flex items-center text-cyan-400 font-bold text-sm mt-auto drop-shadow-md">
             View Details <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
           </div>
         </div>
