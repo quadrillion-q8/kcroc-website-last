@@ -2,8 +2,7 @@ import React, { useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { 
-  MapPin, ShieldCheck, Clock, CheckCircle2, 
-  Phone, ExternalLink, Wrench, Truck, ArrowRight 
+  MapPin, ShieldCheck, Clock, ExternalLink, Wrench, Truck, ArrowRight 
 } from 'lucide-react';
 import { BUSINESS_INFO, SERVICE_AREAS } from '../constants/data';
 
@@ -19,9 +18,25 @@ export default function LocationTemplate() {
   const waMessage = encodeURIComponent(`Hi KCROC, I'm in ${formattedCity} and need ${formattedService}.`);
   const waLink = `https://wa.me/${BUSINESS_INFO.cleanPhone}?text=${waMessage}`;
 
-  // Generate dynamic nearby areas to build a "Linking Hub"
   const nearbyAreas = SERVICE_AREAS.filter(area => area.toLowerCase() !== formattedCity.toLowerCase()).slice(0, 3);
 
+  // 1. DYNAMIC FAQ DATA
+  const FAQ_DATA = useMemo(() => [
+    {
+      question: `Do you provide free pickup for ${formattedService} in ${formattedCity}?`,
+      answer: `Yes, we provide completely free pickup and delivery for ${formattedService.toLowerCase()} services throughout ${formattedCity}. Our technicians prioritize local routes in your area to ensure fast turnaround times.`
+    },
+    {
+      question: `What is your turnaround time for ${formattedService} in ${formattedCity}?`,
+      answer: `Most ${formattedService.toLowerCase()} diagnostics are completed within 24 hours. Because we have a dedicated team for ${formattedCity}, we can often pick up your device the same day you contact us.`
+    },
+    {
+      question: `Is there a warranty for ${formattedService} services in ${formattedCity}?`,
+      answer: `Absolutely. All ${formattedService.toLowerCase()} repairs performed by KCROC in ${formattedCity} come with our standard warranty, ensuring your peace of mind.`
+    }
+  ], [formattedCity, formattedService]);
+
+  // 2. UPDATED SCHEMA INCLUDING FAQ
   const SCHEMA_DATA = useMemo(() => ({
     "@context": "https://schema.org",
     "@graph": [
@@ -34,14 +49,15 @@ export default function LocationTemplate() {
         "isPartOf": { "@id": `${BUSINESS_INFO.url}/#website` }
       },
       {
-        "@type": "Service",
-        "@id": `${pageUrl}#service`,
-        "name": `${formattedService} ${formattedCity}`,
-        "provider": { "@type": "LocalBusiness", "name": BUSINESS_INFO.name, "telephone": BUSINESS_INFO.phone },
-        "areaServed": { "@type": "City", "name": formattedCity }
+        "@type": "FAQPage",
+        "mainEntity": FAQ_DATA.map(item => ({
+          "@type": "Question",
+          "name": item.question,
+          "acceptedAnswer": { "@type": "Answer", "text": item.answer }
+        }))
       }
     ]
-  }), [formattedCity, formattedService, pageUrl]);
+  }), [formattedCity, formattedService, pageUrl, FAQ_DATA]);
 
   return (
     <main className="w-full min-h-screen bg-slate-950 text-slate-200 pt-32 pb-24">
@@ -57,16 +73,12 @@ export default function LocationTemplate() {
         <h1 className="text-4xl md:text-6xl font-black text-white mb-6">
           {formattedService} in <span className="text-cyan-400">{formattedCity}</span>
         </h1>
-        <p className="text-lg text-slate-400 max-w-2xl mx-auto mb-10">
-          We provide specialized {formattedService.toLowerCase()} services for residents in {formattedCity}. 
-          Our mobile lab team handles everything from screen replacements to complex motherboard diagnostics.
-        </p>
         <a href={waLink} className="bg-cyan-500 text-slate-950 px-8 py-4 rounded-full font-black hover:scale-105 transition-transform inline-flex items-center gap-2">
           Book {formattedCity} Pickup <ExternalLink size={20} />
         </a>
       </section>
 
-      {/* Internal Linking Hub (The "SEO Multiplier") */}
+      {/* Internal Linking Hub */}
       <section className="max-w-4xl mx-auto px-6 mb-24">
         <div className="bg-slate-900/50 p-8 rounded-3xl border border-slate-800">
           <h3 className="text-lg font-bold text-white mb-6 flex items-center gap-2">
@@ -74,11 +86,7 @@ export default function LocationTemplate() {
           </h3>
           <div className="flex flex-wrap gap-3">
             {nearbyAreas.map(area => (
-              <Link 
-                key={area} 
-                to={`/${service}-in-${area.toLowerCase()}`}
-                className="px-4 py-2 bg-slate-800 hover:bg-cyan-900/30 rounded-lg text-sm transition-colors border border-slate-700"
-              >
+              <Link key={area} to={`/${service}-in-${area.toLowerCase()}`} className="px-4 py-2 bg-slate-800 hover:bg-cyan-900/30 rounded-lg text-sm transition-colors border border-slate-700">
                 {formattedService} in {area} <ArrowRight size={14} className="inline ml-1" />
               </Link>
             ))}
@@ -86,7 +94,18 @@ export default function LocationTemplate() {
         </div>
       </section>
 
-      {/* ... rest of your existing value prop and CTA sections ... */}
+      {/* 3. DYNAMIC FAQ SECTION */}
+      <section className="max-w-3xl mx-auto px-6 mb-24">
+        <h2 className="text-2xl font-black text-white mb-8">Frequently Asked Questions for {formattedCity}</h2>
+        <div className="space-y-4">
+          {FAQ_DATA.map((item, i) => (
+            <div key={i} className="bg-slate-900/50 p-6 rounded-2xl border border-slate-800">
+              <h4 className="font-bold text-cyan-400 mb-2">{item.question}</h4>
+              <p className="text-slate-400 text-sm">{item.answer}</p>
+            </div>
+          ))}
+        </div>
+      </section>
     </main>
   );
 }
