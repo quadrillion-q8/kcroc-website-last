@@ -2,23 +2,33 @@ import React, { useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { 
-  MapPin, ShieldCheck, Clock, ExternalLink, Wrench, Truck, ArrowRight 
+  MapPin, ExternalLink, ArrowRight 
 } from 'lucide-react';
-import { BUSINESS_INFO, SERVICE_AREAS } from '../constants/data';
+import { BUSINESS_INFO, AREAS } from '../constants/data';
 
 const formatTitleCase = (slug: string = '') => 
   slug.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()).join(' ');
 
 export default function LocationTemplate() {
   const { service, city } = useParams();
-  const formattedCity = formatTitleCase(city || 'Kuwait');
+  
+  // Normalize the city for object lookup
+  const cityKey = city?.toLowerCase().replace(/\s/g, '').replace(/-/g, '') as keyof typeof AREAS;
+  const cityData = AREAS[cityKey];
+  
+  const formattedCity = cityData ? cityData.name : formatTitleCase(city || 'Kuwait');
   const formattedService = formatTitleCase(service || 'Computer Repair');
   
   const pageUrl = `${BUSINESS_INFO.url}/${service}-in-${city}`;
   const waMessage = encodeURIComponent(`Hi KCROC, I'm in ${formattedCity} and need ${formattedService}.`);
   const waLink = `https://wa.me/${BUSINESS_INFO.cleanPhone}?text=${waMessage}`;
 
-  const nearbyAreas = SERVICE_AREAS.filter(area => area.toLowerCase() !== formattedCity.toLowerCase()).slice(0, 3);
+  // Generate dynamic nearby areas
+  const allAreaKeys = Object.keys(AREAS);
+  const nearbyAreas = allAreaKeys
+    .filter(key => key !== cityKey)
+    .slice(0, 3)
+    .map(key => AREAS[key as keyof typeof AREAS].name);
 
   // 1. DYNAMIC FAQ DATA
   const FAQ_DATA = useMemo(() => [
@@ -29,14 +39,10 @@ export default function LocationTemplate() {
     {
       question: `What is your turnaround time for ${formattedService} in ${formattedCity}?`,
       answer: `Most ${formattedService.toLowerCase()} diagnostics are completed within 24 hours. Because we have a dedicated team for ${formattedCity}, we can often pick up your device the same day you contact us.`
-    },
-    {
-      question: `Is there a warranty for ${formattedService} services in ${formattedCity}?`,
-      answer: `Absolutely. All ${formattedService.toLowerCase()} repairs performed by KCROC in ${formattedCity} come with our standard warranty, ensuring your peace of mind.`
     }
   ], [formattedCity, formattedService]);
 
-  // 2. UPDATED SCHEMA INCLUDING FAQ
+  // 2. UPDATED SCHEMA
   const SCHEMA_DATA = useMemo(() => ({
     "@context": "https://schema.org",
     "@graph": [
@@ -45,7 +51,7 @@ export default function LocationTemplate() {
         "@id": `${pageUrl}#webpage`,
         "name": `${formattedService} in ${formattedCity} | KCROC`,
         "url": pageUrl,
-        "description": `Fast ${formattedService} in ${formattedCity}. Free pickup, component-level repairs, and same-day service from KCROC.`,
+        "description": cityData ? cityData.description : `Fast ${formattedService} in ${formattedCity}.`,
         "isPartOf": { "@id": `${BUSINESS_INFO.url}/#website` }
       },
       {
@@ -57,22 +63,26 @@ export default function LocationTemplate() {
         }))
       }
     ]
-  }), [formattedCity, formattedService, pageUrl, FAQ_DATA]);
+  }), [formattedCity, formattedService, pageUrl, cityData, FAQ_DATA]);
 
   return (
     <main className="w-full min-h-screen bg-slate-950 text-slate-200 pt-32 pb-24">
       <Helmet>
         <title>{formattedService} in {formattedCity} | Trusted Repair - KCROC</title>
-        <meta name="description" content={`Need ${formattedService} in ${formattedCity}? We provide expert diagnostics, component-level repair, and free pickup. No Fix, No Fee. Book your repair today.`} />
+        <meta name="description" content={cityData ? cityData.description : `Expert ${formattedService.toLowerCase()} in ${formattedCity}.`} />
         <link rel="canonical" href={pageUrl} />
         <script type="application/ld+json">{JSON.stringify(SCHEMA_DATA)}</script>
       </Helmet>
 
-      {/* Hero */}
+      {/* Hero Section */}
       <section className="px-6 text-center mb-24">
         <h1 className="text-4xl md:text-6xl font-black text-white mb-6">
           {formattedService} in <span className="text-cyan-400">{formattedCity}</span>
         </h1>
+        <p className="text-lg text-slate-400 max-w-2xl mx-auto mb-10">
+          {cityData ? cityData.description : `We provide specialized ${formattedService.toLowerCase()} services for residents in ${formattedCity}.`}
+          {cityData && ` Our team is frequently active near ${cityData.landmark}.`}
+        </p>
         <a href={waLink} className="bg-cyan-500 text-slate-950 px-8 py-4 rounded-full font-black hover:scale-105 transition-transform inline-flex items-center gap-2">
           Book {formattedCity} Pickup <ExternalLink size={20} />
         </a>
@@ -86,7 +96,7 @@ export default function LocationTemplate() {
           </h3>
           <div className="flex flex-wrap gap-3">
             {nearbyAreas.map(area => (
-              <Link key={area} to={`/${service}-in-${area.toLowerCase()}`} className="px-4 py-2 bg-slate-800 hover:bg-cyan-900/30 rounded-lg text-sm transition-colors border border-slate-700">
+              <Link key={area} to={`/${service}-in-${area.toLowerCase().replace(/\s/g, '')}`} className="px-4 py-2 bg-slate-800 hover:bg-cyan-900/30 rounded-lg text-sm transition-colors border border-slate-700">
                 {formattedService} in {area} <ArrowRight size={14} className="inline ml-1" />
               </Link>
             ))}
@@ -94,7 +104,7 @@ export default function LocationTemplate() {
         </div>
       </section>
 
-      {/* 3. DYNAMIC FAQ SECTION */}
+      {/* FAQ Section */}
       <section className="max-w-3xl mx-auto px-6 mb-24">
         <h2 className="text-2xl font-black text-white mb-8">Frequently Asked Questions for {formattedCity}</h2>
         <div className="space-y-4">
