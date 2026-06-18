@@ -1,6 +1,6 @@
 import { 
   Cpu, Gamepad2, Laptop, Monitor, ShieldCheck, 
-  Apple, Wrench, ShieldAlert 
+  Apple, Wrench 
 } from 'lucide-react';
 
 export const BUSINESS_INFO = {
@@ -9,17 +9,30 @@ export const BUSINESS_INFO = {
   phone: "+96555301913",
   cleanPhone: "96555301913",
   url: "https://www.computerrepairkuwait.com",
-  logo: "https://www.computerrepairkuwait.com/logo.png", // The fixed logo path!
+  logo: "https://www.computerrepairkuwait.com/logo.png",
   address: "Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19, Hawalli, Kuwait",
   coords: { lat: 29.3356, lng: 48.0250 },
-  googleReviewUrl: "https://search.google.com/local/writereview?placeid=YOUR_PLACE_ID" // Update with actual Place ID
+  googleReviewUrl: "https://search.google.com/local/writereview?placeid=YOUR_PLACE_ID"
 };
 
-export const SERVICE_AREAS = [
-  "Hawalli", "Salmiya", "Farwaniya", "Kuwait City", "Jahra", "Ahmadi", 
-  "Mubarak Al Kabeer", "Fahaheel", "Mangaf", "Abu Halifa", "Mahboula", 
-  "Riqqa", "Khaitan", "Jleeb", "Shuwaikh", "Sabah Al Salem"
-];
+export const AREAS = {
+  hawalli: { name: "Hawalli", description: "Centrally located near our main lab in Al Mullah Complex for rapid repairs.", landmark: "Ibn Khaldoun Street" },
+  salmiya: { name: "Salmiya", description: "Serving the vibrant Salmiya district with rapid pickup for all laptop brands.", landmark: "Salem Al-Mubarak Street" },
+  farwaniya: { name: "Farwaniya", description: "Providing professional tech support for residential and commercial clients in Farwaniya.", landmark: "Farwaniya Hospital area" },
+  kuwaitcity: { name: "Kuwait City", description: "Expert repair services for business and government clients in the capital.", landmark: "Kuwait Towers area" },
+  jahra: { name: "Jahra", description: "Dedicated collection routes for reliable hardware repairs in Jahra.", landmark: "Jahra Road" },
+  ahmadi: { name: "Ahmadi", description: "Serving the Ahmadi governorate with premium component-level diagnostics.", landmark: "Ahmadi Park" },
+  mubaralkalkabeer: { name: "Mubarak Al Kabeer", description: "Fast, reliable device restoration for families in Mubarak Al Kabeer.", landmark: "Mubarak Al Kabeer Center" },
+  fahaheel: { name: "Fahaheel", description: "Professional laptop and PC support services based in Fahaheel.", landmark: "Fahaheel Park" },
+  mangaf: { name: "Mangaf", description: "Rapid diagnostic pickup services for clients located in Mangaf.", landmark: "Mangaf Beach area" },
+  abuhalifa: { name: "Abu Halifa", description: "Comprehensive repair solutions for homes and offices in Abu Halifa.", landmark: "Abu Halifa Park" },
+  mahboula: { name: "Mahboula", description: "Trusted local technical support for residents in the Mahboula area.", landmark: "Coastal Road" },
+  riqqa: { name: "Riqqa", description: "Expert hardware diagnostics and repair pickups for the Riqqa community.", landmark: "Riqqa Co-op" },
+  khaitan: { name: "Khaitan", description: "Convenient hardware solutions and device pickup for clients in Khaitan.", landmark: "Khaitan Park" },
+  jleeb: { name: "Jleeb", description: "Reliable mobile lab services for quick troubleshooting in Jleeb Al-Shuyoukh.", landmark: "Jleeb Stadium" },
+  shuwaikh: { name: "Shuwaikh", description: "High-priority support for corporate and retail clients in the Shuwaikh industrial area.", landmark: "Shuwaikh Industrial" },
+  sabahalsalem: { name: "Sabah Al Salem", description: "Professional, fast-turnaround repairs for Sabah Al Salem residents.", landmark: "Sabah Al Salem Co-op" }
+};
 
 export const SERVICES = [
   { title: 'Laptop Repair', description: 'Comprehensive hardware diagnostics, thermal management, and restoration.', icon: Laptop, path: '/laptop-repair-kuwait' },
