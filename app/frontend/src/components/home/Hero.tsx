@@ -2,23 +2,10 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Phone, MessageCircle, Clock, Wrench, ShieldCheck, Truck, Shield, Zap, Award } from 'lucide-react';
-import { useState, useEffect } from 'react';
 import { BUSINESS_INFO } from '../../constants/data'; 
 import shopPhoto from '../../assets/shop-photo.webp'; 
 
 export default function Hero() {
-  const [statsAnimated, setStatsAnimated] = useState(false);
-  const [statsLoading, setStatsLoading] = useState(true);
-
-  useEffect(() => {
-    const loadingTimer = setTimeout(() => { setStatsLoading(false); }, 800);
-    const animationTimer = setTimeout(() => { setStatsAnimated(true); }, 1000);
-    return () => {
-      clearTimeout(loadingTimer);
-      clearTimeout(animationTimer);
-    };
-  }, []);
-
   const trustBadges = [
     { icon: Shield, text: "Data Privacy" },
     { icon: Zap, text: "ESD-Safe" }, 
@@ -56,7 +43,9 @@ export default function Hero() {
             </div>
 
             <Button size="lg" asChild className="bg-cyan-500 hover:bg-cyan-600 text-slate-950 px-8 py-6 text-lg font-black shadow-2xl">
-              <a href={`tel:${BUSINESS_INFO.phone}`}><Phone className="w-5 h-5 mr-2" /> Call Technician</a>
+              <a href={`tel:${BUSINESS_INFO.phone}`} aria-label="Call our computer repair technician now">
+                <Phone className="w-5 h-5 mr-2" /> Call Technician
+              </a>
             </Button>
           </div>
 
@@ -65,7 +54,7 @@ export default function Hero() {
             <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-slate-700/50 bg-slate-900">
               <img 
                 src={shopPhoto} 
-                alt="KCROC Workshop" 
+                alt="Professional technician working on a laptop at the KCROC workshop in Hawalli" 
                 className="w-full h-56 md:h-72 object-cover"
                 loading="eager"
               />
@@ -74,7 +63,7 @@ export default function Hero() {
               <CardContent className="p-6">
                 <div className="text-center">
                   <h3 className="text-xl font-black text-white mb-4">Get Free Diagnostic</h3>
-                  <Button asChild className="w-full bg-green-600 hover:bg-green-700 text-white font-black py-6 text-lg">
+                  <Button asChild className="w-full bg-green-600 hover:bg-green-700 text-white font-black py-6 text-lg" aria-label="Message us on WhatsApp for a free repair diagnostic">
                     <a href={`https://wa.me/${BUSINESS_INFO.cleanPhone}`} target="_blank" rel="noopener">
                       <MessageCircle className="w-5 h-5 mr-2" /> Message on WhatsApp
                     </a>
