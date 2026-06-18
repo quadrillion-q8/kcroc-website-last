@@ -3,24 +3,25 @@ import { Phone, MessageCircle } from 'lucide-react';
 import { BUSINESS_INFO } from '../../constants/data';
 
 export default function MobileCTA() {
-  const waMessage = encodeURIComponent("Hi KCROC, I need computer repair in Kuwait. Please arrange free pickup & diagnostic.");
-  const waLink = `https://wa.me/${BUSINESS_INFO.cleanPhone}?text=${waMessage}`;
-
   return (
-    <div className="fixed bottom-0 left-0 right-0 bg-slate-950/90 backdrop-blur-xl border-t border-slate-800/80 p-4 flex justify-center gap-3 z-50 md:hidden">
+    <div className="fixed bottom-0 left-0 w-full z-50 flex border-t border-slate-800 bg-slate-900/95 backdrop-blur-md">
       <a 
-        href={waLink} 
+        href={`https://wa.me/${BUSINESS_INFO.cleanPhone}`} 
         target="_blank" 
-        rel="noopener noreferrer" 
-        className="flex-1 bg-cyan-500 py-3 rounded-xl text-slate-950 font-black text-center text-sm shadow-[0_0_15px_rgba(6,182,212,0.3)] tracking-wider uppercase flex items-center justify-center gap-2 focus-visible:ring-2 focus-visible:ring-cyan-400 outline-none"
+        rel="noopener noreferrer"
+        className="flex-1 flex items-center justify-center gap-2 py-4 text-cyan-400 border-r border-slate-800 hover:bg-slate-800 transition-colors"
+        aria-label="Message Kuwait Computer Repair On Call on WhatsApp for assistance"
       >
-        <MessageCircle className="w-4 h-4" aria-hidden="true" /> Chat
+        <MessageCircle size={20} />
+        <span className="font-bold">WhatsApp</span>
       </a>
       <a 
         href={`tel:${BUSINESS_INFO.phone}`} 
-        className="flex-1 bg-slate-900 border border-slate-700 py-3 rounded-xl text-white font-bold text-center text-sm tracking-wider uppercase flex items-center justify-center gap-2 focus-visible:ring-2 focus-visible:ring-cyan-400 outline-none"
+        className="flex-1 flex items-center justify-center gap-2 py-4 text-white hover:bg-slate-800 transition-colors"
+        aria-label="Call Kuwait Computer Repair On Call directly at 55301913"
       >
-        <Phone className="w-4 h-4 text-cyan-400" aria-hidden="true" /> Call Lab
+        <Phone size={20} />
+        <span className="font-bold">Call</span>
       </a>
     </div>
   );
