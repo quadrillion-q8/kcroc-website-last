@@ -4,14 +4,22 @@ import { ArrowRight } from 'lucide-react';
 import { SERVICES } from '../../constants/data';
 import { useFadeIn } from '../../hooks/useFadeIn';
 
-// IMPORT YOUR NEW WEBP IMAGE HERE
+// 1. IMPORT YOUR IMAGES HERE
 import motherboardImg from '../../assets/Motherboard Repair.webp';
+import laptopImg from '../../assets/Laptop Repair.webp';
 
 const ServiceCard = ({ service, idx }: { service: any, idx: number }) => {
   const { ref, visible } = useFadeIn();
   
-  // Smart check: If the service title contains "Motherboard", we will apply the background image
-  const isMotherboard = service.title.toLowerCase().includes('motherboard');
+  // 2. SMART CHECKS: Look at the title to determine which image to use
+  const titleLower = service.title.toLowerCase();
+  
+  let bgImage = null;
+  if (titleLower.includes('motherboard')) {
+    bgImage = motherboardImg;
+  } else if (titleLower.includes('laptop')) {
+    bgImage = laptopImg;
+  }
 
   return (
     <div ref={ref} style={{ transitionDelay: `${idx * 50}ms` }} className={`transition-all duration-700 h-full ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
@@ -20,17 +28,16 @@ const ServiceCard = ({ service, idx }: { service: any, idx: number }) => {
         className="group block relative overflow-hidden bg-slate-900/30 backdrop-blur-sm p-8 rounded-3xl border border-slate-800 hover:border-cyan-500/40 transition-all duration-300 h-full hover:shadow-[0_0_30px_rgba(34,211,238,0.05)] focus-visible:ring-2 focus-visible:ring-cyan-400"
       >
         
-        {/* BACKGROUND IMAGE LAYER */}
-        {isMotherboard && (
+        {/* 3. DYNAMIC BACKGROUND IMAGE LAYER */}
+        {bgImage && (
           <div className="absolute inset-0 z-0 overflow-hidden rounded-3xl">
             <img 
-              src={motherboardImg} 
-              alt="Motherboard Repair in Kuwait" 
-              // INCREASED OPACITY: Now starts at 60% and jumps to 90% on hover!
+              src={bgImage} 
+              alt={`${service.title} in Kuwait`} 
               className="w-full h-full object-cover opacity-60 group-hover:opacity-90 group-hover:scale-105 transition-all duration-700"
               loading="lazy" 
             />
-            {/* LIGHTER GRADIENT: Dark at the bottom for text, completely transparent at the top */}
+            {/* Gradient Overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent group-hover:via-slate-950/40 transition-colors duration-700"></div>
           </div>
         )}
