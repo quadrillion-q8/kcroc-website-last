@@ -2,7 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Laptop, Cpu, ThermometerSnowflake, BatteryWarning, ShieldCheck, CheckCircle, ArrowRight, MessageCircle, Phone } from 'lucide-react';
 import { BUSINESS_INFO } from '../constants/data';
-import MetaSEO from '../components/seo/MetaSEO'; // Imported your new reusable SEO component
+import MetaSEO from '../components/seo/MetaSEO';
+// 1. Import your newly created SEO tools
+import SchemaMarkup from '../components/seo/SchemaMarkup';
+import { generateServiceSchema } from '../lib/seo-utils';
 
 export default function LaptopRepair() {
   const waMessage = encodeURIComponent("Hi KCROC, I need help with my Windows laptop. Please arrange a free diagnostic & pickup.");
@@ -14,25 +17,11 @@ export default function LaptopRepair() {
     { title: "Motherboard Shorts", desc: "Liquid spill or sudden death? Before buying a new laptop, let us perform chip-level micro-soldering to save your current board.", icon: Cpu }
   ];
 
-  const STRUCTURED_DATA = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "Laptop Repair Services",
-    "provider": {
-      "@type": "LocalBusiness",
-      "name": BUSINESS_INFO.name,
-      "image": BUSINESS_INFO.logo,
-      "telephone": BUSINESS_INFO.phone,
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Ibn Khaldoun St, Basement Shop 19",
-        "addressLocality": "Hawalli",
-        "addressCountry": "KW"
-      }
-    },
-    "areaServed": "Kuwait",
-    "description": "Professional Windows laptop repair, hardware diagnostics, and thermal management across Kuwait."
-  };
+  // 2. Generate the dynamic schema using your utility
+  const laptopSchema = generateServiceSchema(
+    "Laptop Repair Services",
+    "Professional Windows laptop repair, hardware diagnostics, and thermal management across Kuwait."
+  );
 
   return (
     <main className="w-full min-h-screen bg-transparent text-slate-200 selection:bg-cyan-500/30 pt-32 pb-24">
@@ -43,8 +32,8 @@ export default function LaptopRepair() {
         canonical={`${BUSINESS_INFO.url}/laptop-repair-kuwait`}
       />
       
-      {/* Structured Data for Google */}
-      <script type="application/ld+json">{JSON.stringify(STRUCTURED_DATA)}</script>
+      {/* 3. Inject the Structured Data using your new component */}
+      <SchemaMarkup schema={laptopSchema} />
 
       {/* ─── BREADCRUMBS ─── */}
       <nav aria-label="Breadcrumb" className="max-w-6xl mx-auto px-6 mb-8 relative z-10">
