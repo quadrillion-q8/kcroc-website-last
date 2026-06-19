@@ -22,6 +22,19 @@
       ]
     }
   ],
+  "redirects": [
+    { "source": "/macbook-repair", "destination": "/macbook-repair-kuwait", "permanent": true },
+    { "source": "/screen-replacement", "destination": "/screen-replacement-kuwait", "permanent": true },
+    { "source": "/laptop-repair-hawalli-kuwait", "destination": "/laptop-repair-kuwait", "permanent": true },
+    { "source": "/data-security", "destination": "/data-recovery-kuwait", "permanent": true },
+    { "source": "/gaming-pc-cooling", "destination": "/gaming-pc-repair-kuwait", "permanent": true },
+    { "source": "/chip-level-motherboard-repair-hawalli/", "destination": "/chip-level-motherboard-repair-hawalli", "permanent": true },
+    { "source": "/gaming-pc-repair-kuwait/", "destination": "/gaming-pc-repair-kuwait", "permanent": true },
+    { "source": "/laptop-repair-kuwait/", "destination": "/laptop-repair-kuwait", "permanent": true },
+    { "source": "/macbook-repair-kuwait/", "destination": "/macbook-repair-kuwait", "permanent": true },
+    { "source": "/screen-replacement-kuwait/", "destination": "/screen-replacement-kuwait", "permanent": true },
+    { "source": "/data-recovery-kuwait/", "destination": "/data-recovery-kuwait", "permanent": true }
+  ],
   "rewrites": [
     {
       "source": "/((?!assets/).*)",
