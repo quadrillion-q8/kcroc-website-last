@@ -1,437 +1,628 @@
-import { Helmet } from 'react-helmet-async';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { 
-  ShieldCheck, Phone, ArrowLeft, Monitor, AlertTriangle, 
-  Laptop, Droplets, Wind, Sun, MessageCircle, CheckCircle, 
-  Info, PenTool, Thermometer, MapPin, HardDrive, Wrench, 
-  Clock, Zap, ShieldAlert, Cpu
-} from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { 
+  Monitor, Shield, AlertTriangle, CheckCircle2, Phone, MessageCircle, 
+  Clock, Flame, Zap, Sun, Wind, Droplets, ShieldAlert, Wrench, MapPin,
+  ChevronDown
+} from 'lucide-react';
+import { BUSINESS_INFO } from '../constants/data';
+import MetaSEO from '../components/seo/MetaSEO';
+import SchemaMarkup from '../components/seo/SchemaMarkup';
 
-// ─── Schema Module ───────────────────────────────────────────────────────────
-const blogSchema = {
+/* ─────────────────────────────────────────────────────────────────────────────
+   1. PAGE DATA & SEO
+───────────────────────────────────────────────────────────────────────────── */
+
+const PAGE_URL = `${BUSINESS_INFO.url}/blog/how-to-protect-laptop-screen`;
+const HERO_IMAGE_URL = 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_1200/v1769908595/Dell_laptop_screen_protection_installation_-_Kuwait_City_service_ghokkb.jpg';
+const PUBLISHED_DATE = '2026-06-01T08:00:00+03:00';
+
+const WA_LINK = `https://wa.me/${BUSINESS_INFO.cleanPhone}?text=${encodeURIComponent(
+  'Hi KCROC, I read your screen protection guide and need a display diagnostic. Please arrange a free pickup.'
+)}`;
+
+const STRUCTURED_DATA = {
   "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "LocalBusiness",
-      "@id": "https://www.computerrepairkuwait.com/#business",
-      "name": "Kuwait Computer Repair On Call (KCROC)",
-      "url": "https://www.computerrepairkuwait.com",
-      "telephone": "+96555301913",
+      "@id": `${BUSINESS_INFO.url}/#business`,
+      "name": BUSINESS_INFO.name,
+      "url": BUSINESS_INFO.url,
+      "telephone": BUSINESS_INFO.phone,
       "email": "quadrillion1980@gmail.com",
-      "image": "https://www.computerrepairkuwait.com/logo.png",
       "address": { 
         "@type": "PostalAddress", 
-        "streetAddress": "Al Mullah Complex, Ibn Khaldoun St, Basement Shop 19", 
+        "streetAddress": "Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19", 
         "addressLocality": "Hawalli", 
         "addressCountry": "KW" 
-      },
-      "geo": { 
-        "@type": "GeoCoordinates", 
-        "latitude": 29.3356, 
-        "longitude": 48.025 
-      },
-      "openingHoursSpecification": { 
-        "@type": "OpeningHoursSpecification", 
-        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], 
-        "opens": "10:00", 
-        "closes": "22:00" 
       }
     },
     {
       "@type": "WebPage",
-      "@id": "https://www.computerrepairkuwait.com/blog/how-to-protect-laptop-screen#webpage",
-      "url": "https://www.computerrepairkuwait.com/blog/how-to-protect-laptop-screen",
+      "@id": `${PAGE_URL}#webpage`,
+      "url": PAGE_URL,
       "name": "How to Protect Your Laptop Screen & Repair Guide | KCROC",
-      "isPartOf": { "@id": "https://www.computerrepairkuwait.com/#website" }
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.computerrepairkuwait.com/" },
-        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.computerrepairkuwait.com/blog" },
-        { "@type": "ListItem", "position": 3, "name": "Laptop Screen Protection & Repair Guide" }
-      ]
+      "isPartOf": { "@id": `${BUSINESS_INFO.url}/#website` },
+      "breadcrumb": { "@id": `${PAGE_URL}#breadcrumb` }
     },
     {
       "@type": "Article",
-      "@id": "https://www.computerrepairkuwait.com/blog/how-to-protect-laptop-screen#article",
+      "@id": `${PAGE_URL}#article`,
       "headline": "How to Protect Your Laptop Screen: The Ultimate Expert Care & Repair Guide",
       "description": "Expert advice from KCROC technicians on preventing laptop screen damage. Learn the physics of screen failure, Kuwait climate impacts, and repair costs.",
       "author": { 
-        "@type": "Organization", 
-        "name": "KCROC Technical Team",
-        "url": "https://www.computerrepairkuwait.com",
-        "logo": { "@type": "ImageObject", "url": "https://www.computerrepairkuwait.com/logo.png" }
+        "@type": "Person", 
+        "name": "Imran Natiq",
+        "url": `${BUSINESS_INFO.url}/about`
       },
-      "publisher": { "@id": "https://www.computerrepairkuwait.com/#business" },
-      "mainEntityOfPage": { "@id": "https://www.computerrepairkuwait.com/blog/how-to-protect-laptop-screen#webpage" },
-      "articleSection": "Hardware Maintenance & Repair Guides",
-      "datePublished": "2026-06-01T08:00:00+03:00",
-      "dateModified": "2026-06-11T10:00:00+03:00",
-      "image": "https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_1200/v1769908595/Dell_laptop_screen_protection_installation_-_Kuwait_City_service_ghokkb.jpg",
-      "wordCount": 1850,
-      "inLanguage": "en-KW",
-      "keywords": "protect laptop screen, laptop screen repair Kuwait, laptop display replacement, cracked laptop screen prevention, laptop hinge repair Hawalli, fix MacBook screen Kuwait"
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        { "@type": "Question", "name": "Can a cracked laptop screen be repaired?", "acceptedAnswer": { "@type": "Answer", "text": "No, physically cracked LCD or OLED panels cannot be repaired; the entire display panel assembly must be replaced. At KCROC, we provide professional screen replacement for all major brands in Kuwait." } },
-        { "@type": "Question", "name": "How much does laptop screen replacement cost in Kuwait?", "acceptedAnswer": { "@type": "Answer", "text": "Costs vary depending on the model, resolution (FHD, 4K), and panel type (LCD vs OLED). Standard laptop screens generally range from 20 to 45 KD, while premium MacBook or touchscreens cost more. We provide free, transparent quotes before any repair." } },
-        { "@type": "Question", "name": "Can a laptop screen crack internally?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Internal fractures occur when pressure is applied to the laptop lid without breaking the outer glass, often causing ink-like black spots, dead pixels, or colored vertical lines." } },
-        { "@type": "Question", "name": "How long does it take to replace a laptop screen?", "acceptedAnswer": { "@type": "Answer", "text": "If the screen is in stock at our Hawalli lab, replacement takes 1 to 2 hours. With our free pickup and delivery service, you can generally expect a 24-hour turnaround across Kuwait governorates." } },
-        { "@type": "Question", "name": "Can heat damage a laptop screen?", "acceptedAnswer": { "@type": "Answer", "text": "Absolutely. Leaving a laptop in a hot vehicle in Kuwait can warp the display layers, melt internal adhesives, and cause severe backlight bleeding or permanent panel delamination." } },
-        { "@type": "Question", "name": "Do you offer free pickup for screen repairs?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, Kuwait Computer Repair On Call offers free pickup and delivery for all screen replacements, serving Hawalli, Salmiya, Kuwait City, Farwaniya, Jahra, and Ahmadi." } },
-        { "@type": "Question", "name": "Can keyboard debris crack a screen?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, this is one of the most common causes of screen damage. A single grain of sand or crumb acts as a pivot point, cracking the glass instantly when the lid is closed." } },
-        { "@type": "Question", "name": "What should I do if my screen starts flickering?", "acceptedAnswer": { "@type": "Answer", "text": "Flickering can be a failing GPU, a loose eDP display cable, or motherboard failure. Stop moving the lid, back up your data, and contact a professional for a hardware diagnostic." } }
-      ]
+      "publisher": { "@id": `${BUSINESS_INFO.url}/#business` },
+      "mainEntityOfPage": { "@id": `${PAGE_URL}#webpage` },
+      "datePublished": PUBLISHED_DATE,
+      "image": HERO_IMAGE_URL
     }
   ]
 };
 
+/* ─────────────────────────────────────────────────────────────────────────────
+   2. MATRIX DATA ARRAYS
+───────────────────────────────────────────────────────────────────────────── */
+
+const statistics = [
+  { value: '1-2 Hours', label: 'Screen Replacement', icon: Clock, color: 'text-cyan-400' },
+  { value: '100%', label: 'Data Safety Isolation', icon: Shield, color: 'text-emerald-400' },
+  { value: '30 Days', label: 'Hardware Warranty', icon: CheckCircle2, color: 'text-blue-400' }
+];
+
+const challenges = [
+  {
+    title: 'Pressure Point Stress',
+    description: 'Packing a laptop into a tight bag compresses the lid, causing the chassis to bend and crush sub-pixel matrix structures without throwing any external glass cracks.',
+    icon: ShieldAlert,
+    color: 'text-red-500',
+    bgColor: 'bg-red-500/10',
+    borderColor: 'border-red-500/30',
+    image: HERO_IMAGE_URL
+  },
+  {
+    title: 'Keyboard Debris',
+    description: 'Small crumbs, sand, or earbuds left on the keyboard deck act as hard mechanical fulcrums. Closing the screen lid concentrates immense pressure on that point, shattering the matrix instantly.',
+    icon: AlertTriangle,
+    color: 'text-amber-500',
+    bgColor: 'bg-amber-500/10',
+    borderColor: 'border-amber-500/30',
+    image: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1781139061/2026-01-22_9_qfanpt.jpg'
+  },
+  {
+    title: 'Extreme Vehicular Heat',
+    description: 'Leaving machines in cars during a Kuwait summer allows indoor cabin heat to surpass 65°C. This liquefies the Optically Clear Adhesive (OCA) holding panel sheets together, yielding delamination.',
+    icon: Sun,
+    color: 'text-orange-500',
+    bgColor: 'bg-orange-500/10',
+    borderColor: 'border-orange-500/30',
+    image: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1769908596/CPU_cooling_fan_replacement_and_maintenance_-_Salmiya_client_mflsla.png'
+  },
+  {
+    title: 'Condensation Damage',
+    description: 'Moving your laptop rapidly from freezing air-conditioned office suites straight into outdoor humidity creates rapid internal dew condensation, shorting panel gate drivers instantly.',
+    icon: Droplets,
+    color: 'text-blue-500',
+    bgColor: 'bg-blue-500/10',
+    borderColor: 'border-blue-500/30',
+    image: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1769908596/Whats-App-Image-2026-01-29-at-3-19-40-AM_i2mpms.jpg'
+  }
+];
+
+const screenTiers = [
+  {
+    component: 'Micro-Scratches',
+    safe: 'Dust Particles',
+    warning: 'Keyboard Marks',
+    critical: 'Anti-Glare Wear',
+    description: 'Abrasive desert micro-sand ruins panel coatings over structural closure iterations.'
+  },
+  {
+    component: 'Sub-Pixel Defect',
+    safe: '0-2 Dead Pixels',
+    warning: 'Stuck Pixel Lines',
+    critical: 'Spreading Ink Spots',
+    description: 'Localized external compression fractures cause internal liquid crystal matrix bleeds.'
+  },
+  {
+    component: 'Display Interface',
+    safe: 'Stable Link',
+    warning: 'Bezel-Angle Flicker',
+    critical: 'Solid Color Screen',
+    description: 'Torsional corner lifting strains standard eDP ribbon cables, causing signal breakages.'
+  }
+];
+
+const repairCatalog = [
+  {
+    title: 'Standard FHD LCD Screen Swap',
+    description: 'Precision alignment of high-clarity 1080p replacement display matrices.',
+    price: 'From 20 KD',
+    duration: '1-2 Hours',
+    icon: Monitor,
+    image: HERO_IMAGE_URL,
+    benefits: [
+      'Original factory specifications',
+      'Zero dead-pixel checking routine',
+      'Refreshed viewing angles',
+      'Full backlight driver integration'
+    ]
+  },
+  {
+    title: 'Premium 4K & OLED Matrix Fitting',
+    description: 'Specialized installation of ultra-high definition and organic LED screens.',
+    price: 'From 45 KD',
+    duration: 'Same Day',
+    icon: Zap,
+    image: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1781139061/2026-01-22_9_qfanpt.jpg',
+    benefits: [
+      'Perfect color accuracy validation',
+      'Deep contrast matching protocols',
+      'Power delivery sync testing',
+      'HDR compatibility restoration'
+    ]
+  },
+  {
+    title: 'MacBook Retina Assembly Fitting',
+    description: 'Full display assembly replacement preserving internal webcam, True Tone, and sensor array operations.',
+    price: 'Model Dependent',
+    duration: '1-2 Hours',
+    icon: Laptop,
+    image: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1769908595/Dell_laptop_screen_protection_installation_-_Kuwait_City_service_ghokkb.jpg',
+    benefits: [
+      'Preserves original design tolerances',
+      'ALS sensor hardware matching',
+      'Original factory hinge tracking',
+      'Flawless metal finish matches'
+    ]
+  }
+];
+
+const brandMatrix = [
+  {
+    brand: 'Apple MacBook',
+    models: 'Pro / Air / Retina Series',
+    expertise: 'Zero-clearance design adjustments, eDP link alignments, assembly logic programming.',
+    common: 'Webcam cover crunches, corner drop edge dents, hinge binding lines'
+  },
+  {
+    brand: 'Dell Engineering',
+    models: 'XPS / Latitude / Inspiron',
+    expertise: 'Touch panel configurations, infinity edge trace tracking, framing gasket re-seals.',
+    common: 'Chassis hinge plate breakages, internal cable friction cuts'
+  },
+  {
+    brand: 'HP Hardware',
+    models: 'Spectre / Envy / EliteBook',
+    expertise: 'Privacy screen filter diagnostics, active digitizer checks, bracket fitting.',
+    common: 'Top bezel compression bleeding, bracket clip unseating issues'
+  },
+  {
+    brand: 'Lenovo Systems',
+    models: 'ThinkPad / Yoga / IdeaPad',
+    expertise: '360° rotational axle stress balancing, touch matrix calibration.',
+    common: 'Keyboard mark surface scratches, severe hinge mechanism lockups'
+  }
+];
+
+const preventionGuide = [
+  { title: 'The Rigid Padded Sleeve Rule', description: 'Always house machines in solid shell structures rather than throwing loose laptops directly inside un-reinforced gear bags.', icon: Shield, frequency: 'Every Transport' },
+  { title: 'Top-Center Lifting Execution', description: 'Open your laptop exclusively from the absolute midpoint of the top bezel to balance structural torque loads safely.', icon: Wrench, frequency: 'Continuous' },
+  { title: 'Webcam Slider Elimination', description: 'Remove aftermarket physical webcam shutter plates entirely to prevent crushing thin display glass faces.', icon: Monitor, frequency: 'Immediate Action' },
+  { title: 'Microfiber deck cleaning', description: 'Clear dust off the physical frame deck before any closure step to negate micro- Fulcrum damage hazards.', icon: Wind, frequency: 'Daily Basis' }
+];
+
+const faq = [
+  { q: 'Can a physically cracked display panel be repaired without replacement?', a: 'No. Fractured LCD or OLED internal pixel substrates cannot be glued back together or software-resolved. The absolute only hardware route to restore display health is a structural panel assembly change.' },
+  { q: 'How long does a complete laptop screen replacement procedure take?', a: 'If components are pre-stocked within our specialized Hawalli lab shelves, physical screen replacements take between 1 to 2 hours maximum to complete.' },
+  { q: 'What is the root cause of internal display bleeding when outer glass is safe?', a: 'Lids are highly flexible. If external force hits your bag, the plastic/aluminum backing bends inward, focusing a crushing force that splits inner pixel layers while the elastic outer panel face survives unbroken.' },
+  { q: 'Does your laptop screen replacement include full warranty protection?', a: 'Yes. Every successful structural display panel swap carried out within our center leaves with comprehensive warranty protection covering performance stability.' }
+];
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   3. MAIN VISUAL COMPONENT
+───────────────────────────────────────────────────────────────────────────── */
+
 export default function BlogScreenProtection() {
   return (
-    <main className="min-h-screen bg-gray-950 text-gray-200">
-      <Helmet htmlAttributes={{ lang: 'en' }}>
-        <title>How to Protect Your Laptop Screen: Expert Repair Guide | KCROC</title>
-        <meta name="description" content="Discover how to protect your laptop screen from damage. Learn the physics of screen failure, Kuwait climate impacts, and when to seek professional screen repair." />
-        <link rel="canonical" href="https://www.computerrepairkuwait.com/blog/how-to-protect-laptop-screen" />
+    <div className="min-h-screen bg-gray-950 text-white selection:bg-cyan-500/30">
+      <MetaSEO
+        title="How to Protect Your Laptop Screen: Expert Repair Guide | KCROC"
+        description="Discover how to protect your laptop screen from damage. Learn the physics of screen failure, Kuwait climate impacts, and when to seek professional screen repair."
+        canonical={PAGE_URL}
+      />
+      <SchemaMarkup schema={STRUCTURED_DATA} />
+
+      {/* Hero Header Area */}
+      <section className="relative pt-32 pb-24 px-4 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 via-transparent to-cyan-500/10"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(16,185,129,0.1),transparent_50%)]"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(6,182,212,0.1),transparent_50%)]"></div>
         
-        {/* Open Graph Tags */}
-        <meta property="og:type" content="article" />
-        <meta property="og:title" content="How to Protect Your Laptop Screen: Expert Repair Guide | KCROC" />
-        <meta property="og:description" content="Discover how to protect your laptop screen from damage in Kuwait. Professional maintenance tips, repair costs, and failure diagnostics." />
-        <meta property="og:url" content="https://www.computerrepairkuwait.com/blog/how-to-protect-laptop-screen" />
-        <meta property="og:image" content="https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_1200/v1769908595/Dell_laptop_screen_protection_installation_-_Kuwait_City_service_ghokkb.jpg" />
-        <meta property="og:site_name" content="Kuwait Computer Repair On Call" />
-        
-        <script type="application/ld+json">{JSON.stringify(blogSchema)}</script>
-      </Helmet>
-      
-      {/* Article Hero */}
-      <section className="pt-32 pb-16 px-6 border-b border-gray-800 bg-gradient-to-b from-gray-900 to-gray-950">
-        <div className="max-w-4xl mx-auto">
-          <Link to="/" className="text-emerald-400 hover:text-emerald-300 transition-colors flex items-center gap-2 mb-8 font-semibold w-fit">
-            <ArrowLeft size={16} /> Back to Home
-          </Link>
-          
-          <Badge className="mb-6 bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 px-4 py-2">
-            <Monitor className="w-4 h-4 mr-2 inline" /> Hardware Maintenance Guide
-          </Badge>
-          
-          <h1 className="text-4xl md:text-6xl font-black mb-6 text-white tracking-tight leading-tight">
-            How to Protect Your Laptop Screen: <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">The Ultimate Expert Guide</span>
-          </h1>
-          
-          <div className="flex flex-wrap items-center gap-6 text-gray-400 text-sm mt-8 pb-4">
-            <div className="flex items-center gap-2">
-              <div className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center border border-gray-700">
-                <Wrench size={18} className="text-emerald-400" />
-              </div>
-              <div>
-                <p className="font-bold text-gray-200">KCROC Technical Team</p>
-                <p>20+ Years Hardware Experience</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-2 border-l border-gray-800 pl-6">
-              <MapPin size={16} className="text-gray-500" />
-              <span>Hawalli, Kuwait</span>
-            </div>
-            <div className="flex items-center gap-2 border-l border-gray-800 pl-6">
-              <CheckCircle size={16} className="text-emerald-500" />
-              <span>Verified Repair Insights</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Main Content Body */}
-      <section className="py-16 px-6">
-        <div className="max-w-4xl mx-auto">
-          
-          {/* Introduction */}
-          <div className="text-xl text-gray-300 leading-relaxed mb-12 space-y-6">
-            <p>
-              Your laptop screen is a marvel of modern engineering, packing millions of microscopic pixels into a panel only millimeters thick. Unfortunately, to achieve ultra-thin aesthetics, manufacturers have drastically reduced the structural rigidity of modern laptop lids. It is, without question, the most fragile component of your machine.
-            </p>
-            <p>
-              As the leading <Link to="/laptop-repair-hawalli-kuwait" className="text-emerald-400 font-semibold hover:underline">laptop repair specialists in Kuwait</Link>, our technicians at <strong>Kuwait Computer Repair On Call (KCROC)</strong> replace hundreds of shattered, bleeding, and glitching displays every year. Through our extensive workshop experience in Hawalli, we've found that over 80% of these costly hardware failures were entirely preventable.
-            </p>
-            <p>
-              Whether you are commuting to a corporate office in Kuwait City, studying at a café in Salmiya, or running a business in Farwaniya, this comprehensive technical guide will teach you exactly how laptop screens fail, how Kuwait's unique climate destroys them, and the proven steps you must take to protect your investment.
-            </p>
-          </div>
-
-          <figure className="my-12 rounded-2xl overflow-hidden border border-gray-800 bg-gray-900">
-            <img 
-              src="https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_1000/v1769908595/Dell_laptop_screen_protection_installation_-_Kuwait_City_service_ghokkb.jpg" 
-              alt="Technician performing laptop screen protection installation and diagnostic in Kuwait City" 
-              className="w-full h-auto object-cover max-h-[500px]"
-              loading="lazy"
-            />
-            <figcaption className="p-4 text-sm text-gray-400 text-center italic bg-gray-900/50">
-              A KCROC technician diagnosing a damaged laptop display panel at our Hawalli workshop.
-            </figcaption>
-          </figure>
-
-          {/* The Physics of Screen Failure */}
-          <h2 className="text-3xl font-bold text-white mb-6 flex items-center gap-3">
-            <Cpu className="text-emerald-500" /> The Engineering Behind Screen Failure
-          </h2>
-          <div className="space-y-6 text-gray-300 text-lg leading-relaxed mb-12">
-            <p>
-              To understand how to protect your screen, you must understand how it fails. Modern displays (both LCD and OLED) are built using a "sandwich" of incredibly thin layers: protective glass, polarizing filters, liquid crystal or organic diode layers, and backlight diffusers. 
-            </p>
-            <p>
-              Because the outer chassis is so thin, the display panel itself absorbs almost all kinetic energy when the laptop is compressed, twisted, or impacted. 
-            </p>
-            <ul className="list-disc pl-6 space-y-4 text-gray-400">
-              <li><strong className="text-gray-200">Pressure Damage:</strong> Often leaves no external glass cracks. Instead, internal pressure crushes the liquid crystal matrix, resulting in permanent, ink-like black spots (dead pixels) that slowly spread across the screen.</li>
-              <li><strong className="text-gray-200">Torsional Twist:</strong> Opening the laptop by pulling heavily on one corner bends the delicate internal eDP display cables and twists the glass. This leads to vertical colored lines, flickering, and eventual hinge failure.</li>
-              <li><strong className="text-gray-200">Backlight Failure:</strong> Impact to the bottom bezel often shorts the inverter board or crushes the LED backlight strip, leaving the screen functioning but too dark to see without a flashlight.</li>
-            </ul>
-          </div>
-
-          {/* Kuwait's Climate */}
-          <Card className="bg-gray-900/40 border-gray-800 my-12 overflow-hidden">
-            <div className="h-2 bg-gradient-to-r from-orange-500 to-red-500 w-full" />
-            <CardContent className="p-8">
-              <h3 className="text-2xl font-bold text-white mb-4 flex items-center gap-3">
-                <Thermometer className="text-orange-500" /> Kuwait's Climate: A Screen's Worst Enemy
-              </h3>
-              <p className="text-gray-300 text-lg mb-6">
-                Our local environment puts extreme stress on portable electronics. Based on our repair data across Kuwait governorates, environmental damage is a leading cause of screen failure:
-              </p>
-              <ul className="space-y-6">
-                <li className="flex items-start gap-4">
-                  <Sun className="text-orange-400 mt-1 flex-shrink-0 w-6 h-6" />
-                  <div>
-                    <strong className="text-white text-lg block mb-1">Extreme Heat Expansion</strong>
-                    <span className="text-gray-400">Leaving a laptop in a parked car during a Kuwait summer is disastrous. The extreme heat melts the OCA (Optically Clear Adhesive) binding the screen layers, causing the display to warp, delaminate, and suffer massive backlight bleeding around the edges.</span>
-                  </div>
-                </li>
-                <li className="flex items-start gap-4">
-                  <Wind className="text-yellow-400 mt-1 flex-shrink-0 w-6 h-6" />
-                  <div>
-                    <strong className="text-white text-lg block mb-1">Airborne Desert Dust</strong>
-                    <span className="text-gray-400">Fine sand naturally settles into the keyboard deck during dust storms. When the lid is closed tightly, these abrasive micro-particles grind against the display's anti-glare coating, causing permanent micro-scratches.</span>
-                  </div>
-                </li>
-                <li className="flex items-start gap-4">
-                  <Droplets className="text-blue-400 mt-1 flex-shrink-0 w-6 h-6" />
-                  <div>
-                    <strong className="text-white text-lg block mb-1">A/C Condensation Shorts</strong>
-                    <span className="text-gray-400">Transporting a laptop from a freezing air-conditioned office directly into the humid summer heat can cause internal condensation. Water droplets form on the sensitive display connector on the <Link to="/chip-level-motherboard-repair-hawalli" className="text-emerald-400 hover:underline">laptop motherboard</Link>, causing immediate electrical shorts.</span>
-                  </div>
-                </li>
-              </ul>
-            </CardContent>
-          </Card>
-
-          {/* The Core Preventative Tips */}
-          <h2 className="text-3xl font-bold text-white mb-8 mt-16">The 7 Rules of Laptop Screen Protection</h2>
-          
-          <div className="space-y-10">
-            <div className="bg-gray-900/30 p-6 rounded-2xl border border-gray-800">
-              <h3 className="text-2xl font-bold text-emerald-400 mb-3 flex items-center gap-2"><ShieldCheck /> 1. Invest in Proper Transport Protection</h3>
-              <p className="text-gray-300 text-lg">Carrying a bare laptop in a backpack alongside heavy books, chargers, and metal water bottles is a guarantee for pressure damage. Always use a rigid, padded laptop sleeve. The sleeve acts as a shock absorber, dispersing kinetic energy away from the glass panel during your daily commute.</p>
-            </div>
-
-            <div className="bg-gray-900/30 p-6 rounded-2xl border border-gray-800">
-              <h3 className="text-2xl font-bold text-emerald-400 mb-3 flex items-center gap-2"><Laptop /> 2. Master the "Center Lift" Technique</h3>
-              <p className="text-gray-300 text-lg">Never open the lid by pulling aggressively from one corner. This forces the entire resistance of both metal hinges onto one side of the fragile display glass. Always open your laptop by lifting gently from the top-center of the bezel to distribute the weight evenly.</p>
-            </div>
-
-            <div className="bg-gray-900/30 p-6 rounded-2xl border border-gray-800">
-              <h3 className="text-2xl font-bold text-emerald-400 mb-3 flex items-center gap-2"><AlertTriangle /> 3. Beware of Keyboard Debris (The #1 Killer)</h3>
-              <p className="text-gray-300 text-lg">This is the most common cause of cracked screens we see at our Hawalli workshop. A stray earbud, a pen, or even a hard breadcrumb left on the keyboard acts as a lever pivot point. When you close the lid, all the force is concentrated on that tiny object, shattering the glass instantly.</p>
-            </div>
-
-            <div className="bg-gray-900/30 p-6 rounded-2xl border border-gray-800">
-              <h3 className="text-2xl font-bold text-emerald-400 mb-3 flex items-center gap-2"><Monitor /> 4. Stop Using Thick Webcam Covers</h3>
-              <p className="text-gray-300 text-lg">Modern ultrabooks and <Link to="/macbook-repair" className="text-emerald-400 hover:underline">Apple MacBooks</Link> are engineered with zero-clearance tolerances between the glass and the keyboard deck. Sticking a hard plastic webcam slider alters this clearance. When the lid is closed, the glass is forced to bend around the plastic cover, resulting in an immediate fracture.</p>
-            </div>
-
-            <div className="bg-gray-900/30 p-6 rounded-2xl border border-gray-800">
-              <h3 className="text-2xl font-bold text-emerald-400 mb-3 flex items-center gap-2"><Droplets /> 5. Clean with Absolute Care</h3>
-              <p className="text-gray-300 text-lg">Never spray Windex, alcohol, or any liquid directly onto your screen. The liquid rapidly runs down the glass, pools at the bottom bezel, and shorts out the display inverter board. Lightly dampen a clean microfiber cloth first, then gently wipe the display in wide, circular motions.</p>
-            </div>
-
-            <div className="bg-gray-900/30 p-6 rounded-2xl border border-gray-800">
-              <h3 className="text-2xl font-bold text-emerald-400 mb-3 flex items-center gap-2"><Sun /> 6. Manage Temperature Exposure</h3>
-              <p className="text-gray-300 text-lg">As mentioned, heat is a silent killer. Never leave your laptop exposed to direct sunlight near a window or inside a vehicle. The thermal expansion causes the metal chassis to expand at a different rate than the glass, creating tension that can pop the screen right out of its bezel.</p>
-            </div>
-
-            <div className="bg-gray-900/30 p-6 rounded-2xl border border-gray-800">
-              <h3 className="text-2xl font-bold text-emerald-400 mb-3 flex items-center gap-2"><Wind /> 7. Mind Your Environment</h3>
-              <p className="text-gray-300 text-lg">Avoid leaving your laptop open on the floor, on a bed, or precariously near the edge of a desk. Accidental stepping, sitting, or a quick knock off a table accounts for nearly 40% of all structural display damage. Treat your laptop like an expensive pane of glass, because fundamentally, it is.</p>
-            </div>
-          </div>
-
-          <figure className="my-12 rounded-2xl overflow-hidden border border-gray-800 bg-gray-900 flex justify-center p-6">
-            <img 
-              src="https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1769908594/Professional_service_environment_-_KCROC_workshop_Hawalli_xi7rhy.jpg" 
-              alt="Clean professional environment at KCROC workshop handling delicate laptop screen components" 
-              className="w-full h-auto object-cover max-h-[400px] rounded-xl"
-              loading="lazy"
-            />
-          </figure>
-
-          {/* Mistakes Made After Damage */}
-          <h2 className="text-3xl font-bold text-white mb-6 mt-16">The Biggest Mistakes to Avoid AFTER Screen Damage</h2>
-          <div className="grid sm:grid-cols-2 gap-6 mb-12">
-            <div className="bg-red-950/20 border border-red-900/30 p-6 rounded-xl">
-              <h4 className="font-bold text-red-400 flex items-center gap-2 mb-2"><ShieldAlert size={18} /> Pressing the Glass</h4>
-              <p className="text-gray-300 text-sm">Users often press on cracked glass or spreading black ink spots to "see how bad it is." This drives microscopic glass shards deep into the backlight layers, turning a simple screen replacement into a messy, complicated repair.</p>
-            </div>
-            <div className="bg-red-950/20 border border-red-900/30 p-6 rounded-xl">
-              <h4 className="font-bold text-red-400 flex items-center gap-2 mb-2"><HardDrive size={18} /> Delaying Data Backup</h4>
-              <p className="text-gray-300 text-sm">If your screen goes black after a drop, the hard drive or motherboard may also be failing. Immediately connect an external monitor to verify functionality and <Link to="/data-security" className="text-emerald-400 hover:underline">backup your critical data</Link> before the system dies completely.</p>
-            </div>
-          </div>
-
-          {/* Repair vs Replace & Costs */}
-          <h2 className="text-3xl font-bold text-white mb-6 mt-16 flex items-center gap-3">
-            <Wrench className="text-emerald-500" /> Repair vs. Replace: The Kuwait Market Reality
-          </h2>
-          <div className="space-y-6 text-gray-300 text-lg leading-relaxed mb-12">
-            <p>
-              A common question we receive at our workshop is: <em>"Can you just fix the glass, or is the laptop ruined?"</em>
-            </p>
-            <p>
-              If the display panel is physically cracked, bleeding ink, or showing permanent colored lines, the actual LCD/OLED panel is destroyed. It cannot be "glued" or software-repaired. However, <strong>you absolutely do not need to buy a new laptop.</strong>
-            </p>
-            <p>
-              At KCROC, we perform factory-grade display assembly replacements. We source OEM-quality panels and swap out the broken screen, restoring your laptop for a fraction of the cost of a new machine. 
-            </p>
-            <p>
-              <strong>Cost Breakdown Context:</strong> In Kuwait, a standard 1080p FHD laptop screen replacement is incredibly affordable, making it highly worth repairing. Premium touchscreens, 4K displays, and MacBook Retina assemblies require higher-end parts, but are still vastly cheaper than replacing a 500+ KD machine.
-            </p>
-          </div>
-
-          {/* The KCROC Process */}
-          <Card className="bg-gray-900/50 border-gray-800 my-16">
-            <CardHeader className="border-b border-gray-800 pb-6 mb-6">
-              <CardTitle className="text-2xl font-bold text-white text-center">The KCROC Screen Replacement Process</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid md:grid-cols-3 gap-6">
-                <div className="text-center">
-                  <div className="w-12 h-12 bg-emerald-500/10 rounded-full flex items-center justify-center mx-auto mb-4 border border-emerald-500/20">
-                    <MapPin className="text-emerald-400" size={24} />
-                  </div>
-                  <h4 className="font-bold text-white mb-2">1. Free Pickup</h4>
-                  <p className="text-sm text-gray-400">We collect your damaged laptop directly from your home or office, anywhere in Kuwait.</p>
-                </div>
-                <div className="text-center">
-                  <div className="w-12 h-12 bg-emerald-500/10 rounded-full flex items-center justify-center mx-auto mb-4 border border-emerald-500/20">
-                    <Monitor className="text-emerald-400" size={24} />
-                  </div>
-                  <h4 className="font-bold text-white mb-2">2. Free Diagnosis</h4>
-                  <p className="text-sm text-gray-400">Our technicians inspect the screen, hinges, and display cables to ensure no hidden motherboard damage exists.</p>
-                </div>
-                <div className="text-center">
-                  <div className="w-12 h-12 bg-emerald-500/10 rounded-full flex items-center justify-center mx-auto mb-4 border border-emerald-500/20">
-                    <Zap className="text-emerald-400" size={24} />
-                  </div>
-                  <h4 className="font-bold text-white mb-2">3. Rapid Repair</h4>
-                  <p className="text-sm text-gray-400">We provide a transparent quote, install a pristine new panel, test it rigorously, and deliver it back.</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Brands Supported */}
-          <div className="border-y border-gray-800 py-10 mb-16">
-            <h3 className="text-xl font-bold text-white mb-6 text-center">We Provide Professional Screen Replacements For:</h3>
-            <div className="flex flex-wrap justify-center gap-3">
-              {['Apple MacBook', 'Dell XPS & Latitude', 'HP Envy & Pavilion', 'Lenovo ThinkPad', 'ASUS ROG & VivoBook', 'Acer', 'MSI Gaming', 'Microsoft Surface'].map(brand => (
-                <Badge key={brand} variant="outline" className="border-gray-700 text-gray-300 bg-gray-900 px-4 py-2 text-sm">{brand}</Badge>
-              ))}
-            </div>
-          </div>
-
-          {/* FAQs Section */}
-          <section className="py-12">
-            <h2 className="text-3xl font-black text-white mb-10 text-center">Frequently Asked Questions</h2>
-            <div className="space-y-4">
-              {[
-                { q: "Can a cracked laptop screen be repaired?", a: "No, physically cracked LCD or OLED panels cannot be repaired; the entire display panel assembly must be replaced. At KCROC, we provide professional screen replacement for all major brands in Kuwait." },
-                { q: "How much does laptop screen replacement cost in Kuwait?", a: "Costs vary depending on the model, resolution (FHD, 4K), and panel type. Standard screens are very affordable, while premium MacBook or touchscreens cost more. We provide free, transparent quotes before any repair." },
-                { q: "Can a laptop screen crack internally?", a: "Yes. Internal fractures occur when pressure is applied to the laptop lid without breaking the outer glass, often causing ink-like black spots or colored vertical lines." },
-                { q: "How long does it take to replace a laptop screen?", a: "If the screen is in stock at our Hawalli lab, replacement takes 1 to 2 hours. With our free pickup and delivery service, you can generally expect a 24-hour turnaround." },
-                { q: "Can heat damage a laptop screen?", a: "Absolutely. Leaving a laptop in a hot vehicle in Kuwait can warp the display layers, melt internal adhesives, and cause severe backlight bleeding." },
-                { q: "Do you offer free pickup for screen repairs?", a: "Yes, Kuwait Computer Repair On Call offers free pickup and delivery for all screen replacements, serving Hawalli, Salmiya, Kuwait City, Farwaniya, Jahra, and Ahmadi." },
-                { q: "Can keyboard debris crack a screen?", a: "Yes, this is one of the most common causes of screen damage. A single grain of sand or crumb acts as a pivot point, cracking the glass instantly when the lid is closed." },
-                { q: "What should I do if my screen starts flickering?", a: "Flickering can be a failing GPU, a loose eDP display cable, or motherboard failure. Stop moving the lid, back up your data, and contact a professional for a hardware diagnostic." }
-              ].map((faq, i) => (
-                <div key={i} className="bg-gray-900/40 border border-gray-800 rounded-xl p-6">
-                  <h3 className="text-lg font-bold text-white mb-2 flex items-start gap-3">
-                    <span className="text-emerald-400 font-black mt-0.5">Q:</span> {faq.q}
-                  </h3>
-                  <p className="text-gray-400 pl-7 leading-relaxed">{faq.a}</p>
-                </div>
-              ))}
-            </div>
-          </section>
-
-        </div>
-      </section>
-
-      {/* Ultimate Conversion CTA */}
-      <section className="py-24 px-6 bg-gradient-to-b from-gray-900 to-gray-950 border-t border-gray-800">
-        <div className="max-w-4xl mx-auto text-center">
-            <Badge className="mb-6 bg-red-500/10 text-red-400 border border-red-500/30 px-4 py-2 uppercase tracking-widest font-bold">
-              Emergency Repair Available
+        <div className="container mx-auto max-w-6xl relative z-10">
+          <div className="text-center space-y-6">
+            <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30 px-6 py-2 text-sm font-semibold">
+              <Monitor className="w-4 h-4 mr-2 inline" />
+              Display Hardware Maintenance Insights
             </Badge>
-            <h2 className="text-4xl md:text-5xl font-black text-white mb-6">Don't Work Through a Broken Screen.</h2>
-            <p className="text-xl text-gray-400 mb-10 max-w-2xl mx-auto leading-relaxed">
-              A cracked screen severely damages your productivity and risks internal electrical shorts. Kuwait Computer Repair On Call (KCROC) provides rapid, factory-grade screen replacements so you can get back to work safely.
+            <h1 className="text-5xl md:text-7xl font-bold text-white leading-tight">
+              Protect Your Laptop Screen<br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">
+                From Costly Failures
+              </span>
+            </h1>
+            <p className="text-xl md:text-2xl text-slate-300 max-w-4xl mx-auto leading-relaxed">
+              Technical screen preservation methodologies from Kuwait\'s leading hardware repair center. Eliminate pressure damage, heat degradation, and alignment breaks.
             </p>
-            
-            <div className="grid sm:grid-cols-3 gap-4 max-w-3xl mx-auto mb-12 text-left">
-              <div className="bg-gray-900 border border-gray-800 p-5 rounded-2xl flex items-center gap-4 hover:border-emerald-500/30 transition-colors">
-                <CheckCircle className="text-emerald-500 flex-shrink-0" size={28} />
-                <div>
-                  <span className="font-bold text-white block">Free Diagnostics</span>
-                  <span className="text-sm text-gray-500">No Fix, No Charge</span>
-                </div>
-              </div>
-              <div className="bg-gray-900 border border-gray-800 p-5 rounded-2xl flex items-center gap-4 hover:border-emerald-500/30 transition-colors">
-                <HardDrive className="text-emerald-500 flex-shrink-0" size={28} />
-                <div>
-                  <span className="font-bold text-white block">100% Data Safe</span>
-                  <span className="text-sm text-gray-500">Privacy Guaranteed</span>
-                </div>
-              </div>
-              <div className="bg-gray-900 border border-gray-800 p-5 rounded-2xl flex items-center gap-4 hover:border-emerald-500/30 transition-colors">
-                <Clock className="text-emerald-500 flex-shrink-0" size={28} />
-                <div>
-                  <span className="font-bold text-white block">Free Kuwait Pickup</span>
-                  <span className="text-sm text-gray-500">Fast Turnaround</span>
-                </div>
-              </div>
+            <div className="flex flex-wrap gap-4 justify-center pt-6">
+              <Button 
+                size="lg" 
+                className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white text-lg px-8 py-6 shadow-lg shadow-cyan-500/30"
+                asChild
+              >
+                <a href={`tel:${BUSINESS_INFO.phone}`}>
+                  <Phone className="w-5 h-5 mr-2" />
+                  Call: +965 5530 1913
+                </a>
+              </Button>
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="border-emerald-500/50 text-emerald-400 hover:bg-emerald-500/10 text-lg px-8 py-6"
+                asChild
+              >
+                <a href={WA_LINK} target="_blank" rel="noopener noreferrer">
+                  <MessageCircle className="w-5 h-5 mr-2" />
+                  WhatsApp Us
+                </a>
+              </Button>
             </div>
+          </div>
+        </div>
+      </section>
 
-            <div className="flex flex-col sm:flex-row justify-center gap-5">
-                <Button size="lg" className="bg-emerald-600 hover:bg-emerald-500 text-lg px-10 py-7 shadow-lg shadow-emerald-900/50" asChild>
-                  <Link to="/book">Book Your Free Pickup Now</Link>
+      {/* Metrics Grid */}
+      <section className="py-16 px-4 bg-slate-900/50 backdrop-blur-sm">
+        <div className="container mx-auto max-w-6xl">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {statistics.map((stat, index) => {
+              const Icon = stat.icon;
+              return (
+                <Card key={index} className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 border-cyan-500/20 backdrop-blur-sm hover:border-cyan-500/40 transition-all">
+                  <CardContent className="pt-8 text-center">
+                    <div className="flex justify-center mb-4">
+                      <div className="bg-slate-950 p-4 rounded-full border border-slate-800">
+                        <Icon className={`w-8 h-8 ${stat.color}`} />
+                      </div>
+                    </div>
+                    <div className="text-5xl font-black text-white mb-2">
+                      {stat.value}
+                    </div>
+                    <div className="text-sm text-slate-400 font-bold uppercase tracking-widest">{stat.label}</div>
+                  </CardContent>
+                </Card>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Environmental Challenges Component */}
+      <section className="py-24 px-4">
+        <div className="container mx-auto max-w-6xl">
+          <div className="text-center mb-16">
+            <Badge className="bg-red-500/20 text-red-300 border-red-500/30 px-4 py-2 text-sm mb-4">
+              <AlertTriangle className="w-4 h-4 mr-2 inline" /> Stress Mechanics
+            </Badge>
+            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
+              The Path to Matrix Destruction
+            </h2>
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+              Modern displays compress glass profiles to achieve lean design lines, sacrificing physical resilience. Here is how local climate and user habits degrade your screen layers.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            {challenges.map((challenge, index) => {
+              const Icon = challenge.icon;
+              return (
+                <Card key={index} className={`bg-slate-900/50 ${challenge.borderColor} backdrop-blur-sm hover:scale-[1.01] transition-transform overflow-hidden`}>
+                  <div className="grid md:grid-cols-2 h-full">
+                    <div className="flex flex-col justify-center">
+                      <CardHeader>
+                        <div className="flex items-center gap-4 mb-3">
+                          <div className={`${challenge.bgColor} p-3 rounded-xl`}>
+                            <Icon className={`w-6 h-6 ${challenge.color}`} />
+                          </div>
+                        </div>
+                        <CardTitle className="text-2xl text-white mb-3">{challenge.title}</CardTitle>
+                        <CardDescription className="text-slate-300 text-sm leading-relaxed">
+                          {challenge.description}
+                        </CardDescription>
+                      </CardHeader>
+                    </div>
+                    <div className="flex items-center justify-center p-4">
+                      <img 
+                        src={challenge.image}
+                        alt={`${challenge.title} - Laptop Display Care`}
+                        className="w-full h-48 md:h-full object-cover rounded-lg"
+                        loading="lazy"
+                      />
+                    </div>
+                  </div>
+                </Card>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Threshold Matrix Component */}
+      <section className="py-24 px-4 bg-slate-900/50 backdrop-blur-sm">
+        <div className="container mx-auto max-w-6xl">
+          <div className="text-center mb-16">
+            <Badge className="bg-orange-500/20 text-orange-300 border-orange-500/30 px-4 py-2 text-sm mb-4">
+              <Flame className="w-4 h-4 mr-2 inline" /> Severity Monitoring
+            </Badge>
+            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
+              Structural Degradation Zones
+            </h2>
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+              Identify failure tiers early before internal damage triggers secondary power line shorts on panel interface controllers.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {screenTiers.map((tier, index) => (
+              <Card key={index} className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 border-slate-700 backdrop-blur-sm">
+                <CardHeader>
+                  <CardTitle className="text-2xl text-white flex items-center gap-3">
+                    <Monitor className="w-6 h-6 text-cyan-400" />
+                    {tier.component}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div className="grid grid-cols-3 gap-2">
+                    <div className="bg-emerald-500/10 border border-emerald-500/30 rounded-lg p-2 text-center">
+                      <div className="text-[10px] text-emerald-400 font-bold mb-1">SAFE</div>
+                      <div className="text-xs text-white font-bold">{tier.safe}</div>
+                    </div>
+                    <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-lg p-2 text-center">
+                      <div className="text-[10px] text-yellow-400 font-bold mb-1">WARN</div>
+                      <div className="text-xs text-white font-bold">{tier.warning}</div>
+                    </div>
+                    <div className="bg-red-500/10 border border-red-500/30 rounded-lg p-2 text-center">
+                      <div className="text-[10px] text-red-400 font-bold mb-1">CRIT</div>
+                      <div className="text-xs text-white font-bold">{tier.critical}</div>
+                    </div>
+                  </div>
+                  <p className="text-slate-400 text-sm leading-relaxed">{tier.description}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Solutions Catalog */}
+      <section className="py-24 px-4">
+        <div className="container mx-auto max-w-6xl">
+          <div className="text-center mb-16">
+            <Badge className="bg-cyan-500/20 text-cyan-300 border-cyan-500/30 px-4 py-2 text-sm mb-4">
+              Precision Capabilities
+            </Badge>
+            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
+              Display Assembly Options
+            </h2>
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+              Original equipment grade display solutions executed under clean workshop environments inside our Hawalli laboratory.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {repairCatalog.map((solution, index) => {
+              const Icon = solution.icon;
+              return (
+                <Card key={index} className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 border-slate-800 backdrop-blur-sm hover:border-cyan-500/40 transition-all overflow-hidden flex flex-col">
+                  <div className="relative h-48 overflow-hidden">
+                    <img 
+                      src={solution.image}
+                      alt={solution.title}
+                      className="w-full h-full object-cover opacity-75"
+                      loading="lazy"
+                    />
+                    <div className="absolute top-3 right-3">
+                      <Badge className="bg-slate-950/90 text-cyan-400 border border-cyan-500/30 text-sm px-3 py-1 font-bold">
+                        {solution.price}
+                      </Badge>
+                    </div>
+                  </div>
+                  <CardHeader className="flex-grow">
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="bg-slate-950 border border-slate-800 p-2.5 rounded-lg">
+                        <Icon className="w-5 h-5 text-cyan-400" />
+                      </div>
+                    </div>
+                    <CardTitle className="text-xl text-white mb-2">{solution.title}</CardTitle>
+                    <CardDescription className="text-slate-400 text-sm mb-4">
+                      {solution.description}
+                    </CardDescription>
+                    <div className="flex items-center gap-2 mt-auto">
+                      <Clock className="w-4 h-4 text-cyan-400" />
+                      <span className="text-sm font-bold text-slate-300">{solution.duration}</span>
+                    </div>
+                  </CardHeader>
+                  <CardContent className="bg-slate-950/30 pt-4 border-t border-slate-800">
+                    <ul className="space-y-2">
+                      {solution.benefits.map((benefit, idx) => (
+                        <li key={idx} className="flex items-start gap-2 text-slate-300 text-sm">
+                          <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
+                          <span>{benefit}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Brand Specific Layer */}
+      <section className="py-24 px-4 bg-slate-900/30 border-t border-slate-900">
+        <div className="container mx-auto max-w-6xl">
+          <div className="text-center mb-16">
+            <Badge className="bg-purple-500/20 text-purple-300 border-purple-500/30 px-4 py-2 text-sm mb-4">
+              Lab Interventions
+            </Badge>
+            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
+              Cross-Platform Display Engineering
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            {brandMatrix.map((brand, index) => (
+              <Card key={index} className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 border-slate-800 backdrop-blur-sm">
+                <CardHeader>
+                  <CardTitle className="text-2xl text-white mb-2">{brand.brand}</CardTitle>
+                  <Badge className="bg-slate-950 text-slate-400 border border-slate-800 w-fit">{brand.models}</Badge>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div>
+                    <h4 className="text-cyan-400 font-bold text-xs uppercase tracking-wider mb-1">Technical Scope:</h4>
+                    <p className="text-slate-300 text-sm">{brand.expertise}</p>
+                  </div>
+                  <div>
+                    <h4 className="text-orange-400 font-bold text-xs uppercase tracking-wider mb-1">Dominant Structural Failures:</h4>
+                    <p className="text-slate-400 text-sm">{brand.common}</p>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Preventative Rules Grid */}
+      <section className="py-24 px-4">
+        <div className="container mx-auto max-w-6xl">
+          <div className="text-center mb-16">
+            <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30 px-4 py-2 text-sm mb-4">
+              Preservation Playbook
+            </Badge>
+            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
+              Display Maintenance Protocols
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            {preventionGuide.map((tip, index) => {
+              const Icon = tip.icon;
+              return (
+                <Card key={index} className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 border-slate-800 backdrop-blur-sm">
+                  <CardHeader>
+                    <div className="flex items-center gap-4 mb-2">
+                      <div className="bg-cyan-500/10 p-3 rounded-lg">
+                        <Icon className="w-6 h-6 text-cyan-400" />
+                      </div>
+                      <div className="flex-1">
+                        <CardTitle className="text-xl text-white">{tip.title}</CardTitle>
+                        <Badge className="bg-emerald-500/20 text-emerald-300 border-0 mt-2">
+                          {tip.frequency}
+                        </Badge>
+                      </div>
+                    </div>
+                    <CardDescription className="text-slate-300 text-sm leading-relaxed">
+                      {tip.description}
+                    </CardDescription>
+                  </CardHeader>
+                </Card>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-24 px-4 border-t border-slate-900 bg-slate-900/20">
+        <div className="container mx-auto max-w-4xl">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
+              Frequently Asked Questions
+            </h2>
+          </div>
+
+          <div className="space-y-4">
+            {faq.map((item, index) => (
+              <Card key={index} className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 border-slate-800 backdrop-blur-sm">
+                <CardContent className="p-6 md:p-8">
+                  <h3 className="text-lg font-bold text-white mb-3 flex items-start gap-3">
+                    <span className="text-cyan-400 flex-shrink-0">Q:</span>
+                    {item.q}
+                  </h3>
+                  <p className="text-slate-300 leading-relaxed pl-7">
+                    <span className="text-emerald-400 font-semibold">A:</span> {item.a}
+                  </p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* High-Conversion CTA Component */}
+      <section className="py-24 px-4">
+        <div className="container mx-auto max-w-6xl">
+          <Card className="bg-gradient-to-br from-emerald-600/20 via-blue-600/20 to-cyan-600/20 border-cyan-500/30 backdrop-blur-sm">
+            <CardContent className="p-12 text-center">
+              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                Restore Your Display Panel Architecture Safely
+              </h2>
+              <p className="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">
+                No Fix, No Charge policy. Complimentary vehicle collection and delivery across all governorates in Kuwait. Restoring panel health with flawless precision.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button 
+                  size="lg" 
+                  className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-slate-950 font-black text-lg px-8 py-6 shadow-lg shadow-cyan-500/30"
+                  asChild
+                >
+                  <Link to="/book">
+                    Book Free Pickup
+                  </Link>
                 </Button>
-                <Button size="lg" className="bg-gray-800 hover:bg-gray-700 text-white border border-gray-700 text-lg px-10 py-7" asChild>
-                  <a href="https://wa.me/96555301913" target="_blank" rel="noopener noreferrer">
-                    <MessageCircle className="mr-2" size={22} /> Get a Quote on WhatsApp
+                <Button 
+                  size="lg" 
+                  variant="outline" 
+                  className="border-slate-700 text-white hover:bg-slate-800 text-lg px-8 py-6"
+                  asChild
+                >
+                  <a href={`tel:${BUSINESS_INFO.phone}`}>
+                    <Phone className="w-5 h-5 mr-2" />
+                    Call Intake: +965 5530 1913
                   </a>
                 </Button>
-            </div>
-            <p className="text-gray-500 text-sm mt-8 flex items-center justify-center gap-2">
-              <MapPin size={16} /> Fast Dispatch to Hawalli, Salmiya, Kuwait City, Farwaniya, Jahra, and Ahmadi.
-            </p>
+              </div>
+              <div className="mt-10 pt-8 border-t border-slate-800 flex flex-wrap justify-center gap-6 text-sm text-slate-400">
+                <span className="flex items-center gap-2">
+                  <MapPin className="w-4 h-4 text-cyan-400" /> Hawalli, Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19
+                </span>
+                <span className="flex items-center gap-2">
+                  <Shield className="w-4 h-4 text-cyan-400" /> Complimentary Diagnostics
+                </span>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </section>
-
-    </main>
+    </div>
   );
 }
