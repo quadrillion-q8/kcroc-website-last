@@ -1,320 +1,254 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import {
-  AlertTriangle,
-  ChevronDown,
-  Phone,
-  MessageCircle,
-  MapPin,
-  Cpu,
-  Laptop,
-  CheckCircle2,
-  ShieldCheck,
-  Clock,
-  Zap,
-  Battery,
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { 
+  Thermometer, Wind, Droplets, AlertTriangle, CheckCircle2, 
+  Phone, MessageCircle, Shield, Zap, Clock, Flame, 
+  Battery, Cpu, Laptop, Wrench, Keyboard, Monitor, MapPin
 } from 'lucide-react';
 import { BUSINESS_INFO } from '../constants/data';
 import MetaSEO from '../components/seo/MetaSEO';
 import SchemaMarkup from '../components/seo/SchemaMarkup';
 
+/* ─────────────────────────────────────────────────────────────────────────────
+   1. PAGE DATA & SEO
+───────────────────────────────────────────────────────────────────────────── */
+
 const PAGE_URL = `${BUSINESS_INFO.url}/blog/laptop-repair-kuwait-2026`;
-const LOCAL_LOGO_URL = '/logo.png';
-const HERO_IMAGE_URL = '/images/blog/laptop-repair-kuwait.webp';
+const HERO_IMAGE_URL = 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_1200/v1781139061/2026-01-22_9_qfanpt.jpg';
 const PUBLISHED_DATE = '2026-06-14T08:00:00+03:00';
-const MODIFIED_DATE = '2026-06-14T08:00:00+03:00';
 
 const WA_LINK = `https://wa.me/${BUSINESS_INFO.cleanPhone}?text=${encodeURIComponent(
   'Hi KCROC, I read your guide on laptop repair and need a diagnostic. Please arrange a free pickup.'
 )}`;
 
-const HARDWARE_FAILURES = [
-  {
-    icon: Cpu,
-    t: 'Overheating & Throttling',
-    d: 'Clogged heatsinks and degraded thermal paste. Solution: Deep cleaning and fresh thermal interface material application.',
-  },
-  {
-    icon: Zap,
-    t: 'Dead / No Power',
-    d: 'Power surges or shorts on the motherboard. Solution: Component-level motherboard diagnostics and repair.',
-  },
-  {
-    icon: Battery,
-    t: 'Swollen Battery',
-    d: 'Heat exposure can degrade lithium cells over time. Solution: OEM battery replacement and thermal optimization.',
-  },
-  {
-    icon: Laptop,
-    t: 'Hinge Failure',
-    d: 'Repeated opening and closing can stress hinge mounts and chassis plastic. Solution: Hinge replacement or chassis repair.',
-  },
-];
-
-const REPAIR_PROCESS = [
-  {
-    s: 'Free Pickup Across Kuwait',
-    d: 'Book your repair and we collect your laptop from home or office at no charge across Kuwait.',
-  },
-  {
-    s: 'Comprehensive Diagnostics',
-    d: 'Our technicians perform component-level testing at our Hawalli lab to identify the exact failure.',
-  },
-  {
-    s: 'Transparent Quote',
-    d: 'We provide a clear quote before any repair starts. If we cannot fix it, you do not pay for the repair attempt.',
-  },
-  {
-    s: 'Testing & Delivery',
-    d: 'Every repaired device is stress-tested before it is returned with warranty coverage.',
-  },
-];
-
-const FAQ_ITEMS = [
-  {
-    q: 'Why do laptops overheat so quickly in Kuwait?',
-    a: "Kuwait's high ambient temperatures and dust can reduce airflow through a laptop's cooling system, which increases heat buildup and can trigger throttling.",
-  },
-  {
-    q: "What happens to thermal paste in Kuwait's heat?",
-    a: 'Repeated heating and cooling cycles can dry out or shift thermal paste over time, reducing heat transfer from the CPU or GPU to the heatsink.',
-  },
-  {
-    q: 'Do you offer free pickup and delivery?',
-    a: 'Yes, we offer free pickup and delivery across Kuwait, including Hawalli, Salmiya, Farwaniya, Mangaf, Fahaheel, Jahra, and Kuwait City.',
-  },
-  {
-    q: 'What is component-level micro-soldering?',
-    a: 'It is board-level repair that targets individual chips, capacitors, or connectors instead of replacing the full motherboard.',
-  },
-  {
-    q: 'What does No Fix, No Fee mean?',
-    a: 'If we cannot complete the repair after diagnostics, you do not pay for the repair attempt.',
-  },
-  {
-    q: 'How much does laptop repair cost in Kuwait?',
-    a: 'Pricing depends on the model, part availability, and the severity of the issue. Diagnostics are free, and we share the quote before work begins.',
-  },
-  {
-    q: 'Can gaming laptops be repaired?',
-    a: 'Yes. We repair gaming laptops from brands like ASUS ROG, MSI, Lenovo Legion, Acer Predator, and Alienware.',
-  },
-  {
-    q: 'Do you repair MacBooks?',
-    a: 'Yes, we repair Intel and Apple Silicon MacBooks, including logic board issues, battery problems, and liquid damage cases.',
-  },
-  {
-    q: 'How long does laptop repair take?',
-    a: 'Simple jobs may be completed the same day, while board-level repairs can take longer depending on diagnosis and parts.',
-  },
-  {
-    q: 'Do you provide warranty?',
-    a: 'Yes, successful repairs come with warranty coverage. The exact terms depend on the repair type and replaced parts.',
-  },
-];
-
+// Preserving your elite structured data
 const STRUCTURED_DATA = {
   '@context': 'https://schema.org',
   '@graph': [
-    {
-      '@type': 'Organization',
-      '@id': `${BUSINESS_INFO.url}/#organization`,
-      name: BUSINESS_INFO.name,
-      url: BUSINESS_INFO.url,
-      logo: `${BUSINESS_INFO.url}${LOCAL_LOGO_URL}`,
-      telephone: BUSINESS_INFO.phone,
-      sameAs: [
-        'https://www.facebook.com/computerrepairkuwait',
-        'https://www.instagram.com/computerrepairkuwait',
-      ],
-      contactPoint: {
-        '@type': 'ContactPoint',
-        contactType: 'customer support',
-        telephone: BUSINESS_INFO.phone,
-        url: BUSINESS_INFO.url,
-      },
-    },
-    {
-      '@type': 'WebSite',
-      '@id': `${BUSINESS_INFO.url}/#website`,
-      url: BUSINESS_INFO.url,
-      name: BUSINESS_INFO.name,
-      publisher: { '@id': `${BUSINESS_INFO.url}/#organization` },
-    },
-    {
-      '@type': ['LocalBusiness', 'ComputerStore'],
-      '@id': `${BUSINESS_INFO.url}/#store`,
-      name: BUSINESS_INFO.name,
-      url: BUSINESS_INFO.url,
-      telephone: BUSINESS_INFO.phone,
-      image: `${BUSINESS_INFO.url}${HERO_IMAGE_URL}`,
-      logo: {
-        '@type': 'ImageObject',
-        url: `${BUSINESS_INFO.url}${LOCAL_LOGO_URL}`,
-        width: 512,
-        height: 512,
-      },
-      parentOrganization: { '@id': `${BUSINESS_INFO.url}/#organization` },
-      priceRange: '$$',
-      address: {
-        '@type': 'PostalAddress',
-        streetAddress: 'Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19',
-        addressLocality: 'Hawalli',
-        addressRegion: 'Hawalli Governorate',
-        addressCountry: 'KW',
-      },
-      geo: {
-        '@type': 'GeoCoordinates',
-        latitude: 29.3364,
-        longitude: 48.0146,
-      },
-      areaServed: ['Hawalli', 'Salmiya', 'Farwaniya', 'Kuwait City', 'Mangaf', 'Fahaheel', 'Jahra'],
-      openingHoursSpecification: [
-        {
-          '@type': 'OpeningHoursSpecification',
-          dayOfWeek: [
-            'https://schema.org/Saturday',
-            'https://schema.org/Sunday',
-            'https://schema.org/Monday',
-            'https://schema.org/Tuesday',
-            'https://schema.org/Wednesday',
-            'https://schema.org/Thursday',
-            'https://schema.org/Friday',
-          ],
-          opens: '10:00',
-          closes: '22:00',
-        },
-      ],
-      sameAs: [
-        'https://www.facebook.com/computerrepairkuwait',
-        'https://www.instagram.com/computerrepairkuwait',
-      ],
-    },
-    {
-      '@type': 'Service',
-      '@id': `${PAGE_URL}#service`,
-      name: 'Laptop Repair in Kuwait',
-      serviceType: 'Laptop Repair',
-      description:
-        'Laptop repair services in Kuwait including overheating fixes, battery replacement, screen repair, and motherboard-level diagnostics.',
-      provider: { '@id': `${BUSINESS_INFO.url}/#store` },
-      areaServed: ['Hawalli', 'Salmiya', 'Farwaniya', 'Kuwait City', 'Mangaf', 'Fahaheel', 'Jahra'],
-      url: PAGE_URL,
-    },
     {
       '@type': 'WebPage',
       '@id': PAGE_URL,
       url: PAGE_URL,
       name: 'Laptop Repair Kuwait: The 2026 Guide to Hardware Preservation',
-      description:
-        "An in-depth look at how Kuwait's climate impacts laptop hardware, thermal management, and KCROC's professional component-level repair techniques.",
+      description: "An in-depth look at how Kuwait's climate impacts laptop hardware, thermal management, and KCROC's professional component-level repair techniques.",
       isPartOf: { '@id': `${BUSINESS_INFO.url}/#website` },
-      primaryImageOfPage: {
-        '@type': 'ImageObject',
-        url: `${BUSINESS_INFO.url}${HERO_IMAGE_URL}`,
-      },
-      about: { '@id': `${PAGE_URL}#service` },
+      primaryImageOfPage: { '@type': 'ImageObject', url: HERO_IMAGE_URL },
     },
     {
       '@type': 'Article',
       mainEntityOfPage: { '@id': PAGE_URL },
       headline: 'Laptop Repair in Kuwait: The 2026 Guide to Hardware Preservation',
-      description:
-        "An in-depth look at how Kuwait's climate impacts laptop hardware, thermal management, and KCROC's professional component-level repair techniques.",
-      image: `${BUSINESS_INFO.url}${HERO_IMAGE_URL}`,
+      description: "An in-depth look at how Kuwait's climate impacts laptop hardware, thermal management, and KCROC's professional component-level repair techniques.",
+      image: HERO_IMAGE_URL,
       author: {
         '@type': 'Person',
         name: 'Imran Natiq',
         jobTitle: 'Computer Technician',
         worksFor: { '@id': `${BUSINESS_INFO.url}/#organization` },
-        url: `${BUSINESS_INFO.url}/about`,
       },
-      publisher: { '@id': `${BUSINESS_INFO.url}/#organization` },
+      publisher: {
+        '@type': 'Organization',
+        name: BUSINESS_INFO.name,
+        logo: { '@type': 'ImageObject', url: `${BUSINESS_INFO.url}/logo.png` }
+      },
       datePublished: PUBLISHED_DATE,
-      dateModified: MODIFIED_DATE,
-      articleSection: 'Tech Guides',
-      inLanguage: 'en',
-      wordCount: 1500,
-      isAccessibleForFree: true,
-      keywords: [
-        'Laptop Repair Kuwait',
-        'Gaming Laptop Repair Kuwait',
-        'Laptop Overheating Kuwait',
-        'MacBook Repair Kuwait',
-        'Motherboard Repair Kuwait',
-        'Laptop Repair Hawalli',
-      ],
-      speakable: {
-        '@type': 'SpeakableSpecification',
-        cssSelector: ['h1', '#climatological-catalyst p', '#thermal-management p'],
-      },
-      hasPart: [
-        { '@type': 'WebPageElement', name: 'The Climatological Catalyst',  url: `${PAGE_URL}#climatological-catalyst` },
-        { '@type': 'WebPageElement', name: 'Thermal Management',           url: `${PAGE_URL}#thermal-management` },
-        { '@type': 'WebPageElement', name: 'Common Hardware Failures',     url: `${PAGE_URL}#common-hardware-failures` },
-        { '@type': 'WebPageElement', name: 'Repair Process',               url: `${PAGE_URL}#repair-process` },
-        { '@type': 'WebPageElement', name: 'FAQ',                          url: `${PAGE_URL}#frequently-asked-questions` },
-      ],
-    },
-    {
-      '@type': 'BreadcrumbList',
-      '@id': `${PAGE_URL}#breadcrumb`,
-      itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Home', item: BUSINESS_INFO.url },
-        { '@type': 'ListItem', position: 2, name: 'Blog', item: `${BUSINESS_INFO.url}/blog` },
-        { '@type': 'ListItem', position: 3, name: 'Laptop Repair Kuwait 2026', item: PAGE_URL },
-      ],
-    },
-    {
-      '@type': 'FAQPage',
-      '@id': `${PAGE_URL}#faq`,
-      mainEntity: FAQ_ITEMS.map((faq) => ({
-        '@type': 'Question',
-        name: faq.q,
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: faq.a,
-        },
-      })),
-    },
-  ],
+      dateModified: PUBLISHED_DATE,
+    }
+  ]
 };
 
-const FAQItem = React.memo(({ q, a }: { q: string; a: string }) => {
-  const [open, setOpen] = useState(false);
-  const id = q.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+/* ─────────────────────────────────────────────────────────────────────────────
+   2. CONTENT ARRAYS
+───────────────────────────────────────────────────────────────────────────── */
 
-  return (
-    <div className="bg-slate-900/30 backdrop-blur-md p-6 rounded-2xl border border-slate-800 hover:border-cyan-500/40 transition-all">
-      <button
-        onClick={() => setOpen(!open)}
-        aria-expanded={open}
-        aria-controls={`${id}-panel`}
-        id={`${id}-button`}
-        className="w-full flex justify-between items-center font-black text-white hover:text-cyan-400 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 rounded-lg text-left"
-      >
-        <span>{q}</span>
-        <ChevronDown
-          className={`w-5 h-5 flex-shrink-0 transition-transform duration-300 ${open ? 'rotate-180' : ''}`}
-          aria-hidden="true"
-        />
-      </button>
-      <div
-        id={`${id}-panel`}
-        role="region"
-        aria-labelledby={`${id}-button`}
-        className={`grid transition-all duration-300 ${open ? 'grid-rows-[1fr] opacity-100 mt-3' : 'grid-rows-[0fr] opacity-0'}`}
-      >
-        <p className="text-slate-400 text-sm leading-relaxed overflow-hidden m-0">{a}</p>
-      </div>
-    </div>
-  );
-});
-FAQItem.displayName = 'FAQItem';
+const statistics = [
+  { value: '24-48h', label: 'Turnaround Time', icon: Clock, color: 'text-emerald-400' },
+  { value: '100%', label: 'Data Privacy', icon: Shield, color: 'text-blue-400' },
+  { value: '30 Days', label: 'Repair Warranty', icon: CheckCircle2, color: 'text-cyan-400' }
+];
+
+const challenges = [
+  {
+    title: 'Thermal Degradation',
+    description: 'Kuwait\'s extreme heat dries out thermal paste and warps plastic chassis components over time.',
+    icon: Flame,
+    color: 'text-orange-500',
+    bgColor: 'bg-orange-500/10',
+    borderColor: 'border-orange-500/30',
+    image: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1769908596/CPU_cooling_fan_replacement_and_maintenance_-_Salmiya_client_mflsla.png'
+  },
+  {
+    title: 'Battery Swelling',
+    description: 'Constant heat exposure degrades lithium cells, causing batteries to expand and potentially crack the trackpad or motherboard.',
+    icon: Battery,
+    color: 'text-red-500',
+    bgColor: 'bg-red-500/10',
+    borderColor: 'border-red-500/30',
+    image: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1769908595/New_Dell_laptop_battery_42Wh_installation_-_Jahra_pickup_hsbxb8.jpg'
+  },
+  {
+    title: 'Motherboard Shorts',
+    description: 'Coastal humidity combined with indoor AC creates microscopic condensation, leading to logic board oxidation and shorts.',
+    icon: Zap,
+    color: 'text-purple-500',
+    bgColor: 'bg-purple-500/10',
+    borderColor: 'border-purple-500/30',
+    image: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1781139061/2026-01-22_9_qfanpt.jpg'
+  },
+  {
+    title: 'Hinge & Screen Stress',
+    description: 'Repeatedly opening laptops in hot environments stresses brittle plastic mounts, leading to snapped hinges and screen pressure fractures.',
+    icon: Monitor,
+    color: 'text-blue-500',
+    bgColor: 'bg-blue-500/10',
+    borderColor: 'border-blue-500/30',
+    image: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1769908595/Dell_laptop_screen_protection_installation_-_Kuwait_City_service_ghokkb.jpg'
+  }
+];
+
+const repairSolutions = [
+  {
+    title: 'Motherboard Micro-Soldering',
+    description: 'Component-level repair for dead laptops, fixing shorts instead of replacing the entire board.',
+    price: 'Free Diagnostic',
+    duration: '2-4 Days',
+    icon: Cpu,
+    image: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1781139061/2026-01-22_9_qfanpt.jpg',
+    benefits: [
+      'Identifies blown capacitors & ICs',
+      'Fraction of the cost of a new board',
+      'No Fix, No Fee policy',
+      'Preserves original data securely'
+    ]
+  },
+  {
+    title: 'OEM Screen Replacement',
+    description: 'Flawless display panel replacement for cracked, flickering, or dead screens.',
+    price: 'From 25 KD',
+    duration: 'Same Day',
+    icon: Laptop,
+    image: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1769908595/Dell_laptop_screen_protection_installation_-_Kuwait_City_service_ghokkb.jpg',
+    benefits: [
+      'Original OEM LCD/OLED panels',
+      'Color calibration check',
+      'Hinge tension adjustment included',
+      'Zero dead-pixel guarantee'
+    ]
+  },
+  {
+    title: 'Battery Replacement',
+    description: 'Safe removal of degraded/swollen batteries and installation of fresh lithium cells.',
+    price: 'From 15 KD',
+    duration: '1-2 Hours',
+    icon: Battery,
+    image: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1769908595/New_Dell_laptop_battery_42Wh_installation_-_Jahra_pickup_hsbxb8.jpg',
+    benefits: [
+      'High-cycle OEM grade batteries',
+      'Safe disposal of swollen cells',
+      'Charging circuit health check',
+      'Restores factory battery life'
+    ]
+  },
+  {
+    title: 'Thermal Deep Cleaning',
+    description: 'Complete internal teardown, dust removal, and premium thermal paste re-application.',
+    price: '15 KD',
+    duration: '1-2 Hours',
+    icon: Wind,
+    image: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1769908596/CPU_cooling_fan_replacement_and_maintenance_-_Salmiya_client_mflsla.png',
+    benefits: [
+      'Fixes overheating & loud fans',
+      'Premium Thermal Grizzly paste',
+      'Fan bearing lubrication',
+      'Prevents future component failure'
+    ]
+  },
+  {
+    title: 'Liquid Damage Restoration',
+    description: 'Emergency ultrasonic cleaning and corrosion removal after spills.',
+    price: 'Quote Based',
+    duration: '3-5 Days',
+    icon: Droplets,
+    image: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1769908596/Whats-App-Image-2026-01-29-at-3-19-40-AM_i2mpms.jpg',
+    benefits: [
+      'Ultrasonic motherboard bath',
+      'Halts microscopic corrosion',
+      'Keyboard trace testing',
+      'Highest success rate if brought in fast'
+    ]
+  },
+  {
+    title: 'Keyboard & Trackpad Repair',
+    description: 'Replacement of sticky, non-responsive, or physically damaged input devices.',
+    price: 'From 15 KD',
+    duration: 'Same Day',
+    icon: Keyboard,
+    image: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1781139061/2026-01-22_9_qfanpt.jpg',
+    benefits: [
+      'OEM palmrest assemblies',
+      'Ribbon cable replacement',
+      'Backlight functionality restored',
+      'Tactile feedback guaranteed'
+    ]
+  }
+];
+
+const laptopBrands = [
+  {
+    brand: 'Apple MacBook',
+    models: 'Pro, Air, M1/M2/M3 Series',
+    expertise: 'Logic board micro-soldering, Flexgate hinge repair, Retina screen replacement',
+    common: 'Liquid damage, battery swelling, screen fractures',
+  },
+  {
+    brand: 'Dell',
+    models: 'XPS, Latitude, Inspiron',
+    expertise: 'DC jack repair, BIOS flashing, premium display panel fitting',
+    common: 'Hinge separation, battery degradation, thermal throttling',
+  },
+  {
+    brand: 'HP',
+    models: 'Spectre, Envy, EliteBook, Pavilion',
+    expertise: 'Chassis repair, fan replacement, SSD upgrades',
+    common: 'Overheating fans, swollen batteries, keyboard failure',
+  },
+  {
+    brand: 'Lenovo',
+    models: 'ThinkPad, Yoga, IdeaPad',
+    expertise: 'TrackPoint restoration, motherboard repair, port replacement',
+    common: 'USB-C charging port failure, motherboard shorts',
+  }
+];
+
+const faq = [
+  {
+    q: 'Do you offer free pickup and delivery for laptops?',
+    a: 'Yes, we offer completely free pickup and delivery across all Kuwait governorates including Hawalli, Salmiya, Farwaniya, Jahra, and Kuwait City.'
+  },
+  {
+    q: 'What does "No Fix, No Fee" mean?',
+    a: 'We provide free diagnostics. If we examine your laptop and determine it cannot be fixed, or if you decline the quoted price, you do not pay for the repair attempt.'
+  },
+  {
+    q: 'How long does a typical laptop repair take?',
+    a: 'Standard repairs like screen, battery, or keyboard replacements are usually done the same day. Complex motherboard micro-soldering takes 2-4 days.'
+  },
+  {
+    q: 'Will I lose my data during the repair?',
+    a: 'Data privacy is our priority. We do not wipe your hard drive unless it is a software/OS issue and we have your explicit permission. For hardware repairs, your data remains untouched.'
+  }
+];
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   3. MAIN COMPONENT
+───────────────────────────────────────────────────────────────────────────── */
 
 export default function BlogLaptopRepair() {
   return (
-    <main className="w-full min-h-screen bg-transparent text-slate-200 selection:bg-cyan-500/30 scroll-smooth">
+    <div className="min-h-screen bg-gray-950 text-white selection:bg-cyan-500/30">
       <MetaSEO
         title="Laptop Repair Kuwait | 2026 Guide to Hardware Preservation | KCROC"
         description="Expert laptop repair in Kuwait. Overheating fixes, MacBook logic board micro-soldering, and free pickup across all governorates by KCROC."
@@ -322,330 +256,306 @@ export default function BlogLaptopRepair() {
       />
       <SchemaMarkup schema={STRUCTURED_DATA} />
 
-      <nav aria-label="Breadcrumb" className="max-w-4xl mx-auto px-6 pt-24 md:pt-32 relative z-10">
-        <ol className="flex items-center space-x-2 text-sm text-slate-400 font-medium">
-          <li>
-            <Link
-              to="/"
-              className="hover:text-cyan-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 rounded transition-colors"
-            >
-              Home
-            </Link>
-          </li>
-          <li>
-            <span className="text-slate-600" aria-hidden="true">/</span>
-          </li>
-          <li>
-            <Link
-              to="/blog"
-              className="hover:text-cyan-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 rounded transition-colors"
-            >
-              Blog
-            </Link>
-          </li>
-          <li>
-            <span className="text-slate-600" aria-hidden="true">/</span>
-          </li>
-          <li aria-current="page" className="text-cyan-400">
-            Laptop Repair Kuwait 2026
-          </li>
-        </ol>
-      </nav>
-
-      <section className="relative pt-8 pb-16 px-6 text-center z-10">
-        <div
-          className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[600px] h-[500px] bg-cyan-600/20 blur-[120px] rounded-full pointer-events-none"
-          aria-hidden="true"
-        />
-        <header className="max-w-4xl mx-auto relative z-10">
-          <span className="text-cyan-400 font-black tracking-widest uppercase text-xs">
-            Technical Engineering Guide
-          </span>
-          <h1 className="text-4xl md:text-6xl font-black text-white mt-4 mb-6 leading-tight tracking-tight">
-            Laptop Repair in Kuwait:
-            <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-emerald-400">
-              Hardware Preservation
-            </span>
-          </h1>
-          <div className="text-sm text-slate-400 font-medium mb-12 flex flex-wrap items-center justify-center gap-2">
-            <time dateTime={PUBLISHED_DATE}>June 14, 2026</time>
-            <span aria-hidden="true">•</span>
-            <span>8 min read</span>
+      {/* Hero Section */}
+      <section className="relative pt-32 pb-24 px-4 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-transparent to-blue-500/10"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(6,182,212,0.1),transparent_50%)]"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(59,130,246,0.1),transparent_50%)]"></div>
+        
+        <div className="container mx-auto max-w-6xl relative z-10">
+          <div className="text-center space-y-6">
+            <Badge className="bg-cyan-500/20 text-cyan-300 border-cyan-500/30 px-6 py-2 text-sm font-semibold">
+              <Wrench className="w-4 h-4 mr-2 inline" />
+              Laptop Repair Experts in Kuwait
+            </Badge>
+            <h1 className="text-5xl md:text-7xl font-bold text-white leading-tight">
+              Revive Your Broken Laptop<br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-emerald-400">
+                With Zero Risk
+              </span>
+            </h1>
+            <p className="text-xl md:text-2xl text-slate-300 max-w-4xl mx-auto leading-relaxed">
+              Professional component-level repair, screen replacements, and motherboard diagnostics. We bring dead laptops back to life.
+            </p>
+            <div className="flex flex-wrap gap-4 justify-center pt-6">
+              <Button 
+                size="lg" 
+                className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white text-lg px-8 py-6 shadow-lg shadow-cyan-500/30"
+                asChild
+              >
+                <a href="tel:+96555301913">
+                  <Phone className="w-5 h-5 mr-2" />
+                  Call Now: +965 5530 1913
+                </a>
+              </Button>
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="border-emerald-500/50 text-emerald-400 hover:bg-emerald-500/10 text-lg px-8 py-6"
+                asChild
+              >
+                <a href={WA_LINK} target="_blank" rel="noopener noreferrer">
+                  <MessageCircle className="w-5 h-5 mr-2" />
+                  WhatsApp Us
+                </a>
+              </Button>
+            </div>
           </div>
-          <img
-            src={HERO_IMAGE_URL}
-            alt="Laptop motherboard repair and thermal maintenance in Kuwait"
-            width="1200"
-            height="630"
-            loading="eager"
-            fetchPriority="high"
-            decoding="async"
-            className="rounded-3xl border border-slate-700/50 shadow-[0_0_40px_rgba(34,211,238,0.15)] mb-12 object-cover w-full aspect-[1200/630]"
-          />
-        </header>
+        </div>
       </section>
 
-      <nav className="max-w-4xl mx-auto px-6 mb-12" aria-label="Table of Contents">
-        <div className="bg-slate-900/30 backdrop-blur-md p-8 rounded-3xl border border-slate-800">
-          <h2 className="font-black text-white mb-4 text-lg">Table of Contents</h2>
-          <ul className="grid md:grid-cols-2 gap-3 text-sm text-slate-400">
-            {[
-              { id: 'climatological-catalyst',  label: 'The Climatological Catalyst' },
-              { id: 'thermal-management',         label: 'Thermal Management & Pump-Out' },
-              { id: 'common-hardware-failures',   label: 'Common Hardware Failures' },
-              { id: 'repair-process',             label: 'The Zero-Risk Repair Process' },
-              { id: 'frequently-asked-questions', label: 'Frequently Asked Questions' },
-            ].map((item) => (
-              <li key={item.id}>
-                {/* Restored the opening <a tag here */}
-                <a
-                  href={`#${item.id}`}
-                  className="hover:text-cyan-400 focus:text-cyan-400 focus:outline-none focus-visible:underline transition-colors flex items-center gap-2 rounded"
-                >
-                  <span className="text-cyan-500/50" aria-hidden="true">#</span>
-                  {item.label}
-                </a>
-              </li>
-            ))}
-          </ul>
+      {/* Statistics Section */}
+      <section className="py-16 px-4 bg-slate-900/50 backdrop-blur-sm">
+        <div className="container mx-auto max-w-6xl">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {statistics.map((stat, index) => {
+              const Icon = stat.icon;
+              return (
+                <Card key={index} className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 border-cyan-500/20 backdrop-blur-sm hover:border-cyan-500/40 transition-all">
+                  <CardContent className="pt-8 text-center">
+                    <div className="flex justify-center mb-4">
+                      <div className="bg-slate-950 p-4 rounded-full border border-slate-800">
+                        <Icon className={`w-8 h-8 ${stat.color}`} />
+                      </div>
+                    </div>
+                    <div className="text-5xl font-black text-white mb-2">
+                      {stat.value}
+                    </div>
+                    <div className="text-sm text-slate-400 font-bold uppercase tracking-widest">{stat.label}</div>
+                  </CardContent>
+                </Card>
+              );
+            })}
+          </div>
         </div>
-      </nav>
+      </section>
 
-      <article className="max-w-4xl mx-auto px-6 pb-12 relative z-10">
-        <div className="prose prose-invert prose-lg max-w-none">
-
-          <section id="climatological-catalyst" className="scroll-mt-32">
-            <h2 className="text-3xl font-black text-white mb-6">The Climatological Catalyst</h2>
-            <p className="text-slate-300 mb-4">
-              Based on real repair cases in our Kuwait workshop, Kuwait&apos;s environment presents a harsh challenge for laptop health. High ambient temperatures combined with fine dust create a thermal bottleneck. Dust blocks cooling fins while humidity and airborne contaminants accelerate oxidation on exposed circuitry.
-              We provide <strong>free pickup and delivery throughout Hawalli, Salmiya, Farwaniya, Mangaf, Fahaheel, Jahra, and Kuwait City</strong> to ensure your devices are safely transported to our lab.
-            </p>
-            <ul className="text-slate-400 mt-4 space-y-2">
-              <li>
-                <strong className="text-white">The Dust Trap:</strong> Fine particulate matter can coat cooling fin assemblies and reduce airflow.
-              </li>
-              <li>
-                <strong className="text-white">Conductive Corrosion:</strong> Coastal humidity and contaminants can increase the risk of oxidation on sensitive components.
-              </li>
-            </ul>
-          </section>
-
-          <section id="thermal-management" className="scroll-mt-32">
-            <h2 className="text-3xl font-black text-white mt-16 mb-8">
-              Thermal Management &amp; The Pump-Out Effect
+      {/* The Challenge Section */}
+      <section className="py-24 px-4">
+        <div className="container mx-auto max-w-6xl">
+          <div className="text-center mb-16">
+            <Badge className="bg-red-500/20 text-red-300 border-red-500/30 px-4 py-2 text-sm mb-4">
+              <AlertTriangle className="w-4 h-4 mr-2 inline" /> Hardware Threats
+            </Badge>
+            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
+              Why Laptops Fail in Kuwait
             </h2>
-            <p className="text-slate-300 mb-4">
-              Standard factory cooling systems are not engineered for Kuwait&apos;s extreme thermal cycling. The constant shift between an air-conditioned room and outdoor heat can cause thermal paste to migrate away from the CPU die, reducing cooling efficiency.
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+              Portability comes with risks. Between extreme heat, dust, and daily transport, laptops are highly susceptible to these common hardware failures.
             </p>
-            <p className="text-slate-300 mb-4">
-              To solve this, our Hawalli lab utilizes phase-change materials such as Honeywell PTM7950. These materials are designed to help maintain a stable thermal interface under load and reduce long-term paste migration issues.
-            </p>
-          </section>
+          </div>
 
-          <section id="common-hardware-failures" className="scroll-mt-32">
-            <h2 className="text-3xl font-black text-white mt-16 mb-8 flex items-center gap-3">
-              <AlertTriangle className="text-amber-400" aria-hidden="true" />
-              Common Hardware Failures in Kuwait
+          <div className="grid md:grid-cols-2 gap-6">
+            {challenges.map((challenge, index) => {
+              const Icon = challenge.icon;
+              return (
+                <Card key={index} className={`bg-slate-900/50 ${challenge.borderColor} backdrop-blur-sm hover:scale-[1.02] transition-transform overflow-hidden`}>
+                  <div className="grid md:grid-cols-2 h-full">
+                    <div className="flex flex-col justify-center">
+                      <CardHeader>
+                        <div className="flex items-center gap-4 mb-3">
+                          <div className={`${challenge.bgColor} p-3 rounded-xl`}>
+                            <Icon className={`w-6 h-6 ${challenge.color}`} />
+                          </div>
+                        </div>
+                        <CardTitle className="text-2xl text-white mb-3">{challenge.title}</CardTitle>
+                        <CardDescription className="text-slate-300 text-sm leading-relaxed">
+                          {challenge.description}
+                        </CardDescription>
+                      </CardHeader>
+                    </div>
+                    <div className="flex items-center justify-center p-4">
+                      <img 
+                        src={challenge.image}
+                        alt={`${challenge.title} - Laptop Repair Kuwait`}
+                        className="w-full h-48 md:h-full object-cover rounded-lg"
+                        loading="lazy"
+                      />
+                    </div>
+                  </div>
+                </Card>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Repair Solutions */}
+      <section className="py-24 px-4 bg-slate-900/50 backdrop-blur-sm border-y border-slate-800">
+        <div className="container mx-auto max-w-6xl">
+          <div className="text-center mb-16">
+            <Badge className="bg-cyan-500/20 text-cyan-300 border-cyan-500/30 px-4 py-2 text-sm mb-4">
+              Professional Solutions
+            </Badge>
+            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
+              Our Repair Services
             </h2>
-            <p className="text-slate-300 mb-6">
-              When thermal limits fail, hardware problems often follow. Minor drops or hinge stress may require screen or chassis repair, while severe power issues often need board-level diagnostics.
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+              From microscopic motherboard shorts to cracked screens, we fix what others say is unfixable.
             </p>
-            <div className="grid md:grid-cols-2 gap-4">
-              {HARDWARE_FAILURES.map((issue) => (
-                <div
-                  key={issue.t}
-                  className="bg-slate-900/30 backdrop-blur-md p-6 rounded-2xl border border-slate-800 hover:border-cyan-500/40 transition-colors"
-                >
-                  <issue.icon className="text-cyan-400 mb-3" aria-hidden="true" />
-                  <h3 className="font-bold text-white text-xl m-0">{issue.t}</h3>
-                  <p className="text-slate-400 text-sm mt-2 leading-relaxed m-0">{issue.d}</p>
-                </div>
-              ))}
-            </div>
-          </section>
+          </div>
 
-          <section id="repair-process" className="scroll-mt-32">
-            <h2 className="text-3xl font-black text-white mt-16 mb-8">
-              The KCROC Zero-Risk Repair Process
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {repairSolutions.map((solution, index) => {
+              const Icon = solution.icon;
+              return (
+                <Card key={index} className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 border-slate-700 backdrop-blur-sm hover:border-cyan-500/40 transition-all overflow-hidden flex flex-col">
+                  <div className="relative h-48 overflow-hidden">
+                    <img 
+                      src={solution.image}
+                      alt={`${solution.title} - KCROC Repair Kuwait`}
+                      className="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity"
+                      loading="lazy"
+                    />
+                    <div className="absolute top-3 right-3">
+                      <Badge className="bg-slate-950/90 text-cyan-400 border border-cyan-500/30 text-sm px-3 py-1 font-bold shadow-lg">
+                        {solution.price}
+                      </Badge>
+                    </div>
+                  </div>
+                  <CardHeader className="flex-grow">
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="bg-slate-950 border border-slate-800 p-2.5 rounded-lg">
+                        <Icon className="w-5 h-5 text-cyan-400" />
+                      </div>
+                    </div>
+                    <CardTitle className="text-xl text-white mb-2">{solution.title}</CardTitle>
+                    <CardDescription className="text-slate-300 text-sm mb-4">
+                      {solution.description}
+                    </CardDescription>
+                    <div className="flex items-center gap-2 mt-auto">
+                      <Clock className="w-4 h-4 text-cyan-400" />
+                      <span className="text-sm font-bold text-slate-300">{solution.duration}</span>
+                    </div>
+                  </CardHeader>
+                  <CardContent className="bg-slate-950/30 pt-4 border-t border-slate-800">
+                    <ul className="space-y-2">
+                      {solution.benefits.map((benefit, idx) => (
+                        <li key={idx} className="flex items-start gap-2 text-slate-300 text-sm">
+                          <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
+                          <span>{benefit}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Brands Section */}
+      <section className="py-24 px-4">
+        <div className="container mx-auto max-w-6xl">
+          <div className="text-center mb-16">
+            <Badge className="bg-purple-500/20 text-purple-300 border-purple-500/30 px-4 py-2 text-sm mb-4">
+              Brand Expertise
+            </Badge>
+            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
+              We Repair All Laptop Brands
             </h2>
-            <p className="text-slate-300 mb-6">
-              Explore our full repair workflow to see how our process protects your device and your budget.
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+              Authorized-level expertise across all major hardware manufacturers.
             </p>
-            <div className="space-y-4">
-              {REPAIR_PROCESS.map((step, i) => (
-                <div
-                  key={step.s}
-                  className="bg-slate-900/30 backdrop-blur-md p-6 rounded-2xl border border-slate-800"
-                >
-                  <h3 className="font-bold text-white mb-2 text-xl m-0">
-                    {i + 1}. {step.s}
-                  </h3>
-                  <p className="text-slate-400 text-sm m-0 leading-relaxed">{step.d}</p>
-                </div>
-              ))}
-            </div>
-          </section>
+          </div>
 
-          <section id="frequently-asked-questions" className="scroll-mt-32">
-            <h2 className="text-3xl font-black text-white mt-16 mb-8 text-center">
+          <div className="grid md:grid-cols-2 gap-6">
+            {laptopBrands.map((brand, index) => (
+              <Card key={index} className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 border-slate-700 backdrop-blur-sm">
+                <CardHeader>
+                  <CardTitle className="text-2xl text-white mb-2">{brand.brand}</CardTitle>
+                  <Badge className="bg-slate-950 text-slate-300 border border-slate-700 w-fit">{brand.models}</Badge>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div>
+                    <h4 className="text-cyan-400 font-bold text-xs uppercase tracking-wider mb-1">Our Expertise:</h4>
+                    <p className="text-slate-300 text-sm">{brand.expertise}</p>
+                  </div>
+                  <div>
+                    <h4 className="text-orange-400 font-bold text-xs uppercase tracking-wider mb-1">Common Issues:</h4>
+                    <p className="text-slate-300 text-sm">{brand.common}</p>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-24 px-4 border-t border-slate-800 bg-slate-900/30">
+        <div className="container mx-auto max-w-4xl">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
               Frequently Asked Questions
             </h2>
-            <div className="space-y-4">
-              {FAQ_ITEMS.map((faq) => (
-                <FAQItem key={faq.q} q={faq.q} a={faq.a} />
-              ))}
-            </div>
-          </section>
-
-        </div>
-      </article>
-
-      <section aria-labelledby="related-heading" className="max-w-4xl mx-auto px-6 pb-16">
-        <div className="bg-slate-900/30 backdrop-blur-md p-8 rounded-3xl border border-slate-800">
-          <h2 id="related-heading" className="text-2xl font-black text-white mb-6">
-            Related Guides
-          </h2>
-          <div className="grid md:grid-cols-3 gap-4">
-            <Link
-              to="/laptop-screen-repair-kuwait"
-              className="group bg-slate-950 p-6 rounded-2xl border border-slate-700 hover:border-cyan-500/50 hover:shadow-[0_0_20px_rgba(34,211,238,0.15)] transition-all flex justify-between items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
-            >
-              <span className="font-bold text-slate-300 group-hover:text-cyan-400 transition-colors">
-                Laptop Screen Repair
-              </span>
-              <span className="text-cyan-500 group-hover:translate-x-1 transition-transform" aria-hidden="true">
-                →
-              </span>
-            </Link>
-            <Link
-              to="/macbook-repair-kuwait"
-              className="group bg-slate-950 p-6 rounded-2xl border border-slate-700 hover:border-cyan-500/50 hover:shadow-[0_0_20px_rgba(34,211,238,0.15)] transition-all flex justify-between items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
-            >
-              <span className="font-bold text-slate-300 group-hover:text-cyan-400 transition-colors">
-                MacBook Repair
-              </span>
-              <span className="text-cyan-500 group-hover:translate-x-1 transition-transform" aria-hidden="true">
-                →
-              </span>
-            </Link>
-            <Link
-              to="/motherboard-repair-kuwait"
-              className="group bg-slate-950 p-6 rounded-2xl border border-slate-700 hover:border-cyan-500/50 hover:shadow-[0_0_20px_rgba(34,211,238,0.15)] transition-all flex justify-between items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
-            >
-              <span className="font-bold text-slate-300 group-hover:text-cyan-400 transition-colors">
-                Motherboard Repair
-              </span>
-              <span className="text-cyan-500 group-hover:translate-x-1 transition-transform" aria-hidden="true">
-                →
-              </span>
-            </Link>
           </div>
-        </div>
-      </section>
 
-      <section aria-labelledby="author-heading" className="max-w-4xl mx-auto px-6 pb-16">
-        <div className="bg-slate-900/40 backdrop-blur-md p-8 rounded-3xl border border-cyan-500/30">
-          <div className="flex flex-col md:flex-row items-start md:items-center gap-8">
-            <div className="flex-shrink-0">
-              <img
-                src={LOCAL_LOGO_URL}
-                alt="KCROC Logo"
-                width="96"
-                height="96"
-                loading="lazy"
-                decoding="async"
-                className="w-24 h-24 rounded-full border-2 border-cyan-500/50 shadow-[0_0_15px_rgba(34,211,238,0.2)] object-contain bg-slate-900 p-2"
-              />
-            </div>
-            <div>
-              <div className="flex items-center gap-3 mb-3 flex-wrap">
-                <h2 id="author-heading" className="text-2xl font-black text-white m-0">
-                  About KCROC
-                </h2>
-                <span className="inline-flex items-center gap-1 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest">
-                  <ShieldCheck size={14} aria-hidden="true" /> 20+ Years Experience
-                </span>
-              </div>
-              <p className="text-slate-300 text-sm leading-relaxed mb-4">
-                KCROC is a Kuwait-based technical center with experience in component-level diagnostics, micro-soldering, gaming laptop repair, and MacBook logic board restoration.
-              </p>
-              <div className="flex flex-wrap gap-3">
-                {[
-                  'Chip-Level Diagnostics',
-                  'Thermal Engineering',
-                  'Gaming Laptop Repair',
-                  'MacBook Repair',
-                  'Motherboard Repair',
-                  'Free Pickup & Delivery',
-                ].map((badge) => (
-                  <span key={badge} className="flex items-center gap-1.5 text-xs font-bold text-cyan-300">
-                    <CheckCircle2 size={14} className="text-cyan-500 flex-shrink-0" aria-hidden="true" />
-                    {badge}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section aria-labelledby="cta-heading" className="max-w-4xl mx-auto px-6 pb-24">
-        <div className="bg-slate-900/50 backdrop-blur-xl p-10 rounded-3xl border border-cyan-500/50 text-center shadow-[0_0_40px_rgba(34,211,238,0.15)] relative overflow-hidden">
-          <div
-            className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-1 bg-gradient-to-r from-transparent via-cyan-400 to-transparent opacity-50"
-            aria-hidden="true"
-          />
-          <h2 id="cta-heading" className="text-3xl md:text-4xl font-black text-white mb-4">
-            Need Expert Laptop Repair Today?
-          </h2>
-          <p className="text-slate-300 mb-8 max-w-2xl mx-auto">
-            Free pickup &amp; delivery • Same-day service • Warranty included
-          </p>
-          <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 mb-10 text-sm font-bold text-cyan-100">
-            {[
-              { icon: CheckCircle2, text: 'Chip-Level Diagnostics',   cls: 'text-emerald-400' },
-              { icon: CheckCircle2, text: 'Thermal Engineering',        cls: 'text-emerald-400' },
-              { icon: CheckCircle2, text: 'Gaming Laptop Repair',       cls: 'text-emerald-400' },
-              { icon: CheckCircle2, text: 'MacBook Repair',             cls: 'text-emerald-400' },
-              { icon: Clock,        text: 'Same-Day Service Available', cls: 'text-amber-400' },
-            ].map(({ icon: Icon, text, cls }) => (
-              <span key={text} className="flex items-center gap-2">
-                <Icon size={16} className={`${cls} flex-shrink-0`} aria-hidden="true" />
-                {text}
-              </span>
+          <div className="space-y-4">
+            {faq.map((item, index) => (
+              <Card key={index} className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 border-slate-700 backdrop-blur-sm">
+                <CardContent className="p-6 md:p-8">
+                  <h3 className="text-lg font-bold text-white mb-3 flex items-start gap-3">
+                    <span className="text-cyan-400 flex-shrink-0">Q:</span>
+                    {item.q}
+                  </h3>
+                  <p className="text-slate-300 leading-relaxed pl-7">
+                    <span className="text-emerald-400 font-semibold">A:</span> {item.a}
+                  </p>
+                </CardContent>
+              </Card>
             ))}
           </div>
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-            
-            {/* Restored the opening <a tag here */}
-            <a
-              href={WA_LINK}
-              aria-label="Request consultation via WhatsApp"
-              className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black px-8 py-4 rounded-full transition-all shadow-[0_0_20px_rgba(34,211,238,0.3)] hover:scale-[1.02] flex justify-center items-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 focus-visible:ring-cyan-400"
-            >
-              <MessageCircle size={20} aria-hidden="true" />
-              Book Free Pickup
-            </a>
-            
-            {/* Restored the opening <a tag here */}
-            <a
-              href={`tel:${BUSINESS_INFO.phone}`}
-              aria-label={`Call KCROC at ${BUSINESS_INFO.phone}`}
-              className="bg-slate-950 border border-slate-700 hover:border-cyan-500/50 hover:bg-slate-900 text-white font-bold px-8 py-4 rounded-full transition-all flex items-center justify-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 focus-visible:ring-cyan-400"
-            >
-              <Phone size={20} aria-hidden="true" />
-              {BUSINESS_INFO.phone}
-            </a>
-
-          </div>
-          <p className="text-emerald-400 font-bold text-sm mt-6 mb-2">No obligation consultation.</p>
-          <p className="text-slate-500 text-xs">
-            <MapPin size={14} className="inline mr-1" aria-hidden="true" />
-            Hawalli, Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19
-          </p>
         </div>
       </section>
-    </main>
+
+      {/* CTA Section */}
+      <section className="py-24 px-4">
+        <div className="container mx-auto max-w-6xl">
+          <Card className="bg-gradient-to-br from-cyan-600/20 via-blue-600/20 to-emerald-600/20 border-cyan-500/30 backdrop-blur-sm">
+            <CardContent className="p-12 text-center">
+              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                Get Your Laptop Fixed Today
+              </h2>
+              <p className="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">
+                No Fix, No Fee. Free pickup and delivery across all Kuwait governorates. Reach out now for an instant quote.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button 
+                  size="lg" 
+                  className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black text-lg px-8 py-6 shadow-lg shadow-cyan-500/30"
+                  asChild
+                >
+                  <a href={WA_LINK} target="_blank" rel="noopener noreferrer">
+                    <MessageCircle className="w-5 h-5 mr-2" />
+                    Book Free Pickup
+                  </a>
+                </Button>
+                <Button 
+                  size="lg" 
+                  variant="outline" 
+                  className="border-slate-600 text-white hover:bg-slate-800 hover:text-white text-lg px-8 py-6"
+                  asChild
+                >
+                  <a href={`tel:${BUSINESS_INFO.phone}`}>
+                    <Phone className="w-5 h-5 mr-2" />
+                    Call: +965 5530 1913
+                  </a>
+                </Button>
+              </div>
+              <div className="mt-10 pt-8 border-t border-cyan-500/20 flex flex-wrap justify-center gap-6 text-sm text-slate-300">
+                <span className="flex items-center gap-2">
+                  <MapPin className="w-4 h-4 text-cyan-400" /> Hawalli, Ibn Khaldoun St
+                </span>
+                <span className="flex items-center gap-2">
+                  <Shield className="w-4 h-4 text-cyan-400" /> 30-Day Warranty
+                </span>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+    </div>
   );
 }
