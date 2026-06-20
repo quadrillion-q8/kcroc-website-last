@@ -6,7 +6,7 @@ import { Badge } from '@/components/ui/badge';
 import { 
   Monitor, Shield, AlertTriangle, CheckCircle2, Phone, MessageCircle, 
   Clock, Flame, Zap, Sun, Wind, Droplets, ShieldAlert, Wrench, MapPin,
-  ChevronDown
+  Laptop // <-- We added Laptop here!
 } from 'lucide-react';
 import { BUSINESS_INFO } from '../constants/data';
 import MetaSEO from '../components/seo/MetaSEO';
@@ -259,7 +259,7 @@ export default function BlogScreenProtection() {
               </span>
             </h1>
             <p className="text-xl md:text-2xl text-slate-300 max-w-4xl mx-auto leading-relaxed">
-              Technical screen preservation methodologies from Kuwait\'s leading hardware repair center. Eliminate pressure damage, heat degradation, and alignment breaks.
+              Technical screen preservation methodologies from Kuwait's leading hardware repair center. Eliminate pressure damage, heat degradation, and alignment breaks.
             </p>
             <div className="flex flex-wrap gap-4 justify-center pt-6">
               <Button 
