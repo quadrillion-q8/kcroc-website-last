@@ -227,18 +227,27 @@ const faq = [
 ];
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   3. ANIMATED BACKGROUND COMPONENT
+   3. ANIMATED BACKGROUND COMPONENT (DEPLOYMENT SAFE)
 ───────────────────────────────────────────────────────────────────────────── */
 const AnimatedBackground = () => (
   <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
-    {/* Floating Orb 1 */}
-    <div className="absolute top-[-10%] left-[-10%] w-[400px] h-[400px] md:w-[600px] md:h-[600px] bg-emerald-500/20 blur-[100px] md:blur-[120px] rounded-full mix-blend-screen animate-[blob_7s_infinite]" />
-    {/* Floating Orb 2 */}
-    <div className="absolute top-[20%] right-[-10%] w-[350px] h-[350px] md:w-[500px] md:h-[500px] bg-cyan-500/20 blur-[100px] md:blur-[120px] rounded-full mix-blend-screen animate-[blob_7s_infinite_2s]" />
-    {/* Floating Orb 3 */}
-    <div className="absolute bottom-[-20%] left-[20%] w-[400px] h-[400px] md:w-[600px] md:h-[600px] bg-blue-500/20 blur-[100px] md:blur-[120px] rounded-full mix-blend-screen animate-[blob_7s_infinite_4s]" />
+    {/* Floating Orb 1 - Cyan */}
+    <div 
+      className="absolute top-[-10%] left-[-10%] w-[400px] h-[400px] md:w-[600px] md:h-[600px] bg-cyan-600/40 blur-[100px] md:blur-[120px] rounded-full" 
+      style={{ animation: 'blob 7s infinite' }}
+    />
+    {/* Floating Orb 2 - Emerald */}
+    <div 
+      className="absolute top-[20%] right-[-10%] w-[350px] h-[350px] md:w-[500px] md:h-[500px] bg-emerald-600/40 blur-[100px] md:blur-[120px] rounded-full" 
+      style={{ animation: 'blob 7s infinite 2s' }}
+    />
+    {/* Floating Orb 3 - Blue */}
+    <div 
+      className="absolute bottom-[-20%] left-[20%] w-[400px] h-[400px] md:w-[600px] md:h-[600px] bg-blue-600/40 blur-[100px] md:blur-[120px] rounded-full" 
+      style={{ animation: 'blob 7s infinite 4s' }}
+    />
     
-    {/* CSS Keyframes injected directly to avoid needing external stylesheets */}
+    {/* CSS Keyframes injected directly for guaranteed rendering */}
     <style dangerouslySetInnerHTML={{__html: `
       @keyframes blob {
         0% { transform: translate(0px, 0px) scale(1); }
@@ -492,6 +501,41 @@ export default function BlogScreenProtection() {
         </div>
       </section>
 
+      {/* Brand Specific Layer */}
+      <section className="py-24 px-4 bg-slate-900/30 border-t border-slate-900">
+        <div className="container mx-auto max-w-6xl">
+          <div className="text-center mb-16">
+            <Badge className="bg-purple-500/20 text-purple-300 border-purple-500/30 px-4 py-2 text-sm mb-4">
+              Lab Interventions
+            </Badge>
+            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
+              Cross-Platform Display Engineering
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            {brandMatrix.map((brand, index) => (
+              <Card key={index} className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 border-slate-800 backdrop-blur-sm">
+                <CardHeader>
+                  <CardTitle className="text-2xl text-white mb-2">{brand.brand}</CardTitle>
+                  <Badge className="bg-slate-950 text-slate-400 border border-slate-800 w-fit">{brand.models}</Badge>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div>
+                    <h4 className="text-cyan-400 font-bold text-xs uppercase tracking-wider mb-1">Technical Scope:</h4>
+                    <p className="text-slate-300 text-sm">{brand.expertise}</p>
+                  </div>
+                  <div>
+                    <h4 className="text-orange-400 font-bold text-xs uppercase tracking-wider mb-1">Dominant Structural Failures:</h4>
+                    <p className="text-slate-400 text-sm">{brand.common}</p>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Preventative Rules Grid */}
       <section className="py-16 md:py-24 px-4 relative z-10 border-t border-slate-800">
         <div className="container mx-auto max-w-6xl">
@@ -532,6 +576,33 @@ export default function BlogScreenProtection() {
         </div>
       </section>
 
+      {/* FAQ Section */}
+      <section className="py-24 px-4 border-t border-slate-900 bg-slate-900/20">
+        <div className="container mx-auto max-w-4xl">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
+              Frequently Asked Questions
+            </h2>
+          </div>
+
+          <div className="space-y-4">
+            {faq.map((item, index) => (
+              <Card key={index} className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 border-slate-800 backdrop-blur-sm">
+                <CardContent className="p-6 md:p-8">
+                  <h3 className="text-lg font-bold text-white mb-3 flex items-start gap-3">
+                    <span className="text-cyan-400 flex-shrink-0">Q:</span>
+                    {item.q}
+                  </h3>
+                  <p className="text-slate-300 leading-relaxed pl-7">
+                    <span className="text-emerald-400 font-semibold">A:</span> {item.a}
+                  </p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* High-Conversion CTA Component */}
       <section className="py-16 md:py-24 px-4 relative z-10">
         <div className="container mx-auto max-w-6xl">
@@ -557,14 +628,22 @@ export default function BlogScreenProtection() {
                 <Button 
                   size="lg" 
                   variant="outline" 
-                  className="border-slate-600 text-white hover:bg-slate-800 text-base md:text-lg px-6 md:px-8 py-6 md:py-7"
+                  className="border-slate-700 text-white hover:bg-slate-800 text-base md:text-lg px-6 md:px-8 py-6 md:py-7"
                   asChild
                 >
                   <a href={`tel:${BUSINESS_INFO.phone}`}>
                     <Phone className="w-5 h-5 mr-2" />
-                    Call: +965 5530 1913
+                    Call Intake: +965 5530 1913
                   </a>
                 </Button>
+              </div>
+              <div className="mt-10 pt-8 border-t border-slate-800 flex flex-wrap justify-center gap-6 text-sm text-slate-400">
+                <span className="flex items-center gap-2">
+                  <MapPin className="w-4 h-4 text-cyan-400" /> Hawalli, Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19
+                </span>
+                <span className="flex items-center gap-2">
+                  <Shield className="w-4 h-4 text-cyan-400" /> Complimentary Diagnostics
+                </span>
               </div>
             </CardContent>
           </Card>
