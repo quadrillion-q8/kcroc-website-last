@@ -6,7 +6,7 @@ import { Badge } from '@/components/ui/badge';
 import { 
   Monitor, Shield, AlertTriangle, CheckCircle2, Phone, MessageCircle, 
   Clock, Flame, Zap, Sun, Wind, Droplets, ShieldAlert, Wrench, MapPin,
-  Laptop // <-- We added Laptop here!
+  Laptop 
 } from 'lucide-react';
 import { BUSINESS_INFO } from '../constants/data';
 import MetaSEO from '../components/seo/MetaSEO';
@@ -227,12 +227,36 @@ const faq = [
 ];
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   3. MAIN VISUAL COMPONENT
+   3. ANIMATED BACKGROUND COMPONENT
+───────────────────────────────────────────────────────────────────────────── */
+const AnimatedBackground = () => (
+  <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
+    {/* Floating Orb 1 */}
+    <div className="absolute top-[-10%] left-[-10%] w-[400px] h-[400px] md:w-[600px] md:h-[600px] bg-emerald-500/20 blur-[100px] md:blur-[120px] rounded-full mix-blend-screen animate-[blob_7s_infinite]" />
+    {/* Floating Orb 2 */}
+    <div className="absolute top-[20%] right-[-10%] w-[350px] h-[350px] md:w-[500px] md:h-[500px] bg-cyan-500/20 blur-[100px] md:blur-[120px] rounded-full mix-blend-screen animate-[blob_7s_infinite_2s]" />
+    {/* Floating Orb 3 */}
+    <div className="absolute bottom-[-20%] left-[20%] w-[400px] h-[400px] md:w-[600px] md:h-[600px] bg-blue-500/20 blur-[100px] md:blur-[120px] rounded-full mix-blend-screen animate-[blob_7s_infinite_4s]" />
+    
+    {/* CSS Keyframes injected directly to avoid needing external stylesheets */}
+    <style dangerouslySetInnerHTML={{__html: `
+      @keyframes blob {
+        0% { transform: translate(0px, 0px) scale(1); }
+        33% { transform: translate(30px, -50px) scale(1.1); }
+        66% { transform: translate(-20px, 20px) scale(0.9); }
+        100% { transform: translate(0px, 0px) scale(1); }
+      }
+    `}} />
+  </div>
+);
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   4. MAIN VISUAL COMPONENT
 ───────────────────────────────────────────────────────────────────────────── */
 
 export default function BlogScreenProtection() {
   return (
-    <div className="min-h-screen bg-gray-950 text-white selection:bg-cyan-500/30">
+    <div className="min-h-screen bg-gray-950 text-white selection:bg-cyan-500/30 relative">
       <MetaSEO
         title="How to Protect Your Laptop Screen: Expert Repair Guide | KCROC"
         description="Discover how to protect your laptop screen from damage. Learn the physics of screen failure, Kuwait climate impacts, and when to seek professional screen repair."
@@ -240,13 +264,12 @@ export default function BlogScreenProtection() {
       />
       <SchemaMarkup schema={STRUCTURED_DATA} />
 
+      {/* Inject the stunning animated background here */}
+      <AnimatedBackground />
+
       {/* Hero Header Area */}
-      <section className="relative pt-32 pb-24 px-4 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 via-transparent to-cyan-500/10"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(16,185,129,0.1),transparent_50%)]"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(6,182,212,0.1),transparent_50%)]"></div>
-        
-        <div className="container mx-auto max-w-6xl relative z-10">
+      <section className="relative pt-32 pb-24 px-4 overflow-hidden z-10">
+        <div className="container mx-auto max-w-6xl relative">
           <div className="text-center space-y-6">
             <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30 px-6 py-2 text-sm font-semibold">
               <Monitor className="w-4 h-4 mr-2 inline" />
@@ -261,7 +284,7 @@ export default function BlogScreenProtection() {
             <p className="text-xl md:text-2xl text-slate-300 max-w-4xl mx-auto leading-relaxed">
               Technical screen preservation methodologies from Kuwait's leading hardware repair center. Eliminate pressure damage, heat degradation, and alignment breaks.
             </p>
-            <div className="flex flex-wrap gap-4 justify-center pt-6">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6">
               <Button 
                 size="lg" 
                 className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white text-lg px-8 py-6 shadow-lg shadow-cyan-500/30"
@@ -289,23 +312,23 @@ export default function BlogScreenProtection() {
       </section>
 
       {/* Metrics Grid */}
-      <section className="py-16 px-4 bg-slate-900/50 backdrop-blur-sm">
+      <section className="py-16 px-4 bg-slate-900/50 backdrop-blur-sm relative z-10">
         <div className="container mx-auto max-w-6xl">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-8">
             {statistics.map((stat, index) => {
               const Icon = stat.icon;
               return (
                 <Card key={index} className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 border-cyan-500/20 backdrop-blur-sm hover:border-cyan-500/40 transition-all">
-                  <CardContent className="pt-8 text-center">
-                    <div className="flex justify-center mb-4">
-                      <div className="bg-slate-950 p-4 rounded-full border border-slate-800">
-                        <Icon className={`w-8 h-8 ${stat.color}`} />
+                  <CardContent className="pt-6 md:pt-8 text-center p-4 md:p-6">
+                    <div className="flex justify-center mb-3 md:mb-4">
+                      <div className="bg-slate-950 p-2 md:p-4 rounded-full border border-slate-800">
+                        <Icon className={`w-6 h-6 md:w-8 md:h-8 ${stat.color}`} />
                       </div>
                     </div>
-                    <div className="text-5xl font-black text-white mb-2">
+                    <div className="text-3xl md:text-5xl font-black text-white mb-1 md:mb-2">
                       {stat.value}
                     </div>
-                    <div className="text-sm text-slate-400 font-bold uppercase tracking-widest">{stat.label}</div>
+                    <div className="text-xs md:text-sm text-slate-400 font-bold uppercase tracking-widest">{stat.label}</div>
                   </CardContent>
                 </Card>
               );
@@ -315,48 +338,44 @@ export default function BlogScreenProtection() {
       </section>
 
       {/* Environmental Challenges Component */}
-      <section className="py-24 px-4">
+      <section className="py-16 md:py-24 px-4 relative z-10">
         <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-16">
-            <Badge className="bg-red-500/20 text-red-300 border-red-500/30 px-4 py-2 text-sm mb-4">
+          <div className="text-center mb-10 md:mb-16">
+            <Badge className="bg-red-500/20 text-red-300 border-red-500/30 px-4 py-1.5 md:py-2 text-xs md:text-sm mb-4">
               <AlertTriangle className="w-4 h-4 mr-2 inline" /> Stress Mechanics
             </Badge>
-            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
+            <h2 className="text-3xl md:text-6xl font-bold text-white mb-4 md:mb-6">
               The Path to Matrix Destruction
             </h2>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+            <p className="text-sm md:text-xl text-slate-300 max-w-3xl mx-auto">
               Modern displays compress glass profiles to achieve lean design lines, sacrificing physical resilience. Here is how local climate and user habits degrade your screen layers.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-2 gap-3 md:gap-6">
             {challenges.map((challenge, index) => {
               const Icon = challenge.icon;
               return (
-                <Card key={index} className={`bg-slate-900/50 ${challenge.borderColor} backdrop-blur-sm hover:scale-[1.01] transition-transform overflow-hidden`}>
-                  <div className="grid md:grid-cols-2 h-full">
-                    <div className="flex flex-col justify-center">
-                      <CardHeader>
-                        <div className="flex items-center gap-4 mb-3">
-                          <div className={`${challenge.bgColor} p-3 rounded-xl`}>
-                            <Icon className={`w-6 h-6 ${challenge.color}`} />
-                          </div>
-                        </div>
-                        <CardTitle className="text-2xl text-white mb-3">{challenge.title}</CardTitle>
-                        <CardDescription className="text-slate-300 text-sm leading-relaxed">
-                          {challenge.description}
-                        </CardDescription>
-                      </CardHeader>
-                    </div>
-                    <div className="flex items-center justify-center p-4">
-                      <img 
-                        src={challenge.image}
-                        alt={`${challenge.title} - Laptop Display Care`}
-                        className="w-full h-48 md:h-full object-cover rounded-lg"
-                        loading="lazy"
-                      />
-                    </div>
+                <Card key={index} className={`bg-slate-900/50 ${challenge.borderColor} backdrop-blur-sm hover:scale-[1.01] transition-transform overflow-hidden flex flex-col`}>
+                  <div className="h-24 md:h-48 overflow-hidden shrink-0">
+                    <img 
+                      src={challenge.image}
+                      alt={challenge.title}
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
                   </div>
+                  <CardHeader className="p-4 md:p-6 flex-grow">
+                    <div className="flex items-center gap-3 mb-2 md:mb-3">
+                      <div className={`${challenge.bgColor} p-2 md:p-3 rounded-lg md:rounded-xl`}>
+                        <Icon className={`w-4 h-4 md:w-6 md:h-6 ${challenge.color}`} />
+                      </div>
+                    </div>
+                    <CardTitle className="text-base md:text-2xl text-white mb-1 md:mb-3 leading-tight">{challenge.title}</CardTitle>
+                    <CardDescription className="text-slate-300 text-xs md:text-sm leading-relaxed line-clamp-3 md:line-clamp-none">
+                      {challenge.description}
+                    </CardDescription>
+                  </CardHeader>
                 </Card>
               );
             })}
@@ -365,45 +384,45 @@ export default function BlogScreenProtection() {
       </section>
 
       {/* Threshold Matrix Component */}
-      <section className="py-24 px-4 bg-slate-900/50 backdrop-blur-sm">
+      <section className="py-16 md:py-24 px-4 bg-slate-900/50 backdrop-blur-sm relative z-10">
         <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-16">
-            <Badge className="bg-orange-500/20 text-orange-300 border-orange-500/30 px-4 py-2 text-sm mb-4">
+          <div className="text-center mb-10 md:mb-16">
+            <Badge className="bg-orange-500/20 text-orange-300 border-orange-500/30 px-4 py-1.5 md:py-2 text-xs md:text-sm mb-4">
               <Flame className="w-4 h-4 mr-2 inline" /> Severity Monitoring
             </Badge>
-            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
+            <h2 className="text-3xl md:text-6xl font-bold text-white mb-4 md:mb-6">
               Structural Degradation Zones
             </h2>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+            <p className="text-sm md:text-xl text-slate-300 max-w-3xl mx-auto">
               Identify failure tiers early before internal damage triggers secondary power line shorts on panel interface controllers.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-6">
             {screenTiers.map((tier, index) => (
               <Card key={index} className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 border-slate-700 backdrop-blur-sm">
-                <CardHeader>
-                  <CardTitle className="text-2xl text-white flex items-center gap-3">
-                    <Monitor className="w-6 h-6 text-cyan-400" />
+                <CardHeader className="p-4 md:p-6 pb-2 md:pb-4">
+                  <CardTitle className="text-sm md:text-2xl text-white flex items-center gap-2 md:gap-3 leading-tight">
+                    <Monitor className="w-4 h-4 md:w-6 md:h-6 text-cyan-400" />
                     {tier.component}
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-4">
+                <CardContent className="p-4 md:p-6 pt-0 space-y-3 md:space-y-4">
                   <div className="grid grid-cols-3 gap-2">
-                    <div className="bg-emerald-500/10 border border-emerald-500/30 rounded-lg p-2 text-center">
-                      <div className="text-[10px] text-emerald-400 font-bold mb-1">SAFE</div>
-                      <div className="text-xs text-white font-bold">{tier.safe}</div>
+                    <div className="bg-emerald-500/10 border border-emerald-500/30 rounded-lg p-1.5 md:p-2 text-center flex flex-col justify-center">
+                      <div className="text-[9px] md:text-[10px] text-emerald-400 font-bold mb-0.5 md:mb-1">SAFE</div>
+                      <div className="text-[10px] md:text-xs text-white font-bold leading-tight">{tier.safe}</div>
                     </div>
-                    <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-lg p-2 text-center">
-                      <div className="text-[10px] text-yellow-400 font-bold mb-1">WARN</div>
-                      <div className="text-xs text-white font-bold">{tier.warning}</div>
+                    <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-lg p-1.5 md:p-2 text-center flex flex-col justify-center">
+                      <div className="text-[9px] md:text-[10px] text-yellow-400 font-bold mb-0.5 md:mb-1">WARN</div>
+                      <div className="text-[10px] md:text-xs text-white font-bold leading-tight">{tier.warning}</div>
                     </div>
-                    <div className="bg-red-500/10 border border-red-500/30 rounded-lg p-2 text-center">
-                      <div className="text-[10px] text-red-400 font-bold mb-1">CRIT</div>
-                      <div className="text-xs text-white font-bold">{tier.critical}</div>
+                    <div className="bg-red-500/10 border border-red-500/30 rounded-lg p-1.5 md:p-2 text-center flex flex-col justify-center">
+                      <div className="text-[9px] md:text-[10px] text-red-400 font-bold mb-0.5 md:mb-1">CRIT</div>
+                      <div className="text-[10px] md:text-xs text-white font-bold leading-tight">{tier.critical}</div>
                     </div>
                   </div>
-                  <p className="text-slate-400 text-sm leading-relaxed">{tier.description}</p>
+                  <p className="text-slate-400 text-[11px] md:text-sm leading-relaxed hidden sm:block">{tier.description}</p>
                 </CardContent>
               </Card>
             ))}
@@ -412,59 +431,56 @@ export default function BlogScreenProtection() {
       </section>
 
       {/* Solutions Catalog */}
-      <section className="py-24 px-4">
+      <section className="py-16 md:py-24 px-4 relative z-10">
         <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-16">
-            <Badge className="bg-cyan-500/20 text-cyan-300 border-cyan-500/30 px-4 py-2 text-sm mb-4">
+          <div className="text-center mb-10 md:mb-16">
+            <Badge className="bg-cyan-500/20 text-cyan-300 border-cyan-500/30 px-4 py-1.5 md:py-2 text-xs md:text-sm mb-4">
               Precision Capabilities
             </Badge>
-            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
+            <h2 className="text-3xl md:text-6xl font-bold text-white mb-4 md:mb-6">
               Display Assembly Options
             </h2>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+            <p className="text-sm md:text-xl text-slate-300 max-w-3xl mx-auto">
               Original equipment grade display solutions executed under clean workshop environments inside our Hawalli laboratory.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6">
             {repairCatalog.map((solution, index) => {
               const Icon = solution.icon;
               return (
                 <Card key={index} className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 border-slate-800 backdrop-blur-sm hover:border-cyan-500/40 transition-all overflow-hidden flex flex-col">
-                  <div className="relative h-48 overflow-hidden">
+                  <div className="relative h-24 md:h-48 overflow-hidden shrink-0">
                     <img 
                       src={solution.image}
                       alt={solution.title}
                       className="w-full h-full object-cover opacity-75"
                       loading="lazy"
                     />
-                    <div className="absolute top-3 right-3">
-                      <Badge className="bg-slate-950/90 text-cyan-400 border border-cyan-500/30 text-sm px-3 py-1 font-bold">
+                    <div className="absolute top-2 right-2 md:top-3 md:right-3">
+                      <Badge className="bg-slate-950/90 text-cyan-400 border border-cyan-500/30 text-[10px] md:text-sm px-2 py-0.5 md:px-3 md:py-1 font-bold">
                         {solution.price}
                       </Badge>
                     </div>
                   </div>
-                  <CardHeader className="flex-grow">
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className="bg-slate-950 border border-slate-800 p-2.5 rounded-lg">
-                        <Icon className="w-5 h-5 text-cyan-400" />
+                  <CardHeader className="p-4 md:p-6 flex-grow">
+                    <div className="flex items-center gap-2 md:gap-3 mb-2 md:mb-3">
+                      <div className="bg-slate-950 border border-slate-800 p-2 md:p-2.5 rounded-lg">
+                        <Icon className="w-4 h-4 md:w-5 md:h-5 text-cyan-400" />
                       </div>
                     </div>
-                    <CardTitle className="text-xl text-white mb-2">{solution.title}</CardTitle>
-                    <CardDescription className="text-slate-400 text-sm mb-4">
-                      {solution.description}
-                    </CardDescription>
-                    <div className="flex items-center gap-2 mt-auto">
-                      <Clock className="w-4 h-4 text-cyan-400" />
-                      <span className="text-sm font-bold text-slate-300">{solution.duration}</span>
+                    <CardTitle className="text-sm md:text-xl text-white mb-1 md:mb-2 leading-tight">{solution.title}</CardTitle>
+                    <div className="flex items-center gap-1.5 md:gap-2 mt-2 md:mt-auto">
+                      <Clock className="w-3 h-3 md:w-4 md:h-4 text-cyan-400" />
+                      <span className="text-[10px] md:text-sm font-bold text-slate-300">{solution.duration}</span>
                     </div>
                   </CardHeader>
-                  <CardContent className="bg-slate-950/30 pt-4 border-t border-slate-800">
-                    <ul className="space-y-2">
-                      {solution.benefits.map((benefit, idx) => (
-                        <li key={idx} className="flex items-start gap-2 text-slate-300 text-sm">
-                          <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
-                          <span>{benefit}</span>
+                  <CardContent className="bg-slate-950/30 pt-3 md:pt-4 border-t border-slate-800 p-4 md:p-6 hidden sm:block">
+                    <ul className="space-y-1 md:space-y-2">
+                      {solution.benefits.slice(0,3).map((benefit, idx) => (
+                        <li key={idx} className="flex items-start gap-1.5 md:gap-2 text-slate-300 text-[10px] md:text-sm">
+                          <CheckCircle2 className="w-3 h-3 md:w-4 md:h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
+                          <span className="leading-tight">{benefit}</span>
                         </li>
                       ))}
                     </ul>
@@ -476,71 +492,36 @@ export default function BlogScreenProtection() {
         </div>
       </section>
 
-      {/* Brand Specific Layer */}
-      <section className="py-24 px-4 bg-slate-900/30 border-t border-slate-900">
-        <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-16">
-            <Badge className="bg-purple-500/20 text-purple-300 border-purple-500/30 px-4 py-2 text-sm mb-4">
-              Lab Interventions
-            </Badge>
-            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
-              Cross-Platform Display Engineering
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-6">
-            {brandMatrix.map((brand, index) => (
-              <Card key={index} className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 border-slate-800 backdrop-blur-sm">
-                <CardHeader>
-                  <CardTitle className="text-2xl text-white mb-2">{brand.brand}</CardTitle>
-                  <Badge className="bg-slate-950 text-slate-400 border border-slate-800 w-fit">{brand.models}</Badge>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div>
-                    <h4 className="text-cyan-400 font-bold text-xs uppercase tracking-wider mb-1">Technical Scope:</h4>
-                    <p className="text-slate-300 text-sm">{brand.expertise}</p>
-                  </div>
-                  <div>
-                    <h4 className="text-orange-400 font-bold text-xs uppercase tracking-wider mb-1">Dominant Structural Failures:</h4>
-                    <p className="text-slate-400 text-sm">{brand.common}</p>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Preventative Rules Grid */}
-      <section className="py-24 px-4">
+      <section className="py-16 md:py-24 px-4 relative z-10 border-t border-slate-800">
         <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-16">
-            <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30 px-4 py-2 text-sm mb-4">
+          <div className="text-center mb-10 md:mb-16">
+            <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30 px-4 py-1.5 md:py-2 text-xs md:text-sm mb-4">
               Preservation Playbook
             </Badge>
-            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
+            <h2 className="text-3xl md:text-6xl font-bold text-white mb-4 md:mb-6">
               Display Maintenance Protocols
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-2 gap-3 md:gap-6">
             {preventionGuide.map((tip, index) => {
               const Icon = tip.icon;
               return (
                 <Card key={index} className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 border-slate-800 backdrop-blur-sm">
-                  <CardHeader>
-                    <div className="flex items-center gap-4 mb-2">
-                      <div className="bg-cyan-500/10 p-3 rounded-lg">
-                        <Icon className="w-6 h-6 text-cyan-400" />
+                  <CardHeader className="p-4 md:p-6">
+                    <div className="flex flex-col md:flex-row md:items-center gap-3 md:gap-4 mb-2">
+                      <div className="bg-cyan-500/10 p-2 md:p-3 rounded-lg w-fit">
+                        <Icon className="w-4 h-4 md:w-6 md:h-6 text-cyan-400" />
                       </div>
                       <div className="flex-1">
-                        <CardTitle className="text-xl text-white">{tip.title}</CardTitle>
-                        <Badge className="bg-emerald-500/20 text-emerald-300 border-0 mt-2">
+                        <CardTitle className="text-sm md:text-xl text-white mb-1.5 md:mb-0 leading-tight">{tip.title}</CardTitle>
+                        <Badge className="bg-emerald-500/20 text-emerald-300 border-0 mt-0 md:mt-2 text-[10px] md:text-xs">
                           {tip.frequency}
                         </Badge>
                       </div>
                     </div>
-                    <CardDescription className="text-slate-300 text-sm leading-relaxed">
+                    <CardDescription className="text-slate-300 text-[11px] md:text-sm leading-relaxed mt-2 md:mt-0">
                       {tip.description}
                     </CardDescription>
                   </CardHeader>
@@ -551,48 +532,22 @@ export default function BlogScreenProtection() {
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <section className="py-24 px-4 border-t border-slate-900 bg-slate-900/20">
-        <div className="container mx-auto max-w-4xl">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
-              Frequently Asked Questions
-            </h2>
-          </div>
-
-          <div className="space-y-4">
-            {faq.map((item, index) => (
-              <Card key={index} className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 border-slate-800 backdrop-blur-sm">
-                <CardContent className="p-6 md:p-8">
-                  <h3 className="text-lg font-bold text-white mb-3 flex items-start gap-3">
-                    <span className="text-cyan-400 flex-shrink-0">Q:</span>
-                    {item.q}
-                  </h3>
-                  <p className="text-slate-300 leading-relaxed pl-7">
-                    <span className="text-emerald-400 font-semibold">A:</span> {item.a}
-                  </p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* High-Conversion CTA Component */}
-      <section className="py-24 px-4">
+      <section className="py-16 md:py-24 px-4 relative z-10">
         <div className="container mx-auto max-w-6xl">
-          <Card className="bg-gradient-to-br from-emerald-600/20 via-blue-600/20 to-cyan-600/20 border-cyan-500/30 backdrop-blur-sm">
-            <CardContent className="p-12 text-center">
-              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+          <Card className="bg-gradient-to-br from-emerald-600/20 via-blue-600/20 to-cyan-600/20 border-cyan-500/30 backdrop-blur-sm overflow-hidden relative">
+            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-400 via-cyan-400 to-blue-500"></div>
+            <CardContent className="p-8 md:p-12 text-center relative z-10">
+              <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 md:mb-6 leading-tight">
                 Restore Your Display Panel Architecture Safely
               </h2>
-              <p className="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">
+              <p className="text-sm md:text-xl text-slate-300 mb-6 md:mb-8 max-w-2xl mx-auto">
                 No Fix, No Charge policy. Complimentary vehicle collection and delivery across all governorates in Kuwait. Restoring panel health with flawless precision.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center">
                 <Button 
                   size="lg" 
-                  className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-slate-950 font-black text-lg px-8 py-6 shadow-lg shadow-cyan-500/30"
+                  className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-black text-base md:text-lg px-6 md:px-8 py-6 md:py-7 shadow-lg shadow-cyan-500/30"
                   asChild
                 >
                   <Link to="/book">
@@ -602,22 +557,14 @@ export default function BlogScreenProtection() {
                 <Button 
                   size="lg" 
                   variant="outline" 
-                  className="border-slate-700 text-white hover:bg-slate-800 text-lg px-8 py-6"
+                  className="border-slate-600 text-white hover:bg-slate-800 text-base md:text-lg px-6 md:px-8 py-6 md:py-7"
                   asChild
                 >
                   <a href={`tel:${BUSINESS_INFO.phone}`}>
                     <Phone className="w-5 h-5 mr-2" />
-                    Call Intake: +965 5530 1913
+                    Call: +965 5530 1913
                   </a>
                 </Button>
-              </div>
-              <div className="mt-10 pt-8 border-t border-slate-800 flex flex-wrap justify-center gap-6 text-sm text-slate-400">
-                <span className="flex items-center gap-2">
-                  <MapPin className="w-4 h-4 text-cyan-400" /> Hawalli, Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19
-                </span>
-                <span className="flex items-center gap-2">
-                  <Shield className="w-4 h-4 text-cyan-400" /> Complimentary Diagnostics
-                </span>
               </div>
             </CardContent>
           </Card>
