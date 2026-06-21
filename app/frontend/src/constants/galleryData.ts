@@ -1,77 +1,43 @@
 // File: src/constants/galleryData.ts
 import { IMAGES } from './images';
 
-export const galleryCategories = ["All", "Custom PC Builds", "Laptop Repairs", "Workshop & Team"];
+export const galleryCategories = [
+  "All", 
+  "Workshop & Team", 
+  "Custom PC Builds", 
+  "Laptop Repairs", 
+  "Upgrades & SSDs"
+];
 
 export const galleryImages = [
   // ─── WORKSHOP & TEAM ─────────────────────────────────────────────
-  {
-    src: IMAGES.brand.shopExteriorDay,
-    alt: 'Exterior daytime view of Al Mullah Complex in Hawalli',
-    category: 'Workshop & Team'
-  },
-  {
-    src: IMAGES.brand.teamWorkbench,
-    alt: 'KCROC computer technicians working on motherboard repairs at the workbench',
-    category: 'Workshop & Team'
-  },
-  {
-    src: IMAGES.brand.workshopOwner,
-    alt: 'KCROC lead technician at the computer repair workbench',
-    category: 'Workshop & Team'
-  },
-  {
-    src: IMAGES.brand.inventoryShelves,
-    alt: 'Shelves stocked with spare laptop chassis and repair parts',
-    category: 'Workshop & Team'
-  },
+  { src: IMAGES.brand.shopExteriorDay, alt: 'Exterior view of KCROC Al Mullah Complex', category: 'Workshop & Team' },
+  { src: IMAGES.brand.shopPhoto, alt: 'Inside the KCROC professional computer repair workshop', category: 'Workshop & Team' },
+  { src: IMAGES.brand.teamWorkbench, alt: 'Technicians working on motherboard repairs', category: 'Workshop & Team' },
+  { src: IMAGES.brand.workshopOwner, alt: 'Imran Natiq, leading IT specialist', category: 'Workshop & Team' },
+  { src: IMAGES.brand.inventoryShelves, alt: 'Inventory shelves stocked with laptop chassis parts', category: 'Workshop & Team' },
+  { src: IMAGES.brand.techTeam, alt: 'KCROC computer repair technician team', category: 'Workshop & Team' },
 
   // ─── CUSTOM PC BUILDS ────────────────────────────────────────────
-  {
-    src: IMAGES.pcBuilds.waterCooledPC,
-    alt: 'High-end custom gaming PC build featuring hard-tube liquid cooling',
-    category: 'Custom PC Builds'
-  },
-  {
-    src: IMAGES.pcBuilds.rgbCaseBuild,
-    alt: 'ASUS ROG custom gaming PC build featuring RGB light strips',
-    category: 'Custom PC Builds'
-  },
-  {
-    src: IMAGES.pcBuilds.i9Processor,
-    alt: 'Intel Core i9-13900K processor seated in an ASUS ROG Strix motherboard',
-    category: 'Custom PC Builds'
-  },
-  {
-    src: IMAGES.pcBuilds.kryonautPaste,
-    alt: 'Applying Thermal Grizzly Kryonaut Extreme thermal paste to a desktop CPU',
-    category: 'Custom PC Builds'
-  },
+  { src: IMAGES.pcBuilds.waterCooledPC, alt: 'High-end custom gaming PC with liquid cooling', category: 'Custom PC Builds' },
+  { src: IMAGES.pcBuilds.rgbCaseBuild, alt: 'ASUS ROG custom gaming PC illuminated by RGB', category: 'Custom PC Builds' },
+  { src: IMAGES.pcBuilds.i9Processor, alt: 'Intel Core i9-13900K processor in ASUS motherboard', category: 'Custom PC Builds' },
+  { src: IMAGES.pcBuilds.kryonautPaste, alt: 'Applying Thermal Grizzly Kryonaut Extreme paste', category: 'Custom PC Builds' },
+  { src: IMAGES.pcBuilds.liquidCooler, alt: 'Installation of a DeepCool AIO liquid CPU cooler', category: 'Custom PC Builds' },
+  { src: IMAGES.services.diagnosticsWorkbench, alt: 'Custom gaming PC on the diagnostics workbench', category: 'Custom PC Builds' },
 
   // ─── LAPTOP REPAIRS ──────────────────────────────────────────────
-  {
-    src: IMAGES.laptop.swollenBattery,
-    alt: 'Removing a dangerously swollen lithium-ion battery from an Apple MacBook',
-    category: 'Laptop Repairs'
-  },
-  {
-    src: IMAGES.laptop.logicBoard,
-    alt: 'Exposed internal logic board and cooling fan inside an Apple MacBook',
-    category: 'Laptop Repairs'
-  },
-  {
-    src: IMAGES.laptop.brokenHinge,
-    alt: 'Severe physical damage to a laptop chassis showing a broken right hinge',
-    category: 'Laptop Repairs'
-  },
-  {
-    src: IMAGES.laptop.copperHeatsink,
-    alt: 'Removing a copper heatsink from a laptop motherboard for thermal paste replacement',
-    category: 'Laptop Repairs'
-  },
-  {
-    src: IMAGES.upgrades.ssdWDBlack,
-    alt: 'Western Digital WD_BLACK SN850 1TB NVMe SSD for a laptop storage upgrade',
-    category: 'Laptop Repairs'
-  }
+  { src: IMAGES.laptop.swollenBattery, alt: 'Removing a dangerously swollen MacBook battery', category: 'Laptop Repairs' },
+  { src: IMAGES.laptop.logicBoard, alt: 'Exposed Apple MacBook logic board and cooling fan', category: 'Laptop Repairs' },
+  { src: IMAGES.laptop.brokenHinge, alt: 'Repairing severe physical damage to a laptop hinge', category: 'Laptop Repairs' },
+  { src: IMAGES.laptop.copperHeatsink, alt: 'Removing a laptop copper heatsink for thermal paste', category: 'Laptop Repairs' },
+  { src: IMAGES.laptop.cloggedFan, alt: 'Deep cleaning a severely dust-clogged laptop fan', category: 'Laptop Repairs' },
+  { src: IMAGES.laptop.macbookRepair, alt: 'Technician holding an opened MacBook for repair', category: 'Laptop Repairs' },
+
+  // ─── UPGRADES & SSDS ─────────────────────────────────────────────
+  { src: IMAGES.upgrades.ram8gbDDR4, alt: 'Upgrading laptop performance with an 8GB DDR4 RAM', category: 'Upgrades & SSDs' },
+  { src: IMAGES.upgrades.ssdWDBlack, alt: 'Western Digital WD_BLACK SN850 1TB NVMe SSD', category: 'Upgrades & SSDs' },
+  { src: IMAGES.upgrades.ssdSamsung, alt: 'Samsung 960 EVO NVMe M.2 SSD installation', category: 'Upgrades & SSDs' },
+  { src: IMAGES.upgrades.ssdKioxia, alt: 'Kioxia 128GB M.2 SSD laptop storage upgrade', category: 'Upgrades & SSDs' },
+  { src: IMAGES.pcBuilds.zotacGPU, alt: 'Zotac Gaming graphics card GPU upgrade', category: 'Upgrades & SSDs' }
 ];
