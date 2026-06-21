@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Phone, MessageCircle, Camera } from 'lucide-react';
+import { Phone, MessageCircle, Camera, Filter } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { BUSINESS_INFO } from '../constants/data';
 import MetaSEO from '../components/seo/MetaSEO';
 import SchemaMarkup from '../components/seo/SchemaMarkup';
+
+// 1. IMPORT YOUR NEW LOCAL DATA!
+import { galleryImages, galleryCategories } from '../constants/galleryData';
+import { IMAGES } from '../constants/images';
 
 /* ─────────────────────────────────────────────────────────────────────────────
    1. PAGE DATA
@@ -23,7 +27,7 @@ const STRUCTURED_DATA = {
       alternateName: 'KCROC',
       url: BUSINESS_INFO.url,
       telephone: BUSINESS_INFO.phone,
-      image: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto/v1769908596/logo_btpfls.png',
+      image: IMAGES.brand.shopPhoto, // Using local image for schema!
       priceRange: '$$',
       address: {
         '@type': 'PostalAddress',
@@ -61,53 +65,19 @@ const STRUCTURED_DATA = {
 
 const WA_LINK = `https://wa.me/${BUSINESS_INFO.cleanPhone}?text=${encodeURIComponent('Hi, I need a repair. Please arrange free pickup.')}`;
 
-const images = [
-  { src: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1769908594/KCROC_shop_exterior_and_storefront_-_Al_Mullah_Complex_Hawalli_ewah64.png',        alt: 'KCROC shop exterior – Al Mullah Complex, Hawalli Kuwait' },
-  { src: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1769908594/Modern_repair_facility_interior_-_KCROC_Kuwait_tkxkat.jpg',                    alt: 'Modern repair facility interior – KCROC Kuwait, Hawalli' },
-  { src: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1769908594/Professional_service_environment_-_KCROC_workshop_Hawalli_xi7rhy.jpg',         alt: 'Professional service environment – KCROC workshop, Hawalli' },
-  { src: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1769908596/Whats-App-Image-2026-01-29-at-3-19-40-AM_i2mpms.jpg',                          alt: 'KCROC repair workshop – Kuwait Computer Repair On Call, Hawalli' },
-  { src: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1781139062/2026-01-22_11_k6dvsz.jpg',                                                       alt: 'KCROC technician performing laptop repair – Kuwait, January 2026' },
-  { src: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1781139061/2026-01-22_10_betuoi.jpg',                                                       alt: 'Component-level repair work at KCROC lab – Kuwait, January 2026' },
-  { src: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1781139061/2026-01-22_9_qfanpt.jpg',                                                        alt: 'Laptop hardware diagnostic in progress – KCROC Kuwait' },
-  { src: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1781139061/2026-01-22_8_jn8uu2.jpg',                                                        alt: 'Motherboard inspection and repair – KCROC Hawalli workshop' },
-  { src: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1781139060/2026-01-22_7_s7a6ed.jpg',                                                        alt: 'Circuit board soldering repair – KCROC Kuwait' },
-  { src: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1781139059/2026-01-22_6_mx8bxj.jpg',                                                        alt: 'Precision laptop repair in progress – KCROC Kuwait January 2026' },
-  { src: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1781139058/2026-01-22_5_znlovp.jpg',                                                        alt: 'Laptop disassembly and component testing – KCROC Kuwait' },
-  { src: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1781139060/2026-01-22_4_uezhno.jpg',                                                        alt: 'Hardware fault repair at KCROC service lab – Hawalli Kuwait' },
-  { src: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1781139058/2026-01-22_3_ooiy7d.jpg',                                                        alt: 'Chip-level laptop repair in KCROC workshop – Kuwait' },
-  { src: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1781139058/2026-01-22_2_wcnani.jpg',                                                        alt: 'Technician repairing laptop at KCROC Kuwait' },
-  { src: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1781139058/2026-01-22_1_jeaf3i.jpg',                                                        alt: 'KCROC repair job completed – Kuwait January 2026' },
-  { src: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1781139058/2026-01-22_nynw7n.jpg',                                                          alt: 'KCROC laptop repair session – Hawalli Kuwait' },
-  { src: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1781139060/2025-11-03_1_wrihqk.jpg',                                                        alt: 'KCROC computer repair work – Kuwait, November 2025' },
-  { src: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1781139059/2025-09-01_e6nvya.jpg',                                                          alt: 'KCROC repair service – Kuwait, September 2025' },
-  { src: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1769908596/Professional_laptop_motherboard_soldering_repair_-_Hawalli_service_vropbf.jpg', alt: 'Professional laptop motherboard soldering repair – Hawalli' },
-  { src: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1769908595/Internal_circuit_board_and_motherboard_work_-_Farwaniya_repair_wlxnvn.jpg',   alt: 'Internal circuit board and motherboard repair – Farwaniya' },
-  { src: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1769908595/Desktop_motherboard_diagnostic_and_repair_-_Jahra_service_tnojnq.jpg',        alt: 'Desktop motherboard diagnostic and repair – Jahra service' },
-  { src: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1769908596/CPU_cooling_fan_replacement_and_maintenance_-_Salmiya_client_mflsla.png',     alt: 'CPU cooling fan replacement and maintenance – Salmiya client' },
-  { src: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1769908595/Dell_laptop_screen_protection_installation_-_Kuwait_City_service_ghokkb.jpg', alt: 'Dell laptop screen protection installation – Kuwait City' },
-  { src: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1769908596/Acer_laptop_power_jack_repair_process_-_Farwaniya_pickup_axi9by.jpg',         alt: 'Acer laptop power jack repair – Farwaniya free pickup' },
-  { src: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1769908595/New_Dell_laptop_battery_42Wh_installation_-_Jahra_pickup_hsbxb8.jpg',         alt: 'New Dell laptop battery 42Wh installation – Jahra pickup' },
-  { src: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1769908594/Original_ASUS_laptop_battery_replacement_-_Ahmadi_customer_yymfro.jpg',       alt: 'Original ASUS laptop battery replacement – Ahmadi customer' },
-  { src: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1769908594/Wireless_computer_keyboard_replacement_-_Salmiya_service_afddzo.jpg',         alt: 'Wireless computer keyboard replacement – Salmiya service' },
-  { src: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1769908593/HP_laptop_small_pin_power_connector_-_Ahmadi_service_du0imp.jpg',             alt: 'HP laptop power connector repair – Ahmadi service' },
-  { src: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1769908595/Various_computer_hardware_repair_components_-_Hawalli_stock_clrf5g.jpg',      alt: 'Various computer hardware repair components – Hawalli stock' },
-  { src: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1769908593/ASUS_laptop_power_adapter_charger_-_Kuwait_City_stock_rbo4yo.jpg',            alt: 'ASUS laptop power adapter charger – Kuwait City stock' },
-  { src: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1769908594/Various_laptop_chargers_and_power_adapters_-_Kuwait_stock_nhjuut.jpg',        alt: 'Various laptop chargers and power adapters – Kuwait stock' },
-  { src: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1769908595/Laptop_protective_packaging_for_safe_transport_-_free_pickup_service_bpm4vw.jpg', alt: 'Laptop protective packaging for safe transport – free pickup service Kuwait' },
-  { src: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1769908594/Professional_network_installation_-_Ahmadi_business_client_kaphu7.jpg',       alt: 'Professional network installation – Ahmadi business client' },
-  { src: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1769908593/Network_infrastructure_components_-_Kuwait_City_installation_bwi8pd.png',     alt: 'Network infrastructure components – Kuwait City installation' },
-  { src: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1769908593/Network_CAT-6_cables_for_high-speed_connectivity_-_Kuwait_installation_xyxhir.jpg', alt: 'Network CAT-6 cables for high-speed connectivity – Kuwait installation' },
-  { src: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1769908592/Wireless_networking_equipment_-_Salmiya_customer_pg4hly.jpg',                alt: 'Wireless networking equipment – Salmiya customer' },
-  { src: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1769908592/Network_setup_and_configuration_tools_-_Hawalli_service_nxlzhv.jpg',          alt: 'Network setup and configuration tools – Hawalli service' },
-  { src: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1769908603/KCROC-Owner-Image_zpdyg4.png',                                                alt: 'Imran Natiq – Founder and CEO of KCROC Kuwait' },
-  { src: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1769908601/KCROC-Co-Founder-Image_salp7t.png',                                           alt: 'Riyaz Kawa – Co-Founder and CTO of KCROC Kuwait' },
-];
-
 /* ─────────────────────────────────────────────────────────────────────────────
    2. MAIN COMPONENT
 ───────────────────────────────────────────────────────────────────────────── */
 
 export default function Gallery() {
+  // State to handle our beautiful new category filters
+  const [activeCategory, setActiveCategory] = useState('All');
+
+  // Filter the massive local image array based on the clicked category
+  const filteredImages = activeCategory === 'All' 
+    ? galleryImages 
+    : galleryImages.filter(img => img.category === activeCategory);
+
   return (
     <main className="w-full min-h-screen bg-transparent text-white font-sans selection:bg-cyan-500/30 pt-32">
       <MetaSEO
@@ -127,7 +97,7 @@ export default function Gallery() {
       </nav>
 
       {/* ─── HERO ─── */}
-      <section className="relative pb-16 px-6 flex flex-col items-center overflow-hidden text-center z-10">
+      <section className="relative pb-12 px-6 flex flex-col items-center overflow-hidden text-center z-10">
         <div
           className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[600px] h-[500px] bg-cyan-600/20 blur-[120px] rounded-full pointer-events-none"
           aria-hidden="true"
@@ -140,19 +110,42 @@ export default function Gallery() {
             Repair Work{' '}
             <span className="text-cyan-400 drop-shadow-[0_0_25px_rgba(34,211,238,0.4)]">in Kuwait</span>
           </h1>
-          <p className="text-base md:text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-base md:text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed mb-8">
             Precision engineering and quality repairs across all Kuwait governorates —
             Hawalli, Salmiya, Farwaniya, Kuwait City, Ahmadi, and Jahra.
           </p>
         </div>
       </section>
 
+      {/* ─── CATEGORY FILTERS ─── */}
+      <section className="relative z-10 max-w-7xl mx-auto px-6 mb-12">
+        <div className="flex flex-wrap justify-center gap-3">
+           <div className="hidden md:flex items-center text-slate-400 mr-2 text-sm font-bold uppercase tracking-wider">
+             <Filter className="w-4 h-4 mr-1" /> Filter:
+           </div>
+           {galleryCategories.map((cat) => (
+             <button
+               key={cat}
+               onClick={() => setActiveCategory(cat)}
+               className={`px-4 py-2 rounded-full text-sm font-bold transition-all duration-300 ${
+                 activeCategory === cat 
+                 ? 'bg-cyan-500 text-slate-950 shadow-[0_0_15px_rgba(6,182,212,0.4)]' 
+                 : 'bg-slate-900/80 text-slate-300 border border-slate-700 hover:border-cyan-500/50 hover:text-cyan-400'
+               }`}
+             >
+               {cat}
+             </button>
+           ))}
+        </div>
+      </section>
+
       {/* ─── IMAGE GRID ─── */}
-      <section aria-labelledby="gallery-heading" className="py-16 px-6 relative z-10">
+      <section aria-labelledby="gallery-heading" className="pb-16 px-6 relative z-10">
         <h2 id="gallery-heading" className="sr-only">Gallery of Repair Work</h2>
         <div className="max-w-7xl mx-auto">
+          {/* We now map over the FILTERED array of your local .webp images! */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {images.map((img, i) => (
+            {filteredImages.map((img, i) => (
               <div
                 key={img.src}
                 className="group relative aspect-video bg-slate-900/30 backdrop-blur-sm rounded-3xl overflow-hidden border border-slate-800 hover:border-cyan-500/40 transition-all duration-300 hover:shadow-[0_0_30px_rgba(34,211,238,0.05)]"
@@ -169,10 +162,11 @@ export default function Gallery() {
                   className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-90 group-hover:opacity-100"
                 />
                 <div
-                  className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent opacity-80 pointer-events-none"
+                  className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent opacity-80 pointer-events-none transition-opacity duration-300 group-hover:opacity-60"
                   aria-hidden="true"
                 />
-                <div className="absolute bottom-6 left-6 right-6">
+                <div className="absolute bottom-6 left-6 right-6 flex flex-col gap-2">
+                  <Badge className="w-fit bg-slate-950/80 text-cyan-400 border-cyan-500/30 text-[10px] uppercase tracking-wider">{img.category}</Badge>
                   <p className="text-white font-bold text-sm leading-snug drop-shadow-md">{img.alt}</p>
                 </div>
               </div>
