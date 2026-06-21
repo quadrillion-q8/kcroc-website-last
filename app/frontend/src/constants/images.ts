@@ -14,18 +14,21 @@ export const IMAGES = {
 
   // ─── SERVICES & BANNERS ──────────────────────────────────────────
   services: {
-    laptopRepairHero: "/images/Laptop Repair.webp",
-    motherboardRepairHero: "/images/Motherboard Repair.webp",
+    // Note: I removed the spaces and capital letters here!
+    laptopRepairHero: "/images/laptop-repair.webp", 
+    motherboardRepairHero: "/images/motherboard-repair.webp", 
     windowsInstallation: "/images/windows-11-operating-system-installation-gaming-pc.webp",
     diagnosticsWorkbench: "/images/custom-gaming-pc-teardown-and-diagnostics-workbench.webp",
-    thermalPasteService: "/images/laptop-thermal-paste-application-service.jpg.webp",
+    // Note: I removed the double '.jpg.webp' extension here!
+    thermalPasteService: "/images/laptop-thermal-paste-application-service.webp", 
   },
 
   // ─── LAPTOP REPAIRS ──────────────────────────────────────────────
   laptop: {
     brokenHinge: "/images/broken-laptop-hinge-plastic-chassis-damage.webp",
     cloggedFan: "/images/clogged-laptop-cooling-fan-dust-cleaning.webp",
-    swollenBattery: "/images/macbook-internal-battery-Swollen replacement.webp",
+    // Note: I fixed the Swollen battery name here!
+    swollenBattery: "/images/macbook-swollen-battery-replacement.webp", 
     logicBoard: "/images/apple-macbook-logic-board-and-fan-repair.webp",
     screenBezel: "/images/laptop-screen-bezel-and-hinge-fabrication.webp",
     copperHeatsink: "/images/laptop-copper-heatsink-removal-motherboard.webp",
@@ -45,7 +48,8 @@ export const IMAGES = {
 
   // ─── UPGRADES (RAM, SSD) ─────────────────────────────────────────
   upgrades: {
-    ram8gbDDR4: "/images/8gb-ddr4-ram-memory-upgrade.jpg.webp",
+    // Note: I removed the double '.jpg.webp' extension here!
+    ram8gbDDR4: "/images/8gb-ddr4-ram-memory-upgrade.webp", 
     ramSkHynix: "/images/installing-sk-hynix-8gb-ddr4-ram.webp",
     ssdWDBlack: "/images/wd-black-sn850-1tb-nvme-ssd-upgrade.webp",
     ssdSamsung: "/images/samsung-960-evo-nvme-m2-ssd-250gb.webp",
