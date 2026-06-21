@@ -3,20 +3,30 @@ import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { SERVICES } from '../../constants/data';
 import { useFadeIn } from '../../hooks/useFadeIn';
-
-// IMPORT YOUR IMAGES
-import motherboardImg from '../../assets/motherboard-repair.webp';
-import laptopImg from '../../assets/laptop-repair.webp';
+import { IMAGES } from '../../constants/images'; // 👈 Using your centralized image dictionary
 
 const ServiceCard = ({ service, idx }: { service: any, idx: number }) => {
   const { ref, visible } = useFadeIn();
   
   const titleLower = service.title.toLowerCase();
   let bgImage = null;
-  if (titleLower.includes('motherboard')) {
-    bgImage = motherboardImg;
+
+  // 👈 Dynamically assign beautiful local WebP images based on the service name!
+  if (titleLower.includes('motherboard') || titleLower.includes('soldering')) {
+    bgImage = IMAGES.services.motherboardRepairHero;
   } else if (titleLower.includes('laptop')) {
-    bgImage = laptopImg;
+    bgImage = IMAGES.services.laptopRepairHero;
+  } else if (titleLower.includes('pc') || titleLower.includes('gaming') || titleLower.includes('desktop')) {
+    bgImage = IMAGES.pcBuilds.waterCooledPC;
+  } else if (titleLower.includes('mac') || titleLower.includes('apple')) {
+    bgImage = IMAGES.laptop.logicBoard;
+  } else if (titleLower.includes('software') || titleLower.includes('windows')) {
+    bgImage = IMAGES.services.windowsInstallation;
+  } else if (titleLower.includes('thermal') || titleLower.includes('cooling')) {
+    bgImage = IMAGES.services.thermalPasteService;
+  } else {
+    // Fallback image for any other services
+    bgImage = IMAGES.brand.teamWorkbench; 
   }
 
   return (
