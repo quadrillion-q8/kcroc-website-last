@@ -33,7 +33,7 @@ export default function Home() {
         "@id": `${BUSINESS_INFO.url}/#webpage`,
         "url": BUSINESS_INFO.url,
         "name": "Computer Repair Kuwait | Laptop & MacBook Repair - KCROC",
-        "description": "Professional laptop repair in Kuwait with free pickup and delivery.",
+        "description": "Professional laptop and computer repair in Kuwait. Free pick & drop across all governorates.",
         "isPartOf": { "@id": `${BUSINESS_INFO.url}/#website` }
       },
       {
@@ -46,7 +46,7 @@ export default function Home() {
         "areaServed": Object.values(AREAS).map(area => area.name),
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "Ibn Khaldoun St, Basement Shop 19",
+          "streetAddress": "Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19",
           "addressLocality": "Hawalli",
           "addressCountry": "KW"
         },
@@ -84,7 +84,7 @@ export default function Home() {
     <main className="w-full bg-transparent flex flex-col items-center overflow-x-hidden pb-24 md:pb-0 selection:bg-cyan-500/30 scroll-smooth">
       <Helmet>
         <title>Computer Repair Kuwait | Laptop & MacBook Repair - KCROC</title>
-        <meta name="description" content="Professional laptop repair in Kuwait with free pickup and delivery." />
+        <meta name="description" content="Professional laptop and computer repair in Kuwait. Free pick & drop across all governorates." />
         <link rel="canonical" href={BUSINESS_INFO.url} />
         <script type="application/ld+json">{JSON.stringify(SCHEMA_DATA)}</script>
       </Helmet>
