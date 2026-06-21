@@ -1,9 +1,10 @@
+import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Phone, MessageCircle, Clock, Wrench, ShieldCheck, Truck, Shield, Zap, Award } from 'lucide-react';
 import { BUSINESS_INFO } from '../../constants/data'; 
-import shopPhoto from '../../assets/shop-photo.webp'; 
+import { IMAGES } from '../../constants/images'; // 👈 Using your centralized image dictionary
 
 export default function Hero() {
   const trustBadges = [
@@ -53,7 +54,7 @@ export default function Hero() {
           <div className="flex flex-col gap-6">
             <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-slate-700/50 bg-slate-900">
               <img 
-                src={shopPhoto} 
+                src={IMAGES.brand.teamWorkbench} 
                 alt="Professional technician working on a laptop at the KCROC workshop in Hawalli" 
                 className="w-full h-56 md:h-72 object-cover"
                 loading="eager"
