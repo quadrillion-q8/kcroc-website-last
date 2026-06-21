@@ -10,29 +10,30 @@ export const IMAGES = {
     teamWorkbench: "/images/kcroc-technicians-laptop-repair-workbench.webp",
     workshopOwner: "/images/kcroc-imran-natiq-laptop-repair-workshop-owner.webp",
     inventoryShelves: "/images/kcroc-laptop-repair-parts-inventory-shelves.webp",
+    shopPhoto: "/images/shop-photo.webp",
+    techTeam: "/images/kcroc-computer-repair-technician-team.webp",
   },
 
   // ─── SERVICES & BANNERS ──────────────────────────────────────────
   services: {
-    // Note: I removed the spaces and capital letters here!
-    laptopRepairHero: "/images/laptop-repair.webp", 
-    motherboardRepairHero: "/images/motherboard-repair.webp", 
+    laptopRepairHero: "/images/laptop repair.webp", // Matches your exact rename
+    motherboardRepairHero: "/images/motherboard repair.webp", // Matches your exact rename
     windowsInstallation: "/images/windows-11-operating-system-installation-gaming-pc.webp",
     diagnosticsWorkbench: "/images/custom-gaming-pc-teardown-and-diagnostics-workbench.webp",
-    // Note: I removed the double '.jpg.webp' extension here!
-    thermalPasteService: "/images/laptop-thermal-paste-application-service.webp", 
+    thermalPasteService: "/images/laptop-thermal-paste-application-service.jpg.webp",
   },
 
   // ─── LAPTOP REPAIRS ──────────────────────────────────────────────
   laptop: {
     brokenHinge: "/images/broken-laptop-hinge-plastic-chassis-damage.webp",
     cloggedFan: "/images/clogged-laptop-cooling-fan-dust-cleaning.webp",
-    // Note: I fixed the Swollen battery name here!
-    swollenBattery: "/images/macbook-swollen-battery-replacement.webp", 
+    swollenBattery: "/images/macbook-internal-battery-Swollen replacement.webp",
     logicBoard: "/images/apple-macbook-logic-board-and-fan-repair.webp",
     screenBezel: "/images/laptop-screen-bezel-and-hinge-fabrication.webp",
     copperHeatsink: "/images/laptop-copper-heatsink-removal-motherboard.webp",
     wifiCard: "/images/intel-wifi-card-laptop-motherboard-repair.webp",
+    fanReplacement: "/images/aptop-cooling-fan-replacements.webp", // Matches exact spelling
+    macbookRepair: "/images/technician-holding-opened-macbook-for-repair.webp",
   },
 
   // ─── PC BUILDS & HARDWARE ────────────────────────────────────────
@@ -48,8 +49,7 @@ export const IMAGES = {
 
   // ─── UPGRADES (RAM, SSD) ─────────────────────────────────────────
   upgrades: {
-    // Note: I removed the double '.jpg.webp' extension here!
-    ram8gbDDR4: "/images/8gb-ddr4-ram-memory-upgrade.webp", 
+    ram8gbDDR4: "/images/8gb-ddr4-ram-memory-upgrade.jpg.webp", // Matches exact extension
     ramSkHynix: "/images/installing-sk-hynix-8gb-ddr4-ram.webp",
     ssdWDBlack: "/images/wd-black-sn850-1tb-nvme-ssd-upgrade.webp",
     ssdSamsung: "/images/samsung-960-evo-nvme-m2-ssd-250gb.webp",
