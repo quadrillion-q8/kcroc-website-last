@@ -1,5 +1,7 @@
 // File: src/constants/images.ts
 
+import mainLogo from '../assets/logo.png'; // 👈 1. Imported your new asset here
+
 export const IMAGES = {
   // --- HERO & BRANDING ---
   brand: {
@@ -12,7 +14,9 @@ export const IMAGES = {
     inventoryShelves: { src: "/images/kcroc-laptop-repair-parts-inventory-shelves.webp", alt: "Organized spare parts inventory", width: 1000, height: 800 },
     shopPhoto: { src: "/images/shop-photo.webp", alt: "Interior shop view", width: 1200, height: 800 },
     techTeam: { src: "/images/kcroc-computer-repair-technician-team.webp", alt: "Our expert computer repair technical team", width: 1200, height: 630 },
-    logo: { src: "/images/logo.webp", alt: "KCROC Logo", width: 300, height: 150 }
+    
+    // 👇 2. Replaced the old string with the imported variable
+    logo: { src: mainLogo, alt: "KCROC Logo", width: 300, height: 150 } 
   },
 
   // --- SERVICES & BANNERS ---
@@ -36,4 +40,4 @@ export const IMAGES = {
     wifiCard: { src: "/images/intel-wifi-card-laptop-motherboard-repair.webp", alt: "Wi-Fi card repair", width: 800, height: 600 },
     fanReplacement: { src: "/images/aptop-cooling-fan-replacements.webp", alt: "Laptop cooling fan replacement", width: 800, height: 600 }
   }
-} as const; // 👈 This locks the object to provide bulletproof TypeScript safety!
+} as const;
