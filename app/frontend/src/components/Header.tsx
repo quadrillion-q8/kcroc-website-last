@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, Search, X } from 'lucide-react';
 import { IMAGES } from '../constants/images'; // 👈 Using your verified dictionary
+import { ROUTES } from '../constants/routes'; // 🧠 The Centralized Registry
 import MobileMenu from './layout/MobileMenu';
 
 export default function Header() {
@@ -23,21 +24,22 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // 👇 Search & Menu Arrays upgraded to use ROUTES
   const services = [
-    { name: 'All Services', path: '/services' },
-    { name: 'Laptop Repair', path: '/laptop-repair-hawalli-kuwait' },
-    { name: 'MacBook Repair', path: '/macbook-repair-kuwait' },
-    { name: 'Gaming PC Repair', path: '/gaming-pc-repair-kuwait' },
-    { name: 'Screen Replacement', path: '/screen-replacement-kuwait' },
-    { name: 'Motherboard Repair', path: '/chip-level-motherboard-repair-hawalli' },
-    { name: 'Data Security', path: '/data-recovery-kuwait' },
+    { name: 'All Services', path: ROUTES.services },
+    { name: 'Laptop Repair', path: ROUTES.laptopRepairHawalli },
+    { name: 'MacBook Repair', path: ROUTES.macbookRepair },
+    { name: 'Gaming PC Repair', path: ROUTES.gamingPC },
+    { name: 'Screen Replacement', path: ROUTES.screenReplacement },
+    { name: 'Motherboard Repair', path: ROUTES.motherboardRepair },
+    { name: 'Data Security', path: ROUTES.dataRecovery },
   ];
 
   const blogs = [
-    { name: 'Laptop Repair Guide', path: '/blog/laptop-repair-kuwait-2026' },
-    { name: 'Screen Protection', path: '/blog/how-to-protect-laptop-screen' },
-    { name: 'Gaming PC Cooling', path: '/gaming-pc-cooling' },
-    { name: 'Battery Replacement', path: '/battery-replacement' },
+    { name: 'Laptop Repair Guide', path: ROUTES.blogLaptopRepair },
+    { name: 'Screen Protection', path: ROUTES.blogScreenProtection },
+    { name: 'Gaming PC Cooling', path: ROUTES.gamingPCCooling },
+    { name: 'Battery Replacement', path: ROUTES.batteryReplacement },
   ];
 
   const allItems = [...services, ...blogs];
@@ -51,7 +53,7 @@ export default function Header() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-24">
             {/* Logo Section - Uses local image dictionary */}
-            <Link to="/" className="flex items-center group">
+            <Link to={ROUTES.home} className="flex items-center group">
               <img 
                 src={IMAGES.brand.logo} 
                 alt="KCROC Logo" 
@@ -59,20 +61,20 @@ export default function Header() {
               />
             </Link>
 
-            {/* Desktop Nav */}
+            {/* Desktop Nav - Upgraded to ROUTES */}
             <nav className="hidden lg:flex items-center gap-8">
-              <Link to="/services" className="text-sm font-bold text-slate-200 hover:text-cyan-400">Services</Link>
-              <Link to="/pricing" className="text-sm font-bold text-slate-200 hover:text-cyan-400">Pricing</Link>
-              <Link to="/gallery" className="text-sm font-bold text-slate-200 hover:text-cyan-400">Gallery</Link>
-              <Link to="/about" className="text-sm font-bold text-slate-200 hover:text-cyan-400">About</Link>
-              <Link to="/blog" className="text-sm font-bold text-slate-200 hover:text-cyan-400">Blog</Link>
-              <Link to="/contact" className="text-sm font-bold text-slate-200 hover:text-cyan-400">Contact</Link>
+              <Link to={ROUTES.services} className="text-sm font-bold text-slate-200 hover:text-cyan-400">Services</Link>
+              <Link to={ROUTES.pricing} className="text-sm font-bold text-slate-200 hover:text-cyan-400">Pricing</Link>
+              <Link to={ROUTES.gallery} className="text-sm font-bold text-slate-200 hover:text-cyan-400">Gallery</Link>
+              <Link to={ROUTES.about} className="text-sm font-bold text-slate-200 hover:text-cyan-400">About</Link>
+              <Link to={ROUTES.blog} className="text-sm font-bold text-slate-200 hover:text-cyan-400">Blog</Link>
+              <Link to={ROUTES.contact} className="text-sm font-bold text-slate-200 hover:text-cyan-400">Contact</Link>
               
               <button onClick={() => setIsSearchOpen(true)} className="text-slate-200 hover:text-cyan-400">
                 <Search size={20} />
               </button>
 
-              <Link to="/book" className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 px-6 py-2.5 rounded-full text-sm font-black transition-all hover:scale-105">Book Repair</Link>
+              <Link to={ROUTES.book} className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 px-6 py-2.5 rounded-full text-sm font-black transition-all hover:scale-105">Book Repair</Link>
             </nav>
 
             <button className="lg:hidden text-white p-2" onClick={() => setIsOpen(true)}><Menu size={32} /></button>
@@ -104,6 +106,7 @@ export default function Header() {
         </div>
       )}
 
+      {/* Mobile Menu inherently gets the correct routes through the props! */}
       <MobileMenu isOpen={isOpen} onClose={() => setIsOpen(false)} services={services} blogs={blogs} />
     </>
   );
