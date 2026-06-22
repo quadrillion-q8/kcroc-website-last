@@ -5,6 +5,9 @@ import { SpeedInsights } from '@vercel/speed-insights/react';
 import { HelmetProvider } from 'react-helmet-async';
 import { Loader2 } from 'lucide-react';
 
+// Single Source of Truth Routes Registry
+import { ROUTES } from './constants/routes';
+
 // Layout & Wrapper
 import Layout from './components/Layout'; 
 
@@ -41,7 +44,7 @@ const NotFound = lazy(() => import('./pages/NotFound'));
 // Global Styles
 import './styles/kcroc.css';
 
-// Premium Loading Fallback (FIXED)
+// Premium Loading Fallback
 const PageLoader = () => (
   <div className="min-h-screen w-full bg-slate-950 flex flex-col items-center justify-center">
     <Loader2 className="w-12 h-12 text-cyan-400 animate-spin mb-4" />
@@ -56,41 +59,38 @@ const App = () => (
         <Layout>
           <Suspense fallback={<PageLoader />}>
             <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/services" element={<Services />} />
-              <Route path="/pricing" element={<Pricing />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/gallery" element={<Gallery />} />
-              <Route path="/book" element={<BookingPage />} />
+              {/* Core Navigation Routes */}
+              <Route path={ROUTES.home} element={<Home />} />
+              <Route path={ROUTES.services} element={<Services />} />
+              <Route path={ROUTES.pricing} element={<Pricing />} />
+              <Route path={ROUTES.about} element={<About />} />
+              <Route path={ROUTES.contact} element={<Contact />} />
+              <Route path={ROUTES.gallery} element={<Gallery />} />
+              <Route path={ROUTES.book} element={<BookingPage />} />
               
-              {/* SEO Aligned Routes */}
-              <Route path="/macbook-repair-kuwait" element={<MacBookRepair />} />
+              {/* SEO Aligned & Hardened Tech Service Routes */}
+              <Route path={ROUTES.macbookRepair} element={<MacBookRepair />} />
+              <Route path={ROUTES.laptopRepair} element={<LaptopRepair />} />
+              <Route path={ROUTES.laptopRepairHawalli} element={<LaptopRepair />} />
+              <Route path={ROUTES.gamingPC} element={<GamingPC />} />
+              <Route path={ROUTES.screenReplacement} element={<ScreenReplacement />} />
+              <Route path={ROUTES.dataRecovery} element={<PrivacySecurity />} />
+              <Route path={ROUTES.motherboardRepair} element={<MotherboardRepair />} />
               
-              {/* Bulletproof Laptop Repair Routes */}
-              <Route path="/laptop-repair-kuwait" element={<LaptopRepair />} />
-              <Route path="/laptop-repair-hawalli-kuwait" element={<LaptopRepair />} />
+              {/* Programmatic SEO Dynamic Route */}
+              <Route path={ROUTES.programmaticSEO} element={<LocationTemplate />} />
               
-              <Route path="/gaming-pc-repair-kuwait" element={<GamingPC />} />
-              <Route path="/screen-replacement-kuwait" element={<ScreenReplacement />} />
-              <Route path="/data-recovery-kuwait" element={<PrivacySecurity />} />
-              <Route path="/chip-level-motherboard-repair-hawalli" element={<MotherboardRepair />} />
+              {/* Blog Hub & Sub-Articles */}
+              <Route path={ROUTES.blog} element={<Blog />} />
+              <Route path={ROUTES.blogLaptopRepair} element={<BlogLaptopRepair />} />
+              <Route path={ROUTES.blogScreenProtection} element={<BlogScreenProtection />} />
               
-              {/* Programmatic SEO Dynamic Route 
-                Catches URLs like /macbook-repair-in-salmiya or /laptop-screen-replacement-in-jahra 
-              */}
-              <Route path="/:service-in-:city" element={<LocationTemplate />} />
+              {/* General Technical Sub-Pages */}
+              <Route path={ROUTES.batteryReplacement} element={<BatteryReplacement />} />
+              <Route path={ROUTES.gamingPCCooling} element={<GamingPCCooling />} />
+              <Route path={ROUTES.webDesign} element={<WebDesignKuwait />} />
               
-              {/* Blog Hub & Supporting Routes */}
-              <Route path="/blog" element={<Blog />} />
-              <Route path="/blog/laptop-repair-kuwait-2026" element={<BlogLaptopRepair />} />
-              <Route path="/blog/how-to-protect-laptop-screen" element={<BlogScreenProtection />} />
-              
-              {/* General Tech Pages */}
-              <Route path="/battery-replacement" element={<BatteryReplacement />} />
-              <Route path="/gaming-pc-cooling" element={<GamingPCCooling />} />
-              <Route path="/web-design-kuwait" element={<WebDesignKuwait />} />
-              
+              {/* Catch-All 404 Route */}
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Suspense>
