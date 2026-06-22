@@ -1,33 +1,26 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { SERVICES } from '../../constants/data';
 import { useFadeIn } from '../../hooks/useFadeIn';
-import { IMAGES } from '../../constants/images'; // 👈 Using your centralized image dictionary
+import { IMAGES } from '../../constants/images';
 
-const ServiceCard = ({ service, idx }: { service: any, idx: number }) => {
+// Separate the logic for image resolution so it doesn't run inside the render cycle repeatedly
+const getServiceImage = (title: string) => {
+  const t = title.toLowerCase();
+  if (t.includes('motherboard') || t.includes('soldering')) return IMAGES.services.motherboardRepairHero;
+  if (t.includes('laptop')) return IMAGES.services.laptopRepairHero;
+  if (t.includes('pc') || t.includes('gaming')) return IMAGES.pcBuilds.waterCooledPC;
+  if (t.includes('mac') || t.includes('apple')) return IMAGES.laptop.logicBoard;
+  if (t.includes('software')) return IMAGES.services.windowsInstallation;
+  return IMAGES.brand.teamworkbench;
+};
+
+const ServiceCard = React.memo(({ service, idx }: { service: any, idx: number }) => {
   const { ref, visible } = useFadeIn();
   
-  const titleLower = service.title.toLowerCase();
-  let bgImage = null;
-
-  // 👈 Dynamically assign beautiful local WebP images based on the service name!
-  if (titleLower.includes('motherboard') || titleLower.includes('soldering')) {
-    bgImage = IMAGES.services.motherboardRepairHero;
-  } else if (titleLower.includes('laptop')) {
-    bgImage = IMAGES.services.laptopRepairHero;
-  } else if (titleLower.includes('pc') || titleLower.includes('gaming') || titleLower.includes('desktop')) {
-    bgImage = IMAGES.pcBuilds.waterCooledPC;
-  } else if (titleLower.includes('mac') || titleLower.includes('apple')) {
-    bgImage = IMAGES.laptop.logicBoard;
-  } else if (titleLower.includes('software') || titleLower.includes('windows')) {
-    bgImage = IMAGES.services.windowsInstallation;
-  } else if (titleLower.includes('thermal') || titleLower.includes('cooling')) {
-    bgImage = IMAGES.services.thermalPasteService;
-  } else {
-    // Fallback image for any other services
-    bgImage = IMAGES.brand.teamWorkbench; 
-  }
+  // Memoize the image lookup
+  const image = useMemo(() => getServiceImage(service.title), [service.title]);
 
   return (
     <div 
@@ -37,49 +30,44 @@ const ServiceCard = ({ service, idx }: { service: any, idx: number }) => {
     >
       <Link 
         to={service.path} 
-        aria-label={`View detailed information about our ${service.title} services`}
-        className="group block relative overflow-hidden bg-slate-900/30 backdrop-blur-sm p-8 rounded-3xl border border-slate-800 hover:border-cyan-500/40 transition-all duration-300 h-full hover:shadow-[0_0_30px_rgba(34,211,238,0.05)] focus-visible:ring-2 focus-visible:ring-cyan-400"
+        className="group block relative overflow-hidden bg-slate-900/30 p-8 rounded-3xl border border-slate-800 hover:border-cyan-500/40 transition-all duration-300 h-full"
       >
-        {/* DYNAMIC BACKGROUND IMAGE LAYER */}
-        {bgImage && (
-          <div className="absolute inset-0 z-0 overflow-hidden rounded-3xl">
-            <img 
-              src={bgImage} 
-              alt={`${service.title} in Kuwait`} 
-              className="w-full h-full object-cover opacity-60 group-hover:opacity-90 group-hover:scale-105 transition-all duration-700"
-              loading="lazy" 
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent group-hover:via-slate-950/40 transition-colors duration-700"></div>
-          </div>
-        )}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src={image.src} 
+            alt={image.alt} 
+            width={image.width} 
+            height={image.height}
+            loading="lazy" 
+            decoding="async"
+            className="w-full h-full object-cover opacity-40 group-hover:opacity-70 transition-all duration-700" 
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent"></div>
+        </div>
 
-        {/* FOREGROUND CONTENT */}
         <div className="relative z-10 flex flex-col h-full">
-          <div className="w-14 h-14 bg-slate-950/80 backdrop-blur-md border border-slate-800 rounded-2xl flex items-center justify-center mb-6 group-hover:border-cyan-500/30 transition-colors shadow-inner">
-            <service.icon className="w-6 h-6 text-cyan-400" aria-hidden="true" />
+          <div className="w-14 h-14 bg-slate-950/80 border border-slate-800 rounded-2xl flex items-center justify-center mb-6">
+            <service.icon className="w-6 h-6 text-cyan-400" />
           </div>
-          <h3 className="text-2xl font-black text-white mb-3 tracking-tight group-hover:text-cyan-400 transition-colors">
-            {service.title}
-          </h3>
-          <p className="text-slate-200 font-medium text-sm leading-relaxed mb-6 drop-shadow-md">
-            {service.description}
-          </p>
-          <div className="flex items-center text-cyan-400 font-bold text-sm mt-auto drop-shadow-md">
-            View Details <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
+          <h3 className="text-2xl font-black text-white mb-3">{service.title}</h3>
+          <p className="text-slate-200 text-sm leading-relaxed mb-6">{service.description}</p>
+          <div className="flex items-center text-cyan-400 font-bold text-sm mt-auto">
+            View Details <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
           </div>
         </div>
       </Link>
     </div>
   );
-};
+});
+
+ServiceCard.displayName = 'ServiceCard';
 
 export default function ServicesGrid() {
   return (
-    <section className="w-full py-24 flex justify-center px-6 border-t border-slate-800/50 relative z-10">
+    <section className="w-full py-24 flex justify-center px-6 border-t border-slate-800/50">
       <div className="w-full max-w-7xl">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-black text-white mb-4 tracking-tight">Our Repair Capabilities</h2>
-          <p className="text-slate-400">Comprehensive hardware solutions engineered for reliability.</p>
+          <h2 className="text-4xl font-black text-white mb-4">Our Repair Capabilities</h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {SERVICES.map((s, idx) => <ServiceCard key={s.title} service={s} idx={idx} />)}
