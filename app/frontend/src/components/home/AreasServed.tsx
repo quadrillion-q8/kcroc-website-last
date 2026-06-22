@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { BUSINESS_INFO, AREAS } from '../../constants/data';
 
-export default function AreasServed() {
-  // Convert object values into an array for mapping
-  const areaList = Object.values(AREAS);
+const AreasServed = React.memo(() => {
+  // Memoize the array conversion to avoid recalculation on every render
+  const areaList = useMemo(() => Object.values(AREAS), []);
 
   return (
     <section className="w-full py-16 border-y border-slate-800/50 flex justify-center px-6 text-center bg-slate-900/20 backdrop-blur-sm relative z-10">
@@ -25,4 +25,8 @@ export default function AreasServed() {
       </div>
     </section>
   );
-}
+});
+
+AreasServed.displayName = 'AreasServed';
+
+export default AreasServed;
