@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Phone, MessageCircle, Camera, Filter } from 'lucide-react';
+import { Phone, MessageCircle, Camera, Filter, X, ChevronLeft, ChevronRight, Maximize2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { BUSINESS_INFO } from '../constants/data';
 import MetaSEO from '../components/seo/MetaSEO';
@@ -70,13 +70,30 @@ const WA_LINK = `https://wa.me/${BUSINESS_INFO.cleanPhone}?text=${encodeURICompo
 ───────────────────────────────────────────────────────────────────────────── */
 
 export default function Gallery() {
-  // State to handle our beautiful new category filters
   const [activeCategory, setActiveCategory] = useState('All');
+  
+  // State for the Lightbox (Full Screen View)
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
   // Filter the massive local image array based on the clicked category
   const filteredImages = activeCategory === 'All' 
     ? galleryImages 
     : galleryImages.filter(img => img.category === activeCategory);
+
+  // Handle Keyboard Navigation for the Lightbox (Escape to close)
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setSelectedIndex(null);
+      if (e.key === 'ArrowRight' && selectedIndex !== null) {
+        setSelectedIndex((prev) => (prev !== null && prev < filteredImages.length - 1 ? prev + 1 : 0));
+      }
+      if (e.key === 'ArrowLeft' && selectedIndex !== null) {
+        setSelectedIndex((prev) => (prev !== null && prev > 0 ? prev - 1 : filteredImages.length - 1));
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [selectedIndex, filteredImages.length]);
 
   return (
     <main className="w-full min-h-screen bg-transparent text-white font-sans selection:bg-cyan-500/30 pt-32">
@@ -86,6 +103,66 @@ export default function Gallery() {
         canonical={PAGE_URL}
       />
       <SchemaMarkup schema={STRUCTURED_DATA} />
+
+      {/* ─── LIGHTBOX OVERLAY (FULL VIEW) ─── */}
+      {selectedIndex !== null && (
+        <div 
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-950/95 backdrop-blur-xl p-4 md:p-12"
+          onClick={() => setSelectedIndex(null)} // Click outside to close
+        >
+          {/* Close Button */}
+          <button 
+            className="absolute top-6 right-6 md:top-8 md:right-8 text-slate-400 hover:text-white bg-slate-900/80 p-3 rounded-full transition-all hover:scale-110 z-[110]"
+            onClick={(e) => { e.stopPropagation(); setSelectedIndex(null); }}
+          >
+            <X className="w-6 h-6 md:w-8 md:h-8" />
+          </button>
+
+          {/* Previous Button */}
+          <button 
+            className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white bg-slate-900/80 p-3 md:p-4 rounded-full transition-all hover:scale-110 hover:bg-cyan-500 hover:text-slate-950 z-[110]"
+            onClick={(e) => { 
+              e.stopPropagation(); 
+              setSelectedIndex((prev) => (prev !== null && prev > 0 ? prev - 1 : filteredImages.length - 1)); 
+            }}
+          >
+            <ChevronLeft className="w-6 h-6 md:w-10 md:h-10" />
+          </button>
+
+          {/* Next Button */}
+          <button 
+            className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white bg-slate-900/80 p-3 md:p-4 rounded-full transition-all hover:scale-110 hover:bg-cyan-500 hover:text-slate-950 z-[110]"
+            onClick={(e) => { 
+              e.stopPropagation(); 
+              setSelectedIndex((prev) => (prev !== null && prev < filteredImages.length - 1 ? prev + 1 : 0)); 
+            }}
+          >
+            <ChevronRight className="w-6 h-6 md:w-10 md:h-10" />
+          </button>
+
+          {/* Full Screen Image */}
+          <div className="relative max-w-7xl max-h-full w-full flex flex-col items-center justify-center" onClick={(e) => e.stopPropagation()}>
+            <img 
+              src={filteredImages[selectedIndex].src} 
+              alt={filteredImages[selectedIndex].alt} 
+              className="max-h-[75vh] md:max-h-[85vh] w-auto object-contain rounded-xl shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-slate-800"
+            />
+            
+            {/* Image Details Panel */}
+            <div className="mt-6 md:mt-8 text-center bg-slate-900/80 border border-slate-800 px-6 py-4 rounded-2xl max-w-3xl w-full">
+              <Badge className="bg-cyan-500/20 text-cyan-400 border-cyan-500/30 mb-2">
+                {filteredImages[selectedIndex].category}
+              </Badge>
+              <p className="text-white font-bold text-lg md:text-xl">
+                {filteredImages[selectedIndex].alt}
+              </p>
+              <p className="text-slate-500 text-sm mt-2 font-medium">
+                Image {selectedIndex + 1} of {filteredImages.length}
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* ─── BREADCRUMBS ─── */}
       <nav aria-label="Breadcrumb" className="max-w-6xl mx-auto px-6 mb-8 relative z-10">
@@ -126,7 +203,10 @@ export default function Gallery() {
            {galleryCategories.map((cat) => (
              <button
                key={cat}
-               onClick={() => setActiveCategory(cat)}
+               onClick={() => {
+                 setActiveCategory(cat);
+                 setSelectedIndex(null); // Reset lightbox if open when category changes
+               }}
                className={`px-4 py-2 rounded-full text-sm font-bold transition-all duration-300 ${
                  activeCategory === cat 
                  ? 'bg-cyan-500 text-slate-950 shadow-[0_0_15px_rgba(6,182,212,0.4)]' 
@@ -143,12 +223,12 @@ export default function Gallery() {
       <section aria-labelledby="gallery-heading" className="pb-16 px-6 relative z-10">
         <h2 id="gallery-heading" className="sr-only">Gallery of Repair Work</h2>
         <div className="max-w-7xl mx-auto">
-          {/* We now map over the FILTERED array of your local .webp images! */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredImages.map((img, i) => (
               <div
                 key={img.src}
-                className="group relative aspect-video bg-slate-900/30 backdrop-blur-sm rounded-3xl overflow-hidden border border-slate-800 hover:border-cyan-500/40 transition-all duration-300 hover:shadow-[0_0_30px_rgba(34,211,238,0.05)]"
+                onClick={() => setSelectedIndex(i)} // 👈 Opens the Lightbox!
+                className="group relative aspect-video bg-slate-900/30 backdrop-blur-sm rounded-3xl overflow-hidden border border-slate-800 hover:border-cyan-500/40 transition-all duration-300 hover:shadow-[0_0_30px_rgba(34,211,238,0.1)] cursor-pointer"
               >
                 <img
                   src={img.src}
@@ -159,15 +239,23 @@ export default function Gallery() {
                   loading={i < 6 ? 'eager' : 'lazy'}
                   fetchPriority={i < 2 ? 'high' : 'auto'}
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-90 group-hover:opacity-100"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100"
                 />
                 <div
-                  className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent opacity-80 pointer-events-none transition-opacity duration-300 group-hover:opacity-60"
+                  className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent opacity-80 transition-opacity duration-300 group-hover:opacity-40"
                   aria-hidden="true"
                 />
+                
+                {/* Expand Icon on Hover */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="bg-slate-900/80 p-3 rounded-full backdrop-blur-sm text-cyan-400">
+                    <Maximize2 className="w-6 h-6" />
+                  </div>
+                </div>
+
                 <div className="absolute bottom-6 left-6 right-6 flex flex-col gap-2">
                   <Badge className="w-fit bg-slate-950/80 text-cyan-400 border-cyan-500/30 text-[10px] uppercase tracking-wider">{img.category}</Badge>
-                  <p className="text-white font-bold text-sm leading-snug drop-shadow-md">{img.alt}</p>
+                  <p className="text-white font-bold text-sm leading-snug drop-shadow-md line-clamp-2">{img.alt}</p>
                 </div>
               </div>
             ))}
