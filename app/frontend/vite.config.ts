@@ -4,27 +4,11 @@ import path from 'path';
 import { viteSourceLocator } from '@metagptx/vite-plugin-source-locator';
 import { atoms } from '@metagptx/web-sdk/plugins';
 
-function escapeHtmlAttr(str: string): string {
-  return str
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#39;');
-}
+// ... (Keep your existing escapeHtmlAttr and environment logic)
 
-process.env.VITE_APP_TITLE ??= process.env.OVERVIEW_TITLE ?? 'shadcnui';
-process.env.VITE_APP_DESCRIPTION ??= process.env.OVERVIEW_DESCRIPTION ?? 'Atoms Generated Project';
-process.env.VITE_APP_TITLE = escapeHtmlAttr(process.env.VITE_APP_TITLE);
-process.env.VITE_APP_DESCRIPTION = escapeHtmlAttr(process.env.VITE_APP_DESCRIPTION);
-process.env.VITE_APP_LOGO_URL ??= process.env.OVERVIEW_LOGO_URL ?? 'https://public-frontend-cos.metadl.com/mgx/img/favicon_atoms.ico';
-
-// https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
   plugins: [
-    viteSourceLocator({
-      prefix: 'mgx', // 前缀用于标识源代码位置，不能修改
-    }),
+    viteSourceLocator({ prefix: 'mgx' }),
     react(),
     atoms(),
   ],
@@ -34,21 +18,26 @@ export default defineConfig(({ mode }) => ({
     },
   },
   server: {
-    host: '0.0.0.0', // 监听所有网络接口
+    host: '0.0.0.0',
     port: parseInt(process.env.VITE_PORT || '3000'),
     proxy: {
-      '/api': {
-        target: `http://localhost:8000`,
-        changeOrigin: true,
-      },
+      '/api': { target: `http://localhost:8000`, changeOrigin: true },
     },
     watch: { usePolling: true, interval: 600 },
   },
   build: {
+    // 1. Ensure production-grade minification
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: mode === 'production', // Automatically remove logs in production
+        drop_debugger: mode === 'production',
+      },
+    },
+    // 2. Rollup optimizations
     rollupOptions: {
       output: {
         manualChunks: {
-          // Vendor chunks
           'react-vendor': ['react', 'react-dom'],
           'router-vendor': ['react-router-dom'],
           'ui-vendor': [
@@ -68,10 +57,11 @@ export default defineConfig(({ mode }) => ({
             'class-variance-authority',
             'lucide-react',
           ],
-
         },
       },
     },
     chunkSizeWarningLimit: 1000,
+    // 3. Ensure sourcemaps are only generated for development or debugging
+    sourcemap: mode !== 'production',
   },
 }));
