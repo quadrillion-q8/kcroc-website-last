@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { MapPin, Phone, MessageCircle, CalendarClock, ShieldCheck } from 'lucide-react';
+import { ROUTES } from '../constants/routes'; // 🧠 The Centralized Registry
 
 const BUSINESS_PHONE = "+96555301913";
 const cleanPhone = BUSINESS_PHONE.replace(/\D/g, '');
@@ -16,7 +17,7 @@ export default function Footer() {
           
           {/* Brand Info */}
           <div>
-            <Link to="/" className="flex items-center mb-6 block w-fit" aria-label="Return to KCROC home page">
+            <Link to={ROUTES.home} className="flex items-center mb-6 block w-fit" aria-label="Return to KCROC home page">
               {!logoError ? (
                 <img 
                   src="https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto/v1769908596/logo_btpfls.png" 
@@ -50,12 +51,12 @@ export default function Footer() {
           <nav aria-label="Expert Services Navigation">
             <h3 className="text-white font-bold mb-6 uppercase tracking-wider text-sm">Expert Services</h3>
             <ul className="space-y-3">
-              <li><Link to="/chip-level-motherboard-repair-hawalli" className="text-slate-400 hover:text-cyan-400 transition-colors text-sm">Motherboard Repair</Link></li>
-              <li><Link to="/macbook-repair-kuwait" className="text-slate-400 hover:text-cyan-400 transition-colors text-sm">MacBook Repair</Link></li>
-              <li><Link to="/gaming-pc-repair-kuwait" className="text-slate-400 hover:text-cyan-400 transition-colors text-sm">Gaming PC Repair</Link></li>
-              <li><Link to="/screen-replacement-kuwait" className="text-slate-400 hover:text-cyan-400 transition-colors text-sm">Screen Replacement</Link></li>
-              <li><Link to="/laptop-repair-kuwait" className="text-slate-400 hover:text-cyan-400 transition-colors text-sm">Laptop Repair</Link></li>
-              <li><Link to="/data-recovery-kuwait" className="text-slate-400 hover:text-cyan-400 transition-colors text-sm">Data Recovery</Link></li>
+              <li><Link to={ROUTES.motherboardRepair} className="text-slate-400 hover:text-cyan-400 transition-colors text-sm">Motherboard Repair</Link></li>
+              <li><Link to={ROUTES.macbookRepair} className="text-slate-400 hover:text-cyan-400 transition-colors text-sm">MacBook Repair</Link></li>
+              <li><Link to={ROUTES.gamingPC} className="text-slate-400 hover:text-cyan-400 transition-colors text-sm">Gaming PC Repair</Link></li>
+              <li><Link to={ROUTES.screenReplacement} className="text-slate-400 hover:text-cyan-400 transition-colors text-sm">Screen Replacement</Link></li>
+              <li><Link to={ROUTES.laptopRepair} className="text-slate-400 hover:text-cyan-400 transition-colors text-sm">Laptop Repair</Link></li>
+              <li><Link to={ROUTES.dataRecovery} className="text-slate-400 hover:text-cyan-400 transition-colors text-sm">Data Recovery</Link></li>
             </ul>
           </nav>
 
@@ -63,11 +64,11 @@ export default function Footer() {
           <nav aria-label="Company Navigation">
             <h3 className="text-white font-bold mb-6 uppercase tracking-wider text-sm">Company</h3>
             <ul className="space-y-3">
-              <li><Link to="/about" className="text-slate-400 hover:text-cyan-400 transition-colors text-sm">About Us</Link></li>
-              <li><Link to="/pricing" className="text-slate-400 hover:text-cyan-400 transition-colors text-sm">Transparent Pricing</Link></li>
-              <li><Link to="/gallery" className="text-slate-400 hover:text-cyan-400 transition-colors text-sm">Repair Gallery</Link></li>
-              <li><Link to="/contact" className="text-slate-400 hover:text-cyan-400 transition-colors text-sm">Contact Location</Link></li>
-              <li><Link to="/blog/laptop-repair-kuwait-2026" className="text-slate-400 hover:text-cyan-400 transition-colors text-sm">Tech Guides</Link></li>
+              <li><Link to={ROUTES.about} className="text-slate-400 hover:text-cyan-400 transition-colors text-sm">About Us</Link></li>
+              <li><Link to={ROUTES.pricing} className="text-slate-400 hover:text-cyan-400 transition-colors text-sm">Transparent Pricing</Link></li>
+              <li><Link to={ROUTES.gallery} className="text-slate-400 hover:text-cyan-400 transition-colors text-sm">Repair Gallery</Link></li>
+              <li><Link to={ROUTES.contact} className="text-slate-400 hover:text-cyan-400 transition-colors text-sm">Contact Location</Link></li>
+              <li><Link to={ROUTES.blogLaptopRepair} className="text-slate-400 hover:text-cyan-400 transition-colors text-sm">Tech Guides</Link></li>
             </ul>
           </nav>
 
@@ -91,7 +92,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-3 text-slate-400 text-sm mt-4">
                 <CalendarClock className="w-5 h-5 text-cyan-400 flex-shrink-0" aria-hidden="true" />
-                <Link to="/book" className="text-cyan-400 font-bold hover:text-cyan-300 transition-colors" aria-label="Book a free device pickup service">
+                <Link to={ROUTES.book} className="text-cyan-400 font-bold hover:text-cyan-300 transition-colors" aria-label="Book a free device pickup service">
                   Book Free Pickup Now
                 </Link>
               </li>
@@ -104,8 +105,8 @@ export default function Footer() {
             © {new Date().getFullYear()} KCROC – Kuwait Computer Repair On Call.
           </p>
           <div className="flex gap-6" role="navigation" aria-label="Legal Links">
-            <span className="text-slate-600 text-sm cursor-not-allowed">Privacy Policy</span>
-            <span className="text-slate-600 text-sm cursor-not-allowed">Terms of Service</span>
+            <Link to={ROUTES.privacy} className="text-slate-600 hover:text-slate-400 text-sm transition-colors">Privacy Policy</Link>
+            <Link to={ROUTES.terms} className="text-slate-600 hover:text-slate-400 text-sm transition-colors">Terms of Service</Link>
           </div>
         </div>
       </div>
