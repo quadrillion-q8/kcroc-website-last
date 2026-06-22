@@ -1,12 +1,13 @@
 import React, { Suspense, lazy } from 'react';
-import { Helmet } from 'react-helmet-async';
-import { BUSINESS_INFO, SERVICES, REVIEWS, AREAS } from '../constants/data';
-import { IMAGES } from '../constants/images';
+import { SEO } from '../constants/seo';
+import SEOComponent from '../components/seo/SEO';
+import LocalBusinessSchema from '../components/seo/LocalBusinessSchema';
+import { BUSINESS_INFO } from '../constants/data';
 
-// Critical Components for Initial Paint
+// Critical Components
 import Hero from '../components/home/Hero';
 import TrustStats from '../components/home/TrustStats';
-import MobileCTA from '../components/home/MobileCTA'; 
+import MobileCTA from '../components/home/MobileCTA';
 
 // Lazy Imports
 const GoogleReviewsWidget = lazy(() => import('../components/GoogleReviewsWidget'));
@@ -17,87 +18,19 @@ const FAQSection = lazy(() => import('../components/home/FAQSection'));
 const LocalSEOFooter = lazy(() => import('../components/home/LocalSEOFooter'));
 
 export default function Home() {
-  const SCHEMA_DATA = {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Organization",
-        "@id": `${BUSINESS_INFO.url}/#organization`,
-        "name": "Kuwait Computer Repair On Call",
-        "url": BUSINESS_INFO.url,
-        "logo": IMAGES.brand.logo,
-        "telephone": BUSINESS_INFO.phone,
-      },
-      {
-        "@type": "WebPage",
-        "@id": `${BUSINESS_INFO.url}/#webpage`,
-        "url": BUSINESS_INFO.url,
-        "name": "Computer Repair Kuwait | Laptop & MacBook Repair - KCROC",
-        "description": "Professional laptop and computer repair in Kuwait. Free pick & drop across all governorates.",
-        "isPartOf": { "@id": `${BUSINESS_INFO.url}/#website` }
-      },
-      {
-        "@type": "LocalBusiness",
-        "@id": `${BUSINESS_INFO.url}/#business`,
-        "name": "Kuwait Computer Repair On Call",
-        "image": IMAGES.brand.shopPhoto, 
-        "telephone": BUSINESS_INFO.phone,
-        "url": BUSINESS_INFO.url,
-        "areaServed": Object.values(AREAS).map(area => area.name),
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19",
-          "addressLocality": "Hawalli",
-          "addressCountry": "KW"
-        },
-        "geo": {
-          "@type": "GeoCoordinates",
-          "latitude": BUSINESS_INFO.coords.lat,
-          "longitude": BUSINESS_INFO.coords.lng
-        },
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "4.9",
-          "reviewCount": "150"
-        },
-        "review": REVIEWS.map(r => ({
-          "@type": "Review",
-          "author": { "@type": "Person", "name": r.name },
-          "datePublished": r.date,
-          "reviewRating": { "@type": "Rating", "ratingValue": r.rating },
-          "reviewBody": r.text
-        })),
-        "hasOfferCatalog": {
-          "@type": "OfferCatalog",
-          "name": "Computer Repair Services",
-          "itemListElement": SERVICES.map((s, idx) => ({
-            "@type": "Offer",
-            "position": idx + 1,
-            "itemOffered": { "@type": "Service", "name": s.title, "areaServed": "Kuwait" }
-          }))
-        }
-      }
-    ]
-  };
-
   return (
     <main className="w-full bg-transparent flex flex-col items-center overflow-x-hidden pb-24 md:pb-0 selection:bg-cyan-500/30 scroll-smooth">
-      <Helmet>
-        <title>Computer Repair Kuwait | Laptop & MacBook Repair - KCROC</title>
-        <meta name="description" content="Professional laptop and computer repair in Kuwait. Free pick & drop across all governorates." />
-        
-        {/* Signals for Site Name */}
-        <meta name="apple-mobile-web-app-title" content="Kuwait Computer Repair On Call" />
-        <meta name="application-name" content="Kuwait Computer Repair On Call" />
-        
-        <link rel="canonical" href={BUSINESS_INFO.url} />
-        <script type="application/ld+json">{JSON.stringify(SCHEMA_DATA)}</script>
-      </Helmet>
+      {/* Task 3 & 4: Integrated SEO and Local Business Schema */}
+      <SEOComponent 
+        title="Computer Repair Kuwait | Laptop & MacBook Repair"
+        canonical={BUSINESS_INFO.url}
+      />
+      <LocalBusinessSchema />
 
       <Hero />
       <TrustStats />
 
-      <Suspense fallback={<div className="w-full h-32 flex items-center justify-center text-cyan-500 animate-pulse mt-10">Loading content...</div>}>
+      <Suspense fallback={<div className="w-full h-32 flex items-center justify-center text-cyan-500 animate-pulse mt-10">Loading...</div>}>
         <GoogleReviewsWidget />
         <ServicesGrid />
         <RecentBlogs />
