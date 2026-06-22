@@ -1,14 +1,14 @@
 import React, { Suspense, lazy } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { BUSINESS_INFO, SERVICES, REVIEWS, AREAS } from '../constants/data';
-import { IMAGES } from '../constants/images'; // 👈 1. Imported your local image dictionary!
+import { IMAGES } from '../constants/images';
 
-// 1. Synchronous Imports (Critical for Initial Paint)
+// 1. Critical Components for Initial Paint
 import Hero from '../components/home/Hero';
 import TrustStats from '../components/home/TrustStats';
 import MobileCTA from '../components/home/MobileCTA'; 
 
-// 2. Lazy Imports (Below the fold - loads in the background)
+// 2. Lazy Imports
 const GoogleReviewsWidget = lazy(() => import('../components/GoogleReviewsWidget'));
 const ServicesGrid = lazy(() => import('../components/home/ServicesGrid'));
 const RecentBlogs = lazy(() => import('../components/home/RecentBlogs'));
@@ -17,16 +17,15 @@ const FAQSection = lazy(() => import('../components/home/FAQSection'));
 const LocalSEOFooter = lazy(() => import('../components/home/LocalSEOFooter'));
 
 export default function Home() {
-  // Advanced Dynamic Schema Generation
   const SCHEMA_DATA = {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "Organization",
         "@id": `${BUSINESS_INFO.url}/#organization`,
-        "name": BUSINESS_INFO.name,
+        "name": "Kuwait Computer Repair On Call",
         "url": BUSINESS_INFO.url,
-        "logo": BUSINESS_INFO.logo,
+        "logo": IMAGES.brand.logo,
         "telephone": BUSINESS_INFO.phone,
       },
       {
@@ -40,8 +39,7 @@ export default function Home() {
       {
         "@type": "LocalBusiness",
         "@id": `${BUSINESS_INFO.url}/#business`,
-        "name": BUSINESS_INFO.name,
-        // 👇 2. Injected your most relevant local gallery image into Google's SEO Schema!
+        "name": "Kuwait Computer Repair On Call",
         "image": IMAGES.brand.shopPhoto, 
         "telephone": BUSINESS_INFO.phone,
         "url": BUSINESS_INFO.url,
