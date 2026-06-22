@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, Search, X } from 'lucide-react';
-import logo from '../assets/logo.png';
+import { IMAGES } from '../constants/images'; // 👈 Using your verified dictionary
 import MobileMenu from './layout/MobileMenu';
 
 export default function Header() {
@@ -47,32 +47,32 @@ export default function Header() {
 
   return (
     <>
-      <header className={`fixed top-0 w-full z-[1000] transition-all duration-300 ${scrolled ? 'bg-[#0a0f1c]/80 backdrop-blur-xl border-b border-slate-800/50 shadow-[0_4px_30px_rgba(0,0,0,0.3)]' : 'bg-transparent border-b border-transparent'}`}>
+      <header className={`fixed top-0 w-full z-[1000] transition-all duration-300 ${scrolled ? 'bg-[#0a0f1c]/80 backdrop-blur-xl border-b border-slate-800/50' : 'bg-transparent'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-24">
-            {/* Logo Section - Enhanced Size and Glow */}
+            {/* Logo Section - Uses local image dictionary */}
             <Link to="/" className="flex items-center group">
               <img 
-                src={logo} 
+                src={IMAGES.brand.logo} 
                 alt="KCROC Logo" 
-                className="h-16 md:h-20 w-auto object-contain transition-all duration-300 drop-shadow-[0_0_8px_rgba(255,255,255,0.2)] hover:drop-shadow-[0_0_15px_rgba(6,182,212,0.6)] hover:scale-105" 
+                className="h-16 md:h-20 w-auto object-contain transition-all duration-300 drop-shadow-[0_0_8px_rgba(255,255,255,0.2)] hover:scale-105" 
               />
             </Link>
 
             {/* Desktop Nav */}
             <nav className="hidden lg:flex items-center gap-8">
-              <Link to="/services" className="text-sm font-bold text-slate-200 hover:text-cyan-400 transition-colors">Services</Link>
-              <Link to="/pricing" className="text-sm font-bold text-slate-200 hover:text-cyan-400 transition-colors">Pricing</Link>
-              <Link to="/gallery" className="text-sm font-bold text-slate-200 hover:text-cyan-400 transition-colors">Gallery</Link>
-              <Link to="/about" className="text-sm font-bold text-slate-200 hover:text-cyan-400 transition-colors">About</Link>
-              <Link to="/blog" className="text-sm font-bold text-slate-200 hover:text-cyan-400 transition-colors">Blog</Link>
-              <Link to="/contact" className="text-sm font-bold text-slate-200 hover:text-cyan-400 transition-colors">Contact</Link>
+              <Link to="/services" className="text-sm font-bold text-slate-200 hover:text-cyan-400">Services</Link>
+              <Link to="/pricing" className="text-sm font-bold text-slate-200 hover:text-cyan-400">Pricing</Link>
+              <Link to="/gallery" className="text-sm font-bold text-slate-200 hover:text-cyan-400">Gallery</Link>
+              <Link to="/about" className="text-sm font-bold text-slate-200 hover:text-cyan-400">About</Link>
+              <Link to="/blog" className="text-sm font-bold text-slate-200 hover:text-cyan-400">Blog</Link>
+              <Link to="/contact" className="text-sm font-bold text-slate-200 hover:text-cyan-400">Contact</Link>
               
-              <button onClick={() => setIsSearchOpen(true)} className="text-slate-200 hover:text-cyan-400 transition-colors">
+              <button onClick={() => setIsSearchOpen(true)} className="text-slate-200 hover:text-cyan-400">
                 <Search size={20} />
               </button>
 
-              <Link to="/book" className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 px-6 py-2.5 rounded-full text-sm font-black transition-all shadow-[0_0_15px_rgba(6,182,212,0.3)] hover:scale-105">Book Repair</Link>
+              <Link to="/book" className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 px-6 py-2.5 rounded-full text-sm font-black transition-all hover:scale-105">Book Repair</Link>
             </nav>
 
             <button className="lg:hidden text-white p-2" onClick={() => setIsOpen(true)}><Menu size={32} /></button>
@@ -95,23 +95,16 @@ export default function Header() {
             />
             <div className="mt-8 flex flex-col gap-2">
               {filteredItems.map(item => (
-                <Link key={item.path} to={item.path} onClick={() => setIsSearchOpen(false)} className="p-4 bg-slate-900/50 hover:bg-cyan-500/10 rounded-lg text-white font-bold transition-all">
+                <Link key={item.path} to={item.path} onClick={() => setIsSearchOpen(false)} className="p-4 bg-slate-900/50 hover:bg-cyan-500/10 rounded-lg text-white font-bold">
                   {item.name}
                 </Link>
               ))}
-              {searchTerm && filteredItems.length === 0 && <p className="text-slate-500 text-center mt-10">No results found.</p>}
             </div>
           </div>
         </div>
       )}
 
-      {/* Mobile Menu Component */}
-      <MobileMenu 
-        isOpen={isOpen} 
-        onClose={() => setIsOpen(false)} 
-        services={services} 
-        blogs={blogs} 
-      />
+      <MobileMenu isOpen={isOpen} onClose={() => setIsOpen(false)} services={services} blogs={blogs} />
     </>
   );
 }
