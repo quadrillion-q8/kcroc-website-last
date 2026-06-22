@@ -1,14 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { 
   Zap, Gauge, Thermometer, ExternalLink,
   Snowflake, Activity, ShieldCheck, Crosshair,
   MessageCircle, Phone, CheckCircle2 
 } from 'lucide-react';
 import { BUSINESS_INFO } from '../constants/data';
-import { IMAGES } from '../constants/images'; // 👈 Local Image Dictionary
-import MetaSEO from '../components/seo/MetaSEO';
-import SchemaMarkup from '../components/seo/SchemaMarkup';
+import { IMAGES } from '../constants/images';
+import SEOComponent from '../components/seo/SEO';
+import LocalBusinessSchema from '../components/seo/LocalBusinessSchema';
 
 // ... (Keep your existing SCENARIOS, BENCHMARKS, PROCESS_STEPS, FEATURES, SERVICE_CATEGORIES, and STRUCTURED_DATA constants here)
 
@@ -17,14 +16,14 @@ export default function GamingPC() {
 
   return (
     <main className="w-full min-h-screen bg-transparent text-slate-200 pt-32 pb-24 font-sans">
-      <MetaSEO
-        title="Gaming PC Repair in Kuwait | FPS & Thermal Tuning | KCROC"
+      <SEOComponent
+        title="Gaming PC Repair in Kuwait | FPS & Thermal Tuning"
         description="Stop stuttering and thermal throttling. Elite gaming PC repair, liquid cooling maintenance, and FPS tuning in Kuwait. No Fix, No Fee."
-        canonical={PAGE_URL}
+        canonical={`${BUSINESS_INFO.url}/gaming-pc-repair-kuwait`}
       />
-      <SchemaMarkup schema={STRUCTURED_DATA} />
+      <LocalBusinessSchema />
 
-      {/* HERO SECTION WITH LOCAL IMAGE */}
+      {/* HERO SECTION - Optimized with metadata */}
       <section className="relative px-6 text-center z-10 mb-24">
         <h1 className="text-4xl md:text-7xl font-black text-white mb-6 tracking-tight">
           Eliminate FPS Drops & <span className="text-purple-400">Overheating</span>
@@ -32,8 +31,13 @@ export default function GamingPC() {
         
         <div className="max-w-4xl mx-auto my-10 rounded-3xl overflow-hidden border border-slate-800 shadow-2xl">
           <img 
-            src={IMAGES.services.gamingPCRepairHero} 
-            alt="Professional gaming PC repair and tuning at KCROC" 
+            src={IMAGES.services.gamingPCRepairHero.src} 
+            alt={IMAGES.services.gamingPCRepairHero.alt}
+            width={IMAGES.services.gamingPCRepairHero.width}
+            height={IMAGES.services.gamingPCRepairHero.height}
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
             className="w-full h-64 md:h-96 object-cover"
           />
         </div>
@@ -52,7 +56,7 @@ export default function GamingPC() {
         </div>
       </section>
 
-      {/* ... (Keep your SCENARIOS, FEATURES, BENCHMARKS, PROCESS, and SERVICES sections here) */}
+      {/* ... (Ensure your SCENARIOS, FEATURES, BENCHMARKS, PROCESS, and SERVICES sections follow below) */}
     </main>
   );
 }
