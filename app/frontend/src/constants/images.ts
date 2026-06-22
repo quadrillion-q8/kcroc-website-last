@@ -36,4 +36,4 @@ export const IMAGES = {
     wifiCard: { src: "/images/intel-wifi-card-laptop-motherboard-repair.webp", alt: "Wi-Fi card repair", width: 800, height: 600 },
     fanReplacement: { src: "/images/aptop-cooling-fan-replacements.webp", alt: "Laptop cooling fan replacement", width: 800, height: 600 }
   }
-};
+} as const; // 👈 This locks the object to provide bulletproof TypeScript safety!
