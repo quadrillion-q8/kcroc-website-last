@@ -1,6 +1,7 @@
 import React, { Suspense, lazy } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { BUSINESS_INFO, SERVICES, REVIEWS, AREAS } from '../constants/data';
+import { IMAGES } from '../constants/images'; // 👈 1. Imported your local image dictionary!
 
 // 1. Synchronous Imports (Critical for Initial Paint)
 import Hero from '../components/home/Hero';
@@ -40,7 +41,8 @@ export default function Home() {
         "@type": "LocalBusiness",
         "@id": `${BUSINESS_INFO.url}/#business`,
         "name": BUSINESS_INFO.name,
-        "image": BUSINESS_INFO.logo,
+        // 👇 2. Injected your most relevant local gallery image into Google's SEO Schema!
+        "image": IMAGES.brand.shopPhoto, 
         "telephone": BUSINESS_INFO.phone,
         "url": BUSINESS_INFO.url,
         "areaServed": Object.values(AREAS).map(area => area.name),
