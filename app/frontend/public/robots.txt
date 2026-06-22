@@ -1,6 +1,10 @@
 User-agent: *
+Allow: /
+
+# Exclude sensitive or technical paths from crawl
 Disallow: /api/
 Disallow: /private/
 Disallow: /cdn-cgi/
 
+# Link to your sitemap
 Sitemap: https://www.computerrepairkuwait.com/sitemap.xml
