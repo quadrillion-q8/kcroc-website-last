@@ -3,12 +3,12 @@ import { Helmet } from 'react-helmet-async';
 import { BUSINESS_INFO, SERVICES, REVIEWS, AREAS } from '../constants/data';
 import { IMAGES } from '../constants/images';
 
-// 1. Critical Components for Initial Paint
+// Critical Components for Initial Paint
 import Hero from '../components/home/Hero';
 import TrustStats from '../components/home/TrustStats';
 import MobileCTA from '../components/home/MobileCTA'; 
 
-// 2. Lazy Imports
+// Lazy Imports
 const GoogleReviewsWidget = lazy(() => import('../components/GoogleReviewsWidget'));
 const ServicesGrid = lazy(() => import('../components/home/ServicesGrid'));
 const RecentBlogs = lazy(() => import('../components/home/RecentBlogs'));
@@ -85,6 +85,11 @@ export default function Home() {
       <Helmet>
         <title>Computer Repair Kuwait | Laptop & MacBook Repair - KCROC</title>
         <meta name="description" content="Professional laptop and computer repair in Kuwait. Free pick & drop across all governorates." />
+        
+        {/* Signals for Site Name */}
+        <meta name="apple-mobile-web-app-title" content="Kuwait Computer Repair On Call" />
+        <meta name="application-name" content="Kuwait Computer Repair On Call" />
+        
         <link rel="canonical" href={BUSINESS_INFO.url} />
         <script type="application/ld+json">{JSON.stringify(SCHEMA_DATA)}</script>
       </Helmet>
