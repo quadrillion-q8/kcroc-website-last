@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { X, Maximize2, Phone, MessageCircle } from 'lucide-react';
 import { BUSINESS_INFO } from '../constants/data';
+import { ROUTES } from '../constants/routes'; // 🧠 Centralized Registry
 import { GALLERY_ITEMS, galleryCategories } from '../constants/galleryData';
 import MetaSEO from '../components/seo/MetaSEO';
 import SchemaMarkup from '../components/seo/SchemaMarkup';
@@ -8,7 +9,8 @@ import SchemaMarkup from '../components/seo/SchemaMarkup';
 /* ─────────────────────────────────────────────────────────────────────────────
    1. PAGE DATA & SCHEMA
 ───────────────────────────────────────────────────────────────────────────── */
-const PAGE_URL = `${BUSINESS_INFO.url}/gallery`;
+// 👇 Dynamically uses the registry route
+const PAGE_URL = `${BUSINESS_INFO.url}${ROUTES.gallery}`; 
 const WA_LINK = `https://wa.me/${BUSINESS_INFO.cleanPhone}?text=${encodeURIComponent('Hi, I need a repair. Please arrange free pickup.')}`;
 
 const STRUCTURED_DATA = {
