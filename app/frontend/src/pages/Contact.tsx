@@ -7,8 +7,8 @@ import { BUSINESS_INFO } from '../constants/data';
 import { ROUTES } from '../constants/routes';
 import MetaSEO from '../components/seo/MetaSEO';
 import SchemaMarkup from '../components/seo/SchemaMarkup';
-import Layout from '../components/Layout'; // 👈 Essential for Header/Footer
-import MapComponent from '../components/MapComponent'; // 👈 Your new Map component
+import Layout from '../components/Layout';
+import MapComponent from '../components/MapComponent';
 
 /* ─────────────────────────────────────────────────────────────────────────────
    1. PAGE DATA
@@ -110,14 +110,17 @@ export default function Contact() {
           <h1 className="text-4xl md:text-6xl font-black mb-6 tracking-tight text-white">
             Contact <span className="text-cyan-400">KCROC</span>
           </h1>
+          <p className="text-slate-400 max-w-md mx-auto">
+            Expert hardware support. We offer free pick & drop service.
+          </p>
         </section>
 
         {/* Form + Info */}
         <section className="py-12 md:py-20 px-6 border-t border-slate-800/50 relative z-10">
           <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12">
             
-            {/* Form */}
-            <div className="bg-slate-900/30 backdrop-blur-md border border-slate-800 rounded-3xl p-8 lg:p-10">
+            {/* Glassmorphism Form Container */}
+            <div className="bg-slate-900/40 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 lg:p-10 transition-all duration-500 ease-out hover:border-cyan-500/50 hover:shadow-[0_0_40px_-10px_rgba(6,182,212,0.3)] hover:-translate-y-1">
               <h2 className="text-2xl font-black mb-4">Send us a Message</h2>
               <form onSubmit={handleSubmit} className="space-y-6" noValidate>
                 <div className="grid md:grid-cols-2 gap-6">
