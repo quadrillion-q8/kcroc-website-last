@@ -1,10 +1,11 @@
 import React, { useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
 import { 
-  MapPin, ExternalLink, ArrowRight 
+  MapPin, ExternalLink, ArrowRight, Clock 
 } from 'lucide-react';
 import { BUSINESS_INFO, AREAS } from '../constants/data';
+import MetaSEO from '../components/seo/MetaSEO';
+import SchemaMarkup from '../components/seo/SchemaMarkup';
 
 const formatTitleCase = (slug: string = '') => 
   slug.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()).join(' ');
@@ -67,12 +68,12 @@ export default function LocationTemplate() {
 
   return (
     <main className="w-full min-h-screen bg-slate-950 text-slate-200 pt-32 pb-24">
-      <Helmet>
-        <title>{formattedService} in {formattedCity} | Trusted Repair - KCROC</title>
-        <meta name="description" content={cityData ? cityData.description : `Expert ${formattedService.toLowerCase()} in ${formattedCity}.`} />
-        <link rel="canonical" href={pageUrl} />
-        <script type="application/ld+json">{JSON.stringify(SCHEMA_DATA)}</script>
-      </Helmet>
+      <MetaSEO 
+        title={`${formattedService} in ${formattedCity} | Trusted Repair - KCROC`}
+        description={cityData ? cityData.description : `Expert ${formattedService.toLowerCase()} in ${formattedCity}.`}
+        canonical={pageUrl}
+      />
+      <SchemaMarkup schema={SCHEMA_DATA} />
 
       {/* Hero Section */}
       <section className="px-6 text-center mb-24">
@@ -89,7 +90,7 @@ export default function LocationTemplate() {
       </section>
 
       {/* Internal Linking Hub */}
-      <section className="max-w-4xl mx-auto px-6 mb-24">
+      <section className="max-w-4xl mx-auto px-6 mb-16">
         <div className="bg-slate-900/50 p-8 rounded-3xl border border-slate-800">
           <h3 className="text-lg font-bold text-white mb-6 flex items-center gap-2">
             <MapPin className="text-cyan-400" /> Serving {formattedCity} & Nearby
@@ -100,6 +101,49 @@ export default function LocationTemplate() {
                 {formattedService} in {area} <ArrowRight size={14} className="inline ml-1" />
               </Link>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Lab Location & Map Section */}
+      <section className="max-w-4xl mx-auto px-6 mb-24">
+        <h2 className="text-2xl font-black text-white mb-8 text-center">Visit Our Central Lab</h2>
+        <div className="grid md:grid-cols-2 gap-8 items-center bg-slate-900/30 p-4 md:p-8 rounded-3xl border border-slate-800">
+          <div className="space-y-6">
+            <div className="flex items-start gap-4">
+              <div className="w-12 h-12 bg-slate-950 border border-slate-800 rounded-xl flex items-center justify-center flex-shrink-0">
+                <MapPin className="w-5 h-5 text-cyan-400" /> 
+              </div>
+              <div>
+                <p className="font-medium text-slate-400 text-sm mb-1">HQ Address</p>
+                <address className="not-italic text-white font-medium leading-relaxed text-sm">
+                  Hawalli, Ibn Khaldoun St<br />
+                  Al Mullah Complex<br />
+                  Basement Shop 19
+                </address>
+              </div>
+            </div>
+            <div className="flex items-start gap-4">
+              <div className="w-12 h-12 bg-slate-950 border border-slate-800 rounded-xl flex items-center justify-center flex-shrink-0">
+                <Clock className="w-5 h-5 text-cyan-400" /> 
+              </div>
+              <div>
+                <p className="font-medium text-slate-400 text-sm mb-1">Business Hours</p>
+                <p className="text-white font-medium text-sm">Open Daily: 10:00 AM – 10:00 PM</p>
+              </div>
+            </div>
+          </div>
+          <div className="rounded-2xl overflow-hidden border border-slate-700 h-64">
+            <iframe
+              src="https://maps.google.com/maps?q=Al+Mullah+Complex,+Ibn+Khaldoun+St,+Basement+Shop+19,+Hawalli,+Kuwait&t=&z=15&ie=UTF8&iwloc=&output=embed"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="KCROC Computer Repair - Hawalli Lab Location"
+            />
           </div>
         </div>
       </section>
