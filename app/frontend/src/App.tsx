@@ -28,16 +28,14 @@ const WebDesignKuwait = lazy(() => import('./pages/WebDesignKuwait'));
 const LaptopRepair = lazy(() => import('./pages/LaptopRepair'));
 const MacBookRepair = lazy(() => import('./pages/MacBookRepair'));
 const ScreenReplacement = lazy(() => import('./pages/ScreenReplacement'));
-const PrivacySecurity = lazy(() => import('./pages/PrivacySecurity'));
 const MotherboardRepair = lazy(() => import('./pages/MotherboardRepair'));
 
 // Dynamic Programmatic SEO Template
 const LocationTemplate = lazy(() => import('./pages/LocationTemplate'));
 
-// Blog Components
+// Dynamic Programmatic Blog Engine
 const Blog = lazy(() => import('./pages/Blog')); 
-const BlogScreenProtection = lazy(() => import('./pages/BlogScreenProtection'));
-const BlogLaptopRepair = lazy(() => import('./pages/BlogLaptopRepair')); 
+const BlogPostTemplate = lazy(() => import('./pages/BlogPostTemplate')); // 👈 New Dynamic Template
 
 const NotFound = lazy(() => import('./pages/NotFound'));
 
@@ -56,6 +54,7 @@ const App = () => (
   <HelmetProvider>
     <BrowserRouter>
       <div className="w-full min-h-screen flex flex-col overflow-x-hidden bg-slate-950 m-0 p-0">
+        {/* Global Layout Wrapper */}
         <Layout>
           <Suspense fallback={<PageLoader />}>
             <Routes>
@@ -74,16 +73,14 @@ const App = () => (
               <Route path={ROUTES.laptopRepairHawalli} element={<LaptopRepair />} />
               <Route path={ROUTES.gamingPC} element={<GamingPC />} />
               <Route path={ROUTES.screenReplacement} element={<ScreenReplacement />} />
-              <Route path={ROUTES.dataRecovery} element={<PrivacySecurity />} />
               <Route path={ROUTES.motherboardRepair} element={<MotherboardRepair />} />
               
-              {/* Programmatic SEO Dynamic Route */}
+              {/* Programmatic SEO Dynamic Area Route */}
               <Route path={ROUTES.programmaticSEO} element={<LocationTemplate />} />
               
-              {/* Blog Hub & Sub-Articles */}
+              {/* Programmatic Blog Engine */}
               <Route path={ROUTES.blog} element={<Blog />} />
-              <Route path={ROUTES.blogLaptopRepair} element={<BlogLaptopRepair />} />
-              <Route path={ROUTES.blogScreenProtection} element={<BlogScreenProtection />} />
+              <Route path="/blog/:slug" element={<BlogPostTemplate />} /> {/* 👈 Dynamic Blog Route */}
               
               {/* General Technical Sub-Pages */}
               <Route path={ROUTES.batteryReplacement} element={<BatteryReplacement />} />
