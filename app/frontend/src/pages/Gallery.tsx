@@ -32,7 +32,6 @@ export default function Gallery() {
   const [activeCategory, setActiveCategory] = useState<string>('All');
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
-  // Memoized filtering to maintain performance with 100+ items
   const filteredItems = useMemo(() =>
       activeCategory === 'All'
         ? GALLERY_ITEMS
@@ -103,6 +102,10 @@ export default function Gallery() {
                 loading="lazy" 
                 decoding="async"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-90 group-hover:opacity-100" 
+                onError={(e) => {
+                  console.error(`IMAGE FAILED TO LOAD: ${item.image.src}`);
+                  e.currentTarget.style.display = 'none'; // Hide if broken
+                }}
               />
               <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-slate-950/40 backdrop-blur-[2px]">
                 <Maximize2 size={32} className="text-white" />
