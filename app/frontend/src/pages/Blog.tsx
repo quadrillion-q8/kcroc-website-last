@@ -1,103 +1,218 @@
-import React, { Suspense, lazy } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Analytics } from '@vercel/analytics/react';
-import { SpeedInsights } from '@vercel/speed-insights/react';
-import { HelmetProvider } from 'react-helmet-async';
-import { Loader2 } from 'lucide-react';
+import React, { useMemo } from 'react';
+import { Link } from 'react-router-dom';
+import { Calendar, Clock, ArrowRight, BookOpen } from 'lucide-react';
 
-// Single Source of Truth Routes Registry
-import { ROUTES } from './constants/routes';
+// ✅ FIXED: Using double dots (../) to correctly point to the constants and components folders
+import { BUSINESS_INFO } from '../constants/data';
+import { ROUTES, getBlogRoute } from '../constants/routes';
+import { BLOG_POSTS } from '../constants/blogPosts';
+import MetaSEO from '../components/seo/MetaSEO';
+import SchemaMarkup from '../components/seo/SchemaMarkup';
 
-// Layout & Wrapper
-import Layout from './components/Layout'; 
+export default function Blog() {
+  const pageUrl = `${BUSINESS_INFO.url}${ROUTES.blog}`;
 
-// Eagerly loaded Home for performance
-import Home from './pages/Home';
+  // =========================
+  // SEO SCHEMA (UPGRADED)
+  // =========================
+  const SCHEMA_DATA = useMemo(() => ({
+    "@context": "https://schema.org",
 
-// Lazy Loaded Pages
-const Services = lazy(() => import('./pages/Services'));
-const Pricing = lazy(() => import('./pages/Pricing'));
-const About = lazy(() => import('./pages/About'));
-const Contact = lazy(() => import('./pages/Contact'));
-const Gallery = lazy(() => import('./pages/Gallery'));
-const BookingPage = lazy(() => import('./pages/BookingPage'));
-const BatteryReplacement = lazy(() => import('./pages/BatteryReplacement'));
-const GamingPCCooling = lazy(() => import('./pages/GamingPCCooling'));
-const GamingPC = lazy(() => import('./pages/GamingPC'));
-const WebDesignKuwait = lazy(() => import('./pages/WebDesignKuwait'));
-const LaptopRepair = lazy(() => import('./pages/LaptopRepair'));
-const MacBookRepair = lazy(() => import('./pages/MacBookRepair'));
-const ScreenReplacement = lazy(() => import('./pages/ScreenReplacement'));
-const MotherboardRepair = lazy(() => import('./pages/MotherboardRepair'));
+    "@graph": [
+      // ─────────────────────────────
+      // COLLECTION PAGE
+      // ─────────────────────────────
+      {
+        "@type": "CollectionPage",
+        "@id": `${pageUrl}#collection`,
+        "name": "KCROC Tech Blog - Computer Repair Guides Kuwait",
+        "description": "Expert computer repair guides, laptop fixes, MacBook troubleshooting, and PC performance tips in Kuwait.",
+        "url": pageUrl,
+        "isPartOf": {
+          "@type": "WebSite",
+          "@id": `${BUSINESS_INFO.url}/#website`
+        }
+      },
 
-// Dynamic Programmatic SEO Template
-const LocationTemplate = lazy(() => import('./pages/LocationTemplate'));
+      // ─────────────────────────────
+      // ITEM LIST (VERY IMPORTANT FOR SEO)
+      // ─────────────────────────────
+      {
+        "@type": "ItemList",
+        "@id": `${pageUrl}#itemlist`,
+        "name": "KCROC Blog Posts",
+        "itemListElement": BLOG_POSTS.map((post, index) => ({
+          "@type": "ListItem",
+          "position": index + 1,
+          "name": post.title,
+          "url": `${BUSINESS_INFO.url}${getBlogRoute(post.slug)}`
+        }))
+      },
 
-// Dynamic Programmatic Blog Engine
-const Blog = lazy(() => import('./pages/Blog')); 
-const BlogPostTemplate = lazy(() => import('./pages/BlogPostTemplate')); // 👈 New Dynamic Template
+      // ─────────────────────────────
+      // BLOG POST ENTITIES
+      // ─────────────────────────────
+      ...BLOG_POSTS.map(post => ({
+        "@type": "BlogPosting",
+        "@id": `${BUSINESS_INFO.url}${getBlogRoute(post.slug)}#post`,
+        "headline": post.title,
+        "description": post.excerpt,
+        "image": post.image,
+        "url": `${BUSINESS_INFO.url}${getBlogRoute(post.slug)}`,
+        "datePublished": post.date,
 
-const NotFound = lazy(() => import('./pages/NotFound'));
+        "author": {
+          "@type": "Organization",
+          "name": post.author || BUSINESS_INFO.name
+        },
 
-// Global Styles
-import './styles/kcroc.css';
+        "publisher": {
+          "@type": "Organization",
+          "name": BUSINESS_INFO.name,
+          "url": BUSINESS_INFO.url
+        },
 
-// Premium Loading Fallback
-const PageLoader = () => (
-  <div className="min-h-screen w-full bg-slate-950 flex flex-col items-center justify-center">
-    <Loader2 className="w-12 h-12 text-cyan-400 animate-spin mb-4" />
-    <p className="text-slate-500 font-bold uppercase tracking-widest text-sm">Loading Interface...</p>
-  </div>
-);
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": `${BUSINESS_INFO.url}${getBlogRoute(post.slug)}`
+        }
+      }))
+    ]
+  }), [pageUrl]);
 
-const App = () => (
-  <HelmetProvider>
-    <BrowserRouter>
-      <div className="w-full min-h-screen flex flex-col overflow-x-hidden bg-slate-950 m-0 p-0">
-        {/* Global Layout Wrapper */}
-        <Layout>
-          <Suspense fallback={<PageLoader />}>
-            <Routes>
-              {/* Core Navigation Routes */}
-              <Route path={ROUTES.home} element={<Home />} />
-              <Route path={ROUTES.services} element={<Services />} />
-              <Route path={ROUTES.pricing} element={<Pricing />} />
-              <Route path={ROUTES.about} element={<About />} />
-              <Route path={ROUTES.contact} element={<Contact />} />
-              <Route path={ROUTES.gallery} element={<Gallery />} />
-              <Route path={ROUTES.book} element={<BookingPage />} />
-              
-              {/* SEO Aligned & Hardened Tech Service Routes */}
-              <Route path={ROUTES.macbookRepair} element={<MacBookRepair />} />
-              <Route path={ROUTES.laptopRepair} element={<LaptopRepair />} />
-              <Route path={ROUTES.laptopRepairHawalli} element={<LaptopRepair />} />
-              <Route path={ROUTES.gamingPC} element={<GamingPC />} />
-              <Route path={ROUTES.screenReplacement} element={<ScreenReplacement />} />
-              <Route path={ROUTES.motherboardRepair} element={<MotherboardRepair />} />
-              
-              {/* Programmatic SEO Dynamic Area Route */}
-              <Route path={ROUTES.programmaticSEO} element={<LocationTemplate />} />
-              
-              {/* Programmatic Blog Engine */}
-              <Route path={ROUTES.blog} element={<Blog />} />
-              <Route path="/blog/:slug" element={<BlogPostTemplate />} /> {/* 👈 Dynamic Blog Route */}
-              
-              {/* General Technical Sub-Pages */}
-              <Route path={ROUTES.batteryReplacement} element={<BatteryReplacement />} />
-              <Route path={ROUTES.gamingPCCooling} element={<GamingPCCooling />} />
-              <Route path={ROUTES.webDesign} element={<WebDesignKuwait />} />
-              
-              {/* Catch-All 404 Route */}
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </Suspense>
-        </Layout>
-      </div>
-      
-      <Analytics />
-      <SpeedInsights />
-    </BrowserRouter>
-  </HelmetProvider>
-);
+  return (
+    <main className="w-full min-h-screen bg-transparent text-slate-200 pt-32 pb-24">
 
-export default App;
+      {/* =========================
+          SEO META
+      ========================= */}
+      <MetaSEO
+        title="KCROC Tech Blog | Computer Repair Guides Kuwait"
+        description="Expert laptop repair, MacBook fixes, PC troubleshooting, SSD upgrades and tech tips from Kuwait's top computer technicians."
+        canonical={pageUrl}
+      />
+
+      <SchemaMarkup schema={SCHEMA_DATA} />
+
+      {/* =========================
+          BREADCRUMBS
+      ========================= */}
+      <nav aria-label="Breadcrumb" className="max-w-6xl mx-auto px-6 mb-8 relative z-10">
+        <ol className="flex items-center space-x-2 text-sm text-slate-400 font-medium">
+          <li>
+            <Link to={ROUTES.home} className="hover:text-cyan-400 transition-colors">
+              Home
+            </Link>
+          </li>
+          <li className="text-slate-600" aria-hidden="true">/</li>
+          <li aria-current="page" className="text-cyan-400">
+            Blog
+          </li>
+        </ol>
+      </nav>
+
+      {/* =========================
+          HERO
+      ========================= */}
+      <section className="relative px-6 text-center mb-20 z-10">
+        <div className="absolute top-[-50%] left-1/2 -translate-x-1/2 w-[600px] h-[500px] bg-cyan-600/20 blur-[80px] rounded-full pointer-events-none" aria-hidden="true" />
+
+        <div className="max-w-4xl mx-auto relative z-10">
+          <div className="inline-flex items-center gap-2 bg-slate-900/80 border border-cyan-500/30 px-5 py-2 rounded-full text-cyan-400 text-xs font-black uppercase tracking-widest mb-6">
+            <BookOpen size={14} aria-hidden="true" />
+            Tech Insights
+          </div>
+
+          <h1 className="text-4xl md:text-6xl font-black text-white mb-6">
+            KCROC Tech <span className="text-cyan-400">Blog</span>
+          </h1>
+
+          <p className="text-lg text-slate-400 max-w-2xl mx-auto">
+            Expert repair guides, troubleshooting tips, and hardware insights
+            from Kuwait’s leading computer technicians.
+          </p>
+        </div>
+      </section>
+
+      {/* =========================
+          BLOG GRID
+      ========================= */}
+      <section className="max-w-6xl mx-auto px-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+          {BLOG_POSTS.map((post) => (
+            <article
+              key={post.slug}
+              className="bg-slate-900/40 backdrop-blur-xl border border-slate-700/50 rounded-3xl overflow-hidden hover:border-cyan-500/50 hover:shadow-[0_0_30px_rgba(6,182,212,0.15)] transition-all duration-500 hover:-translate-y-1 flex flex-col"
+            >
+
+              {/* IMAGE */}
+              <Link
+                to={getBlogRoute(post.slug)}
+                className="block aspect-[16/9] overflow-hidden bg-slate-950"
+                rel="bookmark"
+              >
+                <img
+                  src={post.image}
+                  alt={post.title}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500 opacity-90 hover:opacity-100"
+                />
+              </Link>
+
+              {/* CONTENT */}
+              <div className="p-8 flex flex-col flex-grow">
+
+                <div className="flex items-center justify-between text-xs font-bold text-slate-400 uppercase tracking-wider mb-4">
+                  <span className="text-cyan-400 bg-cyan-500/10 px-3 py-1 rounded-full">
+                    {post.category}
+                  </span>
+
+                  <span className="flex items-center gap-1">
+                    <Calendar size={12} aria-hidden="true" />
+                    {new Date(post.date).toLocaleDateString('en-US', {
+                      month: 'short',
+                      day: 'numeric',
+                      year: 'numeric'
+                    })}
+                  </span>
+                </div>
+
+                <Link to={getBlogRoute(post.slug)}>
+                  <h2 className="text-xl font-bold text-white mb-3 hover:text-cyan-400 transition-colors line-clamp-2">
+                    {post.title}
+                  </h2>
+                </Link>
+
+                <p className="text-slate-400 text-sm mb-6 line-clamp-3 flex-grow leading-relaxed">
+                  {post.excerpt}
+                </p>
+
+                {/* FOOTER */}
+                <div className="flex items-center justify-between pt-4 border-t border-slate-800/50 mt-auto">
+
+                  <span className="text-xs text-slate-500 flex items-center gap-1 font-medium">
+                    <Clock size={12} aria-hidden="true" />
+                    {post.readTime}
+                  </span>
+
+                  <Link
+                    to={getBlogRoute(post.slug)}
+                    className="text-sm font-bold text-cyan-400 flex items-center gap-1 hover:gap-2 transition-all"
+                    rel="bookmark"
+                  >
+                    Read Post <ArrowRight size={14} aria-hidden="true" />
+                  </Link>
+
+                </div>
+              </div>
+            </article>
+          ))}
+
+        </div>
+      </section>
+
+    </main>
+  );
+}
