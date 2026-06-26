@@ -1,47 +1,77 @@
-// File: app/frontend/src/constants/blogPosts.ts
-import { IMAGES } from './images';
+// File: src/constants/blogPosts.ts
 
-export const BLOG_POSTS = [
+export interface BlogPost {
+  slug: string;
+  title: string;
+  excerpt: string;
+  content: string[]; // Array of paragraphs for easy mapping
+  category: string;
+  date: string;
+  readTime: string;
+  author: string;
+  image: string;
+  keywords: string[];
+  isPillar: boolean;
+  clusterParent?: string; // Connects a cluster post back to its main pillar
+}
+
+export const BLOG_POSTS: BlogPost[] = [
+  // ─── PILLAR POST ───
   {
-    slug: "how-to-fix-overheating-laptop",
-    title: "How to Fix an Overheating Laptop in Kuwait's Summer",
-    description: "Is your laptop overheating? Learn the top causes of thermal throttling and how to cool down your PC to prevent permanent hardware damage.",
-    category: "Laptop Repair",
-    date: "2026-06-25",
-    image: IMAGES.brand.teamWorkbench, // Replace with a specific blog image when you have one
-    author: "KCROC Tech Team",
-    keywords: ["overheating laptop fix", "laptop thermal paste replacement", "laptop cleaning kuwait", "pc overheating solutions"],
-    readTime: "5 min read",
-    // We can add the raw HTML or Markdown content here, or build a separate content engine later. 
-    // For now, we will store a brief excerpt for the blog hub page.
-    excerpt: "Summer in Kuwait is brutal on electronics. If your laptop sounds like a jet engine and is hot to the touch, you might be facing thermal throttling. Here is how to fix it."
-  },
-  {
-    slug: "macbook-battery-replacement-kuwait",
-    title: "When to Replace Your MacBook Battery (Warning Signs)",
-    description: "Don't let a swelling battery ruin your MacBook. Learn the top warning signs that your Apple laptop needs a battery replacement.",
-    category: "MacBook Repair",
-    date: "2026-06-20",
-    image: IMAGES.brand.teamWorkbench,
-    author: "KCROC Tech Team",
-    keywords: ["macbook battery replacement kuwait", "swollen macbook battery", "apple laptop service status", "macbook repair hawalli"],
-    readTime: "4 min read",
-    excerpt: "Does your MacBook die at 30%? Is the trackpad hard to click? These are classic signs of a failing or swollen lithium-ion battery."
-  },
-  {
-    slug: "ssd-vs-hdd-upgrade-guide",
-    title: "SSD vs HDD: Why You Need to Upgrade Your Hard Drive",
-    description: "Still running Windows on an old HDD? Discover why upgrading to a Solid State Drive (SSD) is the single best investment you can make for your computer.",
-    category: "PC Upgrades",
+    slug: "laptop-repair-kuwait-2026",
+    title: "The Ultimate Guide to Laptop Repair in Kuwait",
+    excerpt: "A comprehensive breakdown of the most common laptop failures, diagnostic steps, and professional repair solutions available in Kuwait.",
+    content: [
+      "When your laptop fails, it can bring your entire workflow to a halt. Whether you are running a business in Salmiya or studying at home, understanding the root cause of your hardware failure is the first step to getting back online.",
+      "In this comprehensive guide, we cover the most frequent hardware issues we see at our Hawalli repair center. From failing mechanical hard drives that need an SSD upgrade, to thermal throttling caused by dust buildup in the cooling fans.",
+      "As a professional repair service, we always recommend getting a diagnostic check before replacing expensive parts. Our team provides free pickup across Kuwait, ensuring your device is evaluated by experts without you having to leave your location."
+    ],
+    category: "Guides",
     date: "2026-06-15",
-    image: IMAGES.brand.teamWorkbench,
-    author: "KCROC Tech Team",
-    keywords: ["ssd upgrade kuwait", "hdd to ssd clone", "make laptop faster", "computer upgrade hawalli"],
-    readTime: "6 min read",
-    excerpt: "If your computer takes more than 30 seconds to boot up, you are wasting time. Upgrading from a mechanical hard drive to an SSD makes any PC feel brand new."
-  }
-] as const;
+    readTime: "8 min read",
+    author: "Imran Natiq",
+    image: "https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?auto=format&fit=crop&q=80",
+    keywords: ["laptop repair kuwait", "computer fix", "hardware diagnostic", "motherboard repair"],
+    isPillar: true
+  },
 
-// Types for strict safety
-export type BlogPost = typeof BLOG_POSTS[number];
-export type BlogSlug = BlogPost['slug'];
+  // ─── CLUSTER POST 1 ───
+  {
+    slug: "fix-slow-laptop-ssd",
+    title: "Why an SSD Upgrade is the Best Fix for a Slow Laptop",
+    excerpt: "Learn how replacing your old mechanical hard drive with a Solid State Drive (SSD) can make your computer up to 10x faster.",
+    content: [
+      "If you are dealing with a slow laptop, you might think it is time to buy a brand new machine. However, in 90% of cases, the processor and RAM are perfectly fine—the bottleneck is an aging mechanical hard drive (HDD).",
+      "An SSD upgrade is the most cost-effective way to transform system performance. Unlike HDDs, which use spinning magnetic platters, SSDs use flash memory. This means your Windows installation boots in seconds, and applications open instantly.",
+      "Upgrading is a straightforward process. We safely clone your existing data so you do not lose any files, install the new drive, and optimize your operating system for peak performance."
+    ],
+    category: "Hardware Upgrades",
+    date: "2026-06-18",
+    readTime: "4 min read",
+    author: "Imran Natiq",
+    image: "https://images.unsplash.com/photo-1531492746076-161ca9bcad58?auto=format&fit=crop&q=80",
+    keywords: ["ssd upgrade", "slow laptop", "speed up computer", "hard drive replacement"],
+    isPillar: false,
+    clusterParent: "laptop-repair-kuwait-2026"
+  },
+
+  // ─── CLUSTER POST 2 ───
+  {
+    slug: "stop-laptop-overheating",
+    title: "How to Stop Your Laptop from Overheating",
+    excerpt: "Thermal throttling can permanently damage your processor. Discover the causes of laptop overheating and how professional cooling maintenance prevents data loss.",
+    content: [
+      "A laptop that runs too hot is not just uncomfortable to use; it is actively damaging its internal components. Overheating leads to thermal throttling, where your processor intentionally slows down to prevent a catastrophic failure.",
+      "The primary cause of an overheating laptop is dust accumulation. The cooling fans pull in air to cool the copper heat sinks, but over time, dust blocks the exhaust vents. Additionally, the thermal paste that transfers heat from the CPU to the heat sink dries out and loses its effectiveness.",
+      "To resolve this, a complete teardown is required. We clean the internal chassis, clear the exhaust fins, and apply premium, high-conductivity thermal paste to restore factory cooling performance."
+    ],
+    category: "Maintenance",
+    date: "2026-06-20",
+    readTime: "5 min read",
+    author: "Imran Natiq",
+    image: "https://images.unsplash.com/photo-1587202372634-32705e3bf49c?auto=format&fit=crop&q=80",
+    keywords: ["overheating", "thermal paste", "laptop fan cleaning", "thermal throttling"],
+    isPillar: false,
+    clusterParent: "laptop-repair-kuwait-2026"
+  }
+];
