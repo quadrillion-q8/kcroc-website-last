@@ -3,10 +3,15 @@ import {
   Laptop, Cpu, ThermometerSnowflake, BatteryWarning, 
   ShieldCheck, MessageCircle, Phone, Wrench, Zap 
 } from 'lucide-react';
+
 import { BUSINESS_INFO } from '../constants/data';
 import { IMAGES } from '../constants/images';
 import SEOComponent from '../components/seo/SEO';
 import LocalBusinessSchema from '../components/seo/LocalBusinessSchema';
+
+// 🔥 NEW: Import the Semantic Engine & WhatsApp utility
+import { autoLinkText } from '../utils/linkGraph';
+import { getIntentWhatsAppLink } from '../utils/whatsappIntent';
 
 const COMMON_ISSUES = [
   { title: "Thermal Throttling", desc: "Laptops overheating in Kuwait's climate. We apply premium thermal paste.", icon: ThermometerSnowflake },
@@ -18,7 +23,8 @@ const COMMON_ISSUES = [
 ];
 
 export default function LaptopRepair() {
-  const waLink = `https://wa.me/${BUSINESS_INFO.cleanPhone}?text=${encodeURIComponent("Hi KCROC, I need help with my Windows laptop. Please arrange a free diagnostic & pickup.")}`;
+  // 🔥 UPDATED: Dynamic WhatsApp Intent
+  const waLink = getIntentWhatsAppLink("service", "Laptop Repair");
 
   return (
     <main className="w-full min-h-screen bg-transparent text-slate-200 pt-32 pb-24">
@@ -29,7 +35,7 @@ export default function LaptopRepair() {
       />
       <LocalBusinessSchema />
 
-      {/* HERO SECTION - Optimized with metadata */}
+      {/* HERO SECTION */}
       <section className="relative px-6 text-center mb-24">
         <h1 className="text-4xl md:text-6xl font-black text-white mb-6">
           Premium <span className="text-cyan-400">Laptop Repair</span> in Kuwait
@@ -38,15 +44,14 @@ export default function LaptopRepair() {
           <img 
             src={IMAGES.services.laptopRepairHero.src} 
             alt={IMAGES.services.laptopRepairHero.alt}
-            width={IMAGES.services.laptopRepairHero.width}
-            height={IMAGES.services.laptopRepairHero.height}
-            loading="eager"
-            fetchPriority="high"
-            decoding="async"
             className="w-full h-64 md:h-96 object-cover" 
           />
         </div>
-        <p className="text-lg text-slate-400 max-w-2xl mx-auto">From shattered hinges to complex micro-soldering. Free pick & drop with our No Fix, No Fee guarantee.</p>
+        
+        {/* 🔥 UPDATED: Semantic Intro */}
+        <div className="text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed">
+          {autoLinkText("From shattered hinges to complex micro-soldering. Our lab offers free pick & drop with our No Fix, No Fee guarantee for all laptop repairs across Kuwait.")}
+        </div>
       </section>
 
       {/* ISSUES GRID */}
