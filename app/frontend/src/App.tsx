@@ -30,7 +30,7 @@ const MacBookRepair = lazy(() => import('./pages/MacBookRepair'));
 const ScreenReplacement = lazy(() => import('./pages/ScreenReplacement'));
 const MotherboardRepair = lazy(() => import('./pages/MotherboardRepair'));
 
-// 👈 NEW: Lazy load the programmatic FAQ page
+// Lazy load the programmatic FAQ page
 const FAQ = lazy(() => import('./pages/FAQ')); 
 
 // Dynamic Programmatic SEO Template
@@ -39,6 +39,9 @@ const LocationTemplate = lazy(() => import('./pages/LocationTemplate'));
 // Dynamic Programmatic Blog Engine
 const Blog = lazy(() => import('./pages/Blog')); 
 const BlogPostTemplate = lazy(() => import('./pages/BlogPostTemplate'));
+
+// 👈 NEW: Deep-Intent AI SEO Pages
+const AILandingTemplate = lazy(() => import('./pages/ai/AILandingTemplate'));
 
 const NotFound = lazy(() => import('./pages/NotFound'));
 
@@ -70,7 +73,7 @@ const App = () => (
               <Route path={ROUTES.gallery} element={<Gallery />} />
               <Route path={ROUTES.book} element={<BookingPage />} />
               
-              {/* 👈 NEW: FAQ Route */}
+              {/* FAQ Route */}
               <Route path={ROUTES.faq} element={<FAQ />} />
               
               {/* SEO Aligned & Hardened Tech Service Routes */}
@@ -87,6 +90,9 @@ const App = () => (
               {/* Programmatic Blog Engine */}
               <Route path={ROUTES.blog} element={<Blog />} />
               <Route path="/blog/:slug" element={<BlogPostTemplate />} />
+              
+              {/* 👈 NEW: AI & Intent-based Semantic Landing Pages */}
+              <Route path="/ai/:intentSlug" element={<AILandingTemplate />} />
               
               {/* General Technical Sub-Pages */}
               <Route path={ROUTES.batteryReplacement} element={<BatteryReplacement />} />
