@@ -30,12 +30,15 @@ const MacBookRepair = lazy(() => import('./pages/MacBookRepair'));
 const ScreenReplacement = lazy(() => import('./pages/ScreenReplacement'));
 const MotherboardRepair = lazy(() => import('./pages/MotherboardRepair'));
 
+// 👈 NEW: Lazy load the programmatic FAQ page
+const FAQ = lazy(() => import('./pages/FAQ')); 
+
 // Dynamic Programmatic SEO Template
 const LocationTemplate = lazy(() => import('./pages/LocationTemplate'));
 
 // Dynamic Programmatic Blog Engine
 const Blog = lazy(() => import('./pages/Blog')); 
-const BlogPostTemplate = lazy(() => import('./pages/BlogPostTemplate')); // 👈 New Dynamic Template
+const BlogPostTemplate = lazy(() => import('./pages/BlogPostTemplate'));
 
 const NotFound = lazy(() => import('./pages/NotFound'));
 
@@ -67,6 +70,9 @@ const App = () => (
               <Route path={ROUTES.gallery} element={<Gallery />} />
               <Route path={ROUTES.book} element={<BookingPage />} />
               
+              {/* 👈 NEW: FAQ Route */}
+              <Route path={ROUTES.faq} element={<FAQ />} />
+              
               {/* SEO Aligned & Hardened Tech Service Routes */}
               <Route path={ROUTES.macbookRepair} element={<MacBookRepair />} />
               <Route path={ROUTES.laptopRepair} element={<LaptopRepair />} />
@@ -80,7 +86,7 @@ const App = () => (
               
               {/* Programmatic Blog Engine */}
               <Route path={ROUTES.blog} element={<Blog />} />
-              <Route path="/blog/:slug" element={<BlogPostTemplate />} /> {/* 👈 Dynamic Blog Route */}
+              <Route path="/blog/:slug" element={<BlogPostTemplate />} />
               
               {/* General Technical Sub-Pages */}
               <Route path={ROUTES.batteryReplacement} element={<BatteryReplacement />} />
