@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, Search } from 'lucide-react';
 
 import { IMAGES } from '../constants/images';
 import { ROUTES } from '../constants/routes';
 import MobileMenu from './layout/MobileMenu';
-import GlobalSearch from './search/GlobalSearch'; // 🔥 NEW: The Semantic Search Engine
+import GlobalSearch from './search/GlobalSearch'; 
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -54,8 +54,9 @@ export default function Header() {
             {/* Logo Section */}
             <Link to={ROUTES.home} className="flex items-center group">
               <img 
-                src={IMAGES.brand.logo} 
-                alt="KCROC Logo" 
+                // 🔥 FIX: Added .src to properly reference the string path
+                src={IMAGES.brand.logo.src} 
+                alt={IMAGES.brand.logo.alt || "KCROC Logo"} 
                 className="h-16 md:h-20 w-auto object-contain transition-all duration-300 drop-shadow-[0_0_8px_rgba(255,255,255,0.2)] hover:scale-105" 
               />
             </Link>
@@ -105,7 +106,7 @@ export default function Header() {
         </div>
       </header>
 
-      {/* 🔥 NEW: The Semantic Global Search Engine */}
+      {/* Semantic Global Search Engine */}
       <GlobalSearch isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
 
       {/* Mobile Menu */}
