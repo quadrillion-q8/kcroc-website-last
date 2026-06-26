@@ -30,17 +30,16 @@ const MacBookRepair = lazy(() => import('./pages/MacBookRepair'));
 const ScreenReplacement = lazy(() => import('./pages/ScreenReplacement'));
 const MotherboardRepair = lazy(() => import('./pages/MotherboardRepair'));
 
-// Lazy load the programmatic FAQ page
+// Lazy load the programmatic pages
 const FAQ = lazy(() => import('./pages/FAQ')); 
-
-// Dynamic Programmatic SEO Template
 const LocationTemplate = lazy(() => import('./pages/LocationTemplate'));
 
-// Dynamic Programmatic Blog Engine
+// Blog Engine & Pillar System
 const Blog = lazy(() => import('./pages/Blog')); 
 const BlogPostTemplate = lazy(() => import('./pages/BlogPostTemplate'));
+const PillarTemplate = lazy(() => import('./pages/PillarTemplate')); // 👈 NEW
 
-// 👈 NEW: Deep-Intent AI SEO Pages
+// AI & Intent-based Semantic Landing Pages
 const AILandingTemplate = lazy(() => import('./pages/ai/AILandingTemplate'));
 
 const NotFound = lazy(() => import('./pages/NotFound'));
@@ -60,7 +59,6 @@ const App = () => (
   <HelmetProvider>
     <BrowserRouter>
       <div className="w-full min-h-screen flex flex-col overflow-x-hidden bg-slate-950 m-0 p-0">
-        {/* Global Layout Wrapper */}
         <Layout>
           <Suspense fallback={<PageLoader />}>
             <Routes>
@@ -87,11 +85,12 @@ const App = () => (
               {/* Programmatic SEO Dynamic Area Route */}
               <Route path={ROUTES.programmaticSEO} element={<LocationTemplate />} />
               
-              {/* Programmatic Blog Engine */}
+              {/* Blog Engine */}
               <Route path={ROUTES.blog} element={<Blog />} />
+              <Route path="/blog/pillar/:slug" element={<PillarTemplate />} /> {/* 👈 NEW */}
               <Route path="/blog/:slug" element={<BlogPostTemplate />} />
               
-              {/* 👈 NEW: AI & Intent-based Semantic Landing Pages */}
+              {/* AI & Intent-based Semantic Landing Pages */}
               <Route path="/ai/:intentSlug" element={<AILandingTemplate />} />
               
               {/* General Technical Sub-Pages */}
@@ -105,7 +104,6 @@ const App = () => (
           </Suspense>
         </Layout>
       </div>
-      
       <Analytics />
       <SpeedInsights />
     </BrowserRouter>
