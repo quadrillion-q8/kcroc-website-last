@@ -40,12 +40,15 @@ export default function LaptopRepair() {
         <h1 className="text-4xl md:text-6xl font-black text-white mb-6">
           Premium <span className="text-cyan-400">Laptop Repair</span> in Kuwait
         </h1>
-        <div className="max-w-4xl mx-auto my-10 rounded-3xl overflow-hidden border border-slate-800 shadow-2xl">
+        <div className="max-w-4xl mx-auto my-10 rounded-3xl overflow-hidden border border-slate-800 shadow-2xl bg-slate-900">
+          
+          {/* ✅ FIXED: Added optional chaining (?.) and a fallback image to prevent site crashes */}
           <img 
-            src={IMAGES.services.laptopRepairHero.src} 
-            alt={IMAGES.services.laptopRepairHero.alt}
-            className="w-full h-64 md:h-96 object-cover" 
+            src={IMAGES?.services?.laptopRepairHero?.src || 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1769908596/Whats-App-Image-2026-01-29-at-3-19-40-AM_i2mpms.jpg'} 
+            alt={IMAGES?.services?.laptopRepairHero?.alt || 'Laptop Repair Services in Kuwait'}
+            className="w-full h-64 md:h-96 object-cover bg-slate-900" 
           />
+          
         </div>
         
         {/* ✅ FIXED: Now using the AutoLink component */}
