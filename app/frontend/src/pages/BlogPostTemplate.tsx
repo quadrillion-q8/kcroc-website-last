@@ -8,9 +8,11 @@ import {
 import { BUSINESS_INFO } from '../constants/data';
 import { ROUTES, getBlogRoute } from '../constants/routes';
 import { BLOG_POSTS, BlogPost } from '../constants/blogPosts';
-import { autoLinkText } from '../utils/linkGraph';
+
+// ✅ FIXED: Imported the AutoLink component
+import { AutoLink } from '../utils/linkGraph'; 
 import { getIntentWhatsAppLink } from '../utils/whatsappIntent';
-import { trackLead } from '../utils/analytics'; // ✅ Analytics integration
+import { trackLead } from '../utils/analytics'; 
 import MetaSEO from '../components/seo/MetaSEO';
 import SchemaMarkup from '../components/seo/SchemaMarkup';
 
@@ -136,7 +138,7 @@ export default function BlogPostTemplate() {
 
           <div className="space-y-6">
             {post.content.map((paragraph, index) => (
-              <p key={index}>{autoLinkText(paragraph)}</p>
+              <p key={index}><AutoLink text={paragraph} /></p>
             ))}
           </div>
 
@@ -149,7 +151,7 @@ export default function BlogPostTemplate() {
             </p>
             <a
               href={waLink}
-              onClick={() => trackLead('Blog_CTA_Click')} // ✅ Tracking applied
+              onClick={() => trackLead('Blog_CTA_Click')} 
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-cyan-500 hover:bg-cyan-400 transition-colors text-black px-8 py-4 rounded-xl font-black shadow-[0_0_15px_rgba(34,211,238,0.2)]"
