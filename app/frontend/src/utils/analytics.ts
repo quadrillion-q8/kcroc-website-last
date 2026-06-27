@@ -1,20 +1,27 @@
 // File: src/utils/analytics.ts
-import ReactGA from "react-ga4";
 
-// You will replace this with your actual Google Analytics ID
-const TRACKING_ID = "G-XXXXXXXXXX"; 
-
-export const initGA = () => {
-  ReactGA.initialize(TRACKING_ID);
-  // This automatically tracks when users load different pages
-  ReactGA.send({ hitType: "pageview", page: window.location.pathname }); 
+/**
+ * Reusable utility to track lead generation events across the KCROC website.
+ */
+export const trackLead = (buttonName: string) => {
+  if (typeof window !== 'undefined' && (window as any).gtag) {
+    (window as any).gtag('event', 'generate_lead', {
+      event_category: 'Contact',
+      event_label: buttonName
+    });
+    console.log(`[Analytics] Tracked Lead: ${buttonName}`);
+  }
 };
 
-// A reusable function to track specific button clicks
-export const trackConversion = (eventName: string, buttonLocation: string) => {
-  ReactGA.event({
-    category: "Lead Generation",
-    action: eventName,      // e.g., "WhatsApp Click" or "Phone Call"
-    label: buttonLocation,  // e.g., "Gallery Footer CTA" or "Sticky Header"
-  });
+/**
+ * NEW: Reusable utility to manually report page views to Google Analytics.
+ * @param path - The current URL path (e.g., "/gallery" or "/services")
+ */
+export const trackPageView = (path: string) => {
+  if (typeof window !== 'undefined' && (window as any).gtag) {
+    (window as any).gtag('config', 'G-H2BXCZJ8NX', {
+      page_path: path,
+    });
+    console.log(`[Analytics] Tracked Page View: ${path}`);
+  }
 };
