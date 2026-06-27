@@ -29,16 +29,17 @@ export default function GamingPC() {
           Eliminate FPS Drops & <span className="text-purple-400">Overheating</span>
         </h1>
         
-        <div className="max-w-4xl mx-auto my-10 rounded-3xl overflow-hidden border border-slate-800 shadow-2xl">
+        <div className="max-w-4xl mx-auto my-10 rounded-3xl overflow-hidden border border-slate-800 shadow-2xl bg-slate-900">
+          {/* ✅ FIXED: Applied Optional Chaining and Fallback Values to prevent crashes */}
           <img 
-            src={IMAGES.services.gamingPCRepairHero.src} 
-            alt={IMAGES.services.gamingPCRepairHero.alt}
-            width={IMAGES.services.gamingPCRepairHero.width}
-            height={IMAGES.services.gamingPCRepairHero.height}
+            src={IMAGES?.services?.gamingPCRepairHero?.src || 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1769908596/Whats-App-Image-2026-01-29-at-3-19-40-AM_i2mpms.jpg'} 
+            alt={IMAGES?.services?.gamingPCRepairHero?.alt || 'Gaming PC Repair and Maintenance in Kuwait'}
+            width={IMAGES?.services?.gamingPCRepairHero?.width || 800}
+            height={IMAGES?.services?.gamingPCRepairHero?.height || 500}
             loading="eager"
             fetchPriority="high"
             decoding="async"
-            className="w-full h-64 md:h-96 object-cover"
+            className="w-full h-64 md:h-96 object-cover bg-slate-900"
           />
         </div>
 
