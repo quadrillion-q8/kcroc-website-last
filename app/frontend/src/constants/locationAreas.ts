@@ -17,15 +17,13 @@ export const LOCATION_AREAS = {
       "macbook repair hawalli", "gaming pc repair hawalli", "virus removal hawalli",
       "ssd upgrade hawalli", "computer technician hawalli", "desktop repair hawalli"
     ],
-    // ✅ Fixed: removed Data Recovery from serviceTypes
     serviceTypes: ["Laptop Repair", "MacBook Repair", "PC Repair", "Gaming PC Repair", "SSD Upgrade"],
     image: AREA_HERO,
     landmark: "Ibn Khaldoun Street",
     coordinates: { lat: 29.3375, lng: 48.0286 },
     nearbyAreas: ["Salmiya", "Jabriya", "Bayan", "Mishref"],
-    // ✅ Fixed: removed data-recovery from relatedServices
     relatedServices: ["laptop-repair", "macbook-repair", "gaming-pc-repair", "ssd-upgrade"],
-    localContent: "We provide fast and reliable computer repair services throughout Hawalli. Our technicians repair laptops, desktop PCs, MacBooks, gaming computers, storage devices and business workstations.",
+    localContent: "We provide fast and reliable computer repair services throughout Hawalli. Our technicians repair laptops, desktop PCs, MacBooks, gaming computers, and business workstations.",
     faq: [
       {
         question: "Do you provide same-day computer repair in Hawalli?",
@@ -90,7 +88,6 @@ export const LOCATION_AREAS = {
     landmark: "Habib Munawar Street",
     coordinates: { lat: 29.2775, lng: 47.9586 },
     nearbyAreas: ["Khaitan", "Ardiya", "Omariya", "Andalous"],
-    // ✅ Fixed: removed data-recovery
     relatedServices: ["virus-removal", "laptop-repair", "ssd-upgrade"],
     localContent: "Providing dependable computer repair services throughout Farwaniya with support for laptops, desktops, MacBooks, gaming systems and office computers.",
     faq: [
