@@ -1,16 +1,16 @@
-// File: app/frontend/scripts/generate-sitemaps.ts
+// File: app/frontend/scripts/generate-sitemap.ts
 import fs from 'fs';
 import path from 'path';
 
-// ✅ Updated to use your new Domain-Driven Barrel File!
+// ✅ FIXED IMPORT: Appended /index.ts so Node.js knows exactly which file to resolve
 import { 
   ROUTES, 
   LOCATION_AREAS, 
   BLOG_POSTS, 
   AI_PAGES_DATA 
-} from '../src/constants';
+} from '../src/constants/index.ts';
 
-// ✅ Added "www." to match your site's canonical SEO setup
+// ✅ Ensure this matches your canonical domain perfectly
 const DOMAIN = 'https://www.computerrepairkuwait.com'; 
 const PUBLIC_DIR = path.resolve(process.cwd(), 'public');
 
