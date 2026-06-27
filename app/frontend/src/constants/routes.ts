@@ -10,32 +10,29 @@ export const ROUTES = {
   gallery: "/gallery",
   book: "/book",
   faq: "/faq",
-  privacy: "/privacy-policy",
+  privacySecurity: "/privacy-policy", // Renamed for clarity
   terms: "/terms-and-conditions",
 
-  // SEO Aligned Tech Service Routes (The Goldmine URLs)
+  // SEO Aligned Tech Service Routes (Synchronized to Canonical URLs)
   macbookRepair: "/macbook-repair-kuwait",
   laptopRepair: "/laptop-repair-kuwait",
   laptopRepairHawalli: "/laptop-repair-hawalli-kuwait",
   gamingPC: "/gaming-pc-repair-kuwait",
-  screenReplacement: "/screen-replacement-kuwait",
-  // ✅ Fixed: Removed Data Recovery
-  motherboardRepair: "/chip-level-motherboard-repair-hawalli",
+  // ✅ Fixed: Synced to canonical "/laptop-screen-repair-kuwait"
+  screenReplacement: "/laptop-screen-repair-kuwait",
+  // ✅ Fixed: Synced to canonical "/motherboard-repair-kuwait"
+  motherboardRepair: "/motherboard-repair-kuwait",
 
   // Programmatic SEO Dynamic Route
   programmaticSEO: "/:service-in-:city",
 
-  // Blog Hub & Sub-Articles
+  // Blog Hub
   blog: "/blog",
-  blogLaptopRepair: "/blog/laptop-repair-kuwait-2026",
-  blogScreenProtection: "/blog/how-to-protect-laptop-screen",
-
+  
   // General Technical Sub-Pages
   batteryReplacement: "/battery-replacement",
   gamingPCCooling: "/gaming-pc-cooling",
   webDesign: "/web-design-kuwait",
-
-  // ✅ Fixed: Removed hardcoded `areasServed`. `locationAreas.ts` is now the single source of truth.
 } as const;
 
 // Helper functions with path sanitization
@@ -45,7 +42,7 @@ const sanitize = (path: string) => path.replace(/\/+/g, '/').replace(/\/$/, '') 
 export const getServiceRoute = (slug: string) => sanitize(`/services/${slug}`);
 export const getBlogRoute = (slug: string) => sanitize(`/blog/${slug}`);
 
-// ✅ NEW: Automatically generates programmatic URLs like "/laptop-repair-in-hawalli"
+// ✅ Automatically generates programmatic URLs like "/laptop-repair-in-hawalli"
 export const getProgrammaticRoute = (service: string, citySlug: string) => {
   const formattedService = service.toLowerCase().replace(/\s+/g, '-');
   return sanitize(`/${formattedService}-in-${citySlug}`);
