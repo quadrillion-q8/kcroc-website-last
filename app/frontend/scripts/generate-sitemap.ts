@@ -2,15 +2,14 @@
 import fs from 'fs';
 import path from 'path';
 
-// ✅ FIXED IMPORT: Appended /index.ts so Node.js knows exactly which file to resolve
+// ✅ VERCEL ESM FIX: We must use .js here so Node.js strict mode accepts it!
 import { 
   ROUTES, 
   LOCATION_AREAS, 
   BLOG_POSTS, 
   AI_PAGES_DATA 
-} from '../src/constants/index.ts';
+} from '../src/constants/index.js';
 
-// ✅ Ensure this matches your canonical domain perfectly
 const DOMAIN = 'https://www.computerrepairkuwait.com'; 
 const PUBLIC_DIR = path.resolve(process.cwd(), 'public');
 
