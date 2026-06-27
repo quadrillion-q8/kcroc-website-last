@@ -1,3 +1,4 @@
+// File: app/frontend/src/pages/LaptopRepair.tsx
 import React from 'react';
 import { 
   Laptop, Cpu, ThermometerSnowflake, BatteryWarning, 
@@ -9,8 +10,8 @@ import { IMAGES } from '../constants/images';
 import SEOComponent from '../components/seo/SEO';
 import LocalBusinessSchema from '../components/seo/LocalBusinessSchema';
 
-// 🔥 NEW: Import the Semantic Engine & WhatsApp utility
-import { autoLinkText } from '../utils/linkGraph';
+// ✅ FIXED: Imported the AutoLink component
+import { AutoLink } from '../utils/linkGraph'; 
 import { getIntentWhatsAppLink } from '../utils/whatsappIntent';
 
 const COMMON_ISSUES = [
@@ -23,7 +24,6 @@ const COMMON_ISSUES = [
 ];
 
 export default function LaptopRepair() {
-  // 🔥 UPDATED: Dynamic WhatsApp Intent
   const waLink = getIntentWhatsAppLink("service", "Laptop Repair");
 
   return (
@@ -48,9 +48,9 @@ export default function LaptopRepair() {
           />
         </div>
         
-        {/* 🔥 UPDATED: Semantic Intro */}
+        {/* ✅ FIXED: Now using the AutoLink component */}
         <div className="text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed">
-          {autoLinkText("From shattered hinges to complex micro-soldering. Our lab offers free pick & drop with our No Fix, No Fee guarantee for all laptop repairs across Kuwait.")}
+          <AutoLink text="From shattered hinges to complex micro-soldering. Our lab offers free pick & drop with our No Fix, No Fee guarantee for all laptop repairs across Kuwait." />
         </div>
       </section>
 
