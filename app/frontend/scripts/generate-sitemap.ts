@@ -2,13 +2,12 @@
 import fs from 'fs';
 import path from 'path';
 
-// ✅ VERCEL ESM FIX: We must use .js here so Node.js strict mode accepts it!
-import { 
-  ROUTES, 
-  LOCATION_AREAS, 
-  BLOG_POSTS, 
-  AI_PAGES_DATA 
-} from '../src/constants/index.js';
+// ✅ BULLETPROOF VERCEL FIX: 
+// Bypass the barrel file and import directly from the new subfolders!
+import { ROUTES } from '../src/constants/business/routes.js';
+import { LOCATION_AREAS } from '../src/constants/content/locationAreas.js';
+import { BLOG_POSTS } from '../src/constants/content/blogPosts.js';
+import { AI_PAGES_DATA } from '../src/constants/content/aiPagesData.js';
 
 const DOMAIN = 'https://www.computerrepairkuwait.com'; 
 const PUBLIC_DIR = path.resolve(process.cwd(), 'public');
