@@ -2,11 +2,11 @@
 import fs from 'fs';
 import path from 'path';
 
-// Exact .ts extensions so the tsx runner finds them perfectly
-import { ROUTES } from '../src/constants/business/routes.ts';
-import { LOCATION_AREAS } from '../src/constants/content/locationAreas.ts';
-import { BLOG_POSTS } from '../src/constants/content/blogPosts.ts';
-import { AI_PAGES_DATA } from '../src/constants/content/aiPagesData.ts';
+// ✅ Pointing exactly to your flat files in the constants folder!
+import { ROUTES } from '../src/constants/routes.ts';
+import { LOCATION_AREAS } from '../src/constants/locationAreas.ts';
+import { BLOG_POSTS } from '../src/constants/blogPosts.ts';
+import { AI_PAGES_DATA } from '../src/constants/aiPagesData.ts';
 
 const DOMAIN = 'https://www.computerrepairkuwait.com'; 
 const PUBLIC_DIR = path.resolve(process.cwd(), 'public');
