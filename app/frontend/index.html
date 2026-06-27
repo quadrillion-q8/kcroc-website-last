@@ -12,36 +12,37 @@
     <!-- Performance Optimizations -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://assets.mgx.dev" />
-    <!-- Added Cloudinary f_auto,q_auto optimization -->
-    <link rel="preload" as="image" href="https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto/v1769908596/logo_btpfls.png" />
+    
+    <!-- Preload the new local logo for faster rendering -->
+    <link rel="preload" as="image" href="/logo.png" />
     <meta name="theme-color" content="#0f172a" />
 
     <!-- Primary SEO Meta Tags -->
-    <title>Computer Repair Kuwait | MacBook & Laptop Repair – Free Pickup – KCROC</title>
-    <meta name="description" content="Same-day laptop, MacBook & PC repair in Kuwait. Free pickup & delivery across Hawalli, Salmiya, Kuwait City & all governorates. Call +965 5530 1913. تصليح لاب توب و ماك بوك في الكويت." />
-    <meta name="keywords" content="computer repair Kuwait, laptop repair Kuwait, MacBook repair Kuwait, screen replacement Kuwait, SSD upgrade Kuwait, تصليح لاب توب الكويت, تصليح كمبيوتر الكويت, تصليح ماك بوك الكويت, PC repair Kuwait, gaming PC repair Kuwait, free pickup Kuwait, KCROC, computer repair Hawalli, laptop repair Hawalli" />
+    <title>Kuwait Computer Repair On Call | MacBook & Laptop Repair – Free Pick & Drop</title>
+    <meta name="description" content="Same-day laptop, MacBook & PC repair by Kuwait Computer Repair On Call (KCROC). Free Pick & Drop across Hawalli, Salmiya, Kuwait City & all governorates. Call +965 55301913." />
+    <meta name="keywords" content="computer repair Kuwait, laptop repair Kuwait, MacBook repair Kuwait, screen replacement Kuwait, SSD upgrade Kuwait, تصليح لاب توب الكويت, تصليح كمبيوتر الكويت, تصليح ماك بوك الكويت, PC repair Kuwait, gaming PC repair Kuwait, Free Pick & Drop Kuwait, KCROC, computer repair Hawalli, laptop repair Hawalli" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://www.computerrepairkuwait.com/" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://www.computerrepairkuwait.com/" />
-    <meta property="og:title" content="Computer Repair Kuwait | MacBook & Laptop Repair – Free Pickup – KCROC" />
-    <!-- Fixed the 30-day warranty consistency -->
-    <meta property="og:description" content="Same-day laptop, MacBook & PC repair in Kuwait with free pickup & delivery. 4.9★ Google rating, 30-day warranty. Call or WhatsApp +965 5530 1913." />
-    <!-- Added Cloudinary f_auto,q_auto optimization -->
-    <meta property="og:image" content="https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto/v1769908596/logo_btpfls.png" />
-    <meta property="og:site_name" content="KCROC - Kuwait Computer Repair On Call" />
+    <meta property="og:title" content="Kuwait Computer Repair On Call | MacBook & Laptop Repair – Free Pick & Drop" />
+    <meta property="og:description" content="Same-day laptop, MacBook & PC repair in Kuwait with Free Pick & Drop. 4.9★ Google rating, 30-day warranty. Call or WhatsApp +965 55301913." />
+    
+    <!-- Open Graph requires absolute URLs for images -->
+    <meta property="og:image" content="https://www.computerrepairkuwait.com/logo.png" />
+    <meta property="og:site_name" content="Kuwait Computer Repair On Call" />
 
     <!-- Optimized Analytics -->
-    <!-- Perfect defer implementation -->
-    <script src="https://www.googletagmanager.com/gtag/js?id=G-H2BXCZJ8NX" defer></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H2BXCZJ8NX"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-H2BXCZJ8NX', { 'send_page_view': false });
+      
+      // Standard GA4 and Google Ads Initialization
+      gtag('config', 'G-H2BXCZJ8NX');
       gtag('config', 'AW-402583081');
     </script>
 
@@ -51,13 +52,13 @@
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
       "@id": "https://www.computerrepairkuwait.com/#business",
-      "name": "KCROC - Kuwait Computer Repair On Call",
+      "name": "Kuwait Computer Repair On Call",
       "url": "https://www.computerrepairkuwait.com",
       "telephone": "+96555301913",
-      "logo": "https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto/v1769908596/logo_btpfls.png",
+      "logo": "https://www.computerrepairkuwait.com/logo.png",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "Al Mullah Complex, Ibn Khaldoun St",
+        "streetAddress": "Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19",
         "addressLocality": "Hawalli",
         "addressCountry": "KW"
       },
