@@ -1,8 +1,11 @@
+// File: src/pages/PillarTemplate.tsx
 import React, { useMemo } from 'react';
 import { useParams, Navigate, Link } from 'react-router-dom';
 import { BLOG_POSTS } from '../constants/blogPosts';
 import { ROUTES, getBlogRoute } from '../constants/routes';
-import { autoLinkText } from '../utils/linkGraph';
+
+// ✅ FIXED: Imported the AutoLink component
+import { AutoLink } from '../utils/linkGraph';
 
 export default function PillarTemplate() {
   const { slug } = useParams<{ slug: string }>();
@@ -21,7 +24,12 @@ export default function PillarTemplate() {
       
       {/* Pillar Content */}
       <article className="prose prose-invert prose-lg mb-16">
-        {post.content.map((p, i) => <p key={i}>{autoLinkText(p)}</p>)}
+        {/* ✅ FIXED: Now using the AutoLink component */}
+        {post.content.map((p, i) => (
+          <p key={i}>
+            <AutoLink text={p} />
+          </p>
+        ))}
       </article>
 
       {/* Cluster List */}
