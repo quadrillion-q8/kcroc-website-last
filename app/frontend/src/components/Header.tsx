@@ -4,31 +4,27 @@ import { Link, useLocation } from 'react-router-dom';
 import { Menu, Search } from 'lucide-react';
 
 import { ROUTES } from '../constants/routes';
+import { IMAGES } from '../constants/images'; // ✅ Import constant
 import MobileMenu from './layout/MobileMenu';
 import GlobalSearch from './search/GlobalSearch'; 
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  
-  // Search State
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const location = useLocation();
 
-  // Close menus and search when route changes
   useEffect(() => {
     setIsOpen(false);
     setIsSearchOpen(false);
   }, [location.pathname]);
 
-  // Handle transparent to solid background on scroll
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Props passed down to MobileMenu
   const services = [
     { name: 'All Services', path: ROUTES.services },
     { name: 'Laptop Repair', path: ROUTES.laptopRepairHawalli },
@@ -39,8 +35,8 @@ export default function Header() {
   ];
 
   const blogs = [
-    { name: 'Laptop Repair Guide', path: ROUTES.blogLaptopRepair },
-    { name: 'Screen Protection', path: ROUTES.blogScreenProtection },
+    { name: 'Laptop Repair Guide', path: "/blog/laptop-repair-kuwait-2026" },
+    { name: 'Screen Protection', path: "/blog/how-to-protect-laptop-screen" },
     { name: 'Gaming PC Cooling', path: ROUTES.gamingPCCooling },
     { name: 'Battery Replacement', path: ROUTES.batteryReplacement },
   ];
@@ -48,21 +44,26 @@ export default function Header() {
   return (
     <>
       <header className={`fixed top-0 w-full z-[1000] transition-all duration-300 ${scrolled ? 'bg-[#0a0f1c]/90 backdrop-blur-xl border-b border-slate-800/50 shadow-lg' : 'bg-transparent'}`}>
+        {/* ✅ Shop Background Layer */}
+        <div className="absolute inset-0 z-[-1] overflow-hidden">
+          <img 
+            src={IMAGES.brand.shopInterior.src} 
+            alt={IMAGES.brand.shopInterior.alt}
+            className="w-full h-full object-cover opacity-[0.07] mix-blend-overlay"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0a0f1c]/50 to-[#0a0f1c]" />
+        </div>
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-24">
-            
-            {/* Logo Section */}
             <Link to={ROUTES.home} className="flex items-center group">
               <img 
-                // 🔥 FIX: Hardcoded direct path to the public folder. It will never fail now.
                 src="/logo.png" 
                 alt="KCROC Logo" 
                 className="h-16 md:h-20 w-auto object-contain transition-all duration-300 drop-shadow-[0_0_8px_rgba(255,255,255,0.2)] hover:scale-105" 
-                onError={(e) => console.error("Could not load /logo.png")}
               />
             </Link>
 
-            {/* Desktop Nav */}
             <nav className="hidden lg:flex items-center gap-8">
               <Link to={ROUTES.services} className="text-sm font-bold text-slate-200 hover:text-cyan-400 transition-colors">Services</Link>
               <Link to={ROUTES.pricing} className="text-sm font-bold text-slate-200 hover:text-cyan-400 transition-colors">Pricing</Link>
@@ -85,32 +86,19 @@ export default function Header() {
               </Link>
             </nav>
 
-            {/* Mobile Nav Triggers */}
             <div className="flex items-center gap-2 lg:hidden">
-              <button 
-                onClick={() => setIsSearchOpen(true)} 
-                className="text-slate-200 hover:text-cyan-400 p-2"
-                aria-label="Open search"
-              >
+              <button onClick={() => setIsSearchOpen(true)} className="text-slate-200 hover:text-cyan-400 p-2" aria-label="Open search">
                 <Search size={24} />
               </button>
-              <button 
-                className="text-white p-2" 
-                onClick={() => setIsOpen(true)}
-                aria-label="Open menu"
-              >
+              <button className="text-white p-2" onClick={() => setIsOpen(true)} aria-label="Open menu">
                 <Menu size={32} />
               </button>
             </div>
-
           </div>
         </div>
       </header>
 
-      {/* Semantic Global Search Engine */}
       <GlobalSearch isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
-
-      {/* Mobile Menu */}
       <MobileMenu isOpen={isOpen} onClose={() => setIsOpen(false)} services={services} blogs={blogs} />
     </>
   );
