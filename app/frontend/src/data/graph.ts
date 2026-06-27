@@ -1,182 +1,84 @@
 // File: src/data/graph.ts
-import { KnowledgeGraphData } from '../types/knowledgeGraph';
+import { KnowledgeGraphData, KCROCEntity } from '../types/knowledgeGraph';
 
 /**
- * THE KCROC MASTER KNOWLEDGE GRAPH
- * This single object powers the entire routing, SEO, schema, and internal linking system.
+ * THE MASTER DATABASE
+ * All entities across the entire application live here.
  */
-export const KCROC_GRAPH: KnowledgeGraphData = {
-  
-  // ─── SERVICES ─────────────────────────────────────────────────────────
-  services: {
+const rawGraphData: KnowledgeGraphData = {
+  entities: {
     'srv-laptop-repair': {
       id: 'srv-laptop-repair',
       slug: 'laptop-repair-kuwait',
-      title: 'Laptop Repair',
       entityType: 'Service',
-      serviceCategory: 'Hardware Repair',
-      synonyms: ['laptop fixing', 'computer repair', 'windows laptop repair', 'pc repair'],
+      isActive: true,
+      title: 'Laptop Repair Services',
+      description: 'Expert laptop repair in Kuwait.',
+      primaryKeyword: 'laptop repair',
+      secondaryKeywords: ['computer fix', 'pc repair'],
+      synonyms: ['laptop fixing', 'notebook repair'],
       aliases: ['lap top repair'],
-      isActive: true,
-      isPickAndDropEligible: true,
-      seo: {
-        title: 'Expert Laptop Repair in Kuwait | Free Pickup | KCROC',
-        description: 'Professional Windows laptop repair in Kuwait. We fix overheating, dead batteries, broken hinges, and motherboard failures.',
-        canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-repair-kuwait',
-      },
-      schema: {
-        schemaTypes: ['Service', 'WebPage'],
-        customSchemaId: '#laptop-repair-service'
-      },
-      ai: {
-        searchIntent: 'transactional',
-        semanticKeywords: ['laptop repair', 'computer fix', 'hardware diagnostics'],
-      },
-      relationships: {
-        relatedLocations: ['loc-hawalli', 'loc-salmiya'],
-        relatedIssues: ['iss-thermal'],
-        childEntities: ['srv-motherboard-repair']
-      }
-    },
-    'srv-macbook-repair': {
-      id: 'srv-macbook-repair',
-      slug: 'macbook-repair-kuwait',
-      title: 'MacBook Repair',
-      entityType: 'Service',
-      serviceCategory: 'Logic Board Diagnostics',
-      synonyms: ['apple macbook repair', 'mac repair', 'apple repair'],
-      aliases: ['mac book repair'],
-      isActive: true,
-      isPickAndDropEligible: true,
-      seo: {
-        title: 'MacBook Logic Board & Screen Repair Kuwait | KCROC',
-        description: 'Expert Apple logic board micro-soldering and OEM screen replacement in Kuwait.',
-        canonicalUrl: 'https://www.computerrepairkuwait.com/macbook-repair-kuwait',
-      },
-      schema: {
-        schemaTypes: ['Service', 'WebPage'],
-        customSchemaId: '#macbook-repair-service'
-      },
-      ai: {
-        searchIntent: 'transactional',
-        semanticKeywords: ['macbook repair', 'apple logic board', 'micro-soldering'],
-      },
-      relationships: {
-        relatedBrands: ['brd-apple'],
-        relatedLocations: ['loc-hawalli', 'loc-salmiya'],
-      }
-    }
-  },
-
-  // ─── BRANDS ───────────────────────────────────────────────────────────
-  brands: {
-    'brd-apple': {
-      id: 'brd-apple',
-      slug: 'apple-repair-kuwait',
-      title: 'Apple',
-      entityType: 'Brand',
-      synonyms: ['mac', 'macbook', 'imac'],
-      aliases: [],
-      isActive: true,
-      seo: {
-        title: 'Apple Repair Services Kuwait | KCROC',
-        description: 'Independent Apple hardware repair specialists in Kuwait.',
-        canonicalUrl: 'https://www.computerrepairkuwait.com/apple-repair-kuwait',
-      },
-      schema: {
-        schemaTypes: ['Organization', 'WebPage']
-      },
-      relationships: {
-        relatedServices: ['srv-macbook-repair']
-      }
-    }
-  },
-
-  // ─── LOCATIONS ────────────────────────────────────────────────────────
-  locations: {
-    'loc-hawalli': {
-      id: 'loc-hawalli',
-      slug: 'computer-repair-hawalli',
-      title: 'Hawalli',
-      entityType: 'Location',
-      landmark: 'Ibn Khaldoun Street',
-      coords: { lat: 29.3356, lng: 48.0250 },
-      populationDensity: 'High',
-      synonyms: ['hawally', 'Ibn Khaldoun'],
-      aliases: [],
-      isActive: true,
-      seo: {
-        title: 'Computer Repair in Hawalli | KCROC Lab',
-        description: 'Visit our main diagnostic lab on Ibn Khaldoun Street in Hawalli for elite computer repair.',
-        canonicalUrl: 'https://www.computerrepairkuwait.com/computer-repair-hawalli',
-      },
-      schema: {
-        schemaTypes: ['LocalBusiness', 'WebPage']
-      },
-      relationships: {
-        relatedServices: ['srv-laptop-repair', 'srv-macbook-repair']
-      }
-    }
-  },
-
-  // ─── ISSUES ───────────────────────────────────────────────────────────
-  issues: {
-    'iss-thermal': {
-      id: 'iss-thermal',
-      slug: 'laptop-overheating-fix',
-      title: 'Thermal Throttling',
-      entityType: 'Issue',
-      symptoms: ['loud fan', 'laptop shutting down randomly', 'hot to touch', 'fps drops in games'],
-      severity: 'Moderate',
-      synonyms: ['overheating', 'hot laptop', 'fan noise'],
-      aliases: [],
-      isActive: true,
-      seo: {
-        title: 'Fix Laptop Overheating & Thermal Throttling | KCROC',
-        description: 'Professional thermal paste replacement and cooling system restoration in Kuwait.',
-        canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-overheating-fix',
-      },
-      schema: {
-        schemaTypes: ['Article', 'WebPage']
-      },
-      relationships: {
-        relatedServices: ['srv-laptop-repair']
-      }
-    }
-  },
-
-  // ─── ROUTES (Automated Generation Engine) ─────────────────────────────
-  routes: {
-    'route-laptop-repair': {
-      id: 'route-laptop-repair',
-      slug: 'laptop-repair-kuwait',
-      title: 'Laptop Repair Route',
-      entityType: 'Route',
-      path: '/laptop-repair-kuwait',
-      templateId: 'ServiceTemplate',
-      priority: 0.9,
-      changeFrequency: 'weekly',
-      synonyms: [],
-      aliases: [],
-      isActive: true,
-      seo: {
-        title: 'Internal Route Config',
-        description: 'Internal Route Config',
-        canonicalUrl: '',
-      },
-      schema: { schemaTypes: [] }
-    }
-  },
-
-  // ─── EMPTY COLLECTIONS (To be filled later) ─────────────────────────
-  devices: {},
-  categories: {},
-  blogs: {},
-  faqs: {},
-  reviews: {},
-  images: {},
-  videos: {},
-  pricing: {},
-  authors: {},
-  testimonials: {}
+      seo: { title: 'Laptop Repair Kuwait', description: 'Expert laptop fix.', canonicalUrl: '/laptop-repair-kuwait' },
+      build: { lastReviewed: '2026-06-28', contentVersion: '1.0', schemaVersion: '1.0', validationStatus: 'Valid', isDeprecated: false },
+      relationships: [
+        { targetId: 'loc-hawalli', relationshipType: 'related', weight: 10 }
+      ],
+      schemaTypes: ['Service'],
+      isPickAndDropEligible: true
+    } as KCROCEntity,
+    // Add all other entities (Brands, Locations, Issues) here...
+  }
 };
+
+/**
+ * ============================================================================
+ * O(1) INDEXING ENGINE
+ * Automatically builds fast lookup maps so queries never have to loop.
+ * ============================================================================
+ */
+
+interface GraphIndexes {
+  bySlug: Map<string, string>; // Maps slug -> ID
+  byType: Map<string, string[]>; // Maps EntityType -> Array of IDs
+  byKeyword: Map<string, string[]>; // Maps keyword/synonym -> Array of IDs
+}
+
+const buildGraphIndexes = (data: KnowledgeGraphData): GraphIndexes => {
+  const indexes: GraphIndexes = {
+    bySlug: new Map(),
+    byType: new Map(),
+    byKeyword: new Map()
+  };
+
+  Object.values(data.entities).forEach(entity => {
+    if (!entity.isActive) return;
+
+    // 1. Slug Index
+    indexes.bySlug.set(entity.slug, entity.id);
+
+    // 2. Type Index
+    const typeArr = indexes.byType.get(entity.entityType) || [];
+    typeArr.push(entity.id);
+    indexes.byType.set(entity.entityType, typeArr);
+
+    // 3. Keyword/Synonym/Alias Index
+    const searchTerms = [
+      entity.primaryKeyword,
+      ...entity.secondaryKeywords,
+      ...entity.synonyms,
+      ...entity.aliases
+    ].map(t => t.toLowerCase().trim());
+
+    searchTerms.forEach(term => {
+      const keywordArr = indexes.byKeyword.get(term) || [];
+      if (!keywordArr.includes(entity.id)) keywordArr.push(entity.id);
+      indexes.byKeyword.set(term, keywordArr);
+    });
+  });
+
+  return indexes;
+};
+
+// Export the raw data and the pre-computed indexes
+export const KCROC_GRAPH = rawGraphData;
+export const GRAPH_INDEXES = buildGraphIndexes(rawGraphData);
