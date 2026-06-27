@@ -1,14 +1,17 @@
-// File: scripts/generate-sitemaps.ts
+// File: app/frontend/scripts/generate-sitemaps.ts
 import fs from 'fs';
 import path from 'path';
 
-// Note: Because this runs in Node, we use relative imports to your constants
-import { ROUTES } from '../src/constants/routes.js';
-import { LOCATION_AREAS } from '../src/constants/locationAreas.js';
-import { BLOG_POSTS } from '../src/constants/blogPosts.js';
-import { AI_PAGES_DATA } from '../src/constants/aiPagesData.js';
+// ✅ Updated to use your new Domain-Driven Barrel File!
+import { 
+  ROUTES, 
+  LOCATION_AREAS, 
+  BLOG_POSTS, 
+  AI_PAGES_DATA 
+} from '../src/constants';
 
-const DOMAIN = 'https://computerrepairkuwait.com'; // Replace with your exact domain
+// ✅ Added "www." to match your site's canonical SEO setup
+const DOMAIN = 'https://www.computerrepairkuwait.com'; 
 const PUBLIC_DIR = path.resolve(process.cwd(), 'public');
 
 // Ensure public directory exists
