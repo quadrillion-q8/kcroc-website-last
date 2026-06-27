@@ -1,5 +1,6 @@
-import React, { Suspense, lazy } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+// File: src/App.tsx
+import React, { Suspense, lazy, useEffect } from 'react';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import { HelmetProvider } from 'react-helmet-async';
@@ -13,6 +14,9 @@ import Layout from './components/Layout';
 
 // Eagerly loaded Home for performance
 import Home from './pages/Home';
+
+// Analytics Utility
+import { trackPageView } from './utils/analytics';
 
 // Lazy Loaded Pages
 const Services = lazy(() => import('./pages/Services'));
@@ -37,7 +41,7 @@ const LocationTemplate = lazy(() => import('./pages/LocationTemplate'));
 // Blog Engine & Pillar System
 const Blog = lazy(() => import('./pages/Blog')); 
 const BlogPostTemplate = lazy(() => import('./pages/BlogPostTemplate'));
-const PillarTemplate = lazy(() => import('./pages/PillarTemplate')); // 👈 NEW
+const PillarTemplate = lazy(() => import('./pages/PillarTemplate'));
 
 // AI & Intent-based Semantic Landing Pages
 const AILandingTemplate = lazy(() => import('./pages/ai/AILandingTemplate'));
@@ -55,9 +59,26 @@ const PageLoader = () => (
   </div>
 );
 
+/**
+ * Invisible tracking monitor component.
+ * Listens to React Router transitions and transmits page paths to GA4.
+ */
+const AnalyticsTracker = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    trackPageView(location.pathname + location.search);
+  }, [location]);
+
+  return null; // Renders nothing visually
+};
+
 const App = () => (
   <HelmetProvider>
     <BrowserRouter>
+      {/* Fires every single time a route changes */}
+      <AnalyticsTracker />
+      
       <div className="w-full min-h-screen flex flex-col overflow-x-hidden bg-slate-950 m-0 p-0">
         <Layout>
           <Suspense fallback={<PageLoader />}>
@@ -87,7 +108,7 @@ const App = () => (
               
               {/* Blog Engine */}
               <Route path={ROUTES.blog} element={<Blog />} />
-              <Route path="/blog/pillar/:slug" element={<PillarTemplate />} /> {/* 👈 NEW */}
+              <Route path="/blog/pillar/:slug" element={<PillarTemplate />} />
               <Route path="/blog/:slug" element={<BlogPostTemplate />} />
               
               {/* AI & Intent-based Semantic Landing Pages */}
