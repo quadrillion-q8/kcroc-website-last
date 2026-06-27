@@ -1,7 +1,7 @@
 // File: src/constants/images.ts
 
 export const IMAGES = {
-  // --- BRANDING & SHOP (12 Images) ---
+  // --- BRANDING & SHOP (13 Images - Added Team Assets) ---
   brand: {
     shopExteriorDusk: { src: "/images/kcroc-commercial-complex-view-dusk.webp", alt: "KCROC shop exterior at dusk", width: 1200, height: 800 },
     shopExteriorDay: { src: "/images/kcroc-al-mullah-complex-hawalli-exterior.webp", alt: "KCROC shop front daytime", width: 1200, height: 800 },
@@ -11,6 +11,7 @@ export const IMAGES = {
     inventory: { src: "/images/kcroc-laptop-repair-parts-inventory-shelves.webp", alt: "Spare parts inventory", width: 1000, height: 800 },
     team: { src: "/images/kcroc-computer-repair-technician-team.webp", alt: "KCROC technical team", width: 1200, height: 630 },
     owner: { src: "/images/kcroc-imran-natiq-laptop-repair-workshop-owner.webp", alt: "Workshop owner Imran Natiq", width: 800, height: 800 },
+    cofounder: { src: "/images/placeholder-team-member.webp", alt: "KCROC Team Member", width: 400, height: 400 },
     technicians: { src: "/images/kcroc-laptop-repair-technicians-hawalli-kuwait.webp", alt: "Technicians at work", width: 1200, height: 800 },
     leadTechnician: { src: "/images/kcroc-lead-technician-laptop-repair-workbench.webp", alt: "Lead technician working", width: 1200, height: 800 },
     pcDoctor: { src: "/images/kcroc-pc-doctor-windows-repair-services.webp", alt: "PC Doctor services", width: 800, height: 600 },
