@@ -1,3 +1,4 @@
+// File: src/pages/ai/AILandingTemplate.tsx
 import React, { useMemo } from 'react';
 import { useParams, Navigate, Link } from 'react-router-dom';
 import { ShieldCheck, Truck, Zap, MessageCircle, ArrowRight } from 'lucide-react';
@@ -5,7 +6,9 @@ import { ShieldCheck, Truck, Zap, MessageCircle, ArrowRight } from 'lucide-react
 import { BUSINESS_INFO } from '../../constants/data';
 import { ROUTES } from '../../constants/routes';
 import { AI_PAGES_DATA } from '../../constants/aiPagesData';
-import { autoLinkText } from '../../utils/linkGraph';
+
+// ✅ FIXED: Imported the AutoLink component
+import { AutoLink } from '../../utils/linkGraph';
 import { getIntentWhatsAppLink } from '../../utils/whatsappIntent';
 import MetaSEO from '../../components/seo/MetaSEO';
 import SchemaMarkup from '../../components/seo/SchemaMarkup';
@@ -74,8 +77,9 @@ export default function AILandingTemplate() {
         <h1 className="text-4xl md:text-6xl font-black text-white mb-6 leading-tight">
           {pageData.h1}
         </h1>
+        {/* ✅ FIXED: Now using the AutoLink component */}
         <p className="text-xl text-slate-400 leading-relaxed border-l-4 border-cyan-500 pl-6 mb-8">
-          {autoLinkText(pageData.intro)}
+          <AutoLink text={pageData.intro} />
         </p>
 
         <div className="flex flex-wrap gap-4 mt-8">
@@ -96,8 +100,9 @@ export default function AILandingTemplate() {
         {pageData.sections.map((section, idx) => (
           <section key={idx} className="bg-slate-900/40 backdrop-blur-sm p-8 rounded-3xl border border-slate-800/50 hover:border-cyan-500/30 transition-colors">
             <h2 className="text-2xl font-bold text-white mb-4">{section.heading}</h2>
+            {/* ✅ FIXED: Now using the AutoLink component */}
             <p className="text-slate-300 leading-relaxed text-lg">
-              {autoLinkText(section.content)}
+              <AutoLink text={section.content} />
             </p>
           </section>
         ))}
@@ -110,7 +115,8 @@ export default function AILandingTemplate() {
           {pageData.faqs.map((faq, idx) => (
             <div key={idx} className="bg-slate-900/50 p-6 rounded-2xl border border-slate-700/50">
               <h3 className="font-bold text-cyan-400 mb-2">{faq.q}</h3>
-              <p className="text-slate-300">{autoLinkText(faq.a)}</p>
+              {/* ✅ FIXED: Now using the AutoLink component */}
+              <p className="text-slate-300"><AutoLink text={faq.a} /></p>
             </div>
           ))}
         </div>
