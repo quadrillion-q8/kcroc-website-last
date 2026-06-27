@@ -1,7 +1,7 @@
 // File: src/constants/images.ts
 
 export const IMAGES = {
-  // --- BRANDING & SHOP (13 Images - Added Team Assets) ---
+  // --- BRANDING & SHOP (14 Images) ---
   brand: {
     shopExteriorDusk: { src: "/images/kcroc-commercial-complex-view-dusk.webp", alt: "KCROC shop exterior at dusk", width: 1200, height: 800 },
     shopExteriorDay: { src: "/images/kcroc-al-mullah-complex-hawalli-exterior.webp", alt: "KCROC shop front daytime", width: 1200, height: 800 },
@@ -16,7 +16,8 @@ export const IMAGES = {
     leadTechnician: { src: "/images/kcroc-lead-technician-laptop-repair-workbench.webp", alt: "Lead technician working", width: 1200, height: 800 },
     pcDoctor: { src: "/images/kcroc-pc-doctor-windows-repair-services.webp", alt: "PC Doctor services", width: 800, height: 600 },
     teamFun: { src: "/images/kcroc-team-member-imran-hat-fun.webp", alt: "KCROC team fun", width: 800, height: 800 },
-    logo: { src: "/logo.png", alt: "KCROC Logo", width: 300, height: 150 } 
+    logo: { src: "/logo.png", alt: "KCROC Logo", width: 300, height: 150 },
+    heroBanner: { src: "/image_4629fa.png", alt: "KCROC Hardware Solutions", width: 1200, height: 600 }
   },
 
   // --- GENERAL SERVICES (6 Images) ---
