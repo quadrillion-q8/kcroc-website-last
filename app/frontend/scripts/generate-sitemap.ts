@@ -2,12 +2,11 @@
 import fs from 'fs';
 import path from 'path';
 
-// ✅ BULLETPROOF VERCEL FIX: 
-// Bypass the barrel file and import directly from the new subfolders!
-import { ROUTES } from '../src/constants/business/routes.js';
-import { LOCATION_AREAS } from '../src/constants/content/locationAreas.js';
-import { BLOG_POSTS } from '../src/constants/content/blogPosts.js';
-import { AI_PAGES_DATA } from '../src/constants/content/aiPagesData.js';
+// Exact .ts extensions so the tsx runner finds them perfectly
+import { ROUTES } from '../src/constants/business/routes.ts';
+import { LOCATION_AREAS } from '../src/constants/content/locationAreas.ts';
+import { BLOG_POSTS } from '../src/constants/content/blogPosts.ts';
+import { AI_PAGES_DATA } from '../src/constants/content/aiPagesData.ts';
 
 const DOMAIN = 'https://www.computerrepairkuwait.com'; 
 const PUBLIC_DIR = path.resolve(process.cwd(), 'public');
