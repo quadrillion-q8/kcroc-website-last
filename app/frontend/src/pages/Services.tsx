@@ -8,7 +8,8 @@ import {
 
 import { BUSINESS_INFO, SERVICES } from '../constants/data';
 import { ROUTES } from '../constants/routes';
-import { generateSchema } from '../utils/schemaGenerator'; // ✅ Factory Import
+import { generateSchema } from '../utils/schemaGenerator'; 
+import { AutoLink } from '../utils/linkGraph'; // ✅ Added AutoLink Engine
 import MetaSEO from '../components/seo/MetaSEO';
 import SchemaMarkup from '../components/seo/SchemaMarkup';
 
@@ -28,7 +29,6 @@ const FAQS = [
   { q: "Do you provide a warranty on repairs?", a: "Yes, all hardware repairs and replacement parts come with a 30-day warranty." }
 ];
 
-// ✅ Refactored: Structured data using our factory
 const STRUCTURED_DATA = {
   "@context": "https://schema.org",
   "@graph": [
@@ -72,9 +72,12 @@ const HeroSection = () => (
         Professional{' '}
         <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-emerald-400">Hardware Solutions.</span>
       </h1>
+      
+      {/* ✅ The text block is now powered by the AutoLink engine! */}
       <p className="text-base md:text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed mb-10 font-medium">
-        Stop struggling with broken tech. We provide elite laptop, desktop, and MacBook engineering services in Kuwait with free pickup and delivery across all governorates.
+        <AutoLink text="Stop struggling with broken tech. We provide elite laptop repair and MacBook repair engineering services in Kuwait. Need a gaming PC upgrade? We handle that too, with free pickup across all governorates." />
       </p>
+
       <div className="flex flex-wrap justify-center gap-4 md:gap-10 text-xs text-emerald-400 font-bold tracking-widest uppercase">
         <span className="flex items-center gap-2"><CheckCircle className="w-4 h-4" aria-hidden="true" /> No Fix, No Fee</span>
         <span className="flex items-center gap-2"><Truck className="w-4 h-4" aria-hidden="true" /> Free Kuwait Pickup</span>
