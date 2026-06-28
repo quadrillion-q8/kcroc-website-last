@@ -1,13 +1,16 @@
-// File: src/pages/LaptopRepair.tsx
+// File: app/frontend/src/pages/LaptopRepair.tsx
 import React from 'react';
-import { ShieldCheck, MessageCircle, Phone, Wrench } from 'lucide-react';
+import { ShieldCheck, MessageCircle, Phone } from 'lucide-react';
 
 import { getEntityById } from '../utils/graphQueries';
 import Layout from '../components/Layout';
 import { ServiceEntity } from '../types/knowledgeGraph';
+
+// Corrected relative paths based on your GitHub folder structure
 import { RelatedServicesList } from '../components/schema/RelatedServicesList';
 import { FAQSection } from '../components/schema/FAQSection';
 import { ReviewSection } from '../components/schema/ReviewSection';
+
 import { getIntentWhatsAppLink } from '../utils/whatsappIntent';
 import { BUSINESS_INFO } from '../constants/data';
 
@@ -15,7 +18,7 @@ export default function LaptopRepair() {
   // 1. Fetch the data dynamically from the Knowledge Graph
   const entity = getEntityById<ServiceEntity>('srv-laptop-repair');
   
-  // Safety check: if entity is missing, return null (or a 404 page)
+  // Safety check: if entity is missing, return null
   if (!entity) return null;
 
   const waLink = getIntentWhatsAppLink("service", entity.title);
