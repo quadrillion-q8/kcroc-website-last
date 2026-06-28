@@ -1,6 +1,6 @@
 // File: src/utils/graphQueries.ts
 import { KCROC_GRAPH, GRAPH_INDEXES } from '../data/graph';
-import { KCROCEntity, EntityType, RelationshipType } from '../types/knowledgeGraph';
+import { KCROCEntity, EntityType, RelationshipType, ServiceEntity } from '../types/knowledgeGraph';
 
 /**
  * ============================================================================
@@ -40,7 +40,7 @@ export const getRelatedEntities = <T extends KCROCEntity>(
 
   let relations = source.relationships;
 
-  // Filter by relationship type if provided (e.g., 'parent', 'crossSell')
+  // Filter by relationship type if provided (e.g., 'related', 'nearby')
   if (relationshipType) {
     relations = relations.filter(r => r.relationshipType === relationshipType);
   }
@@ -52,12 +52,20 @@ export const getRelatedEntities = <T extends KCROCEntity>(
     .map(r => getEntityById<T>(r.targetId))
     .filter((e): e is T => e !== undefined && e.isActive);
 
-  // Filter by target entity type if provided (e.g., only return 'Location' entities)
+  // Filter by target entity type if provided (e.g., only return 'Service' entities)
   if (targetEntityType) {
     results = results.filter(e => e.entityType === targetEntityType);
   }
 
   return results;
+};
+
+/**
+ * SPECIFIC ENGINE: RELATED SERVICES
+ * Helper specifically for service discovery.
+ */
+export const getRelatedServices = (entityId: string): ServiceEntity[] => {
+  return getRelatedEntities<ServiceEntity>(entityId, 'related', 'Service');
 };
 
 /**
