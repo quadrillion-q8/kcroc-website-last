@@ -198,5 +198,14 @@ const buildGraphIndexes = (data: KnowledgeGraphData): any => {
   return indexes;
 };
 
-export const KCROC_GRAPH = rawGraphData;
+// Extract entities into arrays for easy mapping (e.g., for the sitemap generator)
+const allEntities = Object.values(rawGraphData.entities);
+
+export const KCROC_GRAPH = {
+  ...rawGraphData,
+  locations: allEntities.filter(e => e.entityType === 'Location') as LocationEntity[],
+  services: allEntities.filter(e => e.entityType === 'Service') as ServiceEntity[],
+  faqs: allEntities.filter(e => e.entityType === 'FAQ') as FAQEntity[]
+};
+
 export const GRAPH_INDEXES = buildGraphIndexes(rawGraphData);
