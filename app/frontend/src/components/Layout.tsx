@@ -11,17 +11,16 @@ import { KCROCEntity } from '../types/knowledgeGraph';
 
 interface LayoutProps {
   children: ReactNode;
-  entity?: KCROCEntity; // Optional: Pass an entity to auto-inject Schema
+  entity?: KCROCEntity;
 }
 
 export default function Layout({ children, entity }: LayoutProps) {
-  // Generate schema automatically if an entity is provided
   const schemaMarkup = entity ? generateAutomatedSchema(entity) : null;
 
   return (
     <div className="min-h-screen bg-[#0a0f1c] text-slate-200 font-sans selection:bg-cyan-500/30 flex flex-col relative">
       
-      {/* 1. SEO Injection: Injects your Enterprise Schema into the document head */}
+      {/* 1. SEO Injection */}
       {schemaMarkup && (
         <Helmet>
           <script type="application/ld+json">
@@ -44,7 +43,7 @@ export default function Layout({ children, entity }: LayoutProps) {
         {children}
       </main>
       
-      {/* 5. Global Footer */}
+      {/* 5. Global Footer - Rendered ONCE here */}
       <Footer />
       
       {/* 6. Sticky CTA */}
