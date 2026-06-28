@@ -1,7 +1,7 @@
 // File: src/constants/images.ts
 
 export const IMAGES = {
-  // --- BRANDING & SHOP (14 Images) ---
+  // --- BRANDING & SHOP ---
   brand: {
     shopExteriorDusk: { src: "/images/kcroc-commercial-complex-view-dusk.webp", alt: "KCROC shop exterior at dusk", width: 1200, height: 800 },
     shopExteriorDay: { src: "/images/kcroc-al-mullah-complex-hawalli-exterior.webp", alt: "KCROC shop front daytime", width: 1200, height: 800 },
@@ -17,11 +17,10 @@ export const IMAGES = {
     pcDoctor: { src: "/images/kcroc-pc-doctor-windows-repair-services.webp", alt: "PC Doctor services", width: 800, height: 600 },
     teamFun: { src: "/images/kcroc-team-member-imran-hat-fun.webp", alt: "KCROC team fun", width: 800, height: 800 },
     logo: { src: "/logo.png", alt: "KCROC Logo", width: 300, height: 150 },
-    // ✅ Updated to your latest hero image
     heroBanner: { src: "/image_463c44.png", alt: "KCROC Hardware Solutions", width: 1200, height: 600 }
   },
 
-  // --- GENERAL SERVICES (6 Images) ---
+  // --- GENERAL SERVICES ---
   services: {
     laptopRepair: { src: "/images/laptop-repair-kuwait.webp", alt: "Professional laptop repair in Kuwait", width: 1200, height: 630 },
     motherboardRepair: { src: "/images/motherboard-repair-kuwait.webp", alt: "Advanced chip-level motherboard repair", width: 1200, height: 630 },
@@ -31,7 +30,7 @@ export const IMAGES = {
     thermalService: { src: "/images/laptop-thermal-paste-application-service.webp", alt: "Thermal paste application service", width: 800, height: 600 }
   },
 
-  // --- MACBOOK REPAIR (8 Images) ---
+  // --- MACBOOK REPAIR ---
   macbook: {
     logicBoard: { src: "/images/apple-macbook-logic-board-and-fan-repair.webp", alt: "MacBook logic board repair", width: 1000, height: 600 },
     diagnostics: { src: "/images/technician-holding-opened-macbook-for-repair.webp", alt: "MacBook diagnostics", width: 1200, height: 630 },
@@ -43,7 +42,7 @@ export const IMAGES = {
     service: { src: "/images/macbook-internal-battery-replacement-service.webp", alt: "MacBook battery service", width: 800, height: 600 }
   },
 
-  // --- GAMING & CUSTOM PCs (18 Images) ---
+  // --- GAMING & CUSTOM PCs ---
   gaming: {
     rgbLighting: { src: "/images/custom-gaming-pc-build-rgb-lighting-kuwait.webp", alt: "Custom Gaming PC RGB Lighting", width: 1200, height: 800 },
     waterCooled: { src: "/images/custom-water-cooled-gaming-pc-build-kuwait.webp", alt: "Water cooled gaming PC build", width: 1200, height: 800 },
@@ -65,7 +64,7 @@ export const IMAGES = {
     gamingOverheating: { src: "/images/gaming-laptop-overheating-repair.webp", alt: "Gaming Laptop Overheating Repair", width: 800, height: 600 }
   },
 
-  // --- UPGRADES: SSD & RAM (20 Images) ---
+  // --- UPGRADES: SSD & RAM ---
   upgrades: {
     ram8gb: { src: "/images/8gb-ddr4-ram-memory-upgrade.webp", alt: "8GB DDR4 RAM Upgrade", width: 800, height: 600 },
     ramHynix1: { src: "/images/installing-sk-hynix-8gb-ddr4-ram.webp", alt: "Installing SK Hynix 8GB DDR4 RAM", width: 800, height: 600 },
@@ -89,7 +88,7 @@ export const IMAGES = {
     miniPcCrucial: { src: "/images/mini-pc-crucial-ddr5-ram-and-nvme-ssd-upgrade.webp", alt: "Mini PC Crucial DDR5 RAM & SSD Upgrade", width: 800, height: 600 }
   },
 
-  // --- MOTHERBOARD & THERMAL PASTE (10 Images) ---
+  // --- MOTHERBOARD & THERMAL PASTE ---
   motherboard: {
     cpuI9: { src: "/images/intel-core-i9-13900k-cpu-asus-rog-motherboard.webp", alt: "Intel Core i9 on ASUS ROG Motherboard", width: 800, height: 600 },
     cpuRyzen: { src: "/images/amd-ryzen-7-cpu-motherboard-installation.webp", alt: "AMD Ryzen 7 CPU Installation", width: 800, height: 600 },
@@ -103,7 +102,7 @@ export const IMAGES = {
     thermalM12: { src: "/images/m12-high-performance-thermal-paste-jar.webp", alt: "M12 High Performance Thermal Paste", width: 800, height: 600 }
   },
 
-  // --- HARDWARE MAINTENANCE (39 Images) ---
+  // --- HARDWARE MAINTENANCE ---
   laptopHardware: {
     brokenHinge: { src: "/images/broken-laptop-hinge-plastic-chassis-damage.webp", alt: "Broken laptop hinge chassis damage", width: 800, height: 600 },
     screenBezel: { src: "/images/laptop-screen-bezel-and-hinge-fabrication.webp", alt: "Laptop screen bezel and hinge", width: 800, height: 600 },
