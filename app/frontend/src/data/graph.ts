@@ -6,6 +6,7 @@ import {
   ServiceEntity, 
   FAQEntity 
 } from '../types/knowledgeGraph';
+import { IMAGES } from '../constants/images';
 
 /**
  * THE MASTER DATABASE
@@ -46,28 +47,106 @@ const rawGraphData: KnowledgeGraphData = {
     // ==========================================
     'srv-laptop-repair': {
       id: 'srv-laptop-repair',
-      slug: 'laptop-repair-kuwait',
+      slug: 'laptop-repair', // Preserved your exact old slug
       entityType: 'Service',
       isActive: true,
-      title: 'Laptop Repair Services',
-      description: 'Expert laptop motherboard diagnostics and screen replacement. We strictly provide repair services and do not buy or sell devices. Complimentary pick and drop included.',
-      primaryKeyword: 'laptop repair',
-      secondaryKeywords: ['computer fix', 'pc repair', 'motherboard repair'],
-      synonyms: ['laptop fixing', 'notebook repair'],
+      title: 'Laptop Repair Kuwait',
+      description: 'Expert repair for all laptop brands including screen replacement, battery issues, and charging port repair. We strictly provide repair services and do not buy or sell devices.',
+      primaryKeyword: 'laptop repair kuwait',
+      secondaryKeywords: ['laptop screen replacement', 'laptop battery fix', 'charging port repair'],
+      synonyms: ['notebook repair', 'laptop fixing'],
       aliases: ['lap top repair'],
       isPickAndDropEligible: true,
-      basePrice: 15, // Update with your actual base price
+      basePrice: 15,
       serviceCategory: 'Computer Repair',
       seo: { 
-        title: 'Laptop Repair Kuwait | Free Pick & Drop', 
-        description: 'Expert laptop fix with complimentary pickup and delivery.', 
-        canonicalUrl: '/laptop-repair-kuwait' 
+        title: 'Laptop Repair Kuwait | Screen & Battery Replacement', 
+        description: 'Expert repair for all laptop brands including screen replacement, battery issues, and charging port repair.', 
+        canonicalUrl: '/services/laptop-repair' 
       },
       build: { lastReviewed: '2026-06-28', contentVersion: '1.0', schemaVersion: '1.0', validationStatus: 'Valid', isDeprecated: false },
-      schemaTypes: ['Service', 'WebPage', 'FAQPage', 'BreadcrumbList'],
+      schemaTypes: ['Service', 'WebPage', 'FAQPage', 'BreadcrumbList', 'ImageObject'],
       relationships: [
         { targetId: 'loc-hawalli', relationshipType: 'nearby', weight: 10 },
         { targetId: 'faq-pick-and-drop', relationshipType: 'related', weight: 10 }
+      ],
+      media: [
+        {
+          imageId: IMAGES.services.laptopRepairHero.src,
+          altText: IMAGES.services.laptopRepairHero.alt,
+          role: 'hero',
+          priority: 'eager'
+        }
+      ]
+    } as ServiceEntity,
+
+    'srv-gaming-pc-repair': {
+      id: 'srv-gaming-pc-repair',
+      slug: 'gaming-pc-repair', // Preserved your exact old slug
+      entityType: 'Service',
+      isActive: true,
+      title: 'Gaming PC Repair Kuwait',
+      description: 'Professional gaming PC diagnostics, thermal throttling solutions, and custom performance tuning. We strictly provide repair services and do not buy or sell devices.',
+      primaryKeyword: 'gaming pc repair kuwait',
+      secondaryKeywords: ['pc diagnostics', 'thermal throttling fix', 'custom performance tuning'],
+      synonyms: ['gaming computer repair', 'custom pc fix'],
+      aliases: [],
+      isPickAndDropEligible: true,
+      basePrice: 20,
+      serviceCategory: 'Computer Repair',
+      seo: { 
+        title: 'Gaming PC Repair Kuwait | FPS & Thermal Tuning', 
+        description: 'Professional gaming PC diagnostics, thermal throttling solutions, and custom performance tuning.', 
+        canonicalUrl: '/services/gaming-pc-repair' 
+      },
+      build: { lastReviewed: '2026-06-28', contentVersion: '1.0', schemaVersion: '1.0', validationStatus: 'Valid', isDeprecated: false },
+      schemaTypes: ['Service', 'WebPage', 'FAQPage', 'BreadcrumbList', 'ImageObject'],
+      relationships: [
+        { targetId: 'loc-hawalli', relationshipType: 'nearby', weight: 10 },
+        { targetId: 'faq-pick-and-drop', relationshipType: 'related', weight: 10 }
+      ],
+      media: [
+        {
+          imageId: IMAGES.services.gamingPCRepairHero.src,
+          altText: IMAGES.services.gamingPCRepairHero.alt,
+          role: 'hero',
+          priority: 'eager'
+        }
+      ]
+    } as ServiceEntity,
+
+    'srv-motherboard-repair': {
+      id: 'srv-motherboard-repair',
+      slug: 'motherboard-repair', // Preserved your exact old slug
+      entityType: 'Service',
+      isActive: true,
+      title: 'Motherboard Repair Kuwait',
+      description: 'Advanced chip-level motherboard repair, micro-soldering, and short-circuit diagnostics. We strictly provide repair services and do not buy or sell devices.',
+      primaryKeyword: 'motherboard repair kuwait',
+      secondaryKeywords: ['chip-level repair', 'micro-soldering', 'short-circuit diagnostics'],
+      synonyms: ['logic board repair', 'mainboard fix'],
+      aliases: [],
+      isPickAndDropEligible: true,
+      basePrice: 35,
+      serviceCategory: 'Computer Repair',
+      seo: { 
+        title: 'Motherboard Repair Kuwait | Micro-Soldering Experts', 
+        description: 'Advanced chip-level motherboard repair, micro-soldering, and short-circuit diagnostics.', 
+        canonicalUrl: '/services/motherboard-repair' 
+      },
+      build: { lastReviewed: '2026-06-28', contentVersion: '1.0', schemaVersion: '1.0', validationStatus: 'Valid', isDeprecated: false },
+      schemaTypes: ['Service', 'WebPage', 'FAQPage', 'BreadcrumbList', 'ImageObject'],
+      relationships: [
+        { targetId: 'loc-hawalli', relationshipType: 'nearby', weight: 10 },
+        { targetId: 'faq-pick-and-drop', relationshipType: 'related', weight: 10 }
+      ],
+      media: [
+        {
+          imageId: IMAGES.services.motherboardRepairHero.src,
+          altText: IMAGES.services.motherboardRepairHero.alt,
+          role: 'hero',
+          priority: 'eager'
+        }
       ]
     } as ServiceEntity,
 
@@ -94,8 +173,6 @@ const rawGraphData: KnowledgeGraphData = {
       schemaTypes: ['FAQPage'],
       relationships: []
     } as FAQEntity,
-
-    // --> Add the rest of your old services and FAQs right here following the patterns above! <--
 
   }
 };
