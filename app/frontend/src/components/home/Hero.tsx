@@ -53,11 +53,13 @@ export default function Hero() {
           {/* Visual Content */}
           <div className="flex flex-col gap-6">
             <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-slate-700/50 bg-slate-900">
+              {/* ✅ FIXED: Now correctly pointing to heroBanner from your images.ts file */}
               <img 
-                src={IMAGES.brand.teamWorkbench} 
-                alt="Professional technician working on a laptop at the KCROC workshop in Hawalli" 
+                src={IMAGES.brand.heroBanner.src} 
+                alt={IMAGES.brand.heroBanner.alt} 
                 className="w-full h-56 md:h-72 object-cover"
                 loading="eager"
+                fetchPriority="high"
               />
             </div>
             <Card className="border-0 bg-slate-900/60 backdrop-blur-xl">
