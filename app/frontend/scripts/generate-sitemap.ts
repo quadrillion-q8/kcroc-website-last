@@ -2,8 +2,8 @@
 import fs from 'fs';
 import path from 'path';
 import { BUSINESS_INFO } from '../src/constants/data';
-// Corrected import path targeting your valid schema definitions folder
-import { KCROC_GRAPH } from '../src/types/knowledgeGraph'; 
+// ✅ CORRECTED: Pulling the actual data object from the data folder, not the types folder
+import { KCROC_GRAPH } from '../src/data/graph'; 
 
 const generateSitemap = () => {
   const baseUrl = BUSINESS_INFO.url;
