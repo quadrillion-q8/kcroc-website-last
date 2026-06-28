@@ -1,38 +1,53 @@
+// File: src/components/Layout.tsx
 import React, { ReactNode } from 'react';
+import { Helmet } from 'react-helmet-async';
 import Header from './Header';
 import Footer from './Footer';
 import ParticleBackground from './ParticleBackground'; 
 import StickyCTA from './ui/StickyCTA';
 import GMBRating from './layout/GMBRating'; 
+import { generateAutomatedSchema } from '../utils/schema/schemaBuilder';
+import { KCROCEntity } from '../types/knowledgeGraph';
 
 interface LayoutProps {
   children: ReactNode;
+  entity?: KCROCEntity; // Optional: Pass an entity to auto-inject Schema
 }
 
-export default function Layout({ children }: LayoutProps) {
+export default function Layout({ children, entity }: LayoutProps) {
+  // Generate schema automatically if an entity is provided
+  const schemaMarkup = entity ? generateAutomatedSchema(entity) : null;
+
   return (
     <div className="min-h-screen bg-[#0a0f1c] text-slate-200 font-sans selection:bg-cyan-500/30 flex flex-col relative">
       
-      {/* The Animated Background */}
+      {/* 1. SEO Injection: Injects your Enterprise Schema into the document head */}
+      {schemaMarkup && (
+        <Helmet>
+          <script type="application/ld+json">
+            {schemaMarkup}
+          </script>
+        </Helmet>
+      )}
+      
+      {/* 2. Animated Background */}
       <div className="fixed inset-0 z-0">
         <ParticleBackground />
       </div>
       
-      {/* Global Navigation */}
+      {/* 3. Global UI Elements */}
       <Header />
-      
-      {/* Global GMB Rating - Visible across all pages */}
       <GMBRating />
       
-      {/* Main Content Area */}
+      {/* 4. Main Content Area */}
       <main className="flex-grow flex flex-col relative z-10">
         {children}
       </main>
       
-      {/* Global Footer */}
+      {/* 5. Global Footer */}
       <Footer />
       
-      {/* Global Sticky Call-to-Action */}
+      {/* 6. Sticky CTA */}
       <StickyCTA /> 
     </div>
   );
