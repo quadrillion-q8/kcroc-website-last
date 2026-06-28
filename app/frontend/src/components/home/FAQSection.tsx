@@ -1,6 +1,10 @@
+// File: app/frontend/src/components/home/FAQSection.tsx
 import React, { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
-import { FAQS } from '../../constants/data';
+// 1. Import the graph data instead of the old FAQS array
+import { KCROC_GRAPH } from '../../data/graph';
+// 2. Import your new self-aware schema component
+import FAQSchema from '../seo/FAQSchema';
 
 export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -10,17 +14,23 @@ export default function FAQSection() {
   };
 
   return (
-    <section className="w-full py-24 px-6 bg-slate-950">
-      <div className="max-w-3xl mx-auto">
+    <section className="w-full py-24 px-6 bg-slate-950 relative">
+      
+      {/* 👇 3. Drop the schema component at the top of the section */}
+      <FAQSchema />
+
+      <div className="max-w-3xl mx-auto relative z-10">
         <h2 className="text-3xl font-black text-white mb-12 text-center">Frequently Asked Questions</h2>
         <div className="space-y-4">
-          {FAQS.map((faq, index) => {
+          
+          {/* 4. Map over the new KCROC_GRAPH faqs array */}
+          {KCROC_GRAPH.faqs.map((faq, index) => {
             const isOpen = openIndex === index;
             const faqId = `faq-answer-${index}`;
             const buttonId = `faq-question-${index}`;
 
             return (
-              <div key={index} className="border border-slate-800 rounded-2xl overflow-hidden">
+              <div key={faq.id} className="border border-slate-800 rounded-2xl overflow-hidden">
                 <button
                   id={buttonId}
                   onClick={() => toggleFAQ(index)}
@@ -28,7 +38,8 @@ export default function FAQSection() {
                   aria-controls={faqId}
                   className="w-full flex items-center justify-between p-6 text-left bg-slate-900 hover:bg-slate-800 transition-colors"
                 >
-                  <span className="text-lg font-bold text-white">{faq.q}</span>
+                  {/* Note: The graph uses .title instead of .q */}
+                  <span className="text-lg font-bold text-white">{faq.title}</span>
                   <ChevronDown 
                     className={`w-5 h-5 text-cyan-400 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} 
                     aria-hidden="true" 
@@ -41,7 +52,8 @@ export default function FAQSection() {
                   hidden={!isOpen}
                   className="p-6 bg-slate-950 text-slate-400 leading-relaxed border-t border-slate-800"
                 >
-                  {faq.a}
+                  {/* Note: The graph uses .description instead of .a */}
+                  {faq.description}
                 </div>
               </div>
             );
