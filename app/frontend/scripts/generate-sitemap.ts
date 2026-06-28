@@ -1,9 +1,13 @@
 // File: app/frontend/scripts/generate-sitemap.ts
 import fs from 'fs';
 import path from 'path';
+import { fileURLToPath } from 'url';
 import { BUSINESS_INFO } from '../src/constants/data';
-// ✅ CORRECTED: Pulling the actual data object from the data folder, not the types folder
 import { KCROC_GRAPH } from '../src/data/graph'; 
+
+// ✅ FIX: Recreate __dirname for ES Modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const generateSitemap = () => {
   const baseUrl = BUSINESS_INFO.url;
@@ -22,9 +26,9 @@ const generateSitemap = () => {
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   ${allUrls
-    .map((path) => `
+    .map((routePath) => `
   <url>
-    <loc>${baseUrl}${path}</loc>
+    <loc>${baseUrl}${routePath}</loc>
     <lastmod>${new Date().toISOString()}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
