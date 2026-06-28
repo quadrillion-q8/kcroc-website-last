@@ -17,9 +17,9 @@ export const IMAGES = {
     pcDoctor: { src: "/images/kcroc-pc-doctor-windows-repair-services.webp", alt: "PC Doctor services", width: 800, height: 600 },
     teamFun: { src: "/images/kcroc-team-member-imran-hat-fun.webp", alt: "KCROC team fun", width: 800, height: 800 },
     logo: { src: "/logo.png", alt: "KCROC Logo", width: 300, height: 150 },
-    // ✅ Updated to the microscope repair image from your gallery
+    // ✅ Updated to the verified lead technician workbench image
     heroBanner: { 
-      src: "/images/custom-gaming-pc-teardown-and-diagnostics-workbench.webp", 
+      src: "/images/kcroc-lead-technician-laptop-repair-workbench.webp", 
       alt: "Professional technician working on a laptop at the KCROC workshop in Hawalli", 
       width: 1200, 
       height: 600 
