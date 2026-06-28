@@ -1,5 +1,5 @@
 // File: src/components/Layout.tsx
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import Header from './Header';
 import Footer from './Footer';
@@ -16,11 +16,26 @@ interface LayoutProps {
 
 export default function Layout({ children, entity }: LayoutProps) {
   const schemaMarkup = entity ? generateAutomatedSchema(entity) : null;
+  
+  // 1. Set up a state to control when particles render
+  const [showParticles, setShowParticles] = useState(false);
+
+  // 2. Wait for the browser to be idle before showing particles
+  useEffect(() => {
+    const loadParticles = () => setShowParticles(true);
+
+    // Use requestIdleCallback if the browser supports it, otherwise fallback to setTimeout
+    if ('requestIdleCallback' in window) {
+      window.requestIdleCallback(loadParticles, { timeout: 2000 });
+    } else {
+      setTimeout(loadParticles, 1500);
+    }
+  }, []);
 
   return (
     <div className="min-h-screen bg-[#0a0f1c] text-slate-200 font-sans selection:bg-cyan-500/30 flex flex-col relative">
       
-      {/* 1. SEO Injection */}
+      {/* SEO Injection */}
       {schemaMarkup && (
         <Helmet>
           <script type="application/ld+json">
@@ -29,24 +44,24 @@ export default function Layout({ children, entity }: LayoutProps) {
         </Helmet>
       )}
       
-      {/* 2. Animated Background */}
-      <div className="fixed inset-0 z-0">
-        <ParticleBackground />
+      {/* Animated Background - Now conditionally rendered! */}
+      <div className="fixed inset-0 z-0 pointer-events-none">
+        {showParticles && <ParticleBackground />}
       </div>
       
-      {/* 3. Global UI Elements */}
+      {/* Global UI Elements */}
       <Header />
       <GMBRating />
       
-      {/* 4. Main Content Area */}
+      {/* Main Content Area */}
       <main className="flex-grow flex flex-col relative z-10">
         {children}
       </main>
       
-      {/* 5. Global Footer - Rendered ONCE here */}
+      {/* Global Footer */}
       <Footer />
       
-      {/* 6. Sticky CTA */}
+      {/* Sticky CTA */}
       <StickyCTA /> 
     </div>
   );
