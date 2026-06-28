@@ -1,3 +1,4 @@
+// File: src/components/home/ServicesGrid.tsx
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Laptop, Gamepad2, Cpu, Wrench } from 'lucide-react';
@@ -5,18 +6,17 @@ import { getEntitiesByType } from '../../utils/graphQueries';
 import { ServiceEntity } from '../../types/knowledgeGraph';
 import { useFadeIn } from '../../hooks/useFadeIn';
 
-// 1. UI Layer Dictionary: Maps graph data IDs to React Icons cleanly
+// UI Layer Dictionary: Maps graph data IDs to React Icons
 const ICON_MAP: Record<string, React.ElementType> = {
   'srv-laptop-repair': Laptop,
   'srv-gaming-pc-repair': Gamepad2,
   'srv-motherboard-repair': Cpu,
 };
 
-// 2. Strict Typing: Replaced 'any' with ServiceEntity
 const ServiceCard = React.memo(({ service, idx }: { service: ServiceEntity, idx: number }) => {
   const { ref, visible } = useFadeIn();
   
-  // Extract the specific icon, falling back to a Wrench if it's a new service
+  // Extract icon or fallback
   const Icon = ICON_MAP[service.id] || Wrench;
   
   // Intelligently find the hero image from the Knowledge Graph media array
@@ -29,16 +29,18 @@ const ServiceCard = React.memo(({ service, idx }: { service: ServiceEntity, idx:
       className={`transition-all duration-700 h-full ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
     >
       <Link 
-        to={service.seo.canonicalUrl} // Powered by Knowledge Graph SEO data
+        to={service.seo.canonicalUrl}
         className="group block relative overflow-hidden bg-slate-900/30 p-8 rounded-3xl border border-slate-800 hover:border-cyan-500/40 transition-all duration-300 h-full"
       >
-        {/* Render the image directly from the entity media data */}
+        {/* Render the image directly from the entity media data with performance optimizations */}
         {heroMedia && (
           <div className="absolute inset-0 z-0">
             <img 
               src={heroMedia.imageId} 
               alt={heroMedia.altText || service.title} 
-              loading="lazy" 
+              // Performance Optimization: Prioritize 'eager' load for hero images
+              fetchPriority={heroMedia.priority === 'eager' ? 'high' : 'auto'}
+              loading={heroMedia.priority === 'eager' ? 'eager' : 'lazy'}
               decoding="async"
               className="w-full h-full object-cover opacity-40 group-hover:opacity-70 transition-all duration-700" 
             />
@@ -52,7 +54,6 @@ const ServiceCard = React.memo(({ service, idx }: { service: ServiceEntity, idx:
           </div>
           <h3 className="text-2xl font-black text-white mb-3">{service.title}</h3>
           
-          {/* We use a line-clamp to ensure descriptions don't break the grid layout if they get too long */}
           <p className="text-slate-200 text-sm leading-relaxed mb-6 line-clamp-3">
             {service.description}
           </p>
@@ -69,10 +70,10 @@ const ServiceCard = React.memo(({ service, idx }: { service: ServiceEntity, idx:
 ServiceCard.displayName = 'ServiceCard';
 
 export default function ServicesGrid() {
-  // 3. Automated Data Fetching from the Enterprise Query Engine
+  // Automated Data Fetching from the Enterprise Query Engine
   const services = getEntitiesByType<ServiceEntity>('Service');
 
-  // Safety fallback if the graph is empty
+  // Safety fallback
   if (!services || services.length === 0) return null;
 
   return (
