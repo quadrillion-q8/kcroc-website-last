@@ -2,21 +2,22 @@
 import fs from 'fs';
 import path from 'path';
 import { BUSINESS_INFO } from '../src/constants/data';
-import { KCROC_GRAPH } from '../src/data/graph'; // Adjust path if your graph.ts is elsewhere
+// Ensure this import path matches where your graph data is located
+import { KCROC_GRAPH } from '../src/types/knowledgeGraph'; 
 
 const generateSitemap = () => {
   const baseUrl = BUSINESS_INFO.url;
   
-  // Define core pages
+  // 1. Define core static pages
   const staticPages = ['/', '/services', '/about', '/contact', '/faq'];
 
-  // Map dynamic entities from your Knowledge Graph
+  // 2. Map dynamic entities from your Knowledge Graph
   const serviceUrls = KCROC_GRAPH.services.map(s => `/services/${s.slug}`);
   const locationUrls = KCROC_GRAPH.locations.map(l => `/locations/${l.slug}`);
 
   const allUrls = [...staticPages, ...serviceUrls, ...locationUrls];
 
-  // Build the XML structure
+  // 3. Generate XML structure
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   ${allUrls
@@ -30,7 +31,7 @@ const generateSitemap = () => {
     .join('')}
 </urlset>`;
 
-  // Write to the public directory
+  // 4. Write to the public directory
   const publicDir = path.join(__dirname, '../public');
   if (!fs.existsSync(publicDir)) fs.mkdirSync(publicDir);
   
