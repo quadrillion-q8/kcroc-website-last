@@ -4,7 +4,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Menu, Search } from 'lucide-react';
 
 import { ROUTES } from '../constants/routes';
-import { IMAGES } from '../constants/images'; // ✅ Import constant
+import { IMAGES } from '../constants/images'; 
 import MobileMenu from './layout/MobileMenu';
 import GlobalSearch from './search/GlobalSearch'; 
 
@@ -44,7 +44,7 @@ export default function Header() {
   return (
     <>
       <header className={`fixed top-0 w-full z-[1000] transition-all duration-300 ${scrolled ? 'bg-[#0a0f1c]/90 backdrop-blur-xl border-b border-slate-800/50 shadow-lg' : 'bg-transparent'}`}>
-        {/* ✅ Shop Background Layer */}
+        {/* Shop Background Layer: Using Image Registry */}
         <div className="absolute inset-0 z-[-1] overflow-hidden">
           <img 
             src={IMAGES.brand.shopInterior.src} 
@@ -58,8 +58,8 @@ export default function Header() {
           <div className="flex justify-between items-center h-24">
             <Link to={ROUTES.home} className="flex items-center group">
               <img 
-                src="/logo.png" 
-                alt="KCROC Logo" 
+                src={IMAGES.brand.logo.src} 
+                alt={IMAGES.brand.logo.alt} 
                 className="h-16 md:h-20 w-auto object-contain transition-all duration-300 drop-shadow-[0_0_8px_rgba(255,255,255,0.2)] hover:scale-105" 
               />
             </Link>
