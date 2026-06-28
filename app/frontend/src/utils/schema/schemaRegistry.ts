@@ -5,7 +5,9 @@ import { buildService } from './builders/service';
 import { buildWebPage } from './builders/webpage';
 import { buildFAQ } from './builders/faq';               
 import { buildBreadcrumb } from './builders/breadcrumb'; 
-import { buildImageObject } from './builders/imageObject'; // ✅ Added
+import { buildImageObject } from './builders/imageObject'; 
+import { buildReview } from './builders/review';           // ✅ Imported
+import { buildVideoObject } from './builders/videoObject'; // ✅ Imported
 
 export const SCHEMA_REGISTRY: Record<string, SchemaBuilder> = {
   'LocalBusiness': buildLocalBusiness,
@@ -13,5 +15,7 @@ export const SCHEMA_REGISTRY: Record<string, SchemaBuilder> = {
   'WebPage': buildWebPage,
   'FAQPage': buildFAQ,               
   'BreadcrumbList': buildBreadcrumb, 
-  'ImageObject': buildImageObject,   // ✅ Added to the registry
+  'ImageObject': buildImageObject,   
+  'Review': buildReview,             // ✅ Registered and active
+  'VideoObject': buildVideoObject,   // ✅ Registered and active
 };
