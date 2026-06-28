@@ -30,7 +30,7 @@ const rawGraphData: KnowledgeGraphData = {
       synonyms: ['hawalli tech shop'],
       aliases: [],
       landmark: 'Hawalli, Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19',
-      coords: { lat: 29.3353, lng: 48.0124 }, // Adjust with exact map coordinates if needed
+      coords: { lat: 29.3353, lng: 48.0124 },
       serviceRadiusKm: 50,
       seo: { 
         title: 'Computer Repair Shop in Hawalli | KCROC', 
@@ -47,11 +47,11 @@ const rawGraphData: KnowledgeGraphData = {
     // ==========================================
     'srv-laptop-repair': {
       id: 'srv-laptop-repair',
-      slug: 'laptop-repair', // Preserved your exact old slug
+      slug: 'laptop-repair',
       entityType: 'Service',
       isActive: true,
       title: 'Laptop Repair Kuwait',
-      description: 'Expert repair for all laptop brands including screen replacement, battery issues, and charging port repair. We strictly provide repair services and do not buy or sell devices.',
+      description: 'Expert repair for all laptop brands including screen replacement, battery issues, and charging port repair.',
       primaryKeyword: 'laptop repair kuwait',
       secondaryKeywords: ['laptop screen replacement', 'laptop battery fix', 'charging port repair'],
       synonyms: ['notebook repair', 'laptop fixing'],
@@ -72,8 +72,8 @@ const rawGraphData: KnowledgeGraphData = {
       ],
       media: [
         {
-          imageId: IMAGES.services.laptopRepairHero.src,
-          altText: IMAGES.services.laptopRepairHero.alt,
+          imageId: IMAGES?.services?.laptopRepair?.src || '',
+          altText: IMAGES?.services?.laptopRepair?.alt || 'Laptop Repair',
           role: 'hero',
           priority: 'eager'
         }
@@ -82,11 +82,11 @@ const rawGraphData: KnowledgeGraphData = {
 
     'srv-gaming-pc-repair': {
       id: 'srv-gaming-pc-repair',
-      slug: 'gaming-pc-repair', // Preserved your exact old slug
+      slug: 'gaming-pc-repair',
       entityType: 'Service',
       isActive: true,
       title: 'Gaming PC Repair Kuwait',
-      description: 'Professional gaming PC diagnostics, thermal throttling solutions, and custom performance tuning. We strictly provide repair services and do not buy or sell devices.',
+      description: 'Professional gaming PC diagnostics, thermal throttling solutions, and custom performance tuning.',
       primaryKeyword: 'gaming pc repair kuwait',
       secondaryKeywords: ['pc diagnostics', 'thermal throttling fix', 'custom performance tuning'],
       synonyms: ['gaming computer repair', 'custom pc fix'],
@@ -107,8 +107,8 @@ const rawGraphData: KnowledgeGraphData = {
       ],
       media: [
         {
-          imageId: IMAGES.services.gamingPCRepairHero.src,
-          altText: IMAGES.services.gamingPCRepairHero.alt,
+          imageId: IMAGES?.gaming?.diagnostics?.src || '',
+          altText: IMAGES?.gaming?.diagnostics?.alt || 'Gaming PC Diagnostics',
           role: 'hero',
           priority: 'eager'
         }
@@ -117,11 +117,11 @@ const rawGraphData: KnowledgeGraphData = {
 
     'srv-motherboard-repair': {
       id: 'srv-motherboard-repair',
-      slug: 'motherboard-repair', // Preserved your exact old slug
+      slug: 'motherboard-repair',
       entityType: 'Service',
       isActive: true,
       title: 'Motherboard Repair Kuwait',
-      description: 'Advanced chip-level motherboard repair, micro-soldering, and short-circuit diagnostics. We strictly provide repair services and do not buy or sell devices.',
+      description: 'Advanced chip-level motherboard repair, micro-soldering, and short-circuit diagnostics.',
       primaryKeyword: 'motherboard repair kuwait',
       secondaryKeywords: ['chip-level repair', 'micro-soldering', 'short-circuit diagnostics'],
       synonyms: ['logic board repair', 'mainboard fix'],
@@ -142,8 +142,8 @@ const rawGraphData: KnowledgeGraphData = {
       ],
       media: [
         {
-          imageId: IMAGES.services.motherboardRepairHero.src,
-          altText: IMAGES.services.motherboardRepairHero.alt,
+          imageId: IMAGES?.services?.motherboardRepair?.src || '',
+          altText: IMAGES?.services?.motherboardRepair?.alt || 'Motherboard Repair',
           role: 'hero',
           priority: 'eager'
         }
@@ -158,8 +158,8 @@ const rawGraphData: KnowledgeGraphData = {
       slug: 'faq-pick-and-drop',
       entityType: 'FAQ',
       isActive: true,
-      title: 'Do you offer a pick and drop service?', // The Question goes in title
-      description: 'Yes, we offer complimentary pick and drop free across our business services for all repairs.', // The Answer goes in description
+      title: 'Do you offer a pick and drop service?',
+      description: 'Yes, we offer complimentary pick and drop free across our business services for all repairs.',
       primaryKeyword: 'pick and drop',
       secondaryKeywords: ['delivery service', 'pickup'],
       synonyms: [],
@@ -178,54 +178,25 @@ const rawGraphData: KnowledgeGraphData = {
 };
 
 /**
- * ============================================================================
  * O(1) INDEXING ENGINE
- * Automatically builds fast lookup maps so queries never have to loop.
- * ============================================================================
  */
-
-interface GraphIndexes {
-  bySlug: Map<string, string>; // Maps slug -> ID
-  byType: Map<string, string[]>; // Maps EntityType -> Array of IDs
-  byKeyword: Map<string, string[]>; // Maps keyword/synonym -> Array of IDs
-}
-
-const buildGraphIndexes = (data: KnowledgeGraphData): GraphIndexes => {
-  const indexes: GraphIndexes = {
-    bySlug: new Map(),
-    byType: new Map(),
-    byKeyword: new Map()
-  };
-
+const buildGraphIndexes = (data: KnowledgeGraphData): any => {
+  const indexes = { bySlug: new Map(), byType: new Map(), byKeyword: new Map() };
   Object.values(data.entities).forEach(entity => {
     if (!entity.isActive) return;
-
-    // 1. Slug Index
     indexes.bySlug.set(entity.slug, entity.id);
-
-    // 2. Type Index
     const typeArr = indexes.byType.get(entity.entityType) || [];
     typeArr.push(entity.id);
     indexes.byType.set(entity.entityType, typeArr);
-
-    // 3. Keyword/Synonym/Alias Index
-    const searchTerms = [
-      entity.primaryKeyword,
-      ...entity.secondaryKeywords,
-      ...entity.synonyms,
-      ...entity.aliases
-    ].map(t => t.toLowerCase().trim());
-
+    const searchTerms = [entity.primaryKeyword, ...entity.secondaryKeywords, ...entity.synonyms, ...entity.aliases].map(t => t.toLowerCase().trim());
     searchTerms.forEach(term => {
       const keywordArr = indexes.byKeyword.get(term) || [];
       if (!keywordArr.includes(entity.id)) keywordArr.push(entity.id);
       indexes.byKeyword.set(term, keywordArr);
     });
   });
-
   return indexes;
 };
 
-// Export the raw data and the pre-computed indexes
 export const KCROC_GRAPH = rawGraphData;
 export const GRAPH_INDEXES = buildGraphIndexes(rawGraphData);
