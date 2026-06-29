@@ -3,21 +3,23 @@ import React, { useEffect, useState } from 'react';
 import { useParams, Navigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { locationRepository } from '../core/repositories/LocationRepository';
-import { LocationEntity } from '../core/types';
-import { Loader2, MapPin, Phone, ShieldCheck } from 'lucide-react';
+import { RelationshipService } from '../core/services/RelationshipService';
+import { LocationEntity, ServiceEntity } from '../core/types';
+import { Loader2, MapPin, Phone, ShieldCheck, ArrowRight } from 'lucide-react';
 import { trackCallClick } from '../utils/analytics'; // Preserving your existing analytics!
 
 export default function LocationTemplate() {
   // 1. Get the dynamic URL parameter (e.g., 'hawalli' from /location/hawalli)
   const { slug } = useParams<{ slug: string }>();
 
-  // 2. Enterprise State Management
+  // 2. Enterprise State Management (Now includes related services)
   const [location, setLocation] = useState<LocationEntity | null>(null);
+  const [relatedServices, setRelatedServices] = useState<ServiceEntity[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
-  // 3. Fetch Data Asynchronously based on the URL
+  // 3. Fetch Location and Relationships Asynchronously based on the URL
   useEffect(() => {
-    const fetchLocation = async () => {
+    const fetchData = async () => {
       if (!slug) {
         setIsLoading(false);
         return;
@@ -25,18 +27,23 @@ export default function LocationTemplate() {
 
       try {
         setIsLoading(true);
-        // Ask the repository for this specific city
-        const data = await locationRepository.findBySlug(slug);
-        setLocation(data || null);
+        // Promise.all fetches both the Location and the Related Services simultaneously for maximum performance
+        const [locationData, servicesData] = await Promise.all([
+          locationRepository.findBySlug(slug),
+          RelationshipService.getServicesForLocation(slug, 6)
+        ]);
+        
+        setLocation(locationData || null);
+        setRelatedServices(servicesData);
       } catch (error) {
-        console.error(`Failed to fetch location data for ${slug}:`, error);
+        console.error(`Failed to fetch data for ${slug}:`, error);
         setLocation(null);
       } finally {
         setIsLoading(false);
       }
     };
 
-    fetchLocation();
+    fetchData();
   }, [slug]);
 
   // 4. Loading State
@@ -54,7 +61,7 @@ export default function LocationTemplate() {
     return <Navigate to="/404" replace />;
   }
 
-  // 6. Success Render with Dynamic SEO & Schema
+  // 6. Success Render with Dynamic SEO, Schema, and Relationships
   return (
     <div className="min-h-screen bg-slate-950 text-white pb-24">
       
@@ -136,6 +143,44 @@ export default function LocationTemplate() {
             <Phone className="w-10 h-10 text-blue-400 mb-4" />
             <h3 className="text-xl font-bold mb-2">Same Day Service</h3>
             <p className="text-slate-400 text-sm">Most common repairs completed in under 24 hours.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* ==========================================
+          AUTOMATED INTERNAL LINKING ENGINE
+          ========================================== */}
+      <section className="py-20 px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="mb-12">
+            <h2 className="text-3xl md:text-4xl font-black mb-4">
+              Services Available in {location.title}
+            </h2>
+            <p className="text-slate-400">
+              Our technicians bring these enterprise-grade repair services directly to your door in {location.title}.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {relatedServices.map((service) => (
+              <a 
+                key={service.id}
+                href={`/${service.slug}`} // Passes SEO authority to the Service Page!
+                className="group p-6 bg-slate-900 border border-slate-800 rounded-xl hover:border-cyan-500 transition-colors flex flex-col justify-between"
+              >
+                <div>
+                  <h3 className="text-xl font-bold mb-2 group-hover:text-cyan-400 transition-colors">
+                    {service.title}
+                  </h3>
+                  <p className="text-slate-400 text-sm line-clamp-2 mb-4">
+                    {service.description}
+                  </p>
+                </div>
+                <div className="flex items-center text-cyan-400 font-bold text-sm">
+                  View Service <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                </div>
+              </a>
+            ))}
           </div>
         </div>
       </section>
