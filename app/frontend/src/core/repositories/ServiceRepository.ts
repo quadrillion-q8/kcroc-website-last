@@ -1,65 +1,70 @@
-import { IRepository } from './IRepository';
-import { KCROC_GRAPH } from '../../data/graph'; // Legacy import - isolated here
-
-export interface ServiceEntity {
-  id: string;
-  title: string;
-  slug: string;
-  description: string;
-  features: string[];
-}
+// File: app/frontend/src/core/repositories/ServiceRepository.ts
+import { IRepository, ServiceEntity, EntityType, EntityStatus, PaginationOptions } from '../types';
+import { KCROC_GRAPH } from '../../data/graph';
 
 export class ServiceRepository implements IRepository<ServiceEntity> {
   
-  /**
-   * Retrieves all computer and laptop repair services.
-   * Explicitly filters out any mobile-related anomalies to enforce business rules.
-   */
-  findAll(): ServiceEntity[] {
-    return KCROC_GRAPH.services
+  async findAll(options?: PaginationOptions): Promise<ServiceEntity[]> {
+    let results = KCROC_GRAPH.services
       .filter(service => !service.title.toLowerCase().includes('mobile'))
       .map(this.normalizeEntity);
+      
+    // Basic array slice for pagination support
+    if (options?.limit) {
+      const offset = options.offset || 0;
+      results = results.slice(offset, offset + options.limit);
+    }
+    
+    return Promise.resolve(results);
   }
 
-  /**
-   * Finds a specific service by its URL slug (O(1) lookup if indexed).
-   */
-  findBySlug(slug: string): ServiceEntity | null {
-    const service = KCROC_GRAPH.services.find(s => s.id === slug);
-    if (!service) return null;
-    return this.normalizeEntity(service);
+  async findById(id: string): Promise<ServiceEntity | undefined> {
+    const service = KCROC_GRAPH.services.find(s => s.id === id);
+    if (!service) return Promise.resolve(undefined);
+    return Promise.resolve(this.normalizeEntity(service));
   }
 
-  /**
-   * Searches services by keyword for future autocomplete/AI matching.
-   */
-  search(query: string): ServiceEntity[] {
+  async findBySlug(slug: string): Promise<ServiceEntity | undefined> {
+    // Assuming slug maps directly to ID in our current flat file setup
+    return this.findById(slug);
+  }
+
+  async search(query: string, options?: PaginationOptions): Promise<ServiceEntity[]> {
     const lowerQuery = query.toLowerCase();
-    return this.findAll().filter(service => 
+    const allServices = await this.findAll(options);
+    
+    const results = allServices.filter(service => 
       service.title.toLowerCase().includes(lowerQuery) || 
       service.description.toLowerCase().includes(lowerQuery)
     );
+    
+    return Promise.resolve(results);
   }
 
   /**
-   * Normalizes data to ensure critical business guarantees are always present.
+   * Translates the old graph schema into the new Enterprise Schema
    */
   private normalizeEntity(rawService: any): ServiceEntity {
     const features = rawService.features || [];
-    // Ensure Free Pick & Drop is universally injected at the data layer
     if (!features.includes('Free Pick & Drop')) {
       features.push('Free Pick & Drop');
     }
 
     return {
       id: rawService.id,
+      slug: rawService.id, // Fallback for legacy graph
+      entityType: EntityType.Service,
+      status: EntityStatus.PUBLISHED,
       title: rawService.title,
-      slug: rawService.id, // Assuming id matches slug in graph
       description: rawService.description,
-      features
+      features,
+      isPickAndDropEligible: true,
+      
+      // Mocks for timestamps since flat files don't track them inherently
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
     };
   }
 }
 
-// Export a singleton instance for immediate dependency injection use
 export const serviceRepository = new ServiceRepository();
