@@ -1,269 +1,145 @@
-import React, { useMemo } from 'react';
-import { useParams, Link, Navigate } from 'react-router-dom';
-import { MapPin, ExternalLink, ArrowRight, Clock } from 'lucide-react';
-
-import { BUSINESS_INFO } from '../constants/data';
-import { LOCATION_AREAS } from '../constants/locationAreas';
-import MetaSEO from '../components/seo/MetaSEO';
-import SchemaMarkup from '../components/seo/SchemaMarkup';
-import MapComponent from '../components/MapComponent';
-
-/* ─────────────────────────────────────────────────────────────────────────────
-   HELPERS
-───────────────────────────────────────────────────────────────────────────── */
-
-const formatTitleCase = (slug: string = '') =>
-  slug
-    .split('-')
-    .map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
-    .join(' ');
-
-const toSlug = (str: string) => str.toLowerCase().replace(/\s+/g, '-');
-
-/* ─────────────────────────────────────────────────────────────────────────────
-   COMPONENT
-───────────────────────────────────────────────────────────────────────────── */
+// File: app/frontend/src/pages/LocationTemplate.tsx
+import React, { useEffect, useState } from 'react';
+import { useParams, Navigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
+import { locationRepository } from '../core/repositories/LocationRepository';
+import { LocationEntity } from '../core/types';
+import { Loader2, MapPin, Phone, ShieldCheck } from 'lucide-react';
+import { trackCallClick } from '../utils/analytics'; // Preserving your existing analytics!
 
 export default function LocationTemplate() {
-  const { service, city } = useParams<{ service?: string; city?: string }>();
+  // 1. Get the dynamic URL parameter (e.g., 'hawalli' from /location/hawalli)
+  const { slug } = useParams<{ slug: string }>();
 
-  // ✅ Look up by slug to handle hyphens (e.g., "abu-halifa")
-  const targetSlug = city?.toLowerCase() || '';
-  const cityData = Object.values(LOCATION_AREAS).find(area => area.slug === targetSlug);
+  // 2. Enterprise State Management
+  const [location, setLocation] = useState<LocationEntity | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
-  // Fallbacks if data doesn't exist
-  const formattedCity = cityData?.name || formatTitleCase(city || 'Kuwait');
-  const formattedService = formatTitleCase(service || 'Computer Repair');
-  const pageUrl = `${BUSINESS_INFO.url}/${service?.toLowerCase()}-in-${targetSlug}`;
+  // 3. Fetch Data Asynchronously based on the URL
+  useEffect(() => {
+    const fetchLocation = async () => {
+      if (!slug) {
+        setIsLoading(false);
+        return;
+      }
 
-  // If no city data is found, redirect to home to prevent 404 indexing
-  if (!cityData) {
-    return <Navigate to="/" replace />;
+      try {
+        setIsLoading(true);
+        // Ask the repository for this specific city
+        const data = await locationRepository.findBySlug(slug);
+        setLocation(data || null);
+      } catch (error) {
+        console.error(`Failed to fetch location data for ${slug}:`, error);
+        setLocation(null);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchLocation();
+  }, [slug]);
+
+  // 4. Loading State
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center bg-slate-950 text-white">
+        <Loader2 className="w-12 h-12 text-cyan-400 animate-spin mb-4" />
+        <p className="text-slate-400 font-bold uppercase tracking-widest">Generating Local Experience...</p>
+      </div>
+    );
   }
 
-  const waMessage = encodeURIComponent(
-    `Hi KCROC, I'm in ${formattedCity} and need ${formattedService}.`
-  );
-  const waLink = `https://wa.me/${BUSINESS_INFO.cleanPhone}?text=${waMessage}`;
+  // 5. 404 / Not Found State (If someone types /location/fake-city)
+  if (!location) {
+    return <Navigate to="/404" replace />;
+  }
 
-  const nearbyAreas = cityData.nearbyAreas || [];
-
-  /* ─── FAQ ─── */
-  const FAQ_DATA = useMemo(() => {
-    return cityData.faq || [
-      {
-        question: `Do you provide ${formattedService} in ${formattedCity}?`,
-        answer: `Yes, we provide professional ${formattedService.toLowerCase()} services across ${formattedCity}, Kuwait.`
-      },
-      {
-        question: `Do you offer free pickup in ${formattedCity}?`,
-        answer: `Yes, we offer free pickup and delivery for customers in ${formattedCity}.`
-      }
-    ];
-  }, [cityData, formattedCity, formattedService]);
-
-  /* ─── SCHEMA ─── */
-  const SCHEMA_DATA = useMemo(() => ({
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebPage",
-        "@id": `${pageUrl}#webpage`,
-        "name": `${formattedService} in ${formattedCity} | KCROC`,
-        "url": pageUrl,
-        "description": cityData.description,
-        "isPartOf": { "@id": `${BUSINESS_INFO.url}/#website` }
-      },
-      {
-        "@type": "LocalBusiness",
-        "@id": `${BUSINESS_INFO.url}/#business`,
-        "name": BUSINESS_INFO.name,
-        "url": BUSINESS_INFO.url,
-        "telephone": BUSINESS_INFO.phone,
-        "areaServed": formattedCity,
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19",
-          "addressLocality": "Hawalli",
-          "addressRegion": "Hawalli Governorate",
-          "addressCountry": "KW"
-        },
-        ...(cityData.coordinates && {
-          "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": cityData.coordinates.lat,
-            "longitude": cityData.coordinates.lng
-          }
-        })
-      },
-      {
-        "@type": "Service",
-        "name": formattedService,
-        "provider": {
-          "@type": "LocalBusiness",
-          "name": BUSINESS_INFO.name
-        },
-        "areaServed": {
-          "@type": "City",
-          "name": formattedCity
-        }
-      },
-      {
-        "@type": "FAQPage",
-        "mainEntity": FAQ_DATA.map(item => ({
-          "@type": "Question",
-          "name": item.question,
-          "acceptedAnswer": { "@type": "Answer", "text": item.answer }
-        }))
-      },
-      {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": BUSINESS_INFO.url },
-          { "@type": "ListItem", "position": 2, "name": formattedService, "item": `${BUSINESS_INFO.url}/${service?.toLowerCase()}-kuwait` },
-          { "@type": "ListItem", "position": 3, "name": formattedCity, "item": pageUrl }
-        ]
-      }
-    ]
-  }), [pageUrl, cityData, formattedCity, formattedService, FAQ_DATA, service]);
-
+  // 6. Success Render with Dynamic SEO & Schema
   return (
-    <main className="w-full min-h-screen bg-transparent text-slate-200 pt-32 pb-24">
+    <div className="min-h-screen bg-slate-950 text-white pb-24">
+      
+      {/* ==========================================
+          PROGRAMMATIC SEO ENGINE
+          ========================================== */}
+      <Helmet>
+        <title>{location.seo?.title || `Computer Repair in ${location.title} | KCROC`}</title>
+        <meta name="description" content={location.seo?.description} />
+        <link rel="canonical" href={location.seo?.canonicalUrl} />
+        
+        {/* Dynamic LocalBusiness Schema targeted to this specific city */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "name": `Kuwait Computer Repair On Call - ${location.title}`,
+            "description": location.description,
+            "telephone": location.phone || "+96555301913",
+            "areaServed": {
+              "@type": "City",
+              "name": location.title
+            },
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": location.coords.lat,
+              "longitude": location.coords.lng
+            }
+          })}
+        </script>
+      </Helmet>
 
-      {/* ─── SEO ─── */}
-      <MetaSEO
-        title={cityData.title || `${formattedService} in ${formattedCity} | KCROC Kuwait`}
-        description={cityData.description || `Professional ${formattedService.toLowerCase()} in ${formattedCity}, Kuwait.`}
-        canonical={pageUrl}
-      />
-      <SchemaMarkup schema={SCHEMA_DATA} />
-
-      {/* ─── BREADCRUMBS ─── */}
-      <nav aria-label="Breadcrumb" className="max-w-6xl mx-auto px-6 mb-8 relative z-10">
-        <ol className="flex items-center space-x-2 text-sm text-slate-400 font-medium">
-          <li><Link to="/" className="hover:text-cyan-400 transition-colors">Home</Link></li>
-          <li><span className="text-slate-600" aria-hidden="true">/</span></li>
-          <li><span className="text-slate-400">{formattedService}</span></li>
-          <li><span className="text-slate-600" aria-hidden="true">/</span></li>
-          <li aria-current="page" className="text-cyan-400">{formattedCity}</li>
-        </ol>
-      </nav>
-
-      {/* ─── HERO ─── */}
-      <section className="relative px-6 text-center mb-20 z-10">
-        <div
-          className="absolute top-[-50%] left-1/2 -translate-x-1/2 w-[600px] h-[500px] bg-cyan-600/20 blur-[80px] rounded-full pointer-events-none"
-          aria-hidden="true"
-        />
-        <div className="max-w-4xl mx-auto relative z-10">
-          <h1 className="text-4xl md:text-6xl font-black text-white mb-6 tracking-tight">
-            {formattedService} in{' '}
-            <span className="text-cyan-400">{formattedCity}</span>
+      {/* ==========================================
+          DYNAMIC UI (Pulls strictly from the Entity)
+          ========================================== */}
+      
+      {/* Hero Section */}
+      <section className="relative pt-32 pb-20 px-6 overflow-hidden border-b border-slate-800">
+        <div className="absolute inset-0 bg-slate-900/50 -z-10"></div>
+        <div className="max-w-4xl mx-auto text-center relative z-10">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 text-cyan-400 font-medium text-sm mb-6 border border-cyan-500/20">
+            <MapPin className="w-4 h-4" />
+            Serving {location.title} & Surrounding Areas
+          </div>
+          <h1 className="text-4xl md:text-6xl font-black mb-6 leading-tight">
+            Expert Computer Repair in <span className="text-cyan-400">{location.title}</span>
           </h1>
-          <p className="text-lg text-slate-400 max-w-2xl mx-auto mb-10">
-            {cityData.description || `Fast and reliable ${formattedService.toLowerCase()} in ${formattedCity}.`}
-            {cityData.landmark && (
-              <span> We operate near {cityData.landmark}.</span>
-            )}
+          <p className="text-lg md:text-xl text-slate-400 mb-10 max-w-2xl mx-auto leading-relaxed">
+            {location.description} We offer free Pick & Drop services within a {location.serviceRadiusKm}km radius of {location.landmark}.
           </p>
           
-          <a
-            href={waLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 px-8 py-4 rounded-full font-black hover:scale-105 transition-all shadow-[0_0_20px_rgba(34,211,238,0.3)] inline-flex items-center gap-2"
-          >
-            Book Free Pickup <ExternalLink size={20} aria-hidden="true" />
-          </a>
-        </div>
-      </section>
-
-      {/* ─── IMAGE ─── */}
-      {cityData.image && (
-        <div className="max-w-5xl mx-auto px-6 mb-20">
-          <img
-            src={cityData.image}
-            alt={`${formattedService} in ${formattedCity}, Kuwait`}
-            width="1200"
-            height="630"
-            loading="lazy"
-            decoding="async"
-            className="rounded-3xl w-full object-cover aspect-[1200/630]"
-          />
-        </div>
-      )}
-
-      {/* ─── NEARBY AREAS ─── */}
-      {nearbyAreas.length > 0 && (
-        <section aria-labelledby="nearby-heading" className="max-w-4xl mx-auto px-6 mb-16">
-          <div className="bg-slate-900/50 backdrop-blur-md p-8 rounded-3xl border border-slate-800">
-            <h2 id="nearby-heading" className="text-lg font-bold text-white mb-6 flex items-center gap-2">
-              <MapPin className="text-cyan-400" aria-hidden="true" />
-              Nearby Areas from {formattedCity}
-            </h2>
-            <div className="flex flex-wrap gap-3">
-              {nearbyAreas.map(area => (
-                <Link
-                  key={area}
-                  to={`/${service}-in-${toSlug(area)}`}
-                  className="px-4 py-2 bg-slate-800 hover:bg-cyan-900/30 rounded-lg text-sm border border-slate-700 hover:border-cyan-500/50 transition-colors flex items-center gap-1"
-                >
-                  {formattedService} in {area}
-                  <ArrowRight size={14} aria-hidden="true" />
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* ─── LOCATION INFO ─── */}
-      <section aria-labelledby="location-heading" className="max-w-4xl mx-auto px-6 mb-20">
-        <h2 id="location-heading" className="text-2xl font-black text-white mb-8 text-center">
-          Visit Our Central Repair Lab
-        </h2>
-        <div className="grid md:grid-cols-2 gap-8 bg-slate-900/30 backdrop-blur-md p-6 rounded-3xl border border-slate-800">
-          <div className="space-y-6">
-            <div className="flex gap-4">
-              <MapPin className="text-cyan-400 shrink-0 mt-0.5" aria-hidden="true" />
-              <div>
-                <p className="text-sm text-slate-400">Location</p>
-                <p className="text-white font-medium">
-                  Ibn Khaldoun St, Al Mullah Complex,<br />
-                  Basement Shop 19, Hawalli
-                </p>
-              </div>
-            </div>
-            <div className="flex gap-4">
-              <Clock className="text-cyan-400 shrink-0 mt-0.5" aria-hidden="true" />
-              <div>
-                <p className="text-sm text-slate-400">Hours</p>
-                <p className="text-white font-medium">10:00 AM – 10:00 PM Daily</p>
-              </div>
-            </div>
-          </div>
-          <MapComponent />
-        </div>
-      </section>
-
-      {/* ─── FAQ ─── */}
-      <section aria-labelledby="faq-heading" className="max-w-3xl mx-auto px-6 mb-24">
-        <h2 id="faq-heading" className="text-2xl font-black text-white mb-8">
-          FAQs for {formattedCity}
-        </h2>
-        <div className="space-y-4">
-          {FAQ_DATA.map((item) => (
-            <div
-              key={item.question}
-              className="bg-slate-900/50 backdrop-blur-md p-6 rounded-2xl border border-slate-800"
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a 
+              href={`tel:${location.phone || "+96555301913"}`}
+              onClick={() => trackCallClick(`Location Template - ${location.title}`)}
+              className="px-8 py-4 bg-cyan-600 hover:bg-cyan-500 text-white font-bold rounded-xl transition-all flex items-center justify-center gap-2"
             >
-              <h3 className="font-bold text-cyan-400 mb-2">{item.question}</h3>
-              <p className="text-slate-400 text-sm leading-relaxed">{item.answer}</p>
-            </div>
-          ))}
+              <Phone className="w-5 h-5" />
+              Call Now
+            </a>
+          </div>
         </div>
       </section>
 
-    </main>
+      {/* Trust Factors */}
+      <section className="py-12 px-6 border-b border-slate-800 bg-slate-900/20">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+          <div className="flex flex-col items-center">
+            <ShieldCheck className="w-10 h-10 text-emerald-400 mb-4" />
+            <h3 className="text-xl font-bold mb-2">Certified Techs</h3>
+            <p className="text-slate-400 text-sm">Professional motherboard and screen repair specialists.</p>
+          </div>
+          <div className="flex flex-col items-center">
+            <MapPin className="w-10 h-10 text-cyan-400 mb-4" />
+            <h3 className="text-xl font-bold mb-2">Free Pick & Drop</h3>
+            <p className="text-slate-400 text-sm">Available everywhere in and around {location.title}.</p>
+          </div>
+          <div className="flex flex-col items-center">
+            <Phone className="w-10 h-10 text-blue-400 mb-4" />
+            <h3 className="text-xl font-bold mb-2">Same Day Service</h3>
+            <p className="text-slate-400 text-sm">Most common repairs completed in under 24 hours.</p>
+          </div>
+        </div>
+      </section>
+
+    </div>
   );
 }
