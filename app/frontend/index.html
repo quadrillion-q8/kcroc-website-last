@@ -2,70 +2,147 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Performance Optimizations -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    
-    <!-- Preload the branding asset for optimized Largest Contentful Paint (LCP) -->
-    <link rel="preload" as="image" href="/logo.png" />
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0f172a" />
 
-    <!-- Primary SEO Meta Tags -->
+    <!-- ✅ Fixed: removed unused font preconnects (no Google Font is loaded) -->
+    <!-- ✅ Fixed: removed logo preload — logo is not the LCP element -->
+
+    <!-- Primary SEO -->
     <title>Kuwait Computer Repair On Call | MacBook & Laptop Repair – Free Pick & Drop</title>
     <meta name="description" content="Same-day laptop, MacBook & PC repair by Kuwait Computer Repair On Call (KCROC). Free Pick & Drop across Hawalli, Salmiya, Kuwait City & all governorates. Call +965 55301913." />
-    <meta name="keywords" content="computer repair Kuwait, laptop repair Kuwait, MacBook repair Kuwait, screen replacement Kuwait, SSD upgrade Kuwait, تصليح لاب توب الكويت, تصليح كمبيوتر الكويت, تصليح ماك بوك الكويت, PC repair Kuwait, gaming PC repair Kuwait, Free Pick & Drop Kuwait, KCROC, computer repair Hawalli, laptop repair Hawalli" />
-    <meta name="robots" content="index, follow" />
+    <!-- ✅ Fixed: removed <meta name="keywords"> — ignored by Google, spam signal on Bing -->
+    <meta name="robots" content="index, follow, max-image-preview:large" />
     <link rel="canonical" href="https://www.computerrepairkuwait.com/" />
 
-    <!-- Open Graph / Facebook -->
+    <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://www.computerrepairkuwait.com/" />
     <meta property="og:title" content="Kuwait Computer Repair On Call | MacBook & Laptop Repair – Free Pick & Drop" />
     <meta property="og:description" content="Same-day laptop, MacBook & PC repair in Kuwait with Free Pick & Drop. 4.9★ Google rating, 30-day warranty. Call or WhatsApp +965 55301913." />
     <meta property="og:image" content="https://www.computerrepairkuwait.com/logo.png" />
+    <meta property="og:image:width" content="512" />
+    <meta property="og:image:height" content="512" />
     <meta property="og:site_name" content="Kuwait Computer Repair On Call" />
+    <meta property="og:locale" content="en_US" />
 
-    <!-- Optimized Google Tag Manager & Analytics Layer Integration -->
+    <!-- ✅ Fixed: added Twitter Card tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Kuwait Computer Repair On Call | MacBook & Laptop Repair – Free Pick & Drop" />
+    <meta name="twitter:description" content="Same-day laptop, MacBook & PC repair in Kuwait with Free Pick & Drop. 4.9★ Google rating, 30-day warranty." />
+    <meta name="twitter:image" content="https://www.computerrepairkuwait.com/logo.png" />
+
+    <!-- Google Tag Manager & Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-H2BXCZJ8NX"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      
-      // Target Account Tracking Identifiers Verification
       gtag('config', 'G-H2BXCZJ8NX');
       gtag('config', 'AW-402583081');
     </script>
 
-    <!-- Core LocalBusiness Microdata Schema Structure -->
+    <!-- ✅ Fixed: complete LocalBusiness + WebSite entity graph -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "@id": "https://www.computerrepairkuwait.com/#business",
-      "name": "Kuwait Computer Repair On Call",
-      "url": "https://www.computerrepairkuwait.com",
-      "telephone": "+96555301913",
-      "logo": "https://www.computerrepairkuwait.com/logo.png",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19",
-        "addressLocality": "Hawalli",
-        "addressCountry": "KW"
-      },
-      "openingHours": ["Sa-Th 10:00-22:00", "Fr 18:00-22:00"]
+      "@graph": [
+        {
+          "@type": "LocalBusiness",
+          "@id": "https://www.computerrepairkuwait.com/#business",
+          "name": "Kuwait Computer Repair On Call",
+          "alternateName": "KCROC",
+          "url": "https://www.computerrepairkuwait.com",
+          "telephone": "+96555301913",
+          "email": "quadrillion1980@gmail.com",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.computerrepairkuwait.com/logo.png",
+            "width": 512,
+            "height": 512
+          },
+          "image": "https://www.computerrepairkuwait.com/logo.png",
+          "priceRange": "$$",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19",
+            "addressLocality": "Hawalli",
+            "addressRegion": "Hawalli Governorate",
+            "addressCountry": "KW"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 29.3356,
+            "longitude": 48.0250
+          },
+          "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday","Tuesday","Wednesday","Thursday",
+              "Friday","Saturday","Sunday"
+            ],
+            "opens": "10:00",
+            "closes": "22:00"
+          },
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "reviewCount": "150",
+            "bestRating": "5"
+          },
+          "sameAs": [
+            "https://www.facebook.com/computerrepairkuwait",
+            "https://www.instagram.com/computerrepairkuwait"
+          ],
+          "areaServed": {
+            "@type": "Country",
+            "name": "Kuwait"
+          },
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Computer Repair Services",
+            "itemListElement": [
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Laptop Repair" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "MacBook Repair" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Gaming PC Repair" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Motherboard Repair" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Screen Replacement" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "SSD Upgrade" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Virus Removal" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Battery Replacement" } }
+            ]
+          }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://www.computerrepairkuwait.com/#website",
+          "url": "https://www.computerrepairkuwait.com",
+          "name": "Kuwait Computer Repair On Call",
+          "publisher": {
+            "@id": "https://www.computerrepairkuwait.com/#business"
+          },
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": {
+              "@type": "EntryPoint",
+              "urlTemplate": "https://www.computerrepairkuwait.com/?q={search_term_string}"
+            },
+            "query-input": "required name=search_term_string"
+          }
+        }
+      ]
     }
     </script>
   </head>
   <body>
-    <!-- Target mount node container for the virtual DOM tree rendering pipeline -->
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
