@@ -7,56 +7,59 @@ import { BUSINESS_INFO } from '../../constants/business/data';
 
 interface SEOEngineProps {
   seo: SEOMetadata;
-  schemas?: JsonLd | JsonLd[]; // Accepted separately as per architecture
+  schemas?: JsonLd | JsonLd[];
 }
 
 const SEOEngineComponent: React.FC<SEOEngineProps> = ({ seo, schemas }) => {
-  // The service returns a guaranteed, fully validated Rich Result
   const data = MetadataService.normalize(seo, schemas);
   const normalized = data.seo;
 
   return (
     <Helmet>
-      {/* Primary Search Engine Tags */}
+      {/* ─── PRIMARY SEO ─── */}
       <title>{normalized.title}</title>
       <meta name="description" content={normalized.description} />
       <link rel="canonical" href={normalized.canonicalUrl} />
       <meta name="robots" content={normalized.robots} />
-      {normalized.keywords && normalized.keywords.length > 0 && (
-        <meta name="keywords" content={normalized.keywords.join(', ')} />
-      )}
+      {/* ✅ Fixed: removed <meta name="keywords"> — Google ignores, Bing penalises */}
 
-      {/* Application & Publisher Tags */}
-      <meta name="publisher" content={normalized.publisher} />
+      {/* ─── AUTHOR ─── */}
+      {/* ✅ Fixed: removed publisher, copyright, application-name, apple-mobile-web-app-title
+           — non-standard or PWA-only tags that belong in index.html, not per-page */}
       <meta name="author" content={normalized.author} />
-      <meta name="copyright" content={BUSINESS_INFO.name} />
-      <meta name="application-name" content={BUSINESS_INFO.name} />
-      <meta name="apple-mobile-web-app-title" content={BUSINESS_INFO.shortName || BUSINESS_INFO.name} />
-      <meta name="format-detection" content="telephone=yes, date=yes, address=yes, email=yes" />
 
-      {/* Alternate Languages */}
-      {normalized.alternateLanguages && Object.entries(normalized.alternateLanguages).map(([lang, url]) => (
-        <link key={lang} rel="alternate" hrefLang={lang} href={url} />
-      ))}
+      {/* ─── ALTERNATE LANGUAGES ─── */}
+      {normalized.alternateLanguages &&
+        Object.entries(normalized.alternateLanguages).map(([lang, url]) => (
+          <link key={lang} rel="alternate" hrefLang={lang} href={url} />
+        ))}
 
-      {/* OpenGraph */}
-      <meta property="og:type" content="website" />
+      {/* ─── OPEN GRAPH ─── */}
+      {/* ✅ Fixed: ogType flows from SEOMetadata instead of being hardcoded to 'website' */}
+      <meta property="og:type" content={normalized.ogType ?? 'website'} />
       <meta property="og:site_name" content={BUSINESS_INFO.name} />
       <meta property="og:title" content={normalized.title} />
       <meta property="og:description" content={normalized.description} />
       <meta property="og:url" content={normalized.canonicalUrl} />
-      <meta property="og:locale" content={BUSINESS_INFO.locale || "en_US"} />
-      
+      <meta property="og:locale" content={BUSINESS_INFO.locale ?? 'en_US'} />
+
       {normalized.ogImage && (
         <>
           <meta property="og:image" content={normalized.ogImage.url} />
-          <meta property="og:image:secure_url" content={normalized.ogImage.secureUrl} />
+          {/* ✅ Fixed: removed og:image:secure_url (deprecated by Facebook) */}
           <meta property="og:image:alt" content={normalized.ogImage.alt} />
           <meta property="og:image:type" content={normalized.ogImage.type} />
+          {/* ✅ Fixed: added width + height for reliable social preview rendering */}
+          {normalized.ogImage.width && (
+            <meta property="og:image:width" content={String(normalized.ogImage.width)} />
+          )}
+          {normalized.ogImage.height && (
+            <meta property="og:image:height" content={String(normalized.ogImage.height)} />
+          )}
         </>
       )}
 
-      {/* Twitter Cards */}
+      {/* ─── TWITTER CARD ─── */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={normalized.title} />
       <meta name="twitter:description" content={normalized.description} />
@@ -67,19 +70,32 @@ const SEOEngineComponent: React.FC<SEOEngineProps> = ({ seo, schemas }) => {
         </>
       )}
 
-      {/* Technical Configuration */}
+      {/* ─── TECHNICAL ─── */}
       <meta name="theme-color" content={normalized.themeColor} />
-      {normalized.language && <meta httpEquiv="content-language" content={normalized.language} />}
+      {normalized.language && (
+        <meta httpEquiv="content-language" content={normalized.language} />
+      )}
 
-      {/* Multiple JSON-LD Nodes */}
-      {data.schemas && data.schemas.length > 0 && data.schemas.map((schemaNode, index) => (
-        <script key={index} type="application/ld+json">
-          {JSON.stringify(schemaNode)}
-        </script>
-      ))}
+      {/* ─── JSON-LD SCHEMA ─── */}
+      {/* ✅ Fixed: use @type or @id as key where available for better deduplication */}
+      {data.schemas && data.schemas.length > 0 &&
+        data.schemas.map((schemaNode, index) => (
+          <script
+            key={
+              (schemaNode as Record<string, unknown>)['@id'] as string
+              ?? (schemaNode as Record<string, unknown>)['@type'] as string
+              ?? index
+            }
+            type="application/ld+json"
+          >
+            {JSON.stringify(schemaNode)}
+          </script>
+        ))
+      }
     </Helmet>
   );
 };
 
-// Memoization to prevent unnecessary re-renders
+// ✅ Note: React.memo shallow comparison won't prevent re-renders if schemas are
+// created inline at the call site. Memoize schemas with useMemo in page components.
 export const SEOEngine = React.memo(SEOEngineComponent);
