@@ -1,14 +1,13 @@
 // File: app/frontend/src/core/services/MetadataService.ts
 import { SEOMetadata, JsonLd, MetadataResult } from '../types';
-import { BUSINESS_INFO, DEFAULT_SEO } from '../../constants/business/data';
+import { BUSINESS_INFO, DEFAULT_SEO } from '../../constants/data'; // ✅ Fixed: Correct directory pathing
 import { MetadataValidator } from '../validators/MetadataValidator';
 
 export class MetadataService {
-  // 14. Cache Results
   private static cache = new Map<string, MetadataResult>();
 
   /**
-   * 3 & 4. Normalizes relative URLs into absolute URLs safely.
+   * Normalizes relative URLs into absolute URLs safely.
    */
   private static ensureAbsoluteUrl(url: string | undefined, base: string): string {
     if (!url) return '';
@@ -19,7 +18,7 @@ export class MetadataService {
   }
 
   /**
-   * 5. Normalizes and deduplicates keywords immutably.
+   * Normalizes and deduplicates keywords immutably.
    */
   private static normalizeKeywords(keywords?: string[]): string[] {
     if (!keywords || !Array.isArray(keywords)) return [];
@@ -30,7 +29,7 @@ export class MetadataService {
   }
 
   /**
-   * 2. Pure function: Never mutates incoming data. Returns a frozen Rich Result.
+   * Pure function: Never mutates incoming data. Returns a frozen Rich Result.
    */
   public static normalize(seoInput: SEOMetadata, schemasInput?: JsonLd | JsonLd[]): MetadataResult {
     const cacheKey = seoInput.canonicalUrl || 'default_key';
@@ -38,16 +37,16 @@ export class MetadataService {
       return this.cache.get(cacheKey)!;
     }
 
-    const baseUrl = BUSINESS_INFO.url || 'https://www.computerrepairkuwait.com';
+    const baseUrl = BUSINESS_INFO?.url || 'https://www.computerrepairkuwait.com';
     const { errors, warnings } = MetadataValidator.validate(seoInput, baseUrl);
 
-    // 1. Use Vite-native environment variables
+    // Use Vite-native environment variables
     if (import.meta.env.DEV) {
       warnings.forEach(w => console.warn(`[MetadataService] ⚠️ ${w}`));
       errors.forEach(e => console.error(`[MetadataService] ❌ ${e}`));
     }
 
-    // 6. Consolidate Robots Directives
+    // Consolidate Robots Directives
     const robotsSet = new Set<string>();
     if (seoInput.robots) {
       seoInput.robots.split(',').forEach(r => robotsSet.add(r.trim().toLowerCase()));
@@ -57,7 +56,7 @@ export class MetadataService {
     if (seoInput.noArchive) robotsSet.add('noarchive');
     if (seoInput.noSnippet) robotsSet.add('nosnippet');
 
-    // 12. Separate Schema extraction
+    // Separate Schema extraction
     let schemas: JsonLd[] = [];
     if (schemasInput) {
       schemas = Array.isArray(schemasInput) ? schemasInput : [schemasInput];
@@ -67,36 +66,39 @@ export class MetadataService {
 
     // Combine fallbacks into a brand-new immutable object
     const normalizedSeo: SEOMetadata = {
-      title: seoInput.title || DEFAULT_SEO.title,
-      description: seoInput.description || DEFAULT_SEO.description,
+      title: seoInput.title || DEFAULT_SEO?.title || BUSINESS_INFO?.name,
+      description: seoInput.description || DEFAULT_SEO?.description || 'Computer Repair Services in Kuwait',
       canonicalUrl: this.ensureAbsoluteUrl(seoInput.canonicalUrl, baseUrl),
       keywords: this.normalizeKeywords(seoInput.keywords),
       robots: Array.from(robotsSet).join(', '),
       
-      // 6. Language Defaults
-      language: seoInput.language || BUSINESS_INFO.locale || 'en-KW',
-      author: seoInput.author || BUSINESS_INFO.name,
-      publisher: seoInput.publisher || BUSINESS_INFO.name,
-      themeColor: seoInput.themeColor || BUSINESS_INFO.themeColor,
+      // Language Defaults
+      language: seoInput.language || BUSINESS_INFO?.locale || 'en-KW',
+      author: seoInput.author || BUSINESS_INFO?.name,
+      publisher: seoInput.publisher || BUSINESS_INFO?.name,
+      themeColor: seoInput.themeColor || BUSINESS_INFO?.themeColor,
       
-      // 8. OpenGraph Normalization
+      // OpenGraph Normalization
+      ogType: seoInput.ogType || 'website',
       ogImage: {
-        url: this.ensureAbsoluteUrl(seoInput.ogImage?.url || DEFAULT_SEO.ogImage, baseUrl),
-        secureUrl: this.ensureAbsoluteUrl(seoInput.ogImage?.secureUrl || seoInput.ogImage?.url || DEFAULT_SEO.ogImage, baseUrl),
-        alt: seoInput.ogImage?.alt || seoInput.title || DEFAULT_SEO.title,
+        url: this.ensureAbsoluteUrl(seoInput.ogImage?.url || DEFAULT_SEO?.ogImage || '/logo.png', baseUrl),
+        secureUrl: this.ensureAbsoluteUrl(seoInput.ogImage?.secureUrl || seoInput.ogImage?.url || DEFAULT_SEO?.ogImage || '/logo.png', baseUrl),
+        alt: seoInput.ogImage?.alt || seoInput.title || DEFAULT_SEO?.title || BUSINESS_INFO?.name,
         type: seoInput.ogImage?.type || 'image/jpeg',
+        width: seoInput.ogImage?.width || 1200,
+        height: seoInput.ogImage?.height || 630,
       },
       
-      // 9. Twitter Normalization
+      // Twitter Normalization
       twitterImage: {
-        url: this.ensureAbsoluteUrl(seoInput.twitterImage?.url || seoInput.ogImage?.url || DEFAULT_SEO.ogImage, baseUrl),
-        alt: seoInput.twitterImage?.alt || seoInput.ogImage?.alt || seoInput.title || DEFAULT_SEO.title,
+        url: this.ensureAbsoluteUrl(seoInput.twitterImage?.url || seoInput.ogImage?.url || DEFAULT_SEO?.ogImage || '/logo.png', baseUrl),
+        alt: seoInput.twitterImage?.alt || seoInput.ogImage?.alt || seoInput.title || DEFAULT_SEO?.title || BUSINESS_INFO?.name,
       },
       
       alternateLanguages: seoInput.alternateLanguages || {}
     };
 
-    // 10 & 13. Return a Frozen, Rich Result
+    // Return a Frozen, Rich Result
     const result: MetadataResult = Object.freeze({
       seo: Object.freeze(normalizedSeo),
       schemas: Object.freeze([...schemas]),
