@@ -59,6 +59,7 @@ export interface SEOMetadata {
   author?: string;
   publisher?: string;
   language?: string;
+  ogType?: 'website' | 'article' | 'profile' | 'local.business' | string; // Extensible OpenGraph Type
   ogImage?: ImageMetadata;
   twitterImage?: ImageMetadata;
   themeColor?: string;
