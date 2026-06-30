@@ -6,7 +6,7 @@ import { KCROC_GRAPH } from '../data/graph';
 
 /**
  * 15. REPOSITORY REGISTRY
- * Centralizes instantiation and dependency injection.
+ * Centralized dependency injection container.
  */
 class RepositoryRegistry {
   public readonly services: ServiceRepository;
@@ -14,10 +14,18 @@ class RepositoryRegistry {
   public readonly faqs: FAQRepository;
 
   constructor() {
-    // Inject the Data Source (graph) into the repositories
+    // Injecting the raw graph data source
+    // The repositories rely on the data, but the registry handles the wiring.
     this.services = new ServiceRepository(KCROC_GRAPH);
     this.locations = new LocationRepository(KCROC_GRAPH);
-    this.faqs = new FAQRepository(KCROC_GRAPH);
+    
+    // ADAPTATION LAYER:
+    // We create a mini-adapter here to satisfy the IFAQDataSource interface
+    // required by FAQRepository, ensuring the repository doesn't have 
+    // a hard dependency on the full global graph.
+    this.faqs = new FAQRepository({
+      getFAQs: () => KCROC_GRAPH.faqs || []
+    });
   }
 }
 
