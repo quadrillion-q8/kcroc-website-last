@@ -71,6 +71,14 @@ export interface SEOMetadata {
   structuredData?: JsonLd | JsonLd[]; // Replaces the generic 'schema: any'
 }
 
+// Envelope for the MetadataService to return pure, frozen results
+export interface MetadataResult {
+  seo: SEOMetadata;
+  schemas: JsonLd[];
+  warnings: string[];
+  errors: string[];
+}
+
 export interface SearchMetadata {
   keywords: string[];
   synonyms: string[];
