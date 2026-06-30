@@ -1,23 +1,22 @@
 // File: app/frontend/src/pages/LocationTemplate.tsx
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { useParams, Navigate } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
-import { locationRepository } from '../core/repositories/LocationRepository';
+import { registry } from '../core/registry'; // ✅ Centralized Registry
 import { RelationshipService } from '../core/services/RelationshipService';
+import { SEOEngine } from '../core/components/SEOEngine'; // ✅ Enterprise SEO Engine
 import { LocationEntity, ServiceEntity } from '../core/types';
 import { Loader2, MapPin, Phone, ShieldCheck, ArrowRight } from 'lucide-react';
-import { trackCallClick } from '../utils/analytics'; // Preserving your existing analytics!
+import { trackCallClick } from '../utils/analytics';
 
 export default function LocationTemplate() {
-  // 1. Get the dynamic URL parameter (e.g., 'hawalli' from /location/hawalli)
   const { slug } = useParams<{ slug: string }>();
 
-  // 2. Enterprise State Management (Now includes related services)
+  // State Management
   const [location, setLocation] = useState<LocationEntity | null>(null);
   const [relatedServices, setRelatedServices] = useState<ServiceEntity[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
-  // 3. Fetch Location and Relationships Asynchronously based on the URL
+  // Fetch Location and Relationships
   useEffect(() => {
     const fetchData = async () => {
       if (!slug) {
@@ -27,9 +26,9 @@ export default function LocationTemplate() {
 
       try {
         setIsLoading(true);
-        // Promise.all fetches both the Location and the Related Services simultaneously for maximum performance
+        // ✅ Fetching from the Registry, keeping the UI decoupled from the DB
         const [locationData, servicesData] = await Promise.all([
-          locationRepository.findBySlug(slug),
+          registry.locations.findBySlug(slug),
           RelationshipService.getServicesForLocation(slug, 6)
         ]);
         
@@ -46,7 +45,29 @@ export default function LocationTemplate() {
     fetchData();
   }, [slug]);
 
-  // 4. Loading State
+  // ✅ Memoize schemas to prevent React from breaking the SEOEngine's React.memo wrapper
+  const schemas = useMemo(() => {
+    if (!location) return [];
+    
+    return [{
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "@id": `https://www.computerrepairkuwait.com/location/${location.slug}#localbusiness`,
+      "name": `Kuwait Computer Repair On Call - ${location.title}`,
+      "description": location.description,
+      "telephone": location.phone || "+96555301913",
+      "areaServed": {
+        "@type": "City",
+        "name": location.title
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": location.coords.lat,
+        "longitude": location.coords.lng
+      }
+    }];
+  }, [location]);
+
   if (isLoading) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-slate-950 text-white">
@@ -56,43 +77,17 @@ export default function LocationTemplate() {
     );
   }
 
-  // 5. 404 / Not Found State (If someone types /location/fake-city)
   if (!location) {
     return <Navigate to="/404" replace />;
   }
 
-  // 6. Success Render with Dynamic SEO, Schema, and Relationships
   return (
     <div className="min-h-screen bg-slate-950 text-white pb-24">
       
       {/* ==========================================
           PROGRAMMATIC SEO ENGINE
           ========================================== */}
-      <Helmet>
-        <title>{location.seo?.title || `Computer Repair in ${location.title} | KCROC`}</title>
-        <meta name="description" content={location.seo?.description} />
-        <link rel="canonical" href={location.seo?.canonicalUrl} />
-        
-        {/* Dynamic LocalBusiness Schema targeted to this specific city */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "LocalBusiness",
-            "name": `Kuwait Computer Repair On Call - ${location.title}`,
-            "description": location.description,
-            "telephone": location.phone || "+96555301913",
-            "areaServed": {
-              "@type": "City",
-              "name": location.title
-            },
-            "geo": {
-              "@type": "GeoCoordinates",
-              "latitude": location.coords.lat,
-              "longitude": location.coords.lng
-            }
-          })}
-        </script>
-      </Helmet>
+      {location.seo && <SEOEngine seo={location.seo} schemas={schemas} />}
 
       {/* ==========================================
           DYNAMIC UI (Pulls strictly from the Entity)
@@ -147,9 +142,7 @@ export default function LocationTemplate() {
         </div>
       </section>
 
-      {/* ==========================================
-          AUTOMATED INTERNAL LINKING ENGINE
-          ========================================== */}
+      {/* Automated Internal Linking Engine */}
       <section className="py-20 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="mb-12">
@@ -165,7 +158,7 @@ export default function LocationTemplate() {
             {relatedServices.map((service) => (
               <a 
                 key={service.id}
-                href={`/${service.slug}`} // Passes SEO authority to the Service Page!
+                href={`/${service.slug}`}
                 className="group p-6 bg-slate-900 border border-slate-800 rounded-xl hover:border-cyan-500 transition-colors flex flex-col justify-between"
               >
                 <div>
