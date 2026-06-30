@@ -3,7 +3,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { SEOMetadata, JsonLd } from '../types';
 import { MetadataService } from '../services/MetadataService';
-import { BUSINESS_INFO } from '../../../constants'; // ✅ Fixed: Corrected 3-level directory traversal via barrel file
+import { BUSINESS_INFO } from '../../constants/data'; // ✅ Fixed: Correct directory traversal
 
 interface SEOEngineProps {
   seo: SEOMetadata;
