@@ -37,12 +37,17 @@ export enum EntityType {
  * 2. COMPONENT METADATA INTERFACES
  * ==========================================
  */
+// Strict typing for Schema.org JSON-LD to completely eliminate `any`
+export type JsonLd = Record<string, unknown>;
+
 export interface ImageMetadata {
   url: string;
   alt: string;
+  type?: string;     // e.g., 'image/jpeg'
   width?: number;
   height?: number;
   caption?: string;
+  secureUrl?: string; // Important for strict OpenGraph implementations
 }
 
 export interface SEOMetadata {
@@ -63,7 +68,7 @@ export interface SEOMetadata {
   noArchive?: boolean;
   noSnippet?: boolean;
   alternateLanguages?: Record<string, string>;
-  structuredData?: any;       // JSON-LD Injection
+  structuredData?: JsonLd | JsonLd[]; // Replaces the generic 'schema: any'
 }
 
 export interface SearchMetadata {
@@ -172,12 +177,23 @@ export interface PaginationOptions {
   limit?: number;
   offset?: number;
   sort?: string;
-  filter?: Record<string, any>;
+  filter?: Record<string, unknown>;
 }
 
+// Enterprise pagination envelope for scalable data fetching
+export interface PaginatedResult<T> {
+  items: T[];
+  total: number;
+  offset: number;
+  limit: number;
+  hasMore: boolean;
+}
+
+// Global contract for all Data Repositories
 export interface IRepository<T extends BaseEntity> {
-  findAll(options?: PaginationOptions): Promise<T[]>;
+  // Returns either a raw array (legacy fallback) or a PaginatedResult (enterprise standard)
+  findAll(options?: PaginationOptions): Promise<T[] | PaginatedResult<T>>;
   findById(id: string): Promise<T | undefined>;
   findBySlug(slug: string): Promise<T | undefined>;
-  search(query: string, options?: PaginationOptions): Promise<T[]>;
+  search(query: string, options?: PaginationOptions): Promise<T[] | PaginatedResult<T>>;
 }
