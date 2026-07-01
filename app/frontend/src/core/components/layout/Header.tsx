@@ -8,20 +8,16 @@ import { ROUTES } from '../../../constants/routes';
 export const Header: React.FC = () => {
   return (
     <header className="fixed top-0 w-full z-sticky bg-surface-glass backdrop-blur-md border-b border-surface-hover">
-      {/* Increased height to h-24 to comfortably fit a logo and menu */}
+      {/* 
+        We use h-24 here. This means the top of your page content 
+        MUST have at least 24 (6rem) of padding to prevent hiding!
+      */}
       <div className="container mx-auto px-4 h-24 flex items-center justify-between">
         
-        {/* 1. LOGO SECTION */}
+        {/* 1. LOGO SECTION - RESTORED */}
         <Link to="/" className="flex items-center gap-2">
-          {/* 
-            INSTRUCTION: If you want to use your actual image logo, 
-            uncomment the <img> tag below and delete the <span> tag! 
-          */}
-          {/* <img src="/logo.png" alt="KCROC Logo" className="h-12 w-auto" /> */}
-          
-          <span className="text-h3 font-heading font-black text-white">
-            KC<span className="text-brand-primary">ROC</span>
-          </span>
+          {/* Ensure logo.png is in your /public folder */}
+          <img src="/logo.png" alt="KCROC Logo" className="h-12 w-auto object-contain" />
         </Link>
 
         {/* 2. MAIN MENU (Desktop Only) */}
@@ -31,7 +27,7 @@ export const Header: React.FC = () => {
           <Link to={ROUTES.contact} className="text-body font-bold text-slate-300 hover:text-brand-primary transition-colors">Contact Us</Link>
         </nav>
 
-        {/* 3. CALL TO ACTION & MOBILE MENU */}
+        {/* 3. CALL TO ACTION */}
         <div className="flex items-center gap-4">
           <a 
             href={`tel:${BUSINESS_INFO.phone}`} 
@@ -41,12 +37,11 @@ export const Header: React.FC = () => {
             {BUSINESS_INFO.phone}
           </a>
           
-          {/* Mobile Hamburger Icon (Visible only on small screens) */}
+          {/* Mobile Menu Trigger */}
           <button className="lg:hidden p-2 text-brand-primary hover:text-brand-accent transition-colors">
             <Menu className="w-7 h-7" />
           </button>
         </div>
-
       </div>
     </header>
   );
