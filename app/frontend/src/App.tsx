@@ -1,32 +1,39 @@
 // File: app/frontend/src/App.tsx
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { RootLayout } from './core/components/layout/RootLayout';
-import Home from './pages/Home';
-import { ServicePage } from './pages/ServicePage';
+
+// ⚡ PERFORMANCE: We "lazy load" the pages so they only download when the user clicks them
+const Home = lazy(() => import('./pages/Home'));
+const ServicePage = lazy(() => import('./pages/ServicePage').then(module => ({ default: module.ServicePage })));
+
+// ⏳ UI: A sleek enterprise loading spinner to show while the micro-chunks download
+const PageLoader = () => (
+  
+    
+  
+);
 
 export const App: React.FC = () => {
   return (
-    <BrowserRouter>
-      <Routes>
-        {/* The RootLayout wraps the whole site, keeping your Header & Footer visible */}
-        <Route path="/" element={<RootLayout />}>
+    
+      
+        }>
           
-          {/* 1. The Home Page */}
-          <Route index element={<Home />} />
+          {/* Suspense tells React to show the Spinner while waiting for the Lazy page */}
+          }>
+              
+            
+          } />
           
-          {/* 2. The Magic Dynamic Route! 
-            This single line automatically creates pages for:
-            /laptop-repair-kuwait
-            /macbook-repair-kuwait
-            /gaming-pc-repair-kuwait
-            ...and any future services you add to the registry!
-          */}
-          <Route path="/:slug" element={<ServicePage />} />
+          }>
+              
+            
+          } />
 
-        </Route>
-      </Routes>
-    </BrowserRouter>
+        
+      
+    
   );
 };
 
