@@ -1,37 +1,52 @@
+/* 1. Fonts and Tailwind Imports */
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap&text=ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789%20!%40%23%24%25%5E%26*()-_%3D%2B%5B%5D%7B%7D%3B%3A\'%22%2C.%3C%3E%2F%3F');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --primary-cyan: #00D9FF;
-  --primary-cyan-rgb: 0, 217, 255;
-  --dark-navy: #0A0A0A;
-  --charcoal: #1A1A1A;
-  --light-gray: #B0B0B0;
-  --success-green: #10B981;
-  --warning-orange: #F59E0B;
-  --error-red: #EF4444;
+/* 2. THE CSS VARIABLE BRIDGE (Fixes broken styles) */
+@layer base {
+  :root {
+    /* Legacy Branding */
+    --primary-cyan: #06b6d4;
+    --primary-cyan-rgb: 6, 182, 212;
+    --dark-navy: #020617;
+    --charcoal: #1A1A1A;
+    --light-gray: #B0B0B0;
+    --success-green: #10B981;
+
+    /* Tailwind Semantic Variables (These make your site render correctly) */
+    --background: 222 84% 5%;
+    --foreground: 210 40% 98%;
+    --primary: 192 95% 42%;
+    --primary-foreground: 210 40% 98%;
+    --border: 217 32% 17%;
+    --card: 222 84% 7%;
+    --card-foreground: 210 40% 98%;
+    --ring: 192 95% 42%;
+    --radius: 0.75rem;
+  }
+
+  html, body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 16px;
+    scroll-behavior: smooth;
+    font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+    background-color: var(--dark-navy);
+    color: white;
+    line-height: 1.6;
+    overflow-x: hidden;
+    min-height: 100vh; /* Ensures footer stays down */
+  }
+
+  *, *::before, *::after { box-sizing: inherit; }
 }
 
-html, body {
-  width: 100%;
-  max-width: 100%;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-size: 16px;
-  scroll-behavior: smooth;
-  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background-color: var(--dark-navy);
-  color: white;
-  line-height: 1.6;
-  overflow-x: hidden;
-}
-
-*, *::before, *::after { box-sizing: inherit; }
-
-/* Performance Optimized Image Handling */
+/* 3. PERFORMANCE OPTIMIZED MEDIA */
 img, video {
   max-width: 100%;
   display: block;
@@ -39,10 +54,22 @@ img, video {
 
 .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 16px; }
 
-/* ... (All your existing layout, header, navigation, and animation styles remain below here) ... */
-
-/* Header Styles, Navigation, Cards, Glow Effects, and Media Queries stay exactly as you had them */
-.header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(10, 10, 10, 0.95); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(0, 217, 255, 0.2); transition: all 0.3s ease; }
-.logo-image { transition: all 0.3s ease; filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3)); }
-
-/* ... Copy the rest of your original CSS code from line 102 down to the end of your file here ... */
+/* 4. LEGACY LAYOUT STYLES (Kept as requested) */
+@layer components {
+  .header { 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    z-index: 1000; 
+    background: rgba(10, 10, 10, 0.95); 
+    backdrop-filter: blur(20px); 
+    border-bottom: 1px solid rgba(0, 217, 255, 0.2); 
+    transition: all 0.3s ease; 
+  }
+  
+  .logo-image { 
+    transition: all 0.3s ease; 
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3)); 
+  }
+}
