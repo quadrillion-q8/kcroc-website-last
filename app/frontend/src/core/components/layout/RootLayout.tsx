@@ -6,17 +6,12 @@ import { Footer } from './Footer';
 
 export const RootLayout: React.FC = () => {
   return (
-    
-      {/* Top Level Global Navigation */}
-      
-      
-      {/* Content Engine Outlet Viewport */}
-      
-        
-      
-
-      {/* Bottom Anchor Global Footer */}
-      
-    
+    <div className="min-h-screen flex flex-col bg-brand-dark text-foreground font-sans selection:bg-brand-primary/30">
+      <Header />
+      <main className="flex-grow flex flex-col">
+        <Outlet />
+      </main>
+      <Footer />
+    </div>
   );
 };
