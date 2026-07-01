@@ -5,21 +5,23 @@ import tailwindcssAnimate from "tailwindcss-animate";
 export default {
   darkMode: ["class"],
   
-  // ✅ 1. PERFORMANCE: Tightly scoped content globs to reduce build scanning time
+  // ✅ FIXED: Broadened scanning paths to include all folders where your code lives
   content: [
     "./index.html",
-    "./src/**/*.{ts,tsx,js,jsx}"
+    "./src/**/*.{ts,tsx,js,jsx}",
+    "./components/**/*.{ts,tsx,js,jsx}",
+    "./pages/**/*.{ts,tsx,js,jsx}",
+    "./app/**/*.{ts,tsx,js,jsx}",
+    "./core/**/*.{ts,tsx,js,jsx}"
   ],
   prefix: "",
   theme: {
     container: {
       center: true,
-      // ✅ 2. SPACING SYSTEM: Standardized container paddings
       padding: { DEFAULT: "1.5rem", md: "2rem", lg: "4rem" },
       screens: { "2xl": "1400px" },
     },
     extend: {
-      // ✅ 3. TYPOGRAPHY SCALE: Semantic naming with paired line-heights and tracking
       fontFamily: {
         sans: ["Inter", "system-ui", "sans-serif"],
         heading: ["Montserrat", "system-ui", "sans-serif"],
@@ -34,8 +36,6 @@ export default {
         caption: ["0.875rem", { lineHeight: "1.5", fontWeight: "400" }],
         overline: ["0.75rem", { lineHeight: "2", letterSpacing: "0.1em", fontWeight: "600" }],
       },
-
-      // ✅ 4. Z-INDEX SCALE: No more scattered magic numbers
       zIndex: {
         hide: "-1",
         base: "0",
@@ -48,28 +48,24 @@ export default {
         toast: "1500",
         tooltip: "1600",
       },
-
       colors: {
-        // --- SEMANTIC DESIGN TOKENS ---
         brand: {
-          dark: '#020617',     // slate-950
-          primary: '#06b6d4',  // cyan-500
-          accent: '#38bdf8',   // sky-400
+          dark: '#020617',
+          primary: '#06b6d4',
+          accent: '#38bdf8',
         },
         surface: {
-          DEFAULT: '#0f172a',  // slate-900 (Cards, Sections)
-          hover: '#1e293b',    // slate-800
-          elevated: '#334155', // slate-700 (Dropdowns, Modals)
-          glass: 'rgba(15, 23, 42, 0.7)', // Glassmorphism layer
+          DEFAULT: '#0f172a',
+          hover: '#1e293b',
+          elevated: '#334155',
+          glass: 'rgba(15, 23, 42, 0.7)',
         },
         status: {
-          success: '#10b981',  // emerald-500
-          warning: '#f59e0b',  // amber-500
-          error: '#ef4444',    // red-500
-          info: '#3b82f6',     // blue-500
+          success: '#10b981',
+          warning: '#f59e0b',
+          error: '#ef4444',
+          info: '#3b82f6',
         },
-
-        // --- SHADCN/UI CORE TOKENS ---
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -104,32 +100,24 @@ export default {
           foreground: "hsl(var(--card-foreground))",
         },
       },
-
-      // ✅ 5. ELEVATION SYSTEM: Reusable shadows
       boxShadow: {
         surface: "0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 1px 2px -1px rgba(0, 0, 0, 0.2)",
         elevated: "0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -4px rgba(0, 0, 0, 0.3)",
         floating: "0 25px 50px -12px rgba(0, 0, 0, 0.7)",
-        glow: "0 0 20px 0 rgba(6, 182, 212, 0.3)", // Cyan glow for primary elements
+        glow: "0 0 20px 0 rgba(6, 182, 212, 0.3)",
       },
-
-      // ✅ 6. REUSABLE GRADIENTS
       backgroundImage: {
         'gradient-hero': 'linear-gradient(to right bottom, #020617, #0f172a)',
         'gradient-primary': 'linear-gradient(to right, #06b6d4, #38bdf8)',
         'glass-overlay': 'linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 100%)',
       },
-
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
-        // ✅ 7. COMPONENT SIZING (Shapes)
         card: "1rem",
         button: "0.5rem",
       },
-
-      // ✅ 8. ANIMATION LIBRARY: Reusable keyframes
       keyframes: {
         "accordion-down": {
           from: { height: "0" },
@@ -152,7 +140,7 @@ export default {
           "0%, 100%": { transform: "translateY(0)" },
           "50%": { transform: "translateY(-10px)" },
         },
-        "shimmer": { // Loading skeleton animation
+        "shimmer": {
           "100%": { transform: "translateX(100%)" }
         }
       },
@@ -166,7 +154,6 @@ export default {
       },
     },
   },
-  // ✅ 9. PLUGIN ORGANIZATION
   plugins: [
     tailwindcssAnimate,
   ],
