@@ -1,6 +1,6 @@
 // File: app/frontend/vite.config.ts
 import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
+import react from '@vitejs/plugin-react-swc'; // ✅ FIXED: Using your project's actual SWC compiler
 
 export default defineConfig({
   plugins: [react()],
