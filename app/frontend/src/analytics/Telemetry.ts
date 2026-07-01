@@ -1,6 +1,6 @@
 // File: app/frontend/src/analytics/Telemetry.ts
 
-// 1. We strictly define the types of events so developers don't make spelling mistakes
+// 1. We strictly define the types of events so no one can make a spelling mistake
 export type EventCategory = 'Contact' | 'Navigation' | 'Service' | 'Booking';
 
 export interface TrackingEvent {
@@ -10,12 +10,12 @@ export interface TrackingEvent {
   value?: number;
 }
 
-// 2. The master function that all buttons will call
+// 2. The master function that all buttons will talk to
 export const trackEvent = ({ category, action, label, value }: TrackingEvent) => {
-  // Always log to the console for developer testing
+  // Always log to the console so we can see it working while developing
   console.log(`📊 [Telemetry] ${category} | ${action} | ${label || 'N/A'}`);
 
-  // Future-proofing: If Google Analytics (gtag) is installed, send the data to Google!
+  // Future-proofing: Automatically sends to Google Analytics (GA4) if installed
   if (typeof window !== 'undefined' && (window as any).gtag) {
     (window as any).gtag('event', action, {
       event_category: category,
@@ -24,7 +24,7 @@ export const trackEvent = ({ category, action, label, value }: TrackingEvent) =>
     });
   }
   
-  // Future-proofing: If Meta/Facebook Pixel (fbq) is installed, send the data to Meta!
+  // Future-proofing: Automatically sends to Meta/Facebook Pixel if installed
   if (typeof window !== 'undefined' && (window as any).fbq) {
     (window as any).fbq('trackCustom', action, {
       category: category,
