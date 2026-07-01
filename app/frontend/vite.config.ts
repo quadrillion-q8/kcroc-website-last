@@ -7,7 +7,6 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      // ✅ FIXED: This tells Vite that "@/..." means "./src/..."
       "@": path.resolve(__dirname, "./src"),
     },
   },
@@ -15,6 +14,17 @@ export default defineConfig({
     postcss: './postcss.config.js',
   },
   build: {
-    cssCodeSplit: false,
+    // ⚡ PERFORMANCE: We turn chunking ON and tell Vite exactly how to split the files
+    cssCodeSplit: true,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          // Group 1: Core React code (This rarely changes, so browsers keep it cached)
+          'vendor-react': ['react', 'react-dom', 'react-router-dom'],
+          // Group 2: Icon Library (Separating this keeps the initial load incredibly small)
+          'vendor-icons': ['lucide-react']
+        }
+      }
+    }
   }
 });
