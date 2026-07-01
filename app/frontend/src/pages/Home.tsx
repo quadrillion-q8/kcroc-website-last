@@ -5,14 +5,13 @@ import { Phone, MessageCircle, ShieldCheck, Clock, Star, ArrowRight, Laptop, App
 import { BUSINESS_INFO } from '../constants';
 import { getPopularServices } from '../knowledge/registry';
 import { SEOEngine } from '../core/components/SEOEngine';
+import { trackEvent } from '../analytics/Telemetry'; // ✅ IMPORTED TELEMETRY HERE
 
-// Icon mapper for our Knowledge Graph
 const IconMap: Record<string, React.ElementType> = {
   Laptop, Apple, Gamepad2, Cpu, Monitor
 };
 
 const Home: React.FC = () => {
-  // Pull our "Popular" services directly from the Brain!
   const popularServices = getPopularServices();
 
   const seoData = {
@@ -22,7 +21,6 @@ const Home: React.FC = () => {
     robots: "index, follow"
   };
 
-  // This is the semantic blueprint Google reads to display your business profile in search results
   const localBusinessSchema = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
@@ -57,10 +55,8 @@ const Home: React.FC = () => {
 
   return (
     <div className="w-full flex flex-col items-center">
-      {/* Notice how we are now feeding the localBusinessSchema into the engine here! */}
       <SEOEngine seo={seoData} schemas={[localBusinessSchema]} />
 
-      {/* ─── HERO SECTION ─── */}
       <section className="relative w-full max-w-7xl mx-auto px-6 pt-20 pb-24 flex flex-col items-center text-center">
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface-elevated border border-surface-hover mb-8">
           <Star className="w-4 h-4 text-status-warning fill-status-warning" />
@@ -76,10 +72,11 @@ const Home: React.FC = () => {
           Enterprise-grade repair for Laptops, MacBooks, and Gaming PCs. Free pick-up and delivery across all governorates with a strict no-fix, no-fee policy.
         </p>
 
-        {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
           <a
             href={`tel:${BUSINESS_INFO.phone}`}
+            // ✅ ADDED TELEMETRY TRACKING TO PHONE BUTTON
+            onClick={() => trackEvent({ category: 'Contact', action: 'Click_Phone', label: 'Hero_Section' })}
             className="flex items-center justify-center gap-2 px-8 py-4 bg-brand-primary hover:bg-brand-accent text-brand-dark font-bold rounded-button transition-all text-body"
           >
             <Phone className="w-5 h-5" /> Call Technician
@@ -88,13 +85,14 @@ const Home: React.FC = () => {
             href={`https://wa.me/${BUSINESS_INFO.cleanPhone}`}
             target="_blank"
             rel="noopener noreferrer"
+            // ✅ ADDED TELEMETRY TRACKING TO WHATSAPP BUTTON
+            onClick={() => trackEvent({ category: 'Contact', action: 'Click_WhatsApp', label: 'Hero_Section' })}
             className="flex items-center justify-center gap-2 px-8 py-4 bg-surface-elevated hover:bg-surface-hover text-white font-bold rounded-button transition-all text-body border border-surface-hover"
           >
             <MessageCircle className="w-5 h-5 text-status-success" /> Message on WhatsApp
           </a>
         </div>
 
-        {/* Trust Metrics */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20 pt-10 border-t border-surface-hover w-full max-w-4xl">
           {[
             { label: "Repairs Completed", value: "500+" },
@@ -110,7 +108,6 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* ─── DYNAMIC SERVICES GRID ─── */}
       <section className="w-full bg-surface-glass border-y border-surface-hover py-24">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
@@ -129,6 +126,8 @@ const Home: React.FC = () => {
                 <Link 
                   key={service.id} 
                   to={`/${service.slug}`}
+                  // ✅ ADDED TELEMETRY TRACKING TO SERVICE CARDS
+                  onClick={() => trackEvent({ category: 'Navigation', action: 'Click_ServiceCard', label: service.name })}
                   className="group bg-surface-default border border-surface-hover rounded-card p-8 hover:border-brand-primary transition-all duration-300 flex flex-col h-full"
                 >
                   <div className="w-14 h-14 bg-surface-elevated rounded-full flex items-center justify-center mb-6 group-hover:bg-brand-primary/10 transition-colors">
@@ -147,7 +146,6 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* ─── WHY CHOOSE US ─── */}
       <section className="w-full max-w-7xl mx-auto px-6 py-24">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {[
@@ -168,5 +166,4 @@ const Home: React.FC = () => {
   );
 };
 
-// We use default export here so it perfectly matches your App.tsx!
 export default Home;
