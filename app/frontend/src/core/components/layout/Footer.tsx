@@ -2,8 +2,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Phone, MapPin, ChevronRight } from 'lucide-react';
-import { BUSINESS_INFO } from '../../../../constants';
-import { getPopularServices } from '../../../../knowledge/registry';
+import { BUSINESS_INFO } from '../../../constants';
+import { getPopularServices } from '../../../knowledge/registry';
 
 export const Footer: React.FC = () => {
   const services = getPopularServices();
