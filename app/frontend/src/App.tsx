@@ -46,7 +46,7 @@ const PillarTemplate    = lazy(() => import('./pages/PillarTemplate'));
 const AILandingTemplate = lazy(() => import('./pages/ai/AILandingTemplate'));
 const NotFound          = lazy(() => import('./pages/NotFound'));
 
-import './styles/kcroc.css';
+// import './styles/kcroc.css';
 
 // ─── LOADING FALLBACK ─────────────────────────────────────────────────────────
 const PageLoader = () => (
