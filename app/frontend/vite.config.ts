@@ -1,15 +1,20 @@
 // File: app/frontend/vite.config.ts
+import path from "path";
 import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react-swc'; // ✅ FIXED: Using your project's actual SWC compiler
+import react from '@vitejs/plugin-react-swc';
 
 export default defineConfig({
   plugins: [react()],
+  resolve: {
+    alias: {
+      // ✅ FIXED: This tells Vite that "@/..." means "./src/..."
+      "@": path.resolve(__dirname, "./src"),
+    },
+  },
   css: {
-    // This forces Vite to process your Tailwind classes
     postcss: './postcss.config.js',
   },
   build: {
-    // This forces all CSS into one single, reliable file so nothing gets lost
     cssCodeSplit: false,
   }
 });
