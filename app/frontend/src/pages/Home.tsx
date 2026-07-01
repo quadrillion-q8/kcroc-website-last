@@ -5,7 +5,8 @@ import { Phone, MessageCircle, ShieldCheck, Clock, Star, ArrowRight, Laptop, App
 import { BUSINESS_INFO } from '../constants';
 import { getPopularServices } from '../knowledge/registry';
 import { SEOEngine } from '../core/components/SEOEngine';
-import { trackEvent } from '../analytics/Telemetry'; // ✅ IMPORTED TELEMETRY HERE
+import { trackEvent } from '../analytics/Telemetry';
+import { SearchBar } from '../core/components/SearchBar'; // ✅ IMPORTED SEARCH BAR HERE
 
 const IconMap: Record<string, React.ElementType> = {
   Laptop, Apple, Gamepad2, Cpu, Monitor
@@ -72,10 +73,14 @@ const Home: React.FC = () => {
           Enterprise-grade repair for Laptops, MacBooks, and Gaming PCs. Free pick-up and delivery across all governorates with a strict no-fix, no-fee policy.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+        {/* ✅ NEW SEARCH BAR COMPONENT GOES HERE */}
+        <div className="w-full mb-10 z-40 relative">
+          <SearchBar />
+        </div>
+
+        <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto relative z-30">
           <a
             href={`tel:${BUSINESS_INFO.phone}`}
-            // ✅ ADDED TELEMETRY TRACKING TO PHONE BUTTON
             onClick={() => trackEvent({ category: 'Contact', action: 'Click_Phone', label: 'Hero_Section' })}
             className="flex items-center justify-center gap-2 px-8 py-4 bg-brand-primary hover:bg-brand-accent text-brand-dark font-bold rounded-button transition-all text-body"
           >
@@ -85,7 +90,6 @@ const Home: React.FC = () => {
             href={`https://wa.me/${BUSINESS_INFO.cleanPhone}`}
             target="_blank"
             rel="noopener noreferrer"
-            // ✅ ADDED TELEMETRY TRACKING TO WHATSAPP BUTTON
             onClick={() => trackEvent({ category: 'Contact', action: 'Click_WhatsApp', label: 'Hero_Section' })}
             className="flex items-center justify-center gap-2 px-8 py-4 bg-surface-elevated hover:bg-surface-hover text-white font-bold rounded-button transition-all text-body border border-surface-hover"
           >
@@ -126,7 +130,6 @@ const Home: React.FC = () => {
                 <Link 
                   key={service.id} 
                   to={`/${service.slug}`}
-                  // ✅ ADDED TELEMETRY TRACKING TO SERVICE CARDS
                   onClick={() => trackEvent({ category: 'Navigation', action: 'Click_ServiceCard', label: service.name })}
                   className="group bg-surface-default border border-surface-hover rounded-card p-8 hover:border-brand-primary transition-all duration-300 flex flex-col h-full"
                 >
