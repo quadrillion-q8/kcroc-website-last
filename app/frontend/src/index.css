@@ -4,23 +4,40 @@
 
 @layer base {
   :root {
-    /* Branding */
-    --primary-cyan: #06b6d4;
-    --dark-navy: #020617;
-    --charcoal: #1A1A1A;
-    --light-gray: #B0B0B0;
-    --success-green: #10B981;
-
-    /* Tailwind Semantic Variables */
+    /* Defaulting to Enterprise Dark Mapping */
     --background: 222 84% 5%;
     --foreground: 210 40% 98%;
-    --primary: 192 95% 42%;
-    --primary-foreground: 210 40% 98%;
-    --border: 217 32% 17%;
-    --card: 222 84% 7%;
-    --card-foreground: 210 40% 98%;
-    --ring: 192 95% 42%;
-    --radius: 0.75rem;
+    
+    --brand-dark: #020617;
+    --brand-primary: #06b6d4;
+    --brand-accent: #38bdf8;
+    
+    --surface-default: #0f172a;
+    --surface-hover: #1e293b;
+    --surface-elevated: #334155;
+    --surface-glass: rgba(15, 23, 42, 0.7);
+    
+    --status-success: #10b981;
+    --status-warning: #f59e0b;
+    --status-danger: #ef4444;
+    --status-info: #3b82f6;
+
+    --radius-card: 1rem;
+    --radius-button: 0.5rem;
+  }
+
+  /* Native High Contrast Mapping Support */
+  @media (prefers-contrast: more) {
+    :root {
+      --background: 0 0% 0%;
+      --foreground: 0 0% 100%;
+      --brand-primary: #ffff00;
+      --brand-accent: #00ffff;
+      --surface-default: #000000;
+      --surface-hover: #1a1a1a;
+      --radius-card: 0px;
+      --radius-button: 0px;
+    }
   }
 
   html, body {
@@ -28,41 +45,10 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-size: 16px;
-    scroll-behavior: smooth;
     font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
-    background-color: var(--dark-navy);
-    color: white;
-    line-height: 1.6;
+    background-color: var(--brand-dark);
+    color: var(--foreground);
     overflow-x: hidden;
     min-height: 100vh;
-  }
-
-  *, *::before, *::after { box-sizing: inherit; }
-}
-
-img, video {
-  max-width: 100%;
-  display: block;
-}
-
-.container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 16px; }
-
-@layer components {
-  .header { 
-    position: fixed; 
-    top: 0; 
-    left: 0; 
-    right: 0; 
-    z-index: 1000; 
-    background: rgba(10, 10, 10, 0.95); 
-    backdrop-filter: blur(20px); 
-    border-bottom: 1px solid rgba(0, 217, 255, 0.2); 
-    transition: all 0.3s ease; 
-  }
-  
-  .logo-image { 
-    transition: all 0.3s ease; 
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3)); 
   }
 }
