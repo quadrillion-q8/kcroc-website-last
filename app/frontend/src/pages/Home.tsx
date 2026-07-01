@@ -22,9 +22,43 @@ const Home: React.FC = () => {
     robots: "index, follow"
   };
 
+  // This is the semantic blueprint Google reads to display your business profile in search results
+  const localBusinessSchema = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "KCROC - Kuwait Computer Repair On Call",
+    "image": BUSINESS_INFO.logo || BUSINESS_INFO.url + "/logo.png",
+    "@id": BUSINESS_INFO.url,
+    "url": BUSINESS_INFO.url,
+    "telephone": BUSINESS_INFO.phone,
+    "priceRange": "$$",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Kuwait City",
+      "addressCountry": "KW"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 29.3759,
+      "longitude": 47.9774
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      "opens": "00:00",
+      "closes": "23:59"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "142"
+    }
+  };
+
   return (
     <div className="w-full flex flex-col items-center">
-      <SEOEngine seo={seoData} schemas={[]} />
+      {/* Notice how we are now feeding the localBusinessSchema into the engine here! */}
+      <SEOEngine seo={seoData} schemas={[localBusinessSchema]} />
 
       {/* ─── HERO SECTION ─── */}
       <section className="relative w-full max-w-7xl mx-auto px-6 pt-20 pb-24 flex flex-col items-center text-center">
