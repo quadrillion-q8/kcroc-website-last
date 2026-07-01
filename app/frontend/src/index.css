@@ -1,22 +1,17 @@
-/* 1. Fonts and Tailwind Imports */
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap&text=ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789%20!%40%23%24%25%5E%26*()-_%3D%2B%5B%5D%7B%7D%3B%3A\'%22%2C.%3C%3E%2F%3F');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* 2. THE CSS VARIABLE BRIDGE (Fixes broken styles) */
 @layer base {
   :root {
-    /* Legacy Branding */
+    /* Branding */
     --primary-cyan: #06b6d4;
-    --primary-cyan-rgb: 6, 182, 212;
     --dark-navy: #020617;
     --charcoal: #1A1A1A;
     --light-gray: #B0B0B0;
     --success-green: #10B981;
 
-    /* Tailwind Semantic Variables (These make your site render correctly) */
+    /* Tailwind Semantic Variables */
     --background: 222 84% 5%;
     --foreground: 210 40% 98%;
     --primary: 192 95% 42%;
@@ -40,13 +35,12 @@
     color: white;
     line-height: 1.6;
     overflow-x: hidden;
-    min-height: 100vh; /* Ensures footer stays down */
+    min-height: 100vh;
   }
 
   *, *::before, *::after { box-sizing: inherit; }
 }
 
-/* 3. PERFORMANCE OPTIMIZED MEDIA */
 img, video {
   max-width: 100%;
   display: block;
@@ -54,7 +48,6 @@ img, video {
 
 .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 16px; }
 
-/* 4. LEGACY LAYOUT STYLES (Kept as requested) */
 @layer components {
   .header { 
     position: fixed; 
