@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import {
   ShieldCheck, Zap, Trophy, Phone, MessageCircle,
-  Clock, Truck, Star, ChevronRight, CheckCircle2
+  Clock, Truck, Star, ChevronRight, CheckCircle2, MapPin // ✅ Fixed: Added MapPin here!
 } from 'lucide-react';
 import { ROUTES } from '../constants/routes';
 import { BUSINESS_INFO, SERVICES } from '../constants';
@@ -75,7 +75,6 @@ export default function Home() {
       {/* ─── HERO ─── */}
       <section className="relative w-full max-w-7xl mx-auto px-6 pt-24 pb-20 md:pt-32 md:pb-24 flex flex-col items-center text-center">
         
-        {/* Restored Trust Badges */}
         <div className="flex flex-wrap items-center justify-center gap-3 mb-8">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface-elevated border border-surface-hover text-brand-accent text-caption font-bold">
             <Trophy className="w-4 h-4" aria-hidden="true" />
@@ -106,7 +105,6 @@ export default function Home() {
           <span className="flex items-center gap-2"><Truck className="w-5 h-5 text-status-success" aria-hidden="true" /> Free Pickup</span>
         </div>
 
-        {/* Fixed CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
           <a
             href={`tel:${BUSINESS_INFO.phone}`}
@@ -183,7 +181,6 @@ export default function Home() {
               <p className="text-caption text-slate-400 mt-1">Based on 150+ reviews across Kuwait</p>
             </div>
             
-            {/* Review Link */}
             {BUSINESS_INFO.googleReviewUrl && (
               <a
                 href={BUSINESS_INFO.googleReviewUrl}
