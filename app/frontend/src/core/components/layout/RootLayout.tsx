@@ -14,7 +14,7 @@ export const RootLayout: React.FC = () => {
       <Header />
       
       {/* 3. Page Content Injection (LocationTemplate, Services, etc. load here) */}
-      <main className="pt-20 animate-fade-in-up">
+      <main className="pt-28 animate-fade-in-up">
         <Outlet /> 
       </main>
       
