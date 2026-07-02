@@ -1,6 +1,5 @@
 // File: app/frontend/src/knowledge/registry.ts
-
-import { ServiceEntity, IssueEntity } from './types';
+import { ServiceEntity, IssueEntity } from './types.js';
 
 /* ─────────────────────────────────────────────────────────────────────────────
    1. ISSUES GRAPH
@@ -32,7 +31,6 @@ export const ISSUES: Record<string, IssueEntity> = {
     description: 'High-performance thermal engineering, cleaning, and liquid metal application.',
     symptoms: ['Fans spinning loudly', 'Laptop gets too hot to touch', 'Games lagging or stuttering']
   },
-  // ✅ Added: missing issues covering active KCROC repair categories
   'battery-failure': {
     id: 'battery-failure',
     type: 'Issue',
@@ -86,7 +84,6 @@ export const ISSUES: Record<string, IssueEntity> = {
 /* ─────────────────────────────────────────────────────────────────────────────
    2. SERVICES GRAPH
    Active KCROC services. Each links to related issues.
-   Note: Data Recovery is intentionally excluded — service discontinued.
 ───────────────────────────────────────────────────────────────────────────── */
 
 export const KNOWLEDGE_SERVICES: Record<string, ServiceEntity> = {
@@ -126,7 +123,6 @@ export const KNOWLEDGE_SERVICES: Record<string, ServiceEntity> = {
     relatedIssues: ['thermal-throttling', 'logic-board-failure', 'slow-performance'],
     relatedBrands: ['msi', 'asus-rog', 'alienware', 'acer-predator', 'lenovo-legion']
   },
-  // ✅ Added: missing active services
   'motherboard-repair': {
     id: 'motherboard-repair',
     type: 'Service',
@@ -157,7 +153,7 @@ export const KNOWLEDGE_SERVICES: Record<string, ServiceEntity> = {
     name: 'Battery Replacement',
     slug: 'battery-replacement',
     description: 'OEM and compatible battery replacement for all laptop and MacBook models.',
-    icon: 'BatteryWarning',
+    icon: 'Battery', 
     popular: false,
     repairTime: 'Same Day',
     relatedIssues: ['battery-failure'],
@@ -194,7 +190,6 @@ export const KNOWLEDGE_SERVICES: Record<string, ServiceEntity> = {
 ───────────────────────────────────────────────────────────────────────────── */
 
 /** Returns all active services as an array */
-// ✅ Added: getAllServices utility
 export const getAllServices = (): ServiceEntity[] =>
   Object.values(KNOWLEDGE_SERVICES);
 
@@ -207,12 +202,10 @@ export const getServiceBySlug = (slug: string): ServiceEntity | undefined =>
   Object.values(KNOWLEDGE_SERVICES).find(service => service.slug === slug);
 
 /** Looks up an issue by its URL slug */
-// ✅ Added: getIssueBySlug
 export const getIssueBySlug = (slug: string): IssueEntity | undefined =>
   Object.values(ISSUES).find(issue => issue.slug === slug);
 
 /** Returns full issue entities for a given service ID */
-// ✅ Fixed: type predicate for correct TypeScript narrowing
 export const getRelatedIssuesForService = (serviceId: string): IssueEntity[] => {
   const service = KNOWLEDGE_SERVICES[serviceId];
   if (!service) return [];
@@ -222,7 +215,6 @@ export const getRelatedIssuesForService = (serviceId: string): IssueEntity[] => 
 };
 
 /** Returns services that share at least one related issue with the given service */
-// ✅ Added: related services engine
 export const getRelatedServices = (serviceId: string): ServiceEntity[] => {
   const service = KNOWLEDGE_SERVICES[serviceId];
   if (!service) return [];
