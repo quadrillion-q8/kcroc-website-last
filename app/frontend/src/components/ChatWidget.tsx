@@ -1,13 +1,27 @@
 // File: src/components/ChatWidget.tsx
-import React, { useState } from 'react';
-import { MessageCircle, X, Send } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { MessageCircle, X, Send, Trash2 } from 'lucide-react';
 
 export const ChatWidget: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState<{sender: 'user' | 'bot', text: string}[]>([
-    { sender: 'bot', text: 'Hi! How can I help you with your computer repair today?' }
-  ]);
+  
+  // Load initial state from LocalStorage
+  const [messages, setMessages] = useState(() => {
+    const saved = localStorage.getItem('kcroc-chat-history');
+    return saved ? JSON.parse(saved) : [{ sender: 'bot', text: 'Hi! How can I help you with your computer repair today?' }];
+  });
+
   const [input, setInput] = useState('');
+
+  // Persist messages to LocalStorage whenever they change
+  useEffect(() => {
+    localStorage.setItem('kcroc-chat-history', JSON.stringify(messages));
+  }, [messages]);
+
+  const clearChat = () => {
+    setMessages([{ sender: 'bot', text: 'Hi! How can I help you with your computer repair today?' }]);
+    localStorage.removeItem('kcroc-chat-history');
+  };
 
   const sendMessage = async () => {
     if (!input.trim()) return;
@@ -38,11 +52,13 @@ export const ChatWidget: React.FC = () => {
           <MessageCircle className="text-black" />
         </button>
       ) : (
-        // Added transition-all and duration-300 for the smooth fade-in effect
         <div className="w-80 h-96 bg-surface-default border border-surface-hover rounded-card shadow-2xl flex flex-col transition-all duration-300 ease-in-out opacity-100 scale-100">
-          <div className="p-4 border-b border-surface-hover flex justify-between">
+          <div className="p-4 border-b border-surface-hover flex justify-between items-center">
             <span className="font-bold">KCROC Support</span>
-            <button onClick={() => setIsOpen(false)} className="hover:text-brand-primary transition-colors"><X size={18}/></button>
+            <div className="flex gap-2">
+              <button onClick={clearChat} className="hover:text-red-500 transition-colors"><Trash2 size={16}/></button>
+              <button onClick={() => setIsOpen(false)} className="hover:text-brand-primary transition-colors"><X size={18}/></button>
+            </div>
           </div>
           <div className="flex-grow p-4 overflow-y-auto space-y-2">
             {messages.map((m, i) => (
