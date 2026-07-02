@@ -15,33 +15,51 @@ export const ChatWidget: React.FC = () => {
     const currentInput = input;
     setInput('');
 
-    const res = await fetch('/api/chat', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ message: currentInput })
-    });
-    const data = await res.json();
-    setMessages(prev => [...prev, { sender: 'bot', text: data.reply }]);
+    try {
+      const res = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: currentInput })
+      });
+      const data = await res.json();
+      setMessages(prev => [...prev, { sender: 'bot', text: data.reply }]);
+    } catch (error) {
+      setMessages(prev => [...prev, { sender: 'bot', text: 'Sorry, I am having trouble connecting right now. Please call us at 55301913.' }]);
+    }
   };
 
   return (
     <div className="fixed bottom-6 right-6 z-50">
       {!isOpen ? (
-        <button onClick={() => setIsOpen(true)} className="bg-brand-primary p-4 rounded-full shadow-lg">
+        <button 
+          onClick={() => setIsOpen(true)} 
+          className="bg-brand-primary p-4 rounded-full shadow-lg hover:scale-105 transition-transform duration-200"
+        >
           <MessageCircle className="text-black" />
         </button>
       ) : (
-        <div className="w-80 h-96 bg-surface-default border border-surface-hover rounded-card shadow-2xl flex flex-col">
+        // Added transition-all and duration-300 for the smooth fade-in effect
+        <div className="w-80 h-96 bg-surface-default border border-surface-hover rounded-card shadow-2xl flex flex-col transition-all duration-300 ease-in-out opacity-100 scale-100">
           <div className="p-4 border-b border-surface-hover flex justify-between">
             <span className="font-bold">KCROC Support</span>
-            <button onClick={() => setIsOpen(false)}><X size={18}/></button>
+            <button onClick={() => setIsOpen(false)} className="hover:text-brand-primary transition-colors"><X size={18}/></button>
           </div>
           <div className="flex-grow p-4 overflow-y-auto space-y-2">
-            {messages.map((m, i) => <div key={i} className={`text-sm p-2 rounded ${m.sender === 'user' ? 'bg-brand-primary/20 text-right' : 'bg-surface-hover'}`}>{m.text}</div>)}
+            {messages.map((m, i) => (
+              <div key={i} className={`text-sm p-2 rounded ${m.sender === 'user' ? 'bg-brand-primary/20 text-right' : 'bg-surface-hover'}`}>
+                {m.text}
+              </div>
+            ))}
           </div>
           <div className="p-2 border-t border-surface-hover flex">
-            <input value={input} onChange={(e) => setInput(e.target.value)} className="flex-grow bg-transparent p-1 outline-none" placeholder="Ask anything..." />
-            <button onClick={sendMessage}><Send size={18}/></button>
+            <input 
+              value={input} 
+              onChange={(e) => setInput(e.target.value)} 
+              onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
+              className="flex-grow bg-transparent p-1 outline-none text-white" 
+              placeholder="Ask anything..." 
+            />
+            <button onClick={sendMessage} className="text-brand-primary hover:text-white transition-colors"><Send size={18}/></button>
           </div>
         </div>
       )}
