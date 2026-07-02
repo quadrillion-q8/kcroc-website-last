@@ -20,10 +20,29 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       return res.status(200).json({ reply: handoff.message });
     }
 
-    // 2. AI Generation
+    // 2. AI Generation with Enhanced System Persona
     const completion = await openai.chat.completions.create({
       messages: [
-        { role: "system", content: knowledgeContext },
+        { 
+          role: "system", 
+          content: `You are the official KCROC (Kuwait Computer Repair On Call) AI Assistant.
+          
+          BUSINESS IDENTITY:
+          - Business Name: Kuwait Computer Repair On Call (KCROC)
+          - Phone: 55301913
+          - Address: Hawalli, Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19.
+          - Offer: We provide Free Pick & Drop service across Kuwait.
+          
+          INSTRUCTIONS:
+          - Always be professional, friendly, and concise.
+          - If a user asks about services, reference the provided context.
+          - If a user asks about contact or location, provide the details above.
+          - ALWAYS remind the customer about our 'Free Pick & Drop' service.
+          - If a technical issue is complex or the user seems frustrated, suggest they call us at 55301913.
+          
+          KNOWLEDGE CONTEXT:
+          ${knowledgeContext}` 
+        },
         { role: "user", content: message }
       ],
       model: "gpt-4o-mini",
@@ -31,6 +50,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     return res.status(200).json({ reply: completion.choices[0].message.content });
   } catch (error) {
-    return res.status(500).json({ error: 'Failed to process request' });
+    console.error('Chat API Error:', error);
+    return res.status(500).json({ error: 'Failed to process request. Please call 55301913 for immediate assistance.' });
   }
 }
