@@ -1,6 +1,6 @@
 // File: api/chat.ts
 import { VercelRequest, VercelResponse } from '@vercel/node';
-import OpenAI from 'openai';
+import { GoogleGenAI } from '@google/genai';
 import { getKnowledgeContext } from '../src/knowledge/context.js';
 import { evaluateHandoff } from '../src/api/HandoffEngine.js';
 
@@ -9,13 +9,11 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   try {
     const { message } = req.body;
-    const apiKey = process.env.OPENAI_API_KEY;
+    const apiKey = process.env.GEMINI_API_KEY;
 
-    if (!apiKey) {
-      throw new Error("API_KEY_MISSING");
-    }
+    if (!apiKey) throw new Error("GEMINI_API_KEY_MISSING");
 
-    const openai = new OpenAI({ apiKey: apiKey });
+    const ai = new GoogleGenAI({ apiKey: apiKey });
     
     // Safety & Context checks
     const knowledgeContext = getKnowledgeContext(message);
@@ -25,21 +23,20 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       return res.status(200).json({ reply: handoff.message });
     }
 
-    const completion = await openai.chat.completions.create({
-      messages: [
+    // Call Gemini
+    const response = await ai.models.generateContent({
+      model: 'gemini-2.5-flash', // Using the fast, free-tier optimized model
+      contents: [
         { 
-          role: "system", 
-          content: `You are the KCROC assistant. ${knowledgeContext}` 
-        },
-        { role: "user", content: message }
+          role: 'user', 
+          parts: [{ text: `You are the KCROC assistant. ${knowledgeContext}\n\nUser: ${message}` }] 
+        }
       ],
-      model: "gpt-4o-mini",
     });
 
-    return res.status(200).json({ reply: completion.choices[0].message.content });
+    return res.status(200).json({ reply: response.text });
     
   } catch (error: any) {
-    // This is the important change: We send the ERROR MESSAGE back to your chat widget
     console.error('SERVER ERROR:', error);
     return res.status(500).json({ reply: `System Error: ${error.message || 'Unknown Error'}` });
   }
