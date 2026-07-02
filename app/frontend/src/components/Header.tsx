@@ -1,7 +1,7 @@
 // File: src/components/Header.tsx
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, Search } from 'lucide-react';
+import { Menu, Search, ChevronDown } from 'lucide-react';
 
 import { ROUTES } from '../constants/routes';
 import { IMAGES } from '../constants/images'; 
@@ -32,11 +32,13 @@ export default function Header() {
     { name: 'Gaming PC Repair', path: ROUTES.gamingPC },
     { name: 'Screen Replacement', path: ROUTES.screenReplacement },
     { name: 'Motherboard Repair', path: ROUTES.motherboardRepair },
+    { name: 'Web Design Kuwait', path: '/web-design-kuwait' },
   ];
 
   const blogs = [
-    { name: 'Laptop Repair Guide', path: "/blog/laptop-repair-kuwait-2026" },
-    { name: 'Screen Protection', path: "/blog/how-to-protect-laptop-screen" },
+    { name: 'Blog Hub', path: ROUTES.blog },
+    { name: 'Laptop Repair Guide', path: '/blog/laptop-repair-kuwait-2026' },
+    { name: 'Screen Protection', path: '/blog/how-to-protect-laptop-screen' },
     { name: 'Gaming PC Cooling', path: ROUTES.gamingPCCooling },
     { name: 'Battery Replacement', path: ROUTES.batteryReplacement },
   ];
@@ -64,24 +66,67 @@ export default function Header() {
               />
             </Link>
 
-            <nav className="hidden lg:flex items-center gap-8">
-              <Link to={ROUTES.services} className="text-sm font-bold text-slate-200 hover:text-cyan-400 transition-colors">Services</Link>
+            <nav className="hidden lg:flex items-center gap-6">
+              {/* Services Dropdown Item */}
+              <div className="relative group py-4">
+                <Link 
+                  to={ROUTES.services} 
+                  className="flex items-center gap-1 text-sm font-bold text-slate-200 hover:text-cyan-400 transition-colors"
+                >
+                  Services 
+                  <ChevronDown size={14} className="transform group-hover:rotate-180 transition-transform duration-200" />
+                </Link>
+                <div className="absolute top-full left-0 hidden group-hover:block w-60 bg-[#0a0f1c]/95 border border-slate-800 rounded-xl shadow-2xl p-2 mt-1 backdrop-blur-xl animate-in fade-in slide-in-from-top-2 duration-200">
+                  {services.map((item) => (
+                    <Link 
+                      key={item.path} 
+                      to={item.path} 
+                      className="block px-4 py-2.5 text-sm font-medium text-slate-300 hover:bg-slate-800/60 hover:text-cyan-400 rounded-lg transition-all"
+                    >
+                      {item.name}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
               <Link to={ROUTES.pricing} className="text-sm font-bold text-slate-200 hover:text-cyan-400 transition-colors">Pricing</Link>
               <Link to={ROUTES.gallery} className="text-sm font-bold text-slate-200 hover:text-cyan-400 transition-colors">Gallery</Link>
               <Link to={ROUTES.about} className="text-sm font-bold text-slate-200 hover:text-cyan-400 transition-colors">About</Link>
-              <Link to={ROUTES.blog} className="text-sm font-bold text-slate-200 hover:text-cyan-400 transition-colors">Blog</Link>
+
+              {/* Blog Dropdown Item */}
+              <div className="relative group py-4">
+                <Link 
+                  to={ROUTES.blog} 
+                  className="flex items-center gap-1 text-sm font-bold text-slate-200 hover:text-cyan-400 transition-colors"
+                >
+                  Blog 
+                  <ChevronDown size={14} className="transform group-hover:rotate-180 transition-transform duration-200" />
+                </Link>
+                <div className="absolute top-full left-0 hidden group-hover:block w-60 bg-[#0a0f1c]/95 border border-slate-800 rounded-xl shadow-2xl p-2 mt-1 backdrop-blur-xl animate-in fade-in slide-in-from-top-2 duration-200">
+                  {blogs.map((item) => (
+                    <Link 
+                      key={item.path} 
+                      to={item.path} 
+                      className="block px-4 py-2.5 text-sm font-medium text-slate-300 hover:bg-slate-800/60 hover:text-cyan-400 rounded-lg transition-all"
+                    >
+                      {item.name}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
               <Link to={ROUTES.faq} className="text-sm font-bold text-slate-200 hover:text-cyan-400 transition-colors">FAQ</Link>
               <Link to={ROUTES.contact} className="text-sm font-bold text-slate-200 hover:text-cyan-400 transition-colors">Contact</Link>
               
               <button 
                 onClick={() => setIsSearchOpen(true)} 
-                className="text-slate-200 hover:text-cyan-400 transition-colors p-2 rounded-full hover:bg-slate-800/50"
+                className="text-slate-200 hover:text-cyan-400 transition-colors p-2 rounded-full hover:bg-slate-800/50 ml-2"
                 aria-label="Open search"
               >
                 <Search size={20} />
               </button>
 
-              <Link to={ROUTES.book} className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 px-6 py-2.5 rounded-full text-sm font-black transition-all hover:scale-105 shadow-[0_0_15px_rgba(34,211,238,0.2)]">
+              <Link to={ROUTES.book} className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 px-6 py-2.5 rounded-full text-sm font-black transition-all hover:scale-105 shadow-[0_0_15px_rgba(34,211,238,0.2)] ml-2">
                 Book Repair
               </Link>
             </nav>
@@ -99,7 +144,7 @@ export default function Header() {
       </header>
 
       <GlobalSearch isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
-      <MobileMenu isOpen={isOpen} onClose={() => setIsOpen(false)} services={services} blogs={blogs} />
+      <MobileMenu isOpen={isOpen} onClose={() => onClose()} services={services} blogs={blogs} />
     </>
   );
 }
