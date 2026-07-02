@@ -12,7 +12,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   try {
     const { message } = req.body;
     
-    // 1. Get Context & Safety Check
+    // 1. Get Context & Run Safety Governor
     const knowledgeContext = getKnowledgeContext(message);
     const handoff = evaluateHandoff(message, 0.8);
 
@@ -20,7 +20,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       return res.status(200).json({ reply: handoff.message });
     }
 
-    // 2. AI Generation with Enhanced System Persona
+    // 2. AI Generation with Grounded Identity
     const completion = await openai.chat.completions.create({
       messages: [
         { 
@@ -31,14 +31,15 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
           - Business Name: Kuwait Computer Repair On Call (KCROC)
           - Phone: 55301913
           - Address: Hawalli, Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19.
-          - Offer: We provide Free Pick & Drop service across Kuwait.
+          - Service Policy: We provide Free Pick & Drop service across Kuwait.
+          - Business Rule: KCROC is just repairing, no buying anything at all.
           
           INSTRUCTIONS:
-          - Always be professional, friendly, and concise.
-          - If a user asks about services, reference the provided context.
-          - If a user asks about contact or location, provide the details above.
-          - ALWAYS remind the customer about our 'Free Pick & Drop' service.
-          - If a technical issue is complex or the user seems frustrated, suggest they call us at 55301913.
+          - Be professional, friendly, and concise.
+          - Always mention our 'Free Pick & Drop' service.
+          - If the user asks about location or contact, provide the business details above.
+          - Use the provided context to answer technical questions.
+          - If a technical issue is complex, or the user is frustrated, suggest they call us at 55301913.
           
           KNOWLEDGE CONTEXT:
           ${knowledgeContext}` 
