@@ -2,6 +2,7 @@
 import React, { Suspense, lazy } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { RootLayout } from './core/components/layout/RootLayout';
+import { ChatWidget } from './components/ChatWidget'; // ✅ IMPORTED CHAT WIDGET
 
 // ⚡ PERFORMANCE: We "lazy load" the pages so they only download when the user clicks them
 const Home = lazy(() => import('./pages/Home'));
@@ -35,6 +36,9 @@ export const App: React.FC = () => {
 
         </Route>
       </Routes>
+      
+      {/* Renders the AI Chat Widget globally across all routes */}
+      <ChatWidget /> 
     </BrowserRouter>
   );
 };
