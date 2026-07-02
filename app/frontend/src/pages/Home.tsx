@@ -21,6 +21,7 @@ import { getPopularServices } from '../knowledge/registry.js';
 import { SEOEngine } from '../core/components/SEOEngine';
 import { trackEvent } from '../analytics/Telemetry';
 import { SearchBar } from '../core/components/SearchBar';
+import { ChatWidget } from '../components/ChatWidget'; // ✅ IMPORTED CHAT WIDGET
 
 // Map string identifiers from registry.ts to actual Icon components
 const IconMap: Record<string, React.ElementType> = {
@@ -178,6 +179,9 @@ const Home: React.FC = () => {
           ))}
         </div>
       </section>
+
+      {/* ✅ ADDED CHAT WIDGET HERE */}
+      <ChatWidget />
     </div>
   );
 };
