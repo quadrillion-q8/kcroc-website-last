@@ -1,14 +1,21 @@
 // File: app/frontend/api/whatsapp-webhook.ts
 import { VercelRequest, VercelResponse } from '@vercel/node';
-import { getKnowledgeContext } from '../src/knowledge/context';
-import { evaluateHandoff } from '../src/api/HandoffEngine';
+import OpenAI from 'openai';
+import { getKnowledgeContext } from '../src/knowledge/context.js';
+import { evaluateHandoff } from '../src/api/HandoffEngine.js';
+
+// Initialize OpenAI client
+const openai = new OpenAI({ 
+  apiKey: process.env.OPENAI_API_KEY 
+});
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
-  // 1. Validate request (Meta verification)
+  // 1. Validate request (Meta/WhatsApp verification)
   if (req.method === 'GET') {
     const mode = req.query['hub.mode'];
     const token = req.query['hub.verify_token'];
     const challenge = req.query['hub.challenge'];
+    
     if (mode === 'subscribe' && token === process.env.WHATSAPP_VERIFY_TOKEN) {
       return res.status(200).send(challenge);
     }
@@ -16,27 +23,43 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   // 2. Extract user message
-  const userMessage = req.body.entry[0].changes[0].value.messages[0].text.body;
-  const phoneNumber = req.body.entry[0].changes[0].value.messages[0].from;
+  // Note: Ensure your webhook configuration in Meta sends 'text' messages
+  try {
+    const userMessage = req.body.entry[0].changes[0].value.messages[0].text.body;
 
-  // 3. Get Knowledge Context
-  const knowledgeContext = getKnowledgeContext(userMessage);
+    // 3. Get Knowledge Context
+    const knowledgeContext = getKnowledgeContext(userMessage);
 
-  // 4. Run Safety Governor (Handoff Check)
-  // We assume a confidence score of 0.8 for initial logic
-  const handoff = evaluateHandoff(userMessage, 0.8);
+    // 4. Run Safety Governor (Handoff Check)
+    const handoff = evaluateHandoff(userMessage, 0.8);
 
-  if (handoff.isEscalated) {
-    return res.status(200).json({ reply: handoff.message, status: 'ESCALATED' });
+    if (handoff.isEscalated) {
+      return res.status(200).json({ 
+        reply: handoff.message, 
+        status: 'ESCALATED',
+        priority: handoff.priority 
+      });
+    }
+
+    // 5. Generate AI Response via OpenAI
+    const completion = await openai.chat.completions.create({
+      messages: [
+        { role: "system", content: knowledgeContext },
+        { role: "user", content: userMessage }
+      ],
+      model: "gpt-4o-mini",
+    });
+
+    const aiResponse = completion.choices[0].message.content;
+
+    // 6. Return response to WhatsApp
+    return res.status(200).json({ 
+      success: true, 
+      reply: aiResponse 
+    });
+
+  } catch (error) {
+    console.error('Webhook Error:', error);
+    return res.status(500).json({ success: false, error: 'Internal Server Error' });
   }
-
-  // 5. Generate AI Response (Placeholder for your AI API call)
-  // This is where you would call OpenAI/Anthropic/Gemini API
-  const aiResponse = `[Placeholder: AI generated response based on context: ${knowledgeContext}]`;
-
-  // 6. Return response to WhatsApp
-  return res.status(200).json({ 
-    success: true, 
-    reply: aiResponse 
-  });
 }
