@@ -1,15 +1,30 @@
 // File: app/frontend/src/pages/Home.tsx
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Phone, MessageCircle, ShieldCheck, Clock, Star, ArrowRight, Laptop, Apple, Gamepad2, Cpu, Monitor } from 'lucide-react';
+import { 
+  Phone, 
+  MessageCircle, 
+  ShieldCheck, 
+  Clock, 
+  Star, 
+  ArrowRight, 
+  Laptop, 
+  Apple, 
+  Gamepad2, 
+  Cpu, 
+  Monitor, 
+  Battery, 
+  HardDrive 
+} from 'lucide-react';
 import { BUSINESS_INFO } from '../constants';
-import { getPopularServices } from '../knowledge/registry';
+import { getPopularServices } from '../knowledge/registry.js';
 import { SEOEngine } from '../core/components/SEOEngine';
 import { trackEvent } from '../analytics/Telemetry';
-import { SearchBar } from '../core/components/SearchBar'; // ✅ IMPORTED SEARCH BAR HERE
+import { SearchBar } from '../core/components/SearchBar';
 
+// Map string identifiers from registry.ts to actual Icon components
 const IconMap: Record<string, React.ElementType> = {
-  Laptop, Apple, Gamepad2, Cpu, Monitor
+  Laptop, Apple, Gamepad2, Cpu, Monitor, Battery, HardDrive, ShieldCheck
 };
 
 const Home: React.FC = () => {
@@ -73,7 +88,6 @@ const Home: React.FC = () => {
           Enterprise-grade repair for Laptops, MacBooks, and Gaming PCs. Free pick-up and delivery across all governorates with a strict no-fix, no-fee policy.
         </p>
 
-        {/* ✅ NEW SEARCH BAR COMPONENT GOES HERE */}
         <div className="w-full mb-10 z-40 relative">
           <SearchBar />
         </div>
@@ -123,7 +137,7 @@ const Home: React.FC = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-6">
             {popularServices.map((service) => {
               const ServiceIcon = IconMap[service.icon] || Laptop;
               return (
@@ -164,7 +178,6 @@ const Home: React.FC = () => {
           ))}
         </div>
       </section>
-
     </div>
   );
 };
