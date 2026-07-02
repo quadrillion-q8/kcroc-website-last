@@ -1,4 +1,4 @@
-// File: src/types/knowledgeGraph.ts
+// File: app/frontend/src/types/knowledgeGraph.ts
 
 /**
  * ============================================================================
@@ -80,13 +80,20 @@ export interface MediaReference {
  * ============================================================================
  */
 
-export type RelationshipType = 
-  | 'parent' | 'child' | 'related' | 'prerequisite' | 'followUp' 
-  | 'compatible' | 'required' | 'crossSell' | 'nearby';
+export enum RELATIONSHIP {
+  AVAILABLE_AT = 'AVAILABLE_AT',
+  HAS_FAQ = 'HAS_FAQ',
+  SUPPORTS_BRAND = 'SUPPORTS_BRAND',
+  SUPPORTS_DEVICE = 'SUPPORTS_DEVICE',
+  RELATED_SERVICE = 'RELATED_SERVICE',
+  PARENT = 'PARENT',
+  CHILD = 'CHILD',
+  PREREQUISITE = 'PREREQUISITE'
+}
 
 export interface RelationshipNode {
   targetId: string;
-  relationshipType: RelationshipType;
+  relationshipType: RELATIONSHIP;
   weight?: number; // 1-10 scale for sorting priority
   confidence?: number; // For future AI/ML relationship generation
 }
@@ -115,22 +122,22 @@ export interface BaseEntity {
   description: string;
   
   // Search & Taxonomy
-  primaryKeyword: string;
-  secondaryKeywords: string[];
-  synonyms: string[];
-  aliases: string[];
+  primaryKeyword?: string;
+  secondaryKeywords?: string[];
+  synonyms?: string[];
+  aliases?: string[];
   
   // Modularity
-  seo: SEOMetadata;
+  seo?: SEOMetadata;
   ai?: AIMetadata;
   route?: RouteMetadata;
   analytics?: AnalyticsMetadata;
-  build: BuildMetadata;
+  build?: BuildMetadata;
   
   // Relationships & Content
-  relationships: RelationshipNode[];
+  relationships?: RelationshipNode[];
   media?: MediaReference[];
-  schemaTypes: string[]; // e.g., ['Service', 'WebPage']
+  schemaTypes?: string[]; // e.g., ['Service', 'WebPage']
 }
 
 /**
@@ -141,21 +148,51 @@ export interface BaseEntity {
 
 export interface ServiceEntity extends BaseEntity {
   entityType: 'Service';
+  serviceCategory: string;
   basePrice?: number;
   isPickAndDropEligible: boolean;
-  warrantyDays?: number;
+  turnaroundTime?: string;
+  warranty?: string;
 }
 
 export interface LocationEntity extends BaseEntity {
   entityType: 'Location';
+  landmark: string;
   coords: { lat: number; lng: number };
   serviceRadiusKm: number;
 }
 
-// ... Additional specific extensions (BrandEntity, IssueEntity, etc.) can be added here following the same pattern.
+export interface FAQEntity extends BaseEntity {
+  entityType: 'FAQ';
+}
 
-export type KCROCEntity = BaseEntity | ServiceEntity | LocationEntity; // Union of all specific types
+// Lightweight Entity for Brands
+export interface BrandEntity {
+  id: string;
+  slug: string;
+  entityType: 'Brand';
+  isActive: boolean;
+  name: string;
+  description: string;
+}
+
+// Lightweight Entity for Devices
+export interface DeviceEntity {
+  id: string;
+  slug: string;
+  entityType: 'Device';
+  isActive: boolean;
+  name: string;
+  brandId: string;
+}
+
+export type KCROCEntity = BaseEntity | ServiceEntity | LocationEntity | FAQEntity | BrandEntity | DeviceEntity;
 
 export interface KnowledgeGraphData {
+  metadata?: {
+    version: string;
+    lastUpdated: string;
+    environment: string;
+  };
   entities: Record<string, KCROCEntity>;
 }
