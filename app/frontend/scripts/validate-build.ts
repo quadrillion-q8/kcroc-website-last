@@ -3,8 +3,9 @@ import fs from 'fs';
 import path from 'path';
 
 // ─── 1. CONFIGURATION ──────────────────────────────────────────────────
-// Define the path to the pages directory relative to the repository root
-const PAGES_DIR = path.join(process.cwd(), 'app', 'frontend', 'src', 'pages');
+// FIX: process.cwd() already points to the 'app/frontend' directory during the Vercel build.
+// We just need to append 'src' and 'pages' to find the correct folder.
+const PAGES_DIR = path.join(process.cwd(), 'src', 'pages');
 
 // Files that intentionally do not require the SEO Engine
 const IGNORE_FILES = [
