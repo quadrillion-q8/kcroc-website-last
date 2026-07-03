@@ -1,45 +1,17 @@
+// File: app/frontend/src/pages/About.tsx
+import React from 'react';
 import { Link } from 'react-router-dom';
-import {
+import { 
   Award, Users, Clock, Shield, Zap, Heart, Star,
   MapPin, Phone, MessageCircle, Wrench
 } from 'lucide-react';
-import { BUSINESS_INFO } from '../constants/data';
-import MetaSEO from '../components/seo/MetaSEO';
-import SchemaMarkup from '../components/seo/SchemaMarkup';
+
+// 👈 Phase 2 SEO Engine Imported
+import { SEOEngine } from '../core/components/SEOEngine';
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   1. PAGE DATA
+   1. PAGE DATA (Custom UI constants preserved)
 ───────────────────────────────────────────────────────────────────────────── */
-
-const PAGE_URL = `${BUSINESS_INFO.url}/about`;
-
-const STRUCTURED_DATA = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "LocalBusiness",
-      "@id": `${BUSINESS_INFO.url}/#business`,
-      "name": BUSINESS_INFO.name,
-      "url": BUSINESS_INFO.url,
-      "telephone": BUSINESS_INFO.phone,
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19",
-        "addressLocality": "Hawalli",
-        "addressRegion": "Hawalli Governorate",
-        "addressCountry": "KW"
-      }
-    },
-    {
-      "@type": "AboutPage",
-      "@id": `${PAGE_URL}#webpage`,
-      "name": "About KCROC – Kuwait Computer Repair On Call",
-      "url": PAGE_URL,
-      "isPartOf": { "@id": `${BUSINESS_INFO.url}/#website` } 
-    }
-  ]
-};
-
 const stats = [
   { icon: Users,  number: '500+', label: 'Happy Customers' },
   { icon: Clock,  number: '10–10', label: 'Open Daily' },
@@ -78,16 +50,13 @@ const teamMembers = [
 ───────────────────────────────────────────────────────────────────────────── */
 
 export default function About() {
-  const waLink = `https://wa.me/${BUSINESS_INFO.cleanPhone}?text=${encodeURIComponent('Hi! I have a repair enquiry. Please help.')}`;
+  const waLink = `https://wa.me/96555301913?text=${encodeURIComponent('Hi! I have a repair enquiry. Please help.')}`;
 
   return (
     <main className="w-full min-h-screen bg-transparent text-white font-sans selection:bg-cyan-500/30 pt-32">
-      <MetaSEO
-        title="About Us | Expert Computer Repair in Hawalli, Kuwait | KCROC"
-        description="Meet the expert technicians behind KCROC. 20+ years experience, 4.9-star rating, free pickup across all Kuwait. Hawalli, Ibn Khaldoun St."
-        canonical={PAGE_URL}
-      />
-      <SchemaMarkup schema={STRUCTURED_DATA} />
+      
+      {/* 🚀 PHASE 2 AUTOMATION IN ACTION: Using the Hawalli Location Entity */}
+      <SEOEngine entityId="loc-hawalli" />
 
       {/* ─── BREADCRUMBS ─── */}
       <nav aria-label="Breadcrumb" className="max-w-6xl mx-auto px-6 mb-8 relative z-10">
@@ -233,9 +202,8 @@ export default function About() {
             </h2>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               
-              {/* ✅ Fixed: Restored missing <a> tags */}
               <a
-                href={`tel:${BUSINESS_INFO.phone}`}
+                href="tel:+96555301913"
                 className="bg-slate-900 border border-slate-700 hover:bg-slate-800 text-white px-8 py-4 rounded-full font-bold text-base transition-all flex items-center justify-center"
               >
                 <Phone className="mr-2 h-5 w-5 text-cyan-400" aria-hidden="true" /> Call 55301913 
