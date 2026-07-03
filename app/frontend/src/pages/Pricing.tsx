@@ -1,30 +1,34 @@
-import { useState } from 'react';
+// File: app/frontend/src/pages/Pricing.tsx
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import {
+import { 
   Check, Truck, Clock, Laptop, Cpu, HardDrive, Keyboard,
   Search, MapPin, ArrowRight, Phone, MessageCircle, ChevronDown,
   BadgeCheck, CheckCircle, ShieldCheck
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { BUSINESS_INFO } from '../constants/data';
-import MetaSEO from '../components/seo/MetaSEO';
-import SchemaMarkup from '../components/seo/SchemaMarkup';
+import SchemaMarkup from '../components/schema/SchemaMarkup';
+
+// 👈 Phase 2 SEO Engine Imported
+import { SEOEngine } from '../core/components/SEOEngine';
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   1. PAGE DATA
+   1. PAGE DATA & CONSTANTS
 ───────────────────────────────────────────────────────────────────────────── */
-
-const PAGE_URL = `${BUSINESS_INFO.url}/pricing`;
+const PHONE_DISPLAY = '+965 5530 1913';
+const PHONE_CLEAN = '96555301913';
+const BUSINESS_NAME = 'Kuwait Computer Repair On Call';
+const BASE_URL = 'https://computerrepairkuwait.com';
 
 const pricingPlans = Object.freeze([
-  { name: 'Basic Diagnostics',   priceLabel: 'Free',         features: ['System Check', 'Issue Identification', 'Free Quote', 'No Obligation'],                       icon: Search,    hasPrice: false, numericPrice: undefined },
-  { name: 'Laptop Repair',       priceLabel: 'From 15 KWD',  features: ['Hardware Repair', 'Component Testing', '30-Day Warranty', 'Performance Optimization'],       icon: Laptop,    hasPrice: true,  numericPrice: 15 },
-  { name: 'MacBook Repair',      priceLabel: 'From 25 KWD',  features: ['Logic Board Repair', 'Battery Replacement', 'Screen Repair', 'Thermal Service'],             icon: Laptop,    hasPrice: true,  numericPrice: 25 },
-  { name: 'Gaming PC Repair',    priceLabel: 'From 25 KWD',  features: ['GPU Diagnostics', 'Cooling System Repair', 'FPS Optimization', 'Hardware Upgrade'],            icon: Cpu,       hasPrice: true,  numericPrice: 25 },
-  { name: 'SSD Upgrade',         priceLabel: 'From 18 KWD',  features: ['SSD Installation', 'Windows Migration', 'Faster Boot', 'Data Safety'],                       icon: HardDrive, hasPrice: true,  numericPrice: 18 },
-  { name: 'Keyboard Replacement', priceLabel: 'From 15 KWD', features: ['Genuine Parts', 'Fast Service', 'All Brands', 'Warranty'],                                   icon: Keyboard,  hasPrice: true,  numericPrice: 15 },
-  { name: 'Motherboard Repair',  priceLabel: 'From 25 KWD',  features: ['Board Level Repair', 'IC Replacement', 'Microsoldering', 'Advanced Diagnostics'],            icon: Cpu,       hasPrice: true,  numericPrice: 25 },
+  { name: 'Basic Diagnostics',   priceLabel: 'Free',         features: ['System Check', 'Issue Identification', 'Free Quote', 'No Obligation'],                icon: Search,    hasPrice: false },
+  { name: 'Laptop Repair',       priceLabel: 'From 15 KWD',  features: ['Hardware Repair', 'Component Testing', '30-Day Warranty', 'Performance Optimization'],    icon: Laptop,    hasPrice: true },
+  { name: 'MacBook Repair',      priceLabel: 'From 25 KWD',  features: ['Logic Board Repair', 'Battery Replacement', 'Screen Repair', 'Thermal Service'],             icon: Laptop,    hasPrice: true },
+  { name: 'Gaming PC Repair',    priceLabel: 'From 25 KWD',  features: ['GPU Diagnostics', 'Cooling System Repair', 'FPS Optimization', 'Hardware Upgrade'],          icon: Cpu,       hasPrice: true },
+  { name: 'SSD Upgrade',         priceLabel: 'From 18 KWD',  features: ['SSD Installation', 'Windows Migration', 'Faster Boot', 'Data Safety'],                     icon: HardDrive, hasPrice: true },
+  { name: 'Keyboard Replacement', priceLabel: 'From 15 KWD', features: ['Genuine Parts', 'Fast Service', 'All Brands', 'Warranty'],                                  icon: Keyboard,  hasPrice: true },
+  { name: 'Motherboard Repair',  priceLabel: 'From 25 KWD',  features: ['Board Level Repair', 'IC Replacement', 'Microsoldering', 'Advanced Diagnostics'],          icon: Cpu,       hasPrice: true },
 ]);
 
 const trustItems = Object.freeze([
@@ -44,60 +48,20 @@ const locations = Object.freeze([
 
 const faqs = Object.freeze([
   { q: "Do you charge for diagnostics?",          a: "No. Diagnostics are completely free." },
-  { q: "Do you provide pickup and delivery?",      a: "Yes. We provide free pickup and delivery across Kuwait." },
+  { q: "Do you provide pickup and delivery?",     a: "Yes. We provide free pickup and delivery across Kuwait." },
   { q: "What if my device cannot be repaired?",   a: "You pay nothing. Our No Fix No Fee policy means there is no repair charge if we cannot fix your device." },
   { q: "How long does repair take?",              a: "Most repairs are completed within 24 to 48 hours depending on parts availability and repair complexity." },
-  { q: "Do you repair MacBooks and Gaming PCs?",  a: "Yes. We repair MacBooks, Gaming PCs, laptops, desktop computers and perform motherboard level repairs." },
+  { q: "Do you repair MacBooks and Gaming PCs?", a: "Yes. We repair MacBooks, Gaming PCs, laptops, desktop computers and perform motherboard level repairs." },
 ]);
 
 const serviceLinks = Object.freeze([
-  { title: 'Laptop Repair',      path: '/laptop-repair-kuwait',         icon: Laptop, desc: 'Screen, keyboard, and battery repair.' },
-  { title: 'MacBook Repair',     path: '/macbook-repair-kuwait',        icon: Laptop, desc: 'Logic board, display, and thermal service.' },
-  { title: 'Motherboard Repair', path: '/motherboard-repair-kuwait',    icon: Cpu,    desc: 'Microsoldering and IC replacement.' },
-  { title: 'Gaming PC Repair',   path: '/gaming-pc-repair-kuwait',      icon: Cpu,    desc: 'GPU diagnostics and FPS optimization.' },
+  { title: 'Laptop Repair',     path: '/laptop-repair-kuwait',        icon: Laptop, desc: 'Screen, keyboard, and battery repair.' },
+  { title: 'MacBook Repair',    path: '/macbook-repair-kuwait',       icon: Laptop, desc: 'Logic board, display, and thermal service.' },
+  { title: 'Motherboard Repair', path: '/motherboard-repair-kuwait',   icon: Cpu,    desc: 'Microsoldering and IC replacement.' },
+  { title: 'Gaming PC Repair',  path: '/gaming-pc-repair-kuwait',     icon: Cpu,    desc: 'GPU diagnostics and FPS optimization.' },
 ]);
 
-const STRUCTURED_DATA = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "LocalBusiness",
-      "name": BUSINESS_INFO.name,
-      "url": BUSINESS_INFO.url,
-      "telephone": BUSINESS_INFO.phone,
-      "areaServed": "Kuwait",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19",
-        "addressLocality": "Hawalli",
-        "addressRegion": "Hawalli Governorate",
-        "addressCountry": "KW"
-      }
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": faqs.map(faq => ({
-        "@type": "Question",
-        "name": faq.q,
-        "acceptedAnswer": { "@type": "Answer", "text": faq.a }
-      }))
-    },
-    ...pricingPlans
-      .filter(p => p.hasPrice && p.numericPrice !== undefined && p.numericPrice > 0)
-      .map(p => ({
-        "@type": "Offer",
-        "name": p.name,
-        "priceSpecification": {
-          "@type": "PriceSpecification",
-          "minPrice": p.numericPrice,
-          "priceCurrency": "KWD"
-        },
-        "provider": { "@type": "LocalBusiness", "name": BUSINESS_INFO.name }
-      }))
-  ]
-};
-
-const whatsappUrl = `https://wa.me/${BUSINESS_INFO.cleanPhone}?text=${encodeURIComponent("Hi KCROC, I need laptop repair. Please arrange free pickup.")}`;
+const whatsappUrl = `https://wa.me/${PHONE_CLEAN}?text=${encodeURIComponent("Hi KCROC, I need laptop repair. Please arrange free pickup.")}`;
 
 /* ─────────────────────────────────────────────────────────────────────────────
    2. MAIN COMPONENT
@@ -108,12 +72,9 @@ export default function Pricing() {
 
   return (
     <main className="w-full min-h-screen bg-transparent text-slate-100 font-sans pb-32 pt-32">
-      <MetaSEO
-        title="Laptop & Computer Repair Prices in Kuwait | Free Diagnosis | KCROC"
-        description="Affordable laptop and computer repair prices in Kuwait. Free diagnosis, free pickup & delivery, no fix no fee. MacBook, gaming PC and motherboard repair by KCROC."
-        canonical={PAGE_URL}
-      />
-      <SchemaMarkup schema={STRUCTURED_DATA} />
+      
+      {/* 🚀 PHASE 2 AUTOMATION IN ACTION */}
+      <SEOEngine entityId="page-pricing" />
 
       {/* ─── BREADCRUMBS ─── */}
       <nav aria-label="Breadcrumb" className="max-w-6xl mx-auto px-6 mb-8 relative z-10">
@@ -219,20 +180,15 @@ export default function Pricing() {
 
       {/* ─── FAQ ─── */}
       <section aria-labelledby="faq-heading" className="px-6 py-20 max-w-3xl mx-auto">
-        <h2 id="faq-heading" className="text-3xl md:text-4xl font-black mb-12 text-center">
+        <h2 id="faq-heading" className="text-3xl font-black mb-12 text-center">
           Frequently Asked Questions
         </h2>
         <div className="space-y-4">
           {faqs.map((faq, i) => {
             const isOpen = openIndex === i;
-            const panelId = `faq-panel-${i}`;
-            const buttonId = `faq-btn-${i}`;
             return (
               <div key={faq.q} className="border border-slate-800 rounded-2xl bg-slate-900/30 overflow-hidden">
                 <button
-                  id={buttonId}
-                  aria-expanded={isOpen}
-                  aria-controls={panelId}
                   onClick={() => setOpenIndex(isOpen ? null : i)}
                   className="w-full p-6 flex justify-between items-center text-left font-bold hover:text-cyan-400 transition-colors"
                 >
@@ -243,9 +199,6 @@ export default function Pricing() {
                   />
                 </button>
                 <div
-                  id={panelId}
-                  role="region"
-                  aria-labelledby={buttonId}
                   className={`px-6 text-slate-400 text-sm leading-relaxed transition-all duration-300 ${
                     isOpen ? 'pb-6 max-h-40 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'
                   }`}
@@ -290,22 +243,6 @@ export default function Pricing() {
           </p>
         </div>
       </section>
-
-      {/* ─── STICKY MOBILE CTA ─── */}
-      <div className="lg:hidden fixed bottom-0 left-0 w-full bg-slate-950/90 backdrop-blur-lg border-t border-slate-800 p-4 flex gap-4 z-[999]">
-        <a
-          href={`tel:${BUSINESS_INFO.phone}`}
-          className="flex-1 bg-slate-800 hover:bg-slate-700 p-3 rounded-full flex items-center justify-center font-bold text-sm"
-        >
-          <Phone className="mr-2 w-4 h-4" aria-hidden="true" /> Call Now
-        </a>
-        <a
-          href={whatsappUrl}
-          className="flex-1 bg-cyan-500 hover:bg-cyan-400 text-slate-950 p-3 rounded-full flex items-center justify-center font-bold text-sm"
-        >
-          <MessageCircle className="mr-2 w-4 h-4" aria-hidden="true" /> WhatsApp
-        </a>
-      </div>
     </main>
   );
 }
