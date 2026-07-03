@@ -16,63 +16,30 @@ import {
   Battery, 
   HardDrive 
 } from 'lucide-react';
-import { BUSINESS_INFO } from '../constants';
+
 import { getPopularServices } from '../knowledge/registry.js';
-import { SEOEngine } from '../core/components/SEOEngine';
 import { trackEvent } from '../analytics/Telemetry';
 import { SearchBar } from '../core/components/SearchBar';
-import { ChatWidget } from '../components/ChatWidget'; // ✅ IMPORTED CHAT WIDGET
+import { ChatWidget } from '../components/ChatWidget';
+
+// 👈 Phase 2 SEO Engine Imported
+import { SEOEngine } from '../core/components/SEOEngine';
 
 // Map string identifiers from registry.ts to actual Icon components
 const IconMap: Record<string, React.ElementType> = {
   Laptop, Apple, Gamepad2, Cpu, Monitor, Battery, HardDrive, ShieldCheck
 };
 
+const PHONE_CLEAN = '96555301913';
+
 const Home: React.FC = () => {
   const popularServices = getPopularServices();
 
-  const seoData = {
-    title: "Kuwait Computer Repair On Call | MacBook & Laptop Repair",
-    description: "Same-day laptop, MacBook & PC repair in Kuwait. Free Pick & Drop. 4.9★ Google rating, 30-day warranty. Call +965 55301913.",
-    canonicalUrl: BUSINESS_INFO.url,
-    robots: "index, follow"
-  };
-
-  const localBusinessSchema = {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "KCROC - Kuwait Computer Repair On Call",
-    "image": BUSINESS_INFO.logo || BUSINESS_INFO.url + "/logo.png",
-    "@id": BUSINESS_INFO.url,
-    "url": BUSINESS_INFO.url,
-    "telephone": BUSINESS_INFO.phone,
-    "priceRange": "$$",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Kuwait City",
-      "addressCountry": "KW"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 29.3759,
-      "longitude": 47.9774
-    },
-    "openingHoursSpecification": {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-      "opens": "00:00",
-      "closes": "23:59"
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "142"
-    }
-  };
-
   return (
     <div className="w-full flex flex-col items-center">
-      <SEOEngine seo={seoData} schemas={[localBusinessSchema]} />
+      
+      {/* 🚀 PHASE 2 AUTOMATION IN ACTION: Using the Hawalli Location Entity */}
+      <SEOEngine entityId="loc-hawalli" />
 
       <section className="relative w-full max-w-7xl mx-auto px-6 pt-20 pb-24 flex flex-col items-center text-center">
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface-elevated border border-surface-hover mb-8">
@@ -95,14 +62,14 @@ const Home: React.FC = () => {
 
         <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto relative z-30">
           <a
-            href={`tel:${BUSINESS_INFO.phone}`}
+            href={`tel:${PHONE_CLEAN}`}
             onClick={() => trackEvent({ category: 'Contact', action: 'Click_Phone', label: 'Hero_Section' })}
             className="flex items-center justify-center gap-2 px-8 py-4 bg-brand-primary hover:bg-brand-accent text-brand-dark font-bold rounded-button transition-all text-body"
           >
             <Phone className="w-5 h-5" /> Call Technician
           </a>
           <a
-            href={`https://wa.me/${BUSINESS_INFO.cleanPhone}`}
+            href={`https://wa.me/${PHONE_CLEAN}`}
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => trackEvent({ category: 'Contact', action: 'Click_WhatsApp', label: 'Hero_Section' })}
@@ -180,7 +147,7 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* ✅ ADDED CHAT WIDGET HERE */}
+      {/* ✅ Note: If you already placed ChatWidget globally in App.tsx, you can delete this line below! */}
       <ChatWidget />
     </div>
   );
