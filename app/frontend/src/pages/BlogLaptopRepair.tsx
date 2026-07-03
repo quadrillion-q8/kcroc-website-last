@@ -1,3 +1,4 @@
+// File: app/frontend/src/pages/BlogLaptopRepair.tsx
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -8,23 +9,25 @@ import {
   Phone, MessageCircle, Shield, Zap, Clock, Flame, 
   Battery, Cpu, Laptop, Wrench, Keyboard, Monitor, MapPin
 } from 'lucide-react';
+
 import { BUSINESS_INFO } from '../constants/data';
-import MetaSEO from '../components/seo/MetaSEO';
 import SchemaMarkup from '../components/seo/SchemaMarkup';
 
-/* ─────────────────────────────────────────────────────────────────────────────
-   1. PAGE DATA & SEO
-───────────────────────────────────────────────────────────────────────────── */
+// 👈 Phase 2 SEO Engine Imported
+import { SEOEngine } from '../core/components/SEOEngine';
 
+/* ─────────────────────────────────────────────────────────────────────────────
+   1. PAGE DATA & SEO (Preserving your rich Article Schema)
+───────────────────────────────────────────────────────────────────────────── */
 const PAGE_URL = `${BUSINESS_INFO.url}/blog/laptop-repair-kuwait-2026`;
 const HERO_IMAGE_URL = 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_1200/v1781139061/2026-01-22_9_qfanpt.jpg';
 const PUBLISHED_DATE = '2026-06-14T08:00:00+03:00';
 
-const WA_LINK = `https://wa.me/${BUSINESS_INFO.cleanPhone}?text=${encodeURIComponent(
+const WA_LINK = `https://wa.me/96555301913?text=${encodeURIComponent(
   'Hi KCROC, I read your guide on laptop repair and need a diagnostic. Please arrange a free pickup.'
 )}`;
 
-// Preserving your elite structured data
+// Preserving your elite structured data for Article Rich Snippets
 const STRUCTURED_DATA = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -63,7 +66,6 @@ const STRUCTURED_DATA = {
 /* ─────────────────────────────────────────────────────────────────────────────
    2. CONTENT ARRAYS
 ───────────────────────────────────────────────────────────────────────────── */
-
 const statistics = [
   { value: '24-48h', label: 'Turnaround Time', icon: Clock, color: 'text-emerald-400' },
   { value: '100%', label: 'Data Privacy', icon: Shield, color: 'text-blue-400' },
@@ -245,15 +247,12 @@ const faq = [
 /* ─────────────────────────────────────────────────────────────────────────────
    3. MAIN COMPONENT
 ───────────────────────────────────────────────────────────────────────────── */
-
 export default function BlogLaptopRepair() {
   return (
     <div className="min-h-screen bg-gray-950 text-white selection:bg-cyan-500/30">
-      <MetaSEO
-        title="Laptop Repair Kuwait | 2026 Guide to Hardware Preservation | KCROC"
-        description="Expert laptop repair in Kuwait. Overheating fixes, MacBook logic board micro-soldering, and free pickup across all governorates by KCROC."
-        canonical={PAGE_URL}
-      />
+      
+      {/* 🚀 PHASE 2 AUTOMATION IN ACTION */}
+      <SEOEngine entityId="post-laptop-repair" />
       <SchemaMarkup schema={STRUCTURED_DATA} />
 
       {/* Hero Section */}
@@ -538,7 +537,7 @@ export default function BlogLaptopRepair() {
                   className="border-slate-600 text-white hover:bg-slate-800 hover:text-white text-lg px-8 py-6"
                   asChild
                 >
-                  <a href={`tel:${BUSINESS_INFO.phone}`}>
+                  <a href="tel:+96555301913">
                     <Phone className="w-5 h-5 mr-2" />
                     Call: +965 5530 1913
                   </a>
