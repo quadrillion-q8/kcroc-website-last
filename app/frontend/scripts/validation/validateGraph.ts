@@ -2,9 +2,10 @@
 import { ValidationReport, ValidationError, SeverityLevel } from './types.ts';
 import { validationConfig } from './validation.config.ts';
 
-// ✅ Correct path from root to your types and registry
-import { KCROCEntity, Relationship } from '../app/frontend/src/knowledge/types';
-import { KCROC_GRAPH } from '../app/frontend/src/knowledge/registry';
+// ✅ Updated to use absolute-style relative pathing:
+// Exiting 'scripts/validation/' -> '../../' (reaches root) -> 'app/frontend/src/knowledge/...'
+import { KCROCEntity, Relationship } from '../../app/frontend/src/knowledge/types.ts';
+import { KCROC_GRAPH } from '../../app/frontend/src/knowledge/registry.ts';
 
 export async function validateGraph(): Promise<ValidationReport> {
   const issues: ValidationError[] = [];
@@ -34,7 +35,7 @@ export async function validateGraph(): Promise<ValidationReport> {
     // 1. Validate Entity Type Extensibility
     if (!type || !validationConfig.allowedEntityTypes.includes(type)) {
       addIssue(entity.id || 'UNKNOWN', 'INVALID_ENTITY_TYPE', `Unknown or missing entity type: "${type}"`);
-      return; // Stop checking this entity if the base type is corrupted
+      return;
     }
 
     // 2. Config-Driven Required Fields Verification
