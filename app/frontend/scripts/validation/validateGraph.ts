@@ -1,6 +1,6 @@
 // File: scripts/validation/validateGraph.ts
-import { ValidationReport, ValidationError, SeverityLevel } from './types';
-import { validationConfig } from './validation.config';
+import { ValidationReport, ValidationError, SeverityLevel } from './types.ts';
+import { validationConfig } from './validation.config.ts';
 
 // ⚠️ Imports from your actual project schema and master graph
 import { KCROC_GRAPH } from '../../app/frontend/src/knowledge/graph';
