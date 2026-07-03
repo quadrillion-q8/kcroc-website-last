@@ -36,6 +36,12 @@ export const Header: React.FC = () => {
           <Link to="/" className="text-body font-medium text-slate-300 hover:text-brand-primary transition-colors">
             Home
           </Link>
+          <Link to="/pricing" className="text-body font-medium text-slate-300 hover:text-brand-primary transition-colors">
+            Pricing
+          </Link>
+          <Link to="/faq" className="text-body font-medium text-slate-300 hover:text-brand-primary transition-colors">
+            FAQ
+          </Link>
           <div className="relative group py-2">
             <button className="text-body font-medium text-slate-300 group-hover:text-brand-primary transition-colors flex items-center gap-1">
               Services
@@ -80,16 +86,12 @@ export const Header: React.FC = () => {
       {isOpen && (
         <div className="md:hidden w-full bg-surface-default border-b border-surface-hover px-6 py-6 flex flex-col gap-6 animate-fade-in-up">
           <nav className="flex flex-col gap-4">
-            <Link 
-              to="/" 
-              onClick={() => setIsOpen(false)}
-              className="text-body font-bold text-white border-b border-surface-hover pb-2"
-            >
-              Home
-            </Link>
-            <span className="text-caption font-bold text-slate-500 uppercase tracking-wider">
-              Our Services
-            </span>
+            <Link to="/" onClick={() => setIsOpen(false)} className="text-body font-bold text-white border-b border-surface-hover pb-2">Home</Link>
+            <Link to="/pricing" onClick={() => setIsOpen(false)} className="text-body font-bold text-white border-b border-surface-hover pb-2">Pricing</Link>
+            <Link to="/faq" onClick={() => setIsOpen(false)} className="text-body font-bold text-white border-b border-surface-hover pb-2">FAQ</Link>
+            <Link to="/gallery" onClick={() => setIsOpen(false)} className="text-body font-bold text-white border-b border-surface-hover pb-2">Gallery</Link>
+            
+            <span className="text-caption font-bold text-slate-500 uppercase tracking-wider mt-2">Our Services</span>
             <div className="flex flex-col gap-3 pl-2">
               {services.map((service) => (
                 <Link
@@ -106,10 +108,7 @@ export const Header: React.FC = () => {
           
           <a
             href={`tel:${BUSINESS_INFO.phone}`}
-            onClick={() => {
-              handlePhoneClick();
-              setIsOpen(false);
-            }}
+            onClick={() => { handlePhoneClick(); setIsOpen(false); }}
             className="flex items-center justify-center gap-2 w-full py-4 bg-brand-primary text-brand-dark font-bold rounded-button transition-all text-body"
           >
             <Phone className="w-5 h-5" /> Call {BUSINESS_INFO.phone}
