@@ -1,19 +1,21 @@
+// File: app/frontend/src/pages/Blog.tsx
 import React, { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { Calendar, Clock, ArrowRight, BookOpen } from 'lucide-react';
 
-// ✅ Notice the double dots (../) below! This is what fixes the crash.
 import { BUSINESS_INFO } from '../constants/data';
 import { ROUTES, getBlogRoute } from '../constants/routes';
 import { BLOG_POSTS } from '../constants/blogPosts';
-import MetaSEO from '../components/seo/MetaSEO';
 import SchemaMarkup from '../components/seo/SchemaMarkup';
+
+// 👈 Phase 2 SEO Engine Imported
+import { SEOEngine } from '../core/components/SEOEngine';
 
 export default function Blog() {
   const pageUrl = `${BUSINESS_INFO.url}${ROUTES.blog}`;
 
   // =========================
-  // SEO SCHEMA (UPGRADED)
+  // SEO SCHEMA (Preserved for Collection Mapping)
   // =========================
   const SCHEMA_DATA = useMemo(() => ({
     "@context": "https://schema.org",
@@ -83,15 +85,10 @@ export default function Blog() {
   return (
     <main className="w-full min-h-screen bg-transparent text-slate-200 pt-32 pb-24">
 
-      {/* =========================
-          SEO META
-      ========================= */}
-      <MetaSEO
-        title="KCROC Tech Blog | Computer Repair Guides Kuwait"
-        description="Expert laptop repair, MacBook fixes, PC troubleshooting, SSD upgrades and tech tips from Kuwait's top computer technicians."
-        canonical={pageUrl}
-      />
+      {/* 🚀 PHASE 2 AUTOMATION IN ACTION: Basic Tags Handled */}
+      <SEOEngine entityId="page-blog" />
 
+      {/* 🚀 Dynamic Schema Injection for the Collection List */}
       <SchemaMarkup schema={SCHEMA_DATA} />
 
       {/* =========================
