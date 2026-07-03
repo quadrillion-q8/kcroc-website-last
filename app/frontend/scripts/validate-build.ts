@@ -1,18 +1,18 @@
-import { validateGraph } from './validation/validateGraph.ts';
+import { validateGraph } from './validation/validateGraph';
 
-async function runPipeline() {
-  console.log('🔍 Running KCROC Enterprise Validation...');
-  const report = await validateGraph();
-
-  console.log(`\nReport: ${report.moduleName} - ${report.passed ? '✅' : '❌'}`);
-  report.issues.forEach(i => console.log(`  [${i.severity}] ${i.entityId}: ${i.message}`));
+async function run() {
+  console.log('🔍 Running KCROC Enterprise Knowledge Graph Validation...');
+  const { passed, errors, warnings } = await validateGraph();
   
-  if (!report.passed) {
-    console.error('\n🛑 Build rejected due to Critical/Error issues.');
+  warnings.forEach(w => console.warn(`⚠️ WARNING: ${w}`));
+  errors.forEach(e => console.error(`❌ ERROR: ${e}`));
+
+  if (!passed) {
+    console.error(`\n🛑 Build failed with ${errors.length} errors.`);
     process.exit(1);
   }
-  console.log('\n🚀 Validation passed.');
+  console.log('\n🚀 Validation passed. Integrity verified.');
   process.exit(0);
 }
 
-runPipeline();
+run();
