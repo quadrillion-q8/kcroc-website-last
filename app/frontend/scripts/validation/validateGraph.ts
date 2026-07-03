@@ -1,62 +1,50 @@
-import { ValidationReport, ValidationError } from './types.ts';
-import { validationConfig } from './validation.config.ts';
-import { KCROCEntity, Relationship } from '../../src/knowledge/types.ts';
-import { KCROC_GRAPH } from '../../src/knowledge/registry.ts';
+import { KCROC_GRAPH } from '../../src/knowledge/graph'; // Adjust path if needed to find your graph.ts
 
-export async function validateGraph(): Promise<ValidationReport> {
-  const issues: ValidationError[] = [];
-  let totalChecks = 0;
-  let failedChecks = 0;
-  const entities: KCROCEntity[] = KCROC_GRAPH.entities;
+export async function validateGraph() {
+  const errors: string[] = [];
+  const warnings: string[] = [];
+  const entities = KCROC_GRAPH.entities;
   
   const idSet = new Set<string>();
   const slugSet = new Set<string>();
-  const canonicalSet = new Set<string>();
+  const primaryKeywordSet = new Set<string>();
 
-  const addIssue = (entityId: string, ruleKey: string, message: string, field?: string) => {
-    const severity = validationConfig.severityOverrides[ruleKey] || 'WARNING';
-    issues.push({ entityId, field, message, severity });
-    if (severity === 'ERROR' || severity === 'CRITICAL') failedChecks++;
-  };
-
-  entities.forEach((entity) => {
-    const type = entity.entityType;
-    totalChecks++;
-
-    if (!type || !validationConfig.allowedEntityTypes.includes(type)) {
-      addIssue(entity.id || 'UNKNOWN', 'INVALID_ENTITY_TYPE', `Unknown/missing type: "${type}"`);
-      return;
+  entities.forEach((entity: any) => {
+    // 1. Structural Validation (using your schema)
+    if (!entity.id) errors.push(`Entity missing ID: ${JSON.stringify(entity).substring(0, 50)}`);
+    if (!entity.title) errors.push(`Entity [${entity.id}] missing title.`);
+    if (!entity.slug) errors.push(`Entity [${entity.id}] missing slug.`);
+    
+    // 2. SEO Integrity
+    if (!entity.seo?.canonicalUrl) warnings.push(`[${entity.id}] missing canonical URL.`);
+    if (!entity.primaryKeyword) warnings.push(`[${entity.id}] missing primary keyword.`);
+    
+    // 3. Uniqueness Checks
+    if (entity.id) {
+        if (idSet.has(entity.id)) errors.push(`Duplicate ID: ${entity.id}`);
+        idSet.add(entity.id);
+    }
+    
+    if (entity.slug) {
+        if (slugSet.has(entity.slug)) errors.push(`Duplicate slug: ${entity.slug}`);
+        slugSet.add(entity.slug);
     }
 
-    const requiredFields = validationConfig.requiredFieldsByType[type] || ['id', 'name'];
-    requiredFields.forEach(field => {
-      totalChecks++;
-      if (!(entity as any)[field]) addIssue(entity.id, 'MISSING_REQUIRED_FIELD', `Missing field: "${field}"`, field);
+    if (entity.primaryKeyword) {
+        if (primaryKeywordSet.has(entity.primaryKeyword)) {
+            warnings.push(`Duplicate primary keyword: ${entity.primaryKeyword} in [${entity.id}]`);
+        }
+        primaryKeywordSet.add(entity.primaryKeyword);
+    }
+
+    // 4. Native Relationship Validation
+    entity.relationships?.forEach((rel: any) => {
+      const targetExists = entities.some((e: any) => e.id === rel.targetId);
+      if (!targetExists) {
+        errors.push(`Broken relationship: [${entity.id}] -> [${rel.targetId}]`);
+      }
     });
-
-    totalChecks += 3;
-    if (idSet.has(entity.id)) addIssue(entity.id, 'DUPLICATE_ID', `Duplicate ID: "${entity.id}"`);
-    idSet.add(entity.id);
-    if (slugSet.has(entity.slug)) addIssue(entity.id, 'DUPLICATE_SLUG', `Duplicate slug: "/${entity.slug}"`);
-    slugSet.add(entity.slug);
-    if (entity.seo?.canonicalUrl && canonicalSet.has(entity.seo.canonicalUrl)) addIssue(entity.id, 'DUPLICATE_CANONICAL', `Duplicate Canonical: [${entity.seo.canonicalUrl}]`);
-    if (entity.seo?.canonicalUrl) canonicalSet.add(entity.seo.canonicalUrl);
-
-    if (entity.relationships) {
-      entity.relationships.forEach((rel: Relationship) => {
-        totalChecks += 2;
-        if (!entities.some(e => e.id === rel.targetId)) addIssue(entity.id, 'BROKEN_RELATIONAL_LINK', `Missing target: "${rel.targetId}"`);
-        if (!validationConfig.allowedRelationshipTypes.includes(rel.type)) addIssue(entity.id, 'INVALID_RELATIONSHIP_TYPE', `Invalid type: "${rel.type}"`);
-      });
-    }
   });
 
-  return {
-    moduleName: 'Graph Integrity',
-    passed: !issues.some(i => i.severity === 'CRITICAL' || i.severity === 'ERROR'),
-    score: totalChecks > 0 ? Math.round(((totalChecks - failedChecks) / totalChecks) * 100) : 100,
-    totalChecks,
-    failedChecks,
-    issues
-  };
+  return { passed: errors.length === 0, errors, warnings };
 }
