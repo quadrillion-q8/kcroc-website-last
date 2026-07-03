@@ -1,10 +1,16 @@
+// File: app/frontend/src/pages/GamingPCCooling.tsx
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Thermometer, Wind, Droplets, AlertTriangle, CheckCircle2, Phone, MessageCircle, Shield, Zap, Clock, TrendingUp, Flame, Fan, Sun, CloudRain } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { BUSINESS_INFO } from '../constants/data';
+
+// 👈 Phase 2 SEO Engine Imported
+import { SEOEngine } from '../core/components/SEOEngine';
+
+const PHONE_DISPLAY = '+965 5530 1913';
+const PHONE_CLEAN = '96555301913';
 
 export default function GamingPCCooling() {
   const statistics = [
@@ -205,6 +211,10 @@ export default function GamingPCCooling() {
 
   return (
     <div className="min-h-screen bg-gray-950 text-white">
+      
+      {/* 🚀 PHASE 2 AUTOMATION IN ACTION */}
+      <SEOEngine entityId="srv-gaming-pc-cooling" />
+
       {/* ─── HERO SECTION ─── */}
       <section className="relative pt-32 pb-16 md:pb-24 px-4 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-transparent to-orange-500/10"></div>
@@ -232,9 +242,9 @@ export default function GamingPCCooling() {
                 className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white text-base md:text-lg px-6 md:px-8 py-6 shadow-lg shadow-orange-500/30"
                 asChild
               >
-                <a href={`tel:${BUSINESS_INFO.phone}`}>
+                <a href={`tel:${PHONE_CLEAN}`}>
                   <Phone className="w-5 h-5 mr-2" />
-                  Call: {BUSINESS_INFO.phone}
+                  Call: {PHONE_DISPLAY}
                 </a>
               </Button>
               <Button 
@@ -243,7 +253,7 @@ export default function GamingPCCooling() {
                 className="border-cyan-500/50 text-cyan-300 hover:bg-cyan-500/10 text-base md:text-lg px-6 md:px-8 py-6"
                 asChild
               >
-                <a href={`https://wa.me/${BUSINESS_INFO.cleanPhone}?text=I need gaming PC cooling service`} target="_blank" rel="noopener noreferrer">
+                <a href={`https://wa.me/${PHONE_CLEAN}?text=I need gaming PC cooling service`} target="_blank" rel="noopener noreferrer">
                   <MessageCircle className="w-5 h-5 mr-2" />
                   WhatsApp Us
                 </a>
@@ -501,7 +511,7 @@ export default function GamingPCCooling() {
               size="lg" 
               className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white w-full sm:w-auto"
             >
-              <a href={`tel:${BUSINESS_INFO.phone}`}>Call: {BUSINESS_INFO.phone}</a>
+              <a href={`tel:${PHONE_CLEAN}`}>Call: {PHONE_DISPLAY}</a>
             </Button>
             <Button 
               asChild
