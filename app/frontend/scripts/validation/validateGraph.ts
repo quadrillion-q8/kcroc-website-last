@@ -2,10 +2,9 @@
 import { ValidationReport, ValidationError, SeverityLevel } from './types.ts';
 import { validationConfig } from './validation.config.ts';
 
-import { KCROCEntity, Relationship } from '../../src/knowledge/types';
-
-// ✅ Fixed: Importing correctly from graph.ts!
-import { KCROC_GRAPH } from '../../src/knowledge/graph';
+// ✅ Corrected relative paths to bridge from 'scripts/' to 'app/frontend/src/knowledge/'
+import { KCROCEntity, Relationship } from '../app/frontend/src/knowledge/types';
+import { KCROC_GRAPH } from '../app/frontend/src/knowledge/graph';
 
 export async function validateGraph(): Promise<ValidationReport> {
   const issues: ValidationError[] = [];
@@ -34,7 +33,7 @@ export async function validateGraph(): Promise<ValidationReport> {
     // 1. Validate Entity Type Extensibility
     if (!type || !validationConfig.allowedEntityTypes.includes(type)) {
       addIssue(entity.id || 'UNKNOWN', 'INVALID_ENTITY_TYPE', `Unknown or missing entity type: "${type}"`);
-      return; // Stop checking this entity if the base type is corrupted
+      return;
     }
 
     // 2. Config-Driven Required Fields Verification
@@ -84,7 +83,7 @@ export async function validateGraph(): Promise<ValidationReport> {
       });
     }
 
-    // 5. Context-Aware Schema/SEO Rules (e.g., Location Coordinates & FAQs)
+    // 5. Context-Aware Schema/SEO Rules
     const entityData = entity as Record<string, any>;
 
     if (type === 'Location') {
