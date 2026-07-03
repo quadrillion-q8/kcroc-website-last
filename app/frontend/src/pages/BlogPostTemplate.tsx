@@ -1,4 +1,4 @@
-// File: src/pages/BlogPostTemplate.tsx
+// File: app/frontend/src/pages/BlogPostTemplate.tsx
 import React, { useMemo } from 'react';
 import { useParams, Navigate, Link } from 'react-router-dom';
 import {
@@ -13,8 +13,10 @@ import { BLOG_POSTS, BlogPost } from '../constants/blogPosts';
 import { AutoLink } from '../utils/linkGraph'; 
 import { getIntentWhatsAppLink } from '../utils/whatsappIntent';
 import { trackLead } from '../utils/analytics'; 
-import MetaSEO from '../components/seo/MetaSEO';
 import SchemaMarkup from '../components/seo/SchemaMarkup';
+
+// 👈 Phase 2 SEO Engine Imported
+import { SEOEngine } from '../core/components/SEOEngine';
 
 export default function BlogPostTemplate() {
   const { slug } = useParams<{ slug: string }>();
@@ -39,7 +41,7 @@ export default function BlogPostTemplate() {
     return [];
   }, [post]);
 
-  // ─── SEO SCHEMA ───
+  // ─── SEO SCHEMA (Preserved for dynamic Article rich snippets) ───
   const SCHEMA_DATA = useMemo(() => ({
     "@context": "https://schema.org",
     "@graph": [
@@ -87,13 +89,11 @@ export default function BlogPostTemplate() {
 
   return (
     <main className="w-full min-h-screen bg-transparent text-slate-200 pt-32 pb-24">
-      <MetaSEO
-        title={`${post.title} | ${BUSINESS_INFO.shortName}`}
-        description={post.excerpt}
-        canonical={pageUrl}
-        ogType="article"
-        ogImage={post.image}
-      />
+      
+      {/* 🚀 PHASE 2 AUTOMATION IN ACTION: Basic Tags Handled */}
+      <SEOEngine entityId="page-blog" />
+
+      {/* 🚀 Dynamic Schema Injection for the Article */}
       <SchemaMarkup schema={SCHEMA_DATA} />
 
       <nav aria-label="Breadcrumb" className="max-w-4xl mx-auto px-6 mb-8">
