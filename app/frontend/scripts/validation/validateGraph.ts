@@ -2,16 +2,17 @@
 import { ValidationReport, ValidationError, SeverityLevel } from './types.ts';
 import { validationConfig } from './validation.config.ts';
 
-// ⚠️ Imports from your actual project schema and master graph
-import { KCROC_GRAPH } from '../../app/frontend/src/knowledge/graph';
-import { KCROCEntity, Relationship } from '../../app/frontend/src/types/graph';
+// ✅ Fixed the double-path! These now correctly point directly to your src folder
+import { KCROCEntity, Relationship } from '../../src/knowledge/types';
+import { SERVICES } from '../../src/knowledge/registry';
 
 export async function validateGraph(): Promise<ValidationReport> {
   const issues: ValidationError[] = [];
   let totalChecks = 0;
   let failedChecks = 0;
 
-  const entities: KCROCEntity[] = KCROC_GRAPH.entities;
+  // Single Source of Truth (safely handles arrays or records)
+  const entities: KCROCEntity[] = Array.isArray(SERVICES) ? SERVICES : Object.values(SERVICES);
   
   const idSet = new Set<string>();
   const slugSet = new Set<string>();
@@ -31,26 +32,30 @@ export async function validateGraph(): Promise<ValidationReport> {
     totalChecks++;
 
     // 1. Validate Entity Type Extensibility
-    if (!validationConfig.allowedEntityTypes.includes(type)) {
-      addIssue(entity.id, 'INVALID_ENTITY_TYPE', `Unknown entity type: "${type}"`);
+    if (!type || !validationConfig.allowedEntityTypes.includes(type)) {
+      addIssue(entity.id || 'UNKNOWN', 'INVALID_ENTITY_TYPE', `Unknown or missing entity type: "${type}"`);
+      return; // Stop checking this entity if the base type is corrupted
     }
 
     // 2. Config-Driven Required Fields Verification
     const requiredFields = validationConfig.requiredFieldsByType[type] || ['id', 'name'];
     requiredFields.forEach(field => {
       totalChecks++;
-      if (!Reflect.get(entity, field)) {
+      const entityData = entity as Record<string, any>;
+      if (!entityData[field]) {
         addIssue(entity.id, 'MISSING_REQUIRED_FIELD', `Missing structural field: "${field}"`, field);
       }
     });
 
     // 3. Uniqueness Enforcement (IDs, Slugs, Canonicals)
     totalChecks += 3;
-    if (idSet.has(entity.id)) addIssue(entity.id, 'DUPLICATE_ID', `Collision detected on ID: "${entity.id}"`);
-    idSet.add(entity.id);
+    if (entity.id) {
+      if (idSet.has(entity.id)) addIssue(entity.id, 'DUPLICATE_ID', `Collision detected on ID: "${entity.id}"`);
+      idSet.add(entity.id);
+    }
 
     if (entity.slug) {
-      if (slugSet.has(entity.slug)) addIssue(entity.slug, 'DUPLICATE_SLUG', `Duplicate slug found: "/${entity.slug}"`);
+      if (slugSet.has(entity.slug)) addIssue(entity.id, 'DUPLICATE_SLUG', `Duplicate slug found: "/${entity.slug}"`);
       slugSet.add(entity.slug);
     }
 
@@ -80,15 +85,21 @@ export async function validateGraph(): Promise<ValidationReport> {
     }
 
     // 5. Context-Aware Schema/SEO Rules (e.g., Location Coordinates & FAQs)
+    const entityData = entity as Record<string, any>;
+
     if (type === 'Location') {
       totalChecks += 2;
-      const lat = (entity as any).lat;
-      const lng = (entity as any).lng;
-      if (typeof lat !== 'number' || lat < -90 || lat > 90) addIssue(entity.id, 'INVALID_COORDINATES', `Latitude coordinate out of bounds: ${lat}`);
-      if (typeof lng !== 'number' || lng < -180 || lng > 180) addIssue(entity.id, 'INVALID_COORDINATES', `Longitude coordinate out of bounds: ${lng}`);
+      const lat = entityData.lat;
+      const lng = entityData.lng;
+      if (typeof lat !== 'number' || lat < -90 || lat > 90) {
+        addIssue(entity.id, 'INVALID_COORDINATES', `Latitude coordinate out of bounds: ${lat}`);
+      }
+      if (typeof lng !== 'number' || lng < -180 || lng > 180) {
+        addIssue(entity.id, 'INVALID_COORDINATES', `Longitude coordinate out of bounds: ${lng}`);
+      }
     }
 
-    if ((type === 'Service' || type === 'Location') && (!entity.faqs || entity.faqs.length === 0)) {
+    if ((type === 'Service' || type === 'Location') && (!entityData.faq || entityData.faq.length === 0)) {
       totalChecks++;
       addIssue(entity.id, 'MISSING_FAQ', `Entity lacks FAQ nodes needed for rich search snippets.`);
     }
