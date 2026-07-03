@@ -1,25 +1,25 @@
 // File: app/frontend/src/pages/Services.tsx
 import React, { useEffect, useState } from 'react';
-import { Helmet } from 'react-helmet-async';
 import { serviceRepository } from '../core/repositories/ServiceRepository';
 import { locationRepository } from '../core/repositories/LocationRepository';
 import { SchemaService } from '../core/services/SchemaService';
 import { ServiceEntity, LocationEntity } from '../core/types';
 import { Loader2, ArrowRight, MapPin } from 'lucide-react';
 
+// 👈 Phase 2 SEO Engine Imported
+import { SEOEngine } from '../core/components/SEOEngine';
+import SchemaMarkup from '../components/seo/SchemaMarkup';
+
 export default function Services() {
-  // 1. Enterprise State Management for Async Data & Relationships
   const [services, setServices] = useState<ServiceEntity[]>([]);
   const [locations, setLocations] = useState<LocationEntity[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
-  // 2. Fetch Data via Repositories Concurrently
   useEffect(() => {
     const fetchPageData = async () => {
       try {
         setIsLoading(true);
-        // Promise.all fetches both Services and Locations at the exact same time
         const [servicesData, locationsData] = await Promise.all([
           serviceRepository.findAll(),
           locationRepository.findAll()
@@ -38,7 +38,6 @@ export default function Services() {
     fetchPageData();
   }, []);
 
-  // 3. Loading UI
   if (isLoading) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-slate-950 text-white">
@@ -48,7 +47,6 @@ export default function Services() {
     );
   }
 
-  // 4. Error State UI
   if (error) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-slate-950 text-white">
@@ -59,32 +57,24 @@ export default function Services() {
     );
   }
 
-  // 5. Success Render
   return (
     <div className="min-h-screen bg-slate-950 text-white py-24 px-6">
       
-      {/* ==========================================
-          ENTERPRISE SEO ENGINE INJECTION
-          ========================================== */}
-      <Helmet>
-        <title>Our Repair Services | Kuwait Computer Repair On Call</title>
-        <meta name="description" content="Expert laptop, PC, and MacBook repair services in Kuwait. Free pick & drop included." />
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "ItemList",
-            "itemListElement": services.map((service, index) => ({
-              "@type": "ListItem",
-              "position": index + 1,
-              "item": SchemaService.generateServiceSchema(service)
-            }))
-          })}
-        </script>
-      </Helmet>
+      {/* 🚀 PHASE 2 AUTOMATION IN ACTION: Basic Tags Handled */}
+      <SEOEngine entityId="page-services" />
 
-      {/* ==========================================
-          MAIN SERVICES GRID
-          ========================================== */}
+      {/* 🚀 Dynamic Schema Injection for the Service List */}
+      <SchemaMarkup schema={{
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          "itemListElement": services.map((service, index) => ({
+            "@type": "ListItem",
+            "position": index + 1,
+            "item": SchemaService.generateServiceSchema(service)
+          }))
+      }} />
+
+      {/* Main Services Grid */}
       <div className="max-w-7xl mx-auto mb-32">
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-6xl font-black mb-6">Expert Repair Services</h1>
@@ -127,9 +117,7 @@ export default function Services() {
         </div>
       </div>
 
-      {/* ==========================================
-          AUTOMATED INTERNAL LINKING: LOCATIONS
-          ========================================== */}
+      {/* Automated Internal Linking: Locations */}
       <div className="max-w-7xl mx-auto pt-16 border-t border-slate-800/50">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-black mb-4">
@@ -159,7 +147,6 @@ export default function Services() {
           ))}
         </div>
       </div>
-
     </div>
   );
 }
