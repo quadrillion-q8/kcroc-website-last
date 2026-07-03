@@ -1,12 +1,14 @@
 // File: app/frontend/src/pages/LocationTemplate.tsx
-import React, { useEffect, useState, useMemo } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, Navigate } from 'react-router-dom';
 import { registry } from '../core/registry'; // ✅ Centralized Registry
 import { RelationshipService } from '../core/services/RelationshipService';
-import { SEOEngine } from '../core/components/SEOEngine'; // ✅ Enterprise SEO Engine
 import { LocationEntity, ServiceEntity } from '../core/types';
 import { Loader2, MapPin, Phone, ShieldCheck, ArrowRight } from 'lucide-react';
 import { trackCallClick } from '../utils/analytics';
+
+// 👈 Phase 2 SEO Engine Imported
+import { SEOEngine } from '../core/components/SEOEngine'; 
 
 export default function LocationTemplate() {
   const { slug } = useParams<{ slug: string }>();
@@ -45,29 +47,6 @@ export default function LocationTemplate() {
     fetchData();
   }, [slug]);
 
-  // ✅ Memoize schemas to prevent React from breaking the SEOEngine's React.memo wrapper
-  const schemas = useMemo(() => {
-    if (!location) return [];
-    
-    return [{
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "@id": `https://www.computerrepairkuwait.com/location/${location.slug}#localbusiness`,
-      "name": `Kuwait Computer Repair On Call - ${location.title}`,
-      "description": location.description,
-      "telephone": location.phone || "+96555301913",
-      "areaServed": {
-        "@type": "City",
-        "name": location.title
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": location.coords.lat,
-        "longitude": location.coords.lng
-      }
-    }];
-  }, [location]);
-
   if (isLoading) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-slate-950 text-white">
@@ -86,8 +65,9 @@ export default function LocationTemplate() {
       
       {/* ==========================================
           PROGRAMMATIC SEO ENGINE
+          Engine automatically builds LocalBusiness Schema based on location.id
           ========================================== */}
-      {location.seo && <SEOEngine seo={location.seo} schemas={schemas} />}
+      <SEOEngine entityId={location.id} />
 
       {/* ==========================================
           DYNAMIC UI (Pulls strictly from the Entity)
