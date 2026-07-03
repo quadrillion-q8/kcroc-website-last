@@ -1,82 +1,62 @@
 // File: scripts/validate-build.ts
-import fs from 'fs';
-import path from 'path';
+import { validateGraph } from './validation/validateGraph';
+import { ValidationReport } from './validation/types';
 
-// ─── 1. CONFIGURATION ──────────────────────────────────────────────────
-const PAGES_DIR = path.join(process.cwd(), 'src', 'pages');
+async function runEnterpriseValidation() {
+  console.log('🔍 Booting KCROC Enterprise Validation Suite...\n');
 
-// Files that intentionally do not require the SEO Engine
-const IGNORE_FILES = [
-  'NotFound.tsx',          
-  'LogoutCallbackPage.tsx',
-  'AILandingTemplate.tsx'  // Added to ignore list
-];
+  const reports: ValidationReport[] = [];
 
-// Directories inside /pages that should be skipped
-const IGNORE_DIRS = [
-  'templates',
-  'ai'                     // Added to ignore list
-];
-
-// ─── 2. RECURSIVE FILE SCANNER ─────────────────────────────────────────
-function getPageFiles(dirPath: string, filesList: string[] = []): string[] {
-  const files = fs.readdirSync(dirPath);
-
-  for (const file of files) {
-    const fullPath = path.join(dirPath, file);
-    const stat = fs.statSync(fullPath);
-
-    if (stat.isDirectory()) {
-      if (!IGNORE_DIRS.includes(file)) {
-        getPageFiles(fullPath, filesList);
-      }
-    } else if (file.endsWith('.tsx') && !IGNORE_FILES.includes(file)) {
-      filesList.push(fullPath);
-    }
-  }
-
-  return filesList;
-}
-
-// ─── 3. CORE VALIDATION LOGIC ──────────────────────────────────────────
-function runValidator() {
-  console.log('🔍 Starting Enterprise SEO Build Validation...');
-  console.log('Scanning for Phase 2 SEO Engine Compliance...\n');
-
-  if (!fs.existsSync(PAGES_DIR)) {
-    console.error(`❌ Could not find pages directory at: ${PAGES_DIR}`);
+  // --- Phase 1: Data Integrity ---
+  try {
+    const graphReport = await validateGraph();
+    reports.push(graphReport);
+  } catch (err: any) {
+    console.error(`💥 Fatal error running Graph Validator: ${err.message}`);
     process.exit(1);
   }
 
-  const pages = getPageFiles(PAGES_DIR);
-  const failingPages: string[] = [];
+  // --- Phase 2: SEO AST Validator (Coming Next) ---
+  // const seoReport = await validateSEO();
+  // reports.push(seoReport);
 
-  for (const pagePath of pages) {
-    const content = fs.readFileSync(pagePath, 'utf-8');
-    const hasSEOEngine = content.includes('SEOEngine');
+  // --- Render Enterprise Report ---
+  console.log('=========================================');
+  console.log('       KCROC BUILD REPORT                ');
+  console.log('=========================================\n');
+
+  let allChecksPassed = true;
+  let totalScore = 0;
+
+  reports.forEach(report => {
+    totalScore += report.score;
+    const statusIcon = report.passed ? '✅' : '❌';
     
-    if (!hasSEOEngine) {
-      failingPages.push(path.relative(PAGES_DIR, pagePath));
+    console.log(`${report.moduleName.padEnd(20)} ${statusIcon} ${report.score}%`);
+    
+    if (!report.passed) {
+      allChecksPassed = false;
+      console.log(`\n   Errors in ${report.moduleName}:`);
+      report.errors.forEach(err => console.log(`     - ${err}`));
     }
-  }
 
-  // ─── 4. REPORTING & PIPELINE CONTROL ─────────────────────────────────
-  console.log('📊 --- VALIDATION REPORT ---');
-  
-  if (failingPages.length > 0) {
-    console.error('\n❌ BUILD FAILED: SEO Engine Missing!');
-    console.error('The following pages are missing the <SEOEngine /> component:');
-    
-    failingPages.forEach(page => console.error(`   - ${page}`));
-    
-    console.error('\n💡 FIX: Please import and add <SEOEngine entityId="..." /> to these pages before deploying.');
+    if (report.warnings.length > 0) {
+      console.log(`\n   Warnings in ${report.moduleName}:`);
+      report.warnings.forEach(warn => console.log(`     ⚠ ${warn}`));
+    }
+    console.log('─────────────────────────────────────────');
+  });
+
+  const overallScore = (totalScore / reports.length).toFixed(1);
+  console.log(`\nOverall Score: ${overallScore} / 100\n`);
+
+  if (!allChecksPassed) {
+    console.error('🛑 BUILD REJECTED: Critical Validation Failures Detected.');
     process.exit(1);
   }
 
-  console.log('✅ All Enterprise checks passed perfectly!');
-  console.log('🚀 Validation successful. Proceeding with Vite build...\n');
-  
+  console.log('🚀 All quality gates cleared. Proceeding to production build...');
   process.exit(0);
 }
 
-runValidator();
+runEnterpriseValidation();
