@@ -1,18 +1,19 @@
+// File: app/frontend/src/pages/PrivacySecurity.tsx
 import React from 'react';
 import { Link } from 'react-router-dom';
-import {
-  ShieldCheck, EyeOff, Truck, Lock, Cpu, Phone,
-  ExternalLink, Check
+import { 
+  ShieldCheck, EyeOff, Truck, Lock, Cpu, Phone, 
+  ExternalLink, Check 
 } from 'lucide-react';
-import { BUSINESS_INFO } from '../constants/data';
-import MetaSEO from '../components/seo/MetaSEO';
-import SchemaMarkup from '../components/seo/SchemaMarkup';
+
+// 👈 Phase 2 SEO Engine Imported
+import { SEOEngine } from '../core/components/SEOEngine';
 
 /* ─────────────────────────────────────────────────────────────────────────────
    1. PAGE DATA
 ───────────────────────────────────────────────────────────────────────────── */
-
-const PAGE_URL = `${BUSINESS_INFO.url}/privacy-security-kuwait`;
+const PHONE_DISPLAY = '+965 5530 1913';
+const PHONE_CLEAN = '96555301913';
 
 const TRUST_BADGES = Object.freeze([
   { id: 'cctv',   icon: ShieldCheck, text: "CCTV Monitored Lab" },
@@ -61,58 +62,18 @@ const PROTOCOL_POINTS = Object.freeze([
   }
 ]);
 
-const STRUCTURED_DATA = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "WebPage",
-      "@id": `${PAGE_URL}#webpage`,
-      "name": "Privacy & Security Policy | Computer Repair Kuwait | KCROC",
-      "url": PAGE_URL,
-      "description": "KCROC's zero-risk privacy protocol for computer repair in Kuwait. CCTV-monitored lab, no-snoop policy, secure pickup custody, and full component transparency.",
-      "isPartOf": { "@id": `${BUSINESS_INFO.url}/#website` },
-      "breadcrumb": { "@id": `${PAGE_URL}#breadcrumb` }
-    },
-    {
-      "@type": "LocalBusiness",
-      "@id": `${BUSINESS_INFO.url}/#business`,
-      "name": BUSINESS_INFO.name,
-      "telephone": BUSINESS_INFO.phone,
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19",
-        "addressLocality": "Hawalli",
-        "addressRegion": "Hawalli Governorate",
-        "addressCountry": "KW"
-      }
-    },
-    {
-      "@type": "BreadcrumbList",
-      "@id": `${PAGE_URL}#breadcrumb`,
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home",             "item": BUSINESS_INFO.url },
-        { "@type": "ListItem", "position": 2, "name": "Privacy & Security", "item": PAGE_URL }
-      ]
-    }
-  ]
-};
-
 /* ─────────────────────────────────────────────────────────────────────────────
    2. MAIN PAGE COMPONENT
 ───────────────────────────────────────────────────────────────────────────── */
-
 export default function PrivacySecurity() {
   const waMessage = encodeURIComponent("Hi KCROC, I have a question about your privacy and security policy.");
-  const waLink = `https://wa.me/${BUSINESS_INFO.cleanPhone}?text=${waMessage}`;
+  const waLink = `https://wa.me/${PHONE_CLEAN}?text=${waMessage}`;
 
   return (
     <main className="w-full min-h-screen bg-transparent text-slate-200 selection:bg-cyan-500/30 pt-32 pb-24 font-sans">
-      <MetaSEO
-        title="Privacy & Security Policy | Computer Repair Kuwait | KCROC"
-        description="Your device is safe with KCROC. CCTV-monitored lab, strict no-snoop policy, secure pickup custody, and full component transparency on every repair in Kuwait."
-        canonical={PAGE_URL}
-      />
-      <SchemaMarkup schema={STRUCTURED_DATA} />
+      
+      {/* 🚀 PHASE 2 AUTOMATION IN ACTION */}
+      <SEOEngine entityId="page-privacy-security" />
 
       {/* ─── BREADCRUMBS ─── */}
       <nav aria-label="Breadcrumb" className="max-w-6xl mx-auto px-6 mb-8 relative z-10">
@@ -194,30 +155,10 @@ export default function PrivacySecurity() {
       {/* ─── INTERNAL LINKING CARDS ─── */}
       <section aria-label="Related services" className="max-w-5xl mx-auto px-6 relative z-10 mb-24">
         <div className="grid sm:grid-cols-2 gap-4">
-          <Link
-            to="/laptop-repair-kuwait"
-            className="bg-slate-900/50 border border-slate-800 text-center font-bold py-6 px-6 rounded-2xl hover:bg-slate-800 hover:border-cyan-500/40 text-slate-300 transition-all"
-          >
-            Laptop Repair
-          </Link>
-          <Link
-            to="/macbook-repair-kuwait"
-            className="bg-slate-900/50 border border-slate-800 text-center font-bold py-6 px-6 rounded-2xl hover:bg-slate-800 hover:border-cyan-500/40 text-slate-300 transition-all"
-          >
-            MacBook Repair
-          </Link>
-          <Link
-            to="/motherboard-repair-kuwait"
-            className="bg-slate-900/50 border border-slate-800 text-center font-bold py-6 px-6 rounded-2xl hover:bg-slate-800 hover:border-cyan-500/40 text-slate-300 transition-all"
-          >
-            Motherboard Repair
-          </Link>
-          <Link
-            to="/laptop-screen-repair-kuwait"
-            className="bg-slate-900/50 border border-slate-800 text-center font-bold py-6 px-6 rounded-2xl hover:bg-slate-800 hover:border-cyan-500/40 text-slate-300 transition-all"
-          >
-            Screen Replacement
-          </Link>
+          <Link to="/laptop-repair-kuwait" className="bg-slate-900/50 border border-slate-800 text-center font-bold py-6 px-6 rounded-2xl hover:bg-slate-800 hover:border-cyan-500/40 text-slate-300 transition-all">Laptop Repair</Link>
+          <Link to="/macbook-repair-kuwait" className="bg-slate-900/50 border border-slate-800 text-center font-bold py-6 px-6 rounded-2xl hover:bg-slate-800 hover:border-cyan-500/40 text-slate-300 transition-all">MacBook Repair</Link>
+          <Link to="/motherboard-repair-kuwait" className="bg-slate-900/50 border border-slate-800 text-center font-bold py-6 px-6 rounded-2xl hover:bg-slate-800 hover:border-cyan-500/40 text-slate-300 transition-all">Motherboard Repair</Link>
+          <Link to="/laptop-screen-repair-kuwait" className="bg-slate-900/50 border border-slate-800 text-center font-bold py-6 px-6 rounded-2xl hover:bg-slate-800 hover:border-cyan-500/40 text-slate-300 transition-all">Screen Replacement</Link>
         </div>
       </section>
 
@@ -231,8 +172,6 @@ export default function PrivacySecurity() {
             If you require a Non-Disclosure Agreement (NDA) for sensitive corporate data before scheduling a repair, contact our technical desk directly.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            
-            {/* ✅ Fixed: Added missing <a tag declarations here */}
             <a 
               href={waLink}
               target="_blank"
@@ -241,14 +180,12 @@ export default function PrivacySecurity() {
             >
               Message on WhatsApp <ExternalLink size={20} aria-hidden="true" />
             </a>
-            
             <a 
-              href={`tel:${BUSINESS_INFO.phone}`}
+              href={`tel:${PHONE_CLEAN}`}
               className="bg-slate-900 border border-slate-700 hover:border-cyan-500/50 text-white font-bold px-8 py-4 rounded-full transition-all flex items-center justify-center gap-2"
             >
-              <Phone size={20} className="text-cyan-400" aria-hidden="true" /> Call {BUSINESS_INFO.phone}
+              <Phone size={20} className="text-cyan-400" aria-hidden="true" /> Call {PHONE_DISPLAY}
             </a>
-
           </div>
         </div>
       </section>
