@@ -2,17 +2,18 @@
 import { ValidationReport, ValidationError, SeverityLevel } from './types.ts';
 import { validationConfig } from './validation.config.ts';
 
-// ✅ Fixed the double-path! These now correctly point directly to your src folder
 import { KCROCEntity, Relationship } from '../../src/knowledge/types';
-import { SERVICES } from '../../src/knowledge/registry';
+
+// ✅ Import your master graph directly from registry
+import { KCROC_GRAPH } from '../../src/knowledge/registry';
 
 export async function validateGraph(): Promise<ValidationReport> {
   const issues: ValidationError[] = [];
   let totalChecks = 0;
   let failedChecks = 0;
 
-  // Single Source of Truth (safely handles arrays or records)
-  const entities: KCROCEntity[] = Array.isArray(SERVICES) ? SERVICES : Object.values(SERVICES);
+  // ✅ STRICTLY use KCROC_GRAPH.entities as the single source of truth
+  const entities: KCROCEntity[] = KCROC_GRAPH.entities;
   
   const idSet = new Set<string>();
   const slugSet = new Set<string>();
