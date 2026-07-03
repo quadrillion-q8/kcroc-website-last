@@ -1,12 +1,19 @@
+// File: app/frontend/src/pages/ScreenProtectionTips.tsx
+import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { 
-  ShieldCheck, Smartphone, Laptop, AlertTriangle, CheckCircle2, 
-  Phone, MessageCircle, Sun, Wind, Droplets, Monitor
+  ShieldCheck, AlertTriangle, CheckCircle2, 
+  Phone, MessageCircle, Sun, Wind, Droplets, Monitor, Laptop 
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
+
+// 👈 Phase 2 SEO Engine Imported
+import { SEOEngine } from '../core/components/SEOEngine';
+
+const PHONE_DISPLAY = '+965 5530 1913';
+const PHONE_CLEAN = '96555301913';
 
 export default function ScreenProtectionTips() {
   const protectionTips = [
@@ -19,10 +26,6 @@ export default function ScreenProtectionTips() {
     { title: '7. Skip the Webcam Cover', description: 'Plastic webcam covers are too thick for modern laptops; they create concentrated pressure that often cracks the display panel.', icon: Sun, color: 'text-red-500', bgColor: 'bg-red-500/10', borderColor: 'border-red-500/30' }
   ];
 
-  const repairServices = [
-    { title: 'Professional Screen Replacement', description: 'We source high-quality OEM panels for all laptop brands.', price: 'Starts at 25 KD', icon: Monitor, benefits: ['Original quality panels', 'Same-day turnaround', '30-day warranty', 'Free pickup & delivery'] }
-  ];
-
   const faq = [
     { q: 'Can a cracked laptop screen be repaired or must it be replaced?', a: 'Unfortunately, internal LCD/LED cracks cannot be repaired; the entire panel must be replaced. We perform this service professionally at our Hawalli workshop.' },
     { q: 'Do you provide free pickup for screen replacements in Kuwait?', a: 'Yes! We offer free pickup and delivery service across all Kuwait governorates for screen replacement services.' }
@@ -30,10 +33,9 @@ export default function ScreenProtectionTips() {
 
   return (
     <div className="min-h-screen bg-gray-950 text-white">
-      <Helmet>
-        <title>How to Protect Your Laptop Screen: 7 Expert Tips | KCROC</title>
-        <meta name="description" content="Expert tips from KCROC to prevent laptop screen damage in Kuwait's climate. Learn how to protect your display and avoid costly repairs." />
-      </Helmet>
+      
+      {/* 🚀 PHASE 2 AUTOMATION IN ACTION */}
+      <SEOEngine entityId="page-screen-protection" />
 
       {/* Hero */}
       <section className="relative pt-32 pb-24 px-4 overflow-hidden text-center">
@@ -85,7 +87,7 @@ export default function ScreenProtectionTips() {
                   <Link to="/book">Book Free Pickup</Link>
                 </Button>
                 <Button size="lg" variant="outline" className="border-emerald-500 text-emerald-400 text-lg px-8 py-6" asChild>
-                  <a href="tel:+96555301913"><Phone className="mr-2"/> Call 55301913</a>
+                  <a href={`tel:${PHONE_CLEAN}`}><Phone className="mr-2"/> Call {PHONE_DISPLAY}</a>
                 </Button>
               </div>
             </CardContent>
