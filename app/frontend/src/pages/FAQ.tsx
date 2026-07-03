@@ -1,3 +1,4 @@
+// File: app/frontend/src/pages/FAQ.tsx
 import React, { useState, useMemo, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import {
@@ -11,17 +12,20 @@ import {
   CalendarDays
 } from 'lucide-react';
 
-import { BUSINESS_INFO } from '../constants/data';
 import { ROUTES } from '../constants/routes';
 import { GLOBAL_FAQS } from '../constants/faqs';
-import MetaSEO from '../components/seo/MetaSEO';
 import SchemaMarkup from '../components/seo/SchemaMarkup';
 
-/* ─────────────────────────────────────────────────────────────────────────────
-   TYPES
-───────────────────────────────────────────────────────────────────────────── */
+// 👈 Phase 2 SEO Engine Imported
+import { SEOEngine } from '../core/components/SEOEngine';
 
+/* ─────────────────────────────────────────────────────────────────────────────
+   TYPES & CONSTANTS
+───────────────────────────────────────────────────────────────────────────── */
 type FAQItem = (typeof GLOBAL_FAQS)[number];
+
+const BASE_URL = 'https://computerrepairkuwait.com';
+const PHONE_CLEAN = '96555301913';
 
 /* ─────────────────────────────────────────────────────────────────────────────
    COMPONENT
@@ -29,7 +33,7 @@ type FAQItem = (typeof GLOBAL_FAQS)[number];
 
 export default function FAQ() {
   const location = useLocation();
-  const pageUrl = `${BUSINESS_INFO.url}${ROUTES.faq}`;
+  const pageUrl = `${BASE_URL}${ROUTES.faq}`;
 
   const [searchQuery, setSearchQuery]   = useState('');
   const [openFaqs, setOpenFaqs]         = useState<Set<string>>(new Set());
@@ -47,7 +51,6 @@ export default function FAQ() {
     );
   }, [searchQuery]);
 
-  // ✅ Fixed: correct type for grouped record
   const groupedFAQs = useMemo(() => {
     const groups: Record<string, FAQItem[]> = {};
     filteredFAQs.forEach((faq) => {
@@ -101,9 +104,9 @@ export default function FAQ() {
 
   /* ─── WA LINK ─── */
   const waMessage = encodeURIComponent("Hi KCROC, I checked your FAQ page but I have a specific question about repairing my device.");
-  const waLink = `https://wa.me/${BUSINESS_INFO.cleanPhone}?text=${waMessage}`;
+  const waLink = `https://wa.me/${PHONE_CLEAN}?text=${waMessage}`;
 
-  /* ─── SCHEMA ─── */
+  /* ─── SCHEMA (Preserving dynamic FAQ mapping) ─── */
   const SCHEMA_DATA = useMemo(() => ({
     "@context": "https://schema.org",
     "@graph": [
@@ -113,8 +116,7 @@ export default function FAQ() {
         "url": pageUrl,
         "name": "Frequently Asked Questions | Computer Repair Kuwait | KCROC",
         "description": "Answers to your questions about computer repair, free pickup, Windows installation, warranties, and pricing in Kuwait.",
-        // ✅ Fixed: added isPartOf to connect to site entity
-        "isPartOf": { "@id": `${BUSINESS_INFO.url}/#website` }
+        "isPartOf": { "@id": `${BASE_URL}/#website` }
       },
       {
         "@type": "FAQPage",
@@ -127,10 +129,9 @@ export default function FAQ() {
       },
       {
         "@type": "BreadcrumbList",
-        // ✅ Fixed: added @id to BreadcrumbList
         "@id": `${pageUrl}#breadcrumb`,
         "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": BUSINESS_INFO.url },
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": BASE_URL },
           { "@type": "ListItem", "position": 2, "name": "FAQ",  "item": pageUrl }
         ]
       }
@@ -140,12 +141,10 @@ export default function FAQ() {
   return (
     <main className="w-full min-h-screen bg-transparent text-slate-200 pt-32 pb-24">
 
-      {/* ─── SEO ─── */}
-      <MetaSEO
-        title="Frequently Asked Questions | Computer Repair Kuwait | KCROC"
-        description="Find fast answers about our computer repair Kuwait services, laptop repair Kuwait, free pickup, Windows installation, and our strict warranty policy."
-        canonical={pageUrl}
-      />
+      {/* 🚀 PHASE 2 AUTOMATION IN ACTION: Basic Tags Handled */}
+      <SEOEngine entityId="page-faq" />
+      
+      {/* 🚀 Dynamic Schema Injection for the FAQ List */}
       <SchemaMarkup schema={SCHEMA_DATA} />
 
       {/* ─── BREADCRUMBS ─── */}
@@ -184,7 +183,7 @@ export default function FAQ() {
               {GLOBAL_FAQS.length} Questions Answered
             </span>
             <span className="flex items-center gap-2">
-              <CalendarDays size={16} aria-hidden="true" /> {/* ✅ Fixed */}
+              <CalendarDays size={16} aria-hidden="true" />
               Last Updated: June 2026
             </span>
           </div>
@@ -195,7 +194,7 @@ export default function FAQ() {
       <div className="max-w-4xl mx-auto px-6 mb-12 relative z-10">
         <div className="relative group">
           <div className="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none">
-            <Search className="text-slate-400 group-focus-within:text-cyan-400 transition-colors" size={20} aria-hidden="true" /> {/* ✅ Fixed */}
+            <Search className="text-slate-400 group-focus-within:text-cyan-400 transition-colors" size={20} aria-hidden="true" />
           </div>
           <input
             type="search"
@@ -278,8 +277,8 @@ export default function FAQ() {
                               title="Copy direct link"
                             >
                               {isCopied
-                                ? <CheckCircle2 size={16} className="text-emerald-400" aria-hidden="true" /> // ✅ Fixed
-                                : <LinkIcon size={16} aria-hidden="true" />                                  // ✅ Fixed
+                                ? <CheckCircle2 size={16} className="text-emerald-400" aria-hidden="true" />
+                                : <LinkIcon size={16} aria-hidden="true" />
                               }
                             </button>
                             <span
@@ -295,7 +294,6 @@ export default function FAQ() {
                           </div>
                         </summary>
 
-                        {/* ✅ Fixed: removed aria-hidden — <details> handles this natively */}
                         <div className="px-6 pb-6 text-slate-300 leading-relaxed text-base md:text-lg border-t border-slate-800/50 mt-2 pt-6">
                           {faq.answer}
                         </div>
@@ -312,9 +310,8 @@ export default function FAQ() {
         <div className="mt-24 bg-slate-900/50 backdrop-blur-md border border-cyan-900/50 p-8 md:p-12 rounded-3xl text-center relative overflow-hidden">
           <div
             className="absolute top-0 right-0 w-64 h-64 bg-cyan-500/10 blur-[60px] rounded-full pointer-events-none"
-            aria-hidden="true" // ✅ Fixed
+            aria-hidden="true"
           />
-          {/* ✅ Fixed: h3 → h2 (no h2 parent in CTA block) */}
           <h2 className="text-2xl md:text-3xl font-black text-white mb-4">
             Have a device that needs professional attention?
           </h2>
@@ -323,7 +320,6 @@ export default function FAQ() {
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             
-            {/* ✅ Syntax error fixed here: Added missing `<a` tag */}
             <a 
               href={waLink}
               target="_blank"
