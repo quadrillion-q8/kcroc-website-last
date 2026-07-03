@@ -1,5 +1,3 @@
-// File: scripts/validation/types.ts
-
 export type SeverityLevel = 'INFO' | 'WARNING' | 'ERROR' | 'CRITICAL';
 
 export interface ValidationError {
