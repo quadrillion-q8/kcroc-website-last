@@ -2,15 +2,16 @@
 import { ValidationReport, ValidationError, SeverityLevel } from './types.ts';
 import { validationConfig } from './validation.config.ts';
 
-// ✅ Corrected relative paths to bridge from 'scripts/' to 'app/frontend/src/knowledge/'
+// ✅ Correct path from root to your types and registry
 import { KCROCEntity, Relationship } from '../app/frontend/src/knowledge/types';
-import { KCROC_GRAPH } from '../app/frontend/src/knowledge/graph';
+import { KCROC_GRAPH } from '../app/frontend/src/knowledge/registry';
 
 export async function validateGraph(): Promise<ValidationReport> {
   const issues: ValidationError[] = [];
   let totalChecks = 0;
   let failedChecks = 0;
 
+  // Single Source of Truth
   const entities: KCROCEntity[] = KCROC_GRAPH.entities;
   
   const idSet = new Set<string>();
@@ -33,7 +34,7 @@ export async function validateGraph(): Promise<ValidationReport> {
     // 1. Validate Entity Type Extensibility
     if (!type || !validationConfig.allowedEntityTypes.includes(type)) {
       addIssue(entity.id || 'UNKNOWN', 'INVALID_ENTITY_TYPE', `Unknown or missing entity type: "${type}"`);
-      return;
+      return; // Stop checking this entity if the base type is corrupted
     }
 
     // 2. Config-Driven Required Fields Verification
