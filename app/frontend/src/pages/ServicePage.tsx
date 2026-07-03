@@ -5,7 +5,10 @@ import { getServiceBySlug, getRelatedIssuesForService } from '../knowledge/regis
 import { ServiceTemplate } from './templates/ServiceTemplate';
 import { Laptop, Apple, Gamepad2, Cpu, Monitor, BatteryWarning, HardDrive, ShieldCheck } from 'lucide-react';
 
-// This acts as a translator to turn the string 'Apple' into the actual Lucide Icon
+// 👈 Phase 2 SEO Engine Imported
+import { SEOEngine } from '../core/components/SEOEngine';
+
+// Map string identifiers from registry.ts to actual Icon components
 const IconMap: Record<string, React.ElementType> = {
   Laptop, Apple, Gamepad2, Cpu, Monitor, BatteryWarning, HardDrive, ShieldCheck
 };
@@ -17,7 +20,7 @@ export const ServicePage: React.FC = () => {
   // 2. Ask the Knowledge Graph for the data
   const service = slug ? getServiceBySlug(slug) : undefined;
 
-  // 3. If the URL doesn't match any service, send them back to the Home page (404 protection)
+  // 3. If the URL doesn't match any service, send them back to the Home page
   if (!service) {
     return <Navigate to="/" replace />;
   }
@@ -33,13 +36,17 @@ export const ServicePage: React.FC = () => {
 
   // 5. Feed the data into the Template
   return (
-    <ServiceTemplate
-      seoTitle={`${service.name} in Kuwait | Free Pick & Drop | KCROC`}
-      seoDescription={service.description}
-      title={`${service.name} Services`}
-      subtitle={service.description}
-      icon={ServiceIcon}
-      commonIssues={formattedIssues}
-    />
+    <>
+      {/* 🚀 PHASE 2 AUTOMATION IN ACTION */}
+      {/* The Engine pulls all SEO data dynamically using the service.id */}
+      <SEOEngine entityId={service.id} />
+
+      <ServiceTemplate
+        title={`${service.name} Services`}
+        subtitle={service.description}
+        icon={ServiceIcon}
+        commonIssues={formattedIssues}
+      />
+    </>
   );
 };
