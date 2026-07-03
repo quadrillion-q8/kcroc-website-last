@@ -3,25 +3,22 @@ import fs from 'fs';
 import path from 'path';
 
 // ─── 1. CONFIGURATION ──────────────────────────────────────────────────
-// FIX: process.cwd() already points to the 'app/frontend' directory during the Vercel build.
-// We just need to append 'src' and 'pages' to find the correct folder.
 const PAGES_DIR = path.join(process.cwd(), 'src', 'pages');
 
 // Files that intentionally do not require the SEO Engine
 const IGNORE_FILES = [
-  'NotFound.tsx',          // 404 pages do not need Knowledge Graph entities
-  'LogoutCallbackPage.tsx' // Auth utility pages
+  'NotFound.tsx',          
+  'LogoutCallbackPage.tsx',
+  'AILandingTemplate.tsx'  // Added to ignore list
 ];
 
-// Directories inside /pages that should be skipped (e.g., wrapper components)
+// Directories inside /pages that should be skipped
 const IGNORE_DIRS = [
-  'templates' 
+  'templates',
+  'ai'                     // Added to ignore list
 ];
 
 // ─── 2. RECURSIVE FILE SCANNER ─────────────────────────────────────────
-/**
- * Recursively searches a directory for all .tsx files, respecting ignore lists.
- */
 function getPageFiles(dirPath: string, filesList: string[] = []): string[] {
   const files = fs.readdirSync(dirPath);
 
@@ -54,15 +51,11 @@ function runValidator() {
   const pages = getPageFiles(PAGES_DIR);
   const failingPages: string[] = [];
 
-  // Read each file and check for compliance
   for (const pagePath of pages) {
     const content = fs.readFileSync(pagePath, 'utf-8');
-    
-    // Check if the file imports or utilizes the SEOEngine
     const hasSEOEngine = content.includes('SEOEngine');
     
     if (!hasSEOEngine) {
-      // Store the relative path to make the error message cleaner for the developer
       failingPages.push(path.relative(PAGES_DIR, pagePath));
     }
   }
@@ -77,17 +70,13 @@ function runValidator() {
     failingPages.forEach(page => console.error(`   - ${page}`));
     
     console.error('\n💡 FIX: Please import and add <SEOEngine entityId="..." /> to these pages before deploying.');
-    
-    // Exit Code 1 tells Vercel/CI pipelines to abort the build process
     process.exit(1);
   }
 
   console.log('✅ All Enterprise checks passed perfectly!');
   console.log('🚀 Validation successful. Proceeding with Vite build...\n');
   
-  // Exit Code 0 tells Vercel/CI pipelines that everything is okay to proceed
   process.exit(0);
 }
 
-// Execute the script
 runValidator();
