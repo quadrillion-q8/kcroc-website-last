@@ -5,7 +5,7 @@ import { validationConfig } from './validation.config.ts';
 import { KCROCEntity, Relationship } from '../../src/knowledge/types';
 
 // ✅ Import your master graph directly from registry
-import { KCROC_GRAPH } from '../../src/knowledge/registry';
+import { KCROC_GRAPH } from '../../src/knowledge/graph';
 
 export async function validateGraph(): Promise<ValidationReport> {
   const issues: ValidationError[] = [];
