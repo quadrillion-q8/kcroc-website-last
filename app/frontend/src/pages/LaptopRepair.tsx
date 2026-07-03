@@ -10,9 +10,10 @@ import { ServiceEntity } from '../types/knowledgeGraph';
 import { RelatedServicesList } from '../components/schema/RelatedServicesList';
 import { FAQSection } from '../components/schema/FAQSection';
 import { ReviewSection } from '../components/schema/ReviewSection';
-
 import { getIntentWhatsAppLink } from '../utils/whatsappIntent';
-import { BUSINESS_INFO } from '../constants/data';
+
+// 👈 Phase 2 SEO Engine Imported
+import { SEOEngine } from '../core/components/SEOEngine'; 
 
 export default function LaptopRepair() {
   // 1. Fetch the data dynamically from the Knowledge Graph
@@ -27,6 +28,9 @@ export default function LaptopRepair() {
   return (
     <Layout entity={entity}>
       <main className="w-full min-h-screen bg-transparent text-slate-200 pt-32 pb-24">
+        
+        {/* 🚀 PHASE 2 AUTOMATION IN ACTION */}
+        <SEOEngine entityId="srv-laptop-repair" />
         
         {/* HERO SECTION */}
         <section className="relative px-6 text-center mb-24">
@@ -63,7 +67,7 @@ export default function LaptopRepair() {
             <a href={waLink} className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black px-8 py-4 rounded-full flex items-center justify-center gap-2 transition-transform hover:scale-105">
               <MessageCircle size={18} /> Request Free Pickup
             </a>
-            <a href={`tel:${BUSINESS_INFO.phone}`} className="bg-slate-900 border border-slate-700 hover:border-cyan-500/50 text-white font-bold px-8 py-4 rounded-full flex items-center justify-center gap-2">
+            <a href="tel:+96555301913" className="bg-slate-900 border border-slate-700 hover:border-cyan-500/50 text-white font-bold px-8 py-4 rounded-full flex items-center justify-center gap-2">
               <Phone size={18} /> Call Technician
             </a>
           </div>
