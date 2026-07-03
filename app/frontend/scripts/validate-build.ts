@@ -1,62 +1,65 @@
 // File: scripts/validate-build.ts
 import { validateGraph } from './validation/validateGraph';
-import { ValidationReport } from './validation/types';
 
-async function runEnterpriseValidation() {
-  console.log('🔍 Booting KCROC Enterprise Validation Suite...\n');
+async function runValidationPipeline() {
+  console.log('🛡️ Starting KCROC Enterprise Quality Gates...\n');
 
-  const reports: ValidationReport[] = [];
-
-  // --- Phase 1: Data Integrity ---
   try {
     const graphReport = await validateGraph();
-    reports.push(graphReport);
-  } catch (err: any) {
-    console.error(`💥 Fatal error running Graph Validator: ${err.message}`);
-    process.exit(1);
-  }
 
-  // --- Phase 2: SEO AST Validator (Coming Next) ---
-  // const seoReport = await validateSEO();
-  // reports.push(seoReport);
-
-  // --- Render Enterprise Report ---
-  console.log('=========================================');
-  console.log('       KCROC BUILD REPORT                ');
-  console.log('=========================================\n');
-
-  let allChecksPassed = true;
-  let totalScore = 0;
-
-  reports.forEach(report => {
-    totalScore += report.score;
-    const statusIcon = report.passed ? '✅' : '❌';
+    console.log('=========================================');
+    console.log('       KCROC ENTERPRISE BUILD REPORT     ');
+    console.log('=========================================');
     
-    console.log(`${report.moduleName.padEnd(20)} ${statusIcon} ${report.score}%`);
-    
-    if (!report.passed) {
-      allChecksPassed = false;
-      console.log(`\n   Errors in ${report.moduleName}:`);
-      report.errors.forEach(err => console.log(`     - ${err}`));
-    }
-
-    if (report.warnings.length > 0) {
-      console.log(`\n   Warnings in ${report.moduleName}:`);
-      report.warnings.forEach(warn => console.log(`     ⚠ ${warn}`));
-    }
+    const statusIcon = graphReport.passed ? '✅' : '❌';
+    console.log(`${graphReport.moduleName.padEnd(22)} ${statusIcon} ${graphReport.score}%`);
+    console.log(`(Scanned ${graphReport.totalChecks} constraints, found ${graphReport.failedChecks} breaking issues)`);
     console.log('─────────────────────────────────────────');
-  });
 
-  const overallScore = (totalScore / reports.length).toFixed(1);
-  console.log(`\nOverall Score: ${overallScore} / 100\n`);
+    if (graphReport.issues.length > 0) {
+      // Group issues by severity level for clarity
+      const criticals = graphReport.issues.filter(i => i.severity === 'CRITICAL');
+      const errors = graphReport.issues.filter(i => i.severity === 'ERROR');
+      const warnings = graphReport.issues.filter(i => i.severity === 'WARNING');
+      const infos = graphReport.issues.filter(i => i.severity === 'INFO');
 
-  if (!allChecksPassed) {
-    console.error('🛑 BUILD REJECTED: Critical Validation Failures Detected.');
+      if (criticals.length > 0) {
+        console.log('\n💥 CRITICAL ERRORS (Deployment Blocked):');
+        criticals.forEach(i => console.log(`  • [${i.entityId}] ${i.message}`));
+      }
+
+      if (errors.length > 0) {
+        console.log('\n🛑 FIELD ERRORS (Action Required):');
+        errors.forEach(i => console.log(`  • [${i.entityId}] ${i.message}`));
+      }
+
+      if (warnings.length > 0) {
+        console.log('\n⚠️ OPTIMIZATION WARNINGS:');
+        warnings.forEach(i => console.log(`  • [${i.entityId}] ${i.message}`));
+      }
+
+      if (infos.length > 0) {
+        console.log('\nℹ️ PIPELINE INFO:');
+        infos.forEach(i => console.log(`  • [${i.entityId}] ${i.message}`));
+      }
+    }
+
+    console.log('\n─────────────────────────────────────────');
+    console.log(`Final Quality Score: ${graphReport.score}/100`);
+    console.log('─────────────────────────────────────────\n');
+
+    if (!graphReport.passed) {
+      console.error('❌ BUILD REJECTED: Your graph structure contains invalid relational states.');
+      process.exit(1);
+    }
+
+    console.log('🚀 Build gate cleared perfectly. Handing control to Vite production compiler.');
+    process.exit(0);
+
+  } catch (error) {
+    console.error('💥 Fatal exception occurred within the static analysis runtime:', error);
     process.exit(1);
   }
-
-  console.log('🚀 All quality gates cleared. Proceeding to production build...');
-  process.exit(0);
 }
 
-runEnterpriseValidation();
+runValidationPipeline();
