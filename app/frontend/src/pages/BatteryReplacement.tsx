@@ -1,8 +1,12 @@
+// File: app/frontend/src/pages/BatteryReplacement.tsx
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { AlertTriangle, Battery, BatteryCharging, BatteryWarning, Flame, Zap, Clock, TrendingDown, CheckCircle2, Phone, MapPin, Wrench, MessageCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
+
+// 👈 Phase 2 SEO Engine Imported
+import { SEOEngine } from '../core/components/SEOEngine';
 
 export default function BatteryReplacement() {
   const statistics = [
@@ -220,6 +224,10 @@ export default function BatteryReplacement() {
 
   return (
     <div className="min-h-screen bg-gray-950 text-white">
+      
+      {/* 🚀 PHASE 2 AUTOMATION IN ACTION */}
+      <SEOEngine entityId="battery-replacement" />
+
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 px-4">
         <div className="absolute inset-0 bg-gradient-to-b from-emerald-500/10 to-transparent"></div>
