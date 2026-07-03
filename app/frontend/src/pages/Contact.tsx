@@ -1,19 +1,18 @@
-import { useMemo, useState } from 'react';
+// File: app/frontend/src/pages/Contact.tsx
+import React, { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   Phone, Mail, MapPin, Clock, MessageCircle, Send, Loader2
 } from 'lucide-react';
-import { BUSINESS_INFO } from '../constants/data';
 import { ROUTES } from '../constants/routes';
-import MetaSEO from '../components/seo/MetaSEO';
-import SchemaMarkup from '../components/seo/SchemaMarkup';
 import MapComponent from '../components/MapComponent';
 
-/* ─────────────────────────────────────────────────────────────────────────────
-   1. PAGE DATA
-───────────────────────────────────────────────────────────────────────────── */
+// 👈 Phase 2 SEO Engine Imported
+import { SEOEngine } from '../core/components/SEOEngine';
 
-const PAGE_URL = `${BUSINESS_INFO.url}${ROUTES.contact}`;
+/* ─────────────────────────────────────────────────────────────────────────────
+   1. PAGE DATA & CONSTANTS
+───────────────────────────────────────────────────────────────────────────── */
 
 const ADDRESS_LINES = [
   'Ibn Khaldoun St, Al Mullah Complex',
@@ -23,29 +22,7 @@ const ADDRESS_LINES = [
 
 const EMAIL = 'quadrillion1980@gmail.com';
 const PHONE_DISPLAY = '+965 5530 1913';
-
-const STRUCTURED_DATA = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "ContactPage",
-      "@id": `${PAGE_URL}#webpage`,
-      "name": "Contact KCROC | Computer Repair in Hawalli, Kuwait",
-      "url": PAGE_URL,
-      "description": "Contact Kuwait Computer Repair On Call (KCROC). Call us, WhatsApp us, or visit our shop in Hawalli for expert tech support and free pickup.",
-      "isPartOf": { "@id": `${BUSINESS_INFO.url}/#website` },
-      "breadcrumb": { "@id": `${PAGE_URL}#breadcrumb` }
-    },
-    {
-      "@type": "BreadcrumbList",
-      "@id": `${PAGE_URL}#breadcrumb`,
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": BUSINESS_INFO.url + ROUTES.home },
-        { "@type": "ListItem", "position": 2, "name": "Contact", "item": PAGE_URL }
-      ]
-    }
-  ]
-};
+const PHONE_CLEAN = '96555301913';
 
 type FormData = {
   name: string; email: string; phone: string; subject: string; message: string;
@@ -72,7 +49,7 @@ export default function Contact() {
     e.preventDefault();
     setIsSubmitting(true);
     try {
-      const url = `https://wa.me/${BUSINESS_INFO.cleanPhone}?text=${encodeURIComponent(whatsappMessage)}`;
+      const url = `https://wa.me/${PHONE_CLEAN}?text=${encodeURIComponent(whatsappMessage)}`;
       const popup = window.open(url, '_blank', 'noopener,noreferrer');
       if (!popup) window.location.href = url;
     } finally {
@@ -87,12 +64,9 @@ export default function Contact() {
 
   return (
     <main className="w-full min-h-screen bg-transparent text-white font-sans selection:bg-cyan-500/30 pt-32">
-      <MetaSEO
-        title="Contact KCROC | Computer Repair in Hawalli, Kuwait"
-        description="Contact Kuwait Computer Repair On Call (KCROC). Call us, WhatsApp us, or visit our shop in Hawalli for expert tech support and free pickup."
-        canonical={PAGE_URL}
-      />
-      <SchemaMarkup schema={STRUCTURED_DATA} />
+      
+      {/* 🚀 PHASE 2 AUTOMATION IN ACTION: Using the Hawalli Location Entity */}
+      <SEOEngine entityId="loc-hawalli" />
 
       {/* Breadcrumbs */}
       <nav aria-label="Breadcrumb" className="max-w-6xl mx-auto px-6 mb-8 relative z-10">
@@ -151,7 +125,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="font-bold text-white mb-1">Call Us</h3>
-                    <a href={`tel:${BUSINESS_INFO.cleanPhone}`} className="text-slate-400 hover:text-cyan-400 transition-colors block">
+                    <a href={`tel:${PHONE_CLEAN}`} className="text-slate-400 hover:text-cyan-400 transition-colors block">
                       {PHONE_DISPLAY}
                     </a>
                   </div>
