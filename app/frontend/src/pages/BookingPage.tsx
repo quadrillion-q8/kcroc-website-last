@@ -1,3 +1,4 @@
+// File: app/frontend/src/pages/BookingPage.tsx
 import React, { useState } from 'react';
 import { createClient } from '@metagptx/web-sdk';
 import { useForm } from 'react-hook-form';
@@ -9,18 +10,23 @@ import {
   MessageSquare, CheckCircle, MessageCircle as MessageCircleIcon, 
   HelpCircle, Star, PhoneCall 
 } from 'lucide-react';
-import { BUSINESS_INFO } from '../constants/data';
-import MetaSEO from '../components/seo/MetaSEO';
+
 import SchemaMarkup from '../components/seo/SchemaMarkup';
+
+// 👈 Phase 2 SEO Engine Imported
+import { SEOEngine } from '../core/components/SEOEngine';
 
 const client = createClient();
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   1. PAGE DATA
+   1. PAGE DATA & CONSTANTS
 ───────────────────────────────────────────────────────────────────────────── */
-
-const PAGE_URL = `${BUSINESS_INFO.url}/book`;
+const BASE_URL = 'https://computerrepairkuwait.com';
+const PAGE_URL = `${BASE_URL}/book`;
 const REVIEWS_URL = 'https://g.page/r/CWbK8KGjkYY2EAE/review';
+const PHONE_DISPLAY = '+965 5530 1913';
+const PHONE_CLEAN = '96555301913';
+const BUSINESS_NAME = 'Kuwait Computer Repair On Call';
 
 const DEVICE_TYPES = [
   'Laptop', 'Desktop PC', 'MacBook / iMac', 'Gaming PC', 'Printer / Scanner', 'Other'
@@ -41,12 +47,12 @@ const STRUCTURED_DATA = {
       "name": "Book Laptop & Computer Repair Pickup in Kuwait | KCROC",
       "url": PAGE_URL,
       "description": "Book free laptop and computer repair pickup anywhere in Kuwait. Same-day hardware assessment. 30-day warranty.",
-      "isPartOf": { "@id": `${BUSINESS_INFO.url}/#website` },
+      "isPartOf": { "@id": `${BASE_URL}/#website` },
       "breadcrumb": { "@id": `${PAGE_URL}#breadcrumb` },
       "mainEntity": {
         "@type": "LocalBusiness",
-        "name": BUSINESS_INFO.name,
-        "telephone": BUSINESS_INFO.phone,
+        "name": BUSINESS_NAME,
+        "telephone": PHONE_DISPLAY,
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19",
@@ -61,9 +67,9 @@ const STRUCTURED_DATA = {
       "name": "Computer Repair Booking",
       "provider": {
         "@type": "LocalBusiness",
-        "name": BUSINESS_INFO.name,
-        "telephone": BUSINESS_INFO.phone,
-        "url": BUSINESS_INFO.url
+        "name": BUSINESS_NAME,
+        "telephone": PHONE_DISPLAY,
+        "url": BASE_URL
       }
     },
     {
@@ -91,7 +97,7 @@ const STRUCTURED_DATA = {
       "@type": "BreadcrumbList",
       "@id": `${PAGE_URL}#breadcrumb`,
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home",    "item": BUSINESS_INFO.url },
+        { "@type": "ListItem", "position": 1, "name": "Home",    "item": BASE_URL },
         { "@type": "ListItem", "position": 2, "name": "Book",    "item": PAGE_URL }
       ]
     }
@@ -200,11 +206,7 @@ export default function BookingPage() {
   ───────────────────────────────────────────────────────────────────────── */
   const seoBlock = (
     <>
-      <MetaSEO
-        title="Book Laptop & Computer Repair Pickup in Kuwait | KCROC"
-        description="Book free laptop and computer repair pickup anywhere in Kuwait. Same-day hardware assessment. 30-day warranty."
-        canonical={PAGE_URL}
-      />
+      <SEOEngine entityId="page-booking" />
       <SchemaMarkup schema={STRUCTURED_DATA} />
     </>
   );
@@ -234,15 +236,15 @@ export default function BookingPage() {
               </h2>
               <div className="flex flex-col sm:flex-row gap-3">
                 <a
-                  href={`tel:${BUSINESS_INFO.phone}`}
+                  href={`tel:${PHONE_CLEAN}`}
                   className="flex items-center justify-center bg-slate-800 hover:bg-slate-700 text-white font-bold py-3 rounded-xl flex-1 transition-all border border-slate-700"
                 >
                   <PhoneCall className="w-4 h-4 mr-2 text-cyan-400" aria-hidden="true" /> 
-                  Call +965 5530 1913
+                  Call {PHONE_DISPLAY}
                 </a>
                 
                 <a
-                  href={`https://wa.me/${BUSINESS_INFO.cleanPhone}`}
+                  href={`https://wa.me/${PHONE_CLEAN}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 rounded-xl flex-1 transition-all shadow-lg shadow-emerald-900/20"
