@@ -1,10 +1,27 @@
 // File: scripts/validation/types.ts
 
+export type SeverityLevel = 'INFO' | 'WARNING' | 'ERROR' | 'CRITICAL';
+
+export interface ValidationError {
+  entityId: string;
+  field?: string;
+  message: string;
+  severity: SeverityLevel;
+}
+
 export interface ValidationReport {
   moduleName: string;
   passed: boolean;
-  score: number;       // e.g., 100 for perfect
-  totalItems: number;  // How many things were checked
-  errors: string[];    // Fatal issues that fail the build
-  warnings: string[];  // Non-fatal issues (e.g., missing optional fields)
+  score: number;
+  totalChecks: number;
+  failedChecks: number;
+  issues: ValidationError[];
+}
+
+export interface ValidationConfig {
+  severityOverrides: Record<string, SeverityLevel>;
+  requiredFieldsByType: Record<string, string[]>;
+  allowedRelationshipTypes: string[];
+  allowedEntityTypes: string[];
+  minKeywordCount: number;
 }
