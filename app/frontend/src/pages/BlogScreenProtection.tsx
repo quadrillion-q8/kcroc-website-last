@@ -1,3 +1,4 @@
+// File: app/frontend/src/pages/BlogScreenProtection.tsx
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -9,18 +10,19 @@ import {
   Laptop 
 } from 'lucide-react';
 import { BUSINESS_INFO } from '../constants/data';
-import MetaSEO from '../components/seo/MetaSEO';
 import SchemaMarkup from '../components/seo/SchemaMarkup';
 
-/* ─────────────────────────────────────────────────────────────────────────────
-   1. PAGE DATA & SEO
-───────────────────────────────────────────────────────────────────────────── */
+// 👈 Phase 2 SEO Engine Imported
+import { SEOEngine } from '../core/components/SEOEngine';
 
+/* ─────────────────────────────────────────────────────────────────────────────
+   1. PAGE DATA & SEO (Preserving Rich Schema)
+───────────────────────────────────────────────────────────────────────────── */
 const PAGE_URL = `${BUSINESS_INFO.url}/blog/how-to-protect-laptop-screen`;
 const HERO_IMAGE_URL = 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_1200/v1769908595/Dell_laptop_screen_protection_installation_-_Kuwait_City_service_ghokkb.jpg';
 const PUBLISHED_DATE = '2026-06-01T08:00:00+03:00';
 
-const WA_LINK = `https://wa.me/${BUSINESS_INFO.cleanPhone}?text=${encodeURIComponent(
+const WA_LINK = `https://wa.me/96555301913?text=${encodeURIComponent(
   'Hi KCROC, I read your screen protection guide and need a display diagnostic. Please arrange a free pickup.'
 )}`;
 
@@ -70,7 +72,6 @@ const STRUCTURED_DATA = {
 /* ─────────────────────────────────────────────────────────────────────────────
    2. MATRIX DATA ARRAYS
 ───────────────────────────────────────────────────────────────────────────── */
-
 const statistics = [
   { value: '1-2 Hours', label: 'Screen Replacement', icon: Clock, color: 'text-cyan-400' },
   { value: '100%', label: 'Data Safety Isolation', icon: Shield, color: 'text-emerald-400' },
@@ -262,15 +263,12 @@ const AnimatedBackground = () => (
 /* ─────────────────────────────────────────────────────────────────────────────
    4. MAIN VISUAL COMPONENT
 ───────────────────────────────────────────────────────────────────────────── */
-
 export default function BlogScreenProtection() {
   return (
     <div className="min-h-screen bg-gray-950 text-white selection:bg-cyan-500/30 relative">
-      <MetaSEO
-        title="How to Protect Your Laptop Screen: Expert Repair Guide | KCROC"
-        description="Discover how to protect your laptop screen from damage. Learn the physics of screen failure, Kuwait climate impacts, and when to seek professional screen repair."
-        canonical={PAGE_URL}
-      />
+      
+      {/* 🚀 PHASE 2 AUTOMATION IN ACTION */}
+      <SEOEngine entityId="post-screen-protection" />
       <SchemaMarkup schema={STRUCTURED_DATA} />
 
       {/* Inject the stunning animated background here */}
@@ -299,7 +297,7 @@ export default function BlogScreenProtection() {
                 className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white text-lg px-8 py-6 shadow-lg shadow-cyan-500/30"
                 asChild
               >
-                <a href={`tel:${BUSINESS_INFO.phone}`}>
+                <a href="tel:+96555301913">
                   <Phone className="w-5 h-5 mr-2" />
                   Call: +965 5530 1913
                 </a>
@@ -631,7 +629,7 @@ export default function BlogScreenProtection() {
                   className="border-slate-700 text-white hover:bg-slate-800 text-base md:text-lg px-6 md:px-8 py-6 md:py-7"
                   asChild
                 >
-                  <a href={`tel:${BUSINESS_INFO.phone}`}>
+                  <a href="tel:+96555301913">
                     <Phone className="w-5 h-5 mr-2" />
                     Call Intake: +965 5530 1913
                   </a>
