@@ -4,7 +4,7 @@ import { validationConfig } from './validation.config.ts';
 
 import { KCROCEntity, Relationship } from '../../src/knowledge/types';
 
-// ✅ Import your master graph directly from registry
+// ✅ Fixed: Importing correctly from graph.ts!
 import { KCROC_GRAPH } from '../../src/knowledge/graph';
 
 export async function validateGraph(): Promise<ValidationReport> {
@@ -12,7 +12,6 @@ export async function validateGraph(): Promise<ValidationReport> {
   let totalChecks = 0;
   let failedChecks = 0;
 
-  // ✅ STRICTLY use KCROC_GRAPH.entities as the single source of truth
   const entities: KCROCEntity[] = KCROC_GRAPH.entities;
   
   const idSet = new Set<string>();
@@ -106,7 +105,6 @@ export async function validateGraph(): Promise<ValidationReport> {
     }
   });
 
-  // Determine block status based on CRITICAL or ERROR severities
   const hasCriticalFailures = issues.some(i => i.severity === 'CRITICAL' || i.severity === 'ERROR');
   const passed = !hasCriticalFailures;
   const score = totalChecks > 0 ? Math.max(0, Math.round(((totalChecks - failedChecks) / totalChecks) * 100)) : 100;
