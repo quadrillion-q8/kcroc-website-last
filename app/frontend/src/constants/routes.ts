@@ -1,52 +1,54 @@
-// File: src/constants/routes.ts
+// File: app/frontend/src/constants/routes.ts
 
+/**
+ * SINGLE SOURCE OF TRUTH FOR APPLICATION ROUTING
+ * All paths must match the canonical URL used in each page component.
+ */
 export const ROUTES = {
-  // Core Pages
-  home: "/",
-  services: "/services",
-  pricing: "/pricing",
-  about: "/about",
-  contact: "/contact",
-  gallery: "/gallery",
-  book: "/book",
-  faq: "/faq",
-  privacySecurity: "/privacy-policy", // Renamed for clarity
-  terms: "/terms-and-conditions",
+  // ─── CORE SHELL ───────────────────────────────────────────────────
+  home:     '/',
+  about:    '/about',
+  contact:  '/contact',
+  services: '/services',
+  pricing:  '/pricing',
+  gallery:  '/gallery',
+  faq:      '/faq',
 
-  // SEO Aligned Tech Service Routes (Synchronized to Canonical URLs)
-  macbookRepair: "/macbook-repair-kuwait",
-  laptopRepair: "/laptop-repair-kuwait",
-  laptopRepairHawalli: "/laptop-repair-hawalli-kuwait",
-  gamingPC: "/gaming-pc-repair-kuwait",
-  // ✅ Fixed: Synced to canonical "/laptop-screen-repair-kuwait"
-  screenReplacement: "/laptop-screen-repair-kuwait",
-  // ✅ Fixed: Synced to canonical "/motherboard-repair-kuwait"
-  motherboardRepair: "/motherboard-repair-kuwait",
+  // ─── CONVERSION / UTILITY ─────────────────────────────────────────
+  book:            '/book-repair',
+  privacySecurity: '/privacy-security-kuwait', // ✅ Fixed: match page canonical
+  authCallback:    '/auth/callback',
 
-  // Programmatic SEO Dynamic Route
-  programmaticSEO: "/:service-in-:city",
+  // ─── HARDWARE REPAIR FUNNELS ──────────────────────────────────────
+  // ✅ Fixed: all paths match canonical URLs set in page components
+  laptopRepair:      '/laptop-repair-kuwait',
+  laptopRepairHawalli: '/laptop-repair-hawalli', // alias → same component
+  macbookRepair:     '/macbook-repair-kuwait',
+  screenReplacement: '/laptop-screen-repair-kuwait',
+  batteryReplacement: '/battery-replacement',
+  motherboardRepair: '/motherboard-repair-kuwait',
 
-  // Blog Hub
-  blog: "/blog",
-  
-  // General Technical Sub-Pages
-  batteryReplacement: "/battery-replacement",
-  gamingPCCooling: "/gaming-pc-cooling",
-  webDesign: "/web-design-kuwait",
+  // ─── SPECIALIZED VERTICALS ────────────────────────────────────────
+  gamingPC:         '/gaming-pc-repair-kuwait',
+  gamingPCCooling:  '/gaming-pc-cooling',
+  webDesignKuwait:  '/web-design-kuwait',
+
+  // ─── BLOG & CONTENT ENGINE ────────────────────────────────────────
+  blog:                '/blog',
+  blogLaptopRepair:    '/blog/laptop-repair-kuwait-2026',
+  blogScreenProtection: '/blog/how-to-protect-laptop-screen',
+
+  // ─── PROGRAMMATIC SEO ─────────────────────────────────────────────
+  // ✅ Added: dynamic location page pattern
+  // Used by LocationTemplate.tsx — matches /computer-repair-in-hawalli etc.
+  locationPage: '/computer-repair-in-:city',
+
+  // ─── LEGACY REDIRECTS ─────────────────────────────────────────────
+  // These are handled in App.tsx via <Navigate> — listed here for documentation
+  // '/data-recovery-kuwait'              → ROUTES.services
+  // '/screen-replacement-kuwait'         → ROUTES.screenReplacement
+  // '/chip-level-motherboard-repair-hawalli' → ROUTES.motherboardRepair
 } as const;
 
-// Helper functions with path sanitization
-const sanitize = (path: string) => path.replace(/\/+/g, '/').replace(/\/$/, '') || '/';
-
-// Dynamic Route Generators
-export const getServiceRoute = (slug: string) => sanitize(`/services/${slug}`);
-export const getBlogRoute = (slug: string) => sanitize(`/blog/${slug}`);
-
-// ✅ Automatically generates programmatic URLs like "/laptop-repair-in-hawalli"
-export const getProgrammaticRoute = (service: string, citySlug: string) => {
-  const formattedService = service.toLowerCase().replace(/\s+/g, '-');
-  return sanitize(`/${formattedService}-in-${citySlug}`);
-};
-
-// Types
-export type Route = typeof ROUTES;
+export type RouteKey = keyof typeof ROUTES;
+export type RoutePath = typeof ROUTES[RouteKey];
