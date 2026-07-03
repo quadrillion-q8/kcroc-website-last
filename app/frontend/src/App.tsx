@@ -4,44 +4,64 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { RootLayout } from './core/components/layout/RootLayout';
 import { ChatWidget } from './components/ChatWidget';
 
-// ⚡ PERFORMANCE: We "lazy load" the pages so they only download when the user clicks them
+// ⚡ PERFORMANCE: Lazy load all pages to keep initial bundle small
 const Home = lazy(() => import('./pages/Home'));
 const ServicePage = lazy(() => import('./pages/ServicePage').then(module => ({ default: module.ServicePage })));
+const Pricing = lazy(() => import('./pages/Pricing'));
+const Contact = lazy(() => import('./pages/Contact'));
+const Gallery = lazy(() => import('./pages/Gallery'));
+const PrivacySecurity = lazy(() => import('./pages/PrivacySecurity'));
+const ScreenProtectionTips = lazy(() => import('./pages/ScreenProtectionTips'));
+const FAQ = lazy(() => import('./pages/FAQ'));
+const BlogPostTemplate = lazy(() => import('./pages/BlogPostTemplate'));
+const PillarTemplate = lazy(() => import('./pages/PillarTemplate'));
+const LocationTemplate = lazy(() => import('./pages/LocationTemplate'));
+const LogoutCallbackPage = lazy(() => import('./pages/LogoutCallbackPage'));
+const NotFound = lazy(() => import('./pages/NotFound'));
 
-// ⏳ UI: A sleek enterprise loading spinner to show while the micro-chunks download
+// ⏳ UI: Global loading spinner
 const PageLoader = () => (
-  <div className="w-full h-[60vh] flex items-center justify-center bg-[#0a0f1c]">
+  <div className="w-full h-[60vh] flex items-center justify-center bg-slate-950">
     <div className="w-10 h-10 border-4 border-slate-800 border-t-cyan-400 rounded-full animate-spin"></div>
   </div>
 );
 
-export const App: React.FC = () => {
+const App: React.FC = () => {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<RootLayout />}>
-          
-          {/* Suspense tells React to show the Spinner while waiting for the Lazy page */}
-          <Route index element={
-            <Suspense fallback={<PageLoader />}>
-              <Home />
-            </Suspense>
-          } />
-          
-          <Route path="/:slug" element={
-            <Suspense fallback={<PageLoader />}>
-              <ServicePage />
-            </Suspense>
-          } />
+      <Suspense fallback={<PageLoader />}>
+        <Routes>
+          <Route path="/" element={<RootLayout />}>
+            {/* Index */}
+            <Route index element={<Home />} />
+            
+            {/* Static Content Routes */}
+            <Route path="pricing" element={<Pricing />} />
+            <Route path="contact" element={<Contact />} />
+            <Route path="gallery" element={<Gallery />} />
+            <Route path="privacy-security-kuwait" element={<PrivacySecurity />} />
+            <Route path="laptop-screen-protection-tips" element={<ScreenProtectionTips />} />
+            <Route path="faq" element={<FAQ />} />
+            <Route path="logout-callback" element={<LogoutCallbackPage />} />
 
-        </Route>
-      </Routes>
+            {/* Dynamic Content Routes */}
+            <Route path="blog/:slug" element={<BlogPostTemplate />} />
+            <Route path="pillar/:slug" element={<PillarTemplate />} />
+            <Route path="location/:slug" element={<LocationTemplate />} />
+            
+            {/* Catch-all for Services (must be last) */}
+            <Route path=":slug" element={<ServicePage />} />
+            
+            {/* 404 Handler */}
+            <Route path="*" element={<NotFound />} />
+          </Route>
+        </Routes>
+      </Suspense>
       
-      {/* Renders the AI Chat Widget globally across all routes */}
+      {/* Global AI Widget */}
       <ChatWidget /> 
     </BrowserRouter>
   );
 };
 
-// THIS IS THE CRITICAL LINE THAT WAS MISSING
 export default App;
