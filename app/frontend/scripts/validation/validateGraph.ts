@@ -2,22 +2,16 @@
 import { ValidationReport, ValidationError, SeverityLevel } from './types';
 import { validationConfig } from './validation.config';
 
-// ✅ Using the exact types path confirmed from your GitHub screenshot
-import { KCROCEntity, Relationship } from '../../app/frontend/src/knowledge/types';
-
-// ⚠️ DATA IMPORT:
-// Based on your previous code, you were importing 'SERVICES' from 'registry.ts'.
-// If you have fully migrated to exporting 'KCROC_GRAPH', update this import statement accordingly!
-import { SERVICES } from '../../app/frontend/src/knowledge/registry'; 
+// ⚠️ Imports from your actual project schema and master graph
+import { KCROC_GRAPH } from '../../app/frontend/src/knowledge/graph';
+import { KCROCEntity, Relationship } from '../../app/frontend/src/types/graph';
 
 export async function validateGraph(): Promise<ValidationReport> {
   const issues: ValidationError[] = [];
   let totalChecks = 0;
   let failedChecks = 0;
 
-  // Single Source of Truth
-  // (If you updated 'registry.ts' to export KCROC_GRAPH, change this to KCROC_GRAPH.entities)
-  const entities: KCROCEntity[] = Array.isArray(SERVICES) ? SERVICES : Object.values(SERVICES);
+  const entities: KCROCEntity[] = KCROC_GRAPH.entities;
   
   const idSet = new Set<string>();
   const slugSet = new Set<string>();
@@ -27,8 +21,6 @@ export async function validateGraph(): Promise<ValidationReport> {
   const addIssue = (entityId: string, ruleKey: string, message: string, field?: string) => {
     const severity = validationConfig.severityOverrides[ruleKey] || 'WARNING';
     issues.push({ entityId, field, message, severity });
-    
-    // Only CRITICAL and ERROR impact the failure count / build status
     if (severity === 'ERROR' || severity === 'CRITICAL') {
       failedChecks++;
     }
@@ -39,31 +31,26 @@ export async function validateGraph(): Promise<ValidationReport> {
     totalChecks++;
 
     // 1. Validate Entity Type Extensibility
-    if (!type || !validationConfig.allowedEntityTypes.includes(type)) {
-      addIssue(entity.id || 'UNKNOWN', 'INVALID_ENTITY_TYPE', `Unknown or missing entityType: "${type}"`);
-      return; // Skip further checks if the base type is entirely broken
+    if (!validationConfig.allowedEntityTypes.includes(type)) {
+      addIssue(entity.id, 'INVALID_ENTITY_TYPE', `Unknown entity type: "${type}"`);
     }
 
     // 2. Config-Driven Required Fields Verification
     const requiredFields = validationConfig.requiredFieldsByType[type] || ['id', 'name'];
-    requiredFields.forEach((field: string) => {
+    requiredFields.forEach(field => {
       totalChecks++;
-      // Safe type assertion to check dynamic fields
-      const entityData = entity as Record<string, unknown>;
-      if (!entityData[field]) {
+      if (!Reflect.get(entity, field)) {
         addIssue(entity.id, 'MISSING_REQUIRED_FIELD', `Missing structural field: "${field}"`, field);
       }
     });
 
     // 3. Uniqueness Enforcement (IDs, Slugs, Canonicals)
     totalChecks += 3;
-    if (entity.id) {
-      if (idSet.has(entity.id)) addIssue(entity.id, 'DUPLICATE_ID', `Collision detected on ID: "${entity.id}"`);
-      idSet.add(entity.id);
-    }
+    if (idSet.has(entity.id)) addIssue(entity.id, 'DUPLICATE_ID', `Collision detected on ID: "${entity.id}"`);
+    idSet.add(entity.id);
 
     if (entity.slug) {
-      if (slugSet.has(entity.slug)) addIssue(entity.id, 'DUPLICATE_SLUG', `Duplicate slug found: "/${entity.slug}"`);
+      if (slugSet.has(entity.slug)) addIssue(entity.slug, 'DUPLICATE_SLUG', `Duplicate slug found: "/${entity.slug}"`);
       slugSet.add(entity.slug);
     }
 
@@ -92,36 +79,24 @@ export async function validateGraph(): Promise<ValidationReport> {
       });
     }
 
-    // 5. Context-Aware Schema/SEO Rules
+    // 5. Context-Aware Schema/SEO Rules (e.g., Location Coordinates & FAQs)
     if (type === 'Location') {
       totalChecks += 2;
-      const entityData = entity as Record<string, any>;
-      const lat = entityData.lat;
-      const lng = entityData.lng;
-      
-      if (typeof lat !== 'number' || lat < -90 || lat > 90) {
-        addIssue(entity.id, 'INVALID_COORDINATES', `Latitude coordinate out of bounds: ${lat}`);
-      }
-      if (typeof lng !== 'number' || lng < -180 || lng > 180) {
-        addIssue(entity.id, 'INVALID_COORDINATES', `Longitude coordinate out of bounds: ${lng}`);
-      }
+      const lat = (entity as any).lat;
+      const lng = (entity as any).lng;
+      if (typeof lat !== 'number' || lat < -90 || lat > 90) addIssue(entity.id, 'INVALID_COORDINATES', `Latitude coordinate out of bounds: ${lat}`);
+      if (typeof lng !== 'number' || lng < -180 || lng > 180) addIssue(entity.id, 'INVALID_COORDINATES', `Longitude coordinate out of bounds: ${lng}`);
     }
 
-    // FAQ validation for specific entity types
-    if ((type === 'Service' || type === 'Location')) {
-      const entityData = entity as Record<string, any>;
-      if (!entityData.faq || entityData.faq.length === 0) {
-        totalChecks++;
-        addIssue(entity.id, 'MISSING_FAQ', `Entity lacks FAQ nodes needed for rich search snippets.`);
-      }
+    if ((type === 'Service' || type === 'Location') && (!entity.faqs || entity.faqs.length === 0)) {
+      totalChecks++;
+      addIssue(entity.id, 'MISSING_FAQ', `Entity lacks FAQ nodes needed for rich search snippets.`);
     }
   });
 
-  // 6. Pipeline Resolution
+  // Determine block status based on CRITICAL or ERROR severities
   const hasCriticalFailures = issues.some(i => i.severity === 'CRITICAL' || i.severity === 'ERROR');
   const passed = !hasCriticalFailures;
-  
-  // Calculate score purely based on checked constraints vs passed constraints
   const score = totalChecks > 0 ? Math.max(0, Math.round(((totalChecks - failedChecks) / totalChecks) * 100)) : 100;
 
   return {
