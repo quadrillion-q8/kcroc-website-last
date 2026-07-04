@@ -19,3 +19,7 @@ export const ROUTES = {
   // --- SYSTEM ---
   NOT_FOUND: '*'
 } as const;
+
+// --- UTILITY FUNCTIONS ---
+// Restoring the missing helper function required by BlogPostTemplate.tsx
+export const getBlogRoute = (slug: string) => `/blog/${slug}`;
