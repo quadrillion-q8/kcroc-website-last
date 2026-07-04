@@ -5,15 +5,12 @@ import {
   Apple, Laptop, Gamepad2, Cpu, Monitor,
   BatteryWarning, HardDrive, ShieldCheck
 } from 'lucide-react';
-
-// Assuming this is the correct path based on your repository structure
 import { GraphEntity } from '../types/knowledgeGraph'; 
 
 export type IconKey =
   | 'apple' | 'laptop' | 'gaming' | 'cpu'
   | 'monitor' | 'battery' | 'hardDrive' | 'shield';
 
-// 👇 This is the exact export Vercel is looking for
 export const ICON_MAP: Record<IconKey, React.ComponentType<{ className?: string; 'aria-hidden'?: boolean }>> = {
   apple:     Apple,
   laptop:    Laptop,
@@ -48,12 +45,39 @@ export interface ConversionMeta {
   priority: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10; 
 }
 
-export interface EmbeddedIssue {
-  id: string;
+export interface ProcessStep {
+  step: number;
   title: string;
   description: string;
-  symptoms?: string[];
-  severity?: 'low' | 'medium' | 'high';
+}
+
+export interface WarrantyMeta {
+  duration: string;
+  coverage: string;
+  noFixNoFee: boolean;
+}
+
+export interface Testimonial {
+  text: string;
+  author: string;
+  location: string; 
+}
+
+export interface CommonProblem {
+  id: string;
+  title: string;
+  symptoms: string[];
+  likelyCause: string;
+  expectedTurnaround: string;
+  approxPriceRange: string;
+}
+
+export interface LocationEntity extends GraphEntity {
+  entityType: 'Location';
+  landmark: string;
+  coords: { lat: number; lng: number };
+  serviceRadiusKm: number;
+  serviceAreas: string[];
 }
 
 export interface ServiceEntity extends GraphEntity {
@@ -64,5 +88,11 @@ export interface ServiceEntity extends GraphEntity {
   pricing: PricingMeta;
   conversion: ConversionMeta;
   coreFeatures: string[];
-  commonIssues: EmbeddedIssue[];
+  idealCustomer?: string;
+  deviceTypes?: string[];
+  process?: ProcessStep[];
+  warranty?: WarrantyMeta;
+  testimonials?: Testimonial[];
+  faqs?: Array<{ question: string; answer: string }>;
+  commonProblems?: CommonProblem[];
 }
