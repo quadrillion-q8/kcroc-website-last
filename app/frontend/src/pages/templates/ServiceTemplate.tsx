@@ -1,40 +1,42 @@
 // File: app/frontend/src/pages/templates/ServiceTemplate.tsx
 
 import React from 'react';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useParams } from 'react-router-dom';
 import { ROUTES } from '../../constants/routes';
 
-// Import the graph and the mapped constants
 import { KCROC_GRAPH } from '../../data/graph';
 import { ServiceEntity, ICON_MAP } from '../../knowledge/graph.contract';
 import { SEOEngine } from '../../core/components/SEOEngine';
 
+// Make entityId optional since the dynamic router won't provide it
 interface ServiceTemplateProps {
-  entityId: string;
+  entityId?: string;
 }
 
 export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
-  // 1. O(1) Lookup (Assuming you have an index map, or fallback to find)
-  // We explicitly cast it to ServiceEntity to leverage your strict contract
-  const entity = KCROC_GRAPH.entities.find(
-    (e) => e.id === entityId && e.entityType === 'Service'
-  ) as ServiceEntity | undefined;
+  // 1. Grab the dynamic slug from the URL (if it exists)
+  const { serviceSlug } = useParams<{ serviceSlug?: string }>();
 
-  // 2. Graceful Fallback
+  // 2. Smart Lookup: Check by ID (if using a wrapper) OR by Slug (if dynamic)
+  const entity = KCROC_GRAPH.entities.find((e) => {
+    if (e.entityType !== 'Service') return false;
+    if (entityId) return e.id === entityId;
+    if (serviceSlug) return e.slug === serviceSlug;
+    return false;
+  }) as ServiceEntity | undefined;
+
+  // 3. Graceful Fallback
   if (!entity) {
-    console.warn(`[Template Router] Entity ${entityId} missing from graph.`);
-    // Depending on your migration phase, you could render children here 
-    // to allow the wrapper to pass the static page as a fallback.
+    console.warn(`[Template Router] Entity missing. ID: ${entityId}, Slug: ${serviceSlug}`);
     return <Navigate to={ROUTES.NOT_FOUND} replace />;
   }
 
-  // 3. Resolve the UI-Agnostic Icon safely
+  // 4. Resolve the UI-Agnostic Icon
   const ServiceIcon = ICON_MAP[entity.iconKey];
 
-  // 4. Render the Data-Driven UI
+  // 5. Render the Data-Driven UI
   return (
     <>
-      {/* Trigger your existing SEO Engine using the fully populated SEO sub-object */}
       <SEOEngine entityId={entity.id} />
 
       <main className="min-h-screen bg-neutral-900 text-white pt-32 pb-16">
@@ -82,7 +84,7 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
           </ul>
         </section>
 
-        {/* Dynamic Common Issues (Replaces your old getRelatedIssuesForService logic) */}
+        {/* Dynamic Common Issues */}
         {entity.commonIssues && entity.commonIssues.length > 0 && (
           <section className="max-w-7xl mx-auto px-4 py-12">
             <h2 className="text-2xl font-semibold mb-6">Common Symptoms We Fix</h2>
@@ -109,7 +111,6 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
         {/* Dynamic Conversion Logic */}
         {entity.conversion.showCall && (
           <div className="max-w-7xl mx-auto px-4 pt-8 border-t border-neutral-800">
-             {/* Replace with your actual styled CTA component */}
             <button className="bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 px-8 rounded-lg transition-colors">
               Request {entity.pricing.quoteRequired ? 'Quote' : 'Booking'}
             </button>
