@@ -1,18 +1,21 @@
-// File: app/frontend/src/constants/routes.ts
-
 export const APP_ROUTES = {
-  // Core Pages (KEEP THESE)
+  // --- CORE STATIC PAGES (Keep these as they are) ---
   HOME: '/',
   ABOUT: '/about',
+  SERVICES: '/services',      // Your main index listing all services (Services.tsx)
   CONTACT: '/contact',
   PRICING: '/pricing',
   FAQ: '/faq',
   GALLERY: '/gallery',
-  
-  // The New Dynamic Architecture
-  // This single line replaces all hard-coded service pages
+  BLOG: '/blog',              // (Blog.tsx)
+  BOOKING: '/booking',        // (BookingPage.tsx)
+  PRIVACY: '/privacy-policy', // (PrivacySecurity.tsx)
+
+  // --- THE NEW DYNAMIC ARCHITECTURE ---
+  // This SINGLE line replaces all the hard-coded individual service pages 
+  // (e.g., BatteryReplacement, GamingPC, MacBookRepair, MotherboardRepair, etc.)
   SERVICE_DETAIL: '/services/:serviceSlug', 
-  
-  // Catch-all
+
+  // --- SYSTEM ---
   NOT_FOUND: '*'
 } as const;
