@@ -25,28 +25,29 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // 👇 FIX 1: Routing strictly to the Knowledge Graph dynamic slugs
   const services = [
-    { name: 'All Services', path: ROUTES.services },
-    { name: 'Laptop Repair', path: ROUTES.laptopRepairHawalli },
-    { name: 'MacBook Repair', path: ROUTES.macbookRepair },
-    { name: 'Gaming PC Repair', path: ROUTES.gamingPC },
-    { name: 'Screen Replacement', path: ROUTES.screenReplacement },
-    { name: 'Motherboard Repair', path: ROUTES.motherboardRepair },
+    { name: 'All Services', path: ROUTES.SERVICES },
+    { name: 'Laptop Repair', path: '/services/laptop-repair' },
+    { name: 'MacBook Repair', path: '/services/macbook-repair-kuwait' },
+    { name: 'Gaming PC Repair', path: '/services/gaming-pc-repair' },
+    { name: 'Motherboard Repair', path: '/services/motherboard-repair' },
+    { name: 'Screen Replacement', path: '/services/screen-replacement' },
     { name: 'Web Design Kuwait', path: '/web-design-kuwait' },
   ];
 
+  // 👇 FIX 2: Hardcoded blog paths to prevent crashes if ROUTES keys were removed
   const blogs = [
-    { name: 'Blog Hub', path: ROUTES.blog },
+    { name: 'Blog Hub', path: ROUTES.BLOG },
     { name: 'Laptop Repair Guide', path: '/blog/laptop-repair-kuwait-2026' },
     { name: 'Screen Protection', path: '/blog/how-to-protect-laptop-screen' },
-    { name: 'Gaming PC Cooling', path: ROUTES.gamingPCCooling },
-    { name: 'Battery Replacement', path: ROUTES.batteryReplacement },
+    { name: 'Gaming PC Cooling', path: '/blog/gaming-pc-cooling' },
+    { name: 'Battery Replacement', path: '/blog/battery-replacement' },
   ];
 
   return (
     <>
       <header className={`fixed top-0 w-full z-[1000] transition-all duration-300 ${scrolled ? 'bg-[#0a0f1c]/90 backdrop-blur-xl border-b border-slate-800/50 shadow-lg' : 'bg-transparent'}`}>
-        {/* Shop Background Layer: Using Image Registry */}
         <div className="absolute inset-0 z-[-1] overflow-hidden">
           <img 
             src={IMAGES.brand.shopInterior.src} 
@@ -58,7 +59,8 @@ export default function Header() {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-24">
-            <Link to={ROUTES.home} className="flex items-center group">
+            {/* 👇 FIX 3: Uppercase references mapping to our updated routes.ts */}
+            <Link to={ROUTES.HOME} className="flex items-center group">
               <img 
                 src={IMAGES.brand.logo.src} 
                 alt={IMAGES.brand.logo.alt} 
@@ -67,10 +69,9 @@ export default function Header() {
             </Link>
 
             <nav className="hidden lg:flex items-center gap-6">
-              {/* Services Dropdown Item */}
               <div className="relative group py-4">
                 <Link 
-                  to={ROUTES.services} 
+                  to={ROUTES.SERVICES} 
                   className="flex items-center gap-1 text-sm font-bold text-slate-200 hover:text-cyan-400 transition-colors"
                 >
                   Services 
@@ -89,14 +90,13 @@ export default function Header() {
                 </div>
               </div>
 
-              <Link to={ROUTES.pricing} className="text-sm font-bold text-slate-200 hover:text-cyan-400 transition-colors">Pricing</Link>
-              <Link to={ROUTES.gallery} className="text-sm font-bold text-slate-200 hover:text-cyan-400 transition-colors">Gallery</Link>
-              <Link to={ROUTES.about} className="text-sm font-bold text-slate-200 hover:text-cyan-400 transition-colors">About</Link>
+              <Link to={ROUTES.PRICING} className="text-sm font-bold text-slate-200 hover:text-cyan-400 transition-colors">Pricing</Link>
+              <Link to={ROUTES.GALLERY} className="text-sm font-bold text-slate-200 hover:text-cyan-400 transition-colors">Gallery</Link>
+              <Link to={ROUTES.ABOUT} className="text-sm font-bold text-slate-200 hover:text-cyan-400 transition-colors">About</Link>
 
-              {/* Blog Dropdown Item */}
               <div className="relative group py-4">
                 <Link 
-                  to={ROUTES.blog} 
+                  to={ROUTES.BLOG} 
                   className="flex items-center gap-1 text-sm font-bold text-slate-200 hover:text-cyan-400 transition-colors"
                 >
                   Blog 
@@ -115,8 +115,8 @@ export default function Header() {
                 </div>
               </div>
 
-              <Link to={ROUTES.faq} className="text-sm font-bold text-slate-200 hover:text-cyan-400 transition-colors">FAQ</Link>
-              <Link to={ROUTES.contact} className="text-sm font-bold text-slate-200 hover:text-cyan-400 transition-colors">Contact</Link>
+              <Link to={ROUTES.FAQ} className="text-sm font-bold text-slate-200 hover:text-cyan-400 transition-colors">FAQ</Link>
+              <Link to={ROUTES.CONTACT} className="text-sm font-bold text-slate-200 hover:text-cyan-400 transition-colors">Contact</Link>
               
               <button 
                 onClick={() => setIsSearchOpen(true)} 
@@ -126,7 +126,7 @@ export default function Header() {
                 <Search size={20} />
               </button>
 
-              <Link to={ROUTES.book} className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 px-6 py-2.5 rounded-full text-sm font-black transition-all hover:scale-105 shadow-[0_0_15px_rgba(34,211,238,0.2)] ml-2">
+              <Link to={ROUTES.BOOKING} className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 px-6 py-2.5 rounded-full text-sm font-black transition-all hover:scale-105 shadow-[0_0_15px_rgba(34,211,238,0.2)] ml-2">
                 Book Repair
               </Link>
             </nav>
@@ -144,7 +144,8 @@ export default function Header() {
       </header>
 
       <GlobalSearch isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
-      <MobileMenu isOpen={isOpen} onClose={() => onClose()} services={services} blogs={blogs} />
+      {/* 👇 FIX 4: Corrected the onClose scope bug so the mobile menu can close properly */}
+      <MobileMenu isOpen={isOpen} onClose={() => setIsOpen(false)} services={services} blogs={blogs} />
     </>
   );
 }
