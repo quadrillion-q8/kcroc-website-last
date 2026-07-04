@@ -1,6 +1,5 @@
 // File: app/frontend/src/data/graph.ts
 import { 
-  KnowledgeGraphData, 
   LocationEntity, 
   ServiceEntity, 
   FAQEntity,
@@ -50,7 +49,7 @@ const rawGraphData: any = {
     } as LocationEntity,
 
     // ==========================================
-    // 2. BRAND & DEVICE ENTITIES (Fixed Missing Fields)
+    // 2. BRAND & DEVICE ENTITIES
     // ==========================================
     'brand-apple': {
       id: 'brand-apple',
@@ -75,21 +74,48 @@ const rawGraphData: any = {
     } as DeviceEntity,
 
     // ==========================================
-    // 3. SERVICE ENTITIES (Fixed Relationship Types)
+    // 3. SERVICE ENTITIES (Fully Upgraded to V2 Contract)
     // ==========================================
+    'srv-macbook-repair': {
+      id: 'srv-macbook-repair',
+      slug: 'macbook-repair-kuwait',
+      title: 'MacBook Repair Kuwait',
+      entityType: 'Service',
+      description: 'Professional component-level repair for Apple MacBook logic boards, liquid damage, and thermal systems.',
+      iconKey: 'apple',
+      repairLevel: 'chip-level',
+      estimatedTurnaround: '24-48 Hours',
+      pricing: { startingFrom: 25, currency: 'KWD', quoteRequired: true, displayLabel: 'From 25 KWD — free diagnostic first' },
+      conversion: { showBooking: true, showWhatsapp: true, showCall: true, priority: 10 },
+      coreFeatures: ['Logic Board Micro-Soldering', 'Liquid Damage Restoration', 'Free Pick & Drop', 'No Fix, No Fee'],
+      commonIssues: [
+        { id: 'logic-board-failure', title: 'Logic Board Failure', description: 'Device will not turn on, no display with fan spinning.', symptoms: ['Will not power on', 'Black screen'], severity: 'high' },
+        { id: 'liquid-damage', title: 'Liquid Damage', description: 'Liquid spill causing board shorts and corrosion.', symptoms: ['Spilled liquid', 'Died after contact'], severity: 'high' }
+      ],
+      seo: { title: 'MacBook Repair Kuwait | Logic Board Experts | KCROC', description: 'Expert Apple MacBook repair in Kuwait.', canonicalUrl: '/services/macbook-repair-kuwait' },
+      relationships: [ { targetId: 'loc-hawalli', type: RELATIONSHIP.AVAILABLE_AT, weight: 10 } ]
+    } as ServiceEntity,
+
     'srv-laptop-repair': {
       id: 'srv-laptop-repair',
       slug: 'laptop-repair',
       entityType: 'Service',
       isActive: true,
       title: 'Laptop Repair Kuwait',
-      description: 'Expert repair for all laptop brands.',
+      description: 'Expert diagnostics and hardware repair for all major Windows laptop brands including Dell, HP, Lenovo, and ASUS.',
       primaryKeyword: 'laptop repair kuwait',
-      seo: { title: 'Laptop Repair Kuwait', description: 'Repair services.', canonicalUrl: '/services/laptop-repair' },
-      relationships: [
-        { targetId: 'loc-hawalli', type: RELATIONSHIP.AVAILABLE_AT, weight: 10 },
-        { targetId: 'faq-pick-and-drop', type: RELATIONSHIP.HAS_FAQ, weight: 10 }
+      iconKey: 'laptop',
+      repairLevel: 'advanced',
+      estimatedTurnaround: '24-48 Hours',
+      pricing: { startingFrom: 15, currency: 'KWD', quoteRequired: true, displayLabel: 'From 15 KWD — free diagnostic first' },
+      conversion: { showBooking: true, showWhatsapp: true, showCall: true, priority: 9 },
+      coreFeatures: ['Screen & Hinge Replacement', 'Battery Upgrades', 'Free Pick & Drop', 'Keyboard & Trackpad Repair'],
+      commonIssues: [
+        { id: 'broken-screen', title: 'Broken or Flickering Screen', description: 'Cracked display panels or failing display cables.', symptoms: ['Cracked glass', 'Lines on screen'], severity: 'high' },
+        { id: 'dead-battery', title: 'Battery Not Holding Charge', description: 'Laptop dies immediately when unplugged.', symptoms: ['Shuts off instantly', 'Swollen case'], severity: 'medium' }
       ],
+      seo: { title: 'Laptop Repair Kuwait | Windows PC Experts', description: 'Professional laptop repair services.', canonicalUrl: '/services/laptop-repair' },
+      relationships: [ { targetId: 'loc-hawalli', type: RELATIONSHIP.AVAILABLE_AT, weight: 10 } ],
       media: [{ imageId: '', altText: 'Laptop Repair', role: 'hero', priority: 'eager' }]
     } as ServiceEntity,
 
@@ -99,13 +125,20 @@ const rawGraphData: any = {
       entityType: 'Service',
       isActive: true,
       title: 'Gaming PC Repair Kuwait',
-      description: 'Professional gaming PC diagnostics.',
+      description: 'Professional hardware diagnostics, custom loop maintenance, and thermal optimization for high-end gaming rigs.',
       primaryKeyword: 'gaming pc repair kuwait',
-      seo: { title: 'Gaming PC Repair Kuwait', description: 'Professional diagnostics.', canonicalUrl: '/services/gaming-pc-repair' },
-      relationships: [
-        { targetId: 'loc-hawalli', type: RELATIONSHIP.AVAILABLE_AT, weight: 10 },
-        { targetId: 'faq-pick-and-drop', type: RELATIONSHIP.HAS_FAQ, weight: 10 }
+      iconKey: 'gaming',
+      repairLevel: 'advanced',
+      estimatedTurnaround: '24-48 Hours',
+      pricing: { startingFrom: 20, currency: 'KWD', quoteRequired: true, displayLabel: 'From 20 KWD — free diagnostic first' },
+      conversion: { showBooking: true, showWhatsapp: true, showCall: true, priority: 8 },
+      coreFeatures: ['Thermal Paste Application', 'GPU/CPU Diagnostics', 'Custom Loop Flushing', 'Free Pick & Drop'],
+      commonIssues: [
+        { id: 'overheating', title: 'Thermal Throttling & Crashing', description: 'System shuts down during heavy gaming loads.', symptoms: ['Loud fans', 'Blue screen mid-game'], severity: 'high' },
+        { id: 'no-post', title: 'No POST / Black Screen', description: 'Fans spin and RGB turns on, but no display output.', symptoms: ['VGA light on motherboard', 'No display'], severity: 'high' }
       ],
+      seo: { title: 'Gaming PC Repair Kuwait | Custom Desktop Experts', description: 'Professional gaming PC diagnostics.', canonicalUrl: '/services/gaming-pc-repair' },
+      relationships: [ { targetId: 'loc-hawalli', type: RELATIONSHIP.AVAILABLE_AT, weight: 10 } ],
       media: [{ imageId: '', altText: 'Gaming Diagnostics', role: 'hero', priority: 'eager' }]
     } as ServiceEntity,
 
@@ -115,13 +148,19 @@ const rawGraphData: any = {
       entityType: 'Service',
       isActive: true,
       title: 'Motherboard Repair Kuwait',
-      description: 'Advanced chip-level motherboard repair.',
+      description: 'Advanced chip-level motherboard micro-soldering, short circuit tracing, and component-level restoration.',
       primaryKeyword: 'motherboard repair kuwait',
-      seo: { title: 'Motherboard Repair Kuwait', description: 'Advanced repair.', canonicalUrl: '/services/motherboard-repair' },
-      relationships: [
-        { targetId: 'loc-hawalli', type: RELATIONSHIP.AVAILABLE_AT, weight: 10 },
-        { targetId: 'faq-pick-and-drop', type: RELATIONSHIP.HAS_FAQ, weight: 10 }
+      iconKey: 'cpu',
+      repairLevel: 'chip-level',
+      estimatedTurnaround: '2-4 Business Days',
+      pricing: { startingFrom: 35, currency: 'KWD', quoteRequired: true, displayLabel: 'From 35 KWD — free diagnostic first' },
+      conversion: { showBooking: true, showWhatsapp: true, showCall: true, priority: 10 },
+      coreFeatures: ['Micro-Soldering', 'Short Circuit Tracing', 'Blown Capacitor Replacement', 'Free Pick & Drop'],
+      commonIssues: [
+        { id: 'mobo-dead', title: 'Completely Dead System', description: 'Device shows absolutely no signs of life when power is applied.', symptoms: ['No charging light', 'No fan spin'], severity: 'high' }
       ],
+      seo: { title: 'Motherboard Repair Kuwait | Chip-Level Micro-Soldering', description: 'Advanced motherboard repair.', canonicalUrl: '/services/motherboard-repair' },
+      relationships: [ { targetId: 'loc-hawalli', type: RELATIONSHIP.AVAILABLE_AT, weight: 10 } ],
       media: [{ imageId: '', altText: 'Motherboard Repair', role: 'hero', priority: 'eager' }]
     } as ServiceEntity,
 
@@ -134,7 +173,7 @@ const rawGraphData: any = {
       entityType: 'FAQ',
       isActive: true,
       title: 'Do you offer a pick and drop service?',
-      description: 'Yes, we offer complimentary pick and drop.',
+      description: 'Yes, we offer complimentary pick and drop across Kuwait for all repair services.',
       primaryKeyword: 'pick and drop',
       seo: { title: 'Pick and Drop FAQ', description: 'Free delivery service.', canonicalUrl: '/faq/pick-and-drop' },
       relationships: []
