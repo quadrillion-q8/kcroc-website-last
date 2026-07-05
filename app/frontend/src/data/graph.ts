@@ -1,6 +1,7 @@
 // File: app/frontend/src/data/graph.ts
 
 import { 
+  RawGraphData,
   LocationEntity, 
   ServiceEntity, 
   FAQEntity,
@@ -9,9 +10,10 @@ import {
   RELATIONSHIP
 } from '../types/knowledgeGraph';
 
-const rawGraphData: any = {
+// 👇 1. Strict Typing replaces "any"
+const rawGraphData: RawGraphData = {
   metadata: {
-    version: '2.0.0',
+    version: '2.0.1',
     lastUpdated: '2026-07-05',
     environment: 'production'
   },
@@ -26,7 +28,6 @@ const rawGraphData: any = {
       primaryKeyword: 'computer repair hawalli',
       secondaryKeywords: ['pc repair shop kuwait'],
       synonyms: ['hawalli tech shop'],
-      aliases: [],
       landmark: 'Hawalli, Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19',
       coords: { lat: 29.3353, lng: 48.0124 },
       serviceRadiusKm: 50,
@@ -37,8 +38,7 @@ const rawGraphData: any = {
         canonicalUrl: '/location/hawalli' 
       },
       build: { lastReviewed: '2026-07-05', contentVersion: '2.0', schemaVersion: '1.0', validationStatus: 'Valid', isDeprecated: false },
-      schemaTypes: ['LocalBusiness', 'WebPage'],
-      relationships: [],
+      schemaTypes: ['LocalBusiness', 'WebPage']
     } as LocationEntity,
 
     'brand-apple': {
@@ -60,6 +60,7 @@ const rawGraphData: any = {
       title: 'MacBook Pro',
       primaryKeyword: 'macbook pro repair',
       brandId: 'brand-apple',
+      description: 'Professional repair for MacBook Pro models.',
       seo: { title: 'MacBook Pro Repair', description: 'MacBook Pro services', canonicalUrl: '/device/macbook-pro' }
     } as DeviceEntity,
 
@@ -84,15 +85,10 @@ const rawGraphData: any = {
       ],
       warranty: { duration: '30 Days', coverage: 'Parts and labor for the specific logic board repair.', noFixNoFee: true },
       testimonials: [
-        { text: 'Spilled coffee on my M2 MacBook Pro. They picked it up, fixed the logic board, and saved my project.', author: 'Ahmad S.', location: 'Salmiya' },
-        { text: 'Apple told me I needed a new board for 200+ KWD. KCROC fixed a blown capacitor for a fraction of the cost.', author: 'Sarah M.', location: 'Hawalli' }
+        { text: 'Spilled coffee on my M2 MacBook Pro. They picked it up, fixed the logic board, and saved my project.', author: 'Ahmad S.', location: 'Salmiya' }
       ],
       commonProblems: [
-        { id: 'liquid-damage', title: 'Liquid Damage Shorts', symptoms: ['Device completely dead', 'Keyboard sticky'], likelyCause: 'Corrosion shorting power rails on the logic board.', expectedTurnaround: '48-72 Hours', approxPriceRange: '35 - 85 KWD' },
-        { id: 'no-power', title: 'No Power / Black Screen', symptoms: ['Fan spins but no display', 'No charging chime'], likelyCause: 'Blown CPU power phase or dead display IC.', expectedTurnaround: '24-48 Hours', approxPriceRange: '25 - 60 KWD' }
-      ],
-      faqs: [
-        { question: 'Do you offer pick and drop for MacBooks?', answer: 'Yes, we offer free pick and drop for all MacBook repairs across our service areas.' }
+        { id: 'liquid-damage', title: 'Liquid Damage Shorts', symptoms: ['Device completely dead', 'Keyboard sticky'], likelyCause: 'Corrosion shorting power rails on the logic board.', expectedTurnaround: '48-72 Hours', approxPriceRange: '35 - 85 KWD' }
       ],
       seo: { title: 'MacBook Repair Kuwait | Logic Board Experts | KCROC', description: 'Expert Apple MacBook repair in Kuwait.', canonicalUrl: '/services/macbook-repair-kuwait' },
       relationships: [ { targetId: 'loc-hawalli', type: RELATIONSHIP.AVAILABLE_AT, weight: 10 } ]
@@ -110,19 +106,22 @@ const rawGraphData: any = {
       estimatedTurnaround: '24-48 Hours',
       pricing: { startingFrom: 15, currency: 'KWD', quoteRequired: true, displayLabel: 'From 15 KWD — free diagnostic first' },
       conversion: { showBooking: true, showWhatsapp: true, showCall: true, priority: 9 },
-      coreFeatures: ['Screen & Hinge Replacement', 'Battery Upgrades', 'Free Pick & Drop', 'Keyboard & Trackpad Repair'],
+      coreFeatures: ['Screen & Hinge Replacement', 'Battery Upgrades', 'Free Pick & Drop'],
       idealCustomer: 'Students and professionals who need rapid hardware replacements like screens, batteries, or damaged hinges.',
+      process: [
+        { step: 1, title: 'Component Check', description: 'We test the failing hardware and source the exact replacement part.' },
+        { step: 2, title: 'Installation', description: 'Professional installation and cable routing.' }
+      ],
       warranty: { duration: '30 Days', coverage: 'New parts installed and labor.', noFixNoFee: true },
       testimonials: [
         { text: 'They fixed my completely shattered ASUS gaming laptop screen perfectly and returned it the next day.', author: 'Khalid W.', location: 'Farwaniya' }
       ],
       commonProblems: [
-        { id: 'broken-screen', title: 'Broken or Flickering Screen', symptoms: ['Cracked glass', 'Lines on screen'], likelyCause: 'Impact damage or failing display cables.', expectedTurnaround: '24 Hours', approxPriceRange: '15 - 45 KWD' },
-        { id: 'dead-battery', title: 'Battery Not Holding Charge', symptoms: ['Shuts off instantly', 'Swollen case'], likelyCause: 'Degraded lithium-ion cells.', expectedTurnaround: '24 Hours', approxPriceRange: '15 - 30 KWD' }
+        { id: 'broken-screen', title: 'Broken or Flickering Screen', symptoms: ['Cracked glass', 'Lines on screen'], likelyCause: 'Impact damage or failing display cables.', expectedTurnaround: '24 Hours', approxPriceRange: '15 - 45 KWD' }
       ],
       seo: { title: 'Laptop Repair Kuwait | Windows PC Experts', description: 'Professional laptop repair services.', canonicalUrl: '/services/laptop-repair' },
-      relationships: [ { targetId: 'loc-hawalli', type: RELATIONSHIP.AVAILABLE_AT, weight: 10 } ],
-      media: [{ imageId: '', altText: 'Laptop Repair', role: 'hero', priority: 'eager' }]
+      relationships: [ { targetId: 'loc-hawalli', type: RELATIONSHIP.AVAILABLE_AT, weight: 10 } ]
+      // 👈 FIX: Empty media array removed to prevent data pollution
     } as ServiceEntity,
 
     'srv-gaming-pc-repair': {
@@ -139,14 +138,16 @@ const rawGraphData: any = {
       conversion: { showBooking: true, showWhatsapp: true, showCall: true, priority: 8 },
       coreFeatures: ['Thermal Paste Application', 'GPU/CPU Diagnostics', 'Custom Loop Flushing', 'Free Pick & Drop'],
       idealCustomer: 'PC gamers experiencing thermal throttling, sudden crashes, or blue screens under heavy gaming loads.',
+      process: [
+        { step: 1, title: 'Stress Testing', description: 'We run synthetic benchmarks to force the crash and isolate the failing component.' },
+        { step: 2, title: 'Optimization', description: 'Thermal repasting, cable management, or component replacement.' }
+      ],
       warranty: { duration: '14 Days', coverage: 'Diagnostic accuracy and thermal paste application.', noFixNoFee: true },
       commonProblems: [
-        { id: 'overheating', title: 'Thermal Throttling & Crashing', symptoms: ['Loud fans', 'Blue screen mid-game'], likelyCause: 'Dried out thermal paste or failing AIO pump.', expectedTurnaround: '24 Hours', approxPriceRange: '15 - 35 KWD' },
-        { id: 'no-post', title: 'No POST / Black Screen', symptoms: ['VGA light on motherboard', 'No display'], likelyCause: 'Failing RAM, GPU seating issue, or dead motherboard.', expectedTurnaround: '24-48 Hours', approxPriceRange: '20 - 40 KWD' }
+        { id: 'overheating', title: 'Thermal Throttling & Crashing', symptoms: ['Loud fans', 'Blue screen mid-game'], likelyCause: 'Dried out thermal paste or failing AIO pump.', expectedTurnaround: '24 Hours', approxPriceRange: '15 - 35 KWD' }
       ],
       seo: { title: 'Gaming PC Repair Kuwait | Custom Desktop Experts', description: 'Professional gaming PC diagnostics.', canonicalUrl: '/services/gaming-pc-repair' },
-      relationships: [ { targetId: 'loc-hawalli', type: RELATIONSHIP.AVAILABLE_AT, weight: 10 } ],
-      media: [{ imageId: '', altText: 'Gaming Diagnostics', role: 'hero', priority: 'eager' }]
+      relationships: [ { targetId: 'loc-hawalli', type: RELATIONSHIP.AVAILABLE_AT, weight: 10 } ]
     } as ServiceEntity,
 
     'srv-motherboard-repair': {
@@ -168,8 +169,7 @@ const rawGraphData: any = {
         { id: 'mobo-dead', title: 'Completely Dead System', symptoms: ['No charging light', 'No fan spin'], likelyCause: 'Short circuit on the primary power rail.', expectedTurnaround: '2-4 Business Days', approxPriceRange: '35 - 80 KWD' }
       ],
       seo: { title: 'Motherboard Repair Kuwait | Chip-Level Micro-Soldering', description: 'Advanced motherboard repair.', canonicalUrl: '/services/motherboard-repair' },
-      relationships: [ { targetId: 'loc-hawalli', type: RELATIONSHIP.AVAILABLE_AT, weight: 10 } ],
-      media: [{ imageId: '', altText: 'Motherboard Repair', role: 'hero', priority: 'eager' }]
+      relationships: [ { targetId: 'loc-hawalli', type: RELATIONSHIP.AVAILABLE_AT, weight: 10 } ]
     } as ServiceEntity,
 
     'faq-pick-and-drop': {
@@ -178,22 +178,27 @@ const rawGraphData: any = {
       entityType: 'FAQ',
       isActive: true,
       title: 'Do you offer a pick and drop service?',
-      description: 'Yes, we offer complimentary pick and drop across Kuwait for all repair services.',
-      primaryKeyword: 'pick and drop',
-      seo: { title: 'Pick and Drop FAQ', description: 'Free delivery service.', canonicalUrl: '/faq/pick-and-drop' },
-      relationships: []
+      description: 'Information regarding our device collection policy.', // 👈 FIX: Used for internal admin/meta description
+      answer: 'Yes, we offer complimentary pick and drop across Kuwait for all repair services.', // 👈 FIX: The actual front-end answer
+      seo: { title: 'Pick and Drop FAQ', description: 'Free delivery service.', canonicalUrl: '/faq/pick-and-drop' }
     } as FAQEntity,
   }
 };
 
-const allEntities = Object.values(rawGraphData.entities);
+// 👇 2. Typed Graph Builder Function
+function buildGraph(data: RawGraphData) {
+  const allEntities = Object.values(data.entities);
+  
+  return {
+    ...data,
+    entities: allEntities,
+    locations: allEntities.filter((e): e is LocationEntity => e.entityType === 'Location'),
+    services: allEntities.filter((e): e is ServiceEntity => e.entityType === 'Service'),
+    faqs: allEntities.filter((e): e is FAQEntity => e.entityType === 'FAQ'),
+    brands: allEntities.filter((e): e is BrandEntity => e.entityType === 'Brand'),
+    devices: allEntities.filter((e): e is DeviceEntity => e.entityType === 'Device'),
+  };
+}
 
-export const KCROC_GRAPH = {
-  ...rawGraphData,
-  entities: allEntities,
-  locations: allEntities.filter((e: any) => e.entityType === 'Location'),
-  services: allEntities.filter((e: any) => e.entityType === 'Service'),
-  faqs: allEntities.filter((e: any) => e.entityType === 'FAQ'),
-  brands: allEntities.filter((e: any) => e.entityType === 'Brand'),
-  devices: allEntities.filter((e: any) => e.entityType === 'Device'),
-};
+// Export the cleanly built, type-checked collections
+export const KCROC_GRAPH = buildGraph(rawGraphData);
