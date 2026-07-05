@@ -1,49 +1,33 @@
-// File: app/frontend/scripts/generate-sitemap.ts
+// File: scripts/generate-sitemap.ts
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { BUSINESS_INFO } from '../src/constants/data';
-import { KCROC_GRAPH } from '../src/data/graph'; 
+import { KCROC_GRAPH } from '../src/data/graph.js'; // Added .js extension for ES Module imports
 
 // ✅ FIX: Recreate __dirname for ES Modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const generateSitemap = () => {
-  const baseUrl = BUSINESS_INFO.url;
-  
-  // 1. Define core application static pages
-  const staticPages = ['/', '/services', '/about', '/contact', '/faq'];
+const DOMAIN = 'https://computerrepairkuwait.com';
 
-  // 2. Map dynamic entities directly from your Knowledge Graph configuration
-  const serviceUrls = KCROC_GRAPH.services.map(s => `/services/${s.slug}`);
-  const locationUrls = KCROC_GRAPH.locations.map(l => `/locations/${l.slug}`);
-
-  // Combine static routing tables with dynamic resource collections
-  const allUrls = [...staticPages, ...serviceUrls, ...locationUrls];
-
-  // 3. Construct structurally compliant sitemap XML markup
-  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  ${allUrls
-    .map((routePath) => `
+  ${KCROC_GRAPH.entities
+    .filter(e => e.isActive)
+    .map(entity => `
   <url>
-    <loc>${baseUrl}${routePath}</loc>
+    <loc>${DOMAIN}${entity.seo.canonicalUrl}</loc>
     <lastmod>${new Date().toISOString()}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-  </url>`)
-    .join('')}
+  </url>`).join('')}
 </urlset>`;
 
-  // 4. Resolve absolute runtime directory and commit the file output
-  const publicDir = path.join(__dirname, '../public');
-  if (!fs.existsSync(publicDir)) {
-    fs.mkdirSync(publicDir, { recursive: true });
-  }
-  
-  fs.writeFileSync(path.join(publicDir, 'sitemap.xml'), sitemap);
-  console.log(`✅ Sitemap successfully generated with ${allUrls.length} URLs at public/sitemap.xml`);
-};
+// Ensure public directory exists
+const publicDir = path.join(__dirname, '../public');
+if (!fs.existsSync(publicDir)) {
+  fs.mkdirSync(publicDir, { recursive: true });
+}
 
-generateSitemap();
+fs.writeFileSync(path.join(publicDir, 'sitemap.xml'), sitemap);
+console.log(`✅ Sitemap generated with ${KCROC_GRAPH.entities.length} URLs at public/sitemap.xml`);
