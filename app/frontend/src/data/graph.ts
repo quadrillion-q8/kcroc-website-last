@@ -24,17 +24,17 @@ const rawGraphData: RawGraphData = {
       entityType: 'Location',
       isActive: true,
       title: 'Hawalli Repair Center',
-      description: 'Main Kuwait Computer Repair On Call facility.',
+      description: 'Kuwait\'s premier component-level repair facility specializing in advanced micro-soldering and hardware diagnostics.',
       primaryKeyword: 'computer repair hawalli',
-      secondaryKeywords: ['pc repair shop kuwait'],
-      synonyms: ['hawalli tech shop'],
+      secondaryKeywords: ['pc repair shop kuwait', 'laptop repair hawalli'],
+      synonyms: ['hawalli tech shop', 'kcroc hq'],
       landmark: 'Hawalli, Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19',
       coords: { lat: 29.3353, lng: 48.0124 },
       serviceRadiusKm: 50,
-      serviceAreas: ['Hawalli', 'Salmiya', 'Farwaniya', 'Mahboula', 'Kuwait City'],
+      serviceAreas: ['Hawalli', 'Salmiya', 'Farwaniya', 'Mahboula', 'Kuwait City', 'Jahra'],
       seo: { 
         title: 'Computer Repair Shop in Hawalli | KCROC', 
-        description: 'Visit our Hawalli location in the Al Mullah Complex.', 
+        description: 'Visit our Hawalli location in the Al Mullah Complex for expert component-level repairs.', 
         canonicalUrl: '/location/hawalli' 
       },
       build: { lastReviewed: '2026-07-05', contentVersion: '2.0', schemaVersion: '1.0', validationStatus: 'Valid', isDeprecated: false },
@@ -47,9 +47,9 @@ const rawGraphData: RawGraphData = {
       entityType: 'Brand',
       isActive: true,
       title: 'Apple',
-      primaryKeyword: 'apple repair',
-      description: 'Expert repair services for Apple products.',
-      seo: { title: 'Apple Repair', description: 'Apple services', canonicalUrl: '/brand/apple' }
+      primaryKeyword: 'apple repair kuwait',
+      description: 'Expert component-level repair services for Apple MacBooks and hardware.',
+      seo: { title: 'Apple Repair Kuwait', description: 'Specialized Apple repair services in Kuwait.', canonicalUrl: '/brand/apple' }
     } as BrandEntity,
 
     'device-macbook-pro': {
@@ -58,10 +58,10 @@ const rawGraphData: RawGraphData = {
       entityType: 'Device',
       isActive: true,
       title: 'MacBook Pro',
-      primaryKeyword: 'macbook pro repair',
+      primaryKeyword: 'macbook pro repair kuwait',
       brandId: 'brand-apple',
-      description: 'Professional repair for MacBook Pro models.',
-      seo: { title: 'MacBook Pro Repair', description: 'MacBook Pro services', canonicalUrl: '/device/macbook-pro' }
+      description: 'Professional repair for all MacBook Pro models including M-series and Intel chips.',
+      seo: { title: 'MacBook Pro Repair Kuwait', description: 'Professional MacBook Pro repair in Kuwait.', canonicalUrl: '/device/macbook-pro' }
     } as DeviceEntity,
 
     'srv-macbook-repair': {
@@ -69,7 +69,7 @@ const rawGraphData: RawGraphData = {
       slug: 'macbook-repair-kuwait',
       title: 'MacBook Repair Kuwait',
       entityType: 'Service',
-      description: 'Professional component-level repair for Apple MacBook logic boards, liquid damage, and thermal systems.',
+      description: 'We don’t just swap expensive boards—we fix them. Professional component-level repair for Apple MacBook logic boards, liquid damage, and display circuits.',
       iconKey: 'apple',
       repairLevel: 'chip-level',
       estimatedTurnaround: '24-48 Hours',
@@ -106,7 +106,7 @@ const rawGraphData: RawGraphData = {
       estimatedTurnaround: '24-48 Hours',
       pricing: { startingFrom: 15, currency: 'KWD', quoteRequired: true, displayLabel: 'From 15 KWD — free diagnostic first' },
       conversion: { showBooking: true, showWhatsapp: true, showCall: true, priority: 9 },
-      coreFeatures: ['Screen & Hinge Replacement', 'Battery Upgrades', 'Free Pick & Drop'],
+      coreFeatures: ['Screen & Hinge Replacement', 'Battery Upgrades', 'Free Pick & Drop', 'No Fix, No Fee'],
       idealCustomer: 'Students and professionals who need rapid hardware replacements like screens, batteries, or damaged hinges.',
       process: [
         { step: 1, title: 'Component Check', description: 'We test the failing hardware and source the exact replacement part.' },
@@ -121,7 +121,6 @@ const rawGraphData: RawGraphData = {
       ],
       seo: { title: 'Laptop Repair Kuwait | Windows PC Experts', description: 'Professional laptop repair services.', canonicalUrl: '/services/laptop-repair' },
       relationships: [ { targetId: 'loc-hawalli', type: RELATIONSHIP.AVAILABLE_AT, weight: 10 } ]
-      // 👈 FIX: Empty media array removed to prevent data pollution
     } as ServiceEntity,
 
     'srv-gaming-pc-repair': {
@@ -178,8 +177,8 @@ const rawGraphData: RawGraphData = {
       entityType: 'FAQ',
       isActive: true,
       title: 'Do you offer a pick and drop service?',
-      description: 'Information regarding our device collection policy.', // 👈 FIX: Used for internal admin/meta description
-      answer: 'Yes, we offer complimentary pick and drop across Kuwait for all repair services.', // 👈 FIX: The actual front-end answer
+      description: 'Information regarding our device collection policy.',
+      answer: 'Yes, we offer complimentary pick and drop across Kuwait for all repair services.',
       seo: { title: 'Pick and Drop FAQ', description: 'Free delivery service.', canonicalUrl: '/faq/pick-and-drop' }
     } as FAQEntity,
   }
