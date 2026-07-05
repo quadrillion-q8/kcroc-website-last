@@ -6,7 +6,7 @@
     "dev": "vite",
     "prebuild": "npx tsx scripts/validate-build.ts",
     "generate:sitemap": "npx tsx scripts/generate-sitemap.ts",
-    "build": "npm run generate:sitemap && vite build",
+    "build": "pnpm run prebuild && pnpm run generate:sitemap && vite build",
     "lint": "eslint --quiet ./src",
     "preview": "vite preview"
   },
