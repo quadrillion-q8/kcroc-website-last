@@ -24,7 +24,6 @@ export interface BuildMetadata {
 
 /**
  * THE UNIVERSAL BASE
- * Every entity in the KCROC Conversion Content Layer must extend this interface.
  */
 export interface GraphEntity {
   id: string;
@@ -44,18 +43,28 @@ export interface GraphEntity {
   media?: Array<{ imageId: string; altText: string; role: string; priority: string }>;
 }
 
-// Sub-Entities (ServiceEntity and LocationEntity are expanded in graph.contract.ts)
-
 export interface BrandEntity extends GraphEntity {
   entityType: 'Brand';
 }
 
 export interface DeviceEntity extends GraphEntity {
   entityType: 'Device';
-  brandId: string; // Links back to the BrandEntity
+  brandId: string; 
 }
 
 export interface FAQEntity extends GraphEntity {
   entityType: 'FAQ';
-  // The answer/description is handled by the base description property
+  answer: string; // 👈 NEW: Dedicated answer field for clearer content modeling
+}
+
+// 👇 NEW: Strict Types for the Graph Engine
+export type EntityMap = Record<string, GraphEntity>;
+
+export interface RawGraphData {
+  metadata: {
+    version: string;
+    lastUpdated: string;
+    environment: string;
+  };
+  entities: EntityMap;
 }
