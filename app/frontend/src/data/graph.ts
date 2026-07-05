@@ -6,15 +6,14 @@ import {
   ServiceEntity, 
   FAQEntity,
   BrandEntity,
-  DeviceEntity,
-  RELATIONSHIP
+  DeviceEntity
 } from '../types/knowledgeGraph';
 
-// 👇 1. Strict Typing replaces "any"
+// Strictly typed to match the Zod schema invariants
 const rawGraphData: RawGraphData = {
   metadata: {
     version: '2.0.1',
-    lastUpdated: '2026-07-05',
+    lastUpdated: '2026-07-06',
     environment: 'production'
   },
   entities: {
@@ -25,20 +24,14 @@ const rawGraphData: RawGraphData = {
       isActive: true,
       title: 'Hawalli Repair Center',
       description: 'Kuwait\'s premier component-level repair facility specializing in advanced micro-soldering and hardware diagnostics.',
-      primaryKeyword: 'computer repair hawalli',
-      secondaryKeywords: ['pc repair shop kuwait', 'laptop repair hawalli'],
-      synonyms: ['hawalli tech shop', 'kcroc hq'],
       landmark: 'Hawalli, Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19',
       coords: { lat: 29.3353, lng: 48.0124 },
-      serviceRadiusKm: 50,
       serviceAreas: ['Hawalli', 'Salmiya', 'Farwaniya', 'Mahboula', 'Kuwait City', 'Jahra'],
       seo: { 
         title: 'Computer Repair Shop in Hawalli | KCROC', 
         description: 'Visit our Hawalli location in the Al Mullah Complex for expert component-level repairs.', 
         canonicalUrl: '/location/hawalli' 
-      },
-      build: { lastReviewed: '2026-07-05', contentVersion: '2.0', schemaVersion: '1.0', validationStatus: 'Valid', isDeprecated: false },
-      schemaTypes: ['LocalBusiness', 'WebPage']
+      }
     } as LocationEntity,
 
     'brand-apple': {
@@ -47,7 +40,6 @@ const rawGraphData: RawGraphData = {
       entityType: 'Brand',
       isActive: true,
       title: 'Apple',
-      primaryKeyword: 'apple repair kuwait',
       description: 'Expert component-level repair services for Apple MacBooks and hardware.',
       seo: { title: 'Apple Repair Kuwait', description: 'Specialized Apple repair services in Kuwait.', canonicalUrl: '/brand/apple' }
     } as BrandEntity,
@@ -58,7 +50,6 @@ const rawGraphData: RawGraphData = {
       entityType: 'Device',
       isActive: true,
       title: 'MacBook Pro',
-      primaryKeyword: 'macbook pro repair kuwait',
       brandId: 'brand-apple',
       description: 'Professional repair for all MacBook Pro models including M-series and Intel chips.',
       seo: { title: 'MacBook Pro Repair Kuwait', description: 'Professional MacBook Pro repair in Kuwait.', canonicalUrl: '/device/macbook-pro' }
@@ -67,31 +58,23 @@ const rawGraphData: RawGraphData = {
     'srv-macbook-repair': {
       id: 'srv-macbook-repair',
       slug: 'macbook-repair-kuwait',
-      title: 'MacBook Repair Kuwait',
       entityType: 'Service',
+      isActive: true,
+      title: 'MacBook Repair Kuwait',
       description: 'We don’t just swap expensive boards—we fix them. Professional component-level repair for Apple MacBook logic boards, liquid damage, and display circuits.',
       iconKey: 'apple',
-      repairLevel: 'chip-level',
-      estimatedTurnaround: '24-48 Hours',
       pricing: { startingFrom: 25, currency: 'KWD', quoteRequired: true, displayLabel: 'From 25 KWD — free diagnostic first' },
-      conversion: { showBooking: true, showWhatsapp: true, showCall: true, priority: 10 },
       coreFeatures: ['Logic Board Micro-Soldering', 'Liquid Damage Restoration', 'Free Pick & Drop', 'No Fix, No Fee'],
-      idealCustomer: 'Professionals and creators experiencing critical logic board failures or liquid damage who need fast, reliable motherboard-level repair without replacing the entire device.',
-      deviceTypes: ['MacBook Pro (M1/M2/M3 & Intel)', 'MacBook Air'],
       process: [
         { step: 1, title: 'Free Diagnostic', description: 'We test your logic board components to find the exact short or failure.' },
         { step: 2, title: 'Transparent Quote', description: 'You receive a firm price for the micro-soldering repair before we begin.' },
         { step: 3, title: 'Precision Repair', description: 'Our technicians replace the microscopic blown components.' }
       ],
       warranty: { duration: '30 Days', coverage: 'Parts and labor for the specific logic board repair.', noFixNoFee: true },
-      testimonials: [
-        { text: 'Spilled coffee on my M2 MacBook Pro. They picked it up, fixed the logic board, and saved my project.', author: 'Ahmad S.', location: 'Salmiya' }
-      ],
       commonProblems: [
         { id: 'liquid-damage', title: 'Liquid Damage Shorts', symptoms: ['Device completely dead', 'Keyboard sticky'], likelyCause: 'Corrosion shorting power rails on the logic board.', expectedTurnaround: '48-72 Hours', approxPriceRange: '35 - 85 KWD' }
       ],
-      seo: { title: 'MacBook Repair Kuwait | Logic Board Experts | KCROC', description: 'Expert Apple MacBook repair in Kuwait.', canonicalUrl: '/services/macbook-repair-kuwait' },
-      relationships: [ { targetId: 'loc-hawalli', type: RELATIONSHIP.AVAILABLE_AT, weight: 10 } ]
+      seo: { title: 'MacBook Repair Kuwait | Logic Board Experts | KCROC', description: 'Expert Apple MacBook repair in Kuwait.', canonicalUrl: '/services/macbook-repair-kuwait' }
     } as ServiceEntity,
 
     'srv-laptop-repair': {
@@ -102,25 +85,17 @@ const rawGraphData: RawGraphData = {
       title: 'Laptop Repair Kuwait',
       description: 'Expert diagnostics and hardware repair for all major Windows laptop brands including Dell, HP, Lenovo, and ASUS.',
       iconKey: 'laptop',
-      repairLevel: 'advanced',
-      estimatedTurnaround: '24-48 Hours',
       pricing: { startingFrom: 15, currency: 'KWD', quoteRequired: true, displayLabel: 'From 15 KWD — free diagnostic first' },
-      conversion: { showBooking: true, showWhatsapp: true, showCall: true, priority: 9 },
       coreFeatures: ['Screen & Hinge Replacement', 'Battery Upgrades', 'Free Pick & Drop', 'No Fix, No Fee'],
-      idealCustomer: 'Students and professionals who need rapid hardware replacements like screens, batteries, or damaged hinges.',
       process: [
         { step: 1, title: 'Component Check', description: 'We test the failing hardware and source the exact replacement part.' },
         { step: 2, title: 'Installation', description: 'Professional installation and cable routing.' }
       ],
       warranty: { duration: '30 Days', coverage: 'New parts installed and labor.', noFixNoFee: true },
-      testimonials: [
-        { text: 'They fixed my completely shattered ASUS gaming laptop screen perfectly and returned it the next day.', author: 'Khalid W.', location: 'Farwaniya' }
-      ],
       commonProblems: [
         { id: 'broken-screen', title: 'Broken or Flickering Screen', symptoms: ['Cracked glass', 'Lines on screen'], likelyCause: 'Impact damage or failing display cables.', expectedTurnaround: '24 Hours', approxPriceRange: '15 - 45 KWD' }
       ],
-      seo: { title: 'Laptop Repair Kuwait | Windows PC Experts', description: 'Professional laptop repair services.', canonicalUrl: '/services/laptop-repair' },
-      relationships: [ { targetId: 'loc-hawalli', type: RELATIONSHIP.AVAILABLE_AT, weight: 10 } ]
+      seo: { title: 'Laptop Repair Kuwait | Windows PC Experts', description: 'Professional laptop repair services.', canonicalUrl: '/services/laptop-repair' }
     } as ServiceEntity,
 
     'srv-gaming-pc-repair': {
@@ -131,12 +106,8 @@ const rawGraphData: RawGraphData = {
       title: 'Gaming PC Repair Kuwait',
       description: 'Professional hardware diagnostics, custom loop maintenance, and thermal optimization for high-end gaming rigs.',
       iconKey: 'gaming',
-      repairLevel: 'advanced',
-      estimatedTurnaround: '24-48 Hours',
       pricing: { startingFrom: 20, currency: 'KWD', quoteRequired: true, displayLabel: 'From 20 KWD — free diagnostic first' },
-      conversion: { showBooking: true, showWhatsapp: true, showCall: true, priority: 8 },
       coreFeatures: ['Thermal Paste Application', 'GPU/CPU Diagnostics', 'Custom Loop Flushing', 'Free Pick & Drop'],
-      idealCustomer: 'PC gamers experiencing thermal throttling, sudden crashes, or blue screens under heavy gaming loads.',
       process: [
         { step: 1, title: 'Stress Testing', description: 'We run synthetic benchmarks to force the crash and isolate the failing component.' },
         { step: 2, title: 'Optimization', description: 'Thermal repasting, cable management, or component replacement.' }
@@ -145,8 +116,7 @@ const rawGraphData: RawGraphData = {
       commonProblems: [
         { id: 'overheating', title: 'Thermal Throttling & Crashing', symptoms: ['Loud fans', 'Blue screen mid-game'], likelyCause: 'Dried out thermal paste or failing AIO pump.', expectedTurnaround: '24 Hours', approxPriceRange: '15 - 35 KWD' }
       ],
-      seo: { title: 'Gaming PC Repair Kuwait | Custom Desktop Experts', description: 'Professional gaming PC diagnostics.', canonicalUrl: '/services/gaming-pc-repair' },
-      relationships: [ { targetId: 'loc-hawalli', type: RELATIONSHIP.AVAILABLE_AT, weight: 10 } ]
+      seo: { title: 'Gaming PC Repair Kuwait | Custom Desktop Experts', description: 'Professional gaming PC diagnostics.', canonicalUrl: '/services/gaming-pc-repair' }
     } as ServiceEntity,
 
     'srv-motherboard-repair': {
@@ -157,18 +127,18 @@ const rawGraphData: RawGraphData = {
       title: 'Motherboard Repair Kuwait',
       description: 'Advanced chip-level motherboard micro-soldering, short circuit tracing, and component-level restoration.',
       iconKey: 'cpu',
-      repairLevel: 'chip-level',
-      estimatedTurnaround: '2-4 Business Days',
       pricing: { startingFrom: 35, currency: 'KWD', quoteRequired: true, displayLabel: 'From 35 KWD — free diagnostic first' },
-      conversion: { showBooking: true, showWhatsapp: true, showCall: true, priority: 10 },
       coreFeatures: ['Micro-Soldering', 'Short Circuit Tracing', 'Blown Capacitor Replacement', 'Free Pick & Drop'],
-      idealCustomer: 'Users who have been told their laptop is entirely dead and requires an expensive full motherboard replacement.',
+      process: [
+        { step: 1, title: 'Diagnostic Tracing', description: 'We map the power rails to locate the exact short circuit causing the failure.' },
+        { step: 2, title: 'Micro-Soldering', description: 'We replace the blown capacitors or IC chips under a microscope.' },
+        { step: 3, title: 'Load Testing', description: 'The board is tested under heavy power loads before reassembly.' }
+      ],
       warranty: { duration: '30 Days', coverage: 'The specifically repaired circuit or component.', noFixNoFee: true },
       commonProblems: [
         { id: 'mobo-dead', title: 'Completely Dead System', symptoms: ['No charging light', 'No fan spin'], likelyCause: 'Short circuit on the primary power rail.', expectedTurnaround: '2-4 Business Days', approxPriceRange: '35 - 80 KWD' }
       ],
-      seo: { title: 'Motherboard Repair Kuwait | Chip-Level Micro-Soldering', description: 'Advanced motherboard repair.', canonicalUrl: '/services/motherboard-repair' },
-      relationships: [ { targetId: 'loc-hawalli', type: RELATIONSHIP.AVAILABLE_AT, weight: 10 } ]
+      seo: { title: 'Motherboard Repair Kuwait | Chip-Level Micro-Soldering', description: 'Advanced motherboard repair.', canonicalUrl: '/services/motherboard-repair' }
     } as ServiceEntity,
 
     'faq-pick-and-drop': {
@@ -184,20 +154,15 @@ const rawGraphData: RawGraphData = {
   }
 };
 
-// 👇 2. Typed Graph Builder Function
-function buildGraph(data: RawGraphData) {
-  const allEntities = Object.values(data.entities);
-  
-  return {
-    ...data,
-    entities: allEntities,
-    locations: allEntities.filter((e): e is LocationEntity => e.entityType === 'Location'),
-    services: allEntities.filter((e): e is ServiceEntity => e.entityType === 'Service'),
-    faqs: allEntities.filter((e): e is FAQEntity => e.entityType === 'FAQ'),
-    brands: allEntities.filter((e): e is BrandEntity => e.entityType === 'Brand'),
-    devices: allEntities.filter((e): e is DeviceEntity => e.entityType === 'Device'),
-  };
-}
+// Builder Object: Extracts strictly active entities for safe UI & SEO consumption
+const allEntities = Object.values(rawGraphData.entities);
 
-// Export the cleanly built, type-checked collections
-export const KCROC_GRAPH = buildGraph(rawGraphData);
+export const KCROC_GRAPH = {
+  ...rawGraphData,
+  activeEntities: allEntities.filter(e => e.isActive),
+  locations: allEntities.filter((e): e is LocationEntity => e.entityType === 'Location' && e.isActive),
+  services: allEntities.filter((e): e is ServiceEntity => e.entityType === 'Service' && e.isActive),
+  faqs: allEntities.filter((e): e is FAQEntity => e.entityType === 'FAQ' && e.isActive),
+  brands: allEntities.filter((e): e is BrandEntity => e.entityType === 'Brand' && e.isActive),
+  devices: allEntities.filter((e): e is DeviceEntity => e.entityType === 'Device' && e.isActive),
+};
