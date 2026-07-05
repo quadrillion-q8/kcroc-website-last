@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { RootLayout } from './core/components/layout/RootLayout';
 import { ChatWidget } from './components/ChatWidget';
 
-// Lazy load pages - Ensure these filenames match your folder exactly
+// Lazy load pages
 const Home = lazy(() => import('./pages/Home'));
 const ServicePage = lazy(() => import('./pages/ServicePage').then(module => ({ default: module.ServicePage })));
 const Pricing = lazy(() => import('./pages/Pricing'));
@@ -17,6 +17,11 @@ const BlogPostTemplate = lazy(() => import('./pages/BlogPostTemplate'));
 const PillarTemplate = lazy(() => import('./pages/PillarTemplate'));
 const LocationTemplate = lazy(() => import('./pages/LocationTemplate'));
 const NotFound = lazy(() => import('./pages/NotFound'));
+
+// 👇 FIX 1: Import our new dynamic template and your core pages
+const ServiceTemplate = lazy(() => import('./pages/templates/ServiceTemplate'));
+const Services = lazy(() => import('./pages/Services'));
+const About = lazy(() => import('./pages/About'));
 
 // UI: Global loading spinner
 const PageLoader = () => (
@@ -33,9 +38,14 @@ export const App: React.FC = () => {
           <Route path="/" element={<RootLayout />}>
             <Route index element={<Home />} />
             
+            {/* 👇 FIX 2: The Dynamic Services Gateway! */}
+            <Route path="services" element={<Services />} />
+            <Route path="services/:serviceSlug" element={<ServiceTemplate />} />
+            
             <Route path="pricing" element={<Pricing />} />
             <Route path="contact" element={<Contact />} />
             <Route path="gallery" element={<Gallery />} />
+            <Route path="about" element={<About />} />
             <Route path="privacy-security-kuwait" element={<PrivacySecurity />} />
             <Route path="laptop-screen-protection-tips" element={<ScreenProtectionTips />} />
             <Route path="faq" element={<FAQ />} />
