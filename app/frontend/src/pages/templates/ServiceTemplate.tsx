@@ -18,7 +18,10 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
   const entity = KCROC_GRAPH.entities.find((e) => {
     if (e.entityType !== 'Service') return false;
     if (entityId) return e.id === entityId;
-    if (serviceSlug) return e.slug === serviceSlug;
+    
+    // 👇 FIX: Case-insensitive slug matching to prevent 404s
+    if (serviceSlug) return e.slug.toLowerCase() === serviceSlug.toLowerCase();
+    
     return false;
   }) as ServiceEntity | undefined;
 
