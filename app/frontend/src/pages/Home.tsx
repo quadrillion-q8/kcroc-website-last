@@ -5,29 +5,23 @@ import Hero from '../components/home/Hero';
 import ServicesGrid from '../components/home/ServicesGrid';
 import { WhyUs } from '../components/home/WhyUs';
 import { Process } from '../components/home/Process';
-import { FAQ } from '../components/home/FAQ';
+import FAQSection from '../components/home/FAQSection'; // Fixed: Now correctly importing FAQSection
 import { ChatWidget } from '../components/ChatWidget';
 
 export default function Home() {
   return (
     <main className="w-full min-h-screen bg-slate-950">
+      {/* 🚀 SEO Engine links this page to the Hawalli Location Entity */}
       <SEOEngine entityId="loc-hawalli" />
-      
-      {/* 1. Hero: Expert positioning */}
+
+      {/* Dynamic Content Layers */}
       <Hero />
-      
-      {/* 2. Service Grid: Problem-driven categories */}
       <ServicesGrid />
-      
-      {/* 3. WhyUs: Expanded local trust & expertise */}
       <WhyUs />
-      
-      {/* 4. Process: How it works */}
       <Process />
+      <FAQSection />
       
-      {/* 5. FAQ: Dynamic content for SEO and objections */}
-      <FAQ />
-      
+      {/* Global Conversions */}
       <ChatWidget />
     </main>
   );
