@@ -13,7 +13,7 @@ const publicDir = path.resolve(__dirname, '../public');
 const DOMAIN = 'https://www.computerrepairkuwait.com';
 
 const generateSitemap = () => {
-  // Map canonical URLs strictly from active entities
+  // Enforce contract: Map canonical URLs from active entities only using the pre-filtered array
   const urlNodes = KCROC_GRAPH.activeEntities.map(entity => `
   <url>
     <loc>${DOMAIN}${entity.seo.canonicalUrl}</loc>
