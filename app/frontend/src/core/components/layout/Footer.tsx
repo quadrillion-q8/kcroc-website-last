@@ -1,6 +1,6 @@
-// File: app/frontend/src/components/layout/Footer.tsx
+// File: app/frontend/src/core/components/layout/Footer.tsx
 import React from 'react';
-import { KCROC_GRAPH } from '../../data/graph';
+import { KCROC_GRAPH } from '../../../data/graph';
 
 export const Footer = () => {
   const footer = KCROC_GRAPH.footer;
