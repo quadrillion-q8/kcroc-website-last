@@ -6,7 +6,6 @@ export const CoreNodeSchema = z.object({
   id: z.string(),
   isActive: z.boolean(),
   title: z.string(),
-  entityType: z.string(),
 });
 
 export const SEOSchema = z.object({
@@ -21,7 +20,7 @@ export const RoutableEntitySchema = CoreNodeSchema.extend({
   seo: SEOSchema,
 });
 
-/* --- SPECIFIC ENTITY SCHEMAS --- */
+/* --- ENTITY SCHEMAS --- */
 export const BusinessSchema = CoreNodeSchema.extend({
   entityType: z.literal('Business'),
   legalName: z.string(),
@@ -93,18 +92,15 @@ export const WebPageSchema = RoutableEntitySchema.extend({
 });
 
 /* --- MASTER SCHEMA --- */
-const AllEntities = z.union([
-  ServiceSchema, LocationSchema, FAQSchema, BusinessSchema, 
-  USPSchema, TrustBadgeSchema, ProcessSchema, WebPageSchema, 
-  StatsSchema, FooterSchema
-]);
-
 export const RawGraphSchema = z.object({
   metadata: z.object({ version: z.string(), lastUpdated: z.string(), environment: z.string() }),
-  entities: z.record(z.string(), AllEntities),
+  entities: z.record(z.string(), z.union([
+    ServiceSchema, LocationSchema, FAQSchema, BusinessSchema, 
+    USPSchema, TrustBadgeSchema, ProcessSchema, WebPageSchema, 
+    StatsSchema, FooterSchema
+  ])),
 });
 
-/* --- EXPORTED TYPES --- */
 export type RoutableEntity = z.infer<typeof RoutableEntitySchema>;
 export type ServiceEntity = z.infer<typeof ServiceSchema>;
 export type LocationEntity = z.infer<typeof LocationSchema>;
