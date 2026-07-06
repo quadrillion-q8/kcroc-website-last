@@ -2,7 +2,7 @@
 import { 
   RawGraphData, RoutableEntity, LocationEntity, ServiceEntity, 
   FAQEntity, WebPageEntity, BusinessEntity, USPEntity, TrustBadgeEntity, ProcessEntity,
-  StatsEntity, FooterEntity
+  StatsEntity, FooterEntity, ReviewsEntity 
 } from '../types/knowledgeGraph';
 
 const rawGraphData: RawGraphData = {
@@ -126,7 +126,7 @@ const rawGraphData: RawGraphData = {
         { name: 'Sarah M.', text: 'Motherboard died right before my midterms. KCROC saved my data.', rating: 5, device: 'Laptop' },
         { name: 'Tariq K.', text: 'Diagnosed my gaming PC thermal throttle in 5 minutes.', rating: 5, device: 'Gaming PC' }
       ]
-    } as any,
+    } as ReviewsEntity,
     
     /* --- FAQS --- */
     'faq-pick-and-drop': { id: 'faq-pick-and-drop', slug: 'faq-pick-and-drop', entityType: 'FAQ', isActive: true, title: 'Do you offer a pick and drop service?', description: 'Information on our delivery policy.', answer: 'Yes, we offer complimentary pick & drop across all Kuwait.', seo: { title: 'FAQ', description: 'FAQ', canonicalUrl: '/faq/pick-and-drop' } } as FAQEntity,
@@ -148,6 +148,7 @@ export const KCROC_GRAPH = {
   trustBadges: allEntities.filter((e): e is TrustBadgeEntity => e.entityType === 'TrustBadge' && e.isActive),
   processes: allEntities.filter((e): e is ProcessEntity => e.entityType === 'Process' && e.isActive),
   locations: allEntities.filter((e): e is LocationEntity => e.entityType === 'Location' && e.isActive),
+  reviews: allEntities.find((e): e is ReviewsEntity => e.entityType === 'Reviews' && e.isActive),
   footer: allEntities.find((e): e is FooterEntity => e.entityType === 'Footer'),
   stats: allEntities.find((e): e is StatsEntity => e.entityType === 'Stats'),
 };
