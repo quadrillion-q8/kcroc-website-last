@@ -13,8 +13,8 @@ const publicDir = path.resolve(__dirname, '../public');
 const DOMAIN = 'https://www.computerrepairkuwait.com';
 
 const generateSitemap = () => {
-  // Enforce contract: Map canonical URLs from active entities only using the pre-filtered array
-  const urlNodes = KCROC_GRAPH.activeEntities.map(entity => `
+  // 🚀 FIX: Use routableEntities so UI fragments don't accidentally end up in Google Search
+  const urlNodes = KCROC_GRAPH.routableEntities.map(entity => `
   <url>
     <loc>${DOMAIN}${entity.seo.canonicalUrl}</loc>
     <lastmod>${new Date().toISOString()}</lastmod>
@@ -34,7 +34,7 @@ const generateSitemap = () => {
   const sitemapPath = path.join(publicDir, 'sitemap.xml');
   fs.writeFileSync(sitemapPath, sitemapXml);
   
-  console.log(`✅ Sitemap successfully mapped ${KCROC_GRAPH.activeEntities.length} active routes to public/sitemap.xml`);
+  console.log(`✅ Sitemap successfully mapped ${KCROC_GRAPH.routableEntities.length} active routes to public/sitemap.xml`);
 };
 
 generateSitemap();
