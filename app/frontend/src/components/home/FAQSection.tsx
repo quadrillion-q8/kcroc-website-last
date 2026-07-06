@@ -6,6 +6,10 @@ import FAQSchema from '../seo/FAQSchema';
 
 export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  
+  // Filter FAQs to only those featured on the homepage
+  const homePage = KCROC_GRAPH.pages.find(p => p.id === 'page-home');
+  const featuredFaqs = KCROC_GRAPH.faqs.filter(faq => homePage?.featuredFAQIds.includes(faq.id));
 
   const toggleFAQ = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -13,15 +17,11 @@ export default function FAQSection() {
 
   return (
     <section className="w-full py-24 px-6 bg-slate-950 relative">
-      
-      {/* SEO Schema Injection */}
       <FAQSchema />
-
       <div className="max-w-3xl mx-auto relative z-10">
         <h2 className="text-3xl font-black text-white mb-12 text-center">Frequently Asked Questions</h2>
         <div className="space-y-4">
-          
-          {KCROC_GRAPH.faqs.map((faq, index) => {
+          {featuredFaqs.map((faq, index) => {
             const isOpen = openIndex === index;
             const faqId = `faq-answer-${index}`;
             const buttonId = `faq-question-${index}`;
@@ -48,7 +48,6 @@ export default function FAQSection() {
                   hidden={!isOpen}
                   className="p-6 bg-slate-950 text-slate-400 leading-relaxed border-t border-slate-800"
                 >
-                  {/* FIX: Now correctly pulling from faq.answer instead of description */}
                   {faq.answer}
                 </div>
               </div>
