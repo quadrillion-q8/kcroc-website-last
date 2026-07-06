@@ -1,7 +1,8 @@
 // File: app/frontend/src/data/graph.ts
 import { 
   RawGraphData, RoutableEntity, LocationEntity, ServiceEntity, 
-  FAQEntity, WebPageEntity, BusinessEntity, USPEntity, TrustBadgeEntity, ProcessEntity
+  FAQEntity, WebPageEntity, BusinessEntity, USPEntity, TrustBadgeEntity, ProcessEntity,
+  StatsEntity, FooterEntity
 } from '../types/knowledgeGraph';
 
 const rawGraphData: RawGraphData = {
@@ -28,7 +29,7 @@ const rawGraphData: RawGraphData = {
         { label: 'Warranty', value: '30 days', sub: 'All parts and labour' },
         { label: 'Pick & drop', value: 'Free', sub: 'Zero hidden transport fees' }
       ]
-    } as any,
+    } as StatsEntity,
 
     /* --- USPs --- */
     'usp-component': { id: 'usp-component', entityType: 'USP', isActive: true, iconKey: 'Cpu', title: 'Component-Level Repair', description: 'We diagnose the board itself—using micro-soldering and trace repair—saving you from buying entirely new motherboards.' } as USPEntity,
@@ -67,7 +68,8 @@ const rawGraphData: RawGraphData = {
       title: 'MacBook Repair Kuwait', iconKey: 'apple',
       description: 'Logic board micro-soldering, liquid damage, and display circuits. Data stays on your original board.',
       pricing: { startingFrom: 25, currency: 'KWD', quoteRequired: true, displayLabel: 'From 25 KWD' },
-      coreFeatures: ['Micro-Soldering', 'Liquid Damage', 'Pick & Drop'], warranty: { duration: '30 Days', coverage: 'Full', noFixNoFee: true },
+      coreFeatures: ['Micro-Soldering', 'Liquid Damage', 'Pick & Drop'], 
+      warranty: { duration: '30 Days', coverage: 'Full', noFixNoFee: true },
       seo: { title: 'MacBook Repair Kuwait', description: 'Expert Apple MacBook repair.', canonicalUrl: '/services/macbook-repair-kuwait' }
     } as ServiceEntity,
     'srv-laptop': {
@@ -75,7 +77,8 @@ const rawGraphData: RawGraphData = {
       title: 'Laptop Repair Kuwait', iconKey: 'laptop',
       description: 'Screen, battery, charging port, and keyboard repairs for Dell, HP, ASUS, Lenovo.',
       pricing: { startingFrom: 15, currency: 'KWD', quoteRequired: true, displayLabel: 'From 15 KWD' },
-      coreFeatures: ['Screen Replacement', 'Battery Swap', 'Keyboard Repair'], warranty: { duration: '30 Days', coverage: 'Full', noFixNoFee: true },
+      coreFeatures: ['Screen Replacement', 'Battery Swap', 'Keyboard Repair'], 
+      warranty: { duration: '30 Days', coverage: 'Full', noFixNoFee: true },
       seo: { title: 'Laptop Repair Kuwait', description: 'Expert Windows laptop repair.', canonicalUrl: '/services/laptop-repair-kuwait' }
     } as ServiceEntity,
     'srv-gaming': {
@@ -83,7 +86,8 @@ const rawGraphData: RawGraphData = {
       title: 'Gaming PC Repair', iconKey: 'gaming',
       description: 'GPU diagnostics, thermal throttling fixes, custom cooling, and FPS tuning.',
       pricing: { startingFrom: 25, currency: 'KWD', quoteRequired: true, displayLabel: 'From 25 KWD' },
-      coreFeatures: ['Thermal Fixes', 'GPU Repair', 'FPS Tuning'], warranty: { duration: '30 Days', coverage: 'Full', noFixNoFee: true },
+      coreFeatures: ['Thermal Fixes', 'GPU Repair', 'FPS Tuning'], 
+      warranty: { duration: '30 Days', coverage: 'Full', noFixNoFee: true },
       seo: { title: 'Gaming PC Repair Kuwait', description: 'Gaming PC hardware diagnostics.', canonicalUrl: '/services/gaming-pc-repair-kuwait' }
     } as ServiceEntity,
     'srv-motherboard': {
@@ -91,7 +95,8 @@ const rawGraphData: RawGraphData = {
       title: 'Motherboard Repair', iconKey: 'cpu',
       description: 'Chip-level diagnostics, blown capacitor replacement, short circuit tracing.',
       pricing: { startingFrom: 25, currency: 'KWD', quoteRequired: true, displayLabel: 'From 25 KWD' },
-      coreFeatures: ['Circuit Tracing', 'IC Replacement', 'No Fix No Fee'], warranty: { duration: '30 Days', coverage: 'Full', noFixNoFee: true },
+      coreFeatures: ['Circuit Tracing', 'IC Replacement', 'No Fix No Fee'], 
+      warranty: { duration: '30 Days', coverage: 'Full', noFixNoFee: true },
       seo: { title: 'Motherboard Repair Kuwait', description: 'Motherboard chip-level repair.', canonicalUrl: '/services/motherboard-repair-kuwait' }
     } as ServiceEntity,
 
@@ -103,18 +108,19 @@ const rawGraphData: RawGraphData = {
         company: ['About us', 'Contact', 'Tech Blog', 'FAQ', 'Pricing'],
         areas: ['Hawalli', 'Salmiya', 'Kuwait City', 'Farwaniya', 'Jahra', 'Ahmadi']
       }
-    } as any,
+    } as FooterEntity,
     'loc-hawalli': {
       id: 'loc-hawalli', slug: 'computer-repair-hawalli', entityType: 'Location', isActive: true,
       title: 'Hawalli Repair Center', landmark: 'Al Mullah Complex, Basement Shop 19',
+      coords: { lat: 29.3353, lng: 48.0124 },
       serviceAreas: ['Hawalli', 'Salmiya', 'Kuwait City', 'Farwaniya', 'Mangaf', 'Jahra'],
       seo: { title: 'Computer Repair Shop in Hawalli', description: 'Visit our Hawalli location.', canonicalUrl: '/location/hawalli' }
     } as LocationEntity,
     
     /* --- FAQS --- */
-    'faq-pick-and-drop': { id: 'faq-pick-and-drop', slug: 'faq-pick-and-drop', entityType: 'FAQ', isActive: true, title: 'Do you offer a pick and drop service?', answer: 'Yes, we offer complimentary pick & drop across all Kuwait.' } as FAQEntity,
-    'faq-liquid-damage': { id: 'faq-liquid-damage', slug: 'faq-liquid-damage', entityType: 'FAQ', isActive: true, title: 'Do you repair liquid damage?', answer: 'Yes, we trace circuits to the component level.' } as FAQEntity,
-    'faq-no-fix': { id: 'faq-no-fix', slug: 'faq-no-fix', entityType: 'FAQ', isActive: true, title: 'No Fix, No Fee?', answer: 'If we cannot repair your device, you pay zero KWD.' } as FAQEntity,
+    'faq-pick-and-drop': { id: 'faq-pick-and-drop', slug: 'faq-pick-and-drop', entityType: 'FAQ', isActive: true, title: 'Do you offer a pick and drop service?', answer: 'Yes, we offer complimentary pick & drop across all Kuwait.', seo: { title: 'FAQ', description: 'FAQ', canonicalUrl: '/faq/pick-and-drop' } } as FAQEntity,
+    'faq-liquid-damage': { id: 'faq-liquid-damage', slug: 'faq-liquid-damage', entityType: 'FAQ', isActive: true, title: 'Do you repair liquid damage?', answer: 'Yes, we trace circuits to the component level.', seo: { title: 'FAQ', description: 'FAQ', canonicalUrl: '/faq/liquid-damage' } } as FAQEntity,
+    'faq-no-fix': { id: 'faq-no-fix', slug: 'faq-no-fix', entityType: 'FAQ', isActive: true, title: 'No Fix, No Fee?', answer: 'If we cannot repair your device, you pay zero KWD.', seo: { title: 'FAQ', description: 'FAQ', canonicalUrl: '/faq/no-fix' } } as FAQEntity,
   }
 };
 
@@ -131,6 +137,6 @@ export const KCROC_GRAPH = {
   trustBadges: allEntities.filter((e): e is TrustBadgeEntity => e.entityType === 'TrustBadge' && e.isActive),
   processes: allEntities.filter((e): e is ProcessEntity => e.entityType === 'Process' && e.isActive),
   locations: allEntities.filter((e): e is LocationEntity => e.entityType === 'Location' && e.isActive),
-  footer: allEntities.find((e): e is any => e.entityType === 'Footer'),
-  stats: allEntities.find((e): e is any => e.entityType === 'Stats'),
+  footer: allEntities.find((e): e is FooterEntity => e.entityType === 'Footer'),
+  stats: allEntities.find((e): e is StatsEntity => e.entityType === 'Stats'),
 };
