@@ -7,8 +7,8 @@ import { StatsRow } from '../components/home/StatsRow';
 import ServicesGrid from '../components/home/ServicesGrid';
 import { Process } from '../components/home/Process';
 import FAQSection from '../components/home/FAQSection';
+import Reviews from '../components/home/Reviews';
 import { ServiceAreas } from '../components/home/ServiceAreas';
-import { Footer } from '../components/layout/Footer'; // Ensure this exists
 import { ChatWidget } from '../components/ChatWidget';
 import { KCROC_GRAPH } from '../data/graph';
 
@@ -28,8 +28,10 @@ export default function Home() {
       <ServicesGrid />
       <Process />
       <FAQSection />
+      <Reviews />
       <ServiceAreas />
-      <Footer /> 
+      
+      {/* Footer removed from here as it is managed by RootLayout.tsx */}
       
       <ChatWidget />
     </main>
