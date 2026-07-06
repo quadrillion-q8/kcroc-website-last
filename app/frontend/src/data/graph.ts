@@ -1,3 +1,4 @@
+// File: app/frontend/src/data/graph.ts
 import { 
   RawGraphData, RoutableEntity, LocationEntity, ServiceEntity, 
   FAQEntity, WebPageEntity, BusinessEntity, USPEntity, TrustBadgeEntity, ProcessEntity,
