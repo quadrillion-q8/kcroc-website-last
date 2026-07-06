@@ -21,6 +21,23 @@ export default {
         heading: ["Montserrat", "system-ui", "sans-serif"],
       },
       colors: {
+        // --- New Design Tokens from kcroc_homepage_mockup.html ---
+        kcroc: {
+          cyan: '#0ea5e9',
+          'cyan-dk': '#0284c7',
+          emerald: '#10b981',
+          slate: {
+            950: '#0a1628',
+            900: '#0f172a',
+            800: '#1e293b',
+            700: '#334155',
+            600: '#475569',
+          },
+          text: '#f1f5f9',
+          muted: '#94a3b8',
+          card: 'rgba(30, 41, 59, 0.7)',
+        },
+        // --- Existing System Tokens ---
         brand: {
           dark: 'var(--brand-dark)',
           primary: 'var(--brand-primary)',
