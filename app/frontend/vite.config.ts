@@ -5,6 +5,7 @@ import react from '@vitejs/plugin-react-swc';
 
 export default defineConfig({
   plugins: [react()],
+  base: '/', // 🚀 FIX: Forces all assets to load from the absolute root domain
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
