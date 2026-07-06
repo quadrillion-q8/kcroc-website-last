@@ -2,26 +2,21 @@
 import React from 'react';
 import { SEOEngine } from '../core/components/SEOEngine';
 import Hero from '../components/home/Hero';
+import { TrustBar } from '../components/home/TrustBar';
 import ServicesGrid from '../components/home/ServicesGrid';
-import { WhyUs } from '../components/home/WhyUs';
 import { Process } from '../components/home/Process';
-import FAQSection from '../components/home/FAQSection';
 import { ChatWidget } from '../components/ChatWidget';
 
 export default function Home() {
   return (
-    <main className="w-full min-h-screen bg-slate-950">
-      {/* 🚀 SEO Engine now links directly to the WebPage Entity */}
+    <main className="min-h-screen bg-[#0a1628]"> {/* Matches body background */}
       <SEOEngine entityId="page-home" />
-
-      {/* Dynamic Content Layers mapping directly from the Graph */}
-      <Hero />
-      <ServicesGrid />
-      <WhyUs />
-      <Process />
-      <FAQSection />
       
-      {/* Global Conversions */}
+      <Hero />
+      <TrustBar />
+      <ServicesGrid />
+      <Process />
+      
       <ChatWidget />
     </main>
   );
