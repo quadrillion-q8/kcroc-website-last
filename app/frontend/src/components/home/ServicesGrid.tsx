@@ -6,7 +6,6 @@ import { KCROC_GRAPH } from '../../data/graph';
 import { ServiceEntity } from '../../types/knowledgeGraph';
 import { useFadeIn } from '../../hooks/useFadeIn';
 
-// UI Layer: Map graph iconKey to actual Lucide components
 const ICON_MAP: Record<string, React.ElementType> = {
   'apple': Apple,
   'laptop': Laptop,
@@ -16,8 +15,6 @@ const ICON_MAP: Record<string, React.ElementType> = {
 
 const ServiceCard = React.memo(({ service, idx }: { service: ServiceEntity, idx: number }) => {
   const { ref, visible } = useFadeIn();
-  
-  // Resolve Icon from the graph's iconKey, fallback to Wrench
   const Icon = ICON_MAP[service.iconKey] || Wrench;
   
   return (
@@ -28,23 +25,25 @@ const ServiceCard = React.memo(({ service, idx }: { service: ServiceEntity, idx:
     >
       <Link 
         to={service.seo.canonicalUrl}
-        className="group block relative overflow-hidden bg-slate-900/40 p-8 rounded-3xl border border-slate-800 hover:border-emerald-500/50 transition-all duration-300 h-full hover:shadow-[0_0_30px_-10px_rgba(16,185,129,0.2)]"
+        className="group block relative bg-kcroc-card p-8 rounded-[14px] border border-white/[0.08] hover:border-kcroc-cyan transition-all duration-300 h-full"
       >
-        <div className="relative z-10 flex flex-col h-full">
-          <div className="w-14 h-14 bg-slate-950/80 border border-slate-700 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-emerald-500/10 group-hover:border-emerald-500/30 transition-colors">
-            <Icon className="w-7 h-7 text-emerald-500" />
+        <div className="flex flex-col h-full gap-3">
+          {/* Icon styling matching kcroc_homepage_mockup.html */}
+          <div className="w-10 h-10 rounded-[10px] bg-kcroc-cyan/10 border border-kcroc-cyan/25 flex items-center justify-center mb-2">
+            <Icon className="w-5 h-5 text-kcroc-cyan" />
           </div>
           
-          <h3 className="text-2xl font-black text-white mb-3 group-hover:text-emerald-400 transition-colors">
+          <h3 className="text-sm font-medium text-white leading-tight">
             {service.title}
           </h3>
           
-          <p className="text-slate-300 text-sm leading-relaxed mb-6 line-clamp-3">
+          <p className="text-kcroc-muted text-[13px] leading-relaxed flex-1">
             {service.description}
           </p>
           
-          <div className="flex items-center text-emerald-500 font-bold text-sm mt-auto">
-            Explore Solutions <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
+          <div className="text-kcroc-emerald text-[11px] font-bold flex items-center gap-1 mt-2">
+            <i className="ti ti-clock" aria-hidden="true" />
+            Learn more
           </div>
         </div>
       </Link>
@@ -55,20 +54,21 @@ const ServiceCard = React.memo(({ service, idx }: { service: ServiceEntity, idx:
 ServiceCard.displayName = 'ServiceCard';
 
 export default function ServicesGrid() {
-  // Directly consume the typed graph services
   const services = KCROC_GRAPH.services;
 
   if (!services || services.length === 0) return null;
 
   return (
-    <section className="w-full py-24 flex justify-center px-6 bg-slate-950">
-      <div className="w-full max-w-7xl">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-black text-white mb-4">What We Actually Fix</h2>
-          <p className="text-slate-400 max-w-2xl mx-auto">Component-level expertise for critical hardware failures in Kuwait.</p>
+    <section className="w-full py-14 px-8 bg-kcroc-slate-950">
+      <div className="max-w-6xl mx-auto">
+        <div className="mb-8">
+          <div className="text-kcroc-cyan text-[11px] font-bold uppercase tracking-[1px] mb-2">What we fix</div>
+          <h2 className="text-2xl font-medium text-white mb-2">Component-level expertise.</h2>
+          <p className="text-kcroc-muted text-sm">For the failures others give up on.</p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Adjusted to grid-cols-3 as per mockup[cite: 1] */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {services.map((s, idx) => (
             <ServiceCard key={s.id} service={s} idx={idx} />
           ))}
