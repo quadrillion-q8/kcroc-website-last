@@ -58,6 +58,16 @@ export const FooterSchema = CoreNodeSchema.extend({
   })
 });
 
+export const ReviewsSchema = CoreNodeSchema.extend({
+  entityType: z.literal('Reviews'),
+  items: z.array(z.object({ 
+    name: z.string(), 
+    text: z.string(), 
+    rating: z.number(), 
+    device: z.string() 
+  }))
+});
+
 export const ServiceSchema = RoutableEntitySchema.extend({
   entityType: z.literal('Service'),
   iconKey: z.string(),
@@ -97,7 +107,7 @@ export const RawGraphSchema = z.object({
   entities: z.record(z.string(), z.union([
     ServiceSchema, LocationSchema, FAQSchema, BusinessSchema, 
     USPSchema, TrustBadgeSchema, ProcessSchema, WebPageSchema, 
-    StatsSchema, FooterSchema
+    StatsSchema, FooterSchema, ReviewsSchema
   ])),
 });
 
@@ -110,6 +120,7 @@ export type BusinessEntity = z.infer<typeof BusinessSchema>;
 export type USPEntity = z.infer<typeof USPSchema>;
 export type TrustBadgeEntity = z.infer<typeof TrustBadgeSchema>;
 export type ProcessEntity = z.infer<typeof ProcessSchema>;
-export type StatsEntity = z.infer<typeof StatsSchema>;
-export type FooterEntity = z.infer<typeof FooterSchema>;
+export type StatsEntity = z.infer<typeof StatsEntity>;
+export type FooterEntity = z.infer<typeof FooterEntity>;
+export type ReviewsEntity = z.infer<typeof ReviewsSchema>;
 export type RawGraphData = z.infer<typeof RawGraphSchema>;
