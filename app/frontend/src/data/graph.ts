@@ -117,6 +117,16 @@ const rawGraphData: RawGraphData = {
       serviceAreas: ['Hawalli', 'Salmiya', 'Kuwait City', 'Farwaniya', 'Mangaf', 'Jahra', 'Mahboula'],
       seo: { title: 'Computer Repair Shop in Hawalli', description: 'Visit our Hawalli location in the Al Mullah Complex.', canonicalUrl: '/location/hawalli' }
     } as LocationEntity,
+
+    /* --- REVIEWS --- */
+    'reviews-row': {
+      id: 'reviews-row', entityType: 'Reviews', isActive: true, title: 'Verified Reviews',
+      items: [
+        { name: 'Ahmad Al-Sabah', text: 'Picked it up, fixed the MacBook Pro screen in 24 hours.', rating: 5, device: 'MacBook Pro' },
+        { name: 'Sarah M.', text: 'Motherboard died right before my midterms. KCROC saved my data.', rating: 5, device: 'Laptop' },
+        { name: 'Tariq K.', text: 'Diagnosed my gaming PC thermal throttle in 5 minutes.', rating: 5, device: 'Gaming PC' }
+      ]
+    } as any,
     
     /* --- FAQS --- */
     'faq-pick-and-drop': { id: 'faq-pick-and-drop', slug: 'faq-pick-and-drop', entityType: 'FAQ', isActive: true, title: 'Do you offer a pick and drop service?', description: 'Information on our delivery policy.', answer: 'Yes, we offer complimentary pick & drop across all Kuwait.', seo: { title: 'FAQ', description: 'FAQ', canonicalUrl: '/faq/pick-and-drop' } } as FAQEntity,
