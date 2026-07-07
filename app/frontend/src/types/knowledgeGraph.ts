@@ -30,6 +30,14 @@ export const BusinessSchema = CoreNodeSchema.extend({
   aiSummary: z.string(),
   addressRegion: z.string(),
   openingHours: z.string(),
+  websiteUrl: z.string(),
+  logoUrl: z.string(),
+  socialLinks: z.record(z.string(), z.string()),
+  schemaOpeningHours: z.object({
+    dayOfWeek: z.array(z.string()),
+    opens: z.string(),
+    closes: z.string()
+  })
 });
 
 export const USPSchema = CoreNodeSchema.extend({
@@ -57,7 +65,6 @@ export const FooterSchema = CoreNodeSchema.extend({
   entityType: z.literal('Footer'),
   links: z.object({
     company: z.array(z.string()),
-    // services and areas removed: UI will derive these directly from KCROC_GRAPH
   })
 });
 
