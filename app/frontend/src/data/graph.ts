@@ -169,6 +169,20 @@ const rawGraphData: RawGraphData = {
       }
     } as WebPageEntity,
 
+    // ✅ ADDED: The required Blog entity for the new Blog.tsx route
+    'page-blog': {
+      id: 'page-blog', slug: 'blog', entityType: 'WebPage', isActive: true,
+      title: 'Tech Blog',
+      description: 'Expert repair guides and tech insights.',
+      seo: {
+        title: 'KCROC Tech Blog | Computer Repair Guides Kuwait',
+        description: 'Expert computer repair guides, laptop fixes, MacBook troubleshooting, and PC performance tips in Kuwait.',
+        canonicalUrl: 'https://www.computerrepairkuwait.com/blog',
+        ogType: 'website',
+        schemaTypes: ['CollectionPage']
+      }
+    } as WebPageEntity,
+
     /* ═══════════════════════════════════════════════════════════════
        SERVICES
        ═══════════════════════════════════════════════════════════════ */
