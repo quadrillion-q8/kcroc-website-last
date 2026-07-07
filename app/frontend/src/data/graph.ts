@@ -10,9 +10,13 @@ const rawGraphData: RawGraphData = {
   entities: {
     /* --- SYSTEM & BUSINESS --- */
     'biz-kcroc': {
-      id: 'biz-kcroc', entityType: 'Business', isActive: true, title: 'KCROC',
-      legalName: 'Kuwait Computer Repair On Call', telephone: '96555301913',
-      aiSummary: 'KCROC is a Kuwait-based component-level computer repair company specializing in MacBook, laptop, gaming PC, and motherboard repairs.',
+      id: 'biz-kcroc', entityType: 'Business', isActive: true, 
+      title: 'Kuwait Computer Repair On Call',
+      legalName: 'Kuwait Computer Repair On Call', 
+      telephone: '96555301913',
+      addressRegion: 'Hawalli Governorate',
+      openingHours: '10:00-22:00, 7 days a week',
+      aiSummary: 'Kuwait Computer Repair On Call is a Hawalli-based component-level computer repair company specializing in MacBook, laptop screen, gaming PC, and motherboard repairs.',
     } as BusinessEntity,
 
     /* --- TRUST BADGES & STATS --- */
@@ -65,22 +69,24 @@ const rawGraphData: RawGraphData = {
     /* --- SERVICES --- */
     'srv-macbook': {
       id: 'srv-macbook', slug: 'macbook-repair-kuwait', entityType: 'Service', isActive: true,
-      title: 'MacBook Repair Kuwait', iconKey: 'apple',
+      title: 'MacBook Repair', iconKey: 'apple',
       description: 'Liquid spills, dead logic boards, and display circuits. We specialize in chip-level Apple hardware restoration.',
       pricing: { startingFrom: 25, currency: 'KWD', quoteRequired: true, displayLabel: 'From 25 KWD' },
       coreFeatures: ['Logic Board Micro-Soldering', 'Liquid Damage Restoration', 'Free Pick & Drop', 'No Fix, No Fee'], 
       warranty: { duration: '30 Days', coverage: 'Parts and labor.', noFixNoFee: true },
       seo: { title: 'MacBook Repair Kuwait', description: 'Expert Apple MacBook repair in Kuwait.', canonicalUrl: '/services/macbook-repair-kuwait' }
     } as ServiceEntity,
-    'srv-laptop': {
-      id: 'srv-laptop', slug: 'laptop-repair-kuwait', entityType: 'Service', isActive: true,
-      title: 'Laptop Repair Kuwait', iconKey: 'laptop',
+    
+    'srv-laptop-screen': {
+      id: 'srv-laptop-screen', slug: 'laptop-screen-repair-kuwait', entityType: 'Service', isActive: true,
+      title: 'Laptop Screen Repair', iconKey: 'laptop',
       description: 'Expert diagnostics and hardware repair for Dell, HP, Lenovo, and ASUS. From shattered screens to failing power systems.',
       pricing: { startingFrom: 15, currency: 'KWD', quoteRequired: true, displayLabel: 'From 15 KWD' },
       coreFeatures: ['Screen Replacement', 'Battery Swap', 'Keyboard Repair', 'Power Issues'], 
       warranty: { duration: '30 Days', coverage: 'Parts and labor.', noFixNoFee: true },
-      seo: { title: 'Laptop Repair Kuwait', description: 'Expert Windows laptop repair.', canonicalUrl: '/services/laptop-repair-kuwait' }
+      seo: { title: 'Laptop Screen Repair Kuwait', description: 'Expert Windows laptop repair and screen replacement.', canonicalUrl: '/services/laptop-screen-repair-kuwait' }
     } as ServiceEntity,
+    
     'srv-gaming': {
       id: 'srv-gaming', slug: 'gaming-pc-repair-kuwait', entityType: 'Service', isActive: true,
       title: 'Gaming PC Repair', iconKey: 'gaming',
@@ -90,6 +96,7 @@ const rawGraphData: RawGraphData = {
       warranty: { duration: '30 Days', coverage: 'Parts and labor.', noFixNoFee: true },
       seo: { title: 'Gaming PC Repair Kuwait', description: 'Gaming PC hardware diagnostics.', canonicalUrl: '/services/gaming-pc-repair-kuwait' }
     } as ServiceEntity,
+    
     'srv-motherboard': {
       id: 'srv-motherboard', slug: 'motherboard-repair-kuwait', entityType: 'Service', isActive: true,
       title: 'Motherboard Repair', iconKey: 'cpu',
@@ -98,6 +105,16 @@ const rawGraphData: RawGraphData = {
       coreFeatures: ['Circuit Tracing', 'IC Replacement', 'No Fix No Fee', 'Data Rescue'], 
       warranty: { duration: '30 Days', coverage: 'Parts and labor.', noFixNoFee: true },
       seo: { title: 'Motherboard Repair Kuwait', description: 'Motherboard chip-level repair.', canonicalUrl: '/services/motherboard-repair-kuwait' }
+    } as ServiceEntity,
+
+    'srv-data-recovery': {
+      id: 'srv-data-recovery', slug: 'data-recovery', entityType: 'Service', isActive: false, // Hidden until ready
+      title: 'Data Recovery', iconKey: 'database',
+      description: 'Professional data recovery and rescue from damaged drives.',
+      pricing: { startingFrom: 50, currency: 'KWD', quoteRequired: true, displayLabel: 'From 50 KWD' },
+      coreFeatures: ['Drive Diagnostics', 'File Extraction', 'SSD Repair', 'No Data No Fee'],
+      warranty: { duration: 'N/A', coverage: 'Data recovery only.', noFixNoFee: true },
+      seo: { title: 'Data Recovery Kuwait', description: 'Professional data recovery services.', canonicalUrl: '/services/data-recovery' }
     } as ServiceEntity,
 
     /* --- FOOTER & AREAS --- */
@@ -109,6 +126,7 @@ const rawGraphData: RawGraphData = {
         areas: ['Hawalli', 'Salmiya', 'Kuwait City', 'Farwaniya', 'Jahra', 'Ahmadi']
       }
     } as FooterEntity,
+    
     'loc-hawalli': {
       id: 'loc-hawalli', slug: 'computer-repair-hawalli', entityType: 'Location', isActive: true,
       title: 'Hawalli Repair Center', description: 'Kuwait\'s premier component-level repair facility.',
