@@ -7,8 +7,6 @@ import { BUSINESS_INFO } from '../constants/data';
 import { ROUTES, getBlogRoute } from '../constants/routes';
 import { BLOG_POSTS } from '../constants/blogPosts';
 import SchemaMarkup from '../components/seo/SchemaMarkup';
-
-// 👈 Phase 2 SEO Engine Imported
 import { SEOEngine } from '../core/components/SEOEngine';
 
 export default function Blog() {
@@ -19,7 +17,6 @@ export default function Blog() {
   // =========================
   const SCHEMA_DATA = useMemo(() => ({
     "@context": "https://schema.org",
-
     "@graph": [
       // ─────────────────────────────
       // COLLECTION PAGE
@@ -62,18 +59,15 @@ export default function Blog() {
         "image": post.image,
         "url": `${BUSINESS_INFO.url}${getBlogRoute(post.slug)}`,
         "datePublished": post.date,
-
         "author": {
           "@type": "Organization",
           "name": post.author || BUSINESS_INFO.name
         },
-
         "publisher": {
           "@type": "Organization",
           "name": BUSINESS_INFO.name,
           "url": BUSINESS_INFO.url
         },
-
         "mainEntityOfPage": {
           "@type": "WebPage",
           "@id": `${BUSINESS_INFO.url}${getBlogRoute(post.slug)}`
@@ -84,11 +78,10 @@ export default function Blog() {
 
   return (
     <main className="w-full min-h-screen bg-transparent text-slate-200 pt-32 pb-24">
-
-      {/* 🚀 PHASE 2 AUTOMATION IN ACTION: Basic Tags Handled */}
+      {/* PHASE 2 AUTOMATION IN ACTION: Basic Tags Handled */}
       <SEOEngine entityId="page-blog" />
 
-      {/* 🚀 Dynamic Schema Injection for the Collection List */}
+      {/* Dynamic Schema Injection for the Collection List */}
       <SchemaMarkup schema={SCHEMA_DATA} />
 
       {/* =========================
@@ -136,13 +129,11 @@ export default function Blog() {
       ========================= */}
       <section className="max-w-6xl mx-auto px-6">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-
           {BLOG_POSTS.map((post) => (
             <article
               key={post.slug}
               className="bg-slate-900/40 backdrop-blur-xl border border-slate-700/50 rounded-3xl overflow-hidden hover:border-cyan-500/50 hover:shadow-[0_0_30px_rgba(6,182,212,0.15)] transition-all duration-500 hover:-translate-y-1 flex flex-col"
             >
-
               {/* IMAGE */}
               <Link
                 to={getBlogRoute(post.slug)}
@@ -160,7 +151,6 @@ export default function Blog() {
 
               {/* CONTENT */}
               <div className="p-8 flex flex-col flex-grow">
-
                 <div className="flex items-center justify-between text-xs font-bold text-slate-400 uppercase tracking-wider mb-4">
                   <span className="text-cyan-400 bg-cyan-500/10 px-3 py-1 rounded-full">
                     {post.category}
@@ -188,7 +178,6 @@ export default function Blog() {
 
                 {/* FOOTER */}
                 <div className="flex items-center justify-between pt-4 border-t border-slate-800/50 mt-auto">
-
                   <span className="text-xs text-slate-500 flex items-center gap-1 font-medium">
                     <Clock size={12} aria-hidden="true" />
                     {post.readTime}
@@ -201,15 +190,12 @@ export default function Blog() {
                   >
                     Read Post <ArrowRight size={14} aria-hidden="true" />
                   </Link>
-
                 </div>
               </div>
             </article>
           ))}
-
         </div>
       </section>
-
     </main>
   );
 }
