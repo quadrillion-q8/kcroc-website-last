@@ -26,6 +26,8 @@ export const BusinessSchema = CoreNodeSchema.extend({
   legalName: z.string(),
   telephone: z.string(),
   aiSummary: z.string(),
+  addressRegion: z.string(), // Audit correction
+  openingHours: z.string(),   // Audit correction
 });
 
 export const USPSchema = CoreNodeSchema.extend({
@@ -111,6 +113,7 @@ export const RawGraphSchema = z.object({
   ])),
 });
 
+/* --- TYPES --- */
 export type RoutableEntity = z.infer<typeof RoutableEntitySchema>;
 export type ServiceEntity = z.infer<typeof ServiceSchema>;
 export type LocationEntity = z.infer<typeof LocationSchema>;
@@ -120,7 +123,7 @@ export type BusinessEntity = z.infer<typeof BusinessSchema>;
 export type USPEntity = z.infer<typeof USPSchema>;
 export type TrustBadgeEntity = z.infer<typeof TrustBadgeSchema>;
 export type ProcessEntity = z.infer<typeof ProcessSchema>;
-export type StatsEntity = z.infer<typeof StatsEntity>;
-export type FooterEntity = z.infer<typeof FooterEntity>;
+export type StatsEntity = z.infer<typeof StatsSchema>;
+export type FooterEntity = z.infer<typeof FooterSchema>;
 export type ReviewsEntity = z.infer<typeof ReviewsSchema>;
 export type RawGraphData = z.infer<typeof RawGraphSchema>;
