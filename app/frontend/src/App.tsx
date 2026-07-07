@@ -1,6 +1,6 @@
 // File: app/frontend/src/App.tsx
 import React, { Suspense, lazy } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { RootLayout } from './core/components/layout/RootLayout';
 import { ChatWidget } from './components/ChatWidget';
 
@@ -54,6 +54,9 @@ export const App: React.FC = () => {
             <Route path="blog/:slug" element={<BlogPostTemplate />} />
             <Route path="pillar/:slug" element={<PillarTemplate />} />
             <Route path="location/:slug" element={<LocationTemplate />} />
+            
+            {/* SEO Guardrail: Redirect dynamic FAQ routes to the main FAQ page */}
+            <Route path="faq/:faqSlug" element={<Navigate to="/faq" replace />} />
             
             {/* Secure Catch-All for 404s */}
             <Route path="*" element={<NotFound />} />
