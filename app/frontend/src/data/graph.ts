@@ -16,6 +16,17 @@ const rawGraphData: RawGraphData = {
       telephone: '96555301913',
       addressRegion: 'Hawalli Governorate',
       openingHours: '10:00-22:00, 7 days a week',
+      websiteUrl: 'https://www.computerrepairkuwait.com',
+      logoUrl: 'https://www.computerrepairkuwait.com/logo.png',
+      socialLinks: {
+        facebook: 'https://www.facebook.com/computerrepairkuwait',
+        instagram: 'https://www.instagram.com/computerrepairkuwait'
+      },
+      schemaOpeningHours: {
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+        opens: "10:00",
+        closes: "22:00"
+      },
       aiSummary: 'Kuwait Computer Repair On Call is a Hawalli-based component-level computer repair company specializing in MacBook, laptop screen, gaming PC, and motherboard repairs.',
     } as BusinessEntity,
 
@@ -126,7 +137,7 @@ const rawGraphData: RawGraphData = {
     } as FooterEntity,
     
     'loc-hawalli': {
-      id: 'loc-hawalli', slug: 'hawalli', entityType: 'Location', isActive: true, // Slug aligned
+      id: 'loc-hawalli', slug: 'hawalli', entityType: 'Location', isActive: true, 
       title: 'Hawalli Repair Center', description: 'Kuwait\'s premier component-level repair facility.',
       landmark: 'Al Mullah Complex, Basement Shop 19',
       coords: { lat: 29.3353, lng: 48.0124 },
@@ -168,3 +179,17 @@ export const KCROC_GRAPH = {
   footer: allEntities.find((e): e is FooterEntity => e.entityType === 'Footer'),
   stats: allEntities.find((e): e is StatsEntity => e.entityType === 'Stats'),
 };
+
+// Compute aggregate rating dynamically for SEO Engine to use in rich snippets
+const calculateAggregateRating = () => {
+  const reviews = KCROC_GRAPH.reviews?.items || [];
+  if (reviews.length === 0) return null;
+
+  const totalRating = reviews.reduce((sum, r) => sum + r.rating, 0);
+  return {
+    ratingValue: (totalRating / reviews.length).toFixed(1),
+    reviewCount: reviews.length
+  };
+};
+
+export const KCROC_AGGREGATE_RATING = calculateAggregateRating();
