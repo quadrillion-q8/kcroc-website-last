@@ -13,6 +13,7 @@ const About = lazy(() => import('./pages/About'));
 const PrivacySecurity = lazy(() => import('./pages/PrivacySecurity'));
 const ScreenProtectionTips = lazy(() => import('./pages/ScreenProtectionTips'));
 const FAQ = lazy(() => import('./pages/FAQ'));
+const Blog = lazy(() => import('./pages/Blog')); // ✅ ADDED: Main Blog Page Import
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 // Dynamic Enterprise Templates
@@ -51,6 +52,7 @@ export const App: React.FC = () => {
             <Route path="faq" element={<FAQ />} />
 
             {/* Content Routes */}
+            <Route path="blog" element={<Blog />} /> {/* ✅ ADDED: Main Blog Route */}
             <Route path="blog/:slug" element={<BlogPostTemplate />} />
             <Route path="pillar/:slug" element={<PillarTemplate />} />
             <Route path="location/:slug" element={<LocationTemplate />} />
