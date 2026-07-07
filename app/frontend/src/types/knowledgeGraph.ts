@@ -12,6 +12,8 @@ export const SEOSchema = z.object({
   title: z.string(),
   description: z.string(),
   canonicalUrl: z.string(),
+  ogType: z.string().optional(),
+  schemaTypes: z.array(z.string()).optional(),
 });
 
 export const RoutableEntitySchema = CoreNodeSchema.extend({
@@ -26,8 +28,8 @@ export const BusinessSchema = CoreNodeSchema.extend({
   legalName: z.string(),
   telephone: z.string(),
   aiSummary: z.string(),
-  addressRegion: z.string(), // Audit correction
-  openingHours: z.string(),   // Audit correction
+  addressRegion: z.string(),
+  openingHours: z.string(),
 });
 
 export const USPSchema = CoreNodeSchema.extend({
@@ -54,9 +56,8 @@ export const StatsSchema = CoreNodeSchema.extend({
 export const FooterSchema = CoreNodeSchema.extend({
   entityType: z.literal('Footer'),
   links: z.object({
-    services: z.array(z.string()),
     company: z.array(z.string()),
-    areas: z.array(z.string())
+    // services and areas removed: UI will derive these directly from KCROC_GRAPH
   })
 });
 
@@ -103,10 +104,10 @@ export const WebPageSchema = RoutableEntitySchema.extend({
   featuredUSPIds: z.array(z.string()),
 });
 
-/* --- MASTER SCHEMA --- */
+/* --- MASTER SCHEMA (DISCRIMINATED UNION) --- */
 export const RawGraphSchema = z.object({
   metadata: z.object({ version: z.string(), lastUpdated: z.string(), environment: z.string() }),
-  entities: z.record(z.string(), z.union([
+  entities: z.record(z.string(), z.discriminatedUnion('entityType', [
     ServiceSchema, LocationSchema, FAQSchema, BusinessSchema, 
     USPSchema, TrustBadgeSchema, ProcessSchema, WebPageSchema, 
     StatsSchema, FooterSchema, ReviewsSchema
