@@ -8,8 +8,7 @@ import {
 const rawGraphData: RawGraphData = {
   metadata: {
     version: '3.2.0',
-    // ✅ Fixed: static date — update manually when content changes
-    lastUpdated: '2026-07-07T00:00:00+03:00',
+    lastUpdated: '2026-07-08T00:00:00+03:00',
     environment: 'production'
   },
 
@@ -17,7 +16,7 @@ const rawGraphData: RawGraphData = {
 
     /* ═══════════════════════════════════════════════════════════════
        BUSINESS ENTITY — Primary anchor for all schema @id references
-    ═══════════════════════════════════════════════════════════════ */
+       ═══════════════════════════════════════════════════════════════ */
     'biz-kcroc': {
       id: 'biz-kcroc',
       entityType: 'Business',
@@ -26,7 +25,6 @@ const rawGraphData: RawGraphData = {
       legalName: 'Kuwait Computer Repair On Call',
       alternateName: 'KCROC',
       telephone: '96555301913',
-      // ✅ Fixed: full street address added
       streetAddress: 'Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19',
       addressLocality: 'Hawalli',
       addressRegion: 'Hawalli Governorate',
@@ -36,14 +34,12 @@ const rawGraphData: RawGraphData = {
       logoUrl: 'https://www.computerrepairkuwait.com/logo.png',
       email: 'quadrillion1980@gmail.com',
       priceRange: '$$',
-      // ✅ Fixed: 7 days correct, matches index.html correction
       openingHours: 'Open daily 10:00 AM – 10:00 PM',
       schemaOpeningHours: {
         dayOfWeek: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],
         opens: '10:00',
         closes: '22:00'
       },
-      // ✅ Fixed: real aggregate from Google, not computed from 3 display reviews
       aggregateRating: {
         ratingValue: '4.9',
         reviewCount: 150,
@@ -58,15 +54,15 @@ const rawGraphData: RawGraphData = {
 
     /* ═══════════════════════════════════════════════════════════════
        TRUST BADGES
-    ═══════════════════════════════════════════════════════════════ */
+       ═══════════════════════════════════════════════════════════════ */
     'badge-privacy':  { id: 'badge-privacy',  entityType: 'TrustBadge', isActive: true, title: 'Data Privacy Guaranteed', iconKey: 'ShieldCheck' } as TrustBadgeEntity,
     'badge-pickup':   { id: 'badge-pickup',   entityType: 'TrustBadge', isActive: true, title: 'Free Pick & Drop',        iconKey: 'Truck'       } as TrustBadgeEntity,
-    'badge-warranty': { id: 'badge-warranty', entityType: 'TrustBadge', isActive: true, title: '30-Day Warranty',         iconKey: 'Clock'       } as TrustBadgeEntity,
-    'badge-esd':      { id: 'badge-esd',      entityType: 'TrustBadge', isActive: true, title: 'ESD-Safe Lab',            iconKey: 'Zap'         } as TrustBadgeEntity,
+    'badge-warranty': { id: 'badge-warranty', entityType: 'TrustBadge', isActive: true, title: '30-Day Warranty',          iconKey: 'Clock'       } as TrustBadgeEntity,
+    'badge-esd':      { id: 'badge-esd',      entityType: 'TrustBadge', isActive: true, title: 'ESD-Safe Lab',             iconKey: 'Zap'         } as TrustBadgeEntity,
 
     /* ═══════════════════════════════════════════════════════════════
        STATS
-    ═══════════════════════════════════════════════════════════════ */
+       ═══════════════════════════════════════════════════════════════ */
     'stats-row': {
       id: 'stats-row', entityType: 'Stats', isActive: true, title: 'Homepage Stats',
       items: [
@@ -78,8 +74,8 @@ const rawGraphData: RawGraphData = {
     } as StatsEntity,
 
     /* ═══════════════════════════════════════════════════════════════
-       USPs — Premium content for "Why KCROC vs mall shops" section
-    ═══════════════════════════════════════════════════════════════ */
+       USPs — Core Business Differentiators
+       ═══════════════════════════════════════════════════════════════ */
     'usp-component': {
       id: 'usp-component', entityType: 'USP', isActive: true, iconKey: 'Cpu',
       title: 'Component-Level Repair',
@@ -101,7 +97,7 @@ const rawGraphData: RawGraphData = {
     'usp-privacy': {
       id: 'usp-privacy', entityType: 'USP', isActive: true, iconKey: 'Lock',
       title: 'Strict Data Privacy',
-      description: 'We operate under strict hardware-only protocols. Our technicians use diagnostic tools — not your files. For board-level repairs, you can remove your drive before handing over the device.',
+      description: 'We operate under strict hardware-only protocols. Our technicians use diagnostic tools — not your files. For board-level repairs, you can safely remove your hard drive before handing over the device.',
       differentiator: 'Your personal files are never opened, accessed, or browsed during repair.'
     } as USPEntity,
     'usp-climate': {
@@ -113,7 +109,7 @@ const rawGraphData: RawGraphData = {
 
     /* ═══════════════════════════════════════════════════════════════
        PROCESS
-    ═══════════════════════════════════════════════════════════════ */
+       ═══════════════════════════════════════════════════════════════ */
     'proc-standard': {
       id: 'proc-standard', entityType: 'Process', isActive: true, title: 'Standard Repair Process',
       steps: [
@@ -125,7 +121,7 @@ const rawGraphData: RawGraphData = {
         {
           step: 2,
           title: 'Precision diagnostic — no guesswork',
-          description: 'Your device enters our Hawalli lab where technicians use thermal imaging, digital multimeters, and boardview software to trace the exact component fault. You receive a fixed quote before we touch a tool.'
+          description: 'Your device enters our Hawalli lab where technicians use thermal imaging, digital multimeters, and boardview software to trace the exact component failure. You receive a fixed quote before we touch a tool.'
         },
         {
           step: 3,
@@ -137,14 +133,13 @@ const rawGraphData: RawGraphData = {
 
     /* ═══════════════════════════════════════════════════════════════
        PAGES
-    ═══════════════════════════════════════════════════════════════ */
+       ═══════════════════════════════════════════════════════════════ */
     'page-home': {
       id: 'page-home', slug: '', entityType: 'WebPage', isActive: true,
       title: 'Home',
       description: 'KCROC Homepage — Component-level computer repair in Kuwait',
       seo: {
         title: 'Computer Repair Kuwait | Laptop & MacBook Repair – Free Pick & Drop | Kuwait Computer Repair On Call',
-        // ✅ Fixed: geographic anchor, phone signal, key differentiators
         description: 'Same-day laptop, MacBook & PC repair in Kuwait by KCROC. Free Pick & Drop across Hawalli, Salmiya, Kuwait City & all governorates. 4.9★ rated, 30-day warranty. Call +965 55301913.',
         canonicalUrl: 'https://www.computerrepairkuwait.com',
         ogType: 'website',
@@ -175,9 +170,8 @@ const rawGraphData: RawGraphData = {
     } as WebPageEntity,
 
     /* ═══════════════════════════════════════════════════════════════
-       SERVICES — Premium descriptions for local SEO dominance
-       ✅ Fixed: canonicalUrl without /services/ prefix
-    ═══════════════════════════════════════════════════════════════ */
+       SERVICES
+       ═══════════════════════════════════════════════════════════════ */
     'srv-macbook': {
       id: 'srv-macbook', slug: 'macbook-repair-kuwait', entityType: 'Service', isActive: true,
       title: 'MacBook Repair Kuwait',
@@ -203,10 +197,10 @@ const rawGraphData: RawGraphData = {
       ],
       brands: ['MacBook Air', 'MacBook Pro 13"', 'MacBook Pro 14"', 'MacBook Pro 16"'],
       commonIssues: [
-        { id: 'no-power',       title: 'No power / dead device',          severity: 'high',   description: 'USB-C power negotiation failure or PPBUS short circuit.' },
-        { id: 'black-screen',   title: 'Black screen — fans running',     severity: 'high',   description: 'Backlight fuse blown or LP8550 display IC failure.' },
-        { id: 'liquid-damage',  title: 'Liquid spill damage',             severity: 'high',   description: 'Corrosion on logic board rails from spills.' },
-        { id: 'no-charge',      title: 'Not charging at all',             severity: 'medium', description: 'CD3215/CD3217 USB-C controller failure.' },
+        { id: 'no-power',       title: 'No power / dead device',       severity: 'high',   description: 'USB-C power negotiation failure or PPBUS short circuit.' },
+        { id: 'black-screen',   title: 'Black screen — fans running',      severity: 'high',   description: 'Backlight fuse blown or LP8550 display IC failure.' },
+        { id: 'liquid-damage',  title: 'Liquid spill damage',              severity: 'high',   description: 'Corrosion on logic board rails from spills.' },
+        { id: 'no-charge',      title: 'Not charging at all',              severity: 'medium', description: 'CD3215/CD3217 USB-C controller failure.' },
         { id: 'battery-health', title: 'Swollen or degraded battery',     severity: 'medium', description: 'Lithium cell degradation from Kuwait heat cycling.' }
       ],
       warranty: { duration: '30 Days', coverage: 'All parts and labor.', noFixNoFee: true },
@@ -333,9 +327,9 @@ const rawGraphData: RawGraphData = {
       commonIssues: [
         { id: 'no-power',      title: 'Dead laptop — no power at all',    severity: 'high',   description: 'Input MOSFET or PPBUS_G3H power rail short.' },
         { id: 'fans-no-screen', title: 'Fans spin, black screen',         severity: 'high',   description: 'Backlight circuit or display power IC failure.' },
-        { id: 'liquid-damage',  title: 'Liquid spill damage',             severity: 'high',   description: 'Conductive mineral deposits shorting the board.' },
+        { id: 'liquid-damage',  title: 'Liquid spill damage',              severity: 'high',   description: 'Conductive mineral deposits shorting the board.' },
         { id: 'bios-corrupt',   title: 'BIOS corruption / not booting',  severity: 'medium', description: 'BIOS chip failure or corrupted firmware.' },
-        { id: 'usb-c-fail',     title: 'USB-C not charging',              severity: 'medium', description: 'CD3215 USB-C controller IC failure.' }
+        { id: 'usb-c-fail',     title: 'USB-C not charging',               severity: 'medium', description: 'CD3215 USB-C controller IC failure.' }
       ],
       warranty: { duration: '30 Days', coverage: 'All parts and labor.', noFixNoFee: true },
       seo: {
@@ -413,10 +407,10 @@ const rawGraphData: RawGraphData = {
       ],
       brands: ['MacBook', 'Dell', 'HP', 'Lenovo', 'ASUS', 'Acer'],
       commonIssues: [
-        { id: 'no-charge',   title: 'Battery not charging',            severity: 'high',   description: 'Cell failure or charging circuit issue.' },
+        { id: 'no-charge',   title: 'Battery not charging',             severity: 'high',   description: 'Cell failure or charging circuit issue.' },
         { id: 'swollen',     title: 'Swollen / bulging battery',       severity: 'high',   description: 'Gas buildup from thermal cycling — urgent.' },
         { id: 'fast-drain',  title: 'Battery dies in under 1 hour',   severity: 'medium', description: 'Cell capacity below 40% — replace needed.' },
-        { id: 'plugin-only', title: 'Only works when plugged in',      severity: 'medium', description: 'Battery no longer holding any charge.' }
+        { id: 'plugin-only', title: 'Only works when plugged in',       severity: 'medium', description: 'Battery no longer holding any charge.' }
       ],
       warranty: { duration: '30 Days', coverage: 'Battery and labor.', noFixNoFee: true },
       seo: {
@@ -428,31 +422,12 @@ const rawGraphData: RawGraphData = {
       }
     } as ServiceEntity,
 
-    // ✅ Data Recovery — isActive: false (service discontinued)
-    'srv-data-recovery': {
-      id: 'srv-data-recovery', slug: 'data-recovery', entityType: 'Service', isActive: false,
-      title: 'Data Recovery',
-      iconKey: 'database',
-      description: 'Data recovery service — discontinued.',
-      pricing: { startingFrom: 50, currency: 'KWD', quoteRequired: true, displayLabel: 'Discontinued' },
-      coreFeatures: [],
-      warranty: { duration: 'N/A', coverage: 'N/A', noFixNoFee: false },
-      seo: {
-        title: 'Data Recovery Kuwait',
-        description: 'Data recovery — discontinued service.',
-        canonicalUrl: 'https://www.computerrepairkuwait.com/data-recovery',
-        ogType: 'article',
-        schemaTypes: ['Service']
-      }
-    } as ServiceEntity,
-
     /* ═══════════════════════════════════════════════════════════════
        LOCATION
-    ═══════════════════════════════════════════════════════════════ */
+       ═══════════════════════════════════════════════════════════════ */
     'loc-hawalli': {
       id: 'loc-hawalli', slug: 'hawalli', entityType: 'Location', isActive: true,
       title: 'Hawalli Repair Center',
-      // ✅ Fixed: full street address
       description: 'Kuwait\'s premier component-level repair facility, located in the heart of Hawalli on Ibn Khaldoun Street.',
       landmark: 'Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19',
       coords: { lat: 29.3356, lng: 48.0250 },
@@ -473,7 +448,7 @@ const rawGraphData: RawGraphData = {
 
     /* ═══════════════════════════════════════════════════════════════
        REVIEWS
-    ═══════════════════════════════════════════════════════════════ */
+       ═══════════════════════════════════════════════════════════════ */
     'reviews-row': {
       id: 'reviews-row', entityType: 'Reviews', isActive: true, title: 'Verified Google Reviews',
       aggregateRating: { ratingValue: '4.9', reviewCount: 150 },
@@ -506,13 +481,12 @@ const rawGraphData: RawGraphData = {
     } as ReviewsEntity,
 
     /* ═══════════════════════════════════════════════════════════════
-       FAQS — Premium long-form answers for rich results
-    ═══════════════════════════════════════════════════════════════ */
+       FAQS — High-density privacy and delivery content
+       ═══════════════════════════════════════════════════════════════ */
     'faq-pick-and-drop': {
       id: 'faq-pick-and-drop', slug: 'pick-and-drop', entityType: 'FAQ', isActive: true,
       title: 'Do you offer a pick and drop service across Kuwait?',
       description: 'Information on free pickup and delivery.',
-      // ✅ Fixed: 40+ word answer with geographic specifics for rich results
       answer: 'Yes. Kuwait Computer Repair On Call provides completely free pickup and delivery across all Kuwait governorates — including Hawalli, Salmiya, Kuwait City, Farwaniya, Ahmadi, Jahra, Fahaheel, Mangaf, and Mahboula. Book via WhatsApp at any time. Our driver collects your device directly from your home or office, tags it for secure chain-of-custody tracking, and returns it fully repaired. There are no hidden transport charges.',
       seo: { title: 'FAQ: Free Pick & Drop Service', description: 'Free pickup and delivery across all Kuwait.', canonicalUrl: 'https://www.computerrepairkuwait.com/faq#pick-and-drop', ogType: 'website', schemaTypes: ['FAQPage'] }
     } as FAQEntity,
@@ -545,7 +519,7 @@ const rawGraphData: RawGraphData = {
       id: 'faq-data-safe', slug: 'data-safety', entityType: 'FAQ', isActive: true,
       title: 'Is my personal data safe during repair?',
       description: 'Privacy and data safety during repair.',
-      answer: 'Yes. We operate a strict hardware-only, no-snooping policy. Our technicians use diagnostic software to test components — they never open, browse, or access your personal files, folders, or accounts. For logic board and motherboard repairs, you are welcome to remove your storage drive before handing the device over. All devices are stored in locked, CCTV-monitored bays during repair. We never pass devices to third parties.',
+      answer: 'Yes. We operate a strict hardware-only, no-snooping privacy policy. Our technicians use specific hardware diagnostic software to run diagnostics on components — they never open, browse, or access your personal files, folders, or accounts. For logic board and motherboard repairs, you are always welcome to safely remove your storage drive before handing the device over. All devices are stored securely in locked, CCTV-monitored repair bays during maintenance.',
       seo: { title: 'FAQ: Data Safety During Repair', description: 'How we protect your data during computer repair.', canonicalUrl: 'https://www.computerrepairkuwait.com/faq#data-safety', ogType: 'website', schemaTypes: ['FAQPage'] }
     } as FAQEntity,
 
@@ -567,7 +541,7 @@ const rawGraphData: RawGraphData = {
 
     /* ═══════════════════════════════════════════════════════════════
        FOOTER
-    ═══════════════════════════════════════════════════════════════ */
+       ═══════════════════════════════════════════════════════════════ */
     'footer-data': {
       id: 'footer-data', entityType: 'Footer', isActive: true, title: 'Footer Links',
       links: {
@@ -600,7 +574,7 @@ const rawGraphData: RawGraphData = {
 
 /* ═══════════════════════════════════════════════════════════════════
    KCROC_GRAPH SINGLETON — consumed by all UI components and SEO Engine
-═══════════════════════════════════════════════════════════════════ */
+   ═══════════════════════════════════════════════════════════════════ */
 const allEntities = Object.values(rawGraphData.entities);
 
 export const KCROC_GRAPH = {
@@ -619,7 +593,6 @@ export const KCROC_GRAPH = {
   stats:       allEntities.find((e): e is StatsEntity       => e.entityType === 'Stats'),
 };
 
-// ✅ Fixed: aggregate from real Google data, not computed from 3 display reviews
 export const KCROC_AGGREGATE_RATING = {
   ratingValue: '4.9',
   reviewCount:  150,
