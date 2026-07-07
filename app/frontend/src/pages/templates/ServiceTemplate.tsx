@@ -43,7 +43,7 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
         {/* HEADER SECTION */}
         <header className="max-w-7xl mx-auto px-6">
           <div className="flex items-center space-x-4 mb-6">
-            <div className="w-16 h-16 bg-slate-900 border border-slate-800 rounded-2xl flex items-center justify-center">
+            <div className="w-16 h-16 bg-slate-900 border border-slate-800 rounded-2xl flex items-center justify-center shadow-lg">
               <ServiceIcon className="w-8 h-8 text-cyan-400" />
             </div>
             <h1 className="text-4xl md:text-5xl font-black text-white">{entity.title}</h1>
@@ -78,7 +78,7 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
             <h2 className="text-2xl font-bold mb-8 text-white">Service Capabilities</h2>
             <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
               {entity.coreFeatures.map((feature, idx) => (
-                <li key={idx} className="flex items-center space-x-3 bg-slate-900 p-5 rounded-xl border border-slate-800">
+                <li key={idx} className="flex items-center space-x-3 bg-slate-900 p-5 rounded-xl border border-slate-800 hover:border-cyan-500/30 transition-colors">
                   <ShieldCheck className="w-5 h-5 text-cyan-400 flex-shrink-0" />
                   <span className="text-slate-200 font-medium">{feature}</span>
                 </li>
@@ -93,13 +93,13 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
           <p className="text-slate-400 mb-8 max-w-2xl mx-auto">
             Our technicians are ready to trace the fault. Send us your symptoms via WhatsApp for a fast, free estimate.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             {business?.telephone && (
               <a 
                 href={`https://wa.me/${business.telephone}`} 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black py-4 px-8 rounded-xl transition-colors shadow-lg"
+                className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black py-4 px-8 rounded-xl transition-all shadow-[0_0_15px_rgba(34,211,238,0.2)] hover:scale-105 duration-200"
               >
                 Message on WhatsApp
               </a>
