@@ -54,7 +54,7 @@ const rawGraphData: RawGraphData = {
     /* --- PAGES --- */
     'page-home': {
       id: 'page-home', slug: '', entityType: 'WebPage', isActive: true, title: 'Home', description: 'KCROC Homepage',
-      seo: { title: 'Expert Computer & MacBook Repair in Kuwait | KCROC', description: 'Component-level computer, laptop, and MacBook repair in Kuwait. Free pick & drop, No Fix No Fee.', canonicalUrl: '/' },
+      seo: { title: 'Expert Computer & MacBook Repair in Kuwait | KCROC', description: 'Component-level computer, laptop, and MacBook repair in Kuwait. Free pick & drop, No Fix No Fee.', canonicalUrl: '/', ogType: 'website', schemaTypes: ['LocalBusiness', 'ProfessionalService'] },
       hero: {
         headline: 'Kuwait’s Expert Component-Level Repair Service.',
         subheadline: 'We fix the board. We don’t just swap it.',
@@ -74,7 +74,7 @@ const rawGraphData: RawGraphData = {
       pricing: { startingFrom: 25, currency: 'KWD', quoteRequired: true, displayLabel: 'From 25 KWD' },
       coreFeatures: ['Logic Board Micro-Soldering', 'Liquid Damage Restoration', 'Free Pick & Drop', 'No Fix, No Fee'], 
       warranty: { duration: '30 Days', coverage: 'Parts and labor.', noFixNoFee: true },
-      seo: { title: 'MacBook Repair Kuwait', description: 'Expert Apple MacBook repair in Kuwait.', canonicalUrl: '/services/macbook-repair-kuwait' }
+      seo: { title: 'MacBook Repair Kuwait', description: 'Expert Apple MacBook repair in Kuwait.', canonicalUrl: '/services/macbook-repair-kuwait', ogType: 'article', schemaTypes: ['Service'] }
     } as ServiceEntity,
     
     'srv-laptop-screen': {
@@ -84,7 +84,7 @@ const rawGraphData: RawGraphData = {
       pricing: { startingFrom: 15, currency: 'KWD', quoteRequired: true, displayLabel: 'From 15 KWD' },
       coreFeatures: ['Screen Replacement', 'Battery Swap', 'Keyboard Repair', 'Power Issues'], 
       warranty: { duration: '30 Days', coverage: 'Parts and labor.', noFixNoFee: true },
-      seo: { title: 'Laptop Screen Repair Kuwait', description: 'Expert Windows laptop repair and screen replacement.', canonicalUrl: '/services/laptop-screen-repair-kuwait' }
+      seo: { title: 'Laptop Screen Repair Kuwait', description: 'Expert Windows laptop repair and screen replacement.', canonicalUrl: '/services/laptop-screen-repair-kuwait', ogType: 'article', schemaTypes: ['Service'] }
     } as ServiceEntity,
     
     'srv-gaming': {
@@ -94,7 +94,7 @@ const rawGraphData: RawGraphData = {
       pricing: { startingFrom: 25, currency: 'KWD', quoteRequired: true, displayLabel: 'From 25 KWD' },
       coreFeatures: ['Thermal Fixes', 'GPU Repair', 'FPS Tuning', 'Custom Builds'], 
       warranty: { duration: '30 Days', coverage: 'Parts and labor.', noFixNoFee: true },
-      seo: { title: 'Gaming PC Repair Kuwait', description: 'Gaming PC hardware diagnostics.', canonicalUrl: '/services/gaming-pc-repair-kuwait' }
+      seo: { title: 'Gaming PC Repair Kuwait', description: 'Gaming PC hardware diagnostics.', canonicalUrl: '/services/gaming-pc-repair-kuwait', ogType: 'article', schemaTypes: ['Service'] }
     } as ServiceEntity,
     
     'srv-motherboard': {
@@ -104,36 +104,34 @@ const rawGraphData: RawGraphData = {
       pricing: { startingFrom: 25, currency: 'KWD', quoteRequired: true, displayLabel: 'From 25 KWD' },
       coreFeatures: ['Circuit Tracing', 'IC Replacement', 'No Fix No Fee', 'Data Rescue'], 
       warranty: { duration: '30 Days', coverage: 'Parts and labor.', noFixNoFee: true },
-      seo: { title: 'Motherboard Repair Kuwait', description: 'Motherboard chip-level repair.', canonicalUrl: '/services/motherboard-repair-kuwait' }
+      seo: { title: 'Motherboard Repair Kuwait', description: 'Motherboard chip-level repair.', canonicalUrl: '/services/motherboard-repair-kuwait', ogType: 'article', schemaTypes: ['Service'] }
     } as ServiceEntity,
 
     'srv-data-recovery': {
-      id: 'srv-data-recovery', slug: 'data-recovery', entityType: 'Service', isActive: false, // Hidden until ready
+      id: 'srv-data-recovery', slug: 'data-recovery', entityType: 'Service', isActive: false,
       title: 'Data Recovery', iconKey: 'database',
       description: 'Professional data recovery and rescue from damaged drives.',
       pricing: { startingFrom: 50, currency: 'KWD', quoteRequired: true, displayLabel: 'From 50 KWD' },
       coreFeatures: ['Drive Diagnostics', 'File Extraction', 'SSD Repair', 'No Data No Fee'],
       warranty: { duration: 'N/A', coverage: 'Data recovery only.', noFixNoFee: true },
-      seo: { title: 'Data Recovery Kuwait', description: 'Professional data recovery services.', canonicalUrl: '/services/data-recovery' }
+      seo: { title: 'Data Recovery Kuwait', description: 'Professional data recovery services.', canonicalUrl: '/services/data-recovery', ogType: 'article', schemaTypes: ['Service'] }
     } as ServiceEntity,
 
     /* --- FOOTER & AREAS --- */
     'footer-data': {
       id: 'footer-data', entityType: 'Footer', isActive: true, title: 'Footer Links',
       links: {
-        services: ['Laptop repair', 'MacBook repair', 'Gaming PC repair', 'Motherboard repair', 'Screen replacement'],
-        company: ['About us', 'Contact', 'Tech Blog', 'FAQ', 'Pricing'],
-        areas: ['Hawalli', 'Salmiya', 'Kuwait City', 'Farwaniya', 'Jahra', 'Ahmadi']
+        company: ['About us', 'Contact', 'Tech Blog', 'FAQ', 'Pricing']
       }
     } as FooterEntity,
     
     'loc-hawalli': {
-      id: 'loc-hawalli', slug: 'computer-repair-hawalli', entityType: 'Location', isActive: true,
+      id: 'loc-hawalli', slug: 'hawalli', entityType: 'Location', isActive: true, // Slug aligned
       title: 'Hawalli Repair Center', description: 'Kuwait\'s premier component-level repair facility.',
       landmark: 'Al Mullah Complex, Basement Shop 19',
       coords: { lat: 29.3353, lng: 48.0124 },
       serviceAreas: ['Hawalli', 'Salmiya', 'Kuwait City', 'Farwaniya', 'Mangaf', 'Jahra', 'Mahboula'],
-      seo: { title: 'Computer Repair Shop in Hawalli', description: 'Visit our Hawalli location in the Al Mullah Complex.', canonicalUrl: '/location/hawalli' }
+      seo: { title: 'Computer Repair Shop in Hawalli', description: 'Visit our Hawalli location in the Al Mullah Complex.', canonicalUrl: '/location/hawalli', ogType: 'website', schemaTypes: ['LocalBusiness'] }
     } as LocationEntity,
 
     /* --- REVIEWS --- */
@@ -147,9 +145,9 @@ const rawGraphData: RawGraphData = {
     } as ReviewsEntity,
     
     /* --- FAQS --- */
-    'faq-pick-and-drop': { id: 'faq-pick-and-drop', slug: 'faq-pick-and-drop', entityType: 'FAQ', isActive: true, title: 'Do you offer a pick and drop service?', description: 'Information on our delivery policy.', answer: 'Yes, we offer complimentary pick & drop across all Kuwait.', seo: { title: 'FAQ', description: 'FAQ', canonicalUrl: '/faq/pick-and-drop' } } as FAQEntity,
-    'faq-liquid-damage': { id: 'faq-liquid-damage', slug: 'faq-liquid-damage', entityType: 'FAQ', isActive: true, title: 'Do you repair liquid damage?', description: 'Details about our liquid damage process.', answer: 'Yes, we clean the corrosion, trace the damaged power rails, and replace the microscopic blown components to restore power.', seo: { title: 'FAQ', description: 'FAQ', canonicalUrl: '/faq/liquid-damage' } } as FAQEntity,
-    'faq-no-fix': { id: 'faq-no-fix', slug: 'faq-no-fix', entityType: 'FAQ', isActive: true, title: 'No Fix, No Fee?', description: 'Details on our pricing guarantee.', answer: 'If we cannot repair your device, you pay zero KWD.', seo: { title: 'FAQ', description: 'FAQ', canonicalUrl: '/faq/no-fix' } } as FAQEntity,
+    'faq-pick-and-drop': { id: 'faq-pick-and-drop', slug: 'pick-and-drop', entityType: 'FAQ', isActive: true, title: 'Do you offer a pick and drop service?', description: 'Information on our delivery policy.', answer: 'Yes, we offer complimentary pick & drop across all Kuwait.', seo: { title: 'FAQ: Pick & Drop', description: 'Information on our delivery policy.', canonicalUrl: '/faq/pick-and-drop', ogType: 'website', schemaTypes: ['FAQPage'] } } as FAQEntity,
+    'faq-liquid-damage': { id: 'faq-liquid-damage', slug: 'liquid-damage', entityType: 'FAQ', isActive: true, title: 'Do you repair liquid damage?', description: 'Details about our liquid damage process.', answer: 'Yes, we clean the corrosion, trace the damaged power rails, and replace the microscopic blown components to restore power.', seo: { title: 'FAQ: Liquid Damage', description: 'Details about our liquid damage process.', canonicalUrl: '/faq/liquid-damage', ogType: 'website', schemaTypes: ['FAQPage'] } } as FAQEntity,
+    'faq-no-fix': { id: 'faq-no-fix', slug: 'no-fix', entityType: 'FAQ', isActive: true, title: 'No Fix, No Fee?', description: 'Details on our pricing guarantee.', answer: 'If we cannot repair your device, you pay zero KWD.', seo: { title: 'FAQ: Pricing Guarantee', description: 'Details on our pricing guarantee.', canonicalUrl: '/faq/no-fix', ogType: 'website', schemaTypes: ['FAQPage'] } } as FAQEntity,
   }
 };
 
