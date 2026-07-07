@@ -9,7 +9,6 @@ import { Process } from '../components/home/Process';
 import FAQSection from '../components/home/FAQSection';
 import Reviews from '../components/home/Reviews';
 import { ServiceAreas } from '../components/home/ServiceAreas';
-import { ChatWidget } from '../components/ChatWidget';
 import { KCROC_GRAPH } from '../data/graph';
 
 export default function Home() {
@@ -31,9 +30,7 @@ export default function Home() {
       <Reviews />
       <ServiceAreas />
       
-      {/* Footer removed from here as it is managed by RootLayout.tsx */}
-      
-      <ChatWidget />
+      {/* Footer and ChatWidget removed from here as they are managed globally by RootLayout.tsx and App.tsx */}
     </main>
   );
 }
