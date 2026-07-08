@@ -1,6 +1,7 @@
 // File: app/frontend/src/pages/BlogLaptopRepair.tsx
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -10,20 +11,20 @@ import {
   Battery, Cpu, Laptop, Wrench, Keyboard, Monitor, MapPin
 } from 'lucide-react';
 
-import { BUSINESS_INFO } from '../constants/data';
 import SchemaMarkup from '../components/seo/SchemaMarkup';
+import { KCROC_GRAPH } from '../data/graph';
 
-// 👈 Phase 2 SEO Engine Imported
-import { SEOEngine } from '../core/components/SEOEngine';
+// Dynamic Business Data
+const business = KCROC_GRAPH.business!;
 
 /* ─────────────────────────────────────────────────────────────────────────────
    1. PAGE DATA & SEO (Preserving your rich Article Schema)
 ───────────────────────────────────────────────────────────────────────────── */
-const PAGE_URL = `${BUSINESS_INFO.url}/blog/laptop-repair-kuwait-2026`;
+const PAGE_URL = `${business.websiteUrl}/blog/laptop-repair-kuwait-2026`;
 const HERO_IMAGE_URL = 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_1200/v1781139061/2026-01-22_9_qfanpt.jpg';
 const PUBLISHED_DATE = '2026-06-14T08:00:00+03:00';
 
-const WA_LINK = `https://wa.me/96555301913?text=${encodeURIComponent(
+const WA_LINK = `https://wa.me/${business.telephone}?text=${encodeURIComponent(
   'Hi KCROC, I read your guide on laptop repair and need a diagnostic. Please arrange a free pickup.'
 )}`;
 
@@ -37,7 +38,7 @@ const STRUCTURED_DATA = {
       url: PAGE_URL,
       name: 'Laptop Repair Kuwait: The 2026 Guide to Hardware Preservation',
       description: "An in-depth look at how Kuwait's climate impacts laptop hardware, thermal management, and KCROC's professional component-level repair techniques.",
-      isPartOf: { '@id': `${BUSINESS_INFO.url}/#website` },
+      isPartOf: { '@id': `${business.websiteUrl}/#website` },
       primaryImageOfPage: { '@type': 'ImageObject', url: HERO_IMAGE_URL },
     },
     {
@@ -50,12 +51,12 @@ const STRUCTURED_DATA = {
         '@type': 'Person',
         name: 'Imran Natiq',
         jobTitle: 'Computer Technician',
-        worksFor: { '@id': `${BUSINESS_INFO.url}/#organization` },
+        worksFor: { '@id': `${business.websiteUrl}/#organization` },
       },
       publisher: {
         '@type': 'Organization',
-        name: BUSINESS_INFO.name,
-        logo: { '@type': 'ImageObject', url: `${BUSINESS_INFO.url}/logo.png` }
+        name: business.legalName,
+        logo: { '@type': 'ImageObject', url: business.logoUrl }
       },
       datePublished: PUBLISHED_DATE,
       dateModified: PUBLISHED_DATE,
@@ -251,8 +252,13 @@ export default function BlogLaptopRepair() {
   return (
     <div className="min-h-screen bg-gray-950 text-white selection:bg-cyan-500/30">
       
-      {/* 🚀 PHASE 2 AUTOMATION IN ACTION */}
-      <SEOEngine entityId="post-laptop-repair" />
+      {/* 🚀 Independent SEO Helmet */}
+      <Helmet>
+        <title>Laptop Repair Kuwait: The 2026 Guide to Hardware Preservation</title>
+        <meta name="description" content="An in-depth look at how Kuwait's climate impacts laptop hardware, thermal management, and professional component-level repair techniques." />
+        <link rel="canonical" href={PAGE_URL} />
+      </Helmet>
+      
       <SchemaMarkup schema={STRUCTURED_DATA} />
 
       {/* Hero Section */}
@@ -282,9 +288,9 @@ export default function BlogLaptopRepair() {
                 className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white text-lg px-8 py-6 shadow-lg shadow-cyan-500/30"
                 asChild
               >
-                <a href="tel:+96555301913">
+                <a href={`tel:+${business.telephone}`}>
                   <Phone className="w-5 h-5 mr-2" />
-                  Call Now: +965 5530 1913
+                  Call Now: +{business.telephone}
                 </a>
               </Button>
               <Button 
@@ -537,15 +543,15 @@ export default function BlogLaptopRepair() {
                   className="border-slate-600 text-white hover:bg-slate-800 hover:text-white text-lg px-8 py-6"
                   asChild
                 >
-                  <a href="tel:+96555301913">
+                  <a href={`tel:+${business.telephone}`}>
                     <Phone className="w-5 h-5 mr-2" />
-                    Call: +965 5530 1913
+                    Call: +{business.telephone}
                   </a>
                 </Button>
               </div>
               <div className="mt-10 pt-8 border-t border-cyan-500/20 flex flex-wrap justify-center gap-6 text-sm text-slate-300">
                 <span className="flex items-center gap-2">
-                  <MapPin className="w-4 h-4 text-cyan-400" /> Hawalli, Ibn Khaldoun St
+                  <MapPin className="w-4 h-4 text-cyan-400" /> {business.streetAddress}
                 </span>
                 <span className="flex items-center gap-2">
                   <Shield className="w-4 h-4 text-cyan-400" /> 30-Day Warranty
