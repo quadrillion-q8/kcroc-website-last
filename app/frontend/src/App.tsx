@@ -28,6 +28,14 @@ const BlogScreenProtection = lazy(() => import('./pages/BlogScreenProtection'));
 const GamingPCCooling = lazy(() => import('./pages/GamingPCCooling'));
 const ScreenProtectionTips = lazy(() => import('./pages/ScreenProtectionTips'));
 
+// ✅ ADDED: Custom Standalone Service Pages
+const MacBookRepair = lazy(() => import('./pages/MacBookRepair'));
+const LaptopRepair = lazy(() => import('./pages/LaptopRepair'));
+const GamingPC = lazy(() => import('./pages/GamingPC'));
+const MotherboardRepair = lazy(() => import('./pages/MotherboardRepair'));
+const ScreenReplacement = lazy(() => import('./pages/ScreenReplacement'));
+const BatteryReplacement = lazy(() => import('./pages/BatteryReplacement'));
+
 // UI: Global loading spinner
 const PageLoader = () => (
   <div className="w-full h-[60vh] flex items-center justify-center bg-slate-950">
@@ -43,7 +51,25 @@ export const App: React.FC = () => {
           <Route path="/" element={<RootLayout />}>
             <Route index element={<Home />} />
             
-            {/* The Dynamic Services Gateway */}
+            {/* =========================================
+                ✅ CUSTOM SERVICE ROUTES (SEO Optimized)
+            ========================================= */}
+            <Route path="macbook-repair-kuwait" element={<MacBookRepair />} />
+            <Route path="laptop-repair-kuwait" element={<LaptopRepair />} />
+            <Route path="gaming-pc-repair-kuwait" element={<GamingPC />} />
+            <Route path="motherboard-repair-kuwait" element={<MotherboardRepair />} />
+            <Route path="laptop-screen-repair-kuwait" element={<ScreenReplacement />} />
+            <Route path="battery-replacement" element={<BatteryReplacement />} />
+
+            {/* SEO Guardrail: Redirect legacy /services/ slugs to root canonicals */}
+            <Route path="services/macbook-repair-kuwait" element={<Navigate to="/macbook-repair-kuwait" replace />} />
+            <Route path="services/laptop-repair-kuwait" element={<Navigate to="/laptop-repair-kuwait" replace />} />
+            <Route path="services/gaming-pc-repair-kuwait" element={<Navigate to="/gaming-pc-repair-kuwait" replace />} />
+            <Route path="services/motherboard-repair-kuwait" element={<Navigate to="/motherboard-repair-kuwait" replace />} />
+            <Route path="services/laptop-screen-repair-kuwait" element={<Navigate to="/laptop-screen-repair-kuwait" replace />} />
+            <Route path="services/battery-replacement" element={<Navigate to="/battery-replacement" replace />} />
+
+            {/* The Dynamic Services Gateway (For future generic services) */}
             <Route path="services" element={<Services />} />
             <Route path="services/:serviceSlug" element={<ServiceTemplate />} />
             
