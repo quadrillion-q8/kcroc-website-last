@@ -1,16 +1,16 @@
 // File: app/frontend/src/pages/GamingPCCooling.tsx
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Thermometer, Wind, Droplets, AlertTriangle, CheckCircle2, Phone, MessageCircle, Shield, Zap, Clock, TrendingUp, Flame, Fan, Sun, CloudRain } from 'lucide-react';
+import { Thermometer, Wind, Droplets, AlertTriangle, CheckCircle2, Phone, MessageCircle, Shield, Zap, Clock, Flame, Fan, Sun, CloudRain } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-// 👈 Phase 2 SEO Engine Imported
-import { SEOEngine } from '../core/components/SEOEngine';
+import { KCROC_GRAPH } from '../data/graph';
 
-const PHONE_DISPLAY = '+965 5530 1913';
-const PHONE_CLEAN = '96555301913';
+// Dynamic Business Data
+const business = KCROC_GRAPH.business!;
 
 export default function GamingPCCooling() {
   const statistics = [
@@ -212,8 +212,12 @@ export default function GamingPCCooling() {
   return (
     <div className="min-h-screen bg-gray-950 text-white">
       
-      {/* 🚀 PHASE 2 AUTOMATION IN ACTION */}
-      <SEOEngine entityId="srv-gaming-pc-cooling" />
+      {/* 🚀 Independent SEO Helmet */}
+      <Helmet>
+        <title>Gaming PC Cooling Services Kuwait | KCROC</title>
+        <meta name="description" content="Professional cooling solutions designed for extreme climates. Protect your gaming PC from overheating and thermal throttling in Kuwait." />
+        <link rel="canonical" href={`${business.websiteUrl}/blog/gaming-pc-cooling`} />
+      </Helmet>
 
       {/* ─── HERO SECTION ─── */}
       <section className="relative pt-32 pb-16 md:pb-24 px-4 overflow-hidden">
@@ -242,9 +246,9 @@ export default function GamingPCCooling() {
                 className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white text-base md:text-lg px-6 md:px-8 py-6 shadow-lg shadow-orange-500/30"
                 asChild
               >
-                <a href={`tel:${PHONE_CLEAN}`}>
+                <a href={`tel:+${business.telephone}`}>
                   <Phone className="w-5 h-5 mr-2" />
-                  Call: {PHONE_DISPLAY}
+                  Call: +{business.telephone}
                 </a>
               </Button>
               <Button 
@@ -253,7 +257,7 @@ export default function GamingPCCooling() {
                 className="border-cyan-500/50 text-cyan-300 hover:bg-cyan-500/10 text-base md:text-lg px-6 md:px-8 py-6"
                 asChild
               >
-                <a href={`https://wa.me/${PHONE_CLEAN}?text=I need gaming PC cooling service`} target="_blank" rel="noopener noreferrer">
+                <a href={`https://wa.me/${business.telephone}?text=I need gaming PC cooling service`} target="_blank" rel="noopener noreferrer">
                   <MessageCircle className="w-5 h-5 mr-2" />
                   WhatsApp Us
                 </a>
@@ -345,7 +349,6 @@ export default function GamingPCCooling() {
             </h2>
           </div>
 
-          {/* Full Width Image on Mobile for detail clarity */}
           <div className="mb-8 md:mb-12 flex justify-center">
             <Card className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 border-cyan-500/20 backdrop-blur-sm w-full max-w-2xl">
               <CardHeader className="p-4 md:p-6">
@@ -362,7 +365,6 @@ export default function GamingPCCooling() {
             </Card>
           </div>
 
-          {/* 2-Column Thresholds Grid */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
             {temperatureThresholds.map((threshold, index) => (
               <Card key={index} className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 border-cyan-500/20 backdrop-blur-sm">
@@ -509,9 +511,9 @@ export default function GamingPCCooling() {
             <Button 
               asChild
               size="lg" 
-              className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white w-full sm:w-auto"
+              className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white w-full sm:w-auto font-black"
             >
-              <a href={`tel:${PHONE_CLEAN}`}>Call: {PHONE_DISPLAY}</a>
+              <a href={`tel:+${business.telephone}`}>Call: +{business.telephone}</a>
             </Button>
             <Button 
               asChild
