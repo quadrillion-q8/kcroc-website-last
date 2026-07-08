@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Outlet, Link, useLocation } from 'react-router-dom';
 import { Phone, Menu, X, Laptop, ChevronDown } from 'lucide-react';
 import { Footer } from './Footer';
-// ✅ Fixed: Added the extra '../' to correctly route out of core/components/layout/
+
 import { KCROC_GRAPH } from '../../../data/graph';
 
 export const RootLayout: React.FC = () => {
@@ -46,7 +46,8 @@ export const RootLayout: React.FC = () => {
               </button>
               <div className="absolute top-20 left-0 hidden group-hover:flex flex-col w-60 bg-slate-900 border border-slate-800 rounded-xl p-2 shadow-2xl">
                 {services.map((srv) => (
-                  <Link key={srv.slug} to={`/services/${srv.slug}`} className="px-4 py-2.5 text-sm font-medium text-slate-400 hover:text-cyan-400 hover:bg-slate-800/50 rounded-lg transition-all">
+                  {/* ✅ FIXED: Removed '/services/' so it routes directly to the custom root pages */}
+                  <Link key={srv.slug} to={`/${srv.slug}`} className="px-4 py-2.5 text-sm font-medium text-slate-400 hover:text-cyan-400 hover:bg-slate-800/50 rounded-lg transition-all">
                     {srv.title}
                   </Link>
                 ))}
