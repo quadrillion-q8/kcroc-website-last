@@ -1,5 +1,6 @@
 // File: app/frontend/src/pages/ScreenProtectionTips.tsx
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -9,11 +10,10 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-// 👈 Phase 2 SEO Engine Imported
-import { SEOEngine } from '../core/components/SEOEngine';
+import { KCROC_GRAPH } from '../data/graph';
 
-const PHONE_DISPLAY = '+965 5530 1913';
-const PHONE_CLEAN = '96555301913';
+// Dynamic Business Data
+const business = KCROC_GRAPH.business!;
 
 export default function ScreenProtectionTips() {
   const protectionTips = [
@@ -34,8 +34,12 @@ export default function ScreenProtectionTips() {
   return (
     <div className="min-h-screen bg-gray-950 text-white">
       
-      {/* 🚀 PHASE 2 AUTOMATION IN ACTION */}
-      <SEOEngine entityId="page-screen-protection" />
+      {/* 🚀 Independent SEO Helmet */}
+      <Helmet>
+        <title>7 Tips to Protect Your Laptop Screen | KCROC Kuwait</title>
+        <meta name="description" content="Expert tips from Kuwait Computer Repair On Call to help you avoid broken screens, compression damage, and costly display repairs." />
+        <link rel="canonical" href={`${business.websiteUrl}/laptop-screen-protection-tips`} />
+      </Helmet>
 
       {/* Hero */}
       <section className="relative pt-32 pb-24 px-4 overflow-hidden text-center">
@@ -83,11 +87,11 @@ export default function ScreenProtectionTips() {
                 If your screen is damaged, flickering, or showing signs of internal leakage, we specialize in professional display replacements and hardware repairs.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="bg-emerald-600 hover:bg-emerald-500 text-lg px-8 py-6" asChild>
+                <Button size="lg" className="bg-emerald-600 hover:bg-emerald-500 text-lg px-8 py-6 font-black" asChild>
                   <Link to="/book">Book Free Pickup</Link>
                 </Button>
-                <Button size="lg" variant="outline" className="border-emerald-500 text-emerald-400 text-lg px-8 py-6" asChild>
-                  <a href={`tel:${PHONE_CLEAN}`}><Phone className="mr-2"/> Call {PHONE_DISPLAY}</a>
+                <Button size="lg" variant="outline" className="border-emerald-500 text-emerald-400 text-lg px-8 py-6 font-black" asChild>
+                  <a href={`tel:+${business.telephone}`}><Phone className="mr-2"/> Call +{business.telephone}</a>
                 </Button>
               </div>
             </CardContent>
