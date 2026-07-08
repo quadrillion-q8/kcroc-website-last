@@ -143,17 +143,62 @@ export const WebPageSchema = RoutableEntitySchema.extend({
   featuredUSPIds: z.array(z.string()).optional(),
 });
 
+/* --- NEW ENTITY SCHEMAS FOR SEO EXPANSION --- */
+
+export const BrandSchema = RoutableEntitySchema.extend({
+  entityType: z.literal('Brand'),
+  brandName: z.string(),
+  officialWebsite: z.string(),
+  commonModels: z.array(z.string()),
+  commonIssues: z.array(z.object({
+    id: z.string(),
+    title: z.string(),
+    severity: z.string(),
+    description: z.string()
+  })),
+  pricing: z.object({ 
+    startingFrom: z.number(), 
+    currency: z.string(), 
+    quoteRequired: z.boolean(), 
+    displayLabel: z.string() 
+  }).optional(),
+});
+
+export const ProblemSchema = RoutableEntitySchema.extend({
+  entityType: z.literal('Problem'),
+  symptom: z.string(),
+  causes: z.array(z.string()),
+  doNotDo: z.string().optional(),
+  solution: z.string(),
+  urgency: z.string(),
+  relatedServiceIds: z.array(z.string()),
+});
+
+export const CaseStudySchema = RoutableEntitySchema.extend({
+  entityType: z.literal('CaseStudy'),
+  device: z.string(),
+  location: z.string(),
+  symptom: z.string(),
+  diagnosis: z.string(),
+  repair: z.string(),
+  outcome: z.string(),
+  timeToRepair: z.string(),
+  costVsReplacement: z.string(),
+  publishDate: z.string(),
+});
+
 /* --- MASTER SCHEMA (DISCRIMINATED UNION) --- */
 export const RawGraphSchema = z.object({
   metadata: z.object({ version: z.string(), lastUpdated: z.string(), environment: z.string() }),
   entities: z.record(z.string(), z.discriminatedUnion('entityType', [
     ServiceSchema, LocationSchema, FAQSchema, BusinessSchema, 
     USPSchema, TrustBadgeSchema, ProcessSchema, WebPageSchema, 
-    StatsSchema, FooterSchema, ReviewsSchema
+    StatsSchema, FooterSchema, ReviewsSchema,
+    BrandSchema, ProblemSchema, CaseStudySchema // Added new schema validations
   ])),
 });
 
-/* --- TYPES --- */
+/* --- EXPORTED TYPES --- */
 export type RoutableEntity = z.infer<typeof RoutableEntitySchema>;
 export type ServiceEntity = z.infer<typeof ServiceSchema>;
 export type LocationEntity = z.infer<typeof LocationSchema>;
@@ -166,4 +211,16 @@ export type ProcessEntity = z.infer<typeof ProcessSchema>;
 export type StatsEntity = z.infer<typeof StatsSchema>;
 export type FooterEntity = z.infer<typeof FooterSchema>;
 export type ReviewsEntity = z.infer<typeof ReviewsSchema>;
+
+// Exported New Types
+export type BrandEntity = z.infer<typeof BrandSchema>;
+export type ProblemEntity = z.infer<typeof ProblemSchema>;
+export type CaseStudyEntity = z.infer<typeof CaseStudySchema>;
 export type RawGraphData = z.infer<typeof RawGraphSchema>;
+
+// Explicit EntityType Union Definition
+export type EntityType = 
+  | 'Service' | 'Location' | 'FAQ' | 'Business' 
+  | 'USP' | 'TrustBadge' | 'Process' | 'WebPage' 
+  | 'Stats' | 'Footer' | 'Reviews'
+  | 'Brand' | 'Problem' | 'CaseStudy';
