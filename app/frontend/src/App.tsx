@@ -11,9 +11,8 @@ const Contact = lazy(() => import('./pages/Contact'));
 const Gallery = lazy(() => import('./pages/Gallery'));
 const About = lazy(() => import('./pages/About'));
 const PrivacySecurity = lazy(() => import('./pages/PrivacySecurity'));
-const ScreenProtectionTips = lazy(() => import('./pages/ScreenProtectionTips'));
 const FAQ = lazy(() => import('./pages/FAQ'));
-const Blog = lazy(() => import('./pages/Blog')); // ✅ ADDED: Main Blog Page Import
+const Blog = lazy(() => import('./pages/Blog')); 
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 // Dynamic Enterprise Templates
@@ -22,6 +21,12 @@ const ServiceTemplate = lazy(() => import('./pages/templates/ServiceTemplate'));
 const BlogPostTemplate = lazy(() => import('./pages/BlogPostTemplate'));
 const PillarTemplate = lazy(() => import('./pages/PillarTemplate'));
 const LocationTemplate = lazy(() => import('./pages/LocationTemplate'));
+
+// Custom Standalone Blog Pages
+const BlogLaptopRepair = lazy(() => import('./pages/BlogLaptopRepair'));
+const BlogScreenProtection = lazy(() => import('./pages/BlogScreenProtection'));
+const GamingPCCooling = lazy(() => import('./pages/GamingPCCooling'));
+const ScreenProtectionTips = lazy(() => import('./pages/ScreenProtectionTips'));
 
 // UI: Global loading spinner
 const PageLoader = () => (
@@ -48,12 +53,24 @@ export const App: React.FC = () => {
             <Route path="gallery" element={<Gallery />} />
             <Route path="about" element={<About />} />
             <Route path="privacy-security-kuwait" element={<PrivacySecurity />} />
-            <Route path="laptop-screen-protection-tips" element={<ScreenProtectionTips />} />
             <Route path="faq" element={<FAQ />} />
 
             {/* Content Routes */}
-            <Route path="blog" element={<Blog />} /> {/* ✅ ADDED: Main Blog Route */}
+            <Route path="blog" element={<Blog />} />
+            
+            {/* Custom Explicit Blog Routes (Must go BEFORE blog/:slug) */}
+            <Route path="blog/laptop-repair-kuwait-2026" element={<BlogLaptopRepair />} />
+            <Route path="blog/how-to-protect-laptop-screen" element={<BlogScreenProtection />} />
+            <Route path="blog/gaming-pc-cooling" element={<GamingPCCooling />} />
+            
+            {/* SEO Guardrail: Screen protection tips has a root-level canonical URL */}
+            <Route path="laptop-screen-protection-tips" element={<ScreenProtectionTips />} />
+            <Route path="blog/laptop-screen-protection-tips" element={<Navigate to="/laptop-screen-protection-tips" replace />} />
+            
+            {/* Generic Blog Catch-All */}
             <Route path="blog/:slug" element={<BlogPostTemplate />} />
+            
+            {/* Templates */}
             <Route path="pillar/:slug" element={<PillarTemplate />} />
             <Route path="location/:slug" element={<LocationTemplate />} />
             
