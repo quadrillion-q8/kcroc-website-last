@@ -3,6 +3,7 @@ import React, { Suspense, lazy } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { RootLayout } from './core/components/layout/RootLayout';
 import { ChatWidget } from './components/ChatWidget';
+import { KCROC_GRAPH } from './data/graph';
 
 // Core Pages
 const Home = lazy(() => import('./pages/Home'));
@@ -18,9 +19,14 @@ const NotFound = lazy(() => import('./pages/NotFound'));
 // Dynamic Enterprise Templates
 const Services = lazy(() => import('./pages/Services'));
 const ServiceTemplate = lazy(() => import('./pages/templates/ServiceTemplate'));
-const BlogPostTemplate = lazy(() => import('./pages/BlogPostTemplate'));
 const PillarTemplate = lazy(() => import('./pages/PillarTemplate'));
 const LocationTemplate = lazy(() => import('./pages/LocationTemplate'));
+const BlogPostTemplate = lazy(() => import('./pages/BlogPostTemplate'));
+
+// 🔥 NEW SEO Roadmap Templates
+const BrandTemplate = lazy(() => import('./pages/templates/BrandTemplate'));
+const ProblemTemplate = lazy(() => import('./pages/templates/ProblemTemplate'));
+const CaseStudyTemplate = lazy(() => import('./pages/templates/CaseStudyTemplate'));
 
 // Custom Standalone Blog Pages
 const BlogLaptopRepair = lazy(() => import('./pages/BlogLaptopRepair'));
@@ -45,7 +51,29 @@ export const App: React.FC = () => {
             
             {/* The Dynamic Services Gateway */}
             <Route path="services" element={<Services />} />
+            
+            {/* 
+              🔥 DYNAMIC ROOT-LEVEL SEO ROUTES 🔥
+              We map directly from the Graph so React Router knows exactly 
+              which root-level URLs belong to which template, without catching 404s.
+            */}
+            {KCROC_GRAPH.services.map((service) => (
+              <Route key={service.slug} path={service.slug} element={<ServiceTemplate />} />
+            ))}
+            
+            {KCROC_GRAPH.brands.map((brand) => (
+              <Route key={brand.slug} path={brand.slug} element={<BrandTemplate />} />
+            ))}
+            
+            {KCROC_GRAPH.problems.map((problem) => (
+              <Route key={problem.slug} path={problem.slug} element={<ProblemTemplate />} />
+            ))}
+
+            {/* Legacy Service Route Fallback (Just in case) */}
             <Route path="services/:serviceSlug" element={<ServiceTemplate />} />
+            
+            {/* Case Studies (Nested under /case-studies/ for SEO clustering) */}
+            <Route path="case-studies/:slug" element={<CaseStudyTemplate />} />
             
             {/* Static Routes */}
             <Route path="pricing" element={<Pricing />} />
@@ -70,7 +98,7 @@ export const App: React.FC = () => {
             {/* Generic Blog Catch-All */}
             <Route path="blog/:slug" element={<BlogPostTemplate />} />
             
-            {/* Templates */}
+            {/* Other Templates */}
             <Route path="pillar/:slug" element={<PillarTemplate />} />
             <Route path="location/:slug" element={<LocationTemplate />} />
             
