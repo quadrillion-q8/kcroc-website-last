@@ -10,10 +10,10 @@ import { RelatedServicesList } from '../components/schema/RelatedServicesList';
 import { FAQSection } from '../components/schema/FAQSection';
 import { ReviewSection } from '../components/schema/ReviewSection';
 import { getIntentWhatsAppLink } from '../utils/whatsappIntent';
-import { BUSINESS_INFO } from '../constants/data';
-
-// 👈 Phase 2 SEO Engine Imported
+import { KCROC_GRAPH } from '../data/graph';
 import { SEOEngine } from '../core/components/SEOEngine'; 
+
+const business = KCROC_GRAPH.business!;
 
 const MACBOOK_FAILURES = [
   { type: "Logic Board Power Failure", vuln: "Device stops taking a charge and remains dead.", remedy: "PMIC array micro-soldering.", icon: Cpu },
@@ -22,10 +22,9 @@ const MACBOOK_FAILURES = [
 ];
 
 export default function MacBookRepair() {
-  // 1. Fetch the data dynamically from the Knowledge Graph
-  const entity = getEntityById<ServiceEntity>('srv-macbook-repair');
+  // ✅ FIXED: Maps exactly to the ID in graph.ts
+  const entity = getEntityById<ServiceEntity>('srv-macbook');
   
-  // Safety check: if entity is missing, return null
   if (!entity) return null;
 
   const waLink = getIntentWhatsAppLink("service", entity.title);
@@ -35,10 +34,8 @@ export default function MacBookRepair() {
     <Layout entity={entity}>
       <main className="w-full min-h-screen bg-transparent text-slate-200 pt-32 pb-24">
         
-        {/* 🚀 PHASE 2 AUTOMATION IN ACTION */}
-        <SEOEngine entityId="srv-macbook-repair" />
+        <SEOEngine entityId="srv-macbook" />
         
-        {/* HERO SECTION */}
         <section className="relative px-6 text-center mb-24">
           <h1 className="text-4xl md:text-6xl font-black text-white mb-6">
             {entity.title}
@@ -58,7 +55,6 @@ export default function MacBookRepair() {
           </div>
         </section>
 
-        {/* CUSTOM MACBOOK FAILURES GRID */}
         <section className="max-w-6xl mx-auto px-6 mb-24 grid md:grid-cols-3 gap-6">
           {MACBOOK_FAILURES.map((issue) => (
             <div key={issue.type} className="bg-slate-900/30 p-8 rounded-3xl border border-slate-800 transition-colors hover:bg-slate-800/50">
@@ -70,14 +66,12 @@ export default function MacBookRepair() {
           ))}
         </section>
 
-        {/* Dynamic Schema Components */}
         <div className="max-w-4xl mx-auto px-6">
           <ReviewSection entity={entity} />
           <FAQSection entity={entity} />
           <RelatedServicesList currentEntityId={entity.id} />
         </div>
 
-        {/* CTA FOOTER */}
         <section className="max-w-4xl mx-auto px-6 mt-16 text-center bg-gradient-to-br from-cyan-900/40 to-slate-900/80 p-10 rounded-3xl border border-cyan-500/30">
           <ShieldCheck className="w-12 h-12 text-cyan-400 mx-auto mb-4" />
           <h2 className="text-3xl font-black text-white mb-4">Don't Write Off Your MacBook.</h2>
@@ -85,7 +79,7 @@ export default function MacBookRepair() {
             <a href={waLink} className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black px-8 py-4 rounded-full flex items-center justify-center gap-2 transition-transform hover:scale-105">
               <MessageCircle size={18} /> Request Free Pickup
             </a>
-            <a href={`tel:${BUSINESS_INFO.phone}`} className="bg-slate-900 border border-slate-700 hover:border-cyan-500/50 text-white font-bold px-8 py-4 rounded-full flex items-center justify-center gap-2">
+            <a href={`tel:+${business.telephone}`} className="bg-slate-900 border border-slate-700 hover:border-cyan-500/50 text-white font-bold px-8 py-4 rounded-full flex items-center justify-center gap-2">
               <Phone size={18} /> Call Technician
             </a>
           </div>
