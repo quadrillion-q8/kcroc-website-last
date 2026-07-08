@@ -5,8 +5,10 @@ import { Badge } from '@/components/ui/badge';
 import { AlertTriangle, Battery, BatteryCharging, BatteryWarning, Flame, Zap, Clock, TrendingDown, CheckCircle2, Phone, MapPin, Wrench, MessageCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-// 👈 Phase 2 SEO Engine Imported
+import { KCROC_GRAPH } from '../data/graph';
 import { SEOEngine } from '../core/components/SEOEngine';
+
+const business = KCROC_GRAPH.business!;
 
 export default function BatteryReplacement() {
   const statistics = [
@@ -225,8 +227,8 @@ export default function BatteryReplacement() {
   return (
     <div className="min-h-screen bg-gray-950 text-white">
       
-      {/* 🚀 PHASE 2 AUTOMATION IN ACTION */}
-      <SEOEngine entityId="battery-replacement" />
+      {/* ✅ FIXED: Maps exactly to the ID in graph.ts */}
+      <SEOEngine entityId="srv-battery" />
 
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 px-4">
@@ -636,13 +638,13 @@ export default function BatteryReplacement() {
           {/* Direct Contact CTAs */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-12">
             <Button asChild size="lg" className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700">
-              <a href="tel:+96555301913">
+              <a href={`tel:+${business.telephone}`}>
                 <Phone className="w-5 h-5 mr-2" />
-                Call: +965 5530 1913
+                Call: +{business.telephone}
               </a>
             </Button>
             <Button asChild size="lg" className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700">
-              <a href="https://wa.me/96555301913?text=I need a laptop battery replacement in Kuwait" target="_blank" rel="noopener noreferrer">
+              <a href={`https://wa.me/${business.telephone}?text=I need a laptop battery replacement in Kuwait`} target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="w-5 h-5 mr-2" />
                 WhatsApp Us
               </a>
@@ -662,7 +664,7 @@ export default function BatteryReplacement() {
                   <h3 className="text-xl font-bold text-white mb-2">Safety Warning</h3>
                   <p className="text-slate-200">
                     If you notice a swollen battery, stop using your laptop immediately and seek professional help. 
-                    A swollen battery can be dangerous and should be handled by experts. Contact KCROC at +965 5530 1913 for safe battery removal and replacement.
+                    A swollen battery can be dangerous and should be handled by experts. Contact KCROC at +{business.telephone} for safe battery removal and replacement.
                   </p>
                 </div>
               </div>
