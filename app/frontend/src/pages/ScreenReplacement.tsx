@@ -14,12 +14,11 @@ import { getIntentWhatsAppLink } from '../utils/whatsappIntent';
 import { RelatedServicesList } from '../components/schema/RelatedServicesList';
 import { ReviewSection } from '../components/schema/ReviewSection';
 
-// 👈 Phase 2 SEO Engine Imported
+import { KCROC_GRAPH } from '../data/graph';
 import { SEOEngine } from '../core/components/SEOEngine'; 
 
-/* ─────────────────────────────────────────────────────────────────────────────
-   1. PAGE DATA (Preserving your custom UI constants)
-───────────────────────────────────────────────────────────────────────────── */
+const business = KCROC_GRAPH.business!;
+
 const SERVICES = Object.freeze([
   { icon: Monitor,     title: 'Laptop LCD/LED Screen',    desc: 'Cracked, broken, or dead-pixel screens replaced for all laptop brands. Starting 20 KD.' },
   { icon: Apple,       title: 'MacBook Retina Display',   desc: 'MacBook Air and Pro Retina display replacement with genuine panels. Starting 45 KD.' },
@@ -65,9 +64,6 @@ const FAQS = Object.freeze([
   { q: 'Do you use genuine screens for MacBook repairs?',                  a: 'We use genuine Apple panels where available, and high-grade compatible Retina displays for MacBook Air and Pro replacements.' },
 ]);
 
-/* ─────────────────────────────────────────────────────────────────────────────
-   2. SUB-COMPONENTS
-───────────────────────────────────────────────────────────────────────────── */
 const FAQAccordion = React.memo(({ items }: { items: typeof FAQS }) => {
   const [active, setActive] = useState<number | null>(null);
   const toggle = useCallback((i: number) => setActive(prev => (prev === i ? null : i)), []);
@@ -114,14 +110,10 @@ const FAQAccordion = React.memo(({ items }: { items: typeof FAQS }) => {
 });
 FAQAccordion.displayName = 'FAQAccordion';
 
-/* ─────────────────────────────────────────────────────────────────────────────
-   3. MAIN PAGE COMPONENT
-───────────────────────────────────────────────────────────────────────────── */
 export default function ScreenReplacement() {
-  // 1. Fetch the data dynamically from the Knowledge Graph
-  const entity = getEntityById<ServiceEntity>('srv-screen-replacement');
+  // ✅ FIXED: Maps exactly to the ID in graph.ts
+  const entity = getEntityById<ServiceEntity>('srv-screen');
   
-  // Safety check: if entity is missing, return null
   if (!entity) return null;
 
   const waLink = getIntentWhatsAppLink("service", entity.title);
@@ -130,10 +122,8 @@ export default function ScreenReplacement() {
     <Layout entity={entity}>
       <main className="w-full min-h-screen bg-transparent text-slate-200 selection:bg-cyan-500/30 pt-32 pb-24 font-sans">
         
-        {/* 🚀 PHASE 2 AUTOMATION IN ACTION */}
-        <SEOEngine entityId="srv-screen-replacement" />
+        <SEOEngine entityId="srv-screen" />
 
-        {/* ─── BREADCRUMBS ─── */}
         <nav aria-label="Breadcrumb" className="max-w-6xl mx-auto px-6 mb-8 relative z-10">
           <ol className="flex items-center space-x-2 text-sm text-slate-400 font-medium">
             <li><Link to="/" className="hover:text-cyan-400 transition-colors">Home</Link></li>
@@ -144,7 +134,6 @@ export default function ScreenReplacement() {
           </ol>
         </nav>
 
-        {/* ─── HERO SECTION ─── */}
         <section className="relative px-6 text-center z-10 mb-24">
           <div
             className="absolute top-[-50%] left-1/2 -translate-x-1/2 w-[600px] h-[500px] bg-cyan-600/20 blur-[80px] rounded-full pointer-events-none transform-gpu translate-z-0"
@@ -176,7 +165,7 @@ export default function ScreenReplacement() {
               </a>
               
               <a 
-                href="tel:+96555301913"
+                href={`tel:+${business.telephone}`}
                 className="flex items-center justify-center gap-3 w-full sm:w-auto bg-slate-900/60 backdrop-blur-md border border-slate-700/50 hover:bg-slate-800 text-slate-200 px-8 py-4 rounded-full font-bold text-base transition-all hover:border-cyan-500/30"
               >
                 <Phone size={20} className="text-cyan-400" aria-hidden="true" /> Call Technician
@@ -193,7 +182,6 @@ export default function ScreenReplacement() {
           </div>
         </section>
 
-        {/* ─── SERVICES GRID ─── */}
         <section aria-labelledby="services-heading" className="max-w-6xl mx-auto px-6 relative z-10 mb-24">
           <div className="text-center mb-16">
             <h2 id="services-heading" className="text-3xl md:text-4xl font-black text-white mb-4 tracking-tight">
@@ -214,7 +202,6 @@ export default function ScreenReplacement() {
           </div>
         </section>
 
-        {/* ─── PRICING & WHY CHOOSE US ─── */}
         <section className="max-w-6xl mx-auto px-6 relative z-10 mb-24 grid lg:grid-cols-2 gap-12">
           {/* Pricing */}
           <div>
@@ -267,7 +254,6 @@ export default function ScreenReplacement() {
           </div>
         </section>
 
-        {/* ─── FAQ SECTION ─── */}
         <section aria-labelledby="faq-heading" className="max-w-3xl mx-auto px-6 relative z-10 mb-24">
           <div className="text-center mb-10">
             <h2 id="faq-heading" className="text-3xl font-black text-white mb-4">Frequently Asked Questions</h2>
@@ -276,13 +262,11 @@ export default function ScreenReplacement() {
           <FAQAccordion items={FAQS} />
         </section>
 
-        {/* Dynamic Schema Components */}
         <div className="max-w-4xl mx-auto px-6 mb-24">
           <ReviewSection entity={entity} />
           <RelatedServicesList currentEntityId={entity.id} />
         </div>
 
-        {/* ─── CTA FOOTER ─── */}
         <section aria-labelledby="cta-heading" className="max-w-4xl mx-auto px-6 relative z-10">
           <div className="bg-gradient-to-br from-cyan-900/40 to-slate-900/80 backdrop-blur-xl p-10 md:p-16 rounded-3xl border border-cyan-500/30 text-center shadow-[0_0_40px_rgba(34,211,238,0.1)]">
             <MonitorPlay className="w-12 h-12 text-cyan-400 mx-auto mb-4" aria-hidden="true" />
@@ -304,7 +288,7 @@ export default function ScreenReplacement() {
               </a>
               
               <a 
-                href="tel:+96555301913"
+                href={`tel:+${business.telephone}`}
                 className="bg-slate-900 border border-slate-700 hover:border-cyan-500/50 text-white font-bold px-8 py-4 rounded-full transition-all flex items-center justify-center gap-2"
               >
                 <Phone size={20} className="text-cyan-400" aria-hidden="true" /> Call Technician
