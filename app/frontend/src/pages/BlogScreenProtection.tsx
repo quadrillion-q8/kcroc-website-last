@@ -1,6 +1,7 @@
 // File: app/frontend/src/pages/BlogScreenProtection.tsx
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -9,20 +10,21 @@ import {
   Clock, Flame, Zap, Sun, Wind, Droplets, ShieldAlert, Wrench, MapPin,
   Laptop 
 } from 'lucide-react';
-import { BUSINESS_INFO } from '../constants/data';
-import SchemaMarkup from '../components/seo/SchemaMarkup';
 
-// 👈 Phase 2 SEO Engine Imported
-import { SEOEngine } from '../core/components/SEOEngine';
+import SchemaMarkup from '../components/seo/SchemaMarkup';
+import { KCROC_GRAPH } from '../data/graph';
+
+// Dynamic Business Data
+const business = KCROC_GRAPH.business!;
 
 /* ─────────────────────────────────────────────────────────────────────────────
    1. PAGE DATA & SEO (Preserving Rich Schema)
 ───────────────────────────────────────────────────────────────────────────── */
-const PAGE_URL = `${BUSINESS_INFO.url}/blog/how-to-protect-laptop-screen`;
+const PAGE_URL = `${business.websiteUrl}/blog/how-to-protect-laptop-screen`;
 const HERO_IMAGE_URL = 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_1200/v1769908595/Dell_laptop_screen_protection_installation_-_Kuwait_City_service_ghokkb.jpg';
 const PUBLISHED_DATE = '2026-06-01T08:00:00+03:00';
 
-const WA_LINK = `https://wa.me/96555301913?text=${encodeURIComponent(
+const WA_LINK = `https://wa.me/${business.telephone}?text=${encodeURIComponent(
   'Hi KCROC, I read your screen protection guide and need a display diagnostic. Please arrange a free pickup.'
 )}`;
 
@@ -31,16 +33,16 @@ const STRUCTURED_DATA = {
   "@graph": [
     {
       "@type": "LocalBusiness",
-      "@id": `${BUSINESS_INFO.url}/#business`,
-      "name": BUSINESS_INFO.name,
-      "url": BUSINESS_INFO.url,
-      "telephone": BUSINESS_INFO.phone,
-      "email": "quadrillion1980@gmail.com",
+      "@id": `${business.websiteUrl}/#business`,
+      "name": business.legalName,
+      "url": business.websiteUrl,
+      "telephone": business.telephone,
+      "email": business.email,
       "address": { 
         "@type": "PostalAddress", 
-        "streetAddress": "Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19", 
-        "addressLocality": "Hawalli", 
-        "addressCountry": "KW" 
+        "streetAddress": business.streetAddress, 
+        "addressLocality": business.addressLocality, 
+        "addressCountry": business.addressCountry 
       }
     },
     {
@@ -48,7 +50,7 @@ const STRUCTURED_DATA = {
       "@id": `${PAGE_URL}#webpage`,
       "url": PAGE_URL,
       "name": "How to Protect Your Laptop Screen & Repair Guide | KCROC",
-      "isPartOf": { "@id": `${BUSINESS_INFO.url}/#website` },
+      "isPartOf": { "@id": `${business.websiteUrl}/#website` },
       "breadcrumb": { "@id": `${PAGE_URL}#breadcrumb` }
     },
     {
@@ -59,9 +61,9 @@ const STRUCTURED_DATA = {
       "author": { 
         "@type": "Person", 
         "name": "Imran Natiq",
-        "url": `${BUSINESS_INFO.url}/about`
+        "url": `${business.websiteUrl}/about`
       },
-      "publisher": { "@id": `${BUSINESS_INFO.url}/#business` },
+      "publisher": { "@id": `${business.websiteUrl}/#business` },
       "mainEntityOfPage": { "@id": `${PAGE_URL}#webpage` },
       "datePublished": PUBLISHED_DATE,
       "image": HERO_IMAGE_URL
@@ -267,8 +269,13 @@ export default function BlogScreenProtection() {
   return (
     <div className="min-h-screen bg-gray-950 text-white selection:bg-cyan-500/30 relative">
       
-      {/* 🚀 PHASE 2 AUTOMATION IN ACTION */}
-      <SEOEngine entityId="post-screen-protection" />
+      {/* 🚀 Independent SEO Helmet */}
+      <Helmet>
+        <title>How to Protect Your Laptop Screen: The Ultimate Care Guide | KCROC</title>
+        <meta name="description" content="Expert advice from KCROC technicians on preventing laptop screen damage. Learn the physics of screen failure, Kuwait climate impacts, and repair costs." />
+        <link rel="canonical" href={PAGE_URL} />
+      </Helmet>
+
       <SchemaMarkup schema={STRUCTURED_DATA} />
 
       {/* Inject the stunning animated background here */}
@@ -297,9 +304,9 @@ export default function BlogScreenProtection() {
                 className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white text-lg px-8 py-6 shadow-lg shadow-cyan-500/30"
                 asChild
               >
-                <a href="tel:+96555301913">
+                <a href={`tel:+${business.telephone}`}>
                   <Phone className="w-5 h-5 mr-2" />
-                  Call: +965 5530 1913
+                  Call: +{business.telephone}
                 </a>
               </Button>
               <Button 
@@ -629,15 +636,15 @@ export default function BlogScreenProtection() {
                   className="border-slate-700 text-white hover:bg-slate-800 text-base md:text-lg px-6 md:px-8 py-6 md:py-7"
                   asChild
                 >
-                  <a href="tel:+96555301913">
+                  <a href={`tel:+${business.telephone}`}>
                     <Phone className="w-5 h-5 mr-2" />
-                    Call Intake: +965 5530 1913
+                    Call Intake: +{business.telephone}
                   </a>
                 </Button>
               </div>
               <div className="mt-10 pt-8 border-t border-slate-800 flex flex-wrap justify-center gap-6 text-sm text-slate-400">
                 <span className="flex items-center gap-2">
-                  <MapPin className="w-4 h-4 text-cyan-400" /> Hawalli, Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19
+                  <MapPin className="w-4 h-4 text-cyan-400" /> {business.streetAddress}
                 </span>
                 <span className="flex items-center gap-2">
                   <Shield className="w-4 h-4 text-cyan-400" /> Complimentary Diagnostics
