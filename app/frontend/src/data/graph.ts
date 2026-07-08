@@ -2,22 +2,24 @@
 import {
   RawGraphData, RoutableEntity, LocationEntity, ServiceEntity,
   FAQEntity, WebPageEntity, BusinessEntity, USPEntity, TrustBadgeEntity,
-  ProcessEntity, StatsEntity, FooterEntity, ReviewsEntity
+  ProcessEntity, StatsEntity, FooterEntity, ReviewsEntity,
+  BrandEntity, ProblemEntity, CaseStudyEntity // ✅ Added New Types
 } from '../types/knowledgeGraph';
 
 const rawGraphData: RawGraphData = {
   metadata: {
-    version: '3.2.0',
-    lastUpdated: '2026-07-08T00:00:00+03:00',
+    version: '3.3.0',
+    lastUpdated: '2026-07-09T00:00:00+03:00',
     environment: 'production'
   },
 
   entities: {
+
     /* ═══════════════════════════════════════════════════════════════
        BUSINESS ENTITY
-       ═══════════════════════════════════════════════════════════════ */
+    ═══════════════════════════════════════════════════════════════ */
     'biz-kcroc': {
-      id: 'biz-kcroc', entityType: 'Business', isActive: true, 
+      id: 'biz-kcroc', entityType: 'Business', isActive: true,
       title: 'Kuwait Computer Repair On Call', legalName: 'Kuwait Computer Repair On Call', alternateName: 'KCROC',
       telephone: '96555301913', streetAddress: 'Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19',
       addressLocality: 'Hawalli', addressRegion: 'Hawalli Governorate', addressCountry: 'KW',
@@ -27,81 +29,227 @@ const rawGraphData: RawGraphData = {
       schemaOpeningHours: { dayOfWeek: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'], opens: '10:00', closes: '22:00' },
       aggregateRating: { ratingValue: '4.9', reviewCount: 150, bestRating: 5 },
       socialLinks: { facebook: 'https://www.facebook.com/computerrepairkuwait', instagram: 'https://www.instagram.com/computerrepairkuwait' },
-      aiSummary: 'Kuwait Computer Repair On Call (KCROC) is a Hawalli-based component-level computer repair specialist.',
+      aiSummary: 'Kuwait Computer Repair On Call (KCROC) is a Hawalli-based component-level computer repair specialist. Services include MacBook logic board micro-soldering, laptop screen replacement, gaming PC thermal repair, motherboard chip-level diagnostics, SSD upgrades, and virus removal. Free pickup and delivery across all Kuwait governorates. 30-day warranty on all repairs. No Fix, No Fee policy.',
     } as BusinessEntity,
 
     /* ═══════════════════════════════════════════════════════════════
        TRUST BADGES & STATS
-       ═══════════════════════════════════════════════════════════════ */
+    ═══════════════════════════════════════════════════════════════ */
     'badge-privacy':  { id: 'badge-privacy',  entityType: 'TrustBadge', isActive: true, title: 'Data Privacy Guaranteed', iconKey: 'ShieldCheck' } as TrustBadgeEntity,
-    'badge-pickup':   { id: 'badge-pickup',   entityType: 'TrustBadge', isActive: true, title: 'Free Pick & Drop', iconKey: 'Truck' } as TrustBadgeEntity,
-    'badge-warranty': { id: 'badge-warranty', entityType: 'TrustBadge', isActive: true, title: '30-Day Warranty', iconKey: 'Clock' } as TrustBadgeEntity,
-    'badge-esd':      { id: 'badge-esd',      entityType: 'TrustBadge', isActive: true, title: 'ESD-Safe Lab', iconKey: 'Zap' } as TrustBadgeEntity,
+    'badge-pickup':   { id: 'badge-pickup',   entityType: 'TrustBadge', isActive: true, title: 'Free Pick & Drop',        iconKey: 'Truck'       } as TrustBadgeEntity,
+    'badge-warranty': { id: 'badge-warranty', entityType: 'TrustBadge', isActive: true, title: '30-Day Warranty',         iconKey: 'Clock'       } as TrustBadgeEntity,
+    'badge-esd':      { id: 'badge-esd',      entityType: 'TrustBadge', isActive: true, title: 'ESD-Safe Lab',             iconKey: 'Zap'         } as TrustBadgeEntity,
 
     'stats-row': {
       id: 'stats-row', entityType: 'Stats', isActive: true, title: 'Homepage Stats',
-      items: [{ label: 'Repairs completed', value: '500+', sub: 'Since launch' }, { label: 'Success rate', value: '98%', sub: 'On complex boards' }, { label: 'Warranty', value: '30 days', sub: 'All parts' }, { label: 'Pick & drop', value: 'Free', sub: 'Zero hidden fees' }]
+      items: [
+        { label: 'Repairs completed', value: '500+',    sub: 'Since launch across Kuwait' },
+        { label: 'Success rate',       value: '98%',     sub: 'On complex logic board repairs' },
+        { label: 'Warranty',           value: '30 days', sub: 'All parts and labour' },
+        { label: 'Pick & drop',        value: 'Free',    sub: 'Zero hidden transport fees' }
+      ]
     } as StatsEntity,
 
     /* ═══════════════════════════════════════════════════════════════
        USPs
-       ═══════════════════════════════════════════════════════════════ */
-    'usp-component': { id: 'usp-component', entityType: 'USP', isActive: true, iconKey: 'Cpu', title: 'Component-Level Repair', description: 'We diagnose the board itself using micro-soldering.', differentiator: 'Most shops replace; we fix.' } as USPEntity,
-    'usp-nofix': { id: 'usp-nofix', entityType: 'USP', isActive: true, iconKey: 'ShieldCheck', title: 'No Fix, No Fee', description: 'Diagnostics are risk-free.', differentiator: 'Only pay when repaired.' } as USPEntity,
-    'usp-logistics': { id: 'usp-logistics', entityType: 'USP', isActive: true, iconKey: 'Truck', title: 'Free Pick & Drop', description: 'We cover all Kuwait.', differentiator: 'We handle the traffic.' } as USPEntity,
-    'usp-privacy': { id: 'usp-privacy', entityType: 'USP', isActive: true, iconKey: 'Lock', title: 'Strict Data Privacy', description: 'Hardware-only protocols.', differentiator: 'Files never touched.' } as USPEntity,
-    'usp-climate': { id: 'usp-climate', entityType: 'USP', isActive: true, iconKey: 'Thermometer', title: 'Kuwait Climate Expertise', description: 'Engineered for extreme heat.', differentiator: 'Climate-specific fixes.' } as USPEntity,
+    ═══════════════════════════════════════════════════════════════ */
+    'usp-component': { id: 'usp-component', entityType: 'USP', isActive: true, iconKey: 'Cpu', title: 'Component-Level Repair', description: 'We diagnose the board itself using micro-soldering and trace repair — not just replace it. This saves you from paying for an entirely new motherboard and keeps your original data intact.', differentiator: 'Most shops in Kuwait replace the whole board. We fix the one failed chip.' } as USPEntity,
+    'usp-nofix': { id: 'usp-nofix', entityType: 'USP', isActive: true, iconKey: 'ShieldCheck', title: 'No Fix, No Fee', description: 'Our diagnostics are precise and risk-free. If your device is catastrophically damaged or not economically repairable, you pay absolutely nothing — not even for the diagnostic.', differentiator: 'You only pay when your device is fully repaired and working.' } as USPEntity,
+    'usp-logistics': { id: 'usp-logistics', entityType: 'USP', isActive: true, iconKey: 'Truck', title: 'Free Pick & Drop — All Kuwait', description: 'We cover Hawalli, Salmiya, Kuwait City, Farwaniya, Ahmadi, Jahra, and beyond. Our courier collects from your home or office and returns the repaired device directly to you.', differentiator: 'No need to leave your home or office. We handle the traffic.' } as USPEntity,
+    'usp-privacy': { id: 'usp-privacy', entityType: 'USP', isActive: true, iconKey: 'Lock', title: 'Strict Data Privacy', description: 'We operate under strict hardware-only protocols. Our technicians use diagnostic tools — not your files. For board-level repairs, you can remove your drive before handing over the device.', differentiator: 'Your personal files are never opened, accessed, or browsed during repair.' } as USPEntity,
+    'usp-climate': { id: 'usp-climate', entityType: 'USP', isActive: true, iconKey: 'Thermometer', title: 'Kuwait Climate Expertise', description: 'Kuwait\'s extreme heat and dust accelerate hardware failure. We apply phase-change thermal materials and perform ultrasonic cleaning specifically tuned for our climate — not generic procedures.', differentiator: 'We know exactly how Kuwait summers destroy laptops. We fix that specifically.' } as USPEntity,
 
     /* ═══════════════════════════════════════════════════════════════
        PROCESS
-       ═══════════════════════════════════════════════════════════════ */
-    'proc-standard': { id: 'proc-standard', entityType: 'Process', isActive: true, title: 'Standard Repair Process', steps: [{ step: 1, title: 'Collect', description: 'We come to you.' }, { step: 2, title: 'Diagnose', description: 'Precise trace repair.' }, { step: 3, title: 'Return', description: 'Stress-tested return.' }] } as ProcessEntity,
+    ═══════════════════════════════════════════════════════════════ */
+    'proc-standard': {
+      id: 'proc-standard', entityType: 'Process', isActive: true, title: 'Standard Repair Process',
+      steps: [
+        { step: 1, title: 'Free collection — we come to you', description: 'Book via WhatsApp. Our driver collects your device directly from your doorstep across all Kuwait — no deposit, no minimum spend. We tag and log every device for full chain-of-custody tracking.' },
+        { step: 2, title: 'Precision diagnostic — no guesswork', description: 'Your device enters our Hawalli lab where technicians use thermal imaging, digital multimeters, and boardview software to trace the exact component fault. You receive a fixed quote before we touch a tool.' },
+        { step: 3, title: 'Repair, stress-test, and return', description: 'We execute the micro-soldering or hardware replacement, then stress-test the system under full load for stability. If it passes, we deliver it back. If we can\'t fix it, you pay nothing.' }
+      ]
+    } as ProcessEntity,
 
     /* ═══════════════════════════════════════════════════════════════
        PAGES
-       ═══════════════════════════════════════════════════════════════ */
-    'page-home': { id: 'page-home', slug: '', entityType: 'WebPage', isActive: true, title: 'Home', description: 'Homepage', seo: { title: 'Computer Repair Kuwait', description: 'Expert repairs.', canonicalUrl: '/', ogType: 'website', schemaTypes: ['LocalBusiness'] } } as WebPageEntity,
-    'page-services': { id: 'page-services', slug: 'services', entityType: 'WebPage', isActive: true, title: 'Services', description: 'Services', seo: { title: 'Services', description: 'Our services.', canonicalUrl: '/services', ogType: 'website', schemaTypes: ['CollectionPage'] } } as WebPageEntity,
-    'page-blog': { id: 'page-blog', slug: 'blog', entityType: 'WebPage', isActive: true, title: 'Tech Blog', description: 'Tech Blog', seo: { title: 'Tech Blog', description: 'Expert tech guides.', canonicalUrl: '/blog', ogType: 'website', schemaTypes: ['CollectionPage'] } } as WebPageEntity,
+    ═══════════════════════════════════════════════════════════════ */
+    'page-home': {
+      id: 'page-home', slug: '', entityType: 'WebPage', isActive: true,
+      title: 'Home', description: 'KCROC Homepage — Component-level computer repair in Kuwait',
+      seo: { title: 'Computer Repair Kuwait | Laptop & MacBook Repair – Free Pick & Drop | Kuwait Computer Repair On Call', description: 'Same-day laptop, MacBook & PC repair in Kuwait by KCROC. Free Pick & Drop across Hawalli, Salmiya, Kuwait City & all governorates. 4.9★ rated, 30-day warranty. Call +965 55301913.', canonicalUrl: 'https://www.computerrepairkuwait.com', ogType: 'website', schemaTypes: ['LocalBusiness', 'WebSite', 'WebPage'] },
+      hero: { headline: 'Kuwait\'s Expert Component-Level Repair Service.', subheadline: 'We fix the board. We don\'t just swap it.', description: 'We diagnose and repair failed components at board level — restoring devices that most repair shops in Kuwait would simply declare beyond repair.', primaryCTA: { text: 'WhatsApp a Technician', route: 'https://wa.me/96555301913' }, secondaryCTA: { text: 'View All Services', route: '/services' } },
+      featuredFAQIds: ['faq-pick-and-drop', 'faq-liquid-damage', 'faq-no-fix'], featuredUSPIds: ['usp-component', 'usp-nofix', 'usp-logistics', 'usp-privacy']
+    } as WebPageEntity,
+
+    'page-services': { id: 'page-services', slug: 'services', entityType: 'WebPage', isActive: true, title: 'Services', description: 'All KCROC repair services', seo: { title: 'Computer Repair Services in Kuwait | Laptop, MacBook & PC | KCROC', description: 'Expert laptop repair, MacBook repair, gaming PC diagnostics, motherboard chip-level repair, and screen replacement in Kuwait. Free pickup. 30-day warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/services', ogType: 'website', schemaTypes: ['CollectionPage', 'LocalBusiness'] } } as WebPageEntity,
+    'page-blog': { id: 'page-blog', slug: 'blog', entityType: 'WebPage', isActive: true, title: 'Tech Blog', description: 'Expert repair guides and tech insights.', seo: { title: 'KCROC Tech Blog | Computer Repair Guides Kuwait', description: 'Expert computer repair guides, laptop fixes, MacBook troubleshooting, and PC performance tips in Kuwait.', canonicalUrl: 'https://www.computerrepairkuwait.com/blog', ogType: 'website', schemaTypes: ['CollectionPage'] } } as WebPageEntity,
 
     /* ═══════════════════════════════════════════════════════════════
-       SERVICES (Rich Content Restored)
-       ═══════════════════════════════════════════════════════════════ */
-    'srv-macbook': { id: 'srv-macbook', slug: 'macbook-repair-kuwait', entityType: 'Service', isActive: true, title: 'MacBook Repair Kuwait', iconKey: 'apple', shortDescription: 'Board-level repair.', description: 'Our MacBook repair service goes beyond what Apple Authorized Centers offer.', repairLevel: 'chip-level', estimatedTurnaround: '24-48 Hours', pricing: { startingFrom: 25, currency: 'KWD', quoteRequired: true, displayLabel: 'From 25 KWD' }, coreFeatures: ['Logic Board Micro-Soldering', 'Liquid Damage Restoration', 'Data Preserved'], warranty: { duration: '30 Days', coverage: 'Parts and labor.', noFixNoFee: true }, brands: ['MacBook Air', 'MacBook Pro'], commonIssues: [{ id: 'no-power', title: 'No Power', severity: 'high', description: 'Power IC failure.' }], seo: { title: 'MacBook Repair', description: 'Expert MacBook repair.', canonicalUrl: '/macbook-repair-kuwait', ogType: 'article', schemaTypes: ['Service'] } } as ServiceEntity,
-    'srv-laptop': { id: 'srv-laptop', slug: 'laptop-repair-kuwait', entityType: 'Service', isActive: true, title: 'Laptop Repair Kuwait', iconKey: 'laptop', shortDescription: 'Windows repair.', description: 'Kuwait\'s climate causes specific hardware failure patterns.', repairLevel: 'advanced', estimatedTurnaround: '24h', pricing: { startingFrom: 15, currency: 'KWD', quoteRequired: true, displayLabel: 'From 15 KWD' }, coreFeatures: ['Screen Replacement', 'Battery Replacement', 'Keyboard Repair'], warranty: { duration: '30 Days', coverage: 'All parts and labor.', noFixNoFee: true }, brands: ['Dell', 'HP', 'Lenovo'], commonIssues: [{ id: 'screen', title: 'Cracked screen', severity: 'high', description: 'Physical damage.' }], seo: { title: 'Laptop Repair', description: 'Expert Windows repair.', canonicalUrl: '/laptop-repair-kuwait', ogType: 'article', schemaTypes: ['Service'] } } as ServiceEntity,
-    'srv-gaming': { id: 'srv-gaming', slug: 'gaming-pc-repair-kuwait', entityType: 'Service', isActive: true, title: 'Gaming PC Repair Kuwait', iconKey: 'gaming', shortDescription: 'Thermal & FPS tuning.', description: 'Gaming PCs face sustained 45°C+ temperatures.', repairLevel: 'advanced', estimatedTurnaround: '24h', pricing: { startingFrom: 25, currency: 'KWD', quoteRequired: true, displayLabel: 'From 25 KWD' }, coreFeatures: ['GPU Diagnostics', 'Thermal Re-Paste', 'FPS Tuning'], warranty: { duration: '30 Days', coverage: 'Parts and labor.', noFixNoFee: true }, brands: ['ASUS ROG', 'MSI'], commonIssues: [{ id: 'throttle', title: 'Thermal Throttle', severity: 'high', description: 'Dust build-up.' }], seo: { title: 'Gaming PC Repair', description: 'Gaming expert.', canonicalUrl: '/gaming-pc-repair-kuwait', ogType: 'article', schemaTypes: ['Service'] } } as ServiceEntity,
-    'srv-motherboard': { id: 'srv-motherboard', slug: 'motherboard-repair-kuwait', entityType: 'Service', isActive: true, title: 'Motherboard Repair Kuwait', iconKey: 'cpu', shortDescription: 'Advanced circuit repair.', description: 'We isolate the fault to the component level.', repairLevel: 'chip-level', estimatedTurnaround: '48h', pricing: { startingFrom: 25, currency: 'KWD', quoteRequired: true, displayLabel: 'From 25 KWD' }, coreFeatures: ['Power Rail Tracing', 'MOSFET Replacement', 'BGA Rework'], warranty: { duration: '30 Days', coverage: 'Parts and labor.', noFixNoFee: true }, brands: ['MacBook', 'Dell', 'HP'], commonIssues: [{ id: 'short', title: 'Short Circuit', severity: 'high', description: 'Blown capacitors.' }], seo: { title: 'Motherboard Repair', description: 'Chip level repair.', canonicalUrl: '/motherboard-repair-kuwait', ogType: 'article', schemaTypes: ['Service'] } } as ServiceEntity,
-    'srv-screen': { id: 'srv-screen', slug: 'laptop-screen-repair-kuwait', entityType: 'Service', isActive: true, title: 'Screen Replacement Kuwait', iconKey: 'monitor', shortDescription: 'Fast panel replacement.', description: 'We source and fit OEM panels.', repairLevel: 'basic', estimatedTurnaround: '1h', pricing: { startingFrom: 20, currency: 'KWD', quoteRequired: false, displayLabel: 'From 20 KWD' }, coreFeatures: ['LCD Replacement', 'MacBook Retina', 'Cable Repair'], warranty: { duration: '30 Days', coverage: 'Screen panel and labor.', noFixNoFee: false }, brands: ['Dell', 'HP', 'Lenovo'], commonIssues: [{ id: 'crack', title: 'Cracked screen', severity: 'high', description: 'Impact damage.' }], seo: { title: 'Screen Repair', description: 'New display panels.', canonicalUrl: '/laptop-screen-repair-kuwait', ogType: 'article', schemaTypes: ['Service'] } } as ServiceEntity,
-    'srv-battery': { id: 'srv-battery', slug: 'battery-replacement', entityType: 'Service', isActive: true, title: 'Battery Replacement Kuwait', iconKey: 'battery', shortDescription: 'OEM quality batteries.', description: 'We replace with OEM-grade cells.', repairLevel: 'basic', estimatedTurnaround: '1h', pricing: { startingFrom: 12, currency: 'KWD', quoteRequired: true, displayLabel: 'From 12 KWD' }, coreFeatures: ['OEM Quality', 'MacBook Battery', 'Calibration'], warranty: { duration: '30 Days', coverage: 'Battery and labor.', noFixNoFee: true }, brands: ['MacBook', 'Dell', 'HP'], commonIssues: [{ id: 'drain', title: 'Fast Drain', severity: 'high', description: 'Cell capacity loss.' }], seo: { title: 'Battery Replacement', description: 'New laptop battery.', canonicalUrl: '/battery-replacement', ogType: 'article', schemaTypes: ['Service'] } } as ServiceEntity,
+       SERVICES
+    ═══════════════════════════════════════════════════════════════ */
+    'srv-macbook': { id: 'srv-macbook', slug: 'macbook-repair-kuwait', entityType: 'Service', isActive: true, title: 'MacBook Repair Kuwait', iconKey: 'apple', shortDescription: 'Liquid spills, dead logic boards, USB-C failures. Chip-level Apple hardware restoration.', description: 'Our MacBook repair service goes beyond what Apple Authorized Centers offer. Instead of replacing your entire logic board — which deletes all your data and costs hundreds of KWD — we isolate the exact failed chip using thermal imaging and micro-soldering.', repairLevel: 'chip-level', estimatedTurnaround: '24-48 Hours', pricing: { startingFrom: 25, currency: 'KWD', quoteRequired: true, displayLabel: 'From 25 KWD — free diagnostic first' }, coreFeatures: ['Logic Board Micro-Soldering', 'USB-C Power IC Replacement', 'Liquid Damage Ultrasonic Cleaning', 'MacBook Screen & Battery Replacement', 'Data Preserved', 'Free Pick & Drop', '30-Day Warranty'], brands: ['MacBook Air', 'MacBook Pro 13"', 'MacBook Pro 14"', 'MacBook Pro 16"'], commonIssues: [{ id: 'no-power', title: 'No power / dead device', severity: 'high', description: 'USB-C power negotiation failure or PPBUS short circuit.' }], warranty: { duration: '30 Days', coverage: 'All parts and labor.', noFixNoFee: true }, seo: { title: 'MacBook Repair Kuwait | Logic Board Experts | No Fix No Fee | KCROC', description: 'Expert Apple MacBook repair in Kuwait. Logic board micro-soldering, USB-C power repair, liquid damage recovery. Free pick & drop.', canonicalUrl: 'https://www.computerrepairkuwait.com/macbook-repair-kuwait', ogType: 'article', schemaTypes: ['Service', 'FAQPage'] } } as ServiceEntity,
+    'srv-laptop': { id: 'srv-laptop', slug: 'laptop-repair-kuwait', entityType: 'Service', isActive: true, title: 'Laptop Repair Kuwait', iconKey: 'laptop', shortDescription: 'Screen, battery, keyboard, charging port, and motherboard repair for all Windows brands.', description: 'Kuwait\'s climate causes specific hardware failure patterns in Windows laptops. We diagnose and repair the exact fault component rather than replacing the entire unit.', repairLevel: 'advanced', estimatedTurnaround: 'Same Day / 24 Hours', pricing: { startingFrom: 15, currency: 'KWD', quoteRequired: true, displayLabel: 'From 15 KWD' }, coreFeatures: ['Screen Replacement', 'Battery Replacement', 'Keyboard Repair', 'Charging Port', 'Thermal Paste', 'Free Pick & Drop'], brands: ['Dell', 'HP', 'Lenovo', 'ASUS', 'Acer', 'MSI'], commonIssues: [{ id: 'screen-crack', title: 'Cracked screen', severity: 'high', description: 'Physical damage.' }], warranty: { duration: '30 Days', coverage: 'All parts and labor.', noFixNoFee: true }, seo: { title: 'Laptop Repair Kuwait | All Brands | Free Pick & Drop | KCROC', description: 'Professional Windows laptop repair in Kuwait. Screen, battery, keyboard, charging port, and motherboard repairs. Free pick & drop.', canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-repair-kuwait', ogType: 'article', schemaTypes: ['Service'] } } as ServiceEntity,
+    'srv-gaming': { id: 'srv-gaming', slug: 'gaming-pc-repair-kuwait', entityType: 'Service', isActive: true, title: 'Gaming PC Repair Kuwait', iconKey: 'gaming', shortDescription: 'GPU diagnostics, thermal throttling fixes, FPS tuning.', description: 'Gaming PCs face a unique enemy: sustained 45°C+ ambient temperatures. We solve the hardware problems that cost you frames.', repairLevel: 'advanced', estimatedTurnaround: 'Same Day / 24 Hours', pricing: { startingFrom: 25, currency: 'KWD', quoteRequired: true, displayLabel: 'From 25 KWD' }, coreFeatures: ['GPU Diagnostics', 'Thermal Re-Paste with Liquid Metal', 'AIO Maintenance', 'FPS Benchmarking'], brands: ['ASUS ROG', 'MSI', 'Alienware', 'Acer Predator'], commonIssues: [{ id: 'fps-drops', title: 'Severe FPS drops', severity: 'high', description: 'Thermal throttling.' }], warranty: { duration: '30 Days', coverage: 'All parts and labor.', noFixNoFee: true }, seo: { title: 'Gaming PC Repair Kuwait | FPS & Thermal Fix | KCROC', description: 'Stop FPS drops and thermal throttling. Expert gaming PC repair in Kuwait. Free pick & drop.', canonicalUrl: 'https://www.computerrepairkuwait.com/gaming-pc-repair-kuwait', ogType: 'article', schemaTypes: ['Service'] } } as ServiceEntity,
+    'srv-motherboard': { id: 'srv-motherboard', slug: 'motherboard-repair-kuwait', entityType: 'Service', isActive: true, title: 'Motherboard Repair Kuwait', iconKey: 'cpu', shortDescription: 'Chip-level diagnostics and micro-soldering.', description: 'Most repair shops replace the entire motherboard. We isolate the fault to the individual component level — saving you up to 80%.', repairLevel: 'chip-level', estimatedTurnaround: '24-48 Hours', pricing: { startingFrom: 25, currency: 'KWD', quoteRequired: true, displayLabel: 'From 25 KWD' }, coreFeatures: ['Power Rail Tracing', 'MOSFET Replacement', 'BGA Rework', 'Liquid Damage Ultrasonic Cleaning'], brands: ['MacBook', 'Dell', 'HP', 'ASUS', 'Lenovo'], commonIssues: [{ id: 'no-power', title: 'Dead laptop', severity: 'high', description: 'Input MOSFET short.' }], warranty: { duration: '30 Days', coverage: 'All parts and labor.', noFixNoFee: true }, seo: { title: 'Motherboard Repair Kuwait | Chip-Level Fix | KCROC', description: 'Expert motherboard repair in Kuwait. Chip-level micro-soldering, power rail diagnostics, liquid damage recovery.', canonicalUrl: 'https://www.computerrepairkuwait.com/motherboard-repair-kuwait', ogType: 'article', schemaTypes: ['Service'] } } as ServiceEntity,
+    'srv-screen': { id: 'srv-screen', slug: 'laptop-screen-repair-kuwait', entityType: 'Service', isActive: true, title: 'Screen Replacement Kuwait', iconKey: 'monitor', shortDescription: 'LCD, IPS, OLED, and Retina display panel replacements.', description: 'A cracked or flickering laptop screen doesn\'t mean a new laptop. We source and fit OEM and high-grade compatible panels.', repairLevel: 'basic', estimatedTurnaround: 'Same Day', pricing: { startingFrom: 20, currency: 'KWD', quoteRequired: false, displayLabel: 'From 20 KWD' }, coreFeatures: ['LCD/IPS/OLED Replacement', 'MacBook Retina', 'Display Cable Repair'], brands: ['Dell', 'HP', 'Lenovo', 'MacBook'], commonIssues: [{ id: 'cracked', title: 'Cracked screen', severity: 'high', description: 'Physical impact.' }], warranty: { duration: '30 Days', coverage: 'Screen panel and labor.', noFixNoFee: false }, seo: { title: 'Laptop Screen Replacement Kuwait | Same Day | KCROC', description: 'Professional laptop and MacBook screen replacement in Kuwait. LCD, IPS, OLED & Retina. Free pick & drop.', canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-screen-repair-kuwait', ogType: 'article', schemaTypes: ['Service'] } } as ServiceEntity,
+    'srv-battery': { id: 'srv-battery', slug: 'battery-replacement', entityType: 'Service', isActive: true, title: 'Battery Replacement Kuwait', iconKey: 'battery', shortDescription: 'OEM and compatible battery replacement.', description: 'Kuwait\'s extreme heat accelerates lithium degradation. We replace batteries and optimize thermal settings.', repairLevel: 'basic', estimatedTurnaround: 'Same Day', pricing: { startingFrom: 12, currency: 'KWD', quoteRequired: true, displayLabel: 'From 12 KWD' }, coreFeatures: ['OEM Batteries', 'MacBook Battery Replacement', 'Swollen Battery Removal'], brands: ['MacBook', 'Dell', 'HP', 'Lenovo'], commonIssues: [{ id: 'fast-drain', title: 'Battery dies quickly', severity: 'medium', description: 'Capacity loss.' }], warranty: { duration: '30 Days', coverage: 'Battery and labor.', noFixNoFee: true }, seo: { title: 'Laptop Battery Replacement Kuwait | Same Day | KCROC', description: 'Fast laptop and MacBook battery replacement in Kuwait. Swollen battery emergency service. Free pick & drop.', canonicalUrl: 'https://www.computerrepairkuwait.com/battery-replacement', ogType: 'article', schemaTypes: ['Service'] } } as ServiceEntity,
 
     /* ═══════════════════════════════════════════════════════════════
-       LOCATION (Fixed with SEO + Description)
-       ═══════════════════════════════════════════════════════════════ */
-    'loc-hawalli': { id: 'loc-hawalli', slug: 'hawalli', entityType: 'Location', isActive: true, title: 'Hawalli Repair Center', description: 'Our primary repair hub in Hawalli.', landmark: 'Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19', seo: { title: 'Hawalli Repair Center', description: 'Located in Al Mullah Complex.', canonicalUrl: '/location/hawalli', ogType: 'website', schemaTypes: ['LocalBusiness'] }, serviceAreas: ['Hawalli', 'Salmiya'] } as LocationEntity,
+       LOCATION
+    ═══════════════════════════════════════════════════════════════ */
+    'loc-hawalli': { id: 'loc-hawalli', slug: 'hawalli', entityType: 'Location', isActive: true, title: 'Hawalli Repair Center', description: 'Kuwait\'s premier component-level repair facility in Hawalli.', landmark: 'Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19', coords: { lat: 29.3356, lng: 48.0250 }, serviceRadiusKm: 40, serviceAreas: ['Hawalli', 'Salmiya', 'Kuwait City', 'Farwaniya', 'Ahmadi', 'Jahra', 'Fahaheel'], seo: { title: 'Computer Repair Shop Hawalli Kuwait | Ibn Khaldoun St | KCROC', description: 'Visit KCROC at Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19, Hawalli. Open daily 10 AM – 10 PM.', canonicalUrl: 'https://www.computerrepairkuwait.com/location/hawalli', ogType: 'website', schemaTypes: ['LocalBusiness'] } } as LocationEntity,
 
     /* ═══════════════════════════════════════════════════════════════
        REVIEWS
-       ═══════════════════════════════════════════════════════════════ */
-    'reviews-row': { id: 'reviews-row', entityType: 'Reviews', isActive: true, title: 'Google Reviews', aggregateRating: { ratingValue: '4.9', reviewCount: 150 }, items: [] } as ReviewsEntity,
+    ═══════════════════════════════════════════════════════════════ */
+    'reviews-row': { id: 'reviews-row', entityType: 'Reviews', isActive: true, title: 'Verified Google Reviews', aggregateRating: { ratingValue: '4.9', reviewCount: 150 }, items: [{ name: 'Ahmad Al-Sabah', location: 'Salmiya', time: '2 weeks ago', rating: 5, device: 'MacBook Pro — Screen Replacement', text: 'Fixed the MacBook Pro screen in 24 hours, price exactly as quoted.' }] } as ReviewsEntity,
 
     /* ═══════════════════════════════════════════════════════════════
-       FAQS (Fixed with SEO + Description)
-       ═══════════════════════════════════════════════════════════════ */
-    'faq-pick-and-drop': { id: 'faq-pick-and-drop', slug: 'pick-and-drop', entityType: 'FAQ', isActive: true, title: 'Pickup?', description: 'Delivery policy details.', answer: 'Yes, free across Kuwait.', seo: { title: 'Pickup', description: 'Delivery details.', canonicalUrl: '/faq/pick', ogType: 'website', schemaTypes: ['FAQPage'] } } as FAQEntity,
-    'faq-liquid-damage': { id: 'faq-liquid-damage', slug: 'liquid-damage', entityType: 'FAQ', isActive: true, title: 'Liquid?', description: 'Water damage process.', answer: 'Yes, we perform ultrasonic cleaning.', seo: { title: 'Liquid', description: 'Water damage repair.', canonicalUrl: '/faq/liquid', ogType: 'website', schemaTypes: ['FAQPage'] } } as FAQEntity,
-    'faq-no-fix': { id: 'faq-no-fix', slug: 'no-fix', entityType: 'FAQ', isActive: true, title: 'No Fix?', description: 'Fee policy explanation.', answer: 'If we can\'t repair, you pay nothing.', seo: { title: 'No Fix', description: 'Pricing guarantee.', canonicalUrl: '/faq/nofix', ogType: 'website', schemaTypes: ['FAQPage'] } } as FAQEntity,
-    'faq-warranty': { id: 'faq-warranty', slug: 'warranty', entityType: 'FAQ', isActive: true, title: 'Warranty?', description: 'Repair warranty info.', answer: '30 days warranty.', seo: { title: 'Warranty', description: 'Repair warranty.', canonicalUrl: '/faq/warranty', ogType: 'website', schemaTypes: ['FAQPage'] } } as FAQEntity,
-    'faq-data-safe': { id: 'faq-data-safe', slug: 'data-safety', entityType: 'FAQ', isActive: true, title: 'Privacy?', description: 'Data security info.', answer: 'We ensure 100% data privacy.', seo: { title: 'Privacy', description: 'Data protection.', canonicalUrl: '/faq/privacy', ogType: 'website', schemaTypes: ['FAQPage'] } } as FAQEntity,
-    'faq-same-day': { id: 'faq-same-day', slug: 'same-day-repair', entityType: 'FAQ', isActive: true, title: 'Same Day?', description: 'Service speed info.', answer: 'Yes, for standard repairs.', seo: { title: 'Speed', description: 'Same day service.', canonicalUrl: '/faq/speed', ogType: 'website', schemaTypes: ['FAQPage'] } } as FAQEntity,
-    'faq-cost': { id: 'faq-cost', slug: 'repair-cost', entityType: 'FAQ', isActive: true, title: 'Cost?', description: 'Pricing info.', answer: 'From 12 KD.', seo: { title: 'Cost', description: 'Pricing breakdown.', canonicalUrl: '/faq/price', ogType: 'website', schemaTypes: ['FAQPage'] } } as FAQEntity,
+       PHASE 1: 15+ OPTIMIZED FAQS
+    ═══════════════════════════════════════════════════════════════ */
+    'faq-pick-and-drop': { id: 'faq-pick-and-drop', slug: 'pick-and-drop', entityType: 'FAQ', isActive: true, title: 'Do you offer a pick and drop service across Kuwait?', description: 'Free pickup and delivery across all Kuwait governorates.', answer: 'Yes. Kuwait Computer Repair On Call provides completely free pickup and delivery across all Kuwait governorates — including Hawalli, Salmiya, Kuwait City, Farwaniya, Ahmadi, Jahra, Fahaheel, Mangaf, and Mahboula. Book via WhatsApp at any time. There are no hidden transport charges.', seo: { title: 'FAQ: Free Pick & Drop Service', description: 'Free pickup and delivery across all Kuwait.', canonicalUrl: 'https://www.computerrepairkuwait.com/faq#pick-and-drop', schemaTypes: ['FAQPage'] } } as FAQEntity,
+    'faq-liquid-damage': { id: 'faq-liquid-damage', slug: 'liquid-damage', entityType: 'FAQ', isActive: true, title: 'Do you repair liquid-damaged laptops and MacBooks?', description: 'Details about our ultrasonic liquid damage repair process.', answer: 'Yes. We fully disassemble the device, run the logic board through an industrial ultrasonic cleaner to strip corrosion, then trace and replace the specific shorted components using micro-soldering.', seo: { title: 'FAQ: Liquid Damage Repair', description: 'Liquid damage repair process details.', canonicalUrl: 'https://www.computerrepairkuwait.com/faq#liquid-damage', schemaTypes: ['FAQPage'] } } as FAQEntity,
+    'faq-no-fix': { id: 'faq-no-fix', slug: 'no-fix', entityType: 'FAQ', isActive: true, title: 'What does No Fix, No Fee mean exactly?', description: 'Our transparent pricing guarantee.', answer: 'If we cannot successfully repair your device after a full diagnostic, you pay absolutely nothing — not for the diagnostic, labor, or parts tested. You only pay if you approve the quote and the repair is successful.', seo: { title: 'FAQ: No Fix No Fee Policy', description: 'How our no fix no fee guarantee works.', canonicalUrl: 'https://www.computerrepairkuwait.com/faq#no-fix', schemaTypes: ['FAQPage'] } } as FAQEntity,
+    'faq-warranty': { id: 'faq-warranty', slug: 'warranty', entityType: 'FAQ', isActive: true, title: 'What warranty do you provide on repairs?', description: '30-day warranty coverage details.', answer: 'All successful hardware repairs at KCROC carry a 30-day warranty covering both parts and labor. Screen replacements, battery replacements, and board-level repairs all carry this same 30-day coverage.', seo: { title: 'FAQ: Repair Warranty', description: '30-day warranty on all hardware repairs.', canonicalUrl: 'https://www.computerrepairkuwait.com/faq#warranty', schemaTypes: ['FAQPage'] } } as FAQEntity,
+    'faq-data-safe': { id: 'faq-data-safe', slug: 'data-safety', entityType: 'FAQ', isActive: true, title: 'Is my personal data safe during repair?', description: 'Our strict data privacy protocol.', answer: 'Yes. We operate a strict hardware-only, no-snooping policy. For logic board and motherboard repairs, you are welcome to remove your storage drive before handing the device over.', seo: { title: 'FAQ: Data Safety During Repair', description: 'How we protect your data during computer repair.', canonicalUrl: 'https://www.computerrepairkuwait.com/faq#data-safety', schemaTypes: ['FAQPage'] } } as FAQEntity,
+    'faq-same-day': { id: 'faq-same-day', slug: 'same-day-repair', entityType: 'FAQ', isActive: true, title: 'Do you offer same-day computer repair in Kuwait?', description: 'Same-day service availability and cutoff times.', answer: 'Yes, same-day repair is available for eligible jobs booked before 11:00 AM. Services typically completed same day include: screen replacements, battery replacements, keyboard repairs, SSD upgrades, and Windows installation.', seo: { title: 'FAQ: Same-Day Repair Service', description: 'Same-day computer repair availability in Kuwait.', canonicalUrl: 'https://www.computerrepairkuwait.com/faq#same-day', schemaTypes: ['FAQPage'] } } as FAQEntity,
+    'faq-cost': { id: 'faq-cost', slug: 'repair-cost', entityType: 'FAQ', isActive: true, title: 'How much does computer repair cost in Kuwait?', description: 'Base pricing for common repair services.', answer: 'Diagnostics are free. Screen replacement starts from 20 KWD, battery replacement from 12 KWD, laptop hardware repair from 15 KWD, MacBook repair from 25 KWD, and motherboard chip-level repair from 25 KWD.', seo: { title: 'FAQ: Repair Costs Kuwait', description: 'Computer repair pricing in Kuwait.', canonicalUrl: 'https://www.computerrepairkuwait.com/faq#cost', schemaTypes: ['FAQPage'] } } as FAQEntity,
+    
+    // NEW FAQS INJECTED:
+    'faq-macbook-brands': { id: 'faq-macbook-brands', slug: 'macbook-models', entityType: 'FAQ', isActive: true, title: 'Which MacBook models do you repair?', description: 'List of supported Apple MacBook models for repair.', answer: 'We repair all MacBook models including MacBook Air (M1, M2, M3), MacBook Pro 13", 14", and 16" (M1, M2, M3, M3 Pro, M3 Max), and all Intel MacBook models from 2015 onward. This includes logic board micro-soldering, USB-C power IC replacement, screen replacement, battery replacement, and liquid damage recovery for all these models.', seo: { title: 'Which MacBook models do you repair?', description: 'We repair all MacBook Air and Pro models including M1, M2, M3, and Intel variations.', canonicalUrl: 'https://www.computerrepairkuwait.com/faq#macbook-models', schemaTypes: ['FAQPage'] } } as FAQEntity,
+    'faq-data-loss': { id: 'faq-data-loss', slug: 'data-loss', entityType: 'FAQ', isActive: true, title: 'Will I lose my data during repair?', description: 'Information regarding data preservation during component repairs.', answer: 'Most hardware repairs — including screen replacement, battery replacement, keyboard repair, and charging port repair — do not affect your data at all. For motherboard and logic board repairs, we repair your original board rather than replacing it, which preserves your data entirely.', seo: { title: 'Will I lose my data during repair?', description: 'Our component-level repair preserves your data completely.', canonicalUrl: 'https://www.computerrepairkuwait.com/faq#data-loss', schemaTypes: ['FAQPage'] } } as FAQEntity,
+    'faq-same-day-booking': { id: 'faq-same-day-booking', slug: 'same-day-booking', entityType: 'FAQ', isActive: true, title: 'How do I book a same-day repair?', description: 'Instructions for booking a same-day repair service.', answer: 'Message us on WhatsApp before 11:00 AM for same-day collection and repair eligibility. Share your device model, the fault description, and your area in Kuwait. We confirm availability and send our driver to collect within a few hours.', seo: { title: 'How do I book a same-day repair?', description: 'Message us on WhatsApp before 11:00 AM for same-day computer repair in Kuwait.', canonicalUrl: 'https://www.computerrepairkuwait.com/faq#same-day-booking', schemaTypes: ['FAQPage'] } } as FAQEntity,
+    'faq-payment': { id: 'faq-payment', slug: 'payment', entityType: 'FAQ', isActive: true, title: 'What payment methods do you accept?', description: 'Available payment methods for repair services.', answer: 'We accept cash on delivery when we return your repaired device. Payment is only due after the repair is completed, tested, and you are satisfied. We never take payment upfront.', seo: { title: 'What payment methods do you accept?', description: 'Cash on delivery accepted after successful computer repair.', canonicalUrl: 'https://www.computerrepairkuwait.com/faq#payment', schemaTypes: ['FAQPage'] } } as FAQEntity,
+    'faq-ssd-upgrade': { id: 'faq-ssd-upgrade', slug: 'ssd-upgrade', entityType: 'FAQ', isActive: true, title: 'Can you upgrade my laptop to an SSD?', description: 'Information on NVMe and SATA SSD upgrade services.', answer: 'Yes. SSD upgrades are one of the most cost-effective performance improvements for older laptops. We install NVMe or SATA SSDs compatible with your model, migrate your existing Windows installation to the new drive, and verify performance after installation.', seo: { title: 'Can you upgrade my laptop to an SSD?', description: 'We provide NVMe and SATA SSD upgrades to drastically improve laptop speed.', canonicalUrl: 'https://www.computerrepairkuwait.com/faq#ssd-upgrade', schemaTypes: ['FAQPage'] } } as FAQEntity,
+    'faq-ram-upgrade': { id: 'faq-ram-upgrade', slug: 'ram-upgrade', entityType: 'FAQ', isActive: true, title: 'Can you upgrade my laptop RAM?', description: 'Details on DDR4 and DDR5 laptop memory upgrades.', answer: 'Yes, for laptops with upgradeable RAM slots. We install compatible DDR4 or DDR5 memory and verify stability with stress testing. Note that some modern laptops have soldered RAM that cannot be upgraded.', seo: { title: 'Can you upgrade my laptop RAM?', description: 'DDR4 and DDR5 RAM upgrades available for compatible laptops.', canonicalUrl: 'https://www.computerrepairkuwait.com/faq#ram-upgrade', schemaTypes: ['FAQPage'] } } as FAQEntity,
+    'faq-gaming-laptops': { id: 'faq-gaming-laptops', slug: 'gaming-laptops', entityType: 'FAQ', isActive: true, title: 'Do you repair gaming laptops like ASUS ROG, MSI, and Alienware?', description: 'Information on specialized gaming laptop repairs.', answer: 'Yes. Gaming laptop repair is a specialist service at KCROC. We handle ASUS ROG, MSI, Lenovo Legion, Acer Predator, Alienware, Razer, and other high-performance laptops. Common gaming laptop repairs include thermal paste and liquid metal replacement, fan replacement, and GPU diagnostics.', seo: { title: 'Do you repair gaming laptops?', description: 'We specialize in repairing ASUS ROG, MSI, Alienware, and other gaming laptops.', canonicalUrl: 'https://www.computerrepairkuwait.com/faq#gaming-laptops', schemaTypes: ['FAQPage'] } } as FAQEntity,
+    'faq-parts': { id: 'faq-parts', slug: 'replacement-parts', entityType: 'FAQ', isActive: true, title: 'Do you use genuine or original replacement parts?', description: 'Policy on sourcing OEM and high-grade compatible parts.', answer: 'We use OEM (Original Equipment Manufacturer) parts wherever available. For screens, batteries, and keyboards, we offer both OEM and high-grade compatible options and explain the difference in quality and price before repair.', seo: { title: 'Do you use genuine replacement parts?', description: 'We use OEM and high-grade compatible parts for all computer repairs.', canonicalUrl: 'https://www.computerrepairkuwait.com/faq#replacement-parts', schemaTypes: ['FAQPage'] } } as FAQEntity,
+    'faq-surface': { id: 'faq-surface', slug: 'surface-repair', entityType: 'FAQ', isActive: true, title: 'Do you repair Microsoft Surface laptops?', description: 'Information on Microsoft Surface screen and hardware repair.', answer: 'Yes. We repair Microsoft Surface devices including Surface Pro, Surface Laptop, and Surface Book models. Surface repair is specialist work due to their adhesive-sealed construction. We have the correct tools and experience for Surface disassembly and repair.', seo: { title: 'Do you repair Microsoft Surface laptops?', description: 'Expert Microsoft Surface Pro and Laptop repair in Kuwait.', canonicalUrl: 'https://www.computerrepairkuwait.com/faq#surface-repair', schemaTypes: ['FAQPage'] } } as FAQEntity,
+    'faq-corporate': { id: 'faq-corporate', slug: 'corporate', entityType: 'FAQ', isActive: true, title: 'Do you provide repair services for businesses and offices?', description: 'Details regarding corporate B2B IT support and batch repairs.', answer: 'Yes. We service offices, schools, and businesses throughout Kuwait with hardware repair, SSD upgrades, Windows reinstallation, and preventive maintenance. For businesses with multiple devices, we arrange batch collection and provide itemised invoices.', seo: { title: 'Do you provide IT repair for businesses?', description: 'Corporate and business IT support, batch repairs, and maintenance across Kuwait.', canonicalUrl: 'https://www.computerrepairkuwait.com/faq#corporate', schemaTypes: ['FAQPage'] } } as FAQEntity,
+    'faq-hinge': { id: 'faq-hinge', slug: 'hinge-repair', entityType: 'FAQ', isActive: true, title: 'Can you repair a broken laptop hinge?', description: 'Information on broken laptop hinge and chassis repair.', answer: 'Yes. Broken hinges are a common failure on heavily used laptops. Left unrepaired, a loose hinge will crack the screen bezel, damage the display cable, and eventually crack the screen itself. We repair or replace hinge assemblies and reinforce the chassis.', seo: { title: 'Can you repair a broken laptop hinge?', description: 'Fast laptop hinge and chassis repair to prevent further screen damage.', canonicalUrl: 'https://www.computerrepairkuwait.com/faq#hinge-repair', schemaTypes: ['FAQPage'] } } as FAQEntity,
+    'faq-keyboard': { id: 'faq-keyboard', slug: 'keyboard-repair', entityType: 'FAQ', isActive: true, title: 'Can you replace a laptop keyboard?', description: 'Details on laptop and MacBook keyboard replacement services.', answer: 'Yes. We replace laptop keyboards for all major brands including Dell, HP, Lenovo, ASUS, and Acer. For MacBook keyboard replacement, we handle both the butterfly mechanism and the Magic Keyboard.', seo: { title: 'Can you replace a laptop keyboard?', description: 'Keyboard replacement for Windows laptops and Apple MacBooks.', canonicalUrl: 'https://www.computerrepairkuwait.com/faq#keyboard-repair', schemaTypes: ['FAQPage'] } } as FAQEntity,
+    'faq-wifi': { id: 'faq-wifi', slug: 'wifi-repair', entityType: 'FAQ', isActive: true, title: 'My laptop WiFi stopped working. Can you fix it?', description: 'Diagnostics and repair for laptop wireless connectivity issues.', answer: 'Yes. WiFi failure can have several causes: a damaged wireless card, a loose antenna connector, a driver issue, or a failed BIOS setting. In most cases, WiFi card replacement resolves the issue and is a same-day repair.', seo: { title: 'Laptop WiFi stopped working. Can you fix it?', description: 'Diagnosis and replacement of failed laptop WiFi cards and antennas.', canonicalUrl: 'https://www.computerrepairkuwait.com/faq#wifi-repair', schemaTypes: ['FAQPage'] } } as FAQEntity,
+    'faq-virus': { id: 'faq-virus', slug: 'virus-removal', entityType: 'FAQ', isActive: true, title: 'Can you remove viruses and malware from my laptop?', description: 'Information on professional virus, malware, and ransomware removal.', answer: 'Yes. We perform complete malware and virus removal, including ransomware, adware, browser hijackers, and rootkits. For severe infections, we back up your personal files and perform a clean Windows installation.', seo: { title: 'Can you remove viruses and malware?', description: 'Professional malware, virus, and adware removal services in Kuwait.', canonicalUrl: 'https://www.computerrepairkuwait.com/faq#virus-removal', schemaTypes: ['FAQPage'] } } as FAQEntity,
+    'faq-windows': { id: 'faq-windows', slug: 'windows-install', entityType: 'FAQ', isActive: true, title: 'Can you reinstall Windows on my laptop?', description: 'Details on clean Windows 10 and 11 installation services.', answer: 'Yes. We perform clean Windows 10 and Windows 11 installations with driver installation, Windows Update, and system optimization included. If you have data to preserve, we back up your files before reinstalling.', seo: { title: 'Can you reinstall Windows on my laptop?', description: 'Clean Windows 10 and 11 installations with full data backup and driver setup.', canonicalUrl: 'https://www.computerrepairkuwait.com/faq#windows-install', schemaTypes: ['FAQPage'] } } as FAQEntity,
+
+    /* ═══════════════════════════════════════════════════════════════
+       PHASE 2: BRAND ENTITIES
+    ═══════════════════════════════════════════════════════════════ */
+    'brand-dell': {
+      id: 'brand-dell', slug: 'dell-laptop-repair-kuwait', entityType: 'Brand', isActive: true,
+      title: 'Dell Laptop Repair Kuwait', brandName: 'Dell', officialWebsite: 'https://www.dell.com',
+      description: 'Dell laptops — Inspiron, Latitude, XPS, and Alienware — have specific failure patterns in Kuwait\'s climate. The cooling systems on Dell Inspiron and Latitude models are particularly vulnerable to dust ingress from Kuwait\'s particulate-heavy air. XPS models use soldered RAM and storage, making component-level repair the only cost-effective path when hardware fails.',
+      commonModels: ['Inspiron 15', 'Inspiron 14', 'Latitude 5420', 'XPS 13', 'XPS 15', 'G15 Gaming', 'Alienware m16'],
+      commonIssues: [
+        { id: 'dell-hinge',    title: 'Hinge cracking the bezel',      severity: 'high',   description: 'Dell Inspiron hinges frequently crack the plastic chassis.' },
+        { id: 'dell-thermal',  title: 'CPU throttling under load',     severity: 'high',   description: 'Clogged heatsink fins in Kuwait dust conditions.' },
+        { id: 'dell-dc-jack',  title: 'Charging port loose or dead',   severity: 'medium', description: 'Dell barrel DC jack failure from heavy plug cycling.' },
+        { id: 'dell-screen',   title: 'Screen flickering or lines',    severity: 'medium', description: 'Display cable wear near the hinge.' },
+        { id: 'dell-battery',  title: 'Battery swollen',               severity: 'high',   description: 'Lithium degradation from Kuwait summer temperatures.' }
+      ],
+      pricing: { startingFrom: 15, currency: 'KWD', quoteRequired: true, displayLabel: 'From 15 KWD — free diagnostic first' },
+      seo: { title: 'Dell Laptop Repair Kuwait | All Models | Free Pick & Drop | KCROC', description: 'Expert Dell laptop repair in Kuwait. Inspiron, Latitude, XPS, G15 Gaming, and Alienware repair — screen, battery, hinge, motherboard, and thermal issues. Free pick & drop.', canonicalUrl: 'https://www.computerrepairkuwait.com/dell-laptop-repair-kuwait', ogType: 'article', schemaTypes: ['Service'] }
+    } as BrandEntity,
+
+    'brand-hp': {
+      id: 'brand-hp', slug: 'hp-laptop-repair-kuwait', entityType: 'Brand', isActive: true,
+      title: 'HP Laptop Repair Kuwait', brandName: 'HP', officialWebsite: 'https://www.hp.com',
+      description: 'HP laptops — from the budget Pavilion to the business EliteBook — are among the most repaired devices in our Hawalli lab. HP\'s power management systems are particularly sensitive to Kuwait\'s frequent voltage fluctuations, which cause power IC failures more commonly than in other markets.',
+      commonModels: ['Pavilion', 'EliteBook', 'ProBook', 'Spectre x360', 'Envy', 'OMEN', 'Victus'],
+      commonIssues: [
+        { id: 'hp-power', title: 'Power IC Failure', severity: 'high', description: 'Voltage fluctuation damages power management chips.' },
+        { id: 'hp-hinge', title: 'Hinge separation', severity: 'high', description: 'Envy and Pavilion hinge mounts breaking from chassis.' },
+        { id: 'hp-fan',   title: 'Fan error on boot', severity: 'medium', description: 'HP system fan (90b) error due to dust accumulation.' }
+      ],
+      pricing: { startingFrom: 15, currency: 'KWD', quoteRequired: true, displayLabel: 'From 15 KWD — free diagnostic first' },
+      seo: { title: 'HP Laptop Repair Kuwait | EliteBook, Pavilion & OMEN | KCROC', description: 'Expert HP laptop repair in Kuwait. Power issues, hinge repair, screen replacement, and thermal optimization. Free pick & drop.', canonicalUrl: 'https://www.computerrepairkuwait.com/hp-laptop-repair-kuwait', ogType: 'article', schemaTypes: ['Service'] }
+    } as BrandEntity,
+
+    /* ═══════════════════════════════════════════════════════════════
+       PHASE 3: PROBLEM ENTITIES
+    ═══════════════════════════════════════════════════════════════ */
+    'problem-no-power': {
+      id: 'problem-no-power', slug: 'laptop-wont-turn-on', entityType: 'Problem', isActive: true,
+      title: 'Laptop Won\'t Turn On (No Power)',
+      description: 'Diagnostic guide for laptops that are completely dead with no lights or fan spin.',
+      symptom: 'The laptop is completely unresponsive when the power button is pressed. No charging lights illuminate when plugged in, and no fan noise is heard.',
+      causes: ['Failed charging port (DC Jack/USB-C)', 'Dead or shorted battery preventing boot', 'Shorted input MOSFET on motherboard', 'Blown main power rail (e.g., PPBUS_G3H on MacBooks)'],
+      doNotDo: 'Do not repeatedly forcefully press the power button or wiggle the charging cable, as this can cause sparking and further component damage.',
+      solution: 'Component-level board diagnosis using a multimeter to trace voltage drops. Usually resolved by replacing a single shorted capacitor or MOSFET.',
+      urgency: 'high',
+      relatedServiceIds: ['srv-motherboard', 'srv-laptop'],
+      seo: { title: 'Laptop Won\'t Turn On Kuwait — Diagnosis & Repair | KCROC', description: 'Laptop not turning on in Kuwait? We diagnose dead input MOSFETs, blown fuses, and power rail shorts at component level. Free diagnostic. Free pick & drop.', canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-wont-turn-on', ogType: 'article', schemaTypes: ['Article', 'FAQPage'] }
+    } as ProblemEntity,
+
+    'problem-overheating': {
+      id: 'problem-overheating', slug: 'laptop-overheating-kuwait', entityType: 'Problem', isActive: true,
+      title: 'Laptop Overheating Kuwait',
+      description: 'Diagnostic guide for laptops thermal throttling and shutting down from extreme heat.',
+      symptom: 'Laptop extremely hot to touch, fans running at maximum speed, performance dropping under load.',
+      causes: ['Dust-blocked cooling fins — most common in Kuwait\'s particulate environment', 'Dried thermal paste — accelerates in 45°C+ summer temperatures', 'Failed or worn fan bearing'],
+      doNotDo: 'Do not use a laptop that is thermal throttling on intensive tasks — sustained overheating degrades the CPU and eventually kills the motherboard.',
+      solution: 'Ultrasonic cleaning of the cooling system, fresh phase-change thermal material application, and fan inspection. We also check BIOS thermal limits.',
+      urgency: 'medium',
+      relatedServiceIds: ['srv-laptop', 'srv-gaming'],
+      seo: { title: 'Laptop Overheating Kuwait — Fix & Thermal Service | KCROC', description: 'Laptop overheating in Kuwait? Kuwait\'s summer heat destroys thermal paste and clogs cooling fins. We deep-clean and re-paste. Free pick & drop. Same-day service.', canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-overheating-kuwait', ogType: 'article', schemaTypes: ['Article', 'FAQPage'] }
+    } as ProblemEntity,
+
+    /* ═══════════════════════════════════════════════════════════════
+       PHASE 4: CASE STUDY ENTITIES
+    ═══════════════════════════════════════════════════════════════ */
+    'case-macbook-liquid-salmiya': {
+      id: 'case-macbook-liquid-salmiya', slug: 'macbook-liquid-damage-salmiya', entityType: 'CaseStudy', isActive: true,
+      title: 'MacBook Pro M2 Liquid Damage Repair — Salmiya',
+      description: 'Real repair case study of a coffee-damaged MacBook Pro M2 logic board restoration.',
+      device: 'MacBook Pro 14" M2 Pro',
+      location: 'Salmiya',
+      symptom: 'Coffee spill. Device powered off immediately. Fan spins briefly on power button, no display.',
+      diagnosis: 'Ultrasonic cleaning revealed corrosion on the PPBUS_G3H main power rail and a shorted Q7510 MOSFET. Secondary damage to the backlight circuit.',
+      repair: 'Q7510 MOSFET replaced via micro-soldering. Backlight fuse replaced. Board cleaned and re-tested under full load for 4 hours.',
+      outcome: 'Device fully restored. All data preserved on original M2 SSD. Customer data intact.',
+      timeToRepair: '36 hours',
+      costVsReplacement: 'Repair: 65 KWD. Apple Authorized Center quote: 280 KWD for board swap with data loss.',
+      publishDate: '2026-05-12',
+      seo: { title: 'MacBook Pro M2 Liquid Damage Repair Kuwait — Real Case Study | KCROC', description: 'Coffee spill destroyed a MacBook Pro M2 in Salmiya. KCROC repaired the logic board for 65 KWD, preserving all data. Apple wanted 280 KWD for a board swap.', canonicalUrl: 'https://www.computerrepairkuwait.com/case-studies/macbook-liquid-damage-salmiya', ogType: 'article', schemaTypes: ['Article'] }
+    } as CaseStudyEntity,
 
     /* ═══════════════════════════════════════════════════════════════
        FOOTER
-       ═══════════════════════════════════════════════════════════════ */
-    'footer-data': { id: 'footer-data', entityType: 'Footer', isActive: true, title: 'Footer', links: { services: [], company: [], areas: [] } } as FooterEntity,
+    ═══════════════════════════════════════════════════════════════ */
+    'footer-data': {
+      id: 'footer-data', entityType: 'Footer', isActive: true, title: 'Footer Links',
+      links: {
+        services: [
+          { label: 'Laptop Repair Kuwait',      path: '/laptop-repair-kuwait' },
+          { label: 'MacBook Repair Kuwait',     path: '/macbook-repair-kuwait' },
+          { label: 'Gaming PC Repair Kuwait',   path: '/gaming-pc-repair-kuwait' },
+          { label: 'Motherboard Repair Kuwait', path: '/motherboard-repair-kuwait' },
+          { label: 'Screen Replacement Kuwait', path: '/laptop-screen-repair-kuwait' },
+        ],
+        company: [
+          { label: 'About us',       path: '/about' },
+          { label: 'Contact',        path: '/contact' },
+          { label: 'Tech Blog',      path: '/blog' },
+          { label: 'FAQ',            path: '/faq' },
+          { label: 'Pricing',        path: '/pricing' },
+        ],
+        areas: [
+          { label: 'Computer Repair Hawalli',      path: '/computer-repair-in-hawalli' },
+          { label: 'Computer Repair Salmiya',      path: '/computer-repair-in-salmiya' },
+          { label: 'Computer Repair Kuwait City',  path: '/computer-repair-in-kuwait-city' },
+          { label: 'Computer Repair Farwaniya',    path: '/computer-repair-in-farwaniya' },
+          { label: 'Computer Repair Jahra',        path: '/computer-repair-in-jahra' },
+          { label: 'Computer Repair Ahmadi',       path: '/computer-repair-in-ahmadi' },
+        ]
+      }
+    } as FooterEntity,
   }
 };
 
+/* ═══════════════════════════════════════════════════════════════════
+   KCROC_GRAPH SINGLETON — consumed by all UI components and SEO Engine
+═══════════════════════════════════════════════════════════════════ */
 const allEntities = Object.values(rawGraphData.entities);
 
 export const GRAPH_INDEXES = rawGraphData.entities;
@@ -120,6 +268,15 @@ export const KCROC_GRAPH = {
   reviews:     allEntities.find((e): e is ReviewsEntity     => e.entityType === 'Reviews'   && e.isActive),
   footer:      allEntities.find((e): e is FooterEntity      => e.entityType === 'Footer'),
   stats:       allEntities.find((e): e is StatsEntity       => e.entityType === 'Stats'),
+  
+  // ✅ ADDED EXPORTS FOR NEW SEO ROADMAP ENTITIES
+  brands:      allEntities.filter((e): e is BrandEntity     => e.entityType === 'Brand'     && e.isActive),
+  problems:    allEntities.filter((e): e is ProblemEntity   => e.entityType === 'Problem'   && e.isActive),
+  caseStudies: allEntities.filter((e): e is CaseStudyEntity => e.entityType === 'CaseStudy' && e.isActive),
 };
 
-export const KCROC_AGGREGATE_RATING = { ratingValue: '4.9', reviewCount: 150, bestRating: 5 };
+export const KCROC_AGGREGATE_RATING = {
+  ratingValue: '4.9',
+  reviewCount:  150,
+  bestRating:   5,
+};
