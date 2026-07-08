@@ -1,19 +1,18 @@
-// File: app/frontend/src/components/Footer.tsx 
-// (or app/frontend/src/core/components/layout/Footer.tsx)
-
+// File: src/components/Footer.tsx
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { MapPin, Phone, MessageCircle, CalendarClock, ShieldCheck } from 'lucide-react';
-import { KCROC_GRAPH } from '../../data/graph'; // Adjust path (e.g., '../data/graph') depending on folder depth
 
-export function Footer() {
+// ✅ FIXED: Correct relative path (one level up to src, then into data)
+import { KCROC_GRAPH } from '../data/graph';
+
+export default function Footer() {
   const [logoError, setLogoError] = useState(false);
 
-  // 1. Hook directly into the Knowledge Graph
+  // Hook directly into the Knowledge Graph
   const business = KCROC_GRAPH.business;
   const footerData = KCROC_GRAPH.footer;
 
-  // Failsafe in case graph is missing
   if (!business || !footerData) return null;
 
   const WA_LINK = `https://wa.me/${business.telephone}?text=${encodeURIComponent("Hi KCROC, I need computer repair assistance in Kuwait.")}`;
@@ -53,11 +52,10 @@ export function Footer() {
             </a>
           </div>
 
-          {/* Expert Services (Dynamic from Graph) */}
+          {/* Expert Services */}
           <nav aria-label="Expert Services Navigation">
             <h3 className="text-white font-bold mb-6 uppercase tracking-wider text-sm">Expert Services</h3>
             <ul className="space-y-3">
-              {/* Fix for Crash: Correctly mapping the object keys `link.path` and `link.label` */}
               {footerData.links.services.map((link, idx) => (
                 <li key={idx}>
                   <Link to={link.path} className="text-slate-400 hover:text-cyan-400 transition-colors text-sm">
@@ -68,7 +66,7 @@ export function Footer() {
             </ul>
           </nav>
 
-          {/* Company Links (Dynamic from Graph) */}
+          {/* Company Links */}
           <nav aria-label="Company Navigation">
             <h3 className="text-white font-bold mb-6 uppercase tracking-wider text-sm">Quick Links</h3>
             <ul className="space-y-3">
@@ -82,7 +80,7 @@ export function Footer() {
             </ul>
           </nav>
 
-          {/* Contact & Service Areas (Dynamic from Graph) */}
+          {/* Contact */}
           <div>
             <h3 className="text-white font-bold mb-6 uppercase tracking-wider text-sm">Connect</h3>
             <ul className="space-y-4">
@@ -96,25 +94,7 @@ export function Footer() {
                   +{business.telephone}
                 </a>
               </li>
-              <li className="flex items-center gap-3 text-slate-400 text-sm mt-4">
-                <CalendarClock className="w-5 h-5 text-cyan-400 flex-shrink-0" aria-hidden="true" />
-                <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="text-cyan-400 font-bold hover:text-cyan-300 transition-colors">
-                  Book Free Pickup Now
-                </a>
-              </li>
             </ul>
-
-            {/* Service Areas Rendered as small badges */}
-            <div className="mt-6">
-              <h4 className="text-slate-500 font-bold text-xs uppercase mb-3">Service Areas</h4>
-              <div className="flex flex-wrap gap-2">
-                {footerData.links.areas.map((area, idx) => (
-                  <Link key={idx} to={area.path} className="text-xs text-slate-400 hover:text-cyan-400 transition-colors bg-slate-900/50 px-2 py-1 rounded border border-slate-800">
-                    {area.label.replace('Computer Repair ', '')}
-                  </Link>
-                ))}
-              </div>
-            </div>
           </div>
         </div>
 
@@ -123,14 +103,8 @@ export function Footer() {
           <p className="text-slate-500 text-sm">
             © {new Date().getFullYear()} {business.legalName}. All rights reserved.
           </p>
-          <div className="flex gap-6">
-            <Link to="/privacy" className="text-slate-600 hover:text-slate-400 text-sm transition-colors">Privacy Policy</Link>
-            <Link to="/terms" className="text-slate-600 hover:text-slate-400 text-sm transition-colors">Terms of Service</Link>
-          </div>
         </div>
       </div>
     </footer>
   );
 }
-
-export default Footer;
