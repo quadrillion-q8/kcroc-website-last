@@ -1,32 +1,24 @@
 // File: app/frontend/src/pages/LocationTemplate.tsx
 import React from 'react';
-import { useParams, Navigate } from 'react-router-dom';
+import { useParams, Navigate, Link } from 'react-router-dom';
 import { KCROC_GRAPH } from '../data/graph';
 import { SEOEngine } from '../core/components/SEOEngine';
 import { MapPin, Phone, Clock, Wrench, ShieldCheck, ArrowRight } from 'lucide-react';
 
 const LocationTemplate: React.FC = () => {
-  // Grab the exact slug from the URL (e.g., "hawalli" from "/location/hawalli")
   const { slug } = useParams<{ slug: string }>(); 
   
-  // Instantly query the static graph (No async/await needed)
   const locationData = KCROC_GRAPH.locations.find((loc) => loc.slug === slug);
 
-  // If the slug doesn't exist in the graph, safely 404
   if (!locationData) {
     return <Navigate to="/404" replace />;
   }
 
   const business = KCROC_GRAPH.business;
-  // Automatically pull the top 6 active services for the internal linking grid
   const relatedServices = KCROC_GRAPH.services.slice(0, 6); 
 
   return (
     <div className="bg-slate-950 min-h-screen text-slate-200">
-      {/* ==========================================
-        PROGRAMMATIC SEO ENGINE
-        ========================================== 
-      */}
       <SEOEngine entityId={locationData.id} />
 
       {/* Hero Section */}
@@ -41,7 +33,7 @@ const LocationTemplate: React.FC = () => {
             Expert Computer Repair in <span className="text-cyan-400">{locationData.title}</span>
           </h1>
           <p className="text-lg md:text-xl text-slate-400 mb-10 max-w-2xl mx-auto leading-relaxed">
-            {locationData.description} We offer free Pick & Drop services within a {locationData.serviceRadiusKm}km radius of our main lab.
+            {locationData.description} We offer free Pick & Drop services within a {locationData.serviceRadiusKm}km radius.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -131,9 +123,9 @@ const LocationTemplate: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {relatedServices.map((service) => (
-              <a 
+              <Link 
                 key={service.id}
-                href={`/${service.slug}`}
+                to={`/${service.slug}`}
                 className="group p-6 bg-slate-900 border border-slate-800 rounded-xl hover:border-cyan-500 transition-colors flex flex-col justify-between"
               >
                 <div>
@@ -147,7 +139,7 @@ const LocationTemplate: React.FC = () => {
                 <div className="flex items-center text-cyan-400 font-bold text-sm">
                   View Service <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                 </div>
-              </a>
+              </Link>
             ))}
           </div>
         </div>
