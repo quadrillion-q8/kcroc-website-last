@@ -15,6 +15,7 @@ const PrivacySecurity = lazy(() => import('./pages/PrivacySecurity'));
 const FAQ = lazy(() => import('./pages/FAQ'));
 const Blog = lazy(() => import('./pages/Blog')); 
 const NotFound = lazy(() => import('./pages/NotFound'));
+const BookingPage = lazy(() => import('./pages/BookingPage')); // 👈 Added BookingPage Import
 
 // Dynamic Enterprise Templates
 const Services = lazy(() => import('./pages/Services'));
@@ -76,6 +77,7 @@ export const App: React.FC = () => {
             <Route path="case-studies/:slug" element={<CaseStudyTemplate />} />
             
             {/* Static Routes */}
+            <Route path="book" element={<BookingPage />} /> {/* 👈 Added Booking Route */}
             <Route path="pricing" element={<Pricing />} />
             <Route path="contact" element={<Contact />} />
             <Route path="gallery" element={<Gallery />} />
