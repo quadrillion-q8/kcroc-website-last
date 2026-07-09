@@ -1,7 +1,7 @@
 // File: app/frontend/src/pages/templates/ProblemTemplate.tsx
 import React from 'react';
 import { useLocation, Navigate } from 'react-router-dom';
-import { KCROC_GRAPH } from '../../../data/graph';
+import { KCROC_GRAPH } from '../../data/graph'; // ✅ FIXED IMPORT
 import { SEOEngine } from '../../core/components/SEOEngine';
 import { AlertOctagon, CheckCircle2, ShieldAlert } from 'lucide-react';
 
@@ -63,6 +63,8 @@ const ProblemTemplate: React.FC = () => {
               </p>
               <a 
                 href={`https://wa.me/${KCROC_GRAPH.business?.telephone}`}
+                target="_blank"
+                rel="noreferrer"
                 className="inline-block py-3 px-8 bg-cyan-500 text-slate-950 font-black rounded-full"
               >
                 Book a Free Diagnostic
