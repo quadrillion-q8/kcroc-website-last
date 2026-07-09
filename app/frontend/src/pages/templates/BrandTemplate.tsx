@@ -1,13 +1,12 @@
 // File: app/frontend/src/pages/templates/BrandTemplate.tsx
 import React from 'react';
 import { useLocation, Navigate } from 'react-router-dom';
-import { KCROC_GRAPH } from '../../../data/graph';
+import { KCROC_GRAPH } from '../../data/graph'; // ✅ FIXED IMPORT
 import { SEOEngine } from '../../core/components/SEOEngine';
 import { Wrench, CheckCircle, AlertTriangle, MonitorSmartphone } from 'lucide-react';
 
 const BrandTemplate: React.FC = () => {
   const location = useLocation();
-  // Extract slug from URL (e.g., "/dell-laptop-repair-kuwait" -> "dell-laptop-repair-kuwait")
   const slug = location.pathname.replace(/^\/+/, ''); 
   
   const brand = KCROC_GRAPH.brands.find(b => b.slug === slug);
