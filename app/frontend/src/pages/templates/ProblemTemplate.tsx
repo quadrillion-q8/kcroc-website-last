@@ -1,7 +1,7 @@
 // File: app/frontend/src/pages/templates/ProblemTemplate.tsx
 import React from 'react';
 import { useLocation, Navigate } from 'react-router-dom';
-import { KCROC_GRAPH } from '../../data/graph'; // ✅ FIXED IMPORT
+import { KCROC_GRAPH } from '../../data/graph'; 
 import { SEOEngine } from '../../core/components/SEOEngine';
 import { AlertOctagon, CheckCircle2, ShieldAlert } from 'lucide-react';
 
