@@ -38,6 +38,9 @@ export const RoutableEntitySchema = CoreNodeSchema.extend({
   seo: SEOSchema,
   // 🚀 Added for Image Pipeline: Allows templates to consume auto-optimized assets
   featuredImage: ImageAssetSchema.optional(), 
+  // 🚀 Added for Navigation Framework: Controls menu hierarchy, sorting, and layout placement
+  navigationPriority: z.number().default(0),
+  isFeatured: z.boolean().default(false).optional(),
 });
 
 /* --- ENTITY SCHEMAS --- */
