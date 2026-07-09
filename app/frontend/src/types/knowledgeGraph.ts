@@ -1,6 +1,22 @@
 // File: app/frontend/src/types/knowledgeGraph.ts
 import { z } from 'zod';
 
+/* --- ADVANCED ASSET SCHEMAS (Phase 1 Image Pipeline) --- */
+export const ImageVariantsSchema = z.object({
+  raw: z.string(),       // Original source (e.g., /assets/raw/dell-hero.png)
+  webp: z.string(),      // Auto-generated WebP path
+  avif: z.string(),      // Auto-generated AVIF path
+  width: z.number().optional(),
+  height: z.number().optional(),
+});
+
+export const ImageAssetSchema = z.object({
+  thumbnail: ImageVariantsSchema.optional(),
+  hero: ImageVariantsSchema.optional(),
+  ogImage: z.string().optional(),   // Explicit 1200x630 fallback format for social sharing
+  altText: z.string().optional()
+});
+
 /* --- BASE SCHEMAS --- */
 export const CoreNodeSchema = z.object({
   id: z.string(),
@@ -20,6 +36,8 @@ export const RoutableEntitySchema = CoreNodeSchema.extend({
   slug: z.string(),
   description: z.string(),
   seo: SEOSchema,
+  // 🚀 Added for Image Pipeline: Allows templates to consume auto-optimized assets
+  featuredImage: ImageAssetSchema.optional(), 
 });
 
 /* --- ENTITY SCHEMAS --- */
@@ -34,7 +52,7 @@ export const BusinessSchema = CoreNodeSchema.extend({
   addressCountry: z.string(),
   coords: z.object({ lat: z.number(), lng: z.number() }),
   websiteUrl: z.string(),
-  logoUrl: z.string(),
+  logoUrl: z.string(), // Kept as string for backward compatibility, can be upgraded later
   email: z.string(),
   priceRange: z.string(),
   openingHours: z.string(),
@@ -194,11 +212,12 @@ export const RawGraphSchema = z.object({
     ServiceSchema, LocationSchema, FAQSchema, BusinessSchema, 
     USPSchema, TrustBadgeSchema, ProcessSchema, WebPageSchema, 
     StatsSchema, FooterSchema, ReviewsSchema,
-    BrandSchema, ProblemSchema, CaseStudySchema // Added new schema validations
+    BrandSchema, ProblemSchema, CaseStudySchema
   ])),
 });
 
 /* --- EXPORTED TYPES --- */
+export type ImageAsset = z.infer<typeof ImageAssetSchema>;
 export type RoutableEntity = z.infer<typeof RoutableEntitySchema>;
 export type ServiceEntity = z.infer<typeof ServiceSchema>;
 export type LocationEntity = z.infer<typeof LocationSchema>;
