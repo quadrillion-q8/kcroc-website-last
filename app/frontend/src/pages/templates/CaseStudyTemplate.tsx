@@ -1,13 +1,12 @@
 // File: app/frontend/src/pages/templates/CaseStudyTemplate.tsx
 import React from 'react';
 import { useLocation, Navigate } from 'react-router-dom';
-import { KCROC_GRAPH } from '../../../data/graph';
+import { KCROC_GRAPH } from '../../data/graph'; // ✅ FIXED IMPORT
 import { SEOEngine } from '../../core/components/SEOEngine';
 import { Microscope, Clock, BadgeDollarSign, MapPin } from 'lucide-react';
 
 const CaseStudyTemplate: React.FC = () => {
   const location = useLocation();
-  // Extract slug from nested URL (e.g., "/case-studies/macbook-liquid-salmiya")
   const slug = location.pathname.split('/').pop(); 
   
   const caseStudy = KCROC_GRAPH.caseStudies?.find(c => c.slug === slug);
