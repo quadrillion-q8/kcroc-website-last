@@ -9,9 +9,6 @@ import {
 import { NavigationBuilder } from '../../navigation/NavigationBuilder';
 import { KCROC_GRAPH } from '../../../data/graph';
 
-/* ─────────────────────────────────────────────────────────────────────────────
-   ICON REGISTRY
-───────────────────────────────────────────────────────────────────────────── */
 const ICON_REGISTRY: Record<string, React.ComponentType<{ className?: string }>> = {
   apple:     Apple,
   laptop:    Laptop,
@@ -24,9 +21,6 @@ const ICON_REGISTRY: Record<string, React.ComponentType<{ className?: string }>>
 };
 const getIcon = (key: string) => ICON_REGISTRY[key] ?? Wrench;
 
-/* ─────────────────────────────────────────────────────────────────────────────
-   NAV LINKS
-───────────────────────────────────────────────────────────────────────────── */
 const NAV_LINKS = [
   { label: 'Services', hasMega: true,  href: '/services' },
   { label: 'Pricing',  hasMega: false, href: '/pricing' },
@@ -35,23 +29,18 @@ const NAV_LINKS = [
   { label: 'Contact',  hasMega: false, href: '/contact' },
 ];
 
-/* ─────────────────────────────────────────────────────────────────────────────
-   COMPONENT
-───────────────────────────────────────────────────────────────────────────── */
 export default function Header() {
   const [megaOpen,   setMegaOpen]   = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled,   setScrolled]   = useState(false);
-  const [panelLeft,  setPanelLeft]  = useState(0);
 
-  const megaRef        = useRef<HTMLDivElement>(null);
-  const triggerRef     = useRef<HTMLButtonElement>(null);
-  const servicesBtnRef = useRef<HTMLDivElement>(null); // ✅ NEW: Track the wrapper for position
+  // ✅ NEW: track pixel position of the Services button for fixed panel
+  const [panelLeft, setPanelLeft] = useState(0);
+  const servicesBtnRef = useRef<HTMLButtonElement>(null);
   const mobileRef      = useRef<HTMLDivElement>(null);
   const closeTimer     = useRef<ReturnType<typeof setTimeout> | null>(null);
   const location       = useLocation();
 
-  /* ── MEGA MENU DATA ── */
   const menuData     = NavigationBuilder.getMegaMenuServices();
   const featured     = menuData.featured.length > 0
     ? menuData.featured
@@ -62,12 +51,11 @@ export default function Header() {
         callToAction: '→ Learn More',
       }));
   const standardList = menuData.standardList;
-  
+
   const phone    = KCROC_GRAPH.business?.telephone ?? '96555301913';
   const cleanTel = phone.replace(/\D/g, '');
 
-  /* ── MEGA MENU POSITIONING ── */
-  // ✅ Calculate the horizontal center of the Services button relative to the viewport
+  // ✅ Calculate the horizontal center of the Services button
   const updatePanelPosition = useCallback(() => {
     if (servicesBtnRef.current) {
       const rect = servicesBtnRef.current.getBoundingClientRect();
@@ -75,24 +63,21 @@ export default function Header() {
     }
   }, []);
 
-  /* ── MEGA MENU HOVER ── */
   const handleMegaEnter = useCallback(() => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
     updatePanelPosition();
     setMegaOpen(true);
   }, [updatePanelPosition]);
-  
+
   const handleMegaLeave = useCallback(() => {
     closeTimer.current = setTimeout(() => setMegaOpen(false), 120);
   }, []);
 
-  /* ── CLOSE ON ROUTE CHANGE ── */
   useEffect(() => {
     setMegaOpen(false);
     setMobileOpen(false);
   }, [location.pathname]);
 
-  /* ── CLOSE ON ESCAPE ── */
   useEffect(() => {
     const h = (e: KeyboardEvent) => {
       if (e.key === 'Escape') { setMegaOpen(false); setMobileOpen(false); }
@@ -101,7 +86,6 @@ export default function Header() {
     return () => document.removeEventListener('keydown', h);
   }, []);
 
-  /* ── SCROLL & RESIZE DETECTION ── */
   useEffect(() => {
     const h = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', h, { passive: true });
@@ -109,13 +93,12 @@ export default function Header() {
   }, []);
 
   useEffect(() => {
-    // Recalculate panel position if window resizes
+    // Recalculate on resize
     const h = () => updatePanelPosition();
     window.addEventListener('resize', h, { passive: true });
     return () => window.removeEventListener('resize', h);
   }, [updatePanelPosition]);
 
-  /* ── CLICK OUTSIDE (Mobile) ── */
   useEffect(() => {
     if (!mobileOpen) return;
     const h = (e: MouseEvent) => {
@@ -127,22 +110,20 @@ export default function Header() {
     return () => { clearTimeout(t); document.removeEventListener('mousedown', h); };
   }, [mobileOpen]);
 
-  /* ── BODY SCROLL LOCK (Mobile) ── */
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
   }, [mobileOpen]);
 
-  /* ── CLEANUP ── */
   useEffect(() => () => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
   }, []);
 
   return (
     <>
-      {/* ═══════════════════════════════════════════════════════════════
+      {/* ════════════════════════════════════════════════════════════
           HEADER BAR
-      ═══════════════════════════════════════════════════════════════ */}
+      ════════════════════════════════════════════════════════════ */}
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
@@ -153,31 +134,29 @@ export default function Header() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="flex items-center justify-between h-16">
 
-            {/* ── LOGO ── */}
+            {/* LOGO */}
             <Link
               to="/"
               className="flex items-center gap-2.5 shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 rounded-lg"
             >
-              <Laptop className="w-6 h-6 text-cyan-400" />
+              <img src="/logo.png" alt="KCROC Logo" className="h-8 w-auto" />
               <span className="font-black text-white text-lg tracking-tight hidden sm:block">
                 KCROC<span className="text-cyan-400">.</span>
               </span>
             </Link>
 
-            {/* ── DESKTOP NAV ── */}
+            {/* DESKTOP NAV */}
             <nav aria-label="Main navigation" className="hidden lg:flex items-center gap-1">
               {NAV_LINKS.map(link =>
                 link.hasMega ? (
                   <div
                     key={link.label}
-                    ref={servicesBtnRef}
                     className="relative"
                     onMouseEnter={handleMegaEnter}
                     onMouseLeave={handleMegaLeave}
                   >
-                    {/* Trigger button */}
                     <button
-                      ref={triggerRef}
+                      ref={servicesBtnRef}
                       aria-expanded={megaOpen}
                       aria-haspopup="true"
                       aria-controls="mega-menu-panel"
@@ -211,16 +190,16 @@ export default function Header() {
               )}
             </nav>
 
-            {/* ── DESKTOP CTA ── */}
+            {/* DESKTOP CTA */}
             <div className="hidden lg:flex items-center gap-3">
-              <a
+              
                 href={`tel:+${cleanTel}`}
                 className="flex items-center gap-2 text-sm font-medium text-slate-300 hover:text-white transition-colors"
               >
                 <Phone size={15} className="text-cyan-400" aria-hidden="true" />
                 <span className="hidden xl:block">55301913</span>
               </a>
-              <a
+              
                 href={`https://wa.me/${cleanTel}?text=${encodeURIComponent('Hi KCROC, I need a repair. Please arrange free pickup.')}`}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -231,7 +210,7 @@ export default function Header() {
               </a>
             </div>
 
-            {/* ── HAMBURGER — mobile only ── */}
+            {/* HAMBURGER */}
             <button
               className="lg:hidden p-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
               onClick={() => setMobileOpen(prev => !prev)}
@@ -249,12 +228,17 @@ export default function Header() {
         </div>
       </header>
 
-      {/* ═══════════════════════════════════════════════════════════════
+      {/* ════════════════════════════════════════════════════════════
           MEGA MENU PANEL
-          ✅ Escapes stacking contexts using `position: fixed`.
-          ✅ Aligns left by reading viewport pixels from the Services button ref.
-          ✅ Includes its own onMouse handlers to bridge the gap.
-      ═══════════════════════════════════════════════════════════════ */}
+          ✅ KEY FIX: position: FIXED — escapes ALL ancestor stacking
+          contexts, transforms, and overflow constraints.
+          Top is always 64px (header height).
+          Left is calculated from the Services button's getBoundingClientRect().
+          The hover zone wrapper (onMouseEnter/Leave) is on the
+          Services button's parent div inside the header — BUT the
+          panel itself lives here as a sibling outside the header,
+          with its own onMouseEnter/Leave to cancel the close timer.
+      ════════════════════════════════════════════════════════════ */}
       <div
         id="mega-menu-panel"
         role="region"
@@ -267,7 +251,7 @@ export default function Header() {
           left: `${panelLeft}px`,
           transform: 'translateX(-50%)',
           width: '680px',
-          zIndex: 9999, // Absolute assurance it lays over the outlet
+          zIndex: 9999,
         }}
         className={`
           transition-opacity duration-200
@@ -278,7 +262,7 @@ export default function Header() {
         `}
       >
         <div className="mt-2 bg-slate-900 border border-slate-700/60 rounded-2xl shadow-2xl shadow-black/60 overflow-hidden">
-          
+
           {/* Featured cards */}
           <div className="p-5 grid grid-cols-3 gap-3 border-b border-slate-800/60">
             {featured.map(service => {
@@ -332,10 +316,10 @@ export default function Header() {
         </div>
       </div>
 
-      {/* ═══════════════════════════════════════════════════════════════
+      {/* ════════════════════════════════════════════════════════════
           MOBILE MENU PANEL
-          ✅ fixed positioning out of document flow
-      ═══════════════════════════════════════════════════════════════ */}
+          ✅ Also fixed — position: fixed, top: 64px, z-[55]
+      ════════════════════════════════════════════════════════════ */}
       <div
         ref={mobileRef}
         id="mobile-nav-panel"
@@ -357,6 +341,7 @@ export default function Header() {
 
         <div className="bg-slate-950 border-b border-slate-800/80 shadow-2xl shadow-black/50 max-h-[calc(100svh-4rem)] overflow-y-auto">
           <nav aria-label="Mobile navigation" className="px-4 py-4 space-y-1">
+
             {NAV_LINKS.map(link => (
               <Link
                 key={link.label}
@@ -397,7 +382,7 @@ export default function Header() {
             </div>
 
             <div className="pt-4 mt-2 border-t border-slate-800/60 flex flex-col gap-3 pb-2">
-              <a
+              
                 href={`https://wa.me/${cleanTel}?text=${encodeURIComponent('Hi KCROC, I need a repair. Please arrange free pickup.')}`}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -407,7 +392,7 @@ export default function Header() {
                 <MessageCircle size={16} aria-hidden="true" />
                 WhatsApp — Book Free Pickup
               </a>
-              <a
+              
                 href={`tel:+${cleanTel}`}
                 onClick={() => setMobileOpen(false)}
                 className="flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 text-white font-medium text-sm px-4 py-3 rounded-xl transition-colors"
