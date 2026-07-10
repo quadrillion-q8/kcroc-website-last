@@ -1,6 +1,6 @@
 // File: app/frontend/src/core/components/layout/Header.tsx
 import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Menu, X, ChevronDown, Laptop, Phone, CalendarCheck, MessageCircle, ArrowRight, Wrench } from 'lucide-react';
 import { NavigationBuilder } from '../../navigation/NavigationBuilder';
 import { KCROC_GRAPH } from '../../../data/graph';
@@ -8,10 +8,9 @@ import { KCROC_GRAPH } from '../../../data/graph';
 export const Header: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [openMobileDropdown, setOpenMobileDropdown] = useState<string | null>(null);
-  const location = useLocation();
 
   const navData = NavigationBuilder.getFooterDirectory();
-  const megaMenu = NavigationBuilder.getMegaMenuServices(); // Fetched and now utilized!
+  const megaMenu = NavigationBuilder.getMegaMenuServices();
   const phone = KCROC_GRAPH.business?.telephone || '96555301913';
 
   const handleNavigate = () => {
@@ -73,28 +72,20 @@ export const Header: React.FC = () => {
     <header className="w-full bg-slate-950/90 backdrop-blur-md border-b border-slate-800 sticky top-0 z-50 h-20">
       <div className="max-w-[1400px] mx-auto px-4 xl:px-6 h-full flex items-center justify-between">
         
-        {/* LOGO */}
         <Link to="/" onClick={handleNavigate} className="flex items-center gap-2 text-white font-black text-2xl tracking-tight hover:opacity-90 flex-shrink-0">
           <Laptop className="w-6 h-6 text-cyan-400" />
           <span>KCROC</span>
         </Link>
 
-        {/* DESKTOP NAVIGATION */}
         <nav className="hidden lg:flex items-center gap-6 xl:gap-8 h-full">
           <Link to="/" className="text-sm font-bold text-slate-300 hover:text-cyan-400 transition-colors h-full flex items-center">Home</Link>
           
-          {/* =======================================================
-              EDUCATIONAL MEGA MENU (Services)
-              ======================================================= */}
           <div className="relative group h-full flex items-center">
             <button className="flex items-center gap-1 text-sm font-bold text-slate-300 group-hover:text-cyan-400 transition-colors h-full">
               Services <ChevronDown className="w-4 h-4" />
             </button>
             
-            {/* Mega Menu Container */}
             <div className="absolute top-[80px] left-1/2 -translate-x-1/2 hidden group-hover:flex w-[800px] bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl overflow-hidden cursor-default">
-              
-              {/* Featured Services (Left Side) */}
               <div className="w-2/3 p-6">
                 <h3 className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-5">Hardware Repair Services</h3>
                 <div className="grid grid-cols-1 gap-2">
@@ -116,10 +107,13 @@ export const Header: React.FC = () => {
                       </div>
                     </Link>
                   ))}
+                  {/* Safety fallback if you forget to add 'isFeatured' to graph.ts */}
+                  {megaMenu.featured.length === 0 && (
+                     <p className="text-slate-500 italic text-sm py-4">Add `isFeatured: true` to services in graph.ts to show cards here!</p>
+                  )}
                 </div>
               </div>
               
-              {/* Standard List (Right Side) */}
               <div className="w-1/3 p-6 bg-slate-950 border-l border-slate-800 flex flex-col">
                 <h3 className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-5">Popular Repairs</h3>
                 <ul className="space-y-4 flex-grow">
@@ -136,10 +130,8 @@ export const Header: React.FC = () => {
                   View All Services <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
-
             </div>
           </div>
-          {/* END MEGA MENU */}
 
           <DesktopDropdown title="Brands" items={navData.brands} />
           <DesktopDropdown title="Problems" items={navData.problems} />
@@ -161,7 +153,6 @@ export const Header: React.FC = () => {
           <Link to="/contact" className="text-sm font-bold text-slate-300 hover:text-cyan-400 transition-colors h-full flex items-center">Contact</Link>
         </nav>
 
-        {/* PRIMARY DESKTOP CTA */}
         <div className="hidden lg:flex items-center gap-4 flex-shrink-0">
           <Link 
             to="/book" 
@@ -171,7 +162,6 @@ export const Header: React.FC = () => {
           </Link>
         </div>
 
-        {/* MOBILE MENU TOGGLE */}
         <button 
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           className="lg:hidden p-2 text-slate-400 hover:text-white"
@@ -180,7 +170,6 @@ export const Header: React.FC = () => {
         </button>
       </div>
 
-      {/* MOBILE SLIDE-OUT MENU */}
       {isMobileMenuOpen && (
         <div className="lg:hidden fixed inset-0 top-20 bg-slate-950 z-40 overflow-y-auto pb-32">
           <div className="px-6 py-4 flex flex-col">
@@ -207,7 +196,6 @@ export const Header: React.FC = () => {
             <Link to="/contact" onClick={handleNavigate} className="py-4 font-bold text-slate-200 text-left">Contact</Link>
           </div>
 
-          {/* MOBILE FIXED BOTTOM CONVERSION BAR */}
           <div className="fixed bottom-0 left-0 right-0 p-4 bg-slate-950/95 border-t border-slate-800 flex gap-3 backdrop-blur-md pb-8 shadow-2xl">
             <Link 
               to="/book" 
