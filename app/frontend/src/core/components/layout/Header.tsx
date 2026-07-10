@@ -11,6 +11,7 @@ import { KCROC_GRAPH } from '../../../data/graph';
 
 /* ─────────────────────────────────────────────────────────────────────────────
    ICON REGISTRY — maps graph iconKey strings to Lucide components
+   ✅ Fixed: added Wrench fallback for unknown keys
 ───────────────────────────────────────────────────────────────────────────── */
 const ICON_REGISTRY: Record<string, React.ComponentType<{ className?: string }>> = {
   apple:      Apple,
@@ -39,6 +40,7 @@ const NAV_LINKS = [
 /* ─────────────────────────────────────────────────────────────────────────────
    COMPONENT
 ───────────────────────────────────────────────────────────────────────────── */
+// Notice this is explicitly named and exported to match RootLayout!
 export const Header: React.FC = () => {
   const [megaOpen,   setMegaOpen]   = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -48,8 +50,10 @@ export const Header: React.FC = () => {
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const location   = useLocation();
 
+  // ✅ Fixed: get menu data with isFeatured fallback
   const menuData = NavigationBuilder.getMegaMenuServices();
 
+  // If no featured items, treat top 3 as featured for display purposes
   const featured     = menuData.featured.length > 0
     ? menuData.featured
     : menuData.standardList.slice(0, 3).map(s => ({
@@ -63,6 +67,7 @@ export const Header: React.FC = () => {
   const phone    = KCROC_GRAPH.business?.telephone ?? '96555301913';
   const cleanTel = phone.replace(/\D/g, '');
 
+  // ✅ Fixed: hover race condition — use a delayed close timer
   const handleMenuEnter = useCallback(() => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
     setMegaOpen(true);
@@ -72,11 +77,13 @@ export const Header: React.FC = () => {
     closeTimer.current = setTimeout(() => setMegaOpen(false), 150);
   }, []);
 
+  // Close on route change
   useEffect(() => {
     setMegaOpen(false);
     setMobileOpen(false);
   }, [location.pathname]);
 
+  // Close on Escape
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
       if (e.key === 'Escape') { setMegaOpen(false); setMobileOpen(false); }
@@ -85,29 +92,20 @@ export const Header: React.FC = () => {
     return () => document.removeEventListener('keydown', handler);
   }, []);
 
+  // Scroll detection
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handler, { passive: true });
     return () => window.removeEventListener('scroll', handler);
   }, []);
 
+  // Cleanup timer on unmount
   useEffect(() => () => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
   }, []);
 
-  // ✅ NEW: Prevent body scrolling when the mobile menu is open
-  useEffect(() => {
-    if (mobileOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-    return () => {
-      document.body.style.overflow = '';
-    };
-  }, [mobileOpen]);
-
   return (
+    // ✅ Fixed: z-50 on header, mega panel gets z-[60]
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
@@ -121,7 +119,6 @@ export const Header: React.FC = () => {
           {/* ─── LOGO ─── */}
           <Link
             to="/"
-            onClick={() => setMobileOpen(false)}
             className="flex items-center gap-2.5 shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 rounded-lg"
           >
             <Laptop className="w-6 h-6 text-cyan-400" />
@@ -130,10 +127,11 @@ export const Header: React.FC = () => {
             </span>
           </Link>
 
-          {/* ─── DESKTOP NAV (100% UNCHANGED) ─── */}
+          {/* ─── DESKTOP NAV ─── */}
           <nav aria-label="Main navigation" className="hidden lg:flex items-center gap-1">
             {NAV_LINKS.map(link => (
               link.hasMega ? (
+                // ✅ Fixed: hover zone wraps BOTH trigger and panel
                 <div
                   key={link.label}
                   className="relative"
@@ -159,6 +157,8 @@ export const Header: React.FC = () => {
                     />
                   </button>
 
+                  {/* ─── MEGA MENU PANEL ─── */}
+                  {/* ✅ Fixed: z-[60] > header z-50; transition-opacity only (no backdrop flicker) */}
                   <div
                     id="mega-menu-panel"
                     ref={megaRef}
@@ -169,6 +169,8 @@ export const Header: React.FC = () => {
                       ${megaOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
                   >
                     <div className="bg-slate-900/98 backdrop-blur-xl border border-slate-700/60 rounded-2xl shadow-2xl shadow-black/50 overflow-hidden">
+
+                      {/* Featured services — 3 cards */}
                       <div className="p-5 grid grid-cols-3 gap-3 border-b border-slate-800/60">
                         {featured.map(service => {
                           const Icon = getIcon(service.icon ?? 'laptop');
@@ -197,6 +199,7 @@ export const Header: React.FC = () => {
                         })}
                       </div>
 
+                      {/* Standard list + CTA */}
                       <div className="p-4 flex items-center justify-between gap-4">
                         <div className="flex flex-wrap gap-2">
                           {standardList.map(service => (
@@ -216,6 +219,7 @@ export const Header: React.FC = () => {
                           All services <ArrowRight size={12} aria-hidden="true" />
                         </Link>
                       </div>
+
                     </div>
                   </div>
                 </div>
@@ -235,7 +239,7 @@ export const Header: React.FC = () => {
             ))}
           </nav>
 
-          {/* ─── DESKTOP CTA (100% UNCHANGED) ─── */}
+          {/* ─── DESKTOP CTA ─── */}
           <div className="hidden lg:flex items-center gap-3">
             <a
               href={`tel:+${cleanTel}`}
@@ -271,12 +275,10 @@ export const Header: React.FC = () => {
         </div>
       </div>
 
-      {/* ─── MOBILE MENU (FIXED) ─── */}
+      {/* ─── MOBILE MENU ─── */}
       <div
-        className={`lg:hidden border-t border-slate-800/60 bg-slate-950/98 backdrop-blur-xl transition-all duration-300 ${
-          // ✅ FIXED: Using 100dvh minus header height (64px) ensures it perfectly fits the screen.
-          // ✅ FIXED: Switches to overflow-y-auto when open so you can scroll the service list.
-          mobileOpen ? 'max-h-[calc(100dvh-64px)] opacity-100 overflow-y-auto' : 'max-h-0 opacity-0 overflow-hidden'
+        className={`lg:hidden border-t border-slate-800/60 bg-slate-950/98 backdrop-blur-xl overflow-hidden transition-all duration-300 ${
+          mobileOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
         }`}
         aria-hidden={!mobileOpen}
       >
@@ -285,7 +287,6 @@ export const Header: React.FC = () => {
             <Link
               key={link.label}
               to={link.href}
-              onClick={() => setMobileOpen(false)} // ✅ FIXED: Snaps menu shut on click
               className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-colors ${
                 location.pathname === link.href || (link.hasMega && location.pathname.startsWith('/services'))
                   ? 'text-cyan-400 bg-cyan-500/10'
@@ -306,7 +307,6 @@ export const Header: React.FC = () => {
                 <Link
                   key={service.id}
                   to={`/${service.slug}`}
-                  onClick={() => setMobileOpen(false)} // ✅ FIXED: Snaps menu shut on click
                   className="flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors"
                 >
                   <Icon className="w-4 h-4 text-cyan-400 shrink-0" aria-hidden="true" />
@@ -322,7 +322,6 @@ export const Header: React.FC = () => {
               href={`https://wa.me/${cleanTel}?text=${encodeURIComponent('Hi KCROC, I need a repair. Please arrange free pickup.')}`}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={() => setMobileOpen(false)} // ✅ FIXED: Snaps menu shut on click
               className="flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-sm px-4 py-3 rounded-xl transition-colors"
             >
               <MessageCircle size={16} aria-hidden="true" />
@@ -330,7 +329,6 @@ export const Header: React.FC = () => {
             </a>
             <a
               href={`tel:+${cleanTel}`}
-              onClick={() => setMobileOpen(false)} // ✅ FIXED: Snaps menu shut on click
               className="flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 text-white font-medium text-sm px-4 py-3 rounded-xl transition-colors"
             >
               <Phone size={16} aria-hidden="true" />
