@@ -39,9 +39,12 @@ export default function Header() {
   const [megaOpen,   setMegaOpen]   = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled,   setScrolled]   = useState(false);
-  const mobileRef  = useRef<HTMLDivElement>(null);
-  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const location   = useLocation();
+  const [panelLeft,  setPanelLeft]  = useState(0);
+
+  const servicesBtnRef = useRef<HTMLDivElement>(null);
+  const mobileRef      = useRef<HTMLDivElement>(null);
+  const closeTimer     = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const location       = useLocation();
 
   /* ── MEGA MENU DATA ── */
   const menuData     = NavigationBuilder.getMegaMenuServices();
@@ -58,11 +61,21 @@ export default function Header() {
   const phone    = KCROC_GRAPH.business?.telephone ?? '96555301913';
   const cleanTel = phone.replace(/\D/g, '');
 
-  /* ── MEGA MENU HOVER — delayed close prevents race condition ── */
+  /* ── MEGA MENU POSITIONING ── */
+  const updatePanelPosition = useCallback(() => {
+    if (servicesBtnRef.current) {
+      const rect = servicesBtnRef.current.getBoundingClientRect();
+      // Calculate the exact horizontal center of the Services button
+      setPanelLeft(rect.left + rect.width / 2);
+    }
+  }, []);
+
+  /* ── MEGA MENU HOVER ── */
   const handleMegaEnter = useCallback(() => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
+    updatePanelPosition();
     setMegaOpen(true);
-  }, []);
+  }, [updatePanelPosition]);
   
   const handleMegaLeave = useCallback(() => {
     closeTimer.current = setTimeout(() => setMegaOpen(false), 120);
@@ -83,12 +96,18 @@ export default function Header() {
     return () => document.removeEventListener('keydown', h);
   }, []);
 
-  /* ── SCROLL DETECTION ── */
+  /* ── SCROLL & RESIZE DETECTION ── */
   useEffect(() => {
     const h = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', h, { passive: true });
     return () => window.removeEventListener('scroll', h);
   }, []);
+
+  useEffect(() => {
+    const h = () => updatePanelPosition();
+    window.addEventListener('resize', h, { passive: true });
+    return () => window.removeEventListener('resize', h);
+  }, [updatePanelPosition]);
 
   /* ── CLICK OUTSIDE — mobile menu only ── */
   useEffect(() => {
@@ -116,8 +135,7 @@ export default function Header() {
   return (
     <>
       {/* ═══════════════════════════════════════════════════════════════
-          HEADER BAR — contains desktop nav + hamburger button
-          z-50 on header; mega panel uses z-[60] to layer above
+          HEADER BAR
       ═══════════════════════════════════════════════════════════════ */}
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -146,11 +164,11 @@ export default function Header() {
                 link.hasMega ? (
                   <div
                     key={link.label}
-                    className="relative"
+                    ref={servicesBtnRef}
+                    className="relative flex items-center h-16" // Ensures hover zone hits the bottom of header
                     onMouseEnter={handleMegaEnter}
                     onMouseLeave={handleMegaLeave}
                   >
-                    {/* Trigger button */}
                     <button
                       aria-expanded={megaOpen}
                       aria-haspopup="true"
@@ -168,76 +186,6 @@ export default function Header() {
                         aria-hidden="true"
                       />
                     </button>
-
-                    {/* Mega menu panel */}
-                    <div
-                      id="mega-menu-panel"
-                      role="region"
-                      aria-label="Services menu"
-                      className={`
-                        absolute top-[calc(100%+8px)] left-1/2 -translate-x-1/2
-                        w-[680px] z-[60]
-                        transition-opacity duration-200
-                        ${megaOpen
-                          ? 'opacity-100 pointer-events-auto'
-                          : 'opacity-0 pointer-events-none'
-                        }
-                      `}
-                    >
-                      <div className="bg-slate-900 border border-slate-700/60 rounded-2xl shadow-2xl shadow-black/60 overflow-hidden">
-                        
-                        {/* Featured service cards — top 3 */}
-                        <div className="p-5 grid grid-cols-3 gap-3 border-b border-slate-800/60">
-                          {featured.map(service => {
-                            const Icon = getIcon(service.icon ?? 'laptop');
-                            return (
-                              <Link
-                                key={service.slug}
-                                to={`/${service.slug}`}
-                                className="group flex flex-col gap-3 p-4 rounded-xl bg-slate-800/40 hover:bg-cyan-500/10 border border-slate-700/40 hover:border-cyan-500/40 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
-                              >
-                                <div className="w-9 h-9 rounded-lg bg-cyan-500/15 border border-cyan-500/25 flex items-center justify-center shrink-0">
-                                  <Icon className="w-4 h-4 text-cyan-400" aria-hidden="true" />
-                                </div>
-                                <div>
-                                  <p className="text-sm font-bold text-white group-hover:text-cyan-400 transition-colors leading-snug mb-1">
-                                    {service.title}
-                                  </p>
-                                  <p className="text-xs text-slate-400 leading-relaxed line-clamp-2">
-                                    {service.description}
-                                  </p>
-                                </div>
-                                <span className="text-xs text-cyan-500 font-bold flex items-center gap-1 mt-auto">
-                                  Learn more <ArrowRight size={11} aria-hidden="true" />
-                                </span>
-                              </Link>
-                            );
-                          })}
-                        </div>
-
-                        {/* Standard links + all services CTA */}
-                        <div className="p-4 flex items-center justify-between gap-4">
-                          <div className="flex flex-wrap gap-2">
-                            {standardList.map(service => (
-                              <Link
-                                key={service.slug}
-                                to={`/${service.slug}`}
-                                className="text-xs text-slate-400 hover:text-cyan-400 px-3 py-1.5 rounded-lg hover:bg-slate-800/60 transition-colors"
-                              >
-                                {service.title}
-                              </Link>
-                            ))}
-                          </div>
-                          <Link
-                            to="/services"
-                            className="shrink-0 text-xs font-bold text-white bg-cyan-500 hover:bg-cyan-400 px-4 py-2 rounded-lg transition-colors flex items-center gap-1.5"
-                          >
-                            All services <ArrowRight size={12} aria-hidden="true" />
-                          </Link>
-                        </div>
-
-                      </div>
-                    </div>
                   </div>
                 ) : (
                   <Link
@@ -294,11 +242,89 @@ export default function Header() {
       </header>
 
       {/* ═══════════════════════════════════════════════════════════════
+          MEGA MENU PANEL (Sibling to header)
+          By rendering outside the header, it completely escapes the 
+          backdrop-blur stacking context bug.
+      ═══════════════════════════════════════════════════════════════ */}
+      <div
+        id="mega-menu-panel"
+        role="region"
+        aria-label="Services menu"
+        onMouseEnter={handleMegaEnter}
+        onMouseLeave={handleMegaLeave}
+        style={{
+          position: 'fixed',
+          top: '64px',
+          left: `${panelLeft}px`,
+          transform: 'translateX(-50%)',
+          width: '680px',
+          zIndex: 9999, // Guaranteed to float over page content
+        }}
+        className={`
+          transition-opacity duration-200
+          ${megaOpen
+            ? 'opacity-100 pointer-events-auto'
+            : 'opacity-0 pointer-events-none'
+          }
+        `}
+      >
+        <div className="mt-1 bg-slate-900 border border-slate-700/60 rounded-2xl shadow-2xl shadow-black/60 overflow-hidden">
+          
+          {/* Featured service cards — top 3 */}
+          <div className="p-5 grid grid-cols-3 gap-3 border-b border-slate-800/60">
+            {featured.map(service => {
+              const Icon = getIcon(service.icon ?? 'laptop');
+              return (
+                <Link
+                  key={service.slug}
+                  to={`/${service.slug}`}
+                  className="group flex flex-col gap-3 p-4 rounded-xl bg-slate-800/40 hover:bg-cyan-500/10 border border-slate-700/40 hover:border-cyan-500/40 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+                >
+                  <div className="w-9 h-9 rounded-lg bg-cyan-500/15 border border-cyan-500/25 flex items-center justify-center shrink-0">
+                    <Icon className="w-4 h-4 text-cyan-400" aria-hidden="true" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-bold text-white group-hover:text-cyan-400 transition-colors leading-snug mb-1">
+                      {service.title}
+                    </p>
+                    <p className="text-xs text-slate-400 leading-relaxed line-clamp-2">
+                      {service.description}
+                    </p>
+                  </div>
+                  <span className="text-xs text-cyan-500 font-bold flex items-center gap-1 mt-auto">
+                    Learn more <ArrowRight size={11} aria-hidden="true" />
+                  </span>
+                </Link>
+              );
+            })}
+          </div>
+
+          {/* Standard links + all services CTA */}
+          <div className="p-4 flex items-center justify-between gap-4">
+            <div className="flex flex-wrap gap-2">
+              {standardList.map(service => (
+                <Link
+                  key={service.slug}
+                  to={`/${service.slug}`}
+                  className="text-xs text-slate-400 hover:text-cyan-400 px-3 py-1.5 rounded-lg hover:bg-slate-800/60 transition-colors"
+                >
+                  {service.title}
+                </Link>
+              ))}
+            </div>
+            <Link
+              to="/services"
+              className="shrink-0 text-xs font-bold text-white bg-cyan-500 hover:bg-cyan-400 px-4 py-2 rounded-lg transition-colors flex items-center gap-1.5"
+            >
+              All services <ArrowRight size={12} aria-hidden="true" />
+            </Link>
+          </div>
+
+        </div>
+      </div>
+
+      {/* ═══════════════════════════════════════════════════════════════
           MOBILE MENU PANEL
-          Rendered OUTSIDE <header> as a sibling via React Fragment.
-          This escapes the header's stacking context entirely.
-          z-[55]: above header (z-50), below mega panel (z-[60]).
-          translate-y animation: no overflow-hidden clipping.
       ═══════════════════════════════════════════════════════════════ */}
       <div
         ref={mobileRef}
