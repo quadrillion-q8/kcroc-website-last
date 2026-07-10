@@ -1,7 +1,13 @@
 // File: app/frontend/src/core/components/layout/Header.tsx
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ChevronDown, Laptop, Phone, CalendarCheck, MessageCircle, ArrowRight, Wrench } from 'lucide-react';
+
+// ✅ FIXED: Added all the missing icon imports required by the ICON_REGISTRY
+import { 
+  Menu, X, ChevronDown, Laptop, Phone, CalendarCheck, MessageCircle, ArrowRight, Wrench,
+  Apple, Gamepad2, Cpu, Monitor, BatteryWarning, HardDrive, ShieldCheck 
+} from 'lucide-react';
+
 import { NavigationBuilder } from '../../navigation/NavigationBuilder';
 import { KCROC_GRAPH } from '../../../data/graph';
 
@@ -279,19 +285,16 @@ export const Header: React.FC = () => {
         </div>
 
         {/* ─── FIXED MOBILE MENU ─── */}
-        {/* ✅ FIXED: Safari 100vh Bug. Uses dvh and avoids w-screen. */}
         <div
           className={`lg:hidden absolute top-full left-0 right-0 w-full transition-all duration-300 ease-in-out origin-top ${
             mobileOpen ? 'opacity-100 scale-y-100 pointer-events-auto' : 'opacity-0 scale-y-95 pointer-events-none'
           }`}
         >
           {/* Main Dropdown Panel */}
-          {/* ✅ FIXED: max-h-[calc(100dvh-4rem)] ensures it never renders below the Safari toolbar */}
           <div className="bg-slate-950/98 backdrop-blur-xl border-b border-slate-800/80 shadow-2xl shadow-black/60 max-h-[calc(100dvh-4rem)] overflow-y-auto w-full pb-6">
             <nav className="px-4 py-2 flex flex-col gap-2">
 
               {NAV_LINKS.map(link => {
-                // If it's a mega menu link (Services), render an accordion
                 if (link.hasMega) {
                   const isOpen = openMobileDropdown === link.label;
                   return (
@@ -365,7 +368,6 @@ export const Header: React.FC = () => {
           </div>
           
           {/* Full Screen Dismiss Backdrop */}
-          {/* ✅ FIXED: Uses 100dvh instead of 100vh */}
           <div 
             className="w-full h-[100dvh] bg-slate-950/40 backdrop-blur-sm cursor-pointer"
             onClick={handleNavigate}
