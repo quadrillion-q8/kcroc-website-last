@@ -1,34 +1,31 @@
 // File: app/frontend/src/core/components/layout/Header.tsx
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ChevronDown, Laptop, Phone, CalendarCheck, MessageCircle } from 'lucide-react';
+import { Menu, X, ChevronDown, Laptop, Phone, CalendarCheck, MessageCircle, ArrowRight, Wrench } from 'lucide-react';
 import { NavigationBuilder } from '../../navigation/NavigationBuilder';
 import { KCROC_GRAPH } from '../../../data/graph';
 
 export const Header: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [openMobileDropdown, setOpenMobileDropdown] = useState<string | null>(null);
-  
-  // Need useLocation to potentially trigger re-renders on route change if needed
   const location = useLocation();
 
-  // Fetch sorted data from our new Decoupled Builder
   const navData = NavigationBuilder.getFooterDirectory();
+  const megaMenu = NavigationBuilder.getMegaMenuServices(); // Fetched and now utilized!
   const phone = KCROC_GRAPH.business?.telephone || '96555301913';
 
-  // Helper to close mobile menu on route change
   const handleNavigate = () => {
     setIsMobileMenuOpen(false);
     setOpenMobileDropdown(null);
   };
 
-  /* --- DESKTOP DROPDOWN COMPONENT --- */
+  /* --- STANDARD DESKTOP DROPDOWN --- */
   const DesktopDropdown = ({ title, items }: { title: string, items: {label: string, route: string}[] }) => (
-    <div className="relative group py-7">
-      <button className="flex items-center gap-1 text-sm font-bold text-slate-300 group-hover:text-cyan-400 transition-colors">
+    <div className="relative group h-full flex items-center">
+      <button className="flex items-center gap-1 text-sm font-bold text-slate-300 group-hover:text-cyan-400 transition-colors h-full">
         {title} <ChevronDown className="w-4 h-4" />
       </button>
-      <div className="absolute top-20 left-0 hidden group-hover:flex flex-col w-64 bg-slate-900 border border-slate-800 rounded-xl p-2 shadow-2xl opacity-0 group-hover:opacity-100 transition-opacity">
+      <div className="absolute top-[80px] left-0 hidden group-hover:flex flex-col w-64 bg-slate-900 border border-slate-800 rounded-xl p-2 shadow-2xl">
         {items.map((item, idx) => (
           <Link 
             key={idx} 
@@ -42,7 +39,7 @@ export const Header: React.FC = () => {
     </div>
   );
 
-  /* --- MOBILE ACCORDION COMPONENT --- */
+  /* --- MOBILE ACCORDION --- */
   const MobileAccordion = ({ title, items }: { title: string, items: {label: string, route: string}[] }) => {
     const isOpen = openMobileDropdown === title;
     return (
@@ -73,8 +70,8 @@ export const Header: React.FC = () => {
   };
 
   return (
-    <header className="w-full bg-slate-950/90 backdrop-blur-md border-b border-slate-800 sticky top-0 z-50">
-      <div className="max-w-[1400px] mx-auto px-4 xl:px-6 h-20 flex items-center justify-between">
+    <header className="w-full bg-slate-950/90 backdrop-blur-md border-b border-slate-800 sticky top-0 z-50 h-20">
+      <div className="max-w-[1400px] mx-auto px-4 xl:px-6 h-full flex items-center justify-between">
         
         {/* LOGO */}
         <Link to="/" onClick={handleNavigate} className="flex items-center gap-2 text-white font-black text-2xl tracking-tight hover:opacity-90 flex-shrink-0">
@@ -82,18 +79,78 @@ export const Header: React.FC = () => {
           <span>KCROC</span>
         </Link>
 
-        {/* DESKTOP NAVIGATION (Hidden on mobile/tablet) */}
-        <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
-          <Link to="/" className="text-sm font-bold text-slate-300 hover:text-cyan-400 transition-colors">Home</Link>
+        {/* DESKTOP NAVIGATION */}
+        <nav className="hidden lg:flex items-center gap-6 xl:gap-8 h-full">
+          <Link to="/" className="text-sm font-bold text-slate-300 hover:text-cyan-400 transition-colors h-full flex items-center">Home</Link>
           
-          <DesktopDropdown title="Services" items={navData.services} />
+          {/* =======================================================
+              EDUCATIONAL MEGA MENU (Services)
+              ======================================================= */}
+          <div className="relative group h-full flex items-center">
+            <button className="flex items-center gap-1 text-sm font-bold text-slate-300 group-hover:text-cyan-400 transition-colors h-full">
+              Services <ChevronDown className="w-4 h-4" />
+            </button>
+            
+            {/* Mega Menu Container */}
+            <div className="absolute top-[80px] left-1/2 -translate-x-1/2 hidden group-hover:flex w-[800px] bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl overflow-hidden cursor-default">
+              
+              {/* Featured Services (Left Side) */}
+              <div className="w-2/3 p-6">
+                <h3 className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-5">Hardware Repair Services</h3>
+                <div className="grid grid-cols-1 gap-2">
+                  {megaMenu.featured.map((item, idx) => (
+                    <Link 
+                      key={idx} 
+                      to={`/${item.slug}`} 
+                      className="group/card flex items-start gap-4 p-4 rounded-xl hover:bg-slate-800/50 transition-colors"
+                    >
+                      <div className="p-3 bg-slate-950 rounded-lg text-cyan-400 group-hover/card:bg-cyan-500 group-hover/card:text-slate-950 transition-colors">
+                        <Wrench className="w-6 h-6" />
+                      </div>
+                      <div>
+                        <h4 className="text-base font-bold text-slate-200 group-hover/card:text-cyan-400 transition-colors">{item.title}</h4>
+                        <p className="text-sm text-slate-400 mt-1 mb-2 line-clamp-2">{item.description}</p>
+                        <span className="text-xs font-bold text-cyan-500 flex items-center gap-1 group-hover/card:translate-x-1 transition-transform">
+                          {item.callToAction} <ArrowRight className="w-3 h-3" />
+                        </span>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+              
+              {/* Standard List (Right Side) */}
+              <div className="w-1/3 p-6 bg-slate-950 border-l border-slate-800 flex flex-col">
+                <h3 className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-5">Popular Repairs</h3>
+                <ul className="space-y-4 flex-grow">
+                  {megaMenu.standardList.map((item, idx) => (
+                    <li key={idx}>
+                      <Link to={`/${item.slug}`} className="text-sm font-medium text-slate-400 hover:text-cyan-400 transition-colors flex items-center gap-3">
+                        <div className="w-1.5 h-1.5 rounded-full bg-slate-700" />
+                        {item.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+                <Link to="/services" className="mt-6 pt-6 border-t border-slate-800 text-sm font-bold text-cyan-400 hover:text-cyan-300 transition-colors flex items-center gap-2">
+                  View All Services <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+
+            </div>
+          </div>
+          {/* END MEGA MENU */}
+
           <DesktopDropdown title="Brands" items={navData.brands} />
           <DesktopDropdown title="Problems" items={navData.problems} />
           
-          <Link to="/pricing" className="text-sm font-bold text-slate-300 hover:text-cyan-400 transition-colors">Pricing</Link>
-          <Link to="/gallery" className="text-sm font-bold text-slate-300 hover:text-cyan-400 transition-colors">Gallery</Link>
+          <Link to="/pricing" className="text-sm font-bold text-slate-300 hover:text-cyan-400 transition-colors h-full flex items-center">Pricing</Link>
+          <Link to="/gallery" className="text-sm font-bold text-slate-300 hover:text-cyan-400 transition-colors h-full flex items-center">Gallery</Link>
           
-          <DesktopDropdown title="About" items={navData.company} />
+          <DesktopDropdown title="About" items={[
+            { label: 'About KCROC', route: '/about' },
+            { label: 'Our Hawalli Location', route: '/location/hawalli' }
+          ]} />
           
           <DesktopDropdown title="Resources" items={[
             { label: 'Tech Blog', route: '/blog' },
@@ -101,10 +158,10 @@ export const Header: React.FC = () => {
             { label: 'Laptop Screen Protection Tips', route: '/laptop-screen-protection-tips' }
           ]} />
           
-          <Link to="/contact" className="text-sm font-bold text-slate-300 hover:text-cyan-400 transition-colors">Contact</Link>
+          <Link to="/contact" className="text-sm font-bold text-slate-300 hover:text-cyan-400 transition-colors h-full flex items-center">Contact</Link>
         </nav>
 
-        {/* PRIMARY DESKTOP CTA (Visually Isolated) */}
+        {/* PRIMARY DESKTOP CTA */}
         <div className="hidden lg:flex items-center gap-4 flex-shrink-0">
           <Link 
             to="/book" 
@@ -123,9 +180,7 @@ export const Header: React.FC = () => {
         </button>
       </div>
 
-      {/* =========================================================
-          MOBILE NAVIGATION SLIDE-OUT MENU
-          ========================================================= */}
+      {/* MOBILE SLIDE-OUT MENU */}
       {isMobileMenuOpen && (
         <div className="lg:hidden fixed inset-0 top-20 bg-slate-950 z-40 overflow-y-auto pb-32">
           <div className="px-6 py-4 flex flex-col">
@@ -138,7 +193,10 @@ export const Header: React.FC = () => {
             <Link to="/pricing" onClick={handleNavigate} className="py-4 border-b border-slate-800 font-bold text-slate-200 text-left">Pricing</Link>
             <Link to="/gallery" onClick={handleNavigate} className="py-4 border-b border-slate-800 font-bold text-slate-200 text-left">Gallery</Link>
             
-            <MobileAccordion title="About" items={navData.company} />
+            <MobileAccordion title="About" items={[
+              { label: 'About KCROC', route: '/about' },
+              { label: 'Our Hawalli Location', route: '/location/hawalli' }
+            ]} />
             
             <MobileAccordion title="Resources" items={[
               { label: 'Tech Blog', route: '/blog' },
