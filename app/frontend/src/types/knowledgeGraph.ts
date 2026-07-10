@@ -38,9 +38,11 @@ export const RoutableEntitySchema = CoreNodeSchema.extend({
   seo: SEOSchema,
   featuredImage: ImageAssetSchema.optional(), 
   
-  // 🚀 FIX: Added .optional() so it doesn't break FAQs and other non-menu pages!
+  // 🚀 Added .optional() so it doesn't break non-menu pages
   navigationPriority: z.number().optional(),
   isFeatured: z.boolean().optional(),
+  // 🚀 Moved shortDescription up to Routable so it's globally accessible by builders
+  shortDescription: z.string().optional(),
 });
 
 /* --- ENTITY SCHEMAS --- */
@@ -123,7 +125,6 @@ export const ReviewsSchema = CoreNodeSchema.extend({
 export const ServiceSchema = RoutableEntitySchema.extend({
   entityType: z.literal('Service'),
   iconKey: z.string(),
-  shortDescription: z.string(),
   repairLevel: z.string(),
   estimatedTurnaround: z.string(),
   pricing: z.object({ startingFrom: z.number(), currency: z.string(), quoteRequired: z.boolean(), displayLabel: z.string() }).optional(),
@@ -220,8 +221,21 @@ export const RawGraphSchema = z.object({
 });
 
 /* --- EXPORTED TYPES --- */
+// Base Type Override explicitly redefining the optional fields so TypeScript catches them.
+export type RoutableEntity = {
+  id: string;
+  isActive: boolean;
+  title: string;
+  slug: string;
+  description: string;
+  seo: any;
+  featuredImage?: any;
+  navigationPriority?: number;
+  isFeatured?: boolean;
+  shortDescription?: string;
+};
+
 export type ImageAsset = z.infer<typeof ImageAssetSchema>;
-export type RoutableEntity = z.infer<typeof RoutableEntitySchema>;
 export type ServiceEntity = z.infer<typeof ServiceSchema>;
 export type LocationEntity = z.infer<typeof LocationSchema>;
 export type FAQEntity = z.infer<typeof FAQSchema>;
