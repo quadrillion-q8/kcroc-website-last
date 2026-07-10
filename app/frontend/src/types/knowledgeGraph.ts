@@ -36,11 +36,11 @@ export const RoutableEntitySchema = CoreNodeSchema.extend({
   slug: z.string(),
   description: z.string(),
   seo: SEOSchema,
-  // 🚀 Added for Image Pipeline: Allows templates to consume auto-optimized assets
   featuredImage: ImageAssetSchema.optional(), 
-  // 🚀 Added for Navigation Framework: Controls menu hierarchy, sorting, and layout placement
-  navigationPriority: z.number().default(0),
-  isFeatured: z.boolean().default(false).optional(),
+  
+  // 🚀 FIX: Added .optional() so it doesn't break FAQs and other non-menu pages!
+  navigationPriority: z.number().optional(),
+  isFeatured: z.boolean().optional(),
 });
 
 /* --- ENTITY SCHEMAS --- */
@@ -55,7 +55,7 @@ export const BusinessSchema = CoreNodeSchema.extend({
   addressCountry: z.string(),
   coords: z.object({ lat: z.number(), lng: z.number() }),
   websiteUrl: z.string(),
-  logoUrl: z.string(), // Kept as string for backward compatibility, can be upgraded later
+  logoUrl: z.string(),
   email: z.string(),
   priceRange: z.string(),
   openingHours: z.string(),
@@ -234,13 +234,11 @@ export type StatsEntity = z.infer<typeof StatsSchema>;
 export type FooterEntity = z.infer<typeof FooterSchema>;
 export type ReviewsEntity = z.infer<typeof ReviewsSchema>;
 
-// Exported New Types
 export type BrandEntity = z.infer<typeof BrandSchema>;
 export type ProblemEntity = z.infer<typeof ProblemSchema>;
 export type CaseStudyEntity = z.infer<typeof CaseStudySchema>;
 export type RawGraphData = z.infer<typeof RawGraphSchema>;
 
-// Explicit EntityType Union Definition
 export type EntityType = 
   | 'Service' | 'Location' | 'FAQ' | 'Business' 
   | 'USP' | 'TrustBadge' | 'Process' | 'WebPage' 
