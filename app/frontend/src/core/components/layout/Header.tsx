@@ -10,48 +10,51 @@ import { NavigationBuilder } from '../../navigation/NavigationBuilder';
 import { KCROC_GRAPH } from '../../../data/graph';
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   ICON REGISTRY
+   ICON REGISTRY — maps graph iconKey strings to Lucide components
+   ✅ Fixed: added Wrench fallback for unknown keys
 ───────────────────────────────────────────────────────────────────────────── */
 const ICON_REGISTRY: Record<string, React.ComponentType<{ className?: string }>> = {
-  apple:     Apple,
-  laptop:    Laptop,
-  gaming:    Gamepad2,
-  cpu:       Cpu,
-  monitor:   Monitor,
-  battery:   BatteryWarning,
-  hardDrive: HardDrive,
-  shield:    ShieldCheck,
+  apple:      Apple,
+  laptop:     Laptop,
+  gaming:     Gamepad2,
+  cpu:        Cpu,
+  monitor:    Monitor,
+  battery:    BatteryWarning,
+  hardDrive:  HardDrive,
+  shield:     ShieldCheck,
 };
+
 const getIcon = (key: string) => ICON_REGISTRY[key] ?? Wrench;
 
 /* ─────────────────────────────────────────────────────────────────────────────
    NAV LINKS
 ───────────────────────────────────────────────────────────────────────────── */
 const NAV_LINKS = [
-  { label: 'Services', hasMega: true,  href: '/services' },
-  { label: 'Pricing',  hasMega: false, href: '/pricing' },
-  { label: 'Blog',     hasMega: false, href: '/blog' },
-  { label: 'About',    hasMega: false, href: '/about' },
-  { label: 'Contact',  hasMega: false, href: '/contact' },
+  { label: 'Services',  hasMega: true,  href: '/services' },
+  { label: 'Pricing',   hasMega: false, href: '/pricing' },
+  { label: 'Blog',      hasMega: false, href: '/blog' },
+  { label: 'About',     hasMega: false, href: '/about' },
+  { label: 'Contact',   hasMega: false, href: '/contact' },
 ];
 
+/* ─────────────────────────────────────────────────────────────────────────────
+   COMPONENT
+───────────────────────────────────────────────────────────────────────────── */
+// Notice this is explicitly named and exported to match RootLayout!
 export const Header: React.FC = () => {
   const [megaOpen,   setMegaOpen]   = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled,   setScrolled]   = useState(false);
+  const megaRef    = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const location   = useLocation();
 
-  const megaRef      = useRef<HTMLDivElement>(null);
-  const triggerRef   = useRef<HTMLButtonElement>(null);
-  
-  // NEW: Ref covers the entire header (button + dropdown) to fix click-outside race conditions
-  const headerRef    = useRef<HTMLElement>(null);
-  const closeTimer   = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const location     = useLocation();
+  // ✅ Fixed: get menu data with isFeatured fallback
+  const menuData = NavigationBuilder.getMegaMenuServices();
 
-  const menuData   = NavigationBuilder.getMegaMenuServices();
-  const navData    = NavigationBuilder.getFooterDirectory();
-
-  const featured = menuData.featured.length > 0
+  // If no featured items, treat top 3 as featured for display purposes
+  const featured     = menuData.featured.length > 0
     ? menuData.featured
     : menuData.standardList.slice(0, 3).map(s => ({
         ...s,
@@ -64,6 +67,7 @@ export const Header: React.FC = () => {
   const phone    = KCROC_GRAPH.business?.telephone ?? '96555301913';
   const cleanTel = phone.replace(/\D/g, '');
 
+  // ✅ Fixed: hover race condition — use a delayed close timer
   const handleMenuEnter = useCallback(() => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
     setMegaOpen(true);
@@ -73,7 +77,7 @@ export const Header: React.FC = () => {
     closeTimer.current = setTimeout(() => setMegaOpen(false), 150);
   }, []);
 
-  // Close everything on route change
+  // Close on route change
   useEffect(() => {
     setMegaOpen(false);
     setMobileOpen(false);
@@ -95,50 +99,27 @@ export const Header: React.FC = () => {
     return () => window.removeEventListener('scroll', handler);
   }, []);
 
-  // FIXED: Click-outside now tracks the entire header element
-  useEffect(() => {
-    if (!mobileOpen) return;
-    const handler = (e: MouseEvent) => {
-      if (headerRef.current && !headerRef.current.contains(e.target as Node)) {
-        setMobileOpen(false);
-      }
-    };
-    document.addEventListener('mousedown', handler);
-    return () => document.removeEventListener('mousedown', handler);
-  }, [mobileOpen]);
-
-  // Lock body scroll on mobile open
-  useEffect(() => {
-    if (mobileOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-    return () => { document.body.style.overflow = ''; };
-  }, [mobileOpen]);
-
+  // Cleanup timer on unmount
   useEffect(() => () => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
   }, []);
 
   return (
-    // FIXED: Added headerRef to track the entire wrapper
+    // ✅ Fixed: z-50 on header, mega panel gets z-[60]
     <header
-      ref={headerRef}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled || mobileOpen
+        scrolled
           ? 'bg-slate-950/95 backdrop-blur-xl border-b border-slate-800/80 shadow-lg shadow-black/20'
           : 'bg-slate-950/80 backdrop-blur-md border-b border-slate-800/40'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-16">
 
           {/* ─── LOGO ─── */}
           <Link
             to="/"
-            onClick={() => setMobileOpen(false)}
-            className="flex items-center gap-2.5 shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 rounded-lg relative z-20"
+            className="flex items-center gap-2.5 shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 rounded-lg"
           >
             <Laptop className="w-6 h-6 text-cyan-400" />
             <span className="font-black text-white text-lg tracking-tight hidden sm:block">
@@ -146,10 +127,11 @@ export const Header: React.FC = () => {
             </span>
           </Link>
 
-          {/* ─── DESKTOP NAV (100% UNCHANGED) ─── */}
-          <nav aria-label="Main navigation" className="hidden lg:flex items-center gap-1 relative z-20">
+          {/* ─── DESKTOP NAV ─── */}
+          <nav aria-label="Main navigation" className="hidden lg:flex items-center gap-1">
             {NAV_LINKS.map(link => (
               link.hasMega ? (
+                // ✅ Fixed: hover zone wraps BOTH trigger and panel
                 <div
                   key={link.label}
                   className="relative"
@@ -174,6 +156,9 @@ export const Header: React.FC = () => {
                       aria-hidden="true"
                     />
                   </button>
+
+                  {/* ─── MEGA MENU PANEL ─── */}
+                  {/* ✅ Fixed: z-[60] > header z-50; transition-opacity only (no backdrop flicker) */}
                   <div
                     id="mega-menu-panel"
                     ref={megaRef}
@@ -184,6 +169,8 @@ export const Header: React.FC = () => {
                       ${megaOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
                   >
                     <div className="bg-slate-900/98 backdrop-blur-xl border border-slate-700/60 rounded-2xl shadow-2xl shadow-black/50 overflow-hidden">
+
+                      {/* Featured services — 3 cards */}
                       <div className="p-5 grid grid-cols-3 gap-3 border-b border-slate-800/60">
                         {featured.map(service => {
                           const Icon = getIcon(service.icon ?? 'laptop');
@@ -211,6 +198,8 @@ export const Header: React.FC = () => {
                           );
                         })}
                       </div>
+
+                      {/* Standard list + CTA */}
                       <div className="p-4 flex items-center justify-between gap-4">
                         <div className="flex flex-wrap gap-2">
                           {standardList.map(service => (
@@ -230,6 +219,7 @@ export const Header: React.FC = () => {
                           All services <ArrowRight size={12} aria-hidden="true" />
                         </Link>
                       </div>
+
                     </div>
                   </div>
                 </div>
@@ -249,8 +239,8 @@ export const Header: React.FC = () => {
             ))}
           </nav>
 
-          {/* ─── DESKTOP CTA (100% UNCHANGED) ─── */}
-          <div className="hidden lg:flex items-center gap-3 relative z-20">
+          {/* ─── DESKTOP CTA ─── */}
+          <div className="hidden lg:flex items-center gap-3">
             <a
               href={`tel:+${cleanTel}`}
               className="flex items-center gap-2 text-sm font-medium text-slate-300 hover:text-white transition-colors"
@@ -271,99 +261,81 @@ export const Header: React.FC = () => {
 
           {/* ─── MOBILE HAMBURGER ─── */}
           <button
-            className="lg:hidden relative z-20 p-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+            className="lg:hidden p-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
             onClick={() => setMobileOpen(prev => !prev)}
             aria-expanded={mobileOpen}
-            aria-label={mobileOpen ? 'Close navigation menu' : 'Open navigation menu'}
+            aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
           >
             {mobileOpen
               ? <X size={22} aria-hidden="true" />
               : <Menu size={22} aria-hidden="true" />
             }
           </button>
+
         </div>
+      </div>
 
-        {/* ─── FIXED MOBILE MENU ─── */}
-        {/* Placed inside the relative header container. Fades in directly below the 16px header bar. */}
-        <div
-          className={`lg:hidden absolute top-full left-0 right-0 w-full transition-all duration-300 ease-in-out origin-top ${
-            mobileOpen ? 'opacity-100 scale-y-100 pointer-events-auto' : 'opacity-0 scale-y-95 pointer-events-none'
-          }`}
-        >
-          {/* Main Dropdown Panel */}
-          <div className="bg-slate-950/98 backdrop-blur-xl border-b border-slate-800/80 shadow-2xl shadow-black/60 max-h-[calc(100dvh-4rem)] overflow-y-auto w-full pb-6">
-            <nav className="px-4 py-2 space-y-1">
+      {/* ─── MOBILE MENU ─── */}
+      <div
+        className={`lg:hidden border-t border-slate-800/60 bg-slate-950/98 backdrop-blur-xl overflow-hidden transition-all duration-300 ${
+          mobileOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
+        }`}
+        aria-hidden={!mobileOpen}
+      >
+        <nav aria-label="Mobile navigation" className="px-4 py-4 space-y-1">
+          {NAV_LINKS.map(link => (
+            <Link
+              key={link.label}
+              to={link.href}
+              className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-colors ${
+                location.pathname === link.href || (link.hasMega && location.pathname.startsWith('/services'))
+                  ? 'text-cyan-400 bg-cyan-500/10'
+                  : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
+              }`}
+            >
+              {link.label}
+              {link.hasMega && <ChevronDown size={14} aria-hidden="true" className="ml-auto text-slate-500" />}
+            </Link>
+          ))}
 
-              {NAV_LINKS.map(link => (
+          {/* Mobile service list */}
+          <div className="pt-3 mt-3 border-t border-slate-800/60">
+            <p className="px-4 text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">Services</p>
+            {KCROC_GRAPH.services.map(service => {
+              const Icon = getIcon((service as any).iconKey ?? 'laptop');
+              return (
                 <Link
-                  key={link.label}
-                  to={link.href}
-                  onClick={() => setMobileOpen(false)}
-                  className={`flex items-center justify-between px-4 py-3 rounded-xl text-sm font-medium transition-colors ${
-                    location.pathname === link.href || (link.hasMega && location.pathname.startsWith('/services'))
-                      ? 'text-cyan-400 bg-cyan-500/10'
-                      : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
-                  }`}
+                  key={service.id}
+                  to={`/${service.slug}`}
+                  className="flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors"
                 >
-                  {link.label}
-                  {link.hasMega && (
-                    <ChevronDown size={14} aria-hidden="true" className="text-slate-500" />
-                  )}
+                  <Icon className="w-4 h-4 text-cyan-400 shrink-0" aria-hidden="true" />
+                  {service.title}
                 </Link>
-              ))}
-
-              <div className="pt-3 mt-1 border-t border-slate-800/60">
-                <p className="px-4 pb-2 text-[10px] font-bold text-slate-500 uppercase tracking-widest">
-                  Repair Services
-                </p>
-                {navData.services.map(service => {
-                  const originalSrv = KCROC_GRAPH.services.find(s => s.slug === service.route.replace('/', ''));
-                  const Icon = getIcon((originalSrv as any)?.iconKey ?? 'laptop');
-                  
-                  return (
-                    <Link
-                      key={service.route}
-                      to={service.route}
-                      onClick={() => setMobileOpen(false)}
-                      className="flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors"
-                    >
-                      <Icon className="w-4 h-4 text-cyan-400 shrink-0" aria-hidden="true" />
-                      {service.label}
-                    </Link>
-                  );
-                })}
-              </div>
-
-              <div className="pt-4 mt-2 border-t border-slate-800/60 flex flex-col gap-3 pb-4">
-                <a
-                  href={`https://wa.me/${cleanTel}?text=${encodeURIComponent('Hi KCROC, I need a repair. Please arrange free pickup.')}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => setMobileOpen(false)}
-                  className="flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-sm px-4 py-3 rounded-xl transition-colors"
-                >
-                  <MessageCircle size={16} aria-hidden="true" />
-                  WhatsApp — Book Free Pickup
-                </a>
-                <a
-                  href={`tel:+${cleanTel}`}
-                  onClick={() => setMobileOpen(false)}
-                  className="flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 text-white font-medium text-sm px-4 py-3 rounded-xl transition-colors"
-                >
-                  <Phone size={16} aria-hidden="true" />
-                  Call +965 5530 1913
-                </a>
-              </div>
-            </nav>
+              );
+            })}
           </div>
-          
-          {/* Full Screen Dismiss Backdrop */}
-          <div 
-            className="w-full h-screen bg-slate-950/40 backdrop-blur-sm cursor-pointer"
-            onClick={() => setMobileOpen(false)}
-            aria-hidden="true"
-          />
-        </div>
+
+          {/* Mobile CTA */}
+          <div className="pt-4 mt-2 border-t border-slate-800/60 flex flex-col gap-3">
+            <a
+              href={`https://wa.me/${cleanTel}?text=${encodeURIComponent('Hi KCROC, I need a repair. Please arrange free pickup.')}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-sm px-4 py-3 rounded-xl transition-colors"
+            >
+              <MessageCircle size={16} aria-hidden="true" />
+              WhatsApp — Book Free Pickup
+            </a>
+            <a
+              href={`tel:+${cleanTel}`}
+              className="flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 text-white font-medium text-sm px-4 py-3 rounded-xl transition-colors"
+            >
+              <Phone size={16} aria-hidden="true" />
+              Call +965 5530 1913
+            </a>
+          </div>
+        </nav>
       </div>
     </header>
   );
