@@ -1,6 +1,6 @@
 // File: app/frontend/src/core/navigation/NavigationBuilder.ts
 import { KCROC_GRAPH } from '../../data/graph';
-import { RoutableEntity, ServiceEntity, BrandEntity } from '../../types/knowledgeGraph';
+import { RoutableEntity } from '../../types/knowledgeGraph';
 
 export class NavigationBuilder {
   
@@ -13,7 +13,6 @@ export class NavigationBuilder {
 
   /**
    * Generates the structured payload for the Desktop Mega Menu
-   * Incorporates your "Educational UX" requirement (icons, descriptions)
    */
   public static getMegaMenuServices() {
     const allServices = this.sortByPriority(KCROC_GRAPH.services);
@@ -47,12 +46,12 @@ export class NavigationBuilder {
         { label: 'Gallery', route: '/gallery' },
         { label: 'FAQ', route: '/faq' },
       ],
-      legal: [ // 🚀 NEW: Legal Column
+      legal: [ 
         { label: 'Privacy Policy', route: '/privacy-security-kuwait' },
         { label: 'Terms of Service', route: '/terms' },
         { label: 'Warranty Policy', route: '/warranty' }
       ],
-      quickActions: [ // 🚀 NEW: Conversion Column
+      quickActions: [ 
         { label: 'Book Free Pickup', route: '/book', isPrimary: true },
         { label: 'WhatsApp Technician', route: `https://wa.me/${KCROC_GRAPH.business?.telephone}`, isExternal: true },
         { label: 'Call Lab', route: `tel:${KCROC_GRAPH.business?.telephone}` }
@@ -65,7 +64,7 @@ export class NavigationBuilder {
   }
 
   /**
-   * Dynamically generates Breadcrumbs based on the current active slug
+   * Dynamically generates Breadcrumbs
    */
   public static buildBreadcrumbs(currentSlug: string) {
     const entity = KCROC_GRAPH.routableEntities.find(e => e.slug === currentSlug);
@@ -73,7 +72,6 @@ export class NavigationBuilder {
 
     const breadcrumbs = [{ label: 'Home', route: '/' }];
     
-    // Dynamic Parent Assignment based on entityType
     if (entity.entityType === 'Service') breadcrumbs.push({ label: 'Services', route: '/services' });
     if (entity.entityType === 'Brand') breadcrumbs.push({ label: 'Brands', route: '/brands' });
     if (entity.entityType === 'Problem') breadcrumbs.push({ label: 'Troubleshooting', route: '/problems' });
