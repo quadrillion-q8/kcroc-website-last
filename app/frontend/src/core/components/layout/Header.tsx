@@ -1,5 +1,4 @@
 // File: app/frontend/src/core/components/layout/Header.tsx
-// CHANGE 1 of 4: Add useRef for click-outside detection (add to existing imports)
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import {
@@ -10,6 +9,9 @@ import {
 import { NavigationBuilder } from '../../navigation/NavigationBuilder';
 import { KCROC_GRAPH } from '../../../data/graph';
 
+/* ─────────────────────────────────────────────────────────────────────────────
+   ICON REGISTRY — maps graph iconKey strings to Lucide components
+───────────────────────────────────────────────────────────────────────────── */
 const ICON_REGISTRY: Record<string, React.ComponentType<{ className?: string }>> = {
   apple:     Apple,
   laptop:    Laptop,
@@ -22,6 +24,9 @@ const ICON_REGISTRY: Record<string, React.ComponentType<{ className?: string }>>
 };
 const getIcon = (key: string) => ICON_REGISTRY[key] ?? Wrench;
 
+/* ─────────────────────────────────────────────────────────────────────────────
+   NAV LINKS
+───────────────────────────────────────────────────────────────────────────── */
 const NAV_LINKS = [
   { label: 'Services', hasMega: true,  href: '/services' },
   { label: 'Pricing',  hasMega: false, href: '/pricing' },
@@ -30,19 +35,23 @@ const NAV_LINKS = [
   { label: 'Contact',  hasMega: false, href: '/contact' },
 ];
 
-export default function Header() {
+export const Header: React.FC = () => {
   const [megaOpen,   setMegaOpen]   = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled,   setScrolled]   = useState(false);
 
   const megaRef      = useRef<HTMLDivElement>(null);
   const triggerRef   = useRef<HTMLButtonElement>(null);
-  const mobileRef    = useRef<HTMLDivElement>(null);   // CHANGE 2 of 4: ref for click-outside
+  const mobileRef    = useRef<HTMLDivElement>(null);
   const closeTimer   = useRef<ReturnType<typeof setTimeout> | null>(null);
   const location     = useLocation();
 
+  // ✅ Pulling purely from our NavigationBuilder pipeline
   const menuData   = NavigationBuilder.getMegaMenuServices();
-  const featured   = menuData.featured.length > 0
+  const navData    = NavigationBuilder.getFooterDirectory();
+
+  // Fallback if isFeatured is missing in graph.ts
+  const featured = menuData.featured.length > 0
     ? menuData.featured
     : menuData.standardList.slice(0, 3).map(s => ({
         ...s,
@@ -86,7 +95,7 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handler);
   }, []);
 
-  // CHANGE 3 of 4: Click-outside closes mobile menu
+  // Click-outside closes mobile menu
   useEffect(() => {
     if (!mobileOpen) return;
     const handler = (e: MouseEvent) => {
@@ -102,8 +111,7 @@ export default function Header() {
     };
   }, [mobileOpen]);
 
-  // Prevent body scroll when mobile menu is open
-  // CHANGE 4 of 4: lock body scroll on mobile open
+  // Lock body scroll on mobile open
   useEffect(() => {
     if (mobileOpen) {
       document.body.style.overflow = 'hidden';
@@ -130,12 +138,12 @@ export default function Header() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="flex items-center justify-between h-16">
 
-            {/* LOGO — unchanged */}
+            {/* LOGO */}
             <Link
               to="/"
               className="flex items-center gap-2.5 shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 rounded-lg"
             >
-              <img src="/logo.png" alt="KCROC Logo" className="h-8 w-auto" />
+              <Laptop className="w-6 h-6 text-cyan-400" />
               <span className="font-black text-white text-lg tracking-tight hidden sm:block">
                 KCROC<span className="text-cyan-400">.</span>
               </span>
@@ -246,14 +254,14 @@ export default function Header() {
 
             {/* DESKTOP CTA — unchanged */}
             <div className="hidden lg:flex items-center gap-3">
-              
+              <a
                 href={`tel:+${cleanTel}`}
                 className="flex items-center gap-2 text-sm font-medium text-slate-300 hover:text-white transition-colors"
               >
                 <Phone size={15} className="text-cyan-400" aria-hidden="true" />
                 <span className="hidden xl:block">55301913</span>
               </a>
-              
+              <a
                 href={`https://wa.me/${cleanTel}?text=${encodeURIComponent('Hi KCROC, I need a repair. Please arrange free pickup.')}`}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -283,20 +291,15 @@ export default function Header() {
       </header>
 
       {/* ── MOBILE MENU — rendered as portal OUTSIDE <header> to avoid stacking context ── */}
-      {/* CHANGE: moved outside <header> entirely — fixes z-index stacking context */}
       <div
         ref={mobileRef}
         id="mobile-nav-panel"
         aria-label="Mobile navigation"
-        // ✅ Fixed: z-[55] — above header z-50, below mega menu z-[60]
-        // ✅ Fixed: translate-based animation instead of max-h (no overflow-hidden clipping)
-        // ✅ Fixed: fixed positioning relative to viewport, not header
         className={`lg:hidden fixed left-0 right-0 z-[55] transition-all duration-300 ease-in-out ${
           mobileOpen
             ? 'top-16 opacity-100 translate-y-0 pointer-events-auto'
             : 'top-16 opacity-0 -translate-y-2 pointer-events-none'
         }`}
-        // ✅ Fixed: removed aria-hidden — was blocking pointer events
       >
         {/* Backdrop */}
         <div
@@ -329,22 +332,25 @@ export default function Header() {
               </Link>
             ))}
 
-            {/* Service list */}
+            {/* Service list populated dynamically from NavigationBuilder */}
             <div className="pt-3 mt-1 border-t border-slate-800/60">
               <p className="px-4 pb-2 text-[10px] font-bold text-slate-500 uppercase tracking-widest">
                 Repair Services
               </p>
-              {KCROC_GRAPH.services.map(service => {
-                const Icon = getIcon((service as any).iconKey ?? 'laptop');
+              {navData.services.map(service => {
+                // Find original service to pull icon
+                const originalSrv = KCROC_GRAPH.services.find(s => s.slug === service.route.replace('/', ''));
+                const Icon = getIcon((originalSrv as any)?.iconKey ?? 'laptop');
+                
                 return (
                   <Link
-                    key={service.id}
-                    to={`/${service.slug}`}
+                    key={service.route}
+                    to={service.route}
                     onClick={() => setMobileOpen(false)}
                     className="flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors"
                   >
                     <Icon className="w-4 h-4 text-cyan-400 shrink-0" aria-hidden="true" />
-                    {service.title}
+                    {service.label}
                   </Link>
                 );
               })}
@@ -352,7 +358,7 @@ export default function Header() {
 
             {/* Mobile CTA buttons */}
             <div className="pt-4 mt-2 border-t border-slate-800/60 flex flex-col gap-3 pb-2">
-              
+              <a
                 href={`https://wa.me/${cleanTel}?text=${encodeURIComponent('Hi KCROC, I need a repair. Please arrange free pickup.')}`}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -362,7 +368,7 @@ export default function Header() {
                 <MessageCircle size={16} aria-hidden="true" />
                 WhatsApp — Book Free Pickup
               </a>
-              
+              <a
                 href={`tel:+${cleanTel}`}
                 onClick={() => setMobileOpen(false)}
                 className="flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 text-white font-medium text-sm px-4 py-3 rounded-xl transition-colors"
@@ -377,4 +383,4 @@ export default function Header() {
       </div>
     </>
   );
-}
+};
