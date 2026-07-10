@@ -86,34 +86,34 @@ const rawGraphData: RawGraphData = {
     'page-blog': { id: 'page-blog', slug: 'blog', entityType: 'WebPage', isActive: true, title: 'Tech Blog', description: 'Expert repair guides and tech insights.', seo: { title: 'KCROC Tech Blog | Computer Repair Guides Kuwait', description: 'Expert computer repair guides, laptop fixes, MacBook troubleshooting, and PC performance tips in Kuwait.', canonicalUrl: 'https://www.computerrepairkuwait.com/blog', ogType: 'website', schemaTypes: ['CollectionPage'] } } as WebPageEntity,
 
     /* ═══════════════════════════════════════════════════════════════
-       SERVICES (Now with navigationPriority & isFeatured)
+       SERVICES (With Defensive navigationPriority & isFeatured)
     ═══════════════════════════════════════════════════════════════ */
     'srv-macbook': { 
       id: 'srv-macbook', slug: 'macbook-repair-kuwait', entityType: 'Service', isActive: true, 
       title: 'MacBook Repair Kuwait', iconKey: 'apple', shortDescription: 'Liquid spills, dead logic boards, USB-C failures. Chip-level Apple hardware restoration.', description: 'Our MacBook repair service goes beyond what Apple Authorized Centers offer. Instead of replacing your entire logic board — which deletes all your data and costs hundreds of KWD — we isolate the exact failed chip using thermal imaging and micro-soldering.', repairLevel: 'chip-level', estimatedTurnaround: '24-48 Hours', pricing: { startingFrom: 25, currency: 'KWD', quoteRequired: true, displayLabel: 'From 25 KWD — free diagnostic first' }, coreFeatures: ['Logic Board Micro-Soldering', 'USB-C Power IC Replacement', 'Liquid Damage Ultrasonic Cleaning', 'MacBook Screen & Battery Replacement', 'Data Preserved', 'Free Pick & Drop', '30-Day Warranty'], brands: ['MacBook Air', 'MacBook Pro 13"', 'MacBook Pro 14"', 'MacBook Pro 16"'], commonIssues: [{ id: 'no-power', title: 'No power / dead device', severity: 'high', description: 'USB-C power negotiation failure or PPBUS short circuit.' }], warranty: { duration: '30 Days', coverage: 'All parts and labor.', noFixNoFee: true }, 
       seo: { title: 'MacBook Repair Kuwait | Logic Board Experts | No Fix No Fee | KCROC', description: 'Expert Apple MacBook repair in Kuwait. Logic board micro-soldering, USB-C power repair, liquid damage recovery. Free pick & drop.', canonicalUrl: 'https://www.computerrepairkuwait.com/macbook-repair-kuwait', ogType: 'article', schemaTypes: ['Service', 'FAQPage'] },
-      navigationPriority: 100, isFeatured: true // 🚀 Added for Mega Menu
+      navigationPriority: 100, isFeatured: true 
     } as ServiceEntity,
     
     'srv-laptop': { 
       id: 'srv-laptop', slug: 'laptop-repair-kuwait', entityType: 'Service', isActive: true, 
       title: 'Laptop Repair Kuwait', iconKey: 'laptop', shortDescription: 'Screen, battery, keyboard, charging port, and motherboard repair for all Windows brands.', description: 'Kuwait\'s climate causes specific hardware failure patterns in Windows laptops. We diagnose and repair the exact fault component rather than replacing the entire unit.', repairLevel: 'advanced', estimatedTurnaround: 'Same Day / 24 Hours', pricing: { startingFrom: 15, currency: 'KWD', quoteRequired: true, displayLabel: 'From 15 KWD' }, coreFeatures: ['Screen Replacement', 'Battery Replacement', 'Keyboard Repair', 'Charging Port', 'Thermal Paste', 'Free Pick & Drop'], brands: ['Dell', 'HP', 'Lenovo', 'ASUS', 'Acer', 'MSI'], commonIssues: [{ id: 'screen-crack', title: 'Cracked screen', severity: 'high', description: 'Physical damage.' }], warranty: { duration: '30 Days', coverage: 'All parts and labor.', noFixNoFee: true }, 
       seo: { title: 'Laptop Repair Kuwait | All Brands | Free Pick & Drop | KCROC', description: 'Professional Windows laptop repair in Kuwait. Screen, battery, keyboard, charging port, and motherboard repairs. Free pick & drop.', canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-repair-kuwait', ogType: 'article', schemaTypes: ['Service'] },
-      navigationPriority: 90, isFeatured: true // 🚀 Added for Mega Menu
+      navigationPriority: 90, isFeatured: true 
     } as ServiceEntity,
     
     'srv-gaming': { 
       id: 'srv-gaming', slug: 'gaming-pc-repair-kuwait', entityType: 'Service', isActive: true, 
       title: 'Gaming PC Repair Kuwait', iconKey: 'gaming', shortDescription: 'GPU diagnostics, thermal throttling fixes, FPS tuning.', description: 'Gaming PCs face a unique enemy: sustained 45°C+ ambient temperatures. We solve the hardware problems that cost you frames.', repairLevel: 'advanced', estimatedTurnaround: 'Same Day / 24 Hours', pricing: { startingFrom: 25, currency: 'KWD', quoteRequired: true, displayLabel: 'From 25 KWD' }, coreFeatures: ['GPU Diagnostics', 'Thermal Re-Paste with Liquid Metal', 'AIO Maintenance', 'FPS Benchmarking'], brands: ['ASUS ROG', 'MSI', 'Alienware', 'Acer Predator'], commonIssues: [{ id: 'fps-drops', title: 'Severe FPS drops', severity: 'high', description: 'Thermal throttling.' }], warranty: { duration: '30 Days', coverage: 'All parts and labor.', noFixNoFee: true }, 
       seo: { title: 'Gaming PC Repair Kuwait | FPS & Thermal Fix | KCROC', description: 'Stop FPS drops and thermal throttling. Expert gaming PC repair in Kuwait. Free pick & drop.', canonicalUrl: 'https://www.computerrepairkuwait.com/gaming-pc-repair-kuwait', ogType: 'article', schemaTypes: ['Service'] },
-      navigationPriority: 80, isFeatured: true // 🚀 Added for Mega Menu
+      navigationPriority: 80, isFeatured: true 
     } as ServiceEntity,
     
     'srv-motherboard': { 
       id: 'srv-motherboard', slug: 'motherboard-repair-kuwait', entityType: 'Service', isActive: true, 
       title: 'Motherboard Repair Kuwait', iconKey: 'cpu', shortDescription: 'Chip-level diagnostics and micro-soldering.', description: 'Most repair shops replace the entire motherboard. We isolate the fault to the individual component level — saving you up to 80%.', repairLevel: 'chip-level', estimatedTurnaround: '24-48 Hours', pricing: { startingFrom: 25, currency: 'KWD', quoteRequired: true, displayLabel: 'From 25 KWD' }, coreFeatures: ['Power Rail Tracing', 'MOSFET Replacement', 'BGA Rework', 'Liquid Damage Ultrasonic Cleaning'], brands: ['MacBook', 'Dell', 'HP', 'ASUS', 'Lenovo'], commonIssues: [{ id: 'no-power', title: 'Dead laptop', severity: 'high', description: 'Input MOSFET short.' }], warranty: { duration: '30 Days', coverage: 'All parts and labor.', noFixNoFee: true }, 
       seo: { title: 'Motherboard Repair Kuwait | Chip-Level Fix | KCROC', description: 'Expert motherboard repair in Kuwait. Chip-level micro-soldering, power rail diagnostics, liquid damage recovery.', canonicalUrl: 'https://www.computerrepairkuwait.com/motherboard-repair-kuwait', ogType: 'article', schemaTypes: ['Service'] },
-      navigationPriority: 70, isFeatured: false // Standard list item
+      navigationPriority: 70, isFeatured: false 
     } as ServiceEntity,
     
     'srv-screen': { 
@@ -141,7 +141,7 @@ const rawGraphData: RawGraphData = {
     'reviews-row': { id: 'reviews-row', entityType: 'Reviews', isActive: true, title: 'Verified Google Reviews', aggregateRating: { ratingValue: '4.9', reviewCount: 150 }, items: [{ name: 'Ahmad Al-Sabah', location: 'Salmiya', time: '2 weeks ago', rating: 5, device: 'MacBook Pro — Screen Replacement', text: 'Fixed the MacBook Pro screen in 24 hours, price exactly as quoted.' }] } as ReviewsEntity,
 
     /* ═══════════════════════════════════════════════════════════════
-       PHASE 1: 15+ OPTIMIZED FAQS
+       FAQS
     ═══════════════════════════════════════════════════════════════ */
     'faq-pick-and-drop': { id: 'faq-pick-and-drop', slug: 'pick-and-drop', entityType: 'FAQ', isActive: true, title: 'Do you offer a pick and drop service across Kuwait?', description: 'Free pickup and delivery across all Kuwait governorates.', answer: 'Yes. Kuwait Computer Repair On Call provides completely free pickup and delivery across all Kuwait governorates — including Hawalli, Salmiya, Kuwait City, Farwaniya, Ahmadi, Jahra, Fahaheel, Mangaf, and Mahboula. Book via WhatsApp at any time. There are no hidden transport charges.', seo: { title: 'FAQ: Free Pick & Drop Service', description: 'Free pickup and delivery across all Kuwait.', canonicalUrl: 'https://www.computerrepairkuwait.com/faq#pick-and-drop', schemaTypes: ['FAQPage'] } } as FAQEntity,
     'faq-liquid-damage': { id: 'faq-liquid-damage', slug: 'liquid-damage', entityType: 'FAQ', isActive: true, title: 'Do you repair liquid-damaged laptops and MacBooks?', description: 'Details about our ultrasonic liquid damage repair process.', answer: 'Yes. We fully disassemble the device, run the logic board through an industrial ultrasonic cleaner to strip corrosion, then trace and replace the specific shorted components using micro-soldering.', seo: { title: 'FAQ: Liquid Damage Repair', description: 'Liquid damage repair process details.', canonicalUrl: 'https://www.computerrepairkuwait.com/faq#liquid-damage', schemaTypes: ['FAQPage'] } } as FAQEntity,
@@ -168,7 +168,7 @@ const rawGraphData: RawGraphData = {
     'faq-windows': { id: 'faq-windows', slug: 'windows-install', entityType: 'FAQ', isActive: true, title: 'Can you reinstall Windows on my laptop?', description: 'Details on clean Windows 10 and 11 installation services.', answer: 'Yes. We perform clean Windows 10 and Windows 11 installations with driver installation, Windows Update, and system optimization included. If you have data to preserve, we back up your files before reinstalling.', seo: { title: 'Can you reinstall Windows on my laptop?', description: 'Clean Windows 10 and 11 installations with full data backup and driver setup.', canonicalUrl: 'https://www.computerrepairkuwait.com/faq#windows-install', schemaTypes: ['FAQPage'] } } as FAQEntity,
 
     /* ═══════════════════════════════════════════════════════════════
-       PHASE 2: BRAND ENTITIES
+       BRANDS
     ═══════════════════════════════════════════════════════════════ */
     'brand-dell': {
       id: 'brand-dell', slug: 'dell-laptop-repair-kuwait', entityType: 'Brand', isActive: true,
@@ -265,7 +265,7 @@ const rawGraphData: RawGraphData = {
     } as BrandEntity,
 
     /* ═══════════════════════════════════════════════════════════════
-       PHASE 3: PROBLEM ENTITIES
+       PROBLEMS
     ═══════════════════════════════════════════════════════════════ */
     'problem-no-power': {
       id: 'problem-no-power', slug: 'laptop-wont-turn-on', entityType: 'Problem', isActive: true,
@@ -394,7 +394,7 @@ const rawGraphData: RawGraphData = {
     } as ProblemEntity,
 
     /* ═══════════════════════════════════════════════════════════════
-       PHASE 4: CASE STUDY ENTITIES
+       CASE STUDY ENTITIES
     ═══════════════════════════════════════════════════════════════ */
     'case-macbook-liquid-salmiya': {
       id: 'case-macbook-liquid-salmiya', slug: 'macbook-liquid-damage-salmiya', entityType: 'CaseStudy', isActive: true,
@@ -447,6 +447,7 @@ const rawGraphData: RawGraphData = {
 
 /* ═══════════════════════════════════════════════════════════════════
    KCROC_GRAPH SINGLETON — consumed by all UI components and SEO Engine
+   Contains strict null-safe fallbacks (?? []) to ensure 100% build stability.
 ═══════════════════════════════════════════════════════════════════ */
 const allEntities = Object.values(rawGraphData.entities);
 
@@ -454,23 +455,22 @@ export const GRAPH_INDEXES = rawGraphData.entities;
 
 export const KCROC_GRAPH = {
   ...rawGraphData,
-  routableEntities: allEntities.filter((e): e is RoutableEntity => 'seo' in e && e.isActive),
-  business:    allEntities.find((e): e is BusinessEntity    => e.entityType === 'Business'),
-  pages:       allEntities.filter((e): e is WebPageEntity   => e.entityType === 'WebPage'   && e.isActive),
-  services:    allEntities.filter((e): e is ServiceEntity   => e.entityType === 'Service'   && e.isActive),
-  faqs:        allEntities.filter((e): e is FAQEntity       => e.entityType === 'FAQ'       && e.isActive),
-  usps:        allEntities.filter((e): e is USPEntity       => e.entityType === 'USP'       && e.isActive),
-  trustBadges: allEntities.filter((e): e is TrustBadgeEntity => e.entityType === 'TrustBadge' && e.isActive),
-  processes:   allEntities.filter((e): e is ProcessEntity   => e.entityType === 'Process'   && e.isActive),
-  locations:   allEntities.filter((e): e is LocationEntity  => e.entityType === 'Location'  && e.isActive),
-  reviews:     allEntities.find((e): e is ReviewsEntity     => e.entityType === 'Reviews'   && e.isActive),
-  footer:      allEntities.find((e): e is FooterEntity      => e.entityType === 'Footer'),
-  stats:       allEntities.find((e): e is StatsEntity       => e.entityType === 'Stats'),
+  routableEntities: allEntities.filter((e): e is RoutableEntity => 'seo' in e && e.isActive) ?? [],
+  business:    allEntities.find((e): e is BusinessEntity    => e.entityType === 'Business') ?? null,
+  pages:       allEntities.filter((e): e is WebPageEntity   => e.entityType === 'WebPage'   && e.isActive) ?? [],
+  services:    allEntities.filter((e): e is ServiceEntity   => e.entityType === 'Service'   && e.isActive) ?? [],
+  faqs:        allEntities.filter((e): e is FAQEntity       => e.entityType === 'FAQ'       && e.isActive) ?? [],
+  usps:        allEntities.filter((e): e is USPEntity       => e.entityType === 'USP'       && e.isActive) ?? [],
+  trustBadges: allEntities.filter((e): e is TrustBadgeEntity => e.entityType === 'TrustBadge' && e.isActive) ?? [],
+  processes:   allEntities.filter((e): e is ProcessEntity   => e.entityType === 'Process'   && e.isActive) ?? [],
+  locations:   allEntities.filter((e): e is LocationEntity  => e.entityType === 'Location'  && e.isActive) ?? [],
+  reviews:     allEntities.find((e): e is ReviewsEntity     => e.entityType === 'Reviews'   && e.isActive) ?? null,
+  footer:      allEntities.find((e): e is FooterEntity      => e.entityType === 'Footer') ?? null,
+  stats:       allEntities.find((e): e is StatsEntity       => e.entityType === 'Stats') ?? null,
   
-  // ✅ ADDED EXPORTS FOR NEW SEO ROADMAP ENTITIES
-  brands:      allEntities.filter((e): e is BrandEntity     => e.entityType === 'Brand'     && e.isActive),
-  problems:    allEntities.filter((e): e is ProblemEntity   => e.entityType === 'Problem'   && e.isActive),
-  caseStudies: allEntities.filter((e): e is CaseStudyEntity => e.entityType === 'CaseStudy' && e.isActive),
+  brands:      allEntities.filter((e): e is BrandEntity     => e.entityType === 'Brand'     && e.isActive) ?? [],
+  problems:    allEntities.filter((e): e is ProblemEntity   => e.entityType === 'Problem'   && e.isActive) ?? [],
+  caseStudies: allEntities.filter((e): e is CaseStudyEntity => e.entityType === 'CaseStudy' && e.isActive) ?? [],
 };
 
 export const KCROC_AGGREGATE_RATING = {
