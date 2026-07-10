@@ -2,7 +2,8 @@
 import React, { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 
-import { Header } from './Header';
+// ✅ FIXED: Removed the curly braces to use the default import
+import Header from './Header';
 import { Footer } from './Footer';
 
 export const RootLayout: React.FC = () => {
