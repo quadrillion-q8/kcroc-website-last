@@ -1,177 +1,167 @@
 // File: app/frontend/src/core/components/layout/MobileMenu.tsx
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { 
-  ChevronDown, Phone, MessageCircle, Laptop, Apple, Gamepad2, 
-  Cpu, Monitor, BatteryWarning, HardDrive, ShieldCheck, Wrench 
-} from 'lucide-react';
+import { ChevronDown, Phone, MessageCircle } from 'lucide-react';
 
-const ICON_REGISTRY: Record<string, React.ComponentType<{ className?: string; 'aria-hidden'?: boolean }>> = {
-  apple:     Apple,
-  laptop:    Laptop,
-  gaming:    Gamepad2,
-  cpu:       Cpu,
-  monitor:   Monitor,
-  battery:   BatteryWarning,
-  hardDrive: HardDrive,
-  shield:    ShieldCheck,
-};
-const getIcon = (key: string) => ICON_REGISTRY[key] ?? Wrench;
+interface NavLink {
+  label: string;
+  hasMega: boolean;
+  href: string;
+}
+
+interface ServiceItem {
+  slug: string;
+  title: string;
+}
 
 interface MobileMenuProps {
   isOpen: boolean;
   onClose: () => void;
   returnFocusRef: React.RefObject<HTMLButtonElement>;
-  navLinks: { label: string; href: string; hasMega: boolean }[];
-  servicesList: any[];
+  navLinks: NavLink[];
+  servicesList: ServiceItem[];
   cleanTel: string;
 }
 
 export const MobileMenu: React.FC<MobileMenuProps> = ({ 
   isOpen, onClose, returnFocusRef, navLinks, servicesList, cleanTel 
 }) => {
-  const [servicesExpanded, setServicesExpanded] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
   const panelRef = useRef<HTMLDivElement>(null);
-  const firstLinkRef = useRef<HTMLAnchorElement>(null);
   const location = useLocation();
 
-  // Focus management & route change closing
+  // Reset accordion state when closed
   useEffect(() => {
-    if (isOpen) {
-      // Focus first link slightly after rendering
-      setTimeout(() => firstLinkRef.current?.focus(), 50);
-    } else {
-      returnFocusRef.current?.focus();
-      setServicesExpanded(false); // Reset accordion on close
+    if (!isOpen) {
+      setServicesOpen(false);
     }
-  }, [isOpen, returnFocusRef]);
+  }, [isOpen]);
 
-  // Click outside detection
+  // Escape key & focus restoration
   useEffect(() => {
     if (!isOpen) return;
-    const h = (e: MouseEvent) => {
-      if (panelRef.current && !panelRef.current.contains(e.target as Node)) {
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
         onClose();
+        returnFocusRef.current?.focus();
       }
     };
-    const t = setTimeout(() => document.addEventListener('mousedown', h), 10);
-    return () => { clearTimeout(t); document.removeEventListener('mousedown', h); };
-  }, [isOpen, onClose]);
+    document.addEventListener('keydown', handleKey);
+    return () => document.removeEventListener('keydown', handleKey);
+  }, [isOpen, onClose, returnFocusRef]);
 
   return (
     <div
       role="dialog"
       aria-modal="true"
       aria-label="Mobile navigation"
-      className={`lg:hidden fixed inset-x-0 bottom-0 top-16 z-[55] ${
-        isOpen ? 'pointer-events-auto' : 'pointer-events-none'
+      className={`lg:hidden fixed inset-0 z-[55] transition-opacity duration-200 ${
+        isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
       }`}
     >
-      {/* Interactive fading backdrop */}
+      {/* ── INTERACTIVE BACKDROP ── */}
       <div 
-        className={`fixed inset-0 top-16 bg-slate-950/60 backdrop-blur-sm transition-opacity duration-300 -z-10 ${
-          isOpen ? 'opacity-100' : 'opacity-0'
-        }`}
-        onClick={onClose} 
-        aria-hidden="true" 
+        className="fixed inset-0 top-16 bg-slate-950/90 backdrop-blur-md -z-10"
+        onClick={onClose}
+        aria-hidden="true"
       />
 
-      {/* Menu panel with subtle scale/slide animation & dvh sizing */}
+      {/* ── MENU PANEL ── */}
       <div 
         ref={panelRef}
-        className={`bg-slate-950 border-b border-slate-800/80 shadow-2xl shadow-black/50 max-h-[calc(100dvh-4rem)] overflow-y-auto transform origin-top transition-all duration-300 ease-out ${
-          isOpen ? 'opacity-100 translate-y-0 scale-100 visible' : 'opacity-0 -translate-y-2 scale-[0.98] invisible'
+        id="mobile-nav-panel"
+        className={`fixed left-0 right-0 top-16 bg-slate-950 border-b border-slate-800/80 shadow-2xl shadow-black/50 max-h-[calc(100dvh-4rem)] overflow-y-auto transform origin-top transition-all duration-300 ease-out ${
+          isOpen ? 'translate-y-0 scale-100 visible' : '-translate-y-2 scale-[0.98] invisible'
         }`}
       >
-        <nav className="px-4 py-4 space-y-1">
-          {navLinks.map((link, idx) => {
-            // Expandable Services Accordion
-            if (link.hasMega) {
-              return (
-                <div key={link.label} className="border-b border-slate-800/60 pb-1 mb-1">
-                  <button
-                    onClick={() => setServicesExpanded(!servicesExpanded)}
-                    aria-expanded={servicesExpanded}
-                    className="flex items-center justify-between w-full px-4 py-3 rounded-xl text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
-                  >
-                    {link.label}
-                    <ChevronDown 
-                      size={16} 
-                      className={`text-slate-500 transition-transform duration-300 ${servicesExpanded ? 'rotate-180 text-cyan-400' : ''}`} 
-                      aria-hidden="true" 
-                    />
-                  </button>
-                  <div 
-                    className={`flex flex-col gap-1 overflow-hidden transition-all duration-300 ease-in-out ${
-                      servicesExpanded ? 'max-h-[1000px] opacity-100 mt-2 pb-2' : 'max-h-0 opacity-0'
+        <div className="flex flex-col pt-4 px-6 pb-8 h-full">
+          <nav className="flex flex-col gap-1">
+            <Link 
+              to="/" 
+              onClick={onClose} 
+              className={`py-3 text-lg font-bold border-b border-slate-800 transition-colors ${
+                location.pathname === '/' ? 'text-cyan-400' : 'text-slate-200'
+              }`}
+            >
+              Home
+            </Link>
+
+            {/* ── EXPANDABLE SERVICES ACCORDION ── */}
+            <div className="border-b border-slate-800">
+              <button
+                onClick={() => setServicesOpen(!servicesOpen)}
+                aria-expanded={servicesOpen}
+                className="w-full flex items-center justify-between py-3 text-lg font-bold text-slate-200 hover:text-cyan-400 transition-colors"
+              >
+                Services
+                <ChevronDown 
+                  size={18} 
+                  className={`transition-transform duration-300 ${servicesOpen ? 'rotate-180 text-cyan-400' : 'text-slate-500'}`} 
+                  aria-hidden="true"
+                />
+              </button>
+              
+              <div 
+                className={`flex flex-col gap-2 overflow-hidden transition-all duration-300 ease-in-out ${
+                  servicesOpen ? 'max-h-[800px] opacity-100 pb-4 pl-4' : 'max-h-0 opacity-0'
+                }`}
+              >
+                <Link 
+                  to="/services" 
+                  onClick={onClose} 
+                  className="text-cyan-400 font-bold text-sm py-2"
+                >
+                  View All Services →
+                </Link>
+                {servicesList.map(s => (
+                  <Link 
+                    key={s.slug} 
+                    to={`/${s.slug}`} 
+                    onClick={onClose} 
+                    className={`text-sm py-1.5 transition-colors ${
+                      location.pathname === `/${s.slug}` ? 'text-cyan-400' : 'text-slate-400 hover:text-white'
                     }`}
                   >
-                    <Link
-                      to="/services"
-                      onClick={onClose}
-                      className="px-6 py-2.5 text-sm font-bold text-cyan-400 hover:text-cyan-300 transition-colors"
-                    >
-                      View All Services →
-                    </Link>
-                    {servicesList.map(service => {
-                      const Icon = getIcon(service.icon ?? 'laptop');
-                      return (
-                        <Link
-                          key={service.slug}
-                          to={`/${service.slug}`}
-                          onClick={onClose}
-                          className="flex items-center gap-3 px-6 py-2.5 rounded-xl text-sm text-slate-400 hover:text-white hover:bg-slate-800/60 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
-                        >
-                          <Icon className="w-4 h-4 text-cyan-500 shrink-0" aria-hidden="true" />
-                          {service.title}
-                        </Link>
-                      );
-                    })}
-                  </div>
-                </div>
-              );
-            }
+                    {s.title}
+                  </Link>
+                ))}
+              </div>
+            </div>
 
-            // Standard Navigation Links
-            return (
-              <Link
-                key={link.label}
-                to={link.href}
-                onClick={onClose}
-                ref={idx === 0 ? firstLinkRef : null}
-                className={`flex items-center justify-between px-4 py-3 rounded-xl text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 ${
-                  location.pathname === link.href
-                    ? 'text-cyan-400 bg-cyan-500/10'
-                    : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
+            {/* ── STANDARD FLAT LINKS ── */}
+            {navLinks.filter(l => !l.hasMega).map(link => (
+              <Link 
+                key={link.label} 
+                to={link.href} 
+                onClick={onClose} 
+                className={`py-3 text-lg font-bold border-b border-slate-800 transition-colors ${
+                  location.pathname === link.href ? 'text-cyan-400' : 'text-slate-200 hover:text-cyan-400'
                 }`}
               >
                 {link.label}
               </Link>
-            );
-          })}
+            ))}
+          </nav>
 
-          {/* Mobile CTA */}
-          <div className="pt-4 mt-2 border-t border-slate-800/60 flex flex-col gap-3 pb-2">
+          {/* ── MOBILE CTA ACTIONS ── */}
+          <div className="mt-8 pt-2 flex gap-3">
             <a
               href={`https://wa.me/${cleanTel}?text=${encodeURIComponent('Hi KCROC, I need a repair. Please arrange free pickup.')}`}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={onClose}
-              className="flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-sm px-4 py-3 rounded-xl transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+              className="flex-1 flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black py-3.5 rounded-xl transition-colors shadow-[0_0_15px_rgba(34,211,238,0.2)]"
             >
-              <MessageCircle size={16} aria-hidden="true" />
-              WhatsApp — Book Free Pickup
+              <MessageCircle size={18} aria-hidden="true" /> Book Pickup
             </a>
             <a
               href={`tel:+${cleanTel}`}
-              onClick={onClose}
-              className="flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 text-white font-medium text-sm px-4 py-3 rounded-xl transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+              className="w-14 flex items-center justify-center bg-slate-800 hover:bg-slate-700 text-cyan-400 rounded-xl border border-slate-700 transition-colors"
+              aria-label="Call KCROC directly"
             >
-              <Phone size={16} aria-hidden="true" />
-              Call +965 5530 1913
+              <Phone size={18} aria-hidden="true" />
             </a>
           </div>
-        </nav>
+        </div>
       </div>
     </div>
   );
