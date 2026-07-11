@@ -81,9 +81,9 @@ const InlineMegaMenu = ({ label, featured, standardList }: { label: string, feat
   );
 };
 
-/* ── MAIN HEADER (NAMED EXPORT) ── */
-// ✅ Changed from 'export default function Header' to 'export function Header'
-export function Header() {
+/* ── MAIN HEADER (DEFAULT EXPORT) ── */
+// ✅ Switched back to default export so Vercel resolves it perfectly
+export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
