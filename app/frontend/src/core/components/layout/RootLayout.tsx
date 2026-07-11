@@ -1,12 +1,14 @@
 // File: app/frontend/src/core/components/layout/RootLayout.tsx
 import React, { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
-import Header from './Header';
+
+// ✅ Changed to named import to perfectly match Header.tsx
+import { Header } from './Header'; 
 import { Footer } from './Footer';
 
 export const RootLayout: React.FC = () => {
   return (
-    // ✅ Added 'overflow-x-clip' here to contain mobile scrolling without breaking fixed positioning
+    // 'overflow-x-clip' is safely preserved here to stop mobile scroll without breaking the mega menu
     <div className="min-h-screen flex flex-col bg-slate-950 text-slate-200 font-sans selection:bg-cyan-500/30 overflow-x-clip">
       
       {/* ─── ENTERPRISE HEADER ─── */}
