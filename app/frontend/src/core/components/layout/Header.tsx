@@ -25,55 +25,65 @@ const InlineMegaMenu = ({ label, featured, standardList }: { label: string, feat
   const safeFeatured = featured || [];
   const safeStandardList = standardList || [];
 
+  // 🔥 DIAGNOSTIC OVERRIDE
+  // If arrays are empty, this forces the box open with dummy data so it can't collapse to 0px.
+  const isDataEmpty = safeFeatured.length === 0 && safeStandardList.length === 0;
+  
+  const displayFeatured = safeFeatured.length > 0 ? safeFeatured : [
+    { slug: '#', title: 'Data Missing!', description: 'KCROC_GRAPH is returning 0 services. The dropdown was collapsing to 0px height.', icon: 'wrench', callToAction: 'Fix Graph' }
+  ];
+  
+  const displayStandard = safeStandardList.length > 0 ? safeStandardList : [
+    { slug: '#', title: 'Standard Array Empty' }
+  ];
+
   return (
     <div className="group relative flex items-center h-16">
       <Link
         to="/services"
         className="flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors group-hover:text-cyan-400 group-hover:bg-cyan-500/10"
       >
-        {label}
+        {/* Adds a red [0] to the button if data is failing */}
+        {label} {isDataEmpty && <span className="text-red-400 font-bold ml-1">[0]</span>}
         <ChevronDown size={15} className="transition-transform duration-200 group-hover:rotate-180" aria-hidden="true" />
       </Link>
 
       <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 w-[680px] z-[99999] opacity-0 invisible translate-y-3 pointer-events-none group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300">
-        <div className="bg-slate-900 border border-slate-700/60 rounded-2xl shadow-2xl shadow-black/80 overflow-hidden cursor-default">
+        
+        {/* Added min-h-[100px] to guarantee it has physical mass */}
+        <div className="bg-slate-900 border border-slate-700/60 rounded-2xl shadow-2xl shadow-black/80 overflow-hidden cursor-default min-h-[100px]">
           
-          {safeFeatured.length > 0 && (
-            <div className="p-5 grid grid-cols-3 gap-3 border-b border-slate-800/60">
-              {safeFeatured.map(service => {
-                const Icon = getIcon(service.icon);
-                return (
-                  <Link key={service.slug} to={`/${service.slug}`} className="group/card flex flex-col gap-3 p-4 rounded-xl bg-slate-800/40 hover:bg-cyan-500/10 border border-slate-700/40 hover:border-cyan-500/40 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400">
-                    <div className="w-9 h-9 rounded-lg bg-cyan-500/15 border border-cyan-500/25 flex items-center justify-center shrink-0">
-                      <Icon className="w-4 h-4 text-cyan-400 group-hover/card:scale-110 transition-transform" aria-hidden="true" />
-                    </div>
-                    <div>
-                      <p className="text-sm font-bold text-white group-hover/card:text-cyan-400 transition-colors leading-snug mb-1">{service.title}</p>
-                      <p className="text-xs text-slate-400 leading-relaxed line-clamp-2">{service.description}</p>
-                    </div>
-                    <span className="text-xs text-cyan-500 font-bold flex items-center gap-1 mt-auto">
-                      {service.callToAction || 'Learn More'} <ArrowRight size={11} aria-hidden="true" className="group-hover/card:translate-x-1 transition-transform" />
-                    </span>
-                  </Link>
-                );
-              })}
-            </div>
-          )}
+          <div className="p-5 grid grid-cols-3 gap-3 border-b border-slate-800/60">
+            {displayFeatured.map(service => {
+              const Icon = getIcon(service.icon);
+              return (
+                <Link key={service.slug} to={service.slug} className={`group/card flex flex-col gap-3 p-4 rounded-xl bg-slate-800/40 hover:bg-cyan-500/10 border transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 ${isDataEmpty ? 'border-red-500/40 hover:border-red-400' : 'border-slate-700/40 hover:border-cyan-500/40'}`}>
+                  <div className={`w-9 h-9 rounded-lg flex items-center justify-center shrink-0 ${isDataEmpty ? 'bg-red-500/15 border border-red-500/25' : 'bg-cyan-500/15 border border-cyan-500/25'}`}>
+                    <Icon className={`w-4 h-4 group-hover/card:scale-110 transition-transform ${isDataEmpty ? 'text-red-400' : 'text-cyan-400'}`} aria-hidden="true" />
+                  </div>
+                  <div>
+                    <p className={`text-sm font-bold transition-colors leading-snug mb-1 ${isDataEmpty ? 'text-red-400' : 'text-white group-hover/card:text-cyan-400'}`}>{service.title}</p>
+                    <p className="text-xs text-slate-400 leading-relaxed line-clamp-2">{service.description}</p>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
 
-          {safeStandardList.length > 0 && (
-            <div className="p-4 flex items-center justify-between gap-4 bg-slate-900/40">
-              <div className="flex flex-wrap gap-2">
-                {safeStandardList.map(service => (
-                  <Link key={service.slug} to={`/${service.slug}`} className="text-xs text-slate-400 hover:text-cyan-400 px-3 py-1.5 rounded-lg hover:bg-slate-800/60 transition-colors">
-                    {service.title}
-                  </Link>
-                ))}
-              </div>
+          <div className="p-4 flex items-center justify-between gap-4 bg-slate-900/40">
+            <div className="flex flex-wrap gap-2">
+              {displayStandard.map(service => (
+                <Link key={service.slug} to={service.slug} className={`text-xs px-3 py-1.5 rounded-lg transition-colors ${isDataEmpty ? 'text-red-400 bg-red-950/40' : 'text-slate-400 hover:text-cyan-400 hover:bg-slate-800/60'}`}>
+                  {service.title}
+                </Link>
+              ))}
+            </div>
+            {!isDataEmpty && (
               <Link to="/services" className="shrink-0 text-xs font-bold text-slate-950 bg-cyan-500 hover:bg-cyan-400 px-4 py-2 rounded-lg transition-colors flex items-center gap-1.5 shadow-[0_0_10px_rgba(34,211,238,0.2)]">
                 All services <ArrowRight size={12} aria-hidden="true" />
               </Link>
-            </div>
-          )}
+            )}
+          </div>
 
         </div>
       </div>
@@ -82,7 +92,6 @@ const InlineMegaMenu = ({ label, featured, standardList }: { label: string, feat
 };
 
 /* ── MAIN HEADER (DEFAULT EXPORT) ── */
-// ✅ Switched back to default export so Vercel resolves it perfectly
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
