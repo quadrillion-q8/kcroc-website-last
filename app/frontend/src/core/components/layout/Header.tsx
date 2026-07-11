@@ -22,12 +22,12 @@ export default function Header() {
   const hamburgerBtnRef = useRef<HTMLButtonElement>(null);
   const location = useLocation();
 
-  /* ── DATA ORCHESTRATION ── */
-  const menuData = NavigationBuilder.getMegaMenuServices();
-  const featured = menuData.featured;
-  const standardList = menuData.standardList;
+  /* ── STRICT DATA ORCHESTRATION WITH FALLBACKS ── */
+  const menuData = NavigationBuilder.getMegaMenuServices() || { featured: [], standardList: [] };
+  const featured = menuData.featured || [];
+  const standardList = menuData.standardList || [];
   
-  const phone = KCROC_GRAPH.business?.telephone ?? '96555301913';
+  const phone = KCROC_GRAPH.business?.telephone || '96555301913';
   const cleanTel = phone.replace(/\D/g, '');
 
   /* ── GLOBAL STATE ── */
@@ -48,7 +48,6 @@ export default function Header() {
 
   return (
     <>
-      {/* ── DESKTOP & MOBILE HEADER BAR ── */}
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
           scrolled || mobileOpen
@@ -69,7 +68,7 @@ export default function Header() {
 
             {/* ── DESKTOP NAV ── */}
             <nav aria-label="Main navigation" className="hidden lg:flex items-center gap-1 h-16">
-              {NAV_LINKS.map(link =>
+              {NAV_LINKS?.map(link =>
                 link.hasMega ? (
                   <DesktopMegaMenu 
                     key={link.label} 
