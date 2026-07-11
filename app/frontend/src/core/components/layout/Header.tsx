@@ -23,11 +23,9 @@ export default function Header() {
   const location = useLocation();
 
   /* ── DATA ORCHESTRATION ── */
-  // All fallback and sorting logic is now safely handled inside NavigationBuilder.ts
   const menuData = NavigationBuilder.getMegaMenuServices();
   const featured = menuData.featured;
   const standardList = menuData.standardList;
-  const combinedServices = [...featured, ...standardList]; // Passed to mobile menu accordion
   
   const phone = KCROC_GRAPH.business?.telephone ?? '96555301913';
   const cleanTel = phone.replace(/\D/g, '');
@@ -129,7 +127,8 @@ export default function Header() {
         onClose={() => setMobileOpen(false)} 
         returnFocusRef={hamburgerBtnRef}
         navLinks={NAV_LINKS}
-        servicesList={combinedServices}
+        featuredServices={featured}
+        standardServices={standardList}
         cleanTel={cleanTel}
       />
     </>
