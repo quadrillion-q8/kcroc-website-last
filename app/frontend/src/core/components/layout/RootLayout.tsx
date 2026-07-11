@@ -1,14 +1,13 @@
 // File: app/frontend/src/core/components/layout/RootLayout.tsx
 import React, { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
-
-// ✅ FIXED: Removed the curly braces to use the default import
 import Header from './Header';
 import { Footer } from './Footer';
 
 export const RootLayout: React.FC = () => {
   return (
-    <div className="min-h-screen flex flex-col bg-slate-950 text-slate-200 font-sans selection:bg-cyan-500/30">
+    // ✅ Added 'overflow-x-clip' here to contain mobile scrolling without breaking fixed positioning
+    <div className="min-h-screen flex flex-col bg-slate-950 text-slate-200 font-sans selection:bg-cyan-500/30 overflow-x-clip">
       
       {/* ─── ENTERPRISE HEADER ─── */}
       <Header />
