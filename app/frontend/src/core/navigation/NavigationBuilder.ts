@@ -1,104 +1,63 @@
 // File: app/frontend/src/core/navigation/NavigationBuilder.ts
-import { KCROC_GRAPH } from '../../data/graph';
-import { RoutableEntity } from '../../types/knowledgeGraph';
+import { KCROC_GRAPH } from '../../../data/graph';
 
 export class NavigationBuilder {
-  
   /**
-   * Universal sorting logic based on the new navigationPriority field.
-   * ✅ Defensive: Guards against undefined/null or non-array inputs.
+   * Builds the strictly formatted data required by DesktopMegaMenu.tsx
    */
-  private static sortByPriority<T extends RoutableEntity>(items: T[]): T[] {
-    if (!items || !Array.isArray(items)) return [];
-    
-    return [...items].sort((a, b) => 
-      (b.navigationPriority || 0) - (a.navigationPriority || 0)
+  static getMegaMenuServices() {
+    // 1. Safely pull all services, defaulting to empty array if undefined
+    const allServices = KCROC_GRAPH.services || [];
+
+    // 2. Sort by navigation priority to ensure the most important services appear first
+    const sortedServices = [...allServices].sort((a: any, b: any) => 
+      (a.navigationPriority || 99) - (b.navigationPriority || 99)
     );
-  }
 
-  /**
-   * Generates the structured payload for the Desktop Mega Menu
-   */
-  public static getMegaMenuServices() {
-    // ✅ Defensive: Fallback to empty array if KCROC_GRAPH.services is undefined
-    const allServices = this.sortByPriority(KCROC_GRAPH.services ?? []);
-    
+    // 3. Identify featured items. If none are explicitly flagged 'isFeatured', slice the top 3.
+    const explicitlyFeatured = sortedServices.filter((s: any) => s.isFeatured);
+    const featuredRaw = explicitlyFeatured.length > 0 
+      ? explicitlyFeatured 
+      : sortedServices.slice(0, 3);
+
+    // 4. The standard list becomes whatever is left over
+    const standardRaw = sortedServices.filter((s: any) => 
+      !featuredRaw.some(f => f.slug === s.slug)
+    );
+
+    // 5. Map strictly to the exact prop types expected by the Mega Menu
     return {
-      featured: allServices
-        .filter(s => s.isFeatured)
-        .slice(0, 3)
-        .map(s => ({
-          id: s.id,
-          title: s.title,
-          slug: s.slug,
-          icon: s.iconKey,
-          // ✅ Defensive: Safe truncation falling back to main description
-          description: s.shortDescription ?? (s.description ? s.description.substring(0, 80) + '…' : ''),
-          callToAction: '→ Learn More'
-        })),
-      standardList: allServices
-        .filter(s => !s.isFeatured)
-        .slice(0, 5)
-        .map(s => ({
-          title: s.title,
-          slug: s.slug
-        })),
-      totalCount: allServices.length
+      featured: featuredRaw.map((s: any) => ({
+        slug: s.slug,
+        title: s.title || s.name,
+        icon: s.iconKey || 'laptop',
+        description: s.shortDescription || 'Professional component-level repair and diagnostic services.',
+        callToAction: s.callToAction || 'Learn More'
+      })),
+      standardList: standardRaw.map((s: any) => ({
+        slug: s.slug,
+        title: s.title || s.name
+      }))
     };
   }
 
   /**
-   * Generates the multi-column Footer Directory Array
+   * Builds the simple label/route arrays required by DesktopDropdowns and Mobile accordions
    */
-  public static getFooterDirectory() {
-    const business = KCROC_GRAPH.business;
-
+  static getFooterDirectory() {
     return {
-      company: [
-        { label: 'About Us', route: '/about' },
-        { label: 'Pricing', route: '/pricing' },
-        { label: 'Gallery', route: '/gallery' },
-        { label: 'FAQ', route: '/faq' },
-      ],
-      legal: [ 
-        { label: 'Privacy Policy', route: '/privacy-security-kuwait' },
-        { label: 'Terms of Service', route: '/terms' },
-        { label: 'Warranty Policy', route: '/warranty' }
-      ],
-      quickActions: [ 
-        { label: 'Book Free Pickup', route: '/book', isPrimary: true },
-        // ✅ Defensive: Safely pull phone number with a hardcoded fallback just in case
-        { label: 'WhatsApp Technician', route: `https://wa.me/${business?.telephone ?? '96555301913'}`, isExternal: true },
-        { label: 'Call Lab', route: `tel:${business?.telephone ?? '+96555301913'}` }
-      ],
-      // ✅ Defensive: Null-safe arrays on every graph collection access
-      services: this.sortByPriority(KCROC_GRAPH.services ?? []).map(s => ({ label: s.title, route: `/${s.slug}` })),
-      brands: this.sortByPriority(KCROC_GRAPH.brands ?? []).map(b => ({ label: b.brandName, route: `/${b.slug}` })),
-      problems: this.sortByPriority(KCROC_GRAPH.problems ?? []).map(p => ({ label: p.title, route: `/${p.slug}` })),
-      locations: this.sortByPriority(KCROC_GRAPH.locations ?? []).map(l => ({ label: l.title, route: `/location/${l.slug}` }))
+      services: (KCROC_GRAPH.services || []).map((s: any) => ({
+        label: s.title || s.name,
+        route: `/${s.slug}`
+      })),
+      brands: (KCROC_GRAPH.brands || []).map((b: any) => ({
+        label: b.name,
+        route: `/${b.slug}`
+      })),
+      problems: (KCROC_GRAPH.problems || []).map((p: any) => ({
+        label: p.name,
+        route: `/${p.slug}`
+      }))
     };
-  }
-
-  /**
-   * Dynamically generates Breadcrumbs based on the current active slug
-   */
-  public static buildBreadcrumbs(currentSlug: string) {
-    // ✅ Defensive: Guard against a missing slug
-    if (!currentSlug) return [{ label: 'Home', route: '/' }];
-
-    // ✅ Defensive: Guard against routableEntities being undefined
-    const entity = (KCROC_GRAPH.routableEntities ?? []).find(e => e.slug === currentSlug);
-    if (!entity) return [{ label: 'Home', route: '/' }];
-
-    const breadcrumbs: { label: string; route: string }[] = [{ label: 'Home', route: '/' }];
-    
-    // Dynamic Parent Assignment based on entityType
-    if (entity.entityType === 'Service') breadcrumbs.push({ label: 'Services', route: '/services' });
-    if (entity.entityType === 'Brand') breadcrumbs.push({ label: 'Brands', route: '/brands' });
-    if (entity.entityType === 'Problem') breadcrumbs.push({ label: 'Troubleshooting', route: '/problems' });
-    if (entity.entityType === 'Location') breadcrumbs.push({ label: 'Service Areas', route: '/areas' });
-
-    breadcrumbs.push({ label: entity.title, route: `/${entity.slug}` });
-    return breadcrumbs;
   }
 }
