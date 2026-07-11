@@ -23,22 +23,11 @@ export default function Header() {
   const location = useLocation();
 
   /* ── DATA ORCHESTRATION ── */
+  // All fallback and sorting logic is now safely handled inside NavigationBuilder.ts
   const menuData = NavigationBuilder.getMegaMenuServices();
-  
-  const featured = menuData.featured.length > 0
-    ? menuData.featured
-    : menuData.standardList.slice(0, 3).map(s => {
-        const srv = KCROC_GRAPH.services.find(x => x.slug === s.slug) as any;
-        return {
-          ...s,
-          icon: srv?.iconKey ?? 'laptop',
-          description: srv?.shortDescription ?? '',
-          callToAction: srv?.callToAction ?? '→ Learn More',
-        };
-      });
-      
+  const featured = menuData.featured;
   const standardList = menuData.standardList;
-  const combinedServices = [...featured, ...standardList.slice(3)]; // Passed to mobile menu
+  const combinedServices = [...featured, ...standardList]; // Passed to mobile menu accordion
   
   const phone = KCROC_GRAPH.business?.telephone ?? '96555301913';
   const cleanTel = phone.replace(/\D/g, '');
@@ -61,6 +50,7 @@ export default function Header() {
 
   return (
     <>
+      {/* ── DESKTOP & MOBILE HEADER BAR ── */}
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
           scrolled || mobileOpen
@@ -133,7 +123,7 @@ export default function Header() {
         </div>
       </header>
 
-      {/* ── MOBILE MENU SYSTEM ── */}
+      {/* ── ISOLATED MOBILE MENU SYSTEM ── */}
       <MobileMenu 
         isOpen={mobileOpen} 
         onClose={() => setMobileOpen(false)} 
