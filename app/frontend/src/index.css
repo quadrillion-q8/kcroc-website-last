@@ -1,10 +1,10 @@
+/* File: app/frontend/src/index.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    /* Defaulting to Enterprise Dark Mapping */
     --background: 222 84% 5%;
     --foreground: 210 40% 98%;
     
@@ -26,7 +26,6 @@
     --radius-button: 0.5rem;
   }
 
-  /* Native High Contrast Mapping Support */
   @media (prefers-contrast: more) {
     :root {
       --background: 0 0% 0%;
@@ -48,7 +47,7 @@
     font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
     background-color: var(--brand-dark);
     color: var(--foreground);
-    overflow-x: hidden;
     min-height: 100vh;
+    /* ✅ Removed overflow-x: hidden to prevent mega-menu clipping */
   }
 }
