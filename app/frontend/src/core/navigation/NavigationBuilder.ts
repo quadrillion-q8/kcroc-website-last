@@ -1,5 +1,7 @@
 // File: app/frontend/src/core/navigation/NavigationBuilder.ts
-import { KCROC_GRAPH } from '../../../data/graph';
+
+// ✅ FIXED: Changed from '../../../data/graph' to '../../data/graph'
+import { KCROC_GRAPH } from '../../data/graph';
 
 export class NavigationBuilder {
   /**
