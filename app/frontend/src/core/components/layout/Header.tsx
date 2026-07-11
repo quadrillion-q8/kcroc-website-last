@@ -18,16 +18,17 @@ const NAV_LINKS = [
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  
+
   const hamburgerBtnRef = useRef<HTMLButtonElement>(null);
   const location = useLocation();
 
-  /* ── STRICT DATA ORCHESTRATION WITH FALLBACKS ── */
-  const menuData = NavigationBuilder.getMegaMenuServices() || { featured: [], standardList: [] };
-  const featured = menuData.featured || [];
-  const standardList = menuData.standardList || [];
-  
-  const phone = KCROC_GRAPH.business?.telephone || '96555301913';
+  /* ── DATA ORCHESTRATION ── */
+  // All fallback and sorting logic lives inside NavigationBuilder.ts
+  const menuData = NavigationBuilder.getMegaMenuServices();
+  const featured = menuData.featured;
+  const standardList = menuData.standardList;
+
+  const phone = KCROC_GRAPH.business?.telephone ?? '96555301913';
   const cleanTel = phone.replace(/\D/g, '');
 
   /* ── GLOBAL STATE ── */
@@ -48,6 +49,7 @@ export default function Header() {
 
   return (
     <>
+      {/* ── DESKTOP & MOBILE HEADER BAR ── */}
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
           scrolled || mobileOpen
@@ -68,13 +70,13 @@ export default function Header() {
 
             {/* ── DESKTOP NAV ── */}
             <nav aria-label="Main navigation" className="hidden lg:flex items-center gap-1 h-16">
-              {NAV_LINKS?.map(link =>
+              {NAV_LINKS.map(link =>
                 link.hasMega ? (
-                  <DesktopMegaMenu 
-                    key={link.label} 
-                    label={link.label} 
-                    featured={featured} 
-                    standardList={standardList} 
+                  <DesktopMegaMenu
+                    key={link.label}
+                    label={link.label}
+                    featured={featured}
+                    standardList={standardList}
                   />
                 ) : (
                   <Link
@@ -94,12 +96,21 @@ export default function Header() {
 
             {/* ── DESKTOP CTA ── */}
             <div className="hidden lg:flex items-center gap-3">
-              <a href={`tel:+${cleanTel}`} className="flex items-center gap-2 text-sm font-medium text-slate-300 hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 rounded-lg px-2 py-1">
+              <a
+                href={`tel:+${cleanTel}`}
+                className="flex items-center gap-2 text-sm font-medium text-slate-300 hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 rounded-lg px-2 py-1"
+              >
                 <Phone size={15} className="text-cyan-400" aria-hidden="true" />
                 <span className="hidden xl:block">55301913</span>
               </a>
-              <a href={`https://wa.me/${cleanTel}?text=${encodeURIComponent('Hi KCROC, I need a repair. Please arrange free pickup.')}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-sm px-4 py-2 rounded-lg transition-all hover:scale-[1.02] shadow-[0_0_15px_rgba(34,211,238,0.2)] focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950">
-                <MessageCircle size={15} aria-hidden="true" /> 
+              
+              <a
+                href={`https://wa.me/${cleanTel}?text=${encodeURIComponent('Hi KCROC, I need a repair. Please arrange free pickup.')}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-sm px-4 py-2 rounded-lg transition-all hover:scale-[1.02] shadow-[0_0_15px_rgba(34,211,238,0.2)] focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+              >
+                <MessageCircle size={15} aria-hidden="true" />
                 Book Pickup
               </a>
             </div>
@@ -121,9 +132,9 @@ export default function Header() {
       </header>
 
       {/* ── ISOLATED MOBILE MENU SYSTEM ── */}
-      <MobileMenu 
-        isOpen={mobileOpen} 
-        onClose={() => setMobileOpen(false)} 
+      <MobileMenu
+        isOpen={mobileOpen}
+        onClose={() => setMobileOpen(false)}
         returnFocusRef={hamburgerBtnRef}
         navLinks={NAV_LINKS}
         featuredServices={featured}
