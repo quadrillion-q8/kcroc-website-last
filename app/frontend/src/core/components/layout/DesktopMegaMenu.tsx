@@ -32,6 +32,10 @@ export const DesktopMegaMenu: React.FC<DesktopMegaMenuProps> = ({ label, feature
   const triggerRef = useRef<HTMLButtonElement>(null);
   const location = useLocation();
 
+  // Safety Fallbacks to prevent crash
+  const safeFeatured = featured || [];
+  const safeStandardList = standardList || [];
+
   /* ── INTERACTION HANDLERS ── */
   const handleOpen = useCallback(() => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
@@ -54,7 +58,7 @@ export const DesktopMegaMenu: React.FC<DesktopMegaMenuProps> = ({ label, feature
   const handleKeyDown = (e: KeyboardEvent<HTMLButtonElement>) => {
     if (e.key === 'Escape' && megaOpen) {
       setMegaOpen(false);
-      triggerRef.current?.focus(); // Return focus to trigger after closing
+      triggerRef.current?.focus(); 
     }
   };
 
@@ -118,7 +122,7 @@ export const DesktopMegaMenu: React.FC<DesktopMegaMenuProps> = ({ label, feature
         <div className="bg-slate-900 border border-slate-700/60 rounded-2xl shadow-2xl shadow-black/60 overflow-hidden">
           
           <div className="p-5 grid grid-cols-3 gap-3 border-b border-slate-800/60">
-            {featured.map(service => {
+            {safeFeatured?.map(service => {
               const Icon = getIcon(service.icon);
               return (
                 <Link
@@ -148,7 +152,7 @@ export const DesktopMegaMenu: React.FC<DesktopMegaMenuProps> = ({ label, feature
 
           <div className="p-4 flex items-center justify-between gap-4">
             <div className="flex flex-wrap gap-2">
-              {standardList.map(service => (
+              {safeStandardList?.map(service => (
                 <Link
                   key={service.slug}
                   to={`/${service.slug}`}
