@@ -1,226 +1,205 @@
 // File: app/frontend/src/core/components/layout/Header.tsx
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Menu, X, ChevronDown, Laptop, Phone, CalendarCheck, MessageCircle, ArrowRight, Wrench } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { Menu, X, Phone, MessageCircle, Laptop, ChevronDown, ArrowRight, Apple, Gamepad2, Cpu, Monitor, BatteryWarning, HardDrive, ShieldCheck, Wrench } from 'lucide-react';
 import { NavigationBuilder } from '../../navigation/NavigationBuilder';
 import { KCROC_GRAPH } from '../../../data/graph';
+import { MobileMenu } from './MobileMenu';
 
-export const Header: React.FC = () => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [openMobileDropdown, setOpenMobileDropdown] = useState<string | null>(null);
+const NAV_LINKS = [
+  { label: 'Services', hasMega: true,  href: '/services' },
+  { label: 'Pricing',  hasMega: false, href: '/pricing' },
+  { label: 'Blog',     hasMega: false, href: '/blog' },
+  { label: 'About',    hasMega: false, href: '/about' },
+  { label: 'Contact',  hasMega: false, href: '/contact' },
+];
 
-  const navData = NavigationBuilder.getFooterDirectory();
-  const megaMenu = NavigationBuilder.getMegaMenuServices();
-  const phone = KCROC_GRAPH.business?.telephone || '96555301913';
+/* ── INLINE ICON REGISTRY ── */
+const ICON_REGISTRY: Record<string, React.ComponentType<{ className?: string; 'aria-hidden'?: boolean }>> = {
+  apple: Apple, laptop: Laptop, gaming: Gamepad2, cpu: Cpu, monitor: Monitor, battery: BatteryWarning, hardDrive: HardDrive, shield: ShieldCheck,
+};
+const getIcon = (key: string) => ICON_REGISTRY[key] ?? Wrench;
 
-  const handleNavigate = () => {
-    setIsMobileMenuOpen(false);
-    setOpenMobileDropdown(null);
-  };
+/* ── INLINE MEGA MENU COMPONENT ── */
+const InlineMegaMenu = ({ label, featured, standardList }: { label: string, featured: any[], standardList: any[] }) => {
+  const safeFeatured = featured || [];
+  const safeStandardList = standardList || [];
 
-  /* --- STANDARD DESKTOP DROPDOWN --- */
-  const DesktopDropdown = ({ title, items }: { title: string, items: {label: string, route: string}[] }) => (
-    <div className="relative group h-full flex items-center">
-      <button className="flex items-center gap-1 text-sm font-bold text-slate-300 group-hover:text-cyan-400 transition-colors h-full">
-        {title} <ChevronDown className="w-4 h-4" />
-      </button>
-      <div className="absolute top-[80px] left-0 hidden group-hover:flex flex-col w-64 bg-slate-900 border border-slate-800 rounded-xl p-2 shadow-2xl">
-        {items.map((item, idx) => (
-          <Link 
-            key={idx} 
-            to={item.route} 
-            className="px-4 py-2.5 text-sm font-medium text-slate-400 hover:text-cyan-400 hover:bg-slate-800/50 rounded-lg transition-all"
-          >
-            {item.label}
-          </Link>
-        ))}
+  return (
+    <div className="group relative flex items-center h-16">
+      <Link
+        to="/services"
+        className="flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors group-hover:text-cyan-400 group-hover:bg-cyan-500/10"
+      >
+        {label}
+        <ChevronDown size={15} className="transition-transform duration-200 group-hover:rotate-180" aria-hidden="true" />
+      </Link>
+
+      <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 w-[680px] z-[99999] opacity-0 invisible translate-y-3 pointer-events-none group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300">
+        <div className="bg-slate-900 border border-slate-700/60 rounded-2xl shadow-2xl shadow-black/80 overflow-hidden cursor-default">
+          
+          {safeFeatured.length > 0 && (
+            <div className="p-5 grid grid-cols-3 gap-3 border-b border-slate-800/60">
+              {safeFeatured.map(service => {
+                const Icon = getIcon(service.icon);
+                return (
+                  <Link key={service.slug} to={`/${service.slug}`} className="group/card flex flex-col gap-3 p-4 rounded-xl bg-slate-800/40 hover:bg-cyan-500/10 border border-slate-700/40 hover:border-cyan-500/40 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400">
+                    <div className="w-9 h-9 rounded-lg bg-cyan-500/15 border border-cyan-500/25 flex items-center justify-center shrink-0">
+                      <Icon className="w-4 h-4 text-cyan-400 group-hover/card:scale-110 transition-transform" aria-hidden="true" />
+                    </div>
+                    <div>
+                      <p className="text-sm font-bold text-white group-hover/card:text-cyan-400 transition-colors leading-snug mb-1">{service.title}</p>
+                      <p className="text-xs text-slate-400 leading-relaxed line-clamp-2">{service.description}</p>
+                    </div>
+                    <span className="text-xs text-cyan-500 font-bold flex items-center gap-1 mt-auto">
+                      {service.callToAction || 'Learn More'} <ArrowRight size={11} aria-hidden="true" className="group-hover/card:translate-x-1 transition-transform" />
+                    </span>
+                  </Link>
+                );
+              })}
+            </div>
+          )}
+
+          {safeStandardList.length > 0 && (
+            <div className="p-4 flex items-center justify-between gap-4 bg-slate-900/40">
+              <div className="flex flex-wrap gap-2">
+                {safeStandardList.map(service => (
+                  <Link key={service.slug} to={`/${service.slug}`} className="text-xs text-slate-400 hover:text-cyan-400 px-3 py-1.5 rounded-lg hover:bg-slate-800/60 transition-colors">
+                    {service.title}
+                  </Link>
+                ))}
+              </div>
+              <Link to="/services" className="shrink-0 text-xs font-bold text-slate-950 bg-cyan-500 hover:bg-cyan-400 px-4 py-2 rounded-lg transition-colors flex items-center gap-1.5 shadow-[0_0_10px_rgba(34,211,238,0.2)]">
+                All services <ArrowRight size={12} aria-hidden="true" />
+              </Link>
+            </div>
+          )}
+
+        </div>
       </div>
     </div>
   );
+};
 
-  /* --- MOBILE ACCORDION --- */
-  const MobileAccordion = ({ title, items }: { title: string, items: {label: string, route: string}[] }) => {
-    const isOpen = openMobileDropdown === title;
-    return (
-      <div className="border-b border-slate-800">
-        <button 
-          onClick={() => setOpenMobileDropdown(isOpen ? null : title)}
-          className="flex items-center justify-between w-full py-4 text-left font-bold text-slate-200"
-        >
-          {title}
-          <ChevronDown className={`w-5 h-5 transition-transform ${isOpen ? 'rotate-180 text-cyan-400' : 'text-slate-500'}`} />
-        </button>
-        {isOpen && (
-          <div className="pb-4 pl-4 space-y-3 flex flex-col">
-            {items.map((item, idx) => (
-              <Link 
-                key={idx} 
-                to={item.route} 
-                onClick={handleNavigate}
-                className="text-slate-400 text-sm hover:text-cyan-400"
-              >
-                {item.label}
-              </Link>
-            ))}
-          </div>
-        )}
-      </div>
-    );
-  };
+/* ── MAIN HEADER (NAMED EXPORT) ── */
+// ✅ Changed from 'export default function Header' to 'export function Header'
+export function Header() {
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  const hamburgerBtnRef = useRef<HTMLButtonElement>(null);
+  const location = useLocation();
+
+  const menuData = NavigationBuilder.getMegaMenuServices();
+  const featured = menuData.featured;
+  const standardList = menuData.standardList;
+
+  const phone = KCROC_GRAPH.business?.telephone ?? '96555301913';
+  const cleanTel = phone.replace(/\D/g, '');
+
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [location.pathname]);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [mobileOpen]);
 
   return (
-    <header className="w-full bg-slate-950/90 backdrop-blur-md border-b border-slate-800 sticky top-0 z-50 h-20">
-      <div className="max-w-[1400px] mx-auto px-4 xl:px-6 h-full flex items-center justify-between">
-        
-        <Link to="/" onClick={handleNavigate} className="flex items-center gap-2 text-white font-black text-2xl tracking-tight hover:opacity-90 flex-shrink-0">
-          <Laptop className="w-6 h-6 text-cyan-400" />
-          <span>KCROC</span>
-        </Link>
+    <>
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
+          scrolled || mobileOpen
+            ? 'bg-slate-950/95 backdrop-blur-xl border-b border-slate-800/80 shadow-lg shadow-black/20'
+            : 'bg-slate-950/80 backdrop-blur-md border-b border-slate-800/40'
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="flex items-center justify-between h-16">
 
-        <nav className="hidden lg:flex items-center gap-6 xl:gap-8 h-full">
-          <Link to="/" className="text-sm font-bold text-slate-300 hover:text-cyan-400 transition-colors h-full flex items-center">Home</Link>
-          
-          <div className="relative group h-full flex items-center">
-            <button className="flex items-center gap-1 text-sm font-bold text-slate-300 group-hover:text-cyan-400 transition-colors h-full">
-              Services <ChevronDown className="w-4 h-4" />
-            </button>
-            
-            <div className="absolute top-[80px] left-1/2 -translate-x-1/2 hidden group-hover:flex w-[800px] bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl overflow-hidden cursor-default">
-              <div className="w-2/3 p-6">
-                <h3 className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-5">Hardware Repair Services</h3>
-                <div className="grid grid-cols-1 gap-2">
-                  {megaMenu.featured.map((item, idx) => (
-                    <Link 
-                      key={idx} 
-                      to={`/${item.slug}`} 
-                      className="group/card flex items-start gap-4 p-4 rounded-xl hover:bg-slate-800/50 transition-colors"
-                    >
-                      <div className="p-3 bg-slate-950 rounded-lg text-cyan-400 group-hover/card:bg-cyan-500 group-hover/card:text-slate-950 transition-colors">
-                        <Wrench className="w-6 h-6" />
-                      </div>
-                      <div>
-                        <h4 className="text-base font-bold text-slate-200 group-hover/card:text-cyan-400 transition-colors">{item.title}</h4>
-                        <p className="text-sm text-slate-400 mt-1 mb-2 line-clamp-2">{item.description}</p>
-                        <span className="text-xs font-bold text-cyan-500 flex items-center gap-1 group-hover/card:translate-x-1 transition-transform">
-                          {item.callToAction} <ArrowRight className="w-3 h-3" />
-                        </span>
-                      </div>
-                    </Link>
-                  ))}
-                  {/* Safety fallback if you forget to add 'isFeatured' to graph.ts */}
-                  {megaMenu.featured.length === 0 && (
-                     <p className="text-slate-500 italic text-sm py-4">Add `isFeatured: true` to services in graph.ts to show cards here!</p>
-                  )}
-                </div>
-              </div>
-              
-              <div className="w-1/3 p-6 bg-slate-950 border-l border-slate-800 flex flex-col">
-                <h3 className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-5">Popular Repairs</h3>
-                <ul className="space-y-4 flex-grow">
-                  {megaMenu.standardList.map((item, idx) => (
-                    <li key={idx}>
-                      <Link to={`/${item.slug}`} className="text-sm font-medium text-slate-400 hover:text-cyan-400 transition-colors flex items-center gap-3">
-                        <div className="w-1.5 h-1.5 rounded-full bg-slate-700" />
-                        {item.title}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-                <Link to="/services" className="mt-6 pt-6 border-t border-slate-800 text-sm font-bold text-cyan-400 hover:text-cyan-300 transition-colors flex items-center gap-2">
-                  View All Services <ArrowRight className="w-4 h-4" />
-                </Link>
-              </div>
-            </div>
-          </div>
-
-          <DesktopDropdown title="Brands" items={navData.brands} />
-          <DesktopDropdown title="Problems" items={navData.problems} />
-          
-          <Link to="/pricing" className="text-sm font-bold text-slate-300 hover:text-cyan-400 transition-colors h-full flex items-center">Pricing</Link>
-          <Link to="/gallery" className="text-sm font-bold text-slate-300 hover:text-cyan-400 transition-colors h-full flex items-center">Gallery</Link>
-          
-          <DesktopDropdown title="About" items={[
-            { label: 'About KCROC', route: '/about' },
-            { label: 'Our Hawalli Location', route: '/location/hawalli' }
-          ]} />
-          
-          <DesktopDropdown title="Resources" items={[
-            { label: 'Tech Blog', route: '/blog' },
-            { label: 'FAQ', route: '/faq' },
-            { label: 'Laptop Screen Protection Tips', route: '/laptop-screen-protection-tips' }
-          ]} />
-          
-          <Link to="/contact" className="text-sm font-bold text-slate-300 hover:text-cyan-400 transition-colors h-full flex items-center">Contact</Link>
-        </nav>
-
-        <div className="hidden lg:flex items-center gap-4 flex-shrink-0">
-          <Link 
-            to="/book" 
-            className="flex items-center gap-2 px-6 py-2.5 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black rounded-full transition-all text-sm shadow-[0_0_15px_rgba(6,182,212,0.3)]"
-          >
-            <CalendarCheck className="w-4 h-4" /> Book Now
-          </Link>
-        </div>
-
-        <button 
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="lg:hidden p-2 text-slate-400 hover:text-white"
-        >
-          {isMobileMenuOpen ? <X className="w-7 h-7" /> : <Menu className="w-7 h-7" />}
-        </button>
-      </div>
-
-      {isMobileMenuOpen && (
-        <div className="lg:hidden fixed inset-0 top-20 bg-slate-950 z-40 overflow-y-auto pb-32">
-          <div className="px-6 py-4 flex flex-col">
-            <Link to="/" onClick={handleNavigate} className="py-4 border-b border-slate-800 font-bold text-slate-200 text-left">Home</Link>
-            
-            <MobileAccordion title="Services" items={navData.services} />
-            <MobileAccordion title="Brands" items={navData.brands} />
-            <MobileAccordion title="Problems" items={navData.problems} />
-            
-            <Link to="/pricing" onClick={handleNavigate} className="py-4 border-b border-slate-800 font-bold text-slate-200 text-left">Pricing</Link>
-            <Link to="/gallery" onClick={handleNavigate} className="py-4 border-b border-slate-800 font-bold text-slate-200 text-left">Gallery</Link>
-            
-            <MobileAccordion title="About" items={[
-              { label: 'About KCROC', route: '/about' },
-              { label: 'Our Hawalli Location', route: '/location/hawalli' }
-            ]} />
-            
-            <MobileAccordion title="Resources" items={[
-              { label: 'Tech Blog', route: '/blog' },
-              { label: 'FAQ', route: '/faq' },
-              { label: 'Screen Protection Tips', route: '/laptop-screen-protection-tips' }
-            ]} />
-            
-            <Link to="/contact" onClick={handleNavigate} className="py-4 font-bold text-slate-200 text-left">Contact</Link>
-          </div>
-
-          <div className="fixed bottom-0 left-0 right-0 p-4 bg-slate-950/95 border-t border-slate-800 flex gap-3 backdrop-blur-md pb-8 shadow-2xl">
-            <Link 
-              to="/book" 
-              onClick={handleNavigate}
-              className="flex-1 flex justify-center items-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black py-3 rounded-xl transition-colors text-sm"
-            >
-              Book Repair
+            <Link to="/" className="flex items-center gap-2.5 shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 rounded-lg">
+              <Laptop className="w-6 h-6 text-cyan-400" aria-hidden="true" />
+              <span className="font-black text-white text-lg tracking-tight hidden sm:block">
+                KCROC<span className="text-cyan-400">.</span>
+              </span>
             </Link>
-            <a 
-              href={`https://wa.me/${phone}`} 
-              target="_blank" 
-              rel="noreferrer"
-              className="w-14 flex justify-center items-center bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl transition-colors"
+
+            <nav aria-label="Main navigation" className="hidden lg:flex items-center gap-1 h-16">
+              {NAV_LINKS.map(link =>
+                link.hasMega ? (
+                  <InlineMegaMenu
+                    key={link.label}
+                    label={link.label}
+                    featured={featured}
+                    standardList={standardList}
+                  />
+                ) : (
+                  <Link
+                    key={link.label}
+                    to={link.href}
+                    className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 ${
+                      location.pathname === link.href
+                        ? 'text-cyan-400 bg-cyan-500/10'
+                        : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                )
+              )}
+            </nav>
+
+            <div className="hidden lg:flex items-center gap-3">
+              <a
+                href={`tel:+${cleanTel}`}
+                className="flex items-center gap-2 text-sm font-medium text-slate-300 hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 rounded-lg px-2 py-1"
+              >
+                <Phone size={15} className="text-cyan-400" aria-hidden="true" />
+                <span className="hidden xl:block">55301913</span>
+              </a>
+              
+              <a
+                href={`https://wa.me/${cleanTel}?text=${encodeURIComponent('Hi KCROC, I need a repair. Please arrange free pickup.')}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-sm px-4 py-2 rounded-lg transition-all hover:scale-[1.02] shadow-[0_0_15px_rgba(34,211,238,0.2)] focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+              >
+                <MessageCircle size={15} aria-hidden="true" />
+                Book Pickup
+              </a>
+            </div>
+
+            <button
+              ref={hamburgerBtnRef}
+              className="lg:hidden p-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+              onClick={() => setMobileOpen(!mobileOpen)}
+              aria-expanded={mobileOpen}
+              aria-controls="mobile-nav-panel"
+              aria-label={mobileOpen ? 'Close navigation menu' : 'Open navigation menu'}
             >
-              <MessageCircle className="w-5 h-5" />
-            </a>
-            <a 
-              href={`tel:${phone}`} 
-              className="w-14 flex justify-center items-center bg-slate-800 hover:bg-slate-700 text-white rounded-xl border border-slate-700 transition-colors"
-            >
-              <Phone className="w-5 h-5" />
-            </a>
+              {mobileOpen ? <X size={22} aria-hidden="true" /> : <Menu size={22} aria-hidden="true" />}
+            </button>
+
           </div>
         </div>
-      )}
-    </header>
+      </header>
+
+      <MobileMenu
+        isOpen={mobileOpen}
+        onClose={() => setMobileOpen(false)}
+        returnFocusRef={hamburgerBtnRef}
+        navLinks={NAV_LINKS}
+        featuredServices={featured}
+        standardServices={standardList}
+        cleanTel={cleanTel}
+      />
+    </>
   );
-};
+}
