@@ -1,10 +1,8 @@
-// File: app/frontend/src/pages/templates/ServiceTemplate.tsx
 import React from 'react';
-import { Navigate, useParams } from 'react-router-dom';
-import { Laptop, Apple, Gamepad2, Cpu, Wrench, ShieldCheck, Clock } from 'lucide-react';
+import { Navigate } from 'react-router-dom';
+import { Laptop, Apple, Gamepad2, Cpu, Wrench, ShieldCheck, Clock, MessageCircle } from 'lucide-react';
 import { KCROC_GRAPH } from '../../data/graph';
 import { SEOEngine } from '../../core/components/SEOEngine';
-// ✅ Added: Analytics tracking
 import { trackConversion } from '../../core/analytics';
 
 const ICON_MAP: Record<string, React.ElementType> = {
@@ -15,39 +13,23 @@ const ICON_MAP: Record<string, React.ElementType> = {
 };
 
 interface ServiceTemplateProps {
-  entityId?: string;
+  entityId: string;
 }
 
 export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
-  const { serviceSlug } = useParams<{ serviceSlug?: string }>();
-
-  const entity = KCROC_GRAPH.services.find((e) => {
-    if (entityId) return e.id === entityId;
-    if (serviceSlug) return e.slug.toLowerCase() === serviceSlug.toLowerCase();
-    return false;
-  });
+  const entity = KCROC_GRAPH.services.find((e) => e.id === entityId);
 
   if (!entity) {
-    console.warn(`[Template Router] Service missing. ID: ${entityId}, Slug: ${serviceSlug}`);
+    console.warn(`[ServiceTemplate] No service found for entityId: ${entityId}`);
     return <Navigate to="/404" replace />;
   }
 
   const ServiceIcon = ICON_MAP[entity.iconKey] || Wrench;
   const business = KCROC_GRAPH.business;
 
-  // ✅ Added: Handler to track high-value clicks with full graph context
-  const handleWhatsAppClick = () => {
-    trackConversion(
-      'whatsapp_click',
-      { cta_name: 'body_embedded', button_position: 'body' },
-      {
-        entity_id: entity.id,
-        entity_type: 'Service',
-        entity_slug: entity.slug,
-        primary_keyword: entity.title.toLowerCase()
-      }
-    );
-  };
+  const whatsappMessage = encodeURIComponent(
+    `Hi KCROC, I'd like a free estimate for ${entity.title}.`
+  );
 
   return (
     <>
@@ -61,7 +43,7 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
             </div>
             <h1 className="text-4xl md:text-5xl font-black text-white">{entity.title}</h1>
           </div>
-          
+
           <p className="text-xl text-slate-300 max-w-3xl mb-8 leading-relaxed">
             {entity.description}
           </p>
@@ -107,12 +89,17 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             {business?.telephone && (
               <a 
-                href={`https://wa.me/${business.telephone}`} 
-                target="_blank" 
+                href={`https://wa.me/${business.telephone}?text=${whatsappMessage}`}
+                target="_blank"
                 rel="noopener noreferrer"
-                onClick={handleWhatsAppClick} // ✅ Wiring the event here
-                className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black py-4 px-8 rounded-xl transition-all shadow-[0_0_15px_rgba(34,211,238,0.2)] hover:scale-105 duration-200"
+                onClick={() => trackConversion(
+                  'whatsapp_click',
+                  { cta_name: 'hero_primary', button_position: 'hero' },
+                  { entity_id: entity.id, entity_type: 'Service', entity_slug: entity.slug }
+                )}
+                className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black py-4 px-8 rounded-xl transition-all shadow-[0_0_15px_rgba(34,211,238,0.2)] hover:scale-105 duration-200 flex items-center gap-2"
               >
+                <MessageCircle className="w-5 h-5" />
                 Message on WhatsApp
               </a>
             )}
