@@ -8,7 +8,7 @@ import {
 } from 'lucide-react';
 import { NavigationBuilder } from '../../navigation/NavigationBuilder';
 import { KCROC_GRAPH } from '../../../data/graph';
-import { trackConversion } from '../../utils/analytics';
+import { trackConversion } from '../../analytics';
 
 /* ─── ICON REGISTRY ─── */
 const ICON_REGISTRY: Record<string, React.ComponentType<{ className?: string }>> = {
@@ -115,6 +115,9 @@ export default function Header() {
 
   return (
     <>
+      {/* ══════════════════════════════════════════════════════════
+          HEADER BAR
+      ══════════════════════════════════════════════════════════ */}
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
@@ -181,11 +184,11 @@ export default function Header() {
               )}
             </nav>
 
-            {/* DESKTOP CTA (With Conversion Tracking) */}
+            {/* DESKTOP CTA */}
             <div className="hidden lg:flex items-center gap-3">
               <a
                 href={`tel:+${cleanTel}`}
-                onClick={() => trackConversion('phone_call_click', { button_position: 'header' })}
+                onClick={() => trackConversion('phone_call_click', { cta_name: 'header_phone', button_position: 'header' })}
                 className="flex items-center gap-2 text-sm font-medium text-slate-300 hover:text-white transition-colors"
               >
                 <Phone size={15} className="text-cyan-400" aria-hidden="true" />
@@ -196,7 +199,7 @@ export default function Header() {
                 href={`https://wa.me/${cleanTel}?text=${encodeURIComponent('Hi KCROC, I need a repair. Please arrange free pickup.')}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => trackConversion('whatsapp_click', { button_position: 'header' })}
+                onClick={() => trackConversion('whatsapp_click', { cta_name: 'header_book', button_position: 'header' })}
                 className="flex items-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-sm px-4 py-2 rounded-lg transition-all hover:scale-[1.02] shadow-[0_0_15px_rgba(34,211,238,0.2)]"
               >
                 <MessageCircle size={15} aria-hidden="true" />
@@ -253,6 +256,7 @@ export default function Header() {
                 <Link
                   key={service.slug}
                   to={`/${service.slug}`}
+                  onClick={() => trackConversion('cta_click', { cta_name: 'mega_menu_card', button_position: 'header' }, { entity_id: service.id || 'unknown', entity_type: 'Service', entity_slug: service.slug })}
                   className="group flex flex-col gap-3 p-4 rounded-xl bg-slate-800/40 hover:bg-cyan-500/10 border border-slate-700/40 hover:border-cyan-500/40 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
                 >
                   <div className="w-9 h-9 rounded-lg bg-cyan-500/15 border border-cyan-500/25 flex items-center justify-center shrink-0">
@@ -280,6 +284,7 @@ export default function Header() {
                 <Link
                   key={service.slug}
                   to={`/${service.slug}`}
+                  onClick={() => trackConversion('cta_click', { cta_name: 'mega_menu_link', button_position: 'header' }, { entity_id: service.id || 'unknown', entity_type: 'Service', entity_slug: service.slug })}
                   className="text-xs text-slate-400 hover:text-cyan-400 px-3 py-1.5 rounded-lg hover:bg-slate-800/60 transition-colors"
                 >
                   {service.title}
@@ -346,7 +351,10 @@ export default function Header() {
                   <Link
                     key={service.id}
                     to={`/${service.slug}`}
-                    onClick={() => setMobileOpen(false)}
+                    onClick={() => {
+                      setMobileOpen(false);
+                      trackConversion('cta_click', { cta_name: 'sticky_mobile', button_position: 'mobile_menu' }, { entity_id: service.id, entity_type: 'Service', entity_slug: service.slug });
+                    }}
                     className="flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors"
                   >
                     <Icon className="w-4 h-4 text-cyan-400 shrink-0" aria-hidden="true" />
@@ -356,7 +364,6 @@ export default function Header() {
               })}
             </div>
 
-            {/* MOBILE CTA (With Conversion Tracking) */}
             <div className="pt-4 mt-2 border-t border-slate-800/60 flex flex-col gap-3 pb-2">
               <a
                 href={`https://wa.me/${cleanTel}?text=${encodeURIComponent('Hi KCROC, I need a repair. Please arrange free pickup.')}`}
@@ -364,7 +371,7 @@ export default function Header() {
                 rel="noopener noreferrer"
                 onClick={() => {
                   setMobileOpen(false);
-                  trackConversion('whatsapp_click', { button_position: 'mobile_menu' });
+                  trackConversion('whatsapp_click', { cta_name: 'floating_whatsapp', button_position: 'mobile_menu' });
                 }}
                 className="flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-sm px-4 py-3 rounded-xl transition-colors"
               >
@@ -376,7 +383,7 @@ export default function Header() {
                 href={`tel:+${cleanTel}`}
                 onClick={() => {
                   setMobileOpen(false);
-                  trackConversion('phone_call_click', { button_position: 'mobile_menu' });
+                  trackConversion('phone_call_click', { cta_name: 'footer_call', button_position: 'mobile_menu' });
                 }}
                 className="flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 text-white font-medium text-sm px-4 py-3 rounded-xl transition-colors"
               >
