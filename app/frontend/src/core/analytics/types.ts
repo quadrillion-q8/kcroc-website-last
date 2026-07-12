@@ -13,10 +13,11 @@ export type AnalyticsEvent =
   | 'whatsapp_click'
   | 'phone_call_click'
   | 'book_pickup_click'
-  | 'booking_complete'
   | 'contact_submit'
   | 'internal_search'
   | 'cta_click';
+
+export type BookingEvent = 'begin_booking' | 'booking_complete' | 'booking_cancelled';
 
 export type EntityType = 'Service' | 'Brand' | 'Problem' | 'Location' | 'Blog' | 'General';
 
@@ -52,7 +53,6 @@ export interface SystemMetadata {
   page_url: string;
   device_type: DeviceType;
   language: string;
-  traffic_source: string;
 }
 
 export interface BaseEventPayload extends Partial<SystemMetadata>, Partial<EntityMetadata> {
