@@ -4,7 +4,13 @@ import { Outlet } from 'react-router-dom';
 import Header from './Header';
 import { Footer } from './Footer';
 
+// ✅ Added: Import the new analytics routing hook
+import { usePageTracking } from '../../analytics/usePageTracking';
+
 export const RootLayout: React.FC = () => {
+  // ✅ Added: Initialize the hook to automatically track page views on route changes
+  usePageTracking();
+
   return (
     // ✅ Fixed: Removed overflow-x-hidden / overflow-x-clip. 
     // This was the containing block that was clipping all position: fixed descendants.
