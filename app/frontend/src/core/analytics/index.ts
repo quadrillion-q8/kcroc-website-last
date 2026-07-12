@@ -2,3 +2,5 @@
 export * from './types';
 export * from './core';
 export * from './trackers';
+export * from './entityHelpers';
+export * from './usePageTracking';
