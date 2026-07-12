@@ -1,186 +1,123 @@
 // File: app/frontend/src/core/components/layout/MobileMenu.tsx
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { ChevronDown, Phone, MessageCircle, ArrowRight } from 'lucide-react';
-import { SafeFeaturedService, SafeStandardService } from '../../navigation/NavigationBuilder';
+import { ChevronDown, Phone, MessageCircle, CalendarCheck, Apple, Laptop, Gamepad2, Cpu, Monitor, BatteryWarning, HardDrive, ShieldCheck, Wrench } from 'lucide-react';
+import { trackConversion } from '../../analytics';
 
-interface NavLink {
-  label: string;
-  hasMega: boolean;
-  href: string;
-}
+const ICON_REGISTRY: Record<string, React.ComponentType<{ className?: string }>> = {
+  apple: Apple, laptop: Laptop, gaming: Gamepad2, cpu: Cpu, monitor: Monitor, battery: BatteryWarning, hardDrive: HardDrive, shield: ShieldCheck,
+};
+const getIcon = (key: string) => ICON_REGISTRY[key] ?? Wrench;
 
-interface MobileMenuProps {
+interface NavLink { label: string; href: string; hasMega: boolean; }
+
+interface Props {
   isOpen: boolean;
   onClose: () => void;
-  returnFocusRef: React.RefObject<HTMLButtonElement>;
+  mobileRef: React.RefObject<HTMLDivElement>;
   navLinks: NavLink[];
-  featuredServices: SafeFeaturedService[];
-  standardServices: SafeStandardService[];
+  services: any[];
   cleanTel: string;
 }
 
-export const MobileMenu: React.FC<MobileMenuProps> = ({ 
-  isOpen, onClose, returnFocusRef, navLinks, featuredServices, standardServices, cleanTel 
-}) => {
-  const [servicesOpen, setServicesOpen] = useState(false);
-  const panelRef = useRef<HTMLDivElement>(null);
+export default function MobileMenu({ isOpen, onClose, mobileRef, navLinks, services, cleanTel }: Props) {
   const location = useLocation();
-
-  // Safety Fallbacks
-  const safeFeatured = featuredServices || [];
-  const safeStandard = standardServices || [];
-  const safeNavLinks = navLinks || [];
-
-  useEffect(() => {
-    if (!isOpen) {
-      setServicesOpen(false);
-    }
-  }, [isOpen]);
 
   useEffect(() => {
     if (!isOpen) return;
-    const handleKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        onClose();
-        returnFocusRef.current?.focus();
-      }
+    const h = (e: MouseEvent) => {
+      if (mobileRef.current && !mobileRef.current.contains(e.target as Node)) onClose();
     };
-    document.addEventListener('keydown', handleKey);
-    return () => document.removeEventListener('keydown', handleKey);
-  }, [isOpen, onClose, returnFocusRef]);
+    const t = setTimeout(() => document.addEventListener('mousedown', h), 10);
+    return () => { clearTimeout(t); document.removeEventListener('mousedown', h); };
+  }, [isOpen, onClose, mobileRef]);
 
   return (
     <div
-      role="dialog"
-      aria-modal="true"
-      aria-label="Mobile navigation"
-      className={`lg:hidden fixed inset-0 z-[55] transition-opacity duration-200 ${
-        isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
-      }`}
+      ref={mobileRef}
+      id="mobile-nav-panel"
+      className={`lg:hidden fixed left-0 right-0 top-16 z-[55] transition-all duration-300 ease-in-out ${isOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-3 pointer-events-none'}`}
     >
-      <div 
-        className="fixed inset-0 top-16 bg-slate-950/90 backdrop-blur-md -z-10"
-        onClick={onClose}
-        aria-hidden="true"
-      />
-
-      <div 
-        ref={panelRef}
-        id="mobile-nav-panel"
-        className={`fixed left-0 right-0 top-16 bg-slate-950 border-b border-slate-800/80 shadow-2xl shadow-black/50 max-h-[calc(100dvh-4rem)] overflow-y-auto transform origin-top transition-all duration-300 ease-out ${
-          isOpen ? 'translate-y-0 scale-100 visible' : '-translate-y-2 scale-[0.98] invisible'
-        }`}
-      >
-        <div className="flex flex-col pt-4 px-6 pb-8 h-full">
-          <nav className="flex flex-col gap-1">
-            <Link 
-              to="/" 
-              onClick={onClose} 
-              className={`py-3 text-lg font-bold border-b border-slate-800 transition-colors ${
-                location.pathname === '/' ? 'text-cyan-400' : 'text-slate-200'
+      <div className="fixed inset-0 top-16 bg-black/50 -z-10" onClick={onClose} aria-hidden="true" />
+      <div className="bg-slate-950 border-b border-slate-800/80 shadow-2xl shadow-black/50 max-h-[calc(100svh-4rem)] overflow-y-auto">
+        <nav aria-label="Mobile navigation" className="px-4 py-4 space-y-1">
+          {navLinks.map(link => (
+            <Link
+              key={link.label}
+              to={link.href}
+              onClick={onClose}
+              className={`flex items-center justify-between px-4 py-3 rounded-xl text-sm font-medium transition-colors ${
+                location.pathname === link.href || (link.hasMega && location.pathname.startsWith('/services')) ? 'text-cyan-400 bg-cyan-500/10' : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
               }`}
             >
-              Home
+              {link.label}
+              {link.hasMega && <ChevronDown size={14} className="text-slate-500" aria-hidden="true" />}
+            </Link>
+          ))}
+
+          <div className="pt-3 mt-1 border-t border-slate-800/60">
+            <p className="px-4 pb-2 text-[10px] font-bold text-slate-500 uppercase tracking-widest">Repair Services</p>
+            {services.map(service => {
+              const Icon = getIcon((service as any).iconKey ?? 'laptop');
+              return (
+                <Link
+                  key={service.id}
+                  to={`/${service.slug}`}
+                  onClick={() => {
+                    onClose();
+                    trackConversion('cta_click', { cta_name: 'mobile_menu_service', button_position: 'mobile_menu' }, { entity_id: service.id, entity_type: 'Service', entity_slug: service.slug });
+                  }}
+                  className="flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors"
+                >
+                  <Icon className="w-4 h-4 text-cyan-400 shrink-0" aria-hidden="true" />
+                  {service.title}
+                </Link>
+              );
+            })}
+          </div>
+
+          <div className="pt-4 mt-2 border-t border-slate-800/60 flex flex-col gap-3 pb-2">
+            <Link
+              to="/booking"
+              onClick={() => {
+                onClose();
+                trackConversion('cta_click', { cta_name: 'header_book', button_position: 'mobile_menu' });
+              }}
+              className="flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-sm px-4 py-3 rounded-xl transition-colors"
+            >
+              <CalendarCheck size={16} aria-hidden="true" />
+              Book Online
             </Link>
 
-            <div className="border-b border-slate-800">
-              <button
-                onClick={() => setServicesOpen(!servicesOpen)}
-                aria-expanded={servicesOpen}
-                className="w-full flex items-center justify-between py-3 text-lg font-bold text-slate-200 hover:text-cyan-400 transition-colors"
+            <div className="grid grid-cols-2 gap-2">
+              <a
+                href={`https://wa.me/${cleanTel}?text=${encodeURIComponent('Hi KCROC, I need a repair. Please arrange free pickup.')}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => {
+                  onClose();
+                  trackConversion('whatsapp_click', { cta_name: 'mobile_menu_whatsapp', button_position: 'mobile_menu' });
+                }}
+                className="flex items-center justify-center gap-2 bg-green-500/10 hover:bg-green-500/20 text-green-400 border border-green-500/20 font-medium text-sm px-4 py-3 rounded-xl transition-colors"
               >
-                Services
-                <ChevronDown 
-                  size={18} 
-                  className={`transition-transform duration-300 ${servicesOpen ? 'rotate-180 text-cyan-400' : 'text-slate-500'}`} 
-                  aria-hidden="true"
-                />
-              </button>
-              
-              {servicesOpen && (
-                <div className="pb-4 pt-2 flex flex-col gap-5 animate-in fade-in slide-in-from-top-2 duration-300">
-                  
-                  {safeFeatured?.length > 0 && (
-                    <div className="flex flex-col gap-2">
-                      <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest pl-1">Popular</p>
-                      {safeFeatured.map(s => (
-                        <Link
-                          key={s.slug}
-                          to={`/${s.slug}`}
-                          onClick={onClose}
-                          className="flex items-center justify-between p-3.5 rounded-xl bg-slate-800/40 border border-slate-700/40 hover:bg-slate-800/80 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
-                        >
-                          <span className={`text-sm font-bold transition-colors ${
-                            location.pathname === `/${s.slug}` ? 'text-cyan-400' : 'text-slate-200'
-                          }`}>
-                            {s.title}
-                          </span>
-                          <ArrowRight size={14} className="text-cyan-500" aria-hidden="true" />
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-
-                  {safeStandard?.length > 0 && (
-                    <div className="flex flex-col gap-1 pl-1 border-t border-slate-800/50 pt-4">
-                      <div className="flex items-center justify-between mb-2">
-                        <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">All Services</p>
-                        <Link to="/services" onClick={onClose} className="text-[10px] font-bold text-cyan-400 uppercase tracking-widest hover:text-cyan-300">
-                          View Directory →
-                        </Link>
-                      </div>
-                      {safeStandard.map(s => (
-                        <Link 
-                          key={s.slug} 
-                          to={`/${s.slug}`} 
-                          onClick={onClose} 
-                          className={`text-sm py-2 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 rounded-md px-2 -mx-2 ${
-                            location.pathname === `/${s.slug}` ? 'text-cyan-400 font-bold bg-cyan-500/10' : 'text-slate-400 hover:text-white'
-                          }`}
-                        >
-                          {s.title}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              )}
+                <MessageCircle size={15} aria-hidden="true" />
+                WhatsApp
+              </a>
+              <a
+                href={`tel:+${cleanTel}`}
+                onClick={() => {
+                  onClose();
+                  trackConversion('phone_call_click', { cta_name: 'mobile_menu_call', button_position: 'mobile_menu' });
+                }}
+                className="flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 text-white font-medium text-sm px-4 py-3 rounded-xl transition-colors"
+              >
+                <Phone size={15} aria-hidden="true" />
+                Call Us
+              </a>
             </div>
-
-            {safeNavLinks?.filter(l => !l.hasMega)?.map(link => (
-              <Link 
-                key={link.label} 
-                to={link.href} 
-                onClick={onClose} 
-                className={`py-3 text-lg font-bold border-b border-slate-800 transition-colors ${
-                  location.pathname === link.href ? 'text-cyan-400' : 'text-slate-200 hover:text-cyan-400'
-                }`}
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
-
-          <div className="mt-8 pt-2 flex gap-3">
-            <a
-              href={`https://wa.me/${cleanTel}?text=${encodeURIComponent('Hi KCROC, I need a repair. Please arrange free pickup.')}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex-1 flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black py-3.5 rounded-xl transition-colors shadow-[0_0_15px_rgba(34,211,238,0.2)] focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
-            >
-              <MessageCircle size={18} aria-hidden="true" /> Book Pickup
-            </a>
-            <a
-              href={`tel:+${cleanTel}`}
-              className="w-14 flex items-center justify-center bg-slate-800 hover:bg-slate-700 text-cyan-400 rounded-xl border border-slate-700 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
-              aria-label="Call KCROC directly"
-            >
-              <Phone size={18} aria-hidden="true" />
-            </a>
           </div>
-        </div>
+        </nav>
       </div>
     </div>
   );
-};
+}
