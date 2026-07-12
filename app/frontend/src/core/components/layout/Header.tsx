@@ -8,6 +8,7 @@ import {
 } from 'lucide-react';
 import { NavigationBuilder } from '../../navigation/NavigationBuilder';
 import { KCROC_GRAPH } from '../../../data/graph';
+import { trackConversion } from '../../utils/analytics';
 
 /* ─── ICON REGISTRY ─── */
 const ICON_REGISTRY: Record<string, React.ComponentType<{ className?: string }>> = {
@@ -114,10 +115,6 @@ export default function Header() {
 
   return (
     <>
-      {/* ══════════════════════════════════════════════════════════
-          HEADER BAR — desktop nav + mobile hamburger only
-          NO mega panel inside here — it lives below as a sibling
-      ══════════════════════════════════════════════════════════ */}
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
@@ -143,8 +140,6 @@ export default function Header() {
             <nav aria-label="Main navigation" className="hidden lg:flex items-center gap-1">
               {NAV_LINKS.map(link =>
                 link.hasMega ? (
-                  // Hover zone: wraps ONLY the trigger button
-                  // Panel is outside header entirely — has its own matching handlers
                   <div
                     key={link.label}
                     className="relative"
@@ -186,10 +181,11 @@ export default function Header() {
               )}
             </nav>
 
-            {/* DESKTOP CTA */}
+            {/* DESKTOP CTA (With Conversion Tracking) */}
             <div className="hidden lg:flex items-center gap-3">
               <a
                 href={`tel:+${cleanTel}`}
+                onClick={() => trackConversion('phone_call_click', { button_position: 'header' })}
                 className="flex items-center gap-2 text-sm font-medium text-slate-300 hover:text-white transition-colors"
               >
                 <Phone size={15} className="text-cyan-400" aria-hidden="true" />
@@ -200,6 +196,7 @@ export default function Header() {
                 href={`https://wa.me/${cleanTel}?text=${encodeURIComponent('Hi KCROC, I need a repair. Please arrange free pickup.')}`}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackConversion('whatsapp_click', { button_position: 'header' })}
                 className="flex items-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-sm px-4 py-2 rounded-lg transition-all hover:scale-[1.02] shadow-[0_0_15px_rgba(34,211,238,0.2)]"
               >
                 <MessageCircle size={15} aria-hidden="true" />
@@ -226,10 +223,7 @@ export default function Header() {
       </header>
 
       {/* ══════════════════════════════════════════════════════════
-          MEGA MENU PANEL — Fragment sibling, OUTSIDE <header>
-          Uses position:fixed via inline style so it escapes
-          every ancestor overflow/stacking context constraint.
-          panelLeft is calculated from the Services button rect.
+          MEGA MENU PANEL
       ══════════════════════════════════════════════════════════ */}
       <div
         id="mega-menu-panel"
@@ -251,10 +245,7 @@ export default function Header() {
             : 'opacity-0 pointer-events-none'
         }`}
       >
-        {/* ✅ NO overflow-hidden on this div — was clipping the panel */}
         <div className="bg-slate-900 border border-slate-700/60 rounded-2xl shadow-2xl shadow-black/60">
-
-          {/* Featured service cards */}
           <div className="p-5 grid grid-cols-3 gap-3 border-b border-slate-800/60">
             {featured.map(service => {
               const Icon = getIcon(service.icon ?? 'laptop');
@@ -283,7 +274,6 @@ export default function Header() {
             })}
           </div>
 
-          {/* Standard list + all services CTA */}
           <div className="p-4 flex items-center justify-between gap-4">
             <div className="flex flex-wrap gap-2">
               {standardList.map(service => (
@@ -303,13 +293,11 @@ export default function Header() {
               All services <ArrowRight size={12} aria-hidden="true" />
             </Link>
           </div>
-
         </div>
       </div>
 
       {/* ══════════════════════════════════════════════════════════
-          MOBILE MENU PANEL — Fragment sibling, OUTSIDE <header>
-          position:fixed, top-16, z-[55]
+          MOBILE MENU PANEL
       ══════════════════════════════════════════════════════════ */}
       <div
         ref={mobileRef}
@@ -320,14 +308,12 @@ export default function Header() {
             : 'opacity-0 -translate-y-3 pointer-events-none'
         }`}
       >
-        {/* Backdrop */}
         <div
           className="fixed inset-0 top-16 bg-black/50 -z-10"
           onClick={() => setMobileOpen(false)}
           aria-hidden="true"
         />
 
-        {/* Panel */}
         <div className="bg-slate-950 border-b border-slate-800/80 shadow-2xl shadow-black/50 max-h-[calc(100svh-4rem)] overflow-y-auto">
           <nav aria-label="Mobile navigation" className="px-4 py-4 space-y-1">
 
@@ -370,12 +356,16 @@ export default function Header() {
               })}
             </div>
 
+            {/* MOBILE CTA (With Conversion Tracking) */}
             <div className="pt-4 mt-2 border-t border-slate-800/60 flex flex-col gap-3 pb-2">
               <a
                 href={`https://wa.me/${cleanTel}?text=${encodeURIComponent('Hi KCROC, I need a repair. Please arrange free pickup.')}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => setMobileOpen(false)}
+                onClick={() => {
+                  setMobileOpen(false);
+                  trackConversion('whatsapp_click', { button_position: 'mobile_menu' });
+                }}
                 className="flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-sm px-4 py-3 rounded-xl transition-colors"
               >
                 <MessageCircle size={16} aria-hidden="true" />
@@ -384,7 +374,10 @@ export default function Header() {
               
               <a
                 href={`tel:+${cleanTel}`}
-                onClick={() => setMobileOpen(false)}
+                onClick={() => {
+                  setMobileOpen(false);
+                  trackConversion('phone_call_click', { button_position: 'mobile_menu' });
+                }}
                 className="flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 text-white font-medium text-sm px-4 py-3 rounded-xl transition-colors"
               >
                 <Phone size={16} aria-hidden="true" />
