@@ -33,6 +33,9 @@ export type CTAName =
   | 'header_phone'
   | 'mega_menu_card'
   | 'mega_menu_link'
+  | 'mobile_menu_service'
+  | 'mobile_menu_whatsapp'
+  | 'mobile_menu_call'
   | 'body_embedded';
 
 export type ButtonPosition = 'header' | 'mobile_menu' | 'hero' | 'footer' | 'floating' | 'body';
