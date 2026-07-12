@@ -1,5 +1,5 @@
 // File: app/frontend/src/core/analytics/core.ts
-import { AnalyticsEvent, BaseEventPayload, DeviceType, SystemMetadata } from './types';
+import { AnalyticsEvent, BaseEventPayload, DeviceType, SystemMetadata, BookingEvent } from './types';
 
 declare global {
   interface Window {
@@ -7,31 +7,19 @@ declare global {
   }
 }
 
+const ANALYTICS_DEBUG = import.meta.env?.DEV || false;
+
 /**
- * Evaluates viewports dynamically to accurately classify device categories
+ * Uses CSS media queries to accurately classify device categories,
+ * accounting for zoom states and orientations better than innerWidth.
  */
 const getDeviceType = (): DeviceType => {
   if (typeof window === 'undefined') return 'desktop';
-  const width = window.innerWidth;
-  if (width < 768) return 'mobile';
-  if (width < 1024) return 'tablet';
+  if (window.matchMedia('(max-width: 767px)').matches) return 'mobile';
+  if (window.matchMedia('(max-width: 1023px)').matches) return 'tablet';
   return 'desktop';
 };
 
-/**
- * Detects baseline acquisition channels based on referrer tokens
- */
-const getTrafficSource = (): string => {
-  if (typeof document === 'undefined' || !document.referrer) return 'direct';
-  const ref = document.referrer.toLowerCase();
-  if (ref.includes('google.') || ref.includes('bing.')) return 'organic';
-  if (ref.includes('facebook.com') || ref.includes('instagram.com') || ref.includes('t.co')) return 'social';
-  return 'referral';
-};
-
-/**
- * Gathers active system states automatically to clean up tracking payloads
- */
 export const getSystemMetadata = (): SystemMetadata => {
   return {
     page_title: typeof document !== 'undefined' ? document.title : '',
@@ -39,19 +27,30 @@ export const getSystemMetadata = (): SystemMetadata => {
     page_url: typeof window !== 'undefined' ? window.location.href : '',
     device_type: getDeviceType(),
     language: typeof navigator !== 'undefined' ? navigator.language : 'en',
-    traffic_source: getTrafficSource(),
   };
 };
 
-/**
- * Central event pipeline that feeds compiled records directly to GA4
- */
-export const trackEvent = (event: AnalyticsEvent, payload: BaseEventPayload = {}): void => {
-  if (typeof window !== 'undefined' && window.gtag) {
+export const trackEvent = (event: AnalyticsEvent | BookingEvent, payload: BaseEventPayload = {}): void => {
+  // TODO: Future integration point for Consent Management (e.g., if (!hasConsent) return;)
+
+  try {
     const fullyCompiledPayload = {
       ...getSystemMetadata(),
       ...payload,
     };
-    window.gtag('event', event, fullyCompiledPayload);
+
+    if (ANALYTICS_DEBUG) {
+      console.groupCollapsed(`📊 [Analytics Event]: ${event}`);
+      console.table(fullyCompiledPayload);
+      console.groupEnd();
+    }
+
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', event, fullyCompiledPayload);
+    }
+  } catch (error) {
+    if (ANALYTICS_DEBUG) {
+      console.warn('⚠️ [Analytics Error]: Failed to dispatch event', error);
+    }
   }
 };
