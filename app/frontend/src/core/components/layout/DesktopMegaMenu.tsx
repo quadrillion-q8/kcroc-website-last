@@ -9,7 +9,6 @@ const ICON_REGISTRY: Record<string, React.ElementType> = {
 };
 const getIcon = (key: string) => ICON_REGISTRY[key] ?? Wrench;
 
-// Global Prefetch Cache to prevent duplicate DOM insertions
 const prefetchedRoutes = new Set<string>();
 
 interface Props {
@@ -26,7 +25,6 @@ export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnte
   const { trackConversion } = useAnalytics();
   const PANEL_WIDTH = 680;
 
-  // Collision Detection
   const getClampedLeft = () => {
     if (typeof window === 'undefined') return '50%';
     const safePadding = 20;
@@ -36,7 +34,6 @@ export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnte
     return `${clamped}px`;
   };
 
-  // Smart Prefetching
   const prefetchRoute = (slug: string) => {
     if (prefetchedRoutes.has(slug) || typeof document === 'undefined') return;
     prefetchedRoutes.add(slug);
@@ -46,7 +43,6 @@ export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnte
     document.head.appendChild(link);
   };
 
-  // Focus Trap & ARIA Keyboard Navigation
   const handleKeyDown = useCallback((e: KeyboardEvent) => {
     if (!isOpen || !panelRef.current) return;
     
@@ -121,9 +117,38 @@ export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnte
                   <p className="text-sm font-bold text-white group-hover:text-cyan-400 transition-colors leading-snug mb-1">{entity.title}</p>
                   <p className="text-xs text-slate-400 leading-relaxed line-clamp-2">{entity.description}</p>
                 </div>
+                <span className="text-xs text-cyan-500 font-bold flex items-center gap-1 mt-auto">Learn more <ArrowRight size={11} aria-hidden="true" /></span>
               </Link>
             );
           })}
+        </div>
+        
+        <div className="p-4 flex items-center justify-between gap-4 bg-slate-950">
+          <div className="flex flex-wrap gap-2">
+            {config.sections.flatMap(sec => sec.items).map(entity => (
+              <Link
+                key={entity.slug}
+                to={`/${entity.slug}`}
+                role="menuitem"
+                onMouseEnter={() => prefetchRoute(entity.slug)}
+                onClick={() => {
+                  trackConversion('cta_click', { cta_name: 'mega_menu_link', button_position: 'header' });
+                  onClose();
+                }}
+                className="text-xs font-medium text-slate-400 hover:text-cyan-400 px-3 py-1.5 rounded-lg hover:bg-slate-800/60 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+              >
+                {entity.title}
+              </Link>
+            ))}
+          </div>
+          <Link 
+            to="/services" 
+            role="menuitem"
+            onClick={onClose}
+            className="shrink-0 text-xs font-bold text-slate-950 bg-cyan-500 hover:bg-cyan-400 px-4 py-2 rounded-lg transition-colors flex items-center gap-1.5"
+          >
+            View Directory <ArrowRight size={12} aria-hidden="true" />
+          </Link>
         </div>
       </div>
     </div>
