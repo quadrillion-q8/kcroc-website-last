@@ -31,10 +31,18 @@ export default function Header() {
   const phone        = KCROC_GRAPH.business?.telephone ?? '96555301913';
   const cleanTel     = phone.replace(/\D/g, '');
 
+  // ✅ Updated: Added retry logic via requestAnimationFrame
   const updatePanelPosition = useCallback(() => {
     if (servicesBtnRef.current) {
       const rect = servicesBtnRef.current.getBoundingClientRect();
       setPanelLeft(Math.round(rect.left + rect.width / 2));
+    } else {
+      requestAnimationFrame(() => {
+        if (servicesBtnRef.current) {
+          const rect = servicesBtnRef.current.getBoundingClientRect();
+          setPanelLeft(Math.round(rect.left + rect.width / 2));
+        }
+      });
     }
   }, []);
 
@@ -48,7 +56,6 @@ export default function Header() {
     closeTimer.current = setTimeout(() => setMegaOpen(false), 150);
   }, []);
 
-  // ✅ Fix 1: Calculate position on mount AND on resize
   useEffect(() => {
     const timer = setTimeout(updatePanelPosition, 100);
     window.addEventListener('resize', updatePanelPosition, { passive: true });
@@ -157,7 +164,7 @@ export default function Header() {
 
       <DesktopMegaMenu 
         isOpen={megaOpen} 
-        panelLeft={panelLeft} // ✅ Fallback handled in component
+        panelLeft={panelLeft}
         featured={menuData.featured} 
         standardList={menuData.standardList} 
         onMouseEnter={handleMegaEnter} 
