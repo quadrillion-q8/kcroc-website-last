@@ -48,6 +48,16 @@ export default function Header() {
     closeTimer.current = setTimeout(() => setMegaOpen(false), 150);
   }, []);
 
+  // ✅ Fix 1: Calculate position on mount AND on resize
+  useEffect(() => {
+    const timer = setTimeout(updatePanelPosition, 100);
+    window.addEventListener('resize', updatePanelPosition, { passive: true });
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('resize', updatePanelPosition);
+    };
+  }, [updatePanelPosition]);
+
   useEffect(() => {
     setMegaOpen(false);
     setMobileOpen(false);
@@ -66,11 +76,6 @@ export default function Header() {
     window.addEventListener('scroll', h, { passive: true });
     return () => window.removeEventListener('scroll', h);
   }, []);
-
-  useEffect(() => {
-    window.addEventListener('resize', updatePanelPosition, { passive: true });
-    return () => window.removeEventListener('resize', updatePanelPosition);
-  }, [updatePanelPosition]);
 
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? 'hidden' : '';
@@ -152,7 +157,7 @@ export default function Header() {
 
       <DesktopMegaMenu 
         isOpen={megaOpen} 
-        panelLeft={panelLeft} 
+        panelLeft={panelLeft} // ✅ Fallback handled in component
         featured={menuData.featured} 
         standardList={menuData.standardList} 
         onMouseEnter={handleMegaEnter} 
