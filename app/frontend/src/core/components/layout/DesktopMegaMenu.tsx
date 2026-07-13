@@ -30,7 +30,8 @@ export default function DesktopMegaMenu({ isOpen, panelLeft, featured, standardL
       style={{
         position: 'fixed',
         top: '68px',
-        left: `${panelLeft}px`,
+        // ✅ Fix: Fallback to center of screen if panelLeft hasn't been calculated yet
+        left: panelLeft > 0 ? `${panelLeft}px` : '50%',
         transform: 'translateX(-50%)',
         width: '680px',
         zIndex: 9999,
