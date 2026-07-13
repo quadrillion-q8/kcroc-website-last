@@ -1,23 +1,43 @@
 import { KCROC_GRAPH } from '../data/graph';
-import { ServiceEntity, IssueEntity, LocationEntity, BrandEntity } from '../core/analytics/types'; // Assumes strict types defined here
+import { EntityType } from '../core/analytics/types';
+
+// Loose type interfaces to match Graph structure safely
+export interface GraphService {
+  id: string;
+  type: string;
+  title: string;
+  slug: string;
+  description: string;
+  iconKey: string;
+  popular?: boolean;
+  pricing?: any;
+  warranty?: any;
+  coreFeatures?: string[];
+  relatedIssues?: string[];
+  relatedBrands?: string[];
+}
+
+export interface GraphIssue {
+  id: string;
+  type: string;
+  name: string;
+  slug: string;
+  description: string;
+  symptoms?: string[];
+}
 
 class GraphRegistry {
-  private serviceSlugIndex: Map<string, ServiceEntity> = new Map();
-  private serviceIdIndex: Map<string, ServiceEntity> = new Map();
-  private issueSlugIndex: Map<string, IssueEntity> = new Map();
+  private serviceSlugIndex: Map<string, GraphService> = new Map();
+  private serviceIdIndex: Map<string, GraphService> = new Map();
+  private issueSlugIndex: Map<string, GraphIssue> = new Map();
 
   constructor() {
     this.buildIndexes();
   }
 
-  /**
-   * O(1) indexing for instantaneous retrieval at scale.
-   * Runs once on instantiation.
-   */
   private buildIndexes() {
-    // Note: Casts are safe here assuming KCROC_GRAPH matches the strict Zod schema
-    const services = KCROC_GRAPH.services as unknown as ServiceEntity[];
-    const issues = (KCROC_GRAPH as any).issues as IssueEntity[] || [];
+    const services = (KCROC_GRAPH.services as unknown) as GraphService[] || [];
+    const issues = (KCROC_GRAPH as any).issues as GraphIssue[] || [];
 
     services.forEach(service => {
       this.serviceSlugIndex.set(service.slug, service);
@@ -29,31 +49,30 @@ class GraphRegistry {
     });
   }
 
-  public getServiceBySlug(slug: string): ServiceEntity | undefined {
+  public getServiceBySlug(slug: string): GraphService | undefined {
     return this.serviceSlugIndex.get(slug);
   }
 
-  public getServiceById(id: string): ServiceEntity | undefined {
+  public getServiceById(id: string): GraphService | undefined {
     return this.serviceIdIndex.get(id);
   }
 
-  public getAllServices(): ServiceEntity[] {
+  public getAllServices(): GraphService[] {
     return Array.from(this.serviceIdIndex.values());
   }
 
-  public getPopularServices(): ServiceEntity[] {
-    return this.getAllServices().filter(s => (s as any).popular);
+  public getPopularServices(): GraphService[] {
+    return this.getAllServices().filter(s => s.popular);
   }
 
-  public getRelatedIssuesForService(serviceId: string): IssueEntity[] {
+  public getRelatedIssuesForService(serviceId: string): GraphIssue[] {
     const service = this.getServiceById(serviceId);
-    if (!service || !(service as any).relatedIssues) return [];
+    if (!service || !service.relatedIssues) return [];
     
-    return (service as any).relatedIssues
+    return service.relatedIssues
       .map((issueId: string) => Array.from(this.issueSlugIndex.values()).find(i => i.id === issueId))
-      .filter((i: IssueEntity | undefined): i is IssueEntity => i !== undefined);
+      .filter((i: GraphIssue | undefined): i is GraphIssue => i !== undefined);
   }
 }
 
-// Export singleton instance
 export const Registry = new GraphRegistry();
