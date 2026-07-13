@@ -3,7 +3,6 @@ import { Link, useLocation, matchPath } from 'react-router-dom';
 import { Menu, X, ChevronDown, Phone, CalendarCheck, Laptop } from 'lucide-react';
 import { KCROC_GRAPH } from '../../../data/graph';
 import { NavigationCompiler } from '../../navigation/NavigationCompiler';
-import { Registry } from '../../../knowledge/registry';
 import { useAnalytics } from '../../analytics/AnalyticsProvider';
 import MobileMenu from './MobileMenu';
 
@@ -28,7 +27,10 @@ export default function Header() {
   
   // Single Source of Truth for Layout
   const navModel = useMemo(() => NavigationCompiler.compileNavigation(), []);
-  const cleanTel = (KCROC_GRAPH.business?.telephone ?? '96555301913').replace(/\D/g, '');
+  
+  // Define both the clean tel (for href) and the display string (for UI)
+  const phoneDisplay = KCROC_GRAPH.business?.telephone ?? '55301913';
+  const cleanTel = phoneDisplay.replace(/\D/g, '');
 
   useEffect(() => {
     if (!headerRef.current) return;
@@ -116,7 +118,7 @@ export default function Header() {
             <div className="hidden lg:flex items-center gap-3">
               <a href={`tel:+${cleanTel}`} onClick={() => trackConversion('phone_call_click', { cta_name: 'header_phone', button_position: 'header' })} className="flex items-center gap-2 text-sm font-medium text-slate-300 hover:text-white transition-colors">
                 <Phone size={15} className="text-cyan-400" aria-hidden="true" />
-                <span className="hidden xl:block">55301913</span>
+                <span className="hidden xl:block">{phoneDisplay}</span>
               </a>
               <Link to="/booking" onClick={() => trackConversion('cta_click', { cta_name: 'header_book', button_position: 'header' })} className="flex items-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-sm px-4 py-2 rounded-lg transition-all hover:scale-[1.02] shadow-[0_0_15px_rgba(34,211,238,0.2)]">
                 <CalendarCheck size={15} aria-hidden="true" />
@@ -153,9 +155,9 @@ export default function Header() {
         isOpen={mobileOpen} 
         onClose={() => setMobileOpen(false)} 
         mobileRef={mobileRef} 
-        navLinks={navModel.header.map(link => ({ label: link.label, href: link.href, hasMega: link.hasMega }))} 
-        services={Registry.getAllServices()} 
-        cleanTel={cleanTel} 
+        navModel={navModel}
+        cleanTel={cleanTel}
+        phoneDisplay={phoneDisplay}
       />
     </>
   );
