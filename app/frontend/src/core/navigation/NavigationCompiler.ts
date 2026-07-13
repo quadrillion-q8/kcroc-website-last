@@ -2,16 +2,11 @@ import { Registry } from '../../knowledge/registry';
 import { CompiledNavigationModel, NavEntity, MegaMenuConfig } from './types';
 
 export class NavigationCompiler {
-  /**
-   * Enterprise Ranking Engine
-   * Calculates dynamic routing weight based on business value.
-   */
   private static calculateEntityWeight(entity: any): number {
     let weight = 0;
-    if (entity.popular) weight += 50;                               // High traffic score
-    if (entity.warranty?.noFixNoFee) weight += 20;                  // High commercial trust
-    if (entity.coreFeatures && entity.coreFeatures.length > 3) weight += 10; // High content depth
-    // Future: Add SEO search volume and conversion rate modifiers here
+    if (entity.popular) weight += 50;
+    if (entity.warranty?.noFixNoFee) weight += 20;
+    if (entity.coreFeatures && entity.coreFeatures.length > 3) weight += 10;
     return weight;
   }
 
@@ -36,7 +31,7 @@ export class NavigationCompiler {
     return {
       id: 'services_mega',
       title: 'Repair Services',
-      featured: sorted.slice(0, 3), // Top 3 highest value entities
+      featured: sorted.slice(0, 3),
       sections: [
         { title: 'Standard Repairs', items: sorted.slice(3) }
       ]
