@@ -3,6 +3,7 @@ import { Link, useLocation, matchPath } from 'react-router-dom';
 import { Menu, X, ChevronDown, Phone, CalendarCheck, Laptop } from 'lucide-react';
 import { KCROC_GRAPH } from '../../../data/graph';
 import { NavigationCompiler } from '../../navigation/NavigationCompiler';
+import { Registry } from '../../../knowledge/registry';
 import { useAnalytics } from '../../analytics/AnalyticsProvider';
 import MobileMenu from './MobileMenu';
 
@@ -18,15 +19,17 @@ export default function Header() {
   const [panelPositions, setPanelPositions] = useState<Record<string, number>>({});
 
   const headerRef = useRef<HTMLElement>(null);
+  const mobileRef = useRef<HTMLDivElement>(null);
   const navRefs = useRef<Record<string, HTMLButtonElement | null>>({});
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   
   const location = useLocation();
   const { trackConversion } = useAnalytics();
+  
+  // Single Source of Truth for Layout
   const navModel = useMemo(() => NavigationCompiler.compileNavigation(), []);
   const cleanTel = (KCROC_GRAPH.business?.telephone ?? '96555301913').replace(/\D/g, '');
 
-  // ResizeObserver for perfect panel alignment regardless of viewport shifts
   useEffect(() => {
     if (!headerRef.current) return;
     const observer = new ResizeObserver(() => {
@@ -58,11 +61,23 @@ export default function Header() {
     setMobileOpen(false);
   }, [location.pathname]);
 
+  useEffect(() => {
+    const h = () => setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', h, { passive: true });
+    return () => window.removeEventListener('scroll', h);
+  }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [mobileOpen]);
+
   return (
     <>
-      <header ref={headerRef} className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-slate-950/95 backdrop-blur-xl border-b border-slate-800/80 shadow-lg' : 'bg-slate-950/80 backdrop-blur-md'}`}>
+      <header ref={headerRef} className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-slate-950/95 backdrop-blur-xl border-b border-slate-800/80 shadow-lg shadow-black/20' : 'bg-slate-950/80 backdrop-blur-md border-b border-slate-800/40'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="flex items-center justify-between h-16">
+            
             <Link to="/" className="flex items-center gap-2.5 shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 rounded-lg">
               <Laptop className="w-6 h-6 text-cyan-400" aria-hidden="true" />
               <span className="font-black text-white text-lg tracking-tight hidden sm:block">KCROC<span className="text-cyan-400">.</span></span>
@@ -70,7 +85,6 @@ export default function Header() {
 
             <nav aria-label="Main navigation" className="hidden lg:flex items-center gap-1">
               {navModel.header.map(link => {
-                // Strict Route Matching
                 const isGraphMatch = !!matchPath({ path: link.href, end: false }, location.pathname);
 
                 if (link.hasMega && link.megaMenuId) {
@@ -82,17 +96,17 @@ export default function Header() {
                         aria-expanded={isOpen}
                         aria-haspopup="menu"
                         aria-controls={`mega-menu-${link.megaMenuId}`}
-                        className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${isOpen || isGraphMatch ? 'text-cyan-400 bg-cyan-500/10' : 'text-slate-300 hover:text-white'}`}
+                        className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 ${isOpen || isGraphMatch ? 'text-cyan-400 bg-cyan-500/10' : 'text-slate-300 hover:text-white hover:bg-slate-800/60'}`}
                       >
                         {link.label}
-                        <ChevronDown size={15} className={`transition-transform ${isOpen ? 'rotate-180 text-cyan-400' : ''}`} aria-hidden="true" />
+                        <ChevronDown size={15} className={`transition-transform duration-200 ${isOpen ? 'rotate-180 text-cyan-400' : ''}`} aria-hidden="true" />
                       </button>
                     </div>
                   );
                 }
 
                 return (
-                  <Link key={link.id} to={link.href} className={`px-4 py-2 rounded-lg text-sm font-medium ${isGraphMatch ? 'text-cyan-400 bg-cyan-500/10' : 'text-slate-300 hover:text-white'}`}>
+                  <Link key={link.id} to={link.href} className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 ${isGraphMatch ? 'text-cyan-400 bg-cyan-500/10' : 'text-slate-300 hover:text-white hover:bg-slate-800/60'}`}>
                     {link.label}
                   </Link>
                 );
@@ -100,10 +114,24 @@ export default function Header() {
             </nav>
 
             <div className="hidden lg:flex items-center gap-3">
-              <Link to="/booking" onClick={() => trackConversion('cta_click', { cta_name: 'header_book', button_position: 'header' })} className="flex items-center gap-2 bg-cyan-500 text-slate-950 font-bold px-4 py-2 rounded-lg">
-                <CalendarCheck size={15} aria-hidden="true" /> Book Online
+              <a href={`tel:+${cleanTel}`} onClick={() => trackConversion('phone_call_click', { cta_name: 'header_phone', button_position: 'header' })} className="flex items-center gap-2 text-sm font-medium text-slate-300 hover:text-white transition-colors">
+                <Phone size={15} className="text-cyan-400" aria-hidden="true" />
+                <span className="hidden xl:block">55301913</span>
+              </a>
+              <Link to="/booking" onClick={() => trackConversion('cta_click', { cta_name: 'header_book', button_position: 'header' })} className="flex items-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-sm px-4 py-2 rounded-lg transition-all hover:scale-[1.02] shadow-[0_0_15px_rgba(34,211,238,0.2)]">
+                <CalendarCheck size={15} aria-hidden="true" />
+                Book Online
               </Link>
             </div>
+
+            <button
+              className="lg:hidden p-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+              onClick={() => setMobileOpen(prev => !prev)}
+              aria-expanded={mobileOpen}
+              aria-controls="mobile-nav-panel"
+            >
+              {mobileOpen ? <X size={22} aria-hidden="true" /> : <Menu size={22} aria-hidden="true" />}
+            </button>
           </div>
         </div>
       </header>
@@ -120,6 +148,15 @@ export default function Header() {
           />
         </Suspense>
       ))}
+
+      <MobileMenu 
+        isOpen={mobileOpen} 
+        onClose={() => setMobileOpen(false)} 
+        mobileRef={mobileRef} 
+        navLinks={navModel.header.map(link => ({ label: link.label, href: link.href, hasMega: link.hasMega }))} 
+        services={Registry.getAllServices()} 
+        cleanTel={cleanTel} 
+      />
     </>
   );
 }
