@@ -41,13 +41,11 @@ export class NavigationCompiler {
 
   // 2. Brands Mega Menu
   private static compileBrandsMegaMenu(): MegaMenuConfig {
-    // Falls back to empty array if graph doesn't have brands yet
     const allBrands = (KCROC_GRAPH.brands || []).map(b => this.compileNavEntity(b, 'Brand', 'cpu'));
-    
     return {
       id: 'brands_mega',
       title: 'Supported Brands',
-      featured: allBrands.slice(0, 3), // Feature Dell, HP, Lenovo
+      featured: allBrands.slice(0, 3),
       sections: [{ title: 'All Brands', items: allBrands.slice(3) }]
     };
   }
@@ -55,46 +53,64 @@ export class NavigationCompiler {
   // 3. Problems Mega Menu
   private static compileProblemsMegaMenu(): MegaMenuConfig {
     const allProblems = (KCROC_GRAPH.problems || []).map(p => this.compileNavEntity(p, 'Problem', 'shield'));
-    
     return {
       id: 'problems_mega',
       title: 'Common Problems',
-      featured: allProblems.slice(0, 3), // Feature top 3 problems
+      featured: allProblems.slice(0, 3),
       sections: [{ title: 'Troubleshooting Guides', items: allProblems.slice(3) }]
     };
   }
 
-  // 4. Blog Mega Menu (Static/Custom structure as requested)
-  private static compileBlogMegaMenu(): MegaMenuConfig {
+  // 4. Case Studies Mega Menu (Upgraded to handle specific case study routing)
+  private static compileCaseStudiesMegaMenu(): MegaMenuConfig {
     return {
-      id: 'blog_mega',
-      title: 'Blog & Guides',
-      featured: [], // No featured cards, just a clean list
+      id: 'case_studies_mega',
+      title: 'Real Repair Stories',
+      featured: [], // Sleek dropdown
       sections: [{
-        title: 'Latest Content',
+        title: 'Featured Case Studies',
         items: [
-          { id: 'b1', slug: 'blog', title: 'All Posts', description: '', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'blog', weight: 0, commercialIntent: 'info' },
-          { id: 'b2', slug: 'blog/laptop-repair-kuwait-2026', title: 'Repair Guide 2026', description: '', iconKey: 'wrench', entityType: 'Page' as any, primaryKeyword: 'guide', weight: 0, commercialIntent: 'info' },
-          { id: 'b3', slug: 'laptop-screen-protection-tips', title: 'Screen Protection', description: '', iconKey: 'shield', entityType: 'Page' as any, primaryKeyword: 'tips', weight: 0, commercialIntent: 'info' },
-          { id: 'b4', slug: 'blog/gaming-pc-cooling', title: 'Gaming PC Cooling', description: '', iconKey: 'gaming', entityType: 'Page' as any, primaryKeyword: 'cooling', weight: 0, commercialIntent: 'info' },
+          { id: 'cs1', slug: 'case-studies', title: 'All Case Studies', description: '', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'cases', weight: 0, commercialIntent: 'info' },
+          { id: 'cs2', slug: 'case-studies/macbook-liquid-damage-salmiya', title: 'MacBook Liquid Damage', description: '', iconKey: 'apple', entityType: 'Page' as any, primaryKeyword: 'liquid damage', weight: 0, commercialIntent: 'info' }
         ]
       }]
     };
   }
 
-  // 5. About Mega Menu (Static/Custom structure as requested)
+  // 5. Blog Mega Menu (Added the missing 'how-to-protect-laptop-screen')
+  private static compileBlogMegaMenu(): MegaMenuConfig {
+    return {
+      id: 'blog_mega',
+      title: 'Blog & Guides',
+      featured: [], 
+      sections: [{
+        title: 'Latest Content',
+        items: [
+          { id: 'b1', slug: 'blog', title: 'All Posts', description: '', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'blog', weight: 0, commercialIntent: 'info' },
+          { id: 'b2', slug: 'blog/laptop-repair-kuwait-2026', title: 'Repair Guide 2026', description: '', iconKey: 'wrench', entityType: 'Page' as any, primaryKeyword: 'guide', weight: 0, commercialIntent: 'info' },
+          { id: 'b3', slug: 'laptop-screen-protection-tips', title: 'Screen Protection Tips', description: '', iconKey: 'shield', entityType: 'Page' as any, primaryKeyword: 'tips', weight: 0, commercialIntent: 'info' },
+          { id: 'b4', slug: 'blog/how-to-protect-laptop-screen', title: 'Protect Laptop Screen', description: '', iconKey: 'monitor', entityType: 'Page' as any, primaryKeyword: 'protect', weight: 0, commercialIntent: 'info' },
+          { id: 'b5', slug: 'blog/gaming-pc-cooling', title: 'Gaming PC Cooling', description: '', iconKey: 'gaming', entityType: 'Page' as any, primaryKeyword: 'cooling', weight: 0, commercialIntent: 'info' },
+        ]
+      }]
+    };
+  }
+
+  // 6. About Mega Menu (Added Privacy & Hawalli Location)
   private static compileAboutMegaMenu(): MegaMenuConfig {
     return {
       id: 'about_mega',
       title: 'Company Info',
-      featured: [], // No featured cards, just a clean list
+      featured: [], 
       sections: [{
         title: 'About KCROC',
         items: [
           { id: 'a1', slug: 'about', title: 'About Us', description: '', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'about', weight: 0, commercialIntent: 'info' },
           { id: 'a2', slug: 'gallery', title: 'Gallery', description: '', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'gallery', weight: 0, commercialIntent: 'info' },
           { id: 'a3', slug: 'faq', title: 'FAQ', description: '', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'faq', weight: 0, commercialIntent: 'info' },
-          { id: 'a4', slug: 'contact', title: 'Contact', description: '', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'contact', weight: 0, commercialIntent: 'info' },
+          { id: 'a4', slug: 'privacy-security-kuwait', title: 'Privacy & Security', description: '', iconKey: 'shield', entityType: 'Page' as any, primaryKeyword: 'privacy', weight: 0, commercialIntent: 'info' },
+          { id: 'a5', slug: 'location/hawalli', title: 'Hawalli Location', description: '', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'hawalli', weight: 0, commercialIntent: 'info' },
+          { id: 'a6', slug: 'contact', title: 'Contact', description: '', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'contact', weight: 0, commercialIntent: 'info' },
         ]
       }]
     };
@@ -102,21 +118,20 @@ export class NavigationCompiler {
 
   public static compileNavigation(): CompiledNavigationModel {
     return {
-      // 🎯 The exact top-level header structure requested
       header: [
         { id: 'nav_services', label: 'Services', href: '/services', hasMega: true, megaMenuId: 'services_mega' },
         { id: 'nav_brands', label: 'Brands', href: '#', hasMega: true, megaMenuId: 'brands_mega' },
         { id: 'nav_problems', label: 'Problems', href: '#', hasMega: true, megaMenuId: 'problems_mega' },
-        { id: 'nav_case_studies', label: 'Case Studies', href: '/case-studies', hasMega: false },
+        { id: 'nav_case_studies', label: 'Case Studies', href: '/case-studies', hasMega: true, megaMenuId: 'case_studies_mega' }, // Upgraded to Mega
         { id: 'nav_pricing', label: 'Pricing', href: '/pricing', hasMega: false },
         { id: 'nav_blog', label: 'Blog', href: '/blog', hasMega: true, megaMenuId: 'blog_mega' },
         { id: 'nav_about', label: 'About', href: '/about', hasMega: true, megaMenuId: 'about_mega' },
       ],
-      // Attach the compiled mega menus to the model
       megaMenus: {
         services_mega: this.compileServicesMegaMenu(),
         brands_mega: this.compileBrandsMegaMenu(),
         problems_mega: this.compileProblemsMegaMenu(),
+        case_studies_mega: this.compileCaseStudiesMegaMenu(),
         blog_mega: this.compileBlogMegaMenu(),
         about_mega: this.compileAboutMegaMenu(),
       },
