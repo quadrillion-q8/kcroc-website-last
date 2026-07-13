@@ -1,23 +1,20 @@
-// File: app/frontend/src/core/navigation/NavigationCompiler.ts
-import { KCROC_GRAPH } from '../../data/graph';
+import { Registry } from '../../knowledge/registry';
 import { CompiledNavigationModel, NavEntity, MegaMenuConfig } from './types';
 
 export class NavigationCompiler {
   /**
-   * Calculates dynamic routing weight. 
-   * In a live DB, this incorporates Search Volume, Conversion Rate, and Margins.
+   * Enterprise Ranking Engine
+   * Calculates dynamic routing weight based on business value.
    */
   private static calculateEntityWeight(entity: any): number {
     let weight = 0;
-    if (entity.popular) weight += 50;
-    if (entity.warranty?.noFixNoFee) weight += 20; // High commercial trust
-    if (entity.coreFeatures?.length > 3) weight += 10; // High content depth
+    if (entity.popular) weight += 50;                               // High traffic score
+    if (entity.warranty?.noFixNoFee) weight += 20;                  // High commercial trust
+    if (entity.coreFeatures && entity.coreFeatures.length > 3) weight += 10; // High content depth
+    // Future: Add SEO search volume and conversion rate modifiers here
     return weight;
   }
 
-  /**
-   * Transforms raw graph nodes into standard NavEntities for UI consumption.
-   */
   private static compileNavEntity(entity: any, type: 'Service' | 'Brand' | 'Problem'): NavEntity {
     return {
       id: entity.id,
@@ -32,32 +29,20 @@ export class NavigationCompiler {
     };
   }
 
-  /**
-   * Compiles the "Services" Mega Menu by automatically ranking the Graph.
-   */
   private static compileServicesMegaMenu(): MegaMenuConfig {
-    const allServices = (KCROC_GRAPH.services || []).map(s => this.compileNavEntity(s, 'Service'));
-    
-    // Auto-rank based on graph weight
+    const allServices = Registry.getAllServices().map(s => this.compileNavEntity(s, 'Service'));
     const sorted = [...allServices].sort((a, b) => b.weight - a.weight);
     
-    // Top 3 become featured hero cards, the rest go to standard lists
-    const featured = sorted.slice(0, 3);
-    const standard = sorted.slice(3);
-
     return {
       id: 'services_mega',
       title: 'Repair Services',
-      featured,
+      featured: sorted.slice(0, 3), // Top 3 highest value entities
       sections: [
-        { title: 'Standard Repairs', items: standard }
+        { title: 'Standard Repairs', items: sorted.slice(3) }
       ]
     };
   }
 
-  /**
-   * Master Compiler: Generates the single source of truth for the entire site's navigation.
-   */
   public static compileNavigation(): CompiledNavigationModel {
     const servicesMega = this.compileServicesMegaMenu();
 
@@ -71,9 +56,6 @@ export class NavigationCompiler {
       ],
       megaMenus: {
         services_mega: servicesMega,
-        // Future programmatic expansion:
-        // brands_mega: this.compileBrandsMegaMenu(),
-        // problems_mega: this.compileProblemsMegaMenu(),
       },
       footer: {
         sections: [
