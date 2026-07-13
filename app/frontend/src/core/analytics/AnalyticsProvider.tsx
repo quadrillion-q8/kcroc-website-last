@@ -1,7 +1,7 @@
-import React, { createContext, useContext, useMemo, useEffect } from 'react';
+import React, { createContext, useContext, useMemo } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Registry } from '../../knowledge/registry';
-import { trackEvent, buildEntityPayload } from './core';
+import { trackEvent, buildEntityPayload } from './index'; // assuming index.ts exports these
 import { AnalyticsEvent, BaseEventPayload, BookingEvent } from './types';
 
 interface AnalyticsContextValue {
@@ -14,15 +14,12 @@ const AnalyticsContext = createContext<AnalyticsContextValue | null>(null);
 export const AnalyticsProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const location = useLocation();
 
-  // Route-to-Entity Resolution
   const currentEntity = useMemo(() => {
-    // Extract slug from /services/slug or just /slug
     const pathParts = location.pathname.split('/').filter(Boolean);
     const slug = pathParts[pathParts.length - 1];
     return Registry.getServiceBySlug(slug) || null;
   }, [location.pathname]);
 
-  // Unified global tracker that automatically merges context
   const trackConversion = (event: AnalyticsEvent | BookingEvent, payload: BaseEventPayload) => {
     const entityContext = currentEntity ? buildEntityPayload(currentEntity, 'Service') : {};
     trackEvent(event, { ...entityContext, ...payload });
