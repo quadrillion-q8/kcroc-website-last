@@ -144,7 +144,15 @@ const rawGraphData: RawGraphData = {
     /* ═══════════════════════════════════════════════════════════════
        REVIEWS
     ═══════════════════════════════════════════════════════════════ */
-    'reviews-row': { id: 'reviews-row', entityType: 'Reviews', isActive: true, title: 'Verified Google Reviews', aggregateRating: { ratingValue: '4.9', reviewCount: 150 }, items: [{ name: 'Ahmad Al-Sabah', location: 'Salmiya', time: '2 weeks ago', rating: 5, device: 'MacBook Pro — Screen Replacement', text: 'Fixed the MacBook Pro screen in 24 hours, price exactly as quoted.' }] } as ReviewsEntity,
+    'reviews-row': { 
+      id: 'reviews-row', entityType: 'Reviews', isActive: true, title: 'Verified Google Reviews', aggregateRating: { ratingValue: '4.9', reviewCount: 150 }, 
+      items: [
+        { name: 'Ahmad Al-Sabah', location: 'Salmiya', time: '2 weeks ago', rating: 5, device: 'MacBook Pro — Screen Replacement', text: 'Fixed the MacBook Pro screen in 24 hours, price exactly as quoted.' },
+        { name: 'Fatima A.', location: 'Hawalli', time: '1 month ago', rating: 5, device: 'MacBook Air — Liquid Damage', text: 'Spilled coffee on my Mac. Apple told me I lost all my data and needed a new board. KCROC fixed the original board and saved my files. Absolute lifesavers.' },
+        { name: 'Tareq M.', location: 'Kuwait City', time: '2 months ago', rating: 5, device: 'ASUS ROG — Overheating', text: 'My gaming laptop was hitting 95C and dropping frames. They cleaned it and applied liquid metal. Now it runs perfectly cool. Very professional lab.' },
+        { name: 'Sarah K.', location: 'Farwaniya', time: '3 months ago', rating: 5, device: 'Dell XPS — Dead Motherboard', text: 'Laptop was completely dead. The free pick and drop service was super convenient. They diagnosed a shorted chip, fixed it in 2 days, and gave a 30-day warranty.' }
+      ] 
+    } as ReviewsEntity,
 
     /* ═══════════════════════════════════════════════════════════════
        FAQS
@@ -415,11 +423,6 @@ const rawGraphData: RawGraphData = {
       timeToRepair: '36 hours',
       costVsReplacement: 'Repair: 65 KWD. Apple Authorized Center quote: 280 KWD for board swap with data loss.',
       publishDate: '2026-05-12',
-      featuredImage: {
-        thumbnail: { raw: '/assets/case-studies/macbook-salmiya-before.jpg', webp: '/assets/case-studies/macbook-salmiya-before.webp', avif: '/assets/case-studies/macbook-salmiya-before.avif' },
-        hero: { raw: '/assets/case-studies/macbook-salmiya-after.jpg', webp: '/assets/case-studies/macbook-salmiya-after.webp', avif: '/assets/case-studies/macbook-salmiya-after.avif' },
-        altText: 'MacBook Pro M2 logic board before and after micro-soldering repair'
-      },
       seo: { title: 'MacBook Pro M2 Liquid Damage Repair Kuwait — Real Case Study | KCROC', description: 'Coffee spill destroyed a MacBook Pro M2 in Salmiya. KCROC repaired the logic board for 65 KWD, preserving all data. Apple wanted 280 KWD for a board swap.', canonicalUrl: 'https://www.computerrepairkuwait.com/case-studies/macbook-liquid-damage-salmiya', ogType: 'article', schemaTypes: ['Article'] }
     } as CaseStudyEntity,
 
@@ -436,11 +439,6 @@ const rawGraphData: RawGraphData = {
       timeToRepair: '24 hours',
       costVsReplacement: 'Repair: 45 KWD. Replacement board: 350 KWD.',
       publishDate: '2026-06-20',
-      featuredImage: {
-        thumbnail: { raw: '/assets/case-studies/asus-rog-before.jpg', webp: '/assets/case-studies/asus-rog-before.webp', avif: '/assets/case-studies/asus-rog-before.avif' },
-        hero: { raw: '/assets/case-studies/asus-rog-after.jpg', webp: '/assets/case-studies/asus-rog-after.webp', avif: '/assets/case-studies/asus-rog-after.avif' },
-        altText: 'ASUS ROG Strix blown MOSFET before and after replacement'
-      },
       seo: { title: 'ASUS ROG Dead Motherboard Repair Hawalli — Case Study | KCROC', description: 'Dead ASUS ROG Strix gaming laptop restored via chip-level micro-soldering in Hawalli. Saved customer 300+ KWD on a replacement board.', canonicalUrl: 'https://www.computerrepairkuwait.com/case-studies/asus-rog-dead-motherboard-hawalli', ogType: 'article', schemaTypes: ['Article'] }
     } as CaseStudyEntity,
 
@@ -457,11 +455,6 @@ const rawGraphData: RawGraphData = {
       timeToRepair: '5 hours (including transit)',
       costVsReplacement: 'Repair: 85 KWD. New XPS 15: 600+ KWD.',
       publishDate: '2026-07-05',
-      featuredImage: {
-        thumbnail: { raw: '/assets/case-studies/dell-xps-before.jpg', webp: '/assets/case-studies/dell-xps-before.webp', avif: '/assets/case-studies/dell-xps-before.avif' },
-        hero: { raw: '/assets/case-studies/dell-xps-after.jpg', webp: '/assets/case-studies/dell-xps-after.webp', avif: '/assets/case-studies/dell-xps-after.avif' },
-        altText: 'Shattered Dell XPS 15 screen before and after OEM replacement'
-      },
       seo: { title: 'Same-Day Dell XPS Screen Replacement Kuwait City | KCROC', description: 'Cracked Dell XPS 15 screen replaced with OEM panel in just 5 hours, including free pick and drop to Kuwait City.', canonicalUrl: 'https://www.computerrepairkuwait.com/case-studies/dell-xps-screen-replacement-kuwait-city', ogType: 'article', schemaTypes: ['Article'] }
     } as CaseStudyEntity,
 
