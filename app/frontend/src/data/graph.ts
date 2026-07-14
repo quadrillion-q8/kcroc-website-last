@@ -79,7 +79,16 @@ const rawGraphData: RawGraphData = {
       title: 'Home', description: 'KCROC Homepage — Component-level computer repair in Kuwait',
       seo: { title: 'Computer Repair Kuwait | Laptop & MacBook Repair – Free Pick & Drop | Kuwait Computer Repair On Call', description: 'Same-day laptop, MacBook & PC repair in Kuwait by KCROC. Free Pick & Drop across Hawalli, Salmiya, Kuwait City & all governorates. 4.9★ rated, 30-day warranty. Call +965 55301913.', canonicalUrl: 'https://www.computerrepairkuwait.com', ogType: 'website', schemaTypes: ['LocalBusiness', 'WebSite', 'WebPage'] },
       hero: { headline: 'Kuwait\'s Expert Component-Level Repair Service.', subheadline: 'We fix the board. We don\'t just swap it.', description: 'We diagnose and repair failed components at board level — restoring devices that most repair shops in Kuwait would simply declare beyond repair.', primaryCTA: { text: 'WhatsApp a Technician', route: 'https://wa.me/96555301913' }, secondaryCTA: { text: 'View All Services', route: '/services' } },
-      featuredFAQIds: ['faq-pick-and-drop', 'faq-liquid-damage', 'faq-no-fix'], featuredUSPIds: ['usp-component', 'usp-nofix', 'usp-logistics', 'usp-privacy']
+      featuredFAQIds: [
+        'faq-pick-and-drop', 
+        'faq-liquid-damage', 
+        'faq-no-fix',
+        'faq-warranty',
+        'faq-data-safe',
+        'faq-same-day',
+        'faq-cost'
+      ], 
+      featuredUSPIds: ['usp-component', 'usp-nofix', 'usp-logistics', 'usp-privacy']
     } as WebPageEntity,
     'page-services': { id: 'page-services', slug: 'services', entityType: 'WebPage', isActive: true, title: 'Services', description: 'All KCROC repair services', seo: { title: 'Computer Repair Services in Kuwait | Laptop, MacBook & PC | KCROC', description: 'Expert laptop repair, MacBook repair, gaming PC diagnostics, motherboard chip-level repair, and screen replacement in Kuwait. Free pickup. 30-day warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/services', ogType: 'website', schemaTypes: ['CollectionPage', 'LocalBusiness'] } } as WebPageEntity,
     'page-blog': { id: 'page-blog', slug: 'blog', entityType: 'WebPage', isActive: true, title: 'Tech Blog', description: 'Expert repair guides and tech insights.', seo: { title: 'KCROC Tech Blog | Computer Repair Guides Kuwait', description: 'Expert computer repair guides, laptop fixes, MacBook troubleshooting, and PC performance tips in Kuwait.', canonicalUrl: 'https://www.computerrepairkuwait.com/blog', ogType: 'website', schemaTypes: ['CollectionPage'] } } as WebPageEntity,
