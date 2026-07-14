@@ -1,102 +1,292 @@
 // File: app/frontend/src/components/home/Hero.tsx
-import React from 'react';
+// NOTE: Home.tsx imports this from '../components/home/Hero' — if your real
+// file lives at app/frontend/src/components/Hero.tsx (no /home/ subfolder),
+// confirm which path is actually wired up before replacing, or you may be
+// editing a file that isn't the one rendering on the page.
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { MessageCircle, ShieldCheck, Truck, Clock, Zap, Cpu, Lock } from 'lucide-react';
-import { KCROC_GRAPH } from '../../data/graph';
-import { IMAGES } from '../../constants/images';
-
-// Map icon strings from the graph to actual Lucide components
-const ICON_MAP: Record<string, React.ElementType> = {
-  ShieldCheck, Truck, Clock, Zap, Cpu, Lock
-};
+import { Phone, MessageCircle, CalendarClock, Shield, Zap, Award, Star } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { ROUTES } from '../constants/routes';
+import { KCROC_GRAPH } from '../data/graph';
+import { useAnalytics } from '../core/analytics/AnalyticsProvider';
 
 export default function Hero() {
-  const homePage = KCROC_GRAPH.pages.find(p => p.id === 'page-home');
-  const trustBadges = KCROC_GRAPH.trustBadges;
-  const business = KCROC_GRAPH.business;
+  const [statsAnimated, setStatsAnimated] = useState(false);
+  const [statsLoading, setStatsLoading] = useState(true);
+  const { trackConversion } = useAnalytics();
 
-  if (!homePage || !business) return null;
-  const { hero } = homePage;
+  // Pull real content from the graph instead of hardcoding copy —
+  // keeps Hero.tsx in sync with page-home.hero in graph.ts
+  const homePage = KCROC_GRAPH.pages?.find((p) => p.id === 'page-home');
+  const hero = homePage?.hero;
+  const business = KCROC_GRAPH.business;
+  const phone = business?.telephone ?? '96555301913';
+  const rating = business?.aggregateRating?.ratingValue ?? '4.9';
+  const repairsStat = KCROC_GRAPH.stats?.items?.find((s: any) => s.label === 'Repairs completed');
+
+  useEffect(() => {
+    const loadingTimer = setTimeout(() => setStatsLoading(false), 800);
+    const animationTimer = setTimeout(() => setStatsAnimated(true), 1000);
+    return () => {
+      clearTimeout(loadingTimer);
+      clearTimeout(animationTimer);
+    };
+  }, []);
+
+  const trustBadges = [
+    { icon: Shield, text: 'Data Privacy First' },
+    { icon: Zap, text: 'ESD-Safe Lab' },
+    { icon: Award, text: 'Original Parts Only' },
+  ];
+
+  const stats = [
+    { number: 500, suffix: '+', label: 'Repairs Completed' },
+    { number: 98, suffix: '%', label: 'Success Rate' },
+    { number: 24, suffix: '/7', label: 'Support Available' },
+  ];
+
+  const Counter = ({
+    end,
+    suffix = '',
+    duration = 2000,
+  }: {
+    end: number;
+    suffix?: string;
+    duration?: number;
+  }) => {
+    const [count, setCount] = useState(0);
+    const [hasAnimated, setHasAnimated] = useState(false);
+
+    useEffect(() => {
+      if (!statsAnimated || hasAnimated || statsLoading) return;
+      setHasAnimated(true);
+
+      let startTime: number;
+      const animate = (currentTime: number) => {
+        if (!startTime) startTime = currentTime;
+        const progress = Math.min((currentTime - startTime) / duration, 1);
+        setCount(Math.floor(progress * end));
+        if (progress < 1) requestAnimationFrame(animate);
+      };
+      requestAnimationFrame(animate);
+    }, [end, duration, statsAnimated, hasAnimated, statsLoading]);
+
+    if (statsLoading) {
+      return <span className="counter loading-state">--</span>;
+    }
+    return (
+      <span className="counter">
+        {count}
+        {suffix}
+      </span>
+    );
+  };
 
   return (
-    <section className="w-full min-h-[90vh] bg-slate-950 pt-24 pb-16 relative overflow-hidden flex items-center">
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          
-          {/* Text Content */}
-          <div className="space-y-8 text-center lg:text-left">
-            <div className="space-y-6">
-              
-              {/* Dynamic Trust Badges */}
-              <div className="flex flex-wrap justify-center lg:justify-start gap-3 mb-6">
-                {trustBadges.map((badge) => {
-                  const Icon = ICON_MAP[badge.iconKey] || ShieldCheck;
-                  return (
-                    <div key={badge.id} className="flex items-center gap-1 text-xs font-bold text-slate-400 bg-slate-900 px-3 py-1 rounded-full border border-slate-800">
-                      <Icon className="w-3 h-3" /> {badge.title}
-                    </div>
-                  );
-                })}
-              </div>
-              
-              <Badge variant="secondary" className="bg-emerald-500/20 text-emerald-300 px-4 py-2 border border-emerald-500/30">
-                🏆 Kuwait's Component-Level Tech Experts
-              </Badge>
-              
-              {/* Graph-Driven Headlines */}
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight">
-                {hero.headline}
-              </h1>
-              
-              <p className="text-lg text-slate-300 max-w-xl mx-auto lg:mx-0 leading-relaxed font-medium">
-                <span className="text-cyan-400 font-bold block mb-2">{hero.subheadline}</span>
-                {hero.description}
-              </p>
-            </div>
+    <>
+      {/* Mobile Hero Section */}
+      <section className="min-h-screen bg-slate-950 pt-20 pb-16 relative overflow-hidden lg:hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-cyan-950/40 via-slate-950 to-emerald-950/20" />
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <Button size="lg" asChild className="bg-cyan-500 hover:bg-cyan-600 text-slate-950 px-8 py-6 text-lg font-black shadow-2xl">
-                <a href={hero.primaryCTA.route} target="_blank" rel="noopener noreferrer" aria-label={hero.primaryCTA.text}>
-                  <MessageCircle className="w-5 h-5 mr-2" /> {hero.primaryCTA.text}
-                </a>
-              </Button>
-              <Button size="lg" variant="outline" asChild className="border-slate-700 bg-slate-900/50 text-white hover:bg-slate-800 px-8 py-6 text-lg font-bold">
-                <a href={hero.secondaryCTA.route} aria-label={hero.secondaryCTA.text}>
-                  {hero.secondaryCTA.text}
-                </a>
-              </Button>
-            </div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="flex justify-center mb-6">
+            <img
+              src="https://res.cloudinary.com/dsbwzags3/image/upload/v1769908596/logo_btpfls.png"
+              alt="Kuwait Computer Repair On Call Logo"
+              className="h-16 w-auto object-contain drop-shadow-xl"
+            />
           </div>
 
-          {/* Visual Content */}
-          <div className="flex flex-col gap-6">
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-slate-700/50 bg-slate-900">
-              <img 
-                src={IMAGES.brand.heroBanner.src} 
-                alt={IMAGES.brand.heroBanner.alt} 
-                className="w-full h-56 md:h-72 object-cover"
-                loading="eager"
-                fetchPriority="high"
-              />
+          <h1 className="text-white text-2xl font-black text-center leading-tight mt-4 mb-2">
+            {hero?.headline ?? "Kuwait's Expert Component-Level Repair Service."}
+          </h1>
+
+          <p className="text-slate-400 text-base text-center leading-relaxed mb-5">
+            {hero?.description ??
+              'Free pickup & delivery. Expert engineer. Data-safe repairs for home and office.'}
+          </p>
+
+          <div className="space-y-3 mb-3">
+            <Button
+              size="lg"
+              asChild
+              className="w-full h-14 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-lg rounded-full shadow-lg min-h-[44px]"
+            >
+              <a
+                href={`tel:+${phone}`}
+                onClick={() =>
+                  trackConversion('phone_call_click', {
+                    cta_name: 'hero_mobile_call',
+                    button_position: 'hero_mobile',
+                  })
+                }
+              >
+                <Phone className="w-5 h-5 mr-2" />
+                Call Now
+              </a>
+            </Button>
+            <Button
+              size="lg"
+              asChild
+              className="w-full h-14 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-lg rounded-full shadow-lg min-h-[44px]"
+            >
+              <a
+                href={`https://wa.me/${phone}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() =>
+                  trackConversion('whatsapp_click', {
+                    cta_name: 'hero_mobile_whatsapp',
+                    button_position: 'hero_mobile',
+                  })
+                }
+              >
+                <MessageCircle className="w-5 h-5 mr-2" />
+                WhatsApp Us
+              </a>
+            </Button>
+          </div>
+
+          <p className="text-slate-500 text-sm text-center font-medium mt-3 mb-6">
+            {rating}★ Google rating · Trusted by {repairsStat?.value ?? '500+'} customers across Kuwait
+          </p>
+        </div>
+      </section>
+
+      {/* Desktop Hero Section */}
+      <section className="hidden lg:block min-h-screen bg-slate-950 pt-24 pb-16 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-cyan-950/30 via-slate-950 to-emerald-950/20" />
+
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left Content */}
+            <div className="space-y-8">
+              <div className="flex flex-wrap gap-3">
+                {trustBadges.map((badge) => (
+                  <div
+                    key={badge.text}
+                    className="flex items-center gap-2 text-xs font-semibold text-slate-400 uppercase tracking-wider border border-slate-800 rounded-full px-4 py-2"
+                  >
+                    <badge.icon className="w-4 h-4 text-emerald-500" />
+                    {badge.text}
+                  </div>
+                ))}
+              </div>
+
+              <div>
+                <h1 className="text-white text-4xl xl:text-5xl font-black leading-tight">
+                  {hero?.headline ?? "Kuwait's Expert Component-Level Repair Service."}
+                </h1>
+                <p className="mt-4 text-cyan-400 text-xl font-semibold">
+                  {hero?.subheadline ?? "We fix the board. We don't just swap it."}
+                </p>
+                <p className="mt-4 text-slate-400 text-lg leading-relaxed max-w-xl">
+                  {hero?.description ??
+                    'We diagnose and repair failed components at board level — restoring devices that most repair shops in Kuwait would simply declare beyond repair.'}
+                </p>
+              </div>
+
+              <div className="grid grid-cols-3 gap-4 max-w-md">
+                {stats.map((s) => (
+                  <div key={s.label} className="text-center">
+                    <div className="text-2xl font-black text-white">
+                      <Counter end={s.number} suffix={s.suffix} />
+                    </div>
+                    <div className="text-[11px] text-slate-500 uppercase tracking-wide mt-1">
+                      {s.label}
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button
+                  size="lg"
+                  asChild
+                  className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 px-8 py-6 text-lg font-black rounded-full transition-all duration-300 min-h-[44px]"
+                >
+                  <a
+                    href={`tel:+${phone}`}
+                    onClick={() =>
+                      trackConversion('phone_call_click', {
+                        cta_name: 'hero_desktop_call',
+                        button_position: 'hero_desktop',
+                      })
+                    }
+                  >
+                    <Phone className="w-5 h-5 mr-2" />
+                    Call Now: +{phone}
+                  </a>
+                </Button>
+
+                <Button
+                  size="lg"
+                  variant="outline"
+                  asChild
+                  className="border-2 border-emerald-500 text-emerald-400 hover:bg-emerald-500/10 px-8 py-6 text-lg font-black rounded-full min-h-[44px]"
+                >
+                  <Link
+                    to={ROUTES.book}
+                    onClick={() =>
+                      trackConversion('cta_click', {
+                        cta_name: 'hero_book_pickup',
+                        button_position: 'hero_desktop',
+                      })
+                    }
+                  >
+                    <CalendarClock className="w-5 h-5 mr-2" />
+                    Book Pickup Now
+                  </Link>
+                </Button>
+              </div>
             </div>
-            <Card className="border-0 bg-slate-900/60 backdrop-blur-xl">
-              <CardContent className="p-6">
-                <div className="text-center">
-                  <h3 className="text-xl font-black text-white mb-2">Need a precise diagnostic?</h3>
-                  <p className="text-sm text-slate-400 mb-4">Send us your device symptoms. We trace the fault.</p>
-                  <Button asChild className="w-full bg-green-600 hover:bg-green-700 text-white font-black py-6 text-lg">
-                    <a href={`https://wa.me/${business.telephone}`} target="_blank" rel="noopener noreferrer">
-                      <MessageCircle className="w-5 h-5 mr-2" /> WhatsApp Our Techs
+
+            {/* Right Content */}
+            <div>
+              <Card className="bg-slate-900/40 border border-slate-800 rounded-3xl backdrop-blur">
+                <CardContent className="p-8">
+                  <div className="flex items-center gap-2 mb-4">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="w-4 h-4 fill-current text-cyan-400" />
+                    ))}
+                    <span className="text-slate-400 text-sm ml-1">
+                      {rating} rated · {business?.aggregateRating?.reviewCount ?? 150}+ reviews
+                    </span>
+                  </div>
+                  <h3 className="text-white text-xl font-bold mb-2">
+                    {hero?.secondaryCTA?.text ?? 'Need a precise diagnostic?'}
+                  </h3>
+                  <p className="text-slate-400 text-sm mb-6">
+                    Send us your device symptoms. We trace the fault — free of charge, no obligation.
+                  </p>
+                  <Button
+                    asChild
+                    size="lg"
+                    className="w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold rounded-full"
+                  >
+                    <a
+                      href={`https://wa.me/${phone}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() =>
+                        trackConversion('whatsapp_click', {
+                          cta_name: 'hero_desktop_card_whatsapp',
+                          button_position: 'hero_desktop_card',
+                        })
+                      }
+                    >
+                      <MessageCircle className="w-5 h-5 mr-2" />
+                      Message on WhatsApp
                     </a>
                   </Button>
-                </div>
-              </CardContent>
-            </Card>
+                </CardContent>
+              </Card>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }
