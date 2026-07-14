@@ -1,9 +1,11 @@
+// File: app/frontend/src/pages/templates/ServiceTemplate.tsx
 import React from 'react';
 import { Navigate } from 'react-router-dom';
 import { Laptop, Apple, Gamepad2, Cpu, Wrench, ShieldCheck, Clock, MessageCircle } from 'lucide-react';
 import { KCROC_GRAPH } from '../../data/graph';
 import { SEOEngine } from '../../core/components/SEOEngine';
-import { trackConversion } from '../../core/analytics';
+// 1. Updated Import: Pulling from the context provider instead of a static function
+import { useAnalytics } from '../../core/analytics/AnalyticsProvider';
 
 const ICON_MAP: Record<string, React.ElementType> = {
   'apple': Apple,
@@ -13,10 +15,13 @@ const ICON_MAP: Record<string, React.ElementType> = {
 };
 
 interface ServiceTemplateProps {
-  entityId: string;
+  entityId?: string;
 }
 
 export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
+  // 2. Initialize the hook
+  const { trackConversion } = useAnalytics();
+
   const entity = KCROC_GRAPH.services.find((e) => e.id === entityId);
 
   if (!entity) {
@@ -94,7 +99,7 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
                 rel="noopener noreferrer"
                 onClick={() => trackConversion(
                   'whatsapp_click',
-                  { cta_name: 'hero_primary', button_position: 'hero' },
+                  { cta_name: 'service_page_whatsapp', button_position: 'bottom_cta' },
                   { entity_id: entity.id, entity_type: 'Service', entity_slug: entity.slug }
                 )}
                 className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black py-4 px-8 rounded-xl transition-all shadow-[0_0_15px_rgba(34,211,238,0.2)] hover:scale-105 duration-200 flex items-center gap-2"
