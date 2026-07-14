@@ -8,9 +8,9 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Phone, MessageCircle, CalendarClock, Shield, Zap, Award, Star } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ROUTES } from '../constants/routes';
-import { KCROC_GRAPH } from '../data/graph';
-import { useAnalytics } from '../core/analytics/AnalyticsProvider';
+import { ROUTES } from '../../constants/routes';
+import { KCROC_GRAPH } from '../../data/graph';
+import { useAnalytics } from '../../core/analytics/AnalyticsProvider';
 
 export default function Hero() {
   const [statsAnimated, setStatsAnimated] = useState(false);
