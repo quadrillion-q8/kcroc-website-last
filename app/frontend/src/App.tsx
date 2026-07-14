@@ -60,22 +60,22 @@ export const App: React.FC = () => {
               
               {/* 
                 🔥 DYNAMIC ROOT-LEVEL SEO ROUTES 🔥
-                We map directly from the Graph so React Router knows exactly 
-                which root-level URLs belong to which template, without catching 404s.
+                We map directly from the Graph and explicitly pass the entityId prop
+                so the templates know exactly what data to render without relying on URL params.
               */}
               {KCROC_GRAPH.services.map((service) => (
-                <Route key={service.slug} path={service.slug} element={<ServiceTemplate />} />
+                <Route key={service.slug} path={service.slug} element={<ServiceTemplate entityId={service.id} />} />
               ))}
               
               {KCROC_GRAPH.brands.map((brand) => (
-                <Route key={brand.slug} path={brand.slug} element={<BrandTemplate />} />
+                <Route key={brand.slug} path={brand.slug} element={<BrandTemplate entityId={brand.id} />} />
               ))}
               
               {KCROC_GRAPH.problems.map((problem) => (
-                <Route key={problem.slug} path={problem.slug} element={<ProblemTemplate />} />
+                <Route key={problem.slug} path={problem.slug} element={<ProblemTemplate entityId={problem.id} />} />
               ))}
 
-              {/* Legacy Service Route Fallback (Just in case) */}
+              {/* Legacy Service Route Fallback (Just in case someone has an old bookmarked link) */}
               <Route path="services/:serviceSlug" element={<ServiceTemplate />} />
               
               {/* Case Studies (Nested under /case-studies/ for SEO clustering) */}
