@@ -2,6 +2,7 @@
 import React from 'react';
 import { Stethoscope, Wrench, CheckCircle2 } from 'lucide-react';
 import { KCROC_GRAPH } from '../../data/graph';
+import { useAnalytics } from '../../core/analytics/AnalyticsProvider';
 
 // Reuses the existing RoutableEntity.featuredImage field (no schema change
 // needed): featuredImage.thumbnail = "before" shot, featuredImage.hero =
@@ -27,6 +28,7 @@ const Picture = ({
 
 export const BeforeAfterShowcase = () => {
   const caseStudies = KCROC_GRAPH.caseStudies;
+  const { trackConversion } = useAnalytics();
 
   if (caseStudies.length === 0) return null;
 
@@ -106,6 +108,7 @@ export const BeforeAfterShowcase = () => {
         <div className="text-center mt-12">
           <a
             href="/case-studies"
+            onClick={() => trackConversion('cta_click', { cta_name: 'case_studies_view_all', button_position: 'before_after_showcase' })}
             className="text-cyan-400 hover:text-cyan-300 font-semibold text-sm underline underline-offset-4"
           >
             View all case studies →
