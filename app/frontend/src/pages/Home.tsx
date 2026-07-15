@@ -22,7 +22,8 @@ export default function Home() {
   if (!homePage) return null;
 
   return (
-    <main className="w-full min-h-screen bg-slate-950">
+    // ✅ FIXED: Changed bg-slate-950 to bg-transparent
+    <main className="w-full min-h-screen bg-transparent">
       <SEOEngine entityId="page-home" />
 
       {/* 1. Hero — primary CTA, first impression */}
