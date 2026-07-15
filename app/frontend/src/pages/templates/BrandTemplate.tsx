@@ -14,11 +14,12 @@ const BrandTemplate: React.FC = () => {
   if (!brand) return <Navigate to="/404" replace />;
 
   return (
-    <div className="bg-slate-950 min-h-screen text-slate-200">
+    // ✅ FIXED: Changed bg-slate-950 to bg-transparent
+    <div className="bg-transparent min-h-screen text-slate-200">
       <SEOEngine entityId={brand.id} />
       
-      {/* Hero Section */}
-      <section className="pt-24 pb-16 px-6 bg-gradient-to-b from-slate-900 to-slate-950 border-b border-slate-800">
+      {/* Hero Section - Added glass effect instead of solid gradient */}
+      <section className="pt-24 pb-16 px-6 bg-slate-900/40 backdrop-blur-md border-b border-slate-800">
         <div className="max-w-4xl mx-auto text-center">
           <MonitorSmartphone className="w-16 h-16 text-cyan-400 mx-auto mb-6" />
           <h1 className="text-4xl md:text-5xl font-black text-white mb-6 tracking-tight">
@@ -31,7 +32,7 @@ const BrandTemplate: React.FC = () => {
       </section>
 
       {/* Content Section */}
-      <section className="py-16 px-6 max-w-4xl mx-auto">
+      <section className="py-16 px-6 max-w-4xl mx-auto relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           
           {/* Common Issues */}
@@ -41,7 +42,7 @@ const BrandTemplate: React.FC = () => {
             </h2>
             <div className="space-y-4">
               {brand.commonIssues.map((issue) => (
-                <div key={issue.id} className="p-4 bg-slate-900 border border-slate-800 rounded-xl">
+                <div key={issue.id} className="p-4 bg-slate-900/60 backdrop-blur-sm border border-slate-800 rounded-xl">
                   <h3 className="font-bold text-slate-200 mb-1">{issue.title}</h3>
                   <p className="text-sm text-slate-400">{issue.description}</p>
                 </div>
@@ -54,7 +55,7 @@ const BrandTemplate: React.FC = () => {
             <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
               <Wrench className="text-cyan-400 w-6 h-6" /> Supported Models
             </h2>
-            <ul className="space-y-3 mb-10">
+            <ul className="space-y-3 mb-10 bg-slate-900/40 backdrop-blur-sm p-6 rounded-2xl border border-slate-800">
               {brand.commonModels.map((model, idx) => (
                 <li key={idx} className="flex items-center gap-3 text-slate-300">
                   <CheckCircle className="text-cyan-500 w-5 h-5 flex-shrink-0" />
@@ -63,7 +64,7 @@ const BrandTemplate: React.FC = () => {
               ))}
             </ul>
 
-            <div className="p-6 bg-cyan-950/30 border border-cyan-900/50 rounded-2xl text-center">
+            <div className="p-6 bg-cyan-950/40 backdrop-blur-md border border-cyan-900/50 rounded-2xl text-center shadow-lg">
               <h3 className="text-xl font-bold text-white mb-2">Need a Repair?</h3>
               {brand.pricing && (
                 <p className="text-cyan-400 font-medium mb-6">{brand.pricing.displayLabel}</p>
@@ -72,7 +73,7 @@ const BrandTemplate: React.FC = () => {
                 href={`https://wa.me/${KCROC_GRAPH.business?.telephone}`}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-block w-full py-3 px-6 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black rounded-full transition-colors"
+                className="inline-block w-full py-3 px-6 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black rounded-full transition-colors shadow-[0_0_15px_rgba(34,211,238,0.2)]"
               >
                 WhatsApp a Technician
               </a>
