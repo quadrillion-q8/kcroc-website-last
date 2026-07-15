@@ -40,7 +40,8 @@ const ScreenProtectionTips = lazy(() => import('./pages/ScreenProtectionTips'));
 
 // UI: Global loading spinner
 const PageLoader = () => (
-  <div className="w-full h-[60vh] flex items-center justify-center bg-slate-950">
+  // ✅ FIXED: Changed bg-slate-950 to bg-transparent so orbs show while loading
+  <div className="w-full h-[60vh] flex items-center justify-center bg-transparent">
     <div className="w-10 h-10 border-4 border-slate-800 border-t-cyan-400 rounded-full animate-spin"></div>
   </div>
 );
