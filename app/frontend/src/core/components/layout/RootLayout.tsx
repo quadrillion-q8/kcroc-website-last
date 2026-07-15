@@ -1,15 +1,16 @@
 // File: app/frontend/src/core/components/layout/RootLayout.tsx
 import React, { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
-import { Header } from './Header';
-import { Footer } from './Footer';
+
+// ✅ Fixed: Removed curly brackets for default exports
+import Header from './Header';
+import Footer from './Footer';
 import { AnimatedBackground } from './AnimatedBackground';
 
 export const RootLayout: React.FC = () => {
   return (
     <div className="relative min-h-screen flex flex-col bg-transparent text-slate-200 font-sans selection:bg-cyan-500/30">
       
-      {/* ✅ Fix 1 & 2: Component is explicitly mounted and sits behind a transparent wrapper */}
       <AnimatedBackground />
 
       <Header />
