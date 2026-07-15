@@ -17,8 +17,8 @@ interface SEOEngineProps {
 }
 
 export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
-  // 1. Fetch Core Graph Entities
-  const entity = KCROC_GRAPH.entities[entityId] as RoutableEntity | undefined;
+  // 1. Fetch Core Graph Entities (From the pre-filtered routable array)
+  const entity = KCROC_GRAPH.routableEntities.find(e => e.id === entityId);
   const business = KCROC_GRAPH.business;
   const primaryLocation = KCROC_GRAPH.locations.find(l => l.id === 'loc-hawalli');
   const reviews = KCROC_GRAPH.reviews;
@@ -34,9 +34,9 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
     );
   }
 
-  const { title, description, canonicalUrl, ogType } = entity.seo;
+  const { title, description, canonicalUrl, ogType, schemaTypes } = entity.seo;
   
-  // Ensure canonical URL is absolute (handles both relative and absolute string inputs)
+  // Ensure canonical URL is absolute
   const fullCanonicalUrl = canonicalUrl.startsWith('http') 
     ? canonicalUrl 
     : `${business.websiteUrl}${canonicalUrl}`;
@@ -87,148 +87,158 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
     baseLocalBusiness.aggregateRating = aggregateRating;
   }
 
-  // 5. Build Page-Specific Schema Extensions
   const schemaGraph: any[] = [baseLocalBusiness];
 
-  if (entity.entityType === 'Service') {
-    const service = entity as ServiceEntity;
-    schemaGraph.push({
-      "@type": "Service",
-      "@id": `${fullCanonicalUrl}#service`,
-      "name": service.title,
-      "description": service.description,
-      "provider": {
-        "@id": `${business.websiteUrl}/#business`
-      },
-      "areaServed": primaryLocation?.serviceAreas.map(area => ({
-        "@type": "City",
-        "name": area
-      })),
-      "offers": service.pricing ? {
-        "@type": "Offer",
-        "priceCurrency": service.pricing.currency,
-        "price": service.pricing.startingFrom,
-        "availability": "https://schema.org/InStock"
-      } : undefined
-    });
-  } 
-  else if (entity.entityType === 'FAQ') {
-    const faq = entity as FAQEntity;
-    schemaGraph.push({
-      "@type": "FAQPage",
-      "@id": `${fullCanonicalUrl}#faq`,
-      "mainEntity": [{
-        "@type": "Question",
-        "name": faq.title,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": faq.answer
+  // 5. STRICT DATA-DRIVEN SCHEMA GENERATION
+  // Iterate exactly over what the Knowledge Graph defines in `schemaTypes`
+  if (Array.isArray(schemaTypes)) {
+    schemaTypes.forEach(type => {
+      
+      // 🚀 Service & Offer Catalog Schema
+      if (type === 'Service') {
+        if (entity.entityType === 'Service') {
+          const service = entity as ServiceEntity;
+          schemaGraph.push({
+            "@type": "Service",
+            "@id": `${fullCanonicalUrl}#service`,
+            "name": service.title,
+            "description": service.description,
+            "provider": { "@id": `${business.websiteUrl}/#business` },
+            "areaServed": primaryLocation?.serviceAreas.map(area => ({
+              "@type": "City",
+              "name": area
+            })),
+            "offers": service.pricing ? {
+              "@type": "Offer",
+              "priceCurrency": service.pricing.currency,
+              "price": service.pricing.startingFrom,
+              "availability": "https://schema.org/InStock"
+            } : undefined
+          });
+        } else if (entity.entityType === 'Brand') {
+          const brandEntity = entity as BrandEntity;
+          schemaGraph.push({
+            "@type": "Service",
+            "@id": `${fullCanonicalUrl}#service`,
+            "name": brandEntity.title,
+            "description": brandEntity.description,
+            "provider": { "@id": `${business.websiteUrl}/#business` },
+            "brand": {
+              "@type": "Brand",
+              "name": brandEntity.brandName,
+              "url": brandEntity.officialWebsite
+            },
+            ...(brandEntity.pricing && {
+              "offers": {
+                "@type": "AggregateOffer",
+                "priceCurrency": brandEntity.pricing.currency,
+                "lowPrice": brandEntity.pricing.startingFrom,
+                "offerCount": brandEntity.commonIssues.length
+              }
+            }),
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": `${brandEntity.brandName} Repair Services`,
+              "itemListElement": brandEntity.commonIssues.map((issue, index) => ({
+                "@type": "OfferCatalog",
+                "position": index + 1,
+                "name": issue.title,
+                "description": issue.description
+              }))
+            }
+          });
         }
-      }]
-    });
-  }
-  // 🚀 PHASE 2: Brand-Specific Service Catalogs
-  else if (entity.entityType === 'Brand') {
-    const brandEntity = entity as BrandEntity;
-    schemaGraph.push({
-      "@type": "Service",
-      "@id": `${fullCanonicalUrl}#service`,
-      "name": brandEntity.title,
-      "description": brandEntity.description,
-      "provider": { "@id": `${business.websiteUrl}/#business` },
-      "brand": {
-        "@type": "Brand",
-        "name": brandEntity.brandName,
-        "url": brandEntity.officialWebsite
-      },
-      ...(brandEntity.pricing && {
-        "offers": {
-          "@type": "AggregateOffer",
-          "priceCurrency": brandEntity.pricing.currency,
-          "lowPrice": brandEntity.pricing.startingFrom,
-          "offerCount": brandEntity.commonIssues.length
+      }
+
+      // 🚀 FAQ Schema
+      if (type === 'FAQPage') {
+        if (entity.entityType === 'FAQ') {
+          const faq = entity as FAQEntity;
+          schemaGraph.push({
+            "@type": "FAQPage",
+            "@id": `${fullCanonicalUrl}#faq`,
+            "mainEntity": [{
+              "@type": "Question",
+              "name": faq.title,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": faq.answer
+              }
+            }]
+          });
+        } else if (entity.entityType === 'Problem') {
+          const problemEntity = entity as ProblemEntity;
+          schemaGraph.push({
+            "@type": "FAQPage",
+            "@id": `${fullCanonicalUrl}#faq`,
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": `What causes ${problemEntity.title.toLowerCase()}?`,
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": `Common causes include: ${problemEntity.causes.join(', ')}.`
+                }
+              },
+              {
+                "@type": "Question",
+                "name": `How do you fix ${problemEntity.title.toLowerCase()}?`,
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": problemEntity.solution
+                }
+              },
+              ...(problemEntity.doNotDo ? [{
+                "@type": "Question",
+                "name": "What should I avoid doing if my laptop has this problem?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": problemEntity.doNotDo
+                }
+              }] : [])
+            ]
+          });
         }
-      }),
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": `${brandEntity.brandName} Repair Services`,
-        "itemListElement": brandEntity.commonIssues.map((issue, index) => ({
-          "@type": "OfferCatalog",
-          "position": index + 1,
-          "name": issue.title,
-          "description": issue.description
-        }))
       }
-    });
-  }
-  // 🚀 PHASE 3: Problem/Troubleshooting Guides (Dual Schema: Article + FAQ)
-  else if (entity.entityType === 'Problem') {
-    const problemEntity = entity as ProblemEntity;
-    schemaGraph.push(
-      {
-        "@type": "TechArticle",
-        "@id": `${fullCanonicalUrl}#article`,
-        "headline": problemEntity.title,
-        "description": problemEntity.description,
-        "proficiencyLevel": "Beginner",
-        "articleSection": "Hardware Troubleshooting",
-        "text": `Symptom: ${problemEntity.symptom}. Solution: ${problemEntity.solution}`,
-        "publisher": { "@id": `${business.websiteUrl}/#business` }
-      },
-      {
-        "@type": "FAQPage",
-        "@id": `${fullCanonicalUrl}#faq`,
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": `What causes ${problemEntity.title.toLowerCase()}?`,
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": `Common causes include: ${problemEntity.causes.join(', ')}.`
-            }
-          },
-          {
-            "@type": "Question",
-            "name": `How do you fix ${problemEntity.title.toLowerCase()}?`,
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": problemEntity.solution
-            }
-          },
-          ...(problemEntity.doNotDo ? [{
-            "@type": "Question",
-            "name": "What should I avoid doing if my laptop has this problem?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": problemEntity.doNotDo
-            }
-          }] : [])
-        ]
+
+      // 🚀 Article Schema
+      if (type === 'Article' || type === 'TechArticle') {
+        if (entity.entityType === 'CaseStudy') {
+          const caseEntity = entity as CaseStudyEntity;
+          schemaGraph.push({
+            "@type": "Article",
+            "@id": `${fullCanonicalUrl}#article`,
+            "headline": caseEntity.title,
+            "description": caseEntity.description,
+            "datePublished": caseEntity.publishDate,
+            "author": {
+              "@type": "Organization",
+              "name": "KCROC Diagnostics Team",
+              "@id": `${business.websiteUrl}/#business`
+            },
+            "publisher": { "@id": `${business.websiteUrl}/#business` },
+            "articleSection": "Case Studies",
+            "about": {
+              "@type": "Thing",
+              "name": caseEntity.device,
+              "description": caseEntity.symptom
+            },
+            "text": `Location: ${caseEntity.location}. Diagnosis: ${caseEntity.diagnosis}. Repair Process: ${caseEntity.repair}. Outcome: ${caseEntity.outcome}. Time to repair: ${caseEntity.timeToRepair}. Cost analysis: ${caseEntity.costVsReplacement}.`
+          });
+        } else if (entity.entityType === 'Problem') {
+          const problemEntity = entity as ProblemEntity;
+          schemaGraph.push({
+            "@type": "TechArticle",
+            "@id": `${fullCanonicalUrl}#article`,
+            "headline": problemEntity.title,
+            "description": problemEntity.description,
+            "proficiencyLevel": "Beginner",
+            "articleSection": "Hardware Troubleshooting",
+            "text": `Symptom: ${problemEntity.symptom}. Solution: ${problemEntity.solution}`,
+            "publisher": { "@id": `${business.websiteUrl}/#business` }
+          });
+        }
       }
-    );
-  }
-  // 🚀 PHASE 4: Case Studies
-  else if (entity.entityType === 'CaseStudy') {
-    const caseEntity = entity as CaseStudyEntity;
-    schemaGraph.push({
-      "@type": "Article",
-      "@id": `${fullCanonicalUrl}#article`,
-      "headline": caseEntity.title,
-      "description": caseEntity.description,
-      "datePublished": caseEntity.publishDate,
-      "author": {
-        "@type": "Organization",
-        "name": "KCROC Diagnostics Team",
-        "@id": `${business.websiteUrl}/#business`
-      },
-      "publisher": { "@id": `${business.websiteUrl}/#business` },
-      "articleSection": "Case Studies",
-      "about": {
-        "@type": "Thing",
-        "name": caseEntity.device,
-        "description": caseEntity.symptom
-      },
-      "text": `Location: ${caseEntity.location}. Diagnosis: ${caseEntity.diagnosis}. Repair Process: ${caseEntity.repair}. Outcome: ${caseEntity.outcome}. Time to repair: ${caseEntity.timeToRepair}. Cost analysis: ${caseEntity.costVsReplacement}.`
     });
   }
 
