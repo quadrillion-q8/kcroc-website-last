@@ -1,27 +1,23 @@
 // File: app/frontend/src/core/components/layout/AnimatedBackground.tsx
 import React, { useState, useEffect, useCallback } from 'react';
-// ✅ FIXED: Removed the invalid 'initParticlesEngine' named export
 import Particles from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
-import type { Engine } from "@tsparticles/engine"; // Safe to import types in Vite
+import type { Engine } from "@tsparticles/engine";
 
 export const AnimatedBackground: React.FC = () => {
   const [mountParticles, setMountParticles] = useState(false);
   const [reduceMotion, setReduceMotion] = useState(false);
 
-  // ✅ FIXED: Using useCallback to safely initialize the engine via the 'init' prop
   const particlesInit = useCallback(async (engine: Engine) => {
     await loadSlim(engine);
   }, []);
 
   useEffect(() => {
-    // 1. Accessibility: Check for prefers-reduced-motion
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
     setReduceMotion(mediaQuery.matches);
     const listener = (e: MediaQueryListEvent) => setReduceMotion(e.matches);
     mediaQuery.addEventListener('change', listener);
 
-    // 2. Performance: Lazy load particles (delay mounting to unblock LCP)
     const timer = setTimeout(() => {
       setMountParticles(true);
     }, 1200);
@@ -32,79 +28,107 @@ export const AnimatedBackground: React.FC = () => {
     };
   }, []);
 
+  // Authentic 45-degree routed PCB traces
+  const traces = [
+    "M -50 300 H 300 L 350 350 V 600 L 400 650 H 900",
+    "M 2000 700 H 1500 L 1400 600 V 200 L 1300 100 H 900",
+    "M 600 1200 V 900 L 700 800 V 500 L 650 450 H 300",
+    "M 1200 -50 V 300 L 1300 400 H 1600 L 1650 450 V 900"
+  ];
+
+  // Solder pads/vias at the corners and endpoints
+  const vias = [
+    { cx: 300, cy: 300 }, { cx: 350, cy: 350 }, { cx: 400, cy: 650 },
+    { cx: 1500, cy: 700 }, { cx: 1400, cy: 600 }, { cx: 1300, cy: 100 },
+    { cx: 600, cy: 900 }, { cx: 700, cy: 800 }, { cx: 650, cy: 450 },
+    { cx: 1200, cy: 300 }, { cx: 1300, cy: 400 }, { cx: 1650, cy: 450 }
+  ];
+
   return (
     <div className="fixed inset-0 z-0 bg-slate-950 overflow-hidden pointer-events-none">
       
-      {/* 
-        INLINE STYLES FOR CUSTOM KEYFRAMES 
-        Keeps the component fully self-contained without polluting tailwind config.
-      */}
       <style>{`
-        @keyframes aurora-1 {
-          0% { transform: translate3d(0,0,0) rotate(18deg) scale(1); }
-          50% { transform: translate3d(-8%,6%,0) rotate(26deg) scale(1.08); }
-          100% { transform: translate3d(5%,-5%,0) rotate(12deg) scale(1); }
+        /* Energy Packets traveling along the SVG paths */
+        @keyframes flow-energy {
+          from { stroke-dashoffset: 4000; }
+          to { stroke-dashoffset: 0; }
         }
-        @keyframes aurora-2 {
-          0% { transform: translate3d(0,0,0) rotate(-25deg) scale(1); }
-          50% { transform: translate3d(6%,-8%,0) rotate(-18deg) scale(1.05); }
-          100% { transform: translate3d(-5%,5%,0) rotate(-32deg) scale(1); }
+        /* Soft glowing pulse for the solder pads */
+        @keyframes pulse-node {
+          0%, 100% { opacity: 0.2; transform: scale(1); }
+          50% { opacity: 0.8; transform: scale(1.5); }
         }
-        @keyframes pulse-sweep {
-          0% { -webkit-mask-position: -200% 0; mask-position: -200% 0; }
-          100% { -webkit-mask-position: 200% 0; mask-position: 200% 0; }
+        
+        .trace-base {
+          stroke: rgba(148, 163, 184, 0.08); /* Faint slate-400 at 8% */
+          stroke-width: 1.5;
+          fill: none;
         }
-        .aurora-motion-1 {
-          animation: aurora-1 40s infinite alternate ease-in-out;
+        
+        .trace-energy {
+          stroke: #0ea5e9; /* KCROC Cyan */
+          stroke-width: 2;
+          fill: none;
+          stroke-linecap: round;
+          stroke-dasharray: 120 3880; /* 120px energy packet, huge gap so only one appears at a time */
         }
-        .aurora-motion-2 {
-          animation: aurora-2 35s infinite alternate ease-in-out;
+
+        .energy-1 { animation: flow-energy 8s linear infinite; }
+        .energy-2 { animation: flow-energy 12s linear infinite 3s; }
+        .energy-3 { animation: flow-energy 10s linear infinite 1.5s; }
+        .energy-4 { animation: flow-energy 14s linear infinite 5s; }
+
+        .node-via {
+          fill: #10b981; /* KCROC Emerald */
+          transform-origin: center;
+          transform-box: fill-box;
         }
-        .pulse-motion {
-          animation: pulse-sweep 8s infinite linear;
-          mask-size: 50% 100%;
-          mask-repeat: no-repeat;
-          mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,1) 50%, transparent 100%);
-          -webkit-mask-size: 50% 100%;
-          -webkit-mask-repeat: no-repeat;
-          -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,1) 50%, transparent 100%);
-        }
+        
+        .node-pulse-slow { animation: pulse-node 4s ease-in-out infinite; }
+        .node-pulse-fast { animation: pulse-node 2.5s ease-in-out infinite 1s; }
       `}</style>
 
-      {/* LAYER 0: Hero Spotlight (Subtle central glow that makes text pop) */}
-      <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[1000px] h-[500px] rounded-[50%] bg-cyan-500/10 blur-[120px]" />
+      {/* LAYER 1: Deep slate gradient background */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-slate-900 via-slate-950 to-slate-950" />
 
-      {/* LAYER 1: Cinematic Aurora Glows (Massive rotated ellipses) */}
-      {/* Cyan Aurora */}
-      <div 
-        className={`absolute top-[-10%] left-[-10%] w-[1200px] h-[600px] rounded-[50%] bg-cyan-600/10 blur-[150px] ${reduceMotion ? '' : 'aurora-motion-1'}`} 
-      />
-      {/* Emerald Aurora */}
-      <div 
-        className={`absolute bottom-[-20%] right-[-10%] w-[1000px] h-[500px] rounded-[50%] bg-emerald-600/10 blur-[150px] ${reduceMotion ? '' : 'aurora-motion-2'}`} 
-      />
+      {/* LAYER 5: Hero Spotlight (Soft cyan glow behind text) */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-cyan-500/10 blur-[100px] rounded-[50%]" />
 
-      {/* LAYER 2: The PCB / Circuit Matrix Base */}
-      <div 
-        className="absolute inset-0 opacity-15"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 20.5V18H0v-2h20v-2H0v-2h20v-2H0V8h20V6H0V4h20V2H0V0h22v20h2V0h2v20h2V0h2v20h2V0h2v20h2V0h2v20h2v2H20v-1.5zM0 20h2v20H0V20zm4 0h2v20H4V20zm4 0h2v20H8V20zm4 0h2v20h-2V20zm4 0h2v20h-2V20zm4 4v-2h20v2H20zm0 4v-2h20v2H20zm0 4v-2h20v2H20zm0 4v-2h20v2H20z' fill='%230ea5e9' fill-opacity='0.4' fill-rule='evenodd'/%3E%3C/svg%3E")`,
-          backgroundSize: '180px 180px',
-        }}
-      />
+      {/* LAYERS 2, 3, & 4: Custom Asymmetrical Vector Motherboard */}
+      <svg 
+        className="absolute inset-0 w-full h-full opacity-80" 
+        viewBox="0 0 1920 1080" 
+        preserveAspectRatio="xMidYMid slice"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        {/* Layer 2: Static Faint Traces */}
+        {traces.map((d, i) => (
+          <path key={`base-${i}`} d={d} className="trace-base" />
+        ))}
 
-      {/* LAYER 3: Moving Energy Pulses (Electrical flow across traces) */}
-      {!reduceMotion && (
-        <div 
-          className="absolute inset-0 opacity-40 pulse-motion"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 20.5V18H0v-2h20v-2H0v-2h20v-2H0V8h20V6H0V4h20V2H0V0h22v20h2V0h2v20h2V0h2v20h2V0h2v20h2V0h2v20h2v2H20v-1.5zM0 20h2v20H0V20zm4 0h2v20H4V20zm4 0h2v20H8V20zm4 0h2v20h-2V20zm4 0h2v20h-2V20zm4 4v-2h20v2H20zm0 4v-2h20v2H20zm0 4v-2h20v2H20zm0 4v-2h20v2H20z' fill='%2322d3ee' fill-opacity='1' fill-rule='evenodd'/%3E%3C/svg%3E")`,
-            backgroundSize: '180px 180px',
-          }}
-        />
-      )}
+        {/* Layer 4: Cyan Energy Packets (Only animate if motion is allowed) */}
+        {!reduceMotion && traces.map((d, i) => (
+          <path 
+            key={`energy-${i}`} 
+            d={d} 
+            className={`trace-energy energy-${i + 1}`} 
+          />
+        ))}
 
-      {/* LAYER 4: Tech Dust (GPU Accelerated Particles) */}
+        {/* Layer 3: Glowing Emerald Solder Pads / Vias */}
+        {vias.map((via, i) => (
+          <circle 
+            key={`via-${i}`} 
+            cx={via.cx} 
+            cy={via.cy} 
+            r="2.5" 
+            className={`node-via ${i % 2 === 0 ? 'node-pulse-slow' : 'node-pulse-fast'}`} 
+            style={{ animationPlayState: reduceMotion ? 'paused' : 'running' }}
+          />
+        ))}
+      </svg>
+
+      {/* LAYER 6: Extreme Subtle Particle Dust (8 particles only) */}
       {mountParticles && !reduceMotion && (
         <Particles
           id="tsparticles"
@@ -112,29 +136,28 @@ export const AnimatedBackground: React.FC = () => {
           className="absolute inset-0 z-0"
           options={{
             fullScreen: { enable: false },
-            fpsLimit: 30, // Optimized for smooth, low-overhead performance
+            fpsLimit: 30, // Conserves battery and GPU
             particles: {
-              color: { value: ["#0ea5e9", "#10b981", "#ffffff"] }, // Cyan, Emerald, White
+              color: { value: ["#0ea5e9", "#10b981"] },
               move: {
-                direction: "none", // Multi-directional ambient drift
+                direction: "none",
                 enable: true,
                 outModes: { default: "out" },
                 random: true,
-                speed: { min: 0.1, max: 0.4 }, // Varying speeds for depth effect
+                speed: { min: 0.05, max: 0.2 }, // Extremely slow drift
                 straight: false,
               },
               number: {
-                density: { enable: true, area: 800 },
-                value: 40, // Sparse premium feel
+                density: { enable: false },
+                value: 8, // Precisely controlled sparse count
               },
               opacity: {
-                value: { min: 0.05, max: 0.4 }, // Varying opacities to simulate depth
-                animation: { enable: true, speed: 0.5, minimumValue: 0.05 }
+                value: { min: 0.1, max: 0.3 },
+                animation: { enable: true, speed: 0.2, minimumValue: 0.1 }
               },
               shape: { type: "circle" },
               size: {
-                value: { min: 0.5, max: 2.5 }, // Varying sizes for depth
-                animation: { enable: true, speed: 1, minimumValue: 0.5 }
+                value: { min: 0.5, max: 1.5 },
               },
             },
             detectRetina: true,
@@ -142,11 +165,11 @@ export const AnimatedBackground: React.FC = () => {
         />
       )}
 
-      {/* LAYER 5: The Vignette (Draws the eye toward the center content) */}
+      {/* Vignette to focus the eye on the center content */}
       <div 
         className="absolute inset-0 z-10 pointer-events-none"
         style={{
-          background: 'radial-gradient(ellipse at center, transparent 30%, rgba(2,6,23,0.75) 100%)'
+          background: 'radial-gradient(ellipse at center, transparent 40%, rgba(2,6,23,0.8) 100%)'
         }}
       />
     </div>
