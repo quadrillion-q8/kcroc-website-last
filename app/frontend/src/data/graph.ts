@@ -139,9 +139,9 @@ const rawGraphData: RawGraphData = {
     } as ServiceEntity,
     
     'srv-battery': { 
-      id: 'srv-battery', slug: 'battery-replacement', entityType: 'Service', isActive: true, 
+      id: 'srv-battery', slug: 'battery-replacement-kuwait', entityType: 'Service', isActive: true, 
       title: 'Battery Replacement Kuwait', iconKey: 'battery', shortDescription: 'OEM and compatible battery replacement.', description: 'Kuwait\'s extreme heat accelerates lithium degradation. We replace batteries and optimize thermal settings.', repairLevel: 'basic', estimatedTurnaround: 'Same Day', pricing: { startingFrom: 12, currency: 'KWD', quoteRequired: true, displayLabel: 'From 12 KWD' }, coreFeatures: ['OEM Batteries', 'MacBook Battery Replacement', 'Swollen Battery Removal'], brands: ['MacBook', 'Dell', 'HP', 'Lenovo'], commonIssues: [{ id: 'fast-drain', title: 'Battery dies quickly', severity: 'medium', description: 'Capacity loss.' }], warranty: { duration: '30 Days', coverage: 'Battery and labor.', noFixNoFee: true }, 
-      seo: { title: 'Laptop Battery Replacement Kuwait | Same Day | KCROC', description: 'Fast laptop and MacBook battery replacement in Kuwait. Swollen battery emergency service. Free pick & drop.', canonicalUrl: 'https://www.computerrepairkuwait.com/battery-replacement', ogType: 'article', schemaTypes: ['Service'] },
+      seo: { title: 'Laptop Battery Replacement Kuwait | Same Day | KCROC', description: 'Fast laptop and MacBook battery replacement in Kuwait. Swollen battery emergency service. Free pick & drop.', canonicalUrl: 'https://www.computerrepairkuwait.com/battery-replacement-kuwait', ogType: 'article', schemaTypes: ['Service'] },
       navigationPriority: 50, isFeatured: false, popular: false
     } as ServiceEntity,
 
@@ -510,7 +510,7 @@ export const GRAPH_INDEXES = rawGraphData.entities;
 
 export const KCROC_GRAPH = {
   ...rawGraphData,
-  routableEntities: allEntities.filter((e): e is RoutableEntity => 'seo' in e && e.isActive) ?? [],
+  routableEntities: allEntities.filter((e): e is RoutableEntity => 'seo' in e && e.isActive && e.entityType !== 'FAQ') ?? [],
   business:    allEntities.find((e): e is BusinessEntity    => e.entityType === 'Business') ?? null,
   pages:       allEntities.filter((e): e is WebPageEntity   => e.entityType === 'WebPage'   && e.isActive) ?? [],
   services:    allEntities.filter((e): e is ServiceEntity   => e.entityType === 'Service'   && e.isActive) ?? [],
