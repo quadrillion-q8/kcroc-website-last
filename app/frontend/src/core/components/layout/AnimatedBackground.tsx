@@ -1,12 +1,18 @@
 // File: app/frontend/src/core/components/layout/AnimatedBackground.tsx
-import React, { useState, useEffect } from 'react';
-import Particles, { initParticlesEngine } from "@tsparticles/react";
+import React, { useState, useEffect, useCallback } from 'react';
+// ✅ FIXED: Removed the invalid 'initParticlesEngine' named export
+import Particles from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
+import type { Engine } from "@tsparticles/engine"; // Safe to import types in Vite
 
 export const AnimatedBackground: React.FC = () => {
-  const [particlesInit, setParticlesInit] = useState(false);
   const [mountParticles, setMountParticles] = useState(false);
   const [reduceMotion, setReduceMotion] = useState(false);
+
+  // ✅ FIXED: Using useCallback to safely initialize the engine via the 'init' prop
+  const particlesInit = useCallback(async (engine: Engine) => {
+    await loadSlim(engine);
+  }, []);
 
   useEffect(() => {
     // 1. Accessibility: Check for prefers-reduced-motion
@@ -15,12 +21,7 @@ export const AnimatedBackground: React.FC = () => {
     const listener = (e: MediaQueryListEvent) => setReduceMotion(e.matches);
     mediaQuery.addEventListener('change', listener);
 
-    // 2. Performance: Initialize particle engine
-    initParticlesEngine(async (engine) => {
-      await loadSlim(engine);
-    }).then(() => setParticlesInit(true));
-
-    // 3. Performance: Lazy load particles (delay mounting to unblock LCP)
+    // 2. Performance: Lazy load particles (delay mounting to unblock LCP)
     const timer = setTimeout(() => {
       setMountParticles(true);
     }, 1200);
@@ -84,7 +85,6 @@ export const AnimatedBackground: React.FC = () => {
       />
 
       {/* LAYER 2: The PCB / Circuit Matrix Base */}
-      {/* Scaled up to 180px for a premium, non-repetitive cinematic feel */}
       <div 
         className="absolute inset-0 opacity-15"
         style={{
@@ -94,7 +94,6 @@ export const AnimatedBackground: React.FC = () => {
       />
 
       {/* LAYER 3: Moving Energy Pulses (Electrical flow across traces) */}
-      {/* Uses a gradient mask animation to send a sweep of bright light across the SVG grid */}
       {!reduceMotion && (
         <div 
           className="absolute inset-0 opacity-40 pulse-motion"
@@ -106,9 +105,10 @@ export const AnimatedBackground: React.FC = () => {
       )}
 
       {/* LAYER 4: Tech Dust (GPU Accelerated Particles) */}
-      {particlesInit && mountParticles && !reduceMotion && (
+      {mountParticles && !reduceMotion && (
         <Particles
           id="tsparticles"
+          init={particlesInit}
           className="absolute inset-0 z-0"
           options={{
             fullScreen: { enable: false },
@@ -129,20 +129,12 @@ export const AnimatedBackground: React.FC = () => {
               },
               opacity: {
                 value: { min: 0.05, max: 0.4 }, // Varying opacities to simulate depth
-                animation: {
-                  enable: true,
-                  speed: 0.5,
-                  minimumValue: 0.05,
-                }
+                animation: { enable: true, speed: 0.5, minimumValue: 0.05 }
               },
               shape: { type: "circle" },
               size: {
-                value: { min: 0.5, max: 2.5 }, // Varying sizes for depth (0.5 to 2.5px)
-                animation: {
-                  enable: true,
-                  speed: 1,
-                  minimumValue: 0.5,
-                }
+                value: { min: 0.5, max: 2.5 }, // Varying sizes for depth
+                animation: { enable: true, speed: 1, minimumValue: 0.5 }
               },
             },
             detectRetina: true,
