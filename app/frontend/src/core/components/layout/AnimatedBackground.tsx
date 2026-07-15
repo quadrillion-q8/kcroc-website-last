@@ -1,8 +1,9 @@
 // File: app/frontend/src/core/components/layout/AnimatedBackground.tsx
 import React, { useCallback } from 'react';
 import Particles from "@tsparticles/react";
-import { loadSlim } from "tsparticles-slim";
-import type { Engine } from "tsparticles-engine";
+// ✅ FIXED: Using the modern v4 import path that matches your package.json
+import { loadSlim } from "@tsparticles/slim";
+import type { Engine } from "@tsparticles/engine";
 
 export const AnimatedBackground: React.FC = () => {
   // Initialize the particle engine efficiently
@@ -18,7 +19,6 @@ export const AnimatedBackground: React.FC = () => {
       <div className="absolute bottom-[-20%] right-[-10%] w-[70vw] h-[70vw] rounded-full bg-emerald-600/5 blur-[150px] animate-blob [animation-delay:4s]" />
 
       {/* LAYER 3: The PCB / Circuit Matrix Overlay */}
-      {/* We use an inline SVG data URI for a tech-grid, masked by a gradient to simulate fading light */}
       <div 
         className="absolute inset-0 opacity-20"
         style={{
