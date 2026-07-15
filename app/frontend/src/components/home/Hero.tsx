@@ -82,8 +82,8 @@ export default function Hero() {
   return (
     <>
       {/* Mobile Hero Section */}
-      <section className="min-h-screen bg-slate-950 pt-20 pb-16 relative overflow-hidden lg:hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-cyan-950/40 via-slate-950 to-emerald-950/20" />
+      <section className="min-h-screen bg-transparent pt-20 pb-16 relative overflow-hidden lg:hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-cyan-950/40 via-transparent to-emerald-950/20" />
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="flex justify-center mb-6">
@@ -151,8 +151,8 @@ export default function Hero() {
       </section>
 
       {/* Desktop Hero Section */}
-      <section className="hidden lg:block min-h-screen bg-slate-950 pt-24 pb-16 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-cyan-950/30 via-slate-950 to-emerald-950/20" />
+      <section className="hidden lg:block min-h-screen bg-transparent pt-24 pb-16 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-cyan-950/30 via-transparent to-emerald-950/20" />
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
