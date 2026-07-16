@@ -8,6 +8,11 @@ on:
 jobs:
   check-rating:
     runs-on: ubuntu-latest
+    
+    # Set the default working directory for all run steps
+    defaults:
+      run:
+        working-directory: app/frontend
 
     steps:
       - name: Checkout repository
@@ -23,6 +28,8 @@ jobs:
         with:
           node-version: '20'
           cache: 'pnpm'
+          # Explicitly tell GitHub where the lockfile is located
+          cache-dependency-path: app/frontend/pnpm-lock.yaml
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
