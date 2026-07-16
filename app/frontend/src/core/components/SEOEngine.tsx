@@ -2,14 +2,15 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { KCROC_GRAPH } from '../../data/graph';
-import { 
-  ServiceEntity, 
-  LocationEntity, 
+import {
+  ServiceEntity,
+  LocationEntity,
   FAQEntity,
   RoutableEntity,
   BrandEntity,
   ProblemEntity,
-  CaseStudyEntity
+  CaseStudyEntity,
+  WebPageEntity
 } from '../../types/knowledgeGraph';
 
 interface SEOEngineProps {
@@ -17,11 +18,10 @@ interface SEOEngineProps {
 }
 
 export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
-  // 1. Fetch Core Graph Entities (From the pre-filtered routable array)
+  // 1. Fetch Core Graph Entities
   const entity = KCROC_GRAPH.routableEntities.find(e => e.id === entityId);
   const business = KCROC_GRAPH.business;
   const primaryLocation = KCROC_GRAPH.locations.find(l => l.id === 'loc-hawalli');
-  const reviews = KCROC_GRAPH.reviews;
 
   // 2. Fallback to default SEO if entity is missing
   if (!entity || !entity.seo || !business) {
@@ -35,21 +35,21 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
   }
 
   const { title, description, canonicalUrl, ogType, schemaTypes } = entity.seo;
-  
+
   // Ensure canonical URL is absolute
-  const fullCanonicalUrl = canonicalUrl.startsWith('http') 
-    ? canonicalUrl 
+  const fullCanonicalUrl = canonicalUrl.startsWith('http')
+    ? canonicalUrl
     : `${business.websiteUrl}${canonicalUrl}`;
 
-  // 3. Compute Aggregate Rating Dynamically
-  const reviewItems = reviews?.items || [];
-  const aggregateRating = reviewItems.length > 0 ? {
+  // 3. Aggregate Rating — SINGLE SOURCE OF TRUTH.
+  const aggregateRating = business.aggregateRating ? {
     "@type": "AggregateRating",
-    "ratingValue": (reviewItems.reduce((sum, r) => sum + r.rating, 0) / reviewItems.length).toFixed(1),
-    "reviewCount": reviewItems.length
+    "ratingValue": business.aggregateRating.ratingValue,
+    "reviewCount": business.aggregateRating.reviewCount,
+    "bestRating": business.aggregateRating.bestRating ?? 5
   } : undefined;
 
-  // 4. Build Universal LocalBusiness Schema (Always Emitted for NAP Consistency)
+  // 4. Build Universal LocalBusiness Schema
   const baseLocalBusiness: any = {
     "@type": ["LocalBusiness", "ComputerStore"],
     "@id": `${business.websiteUrl}/#business`,
@@ -57,7 +57,7 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
     "url": business.websiteUrl,
     "image": business.logoUrl,
     "telephone": `+${business.telephone}`,
-    "priceRange": "$$",
+    "priceRange": business.priceRange,
     "address": {
       "@type": "PostalAddress",
       "streetAddress": primaryLocation?.landmark,
@@ -90,11 +90,10 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
   const schemaGraph: any[] = [baseLocalBusiness];
 
   // 5. STRICT DATA-DRIVEN SCHEMA GENERATION
-  // Iterate exactly over what the Knowledge Graph defines in `schemaTypes`
   if (Array.isArray(schemaTypes)) {
     schemaTypes.forEach(type => {
-      
-      // 🚀 Service & Offer Catalog Schema
+
+      // Service & Offer Catalog Schema
       if (type === 'Service') {
         if (entity.entityType === 'Service') {
           const service = entity as ServiceEntity;
@@ -150,7 +149,7 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
         }
       }
 
-      // 🚀 FAQ Schema
+      // FAQ Schema
       if (type === 'FAQPage') {
         if (entity.entityType === 'FAQ') {
           const faq = entity as FAQEntity;
@@ -198,10 +197,33 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
               }] : [])
             ]
           });
+        } else if (entity.entityType === 'WebPage') {
+          const webPage = entity as WebPageEntity;
+          const featuredIds = webPage.featuredFAQIds;
+          const sourceFaqs = featuredIds && featuredIds.length > 0
+            ? featuredIds
+                .map(id => KCROC_GRAPH.faqs.find(f => f.id === id))
+                .filter((f): f is FAQEntity => Boolean(f))
+            : KCROC_GRAPH.faqs;
+
+          if (sourceFaqs.length > 0) {
+            schemaGraph.push({
+              "@type": "FAQPage",
+              "@id": `${fullCanonicalUrl}#faq`,
+              "mainEntity": sourceFaqs.map(faq => ({
+                "@type": "Question",
+                "name": faq.title,
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": faq.answer
+                }
+              }))
+            });
+          }
         }
       }
 
-      // 🚀 Article Schema
+      // Article Schema
       if (type === 'Article' || type === 'TechArticle') {
         if (entity.entityType === 'CaseStudy') {
           const caseEntity = entity as CaseStudyEntity;
@@ -239,25 +261,98 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
           });
         }
       }
+
+      // WebSite Schema
+      if (type === 'WebSite' && entity.entityType === 'WebPage') {
+        schemaGraph.push({
+          "@type": "WebSite",
+          "@id": `${business.websiteUrl}/#website`,
+          "url": business.websiteUrl,
+          "name": business.legalName,
+          "publisher": { "@id": `${business.websiteUrl}/#business` }
+        });
+      }
+
+      // CollectionPage Schema
+      if (type === 'CollectionPage' && entity.entityType === 'WebPage') {
+        const webPage = entity as WebPageEntity;
+        schemaGraph.push({
+          "@type": "CollectionPage",
+          "@id": `${fullCanonicalUrl}#collection`,
+          "name": webPage.title,
+          "description": webPage.description,
+          "url": fullCanonicalUrl,
+          "isPartOf": { "@id": `${business.websiteUrl}/#website` }
+        });
+      }
+
+      // AboutPage Schema
+      if (type === 'AboutPage' && entity.entityType === 'WebPage') {
+        const webPage = entity as WebPageEntity;
+        schemaGraph.push({
+          "@type": "AboutPage",
+          "@id": `${fullCanonicalUrl}#about`,
+          "name": webPage.title,
+          "description": webPage.description,
+          "url": fullCanonicalUrl,
+          "about": { "@id": `${business.websiteUrl}/#business` }
+        });
+      }
+
+      // ContactPage Schema
+      if (type === 'ContactPage' && entity.entityType === 'WebPage') {
+        const webPage = entity as WebPageEntity;
+        schemaGraph.push({
+          "@type": "ContactPage",
+          "@id": `${fullCanonicalUrl}#contact`,
+          "name": webPage.title,
+          "description": webPage.description,
+          "url": fullCanonicalUrl,
+          "about": { "@id": `${business.websiteUrl}/#business` }
+        });
+      }
+
+      // Location entities emit their own LocalBusiness node
+      if (type === 'LocalBusiness' && entity.entityType === 'Location') {
+        const location = entity as LocationEntity;
+        schemaGraph.push({
+          "@type": ["LocalBusiness", "ComputerStore"],
+          "@id": `${fullCanonicalUrl}#location`,
+          "name": location.title,
+          "url": fullCanonicalUrl,
+          "telephone": `+${business.telephone}`,
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": location.landmark,
+            "addressLocality": location.title.replace(' Repair Center', ''),
+            "addressRegion": business.addressRegion,
+            "addressCountry": "KW"
+          },
+          "geo": location.coords ? {
+            "@type": "GeoCoordinates",
+            "latitude": location.coords.lat,
+            "longitude": location.coords.lng
+          } : undefined,
+          "areaServed": location.serviceAreas.map(area => ({
+            "@type": "City",
+            "name": area
+          })),
+          "parentOrganization": { "@id": `${business.websiteUrl}/#business` }
+        });
+      }
     });
   }
 
-  // 6. Inject into the DOM safely using Helmet
   return (
     <Helmet>
-      {/* Standard Meta Tags */}
       <title>{title}</title>
       <meta name="description" content={description} />
       <link rel="canonical" href={fullCanonicalUrl} />
       <meta name="robots" content="index, follow" />
-      
-      {/* OpenGraph / Social Meta Tags */}
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:url" content={fullCanonicalUrl} />
       <meta property="og:type" content={ogType || 'website'} />
-
-      {/* JSON-LD Structured Data for Google Rich Snippets */}
       <script type="application/ld+json">
         {JSON.stringify({
           "@context": "https://schema.org",
