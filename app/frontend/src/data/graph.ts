@@ -9,7 +9,7 @@ import {
 const rawGraphData: RawGraphData = {
   metadata: {
     version: '3.3.0',
-    lastUpdated: '2026-07-09T00:00:00+03:00',
+    lastUpdated: '2026-07-16T00:00:00+03:00',
     environment: 'production'
   },
 
@@ -27,7 +27,7 @@ const rawGraphData: RawGraphData = {
       logoUrl: 'https://www.computerrepairkuwait.com/logo.png', email: 'quadrillion1980@gmail.com',
       priceRange: '$$', openingHours: 'Open daily 10:00 AM – 10:00 PM',
       schemaOpeningHours: { dayOfWeek: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'], opens: '10:00', closes: '22:00' },
-      aggregateRating: { ratingValue: '4.9', reviewCount: 150, bestRating: 5 },
+      aggregateRating: { ratingValue: '4.9', reviewCount: 153, bestRating: 5 },
       socialLinks: { facebook: 'https://www.facebook.com/computerrepairkuwait', instagram: 'https://www.instagram.com/computerrepairkuwait' },
       aiSummary: 'Kuwait Computer Repair On Call (KCROC) is a Hawalli-based component-level computer repair specialist. Services include MacBook logic board micro-soldering, laptop screen replacement, gaming PC thermal repair, motherboard chip-level diagnostics, SSD upgrades, and virus removal. Free pickup and delivery across all Kuwait governorates. 30-day warranty on all repairs. No Fix, No Fee policy.',
     } as BusinessEntity,
@@ -154,11 +154,11 @@ const rawGraphData: RawGraphData = {
        REVIEWS
     ═══════════════════════════════════════════════════════════════ */
     'reviews-row': { 
-      id: 'reviews-row', entityType: 'Reviews', isActive: true, title: 'Verified Google Reviews', aggregateRating: { ratingValue: '4.9', reviewCount: 150 }, 
+      id: 'reviews-row', entityType: 'Reviews', isActive: true, title: 'Verified Google Reviews', aggregateRating: { ratingValue: '4.9', reviewCount: 153 }, 
       items: [
         { name: 'Ahmad Al-Sabah', location: 'Salmiya', time: '2 weeks ago', rating: 5, device: 'MacBook Pro — Screen Replacement', text: 'Fixed the MacBook Pro screen in 24 hours, price exactly as quoted.' },
         { name: 'Fatima A.', location: 'Hawalli', time: '1 month ago', rating: 5, device: 'MacBook Air — Liquid Damage', text: 'Spilled coffee on my Mac. Apple told me I lost all my data and needed a new board. KCROC fixed the original board and saved my files. Absolute lifesavers.' },
-        { name: 'Tareq M.', location: 'Kuwait City', time: '2 months ago', rating: 5, device: 'ASUS ROG — Overheating', text: 'My gaming laptop was hitting 95C and dropping frames. They cleaned it and applied liquid metal. Now it runs perfectly cool. Very professional lab.' },
+        { name: 'Tareq M.', location: 'Kuwait City', time: '2 months ago', rating: 5, device: 'ASUS ROG — Overheating', text: 'My gaming laptop was hitting 95C and dropping frames. They cleaned it and apply liquid metal. Now it runs perfectly cool. Very professional lab.' },
         { name: 'Sarah K.', location: 'Farwaniya', time: '3 months ago', rating: 5, device: 'Dell XPS — Dead Motherboard', text: 'Laptop was completely dead. The free pick and drop service was super convenient. They diagnosed a shorted chip, fixed it in 2 days, and gave a 30-day warranty.' }
       ] 
     } as ReviewsEntity,
@@ -530,6 +530,6 @@ export const KCROC_GRAPH = {
 
 export const KCROC_AGGREGATE_RATING = {
   ratingValue: '4.9',
-  reviewCount:  150,
+  reviewCount:  153,
   bestRating:   5,
 };
