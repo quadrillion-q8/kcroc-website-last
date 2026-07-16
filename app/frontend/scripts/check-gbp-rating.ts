@@ -1,41 +1,51 @@
 // File: app/frontend/scripts/check-gbp-rating.ts
 import { KCROC_GRAPH } from '../src/data/graph';
 
-async function checkGBPRating() {
-  console.log('🔍 Checking live Google Business Profile rating...');
+interface SerpApiMapsResponse {
+  place_results?: {
+    title?: string;
+    rating?: number;
+    reviews?: number;
+  };
+}
 
-  const apiKey = process.env.GOOGLE_PLACES_API_KEY;
-  const placeId = process.env.GOOGLE_PLACE_ID;
+async function checkGBPRating(): Promise<void> {
+  console.log('🔍 Checking live Google Business Profile rating via SerpApi...');
 
-  // 1. Fail gracefully if environment variables are missing
-  if (!apiKey || !placeId) {
-    console.warn('⚠️  Skipping GBP rating check: GOOGLE_PLACES_API_KEY or GOOGLE_PLACE_ID not set in environment.');
+  const apiKey = process.env.SERPAPI_KEY;
+  // Exact name and location to lock onto the correct Google Maps entity
+  const searchQuery = "Kuwait Computer Repair On Call Hawalli"; 
+
+  if (!apiKey) {
+    console.warn('⚠️ Skipping GBP rating check: SERPAPI_KEY not set in environment.');
     return;
   }
 
-  // 2. Read the currently hardcoded values from your graph
+  // 1. Read hardcoded graph data
   const hardcodedRating = parseFloat(KCROC_GRAPH.business.aggregateRating.ratingValue);
-  const hardcodedCount = KCROC_GRAPH.business.aggregateRating.reviewCount;
+  const hardcodedCount = Number(KCROC_GRAPH.business.aggregateRating.reviewCount);
 
   try {
-    // 3. Fetch from Google Places API (New)
-    const response = await fetch(`https://places.googleapis.com/v1/places/${placeId}`, {
-      headers: {
-        'X-Goog-Api-Key': apiKey,
-        'X-Goog-FieldMask': 'rating,userRatingCount',
-      },
-    });
+    // 2. Fetch data using SerpApi's Google Maps engine with a corrected endpoint layout
+    const url = `https://serpapi.com/search.json?engine=google_maps&q=${encodeURIComponent(searchQuery)}&api_key=${apiKey}`;
+    const response = await fetch(url);
 
     if (!response.ok) {
-      console.warn(`⚠️  GBP API fetch failed (${response.status}). Check your API Key/Place ID. Proceeding with build...`);
+      console.warn(`⚠️ SerpApi fetch failed (${response.status}). Proceeding with build...`);
       return;
     }
 
-    const data = await response.json();
-    const liveRating = data.rating;
-    const liveCount = data.userRatingCount;
+    const data: SerpApiMapsResponse = await response.json();
+    
+    if (!data.place_results) {
+      console.warn('⚠️ Could not find exact business results in SerpApi response. Check your searchQuery.');
+      return;
+    }
 
-    // 4. Compare and Warn
+    const liveRating = data.place_results.rating ?? 0;
+    const liveCount = data.place_results.reviews ?? 0;
+
+    // 3. Compare and Warn
     if (liveRating !== hardcodedRating || liveCount !== hardcodedCount) {
       console.warn('\n==================================================');
       console.warn(' ⚠️  GBP RATING DRIFT DETECTED ⚠️');
@@ -46,10 +56,10 @@ async function checkGBPRating() {
       console.warn(' -> Action required: Update KCROC_GRAPH.business.aggregateRating');
       console.warn(' -> File location: app/frontend/src/data/graph.ts\n');
     } else {
-      console.log(`✅ GBP rating is perfectly synced (${hardcodedRating}★, ${hardcodedCount} reviews).`);
+      console.log(`✅ GBP rating perfectly synced (${hardcodedRating}★, ${hardcodedCount} reviews).`);
     }
   } catch (error) {
-    console.warn('⚠️  Network error while fetching GBP rating. Proceeding with build...');
+    console.warn('⚠️ Network error while calling SerpApi. Proceeding with build...');
   }
 }
 
