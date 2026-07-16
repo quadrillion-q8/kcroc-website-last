@@ -93,7 +93,7 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
   if (Array.isArray(schemaTypes)) {
     schemaTypes.forEach(type => {
 
-      // Service & Offer Catalog Schema
+      // Service & Offer Catalog Schema (Cleaned up, removed hasOfferCatalog nesting issues)
       if (type === 'Service') {
         if (entity.entityType === 'Service') {
           const service = entity as ServiceEntity;
@@ -111,7 +111,9 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
               "@type": "Offer",
               "priceCurrency": service.pricing.currency,
               "price": service.pricing.startingFrom,
-              "availability": "https://schema.org/InStock"
+              "availability": "https://schema.org/InStock",
+              // Dynamically sets validation date 1 year into the future to satisfy Google Rich Snippet rules
+              "priceValidUntil": new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toISOString().split('T')[0]
             } : undefined
           });
         } else if (entity.entityType === 'Brand') {
@@ -134,92 +136,49 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
                 "lowPrice": brandEntity.pricing.startingFrom,
                 "offerCount": brandEntity.commonIssues.length
               }
-            }),
-            "hasOfferCatalog": {
-              "@type": "OfferCatalog",
-              "name": `${brandEntity.brandName} Repair Services`,
-              "itemListElement": brandEntity.commonIssues.map((issue, index) => ({
-                "@type": "OfferCatalog",
-                "position": index + 1,
-                "name": issue.title,
-                "description": issue.description
-              }))
-            }
+            })
           });
         }
       }
 
-      // FAQ Schema
+      // FAQ Schema (Unified logic to prevent duplicate FAQPage nodes)
       if (type === 'FAQPage') {
+        let questions: { title: string, answer: string }[] = [];
+        
         if (entity.entityType === 'FAQ') {
-          const faq = entity as FAQEntity;
-          schemaGraph.push({
-            "@type": "FAQPage",
-            "@id": `${fullCanonicalUrl}#faq`,
-            "mainEntity": [{
-              "@type": "Question",
-              "name": faq.title,
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": faq.answer
-              }
-            }]
-          });
+          questions = [{ title: (entity as FAQEntity).title, answer: (entity as FAQEntity).answer }];
         } else if (entity.entityType === 'Problem') {
           const problemEntity = entity as ProblemEntity;
+          questions = [
+            { title: `What causes ${problemEntity.title.toLowerCase()}?`, answer: `Common causes include: ${problemEntity.causes.join(', ')}.` },
+            { title: `How do you fix ${problemEntity.title.toLowerCase()}?`, answer: problemEntity.solution }
+          ];
+          if (problemEntity.doNotDo) {
+            questions.push({ title: "What should I avoid doing if my laptop has this problem?", answer: problemEntity.doNotDo });
+          }
+        } else if (entity.entityType === 'WebPage') {
+          const webPage = entity as WebPageEntity;
+          const featuredIds = webPage.featuredFAQIds || [];
+          const sourceFaqs = featuredIds.length > 0
+            ? featuredIds.map(id => KCROC_GRAPH.faqs.find(f => f.id === id)).filter((f): f is FAQEntity => Boolean(f))
+            : KCROC_GRAPH.faqs;
+          
+          questions = sourceFaqs.map(faq => ({ title: faq.title, answer: faq.answer }));
+        }
+
+        if (questions.length > 0) {
           schemaGraph.push({
             "@type": "FAQPage",
             "@id": `${fullCanonicalUrl}#faq`,
-            "mainEntity": [
-              {
-                "@type": "Question",
-                "name": `What causes ${problemEntity.title.toLowerCase()}?`,
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": `Common causes include: ${problemEntity.causes.join(', ')}.`
-                }
-              },
-              {
-                "@type": "Question",
-                "name": `How do you fix ${problemEntity.title.toLowerCase()}?`,
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": problemEntity.solution
-                }
-              },
-              ...(problemEntity.doNotDo ? [{
-                "@type": "Question",
-                "name": "What should I avoid doing if my laptop has this problem?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": problemEntity.doNotDo
-                }
-              }] : [])
-            ]
+            "mainEntity": questions.map(q => ({
+              "@type": "Question",
+              "name": q.title,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": q.answer
+              }
+            }))
           });
-        } else if (entity.entityType === 'WebPage') {
-          const webPage = entity as WebPageEntity;
-          const featuredIds = webPage.featuredFAQIds;
-          const sourceFaqs = featuredIds && featuredIds.length > 0
-            ? featuredIds
-                .map(id => KCROC_GRAPH.faqs.find(f => f.id === id))
-                .filter((f): f is FAQEntity => Boolean(f))
-            : KCROC_GRAPH.faqs;
-
-          if (sourceFaqs.length > 0) {
-            schemaGraph.push({
-              "@type": "FAQPage",
-              "@id": `${fullCanonicalUrl}#faq`,
-              "mainEntity": sourceFaqs.map(faq => ({
-                "@type": "Question",
-                "name": faq.title,
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": faq.answer
-                }
-              }))
-            });
-          }
         }
       }
 
@@ -312,7 +271,7 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
         });
       }
 
-      // Location entities emit their own LocalBusiness node
+      // Location Entity (Simplified to strictly link to parent without conflicting aggregate ratings)
       if (type === 'LocalBusiness' && entity.entityType === 'Location') {
         const location = entity as LocationEntity;
         schemaGraph.push({
@@ -321,22 +280,6 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
           "name": location.title,
           "url": fullCanonicalUrl,
           "telephone": `+${business.telephone}`,
-          "address": {
-            "@type": "PostalAddress",
-            "streetAddress": location.landmark,
-            "addressLocality": location.title.replace(' Repair Center', ''),
-            "addressRegion": business.addressRegion,
-            "addressCountry": "KW"
-          },
-          "geo": location.coords ? {
-            "@type": "GeoCoordinates",
-            "latitude": location.coords.lat,
-            "longitude": location.coords.lng
-          } : undefined,
-          "areaServed": location.serviceAreas.map(area => ({
-            "@type": "City",
-            "name": area
-          })),
           "parentOrganization": { "@id": `${business.websiteUrl}/#business` }
         });
       }
