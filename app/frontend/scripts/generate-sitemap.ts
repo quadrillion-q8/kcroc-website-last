@@ -14,13 +14,23 @@ const DOMAIN = 'https://www.computerrepairkuwait.com';
 
 const generateSitemap = () => {
   // 🚀 FIX: Use routableEntities so UI fragments don't accidentally end up in Google Search
-  const urlNodes = KCROC_GRAPH.routableEntities.map(entity => `
+  const urlNodes = KCROC_GRAPH.routableEntities.map(entity => {
+    
+    // ✅ FIX: Prevent Double-URLs. 
+    // If the graph already provided the full 'https://...' string, use it. 
+    // Otherwise, attach the DOMAIN prefix.
+    const finalUrl = entity.seo.canonicalUrl.startsWith('http') 
+      ? entity.seo.canonicalUrl 
+      : `${DOMAIN}${entity.seo.canonicalUrl.startsWith('/') ? '' : '/'}${entity.seo.canonicalUrl}`;
+
+    return `
   <url>
-    <loc>${DOMAIN}${entity.seo.canonicalUrl}</loc>
+    <loc>${finalUrl}</loc>
     <lastmod>${new Date().toISOString()}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-  </url>`).join('');
+  </url>`;
+  }).join('');
 
   const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
