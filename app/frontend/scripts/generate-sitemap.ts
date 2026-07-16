@@ -13,8 +13,13 @@ const publicDir = path.resolve(__dirname, '../public');
 const DOMAIN = 'https://www.computerrepairkuwait.com';
 
 const generateSitemap = () => {
-  // 🚀 FIX: Use routableEntities so UI fragments don't accidentally end up in Google Search
-  const urlNodes = KCROC_GRAPH.routableEntities.map(entity => {
+  // 🚀 FIX: Filter out entities that are just UI fragments/anchors (#) 
+  // and map only valid, distinct canonical routes.
+  const filteredEntities = KCROC_GRAPH.routableEntities.filter(
+    entity => !entity.seo.canonicalUrl.includes('#')
+  );
+
+  const urlNodes = filteredEntities.map(entity => {
     
     // ✅ FIX: Prevent Double-URLs. 
     // If the graph already provided the full 'https://...' string, use it. 
@@ -44,7 +49,8 @@ const generateSitemap = () => {
   const sitemapPath = path.join(publicDir, 'sitemap.xml');
   fs.writeFileSync(sitemapPath, sitemapXml);
   
-  console.log(`✅ Sitemap successfully mapped ${KCROC_GRAPH.routableEntities.length} active routes to public/sitemap.xml`);
+  // ✅ FIX: Log the actual count of filtered routes for build accuracy
+  console.log(`✅ Sitemap successfully mapped ${filteredEntities.length} active routes to public/sitemap.xml`);
 };
 
 generateSitemap();
