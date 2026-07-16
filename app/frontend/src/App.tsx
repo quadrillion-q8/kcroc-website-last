@@ -2,11 +2,13 @@
 import React, { Suspense, lazy } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { RootLayout } from './core/components/layout/RootLayout';
-import { ChatWidget } from './components/ChatWidget';
 import { KCROC_GRAPH } from './data/graph';
 
-// ✅ Added: Analytics Provider
+// Analytics Provider
 import { AnalyticsProvider } from './core/analytics/AnalyticsProvider';
+
+// 🚀 CWV Optimization: Defer heavy third-party UI to protect Interaction to Next Paint (INP)
+const ChatWidget = lazy(() => import('./components/ChatWidget').then(module => ({ default: module.ChatWidget })));
 
 // Core Pages
 const Home = lazy(() => import('./pages/Home'));
@@ -27,12 +29,12 @@ const PillarTemplate = lazy(() => import('./pages/PillarTemplate'));
 const LocationTemplate = lazy(() => import('./pages/LocationTemplate'));
 const BlogPostTemplate = lazy(() => import('./pages/BlogPostTemplate'));
 
-// 🔥 NEW SEO Roadmap Templates
+// SEO Roadmap Templates
 const BrandTemplate = lazy(() => import('./pages/templates/BrandTemplate'));
 const ProblemTemplate = lazy(() => import('./pages/templates/ProblemTemplate'));
 const CaseStudyTemplate = lazy(() => import('./pages/templates/CaseStudyTemplate'));
 
-// ✅ Added: Case Studies Index Page
+// Case Studies Index Page
 const CaseStudiesIndex = lazy(() => import('./pages/CaseStudiesIndex'));
 
 // Custom Standalone Blog Pages
@@ -43,7 +45,6 @@ const ScreenProtectionTips = lazy(() => import('./pages/ScreenProtectionTips'));
 
 // UI: Global loading spinner
 const PageLoader = () => (
-  // ✅ FIXED: Changed bg-slate-950 to bg-transparent so orbs show while loading
   <div className="w-full h-[60vh] flex items-center justify-center bg-transparent">
     <div className="w-10 h-10 border-4 border-slate-800 border-t-cyan-400 rounded-full animate-spin"></div>
   </div>
@@ -52,7 +53,7 @@ const PageLoader = () => (
 export const App: React.FC = () => {
   return (
     <BrowserRouter>
-      {/* ✅ Wrap everything inside the Router with the AnalyticsProvider */}
+      {/* Global Analytics Telemetry */}
       <AnalyticsProvider>
         <Suspense fallback={<PageLoader />}>
           <Routes>
@@ -63,9 +64,8 @@ export const App: React.FC = () => {
               <Route path="services" element={<Services />} />
               
               {/* 
-                🔥 DYNAMIC ROOT-LEVEL SEO ROUTES 🔥
-                We map directly from the Graph and explicitly pass the entityId prop
-                so the templates know exactly what data to render without relying on URL params.
+                DYNAMIC ROOT-LEVEL SEO ROUTES
+                Mapping directly from the Graph and passing entityId.
               */}
               {KCROC_GRAPH.services.map((service) => (
                 <Route key={service.slug} path={service.slug} element={<ServiceTemplate entityId={service.id} />} />
@@ -79,18 +79,16 @@ export const App: React.FC = () => {
                 <Route key={problem.slug} path={problem.slug} element={<ProblemTemplate entityId={problem.id} />} />
               ))}
 
-              {/* Legacy Service Route Fallback (Just in case someone has an old bookmarked link) */}
+              {/* Legacy Service Route Fallback */}
               <Route path="services/:serviceSlug" element={<ServiceTemplate />} />
               
-              {/* ✅ FIXED: The main index page for all case studies */}
+              {/* Case Studies */}
               <Route path="case-studies" element={<CaseStudiesIndex />} />
-              
-              {/* Case Studies (Nested under /case-studies/ for SEO clustering) */}
               <Route path="case-studies/:slug" element={<CaseStudyTemplate />} />
               
               {/* Static Routes */}
               <Route path="book" element={<BookingPage />} />
-              <Route path="booking" element={<BookingPage />} /> {/* ✅ Ensure header CTA works */}
+              <Route path="booking" element={<BookingPage />} />
               <Route path="pricing" element={<Pricing />} />
               <Route path="contact" element={<Contact />} />
               <Route path="gallery" element={<Gallery />} />
@@ -101,12 +99,12 @@ export const App: React.FC = () => {
               {/* Content Routes */}
               <Route path="blog" element={<Blog />} />
               
-              {/* Custom Explicit Blog Routes (Must go BEFORE blog/:slug) */}
+              {/* Custom Explicit Blog Routes */}
               <Route path="blog/laptop-repair-kuwait-2026" element={<BlogLaptopRepair />} />
               <Route path="blog/how-to-protect-laptop-screen" element={<BlogScreenProtection />} />
               <Route path="blog/gaming-pc-cooling" element={<GamingPCCooling />} />
               
-              {/* SEO Guardrail: Screen protection tips has a root-level canonical URL */}
+              {/* SEO Guardrail: Canonical URL redirection */}
               <Route path="laptop-screen-protection-tips" element={<ScreenProtectionTips />} />
               <Route path="blog/laptop-screen-protection-tips" element={<Navigate to="/laptop-screen-protection-tips" replace />} />
               
@@ -125,7 +123,11 @@ export const App: React.FC = () => {
             </Route>
           </Routes>
         </Suspense>
-        <ChatWidget /> 
+        
+        {/* 🚀 CWV Optimization: Background boundary for the chat widget */}
+        <Suspense fallback={null}>
+          <ChatWidget /> 
+        </Suspense>
       </AnalyticsProvider>
     </BrowserRouter>
   );
