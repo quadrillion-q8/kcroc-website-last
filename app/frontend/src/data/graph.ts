@@ -467,7 +467,22 @@ const rawGraphData: RawGraphData = {
       timeToRepair: '24 hours',
       costVsReplacement: 'Repair: 45 KWD. Replacement board: 350 KWD.',
       publishDate: '2026-06-20',
-      seo: { title: 'ASUS ROG Dead Motherboard Repair Hawalli — Case Study | KCROC', description: 'Dead ASUS ROG Strix gaming laptop restored via chip-level micro-soldering in Hawalli. Saved customer 300+ KWD on a replacement board.', canonicalUrl: 'https://www.computerrepairkuwait.com/case-studies/asus-rog-dead-motherboard-hawalli', ogType: 'article', schemaTypes: ['Article'] }
+      seo: { title: 'ASUS ROG Dead Motherboard Repair Hawalli — Case Study | KCROC', description: 'Dead ASUS ROG Strix gaming laptop restored via chip-level micro-soldering in Hawalli. Saved customer 300+ KWD on a replacement board.', canonicalUrl: 'https://www.computerrepairkuwait.com/case-studies/asus-rog-dead-motherboard-hawalli', ogType: 'article', schemaTypes: ['Article'] },
+      narrative: {
+        clientContext: 'Hardcore Gamer, Hawalli',
+        hook: 'The client was in the middle of an intense gaming session when their ASUS ROG Strix G15 abruptly shut off with a quiet pop. The laptop was completely dead—no charging lights, no fan spin, and totally unresponsive to the power button. An official service center diagnosed a catastrophically failed motherboard and quoted an astronomical 350 KWD for a complete board replacement. Hoping for a more reasonable solution, the client brought the heavy machine to our Hawalli lab for a component-level diagnostic.',
+        diagnosisSteps: [
+          'Initial inspection: We disconnected the battery and connected a bench power supply, which immediately indicated a dead short circuit preventing power draw.',
+          'Multimeter testing: We traced the 19V main power rail and found the exact point of failure.',
+          'Thermal imaging: By injecting a safe, low voltage into the shorted line, our thermal camera pinpointed a blown MOSFET located directly next to the CPU Voltage Regulator Module (VRM).'
+        ],
+        repairSteps: [
+          'Micro-soldering: Using a hot-air rework station and flux, the damaged MOSFET was carefully removed from the motherboard and replaced with a high-quality OEM equivalent.',
+          'Thermal optimization: Because ASUS ROG laptops run exceptionally hot, we cleaned off the degraded factory paste and applied fresh liquid metal to the CPU and GPU to prevent future thermal stress on the surrounding power delivery components.',
+          'Stress testing: The laptop was reassembled and subjected to a grueling 24-hour graphical benchmark to guarantee absolute stability.'
+        ],
+        closingOutcome: 'The ASUS ROG Strix booted successfully, passing all stress tests with improved thermal performance thanks to the fresh liquid metal. By fixing the specific burned component instead of discarding the entire motherboard, we completed the repair for just 45 KWD. The client saved 305 KWD, retained all their installed games and data, and was back online within 24 hours.'
+      }
     } as CaseStudyEntity,
 
     'case-dell-screen-kuwait-city': {
@@ -483,7 +498,22 @@ const rawGraphData: RawGraphData = {
       timeToRepair: '5 hours (including transit)',
       costVsReplacement: 'Repair: 85 KWD. New XPS 15: 600+ KWD.',
       publishDate: '2026-07-05',
-      seo: { title: 'Same-Day Dell XPS Screen Replacement Kuwait City | KCROC', description: 'Cracked Dell XPS 15 screen replaced with OEM panel in just 5 hours, including free pick and drop to Kuwait City.', canonicalUrl: 'https://www.computerrepairkuwait.com/case-studies/dell-xps-screen-replacement-kuwait-city', ogType: 'article', schemaTypes: ['Article'] }
+      seo: { title: 'Same-Day Dell XPS Screen Replacement Kuwait City | KCROC', description: 'Cracked Dell XPS 15 screen replaced with OEM panel in just 5 hours, including free pick and drop to Kuwait City.', canonicalUrl: 'https://www.computerrepairkuwait.com/case-studies/dell-xps-screen-replacement-kuwait-city', ogType: 'article', schemaTypes: ['Article'] },
+      narrative: {
+        clientContext: 'Corporate Executive, Kuwait City',
+        hook: 'A corporate executive in Kuwait City dropped their Dell XPS 15 right before a critical board presentation, completely shattering the premium 4K display. While the laptop still functioned when plugged into an external monitor, it was useless for travel or the upcoming meeting. Buying a brand-new XPS 15 would cost over 600 KWD, and waiting weeks for a warranty mail-in repair was out of the question. The client contacted us at 9:00 AM needing an emergency same-day turnaround.',
+        diagnosisSteps: [
+          'Damage assessment: The LCD panel was physically destroyed, showing spiderweb cracks and bleeding liquid crystals.',
+          'Chassis inspection: We thoroughly examined the aluminum lid, hinges, and display cables, confirming they had survived the drop intact.',
+          'Part verification: We immediately pulled a matching, brand-new OEM 4K Dell display assembly from our local Hawalli inventory.'
+        ],
+        repairSteps: [
+          'Rapid collection: Our driver collected the damaged XPS 15 directly from the client\'s corporate office in Kuwait City at 10:00 AM and brought it securely to our lab.',
+          'Screen replacement: We safely removed the shattered display assembly, meticulously routing the delicate Wi-Fi antennas and display cables into the new OEM 4K panel.',
+          'Calibration: The new screen was powered on, tested for dead pixels, and color-calibrated to match Dell\'s factory standards.'
+        ],
+        closingOutcome: 'The Dell XPS 15 looked and functioned flawlessly. We rushed the repaired laptop back to Kuwait City, handing it to the executive at 3:00 PM—just five hours after they initiated the pickup. For 85 KWD, the client avoided a 600+ KWD replacement cost, kept their highly sensitive corporate data in their own possession, and successfully presented at their meeting.'
+      }
     } as CaseStudyEntity,
 
     /* ═══════════════════════════════════════════════════════════════
