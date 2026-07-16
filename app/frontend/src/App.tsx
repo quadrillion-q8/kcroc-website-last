@@ -32,6 +32,9 @@ const BrandTemplate = lazy(() => import('./pages/templates/BrandTemplate'));
 const ProblemTemplate = lazy(() => import('./pages/templates/ProblemTemplate'));
 const CaseStudyTemplate = lazy(() => import('./pages/templates/CaseStudyTemplate'));
 
+// ✅ Added: Case Studies Index Page
+const CaseStudiesIndex = lazy(() => import('./pages/CaseStudiesIndex'));
+
 // Custom Standalone Blog Pages
 const BlogLaptopRepair = lazy(() => import('./pages/BlogLaptopRepair'));
 const BlogScreenProtection = lazy(() => import('./pages/BlogScreenProtection'));
@@ -78,6 +81,9 @@ export const App: React.FC = () => {
 
               {/* Legacy Service Route Fallback (Just in case someone has an old bookmarked link) */}
               <Route path="services/:serviceSlug" element={<ServiceTemplate />} />
+              
+              {/* ✅ FIXED: The main index page for all case studies */}
+              <Route path="case-studies" element={<CaseStudiesIndex />} />
               
               {/* Case Studies (Nested under /case-studies/ for SEO clustering) */}
               <Route path="case-studies/:slug" element={<CaseStudyTemplate />} />
