@@ -45,96 +45,16 @@
       gtag('config', 'AW-402583081');
     </script>
 
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "LocalBusiness",
-          "@id": "https://www.computerrepairkuwait.com/#business",
-          "name": "Kuwait Computer Repair On Call",
-          "alternateName": "KCROC",
-          "url": "https://www.computerrepairkuwait.com",
-          "telephone": "+96555301913",
-          "email": "quadrillion1980@gmail.com",
-          "logo": {
-            "@type": "ImageObject",
-            "url": "https://www.computerrepairkuwait.com/logo.png",
-            "width": 512,
-            "height": 512
-          },
-          "image": "https://www.computerrepairkuwait.com/logo.png",
-          "priceRange": "$$",
-          "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19",
-            "addressLocality": "Hawalli",
-            "addressRegion": "Hawalli Governorate",
-            "addressCountry": "KW"
-          },
-          "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": 29.3356,
-            "longitude": 48.0250
-          },
-          "openingHoursSpecification": {
-            "@type": "OpeningHoursSpecification",
-            "dayOfWeek": [
-              "Monday","Tuesday","Wednesday","Thursday",
-              "Friday","Saturday","Sunday"
-            ],
-            "opens": "10:00",
-            "closes": "22:00"
-          },
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.9",
-            "reviewCount": "150",
-            "bestRating": "5"
-          },
-          "sameAs": [
-            "https://www.facebook.com/computerrepairkuwait",
-            "https://www.instagram.com/computerrepairkuwait"
-          ],
-          "areaServed": {
-            "@type": "Country",
-            "name": "Kuwait"
-          },
-          "hasOfferCatalog": {
-            "@type": "OfferCatalog",
-            "name": "Computer Repair Services",
-            "itemListElement": [
-              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Laptop Repair" } },
-              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "MacBook Repair" } },
-              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Gaming PC Repair" } },
-              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Motherboard Repair" } },
-              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Screen Replacement" } },
-              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "SSD Upgrade" } },
-              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Virus Removal" } },
-              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Battery Replacement" } }
-            ]
-          }
-        },
-        {
-          "@type": "WebSite",
-          "@id": "https://www.computerrepairkuwait.com/#website",
-          "url": "https://www.computerrepairkuwait.com",
-          "name": "Kuwait Computer Repair On Call",
-          "publisher": {
-            "@id": "https://www.computerrepairkuwait.com/#business"
-          },
-          "potentialAction": {
-            "@type": "SearchAction",
-            "target": {
-              "@type": "EntryPoint",
-              "urlTemplate": "https://www.computerrepairkuwait.com/?q={search_term_string}"
-            },
-            "query-input": "required name=search_term_string"
-          }
-        }
-      ]
-    }
-    </script>
+    <!--
+      NOTE: The static LocalBusiness/WebSite JSON-LD block that used to
+      live here has been removed. SEOEngine.tsx (rendered via
+      react-helmet-async on every route) is now the single source of
+      structured data for this site. Keeping both caused Google to see
+      two separate LocalBusiness nodes sharing the same @id, which
+      Search Console flagged as "Review has multiple aggregate ratings."
+      Do not re-add a static ld+json block here without removing the
+      equivalent block from SEOEngine.tsx first.
+    -->
   </head>
   <body>
     <div id="root"></div>
