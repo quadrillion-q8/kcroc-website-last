@@ -1,8 +1,16 @@
-import React, { createContext, useContext, useMemo } from 'react';
+// File: app/frontend/src/core/analytics/AnalyticsProvider.tsx
+import React, { createContext, useContext, useMemo, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Registry } from '../../knowledge/registry';
-import { trackEvent, buildEntityPayload } from './index'; // assuming index.ts exports these
+import { trackEvent, buildEntityPayload } from './index'; 
 import { AnalyticsEvent, BaseEventPayload, BookingEvent } from './types';
+
+// Extend the global Window interface to support Google Tag Manager telemetry layers
+declare global {
+  interface Window {
+    dataLayer: any[];
+  }
+}
 
 interface AnalyticsContextValue {
   currentEntity: any | null;
@@ -14,14 +22,44 @@ const AnalyticsContext = createContext<AnalyticsContextValue | null>(null);
 export const AnalyticsProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const location = useLocation();
 
+  // 1. Core Entity Memoization Vector
   const currentEntity = useMemo(() => {
     const pathParts = location.pathname.split('/').filter(Boolean);
     const slug = pathParts[pathParts.length - 1];
     return Registry.getServiceBySlug(slug) || null;
   }, [location.pathname]);
 
+  // 2. Automated Virtual Pageview Telemetry Pipeline
+  useEffect(() => {
+    window.dataLayer = window.dataLayer || [];
+
+    // Delayed microtask execution window (100ms) guarantees that react-helmet-async 
+    // has completed its head DOM synchronization before data payloads hit Googlebot or GA4
+    const timeoutId = setTimeout(() => {
+      window.dataLayer.push({
+        event: 'virtual_pageview',
+        page_path: location.pathname + location.search,
+        page_title: document.title
+      });
+    }, 100);
+
+    return () => clearTimeout(timeoutId);
+  }, [location]);
+
+  // 3. Conversion Tracking Pipeline
   const trackConversion = (event: AnalyticsEvent | BookingEvent, payload: BaseEventPayload) => {
     const entityContext = currentEntity ? buildEntityPayload(currentEntity, 'Service') : {};
+    
+    // Concurrently push event actions directly into the window layer 
+    // to allow strict event matching rules inside Tag Manager containers
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: event,
+      ...entityContext,
+      ...payload
+    });
+
+    // Execute core internal logging actions
     trackEvent(event, { ...entityContext, ...payload });
   };
 
