@@ -38,10 +38,8 @@ export const RoutableEntitySchema = CoreNodeSchema.extend({
   seo: SEOSchema,
   featuredImage: ImageAssetSchema.optional(), 
   
-  // 🚀 Added .optional() so it doesn't break non-menu pages
   navigationPriority: z.number().optional(),
   isFeatured: z.boolean().optional(),
-  // 🚀 Moved shortDescription up to Routable so it's globally accessible by builders
   shortDescription: z.string().optional(),
 });
 
@@ -69,7 +67,7 @@ export const BusinessSchema = CoreNodeSchema.extend({
   aggregateRating: z.object({
     ratingValue: z.string(),
     reviewCount: z.number(),
-    bestRating: z.number()
+    bestRating: z.number().optional()
   }),
   socialLinks: z.record(z.string(), z.string()),
   aiSummary: z.string(),
@@ -221,7 +219,6 @@ export const RawGraphSchema = z.object({
 });
 
 /* --- EXPORTED TYPES --- */
-// Base Type Override explicitly redefining the optional fields so TypeScript catches them.
 export type RoutableEntity = {
   id: string;
   isActive: boolean;
