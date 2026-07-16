@@ -432,7 +432,26 @@ const rawGraphData: RawGraphData = {
       timeToRepair: '36 hours',
       costVsReplacement: 'Repair: 65 KWD. Apple Authorized Center quote: 280 KWD for board swap with data loss.',
       publishDate: '2026-05-12',
-      seo: { title: 'MacBook Pro M2 Liquid Damage Repair Kuwait — Real Case Study | KCROC', description: 'Coffee spill destroyed a MacBook Pro M2 in Salmiya. KCROC repaired the logic board for 65 KWD, preserving all data. Apple wanted 280 KWD for a board swap.', canonicalUrl: 'https://www.computerrepairkuwait.com/case-studies/macbook-liquid-damage-salmiya', ogType: 'article', schemaTypes: ['Article'] }
+      seo: { title: 'MacBook Pro M2 Liquid Damage Repair Kuwait — Real Case Study | KCROC', description: 'Coffee spill destroyed a MacBook Pro M2 in Salmiya. KCROC repaired the logic board for 65 KWD, preserving all data. Apple wanted 280 KWD for a board swap.', canonicalUrl: 'https://www.computerrepairkuwait.com/case-studies/macbook-liquid-damage-salmiya', ogType: 'article', schemaTypes: ['Article'] },
+      
+      // 🚀 NEW
+      narrative: {
+        clientContext: 'Graphic designer, Salmiya',
+        hook: 'The client accidentally spilled coffee across the keyboard of their MacBook Pro 14" M2 Pro. The device powered off immediately, and on restart the fan spun briefly but the screen stayed completely black. With months of unbacked-up project files on the drive, an Apple Authorized Center quote of 280 KWD for a full board swap — with total data loss — was not an option. The client reached out via WhatsApp for a second opinion, and we dispatched a free emergency pickup to Salmiya the same day.',
+        diagnosisSteps: [
+          'Main power rail short: corrosion found on the PPBUS_G3H rail, which distributes power throughout the board.',
+          'Blown MOSFET: the Q7510 MOSFET had shorted out, cutting power delivery entirely.',
+          'Display circuit: secondary liquid damage had tripped the backlight fuse, explaining the black screen despite the fan spinning.'
+        ],
+        repairSteps: [
+          'Ultrasonic cleaning: the board was stripped and run through an industrial ultrasonic cleaner to remove microscopic coffee residue and copper corrosion from beneath the chips.',
+          'Micro-soldering: the shorted Q7510 MOSFET was removed with precision hot-air rework and replaced with an OEM equivalent.',
+          'Fuse replacement: the blown backlight fuse was traced and replaced, restoring power to the display.',
+          'Stress testing: after reassembly with fresh thermal paste, the board ran a continuous 4-hour full-load test to confirm thermal and electrical stability.'
+        ],
+        closingOutcome: 'The MacBook powered on and passed full hardware diagnostics. Because the original logic board was repaired rather than replaced, the original M2 SSD was untouched — all client data was preserved. The device was back in Salmiya within 36 hours, at 65 KWD versus the 280 KWD board-swap quote: a 215 KWD saving, with data intact and a 30-day warranty included.',
+        urgentWarning: 'If you spill liquid on a MacBook: disconnect power immediately, do not attempt to turn it on to "check" it, and do not plug it into a charger. Both actions risk completing an electrical short that a simple clean-and-repair could otherwise avoid.'
+      }
     } as CaseStudyEntity,
 
     'case-rog-motherboard-hawalli': {
