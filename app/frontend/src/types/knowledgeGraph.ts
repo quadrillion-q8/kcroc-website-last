@@ -205,6 +205,20 @@ export const CaseStudySchema = RoutableEntitySchema.extend({
   timeToRepair: z.string(),
   costVsReplacement: z.string(),
   publishDate: z.string(),
+  
+  // 🚀 NEW: Optional rich narrative content for the case study template.
+  // When present, CaseStudyTemplate.tsx renders this instead of the
+  // flat symptom/diagnosis/repair/outcome strings. When absent, the
+  // template falls back to those flat fields exactly as it does today
+  // — so this is fully backward-compatible with existing entities.
+  narrative: z.object({
+    hook: z.string(),
+    clientContext: z.string().optional(),
+    diagnosisSteps: z.array(z.string()),
+    repairSteps: z.array(z.string()),
+    closingOutcome: z.string(),
+    urgentWarning: z.string().optional(),
+  }).optional(),
 });
 
 /* --- MASTER SCHEMA (DISCRIMINATED UNION) --- */
