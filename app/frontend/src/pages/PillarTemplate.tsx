@@ -1,88 +1,64 @@
 // File: app/frontend/src/pages/PillarTemplate.tsx
-import React, { useMemo } from 'react';
+import React from 'react';
 import { useParams, Navigate, Link } from 'react-router-dom';
-import { BLOG_POSTS } from '../constants/blogPosts';
-import { ROUTES, getBlogRoute } from '../constants/routes';
-import { BUSINESS_INFO } from '../constants/data';
+import { Helmet } from 'react-helmet-async';
+import { ArrowLeft } from 'lucide-react';
+import { ROUTES } from '../constants/routes';
 
-// ✅ FIXED: Imported the AutoLink component and SEO Engine
-import { AutoLink } from '../utils/linkGraph';
-import { SEOEngine } from '../core/components/SEOEngine';
-import SchemaMarkup from '../components/seo/SchemaMarkup';
+// NOTE: Ensure you import your actual pillar data source here.
+// Assuming it comes from a local constant or is derived from your logic.
+import { PILLAR_CONTENT } from '../constants/pillarData'; // Adjust to your actual import
 
 export default function PillarTemplate() {
   const { slug } = useParams<{ slug: string }>();
-  const post = BLOG_POSTS.find((p) => p.slug === slug);
 
-  if (!post || !post.isPillar) return <Navigate to={ROUTES.blog} replace />;
+  // Fetch the specific pillar page data
+  const pillarData = PILLAR_CONTENT?.find((p: any) => p.slug === slug);
 
-  const pageUrl = `${BUSINESS_INFO.url}${getBlogRoute(post.slug)}`;
+  if (!pillarData) {
+    return <Navigate to={ROUTES.home} replace />;
+  }
 
-  // Find all clusters that belong to this pillar
-  const clusters = useMemo(() => 
-    BLOG_POSTS.filter(p => p.clusterParent === post.slug), 
-  [post.slug]);
-
-  // ─── SEO SCHEMA (Dynamic for Pillar Pages) ───
-  const SCHEMA_DATA = useMemo(() => ({
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebPage",
-        "@id": `${pageUrl}#webpage`,
-        "url": pageUrl,
-        "name": post.title,
-        "description": post.excerpt,
-        "isPartOf": { "@id": `${BUSINESS_INFO.url}/#website` }
-      },
-      {
-        "@type": "Article",
-        "@id": `${pageUrl}#article`,
-        "headline": post.title,
-        "description": post.excerpt,
-        "image": post.image,
-        "datePublished": post.date,
-        "mainEntityOfPage": { "@id": `${pageUrl}#webpage` }
-      }
-    ]
-  }), [post, pageUrl]);
+  const pageUrl = `https://www.computerrepairkuwait.com/pillar/${slug}`;
 
   return (
-    <main className="max-w-4xl mx-auto px-6 pt-32 pb-24 text-slate-200">
+    <main className="w-full min-h-screen bg-transparent text-slate-200 pt-32 pb-24">
       
-      {/* 🚀 Dynamic SEO Engine for Pillar Pages */}
-      <SEOEngine entityId={`post-${slug}`} />
-      <SchemaMarkup schema={SCHEMA_DATA} />
-      
-      <h1 className="text-5xl font-black text-white mb-8">{post.title}</h1>
-      
-      {/* Pillar Content */}
-      <article className="prose prose-invert prose-lg mb-16">
-        {post.content.map((p, i) => (
-          <p key={i}>
-            <AutoLink text={p} />
-          </p>
-        ))}
-      </article>
+      {/* 🚀 FIXED: Replaced failing SEOEngine lookup with explicit canonical Helmet */}
+      <Helmet>
+        <title>{pillarData.title} | KCROC Ultimate Guide</title>
+        <meta name="description" content={pillarData.description || `Comprehensive guide to ${pillarData.title} in Kuwait.`} />
+        <link rel="canonical" href={pageUrl} />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={pillarData.title} />
+        <meta property="og:description" content={pillarData.description} />
+      </Helmet>
 
-      {/* Cluster List */}
-      {clusters.length > 0 && (
-        <section className="border-t border-slate-800 pt-12">
-          <h2 className="text-2xl font-bold text-white mb-8">Related Deep-Dive Topics</h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            {clusters.map(cluster => (
-              <Link 
-                key={cluster.slug} 
-                to={getBlogRoute(cluster.slug)}
-                className="bg-slate-900/50 p-6 rounded-xl border border-slate-700 hover:border-cyan-500 transition-all hover:bg-slate-800/50"
-              >
-                <h3 className="font-bold text-cyan-400 mb-2">{cluster.title}</h3>
-                <p className="text-sm text-slate-400">{cluster.excerpt}</p>
-              </Link>
-            ))}
-          </div>
+      <article className="max-w-5xl mx-auto px-6">
+        <Link to={ROUTES.blog} className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors mb-8 font-medium">
+          <ArrowLeft size={16} /> Back to Hub
+        </Link>
+        
+        <header className="mb-12">
+          <h1 className="text-4xl md:text-6xl font-black text-white leading-tight mb-6">
+            {pillarData.title}
+          </h1>
+          <p className="text-xl text-slate-400 border-l-4 border-purple-500 pl-6">
+            {pillarData.description}
+          </p>
+        </header>
+
+        <section className="prose prose-invert prose-lg max-w-none">
+          {/* Defensive rendering for the pillar content */}
+          {pillarData.content?.length > 0 ? (
+             pillarData.content.map((paragraph: string, index: number) => (
+               <p key={index} className="mb-6 leading-relaxed text-slate-300">{paragraph}</p>
+             ))
+          ) : (
+             <p className="text-slate-500 italic">This pillar guide is currently being compiled.</p>
+          )}
         </section>
-      )}
+      </article>
     </main>
   );
 }
