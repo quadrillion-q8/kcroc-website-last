@@ -5,15 +5,14 @@ import { Helmet } from 'react-helmet-async';
 import { ArrowLeft } from 'lucide-react';
 import { ROUTES } from '../constants/routes';
 
-// NOTE: Ensure you import your actual pillar data source here.
-// Assuming it comes from a local constant or is derived from your logic.
-import { PILLAR_CONTENT } from '../constants/pillarData'; // Adjust to your actual import
+// 🚀 FIXED: Pointing directly to the newly upgraded blogPosts constant
+import { BLOG_POSTS } from '../constants/blogPosts';
 
 export default function PillarTemplate() {
   const { slug } = useParams<{ slug: string }>();
 
-  // Fetch the specific pillar page data
-  const pillarData = PILLAR_CONTENT?.find((p: any) => p.slug === slug);
+  // Fetch the specific pillar page data from the unified blog posts array
+  const pillarData = BLOG_POSTS.find((p) => p.slug === slug);
 
   if (!pillarData) {
     return <Navigate to={ROUTES.home} replace />;
@@ -24,14 +23,15 @@ export default function PillarTemplate() {
   return (
     <main className="w-full min-h-screen bg-transparent text-slate-200 pt-32 pb-24">
       
-      {/* 🚀 FIXED: Replaced failing SEOEngine lookup with explicit canonical Helmet */}
+      {/* 🚀 Explicit canonical Helmet injected */}
       <Helmet>
         <title>{pillarData.title} | KCROC Ultimate Guide</title>
-        <meta name="description" content={pillarData.description || `Comprehensive guide to ${pillarData.title} in Kuwait.`} />
+        <meta name="description" content={pillarData.description || pillarData.excerpt || `Comprehensive guide to ${pillarData.title} in Kuwait.`} />
         <link rel="canonical" href={pageUrl} />
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content="article" />
         <meta property="og:title" content={pillarData.title} />
-        <meta property="og:description" content={pillarData.description} />
+        <meta property="og:description" content={pillarData.description || pillarData.excerpt} />
+        {pillarData.image && <meta property="og:image" content={pillarData.image} />}
       </Helmet>
 
       <article className="max-w-5xl mx-auto px-6">
@@ -44,7 +44,7 @@ export default function PillarTemplate() {
             {pillarData.title}
           </h1>
           <p className="text-xl text-slate-400 border-l-4 border-purple-500 pl-6">
-            {pillarData.description}
+            {pillarData.description || pillarData.excerpt}
           </p>
         </header>
 
