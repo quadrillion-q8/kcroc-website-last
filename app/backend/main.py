@@ -9,6 +9,7 @@ from datetime import datetime
 from core.config import settings
 from fastapi import FastAPI, HTTPException, Request, status
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.middleware.trustedhost import TrustedHostMiddleware
 from fastapi.responses import JSONResponse
 from fastapi.routing import APIRouter
 
@@ -118,6 +119,17 @@ app.add_middleware(
     allow_headers=["*"],
     expose_headers=["*"],
 )
+
+# 🔒 Reject requests with spoofed/unexpected Host headers.
+# Derived from the same allowed_origins list used for CORS above, so there's
+# a single source of truth for "which domains this API actually serves" —
+# instead of a second, separately-maintained list that can drift out of sync.
+trusted_hosts = [
+    origin.replace("https://", "").replace("http://", "").split(":")[0]
+    for origin in allowed_origins
+] + ["localhost", "127.0.0.1"]
+
+app.add_middleware(TrustedHostMiddleware, allowed_hosts=trusted_hosts)
 # MODULE_MIDDLEWARE_END
 
 
