@@ -43,27 +43,14 @@ def _local_patch(url: str) -> str:
 
 
 def get_dynamic_backend_url(request: Request) -> str:
-    """Get backend URL dynamically from request headers.
-
-    Priority: mgx-external-domain > x-forwarded-host > host > settings.backend_url
+    """Get backend URL strictly from application settings.
+    
+    🔒 SECURED: Never trust client-provided Host or x-forwarded-host headers 
+    to construct OAuth redirect URIs, preventing token hijacking.
     """
-    mgx_external_domain = request.headers.get("mgx-external-domain")
-    x_forwarded_host = request.headers.get("x-forwarded-host")
-    host = request.headers.get("host")
-    scheme = request.headers.get("x-forwarded-proto", "https")
-
-    effective_host = mgx_external_domain or x_forwarded_host or host
-    if not effective_host:
-        logger.warning("[get_dynamic_backend_url] No host found, fallback to %s", settings.backend_url)
-        return settings.backend_url
-
-    dynamic_url = _local_patch(f"{scheme}://{effective_host}")
+    dynamic_url = _local_patch(settings.backend_url)
     logger.debug(
-        "[get_dynamic_backend_url] mgx-external-domain=%s, x-forwarded-host=%s, host=%s, scheme=%s, dynamic_url=%s",
-        mgx_external_domain,
-        x_forwarded_host,
-        host,
-        scheme,
+        "[get_dynamic_backend_url] Using pinned settings backend_url=%s",
         dynamic_url,
     )
     return dynamic_url
@@ -108,11 +95,12 @@ async def callback(
 ):
     """Handle OIDC callback."""
     backend_url = get_dynamic_backend_url(request)
+    frontend_url = settings.frontend_url  # 🚀 FIXED: Route final payloads to the SPA
 
     def redirect_with_error(message: str) -> RedirectResponse:
         fragment = urlencode({"msg": message})
         return RedirectResponse(
-            url=f"{backend_url}/auth/error?{fragment}",
+            url=f"{frontend_url}/auth/error?{fragment}",
             status_code=status.HTTP_302_FOUND,
         )
 
@@ -132,7 +120,7 @@ async def callback(
     code_verifier = temp_data.get("code_verifier")
 
     try:
-        # Build redirect_uri dynamically from request
+        # Build redirect_uri explicitly for the backend to exchange tokens
         redirect_uri = f"{backend_url}/api/v1/auth/callback"
         logger.info("[callback] Exchanging code for tokens with redirect_uri=%s", redirect_uri)
 
@@ -204,7 +192,8 @@ async def callback(
             }
         )
 
-        redirect_url = f"{backend_url}/auth/callback?{fragment}"
+        # 🚀 FIXED: Send the browser carrying the JWT to the Vercel Frontend
+        redirect_url = f"{frontend_url}/auth/callback?{fragment}"
         logger.info("[callback] OIDC callback successful, redirecting to %s", redirect_url)
         redirect_response = RedirectResponse(
             url=redirect_url,
