@@ -134,7 +134,7 @@ export const ServiceGuide: React.FC<ServiceGuideProps> = ({
         
         <div className="mt-8">
           <a 
-            href={`https://wa.me/965${businessInfo.phone.replace(/\D/g,'')}`} 
+            href={`https://wa.me/${businessInfo.phone.replace(/\D/g,'').startsWith('965') ? businessInfo.phone.replace(/\D/g,'') : '965' + businessInfo.phone.replace(/\D/g,'')}`} 
             className="inline-block bg-white text-emerald-700 font-bold py-3 px-8 rounded-full shadow-lg hover:bg-slate-50 transition-colors"
           >
             WhatsApp a Technician Now
