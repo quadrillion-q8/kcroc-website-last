@@ -61,12 +61,12 @@ export class NavigationCompiler {
     };
   }
 
-  // 4. Case Studies Mega Menu (Upgraded to handle specific case study routing)
+  // 4. Case Studies Mega Menu
   private static compileCaseStudiesMegaMenu(): MegaMenuConfig {
     return {
       id: 'case_studies_mega',
       title: 'Real Repair Stories',
-      featured: [], // Sleek dropdown
+      featured: [], 
       sections: [{
         title: 'Featured Case Studies',
         items: [
@@ -77,11 +77,11 @@ export class NavigationCompiler {
     };
   }
 
-  // 5. Blog Mega Menu (Added the missing 'how-to-protect-laptop-screen')
+  // 5. Blog Mega Menu
   private static compileBlogMegaMenu(): MegaMenuConfig {
     return {
       id: 'blog_mega',
-      title: 'Blog & Guides',
+      title: 'Blog & Updates',
       featured: [], 
       sections: [{
         title: 'Latest Content',
@@ -96,7 +96,25 @@ export class NavigationCompiler {
     };
   }
 
-  // 6. About Mega Menu (Added Privacy & Hawalli Location)
+  // 🚀 6. NEW: Guides Mega Menu
+  private static compileGuidesMegaMenu(): MegaMenuConfig {
+    return {
+      id: 'guides_mega',
+      title: 'DIY & Repair Guides',
+      featured: [], 
+      sections: [{
+        title: 'Step-by-Step Guides',
+        items: [
+          // This is where you add your new guide!
+          { id: 'g1', slug: 'guides/dell-overheating', title: 'Dell Overheating Fix', description: 'Thermal troubleshooting guide', iconKey: 'cpu', entityType: 'Page' as any, primaryKeyword: 'overheating', weight: 0, commercialIntent: 'info' },
+          // Add future guides right here below this line:
+          // { id: 'g2', slug: 'guides/macbook-battery', title: 'MacBook Battery Guide', description: 'Check your cycle count', iconKey: 'battery', entityType: 'Page' as any, primaryKeyword: 'battery', weight: 0, commercialIntent: 'info' },
+        ]
+      }]
+    };
+  }
+
+  // 7. About Mega Menu
   private static compileAboutMegaMenu(): MegaMenuConfig {
     return {
       id: 'about_mega',
@@ -122,9 +140,11 @@ export class NavigationCompiler {
         { id: 'nav_services', label: 'Services', href: '/services', hasMega: true, megaMenuId: 'services_mega' },
         { id: 'nav_brands', label: 'Brands', href: '#', hasMega: true, megaMenuId: 'brands_mega' },
         { id: 'nav_problems', label: 'Problems', href: '#', hasMega: true, megaMenuId: 'problems_mega' },
-        { id: 'nav_case_studies', label: 'Case Studies', href: '/case-studies', hasMega: true, megaMenuId: 'case_studies_mega' }, // Upgraded to Mega
+        { id: 'nav_case_studies', label: 'Case Studies', href: '/case-studies', hasMega: true, megaMenuId: 'case_studies_mega' }, 
         { id: 'nav_pricing', label: 'Pricing', href: '/pricing', hasMega: false },
         { id: 'nav_blog', label: 'Blog', href: '/blog', hasMega: true, megaMenuId: 'blog_mega' },
+        // 🚀 NEW: Guides Tab added to the main navigation bar
+        { id: 'nav_guides', label: 'Guides', href: '#', hasMega: true, megaMenuId: 'guides_mega' },
         { id: 'nav_about', label: 'About', href: '/about', hasMega: true, megaMenuId: 'about_mega' },
       ],
       megaMenus: {
@@ -133,6 +153,7 @@ export class NavigationCompiler {
         problems_mega: this.compileProblemsMegaMenu(),
         case_studies_mega: this.compileCaseStudiesMegaMenu(),
         blog_mega: this.compileBlogMegaMenu(),
+        guides_mega: this.compileGuidesMegaMenu(), // 🚀 NEW: Register the Guides Mega Menu
         about_mega: this.compileAboutMegaMenu(),
       },
       footer: {
