@@ -1,6 +1,7 @@
 // File: app/frontend/src/pages/BlogPostTemplate.tsx
 import React, { useMemo } from 'react';
 import { useParams, Navigate, Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import {
   Calendar, Clock, User, ArrowLeft, ExternalLink, Share2, ChevronRight, Network
 } from 'lucide-react';
@@ -8,20 +9,13 @@ import {
 import { BUSINESS_INFO } from '../constants/data';
 import { ROUTES, getBlogRoute } from '../constants/routes';
 import { BLOG_POSTS, BlogPost } from '../constants/blogPosts';
-
-// ✅ FIXED: Imported the AutoLink component
 import { AutoLink } from '../utils/linkGraph'; 
 import { getIntentWhatsAppLink } from '../utils/whatsappIntent';
 import { trackLead } from '../utils/analytics'; 
 import SchemaMarkup from '../components/seo/SchemaMarkup';
 
-// 👈 Phase 2 SEO Engine Imported
-import { SEOEngine } from '../core/components/SEOEngine';
-
 export default function BlogPostTemplate() {
   const { slug } = useParams<{ slug: string }>();
-
-  // Find the current post
   const post = BLOG_POSTS.find((p) => p.slug === slug);
 
   if (!post) return <Navigate to={ROUTES.blog} replace />;
@@ -41,7 +35,7 @@ export default function BlogPostTemplate() {
     return [];
   }, [post]);
 
-  // ─── SEO SCHEMA (Preserved for dynamic Article rich snippets) ───
+  // ─── PAGE-SPECIFIC SEO SCHEMA ───
   const SCHEMA_DATA = useMemo(() => ({
     "@context": "https://schema.org",
     "@graph": [
@@ -74,15 +68,6 @@ export default function BlogPostTemplate() {
           }
         },
         "mainEntityOfPage": { "@id": `${pageUrl}#webpage` }
-      },
-      {
-        "@type": "BreadcrumbList",
-        "@id": `${pageUrl}#breadcrumb`,
-        "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": BUSINESS_INFO.url },
-          { "@type": "ListItem", "position": 2, "name": "Blog", "item": `${BUSINESS_INFO.url}${ROUTES.blog}` },
-          { "@type": "ListItem", "position": 3, "name": post.title, "item": pageUrl }
-        ]
       }
     ]
   }), [post, pageUrl]);
@@ -90,10 +75,18 @@ export default function BlogPostTemplate() {
   return (
     <main className="w-full min-h-screen bg-transparent text-slate-200 pt-32 pb-24">
       
-      {/* 🚀 PHASE 2 AUTOMATION IN ACTION: Basic Tags Handled */}
-      <SEOEngine entityId="page-blog" />
+      {/* 🚀 FIXED: Hardcoded page-blog SEOEngine removed. Dedicated canonical injected. */}
+      <Helmet>
+        <title>{post.title} | KCROC Tech Blog</title>
+        <meta name="description" content={post.description || post.excerpt} />
+        <link rel="canonical" href={pageUrl} />
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content={post.title} />
+        <meta property="og:description" content={post.description || post.excerpt} />
+        {post.image && <meta property="og:image" content={post.image} />}
+      </Helmet>
 
-      {/* 🚀 Dynamic Schema Injection for the Article */}
+      {/* Renders the specific article JSON-LD without ghost ratings */}
       <SchemaMarkup schema={SCHEMA_DATA} />
 
       <nav aria-label="Breadcrumb" className="max-w-4xl mx-auto px-6 mb-8">
@@ -126,9 +119,11 @@ export default function BlogPostTemplate() {
 
           <h1 className="text-3xl md:text-5xl font-black text-white leading-tight mb-8">{post.title}</h1>
 
-          <div className="aspect-[21/9] rounded-3xl overflow-hidden bg-slate-900 border border-slate-800 shadow-2xl mb-10">
-            <img src={post.image} alt={post.title} className="w-full h-full object-cover opacity-90" loading="eager" />
-          </div>
+          {post.image && (
+            <div className="aspect-[21/9] rounded-3xl overflow-hidden bg-slate-900 border border-slate-800 shadow-2xl mb-10">
+              <img src={post.image} alt={post.title} className="w-full h-full object-cover opacity-90" loading="eager" />
+            </div>
+          )}
         </header>
 
         <section className="prose prose-invert prose-lg max-w-none prose-p:text-slate-300 prose-headings:text-white prose-a:text-cyan-400 mb-16">
@@ -137,9 +132,14 @@ export default function BlogPostTemplate() {
           </p>
 
           <div className="space-y-6">
-            {post.content.map((paragraph, index) => (
-              <p key={index}><AutoLink text={paragraph} /></p>
-            ))}
+            {/* 🚀 FIXED: Defensive rendering prevents fatal React crashes if data is missing */}
+            {post.content?.length > 0 ? (
+              post.content.map((paragraph, index) => (
+                <p key={index}><AutoLink text={paragraph} /></p>
+              ))
+            ) : (
+              <p className="text-slate-400 italic">Content is currently being updated by our technicians. Please check back shortly.</p>
+            )}
           </div>
 
           <div className="bg-slate-900/50 backdrop-blur-md border border-slate-700/50 p-8 rounded-2xl my-12 text-center">
