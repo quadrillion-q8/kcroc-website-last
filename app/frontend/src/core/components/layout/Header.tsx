@@ -1,3 +1,4 @@
+// File: app/frontend/src/core/components/layout/Header.tsx
 import React, { useState, useRef, useEffect, useCallback, useMemo, Suspense } from 'react';
 import { Link, useLocation, matchPath } from 'react-router-dom';
 import { Menu, X, ChevronDown, Phone, CalendarCheck, Laptop } from 'lucide-react';
@@ -73,6 +74,11 @@ export default function Header() {
     document.body.style.overflow = mobileOpen ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
   }, [mobileOpen]);
+
+  // 🚀 FIXED: Stabilize the onClose reference to prevent MobileMenu's useEffect from aggressively resetting the accordion
+  const handleMobileClose = useCallback(() => {
+    setMobileOpen(false);
+  }, []);
 
   return (
     <>
@@ -153,7 +159,7 @@ export default function Header() {
 
       <MobileMenu 
         isOpen={mobileOpen} 
-        onClose={() => setMobileOpen(false)} 
+        onClose={handleMobileClose} 
         mobileRef={mobileRef} 
         navModel={navModel}
         cleanTel={cleanTel}
