@@ -43,6 +43,10 @@ const BlogScreenProtection = lazy(() => import('./pages/BlogScreenProtection'));
 const GamingPCCooling = lazy(() => import('./pages/GamingPCCooling'));
 const ScreenProtectionTips = lazy(() => import('./pages/ScreenProtectionTips'));
 
+// 🚀 Custom AI-Generated Guides
+// Using named export resolution (.then) since we exported it as `export const DellOverheatingPage`
+const DellOverheatingPage = lazy(() => import('./pages/DellOverheatingPage').then(module => ({ default: module.DellOverheatingPage })));
+
 // UI: Global loading spinner
 const PageLoader = () => (
   <div className="w-full h-[60vh] flex items-center justify-center bg-transparent">
@@ -103,6 +107,9 @@ export const App: React.FC = () => {
               <Route path="blog/laptop-repair-kuwait-2026" element={<BlogLaptopRepair />} />
               <Route path="blog/how-to-protect-laptop-screen" element={<BlogScreenProtection />} />
               <Route path="blog/gaming-pc-cooling" element={<GamingPCCooling />} />
+              
+              {/* 🚀 AI Content Guides */}
+              <Route path="guides/dell-overheating" element={<DellOverheatingPage />} />
               
               {/* SEO Guardrail: Canonical URL redirection */}
               <Route path="laptop-screen-protection-tips" element={<ScreenProtectionTips />} />
