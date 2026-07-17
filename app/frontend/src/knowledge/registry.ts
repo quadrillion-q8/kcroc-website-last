@@ -1,78 +1,84 @@
+// File: app/frontend/src/knowledge/registry.ts
 import { KCROC_GRAPH } from '../data/graph';
-import { EntityType } from '../core/analytics/types';
+import { ServiceEntity, ProblemEntity, BrandEntity, CaseStudyEntity } from '../types/knowledgeGraph';
 
-// Loose type interfaces to match Graph structure safely
-export interface GraphService {
-  id: string;
-  type: string;
-  title: string;
-  slug: string;
-  description: string;
-  iconKey: string;
-  popular?: boolean;
-  pricing?: any;
-  warranty?: any;
-  coreFeatures?: string[];
-  relatedIssues?: string[];
-  relatedBrands?: string[];
-}
+export class Registry {
+  private static isIndexed = false;
+  private static serviceSlugIndex = new Map<string, ServiceEntity>();
+  private static problemSlugIndex = new Map<string, ProblemEntity>();
+  private static problemIdIndex = new Map<string, ProblemEntity>();
+  private static brandSlugIndex = new Map<string, BrandEntity>();
+  private static caseStudySlugIndex = new Map<string, CaseStudyEntity>();
 
-export interface GraphIssue {
-  id: string;
-  type: string;
-  name: string;
-  slug: string;
-  description: string;
-  symptoms?: string[];
-}
+  private static buildIndexes() {
+    if (this.isIndexed) return;
 
-class GraphRegistry {
-  private serviceSlugIndex: Map<string, GraphService> = new Map();
-  private serviceIdIndex: Map<string, GraphService> = new Map();
-  private issueSlugIndex: Map<string, GraphIssue> = new Map();
-
-  constructor() {
-    this.buildIndexes();
-  }
-
-  private buildIndexes() {
-    const services = (KCROC_GRAPH.services as unknown) as GraphService[] || [];
-    const issues = (KCROC_GRAPH as any).issues as GraphIssue[] || [];
-
-    services.forEach(service => {
+    // Index Services
+    (KCROC_GRAPH.services || []).forEach(service => {
       this.serviceSlugIndex.set(service.slug, service);
-      this.serviceIdIndex.set(service.id, service);
     });
 
-    issues.forEach(issue => {
-      this.issueSlugIndex.set(issue.slug, issue);
+    // 🚀 FIXED: Index Problems (pulling from KCROC_GRAPH.problems instead of .issues)
+    (KCROC_GRAPH.problems || []).forEach(problem => {
+      this.problemSlugIndex.set(problem.slug, problem);
+      this.problemIdIndex.set(problem.id, problem); // 🚀 FIXED: Added ID index
     });
+
+    // Index Brands
+    (KCROC_GRAPH.brands || []).forEach(brand => {
+      this.brandSlugIndex.set(brand.slug, brand);
+    });
+
+    // Index Case Studies
+    (KCROC_GRAPH.caseStudies || []).forEach(cs => {
+      this.caseStudySlugIndex.set(cs.slug, cs);
+    });
+
+    this.isIndexed = true;
   }
 
-  public getServiceBySlug(slug: string): GraphService | undefined {
+  public static getAllServices(): ServiceEntity[] {
+    return KCROC_GRAPH.services || [];
+  }
+
+  public static getServiceBySlug(slug: string): ServiceEntity | undefined {
+    this.buildIndexes();
     return this.serviceSlugIndex.get(slug);
   }
 
-  public getServiceById(id: string): GraphService | undefined {
-    return this.serviceIdIndex.get(id);
-  }
-
-  public getAllServices(): GraphService[] {
-    return Array.from(this.serviceIdIndex.values());
-  }
-
-  public getPopularServices(): GraphService[] {
-    return this.getAllServices().filter(s => s.popular);
-  }
-
-  public getRelatedIssuesForService(serviceId: string): GraphIssue[] {
-    const service = this.getServiceById(serviceId);
-    if (!service || !service.relatedIssues) return [];
+  // 🚀 FIXED: INVERTED LOOKUP DIRECTION
+  // Instead of scanning the service for a non-existent relatedIssues array,
+  // we scan all problems to find which ones reference this serviceId.
+  public static getRelatedIssuesForService(serviceId: string): ProblemEntity[] {
+    this.buildIndexes();
+    if (!serviceId) return [];
     
-    return service.relatedIssues
-      .map((issueId: string) => Array.from(this.issueSlugIndex.values()).find(i => i.id === issueId))
-      .filter((i: GraphIssue | undefined): i is GraphIssue => i !== undefined);
+    return (KCROC_GRAPH.problems || []).filter(problem => 
+      problem.relatedServiceIds?.includes(serviceId)
+    );
+  }
+
+  public static getAllProblems(): ProblemEntity[] {
+    return KCROC_GRAPH.problems || [];
+  }
+
+  public static getProblemBySlug(slug: string): ProblemEntity | undefined {
+    this.buildIndexes();
+    return this.problemSlugIndex.get(slug);
+  }
+
+  public static getProblemById(id: string): ProblemEntity | undefined {
+    this.buildIndexes();
+    return this.problemIdIndex.get(id);
+  }
+
+  public static getBrandBySlug(slug: string): BrandEntity | undefined {
+    this.buildIndexes();
+    return this.brandSlugIndex.get(slug);
+  }
+  
+  public static getCaseStudyBySlug(slug: string): CaseStudyEntity | undefined {
+    this.buildIndexes();
+    return this.caseStudySlugIndex.get(slug);
   }
 }
-
-export const Registry = new GraphRegistry();
