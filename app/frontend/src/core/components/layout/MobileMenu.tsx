@@ -24,10 +24,12 @@ export default function MobileMenu({ isOpen, onClose, mobileRef, navModel, clean
   const location = useLocation();
   const { trackConversion } = useAnalytics();
 
+  // 🚀 FIXED: Removed 'onClose' from dependency array to prevent false-positive trigger fires
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     onClose();
     setOpenAccordion(null);
-  }, [location.pathname, onClose]);
+  }, [location.pathname]);
 
   const toggleAccordion = (id: string) => {
     setOpenAccordion(prev => prev === id ? null : id);
