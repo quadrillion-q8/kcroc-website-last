@@ -1,5 +1,4 @@
 // File: app/frontend/src/core/navigation/NavigationCompiler.ts
-import { Registry } from '../../knowledge/registry';
 import { KCROC_GRAPH } from '../../data/graph';
 import { CompiledNavigationModel, NavEntity, MegaMenuConfig } from './types';
 
@@ -26,9 +25,9 @@ export class NavigationCompiler {
     };
   }
 
-  // 1. Services Mega Menu
+  // 1. Services Mega Menu (🚀 Now pulling from KCROC_GRAPH Single Source of Truth)
   private static compileServicesMegaMenu(): MegaMenuConfig {
-    const allServices = Registry.getAllServices().map(s => this.compileNavEntity(s, 'Service', 'wrench'));
+    const allServices = (KCROC_GRAPH.services || []).map(s => this.compileNavEntity(s, 'Service', 'wrench'));
     const sorted = [...allServices].sort((a, b) => b.weight - a.weight);
     
     return {
@@ -61,8 +60,10 @@ export class NavigationCompiler {
     };
   }
 
-  // 4. Case Studies Mega Menu
+  // 4. Case Studies Mega Menu (🚀 Now auto-updates from KCROC_GRAPH)
   private static compileCaseStudiesMegaMenu(): MegaMenuConfig {
+    const allCaseStudies = (KCROC_GRAPH.caseStudies || []).map(cs => this.compileNavEntity(cs, 'Page', 'laptop'));
+
     return {
       id: 'case_studies_mega',
       title: 'Real Repair Stories',
@@ -70,8 +71,8 @@ export class NavigationCompiler {
       sections: [{
         title: 'Featured Case Studies',
         items: [
-          { id: 'cs1', slug: 'case-studies', title: 'All Case Studies', description: '', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'cases', weight: 0, commercialIntent: 'info' },
-          { id: 'cs2', slug: 'case-studies/macbook-liquid-damage-salmiya', title: 'MacBook Liquid Damage', description: '', iconKey: 'apple', entityType: 'Page' as any, primaryKeyword: 'liquid damage', weight: 0, commercialIntent: 'info' }
+          { id: 'cs_index', slug: 'case-studies', title: 'All Case Studies', description: '', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'cases', weight: 100, commercialIntent: 'info' },
+          ...allCaseStudies
         ]
       }]
     };
