@@ -1,13 +1,15 @@
+# File: routers/service_bookings.py
 import json
 import logging
 from typing import List, Optional
-
 
 from fastapi import APIRouter, Body, Depends, HTTPException, Query
 from pydantic import BaseModel
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from core.database import get_db
+from dependencies.auth import get_admin_user
+from schemas.auth import UserResponse
 from services.service_bookings import Service_bookingsService
 
 # Set up logging
@@ -98,6 +100,7 @@ async def query_service_bookingss(
     limit: int = Query(20, ge=1, le=2000, description="Max number of records to return"),
     fields: str = Query(None, description="Comma-separated list of fields to return"),
     db: AsyncSession = Depends(get_db),
+    _current_user: UserResponse = Depends(get_admin_user),
 ):
     """Query service_bookingss with filtering, sorting, and pagination"""
     logger.debug(f"Querying service_bookingss: query={query}, sort={sort}, skip={skip}, limit={limit}, fields={fields}")
@@ -135,6 +138,7 @@ async def query_service_bookingss_all(
     limit: int = Query(20, ge=1, le=2000, description="Max number of records to return"),
     fields: str = Query(None, description="Comma-separated list of fields to return"),
     db: AsyncSession = Depends(get_db),
+    _current_user: UserResponse = Depends(get_admin_user),
 ):
     # Query service_bookingss with filtering, sorting, and pagination without user limitation
     logger.debug(f"Querying service_bookingss: query={query}, sort={sort}, skip={skip}, limit={limit}, fields={fields}")
@@ -169,6 +173,7 @@ async def get_service_bookings(
     id: int,
     fields: str = Query(None, description="Comma-separated list of fields to return"),
     db: AsyncSession = Depends(get_db),
+    _current_user: UserResponse = Depends(get_admin_user),
 ):
     """Get a single service_bookings by ID"""
     logger.debug(f"Fetching service_bookings with id: {id}, fields={fields}")
@@ -216,6 +221,7 @@ async def create_service_bookings(
 async def create_service_bookingss_batch(
     request: Service_bookingsBatchCreateRequest,
     db: AsyncSession = Depends(get_db),
+    _current_user: UserResponse = Depends(get_admin_user),
 ):
     """Create multiple service_bookingss in a single request"""
     logger.debug(f"Batch creating {len(request.items)} service_bookingss")
@@ -241,6 +247,7 @@ async def create_service_bookingss_batch(
 async def update_service_bookingss_batch(
     request: Service_bookingsBatchUpdateRequest,
     db: AsyncSession = Depends(get_db),
+    _current_user: UserResponse = Depends(get_admin_user),
 ):
     """Update multiple service_bookingss in a single request"""
     logger.debug(f"Batch updating {len(request.items)} service_bookingss")
@@ -269,6 +276,7 @@ async def update_service_bookings(
     id: int,
     data: Service_bookingsUpdateData,
     db: AsyncSession = Depends(get_db),
+    _current_user: UserResponse = Depends(get_admin_user),
 ):
     """Update an existing service_bookings"""
     logger.debug(f"Updating service_bookings {id} with data: {data}")
@@ -298,6 +306,7 @@ async def update_service_bookings(
 async def delete_service_bookingss_batch(
     request: Service_bookingsBatchDeleteRequest,
     db: AsyncSession = Depends(get_db),
+    _current_user: UserResponse = Depends(get_admin_user),
 ):
     """Delete multiple service_bookingss by their IDs"""
     logger.debug(f"Batch deleting {len(request.ids)} service_bookingss")
@@ -323,6 +332,7 @@ async def delete_service_bookingss_batch(
 async def delete_service_bookings(
     id: int,
     db: AsyncSession = Depends(get_db),
+    _current_user: UserResponse = Depends(get_admin_user),
 ):
     """Delete a single service_bookings by ID"""
     logger.debug(f"Deleting service_bookings with id: {id}")
