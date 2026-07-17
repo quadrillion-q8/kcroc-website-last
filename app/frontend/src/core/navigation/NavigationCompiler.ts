@@ -25,7 +25,7 @@ export class NavigationCompiler {
     };
   }
 
-  // 1. Services Mega Menu (🚀 Now pulling from KCROC_GRAPH Single Source of Truth)
+  // 1. Services Mega Menu
   private static compileServicesMegaMenu(): MegaMenuConfig {
     const allServices = (KCROC_GRAPH.services || []).map(s => this.compileNavEntity(s, 'Service', 'wrench'));
     const sorted = [...allServices].sort((a, b) => b.weight - a.weight);
@@ -60,9 +60,14 @@ export class NavigationCompiler {
     };
   }
 
-  // 4. Case Studies Mega Menu (🚀 Now auto-updates from KCROC_GRAPH)
+  // 4. Case Studies Mega Menu
   private static compileCaseStudiesMegaMenu(): MegaMenuConfig {
-    const allCaseStudies = (KCROC_GRAPH.caseStudies || []).map(cs => this.compileNavEntity(cs, 'Page', 'laptop'));
+    const allCaseStudies = (KCROC_GRAPH.caseStudies || []).map(cs => {
+      const entity = this.compileNavEntity(cs, 'Page', 'laptop');
+      // 🚀 FIXED: Prepend the required routing prefix so DesktopMegaMenu doesn't 404
+      entity.slug = `case-studies/${cs.slug}`;
+      return entity;
+    });
 
     return {
       id: 'case_studies_mega',
@@ -97,7 +102,7 @@ export class NavigationCompiler {
     };
   }
 
-  // 🚀 6. NEW: Guides Mega Menu
+  // 6. Guides Mega Menu
   private static compileGuidesMegaMenu(): MegaMenuConfig {
     return {
       id: 'guides_mega',
@@ -106,10 +111,7 @@ export class NavigationCompiler {
       sections: [{
         title: 'Step-by-Step Guides',
         items: [
-          // This is where you add your new guide!
           { id: 'g1', slug: 'guides/dell-overheating', title: 'Dell Overheating Fix', description: 'Thermal troubleshooting guide', iconKey: 'cpu', entityType: 'Page' as any, primaryKeyword: 'overheating', weight: 0, commercialIntent: 'info' },
-          // Add future guides right here below this line:
-          // { id: 'g2', slug: 'guides/macbook-battery', title: 'MacBook Battery Guide', description: 'Check your cycle count', iconKey: 'battery', entityType: 'Page' as any, primaryKeyword: 'battery', weight: 0, commercialIntent: 'info' },
         ]
       }]
     };
@@ -144,7 +146,6 @@ export class NavigationCompiler {
         { id: 'nav_case_studies', label: 'Case Studies', href: '/case-studies', hasMega: true, megaMenuId: 'case_studies_mega' }, 
         { id: 'nav_pricing', label: 'Pricing', href: '/pricing', hasMega: false },
         { id: 'nav_blog', label: 'Blog', href: '/blog', hasMega: true, megaMenuId: 'blog_mega' },
-        // 🚀 NEW: Guides Tab added to the main navigation bar
         { id: 'nav_guides', label: 'Guides', href: '#', hasMega: true, megaMenuId: 'guides_mega' },
         { id: 'nav_about', label: 'About', href: '/about', hasMega: true, megaMenuId: 'about_mega' },
       ],
@@ -154,7 +155,7 @@ export class NavigationCompiler {
         problems_mega: this.compileProblemsMegaMenu(),
         case_studies_mega: this.compileCaseStudiesMegaMenu(),
         blog_mega: this.compileBlogMegaMenu(),
-        guides_mega: this.compileGuidesMegaMenu(), // 🚀 NEW: Register the Guides Mega Menu
+        guides_mega: this.compileGuidesMegaMenu(),
         about_mega: this.compileAboutMegaMenu(),
       },
       footer: {
