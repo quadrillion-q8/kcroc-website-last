@@ -87,9 +87,22 @@ app = FastAPI(
 
 
 # MODULE_MIDDLEWARE_START
+# 🚀 FIXED: Parse dynamically from environment config
+allowed_origins = [
+    origin.strip() for origin in getattr(settings, "allowed_domains", "").split(",") if origin.strip()
+]
+
+# Provide a safe baseline if the environment variable is missing
+if not allowed_origins:
+    allowed_origins = [
+        "https://www.computerrepairkuwait.com",
+        "http://localhost:5173",
+        "http://localhost:3000"
+    ]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origin_regex=r".*",
+    allow_origins=allowed_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
