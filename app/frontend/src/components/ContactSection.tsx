@@ -11,8 +11,24 @@ import {
   Truck,
   Shield
 } from 'lucide-react';
+import { KCROC_GRAPH } from '../data/graph';
 
 export default function Contact() {
+  // Pull data from the Single Source of Truth
+  const biz = KCROC_GRAPH.business;
+  const hawalliLoc = KCROC_GRAPH.locations.find(l => l.id === 'loc-hawalli');
+
+  // Format dynamic variables safely
+  const phoneRaw = biz?.telephone || '96555301913';
+  const phoneFormatted = `+${phoneRaw.substring(0,3)} ${phoneRaw.substring(3, 7)} ${phoneRaw.substring(7)}`;
+  const email = biz?.email || 'quadrillion1980@gmail.com';
+  const whatsappUrl = `https://wa.me/${phoneRaw}`;
+  
+  // Use the service areas defined in the graph
+  const serviceAreas = hawalliLoc?.serviceAreas || [
+    'Hawalli', 'Salmiya', 'Kuwait City', 'Farwaniya', 'Ahmadi', 'Jahra'
+  ];
+
   return (
     <section id="contact" className="py-20 bg-white">
       <div className="container mx-auto px-4">
@@ -45,10 +61,10 @@ export default function Contact() {
                 </CardHeader>
                 <CardContent>
                   <a 
-                    href="tel:+96555301913" 
+                    href={`tel:+${phoneRaw}`} 
                     className="text-2xl font-bold text-emerald-600 hover:text-emerald-700 transition-colors"
                   >
-                    +965 5530 1913
+                    {phoneFormatted}
                   </a>
                   <p className="text-slate-600 mt-1">Call for immediate assistance</p>
                 </CardContent>
@@ -66,10 +82,10 @@ export default function Contact() {
                 </CardHeader>
                 <CardContent>
                   <a 
-                    href="mailto:quadrillion1980@gmail.com" 
+                    href={`mailto:${email}`} 
                     className="text-lg font-semibold text-blue-600 hover:text-blue-700 transition-colors break-all"
                   >
-                    quadrillion1980@gmail.com
+                    {email}
                   </a>
                   <p className="text-slate-600 mt-1">Send us your inquiry</p>
                 </CardContent>
@@ -90,8 +106,8 @@ export default function Contact() {
                 <div>
                   <h4 className="font-semibold text-slate-900 mb-2">Address</h4>
                   <p className="text-slate-700">
-                    Basement Shop #19, Al Mullah Complex<br />
-                    Ibn Khaldoun St., Hawalli, Kuwait
+                    {biz?.streetAddress} <br />
+                    {biz?.addressLocality}, Kuwait
                   </p>
                 </div>
                 
@@ -100,8 +116,7 @@ export default function Contact() {
                   <div>
                     <h4 className="font-semibold text-slate-900 mb-2">Business Hours</h4>
                     <div className="space-y-1 text-slate-700">
-                      <p>Saturday – Thursday: 10:00 AM – 10:00 PM</p>
-                      <p>Friday: 6:00 PM – 10:00 PM</p>
+                      <p>{biz?.openingHours || 'Open daily 10:00 AM – 10:00 PM'}</p>
                     </div>
                   </div>
                 </div>
@@ -121,7 +136,7 @@ export default function Contact() {
                   We provide free pickup and delivery service across all Kuwait governorates:
                 </p>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-2 text-sm">
-                  {['Hawalli', 'Kuwait City', 'Ahmadi', 'Farwaniya', 'Jahra', 'Mubarak Al-Kabeer'].map((area) => (
+                  {serviceAreas.map((area) => (
                     <div key={area} className="flex items-center gap-2">
                       <div className="w-2 h-2 bg-emerald-500 rounded-full"></div>
                       <span className="text-slate-700">{area}</span>
@@ -146,7 +161,7 @@ export default function Contact() {
                   size="lg"
                   className="w-full bg-white text-emerald-600 hover:bg-emerald-50 font-bold"
                 >
-                  <a href="tel:+96555301913" className="flex items-center justify-center w-full cursor-pointer">
+                  <a href={`tel:+${phoneRaw}`} className="flex items-center justify-center w-full cursor-pointer">
                     <Phone className="w-5 h-5 mr-2" />
                     Call Now
                   </a>
@@ -157,7 +172,7 @@ export default function Contact() {
                   variant="outline"
                   className="w-full border-2 border-white bg-transparent text-white hover:bg-white hover:text-emerald-600 font-bold"
                 >
-                  <a href="https://wa.me/96555301913" target="_blank" rel="noopener" className="flex items-center justify-center w-full cursor-pointer">
+                  <a href={whatsappUrl} target="_blank" rel="noopener" className="flex items-center justify-center w-full cursor-pointer">
                     <MessageCircle className="w-5 h-5 mr-2" />
                     WhatsApp
                   </a>
