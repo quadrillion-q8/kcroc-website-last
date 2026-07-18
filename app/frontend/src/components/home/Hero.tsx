@@ -1,7 +1,7 @@
 // File: app/frontend/src/components/home/Hero.tsx
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Phone, MessageCircle, CalendarClock, Shield, Zap, Award, Star } from 'lucide-react';
+import { Phone, MessageCircle, CalendarClock, Star } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ROUTES } from '../../constants/routes';
@@ -29,12 +29,6 @@ export default function Hero() {
       clearTimeout(animationTimer);
     };
   }, []);
-
-  const trustBadges = [
-    { icon: Shield, text: 'Data Privacy First' },
-    { icon: Zap, text: 'ESD-Safe Lab' },
-    { icon: Award, text: 'Original Parts Only' },
-  ];
 
   const stats = [
     { number: 500, suffix: '+', label: 'Repairs Completed' },
@@ -158,18 +152,6 @@ export default function Hero() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left Content */}
             <div className="space-y-8">
-              <div className="flex flex-wrap gap-3">
-                {trustBadges.map((badge) => (
-                  <div
-                    key={badge.text}
-                    className="flex items-center gap-2 text-xs font-semibold text-slate-400 uppercase tracking-wider border border-slate-800 rounded-full px-4 py-2"
-                  >
-                    <badge.icon className="w-4 h-4 text-emerald-500" />
-                    {badge.text}
-                  </div>
-                ))}
-              </div>
-
               <div>
                 <h1 className="text-white text-4xl xl:text-5xl font-black leading-tight">
                   {hero?.headline ?? "Kuwait's Expert Component-Level Repair Service."}
