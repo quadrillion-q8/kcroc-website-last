@@ -1,10 +1,17 @@
 // File: app/frontend/src/core/components/layout/Footer.tsx
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { MapPin, Phone, MessageCircle, CalendarClock, ShieldCheck } from 'lucide-react';
+import { MapPin, Phone, MessageCircle, CalendarClock, ShieldCheck, Clock, Star, Facebook, Instagram, Truck, Zap } from 'lucide-react';
 
 // ✅ FIXED: Correct relative path to reach the data folder
 import { KCROC_GRAPH } from '../../../data/graph';
+
+const TRUST_ICON_MAP: Record<string, React.ElementType> = {
+  ShieldCheck,
+  Truck,
+  Clock,
+  Zap,
+};
 
 export function Footer() {
   const [logoError, setLogoError] = useState(false);
@@ -12,6 +19,7 @@ export function Footer() {
   // Hook directly into the Knowledge Graph
   const business = KCROC_GRAPH.business;
   const footerData = KCROC_GRAPH.footer;
+  const trustBadges = KCROC_GRAPH.trustBadges;
 
   // Failsafe in case graph is missing
   if (!business || !footerData) return null;
@@ -21,6 +29,20 @@ export function Footer() {
   return (
     <footer className="relative bg-[#0a0f1c]/80 backdrop-blur-md border-t border-slate-800/50 pt-16 pb-8 z-10" aria-label="Site Footer">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {trustBadges.length > 0 && (
+          <div className="flex flex-wrap justify-center gap-x-8 gap-y-4 pb-12 mb-12 border-b border-slate-800/50">
+            {trustBadges.map((badge) => {
+              const Icon = TRUST_ICON_MAP[badge.iconKey];
+              return (
+                <div key={badge.id} className="flex items-center gap-2 text-xs font-semibold text-slate-400 uppercase tracking-wider">
+                  {Icon && <Icon className="w-4 h-4 text-cyan-400" aria-hidden="true" />}
+                  {badge.title}
+                </div>
+              );
+            })}
+          </div>
+        )}
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           
           {/* Brand Info */}
@@ -40,17 +62,67 @@ export function Footer() {
                 </div>
               )}
             </Link>
-            <p className="text-slate-400 text-sm leading-relaxed mb-6">
+            {business.aggregateRating && (
+              <div className="flex items-center gap-2 mb-4">
+                <div className="flex" aria-hidden="true">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 fill-current text-cyan-400" />
+                  ))}
+                </div>
+                <span className="text-slate-400 text-xs font-medium">
+                  {business.aggregateRating.ratingValue} · {business.aggregateRating.reviewCount}+ reviews
+                </span>
+              </div>
+            )}
+
+            <p className="text-slate-400 text-sm leading-relaxed mb-4">
               Professional computer and laptop repair in Kuwait. Free pickup & delivery across all governorates. No Fix, No Fee.
             </p>
-            <a 
-              href={WA_LINK} 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-bold transition-colors"
-            >
-              <MessageCircle size={20} aria-hidden="true" /> WhatsApp Us
-            </a>
+
+            {business.openingHours && (
+              <p className="flex items-center gap-2 text-slate-500 text-xs mb-6">
+                <Clock className="w-4 h-4 text-cyan-400 flex-shrink-0" aria-hidden="true" />
+                {business.openingHours}
+              </p>
+            )}
+
+            <div className="flex items-center gap-4">
+              <a 
+                href={WA_LINK} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-bold transition-colors"
+              >
+                <MessageCircle size={20} aria-hidden="true" /> WhatsApp Us
+              </a>
+            </div>
+
+            {(business.socialLinks?.facebook || business.socialLinks?.instagram) && (
+              <div className="flex items-center gap-3 mt-5">
+                {business.socialLinks.facebook && (
+                  <a
+                    href={business.socialLinks.facebook}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${business.alternateName || business.title} on Facebook`}
+                    className="w-9 h-9 flex items-center justify-center rounded-full border border-slate-800 text-slate-400 hover:text-cyan-400 hover:border-cyan-500/30 transition-colors"
+                  >
+                    <Facebook size={16} aria-hidden="true" />
+                  </a>
+                )}
+                {business.socialLinks.instagram && (
+                  <a
+                    href={business.socialLinks.instagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${business.alternateName || business.title} on Instagram`}
+                    className="w-9 h-9 flex items-center justify-center rounded-full border border-slate-800 text-slate-400 hover:text-cyan-400 hover:border-cyan-500/30 transition-colors"
+                  >
+                    <Instagram size={16} aria-hidden="true" />
+                  </a>
+                )}
+              </div>
+            )}
           </div>
 
           {/* Expert Services */}
