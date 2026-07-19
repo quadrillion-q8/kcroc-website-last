@@ -84,6 +84,8 @@ export default function Hero() {
             <img
               src={logoUrl}
               alt={`${business?.title ?? 'KCROC'} Logo`}
+              width="64"
+              height="64"
               className="h-16 w-auto object-contain drop-shadow-xl"
             />
           </div>
