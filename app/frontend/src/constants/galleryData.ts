@@ -52,4 +52,4 @@ export const GALLERY_ITEMS = [
     category: 'Gaming PCs',
     image: img
   }))
-].filter(item => item.image.src !== "/logo.png") as const; // Prevent logo from appearing in the gallery grid
+].filter(item => item.image.src !== "/logo.webp") as const; // Prevent logo from appearing in the gallery grid
