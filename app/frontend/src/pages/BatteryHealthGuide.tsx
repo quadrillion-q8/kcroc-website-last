@@ -7,7 +7,7 @@ import { Badge } from '@/components/ui/badge';
 import {
   Battery, BatteryWarning, Thermometer, AlertTriangle, CheckCircle2,
   Phone, MessageCircle, Zap, Clock, Gauge, RefreshCw, Shield,
-  Stethoscope, Wrench, HelpCircle
+  Stethoscope, Wrench, HelpCircle, Moon, WifiOff
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -136,6 +136,7 @@ export default function BatteryHealthGuide() {
     }
   ];
 
+  // Restored to exactly 4 items for a perfectly symmetrical 2x2 grid
   const proTips = [
     { title: 'Keep It Cool', description: "Avoid extreme temperatures — heat is the enemy of battery longevity in Kuwait's climate.", icon: Thermometer, frequency: 'Always' },
     { title: 'Optimal Charging', description: 'Keep battery level between 20-80% for daily use rather than leaving it at 100%.', icon: Battery, frequency: 'Daily' },
@@ -347,8 +348,74 @@ export default function BatteryHealthGuide() {
         </div>
       </section>
 
+      {/* ─── SOFTWARE TROUBLESHOOTING: OVERNIGHT DRAIN ─── */}
+      <section className="py-16 md:py-24 px-4 bg-slate-900/50 border-t border-slate-900 scroll-mt-20">
+        <div className="container mx-auto max-w-5xl">
+          <div className="text-center mb-10 md:mb-16">
+            <Badge className="bg-indigo-500/20 text-indigo-300 border-indigo-500/30 px-4 py-1.5 md:py-2 text-xs md:text-sm mb-4">
+              <Moon className="w-4 h-4 mr-2 inline" />
+              Software Troubleshooting
+            </Badge>
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 md:mb-6">
+              Fixing "Overnight" Idle Battery Drain
+            </h2>
+            <p className="text-slate-300 text-base md:text-lg max-w-3xl mx-auto leading-relaxed">
+              If your Windows laptop is left untouched overnight, does the battery drop by 5-8%? For many users—especially those with premium devices like the Lenovo Yoga Pro 7i or Yoga Slim Ultra—this idle battery drain is incredibly frustrating when compared to a MacBook Air running Apple Silicon (which typically only loses 3-4%). Before assuming your hardware is failing, try halving your idle drain with these two settings.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            <Card className="bg-slate-900 border border-slate-800 shadow-xl">
+              <CardHeader className="p-6 md:p-8">
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="bg-indigo-500/10 p-3 rounded-xl shrink-0">
+                    <Moon className="w-8 h-8 text-indigo-400" />
+                  </div>
+                  <CardTitle className="text-xl md:text-2xl text-white">1. Set to Hibernate, Not Sleep</CardTitle>
+                </div>
+                <p className="text-slate-400 text-sm md:text-base leading-relaxed mb-6">
+                  By default, closing your lid triggers a "Standby Sleep" state. RAM stays partially active, network connections can stay open, and background tasks drain the battery. Hibernation saves your session to the drive and completely powers down the RAM, using almost no power.
+                </p>
+                <div className="bg-slate-950 p-5 rounded-xl border border-slate-800/60">
+                  <span className="block text-xs text-indigo-400 font-bold uppercase tracking-wider mb-3">How to change it:</span>
+                  <ol className="list-decimal list-inside text-sm text-slate-300 space-y-2.5">
+                    <li>Open the Start Menu and type <strong>"Lid"</strong>.</li>
+                    <li>Click <strong>"Change what closing the lid does"</strong>.</li>
+                    <li>Under "On battery", change the dropdown to <strong>"Hibernate"</strong>.</li>
+                    <li>Click Save changes.</li>
+                  </ol>
+                </div>
+              </CardHeader>
+            </Card>
+
+            <Card className="bg-slate-900 border border-slate-800 shadow-xl">
+              <CardHeader className="p-6 md:p-8">
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="bg-orange-500/10 p-3 rounded-xl shrink-0">
+                    <WifiOff className="w-8 h-8 text-orange-400" />
+                  </div>
+                  <CardTitle className="text-xl md:text-2xl text-white">2. Disable Wi-Fi "Magic Packets"</CardTitle>
+                </div>
+                <p className="text-slate-400 text-sm md:text-base leading-relaxed mb-6">
+                  Another big source of idle drain is your Wi-Fi adapter waking your computer to receive "magic packets" (like automated IT patches). Unless you rely on remote desktop access, disabling this prevents unnecessary network-based wake-ups.
+                </p>
+                <div className="bg-slate-950 p-5 rounded-xl border border-slate-800/60">
+                  <span className="block text-xs text-orange-400 font-bold uppercase tracking-wider mb-3">How to disable it:</span>
+                  <ol className="list-decimal list-inside text-sm text-slate-300 space-y-2.5">
+                    <li>Open Start, type <strong>"Device Manager"</strong>.</li>
+                    <li>Expand <strong>"Network adapters"</strong> and click your Wi-Fi device.</li>
+                    <li>Open <strong>Power Management</strong> tab.</li>
+                    <li>Uncheck <strong>"Allow this device to wake the computer"</strong>.</li>
+                  </ol>
+                </div>
+              </CardHeader>
+            </Card>
+          </div>
+        </div>
+      </section>
+
       {/* ─── PRO TIPS ─── */}
-      <section className="py-16 md:py-24 px-4">
+      <section className="py-16 md:py-24 px-4 border-t border-slate-900">
         <div className="container mx-auto max-w-5xl">
           <div className="text-center mb-10 md:mb-16">
             <Badge className="bg-cyan-500/20 text-cyan-300 border-cyan-500/30 px-4 py-1.5 md:py-2 text-xs md:text-sm mb-4">
@@ -383,7 +450,7 @@ export default function BatteryHealthGuide() {
           <Card className="bg-slate-900/50 border-slate-800">
             <CardHeader className="p-6 md:p-8">
               <CardTitle className="text-xl md:text-2xl text-white mb-1">When to Replace Your Battery</CardTitle>
-              <p className="text-slate-400 text-sm mb-5">If you're experiencing multiple signs above, it's time to consider a replacement.</p>
+              <p className="text-slate-400 text-sm mb-5">If you've optimized your software settings but are still experiencing multiple signs above, it's time to consider a hardware replacement.</p>
               <ul className="grid sm:grid-cols-2 gap-3">
                 {replaceChecklist.map((item, idx) => (
                   <li key={idx} className="flex items-start gap-2 text-slate-300 text-sm">
