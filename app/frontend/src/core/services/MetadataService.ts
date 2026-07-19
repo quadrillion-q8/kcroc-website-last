@@ -82,17 +82,17 @@ export class MetadataService {
       // OpenGraph Normalization
       ogType: seoInput.ogType || 'website',
       ogImage: {
-        url: this.ensureAbsoluteUrl(seoInput.ogImage?.url || '/logo.png', baseUrl),
-        secureUrl: this.ensureAbsoluteUrl(seoInput.ogImage?.secureUrl || seoInput.ogImage?.url || '/logo.png', baseUrl),
+        url: this.ensureAbsoluteUrl(seoInput.ogImage?.url || '/logo.webp', baseUrl),
+        secureUrl: this.ensureAbsoluteUrl(seoInput.ogImage?.secureUrl || seoInput.ogImage?.url || '/logo.webp', baseUrl),
         alt: seoInput.ogImage?.alt || seoInput.title || BUSINESS_INFO?.name,
-        type: seoInput.ogImage?.type || 'image/png',
-        width: seoInput.ogImage?.width || 512,
-        height: seoInput.ogImage?.height || 512,
+        type: seoInput.ogImage?.type || 'image/webp', // Swapped MIME type to match WebP
+        width: seoInput.ogImage?.width || 224, // Corrected fallback to the actual retina square size
+        height: seoInput.ogImage?.height || 224, // Corrected fallback to the actual retina square size
       },
       
       // Twitter Normalization
       twitterImage: {
-        url: this.ensureAbsoluteUrl(seoInput.twitterImage?.url || seoInput.ogImage?.url || '/logo.png', baseUrl),
+        url: this.ensureAbsoluteUrl(seoInput.twitterImage?.url || seoInput.ogImage?.url || '/logo.webp', baseUrl),
         alt: seoInput.twitterImage?.alt || seoInput.ogImage?.alt || seoInput.title || BUSINESS_INFO?.name,
       },
       
