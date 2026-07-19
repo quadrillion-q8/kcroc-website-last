@@ -24,7 +24,7 @@ const rawGraphData: RawGraphData = {
       telephone: '96555301913', streetAddress: 'Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19',
       addressLocality: 'Hawalli', addressRegion: 'Hawalli Governorate', addressCountry: 'KW',
       coords: { lat: 29.3356, lng: 48.0250 }, websiteUrl: 'https://www.computerrepairkuwait.com',
-      logoUrl: 'https://www.computerrepairkuwait.com/logo.png', email: 'quadrillion1980@gmail.com',
+      logoUrl: 'https://www.computerrepairkuwait.com/logo.webp', email: 'quadrillion1980@gmail.com',
       priceRange: '$$', openingHours: 'Open daily 10:00 AM – 10:00 PM',
       schemaOpeningHours: { dayOfWeek: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'], opens: '10:00', closes: '22:00' },
       aggregateRating: { ratingValue: '4.9', reviewCount: 153, bestRating: 5 },
@@ -208,7 +208,7 @@ const rawGraphData: RawGraphData = {
       description: 'Dell laptops — Inspiron, Latitude, XPS, and Alienware — have specific failure patterns in Kuwait\'s climate. The cooling systems on Dell Inspiron and Latitude models are particularly vulnerable to dust ingress from Kuwait\'s particulate-heavy air. XPS models use soldered RAM and storage, making component-level repair the only cost-effective path when hardware fails.',
       commonModels: ['Inspiron 15', 'Inspiron 14', 'Latitude 5420', 'XPS 13', 'XPS 15', 'G15 Gaming', 'Alienware m16'],
       commonIssues: [
-        { id: 'dell-hinge',    title: 'Hinge cracking the bezel',      severity: 'high',   description: 'Dell Inspiron hinges frequently crack the plastic chassis.' },
+        { id: 'dell-hinge',    title: 'Hinge cracking the bezel',     severity: 'high',   description: 'Dell Inspiron hinges frequently crack the plastic chassis.' },
         { id: 'dell-thermal',  title: 'CPU throttling under load',     severity: 'high',   description: 'Clogged heatsink fins in Kuwait dust conditions.' },
         { id: 'dell-dc-jack',  title: 'Charging port loose or dead',   severity: 'medium', description: 'Dell barrel DC jack failure from heavy plug cycling.' },
         { id: 'dell-screen',   title: 'Screen flickering or lines',    severity: 'medium', description: 'Display cable wear near the hinge.' },
