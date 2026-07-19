@@ -46,6 +46,8 @@ const ScreenProtectionTips = lazy(() => import('./pages/ScreenProtectionTips'));
 // 🚀 Custom AI-Generated Guides
 // Using named export resolution (.then) since we exported it as `export const DellOverheatingPage`
 const DellOverheatingPage = lazy(() => import('./pages/DellOverheatingPage').then(module => ({ default: module.DellOverheatingPage })));
+// BatteryHealthGuide uses a default export, so no .then() resolution needed
+const BatteryHealthGuide = lazy(() => import('./pages/BatteryHealthGuide'));
 
 // UI: Global loading spinner
 const PageLoader = () => (
@@ -110,6 +112,7 @@ export const App: React.FC = () => {
               
               {/* 🚀 AI Content Guides */}
               <Route path="guides/dell-overheating" element={<DellOverheatingPage />} />
+              <Route path="guides/laptop-battery-warning-signs" element={<BatteryHealthGuide />} />
               
               {/* SEO Guardrail: Canonical URL redirection */}
               <Route path="laptop-screen-protection-tips" element={<ScreenProtectionTips />} />
