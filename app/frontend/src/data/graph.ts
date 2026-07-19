@@ -67,7 +67,7 @@ const rawGraphData: RawGraphData = {
       steps: [
         { step: 1, title: 'Free collection — we come to you', description: 'Book via WhatsApp. Our driver collects your device directly from your doorstep across all Kuwait — no deposit, no minimum spend. We tag and log every device for full chain-of-custody tracking.' },
         { step: 2, title: 'Precision diagnostic — no guesswork', description: 'Your device enters our Hawalli lab where technicians use thermal imaging, digital multimeters, and boardview software to trace the exact component fault. You receive a fixed quote before we touch a tool.' },
-        { step: 3, title: 'Repair, stress-test, and return', description: 'We execute the micro-soldering or hardware replacement, then stress-test the system under full load for stability. If it passes, we deliver it back. If we can\'t fix it, you pay nothing.' }
+        { step: 3, title: 'Repair, stress-test, and return', description: 'We execute the micro-soldering or hardware replacement, then stress-test the system under full load for stability. If it passes, we deliver it back. If we can't fix it, you pay nothing.' }
       ]
     } as ProcessEntity,
 
@@ -99,6 +99,7 @@ const rawGraphData: RawGraphData = {
     'page-pricing': { id: 'page-pricing', slug: 'pricing', entityType: 'WebPage', isActive: true, title: 'Pricing', description: 'Transparent repair pricing.', seo: { title: 'Computer Repair Pricing Kuwait | KCROC', description: 'Transparent pricing for laptop screen replacement, battery replacement, and logic board repairs in Kuwait.', canonicalUrl: 'https://www.computerrepairkuwait.com/pricing', ogType: 'website', schemaTypes: ['WebPage'] } } as WebPageEntity,
     'page-privacy': { id: 'page-privacy', slug: 'privacy-security-kuwait', entityType: 'WebPage', isActive: true, title: 'Privacy & Security', description: 'Our data privacy guarantee.', seo: { title: 'Data Privacy & Security Guarantee | KCROC', description: 'Read about our strict hardware-only protocol that guarantees your personal data remains 100% private during repairs.', canonicalUrl: 'https://www.computerrepairkuwait.com/privacy-security-kuwait', ogType: 'website', schemaTypes: ['WebPage'] } } as WebPageEntity,
     'page-case-studies': { id: 'page-case-studies', slug: 'case-studies', entityType: 'WebPage', isActive: true, title: 'Case Studies', description: 'Real repair success stories.', seo: { title: 'Repair Case Studies | KCROC Kuwait', description: 'Read real case studies of laptops and MacBooks we saved from liquid damage and catastrophic failure.', canonicalUrl: 'https://www.computerrepairkuwait.com/case-studies', ogType: 'website', schemaTypes: ['CollectionPage'] } } as WebPageEntity,
+    'guide-battery': { id: 'guide-battery', slug: 'guides/laptop-battery-warning-signs', entityType: 'WebPage', isActive: true, title: 'Laptop Battery Warning Signs', description: 'Learn the 4 critical warning signs of lithium-ion failure.', seo: { title: 'Laptop Battery Warning Signs | KCROC', description: 'Is your laptop battery expanding or overheating? Learn the 4 critical warning signs of lithium-ion failure.', canonicalUrl: 'https://www.computerrepairkuwait.com/guides/laptop-battery-warning-signs', ogType: 'article', schemaTypes: ['Article'] } } as WebPageEntity,
 
     /* ═══════════════════════════════════════════════════════════════
        SERVICES
@@ -541,16 +542,17 @@ const rawGraphData: RawGraphData = {
           { label: 'About us',       path: '/about' },
           { label: 'Contact',        path: '/contact' },
           { label: 'Tech Blog',      path: '/blog' },
+          { label: 'Battery Health Guide', path: '/guides/laptop-battery-warning-signs' },
           { label: 'FAQ',            path: '/faq' },
           { label: 'Pricing',        path: '/pricing' },
         ],
         areas: [
-          { label: 'Computer Repair Hawalli',      path: '/computer-repair-in-hawalli' },
-          { label: 'Computer Repair Salmiya',      path: '/computer-repair-in-salmiya' },
-          { label: 'Computer Repair Kuwait City',  path: '/computer-repair-in-kuwait-city' },
-          { label: 'Computer Repair Farwaniya',    path: '/computer-repair-in-farwaniya' },
-          { label: 'Computer Repair Jahra',        path: '/computer-repair-in-jahra' },
-          { label: 'Computer Repair Ahmadi',       path: '/computer-repair-in-ahmadi' },
+          { label: 'Computer Repair Hawalli',      path: '/location/hawalli' },
+          { label: 'Computer Repair Salmiya',      path: '/location/salmiya' },
+          { label: 'Computer Repair Kuwait City',  path: '/location/kuwait-city' },
+          { label: 'Computer Repair Farwaniya',    path: '/location/farwaniya' },
+          { label: 'Computer Repair Jahra',        path: '/location/jahra' },
+          { label: 'Computer Repair Ahmadi',       path: '/location/ahmadi' },
         ]
       }
     } as FooterEntity,
