@@ -20,7 +20,7 @@ export default function MetaSEO({
   robots = 'index,follow,max-image-preview:large',
 }: MetaSEOProps) {
   // ✅ Fixed: render title as-is — all pages already include brand name in title prop
-  const ogImageUrl = ogImage ?? `${BUSINESS_INFO.url}/logo.png`;
+  const ogImageUrl = ogImage ?? `${BUSINESS_INFO.url}/logo.webp`;
 
   return (
     <Helmet>
