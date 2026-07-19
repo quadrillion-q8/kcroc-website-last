@@ -64,7 +64,9 @@ export default function BlogPostTemplate() {
           "name": BUSINESS_INFO.name,
           "logo": {
             "@type": "ImageObject",
-            "url": `${BUSINESS_INFO.url}/logo.png`
+            "url": `${BUSINESS_INFO.url}/logo.webp`,
+            "width": 224,
+            "height": 224
           }
         },
         "mainEntityOfPage": { "@id": `${pageUrl}#webpage` }
