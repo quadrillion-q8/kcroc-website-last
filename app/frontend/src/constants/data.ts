@@ -12,7 +12,7 @@ export const BUSINESS_INFO = {
   cleanPhone: "96555301913",
   email: "quadrillion1980@gmail.com",
   url: "https://www.computerrepairkuwait.com",
-  logo: "https://www.computerrepairkuwait.com/logo.png",
+  logo: "https://www.computerrepairkuwait.com/logo.webp",
   address: "Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19, Hawalli, Kuwait",
   coords: { lat: 29.3356, lng: 48.0250 },
   googleReviewUrl: "https://search.google.com/local/writereview?placeid=YOUR_PLACE_ID"
@@ -39,19 +39,19 @@ export const AREAS = {
 };
 
 export const SERVICES = [
-  { title: 'Laptop Repair',      description: 'Comprehensive hardware diagnostics, thermal management, and restoration.',          icon: Laptop,   path: '/laptop-repair-kuwait' },
-  { title: 'MacBook Repair',     description: 'Expert Apple logic board micro-soldering and OEM screen replacement.',              icon: Apple,    path: '/macbook-repair-kuwait' },
-  { title: 'Gaming PC Repair',   description: 'High-performance thermal engineering, GPU diagnostics, and cooling.',               icon: Gamepad2, path: '/gaming-pc-repair-kuwait' },
+  { title: 'Laptop Repair',      description: 'Comprehensive hardware diagnostics, thermal management, and restoration.',         icon: Laptop,   path: '/laptop-repair-kuwait' },
+  { title: 'MacBook Repair',     description: 'Expert Apple logic board micro-soldering and OEM screen replacement.',             icon: Apple,    path: '/macbook-repair-kuwait' },
+  { title: 'Gaming PC Repair',   description: 'High-performance thermal engineering, GPU diagnostics, and cooling.',              icon: Gamepad2, path: '/gaming-pc-repair-kuwait' },
   // ✅ Fixed: path synced to MotherboardRepair.tsx canonical URL
   { title: 'Motherboard Repair', description: 'Chip-level diagnostics, capacitor replacement, and short circuit repair.',          icon: Cpu,      path: '/motherboard-repair-kuwait' },
   // ✅ Fixed: path synced to ScreenReplacement.tsx canonical URL
-  { title: 'Screen Replacement', description: 'Flawless LCD and OLED display panel replacements fitted with precision.',            icon: Monitor,  path: '/laptop-screen-repair-kuwait' },
+  { title: 'Screen Replacement', description: 'Flawless LCD and OLED display panel replacements fitted with precision.',             icon: Monitor,  path: '/laptop-screen-repair-kuwait' },
 ];
 
 export const RECENT_BLOGS = [
   { title: "Laptop Repair in Kuwait: The 2026 Guide", excerpt: "How Kuwait's climate impacts laptop hardware and thermal management.", path: "/blog/laptop-repair-kuwait-2026",      date: "2026-06-14", category: "Hardware" },
-  { title: "How to Protect Your Laptop Screen",        excerpt: "Essential tips to prevent pressure fractures and hinge stress.",      path: "/blog/how-to-protect-laptop-screen",     date: "2026-06-02", category: "Maintenance" },
-  { title: "Gaming PC Cooling Solutions",              excerpt: "Advanced thermal engineering strategies for peak performance.",        path: "/gaming-pc-cooling",                     date: "2026-05-18", category: "Gaming" }
+  { title: "How to Protect Your Laptop Screen",       excerpt: "Essential tips to prevent pressure fractures and hinge stress.",      path: "/blog/how-to-protect-laptop-screen",     date: "2026-06-02", category: "Maintenance" },
+  { title: "Gaming PC Cooling Solutions",             excerpt: "Advanced thermal engineering strategies for peak performance.",        path: "/gaming-pc-cooling",                     date: "2026-05-18", category: "Gaming" }
 ];
 
 export const REVIEWS = [
@@ -68,9 +68,9 @@ export const FAQS = [
 
 export const TRUST_STATS = [
   { value: '500+',    label: 'Repairs Completed', subtext: 'Since launch across Kuwait' },
-  { value: '98%',     label: 'Success Rate',       subtext: 'On complex logic board repairs' },
-  { value: '30 Days', label: 'Warranty',           subtext: 'On all parts and labour' },
-  { value: 'Free',    label: 'Pick & Drop',        subtext: 'Zero hidden transport fees' },
+  { value: '98%',     label: 'Success Rate',      subtext: 'On complex logic board repairs' },
+  { value: '30 Days', label: 'Warranty',          subtext: 'On all parts and labour' },
+  { value: 'Free',    label: 'Pick & Drop',       subtext: 'Zero hidden transport fees' },
 ];
 
 export const INTERNAL_FOOTER_LINKS = [
