@@ -112,6 +112,8 @@ export class NavigationCompiler {
         title: 'Step-by-Step Guides',
         items: [
           { id: 'g1', slug: 'guides/dell-overheating', title: 'Dell Overheating Fix', description: 'Thermal troubleshooting guide', iconKey: 'cpu', entityType: 'Page' as any, primaryKeyword: 'overheating', weight: 0, commercialIntent: 'info' },
+          // 🚀 ADDED: Battery Warning Signs guide integrated into the correct dropdown
+          { id: 'g2', slug: 'guides/laptop-battery-warning-signs', title: 'Battery Warning Signs', description: 'Lithium-ion failure checklist', iconKey: 'battery', entityType: 'Page' as any, primaryKeyword: 'battery', weight: 0, commercialIntent: 'info' },
         ]
       }]
     };
