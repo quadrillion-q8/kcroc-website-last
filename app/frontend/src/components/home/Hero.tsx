@@ -56,15 +56,24 @@ export default function Hero() {
       const animate = (currentTime: number) => {
         if (!startTime) startTime = currentTime;
         const progress = Math.min((currentTime - startTime) / duration, 1);
+        
+        // Linear mapping to update count up to target end value
         setCount(Math.floor(progress * end));
-        if (progress < 1) requestAnimationFrame(animate);
+
+        if (progress < 1) {
+          requestAnimationFrame(animate);
+        } else {
+          setCount(end); // Explicitly snap to the final number
+        }
       };
+
       requestAnimationFrame(animate);
-    }, [end, duration, statsAnimated, hasAnimated, statsLoading]);
+    }, [statsAnimated, hasAnimated, statsLoading, end, duration]);
 
     if (statsLoading) {
       return <span className="counter loading-state">--</span>;
     }
+
     return (
       <span className="counter">
         {count}
