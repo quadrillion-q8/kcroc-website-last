@@ -17,21 +17,21 @@ export const LeadMagnet = () => {
   )}`;
 
   return (
-    <section className="w-full py-24 px-6 border-t border-slate-800/50 bg-slate-950">
+    <section className="w-full py-8 sm:py-24 px-4 sm:px-6 border-t border-slate-800/50 bg-slate-950">
       <div className="max-w-2xl mx-auto text-center">
-        <p className="text-xs font-bold text-emerald-500 uppercase tracking-wider mb-3">
+        <p className="text-xs font-bold text-emerald-500 uppercase tracking-wider mb-2 sm:mb-3">
           Not Sure What's Wrong?
         </p>
-        <h2 className="text-3xl md:text-4xl font-black text-white">
+        <h2 className="text-white">
           Get an Instant Price Estimate
         </h2>
-        <p className="mt-4 text-slate-400">
+        <p className="mt-3 sm:mt-4 text-slate-400 text-sm sm:text-base">
           Tell us your device and symptom — we'll reply on WhatsApp with a
           ballpark price range, no commitment.
         </p>
 
         <form
-          className="mt-10 grid gap-3 sm:grid-cols-2"
+          className="mt-5 sm:mt-10 grid gap-3 sm:grid-cols-2"
           onSubmit={(e) => {
             e.preventDefault();
             // Fire the tracking event right before opening WhatsApp
