@@ -75,31 +75,43 @@ export default function Hero() {
 
   return (
     <>
-      {/* Mobile Hero Section */}
-      <section className="min-h-screen bg-transparent pt-20 pb-16 relative overflow-hidden lg:hidden">
+      {/* Mobile Hero Section — sized to content, no min-h-screen/100vh */}
+      <section className="bg-transparent pt-24 pb-8 relative overflow-hidden lg:hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-cyan-950/40 via-transparent to-emerald-950/20" />
 
         <div className="container mx-auto px-4 relative z-10">
-          <div className="flex justify-center mb-6">
+          <div className="flex justify-center mb-4">
             <img
               src={logoUrl}
               alt={`${business?.title ?? 'KCROC'} Logo`}
-              width="64"
-              height="64"
-              className="h-16 w-auto object-contain drop-shadow-xl"
+              width="48"
+              height="48"
+              className="h-12 w-auto object-contain drop-shadow-xl"
             />
           </div>
 
-          <h1 className="text-white text-2xl font-black text-center leading-tight mt-4 mb-2">
+          <h1 className="text-white text-[28px] font-black text-center leading-[1.2]">
             {hero?.headline ?? "Kuwait's Expert Component-Level Repair Service."}
           </h1>
 
-          <p className="text-slate-400 text-base text-center leading-relaxed mb-5">
+          <p className="text-slate-400 text-base text-center leading-relaxed mt-3">
             {hero?.description ??
               'Free pickup & delivery. Expert engineer. Data-safe repairs for home and office.'}
           </p>
 
-          <div className="space-y-3 mb-3">
+          {/* Trust indicators — compact row, above the fold */}
+          <div className="flex items-center justify-center gap-1.5 mt-3 flex-wrap">
+            {['Free pickup', '30-day warranty', 'No fix, no fee'].map((label) => (
+              <span
+                key={label}
+                className="text-[11px] font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-2.5 py-1"
+              >
+                {label}
+              </span>
+            ))}
+          </div>
+
+          <div className="space-y-3 mt-4">
             <Button
               size="lg"
               asChild
@@ -121,7 +133,8 @@ export default function Hero() {
             <Button
               size="lg"
               asChild
-              className="w-full h-14 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-lg rounded-full shadow-lg min-h-[44px]"
+              variant="outline"
+              className="w-full h-14 border-2 border-emerald-500 text-emerald-400 hover:bg-emerald-500/10 font-bold text-lg rounded-full min-h-[44px]"
             >
               <a
                 href={`https://wa.me/${phone}`}
@@ -140,7 +153,7 @@ export default function Hero() {
             </Button>
           </div>
 
-          <p className="text-slate-500 text-sm text-center font-medium mt-3 mb-6">
+          <p className="text-slate-500 text-sm text-center font-medium mt-3">
             {rating}★ Google rating · Trusted by {repairsStat?.value ?? '500+'} customers across Kuwait
           </p>
         </div>
