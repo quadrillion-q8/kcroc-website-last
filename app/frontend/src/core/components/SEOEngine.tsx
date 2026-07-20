@@ -93,7 +93,7 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
   if (Array.isArray(schemaTypes)) {
     schemaTypes.forEach(type => {
 
-      // Service & Offer Catalog Schema (Cleaned up, removed hasOfferCatalog nesting issues)
+      // Service & Offer Catalog Schema
       if (type === 'Service') {
         if (entity.entityType === 'Service') {
           const service = entity as ServiceEntity;
@@ -112,7 +112,6 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
               "priceCurrency": service.pricing.currency,
               "price": service.pricing.startingFrom,
               "availability": "https://schema.org/InStock",
-              // Dynamically sets validation date 1 year into the future to satisfy Google Rich Snippet rules
               "priceValidUntil": new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toISOString().split('T')[0]
             } : undefined
           });
@@ -141,7 +140,7 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
         }
       }
 
-      // FAQ Schema (Unified logic to prevent duplicate FAQPage nodes)
+      // FAQ Schema
       if (type === 'FAQPage') {
         let questions: { title: string, answer: string }[] = [];
         
@@ -271,17 +270,66 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
         });
       }
 
-      // Location Entity (Simplified to strictly link to parent without conflicting aggregate ratings)
+      // Location entities: branch on isPhysicalLocation.
       if (type === 'LocalBusiness' && entity.entityType === 'Location') {
         const location = entity as LocationEntity;
-        schemaGraph.push({
-          "@type": ["LocalBusiness", "ComputerStore"],
-          "@id": `${fullCanonicalUrl}#location`,
-          "name": location.title,
-          "url": fullCanonicalUrl,
-          "telephone": `+${business.telephone}`,
-          "parentOrganization": { "@id": `${business.websiteUrl}/#business` }
-        });
+
+        if (location.isPhysicalLocation) {
+          // Real branch/storefront — full LocalBusiness node with a
+          // genuine street address and geo point.
+          schemaGraph.push({
+            "@type": ["LocalBusiness", "ComputerStore"],
+            "@id": `${fullCanonicalUrl}#location`,
+            "name": location.title,
+            "url": fullCanonicalUrl,
+            "telephone": `+${business.telephone}`,
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": location.landmark,
+              "addressLocality": location.title.replace(' Repair Center', ''),
+              "addressRegion": business.addressRegion,
+              "addressCountry": "KW"
+            },
+            "geo": location.coords ? {
+              "@type": "GeoCoordinates",
+              "latitude": location.coords.lat,
+              "longitude": location.coords.lng
+            } : undefined,
+            "areaServed": location.serviceAreas.map(area => ({
+              "@type": "City",
+              "name": area
+            })),
+            "parentOrganization": { "@id": `${business.websiteUrl}/#business` }
+          });
+        } else {
+          // Service-area page — no storefront exists here, so
+          // no address/geo/LocalBusiness claim is made. Instead this
+          // describes coverage.
+          schemaGraph.push({
+            "@type": "Service",
+            "@id": `${fullCanonicalUrl}#service-area`,
+            "name": `Computer Repair Pickup & Delivery — ${location.title}`,
+            "description": location.description,
+            "provider": { "@id": `${business.websiteUrl}/#business` },
+            "areaServed": [
+              {
+                "@type": "Place",
+                "name": location.title,
+                ...(location.coords && {
+                  "geo": {
+                    "@type": "GeoCoordinates",
+                    "latitude": location.coords.lat,
+                    "longitude": location.coords.lng
+                  }
+                })
+              },
+              ...location.serviceAreas.map(area => ({
+                "@type": "City",
+                "name": area
+              }))
+            ]
+          });
+        }
       }
     });
   }
