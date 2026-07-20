@@ -52,6 +52,8 @@ export function Footer() {
                 <img 
                   src={business.logoUrl} 
                   alt={`${business.alternateName || business.title} Logo`} 
+                  width="112"
+                  height="112"
                   className="h-14 w-auto object-contain rounded-xl" 
                   onError={() => setLogoError(true)} 
                 />
