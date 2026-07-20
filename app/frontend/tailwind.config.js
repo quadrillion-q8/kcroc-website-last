@@ -18,8 +18,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ["Plus Jakarta Sans", "system-ui", "sans-serif"],
-        heading: ["Montserrat", "system-ui", "sans-serif"],
+        sans: ["Inter", "-apple-system", "system-ui", "sans-serif"],
+        heading: ["Inter", "-apple-system", "system-ui", "sans-serif"],
       },
       colors: {
         // --- New Design Tokens from kcroc_homepage_mockup.html ---
