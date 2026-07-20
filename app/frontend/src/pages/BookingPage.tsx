@@ -12,9 +12,14 @@ import {
 } from 'lucide-react';
 
 import SchemaMarkup from '../components/seo/SchemaMarkup';
-
-// 👈 Phase 2 SEO Engine Imported
 import { SEOEngine } from '../core/components/SEOEngine';
+
+// Global declaration to fix TypeScript 'any' issues with window.gtag
+declare global {
+  interface Window {
+    gtag?: (...args: any[]) => void;
+  }
+}
 
 const client = createClient();
 
@@ -107,7 +112,6 @@ const STRUCTURED_DATA = {
 /* ─────────────────────────────────────────────────────────────────────────────
    2. ZOD SCHEMA
 ───────────────────────────────────────────────────────────────────────────── */
-
 const bookingSchema = z.object({
   customer_name:      z.string().min(3, { message: 'Name must be at least 3 characters' }),
   customer_phone:     z.string().regex(/^(965)?[569]\d{7}$/, {
@@ -126,7 +130,6 @@ type BookingFormData = z.infer<typeof bookingSchema>;
 /* ─────────────────────────────────────────────────────────────────────────────
    3. MAIN COMPONENT
 ───────────────────────────────────────────────────────────────────────────── */
-
 export default function BookingPage() {
   const [submitted, setSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState('');
@@ -143,8 +146,8 @@ export default function BookingPage() {
   const customerPhone = watch('customer_phone');
 
   const trackEvent = (eventName: string) => {
-    if (typeof window !== 'undefined' && (window as any).gtag) {
-      (window as any).gtag('event', eventName);
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', eventName);
     }
   };
 
@@ -173,12 +176,19 @@ export default function BookingPage() {
       } else {
         throw new Error('DATABASE_ERROR');
       }
-    } catch (err: any) {
-      console.error('Booking submission error:', err);
+    } catch (err: unknown) {
+      // Keep console clean for production, only log to console in dev mode
+      if (import.meta.env.DEV) {
+        console.error('Booking submission error:', err);
+      }
+      
       trackEvent('booking_failed');
-      if (err.message?.includes('Network Error') || err.name === 'TypeError') {
+      
+      const errorMessage = err instanceof Error ? err.message : String(err);
+      
+      if (errorMessage.includes('Network Error') || err instanceof TypeError) {
         setSubmitError('Network connection failed. Please check your internet and try again.');
-      } else if (err.message === 'DATABASE_ERROR') {
+      } else if (errorMessage === 'DATABASE_ERROR') {
         setSubmitError('Our system is currently busy. Please call us directly to book.');
       } else {
         setSubmitError('Failed to submit booking. Please try again or contact us via WhatsApp.');
@@ -218,26 +228,26 @@ export default function BookingPage() {
     return (
       <>
         {seoBlock}
-        <main className="min-h-screen bg-transparent text-white flex items-center justify-center px-6 pt-32 font-sans">
-          <div className="bg-slate-900/40 backdrop-blur-md border border-slate-800 rounded-3xl max-w-xl w-full shadow-2xl p-8 md:p-12 text-center animate-in fade-in slide-in-from-bottom-4 duration-700">
-            <div className="w-20 h-20 bg-emerald-500/20 rounded-full flex items-center justify-center mx-auto mb-6 border border-emerald-500/30">
-              <CheckCircle className="w-10 h-10 text-emerald-400" aria-hidden="true" /> 
+        <main className="min-h-screen bg-transparent text-white flex items-center justify-center px-4 sm:px-6 pt-24 pb-8 font-sans">
+          <div className="bg-slate-900/40 backdrop-blur-md border border-slate-800 rounded-3xl max-w-xl w-full shadow-2xl p-6 sm:p-12 text-center animate-in fade-in slide-in-from-bottom-4 duration-700">
+            <div className="w-16 h-16 sm:w-20 sm:h-20 bg-emerald-500/20 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 border border-emerald-500/30">
+              <CheckCircle className="w-8 h-8 sm:w-10 sm:h-10 text-emerald-400" aria-hidden="true" /> 
             </div>
-            <h1 className="text-3xl font-black text-white mb-4 tracking-tight">Booking Confirmed!</h1>
-            <p className="text-slate-400 mb-8 leading-relaxed">
+            <h1 className="text-2xl sm:text-3xl font-black text-white mb-3 tracking-tight">Booking Confirmed!</h1>
+            <p className="text-slate-400 text-sm sm:text-base mb-6 sm:mb-8 leading-relaxed">
               Thank you, <strong className="text-white">{customerName}</strong>! Your hardware assessment booking has been received.
               We'll contact you on <strong className="text-emerald-400">{customerPhone}</strong> to confirm your pickup details.
             </p>
 
-            <div className="bg-slate-950 rounded-2xl p-6 mb-8 text-left space-y-4 border border-slate-800 shadow-inner">
-              <h2 className="text-white font-bold flex items-center gap-2 mb-4">
+            <div className="bg-slate-950 rounded-2xl p-4 sm:p-6 mb-6 sm:mb-8 text-left space-y-4 border border-slate-800 shadow-inner">
+              <h2 className="text-white font-bold flex items-center gap-2 mb-3">
                 <HelpCircle className="w-5 h-5 text-emerald-400" aria-hidden="true" /> 
                 Need immediate assistance?
               </h2>
               <div className="flex flex-col sm:flex-row gap-3">
                 <a
                   href={`tel:${PHONE_CLEAN}`}
-                  className="flex items-center justify-center bg-slate-800 hover:bg-slate-700 text-white font-bold py-3 rounded-xl flex-1 transition-all border border-slate-700"
+                  className="flex items-center justify-center bg-slate-800 hover:bg-slate-700 text-white font-bold py-3 rounded-xl flex-1 transition-all border border-slate-700 text-sm sm:text-base"
                 >
                   <PhoneCall className="w-4 h-4 mr-2 text-cyan-400" aria-hidden="true" /> 
                   Call {PHONE_DISPLAY}
@@ -247,7 +257,7 @@ export default function BookingPage() {
                   href={`https://wa.me/${PHONE_CLEAN}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 rounded-xl flex-1 transition-all shadow-lg shadow-emerald-900/20"
+                  className="flex items-center justify-center bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 rounded-xl flex-1 transition-all shadow-lg shadow-emerald-900/20 text-sm sm:text-base"
                 >
                   <MessageCircleIcon className="w-4 h-4 mr-2" aria-hidden="true" /> 
                   WhatsApp Us
@@ -255,14 +265,14 @@ export default function BookingPage() {
               </div>
             </div>
 
-            <div className="border-t border-slate-800 pt-8">
-              <p className="text-slate-500 text-sm mb-4">Happy with our easy booking process? Help us grow!</p>
+            <div className="border-t border-slate-800 pt-6 sm:pt-8">
+              <p className="text-slate-500 text-xs sm:text-sm mb-3 sm:mb-4">Happy with our easy booking process? Help us grow!</p>
               
               <a
                 href={REVIEWS_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center w-full border border-yellow-500/30 text-yellow-500 hover:bg-yellow-500/10 font-bold py-3 rounded-xl transition-all"
+                className="flex items-center justify-center w-full border border-yellow-500/30 text-yellow-500 hover:bg-yellow-500/10 font-bold py-3 rounded-xl transition-all text-sm sm:text-base"
               >
                 <Star className="w-4 h-4 mr-2 fill-yellow-500" aria-hidden="true" /> 
                 Leave us a Google Review
@@ -290,11 +300,11 @@ export default function BookingPage() {
 
       <main
         id="main-content"
-        className="min-h-screen bg-transparent text-white font-sans selection:bg-cyan-500/30 pt-32 pb-24 px-6"
+        className="min-h-screen bg-transparent text-white font-sans selection:bg-cyan-500/30 pt-24 pb-8 sm:pb-24 px-4 sm:px-6"
       >
         {/* ─── BREADCRUMBS ─── */}
-        <nav aria-label="Breadcrumb" className="max-w-3xl mx-auto mb-8">
-          <ol className="flex items-center space-x-2 text-sm text-slate-400 font-medium">
+        <nav aria-label="Breadcrumb" className="max-w-3xl mx-auto mb-6 sm:mb-8 mt-4 sm:mt-0">
+          <ol className="flex items-center space-x-2 text-xs sm:text-sm text-slate-400 font-medium">
             <li><Link to="/" className="hover:text-cyan-400 transition-colors">Home</Link></li>
             <li><span className="text-slate-600">/</span></li>
             <li aria-current="page" className="text-cyan-400">Book a Repair</li>
@@ -302,11 +312,11 @@ export default function BookingPage() {
         </nav>
 
         <div className="max-w-3xl mx-auto">
-          <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-black text-white mb-4 tracking-tight">
+          <div className="text-center mb-8 sm:mb-12">
+            <h1 className="text-white mb-2 sm:mb-4">
               Book a <span className="text-cyan-400">Repair Pickup</span>
             </h1>
-            <p className="text-slate-400 text-lg max-w-xl mx-auto">
+            <p className="text-slate-400 text-sm sm:text-lg max-w-xl mx-auto">
               Fill out the details below to schedule your free diagnostic and device pickup anywhere in Kuwait.
             </p>
           </div>
@@ -314,7 +324,7 @@ export default function BookingPage() {
           <form
             onSubmit={handleSubmit(onSubmit)}
             onFocus={handleFormInteraction}
-            className="bg-slate-900/40 backdrop-blur-xl border border-slate-800 rounded-3xl p-8 shadow-2xl space-y-6"
+            className="bg-slate-900/40 backdrop-blur-xl border border-slate-800 rounded-3xl p-5 sm:p-8 shadow-2xl space-y-4 sm:space-y-6"
             noValidate
           >
             {submitError && (
@@ -326,69 +336,69 @@ export default function BookingPage() {
             {/* Honeypot — hidden from users, catches bots */}
             <input type="text" {...register('honeypot')} className="hidden" aria-hidden="true" tabIndex={-1} />
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
               {/* Full Name */}
               <div>
-                <label htmlFor="customer_name" className="block text-sm font-bold text-slate-300 mb-2">Full Name</label>
+                <label htmlFor="customer_name" className="block text-xs sm:text-sm font-bold text-slate-300 mb-1.5 sm:mb-2">Full Name</label>
                 <div className="relative">
-                  <User className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 w-5 h-5" aria-hidden="true" /> 
+                  <User className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 w-4 h-4 sm:w-5 sm:h-5" aria-hidden="true" /> 
                   <input
                     id="customer_name"
                     {...register('customer_name')}
                     type="text"
                     autoComplete="name"
                     placeholder="e.g. Abdullah Salem"
-                    className={`${fieldClass(!!errors.customer_name)} pl-12`}
+                    className={`${fieldClass(!!errors.customer_name)} pl-10 sm:pl-12 text-sm sm:text-base`}
                   />
                 </div>
-                {errors.customer_name && <p role="alert" className="text-red-400 text-xs mt-2">{errors.customer_name.message}</p>}
+                {errors.customer_name && <p role="alert" className="text-red-400 text-xs mt-1.5 sm:mt-2">{errors.customer_name.message}</p>}
               </div>
 
               {/* Phone */}
               <div>
-                <label htmlFor="customer_phone" className="block text-sm font-bold text-slate-300 mb-2">Kuwait Phone Number</label>
+                <label htmlFor="customer_phone" className="block text-xs sm:text-sm font-bold text-slate-300 mb-1.5 sm:mb-2">Kuwait Phone Number</label>
                 <div className="relative">
-                  <Phone className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 w-5 h-5" aria-hidden="true" /> 
-                  <span className="absolute left-11 top-1/2 -translate-y-1/2 text-slate-500 font-bold border-r border-slate-800 pr-2" aria-hidden="true">+965</span>
+                  <Phone className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 w-4 h-4 sm:w-5 sm:h-5" aria-hidden="true" /> 
+                  <span className="absolute left-10 sm:left-11 top-1/2 -translate-y-1/2 text-slate-500 font-bold border-r border-slate-800 pr-2 text-sm sm:text-base" aria-hidden="true">+965</span>
                   <input
                     id="customer_phone"
                     {...register('customer_phone')}
                     type="tel"
                     autoComplete="tel"
                     placeholder="5XXXXXXX"
-                    className={`${fieldClass(!!errors.customer_phone)} pl-28`}
+                    className={`${fieldClass(!!errors.customer_phone)} pl-24 sm:pl-28 text-sm sm:text-base`}
                   />
                 </div>
-                {errors.customer_phone && <p role="alert" className="text-red-400 text-xs mt-2">{errors.customer_phone.message}</p>}
+                {errors.customer_phone && <p role="alert" className="text-red-400 text-xs mt-1.5 sm:mt-2">{errors.customer_phone.message}</p>}
               </div>
             </div>
 
             {/* Email & Device Type */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
               <div>
-                <label htmlFor="customer_email" className="block text-sm font-bold text-slate-300 mb-2">Email Address (Optional)</label>
+                <label htmlFor="customer_email" className="block text-xs sm:text-sm font-bold text-slate-300 mb-1.5 sm:mb-2">Email Address (Optional)</label>
                 <div className="relative">
-                  <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 w-5 h-5" aria-hidden="true" /> 
+                  <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 w-4 h-4 sm:w-5 sm:h-5" aria-hidden="true" /> 
                   <input
                     id="customer_email"
                     {...register('customer_email')}
                     type="email"
                     autoComplete="email"
                     placeholder="email@example.com"
-                    className={`${fieldClass(!!errors.customer_email)} pl-12`}
+                    className={`${fieldClass(!!errors.customer_email)} pl-10 sm:pl-12 text-sm sm:text-base`}
                   />
                 </div>
-                {errors.customer_email && <p role="alert" className="text-red-400 text-xs mt-2">{errors.customer_email.message}</p>}
+                {errors.customer_email && <p role="alert" className="text-red-400 text-xs mt-1.5 sm:mt-2">{errors.customer_email.message}</p>}
               </div>
 
               <div>
-                <label htmlFor="device_type" className="block text-sm font-bold text-slate-300 mb-2">Device Type</label>
+                <label htmlFor="device_type" className="block text-xs sm:text-sm font-bold text-slate-300 mb-1.5 sm:mb-2">Device Type</label>
                 <div className="relative">
-                  <Laptop className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 w-5 h-5" aria-hidden="true" /> 
+                  <Laptop className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 w-4 h-4 sm:w-5 sm:h-5" aria-hidden="true" /> 
                   <select
                     id="device_type"
                     {...register('device_type')}
-                    className={`${fieldClass(!!errors.device_type)} pl-12 appearance-none`}
+                    className={`${fieldClass(!!errors.device_type)} pl-10 sm:pl-12 appearance-none text-sm sm:text-base`}
                   >
                     <option value="">Select a device</option>
                     {DEVICE_TYPES.map(type => (
@@ -396,35 +406,35 @@ export default function BookingPage() {
                     ))}
                   </select>
                 </div>
-                {errors.device_type && <p role="alert" className="text-red-400 text-xs mt-2">{errors.device_type.message}</p>}
+                {errors.device_type && <p role="alert" className="text-red-400 text-xs mt-1.5 sm:mt-2">{errors.device_type.message}</p>}
               </div>
             </div>
 
             {/* Date and Time */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
               <div>
-                <label htmlFor="pickup_date" className="block text-sm font-bold text-slate-300 mb-2">Preferred Pickup Date</label>
+                <label htmlFor="pickup_date" className="block text-xs sm:text-sm font-bold text-slate-300 mb-1.5 sm:mb-2">Preferred Pickup Date</label>
                 <div className="relative">
-                  <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 w-5 h-5" aria-hidden="true" /> 
+                  <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 w-4 h-4 sm:w-5 sm:h-5" aria-hidden="true" /> 
                   <input
                     id="pickup_date"
                     {...register('pickup_date')}
                     type="date"
                     min={new Date().toISOString().split('T')[0]}
-                    className={`${fieldClass(!!errors.pickup_date)} pl-12`}
+                    className={`${fieldClass(!!errors.pickup_date)} pl-10 sm:pl-12 text-sm sm:text-base`}
                   />
                 </div>
-                {errors.pickup_date && <p role="alert" className="text-red-400 text-xs mt-2">{errors.pickup_date.message}</p>}
+                {errors.pickup_date && <p role="alert" className="text-red-400 text-xs mt-1.5 sm:mt-2">{errors.pickup_date.message}</p>}
               </div>
 
               <div>
-                <label htmlFor="pickup_time_slot" className="block text-sm font-bold text-slate-300 mb-2">Preferred Time Slot</label>
+                <label htmlFor="pickup_time_slot" className="block text-xs sm:text-sm font-bold text-slate-300 mb-1.5 sm:mb-2">Preferred Time Slot</label>
                 <div className="relative">
-                  <Clock className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 w-5 h-5" aria-hidden="true" /> 
+                  <Clock className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 w-4 h-4 sm:w-5 sm:h-5" aria-hidden="true" /> 
                   <select
                     id="pickup_time_slot"
                     {...register('pickup_time_slot')}
-                    className={`${fieldClass(!!errors.pickup_time_slot)} pl-12 appearance-none`}
+                    className={`${fieldClass(!!errors.pickup_time_slot)} pl-10 sm:pl-12 appearance-none text-sm sm:text-base`}
                   >
                     <option value="">Select a time slot</option>
                     {TIME_SLOTS.map(slot => (
@@ -432,36 +442,36 @@ export default function BookingPage() {
                     ))}
                   </select>
                 </div>
-                {errors.pickup_time_slot && <p role="alert" className="text-red-400 text-xs mt-2">{errors.pickup_time_slot.message}</p>}
+                {errors.pickup_time_slot && <p role="alert" className="text-red-400 text-xs mt-1.5 sm:mt-2">{errors.pickup_time_slot.message}</p>}
               </div>
             </div>
 
             {/* Issue Description */}
             <div>
-              <label htmlFor="issue_description" className="block text-sm font-bold text-slate-300 mb-2">Issue Description</label>
+              <label htmlFor="issue_description" className="block text-xs sm:text-sm font-bold text-slate-300 mb-1.5 sm:mb-2">Issue Description</label>
               <div className="relative">
-                <MessageSquare className="absolute left-4 top-4 text-slate-500 w-5 h-5" aria-hidden="true" /> 
+                <MessageSquare className="absolute left-4 top-4 text-slate-500 w-4 h-4 sm:w-5 sm:h-5" aria-hidden="true" /> 
                 <textarea
                   id="issue_description"
                   {...register('issue_description')}
                   rows={4}
                   placeholder="Please describe what is happening with your device..."
-                  className={`${fieldClass(!!errors.issue_description)} pl-12`}
+                  className={`${fieldClass(!!errors.issue_description)} pl-10 sm:pl-12 text-sm sm:text-base`}
                 />
               </div>
-              {errors.issue_description && <p role="alert" className="text-red-400 text-xs mt-2">{errors.issue_description.message}</p>}
+              {errors.issue_description && <p role="alert" className="text-red-400 text-xs mt-1.5 sm:mt-2">{errors.issue_description.message}</p>}
             </div>
 
             {/* Submit */}
-            <div className="pt-4">
+            <div className="pt-2 sm:pt-4">
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black text-lg py-4 rounded-xl shadow-[0_0_20px_rgba(6,182,212,0.3)] hover:scale-[1.01] transition-all disabled:opacity-70 disabled:pointer-events-none flex items-center justify-center gap-3"
+                className="w-full bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black text-base sm:text-lg py-3 sm:py-4 rounded-xl shadow-[0_0_20px_rgba(6,182,212,0.3)] hover:scale-[1.01] transition-all disabled:opacity-70 disabled:pointer-events-none flex items-center justify-center gap-2 sm:gap-3"
               >
                 {isSubmitting ? (
                   <>
-                    <span className="w-5 h-5 border-2 border-slate-950 border-t-transparent rounded-full animate-spin" aria-hidden="true" />
+                    <span className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-slate-950 border-t-transparent rounded-full animate-spin" aria-hidden="true" />
                     Processing Request...
                   </>
                 ) : (
