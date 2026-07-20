@@ -17,6 +17,7 @@ export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [panelPositions, setPanelPositions] = useState<Record<string, number>>({});
+  const [logoError, setLogoError] = useState(false);
 
   const headerRef = useRef<HTMLElement>(null);
   const mobileRef = useRef<HTMLDivElement>(null);
@@ -32,6 +33,7 @@ export default function Header() {
   // Define both the clean tel (for href) and the display string (for UI)
   const phoneDisplay = KCROC_GRAPH.business?.telephone ?? '55301913';
   const cleanTel = phoneDisplay.replace(/\D/g, '');
+  const logoUrl = KCROC_GRAPH.business?.logoUrl ?? '/logo.webp';
 
   useEffect(() => {
     if (!headerRef.current) return;
@@ -86,8 +88,19 @@ export default function Header() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="flex items-center justify-between h-16">
             
-            <Link to="/" className="flex items-center gap-2.5 shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 rounded-lg">
-              <Laptop className="w-6 h-6 text-cyan-400" aria-hidden="true" />
+            <Link to="/" className="flex items-center gap-2.5 shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 rounded-lg" aria-label="KCROC Home">
+              {!logoError ? (
+                <img 
+                  src={logoUrl} 
+                  alt={`${KCROC_GRAPH.business?.title ?? 'KCROC'} Logo`} 
+                  width="32" 
+                  height="32" 
+                  className="h-8 w-auto object-contain"
+                  onError={() => setLogoError(true)}
+                />
+              ) : (
+                <Laptop className="w-6 h-6 text-cyan-400" aria-hidden="true" />
+              )}
               <span className="font-black text-white text-lg tracking-tight hidden sm:block">KCROC<span className="text-cyan-400">.</span></span>
             </Link>
 
