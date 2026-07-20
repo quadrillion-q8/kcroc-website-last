@@ -48,16 +48,16 @@ export const LeadMagnet = () => {
           />
           <input
             type="text"
-            placeholder="e.g. Won't turn on"
+            placeholder="e.g. Won't turn on, screen flickering"
             value={issue}
             onChange={(e) => setIssue(e.target.value)}
-            className="rounded-2xl border border-slate-800 bg-slate-900/30 px-5 py-4 text-slate-200 placeholder:text-slate-600 focus:outline-none focus:border-cyan-500/50"
+            className="rounded-2xl border border-slate-800 bg-slate-900/30 px-5 py-4 text-slate-200 placeholder:text-slate-600 focus:outline-none focus:border-cyan-500/50 sm:col-span-2"
           />
           <button
             type="submit"
-            className="sm:col-span-2 rounded-full bg-cyan-500 hover:bg-cyan-400 transition-colors text-slate-950 font-bold px-6 py-4"
+            className="rounded-2xl bg-emerald-500 font-semibold text-slate-950 py-4 px-5 hover:bg-emerald-400 transition-colors sm:col-span-2 mt-2"
           >
-            Get My Free Estimate on WhatsApp
+            Get WhatsApp Estimate
           </button>
         </form>
       </div>
