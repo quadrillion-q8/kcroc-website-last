@@ -33,18 +33,19 @@ export const BeforeAfterShowcase = () => {
   if (caseStudies.length === 0) return null;
 
   return (
-    <section className="w-full py-24 px-6 border-t border-slate-800/50 bg-slate-900/20">
+    <section className="w-full py-8 sm:py-24 px-4 sm:px-6 border-t border-slate-800/50 bg-slate-900/20">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <p className="text-xs font-bold text-emerald-500 uppercase tracking-wider mb-3">
+        <div className="text-center mb-4 sm:mb-16">
+          <p className="text-xs font-bold text-emerald-500 uppercase tracking-wider mb-2 sm:mb-3">
             Proof, Not Promises
           </p>
-          <h2 className="text-3xl md:text-4xl font-black text-white">
+          <h2 className="text-white">
             We Fix the Board. Here's the Evidence.
           </h2>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2">
+        {/* Mobile: horizontal swipe carousel. Desktop (md+): grid. */}
+        <div className="scroll-row gap-3 -mx-4 px-4 md:mx-0 md:px-0 md:grid md:grid-cols-2 md:gap-6">
           {caseStudies.map((c) => {
             const before = c.featuredImage?.thumbnail;
             const after = c.featuredImage?.hero;
@@ -53,7 +54,7 @@ export const BeforeAfterShowcase = () => {
             return (
               <div
                 key={c.id}
-                className="bg-slate-900/30 border border-slate-800 hover:border-cyan-500/30 rounded-3xl overflow-hidden transition-all"
+                className="scroll-row-item w-[85%] md:w-auto bg-slate-900/30 border border-slate-800 hover:border-cyan-500/30 rounded-3xl overflow-hidden transition-all"
               >
                 {hasImages && (
                   <div className="grid grid-cols-2">
@@ -72,30 +73,30 @@ export const BeforeAfterShowcase = () => {
                   </div>
                 )}
 
-                <div className="p-8">
-                  <div className="flex items-center justify-between mb-6">
-                    <h3 className="text-white font-bold text-lg">{c.title}</h3>
+                <div className="p-4 sm:p-8">
+                  <div className="flex items-center justify-between mb-3 sm:mb-6">
+                    <h3 className="text-white font-bold text-base sm:text-lg">{c.title}</h3>
                     <span className="text-[10px] uppercase tracking-wide bg-slate-950 text-slate-500 px-2 py-1 rounded-full whitespace-nowrap ml-3">
                       {c.location}
                     </span>
                   </div>
 
-                  <div className="space-y-4">
-                    <div className="flex gap-3">
+                  <div className="space-y-2 sm:space-y-4">
+                    <div className="flex gap-2 sm:gap-3">
                       <Stethoscope className="w-4 h-4 text-slate-500 shrink-0 mt-0.5" />
-                      <p className="text-sm text-slate-400"><span className="text-slate-300 font-medium">Diagnosis: </span>{c.diagnosis}</p>
+                      <p className="text-sm text-slate-400 line-clamp-1 sm:line-clamp-none"><span className="text-slate-300 font-medium">Diagnosis: </span>{c.diagnosis}</p>
                     </div>
-                    <div className="flex gap-3">
+                    <div className="flex gap-2 sm:gap-3">
                       <Wrench className="w-4 h-4 text-cyan-500 shrink-0 mt-0.5" />
-                      <p className="text-sm text-slate-400"><span className="text-slate-300 font-medium">Repair: </span>{c.repair}</p>
+                      <p className="text-sm text-slate-400 line-clamp-1 sm:line-clamp-none"><span className="text-slate-300 font-medium">Repair: </span>{c.repair}</p>
                     </div>
-                    <div className="flex gap-3">
+                    <div className="flex gap-2 sm:gap-3">
                       <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
-                      <p className="text-sm text-slate-400"><span className="text-slate-300 font-medium">Outcome: </span>{c.outcome}</p>
+                      <p className="text-sm text-slate-400 line-clamp-1 sm:line-clamp-none"><span className="text-slate-300 font-medium">Outcome: </span>{c.outcome}</p>
                     </div>
                   </div>
 
-                  <div className="mt-6 pt-6 border-t border-slate-800 flex items-center justify-between">
+                  <div className="mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-slate-800 flex items-center justify-between">
                     <span className="text-xs text-slate-500">{c.timeToRepair}</span>
                     <span className="text-sm font-bold text-cyan-400">{c.costVsReplacement}</span>
                   </div>
@@ -105,7 +106,7 @@ export const BeforeAfterShowcase = () => {
           })}
         </div>
 
-        <div className="text-center mt-12">
+        <div className="text-center mt-6 sm:mt-12">
           <a
             href="/case-studies"
             onClick={() => trackConversion('cta_click', { cta_name: 'case_studies_view_all', button_position: 'before_after_showcase' })}
