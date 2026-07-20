@@ -143,6 +143,9 @@ export const LocationSchema = RoutableEntitySchema.extend({
   coords: z.object({ lat: z.number(), lng: z.number() }).optional(),
   serviceRadiusKm: z.number().optional(),
   serviceAreas: z.array(z.string()),
+  // 🚀 NEW: Distinguishes physical branch from service-area page.
+  // Defaults to false to ensure safety for new locations.
+  isPhysicalLocation: z.boolean().optional().default(false),
 });
 
 export const FAQSchema = RoutableEntitySchema.extend({
@@ -207,10 +210,6 @@ export const CaseStudySchema = RoutableEntitySchema.extend({
   publishDate: z.string(),
   
   // 🚀 NEW: Optional rich narrative content for the case study template.
-  // When present, CaseStudyTemplate.tsx renders this instead of the
-  // flat symptom/diagnosis/repair/outcome strings. When absent, the
-  // template falls back to those flat fields exactly as it does today
-  // — so this is fully backward-compatible with existing entities.
   narrative: z.object({
     hook: z.string(),
     clientContext: z.string().optional(),
