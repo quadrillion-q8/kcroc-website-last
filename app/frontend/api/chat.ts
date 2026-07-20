@@ -1,90 +1,97 @@
-// File: api/chat.ts
+// File: app/frontend/api/chat.ts
 import { VercelRequest, VercelResponse } from '@vercel/node';
 import { GoogleGenAI } from '@google/genai';
 import { Ratelimit } from '@upstash/ratelimit';
 import { Redis } from '@upstash/redis';
-import { getKnowledgeContext } from '../src/knowledge/context.js';
-import { evaluateHandoff } from '../src/api/HandoffEngine.js';
+import { getKnowledgeContext } from '../../core/knowledge/knowledgeContext';
+import { evaluateHandoff } from '../../core/knowledge/handoffEvaluator';
 
-const MAX_MESSAGE_LENGTH = 1000;
+// Initialize Upstash Redis & Rate Limiter (graceful no-op if env vars are missing)
+const redisUrl = process.env.UPSTASH_REDIS_REST_URL;
+const redisToken = process.env.UPSTASH_REDIS_REST_TOKEN;
 
-// Rate limiting is optional-but-recommended: if UPSTASH_REDIS_REST_URL /
-// UPSTASH_REDIS_REST_TOKEN aren't set (e.g. local dev), this cleanly no-ops
-// rather than crashing the function. Set them in Vercel's env vars to enable
-// it in production. Free tier: https://upstash.com
-const ratelimit =
-  process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN
-    ? new Ratelimit({
-        redis: new Redis({
-          url: process.env.UPSTASH_REDIS_REST_URL,
-          token: process.env.UPSTASH_REDIS_REST_TOKEN,
-        }),
-        limiter: Ratelimit.slidingWindow(20, '1 h'), // 20 messages/hour per IP
-        prefix: 'ratelimit:chat',
-      })
-    : null;
+const redis = redisUrl && redisToken 
+  ? new Redis({ url: redisUrl, token: redisToken }) 
+  : null;
 
-function getClientIp(req: VercelRequest): string {
-  // Vercel's own edge network sets x-forwarded-for itself (not passed through
-  // unmodified from the client), so this is trustworthy on Vercel specifically.
-  const forwarded = req.headers['x-forwarded-for'];
-  if (typeof forwarded === 'string') return forwarded.split(',')[0].trim();
-  if (Array.isArray(forwarded)) return forwarded[0];
-  return req.socket?.remoteAddress ?? 'unknown';
-}
+const ratelimit = redis 
+  ? new Ratelimit({
+      redis: redis,
+      limiter: Ratelimit.slidingWindow(20, '1 h'),
+      analytics: false,
+    })
+  : null;
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
-  if (req.method !== 'POST') return res.status(405).send('Method Not Allowed');
+  if (req.method !== 'POST') {
+    return res.status(405).json({ reply: 'Method Not Allowed' });
+  }
 
   try {
-    // --- Rate limit ---
+    // 1. Rate Limiting via x-forwarded-for (Safe on Vercel Edge)
     if (ratelimit) {
-      const ip = getClientIp(req);
-      const { success, reset } = await ratelimit.limit(ip);
+      const ip = (req.headers['x-forwarded-for'] as string) ?? '127.0.0.1';
+      const { success } = await ratelimit.limit(ip);
+      
       if (!success) {
-        const retryAfterSeconds = Math.max(1, Math.ceil((reset - Date.now()) / 1000));
-        res.setHeader('Retry-After', String(retryAfterSeconds));
-        return res.status(429).json({ reply: 'Too many messages. Please slow down and try again shortly.' });
+        console.warn(`Rate limit exceeded for IP: ${ip}`);
+        return res.status(429).json({ 
+          reply: 'You have sent too many messages. Please try again later or contact us directly on WhatsApp at 55301913.' 
+        });
       }
     }
 
-    // --- Input validation ---
-    const { message } = req.body ?? {};
-    if (typeof message !== 'string' || message.trim().length === 0) {
-      return res.status(400).json({ reply: 'Please include a message.' });
-    }
-    if (message.length > MAX_MESSAGE_LENGTH) {
-      return res.status(400).json({ reply: `Message is too long (max ${MAX_MESSAGE_LENGTH} characters).` });
-    }
-    const trimmedMessage = message.trim();
+    // 2. Strict Input Validation
+    const { message } = req.body;
 
+    if (!message || typeof message !== 'string') {
+      return res.status(400).json({ reply: 'Invalid request format.' });
+    }
+
+    const sanitizedMessage = message.trim();
+    if (sanitizedMessage.length > 2000) {
+      return res.status(400).json({ reply: 'Your message is too long. Please keep it brief or contact us on WhatsApp.' });
+    }
+
+    if (sanitizedMessage.length === 0) {
+      return res.status(400).json({ reply: 'Message cannot be empty.' });
+    }
+
+    // 3. Evaluate Handoff Safety Net
+    const handoff = evaluateHandoff(sanitizedMessage, 0.8);
+    if (handoff && handoff.shouldHandoff) {
+      return res.status(200).json({
+        reply: handoff.reply || 'This sounds like an urgent issue or requires a technician. Please contact us directly at 55301913 or via WhatsApp.'
+      });
+    }
+
+    // 4. Build Knowledge Context & Call Gemini
     const apiKey = process.env.GEMINI_API_KEY;
-    if (!apiKey) throw new Error('GEMINI_API_KEY_MISSING');
-    const ai = new GoogleGenAI({ apiKey: apiKey });
-
-    // Safety & Context checks
-    const knowledgeContext = getKnowledgeContext(trimmedMessage);
-    const handoff = evaluateHandoff(trimmedMessage, 0.8);
-    if (handoff.isEscalated) {
-      return res.status(200).json({ reply: handoff.message });
+    if (!apiKey) {
+      throw new Error('GEMINI_API_KEY environment variable is missing.');
     }
 
-    // Call Gemini
+    const knowledgeContext = getKnowledgeContext(sanitizedMessage);
+
+    const ai = new GoogleGenAI({ apiKey });
     const response = await ai.models.generateContent({
-      model: 'gemini-2.5-flash', // Using the fast, free-tier optimized model
-      contents: [
-        {
-          role: 'user',
-          parts: [{ text: `You are the KCROC assistant. ${knowledgeContext}\n\nUser: ${trimmedMessage}` }],
-        },
-      ],
+      model: 'gemini-2.5-flash',
+      contents: sanitizedMessage,
+      config: {
+        systemInstruction: knowledgeContext,
+      },
     });
-    return res.status(200).json({ reply: response.text });
+
+    const responseText = response.text || 'I am here to help with your computer repair needs. Please contact us at 55301913.';
+
+    return res.status(200).json({ reply: responseText });
+
   } catch (error: any) {
-    // Log full detail server-side only — never echo error.message back to the client,
-    // since it can include internal config state (e.g. "GEMINI_API_KEY_MISSING") or
-    // raw SDK/provider error text that shouldn't reach the browser.
-    console.error('SERVER ERROR:', error);
-    return res.status(500).json({ reply: 'Sorry, something went wrong on our end. Please try WhatsApp instead.' });
+    // 5. Secure Error Handling (Log server-side, generic message to client)
+    console.error('Chat API Error:', error.message || error);
+    
+    return res.status(500).json({ 
+      reply: 'I am currently experiencing technical difficulties. Please contact us directly on WhatsApp at 55301913.' 
+    });
   }
 }
