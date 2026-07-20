@@ -16,35 +16,36 @@ export const PricingTable = () => {
   if (services.length === 0) return null;
 
   return (
-    <section className="w-full py-24 px-6 border-t border-slate-800/50 bg-slate-950">
+    <section className="w-full py-8 sm:py-24 px-4 sm:px-6 border-t border-slate-800/50 bg-slate-950">
       <div className="max-w-5xl mx-auto">
-        <div className="text-center mb-16">
-          <p className="text-xs font-bold text-emerald-500 uppercase tracking-wider mb-3">
+        <div className="text-center mb-4 sm:mb-16">
+          <p className="text-xs font-bold text-emerald-500 uppercase tracking-wider mb-2 sm:mb-3">
             No Hidden Fees
           </p>
-          <h2 className="text-3xl md:text-4xl font-black text-white">
+          <h2 className="text-white">
             Transparent Pricing
           </h2>
-          <p className="mt-4 text-slate-400 max-w-xl mx-auto">
+          <p className="mt-3 sm:mt-4 text-slate-400 max-w-xl mx-auto text-sm sm:text-base">
             Free diagnostic. Fixed quote before we touch a tool. No Fix, No Fee.
           </p>
         </div>
 
-        <div className="grid gap-4 sm:grid-cols-2">
+        {/* Mobile: horizontal pricing cards. Desktop (sm+): stacked list. */}
+        <div className="scroll-row snap-x snap-mandatory gap-3 -mx-4 px-4 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 sm:gap-4">
           {services.map((service) => (
             <a
               key={service.id}
               href={`/${service.slug}`}
               onClick={() => trackConversion('cta_click', { cta_name: 'pricing_service_card', button_position: 'pricing_table' })}
-              className="flex items-center justify-between bg-slate-900/30 border border-slate-800 hover:border-cyan-500/30 rounded-2xl px-6 py-5 transition-all"
+              className="scroll-row-item snap-center w-[68%] sm:w-auto flex flex-col sm:flex-row sm:items-center justify-between bg-slate-900/30 border border-slate-800 hover:border-cyan-500/30 rounded-2xl px-5 py-4 sm:px-6 sm:py-5 transition-all"
             >
               <div>
-                <p className="text-slate-200 font-semibold">{service.title}</p>
+                <p className="text-slate-200 font-semibold text-sm sm:text-base">{service.title}</p>
                 <p className="text-xs text-slate-500 mt-1">
                   {service.estimatedTurnaround}
                 </p>
               </div>
-              <p className="text-lg font-black text-cyan-400 whitespace-nowrap ml-4">
+              <p className="text-lg font-black text-cyan-400 whitespace-nowrap mt-3 sm:mt-0 sm:ml-4">
                 {service.pricing?.displayLabel?.split(' — ')[0] ??
                   `From ${service.pricing?.startingFrom} ${service.pricing?.currency}`}
               </p>
@@ -52,7 +53,7 @@ export const PricingTable = () => {
           ))}
         </div>
 
-        <div className="mt-10 text-center">
+        <div className="mt-6 sm:mt-10 text-center">
           <a
             href={`https://wa.me/${whatsappNumber}`}
             target="_blank"
