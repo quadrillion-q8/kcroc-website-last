@@ -230,35 +230,25 @@ const faq = [
 ];
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   3. ANIMATED BACKGROUND COMPONENT (DEPLOYMENT SAFE)
+   3. ANIMATED BACKGROUND COMPONENT (CLEAN TAILWIND IMPLEMENTATION)
 ───────────────────────────────────────────────────────────────────────────── */
 const AnimatedBackground = () => (
   <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
     {/* Floating Orb 1 - Cyan */}
     <div 
-      className="absolute top-[-10%] left-[-10%] w-[400px] h-[400px] md:w-[600px] md:h-[600px] bg-cyan-600/40 blur-[100px] md:blur-[120px] rounded-full" 
-      style={{ animation: 'blob 7s infinite' }}
+      className="absolute top-[-10%] left-[-10%] w-[400px] h-[400px] md:w-[600px] md:h-[600px] bg-cyan-600/40 blur-[100px] md:blur-[120px] rounded-full animate-blob" 
+      style={{ animationDuration: '7s' }}
     />
     {/* Floating Orb 2 - Emerald */}
     <div 
-      className="absolute top-[20%] right-[-10%] w-[350px] h-[350px] md:w-[500px] md:h-[500px] bg-emerald-600/40 blur-[100px] md:blur-[120px] rounded-full" 
-      style={{ animation: 'blob 7s infinite 2s' }}
+      className="absolute top-[20%] right-[-10%] w-[350px] h-[350px] md:w-[500px] md:h-[500px] bg-emerald-600/40 blur-[100px] md:blur-[120px] rounded-full animate-blob" 
+      style={{ animationDuration: '7s', animationDelay: '2s' }}
     />
     {/* Floating Orb 3 - Blue */}
     <div 
-      className="absolute bottom-[-20%] left-[20%] w-[400px] h-[400px] md:w-[600px] md:h-[600px] bg-blue-600/40 blur-[100px] md:blur-[120px] rounded-full" 
-      style={{ animation: 'blob 7s infinite 4s' }}
+      className="absolute bottom-[-20%] left-[20%] w-[400px] h-[400px] md:w-[600px] md:h-[600px] bg-blue-600/40 blur-[100px] md:blur-[120px] rounded-full animate-blob" 
+      style={{ animationDuration: '7s', animationDelay: '4s' }}
     />
-    
-    {/* CSS Keyframes injected directly for guaranteed rendering */}
-    <style dangerouslySetInnerHTML={{__html: `
-      @keyframes blob {
-        0% { transform: translate(0px, 0px) scale(1); }
-        33% { transform: translate(30px, -50px) scale(1.1); }
-        66% { transform: translate(-20px, 20px) scale(0.9); }
-        100% { transform: translate(0px, 0px) scale(1); }
-      }
-    `}} />
   </div>
 );
 
@@ -282,41 +272,41 @@ export default function BlogScreenProtection() {
       <AnimatedBackground />
 
       {/* Hero Header Area */}
-      <section className="relative pt-32 pb-24 px-4 overflow-hidden z-10">
-        <div className="container mx-auto max-w-6xl relative">
-          <div className="text-center space-y-6">
-            <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30 px-6 py-2 text-sm font-semibold">
+      <section className="relative pt-24 pb-8 sm:pb-24 px-4 overflow-hidden z-10">
+        <div className="container mx-auto max-w-6xl relative mt-8 sm:mt-0">
+          <div className="text-center space-y-4 sm:space-y-6">
+            <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30 px-4 sm:px-6 py-1.5 sm:py-2 text-xs sm:text-sm font-semibold">
               <Monitor className="w-4 h-4 mr-2 inline" />
               Display Hardware Maintenance Insights
             </Badge>
-            <h1 className="text-5xl md:text-7xl font-bold text-white leading-tight">
+            <h1 className="text-4xl sm:text-6xl font-bold text-white leading-tight">
               Protect Your Laptop Screen<br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">
                 From Costly Failures
               </span>
             </h1>
-            <p className="text-xl md:text-2xl text-slate-300 max-w-4xl mx-auto leading-relaxed">
+            <p className="text-sm sm:text-xl text-slate-300 max-w-4xl mx-auto leading-relaxed">
               Technical screen preservation methodologies from Kuwait's leading hardware repair center. Eliminate pressure damage, heat degradation, and alignment breaks.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center pt-4 sm:pt-6">
               <Button 
                 size="lg" 
-                className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white text-lg px-8 py-6 shadow-lg shadow-cyan-500/30"
+                className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white text-base sm:text-lg px-6 sm:px-8 py-6 shadow-lg shadow-cyan-500/30"
                 asChild
               >
                 <a href={`tel:+${business.telephone}`}>
-                  <Phone className="w-5 h-5 mr-2" />
+                  <Phone className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                   Call: +{business.telephone}
                 </a>
               </Button>
               <Button 
                 size="lg" 
                 variant="outline" 
-                className="border-emerald-500/50 text-emerald-400 hover:bg-emerald-500/10 text-lg px-8 py-6"
+                className="border-emerald-500/50 text-emerald-400 hover:bg-emerald-500/10 text-base sm:text-lg px-6 sm:px-8 py-6"
                 asChild
               >
                 <a href={WA_LINK} target="_blank" rel="noopener noreferrer">
-                  <MessageCircle className="w-5 h-5 mr-2" />
+                  <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                   WhatsApp Us
                 </a>
               </Button>
@@ -326,23 +316,23 @@ export default function BlogScreenProtection() {
       </section>
 
       {/* Metrics Grid */}
-      <section className="py-16 px-4 bg-slate-900/50 backdrop-blur-sm relative z-10">
+      <section className="py-8 sm:py-16 px-4 bg-slate-900/50 backdrop-blur-sm relative z-10">
         <div className="container mx-auto max-w-6xl">
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-8">
             {statistics.map((stat, index) => {
               const Icon = stat.icon;
               return (
                 <Card key={index} className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 border-cyan-500/20 backdrop-blur-sm hover:border-cyan-500/40 transition-all">
-                  <CardContent className="pt-6 md:pt-8 text-center p-4 md:p-6">
-                    <div className="flex justify-center mb-3 md:mb-4">
-                      <div className="bg-slate-950 p-2 md:p-4 rounded-full border border-slate-800">
-                        <Icon className={`w-6 h-6 md:w-8 md:h-8 ${stat.color}`} />
+                  <CardContent className="pt-4 sm:pt-8 text-center p-4 md:p-6">
+                    <div className="flex justify-center mb-2 sm:mb-4">
+                      <div className="bg-slate-950 p-2 sm:p-4 rounded-full border border-slate-800">
+                        <Icon className={`w-5 h-5 sm:w-8 sm:h-8 ${stat.color}`} />
                       </div>
                     </div>
-                    <div className="text-3xl md:text-5xl font-black text-white mb-1 md:mb-2">
+                    <div className="text-2xl sm:text-5xl font-black text-white mb-1 sm:mb-2">
                       {stat.value}
                     </div>
-                    <div className="text-xs md:text-sm text-slate-400 font-bold uppercase tracking-widest">{stat.label}</div>
+                    <div className="text-[10px] sm:text-sm text-slate-400 font-bold uppercase tracking-widest">{stat.label}</div>
                   </CardContent>
                 </Card>
               );
@@ -352,13 +342,13 @@ export default function BlogScreenProtection() {
       </section>
 
       {/* Environmental Challenges Component */}
-      <section className="py-16 md:py-24 px-4 relative z-10">
+      <section className="py-8 sm:py-24 px-4 relative z-10">
         <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-10 md:mb-16">
-            <Badge className="bg-red-500/20 text-red-300 border-red-500/30 px-4 py-1.5 md:py-2 text-xs md:text-sm mb-4">
-              <AlertTriangle className="w-4 h-4 mr-2 inline" /> Stress Mechanics
+          <div className="text-center mb-8 sm:mb-16">
+            <Badge className="bg-red-500/20 text-red-300 border-red-500/30 px-3 sm:px-4 py-1.5 md:py-2 text-[10px] sm:text-sm mb-3 sm:mb-4">
+              <AlertTriangle className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2 inline" /> Stress Mechanics
             </Badge>
-            <h2 className="text-3xl md:text-6xl font-bold text-white mb-4 md:mb-6">
+            <h2 className="text-white mb-3 sm:mb-6">
               The Path to Matrix Destruction
             </h2>
             <p className="text-sm md:text-xl text-slate-300 max-w-3xl mx-auto">
@@ -366,12 +356,12 @@ export default function BlogScreenProtection() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 gap-3 md:gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
             {challenges.map((challenge, index) => {
               const Icon = challenge.icon;
               return (
                 <Card key={index} className={`bg-slate-900/50 ${challenge.borderColor} backdrop-blur-sm hover:scale-[1.01] transition-transform overflow-hidden flex flex-col`}>
-                  <div className="h-24 md:h-48 overflow-hidden shrink-0">
+                  <div className="h-32 sm:h-48 overflow-hidden shrink-0">
                     <img 
                       src={challenge.image}
                       alt={challenge.title}
@@ -385,8 +375,8 @@ export default function BlogScreenProtection() {
                         <Icon className={`w-4 h-4 md:w-6 md:h-6 ${challenge.color}`} />
                       </div>
                     </div>
-                    <CardTitle className="text-base md:text-2xl text-white mb-1 md:mb-3 leading-tight">{challenge.title}</CardTitle>
-                    <CardDescription className="text-slate-300 text-xs md:text-sm leading-relaxed line-clamp-3 md:line-clamp-none">
+                    <CardTitle className="text-lg md:text-2xl text-white mb-1 md:mb-3 leading-tight">{challenge.title}</CardTitle>
+                    <CardDescription className="text-slate-300 text-xs md:text-sm leading-relaxed">
                       {challenge.description}
                     </CardDescription>
                   </CardHeader>
@@ -398,13 +388,13 @@ export default function BlogScreenProtection() {
       </section>
 
       {/* Threshold Matrix Component */}
-      <section className="py-16 md:py-24 px-4 bg-slate-900/50 backdrop-blur-sm relative z-10">
+      <section className="py-8 sm:py-24 px-4 bg-slate-900/50 backdrop-blur-sm relative z-10">
         <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-10 md:mb-16">
-            <Badge className="bg-orange-500/20 text-orange-300 border-orange-500/30 px-4 py-1.5 md:py-2 text-xs md:text-sm mb-4">
-              <Flame className="w-4 h-4 mr-2 inline" /> Severity Monitoring
+          <div className="text-center mb-8 sm:mb-16">
+            <Badge className="bg-orange-500/20 text-orange-300 border-orange-500/30 px-3 sm:px-4 py-1.5 md:py-2 text-[10px] sm:text-sm mb-3 sm:mb-4">
+              <Flame className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2 inline" /> Severity Monitoring
             </Badge>
-            <h2 className="text-3xl md:text-6xl font-bold text-white mb-4 md:mb-6">
+            <h2 className="text-white mb-3 sm:mb-6">
               Structural Degradation Zones
             </h2>
             <p className="text-sm md:text-xl text-slate-300 max-w-3xl mx-auto">
@@ -412,17 +402,17 @@ export default function BlogScreenProtection() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-6">
+          <div className="scroll-row gap-3 -mx-4 px-4 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 md:grid-cols-3 sm:gap-6">
             {screenTiers.map((tier, index) => (
-              <Card key={index} className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 border-slate-700 backdrop-blur-sm">
+              <Card key={index} className="scroll-row-item w-[80%] sm:w-auto bg-gradient-to-br from-slate-800/80 to-slate-900/80 border-slate-700 backdrop-blur-sm">
                 <CardHeader className="p-4 md:p-6 pb-2 md:pb-4">
-                  <CardTitle className="text-sm md:text-2xl text-white flex items-center gap-2 md:gap-3 leading-tight">
-                    <Monitor className="w-4 h-4 md:w-6 md:h-6 text-cyan-400" />
+                  <CardTitle className="text-base sm:text-xl text-white flex items-center gap-2 md:gap-3 leading-tight">
+                    <Monitor className="w-4 h-4 md:w-5 md:h-5 text-cyan-400" />
                     {tier.component}
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="p-4 md:p-6 pt-0 space-y-3 md:space-y-4">
-                  <div className="grid grid-cols-3 gap-2">
+                  <div className="grid grid-cols-3 gap-1.5 sm:gap-2">
                     <div className="bg-emerald-500/10 border border-emerald-500/30 rounded-lg p-1.5 md:p-2 text-center flex flex-col justify-center">
                       <div className="text-[9px] md:text-[10px] text-emerald-400 font-bold mb-0.5 md:mb-1">SAFE</div>
                       <div className="text-[10px] md:text-xs text-white font-bold leading-tight">{tier.safe}</div>
@@ -436,7 +426,7 @@ export default function BlogScreenProtection() {
                       <div className="text-[10px] md:text-xs text-white font-bold leading-tight">{tier.critical}</div>
                     </div>
                   </div>
-                  <p className="text-slate-400 text-[11px] md:text-sm leading-relaxed hidden sm:block">{tier.description}</p>
+                  <p className="text-slate-400 text-xs sm:text-sm leading-relaxed">{tier.description}</p>
                 </CardContent>
               </Card>
             ))}
@@ -445,13 +435,13 @@ export default function BlogScreenProtection() {
       </section>
 
       {/* Solutions Catalog */}
-      <section className="py-16 md:py-24 px-4 relative z-10">
+      <section className="py-8 sm:py-24 px-4 relative z-10">
         <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-10 md:mb-16">
-            <Badge className="bg-cyan-500/20 text-cyan-300 border-cyan-500/30 px-4 py-1.5 md:py-2 text-xs md:text-sm mb-4">
+          <div className="text-center mb-8 sm:mb-16">
+            <Badge className="bg-cyan-500/20 text-cyan-300 border-cyan-500/30 px-3 sm:px-4 py-1.5 md:py-2 text-[10px] sm:text-sm mb-3 sm:mb-4">
               Precision Capabilities
             </Badge>
-            <h2 className="text-3xl md:text-6xl font-bold text-white mb-4 md:mb-6">
+            <h2 className="text-white mb-3 sm:mb-6">
               Display Assembly Options
             </h2>
             <p className="text-sm md:text-xl text-slate-300 max-w-3xl mx-auto">
@@ -459,12 +449,12 @@ export default function BlogScreenProtection() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {repairCatalog.map((solution, index) => {
               const Icon = solution.icon;
               return (
                 <Card key={index} className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 border-slate-800 backdrop-blur-sm hover:border-cyan-500/40 transition-all overflow-hidden flex flex-col">
-                  <div className="relative h-24 md:h-48 overflow-hidden shrink-0">
+                  <div className="relative h-32 sm:h-48 overflow-hidden shrink-0">
                     <img 
                       src={solution.image}
                       alt={solution.title}
@@ -483,16 +473,16 @@ export default function BlogScreenProtection() {
                         <Icon className="w-4 h-4 md:w-5 md:h-5 text-cyan-400" />
                       </div>
                     </div>
-                    <CardTitle className="text-sm md:text-xl text-white mb-1 md:mb-2 leading-tight">{solution.title}</CardTitle>
+                    <CardTitle className="text-base sm:text-xl text-white mb-1 md:mb-2 leading-tight">{solution.title}</CardTitle>
                     <div className="flex items-center gap-1.5 md:gap-2 mt-2 md:mt-auto">
                       <Clock className="w-3 h-3 md:w-4 md:h-4 text-cyan-400" />
-                      <span className="text-[10px] md:text-sm font-bold text-slate-300">{solution.duration}</span>
+                      <span className="text-xs sm:text-sm font-bold text-slate-300">{solution.duration}</span>
                     </div>
                   </CardHeader>
-                  <CardContent className="bg-slate-950/30 pt-3 md:pt-4 border-t border-slate-800 p-4 md:p-6 hidden sm:block">
-                    <ul className="space-y-1 md:space-y-2">
+                  <CardContent className="bg-slate-950/30 pt-3 md:pt-4 border-t border-slate-800 p-4 md:p-6">
+                    <ul className="space-y-1.5 sm:space-y-2">
                       {solution.benefits.slice(0,3).map((benefit, idx) => (
-                        <li key={idx} className="flex items-start gap-1.5 md:gap-2 text-slate-300 text-[10px] md:text-sm">
+                        <li key={idx} className="flex items-start gap-1.5 md:gap-2 text-slate-300 text-xs sm:text-sm">
                           <CheckCircle2 className="w-3 h-3 md:w-4 md:h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
                           <span className="leading-tight">{benefit}</span>
                         </li>
@@ -507,32 +497,32 @@ export default function BlogScreenProtection() {
       </section>
 
       {/* Brand Specific Layer */}
-      <section className="py-24 px-4 bg-slate-900/30 border-t border-slate-900">
+      <section className="py-8 sm:py-24 px-4 bg-slate-900/30 border-t border-slate-900">
         <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-16">
-            <Badge className="bg-purple-500/20 text-purple-300 border-purple-500/30 px-4 py-2 text-sm mb-4">
+          <div className="text-center mb-8 sm:mb-16">
+            <Badge className="bg-purple-500/20 text-purple-300 border-purple-500/30 px-3 sm:px-4 py-1.5 sm:py-2 text-[10px] sm:text-sm mb-3 sm:mb-4">
               Lab Interventions
             </Badge>
-            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
+            <h2 className="text-white mb-3 sm:mb-6">
               Cross-Platform Display Engineering
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="scroll-row gap-3 -mx-4 px-4 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 sm:gap-6">
             {brandMatrix.map((brand, index) => (
-              <Card key={index} className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 border-slate-800 backdrop-blur-sm">
-                <CardHeader>
-                  <CardTitle className="text-2xl text-white mb-2">{brand.brand}</CardTitle>
+              <Card key={index} className="scroll-row-item w-[85%] sm:w-auto bg-gradient-to-br from-slate-800/80 to-slate-900/80 border-slate-800 backdrop-blur-sm">
+                <CardHeader className="p-4 sm:p-6">
+                  <CardTitle className="text-lg sm:text-2xl text-white mb-2">{brand.brand}</CardTitle>
                   <Badge className="bg-slate-950 text-slate-400 border border-slate-800 w-fit">{brand.models}</Badge>
                 </CardHeader>
-                <CardContent className="space-y-4">
+                <CardContent className="space-y-3 sm:space-y-4 p-4 sm:p-6 pt-0">
                   <div>
-                    <h4 className="text-cyan-400 font-bold text-xs uppercase tracking-wider mb-1">Technical Scope:</h4>
-                    <p className="text-slate-300 text-sm">{brand.expertise}</p>
+                    <h4 className="text-cyan-400 font-bold text-[10px] sm:text-xs uppercase tracking-wider mb-1">Technical Scope:</h4>
+                    <p className="text-slate-300 text-xs sm:text-sm">{brand.expertise}</p>
                   </div>
                   <div>
-                    <h4 className="text-orange-400 font-bold text-xs uppercase tracking-wider mb-1">Dominant Structural Failures:</h4>
-                    <p className="text-slate-400 text-sm">{brand.common}</p>
+                    <h4 className="text-orange-400 font-bold text-[10px] sm:text-xs uppercase tracking-wider mb-1">Dominant Structural Failures:</h4>
+                    <p className="text-slate-400 text-xs sm:text-sm">{brand.common}</p>
                   </div>
                 </CardContent>
               </Card>
@@ -542,35 +532,35 @@ export default function BlogScreenProtection() {
       </section>
 
       {/* Preventative Rules Grid */}
-      <section className="py-16 md:py-24 px-4 relative z-10 border-t border-slate-800">
+      <section className="py-8 sm:py-24 px-4 relative z-10 border-t border-slate-800">
         <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-10 md:mb-16">
-            <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30 px-4 py-1.5 md:py-2 text-xs md:text-sm mb-4">
+          <div className="text-center mb-8 sm:mb-16">
+            <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30 px-3 sm:px-4 py-1.5 sm:py-2 text-[10px] sm:text-sm mb-3 sm:mb-4">
               Preservation Playbook
             </Badge>
-            <h2 className="text-3xl md:text-6xl font-bold text-white mb-4 md:mb-6">
+            <h2 className="text-white mb-3 sm:mb-6">
               Display Maintenance Protocols
             </h2>
           </div>
 
-          <div className="grid grid-cols-2 gap-3 md:gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-6">
             {preventionGuide.map((tip, index) => {
               const Icon = tip.icon;
               return (
                 <Card key={index} className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 border-slate-800 backdrop-blur-sm">
                   <CardHeader className="p-4 md:p-6">
-                    <div className="flex flex-col md:flex-row md:items-center gap-3 md:gap-4 mb-2">
-                      <div className="bg-cyan-500/10 p-2 md:p-3 rounded-lg w-fit">
+                    <div className="flex items-center gap-3 sm:gap-4 mb-2">
+                      <div className="bg-cyan-500/10 p-2 sm:p-3 rounded-lg flex-shrink-0">
                         <Icon className="w-4 h-4 md:w-6 md:h-6 text-cyan-400" />
                       </div>
                       <div className="flex-1">
-                        <CardTitle className="text-sm md:text-xl text-white mb-1.5 md:mb-0 leading-tight">{tip.title}</CardTitle>
-                        <Badge className="bg-emerald-500/20 text-emerald-300 border-0 mt-0 md:mt-2 text-[10px] md:text-xs">
+                        <CardTitle className="text-base sm:text-xl text-white mb-1 leading-tight">{tip.title}</CardTitle>
+                        <Badge className="bg-emerald-500/20 text-emerald-300 border-0 text-[9px] sm:text-xs">
                           {tip.frequency}
                         </Badge>
                       </div>
                     </div>
-                    <CardDescription className="text-slate-300 text-[11px] md:text-sm leading-relaxed mt-2 md:mt-0">
+                    <CardDescription className="text-slate-300 text-xs sm:text-sm leading-relaxed mt-2 sm:mt-3">
                       {tip.description}
                     </CardDescription>
                   </CardHeader>
@@ -582,23 +572,23 @@ export default function BlogScreenProtection() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-24 px-4 border-t border-slate-900 bg-slate-900/20">
+      <section className="py-8 sm:py-24 px-4 border-t border-slate-900 bg-slate-900/20">
         <div className="container mx-auto max-w-4xl">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
+          <div className="text-center mb-8 sm:mb-16">
+            <h2 className="text-white mb-3 sm:mb-6">
               Frequently Asked Questions
             </h2>
           </div>
 
-          <div className="space-y-4">
+          <div className="space-y-3 sm:space-y-4">
             {faq.map((item, index) => (
               <Card key={index} className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 border-slate-800 backdrop-blur-sm">
-                <CardContent className="p-6 md:p-8">
-                  <h3 className="text-lg font-bold text-white mb-3 flex items-start gap-3">
+                <CardContent className="p-4 sm:p-8">
+                  <h3 className="text-sm sm:text-lg font-bold text-white mb-2 sm:mb-3 flex items-start gap-2 sm:gap-3">
                     <span className="text-cyan-400 flex-shrink-0">Q:</span>
                     {item.q}
                   </h3>
-                  <p className="text-slate-300 leading-relaxed pl-7">
+                  <p className="text-slate-300 text-xs sm:text-base leading-relaxed pl-5 sm:pl-7">
                     <span className="text-emerald-400 font-semibold">A:</span> {item.a}
                   </p>
                 </CardContent>
@@ -609,21 +599,21 @@ export default function BlogScreenProtection() {
       </section>
 
       {/* High-Conversion CTA Component */}
-      <section className="py-16 md:py-24 px-4 relative z-10">
+      <section className="py-8 sm:py-24 px-4 relative z-10">
         <div className="container mx-auto max-w-6xl">
           <Card className="bg-gradient-to-br from-emerald-600/20 via-blue-600/20 to-cyan-600/20 border-cyan-500/30 backdrop-blur-sm overflow-hidden relative">
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-400 via-cyan-400 to-blue-500"></div>
-            <CardContent className="p-8 md:p-12 text-center relative z-10">
-              <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 md:mb-6 leading-tight">
+            <CardContent className="p-6 sm:p-12 text-center relative z-10">
+              <h2 className="text-2xl sm:text-5xl font-bold text-white mb-3 sm:mb-6 leading-tight">
                 Restore Your Display Panel Architecture Safely
               </h2>
-              <p className="text-sm md:text-xl text-slate-300 mb-6 md:mb-8 max-w-2xl mx-auto">
+              <p className="text-xs sm:text-xl text-slate-300 mb-6 sm:mb-8 max-w-2xl mx-auto">
                 No Fix, No Charge policy. Complimentary vehicle collection and delivery across all governorates in Kuwait. Restoring panel health with flawless precision.
               </p>
-              <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center">
+              <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <Button 
                   size="lg" 
-                  className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-black text-base md:text-lg px-6 md:px-8 py-6 md:py-7 shadow-lg shadow-cyan-500/30"
+                  className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-black text-sm sm:text-lg px-6 sm:px-8 py-5 sm:py-7 shadow-lg shadow-cyan-500/30"
                   asChild
                 >
                   <Link to="/book">
@@ -633,21 +623,21 @@ export default function BlogScreenProtection() {
                 <Button 
                   size="lg" 
                   variant="outline" 
-                  className="border-slate-700 text-white hover:bg-slate-800 text-base md:text-lg px-6 md:px-8 py-6 md:py-7"
+                  className="border-slate-700 text-white hover:bg-slate-800 text-sm sm:text-lg px-6 sm:px-8 py-5 sm:py-7"
                   asChild
                 >
                   <a href={`tel:+${business.telephone}`}>
-                    <Phone className="w-5 h-5 mr-2" />
+                    <Phone className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                     Call Intake: +{business.telephone}
                   </a>
                 </Button>
               </div>
-              <div className="mt-10 pt-8 border-t border-slate-800 flex flex-wrap justify-center gap-6 text-sm text-slate-400">
+              <div className="mt-6 sm:mt-10 pt-6 sm:pt-8 border-t border-slate-800 flex flex-wrap justify-center gap-4 sm:gap-6 text-xs sm:text-sm text-slate-400">
                 <span className="flex items-center gap-2">
-                  <MapPin className="w-4 h-4 text-cyan-400" /> {business.streetAddress}
+                  <MapPin className="w-3 h-3 sm:w-4 sm:h-4 text-cyan-400" /> {business.streetAddress}
                 </span>
                 <span className="flex items-center gap-2">
-                  <Shield className="w-4 h-4 text-cyan-400" /> Complimentary Diagnostics
+                  <Shield className="w-3 h-3 sm:w-4 sm:h-4 text-cyan-400" /> Complimentary Diagnostics
                 </span>
               </div>
             </CardContent>
