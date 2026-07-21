@@ -210,7 +210,7 @@ export default function GamingPCCooling() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-950 text-white">
+    <div className="min-h-screen bg-gray-950 text-white selection:bg-cyan-500/30">
       
       {/* 🚀 Independent SEO Helmet */}
       <Helmet>
@@ -220,45 +220,45 @@ export default function GamingPCCooling() {
       </Helmet>
 
       {/* ─── HERO SECTION ─── */}
-      <section className="relative pt-32 pb-16 md:pb-24 px-4 overflow-hidden">
+      <section className="relative pt-24 pb-8 sm:pb-24 px-4 sm:px-6 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-transparent to-orange-500/10"></div>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(6,182,212,0.1),transparent_50%)]"></div>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(249,115,22,0.1),transparent_50%)]"></div>
         
-        <div className="container mx-auto max-w-6xl relative z-10">
-          <div className="text-center space-y-6">
-            <Badge className="bg-cyan-500/20 text-cyan-300 border-cyan-500/30 px-4 md:px-6 py-1.5 md:py-2 text-xs md:text-sm font-semibold">
+        <div className="container mx-auto max-w-6xl relative z-10 mt-8 sm:mt-0">
+          <div className="text-center space-y-4 sm:space-y-6">
+            <Badge className="bg-cyan-500/20 text-cyan-300 border-cyan-500/30 px-4 sm:px-6 py-1.5 sm:py-2 text-xs sm:text-sm font-semibold">
               <Thermometer className="w-4 h-4 mr-2 inline" />
               Gaming PC Cooling Experts
             </Badge>
-            <h1 className="text-4xl md:text-7xl font-bold text-white leading-tight">
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold text-white leading-tight">
               Keep Your Gaming PC Cool<br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
                 in Kuwait's Heat
               </span>
             </h1>
-            <p className="text-lg md:text-2xl text-slate-300 max-w-4xl mx-auto leading-relaxed">
+            <p className="text-sm sm:text-xl text-slate-300 max-w-4xl mx-auto leading-relaxed">
               Professional cooling solutions designed for extreme climates. Protect your investment from overheating and thermal throttling.
             </p>
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center pt-4 md:pt-6">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center pt-4 sm:pt-6">
               <Button 
                 size="lg" 
-                className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white text-base md:text-lg px-6 md:px-8 py-6 shadow-lg shadow-orange-500/30"
+                className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white text-base sm:text-lg px-6 sm:px-8 py-6 shadow-lg shadow-orange-500/30 w-full sm:w-auto"
                 asChild
               >
                 <a href={`tel:+${business.telephone}`}>
-                  <Phone className="w-5 h-5 mr-2" />
+                  <Phone className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                   Call: +{business.telephone}
                 </a>
               </Button>
               <Button 
                 size="lg" 
                 variant="outline" 
-                className="border-cyan-500/50 text-cyan-300 hover:bg-cyan-500/10 text-base md:text-lg px-6 md:px-8 py-6"
+                className="border-cyan-500/50 text-cyan-300 hover:bg-cyan-500/10 text-base sm:text-lg px-6 sm:px-8 py-6 w-full sm:w-auto"
                 asChild
               >
                 <a href={`https://wa.me/${business.telephone}?text=I need gaming PC cooling service`} target="_blank" rel="noopener noreferrer">
-                  <MessageCircle className="w-5 h-5 mr-2" />
+                  <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                   WhatsApp Us
                 </a>
               </Button>
@@ -267,24 +267,24 @@ export default function GamingPCCooling() {
         </div>
       </section>
 
-      {/* ─── 2-COLUMN STATISTICS ─── */}
-      <section className="py-12 md:py-16 px-4 bg-slate-900/50 backdrop-blur-sm">
+      {/* ─── STATISTICS ─── */}
+      <section className="py-8 sm:py-16 px-4 sm:px-6 bg-slate-900/50 backdrop-blur-sm relative z-10">
         <div className="container mx-auto max-w-6xl">
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-8">
             {statistics.map((stat, index) => {
               const Icon = stat.icon;
               return (
                 <Card key={index} className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 border-cyan-500/20 backdrop-blur-sm hover:border-cyan-500/40 transition-all">
-                  <CardContent className="pt-6 md:pt-8 text-center p-4 md:p-6">
-                    <div className="flex justify-center mb-3 md:mb-4">
-                      <div className="bg-cyan-500/10 p-2 md:p-4 rounded-full">
-                        <Icon className={`w-6 h-6 md:w-10 md:h-10 ${stat.color}`} />
+                  <CardContent className="pt-6 sm:pt-8 text-center p-4 sm:p-6">
+                    <div className="flex justify-center mb-2 sm:mb-4">
+                      <div className="bg-cyan-500/10 p-3 sm:p-4 rounded-full">
+                        <Icon className={`w-6 h-6 sm:w-8 sm:h-8 ${stat.color}`} />
                       </div>
                     </div>
-                    <div className="text-3xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 mb-1 md:mb-2">
+                    <div className="text-3xl sm:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 mb-1 sm:mb-2">
                       {stat.value}
                     </div>
-                    <div className="text-xs md:text-lg text-slate-300 font-medium leading-tight">{stat.label}</div>
+                    <div className="text-xs sm:text-sm text-slate-300 font-medium tracking-wide uppercase">{stat.label}</div>
                   </CardContent>
                 </Card>
               );
@@ -293,24 +293,24 @@ export default function GamingPCCooling() {
         </div>
       </section>
 
-      {/* ─── 2-COLUMN CHALLENGES ─── */}
-      <section className="py-16 md:py-24 px-4">
+      {/* ─── CHALLENGES ─── */}
+      <section className="py-8 sm:py-24 px-4 sm:px-6">
         <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-10 md:mb-16">
-            <Badge className="bg-orange-500/20 text-orange-300 border-orange-500/30 px-4 py-1.5 md:py-2 text-xs md:text-sm mb-4">
+          <div className="text-center mb-8 sm:mb-16">
+            <Badge className="bg-orange-500/20 text-orange-300 border-orange-500/30 px-3 sm:px-4 py-1.5 md:py-2 text-[10px] sm:text-sm mb-3 sm:mb-4">
               The Challenge
             </Badge>
-            <h2 className="text-3xl md:text-6xl font-bold text-white mb-4 md:mb-6">
+            <h2 className="text-2xl sm:text-5xl font-bold text-white mb-3 sm:mb-6">
               Climate vs. Gaming PCs
             </h2>
           </div>
 
-          <div className="grid grid-cols-2 gap-3 md:gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
             {challenges.map((challenge, index) => {
               const Icon = challenge.icon;
               return (
-                <Card key={index} className={`bg-slate-900/50 ${challenge.borderColor} backdrop-blur-sm overflow-hidden flex flex-col`}>
-                  <div className="h-24 md:h-48 overflow-hidden">
+                <Card key={index} className={`bg-slate-900/50 ${challenge.borderColor} backdrop-blur-sm hover:scale-[1.02] transition-transform overflow-hidden flex flex-col`}>
+                  <div className="h-32 sm:h-48 overflow-hidden shrink-0">
                     <img 
                       src={challenge.image}
                       alt={challenge.title}
@@ -324,8 +324,8 @@ export default function GamingPCCooling() {
                         <Icon className={`w-4 h-4 md:w-6 md:h-6 ${challenge.color}`} />
                       </div>
                     </div>
-                    <CardTitle className="text-base md:text-2xl text-white mb-1 md:mb-2 leading-tight">{challenge.title}</CardTitle>
-                    <CardDescription className="text-slate-300 text-xs md:text-base leading-relaxed line-clamp-3 md:line-clamp-none">
+                    <CardTitle className="text-lg md:text-2xl text-white mb-1 md:mb-2 leading-tight">{challenge.title}</CardTitle>
+                    <CardDescription className="text-slate-300 text-xs md:text-sm leading-relaxed">
                       {challenge.description}
                     </CardDescription>
                   </CardHeader>
@@ -337,24 +337,24 @@ export default function GamingPCCooling() {
       </section>
 
       {/* ─── TEMPERATURE MONITORING ─── */}
-      <section className="py-16 md:py-24 px-4 bg-slate-900/50 backdrop-blur-sm">
+      <section className="py-8 sm:py-24 px-4 sm:px-6 bg-slate-900/50 backdrop-blur-sm relative z-10">
         <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-10 md:mb-16">
-            <Badge className="bg-red-500/20 text-red-300 border-red-500/30 px-4 py-1.5 md:py-2 text-xs md:text-sm mb-4">
-              <Flame className="w-4 h-4 mr-2 inline" />
+          <div className="text-center mb-8 sm:mb-16">
+            <Badge className="bg-red-500/20 text-red-300 border-red-500/30 px-3 sm:px-4 py-1.5 md:py-2 text-[10px] sm:text-sm mb-3 sm:mb-4">
+              <Flame className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2 inline" />
               Monitoring
             </Badge>
-            <h2 className="text-3xl md:text-6xl font-bold text-white mb-4 md:mb-6">
+            <h2 className="text-2xl sm:text-5xl font-bold text-white mb-3 sm:mb-6">
               Critical Thresholds
             </h2>
           </div>
 
           <div className="mb-8 md:mb-12 flex justify-center">
             <Card className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 border-cyan-500/20 backdrop-blur-sm w-full max-w-2xl">
-              <CardHeader className="p-4 md:p-6">
+              <CardHeader className="p-4 sm:p-6">
                 <CardTitle className="text-white text-center text-sm md:text-xl">Temperature Safety Zones</CardTitle>
               </CardHeader>
-              <CardContent className="p-4 md:p-6 pt-0">
+              <CardContent className="p-4 sm:p-6 pt-0">
                 <img 
                   src="https://mgx-backend-cdn.metadl.com/generate/images/681399/2026-02-01/d1e21d3e-0010-4d04-b480-ce46e0782b3c.png"
                   alt="Temperature zones diagram"
@@ -365,31 +365,31 @@ export default function GamingPCCooling() {
             </Card>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
+          <div className="scroll-row gap-3 -mx-4 px-4 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 md:grid-cols-4 sm:gap-6">
             {temperatureThresholds.map((threshold, index) => (
-              <Card key={index} className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 border-cyan-500/20 backdrop-blur-sm">
-                <CardHeader className="p-3 md:p-6 pb-2 md:pb-4">
-                  <CardTitle className="text-sm md:text-xl text-white flex items-center gap-2 md:gap-3">
-                    <Thermometer className="w-4 h-4 md:w-6 md:h-6 text-cyan-400" />
+              <Card key={index} className="scroll-row-item w-[85%] sm:w-auto bg-gradient-to-br from-slate-800/80 to-slate-900/80 border-cyan-500/20 backdrop-blur-sm">
+                <CardHeader className="p-4 sm:p-6 pb-2 sm:pb-4">
+                  <CardTitle className="text-base sm:text-xl text-white flex items-center gap-2 sm:gap-3">
+                    <Thermometer className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-400" />
                     {threshold.component}
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="p-3 md:p-6 pt-0 space-y-3 md:space-y-4">
+                <CardContent className="p-4 sm:p-6 pt-0 space-y-3 md:space-y-4">
                   <div className="space-y-2">
-                    <div className="bg-emerald-500/10 border border-emerald-500/30 rounded p-1.5 md:p-2 flex justify-between items-center">
+                    <div className="bg-emerald-500/10 border border-emerald-500/30 rounded p-1.5 sm:p-2 flex justify-between items-center">
                       <span className="text-[10px] md:text-xs text-emerald-400 font-bold">SAFE</span>
                       <span className="text-[10px] md:text-sm text-white font-bold">{threshold.safe}</span>
                     </div>
-                    <div className="bg-yellow-500/10 border border-yellow-500/30 rounded p-1.5 md:p-2 flex justify-between items-center">
+                    <div className="bg-yellow-500/10 border border-yellow-500/30 rounded p-1.5 sm:p-2 flex justify-between items-center">
                       <span className="text-[10px] md:text-xs text-yellow-400 font-bold">WARN</span>
                       <span className="text-[10px] md:text-sm text-white font-bold">{threshold.warning}</span>
                     </div>
-                    <div className="bg-red-500/10 border border-red-500/30 rounded p-1.5 md:p-2 flex justify-between items-center">
+                    <div className="bg-red-500/10 border border-red-500/30 rounded p-1.5 sm:p-2 flex justify-between items-center">
                       <span className="text-[10px] md:text-xs text-red-400 font-bold">CRIT</span>
                       <span className="text-[10px] md:text-sm text-white font-bold">{threshold.critical}</span>
                     </div>
                   </div>
-                  <p className="text-slate-300 text-[10px] md:text-sm leading-relaxed hidden sm:block">{threshold.description}</p>
+                  <p className="text-slate-300 text-[11px] sm:text-sm leading-relaxed">{threshold.description}</p>
                 </CardContent>
               </Card>
             ))}
@@ -397,24 +397,24 @@ export default function GamingPCCooling() {
         </div>
       </section>
 
-      {/* ─── 2-COLUMN SOLUTIONS CATALOG ─── */}
-      <section className="py-16 md:py-24 px-4">
+      {/* ─── SOLUTIONS CATALOG ─── */}
+      <section className="py-8 sm:py-24 px-4 sm:px-6 relative z-10">
         <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-10 md:mb-16">
-            <Badge className="bg-cyan-500/20 text-cyan-300 border-cyan-500/30 px-4 py-1.5 md:py-2 text-xs md:text-sm mb-4">
+          <div className="text-center mb-8 sm:mb-16">
+            <Badge className="bg-cyan-500/20 text-cyan-300 border-cyan-500/30 px-3 sm:px-4 py-1.5 md:py-2 text-[10px] sm:text-sm mb-3 sm:mb-4">
               Professional Solutions
             </Badge>
-            <h2 className="text-3xl md:text-6xl font-bold text-white mb-4 md:mb-6">
+            <h2 className="text-2xl sm:text-5xl font-bold text-white mb-3 sm:mb-6">
               Cooling Services
             </h2>
           </div>
 
-          <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6">
+          <div className="scroll-row gap-3 -mx-4 px-4 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-4 sm:gap-6">
             {coolingSolutions.map((solution, index) => {
               const Icon = solution.icon;
               return (
-                <Card key={index} className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 border-cyan-500/20 backdrop-blur-sm flex flex-col overflow-hidden">
-                  <div className="relative h-24 md:h-48">
+                <Card key={index} className="scroll-row-item w-[85%] sm:w-auto bg-gradient-to-br from-slate-800/80 to-slate-900/80 border-cyan-500/20 backdrop-blur-sm flex flex-col overflow-hidden">
+                  <div className="relative h-28 sm:h-40 shrink-0">
                     <img 
                       src={solution.image}
                       alt={solution.title}
@@ -422,27 +422,27 @@ export default function GamingPCCooling() {
                       loading="lazy"
                     />
                     <div className="absolute top-2 right-2 md:top-3 md:right-3">
-                      <Badge className="bg-orange-500/90 text-white border-0 text-xs md:text-sm px-2 py-0.5 md:px-3 md:py-1">
+                      <Badge className="bg-orange-500/90 text-white border-0 text-[10px] sm:text-sm px-2 py-0.5 md:px-3 md:py-1 font-bold">
                         {solution.price}
                       </Badge>
                     </div>
                   </div>
                   <CardHeader className="p-4 md:p-6 flex-grow">
                     <div className="flex items-center gap-2 md:gap-3 mb-2 md:mb-3">
-                      <div className="bg-cyan-500/10 p-2 md:p-3 rounded-md md:rounded-lg">
+                      <div className="bg-cyan-500/10 p-2 md:p-2.5 rounded-md">
                         <Icon className="w-4 h-4 md:w-5 md:h-5 text-cyan-400" />
                       </div>
                     </div>
-                    <CardTitle className="text-sm md:text-xl text-white mb-1 md:mb-2 leading-tight">{solution.title}</CardTitle>
+                    <CardTitle className="text-base md:text-lg text-white mb-1 md:mb-2 leading-tight">{solution.title}</CardTitle>
                     <div className="flex items-center gap-1.5 md:gap-2 mt-2 md:mt-3">
                       <Clock className="w-3 h-3 md:w-4 md:h-4 text-cyan-400" />
-                      <span className="text-[10px] md:text-sm text-cyan-300">{solution.duration}</span>
+                      <span className="text-[10px] md:text-xs text-cyan-300 font-bold">{solution.duration}</span>
                     </div>
                   </CardHeader>
-                  <CardContent className="p-4 md:p-6 pt-0 hidden sm:block">
-                    <ul className="space-y-1 md:space-y-2">
+                  <CardContent className="p-4 md:p-6 pt-0">
+                    <ul className="space-y-1.5 sm:space-y-2">
                       {solution.benefits.slice(0, 3).map((benefit, idx) => (
-                        <li key={idx} className="flex items-start gap-1.5 md:gap-2 text-slate-300 text-[10px] md:text-sm">
+                        <li key={idx} className="flex items-start gap-1.5 md:gap-2 text-slate-300 text-[11px] md:text-sm">
                           <CheckCircle2 className="w-3 h-3 md:w-4 md:h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
                           <span className="leading-tight">{benefit}</span>
                         </li>
@@ -456,29 +456,30 @@ export default function GamingPCCooling() {
         </div>
       </section>
 
-      {/* ─── 2-COLUMN BRANDS & MAINTENANCE ─── */}
-      <section className="py-16 md:py-24 px-4 border-t border-gray-900 bg-slate-900/30">
+      {/* ─── BRANDS & MAINTENANCE ─── */}
+      <section className="py-8 sm:py-24 px-4 sm:px-6 border-t border-gray-900 bg-slate-900/30">
         <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-10 md:mb-16">
-            <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30 px-4 py-1.5 md:py-2 text-xs md:text-sm mb-4">
-              <Shield className="w-4 h-4 mr-2 inline" /> Maintenance Guide
+          <div className="text-center mb-8 sm:mb-16">
+            <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30 px-3 sm:px-4 py-1.5 md:py-2 text-[10px] sm:text-sm mb-3 sm:mb-4">
+              <Shield className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2 inline" /> Maintenance Guide
             </Badge>
-            <h2 className="text-3xl md:text-6xl font-bold text-white mb-4 md:mb-6">
+            <h2 className="text-2xl sm:text-5xl font-bold text-white mb-3 sm:mb-6">
               Keep It Cool
             </h2>
           </div>
 
-          <div className="grid grid-cols-2 gap-3 md:gap-6 mb-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-6 mb-8 sm:mb-16">
             {maintenanceTips.map((tip, index) => {
               const Icon = tip.icon;
               return (
-                <Card key={index} className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 border-cyan-500/20 backdrop-blur-sm p-4 md:p-6 text-center md:text-left flex flex-col md:flex-row items-center gap-3 md:gap-4">
-                  <div className="bg-cyan-500/10 p-2 md:p-3 rounded-lg shrink-0">
-                    <Icon className="w-5 h-5 md:w-6 md:h-6 text-cyan-400" />
+                <Card key={index} className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 border-cyan-500/20 backdrop-blur-sm p-4 sm:p-6 text-left flex items-start gap-3 sm:gap-4">
+                  <div className="bg-cyan-500/10 p-2 sm:p-3 rounded-lg shrink-0">
+                    <Icon className="w-4 h-4 sm:w-6 sm:h-6 text-cyan-400" />
                   </div>
                   <div>
-                    <CardTitle className="text-sm md:text-lg text-white mb-1 md:mb-2">{tip.title}</CardTitle>
-                    <Badge className="bg-emerald-500/20 text-emerald-300 border-0 text-[10px] md:text-xs">
+                    <CardTitle className="text-sm sm:text-lg text-white mb-1">{tip.title}</CardTitle>
+                    <p className="text-slate-400 text-[11px] sm:text-sm leading-relaxed mb-2">{tip.description}</p>
+                    <Badge className="bg-emerald-500/20 text-emerald-300 border-0 text-[9px] sm:text-xs">
                       {tip.frequency}
                     </Badge>
                   </div>
@@ -487,11 +488,11 @@ export default function GamingPCCooling() {
             })}
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
+          <div className="scroll-row gap-3 -mx-4 px-4 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 md:grid-cols-4 sm:gap-6">
             {gamingBrands.map((brand, index) => (
-              <Card key={index} className="bg-slate-800/50 border-cyan-500/20 p-4 md:p-6 text-center">
-                <CardTitle className="text-sm md:text-xl text-white mb-2">{brand.brand}</CardTitle>
-                <Badge variant="outline" className="text-[10px] md:text-xs border-cyan-500/30 text-cyan-300">{brand.models}</Badge>
+              <Card key={index} className="scroll-row-item w-[80%] sm:w-auto bg-slate-800/50 border-cyan-500/20 p-4 sm:p-6 text-center flex flex-col justify-center">
+                <CardTitle className="text-base sm:text-xl text-white mb-2">{brand.brand}</CardTitle>
+                <Badge variant="outline" className="text-[10px] sm:text-xs border-cyan-500/30 text-cyan-300 mx-auto">{brand.models}</Badge>
               </Card>
             ))}
           </div>
@@ -499,19 +500,19 @@ export default function GamingPCCooling() {
       </section>
 
       {/* ─── CTA SECTION ─── */}
-      <section className="py-16 md:py-24 px-4">
-        <div className="container mx-auto max-w-4xl text-center bg-gradient-to-br from-cyan-500/10 to-orange-500/10 border border-cyan-500/30 p-8 md:p-12 rounded-3xl backdrop-blur-sm">
-          <h3 className="text-2xl md:text-4xl font-bold text-white mb-4 md:mb-6">
+      <section className="py-8 sm:py-24 px-4 sm:px-6">
+        <div className="container mx-auto max-w-4xl text-center bg-gradient-to-br from-cyan-500/10 to-orange-500/10 border border-cyan-500/30 p-6 sm:p-12 rounded-3xl backdrop-blur-sm">
+          <h3 className="text-xl sm:text-4xl font-bold text-white mb-3 sm:mb-6">
             Protect Your Gaming Investment
           </h3>
-          <p className="text-sm md:text-lg text-slate-300 mb-8 max-w-xl mx-auto">
+          <p className="text-xs sm:text-lg text-slate-300 mb-6 sm:mb-8 max-w-xl mx-auto">
             Contact us for professional cooling solutions. Free pick & drop across all Kuwait governorates.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center">
             <Button 
               asChild
               size="lg" 
-              className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white w-full sm:w-auto font-black"
+              className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white w-full sm:w-auto font-black text-sm sm:text-base py-5 sm:py-7"
             >
               <a href={`tel:+${business.telephone}`}>Call: +{business.telephone}</a>
             </Button>
@@ -519,7 +520,7 @@ export default function GamingPCCooling() {
               asChild
               size="lg" 
               variant="outline" 
-              className="border-cyan-500/50 text-cyan-300 hover:bg-cyan-500/10 w-full sm:w-auto"
+              className="border-cyan-500/50 text-cyan-300 hover:bg-cyan-500/10 w-full sm:w-auto text-sm sm:text-base py-5 sm:py-7"
             >
               <Link to="/book">Book Free Pickup</Link>
             </Button>
