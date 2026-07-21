@@ -262,45 +262,45 @@ export default function BlogLaptopRepair() {
       <SchemaMarkup schema={STRUCTURED_DATA} />
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-24 px-4 overflow-hidden">
+      <section className="relative pt-24 pb-8 sm:pb-24 px-4 sm:px-6 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-transparent to-blue-500/10"></div>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(6,182,212,0.1),transparent_50%)]"></div>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(59,130,246,0.1),transparent_50%)]"></div>
         
-        <div className="container mx-auto max-w-6xl relative z-10">
-          <div className="text-center space-y-6">
-            <Badge className="bg-cyan-500/20 text-cyan-300 border-cyan-500/30 px-6 py-2 text-sm font-semibold">
+        <div className="container mx-auto max-w-6xl relative z-10 mt-8 sm:mt-0">
+          <div className="text-center space-y-4 sm:space-y-6">
+            <Badge className="bg-cyan-500/20 text-cyan-300 border-cyan-500/30 px-4 sm:px-6 py-1.5 sm:py-2 text-xs sm:text-sm font-semibold">
               <Wrench className="w-4 h-4 mr-2 inline" />
               Laptop Repair Experts in Kuwait
             </Badge>
-            <h1 className="text-5xl md:text-7xl font-bold text-white leading-tight">
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold text-white leading-tight">
               Revive Your Broken Laptop<br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-emerald-400">
                 With Zero Risk
               </span>
             </h1>
-            <p className="text-xl md:text-2xl text-slate-300 max-w-4xl mx-auto leading-relaxed">
+            <p className="text-sm sm:text-xl text-slate-300 max-w-4xl mx-auto leading-relaxed">
               Professional component-level repair, screen replacements, and motherboard diagnostics. We bring dead laptops back to life.
             </p>
-            <div className="flex flex-wrap gap-4 justify-center pt-6">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center pt-4 sm:pt-6">
               <Button 
                 size="lg" 
-                className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white text-lg px-8 py-6 shadow-lg shadow-cyan-500/30"
+                className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white text-base sm:text-lg px-6 sm:px-8 py-6 shadow-lg shadow-cyan-500/30 w-full sm:w-auto"
                 asChild
               >
                 <a href={`tel:+${business.telephone}`}>
-                  <Phone className="w-5 h-5 mr-2" />
+                  <Phone className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                   Call Now: +{business.telephone}
                 </a>
               </Button>
               <Button 
                 size="lg" 
                 variant="outline" 
-                className="border-emerald-500/50 text-emerald-400 hover:bg-emerald-500/10 text-lg px-8 py-6"
+                className="border-emerald-500/50 text-emerald-400 hover:bg-emerald-500/10 text-base sm:text-lg px-6 sm:px-8 py-6 w-full sm:w-auto"
                 asChild
               >
                 <a href={WA_LINK} target="_blank" rel="noopener noreferrer">
-                  <MessageCircle className="w-5 h-5 mr-2" />
+                  <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                   WhatsApp Us
                 </a>
               </Button>
@@ -310,23 +310,23 @@ export default function BlogLaptopRepair() {
       </section>
 
       {/* Statistics Section */}
-      <section className="py-16 px-4 bg-slate-900/50 backdrop-blur-sm">
+      <section className="py-8 sm:py-16 px-4 sm:px-6 bg-slate-900/50 backdrop-blur-sm relative z-10">
         <div className="container mx-auto max-w-6xl">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-8">
             {statistics.map((stat, index) => {
               const Icon = stat.icon;
               return (
                 <Card key={index} className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 border-cyan-500/20 backdrop-blur-sm hover:border-cyan-500/40 transition-all">
-                  <CardContent className="pt-8 text-center">
-                    <div className="flex justify-center mb-4">
-                      <div className="bg-slate-950 p-4 rounded-full border border-slate-800">
-                        <Icon className={`w-8 h-8 ${stat.color}`} />
+                  <CardContent className="pt-6 sm:pt-8 text-center p-4 sm:p-6">
+                    <div className="flex justify-center mb-2 sm:mb-4">
+                      <div className="bg-slate-950 p-3 sm:p-4 rounded-full border border-slate-800">
+                        <Icon className={`w-6 h-6 sm:w-8 sm:h-8 ${stat.color}`} />
                       </div>
                     </div>
-                    <div className="text-5xl font-black text-white mb-2">
+                    <div className="text-3xl sm:text-5xl font-black text-white mb-1 sm:mb-2">
                       {stat.value}
                     </div>
-                    <div className="text-sm text-slate-400 font-bold uppercase tracking-widest">{stat.label}</div>
+                    <div className="text-xs sm:text-sm text-slate-400 font-bold uppercase tracking-widest">{stat.label}</div>
                   </CardContent>
                 </Card>
               );
@@ -336,35 +336,35 @@ export default function BlogLaptopRepair() {
       </section>
 
       {/* The Challenge Section */}
-      <section className="py-24 px-4">
+      <section className="py-8 sm:py-24 px-4 sm:px-6">
         <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-16">
-            <Badge className="bg-red-500/20 text-red-300 border-red-500/30 px-4 py-2 text-sm mb-4">
-              <AlertTriangle className="w-4 h-4 mr-2 inline" /> Hardware Threats
+          <div className="text-center mb-8 sm:mb-16">
+            <Badge className="bg-red-500/20 text-red-300 border-red-500/30 px-3 sm:px-4 py-1.5 sm:py-2 text-[10px] sm:text-sm mb-3 sm:mb-4">
+              <AlertTriangle className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2 inline" /> Hardware Threats
             </Badge>
-            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
+            <h2 className="text-2xl sm:text-5xl font-bold text-white mb-3 sm:mb-6">
               Why Laptops Fail in Kuwait
             </h2>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+            <p className="text-sm sm:text-xl text-slate-300 max-w-3xl mx-auto">
               Portability comes with risks. Between extreme heat, dust, and daily transport, laptops are highly susceptible to these common hardware failures.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
             {challenges.map((challenge, index) => {
               const Icon = challenge.icon;
               return (
                 <Card key={index} className={`bg-slate-900/50 ${challenge.borderColor} backdrop-blur-sm hover:scale-[1.02] transition-transform overflow-hidden`}>
-                  <div className="grid md:grid-cols-2 h-full">
+                  <div className="grid sm:grid-cols-2 h-full">
                     <div className="flex flex-col justify-center">
-                      <CardHeader>
-                        <div className="flex items-center gap-4 mb-3">
-                          <div className={`${challenge.bgColor} p-3 rounded-xl`}>
-                            <Icon className={`w-6 h-6 ${challenge.color}`} />
+                      <CardHeader className="p-4 md:p-6">
+                        <div className="flex items-center gap-3 sm:gap-4 mb-2 sm:mb-3">
+                          <div className={`${challenge.bgColor} p-2 sm:p-3 rounded-lg sm:rounded-xl`}>
+                            <Icon className={`w-4 h-4 sm:w-6 sm:h-6 ${challenge.color}`} />
                           </div>
                         </div>
-                        <CardTitle className="text-2xl text-white mb-3">{challenge.title}</CardTitle>
-                        <CardDescription className="text-slate-300 text-sm leading-relaxed">
+                        <CardTitle className="text-lg sm:text-2xl text-white mb-1.5 sm:mb-3 leading-tight">{challenge.title}</CardTitle>
+                        <CardDescription className="text-slate-300 text-xs sm:text-sm leading-relaxed">
                           {challenge.description}
                         </CardDescription>
                       </CardHeader>
@@ -373,7 +373,7 @@ export default function BlogLaptopRepair() {
                       <img 
                         src={challenge.image}
                         alt={`${challenge.title} - Laptop Repair Kuwait`}
-                        className="w-full h-48 md:h-full object-cover rounded-lg"
+                        className="w-full h-32 sm:h-full object-cover rounded-lg"
                         loading="lazy"
                       />
                     </div>
@@ -386,59 +386,59 @@ export default function BlogLaptopRepair() {
       </section>
 
       {/* Repair Solutions */}
-      <section className="py-24 px-4 bg-slate-900/50 backdrop-blur-sm border-y border-slate-800">
+      <section className="py-8 sm:py-24 px-4 sm:px-6 bg-slate-900/50 backdrop-blur-sm border-y border-slate-800">
         <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-16">
-            <Badge className="bg-cyan-500/20 text-cyan-300 border-cyan-500/30 px-4 py-2 text-sm mb-4">
+          <div className="text-center mb-8 sm:mb-16">
+            <Badge className="bg-cyan-500/20 text-cyan-300 border-cyan-500/30 px-3 sm:px-4 py-1.5 sm:py-2 text-[10px] sm:text-sm mb-3 sm:mb-4">
               Professional Solutions
             </Badge>
-            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
+            <h2 className="text-2xl sm:text-5xl font-bold text-white mb-3 sm:mb-6">
               Our Repair Services
             </h2>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+            <p className="text-sm sm:text-xl text-slate-300 max-w-3xl mx-auto">
               From microscopic motherboard shorts to cracked screens, we fix what others say is unfixable.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="scroll-row gap-3 -mx-4 px-4 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-6">
             {repairSolutions.map((solution, index) => {
               const Icon = solution.icon;
               return (
-                <Card key={index} className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 border-slate-700 backdrop-blur-sm hover:border-cyan-500/40 transition-all overflow-hidden flex flex-col">
-                  <div className="relative h-48 overflow-hidden">
+                <Card key={index} className="scroll-row-item w-[85%] sm:w-auto bg-gradient-to-br from-slate-800/80 to-slate-900/80 border-slate-700 backdrop-blur-sm hover:border-cyan-500/40 transition-all overflow-hidden flex flex-col">
+                  <div className="relative h-32 sm:h-48 overflow-hidden shrink-0">
                     <img 
                       src={solution.image}
                       alt={`${solution.title} - KCROC Repair Kuwait`}
                       className="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity"
                       loading="lazy"
                     />
-                    <div className="absolute top-3 right-3">
-                      <Badge className="bg-slate-950/90 text-cyan-400 border border-cyan-500/30 text-sm px-3 py-1 font-bold shadow-lg">
+                    <div className="absolute top-2 right-2 sm:top-3 sm:right-3">
+                      <Badge className="bg-slate-950/90 text-cyan-400 border border-cyan-500/30 text-[10px] sm:text-sm px-2 py-0.5 sm:px-3 sm:py-1 font-bold shadow-lg">
                         {solution.price}
                       </Badge>
                     </div>
                   </div>
-                  <CardHeader className="flex-grow">
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className="bg-slate-950 border border-slate-800 p-2.5 rounded-lg">
-                        <Icon className="w-5 h-5 text-cyan-400" />
+                  <CardHeader className="flex-grow p-4 sm:p-6">
+                    <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
+                      <div className="bg-slate-950 border border-slate-800 p-2 sm:p-2.5 rounded-md sm:rounded-lg">
+                        <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-400" />
                       </div>
                     </div>
-                    <CardTitle className="text-xl text-white mb-2">{solution.title}</CardTitle>
-                    <CardDescription className="text-slate-300 text-sm mb-4">
+                    <CardTitle className="text-base sm:text-xl text-white mb-1.5 sm:mb-2 leading-tight">{solution.title}</CardTitle>
+                    <CardDescription className="text-slate-300 text-[11px] sm:text-sm mb-3 sm:mb-4 leading-relaxed">
                       {solution.description}
                     </CardDescription>
-                    <div className="flex items-center gap-2 mt-auto">
-                      <Clock className="w-4 h-4 text-cyan-400" />
-                      <span className="text-sm font-bold text-slate-300">{solution.duration}</span>
+                    <div className="flex items-center gap-1.5 sm:gap-2 mt-auto">
+                      <Clock className="w-3 h-3 sm:w-4 sm:h-4 text-cyan-400" />
+                      <span className="text-[10px] sm:text-sm font-bold text-slate-300">{solution.duration}</span>
                     </div>
                   </CardHeader>
-                  <CardContent className="bg-slate-950/30 pt-4 border-t border-slate-800">
-                    <ul className="space-y-2">
+                  <CardContent className="bg-slate-950/30 pt-3 sm:pt-4 border-t border-slate-800 p-4 sm:p-6 hidden sm:block">
+                    <ul className="space-y-1.5 sm:space-y-2">
                       {solution.benefits.map((benefit, idx) => (
-                        <li key={idx} className="flex items-start gap-2 text-slate-300 text-sm">
-                          <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
-                          <span>{benefit}</span>
+                        <li key={idx} className="flex items-start gap-1.5 sm:gap-2 text-slate-300 text-xs sm:text-sm">
+                          <CheckCircle2 className="w-3 h-3 sm:w-4 sm:h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
+                          <span className="leading-tight">{benefit}</span>
                         </li>
                       ))}
                     </ul>
@@ -451,35 +451,35 @@ export default function BlogLaptopRepair() {
       </section>
 
       {/* Brands Section */}
-      <section className="py-24 px-4">
+      <section className="py-8 sm:py-24 px-4 sm:px-6">
         <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-16">
-            <Badge className="bg-purple-500/20 text-purple-300 border-purple-500/30 px-4 py-2 text-sm mb-4">
+          <div className="text-center mb-8 sm:mb-16">
+            <Badge className="bg-purple-500/20 text-purple-300 border-purple-500/30 px-3 sm:px-4 py-1.5 sm:py-2 text-[10px] sm:text-sm mb-3 sm:mb-4">
               Brand Expertise
             </Badge>
-            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
+            <h2 className="text-2xl sm:text-5xl font-bold text-white mb-3 sm:mb-6">
               We Repair All Laptop Brands
             </h2>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+            <p className="text-sm sm:text-xl text-slate-300 max-w-3xl mx-auto">
               Authorized-level expertise across all major hardware manufacturers.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="scroll-row gap-3 -mx-4 px-4 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 sm:gap-6">
             {laptopBrands.map((brand, index) => (
-              <Card key={index} className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 border-slate-700 backdrop-blur-sm">
-                <CardHeader>
-                  <CardTitle className="text-2xl text-white mb-2">{brand.brand}</CardTitle>
-                  <Badge className="bg-slate-950 text-slate-300 border border-slate-700 w-fit">{brand.models}</Badge>
+              <Card key={index} className="scroll-row-item w-[85%] sm:w-auto bg-gradient-to-br from-slate-800/80 to-slate-900/80 border-slate-700 backdrop-blur-sm">
+                <CardHeader className="p-4 sm:p-6">
+                  <CardTitle className="text-lg sm:text-2xl text-white mb-1.5 sm:mb-2">{brand.brand}</CardTitle>
+                  <Badge className="bg-slate-950 text-slate-300 border border-slate-700 w-fit text-[9px] sm:text-xs">{brand.models}</Badge>
                 </CardHeader>
-                <CardContent className="space-y-4">
+                <CardContent className="space-y-3 sm:space-y-4 p-4 sm:p-6 pt-0">
                   <div>
-                    <h4 className="text-cyan-400 font-bold text-xs uppercase tracking-wider mb-1">Our Expertise:</h4>
-                    <p className="text-slate-300 text-sm">{brand.expertise}</p>
+                    <h4 className="text-cyan-400 font-bold text-[10px] sm:text-xs uppercase tracking-wider mb-1">Our Expertise:</h4>
+                    <p className="text-slate-300 text-[11px] sm:text-sm">{brand.expertise}</p>
                   </div>
                   <div>
-                    <h4 className="text-orange-400 font-bold text-xs uppercase tracking-wider mb-1">Common Issues:</h4>
-                    <p className="text-slate-300 text-sm">{brand.common}</p>
+                    <h4 className="text-orange-400 font-bold text-[10px] sm:text-xs uppercase tracking-wider mb-1">Common Issues:</h4>
+                    <p className="text-slate-300 text-[11px] sm:text-sm">{brand.common}</p>
                   </div>
                 </CardContent>
               </Card>
@@ -489,23 +489,23 @@ export default function BlogLaptopRepair() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-24 px-4 border-t border-slate-800 bg-slate-900/30">
+      <section className="py-8 sm:py-24 px-4 sm:px-6 border-t border-slate-800 bg-slate-900/30">
         <div className="container mx-auto max-w-4xl">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
+          <div className="text-center mb-8 sm:mb-16">
+            <h2 className="text-2xl sm:text-5xl font-bold text-white mb-3 sm:mb-6">
               Frequently Asked Questions
             </h2>
           </div>
 
-          <div className="space-y-4">
+          <div className="space-y-3 sm:space-y-4">
             {faq.map((item, index) => (
               <Card key={index} className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 border-slate-700 backdrop-blur-sm">
-                <CardContent className="p-6 md:p-8">
-                  <h3 className="text-lg font-bold text-white mb-3 flex items-start gap-3">
+                <CardContent className="p-4 sm:p-8">
+                  <h3 className="text-sm sm:text-lg font-bold text-white mb-2 sm:mb-3 flex items-start gap-2 sm:gap-3">
                     <span className="text-cyan-400 flex-shrink-0">Q:</span>
                     {item.q}
                   </h3>
-                  <p className="text-slate-300 leading-relaxed pl-7">
+                  <p className="text-slate-300 text-xs sm:text-base leading-relaxed pl-5 sm:pl-7">
                     <span className="text-emerald-400 font-semibold">A:</span> {item.a}
                   </p>
                 </CardContent>
@@ -516,45 +516,45 @@ export default function BlogLaptopRepair() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 px-4">
+      <section className="py-8 sm:py-24 px-4 sm:px-6">
         <div className="container mx-auto max-w-6xl">
           <Card className="bg-gradient-to-br from-cyan-600/20 via-blue-600/20 to-emerald-600/20 border-cyan-500/30 backdrop-blur-sm">
-            <CardContent className="p-12 text-center">
-              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            <CardContent className="p-6 sm:p-12 text-center">
+              <h2 className="text-2xl sm:text-5xl font-bold text-white mb-3 sm:mb-6 leading-tight">
                 Get Your Laptop Fixed Today
               </h2>
-              <p className="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">
+              <p className="text-xs sm:text-xl text-slate-300 mb-6 sm:mb-8 max-w-2xl mx-auto">
                 No Fix, No Fee. Free pickup and delivery across all Kuwait governorates. Reach out now for an instant quote.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
                 <Button 
                   size="lg" 
-                  className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black text-lg px-8 py-6 shadow-lg shadow-cyan-500/30"
+                  className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black text-sm sm:text-lg px-6 sm:px-8 py-5 sm:py-6 shadow-lg shadow-cyan-500/30 w-full sm:w-auto"
                   asChild
                 >
                   <a href={WA_LINK} target="_blank" rel="noopener noreferrer">
-                    <MessageCircle className="w-5 h-5 mr-2" />
+                    <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                     Book Free Pickup
                   </a>
                 </Button>
                 <Button 
                   size="lg" 
                   variant="outline" 
-                  className="border-slate-600 text-white hover:bg-slate-800 hover:text-white text-lg px-8 py-6"
+                  className="border-slate-600 text-white hover:bg-slate-800 hover:text-white text-sm sm:text-lg px-6 sm:px-8 py-5 sm:py-6 w-full sm:w-auto"
                   asChild
                 >
                   <a href={`tel:+${business.telephone}`}>
-                    <Phone className="w-5 h-5 mr-2" />
+                    <Phone className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                     Call: +{business.telephone}
                   </a>
                 </Button>
               </div>
-              <div className="mt-10 pt-8 border-t border-cyan-500/20 flex flex-wrap justify-center gap-6 text-sm text-slate-300">
+              <div className="mt-6 sm:mt-10 pt-6 sm:pt-8 border-t border-cyan-500/20 flex flex-wrap justify-center gap-4 sm:gap-6 text-xs sm:text-sm text-slate-300">
                 <span className="flex items-center gap-2">
-                  <MapPin className="w-4 h-4 text-cyan-400" /> {business.streetAddress}
+                  <MapPin className="w-3 h-3 sm:w-4 sm:h-4 text-cyan-400" /> {business.streetAddress}
                 </span>
                 <span className="flex items-center gap-2">
-                  <Shield className="w-4 h-4 text-cyan-400" /> 30-Day Warranty
+                  <Shield className="w-3 h-3 sm:w-4 sm:h-4 text-cyan-400" /> 30-Day Warranty
                 </span>
               </div>
             </CardContent>
