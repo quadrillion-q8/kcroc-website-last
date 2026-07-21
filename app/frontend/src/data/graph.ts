@@ -144,9 +144,9 @@ const rawGraphData: RawGraphData = {
     } as ServiceEntity,
     
     'srv-battery': { 
-      id: 'srv-battery', slug: 'battery-replacement', entityType: 'Service', isActive: true, 
+      id: 'srv-battery', slug: 'battery-replacement-kuwait', entityType: 'Service', isActive: true, 
       title: 'Battery Replacement Kuwait', iconKey: 'battery', shortDescription: 'OEM and compatible battery replacement.', description: 'Kuwait\'s extreme heat accelerates lithium degradation. We replace batteries and optimize thermal settings.', repairLevel: 'basic', estimatedTurnaround: 'Same Day', pricing: { startingFrom: 12, currency: 'KWD', quoteRequired: true, displayLabel: 'From 12 KWD' }, coreFeatures: ['OEM Batteries', 'MacBook Battery Replacement', 'Swollen Battery Removal'], brands: ['MacBook', 'Dell', 'HP', 'Lenovo'], commonIssues: [{ id: 'fast-drain', title: 'Battery dies quickly', severity: 'medium', description: 'Capacity loss.' }], warranty: { duration: '30 Days', coverage: 'Battery and labor.', noFixNoFee: true }, 
-      seo: { title: 'Laptop Battery Replacement Kuwait | Same Day | KCROC', description: 'Fast laptop and MacBook battery replacement in Kuwait. Swollen battery emergency service. Free pick & drop.', canonicalUrl: 'https://www.computerrepairkuwait.com/battery-replacement', ogType: 'article', schemaTypes: ['Service'] },
+      seo: { title: 'Laptop Battery Replacement Kuwait | Same Day | KCROC', description: 'Fast laptop and MacBook battery replacement in Kuwait. Swollen battery emergency service. Free pick & drop.', canonicalUrl: 'https://www.computerrepairkuwait.com/battery-replacement-kuwait', ogType: 'article', schemaTypes: ['Service'] },
       navigationPriority: 50, isFeatured: false, popular: false
     } as ServiceEntity,
 
@@ -154,6 +154,12 @@ const rawGraphData: RawGraphData = {
        LOCATION
     ═══════════════════════════════════════════════════════════════ */
     'loc-hawalli': { id: 'loc-hawalli', slug: 'hawalli', entityType: 'Location', isActive: true, isPhysicalLocation: true, title: 'Hawalli Repair Center', description: 'Kuwait\'s premier component-level repair facility in Hawalli.', landmark: 'Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19', coords: { lat: 29.3356, lng: 48.0250 }, serviceRadiusKm: 40, serviceAreas: ['Hawalli', 'Salmiya', 'Kuwait City', 'Farwaniya', 'Ahmadi', 'Jahra', 'Fahaheel'], seo: { title: 'Computer Repair Shop Hawalli Kuwait | Ibn Khaldoun St | KCROC', description: 'Visit KCROC at Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19, Hawalli. Open daily 10 AM – 10 PM.', canonicalUrl: 'https://www.computerrepairkuwait.com/location/hawalli', ogType: 'website', schemaTypes: ['LocalBusiness'] }, navigationPriority: 100 } as LocationEntity,
+
+    'loc-kuwait-city': { 
+      id: 'loc-kuwait-city', slug: 'kuwait-city', entityType: 'Location', isActive: true, isPhysicalLocation: false, title: 'Kuwait City', description: 'Fast, professional corporate IT support and component-level laptop repair for businesses and residents in Kuwait City.', landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)', coords: { lat: 29.3759, lng: 47.9774 }, serviceRadiusKm: 15, serviceAreas: ['Kuwait City', 'Sharq', 'Dasman', 'Mirqab', 'Qibla'], 
+      seo: { title: 'Computer Repair Kuwait City | Corporate & Residential | KCROC', description: 'Expert computer repair, MacBook logic board micro-soldering, and IT support for businesses and residents in Kuwait City. Free pick and drop.', canonicalUrl: 'https://www.computerrepairkuwait.com/location/kuwait-city', ogType: 'website', schemaTypes: ['LocalBusiness'] }, 
+      navigationPriority: 95 
+    } as LocationEntity,
     
     'loc-salmiya': { id: 'loc-salmiya', slug: 'salmiya', entityType: 'Location', isActive: true, isPhysicalLocation: false, title: 'Salmiya', description: 'Fast, professional computer and laptop repair services for residents and businesses in Salmiya.', landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)', coords: { lat: 29.3400, lng: 48.0800 }, serviceRadiusKm: 15, serviceAreas: ['Salmiya', 'Rumaithiya', 'Salwa', 'Bidaa'], seo: { title: 'Computer Repair Shop Salmiya Kuwait | KCROC', description: 'Fast, professional computer and laptop repair services for residents and businesses in Salmiya.', canonicalUrl: 'https://www.computerrepairkuwait.com/location/salmiya', ogType: 'website', schemaTypes: ['LocalBusiness'] }, navigationPriority: 90 } as LocationEntity,
 
