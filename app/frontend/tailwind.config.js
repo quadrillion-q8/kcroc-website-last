@@ -18,11 +18,11 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ["Inter", "-apple-system", "system-ui", "sans-serif"],
-        heading: ["Inter", "-apple-system", "system-ui", "sans-serif"],
+        /* 🚀 Corrected to match the Business Context brand guidelines */
+        sans: ["Plus Jakarta Sans", "-apple-system", "system-ui", "sans-serif"],
+        heading: ["Plus Jakarta Sans", "-apple-system", "system-ui", "sans-serif"],
       },
       colors: {
-        // --- New Design Tokens from kcroc_homepage_mockup.html ---
         kcroc: {
           cyan: '#0ea5e9',
           'cyan-dk': '#0284c7',
@@ -38,7 +38,6 @@ export default {
           muted: '#94a3b8',
           card: 'rgba(30, 41, 59, 0.7)',
         },
-        // --- Existing System Tokens ---
         brand: {
           dark: 'var(--brand-dark)',
           primary: 'var(--brand-primary)',
@@ -61,22 +60,12 @@ export default {
         card: 'var(--radius-card)',
         button: 'var(--radius-button)',
       },
-      
-      // --- NEW: Animated Background Keyframes & Animations ---
       keyframes: {
         blob: {
-          '0%': {
-            transform: 'translate(0px, 0px) scale(1)',
-          },
-          '33%': {
-            transform: 'translate(30px, -50px) scale(1.1)',
-          },
-          '66%': {
-            transform: 'translate(-20px, 20px) scale(0.9)',
-          },
-          '100%': {
-            transform: 'translate(0px, 0px) scale(1)',
-          },
+          '0%': { transform: 'translate(0px, 0px) scale(1)' },
+          '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+          '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+          '100%': { transform: 'translate(0px, 0px) scale(1)' },
         },
       },
       animation: {
@@ -85,4 +74,4 @@ export default {
     },
   },
   plugins: [require("tailwindcss-animate")],
-}
+};
