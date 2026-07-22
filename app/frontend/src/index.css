@@ -1,59 +1,100 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
+/* File: app/frontend/src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="manifest" href="/site.webmanifest" />
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#0f172a" />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+@layer base {
+  :root {
+    --background: 222 84% 5%;
+    --foreground: 210 40% 98%;
     
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'" />
-    <noscript>
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" />
-    </noscript>
+    --brand-dark: #020617;
+    --brand-primary: #06b6d4;
+    --brand-accent: #38bdf8;
+    
+    --surface-default: #0f172a;
+    --surface-hover: #1e293b;
+    --surface-elevated: #334155;
+    --surface-glass: rgba(15, 23, 42, 0.7);
+    
+    --status-success: #10b981;
+    --status-warning: #f59e0b;
+    --status-danger: #ef4444;
+    --status-info: #3b82f6;
 
-    <link rel="preload" as="image" href="/logo.webp" type="image/webp" />
+    --radius-card: 1rem;
+    --radius-button: 0.5rem;
+  }
 
-    <title>Kuwait Computer Repair On Call | MacBook & Laptop Repair – Free Pick & Drop</title>
-    <meta name="description" content="Same-day laptop, MacBook & PC repair by Kuwait Computer Repair On Call (KCROC). Free Pick & Drop across Hawalli, Salmiya, Kuwait City & all governorates. Call +965 55301913." />
-    <meta name="robots" content="index, follow, max-image-preview:large" />
-    <link rel="canonical" href="https://www.computerrepairkuwait.com/" />
+  @media (prefers-contrast: more) {
+    :root {
+      --background: 0 0% 0%;
+      --foreground: 0 0% 100%;
+      --brand-primary: #ffff00;
+      --brand-accent: #00ffff;
+      --surface-default: #000000;
+      --surface-hover: #1a1a1a;
+      --radius-card: 0px;
+      --radius-button: 0px;
+    }
+  }
 
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://www.computerrepairkuwait.com/" />
-    <meta property="og:title" content="Kuwait Computer Repair On Call | MacBook & Laptop Repair – Free Pick & Drop" />
-    <meta property="og:description" content="Same-day laptop, MacBook & PC repair in Kuwait with Free Pick & Drop. 4.9★ Google rating, 30-day warranty. Call or WhatsApp +965 55301913." />
-    <meta property="og:image" content="https://www.computerrepairkuwait.com/logo.webp" />
-    <meta property="og:image:width" content="224" />
-    <meta property="og:image:height" content="224" />
-    <meta property="og:site_name" content="Kuwait Computer Repair On Call" />
-    <meta property="og:locale" content="en_US" />
+  html, body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', -apple-system, sans-serif;
+    background-color: var(--brand-dark);
+    color: var(--foreground);
+    min-height: 100vh;
+    
+    /* 🚀 PHASE 2: Typography Crispness Optimization for Dark Mode */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    
+    /* ✅ Prevents horizontal scrolling site-wide without breaking fixed positioning */
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Kuwait Computer Repair On Call | MacBook & Laptop Repair – Free Pick & Drop" />
-    <meta name="twitter:description" content="Same-day laptop, MacBook & PC repair in Kuwait with Free Pick & Drop. 4.9★ Google rating, 30-day warranty." />
-    <meta name="twitter:image" content="https://www.computerrepairkuwait.com/logo.webp" />
+  /* Type scale: H1 28-32px/1.2, H2 22-24px/1.2, H3 18-20px/1.2, body 16px/1.5, small 13-14px.
+     These are defaults for bare tags; explicit Tailwind text-* classes on an element still win,
+     so components with oversized/undersized headings need their classes updated to match. */
+  h1 { font-size: 1.75rem; line-height: 1.2; font-weight: 800; } /* 28px, up to 2rem/32px on larger screens below */
+  h2 { font-size: 1.375rem; line-height: 1.2; font-weight: 700; } /* 22px */
+  h3 { font-size: 1.125rem; line-height: 1.2; font-weight: 600; } /* 18px */
+  p  { font-size: 1rem; line-height: 1.5; } /* 16px */
+  small, .text-label { font-size: 0.8125rem; line-height: 1.4; } /* 13px */
 
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H2BXCZJ8NX"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-H2BXCZJ8NX');
-      gtag('config', 'AW-402583081');
-    </script>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
-</html>
+  @media (min-width: 640px) {
+    h1 { font-size: 2rem; }    /* 32px */
+    h2 { font-size: 1.5rem; }  /* 24px */
+    h3 { font-size: 1.25rem; } /* 20px */
+  }
+
+  input, textarea, select {
+    font-size: 16px; /* never smaller — prevents iOS auto-zoom on focus */
+  }
+}
+
+@layer utilities {
+  /* Horizontal swipe-carousel utilities: native touch scroll + CSS snap.
+     Usage: <div class="scroll-row"><div class="scroll-row-item">...</div></div> */
+  .scroll-row {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .scroll-row::-webkit-scrollbar {
+    display: none;
+  }
+  .scroll-row-item {
+    scroll-snap-align: start;
+    flex-shrink: 0;
+  }
+}
