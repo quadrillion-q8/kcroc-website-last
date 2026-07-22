@@ -69,8 +69,7 @@ export const App: React.FC = () => {
               {/* The Dynamic Services Gateway */}
               <Route path="services" element={<Services />} />
               
-              {/* 
-                DYNAMIC ROOT-LEVEL SEO ROUTES
+              {/* DYNAMIC ROOT-LEVEL SEO ROUTES
                 Mapping directly from the Graph and passing entityId.
               */}
               {KCROC_GRAPH.services.map((service) => (
@@ -121,9 +120,13 @@ export const App: React.FC = () => {
               {/* Generic Blog Catch-All */}
               <Route path="blog/:slug" element={<BlogPostTemplate />} />
               
+              {/* 🚀 Dynamic Location SEO Landing Pages */}
+              <Route path="computer-repair-:slug" element={<LocationTemplate />} />
+              <Route path="laptop-repair-:slug" element={<LocationTemplate />} />
+              <Route path="location/:slug" element={<LocationTemplate />} />
+              
               {/* Other Templates */}
               <Route path="pillar/:slug" element={<PillarTemplate />} />
-              <Route path="location/:slug" element={<LocationTemplate />} />
               
               {/* SEO Guardrail: Redirect dynamic FAQ routes to the main FAQ page */}
               <Route path="faq/:faqSlug" element={<Navigate to="/faq" replace />} />
