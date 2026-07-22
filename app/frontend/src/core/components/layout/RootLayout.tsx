@@ -7,6 +7,7 @@ import Header from './Header';
 import Footer from './Footer';
 import { AnimatedBackground } from './AnimatedBackground';
 import { ErrorBoundary } from '../ErrorBoundary';
+import { CookieConsentBanner } from '../CookieConsentBanner';
 
 export const RootLayout: React.FC = () => {
   return (
@@ -38,6 +39,9 @@ export const RootLayout: React.FC = () => {
           </Suspense>
         </ErrorBoundary>
       </main>
+
+      {/* 🚀 Mount the Consent Banner globally */}
+      <CookieConsentBanner />
 
       <Footer />
     </div>
