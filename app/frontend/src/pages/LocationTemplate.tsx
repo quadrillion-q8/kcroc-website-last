@@ -1,151 +1,157 @@
 // File: app/frontend/src/pages/LocationTemplate.tsx
 import React from 'react';
-import { useParams, Navigate, Link } from 'react-router-dom';
-import { KCROC_GRAPH } from '../data/graph';
+import { useParams, Link, Navigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
+import { 
+  MapPin, Truck, Shield, Zap, Cpu, Wrench, 
+  MessageCircle, Clock, CheckCircle2 
+} from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { Card, CardHeader, CardTitle } from '@/components/ui/card';
+
+// SEO & Data
 import { SEOEngine } from '../core/components/SEOEngine';
-import { MapPin, Phone, Clock, Wrench, ShieldCheck, ArrowRight } from 'lucide-react';
+import { KCROC_GRAPH } from '../data/graph';
 
-const LocationTemplate: React.FC = () => {
-  const { slug } = useParams<{ slug: string }>(); 
+export default function LocationTemplate() {
+  const { slug } = useParams<{ slug: string }>();
   
-  const locationData = KCROC_GRAPH.locations.find((loc) => loc.slug === slug);
+  // Find the location dynamically from the Knowledge Graph
+  const location = KCROC_GRAPH.locations?.find(loc => loc.id === `loc-${slug}` || loc.title.toLowerCase() === slug?.replace(/-/g, ' '));
+  const business = KCROC_GRAPH.business!;
 
-  if (!locationData) {
+  // If the URL slug doesn't match a known location, bounce them safely to the 404
+  if (!location) {
     return <Navigate to="/404" replace />;
   }
 
-  const business = KCROC_GRAPH.business;
-  const relatedServices = KCROC_GRAPH.services.slice(0, 6); 
+  const WA_LINK = `https://wa.me/${business.telephone}?text=${encodeURIComponent(`Hi KCROC, I am located in ${location.title} and need a device repaired. Can we arrange a pickup?`)}`;
+
+  const activeServices = KCROC_GRAPH.services?.filter(s => s.isActive).slice(0, 4) || [];
 
   return (
-    <div className="bg-slate-950 min-h-screen text-slate-200">
-      <SEOEngine entityId={locationData.id} />
+    <main className="w-full min-h-screen bg-gray-950 text-white font-sans selection:bg-cyan-500/30">
+      
+      {/* 🚀 Dynamic SEO Engine automatically handles LocalBusiness/Service schema for this specific area */}
+      <SEOEngine entityId={location.id} />
+      <Helmet>
+        <title>Computer & Laptop Repair in {location.title} | KCROC</title>
+        <meta name="description" content={`Expert computer, MacBook, and logic board repair in ${location.title}. Free pickup and delivery. We fix the board, we don't just swap it.`} />
+      </Helmet>
 
-      {/* Hero Section */}
-      <section className="relative pt-32 pb-20 px-6 overflow-hidden border-b border-slate-800">
-        <div className="absolute inset-0 bg-slate-900/50 -z-10"></div>
-        <div className="max-w-4xl mx-auto text-center relative z-10">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 text-cyan-400 font-medium text-sm mb-6 border border-cyan-500/20">
-            <MapPin className="w-4 h-4" />
-            Serving {locationData.title} & Surrounding Areas
-          </div>
-          <h1 className="text-4xl md:text-6xl font-black text-white mb-6 leading-tight">
-            Expert Computer Repair in <span className="text-cyan-400">{locationData.title}</span>
-          </h1>
-          <p className="text-lg md:text-xl text-slate-400 mb-10 max-w-2xl mx-auto leading-relaxed">
-            {locationData.description} We offer free Pick & Drop services within a {locationData.serviceRadiusKm}km radius.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a 
-              href={`https://wa.me/${business?.telephone}`}
-              target="_blank"
-              rel="noreferrer"
-              className="px-8 py-4 bg-cyan-600 hover:bg-cyan-500 text-white font-bold rounded-xl transition-all flex items-center justify-center gap-2"
-            >
-              <Phone className="w-5 h-5" />
-              WhatsApp Us Now
-            </a>
-          </div>
-        </div>
-      </section>
+      {/* ─── HERO SECTION ─── */}
+      <section className="relative pt-24 pb-12 sm:pb-24 px-4 sm:px-6 overflow-hidden border-b border-slate-900">
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-gray-950 to-slate-950" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_20%,rgba(34,211,238,0.05),transparent_50%)]" />
+        
+        {/* Breadcrumbs */}
+        <nav aria-label="Breadcrumb" className="max-w-6xl mx-auto mb-8 relative z-10 mt-8 sm:mt-0">
+          <ol className="flex items-center space-x-2 text-xs sm:text-sm text-slate-400 font-medium">
+            <li><Link to="/" className="hover:text-cyan-400 transition-colors">Home</Link></li>
+            <li><span className="text-slate-600">/</span></li>
+            <li aria-current="page" className="text-cyan-400">{location.title}</li>
+          </ol>
+        </nav>
 
-      {/* Trust Factors */}
-      <section className="py-12 px-6 border-b border-slate-800 bg-slate-900/20">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-          <div className="flex flex-col items-center">
-            <ShieldCheck className="w-10 h-10 text-emerald-400 mb-4" />
-            <h3 className="text-xl font-bold text-white mb-2">Certified Techs</h3>
-            <p className="text-slate-400 text-sm">Professional motherboard and screen repair specialists.</p>
-          </div>
-          <div className="flex flex-col items-center">
-            <MapPin className="w-10 h-10 text-cyan-400 mb-4" />
-            <h3 className="text-xl font-bold text-white mb-2">Free Pick & Drop</h3>
-            <p className="text-slate-400 text-sm">Available everywhere in and around {locationData.title}.</p>
-          </div>
-          <div className="flex flex-col items-center">
-            <Clock className="w-10 h-10 text-blue-400 mb-4" />
-            <h3 className="text-xl font-bold text-white mb-2">Same Day Service</h3>
-            <p className="text-slate-400 text-sm">Most common repairs completed in under 24 hours.</p>
-          </div>
-        </div>
-      </section>
-
-      {/* Details Section */}
-      <section className="py-16 px-6 max-w-4xl mx-auto border-b border-slate-800">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          <div className="space-y-8">
-            <div>
-              <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
-                <MapPin className="text-cyan-400 w-6 h-6" /> Physical Address
-              </h2>
-              <p className="text-slate-300 bg-slate-900 p-4 rounded-xl border border-slate-800">
-                {locationData.landmark}
-              </p>
-            </div>
-            <div>
-              <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
-                <Clock className="text-cyan-400 w-6 h-6" /> Working Hours
-              </h2>
-              <p className="text-slate-300 bg-slate-900 p-4 rounded-xl border border-slate-800">
-                {business?.openingHours || 'Open daily 10:00 AM – 10:00 PM'}
-              </p>
-            </div>
-          </div>
-
-          <div>
-            <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
-              <Wrench className="text-cyan-400 w-6 h-6" /> Supported Service Areas
-            </h2>
-            <ul className="space-y-3">
-              {locationData.serviceAreas.map((area, idx) => (
-                <li key={idx} className="flex items-center gap-3 text-slate-300 bg-slate-900 p-3 rounded-lg border border-slate-800">
-                  <div className="w-2 h-2 rounded-full bg-cyan-500 flex-shrink-0" />
-                  {area}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      {/* Automated Internal Linking Engine */}
-      <section className="py-20 px-6">
-        <div className="max-w-6xl mx-auto">
-          <div className="mb-12">
-            <h2 className="text-3xl md:text-4xl font-black text-white mb-4">
-              Services Available in {locationData.title}
-            </h2>
-            <p className="text-slate-400">
-              Our technicians bring these enterprise-grade repair services directly to your door.
+        <div className="container mx-auto max-w-6xl relative z-10">
+          <div className="max-w-3xl space-y-6">
+            <Badge className="bg-cyan-500/10 text-cyan-400 border-cyan-500/30 px-3 py-1.5 text-xs font-bold uppercase tracking-widest">
+              <MapPin className="w-3 h-3 mr-2 inline" aria-hidden="true" />
+              Now Serving {location.title}
+            </Badge>
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white leading-[1.1] tracking-tight">
+              Elite Computer Repair in <br />
+              <span className="text-cyan-400">{location.title}</span>
+            </h1>
+            <p className="text-sm sm:text-lg text-slate-300 leading-relaxed max-w-xl">
+              {location.description || `Fast, component-level repair for laptops, MacBooks, and gaming PCs. We offer completely free pickup and delivery directly from your location in ${location.title}.`}
             </p>
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-4">
+              <Button size="lg" className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black px-8 w-full sm:w-auto shadow-[0_0_20px_rgba(6,182,212,0.3)] hover:scale-[1.02] transition-all" asChild>
+                <Link to="/book">
+                  <Truck className="mr-2 h-5 w-5" aria-hidden="true" /> Book Free Pickup
+                </Link>
+              </Button>
+              <Button size="lg" variant="outline" className="border-slate-700 text-white hover:bg-slate-800 w-full sm:w-auto" asChild>
+                <a href={WA_LINK} target="_blank" rel="noopener noreferrer">
+                  <MessageCircle className="mr-2 h-5 w-5" aria-hidden="true" /> WhatsApp Us
+                </a>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── VALUE PROPOSITION (.scroll-row on mobile) ─── */}
+      <section className="py-12 sm:py-24 px-4 sm:px-6 relative z-10 border-b border-slate-800/50">
+        <div className="container mx-auto max-w-6xl">
+          <div className="text-center mb-10 sm:mb-16">
+            <h2 className="text-2xl sm:text-4xl font-black text-white mb-3 tracking-tight">We Fix The Board. We Don't Just Swap It.</h2>
+            <p className="text-slate-400 text-sm sm:text-base">Premium micro-soldering and logic board recovery brought directly to your door.</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {relatedServices.map((service) => (
-              <Link 
+          <div className="scroll-row gap-3 -mx-4 px-4 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-3 sm:gap-6">
+            <Card className="scroll-row-item w-[85%] sm:w-auto bg-slate-900/30 backdrop-blur-md border border-slate-800 text-left">
+              <CardHeader className="p-6">
+                <div className="w-12 h-12 bg-slate-950 rounded-xl flex items-center justify-center mb-4 border border-slate-800 shrink-0">
+                  <Truck className="w-5 h-5 text-cyan-400" aria-hidden="true" />
+                </div>
+                <CardTitle className="text-xl font-black text-white mb-2">Free Logistics</CardTitle>
+                <p className="text-slate-400 text-sm leading-relaxed">No traffic, no parking. We dispatch a courier to {location.title} to collect your device securely and return it when fixed.</p>
+              </CardHeader>
+            </Card>
+            
+            <Card className="scroll-row-item w-[85%] sm:w-auto bg-slate-900/30 backdrop-blur-md border border-slate-800 text-left">
+              <CardHeader className="p-6">
+                <div className="w-12 h-12 bg-slate-950 rounded-xl flex items-center justify-center mb-4 border border-slate-800 shrink-0">
+                  <Cpu className="w-5 h-5 text-cyan-400" aria-hidden="true" />
+                </div>
+                <CardTitle className="text-xl font-black text-white mb-2">Component-Level Repair</CardTitle>
+                <p className="text-slate-400 text-sm leading-relaxed">We isolate and replace the exact failed chips on your logic board, saving you hundreds of dinars over standard part swapping.</p>
+              </CardHeader>
+            </Card>
+
+            <Card className="scroll-row-item w-[85%] sm:w-auto bg-slate-900/30 backdrop-blur-md border border-slate-800 text-left">
+              <CardHeader className="p-6">
+                <div className="w-12 h-12 bg-slate-950 rounded-xl flex items-center justify-center mb-4 border border-slate-800 shrink-0">
+                  <Shield className="w-5 h-5 text-cyan-400" aria-hidden="true" />
+                </div>
+                <CardTitle className="text-xl font-black text-white mb-2">Data Privacy</CardTitle>
+                <p className="text-slate-400 text-sm leading-relaxed">Your personal files remain untouched. We utilize strict hardware-only diagnostic protocols to ensure your data stays private.</p>
+              </CardHeader>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── LOCAL SERVICES GRID ─── */}
+      <section className="py-12 sm:py-24 px-4 sm:px-6 bg-slate-900/20">
+        <div className="container mx-auto max-w-5xl">
+          <h2 className="text-2xl sm:text-4xl font-black mb-8 sm:mb-12 text-center text-white tracking-tight">Services Available in {location.title}</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {activeServices.map((service) => (
+              <Link
                 key={service.id}
                 to={`/${service.slug}`}
-                className="group p-6 bg-slate-900 border border-slate-800 rounded-xl hover:border-cyan-500 transition-colors flex flex-col justify-between"
+                className="group bg-slate-900/50 p-6 rounded-2xl border border-slate-800 hover:border-cyan-500 transition-all flex items-start text-left"
               >
-                <div>
-                  <h3 className="text-xl font-bold text-slate-200 mb-2 group-hover:text-cyan-400 transition-colors">
-                    {service.title}
-                  </h3>
-                  <p className="text-slate-400 text-sm line-clamp-2 mb-4">
-                    {service.shortDescription || service.description}
-                  </p>
+                <div className="bg-slate-950 border border-slate-800 w-12 h-12 rounded-xl flex items-center justify-center mr-4 shrink-0 mt-1">
+                  <Wrench className="w-5 h-5 text-cyan-500" aria-hidden="true" />
                 </div>
-                <div className="flex items-center text-cyan-400 font-bold text-sm">
-                  View Service <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                <div>
+                  <h3 className="text-lg font-bold text-white mb-1 group-hover:text-cyan-400 transition-colors">{service.title}</h3>
+                  <p className="text-sm text-slate-400 leading-relaxed mb-3">{service.shortDescription}</p>
+                  <span className="text-xs font-bold text-cyan-500 flex items-center">
+                    Learn More <CheckCircle2 className="w-3 h-3 ml-1" />
+                  </span>
                 </div>
               </Link>
             ))}
           </div>
         </div>
       </section>
-    </div>
-  );
-};
 
-export default LocationTemplate;
+    </main>
+  );
+}
