@@ -12,9 +12,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0f172a" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'" />
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" />
+    </noscript>
+
+    <link rel="preload" as="image" href="/logo.webp" type="image/webp" />
 
     <title>Kuwait Computer Repair On Call | MacBook & Laptop Repair – Free Pick & Drop</title>
     <meta name="description" content="Same-day laptop, MacBook & PC repair by Kuwait Computer Repair On Call (KCROC). Free Pick & Drop across Hawalli, Salmiya, Kuwait City & all governorates. Call +965 55301913." />
@@ -44,17 +51,6 @@
       gtag('config', 'G-H2BXCZJ8NX');
       gtag('config', 'AW-402583081');
     </script>
-
-    <!--
-      NOTE: The static LocalBusiness/WebSite JSON-LD block that used to
-      live here has been removed. SEOEngine.tsx (rendered via
-      react-helmet-async on every route) is now the single source of
-      structured data for this site. Keeping both caused Google to see
-      two separate LocalBusiness nodes sharing the same @id, which
-      Search Console flagged as "Review has multiple aggregate ratings."
-      Do not re-add a static ld+json block here without removing the
-      equivalent block from SEOEngine.tsx first.
-    -->
   </head>
   <body>
     <div id="root"></div>
