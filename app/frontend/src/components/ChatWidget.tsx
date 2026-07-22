@@ -54,28 +54,28 @@ export const ChatWidget: React.FC = () => {
       {!isOpen ? (
         <button 
           onClick={() => setIsOpen(true)} 
-          className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 p-4 rounded-full shadow-[0_0_20px_rgba(6,182,212,0.4)] hover:scale-110 transition-all duration-300 group"
+          className="bg-brand-primary hover:bg-brand-accent text-brand-dark p-4 rounded-button shadow-lg hover:scale-110 transition-all duration-300 group"
           aria-label="Open support chat"
         >
           <MessageCircle className="w-7 h-7 transition-transform group-hover:-rotate-12" aria-hidden="true" />
         </button>
       ) : (
-        <div className="w-[340px] sm:w-[400px] h-[550px] max-h-[80vh] bg-slate-950/95 backdrop-blur-xl border border-slate-800 rounded-3xl shadow-2xl flex flex-col transition-all duration-300 ease-in-out opacity-100 scale-100 overflow-hidden">
+        <div className="w-[340px] sm:w-[400px] h-[550px] max-h-[80vh] bg-surface-default backdrop-blur-xl border border-surface-hover rounded-card shadow-2xl flex flex-col transition-all duration-300 ease-in-out opacity-100 scale-100 overflow-hidden">
           
           {/* Header */}
-          <div className="p-4 sm:p-5 border-b border-slate-800 flex justify-between items-center bg-slate-900/80">
+          <div className="p-4 sm:p-5 border-b border-surface-hover flex justify-between items-center bg-surface-glass">
             <div className="flex items-center gap-3">
               <div className="relative flex h-3 w-3">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-status-success opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-3 w-3 bg-status-success"></span>
               </div>
               <span className="font-black text-white tracking-tight">KCROC Assistant</span>
             </div>
             <div className="flex gap-1 sm:gap-2">
-              <button onClick={clearChat} aria-label="Clear chat history" title="Clear Chat" className="p-2 text-slate-400 hover:text-red-400 hover:bg-slate-800 rounded-full transition-colors">
+              <button onClick={clearChat} aria-label="Clear chat history" title="Clear Chat" className="p-2 text-gray-400 hover:text-status-danger hover:bg-surface-hover rounded-button transition-colors">
                 <Trash2 size={18} aria-hidden="true" />
               </button>
-              <button onClick={() => setIsOpen(false)} aria-label="Close support chat" title="Close Chat" className="p-2 text-slate-400 hover:text-cyan-400 hover:bg-slate-800 rounded-full transition-colors">
+              <button onClick={() => setIsOpen(false)} aria-label="Close support chat" title="Close Chat" className="p-2 text-gray-400 hover:text-brand-primary hover:bg-surface-hover rounded-button transition-colors">
                 <X size={20} aria-hidden="true" />
               </button>
             </div>
@@ -91,8 +91,8 @@ export const ChatWidget: React.FC = () => {
                 <div 
                   className={`text-[13px] sm:text-sm p-3.5 sm:p-4 max-w-[85%] leading-relaxed ${
                     m.sender === 'user' 
-                      ? 'bg-cyan-500 text-slate-950 font-medium rounded-2xl rounded-tr-sm shadow-[0_0_15px_rgba(6,182,212,0.15)]' 
-                      : 'bg-slate-800 border border-slate-700 text-slate-200 rounded-2xl rounded-tl-sm'
+                      ? 'bg-brand-primary text-brand-dark font-medium rounded-2xl rounded-tr-sm shadow-md' 
+                      : 'bg-surface-elevated border border-surface-hover text-white rounded-2xl rounded-tl-sm'
                   }`}
                 >
                   {m.text}
@@ -103,15 +103,15 @@ export const ChatWidget: React.FC = () => {
           </div>
 
           {/* Input Form */}
-          <div className="p-3 sm:p-4 border-t border-slate-800 bg-slate-900/80">
+          <div className="p-3 sm:p-4 border-t border-surface-hover bg-surface-glass">
             <form 
               onSubmit={sendMessage}
-              className="flex items-center bg-slate-950 border border-slate-700 rounded-full p-1 pl-4 focus-within:border-cyan-500/50 focus-within:ring-1 focus-within:ring-cyan-500/50 transition-all"
+              className="flex items-center bg-surface-default border border-surface-hover rounded-button p-1 pl-4 focus-within:border-brand-primary focus-within:ring-1 focus-within:ring-brand-primary transition-all"
             >
               <input 
                 value={input} 
                 onChange={(e) => setInput(e.target.value)} 
-                className="flex-grow bg-transparent outline-none text-white placeholder-slate-500 text-[13px] sm:text-sm" 
+                className="flex-grow bg-transparent outline-none text-white placeholder-gray-500 text-[13px] sm:text-sm" 
                 placeholder="Describe your device issue..." 
                 aria-label="Chat message input"
               />
@@ -119,7 +119,7 @@ export const ChatWidget: React.FC = () => {
                 type="submit"
                 disabled={!input.trim()}
                 aria-label="Send message"
-                className="bg-cyan-500 hover:bg-cyan-400 disabled:bg-slate-800 disabled:text-slate-600 text-slate-950 p-2 sm:p-2.5 rounded-full transition-colors ml-2 shrink-0 shadow-md"
+                className="bg-brand-primary hover:bg-brand-accent disabled:bg-surface-elevated disabled:text-gray-500 text-brand-dark p-2 sm:p-2.5 rounded-button transition-colors ml-2 shrink-0 shadow-md"
               >
                 <Send size={16} className="ml-0.5" aria-hidden="true" />
               </button>
