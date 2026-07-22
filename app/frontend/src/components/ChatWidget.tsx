@@ -1,4 +1,4 @@
-// File: src/components/ChatWidget.tsx
+// File: app/frontend/src/components/ChatWidget.tsx
 import React, { useState, useEffect, useRef } from 'react';
 import { MessageCircle, X, Send, Trash2 } from 'lucide-react';
 
@@ -7,8 +7,6 @@ export const ChatWidget: React.FC = () => {
   const [input, setInput] = useState('');
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  // PRIVACY FIX: Swapped localStorage to sessionStorage so conversations 
-  // are wiped securely when the user closes the browser tab.
   const [messages, setMessages] = useState(() => {
     const saved = sessionStorage.getItem('kcroc-chat-history');
     return saved ? JSON.parse(saved) : [{ sender: 'bot', text: 'Hi! How can I help you with your computer repair today?' }];
@@ -16,7 +14,6 @@ export const ChatWidget: React.FC = () => {
 
   useEffect(() => {
     sessionStorage.setItem('kcroc-chat-history', JSON.stringify(messages));
-    // Auto-scroll to bottom when new messages arrive
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages, isOpen]);
 
@@ -40,8 +37,11 @@ export const ChatWidget: React.FC = () => {
         body: JSON.stringify({ message: input })
       });
       
-      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(`Server responded with status: ${res.status}`);
+      }
       
+      const data = await res.json();
       const botReply = data.reply || "I'm sorry, I didn't receive a response. Could you try again?";
       setMessages(prev => [...prev, { sender: 'bot', text: botReply }]);
     } catch (error) {
@@ -57,7 +57,7 @@ export const ChatWidget: React.FC = () => {
           className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 p-4 rounded-full shadow-[0_0_20px_rgba(6,182,212,0.4)] hover:scale-110 transition-all duration-300 group"
           aria-label="Open support chat"
         >
-          <MessageCircle className="w-7 h-7 transition-transform group-hover:-rotate-12" />
+          <MessageCircle className="w-7 h-7 transition-transform group-hover:-rotate-12" aria-hidden="true" />
         </button>
       ) : (
         <div className="w-[340px] sm:w-[400px] h-[550px] max-h-[80vh] bg-slate-950/95 backdrop-blur-xl border border-slate-800 rounded-3xl shadow-2xl flex flex-col transition-all duration-300 ease-in-out opacity-100 scale-100 overflow-hidden">
@@ -72,17 +72,17 @@ export const ChatWidget: React.FC = () => {
               <span className="font-black text-white tracking-tight">KCROC Assistant</span>
             </div>
             <div className="flex gap-1 sm:gap-2">
-              <button onClick={clearChat} className="p-2 text-slate-400 hover:text-red-400 hover:bg-slate-800 rounded-full transition-colors" title="Clear Chat">
-                <Trash2 size={18} />
+              <button onClick={clearChat} aria-label="Clear chat history" title="Clear Chat" className="p-2 text-slate-400 hover:text-red-400 hover:bg-slate-800 rounded-full transition-colors">
+                <Trash2 size={18} aria-hidden="true" />
               </button>
-              <button onClick={() => setIsOpen(false)} className="p-2 text-slate-400 hover:text-cyan-400 hover:bg-slate-800 rounded-full transition-colors" title="Close Chat">
-                <X size={20} />
+              <button onClick={() => setIsOpen(false)} aria-label="Close support chat" title="Close Chat" className="p-2 text-slate-400 hover:text-cyan-400 hover:bg-slate-800 rounded-full transition-colors">
+                <X size={20} aria-hidden="true" />
               </button>
             </div>
           </div>
 
           {/* Chat Messages Area */}
-          <div className="flex-grow p-4 overflow-y-auto space-y-4 scroll-smooth">
+          <div className="flex-grow p-4 overflow-y-auto space-y-4 scroll-smooth" aria-live="polite">
             {messages.map((m, i) => (
               <div 
                 key={i} 
@@ -113,13 +113,15 @@ export const ChatWidget: React.FC = () => {
                 onChange={(e) => setInput(e.target.value)} 
                 className="flex-grow bg-transparent outline-none text-white placeholder-slate-500 text-[13px] sm:text-sm" 
                 placeholder="Describe your device issue..." 
+                aria-label="Chat message input"
               />
               <button 
                 type="submit"
                 disabled={!input.trim()}
+                aria-label="Send message"
                 className="bg-cyan-500 hover:bg-cyan-400 disabled:bg-slate-800 disabled:text-slate-600 text-slate-950 p-2 sm:p-2.5 rounded-full transition-colors ml-2 shrink-0 shadow-md"
               >
-                <Send size={16} className="ml-0.5" />
+                <Send size={16} className="ml-0.5" aria-hidden="true" />
               </button>
             </form>
           </div>
