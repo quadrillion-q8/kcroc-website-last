@@ -3,8 +3,10 @@ import { VercelRequest, VercelResponse } from '@vercel/node';
 import { GoogleGenAI } from '@google/genai';
 import { Ratelimit } from '@upstash/ratelimit';
 import { Redis } from '@upstash/redis';
-import { getKnowledgeContext } from '../../core/knowledge/knowledgeContext';
-import { evaluateHandoff } from '../../core/knowledge/handoffEvaluator';
+
+// 🚀 FIXED: Corrected import paths to point to the actual files in src/
+import { getKnowledgeContext } from '../src/knowledge/context';
+import { evaluateHandoff } from '../src/api/HandoffEngine';
 
 // Initialize Upstash Redis & Rate Limiter (graceful no-op if env vars are missing)
 const redisUrl = process.env.UPSTASH_REDIS_REST_URL;
@@ -58,10 +60,11 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     }
 
     // 3. Evaluate Handoff Safety Net
+    // 🚀 FIXED: Updated property access to match actual HandoffEngine return type
     const handoff = evaluateHandoff(sanitizedMessage, 0.8);
-    if (handoff && handoff.shouldHandoff) {
+    if (handoff && handoff.isEscalated) {
       return res.status(200).json({
-        reply: handoff.reply || 'This sounds like an urgent issue or requires a technician. Please contact us directly at 55301913 or via WhatsApp.'
+        reply: handoff.message || 'This sounds like an urgent issue or requires a technician. Please contact us directly at 55301913 or via WhatsApp.'
       });
     }
 
