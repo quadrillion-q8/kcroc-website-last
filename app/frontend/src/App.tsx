@@ -44,9 +44,7 @@ const GamingPCCooling = lazy(() => import('./pages/GamingPCCooling'));
 const ScreenProtectionTips = lazy(() => import('./pages/ScreenProtectionTips'));
 
 // 🚀 Custom AI-Generated Guides
-// Using named export resolution (.then) since we exported it as `export const DellOverheatingPage`
 const DellOverheatingPage = lazy(() => import('./pages/DellOverheatingPage').then(module => ({ default: module.DellOverheatingPage })));
-// BatteryHealthGuide uses a default export, so no .then() resolution needed
 const BatteryHealthGuide = lazy(() => import('./pages/BatteryHealthGuide'));
 
 // UI: Global loading spinner
@@ -69,9 +67,7 @@ export const App: React.FC = () => {
               {/* The Dynamic Services Gateway */}
               <Route path="services" element={<Services />} />
               
-              {/* DYNAMIC ROOT-LEVEL SEO ROUTES
-                Mapping directly from the Graph and passing entityId.
-              */}
+              {/* DYNAMIC ROOT-LEVEL SEO ROUTES */}
               {KCROC_GRAPH.services.map((service) => (
                 <Route key={service.slug} path={service.slug} element={<ServiceTemplate entityId={service.id} />} />
               ))}
