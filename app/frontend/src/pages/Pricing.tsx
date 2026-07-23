@@ -9,7 +9,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 
-// Phase 2: Centralized Data & SEO
+// Centralized Data & SEO
 import { SEOEngine } from '../core/components/SEOEngine';
 import { KCROC_GRAPH } from '../data/graph';
 
@@ -20,11 +20,11 @@ const business = KCROC_GRAPH.business!;
 ───────────────────────────────────────────────────────────────────────────── */
 const pricingPlans = Object.freeze([
   { name: 'Basic Diagnostics',   priceLabel: 'Free',         features: ['System Check', 'Issue Identification', 'Free Quote', 'No Obligation'],                 icon: Search,    hasPrice: false },
-  { name: 'Laptop Repair',       priceLabel: 'From 15 KWD',  features: ['Hardware Repair', 'Component Testing', '30-Day Warranty', 'Performance Optimization'],     icon: Laptop,    hasPrice: true },
+  { name: 'Laptop Repair',       priceLabel: 'From 15 KWD',  features: ['Hardware Repair', 'Component Testing', '30-Day Warranty', 'Performance Optimization'],      icon: Laptop,    hasPrice: true },
   { name: 'MacBook Repair',      priceLabel: 'From 25 KWD',  features: ['Logic Board Repair', 'Battery Replacement', 'Screen Repair', 'Thermal Service'],              icon: Laptop,    hasPrice: true },
   { name: 'Gaming PC Repair',    priceLabel: 'From 25 KWD',  features: ['GPU Diagnostics', 'Cooling System Repair', 'FPS Optimization', 'Hardware Upgrade'],          icon: Cpu,       hasPrice: true },
   { name: 'SSD Upgrade',         priceLabel: 'From 18 KWD',  features: ['SSD Installation', 'Windows Migration', 'Faster Boot', 'Data Safety'],                      icon: HardDrive, hasPrice: true },
-  { name: 'Keyboard Replacement', priceLabel: 'From 15 KWD', features: ['Genuine Parts', 'Fast Service', 'All Brands', 'Warranty'],                                  icon: Keyboard,  hasPrice: true },
+  { name: 'Keyboard Replacement', priceLabel: 'From 15 KWD', features: ['Genuine Parts', 'Fast Service', 'All Brands', 'Warranty'],                                 icon: Keyboard,  hasPrice: true },
   { name: 'Motherboard Repair',  priceLabel: 'From 25 KWD',  features: ['Board Level Repair', 'IC Replacement', 'Microsoldering', 'Advanced Diagnostics'],          icon: Cpu,       hasPrice: true },
 ]);
 
@@ -48,7 +48,7 @@ const faqs = Object.freeze([
   { q: "Do you provide pickup and delivery?",     a: "Yes. We provide free pickup and delivery across Kuwait." },
   { q: "What if my device cannot be repaired?",   a: "You pay nothing. Our No Fix No Fee policy means there is no repair charge if we cannot fix your device." },
   { q: "How long does repair take?",              a: "Most repairs are completed within 24 to 48 hours depending on parts availability and repair complexity." },
-  { q: "Do you repair MacBooks and Gaming PCs?", a: "Yes. We repair MacBooks, Gaming PCs, laptops, desktop computers and perform motherboard level repairs." },
+  { q: "Do you repair MacBooks and Gaming PCs?",  a: "Yes. We repair MacBooks, Gaming PCs, laptops, desktop computers and perform motherboard level repairs." },
 ]);
 
 const serviceLinks = Object.freeze([
@@ -69,7 +69,7 @@ export default function Pricing() {
   return (
     <main className="w-full min-h-screen bg-gray-950 text-slate-100 font-sans selection:bg-cyan-500/30 pt-24 pb-8 sm:pb-24">
       
-      {/* 🚀 PHASE 2 AUTOMATION IN ACTION */}
+      {/* 🚀 SEO Engine */}
       <SEOEngine entityId="page-pricing" />
 
       {/* ─── BREADCRUMBS ─── */}
