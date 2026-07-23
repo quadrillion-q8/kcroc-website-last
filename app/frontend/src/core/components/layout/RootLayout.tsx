@@ -2,7 +2,6 @@
 import React, { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 
-// ✅ Fixed: Removed curly brackets for default exports
 import Header from './Header';
 import Footer from './Footer';
 import { AnimatedBackground } from './AnimatedBackground';
