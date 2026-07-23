@@ -29,9 +29,17 @@ function verifyMetaSignature(rawBody: string, signature: string | string[] | und
   const expectedSignature = 'sha256=' + crypto.createHmac('sha256', appSecret).update(rawBody).digest('hex');
   
   try {
-    return crypto.timingSafeEqual(Buffer.from(expectedSignature), Buffer.from(signature));
+    const expectedBuffer = Buffer.from(expectedSignature, 'utf8');
+    const signatureBuffer = Buffer.from(signature, 'utf8');
+    
+    // Buffer lengths must match before timingSafeEqual is called
+    if (expectedBuffer.length !== signatureBuffer.length) {
+      return false;
+    }
+    
+    return crypto.timingSafeEqual(expectedBuffer, signatureBuffer);
   } catch (err) {
-    return false; // Fails safely if lengths mismatch
+    return false; // Fails safely if any parsing error occurs
   }
 }
 
