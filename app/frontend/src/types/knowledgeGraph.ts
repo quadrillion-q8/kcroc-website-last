@@ -151,6 +151,30 @@ export const ServiceSchema = RoutableEntitySchema.extend({
     title: z.string(),
     answer: z.string()
   })).optional(),
+  // 🚀 EXPANDED: High-conversion data fields for elite landing pages
+  whyChooseUs: z.array(z.object({
+    title: z.string(),
+    description: z.string()
+  })).optional(),
+  performanceOutcomes: z.object({
+    disclaimer: z.string(),
+    items: z.array(z.object({
+      metric: z.string(),
+      outcome: z.string()
+    }))
+  }).optional(),
+  repairExamples: z.object({
+    disclaimer: z.string(),
+    items: z.array(z.object({
+      id: z.string(),
+      title: z.string(),
+      symptoms: z.string(),
+      diagnosis: z.string(),
+      repair: z.string(),
+      outcome: z.string()
+    }))
+  }).optional(),
+  inspectionChecklist: z.array(z.string()).optional(),
 });
 
 export const LocationSchema = RoutableEntitySchema.extend({
