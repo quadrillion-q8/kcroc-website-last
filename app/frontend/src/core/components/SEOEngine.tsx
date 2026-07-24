@@ -146,6 +146,14 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
         
         if (entity.entityType === 'FAQ') {
           questions = [{ title: (entity as FAQEntity).title, answer: (entity as FAQEntity).answer }];
+        } else if (entity.entityType === 'Service') {
+          // 🚀 NEW: Service-level FAQs (e.g. srv-gaming) — only produces schema
+          // when the entity actually has a faqs array populated; services
+          // without one (most, currently) fall through with questions === [].
+          const serviceFaqs = (entity as ServiceEntity).faqs;
+          if (serviceFaqs && serviceFaqs.length > 0) {
+            questions = serviceFaqs.map(faq => ({ title: faq.title, answer: faq.answer }));
+          }
         } else if (entity.entityType === 'Problem') {
           const problemEntity = entity as ProblemEntity;
           questions = [
