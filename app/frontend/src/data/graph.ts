@@ -98,6 +98,7 @@ const rawGraphData: RawGraphData = {
     'page-gallery': { id: 'page-gallery', slug: 'gallery', entityType: 'WebPage', isActive: true, title: 'Gallery', description: 'Lab and repair gallery.', seo: { title: 'Repair Gallery | KCROC Hawalli Lab', description: 'View our ESD-safe repair lab in Hawalli and real examples of our component-level micro-soldering.', canonicalUrl: 'https://www.computerrepairkuwait.com/gallery', ogType: 'website', schemaTypes: ['CollectionPage'] } } as WebPageEntity,
     'page-pricing': { id: 'page-pricing', slug: 'pricing', entityType: 'WebPage', isActive: true, title: 'Pricing', description: 'Transparent repair pricing.', seo: { title: 'Computer Repair Pricing Kuwait | KCROC', description: 'Transparent pricing for laptop screen replacement, battery replacement, and logic board repairs in Kuwait.', canonicalUrl: 'https://www.computerrepairkuwait.com/pricing', ogType: 'website', schemaTypes: ['WebPage'] } } as WebPageEntity,
     
+    // NEW ENTITY: Resolves the missing canonical URL and meta tags on the /book route
     'page-booking': { id: 'page-booking', slug: 'book', entityType: 'WebPage', isActive: true, title: 'Book a Repair', description: 'Book free laptop and computer repair pickup anywhere in Kuwait. Same-day hardware assessment. 30-day warranty.', seo: { title: 'Book Laptop & Computer Repair Pickup in Kuwait | KCROC', description: 'Book free laptop and computer repair pickup anywhere in Kuwait. Same-day hardware assessment. 30-day warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/book', ogType: 'website', schemaTypes: ['WebPage'] } } as WebPageEntity,
     
     'page-privacy': { id: 'page-privacy', slug: 'privacy-security-kuwait', entityType: 'WebPage', isActive: true, title: 'Privacy & Security', description: 'Our data privacy guarantee.', seo: { title: 'Data Privacy & Security Guarantee | KCROC', description: 'Read about our strict hardware-only protocol that guarantees your personal data remains 100% private during repairs.', canonicalUrl: 'https://www.computerrepairkuwait.com/privacy-security-kuwait', ogType: 'website', schemaTypes: ['WebPage'] } } as WebPageEntity,
@@ -109,7 +110,8 @@ const rawGraphData: RawGraphData = {
     ═══════════════════════════════════════════════════════════════ */
     'srv-macbook': { 
       id: 'srv-macbook', slug: 'macbook-repair-kuwait', entityType: 'Service', isActive: true, 
-      title: 'MacBook Repair Kuwait', iconKey: 'apple', shortDescription: 'Liquid spills, dead logic boards, USB-C failures. Chip-level Apple hardware restoration.', description: 'Our MacBook repair service goes beyond what Apple Authorized Centers offer. Instead of replacing your entire logic board — which deletes all your data and costs hundreds of KWD — we isolate the exact failed chip using thermal imaging and micro-soldering.', 
+      title: 'MacBook Repair Kuwait', iconKey: 'apple', shortDescription: 'Liquid spills, dead logic boards, USB-C failures. Chip-level Apple hardware restoration.', 
+      description: 'Our MacBook repair service goes beyond what Apple Authorized Centers offer. Instead of replacing your entire logic board — which deletes all your data and costs hundreds of KWD — we isolate the exact failed chip using thermal imaging and micro-soldering.', 
       idealCustomer: 'Creative professionals, developers, and MacBook owners who need chip-level logic board recovery to avoid Apple Authorized Centers\' expensive board-swap and data-loss policies.',
       repairLevel: 'chip-level', estimatedTurnaround: '24-48 Hours', pricing: { startingFrom: 25, currency: 'KWD', quoteRequired: true, displayLabel: 'From 25 KWD — free diagnostic first' }, coreFeatures: ['Logic Board Micro-Soldering', 'USB-C Power IC Replacement', 'Liquid Damage Ultrasonic Cleaning', 'MacBook Screen & Battery Replacement', 'Data Preserved', 'Free Pick & Drop', '30-Day Warranty'], brands: ['MacBook Air', 'MacBook Pro 13"', 'MacBook Pro 14"', 'MacBook Pro 16"'], commonIssues: [{ id: 'no-power', title: 'No power / dead device', severity: 'high', description: 'USB-C power negotiation failure or PPBUS short circuit.' }], warranty: { duration: '30 Days', coverage: 'All parts and labor.', noFixNoFee: true }, 
       seo: { title: 'MacBook Repair Kuwait | Logic Board Experts | No Fix No Fee | KCROC', description: 'Expert Apple MacBook repair in Kuwait. Logic board micro-soldering, USB-C power repair, liquid damage recovery. Free pick & drop.', canonicalUrl: 'https://www.computerrepairkuwait.com/macbook-repair-kuwait', ogType: 'article', schemaTypes: ['Service', 'FAQPage'] },
@@ -118,13 +120,15 @@ const rawGraphData: RawGraphData = {
     
     'srv-laptop': { 
       id: 'srv-laptop', slug: 'laptop-repair-kuwait', entityType: 'Service', isActive: true, 
-      title: 'Laptop Repair Kuwait', iconKey: 'laptop', shortDescription: 'Screen, battery, keyboard, charging port, and motherboard repair for all Windows brands.', description: 'Kuwait\'s climate causes specific hardware failure patterns in Windows laptops. We diagnose and repair the exact fault component rather than replacing the entire unit.', 
+      title: 'Laptop Repair Kuwait', iconKey: 'laptop', shortDescription: 'Screen, battery, keyboard, charging port, and motherboard repair for all Windows brands.', 
+      description: 'Kuwait\'s climate causes specific hardware failure patterns in Windows laptops. We diagnose and repair the exact fault component rather than replacing the entire unit.', 
       idealCustomer: 'Professionals, students, and everyday users needing rapid, reliable hardware restoration for Windows laptops without the risk of losing their personal files.',
       repairLevel: 'advanced', estimatedTurnaround: 'Same Day / 24 Hours', pricing: { startingFrom: 15, currency: 'KWD', quoteRequired: true, displayLabel: 'From 15 KWD' }, coreFeatures: ['Screen Replacement', 'Battery Replacement', 'Keyboard Repair', 'Charging Port', 'Thermal Paste', 'Free Pick & Drop'], brands: ['Dell', 'HP', 'Lenovo', 'ASUS', 'Acer', 'MSI'], commonIssues: [{ id: 'screen-crack', title: 'Cracked screen', severity: 'high', description: 'Physical damage.' }], warranty: { duration: '30 Days', coverage: 'All parts and labor.', noFixNoFee: true }, 
       seo: { title: 'Laptop Repair Kuwait | All Brands | Free Pick & Drop | KCROC', description: 'Professional Windows laptop repair in Kuwait. Screen, battery, keyboard, charging port, and motherboard repairs. Free pick & drop.', canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-repair-kuwait', ogType: 'article', schemaTypes: ['Service'] },
       navigationPriority: 90, isFeatured: true, popular: true
     } as ServiceEntity,
     
+    // 🚀 WORLD-CLASS GAMING PC REPAIR ENTITY (Fully Expanded)
     'srv-gaming': { 
       id: 'srv-gaming', 
       slug: 'gaming-pc-repair-kuwait', 
@@ -133,13 +137,15 @@ const rawGraphData: RawGraphData = {
       title: 'Gaming PC & GPU Repair Kuwait', 
       iconKey: 'gaming', 
       shortDescription: 'Component-level GPU diagnostics, liquid metal thermal restoration, and custom loop AIO maintenance.', 
-      description: 'Standard gaming hardware is designed for temperate climates. In Kuwait, sustained 45°C+ summer ambient temperatures, AC fluctuations, and fine particulate dust combine to choke cooling loops, dry out thermal pastes, and bake solder joints. We don\'t just swap expensive parts—we diagnose, micro-solder, and restore your hardware down to the silicon to eliminate thermal throttling and reclaim lost frames.', 
-      idealCustomer: 'Hardcore esports competitors, professional streamers, 3D creators, and owners of high-end custom rigs (Alienware, ROG, Legion) who cannot afford downtime or thermal throttling.',
+      description: 'Your gaming PC just shut down mid-match, the frame rate that used to feel smooth is stuttering for no obvious reason, or a card that cost you real money is suddenly artifacting under load. Hardware at this price point isn\'t supposed to behave like this — and in almost every case it\'s repairable, because the cause is a specific, diagnosable fault rather than a dead GPU or a doomed motherboard. In Kuwait specifically, sustained ambient temperatures above 45°C for nearly half the year, combined with fine desert dust and near-constant AC cycling, accelerate exactly the failure patterns most repair guides don\'t account for: thermal paste pumps out early, AIO pumps wear faster, and VRM components run hotter than their design margin assumes. We diagnose the actual cause using thermal imaging and load benchmarking — on RTX 40-series and 50-series cards, RX 7000-series GPUs, Ryzen X3D and Intel Core Ultra/i9 builds, liquid-cooled rigs, and everything between — then repair down to the component level wherever possible instead of defaulting to an expensive full-part replacement.', 
+      idealCustomer: 'Every kind of Kuwait-based gaming and high-performance PC user: casual and competitive gamers, esports players, streamers, content creators, 3D designers, architects, engineers, video editors, developers, and any professional running a high-performance desktop or laptop that isn\'t performing the way it used to.',
       deviceTypes: [
         'Custom Desktop Builds', 
         'Pre-Built Gaming PCs (Alienware, OMEN)', 
         'High-End Gaming Laptops', 
-        'Standalone GPUs (RTX / Radeon RX series)'
+        'Standalone GPUs (RTX / Radeon RX series)',
+        'Streaming & Content Creation Workstations',
+        'Liquid-Cooled Custom Loop Systems'
       ],
       repairLevel: 'chip-level', 
       estimatedTurnaround: '24-48 Hours', 
@@ -158,18 +164,32 @@ const rawGraphData: RawGraphData = {
         'Multi-Hour FPS & Stability Benchmarking'
       ], 
       brands: ['ASUS ROG', 'Alienware', 'MSI', 'Corsair', 'Lenovo Legion', 'Razer', 'Gigabyte Aorus', 'NZXT'], 
+
+      whyChooseUs: [
+        { title: 'Chip-Level Motherboard Repair', description: 'We trace and replace the individual failed component — a MOSFET, a capacitor, a power stage — instead of writing off the whole board.' },
+        { title: 'GPU VRAM & Chip-Level Repair', description: 'Failing VRAM modules and degraded solder joints beneath the GPU die are diagnosed and reworked directly rather than defaulting to a full card replacement.' },
+        { title: 'BGA Micro-Soldering', description: 'Ball-grid-array rework on GPU and CPU packages, performed under magnification with controlled reflow temperatures.' },
+        { title: 'Thermal Imaging Diagnostics', description: 'We use thermal cameras during stress testing to see exactly which component is overheating, rather than guessing from symptoms alone.' },
+        { title: 'ESD-Safe Laboratory', description: 'All work is performed on grounded, static-controlled workstations in our Hawalli lab to protect sensitive GPU and motherboard components.' },
+        { title: 'Genuine Thermal Compounds', description: 'We use branded liquid metal and phase-change thermal materials rated for sustained high-temperature use, not generic paste.' },
+        { title: 'Advanced BIOS & VBIOS Recovery', description: 'Corrupted BIOS or VBIOS firmware from a failed update or power interruption can usually be reflashed directly, avoiding a full board or card replacement.' },
+        { title: 'Free Pickup & Delivery, Kuwait-Wide', description: 'Full towers and gaming desktops are collected and returned anywhere in Kuwait at no extra cost, the same as our laptop service.' },
+        { title: 'No Fix, No Fee', description: 'If we cannot repair it after diagnosis, you do not pay — not even for the diagnostic.' },
+        { title: 'Transparent Diagnostics', description: 'You receive a written breakdown of the actual fault and an itemized quote before any repair work starts.' }
+      ],
+
       commonIssues: [
         { 
           id: 'vrm-thermal-throttling', 
           title: 'Severe FPS Drops & Thermal Throttling', 
           severity: 'high', 
-          description: 'Kuwait\'s ambient heat causes factory thermal paste to "pump out" or dry entirely. Heat traps on the CPU/GPU die, forcing the system to aggressively drop clock speeds to prevent self-destruction. We perform deep chemical extraction and Liquid Metal upgrades.' 
+          description: 'Kuwait\'s ambient heat causes factory thermal paste to "pump out" or dry entirely, trapping heat on the CPU/GPU die and forcing the system to aggressively drop clock speeds. We perform deep chemical extraction and liquid metal upgrades to restore sustained boost clocks.' 
         },
         { 
           id: 'gpu-artifacting', 
           title: 'Screen Artifacting or Black Screens Under Load', 
           severity: 'critical', 
-          description: 'Often misdiagnosed as a "dead GPU." Artifacting under heavy gaming load is typically caused by failing VRAM modules or degraded solder balls beneath the GPU chip. We use thermal imaging and BGA rework to restore the card rather than replacing it.' 
+          description: 'Often misdiagnosed as a "dead GPU." Artifacting under heavy load — including on RTX and RX cards — is typically caused by failing VRAM modules or degraded solder balls beneath the GPU chip. We use thermal imaging and BGA rework to restore the card rather than replacing it.' 
         },
         { 
           id: 'aio-pump-failure', 
@@ -181,32 +201,215 @@ const rawGraphData: RawGraphData = {
           id: 'power-stage-short', 
           title: 'Motherboard VRM / Power Stage Failure', 
           severity: 'critical', 
-          description: 'The PC suddenly shuts off during gameplay and refuses to turn back on (often accompanied by a burning smell). High-draw components like RTX 4090s or i9 processors can blow motherboard power stages. We micro-solder replacement MOSFETs to save the board.' 
+          description: 'The PC shuts off suddenly during gameplay and refuses to reboot, sometimes with a faint burning smell. High-draw components like RTX 4090/5090-class cards or Ryzen/i9 processors can blow motherboard power stages. We micro-solder replacement MOSFETs to save the board.' 
+        },
+        {
+          id: 'cpu-overheating',
+          title: 'CPU Overheating Independent of GPU Load',
+          severity: 'high',
+          description: 'CPU temperatures climbing well above rated limits even in CPU-light games, usually from degraded thermal paste, a failing cooler pump, or insufficient case airflow starving the CPU cooler specifically.'
+        },
+        {
+          id: 'random-shutdown-psu',
+          title: 'Random Shutdowns Under Load (PSU Instability)',
+          severity: 'critical',
+          description: 'Instant power-off during demanding scenes, never at idle. Often a power supply that can no longer deliver clean, stable power at Kuwait\'s higher ambient temperatures — we load-test the PSU under real gaming conditions, not just at idle.'
+        },
+        {
+          id: 'no-display-boot',
+          title: 'No Display / Black Screen After Boot',
+          severity: 'critical',
+          description: 'Fans spin and lights come on, but nothing reaches the monitor. Common causes include a dislodged GPU, failed VRAM, a blown motherboard fuse, or a corrupted BIOS — we isolate which with boardview diagnostics before quoting.'
+        },
+        {
+          id: 'driver-crash-tdr',
+          title: 'Driver Crashes & TDR (Timeout Detection Recovery) Errors',
+          severity: 'medium',
+          description: 'Screen goes black and recovers with a "display driver stopped responding" message. Can be a driver conflict, but recurring TDR under load specifically often points to a genuine hardware fault we can isolate with sustained stress testing.'
+        },
+        {
+          id: 'coil-whine',
+          title: 'Coil Whine Diagnosis',
+          severity: 'low',
+          description: 'A high-pitched whine that changes with FPS can be a normal (if annoying) characteristic of power delivery, or a sign of failing VRM components. We load-test to tell the difference before recommending any repair.'
+        },
+        {
+          id: 'rgb-fan-controller',
+          title: 'RGB & Fan Controller Failures',
+          severity: 'low',
+          description: 'Lighting or fan curves stop responding to software control, sometimes with fans stuck at full speed. Usually a failed controller hub or a firmware fault we can reset, reflash, or replace.'
+        },
+        {
+          id: 'custom-loop-maintenance',
+          title: 'Custom Loop & Water Cooler Maintenance',
+          severity: 'medium',
+          description: 'Gradually climbing temperatures over months, even with no usage change, usually from mineral buildup or biological growth restricting coolant flow. We flush, clean, and refill loops with distilled, biocide-treated coolant.'
+        },
+        {
+          id: 'bios-corruption',
+          title: 'BIOS Corruption / Failed Firmware Update',
+          severity: 'critical',
+          description: 'System fails to POST after a power interruption mid-flash or a bad BIOS update, with no display and no diagnostic beep pattern. We reflash the BIOS chip directly using an external programmer where a CMOS reset alone won\'t recover it.'
+        },
+        {
+          id: 'overclock-instability',
+          title: 'Overclock Instability',
+          severity: 'medium',
+          description: 'Crashes or blue screens specifically after enabling an overclock or XMP/EXPO profile. We validate memory and core stability under real load and identify whether the fault is the settings, the silicon, or inadequate cooling for the overclock.'
+        },
+        {
+          id: 'ssd-thermal-throttle',
+          title: 'SSD/NVMe Overheating & Throttling',
+          severity: 'low',
+          description: 'Sudden drops in load times or stutter during texture streaming can trace back to an NVMe drive throttling from heat, especially in cramped custom builds without a heatsink over the drive.'
         }
       ], 
+
       process: [
-        { step: 1, title: 'Free Secure Pickup', description: 'We collect your heavy gaming rig directly from your home or office anywhere in Kuwait.' },
-        { step: 2, title: 'Stress Test & Thermal Imaging', description: 'Your rig undergoes a heavy synthetic load (FurMark/TimeSpy) while we monitor VRM and GPU temperatures with thermal cameras to isolate the exact bottleneck.' },
-        { step: 3, title: 'Precision Laboratory Repair', description: 'Whether it is BGA micro-soldering, AIO maintenance, or Liquid Metal application, repairs are executed safely in our ESD-compliant Hawalli lab.' },
-        { step: 4, title: 'FPS Benchmarking & Return', description: 'We verify the fix with multi-hour stability tests, ensuring zero thermal throttling, before delivering it back to you.' }
+        { step: 1, title: 'Free Secure Pickup', description: 'We collect your gaming rig directly from your home or office anywhere in Kuwait, tagged and logged for full chain-of-custody tracking.' },
+        { step: 2, title: 'Stress Test & Thermal Imaging', description: 'Your rig undergoes real gaming benchmarks and synthetic load tests (extended GPU stress testing, CPU thermal validation, memory stability testing) while we monitor VRM and GPU temperatures with thermal cameras to isolate the exact bottleneck.' },
+        { step: 3, title: 'Precision Laboratory Repair', description: 'Whether it is BGA micro-soldering, AIO maintenance, or liquid metal application, repairs are executed in our ESD-compliant Hawalli lab with genuine thermal compounds and controlled reflow.' },
+        { step: 4, title: 'Extended Verification & Return', description: 'We re-run FPS consistency checks, thermal equilibrium testing, and power delivery validation — commonly a 6-hour gaming stability test for thermal-related repairs — before delivering the system back to you.' }
       ],
+
+      performanceOutcomes: {
+        disclaimer: 'The figures below are representative outcomes for these repair categories based on typical before/after results, not a specific customer\'s guaranteed result — every repair is quoted after its own diagnostic.',
+        items: [
+          { metric: 'CPU Temperatures', outcome: 'Typical reduction from 95-98°C under sustained load to 70-75°C after a full re-paste and cooler service.' },
+          { metric: 'GPU Hotspot Temperature', outcome: 'Hotspot-to-edge temperature delta commonly reduced by 15-25°C after a liquid metal replacement on affected models.' },
+          { metric: 'Sustained Gaming Sessions', outcome: 'Systems that previously throttled or shut down within 20-30 minutes typically hold stable clocks through 6+ hour sessions after repair.' },
+          { metric: 'Thermal Throttling', outcome: 'Eliminated in the large majority of cases where the root cause was degraded thermal material or blocked airflow rather than a failing component.' },
+          { metric: 'Fan & Pump Noise', outcome: 'Noticeably reduced once dust-clogged fans are cleaned and worn AIO pumps or bearings are replaced.' }
+        ]
+      },
+
+      repairExamples: {
+        disclaimer: 'These are representative repair scenarios illustrating common fault categories we service, not records of a specific named customer.',
+        items: [
+          {
+            id: 'gpu-vram-repair',
+            title: 'GPU: Failed VRAM Modules Under Load',
+            symptoms: 'Game crashes and driver TDR resets specifically under heavy VRAM load — high-resolution textures or ray tracing — while light workloads ran fine.',
+            diagnosis: 'Load testing isolated the fault to memory modules failing to hold data integrity under sustained thermal load, confirmed with thermal imaging showing a localized hotspot.',
+            repair: 'The affected VRAM modules were reworked via BGA micro-soldering and replaced with matched-spec components.',
+            outcome: 'The card passed extended stress testing with no artifacting or driver resets across multiple sessions.'
+          },
+          {
+            id: 'laptop-liquid-metal',
+            title: 'Gaming Laptop: Liquid Metal Degradation',
+            symptoms: 'CPU and GPU temperatures climbing 15-20°C above the laptop\'s original benchmarks within a year of purchase, with audible fan ramp-up under light load.',
+            diagnosis: 'The factory liquid metal interface had partially migrated away from the die ("pump-out"), a known failure mode in high-wattage laptop chips under repeated heat cycling.',
+            repair: 'Full disassembly, careful cleaning of the old liquid metal with proper containment, and reapplication with a conformal barrier to prevent recurrence.',
+            outcome: 'Temperatures returned to within a few degrees of factory benchmarks under sustained load.'
+          },
+          {
+            id: 'motherboard-vrm-rebuild',
+            title: 'Custom Build: Motherboard VRM Failure',
+            symptoms: 'System powered off abruptly under sustained load, typically during demanding games or benchmarks, and would not reboot for several minutes.',
+            diagnosis: 'Thermal imaging under load identified an overheating VRM phase; multimeter testing confirmed a degraded MOSFET no longer regulating power cleanly to the CPU.',
+            repair: 'The failed MOSFET was replaced via micro-soldering and VRM heatsink contact was restored with fresh thermal pads.',
+            outcome: 'The system held stable under multi-hour stress testing with normal VRM temperatures.'
+          },
+          {
+            id: 'custom-loop-blockage',
+            title: 'Custom Loop: Blocked Coolant Pathway',
+            symptoms: 'CPU temperatures gradually climbing over several months despite no change in usage, eventually reaching thermal throttling under load.',
+            diagnosis: 'Inspection of the loop found mineral buildup and biological growth restricting flow through the radiator and CPU block, common with non-distilled coolant over time.',
+            repair: 'Full loop flush, radiator and block cleaning, coolant replacement with a distilled, biocide-treated fluid, and a leak test before refill.',
+            outcome: 'Flow rate and CPU temperatures were restored to expected levels.'
+          },
+          {
+            id: 'bios-recovery',
+            title: 'Motherboard: Corrupted BIOS After Failed Update',
+            symptoms: 'System failed to POST after an interrupted BIOS update, with no display output and no diagnostic beep pattern.',
+            diagnosis: 'The BIOS chip was confirmed corrupted via direct programmer readout rather than a simple CMOS reset issue.',
+            repair: 'The BIOS chip was reflashed directly using an external programmer with the correct firmware version for the board revision.',
+            outcome: 'The system POSTed normally and retained all subsequent BIOS settings without further instability.'
+          }
+        ]
+      },
+
+      inspectionChecklist: [
+        'CPU core & package temperatures under load',
+        'GPU core and hotspot temperatures',
+        'VRAM temperature and stability under load',
+        'Storage (SSD/NVMe) thermal behavior',
+        'Memory (RAM) stability testing',
+        'Motherboard voltage rails',
+        'VRM temperatures under sustained load',
+        'Power supply output stability',
+        'Cooling system airflow and efficiency',
+        'Fan and pump operation',
+        'BIOS configuration and firmware version',
+        'Multi-hour stress testing and gaming benchmarks',
+        'Thermal imaging scan of the full board',
+        'Dust and particulate contamination',
+        'Internal cable and connector integrity'
+      ],
+
       faqs: [
         {
           id: 'faq-gpu-repair',
-          title: 'Can you fix a GPU that another shop said was completely dead?',
-          answer: 'Yes. This is our core specialization. While standard shops only know how to replace entire cards, our Hawalli micro-soldering lab repairs individual components like blown fuses, shorted capacitors, and damaged VRMs at a fraction of the replacement cost.'
+          title: 'Can you repair a GPU that another shop or the manufacturer declared beyond repair?',
+          answer: 'Often, yes. "Beyond repair" from a shop that only knows how to swap whole cards usually means beyond THEIR repair. Our Hawalli lab repairs individual components — blown fuses, shorted capacitors, damaged VRMs, and failing VRAM — at a fraction of replacement cost. We only turn a card away after our own diagnostic confirms the damage is genuinely uneconomical to fix.'
+        },
+        {
+          id: 'faq-vram-replace',
+          title: 'Can VRAM actually be replaced, or does the whole GPU need to go?',
+          answer: 'VRAM modules can be replaced via BGA micro-soldering in many cases, provided the surrounding board and GPU die itself are undamaged. We confirm this with thermal imaging and load testing before quoting, so you know whether a VRAM-level repair is realistic for your specific card.'
+        },
+        {
+          id: 'faq-repair-vs-replace',
+          title: 'Should I repair my graphics card or just replace it?',
+          answer: 'It depends on the fault and the card\'s age/value. For most VRM, VRAM, and thermal-related faults on mid-to-high-end cards, component-level repair costs a fraction of a replacement and restores original performance. We give you both the repair quote and an honest opinion on whether replacement makes more financial sense for your specific situation.'
         },
         {
           id: 'faq-liquid-metal',
           title: 'Is Liquid Metal safe for my gaming laptop?',
-          answer: 'When applied by experts, absolutely. We use conformal coating and specialized thermal barriers to isolate the liquid metal strictly to the CPU/GPU die, preventing any electrical shorts while dropping peak temperatures by up to 15°C.'
+          answer: 'When applied by experienced technicians, yes. We use conformal barriers to isolate the liquid metal strictly to the CPU/GPU die, preventing electrical shorts while typically dropping peak temperatures by 15°C or more compared to standard paste.'
         },
         {
-          id: 'faq-throttle',
-          title: 'Why does my high-end rig thermal throttle so fast in Kuwait?',
-          answer: 'Kuwait\'s extreme ambient temperatures combined with fine particulate dust quickly overwhelm stock cooling solutions. Fans choke, and thermal paste turns to chalk. A professional deep clean and phase-change thermal repaste permanently resolves this.'
+          id: 'faq-liquid-metal-motherboard',
+          title: 'Can liquid metal damage a motherboard if it leaks or migrates?',
+          answer: 'It can, if applied without proper containment — liquid metal is electrically conductive and will short exposed components if it spreads beyond the die. This is exactly why we use conformal coating and precise application volume, and why we don\'t recommend DIY liquid metal application on laptops with tightly packed boards.'
+        },
+        {
+          id: 'faq-custom-loop',
+          title: 'Do you repair custom water cooling loops?',
+          answer: 'Yes. We service and maintain custom loops — flushing blocked radiators and blocks, replacing worn pump motors, fixing leaks, and refilling with distilled, biocide-treated coolant to prevent the mineral and biological buildup that causes gradual temperature creep.'
+        },
+        {
+          id: 'faq-overheat-damage',
+          title: 'Can sustained overheating cause permanent GPU damage?',
+          answer: 'Yes, over time. Repeated thermal cycling at high temperatures accelerates solder joint fatigue and can degrade VRAM and VRM components permanently, which is why we recommend addressing thermal throttling early rather than treating it as a background annoyance.'
+        },
+        {
+          id: 'faq-gaming-laptops-repair',
+          title: 'Do you repair gaming laptops, or only desktop PCs?',
+          answer: 'Both. Gaming laptop repair — including ASUS ROG, MSI, Alienware, Legion, and Razer models — is one of our core services, alongside custom desktop builds, pre-built towers, and standalone GPU repair.'
+        },
+        {
+          id: 'faq-service-frequency',
+          title: 'How often should a gaming PC be serviced in Kuwait\'s climate?',
+          answer: 'As a general guideline, a thermal service (dust removal, fresh thermal paste or liquid metal, fan/pump inspection) every 12-18 months is reasonable in Kuwait\'s heat and dust, versus the 2-3 years often recommended in cooler climates — high-wattage components under heavy gaming load benefit from checking sooner.'
+        },
+        {
+          id: 'faq-bios-corruption',
+          title: 'Do you fix BIOS corruption or a failed firmware update?',
+          answer: 'Yes. Where a simple CMOS reset doesn\'t recover the board, we reflash the BIOS chip directly using an external programmer, which resolves the large majority of failed-update and corruption cases without replacing the motherboard.'
+        },
+        {
+          id: 'faq-overclock-recovery',
+          title: 'Can you recover a system that\'s unstable after overclocking?',
+          answer: 'Yes. We reset to stable defaults first, then run memory and core stability testing under real load to determine whether the instability is a settings issue, a silicon limitation, or cooling that isn\'t adequate for the overclock you\'re targeting.'
+        },
+        {
+          id: 'faq-data-safety-gaming',
+          title: 'Will my saved games, settings, and files stay safe during repair?',
+          answer: 'For GPU, motherboard, and cooling repairs, your storage drive is untouched — we work on the hardware, not your data. For laptop repairs specifically, you\'re welcome to remove your drive before handing the device over if you\'d prefer extra peace of mind.'
         }
       ],
+
       warranty: { 
         duration: '30 Days', 
         coverage: 'Covers all replaced components, thermal applications, and micro-soldering labor.', 
@@ -226,7 +429,8 @@ const rawGraphData: RawGraphData = {
     
     'srv-motherboard': { 
       id: 'srv-motherboard', slug: 'motherboard-repair-kuwait', entityType: 'Service', isActive: true, 
-      title: 'Motherboard Repair Kuwait', iconKey: 'cpu', shortDescription: 'Chip-level diagnostics and micro-soldering.', description: 'Most repair shops replace the entire motherboard. We isolate the fault to the individual component level — saving you up to 80%.', 
+      title: 'Motherboard Repair Kuwait', iconKey: 'cpu', shortDescription: 'Chip-level diagnostics and micro-soldering.', 
+      description: 'Most repair shops replace the entire motherboard. We isolate the fault to the individual component level — saving you up to 80%.', 
       idealCustomer: 'Users with completely dead or liquid-damaged devices who have been told by standard retail shops that their laptop is "unfixable" and want to save up to 80% versus a full board replacement.',
       repairLevel: 'chip-level', estimatedTurnaround: '24-48 Hours', pricing: { startingFrom: 25, currency: 'KWD', quoteRequired: true, displayLabel: 'From 25 KWD' }, coreFeatures: ['Power Rail Tracing', 'MOSFET Replacement', 'BGA Rework', 'Liquid Damage Ultrasonic Cleaning'], brands: ['MacBook', 'Dell', 'HP', 'ASUS', 'Lenovo'], commonIssues: [{ id: 'no-power', title: 'Dead laptop', severity: 'high', description: 'Input MOSFET short.' }], warranty: { duration: '30 Days', coverage: 'All parts and labor.', noFixNoFee: true }, 
       seo: { title: 'Motherboard Repair Kuwait | Chip-Level Fix | KCROC', description: 'Expert motherboard repair in Kuwait. Chip-level micro-soldering, power rail diagnostics, liquid damage recovery.', canonicalUrl: 'https://www.computerrepairkuwait.com/motherboard-repair-kuwait', ogType: 'article', schemaTypes: ['Service'] },
@@ -235,7 +439,8 @@ const rawGraphData: RawGraphData = {
     
     'srv-screen': { 
       id: 'srv-screen', slug: 'laptop-screen-repair-kuwait', entityType: 'Service', isActive: true, 
-      title: 'Screen Replacement Kuwait', iconKey: 'monitor', shortDescription: 'LCD, IPS, OLED, and Retina display panel replacements.', description: 'A cracked or flickering laptop screen doesn\'t mean a new laptop. We source and fit OEM and high-grade compatible panels.', 
+      title: 'Screen Replacement Kuwait', iconKey: 'monitor', shortDescription: 'LCD, IPS, OLED, and Retina display panel replacements.', 
+      description: 'A cracked or flickering laptop screen doesn\'t mean a new laptop. We source and fit OEM and high-grade compatible panels.', 
       idealCustomer: 'Anyone dealing with cracked, flickering, or dead LCD/OLED laptop screens needing a fast, OEM-quality panel replacement to get back online the same day.',
       repairLevel: 'basic', estimatedTurnaround: 'Same Day', pricing: { startingFrom: 20, currency: 'KWD', quoteRequired: false, displayLabel: 'From 20 KWD' }, coreFeatures: ['LCD/IPS/OLED Replacement', 'MacBook Retina', 'Display Cable Repair'], brands: ['Dell', 'HP', 'Lenovo', 'MacBook'], commonIssues: [{ id: 'cracked', title: 'Cracked screen', severity: 'high', description: 'Physical impact.' }], warranty: { duration: '30 Days', coverage: 'Screen panel and labor.', noFixNoFee: false }, 
       seo: { title: 'Laptop Screen Replacement Kuwait | Same Day | KCROC', description: 'Professional laptop and MacBook screen replacement in Kuwait. LCD, IPS, OLED & Retina. Free pick & drop.', canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-screen-repair-kuwait', ogType: 'article', schemaTypes: ['Service'] },
@@ -244,7 +449,8 @@ const rawGraphData: RawGraphData = {
     
     'srv-battery': { 
       id: 'srv-battery', slug: 'battery-replacement-kuwait', entityType: 'Service', isActive: true, 
-      title: 'Battery Replacement Kuwait', iconKey: 'battery', shortDescription: 'OEM and compatible battery replacement.', description: 'Kuwait\'s extreme heat accelerates lithium degradation. We replace batteries and optimize thermal settings.', 
+      title: 'Battery Replacement Kuwait', iconKey: 'battery', shortDescription: 'OEM and compatible battery replacement.', 
+      description: 'Kuwait\'s extreme heat accelerates lithium degradation. We replace batteries and optimize thermal settings.', 
       idealCustomer: 'Laptop owners experiencing rapid battery drain, random shutdowns, or dangerous battery swelling caused by Kuwait\'s extreme summer temperatures.',
       repairLevel: 'basic', estimatedTurnaround: 'Same Day', pricing: { startingFrom: 12, currency: 'KWD', quoteRequired: true, displayLabel: 'From 12 KWD' }, coreFeatures: ['OEM Batteries', 'MacBook Battery Replacement', 'Swollen Battery Removal'], brands: ['MacBook', 'Dell', 'HP', 'Lenovo'], commonIssues: [{ id: 'fast-drain', title: 'Battery dies quickly', severity: 'medium', description: 'Capacity loss.' }], warranty: { duration: '30 Days', coverage: 'Battery and labor.', noFixNoFee: true }, 
       seo: { title: 'Laptop Battery Replacement Kuwait | Same Day | KCROC', description: 'Fast laptop and MacBook battery replacement in Kuwait. Swollen battery emergency service. Free pick & drop.', canonicalUrl: 'https://www.computerrepairkuwait.com/battery-replacement-kuwait', ogType: 'article', schemaTypes: ['Service'] },
@@ -554,7 +760,6 @@ const rawGraphData: RawGraphData = {
       publishDate: '2026-05-12',
       seo: { title: 'MacBook Pro M2 Liquid Damage Repair Kuwait — Real Case Study | KCROC', description: 'Coffee spill destroyed a MacBook Pro M2 in Salmiya. KCROC repaired the logic board for 65 KWD, preserving all data. Apple wanted 280 KWD for a board swap.', canonicalUrl: 'https://www.computerrepairkuwait.com/case-studies/macbook-liquid-damage-salmiya', ogType: 'article', schemaTypes: ['Article'] },
       
-      // 🚀 NEW
       narrative: {
         clientContext: 'Graphic designer, Salmiya',
         hook: 'The client accidentally spilled coffee across the keyboard of their MacBook Pro 14" M2 Pro. The device powered off immediately, and on restart the fan spun briefly but the screen stayed completely black. With months of unbacked-up project files on the drive, an Apple Authorized Center quote of 280 KWD for a full board swap — with total data loss — was not an option. The client reached out via WhatsApp for a second opinion, and we dispatched a free emergency pickup to Salmiya the same day.',
