@@ -135,6 +135,22 @@ export const ServiceSchema = RoutableEntitySchema.extend({
     description: z.string()
   })).optional(),
   warranty: z.object({ duration: z.string(), coverage: z.string(), noFixNoFee: z.boolean() }).optional(),
+  // 🚀 NEW: Rich service-page content — who the service is for, the device
+  // types covered, the step-by-step process, and service-specific FAQs
+  // (rendered by ServiceTemplate and, for faqs, included in FAQPage schema
+  // by SEOEngine when the entity's seo.schemaTypes includes 'FAQPage').
+  idealCustomer: z.string().optional(),
+  deviceTypes: z.array(z.string()).optional(),
+  process: z.array(z.object({
+    step: z.number(),
+    title: z.string(),
+    description: z.string()
+  })).optional(),
+  faqs: z.array(z.object({
+    id: z.string(),
+    title: z.string(),
+    answer: z.string()
+  })).optional(),
 });
 
 export const LocationSchema = RoutableEntitySchema.extend({
