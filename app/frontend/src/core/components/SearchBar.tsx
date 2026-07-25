@@ -13,7 +13,10 @@ type SearchResult = {
   kind: 'Service' | 'Problem';
 };
 
-export const SearchBar: React.FC = () => {
+export const SearchBar: React.FC<{ onResultSelect?: () => void; autoFocus?: boolean }> = ({
+  onResultSelect,
+  autoFocus = false,
+}) => {
   const { trackConversion } = useAnalytics();
   const [query, setQuery] = useState('');
   const [results, setResults] = useState<SearchResult[]>([]);
@@ -61,6 +64,7 @@ export const SearchBar: React.FC = () => {
       result_title: result.title,
     });
     setQuery('');
+    onResultSelect?.();
   };
 
   return (
@@ -73,6 +77,7 @@ export const SearchBar: React.FC = () => {
           placeholder="What's wrong with your device? (e.g. Broken Screen, Overheating)"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
+          autoFocus={autoFocus}
         />
       </div>
 
@@ -100,3 +105,4 @@ export const SearchBar: React.FC = () => {
     </div>
   );
 };
+```[cite: 3]
