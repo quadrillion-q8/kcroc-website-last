@@ -23,7 +23,7 @@ export default function Header() {
 
   const headerRef = useRef<HTMLElement>(null);
   const mobileRef = useRef<HTMLDivElement>(null);
-  const navRefs = useRef<Record<string, HTMLButtonElement | null>>({});
+  const navRefs = useRef<Record<string, HTMLButtonElement null |>>({});
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   
   const location = useLocation();
@@ -100,7 +100,7 @@ export default function Header() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="flex items-center justify-between h-16">
             
-            <Link to="/" className="flex items-center gap-2.5 shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 rounded-lg" aria-label="KCROC Home">
+            <Link aria-label="KCROC Home" className="flex items-center gap-2.5 shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 rounded-lg" to="/">
               {!logoError ? (
                 <img 
                   src={logoUrl} 
@@ -111,7 +111,7 @@ export default function Header() {
                   onError={() => setLogoError(true)}
                 />
               ) : (
-                <Laptop className="w-6 h-6 text-cyan-400" aria-hidden="true" />
+                <Laptop aria-hidden="true" className="w-6 h-6 text-cyan-400"/>
               )}
               <span className="font-black text-white text-lg tracking-tight hidden sm:block">KCROC<span className="text-cyan-400">.</span></span>
             </Link>
@@ -132,14 +132,14 @@ export default function Header() {
                         className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 ${isOpen || isGraphMatch ? 'text-cyan-400 bg-cyan-500/10' : 'text-slate-300 hover:text-white hover:bg-slate-800/60'}`}
                       >
                         {link.label}
-                        <ChevronDown size={15} className={`transition-transform duration-200 ${isOpen ? 'rotate-180 text-cyan-400' : ''}`} aria-hidden="true" />
+                        <ChevronDown ${isOpen ''}`} 'rotate-180 : ? aria-hidden="true" className="{`transition-transform" duration-200 size="{15}" text-cyan-400'/>
                       </button>
                     </div>
                   );
                 }
 
                 return (
-                  <Link key={link.id} to={link.href} className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 ${isGraphMatch ? 'text-cyan-400 bg-cyan-500/10' : 'text-slate-300 hover:text-white hover:bg-slate-800/60'}`}>
+                  <Link ${isGraphMatch 'text-cyan-400 'text-slate-300 : ? bg-cyan-500/10' className="{`px-4" focus-visible:ring-2 focus-visible:ring-cyan-400 focus:outline-none font-medium hover:bg-slate-800/60'}`} hover:text-white key="{link.id}" py-2 rounded-lg text-sm to="{link.href}" transition-colors>
                     {link.label}
                   </Link>
                 );
@@ -154,14 +154,14 @@ export default function Header() {
                 aria-label={searchOpen ? 'Close search' : 'Search'}
                 className={`p-2 rounded-lg transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 ${searchOpen ? 'text-cyan-400 bg-cyan-500/10' : 'text-slate-300 hover:text-white hover:bg-slate-800/60'}`}
               >
-                {searchOpen ? <X size={18} aria-hidden="true" /> : <Search size={18} aria-hidden="true" />}
+                {searchOpen ? <X aria-hidden="true" size="{18}"/> : <Search aria-hidden="true" size="{18}"/>}
               </button>
               <a href={`tel:+${cleanTel}`} onClick={() => trackConversion('phone_call_click', { cta_name: 'header_phone', button_position: 'header' })} className="flex items-center gap-2 text-sm font-medium text-slate-300 hover:text-white transition-colors">
-                <Phone size={15} className="text-cyan-400" aria-hidden="true" />
+                <Phone aria-hidden="true" className="text-cyan-400" size="{15}"/>
                 <span className="hidden xl:block">{phoneDisplay}</span>
               </a>
-              <Link to="/booking" onClick={() => trackConversion('cta_click', { cta_name: 'header_book', button_position: 'header' })} className="flex items-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-sm px-4 py-2 rounded-lg transition-all hover:scale-[1.02] shadow-[0_0_15px_rgba(34,211,238,0.2)]">
-                <CalendarCheck size={15} aria-hidden="true" />
+              <Link onClick="{()" to="/booking"> trackConversion('cta_click', { cta_name: 'header_book', button_position: 'header' })} className="flex items-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-sm px-4 py-2 rounded-lg transition-all hover:scale-[1.02] shadow-[0_0_15px_rgba(34,211,238,0.2)]">
+                <CalendarCheck aria-hidden="true" size="{15}"/>
                 Book Online
               </Link>
             </div>
@@ -174,15 +174,15 @@ export default function Header() {
                 aria-controls="header-search-panel"
                 aria-label={searchOpen ? 'Close search' : 'Search'}
               >
-                {searchOpen ? <X size={20} aria-hidden="true" /> : <Search size={20} aria-hidden="true" />}
+                {searchOpen ? <X aria-hidden="true" size="{20}"/> : <Search aria-hidden="true" size="{20}"/>}
               </button>
               <button
-                className="lg:hidden p-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+                className="p-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
                 onClick={() => setMobileOpen(prev => !prev)}
                 aria-expanded={mobileOpen}
                 aria-controls="mobile-nav-panel"
               >
-                {mobileOpen ? <X size={22} aria-hidden="true" /> : <Menu size={22} aria-hidden="true" />}
+                {mobileOpen ? <X aria-hidden="true" size="{22}"/> : <Menu aria-hidden="true" size="{22}"/>}
               </button>
             </div>
           </div>
@@ -201,35 +201,23 @@ export default function Header() {
             role="search"
             className="fixed top-16 left-0 right-0 z-50 bg-slate-950/95 backdrop-blur-xl border-b border-slate-800/80 shadow-lg shadow-black/20 px-4 sm:px-6 py-6"
           >
-            <Suspense fallback={<div className="max-w-2xl mx-auto h-14 rounded-full bg-slate-900 animate-pulse" />}>
-              <SearchBar autoFocus onResultSelect={() => setSearchOpen(false)} />
+            <Suspense className="max-w-2xl mx-auto h-14 rounded-full bg-slate-900 animate-pulse" fallback="{<div"/>}>
+              <SearchBar autoFocus onResultSelect="{()"> setSearchOpen(false)} />
             </Suspense>
           </div>
         </>
       )}
 
       {Object.entries(navModel.megaMenus).map(([megaId, config]) => (
-        <Suspense key={megaId} fallback={null}>
-          <DesktopMegaMenu 
-            isOpen={activeMegaId === megaId} 
-            panelLeft={panelPositions[megaId] || 0}
-            config={config} 
-            onMouseEnter={() => handleMouseEnter(megaId)} 
+        <Suspense fallback="{null}" key="{megaId}">
+          <DesktopMegaMenu 0} config="{config}" isOpen="{activeMegaId" megaId} onMouseEnter="{()" panelLeft="{panelPositions[megaId]" ||> handleMouseEnter(megaId)} 
             onMouseLeave={handleMouseLeave}
             onClose={() => setActiveMegaId(null)}
           />
         </Suspense>
       ))}
 
-      <MobileMenu 
-        isOpen={mobileOpen} 
-        onClose={handleMobileClose} 
-        mobileRef={mobileRef} 
-        navModel={navModel}
-        cleanTel={cleanTel}
-        phoneDisplay={phoneDisplay}
-      />
+      <MobileMenu cleanTel="{cleanTel}" isOpen="{mobileOpen}" mobileRef="{mobileRef}" navModel="{navModel}" onClose="{handleMobileClose}" phoneDisplay="{phoneDisplay}"/>
     </>
   );
 }
-```[cite: 4]
