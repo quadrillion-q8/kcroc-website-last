@@ -23,16 +23,14 @@ export default function Header() {
 
   const headerRef = useRef<HTMLElement>(null);
   const mobileRef = useRef<HTMLDivElement>(null);
-  const navRefs = useRef<Record<string, HTMLButtonElement null |>>({});
+  const navRefs = useRef<Record<string, HTMLButtonElement | null>>({});
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   
   const location = useLocation();
   const { trackConversion } = useAnalytics();
   
-  // Single Source of Truth for Layout
   const navModel = useMemo(() => NavigationCompiler.compileNavigation(), []);
   
-  // Define both the clean tel (for href) and the display string (for UI)
   const phoneDisplay = KCROC_GRAPH.business?.telephone ?? '55301913';
   const cleanTel = phoneDisplay.replace(/\D/g, '');
   const logoUrl = KCROC_GRAPH.business?.logoUrl ?? '/logo.webp';
@@ -89,7 +87,6 @@ export default function Header() {
     return () => document.removeEventListener('keydown', onKeyDown);
   }, [searchOpen]);
 
-  // 🚀 FIXED: Stabilize the onClose reference to prevent MobileMenu's useEffect from aggressively resetting the accordion
   const handleMobileClose = useCallback(() => {
     setMobileOpen(false);
   }, []);
@@ -100,7 +97,7 @@ export default function Header() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="flex items-center justify-between h-16">
             
-            <Link aria-label="KCROC Home" className="flex items-center gap-2.5 shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 rounded-lg" to="/">
+            <Link to="/" className="flex items-center gap-2.5 shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 rounded-lg" aria-label="KCROC Home">
               {!logoError ? (
                 <img 
                   src={logoUrl} 
@@ -111,7 +108,7 @@ export default function Header() {
                   onError={() => setLogoError(true)}
                 />
               ) : (
-                <Laptop aria-hidden="true" className="w-6 h-6 text-cyan-400"/>
+                <Laptop className="w-6 h-6 text-cyan-400" aria-hidden="true" />
               )}
               <span className="font-black text-white text-lg tracking-tight hidden sm:block">KCROC<span className="text-cyan-400">.</span></span>
             </Link>
@@ -132,14 +129,14 @@ export default function Header() {
                         className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 ${isOpen || isGraphMatch ? 'text-cyan-400 bg-cyan-500/10' : 'text-slate-300 hover:text-white hover:bg-slate-800/60'}`}
                       >
                         {link.label}
-                        <ChevronDown ${isOpen ''}`} 'rotate-180 : ? aria-hidden="true" className="{`transition-transform" duration-200 size="{15}" text-cyan-400'/>
+                        <ChevronDown size={15} className={`transition-transform duration-200 ${isOpen ? 'rotate-180 text-cyan-400' : ''}`} aria-hidden="true" />
                       </button>
                     </div>
                   );
                 }
 
                 return (
-                  <Link ${isGraphMatch 'text-cyan-400 'text-slate-300 : ? bg-cyan-500/10' className="{`px-4" focus-visible:ring-2 focus-visible:ring-cyan-400 focus:outline-none font-medium hover:bg-slate-800/60'}`} hover:text-white key="{link.id}" py-2 rounded-lg text-sm to="{link.href}" transition-colors>
+                  <Link key={link.id} to={link.href} className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 ${isGraphMatch ? 'text-cyan-400 bg-cyan-500/10' : 'text-slate-300 hover:text-white hover:bg-slate-800/60'}`}>
                     {link.label}
                   </Link>
                 );
@@ -154,14 +151,14 @@ export default function Header() {
                 aria-label={searchOpen ? 'Close search' : 'Search'}
                 className={`p-2 rounded-lg transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 ${searchOpen ? 'text-cyan-400 bg-cyan-500/10' : 'text-slate-300 hover:text-white hover:bg-slate-800/60'}`}
               >
-                {searchOpen ? <X aria-hidden="true" size="{18}"/> : <Search aria-hidden="true" size="{18}"/>}
+                {searchOpen ? <X size={18} aria-hidden="true" /> : <Search size={18} aria-hidden="true" />}
               </button>
               <a href={`tel:+${cleanTel}`} onClick={() => trackConversion('phone_call_click', { cta_name: 'header_phone', button_position: 'header' })} className="flex items-center gap-2 text-sm font-medium text-slate-300 hover:text-white transition-colors">
-                <Phone aria-hidden="true" className="text-cyan-400" size="{15}"/>
+                <Phone size={15} className="text-cyan-400" aria-hidden="true" />
                 <span className="hidden xl:block">{phoneDisplay}</span>
               </a>
-              <Link onClick="{()" to="/booking"> trackConversion('cta_click', { cta_name: 'header_book', button_position: 'header' })} className="flex items-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-sm px-4 py-2 rounded-lg transition-all hover:scale-[1.02] shadow-[0_0_15px_rgba(34,211,238,0.2)]">
-                <CalendarCheck aria-hidden="true" size="{15}"/>
+              <Link to="/booking" onClick={() => trackConversion('cta_click', { cta_name: 'header_book', button_position: 'header' })} className="flex items-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-sm px-4 py-2 rounded-lg transition-all hover:scale-[1.02] shadow-[0_0_15px_rgba(34,211,238,0.2)]">
+                <CalendarCheck size={15} aria-hidden="true" />
                 Book Online
               </Link>
             </div>
@@ -174,7 +171,7 @@ export default function Header() {
                 aria-controls="header-search-panel"
                 aria-label={searchOpen ? 'Close search' : 'Search'}
               >
-                {searchOpen ? <X aria-hidden="true" size="{20}"/> : <Search aria-hidden="true" size="{20}"/>}
+                {searchOpen ? <X size={20} aria-hidden="true" /> : <Search size={20} aria-hidden="true" />}
               </button>
               <button
                 className="p-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
@@ -182,7 +179,7 @@ export default function Header() {
                 aria-expanded={mobileOpen}
                 aria-controls="mobile-nav-panel"
               >
-                {mobileOpen ? <X aria-hidden="true" size="{22}"/> : <Menu aria-hidden="true" size="{22}"/>}
+                {mobileOpen ? <X size={22} aria-hidden="true" /> : <Menu size={22} aria-hidden="true" />}
               </button>
             </div>
           </div>
@@ -201,23 +198,34 @@ export default function Header() {
             role="search"
             className="fixed top-16 left-0 right-0 z-50 bg-slate-950/95 backdrop-blur-xl border-b border-slate-800/80 shadow-lg shadow-black/20 px-4 sm:px-6 py-6"
           >
-            <Suspense className="max-w-2xl mx-auto h-14 rounded-full bg-slate-900 animate-pulse" fallback="{<div"/>}>
-              <SearchBar autoFocus onResultSelect="{()"> setSearchOpen(false)} />
+            <Suspense fallback={<div className="max-w-2xl mx-auto h-14 rounded-full bg-slate-900 animate-pulse" />}>
+              <SearchBar autoFocus onResultSelect={() => setSearchOpen(false)} />
             </Suspense>
           </div>
         </>
       )}
 
       {Object.entries(navModel.megaMenus).map(([megaId, config]) => (
-        <Suspense fallback="{null}" key="{megaId}">
-          <DesktopMegaMenu 0} config="{config}" isOpen="{activeMegaId" megaId} onMouseEnter="{()" panelLeft="{panelPositions[megaId]" ||> handleMouseEnter(megaId)} 
+        <Suspense key={megaId} fallback={null}>
+          <DesktopMegaMenu 
+            isOpen={activeMegaId === megaId} 
+            panelLeft={panelPositions[megaId] || 0}
+            config={config} 
+            onMouseEnter={() => handleMouseEnter(megaId)} 
             onMouseLeave={handleMouseLeave}
             onClose={() => setActiveMegaId(null)}
           />
         </Suspense>
       ))}
 
-      <MobileMenu cleanTel="{cleanTel}" isOpen="{mobileOpen}" mobileRef="{mobileRef}" navModel="{navModel}" onClose="{handleMobileClose}" phoneDisplay="{phoneDisplay}"/>
+      <MobileMenu 
+        isOpen={mobileOpen} 
+        onClose={handleMobileClose} 
+        mobileRef={mobileRef} 
+        navModel={navModel}
+        cleanTel={cleanTel}
+        phoneDisplay={phoneDisplay}
+      />
     </>
   );
 }
