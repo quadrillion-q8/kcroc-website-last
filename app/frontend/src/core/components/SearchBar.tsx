@@ -105,4 +105,3 @@ export const SearchBar: React.FC<{ onResultSelect?: () => void; autoFocus?: bool
     </div>
   );
 };
-```[cite: 3]
