@@ -45,7 +45,7 @@ const rawGraphData: RawGraphData = {
       items: [
         { label: 'Repairs completed', value: '500+',    sub: 'Since launch across Kuwait' },
         { label: 'Success rate',        value: '98%',     sub: 'On complex logic board repairs' },
-        { label: 'Warranty',            value: '30 days', sub: 'All parts and labour' },
+        { label: 'Warranty',            value: '30 days', sub: 'All parts and labor' },
         { label: 'Pick & drop',         value: 'Free',    sub: 'Zero hidden transport fees' }
       ]
     } as StatsEntity,
@@ -448,12 +448,12 @@ const rawGraphData: RawGraphData = {
     } as ServiceEntity,
     
     'srv-battery': { 
-      id: 'srv-battery', slug: 'battery-replacement-kuwait', entityType: 'Service', isActive: true, 
+      id: 'srv-battery', slug: 'battery-replacement', entityType: 'Service', isActive: true, 
       title: 'Battery Replacement Kuwait', iconKey: 'battery', shortDescription: 'OEM and compatible battery replacement.', 
       description: 'Kuwait\'s extreme heat accelerates lithium degradation. We replace batteries and optimize thermal settings.', 
       idealCustomer: 'Laptop owners experiencing rapid battery drain, random shutdowns, or dangerous battery swelling caused by Kuwait\'s extreme summer temperatures.',
       repairLevel: 'basic', estimatedTurnaround: 'Same Day', pricing: { startingFrom: 12, currency: 'KWD', quoteRequired: true, displayLabel: 'From 12 KWD' }, coreFeatures: ['OEM Batteries', 'MacBook Battery Replacement', 'Swollen Battery Removal'], brands: ['MacBook', 'Dell', 'HP', 'Lenovo'], commonIssues: [{ id: 'fast-drain', title: 'Battery dies quickly', severity: 'medium', description: 'Capacity loss.' }], warranty: { duration: '30 Days', coverage: 'Battery and labor.', noFixNoFee: true }, 
-      seo: { title: 'Laptop Battery Replacement Kuwait | Same Day | KCROC', description: 'Fast laptop and MacBook battery replacement in Kuwait. Swollen battery emergency service. Free pick & drop.', canonicalUrl: 'https://www.computerrepairkuwait.com/battery-replacement-kuwait', ogType: 'article', schemaTypes: ['Service'] },
+      seo: { title: 'Laptop Battery Replacement Kuwait | Same Day | KCROC', description: 'Fast laptop and MacBook battery replacement in Kuwait. Swollen battery emergency service. Free pick & drop.', canonicalUrl: 'https://www.computerrepairkuwait.com/battery-replacement', ogType: 'article', schemaTypes: ['Service'] },
       navigationPriority: 50, isFeatured: false, popular: false
     } as ServiceEntity,
 
