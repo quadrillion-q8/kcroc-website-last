@@ -503,7 +503,7 @@ export default function BatteryHealthGuide() {
               <CardTitle className="text-white text-sm sm:text-base mb-1">Find Replacement</CardTitle>
               <p className="text-slate-400 text-[10px] sm:text-xs mb-3 sm:mb-4">Get a genuine or compatible battery for your laptop.</p>
               <Button asChild variant="outline" size="sm" className="border-emerald-500/50 text-emerald-300 hover:bg-emerald-500/10">
-                <Link to="/battery-replacement-kuwait">Find Battery</Link>
+                <Link to="/battery-replacement">Find Battery</Link>
               </Button>
             </Card>
             <Card className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 border-cyan-500/20 text-center p-5 sm:p-6">
