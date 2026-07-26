@@ -1,6 +1,6 @@
 // File: app/frontend/src/App.tsx
 import React, { Suspense, lazy } from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate, useParams } from 'react-router-dom';
 import { RootLayout } from './core/components/layout/RootLayout';
 import { KCROC_GRAPH } from './data/graph';
 
@@ -47,6 +47,15 @@ const ScreenProtectionTips = lazy(() => import('./pages/ScreenProtectionTips'));
 const DellOverheatingPage = lazy(() => import('./pages/DellOverheatingPage').then(module => ({ default: module.DellOverheatingPage })));
 const BatteryHealthGuide = lazy(() => import('./pages/BatteryHealthGuide'));
 
+// 🚀 Legacy Link Preservation: old /services/:slug URLs (from before the flat-URL
+// migration) redirect to the current canonical route instead of dead-ending in a
+// 404 — preserves any existing backlinks/bookmarks/SEO equity pointing at the old path.
+const LegacyServiceRedirect: React.FC = () => {
+  const { serviceSlug } = useParams<{ serviceSlug?: string }>();
+  const service = KCROC_GRAPH.services.find(s => s.slug === serviceSlug);
+  return <Navigate to={service ? `/${service.slug}` : '/404'} replace />;
+};
+
 // UI: Global loading spinner
 const PageLoader = () => (
   <div className="w-full h-[60vh] flex items-center justify-center bg-transparent">
@@ -80,8 +89,8 @@ export const App: React.FC = () => {
                 <Route key={problem.slug} path={problem.slug} element={<ProblemTemplate entityId={problem.id} />} />
               ))}
 
-              {/* Legacy Service Route Fallback */}
-              <Route path="services/:serviceSlug" element={<ServiceTemplate />} />
+              {/* Legacy Service Route Fallback — redirects old /services/:slug links to the current flat URL */}
+              <Route path="services/:serviceSlug" element={<LegacyServiceRedirect />} />
               
               {/* Case Studies */}
               <Route path="case-studies" element={<CaseStudiesIndex />} />
