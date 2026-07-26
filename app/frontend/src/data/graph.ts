@@ -45,7 +45,7 @@ const rawGraphData: RawGraphData = {
       items: [
         { label: 'Repairs completed', value: '500+',    sub: 'Since launch across Kuwait' },
         { label: 'Success rate',        value: '98%',     sub: 'On complex logic board repairs' },
-        { label: 'Warranty',            value: '30 days', sub: 'All parts and labor' },
+        { label: 'Warranty',            value: '30 days', sub: 'All parts and labour' },
         { label: 'Pick & drop',         value: 'Free',    sub: 'Zero hidden transport fees' }
       ]
     } as StatsEntity,
@@ -110,25 +110,21 @@ const rawGraphData: RawGraphData = {
     ═══════════════════════════════════════════════════════════════ */
     'srv-macbook': { 
       id: 'srv-macbook', slug: 'macbook-repair-kuwait', entityType: 'Service', isActive: true, 
-      title: 'MacBook Repair Kuwait', iconKey: 'apple', shortDescription: 'Liquid spills, dead logic boards, USB-C failures. Chip-level Apple hardware restoration.', 
-      description: 'Our MacBook repair service goes beyond what Apple Authorized Centers offer. Instead of replacing your entire logic board — which deletes all your data and costs hundreds of KWD — we isolate the exact failed chip using thermal imaging and micro-soldering.', 
-      idealCustomer: 'Creative professionals, developers, and MacBook owners who need chip-level logic board recovery to avoid Apple Authorized Centers\' expensive board-swap and data-loss policies.',
-      repairLevel: 'chip-level', estimatedTurnaround: '24-48 Hours', pricing: { startingFrom: 25, currency: 'KWD', quoteRequired: true, displayLabel: 'From 25 KWD — free diagnostic first' }, coreFeatures: ['Logic Board Micro-Soldering', 'USB-C Power IC Replacement', 'Liquid Damage Ultrasonic Cleaning', 'MacBook Screen & Battery Replacement', 'Data Preserved', 'Free Pick & Drop', '30-Day Warranty'], brands: ['MacBook Air', 'MacBook Pro 13"', 'MacBook Pro 14"', 'MacBook Pro 16"'], commonIssues: [{ id: 'no-power', title: 'No power / dead device', severity: 'high', description: 'USB-C power negotiation failure or PPBUS short circuit.' }], warranty: { duration: '30 Days', coverage: 'All parts and labor.', noFixNoFee: true }, 
+      title: 'MacBook Repair Kuwait', iconKey: 'apple', shortDescription: 'Liquid spills, dead logic boards, USB-C failures. Chip-level Apple hardware restoration.', description: 'Our MacBook repair service goes beyond what Apple Authorized Centers offer. Instead of replacing your entire logic board — which deletes all your data and costs hundreds of KWD — we isolate the exact failed chip using thermal imaging and micro-soldering.', idealCustomer: 'Creative professionals, developers, and MacBook owners who need chip-level logic board recovery to avoid Apple Authorized Centers\' expensive board-swap and data-loss policies.', repairLevel: 'chip-level', estimatedTurnaround: '24-48 Hours', pricing: { startingFrom: 25, currency: 'KWD', quoteRequired: true, displayLabel: 'From 25 KWD — free diagnostic first' }, coreFeatures: ['Logic Board Micro-Soldering', 'USB-C Power IC Replacement', 'Liquid Damage Ultrasonic Cleaning', 'MacBook Screen & Battery Replacement', 'Data Preserved', 'Free Pick & Drop', '30-Day Warranty'], brands: ['MacBook Air', 'MacBook Pro 13"', 'MacBook Pro 14"', 'MacBook Pro 16"'], commonIssues: [{ id: 'no-power', title: 'No power / dead device', severity: 'high', description: 'USB-C power negotiation failure or PPBUS short circuit.' }], warranty: { duration: '30 Days', coverage: 'All parts and labor.', noFixNoFee: true }, 
       seo: { title: 'MacBook Repair Kuwait | Logic Board Experts | No Fix No Fee | KCROC', description: 'Expert Apple MacBook repair in Kuwait. Logic board micro-soldering, USB-C power repair, liquid damage recovery. Free pick & drop.', canonicalUrl: 'https://www.computerrepairkuwait.com/macbook-repair-kuwait', ogType: 'article', schemaTypes: ['Service', 'FAQPage'] },
       navigationPriority: 100, isFeatured: true, popular: true 
     } as ServiceEntity,
     
     'srv-laptop': { 
       id: 'srv-laptop', slug: 'laptop-repair-kuwait', entityType: 'Service', isActive: true, 
-      title: 'Laptop Repair Kuwait', iconKey: 'laptop', shortDescription: 'Screen, battery, keyboard, charging port, and motherboard repair for all Windows brands.', 
-      description: 'Kuwait\'s climate causes specific hardware failure patterns in Windows laptops. We diagnose and repair the exact fault component rather than replacing the entire unit.', 
-      idealCustomer: 'Professionals, students, and everyday users needing rapid, reliable hardware restoration for Windows laptops without the risk of losing their personal files.',
-      repairLevel: 'advanced', estimatedTurnaround: 'Same Day / 24 Hours', pricing: { startingFrom: 15, currency: 'KWD', quoteRequired: true, displayLabel: 'From 15 KWD' }, coreFeatures: ['Screen Replacement', 'Battery Replacement', 'Keyboard Repair', 'Charging Port', 'Thermal Paste', 'Free Pick & Drop'], brands: ['Dell', 'HP', 'Lenovo', 'ASUS', 'Acer', 'MSI'], commonIssues: [{ id: 'screen-crack', title: 'Cracked screen', severity: 'high', description: 'Physical damage.' }], warranty: { duration: '30 Days', coverage: 'All parts and labor.', noFixNoFee: true }, 
+      title: 'Laptop Repair Kuwait', iconKey: 'laptop', shortDescription: 'Screen, battery, keyboard, charging port, and motherboard repair for all Windows brands.', description: 'Kuwait\'s climate causes specific hardware failure patterns in Windows laptops. We diagnose and repair the exact fault component rather than replacing the entire unit.', idealCustomer: 'Professionals, students, and everyday users needing rapid, reliable hardware restoration for Windows laptops without the risk of losing their personal files.', repairLevel: 'advanced', estimatedTurnaround: 'Same Day / 24 Hours', pricing: { startingFrom: 15, currency: 'KWD', quoteRequired: true, displayLabel: 'From 15 KWD' }, coreFeatures: ['Screen Replacement', 'Battery Replacement', 'Keyboard Repair', 'Charging Port', 'Thermal Paste', 'Free Pick & Drop'], brands: ['Dell', 'HP', 'Lenovo', 'ASUS', 'Acer', 'MSI'], commonIssues: [{ id: 'screen-crack', title: 'Cracked screen', severity: 'high', description: 'Physical damage.' }], warranty: { duration: '30 Days', coverage: 'All parts and labor.', noFixNoFee: true }, 
       seo: { title: 'Laptop Repair Kuwait | All Brands | Free Pick & Drop | KCROC', description: 'Professional Windows laptop repair in Kuwait. Screen, battery, keyboard, charging port, and motherboard repairs. Free pick & drop.', canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-repair-kuwait', ogType: 'article', schemaTypes: ['Service'] },
       navigationPriority: 90, isFeatured: true, popular: true
     } as ServiceEntity,
     
-    // 🚀 WORLD-CLASS GAMING PC REPAIR ENTITY (Fully Expanded)
+    // 🚀 EXPANDED: World-class Gaming PC & GPU Repair Entity — emotional hook,
+    // broadened audience, trust section, measurable outcomes, representative
+    // repair-scenario summaries, expanded FAQ, and full inspection checklist.
     'srv-gaming': { 
       id: 'srv-gaming', 
       slug: 'gaming-pc-repair-kuwait', 
@@ -429,32 +425,181 @@ const rawGraphData: RawGraphData = {
     
     'srv-motherboard': { 
       id: 'srv-motherboard', slug: 'motherboard-repair-kuwait', entityType: 'Service', isActive: true, 
-      title: 'Motherboard Repair Kuwait', iconKey: 'cpu', shortDescription: 'Chip-level diagnostics and micro-soldering.', 
-      description: 'Most repair shops replace the entire motherboard. We isolate the fault to the individual component level — saving you up to 80%.', 
-      idealCustomer: 'Users with completely dead or liquid-damaged devices who have been told by standard retail shops that their laptop is "unfixable" and want to save up to 80% versus a full board replacement.',
-      repairLevel: 'chip-level', estimatedTurnaround: '24-48 Hours', pricing: { startingFrom: 25, currency: 'KWD', quoteRequired: true, displayLabel: 'From 25 KWD' }, coreFeatures: ['Power Rail Tracing', 'MOSFET Replacement', 'BGA Rework', 'Liquid Damage Ultrasonic Cleaning'], brands: ['MacBook', 'Dell', 'HP', 'ASUS', 'Lenovo'], commonIssues: [{ id: 'no-power', title: 'Dead laptop', severity: 'high', description: 'Input MOSFET short.' }], warranty: { duration: '30 Days', coverage: 'All parts and labor.', noFixNoFee: true }, 
+      title: 'Motherboard Repair Kuwait', iconKey: 'cpu', shortDescription: 'Chip-level diagnostics and micro-soldering.', description: 'Most repair shops replace the entire motherboard. We isolate the fault to the individual component level — saving you up to 80%.', idealCustomer: 'Users with completely dead or liquid-damaged devices who have been told by standard retail shops that their laptop is "unfixable" and want to save up to 80% versus a full board replacement.', repairLevel: 'chip-level', estimatedTurnaround: '24-48 Hours', pricing: { startingFrom: 25, currency: 'KWD', quoteRequired: true, displayLabel: 'From 25 KWD' }, coreFeatures: ['Power Rail Tracing', 'MOSFET Replacement', 'BGA Rework', 'Liquid Damage Ultrasonic Cleaning'], brands: ['MacBook', 'Dell', 'HP', 'ASUS', 'Lenovo'], commonIssues: [{ id: 'no-power', title: 'Dead laptop', severity: 'high', description: 'Input MOSFET short.' }], warranty: { duration: '30 Days', coverage: 'All parts and labor.', noFixNoFee: true }, 
       seo: { title: 'Motherboard Repair Kuwait | Chip-Level Fix | KCROC', description: 'Expert motherboard repair in Kuwait. Chip-level micro-soldering, power rail diagnostics, liquid damage recovery.', canonicalUrl: 'https://www.computerrepairkuwait.com/motherboard-repair-kuwait', ogType: 'article', schemaTypes: ['Service'] },
       navigationPriority: 70, isFeatured: false, popular: true
     } as ServiceEntity,
     
     'srv-screen': { 
       id: 'srv-screen', slug: 'laptop-screen-repair-kuwait', entityType: 'Service', isActive: true, 
-      title: 'Screen Replacement Kuwait', iconKey: 'monitor', shortDescription: 'LCD, IPS, OLED, and Retina display panel replacements.', 
-      description: 'A cracked or flickering laptop screen doesn\'t mean a new laptop. We source and fit OEM and high-grade compatible panels.', 
-      idealCustomer: 'Anyone dealing with cracked, flickering, or dead LCD/OLED laptop screens needing a fast, OEM-quality panel replacement to get back online the same day.',
-      repairLevel: 'basic', estimatedTurnaround: 'Same Day', pricing: { startingFrom: 20, currency: 'KWD', quoteRequired: false, displayLabel: 'From 20 KWD' }, coreFeatures: ['LCD/IPS/OLED Replacement', 'MacBook Retina', 'Display Cable Repair'], brands: ['Dell', 'HP', 'Lenovo', 'MacBook'], commonIssues: [{ id: 'cracked', title: 'Cracked screen', severity: 'high', description: 'Physical impact.' }], warranty: { duration: '30 Days', coverage: 'Screen panel and labor.', noFixNoFee: false }, 
+      title: 'Screen Replacement Kuwait', iconKey: 'monitor', shortDescription: 'LCD, IPS, OLED, and Retina display panel replacements.', description: 'A cracked or flickering laptop screen doesn\'t mean a new laptop. We source and fit OEM and high-grade compatible panels.', idealCustomer: 'Anyone dealing with cracked, flickering, or dead LCD/OLED laptop screens needing a fast, OEM-quality panel replacement to get back online the same day.', repairLevel: 'basic', estimatedTurnaround: 'Same Day', pricing: { startingFrom: 20, currency: 'KWD', quoteRequired: false, displayLabel: 'From 20 KWD' }, coreFeatures: ['LCD/IPS/OLED Replacement', 'MacBook Retina', 'Display Cable Repair'], brands: ['Dell', 'HP', 'Lenovo', 'MacBook'], commonIssues: [{ id: 'cracked', title: 'Cracked screen', severity: 'high', description: 'Physical impact.' }], warranty: { duration: '30 Days', coverage: 'Screen panel and labor.', noFixNoFee: false }, 
       seo: { title: 'Laptop Screen Replacement Kuwait | Same Day | KCROC', description: 'Professional laptop and MacBook screen replacement in Kuwait. LCD, IPS, OLED & Retina. Free pick & drop.', canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-screen-repair-kuwait', ogType: 'article', schemaTypes: ['Service'] },
       navigationPriority: 60, isFeatured: false, popular: false
     } as ServiceEntity,
     
     'srv-battery': { 
-      id: 'srv-battery', slug: 'battery-replacement', entityType: 'Service', isActive: true, 
-      title: 'Battery Replacement Kuwait', iconKey: 'battery', shortDescription: 'OEM and compatible battery replacement.', 
-      description: 'Kuwait\'s extreme heat accelerates lithium degradation. We replace batteries and optimize thermal settings.', 
-      idealCustomer: 'Laptop owners experiencing rapid battery drain, random shutdowns, or dangerous battery swelling caused by Kuwait\'s extreme summer temperatures.',
-      repairLevel: 'basic', estimatedTurnaround: 'Same Day', pricing: { startingFrom: 12, currency: 'KWD', quoteRequired: true, displayLabel: 'From 12 KWD' }, coreFeatures: ['OEM Batteries', 'MacBook Battery Replacement', 'Swollen Battery Removal'], brands: ['MacBook', 'Dell', 'HP', 'Lenovo'], commonIssues: [{ id: 'fast-drain', title: 'Battery dies quickly', severity: 'medium', description: 'Capacity loss.' }], warranty: { duration: '30 Days', coverage: 'Battery and labor.', noFixNoFee: true }, 
-      seo: { title: 'Laptop Battery Replacement Kuwait | Same Day | KCROC', description: 'Fast laptop and MacBook battery replacement in Kuwait. Swollen battery emergency service. Free pick & drop.', canonicalUrl: 'https://www.computerrepairkuwait.com/battery-replacement', ogType: 'article', schemaTypes: ['Service'] },
-      navigationPriority: 50, isFeatured: false, popular: false
+      id: 'srv-battery', 
+      slug: 'battery-replacement', 
+      entityType: 'Service', 
+      isActive: true, 
+      title: 'Laptop & MacBook Battery Replacement Kuwait', 
+      iconKey: 'battery', 
+      shortDescription: 'Chip-level charging IC diagnostics, OEM battery replacement, and swollen-battery emergency removal.',
+      description: 'Your battery drains in an hour when it used to last all day, your laptop shuts off at "20% remaining," or worse — the trackpad has started lifting because the battery underneath it is swelling. In Kuwait, this happens faster and more often than the manufacturer\'s spec sheet accounts for: lithium-ion cells degrade significantly quicker at sustained ambient temperatures above 40°C, and a laptop left in a parked car or near a sunlit window for even part of the day accelerates that degradation further. We don\'t just swap in a battery and send you off — we test the charging IC, the power delivery circuit, and the battery management system first, because a battery that "won\'t charge past 80%" or "shows 100% then dies in ten minutes" is sometimes a circuit fault, not a dead cell, and replacing the battery alone wouldn\'t fix it.',
+      idealCustomer: 'Laptop and MacBook owners experiencing rapid battery drain, sudden shutdowns at a non-zero charge percentage, a battery that no longer holds a full-day charge, or — most urgently — visible swelling or a lifting trackpad/chassis, which is a safety issue that needs same-day attention.',
+      deviceTypes: [
+        'Windows Laptops (all major brands)',
+        'MacBook Air & MacBook Pro (all generations)',
+        '2-in-1 / Convertible Laptops',
+        'Gaming Laptops (high-drain battery systems)'
+      ],
+      repairLevel: 'basic', 
+      estimatedTurnaround: 'Same Day', 
+      pricing: { startingFrom: 12, currency: 'KWD', quoteRequired: true, displayLabel: 'From 12 KWD — free diagnostic first' }, 
+      coreFeatures: [
+        'OEM & High-Grade Compatible Batteries',
+        'MacBook Internal Battery Replacement',
+        'Swollen Battery Safe Removal & Disposal',
+        'Charging IC & Power Circuit Diagnostics',
+        'Battery Health & Cycle Count Reporting',
+        'Free Pick & Drop'
+      ], 
+      brands: ['MacBook', 'Dell', 'HP', 'Lenovo', 'ASUS', 'Acer', 'MSI', 'Microsoft Surface'], 
+
+      whyChooseUs: [
+        { title: 'Charging Circuit Diagnosis First', description: 'Before replacing anything, we test whether the fault is actually the battery cell or the charging IC/power delivery circuit — replacing a battery doesn\'t fix a bad charging chip.' },
+        { title: 'Swollen Battery Safety Protocol', description: 'A swollen lithium-ion cell is a genuine fire/chemical risk. We handle removal in a controlled, ESD-safe environment using proper containment procedures, not a bare workbench.' },
+        { title: 'Battery Health Reporting', description: 'You receive an actual cycle count and health percentage reading before we quote, not a guess based on age alone.' },
+        { title: 'OEM-First Sourcing', description: 'We prioritize genuine manufacturer cells where available, and clearly disclose when a high-grade compatible alternative is being offered instead, along with the price difference.' },
+        { title: 'Free Pickup & Delivery, Kuwait-Wide', description: 'Same-day battery replacement collected from and returned to your home or office anywhere in Kuwait.' },
+        { title: 'No Fix, No Fee', description: 'If diagnosis shows the fault isn\'t the battery and we can\'t resolve it, you pay nothing for the diagnostic.' }
+      ],
+
+      commonIssues: [
+        { 
+          id: 'fast-drain', 
+          title: 'Battery Dies Quickly / Won\'t Hold a Charge', 
+          severity: 'medium', 
+          description: 'Capacity loss from normal lithium-ion aging, accelerated by Kuwait\'s heat. We measure actual remaining capacity against factory spec before recommending replacement.' 
+        },
+        { 
+          id: 'swollen-battery', 
+          title: 'Swollen Battery / Lifting Trackpad or Chassis', 
+          severity: 'critical', 
+          description: 'A visibly puffed battery is a safety hazard, not a cosmetic issue — stop using the device immediately. We remove and dispose of swollen cells safely and same-day where possible.' 
+        },
+        { 
+          id: 'sudden-shutdown', 
+          title: 'Laptop Shuts Down at 20-30% Battery', 
+          severity: 'high', 
+          description: 'Often a sign the battery\'s voltage curve no longer matches what the system expects at that reported percentage — usually resolved with replacement, but we confirm it isn\'t a charging IC fault first.' 
+        },
+        { 
+          id: 'not-charging-past-percent', 
+          title: 'Battery Stuck Charging at a Fixed Percentage (e.g. 80%)', 
+          severity: 'medium', 
+          description: 'Can be a battery health-management feature working as intended, a degraded cell, or a charging circuit fault — we check which before quoting a replacement.' 
+        },
+        {
+          id: 'macbook-battery-service-recommended',
+          title: '"Service Recommended" / "Replace Now" macOS Battery Warning',
+          severity: 'medium',
+          description: 'macOS\'s own battery health indicator flags degraded cells before they cause visible symptoms — we replace the internal battery without affecting the rest of the logic board.'
+        },
+        {
+          id: 'battery-not-detected',
+          title: 'Battery Not Detected / 0% and Won\'t Charge At All',
+          severity: 'high',
+          description: 'Can be a fully dead cell, a disconnected battery connector, or a failed charging IC on the motherboard — we isolate which before replacing parts.'
+        }
+      ], 
+
+      process: [
+        { step: 1, title: 'Free Pickup', description: 'We collect your laptop or MacBook from your home or office anywhere in Kuwait, same day where scheduling allows.' },
+        { step: 2, title: 'Battery Health & Circuit Diagnostic', description: 'We measure actual battery capacity against factory spec and test the charging IC and power delivery circuit to confirm the battery — not the circuit — is the actual fault.' },
+        { step: 3, title: 'Safe Removal & Replacement', description: 'For swollen cells, removal follows a controlled safety protocol. The new OEM or high-grade compatible battery is fitted and calibrated.' },
+        { step: 4, title: 'Charge Cycle Verification & Return', description: 'The new battery is run through a full charge/discharge cycle to confirm it holds capacity correctly before the device is returned to you.' }
+      ],
+
+      performanceOutcomes: {
+        disclaimer: 'The figures below are representative outcomes for this repair category based on typical before/after results, not a specific customer\'s guaranteed result — every repair is quoted after its own diagnostic.',
+        items: [
+          { metric: 'Reported Battery Health', outcome: 'Devices arriving at 40-60% health typically return to 95-100% of rated capacity after OEM replacement.' },
+          { metric: 'Unplugged Runtime', outcome: 'Laptops previously lasting 1-2 hours unplugged commonly return to 4-8+ hours depending on model and usage.' },
+          { metric: 'Sudden Shutdowns', outcome: 'Eliminated in the large majority of cases where the root cause was a genuinely degraded cell rather than a charging circuit fault.' }
+        ]
+      },
+
+      repairExamples: {
+        disclaimer: 'These are representative repair scenarios illustrating common fault categories we service, not records of a specific named customer.',
+        items: [
+          {
+            id: 'swollen-battery-emergency',
+            title: 'MacBook Air: Swollen Battery Lifting the Trackpad',
+            symptoms: 'The trackpad had become slightly raised on one side and no longer clicked evenly.',
+            diagnosis: 'Visual and physical inspection confirmed battery swelling consistent with age-related cell degradation.',
+            repair: 'The swollen cell was safely removed under controlled conditions and replaced with a new battery matched to the model.',
+            outcome: 'The trackpad returned to its correct, flush position and the device passed a full charge-cycle test.'
+          },
+          {
+            id: 'charging-ic-vs-battery',
+            title: 'Windows Laptop: Misdiagnosed as a "Dead Battery"',
+            symptoms: 'The laptop would only run while plugged in and showed 0% battery at all times, even after hours of charging.',
+            diagnosis: 'Circuit-level testing found the charging IC itself had failed, while the battery cell tested as healthy.',
+            repair: 'The charging IC was replaced rather than the battery, avoiding an unnecessary battery purchase.',
+            outcome: 'The laptop charged and reported battery percentage normally, running for several hours unplugged as expected.'
+          }
+        ]
+      },
+
+      inspectionChecklist: [
+        'Battery capacity vs. factory-rated spec',
+        'Charge cycle count',
+        'Physical inspection for swelling or deformation',
+        'Charging IC / power delivery circuit test',
+        'Charge/discharge cycle verification after replacement',
+        'Battery connector and cable integrity'
+      ],
+
+      faqs: [
+        {
+          id: 'faq-battery-swelling-safety',
+          title: 'My laptop battery looks swollen — is it dangerous?',
+          answer: 'Yes, treat it as a genuine safety issue. Stop using the device, avoid puncturing or bending the swollen area, and don\'t leave it charging unattended. Bring it in or arrange a pickup as soon as possible for safe removal.'
+        },
+        {
+          id: 'faq-oem-vs-compatible-battery',
+          title: 'What\'s the difference between an OEM and a compatible replacement battery?',
+          answer: 'OEM batteries are genuine manufacturer-spec cells, typically matching original capacity and safety certification exactly. High-grade compatible batteries are third-party alternatives that can be a reasonable lower-cost option — we always disclose which one we\'re quoting and why before you approve the repair.'
+        },
+        {
+          id: 'faq-battery-health-reading',
+          title: 'How do I know if my battery actually needs replacing, or if it\'s something else?',
+          answer: 'We test actual battery capacity against factory spec and check the charging circuit separately — a battery reporting significant capacity loss is a genuine replacement case, while symptoms like "won\'t charge at all" can sometimes be a charging IC fault instead.'
+        },
+        {
+          id: 'faq-macbook-battery-data-safety',
+          title: 'Will replacing my MacBook battery affect my data?',
+          answer: 'No. Battery replacement is a hardware-only procedure that doesn\'t touch your storage drive or macOS installation — your files, settings, and data remain untouched.'
+        },
+        {
+          id: 'faq-battery-replacement-time',
+          title: 'How long does battery replacement take?',
+          answer: 'Same-day for most models when the correct battery is in stock, since it\'s a basic-level hardware swap rather than a chip-level repair.'
+        }
+      ],
+
+      warranty: { duration: '30 Days', coverage: 'Battery and labor.', noFixNoFee: true }, 
+      seo: { 
+        title: 'Laptop & MacBook Battery Replacement Kuwait | Same Day | KCROC', 
+        description: 'Fast laptop and MacBook battery replacement in Kuwait. Swollen battery emergency service, charging circuit diagnostics, OEM batteries. Free pick & drop.', 
+        canonicalUrl: 'https://www.computerrepairkuwait.com/battery-replacement', 
+        ogType: 'article', 
+        schemaTypes: ['Service', 'FAQPage'] 
+      },
+      navigationPriority: 50, 
+      isFeatured: false, 
+      popular: false
     } as ServiceEntity,
 
     /* ═══════════════════════════════════════════════════════════════
@@ -760,6 +905,7 @@ const rawGraphData: RawGraphData = {
       publishDate: '2026-05-12',
       seo: { title: 'MacBook Pro M2 Liquid Damage Repair Kuwait — Real Case Study | KCROC', description: 'Coffee spill destroyed a MacBook Pro M2 in Salmiya. KCROC repaired the logic board for 65 KWD, preserving all data. Apple wanted 280 KWD for a board swap.', canonicalUrl: 'https://www.computerrepairkuwait.com/case-studies/macbook-liquid-damage-salmiya', ogType: 'article', schemaTypes: ['Article'] },
       
+      // 🚀 NEW
       narrative: {
         clientContext: 'Graphic designer, Salmiya',
         hook: 'The client accidentally spilled coffee across the keyboard of their MacBook Pro 14" M2 Pro. The device powered off immediately, and on restart the fan spun briefly but the screen stayed completely black. With months of unbacked-up project files on the drive, an Apple Authorized Center quote of 280 KWD for a full board swap — with total data loss — was not an option. The client reached out via WhatsApp for a second opinion, and we dispatched a free emergency pickup to Salmiya the same day.',
