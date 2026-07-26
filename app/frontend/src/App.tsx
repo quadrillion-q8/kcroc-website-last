@@ -119,7 +119,6 @@ export const App: React.FC = () => {
               <Route path="guides/laptop-battery-warning-signs" element={<BatteryHealthGuide />} />
               
               {/* SEO Guardrail: Canonical URL redirection */}
-              <Route path="battery-replacement-kuwait" element={<Navigate to="/battery-replacement" replace />} />
               <Route path="laptop-screen-protection-tips" element={<ScreenProtectionTips />} />
               <Route path="blog/laptop-screen-protection-tips" element={<Navigate to="/laptop-screen-protection-tips" replace />} />
               
