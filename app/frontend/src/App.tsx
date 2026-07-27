@@ -122,6 +122,9 @@ export const App: React.FC = () => {
               <Route path="laptop-screen-protection-tips" element={<ScreenProtectionTips />} />
               <Route path="blog/laptop-screen-protection-tips" element={<Navigate to="/laptop-screen-protection-tips" replace />} />
               
+              {/* 🚀 Corrected SEO Guardrail for Battery */}
+              <Route path="battery-replacement" element={<Navigate to="/battery-replacement-kuwait" replace />} />
+              
               {/* Generic Blog Catch-All */}
               <Route path="blog/:slug" element={<BlogPostTemplate />} />
               
