@@ -98,7 +98,6 @@ export const rawGraphData: RawGraphData = {
     'page-gallery': { id: 'page-gallery', slug: 'gallery', entityType: 'WebPage', isActive: true, title: 'Gallery', description: 'Lab and repair gallery.', seo: { title: 'Repair Gallery | KCROC Hawalli Lab', description: 'View our ESD-safe repair lab in Hawalli and real examples of our component-level micro-soldering.', canonicalUrl: 'https://www.computerrepairkuwait.com/gallery', ogType: 'website', schemaTypes: ['CollectionPage'] } } as WebPageEntity,
     'page-pricing': { id: 'page-pricing', slug: 'pricing', entityType: 'WebPage', isActive: true, title: 'Pricing', description: 'Transparent repair pricing.', seo: { title: 'Computer Repair Pricing Kuwait | KCROC', description: 'Transparent pricing for laptop screen replacement, battery replacement, and logic board repairs in Kuwait.', canonicalUrl: 'https://www.computerrepairkuwait.com/pricing', ogType: 'website', schemaTypes: ['WebPage'] } } as WebPageEntity,
     
-    // NEW ENTITY: Resolves the missing canonical URL and meta tags on the /book route
     'page-booking': { id: 'page-booking', slug: 'book', entityType: 'WebPage', isActive: true, title: 'Book a Repair', description: 'Book free laptop and computer repair pickup anywhere in Kuwait. Same-day hardware assessment. 30-day warranty.', seo: { title: 'Book Laptop & Computer Repair Pickup in Kuwait | KCROC', description: 'Book free laptop and computer repair pickup anywhere in Kuwait. Same-day hardware assessment. 30-day warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/book', ogType: 'website', schemaTypes: ['WebPage'] } } as WebPageEntity,
     
     'page-privacy': { id: 'page-privacy', slug: 'privacy-security-kuwait', entityType: 'WebPage', isActive: true, title: 'Privacy & Security', description: 'Our data privacy guarantee.', seo: { title: 'Data Privacy & Security Guarantee | KCROC', description: 'Read about our strict hardware-only protocol that guarantees your personal data remains 100% private during repairs.', canonicalUrl: 'https://www.computerrepairkuwait.com/privacy-security-kuwait', ogType: 'website', schemaTypes: ['WebPage'] } } as WebPageEntity,
@@ -373,7 +372,6 @@ export const rawGraphData: RawGraphData = {
       popular: true 
     } as ServiceEntity,
     
-    // 🚀 EXPANDED: World-class Windows Laptop Repair Entity
     'srv-laptop': { 
       id: 'srv-laptop', 
       slug: 'laptop-repair-kuwait', 
@@ -596,7 +594,6 @@ export const rawGraphData: RawGraphData = {
       popular: true
     } as ServiceEntity,
     
-    // 🚀 EXPANDED: World-class Gaming PC & GPU Repair Entity
     'srv-gaming': { 
       id: 'srv-gaming', 
       slug: 'gaming-pc-repair-kuwait', 
@@ -896,10 +893,235 @@ export const rawGraphData: RawGraphData = {
     } as ServiceEntity,
     
     'srv-motherboard': { 
-      id: 'srv-motherboard', slug: 'motherboard-repair-kuwait', entityType: 'Service', isActive: true, 
-      title: 'Motherboard Repair Kuwait', iconKey: 'cpu', shortDescription: 'Chip-level diagnostics and micro-soldering.', description: 'Most repair shops replace the entire motherboard. We isolate the fault to the individual component level — saving you up to 80%.', idealCustomer: 'Users with completely dead or liquid-damaged devices who have been told by standard retail shops that their laptop is "unfixable" and want to save up to 80% versus a full board replacement.', repairLevel: 'chip-level', estimatedTurnaround: '24-48 Hours', pricing: { startingFrom: 25, currency: 'KWD', quoteRequired: true, displayLabel: 'From 25 KWD' }, coreFeatures: ['Power Rail Tracing', 'MOSFET Replacement', 'BGA Rework', 'Liquid Damage Ultrasonic Cleaning'], brands: ['MacBook', 'Dell', 'HP', 'ASUS', 'Lenovo'], commonIssues: [{ id: 'no-power', title: 'Dead laptop', severity: 'high', description: 'Input MOSFET short.' }], warranty: { duration: '30 Days', coverage: 'All parts and labor.', noFixNoFee: true }, 
-      seo: { title: 'Motherboard Repair Kuwait | Chip-Level Fix | KCROC', description: 'Expert motherboard repair in Kuwait. Chip-level micro-soldering, power rail diagnostics, liquid damage recovery.', canonicalUrl: 'https://www.computerrepairkuwait.com/motherboard-repair-kuwait', ogType: 'article', schemaTypes: ['Service'] },
-      navigationPriority: 70, isFeatured: false, popular: true
+      id: 'srv-motherboard', 
+      slug: 'motherboard-repair-kuwait', 
+      entityType: 'Service', 
+      isActive: true, 
+      title: 'Motherboard Repair Kuwait', 
+      iconKey: 'cpu', 
+      shortDescription: 'Chip-level power rail tracing, MOSFET replacement, and BGA rework — for boards other shops call "beyond repair."',
+      description: 'A laptop that\'s completely dead, one that shuts off randomly during normal use, or one a retail shop already quoted a "full motherboard replacement" for — these are the cases where component-level repair actually matters most, because a motherboard replacement usually costs more than the laptop is worth once you\'re past the second or third year of ownership. Most repair counters carry one tool for a dead board: swap the whole thing. We carry a multimeter, a thermal camera, and boardview schematics, and use them to trace the fault to the single component that actually failed — a shorted MOSFET, a blown fuse, a degraded capacitor, a corroded trace from an old spill — and repair that one point instead. The rest of the board, and anything soldered to it, stays exactly as it was.',
+      idealCustomer: 'Users with completely dead or liquid-damaged devices who have been told by standard retail shops that their laptop is "unfixable" and want to save up to 80% versus a full board replacement.',
+      deviceTypes: [
+        'Windows Laptop Motherboards (Dell, HP, Lenovo, ASUS, Acer, MSI)',
+        'MacBook Logic Boards (Intel & Apple Silicon)',
+        'Gaming Laptop Motherboards (high-draw VRM designs)',
+        'Desktop Motherboards (ATX / Micro-ATX)'
+      ],
+      repairLevel: 'chip-level', 
+      estimatedTurnaround: '24-48 Hours', 
+      pricing: { startingFrom: 25, currency: 'KWD', quoteRequired: true, displayLabel: 'From 25 KWD — free diagnostic first' }, 
+      coreFeatures: [
+        'Power Rail Voltage Tracing',
+        'MOSFET & Power IC Replacement',
+        'BGA Rework & Chip Reballing',
+        'Liquid Damage Ultrasonic Cleaning',
+        'Blown Fuse Diagnosis & Replacement',
+        'Capacitor Replacement',
+        'BIOS Chip Reflashing',
+        'Boardview-Guided Fault Tracing',
+        'Free Pick & Drop',
+        '30-Day Warranty'
+      ], 
+      brands: ['MacBook', 'Dell', 'HP', 'ASUS', 'Lenovo', 'Acer', 'MSI'], 
+
+      whyChooseUs: [
+        { title: 'We Trace the Fault Before We Quote Anything', description: 'Multimeter testing and thermal imaging identify the actual failed component before any repair or replacement is discussed — not a guess based on symptoms.' },
+        { title: 'Component-Level Repair, Not Board Swap', description: 'A shorted MOSFET or a blown fuse is a single-component fix. Most shops treat it as a reason to replace the entire board — we treat it as what it is.' },
+        { title: 'BGA Rework Capability', description: 'Chip-level faults — including GPU, chipset, and memory controller issues — are reworked directly under magnification with controlled reflow, rather than declared unfixable.' },
+        { title: 'Data Stays on the Original Board', description: 'Because we repair rather than replace, anything soldered to the board — storage, in particular on Apple Silicon and many modern ultrabooks — is never disturbed.' },
+        { title: 'ESD-Safe Laboratory', description: 'All board-level work happens on grounded, static-controlled workstations in our Hawalli lab, where a single uncontrolled static discharge can be the difference between a repairable board and a dead one.' },
+        { title: 'Kuwait Climate Expertise', description: 'Sustained heat accelerates capacitor degradation and solder joint fatigue well beyond what manufacturer specs assume — we see the resulting failure patterns daily and know what to check for.' },
+        { title: 'Free Pickup & Delivery, Kuwait-Wide', description: 'Full laptops or desktop towers collected from and returned to your home or office anywhere in Kuwait, at no extra cost.' },
+        { title: 'No Fix, No Fee', description: 'If the board is genuinely beyond economical repair after diagnosis, you pay nothing — not even for the diagnostic.' }
+      ],
+
+      commonIssues: [
+        { 
+          id: 'no-power', 
+          title: 'Dead Laptop / No Power At All', 
+          severity: 'critical', 
+          description: 'No lights, no fan spin, no response to the power button. Most often an input MOSFET short or a blown fuse on the main power rail — a single-component fault we trace with a multimeter before assuming the board is a total loss.' 
+        },
+        { 
+          id: 'liquid-damage-board', 
+          title: 'Liquid-Damaged Motherboard', 
+          severity: 'critical', 
+          description: 'Spilled liquid creates conductive bridges across the board and corrodes copper traces within hours. We ultrasonically clean the board and replace only the components the short actually damaged.' 
+        },
+        { 
+          id: 'random-shutdowns-board', 
+          title: 'Random Shutdowns or Instability', 
+          severity: 'high', 
+          description: 'Unpredictable restarts regardless of workload usually point to a degrading power rail or a capacitor that can no longer hold a stable charge, not a software fault.' 
+        },
+        { 
+          id: 'vrm-failure', 
+          title: 'VRM Failure Under Load', 
+          severity: 'high', 
+          description: 'The system shuts off specifically under heavy CPU/GPU load — a voltage regulation module component has degraded to the point it can\'t sustain power delivery at higher draw.' 
+        },
+        { 
+          id: 'wont-post', 
+          title: 'Won\'t POST / No Display, No Boot', 
+          severity: 'critical', 
+          description: 'Fans and lights come on but nothing progresses past power-on. Can be a corrupted BIOS chip, a dislodged component from a previous repair elsewhere, or a failed RAM/chipset connection — we isolate which with boardview diagnostics.' 
+        },
+        { 
+          id: 'bulging-capacitors', 
+          title: 'Bulging or Leaking Capacitors', 
+          severity: 'medium', 
+          description: 'Visibly domed or leaking electrolytic capacitors are a heat-accelerated failure mode we see often in Kuwait — replacing them before they fail completely prevents a simple fix from becoming a dead board.' 
+        },
+        { 
+          id: 'charging-port-ripped', 
+          title: 'Charging Port Torn From the Board', 
+          severity: 'high', 
+          description: 'Repeated stress on the charging cable can rip the DC jack or USB-C port off its solder pads entirely. We reattach and reinforce the connection via micro-soldering.' 
+        },
+        { 
+          id: 'bios-corruption-board', 
+          title: 'Corrupted BIOS / Failed Firmware Update', 
+          severity: 'critical', 
+          description: 'A power interruption mid-update or a bad flash can leave a board unable to POST at all. Where a CMOS reset doesn\'t recover it, we reflash the BIOS chip directly with an external programmer.' 
+        },
+        { 
+          id: 'intermittent-no-power', 
+          title: 'Intermittently Powers On, Then Stops', 
+          severity: 'medium', 
+          description: 'A board that sometimes boots and sometimes doesn\'t often has a marginal, partially-failed component or a cracked solder joint under thermal stress — harder to catch than a clean dead-short, but traceable under load testing.' 
+        }
+      ], 
+
+      process: [
+        { step: 1, title: 'Free Pickup', description: 'We collect the device from your home or office anywhere in Kuwait.' },
+        { step: 2, title: 'Multimeter & Thermal Imaging Diagnostic', description: 'We trace the fault to the exact failed component rather than assuming the whole board needs replacing.' },
+        { step: 3, title: 'Confirm the Fault & Quote', description: 'You receive a written explanation of what\'s actually wrong and an itemized quote before any work starts.' },
+        { step: 4, title: 'Micro-Soldering & BGA Rework in an ESD-Safe Lab', description: 'The failed component is replaced, or the board is ultrasonically cleaned for liquid damage, on grounded, static-controlled workstations.' },
+        { step: 5, title: 'Full-Load Stress Testing', description: 'The board is stress-tested under sustained load to confirm the repair holds before reassembly.' },
+        { step: 6, title: 'Return with 30-Day Warranty', description: 'Your device is delivered back with the original board repaired, not swapped.' }
+      ],
+
+      performanceOutcomes: {
+        disclaimer: 'The outcomes below describe typical results for this repair category, not a guarantee for any specific board — every repair is quoted after its own diagnostic.',
+        items: [
+          { metric: 'Board Recovery Rate', outcome: 'The majority of boards referred to us as "needs full replacement" are repairable at component level once the fault is traced to its actual source.' },
+          { metric: 'Cost vs. Full Replacement', outcome: 'Component-level motherboard repair typically costs a fraction of a full board replacement quote — often up to 80% less.' },
+          { metric: 'Data Preservation', outcome: 'Because the original board is repaired rather than swapped, anything soldered to it — including storage on many modern ultrabooks and MacBooks — remains untouched.' },
+          { metric: 'Liquid Damage Cases', outcome: 'Boards brought in promptly after a spill, without being powered back on, have meaningfully better recovery outcomes than those tested repeatedly first.' }
+        ]
+      },
+
+      repairExamples: {
+        disclaimer: 'These are representative repair scenarios illustrating common fault categories we service, not records of a specific named customer.',
+        items: [
+          {
+            id: 'dell-mosfet-short',
+            title: 'Dell Laptop: Completely Dead, Quoted a Full Board Replacement',
+            symptoms: 'No power lights, no fan spin, no response to the power button — a retail shop quoted a full motherboard replacement.',
+            diagnosis: 'Multimeter testing traced a dead short to a single input MOSFET on the main power rail.',
+            repair: 'The shorted MOSFET was replaced via micro-soldering.',
+            outcome: 'The laptop powered on and passed full-load stress testing, at a fraction of the quoted board-replacement cost.'
+          },
+          {
+            id: 'hp-liquid-board',
+            title: 'HP Laptop: Coffee Spill, Powered Off Immediately',
+            symptoms: 'Coffee was spilled on the keyboard; the laptop was powered off right away and brought in the same day.',
+            diagnosis: 'Ultrasonic cleaning revealed light corrosion with no shorted components, since power was cut before a short could develop.',
+            repair: 'Full ultrasonic cleaning of the board; no component replacement was required.',
+            outcome: 'The laptop returned to full function with no data loss, illustrating why an immediate power-off matters more than any repair technique afterward.'
+          },
+          {
+            id: 'capacitor-instability',
+            title: 'Windows Laptop: Random Shutdowns During Normal Use',
+            symptoms: 'The laptop would shut off unpredictably, sometimes minutes after boot, sometimes hours in, with no pattern tied to any specific app.',
+            diagnosis: 'Load testing identified a degraded capacitor on the power delivery circuit no longer holding a stable charge under minor voltage fluctuation.',
+            repair: 'The failed capacitor was replaced.',
+            outcome: 'The laptop ran stable through extended use testing with no further shutdowns.'
+          }
+        ]
+      },
+
+      inspectionChecklist: [
+        'Power rail voltage tracing',
+        'Input MOSFET and power IC test',
+        'Capacitor condition inspection',
+        'Liquid damage / corrosion inspection under magnification',
+        'BIOS chip and firmware verification',
+        'Charging port solder joint integrity',
+        'Boardview-guided component testing',
+        'Full-load stress test after repair'
+      ],
+
+      faqs: [
+        {
+          id: 'faq-motherboard-other-shop-unfixable',
+          title: 'Can you repair a motherboard another shop said needs full replacement?',
+          answer: 'Often, yes. Most repair counters only carry one solution for a dead board: full replacement. We trace the fault to the specific failed component first — "needs replacement" from a shop that doesn\'t do chip-level work usually means beyond their repair model, not beyond repair entirely.'
+        },
+        {
+          id: 'faq-motherboard-data-loss',
+          title: 'Will I lose my data during motherboard repair?',
+          answer: 'No — we repair your original board rather than swapping it, so anything soldered to it, including storage on many modern ultrabooks and MacBooks, is never disturbed.'
+        },
+        {
+          id: 'faq-motherboard-cost-vs-new',
+          title: 'How much cheaper is motherboard repair than a full replacement?',
+          answer: 'Component-level repair typically costs a fraction of a full board replacement — commonly up to 80% less, since you\'re paying for the one failed part and the labor to replace it, not an entire new board.'
+        },
+        {
+          id: 'faq-bga-rework-explain',
+          title: 'What is BGA rework, and why does it matter?',
+          answer: 'BGA (ball-grid array) rework is the precision removal and reattachment of chips — GPUs, chipsets, memory controllers — that are soldered directly to the board rather than socketed. It\'s what makes chip-level faults repairable instead of automatically requiring a full board swap.'
+        },
+        {
+          id: 'faq-liquid-damaged-motherboard',
+          title: 'Do you repair motherboards damaged by spilled liquid?',
+          answer: 'Yes. We fully disassemble the board and run it through an industrial ultrasonic cleaner to strip corrosion, then trace and replace only the components the short actually damaged.'
+        },
+        {
+          id: 'faq-motherboard-turnaround',
+          title: 'How long does motherboard repair take?',
+          answer: 'Most component-level repairs complete in 24-48 hours, including full-load stress testing before the device is returned to you.'
+        },
+        {
+          id: 'faq-macbook-and-windows-boards',
+          title: 'Do you repair both MacBook logic boards and Windows motherboards?',
+          answer: 'Yes — MacBook logic boards (Intel and Apple Silicon) and Windows laptop or desktop motherboards across all major brands.'
+        },
+        {
+          id: 'faq-motherboard-not-repairable',
+          title: 'What happens if my motherboard genuinely can\'t be repaired?',
+          answer: 'Under our No Fix, No Fee policy, if the board is catastrophically damaged and uneconomical to repair, we return it to you and you pay nothing for the diagnostic time.'
+        },
+        {
+          id: 'faq-random-shutdown-motherboard',
+          title: 'My laptop shuts down randomly but still turns back on — is that a motherboard issue?',
+          answer: 'It can be — unpredictable shutdowns unrelated to any specific task often point to a degrading power rail or capacitor rather than a software fault. We confirm this with load testing before quoting a repair.'
+        },
+        {
+          id: 'faq-motherboard-warranty',
+          title: 'Do you offer a warranty on motherboard repairs?',
+          answer: 'Yes, 30 days covering all parts and labor on the repair performed.'
+        },
+        {
+          id: 'faq-bios-corruption-motherboard',
+          title: 'Can you fix a motherboard that won\'t POST after a failed BIOS update?',
+          answer: 'Where a simple CMOS reset doesn\'t recover it, we reflash the BIOS chip directly using an external programmer, which resolves the large majority of failed-update and corruption cases without replacing the board.'
+        }
+      ],
+
+      warranty: { duration: '30 Days', coverage: 'All parts and labor.', noFixNoFee: true }, 
+      seo: { 
+        title: 'Motherboard Repair Kuwait | Chip-Level MOSFET & BGA Rework | KCROC', 
+        description: 'Chip-level motherboard repair in Kuwait. Power rail tracing, MOSFET replacement, BGA rework, and liquid damage recovery — up to 80% cheaper than a full board replacement. Free pick & drop.', 
+        canonicalUrl: 'https://www.computerrepairkuwait.com/motherboard-repair-kuwait', 
+        ogType: 'article', 
+        schemaTypes: ['Service', 'FAQPage'] 
+      },
+      navigationPriority: 70, 
+      isFeatured: true, 
+      popular: true
     } as ServiceEntity,
     
     'srv-screen': { 
