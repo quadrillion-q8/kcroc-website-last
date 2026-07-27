@@ -6,7 +6,7 @@ import {
   BrandEntity, ProblemEntity, CaseStudyEntity
 } from '../types/knowledgeGraph';
 
-const rawGraphData: RawGraphData = {
+export const rawGraphData: RawGraphData = {
   metadata: {
     version: '3.3.0',
     lastUpdated: '2026-07-16T00:00:00+03:00',
