@@ -109,22 +109,494 @@ const rawGraphData: RawGraphData = {
        SERVICES
     ═══════════════════════════════════════════════════════════════ */
     'srv-macbook': { 
-      id: 'srv-macbook', slug: 'macbook-repair-kuwait', entityType: 'Service', isActive: true, 
-      title: 'MacBook Repair Kuwait', iconKey: 'apple', shortDescription: 'Liquid spills, dead logic boards, USB-C failures. Chip-level Apple hardware restoration.', description: 'Our MacBook repair service goes beyond what Apple Authorized Centers offer. Instead of replacing your entire logic board — which deletes all your data and costs hundreds of KWD — we isolate the exact failed chip using thermal imaging and micro-soldering.', idealCustomer: 'Creative professionals, developers, and MacBook owners who need chip-level logic board recovery to avoid Apple Authorized Centers\' expensive board-swap and data-loss policies.', repairLevel: 'chip-level', estimatedTurnaround: '24-48 Hours', pricing: { startingFrom: 25, currency: 'KWD', quoteRequired: true, displayLabel: 'From 25 KWD — free diagnostic first' }, coreFeatures: ['Logic Board Micro-Soldering', 'USB-C Power IC Replacement', 'Liquid Damage Ultrasonic Cleaning', 'MacBook Screen & Battery Replacement', 'Data Preserved', 'Free Pick & Drop', '30-Day Warranty'], brands: ['MacBook Air', 'MacBook Pro 13"', 'MacBook Pro 14"', 'MacBook Pro 16"'], commonIssues: [{ id: 'no-power', title: 'No power / dead device', severity: 'high', description: 'USB-C power negotiation failure or PPBUS short circuit.' }], warranty: { duration: '30 Days', coverage: 'All parts and labor.', noFixNoFee: true }, 
-      seo: { title: 'MacBook Repair Kuwait | Logic Board Experts | No Fix No Fee | KCROC', description: 'Expert Apple MacBook repair in Kuwait. Logic board micro-soldering, USB-C power repair, liquid damage recovery. Free pick & drop.', canonicalUrl: 'https://www.computerrepairkuwait.com/macbook-repair-kuwait', ogType: 'article', schemaTypes: ['Service', 'FAQPage'] },
-      navigationPriority: 100, isFeatured: true, popular: true 
+      id: 'srv-macbook', 
+      slug: 'macbook-repair-kuwait', 
+      entityType: 'Service', 
+      isActive: true, 
+      title: 'MacBook Repair Kuwait', 
+      iconKey: 'apple', 
+      shortDescription: 'Chip-level logic board repair, USB-C power IC replacement, and liquid damage recovery — without Apple\'s full board-swap and data-loss policy.',
+      description: 'Your MacBook won\'t turn on, a spilled drink has just hit the keyboard, or neither Thunderbolt port will charge it anymore — and an Apple Authorized Service Provider has quoted a full logic board replacement that costs hundreds of KWD and, on most Apple Silicon models, means starting over with zero access to your original files. That last part isn\'t a scare tactic — it\'s how the hardware works: on M1/M2/M3 MacBooks, storage is soldered directly to the board and encrypted against that specific board\'s Secure Enclave, so a swapped board is a genuinely different machine as far as your data is concerned. We take the other path. Using thermal imaging and a multimeter, we trace the fault to the exact failed component — a shorted MOSFET, a blown power IC, a corroded trace — and repair that one point via micro-soldering, on your original board. Your SSD, your Secure Enclave, and your data stay exactly where they were.', 
+      idealCustomer: 'Creative professionals, developers, students, and business professionals who\'ve been quoted an expensive board-swap by Apple or a reseller and need the original logic board — and the data on it — recovered rather than replaced.',
+      deviceTypes: [
+        'MacBook Air (M1, M2, M3)',
+        'MacBook Pro 13" (Intel & M-series)',
+        'MacBook Pro 14" (M1 Pro/Max, M2 Pro/Max, M3 Pro/Max)',
+        'MacBook Pro 16" (Intel & M-series)',
+        'Intel MacBooks (2015 and later)'
+      ],
+      repairLevel: 'chip-level', 
+      estimatedTurnaround: '24-48 Hours', 
+      pricing: { startingFrom: 25, currency: 'KWD', quoteRequired: true, displayLabel: 'From 25 KWD — free diagnostic first' }, 
+      coreFeatures: [
+        'Logic Board Micro-Soldering',
+        'USB-C Power IC Replacement',
+        'Liquid Damage Ultrasonic Cleaning',
+        'Data-Safe Board-Level Repair (Apple Silicon & Intel)',
+        'MacBook Screen Replacement',
+        'MacBook Battery Replacement',
+        'Keyboard Replacement (Butterfly & Magic Keyboard)',
+        'Trackpad & Taptic Engine Repair',
+        'Speaker & Audio IC Repair',
+        'WiFi / Bluetooth Module Replacement',
+        'Free Pick & Drop',
+        '30-Day Warranty'
+      ], 
+      brands: ['MacBook Air', 'MacBook Pro 13"', 'MacBook Pro 14"', 'MacBook Pro 16"'], 
+
+      whyChooseUs: [
+        { title: 'Chip-Level Logic Board Repair', description: 'We trace the fault to the specific failed component — a MOSFET, a power IC, a corroded trace — and repair it directly, instead of defaulting to a full board swap.' },
+        { title: 'Data Preserved By Design', description: 'Because we repair your original board rather than replacing it, your SSD and Secure Enclave never change — a real distinction on Apple Silicon models, where a swapped board means the storage encryption no longer matches.' },
+        { title: 'USB-C Power IC Specialists', description: 'Charging and port failures are among the most common MacBook faults we see, and are frequently a single failed IC rather than a reason to replace the board.' },
+        { title: 'Liquid Damage Ultrasonic Cleaning', description: 'The board is fully stripped and run through an industrial ultrasonic cleaner to remove corrosion at a microscopic level before we assess what, if anything, needs replacing.' },
+        { title: 'Free Diagnostic Before Any Quote', description: 'Thermal imaging and multimeter tracing happen before you\'re quoted anything — you know the actual fault, not a guess based on symptoms alone.' },
+        { title: 'ESD-Safe Laboratory', description: 'All micro-soldering and board work is performed on grounded, static-controlled workstations in our Hawalli lab.' },
+        { title: 'Free Pickup & Delivery, Kuwait-Wide', description: 'Collected from and returned to your home or office anywhere in Kuwait, at no extra cost.' },
+        { title: 'No Fix, No Fee', description: 'If we can\'t repair it after diagnosis, you pay nothing — not even for the diagnostic.' }
+      ],
+
+      commonIssues: [
+        { 
+          id: 'no-power', 
+          title: 'No Power / Completely Dead Device', 
+          severity: 'critical', 
+          description: 'No charging light, no fan spin, no response to the power button. Usually a shorted input MOSFET or a blown main power rail (PPBUS_G3H and similar) rather than a dead logic board outright — we trace it with a multimeter before assuming the worst.' 
+        },
+        { 
+          id: 'liquid-damage', 
+          title: 'Liquid Spill / Water Damage', 
+          severity: 'critical', 
+          description: 'Coffee, water, or juice spilled on the keyboard creates conductive bridges across the board and can short components within hours as sugars and acids corrode copper traces. Power off immediately and don\'t try to turn it on to "check" it — that\'s what actually completes the short in most cases we see.' 
+        },
+        { 
+          id: 'usb-c-not-charging', 
+          title: 'USB-C Port Not Charging or Not Recognized', 
+          severity: 'high', 
+          description: 'Neither Thunderbolt port charges the machine or recognizes accessories. Most commonly a failed power negotiation IC on the board — the physical port itself is rarely the actual fault, which is why replacing just the port connector often doesn\'t fix it.' 
+        },
+        { 
+          id: 'screen-flicker', 
+          title: 'Screen Flickering or Backlight Failure', 
+          severity: 'medium', 
+          description: 'Can be a damaged display cable (common near the hinge on frequently opened/closed lids), a failing backlight driver, or — less often — a GPU-related fault on Intel models. We isolate which before quoting a screen replacement.' 
+        },
+        { 
+          id: 'keyboard-not-responding', 
+          title: 'Keyboard Keys Not Responding or Sticking', 
+          severity: 'medium', 
+          description: 'On 2016-2019 butterfly-mechanism keyboards, dust ingress under individual keys is a well-known failure point. On Magic Keyboard models (2020+), it\'s more often a ribbon cable or controller issue. We diagnose which mechanism is involved before replacing anything.' 
+        },
+        { 
+          id: 'trackpad-unresponsive', 
+          title: 'Trackpad Unresponsive or Not Clicking', 
+          severity: 'medium', 
+          description: 'Force Touch trackpads use a Taptic Engine to simulate a click rather than a physical switch — when that fails, the trackpad can still move the cursor but stop registering clicks entirely, which is a Taptic Engine fault, not a full trackpad replacement in most cases.' 
+        },
+        { 
+          id: 'stuck-apple-logo', 
+          title: 'Stuck on Apple Logo / Won\'t Boot Past Startup', 
+          severity: 'high', 
+          description: 'Can range from a corrupted macOS installation (software-level, no hardware repair needed) to a failing SSD controller or RAM fault on the board. We check software recovery options first before assuming a hardware repair is required.' 
+        },
+        { 
+          id: 'random-restarts', 
+          title: 'Random Restarts / Kernel Panics', 
+          severity: 'high', 
+          description: 'Intermittent, unpredictable restarts under normal use point toward a power delivery instability or a marginal RAM/storage connection rather than a software bug, especially if they happen regardless of which apps are running.' 
+        },
+        { 
+          id: 'no-sound', 
+          title: 'No Sound or Distorted Audio', 
+          severity: 'low', 
+          description: 'Usually a failed audio IC or a damaged speaker driver rather than a software setting — worth a diagnostic if a system reset hasn\'t resolved it.' 
+        },
+        { 
+          id: 'wifi-bluetooth-fail', 
+          title: 'WiFi or Bluetooth Not Working', 
+          severity: 'low', 
+          description: 'Can be a wireless card fault, a damaged antenna connection (common after screen or top-case work by other shops), or a driver-level issue on older macOS installs.' 
+        },
+        { 
+          id: 'macbook-battery-swelling', 
+          title: 'Swollen Battery Lifting the Trackpad', 
+          severity: 'critical', 
+          description: 'A visibly raised or uneven trackpad is frequently a swollen battery underneath it — a genuine safety issue, not cosmetic. Stop using the device and see our dedicated battery replacement service for safe removal.' 
+        },
+        { 
+          id: 'overheating-fan-noise', 
+          title: 'Overheating or Constant Fan Noise', 
+          severity: 'medium', 
+          description: 'More common on Intel MacBook Pro models under sustained loads (video export, compiling) than on Apple Silicon, but dust-clogged fans and degraded thermal paste affect both — we check airflow and thermal material condition as part of every diagnostic.' 
+        },
+        { 
+          id: 'dead-macbook-data-recovery', 
+          title: 'Dead MacBook With Important Data Still On It', 
+          severity: 'critical', 
+          description: 'Because storage is soldered and encrypted to the board on most modern MacBooks, a completely dead machine with unsaved data is precisely the scenario where board-swap (Apple\'s standard fix) permanently loses access to your files, while board-level component repair is often the only path that keeps them recoverable.' 
+        }
+      ], 
+
+      process: [
+        { step: 1, title: 'Free Pickup', description: 'We collect your MacBook from your home or office anywhere in Kuwait.' },
+        { step: 2, title: 'Thermal Imaging & Multimeter Diagnostic', description: 'We trace the fault to the exact component — a shorted MOSFET, a blown power IC, a corroded trace — rather than assuming the whole board needs replacing.' },
+        { step: 3, title: 'Confirm the Fault & Quote', description: 'You get a written explanation of what\'s actually wrong and an itemized quote before any work starts.' },
+        { step: 4, title: 'Micro-Soldering Repair in an ESD-Safe Lab', description: 'The failed component is replaced or the board is ultrasonically cleaned for liquid damage, on grounded, static-controlled workstations.' },
+        { step: 5, title: 'Full-Load Stress Testing', description: 'The board is stress-tested under sustained load to confirm the repair holds before reassembly.' },
+        { step: 6, title: 'Return with 30-Day Warranty', description: 'Your MacBook is delivered back with your original SSD, Secure Enclave, and data untouched.' }
+      ],
+
+      performanceOutcomes: {
+        disclaimer: 'The outcomes below describe typical results for these repair categories, not a guarantee for any specific device — every repair is quoted after its own diagnostic.',
+        items: [
+          { metric: 'Board Recovery Rate', outcome: 'The majority of logic boards referred to us as "needs full replacement" are repairable at component level once the fault is traced to its actual source.' },
+          { metric: 'Data Preservation', outcome: 'Because the original board is repaired rather than swapped, the original SSD and Secure Enclave remain untouched in the large majority of repairs — data stays accessible without a separate recovery step.' },
+          { metric: 'Liquid Damage Cases', outcome: 'Boards brought in within 24-48 hours of a spill, without being powered on again after the incident, have meaningfully better recovery outcomes than those that were repeatedly tested first.' },
+          { metric: 'Cost vs. Board-Swap Quotes', outcome: 'Component-level repair typically costs a fraction of an out-of-warranty full logic board replacement quote.' }
+        ]
+      },
+
+      repairExamples: {
+        disclaimer: 'These are representative repair scenarios illustrating common fault categories we service, not records of a specific named customer.',
+        items: [
+          {
+            id: 'usb-c-power-ic',
+            title: 'MacBook Pro: Neither Thunderbolt Port Would Charge',
+            symptoms: 'The laptop wouldn\'t charge from either USB-C port, tested across three different chargers and cables.',
+            diagnosis: 'Multimeter testing under load isolated the fault to the board\'s power negotiation IC, not the physical ports or the chargers.',
+            repair: 'The failed power IC was replaced via micro-soldering.',
+            outcome: 'Both ports charged normally and were verified across multiple chargers before return.'
+          },
+          {
+            id: 'fast-response-liquid',
+            title: 'MacBook Air: Spill Recovered With No Data Loss',
+            symptoms: 'Liquid was spilled on the keyboard; the device was powered off immediately and brought in the same day without being tested again.',
+            diagnosis: 'Because power was cut immediately and the device wasn\'t powered back on, ultrasonic cleaning found minimal corrosion and no shorted components.',
+            repair: 'Full ultrasonic cleaning of the board; no component replacement was needed.',
+            outcome: 'The MacBook returned to full function with no data loss and no chip-level repair required — illustrating why immediate power-off matters more than any repair technique afterward.'
+          },
+          {
+            id: 'apple-said-unfixable',
+            title: 'MacBook Pro: Data Recovered From a Board Apple Called Unfixable',
+            symptoms: 'The MacBook was completely dead with no display; Apple quoted a full logic board replacement with total data loss, since the Apple Silicon storage encryption is tied to the original board\'s Secure Enclave.',
+            diagnosis: 'Thermal imaging under a safe test voltage located a single shorted component on the main power rail.',
+            repair: 'The shorted component was replaced via micro-soldering rather than swapping the board.',
+            outcome: 'The original SSD and Secure Enclave were never touched — all data remained accessible once the board powered on again.'
+          }
+        ]
+      },
+
+      inspectionChecklist: [
+        'Power rail voltage tracing',
+        'USB-C power IC diagnostics',
+        'Battery health & charging circuit test',
+        'Liquid damage / corrosion inspection under magnification',
+        'Display & backlight circuit test',
+        'Keyboard & trackpad function test',
+        'Speaker & microphone test',
+        'WiFi / Bluetooth module test',
+        'Thermal imaging under sustained load'
+      ],
+
+      faqs: [
+        {
+          id: 'faq-apple-said-unfixable',
+          title: 'Can you repair a MacBook Apple said needs a full logic board replacement?',
+          answer: 'Often, yes. Apple Authorized Service Providers are generally set up to replace the whole board rather than repair the individual failed component — "needs a new board" from Apple usually means beyond their repair model, not beyond repair entirely. We diagnose the specific fault before agreeing either way.'
+        },
+        {
+          id: 'faq-data-loss-board-repair',
+          title: 'Will I lose my data if my MacBook needs board-level repair?',
+          answer: 'Not with component-level repair — we work on your original board, so your SSD and (on Apple Silicon) Secure Enclave never change. Data loss risk comes specifically from board-swap, where the new board\'s encryption no longer matches your original storage.'
+        },
+        {
+          id: 'faq-apple-silicon-harder-repair',
+          title: 'Is it true that Apple Silicon (M1/M2/M3) MacBooks are harder to repair than older Intel models?',
+          answer: 'In some ways, yes — storage and memory are soldered directly to the board rather than removable, and storage encryption is tied to that specific board\'s Secure Enclave. That actually makes board-level component repair more important on Apple Silicon, not less, since board-swap is a bigger data-loss event than it was on older Intel models with removable SSDs.'
+        },
+        {
+          id: 'faq-intel-macbooks',
+          title: 'Do you repair Intel MacBooks as well as Apple Silicon models?',
+          answer: 'Yes — Intel MacBooks from 2015 onward alongside M1, M2, and M3 generation Apple Silicon models.'
+        },
+        {
+          id: 'faq-liquid-spill-immediate-steps',
+          title: 'What should I do immediately after spilling liquid on my MacBook?',
+          answer: 'Power it off immediately by holding the power button, don\'t plug it into a charger, and don\'t try to turn it on to "check" if it still works — that\'s what completes the electrical short in most cases we see. Bring it in as soon as possible; faster response meaningfully improves the outcome.'
+        },
+        {
+          id: 'faq-usb-c-without-board-swap',
+          title: 'Can a MacBook with USB-C charging problems be fixed without a full board replacement?',
+          answer: 'Usually. Charging failures are most often a single failed power IC rather than a reason to replace the entire board, and we test for that specifically before quoting anything more extensive.'
+        },
+        {
+          id: 'faq-macbook-repair-cost-vs-apple',
+          title: 'How much does MacBook logic board repair cost compared to Apple?',
+          answer: 'Diagnostics are free, and component-level repairs start from 25 KWD, typically a fraction of an out-of-warranty full board-swap quote from Apple — the exact price depends on which component failed.'
+        },
+        {
+          id: 'faq-genuine-parts-macbook',
+          title: 'Do you use genuine Apple parts?',
+          answer: 'For screens and batteries we use OEM and high-grade compatible options and explain the difference before you choose. For chip-level board repair, we source matched-spec components for the specific failed part rather than full genuine Apple sub-assemblies, which is what makes component-level repair possible at all.'
+        },
+        {
+          id: 'faq-keyboard-without-top-case',
+          title: 'Can you replace a MacBook keyboard without replacing the whole top case?',
+          answer: 'It depends on the model and mechanism — some generations require top-case-level replacement due to how the keyboard is integrated, while others allow more targeted repair. We confirm which applies to your specific model before quoting.'
+        },
+        {
+          id: 'faq-macbook-thermal-after-repair',
+          title: 'Will my MacBook run hot after repair?',
+          answer: 'It shouldn\'t — thermal paste condition and fan/vent cleanliness are checked as part of every diagnostic, and we address them if they\'re contributing to heat issues, not just the specific fault you came in for.'
+        },
+        {
+          id: 'faq-macbook-warranty',
+          title: 'Do you offer a warranty on logic board repairs?',
+          answer: 'Yes, 30 days covering all parts and labor on the repair performed.'
+        },
+        {
+          id: 'faq-macbook-turn-around-time',
+          title: 'How long does MacBook repair take?',
+          answer: 'Most component-level repairs complete in 24-48 hours, including full-load stress testing before the device is returned to you.'
+        }
+      ],
+
+      warranty: { duration: '30 Days', coverage: 'All parts and labor.', noFixNoFee: true }, 
+      seo: { 
+        title: 'MacBook Repair Kuwait | Logic Board Experts | No Fix No Fee | KCROC', 
+        description: 'Chip-level MacBook logic board repair in Kuwait. USB-C power IC replacement, liquid damage recovery, and data-safe board repair for Intel & Apple Silicon models. Free pick & drop.', 
+        canonicalUrl: 'https://www.computerrepairkuwait.com/macbook-repair-kuwait', 
+        ogType: 'article', 
+        schemaTypes: ['Service', 'FAQPage'] 
+      },
+      navigationPriority: 100, 
+      isFeatured: true, 
+      popular: true 
     } as ServiceEntity,
     
+    // 🚀 EXPANDED: World-class Windows Laptop Repair Entity
     'srv-laptop': { 
-      id: 'srv-laptop', slug: 'laptop-repair-kuwait', entityType: 'Service', isActive: true, 
-      title: 'Laptop Repair Kuwait', iconKey: 'laptop', shortDescription: 'Screen, battery, keyboard, charging port, and motherboard repair for all Windows brands.', description: 'Kuwait\'s climate causes specific hardware failure patterns in Windows laptops. We diagnose and repair the exact fault component rather than replacing the entire unit.', idealCustomer: 'Professionals, students, and everyday users needing rapid, reliable hardware restoration for Windows laptops without the risk of losing their personal files.', repairLevel: 'advanced', estimatedTurnaround: 'Same Day / 24 Hours', pricing: { startingFrom: 15, currency: 'KWD', quoteRequired: true, displayLabel: 'From 15 KWD' }, coreFeatures: ['Screen Replacement', 'Battery Replacement', 'Keyboard Repair', 'Charging Port', 'Thermal Paste', 'Free Pick & Drop'], brands: ['Dell', 'HP', 'Lenovo', 'ASUS', 'Acer', 'MSI'], commonIssues: [{ id: 'screen-crack', title: 'Cracked screen', severity: 'high', description: 'Physical damage.' }], warranty: { duration: '30 Days', coverage: 'All parts and labor.', noFixNoFee: true }, 
-      seo: { title: 'Laptop Repair Kuwait | All Brands | Free Pick & Drop | KCROC', description: 'Professional Windows laptop repair in Kuwait. Screen, battery, keyboard, charging port, and motherboard repairs. Free pick & drop.', canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-repair-kuwait', ogType: 'article', schemaTypes: ['Service'] },
-      navigationPriority: 90, isFeatured: true, popular: true
+      id: 'srv-laptop', 
+      slug: 'laptop-repair-kuwait', 
+      entityType: 'Service', 
+      isActive: true, 
+      title: 'Laptop Repair Kuwait', 
+      iconKey: 'laptop', 
+      shortDescription: 'Screen, hinge, battery, charging port, and motherboard repair for all major Windows laptop brands.', 
+      description: 'Everyday Windows laptops—from budget student IdeaPads to high-end XPS workstations—face a tough life. Between daily transport, dropped bags, and Kuwait\'s extreme summer heat combined with fine desert dust, mechanical and thermal failures are inevitable. We see it every day: hinges separating from plastic chassis, DC charging jacks pushed inward, cooling fans grinding or seizing, and systems slowing to a crawl. Instead of telling you to buy a new laptop, we fix the actual broken part. We repair snapped hinges with structural resin, micro-solder broken charging ports directly to the motherboard, ultrasonic-clean dust-choked cooling systems, and revive slow systems with SSD and RAM upgrades. We stock OEM and high-grade compatible parts for Dell, HP, Lenovo, ASUS, Acer, and MSI.', 
+      idealCustomer: 'Students, business professionals, remote workers, and everyday users who rely on their Windows laptops daily and need fast, reliable hardware restoration without losing their personal files or paying for a completely new machine.', 
+      deviceTypes: [
+        'Business Ultrabooks (XPS, ThinkPad, EliteBook)',
+        'Everyday Laptops (Inspiron, Pavilion, IdeaPad)',
+        'Creator Laptops (ZenBook, Envy)',
+        '2-in-1 / Convertibles (Yoga, Spectre)',
+        'Microsoft Surface Devices'
+      ],
+      repairLevel: 'advanced', 
+      estimatedTurnaround: 'Same Day / 24 Hours', 
+      pricing: { startingFrom: 15, currency: 'KWD', quoteRequired: true, displayLabel: 'From 15 KWD' }, 
+      coreFeatures: [
+        'Hinge & Chassis Reconstruction',
+        'DC Jack / Charging Port Micro-Soldering',
+        'Screen Replacement (LCD/IPS/OLED)',
+        'Thermal Paste & Fan Servicing',
+        'SSD & RAM Upgrades',
+        'Battery & Keyboard Replacement',
+        'Liquid Damage Recovery',
+        'Data Recovery & Cloning',
+        'Free Pick & Drop',
+        '30-Day Warranty'
+      ], 
+      brands: ['Dell', 'HP', 'Lenovo', 'ASUS', 'Acer', 'MSI', 'Microsoft Surface'], 
+
+      whyChooseUs: [
+        { title: 'Repair Over Replacement', description: 'We reconstruct broken hinges and micro-solder broken charging ports instead of replacing the entire screen assembly or motherboard, saving you up to 70%.' },
+        { title: 'Kuwait Climate Specialists', description: 'We don\'t just blow compressed air; we fully strip cooling assemblies, clean out fine desert dust, and apply phase-change thermal materials suited for 45°C+ ambient temperatures.' },
+        { title: 'Data Privacy Guaranteed', description: 'We work on the hardware, not your files. You can even remove your SSD before handing us the laptop for board-level repairs.' },
+        { title: 'Broad Brand Expertise', description: 'Dell, HP, Lenovo, ASUS, Acer—we know the specific structural weaknesses (like Dell Inspiron hinges or HP Pavilion power ICs) of each brand.' },
+        { title: 'Free Pickup & Delivery', description: 'We collect from Hawalli, Salmiya, Kuwait City, Farwaniya, Jahra, and Ahmadi at no extra cost.' },
+        { title: 'No Fix, No Fee', description: 'If your laptop is catastrophically damaged and uneconomical to repair, you pay absolutely nothing for the diagnostic.' }
+      ],
+
+      commonIssues: [
+        {
+          id: 'hinge-separation',
+          title: 'Hinge Separation & Chassis Cracking',
+          severity: 'high',
+          description: 'The screen hinge becomes stiff and snaps the plastic casing or bezel (very common on HP Envy and Dell Inspiron). We adjust tension and reconstruct the mounts using structural resin.'
+        },
+        {
+          id: 'broken-dc-jack',
+          title: 'Broken DC Charging Jack',
+          severity: 'high',
+          description: 'The charger pin is loose, bent, or pushed inside the laptop, meaning it only charges at a specific angle. We micro-solder a new DC jack directly to the board.'
+        },
+        {
+          id: 'cracked-screen',
+          title: 'Cracked or Flickering Screen',
+          severity: 'high',
+          description: 'Physical impact or display cable wear near the hinge causes lines, flickering, or a shattered display. We replace the LCD/IPS/OLED panel with an OEM-grade match.'
+        },
+        {
+          id: 'overheating-loud-fans',
+          title: 'Overheating & Loud Fans',
+          severity: 'medium',
+          description: 'Dust-clogged heatsinks cause thermal throttling and fan grinding. We perform deep ultrasonic cleaning, lubricate the fan bearings, and re-paste the CPU/GPU.'
+        },
+        {
+          id: 'running-slow',
+          title: 'Running Extremely Slow (100% Disk Usage)',
+          severity: 'medium',
+          description: 'Taking minutes to boot or freezing on basic tasks is usually a failing mechanical hard drive (HDD). An SSD upgrade and clean Windows install permanently revives aging laptops.'
+        },
+        {
+          id: 'liquid-spills-laptop',
+          title: 'Liquid Spills on Keyboard',
+          severity: 'critical',
+          description: 'Coffee or water on the keyboard. We fully strip the board and ultrasonic clean it to prevent corrosion before short circuits kill the motherboard.'
+        },
+        {
+          id: 'laptop-dead-no-power',
+          title: 'Dead / Won\'t Turn On',
+          severity: 'high',
+          description: 'No power lights, no fan spin. Usually a shorted input MOSFET or a blown fuse, which we trace with a multimeter and replace via micro-soldering.'
+        },
+        {
+          id: 'keyboard-failure',
+          title: 'Keyboard Keys Sticking or Not Working',
+          severity: 'medium',
+          description: 'Specific keys sticking from debris or failing from liquid exposure. We replace the entire keyboard assembly (top case or riveted layout depending on model).'
+        },
+        {
+          id: 'battery-drain-laptop',
+          title: 'Battery Draining Fast or Swelling',
+          severity: 'high',
+          description: 'Aging lithium cells cause short runtimes or dangerous physical chassis swelling. We safely remove swollen batteries and install certified replacements.'
+        },
+        {
+          id: 'wifi-dropping',
+          title: 'WiFi Dropping or Missing',
+          severity: 'low',
+          description: 'The WiFi card fails due to heat or driver conflicts (common with Realtek/MediaTek chips). We upgrade faulty cards to stable Intel Wi-Fi 6 modules.'
+        }
+      ],
+
+      process: [
+        { step: 1, title: 'Free Secure Pickup', description: 'We collect the laptop directly from your home or office anywhere in Kuwait.' },
+        { step: 2, title: 'Hardware & Thermal Diagnostic', description: 'We test the charging circuit, assess chassis damage, check storage health, and measure thermal throttling under load.' },
+        { step: 3, title: 'Quote & Approval', description: 'You receive a clear, itemized quote detailing the exact fix (e.g., "hinge repair + DC jack replacement") with zero hidden fees.' },
+        { step: 4, title: 'Precision Repair', description: 'We reconstruct the chassis, solder the ports, replace the screen, or upgrade the drive in our ESD-safe lab.' },
+        { step: 5, title: 'Burn-In Testing', description: 'The system is stress-tested to ensure hinges are smooth, temperatures are low, and power delivery is stable.' },
+        { step: 6, title: 'Delivery with Warranty', description: 'We return the laptop to you with a 30-day warranty. You only pay after verifying the repair is successful.' }
+      ],
+
+      performanceOutcomes: {
+        disclaimer: 'The figures below are representative outcomes based on typical before/after results for these common upgrades and repairs.',
+        items: [
+          { metric: 'Boot Times', outcome: 'Reduced from 2+ minutes on aging mechanical drives to under 15 seconds after an NVMe SSD upgrade.' },
+          { metric: 'Thermal Reduction', outcome: '15-25°C drop in CPU temperatures under load after our deep-clean and phase-change thermal re-paste service.' },
+          { metric: 'Chassis Integrity', outcome: 'Reconstructed hinges using structural resin are often mechanically stronger than the original factory plastic mounts.' },
+          { metric: 'Component Lifespan', outcome: 'Micro-soldering a new DC jack saves the remaining 95% of the motherboard, extending the laptop\'s life by years instead of creating e-waste.' }
+        ]
+      },
+
+      repairExamples: {
+        disclaimer: 'These are representative scenarios illustrating common fault categories for Windows laptops.',
+        items: [
+          {
+            id: 'hp-envy-hinge',
+            title: 'HP Envy: Hinge Snapped and Screen Bezel Popped Open',
+            symptoms: 'The screen was incredibly stiff to open, and eventually the lower left corner of the screen bezel popped open, exposing the internal display cables.',
+            diagnosis: 'The factory hinge nut was over-tightened, causing the metal hinge to rip the threaded brass inserts completely out of the plastic chassis.',
+            repair: 'We loosened the hinge tension to the correct spec and rebuilt the stripped brass inserts into the chassis using industrial structural resin.',
+            outcome: 'The laptop opened and closed smoothly with one hand, saving the customer from buying an expensive complete display assembly.'
+          },
+          {
+            id: 'dell-inspiron-dc-jack',
+            title: 'Dell Inspiron: Wouldn\'t Charge Unless Cable Was Held at an Angle',
+            symptoms: 'The laptop would only charge if the user applied upward pressure to the charging cable. Eventually, it stopped charging entirely.',
+            diagnosis: 'The internal DC charging jack had broken off its solder pads on the motherboard due to repeated physical stress.',
+            repair: 'We desoldered the broken port, cleaned the traces, and micro-soldered a brand-new, reinforced DC jack directly to the board.',
+            outcome: 'The laptop charged perfectly without needing a 150+ KWD motherboard replacement. Total repair cost: 25 KWD.'
+          },
+          {
+            id: 'lenovo-ideapad-slow',
+            title: 'Lenovo IdeaPad: Taking 5 Minutes to Boot Up',
+            symptoms: 'The laptop was unusable. Task Manager showed 100% Disk Usage constantly, and opening Chrome froze the system for a full minute.',
+            diagnosis: 'The 1TB mechanical hard drive was failing mechanically, and 4GB of RAM was insufficient for modern Windows 11.',
+            repair: 'We cloned the failing HDD byte-for-byte to a fast 1TB NVMe SSD and upgraded the RAM to 16GB.',
+            outcome: 'The laptop booted in 12 seconds. All the customer\'s original files, programs, and passwords were right where they left them, but the machine ran 10x faster.'
+          }
+        ]
+      },
+
+      inspectionChecklist: [
+        'Hinge tension and plastic mount integrity',
+        'DC jack stability and voltage intake',
+        'Battery health and swelling check',
+        'CPU/GPU temperatures under synthetic load',
+        'Storage drive health (SMART data)',
+        'RAM stability test',
+        'Keyboard and trackpad responsiveness',
+        'Display cable and backlight circuit integrity'
+      ],
+
+      faqs: [
+        {
+          id: 'faq-fix-broken-hinge',
+          title: 'Can you fix a broken hinge without replacing the whole screen?',
+          answer: 'Yes. Most shops will quote a full "display assembly replacement" when a hinge breaks. We actually reconstruct the broken plastic mounts inside the chassis using industrial resin and loosen the over-tightened hinge to prevent it from happening again, saving you a massive amount of money.'
+        },
+        {
+          id: 'faq-dc-jack-repair',
+          title: 'My laptop only works when plugged in at a specific angle. Can this be fixed?',
+          answer: 'Yes. This is a classic broken DC jack. Rather than replacing the motherboard, we micro-solder a new charging port directly to the board.'
+        },
+        {
+          id: 'faq-ssd-upgrade-data',
+          title: 'Will an SSD upgrade delete my files?',
+          answer: 'No. We perform a 1-to-1 byte clone of your existing hard drive to the new SSD. Your laptop will look exactly the same—same desktop, same files, same passwords—it will just run up to 10x faster.'
+        },
+        {
+          id: 'faq-screen-replacement-time',
+          title: 'How long does a screen replacement take?',
+          answer: 'Usually same-day if the panel is in stock. We carry standard 15.6" and 14" panels (FHD, IPS, OLED) for Dell, HP, Lenovo, Acer, and ASUS.'
+        },
+        {
+          id: 'faq-overheating-fan-replace',
+          title: 'My laptop is overheating and shutting down. Do I need a new fan?',
+          answer: 'Not always. Often it just needs a deep ultrasonic clean of the heatsink fins and fresh thermal paste on the CPU. If the fan bearing is actually grinding or seized, we will replace the fan assembly.'
+        },
+        {
+          id: 'faq-surface-repair',
+          title: 'Do you repair Microsoft Surface laptops?',
+          answer: 'Yes. Surface devices require specialized heat-separation tools to open without cracking the screen. We handle Surface Pro battery replacements, screen replacements, and Windows recovery.'
+        },
+        {
+          id: 'faq-ram-upgrade',
+          title: 'Can you upgrade the RAM in my laptop?',
+          answer: 'It depends on the model. Most business and gaming laptops have upgradeable SO-DIMM slots, but many modern ultrabooks (like Dell XPS or HP Spectre) have RAM soldered directly to the board. Contact us with your model number and we can check instantly.'
+        },
+        {
+          id: 'faq-no-fix-no-fee',
+          title: 'What happens if you can\'t fix my laptop?',
+          answer: 'Under our No Fix, No Fee policy, if the laptop is catastrophically damaged (like a severely burned motherboard) and uneconomical to repair, we return it to you and you pay absolutely nothing for the diagnostic time.'
+        }
+      ],
+
+      warranty: { duration: '30 Days', coverage: 'All parts and labor.', noFixNoFee: true }, 
+      seo: { 
+        title: 'Laptop Repair Kuwait | Screen, Hinge & Motherboard | KCROC', 
+        description: 'Expert Windows laptop repair in Kuwait. Dell, HP, Lenovo, ASUS & Acer. Broken hinges, DC jacks, screens, SSD upgrades, and thermal fixes. Free pick & drop.', 
+        canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-repair-kuwait', 
+        ogType: 'article', 
+        schemaTypes: ['Service', 'FAQPage'] 
+      },
+      navigationPriority: 90, 
+      isFeatured: true, 
+      popular: true
     } as ServiceEntity,
     
-    // 🚀 EXPANDED: World-class Gaming PC & GPU Repair Entity — emotional hook,
-    // broadened audience, trust section, measurable outcomes, representative
-    // repair-scenario summaries, expanded FAQ, and full inspection checklist.
+    // 🚀 EXPANDED: World-class Gaming PC & GPU Repair Entity
     'srv-gaming': { 
       id: 'srv-gaming', 
       slug: 'gaming-pc-repair-kuwait', 
