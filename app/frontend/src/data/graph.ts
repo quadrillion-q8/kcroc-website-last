@@ -98,6 +98,7 @@ export const rawGraphData: RawGraphData = {
     'page-gallery': { id: 'page-gallery', slug: 'gallery', entityType: 'WebPage', isActive: true, title: 'Gallery', description: 'Lab and repair gallery.', seo: { title: 'Repair Gallery | KCROC Hawalli Lab', description: 'View our ESD-safe repair lab in Hawalli and real examples of our component-level micro-soldering.', canonicalUrl: 'https://www.computerrepairkuwait.com/gallery', ogType: 'website', schemaTypes: ['CollectionPage'] } } as WebPageEntity,
     'page-pricing': { id: 'page-pricing', slug: 'pricing', entityType: 'WebPage', isActive: true, title: 'Pricing', description: 'Transparent repair pricing.', seo: { title: 'Computer Repair Pricing Kuwait | KCROC', description: 'Transparent pricing for laptop screen replacement, battery replacement, and logic board repairs in Kuwait.', canonicalUrl: 'https://www.computerrepairkuwait.com/pricing', ogType: 'website', schemaTypes: ['WebPage'] } } as WebPageEntity,
     
+    // NEW ENTITY: Resolves the missing canonical URL and meta tags on the /book route
     'page-booking': { id: 'page-booking', slug: 'book', entityType: 'WebPage', isActive: true, title: 'Book a Repair', description: 'Book free laptop and computer repair pickup anywhere in Kuwait. Same-day hardware assessment. 30-day warranty.', seo: { title: 'Book Laptop & Computer Repair Pickup in Kuwait | KCROC', description: 'Book free laptop and computer repair pickup anywhere in Kuwait. Same-day hardware assessment. 30-day warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/book', ogType: 'website', schemaTypes: ['WebPage'] } } as WebPageEntity,
     
     'page-privacy': { id: 'page-privacy', slug: 'privacy-security-kuwait', entityType: 'WebPage', isActive: true, title: 'Privacy & Security', description: 'Our data privacy guarantee.', seo: { title: 'Data Privacy & Security Guarantee | KCROC', description: 'Read about our strict hardware-only protocol that guarantees your personal data remains 100% private during repairs.', canonicalUrl: 'https://www.computerrepairkuwait.com/privacy-security-kuwait', ogType: 'website', schemaTypes: ['WebPage'] } } as WebPageEntity,
@@ -372,6 +373,7 @@ export const rawGraphData: RawGraphData = {
       popular: true 
     } as ServiceEntity,
     
+    // 🚀 EXPANDED: World-class Windows Laptop Repair Entity
     'srv-laptop': { 
       id: 'srv-laptop', 
       slug: 'laptop-repair-kuwait', 
@@ -594,6 +596,7 @@ export const rawGraphData: RawGraphData = {
       popular: true
     } as ServiceEntity,
     
+    // 🚀 EXPANDED: World-class Gaming PC & GPU Repair Entity
     'srv-gaming': { 
       id: 'srv-gaming', 
       slug: 'gaming-pc-repair-kuwait', 
@@ -1124,279 +1127,128 @@ export const rawGraphData: RawGraphData = {
       popular: true
     } as ServiceEntity,
     
-    'srv-screen': { 
-      id: 'srv-screen', slug: 'laptop-screen-repair-kuwait', entityType: 'Service', isActive: true, 
-      title: 'Screen Replacement Kuwait', iconKey: 'monitor', shortDescription: 'LCD, IPS, OLED, and Retina display panel replacements.', description: 'A cracked or flickering laptop screen doesn\'t mean a new laptop. We source and fit OEM and high-grade compatible panels.', idealCustomer: 'Anyone dealing with cracked, flickering, or dead LCD/OLED laptop screens needing a fast, OEM-quality panel replacement to get back online the same day.', repairLevel: 'basic', estimatedTurnaround: 'Same Day', pricing: { startingFrom: 20, currency: 'KWD', quoteRequired: false, displayLabel: 'From 20 KWD' }, coreFeatures: ['LCD/IPS/OLED Replacement', 'MacBook Retina', 'Display Cable Repair'], brands: ['Dell', 'HP', 'Lenovo', 'MacBook'], commonIssues: [{ id: 'cracked', title: 'Cracked screen', severity: 'high', description: 'Physical impact.' }], warranty: { duration: '30 Days', coverage: 'Screen panel and labor.', noFixNoFee: false }, 
-      seo: { title: 'Laptop Screen Replacement Kuwait | Same Day | KCROC', description: 'Professional laptop and MacBook screen replacement in Kuwait. LCD, IPS, OLED & Retina. Free pick & drop.', canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-screen-repair-kuwait', ogType: 'article', schemaTypes: ['Service'] },
-      navigationPriority: 60, isFeatured: false, popular: false
-    } as ServiceEntity,
-    
-    'srv-battery': { 
-      id: 'srv-battery', 
-      slug: 'battery-replacement-kuwait', 
-      entityType: 'Service', 
-      isActive: true, 
-      title: 'Laptop & MacBook Battery Replacement Kuwait', 
-      iconKey: 'battery', 
-      shortDescription: 'Battery health diagnostics, charging circuit testing, and OEM battery replacement — we confirm the battery is the actual fault before replacing it.',
-      description: 'A battery that drains in under an hour, a laptop that shuts down at "30% remaining," a charge percentage that jumps from 60% to 20% with no warning, or a trackpad that\'s started lifting on one side — these are five different symptoms, and not all of them mean the battery itself is the problem. A battery that reports 0% and won\'t charge at all is sometimes a dead cell, and sometimes a failed charging IC on the motherboard that would leave a brand-new battery just as unresponsive. That\'s why we test the charging circuit and power delivery path before we quote a replacement — we replace batteries only after confirming the battery, not the charging system, is the actual cause. In Kuwait, batteries also fail faster than the manufacturer\'s spec sheet assumes: lithium-ion cells degrade measurably faster at sustained temperatures above 40°C, and a laptop left in a parked car or by a sunlit window for part of the day pushes internal temperatures well past that.',
-      idealCustomer: 'University students, business professionals, remote workers, developers, designers, and gamers — anyone on a Windows laptop or MacBook noticing rapid battery drain, unexpected shutdowns, a battery that only holds charge while plugged in, or visible swelling.',
+    'srv-screen': {
+      id: 'srv-screen',
+      slug: 'laptop-screen-repair-kuwait',
+      entityType: 'Service',
+      isActive: true,
+      title: 'Screen Replacement Kuwait',
+      iconKey: 'monitor',
+      shortDescription: 'Same-day LCD, IPS, and OLED panel replacement for cracked, flickering, or dead laptop and MacBook screens.',
+      description: 'A cracked panel, a screen full of vertical lines, or a display that flickers whenever the lid moves doesn\'t mean the laptop is done — in almost every case it\'s a screen or cable fault, not a motherboard problem, and it\'s fixable the same day if the panel is in stock. We stock standard 14" and 15.6" FHD, IPS, and OLED panels for Dell, HP, Lenovo, ASUS, and Acer, plus Retina panels for MacBook Air and Pro. Kuwait\'s heat and dust also take a toll here specifically: display cables routed near the hinge flex thousands of times a year and wear through faster in high-temperature environments, which is why a "cracked screen" call often turns out to be a cable fault once we open the lid — a cheaper fix than a full panel.',
+      idealCustomer: 'Anyone with a cracked, flickering, lined, or dead laptop or MacBook screen who needs a fast, OEM-quality panel replacement without paying for a new machine.',
       deviceTypes: [
-        'Windows Laptops (all major brands)',
-        'MacBook Air & MacBook Pro (all generations)',
-        '2-in-1 / Convertible Laptops',
-        'Gaming Laptops (high-drain battery systems)'
+        'Windows Laptops (14" & 15.6" FHD/IPS)',
+        'MacBook Air & MacBook Pro (Retina)',
+        'Gaming Laptops (high-refresh panels)',
+        '2-in-1 / Convertible Touchscreens'
       ],
-      repairLevel: 'basic', 
-      estimatedTurnaround: 'Same Day', 
-      pricing: { startingFrom: 12, currency: 'KWD', quoteRequired: true, displayLabel: 'From 12 KWD — free diagnostic first' }, 
+      repairLevel: 'basic',
+      estimatedTurnaround: 'Same Day (if panel in stock)',
+      pricing: { startingFrom: 20, currency: 'KWD', quoteRequired: false, displayLabel: 'From 20 KWD' },
       coreFeatures: [
-        'Battery Health & Wear Analysis',
-        'Cycle Count Verification',
-        'Charging Circuit & Power Delivery Diagnostics',
-        'USB-C Power Verification',
-        'OEM Battery Replacement',
-        'Premium Compatible Battery Installation',
-        'MacBook, Dell, HP, Lenovo, ASUS, Acer & MSI Battery Replacement',
-        'Swollen Battery Safe Removal & Disposal',
-        'BIOS Battery Verification',
-        'Battery Calibration',
-        'Thermal Inspection Under Load',
-        'Post-Replacement Stress Testing',
-        'Free Pick & Drop'
-      ], 
-      brands: ['MacBook', 'Dell', 'HP', 'Lenovo', 'ASUS', 'Acer', 'MSI', 'Microsoft Surface'], 
-
+        'LCD / IPS / OLED Panel Replacement',
+        'MacBook Retina Display Replacement',
+        'Display Cable Repair & Replacement',
+        'Touchscreen Digitizer Replacement',
+        'Backlight & Backlight Fuse Repair',
+        'Free Pick & Drop',
+        '30-Day Warranty'
+      ],
+      brands: ['Dell', 'HP', 'Lenovo', 'ASUS', 'Acer', 'MacBook'],
+    
       whyChooseUs: [
-        { title: 'Charging Circuit Diagnosis First', description: 'Before replacing anything, we test whether the fault is actually the battery cell or the charging IC/power delivery circuit — replacing a battery doesn\'t fix a bad charging chip, and we\'d rather tell you that upfront than sell you a battery you don\'t need.' },
-        { title: 'Transparent Battery Grade Options', description: 'We offer OEM manufacturer cells and premium compatible alternatives, and explain the real difference — protection circuitry, cycle life, and reporting accuracy — before you choose. We don\'t install uncertified low-cost cells that lack proper protection ICs, regardless of price pressure.' },
-        { title: 'Battery Health Reporting', description: 'You receive an actual cycle count and health percentage reading before we quote, not a guess based on the laptop\'s age.' },
-        { title: 'Swollen Battery Safety Protocol', description: 'A swollen lithium-ion cell is a genuine safety issue, not a cosmetic one. Removal follows a controlled, ESD-safe procedure — never a bare workbench.' },
-        { title: 'Calibration & Verification, Not Just a Swap', description: 'Every replacement is followed by a calibration cycle, a full charge/discharge verification, and a thermal check under load — so you know the new battery is actually reporting and charging correctly before it leaves our lab.' },
-        { title: 'Free Pickup & Delivery, Kuwait-Wide', description: 'Same-day battery replacement collected from and returned to your home or office anywhere in Kuwait.' },
-        { title: 'No Fix, No Fee', description: 'If diagnosis shows the fault isn\'t the battery and we can\'t resolve it, you pay nothing for the diagnostic.' }
+        { title: 'Cable Fault Checked Before Panel Replacement', description: 'A cracked-looking display with lines or flicker is sometimes a worn display cable near the hinge, not the panel itself — we check this first so you\'re not paying for a new screen you don\'t need.' },
+        { title: 'OEM & High-Grade Compatible Panels In Stock', description: 'We stock standard 14" and 15.6" FHD/IPS panels for the most common brands, which is what makes same-day turnaround possible.' },
+        { title: 'MacBook Retina Specialists', description: 'Retina and True Tone displays require careful handling of the delicate flex cables and True Tone sensor — we work on these daily, not occasionally.' },
+        { title: 'Colour & Brightness Calibrated Before Return', description: 'Every replacement panel is checked for dead pixels, uniform backlighting, and colour accuracy before the laptop goes back to you.' },
+        { title: 'Free Pickup & Delivery, Kuwait-Wide', description: 'Collected from and returned to your home or office anywhere in Kuwait at no extra cost.' },
+        { title: 'No Fix, No Fee', description: 'If the fault turns out to be something we can\'t resolve, you pay nothing for the diagnostic.' }
       ],
-
+    
       commonIssues: [
-        { 
-          id: 'fast-drain', 
-          title: 'Battery Drains in Under an Hour', 
-          severity: 'medium', 
-          description: 'Usually straightforward capacity loss from normal lithium-ion aging, accelerated by Kuwait\'s heat. We measure actual remaining capacity against factory spec before recommending replacement — a battery reporting 90%+ health draining this fast points to a software/background-process issue instead, which we\'ll flag rather than replace a healthy battery.' 
-        },
-        { 
-          id: 'percentage-jump', 
-          title: 'Battery Percentage Jumps or Skips Unexpectedly', 
-          severity: 'medium', 
-          description: 'A reported charge that suddenly jumps from, say, 60% to 30% is typically the battery\'s internal fuel gauge losing sync with the cell\'s real voltage curve as it ages — common once health drops meaningfully below new-battery baseline. A full recalibration sometimes resolves it; if it recurs, the cell itself needs replacing.' 
-        },
-        { 
-          id: 'sudden-drop', 
-          title: 'Battery Drops From 40% to 5% Almost Instantly', 
-          severity: 'high', 
-          description: 'A near-instant drop under load points to a cell that can no longer sustain voltage once demand increases — the reported percentage was accurate at idle but the battery physically can\'t deliver power at that "remaining" level anymore. This is a genuine replacement case, not a calibration issue.' 
-        },
-        { 
-          id: 'sudden-shutdown', 
-          title: 'Laptop Shuts Down at 20-30% Battery', 
-          severity: 'high', 
-          description: 'Often a sign the battery\'s voltage curve no longer matches what the system expects at that reported percentage — usually resolved with replacement, but we confirm it isn\'t a charging IC fault first.' 
-        },
-        { 
-          id: 'refuses-to-charge', 
-          title: 'Battery Plugged In But Refuses to Charge', 
-          severity: 'high', 
-          description: 'Can be a dead cell, a failed charging IC, a damaged charging port, or — occasionally — an underpowered or non-compliant charger. We test each stage of the power delivery path separately rather than assuming it\'s the battery.' 
-        },
-        { 
-          id: 'only-works-plugged-in', 
-          title: 'Laptop Only Powers On While Plugged In', 
-          severity: 'high', 
-          description: 'The battery is either fully depleted beyond recovery, internally disconnected, or reporting a fault state the system won\'t run from. We confirm which before quoting, since a disconnected-connector fix is a very different repair from a full cell replacement.' 
-        },
-        { 
-          id: 'battery-not-detected', 
-          title: 'Battery Not Detected / 0% and Won\'t Charge At All', 
-          severity: 'high', 
-          description: 'Can be a fully dead cell, a disconnected battery connector, or a failed charging IC on the motherboard — we isolate which before replacing parts.' 
-        },
-        { 
-          id: 'swollen-battery', 
-          title: 'Swollen Battery / Lifting Trackpad, Keyboard, or Chassis', 
-          severity: 'critical', 
-          description: 'Lithium-ion cells swell from internal gas buildup as they degrade, and the resulting pressure can lift the trackpad, distort the keyboard deck, push against the display, or stress the motherboard directly above it. This is a genuine fire/chemical risk, not a cosmetic issue — never puncture or press on a swollen cell, and stop using the device until it\'s removed. We handle removal under controlled, ESD-safe conditions with proper containment, same-day where possible.' 
-        },
-        { 
-          id: 'overheat-charging', 
-          title: 'Laptop Overheats While Charging', 
-          severity: 'medium', 
-          description: 'Rising internal resistance in an aging cell generates more heat per watt delivered, which is often mistaken for a cooling-system fault when the battery itself is the source. We check both independently before recommending a fix.' 
-        },
-        { 
-          id: 'charging-pauses', 
-          title: 'Charging Pauses or Stops Randomly', 
-          severity: 'medium', 
-          description: 'Frequently a thermal-protection cutoff triggering intermittently, or a loose internal connector losing contact under vibration. Both are diagnosable without assuming a battery swap is needed.' 
-        },
-        {
-          id: 'macbook-battery-service-recommended',
-          title: '"Service Recommended" / "Replace Now" macOS Battery Warning',
-          severity: 'medium',
-          description: 'macOS\'s own battery health indicator flags degraded cells before they cause visible symptoms — we replace the internal battery without affecting the rest of the logic board.'
-        },
-        {
-          id: 'short-runtime-full-charge',
-          title: 'Short Runtime Even Right After a Full Charge',
-          severity: 'medium',
-          description: 'Direct evidence of capacity loss — the battery is genuinely holding less energy than its rated capacity, not a reporting error. We confirm the actual capacity reading against factory spec before quoting.'
-        },
-        {
-          id: 'slow-charging',
-          title: 'Charging Takes Much Longer Than It Used To',
-          severity: 'low',
-          description: 'Can be a degrading charging IC, a lower-wattage or non-original charger being used, or a battery whose internal resistance has increased with age — we test the charger and circuit separately from the cell.'
-        }
-      ], 
-
-      process: [
-        { step: 1, title: 'Free Pickup', description: 'We collect your laptop or MacBook from your home or office anywhere in Kuwait, same day where scheduling allows.' },
-        { step: 2, title: 'Battery, Circuit & Thermal Diagnostic', description: 'We measure actual battery capacity and cycle count against factory spec, test the charging IC and power delivery circuit, and check thermal behavior under load — to confirm the battery, not the circuit, is the actual fault.' },
-        { step: 3, title: 'Confirm the Fault & Quote', description: 'You get a written explanation of what\'s actually wrong and an itemized quote before any work starts — including whether an OEM or premium compatible battery is the right fit for your situation.' },
-        { step: 4, title: 'Safe Removal & Replacement', description: 'For swollen cells, removal follows a controlled safety protocol. Connectors, dust, and internal cleanliness are checked while the device is open, then the new battery is fitted.' },
-        { step: 5, title: 'Calibration', description: 'The new battery is calibrated so the system\'s reported charge percentage accurately matches its real capacity from day one.' },
-        { step: 6, title: 'Charge-Cycle & Stress Verification', description: 'A full charge/discharge cycle and a thermal check under load confirm the battery holds and reports capacity correctly before the device is returned to you.' }
+        { id: 'cracked-screen', title: 'Cracked or Shattered Screen', severity: 'high', description: 'Physical impact from a drop or closing the lid on an object. The panel itself is replaced; the surrounding bezel and hinge are checked for related damage at the same time.' },
+        { id: 'screen-flicker', title: 'Screen Flickering', severity: 'medium', description: 'Often a worn display cable near the hinge rather than the panel — we test the cable separately before assuming a full panel swap is needed.' },
+        { id: 'vertical-lines', title: 'Vertical or Horizontal Lines on Display', severity: 'high', description: 'Usually a damaged panel or a loose display cable connection. We reseat the cable first, since that alone resolves a portion of these cases.' },
+        { id: 'black-screen-external-works', title: 'Black Screen, But External Monitor Works', severity: 'high', description: 'Points to the panel or its cable rather than the graphics hardware, since the system is clearly still rendering a display signal correctly.' },
+        { id: 'backlight-dim', title: 'Screen Very Dim or Backlight Not Working', severity: 'medium', description: 'The image is faintly visible under a flashlight but not on its own — typically a blown backlight fuse or a failed backlight driver, not the panel itself.' },
+        { id: 'discoloration', title: 'Discoloration or Uneven Tint', severity: 'low', description: 'Can be early-stage backlight degradation or a panel manufacturing fault appearing over time; we confirm which before quoting a replacement.' },
+        { id: 'touchscreen-unresponsive', title: 'Touchscreen Not Responding', severity: 'medium', description: 'On 2-in-1 and convertible models, the touch digitizer layer can fail independently of the display panel underneath it.' },
+        { id: 'hinge-related-cable-wear', title: 'Flicker That Gets Worse When Opening/Closing the Lid', severity: 'medium', description: 'A strong sign the display cable is worn from repeated flexing near the hinge rather than a fault in the panel itself.' }
       ],
-
+    
+      process: [
+        { step: 1, title: 'Free Pickup', description: 'We collect your laptop or MacBook from your home or office anywhere in Kuwait.' },
+        { step: 2, title: 'Panel & Cable Diagnostic', description: 'We confirm whether the fault is the panel, the display cable, or the backlight circuit before quoting anything.' },
+        { step: 3, title: 'Confirm the Fault & Quote', description: 'You get a clear, itemized quote before any work starts — no surprise charges for parts that turned out not to be needed.' },
+        { step: 4, title: 'Panel or Cable Replacement', description: 'The new panel or cable is fitted in our ESD-safe lab, with careful handling of ribbon connectors and, on MacBooks, the True Tone sensor.' },
+        { step: 5, title: 'Calibration & Dead-Pixel Check', description: 'The new display is checked for dead pixels, backlight uniformity, and colour accuracy before reassembly.' },
+        { step: 6, title: 'Return with 30-Day Warranty', description: 'Delivered back to you the same day in most cases, with a 30-day warranty on the panel and labor.' }
+      ],
+    
       performanceOutcomes: {
-        disclaimer: 'The figures below are representative outcomes for this repair category based on typical before/after results, not a specific customer\'s guaranteed result — every repair is quoted after its own diagnostic.',
+        disclaimer: 'The outcomes below describe typical results for this repair category, not a guarantee for any specific device — every repair is quoted after its own diagnostic.',
         items: [
-          { metric: 'Reported Battery Health', outcome: 'Devices arriving at 40-60% health typically return to 95-100% of rated capacity after OEM replacement.' },
-          { metric: 'Unplugged Runtime', outcome: 'Laptops previously lasting 1-2 hours unplugged commonly return to 4-8+ hours depending on model and usage.' },
-          { metric: 'Sudden Shutdowns', outcome: 'Eliminated in the large majority of cases where the root cause was a genuinely degraded cell rather than a charging circuit fault.' },
-          { metric: 'Percentage Reporting Accuracy', outcome: 'Erratic or jumping percentage readings typically resolve after calibration, provided the fuel-gauge desync wasn\'t caused by a failing cell underneath it.' }
+          { metric: 'Turnaround', outcome: 'Most standard 14"/15.6" panel replacements complete same-day when the panel is in stock.' },
+          { metric: 'Cable vs. Panel Diagnosis', outcome: 'A meaningful share of "cracked screen" calls that show no physical damage turn out to be a display cable fault, a cheaper fix than a full panel.' },
+          { metric: 'Cost vs. Manufacturer Quotes', outcome: 'Panel replacement typically costs a fraction of a manufacturer or authorized-center screen assembly quote.' }
         ]
       },
-
+    
       repairExamples: {
         disclaimer: 'These are representative repair scenarios illustrating common fault categories we service, not records of a specific named customer.',
         items: [
           {
-            id: 'swollen-battery-emergency',
-            title: 'MacBook Air: Swollen Battery Lifting the Trackpad',
-            symptoms: 'The trackpad had become slightly raised on one side and no longer clicked evenly.',
-            diagnosis: 'Visual and physical inspection confirmed battery swelling consistent with age-related cell degradation.',
-            repair: 'The swollen cell was safely removed under controlled conditions and replaced with a new battery matched to the model.',
-            outcome: 'The trackpad returned to its correct, flush position and the device passed a full charge-cycle test.'
+            id: 'flicker-not-panel',
+            title: 'Business Laptop: "Cracked Screen" That Was Actually a Cable',
+            symptoms: 'Vertical lines and flickering appeared gradually, worsening whenever the lid was opened or closed, with no visible physical damage to the panel.',
+            diagnosis: 'Testing an external monitor confirmed the graphics hardware was fine; reseating the display cable temporarily resolved the flicker, confirming a worn cable near the hinge.',
+            repair: 'The display cable was replaced rather than the panel.',
+            outcome: 'The screen returned to normal with no lines or flicker, at a fraction of the cost of a full panel replacement.'
           },
           {
-            id: 'charging-ic-vs-battery',
-            title: 'Windows Laptop: Misdiagnosed as a "Dead Battery"',
-            symptoms: 'The laptop would only run while plugged in and showed 0% battery at all times, even after hours of charging.',
-            diagnosis: 'Circuit-level testing found the charging IC itself had failed, while the battery cell tested as healthy.',
-            repair: 'The charging IC was replaced rather than the battery, avoiding an unnecessary battery purchase.',
-            outcome: 'The laptop charged and reported battery percentage normally, running for several hours unplugged as expected.'
-          },
-          {
-            id: 'fuel-gauge-desync',
-            title: 'Business Laptop: Battery Percentage Jumping Unpredictably',
-            symptoms: 'The reported charge would jump from around 55% straight down to 20% with no gradual decline in between.',
-            diagnosis: 'Capacity testing showed the cell itself was still within an acceptable range, but the fuel gauge had desynced from the actual voltage curve.',
-            repair: 'A full calibration cycle (complete discharge and recharge) resynced the fuel gauge to the battery\'s real behavior.',
-            outcome: 'Percentage reporting became linear and predictable again, with no battery replacement needed.'
+            id: 'macbook-retina-crack',
+            title: 'MacBook Air: Cracked Retina Display After a Drop',
+            symptoms: 'The lid was dropped onto a hard surface, cracking the display in the upper corner with bleeding pixels spreading across part of the screen.',
+            diagnosis: 'Physical inspection confirmed panel damage only, with the True Tone sensor and hinge undamaged.',
+            repair: 'The Retina display assembly was replaced, with the True Tone sensor carefully transferred and recalibrated.',
+            outcome: 'The MacBook returned to full brightness and colour accuracy with True Tone functioning correctly.'
           }
         ]
       },
-
+    
       inspectionChecklist: [
-        'Battery capacity vs. factory-rated spec',
-        'Charge cycle count',
-        'Physical inspection for swelling or deformation',
-        'Charging IC / power delivery circuit test',
-        'USB-C power delivery verification (where applicable)',
-        'Internal battery connector and cable integrity',
-        'Thermal behavior under charging load',
-        'Charge/discharge cycle verification after replacement',
-        'Fuel-gauge calibration accuracy'
+        'Panel damage vs. display cable fault isolation',
+        'Backlight and backlight fuse test',
+        'Dead pixel and uniformity check',
+        'Touch digitizer response test (2-in-1 models)',
+        'Colour accuracy and True Tone calibration (MacBook)',
+        'Hinge and bezel condition check'
       ],
-
+    
       faqs: [
-        {
-          id: 'faq-battery-replacement-time',
-          title: 'How long does battery replacement take?',
-          answer: 'Same-day for most models when the correct battery is in stock, since it\'s a basic-level hardware swap rather than a chip-level repair — diagnosis, replacement, calibration, and verification typically fit into a single visit.'
-        },
-        {
-          id: 'faq-battery-vs-performance',
-          title: 'Will replacing my battery also improve my laptop\'s overall performance?',
-          answer: 'It resolves anything caused by power delivery instability — random shutdowns, throttling from an unstable power state, or the system limiting performance because it can\'t trust the battery\'s reported charge. It won\'t speed up a laptop that\'s slow for unrelated reasons like an aging hard drive or insufficient RAM.'
-        },
-        {
-          id: 'faq-replace-vs-new-laptop',
-          title: 'Should I replace the battery or just buy a new laptop?',
-          answer: 'If the rest of the machine — screen, keyboard, motherboard, storage — is in good condition, battery replacement is almost always the far cheaper path to a laptop that works like new again. We\'ll tell you honestly if we think the device has other issues that make replacement a better call.'
-        },
-        {
-          id: 'faq-data-loss-battery',
-          title: 'Can I lose data during battery replacement?',
-          answer: 'No. Battery replacement is a hardware-only procedure that doesn\'t touch your storage drive, operating system, or files.'
-        },
-        {
-          id: 'faq-battery-swelling-safety',
-          title: 'Is battery swelling dangerous?',
-          answer: 'Yes, treat it as a genuine safety issue. A swollen cell has built up internal gas pressure and carries a real fire/chemical risk if punctured or damaged further. Stop using the device, don\'t press on the swollen area, and don\'t leave it charging unattended — arrange removal as soon as possible.'
-        },
-        {
-          id: 'faq-how-to-know-battery-failing',
-          title: 'How do I know if my battery is actually failing?',
-          answer: 'Watch for runtime noticeably shorter than when the laptop was new, sudden shutdowns at a non-zero percentage, a battery health warning from macOS or Windows, or any visible swelling. Any of these is worth a free diagnostic rather than guessing.'
-        },
-        {
-          id: 'faq-diagnose-before-replace',
-          title: 'Do you test battery health before replacing it?',
-          answer: 'Always. We measure actual capacity and cycle count against factory spec and test the charging circuit separately, because a battery that tests healthy but still causes symptoms usually means the fault is elsewhere in the power delivery path.'
-        },
-        {
-          id: 'faq-macbook-battery',
-          title: 'Can you replace MacBook batteries?',
-          answer: 'Yes — MacBook Air and MacBook Pro across all generations, as an internal battery replacement that doesn\'t affect the rest of the logic board or your data.'
-        },
-        {
-          id: 'faq-charging-not-battery',
-          title: 'Can charging problems be caused by something other than the battery?',
-          answer: 'Yes, frequently. A failed charging IC, a damaged charging port, a faulty or non-original charger, or a loose internal connector can all produce symptoms that look identical to a dead battery. This is exactly why we test the full circuit before quoting a battery replacement.'
-        },
-        {
-          id: 'faq-battery-lifespan',
-          title: 'How long do replacement batteries last?',
-          answer: 'Typically 2-4 years or several hundred charge cycles under normal use, similar to the original battery\'s expected lifespan — Kuwait\'s heat is the main factor that shortens this, the same as it did for the original cell.'
-        },
-        {
-          id: 'faq-oem-vs-compatible-vs-cheap',
-          title: 'What\'s the difference between OEM, premium compatible, and cheap replacement batteries?',
-          answer: 'OEM batteries are genuine manufacturer-spec cells with matching capacity and certified protection circuitry. Premium compatible batteries are third-party alternatives that can be a reasonable lower-cost option when built with proper protection ICs and safety certification. Low-cost, uncertified cells — the kind sold without proper protection circuitry — are more prone to inaccurate reporting, faster degradation, and heat issues, which is why we don\'t install them regardless of price pressure. We disclose which grade we\'re quoting and why before you approve the repair.'
-        },
-        {
-          id: 'faq-battery-warranty',
-          title: 'Do replacement batteries include a warranty?',
-          answer: 'Yes, 30 days covering both the battery and the labor.'
-        },
-        {
-          id: 'faq-overheat-damage-battery',
-          title: 'Can overheating damage the battery over time?',
-          answer: 'Yes. Sustained heat — from Kuwait\'s climate, a laptop left in a hot car, or a cooling system that isn\'t working properly — accelerates lithium-ion degradation regardless of how carefully the battery is otherwise used.'
-        }
+        { id: 'faq-screen-same-day', title: 'Can screen replacement be done the same day?', answer: 'Yes, in most cases, provided the panel is in stock — we carry standard 14" and 15.6" FHD/IPS panels for the most common brands.' },
+        { id: 'faq-flicker-not-crack', title: 'My screen is flickering but not cracked — is that still a screen problem?', answer: 'Often, yes, but not always the panel itself. Flickering that worsens when opening or closing the lid usually points to a worn display cable near the hinge, which we test for before quoting a full panel replacement.' },
+        { id: 'faq-external-monitor-works', title: 'The screen is black but an external monitor works fine — what does that mean?', answer: 'It points to the internal display or its cable rather than the graphics hardware, since the system is clearly still producing a valid display signal.' },
+        { id: 'faq-macbook-retina-screen', title: 'Do you replace MacBook Retina displays?', answer: 'Yes, including careful handling of the True Tone sensor, which we recalibrate after replacement so colour accuracy stays correct.' },
+        { id: 'faq-touchscreen-replace', title: 'Can you replace a touchscreen on a 2-in-1 laptop?', answer: 'Yes. The touch digitizer can fail independently of the display panel beneath it, and we diagnose and replace whichever layer is actually at fault.' },
+        { id: 'faq-screen-cost', title: 'How much does laptop screen replacement cost?', answer: 'From 20 KWD for standard panels, with the exact price depending on size, resolution, and whether it\'s a standard panel or a MacBook Retina display.' },
+        { id: 'faq-screen-oem', title: 'Do you use OEM screens?', answer: 'We offer OEM and high-grade compatible panels and explain the difference in quality and price before you choose.' },
+        { id: 'faq-screen-data-safety', title: 'Is my data safe during a screen replacement?', answer: 'Yes — screen replacement is a hardware-only procedure that never touches your storage drive or files.' },
+        { id: 'faq-screen-warranty', title: 'Is there a warranty on screen replacements?', answer: 'Yes, 30 days covering the panel and labor.' },
+        { id: 'faq-backlight-vs-panel', title: 'My screen is very dim — do I need a new panel?', answer: 'Not necessarily. A dim but faintly visible image often means a blown backlight fuse or failed backlight driver rather than the panel itself, which is a cheaper fix — we test for this before quoting a full replacement.' }
       ],
-
-      warranty: { duration: '30 Days', coverage: 'Battery and labor.', noFixNoFee: true }, 
-      seo: { 
-        title: 'Laptop & MacBook Battery Replacement Kuwait | Same Day | KCROC', 
-        description: 'Battery health diagnostics and same-day replacement for MacBook, Dell, HP, Lenovo, ASUS, Acer & MSI laptops in Kuwait. We confirm the battery is the fault before replacing it. Free pick & drop.', 
-        canonicalUrl: 'https://www.computerrepairkuwait.com/battery-replacement-kuwait', 
-        ogType: 'article', 
-        schemaTypes: ['Service', 'FAQPage'] 
+    
+      warranty: { duration: '30 Days', coverage: 'Screen panel and labor.', noFixNoFee: false },
+      seo: {
+        title: 'Laptop Screen Replacement Kuwait | Same Day | KCROC',
+        description: 'Same-day laptop and MacBook screen replacement in Kuwait. LCD, IPS, OLED & Retina panels, plus display cable repair. Free pick & drop, 30-day warranty.',
+        canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-screen-repair-kuwait',
+        ogType: 'article',
+        schemaTypes: ['Service', 'FAQPage']
       },
-      navigationPriority: 50, 
-      isFeatured: false, 
+      navigationPriority: 60,
+      isFeatured: false,
       popular: false
     } as ServiceEntity,
 
