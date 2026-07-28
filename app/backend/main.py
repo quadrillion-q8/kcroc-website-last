@@ -1,3 +1,4 @@
+# File: app/backend/main.py
 import importlib
 import logging
 import os
@@ -85,8 +86,8 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(
-    title="FastAPI Modular Template",
-    description="A best-practice FastAPI template with modular architecture",
+    title="KCROC API - Kuwait Computer Repair On Call",
+    description="Backend API handling service bookings, AI chat context, and admin operations for KCROC.",
     version="1.0.0",
     lifespan=lifespan,
 )
@@ -222,7 +223,7 @@ async def general_exception_handler(request: Request, exc: Exception):
 
 @app.get("/")
 def root():
-    return {"message": "FastAPI Modular Template is running"}
+    return {"message": "KCROC Backend API is running"}
 
 
 @app.get("/health")
@@ -264,7 +265,7 @@ def run_in_debug_mode(app: FastAPI):
         log_level="info",
     )
     server = uvicorn.Server(config)
-    asyncio.run(server.serve())
+    async asyncio.run(server.serve())
 
 
 if __name__ == "__main__":
