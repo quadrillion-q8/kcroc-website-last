@@ -400,7 +400,6 @@ export const rawGraphData: RawGraphData = {
         'SSD & RAM Upgrades',
         'Battery & Keyboard Replacement',
         'Liquid Damage Recovery',
-        'Data Recovery & Cloning',
         'Free Pick & Drop',
         '30-Day Warranty'
       ], 
