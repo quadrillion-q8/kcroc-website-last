@@ -1,7 +1,7 @@
 // File: app/frontend/src/pages/templates/ServiceTemplate.tsx
 import React, { useState } from 'react';
 import { Navigate } from 'react-router-dom';
-import { Laptop, Apple, Gamepad2, Cpu, Wrench, ShieldCheck, Clock, MessageCircle, Users, Monitor, ChevronDown, AlertTriangle } from 'lucide-react';
+import { Laptop, Apple, Gamepad2, Cpu, Wrench, ShieldCheck, Clock, MessageCircle, Users, Monitor, ChevronDown, AlertTriangle, MapPin } from 'lucide-react';
 import { KCROC_GRAPH } from '../../data/graph';
 import { SEOEngine } from '../../core/components/SEOEngine';
 // 1. Updated Import: Pulling from the context provider instead of a static function
@@ -61,6 +61,9 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
           </div>
 
           <p className="text-xl text-slate-300 max-w-3xl mb-8 leading-relaxed">
+            {entity.shortDescription && (
+              <span className="block text-2xl font-bold text-white mb-3">{entity.shortDescription}</span>
+            )}
             {entity.description}
           </p>
 
@@ -89,6 +92,22 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
             )}
           </div>
         </header>
+
+        {entity.whyChooseUs && entity.whyChooseUs.length > 0 && (
+          <section className="max-w-7xl mx-auto px-6 py-12 border-t border-slate-800/50 relative z-10">
+            <h2 className="text-2xl font-bold mb-8 text-white flex items-center gap-3">
+              <ShieldCheck className="w-6 h-6 text-cyan-400" /> Why Choose Us
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+              {entity.whyChooseUs.map((point, idx) => (
+                <div key={idx} className="bg-slate-900/50 backdrop-blur-sm p-6 rounded-2xl border border-slate-800 hover:border-cyan-500/30 transition-colors">
+                  <h3 className="text-white font-bold mb-2">{point.title}</h3>
+                  <p className="text-sm text-slate-400 leading-relaxed">{point.description}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
 
         {entity.coreFeatures && entity.coreFeatures.length > 0 && (
           <section className="max-w-7xl mx-auto px-6 py-12 border-t border-slate-800/50 relative z-10">
@@ -160,6 +179,49 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
           </section>
         )}
 
+        {entity.performanceOutcomes && entity.performanceOutcomes.items.length > 0 && (
+          <section className="max-w-7xl mx-auto px-6 py-12 border-t border-slate-800/50 relative z-10">
+            <h2 className="text-2xl font-bold mb-4 text-white">Typical Results</h2>
+            <p className="text-xs text-slate-500 mb-8 max-w-2xl">{entity.performanceOutcomes.disclaimer}</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+              {entity.performanceOutcomes.items.map((item, idx) => (
+                <div key={idx} className="bg-slate-900/50 backdrop-blur-sm p-6 rounded-2xl border border-slate-800">
+                  <h3 className="text-cyan-400 font-bold text-sm uppercase tracking-wide mb-2">{item.metric}</h3>
+                  <p className="text-slate-300 text-sm leading-relaxed">{item.outcome}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {entity.repairExamples && entity.repairExamples.items.length > 0 && (
+          <section className="max-w-7xl mx-auto px-6 py-12 border-t border-slate-800/50 relative z-10">
+            <h2 className="text-2xl font-bold mb-4 text-white">Representative Repair Scenarios</h2>
+            <p className="text-xs text-slate-500 mb-8 max-w-2xl">{entity.repairExamples.disclaimer}</p>
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
+              {entity.repairExamples.items.map((example) => (
+                <div key={example.id} className="bg-slate-900/50 backdrop-blur-sm p-6 rounded-2xl border border-slate-800">
+                  <h3 className="text-white font-bold mb-4">{example.title}</h3>
+                  <dl className="space-y-3 text-sm">
+                    <div>
+                      <dt className="text-slate-500 font-semibold uppercase text-[10px] tracking-wide mb-1">Symptoms</dt>
+                      <dd className="text-slate-300 leading-relaxed">{example.symptoms}</dd>
+                    </div>
+                    <div>
+                      <dt className="text-slate-500 font-semibold uppercase text-[10px] tracking-wide mb-1">Diagnosis</dt>
+                      <dd className="text-slate-300 leading-relaxed">{example.diagnosis}</dd>
+                    </div>
+                    <div>
+                      <dt className="text-slate-500 font-semibold uppercase text-[10px] tracking-wide mb-1">Outcome</dt>
+                      <dd className="text-cyan-300 leading-relaxed">{example.outcome}</dd>
+                    </div>
+                  </dl>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
         {entity.process && entity.process.length > 0 && (
           <section className="max-w-7xl mx-auto px-6 py-12 border-t border-slate-800/50 relative z-10">
             <h2 className="text-2xl font-bold mb-8 text-white">Our Repair Process</h2>
@@ -174,6 +236,22 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
                 </div>
               ))}
             </div>
+          </section>
+        )}
+
+        {entity.inspectionChecklist && entity.inspectionChecklist.length > 0 && (
+          <section className="max-w-7xl mx-auto px-6 py-12 border-t border-slate-800/50 relative z-10">
+            <h2 className="text-2xl font-bold mb-8 text-white flex items-center gap-3">
+              <ShieldCheck className="w-6 h-6 text-cyan-400" /> What We Check
+            </h2>
+            <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+              {entity.inspectionChecklist.map((item, idx) => (
+                <li key={idx} className="flex items-center gap-3 bg-slate-900/40 px-4 py-3 rounded-xl border border-slate-800">
+                  <ShieldCheck className="w-4 h-4 text-cyan-400 flex-shrink-0" />
+                  <span className="text-slate-300 text-sm">{item}</span>
+                </li>
+              ))}
+            </ul>
           </section>
         )}
 
@@ -213,6 +291,21 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
                   </div>
                 );
               })}
+            </div>
+          </section>
+        )}
+
+        {KCROC_GRAPH.locations && KCROC_GRAPH.locations.length > 0 && (
+          <section className="max-w-7xl mx-auto px-6 py-12 border-t border-slate-800/50 relative z-10">
+            <h2 className="text-2xl font-bold mb-8 text-white flex items-center gap-3">
+              <MapPin className="w-6 h-6 text-cyan-400" /> Service Areas in Kuwait
+            </h2>
+            <div className="flex flex-wrap gap-3">
+              {KCROC_GRAPH.locations.map((loc) => (
+                <span key={loc.id} className="px-4 py-2 rounded-full bg-slate-900/60 border border-slate-800 text-slate-200 text-sm font-medium">
+                  {loc.title}
+                </span>
+              ))}
             </div>
           </section>
         )}
