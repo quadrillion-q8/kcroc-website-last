@@ -1,7 +1,7 @@
 // File: app/frontend/api/whatsapp-webhook.ts
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import crypto from 'crypto';
-import OpenAI from 'openai';
+import { GoogleGenAI } from '@google/genai';
 import { getKnowledgeContext } from '../src/knowledge/context';
 import { evaluateHandoff } from '../src/api/HandoffEngine';
 
@@ -43,10 +43,45 @@ function verifyMetaSignature(rawBody: string, signature: string | string[] | und
   }
 }
 
-// Initialize OpenAI client
-const openai = new OpenAI({ 
-  apiKey: process.env.OPENAI_API_KEY 
-});
+/**
+ * 🚀 OUTBOUND MESSAGING: Sends the generated reply back to the user via Meta's WhatsApp Graph API
+ */
+async function sendWhatsAppMessage(phoneNumberId: string, to: string, text: string) {
+  const accessToken = process.env.WHATSAPP_TOKEN || process.env.META_ACCESS_TOKEN || process.env.WHATSAPP_ACCESS_TOKEN;
+  
+  if (!accessToken) {
+    console.error('CRITICAL: WHATSAPP_TOKEN or META_ACCESS_TOKEN is missing in environment variables.');
+    return;
+  }
+
+  const url = `https://graph.facebook.com/v20.0/${phoneNumberId}/messages`;
+
+  try {
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${accessToken}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        messaging_product: 'whatsapp',
+        recipient_type: 'individual',
+        to: to,
+        type: 'text',
+        text: { body: text },
+      }),
+    });
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error(`Failed to deliver WhatsApp message to ${to}. Meta API response:`, errorText);
+    } else {
+      console.info(`Successfully delivered WhatsApp message to ${to}`);
+    }
+  } catch (err) {
+    console.error('Error calling Meta Graph API:', err);
+  }
+}
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   // ─── 1. VERIFICATION CHALLENGE (GET) ───
@@ -56,7 +91,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const challenge = req.query['hub.challenge'];
     
     if (mode === 'subscribe' && token === process.env.WHATSAPP_VERIFY_TOKEN) {
-      console.log('WhatsApp Webhook Verified.');
+      console.log('WhatsApp Webhook Verified successfully.');
       return res.status(200).send(challenge);
     }
     return res.status(403).send('Forbidden');
@@ -71,7 +106,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
       // 🚀 SECURITY: Reject unauthorized requests immediately
       if (!appSecret) {
-        console.error('CRITICAL: META_APP_SECRET is not configured in Vercel.');
+        console.error('CRITICAL: META_APP_SECRET is not configured in environment variables.');
         return res.status(500).json({ error: 'Server misconfiguration' });
       }
 
@@ -82,49 +117,57 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
       const body = JSON.parse(rawBody);
 
-      // 🚀 STABILITY: Safely extract the message using optional chaining
-      const messageObj = body?.entry?.[0]?.changes?.[0]?.value?.messages?.[0];
-      
-      // If it's a status update (read receipt, delivery) rather than a text message, acknowledge and exit safely
-      if (!messageObj || !messageObj.text) {
+      // Extract message metadata and payload
+      const value = body?.entry?.[0]?.changes?.[0]?.value;
+      const messageObj = value?.messages?.[0];
+      const phoneNumberId = value?.metadata?.phone_number_id;
+
+      // If it's a status update (read receipt, delivery report) or non-text message, acknowledge and exit
+      if (!messageObj || !messageObj.text || !messageObj.from || !phoneNumberId) {
         return res.status(200).send('EVENT_RECEIVED');
       }
 
       const userMessage = messageObj.text.body;
+      const senderPhone = messageObj.from;
 
-      // 3. Get Knowledge Context
-      const knowledgeContext = getKnowledgeContext(userMessage);
+      let replyText = '';
 
-      // 4. Run Safety Governor (Handoff Check)
-      const handoff = evaluateHandoff(userMessage, 0.8);
+      // 3. Run Safety Governor (Handoff Check)
+      const handoff = await evaluateHandoff(userMessage);
 
-      if (handoff.isEscalated) {
-        return res.status(200).json({ 
-          reply: handoff.message, 
-          status: 'ESCALATED',
-          priority: handoff.priority 
-        });
+      if (handoff && handoff.shouldHandoff) {
+        console.info(`WhatsApp Handoff triggered for ${senderPhone}: ${handoff.reason}`);
+        replyText = 'Your request requires technician assistance or urgent handling. Please call or message us directly at 55301913 so our team can assist you immediately.';
+      } else {
+        // 4. Build Knowledge Context & Generate AI Response via Gemini 2.5 Flash
+        const apiKey = process.env.GEMINI_API_KEY;
+        if (!apiKey) {
+          console.error('CRITICAL: GEMINI_API_KEY environment variable is missing.');
+          replyText = 'Thank you for reaching out to Kuwait Computer Repair On Call. Please contact us directly at 55301913 for immediate assistance.';
+        } else {
+          const knowledgeContext = getKnowledgeContext(userMessage);
+          const ai = new GoogleGenAI({ apiKey });
+
+          const aiResponse = await ai.models.generateContent({
+            model: 'gemini-2.5-flash',
+            contents: userMessage,
+            config: {
+              systemInstruction: knowledgeContext,
+            },
+          });
+
+          replyText = aiResponse.text || 'Thank you for contacting Kuwait Computer Repair On Call. How can we assist with your device today? You can also call us directly at 55301913.';
+        }
       }
 
-      // 5. Generate AI Response via OpenAI
-      const completion = await openai.chat.completions.create({
-        messages: [
-          { role: "system", content: knowledgeContext },
-          { role: "user", content: userMessage }
-        ],
-        model: "gpt-4o-mini",
-      });
+      // 5. Deliver the message to the customer's phone via WhatsApp API
+      await sendWhatsAppMessage(phoneNumberId, senderPhone, replyText);
 
-      const aiResponse = completion.choices[0]?.message?.content || "I am currently unavailable. Please call us at 55301913.";
-
-      // 6. Return response to WhatsApp
-      return res.status(200).json({ 
-        success: true, 
-        reply: aiResponse 
-      });
+      // Return 200 OK to Meta to acknowledge receipt
+      return res.status(200).send('EVENT_RECEIVED');
 
     } catch (error) {
-      console.error('Webhook Error:', error);
+      console.error('WhatsApp Webhook Error:', error);
       return res.status(500).json({ success: false, error: 'Internal Server Error' });
     }
   }
