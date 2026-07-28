@@ -2,10 +2,15 @@
 import json
 import logging
 from typing import List, Optional
+from datetime import datetime, timezone
 
-from fastapi import APIRouter, Body, Depends, HTTPException, Query
-from pydantic import BaseModel
+from fastapi import APIRouter, Body, Depends, HTTPException, Query, Request
+from pydantic import BaseModel, Field
 from sqlalchemy.ext.asyncio import AsyncSession
+
+# 🔒 SlowAPI Rate Limiting for Public Endpoints
+from slowapi import Limiter
+from slowapi.util import get_remote_address
 
 from core.database import get_db
 from dependencies.auth import get_admin_user
@@ -17,10 +22,29 @@ logger = logging.getLogger(__name__)
 
 router = APIRouter(prefix="/api/v1/entities/service_bookings", tags=["service_bookings"])
 
+# Initialize local rate limiter for public routes
+limiter = Limiter(key_func=get_remote_address)
+
 
 # ---------- Pydantic Schemas ----------
+
+class ServiceBookingCreate(BaseModel):
+    """Secure schema for public booking creation (Strips status/created_at)"""
+    customer_name: str = Field(..., max_length=100)
+    # Kuwait phone regex: optional +965, followed by 8 digits starting with 4, 5, 6, or 9
+    customer_phone: str = Field(..., pattern=r"^(?:\+?965)?[4569]\d{7}$", max_length=15)
+    customer_email: Optional[str] = Field(None, pattern=r"^\S+@\S+\.\S+$", max_length=150)
+    device_type: str = Field(..., max_length=150)
+    issue_description: str = Field(..., max_length=2000)
+    pickup_date: str = Field(..., max_length=50)
+    pickup_time_slot: str = Field(..., max_length=50)
+    
+    # Honeypot field from frontend to catch bots
+    bot_field: str = Field(default="", max_length=50)
+
+
 class Service_bookingsData(BaseModel):
-    """Entity data schema (for create/update)"""
+    """Legacy/Internal Entity data schema (for admin batch operations)"""
     customer_name: str
     customer_phone: str
     customer_email: str = None
@@ -193,17 +217,45 @@ async def get_service_bookings(
         raise HTTPException(status_code=500, detail=f"Internal server error: {str(e)}")
 
 
+# 🚀 FIXED: Hardened Public Booking Endpoint
 @router.post("", response_model=Service_bookingsResponse, status_code=201)
+@limiter.limit("5/minute")
 async def create_service_bookings(
-    data: Service_bookingsData,
+    request: Request,
+    data: ServiceBookingCreate,
     db: AsyncSession = Depends(get_db),
 ):
-    """Create a new service_bookings"""
-    logger.debug(f"Creating new service_bookings with data: {data}")
+    """Create a new service_bookings (Public)"""
+    logger.debug("Creating new service_bookings from public endpoint")
+    
+    # 1. Honeypot check (Silent rejection for bots)
+    if data.bot_field:
+        logger.warning("Bot detected via honeypot field. Silently rejecting.")
+        # Return a fake success response to trick the bot
+        return {
+            "id": 999999,
+            "customer_name": data.customer_name,
+            "customer_phone": data.customer_phone,
+            "customer_email": data.customer_email,
+            "device_type": data.device_type,
+            "issue_description": data.issue_description,
+            "pickup_date": data.pickup_date,
+            "pickup_time_slot": data.pickup_time_slot,
+            "status": "pending",
+            "created_at": datetime.now(timezone.utc).isoformat()
+        }
+        
+    # 2. Strip honeypot and prepare data
+    booking_dict = data.model_dump(exclude={"bot_field"})
+
+    # 3. Server-Side Trust Boundary Overrides
+    # Override status and created_at so the client can't manipulate them
+    booking_dict["status"] = "pending"
+    booking_dict["created_at"] = datetime.now(timezone.utc).isoformat()
     
     service = Service_bookingsService(db)
     try:
-        result = await service.create(data.model_dump())
+        result = await service.create(booking_dict)
         if not result:
             raise HTTPException(status_code=400, detail="Failed to create service_bookings")
         
