@@ -601,7 +601,7 @@ export const rawGraphData: RawGraphData = {
       title: 'Gaming PC & GPU Repair Kuwait', 
       iconKey: 'gaming', 
       shortDescription: 'Component-level GPU diagnostics, liquid metal thermal restoration, and custom loop AIO maintenance.', 
-      description: 'Your gaming PC just shut down mid-match, the frame rate that used to feel smooth is stuttering for no obvious reason, or a card that cost you real money is suddenly artifacting under load. Hardware at this price point isn\'t supposed to behave like this — and in almost every case it\'s repairable, because the cause is a specific, diagnosable fault rather than a dead GPU or a doomed motherboard. In Kuwait specifically, sustained ambient temperatures above 45°C for nearly half the year, combined with fine desert dust and near-constant AC cycling, accelerate exactly the failure patterns most repair guides don\'t account for: thermal paste pumps out early, AIO pumps wear faster, and VRM components run hotter than their design margin assumes. We diagnose the actual cause using thermal imaging and load benchmarking — on RTX 40-series and 50-series cards, RX 7000-series GPUs, Ryzen X3D and Intel Core Ultra/i9 builds, liquid-cooled rigs, and everything between — then repair down to the component level wherever possible instead of defaulting to an expensive full-part replacement.', 
+      description: 'Your gaming PC just shut down mid-match, the frame rate that used to feel smooth is stuttering for no obvious reason, or a card that cost you real money is suddenly artifacting under load. Hardware at this price point isn\'t supposed to behave like this — and in almost every case it\'s repairable, because the cause is a specific, diagnosable fault rather than a dead GPU or a doomed motherboard. In Kuwait specifically, sustained ambient temperatures above 45°C for nearly half the year, combined with fine desert dust and near-constant AC cycling, accelerate exactly the failure patterns most repair guides don\'t account for: thermal paste pumps out early, AIO pumps wear faster, and VRM components run hotter than their design margin assumes. We diagnose the actual cause using thermal imaging and load benchmarking — on RTX 40-series and 50-series cards, RX 7000-series GPUs, Ryzen X3D and Intel Core Ultra/i9 builds, liquid-cooled rigs, and everything between — then repair down to the component level wherever possible instead of defaulting to an expensive full-part replacement. Send us your symptoms on WhatsApp for a free diagnostic — pickup and delivery are free anywhere in Kuwait, and every repair carries a 30-day warranty.', 
       idealCustomer: 'Every kind of Kuwait-based gaming and high-performance PC user: casual and competitive gamers, esports players, streamers, content creators, 3D designers, architects, engineers, video editors, developers, and any professional running a high-performance desktop or laptop that isn\'t performing the way it used to.',
       deviceTypes: [
         'Custom Desktop Builds', 
@@ -647,25 +647,25 @@ export const rawGraphData: RawGraphData = {
           id: 'vrm-thermal-throttling', 
           title: 'Severe FPS Drops & Thermal Throttling', 
           severity: 'high', 
-          description: 'Kuwait\'s ambient heat causes factory thermal paste to "pump out" or dry entirely, trapping heat on the CPU/GPU die and forcing the system to aggressively drop clock speeds. We perform deep chemical extraction and liquid metal upgrades to restore sustained boost clocks.' 
+          description: 'Your frame rate tanks mid-session even though nothing in your setup changed — the system is protecting itself from heat by cutting clock speeds. Kuwait\'s ambient heat causes factory thermal paste to "pump out" or dry entirely, trapping heat on the CPU/GPU die and forcing the system to aggressively drop clock speeds. We perform deep chemical extraction and liquid metal upgrades to restore sustained boost clocks.' 
         },
         { 
           id: 'gpu-artifacting', 
           title: 'Screen Artifacting or Black Screens Under Load', 
           severity: 'critical', 
-          description: 'Often misdiagnosed as a "dead GPU." Artifacting under heavy load — including on RTX and RX cards — is typically caused by failing VRAM modules or degraded solder balls beneath the GPU chip. We use thermal imaging and BGA rework to restore the card rather than replacing it.' 
+          description: 'Colored blocks, flickering textures, or a black screen show up specifically during demanding games, then clear up when you stop. Often misdiagnosed as a "dead GPU." Artifacting under heavy load — including on RTX and RX cards — is typically caused by failing VRAM modules or degraded solder balls beneath the GPU chip. We use thermal imaging and BGA rework to restore the card rather than replacing it.' 
         },
         { 
           id: 'aio-pump-failure', 
           title: 'AIO Water Cooler Pump Failure & Micro-Leaks', 
           severity: 'high', 
-          description: 'CPU temperatures spiking to 100°C instantly on boot. Caused by coolant degradation, micro-blockages in the copper cold plate, or pump motor burnout. We service custom loops, clear blockages, and replace failing AIO units.' 
+          description: 'Your CPU temperature spikes to dangerous levels the moment you boot, or you notice a rattling or gurgling sound from the cooler. Caused by coolant degradation, micro-blockages in the copper cold plate, or pump motor burnout. We service custom loops, clear blockages, and replace failing AIO units.' 
         },
         { 
           id: 'power-stage-short', 
           title: 'Motherboard VRM / Power Stage Failure', 
           severity: 'critical', 
-          description: 'The PC shuts off suddenly during gameplay and refuses to reboot, sometimes with a faint burning smell. High-draw components like RTX 4090/5090-class cards or Ryzen/i9 processors can blow motherboard power stages. We micro-solder replacement MOSFETs to save the board.' 
+          description: 'The PC shuts off suddenly mid-game and won\'t reboot for a while, sometimes with a faint burning smell. High-draw components like RTX 4090/5090-class cards or Ryzen/i9 processors can blow motherboard power stages. We micro-solder replacement MOSFETs to save the board.' 
         },
         {
           id: 'cpu-overheating',
