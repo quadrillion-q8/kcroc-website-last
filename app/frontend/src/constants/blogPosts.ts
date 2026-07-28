@@ -29,7 +29,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "By utilizing precision micro-soldering and thermal imaging, modern ESD-safe labs can isolate the exact failing chip on the logic board. This component-level approach not only saves the original data but usually costs a fraction of a factory board swap.",
       "If your laptop feels sluggish, the first step isn't buying a new one. A thorough ultrasonic cleaning, application of high-grade liquid metal or phase-change thermal paste, and a fast NVMe SSD upgrade can make a five-year-old laptop perform better than new."
     ],
-    image: "https://www.computerrepairkuwait.com/assets/blog/laptop-repair-guide.jpg",
+    image: "/images/blog/laptop-dust-cleaning-overheating-kuwait.webp",
     date: "2026-06-15",
     author: "KCROC Engineering Team",
     category: "Hardware",
@@ -47,7 +47,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "When the CPU hits 95°C, it automatically throttles its clock speed to prevent melting. In-game, this looks like massive stuttering and FPS drops.",
       "The permanent solution for Kuwait gamers involves stripping the factory paste and applying advanced phase-change materials or liquid metal, coupled with aggressively tuned fan curves in the BIOS. Maintaining positive case pressure also prevents the fine Kuwaiti dust from choking your radiator fins."
     ],
-    image: "https://www.computerrepairkuwait.com/assets/blog/gaming-cooling.jpg",
+    image: "/images/blog/gaming-pc-thermal-throttling-kuwait.webp",
     date: "2026-06-22",
     author: "KCROC Gaming Specialists",
     category: "Gaming",
@@ -65,7 +65,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "Another major culprit is opening the laptop from the corner. Always open your laptop by lifting from the direct center of the bezel. Lifting from the corner twists the chassis, which can snap the internal hinges and subsequently crack the display glass.",
       "If you notice your hinges becoming incredibly stiff or hearing a cracking plastic sound when opening the lid, stop using it immediately. Have the hinges loosened and repaired before they rip through the display cable and screen panel."
     ],
-    image: "https://www.computerrepairkuwait.com/assets/blog/screen-protection.jpg",
+    image: "/images/blog/laptop-screen-protection-kuwait.webp",
     date: "2026-07-02",
     author: "KCROC Repair Team",
     category: "Maintenance",
