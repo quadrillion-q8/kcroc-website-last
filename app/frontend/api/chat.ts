@@ -60,11 +60,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     }
 
     // 3. Evaluate Handoff Safety Net
-    // 🚀 FIXED: Updated property access to match actual HandoffEngine return type
-    const handoff = evaluateHandoff(sanitizedMessage, 0.8);
-    if (handoff && handoff.isEscalated) {
+    // 🚀 FIXED: Awaits the async heuristic engine and checks the correct boolean property
+    const handoff = await evaluateHandoff(sanitizedMessage);
+    if (handoff && handoff.shouldHandoff) {
+      console.info(`Handoff triggered: ${handoff.reason}`);
       return res.status(200).json({
-        reply: handoff.message || 'This sounds like an urgent issue or requires a technician. Please contact us directly at 55301913 or via WhatsApp.'
+        reply: 'This sounds like an urgent issue or requires a technician. Please contact us directly at 55301913 or click the WhatsApp button to speak with a human.'
       });
     }
 
