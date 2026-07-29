@@ -1,196 +1,343 @@
-// File: app/frontend/src/pages/templates/LocationTemplate.tsx
-import React from 'react';
+// File: app/frontend/src/pages/templates/ServiceTemplate.tsx
+import React, { useState } from 'react';
 import { Navigate } from 'react-router-dom';
-import { MapPin, Truck, ShieldCheck, Clock, CheckCircle2, ChevronRight, MessageCircle, Laptop, Wrench, Navigation } from 'lucide-react';
+import { Laptop, Apple, Gamepad2, Cpu, Wrench, ShieldCheck, Clock, MessageCircle, Users, Monitor, ChevronDown, AlertTriangle, MapPin } from 'lucide-react';
 import { KCROC_GRAPH } from '../../data/graph';
 import { SEOEngine } from '../../core/components/SEOEngine';
 import { useAnalytics } from '../../core/analytics/AnalyticsProvider';
 
-interface LocationTemplateProps {
+const ICON_MAP: Record<string, React.ElementType> = {
+  'apple': Apple,
+  'laptop': Laptop,
+  'gaming': Gamepad2,
+  'cpu': Cpu,
+};
+
+interface ServiceTemplateProps {
   entityId?: string;
 }
 
-export default function LocationTemplate({ entityId }: LocationTemplateProps) {
+export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
   const { trackConversion } = useAnalytics();
-  
-  const entity = KCROC_GRAPH.locations.find((e) => e.id === entityId);
-  const business = KCROC_GRAPH.business;
-  const topServices = KCROC_GRAPH.services.filter(s => s.isFeatured).slice(0, 4);
+  const [openFaqId, setOpenFaqId] = useState<string | null>(null);
+
+  const entity = KCROC_GRAPH.services.find((e) => e.id === entityId);
 
   if (!entity) {
-    console.warn(`[LocationTemplate] No location found for entityId: ${entityId}`);
+    console.warn(`[ServiceTemplate] No service found for entityId: ${entityId}`);
     return <Navigate to="/404" replace />;
   }
 
+  const ServiceIcon = ICON_MAP[entity.iconKey] || Wrench;
+  const business = KCROC_GRAPH.business;
+
   const whatsappMessage = encodeURIComponent(
-    `Hi KCROC, I am located in ${entity.title.replace(' Repair Center', '')} and need to book a repair.`
+    `Hi KCROC, I'd like a free estimate for ${entity.title}.`
   );
 
-  return (
-    <div className="min-h-screen bg-slate-950">
-      <SEOEngine entity={entity} />
+  const severityStyles: Record<string, string> = {
+    critical: 'border-red-500/40 bg-red-950/20 text-red-300',
+    high: 'border-orange-500/40 bg-orange-950/20 text-orange-300',
+    medium: 'border-amber-500/40 bg-amber-950/20 text-amber-300',
+    low: 'border-slate-600/40 bg-slate-900/40 text-slate-300',
+  };
 
-      {/* Hero Section */}
-      <div className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden border-b border-slate-800">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-cyan-900/20 via-slate-950 to-slate-950"></div>
+  return (
+    <>
+      <SEOEngine entityId={entity.id} />
+
+      <main className="min-h-screen bg-transparent text-white pt-32 pb-16">
         
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-4 mb-6">
-            <div className="bg-cyan-500/10 p-3 rounded-2xl border border-cyan-500/20">
-              <MapPin className="w-8 h-8 text-cyan-400" />
+        <header className="max-w-7xl mx-auto px-6 bg-slate-900/30 backdrop-blur-md border border-slate-800/50 rounded-3xl p-8 mb-12 shadow-2xl">
+          <div className="flex items-center space-x-4 mb-6">
+            <div className="w-16 h-16 bg-slate-950 border border-slate-800 rounded-2xl flex items-center justify-center shadow-inner">
+              <ServiceIcon className="w-8 h-8 text-cyan-400" />
             </div>
-            <span className="text-cyan-400 font-bold tracking-wide uppercase text-sm">
-              Service Area
-            </span>
+            <h1 className="text-4xl md:text-5xl font-black text-white">{entity.title}</h1>
           </div>
-          
-          <h1 className="text-5xl lg:text-7xl font-black text-white tracking-tight mb-6">
-            Computer Repair in <span className="text-cyan-400">{entity.title.replace(' Repair Center', '')}</span>
-          </h1>
-          
-          <p className="text-xl md:text-2xl text-slate-300 font-medium mb-8 max-w-3xl leading-snug">
+
+          <p className="text-xl text-slate-300 max-w-3xl mb-8 leading-relaxed">
+            {entity.shortDescription && (
+              <span className="block text-2xl font-bold text-white mb-3">{entity.shortDescription}</span>
+            )}
             {entity.description}
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4">
-            {business?.telephone && (
-              <a 
-                href={`https://wa.me/${business.telephone}?text=${whatsappMessage}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => trackConversion(
-                  'whatsapp_click',
-                  { cta_name: 'location_page_whatsapp', button_position: 'hero', entity_id: entity.id, entity_slug: entity.slug }
-                )}
-                className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black py-4 px-8 rounded-xl transition-all shadow-[0_0_15px_rgba(34,211,238,0.2)] hover:scale-105 duration-200 flex items-center justify-center gap-2"
-              >
-                <MessageCircle className="w-5 h-5" />
-                Book Free Pickup in {entity.title.replace(' Repair Center', '')}
-              </a>
+          {entity.idealCustomer && (
+            <p className="flex items-start gap-3 text-sm text-slate-400 max-w-3xl mb-8">
+              <Users className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-0.5" />
+              <span><span className="font-semibold text-slate-300">Built for:</span> {entity.idealCustomer}</span>
+            </p>
+          )}
+
+          <div className="flex flex-wrap gap-4">
+            {entity.warranty && (
+              <div className="bg-slate-950/80 px-5 py-3 rounded-xl border border-slate-800 flex items-center gap-3">
+                <Clock className="w-5 h-5 text-cyan-400" />
+                <div>
+                  <span className="block text-xs text-slate-400 uppercase font-bold tracking-wider">Warranty</span>
+                  <span className="font-semibold text-white">{entity.warranty.duration}</span>
+                </div>
+              </div>
+            )}
+
+            {entity.pricing?.displayLabel && (
+              <div className="bg-cyan-900/20 px-5 py-3 rounded-xl border border-cyan-500/30 flex items-center gap-3">
+                <span className="font-bold text-cyan-400">{entity.pricing.displayLabel}</span>
+              </div>
             )}
           </div>
-        </div>
-      </div>
+        </header>
 
-      {/* Logistics & Trust Bar */}
-      <div className="bg-slate-900/50 border-b border-slate-800 py-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="flex items-center gap-4">
-              <Truck className="w-8 h-8 text-cyan-400 flex-shrink-0" />
-              <div>
-                <h4 className="text-white font-bold">Free Local Collection</h4>
-                <p className="text-sm text-slate-400">Direct from your door in {entity.title.replace(' Repair Center', '')}</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-4">
-              <ShieldCheck className="w-8 h-8 text-cyan-400 flex-shrink-0" />
-              <div>
-                <h4 className="text-white font-bold">No Fix, No Fee</h4>
-                <p className="text-sm text-slate-400">Risk-free diagnostic guarantee</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-4">
-              <Clock className="w-8 h-8 text-cyan-400 flex-shrink-0" />
-              <div>
-                <h4 className="text-white font-bold">Fast Turnaround</h4>
-                <p className="text-sm text-slate-400">Most repairs completed in 24-48 hours</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Local Details Section */}
-      <div className="py-20 bg-slate-950 border-b border-slate-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <h2 className="text-3xl font-black text-white mb-6">Serving the Entire {entity.title.replace(' Repair Center', '')} Area</h2>
-              <p className="text-lg text-slate-400 leading-relaxed mb-8">
-                You don't need to drive through traffic to get your device fixed. KCROC provides dedicated pick and drop service for {entity.isPhysicalLocation ? 'visitors to our lab and ' : ''}residents across our {entity.serviceRadiusKm}km service radius. 
-              </p>
-              
-              <div className="space-y-6">
-                <div>
-                  <h3 className="text-sm font-black text-slate-500 uppercase tracking-wider mb-3">Coverage Zones</h3>
-                  <div className="flex flex-wrap gap-2">
-                    {entity.serviceAreas.map(area => (
-                      <span key={area} className="px-4 py-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 text-sm font-medium">
-                        {area}
-                      </span>
-                    ))}
-                  </div>
+        {entity.whyChooseUs && entity.whyChooseUs.length > 0 && (
+          <section className="max-w-7xl mx-auto px-6 py-12 border-t border-slate-800/50 relative z-10">
+            <h2 className="text-2xl font-bold mb-8 text-white flex items-center gap-3">
+              <ShieldCheck className="w-6 h-6 text-cyan-400" /> Why Choose Us
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+              {entity.whyChooseUs.map((point, idx) => (
+                <div key={idx} className="bg-slate-900/50 backdrop-blur-sm p-6 rounded-2xl border border-slate-800 hover:border-cyan-500/30 transition-colors">
+                  <h3 className="text-white font-bold mb-2">{point.title}</h3>
+                  <p className="text-sm text-slate-400 leading-relaxed">{point.description}</p>
                 </div>
-
-                <div className="bg-slate-900/50 p-6 rounded-2xl border border-slate-800">
-                  <h3 className="text-sm font-black text-cyan-500 uppercase tracking-wider mb-2">Location Status</h3>
-                  <div className="flex items-start gap-3 mt-3">
-                    <Navigation className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-0.5" />
-                    <p className="text-slate-300 text-sm leading-relaxed">{entity.landmark}</p>
-                  </div>
-                </div>
-              </div>
+              ))}
             </div>
-            
-            <div className="relative">
-              <div className="absolute -inset-4 bg-gradient-to-r from-cyan-500/10 to-transparent blur-2xl rounded-[3rem]"></div>
-              <div className="relative bg-slate-900 border border-slate-800 p-8 rounded-3xl">
-                <h3 className="text-2xl font-bold text-white mb-6">Expert Component-Level Services</h3>
-                <div className="space-y-4">
-                  {topServices.map(service => (
-                    <a 
-                      key={service.id}
-                      href={`/${service.slug}`}
-                      className="flex items-center justify-between p-4 rounded-xl bg-slate-950 border border-slate-800 hover:border-cyan-500/50 transition-all group"
-                    >
-                      <div className="flex items-center gap-4">
-                        <Wrench className="w-5 h-5 text-cyan-500/70 group-hover:text-cyan-400 transition-colors" />
-                        <div>
-                          <p className="text-white font-bold group-hover:text-cyan-400 transition-colors">{service.title}</p>
-                          <p className="text-xs text-slate-500 hidden sm:block truncate max-w-[200px]">{service.shortDescription}</p>
-                        </div>
-                      </div>
-                      <ChevronRight className="w-5 h-5 text-slate-600 group-hover:text-cyan-400 transition-colors" />
-                    </a>
+          </section>
+        )}
+
+        {entity.coreFeatures && entity.coreFeatures.length > 0 && (
+          <section className="max-w-7xl mx-auto px-6 py-12 border-t border-slate-800/50 relative z-10">
+            <h2 className="text-2xl font-bold mb-8 text-white">Service Capabilities</h2>
+            <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              {entity.coreFeatures.map((feature, idx) => (
+                <li key={idx} className="flex items-center space-x-3 bg-slate-900/50 backdrop-blur-sm p-5 rounded-xl border border-slate-800 hover:border-cyan-500/30 transition-colors">
+                  <ShieldCheck className="w-5 h-5 text-cyan-400 flex-shrink-0" />
+                  <span className="text-slate-200 font-medium">{feature}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+
+        {((entity.deviceTypes && entity.deviceTypes.length > 0) || (entity.brands && entity.brands.length > 0)) && (
+          <section className="max-w-7xl mx-auto px-6 py-12 border-t border-slate-800/50 relative z-10">
+            {entity.deviceTypes && entity.deviceTypes.length > 0 && (
+              <div className="mb-8">
+                <h2 className="text-2xl font-bold mb-6 text-white flex items-center gap-3">
+                  <Monitor className="w-6 h-6 text-cyan-400" /> Devices We Cover
+                </h2>
+                <div className="flex flex-wrap gap-3">
+                  {entity.deviceTypes.map((device, idx) => (
+                    <span key={idx} className="px-4 py-2 rounded-full bg-slate-900/60 border border-slate-800 text-slate-200 text-sm font-medium">
+                      {device}
+                    </span>
                   ))}
                 </div>
-                <a href="/services" className="inline-block mt-6 text-sm font-bold text-cyan-400 hover:text-cyan-300">
-                  View all local services →
-                </a>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
+            )}
 
-      {/* Process Section (Tailored locally) */}
-      <div className="py-20 bg-slate-900/30 border-b border-slate-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-black text-white tracking-tight mb-4">How It Works</h2>
-            <div className="w-20 h-1 bg-cyan-500 mx-auto rounded-full"></div>
+            {entity.brands && entity.brands.length > 0 && (
+              <div>
+                <h3 className="text-sm uppercase tracking-wider font-bold text-slate-400 mb-4">Brands We Service</h3>
+                <div className="flex flex-wrap gap-2">
+                  {entity.brands.map((brand, idx) => (
+                    <span key={idx} className="px-3 py-1.5 rounded-lg bg-cyan-900/10 border border-cyan-500/20 text-cyan-300 text-xs font-semibold">
+                      {brand}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+          </section>
+        )}
+
+        {entity.commonIssues && entity.commonIssues.length > 0 && (
+          <section className="max-w-7xl mx-auto px-6 py-12 border-t border-slate-800/50 relative z-10">
+            <h2 className="text-2xl font-bold mb-8 text-white flex items-center gap-3">
+              <AlertTriangle className="w-6 h-6 text-cyan-400" /> Common Problems We Fix
+            </h2>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+              {entity.commonIssues.map((issue) => (
+                <div
+                  key={issue.id}
+                  className={`p-6 rounded-2xl border backdrop-blur-sm ${severityStyles[issue.severity] || severityStyles.low}`}
+                >
+                  <div className="flex items-center justify-between gap-3 mb-3">
+                    <h3 className="text-lg font-bold text-white">{issue.title}</h3>
+                    <span className="text-[10px] uppercase tracking-wider font-black px-2.5 py-1 rounded-full bg-black/30 flex-shrink-0">
+                      {issue.severity}
+                    </span>
+                  </div>
+                  <p className="text-sm leading-relaxed opacity-90">{issue.description}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {entity.performanceOutcomes && entity.performanceOutcomes.items.length > 0 && (
+          <section className="max-w-7xl mx-auto px-6 py-12 border-t border-slate-800/50 relative z-10">
+            <h2 className="text-2xl font-bold mb-4 text-white">Typical Results</h2>
+            <p className="text-xs text-slate-500 mb-8 max-w-2xl">{entity.performanceOutcomes.disclaimer}</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+              {entity.performanceOutcomes.items.map((item, idx) => (
+                <div key={idx} className="bg-slate-900/50 backdrop-blur-sm p-6 rounded-2xl border border-slate-800">
+                  <h3 className="text-cyan-400 font-bold text-sm uppercase tracking-wide mb-2">{item.metric}</h3>
+                  <p className="text-slate-300 text-sm leading-relaxed">{item.outcome}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {entity.repairExamples && entity.repairExamples.items.length > 0 && (
+          <section className="max-w-7xl mx-auto px-6 py-12 border-t border-slate-800/50 relative z-10">
+            <h2 className="text-2xl font-bold mb-4 text-white">Representative Repair Scenarios</h2>
+            <p className="text-xs text-slate-500 mb-8 max-w-2xl">{entity.repairExamples.disclaimer}</p>
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
+              {entity.repairExamples.items.map((example) => (
+                <div key={example.id} className="bg-slate-900/50 backdrop-blur-sm p-6 rounded-2xl border border-slate-800">
+                  <h3 className="text-white font-bold mb-4">{example.title}</h3>
+                  <dl className="space-y-3 text-sm">
+                    <div>
+                      <dt className="text-slate-500 font-semibold uppercase text-[10px] tracking-wide mb-1">Symptoms</dt>
+                      <dd className="text-slate-300 leading-relaxed">{example.symptoms}</dd>
+                    </div>
+                    <div>
+                      <dt className="text-slate-500 font-semibold uppercase text-[10px] tracking-wide mb-1">Diagnosis</dt>
+                      <dd className="text-slate-300 leading-relaxed">{example.diagnosis}</dd>
+                    </div>
+                    <div>
+                      <dt className="text-slate-500 font-semibold uppercase text-[10px] tracking-wide mb-1">Outcome</dt>
+                      <dd className="text-cyan-300 leading-relaxed">{example.outcome}</dd>
+                    </div>
+                  </dl>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {entity.process && entity.process.length > 0 && (
+          <section className="max-w-7xl mx-auto px-6 py-12 border-t border-slate-800/50 relative z-10">
+            <h2 className="text-2xl font-bold mb-8 text-white">Our Repair Process</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {entity.process.map((step) => (
+                <div key={step.step} className="relative bg-slate-900/50 backdrop-blur-sm p-6 rounded-2xl border border-slate-800">
+                  <span className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-cyan-500 text-slate-950 font-black text-sm mb-4">
+                    {step.step}
+                  </span>
+                  <h3 className="text-white font-bold mb-2">{step.title}</h3>
+                  <p className="text-sm text-slate-400 leading-relaxed">{step.description}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {entity.inspectionChecklist && entity.inspectionChecklist.length > 0 && (
+          <section className="max-w-7xl mx-auto px-6 py-12 border-t border-slate-800/50 relative z-10">
+            <h2 className="text-2xl font-bold mb-8 text-white flex items-center gap-3">
+              <ShieldCheck className="w-6 h-6 text-cyan-400" /> What We Check
+            </h2>
+            <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+              {entity.inspectionChecklist.map((item, idx) => (
+                <li key={idx} className="flex items-center gap-3 bg-slate-900/40 px-4 py-3 rounded-xl border border-slate-800">
+                  <ShieldCheck className="w-4 h-4 text-cyan-400 flex-shrink-0" />
+                  <span className="text-slate-300 text-sm">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+
+        {entity.faqs && entity.faqs.length > 0 && (
+          <section className="max-w-4xl mx-auto px-6 py-12 border-t border-slate-800/50 relative z-10">
+            <h2 className="text-2xl font-bold mb-8 text-white text-center">Frequently Asked Questions</h2>
+            <div className="space-y-3">
+              {entity.faqs.map((faq) => {
+                const isOpen = openFaqId === faq.id;
+                return (
+                  <div key={faq.id} className="bg-slate-900/50 border border-slate-800 rounded-2xl overflow-hidden">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        const nextOpen = isOpen ? null : faq.id;
+                        setOpenFaqId(nextOpen);
+                        if (nextOpen) {
+                          trackConversion(
+                            'faq_expand',
+                            { cta_name: 'service_page_faq', button_position: 'faq_section', entity_id: entity.id, entity_type: 'Service', entity_slug: entity.slug }
+                          );
+                        }
+                      }}
+                      aria-expanded={isOpen}
+                      className="w-full flex items-center justify-between gap-3 text-left px-6 py-4"
+                    >
+                      <span className="text-white font-semibold">{faq.title}</span>
+                      <ChevronDown
+                        className={`w-4 h-4 text-slate-500 shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
+                      />
+                    </button>
+                    {isOpen && (
+                      <p className="text-slate-400 text-sm leading-relaxed px-6 pb-4">
+                        {faq.answer}
+                      </p>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </section>
+        )}
+
+        {KCROC_GRAPH.locations && KCROC_GRAPH.locations.length > 0 && (
+          <section className="max-w-7xl mx-auto px-6 py-12 border-t border-slate-800/50 relative z-10">
+            <h2 className="text-2xl font-bold mb-8 text-white flex items-center gap-3">
+              <MapPin className="w-6 h-6 text-cyan-400" /> Service Areas in Kuwait
+            </h2>
+            <div className="flex flex-wrap gap-3">
+              {KCROC_GRAPH.locations.map((loc) => (
+                <span key={loc.id} className="px-4 py-2 rounded-full bg-slate-900/60 border border-slate-800 text-slate-200 text-sm font-medium">
+                  {loc.title}
+                </span>
+              ))}
+            </div>
+          </section>
+        )}
+
+        <section className="max-w-7xl mx-auto px-6 py-16 border-t border-slate-800/50 text-center relative z-10">
+          <div className="bg-slate-900/40 backdrop-blur-lg border border-slate-800 rounded-3xl p-10 shadow-2xl">
+            <h2 className="text-3xl font-black text-white mb-6">Ready to fix your device?</h2>
+            <p className="text-slate-400 mb-8 max-w-2xl mx-auto">
+              Our technicians are ready to trace the fault. Send us your symptoms via WhatsApp for a fast, free estimate.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              {business?.telephone && (
+                <a 
+                  href={`https://wa.me/${business.telephone}?text=${whatsappMessage}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => trackConversion(
+                    'whatsapp_click',
+                    { cta_name: 'service_page_whatsapp', button_position: 'bottom_cta', entity_id: entity.id, entity_type: 'Service', entity_slug: entity.slug }
+                  )}
+                  className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black py-4 px-8 rounded-xl transition-all shadow-[0_0_15px_rgba(34,211,238,0.2)] hover:scale-105 duration-200 flex items-center gap-2"
+                >
+                  <MessageCircle className="w-5 h-5" />
+                  Message on WhatsApp
+                </a>
+              )}
+              {entity.warranty?.noFixNoFee && (
+                <div className="flex items-center justify-center px-8 py-4 border border-slate-800 rounded-xl bg-slate-950/80 text-slate-300 font-medium">
+                  <ShieldCheck className="w-5 h-5 text-cyan-400 mr-2" />
+                  No Fix, No Fee Guarantee
+                </div>
+              )}
+            </div>
           </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-slate-950 p-8 rounded-2xl border border-slate-800 relative">
-              <div className="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center font-black text-xl mb-6 border border-cyan-500/20">1</div>
-              <h3 className="text-xl font-bold text-white mb-3">Book via WhatsApp</h3>
-              <p className="text-slate-400 text-sm leading-relaxed">Contact us describing the issue. We'll arrange a free collection from your location in {entity.title.replace(' Repair Center', '')}.</p>
-            </div>
-            <div className="bg-slate-950 p-8 rounded-2xl border border-slate-800 relative">
-              <div className="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center font-black text-xl mb-6 border border-cyan-500/20">2</div>
-              <h3 className="text-xl font-bold text-white mb-3">Lab Diagnostic</h3>
-              <p className="text-slate-400 text-sm leading-relaxed">Your device goes to our Hawalli lab for strict component-level testing. You receive a firm quote before we repair it.</p>
-            </div>
-            <div className="bg-slate-950 p-8 rounded-2xl border border-slate-800 relative">
-              <div className="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center font-black text-xl mb-6 border border-cyan-500/20">3</div>
-              <h3 className="text-xl font-bold text-white mb-3">Delivered Back to You</h3>
-              <p className="text-slate-400 text-sm leading-relaxed">Once stress-tested and verified, we deliver the repaired device back to your door with a 30-day warranty.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+        </section>
+      </main>
+    </>
   );
 }
