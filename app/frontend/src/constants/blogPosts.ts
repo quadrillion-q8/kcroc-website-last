@@ -1,12 +1,111 @@
 // File: app/frontend/src/constants/blogPosts.ts
 
+/* ═══════════════════════════════════════════════════════════════════
+   RICH CONTENT BLOCK SYSTEM
+   Optional, additive schema. Existing posts using `content: string[]`
+   keep working exactly as before — BlogPostTemplate falls back to that
+   simple renderer whenever `richContent` isn't present. New posts can
+   opt into these blocks for magazine-style layouts (comparison tables,
+   timelines, stat cards, callouts, FAQ w/ schema, etc.).
+═══════════════════════════════════════════════════════════════════ */
+
+export interface HeadingBlock {
+  type: 'h2' | 'h3';
+  text: string;
+  id: string; // stable anchor id, used by the sticky Table of Contents
+}
+
+export interface ParagraphBlock {
+  type: 'paragraph';
+  text: string;
+}
+
+export interface CalloutBlock {
+  type: 'callout';
+  variant: 'info' | 'tip' | 'expert' | 'warning' | 'recommendation' | 'didyouknow';
+  title?: string;
+  text: string;
+}
+
+export interface QuoteBlock {
+  type: 'quote';
+  text: string;
+  attribution?: string;
+}
+
+export interface StatCard {
+  value: string;
+  label: string;
+}
+
+export interface StatCardsBlock {
+  type: 'statCards';
+  items: StatCard[];
+}
+
+export interface ComparisonRow {
+  feature: string;
+  values: string[]; // one value per column, same order as `columns`
+}
+
+export interface ComparisonTableBlock {
+  type: 'comparisonTable';
+  title?: string;
+  columns: string[]; // e.g. ['8GB RAM', '16GB RAM', '32GB RAM']
+  rows: ComparisonRow[];
+}
+
+export interface TimelineStep {
+  label: string;
+  note?: string;
+}
+
+export interface TimelineBlock {
+  type: 'timeline';
+  title?: string;
+  steps: TimelineStep[];
+}
+
+export interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+export interface FAQBlock {
+  type: 'faq';
+  items: FAQItem[];
+}
+
+export interface ImageBlock {
+  type: 'image';
+  src: string;
+  alt: string;
+  caption?: string;
+}
+
+export type ContentBlock =
+  | HeadingBlock
+  | ParagraphBlock
+  | CalloutBlock
+  | QuoteBlock
+  | StatCardsBlock
+  | ComparisonTableBlock
+  | TimelineBlock
+  | FAQBlock
+  | ImageBlock;
+
+/* ═══════════════════════════════════════════════════════════════════
+   BLOG POST
+═══════════════════════════════════════════════════════════════════ */
+
 export interface BlogPost {
   id: string;
   slug: string;
   title: string;
   excerpt: string;
   description?: string;
-  content: string[];
+  content: string[];          // legacy simple format — always kept for back-compat
+  richContent?: ContentBlock[]; // optional rich format — used when present
   image: string;
   date: string;
   author: string;
@@ -14,6 +113,7 @@ export interface BlogPost {
   readTime: string;
   isPillar?: boolean;
   clusterParent?: string;
+  tags?: string[];
 }
 
 export const BLOG_POSTS: BlogPost[] = [
@@ -70,6 +170,76 @@ export const BLOG_POSTS: BlogPost[] = [
     author: "KCROC Repair Team",
     category: "Maintenance",
     readTime: "3 min read",
+    clusterParent: "laptop-repair-kuwait-2026"
+  },
+  {
+    id: "blog-8gb-ram-2026",
+    slug: "why-8gb-ram-is-no-longer-enough-for-windows-11",
+    title: "Why 8GB RAM Is No Longer Enough for Windows 11 in 2026",
+    excerpt: "Windows 11 technically runs on 8GB RAM — but running isn't the same as running well. Here's what's actually happening under the hood, and when an upgrade is worth it.",
+    description: "8GB RAM struggling on Windows 11 in 2026? Here's why Chrome, Photoshop, and multitasking hit a wall at 8GB, what a RAM upgrade actually fixes, and when to consider 16GB or 32GB.",
+    content: [
+      "Windows 11 technically runs on 8GB RAM — but running isn't the same as running well.",
+      "Chrome, Slack, Spotify, and Windows background services can consume the majority of 8GB before you've even opened a real application.",
+      "A RAM upgrade to 16GB is the single most cost-effective performance fix for most everyday laptops in 2026."
+    ],
+    richContent: [
+      { type: 'paragraph', text: "Windows 11 technically runs on 8GB RAM — but running isn't the same as running well. If your laptop shipped with 8GB a few years ago and it's started feeling sluggish under everyday use, the operating system hasn't changed the goalposts on its own. What's changed is how much memory a normal browsing and work session actually demands." },
+      { type: 'callout', variant: 'didyouknow', title: 'Did You Know?', text: "A single Chrome tab with a few extensions active can use 300–500MB of RAM on its own. Ten tabs open at once is a common, completely ordinary way to use up 4–5GB before touching any other application." },
+      { type: 'h2', text: 'Where Your 8GB Actually Goes', id: 'where-your-8gb-goes' },
+      { type: 'paragraph', text: "Windows 11 itself reserves roughly 2–3GB for background services, drivers, and the shell before you open a single program. That leaves 5–6GB of usable memory on an 8GB machine — and modern browsers, chat apps, and creative tools were not designed with that budget in mind." },
+      { type: 'paragraph', text: "Chrome is the most common culprit, but it isn't alone. Slack, Spotify's desktop app, Discord, and Windows' own background app refresh all sit in memory persistently, even when minimized. None of these are unusually greedy by 2026 standards — they're just competing for a pool of memory that hasn't grown since the laptop was built." },
+      { type: 'h2', text: 'What Happens When RAM Runs Out', id: 'memory-swapping' },
+      { type: 'paragraph', text: "When physical RAM fills up, Windows doesn't crash — it starts using your storage drive as overflow memory, a process called paging or memory swapping. This keeps things technically running, but storage is dramatically slower than RAM, even on a fast NVMe SSD. The result is the specific kind of stutter familiar to anyone who's had too many things open at once: everything freezes for a second, then catches up." },
+      { type: 'timeline', title: 'A Typical 8GB Session', steps: [
+        { label: 'Fresh boot', note: '~2.5GB used by Windows 11 alone' },
+        { label: 'Browser opens', note: '+1GB for Chrome\'s base process' },
+        { label: '10 tabs open', note: '+3-4GB across tabs and extensions' },
+        { label: 'Spotify running', note: '+300-500MB in the background' },
+        { label: 'Slack running', note: '+400-600MB in the background' },
+        { label: 'Photoshop opens', note: 'Available RAM is already gone' },
+        { label: 'Memory swapping begins', note: 'Windows starts paging to disk' },
+        { label: 'Performance drops', note: 'Stutters, delayed switching, lag' },
+        { label: 'User notices slowdowns', note: 'The laptop "feels old"' }
+      ]},
+      { type: 'h2', text: '8GB vs 16GB vs 32GB: What Actually Changes', id: 'ram-comparison' },
+      { type: 'comparisonTable', columns: ['8GB', '16GB', '32GB'], rows: [
+        { feature: 'Everyday multitasking', values: ['Struggles past ~8 tabs', 'Comfortable', 'Comfortable'] },
+        { feature: 'Photoshop / Lightroom', values: ['Frequent swapping', 'Usable for most edits', 'Smooth on large files'] },
+        { feature: '15-20 Chrome tabs', values: ['Heavy slowdown', 'Generally fine', 'No issue'] },
+        { feature: 'Virtual machines', values: ['Not practical', 'One VM, limited', 'Multiple VMs'] },
+        { feature: 'Gaming (background apps open)', values: ['Stutter risk', 'Solid', 'Solid'] },
+        { feature: 'Office work (Word, Excel, Teams)', values: ['Workable, occasional lag', 'Smooth', 'Smooth'] },
+        { feature: 'Future-proofing (3+ years)', values: ['Not recommended', 'Reasonable', 'Comfortable margin'] },
+      ]},
+      { type: 'statCards', items: [
+        { value: '16GB', label: 'Recommended Minimum' },
+        { value: '8GB', label: 'Budget Configuration' },
+        { value: '2×', label: 'Better Multitasking Headroom' },
+        { value: '90%', label: 'Less SSD Swapping' }
+      ]},
+      { type: 'quote', text: "Windows 11 technically runs on 8GB RAM — but running isn't the same as running well." },
+      { type: 'h2', text: 'Does a Faster SSD Fix This Instead?', id: 'ssd-vs-ram' },
+      { type: 'paragraph', text: "An NVMe SSD upgrade is one of the best value repairs for an aging laptop — it dramatically cuts boot times and app-launch delays. But it doesn't remove the underlying memory pressure; it just makes the swapping Windows does when RAM runs out less painful. If your laptop is already on an HDD, upgrading to an SSD is worth doing regardless. If it's already on an SSD and still slows down under normal multitasking, that's a RAM problem an SSD can't fully solve." },
+      { type: 'callout', variant: 'tip', title: 'Performance Tip', text: "Check whether your laptop's RAM is upgradeable before assuming a full replacement is needed. Many business and gaming laptops still have accessible SO-DIMM slots — some modern ultrabooks solder RAM directly to the board and can't be upgraded at all. We can check this from your model number in under a minute." },
+      { type: 'h2', text: 'Should You Upgrade to 16GB or 32GB?', id: 'which-to-choose' },
+      { type: 'paragraph', text: "For most everyday use — browsing, office work, streaming, light photo editing — 16GB comfortably covers 2026's typical workload with room to spare. 32GB is worth it specifically for heavier creative work (large Photoshop/Lightroom files, video editing), running virtual machines, or genuinely future-proofing a machine you plan to keep for 4-5+ years." },
+      { type: 'callout', variant: 'expert', title: 'Expert Advice', text: "If you're deciding between 16GB and 32GB and you're not doing video editing or running VMs daily, 16GB is the better value — the jump from 8GB to 16GB is where most people actually feel the difference. Going straight to 32GB rarely changes day-to-day responsiveness if your workload doesn't need it." },
+      { type: 'faq', items: [
+        { question: 'Is 8GB RAM enough in 2026?', answer: 'For very light use — basic browsing with a handful of tabs, email, and document editing — 8GB can still function acceptably. For typical multitasking with modern browsers, chat apps, and creative software running together, 8GB is a common source of stutter and slowdown.' },
+        { question: 'Can Windows 11 run on 8GB?', answer: 'Yes, 8GB meets Windows 11\'s minimum requirements and it will boot and run. The issue isn\'t whether it runs, but how much usable memory is left over for your actual applications once the OS and background services take their share.' },
+        { question: 'Why does Chrome use so much RAM?', answer: 'Chrome runs each tab and extension as a separate process for stability and security, which uses more memory than a single shared process would. This makes it fast and crash-resistant, but memory-hungry with many tabs open.' },
+        { question: 'Can I upgrade laptop RAM?', answer: 'It depends on the model. Many business and gaming laptops have accessible SO-DIMM memory slots that support an upgrade. Some modern thin-and-light ultrabooks have RAM soldered directly to the motherboard and cannot be upgraded. We can check compatibility from your exact model number.' },
+        { question: 'Does an SSD replace RAM?', answer: 'No. An SSD upgrade speeds up storage-related tasks like boot time and app launches, and reduces the penalty when Windows does have to swap memory to disk. It doesn\'t increase how much you can keep open at once without slowdown — that\'s specifically what RAM does.' },
+        { question: 'Should I buy 16GB or 32GB?', answer: '16GB is the right fit for most everyday multitasking, browsing, and office work. 32GB is worth the extra cost specifically for heavy creative work, running virtual machines, or if you want a longer runway before your next upgrade.' }
+      ]}
+    ],
+    image: "/images/blog/8gb-ram-windows-11-kuwait.webp",
+    date: "2026-07-30",
+    author: "KCROC Technical Team",
+    category: "Laptop Performance",
+    readTime: "8-10 min read",
+    tags: ["Windows 11", "RAM", "Laptop Upgrade", "Laptop Performance", "Memory Upgrade", "Windows Optimization", "Computer Repair Kuwait"],
     clusterParent: "laptop-repair-kuwait-2026"
   }
 ];
