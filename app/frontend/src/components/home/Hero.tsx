@@ -244,11 +244,24 @@ export default function Hero() {
               </div>
             </div>
 
-            {/* Right Content */}
-            <div>
-              <Card className="bg-slate-900/40 border border-slate-800 rounded-3xl backdrop-blur">
+            {/* Right Content — Featuring Lab Authority Image */}
+            <div className="relative">
+              <div className="absolute -inset-2 bg-gradient-to-r from-cyan-500/20 to-emerald-500/20 rounded-3xl blur-2xl opacity-75"></div>
+              <Card className="relative bg-slate-900/80 border border-slate-800 rounded-3xl backdrop-blur overflow-hidden shadow-2xl">
+                <div className="aspect-[16/10] overflow-hidden bg-slate-950 relative group">
+                  <img 
+                    src="/images/home/kcroc-component-level-motherboard-repair-lab.webp.png" 
+                    alt="KCROC Component-Level Repair Lab in Hawalli Kuwait"
+                    className="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-700 ease-out"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-80"></div>
+                  <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between text-xs font-bold text-cyan-400 bg-slate-950/80 backdrop-blur-md px-3 py-1.5 rounded-xl border border-cyan-500/20 shadow-lg">
+                    <span>ESD-Safe Hawalli Laboratory</span>
+                    <span className="text-emerald-400">● Live Diagnostics</span>
+                  </div>
+                </div>
                 <CardContent className="p-8">
-                  <div className="flex items-center gap-2 mb-4">
+                  <div className="flex items-center gap-2 mb-3">
                     {[...Array(5)].map((_, i) => (
                       <Star key={i} className="w-4 h-4 fill-current text-cyan-400" />
                     ))}
@@ -260,12 +273,12 @@ export default function Hero() {
                     {hero?.secondaryCTA?.text ?? 'Need a precise diagnostic?'}
                   </h3>
                   <p className="text-slate-400 text-sm mb-6">
-                    Send us your device symptoms. We trace the fault — free of charge, no obligation.
+                    Send us your device symptoms. We trace the fault at board-level — free of charge, no obligation.
                   </p>
                   <Button
                     asChild
                     size="lg"
-                    className="w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold rounded-full"
+                    className="w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold rounded-full shadow-lg"
                   >
                     <a
                       href={`https://wa.me/${phone}`}
