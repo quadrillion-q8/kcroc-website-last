@@ -1,4 +1,4 @@
-// File: src/utils/linkGraph.tsx
+// File: app/frontend/src/utils/linkGraph.tsx
 import React, { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { KCROC_GRAPH } from '../data/graph';
@@ -18,10 +18,16 @@ export const AutoLink: React.FC<AutoLinkProps> = ({ text, currentEntityId }) => 
   const sortedTerms = useMemo(() => {
     const terms: { phrase: string; entityId: string; url: string; title: string }[] = [];
 
-    Object.values(KCROC_GRAPH.entities).forEach(entity => {
+    Object.values(KCROC_GRAPH.entities).forEach((entity: any) => {
       // 1. Skip inactive entities or the current page (No self-linking)
       if (!entity.isActive) return;
       if (currentEntityId && entity.id === currentEntityId) return;
+
+      // 🚀 FIX: Safely skip utility entities (USPs, Badges, Stats) that don't have SEO blocks
+      if (!entity.seo || !entity.seo.canonicalUrl) return;
+
+      // Ensure React Router uses relative paths to prevent hard page reloads
+      const relativeUrl = entity.seo.canonicalUrl.replace(/^https?:\/\/[^\/]+/, '') || '/';
 
       // 2. Gather all possible anchor text variations
       const phrases = [
@@ -33,11 +39,11 @@ export const AutoLink: React.FC<AutoLinkProps> = ({ text, currentEntityId }) => 
       ];
 
       phrases.forEach(phrase => {
-        if (phrase && phrase.trim().length > 3) { // Ignore tiny words like "PC" to prevent false positives
+        if (phrase && typeof phrase === 'string' && phrase.trim().length > 3) { // Ignore tiny words like "PC" to prevent false positives
           terms.push({
             phrase: phrase.trim(),
             entityId: entity.id,
-            url: entity.seo.canonicalUrl,
+            url: relativeUrl,
             title: entity.title
           });
         }
