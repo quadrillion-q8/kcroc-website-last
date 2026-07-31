@@ -188,11 +188,17 @@ export const BLOG_POSTS: BlogPost[] = [
       { type: 'callout', variant: 'didyouknow', title: 'Did You Know?', text: "A single Chrome tab with a few extensions active can use 300–500MB of RAM on its own. Ten tabs open at once is a common, completely ordinary way to use up 4–5GB before touching any other application." },
       { type: 'h2', text: 'Where Your 8GB Actually Goes', id: 'where-your-8gb-goes' },
       { type: 'paragraph', text: "Windows 11 itself reserves roughly 2–3GB for background services, drivers, and the shell before you open a single program. That leaves 5–6GB of usable memory on an 8GB machine — and modern browsers, chat apps, and creative tools were not designed with that budget in mind." },
-      { type: 'image', src: '/images/blog/windows-11-ram-performance.jpg', alt: 'Windows 11 Background RAM Usage', caption: 'Windows 11 base processes and background apps consume a significant portion of an 8GB pool before user applications are even launched.' },
+      
+      // ✅ FIXED: Updated to .webp
+      { type: 'image', src: '/images/blog/windows-11-ram-performance.webp', alt: 'Windows 11 Background RAM Usage', caption: 'Windows 11 base processes and background apps consume a significant portion of an 8GB pool before user applications are even launched.' },
+      
       { type: 'paragraph', text: "Chrome is the most common culprit, but it isn't alone. Slack, Spotify's desktop app, Discord, and Windows' own background app refresh all sit in memory persistently, even when minimized. None of these are unusually greedy by 2026 standards — they're just competing for a pool of memory that hasn't grown since the laptop was built." },
       { type: 'h2', text: 'What Happens When RAM Runs Out', id: 'memory-swapping' },
       { type: 'paragraph', text: "When physical RAM fills up, Windows doesn't crash — it starts using your storage drive as overflow memory, a process called paging or memory swapping. This keeps things technically running, but storage is dramatically slower than RAM, even on a fast NVMe SSD. The result is the specific kind of stutter familiar to anyone who's had too many things open at once: everything freezes for a second, then catches up." },
-      { type: 'image', src: '/images/blog/windows-11-memory-performance.jpg', alt: 'SSD Paging and Virtual Memory', caption: 'When physical RAM is exhausted, Windows relies on your SSD for virtual memory, resulting in micro-stutters and increased drive wear.' },
+      
+      // ✅ FIXED: Updated to .webp
+      { type: 'image', src: '/images/blog/windows-11-memory-performance.webp', alt: 'SSD Paging and Virtual Memory', caption: 'When physical RAM is exhausted, Windows relies on your SSD for virtual memory, resulting in micro-stutters and increased drive wear.' },
+      
       { type: 'timeline', title: 'A Typical 8GB Session', steps: [
         { label: 'Fresh boot', note: '~2.5GB used by Windows 11 alone' },
         { label: 'Browser opens', note: '+1GB for Chrome\'s base process' },
@@ -205,7 +211,10 @@ export const BLOG_POSTS: BlogPost[] = [
         { label: 'User notices slowdowns', note: 'The laptop "feels old"' }
       ]},
       { type: 'h2', text: '8GB vs 16GB vs 32GB: What Actually Changes', id: 'ram-comparison' },
+      
+      // ✅ FIXED: Updated to .webp
       { type: 'image', src: '/images/blog/windows-11-laptop-multitasking.webp', alt: 'Windows 11 Heavy Multitasking', caption: 'Modern workflows easily exceed 8GB when balancing browsers, communication apps, and creative tools simultaneously.' },
+      
       { type: 'comparisonTable', columns: ['8GB', '16GB', '32GB'], rows: [
         { feature: 'Everyday multitasking', values: ['Struggles past ~8 tabs', 'Comfortable', 'Comfortable'] },
         { feature: 'Photoshop / Lightroom', values: ['Frequent swapping', 'Usable for most edits', 'Smooth on large files'] },
@@ -225,7 +234,10 @@ export const BLOG_POSTS: BlogPost[] = [
       { type: 'h2', text: 'Does a Faster SSD Fix This Instead?', id: 'ssd-vs-ram' },
       { type: 'paragraph', text: "An NVMe SSD upgrade is one of the best value repairs for an aging laptop — it dramatically cuts boot times and app-launch delays. But it doesn't remove the underlying memory pressure; it just makes the swapping Windows does when RAM runs out less painful. If your laptop is already on an HDD, upgrading to an SSD is worth doing regardless. If it's already on an SSD and still slows down under normal multitasking, that's a RAM problem an SSD can't fully solve." },
       { type: 'callout', variant: 'tip', title: 'Performance Tip', text: "Check whether your laptop's RAM is upgradeable before assuming a full replacement is needed. Many business and gaming laptops still have accessible SO-DIMM slots — some modern ultrabooks solder RAM directly to the board and can't be upgraded at all. We can check this from your model number in under a minute." },
-      { type: 'image', src: '/images/blog/windows-11-ram-upgrade-guide.jpg', alt: 'Laptop RAM Upgrade Process', caption: 'Adding a second stick of RAM enables dual-channel memory, dramatically improving CPU bandwidth and system responsiveness.' },
+      
+      // ✅ FIXED: Updated to .webp
+      { type: 'image', src: '/images/blog/windows-11-ram-upgrade-guide.webp', alt: 'Laptop RAM Upgrade Process', caption: 'Adding a second stick of RAM enables dual-channel memory, dramatically improving CPU bandwidth and system responsiveness.' },
+      
       { type: 'h2', text: 'Should You Upgrade to 16GB or 32GB?', id: 'which-to-choose' },
       { type: 'paragraph', text: "For most everyday use — browsing, office work, streaming, light photo editing — 16GB comfortably covers 2026's typical workload with room to spare. 32GB is worth it specifically for heavier creative work (large Photoshop/Lightroom files, video editing), running virtual machines, or genuinely future-proofing a machine you plan to keep for 4-5+ years." },
       { type: 'callout', variant: 'expert', title: 'Expert Advice', text: "If you're deciding between 16GB and 32GB and you're not doing video editing or running VMs daily, 16GB is the better value — the jump from 8GB to 16GB is where most people actually feel the difference. Going straight to 32GB rarely changes day-to-day responsiveness if your workload doesn't need it." },
@@ -238,7 +250,10 @@ export const BLOG_POSTS: BlogPost[] = [
         { question: 'Should I buy 16GB or 32GB?', answer: '16GB is the right fit for most everyday multitasking, browsing, and office work. 32GB is worth the extra cost specifically for heavy creative work, running virtual machines, or if you want a longer runway before your next upgrade.' }
       ]}
     ],
-    image: "/images/blog/windows-11-8gb-ram-performance.jpg",
+    
+    // ✅ FIXED: Main featured image updated to .webp
+    image: "/images/blog/windows-11-8gb-ram-performance.webp",
+    
     date: "2026-07-30",
     author: "KCROC Technical Team",
     category: "Laptop Performance",
