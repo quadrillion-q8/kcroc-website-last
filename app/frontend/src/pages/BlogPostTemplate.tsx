@@ -75,7 +75,7 @@ const RichBlock: React.FC<{ block: ContentBlock; headingRef?: (el: HTMLElement |
           <Icon className={`w-6 h-6 shrink-0 ${style.text}`} aria-hidden="true" />
           <div>
             <p className={`text-xs font-black uppercase tracking-wider mb-1.5 ${style.text}`}>{block.title || style.label}</p>
-            <p className="text-slate-300 text-sm leading-relaxed">{block.text}</p>
+            <p className="text-slate-300 text-sm leading-relaxed"><AutoLink text={block.text} /></p>
           </div>
         </div>
       );
@@ -84,7 +84,7 @@ const RichBlock: React.FC<{ block: ContentBlock; headingRef?: (el: HTMLElement |
       return (
         <blockquote className="my-10 border-l-4 border-cyan-500 pl-6 py-2">
           <QuoteIcon className="w-6 h-6 text-cyan-500/50 mb-2" aria-hidden="true" />
-          <p className="text-xl md:text-2xl text-white font-medium leading-relaxed italic">{block.text}</p>
+          <p className="text-xl md:text-2xl text-white font-medium leading-relaxed italic"><AutoLink text={block.text} /></p>
           {block.attribution && <cite className="block mt-3 text-sm text-slate-500 not-italic">— {block.attribution}</cite>}
         </blockquote>
       );
@@ -159,8 +159,12 @@ const RichBlock: React.FC<{ block: ContentBlock; headingRef?: (el: HTMLElement |
           {block.caption && <figcaption className="text-xs text-slate-500 text-center mt-2">{block.caption}</figcaption>}
         </figure>
       );
-    default:
+    default: {
+      // Type-safety exhaustiveness check — catches new block types at compile time
+      const _exhaustiveCheck: never = block;
+      console.warn(`Unhandled block type encountered: ${(_exhaustiveCheck as any)?.type}`);
       return null;
+    }
   }
 };
 
@@ -225,7 +229,17 @@ export default function BlogPostTemplate() {
 
   const pageUrl = `${BUSINESS_INFO.url}${getBlogRoute(post.slug)}`;
   const waLink = getIntentWhatsAppLink("blog", post.title);
-  const faqBlock = post.richContent?.find((b): b is Extract<ContentBlock, { type: 'faq' }> => b.type === 'faq');
+
+  // Combine all FAQ blocks for unified Schema.org metadata
+  const faqBlocks = useMemo(
+    () => post.richContent?.filter((b): b is Extract<ContentBlock, { type: 'faq' }> => b.type === 'faq') ?? [],
+    [post]
+  );
+  
+  const allFaqItems = useMemo(
+    () => faqBlocks.flatMap(block => block.items),
+    [faqBlocks]
+  );
 
   const relatedPosts = useMemo(() => {
     if (post.isPillar) {
@@ -310,17 +324,17 @@ export default function BlogPostTemplate() {
           { "@type": "ListItem", "position": 3, "name": post.title, "item": pageUrl }
         ]
       },
-      ...(faqBlock ? [{
+      ...(allFaqItems.length > 0 ? [{
         "@type": "FAQPage",
         "@id": `${pageUrl}#faq`,
-        "mainEntity": faqBlock.items.map(item => ({
+        "mainEntity": allFaqItems.map(item => ({
           "@type": "Question",
           "name": item.question,
           "acceptedAnswer": { "@type": "Answer", "text": item.answer }
         }))
       }] : [])
     ]
-  }), [post, pageUrl, faqBlock]);
+  }), [post, pageUrl, allFaqItems]);
 
   return (
     <main className="w-full min-h-screen bg-transparent text-slate-200 pt-32 pb-24">
@@ -468,13 +482,15 @@ export default function BlogPostTemplate() {
                   >
                     <MessageCircle size={18} aria-hidden="true" /> Free Diagnosis
                   </a>
-                  <a
-                    href={`tel:${BUSINESS_INFO.phone || ''}`}
-                    onClick={() => trackLead('Blog_CTA_Call')}
-                    className="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 transition-colors text-white px-6 py-3 rounded-xl font-black border border-slate-700"
-                  >
-                    <Phone size={18} aria-hidden="true" /> Call Now
-                  </a>
+                  {BUSINESS_INFO.phone && (
+                    <a
+                      href={`tel:${BUSINESS_INFO.phone}`}
+                      onClick={() => trackLead('Blog_CTA_Call')}
+                      className="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 transition-colors text-white px-6 py-3 rounded-xl font-black border border-slate-700"
+                    >
+                      <Phone size={18} aria-hidden="true" /> Call Now
+                    </a>
+                  )}
                 </div>
                 <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-slate-500 font-bold uppercase tracking-wide">
                   <span>30-Day Warranty</span>
@@ -574,13 +590,15 @@ export default function BlogPostTemplate() {
               >
                 <MessageCircle size={16} aria-hidden="true" /> WhatsApp Us
               </a>
-              <a
-                href={`tel:${BUSINESS_INFO.phone || ''}`}
-                onClick={() => trackLead('Blog_Sidebar_Call')}
-                className="flex items-center justify-center gap-2 border border-slate-700 hover:border-cyan-500/40 text-white font-bold py-2.5 rounded-xl transition-colors"
-              >
-                <Phone size={16} aria-hidden="true" /> Call Now
-              </a>
+              {BUSINESS_INFO.phone && (
+                <a
+                  href={`tel:${BUSINESS_INFO.phone}`}
+                  onClick={() => trackLead('Blog_Sidebar_Call')}
+                  className="flex items-center justify-center gap-2 border border-slate-700 hover:border-cyan-500/40 text-white font-bold py-2.5 rounded-xl transition-colors"
+                >
+                  <Phone size={16} aria-hidden="true" /> Call Now
+                </a>
+              )}
             </div>
           </div>
         </aside>
