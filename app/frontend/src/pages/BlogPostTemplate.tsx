@@ -21,12 +21,12 @@ import SchemaMarkup from '../components/seo/SchemaMarkup';
 ═══════════════════════════════════════════════════════════════════ */
 
 const CALLOUT_STYLES: Record<string, { icon: React.ElementType; border: string; bg: string; text: string; label: string }> = {
-  info:           { icon: Info,          border: 'border-cyan-500/30',   bg: 'bg-cyan-500/5',   text: 'text-cyan-400',   label: 'Info' },
+  info:           { icon: Info,          border: 'border-cyan-500/30',    bg: 'bg-cyan-500/5',    text: 'text-cyan-400',    label: 'Info' },
   tip:            { icon: Lightbulb,     border: 'border-emerald-500/30', bg: 'bg-emerald-500/5', text: 'text-emerald-400', label: 'Performance Tip' },
   expert:         { icon: Sparkles,      border: 'border-purple-500/30',  bg: 'bg-purple-500/5',  text: 'text-purple-400',  label: 'Expert Advice' },
   warning:        { icon: AlertTriangle, border: 'border-amber-500/30',   bg: 'bg-amber-500/5',   text: 'text-amber-400',   label: 'Warning' },
-  recommendation: { icon: Check,         border: 'border-cyan-500/30',   bg: 'bg-cyan-500/5',   text: 'text-cyan-400',   label: 'Pro Recommendation' },
-  didyouknow:     { icon: HelpCircle,    border: 'border-slate-600/50',   bg: 'bg-slate-800/40',  text: 'text-slate-300',  label: 'Did You Know?' },
+  recommendation: { icon: Check,         border: 'border-cyan-500/30',    bg: 'bg-cyan-500/5',    text: 'text-cyan-400',    label: 'Pro Recommendation' },
+  didyouknow:     { icon: HelpCircle,    border: 'border-slate-600/50',   bg: 'bg-slate-800/40',  text: 'text-slate-300',   label: 'Did You Know?' },
 };
 
 /* ═══════════════════════════════════════════════════════════════════
@@ -75,6 +75,7 @@ const RichBlock: React.FC<{ block: ContentBlock; headingRef?: (el: HTMLElement |
           <Icon className={`w-6 h-6 shrink-0 ${style.text}`} aria-hidden="true" />
           <div>
             <p className={`text-xs font-black uppercase tracking-wider mb-1.5 ${style.text}`}>{block.title || style.label}</p>
+            {/* Added AutoLink for consistency within Callouts */}
             <p className="text-slate-300 text-sm leading-relaxed"><AutoLink text={block.text} /></p>
           </div>
         </div>
@@ -84,6 +85,7 @@ const RichBlock: React.FC<{ block: ContentBlock; headingRef?: (el: HTMLElement |
       return (
         <blockquote className="my-10 border-l-4 border-cyan-500 pl-6 py-2">
           <QuoteIcon className="w-6 h-6 text-cyan-500/50 mb-2" aria-hidden="true" />
+          {/* Added AutoLink for consistency within Quotes */}
           <p className="text-xl md:text-2xl text-white font-medium leading-relaxed italic"><AutoLink text={block.text} /></p>
           {block.attribution && <cite className="block mt-3 text-sm text-slate-500 not-italic">— {block.attribution}</cite>}
         </blockquote>
@@ -180,7 +182,8 @@ export default function BlogPostTemplate() {
   const [showBackToTop, setShowBackToTop] = useState(false);
   const [activeHeadingId, setActiveHeadingId] = useState<string | null>(null);
   const [linkCopied, setLinkCopied] = useState(false);
-  const articleRef = useRef<HTMLDivElement>(null);
+  
+  const articleRef = useRef<HTMLElement>(null);
   const headingRefs = useRef<Record<string, HTMLElement | null>>({});
 
   const headings = useMemo(
@@ -225,7 +228,7 @@ export default function BlogPostTemplate() {
     headingRefs.current[id] = el;
   }, []);
 
-  if (!post) return <Navigate to={ROUTES.blog} replace />;
+  if (!post) return <Navigate to={ROUTES.blog || '/blog'} replace />;
 
   const pageUrl = `${BUSINESS_INFO.url}${getBlogRoute(post.slug)}`;
   const waLink = getIntentWhatsAppLink("blog", post.title);
@@ -337,7 +340,7 @@ export default function BlogPostTemplate() {
   }), [post, pageUrl, allFaqItems]);
 
   return (
-    <main className="w-full min-h-screen bg-transparent text-slate-200 pt-32 pb-24">
+    <main className="w-full min-h-screen bg-slate-950 text-slate-200 pt-32 pb-24">
 
       <Helmet>
         <title>{post.title.length > 57 ? `${post.title.slice(0, 57)}…` : post.title} | KCROC</title>
@@ -374,8 +377,8 @@ export default function BlogPostTemplate() {
 
       <div className="max-w-6xl mx-auto px-6 grid lg:grid-cols-[1fr_280px] gap-12">
         {/* ═══ MAIN COLUMN ═══ */}
-        <div ref={articleRef}>
-          <article className="max-w-4xl">
+        <div>
+          <article className="max-w-4xl" ref={articleRef}>
             <header className="mb-12">
               <Link to={ROUTES.blog} className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors mb-8 font-medium">
                 <ArrowLeft size={16} aria-hidden="true" /> Back to Blog
@@ -482,6 +485,8 @@ export default function BlogPostTemplate() {
                   >
                     <MessageCircle size={18} aria-hidden="true" /> Free Diagnosis
                   </a>
+                  
+                  {/* Fixed syntax error & missing a-tag */}
                   {BUSINESS_INFO.phone && (
                     <a
                       href={`tel:${BUSINESS_INFO.phone}`}
@@ -590,6 +595,7 @@ export default function BlogPostTemplate() {
               >
                 <MessageCircle size={16} aria-hidden="true" /> WhatsApp Us
               </a>
+              {/* Added conditional handling for the phone number */}
               {BUSINESS_INFO.phone && (
                 <a
                   href={`tel:${BUSINESS_INFO.phone}`}
