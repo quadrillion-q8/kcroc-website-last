@@ -8,7 +8,7 @@ import { Redis } from '@upstash/redis';
 import { getKnowledgeContext } from '../src/knowledge/context';
 import { evaluateHandoff } from '../src/api/HandoffEngine';
 
-// Initialize Upstash Redis & Rate Limiter (graceful no-op if env vars are missing)
+// Initialize Upstash Redis & Rate Limiter
 const redisUrl = process.env.UPSTASH_REDIS_REST_URL;
 const redisToken = process.env.UPSTASH_REDIS_REST_TOKEN;
 
@@ -30,20 +30,35 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   try {
-    // 1. Rate Limiting via x-forwarded-for (Safe on Vercel Edge)
-    if (ratelimit) {
+    // 1. RATE LIMITING - FAIL CLOSED ARCHITECTURE
+    // If Redis is not configured, explicitly deny the request to protect the Gemini API.
+    if (!ratelimit) {
+      console.error('SECURITY ALERT: Upstash Redis env vars missing. Failing closed to prevent API abuse.');
+      return res.status(503).json({ 
+        reply: 'Chat service is temporarily offline for maintenance. Please contact us directly on WhatsApp at 55301913.' 
+      });
+    }
+
+    try {
       const ip = (req.headers['x-forwarded-for'] as string) ?? '127.0.0.1';
       const { success } = await ratelimit.limit(ip);
       
       if (!success) {
         console.warn(`Rate limit exceeded for IP: ${ip}`);
+        // 429 status caught by frontend to show a specific message
         return res.status(429).json({ 
           reply: 'You have sent too many messages. Please try again later or contact us directly on WhatsApp at 55301913.' 
         });
       }
+    } catch (rlError) {
+      // If the Redis connection fails during the check, fail closed.
+      console.error('SECURITY ALERT: Rate limiter check failed to execute. Failing closed.', rlError);
+      return res.status(503).json({ 
+        reply: 'Chat service is temporarily offline. Please contact us on WhatsApp at 55301913.' 
+      });
     }
 
-    // 2. Strict Input Validation
+    // 2. Strict Input Validation (Aligned with 500 char frontend limit)
     const { message } = req.body;
 
     if (!message || typeof message !== 'string') {
@@ -51,7 +66,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     }
 
     const sanitizedMessage = message.trim();
-    if (sanitizedMessage.length > 2000) {
+    
+    if (sanitizedMessage.length > 500) {
       return res.status(400).json({ reply: 'Your message is too long. Please keep it brief or contact us on WhatsApp.' });
     }
 
@@ -60,7 +76,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     }
 
     // 3. Evaluate Handoff Safety Net
-    // 🚀 FIXED: Awaits the async heuristic engine and checks the correct boolean property
     const handoff = await evaluateHandoff(sanitizedMessage);
     if (handoff && handoff.shouldHandoff) {
       console.info(`Handoff triggered: ${handoff.reason}`);
@@ -72,7 +87,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     // 4. Build Knowledge Context & Call Gemini
     const apiKey = process.env.GEMINI_API_KEY;
     if (!apiKey) {
-      throw new Error('GEMINI_API_KEY environment variable is missing.');
+      console.error('CRITICAL ERROR: GEMINI_API_KEY environment variable is missing.');
+      return res.status(503).json({ reply: 'Chat service is temporarily offline. Please WhatsApp us at 55301913.' });
     }
 
     const knowledgeContext = getKnowledgeContext(sanitizedMessage);
