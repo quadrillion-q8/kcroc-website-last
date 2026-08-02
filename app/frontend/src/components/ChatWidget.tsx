@@ -1,21 +1,46 @@
 // File: app/frontend/src/components/ChatWidget.tsx
 import React, { useState, useEffect, useRef } from 'react';
-import { MessageCircle, X, Send, Trash2 } from 'lucide-react';
+import { MessageCircle, X, Send, Trash2, Loader2 } from 'lucide-react';
 
 export const ChatWidget: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const abortControllerRef = useRef<AbortController | null>(null);
 
+  // 1. DEFENSIVE PARSING: Prevents corrupted sessionStorage from crashing the entire app
   const [messages, setMessages] = useState(() => {
-    const saved = sessionStorage.getItem('kcroc-chat-history');
-    return saved ? JSON.parse(saved) : [{ sender: 'bot', text: 'Hi! How can I help you with your computer repair today?' }];
+    try {
+      const saved = sessionStorage.getItem('kcroc-chat-history');
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed)) return parsed;
+      }
+    } catch (error) {
+      console.warn('Corrupted chat history detected. Resetting to default.');
+      sessionStorage.removeItem('kcroc-chat-history');
+    }
+    return [{ sender: 'bot', text: 'Hi! How can I help you with your computer repair today?' }];
   });
 
   useEffect(() => {
-    sessionStorage.setItem('kcroc-chat-history', JSON.stringify(messages));
+    try {
+      sessionStorage.setItem('kcroc-chat-history', JSON.stringify(messages));
+    } catch (e) {
+      console.warn('Failed to save chat history.');
+    }
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages, isOpen]);
+
+  // Cleanup abort controller on unmount
+  useEffect(() => {
+    return () => {
+      if (abortControllerRef.current) {
+        abortControllerRef.current.abort();
+      }
+    };
+  }, []);
 
   const clearChat = () => {
     setMessages([{ sender: 'bot', text: 'Hi! How can I help you with your computer repair today?' }]);
@@ -24,28 +49,53 @@ export const ChatWidget: React.FC = () => {
 
   const sendMessage = async (e?: React.FormEvent) => {
     e?.preventDefault();
-    if (!input.trim()) return;
+    const trimmedInput = input.trim();
+    if (!trimmedInput || isLoading) return;
     
-    const userMessage = { sender: 'user' as const, text: input };
+    // 2. INPUT VALIDATION: Prevent massive payloads from hitting your API
+    if (trimmedInput.length > 500) {
+      setMessages(prev => [...prev, { sender: 'bot', text: 'Your message is too long. Please keep it under 500 characters or contact us on WhatsApp.' }]);
+      return;
+    }
+    
+    const userMessage = { sender: 'user' as const, text: trimmedInput };
     setMessages(prev => [...prev, userMessage]);
     setInput('');
+    setIsLoading(true);
+
+    // 3. ABORT CONTROLLER: Prevent hanging requests
+    if (abortControllerRef.current) {
+      abortControllerRef.current.abort();
+    }
+    abortControllerRef.current = new AbortController();
 
     try {
       const res = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: input })
+        body: JSON.stringify({ message: trimmedInput }),
+        signal: abortControllerRef.current.signal
       });
       
       if (!res.ok) {
+        if (res.status === 429) throw new Error('RATE_LIMIT');
         throw new Error(`Server responded with status: ${res.status}`);
       }
       
       const data = await res.json();
       const botReply = data.reply || "I'm sorry, I didn't receive a response. Could you try again?";
       setMessages(prev => [...prev, { sender: 'bot', text: botReply }]);
-    } catch (error) {
-      setMessages(prev => [...prev, { sender: 'bot', text: 'Sorry, I am having trouble connecting. Please contact us via WhatsApp or call 55301913.' }]);
+      
+    } catch (error: any) {
+      if (error.name === 'AbortError') return; // Ignore aborted requests
+      
+      const errorMessage = error.message === 'RATE_LIMIT' 
+        ? 'We are receiving too many messages right now. Please try again in a minute, or contact us via WhatsApp.'
+        : 'Sorry, I am having trouble connecting right now. Please contact us via WhatsApp or call 55301913.';
+        
+      setMessages(prev => [...prev, { sender: 'bot', text: errorMessage }]);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -99,6 +149,13 @@ export const ChatWidget: React.FC = () => {
                 </div>
               </div>
             ))}
+            {isLoading && (
+              <div className="flex flex-col items-start">
+                <div className="p-3.5 bg-surface-elevated border border-surface-hover rounded-2xl rounded-tl-sm">
+                  <Loader2 className="w-5 h-5 text-brand-primary animate-spin" />
+                </div>
+              </div>
+            )}
             <div ref={messagesEndRef} />
           </div>
 
@@ -111,17 +168,19 @@ export const ChatWidget: React.FC = () => {
               <input 
                 value={input} 
                 onChange={(e) => setInput(e.target.value)} 
-                className="flex-grow bg-transparent outline-none text-white placeholder-gray-500 text-[13px] sm:text-sm" 
-                placeholder="Describe your device issue..." 
+                disabled={isLoading}
+                maxLength={500}
+                className="flex-grow bg-transparent outline-none text-white placeholder-gray-500 text-[13px] sm:text-sm disabled:opacity-50" 
+                placeholder={isLoading ? "Please wait..." : "Describe your device issue..."} 
                 aria-label="Chat message input"
               />
               <button 
                 type="submit"
-                disabled={!input.trim()}
+                disabled={!input.trim() || isLoading}
                 aria-label="Send message"
-                className="bg-brand-primary hover:bg-brand-accent disabled:bg-surface-elevated disabled:text-gray-500 text-brand-dark p-2 sm:p-2.5 rounded-button transition-colors ml-2 shrink-0 shadow-md"
+                className="bg-brand-primary hover:bg-brand-accent disabled:bg-surface-elevated disabled:text-gray-500 text-brand-dark p-2 sm:p-2.5 rounded-button transition-colors ml-2 shrink-0 shadow-md flex items-center justify-center min-w-[40px]"
               >
-                <Send size={16} className="ml-0.5" aria-hidden="true" />
+                {isLoading ? <Loader2 size={16} className="animate-spin" /> : <Send size={16} className="ml-0.5" aria-hidden="true" />}
               </button>
             </form>
           </div>
