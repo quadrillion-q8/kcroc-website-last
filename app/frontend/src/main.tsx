@@ -1,13 +1,10 @@
 // File: app/frontend/src/main.tsx
-import { createRoot } from 'react-dom/client';
-import { HelmetProvider } from 'react-helmet-async'; // Imported to enable SEO management
+import { createRoot, hydrateRoot } from 'react-dom/client';
+import { HelmetProvider } from 'react-helmet-async';
 import App from './App.tsx';
 import './index.css';
 
 // Dev-only Knowledge Graph Validation.
-// Validates rawGraphData (the exact { metadata, entities } shape RawGraphSchema
-// describes) rather than KCROC_GRAPH, which layers many derived properties
-// (business, services, pages, etc.) on top that aren't part of the schema.
 if (import.meta.env.DEV) {
   Promise.all([
     import('./types/knowledgeGraph'),
@@ -24,8 +21,18 @@ if (import.meta.env.DEV) {
   });
 }
 
-createRoot(document.getElementById('root')!).render(
-  <HelmetProvider> {/* Application wrapped to provide SEO context */}
+const rootElement = document.getElementById('root')!;
+const app = (
+  <HelmetProvider>
     <App />
   </HelmetProvider>
 );
+
+// 🚀 HYDRATION LOGIC: 
+// If the HTML is already pre-rendered by Vite (has child nodes), we hydrate it.
+// Otherwise (like in local dev mode), we render it from scratch.
+if (rootElement.hasChildNodes()) {
+  hydrateRoot(rootElement, app);
+} else {
+  createRoot(rootElement).render(app);
+}
