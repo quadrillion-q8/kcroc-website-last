@@ -2,10 +2,38 @@
 import path from "path";
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react-swc';
+import prerender from '@prerenderer/vite-plugin';
+import puppeteerRenderer from '@prerenderer/renderer-puppeteer';
 
 export default defineConfig({
-  plugins: [react()],
-  base: '/', // 🚀 FIX: Forces all assets to load from the absolute root domain
+  plugins: [
+    react(),
+    prerender({
+      // List the exact routes you want fully pre-rendered for SEO
+      routes: [
+        '/', 
+        '/about', 
+        '/pricing', 
+        '/faq', 
+        '/case-studies',
+        '/blog/why-8gb-ram-is-no-longer-enough-for-windows-11',
+        '/laptop-repair-kuwait-2026'
+      ],
+      renderer: puppeteerRenderer,
+      server: {
+        host: 'localhost',
+        port: 3000,
+      },
+      // Wait for React Helmet to finish injecting meta tags before capturing the HTML
+      postProcess(renderedRoute) {
+        renderedRoute.html = renderedRoute.html.replace(
+          '<div id="root"></div>',
+          `<div id="root">${renderedRoute.html}</div>`
+        );
+      }
+    })
+  ],
+  base: '/', 
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
@@ -15,14 +43,11 @@ export default defineConfig({
     postcss: './postcss.config.js',
   },
   build: {
-    // ⚡ PERFORMANCE: We turn chunking ON and tell Vite exactly how to split the files
     cssCodeSplit: true,
     rollupOptions: {
       output: {
         manualChunks: {
-          // Group 1: Core React code (This rarely changes, so browsers keep it cached)
-          'vendor-react': ['react', 'react-dom', 'react-router-dom'],
-          // Group 2: Icon Library (Separating this keeps the initial load incredibly small)
+          'vendor-react': ['react', 'react-dom', 'react-router-dom', 'react-helmet-async'],
           'vendor-icons': ['lucide-react']
         }
       }
