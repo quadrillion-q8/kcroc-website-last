@@ -1,15 +1,21 @@
 // File: app/frontend/vite.config.ts
 import path from "path";
+import { fileURLToPath } from "url";
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react-swc';
-import prerender from '@prerenderer/vite-plugin';
-import puppeteerRenderer from '@prerenderer/renderer-puppeteer';
+import vitePrerender from 'vite-plugin-prerender';
+
+// Required to use __dirname inside an ES Module config
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 export default defineConfig({
   plugins: [
     react(),
-    prerender({
-      // List the exact routes you want fully pre-rendered for SEO
+    vitePrerender({
+      // The path to the vite-outputted app to prerender
+      staticDir: path.join(__dirname, 'dist'),
+      // The exact routes to capture as static HTML for Google/AI bots
       routes: [
         '/', 
         '/about', 
@@ -18,19 +24,7 @@ export default defineConfig({
         '/case-studies',
         '/blog/why-8gb-ram-is-no-longer-enough-for-windows-11',
         '/laptop-repair-kuwait-2026'
-      ],
-      renderer: puppeteerRenderer,
-      server: {
-        host: 'localhost',
-        port: 3000,
-      },
-      // Wait for React Helmet to finish injecting meta tags before capturing the HTML
-      postProcess(renderedRoute) {
-        renderedRoute.html = renderedRoute.html.replace(
-          '<div id="root"></div>',
-          `<div id="root">${renderedRoute.html}</div>`
-        );
-      }
+      ]
     })
   ],
   base: '/', 
