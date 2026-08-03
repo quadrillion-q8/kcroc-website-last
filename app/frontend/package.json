@@ -48,6 +48,8 @@
   "devDependencies": {
     "@eslint/js": "^9.9.0",
     "@metagptx/vite-plugin-source-locator": "latest",
+    "@prerenderer/renderer-puppeteer": "^1.2.0",
+    "@prerenderer/vite-plugin": "^1.2.0",
     "@tailwindcss/typography": "^0.5.15",
     "@types/node": "^22.5.5",
     "@types/react": "^19.1.11",
