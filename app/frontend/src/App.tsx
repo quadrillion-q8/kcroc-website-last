@@ -17,6 +17,8 @@ const Contact = lazy(() => import('./pages/Contact'));
 const Gallery = lazy(() => import('./pages/Gallery'));
 const About = lazy(() => import('./pages/About'));
 const PrivacySecurity = lazy(() => import('./pages/PrivacySecurity'));
+const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
+const TermsOfService = lazy(() => import('./pages/TermsOfService'));
 const FAQ = lazy(() => import('./pages/FAQ'));
 const Blog = lazy(() => import('./pages/Blog')); 
 const NotFound = lazy(() => import('./pages/NotFound'));
@@ -103,7 +105,15 @@ export const App: React.FC = () => {
               <Route path="contact" element={<Contact />} />
               <Route path="gallery" element={<Gallery />} />
               <Route path="about" element={<About />} />
+              
+              {/* Legal & Privacy Routes */}
               <Route path="privacy-security-kuwait" element={<PrivacySecurity />} />
+              <Route path="privacy-policy" element={<PrivacyPolicy />} />
+              <Route path="terms-of-service" element={<TermsOfService />} />
+              {/* Legacy/short-link redirects to the canonical legal URLs */}
+              <Route path="privacy" element={<Navigate to="/privacy-policy" replace />} />
+              <Route path="terms" element={<Navigate to="/terms-of-service" replace />} />
+
               <Route path="faq" element={<FAQ />} />
 
               {/* Content Routes */}
