@@ -1,5 +1,5 @@
 // File: app/frontend/src/pages/PrivacySecurity.tsx
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { 
   ShieldCheck, EyeOff, Truck, Lock, Cpu, Phone, 
@@ -8,10 +8,13 @@ import {
 
 // 👈 Phase 2 SEO Engine Imported
 import { SEOEngine } from '../core/components/SEOEngine';
+import SchemaMarkup from '../components/seo/SchemaMarkup';
 
 /* ─────────────────────────────────────────────────────────────────────────────
    1. PAGE DATA
 ───────────────────────────────────────────────────────────────────────────── */
+const BASE_URL = 'https://www.computerrepairkuwait.com';
+const PAGE_URL = `${BASE_URL}/privacy-security-kuwait`;
 const PHONE_DISPLAY = '+965 5530 1913';
 const PHONE_CLEAN = '96555301913';
 
@@ -69,11 +72,28 @@ export default function PrivacySecurity() {
   const waMessage = encodeURIComponent("Hi KCROC, I have a question about your privacy and security policy.");
   const waLink = `https://wa.me/${PHONE_CLEAN}?text=${waMessage}`;
 
+  // 🚀 Breadcrumb Schema — backs the visible breadcrumb nav below with structured data
+  const BREADCRUMB_SCHEMA = useMemo(
+    () => ({
+      '@type': 'BreadcrumbList',
+      '@id': `${PAGE_URL}#breadcrumb`,
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: BASE_URL },
+        { '@type': 'ListItem', position: 2, name: 'Privacy & Security', item: PAGE_URL },
+      ],
+    }),
+    []
+  );
+
   return (
     <main className="w-full min-h-screen bg-transparent text-slate-200 selection:bg-cyan-500/30 pt-32 pb-24 font-sans">
       
       {/* 🚀 PHASE 2 AUTOMATION IN ACTION */}
-      <SEOEngine entityId="page-privacy-security" />
+      {/* 🔧 FIX: entityId now matches the 'page-privacy' entity registered in graph.ts —
+          previously this was "page-privacy-security", which doesn't exist in the graph,
+          so this page was silently falling back to generic site-wide SEO tags. */}
+      <SEOEngine entityId="page-privacy" />
+      <SchemaMarkup schema={BREADCRUMB_SCHEMA} />
 
       {/* ─── BREADCRUMBS ─── */}
       <nav aria-label="Breadcrumb" className="max-w-6xl mx-auto px-6 mb-8 relative z-10">
