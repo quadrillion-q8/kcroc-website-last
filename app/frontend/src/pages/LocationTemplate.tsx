@@ -1,5 +1,5 @@
 // File: app/frontend/src/pages/LocationTemplate.tsx
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { 
@@ -12,6 +12,7 @@ import { Card, CardHeader, CardTitle } from '@/components/ui/card';
 
 // SEO & Data
 import { SEOEngine } from '../core/components/SEOEngine';
+import SchemaMarkup from '../components/seo/SchemaMarkup';
 import { KCROC_GRAPH } from '../data/graph';
 
 export default function LocationTemplate() {
@@ -30,11 +31,26 @@ export default function LocationTemplate() {
 
   const activeServices = KCROC_GRAPH.services?.filter(s => s.isActive).slice(0, 4) || [];
 
+  // 🚀 Generate Breadcrumb Schema for Local SEO Rich Results
+  const BASE_URL = 'https://www.computerrepairkuwait.com';
+  const PAGE_URL = `${BASE_URL}/location/${slug}`;
+  
+  const BREADCRUMB_SCHEMA = useMemo(() => ({
+    '@type': 'BreadcrumbList',
+    '@id': `${PAGE_URL}#breadcrumb`,
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: BASE_URL },
+      { '@type': 'ListItem', position: 2, name: location.title, item: PAGE_URL },
+    ],
+  }), [location.title, slug]);
+
   return (
     <main className="w-full min-h-screen bg-gray-950 text-white font-sans selection:bg-cyan-500/30">
       
       {/* 🚀 Dynamic SEO Engine automatically handles LocalBusiness/Service schema for this specific area */}
       <SEOEngine entityId={location.id} />
+      <SchemaMarkup schema={BREADCRUMB_SCHEMA} />
+      
       <Helmet>
         <title>Computer & Laptop Repair in {location.title} | KCROC</title>
         <meta name="description" content={`Expert computer, MacBook, and logic board repair in ${location.title}. Free pickup and delivery. We fix the board, we don't just swap it.`} />
