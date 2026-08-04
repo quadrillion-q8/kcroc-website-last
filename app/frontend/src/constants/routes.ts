@@ -12,6 +12,7 @@ export const ROUTES = {
   BLOG: '/blog',              
   BOOKING: '/booking',        
   PRIVACY: '/privacy-policy', 
+  TERMS: '/terms-of-service',
 
   // --- THE NEW DYNAMIC ARCHITECTURE ---
   SERVICE_DETAIL: '/services/:serviceSlug', 
