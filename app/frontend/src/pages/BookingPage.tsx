@@ -1,6 +1,5 @@
 // File: app/frontend/src/pages/BookingPage.tsx
 import React, { useState } from 'react';
-import { createClient } from '@metagptx/web-sdk';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
@@ -20,8 +19,6 @@ declare global {
     gtag?: (...args: any[]) => void;
   }
 }
-
-const client = createClient();
 
 /* ─────────────────────────────────────────────────────────────────────────────
    1. PAGE DATA & CONSTANTS
@@ -153,31 +150,33 @@ export default function BookingPage() {
 
   const onSubmit = async (data: BookingFormData) => {
     setSubmitError('');
+    
+    // Frontend spam trap
     if (data.honeypot) { setSubmitted(true); return; }
 
     const cleanPhone = data.customer_phone.replace(/\s|-|\+/g, '');
+    
     try {
-      const response = await client.entities.service_bookings.create({
-        data: {
-          customer_name:      data.customer_name,
-          customer_phone:     cleanPhone,
-          customer_email:     data.customer_email || '',
-          device_type:        data.device_type,
-          issue_description:  data.issue_description,
-          pickup_date:        data.pickup_date,
-          pickup_time_slot:   data.pickup_time_slot,
-          status:             'pending',
-          created_at:         new Date().toISOString(),
-        },
+      // 🚀 FIXED: Securely send data to the serverless endpoint instead of exposing DB calls to the client
+      const response = await fetch('/api/book', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...data,
+          customer_phone: cleanPhone
+        }),
       });
-      if (response?.data) {
-        setSubmitted(true);
-        trackEvent('booking_submitted');
-      } else {
-        throw new Error('DATABASE_ERROR');
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || 'Failed to submit booking');
       }
-    } catch (err: unknown) {
-      // Keep console clean for production, only log to console in dev mode
+
+      setSubmitted(true);
+      trackEvent('booking_submitted');
+
+    } catch (err: any) {
       if (import.meta.env.DEV) {
         console.error('Booking submission error:', err);
       }
@@ -188,10 +187,9 @@ export default function BookingPage() {
       
       if (errorMessage.includes('Network Error') || err instanceof TypeError) {
         setSubmitError('Network connection failed. Please check your internet and try again.');
-      } else if (errorMessage === 'DATABASE_ERROR') {
-        setSubmitError('Our system is currently busy. Please call us directly to book.');
       } else {
-        setSubmitError('Failed to submit booking. Please try again or contact us via WhatsApp.');
+        // Display the specific error returned from our secure API (e.g., Rate limit or Double-booking)
+        setSubmitError(errorMessage || 'Failed to submit booking. Please try again or contact us via WhatsApp.');
       }
     }
   };
