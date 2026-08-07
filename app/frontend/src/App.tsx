@@ -44,7 +44,10 @@ const BlogLaptopRepair = lazy(() => import('./pages/BlogLaptopRepair'));
 const BlogScreenProtection = lazy(() => import('./pages/BlogScreenProtection'));
 const GamingPCCooling = lazy(() => import('./pages/GamingPCCooling'));
 const ScreenProtectionTips = lazy(() => import('./pages/ScreenProtectionTips'));
-const IntelVsAmdGuide = lazy(() => import('./pages/IntelVsAmdGuide')); // 👈 New Cluster Article
+
+// 🚀 Content Pillars & Clusters
+const LaptopBuyingGuide = lazy(() => import('./pages/LaptopBuyingGuide'));
+const IntelVsAmdGuide = lazy(() => import('./pages/IntelVsAmdGuide')); // 👈 Added missing cluster import
 
 // 🚀 Custom AI-Generated Guides
 const DellOverheatingPage = lazy(() => import('./pages/DellOverheatingPage').then(module => ({ default: module.DellOverheatingPage })));
@@ -111,7 +114,6 @@ export const App: React.FC = () => {
               <Route path="privacy-security-kuwait" element={<PrivacySecurity />} />
               <Route path="privacy-policy" element={<PrivacyPolicy />} />
               <Route path="terms-of-service" element={<TermsOfService />} />
-              {/* Legacy/short-link redirects to the canonical legal URLs */}
               <Route path="privacy" element={<Navigate to="/privacy-policy" replace />} />
               <Route path="terms" element={<Navigate to="/terms-of-service" replace />} />
 
@@ -124,23 +126,24 @@ export const App: React.FC = () => {
               <Route path="blog/laptop-repair-kuwait-2026" element={<BlogLaptopRepair />} />
               <Route path="blog/how-to-protect-laptop-screen" element={<BlogScreenProtection />} />
               <Route path="blog/gaming-pc-cooling" element={<GamingPCCooling />} />
-              <Route path="blog/intel-core-ultra-vs-amd-ryzen-ai" element={<IntelVsAmdGuide />} /> {/* 👈 New Cluster Route */}
               
-              {/* 🚀 AI Content Guides */}
+              {/* 🚀 New Pillar & Cluster Routes */}
+              <Route path="blog/laptop-buying-guide-kuwait-2026" element={<LaptopBuyingGuide />} />
+              <Route path="blog/intel-core-ultra-vs-amd-ryzen-ai" element={<IntelVsAmdGuide />} /> 
+              
+              {/* AI Content Guides */}
               <Route path="guides/dell-overheating" element={<DellOverheatingPage />} />
               <Route path="guides/laptop-battery-warning-signs" element={<BatteryHealthGuide />} />
               
-              {/* SEO Guardrail: Canonical URL redirection */}
+              {/* SEO Guardrails */}
               <Route path="laptop-screen-protection-tips" element={<ScreenProtectionTips />} />
               <Route path="blog/laptop-screen-protection-tips" element={<Navigate to="/laptop-screen-protection-tips" replace />} />
-              
-              {/* 🚀 Corrected SEO Guardrail for Battery */}
               <Route path="battery-replacement" element={<Navigate to="/battery-replacement-kuwait" replace />} />
               
               {/* Generic Blog Catch-All */}
               <Route path="blog/:slug" element={<BlogPostTemplate />} />
               
-              {/* 🚀 Dynamic Location SEO Landing Pages */}
+              {/* Dynamic Location SEO Landing Pages */}
               <Route path="computer-repair-:slug" element={<LocationTemplate />} />
               <Route path="laptop-repair-:slug" element={<LocationTemplate />} />
               <Route path="location/:slug" element={<LocationTemplate />} />
@@ -157,7 +160,7 @@ export const App: React.FC = () => {
           </Routes>
         </Suspense>
         
-        {/* 🚀 CWV Optimization: Background boundary for the chat widget */}
+        {/* CWV Optimization: Background boundary for the chat widget */}
         <Suspense fallback={null}>
           <ChatWidget /> 
         </Suspense>
