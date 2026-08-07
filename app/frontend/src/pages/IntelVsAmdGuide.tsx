@@ -13,7 +13,6 @@ import { KCROC_GRAPH } from '../data/graph';
 
 const business = KCROC_GRAPH.business!;
 const PAGE_URL = `${business.websiteUrl}/blog/intel-core-ultra-vs-amd-ryzen-ai`;
-const PILLAR_URL = `${business.websiteUrl}/blog/laptop-buying-guide-kuwait-2026`;
 const PUBLISHED_DATE = '2026-08-07';
 const WA_LINK = `https://wa.me/${business.telephone}?text=${encodeURIComponent(
   'Hi KCROC, I read your Intel vs AMD guide and would like to book a free diagnostic.'
@@ -58,7 +57,8 @@ const CLUSTER_SCHEMA = [
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Home', item: business.websiteUrl },
       { '@type': 'ListItem', position: 2, name: 'Blog', item: `${business.websiteUrl}/blog` },
-      { '@type': 'ListItem', position: 3, name: 'Intel Core Ultra vs AMD Ryzen AI', item: PAGE_URL },
+      { '@type': 'ListItem', position: 3, name: 'Laptop Buying Guide Kuwait 2026', item: `${business.websiteUrl}/blog/laptop-buying-guide-kuwait-2026` },
+      { '@type': 'ListItem', position: 4, name: 'Intel Core Ultra vs AMD Ryzen AI', item: PAGE_URL },
     ],
   },
   {
@@ -128,7 +128,7 @@ export default function IntelVsAmdGuide() {
             <div>
               <h3 className="text-xl font-bold text-white flex items-center gap-2 mb-4"><Zap className="text-emerald-400" /> How AMD Ryzen AI Is Built</h3>
               <p className="text-sm sm:text-base">
-                AMD's Ryzen AI series follows a similar architectural logic: Zen-generation CPU cores paired with RDNA integrated graphics, plus AMD's own NPU for local AI inference. The core design philosophy mirrors Intel's approach closely enough that neither platform has a structural advantage on paper.
+                AMD's Ryzen AI series follows a similar architectural logic: Zen-generation CPU cores paired with RDNA integrated graphics, plus AMD's own NPU for local AI inference. The core design philosophy — efficiency cores for background work, performance cores for demanding tasks, a dedicated AI accelerator — mirrors Intel's approach closely enough that neither platform has a structural advantage on paper.
               </p>
             </div>
           </div>
@@ -146,7 +146,8 @@ export default function IntelVsAmdGuide() {
               <ul className="space-y-4 m-0 text-slate-200">
                 <li><strong>General office use & travel:</strong> Either platform's U-series (or Intel V-series) is a reasonable choice; prioritize battery life and chassis over brand.</li>
                 <li><strong>Light gaming without a dedicated GPU:</strong> AMD's Ryzen AI generally has an edge via stronger integrated graphics.</li>
-                <li><strong>Compiling & sustained heavy workloads:</strong> Compare H/HX-series models by TGP and independent thermal reviews — not the CPU brand alone.</li>
+                <li><strong>Compiling & sustained heavy workloads:</strong> Compare H/HX-series models from both platforms directly by TGP and independent benchmark reviews of the specific laptop — not the CPU brand alone.</li>
+                <li><strong>Very thin-and-light with premium efficiency:</strong> Intel's V-series is worth a specific look for its on-package memory approach, if you don't need upgradeable RAM.</li>
               </ul>
             </CardContent>
           </Card>
