@@ -105,6 +105,21 @@ export const rawGraphData: RawGraphData = {
     'page-terms-of-service': { id: 'page-terms-of-service', slug: 'terms-of-service', entityType: 'WebPage', isActive: true, title: 'Terms of Service', description: 'KCROC Terms and Conditions of Service', seo: { title: 'Terms of Service | KCROC Kuwait', description: 'Read the official Terms of Service and conditions for computer repair, pick & drop, and warranties at Kuwait Computer Repair On Call.', canonicalUrl: 'https://www.computerrepairkuwait.com/terms-of-service', ogType: 'website', schemaTypes: ['WebPage'] } } as WebPageEntity,
     'page-case-studies': { id: 'page-case-studies', slug: 'case-studies', entityType: 'WebPage', isActive: true, title: 'Case Studies', description: 'Real repair success stories.', seo: { title: 'Repair Case Studies | KCROC Kuwait', description: 'Read real case studies of laptops and MacBooks we saved from liquid damage and catastrophic failure.', canonicalUrl: 'https://www.computerrepairkuwait.com/case-studies', ogType: 'website', schemaTypes: ['CollectionPage'] } } as WebPageEntity,
     'guide-battery': { id: 'guide-battery', slug: 'guides/laptop-battery-warning-signs', entityType: 'WebPage', isActive: true, title: 'Laptop Battery Warning Signs', description: 'Learn the 4 critical warning signs of lithium-ion failure.', seo: { title: 'Laptop Battery Warning Signs | KCROC', description: 'Is your laptop battery expanding or overheating? Learn the 4 critical warning signs of lithium-ion failure.', canonicalUrl: 'https://www.computerrepairkuwait.com/guides/laptop-battery-warning-signs', ogType: 'article', schemaTypes: ['Article'] } } as WebPageEntity,
+    'guide-intel-vs-amd': { 
+      id: 'guide-intel-vs-amd', 
+      slug: 'blog/intel-core-ultra-vs-amd-ryzen-ai', 
+      entityType: 'WebPage', 
+      isActive: true, 
+      title: 'Intel Core Ultra vs AMD Ryzen AI: The Real Differences', 
+      description: 'Core Ultra or Ryzen AI? A Kuwait hardware engineer breaks down cores, NPUs, and graphics — and why the suffix matters more than the brand.', 
+      seo: { 
+        title: 'Intel Core Ultra vs AMD Ryzen AI: The Real Differences', 
+        description: 'Core Ultra or Ryzen AI? A Kuwait hardware engineer breaks down cores, NPUs, and graphics — and why the suffix matters more than the brand.', 
+        canonicalUrl: 'https://www.computerrepairkuwait.com/blog/intel-core-ultra-vs-amd-ryzen-ai', 
+        ogType: 'article', 
+        schemaTypes: ['Article', 'FAQPage', 'BreadcrumbList'] 
+      } 
+    } as WebPageEntity,
 
     /* ═══════════════════════════════════════════════════════════════
        SERVICES
