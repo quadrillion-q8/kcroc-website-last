@@ -120,6 +120,21 @@ export const rawGraphData: RawGraphData = {
         schemaTypes: ['Article', 'FAQPage', 'BreadcrumbList'] 
       } 
     } as WebPageEntity,
+    'guide-laptop-buying': {
+      id: 'guide-laptop-buying',
+      slug: 'blog/laptop-buying-guide-kuwait-2026',
+      entityType: 'WebPage',
+      isActive: true,
+      title: "Laptop Buying Guide Kuwait (2026): What the Spec Sheet Won't Tell You",
+      description: 'Confused by Intel, Ryzen and RTX naming in 2026? A Kuwait repair engineer explains which laptop specs actually matter — and which don\'t.',
+      seo: {
+        title: "Laptop Buying Guide Kuwait (2026): What the Spec Sheet Won't Tell You",
+        description: 'Confused by Intel, Ryzen and RTX naming in 2026? A Kuwait repair engineer explains which laptop specs actually matter — and which don\'t.',
+        canonicalUrl: 'https://www.computerrepairkuwait.com/blog/laptop-buying-guide-kuwait-2026',
+        ogType: 'article',
+        schemaTypes: ['Article', 'FAQPage', 'BreadcrumbList', 'Person']
+      }
+    } as WebPageEntity,
 
     /* ═══════════════════════════════════════════════════════════════
        SERVICES
