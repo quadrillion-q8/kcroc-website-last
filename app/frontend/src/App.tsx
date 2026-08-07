@@ -44,6 +44,7 @@ const BlogLaptopRepair = lazy(() => import('./pages/BlogLaptopRepair'));
 const BlogScreenProtection = lazy(() => import('./pages/BlogScreenProtection'));
 const GamingPCCooling = lazy(() => import('./pages/GamingPCCooling'));
 const ScreenProtectionTips = lazy(() => import('./pages/ScreenProtectionTips'));
+const IntelVsAmdGuide = lazy(() => import('./pages/IntelVsAmdGuide')); // 👈 New Cluster Article
 
 // 🚀 Custom AI-Generated Guides
 const DellOverheatingPage = lazy(() => import('./pages/DellOverheatingPage').then(module => ({ default: module.DellOverheatingPage })));
@@ -123,6 +124,7 @@ export const App: React.FC = () => {
               <Route path="blog/laptop-repair-kuwait-2026" element={<BlogLaptopRepair />} />
               <Route path="blog/how-to-protect-laptop-screen" element={<BlogScreenProtection />} />
               <Route path="blog/gaming-pc-cooling" element={<GamingPCCooling />} />
+              <Route path="blog/intel-core-ultra-vs-amd-ryzen-ai" element={<IntelVsAmdGuide />} /> {/* 👈 New Cluster Route */}
               
               {/* 🚀 AI Content Guides */}
               <Route path="guides/dell-overheating" element={<DellOverheatingPage />} />
