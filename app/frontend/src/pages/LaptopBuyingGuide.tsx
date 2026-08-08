@@ -22,7 +22,7 @@ const business = KCROC_GRAPH.business!;
 ───────────────────────────────────────────────────────────────────────────── */
 const PAGE_URL = `${business.websiteUrl}/blog/laptop-buying-guide-kuwait-2026`;
 const HERO_IMAGE_URL = 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_1200/v1781139061/2026-01-22_9_qfanpt.jpg';
-const PUBLISHED_DATE = '2026-08-07';
+const PUBLISHED_DATE = '2026-08-07T09:00:00+03:00';
 
 const WA_LINK = `https://wa.me/${business.telephone}?text=${encodeURIComponent(
   'Hi KCROC, I read your Laptop Buying Guide and would like some advice before I buy. Can you help?'
@@ -31,7 +31,6 @@ const WA_LINK = `https://wa.me/${business.telephone}?text=${encodeURIComponent(
 // PILLAR_SCHEMA: Article, FAQPage, BreadcrumbList, Person
 const PILLAR_SCHEMA = [
   {
-    '@context': 'https://schema.org',
     '@type': 'Article',
     headline: "Laptop Buying Guide Kuwait (2026): What the Spec Sheet Won't Tell You",
     description: 'Confused by Intel, Ryzen and RTX naming in 2026? A Kuwait repair engineer explains which laptop specs actually matter — and which don\'t.',
@@ -71,7 +70,6 @@ const PILLAR_SCHEMA = [
     inLanguage: 'en',
   },
   {
-    '@context': 'https://schema.org',
     '@type': 'FAQPage',
     mainEntity: [
       { '@type': 'Question', name: 'Is a Core i7 always faster than a Core i5?', acceptedAnswer: { '@type': 'Answer', text: 'Not necessarily. A Core i5-H can outperform a Core i7-U under sustained load, because the suffix — not the tier number — determines how much power the chip is allowed to draw.' } },
@@ -100,7 +98,6 @@ const PILLAR_SCHEMA = [
     ],
   },
   {
-    '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Home', item: business.websiteUrl },
@@ -109,7 +106,6 @@ const PILLAR_SCHEMA = [
     ],
   },
   {
-    '@context': 'https://schema.org',
     '@type': 'Person',
     name: 'Imran',
     url: `${business.websiteUrl}/author/imran`,
