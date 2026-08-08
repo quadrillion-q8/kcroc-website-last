@@ -144,6 +144,7 @@ const specSections = [
     color: 'text-cyan-400',
     bgColor: 'bg-cyan-500/10',
     borderColor: 'border-cyan-500/30',
+    intro: "Every laptop we take apart in the lab has the same story on the spec sheet and a different one on the board. Salespeople sell CPU generation and core count; what actually decides whether a laptop feels fast two years from now is the power envelope the manufacturer allowed that chip to run at. Two laptops with the \"same\" processor can perform completely differently once you look past the marketing name.",
     points: [
       "The suffix matters more than the tier number. A Core i5-H can outperform a Core i7-U under sustained load because the suffix sets the power budget, not the number in front of it.",
       "Intel's Core Ultra line adds a dedicated NPU for on-device AI tasks; AMD's Ryzen AI competes closely on efficiency and integrated graphics.",
@@ -156,6 +157,7 @@ const specSections = [
     color: 'text-emerald-400',
     bgColor: 'bg-emerald-500/10',
     borderColor: 'border-emerald-500/30',
+    intro: "RAM is the single most common upgrade request we get from customers who bought a laptop a year or two ago and now find it grinding under multiple browser tabs and a video call. The mistake usually happens at checkout, not in daily use — a base configuration that looked adequate on the showroom floor becomes a bottleneck the moment real workloads show up, and by then it may be soldered in permanently.",
     points: [
       '16GB is a reasonable baseline for general use in 2026; 32GB is recommended for developers or anyone running VMs.',
       'DDR5 is worth the premium over DDR4 for a new purchase — DDR4 is increasingly a legacy standard.',
@@ -168,6 +170,7 @@ const specSections = [
     color: 'text-purple-400',
     bgColor: 'bg-purple-500/10',
     borderColor: 'border-purple-500/30',
+    intro: "\"512GB SSD\" tells you almost nothing about how that drive will actually behave once it's two-thirds full and you're copying a large project file. NAND type and controller quality determine whether a drive holds its rated speed under sustained load or falls off a cliff — and because storage is often soldered on modern laptops, it's also the component most likely to turn a simple repair into a full data-recovery job if the board fails.",
     points: [
       'TLC NAND is faster and more durable than QLC, and holds its speed when nearly full — QLC can slow sharply once its cache is exhausted.',
       'PCIe Gen5 SSDs mainly help large sequential transfers and workstation workloads; for everyday use the difference from Gen4 is minor, and Gen5 drives run hotter.',
@@ -180,6 +183,7 @@ const specSections = [
     color: 'text-orange-400',
     bgColor: 'bg-orange-500/10',
     borderColor: 'border-orange-500/30',
+    intro: "We regularly get gaming laptops in for repair where the customer's real complaint isn't a hardware fault — it's disappointment. The GPU sticker on the box promised RTX-tier performance, but the same chip can be configured with wildly different power limits depending on the chassis it's crammed into, and a thin, quiet laptop and a thick, loud one carrying the identical GPU name can perform a full tier apart.",
     points: [
       'The same RTX model can ship with very different power limits (TGP) across laptops — this affects real performance more than the model name.',
       "A 'gaming laptop' that runs games poorly is usually power-limited or thermally throttled, not underpowered on paper.",
@@ -192,6 +196,7 @@ const specSections = [
     color: 'text-red-400',
     bgColor: 'bg-red-500/10',
     borderColor: 'border-red-500/30',
+    intro: "This is the section that's genuinely different for buyers here versus almost anywhere else we've seen written up online. A cooling design that's perfectly adequate in a temperate climate can run into trouble once ambient room temperatures climb through a Kuwaiti summer, and we see the downstream effects of that on our bench constantly — degraded thermal paste, warped chassis plastics, and batteries that age faster than their rated cycle count would suggest.",
     points: [
       "Kuwait's ambient heat reduces the thermal headroom before throttling kicks in, especially for higher-wattage H/HX-series laptops under long workloads.",
       "Liquid metal cooling offers a genuine thermal advantage in premium machines, though it requires precise factory application to be reliable.",
@@ -286,6 +291,34 @@ export default function LaptopBuyingGuide() {
         </div>
       </section>
 
+      {/* Intro Narrative */}
+      <section className="pb-8 sm:pb-24 px-4 sm:px-6">
+        <div className="container mx-auto max-w-4xl space-y-4 sm:space-y-6 text-slate-300 text-sm sm:text-lg leading-relaxed">
+          <p>
+            Most laptop buying guides are written by people who have never opened a laptop.
+            We're not one of them. Our lab in Hawalli sees the aftermath of bad purchase decisions
+            every week — machines that looked perfect on a spec sheet in the shop and then fell
+            apart, throttled, or ran out of upgrade room within a year. This guide isn't written
+            from a press kit. It's written from a repair bench.
+          </p>
+          <p>
+            The core problem with buying a laptop in 2026 is that the marketing names have gotten
+            further away from what they used to mean. "Core i7" used to reliably outperform "Core
+            i5." An RTX GPU used to mean a predictable tier of gaming performance. Neither is
+            reliably true anymore — the suffix on a CPU, the power limit on a GPU, and the NAND
+            type inside an SSD now matter more than the headline name, and none of that is obvious
+            on a store shelf or a product listing.
+          </p>
+          <p>
+            Below, we break down the five spec categories that actually determine how a laptop
+            performs and how long it lasts — CPU, RAM, storage, GPU, and thermals — with particular
+            attention to how Kuwait's climate changes the calculus on that last one. If you'd
+            rather just ask us directly before you buy, WhatsApp us the model you're considering
+            and we'll tell you honestly what we'd expect from it.
+          </p>
+        </div>
+      </section>
+
       {/* Spec Sections */}
       <section className="py-8 sm:py-24 px-4 sm:px-6 bg-slate-900/50 backdrop-blur-sm border-y border-slate-800">
         <div className="container mx-auto max-w-6xl">
@@ -315,6 +348,9 @@ export default function LaptopBuyingGuide() {
                     </div>
                   </CardHeader>
                   <CardContent className="p-4 sm:p-6 pt-0">
+                    <p className="text-slate-300 text-xs sm:text-sm leading-relaxed mb-3 sm:mb-4">
+                      {section.intro}
+                    </p>
                     <ul className="space-y-2 sm:space-y-3">
                       {section.points.map((point, idx) => (
                         <li key={idx} className="flex items-start gap-2 sm:gap-3 text-slate-300 text-xs sm:text-sm leading-relaxed">
@@ -385,6 +421,25 @@ export default function LaptopBuyingGuide() {
               </Card>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Closing Narrative */}
+      <section className="pb-8 sm:pb-24 px-4 sm:px-6">
+        <div className="container mx-auto max-w-4xl space-y-4 sm:space-y-6 text-slate-300 text-sm sm:text-lg leading-relaxed">
+          <p>
+            None of this means you need to become a hardware engineer before you buy a laptop.
+            It means the model name and the price tag on the box tell you less than they used to,
+            and the handful of details above — CPU suffix, RAM upgradability, NAND type, GPU power
+            limit, and cooling design — are the ones actually worth checking before you pay.
+          </p>
+          <p>
+            And if you're reading this because something already went wrong — a laptop that runs
+            hot, throttles under load, won't charge, or won't turn on at all — that's exactly the
+            kind of fault we diagnose and repair at board level every day, on every major brand.
+            A failing component doesn't always mean a dead laptop; it usually just means the right
+            diagnosis hasn't happened yet.
+          </p>
         </div>
       </section>
 
