@@ -98,7 +98,6 @@ export class NavigationCompiler {
           { id: 'b4', slug: 'blog/how-to-protect-laptop-screen', title: 'Protect Laptop Screen', description: '', iconKey: 'monitor', entityType: 'Page' as any, primaryKeyword: 'protect', weight: 0, commercialIntent: 'info' },
           { id: 'b5', slug: 'blog/gaming-pc-cooling', title: 'Gaming PC Cooling', description: '', iconKey: 'gaming', entityType: 'Page' as any, primaryKeyword: 'cooling', weight: 0, commercialIntent: 'info' },
           { id: 'b6', slug: 'blog/laptop-buying-guide-kuwait-2026', title: 'Laptop Buying Guide 2026', description: '', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'buying guide', weight: 0, commercialIntent: 'info' },
-          // 🚀 ADDED: Intel vs AMD cluster article injected into the dropdown
           { id: 'b7', slug: 'blog/intel-core-ultra-vs-amd-ryzen-ai', title: 'Intel vs AMD CPUs', description: '', iconKey: 'cpu', entityType: 'Page' as any, primaryKeyword: 'cpu', weight: 0, commercialIntent: 'info' },
         ]
       }]
@@ -114,8 +113,8 @@ export class NavigationCompiler {
       sections: [{
         title: 'Step-by-Step Guides',
         items: [
-          { id: 'g1', slug: 'guides/dell-overheating', title: 'Dell Overheating Fix', description: 'Thermal troubleshooting guide', iconKey: 'cpu', entityType: 'Page' as any, primaryKeyword: 'overheating', weight: 0, commercialIntent: 'info' },
-          // 🚀 ADDED: Battery Warning Signs guide integrated into the correct dropdown
+          // 🚀 UPDATED: Pointing to the new specific Dell Inspiron URL
+          { id: 'g1', slug: 'guides/dell-inspiron-15-3000-overheating', title: 'Dell Inspiron Overheating', description: 'Thermal troubleshooting guide', iconKey: 'cpu', entityType: 'Page' as any, primaryKeyword: 'overheating', weight: 0, commercialIntent: 'info' },
           { id: 'g2', slug: 'guides/laptop-battery-warning-signs', title: 'Battery Warning Signs', description: 'Lithium-ion failure checklist', iconKey: 'battery', entityType: 'Page' as any, primaryKeyword: 'battery', weight: 0, commercialIntent: 'info' },
         ]
       }]
@@ -139,7 +138,7 @@ export class NavigationCompiler {
             { id: 'a6', slug: 'contact', title: 'Contact', description: '', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'contact', weight: 0, commercialIntent: 'info' },
           ]
         },
-        // 🚀 NEW: Dedicated Locations Section
+        // Dedicated Locations Section
         {
           title: 'Service Areas',
           items: [
