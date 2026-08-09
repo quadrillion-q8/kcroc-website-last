@@ -1,21 +1,29 @@
 // File: app/frontend/src/pages/DellInspiron15_3000OverheatingPage.tsx
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
+import { Link } from 'react-router-dom';
 import { 
   AlertTriangle, CheckCircle2, XCircle, Thermometer, 
-  HelpCircle, Wrench, ShieldAlert 
+  HelpCircle, Wrench, ShieldAlert, Cpu, Fan, Wind, 
+  MessageCircle, Phone, MapPin, Shield
 } from 'lucide-react';
-import { ServiceGuide } from '../components/content/ServiceGuide';
+
 import { SEOEngine } from '../core/components/SEOEngine';
 import SchemaMarkup from '../components/seo/SchemaMarkup';
 import { KCROC_GRAPH } from '../data/graph';
-import { Card, CardContent } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 
 export const DellInspiron15_3000OverheatingPage = () => {
   const business = KCROC_GRAPH.business!;
   const PAGE_URL = `${business.websiteUrl}/guides/dell-inspiron-15-3000-overheating`;
   const PAGE_TITLE = 'Dell Inspiron 15 3000 Overheating: Causes, Fixes & Repair | KCROC Kuwait';
   const PAGE_DESCRIPTION = 'Is your Dell Inspiron 15 3000 overheating, shutting down, or running loud? Learn the common causes, safe fixes, thermal throttling signs, and when professional repair is needed.';
+  
+  const WA_LINK = `https://wa.me/${business.telephone}?text=${encodeURIComponent(
+    'Hi KCROC, my Dell Inspiron 15 is overheating/shutting down and I need a diagnostic.'
+  )}`;
 
   const FAQS = [
     { q: 'Why does my Dell Inspiron 15 3000 get so hot?', a: "Most commonly it's a combination of restricted airflow, dust buildup inside the cooling system, and CPU load. In Kuwait's climate, high ambient temperatures can add to the problem." },
@@ -98,7 +106,7 @@ export const DellInspiron15_3000OverheatingPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-950 text-slate-300 selection:bg-cyan-500/30 pb-24">
+    <div className="min-h-screen bg-gray-950 text-slate-300 selection:bg-cyan-500/30">
       <Helmet>
         <title>{PAGE_TITLE}</title>
         <meta name="description" content={PAGE_DESCRIPTION} />
@@ -112,91 +120,122 @@ export const DellInspiron15_3000OverheatingPage = () => {
       <SEOEngine entityId="guide-dell-inspiron-overheating" />
       <SchemaMarkup schema={{ '@graph': GUIDE_SCHEMA }} />
 
-      {/* The Core Service Guide Component */}
-      <ServiceGuide
-        title="Dell Inspiron 15 3000 Overheating & Shutdown: Causes, Fixes & Repair Guide"
-        subtitle="⭐ Expert Technical Advice from Kuwait Computer Repair On Call"
-        symptoms={[
-          'Fan runs continuously, at high speed, or makes unusual whirring or grinding noises.',
-          'Bottom of the laptop becomes unusually hot during normal use.',
-          'Laptop shuts down or restarts unexpectedly during demanding tasks.',
-          'Performance drops, stutters, or freezes because of thermal throttling.',
-          'The laptop becomes significantly hotter than it was previously.',
-          'Fan repeatedly speeds up and slows down while the laptop is under load.',
-        ]}
-        causes={[
-          'Dust Accumulation: Dust can restrict airflow through the fan, heatsink, and ventilation openings.',
-          'Restricted Airflow: Using the laptop on beds, blankets, carpets, or other soft surfaces can obstruct ventilation.',
-          'Thermal Interface Degradation: Thermal compound can degrade over years of repeated heat cycling and may require inspection.',
-          'Fan Problems: A worn, obstructed, or failing cooling fan may not move enough air through the heatsink.',
-          'High CPU Usage: Background applications, Windows processes, updates, or demanding software can generate excessive heat.',
-          "Hot Environment: High ambient temperatures can make an already-stressed laptop cooling system less effective. In Kuwait's climate this can meaningfully reduce a laptop's ability to dissipate heat.",
-        ]}
-        diySteps={[
-          {
-            title: 'Use a Hard, Flat Surface',
-            description: 'Place the laptop on a desk or other firm surface. Avoid beds, blankets, carpets, and cushions that can block ventilation openings.',
-          },
-          {
-            title: 'Check CPU Usage',
-            description: 'Press Ctrl+Shift+Esc to open Task Manager and check whether an application is continuously using a high percentage of CPU. Investigate unusually heavy background processes before assuming the cooling system has failed.',
-          },
-          {
-            title: 'Keep External Vents Clear',
-            description: 'Power off the laptop and keep the external ventilation openings free from dust and obstructions. Avoid inserting objects into the cooling system or attempting internal disassembly without the appropriate experience.',
-          },
-        ]}
-        warning="These basic checks are intended to be low-risk. Do NOT open the laptop, remove the heatsink, disconnect internal cables, or replace thermal compound unless you know the correct procedure for your specific Inspiron 15 3000 model. The series includes multiple generations and hardware configurations, so the internal cooling system can differ between models."
-        proServices={[
-          {
-            title: 'Thermal System Inspection',
-            description: 'We inspect temperature behavior, fan operation, heatsink condition, airflow, and thermal performance to identify the actual source of overheating.',
-          },
-          {
-            title: 'Fan Inspection & Replacement',
-            description: 'We check the cooling fan for abnormal noise, obstruction, mechanical wear, or failure and replace the appropriate assembly when required.',
-          },
-          {
-            title: 'Internal Cleaning & Thermal Service',
-            description: 'ESD-safe internal cleaning and thermal-interface service where required, followed by testing to verify improved cooling performance.',
-          },
-        ]}
-        businessInfo={{
-          name: 'Kuwait Computer Repair On Call',
-          address: 'Hawalli, Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19',
-          phone: '55301913',
-        }}
-      />
+      {/* Breadcrumb */}
+      <div className="pt-20 sm:pt-24 px-4 sm:px-6">
+        <div className="container mx-auto max-w-5xl text-xs sm:text-sm text-slate-400 flex flex-wrap items-center gap-2">
+          <Link to="/" className="hover:text-cyan-400 transition-colors">Home</Link> <span>/</span>
+          <span className="text-slate-300">Guides</span> <span>/</span>
+          <span className="text-cyan-400">Dell Overheating</span>
+        </div>
+      </div>
 
-      {/* --- EXTENDED CONTENT SECTIONS (Technical Noir Styled) --- */}
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 space-y-16 mt-12">
+      {/* Hero Section */}
+      <section className="relative pt-8 pb-12 sm:pb-20 px-4 sm:px-6 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-red-500/10 via-transparent to-orange-500/10"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(239,68,68,0.08),transparent_50%)]"></div>
+
+        <div className="container mx-auto max-w-5xl relative z-10 text-center">
+          <Badge className="bg-red-500/20 text-red-300 border-red-500/30 px-4 py-1.5 mb-6 text-sm font-semibold tracking-wide">
+            <Thermometer className="w-4 h-4 mr-2 inline" /> Troubleshooting Guide
+          </Badge>
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white leading-tight mb-6 tracking-tight">
+            Dell Inspiron 15 3000 <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-orange-400">
+              Overheating & Shutdown
+            </span>
+          </h1>
+          <p className="text-sm sm:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed mb-8">
+            Is your Dell Inspiron running loud, burning hot, or randomly shutting off? Learn the common causes, safe DIY fixes, and when professional thermal repair is needed in Kuwait.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button size="lg" className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold px-8 shadow-lg shadow-cyan-500/20" asChild>
+              <a href={WA_LINK} target="_blank" rel="noopener noreferrer">
+                <MessageCircle className="w-5 h-5 mr-2" /> Book a Free Diagnostic
+              </a>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      <main className="container mx-auto max-w-5xl px-4 sm:px-6 py-8 sm:py-12 space-y-16">
         
         {/* Quick Answer */}
-        <section className="bg-slate-900/50 border border-slate-800 p-6 sm:p-8 rounded-2xl">
-          <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
-            <Thermometer className="text-red-400" /> Quick Answer
+        <section className="bg-slate-900/60 border border-slate-800 p-6 sm:p-10 rounded-3xl shadow-2xl backdrop-blur-sm">
+          <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-3">
+            <AlertTriangle className="text-red-400 w-6 h-6" /> The Quick Answer
           </h2>
-          <p className="text-slate-300 leading-relaxed m-0">
-            A Dell Inspiron 15 3000 that becomes unusually hot is commonly affected by restricted airflow, dust buildup, high CPU usage, fan problems, or degraded thermal-interface material. Start with the low-risk checks. If the laptop repeatedly shuts down, the fan behaves abnormally, or temperatures remain high despite clear airflow, the cooling system should be professionally inspected.
+          <p className="text-slate-300 leading-relaxed text-lg m-0">
+            A Dell Inspiron 15 3000 that becomes unusually hot is commonly affected by restricted airflow, dust buildup, high CPU usage, fan problems, or degraded thermal paste. Start with the low-risk DIY checks below. If the laptop repeatedly shuts down, the fan behaves abnormally, or temperatures remain high despite clear airflow, the internal cooling system should be professionally inspected to prevent permanent motherboard damage.
           </p>
         </section>
 
+        {/* Symptoms & Causes Grid */}
+        <div className="grid md:grid-cols-2 gap-6">
+          <Card className="bg-slate-950/50 border-slate-800">
+            <CardHeader className="border-b border-slate-800/50 pb-4">
+              <CardTitle className="text-xl text-white flex items-center gap-2">
+                <Thermometer className="text-orange-400 w-5 h-5" /> Warning Symptoms
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="pt-6">
+              <ul className="space-y-4">
+                {[
+                  "Fan runs continuously at high speed or makes unusual grinding noises.",
+                  "Bottom of the laptop becomes uncomfortably hot during normal use.",
+                  "Laptop shuts down or restarts unexpectedly during demanding tasks.",
+                  "Performance drops, stutters, or freezes due to thermal throttling.",
+                  "The laptop becomes significantly hotter than it was when new."
+                ].map((symptom, i) => (
+                  <li key={i} className="flex items-start gap-3 text-slate-300 text-sm leading-relaxed">
+                    <AlertTriangle className="w-4 h-4 text-orange-400 flex-shrink-0 mt-1" />
+                    <span>{symptom}</span>
+                  </li>
+                ))}
+              </ul>
+            </CardContent>
+          </Card>
+
+          <Card className="bg-slate-950/50 border-slate-800">
+            <CardHeader className="border-b border-slate-800/50 pb-4">
+              <CardTitle className="text-xl text-white flex items-center gap-2">
+                <Cpu className="text-cyan-400 w-5 h-5" /> Common Causes
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="pt-6">
+              <ul className="space-y-4">
+                {[
+                  "Dust Accumulation: Restricts airflow through the fan and heatsink fins.",
+                  "Restricted Airflow: Using the laptop on beds or blankets suffocates the intake.",
+                  "Thermal Paste Degradation: Compound dries out after years of heat cycling.",
+                  "Fan Problems: A worn or failing cooling fan stops moving enough air.",
+                  "Hot Environment: Kuwait's high ambient temperatures drastically reduce cooling efficiency."
+                ].map((cause, i) => (
+                  <li key={i} className="flex items-start gap-3 text-slate-300 text-sm leading-relaxed">
+                    <Wind className="w-4 h-4 text-cyan-400 flex-shrink-0 mt-1" />
+                    <span>{cause}</span>
+                  </li>
+                ))}
+              </ul>
+            </CardContent>
+          </Card>
+        </div>
+
         {/* Diagnostic Table */}
         <section>
-          <h2 className="text-2xl font-bold text-white mb-6">How to Tell What Is Causing the Overheating</h2>
-          <div className="overflow-x-auto rounded-xl border border-slate-800">
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6">How to Tell What Is Causing It</h2>
+          <div className="overflow-hidden rounded-2xl border border-slate-800">
             <table className="w-full border-collapse text-left text-sm sm:text-base">
               <thead>
-                <tr className="bg-slate-900">
-                  <th className="py-4 px-6 font-bold text-white border-b border-slate-800">Symptom</th>
-                  <th className="py-4 px-6 font-bold text-white border-b border-slate-800">Possible Cause</th>
+                <tr className="bg-slate-900 border-b border-slate-800">
+                  <th className="py-4 px-6 font-bold text-white">If you notice this symptom...</th>
+                  <th className="py-4 px-6 font-bold text-white border-l border-slate-800">It is likely caused by...</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-800/50 bg-slate-950/50">
+              <tbody className="divide-y divide-slate-800/50 bg-slate-900/20">
                 {DIAGNOSTIC_TABLE.map((row) => (
-                  <tr key={row.symptom} className="hover:bg-slate-900/30 transition-colors">
+                  <tr key={row.symptom} className="hover:bg-slate-800/50 transition-colors">
                     <td className="py-4 px-6 text-cyan-300 font-medium">{row.symptom}</td>
-                    <td className="py-4 px-6 text-slate-300">{row.cause}</td>
+                    <td className="py-4 px-6 text-slate-300 border-l border-slate-800/50">{row.cause}</td>
                   </tr>
                 ))}
               </tbody>
@@ -204,24 +243,67 @@ export const DellInspiron15_3000OverheatingPage = () => {
           </div>
         </section>
 
+        {/* DIY Fixes & Warning */}
+        <section>
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6">Safe DIY Checks You Can Try</h2>
+          <div className="grid sm:grid-cols-3 gap-6 mb-8">
+            <Card className="bg-slate-900/40 border-slate-800">
+              <CardContent className="p-6">
+                <div className="w-10 h-10 bg-cyan-500/10 rounded-lg flex items-center justify-center mb-4 border border-cyan-500/20">
+                  <Laptop className="w-5 h-5 text-cyan-400" />
+                </div>
+                <h3 className="text-lg font-bold text-white mb-2">1. Use a Flat Surface</h3>
+                <p className="text-sm text-slate-400">Place the laptop on a desk. Avoid beds, blankets, and cushions that sink in and block the bottom ventilation intakes.</p>
+              </CardContent>
+            </Card>
+            <Card className="bg-slate-900/40 border-slate-800">
+              <CardContent className="p-6">
+                <div className="w-10 h-10 bg-cyan-500/10 rounded-lg flex items-center justify-center mb-4 border border-cyan-500/20">
+                  <Cpu className="w-5 h-5 text-cyan-400" />
+                </div>
+                <h3 className="text-lg font-bold text-white mb-2">2. Check CPU Usage</h3>
+                <p className="text-sm text-slate-400">Press Ctrl+Shift+Esc to open Task Manager. Check if a rogue background process is pinning your CPU to 100%.</p>
+              </CardContent>
+            </Card>
+            <Card className="bg-slate-900/40 border-slate-800">
+              <CardContent className="p-6">
+                <div className="w-10 h-10 bg-cyan-500/10 rounded-lg flex items-center justify-center mb-4 border border-cyan-500/20">
+                  <Wind className="w-5 h-5 text-cyan-400" />
+                </div>
+                <h3 className="text-lg font-bold text-white mb-2">3. Keep Vents Clear</h3>
+                <p className="text-sm text-slate-400">Power off the laptop and ensure the external exhaust vents are free from visible dust and obstructions.</p>
+              </CardContent>
+            </Card>
+          </div>
+
+          <div className="bg-red-950/20 border-l-4 border-red-500 p-6 rounded-r-2xl flex gap-4 items-start">
+            <ShieldAlert className="w-6 h-6 text-red-400 flex-shrink-0 mt-1" />
+            <div>
+              <h4 className="text-red-400 font-bold mb-2">Warning: Avoid Disassembly</h4>
+              <p className="text-slate-300 text-sm leading-relaxed mb-0">
+                These basic checks are intended to be low-risk. Do NOT open the laptop, remove the heatsink, disconnect delicate ZIF cables, or attempt to replace thermal compound unless you are trained. The Inspiron 15 3000 series includes multiple generations, and the internal layout differs vastly. Mistakes during disassembly frequently cause permanent motherboard damage.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Pro Services & Avoid Mistakes */}
         <div className="grid md:grid-cols-2 gap-8">
-          {/* Mistakes to Avoid */}
-          <section className="bg-red-950/10 border border-red-900/30 p-6 rounded-2xl">
+          <section className="bg-red-950/10 border border-red-900/30 p-6 sm:p-8 rounded-3xl">
             <h2 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
               <XCircle className="text-red-400" /> Avoid These Mistakes
             </h2>
             <ul className="space-y-4">
               {MISTAKES_TO_AVOID.map((item) => (
                 <li key={item} className="flex items-start gap-3 text-slate-300 text-sm leading-relaxed">
-                  <ShieldAlert className="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-red-500 mt-2 flex-shrink-0"></span>
                   <span>{item}</span>
                 </li>
               ))}
             </ul>
           </section>
 
-          {/* When to Seek Repair */}
-          <section className="bg-emerald-950/10 border border-emerald-900/30 p-6 rounded-2xl">
+          <section className="bg-emerald-950/10 border border-emerald-900/30 p-6 sm:p-8 rounded-3xl">
             <h2 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
               <Wrench className="text-emerald-400" /> Seek Professional Repair If:
             </h2>
@@ -236,17 +318,40 @@ export const DellInspiron15_3000OverheatingPage = () => {
           </section>
         </div>
 
-        {/* Model Differentiation & Tech Note */}
-        <section className="bg-slate-900/30 border-l-4 border-cyan-500 p-6 rounded-r-2xl">
-          <h2 className="text-xl font-bold text-white mb-3">Which Inspiron 15 3000 Model Do You Have?</h2>
-          <p className="text-slate-400 text-sm leading-relaxed mb-0">
-            <strong>Technical Note:</strong> Dell has released multiple Inspiron 15 3000 generations and configurations. The cooling assembly, fan design, processor, and internal layout vary heavily by model. Check your exact service tag before ordering parts — a fix that applies to one generation may not apply to another.
-          </p>
+        {/* What KCROC Does */}
+        <section>
+          <div className="text-center mb-10">
+            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">Professional Thermal Repair Services</h2>
+            <p className="text-slate-400">How our Hawalli laboratory completely restores your laptop's cooling efficiency.</p>
+          </div>
+          <div className="grid sm:grid-cols-3 gap-6">
+            <Card className="bg-slate-900/40 border-slate-800">
+              <CardContent className="p-6 text-center">
+                <Thermometer className="w-8 h-8 text-cyan-400 mx-auto mb-4" />
+                <h3 className="text-lg font-bold text-white mb-2">Thermal Inspection</h3>
+                <p className="text-sm text-slate-400">We inspect temperature behavior, heatsink integrity, and component-level power draw to find the exact source of heat.</p>
+              </CardContent>
+            </Card>
+            <Card className="bg-slate-900/40 border-slate-800">
+              <CardContent className="p-6 text-center">
+                <Fan className="w-8 h-8 text-cyan-400 mx-auto mb-4" />
+                <h3 className="text-lg font-bold text-white mb-2">Fan Replacement</h3>
+                <p className="text-sm text-slate-400">We carefully extract the motherboard, test the fan bearing, and install an OEM-grade replacement if it is failing mechanically.</p>
+              </CardContent>
+            </Card>
+            <Card className="bg-slate-900/40 border-slate-800">
+              <CardContent className="p-6 text-center">
+                <Shield className="w-8 h-8 text-cyan-400 mx-auto mb-4" />
+                <h3 className="text-lg font-bold text-white mb-2">Deep Clean & Re-paste</h3>
+                <p className="text-sm text-slate-400">ESD-safe removal of dust blocks and application of premium phase-change thermal materials to restore factory cooling performance.</p>
+              </CardContent>
+            </Card>
+          </div>
         </section>
 
         {/* FAQs */}
         <section className="border-t border-slate-800 pt-12">
-          <h2 className="text-2xl font-bold text-white mb-8 text-center">Frequently Asked Questions</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-8 text-center">Frequently Asked Questions</h2>
           <div className="space-y-4">
             {FAQS.map((item, idx) => (
               <Card key={idx} className="bg-slate-900/40 border-slate-800">
@@ -263,7 +368,36 @@ export const DellInspiron15_3000OverheatingPage = () => {
             ))}
           </div>
         </section>
-      </div>
+
+        {/* Bottom CTA */}
+        <section className="py-12">
+          <Card className="bg-gradient-to-br from-cyan-600/20 to-blue-600/20 border-cyan-500/30 backdrop-blur-sm">
+            <CardContent className="p-8 sm:p-12 text-center">
+              <h2 className="text-2xl sm:text-4xl font-bold text-white mb-4">Is your laptop shutting down right now?</h2>
+              <p className="text-slate-300 mb-8 max-w-2xl mx-auto">
+                Stop running it hot before it causes permanent motherboard damage. We offer free diagnostics and free pickup/delivery across all Kuwait governorates.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button size="lg" className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold px-8" asChild>
+                  <a href={WA_LINK} target="_blank" rel="noopener noreferrer">
+                    <MessageCircle className="w-5 h-5 mr-2" /> Book Free Pickup
+                  </a>
+                </Button>
+                <Button size="lg" variant="outline" className="border-slate-600 text-white hover:bg-slate-800 px-8" asChild>
+                  <a href={`tel:+${business.telephone}`}>
+                    <Phone className="w-5 h-5 mr-2" /> Call: +{business.telephone}
+                  </a>
+                </Button>
+              </div>
+              <div className="mt-8 flex justify-center gap-6 text-sm text-slate-400">
+                <span className="flex items-center gap-2"><MapPin className="w-4 h-4 text-cyan-400" /> Hawalli Lab</span>
+                <span className="flex items-center gap-2"><Shield className="w-4 h-4 text-cyan-400" /> 30-Day Warranty</span>
+              </div>
+            </CardContent>
+          </Card>
+        </section>
+
+      </main>
     </div>
   );
 };
