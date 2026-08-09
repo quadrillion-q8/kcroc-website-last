@@ -135,6 +135,22 @@ export const rawGraphData: RawGraphData = {
         schemaTypes: ['Article', 'FAQPage', 'BreadcrumbList', 'Person']
       }
     } as WebPageEntity,
+    // 🚀 NEW: Dell Inspiron Overheating Guide
+    'guide-dell-inspiron-overheating': {
+      id: 'guide-dell-inspiron-overheating',
+      slug: 'guides/dell-inspiron-15-3000-overheating',
+      entityType: 'WebPage',
+      isActive: true,
+      title: 'Dell Inspiron 15 3000 Overheating Fix & Repair Guide',
+      description: 'Is your Dell Inspiron 15 3000 overheating, shutting down, or running loud? Learn the causes, DIY fixes, and professional thermal repair solutions in Kuwait.',
+      seo: {
+        title: 'Dell Inspiron 15 3000 Overheating Fix | KCROC Kuwait',
+        description: 'Is your Dell Inspiron 15 3000 overheating, shutting down, or running loud? Learn the causes, DIY fixes, and professional thermal repair solutions in Kuwait.',
+        canonicalUrl: 'https://www.computerrepairkuwait.com/guides/dell-inspiron-15-3000-overheating',
+        ogType: 'article',
+        schemaTypes: ['Article', 'BreadcrumbList']
+      }
+    } as WebPageEntity,
 
     /* ═══════════════════════════════════════════════════════════════
        SERVICES
