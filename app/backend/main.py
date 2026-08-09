@@ -265,7 +265,7 @@ def run_in_debug_mode(app: FastAPI):
         log_level="info",
     )
     server = uvicorn.Server(config)
-    async asyncio.run(server.serve())
+    asyncio.run(server.serve())
 
 
 if __name__ == "__main__":
