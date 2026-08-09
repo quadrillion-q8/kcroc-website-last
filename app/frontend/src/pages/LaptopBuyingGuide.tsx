@@ -91,12 +91,11 @@ const PILLAR_SCHEMA = [
       { '@type': 'Question', name: 'Should I buy 8GB RAM if the laptop is cheap?', acceptedAnswer: { '@type': 'Answer', text: "Generally not recommended for 2026 — 8GB is consumed quickly by the OS and browser alone, and most 8GB configurations can't be upgraded later if soldered." } },
       { '@type': 'Question', name: "What's the difference between PCIe Gen4 and Gen5 SSDs in daily use?", acceptedAnswer: { '@type': 'Answer', text: "For most everyday tasks the difference is minor; Gen5's advantage shows up mainly in large sequential transfers and specialized workstation workloads, and Gen5 drives also tend to run hotter." } },
       { '@type': 'Question', name: "Can a laptop's GPU model number be misleading?", acceptedAnswer: { '@type': 'Answer', text: 'Yes — the same GPU model can ship with very different power limits (TGP) across laptops, which has a bigger effect on real performance than the model name alone.' } },
-      { '@type': 'Question', name: 'Is it worth buying a laptop with soldered RAM if the price is lower?', acceptedAnswer: { '@type': 'Answer', text: 'It depends on how long you plan to keep it. A soldered configuration locks in your day-one specs permanently; if your needs are likely to grow, upgradeable RAM protects that investment.' } },
+      { '@type': 'Question', name: 'Should I buy a laptop with soldered RAM?', acceptedAnswer: { '@type': 'Answer', text: "It depends on how long you plan to keep the machine and whether your workload is likely to grow. Soldered RAM is a reasonable tradeoff if you're buying for a fixed, well-defined use case and a shorter ownership period, or if it comes with a genuinely lower price for otherwise equivalent specs — it's a disadvantage if your needs are likely to grow, or if you plan to keep the laptop long enough that a mid-life RAM upgrade would otherwise make sense. Before buying, check the exact model's memory configuration (a teardown will usually confirm it) rather than assuming from the RAM generation alone, and factor in your expected ownership period." } },
       { '@type': 'Question', name: 'What causes a laptop to stop charging or shut down randomly?', acceptedAnswer: { '@type': 'Answer', text: 'Often a failure at the component level on the motherboard — a damaged charging IC, a failed capacitor, or a cracked solder joint from repeated heating and cooling — rather than a fault with the battery or charger itself.' } },
       { '@type': 'Question', name: 'Is it better to repair or replace a laptop with a dead motherboard?', acceptedAnswer: { '@type': 'Answer', text: 'It depends on the specific fault. Many motherboard failures are isolated to a single component and can be repaired at the board level, which is often significantly cheaper than a full replacement and preserves data stored on a soldered SSD.' } },
       { '@type': 'Question', name: 'How often should I clean the inside of my laptop?', acceptedAnswer: { '@type': 'Answer', text: "There's no fixed interval, but if fan noise increases or temperatures rise noticeably during normal use, dust buildup on the cooling system is a common and preventable cause." } },
       { '@type': 'Question', name: 'Is buying a gaming laptop in Kuwait riskier because of the heat?', acceptedAnswer: { '@type': 'Answer', text: "Not riskier, but heat-sensitive. A gaming laptop's cooling design (heat pipes vs. vapor chamber) and your usage environment (a well-ventilated, air-conditioned space) matter more here than in cooler climates. Regular internal cleaning also becomes more important given local dust conditions." } },
-      { '@type': 'Question', name: 'Should I buy a laptop with soldered RAM?', acceptedAnswer: { '@type': 'Answer', text: "It depends on how long you plan to keep the machine and whether your workload is likely to grow. Soldered RAM locks in your day-one configuration permanently; if you're buying for a fixed, well-defined use case, it's a reasonable tradeoff for thinner, lighter designs." } },
       { '@type': 'Question', name: 'Which laptop brands are easiest to repair?', acceptedAnswer: { '@type': 'Answer', text: 'This varies by model as much as by brand — some manufacturers use standardized, socketed components across a line, while others solder heavily even in higher-end models. A pre-purchase teardown search for the specific model is more reliable than a brand-wide assumption.' } },
       { '@type': 'Question', name: 'How long should a good laptop realistically last?', acceptedAnswer: { '@type': 'Answer', text: 'With reasonable care — clean airflow, avoiding sustained heat exposure, and moderate charging habits — a well-specified laptop can remain useful for 4–6 years before its performance or battery life becomes a genuine limitation for its original purpose.' } },
       { '@type': 'Question', name: 'Can motherboard damage actually be repaired, or does it always mean replacement?', acceptedAnswer: { '@type': 'Answer', text: 'Many motherboard faults are isolated to a single failed component — a capacitor, MOSFET, or charging IC — and can be repaired at the board level rather than requiring a full replacement. Whether repair is possible depends on the specific fault, which is why diagnosis should come before a replace-or-repair decision, not after.' } },
@@ -162,11 +161,11 @@ const toc = [
 ];
 
 const cpuSuffixTable = [
-  { suffix: 'U', power: '15–28W', builtFor: 'Long battery life over sustained speed', fits: 'Office work, browsing, travel' },
-  { suffix: 'V', power: '17–30W', builtFor: "Intel's efficiency-first design with memory built into the CPU package", fits: 'Thin-and-light laptops prioritizing endurance' },
-  { suffix: 'P', power: '28–35W', builtFor: 'A middle ground between U and H (increasingly phased out)', fits: 'Users who occasionally run heavier apps' },
-  { suffix: 'H / HS', power: '35–54W', builtFor: 'Sustained multi-core performance', fits: 'Developers, standard gaming, video editing' },
-  { suffix: 'HX', power: '55–157W+', builtFor: 'Desktop-class performance in a laptop chassis', fits: 'CAD, 3D rendering, compiling, high-end gaming' },
+  { suffix: 'U', power: 'Low power, efficiency-focused', builtFor: 'Long battery life over sustained speed', fits: 'Office work, browsing, travel' },
+  { suffix: 'V', power: 'Low power, efficiency-focused', builtFor: "Intel's efficiency-first design with memory built into the CPU package", fits: 'Thin-and-light laptops prioritizing endurance' },
+  { suffix: 'P', power: 'Mid power', builtFor: 'A middle ground between U and H (increasingly phased out)', fits: 'Users who occasionally run heavier apps' },
+  { suffix: 'H / HS', power: 'Higher sustained power', builtFor: 'Sustained multi-core performance', fits: 'Developers, standard gaming, video editing' },
+  { suffix: 'HX', power: 'Highest sustained power', builtFor: 'Desktop-class performance in a laptop chassis', fits: 'CAD, 3D rendering, compiling, high-end gaming' },
 ];
 
 const ramUseCaseTable = [
@@ -179,13 +178,13 @@ const ramUseCaseTable = [
 ];
 
 const specTargetsTable = [
-  { user: 'Student / general use', cpu: 'Core Ultra 5 / Ryzen 5 (U-series)', ram: '16GB', storage: '512GB TLC SSD', gpu: 'Integrated' },
-  { user: 'Office / business', cpu: 'Core Ultra 5 U', ram: '16GB', storage: '512GB TLC SSD', gpu: 'Integrated' },
-  { user: 'Software developer', cpu: 'Core Ultra 7 H / Ryzen 7 H', ram: '32GB', storage: '1TB SSD', gpu: 'Integrated or entry dedicated GPU' },
-  { user: 'Gaming', cpu: 'Core i7/Ultra 7 H or HX', ram: '32GB', storage: '1TB SSD', gpu: 'RTX 4060 or better, check TGP' },
-  { user: 'Engineering / CAD / 3D', cpu: 'Ryzen 9 HX / Core Ultra 9 HX', ram: '64GB', storage: '2TB SSD', gpu: 'Workstation-class dedicated GPU' },
-  { user: 'Video editing / creative', cpu: 'Core Ultra 7-9 H/HX', ram: '32–64GB', storage: '1–2TB TLC SSD', gpu: 'Mid-to-high dedicated GPU, 12GB+ VRAM' },
-  { user: 'Local AI / heavy compute', cpu: 'HX-series CPU', ram: '64GB+', storage: '2TB SSD', gpu: 'RTX 4080 or better, depending on model' },
+  { user: 'Student / general use', cpu: 'Core Ultra 5 / Ryzen 5 (U-series)', ram: '16GB', storage: '512GB TLC SSD', gpu: 'Integrated', priority: 'Battery life, weight, RAM' },
+  { user: 'Office / business', cpu: 'Core Ultra 5 U', ram: '16GB', storage: '512GB TLC SSD', gpu: 'Integrated', priority: 'Battery life, portability' },
+  { user: 'Software developer', cpu: 'Core Ultra 7 H / Ryzen 7 H', ram: '32GB', storage: '1TB SSD', gpu: 'Integrated or entry dedicated GPU', priority: 'RAM, sustained CPU, upgradeability' },
+  { user: 'Gaming', cpu: 'Core i7/Ultra 7 H or HX', ram: '32GB', storage: '1TB SSD', gpu: 'RTX 4060 or better, check TGP', priority: 'GPU TGP, cooling, display refresh rate' },
+  { user: 'Engineering / CAD / 3D', cpu: 'Ryzen 9 HX / Core Ultra 9 HX', ram: '64GB', storage: '2TB SSD', gpu: 'Workstation-class dedicated GPU', priority: 'Sustained CPU power, cooling, RAM' },
+  { user: 'Video editing / creative', cpu: 'Core Ultra 7-9 H/HX', ram: '32–64GB', storage: '1–2TB TLC SSD', gpu: 'Mid-to-high dedicated GPU, 12GB+ VRAM', priority: 'GPU VRAM, storage speed, display color accuracy' },
+  { user: 'Local AI / heavy compute', cpu: 'HX-series CPU', ram: '64GB+', storage: '2TB SSD', gpu: 'RTX 4080 or better, depending on model', priority: 'GPU VRAM, sustained cooling, RAM capacity' },
 ];
 
 const checklist = [
@@ -585,9 +584,13 @@ export default function LaptopBuyingGuide() {
             <h3 className="text-white font-semibold text-base sm:text-lg pt-2">What an NPU Actually Does</h3>
             <p>
               Both platforms now ship with a Neural Processing Unit (NPU) — a chip built specifically to run AI
-              inference far more power-efficiently than asking the CPU or GPU to do the same work. It won't
-              speed up gaming or video export. Its value shows up in battery life during AI-assisted tasks, not
-              in benchmark scores.
+              inference far more power-efficiently than asking the CPU or GPU to do the same work. An NPU isn't a
+              general-purpose replacement for the CPU or GPU, so its presence alone won't make conventional
+              gaming or video rendering faster — those workloads are still handled by the GPU and CPU, with the
+              exact benefit depending on whether the specific software you're using has been built to route any
+              part of its workload through the NPU. Its clearest, most consistent value today shows up in battery
+              life during AI-assisted tasks (background blur and noise removal in video calls, on-device AI
+              features in Windows) rather than in traditional benchmark scores.
             </p>
 
             <h3 className="text-white font-semibold text-base sm:text-lg pt-2">The Suffix Is the Real Spec</h3>
@@ -600,29 +603,43 @@ export default function LaptopBuyingGuide() {
           </Prose>
 
           <DataTable
-            headers={['Suffix', 'Typical Power', "What It's Built For", 'Fits Best']}
+            headers={['Suffix', 'General Position', "What It's Built For", 'Fits Best']}
             rows={cpuSuffixTable.map((r) => [r.suffix, r.power, r.builtFor, r.fits])}
           />
+          <Prose>
+            <p className="pt-3 text-xs sm:text-sm text-slate-400">
+              These suffixes are useful shorthand for a chip's general design intent — they are not a guaranteed
+              sustained wattage. Actual power behavior varies by processor generation, and manufacturers
+              configure sustained and boost power differently between models even within the same suffix
+              class. The laptop's cooling capacity ultimately decides how much of that power budget the CPU can
+              actually sustain in practice, which is why two "H-series" laptops can still perform quite
+              differently under load.
+            </p>
+          </Prose>
 
           <div className="mt-5">
             <Prose>
               <p>
                 <strong className="text-white">Why it matters in practice:</strong> an HX chip compiling a large
-                codebase or rendering a 3D scene will consistently outrun a same-tier U chip doing the identical
-                task — not because it's a "better" chip, but because it's allowed to draw three to five times
+                codebase or rendering a 3D scene will generally outrun a same-tier U chip doing the identical
+                task — not because it's a "better" chip, but because it's typically allowed to draw significantly
                 more power to do it. The tradeoff is battery life and heat. A student buying an HX-series
                 machine for note-taking will carry a heavy charger and get a few hours of battery for no
-                benefit; an architect buying a U-series machine will watch their rendering software stutter and
-                their fans spin uselessly, because there's no power budget for the CPU to actually work with.
+                benefit; an architect buying a U-series machine may find their rendering software stutters and
+                their fans spin without much to show for it, because there's little power budget for the CPU to
+                actually work with.
               </p>
             </Prose>
           </div>
 
           <div className="mt-5">
             <Callout>
-              Match the suffix to the workload, not the number after "Core" or "Ryzen." We're working on a full
-              side-by-side comparison of Intel Core Ultra vs. AMD Ryzen AI efficiency curves and integrated
-              graphics — check back soon, or WhatsApp us the two models you're comparing for a direct answer now.
+              Match the suffix to the workload, not the number after "Core" or "Ryzen."
+              {/* INTERNAL LINK PLACEHOLDER: Intel Core Ultra vs AMD Ryzen AI comparison — link here once
+                  /blog/intel-core-ultra-vs-amd-ryzen-ai is published. Do not invent a URL. */}
+              {' '}A dedicated Intel Core Ultra vs. AMD Ryzen AI comparison covering efficiency curves and
+              integrated graphics is in progress — in the meantime, WhatsApp us the two models you're comparing
+              for a direct answer now.
             </Callout>
           </div>
         </div>
@@ -659,21 +676,33 @@ export default function LaptopBuyingGuide() {
           <BulletList
             items={[
               '<strong class="text-white">DDR4</strong> — the previous standard, typically around 3200 MT/s. Increasingly outdated for new purchases unless the price difference is significant.',
-              '<strong class="text-white">DDR5</strong> — the current standard for upgradeable memory, typically 4800–5600 MT/s, usually installed in SO-DIMM slots you can access and replace.',
-              '<strong class="text-white">LPDDR5X</strong> — a low-power variant built for thin laptops, capable of much higher speeds (up to 8533 MT/s) at lower power draw. Historically soldered directly to the motherboard, meaning what you buy is what you keep for the life of the machine.',
+              '<strong class="text-white">DDR5</strong> — the current mainstream memory standard, typically 4800–5600 MT/s. Some laptops fit DDR5 in accessible, replaceable SO-DIMM slots; others solder DDR5 directly to the board. The generation name alone doesn\'t tell you which — check the specific model.',
+              '<strong class="text-white">LPDDR5X</strong> — a low-power variant built for thin laptops, capable of much higher speeds (up to 8533 MT/s) at lower power draw. It is generally soldered directly to the motherboard, meaning what you buy is typically what you keep for the life of the machine.',
             ]}
             color="text-emerald-400"
           />
+          <Prose>
+            <p className="pt-3 text-xs sm:text-sm text-slate-400">
+              The important buying lesson: memory generation does not determine upgradeability. "DDR5" tells you
+              the technology; it doesn't tell you whether that specific laptop's memory is socketed or soldered.
+              Check the exact model's memory implementation — a teardown or the manufacturer's own spec sheet
+              will usually say — rather than assuming DDR5 means removable.
+            </p>
+          </Prose>
 
           <Prose>
             <h3 className="text-white font-semibold text-base sm:text-lg pt-4">Dual Channel, Bandwidth, and Latency</h3>
             <p>
               Memory bandwidth (how much data can move per second) depends on both frequency (MT/s) and channel
-              configuration. Running two matched memory modules in dual-channel mode roughly doubles available
-              bandwidth compared to a single module of the same total capacity — which is why a single 16GB
-              stick can underperform two 8GB sticks in memory-intensive tasks, despite identical total capacity.
-              Latency matters more for responsiveness in everyday tasks than for large sequential workloads like
-              video export, where raw bandwidth dominates.
+              configuration. On conventional dual-channel laptop memory, using two matched modules can roughly
+              double theoretical memory bandwidth compared with a single module of the same total capacity —
+              which is a large part of why a single 16GB stick can underperform two 8GB sticks in
+              memory-intensive tasks, despite identical total capacity. This mainly describes conventional
+              multi-channel SO-DIMM configurations; soldered LPDDR implementations are wired differently by the
+              manufacturer, so the actual channel configuration and resulting bandwidth depend on that specific
+              design rather than following the same SO-DIMM logic. Latency matters more for responsiveness in
+              everyday tasks than for large sequential workloads like video export, where raw bandwidth
+              dominates.
             </p>
 
             <h3 className="text-white font-semibold text-base sm:text-lg pt-4">LPCAMM2: The Upgradeability Fix</h3>
@@ -722,26 +751,44 @@ export default function LaptopBuyingGuide() {
               and NAND type than on the PCIe generation alone.
             </p>
             <h3 className="text-white font-semibold text-base sm:text-lg pt-2">TLC vs. QLC: The Detail Retailers Skip</h3>
-            <p>This is where two drives with identical advertised capacity diverge most sharply.</p>
+            <p>
+              This is one of the places where two drives with identical advertised capacity can diverge sharply
+              — though how much they diverge, in practice, depends on more than just the NAND type.
+            </p>
           </Prose>
           <BulletList
             items={[
-              '<strong class="text-white">TLC (Triple-Level Cell) NAND</strong> — faster and more durable, and it holds its speed even when the drive is nearly full.',
-              '<strong class="text-white">QLC (Quad-Level Cell) NAND</strong> — cheaper to produce, and relies on a fast cache to mask its underlying speed. Once that cache is exhausted during a large, sustained file transfer, write speeds can drop sharply — and QLC drives generally have a lower total-data-written (TBW) endurance rating than TLC.',
+              '<strong class="text-white">TLC (Triple-Level Cell) NAND</strong> — generally faster and more durable than QLC, and tends to hold its speed better as the drive fills up.',
+              '<strong class="text-white">QLC (Quad-Level Cell) NAND</strong> — cheaper to produce, and relies on a fast SLC cache to mask its underlying speed. Once that cache is exhausted during a large, sustained file transfer, write speeds can drop noticeably — and QLC drives generally carry a lower total-data-written (TBW) endurance rating than TLC.',
             ]}
             color="text-purple-400"
           />
+          <Prose>
+            <p className="pt-3 text-xs sm:text-sm text-slate-400">
+              Real-world SSD performance isn't determined by NAND type alone — the controller, DRAM/cache design,
+              SLC cache size, drive capacity, thermal conditions, firmware, and how full the drive already is all
+              factor in. Two TLC drives from different manufacturers can perform quite differently, and a
+              well-engineered QLC drive can still outperform a poorly designed TLC one on paper specs alone. The
+              practical buying lesson holds regardless: the specific SSD model matters more than the advertised
+              storage capacity number.
+            </p>
+          </Prose>
           <div className="mt-5">
             <Callout>
-              <strong className="text-white">Buying tip:</strong> A 1TB TLC drive with dedicated DRAM cache will
-              often outperform a 2TB QLC drive in real editing and file-transfer workloads, despite the smaller
-              number on the box. The drive's model number — not the storage figure alone — is what determines
-              real-world speed. We're preparing a full TLC vs. QLC breakdown with specific drive examples —
-              WhatsApp us in the meantime if you're comparing two specific models.
+              <strong className="text-white">Buying tip:</strong> a well-specified 1TB TLC drive with dedicated
+              DRAM cache can outperform a larger 2TB QLC drive in real editing and file-transfer workloads,
+              despite the smaller number on the box — though the exact gap depends on the specific drives being
+              compared. The drive's model number — not the storage figure alone — is what determines real-world
+              speed.
+              {/* INTERNAL LINK PLACEHOLDER: TLC vs QLC SSD article — link here once
+                  /blog/tlc-vs-qlc-ssd is published. Do not invent a URL. */}
+              {' '}WhatsApp us the two drive models you're comparing and we'll give you a direct read on which is
+              the better buy.
             </Callout>
           </div>
         </div>
       </section>
+
 
       {/* GPU Guide */}
       <section className="py-8 sm:py-16 px-4 sm:px-6">
@@ -762,9 +809,10 @@ export default function LaptopBuyingGuide() {
               50-series generation, built on the Blackwell architecture — availability of specific RTX 50-series
               models in laptops depends on market and manufacturer rollout timing, so confirm what's actually
               shipping locally rather than assuming full-lineup availability. AMD's Radeon RX mobile GPUs
-              compete across a similar range. Higher model numbers within a generation generally mean more CUDA
-              cores, more VRAM, and higher power ceilings — but as with CPUs, the model number alone doesn't
-              tell you what the laptop actually delivers.
+              compete across a similar range. Higher-tier models generally offer greater GPU resources and
+              performance potential, but VRAM capacity and power limits vary by specific model and laptop
+              configuration — as with CPUs, the model number alone doesn't tell you what a given laptop actually
+              delivers.
             </p>
             <p>
               <strong className="text-white">DLSS (NVIDIA) and FSR (AMD)</strong> are AI upscaling technologies
@@ -783,19 +831,21 @@ export default function LaptopBuyingGuide() {
             </h3>
             <p>
               <strong className="text-white">Total Graphics Power (TGP)</strong> is the wattage a laptop's
-              motherboard is actually allowed to feed the GPU — and it's the single most overlooked spec in
-              laptop marketing. The same GPU model can be configured anywhere within a wide wattage range
+              motherboard is actually allowed to feed the GPU — and it's one of the most overlooked specs in
+              laptop marketing. The same GPU model can be configured across a fairly wide wattage range
               depending on the laptop's cooling and power delivery design.
             </p>
           </Prose>
 
           <div className="mt-5">
             <Callout>
-              <strong className="text-white">Example:</strong> An RTX 4070 capped at 45W in a thin chassis will
-              meaningfully underperform an RTX 4060 supplied with 115W in a laptop built with more robust
-              cooling. The chip name on the box tells you the architecture; it doesn't tell you the power budget
-              it's actually running on. Always check the manufacturer's full specification sheet for the exact
-              TGP figure — it's usually listed in small print, separate from the headline GPU name.
+              <strong className="text-white">Example:</strong> a low-power RTX 4070 configuration (say, capped
+              around 45W in a thin chassis) can sometimes perform surprisingly close to, or even be challenged
+              by, a substantially higher-power RTX 4060 configuration (for example, 115W in a laptop with more
+              robust cooling) — the actual gap depends heavily on each laptop's specific power and cooling
+              implementation. The chip name on the box tells you the architecture; it doesn't tell you the power
+              budget it's actually running on. Always check the manufacturer's full specification sheet for the
+              exact TGP figure — it's usually listed in small print, separate from the headline GPU name.
             </Callout>
           </div>
 
@@ -803,9 +853,11 @@ export default function LaptopBuyingGuide() {
             <p className="pt-5">
               VRAM capacity (8GB, 12GB, 16GB) matters separately from TGP — it determines whether a GPU can hold
               larger textures, higher-resolution assets, or bigger AI models in memory at once, independent of
-              how fast it can process them. We're putting together a dedicated RTX laptop GPU TGP explainer with
-              real configuration examples — in the meantime, send us the exact model on WhatsApp and we'll tell
-              you the real-world TGP to expect.
+              how fast it can process them.
+              {/* INTERNAL LINK PLACEHOLDER: RTX laptop GPU TGP explainer — link here once
+                  /blog/laptop-gpu-tgp-explained is published. Do not invent a URL. */}
+              {' '}Send us the exact model on WhatsApp and we'll tell you the real-world TGP to expect before you
+              buy.
             </p>
           </Prose>
         </div>
@@ -970,6 +1022,20 @@ export default function LaptopBuyingGuide() {
               Before buying, it's worth searching for a teardown of the specific model — many reviewers document
               exactly what's socketed versus soldered, which the spec sheet won't tell you.
             </p>
+
+            <h3 className="text-white font-semibold text-base sm:text-lg pt-4">
+              Board-Level Repair vs. Motherboard Replacement
+            </h3>
+            <p>
+              A failed motherboard doesn't automatically mean the laptop is beyond repair. Some faults occur at
+              component level — a single capacitor, MOSFET, or charging IC — and can be diagnosed and repaired
+              on the original board without touching anything else. Other failures are more extensive, or affect
+              a part of the board that genuinely can't be serviced in isolation, and do require board
+              replacement. Which category a given fault falls into depends on the specific design of that
+              motherboard, the nature of the fault itself, parts and schematic availability, and the diagnosing
+              technician's tooling and experience — it isn't something you can determine from the symptom alone,
+              which is why diagnosis has to come before a repair-or-replace decision, not after.
+            </p>
           </Prose>
 
           <div className="mt-5 space-y-4">
@@ -983,7 +1049,8 @@ export default function LaptopBuyingGuide() {
             <Callout tone="red">
               <strong className="text-white">Laptop stopped charging?</strong> A dead motherboard doesn't always
               mean replacement. Component-level diagnosis can identify the exact failed circuit — often a single
-              capacitor, MOSFET, or charging IC — rather than defaulting to a full board swap.{' '}
+              capacitor, MOSFET, or charging IC — rather than defaulting to a full board swap, though a genuine
+              board replacement is sometimes the right call once diagnosis confirms it.{' '}
               <Link to="/motherboard-repair-kuwait" className="text-cyan-400 underline hover:text-cyan-300">
                 Request a free laptop diagnosis →
               </Link>
@@ -1003,8 +1070,8 @@ export default function LaptopBuyingGuide() {
             </p>
           </Prose>
           <DataTable
-            headers={['User', 'CPU', 'RAM', 'Storage', 'GPU']}
-            rows={specTargetsTable.map((r) => [r.user, r.cpu, r.ram, r.storage, r.gpu])}
+            headers={['User', 'CPU', 'RAM', 'Storage', 'GPU', 'What to Check First']}
+            rows={specTargetsTable.map((r) => [r.user, r.cpu, r.ram, r.storage, r.gpu, r.priority])}
           />
         </div>
       </section>
