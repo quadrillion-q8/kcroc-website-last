@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { 
   AlertTriangle, CheckCircle2, XCircle, Thermometer, 
   HelpCircle, Wrench, ShieldAlert, Cpu, Fan, Wind, 
-  MessageCircle, Phone, MapPin, Shield
+  MessageCircle, Phone, MapPin, Shield, Laptop 
 } from 'lucide-react';
 
 import { SEOEngine } from '../core/components/SEOEngine';
@@ -106,7 +106,7 @@ export const DellInspiron15_3000OverheatingPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-950 text-slate-300 selection:bg-cyan-500/30">
+    <div className="min-h-screen bg-gray-950 text-slate-300 selection:bg-cyan-500/30 pb-24">
       <Helmet>
         <title>{PAGE_TITLE}</title>
         <meta name="description" content={PAGE_DESCRIPTION} />
@@ -318,35 +318,12 @@ export const DellInspiron15_3000OverheatingPage = () => {
           </section>
         </div>
 
-        {/* What KCROC Does */}
-        <section>
-          <div className="text-center mb-10">
-            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">Professional Thermal Repair Services</h2>
-            <p className="text-slate-400">How our Hawalli laboratory completely restores your laptop's cooling efficiency.</p>
-          </div>
-          <div className="grid sm:grid-cols-3 gap-6">
-            <Card className="bg-slate-900/40 border-slate-800">
-              <CardContent className="p-6 text-center">
-                <Thermometer className="w-8 h-8 text-cyan-400 mx-auto mb-4" />
-                <h3 className="text-lg font-bold text-white mb-2">Thermal Inspection</h3>
-                <p className="text-sm text-slate-400">We inspect temperature behavior, heatsink integrity, and component-level power draw to find the exact source of heat.</p>
-              </CardContent>
-            </Card>
-            <Card className="bg-slate-900/40 border-slate-800">
-              <CardContent className="p-6 text-center">
-                <Fan className="w-8 h-8 text-cyan-400 mx-auto mb-4" />
-                <h3 className="text-lg font-bold text-white mb-2">Fan Replacement</h3>
-                <p className="text-sm text-slate-400">We carefully extract the motherboard, test the fan bearing, and install an OEM-grade replacement if it is failing mechanically.</p>
-              </CardContent>
-            </Card>
-            <Card className="bg-slate-900/40 border-slate-800">
-              <CardContent className="p-6 text-center">
-                <Shield className="w-8 h-8 text-cyan-400 mx-auto mb-4" />
-                <h3 className="text-lg font-bold text-white mb-2">Deep Clean & Re-paste</h3>
-                <p className="text-sm text-slate-400">ESD-safe removal of dust blocks and application of premium phase-change thermal materials to restore factory cooling performance.</p>
-              </CardContent>
-            </Card>
-          </div>
+        {/* Model Differentiation & Tech Note */}
+        <section className="bg-slate-900/30 border-l-4 border-cyan-500 p-6 rounded-r-2xl">
+          <h2 className="text-xl font-bold text-white mb-3">Which Inspiron 15 3000 Model Do You Have?</h2>
+          <p className="text-slate-400 text-sm leading-relaxed mb-0">
+            <strong>Technical Note:</strong> Dell has released multiple Inspiron 15 3000 generations and configurations. The cooling assembly, fan design, processor, and internal layout vary heavily by model. Check your exact service tag before ordering parts — a fix that applies to one generation may not apply to another.
+          </p>
         </section>
 
         {/* FAQs */}
