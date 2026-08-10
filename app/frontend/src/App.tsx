@@ -2,7 +2,6 @@
 import React, { Suspense, lazy } from 'react';
 import { BrowserRouter, Routes, Route, Navigate, useParams } from 'react-router-dom';
 import { RootLayout } from './core/components/layout/RootLayout';
-import { KCROC_GRAPH } from './data/graph';
 
 // Analytics Provider
 import { AnalyticsProvider } from './core/analytics/AnalyticsProvider';
@@ -26,18 +25,13 @@ const BookingPage = lazy(() => import('./pages/BookingPage'));
 
 // Dynamic Enterprise Templates
 const Services = lazy(() => import('./pages/Services'));
-const ServiceTemplate = lazy(() => import('./pages/templates/ServiceTemplate'));
 const PillarTemplate = lazy(() => import('./pages/PillarTemplate'));
 const LocationTemplate = lazy(() => import('./pages/LocationTemplate'));
 const BlogPostTemplate = lazy(() => import('./pages/BlogPostTemplate'));
 
-// SEO Roadmap Templates
-const BrandTemplate = lazy(() => import('./pages/templates/BrandTemplate'));
-const ProblemTemplate = lazy(() => import('./pages/templates/ProblemTemplate'));
-const CaseStudyTemplate = lazy(() => import('./pages/templates/CaseStudyTemplate'));
-
 // Case Studies Index Page
 const CaseStudiesIndex = lazy(() => import('./pages/CaseStudiesIndex'));
+const CaseStudyTemplate = lazy(() => import('./pages/templates/CaseStudyTemplate'));
 
 // Custom Standalone Blog Pages
 const BlogLaptopRepair = lazy(() => import('./pages/BlogLaptopRepair'));
@@ -57,14 +51,10 @@ const AuthorImran = lazy(() => import('./pages/AuthorImran'));
 const BatteryHealthGuide = lazy(() => import('./pages/BatteryHealthGuide'));
 const DellInspiron15_3000OverheatingPage = lazy(() => import('./pages/DellInspiron15_3000OverheatingPage').then(module => ({ default: module.DellInspiron15_3000OverheatingPage }))); // 👈 UPDATED
 
-// 🚀 Legacy Link Preservation: old /services/:slug URLs (from before the flat-URL
-// migration) redirect to the current canonical route instead of dead-ending in a
-// 404 — preserves any existing backlinks/bookmarks/SEO equity pointing at the old path.
-const LegacyServiceRedirect: React.FC = () => {
-  const { serviceSlug } = useParams<{ serviceSlug?: string }>();
-  const service = KCROC_GRAPH.services.find(s => s.slug === serviceSlug);
-  return <Navigate to={service ? `/${service.slug}` : '/404'} replace />;
-};
+// 🚀 CWV Optimization: Extracted routing logic that requires graph.ts into a deferred chunk.
+// This prevents the 192KB graph.ts from blocking initial paint!
+const DynamicRouteHandler = lazy(() => import('./core/routing/DynamicRoutes').then(m => ({ default: m.DynamicRouteHandler })));
+const LegacyServiceRedirect = lazy(() => import('./core/routing/DynamicRoutes').then(m => ({ default: m.LegacyServiceRedirect })));
 
 // UI: Global loading spinner
 const PageLoader = () => (
@@ -86,18 +76,9 @@ export const App: React.FC = () => {
               {/* The Dynamic Services Gateway */}
               <Route path="services" element={<Services />} />
               
-              {/* DYNAMIC ROOT-LEVEL SEO ROUTES */}
-              {KCROC_GRAPH.services.map((service) => (
-                <Route key={service.slug} path={service.slug} element={<ServiceTemplate entityId={service.id} />} />
-              ))}
-              
-              {KCROC_GRAPH.brands.map((brand) => (
-                <Route key={brand.slug} path={brand.slug} element={<BrandTemplate entityId={brand.id} />} />
-              ))}
-              
-              {KCROC_GRAPH.problems.map((problem) => (
-                <Route key={problem.slug} path={problem.slug} element={<ProblemTemplate entityId={problem.id} />} />
-              ))}
+              {/* 🚀 DYNAMIC ROOT-LEVEL SEO ROUTES (Services, Brands, Problems)
+                  Handled dynamically via URL parameter to keep graph.ts out of the main bundle. */}
+              <Route path=":slug" element={<DynamicRouteHandler />} />
 
               {/* Legacy Service Route Fallback — redirects old /services/:slug links to the current flat URL */}
               <Route path="services/:serviceSlug" element={<LegacyServiceRedirect />} />
@@ -140,8 +121,8 @@ export const App: React.FC = () => {
               
               {/* 🚀 AI Content Guides */}
               <Route path="guides/laptop-battery-warning-signs" element={<BatteryHealthGuide />} />
-              <Route path="guides/dell-inspiron-15-3000-overheating" element={<DellInspiron15_3000OverheatingPage />} /> {/* 👈 UPDATED */}
-              <Route path="guides/dell-overheating" element={<Navigate to="/guides/dell-inspiron-15-3000-overheating" replace />} /> {/* 👈 301 Redirect added */}
+              <Route path="guides/dell-inspiron-15-3000-overheating" element={<DellInspiron15_3000OverheatingPage />} />
+              <Route path="guides/dell-overheating" element={<Navigate to="/guides/dell-inspiron-15-3000-overheating" replace />} /> 
               
               {/* SEO Guardrail: Canonical URL redirection */}
               <Route path="laptop-screen-protection-tips" element={<ScreenProtectionTips />} />
