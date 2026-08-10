@@ -1,44 +1,25 @@
 // File: app/frontend/src/pages/BookingPage.tsx
 import React, { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import * as z from 'zod';
-import { Link } from 'react-router-dom';
-import { 
-  Calendar, Clock, Laptop, Phone, Mail, User, 
-  MessageSquare, CheckCircle, MessageCircle as MessageCircleIcon, 
-  HelpCircle, Star, PhoneCall 
-} from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
+import { ShieldCheck, Truck, Clock, MapPin, MessageCircle, ChevronRight } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
 
+// SEO & Data
 import SchemaMarkup from '../components/seo/SchemaMarkup';
 import { SEOEngine } from '../core/components/SEOEngine';
-
-// Global declaration to fix TypeScript 'any' issues with window.gtag
-declare global {
-  interface Window {
-    gtag?: (...args: any[]) => void;
-  }
-}
+import { KCROC_GRAPH } from '../data/graph';
+import { useAnalytics } from '../core/analytics/AnalyticsProvider';
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   1. PAGE DATA & CONSTANTS
+   1. PAGE DATA & SEO CONSTANTS (Retained from your original file)
 ───────────────────────────────────────────────────────────────────────────── */
-const BASE_URL = 'https://computerrepairkuwait.com';
+const business = KCROC_GRAPH.business!;
+const BASE_URL = 'https://www.computerrepairkuwait.com';
 const PAGE_URL = `${BASE_URL}/book`;
-const REVIEWS_URL = 'https://g.page/r/CWbK8KGjkYY2EAE/review';
-const PHONE_DISPLAY = '+965 5530 1913';
-const PHONE_CLEAN = '96555301913';
-const BUSINESS_NAME = 'Kuwait Computer Repair On Call';
-
-const DEVICE_TYPES = [
-  'Laptop', 'Desktop PC', 'MacBook / iMac', 'Gaming PC', 'Printer / Scanner', 'Other'
-];
-
-const TIME_SLOTS = [
-  { value: 'morning',   label: 'Morning (10:00 AM – 1:00 PM)' },
-  { value: 'afternoon', label: 'Afternoon (1:00 PM – 5:00 PM)' },
-  { value: 'evening',   label: 'Evening (5:00 PM – 10:00 PM)' },
-];
+const PHONE_DISPLAY = `+${business.telephone}`;
+const PHONE_CLEAN = business.telephone;
+const BUSINESS_NAME = business.legalName;
 
 const STRUCTURED_DATA = {
   "@context": "https://schema.org",
@@ -107,379 +88,179 @@ const STRUCTURED_DATA = {
 };
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   2. ZOD SCHEMA
-───────────────────────────────────────────────────────────────────────────── */
-const bookingSchema = z.object({
-  customer_name:      z.string().min(3, { message: 'Name must be at least 3 characters' }),
-  customer_phone:     z.string().regex(/^(965)?[569]\d{7}$/, {
-    message: 'Valid Kuwait number required (e.g., 55301913 or 96555301913)'
-  }),
-  customer_email:     z.union([z.literal(''), z.string().email({ message: 'Invalid email address' })]).optional(),
-  device_type:        z.string().min(1, { message: 'Please select a device type' }),
-  issue_description:  z.string().min(10, { message: 'Please provide a brief description (min 10 chars)' }),
-  pickup_date:        z.string().min(1, { message: 'Please select a preferred date' }),
-  pickup_time_slot:   z.string().min(1, { message: 'Please select a time slot' }),
-  honeypot:           z.string().optional(),
-});
-
-type BookingFormData = z.infer<typeof bookingSchema>;
-
-/* ─────────────────────────────────────────────────────────────────────────────
-   3. MAIN COMPONENT
+   2. MAIN COMPONENT (Frictionless WhatsApp Flow)
 ───────────────────────────────────────────────────────────────────────────── */
 export default function BookingPage() {
-  const [submitted, setSubmitted] = useState(false);
-  const [submitError, setSubmitError] = useState('');
-  const [hasStarted, setHasStarted] = useState(false);
+  const { trackConversion } = useAnalytics();
+  
+  // Interactive Form State
+  const [deviceType, setDeviceType] = useState('MacBook / Apple');
+  const [issue, setIssue] = useState('');
+  const [location, setLocation] = useState('');
 
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors, isSubmitting },
-  } = useForm<BookingFormData>({ resolver: zodResolver(bookingSchema) });
-
-  const customerName  = watch('customer_name');
-  const customerPhone = watch('customer_phone');
-
-  const trackEvent = (eventName: string) => {
-    if (typeof window !== 'undefined' && window.gtag) {
-      window.gtag('event', eventName);
-    }
-  };
-
-  const onSubmit = async (data: BookingFormData) => {
-    setSubmitError('');
+  // Generate the formatted WhatsApp link
+  const handleWhatsAppRedirect = (e: React.MouseEvent) => {
+    e.preventDefault();
+    trackConversion('whatsapp_click', { cta_name: 'booking_form_submit', button_position: 'booking_page' });
     
-    // Frontend spam trap
-    if (data.honeypot) { setSubmitted(true); return; }
-
-    const cleanPhone = data.customer_phone.replace(/\s|-|\+/g, '');
-    
-    try {
-      // 🚀 FIXED: Securely send data to the serverless endpoint instead of exposing DB calls to the client
-      const response = await fetch('/api/book', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          ...data,
-          customer_phone: cleanPhone
-        }),
-      });
-
-      const result = await response.json();
-
-      if (!response.ok) {
-        throw new Error(result.error || 'Failed to submit booking');
-      }
-
-      setSubmitted(true);
-      trackEvent('booking_submitted');
-
-    } catch (err: any) {
-      if (import.meta.env.DEV) {
-        console.error('Booking submission error:', err);
-      }
-      
-      trackEvent('booking_failed');
-      
-      const errorMessage = err instanceof Error ? err.message : String(err);
-      
-      if (errorMessage.includes('Network Error') || err instanceof TypeError) {
-        setSubmitError('Network connection failed. Please check your internet and try again.');
-      } else {
-        // Display the specific error returned from our secure API (e.g., Rate limit or Double-booking)
-        setSubmitError(errorMessage || 'Failed to submit booking. Please try again or contact us via WhatsApp.');
-      }
-    }
+    const text = `*New Repair Inquiry*\n\n*Device:* ${deviceType}\n*Location:* ${location || 'Not provided'}\n*Issue:* ${issue || 'Needs diagnostic'}\n\n_Hi KCROC, I would like to claim my free diagnostic and pickup._`;
+    const url = `https://wa.me/${PHONE_CLEAN}?text=${encodeURIComponent(text)}`;
+    window.open(url, '_blank');
   };
 
-  const handleFormInteraction = () => {
-    if (!hasStarted) {
-      setHasStarted(true);
-      trackEvent('booking_started');
-    }
-  };
-
-  // ─── INPUT FIELD STYLES ───────────────────────────────────────────────────
-  const fieldClass = (hasError: boolean) =>
-    `w-full bg-slate-950 border rounded-xl py-3 pr-4 text-white focus:outline-none focus:ring-2 transition-all ${
-      hasError
-        ? 'border-red-500 focus:ring-red-500/50'
-        : 'border-slate-800 focus:border-cyan-500 focus:ring-cyan-500/20'
-    }`;
-
-  /* ─────────────────────────────────────────────────────────────────────────
-     SEO — rendered unconditionally above both screens
-  ───────────────────────────────────────────────────────────────────────── */
-  const seoBlock = (
-    <>
+  return (
+    <main className="w-full min-h-screen bg-slate-950 text-slate-100 font-sans pt-24 pb-16">
+      
+      {/* 🚀 Flawless SEO Injection */}
+      <Helmet>
+        <title>Book a Free Repair Diagnostic | KCROC Kuwait</title>
+        <meta name="description" content="Book your free computer or MacBook diagnostic today. Free Pick & Drop across Kuwait. No Fix, No Fee." />
+      </Helmet>
       <SEOEngine entityId="page-booking" />
       <SchemaMarkup schema={STRUCTURED_DATA} />
-    </>
-  );
 
-  /* ─────────────────────────────────────────────────────────────────────────
-     SUCCESS SCREEN
-  ───────────────────────────────────────────────────────────────────────── */
-  if (submitted) {
-    return (
-      <>
-        {seoBlock}
-        <main className="min-h-screen bg-transparent text-white flex items-center justify-center px-4 sm:px-6 pt-24 pb-8 font-sans">
-          <div className="bg-slate-900/40 backdrop-blur-md border border-slate-800 rounded-3xl max-w-xl w-full shadow-2xl p-6 sm:p-12 text-center animate-in fade-in slide-in-from-bottom-4 duration-700">
-            <div className="w-16 h-16 sm:w-20 sm:h-20 bg-emerald-500/20 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 border border-emerald-500/30">
-              <CheckCircle className="w-8 h-8 sm:w-10 sm:h-10 text-emerald-400" aria-hidden="true" /> 
-            </div>
-            <h1 className="text-2xl sm:text-3xl font-black text-white mb-3 tracking-tight">Booking Confirmed!</h1>
-            <p className="text-slate-400 text-sm sm:text-base mb-6 sm:mb-8 leading-relaxed">
-              Thank you, <strong className="text-white">{customerName}</strong>! Your hardware assessment booking has been received.
-              We'll contact you on <strong className="text-emerald-400">{customerPhone}</strong> to confirm your pickup details.
-            </p>
-
-            <div className="bg-slate-950 rounded-2xl p-4 sm:p-6 mb-6 sm:mb-8 text-left space-y-4 border border-slate-800 shadow-inner">
-              <h2 className="text-white font-bold flex items-center gap-2 mb-3">
-                <HelpCircle className="w-5 h-5 text-emerald-400" aria-hidden="true" /> 
-                Need immediate assistance?
-              </h2>
-              <div className="flex flex-col sm:flex-row gap-3">
-                <a
-                  href={`tel:${PHONE_CLEAN}`}
-                  className="flex items-center justify-center bg-slate-800 hover:bg-slate-700 text-white font-bold py-3 rounded-xl flex-1 transition-all border border-slate-700 text-sm sm:text-base"
-                >
-                  <PhoneCall className="w-4 h-4 mr-2 text-cyan-400" aria-hidden="true" /> 
-                  Call {PHONE_DISPLAY}
-                </a>
-                
-                <a
-                  href={`https://wa.me/${PHONE_CLEAN}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 rounded-xl flex-1 transition-all shadow-lg shadow-emerald-900/20 text-sm sm:text-base"
-                >
-                  <MessageCircleIcon className="w-4 h-4 mr-2" aria-hidden="true" /> 
-                  WhatsApp Us
-                </a>
-              </div>
-            </div>
-
-            <div className="border-t border-slate-800 pt-6 sm:pt-8">
-              <p className="text-slate-500 text-xs sm:text-sm mb-3 sm:mb-4">Happy with our easy booking process? Help us grow!</p>
-              
-              <a
-                href={REVIEWS_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center w-full border border-yellow-500/30 text-yellow-500 hover:bg-yellow-500/10 font-bold py-3 rounded-xl transition-all text-sm sm:text-base"
-              >
-                <Star className="w-4 h-4 mr-2 fill-yellow-500" aria-hidden="true" /> 
-                Leave us a Google Review
-              </a>
-            </div>
-          </div>
-        </main>
-      </>
-    );
-  }
-
-  /* ─────────────────────────────────────────────────────────────────────────
-     FORM SCREEN
-  ───────────────────────────────────────────────────────────────────────── */
-  return (
-    <>
-      {seoBlock}
-
-      <a
-        href="#main-content"
-        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:p-4 focus:bg-emerald-600 focus:text-white focus:rounded-lg"
-      >
-        Skip to main content
-      </a>
-
-      <main
-        id="main-content"
-        className="min-h-screen bg-transparent text-white font-sans selection:bg-cyan-500/30 pt-24 pb-8 sm:pb-24 px-4 sm:px-6"
-      >
-        {/* ─── BREADCRUMBS ─── */}
-        <nav aria-label="Breadcrumb" className="max-w-3xl mx-auto mb-6 sm:mb-8 mt-4 sm:mt-0">
-          <ol className="flex items-center space-x-2 text-xs sm:text-sm text-slate-400 font-medium">
-            <li><Link to="/" className="hover:text-cyan-400 transition-colors">Home</Link></li>
-            <li><span className="text-slate-600">/</span></li>
-            <li aria-current="page" className="text-cyan-400">Book a Repair</li>
-          </ol>
-        </nav>
-
-        <div className="max-w-3xl mx-auto">
-          <div className="text-center mb-8 sm:mb-12">
-            <h1 className="text-white mb-2 sm:mb-4">
-              Book a <span className="text-cyan-400">Repair Pickup</span>
-            </h1>
-            <p className="text-slate-400 text-sm sm:text-lg max-w-xl mx-auto">
-              Fill out the details below to schedule your free diagnostic and device pickup anywhere in Kuwait.
-            </p>
-          </div>
-
-          <form
-            onSubmit={handleSubmit(onSubmit)}
-            onFocus={handleFormInteraction}
-            className="bg-slate-900/40 backdrop-blur-xl border border-slate-800 rounded-3xl p-5 sm:p-8 shadow-2xl space-y-4 sm:space-y-6"
-            noValidate
-          >
-            {submitError && (
-              <div role="alert" className="bg-red-500/10 border border-red-500/50 text-red-400 p-4 rounded-xl text-sm font-medium">
-                {submitError}
-              </div>
-            )}
-
-            {/* Honeypot — hidden from users, catches bots */}
-            <input type="text" {...register('honeypot')} className="hidden" aria-hidden="true" tabIndex={-1} />
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-              {/* Full Name */}
-              <div>
-                <label htmlFor="customer_name" className="block text-xs sm:text-sm font-bold text-slate-300 mb-1.5 sm:mb-2">Full Name</label>
-                <div className="relative">
-                  <User className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 w-4 h-4 sm:w-5 sm:h-5" aria-hidden="true" /> 
-                  <input
-                    id="customer_name"
-                    {...register('customer_name')}
-                    type="text"
-                    autoComplete="name"
-                    placeholder="e.g. Abdullah Salem"
-                    className={`${fieldClass(!!errors.customer_name)} pl-10 sm:pl-12 text-sm sm:text-base`}
-                  />
-                </div>
-                {errors.customer_name && <p role="alert" className="text-red-400 text-xs mt-1.5 sm:mt-2">{errors.customer_name.message}</p>}
-              </div>
-
-              {/* Phone */}
-              <div>
-                <label htmlFor="customer_phone" className="block text-xs sm:text-sm font-bold text-slate-300 mb-1.5 sm:mb-2">Kuwait Phone Number</label>
-                <div className="relative">
-                  <Phone className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 w-4 h-4 sm:w-5 sm:h-5" aria-hidden="true" /> 
-                  <span className="absolute left-10 sm:left-11 top-1/2 -translate-y-1/2 text-slate-500 font-bold border-r border-slate-800 pr-2 text-sm sm:text-base" aria-hidden="true">+965</span>
-                  <input
-                    id="customer_phone"
-                    {...register('customer_phone')}
-                    type="tel"
-                    autoComplete="tel"
-                    placeholder="5XXXXXXX"
-                    className={`${fieldClass(!!errors.customer_phone)} pl-24 sm:pl-28 text-sm sm:text-base`}
-                  />
-                </div>
-                {errors.customer_phone && <p role="alert" className="text-red-400 text-xs mt-1.5 sm:mt-2">{errors.customer_phone.message}</p>}
-              </div>
-            </div>
-
-            {/* Email & Device Type */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-              <div>
-                <label htmlFor="customer_email" className="block text-xs sm:text-sm font-bold text-slate-300 mb-1.5 sm:mb-2">Email Address (Optional)</label>
-                <div className="relative">
-                  <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 w-4 h-4 sm:w-5 sm:h-5" aria-hidden="true" /> 
-                  <input
-                    id="customer_email"
-                    {...register('customer_email')}
-                    type="email"
-                    autoComplete="email"
-                    placeholder="email@example.com"
-                    className={`${fieldClass(!!errors.customer_email)} pl-10 sm:pl-12 text-sm sm:text-base`}
-                  />
-                </div>
-                {errors.customer_email && <p role="alert" className="text-red-400 text-xs mt-1.5 sm:mt-2">{errors.customer_email.message}</p>}
-              </div>
-
-              <div>
-                <label htmlFor="device_type" className="block text-xs sm:text-sm font-bold text-slate-300 mb-1.5 sm:mb-2">Device Type</label>
-                <div className="relative">
-                  <Laptop className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 w-4 h-4 sm:w-5 sm:h-5" aria-hidden="true" /> 
-                  <select
-                    id="device_type"
-                    {...register('device_type')}
-                    className={`${fieldClass(!!errors.device_type)} pl-10 sm:pl-12 appearance-none text-sm sm:text-base`}
-                  >
-                    <option value="">Select a device</option>
-                    {DEVICE_TYPES.map(type => (
-                      <option key={type} value={type}>{type}</option>
-                    ))}
-                  </select>
-                </div>
-                {errors.device_type && <p role="alert" className="text-red-400 text-xs mt-1.5 sm:mt-2">{errors.device_type.message}</p>}
-              </div>
-            </div>
-
-            {/* Date and Time */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-              <div>
-                <label htmlFor="pickup_date" className="block text-xs sm:text-sm font-bold text-slate-300 mb-1.5 sm:mb-2">Preferred Pickup Date</label>
-                <div className="relative">
-                  <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 w-4 h-4 sm:w-5 sm:h-5" aria-hidden="true" /> 
-                  <input
-                    id="pickup_date"
-                    {...register('pickup_date')}
-                    type="date"
-                    min={new Date().toISOString().split('T')[0]}
-                    className={`${fieldClass(!!errors.pickup_date)} pl-10 sm:pl-12 text-sm sm:text-base`}
-                  />
-                </div>
-                {errors.pickup_date && <p role="alert" className="text-red-400 text-xs mt-1.5 sm:mt-2">{errors.pickup_date.message}</p>}
-              </div>
-
-              <div>
-                <label htmlFor="pickup_time_slot" className="block text-xs sm:text-sm font-bold text-slate-300 mb-1.5 sm:mb-2">Preferred Time Slot</label>
-                <div className="relative">
-                  <Clock className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 w-4 h-4 sm:w-5 sm:h-5" aria-hidden="true" /> 
-                  <select
-                    id="pickup_time_slot"
-                    {...register('pickup_time_slot')}
-                    className={`${fieldClass(!!errors.pickup_time_slot)} pl-10 sm:pl-12 appearance-none text-sm sm:text-base`}
-                  >
-                    <option value="">Select a time slot</option>
-                    {TIME_SLOTS.map(slot => (
-                      <option key={slot.value} value={slot.value}>{slot.label}</option>
-                    ))}
-                  </select>
-                </div>
-                {errors.pickup_time_slot && <p role="alert" className="text-red-400 text-xs mt-1.5 sm:mt-2">{errors.pickup_time_slot.message}</p>}
-              </div>
-            </div>
-
-            {/* Issue Description */}
-            <div>
-              <label htmlFor="issue_description" className="block text-xs sm:text-sm font-bold text-slate-300 mb-1.5 sm:mb-2">Issue Description</label>
-              <div className="relative">
-                <MessageSquare className="absolute left-4 top-4 text-slate-500 w-4 h-4 sm:w-5 sm:h-5" aria-hidden="true" /> 
-                <textarea
-                  id="issue_description"
-                  {...register('issue_description')}
-                  rows={4}
-                  placeholder="Please describe what is happening with your device..."
-                  className={`${fieldClass(!!errors.issue_description)} pl-10 sm:pl-12 text-sm sm:text-base`}
-                />
-              </div>
-              {errors.issue_description && <p role="alert" className="text-red-400 text-xs mt-1.5 sm:mt-2">{errors.issue_description.message}</p>}
-            </div>
-
-            {/* Submit */}
-            <div className="pt-2 sm:pt-4">
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black text-base sm:text-lg py-3 sm:py-4 rounded-xl shadow-[0_0_20px_rgba(6,182,212,0.3)] hover:scale-[1.01] transition-all disabled:opacity-70 disabled:pointer-events-none flex items-center justify-center gap-2 sm:gap-3"
-              >
-                {isSubmitting ? (
-                  <>
-                    <span className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-slate-950 border-t-transparent rounded-full animate-spin" aria-hidden="true" />
-                    Processing Request...
-                  </>
-                ) : (
-                  'Confirm Booking'
-                )}
-              </button>
-            </div>
-          </form>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        
+        {/* Header */}
+        <div className="text-center max-w-2xl mx-auto mb-12">
+          <h1 className="text-3xl sm:text-5xl font-black mb-4 tracking-tight text-white">
+            Claim Your <span className="text-cyan-400">Free Diagnostic</span>
+          </h1>
+          <p className="text-slate-400 text-lg">
+            Tell us what's wrong. We'll pick it up, diagnose it at the component level for free, and give you a fixed quote.
+          </p>
         </div>
-      </main>
-    </>
+
+        <div className="grid lg:grid-cols-5 gap-8 lg:gap-12 items-start">
+          
+          {/* LEFT: The Interactive Form */}
+          <Card className="lg:col-span-3 bg-slate-900/50 border border-slate-800 backdrop-blur shadow-2xl rounded-3xl overflow-hidden">
+            <div className="h-2 w-full bg-gradient-to-r from-cyan-500 to-emerald-500" />
+            <CardContent className="p-6 sm:p-10">
+              <form className="space-y-8">
+                
+                {/* Step 1: Device (Visual Chips instead of Dropdown) */}
+                <div className="space-y-3">
+                  <label className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
+                    <span className="bg-cyan-500/20 text-cyan-400 w-6 h-6 rounded-full flex items-center justify-center text-xs">1</span>
+                    What needs fixing?
+                  </label>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                    {['MacBook / Apple', 'Gaming PC', 'Windows Laptop', 'Data Recovery', 'Logic Board', 'Other'].map((type) => (
+                      <button
+                        key={type}
+                        type="button"
+                        onClick={() => setDeviceType(type)}
+                        className={`p-3 text-sm font-semibold rounded-xl border transition-all ${
+                          deviceType === type 
+                            ? 'bg-cyan-500/10 border-cyan-500 text-cyan-400 scale-[1.02]' 
+                            : 'bg-slate-950 border-slate-800 text-slate-400 hover:border-slate-600'
+                        }`}
+                      >
+                        {type}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Step 2: The Issue */}
+                <div className="space-y-3">
+                  <label className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
+                    <span className="bg-cyan-500/20 text-cyan-400 w-6 h-6 rounded-full flex items-center justify-center text-xs">2</span>
+                    What are the symptoms?
+                  </label>
+                  <textarea 
+                    rows={3}
+                    className="w-full bg-slate-950 border border-slate-800 rounded-xl p-4 text-slate-200 placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 transition-shadow"
+                    placeholder="e.g., Spilled water on it, won't turn on, overheating..."
+                    value={issue}
+                    onChange={(e) => setIssue(e.target.value)}
+                  />
+                </div>
+
+                {/* Step 3: Location */}
+                <div className="space-y-3">
+                  <label className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
+                    <span className="bg-cyan-500/20 text-cyan-400 w-6 h-6 rounded-full flex items-center justify-center text-xs">3</span>
+                    Where in Kuwait are you?
+                  </label>
+                  <div className="relative">
+                    <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500" />
+                    <input 
+                      type="text"
+                      className="w-full bg-slate-950 border border-slate-800 rounded-xl py-4 pl-12 pr-4 text-slate-200 placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 transition-shadow"
+                      placeholder="e.g., Salmiya, Hawalli, Kuwait City..."
+                      value={location}
+                      onChange={(e) => setLocation(e.target.value)}
+                    />
+                  </div>
+                </div>
+
+                {/* Submit to WhatsApp */}
+                <div className="pt-4">
+                  <Button 
+                    onClick={handleWhatsAppRedirect}
+                    size="lg" 
+                    className="w-full h-16 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-lg rounded-2xl shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:scale-[1.02] transition-all"
+                  >
+                    <MessageCircle className="w-6 h-6 mr-2" />
+                    Send to WhatsApp & Book
+                    <ChevronRight className="w-5 h-5 ml-2 opacity-50" />
+                  </Button>
+                  <p className="text-center text-xs text-slate-500 mt-4 flex items-center justify-center gap-1">
+                    <ShieldCheck className="w-3 h-3 text-emerald-400" /> Secure & Instant. Speak directly with our engineers.
+                  </p>
+                </div>
+              </form>
+            </CardContent>
+          </Card>
+
+          {/* RIGHT: Trust Anchors */}
+          <div className="lg:col-span-2 space-y-6">
+            <div className="bg-cyan-950/20 border border-cyan-900/50 rounded-3xl p-6 sm:p-8">
+              <h3 className="text-xl font-bold text-white mb-6 border-b border-cyan-900/50 pb-4">Our Service Guarantee</h3>
+              <ul className="space-y-6">
+                <li className="flex gap-4">
+                  <div className="bg-slate-900 p-3 rounded-xl shrink-0 h-fit">
+                    <Truck className="w-6 h-6 text-cyan-400" />
+                  </div>
+                  <div>
+                    <h4 className="text-white font-bold mb-1">Free Pick & Drop</h4>
+                    <p className="text-sm text-slate-400 leading-relaxed">Secure, insured collection and delivery to any governorate in Kuwait.</p>
+                  </div>
+                </li>
+                <li className="flex gap-4">
+                  <div className="bg-slate-900 p-3 rounded-xl shrink-0 h-fit">
+                    <ShieldCheck className="w-6 h-6 text-emerald-400" />
+                  </div>
+                  <div>
+                    <h4 className="text-white font-bold mb-1">No Fix, No Fee</h4>
+                    <p className="text-sm text-slate-400 leading-relaxed">If your device is catastrophically damaged and beyond repair, you pay zero.</p>
+                  </div>
+                </li>
+                <li className="flex gap-4">
+                  <div className="bg-slate-900 p-3 rounded-xl shrink-0 h-fit">
+                    <Clock className="w-6 h-6 text-cyan-400" />
+                  </div>
+                  <div>
+                    <h4 className="text-white font-bold mb-1">Fast Turnaround</h4>
+                    <p className="text-sm text-slate-400 leading-relaxed">Most component-level board repairs are completed within 24-48 hours.</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <div className="bg-slate-900/30 border border-slate-800 rounded-3xl p-6 flex items-start gap-4">
+              <div className="text-4xl font-black text-white leading-none">4.9<span className="text-cyan-400 text-2xl">★</span></div>
+              <div>
+                <p className="text-sm text-white font-bold mb-1">Google Reviews</p>
+                <p className="text-xs text-slate-400">Trusted by over 500+ professionals and gamers across Kuwait.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </main>
   );
 }
