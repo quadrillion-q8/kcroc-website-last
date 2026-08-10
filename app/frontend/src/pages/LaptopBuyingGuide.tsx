@@ -22,6 +22,7 @@ const business = KCROC_GRAPH.business!;
    1. PAGE DATA & SEO
 ───────────────────────────────────────────────────────────────────────────── */
 const PAGE_URL = `${business.websiteUrl}/blog/laptop-buying-guide-kuwait-2026`;
+const AR_PAGE_URL = `${business.websiteUrl}/blog/ar/laptop-buying-guide-kuwait-2026`;
 const HERO_IMAGE_URL = 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_1200/v1781139061/2026-01-22_9_qfanpt.jpg';
 const PUBLISHED_DATE = '2026-08-07T09:00:00+03:00';
 
@@ -42,7 +43,7 @@ const PILLAR_SCHEMA = [
     image: [HERO_IMAGE_URL],
     author: {
       '@type': 'Person',
-      name: 'Imran',
+      name: 'Imran Natiq',
       url: `${business.websiteUrl}/author/imran`,
       jobTitle: 'Hardware Repair Engineer',
       worksFor: {
@@ -111,7 +112,7 @@ const PILLAR_SCHEMA = [
   },
   {
     '@type': 'Person',
-    name: 'Imran',
+    name: 'Imran Natiq',
     url: `${business.websiteUrl}/author/imran`,
     jobTitle: 'Hardware Repair Engineer',
     worksFor: {
@@ -305,6 +306,10 @@ export default function LaptopBuyingGuide() {
           content="Confused by Intel, Ryzen and RTX naming in 2026? A Kuwait repair engineer explains which laptop specs actually matter — and which don't."
         />
         <link rel="canonical" href={PAGE_URL} />
+        {/* Multilingual SEO */}
+        <link rel="alternate" hrefLang="en-KW" href={PAGE_URL} />
+        <link rel="alternate" hrefLang="ar-KW" href={AR_PAGE_URL} />
+        <link rel="alternate" hrefLang="x-default" href={PAGE_URL} />
       </Helmet>
 
       <SchemaMarkup schema={{ '@graph': PILLAR_SCHEMA }} />
