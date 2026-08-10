@@ -21,7 +21,13 @@ const Picture = ({
     <picture>
       <source srcSet={variant.avif} type="image/avif" />
       <source srcSet={variant.webp} type="image/webp" />
-      <img src={variant.raw} alt={alt} className="w-full h-48 object-cover" />
+      <img
+        src={variant.raw}
+        alt={alt}
+        className="w-full h-48 object-cover"
+        loading="lazy"
+        decoding="async"
+      />
     </picture>
   );
 };
