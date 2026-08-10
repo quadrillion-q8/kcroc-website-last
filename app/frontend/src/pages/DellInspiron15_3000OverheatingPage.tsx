@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { 
   AlertTriangle, CheckCircle2, XCircle, Thermometer, 
-  HelpCircle, Wrench, ShieldAlert, Cpu, Fan, Wind, 
+  HelpCircle, Wrench, ShieldAlert, Cpu, Wind, 
   MessageCircle, Phone, MapPin, Shield, Laptop 
 } from 'lucide-react';
 
