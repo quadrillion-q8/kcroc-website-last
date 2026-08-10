@@ -26,7 +26,7 @@ const pricingCategories = [
     title: "Diagnostics & System Setup",
     icon: Search,
     items: [
-      { name: "Diagnostic & Inspection", price: "5 KWD", desc: "Component-level trace & thermal imaging" },
+      { name: "Diagnostic & Inspection", price: "5 KWD", desc: "Component-level trace & thermal imaging — credited in full toward your repair" },
       { name: "Windows OS Restoration", price: "10–15 KWD", desc: "Clean install with drivers & updates" },
       { name: "Virus & Malware Removal", price: "10–20 KWD", desc: "Deep system clean & security hardening" },
       { name: "BIOS/Firmware Recovery", price: "20–40 KWD", desc: "Direct IC reflashing & programmer recovery" }
@@ -66,9 +66,9 @@ const pricingCategories = [
 ];
 
 const faqs = Object.freeze([
-  { q: "Do you charge for diagnostics?", a: "We charge a nominal 5 KWD diagnostic and inspection fee to perform advanced component-level testing and thermal imaging. If you proceed with the repair, this fee is fully applied toward your final bill." },
+  { q: "Do you charge for diagnostics?", a: "Yes — a 5 KWD diagnostic and inspection fee covers advanced component-level testing and thermal imaging. If you proceed with the repair, this fee is fully credited toward your final bill, so you only ever pay it once." },
   { q: "Why are some prices listed as 'Labor + Part'?", a: "Because parts vary dramatically by model. A generic laptop battery might be 15 KWD, while a genuine MacBook or high-end gaming battery could be much more. Separating labor ensures you only pay for the exact part your specific machine requires." },
-  { q: "What if my device cannot be repaired?", a: "Under our No Fix, No Fee policy, if your device is catastrophically damaged and genuinely beyond economical repair, you pay nothing for the labor." },
+  { q: "What if my device cannot be repaired?", a: "Under our No Fix, No Fee policy, if your device is catastrophically damaged and genuinely beyond economical repair, you pay nothing for the labor. The 5 KWD diagnostic fee still applies, since that covers the inspection work already carried out." },
   { q: "Do you provide pickup and delivery?", a: "Yes. We provide free, secure pickup and delivery across all Kuwait governorates for all repair services." },
   { q: "How long does a motherboard repair take?", a: "Most component-level motherboard and logic board repairs are completed within 24 to 48 hours, which includes extensive full-load stress testing before the device is returned to you." },
 ]);
@@ -141,7 +141,7 @@ export default function Pricing() {
           We don't compete to be the cheapest shop in Ibn Khaldoun. We compete to be the laboratory that permanently fixes what others write off.
         </p>
         <div className="flex flex-wrap justify-center gap-4 sm:gap-6 text-xs sm:text-sm font-bold">
-          {['✓ Expert Diagnostics', '✓ Free Pickup & Delivery', '✓ 30-Day Warranty'].map(item => (
+          {['✓ 5 KWD Diagnostic — Credited to Repair', '✓ Free Pickup & Delivery', '✓ 30-Day Warranty'].map(item => (
             <span key={item} className="flex items-center text-cyan-400 bg-cyan-950/30 px-3 py-1.5 rounded-full border border-cyan-900/50">{item}</span>
           ))}
         </div>
@@ -153,8 +153,11 @@ export default function Pricing() {
           <ShieldAlert className="w-8 h-8 text-cyan-400 flex-shrink-0" aria-hidden="true" />
           <div>
             <h2 className="text-lg sm:text-xl font-bold text-white mb-2">Important Note on Pricing</h2>
-            <p className="text-slate-300 text-sm sm:text-base leading-relaxed mb-0">
+            <p className="text-slate-300 text-sm sm:text-base leading-relaxed mb-2">
               The prices below reflect our starting rates and labor costs. <strong className="text-white">Final price depends on laptop model, screen size, resolution, refresh rate, panel type, and part availability.</strong> We always provide a fixed, no-obligation quote after diagnosing your specific machine, before any repair begins.
+            </p>
+            <p className="text-slate-300 text-sm sm:text-base leading-relaxed mb-0">
+              Every repair starts with a <strong className="text-white">5 KWD diagnostic and inspection fee</strong> — component-level trace testing and thermal imaging to find the exact fault. If you go ahead with the repair, that 5 KWD is credited in full toward your final bill.
             </p>
           </div>
         </div>
