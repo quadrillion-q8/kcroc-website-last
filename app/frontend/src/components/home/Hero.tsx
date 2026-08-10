@@ -260,8 +260,13 @@ export default function Hero() {
               <Card className="relative bg-slate-900/80 border border-slate-800 rounded-3xl backdrop-blur overflow-hidden shadow-2xl">
                 <div className="aspect-[16/10] overflow-hidden bg-slate-950 relative group">
                   <img 
-                    src="/images/home/kcroc-component-level-motherboard-repair-lab.webp.png" 
+                    src="/images/home/kcroc-component-level-motherboard-repair-lab.webp" 
                     alt="KCROC Component-Level Repair Lab in Hawalli Kuwait"
+                    width="1600"
+                    height="873"
+                    fetchPriority="high"
+                    loading="eager"
+                    decoding="async"
                     className="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-700 ease-out"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-80"></div>
