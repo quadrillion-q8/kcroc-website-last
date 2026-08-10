@@ -138,6 +138,7 @@ export default function Hero() {
             >
               <a
                 href={`tel:+${phone}`}
+                aria-label="Call Kuwait Computer Repair On Call"
                 onClick={() =>
                   trackConversion('phone_call_click', {
                     cta_name: 'hero_mobile_call',
@@ -145,7 +146,7 @@ export default function Hero() {
                   })
                 }
               >
-                <Phone className="w-5 h-5 mr-2" />
+                <Phone className="w-5 h-5 mr-2" aria-hidden="true" />
                 Call Now
               </a>
             </Button>
@@ -159,6 +160,7 @@ export default function Hero() {
                 href={`https://wa.me/${phone}`}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Message Kuwait Computer Repair On Call on WhatsApp"
                 onClick={() =>
                   trackConversion('whatsapp_click', {
                     cta_name: 'hero_mobile_whatsapp',
@@ -166,13 +168,13 @@ export default function Hero() {
                   })
                 }
               >
-                <MessageCircle className="w-5 h-5 mr-2" />
+                <MessageCircle className="w-5 h-5 mr-2" aria-hidden="true" />
                 WhatsApp Us
               </a>
             </Button>
           </div>
 
-          <p className="text-slate-500 text-sm text-center font-medium mt-3">
+          <p className="text-slate-400 text-sm text-center font-medium mt-3">
             {rating}★ Google rating · Trusted by {repairsStat?.value ?? '500+'} customers across Kuwait
           </p>
         </div>
@@ -205,7 +207,7 @@ export default function Hero() {
                     <div className="text-2xl font-black text-white">
                       <Counter end={s.number} suffix={s.suffix} />
                     </div>
-                    <div className="text-[11px] text-slate-500 uppercase tracking-wide mt-1">
+                    <div className="text-[11px] text-slate-400 uppercase tracking-wide mt-1">
                       {s.label}
                     </div>
                   </div>
@@ -220,6 +222,7 @@ export default function Hero() {
                 >
                   <a
                     href={`tel:+${phone}`}
+                    aria-label="Call Kuwait Computer Repair On Call"
                     onClick={() =>
                       trackConversion('phone_call_click', {
                         cta_name: 'hero_desktop_call',
@@ -227,7 +230,7 @@ export default function Hero() {
                       })
                     }
                   >
-                    <Phone className="w-5 h-5 mr-2" />
+                    <Phone className="w-5 h-5 mr-2" aria-hidden="true" />
                     Call Now: +{phone}
                   </a>
                 </Button>
@@ -247,7 +250,7 @@ export default function Hero() {
                       })
                     }
                   >
-                    <CalendarClock className="w-5 h-5 mr-2" />
+                    <CalendarClock className="w-5 h-5 mr-2" aria-hidden="true" />
                     Book Pickup Now
                   </Link>
                 </Button>
@@ -278,7 +281,7 @@ export default function Hero() {
                 <CardContent className="p-8">
                   <div className="flex items-center gap-2 mb-3">
                     {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-current text-cyan-400" />
+                      <Star key={i} className="w-4 h-4 fill-current text-cyan-400" aria-hidden="true" />
                     ))}
                     <span className="text-slate-400 text-sm ml-1">
                       {rating} rated · {business?.aggregateRating?.reviewCount ?? 150}+ reviews
@@ -299,6 +302,7 @@ export default function Hero() {
                       href={`https://wa.me/${phone}`}
                       target="_blank"
                       rel="noopener noreferrer"
+                      aria-label="Message Kuwait Computer Repair On Call on WhatsApp"
                       onClick={() =>
                         trackConversion('whatsapp_click', {
                           cta_name: 'hero_desktop_card_whatsapp',
@@ -306,7 +310,7 @@ export default function Hero() {
                         })
                       }
                     >
-                      <MessageCircle className="w-5 h-5 mr-2" />
+                      <MessageCircle className="w-5 h-5 mr-2" aria-hidden="true" />
                       Message on WhatsApp
                     </a>
                   </Button>
