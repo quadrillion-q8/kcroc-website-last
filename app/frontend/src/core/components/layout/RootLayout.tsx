@@ -1,12 +1,19 @@
 // File: app/frontend/src/core/components/layout/RootLayout.tsx
-import React, { Suspense } from 'react';
+import React, { Suspense, lazy } from 'react';
 import { Outlet } from 'react-router-dom';
 
 import Header from './Header';
 import Footer from './Footer';
-import { AnimatedBackground } from './AnimatedBackground';
 import { ErrorBoundary } from '../ErrorBoundary';
 import { CookieConsentBanner } from '../CookieConsentBanner';
+
+// 🚀 CWV: AnimatedBackground pulls in tsParticles, which has no business being
+// in the critical initial bundle for a purely decorative effect that already
+// delays its own particle mount by 1200ms. Deferred the same way ChatWidget
+// is in App.tsx, so it loads after first paint instead of blocking it.
+const AnimatedBackground = lazy(() =>
+  import('./AnimatedBackground').then((module) => ({ default: module.AnimatedBackground }))
+);
 
 export const RootLayout: React.FC = () => {
   return (
@@ -20,8 +27,12 @@ export const RootLayout: React.FC = () => {
         Skip to main content
       </a>
 
-      {/* The global background that sits behind all pages */}
-      <AnimatedBackground />
+      {/* The global background that sits behind all pages — deferred; falls
+          back to the plain bg-slate-950 base color (matches AnimatedBackground's
+          own base layer) until the chunk loads, so there's no visible pop-in. */}
+      <Suspense fallback={<div className="fixed inset-0 z-0 bg-slate-950" />}>
+        <AnimatedBackground />
+      </Suspense>
 
       <Header />
 
