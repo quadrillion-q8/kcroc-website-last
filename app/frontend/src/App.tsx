@@ -47,7 +47,11 @@ const ScreenProtectionTips = lazy(() => import('./pages/ScreenProtectionTips'));
 
 // Content Pillars & Clusters
 const LaptopBuyingGuide = lazy(() => import('./pages/LaptopBuyingGuide'));
+const LaptopBuyingGuideAR = lazy(() => import('./pages/LaptopBuyingGuideAR'));
 const IntelVsAmdGuide = lazy(() => import('./pages/IntelVsAmdGuide')); 
+
+// Author Bio Pages
+const AuthorImran = lazy(() => import('./pages/AuthorImran'));
 
 // 🚀 Custom AI-Generated Guides
 const BatteryHealthGuide = lazy(() => import('./pages/BatteryHealthGuide'));
@@ -128,7 +132,11 @@ export const App: React.FC = () => {
               <Route path="blog/how-to-protect-laptop-screen" element={<BlogScreenProtection />} />
               <Route path="blog/gaming-pc-cooling" element={<GamingPCCooling />} />
               <Route path="blog/laptop-buying-guide-kuwait-2026" element={<LaptopBuyingGuide />} />
+              <Route path="blog/ar/laptop-buying-guide-kuwait-2026" element={<LaptopBuyingGuideAR />} />
               <Route path="blog/intel-core-ultra-vs-amd-ryzen-ai" element={<IntelVsAmdGuide />} /> 
+
+              {/* Author Bio Pages */}
+              <Route path="author/imran" element={<AuthorImran />} />
               
               {/* 🚀 AI Content Guides */}
               <Route path="guides/laptop-battery-warning-signs" element={<BatteryHealthGuide />} />
