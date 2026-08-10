@@ -21,6 +21,8 @@ export default function Hero() {
   const repairsStat = KCROC_GRAPH.stats?.items?.find((s: any) => s.label === 'Repairs completed');
   const logoUrl = business?.logoUrl ?? '/logo.png';
 
+  const headline = hero?.headline ?? "Kuwait's Expert Component-Level Repair Service.";
+
   useEffect(() => {
     const loadingTimer = setTimeout(() => setStatsLoading(false), 800);
     const animationTimer = setTimeout(() => setStatsAnimated(true), 1000);
@@ -84,6 +86,14 @@ export default function Hero() {
 
   return (
     <>
+      {/* 🚀 SEO: single semantic H1 for the page, shared across both responsive
+          layouts below. The mobile/desktop sections each show a visual
+          heading styled identically to the old per-section <h1>, but only
+          this one element is a real <h1> — avoids duplicate-heading markup
+          while keeping the exact same visible text/appearance at each
+          breakpoint. */}
+      <h1 className="sr-only">{headline}</h1>
+
       {/* Mobile Hero Section — sized to content, no min-h-screen/100vh */}
       <section className="bg-transparent pt-24 pb-8 relative overflow-hidden lg:hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-cyan-950/40 via-transparent to-emerald-950/20" />
@@ -99,9 +109,9 @@ export default function Hero() {
             />
           </div>
 
-          <h1 className="text-white text-[28px] font-black text-center leading-[1.2]">
-            {hero?.headline ?? "Kuwait's Expert Component-Level Repair Service."}
-          </h1>
+          <p aria-hidden="true" className="text-white text-[28px] font-black text-center leading-[1.2]">
+            {headline}
+          </p>
 
           <p className="text-slate-400 text-base text-center leading-relaxed mt-3">
             {hero?.description ??
@@ -177,9 +187,9 @@ export default function Hero() {
             {/* Left Content */}
             <div className="space-y-8">
               <div>
-                <h1 className="text-white text-4xl xl:text-5xl font-black leading-tight">
-                  {hero?.headline ?? "Kuwait's Expert Component-Level Repair Service."}
-                </h1>
+                <p aria-hidden="true" className="text-white text-4xl xl:text-5xl font-black leading-tight">
+                  {headline}
+                </p>
                 <p className="mt-4 text-cyan-400 text-xl font-semibold">
                   {hero?.subheadline ?? "We fix the board. We don't just swap it."}
                 </p>
