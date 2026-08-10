@@ -1,5 +1,4 @@
 // File: scripts/prerender.mjs
-import puppeteer from 'puppeteer';
 import express from 'express';
 import fs from 'fs';
 import path from 'path';
@@ -19,51 +18,107 @@ async function startServer() {
   });
 }
 
+async function launchBrowser() {
+  const isVercel = !!(process.env.VERCEL || process.env.CI);
+
+  if (isVercel) {
+    // Vercel serverless build environment: use @sparticuz/chromium + puppeteer-core
+    const chromium = (await import('@sparticuz/chromium')).default;
+    const puppeteerCore = (await import('puppeteer-core')).default;
+
+    return await puppeteerCore.launch({
+      args: chromium.args,
+      defaultViewport: chromium.defaultViewport,
+      executablePath: await chromium.executablePath(),
+      headless: chromium.headless,
+    });
+  } else {
+    // Local development fallback
+    try {
+      const puppeteer = (await import('puppeteer')).default;
+      return await puppeteer.launch({
+        headless: 'new',
+        args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage'],
+      });
+    } catch {
+      const chromium = (await import('@sparticuz/chromium')).default;
+      const puppeteerCore = (await import('puppeteer-core')).default;
+      return await puppeteerCore.launch({
+        args: chromium.args,
+        defaultViewport: chromium.defaultViewport,
+        executablePath: await chromium.executablePath(),
+        headless: chromium.headless,
+      });
+    }
+  }
+}
+
 async function prerender() {
-  console.log('🚀 Starting Vercel Prerender Engine...');
+  console.log('🚀 Starting KCROC Vercel Prerender Engine...');
   const server = await startServer();
 
-  // Read the sitemap to know exactly which pages to render
-  const sitemapXml = fs.readFileSync(path.join(DIST_DIR, 'sitemap.xml'), 'utf8');
-  const sitemapData = new XMLParser().parse(sitemapXml);
-  const routes = sitemapData.urlset.url.map(u => new URL(u.loc).pathname);
+  const sitemapPath = path.join(DIST_DIR, 'sitemap.xml');
+  if (!fs.existsSync(sitemapPath)) {
+    console.error('⚠️ Sitemap not found at dist/sitemap.xml. Skipping prerender.');
+    server.close();
+    process.exit(0);
+  }
 
-  // Safety flags required for Vercel's Linux build containers
-  const browser = await puppeteer.launch({
-    headless: "new",
-    args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage']
+  const sitemapXml = fs.readFileSync(sitemapPath, 'utf8');
+  const parser = new XMLParser();
+  const sitemapData = parser.parse(sitemapXml);
+
+  const urls = sitemapData?.urlset?.url || [];
+  const routes = (Array.isArray(urls) ? urls : [urls]).map((u) => {
+    try {
+      return new URL(u.loc).pathname;
+    } catch {
+      return u.loc;
+    }
   });
-  
+
+  console.log(`📋 Found ${routes.length} routes in sitemap to pre-render.`);
+
+  let browser;
+  try {
+    browser = await launchBrowser();
+  } catch (err) {
+    console.error('⚠️ Could not launch Chromium for pre-rendering:', err.message);
+    server.close();
+    process.exit(0);
+  }
+
   const page = await browser.newPage();
 
-  // Loop through and snapshot every page
   for (const route of routes) {
     try {
-      console.log(`Rendering: ${route}`);
-      // networkidle2 ensures we don't hang on background tracking scripts
+      console.log(`  └─ Pre-rendering: ${route}`);
       await page.goto(`http://localhost:${PORT}${route}`, {
         waitUntil: 'networkidle2',
-        timeout: 15000 // 15 second max per page to prevent build timeouts
+        timeout: 15000,
       });
+
       const html = await page.content();
-      
       const routePath = route === '/' ? '' : route;
       const targetDir = path.join(DIST_DIR, routePath);
-      
+
       if (!fs.existsSync(targetDir)) {
         fs.mkdirSync(targetDir, { recursive: true });
       }
-      
+
       fs.writeFileSync(path.join(targetDir, 'index.html'), html);
     } catch (err) {
-      console.warn(`⚠️ Skipped ${route} due to timeout/error.`);
+      console.warn(`  ⚠️ Skipped ${route}: ${err.message}`);
     }
   }
 
-  console.log('✅ Prerendering complete! Shutting down.');
+  console.log('✅ Pre-rendering complete!');
   await browser.close();
   server.close();
   process.exit(0);
 }
 
-prerender();
+prerender().catch((err) => {
+  console.error('❌ Prerender script error:', err);
+  process.exit(0);
+});
