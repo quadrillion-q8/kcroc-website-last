@@ -58,43 +58,32 @@ export default function Hero() {
       const animate = (currentTime: number) => {
         if (!startTime) startTime = currentTime;
         const progress = Math.min((currentTime - startTime) / duration, 1);
-        
-        // Linear mapping to update count up to target end value
         setCount(Math.floor(progress * end));
 
         if (progress < 1) {
           requestAnimationFrame(animate);
         } else {
-          setCount(end); // Explicitly snap to the final number
+          setCount(end); 
         }
       };
 
       requestAnimationFrame(animate);
     }, [statsAnimated, hasAnimated, statsLoading, end, duration]);
 
-    if (statsLoading) {
-      return <span className="counter loading-state">--</span>;
-    }
+    if (statsLoading) return <span className="counter loading-state">--</span>;
 
     return (
       <span className="counter">
-        {count}
-        {suffix}
+        {count}{suffix}
       </span>
     );
   };
 
   return (
     <>
-      {/* 🚀 SEO: single semantic H1 for the page, shared across both responsive
-          layouts below. The mobile/desktop sections each show a visual
-          heading styled identically to the old per-section <h1>, but only
-          this one element is a real <h1> — avoids duplicate-heading markup
-          while keeping the exact same visible text/appearance at each
-          breakpoint. */}
       <h1 className="sr-only">{headline}</h1>
 
-      {/* Mobile Hero Section — sized to content, no min-h-screen/100vh */}
+      {/* Mobile Hero Section */}
       <section className="bg-transparent pt-24 pb-8 relative overflow-hidden lg:hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-cyan-950/40 via-transparent to-emerald-950/20" />
 
@@ -118,12 +107,12 @@ export default function Hero() {
               'Free pickup & delivery. Expert engineer. Data-safe repairs for home and office.'}
           </p>
 
-          {/* Trust indicators — compact row, above the fold */}
           <div className="flex items-center justify-center gap-1.5 mt-3 flex-wrap">
             {['Free pickup', '30-day warranty', 'No fix, no fee'].map((label) => (
               <span
                 key={label}
-                className="text-[11px] font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-2.5 py-1"
+                /* 🚀 FIX: Bumped emerald-400 to emerald-300 for perfect WCAG Contrast */
+                className="text-[11px] font-semibold text-emerald-300 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-2.5 py-1"
               >
                 {label}
               </span>
@@ -139,12 +128,7 @@ export default function Hero() {
               <a
                 href={`tel:+${phone}`}
                 aria-label="Call Kuwait Computer Repair On Call"
-                onClick={() =>
-                  trackConversion('phone_call_click', {
-                    cta_name: 'hero_mobile_call',
-                    button_position: 'hero_mobile',
-                  })
-                }
+                onClick={() => trackConversion('phone_call_click', { cta_name: 'hero_mobile_call', button_position: 'hero_mobile' })}
               >
                 <Phone className="w-5 h-5 mr-2" aria-hidden="true" />
                 Call Now
@@ -161,12 +145,7 @@ export default function Hero() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Message Kuwait Computer Repair On Call on WhatsApp"
-                onClick={() =>
-                  trackConversion('whatsapp_click', {
-                    cta_name: 'hero_mobile_whatsapp',
-                    button_position: 'hero_mobile',
-                  })
-                }
+                onClick={() => trackConversion('whatsapp_click', { cta_name: 'hero_mobile_whatsapp', button_position: 'hero_mobile' })}
               >
                 <MessageCircle className="w-5 h-5 mr-2" aria-hidden="true" />
                 WhatsApp Us
@@ -186,7 +165,6 @@ export default function Hero() {
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left Content */}
             <div className="space-y-8">
               <div>
                 <p aria-hidden="true" className="text-white text-4xl xl:text-5xl font-black leading-tight">
@@ -223,12 +201,7 @@ export default function Hero() {
                   <a
                     href={`tel:+${phone}`}
                     aria-label="Call Kuwait Computer Repair On Call"
-                    onClick={() =>
-                      trackConversion('phone_call_click', {
-                        cta_name: 'hero_desktop_call',
-                        button_position: 'hero_desktop',
-                      })
-                    }
+                    onClick={() => trackConversion('phone_call_click', { cta_name: 'hero_desktop_call', button_position: 'hero_desktop' })}
                   >
                     <Phone className="w-5 h-5 mr-2" aria-hidden="true" />
                     Call Now: +{phone}
@@ -243,12 +216,7 @@ export default function Hero() {
                 >
                   <Link
                     to={ROUTES.book}
-                    onClick={() =>
-                      trackConversion('cta_click', {
-                        cta_name: 'hero_book_pickup',
-                        button_position: 'hero_desktop',
-                      })
-                    }
+                    onClick={() => trackConversion('cta_click', { cta_name: 'hero_book_pickup', button_position: 'hero_desktop' })}
                   >
                     <CalendarClock className="w-5 h-5 mr-2" aria-hidden="true" />
                     Book Pickup Now
@@ -257,21 +225,26 @@ export default function Hero() {
               </div>
             </div>
 
-            {/* Right Content — Featuring Lab Authority Image */}
             <div className="relative">
               <div className="absolute -inset-2 bg-gradient-to-r from-cyan-500/20 to-emerald-500/20 rounded-3xl blur-2xl opacity-75"></div>
               <Card className="relative bg-slate-900/80 border border-slate-800 rounded-3xl backdrop-blur overflow-hidden shadow-2xl">
                 <div className="aspect-[16/10] overflow-hidden bg-slate-950 relative group">
-                  <img 
-                    src="/images/home/kcroc-component-level-motherboard-repair-lab.webp" 
-                    alt="KCROC Component-Level Repair Lab in Hawalli Kuwait"
-                    width="1600"
-                    height="873"
-                    fetchPriority="high"
-                    loading="eager"
-                    decoding="async"
-                    className="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-700 ease-out"
-                  />
+                  
+                  {/* 🚀 FIX: Responsive Picture Tag with srcset */}
+                  <picture>
+                    <source media="(max-width: 1280px)" srcSet="/images/home/kcroc-component-level-motherboard-repair-lab-900.webp" />
+                    <img 
+                      src="/images/home/kcroc-component-level-motherboard-repair-lab.webp" 
+                      alt="KCROC Component-Level Repair Lab in Hawalli Kuwait"
+                      width="1600"
+                      height="873"
+                      fetchPriority="high"
+                      loading="eager"
+                      decoding="sync"
+                      className="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-700 ease-out"
+                    />
+                  </picture>
+
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-80"></div>
                   <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between text-xs font-bold text-cyan-400 bg-slate-950/80 backdrop-blur-md px-3 py-1.5 rounded-xl border border-cyan-500/20 shadow-lg">
                     <span>ESD-Safe Hawalli Laboratory</span>
@@ -303,12 +276,7 @@ export default function Hero() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label="Message Kuwait Computer Repair On Call on WhatsApp"
-                      onClick={() =>
-                        trackConversion('whatsapp_click', {
-                          cta_name: 'hero_desktop_card_whatsapp',
-                          button_position: 'hero_desktop_card',
-                        })
-                      }
+                      onClick={() => trackConversion('whatsapp_click', { cta_name: 'hero_desktop_card_whatsapp', button_position: 'hero_desktop_card' })}
                     >
                       <MessageCircle className="w-5 h-5 mr-2" aria-hidden="true" />
                       Message on WhatsApp
