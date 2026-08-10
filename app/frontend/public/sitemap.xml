@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- ════ CORE PAGES ════ -->
   <url>
     <loc>https://www.computerrepairkuwait.com/</loc>
     <changefreq>weekly</changefreq>
@@ -52,7 +51,6 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- ════ LEGAL & PRIVACY ════ -->
   <url>
     <loc>https://www.computerrepairkuwait.com/privacy-security-kuwait</loc>
     <changefreq>monthly</changefreq>
@@ -69,7 +67,6 @@
     <priority>0.5</priority>
   </url>
 
-  <!-- ════ CORE REPAIR SERVICES ════ -->
   <url>
     <loc>https://www.computerrepairkuwait.com/macbook-repair-kuwait</loc>
     <changefreq>weekly</changefreq>
@@ -101,7 +98,6 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- ════ BRAND SPECIALTIES ════ -->
   <url>
     <loc>https://www.computerrepairkuwait.com/dell-laptop-repair-kuwait</loc>
     <changefreq>monthly</changefreq>
@@ -133,7 +129,6 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- ════ PROBLEM & DIAGNOSTIC GUIDES ════ -->
   <url>
     <loc>https://www.computerrepairkuwait.com/laptop-wont-turn-on</loc>
     <changefreq>monthly</changefreq>
@@ -184,8 +179,33 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://www.computerrepairkuwait.com/guides/dell-inspiron-15-3000-overheating</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 
-  <!-- ════ LOCATION PAGES ════ -->
+  <url>
+    <loc>https://www.computerrepairkuwait.com/blog/laptop-buying-guide-kuwait-2026</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.computerrepairkuwait.com/blog/ar/laptop-buying-guide-kuwait-2026</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.computerrepairkuwait.com/blog/intel-core-ultra-vs-amd-ryzen-ai</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.computerrepairkuwait.com/author/imran</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
   <url>
     <loc>https://www.computerrepairkuwait.com/location/hawalli</loc>
     <changefreq>monthly</changefreq>
@@ -217,7 +237,6 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- ════ CASE STUDIES ════ -->
   <url>
     <loc>https://www.computerrepairkuwait.com/case-studies/macbook-liquid-damage-salmiya</loc>
     <changefreq>monthly</changefreq>
