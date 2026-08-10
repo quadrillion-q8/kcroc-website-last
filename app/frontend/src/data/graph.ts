@@ -104,6 +104,7 @@ export const rawGraphData: RawGraphData = {
     'page-privacy-policy': { id: 'page-privacy-policy', slug: 'privacy-policy', entityType: 'WebPage', isActive: true, title: 'Privacy Policy', description: 'KCROC Privacy Policy and Data Handling', seo: { title: 'Privacy Policy | KCROC Kuwait', description: 'Read the official Privacy Policy for Kuwait Computer Repair On Call. We are committed to protecting your data and personal information.', canonicalUrl: 'https://www.computerrepairkuwait.com/privacy-policy', ogType: 'website', schemaTypes: ['WebPage'] } } as WebPageEntity,
     'page-terms-of-service': { id: 'page-terms-of-service', slug: 'terms-of-service', entityType: 'WebPage', isActive: true, title: 'Terms of Service', description: 'KCROC Terms and Conditions of Service', seo: { title: 'Terms of Service | KCROC Kuwait', description: 'Read the official Terms of Service and conditions for computer repair, pick & drop, and warranties at Kuwait Computer Repair On Call.', canonicalUrl: 'https://www.computerrepairkuwait.com/terms-of-service', ogType: 'website', schemaTypes: ['WebPage'] } } as WebPageEntity,
     'page-case-studies': { id: 'page-case-studies', slug: 'case-studies', entityType: 'WebPage', isActive: true, title: 'Case Studies', description: 'Real repair success stories.', seo: { title: 'Repair Case Studies | KCROC Kuwait', description: 'Read real case studies of laptops and MacBooks we saved from liquid damage and catastrophic failure.', canonicalUrl: 'https://www.computerrepairkuwait.com/case-studies', ogType: 'website', schemaTypes: ['CollectionPage'] } } as WebPageEntity,
+    'page-author-imran': { id: 'page-author-imran', slug: 'author/imran', entityType: 'WebPage', isActive: true, title: 'Imran Natiq', description: 'Author bio page for Imran Natiq, Founder & Lead Technician at KCROC, referenced from the Person schema on blog articles he authored.', seo: { title: 'Imran Natiq — Hardware Repair Engineer at KCROC Kuwait', description: 'Imran Natiq is a hardware repair engineer and founder of KCROC in Hawalli, Kuwait, specializing in motherboard diagnostics, micro-soldering, and laptop thermal repair.', canonicalUrl: 'https://www.computerrepairkuwait.com/author/imran', ogType: 'profile', schemaTypes: ['ProfilePage', 'Person', 'BreadcrumbList'] } } as WebPageEntity,
     'guide-battery': { id: 'guide-battery', slug: 'guides/laptop-battery-warning-signs', entityType: 'WebPage', isActive: true, title: 'Laptop Battery Warning Signs', description: 'Learn the 4 critical warning signs of lithium-ion failure.', seo: { title: 'Laptop Battery Warning Signs | KCROC', description: 'Is your laptop battery expanding or overheating? Learn the 4 critical warning signs of lithium-ion failure.', canonicalUrl: 'https://www.computerrepairkuwait.com/guides/laptop-battery-warning-signs', ogType: 'article', schemaTypes: ['Article'] } } as WebPageEntity,
     'guide-intel-vs-amd': { 
       id: 'guide-intel-vs-amd', 
@@ -133,6 +134,21 @@ export const rawGraphData: RawGraphData = {
         canonicalUrl: 'https://www.computerrepairkuwait.com/blog/laptop-buying-guide-kuwait-2026',
         ogType: 'article',
         schemaTypes: ['Article', 'FAQPage', 'BreadcrumbList', 'Person']
+      }
+    } as WebPageEntity,
+    'guide-laptop-buying-ar': {
+      id: 'guide-laptop-buying-ar',
+      slug: 'blog/ar/laptop-buying-guide-kuwait-2026',
+      entityType: 'WebPage',
+      isActive: true,
+      title: 'دليل شراء اللابتوب في الكويت 2026: اللي ما يقوله لك البائع',
+      description: 'محتار بين Intel وRyzen وRTX؟ مهندس صيانة في الكويت يشرح لك المواصفات اللي تفرق بالأداء والمواصفات اللي مجرد تسويق.',
+      seo: {
+        title: 'دليل شراء اللابتوب في الكويت 2026: شلون تختار أفضل لابتوب؟ | KCROC',
+        description: 'تبي تشتري لابتوب في الكويت؟ تعرّف على أفضل مواصفات المعالج والرام وSSD وRTX والتبريد والبطارية حسب استخدامك، مع قائمة فحص قبل الشراء.',
+        canonicalUrl: 'https://www.computerrepairkuwait.com/blog/ar/laptop-buying-guide-kuwait-2026',
+        ogType: 'article',
+        schemaTypes: ['Article', 'FAQPage', 'BreadcrumbList']
       }
     } as WebPageEntity,
     // 🚀 NEW: Dell Inspiron Overheating Guide
