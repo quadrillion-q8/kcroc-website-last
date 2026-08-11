@@ -12,6 +12,10 @@ dist
 dist-ssr
 *.local
 
+# Auto-generated from src/data/graph.ts by scripts/generate-nav-data.ts
+# (runs automatically via "predev"/"prebuild") — do not commit or hand-edit.
+src/data/navGraph.generated.ts
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
