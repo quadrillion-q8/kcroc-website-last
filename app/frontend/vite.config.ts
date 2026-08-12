@@ -42,21 +42,9 @@ export default defineConfig({
     target: 'esnext',
     outDir: 'dist',
     cssCodeSplit: true,
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          'vendor-react': ['react', 'react-dom', 'react-router-dom'],
-          // 🚀 PERF FIX: previously 'vendor-icons': ['lucide-react'] forced
-          // the ENTIRE lucide-react package (every icon in the library) into
-          // one chunk. Because Header (which imports a handful of icons)
-          // loads on every route, that whole chunk was pulled into the
-          // critical path on first visit — regardless of how many icons the
-          // current page actually uses. Removing the manual chunk lets
-          // Rollup tree-shake unused icons per-chunk and let route-specific
-          // icons load lazily with their own route chunk instead.
-        }
-      }
-    }
+    // 🚀 PERF FIX: Removed manualChunks. 
+    // Vite's default chunking automatically handles 'react' safely for both Client and SSR builds.
+    // It also allows 'lucide-react' to be aggressively tree-shaken per route.
   },
   // 🚀 NATIVE SSG CONFIGURATION
   ssgOptions: {
