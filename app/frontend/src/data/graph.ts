@@ -8,8 +8,8 @@ import {
 
 export const rawGraphData: RawGraphData = {
   metadata: {
-    version: '3.3.0',
-    lastUpdated: '2026-07-16T00:00:00+03:00',
+    version: '3.4.0',
+    lastUpdated: '2026-08-12T00:00:00+03:00',
     environment: 'production'
   },
 
@@ -954,6 +954,170 @@ export const rawGraphData: RawGraphData = {
       isFeatured: true, 
       popular: true
     } as ServiceEntity,
+
+    'srv-gaming-laptop-cleaning': {
+      id: 'srv-gaming-laptop-cleaning',
+      slug: 'gaming-laptop-cleaning-kuwait',
+      entityType: 'Service',
+      isActive: true,
+      title: 'Gaming Laptop Cleaning & Thermal Repaste Kuwait',
+      iconKey: 'gaming',
+      shortDescription: 'Professional internal cleaning, thermal-interface service and cooling-system testing for gaming laptops running hot, loud or slower than they used to.',
+      description: 'If your gaming laptop is running hotter than it used to, the fans never seem to spool down, or your frame rate falls off during long sessions, the cooling system usually needs professional attention rather than a factory reset. Our gaming laptop thermal service follows a complete workflow — inspect, diagnose, clean, service the thermal interfaces, reassemble and test under load — so thermal paste replacement is only one part of what happens, not the whole plan. Kuwait\'s higher ambient temperatures reduce the thermal headroom available to a laptop during sustained CPU/GPU workloads, and airborne dust can build up inside the cooling system faster than in cooler, drier climates, which is why regular thermal maintenance matters more here than the generic advice most laptops ship with. We work on ASUS ROG and TUF Gaming, Lenovo Legion, MSI, Acer Predator, Alienware, Razer Blade, HP OMEN and Victus, Dell G Series, Gigabyte AORUS and other comparable gaming laptops. Pricing is confirmed after we\'ve seen the model and symptoms — send us a WhatsApp message for a free assessment, and pickup and delivery are free anywhere in Kuwait.',
+      idealCustomer: 'Competitive gamers, casual gamers with high-performance laptops, streamers, content creators, developers running GPU-heavy workloads, 3D designers and engineers — essentially anyone whose gaming laptop is starting to run hotter, louder or slower than it used to.',
+      deviceTypes: [
+        'ASUS ROG & TUF Gaming Laptops',
+        'Lenovo Legion Laptops',
+        'MSI Gaming Laptops',
+        'Acer Predator Laptops',
+        'Alienware & Razer Blade Laptops',
+        'HP OMEN & Victus Laptops',
+        'Dell G Series Laptops',
+        'Gigabyte AORUS Laptops'
+      ],
+      repairLevel: 'thermal-maintenance',
+      estimatedTurnaround: '24-48 Hours',
+      coreFeatures: [
+        'Model-Specific Internal Disassembly',
+        'Internal Dust Removal from Fans & Airflow Paths',
+        'Fan Cleaning, Inspection & Bearing Check',
+        'Heatsink & Cooling-Channel Cleaning',
+        'Thermal Paste Replacement',
+        'Thermal Pad Inspection & Replacement Where Required',
+        'Cooling-System & Heat-Pipe Inspection',
+        'Post-Service Thermal Testing Under Load'
+      ],
+      brands: ['ASUS ROG', 'ASUS TUF Gaming', 'Lenovo Legion', 'MSI Gaming', 'Acer Predator', 'Alienware', 'Razer Blade', 'HP OMEN', 'HP Victus', 'Dell G Series', 'Gigabyte AORUS'],
+
+      whyChooseUs: [
+        { title: 'Diagnostic-First Approach', description: 'We inspect the cooling system before assuming the fix is thermal paste. If a fan, heatsink or another component is the real cause, we tell you before doing any work.' },
+        { title: 'Kuwait Climate Expertise', description: 'We service gaming laptops with Kuwait\'s heat and dust specifically in mind, not a generic cleaning checklist written for a cooler climate.' },
+        { title: 'Model-Specific Disassembly', description: 'Every gaming laptop has a different internal layout. We open each model using the correct procedure to avoid damaging clips, ribbon cables and antennas.' },
+        { title: 'Thermal Testing, Not Guesswork', description: 'After reassembly, we run the system under load and check CPU/GPU temperatures and behaviour rather than assuming the service worked.' },
+        { title: 'Free Pickup & Delivery, Kuwait-Wide', description: 'We collect and return your laptop anywhere in Kuwait at no extra cost.' },
+        { title: 'No Fix, No Fee', description: 'If we can\'t safely service your specific laptop, you don\'t pay for the attempt.' },
+        { title: 'ESD-Safe Laboratory', description: 'Work is carried out on grounded, static-controlled workstations in our Hawalli lab.' },
+        { title: 'Honest Escalation', description: 'If your laptop still runs hot after proper thermal service, we\'ll tell you and point you toward the right deeper diagnostic instead of repeating the same service.' }
+      ],
+
+      commonIssues: [
+        { id: 'running-hot', title: 'Laptop Running Unusually Hot', severity: 'medium', description: 'The chassis feels noticeably hotter than it used to, especially near the keyboard or underside during gaming — often a sign that heat isn\'t being carried away from the CPU/GPU as efficiently as before.' },
+        { id: 'fans-constant', title: 'Fans Constantly Running at High Speed', severity: 'medium', description: 'The cooling fans ramp up quickly and rarely spool back down, even during lighter tasks, which usually means the system is working harder than it should to hold its temperature.' },
+        { id: 'fan-noise', title: 'Excessive Fan Noise', severity: 'low', description: 'A loud, persistent whine or rattle under load can point to dust-clogged fan blades, a worn bearing, or the fan compensating for reduced cooling efficiency elsewhere.' },
+        { id: 'fps-drops', title: 'FPS Drops After Extended Gaming', severity: 'high', description: 'Frame rates start normal but fall off the longer you play — a classic sign of the system reducing clock speeds once it hits a thermal limit.' },
+        { id: 'thermal-throttling', title: 'Thermal Throttling', severity: 'high', description: 'The CPU or GPU visibly reduces its clock speed under sustained load to protect itself from heat, which shows up as stutter or a sudden performance drop mid-session.' },
+        { id: 'declining-performance', title: 'Performance Starts Strong, Then Declines', severity: 'medium', description: 'The first few minutes of a session feel fine, then things gradually slow down — usually because temperatures are climbing faster than the cooling system can manage.' },
+        { id: 'random-shutdown', title: 'Random Shutdowns Under Heavy Load', severity: 'critical', description: 'The system powers off unexpectedly during demanding games as a safety response to reaching a critical temperature — this shouldn\'t be ignored.' },
+        { id: 'weak-airflow', title: 'Weak Airflow from Exhaust Vents', severity: 'medium', description: 'Little to no warm air coming from the exhaust vents during gaming, even with fans audibly spinning, often points to a blocked heatsink or restricted airflow path.' },
+        { id: 'visible-dust', title: 'Visible Dust Accumulation', severity: 'low', description: 'Dust visible around vents or intake grilles is usually a sign of a larger buildup inside, restricting airflow across the heatsink fins.' },
+        { id: 'never-serviced', title: 'Never Received Internal Cooling Maintenance', severity: 'low', description: 'A gaming laptop that has never been opened for cleaning is a strong candidate for preventive thermal maintenance, particularly after a year or more of regular use in Kuwait.' }
+      ],
+
+      environmentContext: {
+        title: 'Why Gaming Laptops Can Struggle More During Kuwait\'s Hot Months',
+        paragraphs: [
+          'Gaming workloads push the CPU and GPU close to their thermal limits by design, generating substantial heat over sustained sessions.',
+          'Kuwait\'s higher ambient temperatures reduce the thermal headroom available to a laptop, particularly during sustained CPU/GPU workloads, since the cooling system has less of a temperature gap to work with before it needs to react.',
+          'Fine airborne dust can build up inside the cooling system and restrict airflow across the heatsink fins faster than it would in a cooler, drier climate.',
+          'Aging thermal paste or pads gradually lose their ability to transfer heat efficiently, and this effect is more noticeable when ambient temperatures are already high.',
+          'When temperatures climb, fans work harder to compensate, which shows up as more noise and, eventually, thermal throttling once the system hits its limit.',
+          'The practical result for the user is heat, noise, stuttering or lower sustained FPS during longer sessions — not necessarily a single dramatic failure, but a gradual decline that\'s easy to write off as "the laptop getting old."'
+        ]
+      },
+
+      materialsGuide: {
+        title: 'Thermal Paste, Thermal Pads & Liquid Metal',
+        intro: 'The correct thermal material depends on the laptop\'s cooling design, not a single default choice we apply to every model.',
+        items: [
+          { title: 'Conventional Thermal Paste', description: 'The standard interface between the CPU/GPU die and the heatsink on most gaming laptops. It degrades gradually with heat cycling and is the most common part of a thermal service.' },
+          { title: 'Thermal Pads', description: 'Used on components like VRMs, memory chips or secondary heat-generating parts on many designs. We inspect existing pads and replace them where required rather than assuming every pad needs swapping.' },
+          { title: 'Liquid Metal (Compatible Models Only)', description: 'A higher-conductivity option supported only on specific cooling designs. We don\'t recommend it automatically — it requires model-specific compatibility and careful, contained application, since it\'s electrically conductive and unsuitable for every laptop.' }
+        ]
+      },
+
+      diagnosticNote: {
+        title: 'Not Every Overheating Problem Is a Thermal Paste Problem',
+        paragraphs: [
+          'We don\'t blindly repaste every laptop that comes in and assume the problem is solved. Overheating can also result from a failed or degraded fan, a blocked heatsink, a damaged cooling assembly, a heat-pipe or vapor-chamber issue, incorrect heatsink contact after a previous repair, a faulty temperature sensor, or a motherboard or power-delivery fault.',
+          'Our thermal service starts with an assessment of the cooling system, not a default repaste. If we find a deeper hardware fault during that assessment, we\'ll explain what we found and point you toward the right KCROC repair service instead of performing a cleaning that won\'t fix the actual cause.'
+        ],
+        relatedLinks: [
+          { label: 'Laptop Overheating Kuwait — Diagnostic Guide', route: '/laptop-overheating-kuwait' },
+          { label: 'Laptop Repair Kuwait', route: '/laptop-repair-kuwait' },
+          { label: 'Motherboard Repair Kuwait', route: '/motherboard-repair-kuwait' },
+          { label: 'Gaming PC & GPU Repair Kuwait', route: '/gaming-pc-repair-kuwait' }
+        ]
+      },
+
+      process: [
+        { step: 1, title: 'Contact KCROC', description: 'Send us your laptop model and the symptoms you\'re seeing — heat, noise, FPS drops or shutdowns — over WhatsApp for a free initial assessment.' },
+        { step: 2, title: 'Free Pickup', description: 'We collect your laptop anywhere in Kuwait according to our standard pickup policy, at no extra cost.' },
+        { step: 3, title: 'Initial Inspection', description: 'A technician evaluates the reported thermal symptoms and the general condition of the cooling system before any disassembly begins.' },
+        { step: 4, title: 'Controlled Disassembly', description: 'The laptop is opened using the correct procedure for its specific model to avoid damaging clips, cables and antennas.' },
+        { step: 5, title: 'Deep Internal Cleaning', description: 'Fans, heatsink fins, vents and accessible cooling paths are cleaned of accumulated dust and debris.' },
+        { step: 6, title: 'Thermal Service', description: 'Thermal paste is replaced, and thermal pads or other interface materials are inspected and replaced where required for the specific model.' },
+        { step: 7, title: 'Reassembly & Testing', description: 'The laptop is carefully reassembled, connectors are verified, and CPU/GPU behaviour is tested under load.' },
+        { step: 8, title: 'Return', description: 'Once we\'ve confirmed the system boots correctly and operates normally, the laptop is returned to you.' }
+      ],
+
+      performanceOutcomes: {
+        disclaimer: 'Results vary by laptop model, workload, ambient temperature, cooling design and the condition of the hardware. Thermal service does not guarantee a particular temperature or FPS improvement — these are representative outcomes where cooling degradation was the underlying cause, not a specific guaranteed result.',
+        items: [
+          { metric: 'Cooling System Condition', outcome: 'A cleaner cooling system with improved airflow once dust buildup on fans and heatsink fins is removed.' },
+          { metric: 'Thermal-Interface Performance', outcome: 'Restored heat transfer where the original thermal paste or pads had degraded with age and heat cycling.' },
+          { metric: 'Fan Workload', outcome: 'Reduced fan noise and workload in cases where dust or thermal-material degradation was contributing to the fans running harder than necessary.' },
+          { metric: 'Sustained Performance', outcome: 'Improved sustained performance and thermal headroom in cases where thermal throttling was caused by cooling-system degradation rather than a separate hardware fault.' },
+          { metric: 'System Stability', outcome: 'Improved stability during longer gaming sessions where heat-related instability was the underlying cause.' }
+        ]
+      },
+
+      inspectionChecklist: [
+        'CPU temperature under sustained load',
+        'GPU temperature under sustained load',
+        'GPU hotspot temperature where supported',
+        'Fan behaviour and ramp response',
+        'System behaviour during a sustained workload test',
+        'Indicators of thermal throttling',
+        'General system stability after reassembly',
+        'Boot and normal operation verification'
+      ],
+
+      faqs: [
+        { id: 'faq-clean-frequency', title: 'How often should I clean my gaming laptop in Kuwait?', answer: 'It depends on usage and environment, but given Kuwait\'s heat and dust, many gaming laptops benefit from a professional cleaning and thermal check roughly every 12-18 months — sooner if you\'re noticing rising temperatures, more fan noise, or your laptop has never been serviced.' },
+        { id: 'faq-needs-repaste', title: 'Does my gaming laptop need thermal paste replacement?', answer: 'Not necessarily on every visit — that\'s something we determine during the assessment. Signs that repasting is likely needed include rising temperatures, thermal throttling, or a laptop that has never had its thermal interface serviced.' },
+        { id: 'faq-know-overheating', title: 'How do I know if my gaming laptop is overheating?', answer: 'Common signs include a hot chassis, fans running constantly at high speed, FPS drops the longer you play, thermal throttling, or random shutdowns under heavy load. If you\'re seeing several of these together, it\'s worth having the cooling system checked.' },
+        { id: 'faq-repaste-reduce-temps', title: 'Can thermal repasting reduce gaming temperatures?', answer: 'When degraded thermal paste is the actual cause, replacing it can meaningfully improve heat transfer. We don\'t promise a specific number of degrees, since the result depends on the laptop model and how degraded the original material was.' },
+        { id: 'faq-fan-noise', title: 'Will cleaning stop my gaming laptop fan from being so loud?', answer: 'If the noise is caused by dust buildup or the fan compensating for poor heat transfer, cleaning and thermal service often reduces it. If the noise is from a worn or failing fan bearing, we\'ll flag that separately during inspection.' },
+        { id: 'faq-rog', title: 'Can you service ASUS ROG laptops?', answer: 'Yes, ASUS ROG is one of the gaming laptop lines we regularly service, including internal cleaning and thermal repaste.' },
+        { id: 'faq-legion', title: 'Can you service Lenovo Legion laptops?', answer: 'Yes, we service Lenovo Legion laptops, including their thermal maintenance and internal cleaning.' },
+        { id: 'faq-msi', title: 'Do you service MSI gaming laptops?', answer: 'Yes, MSI gaming laptops are covered by this service, alongside ASUS, Acer, Alienware, Razer, HP and Dell gaming models.' },
+        { id: 'faq-thermal-pads', title: 'Do you replace thermal pads?', answer: 'We inspect the existing thermal pads during the service and replace them where required for the specific model, rather than replacing every pad automatically on every laptop.' },
+        { id: 'faq-liquid-metal-offer', title: 'Do you offer liquid-metal service?', answer: 'On compatible models, yes. Liquid metal isn\'t suitable for every gaming laptop\'s cooling design, so we confirm compatibility first rather than applying it by default.' },
+        { id: 'faq-liquid-metal-safe', title: 'Is liquid metal safe for every gaming laptop?', answer: 'No — it depends on the specific model\'s cooling design and requires careful, contained application because it\'s electrically conductive. We only offer it where the laptop is genuinely suited to it.' },
+        { id: 'faq-fps-drops-clean', title: 'Can cleaning fix FPS drops?', answer: 'If the FPS drops are caused by thermal throttling from a dust-clogged or degraded cooling system, cleaning and thermal service can help. If the cause is something else — a failing fan, a GPU fault or a software issue — we\'ll tell you during the assessment rather than assuming a cleaning will fix it.' },
+        { id: 'faq-still-hot', title: 'What if my laptop still overheats after repasting?', answer: 'If temperatures don\'t improve after proper thermal service, the cause is likely something beyond the thermal interface — a failing fan, a cooling assembly fault, or a motherboard-level issue. We\'ll help you figure out which and point you toward the right next step, such as our laptop repair or motherboard repair service.' },
+        { id: 'faq-pickup', title: 'Do you provide pickup and delivery in Kuwait?', answer: 'Yes, pickup and delivery are free anywhere in Kuwait for this service.' },
+        { id: 'faq-turnaround', title: 'How long does gaming laptop thermal service take?', answer: 'Most gaming laptop cleaning and thermal service work is completed within 24-48 hours of us receiving the laptop, though this can vary depending on the model and whether any additional issue is found during inspection.' }
+      ],
+
+      relatedServiceIds: ['srv-gaming', 'srv-laptop', 'srv-motherboard'],
+
+      warranty: {
+        duration: '30 Days',
+        coverage: 'Covers the workmanship on the disassembly, cleaning, thermal-material application and reassembly performed during the service. This is a workmanship warranty — because sustained temperatures depend on the laptop model, ambient conditions and workload, we do not guarantee a specific temperature or FPS result.',
+        noFixNoFee: true
+      },
+      seo: {
+        title: 'Gaming Laptop Cleaning & Thermal Repaste Kuwait | KCROC',
+        description: 'Professional gaming laptop cleaning, thermal repaste and cooling-system testing in Kuwait. ASUS ROG, Legion, MSI, Predator & more. Free pickup & delivery.',
+        canonicalUrl: 'https://www.computerrepairkuwait.com/gaming-laptop-cleaning-kuwait',
+        ogType: 'article',
+        schemaTypes: ['Service', 'FAQPage']
+      },
+      navigationPriority: 65,
+      isFeatured: false,
+      popular: false
+    } as ServiceEntity,
     
     'srv-motherboard': { 
       id: 'srv-motherboard', 
@@ -1763,7 +1927,7 @@ export const rawGraphData: RawGraphData = {
       doNotDo: 'Do not use a laptop that is thermal throttling on intensive tasks — sustained overheating degrades the CPU and eventually kills the motherboard.',
       solution: 'Ultrasonic cleaning of the cooling system, fresh phase-change thermal material application, and fan inspection. We also check BIOS thermal limits.',
       urgency: 'medium',
-      relatedServiceIds: ['srv-laptop', 'srv-gaming'],
+      relatedServiceIds: ['srv-laptop', 'srv-gaming', 'srv-gaming-laptop-cleaning'],
       seo: { title: 'Laptop Overheating Kuwait — Fix & Thermal Service | KCROC', description: 'Laptop overheating in Kuwait? Kuwait\'s summer heat destroys thermal paste and clogs cooling fins. We deep-clean and re-paste. Free pick & drop. Same-day service.', canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-overheating-kuwait', ogType: 'article', schemaTypes: ['Article', 'FAQPage'] },
       navigationPriority: 90, popular: true 
     } as ProblemEntity,
@@ -1976,6 +2140,7 @@ export const rawGraphData: RawGraphData = {
           { label: 'Laptop Repair Kuwait',     path: '/laptop-repair-kuwait' },
           { label: 'MacBook Repair Kuwait',     path: '/macbook-repair-kuwait' },
           { label: 'Gaming PC Repair Kuwait',   path: '/gaming-pc-repair-kuwait' },
+          { label: 'Gaming Laptop Cleaning Kuwait', path: '/gaming-laptop-cleaning-kuwait' },
           { label: 'Motherboard Repair Kuwait', path: '/motherboard-repair-kuwait' },
           { label: 'Screen Replacement Kuwait', path: '/laptop-screen-repair-kuwait' },
           { label: 'Battery Replacement Kuwait', path: '/battery-replacement-kuwait' }
