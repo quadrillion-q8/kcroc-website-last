@@ -7,7 +7,7 @@
     "generate:nav": "npx tsx scripts/generate-nav-data.ts",
     "prebuild": "npx tsx scripts/check-gbp-rating.ts; npx tsx scripts/validate-build.ts && pnpm run generate:nav",
     "generate:sitemap": "npx tsx scripts/generate-sitemap.ts",
-    "build": "pnpm run prebuild && pnpm run generate:sitemap && vite build",
+    "build": "pnpm run prebuild && pnpm run generate:sitemap && vite-react-ssg build",
     "lint": "eslint --quiet ./src",
     "preview": "vite preview"
   },
@@ -68,6 +68,7 @@
     "tsx": "^4.19.2",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.0.1",
-    "vite": "^5.4.1"
+    "vite": "^5.4.1",
+    "vite-react-ssg": "^0.9.2"
   }
 }
