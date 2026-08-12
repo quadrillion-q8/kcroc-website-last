@@ -1,11 +1,11 @@
 // File: app/frontend/src/main.tsx
-import { createRoot, hydrateRoot } from 'react-dom/client';
-import { HelmetProvider } from 'react-helmet-async';
-import App from './App.tsx';
+import { ViteReactSSG } from 'vite-react-ssg';
+import { routes } from './App.tsx';
 import './index.css';
 
 // Dev-only Knowledge Graph Validation.
-if (import.meta.env.DEV) {
+// We explicitly check typeof window so it doesn't crash during SSG
+if (import.meta.env.DEV && typeof window !== 'undefined') {
   Promise.all([
     import('./types/knowledgeGraph'),
     import('./data/graph'),
@@ -21,18 +21,9 @@ if (import.meta.env.DEV) {
   });
 }
 
-const rootElement = document.getElementById('root')!;
-const app = (
-  <HelmetProvider>
-    <App />
-  </HelmetProvider>
+// 🚀 NATIVE SSG ENTRY POINT
+// ViteReactSSG automatically handles document.getElementById('root') 
+// on the client, and safely bypasses it on the server.
+export const createRoot = ViteReactSSG(
+  { routes, basename: '/' }
 );
-
-// 🚀 HYDRATION LOGIC: 
-// If the HTML is already pre-rendered by Vite (has child nodes), we hydrate it.
-// Otherwise (like in local dev mode), we render it from scratch.
-if (rootElement.hasChildNodes()) {
-  hydrateRoot(rootElement, app);
-} else {
-  createRoot(rootElement).render(app);
-}
