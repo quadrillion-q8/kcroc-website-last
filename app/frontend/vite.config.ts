@@ -42,9 +42,11 @@ export default defineConfig({
     target: 'esnext',
     outDir: 'dist',
     cssCodeSplit: true,
-    // 🚀 PERF FIX: Removed manualChunks. 
-    // Vite's default chunking automatically handles 'react' safely for both Client and SSR builds.
-    // It also allows 'lucide-react' to be aggressively tree-shaken per route.
+  },
+  // 🚀 FIX FOR ESM/CommonJS CONFLICT
+  // This forces Vite to pre-bundle react-helmet-async so Node.js can execute it during SSG
+  ssr: {
+    noExternal: ['react-helmet-async']
   },
   // 🚀 NATIVE SSG CONFIGURATION
   ssgOptions: {
