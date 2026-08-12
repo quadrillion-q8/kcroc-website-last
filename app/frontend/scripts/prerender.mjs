@@ -4,6 +4,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { XMLParser } from 'fast-xml-parser';
+import puppeteer from 'puppeteer';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DIST_DIR = path.resolve(__dirname, '../dist');
@@ -19,38 +20,22 @@ async function startServer() {
 }
 
 async function launchBrowser() {
-  const isVercel = !!(process.env.VERCEL || process.env.CI);
-
-  if (isVercel) {
-    // Vercel serverless build environment: use @sparticuz/chromium + puppeteer-core
-    const chromium = (await import('@sparticuz/chromium')).default;
-    const puppeteerCore = (await import('puppeteer-core')).default;
-
-    return await puppeteerCore.launch({
-      args: chromium.args,
-      defaultViewport: chromium.defaultViewport,
-      executablePath: await chromium.executablePath(),
-      headless: chromium.headless,
-    });
-  } else {
-    // Local development fallback
-    try {
-      const puppeteer = (await import('puppeteer')).default;
-      return await puppeteer.launch({
-        headless: 'new',
-        args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage'],
-      });
-    } catch {
-      const chromium = (await import('@sparticuz/chromium')).default;
-      const puppeteerCore = (await import('puppeteer-core')).default;
-      return await puppeteerCore.launch({
-        args: chromium.args,
-        defaultViewport: chromium.defaultViewport,
-        executablePath: await chromium.executablePath(),
-        headless: chromium.headless,
-      });
-    }
-  }
+  // 🚨 FIXED: this used to branch on process.env.VERCEL and use
+  // @sparticuz/chromium + puppeteer-core in CI. That combo is built for
+  // AWS Lambda-style *serverless function* runtimes, not Vercel's *build*
+  // container — the two environments have different system libraries
+  // available, and the mismatch caused a hard failure:
+  //   "/tmp/chromium: error while loading shared libraries: libnss3.so:
+  //    cannot open shared object file: No such file or directory"
+  // Full `puppeteer` downloads its own self-contained Chromium binary
+  // (bundled with the OS libraries it needs) at install time, so it isn't
+  // exposed to this class of "missing system library" failure the way the
+  // minimal Lambda-oriented binary was. Same browser launch path everywhere
+  // now — local dev and Vercel's build container alike.
+  return await puppeteer.launch({
+    headless: 'new',
+    args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage'],
+  });
 }
 
 async function prerender() {
@@ -93,10 +78,8 @@ async function prerender() {
   } catch (err) {
     // 🚨 FIXED: this used to log a warning and exit(0), silently shipping a
     // deployment with zero pre-rendered routes whenever Chromium failed to
-    // launch in Vercel's build environment (the exact failure mode that
-    // caused every page to 404 on hard refresh — no per-route index.html
-    // existed anywhere in the deployment). Now the build fails instead, so
-    // Vercel keeps serving the last known-good deployment.
+    // launch. Now the build fails instead, so Vercel keeps serving the last
+    // known-good deployment rather than a broken one with no static HTML.
     server.close();
     throw new Error(`Could not launch Chromium for pre-rendering: ${err.message}`);
   }
