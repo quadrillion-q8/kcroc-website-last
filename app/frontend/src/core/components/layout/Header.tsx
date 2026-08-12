@@ -21,6 +21,16 @@ export default function Header() {
   const [panelPositions, setPanelPositions] = useState<Record<string, number>>({});
   const [logoError, setLogoError] = useState(false);
 
+  // 🚀 PERF FIX: DesktopMegaMenu was rendered unconditionally below (inside
+  // Suspense, keyed per megaMenuId) so React attempted it on first mount
+  // regardless of isOpen — triggering its lazy chunk download on EVERY page
+  // load, including mobile, where the desktop nav (and therefore the mega
+  // menu) is never even reachable (`hidden lg:flex`). Gate the whole block
+  // behind an actual desktop viewport check so mobile visitors never fetch
+  // this chunk at all, and desktop visitors only fetch it once mounted
+  // post-render instead of blocking the initial critical path.
+  const [isDesktopViewport, setIsDesktopViewport] = useState(false);
+
   const headerRef = useRef<HTMLElement>(null);
   const mobileRef = useRef<HTMLDivElement>(null);
   const navRefs = useRef<Record<string, HTMLButtonElement | null>>({});
@@ -71,6 +81,14 @@ export default function Header() {
     const h = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', h, { passive: true });
     return () => window.removeEventListener('scroll', h);
+  }, []);
+
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 1024px)');
+    setIsDesktopViewport(mq.matches);
+    const listener = (e: MediaQueryListEvent) => setIsDesktopViewport(e.matches);
+    mq.addEventListener('change', listener);
+    return () => mq.removeEventListener('change', listener);
   }, []);
 
   useEffect(() => {
@@ -206,7 +224,7 @@ export default function Header() {
         </>
       )}
 
-      {Object.entries(navModel.megaMenus).map(([megaId, config]) => (
+      {isDesktopViewport && Object.entries(navModel.megaMenus).map(([megaId, config]) => (
         <Suspense key={megaId} fallback={null}>
           <DesktopMegaMenu 
             isOpen={activeMegaId === megaId} 
