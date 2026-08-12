@@ -18,15 +18,8 @@
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" />
     </noscript>
     <link rel="preload" as="image" href="/logo.webp" type="image/webp" />
-    <!-- 🚀 PERF FIX: media queries here must match Hero.tsx's <picture> breakpoint
-         exactly (1280px). The previous 1024px cutoff meant viewports between
-         1024–1280px preloaded the full desktop image AND then the <picture>
-         element rendered the smaller -900.webp variant instead — downloading
-         both. This also adds a preload for the mobile/tablet variant, which
-         previously wasn't preloaded at all and had to wait for HTML-parse
-         discovery, delaying LCP on the majority of real-world (mobile) visits. -->
     <link rel="preload" as="image" href="/images/home/kcroc-component-level-motherboard-repair-lab.webp" type="image/webp" media="(min-width: 1281px)" />
-    <link rel="preload" as="image" href="/images/home/kcroc-component-level-motherboard-repair-lab-900.webp" type="image/webp" media="(max-width: 1280px)" />
+    <link rel="preload" as="image" href="/images/home/kcroc-component-level-motherboard-repair-lab-900.webp" type="image/webp" media="(min-width: 1024px) and (max-width: 1280px)" />
     <title>Kuwait Computer Repair On Call | MacBook & Laptop Repair – Free Pick & Drop</title>
     <meta name="description" content="Same-day laptop, MacBook & PC repair by Kuwait Computer Repair On Call (KCROC). Free Pick & Drop across Hawalli, Salmiya, Kuwait City & all governorates. Call +965 55301913." />
     <meta name="robots" content="index, follow, max-image-preview:large" />
