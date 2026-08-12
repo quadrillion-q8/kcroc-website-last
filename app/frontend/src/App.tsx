@@ -1,9 +1,7 @@
 // File: app/frontend/src/App.tsx
 import React, { Suspense, lazy } from 'react';
-import { BrowserRouter, Routes, Route, Navigate, useParams } from 'react-router-dom';
+import { RouteObject, Navigate, Outlet } from 'react-router-dom';
 import { RootLayout } from './core/components/layout/RootLayout';
-
-// Analytics Provider
 import { AnalyticsProvider } from './core/analytics/AnalyticsProvider';
 
 // 🚀 CWV Optimization: Defer heavy third-party UI to protect Interaction to Next Paint (INP)
@@ -49,10 +47,9 @@ const AuthorImran = lazy(() => import('./pages/AuthorImran'));
 
 // 🚀 Custom AI-Generated Guides
 const BatteryHealthGuide = lazy(() => import('./pages/BatteryHealthGuide'));
-const DellInspiron15_3000OverheatingPage = lazy(() => import('./pages/DellInspiron15_3000OverheatingPage').then(module => ({ default: module.DellInspiron15_3000OverheatingPage }))); // 👈 UPDATED
+const DellInspiron15_3000OverheatingPage = lazy(() => import('./pages/DellInspiron15_3000OverheatingPage').then(module => ({ default: module.DellInspiron15_3000OverheatingPage })));
 
 // 🚀 CWV Optimization: Extracted routing logic that requires graph.ts into a deferred chunk.
-// This prevents the 192KB graph.ts from blocking initial paint!
 const DynamicRouteHandler = lazy(() => import('./core/routing/DynamicRoutes').then(m => ({ default: m.DynamicRouteHandler })));
 const LegacyServiceRedirect = lazy(() => import('./core/routing/DynamicRoutes').then(m => ({ default: m.LegacyServiceRedirect })));
 
@@ -63,101 +60,82 @@ const PageLoader = () => (
   </div>
 );
 
-export const App: React.FC = () => {
-  return (
-    <BrowserRouter>
-      {/* Global Analytics Telemetry */}
-      <AnalyticsProvider>
-        <Suspense fallback={<PageLoader />}>
-          <Routes>
-            <Route path="/" element={<RootLayout />}>
-              <Route index element={<Home />} />
-              
-              {/* The Dynamic Services Gateway */}
-              <Route path="services" element={<Services />} />
-              
-              {/* 🚀 DYNAMIC ROOT-LEVEL SEO ROUTES (Services, Brands, Problems)
-                  Handled dynamically via URL parameter to keep graph.ts out of the main bundle. */}
-              <Route path=":slug" element={<DynamicRouteHandler />} />
+// High-level wrapper to maintain Context Providers without a BrowserRouter
+// (ViteReactSSG provides its own Router implementation automatically)
+const AppWrapper = () => (
+  <AnalyticsProvider>
+    <Suspense fallback={<PageLoader />}>
+      <Outlet />
+    </Suspense>
+    
+    {/* CWV Optimization: Background boundary for the chat widget */}
+    <Suspense fallback={null}>
+      <ChatWidget /> 
+    </Suspense>
+  </AnalyticsProvider>
+);
 
-              {/* Legacy Service Route Fallback — redirects old /services/:slug links to the current flat URL */}
-              <Route path="services/:serviceSlug" element={<LegacyServiceRedirect />} />
-              
-              {/* Case Studies */}
-              <Route path="case-studies" element={<CaseStudiesIndex />} />
-              <Route path="case-studies/:slug" element={<CaseStudyTemplate />} />
-              
-              {/* Static Routes */}
-              <Route path="book" element={<BookingPage />} />
-              <Route path="booking" element={<BookingPage />} />
-              <Route path="pricing" element={<Pricing />} />
-              <Route path="contact" element={<Contact />} />
-              <Route path="gallery" element={<Gallery />} />
-              <Route path="about" element={<About />} />
-              
-              {/* Legal & Privacy Routes */}
-              <Route path="privacy-security-kuwait" element={<PrivacySecurity />} />
-              <Route path="privacy-policy" element={<PrivacyPolicy />} />
-              <Route path="terms-of-service" element={<TermsOfService />} />
-              {/* Legacy/short-link redirects to the canonical legal URLs */}
-              <Route path="privacy" element={<Navigate to="/privacy-policy" replace />} />
-              <Route path="terms" element={<Navigate to="/terms-of-service" replace />} />
+// 🚀 EXPLICIT ROUTE ARRAY EXPORT REQUIRED BY VITE-REACT-SSG
+export const routes: RouteObject[] = [
+  {
+    path: '/',
+    element: <AppWrapper />,
+    children: [
+      {
+        path: '/',
+        element: <RootLayout />,
+        children: [
+          { index: true, element: <Home /> },
+          { path: 'services', element: <Services /> },
+          { path: 'services/:serviceSlug', element: <LegacyServiceRedirect /> },
+          { path: 'case-studies', element: <CaseStudiesIndex /> },
+          { path: 'case-studies/:slug', element: <CaseStudyTemplate /> },
+          { path: 'book', element: <BookingPage /> },
+          { path: 'booking', element: <BookingPage /> },
+          { path: 'pricing', element: <Pricing /> },
+          { path: 'contact', element: <Contact /> },
+          { path: 'gallery', element: <Gallery /> },
+          { path: 'about', element: <About /> },
+          { path: 'privacy-security-kuwait', element: <PrivacySecurity /> },
+          { path: 'privacy-policy', element: <PrivacyPolicy /> },
+          { path: 'terms-of-service', element: <TermsOfService /> },
+          { path: 'privacy', element: <Navigate to="/privacy-policy" replace /> },
+          { path: 'terms', element: <Navigate to="/terms-of-service" replace /> },
+          { path: 'faq', element: <FAQ /> },
+          { path: 'blog', element: <Blog /> },
+          { path: 'blog/laptop-repair-kuwait-2026', element: <BlogLaptopRepair /> },
+          { path: 'blog/how-to-protect-laptop-screen', element: <BlogScreenProtection /> },
+          { path: 'blog/gaming-pc-cooling', element: <GamingPCCooling /> },
+          { path: 'blog/laptop-buying-guide-kuwait-2026', element: <LaptopBuyingGuide /> },
+          { path: 'blog/ar/laptop-buying-guide-kuwait-2026', element: <LaptopBuyingGuideAR /> },
+          { path: 'blog/intel-core-ultra-vs-amd-ryzen-ai', element: <IntelVsAmdGuide /> },
+          { path: 'author/imran', element: <AuthorImran /> },
+          { path: 'guides/laptop-battery-warning-signs', element: <BatteryHealthGuide /> },
+          { path: 'guides/dell-inspiron-15-3000-overheating', element: <DellInspiron15_3000OverheatingPage /> },
+          { path: 'guides/dell-overheating', element: <Navigate to="/guides/dell-inspiron-15-3000-overheating" replace /> },
+          { path: 'laptop-screen-protection-tips', element: <ScreenProtectionTips /> },
+          { path: 'blog/laptop-screen-protection-tips', element: <Navigate to="/laptop-screen-protection-tips" replace /> },
+          { path: 'battery-replacement', element: <Navigate to="/battery-replacement-kuwait" replace /> },
+          { path: 'blog/:slug', element: <BlogPostTemplate /> },
+          { path: 'computer-repair-:slug', element: <LocationTemplate /> },
+          { path: 'laptop-repair-:slug', element: <LocationTemplate /> },
+          { path: 'location/:slug', element: <LocationTemplate /> },
+          { path: 'pillar/:slug', element: <PillarTemplate /> },
+          { path: 'faq/:faqSlug', element: <Navigate to="/faq" replace /> },
+          
+          // 🚀 DYNAMIC ROOT-LEVEL SEO ROUTES (Services, Brands, Problems)
+          // Moved to the bottom so explicit routes match first
+          { path: ':slug', element: <DynamicRouteHandler /> },
+          
+          // Secure Catch-All for 404s
+          { path: '*', element: <NotFound /> }
+        ]
+      }
+    ]
+  }
+];
 
-              <Route path="faq" element={<FAQ />} />
-
-              {/* Content Routes */}
-              <Route path="blog" element={<Blog />} />
-              
-              {/* Custom Explicit Blog Routes */}
-              <Route path="blog/laptop-repair-kuwait-2026" element={<BlogLaptopRepair />} />
-              <Route path="blog/how-to-protect-laptop-screen" element={<BlogScreenProtection />} />
-              <Route path="blog/gaming-pc-cooling" element={<GamingPCCooling />} />
-              <Route path="blog/laptop-buying-guide-kuwait-2026" element={<LaptopBuyingGuide />} />
-              <Route path="blog/ar/laptop-buying-guide-kuwait-2026" element={<LaptopBuyingGuideAR />} />
-              <Route path="blog/intel-core-ultra-vs-amd-ryzen-ai" element={<IntelVsAmdGuide />} /> 
-
-              {/* Author Bio Pages */}
-              <Route path="author/imran" element={<AuthorImran />} />
-              
-              {/* 🚀 AI Content Guides */}
-              <Route path="guides/laptop-battery-warning-signs" element={<BatteryHealthGuide />} />
-              <Route path="guides/dell-inspiron-15-3000-overheating" element={<DellInspiron15_3000OverheatingPage />} />
-              <Route path="guides/dell-overheating" element={<Navigate to="/guides/dell-inspiron-15-3000-overheating" replace />} /> 
-              
-              {/* SEO Guardrail: Canonical URL redirection */}
-              <Route path="laptop-screen-protection-tips" element={<ScreenProtectionTips />} />
-              <Route path="blog/laptop-screen-protection-tips" element={<Navigate to="/laptop-screen-protection-tips" replace />} />
-              
-              {/* Corrected SEO Guardrail for Battery */}
-              <Route path="battery-replacement" element={<Navigate to="/battery-replacement-kuwait" replace />} />
-              
-              {/* Generic Blog Catch-All */}
-              <Route path="blog/:slug" element={<BlogPostTemplate />} />
-              
-              {/* Dynamic Location SEO Landing Pages */}
-              <Route path="computer-repair-:slug" element={<LocationTemplate />} />
-              <Route path="laptop-repair-:slug" element={<LocationTemplate />} />
-              <Route path="location/:slug" element={<LocationTemplate />} />
-              
-              {/* Other Templates */}
-              <Route path="pillar/:slug" element={<PillarTemplate />} />
-              
-              {/* SEO Guardrail: Redirect dynamic FAQ routes to the main FAQ page */}
-              <Route path="faq/:faqSlug" element={<Navigate to="/faq" replace />} />
-              
-              {/* Secure Catch-All for 404s */}
-              <Route path="*" element={<NotFound />} />
-            </Route>
-          </Routes>
-        </Suspense>
-        
-        {/* CWV Optimization: Background boundary for the chat widget */}
-        <Suspense fallback={null}>
-          <ChatWidget /> 
-        </Suspense>
-      </AnalyticsProvider>
-    </BrowserRouter>
-  );
-};
-
-export default App;
+// Provide a default export as a fallback for standard dev server environments
+export default function App() {
+  return <AppWrapper />;
+}
