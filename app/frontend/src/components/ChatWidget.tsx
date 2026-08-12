@@ -9,8 +9,13 @@ export const ChatWidget: React.FC = () => {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const abortControllerRef = useRef<AbortController | null>(null);
 
-  // 1. DEFENSIVE PARSING: Prevents corrupted sessionStorage from crashing the entire app
+  // 1. DEFENSIVE PARSING & SSG SAFETY: 
+  // We check typeof window !== 'undefined' so Node.js doesn't crash during the Vite SSG build.
   const [messages, setMessages] = useState(() => {
+    if (typeof window === 'undefined') {
+      return [{ sender: 'bot', text: 'Hi! How can I help you with your computer repair today?' }];
+    }
+    
     try {
       const saved = sessionStorage.getItem('kcroc-chat-history');
       if (saved) {
@@ -25,10 +30,12 @@ export const ChatWidget: React.FC = () => {
   });
 
   useEffect(() => {
-    try {
-      sessionStorage.setItem('kcroc-chat-history', JSON.stringify(messages));
-    } catch (e) {
-      console.warn('Failed to save chat history.');
+    if (typeof window !== 'undefined') {
+      try {
+        sessionStorage.setItem('kcroc-chat-history', JSON.stringify(messages));
+      } catch (e) {
+        console.warn('Failed to save chat history.');
+      }
     }
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages, isOpen]);
@@ -44,7 +51,9 @@ export const ChatWidget: React.FC = () => {
 
   const clearChat = () => {
     setMessages([{ sender: 'bot', text: 'Hi! How can I help you with your computer repair today?' }]);
-    sessionStorage.removeItem('kcroc-chat-history');
+    if (typeof window !== 'undefined') {
+      sessionStorage.removeItem('kcroc-chat-history');
+    }
   };
 
   const sendMessage = async (e?: React.FormEvent) => {
