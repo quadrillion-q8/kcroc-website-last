@@ -71,7 +71,7 @@ export default function Contact() {
       {/* Breadcrumbs */}
       <nav aria-label="Breadcrumb" className="max-w-6xl mx-auto px-6 mb-8 relative z-10">
         <ol className="flex items-center space-x-2 text-sm text-slate-400 font-medium">
-          <li><Link to={ROUTES.home} className="hover:text-cyan-400 transition-colors">Home</Link></li>
+          <li><Link to={ROUTES.HOME} className="hover:text-cyan-400 transition-colors">Home</Link></li>
           <li><span className="text-slate-600">/</span></li>
           <li aria-current="page" className="text-cyan-400">Contact</li>
         </ol>
