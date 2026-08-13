@@ -215,7 +215,7 @@ export default function Hero() {
                   className="border-2 border-emerald-500 text-emerald-400 hover:bg-emerald-500/10 px-8 py-6 text-lg font-black rounded-full min-h-[44px]"
                 >
                   <Link
-                    to={ROUTES.book}
+                    to={ROUTES.BOOKING}
                     onClick={() => trackConversion('cta_click', { cta_name: 'hero_book_pickup', button_position: 'hero_desktop' })}
                   >
                     <CalendarClock className="w-5 h-5 mr-2" aria-hidden="true" />
