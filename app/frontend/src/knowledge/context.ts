@@ -8,7 +8,7 @@ import { KCROC_GRAPH } from '../data/graph';
  */
 export function getKnowledgeContext(userMessage: string): string {
   const business = KCROC_GRAPH.business;
-  const mainLocation = KCROC_GRAPH.entities?.['loc-hawalli'];
+  const mainLocation = KCROC_GRAPH.locations.find((l) => l.id === 'loc-hawalli');
 
   // 🚀 FIXED: real field names — business identity lives nested under
   // KCROC_GRAPH.business, not as top-level businessName/phone properties
