@@ -15,7 +15,7 @@ export default function PillarTemplate() {
   const pillarData = BLOG_POSTS.find((p) => p.slug === slug);
 
   if (!pillarData) {
-    return <Navigate to={ROUTES.home} replace />;
+    return <Navigate to={ROUTES.HOME} replace />;
   }
 
   const pageUrl = `https://www.computerrepairkuwait.com/pillar/${slug}`;
@@ -35,7 +35,7 @@ export default function PillarTemplate() {
       </Helmet>
 
       <article className="max-w-5xl mx-auto px-6">
-        <Link to={ROUTES.blog} className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors mb-8 font-medium">
+        <Link to={ROUTES.BLOG} className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors mb-8 font-medium">
           <ArrowLeft size={16} /> Back to Hub
         </Link>
         
