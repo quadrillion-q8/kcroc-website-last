@@ -6,11 +6,101 @@ import { Calendar, Clock, ArrowRight, BookOpen } from 'lucide-react';
 import { BUSINESS_INFO } from '../constants/data';
 import { ROUTES, getBlogRoute } from '../constants/routes';
 import { BLOG_POSTS } from '../constants/blogPosts';
+import { KCROC_GRAPH } from '../data/graph';
+import { IMAGES } from '../constants/images';
 import SchemaMarkup from '../components/seo/SchemaMarkup';
 import { SEOEngine } from '../core/components/SEOEngine';
 
+// 🚀 FIX: A handful of long-form articles (the buying guide, its Arabic
+// version, and the Intel vs AMD comparison) are modeled as knowledge-graph
+// WebPage entities rather than BLOG_POSTS entries, since they're bespoke
+// components rather than the simple content-array format. That's fine for
+// routing/SSG, but it meant they were invisible on this listing page, which
+// only ever mapped over BLOG_POSTS. This pulls their title/description
+// straight from the graph (so copy can't drift out of sync) and supplies
+// just the extra display metadata (image, category, date, read time) that
+// the graph doesn't carry.
+interface ExtraGuideCard {
+  entityId: string;
+  href: string;
+  image: string;
+  category: string;
+  date: string;
+  readTime: string;
+}
+
+const EXTRA_GUIDES: ExtraGuideCard[] = [
+  {
+    entityId: 'guide-laptop-buying',
+    href: '/blog/laptop-buying-guide-kuwait-2026',
+    image: IMAGES.services.laptopRepair.src,
+    category: 'Buying Guide',
+    date: '2026-08-07',
+    readTime: '23 min read',
+  },
+  {
+    entityId: 'guide-intel-vs-amd',
+    href: '/blog/intel-core-ultra-vs-amd-ryzen-ai',
+    image: IMAGES.motherboard.cpuI9.src,
+    category: 'Hardware Comparison',
+    date: '2026-08-07',
+    readTime: '8 min read',
+  },
+  {
+    entityId: 'guide-laptop-buying-ar',
+    href: '/blog/ar/laptop-buying-guide-kuwait-2026',
+    image: IMAGES.services.laptopRepair.src,
+    category: 'دليل الشراء',
+    date: '2026-08-07',
+    readTime: 'قراءة 23 دقيقة',
+  },
+];
+
+interface BlogCardItem {
+  key: string;
+  href: string;
+  title: string;
+  excerpt: string;
+  image: string;
+  category: string;
+  date: string;
+  readTime: string;
+}
+
 export default function Blog() {
   const pageUrl = `${BUSINESS_INFO.url}${ROUTES.blog}`;
+
+  const displayPosts: BlogCardItem[] = useMemo(() => {
+    const fromBlogPosts: BlogCardItem[] = BLOG_POSTS.map((post) => ({
+      key: post.slug,
+      href: getBlogRoute(post.slug),
+      title: post.title,
+      excerpt: post.excerpt,
+      image: post.image,
+      category: post.category,
+      date: post.date,
+      readTime: post.readTime,
+    }));
+
+    const fromGraph: BlogCardItem[] = EXTRA_GUIDES.flatMap((guide) => {
+      const entity = KCROC_GRAPH.pages.find((p) => p.id === guide.entityId);
+      if (!entity) return [];
+      return [{
+        key: guide.entityId,
+        href: guide.href,
+        title: entity.title,
+        excerpt: entity.description,
+        image: guide.image,
+        category: guide.category,
+        date: guide.date,
+        readTime: guide.readTime,
+      }];
+    });
+
+    return [...fromBlogPosts, ...fromGraph].sort(
+      (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+    );
+  }, []);
 
   // =========================
   // SEO SCHEMA (Preserved for Collection Mapping)
@@ -40,11 +130,11 @@ export default function Blog() {
         "@type": "ItemList",
         "@id": `${pageUrl}#itemlist`,
         "name": "KCROC Blog Posts",
-        "itemListElement": BLOG_POSTS.map((post, index) => ({
+        "itemListElement": displayPosts.map((post, index) => ({
           "@type": "ListItem",
           "position": index + 1,
           "name": post.title,
-          "url": `${BUSINESS_INFO.url}${getBlogRoute(post.slug)}`
+          "url": `${BUSINESS_INFO.url}${post.href}`
         }))
       },
 
@@ -74,7 +164,7 @@ export default function Blog() {
         }
       }))
     ]
-  }), [pageUrl]);
+  }), [pageUrl, displayPosts]);
 
   return (
     <main className="w-full min-h-screen bg-transparent text-slate-200 pt-32 pb-24">
@@ -129,14 +219,14 @@ export default function Blog() {
       ========================= */}
       <section className="max-w-6xl mx-auto px-6">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {BLOG_POSTS.map((post) => (
+          {displayPosts.map((post) => (
             <article
-              key={post.slug}
+              key={post.key}
               className="bg-slate-900/40 backdrop-blur-xl border border-slate-700/50 rounded-3xl overflow-hidden hover:border-cyan-500/50 hover:shadow-[0_0_30px_rgba(6,182,212,0.15)] transition-all duration-500 hover:-translate-y-1 flex flex-col"
             >
               {/* IMAGE */}
               <Link
-                to={getBlogRoute(post.slug)}
+                to={post.href}
                 className="block aspect-[16/9] overflow-hidden bg-slate-950"
                 rel="bookmark"
               >
@@ -166,7 +256,7 @@ export default function Blog() {
                   </span>
                 </div>
 
-                <Link to={getBlogRoute(post.slug)}>
+                <Link to={post.href}>
                   <h2 className="text-xl font-bold text-white mb-3 hover:text-cyan-400 transition-colors line-clamp-2">
                     {post.title}
                   </h2>
@@ -184,7 +274,7 @@ export default function Blog() {
                   </span>
 
                   <Link
-                    to={getBlogRoute(post.slug)}
+                    to={post.href}
                     className="text-sm font-bold text-cyan-400 flex items-center gap-1 hover:gap-2 transition-all"
                     rel="bookmark"
                   >
