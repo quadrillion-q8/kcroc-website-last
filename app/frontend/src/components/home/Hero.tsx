@@ -230,8 +230,19 @@ export default function Hero() {
               <Card className="relative bg-slate-900/80 border border-slate-800 rounded-3xl backdrop-blur overflow-hidden shadow-2xl">
                 <div className="aspect-[16/10] overflow-hidden bg-slate-950 relative group">
                   
-                  {/* 🚀 FIX: Responsive Picture Tag with srcset */}
+                  {/* 🚀 FIX: Responsive Picture Tag with srcset.
+                      This whole section is CSS-hidden below lg (1024px) via
+                      the parent's `hidden lg:block`, but browsers still
+                      fetch an <img> even when a display:none ancestor hides
+                      it. Without a mobile-width source, phones were
+                      downloading the 900w desktop photo at fetchPriority
+                      "high" for an image they'd never see — stealing
+                      network priority from the real above-the-fold mobile
+                      content and hurting mobile LCP/FCP. The
+                      (max-width: 1023px) source below routes mobile to a
+                      1x1 placeholder instead. */}
                   <picture>
+                    <source media="(max-width: 1023px)" srcSet="/images/home/blank.webp" />
                     <source media="(max-width: 1280px)" srcSet="/images/home/kcroc-component-level-motherboard-repair-lab-900.webp" />
                     <img 
                       src="/images/home/kcroc-component-level-motherboard-repair-lab.webp" 
