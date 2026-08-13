@@ -33,7 +33,7 @@ const PHONE_CLEAN = '96555301913';
 
 export default function FAQ() {
   const location = useLocation();
-  const pageUrl = `${BASE_URL}${ROUTES.faq}`;
+  const pageUrl = `${BASE_URL}${ROUTES.FAQ}`;
 
   const [searchQuery, setSearchQuery]   = useState('');
   const [openFaqs, setOpenFaqs]         = useState<Set<string>>(new Set());
@@ -91,7 +91,7 @@ export default function FAQ() {
   const copyToClipboard = (id: string, e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    const url = `${window.location.origin}${ROUTES.faq}#${id}`;
+    const url = `${window.location.origin}${ROUTES.FAQ}#${id}`;
     navigator.clipboard.writeText(url);
     setCopiedId(id);
     setTimeout(() => setCopiedId(null), 2000);
@@ -150,7 +150,7 @@ export default function FAQ() {
       {/* ─── BREADCRUMBS ─── */}
       <nav aria-label="Breadcrumb" className="max-w-4xl mx-auto px-6 mb-8 relative z-10">
         <ol className="flex items-center space-x-2 text-sm text-slate-400 font-medium">
-          <li><Link to={ROUTES.home} className="hover:text-cyan-400 transition-colors">Home</Link></li>
+          <li><Link to={ROUTES.HOME} className="hover:text-cyan-400 transition-colors">Home</Link></li>
           <li><span className="text-slate-600" aria-hidden="true">/</span></li>
           <li aria-current="page" className="text-cyan-400">FAQ</li>
         </ol>
@@ -330,7 +330,7 @@ export default function FAQ() {
             </a>
 
             <Link
-              to={ROUTES.contact}
+              to={ROUTES.CONTACT}
               className="bg-slate-800 hover:bg-slate-700 text-white border border-slate-700 hover:border-slate-600 px-8 py-4 rounded-xl font-bold transition-all flex items-center justify-center gap-2"
             >
               Contact Support <ArrowRight size={20} aria-hidden="true" />
