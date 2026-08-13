@@ -85,7 +85,7 @@ export class NavigationCompiler {
   private static compileCaseStudiesMegaMenu(): MegaMenuConfig {
     const allCaseStudies = (NAV_GRAPH.caseStudies || []).map(cs => {
       const entity = this.compileNavEntity(
-        { ...cs, description: '', iconKey: '', popular: false, noFixNoFee: false, hasManyFeatures: false, hasPricing: false },
+        { ...cs, description: cs.description ?? '', iconKey: '', popular: false, noFixNoFee: false, hasManyFeatures: false, hasPricing: false },
         'Page',
         'laptop'
       );
@@ -97,72 +97,96 @@ export class NavigationCompiler {
     return {
       id: 'case_studies_mega',
       title: 'Real Repair Stories',
-      featured: [], 
+      featured: allCaseStudies.slice(0, 3), // Same card treatment as Services/Pricing
       sections: [{
-        title: 'Featured Case Studies',
+        title: 'Browse All',
         items: [
           { id: 'cs_index', slug: 'case-studies', title: 'All Case Studies', description: '', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'cases', weight: 100, commercialIntent: 'info' },
-          ...allCaseStudies
+          ...allCaseStudies.slice(3)
         ]
       }]
     };
   }
 
-  // 5. Blog Mega Menu
+  // 5. Pricing Mega Menu
+  private static compilePricingMegaMenu(): MegaMenuConfig {
+    const allServices = (NAV_GRAPH.services || []).map(s => this.compileNavEntity(s, 'Service', 'wrench'));
+    const sorted = [...allServices].sort((a, b) => b.weight - a.weight);
+
+    const priceIndex: NavEntity = {
+      id: 'pricing_index',
+      slug: 'pricing',
+      entityType: 'Page' as any,
+      primaryKeyword: 'pricing',
+      title: 'Full Price List',
+      description: 'Every repair price in one place',
+      iconKey: 'laptop',
+      weight: 100,
+      commercialIntent: 'high',
+    };
+
+    return {
+      id: 'pricing_mega',
+      title: 'Repair Pricing',
+      featured: sorted.slice(0, 3), // Top 3 featured as cards, same picks as the Services menu
+      sections: [{ title: 'Pricing By Service', items: [priceIndex, ...sorted.slice(3)] }]
+    };
+  }
+
+  // 6. Blog Mega Menu
   private static compileBlogMegaMenu(): MegaMenuConfig {
     return {
       id: 'blog_mega',
       title: 'Blog & Updates',
-      featured: [], 
+      featured: [
+        { id: 'b6', slug: 'blog/laptop-buying-guide-kuwait-2026', title: 'Laptop Buying Guide 2026', description: 'Which specs actually matter in 2026', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'buying guide', weight: 0, commercialIntent: 'info' },
+        { id: 'b7', slug: 'blog/intel-core-ultra-vs-amd-ryzen-ai', title: 'Intel vs AMD CPUs', description: 'Core Ultra vs Ryzen AI compared', iconKey: 'cpu', entityType: 'Page' as any, primaryKeyword: 'cpu', weight: 0, commercialIntent: 'info' },
+        // 🚀 ADDED: Arabic Laptop Buying Guide
+        { id: 'b8', slug: 'blog/ar/laptop-buying-guide-kuwait-2026', title: 'دليل شراء اللابتوب 2026', description: 'دليل شامل لشراء اللابتوب في الكويت', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'buying guide ar', weight: 0, commercialIntent: 'info' },
+      ],
       sections: [{
-        title: 'Latest Content',
+        title: 'More Posts',
         items: [
           { id: 'b1', slug: 'blog', title: 'All Posts', description: '', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'blog', weight: 0, commercialIntent: 'info' },
           { id: 'b2', slug: 'blog/laptop-repair-kuwait-2026', title: 'Repair Guide 2026', description: '', iconKey: 'wrench', entityType: 'Page' as any, primaryKeyword: 'guide', weight: 0, commercialIntent: 'info' },
           { id: 'b3', slug: 'laptop-screen-protection-tips', title: 'Screen Protection Tips', description: '', iconKey: 'shield', entityType: 'Page' as any, primaryKeyword: 'tips', weight: 0, commercialIntent: 'info' },
           { id: 'b4', slug: 'blog/how-to-protect-laptop-screen', title: 'Protect Laptop Screen', description: '', iconKey: 'monitor', entityType: 'Page' as any, primaryKeyword: 'protect', weight: 0, commercialIntent: 'info' },
           { id: 'b5', slug: 'blog/gaming-pc-cooling', title: 'Gaming PC Cooling', description: '', iconKey: 'gaming', entityType: 'Page' as any, primaryKeyword: 'cooling', weight: 0, commercialIntent: 'info' },
-          { id: 'b6', slug: 'blog/laptop-buying-guide-kuwait-2026', title: 'Laptop Buying Guide 2026', description: '', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'buying guide', weight: 0, commercialIntent: 'info' },
-          { id: 'b7', slug: 'blog/intel-core-ultra-vs-amd-ryzen-ai', title: 'Intel vs AMD CPUs', description: '', iconKey: 'cpu', entityType: 'Page' as any, primaryKeyword: 'cpu', weight: 0, commercialIntent: 'info' },
-          // 🚀 ADDED: Arabic Laptop Buying Guide
-          { id: 'b8', slug: 'blog/ar/laptop-buying-guide-kuwait-2026', title: 'دليل شراء اللابتوب 2026', description: '', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'buying guide ar', weight: 0, commercialIntent: 'info' },
         ]
       }]
     };
   }
 
-  // 6. Guides Mega Menu
+  // 7. Guides Mega Menu
   private static compileGuidesMegaMenu(): MegaMenuConfig {
     return {
       id: 'guides_mega',
       title: 'DIY & Repair Guides',
-      featured: [], 
-      sections: [{
-        title: 'Step-by-Step Guides',
-        items: [
-          // 🚀 UPDATED: Pointing to the new specific Dell Inspiron URL
-          { id: 'g1', slug: 'guides/dell-inspiron-15-3000-overheating', title: 'Dell Inspiron Overheating', description: 'Thermal troubleshooting guide', iconKey: 'cpu', entityType: 'Page' as any, primaryKeyword: 'overheating', weight: 0, commercialIntent: 'info' },
-          { id: 'g2', slug: 'guides/laptop-battery-warning-signs', title: 'Battery Warning Signs', description: 'Lithium-ion failure checklist', iconKey: 'battery', entityType: 'Page' as any, primaryKeyword: 'battery', weight: 0, commercialIntent: 'info' },
-        ]
-      }]
+      featured: [
+        // 🚀 UPDATED: Pointing to the new specific Dell Inspiron URL
+        { id: 'g1', slug: 'guides/dell-inspiron-15-3000-overheating', title: 'Dell Inspiron Overheating', description: 'Thermal troubleshooting guide', iconKey: 'cpu', entityType: 'Page' as any, primaryKeyword: 'overheating', weight: 0, commercialIntent: 'info' },
+        { id: 'g2', slug: 'guides/laptop-battery-warning-signs', title: 'Battery Warning Signs', description: 'Lithium-ion failure checklist', iconKey: 'battery', entityType: 'Page' as any, primaryKeyword: 'battery', weight: 0, commercialIntent: 'info' },
+      ],
+      sections: []
     };
   }
 
-  // 7. About Mega Menu
+  // 8. About Mega Menu
   private static compileAboutMegaMenu(): MegaMenuConfig {
     return {
       id: 'about_mega',
       title: 'Company Info',
-      featured: [], 
+      featured: [
+        { id: 'a1', slug: 'about', title: 'About Us', description: 'Our story and the team behind KCROC', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'about', weight: 0, commercialIntent: 'info' },
+        { id: 'a2', slug: 'gallery', title: 'Gallery', description: 'A look inside the workshop', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'gallery', weight: 0, commercialIntent: 'info' },
+        { id: 'a6', slug: 'contact', title: 'Contact', description: 'Get in touch or find our lab', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'contact', weight: 0, commercialIntent: 'info' },
+      ],
       sections: [
         {
-          title: 'About KCROC',
+          title: 'More',
           items: [
-            { id: 'a1', slug: 'about', title: 'About Us', description: '', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'about', weight: 0, commercialIntent: 'info' },
-            { id: 'a2', slug: 'gallery', title: 'Gallery', description: '', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'gallery', weight: 0, commercialIntent: 'info' },
             { id: 'a3', slug: 'faq', title: 'FAQ', description: '', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'faq', weight: 0, commercialIntent: 'info' },
             { id: 'a4', slug: 'privacy-security-kuwait', title: 'Privacy & Security', description: '', iconKey: 'shield', entityType: 'Page' as any, primaryKeyword: 'privacy', weight: 0, commercialIntent: 'info' },
-            { id: 'a6', slug: 'contact', title: 'Contact', description: '', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'contact', weight: 0, commercialIntent: 'info' },
           ]
         },
         // Dedicated Locations Section
@@ -187,7 +211,7 @@ export class NavigationCompiler {
         { id: 'nav_brands', label: 'Brands', href: '#', hasMega: true, megaMenuId: 'brands_mega' },
         { id: 'nav_problems', label: 'Problems', href: '#', hasMega: true, megaMenuId: 'problems_mega' },
         { id: 'nav_case_studies', label: 'Case Studies', href: '/case-studies', hasMega: true, megaMenuId: 'case_studies_mega' }, 
-        { id: 'nav_pricing', label: 'Pricing', href: '/pricing', hasMega: false },
+        { id: 'nav_pricing', label: 'Pricing', href: '/pricing', hasMega: true, megaMenuId: 'pricing_mega' },
         { id: 'nav_blog', label: 'Blog', href: '/blog', hasMega: true, megaMenuId: 'blog_mega' },
         { id: 'nav_guides', label: 'Guides', href: '#', hasMega: true, megaMenuId: 'guides_mega' },
         { id: 'nav_about', label: 'About', href: '/about', hasMega: true, megaMenuId: 'about_mega' },
@@ -197,6 +221,7 @@ export class NavigationCompiler {
         brands_mega: this.compileBrandsMegaMenu(),
         problems_mega: this.compileProblemsMegaMenu(),
         case_studies_mega: this.compileCaseStudiesMegaMenu(),
+        pricing_mega: this.compilePricingMegaMenu(),
         blog_mega: this.compileBlogMegaMenu(),
         guides_mega: this.compileGuidesMegaMenu(),
         about_mega: this.compileAboutMegaMenu(),
