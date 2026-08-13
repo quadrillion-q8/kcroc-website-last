@@ -7,7 +7,6 @@ import { BUSINESS_INFO } from '../constants/data';
 import { ROUTES, getBlogRoute } from '../constants/routes';
 import { BLOG_POSTS } from '../constants/blogPosts';
 import { KCROC_GRAPH } from '../data/graph';
-import { IMAGES } from '../constants/images';
 import SchemaMarkup from '../components/seo/SchemaMarkup';
 import { SEOEngine } from '../core/components/SEOEngine';
 
@@ -33,7 +32,7 @@ const EXTRA_GUIDES: ExtraGuideCard[] = [
   {
     entityId: 'guide-laptop-buying',
     href: '/blog/laptop-buying-guide-kuwait-2026',
-    image: IMAGES.services.laptopRepair.src,
+    image: '/images/blog/laptop-buying-guide-kuwait-2026.webp',
     category: 'Buying Guide',
     date: '2026-08-07',
     readTime: '23 min read',
@@ -41,7 +40,7 @@ const EXTRA_GUIDES: ExtraGuideCard[] = [
   {
     entityId: 'guide-intel-vs-amd',
     href: '/blog/intel-core-ultra-vs-amd-ryzen-ai',
-    image: IMAGES.motherboard.cpuI9.src,
+    image: '/images/blog/intel-core-ultra-vs-amd-ryzen-ai-comparison.webp',
     category: 'Hardware Comparison',
     date: '2026-08-07',
     readTime: '8 min read',
@@ -49,7 +48,7 @@ const EXTRA_GUIDES: ExtraGuideCard[] = [
   {
     entityId: 'guide-laptop-buying-ar',
     href: '/blog/ar/laptop-buying-guide-kuwait-2026',
-    image: IMAGES.services.laptopRepair.src,
+    image: '/images/blog/laptop-buying-guide-kuwait-arabic-2026.webp',
     category: 'دليل الشراء',
     date: '2026-08-07',
     readTime: 'قراءة 23 دقيقة',
