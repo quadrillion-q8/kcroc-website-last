@@ -2,7 +2,9 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { KCROC_GRAPH } from '../src/data/graph'; 
+import { KCROC_GRAPH } from '../src/data/graph';
+import { BLOG_POSTS } from '../src/constants/blogPosts';
+import { getBlogRoute } from '../src/constants/routes';
 
 // ESM-safe path resolution
 const __filename = fileURLToPath(import.meta.url);
@@ -19,23 +21,34 @@ const generateSitemap = () => {
     entity => !entity.seo.canonicalUrl.includes('#')
   );
 
-  const urlNodes = filteredEntities.map(entity => {
-    
+  const graphUrls = filteredEntities.map(entity => {
     // ✅ FIX: Prevent Double-URLs. 
     // If the graph already provided the full 'https://...' string, use it. 
     // Otherwise, attach the DOMAIN prefix.
-    const finalUrl = entity.seo.canonicalUrl.startsWith('http') 
+    return entity.seo.canonicalUrl.startsWith('http') 
       ? entity.seo.canonicalUrl 
       : `${DOMAIN}${entity.seo.canonicalUrl.startsWith('/') ? '' : '/'}${entity.seo.canonicalUrl}`;
+  });
 
-    return `
+  // 🚀 FIX: BLOG_POSTS live outside the knowledge graph (in
+  // src/constants/blogPosts.ts), so they were previously invisible to the
+  // sitemap generator — which meant vite-react-ssg never pre-rendered a
+  // static page for them, and production served the homepage fallback for
+  // every /blog/:slug URL. Explicitly add each post's canonical URL here so
+  // it's included in sitemap.xml and therefore in SSG's includedRoutes.
+  const blogUrls = BLOG_POSTS.map(post => `${DOMAIN}${getBlogRoute(post.slug)}`);
+
+  // De-duplicate in case a slug is ever represented in both the graph and
+  // BLOG_POSTS (e.g. a post that also has a dedicated graph entity).
+  const allUrls = Array.from(new Set([...graphUrls, ...blogUrls]));
+
+  const urlNodes = allUrls.map(finalUrl => `
   <url>
     <loc>${finalUrl}</loc>
     <lastmod>${new Date().toISOString()}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-  </url>`;
-  }).join('');
+  </url>`).join('');
 
   const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -49,8 +62,8 @@ const generateSitemap = () => {
   const sitemapPath = path.join(publicDir, 'sitemap.xml');
   fs.writeFileSync(sitemapPath, sitemapXml);
   
-  // ✅ FIX: Log the actual count of filtered routes for build accuracy
-  console.log(`✅ Sitemap successfully mapped ${filteredEntities.length} active routes to public/sitemap.xml`);
+  // ✅ FIX: Log the actual count of routes for build accuracy
+  console.log(`✅ Sitemap successfully mapped ${allUrls.length} active routes to public/sitemap.xml (${filteredEntities.length} from the knowledge graph, ${blogUrls.length} from BLOG_POSTS)`);
 };
 
 generateSitemap();
