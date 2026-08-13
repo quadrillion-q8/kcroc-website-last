@@ -228,7 +228,7 @@ export default function BlogPostTemplate() {
     headingRefs.current[id] = el;
   }, []);
 
-  if (!post) return <Navigate to={ROUTES.blog || '/blog'} replace />;
+  if (!post) return <Navigate to={ROUTES.BLOG} replace />;
 
   const pageUrl = `${BUSINESS_INFO.url}${getBlogRoute(post.slug)}`;
   const waLink = getIntentWhatsAppLink("blog", post.title);
@@ -323,7 +323,7 @@ export default function BlogPostTemplate() {
         "@id": `${pageUrl}#breadcrumb`,
         "itemListElement": [
           { "@type": "ListItem", "position": 1, "name": "Home", "item": BUSINESS_INFO.url },
-          { "@type": "ListItem", "position": 2, "name": "Blog", "item": `${BUSINESS_INFO.url}${ROUTES.blog}` },
+          { "@type": "ListItem", "position": 2, "name": "Blog", "item": `${BUSINESS_INFO.url}${ROUTES.BLOG}` },
           { "@type": "ListItem", "position": 3, "name": post.title, "item": pageUrl }
         ]
       },
@@ -367,9 +367,9 @@ export default function BlogPostTemplate() {
 
       <nav aria-label="Breadcrumb" className="max-w-6xl mx-auto px-6 mb-8">
         <ol className="flex items-center gap-2 text-sm text-slate-400 overflow-x-auto pb-2 scrollbar-hide">
-          <li><Link to={ROUTES.home} className="hover:text-cyan-400">Home</Link></li>
+          <li><Link to={ROUTES.HOME} className="hover:text-cyan-400">Home</Link></li>
           <ChevronRight size={14} aria-hidden="true" />
-          <li><Link to={ROUTES.blog} className="hover:text-cyan-400">Blog</Link></li>
+          <li><Link to={ROUTES.BLOG} className="hover:text-cyan-400">Blog</Link></li>
           <ChevronRight size={14} aria-hidden="true" />
           <li className="text-cyan-400 truncate" aria-current="page">{post.title}</li>
         </ol>
@@ -380,7 +380,7 @@ export default function BlogPostTemplate() {
         <div>
           <article className="max-w-4xl" ref={articleRef}>
             <header className="mb-12">
-              <Link to={ROUTES.blog} className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors mb-8 font-medium">
+              <Link to={ROUTES.BLOG} className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors mb-8 font-medium">
                 <ArrowLeft size={16} aria-hidden="true" /> Back to Blog
               </Link>
 
@@ -473,7 +473,7 @@ export default function BlogPostTemplate() {
                   If your laptop freezes, slows down during multitasking, or struggles with everyday apps, our technicians can diagnose whether it's RAM, storage, overheating, or a hardware fault — for free.
                 </p>
                 <div className="flex flex-wrap items-center justify-center gap-3 mb-6">
-                  <Link to={ROUTES.book || '/book'} onClick={() => trackLead('Blog_CTA_BookRepair')} className="inline-flex items-center gap-2 bg-cyan-500 hover:bg-cyan-400 transition-colors text-black px-6 py-3 rounded-xl font-black shadow-[0_0_15px_rgba(34,211,238,0.2)]">
+                  <Link to={ROUTES.BOOKING} onClick={() => trackLead('Blog_CTA_BookRepair')} className="inline-flex items-center gap-2 bg-cyan-500 hover:bg-cyan-400 transition-colors text-black px-6 py-3 rounded-xl font-black shadow-[0_0_15px_rgba(34,211,238,0.2)]">
                     Book Repair
                   </Link>
                   <a
