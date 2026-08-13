@@ -14,6 +14,17 @@ const publicDir = path.resolve(__dirname, '../public');
 // Standardized production domain
 const DOMAIN = 'https://www.computerrepairkuwait.com';
 
+// 🚀 FIX: Some pages have a route in App.tsx and a nav-menu entry in
+// NavigationCompiler.ts but were never registered as an entity in
+// KCROC_GRAPH or BLOG_POSTS — the two sources this generator reads from.
+// Those pages are invisible to the sitemap no matter how often this script
+// runs. Rather than let that keep happening silently, list them here
+// explicitly so they're always included until they get a proper graph
+// entity. Add future orphan pages to this list as they're discovered.
+const EXTRA_STANDALONE_PAGES: string[] = [
+  '/laptop-screen-protection-tips',
+];
+
 const generateSitemap = () => {
   // 🚀 FIX: Filter out entities that are just UI fragments/anchors (#) 
   // and map only valid, distinct canonical routes.
@@ -38,9 +49,11 @@ const generateSitemap = () => {
   // it's included in sitemap.xml and therefore in SSG's includedRoutes.
   const blogUrls = BLOG_POSTS.map(post => `${DOMAIN}${getBlogRoute(post.slug)}`);
 
+  const extraUrls = EXTRA_STANDALONE_PAGES.map(route => `${DOMAIN}${route}`);
+
   // De-duplicate in case a slug is ever represented in both the graph and
   // BLOG_POSTS (e.g. a post that also has a dedicated graph entity).
-  const allUrls = Array.from(new Set([...graphUrls, ...blogUrls]));
+  const allUrls = Array.from(new Set([...graphUrls, ...blogUrls, ...extraUrls]));
 
   const urlNodes = allUrls.map(finalUrl => `
   <url>
