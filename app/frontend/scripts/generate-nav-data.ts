@@ -52,6 +52,7 @@ const slimCaseStudy = (e: NavEntitySource) => ({
   id: e.id,
   slug: e.slug ?? '',
   title: e.title ?? 'Unknown',
+  description: e.description ?? '',
 });
 
 const navData = {
