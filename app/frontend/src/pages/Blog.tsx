@@ -67,7 +67,7 @@ interface BlogCardItem {
 }
 
 export default function Blog() {
-  const pageUrl = `${BUSINESS_INFO.url}${ROUTES.blog}`;
+  const pageUrl = `${BUSINESS_INFO.url}${ROUTES.BLOG}`;
 
   const displayPosts: BlogCardItem[] = useMemo(() => {
     const fromBlogPosts: BlogCardItem[] = BLOG_POSTS.map((post) => ({
@@ -179,7 +179,7 @@ export default function Blog() {
       <nav aria-label="Breadcrumb" className="max-w-6xl mx-auto px-6 mb-8 relative z-10">
         <ol className="flex items-center space-x-2 text-sm text-slate-400 font-medium">
           <li>
-            <Link to={ROUTES.home} className="hover:text-cyan-400 transition-colors">
+            <Link to={ROUTES.HOME} className="hover:text-cyan-400 transition-colors">
               Home
             </Link>
           </li>
