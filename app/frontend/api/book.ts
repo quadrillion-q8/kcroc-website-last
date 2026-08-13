@@ -61,8 +61,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     // 3. Idempotency Check (Prevent Accidental Double-Bookings)
     // We check if this phone number already booked this exact slot for this device
-    const existingBookings = await client.entities.service_bookings.list({
-      where: { customer_phone: data.customer_phone }
+    const existingBookings = await client.entities.service_bookings.query({
+      query: { customer_phone: data.customer_phone }
     });
 
     if (existingBookings?.data) {
