@@ -67,6 +67,15 @@ const STRUCTURED_DATA = {
       "mainEntityOfPage": { "@id": `${PAGE_URL}#webpage` },
       "datePublished": PUBLISHED_DATE,
       "image": HERO_IMAGE_URL
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": `${PAGE_URL}#breadcrumb`,
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": business.websiteUrl },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": `${business.websiteUrl}/blog` },
+        { "@type": "ListItem", "position": 3, "name": "How to Protect Your Laptop Screen", "item": PAGE_URL }
+      ]
     }
   ]
 };
