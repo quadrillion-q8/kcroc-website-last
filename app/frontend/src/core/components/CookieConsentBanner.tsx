@@ -52,7 +52,18 @@ export const CookieConsentBanner: React.FC = () => {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-[100] transform transition-transform duration-500 ease-in-out font-sans">
+    // 🚀 FIXED-ELEMENT OVERLAP: bottom-24 on mobile keeps this banner clear of
+    // the StickyMobileCTA bar (Call/WhatsApp), which is also fixed at
+    // bottom-0 with z-50 — previously both sat at bottom-0 and the banner
+    // (z-100) would render directly on top of the CTA bar, hiding it behind
+    // the cookie prompt for every first-time mobile visitor. md:bottom-0
+    // restores the original desktop position, where there's no competing
+    // bottom bar. Safe-area padding protects the buttons from the home
+    // indicator / gesture area on notched devices.
+    <div
+      className="fixed bottom-24 left-0 right-0 z-[100] transform transition-transform duration-500 ease-in-out font-sans md:bottom-0"
+      style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
+    >
       <div className="bg-slate-950/95 backdrop-blur-xl border-t border-slate-800 shadow-[0_-10px_30px_rgba(0,0,0,0.5)] p-4 sm:p-6">
         <div className="container mx-auto max-w-6xl flex flex-col md:flex-row items-center justify-between gap-4 sm:gap-6">
           
