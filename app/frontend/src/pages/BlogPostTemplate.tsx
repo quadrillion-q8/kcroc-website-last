@@ -340,7 +340,7 @@ export default function BlogPostTemplate() {
   }), [post, pageUrl, allFaqItems]);
 
   return (
-    <main className="w-full min-h-screen bg-slate-950 text-slate-200 pt-32 pb-24">
+    <main className="w-full min-h-screen bg-slate-950 text-slate-200 pt-8 sm:pt-16 lg:pt-32 pb-8 sm:pb-16 lg:pb-24">
 
       <Helmet>
         <title>{post.title.length > 57 ? `${post.title.slice(0, 57)}…` : post.title} | KCROC</title>
