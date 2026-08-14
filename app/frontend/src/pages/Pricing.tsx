@@ -110,7 +110,7 @@ export default function Pricing() {
   const whatsappUrl = `https://wa.me/${business.telephone}?text=${encodeURIComponent("Hi KCROC, I'd like to book an inspection and get a quote for a repair.")}`;
 
   return (
-    <main className="w-full min-h-screen bg-gray-950 text-slate-100 font-sans selection:bg-cyan-500/30 pt-24 pb-8 sm:pb-24">
+    <main className="w-full min-h-screen bg-gray-950 text-slate-100 font-sans selection:bg-cyan-500/30 pt-8 sm:pt-16 lg:pt-24 pb-8 sm:pb-24">
       
       {/* 🚀 SEO Engine & Rich Snippets */}
       <SEOEngine entityId="page-pricing" />
