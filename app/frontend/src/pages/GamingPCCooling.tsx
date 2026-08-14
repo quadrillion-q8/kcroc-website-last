@@ -27,7 +27,7 @@ export default function GamingPCCooling() {
       color: 'text-orange-500',
       bgColor: 'bg-orange-500/10',
       borderColor: 'border-orange-500/30',
-      image: 'https://mgx-backend-cdn.metadl.com/generate/images/681399/2026-02-01/edb551b8-705a-4046-9050-5f5153e21b30.png'
+      image: '/images/gaming-laptop-overheating-repair.webp'
     },
     {
       title: 'Desert Dust',
@@ -36,7 +36,7 @@ export default function GamingPCCooling() {
       color: 'text-yellow-500',
       bgColor: 'bg-yellow-500/10',
       borderColor: 'border-yellow-500/30',
-      image: 'https://mgx-backend-cdn.metadl.com/generate/images/681399/2026-02-01/262a3196-0184-4b51-b22a-4467df6587ba.png'
+      image: '/images/dusty-laptop-heatsink-fan-dust-buildup.webp'
     },
     {
       title: 'Humidity Shifts',
@@ -45,7 +45,7 @@ export default function GamingPCCooling() {
       color: 'text-blue-500',
       bgColor: 'bg-blue-500/10',
       borderColor: 'border-blue-500/30',
-      image: 'https://mgx-backend-cdn.metadl.com/generate/images/681399/2026-02-01/71cac026-c835-4be6-837c-96a2b32e7943.png'
+      image: '/images/corsair-tm30-thermal-paste-package.webp'
     },
     {
       title: 'Component Stress',
@@ -54,7 +54,7 @@ export default function GamingPCCooling() {
       color: 'text-red-500',
       bgColor: 'bg-red-500/10',
       borderColor: 'border-red-500/30',
-      image: 'https://mgx-backend-cdn.metadl.com/generate/images/681399/2026-02-01/3f9ad6de-dc40-4816-b530-49fef2170549.png'
+      image: '/images/asus-rog-strix-motherboard-cpu-socket.webp'
     }
   ];
 
@@ -96,7 +96,7 @@ export default function GamingPCCooling() {
       price: '15 KD',
       duration: '1-2 hours',
       icon: Droplets,
-      image: 'https://mgx-backend-cdn.metadl.com/generate/images/681399/2026-02-01/c18dc648-56ed-427e-8d69-b8a070590f50.png',
+      image: '/images/gaming-motherboard-cpu-fresh-thermal-paste.webp',
       benefits: [
         'Arctic MX-5 / Kryonaut',
         'Drop temps 10-20°C',
@@ -109,7 +109,7 @@ export default function GamingPCCooling() {
       price: '20 KD',
       duration: '2-3 hours',
       icon: Wind,
-      image: 'https://mgx-backend-cdn.metadl.com/generate/images/681399/2026-02-01/b3690fc3-c4e7-4acb-bc6d-c3662c855485.png',
+      image: '/images/pc-case-radiator-fans-installation.webp',
       benefits: [
         'High-airflow fans',
         'Pressure balancing',
@@ -122,7 +122,7 @@ export default function GamingPCCooling() {
       price: '30 KD',
       duration: '2-4 hours',
       icon: Fan,
-      image: 'https://mgx-backend-cdn.metadl.com/generate/images/681399/2026-02-01/d66aed0d-4e7e-404a-a109-5e6d64c5e51c.png',
+      image: '/images/nzxt-aio-liquid-cooler-pc-build.webp',
       benefits: [
         'Noctua / be quiet!',
         'Drop temps 20-30°C',
@@ -135,7 +135,7 @@ export default function GamingPCCooling() {
       price: '25 KD',
       duration: '2-3 hours',
       icon: Zap,
-      image: 'https://mgx-backend-cdn.metadl.com/generate/images/681399/2026-02-01/07014549-46cb-4cb9-b5e1-50945eb33cc1.png',
+      image: '/images/motherboard-gpu-chip-thermal-paste-applied.webp',
       benefits: [
         'Die paste replacement',
         'VRAM pad upgrade',
