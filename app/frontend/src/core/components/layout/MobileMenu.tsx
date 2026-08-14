@@ -1,5 +1,5 @@
 // File: app/frontend/src/core/components/layout/MobileMenu.tsx
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { ChevronDown, Phone, CalendarCheck, X, Wrench, ShieldCheck, Laptop, Apple, Gamepad2, Cpu, Monitor, BatteryWarning, HardDrive } from 'lucide-react';
 import { CompiledNavigationModel } from '../../navigation/types';
@@ -17,12 +17,15 @@ interface MobileMenuProps {
   navModel: CompiledNavigationModel;
   cleanTel: string;
   phoneDisplay: string; // ✅ Added to keep component pure
+  triggerRef?: React.RefObject<HTMLButtonElement>; // 🚀 A11Y: hamburger button, for focus return on close
 }
 
-export default function MobileMenu({ isOpen, onClose, mobileRef, navModel, cleanTel, phoneDisplay }: MobileMenuProps) {
+export default function MobileMenu({ isOpen, onClose, mobileRef, navModel, cleanTel, phoneDisplay, triggerRef }: MobileMenuProps) {
   const [openAccordion, setOpenAccordion] = useState<string | null>(null);
   const location = useLocation();
   const { trackConversion } = useAnalytics();
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const wasOpenRef = useRef(false);
 
   // 🚀 FIXED: Removed 'onClose' from dependency array to prevent false-positive trigger fires
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -30,6 +33,33 @@ export default function MobileMenu({ isOpen, onClose, mobileRef, navModel, clean
     onClose();
     setOpenAccordion(null);
   }, [location.pathname]);
+
+  // 🚀 A11Y FIX: keyboard users had no way to close the panel except tapping
+  // the small X button — Escape now closes it, matching the header search
+  // panel's existing behavior (SearchBar) and standard dialog conventions.
+  useEffect(() => {
+    if (!isOpen) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+    document.addEventListener('keydown', onKeyDown);
+    return () => document.removeEventListener('keydown', onKeyDown);
+  }, [isOpen, onClose]);
+
+  // 🚀 A11Y FIX: focus management for the dialog. Previously, opening the
+  // menu left keyboard/screen-reader focus stranded on the (now
+  // off-screen-context) hamburger button, and closing it never returned
+  // focus anywhere — both violate expected dialog behavior (WCAG 2.2 AA).
+  // Moves focus into the panel on open, and back to the hamburger on close.
+  useEffect(() => {
+    if (isOpen) {
+      wasOpenRef.current = true;
+      closeButtonRef.current?.focus();
+    } else if (wasOpenRef.current) {
+      wasOpenRef.current = false;
+      triggerRef?.current?.focus();
+    }
+  }, [isOpen, triggerRef]);
 
   const toggleAccordion = (id: string) => {
     setOpenAccordion(prev => prev === id ? null : id);
@@ -54,8 +84,10 @@ export default function MobileMenu({ isOpen, onClose, mobileRef, navModel, clean
         <div className="flex items-center justify-between p-4 border-b border-slate-800/60 shrink-0">
           <span className="font-black text-white text-lg tracking-tight">Menu</span>
           <button
+            ref={closeButtonRef}
             onClick={onClose}
-            className="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+            // 🚀 TOUCH TARGET FIX: min-h/w-11 (44px) hit area, was ~40px with p-2 + 24px icon
+            className="min-h-11 min-w-11 flex items-center justify-center rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
             aria-label="Close menu"
           >
             <X size={24} />
