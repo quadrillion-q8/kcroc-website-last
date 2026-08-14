@@ -35,6 +35,8 @@ export default function Header() {
   const mobileRef = useRef<HTMLDivElement>(null);
   const navRefs = useRef<Record<string, HTMLButtonElement | null>>({});
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const searchToggleRef = useRef<HTMLButtonElement>(null);
+  const mobileToggleRef = useRef<HTMLButtonElement>(null);
   
   const location = useLocation();
   const { trackConversion } = useAnalytics();
@@ -183,7 +185,11 @@ export default function Header() {
 
             <div className="lg:hidden flex items-center gap-1">
               <button
-                className="p-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+                ref={searchToggleRef}
+                // 🚀 TOUCH TARGET FIX: p-2 + a 20px icon was a ~36px hit area,
+                // under the 44×44px minimum. min-h/min-w-11 (44px) with a
+                // centered icon fixes this without changing the visual icon size.
+                className="min-h-11 min-w-11 flex items-center justify-center rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
                 onClick={() => setSearchOpen(prev => !prev)}
                 aria-expanded={searchOpen}
                 aria-controls="header-search-panel"
@@ -192,7 +198,8 @@ export default function Header() {
                 {searchOpen ? <X size={20} aria-hidden="true" /> : <Search size={20} aria-hidden="true" />}
               </button>
               <button
-                className="p-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+                ref={mobileToggleRef}
+                className="min-h-11 min-w-11 flex items-center justify-center rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
                 onClick={() => setMobileOpen(prev => !prev)}
                 aria-expanded={mobileOpen}
                 aria-controls="mobile-nav-panel"
@@ -244,6 +251,7 @@ export default function Header() {
         navModel={navModel}
         cleanTel={cleanTel}
         phoneDisplay={phoneDisplay}
+        triggerRef={mobileToggleRef}
       />
     </>
   );
