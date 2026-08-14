@@ -110,8 +110,9 @@ export const ChatWidget: React.FC = () => {
 
   return (
     // Bottom offset is larger on mobile (bottom-24) to clear the fixed
-    // StickyMobileCTA bar rendered on the homepage below md, which would
-    // otherwise sit directly under/behind this button and get covered by it.
+    // StickyMobileCTA bar, now mounted globally in RootLayout for every
+    // route below md, which would otherwise sit directly under/behind
+    // this button and get covered by it.
     <div className="fixed bottom-24 right-4 md:bottom-6 md:right-6 z-50 font-sans">
       {!isOpen ? (
         <button 
