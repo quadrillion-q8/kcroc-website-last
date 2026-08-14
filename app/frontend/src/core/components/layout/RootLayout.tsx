@@ -8,6 +8,7 @@ import Header from './Header';
 import Footer from './Footer';
 import { ErrorBoundary } from '../ErrorBoundary';
 import { CookieConsentBanner } from '../CookieConsentBanner';
+import { StickyMobileCTA } from '../../../components/home/StickyMobileCTA';
 
 // 🚀 CWV: AnimatedBackground pulls in tsParticles, which has no business being
 // in the critical initial bundle for a purely decorative effect that already
@@ -54,7 +55,18 @@ export const RootLayout: React.FC = () => {
             </ErrorBoundary>
           </main>
 
-          {/* 🚀 Mount the Consent Banner globally */}
+          {/* 🚀 MOBILE CTA FIX: Persistent Call + WhatsApp bar, now mounted
+              globally (was homepage-only) so every route — service pages,
+              location pages, blog posts — has a reachable conversion path
+              on mobile. Spacer below prevents it from permanently covering
+              the start of the Footer. */}
+          <StickyMobileCTA />
+          <div className="md:hidden h-24 shrink-0" aria-hidden="true" />
+
+          {/* 🚀 Mount the Consent Banner globally. Positioned above the
+              StickyMobileCTA bar on mobile (bottom-24) instead of bottom-0
+              so the two fixed bottom bars never overlap/cover each other;
+              see CookieConsentBanner.tsx for the matching offset. */}
           <CookieConsentBanner />
 
           <Footer />
