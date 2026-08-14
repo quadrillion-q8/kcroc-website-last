@@ -109,7 +109,10 @@ export const ChatWidget: React.FC = () => {
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 font-sans">
+    // Bottom offset is larger on mobile (bottom-24) to clear the fixed
+    // StickyMobileCTA bar rendered on the homepage below md, which would
+    // otherwise sit directly under/behind this button and get covered by it.
+    <div className="fixed bottom-24 right-4 md:bottom-6 md:right-6 z-50 font-sans">
       {!isOpen ? (
         <button 
           onClick={() => setIsOpen(true)} 
@@ -119,7 +122,7 @@ export const ChatWidget: React.FC = () => {
           <MessageCircle className="w-7 h-7 transition-transform group-hover:-rotate-12" aria-hidden="true" />
         </button>
       ) : (
-        <div className="w-[340px] sm:w-[400px] h-[550px] max-h-[80vh] bg-surface-default backdrop-blur-xl border border-surface-hover rounded-card shadow-2xl flex flex-col transition-all duration-300 ease-in-out opacity-100 scale-100 overflow-hidden">
+        <div className="w-[calc(100vw-3rem)] max-w-[340px] sm:w-[400px] sm:max-w-[400px] h-[min(550px,75vh)] max-h-[80vh] bg-surface-default backdrop-blur-xl border border-surface-hover rounded-card shadow-2xl flex flex-col transition-all duration-300 ease-in-out opacity-100 scale-100 overflow-hidden">
           
           {/* Header */}
           <div className="p-4 sm:p-5 border-b border-surface-hover flex justify-between items-center bg-surface-glass">
@@ -179,7 +182,7 @@ export const ChatWidget: React.FC = () => {
                 onChange={(e) => setInput(e.target.value)} 
                 disabled={isLoading}
                 maxLength={500}
-                className="flex-grow bg-transparent outline-none text-white placeholder-gray-500 text-[13px] sm:text-sm disabled:opacity-50" 
+                className="flex-grow bg-transparent outline-none text-white placeholder-gray-500 text-base sm:text-sm disabled:opacity-50" 
                 placeholder={isLoading ? "Please wait..." : "Describe your device issue..."} 
                 aria-label="Chat message input"
               />
