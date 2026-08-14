@@ -13,7 +13,6 @@ import Reviews from '../components/home/Reviews';
 import { LeadMagnet } from '../components/home/LeadMagnet';
 import FAQSection from '../components/home/FAQSection';
 import { ServiceAreas } from '../components/home/ServiceAreas';
-import { StickyMobileCTA } from '../components/home/StickyMobileCTA';
 import { KCROC_GRAPH } from '../data/graph';
 
 export default function Home() {
@@ -62,11 +61,12 @@ export default function Home() {
       {/* 12. Coverage / local SEO confidence */}
       <ServiceAreas />
 
-      {/* 13. Persistent mobile conversion path */}
-      <StickyMobileCTA />
-      {/* Spacer so the fixed StickyMobileCTA bar doesn't permanently cover
-          the start of the global Footer on mobile viewports. */}
-      <div className="md:hidden h-24" aria-hidden="true" />
+      {/* 🚀 MOBILE CTA FIX: StickyMobileCTA (Call + WhatsApp bar) moved to
+          RootLayout so it renders on every route — service pages, location
+          pages, blog posts, pricing, etc. — not just the homepage. Most
+          organic mobile traffic lands directly on a service/location page
+          via Google, never the homepage, and previously had no persistent
+          one-thumb-reach conversion path on those pages. See RootLayout.tsx. */}
 
       {/* Footer and ChatWidget removed from here as they are managed globally by RootLayout.tsx and App.tsx */}
     </main>
