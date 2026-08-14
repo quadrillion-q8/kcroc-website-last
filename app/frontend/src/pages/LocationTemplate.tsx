@@ -57,7 +57,7 @@ export default function LocationTemplate() {
       </Helmet>
 
       {/* ─── HERO SECTION ─── */}
-      <section className="relative pt-24 pb-12 sm:pb-24 px-4 sm:px-6 overflow-hidden border-b border-slate-900">
+      <section className="relative pt-8 sm:pt-16 lg:pt-24 pb-12 sm:pb-24 px-4 sm:px-6 overflow-hidden border-b border-slate-900">
         <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-gray-950 to-slate-950" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_20%,rgba(34,211,238,0.05),transparent_50%)]" />
         
