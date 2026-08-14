@@ -71,7 +71,7 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
     <>
       <SEOEngine entityId={entity.id} />
 
-      <main className="min-h-screen bg-transparent text-white pt-32 pb-16">
+      <main className="min-h-screen bg-transparent text-white pt-8 sm:pt-16 lg:pt-32 pb-8 sm:pb-16">
         
         <header className="max-w-7xl mx-auto px-6 bg-slate-900/30 backdrop-blur-md border border-slate-800/50 rounded-3xl p-8 mb-12 shadow-2xl">
           <div className="flex items-center space-x-4 mb-6">
