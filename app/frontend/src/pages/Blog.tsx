@@ -166,7 +166,7 @@ export default function Blog() {
   }), [pageUrl, displayPosts]);
 
   return (
-    <main className="w-full min-h-screen bg-transparent text-slate-200 pt-32 pb-24">
+    <main className="w-full min-h-screen bg-transparent text-slate-200 pt-8 sm:pt-16 lg:pt-32 pb-8 sm:pb-16 lg:pb-24">
       {/* PHASE 2 AUTOMATION IN ACTION: Basic Tags Handled */}
       <SEOEngine entityId="page-blog" />
 
