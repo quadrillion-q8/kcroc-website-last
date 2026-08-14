@@ -64,6 +64,9 @@ export default function Home() {
 
       {/* 13. Persistent mobile conversion path */}
       <StickyMobileCTA />
+      {/* Spacer so the fixed StickyMobileCTA bar doesn't permanently cover
+          the start of the global Footer on mobile viewports. */}
+      <div className="md:hidden h-24" aria-hidden="true" />
 
       {/* Footer and ChatWidget removed from here as they are managed globally by RootLayout.tsx and App.tsx */}
     </main>
