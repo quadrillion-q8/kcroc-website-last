@@ -223,8 +223,15 @@ export const DellInspiron15_3000OverheatingPage = () => {
         {/* Diagnostic Table */}
         <section>
           <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6">How to Tell What Is Causing It</h2>
-          <div className="overflow-hidden rounded-2xl border border-slate-800">
-            <table className="w-full border-collapse text-left text-sm sm:text-base">
+          {/* 🚀 MOBILE TABLE FIX: was overflow-hidden, which on a ~320-375px
+              viewport silently CLIPPED the longer "cause" cell text (e.g.
+              "Thermal protection triggering, or a power-related issue")
+              instead of letting it scroll — real content was invisible to
+              mobile readers. overflow-x-auto (same pattern used elsewhere,
+              e.g. BlogPostTemplate/LaptopBuyingGuide tables) makes the table
+              horizontally scrollable instead of destroying its content. */}
+          <div className="overflow-x-auto rounded-2xl border border-slate-800">
+            <table className="w-full min-w-[480px] border-collapse text-left text-sm sm:text-base">
               <thead>
                 <tr className="bg-slate-900 border-b border-slate-800">
                   <th className="py-4 px-6 font-bold text-white">If you notice this symptom...</th>
