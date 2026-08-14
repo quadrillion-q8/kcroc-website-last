@@ -10,7 +10,10 @@ export const StickyMobileCTA = () => {
   const { trackConversion } = useAnalytics();
 
   return (
-    <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 border-t border-slate-800 bg-slate-950/95 backdrop-blur px-4 py-3 flex gap-3">
+    <div
+      className="md:hidden fixed bottom-0 left-0 right-0 z-50 border-t border-slate-800 bg-slate-950/95 backdrop-blur px-4 pt-3 flex gap-3"
+      style={{ paddingBottom: 'max(0.75rem, calc(0.75rem + env(safe-area-inset-bottom)))' }}
+    >
       <a
         href={`tel:+${phone}`}
         onClick={() => trackConversion('phone_call_click', { cta_name: 'sticky_mobile_call', button_position: 'bottom_bar' })}
