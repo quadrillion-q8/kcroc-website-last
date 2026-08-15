@@ -25,6 +25,11 @@ const BookingPage = lazy(() => import('./pages/BookingPage'));
 const Services = lazy(() => import('./pages/Services'));
 const PillarTemplate = lazy(() => import('./pages/PillarTemplate'));
 const LocationTemplate = lazy(() => import('./pages/LocationTemplate'));
+// 🩹 FIX: index pages for /brands, /problems, /guides — previously missing
+// entirely, which is why those URLs 404'd and had no home in the mega menus.
+const BrandsIndex = lazy(() => import('./pages/BrandsIndex'));
+const ProblemsIndex = lazy(() => import('./pages/ProblemsIndex'));
+const GuidesIndex = lazy(() => import('./pages/GuidesIndex'));
 // 🚀 Hawalli is KCROC's only physical branch and one of the site's
 // highest-traffic pages — it gets a dedicated page instead of being forced
 // through the shared LocationTemplate used by the other (service-area) locations.
@@ -92,6 +97,13 @@ export const routes: RouteObject[] = [
           { index: true, element: <Home /> },
           { path: 'services', element: <Services /> },
           { path: 'services/:serviceSlug', element: <LegacyServiceRedirect /> },
+          // 🩹 FIX: these three 404'd previously — there was no route for
+          // them at all, so they fell through to the dynamic `:slug`
+          // handler, which only resolves slugs that exist as an actual
+          // Service/Brand/Problem entity in the graph.
+          { path: 'brands', element: <BrandsIndex /> },
+          { path: 'problems', element: <ProblemsIndex /> },
+          { path: 'guides', element: <GuidesIndex /> },
           { path: 'case-studies', element: <CaseStudiesIndex /> },
           { path: 'case-studies/:slug', element: <CaseStudyTemplate /> },
           { path: 'book', element: <BookingPage /> },
