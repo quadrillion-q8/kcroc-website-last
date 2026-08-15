@@ -13,6 +13,31 @@ const ProblemTemplate: React.FC = () => {
 
   if (!problem) return <Navigate to="/404" replace />;
 
+  const getContentImage = (placement: 'causes' | 'solution') =>
+    problem.contentImages?.find((img) => img.placement === placement);
+
+  const ContentImage = ({ image }: { image: NonNullable<typeof problem.contentImages>[number] }) => (
+    <a
+      href="/gallery"
+      className="group block mb-6 rounded-2xl overflow-hidden border border-slate-800 bg-slate-900/50 hover:border-cyan-500/40 transition-colors"
+      aria-label={`${image.alt} — view more repair photos in our gallery`}
+    >
+      <img
+        src={image.src}
+        alt={image.alt}
+        width={image.width}
+        height={image.height}
+        loading="lazy"
+        className="w-full max-h-80 object-cover group-hover:opacity-90 transition-opacity"
+      />
+      {image.caption && (
+        <p className="text-xs text-slate-400 px-5 py-3 border-t border-slate-800/70">
+          {image.caption}
+        </p>
+      )}
+    </a>
+  );
+
   return (
     // ✅ FIXED: Changed bg-slate-950 to bg-transparent
     <div className="bg-transparent min-h-screen text-slate-200">
@@ -37,6 +62,7 @@ const ProblemTemplate: React.FC = () => {
           
           <div>
             <h2 className="text-2xl font-bold text-white mb-6">Common Causes</h2>
+            {getContentImage('causes') && <ContentImage image={getContentImage('causes')!} />}
             <ul className="space-y-3">
               {problem.causes.map((cause, idx) => (
                 <li key={idx} className="flex items-start gap-3 bg-slate-900/50 backdrop-blur-sm p-4 rounded-xl border border-slate-800">
@@ -60,6 +86,7 @@ const ProblemTemplate: React.FC = () => {
             <h2 className="text-2xl font-bold text-white mb-6">The KCROC Solution</h2>
             <div className="p-8 bg-cyan-950/30 backdrop-blur-xl border border-cyan-900/50 rounded-3xl shadow-2xl">
               <CheckCircle2 className="w-8 h-8 text-cyan-400 mb-4" />
+              {getContentImage('solution') && <ContentImage image={getContentImage('solution')!} />}
               <p className="text-slate-300 leading-relaxed mb-8 text-lg">
                 {problem.solution}
               </p>
