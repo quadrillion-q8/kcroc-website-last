@@ -31,6 +31,12 @@ import SchemaMarkup from '../components/seo/SchemaMarkup';
 import MapComponent from '../components/MapComponent';
 import { KCROC_GRAPH } from '../data/graph';
 import { useAnalytics } from '../core/analytics/AnalyticsProvider';
+// 🩹 FIX: real workshop/branch photos already exist in the codebase but
+// were never used anywhere on this page — the entire page relied on a
+// single hero image (location.contentImage). These power the new "Inside
+// the Hawalli Lab" gallery section below, pulled from the Gallery page's
+// own "Workshop" category so it can't drift out of sync.
+import { IMAGES } from '../constants/images';
 
 const BASE_URL = 'https://www.computerrepairkuwait.com';
 const PAGE_URL = `${BASE_URL}/location/hawalli`;
@@ -55,6 +61,17 @@ const SERVICE_ICON_MAP: Record<string, React.ElementType> = {
 // unique local content, not a repeat of the generic FAQ page). Every answer
 // below is sourced from verified KCROC_GRAPH data; nothing is invented.
 interface LocalFAQ { id: string; question: string; answer: string; }
+
+// Real photos of the physical Hawalli lab — distinct from location.contentImage
+// (the hero shot) so the gallery below doesn't just repeat it.
+const HAWALLI_GALLERY_IMAGES = [
+  { ...IMAGES.brand.shopInterior, caption: 'Inside the Hawalli lab' },
+  { ...IMAGES.brand.shopEntrance, caption: 'Our entrance at Al Mullah Complex' },
+  { ...IMAGES.brand.technicians, caption: 'Technicians diagnosing a device' },
+  { ...IMAGES.brand.leadTechnician, caption: 'Component-level board work in progress' },
+  { ...IMAGES.brand.inventory, caption: 'Genuine spare parts inventory' },
+  { ...IMAGES.brand.shopExteriorNight, caption: 'The lab after hours' },
+];
 
 export default function HawalliLocationPage() {
   const { trackConversion } = useAnalytics();
@@ -415,6 +432,50 @@ export default function HawalliLocationPage() {
               <span className="text-sm font-bold text-white">Apple</span>
             </Link>
           </div>
+        </div>
+      </section>
+
+      {/* ─── INSIDE THE HAWALLI LAB (GALLERY) ─── */}
+      <section className="py-8 sm:py-14 px-4 sm:px-6 border-t border-slate-800/50">
+        <div className="container mx-auto max-w-6xl">
+          <div className="flex items-end justify-between gap-4 mb-6 sm:mb-10">
+            <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
+              Inside the Hawalli Lab
+            </h2>
+            <Link
+              to="/gallery"
+              className="hidden sm:inline-flex items-center text-sm font-bold text-cyan-500 hover:text-cyan-400 shrink-0"
+            >
+              View Full Gallery <CheckCircle2 className="w-3.5 h-3.5 ml-1" aria-hidden="true" />
+            </Link>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
+            {HAWALLI_GALLERY_IMAGES.map((img) => (
+              <div
+                key={img.src}
+                className="group relative rounded-xl overflow-hidden border border-slate-800 aspect-[4/3]"
+              >
+                <img
+                  src={img.src}
+                  alt={img.alt}
+                  width={img.width}
+                  height={img.height}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+                <p className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-950/90 to-transparent text-[11px] sm:text-xs text-slate-200 px-3 py-2">
+                  {img.caption}
+                </p>
+              </div>
+            ))}
+          </div>
+          <Link
+            to="/gallery"
+            className="sm:hidden mt-6 inline-flex items-center text-sm font-bold text-cyan-500 hover:text-cyan-400"
+          >
+            View Full Gallery <CheckCircle2 className="w-3.5 h-3.5 ml-1" aria-hidden="true" />
+          </Link>
         </div>
       </section>
 
