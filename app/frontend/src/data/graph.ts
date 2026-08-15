@@ -425,6 +425,32 @@ export const rawGraphData: RawGraphData = {
       ],
 
       warranty: { duration: '30 Days', coverage: 'All parts and labor.', noFixNoFee: true }, 
+      contentImages: [
+        {
+          src: IMAGES.macbook.diagnostics.src,
+          alt: IMAGES.macbook.diagnostics.alt,
+          width: IMAGES.macbook.diagnostics.width,
+          height: IMAGES.macbook.diagnostics.height,
+          placement: 'commonIssues',
+          caption: 'A technician running board-level diagnostics on an opened MacBook to isolate the failed component.'
+        },
+        {
+          src: IMAGES.macbook.logicBoard.src,
+          alt: IMAGES.macbook.logicBoard.alt,
+          width: IMAGES.macbook.logicBoard.width,
+          height: IMAGES.macbook.logicBoard.height,
+          placement: 'coreFeatures',
+          caption: 'Component-level logic board and fan repair — replacing the exact failed chip rather than the whole board.'
+        },
+        {
+          src: IMAGES.macbook.swollenBattery1.src,
+          alt: IMAGES.macbook.swollenBattery1.alt,
+          width: IMAGES.macbook.swollenBattery1.width,
+          height: IMAGES.macbook.swollenBattery1.height,
+          placement: 'process',
+          caption: 'A swollen MacBook battery safely removed during teardown before board-level repair begins.'
+        }
+      ],
       seo: { 
         title: 'MacBook Repair Kuwait | Logic Board Experts | No Fix No Fee | KCROC', 
         description: 'Chip-level MacBook logic board repair in Kuwait. USB-C power IC replacement, liquid damage recovery, and data-safe board repair for Intel & Apple Silicon models. Free pick & drop.', 
@@ -646,6 +672,32 @@ export const rawGraphData: RawGraphData = {
       ],
 
       warranty: { duration: '30 Days', coverage: 'All parts and labor.', noFixNoFee: true }, 
+      contentImages: [
+        {
+          src: IMAGES.laptopHardware.dellRepair.src,
+          alt: IMAGES.laptopHardware.dellRepair.alt,
+          width: IMAGES.laptopHardware.dellRepair.width,
+          height: IMAGES.laptopHardware.dellRepair.height,
+          placement: 'commonIssues',
+          caption: 'A Dell laptop chassis opened for hardware repair — a typical starting point for hinge, DC jack, and motherboard faults.'
+        },
+        {
+          src: IMAGES.laptopHardware.brokenHinge.src,
+          alt: IMAGES.laptopHardware.brokenHinge.alt,
+          width: IMAGES.laptopHardware.brokenHinge.width,
+          height: IMAGES.laptopHardware.brokenHinge.height,
+          placement: 'coreFeatures',
+          caption: 'Cracked hinge chassis damage — one of the most common structural repairs we handle on Windows laptops.'
+        },
+        {
+          src: IMAGES.laptopHardware.laptopOpenRepairBench.src,
+          alt: IMAGES.laptopHardware.laptopOpenRepairBench.alt,
+          width: IMAGES.laptopHardware.laptopOpenRepairBench.width,
+          height: IMAGES.laptopHardware.laptopOpenRepairBench.height,
+          placement: 'process',
+          caption: 'A laptop fully opened on the repair bench during diagnostic and reassembly work.'
+        }
+      ],
       seo: { 
         title: 'Laptop Repair Kuwait | Screen, Hinge & Motherboard | KCROC', 
         description: 'Expert Windows laptop repair in Kuwait. Dell, HP, Lenovo, ASUS & Acer. Broken hinges, DC jacks, screens, SSD upgrades, and thermal fixes. Free pick & drop.', 
@@ -1366,6 +1418,32 @@ export const rawGraphData: RawGraphData = {
       ],
 
       warranty: { duration: '30 Days', coverage: 'All parts and labor.', noFixNoFee: true }, 
+      contentImages: [
+        {
+          src: IMAGES.laptopHardware.laptopMotherboardDiagnosticBenchRepair.src,
+          alt: IMAGES.laptopHardware.laptopMotherboardDiagnosticBenchRepair.alt,
+          width: IMAGES.laptopHardware.laptopMotherboardDiagnosticBenchRepair.width,
+          height: IMAGES.laptopHardware.laptopMotherboardDiagnosticBenchRepair.height,
+          placement: 'commonIssues',
+          caption: 'A motherboard under diagnostic testing on the bench to trace a failed power rail before any part is replaced.'
+        },
+        {
+          src: IMAGES.motherboard.breadboarding.src,
+          alt: IMAGES.motherboard.breadboarding.alt,
+          width: IMAGES.motherboard.breadboarding.width,
+          height: IMAGES.motherboard.breadboarding.height,
+          placement: 'coreFeatures',
+          caption: 'Breadboarding a motherboard outside its case to isolate a fault at the component level.'
+        },
+        {
+          src: IMAGES.motherboard.gigabyteAorus.src,
+          alt: IMAGES.motherboard.gigabyteAorus.alt,
+          width: IMAGES.motherboard.gigabyteAorus.width,
+          height: IMAGES.motherboard.gigabyteAorus.height,
+          placement: 'process',
+          caption: 'Inspecting thermal paste and chip contacts as part of the board-level repair process.'
+        }
+      ],
       seo: { 
         title: 'Motherboard Repair Kuwait | Chip-Level MOSFET & BGA Rework | KCROC', 
         description: 'Chip-level motherboard repair in Kuwait. Power rail tracing, MOSFET replacement, BGA rework, and liquid damage recovery — up to 80% cheaper than a full board replacement. Free pick & drop.', 
@@ -1491,6 +1569,32 @@ export const rawGraphData: RawGraphData = {
       ],
     
       warranty: { duration: '30 Days', coverage: 'Screen panel and labor.', noFixNoFee: false },
+      contentImages: [
+        {
+          src: IMAGES.laptopHardware.laptopScreenAssemblyDisassemblyRepair.src,
+          alt: IMAGES.laptopHardware.laptopScreenAssemblyDisassemblyRepair.alt,
+          width: IMAGES.laptopHardware.laptopScreenAssemblyDisassemblyRepair.width,
+          height: IMAGES.laptopHardware.laptopScreenAssemblyDisassemblyRepair.height,
+          placement: 'commonIssues',
+          caption: 'A laptop screen assembly being disassembled to check whether the fault is the panel or the display cable.'
+        },
+        {
+          src: IMAGES.laptopHardware.laptopLcdPanelReplacementPart.src,
+          alt: IMAGES.laptopHardware.laptopLcdPanelReplacementPart.alt,
+          width: IMAGES.laptopHardware.laptopLcdPanelReplacementPart.width,
+          height: IMAGES.laptopHardware.laptopLcdPanelReplacementPart.height,
+          placement: 'coreFeatures',
+          caption: 'A replacement LCD panel ready for installation — we stock standard FHD and IPS panels for same-day turnaround.'
+        },
+        {
+          src: IMAGES.laptopHardware.screenBezel.src,
+          alt: IMAGES.laptopHardware.screenBezel.alt,
+          width: IMAGES.laptopHardware.screenBezel.width,
+          height: IMAGES.laptopHardware.screenBezel.height,
+          placement: 'process',
+          caption: 'Screen bezel and hinge work during reassembly after the new panel is fitted and tested.'
+        }
+      ],
       seo: {
         title: 'Laptop Screen Replacement Kuwait | Same Day | KCROC',
         description: 'Same-day laptop and MacBook screen replacement in Kuwait. LCD, IPS, OLED & Retina panels, plus display cable repair. Free pick & drop, 30-day warranty.',
@@ -1760,6 +1864,32 @@ export const rawGraphData: RawGraphData = {
       ],
 
       warranty: { duration: '30 Days', coverage: 'Battery and labor.', noFixNoFee: true }, 
+      contentImages: [
+        {
+          src: IMAGES.laptopHardware.getacBattery.src,
+          alt: IMAGES.laptopHardware.getacBattery.alt,
+          width: IMAGES.laptopHardware.getacBattery.width,
+          height: IMAGES.laptopHardware.getacBattery.height,
+          placement: 'commonIssues',
+          caption: 'A worn laptop battery pack removed for health testing before we confirm it — not the charging circuit — is the fault.'
+        },
+        {
+          src: IMAGES.macbook.expandedBattery.src,
+          alt: IMAGES.macbook.expandedBattery.alt,
+          width: IMAGES.macbook.expandedBattery.width,
+          height: IMAGES.macbook.expandedBattery.height,
+          placement: 'coreFeatures',
+          caption: 'A swollen battery safely removed — swollen cells are handled and disposed of with proper safety precautions.'
+        },
+        {
+          src: IMAGES.laptopHardware.hpBattery2.src,
+          alt: IMAGES.laptopHardware.hpBattery2.alt,
+          width: IMAGES.laptopHardware.hpBattery2.width,
+          height: IMAGES.laptopHardware.hpBattery2.height,
+          placement: 'process',
+          caption: 'Installing and calibrating a replacement battery as the final step before post-repair stress testing.'
+        }
+      ],
       seo: { 
         title: 'Laptop & MacBook Battery Replacement Kuwait | Same Day | KCROC', 
         description: 'Battery health diagnostics and same-day replacement for MacBook, Dell, HP, Lenovo, ASUS, Acer & MSI laptops in Kuwait. We confirm the battery is the fault before replacing it. Free pick & drop.', 
@@ -1775,21 +1905,22 @@ export const rawGraphData: RawGraphData = {
     /* ═══════════════════════════════════════════════════════════════
        LOCATION
     ═══════════════════════════════════════════════════════════════ */
-    'loc-hawalli': { id: 'loc-hawalli', slug: 'hawalli', entityType: 'Location', isActive: true, isPhysicalLocation: true, title: 'Hawalli Repair Center', description: 'Kuwait\'s premier component-level repair facility in Hawalli.', landmark: 'Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19', coords: { lat: 29.3356, lng: 48.0250 }, serviceRadiusKm: 40, serviceAreas: ['Hawalli', 'Salmiya', 'Kuwait City', 'Farwaniya', 'Ahmadi', 'Jahra', 'Fahaheel'], seo: { title: 'Computer Repair Shop Hawalli Kuwait | Ibn Khaldoun St | KCROC', description: 'Visit KCROC at Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19, Hawalli. Open daily 10 AM – 10 PM.', canonicalUrl: 'https://www.computerrepairkuwait.com/location/hawalli', ogType: 'website', schemaTypes: ['LocalBusiness'] }, navigationPriority: 100 } as LocationEntity,
+    'loc-hawalli': { id: 'loc-hawalli', slug: 'hawalli', entityType: 'Location', isActive: true, isPhysicalLocation: true, title: 'Hawalli Repair Center', description: 'Kuwait\'s premier component-level repair facility in Hawalli.', landmark: 'Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19', coords: { lat: 29.3356, lng: 48.0250 }, serviceRadiusKm: 40, serviceAreas: ['Hawalli', 'Salmiya', 'Kuwait City', 'Farwaniya', 'Ahmadi', 'Jahra', 'Fahaheel'], contentImage: { src: IMAGES.brand.shopExteriorDay.src, alt: IMAGES.brand.shopExteriorDay.alt, width: IMAGES.brand.shopExteriorDay.width, height: IMAGES.brand.shopExteriorDay.height, caption: 'Our repair center at Al Mullah Complex, Ibn Khaldoun St, Hawalli.' }, seo: { title: 'Computer Repair Shop Hawalli Kuwait | Ibn Khaldoun St | KCROC', description: 'Visit KCROC at Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19, Hawalli. Open daily 10 AM – 10 PM.', canonicalUrl: 'https://www.computerrepairkuwait.com/location/hawalli', ogType: 'website', schemaTypes: ['LocalBusiness'] }, navigationPriority: 100 } as LocationEntity,
 
     'loc-kuwait-city': { 
       id: 'loc-kuwait-city', slug: 'kuwait-city', entityType: 'Location', isActive: true, isPhysicalLocation: false, title: 'Kuwait City', description: 'Fast, professional corporate IT support and component-level laptop repair for businesses and residents in Kuwait City.', landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)', coords: { lat: 29.3759, lng: 47.9774 }, serviceRadiusKm: 15, serviceAreas: ['Kuwait City', 'Sharq', 'Dasman', 'Mirqab', 'Qibla'], 
+      contentImage: { src: IMAGES.brand.technicians.src, alt: IMAGES.brand.technicians.alt, width: IMAGES.brand.technicians.width, height: IMAGES.brand.technicians.height, caption: 'Our technicians handling component-level laptop repair for businesses and residents across Kuwait City.' },
       seo: { title: 'Computer Repair Kuwait City | Corporate & Residential | KCROC', description: 'Expert computer repair, MacBook logic board micro-soldering, and IT support for businesses and residents in Kuwait City. Free pick and drop.', canonicalUrl: 'https://www.computerrepairkuwait.com/location/kuwait-city', ogType: 'website', schemaTypes: ['LocalBusiness'] }, 
       navigationPriority: 95 
     } as LocationEntity,
     
-    'loc-salmiya': { id: 'loc-salmiya', slug: 'salmiya', entityType: 'Location', isActive: true, isPhysicalLocation: false, title: 'Salmiya', description: 'Fast, professional computer and laptop repair services for residents and businesses in Salmiya.', landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)', coords: { lat: 29.3400, lng: 48.0800 }, serviceRadiusKm: 15, serviceAreas: ['Salmiya', 'Rumaithiya', 'Salwa', 'Bidaa'], seo: { title: 'Computer Repair Shop Salmiya Kuwait | KCROC', description: 'Fast, professional computer and laptop repair services for residents and businesses in Salmiya.', canonicalUrl: 'https://www.computerrepairkuwait.com/location/salmiya', ogType: 'website', schemaTypes: ['LocalBusiness'] }, navigationPriority: 90 } as LocationEntity,
+    'loc-salmiya': { id: 'loc-salmiya', slug: 'salmiya', entityType: 'Location', isActive: true, isPhysicalLocation: false, title: 'Salmiya', description: 'Fast, professional computer and laptop repair services for residents and businesses in Salmiya.', landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)', coords: { lat: 29.3400, lng: 48.0800 }, serviceRadiusKm: 15, serviceAreas: ['Salmiya', 'Rumaithiya', 'Salwa', 'Bidaa'], contentImage: { src: IMAGES.services.laptopRepair.src, alt: IMAGES.services.laptopRepair.alt, width: IMAGES.services.laptopRepair.width, height: IMAGES.services.laptopRepair.height, caption: 'Professional laptop repair for residents and businesses across Salmiya.' }, seo: { title: 'Computer Repair Shop Salmiya Kuwait | KCROC', description: 'Fast, professional computer and laptop repair services for residents and businesses in Salmiya.', canonicalUrl: 'https://www.computerrepairkuwait.com/location/salmiya', ogType: 'website', schemaTypes: ['LocalBusiness'] }, navigationPriority: 90 } as LocationEntity,
 
-    'loc-farwaniya': { id: 'loc-farwaniya', slug: 'farwaniya', entityType: 'Location', isActive: true, isPhysicalLocation: false, title: 'Farwaniya', description: 'Expert motherboard repair, screen replacement, and PC diagnostics for the Farwaniya governorate.', landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)', coords: { lat: 29.2770, lng: 47.9590 }, serviceRadiusKm: 20, serviceAreas: ['Farwaniya', 'Khaitan', 'Riggae', 'Ardiya', 'Jleeb Al-Shuyoukh'], seo: { title: 'Computer Repair Shop Farwaniya Kuwait | KCROC', description: 'Expert motherboard repair, screen replacement, and PC diagnostics for the Farwaniya governorate.', canonicalUrl: 'https://www.computerrepairkuwait.com/location/farwaniya', ogType: 'website', schemaTypes: ['LocalBusiness'] }, navigationPriority: 80 } as LocationEntity,
+    'loc-farwaniya': { id: 'loc-farwaniya', slug: 'farwaniya', entityType: 'Location', isActive: true, isPhysicalLocation: false, title: 'Farwaniya', description: 'Expert motherboard repair, screen replacement, and PC diagnostics for the Farwaniya governorate.', landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)', coords: { lat: 29.2770, lng: 47.9590 }, serviceRadiusKm: 20, serviceAreas: ['Farwaniya', 'Khaitan', 'Riggae', 'Ardiya', 'Jleeb Al-Shuyoukh'], contentImage: { src: IMAGES.services.motherboardRepair.src, alt: IMAGES.services.motherboardRepair.alt, width: IMAGES.services.motherboardRepair.width, height: IMAGES.services.motherboardRepair.height, caption: 'Chip-level motherboard repair and screen replacement serving the Farwaniya governorate.' }, seo: { title: 'Computer Repair Shop Farwaniya Kuwait | KCROC', description: 'Expert motherboard repair, screen replacement, and PC diagnostics for the Farwaniya governorate.', canonicalUrl: 'https://www.computerrepairkuwait.com/location/farwaniya', ogType: 'website', schemaTypes: ['LocalBusiness'] }, navigationPriority: 80 } as LocationEntity,
 
-    'loc-jahra': { id: 'loc-jahra', slug: 'jahra', entityType: 'Location', isActive: true, isPhysicalLocation: false, title: 'Jahra', description: 'Comprehensive computer repair, thermal repasting, and logic board diagnostics delivered directly to Jahra.', landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)', coords: { lat: 29.3370, lng: 47.6580 }, serviceRadiusKm: 40, serviceAreas: ['Jahra', 'Saad Al Abdullah', 'Naeem', 'Qasr', 'Taima'], seo: { title: 'Computer Repair Shop Jahra Kuwait | KCROC', description: 'Comprehensive computer repair, thermal repasting, and logic board diagnostics delivered directly to Jahra.', canonicalUrl: 'https://www.computerrepairkuwait.com/location/jahra', ogType: 'website', schemaTypes: ['LocalBusiness'] }, navigationPriority: 70 } as LocationEntity,
+    'loc-jahra': { id: 'loc-jahra', slug: 'jahra', entityType: 'Location', isActive: true, isPhysicalLocation: false, title: 'Jahra', description: 'Comprehensive computer repair, thermal repasting, and logic board diagnostics delivered directly to Jahra.', landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)', coords: { lat: 29.3370, lng: 47.6580 }, serviceRadiusKm: 40, serviceAreas: ['Jahra', 'Saad Al Abdullah', 'Naeem', 'Qasr', 'Taima'], contentImage: { src: IMAGES.motherboard.thermalGrizzly1.src, alt: IMAGES.motherboard.thermalGrizzly1.alt, width: IMAGES.motherboard.thermalGrizzly1.width, height: IMAGES.motherboard.thermalGrizzly1.height, caption: 'Thermal repasting and logic board diagnostics delivered directly to Jahra.' }, seo: { title: 'Computer Repair Shop Jahra Kuwait | KCROC', description: 'Comprehensive computer repair, thermal repasting, and logic board diagnostics delivered directly to Jahra.', canonicalUrl: 'https://www.computerrepairkuwait.com/location/jahra', ogType: 'website', schemaTypes: ['LocalBusiness'] }, navigationPriority: 70 } as LocationEntity,
 
-    'loc-ahmadi': { id: 'loc-ahmadi', slug: 'ahmadi', entityType: 'Location', isActive: true, isPhysicalLocation: false, title: 'Ahmadi', description: 'Premium gaming PC repair and Apple MacBook diagnostics serving Ahmadi and southern Kuwait.', landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)', coords: { lat: 29.0833, lng: 48.0833 }, serviceRadiusKm: 30, serviceAreas: ['Ahmadi', 'Fahaheel', 'Mangaf', 'Mahboula', 'Sabahiya'], seo: { title: 'Computer Repair Shop Ahmadi Kuwait | KCROC', description: 'Premium gaming PC repair and Apple MacBook diagnostics serving Ahmadi and southern Kuwait.', canonicalUrl: 'https://www.computerrepairkuwait.com/location/ahmadi', ogType: 'website', schemaTypes: ['LocalBusiness'] }, navigationPriority: 60 } as LocationEntity,
+    'loc-ahmadi': { id: 'loc-ahmadi', slug: 'ahmadi', entityType: 'Location', isActive: true, isPhysicalLocation: false, title: 'Ahmadi', description: 'Premium gaming PC repair and Apple MacBook diagnostics serving Ahmadi and southern Kuwait.', landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)', coords: { lat: 29.0833, lng: 48.0833 }, serviceRadiusKm: 30, serviceAreas: ['Ahmadi', 'Fahaheel', 'Mangaf', 'Mahboula', 'Sabahiya'], contentImage: { src: IMAGES.gaming.rgbLighting.src, alt: IMAGES.gaming.rgbLighting.alt, width: IMAGES.gaming.rgbLighting.width, height: IMAGES.gaming.rgbLighting.height, caption: 'Gaming PC and Apple MacBook diagnostics serving Ahmadi and southern Kuwait.' }, seo: { title: 'Computer Repair Shop Ahmadi Kuwait | KCROC', description: 'Premium gaming PC repair and Apple MacBook diagnostics serving Ahmadi and southern Kuwait.', canonicalUrl: 'https://www.computerrepairkuwait.com/location/ahmadi', ogType: 'website', schemaTypes: ['LocalBusiness'] }, navigationPriority: 60 } as LocationEntity,
 
     /* ═══════════════════════════════════════════════════════════════
        REVIEWS
@@ -1941,6 +2072,10 @@ export const rawGraphData: RawGraphData = {
       solution: 'Component-level board diagnosis using a multimeter to trace voltage drops. Usually resolved by replacing a single shorted capacitor or MOSFET.',
       urgency: 'high',
       relatedServiceIds: ['srv-motherboard', 'srv-laptop'],
+      contentImages: [
+        { src: IMAGES.laptopHardware.dellChassis.src, alt: IMAGES.laptopHardware.dellChassis.alt, width: IMAGES.laptopHardware.dellChassis.width, height: IMAGES.laptopHardware.dellChassis.height, placement: 'causes', caption: 'Inspecting the chassis and power delivery components on a laptop that won\'t power on.' },
+        { src: IMAGES.motherboard.breadboarding.src, alt: IMAGES.motherboard.breadboarding.alt, width: IMAGES.motherboard.breadboarding.width, height: IMAGES.motherboard.breadboarding.height, placement: 'solution', caption: 'Breadboarding the motherboard outside the chassis to trace the shorted component with a multimeter.' },
+      ],
       seo: { title: 'Laptop Won\'t Turn On Kuwait — Diagnosis & Repair | KCROC', description: 'Laptop not turning on in Kuwait? We diagnose dead input MOSFETs, blown fuses, and power rail shorts at component level. Free diagnostic. Free pick & drop.', canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-wont-turn-on', ogType: 'article', schemaTypes: ['Article', 'FAQPage'] },
       navigationPriority: 100, popular: true 
     } as ProblemEntity,
@@ -1955,6 +2090,10 @@ export const rawGraphData: RawGraphData = {
       solution: 'Ultrasonic cleaning of the cooling system, fresh phase-change thermal material application, and fan inspection. We also check BIOS thermal limits.',
       urgency: 'medium',
       relatedServiceIds: ['srv-laptop', 'srv-gaming', 'srv-gaming-laptop-cleaning'],
+      contentImages: [
+        { src: IMAGES.laptopHardware.laptopDustCleaningOverheatingKuwait.src, alt: IMAGES.laptopHardware.laptopDustCleaningOverheatingKuwait.alt, width: IMAGES.laptopHardware.laptopDustCleaningOverheatingKuwait.width, height: IMAGES.laptopHardware.laptopDustCleaningOverheatingKuwait.height, placement: 'causes', caption: 'Dust buildup inside the cooling system — the leading cause of overheating in Kuwait\'s climate.' },
+        { src: IMAGES.laptopHardware.copperHeatsink2.src, alt: IMAGES.laptopHardware.copperHeatsink2.alt, width: IMAGES.laptopHardware.copperHeatsink2.width, height: IMAGES.laptopHardware.copperHeatsink2.height, placement: 'solution', caption: 'Cleaning the copper heatsink and applying fresh thermal material during the repair.' },
+      ],
       seo: { title: 'Laptop Overheating Kuwait — Fix & Thermal Service | KCROC', description: 'Laptop overheating in Kuwait? Kuwait\'s summer heat destroys thermal paste and clogs cooling fins. We deep-clean and re-paste. Free pick & drop. Same-day service.', canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-overheating-kuwait', ogType: 'article', schemaTypes: ['Article', 'FAQPage'] },
       navigationPriority: 90, popular: true 
     } as ProblemEntity,
@@ -1969,6 +2108,10 @@ export const rawGraphData: RawGraphData = {
       solution: 'We first test RAM and external outputs. If it is a motherboard issue, we use boardview schematics to locate and replace the blown backlight fuse or reflash the BIOS chip directly.',
       urgency: 'high',
       relatedServiceIds: ['srv-screen', 'srv-motherboard'],
+      contentImages: [
+        { src: IMAGES.laptopHardware.monitorBlueScreenErrorDiagnostic.src, alt: IMAGES.laptopHardware.monitorBlueScreenErrorDiagnostic.alt, width: IMAGES.laptopHardware.monitorBlueScreenErrorDiagnostic.width, height: IMAGES.laptopHardware.monitorBlueScreenErrorDiagnostic.height, placement: 'causes', caption: 'Testing display output on an external monitor to isolate whether the fault is the panel or the board.' },
+        { src: IMAGES.laptopHardware.laptopBiosDiagnosticScreenRepair.src, alt: IMAGES.laptopHardware.laptopBiosDiagnosticScreenRepair.alt, width: IMAGES.laptopHardware.laptopBiosDiagnosticScreenRepair.width, height: IMAGES.laptopHardware.laptopBiosDiagnosticScreenRepair.height, placement: 'solution', caption: 'Running BIOS-level diagnostics to locate the blown fuse or corrupted firmware causing the black screen.' },
+      ],
       seo: { title: 'Laptop Turns On But Screen is Black — Fix in Kuwait | KCROC', description: 'Laptop has power but a black screen? We diagnose backlight fuses, RAM failures, and dead displays. Free pick & drop in Kuwait.', canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-black-screen-kuwait', ogType: 'article', schemaTypes: ['Article', 'FAQPage'] },
       navigationPriority: 80, popular: true 
     } as ProblemEntity,
@@ -1983,6 +2126,10 @@ export const rawGraphData: RawGraphData = {
       solution: 'Immediate power disconnection. We fully disassemble the device, remove the motherboard, and run it through an industrial ultrasonic cleaner to strip all liquid and corrosion. We then replace any shorted chips via micro-soldering.',
       urgency: 'critical',
       relatedServiceIds: ['srv-motherboard', 'srv-macbook'],
+      contentImages: [
+        { src: IMAGES.laptopHardware.dellLaptopCorruptedScreenGpuFailure.src, alt: IMAGES.laptopHardware.dellLaptopCorruptedScreenGpuFailure.alt, width: IMAGES.laptopHardware.dellLaptopCorruptedScreenGpuFailure.width, height: IMAGES.laptopHardware.dellLaptopCorruptedScreenGpuFailure.height, placement: 'causes', caption: 'Display corruption after a liquid spill — a sign the short has reached the graphics circuit.' },
+        { src: IMAGES.laptopHardware.laptopBatteryMotherboardOpenRepair.src, alt: IMAGES.laptopHardware.laptopBatteryMotherboardOpenRepair.alt, width: IMAGES.laptopHardware.laptopBatteryMotherboardOpenRepair.width, height: IMAGES.laptopHardware.laptopBatteryMotherboardOpenRepair.height, placement: 'solution', caption: 'The motherboard removed for ultrasonic cleaning and corrosion inspection before any chip is replaced.' },
+      ],
       seo: { title: 'Spilled Water on Laptop in Kuwait? Emergency Repair | KCROC', description: 'Spilled coffee or water on your laptop? Do not turn it on! We offer ultrasonic motherboard cleaning and chip-level repair to save your device and data.', canonicalUrl: 'https://www.computerrepairkuwait.com/spilled-water-on-laptop', ogType: 'article', schemaTypes: ['Article', 'FAQPage'] },
       navigationPriority: 70, popular: false
     } as ProblemEntity,
@@ -1997,6 +2144,10 @@ export const rawGraphData: RawGraphData = {
       solution: 'We test your battery health and charger voltage. If the battery is dead, we replace it. If the motherboard charging circuit has failed, we replace the specific charging IC (like the BQ chip or CD3215 on MacBooks).',
       urgency: 'medium',
       relatedServiceIds: ['srv-battery', 'srv-laptop'],
+      contentImages: [
+        { src: IMAGES.laptopHardware.chargerInventory.src, alt: IMAGES.laptopHardware.chargerInventory.alt, width: IMAGES.laptopHardware.chargerInventory.width, height: IMAGES.laptopHardware.chargerInventory.height, placement: 'causes', caption: 'Testing charger output and battery health — a "plugged in, not charging" fault can be either component.' },
+        { src: IMAGES.laptopHardware.dellAdapter.src, alt: IMAGES.laptopHardware.dellAdapter.alt, width: IMAGES.laptopHardware.dellAdapter.width, height: IMAGES.laptopHardware.dellAdapter.height, placement: 'solution', caption: 'Verifying the correct-wattage OEM adapter as part of confirming the actual cause of the charging fault.' },
+      ],
       seo: { title: 'Laptop Plugged In But Not Charging — Repair Kuwait | KCROC', description: 'Laptop battery not charging? We diagnose dead batteries, broken charging ports, and failed motherboard power chips. Same-day service available.', canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-plugged-in-not-charging', ogType: 'article', schemaTypes: ['Article', 'FAQPage'] },
       navigationPriority: 60, popular: false
     } as ProblemEntity,
@@ -2011,6 +2162,10 @@ export const rawGraphData: RawGraphData = {
       solution: 'We first check for software/driver issues. If hardware has failed, we replace the entire keyboard assembly. If the battery is swollen and crushing the keyboard, we safely remove the hazard and replace both.',
       urgency: 'medium',
       relatedServiceIds: ['srv-laptop', 'srv-macbook'],
+      contentImages: [
+        { src: IMAGES.laptopHardware.laptopKeyboardTopCaseAssemblyRemoval.src, alt: IMAGES.laptopHardware.laptopKeyboardTopCaseAssemblyRemoval.alt, width: IMAGES.laptopHardware.laptopKeyboardTopCaseAssemblyRemoval.width, height: IMAGES.laptopHardware.laptopKeyboardTopCaseAssemblyRemoval.height, placement: 'causes', caption: 'The keyboard and top case assembly removed to check for liquid damage, dust, or a swollen battery underneath.' },
+        { src: IMAGES.laptopHardware.laptopKeyboardHeatsinkAssemblyRemoval.src, alt: IMAGES.laptopHardware.laptopKeyboardHeatsinkAssemblyRemoval.alt, width: IMAGES.laptopHardware.laptopKeyboardHeatsinkAssemblyRemoval.width, height: IMAGES.laptopHardware.laptopKeyboardHeatsinkAssemblyRemoval.height, placement: 'solution', caption: 'Replacing the keyboard assembly and ribbon cable connection during reassembly.' },
+      ],
       seo: { title: 'Laptop Keyboard Not Working — Repair in Kuwait | KCROC', description: 'Laptop keyboard dead or typing by itself? We replace keyboards for Dell, HP, Lenovo, and MacBooks. Fast service with free pick & drop in Kuwait.', canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-keyboard-not-working', ogType: 'article', schemaTypes: ['Article', 'FAQPage'] },
       navigationPriority: 50, popular: false
     } as ProblemEntity,
@@ -2025,6 +2180,10 @@ export const rawGraphData: RawGraphData = {
       solution: 'We diagnose the M.2/PCIe WiFi card. Usually, upgrading a failed budget card to a high-quality Intel AX (Wi-Fi 6) card permanently resolves dropouts and significantly boosts speeds.',
       urgency: 'low',
       relatedServiceIds: ['srv-laptop', 'srv-gaming'],
+      contentImages: [
+        { src: IMAGES.laptopHardware.wifiLaptop1.src, alt: IMAGES.laptopHardware.wifiLaptop1.alt, width: IMAGES.laptopHardware.wifiLaptop1.width, height: IMAGES.laptopHardware.wifiLaptop1.height, placement: 'causes', caption: 'Checking the internal Wi-Fi card and antenna connections when the network icon disappears.' },
+        { src: IMAGES.laptopHardware.wifiIntel2.src, alt: IMAGES.laptopHardware.wifiIntel2.alt, width: IMAGES.laptopHardware.wifiIntel2.width, height: IMAGES.laptopHardware.wifiIntel2.height, placement: 'solution', caption: 'Installing a high-quality Intel Wi-Fi 6 card to permanently resolve dropouts from a failed budget card.' },
+      ],
       seo: { title: 'Laptop WiFi Not Connecting — Fix & Upgrade Kuwait | KCROC', description: 'WiFi icon missing or connection dropping on your laptop? We diagnose driver issues and upgrade failed WiFi cards to fast Wi-Fi 6. Free pick & drop.', canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-wifi-not-connecting', ogType: 'article', schemaTypes: ['Article', 'FAQPage'] },
       navigationPriority: 40, popular: false
     } as ProblemEntity,
@@ -2039,6 +2198,10 @@ export const rawGraphData: RawGraphData = {
       solution: 'If the laptop has an old HDD, an SSD upgrade is the ultimate fix—it reduces boot times from minutes to seconds. We clone your exact system to a new SSD or perform a clean Windows installation.',
       urgency: 'medium',
       relatedServiceIds: ['srv-laptop', 'srv-gaming'],
+      contentImages: [
+        { src: IMAGES.upgrades.hddSeagate.src, alt: IMAGES.upgrades.hddSeagate.alt, width: IMAGES.upgrades.hddSeagate.width, height: IMAGES.upgrades.hddSeagate.height, placement: 'causes', caption: 'An aging mechanical hard drive — one of the most common causes of a laptop that takes minutes to boot.' },
+        { src: IMAGES.upgrades.ssdSamsung2.src, alt: IMAGES.upgrades.ssdSamsung2.alt, width: IMAGES.upgrades.ssdSamsung2.width, height: IMAGES.upgrades.ssdSamsung2.height, placement: 'solution', caption: 'Cloning the system to a new SSD — the fix that cuts boot times from minutes to seconds.' },
+      ],
       seo: { title: 'Laptop Running Extremely Slow? SSD Upgrades Kuwait | KCROC', description: 'Laptop freezing or taking forever to turn on? An SSD upgrade and RAM boost will make it 10x faster. We migrate your data safely. Free diagnostic.', canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-running-very-slow', ogType: 'article', schemaTypes: ['Article', 'FAQPage'] },
       navigationPriority: 30, popular: false
     } as ProblemEntity,
@@ -2053,6 +2216,10 @@ export const rawGraphData: RawGraphData = {
       solution: 'We loosen the hinge mechanism to factory tension, repair the broken plastic chassis using industrial resin or structural replacement, and realign the screen assembly.',
       urgency: 'high',
       relatedServiceIds: ['srv-laptop', 'srv-screen'],
+      contentImages: [
+        { src: IMAGES.laptopHardware.brokenHinge.src, alt: IMAGES.laptopHardware.brokenHinge.alt, width: IMAGES.laptopHardware.brokenHinge.width, height: IMAGES.laptopHardware.brokenHinge.height, placement: 'causes', caption: 'A hinge that has cracked the surrounding plastic chassis — common after heat cycles or a corner drop.' },
+        { src: IMAGES.laptopHardware.laptopLidBackCoverPanelReplacement.src, alt: IMAGES.laptopHardware.laptopLidBackCoverPanelReplacement.alt, width: IMAGES.laptopHardware.laptopLidBackCoverPanelReplacement.width, height: IMAGES.laptopHardware.laptopLidBackCoverPanelReplacement.height, placement: 'solution', caption: 'Fitting a replacement lid and back cover panel after the hinge mechanism is repaired and re-tensioned.' },
+      ],
       seo: { title: 'Broken Laptop Hinge Repair Kuwait — Fast Fix | KCROC', description: 'Laptop screen hinge broken or popping open? Stop using it before the screen cracks! We repair chassis and hinges for HP, Dell, Lenovo, and MSI.', canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-hinge-broken', ogType: 'article', schemaTypes: ['Article', 'FAQPage'] },
       navigationPriority: 20, popular: false
     } as ProblemEntity,
@@ -2073,6 +2240,11 @@ export const rawGraphData: RawGraphData = {
       timeToRepair: '36 hours',
       costVsReplacement: 'Repair: 65 KWD. Apple Authorized Center quote: 280 KWD for board swap with data loss.',
       publishDate: '2026-05-12',
+      featuredImage: {
+        thumbnail: { raw: IMAGES.macbook.diagnostics.src, webp: IMAGES.macbook.diagnostics.src, avif: IMAGES.macbook.diagnostics.src, width: IMAGES.macbook.diagnostics.width, height: IMAGES.macbook.diagnostics.height },
+        hero: { raw: IMAGES.macbook.logicBoard.src, webp: IMAGES.macbook.logicBoard.src, avif: IMAGES.macbook.logicBoard.src, width: IMAGES.macbook.logicBoard.width, height: IMAGES.macbook.logicBoard.height },
+        altText: 'MacBook Pro M2 logic board diagnostic and repair after coffee spill damage'
+      },
       seo: { title: 'MacBook Pro M2 Liquid Damage Repair Kuwait — Real Case Study | KCROC', description: 'Coffee spill destroyed a MacBook Pro M2 in Salmiya. KCROC repaired the logic board for 65 KWD, preserving all data. Apple wanted 280 KWD for a board swap.', canonicalUrl: 'https://www.computerrepairkuwait.com/case-studies/macbook-liquid-damage-salmiya', ogType: 'article', schemaTypes: ['Article'] },
       
       // 🚀 NEW
@@ -2108,6 +2280,11 @@ export const rawGraphData: RawGraphData = {
       timeToRepair: '24 hours',
       costVsReplacement: 'Repair: 45 KWD. Replacement board: 350 KWD.',
       publishDate: '2026-06-20',
+      featuredImage: {
+        thumbnail: { raw: IMAGES.gaming.diagnostics.src, webp: IMAGES.gaming.diagnostics.src, avif: IMAGES.gaming.diagnostics.src, width: IMAGES.gaming.diagnostics.width, height: IMAGES.gaming.diagnostics.height },
+        hero: { raw: IMAGES.gaming.asusRogCpuThermalPasteGpuBuild.src, webp: IMAGES.gaming.asusRogCpuThermalPasteGpuBuild.src, avif: IMAGES.gaming.asusRogCpuThermalPasteGpuBuild.src, width: IMAGES.gaming.asusRogCpuThermalPasteGpuBuild.width, height: IMAGES.gaming.asusRogCpuThermalPasteGpuBuild.height },
+        altText: 'ASUS ROG Strix gaming laptop motherboard teardown and MOSFET repair'
+      },
       seo: { title: 'ASUS ROG Dead Motherboard Repair Hawalli — Case Study | KCROC', description: 'Dead ASUS ROG Strix gaming laptop restored via chip-level micro-soldering in Hawalli. Saved customer 300+ KWD on a replacement board.', canonicalUrl: 'https://www.computerrepairkuwait.com/case-studies/asus-rog-dead-motherboard-hawalli', ogType: 'article', schemaTypes: ['Article'] },
       narrative: {
         clientContext: 'Hardcore Gamer, Hawalli',
@@ -2139,6 +2316,11 @@ export const rawGraphData: RawGraphData = {
       timeToRepair: '5 hours (including transit)',
       costVsReplacement: 'Repair: 85 KWD. New XPS 15: 600+ KWD.',
       publishDate: '2026-07-05',
+      featuredImage: {
+        thumbnail: { raw: IMAGES.laptopHardware.dellLaptopCorruptedScreenGpuFailure.src, webp: IMAGES.laptopHardware.dellLaptopCorruptedScreenGpuFailure.src, avif: IMAGES.laptopHardware.dellLaptopCorruptedScreenGpuFailure.src, width: IMAGES.laptopHardware.dellLaptopCorruptedScreenGpuFailure.width, height: IMAGES.laptopHardware.dellLaptopCorruptedScreenGpuFailure.height },
+        hero: { raw: IMAGES.laptopHardware.laptopLcdPanelReplacementPart.src, webp: IMAGES.laptopHardware.laptopLcdPanelReplacementPart.src, avif: IMAGES.laptopHardware.laptopLcdPanelReplacementPart.src, width: IMAGES.laptopHardware.laptopLcdPanelReplacementPart.width, height: IMAGES.laptopHardware.laptopLcdPanelReplacementPart.height },
+        altText: 'Dell XPS 15 cracked screen diagnosis and OEM 4K panel replacement'
+      },
       seo: { title: 'Same-Day Dell XPS Screen Replacement Kuwait City | KCROC', description: 'Cracked Dell XPS 15 screen replaced with OEM panel in just 5 hours, including free pick and drop to Kuwait City.', canonicalUrl: 'https://www.computerrepairkuwait.com/case-studies/dell-xps-screen-replacement-kuwait-city', ogType: 'article', schemaTypes: ['Article'] },
       narrative: {
         clientContext: 'Corporate Executive, Kuwait City',
