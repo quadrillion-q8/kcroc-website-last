@@ -8,10 +8,14 @@
 // its own content layer instead of forcing bespoke sections into the
 // generic template used by five service-area (no-storefront) pages.
 //
-// All facts on this page (address, hours, phone, warranty, services,
-// brands, problems, the case study, and the Hawalli review) are read
-// directly from KCROC_GRAPH — the single verified source of truth — so
-// nothing here can drift out of sync with the rest of the site.
+// Verifiable business facts on this page (address, hours, phone, warranty,
+// services, brands, problems, USPs, the case study, and the Hawalli review)
+// are read directly from KCROC_GRAPH — the single source of truth — so
+// they can't drift out of sync with the rest of the site. The Hawalli-
+// specific FAQ copy below is page-scoped content written for this URL
+// (the generic sitewide FAQ doesn't cover Hawalli-specific phrasing like
+// "can I bring my laptop to the Hawalli location") — each answer is
+// checked against KCROC_GRAPH facts, not invented independently of them.
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
@@ -30,6 +34,11 @@ import { useAnalytics } from '../core/analytics/AnalyticsProvider';
 
 const BASE_URL = 'https://www.computerrepairkuwait.com';
 const PAGE_URL = `${BASE_URL}/location/hawalli`;
+// Exact Google Maps place link — derived from the same verified Place CID
+// already embedded in the site's own map (see MapComponent.tsx's iframe
+// src, place ID 0x3fcf9b4a9072aacd:0x368691a3a1f0ca66), rather than a
+// generic text search that could resolve to the wrong listing.
+const HAWALLI_MAPS_PLACE_URL = 'https://maps.google.com/?cid=3928987856909945446';
 
 const SERVICE_ICON_MAP: Record<string, React.ElementType> = {
   apple: Apple,
@@ -59,6 +68,9 @@ export default function HawalliLocationPage() {
   const hawalliReview = reviews?.items.find((r) => r.location === 'Hawalli');
   const trustBadges = KCROC_GRAPH.trustBadges;
   const noFixNoFee = KCROC_GRAPH.usps?.find((u) => u.id === 'usp-nofix');
+  const componentRepairUsp = KCROC_GRAPH.usps?.find((u) => u.id === 'usp-component');
+  const privacyUsp = KCROC_GRAPH.usps?.find((u) => u.id === 'usp-privacy');
+  const logisticsUsp = KCROC_GRAPH.usps?.find((u) => u.id === 'usp-logistics');
   const otherLocations = KCROC_GRAPH.locations.filter((l) => l.id !== 'loc-hawalli');
 
   // Every service currently on the site, in the order defined in the graph —
@@ -101,7 +113,7 @@ export default function HawalliLocationPage() {
     {
       id: 'faq-hawalli-brands',
       question: 'What laptop brands do you repair in Hawalli?',
-      answer: `We repair all major laptop brands, including ${brands.map((b) => b.brandName).join(', ')}, alongside Apple MacBooks.`,
+      answer: `We repair major laptop brands including ${brands.map((b) => b.brandName).join(', ')}, as well as Apple MacBooks.`,
     },
     {
       id: 'faq-hawalli-macbook',
@@ -250,7 +262,9 @@ export default function HawalliLocationPage() {
                   width={location.contentImage.width}
                   height={location.contentImage.height}
                   loading="eager"
-                  className="w-full h-56 sm:h-72 lg:h-full object-cover"
+                  fetchPriority="high"
+                  decoding="async"
+                  className="w-full h-56 sm:h-72 lg:h-[420px] object-cover"
                 />
                 {location.contentImage.caption && (
                   <p className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-950/90 to-transparent text-xs text-slate-200 px-4 py-3">
@@ -281,7 +295,7 @@ export default function HawalliLocationPage() {
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-sm">
               <div className="flex items-center gap-2 text-slate-300">
                 <Clock className="w-4 h-4 text-cyan-400 shrink-0" aria-hidden="true" />
-                <span>Open daily, 10 AM–10 PM</span>
+                <span>{business.openingHours}</span>
               </div>
               <div className="flex items-center gap-2 text-slate-300">
                 <Truck className="w-4 h-4 text-cyan-400 shrink-0" aria-hidden="true" />
@@ -305,7 +319,7 @@ export default function HawalliLocationPage() {
       </section>
 
       {/* ─── LOCAL VALUE PROPOSITION ─── */}
-      <section className="py-10 sm:py-16 px-4 sm:px-6 border-t border-slate-800/50">
+      <section className="py-8 sm:py-14 px-4 sm:px-6 border-t border-slate-800/50">
         <div className="container mx-auto max-w-4xl">
           <h2 className="text-2xl sm:text-3xl font-black text-white mb-4 tracking-tight">
             Computer &amp; Laptop Repair for Hawalli
@@ -323,7 +337,7 @@ export default function HawalliLocationPage() {
       </section>
 
       {/* ─── SERVICES ─── */}
-      <section className="py-10 sm:py-16 px-4 sm:px-6 bg-slate-900/20 border-t border-slate-800/50">
+      <section className="py-8 sm:py-14 px-4 sm:px-6 bg-slate-900/20 border-t border-slate-800/50">
         <div className="container mx-auto max-w-6xl">
           <h2 className="text-2xl sm:text-3xl font-black mb-6 sm:mb-10 text-white tracking-tight">
             Computer Repair Services in Hawalli
@@ -358,7 +372,7 @@ export default function HawalliLocationPage() {
       </section>
 
       {/* ─── PROBLEMS WE FIX ─── */}
-      <section className="py-10 sm:py-16 px-4 sm:px-6 border-t border-slate-800/50">
+      <section className="py-8 sm:py-14 px-4 sm:px-6 border-t border-slate-800/50">
         <div className="container mx-auto max-w-6xl">
           <h2 className="text-2xl sm:text-3xl font-black mb-6 sm:mb-10 text-white tracking-tight">
             Common Computer &amp; Laptop Problems We Fix in Hawalli
@@ -379,7 +393,7 @@ export default function HawalliLocationPage() {
       </section>
 
       {/* ─── BRANDS ─── */}
-      <section className="py-10 sm:py-16 px-4 sm:px-6 bg-slate-900/20 border-t border-slate-800/50">
+      <section className="py-8 sm:py-14 px-4 sm:px-6 bg-slate-900/20 border-t border-slate-800/50">
         <div className="container mx-auto max-w-6xl">
           <h2 className="text-2xl sm:text-3xl font-black mb-6 sm:mb-10 text-white tracking-tight">
             Laptop Brands We Repair in Hawalli
@@ -406,7 +420,7 @@ export default function HawalliLocationPage() {
 
       {/* ─── HAWALLI CASE STUDY ─── */}
       {caseStudy && (
-        <section className="py-10 sm:py-16 px-4 sm:px-6 border-t border-slate-800/50">
+        <section className="py-8 sm:py-14 px-4 sm:px-6 border-t border-slate-800/50">
           <div className="container mx-auto max-w-4xl">
             <h2 className="text-2xl sm:text-3xl font-black mb-6 sm:mb-10 text-white tracking-tight">
               A Real Repair From Our Hawalli Service Area
@@ -443,7 +457,7 @@ export default function HawalliLocationPage() {
 
       {/* ─── HOW IT WORKS ─── */}
       {process && (
-        <section className="py-10 sm:py-16 px-4 sm:px-6 bg-slate-900/20 border-t border-slate-800/50">
+        <section className="py-8 sm:py-14 px-4 sm:px-6 bg-slate-900/20 border-t border-slate-800/50">
           <div className="container mx-auto max-w-6xl">
             <h2 className="text-2xl sm:text-3xl font-black mb-6 sm:mb-10 text-white tracking-tight">
               How Computer Repair Works in Hawalli
@@ -464,7 +478,7 @@ export default function HawalliLocationPage() {
       )}
 
       {/* ─── PHYSICAL LOCATION ─── */}
-      <section className="py-10 sm:py-16 px-4 sm:px-6 border-t border-slate-800/50">
+      <section className="py-8 sm:py-14 px-4 sm:px-6 border-t border-slate-800/50">
         <div className="container mx-auto max-w-6xl">
           <h2 className="text-2xl sm:text-3xl font-black mb-6 sm:mb-10 text-white tracking-tight">
             Visit or Arrange Pickup From Our Hawalli Location
@@ -498,7 +512,7 @@ export default function HawalliLocationPage() {
                 <div>
                   <h3 className="font-bold text-white mb-1">Pickup &amp; Delivery</h3>
                   <p className="text-slate-400 text-sm">
-                    Free pickup and delivery across Hawalli and all Kuwait governorates.
+                    {logisticsUsp?.description || 'Free pickup and delivery across Hawalli and all Kuwait governorates.'}
                   </p>
                 </div>
               </div>
@@ -510,7 +524,7 @@ export default function HawalliLocationPage() {
                 </Button>
                 <Button variant="outline" className="border-slate-700 text-white hover:bg-slate-800" asChild>
                   <a
-                    href="https://www.google.com/maps/dir/?api=1&destination=Kuwait+Computer+Repair+on+Call+Hawalli"
+                    href={HAWALLI_MAPS_PLACE_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -526,10 +540,10 @@ export default function HawalliLocationPage() {
 
       {/* ─── LOCAL COVERAGE ─── */}
       {otherLocations.length > 0 && (
-        <section className="py-10 sm:py-16 px-4 sm:px-6 bg-slate-900/20 border-t border-slate-800/50">
+        <section className="py-8 sm:py-14 px-4 sm:px-6 bg-slate-900/20 border-t border-slate-800/50">
           <div className="container mx-auto max-w-6xl">
             <h2 className="text-2xl sm:text-3xl font-black mb-4 text-white tracking-tight">
-              Serving Hawalli and Nearby Kuwait Areas
+              Hawalli-Based Repair With Kuwait-Wide Pickup & Delivery
             </h2>
             <p className="text-slate-400 text-sm mb-6 max-w-2xl">
               Our Hawalli lab is the base for free pickup and delivery across Kuwait, including:
@@ -550,36 +564,33 @@ export default function HawalliLocationPage() {
       )}
 
       {/* ─── WHY KCROC ─── */}
-      <section className="py-10 sm:py-16 px-4 sm:px-6 border-t border-slate-800/50">
+      <section className="py-8 sm:py-14 px-4 sm:px-6 border-t border-slate-800/50">
         <div className="container mx-auto max-w-6xl">
           <h2 className="text-2xl sm:text-3xl font-black mb-6 sm:mb-10 text-white tracking-tight">
             Why KCROC
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            <div className="bg-slate-900/50 p-6 rounded-2xl border border-slate-800">
-              <Cpu className="w-5 h-5 text-cyan-400 mb-3" aria-hidden="true" />
-              <h3 className="text-white font-bold mb-1.5">Component-Level Repair</h3>
-              <p className="text-sm text-slate-400 leading-relaxed">
-                We trace and repair the specific failed component where technically possible,
-                instead of automatically replacing the entire board.
-              </p>
-            </div>
-            <div className="bg-slate-900/50 p-6 rounded-2xl border border-slate-800">
-              <Lock className="w-5 h-5 text-cyan-400 mb-3" aria-hidden="true" />
-              <h3 className="text-white font-bold mb-1.5">Data Privacy</h3>
-              <p className="text-sm text-slate-400 leading-relaxed">
-                Diagnostics follow a strict hardware-only process, so your personal files stay
-                untouched.
-              </p>
-            </div>
-            <div className="bg-slate-900/50 p-6 rounded-2xl border border-slate-800">
-              <Truck className="w-5 h-5 text-cyan-400 mb-3" aria-hidden="true" />
-              <h3 className="text-white font-bold mb-1.5">Free Pickup &amp; Delivery</h3>
-              <p className="text-sm text-slate-400 leading-relaxed">
-                We collect from Hawalli and across Kuwait and return your device once it's
-                repaired.
-              </p>
-            </div>
+            {componentRepairUsp && (
+              <div className="bg-slate-900/50 p-6 rounded-2xl border border-slate-800">
+                <Cpu className="w-5 h-5 text-cyan-400 mb-3" aria-hidden="true" />
+                <h3 className="text-white font-bold mb-1.5">{componentRepairUsp.title}</h3>
+                <p className="text-sm text-slate-400 leading-relaxed">{componentRepairUsp.description}</p>
+              </div>
+            )}
+            {privacyUsp && (
+              <div className="bg-slate-900/50 p-6 rounded-2xl border border-slate-800">
+                <Lock className="w-5 h-5 text-cyan-400 mb-3" aria-hidden="true" />
+                <h3 className="text-white font-bold mb-1.5">{privacyUsp.title}</h3>
+                <p className="text-sm text-slate-400 leading-relaxed">{privacyUsp.description}</p>
+              </div>
+            )}
+            {logisticsUsp && (
+              <div className="bg-slate-900/50 p-6 rounded-2xl border border-slate-800">
+                <Truck className="w-5 h-5 text-cyan-400 mb-3" aria-hidden="true" />
+                <h3 className="text-white font-bold mb-1.5">{logisticsUsp.title}</h3>
+                <p className="text-sm text-slate-400 leading-relaxed">{logisticsUsp.description}</p>
+              </div>
+            )}
             <div className="bg-slate-900/50 p-6 rounded-2xl border border-slate-800">
               <Shield className="w-5 h-5 text-cyan-400 mb-3" aria-hidden="true" />
               <h3 className="text-white font-bold mb-1.5">
@@ -612,7 +623,7 @@ export default function HawalliLocationPage() {
 
       {/* ─── REVIEWS / SOCIAL PROOF ─── */}
       {hawalliReview && reviews && (
-        <section className="py-10 sm:py-16 px-4 sm:px-6 bg-slate-900/20 border-t border-slate-800/50">
+        <section className="py-8 sm:py-14 px-4 sm:px-6 bg-slate-900/20 border-t border-slate-800/50">
           <div className="container mx-auto max-w-3xl text-center">
             <div className="flex items-center justify-center gap-2 mb-6">
               <Star className="w-5 h-5 text-cyan-400 fill-cyan-400" aria-hidden="true" />
@@ -634,7 +645,7 @@ export default function HawalliLocationPage() {
       )}
 
       {/* ─── FAQ ─── */}
-      <section className="py-10 sm:py-16 px-4 sm:px-6 border-t border-slate-800/50">
+      <section className="py-8 sm:py-14 px-4 sm:px-6 border-t border-slate-800/50">
         <div className="container mx-auto max-w-3xl">
           <h2 className="text-2xl sm:text-3xl font-black mb-6 sm:mb-10 text-white text-center tracking-tight">
             Frequently Asked Questions
@@ -662,7 +673,7 @@ export default function HawalliLocationPage() {
                         });
                       }
                     }}
-                    className="w-full flex items-center justify-between gap-3 text-left px-5 sm:px-6 py-4"
+                    className="w-full flex items-center justify-between gap-3 text-left px-5 sm:px-6 py-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 rounded-2xl"
                   >
                     <span className="text-white font-semibold text-sm sm:text-base">{faq.question}</span>
                     <ChevronDown
@@ -670,11 +681,15 @@ export default function HawalliLocationPage() {
                       className={`w-4 h-4 text-slate-500 shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
                     />
                   </button>
-                  {isOpen && (
-                    <p id={`${faq.id}-panel`} role="region" aria-labelledby={`${faq.id}-trigger`} className="text-slate-400 text-sm leading-relaxed px-5 sm:px-6 pb-4">
-                      {faq.answer}
-                    </p>
-                  )}
+                  <div
+                    id={`${faq.id}-panel`}
+                    role="region"
+                    aria-labelledby={`${faq.id}-trigger`}
+                    hidden={!isOpen}
+                    className="text-slate-400 text-sm leading-relaxed px-5 sm:px-6 pb-4"
+                  >
+                    {faq.answer}
+                  </div>
                 </div>
               );
             })}
@@ -690,8 +705,8 @@ export default function HawalliLocationPage() {
               Ready to fix your device?
             </h2>
             <p className="text-slate-400 mb-8 max-w-2xl mx-auto text-sm sm:text-base">
-              Book a free pickup from Hawalli, or send us your device's symptoms on WhatsApp for
-              a fast, free estimate.
+              Book a free pickup from Hawalli, or send us your device's symptoms on WhatsApp to
+              arrange a free diagnosis.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Button size="lg" className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black px-8 w-full sm:w-auto" asChild>
