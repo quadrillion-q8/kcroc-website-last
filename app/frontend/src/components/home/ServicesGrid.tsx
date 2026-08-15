@@ -16,6 +16,7 @@ const ICON_MAP: Record<string, React.ElementType> = {
 const ServiceCard = React.memo(({ service, idx }: { service: ServiceEntity, idx: number }) => {
   const { ref, visible } = useFadeIn();
   const Icon = ICON_MAP[service.iconKey] || Wrench;
+  const cardImage = service.contentImages?.[0];
   
   return (
     <div 
@@ -25,9 +26,22 @@ const ServiceCard = React.memo(({ service, idx }: { service: ServiceEntity, idx:
     >
       <Link 
         to={service.seo.canonicalUrl}
-        className="group block relative bg-kcroc-card p-5 sm:p-8 rounded-[14px] border border-white/[0.08] hover:border-kcroc-cyan transition-all duration-300 h-full"
+        className="group block relative bg-kcroc-card rounded-[14px] border border-white/[0.08] hover:border-kcroc-cyan transition-all duration-300 h-full overflow-hidden"
       >
-        <div className="flex flex-col h-full gap-2 sm:gap-3">
+        {cardImage && (
+          <div className="relative h-32 sm:h-36 overflow-hidden">
+            <img
+              src={cardImage.src}
+              alt={cardImage.alt}
+              width={cardImage.width}
+              height={cardImage.height}
+              loading="lazy"
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-kcroc-card via-kcroc-card/10 to-transparent" />
+          </div>
+        )}
+        <div className="flex flex-col h-full gap-2 sm:gap-3 p-5 sm:p-8">
           {/* Icon styling matching kcroc_homepage_mockup.html */}
           <div className="w-10 h-10 rounded-[10px] bg-kcroc-cyan/10 border border-kcroc-cyan/25 flex items-center justify-center mb-1 sm:mb-2">
             <Icon className="w-5 h-5 text-kcroc-cyan" />
