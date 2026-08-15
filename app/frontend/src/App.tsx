@@ -25,6 +25,10 @@ const BookingPage = lazy(() => import('./pages/BookingPage'));
 const Services = lazy(() => import('./pages/Services'));
 const PillarTemplate = lazy(() => import('./pages/PillarTemplate'));
 const LocationTemplate = lazy(() => import('./pages/LocationTemplate'));
+// 🚀 Hawalli is KCROC's only physical branch and one of the site's
+// highest-traffic pages — it gets a dedicated page instead of being forced
+// through the shared LocationTemplate used by the other (service-area) locations.
+const HawalliLocationPage = lazy(() => import('./pages/HawalliLocationPage'));
 const BlogPostTemplate = lazy(() => import('./pages/BlogPostTemplate'));
 
 // Case Studies Index Page
@@ -119,6 +123,7 @@ export const routes: RouteObject[] = [
           { path: 'blog/:slug', element: <BlogPostTemplate /> },
           { path: 'computer-repair-:slug', element: <LocationTemplate /> },
           { path: 'laptop-repair-:slug', element: <LocationTemplate /> },
+          { path: 'location/hawalli', element: <HawalliLocationPage /> },
           { path: 'location/:slug', element: <LocationTemplate /> },
           { path: 'pillar/:slug', element: <PillarTemplate /> },
           { path: 'faq/:faqSlug', element: <Navigate to="/faq" replace /> },
