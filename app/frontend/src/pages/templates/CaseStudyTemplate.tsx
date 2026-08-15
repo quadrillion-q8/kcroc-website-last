@@ -84,11 +84,9 @@ export default function CaseStudyTemplate() {
           </div>
         </div>
 
-        {/* Placeholder: diagnostic/repair photo — wire up featuredImage on
-            CaseStudyEntity once real repair photos are available */}
-        {/* {caseStudy.featuredImage?.hero && (
+        {caseStudy.featuredImage?.hero && (
           <img src={caseStudy.featuredImage.hero.webp} alt={caseStudy.featuredImage.altText ?? caseStudy.title} className="w-full rounded-2xl mb-14 border border-slate-800" />
-        )} */}
+        )}
 
         {hasNarrative ? (
           <>
