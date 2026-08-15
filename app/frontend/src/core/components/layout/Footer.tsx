@@ -30,7 +30,14 @@ export function Footer() {
   const WA_LINK = `https://wa.me/${business.telephone}?text=${encodeURIComponent("Hi KCROC, I need computer repair assistance in Kuwait.")}`;
 
   return (
-    <footer className="relative bg-[#0a0f1c]/80 backdrop-blur-md border-t border-slate-800/50 pt-16 pb-8 z-10" aria-label="Site Footer">
+    // 🚀 FIXED-ELEMENT OVERLAP: pb-28 (was pb-8) on mobile. The global
+    // StickyMobileCTA bar is fixed at the viewport bottom on every page and
+    // is roughly 80-90px tall (button + safe-area). pb-8 (32px) wasn't
+    // enough clearance, so the last line of the footer (copyright text)
+    // was getting covered by the CTA bar once a user scrolled to the true
+    // bottom of any page. md:pb-8 restores the original desktop spacing,
+    // where there's no competing fixed bottom bar.
+    <footer className="relative bg-[#0a0f1c]/80 backdrop-blur-md border-t border-slate-800/50 pt-16 pb-28 md:pb-8 z-10" aria-label="Site Footer">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {trustBadges.length > 0 && (
           <div className="flex flex-wrap justify-center gap-x-8 gap-y-4 pb-12 mb-12 border-b border-slate-800/50">
