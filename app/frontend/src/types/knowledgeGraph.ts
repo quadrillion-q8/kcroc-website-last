@@ -197,6 +197,15 @@ export const LocationSchema = RoutableEntitySchema.extend({
   // 🚀 NEW: Distinguishes physical branch from service-area page.
   // Defaults to false to ensure safety for new locations.
   isPhysicalLocation: z.boolean().optional().default(false),
+  // 🚀 NEW: Hero/context photo for the location page — physical branches
+  // use a shop photo, service-area pages use a relevant repair photo.
+  contentImage: z.object({
+    src: z.string(),
+    alt: z.string(),
+    width: z.number().optional(),
+    height: z.number().optional(),
+    caption: z.string().optional(),
+  }).optional(),
 });
 
 export const FAQSchema = RoutableEntitySchema.extend({
@@ -246,6 +255,17 @@ export const ProblemSchema = RoutableEntitySchema.extend({
   solution: z.string(),
   urgency: z.string(),
   relatedServiceIds: z.array(z.string()),
+  // 🚀 NEW: Contextual in-page photo (sourced from the /gallery image set),
+  // rendered by ProblemTemplate alongside the symptom/solution content so
+  // the page isn't text-only.
+  contentImages: z.array(z.object({
+    src: z.string(),
+    alt: z.string(),
+    width: z.number().optional(),
+    height: z.number().optional(),
+    placement: z.enum(['causes', 'solution']),
+    caption: z.string().optional(),
+  })).optional(),
 });
 
 export const CaseStudySchema = RoutableEntitySchema.extend({
