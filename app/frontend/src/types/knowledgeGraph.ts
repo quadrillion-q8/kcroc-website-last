@@ -183,7 +183,7 @@ export const ServiceSchema = RoutableEntitySchema.extend({
     alt: z.string(),
     width: z.number().optional(),
     height: z.number().optional(),
-    placement: z.enum(['commonIssues', 'coreFeatures', 'process']),
+    placement: z.enum(['hero', 'commonIssues', 'coreFeatures', 'process']),
     caption: z.string().optional(),
   })).optional(),
 });
