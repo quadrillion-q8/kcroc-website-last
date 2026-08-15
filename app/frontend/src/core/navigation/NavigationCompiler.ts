@@ -50,34 +50,81 @@ export class NavigationCompiler {
   private static compileServicesMegaMenu(): MegaMenuConfig {
     const allServices = (NAV_GRAPH.services || []).map(s => this.compileNavEntity(s, 'Service', 'wrench'));
     const sorted = [...allServices].sort((a, b) => b.weight - a.weight);
-    
+
+    // 🩹 FIX: The "/services" index page exists (see App.tsx) but was never
+    // linked from its own mega menu — every item pointed at an individual
+    // service, so there was no way to reach the index from the dropdown.
+    const servicesIndex: NavEntity = {
+      id: 'services_index',
+      slug: 'services',
+      entityType: 'Page' as any,
+      primaryKeyword: 'services',
+      title: 'All Services',
+      description: 'Browse every repair service we offer',
+      iconKey: 'wrench',
+      weight: 100,
+      commercialIntent: 'info',
+    };
+
     return {
       id: 'services_mega',
       title: 'Repair Services',
       featured: sorted.slice(0, 3), // Top 3 featured as cards
-      sections: [{ title: 'All Services', items: sorted.slice(3) }]
+      sections: [{ title: 'All Services', items: [servicesIndex, ...sorted.slice(3)] }]
     };
   }
 
   // 2. Brands Mega Menu
   private static compileBrandsMegaMenu(): MegaMenuConfig {
     const allBrands = (NAV_GRAPH.brands || []).map(b => this.compileNavEntity(b, 'Brand', 'cpu'));
+
+    // 🩹 FIX: paired with a new "/brands" index page + route (see App.tsx /
+    // pages/BrandsIndex.tsx) — previously there was no index page at all,
+    // so "/brands" 404'd and no dropdown item linked anywhere but individual
+    // brand pages.
+    const brandsIndex: NavEntity = {
+      id: 'brands_index',
+      slug: 'brands',
+      entityType: 'Page' as any,
+      primaryKeyword: 'brands',
+      title: 'All Brands',
+      description: 'Every laptop brand we repair',
+      iconKey: 'cpu',
+      weight: 100,
+      commercialIntent: 'info',
+    };
+
     return {
       id: 'brands_mega',
       title: 'Supported Brands',
       featured: allBrands.slice(0, 3),
-      sections: [{ title: 'All Brands', items: allBrands.slice(3) }]
+      sections: [{ title: 'All Brands', items: [brandsIndex, ...allBrands.slice(3)] }]
     };
   }
 
   // 3. Problems Mega Menu
   private static compileProblemsMegaMenu(): MegaMenuConfig {
     const allProblems = (NAV_GRAPH.problems || []).map(p => this.compileNavEntity(p, 'Problem', 'shield'));
+
+    // 🩹 FIX: paired with a new "/problems" index page + route (see App.tsx /
+    // pages/ProblemsIndex.tsx) — same missing-index-page issue as Brands.
+    const problemsIndex: NavEntity = {
+      id: 'problems_index',
+      slug: 'problems',
+      entityType: 'Page' as any,
+      primaryKeyword: 'problems',
+      title: 'All Problems',
+      description: 'Every issue we diagnose and repair',
+      iconKey: 'shield',
+      weight: 100,
+      commercialIntent: 'info',
+    };
+
     return {
       id: 'problems_mega',
       title: 'Common Problems',
       featured: allProblems.slice(0, 3),
-      sections: [{ title: 'Troubleshooting Guides', items: allProblems.slice(3) }]
+      sections: [{ title: 'Troubleshooting Guides', items: [problemsIndex, ...allProblems.slice(3)] }]
     };
   }
 
@@ -152,6 +199,11 @@ export class NavigationCompiler {
           { id: 'b3', slug: 'laptop-screen-protection-tips', title: 'Screen Protection Tips', description: '', iconKey: 'shield', entityType: 'Page' as any, primaryKeyword: 'tips', weight: 0, commercialIntent: 'info' },
           { id: 'b4', slug: 'blog/how-to-protect-laptop-screen', title: 'Protect Laptop Screen', description: '', iconKey: 'monitor', entityType: 'Page' as any, primaryKeyword: 'protect', weight: 0, commercialIntent: 'info' },
           { id: 'b5', slug: 'blog/gaming-pc-cooling', title: 'Gaming PC Cooling', description: '', iconKey: 'gaming', entityType: 'Page' as any, primaryKeyword: 'cooling', weight: 0, commercialIntent: 'info' },
+          // 🩹 FIX: these two live posts (see src/constants/blogPosts.ts) were
+          // published but never added here, so they were unreachable from
+          // the Blog dropdown even though /blog/<slug> worked directly.
+          { id: 'b9', slug: 'blog/why-8gb-ram-is-no-longer-enough-for-windows-11', title: '8GB RAM & Windows 11', description: '', iconKey: 'cpu', entityType: 'Page' as any, primaryKeyword: 'ram', weight: 0, commercialIntent: 'info' },
+          { id: 'b10', slug: 'blog/10-reasons-why-people-are-dumping-windows-11', title: '10 Reasons People Are Dumping Windows 11', description: '', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'windows 11', weight: 0, commercialIntent: 'info' },
         ]
       }]
     };
@@ -167,7 +219,15 @@ export class NavigationCompiler {
         { id: 'g1', slug: 'guides/dell-inspiron-15-3000-overheating', title: 'Dell Inspiron Overheating', description: 'Thermal troubleshooting guide', iconKey: 'cpu', entityType: 'Page' as any, primaryKeyword: 'overheating', weight: 0, commercialIntent: 'info' },
         { id: 'g2', slug: 'guides/laptop-battery-warning-signs', title: 'Battery Warning Signs', description: 'Lithium-ion failure checklist', iconKey: 'battery', entityType: 'Page' as any, primaryKeyword: 'battery', weight: 0, commercialIntent: 'info' },
       ],
-      sections: []
+      // 🩹 FIX: paired with a new "/guides" index page + route (see App.tsx /
+      // pages/GuidesIndex.tsx). This menu had an empty `sections` array with
+      // no way to reach an index, and "/guides" itself 404'd.
+      sections: [{
+        title: 'More',
+        items: [
+          { id: 'g_index', slug: 'guides', title: 'All Guides', description: '', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'guides', weight: 0, commercialIntent: 'info' },
+        ]
+      }]
     };
   }
 
@@ -208,12 +268,15 @@ export class NavigationCompiler {
     return {
       header: [
         { id: 'nav_services', label: 'Services', href: '/services', hasMega: true, megaMenuId: 'services_mega' },
-        { id: 'nav_brands', label: 'Brands', href: '#', hasMega: true, megaMenuId: 'brands_mega' },
-        { id: 'nav_problems', label: 'Problems', href: '#', hasMega: true, megaMenuId: 'problems_mega' },
+        // 🩹 FIX: was '#' — broke the active-state highlighting (matchPath)
+        // in Header.tsx and the mobile menu's fallback link. Now points at
+        // the new index pages below.
+        { id: 'nav_brands', label: 'Brands', href: '/brands', hasMega: true, megaMenuId: 'brands_mega' },
+        { id: 'nav_problems', label: 'Problems', href: '/problems', hasMega: true, megaMenuId: 'problems_mega' },
         { id: 'nav_case_studies', label: 'Case Studies', href: '/case-studies', hasMega: true, megaMenuId: 'case_studies_mega' }, 
         { id: 'nav_pricing', label: 'Pricing', href: '/pricing', hasMega: true, megaMenuId: 'pricing_mega' },
         { id: 'nav_blog', label: 'Blog', href: '/blog', hasMega: true, megaMenuId: 'blog_mega' },
-        { id: 'nav_guides', label: 'Guides', href: '#', hasMega: true, megaMenuId: 'guides_mega' },
+        { id: 'nav_guides', label: 'Guides', href: '/guides', hasMega: true, megaMenuId: 'guides_mega' },
         { id: 'nav_about', label: 'About', href: '/about', hasMega: true, megaMenuId: 'about_mega' },
       ],
       megaMenus: {
