@@ -427,14 +427,6 @@ export const rawGraphData: RawGraphData = {
       warranty: { duration: '30 Days', coverage: 'All parts and labor.', noFixNoFee: true }, 
       contentImages: [
         {
-          src: IMAGES.macbook.macbookUnboxingRepairWorkshop.src,
-          alt: IMAGES.macbook.macbookUnboxingRepairWorkshop.alt,
-          width: IMAGES.macbook.macbookUnboxingRepairWorkshop.width,
-          height: IMAGES.macbook.macbookUnboxingRepairWorkshop.height,
-          placement: 'hero',
-          caption: 'Component-level MacBook logic board repair at our Hawalli workshop.'
-        },
-        {
           src: IMAGES.macbook.diagnostics.src,
           alt: IMAGES.macbook.diagnostics.alt,
           width: IMAGES.macbook.diagnostics.width,
@@ -681,14 +673,6 @@ export const rawGraphData: RawGraphData = {
 
       warranty: { duration: '30 Days', coverage: 'All parts and labor.', noFixNoFee: true }, 
       contentImages: [
-        {
-          src: IMAGES.services.laptopRepair.src,
-          alt: IMAGES.services.laptopRepair.alt,
-          width: IMAGES.services.laptopRepair.width,
-          height: IMAGES.services.laptopRepair.height,
-          placement: 'hero',
-          caption: 'Professional Windows laptop repair for Dell, HP, Lenovo, ASUS & Acer in Kuwait.'
-        },
         {
           src: IMAGES.laptopHardware.dellRepair.src,
           alt: IMAGES.laptopHardware.dellRepair.alt,
@@ -1012,16 +996,6 @@ export const rawGraphData: RawGraphData = {
         coverage: 'Covers all replaced components, thermal applications, and micro-soldering labor.', 
         noFixNoFee: true 
       }, 
-      contentImages: [
-        {
-          src: IMAGES.gaming.diagnostics.src,
-          alt: IMAGES.gaming.diagnostics.alt,
-          width: IMAGES.gaming.diagnostics.width,
-          height: IMAGES.gaming.diagnostics.height,
-          placement: 'hero',
-          caption: 'A gaming PC on the teardown and diagnostics workbench during component-level fault tracing.'
-        }
-      ],
       seo: { 
         title: 'Gaming PC & GPU Repair Kuwait | FPS & Thermal Fix | KCROC', 
         description: 'Stop losing frames to Kuwait\'s heat. Expert component-level gaming PC and GPU repair. Liquid metal, AIO fixes, and micro-soldering. Free pick & drop.', 
@@ -1187,14 +1161,6 @@ export const rawGraphData: RawGraphData = {
         noFixNoFee: true
       },
       contentImages: [
-        {
-          src: IMAGES.services.thermalService.src,
-          alt: IMAGES.services.thermalService.alt,
-          width: IMAGES.services.thermalService.width,
-          height: IMAGES.services.thermalService.height,
-          placement: 'hero',
-          caption: 'Professional thermal-interface service for gaming laptops running hot, loud, or slower than they used to.'
-        },
         {
           src: IMAGES.gaming.gamingOverheating.src,
           alt: IMAGES.gaming.gamingOverheating.alt,
@@ -1454,14 +1420,6 @@ export const rawGraphData: RawGraphData = {
       warranty: { duration: '30 Days', coverage: 'All parts and labor.', noFixNoFee: true }, 
       contentImages: [
         {
-          src: IMAGES.services.motherboardRepair.src,
-          alt: IMAGES.services.motherboardRepair.alt,
-          width: IMAGES.services.motherboardRepair.width,
-          height: IMAGES.services.motherboardRepair.height,
-          placement: 'hero',
-          caption: 'Advanced chip-level motherboard repair at our Hawalli workshop.'
-        },
-        {
           src: IMAGES.laptopHardware.laptopMotherboardDiagnosticBenchRepair.src,
           alt: IMAGES.laptopHardware.laptopMotherboardDiagnosticBenchRepair.alt,
           width: IMAGES.laptopHardware.laptopMotherboardDiagnosticBenchRepair.width,
@@ -1612,14 +1570,6 @@ export const rawGraphData: RawGraphData = {
     
       warranty: { duration: '30 Days', coverage: 'Screen panel and labor.', noFixNoFee: false },
       contentImages: [
-        {
-          src: IMAGES.laptopHardware.laptopScreenProtectionKuwait.src,
-          alt: IMAGES.laptopHardware.laptopScreenProtectionKuwait.alt,
-          width: IMAGES.laptopHardware.laptopScreenProtectionKuwait.width,
-          height: IMAGES.laptopHardware.laptopScreenProtectionKuwait.height,
-          placement: 'hero',
-          caption: 'Same-day laptop and MacBook screen replacement in Kuwait.'
-        },
         {
           src: IMAGES.laptopHardware.laptopScreenAssemblyDisassemblyRepair.src,
           alt: IMAGES.laptopHardware.laptopScreenAssemblyDisassemblyRepair.alt,
@@ -1916,14 +1866,6 @@ export const rawGraphData: RawGraphData = {
       warranty: { duration: '30 Days', coverage: 'Battery and labor.', noFixNoFee: true }, 
       contentImages: [
         {
-          src: IMAGES.laptopHardware.hpLaptopBatteryPackReplacement.src,
-          alt: IMAGES.laptopHardware.hpLaptopBatteryPackReplacement.alt,
-          width: IMAGES.laptopHardware.hpLaptopBatteryPackReplacement.width,
-          height: IMAGES.laptopHardware.hpLaptopBatteryPackReplacement.height,
-          placement: 'hero',
-          caption: 'Same-day laptop and MacBook battery replacement in Kuwait.'
-        },
-        {
           src: IMAGES.laptopHardware.getacBattery.src,
           alt: IMAGES.laptopHardware.getacBattery.alt,
           width: IMAGES.laptopHardware.getacBattery.width,
@@ -1963,7 +1905,7 @@ export const rawGraphData: RawGraphData = {
     /* ═══════════════════════════════════════════════════════════════
        LOCATION
     ═══════════════════════════════════════════════════════════════ */
-    'loc-hawalli': { id: 'loc-hawalli', slug: 'hawalli', entityType: 'Location', isActive: true, isPhysicalLocation: true, title: 'Hawalli Repair Center', description: 'Kuwait\'s premier component-level repair facility in Hawalli.', landmark: 'Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19', coords: { lat: 29.3356, lng: 48.0250 }, serviceRadiusKm: 40, serviceAreas: ['Hawalli', 'Salmiya', 'Kuwait City', 'Farwaniya', 'Ahmadi', 'Jahra', 'Fahaheel'], contentImage: { src: IMAGES.brand.shopExteriorDay.src, alt: IMAGES.brand.shopExteriorDay.alt, width: IMAGES.brand.shopExteriorDay.width, height: IMAGES.brand.shopExteriorDay.height, caption: 'Our repair center at Al Mullah Complex, Ibn Khaldoun St, Hawalli.' }, seo: { title: 'Computer Repair Shop Hawalli Kuwait | Ibn Khaldoun St | KCROC', description: 'Visit KCROC at Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19, Hawalli. Open daily 10 AM – 10 PM.', canonicalUrl: 'https://www.computerrepairkuwait.com/location/hawalli', ogType: 'website', schemaTypes: ['LocalBusiness'] }, navigationPriority: 100 } as LocationEntity,
+    'loc-hawalli': { id: 'loc-hawalli', slug: 'hawalli', entityType: 'Location', isActive: true, isPhysicalLocation: true, title: 'Hawalli Repair Center', description: 'Professional laptop, MacBook, gaming PC and motherboard repair from KCROC\'s Hawalli service location, with pickup and delivery available across Kuwait.', landmark: 'Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19', coords: { lat: 29.3356, lng: 48.0250 }, serviceRadiusKm: 40, serviceAreas: ['Hawalli', 'Salmiya', 'Kuwait City', 'Farwaniya', 'Ahmadi', 'Jahra', 'Fahaheel'], contentImage: { src: IMAGES.brand.shopExteriorDay.src, alt: IMAGES.brand.shopExteriorDay.alt, width: IMAGES.brand.shopExteriorDay.width, height: IMAGES.brand.shopExteriorDay.height, caption: 'Our repair center at Al Mullah Complex, Ibn Khaldoun St, Hawalli.' }, seo: { title: 'Computer Repair Hawalli, Kuwait | Laptop & MacBook Repair | KCROC', description: 'Computer and laptop repair in Hawalli, Kuwait. KCROC provides laptop, MacBook, motherboard and gaming PC repair with pickup and delivery across Kuwait.', canonicalUrl: 'https://www.computerrepairkuwait.com/location/hawalli', ogType: 'website', schemaTypes: ['LocalBusiness'] }, navigationPriority: 100 } as LocationEntity,
 
     'loc-kuwait-city': { 
       id: 'loc-kuwait-city', slug: 'kuwait-city', entityType: 'Location', isActive: true, isPhysicalLocation: false, title: 'Kuwait City', description: 'Fast, professional corporate IT support and component-level laptop repair for businesses and residents in Kuwait City.', landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)', coords: { lat: 29.3759, lng: 47.9774 }, serviceRadiusKm: 15, serviceAreas: ['Kuwait City', 'Sharq', 'Dasman', 'Mirqab', 'Qibla'], 
