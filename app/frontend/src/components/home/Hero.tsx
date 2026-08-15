@@ -84,7 +84,13 @@ export default function Hero() {
       <h1 className="sr-only">{headline}</h1>
 
       {/* Mobile Hero Section */}
-      <section className="bg-transparent pt-24 pb-8 relative overflow-hidden lg:hidden">
+      {/* 🚀 MOBILE SPACING FIX: pt-24 (96px) was fixed/non-responsive, on
+          top of the 64px the layout already reserves for the header — 160px
+          of blank space before the logo on the homepage's single highest-
+          traffic entry point. Scaling it down on small screens also pulls
+          the trust-rating line up out of the zone the fixed chat bubble
+          occupies, reducing the overlap seen on load. */}
+      <section className="bg-transparent pt-8 sm:pt-16 pb-8 relative overflow-hidden lg:hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-cyan-950/40 via-transparent to-emerald-950/20" />
 
         <div className="container mx-auto px-4 relative z-10">
