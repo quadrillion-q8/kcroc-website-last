@@ -427,6 +427,14 @@ export const rawGraphData: RawGraphData = {
       warranty: { duration: '30 Days', coverage: 'All parts and labor.', noFixNoFee: true }, 
       contentImages: [
         {
+          src: IMAGES.macbook.macbookUnboxingRepairWorkshop.src,
+          alt: IMAGES.macbook.macbookUnboxingRepairWorkshop.alt,
+          width: IMAGES.macbook.macbookUnboxingRepairWorkshop.width,
+          height: IMAGES.macbook.macbookUnboxingRepairWorkshop.height,
+          placement: 'hero',
+          caption: 'Component-level MacBook logic board repair at our Hawalli workshop.'
+        },
+        {
           src: IMAGES.macbook.diagnostics.src,
           alt: IMAGES.macbook.diagnostics.alt,
           width: IMAGES.macbook.diagnostics.width,
@@ -673,6 +681,14 @@ export const rawGraphData: RawGraphData = {
 
       warranty: { duration: '30 Days', coverage: 'All parts and labor.', noFixNoFee: true }, 
       contentImages: [
+        {
+          src: IMAGES.services.laptopRepair.src,
+          alt: IMAGES.services.laptopRepair.alt,
+          width: IMAGES.services.laptopRepair.width,
+          height: IMAGES.services.laptopRepair.height,
+          placement: 'hero',
+          caption: 'Professional Windows laptop repair for Dell, HP, Lenovo, ASUS & Acer in Kuwait.'
+        },
         {
           src: IMAGES.laptopHardware.dellRepair.src,
           alt: IMAGES.laptopHardware.dellRepair.alt,
@@ -996,6 +1012,16 @@ export const rawGraphData: RawGraphData = {
         coverage: 'Covers all replaced components, thermal applications, and micro-soldering labor.', 
         noFixNoFee: true 
       }, 
+      contentImages: [
+        {
+          src: IMAGES.gaming.diagnostics.src,
+          alt: IMAGES.gaming.diagnostics.alt,
+          width: IMAGES.gaming.diagnostics.width,
+          height: IMAGES.gaming.diagnostics.height,
+          placement: 'hero',
+          caption: 'A gaming PC on the teardown and diagnostics workbench during component-level fault tracing.'
+        }
+      ],
       seo: { 
         title: 'Gaming PC & GPU Repair Kuwait | FPS & Thermal Fix | KCROC', 
         description: 'Stop losing frames to Kuwait\'s heat. Expert component-level gaming PC and GPU repair. Liquid metal, AIO fixes, and micro-soldering. Free pick & drop.', 
@@ -1161,6 +1187,14 @@ export const rawGraphData: RawGraphData = {
         noFixNoFee: true
       },
       contentImages: [
+        {
+          src: IMAGES.services.thermalService.src,
+          alt: IMAGES.services.thermalService.alt,
+          width: IMAGES.services.thermalService.width,
+          height: IMAGES.services.thermalService.height,
+          placement: 'hero',
+          caption: 'Professional thermal-interface service for gaming laptops running hot, loud, or slower than they used to.'
+        },
         {
           src: IMAGES.gaming.gamingOverheating.src,
           alt: IMAGES.gaming.gamingOverheating.alt,
@@ -1420,6 +1454,14 @@ export const rawGraphData: RawGraphData = {
       warranty: { duration: '30 Days', coverage: 'All parts and labor.', noFixNoFee: true }, 
       contentImages: [
         {
+          src: IMAGES.services.motherboardRepair.src,
+          alt: IMAGES.services.motherboardRepair.alt,
+          width: IMAGES.services.motherboardRepair.width,
+          height: IMAGES.services.motherboardRepair.height,
+          placement: 'hero',
+          caption: 'Advanced chip-level motherboard repair at our Hawalli workshop.'
+        },
+        {
           src: IMAGES.laptopHardware.laptopMotherboardDiagnosticBenchRepair.src,
           alt: IMAGES.laptopHardware.laptopMotherboardDiagnosticBenchRepair.alt,
           width: IMAGES.laptopHardware.laptopMotherboardDiagnosticBenchRepair.width,
@@ -1570,6 +1612,14 @@ export const rawGraphData: RawGraphData = {
     
       warranty: { duration: '30 Days', coverage: 'Screen panel and labor.', noFixNoFee: false },
       contentImages: [
+        {
+          src: IMAGES.laptopHardware.laptopScreenProtectionKuwait.src,
+          alt: IMAGES.laptopHardware.laptopScreenProtectionKuwait.alt,
+          width: IMAGES.laptopHardware.laptopScreenProtectionKuwait.width,
+          height: IMAGES.laptopHardware.laptopScreenProtectionKuwait.height,
+          placement: 'hero',
+          caption: 'Same-day laptop and MacBook screen replacement in Kuwait.'
+        },
         {
           src: IMAGES.laptopHardware.laptopScreenAssemblyDisassemblyRepair.src,
           alt: IMAGES.laptopHardware.laptopScreenAssemblyDisassemblyRepair.alt,
@@ -1865,6 +1915,14 @@ export const rawGraphData: RawGraphData = {
 
       warranty: { duration: '30 Days', coverage: 'Battery and labor.', noFixNoFee: true }, 
       contentImages: [
+        {
+          src: IMAGES.laptopHardware.hpLaptopBatteryPackReplacement.src,
+          alt: IMAGES.laptopHardware.hpLaptopBatteryPackReplacement.alt,
+          width: IMAGES.laptopHardware.hpLaptopBatteryPackReplacement.width,
+          height: IMAGES.laptopHardware.hpLaptopBatteryPackReplacement.height,
+          placement: 'hero',
+          caption: 'Same-day laptop and MacBook battery replacement in Kuwait.'
+        },
         {
           src: IMAGES.laptopHardware.getacBattery.src,
           alt: IMAGES.laptopHardware.getacBattery.alt,
