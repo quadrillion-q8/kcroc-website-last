@@ -71,30 +71,50 @@ export default function LocationTemplate() {
         </nav>
 
         <div className="container mx-auto max-w-6xl relative z-10">
-          <div className="max-w-3xl space-y-6">
-            <Badge className="bg-cyan-500/10 text-cyan-400 border-cyan-500/30 px-3 py-1.5 text-xs font-bold uppercase tracking-widest">
-              <MapPin className="w-3 h-3 mr-2 inline" aria-hidden="true" />
-              Now Serving {location.title}
-            </Badge>
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white leading-[1.1] tracking-tight">
-              Elite Computer Repair in <br />
-              <span className="text-cyan-400">{location.title}</span>
-            </h1>
-            <p className="text-sm sm:text-lg text-slate-300 leading-relaxed max-w-xl">
-              {location.description || `Fast, component-level repair for laptops, MacBooks, and gaming PCs. We offer completely free pickup and delivery directly from your location in ${location.title}.`}
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-4">
-              <Button size="lg" className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black px-8 w-full sm:w-auto shadow-[0_0_20px_rgba(6,182,212,0.3)] hover:scale-[1.02] transition-all" asChild>
-                <Link to="/book">
-                  <Truck className="mr-2 h-5 w-5" aria-hidden="true" /> Book Free Pickup
-                </Link>
-              </Button>
-              <Button size="lg" variant="outline" className="border-slate-700 text-white hover:bg-slate-800 w-full sm:w-auto" asChild>
-                <a href={WA_LINK} target="_blank" rel="noopener noreferrer">
-                  <MessageCircle className="mr-2 h-5 w-5" aria-hidden="true" /> WhatsApp Us
-                </a>
-              </Button>
+          <div className="grid lg:grid-cols-[1.15fr_1fr] gap-10 lg:gap-12 items-center">
+            <div className="max-w-3xl space-y-6">
+              <Badge className="bg-cyan-500/10 text-cyan-400 border-cyan-500/30 px-3 py-1.5 text-xs font-bold uppercase tracking-widest">
+                <MapPin className="w-3 h-3 mr-2 inline" aria-hidden="true" />
+                Now Serving {location.title}
+              </Badge>
+              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white leading-[1.1] tracking-tight">
+                Elite Computer Repair in <br />
+                <span className="text-cyan-400">{location.title}</span>
+              </h1>
+              <p className="text-sm sm:text-lg text-slate-300 leading-relaxed max-w-xl">
+                {location.description || `Fast, component-level repair for laptops, MacBooks, and gaming PCs. We offer completely free pickup and delivery directly from your location in ${location.title}.`}
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-4">
+                <Button size="lg" className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black px-8 w-full sm:w-auto shadow-[0_0_20px_rgba(6,182,212,0.3)] hover:scale-[1.02] transition-all" asChild>
+                  <Link to="/book">
+                    <Truck className="mr-2 h-5 w-5" aria-hidden="true" /> Book Free Pickup
+                  </Link>
+                </Button>
+                <Button size="lg" variant="outline" className="border-slate-700 text-white hover:bg-slate-800 w-full sm:w-auto" asChild>
+                  <a href={WA_LINK} target="_blank" rel="noopener noreferrer">
+                    <MessageCircle className="mr-2 h-5 w-5" aria-hidden="true" /> WhatsApp Us
+                  </a>
+                </Button>
+              </div>
             </div>
+
+            {location.contentImage && (
+              <div className="relative rounded-2xl overflow-hidden border border-slate-800 shadow-2xl">
+                <img
+                  src={location.contentImage.src}
+                  alt={location.contentImage.alt}
+                  width={location.contentImage.width}
+                  height={location.contentImage.height}
+                  loading="eager"
+                  className="w-full h-64 sm:h-80 lg:h-full object-cover"
+                />
+                {location.contentImage.caption && (
+                  <p className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-950/90 to-transparent text-xs text-slate-200 px-4 py-3">
+                    {location.contentImage.caption}
+                  </p>
+                )}
+              </div>
+            )}
           </div>
         </div>
       </section>
