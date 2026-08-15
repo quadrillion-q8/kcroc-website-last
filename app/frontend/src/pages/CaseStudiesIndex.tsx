@@ -32,8 +32,16 @@ export default function CaseStudiesIndex() {
                 className="group bg-slate-900/40 backdrop-blur-xl border border-slate-800 rounded-3xl overflow-hidden hover:border-cyan-500/50 transition-all duration-300 hover:-translate-y-1 flex flex-col"
               >
                 <div className="h-48 bg-slate-950 border-b border-slate-800 relative overflow-hidden">
-                  {/* Image goes here - using a fallback gradient for now */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-slate-800 to-slate-900 group-hover:scale-105 transition-transform duration-500" />
+                  {study.featuredImage?.thumbnail ? (
+                    <img
+                      src={study.featuredImage.thumbnail.webp}
+                      alt={study.featuredImage.altText ?? study.title}
+                      loading="lazy"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  ) : (
+                    <div className="absolute inset-0 bg-gradient-to-br from-slate-800 to-slate-900 group-hover:scale-105 transition-transform duration-500" />
+                  )}
                   <div className="absolute bottom-4 left-4 bg-slate-950/80 backdrop-blur-md border border-slate-700 px-3 py-1 rounded-full text-xs font-bold text-cyan-400 uppercase">
                     {study.deviceType || 'Hardware Repair'}
                   </div>
