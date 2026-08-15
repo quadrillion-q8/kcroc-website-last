@@ -31,8 +31,10 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
   const ServiceIcon = ICON_MAP[entity.iconKey] || Wrench;
   const business = KCROC_GRAPH.business;
 
-  const getContentImage = (placement: 'commonIssues' | 'coreFeatures' | 'process') =>
+  const getContentImage = (placement: 'hero' | 'commonIssues' | 'coreFeatures' | 'process') =>
     entity.contentImages?.find((img) => img.placement === placement);
+
+  const heroImage = getContentImage('hero');
 
   const ContentImage = ({ image }: { image: NonNullable<typeof entity.contentImages>[number] }) => (
     <a
@@ -74,41 +76,63 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
       <main className="min-h-screen bg-transparent text-white pt-8 sm:pt-16 lg:pt-32 pb-8 sm:pb-16">
         
         <header className="max-w-7xl mx-auto px-6 bg-slate-900/30 backdrop-blur-md border border-slate-800/50 rounded-3xl p-8 mb-12 shadow-2xl">
-          <div className="flex items-center space-x-4 mb-6">
-            <div className="w-16 h-16 bg-slate-950 border border-slate-800 rounded-2xl flex items-center justify-center shadow-inner">
-              <ServiceIcon className="w-8 h-8 text-cyan-400" />
-            </div>
-            <h1 className="text-4xl md:text-5xl font-black text-white">{entity.title}</h1>
-          </div>
-
-          <p className="text-xl text-slate-300 max-w-3xl mb-8 leading-relaxed">
-            {entity.shortDescription && (
-              <span className="block text-2xl font-bold text-white mb-3">{entity.shortDescription}</span>
-            )}
-            {entity.description}
-          </p>
-
-          {entity.idealCustomer && (
-            <p className="flex items-start gap-3 text-sm text-slate-400 max-w-3xl mb-8">
-              <Users className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-0.5" />
-              <span><span className="font-semibold text-slate-300">Built for:</span> {entity.idealCustomer}</span>
-            </p>
-          )}
-
-          <div className="flex flex-wrap gap-4">
-            {entity.warranty && (
-              <div className="bg-slate-950/80 px-5 py-3 rounded-xl border border-slate-800 flex items-center gap-3">
-                <Clock className="w-5 h-5 text-cyan-400" />
-                <div>
-                  <span className="block text-xs text-slate-400 uppercase font-bold tracking-wider">Warranty</span>
-                  <span className="font-semibold text-white">{entity.warranty.duration}</span>
+          <div className={`grid gap-10 items-center ${heroImage ? 'lg:grid-cols-[1.15fr_1fr]' : ''}`}>
+            <div>
+              <div className="flex items-center space-x-4 mb-6">
+                <div className="w-16 h-16 bg-slate-950 border border-slate-800 rounded-2xl flex items-center justify-center shadow-inner">
+                  <ServiceIcon className="w-8 h-8 text-cyan-400" />
                 </div>
+                <h1 className="text-4xl md:text-5xl font-black text-white">{entity.title}</h1>
               </div>
-            )}
 
-            {entity.pricing?.displayLabel && (
-              <div className="bg-cyan-900/20 px-5 py-3 rounded-xl border border-cyan-500/30 flex items-center gap-3">
-                <span className="font-bold text-cyan-400">{entity.pricing.displayLabel}</span>
+              <p className="text-xl text-slate-300 max-w-3xl mb-8 leading-relaxed">
+                {entity.shortDescription && (
+                  <span className="block text-2xl font-bold text-white mb-3">{entity.shortDescription}</span>
+                )}
+                {entity.description}
+              </p>
+
+              {entity.idealCustomer && (
+                <p className="flex items-start gap-3 text-sm text-slate-400 max-w-3xl mb-8">
+                  <Users className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-0.5" />
+                  <span><span className="font-semibold text-slate-300">Built for:</span> {entity.idealCustomer}</span>
+                </p>
+              )}
+
+              <div className="flex flex-wrap gap-4">
+                {entity.warranty && (
+                  <div className="bg-slate-950/80 px-5 py-3 rounded-xl border border-slate-800 flex items-center gap-3">
+                    <Clock className="w-5 h-5 text-cyan-400" />
+                    <div>
+                      <span className="block text-xs text-slate-400 uppercase font-bold tracking-wider">Warranty</span>
+                      <span className="font-semibold text-white">{entity.warranty.duration}</span>
+                    </div>
+                  </div>
+                )}
+
+                {entity.pricing?.displayLabel && (
+                  <div className="bg-cyan-900/20 px-5 py-3 rounded-xl border border-cyan-500/30 flex items-center gap-3">
+                    <span className="font-bold text-cyan-400">{entity.pricing.displayLabel}</span>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {heroImage && (
+              <div className="relative rounded-2xl overflow-hidden border border-slate-800 shadow-2xl">
+                <img
+                  src={heroImage.src}
+                  alt={heroImage.alt}
+                  width={heroImage.width}
+                  height={heroImage.height}
+                  loading="eager"
+                  className="w-full h-64 sm:h-80 lg:h-full object-cover"
+                />
+                {heroImage.caption && (
+                  <p className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-950/90 to-transparent text-xs text-slate-200 px-4 py-3">
+                    {heroImage.caption}
+                  </p>
+                )}
               </div>
             )}
           </div>
