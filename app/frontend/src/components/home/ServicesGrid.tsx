@@ -17,7 +17,12 @@ const ServiceCard = React.memo(({ service, idx }: { service: ServiceEntity, idx:
   const { ref, visible } = useFadeIn();
   const Icon = ICON_MAP[service.iconKey] || Wrench;
   const cardImage = service.contentImages?.[0];
-  
+  // 🩹 FIX: was rendering `service.description` — a multi-sentence, often
+  // 500+ character paragraph meant for the full service page — which blew
+  // the cards out to a huge, inconsistent height on the homepage grid.
+  // `shortDescription` is the field actually written for card-length use.
+  const cardText = service.shortDescription || service.description;
+
   return (
     <div 
       ref={ref} 
@@ -41,7 +46,7 @@ const ServiceCard = React.memo(({ service, idx }: { service: ServiceEntity, idx:
             <div className="absolute inset-0 bg-gradient-to-t from-kcroc-card via-kcroc-card/10 to-transparent" />
           </div>
         )}
-        <div className="flex flex-col h-full gap-2 sm:gap-3 p-5 sm:p-8">
+        <div className="flex flex-col h-full gap-2 sm:gap-3 p-5 sm:p-6">
           {/* Icon styling matching kcroc_homepage_mockup.html */}
           <div className="w-10 h-10 rounded-[10px] bg-kcroc-cyan/10 border border-kcroc-cyan/25 flex items-center justify-center mb-1 sm:mb-2">
             <Icon className="w-5 h-5 text-kcroc-cyan" />
@@ -51,8 +56,12 @@ const ServiceCard = React.memo(({ service, idx }: { service: ServiceEntity, idx:
             {service.title}
           </h3>
           
-          <p className="text-kcroc-muted text-[13px] leading-relaxed line-clamp-3 sm:line-clamp-none">
-            {service.description}
+          {/* 🩹 FIX: line-clamp now applies at every breakpoint (was
+              `sm:line-clamp-none`, which let the long `description` text
+              stretch cards to very different, oversized heights on
+              desktop). 2 lines keeps every card the same compact size. */}
+          <p className="text-kcroc-muted text-[13px] leading-relaxed line-clamp-2">
+            {cardText}
           </p>
           
           <div className="text-kcroc-emerald text-[11px] font-bold flex items-center gap-1 mt-1 sm:mt-2">
