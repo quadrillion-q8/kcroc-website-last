@@ -388,5 +388,109 @@ export const BLOG_POSTS: BlogPost[] = [
     readTime: "11-13 min read",
     tags: ["Windows 11", "Windows 10", "Windows 11 problems", "Windows 11 alternatives", "Linux", "Copilot", "Laptop Performance", "Computer Repair Kuwait"],
     clusterParent: "laptop-repair-kuwait-2026"
+  },
+  {
+    id: "blog-gaming-pc-mistakes-2026",
+    slug: "gaming-pc-mistakes-kuwait",
+    title: "10 Gaming PC Mistakes That Are Quietly Killing Your Performance (2026)",
+    excerpt: "That RTX 4080 shouldn't be stuttering. Most performance loss in gaming PCs isn't the hardware itself — it's a handful of setup and maintenance mistakes that get worse in Kuwait's climate.",
+    description: "The most common gaming PC mistakes we see on the repair bench in Kuwait — from dried thermal paste and bad airflow to bottlenecked builds and disabled XMP — and how to fix each one.",
+    content: [
+      "A gaming PC that stutters, throttles, or crashes usually isn't a hardware failure — it's one of a small set of setup and maintenance mistakes that compound over time.",
+      "In Kuwait specifically, heat and fine desert dust turn small oversights — dried thermal paste, blocked airflow, a case tucked into a closed cabinet — into serious performance problems much faster than in cooler, cleaner climates.",
+      "Most of these mistakes are free or cheap to fix once you know what to look for: airflow direction, thermal paste age, RAM speed (XMP), driver updates, and PSU headroom account for the vast majority of 'my new GPU isn't performing like it should' complaints we see."
+    ],
+    richContent: [
+      { type: 'paragraph', text: "A brand-new GPU that stutters. A CPU that throttles mid-match. A PC that ran perfectly for six months and now randomly restarts. Most of the time, none of this is a defective part — it's one of a handful of avoidable mistakes stacking up quietly in the background. We see the same patterns on the repair bench week after week, and almost all of them are fixable in under an hour." },
+      { type: 'callout', variant: 'didyouknow', title: 'Did You Know?', text: "Kuwait's summer ambient temperatures routinely exceed 45°C, and fine desert dust is small enough to work through standard case mesh filters. A gaming PC here can accumulate in six months the dust buildup a similar PC in a temperate climate takes two years to reach." },
+
+      { type: 'h2', text: '1. Letting Dust Choke Your Airflow', id: 'dust-buildup' },
+      { type: 'paragraph', text: "This is the single most common issue we open a case to find. Dust doesn't just sit on the outside — it packs into radiator fins, heatsink fins, and fan blades until airflow is a fraction of what it was on day one. A GPU or CPU cooler rated for 200W of heat dissipation can lose most of its effectiveness once its fins are matted with dust, and the fans spin louder just to push the same (reduced) amount of air through." },
+      { type: 'image', src: '/images/custom-gaming-pc-teardown-and-diagnostics-workbench.webp', alt: 'A gaming PC opened up on a diagnostics workbench for a full cleaning and inspection', caption: "A full teardown clean — radiators, heatsinks, fans, and dust filters — restores airflow that slowly disappears over months of normal use." },
+      { type: 'paragraph', text: "A proper clean isn't just wiping the outside of the case. It means pulling the GPU, removing fan shrouds where possible, and blowing compressed air through radiator fins from the clean side out, not just from the front. Doing this every 3-4 months in Kuwait — more often if your PC sits on the floor or near a window — prevents thermal throttling before it starts." },
+
+      { type: 'h2', text: '2. Never Replacing Thermal Paste', id: 'thermal-paste' },
+      { type: 'paragraph', text: "Factory-applied thermal paste isn't meant to last forever. Over 1-3 years it dries out, cracks, and pulls away from full contact with the CPU or GPU die — a process known as 'pump-out.' The result is a CPU that idles fine but spikes to 90°C+ and throttles the moment you launch a demanding game, even though the cooler itself is perfectly capable." },
+      { type: 'image', src: '/images/gaming-motherboard-cpu-fresh-thermal-paste.webp', alt: 'Fresh thermal paste being applied to a gaming PC CPU before reseating the cooler', caption: "Reapplying thermal paste is one of the cheapest performance fixes available — often the difference between throttling and full boost clocks." },
+      { type: 'callout', variant: 'tip', title: 'Performance Tip', text: "If your CPU or GPU temperatures have crept up over the past year without any hardware changes, dried thermal paste is the most likely explanation — not a failing chip. A repaste is a 30-45 minute job that routinely drops temperatures by 10-20°C." },
+
+      { type: 'h2', text: '3. Getting Case Airflow Direction Wrong', id: 'airflow-direction' },
+      { type: 'paragraph', text: "Fan direction matters more than fan count. A case with too many exhaust fans and not enough intake creates negative pressure, which pulls dusty air in through every gap, seam, and unfiltered opening in the case instead of through the filtered front intake. The PC still 'has fans' — it just breathes dirty air from the wrong places." },
+      { type: 'comparisonTable', title: 'Positive vs Negative Case Pressure', columns: ['Positive Pressure', 'Negative Pressure'], rows: [
+        { feature: 'Where dust enters', values: ['Filtered intake only', 'Every unfiltered gap and seam'] },
+        { feature: 'Internal dust buildup', values: ['Slow, mostly on filters', 'Fast, coats every component'] },
+        { feature: 'Best setup', values: ['More/stronger intake than exhaust', 'More exhaust than intake'] },
+        { feature: 'Recommended for Kuwait', values: ['Yes', 'Not recommended'] },
+      ]},
+      { type: 'paragraph', text: "The fix is usually just re-checking fan orientation (arrows on the fan frame show airflow direction) and making sure total intake CFM is slightly higher than total exhaust CFM. This alone can cut long-term dust accumulation dramatically without spending a single Dinar." },
+
+      { type: 'h2', text: '4. Skipping BIOS Updates and Leaving XMP/EXPO Off', id: 'xmp-bios' },
+      { type: 'paragraph', text: "New RAM kits are sold with an advertised speed — say 6000MHz — but out of the box, most motherboards run that same RAM at a conservative default like 4800MHz until you manually enable XMP (Intel) or EXPO (AMD) in the BIOS. That's not a minor detail: on modern platforms, especially AMD's Ryzen, RAM speed has a direct, measurable impact on gaming frame rates." },
+      { type: 'image', src: '/images/gaming-pc-build-bios-memory-setup-kuwait-1000.webp', alt: 'BIOS memory setup screen during a gaming PC build in Kuwait', caption: "Enabling XMP or EXPO in the BIOS is a two-minute change that unlocks the RAM speed you actually paid for." },
+      { type: 'callout', variant: 'info', title: 'Info', text: "Outdated BIOS and chipset firmware can also cause compatibility issues with newer CPUs, RAM kits, and even GPUs — showing up as random reboots or a PC that won't boot with new parts installed. A BIOS update is often the actual fix, not a hardware swap." },
+
+      { type: 'h2', text: '5. Bottlenecking a Powerful GPU with a Weak CPU or Slow Storage', id: 'bottlenecking' },
+      { type: 'paragraph', text: "It's common to see a high-end GPU paired with an older or budget CPU, or with a single stick of RAM running in single-channel mode. The GPU sits underutilized, frame rates plateau well below what the card is capable of, and the owner assumes the GPU is faulty when it's actually starved of work by the rest of the system." },
+      { type: 'statCards', items: [
+        { value: '2x', label: 'Bandwidth Gain from Dual-Channel RAM' },
+        { value: '90%+', label: 'GPU Usage Target While Gaming' },
+        { value: '3-4 mo', label: 'Recommended Dust Cleaning Interval' },
+        { value: '1-3 yr', label: 'Typical Thermal Paste Lifespan' },
+      ]},
+      { type: 'paragraph', text: "A quick way to check: monitor GPU usage during gameplay with a tool like MSI Afterburner or the Windows Task Manager Performance tab. If it's consistently sitting well below 90-95% while your frame rate is lower than expected, something else in the system — CPU, RAM configuration, or even storage — is holding it back." },
+
+      { type: 'h2', text: '6. Using a Weak or Aging Power Supply', id: 'psu-quality' },
+      { type: 'paragraph', text: "The power supply is the one component people are most tempted to cut costs on, and it's the one that causes the most unpredictable symptoms when it's underpowered or degrading — random shutdowns under load, GPU artifacting that looks like a graphics card fault, and reboots specifically during demanding scenes or benchmarks." },
+      { type: 'image', src: '/images/zotac-gaming-graphics-card-gpu-upgrade.webp', alt: 'A gaming graphics card being upgraded, with power supply cabling visible', caption: "A GPU upgrade without checking PSU wattage and connector compatibility is a common cause of instability after an upgrade." },
+      { type: 'callout', variant: 'warning', title: 'Warning', text: "If you upgrade your GPU without checking your PSU's rated wattage and available PCIe power connectors, you can end up with intermittent crashes that look exactly like a bad graphics card. Always check PSU headroom before, not after, a GPU upgrade." },
+
+      { type: 'h2', text: '7. Ignoring Graphics Driver Updates — Or Never Cleaning Old Ones Out', id: 'drivers' },
+      { type: 'paragraph', text: "Running outdated GPU drivers means missing out on game-specific performance optimizations that NVIDIA and AMD ship regularly. The opposite mistake is just as common: installing a new driver directly over a corrupted old one without a clean uninstall, which can cause stuttering, crashes, or display flickering that has nothing to do with the hardware itself." },
+      { type: 'quote', text: "Most 'my GPU is defective' complaints we investigate turn out to be a driver conflict, a thermal issue, or a PSU problem — not the graphics card." },
+
+      { type: 'h2', text: '8. Overclocking Without Monitoring Temperatures', id: 'overclocking' },
+      { type: 'paragraph', text: "Pushing a CPU or GPU beyond factory clocks can genuinely improve performance, but only if cooling keeps up. Overclocking on a cooler that was already borderline adequate at stock speeds — or on a PC with the dust and airflow problems above — pushes temperatures past safe limits, shortens component lifespan, and often causes crashes that look random but trace back to thermal limits under sustained load." },
+      { type: 'callout', variant: 'expert', title: 'Expert Advice', text: "If you overclock, monitor temperatures during an actual gaming session, not just a quick benchmark — sustained load over 30-60 minutes reveals thermal problems that a 2-minute stress test can miss entirely." },
+
+      { type: 'h2', text: '9. Placing the PC Somewhere It Can\'t Breathe', id: 'placement' },
+      { type: 'paragraph', text: "Where the PC physically sits matters more than most people expect. A tower pushed flush against a wall, tucked inside a closed desk cabinet, sitting on thick carpet, or positioned in direct sunlight through a window all restrict intake airflow or add extra ambient heat the cooling system now has to fight against — on top of Kuwait's already-high indoor and outdoor temperatures during summer." },
+      { type: 'image', src: '/images/rgb-gaming-pc-radiator-build-interior.webp', alt: 'A gaming PC with visible radiator and fan clearance for proper airflow', caption: "A few centimeters of clearance around intake and exhaust vents makes a measurable difference to sustained gaming temperatures." },
+      { type: 'paragraph', text: "Leaving at least 10-15cm of clearance around intake and exhaust panels, avoiding enclosed cabinets without ventilation, and keeping the case out of direct sun solves this at zero cost — it's purely a placement decision." },
+
+      { type: 'h2', text: '10. Never Reseating or Rechecking Components After a Move', id: 'reseating' },
+      { type: 'paragraph', text: "PCs that have been transported, shipped, or even just bumped during cleaning can develop loose RAM sticks, a partially seated GPU, or loosened cooler mounting pressure — all of which cause intermittent issues (no display, random crashes, worse temperatures) that look far more serious than they are. This is especially relevant if you've had your PC picked up and dropped off for a repair or cleaning without checking it afterward." },
+      { type: 'callout', variant: 'recommendation', title: 'Pro Recommendation', text: "After any move, transport, or major cleaning, boot the PC and check Task Manager or a monitoring tool for expected RAM capacity and GPU detection before assuming anything is faulty. A reseat takes two minutes and rules out the most common post-move issue." },
+
+      { type: 'h2', text: 'A Quick Health Check Before You Blame the Hardware', id: 'health-check' },
+      { type: 'timeline', title: 'Diagnose Before You Upgrade', steps: [
+        { label: 'Check temperatures under sustained load', note: 'Not just idle — run a real 30-minute gaming session and watch CPU/GPU temps.' },
+        { label: 'Confirm XMP/EXPO is enabled', note: 'Check BIOS — RAM often silently runs below its advertised speed.' },
+        { label: 'Inspect and clean dust buildup', note: 'Radiators, heatsinks, and fan blades — not just the case exterior.' },
+        { label: 'Check GPU usage %', note: 'Below 90-95% during gameplay points to a CPU or RAM bottleneck.' },
+        { label: 'Verify PSU wattage and connectors', note: 'Especially after any GPU upgrade.' },
+        { label: 'Update GPU drivers with a clean install', note: 'Use a clean-install option, not just an update-over-update.' },
+        { label: 'Reseat RAM and GPU if recently moved', note: 'Rules out the most common post-transport issue.' },
+      ]},
+
+      { type: 'h2', text: 'Frequently Asked Questions', id: 'faq' },
+      { type: 'faq', items: [
+        { question: 'Why is my gaming PC suddenly performing worse?', answer: 'The most common causes are dust-choked cooling, dried thermal paste, disabled XMP/EXPO RAM settings, or an outdated/corrupted GPU driver. True hardware failure is far less common than these maintenance and configuration issues.' },
+        { question: 'How often should I clean a gaming PC in Kuwait?', answer: "Every 3-4 months for most setups, and possibly more often if the PC sits on the floor, near a window, or in a room without regular air conditioning. Kuwait's dust and heat accelerate buildup significantly compared to cooler, cleaner climates." },
+        { question: 'Does XMP actually make a difference for gaming?', answer: "Yes, particularly on AMD Ryzen platforms where memory speed directly affects the Infinity Fabric and, in turn, gaming frame rates. Leaving RAM at default JEDEC speeds instead of its rated XMP/EXPO profile can leave meaningful performance on the table." },
+        { question: 'How do I know if my PSU is causing problems?', answer: "Random shutdowns or reboots specifically under heavy load (gaming, benchmarks) rather than at idle, GPU artifacting that comes and goes, and instability that started right after a GPU upgrade are all classic signs of insufficient PSU wattage or a degrading unit." },
+        { question: 'Is overclocking safe for a gaming PC?', answer: "It can be, provided your cooling has real headroom and you monitor temperatures during actual sustained gameplay, not just a short benchmark. Overclocking on marginal cooling — especially with existing dust or airflow issues — increases the risk of instability and long-term wear." },
+        { question: 'Should I upgrade my GPU if it feels slow?', answer: "Not immediately. Check GPU usage percentage during gameplay first — if it's well below 90-95%, the bottleneck is likely your CPU, RAM configuration, or storage rather than the graphics card itself." }
+      ]},
+
+      { type: 'h2', text: 'The Bottom Line', id: 'bottom-line' },
+      { type: 'paragraph', text: "Most gaming PC performance problems trace back to a small, predictable list: dust, dried thermal paste, airflow direction, disabled XMP, an underpowered PSU, and outdated drivers. None of these require a new build to fix. If you've worked through this list and your PC still throttles, crashes, or underperforms for its specs, that's the point where a proper diagnostic — the kind we run on every Gaming PC Repair job — separates a genuine hardware fault from a setup issue." }
+    ],
+    image: "/images/custom-gaming-pc-teardown-and-diagnostics-workbench.webp",
+    date: "2026-08-17",
+    author: "KCROC Gaming Specialists",
+    category: "Gaming",
+    readTime: "9-11 min read",
+    tags: ["Gaming PC", "PC Maintenance", "Thermal Throttling", "XMP", "Gaming Performance", "Computer Repair Kuwait"],
+    clusterParent: "laptop-repair-kuwait-2026"
   }
 ];
