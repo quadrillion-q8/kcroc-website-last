@@ -186,6 +186,15 @@ export default function BlogPostTemplate() {
   const articleRef = useRef<HTMLElement>(null);
   const headingRefs = useRef<Record<string, HTMLElement | null>>({});
 
+  // 🩹 FIX: all hooks in this component now run unconditionally on every
+  // render. Previously `if (!post) return <Navigate .../>` sat in the middle
+  // of the hook list (after `headings` but before five other useMemo calls),
+  // a Rules-of-Hooks violation. Since every blog post routes through this
+  // one shared template, navigating client-side from an invalid slug to a
+  // valid one (or vice versa) — no full page remount — would make React
+  // throw "rendered fewer/more hooks than expected" and crash the page.
+  // Each memo below is now null-safe via `post?.` and the not-found bailout
+  // happens after all hooks have run.
   const headings = useMemo(
     () => (post?.richContent?.filter((b): b is Extract<ContentBlock, { type: 'h2' }> => b.type === 'h2') ?? []),
     [post]
@@ -228,14 +237,12 @@ export default function BlogPostTemplate() {
     headingRefs.current[id] = el;
   }, []);
 
-  if (!post) return <Navigate to={ROUTES.BLOG} replace />;
-
-  const pageUrl = `${BUSINESS_INFO.url}${getBlogRoute(post.slug)}`;
-  const waLink = getIntentWhatsAppLink("blog", post.title);
+  const pageUrl = post ? `${BUSINESS_INFO.url}${getBlogRoute(post.slug)}` : '';
+  const waLink = post ? getIntentWhatsAppLink("blog", post.title) : '';
 
   // Combine all FAQ blocks for unified Schema.org metadata
   const faqBlocks = useMemo(
-    () => post.richContent?.filter((b): b is Extract<ContentBlock, { type: 'faq' }> => b.type === 'faq') ?? [],
+    () => post?.richContent?.filter((b): b is Extract<ContentBlock, { type: 'faq' }> => b.type === 'faq') ?? [],
     [post]
   );
   
@@ -245,6 +252,7 @@ export default function BlogPostTemplate() {
   );
 
   const relatedPosts = useMemo(() => {
+    if (!post) return [];
     if (post.isPillar) {
       return BLOG_POSTS.filter(p => p.clusterParent === post.slug).slice(0, 5);
     } else if (post.clusterParent) {
@@ -256,7 +264,7 @@ export default function BlogPostTemplate() {
   }, [post]);
 
   const recentPosts = useMemo(
-    () => BLOG_POSTS.filter(p => p.slug !== post.slug).sort((a, b) => +new Date(b.date) - +new Date(a.date)).slice(0, 4),
+    () => post ? BLOG_POSTS.filter(p => p.slug !== post.slug).sort((a, b) => +new Date(b.date) - +new Date(a.date)).slice(0, 4) : [],
     [post]
   );
 
@@ -291,53 +299,59 @@ export default function BlogPostTemplate() {
   };
 
   // ─── SEO SCHEMA: WebPage + BlogPosting/Article + optional FAQPage + Breadcrumb ───
-  const SCHEMA_DATA = useMemo(() => ({
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebPage",
-        "@id": `${pageUrl}#webpage`,
-        "url": pageUrl,
-        "name": post.title,
-        "description": post.description || post.excerpt,
-        "isPartOf": { "@id": `${BUSINESS_INFO.url}/#website` }
-      },
-      {
-        "@type": ["BlogPosting", "Article"],
-        "@id": `${pageUrl}#article`,
-        "headline": post.title,
-        "description": post.excerpt,
-        "image": post.image,
-        "datePublished": post.date,
-        "dateModified": post.date,
-        "author": { "@type": "Person", "name": post.author },
-        "publisher": {
-          "@type": "Organization",
-          "name": BUSINESS_INFO.name,
-          "logo": { "@type": "ImageObject", "url": `${BUSINESS_INFO.url}/logo.webp`, "width": 224, "height": 224 }
+  const SCHEMA_DATA = useMemo(() => {
+    if (!post) return null;
+    return {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebPage",
+          "@id": `${pageUrl}#webpage`,
+          "url": pageUrl,
+          "name": post.title,
+          "description": post.description || post.excerpt,
+          "isPartOf": { "@id": `${BUSINESS_INFO.url}/#website` }
         },
-        "mainEntityOfPage": { "@id": `${pageUrl}#webpage` }
-      },
-      {
-        "@type": "BreadcrumbList",
-        "@id": `${pageUrl}#breadcrumb`,
-        "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": BUSINESS_INFO.url },
-          { "@type": "ListItem", "position": 2, "name": "Blog", "item": `${BUSINESS_INFO.url}${ROUTES.BLOG}` },
-          { "@type": "ListItem", "position": 3, "name": post.title, "item": pageUrl }
-        ]
-      },
-      ...(allFaqItems.length > 0 ? [{
-        "@type": "FAQPage",
-        "@id": `${pageUrl}#faq`,
-        "mainEntity": allFaqItems.map(item => ({
-          "@type": "Question",
-          "name": item.question,
-          "acceptedAnswer": { "@type": "Answer", "text": item.answer }
-        }))
-      }] : [])
-    ]
-  }), [post, pageUrl, allFaqItems]);
+        {
+          "@type": ["BlogPosting", "Article"],
+          "@id": `${pageUrl}#article`,
+          "headline": post.title,
+          "description": post.excerpt,
+          "image": post.image,
+          "datePublished": post.date,
+          "dateModified": post.date,
+          "author": { "@type": "Person", "name": post.author },
+          "publisher": {
+            "@type": "Organization",
+            "name": BUSINESS_INFO.name,
+            "logo": { "@type": "ImageObject", "url": `${BUSINESS_INFO.url}/logo.webp`, "width": 224, "height": 224 }
+          },
+          "mainEntityOfPage": { "@id": `${pageUrl}#webpage` }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": `${pageUrl}#breadcrumb`,
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": BUSINESS_INFO.url },
+            { "@type": "ListItem", "position": 2, "name": "Blog", "item": `${BUSINESS_INFO.url}${ROUTES.BLOG}` },
+            { "@type": "ListItem", "position": 3, "name": post.title, "item": pageUrl }
+          ]
+        },
+        ...(allFaqItems.length > 0 ? [{
+          "@type": "FAQPage",
+          "@id": `${pageUrl}#faq`,
+          "mainEntity": allFaqItems.map(item => ({
+            "@type": "Question",
+            "name": item.question,
+            "acceptedAnswer": { "@type": "Answer", "text": item.answer }
+          }))
+        }] : [])
+      ]
+    };
+  }, [post, pageUrl, allFaqItems]);
+
+  // All hooks have now run unconditionally on every render — safe to bail out.
+  if (!post) return <Navigate to={ROUTES.BLOG} replace />;
 
   return (
     <main className="w-full min-h-screen bg-slate-950 text-slate-200 pt-8 sm:pt-16 lg:pt-32 pb-8 sm:pb-16 lg:pb-24">
