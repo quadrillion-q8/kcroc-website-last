@@ -24,7 +24,11 @@ import { SEOEngine } from '../core/components/SEOEngine';
 ───────────────────────────────────────────────────────────────────────────── */
 type FAQItem = (typeof GLOBAL_FAQS)[number];
 
-const BASE_URL = 'https://computerrepairkuwait.com';
+// 🩹 FIX: was missing the `www.` subdomain — every other canonical/OG URL
+// in the site (data.ts, graph.ts, sitemap.xml, robots.txt, index.html, and
+// every other page) uses https://www.computerrepairkuwait.com. This
+// mismatch fed directly into this page's canonical and Open Graph URLs.
+const BASE_URL = 'https://www.computerrepairkuwait.com';
 const PHONE_CLEAN = '96555301913';
 
 /* ─────────────────────────────────────────────────────────────────────────────
