@@ -22,27 +22,34 @@ export default function LocationTemplate() {
   const location = KCROC_GRAPH.locations?.find(loc => loc.id === `loc-${slug}` || loc.title.toLowerCase() === slug?.replace(/-/g, ' '));
   const business = KCROC_GRAPH.business!;
 
+  const activeServices = KCROC_GRAPH.services?.filter(s => s.isActive).slice(0, 4) || [];
+
+  // 🚀 Generate Breadcrumb Schema for Local SEO Rich Results
+  const BASE_URL = 'https://www.computerrepairkuwait.com';
+  const PAGE_URL = `${BASE_URL}/location/${slug}`;
+
+  // 🩹 FIX: this hook must run on every render, regardless of whether a
+  // matching location was found. Previously the `if (!location) return`
+  // bailout sat ABOVE this useMemo, so the hook only ran when location
+  // resolved — a Rules-of-Hooks violation. On client-side SPA navigation
+  // between an invalid slug and a valid one (no full remount), React would
+  // throw "rendered fewer hooks than expected" and the page would crash.
+  // Hooks now run unconditionally; the not-found bailout happens after.
+  const BREADCRUMB_SCHEMA = useMemo(() => ({
+    '@type': 'BreadcrumbList',
+    '@id': `${PAGE_URL}#breadcrumb`,
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: BASE_URL },
+      { '@type': 'ListItem', position: 2, name: location?.title ?? '', item: PAGE_URL },
+    ],
+  }), [location?.title, PAGE_URL]);
+
   // If the URL slug doesn't match a known location, bounce them safely to the 404
   if (!location) {
     return <Navigate to="/404" replace />;
   }
 
   const WA_LINK = `https://wa.me/${business.telephone}?text=${encodeURIComponent(`Hi KCROC, I am located in ${location.title} and need a device repaired. Can we arrange a pickup?`)}`;
-
-  const activeServices = KCROC_GRAPH.services?.filter(s => s.isActive).slice(0, 4) || [];
-
-  // 🚀 Generate Breadcrumb Schema for Local SEO Rich Results
-  const BASE_URL = 'https://www.computerrepairkuwait.com';
-  const PAGE_URL = `${BASE_URL}/location/${slug}`;
-  
-  const BREADCRUMB_SCHEMA = useMemo(() => ({
-    '@type': 'BreadcrumbList',
-    '@id': `${PAGE_URL}#breadcrumb`,
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: BASE_URL },
-      { '@type': 'ListItem', position: 2, name: location.title, item: PAGE_URL },
-    ],
-  }), [location.title, slug]);
 
   return (
     <main className="w-full min-h-screen bg-gray-950 text-white font-sans selection:bg-cyan-500/30">
