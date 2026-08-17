@@ -3,6 +3,7 @@ import React from 'react';
 import { useLocation, Navigate } from 'react-router-dom';
 import { KCROC_GRAPH } from '../../data/graph'; 
 import { SEOEngine } from '../../core/components/SEOEngine';
+import { getIntentWhatsAppLink } from '../../utils/whatsappIntent';
 import { Wrench, CheckCircle, AlertTriangle, MonitorSmartphone } from 'lucide-react';
 
 const BrandTemplate: React.FC = () => {
@@ -70,7 +71,9 @@ const BrandTemplate: React.FC = () => {
                 <p className="text-cyan-400 font-medium mb-6">{brand.pricing.displayLabel}</p>
               )}
               <a 
-                href={`https://wa.me/${KCROC_GRAPH.business?.telephone}`}
+                // 🩹 FIX: was a bare wa.me/<phone> link with no message —
+                // now consistent with every other WhatsApp CTA on the site.
+                href={getIntentWhatsAppLink("service", brand.title)}
                 target="_blank"
                 rel="noreferrer"
                 className="inline-block w-full py-3 px-6 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black rounded-full transition-colors shadow-[0_0_15px_rgba(34,211,238,0.2)]"
