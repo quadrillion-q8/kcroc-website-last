@@ -3,6 +3,7 @@ import React from 'react';
 import { useLocation, Navigate } from 'react-router-dom';
 import { KCROC_GRAPH } from '../../data/graph'; 
 import { SEOEngine } from '../../core/components/SEOEngine';
+import { getIntentWhatsAppLink } from '../../utils/whatsappIntent';
 import { AlertOctagon, CheckCircle2, ShieldAlert } from 'lucide-react';
 
 const ProblemTemplate: React.FC = () => {
@@ -91,7 +92,12 @@ const ProblemTemplate: React.FC = () => {
                 {problem.solution}
               </p>
               <a 
-                href={`https://wa.me/${KCROC_GRAPH.business?.telephone}`}
+                // 🩹 FIX: this CTA previously linked to a bare wa.me/<phone>
+                // with no prefilled message — every other WhatsApp CTA on
+                // the site opens with contextual message text. Now uses the
+                // shared intent helper so the tech sees what problem the
+                // visitor came from.
+                href={getIntentWhatsAppLink("service", problem.title)}
                 target="_blank"
                 rel="noreferrer"
                 className="inline-block py-4 px-8 bg-cyan-500 hover:bg-cyan-400 transition-colors text-slate-950 font-black rounded-full shadow-[0_0_15px_rgba(34,211,238,0.3)]"
