@@ -1,4 +1,5 @@
 import React from 'react';
+import { buildWhatsAppLink } from '../../utils/whatsappIntent';
 
 interface Props {
   children: React.ReactNode;
@@ -7,6 +8,12 @@ interface Props {
 interface State {
   hasError: boolean;
 }
+
+// 🩹 FIX: WhatsApp link was hardcoded to '96555301913' instead of sourcing
+// from BUSINESS_INFO — this is the site's crash-fallback CTA, so it's
+// especially important it never silently points at a stale number. Computed
+// once at module load via the shared helper (defaults to BUSINESS_INFO.cleanPhone).
+const CRASH_WA_LINK = buildWhatsAppLink();
 
 export class ErrorBoundary extends React.Component<Props, State> {
   public state: State = {
@@ -33,7 +40,7 @@ export class ErrorBoundary extends React.Component<Props, State> {
             <a href="/" className="px-6 py-3 border border-slate-700 rounded-lg hover:bg-slate-800 transition-colors">
               Return Home
             </a>
-            <a href="https://wa.me/96555301913" target="_blank" rel="noopener noreferrer" className="px-6 py-3 bg-cyan-500 text-slate-950 font-bold rounded-lg hover:bg-cyan-400 transition-colors">
+            <a href={CRASH_WA_LINK} target="_blank" rel="noopener noreferrer" className="px-6 py-3 bg-cyan-500 text-slate-950 font-bold rounded-lg hover:bg-cyan-400 transition-colors">
               Contact via WhatsApp
             </a>
           </div>
