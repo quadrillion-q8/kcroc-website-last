@@ -3,8 +3,13 @@ import React, { useState, useMemo } from 'react';
 import { X, Maximize2, Phone, MessageCircle } from 'lucide-react';
 import { GALLERY_ITEMS, galleryCategories } from '../constants/galleryData';
 import { SEOEngine } from '../core/components/SEOEngine';
+import { buildWhatsAppLink } from '../utils/whatsappIntent';
 
-const WA_LINK = `https://wa.me/96555301913?text=${encodeURIComponent('Hi KCROC, I need a professional repair. Please arrange free pickup.')}`;
+// 🩹 FIX: was hardcoded to '96555301913' instead of sourcing from
+// BUSINESS_INFO — if the phone number is ever updated centrally, this file
+// would silently keep pointing at the old number. Now routed through the
+// shared buildWhatsAppLink helper, which defaults to BUSINESS_INFO.cleanPhone.
+const WA_LINK = buildWhatsAppLink('Hi KCROC, I need a professional repair. Please arrange free pickup.');
 
 export default function Gallery() {
   const [activeCategory, setActiveCategory] = useState<string>('All');
