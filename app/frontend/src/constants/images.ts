@@ -100,6 +100,14 @@ export const IMAGES = {
     pcCaseTemperedGlassRetailDisplay: { src: "/images/pc-case-tempered-glass-retail-display.webp", alt: "PC Case Tempered Glass Retail Display", width: 800, height: 600 },
     rgbGamingPcBuildInterior: { src: "/images/rgb-gaming-pc-build-interior.webp", alt: "RGB Gaming PC Build Interior", width: 800, height: 600 },
     rgbGamingPcRadiatorBuildInterior: { src: "/images/rgb-gaming-pc-radiator-build-interior.webp", alt: "RGB Gaming PC Radiator Build Interior", width: 800, height: 600 },
+    asusEzFlashBiosUpdateStrixZ890f: { src: "/images/asus-ez-flash-bios-update-strix-z890f-kuwait-1000.webp", alt: "ASUS EZ Flash BIOS Update Strix Z890F Kuwait", width: 1000, height: 1000 },
+    asusRogStrixZ890fMotherboardCpuSocketInstall: { src: "/images/asus-rog-strix-z890f-motherboard-cpu-socket-install-kuwait-1000.webp", alt: "ASUS ROG Strix Z890F Motherboard CPU Socket Install Kuwait", width: 1000, height: 1000 },
+    asusRogUefiBiosUtilityTemperatureMonitor: { src: "/images/asus-rog-uefi-bios-utility-temperature-monitor-kuwait-1000.webp", alt: "ASUS ROG UEFI BIOS Utility Temperature Monitor Kuwait", width: 1000, height: 1000 },
+    asusStrixZ890fCpuInstallationGamingPc: { src: "/images/asus-strix-z890f-cpu-installation-gaming-pc-kuwait-1000.webp", alt: "ASUS Strix Z890F CPU Installation Gaming PC Kuwait", width: 1000, height: 1000 },
+    customGamingPcBuildRgbGpu: { src: "/images/custom-gaming-pc-build-rgb-gpu-kuwait-1000.webp", alt: "Custom Gaming PC Build RGB GPU Kuwait", width: 1000, height: 1000 },
+    gamingPcBuildBiosMemorySetup: { src: "/images/gaming-pc-build-bios-memory-setup-kuwait-1000.webp", alt: "Gaming PC Build BIOS Memory Setup Kuwait", width: 1000, height: 1000 },
+    intelCoreI714700kCpuRepair: { src: "/images/intel-core-i7-14700k-cpu-repair-kuwait-1000.webp", alt: "Intel Core i7-14700K CPU Repair Kuwait", width: 1000, height: 1000 },
+    whiteGamingPcBuildAioLiquidCoolerRgb: { src: "/images/white-gaming-pc-build-aio-liquid-cooler-rgb-kuwait-1000.webp", alt: "White Gaming PC Build AIO Liquid Cooler RGB Kuwait", width: 1000, height: 1000 },
   },
 
   // --- UPGRADES: SSD & RAM ---
@@ -158,6 +166,9 @@ export const IMAGES = {
     skHynixM2NvmeSsdInstallation: { src: "/images/sk-hynix-m2-nvme-ssd-installation.webp", alt: "Sk Hynix M.2 NVMe SSD Installation", width: 800, height: 600 },
     toshibaLaptopHardDriveHdd: { src: "/images/toshiba-laptop-hard-drive-hdd.webp", alt: "Toshiba Laptop Hard Drive HDD", width: 800, height: 600 },
     transcend2tbSsdPackaging: { src: "/images/transcend-2tb-ssd-packaging.webp", alt: "Transcend 2tb SSD Packaging", width: 800, height: 600 },
+    intelCoreI7CpuUpgradePackaging: { src: "/images/intel-core-i7-cpu-upgrade-packaging-kuwait-1000.webp", alt: "Intel Core i7 CPU Upgrade Packaging Kuwait", width: 1000, height: 1000 },
+    lexarNvmeSsdUpgradePcRepair: { src: "/images/lexar-nvme-ssd-upgrade-pc-repair-kuwait-1000.webp", alt: "Lexar NVMe SSD Upgrade PC Repair Kuwait", width: 1000, height: 1000 },
+    wdGreen240gbSataSsdUpgrade: { src: "/images/wd-green-240gb-sata-ssd-upgrade-kuwait-1000.webp", alt: "WD Green 240GB SATA SSD Upgrade Kuwait", width: 1000, height: 1000 },
   },
 
   // --- MOTHERBOARD & THERMAL PASTE ---
@@ -182,6 +193,10 @@ export const IMAGES = {
     motherboardCpuThermalPastePinkPads: { src: "/images/motherboard-cpu-thermal-paste-pink-pads.webp", alt: "Motherboard CPU Thermal Paste Pink Pads", width: 800, height: 600 },
     pcCpuCoolerBracketInstallation: { src: "/images/pc-cpu-cooler-bracket-installation.webp", alt: "PC CPU Cooler Bracket Installation", width: 800, height: 600 },
     pcMotherboardCpuSocketEmptyCloseup: { src: "/images/pc-motherboard-cpu-socket-empty-closeup.webp", alt: "PC Motherboard CPU Socket Empty Closeup", width: 800, height: 600 },
+    asusMotherboardChipsetHeatsinkRepair: { src: "/images/asus-motherboard-chipset-heatsink-repair-kuwait-1000.webp", alt: "ASUS Motherboard Chipset Heatsink Repair Kuwait", width: 1000, height: 1000 },
+    intelCpuPinsInspectionRepair: { src: "/images/intel-cpu-pins-inspection-repair-kuwait-1000.webp", alt: "Intel CPU Pins Inspection Repair Kuwait", width: 1000, height: 1000 },
+    laptopMotherboardGpuChipLevelRepair: { src: "/images/laptop-motherboard-gpu-chip-level-repair-kuwait-1000.webp", alt: "Laptop Motherboard GPU Chip-Level Repair Kuwait", width: 1000, height: 1000 },
+    motherboardBiosFlashUpdateScreen: { src: "/images/motherboard-bios-flash-update-screen-kuwait-1000.webp", alt: "Motherboard BIOS Flash Update Screen Kuwait", width: 1000, height: 1000 },
   },
 
   // --- HARDWARE MAINTENANCE ---
@@ -325,5 +340,27 @@ export const IMAGES = {
     thinkpadX1CarbonTouchCableFlex30pin: { src: "/images/thinkpad-x1-carbon-touch-cable-flex-30pin.webp", alt: "ThinkPad X1 Carbon Touch Cable Flex 30-pin", width: 800, height: 600 },
     toshibaLaptopTechnicianDiagnosticReflection: { src: "/images/toshiba-laptop-technician-diagnostic-reflection.webp", alt: "Toshiba Laptop Technician Diagnostic Reflection", width: 800, height: 600 },
     windowsMemoryDiagnosticTestScreen: { src: "/images/windows-memory-diagnostic-test-screen.webp", alt: "Windows Memory Diagnostic Test Screen", width: 800, height: 600 },
+    cleanLaptopHeatsinkFinsRepair: { src: "/images/clean-laptop-heatsink-fins-repair-kuwait-1000.webp", alt: "Clean Laptop Heatsink Fins Repair Kuwait", width: 1000, height: 1000 },
+    dellLaptopScreenRepairCompleted: { src: "/images/dell-laptop-screen-repair-kuwait-completed-1000.webp", alt: "Dell Laptop Screen Repair Kuwait Completed", width: 1000, height: 1000 },
+    dustyCopperHeatpipeLaptopCoolingRepair: { src: "/images/dusty-copper-heatpipe-laptop-cooling-repair-kuwait-1000.webp", alt: "Dusty Copper Heatpipe Laptop Cooling Repair Kuwait", width: 1000, height: 1000 },
+    dustyLaptopHeatsinkBeforeCleaning: { src: "/images/dusty-laptop-heatsink-before-cleaning-kuwait-1000.webp", alt: "Dusty Laptop Heatsink Before Cleaning Kuwait", width: 1000, height: 1000 },
+    hpLaptopMotherboardRepairOpen: { src: "/images/hp-laptop-motherboard-repair-open-kuwait-1000.webp", alt: "HP Laptop Motherboard Repair Open Kuwait", width: 1000, height: 1000 },
+    laptopCoolingFanDustBeforeService: { src: "/images/laptop-cooling-fan-dust-before-service-kuwait-1000.webp", alt: "Laptop Cooling Fan Dust Before Service Kuwait", width: 1000, height: 1000 },
+    laptopCoolingFanDustCleaningRepair: { src: "/images/laptop-cooling-fan-dust-cleaning-repair-kuwait-1000.webp", alt: "Laptop Cooling Fan Dust Cleaning Repair Kuwait", width: 1000, height: 1000 },
+    laptopCoolingFinsDustRemoval: { src: "/images/laptop-cooling-fins-dust-removal-kuwait-1000.webp", alt: "Laptop Cooling Fins Dust Removal Kuwait", width: 1000, height: 1000 },
+    laptopDcPowerJackConnectorReplacement: { src: "/images/laptop-dc-power-jack-connector-replacement-kuwait-1000.webp", alt: "Laptop DC Power Jack Connector Replacement Kuwait", width: 1000, height: 1000 },
+    laptopDisassemblyInternalRepair: { src: "/images/laptop-disassembly-internal-repair-kuwait-1000.webp", alt: "Laptop Disassembly Internal Repair Kuwait", width: 1000, height: 1000 },
+    laptopDustRemovalCoolingService: { src: "/images/laptop-dust-removal-cooling-service-kuwait-1000.webp", alt: "Laptop Dust Removal Cooling Service Kuwait", width: 1000, height: 1000 },
+    laptopFanCleanedServiced: { src: "/images/laptop-fan-cleaned-serviced-kuwait-1000.webp", alt: "Laptop Fan Cleaned Serviced Kuwait", width: 1000, height: 1000 },
+    laptopFanReassemblyRepair: { src: "/images/laptop-fan-reassembly-repair-kuwait-1000.webp", alt: "Laptop Fan Reassembly Repair Kuwait", width: 1000, height: 1000 },
+    laptopHeatsinkCleanedAfterService: { src: "/images/laptop-heatsink-cleaned-after-service-kuwait-1000.webp", alt: "Laptop Heatsink Cleaned After Service Kuwait", width: 1000, height: 1000 },
+    laptopHeatsinkDustBuildupRepair: { src: "/images/laptop-heatsink-dust-buildup-repair-kuwait-1000.webp", alt: "Laptop Heatsink Dust Buildup Repair Kuwait", width: 1000, height: 1000 },
+    laptopHeatsinkRemovalMotherboardRepair: { src: "/images/laptop-heatsink-removal-motherboard-repair-kuwait-1000.webp", alt: "Laptop Heatsink Removal Motherboard Repair Kuwait", width: 1000, height: 1000 },
+    laptopMotherboardDualFanCoolingBattery: { src: "/images/laptop-motherboard-dual-fan-cooling-battery-kuwait-1000.webp", alt: "Laptop Motherboard Dual Fan Cooling Battery Kuwait", width: 1000, height: 1000 },
+    mx4ThermalCompoundLaptopFanRepair: { src: "/images/mx4-thermal-compound-laptop-fan-repair-kuwait-1000.webp", alt: "MX-4 Thermal Compound Laptop Fan Repair Kuwait", width: 1000, height: 1000 },
+    thermalPasteApplicationPcRepair: { src: "/images/thermal-paste-application-pc-repair-kuwait-1000.webp", alt: "Thermal Paste Application PC Repair Kuwait", width: 1000, height: 1000 },
+    thermalPasteLaptopCpuApplication: { src: "/images/thermal-paste-laptop-cpu-application-kuwait-1000.webp", alt: "Thermal Paste Laptop CPU Application Kuwait", width: 1000, height: 1000 },
+    wifiM2WlanCardReplacementParts: { src: "/images/wifi-m2-wlan-card-replacement-parts-kuwait-1000.webp", alt: "WiFi M.2 WLAN Card Replacement Parts Kuwait", width: 1000, height: 1000 },
+    wifiWlanCardInstallationLaptop: { src: "/images/wifi-wlan-card-installation-laptop-kuwait-1000.webp", alt: "WiFi WLAN Card Installation Laptop Kuwait", width: 1000, height: 1000 },
   }
 } as const;
