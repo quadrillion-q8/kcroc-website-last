@@ -44,7 +44,6 @@ export const BeforeAfterShowcase = () => {
           className="mb-4 sm:mb-16"
         />
 
-        {/* Mobile: horizontal swipe carousel. Desktop (md+): grid. */}
         <div className="scroll-row gap-3 -mx-4 px-4 md:mx-0 md:px-0 md:grid md:grid-cols-2 md:gap-6">
           {caseStudies.map((c) => {
             const before = c.featuredImage?.thumbnail;
@@ -59,13 +58,13 @@ export const BeforeAfterShowcase = () => {
                 {hasImages && (
                   <div className="grid grid-cols-2">
                     <div className="relative">
-                      <Picture variant={before} alt={`${c.title} — before repair`} />
+                      <Picture variant={before} alt={c.title + ' - before repair'} />
                       <span className="absolute top-2 left-2 text-[10px] uppercase tracking-wide bg-slate-950/80 text-slate-300 px-2 py-1 rounded-full">
                         Before
                       </span>
                     </div>
                     <div className="relative">
-                      <Picture variant={after} alt={`${c.title} — after repair`} />
+                      <Picture variant={after} alt={c.title + ' - after repair'} />
                       <span className="absolute top-2 left-2 text-[10px] uppercase tracking-wide bg-cyan-500/90 text-slate-950 px-2 py-1 rounded-full font-bold">
                         After
                       </span>
@@ -112,7 +111,7 @@ export const BeforeAfterShowcase = () => {
             onClick={() => trackConversion('cta_click', { cta_name: 'case_studies_view_all', button_position: 'before_after_showcase' })}
             className="text-cyan-400 hover:text-cyan-300 font-semibold text-sm underline underline-offset-4"
           >
-            View all case studies →
+            {'View all case studies \u2192'}
           </a>
         </div>
       </div>
