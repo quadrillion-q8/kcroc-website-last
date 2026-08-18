@@ -3,12 +3,8 @@ import React from 'react';
 import { Stethoscope, Wrench, CheckCircle2 } from 'lucide-react';
 import { KCROC_GRAPH } from '../../data/graph';
 import { useAnalytics } from '../../core/analytics/AnalyticsProvider';
+import { SectionHeader } from '@/components/ui/section-header';
 
-// Reuses the existing RoutableEntity.featuredImage field (no schema change
-// needed): featuredImage.thumbnail = "before" shot, featuredImage.hero =
-// "after" shot. If a case study has no featuredImage set yet, this falls
-// back to a text-only diagnostic-timeline card using the real case-study
-// copy already in graph.ts, so nothing ever 404s.
 const Picture = ({
   variant,
   alt,
@@ -41,14 +37,12 @@ export const BeforeAfterShowcase = () => {
   return (
     <section className="w-full py-8 sm:py-24 px-4 sm:px-6 border-t border-slate-800/50 bg-slate-900/20">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-4 sm:mb-16">
-          <p className="text-xs font-bold text-emerald-500 uppercase tracking-wider mb-2 sm:mb-3">
-            Proof, Not Promises
-          </p>
-          <h2 className="text-white">
-            We Fix the Board. Here's the Evidence.
-          </h2>
-        </div>
+        <SectionHeader
+          eyebrow="Proof, Not Promises"
+          title="We Fix the Board. Here's the Evidence."
+          align="center"
+          className="mb-4 sm:mb-16"
+        />
 
         {/* Mobile: horizontal swipe carousel. Desktop (md+): grid. */}
         <div className="scroll-row gap-3 -mx-4 px-4 md:mx-0 md:px-0 md:grid md:grid-cols-2 md:gap-6">
@@ -113,7 +107,7 @@ export const BeforeAfterShowcase = () => {
         </div>
 
         <div className="text-center mt-6 sm:mt-12">
-          <a
+          
             href="/case-studies"
             onClick={() => trackConversion('cta_click', { cta_name: 'case_studies_view_all', button_position: 'before_after_showcase' })}
             className="text-cyan-400 hover:text-cyan-300 font-semibold text-sm underline underline-offset-4"
