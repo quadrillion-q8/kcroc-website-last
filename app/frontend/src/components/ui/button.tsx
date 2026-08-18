@@ -15,6 +15,17 @@ const buttonVariants = cva(
         secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/80',
         ghost: 'hover:bg-accent hover:text-accent-foreground',
         link: 'text-primary underline-offset-4 hover:underline',
+        // CTA hierarchy — spec Section 16. Centralizes the cyan/emerald/
+        // underline patterns already hand-rolled inline across Hero,
+        // PricingTable, FAQSection etc. Existing inline-styled buttons are
+        // untouched; new code can reach for these instead of re-typing
+        // "bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold rounded-full".
+        ctaPrimary:
+          'bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold rounded-full shadow-lg shadow-cyan-500/10 min-h-[44px]',
+        ctaSecondary:
+          'border-2 border-emerald-500 text-emerald-400 hover:bg-emerald-500/10 font-bold rounded-full bg-transparent min-h-[44px]',
+        ctaTertiary:
+          'text-cyan-400 hover:text-cyan-300 font-semibold underline underline-offset-4 bg-transparent p-0 h-auto',
       },
       size: {
         default: 'h-10 px-4 py-2',
