@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { MapPin, Phone, MessageCircle, CalendarClock, ShieldCheck, Clock, Star, Facebook, Instagram, Truck, Zap } from 'lucide-react';
 
-// 🚀 PERF: Footer renders on every route. It only needs a handful of small
-// fields (business contact info, footer links, trust badges) — not the full
+// PERF: Footer renders on every route. It only needs a handful of small
+// fields (business contact info, footer links, trust badges) - not the full
 // ~190KB knowledge graph. NAV_GRAPH is a generated slim projection of
 // graph.ts (see scripts/generate-nav-data.ts) kept in sync automatically.
 import { NAV_GRAPH } from '../../../data/navGraph.generated';
@@ -19,18 +19,21 @@ const TRUST_ICON_MAP: Record<string, React.ElementType> = {
 export function Footer() {
   const [logoError, setLogoError] = useState(false);
 
-  // Hook directly into the slim nav graph
   const business = NAV_GRAPH.business;
   const footerData = NAV_GRAPH.footer ? { links: NAV_GRAPH.footer } : null;
   const trustBadges = NAV_GRAPH.trustBadges;
 
-  // Failsafe in case graph is missing
   if (!business || !footerData) return null;
 
-  const WA_LINK = `https://wa.me/${business.telephone}?text=${encodeURIComponent("Hi KCROC, I need computer repair assistance in Kuwait.")}`;
+  const waMessage = 'Hi KCROC, I need computer repair assistance in Kuwait.';
+  const WA_LINK = 'https://wa.me/' + business.telephone + '?text=' + encodeURIComponent(waMessage);
+
+  const brandLabel = business.alternateName || business.title;
+  const facebookAriaLabel = brandLabel + ' on Facebook';
+  const instagramAriaLabel = brandLabel + ' on Instagram';
 
   return (
-    // 🚀 FIXED-ELEMENT OVERLAP: pb-28 (was pb-8) on mobile. The global
+    // FIXED-ELEMENT OVERLAP: pb-28 (was pb-8) on mobile. The global
     // StickyMobileCTA bar is fixed at the viewport bottom on every page and
     // is roughly 80-90px tall (button + safe-area). pb-8 (32px) wasn't
     // enough clearance, so the last line of the footer (copyright text)
@@ -54,18 +57,18 @@ export function Footer() {
         )}
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
-          
+
           {/* Brand Info */}
           <div>
             <Link to="/" className="flex items-center mb-6 block w-fit" aria-label="Return to KCROC home page">
               {!logoError ? (
-                <img 
-                  src={business.logoUrl} 
-                  alt={`${business.alternateName || business.title} Logo`} 
+                <img
+                  src={business.logoUrl}
+                  alt={brandLabel + ' Logo'}
                   width="112"
                   height="112"
-                  className="h-14 w-auto object-contain rounded-xl" 
-                  onError={() => setLogoError(true)} 
+                  className="h-14 w-auto object-contain rounded-xl"
+                  onError={() => setLogoError(true)}
                 />
               ) : (
                 <div className="flex items-center gap-2">
@@ -82,13 +85,13 @@ export function Footer() {
                   ))}
                 </div>
                 <span className="text-slate-400 text-xs font-medium">
-                  {business.aggregateRating.ratingValue} · {business.aggregateRating.reviewCount}+ reviews
+                  {business.aggregateRating.ratingValue} - {business.aggregateRating.reviewCount}+ reviews
                 </span>
               </div>
             )}
 
             <p className="text-slate-400 text-sm leading-relaxed mb-4">
-              Professional computer and laptop repair in Kuwait. Free pickup & delivery across all governorates. No Fix, No Fee.
+              Professional computer and laptop repair in Kuwait. Free pickup and delivery across all governorates. No Fix, No Fee.
             </p>
 
             {business.openingHours && (
@@ -99,10 +102,10 @@ export function Footer() {
             )}
 
             <div className="flex items-center gap-4">
-              <a 
-                href={WA_LINK} 
-                target="_blank" 
-                rel="noopener noreferrer" 
+              
+                href={WA_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-bold transition-colors"
               >
                 <MessageCircle size={20} aria-hidden="true" /> WhatsApp Us
@@ -116,7 +119,7 @@ export function Footer() {
                     href={business.socialLinks.facebook}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label={`${business.alternateName || business.title} on Facebook`}
+                    aria-label={facebookAriaLabel}
                     className="w-9 h-9 flex items-center justify-center rounded-full border border-slate-800 text-slate-400 hover:text-cyan-400 hover:border-cyan-500/30 transition-colors"
                   >
                     <Facebook size={16} aria-hidden="true" />
@@ -127,7 +130,7 @@ export function Footer() {
                     href={business.socialLinks.instagram}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label={`${business.alternateName || business.title} on Instagram`}
+                    aria-label={instagramAriaLabel}
                     className="w-9 h-9 flex items-center justify-center rounded-full border border-slate-800 text-slate-400 hover:text-cyan-400 hover:border-cyan-500/30 transition-colors"
                   >
                     <Instagram size={16} aria-hidden="true" />
@@ -175,7 +178,7 @@ export function Footer() {
               </li>
               <li className="flex items-center gap-3 text-slate-400 text-sm">
                 <Phone className="w-5 h-5 text-cyan-400 flex-shrink-0" aria-hidden="true" />
-                <a href={`tel:+${business.telephone}`} className="hover:text-white transition-colors">
+                <a href={'tel:+' + business.telephone} className="hover:text-white transition-colors">
                   +{business.telephone}
                 </a>
               </li>
@@ -187,7 +190,6 @@ export function Footer() {
               </li>
             </ul>
 
-            {/* Service Areas Rendered as small badges */}
             <div className="mt-6">
               <h4 className="text-slate-500 font-bold text-xs uppercase mb-3">Service Areas</h4>
               <div className="flex flex-wrap gap-2">
@@ -204,7 +206,7 @@ export function Footer() {
         {/* Legal */}
         <div className="border-t border-slate-800/50 pt-8 mt-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-slate-500 text-sm">
-            © {new Date().getFullYear()} {business.legalName}. All rights reserved.
+            {'\u00A9 ' + new Date().getFullYear() + ' ' + business.legalName + '. All rights reserved.'}
           </p>
           <div className="flex gap-6">
             <Link to="/privacy-policy" className="text-slate-600 hover:text-slate-400 text-sm transition-colors">Privacy Policy</Link>
