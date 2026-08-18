@@ -37,7 +37,7 @@ export function Footer() {
     // was getting covered by the CTA bar once a user scrolled to the true
     // bottom of any page. md:pb-8 restores the original desktop spacing,
     // where there's no competing fixed bottom bar.
-    <footer className="relative bg-[#0a0f1c]/80 backdrop-blur-md border-t border-slate-800/50 pt-16 pb-28 md:pb-8 z-10" aria-label="Site Footer">
+    <footer className="relative bg-slate-950/80 backdrop-blur-md border-t border-slate-800/50 pt-16 pb-28 md:pb-8 z-10" aria-label="Site Footer">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {trustBadges.length > 0 && (
           <div className="flex flex-wrap justify-center gap-x-8 gap-y-4 pb-12 mb-12 border-b border-slate-800/50">
@@ -112,7 +112,7 @@ export function Footer() {
             {(business.socialLinks?.facebook || business.socialLinks?.instagram) && (
               <div className="flex items-center gap-3 mt-5">
                 {business.socialLinks.facebook && (
-                  <a
+                  
                     href={business.socialLinks.facebook}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -123,7 +123,7 @@ export function Footer() {
                   </a>
                 )}
                 {business.socialLinks.instagram && (
-                  <a
+                  
                     href={business.socialLinks.instagram}
                     target="_blank"
                     rel="noopener noreferrer"
