@@ -102,7 +102,7 @@ export function Footer() {
             )}
 
             <div className="flex items-center gap-4">
-              
+              <a
                 href={WA_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -115,7 +115,7 @@ export function Footer() {
             {(business.socialLinks?.facebook || business.socialLinks?.instagram) && (
               <div className="flex items-center gap-3 mt-5">
                 {business.socialLinks.facebook && (
-                  
+                  <a
                     href={business.socialLinks.facebook}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -126,7 +126,7 @@ export function Footer() {
                   </a>
                 )}
                 {business.socialLinks.instagram && (
-                  
+                  <a
                     href={business.socialLinks.instagram}
                     target="_blank"
                     rel="noopener noreferrer"
