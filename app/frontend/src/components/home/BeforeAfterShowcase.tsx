@@ -106,7 +106,7 @@ export const BeforeAfterShowcase = () => {
         </div>
 
         <div className="text-center mt-6 sm:mt-12">
-          
+          <a
             href="/case-studies"
             onClick={() => trackConversion('cta_click', { cta_name: 'case_studies_view_all', button_position: 'before_after_showcase' })}
             className="text-cyan-400 hover:text-cyan-300 font-semibold text-sm underline underline-offset-4"
