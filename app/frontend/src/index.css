@@ -39,6 +39,25 @@
     }
   }
 
+  /* Section 11 (Typography) — global heading scale. Components that
+     already set explicit size/weight classes (text-3xl font-black, etc.)
+     are untouched: Tailwind utility classes always win over these base
+     rules. This only fixes the many h2/h3 tags across the site that were
+     silently falling back to unstyled browser defaults, which is why
+     heading size varied between sections that otherwise look identical. */
+  h1 {
+    @apply text-4xl sm:text-5xl font-black tracking-tight text-white leading-tight;
+  }
+  h2 {
+    @apply text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight text-white leading-tight;
+  }
+  h3 {
+    @apply text-lg sm:text-xl font-bold text-white leading-snug;
+  }
+  h4 {
+    @apply text-base sm:text-lg font-bold text-white;
+  }
+
   html, body {
     width: 100%;
     margin: 0;
