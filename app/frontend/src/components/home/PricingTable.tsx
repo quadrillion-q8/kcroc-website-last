@@ -2,6 +2,7 @@
 import React from 'react';
 import { KCROC_GRAPH } from '../../data/graph';
 import { useAnalytics } from '../../core/analytics/AnalyticsProvider';
+import { SectionHeader } from '@/components/ui/section-header';
 
 export const PricingTable = () => {
   const services = [...KCROC_GRAPH.services].sort(
@@ -18,24 +19,20 @@ export const PricingTable = () => {
   return (
     <section className="w-full py-8 sm:py-24 px-4 sm:px-6 border-t border-slate-800/50 bg-slate-950">
       <div className="max-w-5xl mx-auto">
-        <div className="text-center mb-4 sm:mb-16">
-          <p className="text-xs font-bold text-emerald-500 uppercase tracking-wider mb-2 sm:mb-3">
-            No Hidden Fees
-          </p>
-          <h2 className="text-white">
-            Transparent Pricing
-          </h2>
-          <p className="mt-3 sm:mt-4 text-slate-400 max-w-xl mx-auto text-sm sm:text-base">
-            Free diagnostic. Fixed quote before we touch a tool. No Fix, No Fee.
-          </p>
-        </div>
+        <SectionHeader
+          eyebrow="No Hidden Fees"
+          title="Transparent Pricing"
+          description="Free diagnostic. Fixed quote before we touch a tool. No Fix, No Fee."
+          align="center"
+          className="mb-4 sm:mb-16"
+        />
 
         {/* Mobile: horizontal pricing cards. Desktop (sm+): stacked list. */}
         <div className="scroll-row snap-x snap-mandatory gap-3 -mx-4 px-4 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 sm:gap-4">
           {services.map((service) => {
             const thumb = service.contentImages?.[0];
             return (
-            <a
+            
               key={service.id}
               href={`/${service.slug}`}
               onClick={() => trackConversion('cta_click', { cta_name: 'pricing_service_card', button_position: 'pricing_table' })}
@@ -69,7 +66,7 @@ export const PricingTable = () => {
         </div>
 
         <div className="mt-6 sm:mt-10 text-center">
-          <a
+          
             href={`https://wa.me/${whatsappNumber}`}
             target="_blank"
             rel="noopener noreferrer"
