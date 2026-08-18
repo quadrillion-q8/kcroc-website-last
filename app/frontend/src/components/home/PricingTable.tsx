@@ -32,7 +32,7 @@ export const PricingTable = () => {
           {services.map((service) => {
             const thumb = service.contentImages?.[0];
             return (
-            
+              <a
               key={service.id}
               href={`/${service.slug}`}
               onClick={() => trackConversion('cta_click', { cta_name: 'pricing_service_card', button_position: 'pricing_table' })}
@@ -66,7 +66,7 @@ export const PricingTable = () => {
         </div>
 
         <div className="mt-6 sm:mt-10 text-center">
-          
+          <a
             href={`https://wa.me/${whatsappNumber}`}
             target="_blank"
             rel="noopener noreferrer"
