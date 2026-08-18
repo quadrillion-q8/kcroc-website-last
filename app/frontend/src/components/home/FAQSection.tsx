@@ -3,13 +3,12 @@ import React, { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { KCROC_GRAPH } from '../../data/graph';
 import { useAnalytics } from '../../core/analytics/AnalyticsProvider';
+import { SectionHeader } from '@/components/ui/section-header';
 
 export default function FAQSection() {
   const { trackConversion } = useAnalytics();
   const [openId, setOpenId] = useState<string | null>(null);
 
-  // Scope to the curated homepage list (page-home.featuredFAQIds) instead of
-  // dumping the entire FAQ array — this was rendering all ~20+ FAQs before.
   const homePage = KCROC_GRAPH.pages?.find((p) => p.id === 'page-home');
   const featuredIds = homePage?.featuredFAQIds ?? [];
 
@@ -17,17 +16,14 @@ export default function FAQSection() {
     ? featuredIds
         .map((id) => KCROC_GRAPH.faqs.find((f) => f.id === id))
         .filter((f): f is NonNullable<typeof f> => Boolean(f))
-    : KCROC_GRAPH.faqs.slice(0, 8); // fallback so the section never renders empty if featuredFAQIds is ever cleared
+    : KCROC_GRAPH.faqs.slice(0, 8);
 
   if (faqs.length === 0) return null;
 
   return (
     <section className="py-8 sm:py-24 px-4 sm:px-6 max-w-3xl mx-auto">
-      <h2 className="text-white text-center mb-4 sm:mb-12">
-        Frequently Asked Questions
-      </h2>
-      {/* Collapsed by default — only the tapped question expands. Cuts initial
-          scroll height dramatically vs. showing every answer at once. */}
+      <SectionHeader title="Frequently Asked Questions" align="center" className="mb-4 sm:mb-12" />
+
       <div className="space-y-2 sm:space-y-3">
         {faqs.map((faq) => {
           const isOpen = openId === faq.id;
@@ -55,7 +51,7 @@ export default function FAQSection() {
       </div>
 
       <div className="text-center mt-6 sm:mt-10">
-        <a
+        
           href="/faq"
           onClick={() =>
             trackConversion('cta_click', {
