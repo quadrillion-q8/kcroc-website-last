@@ -5,6 +5,7 @@ import { Menu, X, ChevronDown, Phone, CalendarCheck, Laptop, Search } from 'luci
 import { NAV_GRAPH } from '../../../data/navGraph.generated';
 import { COMPILED_NAVIGATION } from '../../navigation/NavigationCompiler';
 import { useAnalytics } from '../../analytics/AnalyticsProvider';
+import { Button } from '@/components/ui/button';
 import MobileMenu from './MobileMenu';
 
 const DesktopMegaMenu = React.lazy(() => import('./DesktopMegaMenu'));
@@ -177,10 +178,16 @@ export default function Header() {
                 <Phone size={15} className="text-cyan-400" aria-hidden="true" />
                 <span className="hidden xl:block">{phoneDisplay}</span>
               </a>
-              <Link to="/booking" onClick={() => trackConversion('cta_click', { cta_name: 'header_book', button_position: 'header' })} className="flex items-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-sm px-4 py-2 rounded-lg transition-all hover:scale-[1.02] shadow-[0_0_15px_rgba(34,211,238,0.2)]">
-                <CalendarCheck size={15} aria-hidden="true" />
-                Book Online
-              </Link>
+              <Button
+                asChild
+                variant="ctaPrimary"
+                className="h-auto gap-2 rounded-lg px-4 py-2 text-sm transition-all hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(34,211,238,0.25)]"
+              >
+                <Link to="/booking" onClick={() => trackConversion('cta_click', { cta_name: 'header_book', button_position: 'header' })}>
+                  <CalendarCheck size={15} aria-hidden="true" />
+                  Book Online
+                </Link>
+              </Button>
             </div>
 
             <div className="lg:hidden flex items-center gap-1">
