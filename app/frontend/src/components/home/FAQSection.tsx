@@ -51,7 +51,7 @@ export default function FAQSection() {
       </div>
 
       <div className="text-center mt-6 sm:mt-10">
-        
+        <a
           href="/faq"
           onClick={() =>
             trackConversion('cta_click', {
