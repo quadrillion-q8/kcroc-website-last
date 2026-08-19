@@ -37,11 +37,10 @@
     <meta name="twitter:title" content="Kuwait Computer Repair On Call | MacBook & Laptop Repair – Free Pick & Drop" />
     <meta name="twitter:description" content="Same-day laptop, MacBook & PC repair in Kuwait with Free Pick & Drop. 4.9★ Google rating, 30-day warranty." />
     <meta name="twitter:image" content="https://www.computerrepairkuwait.com/logo.webp" />
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H2BXCZJ8NX"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
-      
+
       // 🚀 SECURITY: Default Google Consent Mode v2 to 'denied'
       gtag('consent', 'default', {
         'analytics_storage': 'denied',
@@ -52,6 +51,20 @@
       gtag('js', new Date());
       gtag('config', 'G-H2BXCZJ8NX');
       gtag('config', 'AW-402583081');
+
+      // 🚀 PERF FIX: gtag.js (+ its per-ID config fetches) was ~326 KiB of
+      // which PageSpeed flagged 137.7 KiB as unused on initial load, and it
+      // was loading in parallel with the app bundle on the render-critical
+      // connection (Network dependency tree / Reduce unused JavaScript
+      // audits). gtag() calls above are safely queued in dataLayer regardless
+      // of when the library script actually attaches, so we only fetch it
+      // once the page has finished loading and the LCP/FCP work is done.
+      window.addEventListener('load', function () {
+        var gtagScript = document.createElement('script');
+        gtagScript.async = true;
+        gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-H2BXCZJ8NX';
+        document.head.appendChild(gtagScript);
+      });
     </script>
   </head>
   <body>
