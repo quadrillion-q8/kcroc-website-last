@@ -37,6 +37,17 @@ const HawalliLocationPage = lazy(() => import('./pages/HawalliLocationPage'));
 // 🚀 The five service-area locations (Farwaniya, Salmiya, Kuwait City, Jahra,
 // Ahmadi) now get the same rich page depth as Hawalli via a shared,
 // data-driven template rather than the older, thinner LocationTemplate.
+//
+// 🩹 FIX: this MUST stay a single dynamic `location/:slug` route (below),
+// not five separate static route entries (one per location). vite-react-ssg
+// prerenders every route in `public/sitemap.xml` in one Node process, and
+// registering five sibling static RouteObjects for the same `location/*`
+// pattern caused the SSG renderer to flush several of them before the page
+// content actually resolved — producing near-empty static HTML (no <h1>,
+// wrong content) for everything except Hawalli, even though the page
+// worked perfectly in the browser after client-side hydration. Routing all
+// five through one dynamic route — the same pattern the old LocationTemplate
+// already used successfully — avoids the issue entirely.
 const LocationDeepTemplate = lazy(() => import('./pages/LocationDeepTemplate'));
 const BlogPostTemplate = lazy(() => import('./pages/BlogPostTemplate'));
 
@@ -140,12 +151,7 @@ export const routes: RouteObject[] = [
           { path: 'computer-repair-:slug', element: <LocationTemplate /> },
           { path: 'laptop-repair-:slug', element: <LocationTemplate /> },
           { path: 'location/hawalli', element: <HawalliLocationPage /> },
-          { path: 'location/farwaniya', element: <LocationDeepTemplate /> },
-          { path: 'location/salmiya', element: <LocationDeepTemplate /> },
-          { path: 'location/kuwait-city', element: <LocationDeepTemplate /> },
-          { path: 'location/jahra', element: <LocationDeepTemplate /> },
-          { path: 'location/ahmadi', element: <LocationDeepTemplate /> },
-          { path: 'location/:slug', element: <LocationTemplate /> },
+          { path: 'location/:slug', element: <LocationDeepTemplate /> },
           { path: 'pillar/:slug', element: <PillarTemplate /> },
           { path: 'faq/:faqSlug', element: <Navigate to="/faq" replace /> },
           
