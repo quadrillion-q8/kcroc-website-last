@@ -71,6 +71,7 @@ const AuthorImran = lazy(() => import('./pages/AuthorImran'));
 
 // 🚀 Custom AI-Generated Guides
 const BatteryHealthGuide = lazy(() => import('./pages/BatteryHealthGuide'));
+const BiosUefiRecoveryGuide = lazy(() => import('./pages/BiosUefiRecoveryGuide'));
 const DellInspiron15_3000OverheatingPage = lazy(() => import('./pages/DellInspiron15_3000OverheatingPage').then(module => ({ default: module.DellInspiron15_3000OverheatingPage })));
 
 // 🚀 CWV Optimization: Extracted routing logic that requires graph.ts into a deferred chunk.
@@ -142,6 +143,7 @@ export const routes: RouteObject[] = [
           { path: 'blog/intel-core-ultra-vs-amd-ryzen-ai', element: <IntelVsAmdGuide /> },
           { path: 'author/imran', element: <AuthorImran /> },
           { path: 'guides/laptop-battery-warning-signs', element: <BatteryHealthGuide /> },
+          { path: 'guides/bios-uefi-recovery-kuwait', element: <BiosUefiRecoveryGuide /> },
           { path: 'guides/dell-inspiron-15-3000-overheating', element: <DellInspiron15_3000OverheatingPage /> },
           { path: 'guides/dell-overheating', element: <Navigate to="/guides/dell-inspiron-15-3000-overheating" replace /> },
           { path: 'laptop-screen-protection-tips', element: <ScreenProtectionTips /> },
