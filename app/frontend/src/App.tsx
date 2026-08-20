@@ -34,6 +34,10 @@ const GuidesIndex = lazy(() => import('./pages/GuidesIndex'));
 // highest-traffic pages — it gets a dedicated page instead of being forced
 // through the shared LocationTemplate used by the other (service-area) locations.
 const HawalliLocationPage = lazy(() => import('./pages/HawalliLocationPage'));
+// 🚀 The five service-area locations (Farwaniya, Salmiya, Kuwait City, Jahra,
+// Ahmadi) now get the same rich page depth as Hawalli via a shared,
+// data-driven template rather than the older, thinner LocationTemplate.
+const LocationDeepTemplate = lazy(() => import('./pages/LocationDeepTemplate'));
 const BlogPostTemplate = lazy(() => import('./pages/BlogPostTemplate'));
 
 // Case Studies Index Page
@@ -136,6 +140,11 @@ export const routes: RouteObject[] = [
           { path: 'computer-repair-:slug', element: <LocationTemplate /> },
           { path: 'laptop-repair-:slug', element: <LocationTemplate /> },
           { path: 'location/hawalli', element: <HawalliLocationPage /> },
+          { path: 'location/farwaniya', element: <LocationDeepTemplate /> },
+          { path: 'location/salmiya', element: <LocationDeepTemplate /> },
+          { path: 'location/kuwait-city', element: <LocationDeepTemplate /> },
+          { path: 'location/jahra', element: <LocationDeepTemplate /> },
+          { path: 'location/ahmadi', element: <LocationDeepTemplate /> },
           { path: 'location/:slug', element: <LocationTemplate /> },
           { path: 'pillar/:slug', element: <PillarTemplate /> },
           { path: 'faq/:faqSlug', element: <Navigate to="/faq" replace /> },
