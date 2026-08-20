@@ -399,68 +399,87 @@ export default function BatteryHealthGuide() {
       <SEOEngine entityId="guide-battery" />
 
       {/* ─── HERO ─── */}
-      <section className="relative pt-24 pb-8 sm:pb-16 px-4 sm:px-6 overflow-hidden">
+      <section className="relative overflow-hidden border-b border-slate-800/80 px-4 pb-10 pt-24 sm:px-6 sm:pb-16">
         <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-transparent to-emerald-500/10" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(6,182,212,0.1),transparent_50%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(6,182,212,0.14),transparent_45%)]" />
+        <div className="container relative z-10 mx-auto max-w-5xl">
+          <div className="grid gap-8 lg:grid-cols-[1.35fr_.65fr] lg:items-center">
+            <div>
+              <Badge className="mb-4 border-cyan-500/30 bg-cyan-500/10 px-3 py-1.5 text-cyan-300">
+                <Battery className="mr-2 h-4 w-4" />
+                Laptop Battery Health Guide
+              </Badge>
+              <h1 className="max-w-3xl text-3xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">
+                Laptop Battery Warning Signs:
+                <span className="block bg-gradient-to-r from-cyan-400 to-emerald-400 bg-clip-text text-transparent">
+                  Know What to Do Next
+                </span>
+              </h1>
+              <p className="mt-5 max-w-2xl text-sm leading-7 text-slate-300 sm:text-lg">
+                Learn the 10 warning signs of a failing laptop battery, check its health on Windows 11 or MacBook, and quickly tell the difference between a battery problem and a software or charging problem.
+              </p>
+              <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+                <Button size="lg" asChild className="w-full bg-cyan-500 px-6 py-6 font-bold text-slate-950 hover:bg-cyan-400 sm:w-auto">
+                  <a href="#quick-answer">Start With the Quick Check</a>
+                </Button>
+                <Button size="lg" variant="outline" asChild className="w-full border-slate-700 px-6 py-6 text-slate-200 hover:bg-slate-800 sm:w-auto">
+                  <a href="#check-health">Check Battery Health</a>
+                </Button>
+              </div>
+              <div className="mt-6 flex flex-wrap gap-2">
+                {toc.map((item) => (
+                  <a key={item.id} href={`#${item.id}`} className="rounded-full border border-slate-800 bg-slate-950/40 px-3 py-1.5 text-[11px] text-slate-400 transition hover:border-cyan-500/50 hover:text-cyan-300">
+                    {item.label}
+                  </a>
+                ))}
+              </div>
+            </div>
 
-        <div className="container mx-auto max-w-4xl relative z-10 text-center space-y-4 sm:space-y-5 mt-8 sm:mt-0">
-          <Badge className="bg-cyan-500/20 text-cyan-300 border-cyan-500/30 px-4 sm:px-6 py-1.5 sm:py-2 text-xs sm:text-sm font-semibold">
-            <Battery className="w-4 h-4 mr-2 inline" />
-            Battery Health Guide \u2014 Updated for Windows 11 &amp; macOS
-          </Badge>
-          <h1 className="text-3xl sm:text-6xl font-bold text-white leading-tight">
-            Laptop Battery Warning Signs:<br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-emerald-400">
-              10 Signs It Needs Replacement
-            </span>
-          </h1>
-          <p className="text-sm sm:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed">
-            A complete, brand-agnostic guide to diagnosing a failing laptop battery \u2014 covering Windows 11, MacBook, and every major manufacturer \u2014 plus what to do if yours is dangerous.
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-3 justify-center pt-2">
-            <Button size="lg" asChild className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 text-base px-6 sm:px-8 py-6 font-bold w-full sm:w-auto">
-              <a href="#quick-answer">See the Warning Signs</a>
-            </Button>
-            <Button size="lg" variant="outline" asChild className="border-emerald-500/50 text-emerald-300 hover:bg-emerald-500/10 text-base px-6 sm:px-8 py-6 w-full sm:w-auto">
-              <a href="#check-health">Check My Battery Health</a>
-            </Button>
-          </div>
-
-          {/* Jump navigation */}
-          <div className="flex flex-wrap justify-center gap-2 pt-4 -mx-4 px-4 sm:mx-0 sm:px-0">
-            {toc.map((item) => (
-              <a
-                key={item.id}
-                href={`#${item.id}`}
-                className="text-[11px] sm:text-xs text-slate-400 border border-slate-800 rounded-full px-3 py-1.5 hover:border-cyan-500/50 hover:text-cyan-300 transition-colors"
-              >
-                {item.label}
+            <div className="rounded-2xl border border-red-500/30 bg-red-500/5 p-5 shadow-2xl shadow-red-950/20 sm:p-6">
+              <div className="flex items-start gap-3">
+                <div className="rounded-xl bg-red-500/15 p-3">
+                  <AlertTriangle className="h-6 w-6 text-red-400" />
+                </div>
+                <div>
+                  <p className="text-xs font-bold uppercase tracking-widest text-red-300">Safety first</p>
+                  <h2 className="mt-1 text-xl font-bold text-white">Is the battery swollen?</h2>
+                </div>
+              </div>
+              <p className="mt-4 text-sm leading-6 text-slate-300">
+                If the battery or laptop case is bulging, the trackpad is lifting, or the battery area is unusually hot, <strong className="text-white">stop using the laptop</strong> and arrange professional inspection.
+              </p>
+              <a href="#battery-safety" className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-red-300 hover:text-red-200">
+                Read the safety instructions <ChevronRight className="h-4 w-4" />
               </a>
-            ))}
+            </div>
           </div>
         </div>
       </section>
 
       {/* ─── QUICK ANSWER ─── */}
-      <section id="quick-answer" className="py-8 sm:py-16 px-4 sm:px-6 bg-slate-900/50 border-t border-slate-900 scroll-mt-20">
-        <div className="container mx-auto max-w-4xl">
-          <h2 className="text-xl sm:text-3xl font-bold text-white mb-4">How Do I Know If My Laptop Battery Is Bad?</h2>
-          <p className="text-slate-300 text-sm sm:text-base leading-relaxed mb-6">
-            In short: watch for fast drain, a much shorter runtime than before, unexpected shutdowns, charging problems, an erratic percentage, visible swelling, unusual heat near the battery, a poor health-report reading, an explicit OS warning, or instability that only happens on battery power. Any one of these is worth checking; several together is a strong signal.
-          </p>
-          <div className="grid sm:grid-cols-2 gap-x-8 gap-y-2 mb-6">
+      <section id="quick-answer" className="scroll-mt-20 border-b border-slate-800/80 bg-slate-900/40 px-4 py-10 sm:px-6 sm:py-16">
+        <div className="container mx-auto max-w-5xl">
+          <div className="mb-7 max-w-3xl">
+            <Badge className="mb-3 border-cyan-500/30 bg-cyan-500/10 text-cyan-300">Quick answer</Badge>
+            <h2 className="text-2xl font-bold text-white sm:text-4xl">How Do I Know If My Laptop Battery Is Bad?</h2>
+            <p className="mt-3 text-sm leading-6 text-slate-300 sm:text-base">
+              Watch for a pattern rather than one isolated symptom. Several warning signs together are a much stronger signal that the battery needs attention.
+            </p>
+          </div>
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
             {quickSigns.map((sign, i) => (
-              <div key={sign} className="flex items-start gap-2 text-slate-300 text-xs sm:text-sm">
-                <span className="text-cyan-400 font-bold shrink-0">{i + 1}.</span>
-                <span className="leading-snug">{sign}</span>
+              <div key={sign} className={`rounded-xl border p-4 ${i === 5 || i === 6 ? 'border-red-500/30 bg-red-500/5' : 'border-slate-800 bg-slate-950/50'}`}>
+                <div className={`mb-3 flex h-8 w-8 items-center justify-center rounded-lg text-sm font-bold ${i === 5 || i === 6 ? 'bg-red-500/15 text-red-300' : 'bg-cyan-500/10 text-cyan-300'}`}>
+                  {i + 1}
+                </div>
+                <p className="text-xs font-medium leading-5 text-slate-200">{sign}</p>
               </div>
             ))}
           </div>
-          <div className="rounded-xl border-2 border-red-500/40 bg-red-500/10 p-4 sm:p-5 flex items-start gap-3">
-            <AlertTriangle className="w-5 h-5 text-red-400 shrink-0 mt-0.5" aria-hidden="true" />
-            <p className="text-slate-200 text-xs sm:text-sm leading-relaxed">
-              <strong className="text-red-300">Most important exception:</strong> if the battery is swollen, stop using the laptop now and arrange professional removal \u2014 don\u2019t wait to work through the rest of this list first.
+          <div className="mt-6 flex flex-col gap-3 rounded-2xl border-2 border-red-500/30 bg-red-500/10 p-5 sm:flex-row sm:items-center">
+            <AlertTriangle className="h-6 w-6 shrink-0 text-red-400" />
+            <p className="text-sm leading-6 text-slate-200">
+              <strong className="text-red-300">Most important exception:</strong> swelling or deformation is a safety issue, not just a battery-health issue. Stop using the laptop and see the safety section.
             </p>
           </div>
         </div>
@@ -492,41 +511,51 @@ export default function BatteryHealthGuide() {
       </section>
 
       {/* ─── WARNING SIGNS (detailed, 10) ─── */}
-      <section id="warning-signs" className="py-8 sm:py-20 px-4 sm:px-6 border-t border-slate-900 scroll-mt-20">
-        <div className="container mx-auto max-w-4xl">
-          <div className="text-center mb-8 sm:mb-12">
-            <Badge className={`bg-red-500/20 text-red-300 border-red-500/30 ${sectionBadge}`}>
-              <AlertTriangle className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2 inline" />
-              Warning Signs to Watch For
+      <section id="warning-signs" className="scroll-mt-20 border-t border-slate-900 px-4 py-10 sm:px-6 sm:py-20">
+        <div className="container mx-auto max-w-5xl">
+          <div className="mb-8 max-w-3xl">
+            <Badge className={`mb-3 border-red-500/30 bg-red-500/10 text-red-300 ${sectionBadge}`}>
+              <AlertTriangle className="mr-2 inline h-4 w-4" />
+              Warning signs
             </Badge>
-            <h2 className="text-2xl sm:text-4xl font-bold text-white">
-              10 Critical Indicators, Explained
-            </h2>
+            <h2 className="text-2xl font-bold text-white sm:text-4xl">10 Battery Warning Signs, Explained Simply</h2>
+            <p className="mt-3 text-sm leading-6 text-slate-400 sm:text-base">
+              Scan the cards below. Each one tells you what you may notice, why it happens, and what the sensible next step is.
+            </p>
           </div>
-
-          <div className="border border-slate-800 rounded-2xl divide-y divide-slate-800 overflow-hidden">
-            {warningSigns.map((sign) => {
+          <div className="grid gap-4 md:grid-cols-2">
+            {warningSigns.map((sign, index) => {
               const Icon = sign.icon;
+              const urgent = index === 2 || index === 5 || index === 6 || index === 9;
               return (
-                <div key={sign.title} className="p-5 sm:p-6 flex flex-col sm:flex-row gap-3 sm:gap-6">
-                  <div className="flex items-center gap-3 sm:w-56 shrink-0">
-                    <div className={`${sign.bgColor} p-2 sm:p-2.5 rounded-lg shrink-0`}>
-                      <Icon className={`w-4 h-4 sm:w-5 sm:h-5 ${sign.color}`} aria-hidden="true" />
+                <article key={sign.title} className={`rounded-2xl border p-5 transition hover:border-slate-700 sm:p-6 ${urgent ? 'border-red-500/25 bg-red-500/[0.035]' : 'border-slate-800 bg-slate-950/40'}`}>
+                  <div className="flex items-start gap-4">
+                    <div className={`${sign.bgColor} shrink-0 rounded-xl p-3`}>
+                      <Icon className={`h-5 w-5 ${sign.color}`} aria-hidden="true" />
                     </div>
-                    <h3 className="text-white font-bold text-sm sm:text-base">{sign.title}</h3>
+                    <div className="min-w-0 flex-1">
+                      <div className="flex flex-wrap items-center gap-2">
+                        <span className="text-[10px] font-bold uppercase tracking-widest text-slate-500">Sign {String(index + 1).padStart(2, '0')}</span>
+                        {urgent && <span className="rounded-full bg-red-500/10 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-red-300">Pay attention</span>}
+                      </div>
+                      <h3 className="mt-1 text-lg font-bold text-white">{sign.title}</h3>
+                    </div>
                   </div>
-                  <div className="flex-1">
-                    <p className="text-slate-300 text-xs sm:text-sm leading-relaxed mb-2 sm:mb-3">{sign.description}</p>
-                    <ul className="grid sm:grid-cols-2 gap-x-4 gap-y-1.5">
-                      {sign.points.map((point) => (
-                        <li key={point} className="flex items-start gap-1.5 text-slate-400 text-xs sm:text-sm">
-                          <CheckCircle2 className={`w-3 h-3 ${sign.color} flex-shrink-0 mt-0.5`} aria-hidden="true" />
-                          <span className="leading-snug">{point}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
+                  <p className="mt-4 text-sm leading-6 text-slate-300">{sign.description}</p>
+                  <ul className="mt-4 space-y-2">
+                    {sign.points.map((point) => (
+                      <li key={point} className="flex items-start gap-2 text-xs leading-5 text-slate-400 sm:text-sm">
+                        <CheckCircle2 className={`mt-0.5 h-4 w-4 shrink-0 ${sign.color}`} aria-hidden="true" />
+                        <span>{point}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  {index === 5 && (
+                    <div className="mt-4 rounded-xl border border-red-500/30 bg-red-500/10 p-3 text-xs font-semibold leading-5 text-red-200">
+                      🚨 Swelling is a safety problem. Do not continue troubleshooting it as if it were a normal battery-wear issue.
+                    </div>
+                  )}
+                </article>
               );
             })}
           </div>
@@ -932,21 +961,25 @@ export default function BatteryHealthGuide() {
       </section>
 
       {/* ─── FAQ ─── */}
-      <section id="faq" className="py-8 sm:py-20 px-4 sm:px-6 border-t border-slate-900 scroll-mt-20">
-        <div className="container mx-auto max-w-3xl">
-          <div className="text-center mb-8 sm:mb-10">
-            <Badge className={`bg-cyan-500/20 text-cyan-300 border-cyan-500/30 ${sectionBadge}`}>
-              <HelpCircle className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2 inline" />
+      <section id="faq" className="scroll-mt-20 border-t border-slate-900 px-4 py-10 sm:px-6 sm:py-20">
+        <div className="container mx-auto max-w-4xl">
+          <div className="mb-8 text-center">
+            <Badge className={`mb-3 border-slate-700 bg-slate-900 text-slate-300 ${sectionBadge}`}>
+              <HelpCircle className="mr-2 inline h-4 w-4" />
               FAQ
             </Badge>
-            <h2 className="text-2xl sm:text-3xl font-bold text-white">Battery Health FAQ</h2>
+            <h2 className="text-2xl font-bold text-white sm:text-3xl">Laptop Battery Questions, Answered</h2>
+            <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-slate-400">Open the question that matches your problem. The detailed guidance above remains available if you want the full explanation.</p>
           </div>
-          <div className="divide-y divide-slate-800 border-t border-b border-slate-800">
-            {faq.map((item) => (
-              <div key={item.q} className="py-4 sm:py-5">
-                <h3 className="text-white font-bold mb-1 text-xs sm:text-base">{item.q}</h3>
-                <p className="text-slate-400 text-xs sm:text-sm leading-relaxed">{item.a}</p>
-              </div>
+          <div className="space-y-3">
+            {faq.map((item, index) => (
+              <details key={item.q} className="group rounded-xl border border-slate-800 bg-slate-950/40 p-4 open:border-cyan-500/30 open:bg-slate-900/60 sm:p-5" open={index === 0}>
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-sm font-bold text-white sm:text-base">
+                  <span>{item.q}</span>
+                  <ChevronRight className="h-5 w-5 shrink-0 text-slate-500 transition-transform group-open:rotate-90 group-open:text-cyan-400" />
+                </summary>
+                <p className="mt-3 pr-8 text-xs leading-6 text-slate-400 sm:text-sm">{item.a}</p>
+              </details>
             ))}
           </div>
         </div>
