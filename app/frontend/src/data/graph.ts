@@ -1047,6 +1047,7 @@ export const rawGraphData: RawGraphData = {
       ],
       repairLevel: 'thermal-maintenance',
       estimatedTurnaround: '24-48 Hours',
+      pricing: { startingFrom: 15, currency: 'KWD', quoteRequired: true, displayLabel: 'From 15 KWD — free diagnostic first' },
       coreFeatures: [
         'Model-Specific Internal Disassembly',
         'Internal Dust Removal from Fans & Airflow Paths',
