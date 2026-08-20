@@ -16,6 +16,23 @@
       ]
     }
   ],
+  "redirects": [
+    {
+      "source": "/macbook-repair",
+      "destination": "/macbook-repair-kuwait",
+      "permanent": true
+    },
+    {
+      "source": "/screen-replacement",
+      "destination": "/screen-replacement-kuwait",
+      "permanent": true
+    },
+    {
+      "source": "/laptop-repair-hawalli-kuwait",
+      "destination": "/laptop-repair-kuwait",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/api/(.*)",
