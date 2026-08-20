@@ -8,7 +8,7 @@
 // NavigationCompiler.ts). This page + its route in App.tsx fixes both.
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { BatteryWarning, Cpu, ChevronRight } from 'lucide-react';
+import { BatteryWarning, Cpu, HardDrive, ChevronRight } from 'lucide-react';
 import { SEOEngine } from '../core/components/SEOEngine';
 
 interface GuideLink {
@@ -34,6 +34,12 @@ const GUIDES: GuideLink[] = [
     title: 'Laptop Battery Warning Signs',
     description: 'The 4 critical warning signs of lithium-ion battery failure, and what to do before it becomes a safety issue.',
     icon: BatteryWarning,
+  },
+  {
+    slug: 'guides/bios-uefi-recovery-kuwait',
+    title: 'BIOS & UEFI Recovery Guide',
+    description: 'Troubleshoot failed BIOS/UEFI updates, tell firmware corruption apart from hardware failure, and learn how professional firmware recovery works.',
+    icon: HardDrive,
   },
 ];
 
