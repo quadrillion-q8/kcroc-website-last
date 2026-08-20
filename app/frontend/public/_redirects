@@ -1,7 +1,0 @@
-# 1. 301 Permanent Redirects for Old SEO URLs
-/macbook-repair               /macbook-repair-kuwait                 301
-/screen-replacement           /screen-replacement-kuwait             301
-/laptop-repair-hawalli-kuwait /laptop-repair-kuwait                  301
-
-# 2. React Router Fallback (MUST BE AT THE VERY BOTTOM)
-/*                            /index.html                            200
