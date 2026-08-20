@@ -28,12 +28,47 @@
     },
     {
       "source": "/screen-replacement",
-      "destination": "/screen-replacement-kuwait",
+      "destination": "/laptop-screen-repair-kuwait",
       "permanent": true
     },
     {
       "source": "/laptop-repair-hawalli-kuwait",
       "destination": "/laptop-repair-kuwait",
+      "permanent": true
+    },
+    {
+      "source": "/faq/:faqSlug",
+      "destination": "/faq",
+      "permanent": true
+    },
+    {
+      "source": "/services/:serviceSlug",
+      "destination": "/:serviceSlug",
+      "permanent": true
+    },
+    {
+      "source": "/laptop-repair-in-farwaniya",
+      "destination": "/location/farwaniya",
+      "permanent": true
+    },
+    {
+      "source": "/laptop-repair-in-abu-halifa",
+      "destination": "/location/ahmadi",
+      "permanent": true
+    },
+    {
+      "source": "/laptop-repair-in-fahaheel",
+      "destination": "/location/ahmadi",
+      "permanent": true
+    },
+    {
+      "source": "/laptop-repair-in-riqqa",
+      "destination": "/location/ahmadi",
+      "permanent": true
+    },
+    {
+      "source": "/laptop-repair-in-mangaf",
+      "destination": "/location/ahmadi",
       "permanent": true
     }
   ],
