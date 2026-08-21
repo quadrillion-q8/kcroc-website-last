@@ -189,6 +189,26 @@ export default function BiosUefiRecoveryGuide() {
         </div>
       </section>
 
+      {/* ─── HERO BANNER IMAGE ─── */}
+      <section className="px-4 py-8 sm:px-6 sm:py-10 border-b border-slate-800/80">
+        <div className="container mx-auto max-w-5xl">
+          <figure className="rounded-2xl overflow-hidden border border-slate-800 bg-slate-900">
+            <img
+              src={IMAGES.guides.biosHeroMotherboard.src}
+              alt={IMAGES.guides.biosHeroMotherboard.alt}
+              width={IMAGES.guides.biosHeroMotherboard.width}
+              height={IMAGES.guides.biosHeroMotherboard.height}
+              loading="eager"
+              decoding="async"
+              className="w-full h-auto max-h-[420px] object-cover"
+            />
+            <figcaption className="p-3 text-xs text-slate-400 bg-slate-950/80 border-t border-slate-800/60">
+              Hardware-level firmware diagnostics and motherboard circuit analysis.
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
       {/* ─── DECISION TREE ─── */}
       <section id="decision-tree" className="scroll-mt-20 border-b border-slate-800/80 bg-slate-900/40 px-4 py-10 sm:px-6 sm:py-16">
         <div className="container mx-auto max-w-5xl">
@@ -242,6 +262,38 @@ export default function BiosUefiRecoveryGuide() {
               <h3 className="text-orange-300 font-bold text-sm sm:text-base mb-1.5">Where the Industry Stands</h3>
               <p className="text-slate-400 text-xs sm:text-sm leading-relaxed">Intel phased out legacy BIOS support starting around 2020, and Windows 11 requires UEFI with Secure Boot. "BIOS" remains the informal catch-all term most people use even on UEFI machines.</p>
             </div>
+          </div>
+
+          <div className="mt-6 sm:mt-8 grid sm:grid-cols-2 gap-4 sm:gap-6">
+            <figure className="rounded-xl overflow-hidden border border-slate-800 bg-slate-900">
+              <img
+                src={IMAGES.guides.legacyBiosScreen.src}
+                alt={IMAGES.guides.legacyBiosScreen.alt}
+                width={IMAGES.guides.legacyBiosScreen.width}
+                height={IMAGES.guides.legacyBiosScreen.height}
+                loading="lazy"
+                decoding="async"
+                className="w-full h-auto object-cover"
+              />
+              <figcaption className="p-2.5 text-xs text-slate-400 border-t border-slate-800">
+                Legacy text-based BIOS menu interface.
+              </figcaption>
+            </figure>
+            <figure className="rounded-xl overflow-hidden border border-slate-800 bg-slate-900">
+              <img
+                src={IMAGES.guides.motherboardDip8BiosChip.src}
+                alt={IMAGES.guides.motherboardDip8BiosChip.alt}
+                width={IMAGES.guides.motherboardDip8BiosChip.width}
+                height={IMAGES.guides.motherboardDip8BiosChip.height}
+                loading="lazy"
+                decoding="async"
+                className="w-full h-auto object-cover"
+              />
+              <figcaption className="p-2.5 text-xs text-slate-400 border-t border-slate-800 flex justify-between gap-2">
+                <span>Dedicated SPI Flash BIOS chip on board.</span>
+                <span className="text-[10px] text-slate-500 shrink-0">Photo: {IMAGES.guides.motherboardDip8BiosChip.credit} ({IMAGES.guides.motherboardDip8BiosChip.license})</span>
+              </figcaption>
+            </figure>
           </div>
 
           <div className="mt-6 sm:mt-8 rounded-2xl border border-slate-800 bg-slate-950/50 p-5 sm:p-6">
@@ -372,6 +424,21 @@ export default function BiosUefiRecoveryGuide() {
             </p>
           </div>
 
+          <figure className="mb-6 sm:mb-8 rounded-2xl overflow-hidden border border-slate-800 bg-slate-900">
+            <img
+              src={IMAGES.guides.multimeterMotherboardDiag.src}
+              alt={IMAGES.guides.multimeterMotherboardDiag.alt}
+              width={IMAGES.guides.multimeterMotherboardDiag.width}
+              height={IMAGES.guides.multimeterMotherboardDiag.height}
+              loading="lazy"
+              decoding="async"
+              className="w-full h-auto object-cover max-h-[360px]"
+            />
+            <figcaption className="p-3 text-xs text-slate-400 border-t border-slate-800">
+              Verifying standby rails (3.3V / 5V) and memory power with a multimeter before diagnosing corrupted firmware.
+            </figcaption>
+          </figure>
+
           <div id="post-hardware" className="scroll-mt-24 grid sm:grid-cols-2 gap-4 sm:gap-6">
             <div className="rounded-2xl border border-slate-800 bg-slate-950/50 p-5 sm:p-6">
               <div className="flex items-center gap-3 mb-3">
@@ -412,6 +479,22 @@ export default function BiosUefiRecoveryGuide() {
         <div className="container mx-auto max-w-4xl">
           <h2 className="text-xl sm:text-3xl font-bold text-white mb-2">CMOS Reset vs NVRAM Reset vs BIOS Recovery</h2>
           <p className="text-slate-400 text-xs sm:text-sm mb-6 sm:mb-8">Three different operations that get conflated constantly.</p>
+
+          <figure className="mb-6 sm:mb-8 rounded-xl overflow-hidden border border-slate-800 bg-slate-900 max-w-xl mx-auto">
+            <img
+              src={IMAGES.guides.cr2032CmosBattery.src}
+              alt={IMAGES.guides.cr2032CmosBattery.alt}
+              width={IMAGES.guides.cr2032CmosBattery.width}
+              height={IMAGES.guides.cr2032CmosBattery.height}
+              loading="lazy"
+              decoding="async"
+              className="w-full h-auto object-cover"
+            />
+            <figcaption className="p-2.5 text-xs text-slate-400 border-t border-slate-800 flex justify-between gap-2">
+              <span>CR2032 CMOS battery maintains clock &amp; user configurations, not core BIOS firmware.</span>
+              <span className="text-[10px] text-slate-500 shrink-0">Photo: {IMAGES.guides.cr2032CmosBattery.credit} ({IMAGES.guides.cr2032CmosBattery.license})</span>
+            </figcaption>
+          </figure>
           <div className="grid sm:grid-cols-3 gap-3 sm:gap-4 mb-5">
             <div className="border border-slate-800 rounded-xl p-4 sm:p-5">
               <h3 className="text-white font-bold text-sm sm:text-base mb-1.5">CMOS Reset</h3>
@@ -536,6 +619,37 @@ export default function BiosUefiRecoveryGuide() {
             })}
           </div>
 
+          <div className="grid gap-4 sm:grid-cols-2 mb-6 sm:mb-8">
+            <figure className="rounded-xl overflow-hidden border border-slate-800 bg-slate-900">
+              <img
+                src={IMAGES.guides.ch341aSpiProgrammer.src}
+                alt={IMAGES.guides.ch341aSpiProgrammer.alt}
+                width={IMAGES.guides.ch341aSpiProgrammer.width}
+                height={IMAGES.guides.ch341aSpiProgrammer.height}
+                loading="lazy"
+                decoding="async"
+                className="w-full h-auto object-cover"
+              />
+              <figcaption className="p-2.5 text-xs text-slate-400 border-t border-slate-800">
+                External EEPROM programmer with SOIC-8 clip for direct chip reading and writing.
+              </figcaption>
+            </figure>
+            <figure className="rounded-xl overflow-hidden border border-slate-800 bg-slate-900">
+              <img
+                src={IMAGES.guides.microSolderingBiosIc.src}
+                alt={IMAGES.guides.microSolderingBiosIc.alt}
+                width={IMAGES.guides.microSolderingBiosIc.width}
+                height={IMAGES.guides.microSolderingBiosIc.height}
+                loading="lazy"
+                decoding="async"
+                className="w-full h-auto object-cover"
+              />
+              <figcaption className="p-2.5 text-xs text-slate-400 border-t border-slate-800">
+                Hot-air desoldering and re-soldering of surface-mount SPI Flash chips.
+              </figcaption>
+            </figure>
+          </div>
+
           <div className="rounded-2xl border border-slate-800 bg-slate-950/50 p-5 sm:p-6">
             <div className="flex gap-4">
               <Lock className="mt-1 h-5 w-5 shrink-0 text-cyan-400" aria-hidden="true" />
@@ -560,6 +674,21 @@ export default function BiosUefiRecoveryGuide() {
               A common, expected consequence of a routine firmware update \u2014 frequently mistaken for a BIOS failure.
             </p>
           </div>
+
+          <figure className="mb-6 sm:mb-8 rounded-2xl overflow-hidden border border-slate-800 bg-slate-900">
+            <img
+              src={IMAGES.guides.tpmSecurityChip.src}
+              alt={IMAGES.guides.tpmSecurityChip.alt}
+              width={IMAGES.guides.tpmSecurityChip.width}
+              height={IMAGES.guides.tpmSecurityChip.height}
+              loading="lazy"
+              decoding="async"
+              className="w-full h-auto object-cover max-h-[360px]"
+            />
+            <figcaption className="p-3 text-xs text-slate-400 border-t border-slate-800">
+              TPM-related security hardware validates the boot chain that BitLocker relies on.
+            </figcaption>
+          </figure>
 
           <div className="border border-slate-800 rounded-2xl divide-y divide-slate-800 overflow-hidden">
             <div className="p-5 sm:p-7">
