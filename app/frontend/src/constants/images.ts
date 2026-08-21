@@ -1,6 +1,26 @@
 // File: src/constants/images.ts
 
 export const IMAGES = {
+  // --- GUIDES: BIOS/UEFI RECOVERY (sourced stock imagery, see images.ts comments for licenses) ---
+  guides: {
+    // Unsplash License \u2014 free for commercial use, no attribution required
+    biosHeroMotherboard: { src: "/images/guides/bios-recovery/bios-hero-motherboard.webp", alt: "Motherboard circuitry and firmware diagnostic bench in Kuwait", width: 1200, height: 630 },
+    // Public Domain / CC0 (Wikimedia)
+    legacyBiosScreen: { src: "/images/guides/bios-recovery/legacy-bios-screen.webp", alt: "Legacy 16-bit text-mode Award BIOS setup utility screen", width: 600, height: 400 },
+    // CC BY-SA 3.0 \u2014 Photo: Tobias Maier (attribution required)
+    motherboardDip8BiosChip: { src: "/images/guides/bios-recovery/motherboard-dip8-bios-chip.webp", alt: "Physical DIP-8 SPI Flash BIOS ROM chip seated on a computer motherboard", width: 600, height: 400, credit: "Tobias Maier", license: "CC BY-SA 3.0" },
+    // Unsplash License \u2014 free for commercial use, no attribution required
+    multimeterMotherboardDiag: { src: "/images/guides/bios-recovery/multimeter-motherboard-diag.webp", alt: "Multimeter probing motherboard voltage lines to distinguish power faults from BIOS corruption", width: 800, height: 450 },
+    // CC BY-SA 4.0 \u2014 Photo: Raimond Spekking (attribution required)
+    cr2032CmosBattery: { src: "/images/guides/bios-recovery/cr2032-cmos-battery.webp", alt: "CR2032 3V coin cell battery powering real-time clock RTC and volatile CMOS settings", width: 800, height: 500, credit: "Raimond Spekking", license: "CC BY-SA 4.0" },
+    // Public Domain / CC0 (Wikimedia)
+    ch341aSpiProgrammer: { src: "/images/guides/bios-recovery/ch341a-spi-programmer.webp", alt: "CH341A USB hardware programmer connected with SOIC8 test clip for in-circuit SPI flash recovery", width: 600, height: 400 },
+    // Unsplash License \u2014 free for commercial use, no attribution required
+    microSolderingBiosIc: { src: "/images/guides/bios-recovery/micro-soldering-bios-ic.webp", alt: "Micro-soldering station desoldering an 8-pin SPI flash chip from a laptop logic board", width: 600, height: 400 },
+    // Unsplash License \u2014 free for commercial use, no attribution required
+    tpmSecurityChip: { src: "/images/guides/bios-recovery/tpm-security-chip.webp", alt: "Hardware security chip on a circuit board representing TPM, Secure Boot and BitLocker", width: 800, height: 450 },
+  },
+
   // --- BRANDING & SHOP ---
   brand: {
     shopExteriorDusk: { src: "/images/kcroc-commercial-complex-view-dusk.webp", alt: "KCROC shop exterior at dusk", width: 1200, height: 800 },
