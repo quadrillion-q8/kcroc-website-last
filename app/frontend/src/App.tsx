@@ -156,7 +156,14 @@ export const routes: RouteObject[] = [
           { path: 'location/:slug', element: <LocationDeepTemplate /> },
           { path: 'pillar/:slug', element: <PillarTemplate /> },
           { path: 'faq/:faqSlug', element: <Navigate to="/faq" replace /> },
-          
+
+          // 🩹 FIX: explicit /404 route. Previously `<Navigate to="/404" />`
+          // calls relied on falling through the dynamic `:slug` handler
+          // (which only resolves to NotFound indirectly, when no graph
+          // entity is named "404"). This registers it directly so it no
+          // longer depends on that indirection.
+          { path: '404', element: <NotFound /> },
+
           // 🚀 DYNAMIC ROOT-LEVEL SEO ROUTES (Services, Brands, Problems)
           // Moved to the bottom so explicit routes match first
           { path: ':slug', element: <DynamicRouteHandler /> },
