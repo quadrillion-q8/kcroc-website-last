@@ -44,7 +44,7 @@ export default function Services() {
               return (
                 <Link 
                   key={service.id} 
-                  to={`/services/${service.slug}`}
+                  to={`/${service.slug}`}
                   className="group block bg-slate-900 border border-slate-800 rounded-2xl p-8 hover:border-emerald-500/50 hover:bg-slate-800/50 transition-all duration-300"
                 >
                   <div className="flex items-start justify-between mb-6">
