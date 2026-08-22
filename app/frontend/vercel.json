@@ -5,11 +5,26 @@
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "X-Frame-Options", "value": "DENY" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" },
-        { "key": "Strict-Transport-Security", "value": "max-age=31536000; includeSubDomains; preload" },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=()"
+        },
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=31536000; includeSubDomains; preload"
+        },
         {
           "key": "Content-Security-Policy-Report-Only",
           "value": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://googleads.g.doubleclick.net; connect-src 'self' https://google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://googletagmanager.com https://*.googletagmanager.com https://g.doubleclick.net https://*.g.doubleclick.net https://doubleclick.net https://*.doubleclick.net https://vitals.vercel-insights.com https://vitals.vercel-analytics.com https://www.google.com; upgrade-insecure-requests; report-uri /api/csp-report; report-to csp-endpoint;"
@@ -70,6 +85,36 @@
     {
       "source": "/laptop-repair-in-mangaf",
       "destination": "/location/ahmadi",
+      "permanent": true
+    },
+    {
+      "source": "/booking",
+      "destination": "/book",
+      "permanent": true
+    },
+    {
+      "source": "/privacy",
+      "destination": "/privacy-policy",
+      "permanent": true
+    },
+    {
+      "source": "/terms",
+      "destination": "/terms-of-service",
+      "permanent": true
+    },
+    {
+      "source": "/guides/dell-overheating",
+      "destination": "/guides/dell-inspiron-15-3000-overheating",
+      "permanent": true
+    },
+    {
+      "source": "/blog/laptop-screen-protection-tips",
+      "destination": "/laptop-screen-protection-tips",
+      "permanent": true
+    },
+    {
+      "source": "/battery-replacement",
+      "destination": "/battery-replacement-kuwait",
       "permanent": true
     }
   ],
