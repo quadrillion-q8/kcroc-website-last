@@ -165,7 +165,7 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
     schemaGraph.push({
       "@type": "BreadcrumbList",
       "@id": `${fullCanonicalUrl}#breadcrumb`,
-      "itemListElement": breadcrumbs.map((item: { name: string; url: string }, index: number) => ({
+      "itemListElement": resolvedBreadcrumbs.map((item: { name: string; url: string }, index: number) => ({
         "@type": "ListItem",
         "position": index + 1,
         "name": item.name,
