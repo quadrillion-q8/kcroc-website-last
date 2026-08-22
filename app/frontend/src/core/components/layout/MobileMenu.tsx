@@ -192,7 +192,7 @@ export default function MobileMenu({ isOpen, onClose, mobileRef, navModel, clean
             Call {phoneDisplay}
           </a>
           <Link
-            to="/booking"
+            to="/book"
             onClick={() => trackConversion('cta_click', { cta_name: 'mobile_menu_book', button_position: 'mobile_menu' })}
             className="flex items-center justify-center gap-2 w-full py-3.5 rounded-xl bg-cyan-500 text-slate-950 font-black shadow-[0_0_15px_rgba(34,211,238,0.2)] hover:bg-cyan-400 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
           >
