@@ -32,28 +32,12 @@ const STRUCTURED_DATA = {
       "description": "Book free laptop and computer repair pickup anywhere in Kuwait. Same-day hardware assessment. 30-day warranty.",
       "isPartOf": { "@id": `${BASE_URL}/#website` },
       "breadcrumb": { "@id": `${PAGE_URL}#breadcrumb` },
-      "mainEntity": {
-        "@type": "LocalBusiness",
-        "name": BUSINESS_NAME,
-        "telephone": PHONE_DISPLAY,
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19",
-          "addressLocality": "Hawalli",
-          "addressRegion": "Hawalli Governorate",
-          "addressCountry": "KW"
-        }
-      }
+      "about": { "@id": `${BASE_URL}/#business` }
     },
     {
       "@type": "Service",
       "name": "Computer Repair Booking",
-      "provider": {
-        "@type": "LocalBusiness",
-        "name": BUSINESS_NAME,
-        "telephone": PHONE_DISPLAY,
-        "url": BASE_URL
-      }
+      "provider": { "@id": `${BASE_URL}/#business` }
     },
     {
       "@type": "FAQPage",
