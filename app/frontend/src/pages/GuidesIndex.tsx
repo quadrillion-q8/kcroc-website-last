@@ -46,12 +46,7 @@ const GUIDES: GuideLink[] = [
 export default function GuidesIndex() {
   return (
     <>
-      <SEOEngine
-        fallback={{
-          title: 'DIY & Repair Guides | KCROC Kuwait',
-          description: 'Free diagnostic and troubleshooting guides for common laptop problems, written by KCROC\u2019s Kuwait-based repair technicians.',
-        }}
-      />
+      <SEOEngine entityId="page-guides" />
 
       <main className="min-h-screen bg-slate-950 text-white pt-32 pb-24">
         <div className="max-w-7xl mx-auto px-6">
