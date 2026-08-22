@@ -72,7 +72,7 @@ const AuthorImran = lazy(() => import('./pages/AuthorImran'));
 // 🚀 Custom AI-Generated Guides
 const BatteryHealthGuide = lazy(() => import('./pages/BatteryHealthGuide'));
 const BiosUefiRecoveryGuide = lazy(() => import('./pages/BiosUefiRecoveryGuide'));
-const DellInspiron15_3000OverheatingPage = lazy(() => import('./pages/DellInspiron15_3000OverheatingPage').then(module => ({ default: module.DellInspiron15_3000OverheatingPage })));
+const DellLaptopOverheatingPage = lazy(() => import('./pages/DellLaptopOverheatingPage').then(module => ({ default: module.DellLaptopOverheatingPage })));
 
 // 🚀 CWV Optimization: Extracted routing logic that requires graph.ts into a deferred chunk.
 const DynamicRouteHandler = lazy(() => import('./core/routing/DynamicRoutes').then(m => ({ default: m.DynamicRouteHandler })));
@@ -144,8 +144,9 @@ export const routes: RouteObject[] = [
           { path: 'author/imran', element: <AuthorImran /> },
           { path: 'guides/laptop-battery-warning-signs', element: <BatteryHealthGuide /> },
           { path: 'guides/bios-uefi-recovery-kuwait', element: <BiosUefiRecoveryGuide /> },
-          { path: 'guides/dell-inspiron-15-3000-overheating', element: <DellInspiron15_3000OverheatingPage /> },
-          { path: 'guides/dell-overheating', element: <Navigate to="/guides/dell-inspiron-15-3000-overheating" replace /> },
+          { path: 'guides/dell-laptop-overheating', element: <DellLaptopOverheatingPage /> },
+          { path: 'guides/dell-inspiron-15-3000-overheating', element: <Navigate to="/guides/dell-laptop-overheating" replace /> },
+          { path: 'guides/dell-overheating', element: <Navigate to="/guides/dell-laptop-overheating" replace /> },
           { path: 'laptop-screen-protection-tips', element: <ScreenProtectionTips /> },
           { path: 'blog/laptop-screen-protection-tips', element: <Navigate to="/laptop-screen-protection-tips" replace /> },
           { path: 'battery-replacement', element: <Navigate to="/battery-replacement-kuwait" replace /> },
