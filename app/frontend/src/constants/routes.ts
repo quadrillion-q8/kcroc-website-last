@@ -10,7 +10,7 @@ export const ROUTES = {
   FAQ: '/faq',
   GALLERY: '/gallery',
   BLOG: '/blog',              
-  BOOKING: '/booking',        
+  BOOKING: '/book',        
   PRIVACY: '/privacy-policy', 
   TERMS: '/terms-of-service',
 
