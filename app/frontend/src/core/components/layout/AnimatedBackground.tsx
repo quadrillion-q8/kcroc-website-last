@@ -1,16 +1,8 @@
 // File: app/frontend/src/core/components/layout/AnimatedBackground.tsx
-import React, { useState, useEffect, useCallback } from 'react';
-import Particles from "@tsparticles/react";
-import { loadSlim } from "@tsparticles/slim";
-import type { Engine } from "@tsparticles/engine";
+import React, { useState, useEffect } from 'react';
 
 export const AnimatedBackground: React.FC = () => {
-  const [mountParticles, setMountParticles] = useState(false);
   const [reduceMotion, setReduceMotion] = useState(false);
-
-  const particlesInit = useCallback(async (engine: Engine) => {
-    await loadSlim(engine);
-  }, []);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -18,13 +10,8 @@ export const AnimatedBackground: React.FC = () => {
     const listener = (e: MediaQueryListEvent) => setReduceMotion(e.matches);
     mediaQuery.addEventListener('change', listener);
 
-    const timer = setTimeout(() => {
-      setMountParticles(true);
-    }, 1200);
-
     return () => {
       mediaQuery.removeEventListener('change', listener);
-      clearTimeout(timer);
     };
   }, []);
 
@@ -127,43 +114,6 @@ export const AnimatedBackground: React.FC = () => {
           />
         ))}
       </svg>
-
-      {/* LAYER 6: Extreme Subtle Particle Dust (8 particles only) */}
-      {mountParticles && !reduceMotion && (
-        <Particles
-          id="tsparticles"
-          init={particlesInit}
-          className="absolute inset-0 z-0"
-          options={{
-            fullScreen: { enable: false },
-            fpsLimit: 30, // Conserves battery and GPU
-            particles: {
-              color: { value: ["#0ea5e9", "#10b981"] },
-              move: {
-                direction: "none",
-                enable: true,
-                outModes: { default: "out" },
-                random: true,
-                speed: { min: 0.05, max: 0.2 }, // Extremely slow drift
-                straight: false,
-              },
-              number: {
-                density: { enable: false },
-                value: 8, // Precisely controlled sparse count
-              },
-              opacity: {
-                value: { min: 0.1, max: 0.3 },
-                animation: { enable: true, speed: 0.2, minimumValue: 0.1 }
-              },
-              shape: { type: "circle" },
-              size: {
-                value: { min: 0.5, max: 1.5 },
-              },
-            },
-            detectRetina: true,
-          }}
-        />
-      )}
 
       {/* Vignette to focus the eye on the center content */}
       <div 
