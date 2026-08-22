@@ -29,6 +29,14 @@ export const SEOSchema = z.object({
   description: z.string(),
   canonicalUrl: z.string(),
   ogType: z.string().optional(),
+  ogImage: z.string().optional(),
+  ogImageAlt: z.string().optional(),
+  locale: z.string().optional(),
+  twitterCard: z.string().optional(),
+  robots: z.string().optional(),
+  lastModified: z.string().optional(),
+  alternates: z.record(z.string(), z.string()).optional(),
+  breadcrumbs: z.array(z.object({ name: z.string(), url: z.string() })).optional(),
   schemaTypes: z.array(z.string()).optional(),
 });
 
