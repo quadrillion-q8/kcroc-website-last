@@ -53,7 +53,7 @@ const getPriorityAndFreq = (
     entityType === 'Brand' ||
     entityType === 'Problem' ||
     entityType === 'CaseStudy' ||
-    path === '/hawalli-computer-repair-kuwait' ||
+    path === '/location/hawalli' ||
     /^\/(blog|faq)\/?$/.test(path)
   ) {
     return { priority: '0.7', changefreq: 'weekly' };
