@@ -232,6 +232,12 @@ export const WebPageSchema = RoutableEntitySchema.extend({
   }).optional(),
   featuredFAQIds: z.array(z.string()).optional(),
   featuredUSPIds: z.array(z.string()).optional(),
+  // Optional article metadata used when schemaTypes includes Article/TechArticle.
+  authorName: z.string().optional(),
+  authorUrl: z.string().optional(),
+  datePublished: z.string().optional(),
+  dateModified: z.string().optional(),
+  articleSection: z.string().optional(),
 });
 
 /* --- NEW ENTITY SCHEMAS FOR SEO EXPANSION --- */
