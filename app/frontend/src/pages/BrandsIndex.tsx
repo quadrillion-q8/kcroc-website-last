@@ -16,12 +16,7 @@ export default function BrandsIndex() {
 
   return (
     <>
-      <SEOEngine
-        fallback={{
-          title: 'Supported Laptop Brands | KCROC Kuwait',
-          description: 'Component-level repair for every major laptop brand in Kuwait — Dell, HP, Lenovo, ASUS, Acer, MSI and more.',
-        }}
-      />
+      <SEOEngine entityId="page-brands" />
 
       <main className="min-h-screen bg-slate-950 text-white pt-32 pb-24">
         <div className="max-w-7xl mx-auto px-6">
