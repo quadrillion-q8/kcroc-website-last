@@ -17,6 +17,34 @@ interface SEOEngineProps {
   entityId: string;
 }
 
+const AUTHOR_ID = 'https://www.computerrepairkuwait.com/author/imran#person';
+const AUTHOR_URL = 'https://www.computerrepairkuwait.com/author/imran';
+
+const getDefaultBreadcrumbs = (entity: RoutableEntity): { name: string; url: string }[] => {
+  const path = entity.seo.canonicalUrl.replace(/^https?:\/\/[^/]+/, '').replace(/\/$/, '') || '/';
+  if (path === '/') return [{ name: 'Home', url: '/' }];
+
+  const parts = path.split('/').filter(Boolean);
+  const sectionLabels: Record<string, string> = {
+    services: 'Services',
+    brands: 'Brands',
+    problems: 'Problems',
+    guides: 'Guides',
+    location: 'Locations',
+    blog: 'Blog',
+    'case-studies': 'Case Studies',
+    author: 'Author'
+  };
+
+  const crumbs: { name: string; url: string }[] = [{ name: 'Home', url: '/' }];
+  if (parts.length > 1) {
+    const section = parts[0];
+    crumbs.push({ name: sectionLabels[section] || section.replace(/-/g, ' '), url: `/${section}` });
+  }
+  crumbs.push({ name: entity.title, url: path });
+  return crumbs;
+};
+
 export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
   // 1. Fetch Core Graph Entities
   const entity = KCROC_GRAPH.routableEntities.find(e => e.id === entityId);
@@ -104,20 +132,36 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
 
   const schemaGraph: any[] = [baseLocalBusiness];
 
+  // Single canonical Person entity for the founder/author. Pages that declare
+  // Person or article schema reference this node rather than creating duplicate
+  // anonymous Person objects.
+  if (schemaTypes?.includes('Person') || schemaTypes?.includes('ProfilePage') || schemaTypes?.includes('Article') || schemaTypes?.includes('TechArticle')) {
+    schemaGraph.push({
+      "@type": "Person",
+      "@id": AUTHOR_ID,
+      "name": "Imran Natiq",
+      "url": AUTHOR_URL,
+      "jobTitle": "Founder & Lead Technician",
+      "worksFor": { "@id": `${business.websiteUrl}/#business` }
+    });
+  }
+
   // Generic WebPage node: every indexable document can participate in the
   // same site graph without requiring page-level JSON-LD.
-  if (schemaTypes?.includes('WebPage') || schemaTypes?.includes('AboutPage') || schemaTypes?.includes('ContactPage') || schemaTypes?.includes('ProfilePage')) {
+  if (schemaTypes?.includes('WebPage') || schemaTypes?.includes('AboutPage') || schemaTypes?.includes('ContactPage') || schemaTypes?.includes('ProfilePage') || schemaTypes?.includes('Article') || schemaTypes?.includes('TechArticle')) {
     schemaGraph.push({
       "@type": schemaTypes?.includes('CollectionPage') ? 'CollectionPage' : (schemaTypes?.includes('AboutPage') ? 'AboutPage' : (schemaTypes?.includes('ContactPage') ? 'ContactPage' : (schemaTypes?.includes('ProfilePage') ? 'ProfilePage' : 'WebPage'))),
       "@id": `${fullCanonicalUrl}#webpage`,
       "url": fullCanonicalUrl,
       "name": title,
       "description": description,
-      "isPartOf": { "@id": `${business.websiteUrl}/#website` }
+      "isPartOf": { "@id": `${business.websiteUrl}/#website` },
+      ...(schemaTypes?.includes('ProfilePage') && { "mainEntity": { "@id": AUTHOR_ID } })
     });
   }
 
-  if (schemaTypes?.includes('BreadcrumbList') && breadcrumbs?.length) {
+  const resolvedBreadcrumbs = breadcrumbs?.length ? breadcrumbs : getDefaultBreadcrumbs(entity);
+  if (schemaTypes?.includes('BreadcrumbList') || ['Service', 'Brand', 'Problem', 'Location'].includes(entity.entityType)) {
     schemaGraph.push({
       "@type": "BreadcrumbList",
       "@id": `${fullCanonicalUrl}#breadcrumb`,
@@ -264,7 +308,33 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
             "proficiencyLevel": "Beginner",
             "articleSection": "Hardware Troubleshooting",
             "text": `Symptom: ${problemEntity.symptom}. Solution: ${problemEntity.solution}`,
-            "publisher": { "@id": `${business.websiteUrl}/#business` }
+            "author": { "@id": AUTHOR_ID },
+            "publisher": { "@id": `${business.websiteUrl}/#business` },
+            "mainEntityOfPage": { "@id": `${fullCanonicalUrl}#webpage` }
+          });
+        } else if (entity.entityType === 'WebPage') {
+          const webPage = entity as WebPageEntity;
+          const articleType = type === 'TechArticle' ? 'TechArticle' : 'Article';
+          const path = fullCanonicalUrl.replace(/^https?:\/\/[^/]+/, '');
+          const articleSection = webPage.articleSection
+            || (path.startsWith('/guides/') ? 'Guides'
+            : path.startsWith('/blog/') ? 'Blog'
+            : 'Computer Repair');
+
+          schemaGraph.push({
+            "@type": articleType,
+            "@id": `${fullCanonicalUrl}#article`,
+            "headline": webPage.title,
+            "description": webPage.description,
+            "author": {
+              "@id": webPage.authorUrl ? `${webPage.authorUrl}#person` : AUTHOR_ID
+            },
+            "publisher": { "@id": `${business.websiteUrl}/#business` },
+            "mainEntityOfPage": { "@id": `${fullCanonicalUrl}#webpage` },
+            "articleSection": articleSection,
+            ...(webPage.datePublished && { "datePublished": webPage.datePublished }),
+            ...(webPage.dateModified && { "dateModified": webPage.dateModified }),
+            ...(webPage.featuredImage?.ogImage && { "image": webPage.featuredImage.ogImage })
           });
         }
       }
