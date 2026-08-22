@@ -25,16 +25,31 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
 
   // 2. Fallback to default SEO if entity is missing
   if (!entity || !entity.seo || !business) {
+    // A missing graph entity must never silently become an indexable page.
+    // Fail safe so a route/configuration mistake cannot create duplicate SEO.
     return (
       <Helmet>
-        <title>{business?.title || 'KCROC | Computer Repair Kuwait'}</title>
-        <meta name="description" content={business?.aiSummary || 'Expert computer repair in Kuwait.'} />
-        <meta name="robots" content="index, follow" />
+        <title>KCROC | Page Not Found</title>
+        <meta name="description" content="The requested KCROC page could not be found." />
+        <meta name="robots" content="noindex, follow" />
       </Helmet>
     );
   }
 
-  const { title, description, canonicalUrl, ogType, schemaTypes } = entity.seo;
+  const {
+    title,
+    description,
+    canonicalUrl,
+    ogType,
+    ogImage,
+    ogImageAlt,
+    locale,
+    twitterCard,
+    robots,
+    alternates,
+    breadcrumbs,
+    schemaTypes
+  } = entity.seo;
 
   // Ensure canonical URL is absolute
   const fullCanonicalUrl = canonicalUrl.startsWith('http')
@@ -88,6 +103,32 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
   }
 
   const schemaGraph: any[] = [baseLocalBusiness];
+
+  // Generic WebPage node: every indexable document can participate in the
+  // same site graph without requiring page-level JSON-LD.
+  if (schemaTypes?.includes('WebPage') || schemaTypes?.includes('AboutPage') || schemaTypes?.includes('ContactPage') || schemaTypes?.includes('ProfilePage')) {
+    schemaGraph.push({
+      "@type": schemaTypes?.includes('CollectionPage') ? 'CollectionPage' : (schemaTypes?.includes('AboutPage') ? 'AboutPage' : (schemaTypes?.includes('ContactPage') ? 'ContactPage' : (schemaTypes?.includes('ProfilePage') ? 'ProfilePage' : 'WebPage'))),
+      "@id": `${fullCanonicalUrl}#webpage`,
+      "url": fullCanonicalUrl,
+      "name": title,
+      "description": description,
+      "isPartOf": { "@id": `${business.websiteUrl}/#website` }
+    });
+  }
+
+  if (schemaTypes?.includes('BreadcrumbList') && breadcrumbs?.length) {
+    schemaGraph.push({
+      "@type": "BreadcrumbList",
+      "@id": `${fullCanonicalUrl}#breadcrumb`,
+      "itemListElement": breadcrumbs.map((item: { name: string; url: string }, index: number) => ({
+        "@type": "ListItem",
+        "position": index + 1,
+        "name": item.name,
+        "item": item.url.startsWith('http') ? item.url : `${business.websiteUrl}${item.url.startsWith('/') ? item.url : `/${item.url}`}`
+      }))
+    });
+  }
 
   // 5. STRICT DATA-DRIVEN SCHEMA GENERATION
   if (Array.isArray(schemaTypes)) {
@@ -342,16 +383,42 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
     });
   }
 
+  const resolvedOgType = entity.entityType === 'Service' && ogType === 'article' ? 'website' : (ogType || 'website');
+  const resolvedOgImage = ogImage || entity.featuredImage?.ogImage || `${business.websiteUrl}/og-image.webp`;
+  const resolvedLocale = locale || 'en_KW';
+  const resolvedTwitterCard = twitterCard || 'summary_large_image';
+  const resolvedRobots = robots || 'index, follow, max-image-preview:large';
+  const shouldIndex = !resolvedRobots.toLowerCase().includes('noindex');
+
   return (
     <Helmet>
       <title>{title}</title>
       <meta name="description" content={description} />
-      <link rel="canonical" href={fullCanonicalUrl} />
-      <meta name="robots" content="index, follow" />
+      {shouldIndex && <link rel="canonical" href={fullCanonicalUrl} />}
+      <meta name="robots" content={resolvedRobots} />
+
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:url" content={fullCanonicalUrl} />
-      <meta property="og:type" content={ogType || 'website'} />
+      <meta property="og:type" content={resolvedOgType} />
+      <meta property="og:image" content={resolvedOgImage} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta property="og:image:alt" content={ogImageAlt || title} />
+      <meta property="og:image:type" content="image/webp" />
+      <meta property="og:site_name" content={business.legalName} />
+      <meta property="og:locale" content={resolvedLocale} />
+
+      <meta name="twitter:card" content={resolvedTwitterCard} />
+      <meta name="twitter:title" content={title} />
+      <meta name="twitter:description" content={description} />
+      <meta name="twitter:image" content={resolvedOgImage} />
+      <meta name="twitter:image:alt" content={ogImageAlt || title} />
+
+      {alternates && Object.entries(alternates).map(([hreflang, href]) => (
+        <link key={hreflang} rel="alternate" hrefLang={hreflang} href={href.startsWith('http') ? href : `${business.websiteUrl}${href.startsWith('/') ? href : `/${href}`}`} />
+      ))}
+
       <script type="application/ld+json">
         {JSON.stringify({
           "@context": "https://schema.org",
