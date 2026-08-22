@@ -80,15 +80,19 @@ const generateSitemap = () => {
     entity => !entity.seo.canonicalUrl.includes('#')
   );
 
-  const graphUrlEntries = filteredEntities.map(entity => {
-    // ✅ FIX: Prevent Double-URLs. 
-    // If the graph already provided the full 'https://...' string, use it. 
-    // Otherwise, attach the DOMAIN prefix.
-    const url = entity.seo.canonicalUrl.startsWith('http') 
-      ? entity.seo.canonicalUrl 
-      : `${DOMAIN}${entity.seo.canonicalUrl.startsWith('/') ? '' : '/'}${entity.seo.canonicalUrl}`;
-    return { url, entityType: (entity as { entityType?: string }).entityType };
-  });
+  const graphUrlEntries = filteredEntities
+    .filter(entity => !(entity.seo.robots || '').toLowerCase().includes('noindex'))
+    .map(entity => {
+      // If the graph already provided the full URL, keep it; otherwise prefix DOMAIN.
+      const url = entity.seo.canonicalUrl.startsWith('http')
+        ? entity.seo.canonicalUrl
+        : `${DOMAIN}${entity.seo.canonicalUrl.startsWith('/') ? '' : '/'}${entity.seo.canonicalUrl}`;
+      return {
+        url,
+        entityType: (entity as { entityType?: string }).entityType,
+        lastModified: entity.seo.lastModified || KCROC_GRAPH.metadata.lastUpdated,
+      };
+    });
 
   // 🚀 FIX: BLOG_POSTS live outside the knowledge graph (in
   // src/constants/blogPosts.ts), so they were previously invisible to the
@@ -99,11 +103,13 @@ const generateSitemap = () => {
   const blogUrlEntries = BLOG_POSTS.map(post => ({
     url: `${DOMAIN}${getBlogRoute(post.slug)}`,
     entityType: 'BlogPost' as const,
+    lastModified: post.date || KCROC_GRAPH.metadata.lastUpdated,
   }));
 
   const extraUrlEntries = EXTRA_STANDALONE_PAGES.map(route => ({
     url: `${DOMAIN}${route}`,
     entityType: undefined,
+    lastModified: KCROC_GRAPH.metadata.lastUpdated,
   }));
 
   // De-duplicate in case a slug is ever represented in both the graph and
@@ -115,12 +121,12 @@ const generateSitemap = () => {
     return true;
   });
 
-  const urlNodes = allEntries.map(({ url: finalUrl, entityType }) => {
+  const urlNodes = allEntries.map(({ url: finalUrl, entityType, lastModified }) => {
     const { priority, changefreq } = getPriorityAndFreq(finalUrl, entityType);
     return `
   <url>
     <loc>${finalUrl}</loc>
-    <lastmod>${new Date().toISOString()}</lastmod>
+    <lastmod>${lastModified}</lastmod>
     <changefreq>${changefreq}</changefreq>
     <priority>${priority}</priority>
   </url>`;
