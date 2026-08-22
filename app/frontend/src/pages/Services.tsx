@@ -19,13 +19,7 @@ export default function Services() {
 
   return (
     <>
-      {/* Fallback SEO for the index page if you don't have a specific entity for it yet */}
-      <SEOEngine 
-        fallback={{
-          title: "Our Repair Services | KCROC Kuwait",
-          description: "Explore our component-level repair services for MacBooks, Laptops, Gaming PCs, and Motherboards."
-        }} 
-      />
+      <SEOEngine entityId="page-services" />
 
       <main className="min-h-screen bg-slate-950 text-white pt-32 pb-24">
         <div className="max-w-7xl mx-auto px-6">
