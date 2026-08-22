@@ -22,12 +22,7 @@ export default function ProblemsIndex() {
 
   return (
     <>
-      <SEOEngine
-        fallback={{
-          title: 'Common Laptop Problems We Fix | KCROC Kuwait',
-          description: 'Troubleshooting guides and repair options for the most common laptop and computer problems in Kuwait — power, overheating, screens, and more.',
-        }}
-      />
+      <SEOEngine entityId="page-problems" />
 
       <main className="min-h-screen bg-slate-950 text-white pt-32 pb-24">
         <div className="max-w-7xl mx-auto px-6">
