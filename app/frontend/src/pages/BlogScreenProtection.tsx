@@ -32,20 +32,6 @@ const STRUCTURED_DATA = {
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "LocalBusiness",
-      "@id": `${business.websiteUrl}/#business`,
-      "name": business.legalName,
-      "url": business.websiteUrl,
-      "telephone": business.telephone,
-      "email": business.email,
-      "address": { 
-        "@type": "PostalAddress", 
-        "streetAddress": business.streetAddress, 
-        "addressLocality": business.addressLocality, 
-        "addressCountry": business.addressCountry 
-      }
-    },
-    {
       "@type": "WebPage",
       "@id": `${PAGE_URL}#webpage`,
       "url": PAGE_URL,
