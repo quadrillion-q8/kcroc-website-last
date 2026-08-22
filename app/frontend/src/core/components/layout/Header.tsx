@@ -183,7 +183,7 @@ export default function Header() {
                 variant="ctaPrimary"
                 className="h-auto gap-2 rounded-lg px-4 py-2 text-sm transition-all hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(34,211,238,0.25)]"
               >
-                <Link to="/booking" onClick={() => trackConversion('cta_click', { cta_name: 'header_book', button_position: 'header' })}>
+                <Link to="/book" onClick={() => trackConversion('cta_click', { cta_name: 'header_book', button_position: 'header' })}>
                   <CalendarCheck size={15} aria-hidden="true" />
                   Book Online
                 </Link>
