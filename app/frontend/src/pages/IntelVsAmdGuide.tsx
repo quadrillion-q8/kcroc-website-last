@@ -1,7 +1,7 @@
 // File: app/frontend/src/pages/IntelVsAmdGuide.tsx
+import { Head } from 'vite-react-ssg';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -76,11 +76,11 @@ const faqs = (CLUSTER_SCHEMA.find((s) => s['@type'] === 'FAQPage') as any).mainE
 export default function IntelVsAmdGuide() {
   return (
     <div className="min-h-screen bg-gray-950 text-slate-300 selection:bg-cyan-500/30">
-      <Helmet>
+      <Head>
         <title>Intel Core Ultra vs AMD Ryzen AI | KCROC</title>
         <meta name="description" content="Core Ultra or Ryzen AI? A Kuwait hardware engineer breaks down cores, NPUs, and graphics — and why the suffix matters more than the brand." />
         <link rel="canonical" href={PAGE_URL} />
-      </Helmet>
+      </Head>
 
       <SEOEngine entityId="guide-intel-vs-amd" />
       <SchemaMarkup schema={{ '@graph': CLUSTER_SCHEMA }} />
