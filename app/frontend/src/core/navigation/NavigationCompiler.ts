@@ -220,6 +220,7 @@ export class NavigationCompiler {
         { id: 'g1', slug: 'guides/dell-inspiron-15-3000-overheating', title: 'Dell Inspiron Overheating', description: 'Thermal troubleshooting guide', iconKey: 'cpu', entityType: 'Page' as any, primaryKeyword: 'overheating', weight: 0, commercialIntent: 'info' },
         { id: 'g2', slug: 'guides/laptop-battery-warning-signs', title: 'Battery Warning Signs', description: 'Lithium-ion failure checklist', iconKey: 'battery', entityType: 'Page' as any, primaryKeyword: 'battery', weight: 0, commercialIntent: 'info' },
         { id: 'g3', slug: 'guides/bios-uefi-recovery-kuwait', title: 'BIOS & UEFI Recovery', description: 'Firmware update failures & recovery', iconKey: 'cpu', entityType: 'Page' as any, primaryKeyword: 'bios', weight: 0, commercialIntent: 'info' },
+        { id: 'g4', slug: 'guides/gamebarpresencewriter-exe', title: 'GameBarPresenceWriter.exe', description: 'Gaming stutter & Game Bar diagnostics', iconKey: 'gamepad', entityType: 'Page' as any, primaryKeyword: 'gamebarpresencewriter', weight: 0, commercialIntent: 'info' },
       ],
       // 🩹 FIX: paired with a new "/guides" index page + route (see App.tsx /
       // pages/GuidesIndex.tsx). This menu had an empty `sections` array with
