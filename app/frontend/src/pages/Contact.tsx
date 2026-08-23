@@ -47,6 +47,17 @@ export default function Contact() {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    // 🚀 FIX: this form previously had `noValidate` on the <form> tag with no
+    // replacement validation logic — the `required` attributes on Name/Phone/
+    // Subject/Message were purely decorative. Confirmed via a full Puppeteer
+    // submission test: clicking submit with every field empty successfully
+    // opened WhatsApp with a blank templated message ("Name: \nPhone: \n...").
+    // Guard explicitly here now that native browser validation is restored
+    // (see the <form> tag) as defense in depth, in case this handler is ever
+    // reached with an incomplete formData some other way.
+    if (!formData.name.trim() || !formData.phone.trim() || !formData.subject.trim() || !formData.message.trim()) {
+      return;
+    }
     setIsSubmitting(true);
     try {
       const url = `https://wa.me/${PHONE_CLEAN}?text=${encodeURIComponent(whatsappMessage)}`;
@@ -66,7 +77,7 @@ export default function Contact() {
     <main className="w-full min-h-screen bg-transparent text-white font-sans selection:bg-cyan-500/30 pt-8 sm:pt-16 lg:pt-32">
       
       {/* 🚀 PHASE 2 AUTOMATION IN ACTION: Using the Hawalli Location Entity */}
-      <SEOEngine entityId="loc-hawalli" />
+      <SEOEngine entityId="page-contact" />
 
       {/* Breadcrumbs */}
       <nav aria-label="Breadcrumb" className="max-w-6xl mx-auto px-6 mb-8 relative z-10">
@@ -94,7 +105,7 @@ export default function Contact() {
           {/* Glassmorphism Form Container */}
           <div className="bg-slate-900/40 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 lg:p-10 transition-all duration-500 ease-out hover:border-cyan-500/50 hover:shadow-[0_0_40px_-10px_rgba(6,182,212,0.3)] hover:-translate-y-1">
             <h2 className="text-2xl font-black mb-6">Send us a Message</h2>
-            <form onSubmit={handleSubmit} className="space-y-6" noValidate>
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <input name="name" value={formData.name} onChange={handleInputChange} required placeholder="Full Name" className="w-full bg-slate-950/50 border border-slate-700 px-4 py-3 rounded-xl focus:outline-none focus:border-cyan-500 transition-colors" />
                 <input name="phone" value={formData.phone} onChange={handleInputChange} required placeholder="+965 XXXX XXXX" className="w-full bg-slate-950/50 border border-slate-700 px-4 py-3 rounded-xl focus:outline-none focus:border-cyan-500 transition-colors" />
