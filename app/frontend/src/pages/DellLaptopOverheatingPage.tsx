@@ -1,6 +1,6 @@
 // File: app/frontend/src/pages/DellLaptopOverheatingPage.tsx
+import { Head } from 'vite-react-ssg';
 import React from 'react';
-import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { 
   AlertTriangle, CheckCircle2, XCircle, Thermometer, 
@@ -107,7 +107,7 @@ export const DellLaptopOverheatingPage = () => {
 
   return (
     <div className="min-h-screen bg-gray-950 text-slate-300 selection:bg-cyan-500/30 pb-24">
-      <Helmet>
+      <Head>
         <title>{PAGE_TITLE}</title>
         <meta name="description" content={PAGE_DESCRIPTION} />
         <link rel="canonical" href={PAGE_URL} />
@@ -115,7 +115,7 @@ export const DellLaptopOverheatingPage = () => {
         <meta property="og:description" content={PAGE_DESCRIPTION} />
         <meta property="og:url" content={PAGE_URL} />
         <meta property="og:type" content="article" />
-      </Helmet>
+      </Head>
 
       <SEOEngine entityId="guide-dell-overheating" />
       <SchemaMarkup schema={{ '@graph': GUIDE_SCHEMA }} />
