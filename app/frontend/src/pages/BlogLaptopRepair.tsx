@@ -1,7 +1,7 @@
 // File: app/frontend/src/pages/BlogLaptopRepair.tsx
+import { Head } from 'vite-react-ssg';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -51,7 +51,7 @@ const STRUCTURED_DATA = {
         '@type': 'Person',
         name: 'Imran Natiq',
         jobTitle: 'Computer Technician',
-        worksFor: { '@id': `${business.websiteUrl}/#organization` },
+        worksFor: { '@id': `${business.websiteUrl}/#business` },
       },
       publisher: {
         '@type': 'Organization',
@@ -252,12 +252,12 @@ export default function BlogLaptopRepair() {
   return (
     <div className="min-h-screen bg-gray-950 text-white selection:bg-cyan-500/30">
       
-      {/* 🚀 Independent SEO Helmet */}
-      <Helmet>
+      {/* 🚀 Independent SEO tags (React 19 native head hoisting) */}
+      <Head>
         <title>Laptop Repair Kuwait: The 2026 Guide to Hardware Preservation</title>
         <meta name="description" content="An in-depth look at how Kuwait's climate impacts laptop hardware, thermal management, and professional component-level repair techniques." />
         <link rel="canonical" href={PAGE_URL} />
-      </Helmet>
+      </Head>
       
       <SchemaMarkup schema={STRUCTURED_DATA} />
 
