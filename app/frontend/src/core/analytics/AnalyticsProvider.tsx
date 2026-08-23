@@ -43,8 +43,11 @@ export const AnalyticsProvider: React.FC<{ children: React.ReactNode }> = ({ chi
   useEffect(() => {
     window.dataLayer = window.dataLayer || [];
 
-    // Delayed microtask execution window (100ms) guarantees that react-helmet-async 
-    // has completed its head DOM synchronization before data payloads hit Googlebot or GA4
+    // Delayed microtask execution window (100ms) as a safety margin before
+    // data payloads hit Googlebot or GA4. (No longer gating on react-helmet-async's
+    // head sync — SEO metadata is now rendered via React 19's native <title>/<meta>/
+    // <link> hoisting, which commits synchronously with render, not via a deferred
+    // client-side DOM patch.)
     const timeoutId = setTimeout(() => {
       window.dataLayer.push({
         event: 'virtual_pageview',
