@@ -19,7 +19,13 @@ export default function Hero() {
   const phone = business?.telephone ?? '96555301913';
   const rating = business?.aggregateRating?.ratingValue ?? '4.9';
   const repairsStat = KCROC_GRAPH.stats?.items?.find((s: any) => s.label === 'Repairs completed');
-  const logoUrl = business?.logoUrl ?? '/logo.png';
+  // 🚀 FIX: was business?.logoUrl ?? '/logo.png' — two bugs at once: (1) the
+  // primary value was an absolute production URL, wrong for a visible <img>
+  // (see Header.tsx for the full explanation), and (2) the fallback pointed
+  // at '/logo.png', a file that doesn't exist (the real file is logo.webp) —
+  // dead in practice since business.logoUrl is always defined, but wrong if
+  // it were ever hit.
+  const logoUrl = '/logo.webp';
 
   const headline = hero?.headline ?? "Kuwait's Expert Component-Level Repair Service.";
 
