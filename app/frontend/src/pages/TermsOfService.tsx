@@ -1,7 +1,7 @@
 // File: app/frontend/src/pages/TermsOfService.tsx
+import { Head } from 'vite-react-ssg';
 import React, { useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
 import { FileText, Mail, Phone } from 'lucide-react';
 
 import { SEOEngine } from '../core/components/SEOEngine';
@@ -115,14 +115,14 @@ export default function TermsOfService() {
   return (
     <main className="w-full min-h-screen bg-transparent text-slate-200 pt-32 pb-24">
       <SEOEngine entityId="page-terms-of-service" />
-      <Helmet>
+      <Head>
         <title>Terms of Service | KCROC Computer Repair Kuwait</title>
         <meta
           name="description"
           content="Read the terms and conditions for KCROC's computer, laptop, and MacBook repair services, including pickup, delivery, warranty, and payment terms."
         />
         <link rel="canonical" href={pageUrl} />
-      </Helmet>
+      </Head>
       <SchemaMarkup schema={SCHEMA_DATA} />
 
       {/* Breadcrumbs */}
