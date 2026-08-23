@@ -10,9 +10,11 @@ import {
 import { SEOEngine } from '../core/components/SEOEngine';
 import { KCROC_GRAPH } from '../data/graph';
 import { IMAGES } from '../constants/images';
+import SchemaMarkup from '../components/seo/SchemaMarkup';
 
 const business = KCROC_GRAPH.business!;
 const WA_LINK = `https://wa.me/${business.telephone}?text=${encodeURIComponent('I need gaming PC performance diagnostics in Kuwait')}`;
+const PAGE_URL = `${business.websiteUrl}/guides/gamebar-presence-writer-fix`;
 
 const registryPath = 'HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\WindowsRuntime\\ActivatableClassId\\Windows.Gaming.GameBar.PresenceServer.Internal.PresenceWriter';
 
@@ -47,6 +49,50 @@ const faqs = [
   { q: 'Can I undo the registry change?', a: 'Yes, if you made a backup and documented the original value. The safest recovery path is to restore the original registry value and ownership rather than assuming a hard-coded value applies identically to every Windows build.' },
 ];
 
+// 🚀 Self-contained FAQPage + BreadcrumbList schema, rendered directly via
+// SchemaMarkup rather than through SEOEngine's `schemaTypes: ['FAQPage']`
+// path. SEOEngine's WebPage->FAQPage branch falls back to
+// `KCROC_GRAPH.faqs` (every FAQ on the entire site) whenever the entity has
+// no `featuredFAQIds` — this page's 8 FAQs aren't registered as global FAQ
+// entities, so enabling that schemaType on the graph entity would have
+// silently attached every site-wide FAQ to this page instead of just these
+// 8. Same pattern already used on ScreenProtectionTips.tsx and
+// GamingPCCooling.tsx.
+const STRUCTURED_DATA = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "TechArticle",
+      "@id": `${PAGE_URL}#article`,
+      "headline": "GameBarPresenceWriter.exe: Diagnose & Disable Background Game Bar Activity",
+      "description": "Seeing micro-stutters, frame-time spikes, or input-feel changes on a powerful Windows gaming PC? A measured, evidence-first diagnostic guide to GameBarPresenceWriter.exe.",
+      "url": PAGE_URL,
+      "isPartOf": { "@id": `${business.websiteUrl}/#website` },
+      "about": { "@id": `${business.websiteUrl}/#business` },
+      "author": { "@id": `${business.websiteUrl}/#business` },
+      "dateModified": "2026-08-23"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${PAGE_URL}#faq`,
+      "mainEntity": faqs.map(item => ({
+        "@type": "Question",
+        "name": item.q,
+        "acceptedAnswer": { "@type": "Answer", "text": item.a }
+      }))
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": `${PAGE_URL}#breadcrumb`,
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": business.websiteUrl },
+        { "@type": "ListItem", "position": 2, "name": "Guides", "item": `${business.websiteUrl}/guides` },
+        { "@type": "ListItem", "position": 3, "name": "GameBarPresenceWriter.exe Fix", "item": PAGE_URL }
+      ]
+    }
+  ]
+};
+
 const sectionClass = 'border-b border-slate-800/80 px-4 py-10 sm:px-6 sm:py-16';
 const proseClass = 'text-sm leading-7 text-slate-300 sm:text-base';
 
@@ -78,6 +124,7 @@ export default function GameBarPresenceWriterGuide() {
   return (
     <div className="min-h-screen bg-gray-950 text-white selection:bg-cyan-500/30">
       <SEOEngine entityId="guide-gamebar-presence-writer" />
+      <SchemaMarkup schema={STRUCTURED_DATA} />
 
       <section className="relative overflow-hidden border-b border-slate-800/80 px-4 pb-10 pt-24 sm:px-6 sm:pb-16">
         <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-transparent to-violet-500/10" />
