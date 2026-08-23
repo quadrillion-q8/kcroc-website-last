@@ -1,7 +1,7 @@
 // File: app/frontend/src/pages/LaptopBuyingGuideAR.tsx
+import { Head } from 'vite-react-ssg';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -249,7 +249,7 @@ export default function LaptopBuyingGuideAR() {
   return (
     <div className="min-h-screen bg-gray-950 text-white selection:bg-cyan-500/30" dir="rtl">
 
-      <Helmet htmlAttributes={{ lang: 'ar-KW', dir: 'rtl' }}>
+      <Head htmlAttributes={{ lang: 'ar-KW', dir: 'rtl' }}>
         <title>دليل شراء اللابتوب في الكويت 2026: شلون تختار أفضل لابتوب؟ | KCROC</title>
         <meta
           name="description"
@@ -278,7 +278,7 @@ export default function LaptopBuyingGuideAR() {
           content="شلون تختار اللابتوب الصح؟ دليل المعالج والرام والـSSD والـGPU والتبريد والبطارية."
         />
         <meta name="twitter:image" content={HERO_IMAGE_URL} />
-      </Helmet>
+      </Head>
 
       <SchemaMarkup schema={{ '@graph': PILLAR_SCHEMA }} />
 
