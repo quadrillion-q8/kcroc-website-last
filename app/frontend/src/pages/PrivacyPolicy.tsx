@@ -1,7 +1,7 @@
 // File: app/frontend/src/pages/PrivacyPolicy.tsx
+import { Head } from 'vite-react-ssg';
 import React, { useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
 import { ShieldCheck, Mail, Phone } from 'lucide-react';
 
 import { SEOEngine } from '../core/components/SEOEngine';
@@ -110,14 +110,14 @@ export default function PrivacyPolicy() {
   return (
     <main className="w-full min-h-screen bg-transparent text-slate-200 pt-32 pb-24">
       <SEOEngine entityId="page-privacy-policy" />
-      <Helmet>
+      <Head>
         <title>Privacy Policy | KCROC Computer Repair Kuwait</title>
         <meta
           name="description"
           content="Read the KCROC privacy policy to learn how we collect, use, and protect your personal data when you book a computer or laptop repair in Kuwait."
         />
         <link rel="canonical" href={pageUrl} />
-      </Helmet>
+      </Head>
       <SchemaMarkup schema={SCHEMA_DATA} />
 
       {/* Breadcrumbs */}
