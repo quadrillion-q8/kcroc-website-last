@@ -1,7 +1,7 @@
 // File: app/frontend/src/pages/LocationTemplate.tsx
+import { Head } from 'vite-react-ssg';
 import React, { useMemo } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
 import { 
   MapPin, Truck, Shield, Zap, Cpu, Wrench, 
   MessageCircle, Clock, CheckCircle2 
@@ -58,10 +58,10 @@ export default function LocationTemplate() {
       <SEOEngine entityId={location.id} />
       <SchemaMarkup schema={BREADCRUMB_SCHEMA} />
       
-      <Helmet>
-        <title>Computer & Laptop Repair in {location.title} | KCROC</title>
+      <Head>
+        <title>{`Computer & Laptop Repair in ${location.title} | KCROC`}</title>
         <meta name="description" content={`Expert computer, MacBook, and logic board repair in ${location.title}. Free pickup and delivery. We fix the board, we don't just swap it.`} />
-      </Helmet>
+      </Head>
 
       {/* ─── HERO SECTION ─── */}
       <section className="relative pt-8 sm:pt-16 lg:pt-24 pb-12 sm:pb-24 px-4 sm:px-6 overflow-hidden border-b border-slate-900">
