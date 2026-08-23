@@ -1,7 +1,7 @@
 // File: app/frontend/src/pages/PillarTemplate.tsx
+import { Head } from 'vite-react-ssg';
 import React from 'react';
 import { useParams, Navigate, Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
 import { ArrowLeft } from 'lucide-react';
 import { ROUTES } from '../constants/routes';
 
@@ -23,16 +23,16 @@ export default function PillarTemplate() {
   return (
     <main className="w-full min-h-screen bg-transparent text-slate-200 pt-8 sm:pt-16 lg:pt-32 pb-8 sm:pb-16 lg:pb-24">
       
-      {/* 🚀 Explicit canonical Helmet injected */}
-      <Helmet>
-        <title>{pillarData.title} | KCROC Ultimate Guide</title>
+      {/* 🚀 Explicit canonical tag (React 19 native head hoisting) */}
+      <Head>
+        <title>{`${pillarData.title} | KCROC Ultimate Guide`}</title>
         <meta name="description" content={pillarData.description || pillarData.excerpt || `Comprehensive guide to ${pillarData.title} in Kuwait.`} />
         <link rel="canonical" href={pageUrl} />
         <meta property="og:type" content="article" />
         <meta property="og:title" content={pillarData.title} />
         <meta property="og:description" content={pillarData.description || pillarData.excerpt} />
         {pillarData.image && <meta property="og:image" content={pillarData.image} />}
-      </Helmet>
+      </Head>
 
       <article className="max-w-5xl mx-auto px-6">
         <Link to={ROUTES.BLOG} className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors mb-8 font-medium">
