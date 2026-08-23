@@ -1,6 +1,6 @@
 // File: app/frontend/src/pages/GamingPCCooling.tsx
+import { Head } from 'vite-react-ssg';
 import React from 'react';
-import { Helmet } from 'react-helmet-async';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -8,9 +8,11 @@ import { Thermometer, Wind, Droplets, AlertTriangle, CheckCircle2, Phone, Messag
 import { Link } from 'react-router-dom';
 
 import { KCROC_GRAPH } from '../data/graph';
+import SchemaMarkup from '../components/seo/SchemaMarkup';
 
 // Dynamic Business Data
 const business = KCROC_GRAPH.business!;
+const PAGE_URL = `${business.websiteUrl}/blog/gaming-pc-cooling`;
 
 export default function GamingPCCooling() {
   const statistics = [
@@ -209,15 +211,55 @@ export default function GamingPCCooling() {
     }
   ];
 
+  // 🚀 FIX: this page previously had NO structured data at all — no
+  // LocalBusiness/publisher link, no FAQPage schema despite having real FAQ
+  // content above. It predates (or bypassed) the SEOEngine/SchemaMarkup
+  // pattern every other page on the site follows. Wired up here to match
+  // the sibling pattern used in BlogScreenProtection.tsx.
+  const STRUCTURED_DATA = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": `${PAGE_URL}#webpage`,
+        "url": PAGE_URL,
+        "name": "Gaming PC Cooling Services Kuwait | KCROC",
+        "description": "Professional cooling solutions designed for extreme climates. Protect your gaming PC from overheating and thermal throttling in Kuwait.",
+        "isPartOf": { "@id": `${business.websiteUrl}/#website` },
+        "about": { "@id": `${business.websiteUrl}/#business` },
+        "breadcrumb": { "@id": `${PAGE_URL}#breadcrumb` }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": `${PAGE_URL}#faq`,
+        "mainEntity": faq.map(item => ({
+          "@type": "Question",
+          "name": item.q,
+          "acceptedAnswer": { "@type": "Answer", "text": item.a }
+        }))
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${PAGE_URL}#breadcrumb`,
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": business.websiteUrl },
+          { "@type": "ListItem", "position": 2, "name": "Blog", "item": `${business.websiteUrl}/blog` },
+          { "@type": "ListItem", "position": 3, "name": "Gaming PC Cooling", "item": PAGE_URL }
+        ]
+      }
+    ]
+  };
+
   return (
     <div className="min-h-screen bg-gray-950 text-white selection:bg-cyan-500/30">
       
-      {/* 🚀 Independent SEO Helmet */}
-      <Helmet>
+      {/* 🚀 Independent SEO tags (React 19 native head hoisting) */}
+      <Head>
         <title>Gaming PC Cooling Services Kuwait | KCROC</title>
         <meta name="description" content="Professional cooling solutions designed for extreme climates. Protect your gaming PC from overheating and thermal throttling in Kuwait." />
-        <link rel="canonical" href={`${business.websiteUrl}/blog/gaming-pc-cooling`} />
-      </Helmet>
+        <link rel="canonical" href={PAGE_URL} />
+      </Head>
+      <SchemaMarkup schema={STRUCTURED_DATA} />
 
       {/* ─── HERO SECTION ─── */}
       <section className="relative pt-24 pb-8 sm:pb-24 px-4 sm:px-6 overflow-hidden">
