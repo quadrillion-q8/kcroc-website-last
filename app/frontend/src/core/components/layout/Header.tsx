@@ -46,7 +46,14 @@ export default function Header() {
   
   const phoneDisplay = NAV_GRAPH.business?.telephone ?? '55301913';
   const cleanTel = phoneDisplay.replace(/\D/g, '');
-  const logoUrl = NAV_GRAPH.business?.logoUrl ?? '/logo.webp';
+  // 🚀 FIX: was NAV_GRAPH.business?.logoUrl, which is an ABSOLUTE production
+  // URL (https://www.computerrepairkuwait.com/logo.webp) — correct for
+  // schema.org JSON-LD (which needs fully-qualified image URLs) but wrong
+  // for a visible <img>, which should just fetch the locally-bundled file.
+  // Was firing an extra same-origin-looking-but-still-external request on
+  // every single page load (confirmed via a full-site Puppeteer crawl —
+  // every page's header logo issued this identical extra request).
+  const logoUrl = '/logo.webp';
 
   useEffect(() => {
     if (!headerRef.current) return;
