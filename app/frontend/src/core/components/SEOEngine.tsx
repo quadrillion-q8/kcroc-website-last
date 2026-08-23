@@ -1,6 +1,37 @@
 // File: app/frontend/src/core/components/SEOEngine.tsx
+//
+// 🚀 HEAD MANAGEMENT: uses vite-react-ssg's own `<Head>` export (a thin
+// wrapper around its internally-bundled react-helmet-async instance), NOT
+// the standalone `react-helmet-async` package and NOT plain React tags.
+//
+// This project previously had TWO separate, compounding bugs here, both now
+// fixed — documented so nobody reintroduces either:
+//
+// 1. RootLayout.tsx used to wrap the app in its own extra `<HelmetProvider>`
+//    (no shared context). vite-react-ssg ALSO wraps every page render in its
+//    own top-level `<HelmetProvider context={helmetContext}>` and extracts
+//    that context after rendering to build the final <head>. Nesting our own
+//    provider inside it shadowed/disconnected vite-react-ssg's context, so
+//    every page's title/canonical/meta/schema silently fell back to the
+//    static defaults hardcoded in index.html — a site-wide bug affecting all
+//    61 pages, not something visible from the dev server (client-side Helmet
+//    patches the DOM directly and looked fine in the browser).
+// 2. The app separately depended on `react-helmet-async` (was v2.0.5) while
+//    vite-react-ssg bundles its own internal copy (v1.3.0) — two distinct
+//    module instances that can never share a React context even unnested.
+//    We briefly tried replacing this with plain React 19 <title>/<meta>/
+//    <link> tags relying on React's native head-hoisting, but vite-react-ssg
+//    renders the app as a *fragment* into an existing index.html shell
+//    (not a full-document render), so there is no <head> for React to hoist
+//    into — the tags just rendered inline in <body>, alongside (not
+//    replacing) the static head defaults. Reverted to `<Head>`.
+//
+// The fix: removed the app's own HelmetProvider entirely (vite-react-ssg's
+// is sufficient) and standardized every page on `import { Head } from
+// 'vite-react-ssg'` instead of `react-helmet-async`, so there is exactly one
+// Helmet implementation and one provider in the tree.
 import React from 'react';
-import { Helmet } from 'react-helmet-async';
+import { Head } from 'vite-react-ssg';
 import { KCROC_GRAPH } from '../../data/graph';
 import {
   ServiceEntity,
@@ -56,11 +87,11 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
     // A missing graph entity must never silently become an indexable page.
     // Fail safe so a route/configuration mistake cannot create duplicate SEO.
     return (
-      <Helmet>
+      <Head>
         <title>KCROC | Page Not Found</title>
         <meta name="description" content="The requested KCROC page could not be found." />
         <meta name="robots" content="noindex, follow" />
-      </Helmet>
+      </Head>
     );
   }
 
@@ -461,7 +492,7 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
   const shouldIndex = !resolvedRobots.toLowerCase().includes('noindex');
 
   return (
-    <Helmet>
+    <Head>
       <title>{title}</title>
       <meta name="description" content={description} />
       {shouldIndex && <link rel="canonical" href={fullCanonicalUrl} />}
@@ -495,6 +526,6 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
           "@graph": schemaGraph
         })}
       </script>
-    </Helmet>
+    </Head>
   );
 };
