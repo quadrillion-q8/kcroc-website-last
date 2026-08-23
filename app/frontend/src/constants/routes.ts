@@ -27,8 +27,3 @@ export const ROUTES = {
 // --- UTILITY FUNCTIONS ---
 // Restoring the missing helper function required by BlogPostTemplate.tsx
 export const getBlogRoute = (slug: string) => `/blog/${slug}`;
-
-// New helpers to ensure type-safe and typo-free link generation across the app
-export const getServiceRoute = (slug: string) => `/services/${slug}`;
-export const getFaqRoute = (slug: string) => `/faq/${slug}`;
-export const getLocationRoute = (slug: string) => `/location/${slug}`;
