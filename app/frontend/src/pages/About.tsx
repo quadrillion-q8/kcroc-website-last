@@ -1,7 +1,7 @@
 // File: app/frontend/src/pages/About.tsx
+import { Head } from 'vite-react-ssg';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
 import { 
   Award, Users, Clock, Shield, Zap, Heart, Star,
   MapPin, Phone, MessageCircle, Wrench, Cpu, 
@@ -66,10 +66,10 @@ export default function About() {
       
       {/* 🚀 Dynamic SEO Engine Integration */}
       <SEOEngine entityId="page-about" />
-      <Helmet>
+      <Head>
         <title>About KCROC | Elite Component-Level Repair Laboratory in Kuwait</title>
         <meta name="description" content="Learn about KCROC's Hawalli laboratory, our lead technicians Imran and Riyaz, and our mission to reclaim hardware from the 'beyond repair' category." />
-      </Helmet>
+      </Head>
 
       {/* ─── HERO SECTION (Technical Noir Aesthetic) ─── */}
       <section className="relative pt-8 sm:pt-16 lg:pt-24 pb-8 sm:pb-24 px-4 sm:px-6 overflow-hidden border-b border-slate-900">
