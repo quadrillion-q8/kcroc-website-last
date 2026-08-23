@@ -1,75 +1,104 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="manifest" href="/site.webmanifest" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#0f172a" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'" />
-    <noscript>
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" />
-    </noscript>
-    <link rel="preload" as="image" href="/logo.webp" type="image/webp" />
-    <link rel="preload" as="image" href="/images/home/kcroc-component-level-motherboard-repair-lab.webp" type="image/webp" media="(min-width: 1281px)" />
-    <link rel="preload" as="image" href="/images/home/kcroc-component-level-motherboard-repair-lab-900.webp" type="image/webp" media="(min-width: 1024px) and (max-width: 1280px)" />
-    <title>Kuwait Computer Repair On Call | MacBook & Laptop Repair – Free Pick & Drop</title>
-    <meta name="description" content="Same-day laptop, MacBook & PC repair by Kuwait Computer Repair On Call (KCROC). Free Pick & Drop across Hawalli, Salmiya, Kuwait City & all governorates. Call +965 55301913." />
-    <meta name="robots" content="index, follow, max-image-preview:large" />
-    <link rel="canonical" href="https://www.computerrepairkuwait.com/" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://www.computerrepairkuwait.com/" />
-    <meta property="og:title" content="Kuwait Computer Repair On Call | MacBook & Laptop Repair – Free Pick & Drop" />
-    <meta property="og:description" content="Same-day laptop, MacBook & PC repair in Kuwait with Free Pick & Drop. 4.9★ Google rating, 30-day warranty. Call or WhatsApp +965 55301913." />
-    <meta property="og:image" content="https://www.computerrepairkuwait.com/og-image.webp" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:image:type" content="image/webp" />
-    <meta property="og:site_name" content="Kuwait Computer Repair On Call" />
-    <meta property="og:locale" content="en_US" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Kuwait Computer Repair On Call | MacBook & Laptop Repair – Free Pick & Drop" />
-    <meta name="twitter:description" content="Same-day laptop, MacBook & PC repair in Kuwait with Free Pick & Drop. 4.9★ Google rating, 30-day warranty." />
-    <meta name="twitter:image" content="https://www.computerrepairkuwait.com/og-image.webp" />
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
+// File: app/frontend/vite.config.ts
+import path from "path";
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react-swc';
+import fs from 'fs';
+import { XMLParser } from 'fast-xml-parser';
 
-      // 🚀 SECURITY: Default Google Consent Mode v2 to 'denied'
-      gtag('consent', 'default', {
-        'analytics_storage': 'denied',
-        'ad_storage': 'denied',
-        'ad_user_data': 'denied',
-        'ad_personalization': 'denied'
-      });
-      gtag('js', new Date());
-      gtag('config', 'G-H2BXCZJ8NX');
-      gtag('config', 'AW-402583081');
+// Helper to read the generated sitemap
+// 🩹 FIX: this used to silently fall back to `['/']` whenever the sitemap
+// was missing, unparseable, or empty. That meant a failed/skipped
+// `generate:sitemap` step wouldn't fail the build — it would silently
+// prerender ONLY the homepage, shipping a mostly client-rendered site with
+// no visible build error. Every failure path below now throws instead, so
+// `pnpm build` (prebuild && generate:sitemap && vite-react-ssg build) fails
+// loudly and the SSG step never runs against an incomplete route list.
+function getSitemapRoutes() {
+  const sitemapPath = path.resolve(__dirname, 'public/sitemap.xml');
 
-      // 🚀 PERF FIX: gtag.js (+ its per-ID config fetches) was ~326 KiB of
-      // which PageSpeed flagged 137.7 KiB as unused on initial load, and it
-      // was loading in parallel with the app bundle on the render-critical
-      // connection (Network dependency tree / Reduce unused JavaScript
-      // audits). gtag() calls above are safely queued in dataLayer regardless
-      // of when the library script actually attaches, so we only fetch it
-      // once the page has finished loading and the LCP/FCP work is done.
-      window.addEventListener('load', function () {
-        var gtagScript = document.createElement('script');
-        gtagScript.async = true;
-        gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-H2BXCZJ8NX';
-        document.head.appendChild(gtagScript);
-      });
-    </script>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
-</html>
+  if (!fs.existsSync(sitemapPath)) {
+    throw new Error(
+      `[vite.config.ts] public/sitemap.xml not found at ${sitemapPath}. ` +
+      `Run "pnpm run generate:sitemap" before building — SSG must not ` +
+      `silently prerender only "/".`
+    );
+  }
+
+  const sitemap = fs.readFileSync(sitemapPath, 'utf-8');
+  const parser = new XMLParser();
+
+  let parsed: any;
+  try {
+    parsed = parser.parse(sitemap);
+  } catch (e) {
+    throw new Error(
+      `[vite.config.ts] Failed to parse public/sitemap.xml: ${(e as Error).message}`
+    );
+  }
+
+  if (!parsed.urlset || !parsed.urlset.url) {
+    throw new Error(
+      '[vite.config.ts] public/sitemap.xml contains no <url> entries. ' +
+      'Refusing to fall back to prerendering only "/" — check ' +
+      'scripts/generate-sitemap.ts and the knowledge graph it reads from.'
+    );
+  }
+
+  const urls = Array.isArray(parsed.urlset.url) ? parsed.urlset.url : [parsed.urlset.url];
+  const routes = urls.map((u: any) => new URL(u.loc).pathname);
+
+  if (routes.length === 0) {
+    throw new Error(
+      '[vite.config.ts] Sitemap parsed to zero routes. Refusing to build ' +
+      'with only "/" prerendered.'
+    );
+  }
+
+  return routes;
+}
+
+export default defineConfig({
+  plugins: [react()],
+  base: '/', 
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+    },
+  },
+  css: {
+    postcss: './postcss.config.js',
+  },
+  build: {
+    target: 'esnext',
+    outDir: 'dist',
+    cssCodeSplit: true,
+    rollupOptions: {
+      output: {
+        // Belt-and-suspenders: force vite-react-ssg + react-helmet-async into
+        // a single shared chunk rather than letting Rollup duplicate them
+        // across lazy-loaded route chunks (every route here is
+        // React.lazy()-loaded, including Home). This does NOT by itself fix
+        // anything — it was tried as a hypothesis for the site-wide broken-
+        // canonical bug and empirically did not change the outcome; the
+        // actual root cause and fix are documented in index.html and
+        // SEOEngine.tsx. Left in place anyway since guaranteeing one module
+        // instance for this pair is cheap and removes a class of bug this
+        // codebase doesn't need to worry about, but if you're hunting for
+        // "the fix," it isn't here.
+        manualChunks(id) {
+          if (id.includes('node_modules/vite-react-ssg') || id.includes('node_modules/react-helmet-async')) {
+            return 'ssg-head-vendor';
+          }
+        }
+      }
+    }
+  },
+  // 🚀 NATIVE SSG CONFIGURATION
+  ssgOptions: {
+    script: 'async',
+    formatting: 'minify',
+    includedRoutes(paths, routes) {
+      return getSitemapRoutes();
+    }
+  }
+});
