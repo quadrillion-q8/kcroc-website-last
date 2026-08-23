@@ -1,6 +1,6 @@
 // File: app/frontend/src/pages/BookingPage.tsx
+import { Head } from 'vite-react-ssg';
 import React, { useState } from 'react';
-import { Helmet } from 'react-helmet-async';
 import { ShieldCheck, Truck, Clock, MapPin, MessageCircle, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -96,10 +96,10 @@ export default function BookingPage() {
     <main className="w-full min-h-screen bg-slate-950 text-slate-100 font-sans pt-24 pb-16">
       
       {/* 🚀 Flawless SEO Injection */}
-      <Helmet>
+      <Head>
         <title>Book a Free Repair Diagnostic | KCROC Kuwait</title>
         <meta name="description" content="Book your free computer or MacBook diagnostic today. Free Pick & Drop across Kuwait. No Fix, No Fee." />
-      </Helmet>
+      </Head>
       <SEOEngine entityId="page-booking" />
       <SchemaMarkup schema={STRUCTURED_DATA} />
 
