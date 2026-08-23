@@ -1,7 +1,7 @@
 // File: app/frontend/src/pages/AuthorImran.tsx
+import { Head } from 'vite-react-ssg';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
 import {
   MapPin, Wrench, Microscope, Shield, BookOpen, ArrowRight, MessageCircle,
 } from 'lucide-react';
@@ -64,14 +64,14 @@ export default function AuthorImran() {
 
   return (
     <main className="w-full min-h-screen bg-gray-950 text-white font-sans selection:bg-cyan-500/30">
-      <Helmet>
+      <Head>
         <title>Imran Natiq — Hardware Repair Engineer at KCROC Kuwait</title>
         <meta
           name="description"
           content="Imran Natiq is a hardware repair engineer and founder of KCROC in Hawalli, Kuwait, specializing in motherboard diagnostics, micro-soldering, and laptop thermal repair."
         />
         <link rel="canonical" href={PAGE_URL} />
-      </Helmet>
+      </Head>
 
       <SchemaMarkup schema={{ '@graph': PERSON_SCHEMA }} />
 
