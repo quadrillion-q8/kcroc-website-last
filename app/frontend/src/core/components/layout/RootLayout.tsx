@@ -1,7 +1,6 @@
 // File: app/frontend/src/core/components/layout/RootLayout.tsx
 import React, { Suspense, lazy } from 'react';
 import { Outlet } from 'react-router-dom';
-import { HelmetProvider } from 'react-helmet-async';
 import { AnalyticsProvider } from '../../analytics/AnalyticsProvider';
 
 import Header from './Header';
@@ -20,7 +19,7 @@ const AnimatedBackground = lazy(() =>
 
 export const RootLayout: React.FC = () => {
   return (
-    <HelmetProvider>
+    <>
       <AnalyticsProvider>
         <div className="relative min-h-screen flex flex-col bg-transparent text-slate-200 font-sans selection:bg-cyan-500/30">
           
@@ -72,6 +71,6 @@ export const RootLayout: React.FC = () => {
           <Footer />
         </div>
       </AnalyticsProvider>
-    </HelmetProvider>
+    </>
   );
 };
