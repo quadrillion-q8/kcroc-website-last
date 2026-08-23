@@ -63,7 +63,11 @@ export function Footer() {
             <Link to="/" className="flex items-center mb-6 block w-fit" aria-label="Return to KCROC home page">
               {!logoError ? (
                 <img
-                  src={business.logoUrl}
+                  // 🚀 FIX: was business.logoUrl (absolute production URL) —
+                  // see Header.tsx for the full explanation. Schema.org
+                  // JSON-LD usages of business.logoUrl elsewhere are
+                  // untouched and correctly stay absolute.
+                  src="/logo.webp"
                   alt={brandLabel + ' Logo'}
                   width="112"
                   height="112"
