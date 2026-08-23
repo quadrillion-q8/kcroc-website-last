@@ -1,7 +1,7 @@
 // File: app/frontend/src/pages/LaptopBuyingGuide.tsx
+import { Head } from 'vite-react-ssg';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -299,7 +299,7 @@ export default function LaptopBuyingGuide() {
   return (
     <div className="min-h-screen bg-gray-950 text-white selection:bg-cyan-500/30">
 
-      <Helmet>
+      <Head>
         <title>Laptop Buying Guide Kuwait (2026): What the Spec Sheet Won't Tell You</title>
         <meta
           name="description"
@@ -310,7 +310,7 @@ export default function LaptopBuyingGuide() {
         <link rel="alternate" hrefLang="en-KW" href={PAGE_URL} />
         <link rel="alternate" hrefLang="ar-KW" href={AR_PAGE_URL} />
         <link rel="alternate" hrefLang="x-default" href={PAGE_URL} />
-      </Helmet>
+      </Head>
 
       <SchemaMarkup schema={{ '@graph': PILLAR_SCHEMA }} />
 
