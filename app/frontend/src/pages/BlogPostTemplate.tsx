@@ -1,7 +1,7 @@
 // File: app/frontend/src/pages/BlogPostTemplate.tsx
+import { Head } from 'vite-react-ssg';
 import React, { useMemo, useState, useEffect, useRef, useCallback } from 'react';
 import { useParams, Navigate, Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
 import {
   Calendar, Clock, User, ArrowLeft, ExternalLink, Share2, ChevronRight, Network,
   List, Info, Lightbulb, Sparkles, AlertTriangle, HelpCircle, Quote as QuoteIcon,
@@ -356,8 +356,8 @@ export default function BlogPostTemplate() {
   return (
     <main className="w-full min-h-screen bg-slate-950 text-slate-200 pt-8 sm:pt-16 lg:pt-32 pb-8 sm:pb-16 lg:pb-24">
 
-      <Helmet>
-        <title>{post.title.length > 57 ? `${post.title.slice(0, 57)}…` : post.title} | KCROC</title>
+      <Head>
+        <title>{`${post.title.length > 57 ? `${post.title.slice(0, 57)}…` : post.title} | KCROC`}</title>
         <meta name="description" content={(post.description || post.excerpt).slice(0, 155)} />
         <link rel="canonical" href={pageUrl} />
         <meta property="og:type" content="article" />
@@ -367,7 +367,7 @@ export default function BlogPostTemplate() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={post.title} />
         <meta name="twitter:description" content={post.description || post.excerpt} />
-      </Helmet>
+      </Head>
 
       <SchemaMarkup schema={SCHEMA_DATA} />
 
