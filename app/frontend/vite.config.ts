@@ -72,11 +72,26 @@ export default defineConfig({
     target: 'esnext',
     outDir: 'dist',
     cssCodeSplit: true,
-  },
-  // 🚀 FIX FOR ESM/CommonJS CONFLICT
-  // This forces Vite to pre-bundle react-helmet-async so Node.js can execute it during SSG
-  ssr: {
-    noExternal: ['react-helmet-async']
+    rollupOptions: {
+      output: {
+        // Belt-and-suspenders: force vite-react-ssg + react-helmet-async into
+        // a single shared chunk rather than letting Rollup duplicate them
+        // across lazy-loaded route chunks (every route here is
+        // React.lazy()-loaded, including Home). This does NOT by itself fix
+        // anything — it was tried as a hypothesis for the site-wide broken-
+        // canonical bug and empirically did not change the outcome; the
+        // actual root cause and fix are documented in index.html and
+        // SEOEngine.tsx. Left in place anyway since guaranteeing one module
+        // instance for this pair is cheap and removes a class of bug this
+        // codebase doesn't need to worry about, but if you're hunting for
+        // "the fix," it isn't here.
+        manualChunks(id) {
+          if (id.includes('node_modules/vite-react-ssg') || id.includes('node_modules/react-helmet-async')) {
+            return 'ssg-head-vendor';
+          }
+        }
+      }
+    }
   },
   // 🚀 NATIVE SSG CONFIGURATION
   ssgOptions: {
