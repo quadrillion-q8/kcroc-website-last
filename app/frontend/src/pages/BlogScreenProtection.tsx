@@ -1,7 +1,7 @@
 // File: app/frontend/src/pages/BlogScreenProtection.tsx
+import { Head } from 'vite-react-ssg';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -254,12 +254,12 @@ export default function BlogScreenProtection() {
   return (
     <div className="min-h-screen bg-gray-950 text-white selection:bg-cyan-500/30 relative">
       
-      {/* 🚀 Independent SEO Helmet */}
-      <Helmet>
+      {/* 🚀 Independent SEO tags (React 19 native head hoisting) */}
+      <Head>
         <title>How to Protect Your Laptop Screen: The Ultimate Care Guide | KCROC</title>
         <meta name="description" content="Expert advice from KCROC technicians on preventing laptop screen damage. Learn the physics of screen failure, Kuwait climate impacts, and repair costs." />
         <link rel="canonical" href={PAGE_URL} />
-      </Helmet>
+      </Head>
 
       <SchemaMarkup schema={STRUCTURED_DATA} />
 
