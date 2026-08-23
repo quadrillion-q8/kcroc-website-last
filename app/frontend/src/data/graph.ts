@@ -158,36 +158,6 @@ export const rawGraphData: RawGraphData = {
         'faq-bios-security-risk'
       ]
     } as WebPageEntity,
-    'guide-gamebar-presence-writer': {
-      id: 'guide-gamebar-presence-writer',
-      slug: 'guides/gamebarpresencewriter-exe',
-      entityType: 'WebPage',
-      isActive: true,
-      title: 'GameBarPresenceWriter.exe: Diagnose & Disable Background Game Bar Activity',
-      description: 'Learn what GameBarPresenceWriter.exe actually does, how to test whether Xbox Game Bar activity correlates with gaming stutter, and how to roll back advanced Windows changes safely.',
-      seo: {
-        title: 'GameBarPresenceWriter.exe: How to Disable It for Gaming | KCROC',
-        description: 'GameBarPresenceWriter.exe causing gaming stutter? Learn what the Windows component does, how to diagnose frame-time problems, and how to safely test Game Bar and advanced registry changes.',
-        canonicalUrl: 'https://www.computerrepairkuwait.com/guides/gamebarpresencewriter-exe',
-        ogType: 'article',
-        schemaTypes: ['Article', 'FAQPage']
-      },
-      authorName: 'Imran Natiq',
-      authorUrl: 'https://www.computerrepairkuwait.com/author/imran',
-      datePublished: '2026-08-23',
-      dateModified: '2026-08-23',
-      articleSection: 'Windows Gaming & Performance',
-      featuredFAQIds: [
-        'faq-gamebar-what-is-presence-writer',
-        'faq-gamebar-causes-stutter',
-        'faq-gamebar-registry-first',
-        'faq-gamebar-overlays',
-        'faq-gamebar-taskkill',
-        'faq-gamebar-other-causes',
-        'faq-gamebar-handhelds',
-        'faq-gamebar-undo-registry'
-      ]
-    } as WebPageEntity,
     'guide-intel-vs-amd': { 
       id: 'guide-intel-vs-amd', 
       slug: 'blog/intel-core-ultra-vs-amd-ryzen-ai', 
@@ -250,6 +220,28 @@ export const rawGraphData: RawGraphData = {
         canonicalUrl: 'https://www.computerrepairkuwait.com/guides/dell-inspiron-15-3000-overheating',
         ogType: 'article',
         schemaTypes: ['Article', 'BreadcrumbList']
+      }
+    } as WebPageEntity,
+
+    // 🚀 NEW: GameBarPresenceWriter.exe diagnostic guide. schemaTypes is
+    // 'Article' only (no 'FAQPage') — this page's FAQPage + BreadcrumbList
+    // schema is rendered directly in the page itself via SchemaMarkup, not
+    // through this entity, since SEOEngine's WebPage->FAQPage branch falls
+    // back to every site-wide FAQ when there's no featuredFAQIds set (see
+    // the comment in GameBarPresenceWriterGuide.tsx for the full reasoning).
+    'guide-gamebar-presence-writer': {
+      id: 'guide-gamebar-presence-writer',
+      slug: 'guides/gamebar-presence-writer-fix',
+      entityType: 'WebPage',
+      isActive: true,
+      title: 'GameBarPresenceWriter.exe: Diagnose & Disable Background Game Bar Activity',
+      description: 'Seeing micro-stutters, frame-time spikes, or input-feel changes on a powerful Windows gaming PC? A measured, evidence-first diagnostic guide to GameBarPresenceWriter.exe and Windows Game Bar background activity.',
+      seo: {
+        title: 'GameBarPresenceWriter.exe Fix: Stop Gaming Stutter & Frame Drops | KCROC',
+        description: 'GameBarPresenceWriter.exe causing stutter? Diagnose the real cause first, then safely disable Game Bar, use the registry override, or isolate the process — plus what to check if it is not the fix.',
+        canonicalUrl: 'https://www.computerrepairkuwait.com/guides/gamebar-presence-writer-fix',
+        ogType: 'article',
+        schemaTypes: ['Article']
       }
     } as WebPageEntity,
 
@@ -2048,14 +2040,6 @@ export const rawGraphData: RawGraphData = {
     /* ═══════════════════════════════════════════════════════════════
        BATTERY HEALTH GUIDE FAQs (guide-battery)
     ═══════════════════════════════════════════════════════════════ */
-    'faq-gamebar-what-is-presence-writer': { id: 'faq-gamebar-what-is-presence-writer', slug: 'gamebar-what-is-presence-writer', entityType: 'FAQ', isActive: true, title: 'What is GameBarPresenceWriter.exe?', description: 'What the Windows Game Bar Presence Writer component actually does.', answer: 'It is associated with Windows Game Bar presence functionality. Microsoft documents Presence Writer as a component notified when a game gains focus, loses focus, or closes, and describes its role in updating Xbox Live game presence when the relevant Xbox features are enabled.', seo: { title: 'What is GameBarPresenceWriter.exe?', description: 'What the Windows Game Bar Presence Writer component actually does.', canonicalUrl: 'https://www.computerrepairkuwait.com/guides/gamebarpresencewriter-exe#faq', schemaTypes: ['FAQPage'] } } as FAQEntity,
-    'faq-gamebar-causes-stutter': { id: 'faq-gamebar-causes-stutter', slug: 'gamebar-causes-stutter', entityType: 'FAQ', isActive: true, title: 'Does GameBarPresenceWriter.exe definitely cause gaming stutter?', description: 'Why the process alone does not prove a performance problem.', answer: 'No. Its presence alone does not prove a performance problem. Stutter has many possible causes, including GPU/CPU limits, thermal throttling, drivers, overlays, shader compilation, storage, and background software. Treat this process as a testable variable rather than the default culprit.', seo: { title: 'Does GameBarPresenceWriter.exe cause stutter?', description: 'Why the process alone does not prove a performance problem.', canonicalUrl: 'https://www.computerrepairkuwait.com/guides/gamebarpresencewriter-exe#faq', schemaTypes: ['FAQPage'] } } as FAQEntity,
-    'faq-gamebar-registry-first': { id: 'faq-gamebar-registry-first', slug: 'gamebar-registry-first', entityType: 'FAQ', isActive: true, title: 'Should I change the registry before testing anything else?', description: 'Why lower-risk Game Bar tests should come first.', answer: 'No. Start with the least invasive Game Bar and capture settings, reproduce the problem, and measure frame-time. Registry ownership changes should be a last-resort experiment for an experienced Windows user.', seo: { title: 'Should I edit the registry to disable GameBarPresenceWriter?', description: 'Why registry changes should not be the first troubleshooting step.', canonicalUrl: 'https://www.computerrepairkuwait.com/guides/gamebarpresencewriter-exe#faq', schemaTypes: ['FAQPage'] } } as FAQEntity,
-    'faq-gamebar-overlays': { id: 'faq-gamebar-overlays', slug: 'gamebar-overlays', entityType: 'FAQ', isActive: true, title: 'Will disabling Game Bar remove Steam or Discord overlays?', description: 'How Xbox Game Bar differs from other gaming overlays.', answer: 'No. Xbox Game Bar is separate from Steam Overlay, Discord Overlay, and third-party capture applications such as OBS. Those applications have their own settings and processes.', seo: { title: 'Does disabling Xbox Game Bar disable Steam or Discord overlay?', description: 'Xbox Game Bar is separate from Steam and Discord overlays.', canonicalUrl: 'https://www.computerrepairkuwait.com/guides/gamebarpresencewriter-exe#faq', schemaTypes: ['FAQPage'] } } as FAQEntity,
-    'faq-gamebar-taskkill': { id: 'faq-gamebar-taskkill', slug: 'gamebar-taskkill', entityType: 'FAQ', isActive: true, title: 'Can I just use taskkill on GameBarPresenceWriter.exe?', description: 'The limitations of terminating the current process.', answer: 'You can terminate a currently running process, but that is not a guaranteed permanent disable mechanism. Windows or the application stack can start a component again when its activation conditions are met.', seo: { title: 'Can I use taskkill to stop GameBarPresenceWriter.exe?', description: 'Why taskkill is a temporary test rather than a guaranteed permanent disable.', canonicalUrl: 'https://www.computerrepairkuwait.com/guides/gamebarpresencewriter-exe#faq', schemaTypes: ['FAQPage'] } } as FAQEntity,
-    'faq-gamebar-other-causes': { id: 'faq-gamebar-other-causes', slug: 'gamebar-other-causes', entityType: 'FAQ', isActive: true, title: 'What should I check if disabling Game Bar does not fix stutter?', description: 'The main alternative causes of frame-time problems.', answer: 'Check frame-time consistency, CPU/GPU utilization, temperatures, clock speeds, RAM pressure, storage activity, graphics-driver behavior, overlays, shader compilation, and DPC/ISR latency. Hardware instability should also be considered.', seo: { title: 'What to check if disabling Game Bar does not fix stutter?', description: 'Alternative causes of gaming frame-time spikes and stutter.', canonicalUrl: 'https://www.computerrepairkuwait.com/guides/gamebarpresencewriter-exe#faq', schemaTypes: ['FAQPage'] } } as FAQEntity,
-    'faq-gamebar-handhelds': { id: 'faq-gamebar-handhelds', slug: 'gamebar-handhelds', entityType: 'FAQ', isActive: true, title: 'Is GameBarPresenceWriter especially relevant to gaming handhelds?', description: 'Why background activity can matter more on constrained systems.', answer: 'It can be worth testing on constrained systems such as gaming laptops and Windows handhelds because background activity competes within a tighter thermal and power budget. But thermal and power-limit behavior should be investigated first when symptoms appear after sustained gaming.', seo: { title: 'Does GameBarPresenceWriter affect gaming handhelds?', description: 'Why background activity can matter on Windows gaming handhelds.', canonicalUrl: 'https://www.computerrepairkuwait.com/guides/gamebarpresencewriter-exe#faq', schemaTypes: ['FAQPage'] } } as FAQEntity,
-    'faq-gamebar-undo-registry': { id: 'faq-gamebar-undo-registry', slug: 'gamebar-undo-registry', entityType: 'FAQ', isActive: true, title: 'Can I undo a GameBarPresenceWriter registry change?', description: 'How to restore the original registry configuration.', answer: 'Yes, if you made a backup and documented the original value. The safest recovery path is to restore the original registry value and ownership rather than assuming a hard-coded value applies identically to every Windows build.', seo: { title: 'How do I undo GameBarPresenceWriter registry changes?', description: 'How to restore the original registry configuration safely.', canonicalUrl: 'https://www.computerrepairkuwait.com/guides/gamebarpresencewriter-exe#faq', schemaTypes: ['FAQPage'] } } as FAQEntity,
     'faq-battery-how-to-know': { id: 'faq-battery-how-to-know', slug: 'battery-how-to-know', entityType: 'FAQ', isActive: true, title: 'How do I know if my laptop battery needs replacing?', description: 'The strongest combined indicators of a failing laptop battery.', answer: 'Look at the pattern, not one symptom in isolation: fast drain, a battery health report showing severe wear, unexpected shutdowns, or swelling are the strongest indicators. A single odd reading is usually software, not a bad battery.', seo: { title: 'How do I know if my laptop battery needs replacing?', description: 'The strongest combined indicators of a failing laptop battery.', canonicalUrl: 'https://www.computerrepairkuwait.com/guides/laptop-battery-warning-signs#faq', schemaTypes: ['FAQPage'] } } as FAQEntity,
     'faq-battery-check-windows': { id: 'faq-battery-check-windows', slug: 'battery-check-windows', entityType: 'FAQ', isActive: true, title: 'How do I check battery health in Windows 11?', description: 'Using powercfg to generate a battery health report.', answer: 'Open Command Prompt or Terminal and run "powercfg /batteryreport", then open the generated HTML file. It shows Design Capacity vs Full Charge Capacity, plus recent usage and capacity history.', seo: { title: 'How do I check battery health in Windows 11?', description: 'Using powercfg to generate a battery health report.', canonicalUrl: 'https://www.computerrepairkuwait.com/guides/laptop-battery-warning-signs#faq', schemaTypes: ['FAQPage'] } } as FAQEntity,
     'faq-battery-check-macbook': { id: 'faq-battery-check-macbook', slug: 'battery-check-macbook', entityType: 'FAQ', isActive: true, title: 'How do I check MacBook battery health?', description: 'Finding Maximum Capacity and Condition in System Settings.', answer: 'Go to System Settings \u2192 Battery \u2192 Battery Health. It shows a Maximum Capacity percentage and a Condition status such as Normal, Service Recommended, or Replace Soon.', seo: { title: 'How do I check MacBook battery health?', description: 'Finding Maximum Capacity and Condition in System Settings.', canonicalUrl: 'https://www.computerrepairkuwait.com/guides/laptop-battery-warning-signs#faq', schemaTypes: ['FAQPage'] } } as FAQEntity,
