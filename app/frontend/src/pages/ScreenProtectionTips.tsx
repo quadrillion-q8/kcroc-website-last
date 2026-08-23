@@ -1,6 +1,6 @@
 // File: app/frontend/src/pages/ScreenProtectionTips.tsx
+import { Head } from 'vite-react-ssg';
 import React from 'react';
-import { Helmet } from 'react-helmet-async';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -11,9 +11,11 @@ import {
 import { Link } from 'react-router-dom';
 
 import { KCROC_GRAPH } from '../data/graph';
+import SchemaMarkup from '../components/seo/SchemaMarkup';
 
 // Dynamic Business Data
 const business = KCROC_GRAPH.business!;
+const PAGE_URL = `${business.websiteUrl}/laptop-screen-protection-tips`;
 
 export default function ScreenProtectionTips() {
   const protectionTips = [
@@ -31,15 +33,53 @@ export default function ScreenProtectionTips() {
     { q: 'Do you provide free pickup for screen replacements in Kuwait?', a: 'Yes! We offer free pickup and delivery service across all Kuwait governorates for screen replacement services.' }
   ];
 
+  // 🚀 FIX: this page previously had NO structured data at all — no
+  // LocalBusiness/publisher link, no FAQPage schema despite having real FAQ
+  // content above. It predates (or bypassed) the SEOEngine/SchemaMarkup
+  // pattern every other page on the site follows. Wired up here to match
+  // the sibling pattern used in BlogScreenProtection.tsx.
+  const STRUCTURED_DATA = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": `${PAGE_URL}#webpage`,
+        "url": PAGE_URL,
+        "name": "7 Tips to Protect Your Laptop Screen | KCROC Kuwait",
+        "description": "Expert tips from Kuwait Computer Repair On Call to help you avoid broken screens, compression damage, and costly display repairs.",
+        "isPartOf": { "@id": `${business.websiteUrl}/#website` },
+        "about": { "@id": `${business.websiteUrl}/#business` }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": `${PAGE_URL}#faq`,
+        "mainEntity": faq.map(item => ({
+          "@type": "Question",
+          "name": item.q,
+          "acceptedAnswer": { "@type": "Answer", "text": item.a }
+        }))
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${PAGE_URL}#breadcrumb`,
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": business.websiteUrl },
+          { "@type": "ListItem", "position": 2, "name": "Laptop Screen Protection Tips", "item": PAGE_URL }
+        ]
+      }
+    ]
+  };
+
   return (
     <div className="min-h-screen bg-gray-950 text-white">
       
-      {/* 🚀 Independent SEO Helmet */}
-      <Helmet>
+      {/* 🚀 Independent SEO tags (React 19 native head hoisting) */}
+      <Head>
         <title>7 Tips to Protect Your Laptop Screen | KCROC Kuwait</title>
         <meta name="description" content="Expert tips from Kuwait Computer Repair On Call to help you avoid broken screens, compression damage, and costly display repairs." />
-        <link rel="canonical" href={`${business.websiteUrl}/laptop-screen-protection-tips`} />
-      </Helmet>
+        <link rel="canonical" href={PAGE_URL} />
+      </Head>
+      <SchemaMarkup schema={STRUCTURED_DATA} />
 
       {/* Hero */}
       <section className="relative pt-32 pb-24 px-4 overflow-hidden text-center">
