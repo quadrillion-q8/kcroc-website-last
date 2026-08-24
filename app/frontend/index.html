@@ -4,12 +4,33 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Static fallback defaults. Every route overrides these via
-         SEOEngine.tsx (vite-react-ssg's <Head>) during SSG — these only
-         show if that fails to run for a given page. -->
-    <title>KCROC | Computer Repair Kuwait — Laptop, MacBook & PC Repair</title>
-    <meta name="description" content="Expert laptop, MacBook and PC repair in Kuwait. Free pickup, 30-day warranty, same-day diagnostics. Hawalli-based repair lab serving all of Kuwait." />
-    <meta name="robots" content="index, follow" />
+    <!-- 🩹 FIX (audit): this file used to hardcode <title>/<meta
+         description>/<meta robots> here on the assumption that
+         vite-react-ssg's per-page <Head> (see SEOEngine.tsx) would replace
+         them during SSG. It doesn't — vite-react-ssg renders each page as a
+         fragment into this exact template and APPENDS its extracted head
+         tags rather than removing what's already here. The result: every
+         one of the 62 prerendered pages shipped TWO <title> tags, TWO
+         meta-description tags, and TWO meta-robots tags — the correct
+         page-specific one plus this generic one, duplicated site-wide.
+         Browsers happened to pick the first (correct) <title>/<meta
+         description> in every page sampled, but duplicate tags are still
+         invalid HTML, and Google explicitly may respond to duplicate/
+         conflicting title, description, or robots signals by ignoring the
+         provided value and generating its own — undermining every page's
+         crafted SEO metadata. One page (a broken SEOEngine entityId
+         reference, since fixed) even shipped a genuinely CONFLICTING
+         robots pair (noindex vs index), which most search engines resolve
+         by honoring the more restrictive value — i.e. that real, linked,
+         sitemapped page was likely not being indexed at all.
+         Since production is 100% statically prerendered (every route in
+         sitemap.xml gets its own real title/description/robots baked in at
+         build time — see vite.config.ts's includedRoutes), these static
+         defaults are never actually needed there. Removed. The only cost
+         is a blank browser-tab title for a fraction of a second during
+         local `pnpm dev` (pure client-side, unbuilt) before React mounts —
+         cosmetic, dev-only, and does not affect what search engines or
+         production users ever see. -->
 
     <!-- Favicons / manifest (matches files present in /public) -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
