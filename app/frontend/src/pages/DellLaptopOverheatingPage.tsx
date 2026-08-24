@@ -8,7 +8,6 @@ import {
   MessageCircle, Phone, MapPin, Shield, Laptop 
 } from 'lucide-react';
 
-import { SEOEngine } from '../core/components/SEOEngine';
 import SchemaMarkup from '../components/seo/SchemaMarkup';
 import { KCROC_GRAPH } from '../data/graph';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -117,7 +116,6 @@ export const DellLaptopOverheatingPage = () => {
         <meta property="og:type" content="article" />
       </Head>
 
-      <SEOEngine entityId="guide-dell-overheating" />
       <SchemaMarkup schema={{ '@graph': GUIDE_SCHEMA }} />
 
       {/* Breadcrumb */}
