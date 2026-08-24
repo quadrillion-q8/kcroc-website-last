@@ -23,6 +23,15 @@ const DOMAIN = 'https://www.computerrepairkuwait.com';
 // entity. Add future orphan pages to this list as they're discovered.
 const EXTRA_STANDALONE_PAGES: string[] = [
   '/laptop-screen-protection-tips',
+  // 🩹 FIX (audit): real, directly-routed page (App.tsx ->
+  // DellLaptopOverheatingPage, not a redirect) with its own content, but no
+  // graph entity — same missing-orphan pattern as the line above. It was
+  // previously masked because nothing linked to it directly (internal links
+  // went through the /guides/dell-inspiron-15-3000-overheating redirect
+  // stub instead, which WAS in the sitemap). Now that NavigationCompiler.ts
+  // and GuidesIndex.tsx link straight to this page, it needs to be
+  // prerendered and indexable in its own right.
+  '/guides/dell-laptop-overheating',
 ];
 
 // 🚀 FIX: Flat priority/changefreq (0.8/weekly on every URL) told crawlers
