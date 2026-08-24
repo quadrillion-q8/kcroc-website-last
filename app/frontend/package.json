@@ -9,6 +9,7 @@
     "generate:sitemap": "npx tsx scripts/generate-sitemap.ts",
     "build": "pnpm run prebuild && pnpm run generate:sitemap && vite-react-ssg build",
     "lint": "eslint --quiet ./src",
+    "audit:seo": "node scripts/audit.mjs",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -53,6 +54,7 @@
     "@types/react-dom": "^19.1.8",
     "@vitejs/plugin-react-swc": "^3.5.0",
     "autoprefixer": "^10.4.20",
+    "cheerio": "^1.2.0",
     "eslint": "^9.9.0",
     "eslint-plugin-react-hooks": "^5.1.0-rc.0",
     "eslint-plugin-react-refresh": "^0.4.9",
