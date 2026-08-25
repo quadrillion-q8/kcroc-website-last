@@ -206,22 +206,18 @@ export const rawGraphData: RawGraphData = {
         schemaTypes: ['Article', 'FAQPage', 'BreadcrumbList']
       }
     } as WebPageEntity,
-    // 🚀 NEW: Dell Inspiron Overheating Guide
-    'guide-dell-inspiron-overheating': {
-      id: 'guide-dell-inspiron-overheating',
-      slug: 'guides/dell-inspiron-15-3000-overheating',
-      entityType: 'WebPage',
-      isActive: true,
-      title: 'Dell Inspiron 15 3000 Overheating Fix & Repair Guide',
-      description: 'Is your Dell Inspiron 15 3000 overheating, shutting down, or running loud? Learn the causes, DIY fixes, and professional thermal repair solutions in Kuwait.',
-      seo: {
-        title: 'Dell Inspiron 15 3000 Overheating Fix | KCROC Kuwait',
-        description: 'Is your Dell Inspiron 15 3000 overheating, shutting down, or running loud? Learn the causes, DIY fixes, and professional thermal repair solutions in Kuwait.',
-        canonicalUrl: 'https://www.computerrepairkuwait.com/guides/dell-inspiron-15-3000-overheating',
-        ogType: 'article',
-        schemaTypes: ['Article', 'BreadcrumbList']
-      }
-    } as WebPageEntity,
+    // 🩹 REMOVED (audit): 'guide-dell-inspiron-overheating' used to live here,
+    // pointing at slug 'guides/dell-inspiron-15-3000-overheating' with its own
+    // canonicalUrl declaring that URL canonical. But App.tsx's route for that
+    // exact path is a pure `<Navigate to="/guides/dell-laptop-overheating" />`
+    // stub — there was never a page component rendering this entity, so it
+    // was dead data that nothing in the graph or router actually consumed
+    // (confirmed: no other file referenced the 'guide-dell-inspiron-overheating'
+    // key). Its canonicalUrl also directly contradicted the redirect. The real,
+    // rendered page for this content is 'guides/dell-laptop-overheating' below
+    // (DellLaptopOverheatingPage). Deleted rather than fixed in place, since
+    // keeping a graph node for a URL that only ever redirects invites this
+    // same drift again.
 
     // 🚀 NEW: GameBarPresenceWriter.exe diagnostic guide. schemaTypes is
     // 'Article' only (no 'FAQPage') — this page's FAQPage + BreadcrumbList
