@@ -147,6 +147,10 @@ export const routes: RouteObject[] = [
           { path: 'guides/bios-uefi-recovery-kuwait', element: <BiosUefiRecoveryGuide /> },
           { path: 'guides/dell-laptop-overheating', element: <DellLaptopOverheatingPage /> },
           { path: 'guides/gamebar-presence-writer-fix', element: <GameBarPresenceWriterGuide /> },
+          // 🩹 FIX (audit): both of these now also have real server-side 301s in
+          // vercel.json (added alongside this fix), so production traffic never
+          // hits this client-only stub. Kept as a fallback for local dev / any
+          // deploy target without vercel.json's redirects applied.
           { path: 'guides/dell-inspiron-15-3000-overheating', element: <Navigate to="/guides/dell-laptop-overheating" replace /> },
           { path: 'guides/dell-overheating', element: <Navigate to="/guides/dell-laptop-overheating" replace /> },
           { path: 'laptop-screen-protection-tips', element: <ScreenProtectionTips /> },
