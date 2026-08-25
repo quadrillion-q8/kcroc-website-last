@@ -104,7 +104,12 @@
     },
     {
       "source": "/guides/dell-overheating",
-      "destination": "/guides/dell-inspiron-15-3000-overheating",
+      "destination": "/guides/dell-laptop-overheating",
+      "permanent": true
+    },
+    {
+      "source": "/guides/dell-inspiron-15-3000-overheating",
+      "destination": "/guides/dell-laptop-overheating",
       "permanent": true
     },
     {
