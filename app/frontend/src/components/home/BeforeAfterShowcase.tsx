@@ -17,9 +17,16 @@ const Picture = ({
     <picture>
       <source srcSet={variant.avif} type="image/avif" />
       <source srcSet={variant.webp} type="image/webp" />
+      {/* 🩹 FIX (audit): width/height added. Actual rendered size is still
+          governed by the "w-full h-48 object-cover" classes (fixed 12rem
+          height already prevented layout shift here), but explicit
+          attributes are what image-audit tooling (and browsers deciding
+          decode priority) actually check for. */}
       <img
         src={variant.raw}
         alt={alt}
+        width={400}
+        height={192}
         className="w-full h-48 object-cover"
         loading="lazy"
         decoding="async"
