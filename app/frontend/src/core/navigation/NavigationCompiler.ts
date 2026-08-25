@@ -216,8 +216,13 @@ export class NavigationCompiler {
       id: 'guides_mega',
       title: 'DIY & Repair Guides',
       featured: [
-        // 🚀 UPDATED: Pointing to the new specific Dell Inspiron URL
-        { id: 'g1', slug: 'guides/dell-inspiron-15-3000-overheating', title: 'Dell Inspiron Overheating', description: 'Thermal troubleshooting guide', iconKey: 'cpu', entityType: 'Page' as any, primaryKeyword: 'overheating', weight: 0, commercialIntent: 'info' },
+        // 🩹 FIX (audit): was pointing at 'guides/dell-inspiron-15-3000-overheating',
+        // which App.tsx routes as a client-side-only <Navigate> stub with no
+        // rendered content of its own (empty title/meta/canonical/H1 in the
+        // prerendered HTML). Every click from this mega-menu item landed on
+        // that empty page and then bounced again client-side. Repointed
+        // straight at the real, rendered guide page.
+        { id: 'g1', slug: 'guides/dell-laptop-overheating', title: 'Dell Inspiron Overheating', description: 'Thermal troubleshooting guide', iconKey: 'cpu', entityType: 'Page' as any, primaryKeyword: 'overheating', weight: 0, commercialIntent: 'info' },
         { id: 'g2', slug: 'guides/laptop-battery-warning-signs', title: 'Battery Warning Signs', description: 'Lithium-ion failure checklist', iconKey: 'battery', entityType: 'Page' as any, primaryKeyword: 'battery', weight: 0, commercialIntent: 'info' },
         { id: 'g3', slug: 'guides/bios-uefi-recovery-kuwait', title: 'BIOS & UEFI Recovery', description: 'Firmware update failures & recovery', iconKey: 'cpu', entityType: 'Page' as any, primaryKeyword: 'bios', weight: 0, commercialIntent: 'info' },
         { id: 'g4', slug: 'guides/gamebar-presence-writer-fix', title: 'GameBarPresenceWriter.exe Fix', description: 'Diagnose gaming stutter the right way', iconKey: 'gaming', entityType: 'Page' as any, primaryKeyword: 'gamebar', weight: 0, commercialIntent: 'info' },
