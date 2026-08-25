@@ -24,7 +24,11 @@ interface GuideLink {
 // compileGuidesMegaMenu() when a new one is published.
 const GUIDES: GuideLink[] = [
   {
-    slug: 'guides/dell-inspiron-15-3000-overheating',
+    // 🩹 FIX (audit): was 'guides/dell-inspiron-15-3000-overheating', a
+    // client-side-only <Navigate> redirect stub in App.tsx with no rendered
+    // content of its own — this card linked straight into an empty page.
+    // Repointed at the real, rendered guide page it redirects to.
+    slug: 'guides/dell-laptop-overheating',
     title: 'Dell Inspiron 15 3000 Overheating',
     description: 'Step-by-step thermal troubleshooting for the Dell Inspiron 15 3000 series — causes, safe checks, and when to bring it in.',
     icon: Cpu,
