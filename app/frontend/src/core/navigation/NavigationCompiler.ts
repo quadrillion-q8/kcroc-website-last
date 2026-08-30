@@ -266,6 +266,9 @@ export class NavigationCompiler {
             { id: 'loc-farwaniya', slug: 'location/farwaniya', title: 'Farwaniya', description: '', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'farwaniya', weight: 0, commercialIntent: 'info' },
             { id: 'loc-ahmadi', slug: 'location/ahmadi', title: 'Ahmadi', description: '', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'ahmadi', weight: 0, commercialIntent: 'info' },
             { id: 'loc-jahra', slug: 'location/jahra', title: 'Jahra', description: '', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'jahra', weight: 0, commercialIntent: 'info' },
+            { id: 'loc-fahaheel', slug: 'location/fahaheel', title: 'Fahaheel', description: '', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'fahaheel', weight: 0, commercialIntent: 'info' },
+            { id: 'loc-mangaf', slug: 'location/mangaf', title: 'Mangaf', description: '', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'mangaf', weight: 0, commercialIntent: 'info' },
+            { id: 'loc-abu-halifa', slug: 'location/abu-halifa', title: 'Abu Halifa', description: '', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'abu halifa', weight: 0, commercialIntent: 'info' },
           ]
         }
       ]
