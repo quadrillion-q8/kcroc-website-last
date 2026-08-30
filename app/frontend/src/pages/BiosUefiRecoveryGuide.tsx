@@ -32,6 +32,25 @@ const decisionTree = [
   { icon: Database, prompt: 'I want to prepare the right information before recovery', target: 'Recovery Intake Checklist', anchor: '#recovery-intake' },
 ];
 
+const recoveryIntake = [
+  { 
+    title: 'Exact Model & Platform Identifier', 
+    text: 'Locate the exact model and sub-model (e.g., HP EliteBook 830 G6, not just "HP EliteBook"). Motherboard revision numbers are even better if the chassis is already open.' 
+  },
+  { 
+    title: 'The Exact Failure Sequence', 
+    text: 'Note whether the machine lost power during an active flash progress bar, or if it completed the flash and simply never reached POST on the subsequent reboot.' 
+  },
+  { 
+    title: 'Diagnostic LED & Beep Patterns', 
+    text: 'Count any blinking Caps Lock/Num Lock LEDs or listen for specific beep sequences immediately upon power-up, before the fans ramp to maximum.' 
+  },
+  { 
+    title: 'BitLocker Key Availability', 
+    text: 'Confirm whether the Windows drive is encrypted and if the BitLocker recovery key is accessible via a Microsoft account or USB backup.' 
+  }
+];
+
 const warningSigns = [
   { number: '01', title: 'Complete Black Screen After Power-On', description: 'The system powers on, fans spin or LEDs illuminate, but there is no display output and the machine never reaches a usable POST screen.', urgent: false, clues: ['Fans start immediately and may remain at high speed', 'Caps Lock or Num Lock may not respond normally', 'External display also shows no signal', 'Especially significant right after a BIOS update'] },
   { number: '02', title: 'The System Died During a BIOS Update', description: 'The computer stopped responding, restarted, or lost power while firmware was actively being written.', urgent: true, clues: ['The update progress was interrupted', 'The system froze during a manufacturer firmware package', 'The machine rebooted and never completed POST afterward', 'One of the strongest clues for possible firmware corruption'] },
@@ -91,7 +110,7 @@ const bitlockerGuidance = [
   'Back up the recovery key and suspend BitLocker before any firmware update on an encrypted machine.',
   'If asked for the key after an update, entering it is expected and safe \u2014 not evidence of tampering.',
   "If the key was never saved, that's a data-access problem, not a firmware-repair one \u2014 reflashing won't retrieve encrypted data.",
-  'After recovery, verify that Secure Boot and TPM settings match the configuration required by Windows and your organization's security policy; do not change them unnecessarily while troubleshooting.',
+  "After recovery, verify that Secure Boot and TPM settings match the configuration required by Windows and your organization's security policy; do not change them unnecessarily while troubleshooting.",
 ];
 
 const faq = [
@@ -130,7 +149,7 @@ const LAST_REVIEWED = 'August 30, 2026';
 
 export default function BiosUefiRecoveryGuide() {
   return (
-    <div className="min-h-screen bg-gray-950 text-white selection:bg-cyan-500/30">
+    <div className="min-h-screen bg-slate-950 text-white selection:bg-cyan-500/30">
 
       {/* Dynamic SEO Engine Integration */}
       <SEOEngine entityId="guide-bios-uefi" />
