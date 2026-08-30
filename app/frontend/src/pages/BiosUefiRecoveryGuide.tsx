@@ -29,6 +29,7 @@ const decisionTree = [
   { icon: Volume2, prompt: 'Beeping, or blinking LEDs instead of a normal boot', target: 'POST & Beep Codes', anchor: '#post-codes' },
   { icon: KeyRound, prompt: 'Windows suddenly asks for a BitLocker recovery key', target: 'Secure Boot, TPM & BitLocker', anchor: '#security-layer' },
   { icon: HelpCircle, prompt: 'Just deciding whether to update BIOS/UEFI at all', target: 'When to Update / When Not To', anchor: '#updates' },
+  { icon: Database, prompt: 'I want to prepare the right information before recovery', target: 'Recovery Intake Checklist', anchor: '#recovery-intake' },
 ];
 
 const warningSigns = [
@@ -45,12 +46,12 @@ const warningSigns = [
 ];
 
 const manufacturerNotes = [
-  { brand: 'Dell', text: 'A well-documented, built-in BIOS Recovery mechanism on most systems released after roughly 2015, with both a hard-drive-based and a USB-based recovery path depending on the model.', link: '/dell-laptop-repair-kuwait', linkLabel: 'Dell repair in Kuwait' },
-  { brand: 'HP', text: "An emergency BIOS-recovery mechanism is common on HP notebooks, restoring firmware from a local backup or USB drive. Systems with HP Sure Start use a different, self-healing architecture and don't support the manual/USB methods at all.", link: '/hp-laptop-repair-kuwait', linkLabel: 'HP repair in Kuwait' },
+  { brand: 'Dell', text: 'Dell provides BIOS Recovery features on many systems, with the exact recovery source and supported procedure depending on the model and generation. Confirm the current Dell documentation for the exact service tag/model before using a recovery file.', link: '/dell-laptop-repair-kuwait', linkLabel: 'Dell repair in Kuwait' },
+  { brand: 'HP', text: "HP notebooks commonly provide BIOS recovery features, but the supported key sequence, file handling and recovery path vary by model. HP Sure Start platforms use a different protected recovery architecture, so do not assume a generic USB/key-combination procedure applies.", link: '/hp-laptop-repair-kuwait', linkLabel: 'HP repair in Kuwait' },
   { brand: 'Lenovo', text: 'Recovery behavior differs meaningfully between ThinkPad, IdeaPad, Legion and other Lenovo families. Always confirm the exact procedure for the specific model on Lenovo\u2019s official support pages.', link: '/lenovo-laptop-repair-kuwait', linkLabel: 'Lenovo repair in Kuwait' },
   { brand: 'ASUS', text: 'ASUS boards generally use one of two mechanisms: CrashFree BIOS 3 (automatic recovery from a USB drive) or USB BIOS FlashBack on higher-end boards, which reflashes using standby power alone \u2014 no CPU or RAM required.', link: '/asus-laptop-repair-kuwait', linkLabel: 'ASUS repair in Kuwait' },
   { brand: 'Acer', text: "Acer firmware recovery procedures vary by model and platform generation. Use the manufacturer's model-specific instructions rather than a generic key combination.", link: '/acer-laptop-repair-kuwait', linkLabel: 'Acer repair in Kuwait' },
-  { brand: 'MSI / Gigabyte', text: 'Higher-end MSI and nearly all modern Gigabyte boards use Dual BIOS (two physical chips, often with automatic failover) or a Flashback-style USB port that reflashes using standby power alone.', link: '/msi-laptop-repair-kuwait', linkLabel: 'MSI repair in Kuwait' },
+  { brand: 'MSI / Gigabyte', text: 'Some MSI and Gigabyte desktop boards provide redundant firmware or dedicated flashback/recovery features, but this is not universal. Confirm whether the exact board has Dual BIOS, Flash BIOS Button/Q-Flash Plus, or another recovery mechanism before relying on it.', link: '/msi-laptop-repair-kuwait', linkLabel: 'MSI repair in Kuwait' },
   { brand: 'Apple', text: 'Apple Silicon and Intel Macs use a fundamentally different architecture \u2014 recovery relies on DFU mode with Finder on a second Mac. The exact key sequence varies by chip generation, so always confirm on Apple\u2019s current support page.', link: '/macbook-repair-kuwait', linkLabel: 'MacBook repair in Kuwait' },
 ];
 
@@ -90,39 +91,42 @@ const bitlockerGuidance = [
   'Back up the recovery key and suspend BitLocker before any firmware update on an encrypted machine.',
   'If asked for the key after an update, entering it is expected and safe \u2014 not evidence of tampering.',
   "If the key was never saved, that's a data-access problem, not a firmware-repair one \u2014 reflashing won't retrieve encrypted data.",
-  'Return Secure Boot/TPM settings to their default state after any suspend/resume cycle.',
+  'After recovery, verify that Secure Boot and TPM settings match the configuration required by Windows and your organization's security policy; do not change them unnecessarily while troubleshooting.',
 ];
 
 const faq = [
-  { q: 'Can a laptop that was bricked by a BIOS update be repaired?', a: 'Often, yes. Many firmware-corruption cases are recoverable when the flash device and underlying motherboard hardware are healthy. However, a black screen or failed POST can also be caused by RAM, power, EC, CPU, PCH or other board-level faults, so diagnosis comes first.' },
-  { q: 'Does a failed BIOS update always mean the BIOS chip is damaged?', a: 'No. The flash chip itself may be completely healthy while the data stored on it is incomplete or invalid. Conversely, a system that looks bricked may have a physical motherboard fault unrelated to firmware.' },
-  { q: 'Can you recover BIOS using an EEPROM programmer?', a: 'In appropriate cases, a technician can directly program the SPI flash device using professional hardware. The correct image, chip voltage, board architecture and board-specific data must be verified first.' },
-  { q: 'Will BIOS reprogramming erase my serial number?', a: 'It can affect board-specific firmware data if the wrong image is written. Professional recovery should preserve relevant DMI/SMBIOS information and other platform-specific data where applicable before programming.' },
-  { q: 'Should I keep trying different BIOS files if the laptop is not booting?', a: 'No. Repeatedly writing unverified firmware can make diagnosis harder and can create additional problems. Once the correct manufacturer recovery process has been verified and fails, professional diagnosis is the safer next step.' },
-  { q: 'How long does BIOS recovery take?', a: 'A straightforward firmware reprogramming job can sometimes be completed the same day. More complicated cases involving board diagnosis, multiple firmware devices, EC firmware or hardware faults can take longer.' },
-  { q: "What's the difference between updating BIOS and recovering BIOS?", a: 'Updating is a routine, intentional install of newer firmware on a working system. Recovery is restoring firmware after it has been lost or corrupted, on a system that is failing to boot properly.' },
-  { q: 'Does resetting CMOS fix a corrupted BIOS?', a: 'No. CMOS reset only clears stored settings such as boot order and overclock profiles \u2014 it does not touch the firmware code itself, so it will not fix genuine firmware corruption.' },
-  { q: 'Why is Windows asking for a BitLocker recovery key after a BIOS update?', a: "This is expected security behavior, not a fault. A firmware update changes the boot-environment measurements BitLocker checks, so Windows asks for the key to confirm the boot chain is still trustworthy." },
-  { q: 'Can a failed BIOS update damage my hard drive or files?', a: 'A BIOS/UEFI recovery normally targets the firmware chip, not the files on the storage drive \u2014 the two are physically separate. That said, some manufacturer "restore to factory" workflows can erase data as part of the process, and firmware changes can affect access to encrypted storage. Always confirm exactly what a given recovery option does, and have recovery credentials on hand first.' },
-  { q: 'Is it safe to use a BIOS file from a different but similar laptop model?', a: 'No. Firmware must match the exact platform and board revision. A similar model is not necessarily compatible and can worsen the failure.' },
-  { q: "My laptop has HP Sure Start \u2014 what do I do if it still won't boot?", a: 'Manual key-combination and USB recovery methods are explicitly not supported on Sure Start systems, since the platform handles firmware recovery automatically. A boot failure on this hardware more likely points to a non-firmware fault and warrants diagnosis rather than manual recovery attempts.' },
-  { q: 'What are POST codes and beep codes, and do I need to know mine?', a: "They're a manufacturer-specific early diagnostic signal. You don't need to decode them yourself, but noting the exact pattern helps a technician diagnose faster." },
-  { q: 'Does every motherboard have a backup BIOS chip?', a: 'No. Dual BIOS / Flashback-style hardware is common on Gigabyte and higher-end MSI/ASUS boards, but far from universal, and most laptops don\u2019t have it at all.' },
-  { q: "Can a Mac's firmware be \"flashed\" like a PC's BIOS?", a: "Not in the same way. Mac firmware recovery uses Apple's DFU mode with a second Mac and Apple's own tools \u2014 not third-party SPI programming of the main system firmware." },
-  { q: 'Is BIOS/UEFI firmware a security risk?', a: "Yes, in principle. It's part of why the industry treats firmware-update authentication, signature verification and secure recovery as standard protections, and why manufacturers restrict which firmware files a board will accept." },
+  { q: 'Can a laptop that was bricked by a BIOS update be repaired?', a: 'Often, yes. If the flash device and the underlying board are healthy, OEM recovery or direct firmware reprogramming can restore a system that no longer reaches POST. The important qualification is that “bricked” describes the symptom, not the diagnosis: RAM training, power rails, EC firmware, CPU/SoC, PCH and other motherboard faults can produce the same black-screen or reboot-loop behavior.' },
+  { q: 'Does a failed BIOS update always mean the BIOS chip is damaged?', a: 'No. The chip can be electrically healthy while the firmware data stored on it is incomplete, invalid or incompatible. Conversely, a machine that failed after an update may have a hardware fault that appeared at the same time. A failed update is a strong clue, not proof that the flash chip itself has failed.' },
+  { q: 'Can you recover BIOS using an EEPROM or SPI programmer?', a: 'In appropriate cases, yes. A technician can identify the firmware device, verify its voltage and architecture, read the existing contents when possible, preserve board-specific information and program a verified image. Direct programming is a repair technique, not a universal first step; the correct board, chip and firmware image must be established first.' },
+  { q: 'Will BIOS reprogramming erase my serial number?', a: 'It can if the wrong image or an unsuitable full-image replacement overwrites board-specific regions. Depending on the platform, firmware can contain DMI/SMBIOS data, network identifiers, platform configuration or other device-specific information. Professional recovery should preserve relevant original data whenever possible rather than treating the firmware chip as a generic blank ROM.' },
+  { q: 'Should I keep trying different BIOS files if the laptop is not booting?', a: 'No. Repeatedly writing unverified files can make the original state harder to reconstruct and can introduce a second problem. Stop, record the exact model and failure sequence, then use the manufacturer’s current recovery instructions for that exact platform. If OEM recovery fails, diagnosis should determine whether the next step is firmware programming or board repair.' },
+  { q: 'How long does BIOS recovery take?', a: 'A straightforward firmware reprogramming job can sometimes be completed the same day once the correct image and board condition are confirmed. Cases involving board-level diagnosis, multiple firmware devices, EC firmware, damaged flash hardware or an underlying power/logic fault can take longer because the firmware is only one part of the boot chain.' },
+  { q: "What's the difference between updating BIOS and recovering BIOS?", a: 'A BIOS/UEFI update is an intentional installation of newer firmware on a functioning platform. Recovery is restoration after firmware or firmware configuration has become unusable. Recovery may use an OEM emergency mechanism or, when supported and appropriate, direct SPI/EEPROM programming.' },
+  { q: 'Does resetting CMOS fix a corrupted BIOS?', a: 'Usually no. A CMOS reset clears configuration state such as boot order, overclocking or other stored settings; it does not normally rewrite the main firmware image. It can help when a bad setting prevents startup, but genuine firmware corruption requires an appropriate recovery process.' },
+  { q: 'Why is Windows asking for a BitLocker recovery key after a BIOS update?', a: 'A firmware update can change the measured boot environment that BitLocker uses with the TPM. If those measurements change unexpectedly from BitLocker’s point of view, Windows can request the recovery key as a security check. That prompt does not by itself prove that the firmware update failed or that the drive is damaged.' },
+  { q: 'Can a failed BIOS update damage my hard drive or files?', a: 'A firmware update normally targets firmware storage rather than the user data stored on an SSD or HDD, so the update itself does not inherently erase those files. However, recovery workflows can differ: a separate factory-reset or OS-reinstallation step can erase data, and firmware/security changes can affect access to encrypted storage. Confirm exactly which operation is being performed and keep the required recovery credentials available.' },
+  { q: 'Is it safe to use a BIOS file from a different but similar laptop model?', a: 'No. “Similar” is not an adequate compatibility test. Firmware can depend on the exact model, motherboard revision, platform controller configuration, display/power design and regional variant. Use the manufacturer’s file for the exact supported model and follow any documented version-order requirements.' },
+  { q: "My laptop has HP Sure Start — what do I do if it still won't boot?", a: 'Do not assume a generic HP USB/key-combination recovery method applies. Sure Start uses protected firmware recovery mechanisms that differ from ordinary manual recovery. If the platform still fails to boot after the documented automatic recovery behavior, the next step is diagnosis of the firmware path and the underlying hardware rather than repeatedly writing unrelated BIOS files.' },
+  { q: 'What are POST codes and beep codes, and do I need to know mine?', a: 'They are early-boot diagnostic signals generated before or around POST. You do not need to decode them yourself, but recording the exact number and pattern can save diagnostic time. Always use the documentation for the exact motherboard or laptop model because the same pattern can mean different things across manufacturers and generations.' },
+  { q: 'Does every motherboard have a backup BIOS chip?', a: 'No. Some desktop boards provide redundant firmware chips or a flashback mechanism, but many do not, and most laptops do not have a user-accessible dual-BIOS arrangement. Never assume a second chip exists simply because a board is high-end; verify the exact board documentation.' },
+  { q: "Can a Mac's firmware be 'flashed' like a PC's BIOS?", a: 'Not in the same consumer-facing way. Modern Macs use Apple-specific firmware and recovery architecture, and supported recovery can involve macOS Recovery, Apple Configurator and DFU procedures depending on the model. Treat Mac firmware recovery as a platform-specific process rather than applying PC SPI-flashing instructions blindly.' },
+  { q: 'Is BIOS/UEFI firmware a security risk?', a: 'Firmware is part of the trusted computing base, so compromise can be serious. That is why modern platforms use signed firmware packages, protected update paths, Secure Boot, TPM measurements and other controls. The practical lesson is to obtain firmware from the manufacturer or a trusted service workflow and avoid unverified firmware dumps.' },
+  { q: 'Can a BIOS update cause BitLocker to ask for recovery even when the update succeeded?', a: 'Yes. A successful firmware update can legitimately change measured-boot values enough to trigger BitLocker recovery. If the system then boots normally after the recovery key is entered, that points toward a security-state change rather than a failed BIOS flash.' },
+  { q: 'What should I collect before taking a bricked laptop to a technician?', a: 'Provide the exact model number, the firmware version if known, what happened immediately before the failure, whether the machine lost power during flashing, any beep/LED/POST codes, and whether the SSD was ever encrypted with BitLocker or another full-disk encryption system. If you still have the original firmware package, keep it rather than downloading several alternatives.' },
 ];
 
 const toc = [
   { id: 'updates', label: 'Before You Flash' },
   { id: 'warning-signs', label: 'Warning Signs' },
   { id: 'firmware-vs-hardware', label: 'Firmware vs Hardware' },
+  { id: 'recovery-intake', label: 'Recovery Intake' },
   { id: 'security-layer', label: 'BitLocker & TPM' },
   { id: 'manufacturers', label: 'By Manufacturer' },
   { id: 'spi-recovery', label: 'SPI Recovery' },
   { id: 'faq', label: 'FAQ' },
 ];
 
-const LAST_REVIEWED = 'August 21, 2026';
+const LAST_REVIEWED = 'August 30, 2026';
 
 export default function BiosUefiRecoveryGuide() {
   return (
@@ -235,6 +239,21 @@ export default function BiosUefiRecoveryGuide() {
                 </a>
               );
             })}
+          </div>
+
+          <div className="mt-6 rounded-2xl border border-indigo-500/20 bg-indigo-500/[0.035] p-5 sm:p-6">
+            <div className="flex items-start gap-3">
+              <GitBranch className="mt-0.5 h-5 w-5 shrink-0 text-indigo-300" aria-hidden="true" />
+              <div>
+                <h3 className="text-white font-bold text-sm sm:text-base">A practical diagnostic path</h3>
+                <p className="mt-2 text-slate-400 text-xs sm:text-sm leading-relaxed">
+                  Start with the event history, then establish whether the platform reaches any part of POST. If an OEM recovery method is available, use the exact model-specific procedure. If recovery cannot run or fails, separate firmware symptoms from power, memory, EC, CPU, PCH/SoC and other board-level faults before attempting direct chip programming.
+                </p>
+                <p className="mt-3 text-slate-300 text-xs sm:text-sm font-medium leading-relaxed">
+                  Failed update → OEM recovery check → POST/hardware diagnosis → verify firmware path → preserve original data → professional SPI recovery when appropriate → POST and stability testing.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -535,6 +554,39 @@ export default function BiosUefiRecoveryGuide() {
         </div>
       </section>
 
+      {/* ─── RECOVERY INTAKE ─── */}
+      <section id="recovery-intake" className="scroll-mt-20 py-8 sm:py-16 px-4 sm:px-6 border-t border-slate-900">
+        <div className="container mx-auto max-w-4xl">
+          <div className="mb-7 max-w-3xl">
+            <Badge className={`bg-cyan-500/20 text-cyan-300 border-cyan-500/30 ${sectionBadge}`}>Before Recovery</Badge>
+            <h2 className="text-xl sm:text-3xl font-bold text-white">What to Record Before BIOS Recovery</h2>
+            <p className="mt-3 text-slate-400 text-xs sm:text-sm leading-relaxed">
+              The more precisely the platform is identified, the lower the risk of using the wrong recovery image or overlooking a hardware fault. If the machine is still accessible, collect these details before making more changes.
+            </p>
+          </div>
+          <div className="grid gap-3 sm:grid-cols-2">
+            {recoveryIntake.map((item, index) => (
+              <div key={item.title} className="rounded-xl border border-slate-800 bg-slate-950/50 p-4 sm:p-5">
+                <div className="flex items-start gap-3">
+                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-cyan-500/10 text-xs font-bold text-cyan-300">
+                    {index + 1}
+                  </div>
+                  <div>
+                    <h3 className="text-white font-bold text-sm sm:text-base">{item.title}</h3>
+                    <p className="mt-1.5 text-slate-400 text-xs sm:text-sm leading-relaxed">{item.text}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="mt-5 rounded-xl border border-amber-500/20 bg-amber-500/[0.04] p-4 sm:p-5">
+            <p className="text-xs sm:text-sm leading-relaxed text-slate-300">
+              <strong className="text-amber-300">Important:</strong> “Same series” is not the same as “same firmware.” Laptop sub-models, motherboard revisions and regional/platform variants can use different firmware. Treat the exact model identifier as a hard requirement.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* ─── MANUFACTURERS ─── */}
       <section id="manufacturers" className="scroll-mt-20 py-8 sm:py-20 px-4 sm:px-6 border-t border-slate-900">
         <div className="container mx-auto max-w-5xl">
@@ -760,8 +812,8 @@ export default function BiosUefiRecoveryGuide() {
               <Database className="mt-1 h-5 w-5 shrink-0 text-cyan-400" aria-hidden="true" />
               <div className="text-slate-300 text-xs sm:text-sm leading-relaxed">
                 <p>
-                  <strong className="text-white">BIOS/UEFI firmware recovery does not touch the contents of the storage drive.</strong>{' '}
-                  The firmware chip and the drive are physically separate components, and a proper SPI/EEPROM reflash reads and writes only the firmware chip.
+                  <strong className="text-white">A firmware-chip reprogramming operation does not inherently erase the contents of the storage drive.</strong>{' '}
+                  The firmware storage and the SSD/HDD are normally separate storage devices. A proper SPI/EEPROM reflash targets the firmware device, but a technician should still confirm the exact recovery procedure and avoid any separate “factory restore” or OS-reinstallation step unless it is required and authorized.
                 </p>
                 <p className="mt-3 text-slate-400">Two real, avoidable risks exist alongside recovery work:</p>
                 <ul className="mt-2 space-y-1.5">
@@ -816,6 +868,31 @@ export default function BiosUefiRecoveryGuide() {
         </div>
       </section>
 
+      {/* ─── EVIDENCE / RELATED CASE STUDY ─── */}
+      <section className="py-8 sm:py-16 px-4 sm:px-6 border-t border-slate-900">
+        <div className="container mx-auto max-w-4xl">
+          <div className="rounded-2xl border border-emerald-500/20 bg-emerald-500/[0.035] p-5 sm:p-7">
+            <div className="flex items-start gap-3">
+              <Microscope className="mt-1 h-5 w-5 shrink-0 text-emerald-300" aria-hidden="true" />
+              <div>
+                <Badge className="mb-3 border-emerald-500/30 bg-emerald-500/10 text-emerald-300">Repair Evidence</Badge>
+                <h2 className="text-xl sm:text-2xl font-bold text-white">Why Diagnosis Matters Before Chip-Level Work</h2>
+                <p className="mt-3 text-slate-400 text-xs sm:text-sm leading-relaxed">
+                  A dead or non-booting machine can have a motherboard fault that looks like firmware corruption. KCROC documents component-level board diagnosis separately so firmware recovery is not used as a guess.
+                </p>
+                <Link
+                  to="/case-studies/asus-rog-dead-motherboard-hawalli"
+                  className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-emerald-300 hover:text-emerald-200"
+                >
+                  View the ASUS ROG dead-motherboard recovery case study
+                  <ChevronRight className="h-4 w-4" aria-hidden="true" />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ─── COST & TIME ─── */}
       <section className="py-8 sm:py-16 px-4 sm:px-6 bg-slate-900/30 border-t border-slate-900">
         <div className="container mx-auto max-w-4xl">
@@ -827,6 +904,31 @@ export default function BiosUefiRecoveryGuide() {
               <Link to="/pricing" className="text-cyan-300 underline hover:text-cyan-200">Pricing</Link>{' '}
               for current figures.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── KUWAIT-SPECIFIC GUIDANCE ─── */}
+      <section className="py-8 sm:py-16 px-4 sm:px-6 border-t border-slate-900 bg-slate-900/20">
+        <div className="container mx-auto max-w-4xl">
+          <div className="mb-6 max-w-3xl">
+            <Badge className={`bg-orange-500/20 text-orange-300 border-orange-500/30 ${sectionBadge}`}>Kuwait Practical Guidance</Badge>
+            <h2 className="text-xl sm:text-3xl font-bold text-white">BIOS Update Precautions for Kuwait</h2>
+            <p className="mt-3 text-slate-400 text-xs sm:text-sm leading-relaxed">
+              The firmware itself is not “more fragile” because a computer is in Kuwait, but the conditions around the update still matter. A firmware write should be treated as a controlled operation, especially when the machine is exposed to unstable power, battery limitations or thermal stress.
+            </p>
+          </div>
+          <div className="grid gap-3 sm:grid-cols-3">
+            {[
+              ['Stable power', 'Use reliable AC power and follow the manufacturer’s battery/charger requirements. Avoid starting a firmware update when power interruption is a realistic risk.'],
+              ['Thermal stability', 'Do not update a machine that is already shutting down from overheating or has a known cooling fault. Fix the stability problem first.'],
+              ['No unnecessary changes', 'Do not combine a firmware update with random BIOS settings, RAM swaps or multiple firmware files. Change one variable at a time so the failure remains diagnosable.'],
+            ].map(([title, text]) => (
+              <div key={title} className="rounded-xl border border-slate-800 bg-slate-950/50 p-4 sm:p-5">
+                <h3 className="text-white font-bold text-sm sm:text-base">{title}</h3>
+                <p className="mt-1.5 text-slate-400 text-xs sm:text-sm leading-relaxed">{text}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
