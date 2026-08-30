@@ -269,6 +269,10 @@ export class NavigationCompiler {
             { id: 'loc-fahaheel', slug: 'location/fahaheel', title: 'Fahaheel', description: '', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'fahaheel', weight: 0, commercialIntent: 'info' },
             { id: 'loc-mangaf', slug: 'location/mangaf', title: 'Mangaf', description: '', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'mangaf', weight: 0, commercialIntent: 'info' },
             { id: 'loc-abu-halifa', slug: 'location/abu-halifa', title: 'Abu Halifa', description: '', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'abu halifa', weight: 0, commercialIntent: 'info' },
+            { id: 'loc-jabriya', slug: 'location/jabriya', title: 'Jabriya', description: '', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'jabriya', weight: 0, commercialIntent: 'info' },
+            { id: 'loc-mubarak-al-kabeer', slug: 'location/mubarak-al-kabeer', title: 'Mubarak Al-Kabeer', description: '', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'mubarak al-kabeer', weight: 0, commercialIntent: 'info' },
+            { id: 'loc-fintas', slug: 'location/fintas', title: 'Fintas', description: '', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'fintas', weight: 0, commercialIntent: 'info' },
+            { id: 'loc-sabah-al-salem', slug: 'location/sabah-al-salem', title: 'Sabah Al-Salem', description: '', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'sabah al-salem', weight: 0, commercialIntent: 'info' },
           ]
         }
       ]
