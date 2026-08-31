@@ -2464,7 +2464,7 @@ export const rawGraphData: RawGraphData = {
       symptom: 'Coffee spill. Device powered off immediately. Fan spins briefly on power button, no display.',
       diagnosis: 'Ultrasonic cleaning revealed corrosion on the PPBUS_G3H main power rail and a shorted Q7510 MOSFET. Secondary damage to the backlight circuit.',
       repair: 'Q7510 MOSFET replaced via micro-soldering. Backlight fuse replaced. Board cleaned and re-tested under full load for 4 hours.',
-      outcome: 'Device fully restored. All data preserved on original M2 SSD. Customer data intact.',
+      outcome: 'Device fully restored. The original onboard storage remained untouched. Customer data intact.',
       timeToRepair: '36 hours',
       costVsReplacement: 'Repair: 65 KWD. Apple Authorized Center quote: 280 KWD for board swap with data loss.',
       publishDate: '2026-05-12',
@@ -2508,7 +2508,7 @@ export const rawGraphData: RawGraphData = {
           'Fuse replacement: the blown backlight fuse was traced and replaced, restoring power to the display.',
           'Stress testing: after reassembly with fresh thermal paste, the board ran a continuous 4-hour full-load test to confirm thermal and electrical stability.'
         ],
-        closingOutcome: 'The MacBook powered on and passed full hardware diagnostics. Because the original logic board was repaired rather than replaced, the original M2 SSD was untouched — all client data was preserved. The device was back in Salmiya within 36 hours, at 65 KWD versus the 280 KWD board-swap quote: a 215 KWD saving, with data intact and a 30-day warranty included.',
+        closingOutcome: 'The MacBook powered on and passed full hardware diagnostics. Because the original logic board was repaired rather than replaced, the onboard storage — soldered directly to that board and tied to its Secure Enclave — was never touched, so all client data was preserved. The device was back in Salmiya within 36 hours, at 65 KWD versus the 280 KWD board-swap quote: a 215 KWD saving, with data intact and a 30-day warranty included.',
         urgentWarning: 'If you spill liquid on a MacBook: disconnect power immediately, do not attempt to turn it on to "check" it, and do not plug it into a charger. Both actions risk completing an electrical short that a simple clean-and-repair could otherwise avoid.'
       }
     } as CaseStudyEntity,
@@ -2523,7 +2523,7 @@ export const rawGraphData: RawGraphData = {
       diagnosis: 'Multimeter testing found a dead short on the main 19V power rail. Traced to a blown MOSFET near the CPU VRM.',
       repair: 'Micro-soldering to remove the shorted MOSFET. Replaced with OEM equivalent. Re-pasted CPU/GPU with fresh liquid metal.',
       outcome: 'System booted successfully under full load. Customer avoided replacing the entire 350 KWD motherboard.',
-      timeToRepair: '24 hours',
+      timeToRepair: '48 hours total (repair completed same-day, followed by a 24-hour stability stress test before return)',
       costVsReplacement: 'Repair: 45 KWD. Replacement board: 350 KWD.',
       publishDate: '2026-06-20',
       deviceCategory: 'gaming-laptop',
@@ -2540,7 +2540,7 @@ export const rawGraphData: RawGraphData = {
       componentsTested: ['19V main power rail', 'CPU VRM power stage', 'System power sequence'],
       partsReplaced: ['Shorted MOSFET'],
       testingPerformed: ['Power-on verification', '24-hour graphical stress test', 'Thermal verification'],
-      repairDuration: '24 hours',
+      repairDuration: '48 hours total (same-day repair plus a 24-hour post-repair stress test)',
       warranty: { durationDays: 30, coverage: 'All parts and labor on the repair performed.' },
       evidence: [],
       customerConsent: { granted: false, scope: [] },
@@ -2563,7 +2563,7 @@ export const rawGraphData: RawGraphData = {
           'Thermal optimization: Because ASUS ROG laptops run exceptionally hot, we cleaned off the degraded factory paste and applied fresh liquid metal to the CPU and GPU to prevent future thermal stress on the surrounding power delivery components.',
           'Stress testing: The laptop was reassembled and subjected to a grueling 24-hour graphical benchmark to guarantee absolute stability.'
         ],
-        closingOutcome: 'The ASUS ROG Strix booted successfully, passing all stress tests with improved thermal performance thanks to the fresh liquid metal. By fixing the specific burned component instead of discarding the entire motherboard, we completed the repair for just 45 KWD. The client saved 305 KWD, retained all their installed games and data, and was back online within 24 hours.'
+        closingOutcome: 'The ASUS ROG Strix booted successfully, passing all stress tests with improved thermal performance thanks to the fresh liquid metal. By fixing the specific burned component instead of discarding the entire motherboard, we completed the repair for just 45 KWD. The client saved 305 KWD, retained all their installed games and data, and was back online within 48 hours — including a full 24-hour stress test to confirm the fix would hold under sustained gaming load.'
       }
     } as CaseStudyEntity,
 
