@@ -8,13 +8,17 @@ import {
   ChevronDown, Link2, ArrowUp, Phone, MessageCircle, Check
 } from 'lucide-react';
 
-import { BUSINESS_INFO } from '../constants/data';
 import { ROUTES, getBlogRoute } from '../constants/routes';
 import { BLOG_POSTS, BlogPost, ContentBlock } from '../constants/blogPosts';
+import { KCROC_GRAPH } from '../data/graph';
 import { AutoLink } from '../utils/linkGraph';
 import { getIntentWhatsAppLink } from '../utils/whatsappIntent';
 import { trackLead } from '../utils/analytics';
 import SchemaMarkup from '../components/seo/SchemaMarkup';
+
+// Single source of truth for business identity — see graph.ts 'biz-kcroc'.
+// (Previously duplicated via constants/data.ts's BUSINESS_INFO.)
+const business = KCROC_GRAPH.business!;
 
 /* ═══════════════════════════════════════════════════════════════════
    CALLOUT STYLING
@@ -237,7 +241,7 @@ export default function BlogPostTemplate() {
     headingRefs.current[id] = el;
   }, []);
 
-  const pageUrl = post ? `${BUSINESS_INFO.url}${getBlogRoute(post.slug)}` : '';
+  const pageUrl = post ? `${business.websiteUrl}${getBlogRoute(post.slug)}` : '';
   const waLink = post ? getIntentWhatsAppLink("blog", post.title) : '';
 
   // Combine all FAQ blocks for unified Schema.org metadata
@@ -310,7 +314,7 @@ export default function BlogPostTemplate() {
           "url": pageUrl,
           "name": post.title,
           "description": post.description || post.excerpt,
-          "isPartOf": { "@id": `${BUSINESS_INFO.url}/#website` }
+          "isPartOf": { "@id": `${business.websiteUrl}/#website` }
         },
         {
           "@type": ["BlogPosting", "Article"],
@@ -323,8 +327,8 @@ export default function BlogPostTemplate() {
           "author": { "@type": "Person", "name": post.author },
           "publisher": {
             "@type": "Organization",
-            "name": BUSINESS_INFO.name,
-            "logo": { "@type": "ImageObject", "url": `${BUSINESS_INFO.url}/logo.webp`, "width": 224, "height": 224 }
+            "name": business.legalName,
+            "logo": { "@type": "ImageObject", "url": `${business.websiteUrl}/logo.webp`, "width": 224, "height": 224 }
           },
           "mainEntityOfPage": { "@id": `${pageUrl}#webpage` }
         },
@@ -332,8 +336,8 @@ export default function BlogPostTemplate() {
           "@type": "BreadcrumbList",
           "@id": `${pageUrl}#breadcrumb`,
           "itemListElement": [
-            { "@type": "ListItem", "position": 1, "name": "Home", "item": BUSINESS_INFO.url },
-            { "@type": "ListItem", "position": 2, "name": "Blog", "item": `${BUSINESS_INFO.url}${ROUTES.BLOG}` },
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": business.websiteUrl },
+            { "@type": "ListItem", "position": 2, "name": "Blog", "item": `${business.websiteUrl}${ROUTES.BLOG}` },
             { "@type": "ListItem", "position": 3, "name": post.title, "item": pageUrl }
           ]
         },
@@ -501,9 +505,9 @@ export default function BlogPostTemplate() {
                   </a>
                   
                   {/* Fixed syntax error & missing a-tag */}
-                  {BUSINESS_INFO.phone && (
+                  {business.telephone && (
                     <a
-                      href={`tel:${BUSINESS_INFO.phone}`}
+                      href={`tel:+${business.telephone}`}
                       onClick={() => trackLead('Blog_CTA_Call')}
                       className="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 transition-colors text-white px-6 py-3 rounded-xl font-black border border-slate-700"
                     >
@@ -610,9 +614,9 @@ export default function BlogPostTemplate() {
                 <MessageCircle size={16} aria-hidden="true" /> WhatsApp Us
               </a>
               {/* Added conditional handling for the phone number */}
-              {BUSINESS_INFO.phone && (
+              {business.telephone && (
                 <a
-                  href={`tel:${BUSINESS_INFO.phone}`}
+                  href={`tel:+${business.telephone}`}
                   onClick={() => trackLead('Blog_Sidebar_Call')}
                   className="flex items-center justify-center gap-2 border border-slate-700 hover:border-cyan-500/40 text-white font-bold py-2.5 rounded-xl transition-colors"
                 >
