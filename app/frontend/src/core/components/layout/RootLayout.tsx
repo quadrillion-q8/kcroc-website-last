@@ -1,7 +1,6 @@
 // File: app/frontend/src/core/components/layout/RootLayout.tsx
 import React, { Suspense, lazy } from 'react';
 import { Outlet } from 'react-router-dom';
-import { AnalyticsProvider } from '../../analytics/AnalyticsProvider';
 
 import Header from './Header';
 import Footer from './Footer';
@@ -20,7 +19,9 @@ const AnimatedBackground = lazy(() =>
 export const RootLayout: React.FC = () => {
   return (
     <>
-      <AnalyticsProvider>
+        {/* AnalyticsProvider is mounted once, at the outer AppWrapper level in
+            App.tsx — do not add a second one here, it previously caused
+            duplicate virtual_pageview events. */}
         <div className="relative min-h-screen flex flex-col bg-transparent text-slate-200 font-sans selection:bg-cyan-500/30">
           
           {/* 🚀 WCAG 2.2 AA Compliance: Global Skip Link for keyboard navigation */}
@@ -70,7 +71,6 @@ export const RootLayout: React.FC = () => {
 
           <Footer />
         </div>
-      </AnalyticsProvider>
     </>
   );
 };
