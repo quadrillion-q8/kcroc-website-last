@@ -192,7 +192,7 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
   }
 
   const resolvedBreadcrumbs = breadcrumbs?.length ? breadcrumbs : getDefaultBreadcrumbs(entity);
-  if (schemaTypes?.includes('BreadcrumbList') || ['Service', 'Brand', 'Problem', 'Location'].includes(entity.entityType)) {
+  if (schemaTypes?.includes('BreadcrumbList') || ['Service', 'Brand', 'Problem', 'Location', 'CaseStudy'].includes(entity.entityType)) {
     schemaGraph.push({
       "@type": "BreadcrumbList",
       "@id": `${fullCanonicalUrl}#breadcrumb`,
@@ -309,25 +309,50 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
       if (type === 'Article' || type === 'TechArticle') {
         if (entity.entityType === 'CaseStudy') {
           const caseEntity = entity as CaseStudyEntity;
+          const caseImage = caseEntity.featuredImage?.hero?.webp || caseEntity.featuredImage?.ogImage;
+          const relatedBrand = caseEntity.brandId
+            ? KCROC_GRAPH.brands?.find(brand => brand.id === caseEntity.brandId)
+            : undefined;
+          const relatedServices = (caseEntity.serviceIds ?? [])
+            .map(id => KCROC_GRAPH.services.find(service => service.id === id))
+            .filter(Boolean);
+          const relatedProblems = (caseEntity.problemIds ?? [])
+            .map(id => KCROC_GRAPH.problems?.find(problem => problem.id === id))
+            .filter(Boolean);
+          const relatedLocation = caseEntity.locationId
+            ? KCROC_GRAPH.locations.find(location => location.id === caseEntity.locationId)
+            : undefined;
+
           schemaGraph.push({
-            "@type": "Article",
+            "@type": type === 'TechArticle' ? 'TechArticle' : 'Article',
             "@id": `${fullCanonicalUrl}#article`,
             "headline": caseEntity.title,
             "description": caseEntity.description,
             "datePublished": caseEntity.publishDate,
-            "author": {
-              "@type": "Organization",
-              "name": "KCROC Diagnostics Team",
-              "@id": `${business.websiteUrl}/#business`
-            },
+            "author": { "@id": caseEntity.authorId || AUTHOR_ID },
             "publisher": { "@id": `${business.websiteUrl}/#business` },
+            "mainEntityOfPage": { "@id": `${fullCanonicalUrl}#webpage` },
             "articleSection": "Case Studies",
+            ...(caseImage && { "image": caseImage }),
             "about": {
               "@type": "Thing",
-              "name": caseEntity.device,
+              "name": caseEntity.deviceModel || caseEntity.device,
               "description": caseEntity.symptom
             },
-            "text": `Location: ${caseEntity.location}. Diagnosis: ${caseEntity.diagnosis}. Repair Process: ${caseEntity.repair}. Outcome: ${caseEntity.outcome}. Time to repair: ${caseEntity.timeToRepair}. Cost analysis: ${caseEntity.costVsReplacement}.`
+            ...(relatedBrand && { "mentions": [{ "@type": "Brand", "name": relatedBrand.brandName, "url": `${business.websiteUrl}/brands/${relatedBrand.slug}` }] }),
+            "text": [
+              `Device: ${caseEntity.deviceModel || caseEntity.device}.`,
+              `Location: ${relatedLocation?.title || caseEntity.location}.`,
+              `Symptom: ${caseEntity.symptom}.`,
+              `Diagnosis: ${caseEntity.diagnosis}.`,
+              `Repair: ${caseEntity.repair}.`,
+              `Outcome: ${caseEntity.outcome}.`,
+              `Time to repair: ${caseEntity.repairDuration || caseEntity.timeToRepair}.`,
+              `Cost analysis: ${caseEntity.costVsReplacement}.`,
+              ...(caseEntity.testingPerformed ?? []).map(test => `Testing: ${test}.`),
+              ...(relatedServices ?? []).filter(Boolean).map(service => `Service: ${service!.title}.`),
+              ...(relatedProblems ?? []).filter(Boolean).map(problem => `Problem: ${problem!.title}.`),
+            ].join(' ')
           });
         } else if (entity.entityType === 'Problem') {
           const problemEntity = entity as ProblemEntity;
@@ -368,6 +393,26 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
             ...(webPage.featuredImage?.ogImage && { "image": webPage.featuredImage.ogImage })
           });
         }
+      }
+
+      // First-party case-study imagery. Only emit images that actually exist
+      // in the case-study entity; no placeholder evidence is fabricated.
+      if (type === 'ImageObject' && entity.entityType === 'CaseStudy') {
+        const caseEntity = entity as CaseStudyEntity;
+        const imageAssets = [
+          ...(caseEntity.featuredImage?.hero?.webp ? [{ url: caseEntity.featuredImage.hero.webp, name: caseEntity.title }] : []),
+          ...(caseEntity.evidence ?? []).map(asset => ({ url: asset.src, name: asset.alt }))
+        ];
+        imageAssets.forEach((asset, index) => {
+          schemaGraph.push({
+            "@type": "ImageObject",
+            "@id": `${fullCanonicalUrl}#image-${index + 1}`,
+            "url": asset.url.startsWith('http') ? asset.url : `${business.websiteUrl}${asset.url.startsWith('/') ? asset.url : `/${asset.url}`}`,
+            "name": asset.name,
+            "caption": asset.name,
+            "inLanguage": locale || 'en-KW'
+          });
+        });
       }
 
       // WebSite Schema
