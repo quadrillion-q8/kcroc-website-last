@@ -2,8 +2,36 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import crypto from 'crypto';
 import { GoogleGenAI } from '@google/genai';
+import { Redis } from '@upstash/redis';
 import { getKnowledgeContext } from '../src/knowledge/context';
 import { evaluateHandoff } from '../src/api/HandoffEngine';
+
+// Same Upstash Redis instance pattern used in api/book.ts, reused here for
+// webhook delivery idempotency. Meta retries webhook delivery on timeout/non-2xx,
+// so without this a retried delivery of the same message re-runs the AI reply
+// and sends the customer a duplicate WhatsApp message.
+const redisUrl = process.env.UPSTASH_REDIS_REST_URL;
+const redisToken = process.env.UPSTASH_REDIS_REST_TOKEN;
+const redis = redisUrl && redisToken ? new Redis({ url: redisUrl, token: redisToken }) : null;
+
+const PROCESSED_MESSAGE_TTL_SECONDS = 60 * 60 * 24; // 24h is well beyond Meta's retry window
+
+/**
+ * Returns true if this WhatsApp message ID has already been processed
+ * (and marks it as processed for future calls). Fails open (returns false,
+ * i.e. "not a duplicate") if Redis isn't configured, so the bot still works
+ * without idempotency protection rather than going fully offline.
+ */
+async function isDuplicateMessage(messageId: string): Promise<boolean> {
+  if (!redis) {
+    console.warn('UPSTASH_REDIS not configured — webhook idempotency check skipped.');
+    return false;
+  }
+  const key = `wa-msg:${messageId}`;
+  // SET ... NX returns null if the key already existed (i.e. duplicate)
+  const wasSet = await redis.set(key, '1', { nx: true, ex: PROCESSED_MESSAGE_TTL_SECONDS });
+  return wasSet === null;
+}
 
 // 🚀 SECURITY: Disable Vercel's default parser so we can cryptographically verify the raw payload from Meta
 export const config = {
@@ -124,6 +152,14 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
       // If it's a status update (read receipt, delivery report) or non-text message, acknowledge and exit
       if (!messageObj || !messageObj.text || !messageObj.from || !phoneNumberId) {
+        return res.status(200).send('EVENT_RECEIVED');
+      }
+
+      // Idempotency: Meta may retry delivery of the same message (e.g. if our
+      // response was slow or non-2xx). Without this check a retry re-runs the
+      // AI reply and sends the customer a duplicate WhatsApp message.
+      if (messageObj.id && (await isDuplicateMessage(messageObj.id))) {
+        console.info(`Skipping already-processed WhatsApp message: ${messageObj.id}`);
         return res.status(200).send('EVENT_RECEIVED');
       }
 
