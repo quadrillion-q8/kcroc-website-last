@@ -148,16 +148,11 @@ export default function LocationDeepTemplate() {
     },
   ];
 
+  // BreadcrumbList is intentionally omitted here — SEOEngine already generates
+  // it for this Location entity. Duplicating it produced two JSON-LD scripts
+  // sharing the same `#breadcrumb` @id.
   const FAQ_SCHEMA = {
     '@graph': [
-      {
-        '@type': 'BreadcrumbList',
-        '@id': `${PAGE_URL}#breadcrumb`,
-        itemListElement: [
-          { '@type': 'ListItem', position: 1, name: 'Home', item: BASE_URL },
-          { '@type': 'ListItem', position: 2, name: `Computer Repair ${location.title}`, item: PAGE_URL },
-        ],
-      },
       {
         '@type': 'FAQPage',
         '@id': `${PAGE_URL}#faq`,
