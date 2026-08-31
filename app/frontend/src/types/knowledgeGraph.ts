@@ -232,6 +232,11 @@ export const WebPageSchema = RoutableEntitySchema.extend({
   }).optional(),
   featuredFAQIds: z.array(z.string()).optional(),
   featuredUSPIds: z.array(z.string()).optional(),
+  // 🚀 NEW: Explicit Guide → Service relationship (e.g. the BIOS/UEFI guide
+  // pointing to the Service entities that actually perform the repair work
+  // it describes), so the graph validator's broken-link/orphan checks cover
+  // this edge the same way they already do for Problem.relatedServiceIds.
+  relatedServiceIds: z.array(z.string()).optional(),
   // Optional article metadata used when schemaTypes includes Article/TechArticle.
   authorName: z.string().optional(),
   authorUrl: z.string().optional(),
