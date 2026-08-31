@@ -14,6 +14,10 @@ const ProblemTemplate: React.FC = () => {
 
   if (!problem) return <Navigate to="/404" replace />;
 
+  const relatedServices = (problem.relatedServiceIds ?? [])
+    .map((id) => KCROC_GRAPH.services.find((service) => service.id === id))
+    .filter((service): service is NonNullable<typeof service> => Boolean(service));
+
   const getContentImage = (placement: 'causes' | 'solution') =>
     problem.contentImages?.find((img) => img.placement === placement);
 
@@ -106,7 +110,24 @@ const ProblemTemplate: React.FC = () => {
               </a>
             </div>
           </div>
-          
+
+          {relatedServices.length > 0 && (
+            <div>
+              <h2 className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-4">Handled Under</h2>
+              <div className="flex flex-wrap gap-3">
+                {relatedServices.map((service) => (
+                  <a
+                    key={service.id}
+                    href={`/${service.slug}`}
+                    className="px-4 py-2 rounded-full bg-slate-900/60 border border-slate-800 text-sm text-cyan-300 hover:border-cyan-500/40 transition-colors"
+                  >
+                    {service.title}
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
+
         </div>
       </section>
     </div>
