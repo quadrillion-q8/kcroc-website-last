@@ -43,7 +43,7 @@ export default function CaseStudiesIndex() {
                     <div className="absolute inset-0 bg-gradient-to-br from-slate-800 to-slate-900 group-hover:scale-105 transition-transform duration-500" />
                   )}
                   <div className="absolute bottom-4 left-4 bg-slate-950/80 backdrop-blur-md border border-slate-700 px-3 py-1 rounded-full text-xs font-bold text-cyan-400 uppercase">
-                    {study.deviceType || 'Hardware Repair'}
+                    {study.deviceCategory?.replace('-', ' ') || 'Hardware Repair'}
                   </div>
                 </div>
                 <div className="p-8 flex-grow flex flex-col">
