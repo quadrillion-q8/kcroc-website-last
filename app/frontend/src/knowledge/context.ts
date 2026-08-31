@@ -1,5 +1,6 @@
 // File: app/frontend/src/knowledge/context.ts
 import { KCROC_GRAPH } from '../data/graph';
+import { KCROC_POLICY } from '../constants/businessPolicy';
 
 /**
  * Generates the System Prompt for the Gemini AI.
@@ -40,7 +41,7 @@ Service Area: All Kuwait governorates — free pickup and delivery included.
       const turnaround = s.estimatedTurnaround ?? 'Varies by repair';
       const warranty = s.warranty?.duration
         ? `${s.warranty.duration}${s.warranty.noFixNoFee ? ', No Fix No Fee' : ''}`
-        : '30 days on all parts and labour';
+        : `${KCROC_POLICY.warranty.durationDays} days on all parts and labour`;
       return `- ${name}: ${desc} (Starting from: ${price}, Turnaround: ${turnaround}, Warranty: ${warranty})`;
     })
     .join('\n') ?? 'Contact us for service information.';
@@ -72,7 +73,7 @@ Service Area: All Kuwait governorates — free pickup and delivery included.
 - CONTACT INFO: Always remind the user they can reach a human technician directly by calling or messaging on WhatsApp at ${phone}.
 - TONE: Be helpful, professional, and polite. Keep answers simple enough for a 4th grader to understand — avoid technical jargon, or explain it plainly if you must use it.
 - Free pickup and delivery is always included — mention this proactively.
-- All repairs carry a 30-day warranty — mention this when discussing pricing.
+- All repairs carry a ${KCROC_POLICY.warranty.durationDays}-day warranty — mention this when discussing pricing.
 - Same-day service is available for eligible repairs booked before 11:00 AM.
 - Current user message: "${userMessage}"`;
 
