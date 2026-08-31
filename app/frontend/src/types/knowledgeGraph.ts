@@ -282,8 +282,45 @@ export const ProblemSchema = RoutableEntitySchema.extend({
   })).optional(),
 });
 
+export const EvidenceAssetSchema = z.object({
+  id: z.string(),
+  src: z.string(),
+  alt: z.string(),
+  caption: z.string().optional(),
+  type: z.enum([
+    'before',
+    'symptom',
+    'diagnosis',
+    'component',
+    'repair',
+    'after',
+    'testing',
+    'lab',
+  ]),
+  caseStudyId: z.string(),
+  sortOrder: z.number().int().nonnegative().optional(),
+});
+
+export const CaseStudyWarrantySchema = z.object({
+  durationDays: z.number().int().positive(),
+  coverage: z.string(),
+});
+
+export const CaseStudyConsentSchema = z.object({
+  granted: z.boolean(),
+  scope: z.array(z.enum([
+    'device',
+    'photos',
+    'repair-details',
+    'video',
+    'testimonial',
+  ])).default([]),
+});
+
 export const CaseStudySchema = RoutableEntitySchema.extend({
   entityType: z.literal('CaseStudy'),
+
+  // Existing core fields — retained for backward compatibility.
   device: z.string(),
   location: z.string(),
   symptom: z.string(),
@@ -293,8 +330,50 @@ export const CaseStudySchema = RoutableEntitySchema.extend({
   timeToRepair: z.string(),
   costVsReplacement: z.string(),
   publishDate: z.string(),
-  
-  // 🚀 NEW: Optional rich narrative content for the case study template.
+
+  // Case Study 2.0 — validated knowledge-graph relationships.
+  brandId: z.string().optional(),
+  serviceIds: z.array(z.string()).default([]),
+  problemIds: z.array(z.string()).default([]),
+  locationId: z.string().optional(),
+  authorId: z.string().optional(),
+
+  // Device classification.
+  deviceCategory: z.enum([
+    'laptop',
+    'desktop',
+    'macbook',
+    'gaming-laptop',
+    'gaming-pc',
+    'all-in-one',
+    'tablet',
+    'other',
+  ]).optional(),
+  deviceModel: z.string().optional(),
+
+  // Technical evidence.
+  diagnosticTools: z.array(z.string()).default([]),
+  repairCategory: z.string().optional(),
+  difficulty: z.enum(['routine', 'intermediate', 'advanced', 'component-level']).optional(),
+  repairStatus: z.enum(['success', 'partial', 'referred', 'ongoing']).default('success'),
+  partsReplaced: z.array(z.string()).default([]),
+  componentsTested: z.array(z.string()).default([]),
+  testingPerformed: z.array(z.string()).default([]),
+
+  // Commercial / trust data.
+  repairDuration: z.string().optional(),
+  warranty: CaseStudyWarrantySchema.optional(),
+
+  // First-party evidence media.
+  evidence: z.array(EvidenceAssetSchema).default([]),
+  video: z.object({
+    url: z.string().url(),
+    title: z.string(),
+    thumbnailUrl: z.string().optional(),
+  }).optional(),
+  customerConsent: CaseStudyConsentSchema.optional(),
+
+  // 🚀 Existing rich narrative content.
   narrative: z.object({
     hook: z.string(),
     clientContext: z.string().optional(),
@@ -331,6 +410,7 @@ export type RoutableEntity = {
 };
 
 export type ImageAsset = z.infer<typeof ImageAssetSchema>;
+export type EvidenceAsset = z.infer<typeof EvidenceAssetSchema>;
 export type ServiceEntity = z.infer<typeof ServiceSchema>;
 export type LocationEntity = z.infer<typeof LocationSchema>;
 export type FAQEntity = z.infer<typeof FAQSchema>;
