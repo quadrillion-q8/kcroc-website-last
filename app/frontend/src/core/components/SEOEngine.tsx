@@ -339,7 +339,7 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
               "name": caseEntity.deviceModel || caseEntity.device,
               "description": caseEntity.symptom
             },
-            ...(relatedBrand && { "mentions": [{ "@type": "Brand", "name": relatedBrand.brandName, "url": `${business.websiteUrl}/brands/${relatedBrand.slug}` }] }),
+            ...(relatedBrand && { "mentions": [{ "@type": "Brand", "name": relatedBrand.brandName, "url": relatedBrand.seo?.canonicalUrl || `${business.websiteUrl}/${relatedBrand.slug}` }] }),
             "text": [
               `Device: ${caseEntity.deviceModel || caseEntity.device}.`,
               `Location: ${relatedLocation?.title || caseEntity.location}.`,
