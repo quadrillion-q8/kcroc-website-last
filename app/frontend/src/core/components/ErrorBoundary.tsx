@@ -10,9 +10,10 @@ interface State {
 }
 
 // 🩹 FIX: WhatsApp link was hardcoded to '96555301913' instead of sourcing
-// from BUSINESS_INFO — this is the site's crash-fallback CTA, so it's
-// especially important it never silently points at a stale number. Computed
-// once at module load via the shared helper (defaults to BUSINESS_INFO.cleanPhone).
+// from the graph's business entity — this is the site's crash-fallback CTA, so
+// it's especially important it never silently points at a stale number.
+// Computed once at module load via the shared helper (defaults to
+// KCROC_GRAPH.business.telephone).
 const CRASH_WA_LINK = buildWhatsAppLink();
 
 export class ErrorBoundary extends React.Component<Props, State> {
