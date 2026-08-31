@@ -2380,6 +2380,78 @@ export const rawGraphData: RawGraphData = {
       navigationPriority: 75, popular: true
     } as ProblemEntity,
 
+    'problem-windows-wont-boot': {
+      id: 'problem-windows-wont-boot', slug: 'windows-wont-boot-kuwait', entityType: 'Problem', isActive: true,
+      title: "Windows Won't Boot or Stuck in Repair Loop",
+      description: "Diagnostic guide for laptops that get stuck on the manufacturer logo, drop into 'Preparing Automatic Repair', or loop endlessly instead of reaching the Windows desktop.",
+      symptom: "The laptop powers on normally and reaches the logo screen, but then either freezes there, drops into a blue 'Automatic Repair' / 'Recovery' screen, or restarts and repeats the same failed boot attempt over and over.",
+      causes: ['Corrupted Windows system files from an interrupted update or improper shutdown', 'A failing hard drive or SSD with bad sectors that the OS can no longer read from', 'A recently added driver or Windows update conflicting with existing hardware', 'Disconnected or failing storage cable/connector (desktops and some laptops)'],
+      doNotDo: 'Do not keep letting it attempt "Automatic Repair" over and over, and do not run disk-repair tools blindly — on a genuinely failing drive, repeated read/write attempts can push it from recoverable to completely dead before your files are backed up.',
+      solution: 'We first determine whether the drive itself is healthy using SMART diagnostics. If the drive is fine, we repair the Windows boot files and startup configuration without touching your data. If the drive is failing, we prioritise pulling your files off first, then clone or replace it and reinstall Windows clean.',
+      urgency: 'high',
+      relatedServiceIds: ['srv-laptop', 'srv-gaming'],
+      contentImages: [
+        { src: IMAGES.laptopHardware.laptopBiosDiagnosticScreenRepair.src, alt: IMAGES.laptopHardware.laptopBiosDiagnosticScreenRepair.alt, width: IMAGES.laptopHardware.laptopBiosDiagnosticScreenRepair.width, height: IMAGES.laptopHardware.laptopBiosDiagnosticScreenRepair.height, placement: 'causes', caption: 'Running diagnostics to tell a failing drive apart from a corrupted Windows boot configuration.' },
+        { src: IMAGES.services.windowsInstall.src, alt: IMAGES.services.windowsInstall.alt, width: IMAGES.services.windowsInstall.width, height: IMAGES.services.windowsInstall.height, placement: 'solution', caption: 'Repairing the boot files or performing a clean Windows install once your data is safely backed up.' },
+      ],
+      seo: { title: "Windows Won't Boot? Repair Loop Fix in Kuwait | KCROC", description: "Laptop stuck on the logo screen or looping 'Automatic Repair'? We diagnose failing drives vs corrupted Windows files and fix it without losing your data. Free pick & drop.", canonicalUrl: 'https://www.computerrepairkuwait.com/windows-wont-boot-kuwait', ogType: 'article', schemaTypes: ['Article', 'FAQPage'] },
+      navigationPriority: 95, popular: true
+    } as ProblemEntity,
+
+    'problem-bsod': {
+      id: 'problem-bsod', slug: 'blue-screen-of-death-bsod-fix-kuwait', entityType: 'Problem', isActive: true,
+      title: 'Blue Screen of Death (BSOD)',
+      description: 'Diagnostic guide for laptops and PCs that crash to a blue error screen with a stop code, either occasionally or repeatedly.',
+      symptom: "The screen suddenly turns blue, displays a sad-face icon and a stop code (e.g. 'MEMORY_MANAGEMENT', 'DRIVER_IRQL_NOT_LESS_OR_EQUAL'), collects some data, and restarts the computer. It may happen once a week or several times an hour.",
+      causes: ['Failing or incompatible RAM module', 'A corrupted or outdated driver, most often graphics or storage drivers', 'A failing hard drive or SSD reporting read errors to Windows', 'Overheating causing the CPU or GPU to fail mid-task', 'Corrupted Windows system files'],
+      doNotDo: "Do not rely on the stop code alone to self-diagnose and reinstall Windows repeatedly — the same code can point to RAM, drive, driver, or thermal problems, and reinstalling won't fix a hardware fault underneath.",
+      solution: 'We run a memory diagnostic and drive health check first, since those cause the majority of recurring BSODs. We then check thermal behaviour under load and review the crash dump logs to identify the exact faulting driver or component before replacing anything.',
+      urgency: 'medium',
+      relatedServiceIds: ['srv-laptop', 'srv-gaming'],
+      contentImages: [
+        { src: IMAGES.laptopHardware.monitorBlueScreenErrorDiagnostic.src, alt: IMAGES.laptopHardware.monitorBlueScreenErrorDiagnostic.alt, width: IMAGES.laptopHardware.monitorBlueScreenErrorDiagnostic.width, height: IMAGES.laptopHardware.monitorBlueScreenErrorDiagnostic.height, placement: 'causes', caption: 'A Blue Screen of Death stop code — the same code can point to RAM, drive, driver, or thermal faults.' },
+        { src: IMAGES.upgrades.ramHynix3.src, alt: IMAGES.upgrades.ramHynix3.alt, width: IMAGES.upgrades.ramHynix3.width, height: IMAGES.upgrades.ramHynix3.height, placement: 'solution', caption: 'Testing and, where needed, replacing the RAM module identified as the actual cause via crash dump analysis.' },
+      ],
+      seo: { title: 'Blue Screen of Death (BSOD) Repair Kuwait | KCROC', description: 'Laptop or PC crashing to a blue screen with a stop code? We diagnose RAM, drive, driver, and thermal faults from the actual crash logs. Free pick & drop.', canonicalUrl: 'https://www.computerrepairkuwait.com/blue-screen-of-death-bsod-fix-kuwait', ogType: 'article', schemaTypes: ['Article', 'FAQPage'] },
+      navigationPriority: 85, popular: true
+    } as ProblemEntity,
+
+    'problem-freezing-crashing': {
+      id: 'problem-freezing-crashing', slug: 'computer-freezing-crashing-kuwait', entityType: 'Problem', isActive: true,
+      title: 'Computer Freezing or Randomly Crashing',
+      description: 'Diagnosis for laptops and PCs that freeze mid-task, require a hard restart, or reboot themselves without warning.',
+      symptom: 'The mouse and keyboard stop responding, the screen locks up completely, or the computer suddenly restarts or shuts off on its own — with no blue screen or error message, just a sudden freeze or reboot.',
+      causes: ['Failing RAM causing random lockups under memory pressure', 'Overheating triggering an automatic emergency shutdown', 'A degrading power supply or battery unable to sustain load', 'Storage drive intermittently dropping out under heavy read/write'],
+      doNotDo: "Do not keep force-restarting and continuing to use the machine as normal — a laptop that shuts itself off from heat will keep doing so at progressively lower temperatures as thermal paste and components degrade further.",
+      solution: 'We stress-test RAM, monitor CPU/GPU temperatures under sustained load, and check the storage drive and power delivery, since freezing and unexpected shutdowns are almost always one of these four causes rather than a software problem.',
+      urgency: 'medium',
+      relatedServiceIds: ['srv-laptop', 'srv-gaming'],
+      contentImages: [
+        { src: IMAGES.upgrades.laptopRamSticksComparisonUpgrade.src, alt: IMAGES.upgrades.laptopRamSticksComparisonUpgrade.alt, width: IMAGES.upgrades.laptopRamSticksComparisonUpgrade.width, height: IMAGES.upgrades.laptopRamSticksComparisonUpgrade.height, placement: 'causes', caption: 'Comparing RAM modules during a stress test — failing memory is one of the most common causes of random freezes.' },
+        { src: IMAGES.upgrades.ssdSamsung1.src, alt: IMAGES.upgrades.ssdSamsung1.alt, width: IMAGES.upgrades.ssdSamsung1.width, height: IMAGES.upgrades.ssdSamsung1.height, placement: 'solution', caption: 'Replacing a drive that was intermittently dropping out under load once it is confirmed as the fault.' },
+      ],
+      seo: { title: 'Computer Freezing or Crashing Randomly? Fix in Kuwait | KCROC', description: 'Laptop or PC freezing, locking up, or restarting on its own? We stress-test RAM, thermals, storage, and power to find the real cause. Free pick & drop.', canonicalUrl: 'https://www.computerrepairkuwait.com/computer-freezing-crashing-kuwait', ogType: 'article', schemaTypes: ['Article', 'FAQPage'] },
+      navigationPriority: 55, popular: true
+    } as ProblemEntity,
+
+    'problem-malware': {
+      id: 'problem-malware', slug: 'virus-malware-removal-kuwait', entityType: 'Problem', isActive: true,
+      title: 'Virus, Malware or Ransomware Infection',
+      description: 'Removal service for laptops and PCs showing signs of viruses, adware, browser hijackers, or ransomware.',
+      symptom: 'Constant pop-up ads even outside the browser, a homepage or search engine that changed itself, unfamiliar toolbars, the antivirus getting disabled on its own, or — in serious cases — files that suddenly cannot be opened with a ransom message demanding payment.',
+      causes: ['Downloaded software bundled with adware or a browser hijacker', 'Opening an infected email attachment or fake software update', 'Outdated Windows or browser software with unpatched security holes', 'Pirated software or "cracked" program installers'],
+      doNotDo: 'Do not pay a ransomware demand, and do not install multiple "PC cleaner" or antivirus tools on top of each other trying to fix it yourself — conflicting security tools often make removal harder and some free "cleaner" downloads are malware themselves.',
+      solution: 'We fully scan and remove the infection using professional-grade tools run outside the compromised operating system, so the malware cannot hide from or disable the scanner. For severe or ransomware infections, we back up any recoverable personal files first, then perform a clean Windows installation to guarantee nothing survives.',
+      urgency: 'medium',
+      relatedServiceIds: ['srv-laptop', 'srv-gaming'],
+      contentImages: [
+        { src: IMAGES.laptopHardware.dellChassis.src, alt: IMAGES.laptopHardware.dellChassis.alt, width: IMAGES.laptopHardware.dellChassis.width, height: IMAGES.laptopHardware.dellChassis.height, placement: 'causes', caption: 'Inspecting a customer laptop before starting an out-of-OS malware scan.' },
+        { src: IMAGES.services.windowsInstall.src, alt: IMAGES.services.windowsInstall.alt, width: IMAGES.services.windowsInstall.width, height: IMAGES.services.windowsInstall.height, placement: 'solution', caption: 'A clean Windows installation guarantees a severe or ransomware infection cannot survive, once your files are safely backed up.' },
+      ],
+      seo: { title: 'Virus & Malware Removal Kuwait — Same-Day Service | KCROC', description: 'Pop-ups, hijacked browser, or ransomware on your laptop? Professional virus and malware removal, with safe file backup first. Free pick & drop in Kuwait.', canonicalUrl: 'https://www.computerrepairkuwait.com/virus-malware-removal-kuwait', ogType: 'article', schemaTypes: ['Article', 'FAQPage'] },
+      navigationPriority: 45, popular: false
+    } as ProblemEntity,
+
     /* ═══════════════════════════════════════════════════════════════
        CASE STUDY ENTITIES
     ═══════════════════════════════════════════════════════════════ */
