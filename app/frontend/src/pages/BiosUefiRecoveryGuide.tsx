@@ -1048,6 +1048,15 @@ export default function BiosUefiRecoveryGuide() {
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 mt-6 sm:mt-8 text-xs sm:text-sm">
+            <Link to="/motherboard-repair-kuwait" className="text-slate-400 hover:text-cyan-400 inline-flex items-center gap-1.5 transition-colors">
+              Motherboard Repair
+            </Link>
+            <Link to="/laptop-repair-kuwait" className="text-slate-400 hover:text-cyan-400 inline-flex items-center gap-1.5 transition-colors">
+              Laptop Repair
+            </Link>
+            <Link to="/gaming-pc-repair-kuwait" className="text-slate-400 hover:text-cyan-400 inline-flex items-center gap-1.5 transition-colors">
+              Gaming PC & GPU Repair
+            </Link>
             <Link to="/services" className="text-slate-400 hover:text-cyan-400 inline-flex items-center gap-1.5 transition-colors">
               View All Services
             </Link>
