@@ -2,6 +2,9 @@
   "name": "kcroc-enterprise",
   "type": "module",
   "packageManager": "pnpm@8.10.0",
+  "engines": {
+    "node": "22.x"
+  },
   "scripts": {
     "dev": "npx tsx scripts/generate-nav-data.ts && vite",
     "generate:nav": "npx tsx scripts/generate-nav-data.ts",
