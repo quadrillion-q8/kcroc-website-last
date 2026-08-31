@@ -69,12 +69,12 @@
     },
     {
       "source": "/laptop-repair-in-abu-halifa",
-      "destination": "/location/ahmadi",
+      "destination": "/location/abu-halifa",
       "permanent": true
     },
     {
       "source": "/laptop-repair-in-fahaheel",
-      "destination": "/location/ahmadi",
+      "destination": "/location/fahaheel",
       "permanent": true
     },
     {
@@ -84,7 +84,7 @@
     },
     {
       "source": "/laptop-repair-in-mangaf",
-      "destination": "/location/ahmadi",
+      "destination": "/location/mangaf",
       "permanent": true
     },
     {
