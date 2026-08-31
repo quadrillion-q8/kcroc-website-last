@@ -1,5 +1,4 @@
 // File: app/frontend/src/pages/BookingPage.tsx
-import { Head } from 'vite-react-ssg';
 import React, { useState } from 'react';
 import { ShieldCheck, Truck, Clock, MapPin, MessageCircle, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -21,19 +20,12 @@ const PHONE_DISPLAY = `+${business.telephone}`;
 const PHONE_CLEAN = business.telephone;
 const BUSINESS_NAME = business.legalName;
 
+// NOTE: WebPage + BreadcrumbList nodes are intentionally omitted here — SEOEngine
+// (driven by the 'page-booking' graph entity) is the single authority for those on
+// this page. This object only carries schema types SEOEngine doesn't generate.
 const STRUCTURED_DATA = {
   "@context": "https://schema.org",
   "@graph": [
-    {
-      "@type": "WebPage",
-      "@id": `${PAGE_URL}#webpage`,
-      "name": "Book Laptop & Computer Repair Pickup in Kuwait | KCROC",
-      "url": PAGE_URL,
-      "description": "Book free laptop and computer repair pickup anywhere in Kuwait. Same-day hardware assessment. 30-day warranty.",
-      "isPartOf": { "@id": `${BASE_URL}/#website` },
-      "breadcrumb": { "@id": `${PAGE_URL}#breadcrumb` },
-      "about": { "@id": `${BASE_URL}/#business` }
-    },
     {
       "@type": "Service",
       "name": "Computer Repair Booking",
@@ -58,14 +50,6 @@ const STRUCTURED_DATA = {
             "text": "We provide same-day hardware testing for all devices. Repair times vary based on the issue and parts availability, but most standard repairs are completed within 24 to 48 hours."
           }
         }
-      ]
-    },
-    {
-      "@type": "BreadcrumbList",
-      "@id": `${PAGE_URL}#breadcrumb`,
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home",    "item": BASE_URL },
-        { "@type": "ListItem", "position": 2, "name": "Book",    "item": PAGE_URL }
       ]
     }
   ]
@@ -95,11 +79,9 @@ export default function BookingPage() {
   return (
     <main className="w-full min-h-screen bg-slate-950 text-slate-100 font-sans pt-24 pb-16">
       
-      {/* 🚀 Flawless SEO Injection */}
-      <Head>
-        <title>Book a Free Repair Diagnostic | KCROC Kuwait</title>
-        <meta name="description" content="Book your free computer or MacBook diagnostic today. Free Pick & Drop across Kuwait. No Fix, No Fee." />
-      </Head>
+      {/* SEOEngine (driven by the 'page-booking' graph entity) is the single authority
+          for title/meta/canonical/WebPage/BreadcrumbList on this page. SchemaMarkup below
+          only supplies the Service + FAQPage nodes that SEOEngine doesn't generate. */}
       <SEOEngine entityId="page-booking" />
       <SchemaMarkup schema={STRUCTURED_DATA} />
 
@@ -130,7 +112,7 @@ export default function BookingPage() {
                     What needs fixing?
                   </label>
                   <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                    {['MacBook / Apple', 'Gaming PC', 'Windows Laptop', 'Data Recovery', 'Logic Board', 'Other'].map((type) => (
+                    {['MacBook / Apple', 'Gaming PC', 'Windows Laptop', 'Logic Board', 'Other'].map((type) => (
                       <button
                         key={type}
                         type="button"
