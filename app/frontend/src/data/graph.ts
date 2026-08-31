@@ -156,7 +156,8 @@ export const rawGraphData: RawGraphData = {
         'faq-bios-dual-bios-chip',
         'faq-bios-mac-firmware-flash',
         'faq-bios-security-risk'
-      ]
+      ],
+      relatedServiceIds: ['srv-motherboard', 'srv-laptop', 'srv-gaming']
     } as WebPageEntity,
     'guide-intel-vs-amd': { 
       id: 'guide-intel-vs-amd', 
