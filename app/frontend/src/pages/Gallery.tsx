@@ -5,10 +5,11 @@ import { GALLERY_ITEMS, galleryCategories } from '../constants/galleryData';
 import { SEOEngine } from '../core/components/SEOEngine';
 import { buildWhatsAppLink } from '../utils/whatsappIntent';
 
-// 🩹 FIX: was hardcoded to '96555301913' instead of sourcing from
-// BUSINESS_INFO — if the phone number is ever updated centrally, this file
-// would silently keep pointing at the old number. Now routed through the
-// shared buildWhatsAppLink helper, which defaults to BUSINESS_INFO.cleanPhone.
+// 🩹 FIX: was hardcoded to '96555301913' instead of sourcing from the
+// graph's business entity — if the phone number is ever updated centrally,
+// this file would silently keep pointing at the old number. Now routed
+// through the shared buildWhatsAppLink helper, which defaults to
+// KCROC_GRAPH.business.telephone.
 const WA_LINK = buildWhatsAppLink('Hi KCROC, I need a professional repair. Please arrange free pickup.');
 
 export default function Gallery() {
