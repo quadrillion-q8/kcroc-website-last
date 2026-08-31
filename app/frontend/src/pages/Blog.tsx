@@ -3,12 +3,19 @@ import React, { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { Calendar, Clock, ArrowRight, BookOpen } from 'lucide-react';
 
-import { BUSINESS_INFO } from '../constants/data';
 import { ROUTES, getBlogRoute } from '../constants/routes';
 import { BLOG_POSTS } from '../constants/blogPosts';
 import { KCROC_GRAPH } from '../data/graph';
 import SchemaMarkup from '../components/seo/SchemaMarkup';
 import { SEOEngine } from '../core/components/SEOEngine';
+
+// Single source of truth for business identity — see graph.ts 'biz-kcroc'.
+// (Previously duplicated via constants/data.ts's BUSINESS_INFO.)
+const business = KCROC_GRAPH.business!;
+// Canonical Person @id for the real author bio page — matches SEOEngine.tsx's
+// AUTHOR_ID, used so posts genuinely written by Imran connect to that Person
+// entity instead of being flattened into a generic Organization credit.
+const IMRAN_AUTHOR_ID = 'https://www.computerrepairkuwait.com/author/imran#person';
 
 // 🚀 FIX: A handful of long-form articles (the buying guide, its Arabic
 // version, and the Intel vs AMD comparison) are modeled as knowledge-graph
@@ -67,7 +74,7 @@ interface BlogCardItem {
 }
 
 export default function Blog() {
-  const pageUrl = `${BUSINESS_INFO.url}${ROUTES.BLOG}`;
+  const pageUrl = `${business.websiteUrl}${ROUTES.BLOG}`;
 
   const displayPosts: BlogCardItem[] = useMemo(() => {
     const fromBlogPosts: BlogCardItem[] = BLOG_POSTS.map((post) => ({
@@ -118,7 +125,7 @@ export default function Blog() {
         "url": pageUrl,
         "isPartOf": {
           "@type": "WebSite",
-          "@id": `${BUSINESS_INFO.url}/#website`
+          "@id": `${business.websiteUrl}/#website`
         }
       },
 
@@ -133,7 +140,7 @@ export default function Blog() {
           "@type": "ListItem",
           "position": index + 1,
           "name": post.title,
-          "url": `${BUSINESS_INFO.url}${post.href}`
+          "url": `${business.websiteUrl}${post.href}`
         }))
       },
 
@@ -142,24 +149,27 @@ export default function Blog() {
       // ─────────────────────────────
       ...BLOG_POSTS.map(post => ({
         "@type": "BlogPosting",
-        "@id": `${BUSINESS_INFO.url}${getBlogRoute(post.slug)}#post`,
+        "@id": `${business.websiteUrl}${getBlogRoute(post.slug)}#post`,
         "headline": post.title,
         "description": post.excerpt,
         "image": post.image,
-        "url": `${BUSINESS_INFO.url}${getBlogRoute(post.slug)}`,
+        "url": `${business.websiteUrl}${getBlogRoute(post.slug)}`,
         "datePublished": post.date,
-        "author": {
-          "@type": "Organization",
-          "name": post.author || BUSINESS_INFO.name
-        },
+        // Posts credited to "Imran" by name are genuinely his — connect them to
+        // the real Person entity. Team-credited posts (e.g. "KCROC Gaming
+        // Specialists") stay attributed to the Organization, since there's no
+        // single named author for those.
+        "author": post.author === 'Imran'
+          ? { "@type": "Person", "@id": IMRAN_AUTHOR_ID }
+          : { "@type": "Organization", "name": post.author || business.legalName },
         "publisher": {
           "@type": "Organization",
-          "name": BUSINESS_INFO.name,
-          "url": BUSINESS_INFO.url
+          "name": business.legalName,
+          "url": business.websiteUrl
         },
         "mainEntityOfPage": {
           "@type": "WebPage",
-          "@id": `${BUSINESS_INFO.url}${getBlogRoute(post.slug)}`
+          "@id": `${business.websiteUrl}${getBlogRoute(post.slug)}`
         }
       }))
     ]
