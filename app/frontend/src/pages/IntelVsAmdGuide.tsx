@@ -301,7 +301,7 @@ export default function IntelVsAmdGuide() {
               <p className="mt-3 max-w-2xl text-slate-400">KCROC can help diagnose whether a current laptop’s slowdown is related to RAM, storage, cooling or another hardware fault. We offer free pickup and delivery across Kuwait.</p>
               <div className="mt-6 flex flex-wrap gap-3">
                 <Link to="/book" className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-cyan-500 px-5 py-3 font-black text-slate-950 hover:bg-cyan-400 focus:outline-none focus:ring-2 focus:ring-cyan-300">Book free pickup <ArrowRight size={16} /></Link>
-                <Link to="/services/laptop-repair-kuwait" className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-slate-700 px-5 py-3 font-black text-white hover:border-cyan-500/50 hover:text-cyan-300 focus:outline-none focus:ring-2 focus:ring-cyan-400">Laptop repair services</Link>
+                <Link to="/laptop-repair-kuwait" className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-slate-700 px-5 py-3 font-black text-white hover:border-cyan-500/50 hover:text-cyan-300 focus:outline-none focus:ring-2 focus:ring-cyan-400">Laptop repair services</Link>
               </div>
             </section>
 
