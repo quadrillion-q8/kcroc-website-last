@@ -2361,6 +2361,24 @@ export const rawGraphData: RawGraphData = {
       navigationPriority: 20, popular: false
     } as ProblemEntity,
 
+    'problem-cracked-screen': {
+      id: 'problem-cracked-screen', slug: 'laptop-screen-cracked-kuwait', entityType: 'Problem', isActive: true,
+      title: 'Laptop Screen Cracked or Shattered',
+      description: 'Repair guide for laptops with a physically cracked, shattered, or spider-webbed display panel after a drop or impact.',
+      symptom: 'The screen shows spiderweb cracks, dark ink-like bleeding, discoloured patches, or areas with no picture at all after a drop, knock, or something pressing on the closed lid. An external monitor usually displays a perfect picture.',
+      causes: ['Dropping the laptop or closing it on an object left on the keyboard', 'Impact or pressure on the closed lid while packed in a bag', 'Pre-existing hinge damage allowing the lid to close unevenly onto the bezel'],
+      doNotDo: 'Do not keep using the laptop with a cracked panel — flexing or pressing on a shattered screen can push liquid crystal further into the bezel and, on some models, damage the display cable connector underneath.',
+      solution: 'We confirm the fault is the panel and not the board by testing output on an external monitor, then fit and calibrate an OEM-spec replacement LCD/IPS/OLED panel matched to your exact model, checking hinges and the display cable at the same time.',
+      urgency: 'high',
+      relatedServiceIds: ['srv-screen', 'srv-laptop'],
+      contentImages: [
+        { src: IMAGES.laptopHardware.dellLaptopCorruptedScreenGpuFailure.src, alt: IMAGES.laptopHardware.dellLaptopCorruptedScreenGpuFailure.alt, width: IMAGES.laptopHardware.dellLaptopCorruptedScreenGpuFailure.width, height: IMAGES.laptopHardware.dellLaptopCorruptedScreenGpuFailure.height, placement: 'causes', caption: 'A cracked panel showing display bleed — we confirm on an external monitor that the board itself is unaffected.' },
+        { src: IMAGES.laptopHardware.laptopLcdPanelReplacementPart.src, alt: IMAGES.laptopHardware.laptopLcdPanelReplacementPart.alt, width: IMAGES.laptopHardware.laptopLcdPanelReplacementPart.width, height: IMAGES.laptopHardware.laptopLcdPanelReplacementPart.height, placement: 'solution', caption: 'Fitting an OEM-spec replacement panel matched to the exact model before calibration.' },
+      ],
+      seo: { title: 'Laptop Screen Cracked in Kuwait? Same-Day Replacement | KCROC', description: 'Cracked, shattered, or bleeding laptop screen? We fit OEM-spec panels matched to your model, often same-day. Free pick & drop across Kuwait.', canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-screen-cracked-kuwait', ogType: 'article', schemaTypes: ['Article', 'FAQPage'] },
+      navigationPriority: 75, popular: true
+    } as ProblemEntity,
+
     /* ═══════════════════════════════════════════════════════════════
        CASE STUDY ENTITIES
     ═══════════════════════════════════════════════════════════════ */
@@ -2493,7 +2511,7 @@ export const rawGraphData: RawGraphData = {
       deviceModel: 'Dell XPS 15',
       brandId: 'brand-dell',
       serviceIds: ['srv-screen', 'srv-laptop'],
-      problemIds: [],
+      problemIds: ['problem-cracked-screen'],
       locationId: 'loc-kuwait-city',
       authorId: 'https://www.computerrepairkuwait.com/author/imran#person',
       repairCategory: 'Laptop display replacement',
