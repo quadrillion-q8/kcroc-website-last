@@ -1,5 +1,7 @@
 // File: src/utils/whatsappIntent.ts
-import { BUSINESS_INFO } from '../constants/data';
+import { KCROC_GRAPH } from '../data/graph';
+
+const business = KCROC_GRAPH.business!;
 
 type IntentContext = "blog" | "faq" | "location" | "service" | "general";
 
@@ -8,15 +10,16 @@ type IntentContext = "blog" | "faq" | "location" | "service" | "general";
  * should route through this (directly or via getIntentWhatsAppLink below)
  * instead of hand-rolling `https://wa.me/${phone}?text=...` inline — those
  * ad-hoc versions had drifted into real bugs (hardcoded phone numbers that
- * wouldn't update if BUSINESS_INFO.cleanPhone ever changes, and one file
+ * wouldn't update if business.telephone ever changes, and one file
  * with a fragile regex trying to re-derive the country code).
  *
  * Normalizes the phone number the same way everywhere (defaults to
- * BUSINESS_INFO.cleanPhone, strips any non-digits from a custom phone,
- * and de-dupes a leading "965" so it's never doubled).
+ * business.telephone — the graph's single source of truth, see graph.ts
+ * 'biz-kcroc' — strips any non-digits from a custom phone, and de-dupes a
+ * leading "965" so it's never doubled).
  */
 export const buildWhatsAppLink = (message?: string, phone?: string): string => {
-  const digits = (phone ?? BUSINESS_INFO.cleanPhone).replace(/\D/g, '');
+  const digits = (phone ?? business.telephone).replace(/\D/g, '');
   const withCountryCode = digits.startsWith('965') ? digits : `965${digits}`;
   return message
     ? `https://wa.me/${withCountryCode}?text=${encodeURIComponent(message)}`
