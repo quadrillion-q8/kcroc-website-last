@@ -53,6 +53,7 @@ const PERSON_SCHEMA = [
 ];
 
 const articles = [
+  { title: 'Laptop Temperatures in Kuwait: What Is Normal, What Is Too Hot?', href: '/blog/laptop-temperatures-kuwait-safe-cpu-gpu-temperatures' },
   { title: 'Laptop Buying Guide Kuwait (2026)', href: '/blog/laptop-buying-guide-kuwait-2026' },
   { title: 'دليل شراء اللابتوب في الكويت 2026', href: '/blog/ar/laptop-buying-guide-kuwait-2026' },
 ];
