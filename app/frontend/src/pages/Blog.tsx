@@ -156,7 +156,7 @@ export default function Blog() {
           datePublished: post.date,
 
           author:
-            post.author === 'Imran'
+            post.author === 'Imran Natiq'
               ? {
                   '@type': 'Person',
                   '@id': IMRAN_AUTHOR_ID,
