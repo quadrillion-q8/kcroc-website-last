@@ -1,4 +1,5 @@
-a// File: app/frontend/src/pages/Blog.tsx
+```tsx
+// File: app/frontend/src/pages/Blog.tsx
 import React, { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { Calendar, Clock, ArrowRight, BookOpen } from 'lucide-react';
@@ -12,6 +13,7 @@ import { SEOEngine } from '../core/components/SEOEngine';
 // Single source of truth for business identity — see graph.ts 'biz-kcroc'.
 // (Previously duplicated via constants/data.ts's BUSINESS_INFO.)
 const business = KCROC_GRAPH.business!;
+
 // Canonical Person @id for the real author bio page — matches SEOEngine.tsx's
 // AUTHOR_ID, used so posts genuinely written by Imran connect to that Person
 // entity instead of being flattened into a generic Organization credit.
@@ -91,6 +93,7 @@ export default function Blog() {
     const fromGraph: BlogCardItem[] = EXTRA_GUIDES.flatMap((guide) => {
       const entity = KCROC_GRAPH.pages.find((p) => p.id === guide.entityId);
       if (!entity) return [];
+
       return [{
         key: guide.entityId,
         href: guide.href,
@@ -155,6 +158,7 @@ export default function Blog() {
         "image": post.image,
         "url": `${business.websiteUrl}${getBlogRoute(post.slug)}`,
         "datePublished": post.date,
+
         // Posts credited to "Imran" by name are genuinely his — connect them to
         // the real Person entity. Team-credited posts (e.g. "KCROC Gaming
         // Specialists") stay attributed to the Organization, since there's no
@@ -162,11 +166,13 @@ export default function Blog() {
         "author": post.author === 'Imran'
           ? { "@type": "Person", "@id": IMRAN_AUTHOR_ID }
           : { "@type": "Organization", "name": post.author || business.legalName },
+
         "publisher": {
           "@type": "Organization",
           "name": business.legalName,
           "url": business.websiteUrl
         },
+
         "mainEntityOfPage": {
           "@type": "WebPage",
           "@id": `${business.websiteUrl}${getBlogRoute(post.slug)}`
@@ -193,7 +199,9 @@ export default function Blog() {
               Home
             </Link>
           </li>
+
           <li className="text-slate-600" aria-hidden="true">/</li>
+
           <li aria-current="page" className="text-cyan-400">
             Blog
           </li>
@@ -204,7 +212,10 @@ export default function Blog() {
           HERO
       ========================= */}
       <section className="relative px-6 text-center mb-20 z-10">
-        <div className="absolute top-[-50%] left-1/2 -translate-x-1/2 w-[600px] h-[500px] bg-cyan-600/20 blur-[80px] rounded-full pointer-events-none" aria-hidden="true" />
+        <div
+          className="absolute top-[-50%] left-1/2 -translate-x-1/2 w-[600px] h-[500px] bg-cyan-600/20 blur-[80px] rounded-full pointer-events-none"
+          aria-hidden="true"
+        />
 
         <div className="max-w-4xl mx-auto relative z-10">
           <div className="inline-flex items-center gap-2 bg-slate-900/80 border border-cyan-500/30 px-5 py-2 rounded-full text-cyan-400 text-xs font-black uppercase tracking-widest mb-6">
@@ -298,3 +309,4 @@ export default function Blog() {
     </main>
   );
 }
+```
