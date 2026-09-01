@@ -194,6 +194,7 @@ export class NavigationCompiler {
       sections: [{
         title: 'More Posts',
         items: [
+          { id: 'b12', slug: 'blog/laptop-temperatures-kuwait-safe-cpu-gpu-temperatures', title: 'Laptop Temperatures in Kuwait', description: 'CPU & GPU temperature guide', iconKey: 'cpu', entityType: 'Page' as any, primaryKeyword: 'laptop temperature', weight: 10, commercialIntent: 'info' },
           { id: 'b1', slug: 'blog', title: 'All Posts', description: '', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'blog', weight: 0, commercialIntent: 'info' },
           { id: 'b2', slug: 'blog/laptop-repair-kuwait-2026', title: 'Repair Guide 2026', description: '', iconKey: 'wrench', entityType: 'Page' as any, primaryKeyword: 'guide', weight: 0, commercialIntent: 'info' },
           { id: 'b3', slug: 'laptop-screen-protection-tips', title: 'Screen Protection Tips', description: '', iconKey: 'shield', entityType: 'Page' as any, primaryKeyword: 'tips', weight: 0, commercialIntent: 'info' },
