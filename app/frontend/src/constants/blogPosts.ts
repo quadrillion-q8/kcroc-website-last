@@ -122,15 +122,17 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "laptop-temperatures-kuwait-safe-cpu-gpu-temperatures",
     title: "Laptop Temperatures in Kuwait: What Is Normal, What Is Too Hot?",
     excerpt: "Seeing 85°C, 90°C or higher on your laptop? Learn how to interpret CPU and GPU temperatures, spot thermal throttling, and understand how Kuwait's heat and dust affect laptop cooling.",
-    description: "Laptop temperatures in Kuwait: practical CPU/GPU ranges, 90°C explained, thermal throttling signs, cooling tests, and when cleaning or repair is justified.",
+    description: "Laptop temperatures in Kuwait: practical CPU/GPU reference ranges, 90°C explained, thermal throttling signs, manufacturer thermal limits, and a technician-led cooling diagnostic method.",
     content: [
       "Laptop temperature numbers can look alarming, especially when a monitoring tool suddenly shows 85°C, 90°C or more. A high reading during a demanding workload is not automatically a hardware failure, while an unusually hot laptop at idle can deserve investigation.",
       "The better question is not simply whether a laptop is hot. It is whether the temperature fits the workload, how long it stays there, what the CPU or GPU is doing, whether performance changes, and whether the cooling system is behaving normally."
     ],
     richContent: [
-      { type: 'paragraph', text: "Laptop temperature numbers can look alarming, especially when a monitoring tool suddenly shows 85°C, 90°C or more. A high reading during a demanding workload is not automatically a hardware failure, while an unusually hot laptop at idle can deserve investigation." },
-      { type: 'paragraph', text: "The useful way to read a temperature is to combine the number with workload, duration, ambient temperature, utilization, clock speed, fan behavior and performance. That matters even more in Kuwait, where warm room temperatures can reduce the cooling system's available thermal headroom." },
-      { type: 'callout', variant: 'info', title: 'Quick answer', text: "For many modern laptops, roughly 40–60°C at idle or light use, 45–70°C during ordinary work, and 70–90°C during sustained high-load work can be reasonable practical reference ranges. These are troubleshooting guidelines, not universal manufacturer limits. Your exact CPU/GPU model, laptop design, power mode and room temperature matter." },
+      { type: 'paragraph', text: "Seeing 85°C, 90°C or even higher on a laptop temperature monitor does not automatically mean the laptop is overheating or damaged. A modern laptop can intentionally operate at high temperatures during gaming, rendering, compiling and other demanding workloads." },
+      { type: 'paragraph', text: "The more useful question is what the laptop was doing, how long the temperature remained high, what happened to clock speed and performance, and whether the cooling system is behaving normally. At KCROC, we treat temperature as one diagnostic measurement rather than a diagnosis by itself." },
+      { type: 'paragraph', text: "When evaluating a thermal complaint, the useful combination is temperature + utilization + clock speed + workload + fan behavior + airflow + ambient temperature. This approach helps distinguish normal high-load operation from thermal or power limiting, restricted airflow, fan problems, degraded thermal interface material or another hardware issue." },
+      { type: 'callout', variant: 'expert', title: 'Technical review', text: "This guide was written and technically reviewed by Imran Natiq, Hardware Repair Engineer at KCROC, with a focus on laptop thermal troubleshooting, hardware testing and component-level repair in Kuwait." },
+      { type: 'callout', variant: 'info', title: 'Quick answer', text: "As a practical troubleshooting reference, many modern laptops may show roughly 40–60°C at idle or light use, 45–70°C during ordinary work, 70–90°C during sustained high-load work, and 75–95°C during demanding rendering or stress workloads. These are not universal safe limits and are not manufacturer specifications. Your exact CPU/GPU model, laptop design, power limits, cooling system and room temperature matter." },
       { type: 'h2', text: 'Normal Laptop CPU & GPU Temperatures by Workload', id: 'laptop-temperature-ranges' },
       { type: 'paragraph', text: "There is no single temperature that is safe or normal for every laptop. CPU and GPU models, chassis design, fan curves, power limits, workload and ambient temperature all change the result. Use the table below as a practical troubleshooting reference rather than a hard specification." },
       { type: 'comparisonTable', title: 'Practical laptop CPU and GPU temperature reference ranges', columns: ['CPU', 'GPU', 'What matters most'], rows: [
@@ -139,10 +141,10 @@ export const BLOG_POSTS: BlogPost[] = [
         { feature: 'Sustained gaming / high load', values: ['70–90°C', '60–85°C', 'Watch sustained temperature, clock speed, FPS and airflow together.'] },
         { feature: 'Heavy rendering / stress load', values: ['75–95°C', '70–90°C', 'High heat can be expected; persistent throttling or instability is the concern.'] }
       ] },
-      { type: 'callout', variant: 'warning', title: 'Important: these are not manufacturer limits', text: "A temperature chart cannot replace the specification for your exact processor or laptop. Intel states that maximum operating temperature varies by processor and is commonly around 100–110°C for its processors, while AMD product pages can specify a 100°C Tjmax on individual mobile CPUs. Check the exact model specification when you need the actual thermal limit." },
+      { type: 'callout', variant: 'warning', title: 'Important: these are not manufacturer limits', text: "A temperature chart cannot replace the specification for your exact processor or laptop. Intel explains that Tjunction max is product-specific and that actual operating temperatures depend on workload and system design. AMD also publishes maximum operating-temperature specifications for individual processors. Use the exact CPU/GPU specification when you need the official thermal limit." },
       { type: 'h2', text: 'Temperature Range vs. Thermal Limit: What Is the Difference?', id: 'temperature-vs-thermal-limit' },
       { type: 'paragraph', text: "A practical operating range and a processor's maximum thermal limit are not the same thing. A laptop may legitimately reach a high temperature during a sustained workload without being defective, while repeatedly reaching its thermal ceiling and losing clock speed can indicate that the system is limiting performance to control heat." },
-      { type: 'paragraph', text: "Intel describes Tjunction max as the maximum junction temperature at which internal thermal-control mechanisms can reduce power and frequency. The exact limit is product-specific and system behavior can also be design-specific. AMD likewise publishes a Tjmax for individual processors rather than one universal temperature for every Ryzen laptop." },
+      { type: 'paragraph', text: "Intel describes Tjunction max (Tjmax) as the maximum junction temperature at which the processor's internal thermal-control mechanisms can reduce power and frequency. Intel's guidance also emphasizes that actual operating temperatures vary with workload and system design. AMD publishes maximum operating-temperature specifications for individual processors as well, so the exact CPU model should be checked instead of applying one universal Ryzen or laptop limit." },
       { type: 'h2', text: 'Is 90°C Too Hot for a Laptop?', id: 'is-90c-too-hot' },
       { type: 'paragraph', text: "Not automatically. A modern laptop CPU can briefly reach around 90°C or higher during demanding gaming, rendering or other heavy workloads. A single peak is less useful than the pattern around it: workload, duration, clock speed, performance and stability." },
       { type: 'comparisonTable', title: 'How to interpret a 90°C reading', columns: ['Situation', 'What it can mean', 'What to check'], rows: [
@@ -159,8 +161,16 @@ export const BLOG_POSTS: BlogPost[] = [
       { type: 'h2', text: 'What Temperature Is Too Hot for a Laptop GPU?', id: 'what-temperature-is-too-hot-gpu' },
       { type: 'paragraph', text: "Dedicated laptop GPUs are designed for sustained workloads, but the appropriate temperature depends on the GPU, laptop chassis, power target and cooling design. A practical reference of roughly 60–85°C under demanding graphics load can be useful, but it should not be treated as a universal maximum." },
       { type: 'paragraph', text: "Also remember that monitoring software can expose different GPU sensors, such as GPU temperature or hotspot/junction temperature. Those readings are not interchangeable. When diagnosing a problem, compare the same sensor consistently and use the manufacturer's specifications where available." },
+      { type: 'h2', text: "Don't Confuse Different Temperature Sensors", id: 'temperature-sensors' },
+      { type: 'paragraph', text: "Laptop monitoring software can report several different thermal measurements. A CPU package or core reading, GPU temperature, GPU hotspot/junction temperature and laptop surface temperature describe different things and should not automatically be compared as if they were the same sensor." },
+      { type: 'comparisonTable', title: 'Common laptop temperature measurements', columns: ['Measurement', 'What it represents', 'Diagnostic note'], rows: [
+        { feature: 'CPU temperature', values: ['A processor sensor reading such as package or core temperature', 'Interpret with CPU utilization, clock speed and workload'] },
+        { feature: 'GPU temperature', values: ['The primary graphics-processor temperature reading', 'Use the exact GPU specification for its thermal limits'] },
+        { feature: 'GPU hotspot / junction', values: ['A localized maximum temperature reported by some GPUs', 'Do not compare it directly with the GPU core reading'] },
+        { feature: 'Laptop surface temperature', values: ['Temperature of the chassis, keyboard deck or underside', 'It is not equivalent to CPU or GPU temperature'] }
+      ] },
       { type: 'h2', text: "How Kuwait's Climate Changes Laptop Temperatures", id: 'kuwait-climate-laptop-temperatures' },
-      { type: 'paragraph', text: "A laptop cooling system transfers heat from the CPU and GPU into the surrounding air. When the intake air is already warm, the cooling system has less temperature difference available to reject that heat. Microsoft notes that Surface devices may need their fans to run more often or faster when used above 25°C ambient, depending on workload. Kuwait's hotter indoor and outdoor conditions can therefore make the same laptop run warmer than it would in a cooler room." },
+      { type: 'paragraph', text: "A laptop cooling system ultimately rejects heat into the surrounding air. When intake air is warmer, the cooling system has less thermal headroom available for removing heat. Kuwait's warmer indoor and outdoor conditions can therefore make the same laptop run warmer than it would in a cooler room, even when the workload has not changed." },
       { type: 'paragraph', text: "Dust adds a second Kuwait-specific challenge. Fine dust can accumulate around intake paths, fan blades and heatsink fins. A partially restricted heatsink may still move air while transferring heat less effectively, so the laptop can become progressively louder and hotter under the same workload." },
       { type: 'callout', variant: 'tip', title: 'Kuwait cooling tip', text: "Use the laptop on a hard, flat surface and keep intake and exhaust vents unobstructed. In a warm room, good airflow becomes even more important because the cooling system starts with less thermal headroom." },
       { type: 'h2', text: 'Room Temperature vs. Laptop Temperature', id: 'room-temperature-vs-laptop-temperature' },
@@ -192,6 +202,17 @@ export const BLOG_POSTS: BlogPost[] = [
         { label: '5. Temperature and performance stabilize', note: 'The system settles at a lower performance level if the limit remains active.' }
       ] },
       { type: 'paragraph', text: "To confirm a suspected throttling problem, compare temperature, utilization, clock speed and performance at the start of the workload and again after the slowdown. A repeatable relationship between rising temperature and falling clocks is much more informative than a single temperature screenshot." },
+      { type: 'h2', text: 'How KCROC Diagnoses Laptop Overheating', id: 'kcroc-thermal-diagnostic-method' },
+      { type: 'paragraph', text: "A temperature screenshot is rarely enough to diagnose a laptop cooling problem. Our diagnostic approach is to reproduce the customer's actual symptom where practical and compare thermal behavior under consistent conditions." },
+      { type: 'timeline', title: 'KCROC thermal diagnostic process', steps: [
+        { label: '1. Establish the baseline', note: 'Record ambient conditions, idle temperature, utilization, clock speed and fan behavior.' },
+        { label: '2. Reproduce the workload', note: 'Test the game, render, application or other workload that actually causes the heat or slowdown when practical.' },
+        { label: '3. Watch the temperature trend', note: 'Compare sustained temperature with the peak rather than relying on one maximum reading.' },
+        { label: '4. Compare temperature with clock speed', note: 'A repeatable rise in temperature accompanied by falling clocks and performance provides stronger evidence of thermal or power limiting.' },
+        { label: '5. Inspect the cooling path', note: 'Check intake and exhaust paths, fan operation, heatsink fins, dust accumulation and thermal-interface condition where appropriate.' },
+        { label: '6. Identify the actual cause', note: 'Only then decide whether cleaning, thermal-interface service, fan replacement, software/power adjustment or deeper hardware diagnosis is justified.' }
+      ] },
+      { type: 'callout', variant: 'expert', title: 'KCROC diagnostic principle', text: "The goal is not to make a temperature number as low as possible. The goal is to determine whether the laptop is operating normally for its design and workload and, if not, identify why." },
       { type: 'h2', text: 'How to Check Your Laptop Temperature Properly', id: 'how-to-check-laptop-temperature' },
       { type: 'paragraph', text: "Use a reputable hardware-monitoring utility or the laptop manufacturer's monitoring tools where available. Record CPU temperature, GPU temperature, utilization, clock speed and fan behavior while the laptop is idle and while running the workload that causes the problem." },
       { type: 'timeline', title: 'A repeatable temperature test', steps: [
@@ -236,6 +257,7 @@ export const BLOG_POSTS: BlogPost[] = [
       ] },
       { type: 'h2', text: 'When Laptop Temperature Becomes a Service Issue', id: 'when-to-get-laptop-diagnosed' },
       { type: 'paragraph', text: "Professional diagnosis becomes more worthwhile when high temperatures are repeatable and accompanied by performance loss, abnormal fan behavior, weak exhaust, thermal shutdowns or unexpected restarts. A temperature reading by itself is not enough to justify replacing a laptop or a major component." },
+      { type: 'paragraph', text: "The same temperature can mean different things on different laptops. Before recommending a cooling service or hardware replacement, a useful diagnosis should consider the exact processor or GPU, workload, ambient conditions, fan behavior, airflow and the relationship between temperature and performance." },
       { type: 'callout', variant: 'warning', title: 'Stop troubleshooting and seek diagnosis', text: "Repeated thermal shutdowns, unexpected restarts under load, a fan that fails to operate normally, severe performance collapse, or unusual burning/electrical smells should not be treated as a routine temperature experiment. Shut the system down when appropriate and have the cooling and hardware condition checked." },
       { type: 'h2', text: 'FAQ: Laptop CPU and GPU Temperatures', id: 'laptop-temperature-faq' },
       { type: 'faq', items: [
@@ -251,15 +273,21 @@ export const BLOG_POSTS: BlogPost[] = [
         { question: 'Does a cooling pad automatically fix overheating?', answer: 'No. A cooling pad may improve airflow on some laptop designs, but it cannot repair a clogged heatsink, failed fan, degraded thermal interface or a software workload. Treat it as an airflow aid, not a substitute for diagnosis.' },
         { question: 'When should I get a laptop cooling system inspected?', answer: 'Consider an inspection when high temperatures are persistent or worsening, fans are unusually loud, exhaust airflow is weak, performance drops as the system heats up, or the laptop shuts down or restarts under load.' }
       ] },
+      { type: 'h2', text: 'Technical Sources & Manufacturer Guidance', id: 'technical-sources' },
+      { type: 'paragraph', text: "This guide uses manufacturer documentation as the reference point for processor thermal limits. The practical temperature ranges in this article are troubleshooting references from a repair perspective, not manufacturer specifications." },
+      { type: 'paragraph', text: "Intel: Processor temperature and Tjunction Max guidance — https://www.intel.com/content/www/us/en/support/processors/_https_/www.intel.la/content/www/us/en/support/articles/000005597/processors.html" },
+      { type: 'paragraph', text: "Intel: Processor throttling and thermal-management guidance — https://www.intel.com/content/www/us/en/support/articles/000088048/processors.html" },
+      { type: 'paragraph', text: "AMD: Ryzen 7 260 processor specifications, including maximum operating temperature — https://www.amd.com/en/products/processors/laptop/ryzen/200-series/amd-ryzen-7-260.html" },
+      { type: 'callout', variant: 'info', title: 'How to use these sources', text: "Manufacturer specifications take priority over generic online temperature charts. If you need to know whether a particular CPU or GPU is at its official thermal limit, identify the exact component and check its current manufacturer specification." },
       { type: 'callout', variant: 'recommendation', title: 'Laptop Running Too Hot?', text: "If your laptop is consistently reaching high temperatures, thermal throttling, shutting down, or running its fans unusually hard, KCROC can inspect the cooling system and determine whether the issue is dust, airflow, fan condition, thermal interface, software load or another hardware fault. If the symptoms already point to overheating, start with the Laptop Overheating Kuwait diagnostic guide rather than replacing the laptop based on one temperature reading." },
     ],
     image: "/images/blog/laptop-temperatures-kuwait-cpu-gpu-cooling.webp",
     date: "2026-09-01",
-    author: "KCROC Repair Team",
+    author: "Imran Natiq",
     category: "Hardware",
-    readTime: "14 min read",
+    readTime: "16 min read",
     clusterParent: "laptop-repair-kuwait-2026",
-    tags: ["laptop temperature", "CPU temperature", "GPU temperature", "thermal throttling", "laptop cooling", "Kuwait", "laptop overheating"]
+    tags: ["laptop temperature", "CPU temperature", "GPU temperature", "thermal throttling", "laptop cooling", "Kuwait", "laptop overheating", "Tjmax", "thermal diagnosis"]
   },
   {
     id: "blog-laptop-repair-2026",
