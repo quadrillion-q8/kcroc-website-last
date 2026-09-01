@@ -1,4 +1,3 @@
-```tsx
 // File: app/frontend/src/pages/Blog.tsx
 
 import React, { useMemo } from 'react';
@@ -350,4 +349,3 @@ export default function Blog() {
     </main>
   );
 }
-```
