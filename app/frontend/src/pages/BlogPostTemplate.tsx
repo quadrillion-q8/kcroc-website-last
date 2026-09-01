@@ -20,6 +20,30 @@ import SchemaMarkup from '../components/seo/SchemaMarkup';
 // (Previously duplicated via constants/data.ts's BUSINESS_INFO.)
 const business = KCROC_GRAPH.business!;
 
+const AUTHOR_URL = `${business.websiteUrl}/author/imran`;
+const AUTHOR_IMAGE_URL =
+  'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto:good,w_800,c_limit/KCROC-Owner-Image_zpdyg4';
+
+const linkTechnicalSources = (text: string) => {
+  const urlRegex = /(https:\/\/[^\s]+)/g;
+  const parts = text.split(urlRegex);
+  return parts.map((part, index) =>
+    part.startsWith('https://') ? (
+      <a
+        key={`${part}-${index}`}
+        href={part}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-cyan-400 hover:text-cyan-300 underline underline-offset-2"
+      >
+        Manufacturer source
+      </a>
+    ) : (
+      <React.Fragment key={index}>{part}</React.Fragment>
+    )
+  );
+};
+
 /* ═══════════════════════════════════════════════════════════════════
    CALLOUT STYLING
 ═══════════════════════════════════════════════════════════════════ */
@@ -68,7 +92,7 @@ const RichBlock: React.FC<{ block: ContentBlock; headingRef?: (el: HTMLElement |
     case 'paragraph':
       return (
         <p className="text-slate-300 leading-relaxed mb-6">
-          <AutoLink text={block.text} />
+          {block.text.includes('https://') ? linkTechnicalSources(block.text) : <AutoLink text={block.text} />}
         </p>
       );
     case 'callout': {
@@ -324,7 +348,7 @@ export default function BlogPostTemplate() {
           "image": post.image,
           "datePublished": post.date,
           "dateModified": post.date,
-          "author": { "@type": "Person", "name": post.author },
+          "author": post.author === "Imran Natiq" ? { "@type": "Person", "@id": `${AUTHOR_URL}#person`, "name": "Imran Natiq", "url": AUTHOR_URL, "jobTitle": "Hardware Repair Engineer", "worksFor": { "@type": "Organization", "name": business.legalName, "url": business.websiteUrl } } : { "@type": "Organization", "name": post.author },
           "publisher": {
             "@type": "Organization",
             "name": business.legalName,
@@ -411,7 +435,16 @@ export default function BlogPostTemplate() {
                 )}
                 <span className="flex items-center gap-1.5 mt-1"><Calendar size={14} aria-hidden="true" /> {new Date(post.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
                 <span className="flex items-center gap-1.5 mt-1"><Clock size={14} aria-hidden="true" /> {post.readTime}</span>
-                <span className="flex items-center gap-1.5 mt-1"><User size={14} aria-hidden="true" /> {post.author}</span>
+                <span className="flex items-center gap-1.5 mt-1">
+                  <User size={14} aria-hidden="true" />
+                  {post.author === 'Imran Natiq' ? (
+                    <Link to="/author/imran" className="hover:text-cyan-400 transition-colors">
+                      {post.author}
+                    </Link>
+                  ) : (
+                    post.author
+                  )}
+                </span>
               </div>
 
               <h1 className="text-3xl md:text-5xl font-black text-white leading-tight mb-8">{post.title}</h1>
@@ -462,6 +495,34 @@ export default function BlogPostTemplate() {
               <p className="text-xl md:text-2xl text-slate-300 font-medium leading-relaxed border-l-4 border-cyan-500 pl-6 mb-10">
                 {post.excerpt}
               </p>
+
+              {post.author === 'Imran Natiq' && (
+                <aside className="mb-12 rounded-2xl border border-slate-800 bg-slate-900/50 p-5 sm:p-6" aria-label="Author and technical review">
+                  <div className="flex items-start gap-4">
+                    <img
+                      src={AUTHOR_IMAGE_URL}
+                      alt="Imran Natiq — Hardware Repair Engineer at KCROC"
+                      className="w-14 h-14 sm:w-16 sm:h-16 rounded-xl object-cover border border-slate-800 shrink-0"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <div className="min-w-0">
+                      <p className="text-xs font-black uppercase tracking-wider text-cyan-400 mb-1">
+                        Written &amp; technically reviewed by
+                      </p>
+                      <Link to="/author/imran" className="text-lg font-bold text-white hover:text-cyan-400 transition-colors">
+                        Imran Natiq
+                      </Link>
+                      <p className="text-sm text-slate-400 mt-1 leading-relaxed">
+                        Hardware Repair Engineer at KCROC, focused on laptop thermal troubleshooting, hardware testing and component-level repair in Kuwait.
+                      </p>
+                      <p className="text-xs text-slate-500 mt-2">
+                        Technical review: September 1, 2026 · Hawalli, Kuwait
+                      </p>
+                    </div>
+                  </div>
+                </aside>
+              )}
 
               {post.richContent && post.richContent.length > 0 ? (
                 <div>
