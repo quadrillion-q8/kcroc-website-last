@@ -8,10 +8,11 @@ import { ErrorBoundary } from '../ErrorBoundary';
 import { CookieConsentBanner } from '../CookieConsentBanner';
 import { StickyMobileCTA } from '../../../components/home/StickyMobileCTA';
 
-// 🚀 CWV: AnimatedBackground pulls in tsParticles, which has no business being
-// in the critical initial bundle for a purely decorative effect that already
-// delays its own particle mount by 1200ms. Deferred the same way ChatWidget
-// is in App.tsx, so it loads after first paint instead of blocking it.
+// 🚀 CWV: AnimatedBackground is a pure SVG/CSS effect now (no particle
+// engine — an earlier tsParticles-based version was already replaced), but
+// it's still purely decorative and has no business being in the critical
+// initial bundle. Deferred the same way ChatWidget is in App.tsx, so it
+// loads after first paint instead of blocking it.
 const AnimatedBackground = lazy(() =>
   import('./AnimatedBackground').then((module) => ({ default: module.AnimatedBackground }))
 );
