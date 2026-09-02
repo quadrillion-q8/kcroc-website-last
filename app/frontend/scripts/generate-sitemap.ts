@@ -51,6 +51,7 @@ const getPriorityAndFreq = (
   // Core conversion pages: services, pricing, main services hub, contact/booking
   if (
     entityType === 'Service' ||
+    path === '/near-me' ||
     /^\/(services|pricing|contact|booking)\/?$/.test(path)
   ) {
     return { priority: '0.9', changefreq: 'weekly' };
