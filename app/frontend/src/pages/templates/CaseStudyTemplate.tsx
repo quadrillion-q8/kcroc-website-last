@@ -128,6 +128,8 @@ export default function CaseStudyTemplate() {
               alt={caseStudy.featuredImage.altText ?? caseStudy.title}
               width={caseStudy.featuredImage.hero.width}
               height={caseStudy.featuredImage.hero.height}
+              loading="lazy"
+              decoding="async"
               className="w-full rounded-2xl border border-slate-800"
             />
             {caseStudy.featuredImage.altText && (
