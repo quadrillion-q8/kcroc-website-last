@@ -247,6 +247,7 @@ export class NavigationCompiler {
       title: 'Company Info',
       featured: [
         { id: 'a1', slug: 'about', title: 'About Us', description: 'Our story and the team behind KCROC', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'about', weight: 0, commercialIntent: 'info' },
+        { id: 'a7', slug: 'near-me', title: 'Find Computer Repair Near You', description: 'Find your Kuwait service area and arrange pickup', iconKey: 'map-pin', entityType: 'Page' as any, primaryKeyword: 'computer repair near me', weight: 0, commercialIntent: 'transactional' },
         { id: 'a2', slug: 'gallery', title: 'Gallery', description: 'A look inside the workshop', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'gallery', weight: 0, commercialIntent: 'info' },
         { id: 'a6', slug: 'contact', title: 'Contact', description: 'Get in touch or find our lab', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'contact', weight: 0, commercialIntent: 'info' },
       ],
