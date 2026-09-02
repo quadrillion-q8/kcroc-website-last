@@ -71,6 +71,8 @@ export function Footer() {
                   alt={brandLabel + ' Logo'}
                   width="112"
                   height="112"
+                  loading="lazy"
+                  decoding="async"
                   className="h-14 w-auto object-contain rounded-xl"
                   onError={() => setLogoError(true)}
                 />
