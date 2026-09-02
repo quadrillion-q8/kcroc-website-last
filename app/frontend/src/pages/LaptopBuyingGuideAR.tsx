@@ -359,8 +359,12 @@ export default function LaptopBuyingGuideAR() {
                 alt="دليل شراء اللابتوب في الكويت 2026"
                 width="1200"
                 height="630"
-                loading="eager"
-                fetchPriority="high"
+                // 🚀 CWV FIX: this image renders after a tall centered hero
+                // (badge, language-toggle button, 2-line h1, description,
+                // meta line, 2 buttons) — below the fold on mobile, so
+                // eager + high priority wasted bandwidth on a non-LCP image.
+                loading="lazy"
+                decoding="async"
                 className="w-full h-auto rounded-2xl border border-slate-800 shadow-lg shadow-cyan-500/10"
               />
             </div>
