@@ -2,6 +2,7 @@
 import React from 'react';
 import { KCROC_GRAPH } from '../../data/graph';
 import { MapPin, ShieldCheck, Truck } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export const ServiceAreas = () => {
   const loc = KCROC_GRAPH.entities['loc-hawalli'] as any;
@@ -19,6 +20,11 @@ export const ServiceAreas = () => {
             <p className="text-slate-400 text-base leading-relaxed mb-6">
               Based in Hawalli (Al-Mulla Complex), our certified technicians provide free pick-up and drop-off services across all major governorates and residential areas in Kuwait.
             </p>
+            <div className="mt-6">
+              <Link to="/near-me" className="inline-flex items-center gap-2 rounded-xl border border-cyan-500/30 bg-cyan-500/10 px-4 py-2.5 text-sm font-bold text-cyan-300 transition hover:border-cyan-400 hover:bg-cyan-500/15">
+                <MapPin className="h-4 w-4" aria-hidden="true" /> Find computer repair near you
+              </Link>
+            </div>
             <div className="flex flex-wrap gap-4 text-xs font-semibold text-slate-300">
               <div className="flex items-center gap-2 bg-slate-800/60 border border-slate-700/60 px-3.5 py-2.5 rounded-xl">
                 <Truck className="w-4 h-4 text-cyan-400" /> Free Door-to-Door Collection
