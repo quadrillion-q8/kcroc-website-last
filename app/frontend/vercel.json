@@ -38,7 +38,7 @@
   ],
   "redirects": [
     {
-      "source": "/:path*",
+      "source": "/:path((?!google[a-zA-Z0-9_-]*\\.html).*)",
       "has": [
         {
           "type": "host",
