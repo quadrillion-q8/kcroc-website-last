@@ -221,7 +221,12 @@ export default function BiosUefiRecoveryGuide() {
               alt={IMAGES.guides.biosHeroMotherboard.alt}
               width={IMAGES.guides.biosHeroMotherboard.width}
               height={IMAGES.guides.biosHeroMotherboard.height}
-              loading="eager"
+              // 🚀 CWV FIX: this banner sits in a *second* section, below a
+              // full text hero (badge, h1, paragraph, 2 buttons, TOC chips)
+              // plus a secondary alert card — it's below the fold on mobile,
+              // so eager-loading it stole network priority from the real
+              // critical path without being the actual LCP element.
+              loading="lazy"
               decoding="async"
               className="w-full h-auto max-h-[420px] object-cover"
             />
