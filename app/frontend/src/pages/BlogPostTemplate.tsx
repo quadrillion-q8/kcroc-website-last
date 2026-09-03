@@ -385,15 +385,15 @@ export default function BlogPostTemplate() {
     <main className="w-full min-h-screen bg-slate-950 text-slate-200 pt-8 sm:pt-16 lg:pt-32 pb-8 sm:pb-16 lg:pb-24">
 
       <Head>
-        <title>{`${post.title.length > 57 ? `${post.title.slice(0, 57)}…` : post.title} | KCROC`}</title>
+        <title>{post.seoTitle || `${post.title.length > 57 ? `${post.title.slice(0, 57)}…` : post.title} | KCROC`}</title>
         <meta name="description" content={(post.description || post.excerpt).slice(0, 155)} />
         <link rel="canonical" href={pageUrl} />
         <meta property="og:type" content="article" />
-        <meta property="og:title" content={post.title} />
+        <meta property="og:title" content={post.seoTitle || post.title} />
         <meta property="og:description" content={post.description || post.excerpt} />
         {post.image && <meta property="og:image" content={post.image} />}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={post.title} />
+        <meta name="twitter:title" content={post.seoTitle || post.title} />
         <meta name="twitter:description" content={post.description || post.excerpt} />
       </Head>
 
