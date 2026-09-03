@@ -59,8 +59,8 @@ export default function LocationTemplate() {
       <SchemaMarkup schema={BREADCRUMB_SCHEMA} />
       
       <Head>
-        <title>{`Computer & Laptop Repair in ${location.title} | KCROC`}</title>
-        <meta name="description" content={`Expert computer, MacBook, and logic board repair in ${location.title}. Free pickup and delivery. We fix the board, we don't just swap it.`} />
+        <title>{`Computer Repair in ${location.title}, Kuwait | Laptop & PC Repair | KCROC`}</title>
+        <meta name="description" content={`Computer and laptop repair for ${location.title}, Kuwait. Free pickup and delivery to KCROC's Hawalli lab for diagnostics, motherboard, screen and thermal repairs.`} />
       </Head>
 
       {/* ─── HERO SECTION ─── */}
