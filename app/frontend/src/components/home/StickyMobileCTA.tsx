@@ -5,7 +5,7 @@ import { useAnalytics } from '../../core/analytics/AnalyticsProvider';
 
 export const StickyMobileCTA = () => {
   const business = KCROC_GRAPH.business;
-  const phone = business?.telephone ?? '96555301913';
+  const phone = business!.telephone;
   
   const { trackConversion } = useAnalytics();
 
