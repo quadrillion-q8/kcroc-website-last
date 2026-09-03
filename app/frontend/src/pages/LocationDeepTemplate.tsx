@@ -33,7 +33,7 @@ import { KCROC_GRAPH } from '../data/graph';
 import { useAnalytics } from '../core/analytics/AnalyticsProvider';
 import { IMAGES } from '../constants/images';
 
-const BASE_URL = 'https://www.computerrepairkuwait.com';
+const BASE_URL = KCROC_GRAPH.business!.websiteUrl;
 
 const SERVICE_ICON_MAP: Record<string, React.ElementType> = {
   apple: Apple,
@@ -89,7 +89,7 @@ export default function LocationDeepTemplate() {
   const problems = KCROC_GRAPH.problems;
   const brands = KCROC_GRAPH.brands;
 
-  const phone = business.telephone; // e.g. 96555301913
+  const phone = business.telephone; // read from KCROC_GRAPH, e.g. Kuwait mobile in international format
   const phoneDisplay = `+965 ${phone.slice(3, 7)} ${phone.slice(7)}`;
   const WA_LINK = `https://wa.me/${phone}?text=${encodeURIComponent(
     `Hi KCROC, I am in ${location.title} and need a device repaired. Can we arrange a pickup?`
