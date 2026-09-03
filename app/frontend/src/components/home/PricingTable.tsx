@@ -10,7 +10,7 @@ export const PricingTable = () => {
   );
 
   const business = KCROC_GRAPH.business;
-  const whatsappNumber = business?.telephone ?? '96555301913';
+  const whatsappNumber = business!.telephone;
   
   const { trackConversion } = useAnalytics();
 
