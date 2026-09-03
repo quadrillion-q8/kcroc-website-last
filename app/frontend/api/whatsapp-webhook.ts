@@ -5,6 +5,12 @@ import { GoogleGenAI } from '@google/genai';
 import { Redis } from '@upstash/redis';
 import { getKnowledgeContext } from '../src/knowledge/context';
 import { evaluateHandoff } from '../src/api/HandoffEngine';
+import { KCROC_GRAPH } from '../src/data/graph';
+
+// Local-format display number (no 965 country code) for this webhook's own
+// fallback reply copy. Reads from the graph so it can't drift from the
+// site's actual phone number.
+const SUPPORT_PHONE_LOCAL = KCROC_GRAPH.business!.telephone.slice(3);
 
 // Same Upstash Redis instance pattern used in api/book.ts, reused here for
 // webhook delivery idempotency. Meta retries webhook delivery on timeout/non-2xx,
@@ -173,13 +179,13 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
       if (handoff && handoff.shouldHandoff) {
         console.info(`WhatsApp Handoff triggered for ${senderPhone}: ${handoff.reason}`);
-        replyText = 'Your request requires technician assistance or urgent handling. Please call or message us directly at 55301913 so our team can assist you immediately.';
+        replyText = `Your request requires technician assistance or urgent handling. Please call or message us directly at ${SUPPORT_PHONE_LOCAL} so our team can assist you immediately.`;
       } else {
         // 4. Build Knowledge Context & Generate AI Response via Gemini 2.5 Flash
         const apiKey = process.env.GEMINI_API_KEY;
         if (!apiKey) {
           console.error('CRITICAL: GEMINI_API_KEY environment variable is missing.');
-          replyText = 'Thank you for reaching out to Kuwait Computer Repair On Call. Please contact us directly at 55301913 for immediate assistance.';
+          replyText = `Thank you for reaching out to Kuwait Computer Repair On Call. Please contact us directly at ${SUPPORT_PHONE_LOCAL} for immediate assistance.`;
         } else {
           const knowledgeContext = getKnowledgeContext(userMessage);
           const ai = new GoogleGenAI({ apiKey });
@@ -192,7 +198,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
             },
           });
 
-          replyText = aiResponse.text || 'Thank you for contacting Kuwait Computer Repair On Call. How can we assist with your device today? You can also call us directly at 55301913.';
+          replyText = aiResponse.text || `Thank you for contacting Kuwait Computer Repair On Call. How can we assist with your device today? You can also call us directly at ${SUPPORT_PHONE_LOCAL}.`;
         }
       }
 
