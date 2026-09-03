@@ -44,7 +44,7 @@ export default function Header() {
   
   const navModel = COMPILED_NAVIGATION;
   
-  const phoneDisplay = NAV_GRAPH.business?.telephone ?? '55301913';
+  const phoneDisplay = NAV_GRAPH.business!.telephone;
   const cleanTel = phoneDisplay.replace(/\D/g, '');
   // 🚀 FIX: was NAV_GRAPH.business?.logoUrl, which is an ABSOLUTE production
   // URL (https://www.computerrepairkuwait.com/logo.webp) — correct for
