@@ -11,8 +11,9 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const publicDir = path.resolve(__dirname, '../public');
 
-// Standardized production domain
-const DOMAIN = 'https://www.computerrepairkuwait.com';
+// Standardized production domain — read from the graph so it can never
+// drift from the canonical/OG URLs the rest of the site emits.
+const DOMAIN = KCROC_GRAPH.business!.websiteUrl;
 
 // 🚀 FIX: Some pages have a route in App.tsx and a nav-menu entry in
 // NavigationCompiler.ts but were never registered as an entity in
