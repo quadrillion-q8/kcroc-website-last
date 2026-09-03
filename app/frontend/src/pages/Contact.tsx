@@ -6,6 +6,7 @@ import {
 } from 'lucide-react';
 import { ROUTES } from '../constants/routes';
 import MapComponent from '../components/MapComponent';
+import { KCROC_GRAPH } from '../data/graph';
 
 // 👈 Phase 2 SEO Engine Imported
 import { SEOEngine } from '../core/components/SEOEngine';
@@ -14,15 +15,19 @@ import { SEOEngine } from '../core/components/SEOEngine';
    1. PAGE DATA & CONSTANTS
 ───────────────────────────────────────────────────────────────────────────── */
 
+const business = KCROC_GRAPH.business!;
+
+// Presentation-only line breaks for the address block — the underlying
+// address facts still come from KCROC_GRAPH via `business.streetAddress`.
 const ADDRESS_LINES = [
   'Ibn Khaldoun St, Al Mullah Complex',
   'Basement Shop 19',
   'Hawalli, Kuwait',
 ];
 
-const EMAIL = 'quadrillion1980@gmail.com';
-const PHONE_DISPLAY = '+965 5530 1913';
-const PHONE_CLEAN = '96555301913';
+const EMAIL = business.email;
+const PHONE_DISPLAY = `+965 ${business.telephone.slice(3, 7)} ${business.telephone.slice(7)}`;
+const PHONE_CLEAN = business.telephone;
 
 type FormData = {
   name: string; email: string; phone: string; subject: string; message: string;
