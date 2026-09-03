@@ -383,10 +383,10 @@ export default function GameBarPresenceWriterGuide() {
               <Badge className="border-cyan-500/30 bg-cyan-500/10 text-cyan-300">KCROC Gaming Diagnostics</Badge>
               <h2 className="mt-4 text-2xl font-black sm:text-4xl">Still chasing the stutter after the Windows tweaks?</h2>
               <p className="mt-4 max-w-2xl text-sm leading-7 text-slate-300 sm:text-base">KCROC diagnoses the full system: thermals, motherboard power delivery, GPU behavior, RAM, storage, drivers, and software. When the fault is on the board, we work at component level instead of simply replacing the entire machine.</p>
-              <p className="mt-4 text-sm font-semibold text-cyan-300">Free Pick &amp; Drop across Kuwait • Hawalli, Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19 • 55301913</p>
+              <p className="mt-4 text-sm font-semibold text-cyan-300">Free Pick &amp; Drop across Kuwait • {business.streetAddress} • {business.telephone.slice(3)}</p>
             </div>
             <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
-              <Button size="lg" asChild className="bg-cyan-500 px-7 py-6 font-bold text-slate-950 hover:bg-cyan-400"><a href={`tel:+${business.telephone}`}>Call 55301913</a></Button>
+              <Button size="lg" asChild className="bg-cyan-500 px-7 py-6 font-bold text-slate-950 hover:bg-cyan-400"><a href={`tel:+${business.telephone}`}>Call {business.telephone.slice(3)}</a></Button>
               <Button size="lg" variant="outline" asChild className="border-slate-700 px-7 py-6 text-slate-200 hover:bg-slate-800"><a href={WA_LINK} target="_blank" rel="noopener noreferrer">WhatsApp KCROC</a></Button>
             </div>
           </div>
