@@ -9,14 +9,16 @@ import {
 // 👈 Phase 2 SEO Engine Imported
 import { SEOEngine } from '../core/components/SEOEngine';
 import SchemaMarkup from '../components/seo/SchemaMarkup';
+import { KCROC_GRAPH } from '../data/graph';
 
 /* ─────────────────────────────────────────────────────────────────────────────
    1. PAGE DATA
 ───────────────────────────────────────────────────────────────────────────── */
-const BASE_URL = 'https://www.computerrepairkuwait.com';
+const business = KCROC_GRAPH.business!;
+const BASE_URL = business.websiteUrl;
 const PAGE_URL = `${BASE_URL}/privacy-security-kuwait`;
-const PHONE_DISPLAY = '+965 5530 1913';
-const PHONE_CLEAN = '96555301913';
+const PHONE_DISPLAY = `+965 ${business.telephone.slice(3, 7)} ${business.telephone.slice(7)}`;
+const PHONE_CLEAN = business.telephone;
 
 const TRUST_BADGES = Object.freeze([
   { id: 'cctv',   icon: ShieldCheck, text: "CCTV Monitored Lab" },
