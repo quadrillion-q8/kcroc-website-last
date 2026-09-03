@@ -1042,6 +1042,12 @@ export default function BatteryHealthGuide() {
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 mt-6 sm:mt-8 text-xs sm:text-sm">
+            <Link to="/battery-replacement-kuwait" className="text-cyan-300 hover:text-cyan-200 inline-flex items-center gap-1.5 transition-colors">
+              Laptop Battery Replacement Kuwait
+            </Link>
+            <Link to="/near-me" className="text-slate-400 hover:text-cyan-400 inline-flex items-center gap-1.5 transition-colors">
+              Computer Repair Near Me
+            </Link>
             <Link to="/services" className="text-slate-400 hover:text-cyan-400 inline-flex items-center gap-1.5 transition-colors">
               View All Services
             </Link>
