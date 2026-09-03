@@ -581,6 +581,12 @@ export default function LocationDeepTemplate() {
                   </Link>
                 </Button>
               </div>
+              <p className="text-sm text-slate-500">
+                Looking for a computer repair technician near you?{' '}
+                <Link to="/near-me" className="font-semibold text-cyan-300 hover:text-cyan-200 underline underline-offset-2">
+                  See computer repair near me options
+                </Link>.
+              </p>
             </div>
             <MapComponent />
           </div>
