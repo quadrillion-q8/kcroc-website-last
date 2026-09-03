@@ -1,6 +1,9 @@
 // File: app/frontend/src/components/ChatWidget.tsx
 import React, { useState, useEffect, useRef } from 'react';
 import { MessageCircle, X, Send, Trash2, Loader2 } from 'lucide-react';
+import { KCROC_GRAPH } from '../data/graph';
+
+const SUPPORT_PHONE_LOCAL = KCROC_GRAPH.business!.telephone.slice(3); // drops the 965 country code for local-format display
 
 export const ChatWidget: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -100,7 +103,7 @@ export const ChatWidget: React.FC = () => {
       
       const errorMessage = error.message === 'RATE_LIMIT' 
         ? 'We are receiving too many messages right now. Please try again in a minute, or contact us via WhatsApp.'
-        : 'Sorry, I am having trouble connecting right now. Please contact us via WhatsApp or call 55301913.';
+        : `Sorry, I am having trouble connecting right now. Please contact us via WhatsApp or call ${SUPPORT_PHONE_LOCAL}.`;
         
       setMessages(prev => [...prev, { sender: 'bot', text: errorMessage }]);
     } finally {
