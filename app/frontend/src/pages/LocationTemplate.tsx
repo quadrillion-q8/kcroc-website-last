@@ -25,7 +25,7 @@ export default function LocationTemplate() {
   const activeServices = KCROC_GRAPH.services?.filter(s => s.isActive).slice(0, 4) || [];
 
   // 🚀 Generate Breadcrumb Schema for Local SEO Rich Results
-  const BASE_URL = 'https://www.computerrepairkuwait.com';
+  const BASE_URL = business.websiteUrl;
   const PAGE_URL = `${BASE_URL}/location/${slug}`;
 
   // 🩹 FIX: this hook must run on every render, regardless of whether a
