@@ -114,6 +114,7 @@ export interface BlogPost {
   isPillar?: boolean;
   clusterParent?: string;
   tags?: string[];
+  seoTitle?: string;
 }
 
 export const BLOG_POSTS: BlogPost[] = [
@@ -348,6 +349,7 @@ export const BLOG_POSTS: BlogPost[] = [
     id: "blog-8gb-ram-2026",
     slug: "why-8gb-ram-is-no-longer-enough-for-windows-11",
     title: "Why 8GB RAM Is No Longer Enough for Windows 11 in 2026",
+    seoTitle: "Is 8GB RAM Enough for Windows 11 in 2026? | KCROC",
     excerpt: "Windows 11 technically runs on 8GB RAM — but running isn't the same as running well. Here's what's actually happening under the hood, and when an upgrade is worth it.",
     description: "8GB RAM struggling on Windows 11 in 2026? Here's why Chrome, Photoshop, and multitasking hit a wall at 8GB, what a RAM upgrade actually fixes, and when to consider 16GB or 32GB.",
     content: [
