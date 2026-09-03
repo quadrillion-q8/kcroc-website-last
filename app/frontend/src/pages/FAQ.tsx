@@ -15,6 +15,7 @@ import {
 import { ROUTES } from '../constants/routes';
 import { GLOBAL_FAQS } from '../constants/faqs';
 import SchemaMarkup from '../components/seo/SchemaMarkup';
+import { KCROC_GRAPH } from '../data/graph';
 
 // 👈 Phase 2 SEO Engine Imported
 import { SEOEngine } from '../core/components/SEOEngine';
@@ -24,12 +25,12 @@ import { SEOEngine } from '../core/components/SEOEngine';
 ───────────────────────────────────────────────────────────────────────────── */
 type FAQItem = (typeof GLOBAL_FAQS)[number];
 
-// 🩹 FIX: was missing the `www.` subdomain — every other canonical/OG URL
-// in the site (data.ts, graph.ts, sitemap.xml, robots.txt, index.html, and
-// every other page) uses https://www.computerrepairkuwait.com. This
-// mismatch fed directly into this page's canonical and Open Graph URLs.
-const BASE_URL = 'https://www.computerrepairkuwait.com';
-const PHONE_CLEAN = '96555301913';
+const business = KCROC_GRAPH.business!;
+
+// Reads from KCROC_GRAPH.business.websiteUrl, which already carries the
+// `www.` subdomain used by every other canonical/OG URL in the site.
+const BASE_URL = business.websiteUrl;
+const PHONE_CLEAN = business.telephone;
 
 /* ─────────────────────────────────────────────────────────────────────────────
    COMPONENT
