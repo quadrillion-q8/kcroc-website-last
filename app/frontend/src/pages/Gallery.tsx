@@ -4,13 +4,15 @@ import { X, Maximize2, Phone, MessageCircle } from 'lucide-react';
 import { GALLERY_ITEMS, galleryCategories } from '../constants/galleryData';
 import { SEOEngine } from '../core/components/SEOEngine';
 import { buildWhatsAppLink } from '../utils/whatsappIntent';
+import { KCROC_GRAPH } from '../data/graph';
 
-// 🩹 FIX: was hardcoded to '96555301913' instead of sourcing from the
-// graph's business entity — if the phone number is ever updated centrally,
-// this file would silently keep pointing at the old number. Now routed
-// through the shared buildWhatsAppLink helper, which defaults to
-// KCROC_GRAPH.business.telephone.
+// 🩹 FIX: WhatsApp link previously hardcoded the phone number instead of
+// sourcing from the graph's business entity — if the phone number is ever
+// updated centrally, this file would silently keep pointing at the old
+// number. Now routed through the shared buildWhatsAppLink helper, which
+// reads KCROC_GRAPH.business.telephone.
 const WA_LINK = buildWhatsAppLink('Hi KCROC, I need a professional repair. Please arrange free pickup.');
+const CALL_LINK = `tel:+${KCROC_GRAPH.business!.telephone}`;
 
 export default function Gallery() {
   const [activeCategory, setActiveCategory] = useState<string>('All');
@@ -102,7 +104,7 @@ export default function Gallery() {
                 <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl flex items-center justify-center gap-2 transition-transform hover:scale-[1.02] w-full sm:w-auto text-sm sm:text-base">
                   <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5" /> Request Free Pickup
                 </a>
-                <a href="tel:+96555301913" className="bg-slate-800 border border-slate-700 hover:border-cyan-500/50 text-white font-bold px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl flex items-center justify-center gap-2 transition-colors w-full sm:w-auto text-sm sm:text-base">
+                <a href={CALL_LINK} className="bg-slate-800 border border-slate-700 hover:border-cyan-500/50 text-white font-bold px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl flex items-center justify-center gap-2 transition-colors w-full sm:w-auto text-sm sm:text-base">
                   <Phone className="w-4 h-4 sm:w-5 sm:h-5" /> Call Technician
                 </a>
               </div>
