@@ -38,7 +38,7 @@ import { useAnalytics } from '../core/analytics/AnalyticsProvider';
 // own "Workshop" category so it can't drift out of sync.
 import { IMAGES } from '../constants/images';
 
-const BASE_URL = 'https://www.computerrepairkuwait.com';
+const BASE_URL = KCROC_GRAPH.business!.websiteUrl;
 const PAGE_URL = `${BASE_URL}/location/hawalli`;
 // Exact Google Maps place link — derived from the same verified Place CID
 // already embedded in the site's own map (see MapComponent.tsx's iframe
@@ -100,7 +100,7 @@ export default function HawalliLocationPage() {
     return null;
   }
 
-  const phone = business.telephone; // e.g. 96555301913
+  const phone = business.telephone; // read from KCROC_GRAPH, e.g. Kuwait mobile in international format
   const phoneDisplay = `+965 ${phone.slice(3, 7)} ${phone.slice(7)}`;
   const WA_LINK = `https://wa.me/${phone}?text=${encodeURIComponent(
     'Hi KCROC, I am in Hawalli and need a device repaired. Can we arrange a pickup?'
