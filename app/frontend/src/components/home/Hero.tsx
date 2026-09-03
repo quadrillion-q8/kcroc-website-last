@@ -16,7 +16,7 @@ export default function Hero() {
   const homePage = KCROC_GRAPH.pages?.find((p) => p.id === 'page-home');
   const hero = homePage?.hero;
   const business = KCROC_GRAPH.business;
-  const phone = business?.telephone ?? '96555301913';
+  const phone = business!.telephone;
   const rating = business?.aggregateRating?.ratingValue ?? '4.9';
   const repairsStat = KCROC_GRAPH.stats?.items?.find((s: any) => s.label === 'Repairs completed');
   // 🚀 FIX: was business?.logoUrl ?? '/logo.png' — two bugs at once: (1) the
