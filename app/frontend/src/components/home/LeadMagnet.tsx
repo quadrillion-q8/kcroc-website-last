@@ -8,7 +8,7 @@ export const LeadMagnet = () => {
   const [device, setDevice] = useState('');
   const [issue, setIssue] = useState('');
   
-  const whatsappNumber = KCROC_GRAPH.business?.telephone ?? '96555301913';
+  const whatsappNumber = KCROC_GRAPH.business!.telephone;
   const { trackConversion } = useAnalytics();
 
   const waLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
