@@ -603,7 +603,7 @@ export default function BlogScreenProtection() {
                 Restore Your Display Panel Architecture Safely
               </h2>
               <p className="text-xs sm:text-xl text-slate-300 mb-6 sm:mb-8 max-w-2xl mx-auto">
-                No Fix, No Charge policy. Complimentary vehicle collection and delivery across all governorates in Kuwait. Restoring panel health with flawless precision.
+                No Fix, No Fee policy. Free pickup and delivery across all governorates in Kuwait. Restoring panel health with flawless precision.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <Button 
