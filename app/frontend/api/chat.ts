@@ -7,6 +7,12 @@ import { Redis } from '@upstash/redis';
 // 🚀 FIXED: Corrected import paths to point to the actual files in src/
 import { getKnowledgeContext } from '../src/knowledge/context';
 import { evaluateHandoff } from '../src/api/HandoffEngine';
+import { KCROC_GRAPH } from '../src/data/graph';
+
+// Local-format display number (no 965 country code) for the chat's own
+// fallback error copy. Reads from the graph so it can't drift from the
+// site's actual phone number.
+const SUPPORT_PHONE_LOCAL = KCROC_GRAPH.business!.telephone.slice(3);
 
 // Initialize Upstash Redis & Rate Limiter
 const redisUrl = process.env.UPSTASH_REDIS_REST_URL;
@@ -35,7 +41,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     if (!ratelimit) {
       console.error('SECURITY ALERT: Upstash Redis env vars missing. Failing closed to prevent API abuse.');
       return res.status(503).json({ 
-        reply: 'Chat service is temporarily offline for maintenance. Please contact us directly on WhatsApp at 55301913.' 
+        reply: `Chat service is temporarily offline for maintenance. Please contact us directly on WhatsApp at ${SUPPORT_PHONE_LOCAL}.` 
       });
     }
 
@@ -47,14 +53,14 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         console.warn(`Rate limit exceeded for IP: ${ip}`);
         // 429 status caught by frontend to show a specific message
         return res.status(429).json({ 
-          reply: 'You have sent too many messages. Please try again later or contact us directly on WhatsApp at 55301913.' 
+          reply: `You have sent too many messages. Please try again later or contact us directly on WhatsApp at ${SUPPORT_PHONE_LOCAL}.` 
         });
       }
     } catch (rlError) {
       // If the Redis connection fails during the check, fail closed.
       console.error('SECURITY ALERT: Rate limiter check failed to execute. Failing closed.', rlError);
       return res.status(503).json({ 
-        reply: 'Chat service is temporarily offline. Please contact us on WhatsApp at 55301913.' 
+        reply: `Chat service is temporarily offline. Please contact us on WhatsApp at ${SUPPORT_PHONE_LOCAL}.` 
       });
     }
 
@@ -80,7 +86,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     if (handoff && handoff.shouldHandoff) {
       console.info(`Handoff triggered: ${handoff.reason}`);
       return res.status(200).json({
-        reply: 'This sounds like an urgent issue or requires a technician. Please contact us directly at 55301913 or click the WhatsApp button to speak with a human.'
+        reply: `This sounds like an urgent issue or requires a technician. Please contact us directly at ${SUPPORT_PHONE_LOCAL} or click the WhatsApp button to speak with a human.`
       });
     }
 
@@ -88,7 +94,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const apiKey = process.env.GEMINI_API_KEY;
     if (!apiKey) {
       console.error('CRITICAL ERROR: GEMINI_API_KEY environment variable is missing.');
-      return res.status(503).json({ reply: 'Chat service is temporarily offline. Please WhatsApp us at 55301913.' });
+      return res.status(503).json({ reply: `Chat service is temporarily offline. Please WhatsApp us at ${SUPPORT_PHONE_LOCAL}.` });
     }
 
     const knowledgeContext = getKnowledgeContext(sanitizedMessage);
@@ -102,7 +108,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       },
     });
 
-    const responseText = response.text || 'I am here to help with your computer repair needs. Please contact us at 55301913.';
+    const responseText = response.text || `I am here to help with your computer repair needs. Please contact us at ${SUPPORT_PHONE_LOCAL}.`;
 
     return res.status(200).json({ reply: responseText });
 
@@ -111,7 +117,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     console.error('Chat API Error:', error.message || error);
     
     return res.status(500).json({ 
-      reply: 'I am currently experiencing technical difficulties. Please contact us directly on WhatsApp at 55301913.' 
+      reply: `I am currently experiencing technical difficulties. Please contact us directly on WhatsApp at ${SUPPORT_PHONE_LOCAL}.` 
     });
   }
 }
