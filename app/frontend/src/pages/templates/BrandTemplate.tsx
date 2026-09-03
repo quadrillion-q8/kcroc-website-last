@@ -1,6 +1,6 @@
 // File: app/frontend/src/pages/templates/BrandTemplate.tsx
 import React from 'react';
-import { useLocation, Navigate } from 'react-router-dom';
+import { useLocation, Navigate, Link } from 'react-router-dom';
 import { KCROC_GRAPH } from '../../data/graph'; 
 import { SEOEngine } from '../../core/components/SEOEngine';
 import { getIntentWhatsAppLink } from '../../utils/whatsappIntent';
@@ -80,6 +80,11 @@ const BrandTemplate: React.FC = () => {
               >
                 WhatsApp a Technician
               </a>
+              <div className="mt-4 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm">
+                <Link to="/near-me" className="font-bold text-cyan-300 hover:text-cyan-200">Computer repair near me</Link>
+                <span className="text-slate-700" aria-hidden="true">•</span>
+                <Link to="/laptop-repair-kuwait" className="font-bold text-slate-300 hover:text-white">Laptop repair Kuwait</Link>
+              </div>
             </div>
           </div>
 
