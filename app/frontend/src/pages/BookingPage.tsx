@@ -14,7 +14,7 @@ import { useAnalytics } from '../core/analytics/AnalyticsProvider';
    1. PAGE DATA & SEO CONSTANTS (Retained from your original file)
 ───────────────────────────────────────────────────────────────────────────── */
 const business = KCROC_GRAPH.business!;
-const BASE_URL = 'https://www.computerrepairkuwait.com';
+const BASE_URL = business.websiteUrl;
 const PAGE_URL = `${BASE_URL}/book`;
 const PHONE_DISPLAY = `+${business.telephone}`;
 const PHONE_CLEAN = business.telephone;
