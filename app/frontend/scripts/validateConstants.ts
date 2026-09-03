@@ -34,6 +34,15 @@ const SCAN_EXTENSIONS = new Set(['.ts', '.tsx']);
 // Never descend into these
 const IGNORED_DIR_NAMES = new Set(['node_modules', 'dist', '.git', '__generated__']);
 
+// Never scan these files, even though they live under a scanned directory.
+// `*.generated.*` files are machine-derived snapshots (gitignored, rebuilt
+// from KCROC_GRAPH on every install/build) rather than hand-typed source —
+// flagging them would just be re-flagging graph.ts's own values one layer
+// removed. Add specific generated files here as they're introduced; this
+// intentionally isn't a broad glob so a genuinely hand-maintained file
+// can never accidentally slip through by its name alone.
+const IGNORED_FILE_SUFFIXES = ['.generated.ts', '.generated.tsx'];
+
 type Severity = 'ERROR' | 'WARNING';
 
 interface ConstantRule {
@@ -158,7 +167,7 @@ function walk(dir: string, out: string[] = []): string[] {
       if (IGNORED_DIR_NAMES.has(entry.name)) continue;
       walk(path.join(dir, entry.name), out);
     } else if (entry.isFile()) {
-      if (SCAN_EXTENSIONS.has(path.extname(entry.name))) {
+      if (SCAN_EXTENSIONS.has(path.extname(entry.name)) && !IGNORED_FILE_SUFFIXES.some((s) => entry.name.endsWith(s))) {
         out.push(path.join(dir, entry.name));
       }
     }
