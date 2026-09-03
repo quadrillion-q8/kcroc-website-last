@@ -8,7 +8,8 @@
   "scripts": {
     "dev": "npx tsx scripts/generate-nav-data.ts && vite",
     "generate:nav": "npx tsx scripts/generate-nav-data.ts",
-    "prebuild": "npx tsx scripts/check-gbp-rating.ts; npx tsx scripts/validate-build.ts && pnpm run generate:nav",
+    "prebuild": "npx tsx scripts/check-gbp-rating.ts; npx tsx scripts/validate-build.ts && npx tsx scripts/validateConstants.ts && pnpm run generate:nav",
+    "validate:constants": "npx tsx scripts/validateConstants.ts",
     "generate:sitemap": "npx tsx scripts/generate-sitemap.ts",
     "build": "pnpm run prebuild && pnpm run generate:sitemap && vite-react-ssg build",
     "lint": "eslint --quiet ./src",
