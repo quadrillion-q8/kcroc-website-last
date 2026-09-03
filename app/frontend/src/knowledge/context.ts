@@ -8,19 +8,22 @@ import { KCROC_POLICY } from '../constants/businessPolicy';
  * If graph.ts is updated, the AI learns it instantly on next deployment.
  */
 export function getKnowledgeContext(userMessage: string): string {
-  const business = KCROC_GRAPH.business;
+  const business = KCROC_GRAPH.business!;
   const mainLocation = KCROC_GRAPH.locations.find((l) => l.id === 'loc-hawalli');
 
   // 🚀 FIXED: real field names — business identity lives nested under
   // KCROC_GRAPH.business, not as top-level businessName/phone properties
   // (which don't exist and were silently always hitting the fallback).
-  const businessName = business?.legalName ?? 'Kuwait Computer Repair On Call';
-  const phone = business?.telephone ? `+${business.telephone}` : '+96555301913';
+  // No literal fallback here on purpose: if the graph's business entity is
+  // ever missing, this should fail loudly at build/deploy time rather than
+  // silently serving a stale/wrong phone number to customers.
+  const businessName = business.legalName;
+  const phone = `+${business.telephone}`;
 
   let context = `You are the KCROC Assistant, an expert AI for a professional computer repair company in Kuwait.
 Business Name: ${businessName}
 Phone: ${phone}
-Location: ${mainLocation?.landmark ?? 'Hawalli, Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19'}
+Location: ${mainLocation?.landmark ?? business.streetAddress}
 Service Area: All Kuwait governorates — free pickup and delivery included.
 `;
 
