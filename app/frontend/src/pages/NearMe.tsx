@@ -207,6 +207,39 @@ export default function NearMe() {
         </div>
       </section>
 
+      {/* Arabic local-intent section */}
+      <section lang="ar" dir="rtl" className="border-t border-slate-800/60 px-4 py-12 sm:px-6 sm:py-20">
+        <div className="mx-auto max-w-5xl rounded-3xl border border-slate-800 bg-slate-950/60 p-6 sm:p-10">
+          <p className="text-xs font-bold uppercase tracking-widest text-cyan-400">خدمة إصلاح محلية في الكويت</p>
+          <h2 className="mt-2 text-3xl font-black text-white sm:text-4xl">فني كمبيوتر في الكويت وإصلاح لابتوب قريب منك</h2>
+          <p className="mt-5 max-w-3xl text-base leading-loose text-slate-300">
+            هل تبحث عن فني كمبيوتر أو محل تصليح لابتوب قريب منك؟ توفر KCROC إصلاح الكمبيوتر واللابتوب والـ MacBook وأجهزة الألعاب في الكويت، مع استلام وتوصيل مجاني من المنزل أو المكتب. يتم فحص الجهاز وإجراء الإصلاح في مختبرنا المركزي في حولي، مع توضيح العطل والتكلفة قبل تنفيذ الإصلاح.
+          </p>
+          <div className="mt-6 grid gap-3 sm:grid-cols-3">
+            <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-4">
+              <h3 className="font-bold text-white">فني كمبيوتر</h3>
+              <p className="mt-1 text-sm leading-relaxed text-slate-400">تشخيص أعطال الكمبيوتر واللابتوب وإصلاح الأعطال الهاردوير واللوحة الأم عند الحاجة.</p>
+            </div>
+            <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-4">
+              <h3 className="font-bold text-white">استلام من المنزل</h3>
+              <p className="mt-1 text-sm leading-relaxed text-slate-400">حدد منطقتك في الكويت وسننسق استلام الجهاز ونقله إلى مختبر حولي.</p>
+            </div>
+            <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-4">
+              <h3 className="font-bold text-white">إصلاح لابتوب</h3>
+              <p className="mt-1 text-sm leading-relaxed text-slate-400">إصلاح الشاشات والبطاريات والشحن والتبريد واللوحات الأم للعديد من الماركات.</p>
+            </div>
+          </div>
+          <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-row-reverse sm:justify-start">
+            <Button size="lg" className="bg-cyan-500 font-black text-slate-950 hover:bg-cyan-400" asChild>
+              <a href={waLink} target="_blank" rel="noopener noreferrer">تواصل مع فني عبر واتساب</a>
+            </Button>
+            <Button size="lg" variant="outline" className="border-slate-700 text-white hover:bg-slate-800" asChild>
+              <Link to="/laptop-repair-kuwait">إصلاح اللابتوب في الكويت</Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
       {/* FAQs */}
       <section className="border-t border-slate-800/60 bg-slate-900/30 px-4 py-12 sm:px-6 sm:py-20">
         <div className="mx-auto max-w-4xl">
