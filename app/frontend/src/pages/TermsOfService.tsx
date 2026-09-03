@@ -6,13 +6,15 @@ import { FileText, Mail, Phone } from 'lucide-react';
 
 import { SEOEngine } from '../core/components/SEOEngine';
 import SchemaMarkup from '../components/seo/SchemaMarkup';
+import { KCROC_GRAPH } from '../data/graph';
 
-const BASE_URL = 'https://www.computerrepairkuwait.com';
+const business = KCROC_GRAPH.business!;
+const BASE_URL = business.websiteUrl;
 const TERMS_PATH = '/terms-of-service';
-const PHONE_DISPLAY = '+965 5530 1913';
-const PHONE_CLEAN = '96555301913';
-const EMAIL = 'quadrillion1980@gmail.com';
-const LEGAL_NAME = 'Kuwait Computer Repair On Call (KCROC)';
+const PHONE_DISPLAY = `+965 ${business.telephone.slice(3, 7)} ${business.telephone.slice(7)}`;
+const PHONE_CLEAN = business.telephone;
+const EMAIL = business.email;
+const LEGAL_NAME = `${business.legalName} (${business.alternateName})`;
 const LAST_UPDATED = 'August 4, 2026';
 
 const SECTIONS = [
