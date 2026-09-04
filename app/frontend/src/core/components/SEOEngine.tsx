@@ -115,15 +115,11 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
     ? canonicalUrl
     : `${business.websiteUrl}${canonicalUrl}`;
 
-  // 3. Aggregate Rating — SINGLE SOURCE OF TRUTH.
-  const aggregateRating = business.aggregateRating ? {
-    "@type": "AggregateRating",
-    "ratingValue": business.aggregateRating.ratingValue,
-    "reviewCount": business.aggregateRating.reviewCount,
-    "bestRating": business.aggregateRating.bestRating ?? 5
-  } : undefined;
-
-  // 4. Build Universal LocalBusiness Schema
+  // 3. Build Universal LocalBusiness Schema.
+  // IMPORTANT: the business rating remains available to the UI and the
+  // GBP drift checker, but is intentionally NOT copied into self-hosted
+  // LocalBusiness JSON-LD because self-serving review markup is not
+  // eligible for Google's star rich-result treatment.
   const baseLocalBusiness: any = {
     "@type": ["LocalBusiness", "ComputerStore"],
     "@id": `${business.websiteUrl}/#business`,
@@ -156,10 +152,6 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
     } : undefined,
     "sameAs": business.socialLinks ? Object.values(business.socialLinks) : []
   };
-
-  if (aggregateRating) {
-    baseLocalBusiness.aggregateRating = aggregateRating;
-  }
 
   const schemaGraph: any[] = [baseLocalBusiness];
 
