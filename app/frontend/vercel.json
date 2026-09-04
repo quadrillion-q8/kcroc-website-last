@@ -42,6 +42,17 @@
       "has": [
         {
           "type": "host",
+          "value": "computerrepairkuwait.com"
+        }
+      ],
+      "destination": "https://www.computerrepairkuwait.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path((?!google[a-zA-Z0-9_-]*\\.html).*)",
+      "has": [
+        {
+          "type": "host",
           "value": "kcroc-website-last.vercel.app"
         }
       ],
