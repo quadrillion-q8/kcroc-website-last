@@ -10,6 +10,7 @@ const ChatWidget = lazy(() => import('./components/ChatWidget').then(module => (
 // Core Pages
 const Home = lazy(() => import('./pages/Home'));
 const NearMe = lazy(() => import('./pages/NearMe'));
+const NearMeAR = lazy(() => import('./pages/NearMeAR'));
 const Pricing = lazy(() => import('./pages/Pricing'));
 const Contact = lazy(() => import('./pages/Contact'));
 const Gallery = lazy(() => import('./pages/Gallery'));
@@ -114,6 +115,7 @@ export const routes: RouteObject[] = [
         children: [
           { index: true, element: <Home /> },
           { path: 'near-me', element: <NearMe /> },
+          { path: 'ar/near-me', element: <NearMeAR /> },
           { path: 'services', element: <Services /> },
           { path: 'services/:serviceSlug', element: <LegacyServiceRedirect /> },
           // 🩹 FIX: these three 404'd previously — there was no route for
