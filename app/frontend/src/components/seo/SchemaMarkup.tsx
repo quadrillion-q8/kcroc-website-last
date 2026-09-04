@@ -12,7 +12,7 @@ export default function SchemaMarkup({ schema = {} }: SchemaMarkupProps) {
     : (Object.keys(schema).length > 0 ? [schema] : []);
 
   // If no specific graph nodes are passed, do not render an empty script block.
-  // SEOEngine.tsx is already handling the base LocalBusiness and AggregateRating schema globally.
+  // SEOEngine.tsx is handling the base LocalBusiness schema globally; self-hosted AggregateRating markup is intentionally not emitted.
   if (additionalGraph.length === 0) return null;
 
   const mergedSchema = {
