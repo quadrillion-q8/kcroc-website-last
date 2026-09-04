@@ -234,7 +234,7 @@ export default function NearMe() {
               <a href={waLink} target="_blank" rel="noopener noreferrer">تواصل مع فني عبر واتساب</a>
             </Button>
             <Button size="lg" variant="outline" className="border-slate-700 text-white hover:bg-slate-800" asChild>
-              <Link to="/laptop-repair-kuwait">إصلاح اللابتوب في الكويت</Link>
+              <Link to="/ar/near-me">الصفحة الكاملة بالعربي</Link>
             </Button>
           </div>
         </div>
