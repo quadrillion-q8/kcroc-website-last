@@ -18,6 +18,11 @@ const ProblemTemplate: React.FC = () => {
     .map((id) => KCROC_GRAPH.services.find((service) => service.id === id))
     .filter((service): service is NonNullable<typeof service> => Boolean(service));
 
+  // Real repairs already tagged with this exact problem — proof, not promises.
+  const relatedCaseStudies = KCROC_GRAPH.caseStudies.filter((cs) =>
+    cs.problemIds?.includes(problem.id)
+  );
+
   const getContentImage = (placement: 'causes' | 'solution') =>
     problem.contentImages?.find((img) => img.placement === placement);
 
@@ -122,6 +127,24 @@ const ProblemTemplate: React.FC = () => {
                     className="px-4 py-2 rounded-full bg-slate-900/60 border border-slate-800 text-sm text-cyan-300 hover:border-cyan-500/40 transition-colors"
                   >
                     {service.title}
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {relatedCaseStudies.length > 0 && (
+            <div>
+              <h2 className="text-2xl font-bold text-white mb-6">Real Repairs We've Fixed</h2>
+              <div className="grid sm:grid-cols-2 gap-4">
+                {relatedCaseStudies.map((cs) => (
+                  <a
+                    key={cs.id}
+                    href={`/case-studies/${cs.slug}`}
+                    className="block p-5 bg-slate-900/50 backdrop-blur-sm rounded-xl border border-slate-800 hover:border-cyan-500/40 transition-colors"
+                  >
+                    <p className="text-xs uppercase tracking-wider text-cyan-400 font-bold mb-2">{cs.device} — {cs.location}</p>
+                    <p className="text-slate-300 text-sm leading-relaxed">{cs.outcome}</p>
                   </a>
                 ))}
               </div>
