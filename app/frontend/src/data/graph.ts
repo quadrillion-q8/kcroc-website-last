@@ -100,6 +100,12 @@ export const rawGraphData: RawGraphData = {
         title: 'Computer Repair Near Me in Kuwait | Same-Day, Free Pickup',
         description: 'Nearest computer repair technician in Kuwait — no shop visit needed. Free pickup & drop-off, same-day diagnostics, 30-day warranty. WhatsApp us now.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/near-me',
+        locale: 'en_KW',
+        alternates: {
+          'en-KW': 'https://www.computerrepairkuwait.com/near-me',
+          'ar-KW': 'https://www.computerrepairkuwait.com/ar/near-me',
+          'x-default': 'https://www.computerrepairkuwait.com/near-me'
+        },
         ogType: 'website',
         schemaTypes: ['WebPage', 'FAQPage', 'BreadcrumbList'],
         breadcrumbs: [{ name: 'Home', url: '/' }, { name: 'Computer Repair Near Me', url: '/near-me' }]
@@ -116,6 +122,36 @@ export const rawGraphData: RawGraphData = {
         'faq-near-me-local', 'faq-near-me-home', 'faq-near-me-reliable', 'faq-arabic-computer-technician'
       ],
       featuredUSPIds: ['usp-logistics', 'usp-component', 'usp-nofix', 'usp-privacy']
+    } as WebPageEntity,
+
+    // 🚀 ARABIC HUB: real, standalone, crawlable Arabic page — not just an
+    // anchor/section inside the English near-me page. Targets the highest
+    // demand-to-content-ratio queries in GSC (فني كمبيوتر at position #2 with
+    // almost no dedicated Arabic content). Hreflang-linked to page-near-me
+    // above, and locale 'ar_KW' makes SEOEngine render this page RTL with a
+    // correct <html lang> automatically — see SEOEngine.tsx.
+    'page-near-me-ar': {
+      id: 'page-near-me-ar', slug: 'ar/near-me', entityType: 'WebPage', isActive: true,
+      title: 'فني كمبيوتر وتصليح لابتوب بالقرب مني في الكويت',
+      description: 'دليل عربي شامل لخدمات فني الكمبيوتر وتصليح اللابتوب في الكويت، يغطي حولي والنعيمي والمناطق المجاورة مع استلام وتوصيل مجاني.',
+      seo: {
+        title: 'فني كمبيوتر بالقرب مني في الكويت | استلام مجاني | KCROC',
+        description: 'تبحث عن فني كمبيوتر أو تصليح لابتوب قريب منك في الكويت؟ KCROC يوفر استلام وتوصيل مجاني، فحص مجاني، وضمان 30 يومًا من مختبرنا في حولي.',
+        canonicalUrl: 'https://www.computerrepairkuwait.com/ar/near-me',
+        locale: 'ar_KW',
+        alternates: {
+          'ar-KW': 'https://www.computerrepairkuwait.com/ar/near-me',
+          'en-KW': 'https://www.computerrepairkuwait.com/near-me',
+          'x-default': 'https://www.computerrepairkuwait.com/near-me'
+        },
+        ogType: 'website',
+        schemaTypes: ['WebPage', 'FAQPage', 'BreadcrumbList'],
+        breadcrumbs: [{ name: 'الرئيسية', url: '/' }, { name: 'فني كمبيوتر بالقرب مني', url: '/ar/near-me' }]
+      },
+      featuredFAQIds: [
+        'faq-arabic-computer-technician', 'faq-ar-hawalli-technician', 'faq-ar-pricing',
+        'faq-ar-hours', 'faq-ar-maintenance', 'faq-ar-laptop-repair-process'
+      ]
     } as WebPageEntity,
     'page-brands': { id: 'page-brands', slug: 'brands', entityType: 'WebPage', isActive: true, title: 'Supported Laptop Brands', description: 'Laptop and computer brands repaired by KCROC in Kuwait.', seo: { title: 'Laptop Brands We Repair in Kuwait | Dell, HP, Lenovo, ASUS & More | KCROC', description: 'Component-level laptop repair for Dell, HP, Lenovo, ASUS, Acer, MSI and other major brands across Kuwait.', canonicalUrl: 'https://www.computerrepairkuwait.com/brands', ogType: 'website', schemaTypes: ['CollectionPage', 'WebPage', 'BreadcrumbList'], breadcrumbs: [{ name: 'Home', url: '/' }, { name: 'Brands', url: '/brands' }] } } as WebPageEntity,
     'page-problems': { id: 'page-problems', slug: 'problems', entityType: 'WebPage', isActive: true, title: 'Common Computer Problems', description: 'Common laptop and computer problems diagnosed and repaired by KCROC in Kuwait.', seo: { title: 'Common Laptop & Computer Problems We Fix | KCROC Kuwait', description: 'Find causes, safe troubleshooting steps and repair options for common laptop and computer problems in Kuwait.', canonicalUrl: 'https://www.computerrepairkuwait.com/problems', ogType: 'website', schemaTypes: ['CollectionPage', 'WebPage', 'BreadcrumbList'], breadcrumbs: [{ name: 'Home', url: '/' }, { name: 'Problems', url: '/problems' }] } } as WebPageEntity,
@@ -2081,6 +2117,46 @@ export const rawGraphData: RawGraphData = {
       description: 'معلومات عن خدمة فني الكمبيوتر وإصلاح اللابتوب والكمبيوتر في الكويت.',
       answer: 'نعم. توفر KCROC خدمة إصلاح اللابتوب والكمبيوتر في الكويت مع استلام وتوصيل مجاني من المنزل أو المكتب. يتم تشخيص وإصلاح الأجهزة في مختبرنا المركزي في حولي، ويمكنك إرسال نوع الجهاز والعطل والمنطقة عبر واتساب لتأكيد طريقة الاستلام.',
       seo: { title: 'فني كمبيوتر في الكويت | إصلاح لابتوب وكمبيوتر', description: 'خدمة فني كمبيوتر وإصلاح لابتوب وكمبيوتر في الكويت مع استلام وتوصيل مجاني.', canonicalUrl: 'https://www.computerrepairkuwait.com/near-me#arabic-computer-technician', schemaTypes: ['FAQPage'] }
+    } as FAQEntity,
+
+    'faq-ar-hawalli-technician': {
+      id: 'faq-ar-hawalli-technician', slug: 'tasleeh-kombyuter-hawalli', entityType: 'FAQ', isActive: true,
+      title: 'هل يوجد فني تصليح كمبيوتر في حولي والنعيمي؟',
+      description: 'معلومات عن مختبر KCROC لتصليح الكمبيوتر في حولي وتغطيته لمنطقة النعيمي والمناطق المجاورة.',
+      answer: 'نعم. مختبر KCROC الرئيسي يقع في حولي (شارع ابن خلدون، مجمع الملا)، ونغطي منه النعيمي والمناطق المجاورة بخدمة استلام وتوصيل مجانية. أرسل لنا موقعك ونوع العطل عبر واتساب وسنرتب استلام الجهاز من عندك دون الحاجة للحضور إلى المختبر.',
+      seo: { title: 'تصليح كمبيوتر حولي والنعيمي | KCROC', description: 'فني تصليح كمبيوتر في حولي يغطي النعيمي والمناطق المجاورة، مع استلام وتوصيل مجاني لجهازك.', canonicalUrl: 'https://www.computerrepairkuwait.com/ar/near-me#hawalli', schemaTypes: ['FAQPage'] }
+    } as FAQEntity,
+
+    'faq-ar-pricing': {
+      id: 'faq-ar-pricing', slug: 'taklifat-tasleeh-kombyuter', entityType: 'FAQ', isActive: true,
+      title: 'كم تكلفة تصليح الكمبيوتر أو اللابتوب؟',
+      description: 'معلومات عن تسعير خدمات تصليح الكمبيوتر واللابتوب لدى KCROC في الكويت.',
+      answer: 'التكلفة تعتمد على نوع العطل والجهاز، ولهذا نقدم فحص وتشخيص مجاني قبل أي التزام. بعد التشخيص نعطيك سعر واضح ونطبق سياسة "بدون إصلاح، بدون رسوم" — إذا تبين أن الجهاز غير قابل للإصلاح اقتصاديًا، لا تدفع شيئًا. راجع صفحة الأسعار لدينا للاطلاع على نطاقات الأسعار التقريبية.',
+      seo: { title: 'أسعار تصليح الكمبيوتر واللابتوب في الكويت | KCROC', description: 'فحص وتشخيص مجاني، وسعر واضح بعد التشخيص. بدون إصلاح، بدون رسوم — لا تدفع إذا لم يتم الإصلاح.', canonicalUrl: 'https://www.computerrepairkuwait.com/ar/near-me#pricing', schemaTypes: ['FAQPage'] }
+    } as FAQEntity,
+
+    'faq-ar-hours': {
+      id: 'faq-ar-hours', slug: 'awqat-aml-fani-kombyuter', entityType: 'FAQ', isActive: true,
+      title: 'ما هي أوقات عمل فني الكمبيوتر؟',
+      description: 'أوقات عمل مختبر KCROC وكيفية التواصل خارج ساعات الدوام.',
+      answer: 'مختبر KCROC مفتوح يوميًا من الساعة 10:00 صباحًا حتى 10:00 مساءً. لسنا متاحين على مدار 24 ساعة، لكن يمكنك إرسال رسالة واتساب في أي وقت وسنرد عليك في أقرب فرصة خلال ساعات العمل لترتيب الاستلام أو الرد على استفسارك.',
+      seo: { title: 'أوقات عمل KCROC لتصليح الكمبيوتر في الكويت', description: 'مفتوح يوميًا 10 صباحًا – 10 مساءً. راسلنا واتساب في أي وقت للرد عليك في أقرب فرصة.', canonicalUrl: 'https://www.computerrepairkuwait.com/ar/near-me#hours', schemaTypes: ['FAQPage'] }
+    } as FAQEntity,
+
+    'faq-ar-maintenance': {
+      id: 'faq-ar-maintenance', slug: 'siyanat-kombyuter-shamila', entityType: 'FAQ', isActive: true,
+      title: 'هل تقدمون صيانة كمبيوتر شاملة؟',
+      description: 'نبذة عن خدمات صيانة الكمبيوتر الشاملة لدى KCROC، من التنظيف إلى إصلاح اللوحة الأم.',
+      answer: 'نعم. تشمل خدماتنا صيانة شاملة تبدأ من التنظيف الداخلي وتغيير المعجون الحراري، مرورًا بفحص وترقية الذاكرة والتخزين (SSD)، وحتى إصلاح اللوحة الأم على مستوى القطعة الإلكترونية نفسها — وهو ما يميزنا عن أغلب المحلات التي تكتفي باستبدال اللوحة بالكامل.',
+      seo: { title: 'صيانة كمبيوتر شاملة في الكويت | KCROC', description: 'صيانة شاملة من التنظيف والترقية إلى إصلاح اللوحة الأم على مستوى القطعة، بدل استبدالها بالكامل.', canonicalUrl: 'https://www.computerrepairkuwait.com/ar/near-me#maintenance', schemaTypes: ['FAQPage'] }
+    } as FAQEntity,
+
+    'faq-ar-laptop-repair-process': {
+      id: 'faq-ar-laptop-repair-process', slug: 'kayfa-tatimm-tasleeh-laptop', entityType: 'FAQ', isActive: true,
+      title: 'كيف تتم عملية تصليح اللابتوب لديكم؟',
+      description: 'شرح خطوات عملية إصلاح اللابتوب لدى KCROC من الاستلام حتى التسليم.',
+      answer: 'أولًا نستلم وصف العطل عبر واتساب ونرتب استلام الجهاز مجانًا من عندك. بعدها نقوم بالفحص والتشخيص في مختبرنا في حولي ونرسل لك تقريرًا واضحًا بالعطل والسعر قبل البدء بأي إصلاح. بعد موافقتك، نُجري الإصلاح ونختبر الجهاز جيدًا، ثم نوصله إليك مع ضمان 30 يومًا على القطع والعمل.',
+      seo: { title: 'خطوات تصليح اللابتوب في الكويت | KCROC', description: 'استلام مجاني، تشخيص وتسعير واضح، إصلاح واختبار، ثم توصيل مع ضمان 30 يومًا.', canonicalUrl: 'https://www.computerrepairkuwait.com/ar/near-me#process', schemaTypes: ['FAQPage'] }
     } as FAQEntity,
 
     'faq-near-me-reliable': {
