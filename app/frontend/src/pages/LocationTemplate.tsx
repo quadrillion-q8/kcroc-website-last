@@ -24,6 +24,11 @@ export default function LocationTemplate() {
 
   const activeServices = KCROC_GRAPH.services?.filter(s => s.isActive).slice(0, 4) || [];
 
+  // Real repairs already tagged with this exact location — proof this isn't a doorway page.
+  const relatedCaseStudies = KCROC_GRAPH.caseStudies?.filter(
+    (cs) => cs.locationId === location?.id
+  ) || [];
+
   // 🚀 Generate Breadcrumb Schema for Local SEO Rich Results
   const BASE_URL = business.websiteUrl;
   const PAGE_URL = `${BASE_URL}/location/${slug}`;
@@ -194,6 +199,29 @@ export default function LocationTemplate() {
           </div>
         </div>
       </section>
+
+      {/* ─── RECENT LOCAL REPAIRS (only renders when a real, tagged case study exists) ─── */}
+      {relatedCaseStudies.length > 0 && (
+        <section className="py-12 sm:py-24 px-4 sm:px-6">
+          <div className="container mx-auto max-w-5xl">
+            <h2 className="text-2xl sm:text-4xl font-black mb-8 sm:mb-12 text-center text-white tracking-tight">
+              Recent Repairs in {location.title}
+            </h2>
+            <div className="grid sm:grid-cols-2 gap-4">
+              {relatedCaseStudies.map((cs) => (
+                <Link
+                  key={cs.id}
+                  to={`/case-studies/${cs.slug}`}
+                  className="block p-6 bg-slate-900/50 backdrop-blur-sm rounded-2xl border border-slate-800 hover:border-cyan-500 transition-all"
+                >
+                  <p className="text-xs uppercase tracking-wider text-cyan-400 font-bold mb-2">{cs.device}</p>
+                  <p className="text-slate-300 text-sm leading-relaxed">{cs.outcome}</p>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
     </main>
   );
