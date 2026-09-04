@@ -901,6 +901,13 @@ export default function BatteryHealthGuide() {
                 </li>
               ))}
             </ul>
+            <p className="mt-4 text-slate-400 text-xs sm:text-sm">
+              If the cause turns out to be a charging port, motherboard power circuit, or another hardware fault rather than the battery itself, our{' '}
+              <Link to="/laptop-repair-kuwait" className="text-cyan-300 hover:text-cyan-200 font-semibold underline underline-offset-2">
+                laptop repair service in Kuwait
+              </Link>{' '}
+              covers diagnosis and repair for those faults too — with the same free pickup and 30-day warranty.
+            </p>
           </div>
         </div>
       </section>
@@ -1044,6 +1051,9 @@ export default function BatteryHealthGuide() {
           <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 mt-6 sm:mt-8 text-xs sm:text-sm">
             <Link to="/battery-replacement-kuwait" className="text-cyan-300 hover:text-cyan-200 inline-flex items-center gap-1.5 transition-colors">
               Laptop Battery Replacement Kuwait
+            </Link>
+            <Link to="/laptop-repair-kuwait" className="text-slate-400 hover:text-cyan-400 inline-flex items-center gap-1.5 transition-colors">
+              Laptop Repair Kuwait
             </Link>
             <Link to="/near-me" className="text-slate-400 hover:text-cyan-400 inline-flex items-center gap-1.5 transition-colors">
               Computer Repair Near Me
