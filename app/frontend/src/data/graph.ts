@@ -78,7 +78,7 @@ export const rawGraphData: RawGraphData = {
     'page-home': {
       id: 'page-home', slug: '', entityType: 'WebPage', isActive: true,
       title: 'Home', description: 'KCROC Homepage — Component-level computer repair in Kuwait',
-      seo: { title: 'Computer Repair Kuwait | Laptop & MacBook Repair – KCROC', description: 'Same-day laptop, MacBook & PC repair in Kuwait by KCROC. Free Pick & Drop across all governorates. 4.9★ rated, 30-day warranty. Call +965 55301913.', canonicalUrl: 'https://www.computerrepairkuwait.com', ogType: 'website', schemaTypes: ['LocalBusiness', 'WebSite', 'WebPage'] },
+      seo: { title: 'Free Pickup Computer Repair Kuwait | No Fix No Fee | KCROC', description: 'KCROC repairs laptops, MacBooks & PCs across Kuwait with free pickup & drop-off. No Fix No Fee, 30-day warranty, 4.9★ rated. WhatsApp +965 55301913.', canonicalUrl: 'https://www.computerrepairkuwait.com', ogType: 'website', schemaTypes: ['LocalBusiness', 'WebSite', 'WebPage'] },
       hero: { headline: 'Kuwait\'s Expert Component-Level Repair Service.', subheadline: 'We fix the board. We don\'t just swap it.', description: 'We diagnose and repair failed components at board level — restoring devices that most repair shops in Kuwait would simply declare beyond repair.', primaryCTA: { text: 'WhatsApp a Technician', route: 'https://wa.me/96555301913' }, secondaryCTA: { text: 'View All Services', route: '/services' } },
       featuredFAQIds: [
         'faq-pick-and-drop', 
@@ -97,8 +97,8 @@ export const rawGraphData: RawGraphData = {
       title: 'Computer Repair Near Me in Kuwait',
       description: 'Find a computer repair technician near you in Kuwait for laptops, PCs, MacBooks and gaming systems, with free pickup and delivery from our central Hawalli repair lab.',
       seo: {
-        title: 'Computer Repair Near Me & Technician in Kuwait | KCROC',
-        description: 'Need a computer technician near you in Kuwait? KCROC provides laptop, PC, MacBook and motherboard repair with free pickup and delivery across Kuwait.',
+        title: 'Computer Repair Near Me in Kuwait | Same-Day, Free Pickup',
+        description: 'Nearest computer repair technician in Kuwait — no shop visit needed. Free pickup & drop-off, same-day diagnostics, 30-day warranty. WhatsApp us now.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/near-me',
         ogType: 'website',
         schemaTypes: ['WebPage', 'FAQPage', 'BreadcrumbList'],
@@ -2186,7 +2186,7 @@ export const rawGraphData: RawGraphData = {
         { id: 'hp-fan',   title: 'Fan error on boot', severity: 'medium', description: 'HP system fan (90b) error due to dust accumulation.' }
       ],
       pricing: { startingFrom: 15, currency: 'KWD', quoteRequired: true, displayLabel: 'From 15 KWD — free diagnostic first' },
-      seo: { title: 'HP Service Center & Laptop Repair Kuwait | KCROC', description: 'Independent HP laptop repair in Kuwait for EliteBook, Pavilion, ProBook, Spectre, ENVY, OMEN and Victus. Power, hinge, screen and thermal repair with free pick-up and drop-off.', canonicalUrl: 'https://www.computerrepairkuwait.com/hp-laptop-repair-kuwait', ogType: 'article', schemaTypes: ['Service'] },
+      seo: { title: 'HP Laptop Repair Kuwait | Free Pickup, No Fix No Fee', description: 'HP EliteBook, Pavilion, ProBook & OMEN repair in Kuwait. Free pickup & drop-off, No Fix No Fee, 30-day warranty. Certified HP technicians in Hawalli.', canonicalUrl: 'https://www.computerrepairkuwait.com/hp-laptop-repair-kuwait', ogType: 'article', schemaTypes: ['Service'] },
       navigationPriority: 80, popular: true 
     } as BrandEntity,
 
