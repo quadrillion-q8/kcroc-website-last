@@ -1,5 +1,6 @@
 // File: app/frontend/src/pages/GameBarPresenceWriterGuide.tsx
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import {
@@ -360,7 +361,7 @@ export default function GameBarPresenceWriterGuide() {
             <div className="rounded-2xl border border-orange-500/20 bg-orange-500/5 p-6">
               <div className="flex items-center gap-3"><Cpu className="h-6 w-6 text-orange-400" /><h3 className="text-lg font-bold">When software is not enough</h3></div>
               <p className="mt-3 text-sm leading-6 text-slate-300">Persistent stutter, crashes, artifacting, overheating, or unstable power behavior can require board-level diagnosis rather than another Windows tweak.</p>
-              <a href="#cta" className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-orange-300">See KCROC hardware support <ChevronRight className="h-4 w-4" /></a>
+              <Link to="/gaming-pc-repair-kuwait" className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-orange-300 hover:text-orange-200">See KCROC gaming PC repair in Kuwait <ChevronRight className="h-4 w-4" /></Link>
             </div>
           </div>
         </div>
@@ -389,6 +390,20 @@ export default function GameBarPresenceWriterGuide() {
               <Button size="lg" asChild className="bg-cyan-500 px-7 py-6 font-bold text-slate-950 hover:bg-cyan-400"><a href={`tel:+${business.telephone}`}>Call {business.telephone.slice(3)}</a></Button>
               <Button size="lg" variant="outline" asChild className="border-slate-700 px-7 py-6 text-slate-200 hover:bg-slate-800"><a href={WA_LINK} target="_blank" rel="noopener noreferrer">WhatsApp KCROC</a></Button>
             </div>
+          </div>
+          <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-slate-800 pt-6 text-xs sm:text-sm">
+            <Link to="/gaming-pc-repair-kuwait" className="text-cyan-300 hover:text-cyan-200 inline-flex items-center gap-1.5 transition-colors">
+              Gaming PC Repair Kuwait
+            </Link>
+            <Link to="/motherboard-repair-kuwait" className="text-slate-400 hover:text-cyan-400 inline-flex items-center gap-1.5 transition-colors">
+              Motherboard Repair Kuwait
+            </Link>
+            <Link to="/near-me" className="text-slate-400 hover:text-cyan-400 inline-flex items-center gap-1.5 transition-colors">
+              Computer Repair Near Me
+            </Link>
+            <Link to="/services" className="text-slate-400 hover:text-cyan-400 inline-flex items-center gap-1.5 transition-colors">
+              View All Services
+            </Link>
           </div>
         </div>
       </section>
