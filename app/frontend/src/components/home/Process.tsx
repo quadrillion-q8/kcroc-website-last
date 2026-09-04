@@ -50,41 +50,44 @@ export const Process = () => {
           </div>
         </div>
 
-        {/* Mobile: compact bordered numbered list. Desktop: connected
-            timeline — no card container, so it reads differently from the
-            card grids above and below it on the page. */}
+        {/* One semantic DOM tree is used for both breakpoints. The layout
+            changes with CSS, but step text is rendered only once so the
+            crawler and screen reader see a single process sequence. */}
         <div className="space-y-3 md:space-y-0 md:grid md:grid-cols-3 md:gap-x-10">
           {steps.map((item, idx) => (
             <div key={item.step} className="relative">
-              {/* Mobile */}
-              <div className="flex gap-4 md:hidden bg-slate-900/40 border border-slate-800/80 rounded-2xl p-5">
-                <div className="shrink-0 flex flex-col items-center">
-                  <div className="w-8 h-8 rounded-full bg-slate-900 border border-cyan-500/40 text-cyan-400 text-sm font-bold flex items-center justify-center">
-                    {item.step}
-                  </div>
-                  {idx < steps.length - 1 && <div className="w-px flex-1 bg-slate-800 mt-1" />}
-                </div>
-                <div>
-                  <h3 className="mb-1">{item.title}</h3>
-                  <p className="text-slate-400 text-sm leading-relaxed">{item.description}</p>
-                </div>
-              </div>
+              {idx > 0 && (
+                <span
+                  aria-hidden="true"
+                  className="hidden md:block absolute right-1/2 top-[22px] -translate-y-1/2 w-full h-px bg-slate-800"
+                />
+              )}
+              {idx < steps.length - 1 && (
+                <span
+                  aria-hidden="true"
+                  className="hidden md:block absolute left-1/2 top-[22px] -translate-y-1/2 w-full h-px bg-slate-800"
+                />
+              )}
 
-              {/* Desktop */}
-              <div className="hidden md:block text-center px-4">
-                <div className="relative flex items-center justify-center mb-5">
-                  {idx > 0 && (
-                    <span className="absolute right-1/2 top-1/2 -translate-y-1/2 w-full h-px bg-slate-800" />
-                  )}
-                  {idx < steps.length - 1 && (
-                    <span className="absolute left-1/2 top-1/2 -translate-y-1/2 w-full h-px bg-slate-800" />
-                  )}
-                  <span className="relative z-10 w-11 h-11 rounded-full bg-slate-950 border-2 border-cyan-500/50 text-cyan-400 font-black flex items-center justify-center">
+              <div className="flex gap-4 md:block rounded-2xl border border-slate-800/80 bg-slate-900/40 p-5 md:rounded-none md:border-0 md:bg-transparent md:p-4 md:text-center">
+                <div className="shrink-0 flex flex-col items-center md:mb-5 md:block">
+                  <span className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full border border-cyan-500/40 bg-slate-900 text-sm font-bold text-cyan-400 md:h-11 md:w-11 md:mx-auto md:border-2 md:bg-slate-950 md:font-black">
                     {item.step}
                   </span>
+                  {idx < steps.length - 1 && (
+                    <span
+                      aria-hidden="true"
+                      className="w-px flex-1 bg-slate-800 mt-1 md:hidden"
+                    />
+                  )}
                 </div>
-                <h3 className="mb-2">{item.title}</h3>
-                <p className="text-slate-400 text-sm leading-relaxed max-w-[240px] mx-auto">{item.description}</p>
+
+                <div className="md:text-center">
+                  <h3 className="mb-1 md:mb-2">{item.title}</h3>
+                  <p className="text-slate-400 text-sm leading-relaxed md:max-w-[240px] md:mx-auto">
+                    {item.description}
+                  </p>
+                </div>
               </div>
             </div>
           ))}
