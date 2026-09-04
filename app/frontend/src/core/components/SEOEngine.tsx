@@ -536,8 +536,21 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
   const resolvedRobots = robots || 'index, follow, max-image-preview:large';
   const shouldIndex = !resolvedRobots.toLowerCase().includes('noindex');
 
+  // 🚀 Arabic hub pages set `locale: 'ar_KW'` in their graph entity's `seo`
+  // block. Previously nothing in SEOEngine read that value, so every page —
+  // Arabic or English — rendered with the site-wide default `lang="en"` /
+  // no `dir` attribute from index.html, and `alternates` was defined on the
+  // schema but never actually passed by any entity, so no hreflang tags
+  // were ever emitted anywhere on the site. This derives the correct
+  // `lang`/`dir` html attributes straight from `locale`, so any current or
+  // future Arabic entity gets correct RTL rendering and hreflang for free
+  // just by setting `locale` + `alternates` in graph.ts.
+  const isArabic = resolvedLocale.toLowerCase().startsWith('ar');
+  const htmlLang = resolvedLocale.replace('_', '-');
+  const htmlAttributes = isArabic ? { lang: htmlLang, dir: 'rtl' } : { lang: htmlLang };
+
   return (
-    <Head>
+    <Head htmlAttributes={htmlAttributes}>
       <title>{title}</title>
       <meta name="description" content={description} />
       {shouldIndex && <link rel="canonical" href={fullCanonicalUrl} />}
