@@ -206,6 +206,7 @@ export class NavigationCompiler {
           { id: 'b9', slug: 'blog/why-8gb-ram-is-no-longer-enough-for-windows-11', title: '8GB RAM & Windows 11', description: '', iconKey: 'cpu', entityType: 'Page' as any, primaryKeyword: 'ram', weight: 0, commercialIntent: 'info' },
           { id: 'b10', slug: 'blog/10-reasons-why-people-are-dumping-windows-11', title: '10 Reasons People Are Dumping Windows 11', description: '', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'windows 11', weight: 0, commercialIntent: 'info' },
           { id: 'b11', slug: 'blog/gaming-pc-mistakes-kuwait', title: 'Gaming PC Mistakes', description: '', iconKey: 'gaming', entityType: 'Page' as any, primaryKeyword: 'gaming pc mistakes', weight: 0, commercialIntent: 'info' },
+          { id: 'b13', slug: 'blog/windows-11-background-services-audit', title: 'Windows 11 Background Services Audit', description: '', iconKey: 'shield', entityType: 'Page' as any, primaryKeyword: 'windows 11 services', weight: 0, commercialIntent: 'info' },
         ]
       }]
     };
