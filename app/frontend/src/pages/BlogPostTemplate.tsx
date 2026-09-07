@@ -95,6 +95,14 @@ const RichBlock: React.FC<{ block: ContentBlock; headingRef?: (el: HTMLElement |
           {block.text.includes('https://') ? linkTechnicalSources(block.text) : <AutoLink text={block.text} />}
         </p>
       );
+    case 'list': {
+      const ListTag = block.ordered ? 'ol' : 'ul';
+      return (
+        <ListTag className={`${block.ordered ? 'list-decimal' : 'list-disc'} pl-6 text-slate-300 leading-7 mb-7 space-y-2`}>
+          {block.items.map((item, i) => <li key={i}>{item}</li>)}
+        </ListTag>
+      );
+    }
     case 'callout': {
       const style = CALLOUT_STYLES[block.variant] ?? CALLOUT_STYLES.info;
       const Icon = style.icon;
