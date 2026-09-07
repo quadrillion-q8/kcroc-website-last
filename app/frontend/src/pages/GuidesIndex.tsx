@@ -8,7 +8,7 @@
 // NavigationCompiler.ts). This page + its route in App.tsx fixes both.
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { BatteryWarning, Cpu, HardDrive, Gamepad2, ChevronRight } from 'lucide-react';
+import { BatteryWarning, Cpu, HardDrive, Gamepad2, Shield, ChevronRight } from 'lucide-react';
 import { SEOEngine } from '../core/components/SEOEngine';
 
 interface GuideLink {
@@ -50,6 +50,12 @@ const GUIDES: GuideLink[] = [
     title: 'GameBarPresenceWriter.exe Fix',
     description: 'A measured, evidence-first diagnostic guide to GameBarPresenceWriter.exe and Windows Game Bar background activity causing gaming stutter.',
     icon: Gamepad2,
+  },
+  {
+    slug: 'guides/windows-11-background-services-audit',
+    title: 'Windows 11 Background Services Audit',
+    description: 'Understand WHESVC, DiagTrack, SysMain and MapsBroker, and learn how to investigate background services without blindly disabling Windows components.',
+    icon: Shield,
   },
 ];
 
