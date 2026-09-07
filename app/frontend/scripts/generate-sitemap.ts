@@ -4,7 +4,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { KCROC_GRAPH } from '../src/data/graph';
 import { BLOG_POSTS } from '../src/constants/blogPosts';
-import { getBlogRoute } from '../src/constants/routes';
+import { getContentRoute } from '../src/constants/routes';
 
 // ESM-safe path resolution
 const __filename = fileURLToPath(import.meta.url);
@@ -71,7 +71,7 @@ const getPriorityAndFreq = (
   }
 
   // Individual blog/guide posts and other location-area pages
-  if (path.startsWith('/blog/') || entityType === 'Location') {
+  if ((path.startsWith('/blog/') || path.startsWith('/guides/')) || entityType === 'Location') {
     return { priority: '0.6', changefreq: 'monthly' };
   }
 
@@ -112,7 +112,7 @@ const generateSitemap = () => {
   // every /blog/:slug URL. Explicitly add each post's canonical URL here so
   // it's included in sitemap.xml and therefore in SSG's includedRoutes.
   const blogUrlEntries = BLOG_POSTS.map(post => ({
-    url: `${DOMAIN}${getBlogRoute(post.slug)}`,
+    url: `${DOMAIN}${getContentRoute(post.slug, post.contentType ?? 'blog')}`,
     entityType: 'BlogPost' as const,
     lastModified: post.date || KCROC_GRAPH.metadata.lastUpdated,
   }));
