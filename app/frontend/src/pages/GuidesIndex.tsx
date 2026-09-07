@@ -8,7 +8,7 @@
 // NavigationCompiler.ts). This page + its route in App.tsx fixes both.
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { BatteryWarning, Cpu, HardDrive, Gamepad2, Shield, ChevronRight } from 'lucide-react';
+import { BatteryWarning, Cpu, HardDrive, Gamepad2, Shield, Power, ChevronRight } from 'lucide-react';
 import { SEOEngine } from '../core/components/SEOEngine';
 
 interface GuideLink {
@@ -23,6 +23,12 @@ interface GuideLink {
 // guides here, in App.tsx's routes array, and in NavigationCompiler.ts's
 // compileGuidesMegaMenu() when a new one is published.
 const GUIDES: GuideLink[] = [
+  {
+    slug: 'guides/laptop-wont-turn-on',
+    title: "Laptop Won't Turn On?",
+    description: 'A safe, step-by-step no-power diagnostic guide covering chargers, batteries, charging ports, black-screen lookalikes and motherboard faults.',
+    icon: Power,
+  },
   {
     // 🩹 FIX (audit): was 'guides/dell-inspiron-15-3000-overheating', a
     // client-side-only <Navigate> redirect stub in App.tsx with no rendered
