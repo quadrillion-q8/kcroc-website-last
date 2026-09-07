@@ -217,6 +217,7 @@ export class NavigationCompiler {
       id: 'guides_mega',
       title: 'DIY & Repair Guides',
       featured: [
+        { id: 'g6', slug: 'guides/laptop-wont-turn-on', title: "Laptop Won't Turn On?", description: 'No-power troubleshooting guide', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: "laptop won't turn on", weight: 0, commercialIntent: 'info' },
         // 🩹 FIX (audit): was pointing at 'guides/dell-inspiron-15-3000-overheating',
         // which App.tsx routes as a client-side-only <Navigate> stub with no
         // rendered content of its own (empty title/meta/canonical/H1 in the
