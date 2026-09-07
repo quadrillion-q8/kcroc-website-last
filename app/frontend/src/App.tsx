@@ -1,4 +1,4 @@
-\// File: app/frontend/src/App.tsx
+// File: app/frontend/src/App.tsx
 import React, { Suspense, lazy } from 'react';
 import { RouteObject, Navigate, Outlet } from 'react-router-dom';
 import { RootLayout } from './core/components/layout/RootLayout';
