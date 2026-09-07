@@ -115,6 +115,8 @@ export interface BlogPost {
   clusterParent?: string;
   tags?: string[];
   seoTitle?: string;
+  /** Public IA route for this content. Defaults to the Blog. */
+  contentType?: 'blog' | 'guide';
 }
 
 export const BLOG_POSTS: BlogPost[] = [
@@ -669,7 +671,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
 
   {
-    "id": "blog-windows-11-background-services-audit-2026",
+    "id": "guide-windows-11-background-services-audit-2026",
     "slug": "windows-11-background-services-audit",
     "title": "Windows 11 Background Services You Can Audit in 2026",
     "excerpt": "Windows 11 runs many background services most users never inspect. Learn what WHESVC, DiagTrack, SysMain and MapsBroker do and when disabling them makes sense.",
@@ -1506,7 +1508,7 @@ export const BLOG_POSTS: BlogPost[] = [
         "text": "No Fix, No Fee."
       }
     ],
-    "image": "/images/blog/windows-11-background-services-audit-2026.png",
+    "image": "/images/guides/windows-11-background-services-audit-2026.png",
     "date": "2026-09-05",
     "author": "KCROC Technical Team — Windows & Hardware Troubleshooting",
     "category": "Windows & Software",
@@ -1522,6 +1524,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "Computer Repair Kuwait"
     ],
     "seoTitle": "Windows 11 Background Services to Audit in 2026",
+    "contentType": "guide",
     "clusterParent": "laptop-repair-kuwait-2026"
   }
 ];
