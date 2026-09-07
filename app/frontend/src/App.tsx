@@ -160,7 +160,15 @@ export const routes: RouteObject[] = [
           { path: 'laptop-screen-protection-tips', element: <ScreenProtectionTips /> },
           { path: 'blog/laptop-screen-protection-tips', element: <Navigate to="/laptop-screen-protection-tips" replace /> },
           { path: 'battery-replacement', element: <Navigate to="/battery-replacement-kuwait" replace /> },
-          { path: 'guides/windows-11-background-services-audit', element: <BlogPostTemplate /> },
+          // 🩹 FIX: was a static path with no `:slug` param, so
+          // BlogPostTemplate's useParams<{slug}>() read undefined and could
+          // never match this post in BLOG_POSTS — the page rendered as an
+          // empty shell (nav/footer only, no article). Made it a dynamic
+          // segment so `slug` actually resolves. React Router scores static
+          // segments (guides/dell-laptop-overheating, etc., registered
+          // above) higher than this dynamic one, so those routes still win
+          // and only this one falls through to BlogPostTemplate.
+          { path: 'guides/:slug', element: <BlogPostTemplate /> },
           { path: 'blog/windows-11-background-services-audit', element: <Navigate to="/guides/windows-11-background-services-audit" replace /> },
           { path: 'blog/:slug', element: <BlogPostTemplate /> },
           { path: 'computer-repair-:slug', element: <LocationTemplate /> },
