@@ -242,6 +242,7 @@ export class NavigationCompiler {
         { id: 'g3', slug: 'guides/bios-uefi-recovery-kuwait', title: 'BIOS & UEFI Recovery', description: 'Firmware update failures & recovery', iconKey: 'cpu', entityType: 'Page' as any, primaryKeyword: 'bios', weight: 0, commercialIntent: 'info' },
         { id: 'g4', slug: 'guides/gamebar-presence-writer-fix', title: 'GameBarPresenceWriter.exe Fix', description: 'Diagnose gaming stutter the right way', iconKey: 'gaming', entityType: 'Page' as any, primaryKeyword: 'gamebar', weight: 0, commercialIntent: 'info' },
         { id: 'g5', slug: 'guides/windows-11-background-services-audit', title: 'Windows 11 Services Audit', description: 'Audit background services safely', iconKey: 'shield', entityType: 'Page' as any, primaryKeyword: 'windows 11 services', weight: 0, commercialIntent: 'info' },
+        { id: 'g7', slug: 'guides/windows-11-settings-tweaks', title: 'Windows 11 Settings Tweaks', description: 'Privacy, speed & better control', iconKey: 'shield', entityType: 'Page' as any, primaryKeyword: 'windows 11 tweaks', weight: 0, commercialIntent: 'info' },
       ],
       // 🩹 FIX: paired with a new "/guides" index page + route (see App.tsx /
       // pages/GuidesIndex.tsx). This menu had an empty `sections` array with
