@@ -319,6 +319,22 @@ export const rawGraphData: RawGraphData = {
       }
     } as WebPageEntity,
 
+    'guide-windows-11-settings-tweaks': {
+      id: 'guide-windows-11-settings-tweaks',
+      slug: 'guides/windows-11-settings-tweaks',
+      entityType: 'WebPage',
+      isActive: true,
+      title: '18 Windows 11 Settings Worth Changing for Privacy, Speed & Better Control',
+      description: 'Review 18 Windows 11 settings for privacy, startup speed, battery life, gaming and security. Practical advice from KCROC computer technicians in Kuwait.',
+      seo: {
+        title: '18 Windows 11 Tweaks for Better Privacy & Performance',
+        description: 'Review 18 Windows 11 settings for privacy, startup speed, battery life, gaming and security. Practical advice from KCROC computer technicians in Kuwait.',
+        canonicalUrl: 'https://www.computerrepairkuwait.com/guides/windows-11-settings-tweaks',
+        ogType: 'article',
+        schemaTypes: ['Article', 'BreadcrumbList', 'ImageObject']
+      }
+    } as WebPageEntity,
+
     /* ═══════════════════════════════════════════════════════════════
        SERVICES
     ═══════════════════════════════════════════════════════════════ */
