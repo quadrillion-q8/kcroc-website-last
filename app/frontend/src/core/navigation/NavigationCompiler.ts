@@ -69,8 +69,11 @@ export class NavigationCompiler {
     return {
       id: 'services_mega',
       title: 'Repair Services',
-      featured: sorted.slice(0, 3), // Top 3 featured as cards
-      sections: [{ title: 'All Services', items: [servicesIndex, ...sorted.slice(3)] }]
+      // 🎨 CONSISTENCY FIX: match the Guides menu's treatment — fill the
+      // full 2-row card grid (top 6 by weight) instead of only 3 cards
+      // plus a crowded row of leftover pill-links.
+      featured: sorted.slice(0, 6),
+      sections: [{ title: 'More', items: [servicesIndex, ...sorted.slice(6)] }]
     };
   }
 
@@ -97,14 +100,17 @@ export class NavigationCompiler {
     return {
       id: 'brands_mega',
       title: 'Supported Brands',
-      featured: allBrands.slice(0, 3),
-      sections: [{ title: 'All Brands', items: [brandsIndex, ...allBrands.slice(3)] }]
+      // 🎨 CONSISTENCY FIX: all 6 brands now get the Guides-style card
+      // treatment, with just the index link tucked below.
+      featured: allBrands.slice(0, 6),
+      sections: [{ title: 'More', items: [brandsIndex, ...allBrands.slice(6)] }]
     };
   }
 
   // 3. Problems Mega Menu
   private static compileProblemsMegaMenu(): MegaMenuConfig {
     const allProblems = (NAV_GRAPH.problems || []).map(p => this.compileNavEntity(p, 'Problem', 'shield'));
+    const sortedProblems = [...allProblems].sort((a, b) => b.weight - a.weight);
 
     // 🩹 FIX: paired with a new "/problems" index page + route (see App.tsx /
     // pages/ProblemsIndex.tsx) — same missing-index-page issue as Brands.
@@ -123,8 +129,11 @@ export class NavigationCompiler {
     return {
       id: 'problems_mega',
       title: 'Common Problems',
-      featured: allProblems.slice(0, 3),
-      sections: [{ title: 'Troubleshooting Guides', items: [problemsIndex, ...allProblems.slice(3)] }]
+      // 🎨 CONSISTENCY FIX: top 6 problems by weight as cards, same as
+      // Guides; the remaining 8 (14 total) sit in the "More" section as
+      // compact links rather than crowding the card grid.
+      featured: sortedProblems.slice(0, 6),
+      sections: [{ title: 'More', items: [problemsIndex, ...sortedProblems.slice(6)] }]
     };
   }
 
@@ -144,12 +153,15 @@ export class NavigationCompiler {
     return {
       id: 'case_studies_mega',
       title: 'Real Repair Stories',
-      featured: allCaseStudies.slice(0, 3), // Same card treatment as Services/Pricing
+      // 🎨 CONSISTENCY FIX: same Guides-style card treatment — all 3 case
+      // studies as cards (grid just renders a single row when under 6),
+      // with only the index link below.
+      featured: allCaseStudies.slice(0, 6),
       sections: [{
         title: 'Browse All',
         items: [
           { id: 'cs_index', slug: 'case-studies', title: 'All Case Studies', description: '', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'cases', weight: 100, commercialIntent: 'info' },
-          ...allCaseStudies.slice(3)
+          ...allCaseStudies.slice(6)
         ]
       }]
     };
@@ -175,8 +187,10 @@ export class NavigationCompiler {
     return {
       id: 'pricing_mega',
       title: 'Repair Pricing',
-      featured: sorted.slice(0, 3), // Top 3 featured as cards, same picks as the Services menu
-      sections: [{ title: 'Pricing By Service', items: [priceIndex, ...sorted.slice(3)] }]
+      // 🎨 CONSISTENCY FIX: same 6-card grid as the Services menu (same
+      // underlying list), matching the Guides menu's layout.
+      featured: sorted.slice(0, 6),
+      sections: [{ title: 'More', items: [priceIndex, ...sorted.slice(6)] }]
     };
   }
 
@@ -185,27 +199,26 @@ export class NavigationCompiler {
     return {
       id: 'blog_mega',
       title: 'Blog & Updates',
+      // 🎨 CONSISTENCY FIX: bumped from 3 to 6 featured cards (2 full rows,
+      // same as Guides) by promoting the next 3 strongest posts out of the
+      // old "More Posts" pill-cluster and into the card grid.
       featured: [
         { id: 'b6', slug: 'blog/laptop-buying-guide-kuwait-2026', title: 'Laptop Buying Guide 2026', description: 'Which specs actually matter in 2026', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'buying guide', weight: 0, commercialIntent: 'info' },
         { id: 'b7', slug: 'blog/intel-core-ultra-vs-amd-ryzen-ai', title: 'Intel vs AMD CPUs', description: 'Core Ultra vs Ryzen AI compared', iconKey: 'cpu', entityType: 'Page' as any, primaryKeyword: 'cpu', weight: 0, commercialIntent: 'info' },
-        // 🚀 ADDED: Arabic Laptop Buying Guide
-        { id: 'b8', slug: 'blog/ar/laptop-buying-guide-kuwait-2026', title: 'دليل شراء اللابتوب 2026', description: 'دليل شامل لشراء اللابتوب في الكويت', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'buying guide ar', weight: 0, commercialIntent: 'info' },
+        { id: 'b12', slug: 'blog/laptop-temperatures-kuwait-safe-cpu-gpu-temperatures', title: 'Laptop Temperatures in Kuwait', description: 'CPU & GPU temperature guide', iconKey: 'cpu', entityType: 'Page' as any, primaryKeyword: 'laptop temperature', weight: 0, commercialIntent: 'info' },
+        { id: 'b9', slug: 'blog/why-8gb-ram-is-no-longer-enough-for-windows-11', title: '8GB RAM & Windows 11', description: 'Why 8GB is now the bottleneck', iconKey: 'cpu', entityType: 'Page' as any, primaryKeyword: 'ram', weight: 0, commercialIntent: 'info' },
+        { id: 'b10', slug: 'blog/10-reasons-why-people-are-dumping-windows-11', title: '10 Reasons People Are Dumping Windows 11', description: 'A close look at the Windows 11 backlash', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'windows 11', weight: 0, commercialIntent: 'info' },
+        { id: 'b11', slug: 'blog/gaming-pc-mistakes-kuwait', title: 'Gaming PC Mistakes', description: 'Common build & cooling mistakes to avoid', iconKey: 'gaming', entityType: 'Page' as any, primaryKeyword: 'gaming pc mistakes', weight: 0, commercialIntent: 'info' },
       ],
       sections: [{
-        title: 'More Posts',
+        title: 'More',
         items: [
-          { id: 'b12', slug: 'blog/laptop-temperatures-kuwait-safe-cpu-gpu-temperatures', title: 'Laptop Temperatures in Kuwait', description: 'CPU & GPU temperature guide', iconKey: 'cpu', entityType: 'Page' as any, primaryKeyword: 'laptop temperature', weight: 10, commercialIntent: 'info' },
           { id: 'b1', slug: 'blog', title: 'All Posts', description: '', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'blog', weight: 0, commercialIntent: 'info' },
+          { id: 'b8', slug: 'blog/ar/laptop-buying-guide-kuwait-2026', title: 'دليل شراء اللابتوب 2026', description: '', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'buying guide ar', weight: 0, commercialIntent: 'info' },
           { id: 'b2', slug: 'blog/laptop-repair-kuwait-2026', title: 'Repair Guide 2026', description: '', iconKey: 'wrench', entityType: 'Page' as any, primaryKeyword: 'guide', weight: 0, commercialIntent: 'info' },
           { id: 'b3', slug: 'laptop-screen-protection-tips', title: 'Screen Protection Tips', description: '', iconKey: 'shield', entityType: 'Page' as any, primaryKeyword: 'tips', weight: 0, commercialIntent: 'info' },
           { id: 'b4', slug: 'blog/how-to-protect-laptop-screen', title: 'Protect Laptop Screen', description: '', iconKey: 'monitor', entityType: 'Page' as any, primaryKeyword: 'protect', weight: 0, commercialIntent: 'info' },
           { id: 'b5', slug: 'blog/gaming-pc-cooling', title: 'Gaming PC Cooling', description: '', iconKey: 'gaming', entityType: 'Page' as any, primaryKeyword: 'cooling', weight: 0, commercialIntent: 'info' },
-          // 🩹 FIX: these two live posts (see src/constants/blogPosts.ts) were
-          // published but never added here, so they were unreachable from
-          // the Blog dropdown even though /blog/<slug> worked directly.
-          { id: 'b9', slug: 'blog/why-8gb-ram-is-no-longer-enough-for-windows-11', title: '8GB RAM & Windows 11', description: '', iconKey: 'cpu', entityType: 'Page' as any, primaryKeyword: 'ram', weight: 0, commercialIntent: 'info' },
-          { id: 'b10', slug: 'blog/10-reasons-why-people-are-dumping-windows-11', title: '10 Reasons People Are Dumping Windows 11', description: '', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'windows 11', weight: 0, commercialIntent: 'info' },
-          { id: 'b11', slug: 'blog/gaming-pc-mistakes-kuwait', title: 'Gaming PC Mistakes', description: '', iconKey: 'gaming', entityType: 'Page' as any, primaryKeyword: 'gaming pc mistakes', weight: 0, commercialIntent: 'info' },
         ]
       }]
     };
@@ -247,20 +260,18 @@ export class NavigationCompiler {
     return {
       id: 'about_mega',
       title: 'Company Info',
+      // 🎨 CONSISTENCY FIX: bumped from 4 to 6 featured cards (2 full rows,
+      // same as Guides) by folding FAQ and Privacy & Security — previously
+      // stranded in a separate "More" pill list — into the card grid.
       featured: [
         { id: 'a1', slug: 'about', title: 'About Us', description: 'Our story and the team behind KCROC', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'about', weight: 0, commercialIntent: 'info' },
         { id: 'a7', slug: 'near-me', title: 'Find Computer Repair Near You', description: 'Find your Kuwait service area and arrange pickup', iconKey: 'map-pin', entityType: 'Page' as any, primaryKeyword: 'computer repair near me', weight: 0, commercialIntent: 'transactional' },
         { id: 'a2', slug: 'gallery', title: 'Gallery', description: 'A look inside the workshop', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'gallery', weight: 0, commercialIntent: 'info' },
         { id: 'a6', slug: 'contact', title: 'Contact', description: 'Get in touch or find our lab', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'contact', weight: 0, commercialIntent: 'info' },
+        { id: 'a3', slug: 'faq', title: 'FAQ', description: 'Answers to common repair questions', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'faq', weight: 0, commercialIntent: 'info' },
+        { id: 'a4', slug: 'privacy-security-kuwait', title: 'Privacy & Security', description: 'How we protect your data and devices', iconKey: 'shield', entityType: 'Page' as any, primaryKeyword: 'privacy', weight: 0, commercialIntent: 'info' },
       ],
       sections: [
-        {
-          title: 'More',
-          items: [
-            { id: 'a3', slug: 'faq', title: 'FAQ', description: '', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'faq', weight: 0, commercialIntent: 'info' },
-            { id: 'a4', slug: 'privacy-security-kuwait', title: 'Privacy & Security', description: '', iconKey: 'shield', entityType: 'Page' as any, primaryKeyword: 'privacy', weight: 0, commercialIntent: 'info' },
-          ]
-        },
         // Dedicated Locations Section
         {
           title: 'Service Areas',
