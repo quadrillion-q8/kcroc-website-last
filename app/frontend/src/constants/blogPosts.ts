@@ -1567,6 +1567,12 @@ export const BLOG_POSTS: BlogPost[] = [
         "text": "That's where real optimization begins."
       },
       {
+        "type": "callout",
+        "variant": "info",
+        "title": "Looking for more than services?",
+        "text": "This guide focuses on four background services. If you want a broader, Settings-level review — Start menu, privacy permissions, startup apps, power modes, UAC and more — see 18 Windows 11 Settings Worth Changing for Privacy, Speed & Better Control."
+      },
+      {
         "type": "h2",
         "text": "Frequently Asked Questions",
         "id": "faq"
@@ -1718,6 +1724,10 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         "type": "paragraph",
         "text": "If your computer is slow because an SSD is failing, disabling notifications won't fix it. If the CPU is overheating, changing startup applications won't repair the cooling system. If malware is consuming resources, turning off background apps isn't the solution."
+      },
+      {
+        "type": "paragraph",
+        "text": "We cover this same measure-first principle in more technical depth in Windows 11 Background Services You Can Audit in 2026, which applies it to individual Windows services like DiagTrack and SysMain rather than Settings-app switches. The rule is identical either way: identify the actual bottleneck before changing anything."
       },
       {
         "type": "h2",
@@ -1877,18 +1887,14 @@ export const BLOG_POSTS: BlogPost[] = [
         ]
       },
       {
-        "type": "paragraph",
-        "text": "Windows distinguishes between required and optional diagnostic information."
-      },
-      {
         "type": "callout",
         "variant": "recommendation",
         "title": "Our recommendation",
-        "text": "For most personal computers, there is no need to aggressively disable Windows' core diagnostic functionality. If you do not want to provide optional diagnostic information, review the available controls and keep the required data setting intact."
+        "text": "For most personal computers, there is no need to aggressively disable Windows' core diagnostic functionality. If you do not want to provide optional diagnostic information, review the available controls and keep the required data setting intact. Reducing optional diagnostic data is primarily about data sharing and privacy — it should not be advertised as a major speed upgrade."
       },
       {
         "type": "paragraph",
-        "text": "Important distinction: Reducing optional diagnostic information is primarily about data sharing and privacy. It should not be advertised as a major speed upgrade."
+        "text": "This toggle controls diagnostics from the Settings app. If you want the technical, service-level view of the same underlying component — including its documented network endpoints and a real CVE tied to a related Windows health service — see Windows 11 Background Services You Can Audit in 2026, which covers DiagTrack and WHESVC in depth."
       },
       {
         "type": "h2",
