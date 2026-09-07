@@ -327,8 +327,8 @@ export const rawGraphData: RawGraphData = {
       title: '18 Windows 11 Settings Worth Changing for Privacy, Speed & Better Control',
       description: 'Review 18 Windows 11 settings for privacy, startup speed, battery life, gaming and security. Practical advice from KCROC computer technicians in Kuwait.',
       seo: {
-        title: '18 Windows 11 Tweaks for Better Privacy & Performance',
-        description: 'Review 18 Windows 11 settings for privacy, startup speed, battery life, gaming and security. Practical advice from KCROC computer technicians in Kuwait.',
+        title: '18 Windows 11 Settings to Change in 2026 (Not Services) | KCROC',
+        description: 'A Settings-app audit of Windows 11 — privacy, startup, power and UAC controls. Looking for background services instead? See our Services Audit guide.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/guides/windows-11-settings-tweaks',
         ogType: 'article',
         schemaTypes: ['Article', 'BreadcrumbList', 'ImageObject']
