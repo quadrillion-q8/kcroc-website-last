@@ -1,14 +1,14 @@
 // File: app/frontend/src/pages/BlogPostTemplate.tsx
 import { Head } from 'vite-react-ssg';
 import React, { useMemo, useState, useEffect, useRef, useCallback } from 'react';
-import { useParams, Navigate, Link } from 'react-router-dom';
+import { useParams, Navigate, Link, useLocation } from 'react-router-dom';
 import {
   Calendar, Clock, User, ArrowLeft, ExternalLink, Share2, ChevronRight, Network,
   List, Info, Lightbulb, Sparkles, AlertTriangle, HelpCircle, Quote as QuoteIcon,
   ChevronDown, Link2, ArrowUp, Phone, MessageCircle, Check
 } from 'lucide-react';
 
-import { ROUTES, getBlogRoute } from '../constants/routes';
+import { ROUTES, getBlogRoute, getContentRoute } from '../constants/routes';
 import { BLOG_POSTS, BlogPost, ContentBlock } from '../constants/blogPosts';
 import { KCROC_GRAPH } from '../data/graph';
 import { AutoLink } from '../utils/linkGraph';
@@ -204,6 +204,10 @@ const RichBlock: React.FC<{ block: ContentBlock; headingRef?: (el: HTMLElement |
 
 export default function BlogPostTemplate() {
   const { slug } = useParams<{ slug: string }>();
+  const location = useLocation();
+  const isGuide = location.pathname.startsWith('/guides/');
+  const contentRoute = (post: BlogPost) =>
+    getContentRoute(post.slug, post.contentType ?? 'blog');
   const post = BLOG_POSTS.find((p) => p.slug === slug);
 
   const [progress, setProgress] = useState(0);
@@ -265,7 +269,7 @@ export default function BlogPostTemplate() {
     headingRefs.current[id] = el;
   }, []);
 
-  const pageUrl = post ? `${business.websiteUrl}${getBlogRoute(post.slug)}` : '';
+  const pageUrl = post ? `${business.websiteUrl}${contentRoute(post)}` : '';
   const waLink = post ? getIntentWhatsAppLink("blog", post.title) : '';
 
   // Combine all FAQ blocks for unified Schema.org metadata
@@ -341,7 +345,7 @@ export default function BlogPostTemplate() {
           "isPartOf": { "@id": `${business.websiteUrl}/#website` }
         },
         {
-          "@type": ["BlogPosting", "Article"],
+          "@type": isGuide ? "Article" : ["BlogPosting", "Article"],
           "@id": `${pageUrl}#article`,
           "headline": post.title,
           "description": post.excerpt,
@@ -361,7 +365,7 @@ export default function BlogPostTemplate() {
           "@id": `${pageUrl}#breadcrumb`,
           "itemListElement": [
             { "@type": "ListItem", "position": 1, "name": "Home", "item": business.websiteUrl },
-            { "@type": "ListItem", "position": 2, "name": "Blog", "item": `${business.websiteUrl}${ROUTES.BLOG}` },
+            { "@type": "ListItem", "position": 2, "name": isGuide ? "Guides" : "Blog", "item": `${business.websiteUrl}${isGuide ? ROUTES.GUIDES : ROUTES.BLOG}` },
             { "@type": "ListItem", "position": 3, "name": post.title, "item": pageUrl }
           ]
         },
@@ -376,10 +380,10 @@ export default function BlogPostTemplate() {
         }] : [])
       ]
     };
-  }, [post, pageUrl, allFaqItems]);
+  }, [post, pageUrl, allFaqItems, isGuide]);
 
   // All hooks have now run unconditionally on every render — safe to bail out.
-  if (!post) return <Navigate to={ROUTES.BLOG} replace />;
+  if (!post) return <Navigate to={isGuide ? ROUTES.GUIDES : ROUTES.BLOG} replace />;
 
   return (
     <main className="w-full min-h-screen bg-slate-950 text-slate-200 pt-8 sm:pt-16 lg:pt-32 pb-8 sm:pb-16 lg:pb-24">
@@ -411,7 +415,7 @@ export default function BlogPostTemplate() {
         <ol className="flex items-center gap-2 text-sm text-slate-400 overflow-x-auto pb-2 scrollbar-hide">
           <li><Link to={ROUTES.HOME} className="hover:text-cyan-400">Home</Link></li>
           <ChevronRight size={14} aria-hidden="true" />
-          <li><Link to={ROUTES.BLOG} className="hover:text-cyan-400">Blog</Link></li>
+          <li><Link to={isGuide ? ROUTES.GUIDES : ROUTES.BLOG} className="hover:text-cyan-400">{isGuide ? "Guides" : "Blog"}</Link></li>
           <ChevronRight size={14} aria-hidden="true" />
           <li className="text-cyan-400 truncate" aria-current="page">{post.title}</li>
         </ol>
@@ -422,8 +426,8 @@ export default function BlogPostTemplate() {
         <div>
           <article className="max-w-4xl" ref={articleRef}>
             <header className="mb-12">
-              <Link to={ROUTES.BLOG} className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors mb-8 font-medium">
-                <ArrowLeft size={16} aria-hidden="true" /> Back to Blog
+              <Link to={isGuide ? ROUTES.GUIDES : ROUTES.BLOG} className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors mb-8 font-medium">
+                <ArrowLeft size={16} aria-hidden="true" /> Back to {isGuide ? "Guides" : "Blog"}
               </Link>
 
               <div className="flex flex-wrap gap-4 text-xs font-bold text-slate-400 mb-6 uppercase tracking-wider">
@@ -593,7 +597,7 @@ export default function BlogPostTemplate() {
               </h3>
               <div className="grid md:grid-cols-2 gap-6">
                 {relatedPosts.map(r => (
-                  <Link key={r.slug} to={getBlogRoute(r.slug)} className="bg-slate-900/30 p-6 rounded-2xl border border-slate-800 hover:border-cyan-500/50 transition-all hover:-translate-y-1 group flex flex-col h-full motion-reduce:hover:translate-y-0">
+                  <Link key={r.slug} to={contentRoute(r)} className="bg-slate-900/30 p-6 rounded-2xl border border-slate-800 hover:border-cyan-500/50 transition-all hover:-translate-y-1 group flex flex-col h-full motion-reduce:hover:translate-y-0">
                     <div className="flex items-center justify-between mb-3">
                       <span className="text-xs font-bold text-cyan-400 uppercase tracking-wider">{r.category}</span>
                       {r.isPillar && <span className="text-xs font-bold text-purple-400 bg-purple-500/10 px-2 py-0.5 rounded-full">Pillar</span>}
@@ -642,7 +646,7 @@ export default function BlogPostTemplate() {
                 <ul className="space-y-3">
                   {recentPosts.map(r => (
                     <li key={r.slug}>
-                      <Link to={getBlogRoute(r.slug)} className="text-sm text-slate-300 hover:text-cyan-400 leading-snug line-clamp-2">
+                      <Link to={contentRoute(r)} className="text-sm text-slate-300 hover:text-cyan-400 leading-snug line-clamp-2">
                         {r.title}
                       </Link>
                     </li>
