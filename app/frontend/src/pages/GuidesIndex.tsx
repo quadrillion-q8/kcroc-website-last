@@ -8,7 +8,7 @@
 // NavigationCompiler.ts). This page + its route in App.tsx fixes both.
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { BatteryWarning, Cpu, HardDrive, Gamepad2, Shield, Power, ChevronRight } from 'lucide-react';
+import { BatteryWarning, Cpu, HardDrive, Gamepad2, Shield, Power, Settings2, ChevronRight } from 'lucide-react';
 import { SEOEngine } from '../core/components/SEOEngine';
 
 interface GuideLink {
@@ -18,10 +18,10 @@ interface GuideLink {
   icon: React.ElementType;
 }
 
-// Kept as a small static list (rather than pulled from the graph) because
-// there are only two of these hand-written diagnostic guides today. Add new
-// guides here, in App.tsx's routes array, and in NavigationCompiler.ts's
-// compileGuidesMegaMenu() when a new one is published.
+// Kept as an explicit static list so guide display order and descriptions
+// stay intentional. Add each new guide here, in NavigationCompiler.ts's
+// compileGuidesMegaMenu(), and ensure its route is covered by the shared
+// /guides/:slug handler or an explicit route when a custom page is needed.
 const GUIDES: GuideLink[] = [
   {
     slug: 'guides/laptop-wont-turn-on',
@@ -62,6 +62,12 @@ const GUIDES: GuideLink[] = [
     title: 'Windows 11 Background Services Audit',
     description: 'Understand WHESVC, DiagTrack, SysMain and MapsBroker, and learn how to investigate background services without blindly disabling Windows components.',
     icon: Shield,
+  },
+  {
+    slug: 'guides/windows-11-settings-tweaks',
+    title: '18 Windows 11 Settings Worth Changing',
+    description: 'A technician-written guide to privacy, startup, battery, gaming, security and better Windows control—without pretending every setting makes a PC faster.',
+    icon: Settings2,
   },
 ];
 
