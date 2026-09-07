@@ -2350,6 +2350,9 @@ export const rawGraphData: RawGraphData = {
     'problem-no-power': {
       id: 'problem-no-power', slug: 'laptop-wont-turn-on', entityType: 'Problem', isActive: true,
       title: 'Laptop Won\'t Turn On (No Power)',
+      primaryKeyword: "laptop won't turn on",
+      secondaryKeywords: ['laptop no power', 'laptop not turning on', 'dead laptop'],
+      synonyms: ['laptop will not turn on', 'laptop completely dead'],
       description: 'Diagnostic guide for laptops that are completely dead with no lights or fan spin.',
       symptom: 'The laptop is completely unresponsive when the power button is pressed. No charging lights illuminate when plugged in, and no fan noise is heard.',
       causes: ['Failed charging port (DC Jack/USB-C)', 'Dead or shorted battery preventing boot', 'Shorted input MOSFET on motherboard', 'Blown main power rail (e.g., PPBUS_G3H on MacBooks)'],
