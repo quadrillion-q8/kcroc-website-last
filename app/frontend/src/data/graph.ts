@@ -303,6 +303,22 @@ export const rawGraphData: RawGraphData = {
       }
     } as WebPageEntity,
 
+    'guide-windows-11-services': {
+      id: 'guide-windows-11-services',
+      slug: 'guides/windows-11-background-services-audit',
+      entityType: 'WebPage',
+      isActive: true,
+      title: 'Windows 11 Background Services You Can Audit in 2026',
+      description: 'A technician-written Windows 11 guide covering WHESVC, DiagTrack, SysMain and MapsBroker, with evidence-first checks before changing service settings.',
+      seo: {
+        title: 'Windows 11 Background Services Audit | KCROC',
+        description: 'Learn how to audit Windows 11 background services, investigate WHESVC, DiagTrack, SysMain and MapsBroker, and avoid unsafe debloating.',
+        canonicalUrl: 'https://www.computerrepairkuwait.com/guides/windows-11-background-services-audit',
+        ogType: 'article',
+        schemaTypes: ['Article', 'BreadcrumbList']
+      }
+    } as WebPageEntity,
+
     /* ═══════════════════════════════════════════════════════════════
        SERVICES
     ═══════════════════════════════════════════════════════════════ */
