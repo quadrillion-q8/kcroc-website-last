@@ -1,4 +1,4 @@
-// File: app/frontend/src/App.tsx
+\// File: app/frontend/src/App.tsx
 import React, { Suspense, lazy } from 'react';
 import { RouteObject, Navigate, Outlet } from 'react-router-dom';
 import { RootLayout } from './core/components/layout/RootLayout';
@@ -160,6 +160,8 @@ export const routes: RouteObject[] = [
           { path: 'laptop-screen-protection-tips', element: <ScreenProtectionTips /> },
           { path: 'blog/laptop-screen-protection-tips', element: <Navigate to="/laptop-screen-protection-tips" replace /> },
           { path: 'battery-replacement', element: <Navigate to="/battery-replacement-kuwait" replace /> },
+          { path: 'guides/windows-11-background-services-audit', element: <BlogPostTemplate /> },
+          { path: 'blog/windows-11-background-services-audit', element: <Navigate to="/guides/windows-11-background-services-audit" replace /> },
           { path: 'blog/:slug', element: <BlogPostTemplate /> },
           { path: 'computer-repair-:slug', element: <LocationTemplate /> },
           { path: 'laptop-repair-:slug', element: <LocationTemplate /> },
