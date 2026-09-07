@@ -206,7 +206,6 @@ export class NavigationCompiler {
           { id: 'b9', slug: 'blog/why-8gb-ram-is-no-longer-enough-for-windows-11', title: '8GB RAM & Windows 11', description: '', iconKey: 'cpu', entityType: 'Page' as any, primaryKeyword: 'ram', weight: 0, commercialIntent: 'info' },
           { id: 'b10', slug: 'blog/10-reasons-why-people-are-dumping-windows-11', title: '10 Reasons People Are Dumping Windows 11', description: '', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'windows 11', weight: 0, commercialIntent: 'info' },
           { id: 'b11', slug: 'blog/gaming-pc-mistakes-kuwait', title: 'Gaming PC Mistakes', description: '', iconKey: 'gaming', entityType: 'Page' as any, primaryKeyword: 'gaming pc mistakes', weight: 0, commercialIntent: 'info' },
-          { id: 'b13', slug: 'blog/windows-11-background-services-audit', title: 'Windows 11 Background Services Audit', description: '', iconKey: 'shield', entityType: 'Page' as any, primaryKeyword: 'windows 11 services', weight: 0, commercialIntent: 'info' },
         ]
       }]
     };
@@ -228,6 +227,7 @@ export class NavigationCompiler {
         { id: 'g2', slug: 'guides/laptop-battery-warning-signs', title: 'Battery Warning Signs', description: 'Lithium-ion failure checklist', iconKey: 'battery', entityType: 'Page' as any, primaryKeyword: 'battery', weight: 0, commercialIntent: 'info' },
         { id: 'g3', slug: 'guides/bios-uefi-recovery-kuwait', title: 'BIOS & UEFI Recovery', description: 'Firmware update failures & recovery', iconKey: 'cpu', entityType: 'Page' as any, primaryKeyword: 'bios', weight: 0, commercialIntent: 'info' },
         { id: 'g4', slug: 'guides/gamebar-presence-writer-fix', title: 'GameBarPresenceWriter.exe Fix', description: 'Diagnose gaming stutter the right way', iconKey: 'gaming', entityType: 'Page' as any, primaryKeyword: 'gamebar', weight: 0, commercialIntent: 'info' },
+        { id: 'g5', slug: 'guides/windows-11-background-services-audit', title: 'Windows 11 Services Audit', description: 'Audit background services safely', iconKey: 'shield', entityType: 'Page' as any, primaryKeyword: 'windows 11 services', weight: 0, commercialIntent: 'info' },
       ],
       // 🩹 FIX: paired with a new "/guides" index page + route (see App.tsx /
       // pages/GuidesIndex.tsx). This menu had an empty `sections` array with
