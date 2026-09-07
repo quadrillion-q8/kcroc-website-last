@@ -292,11 +292,11 @@ export const rawGraphData: RawGraphData = {
       slug: 'guides/gamebar-presence-writer-fix',
       entityType: 'WebPage',
       isActive: true,
-      title: 'GameBarPresenceWriter.exe: Diagnose & Disable Background Game Bar Activity',
-      description: 'Seeing micro-stutters, frame-time spikes, or input-feel changes on a powerful Windows gaming PC? A measured, evidence-first diagnostic guide to GameBarPresenceWriter.exe and Windows Game Bar background activity.',
+      title: 'GameBarPresenceWriter.exe: What It Does, How to Fix Performance Issues, and How to Disable It',
+      description: 'What is GameBarPresenceWriter.exe? A measured, evidence-first guide covering what the Windows Game Bar component does, how to check if it is causing high CPU use or stutter, and how to disable related Game Bar activity.',
       seo: {
-        title: 'GameBarPresenceWriter.exe: Fix Stutter & Disable | KCROC',
-        description: 'What is GameBarPresenceWriter.exe? Learn how to diagnose stutter, disable Xbox Game Bar safely, and check whether this Windows component is actually causing the problem.',
+        title: 'GameBarPresenceWriter.exe: What It Is, Performance Fixes & How to Disable It | KCROC',
+        description: 'What is GameBarPresenceWriter.exe? Learn what the Windows Game Bar component does, how to test whether it affects performance or stuttering, and safer ways to disable related Game Bar activity.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/guides/gamebar-presence-writer-fix',
         ogType: 'article',
         schemaTypes: ['Article', 'BreadcrumbList', 'ImageObject']
