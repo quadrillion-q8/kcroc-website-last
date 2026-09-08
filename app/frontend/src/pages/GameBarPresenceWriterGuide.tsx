@@ -19,6 +19,17 @@ const PAGE_URL = `${business.websiteUrl}/guides/gamebar-presence-writer-fix`;
 
 const registryPath = 'HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\WindowsRuntime\\ActivatableClassId\\Windows.Gaming.GameBar.PresenceServer.Internal.PresenceWriter';
 
+// Microsoft's own DevNotes page documents what Presence Writer *does* (the
+// COM contract, the focus/close events) and the *registration* path for a
+// custom implementation (WindowsRuntime\Server\...\PresenceWriterServer).
+// It does not document the ActivatableClassId ownership-override tweak
+// below — that's a community-discovered workaround, not an MS-sanctioned
+// disable method. Cited for the "what it does" claim only; the registry
+// section is explicit that the override itself is unofficial.
+const MS_DOCS_URL = 'https://learn.microsoft.com/en-us/windows/win32/devnotes/gamebar-presencewriter';
+
+const LAST_REVIEWED = 'August 23, 2026';
+
 const toc = [
   { id: 'what-it-is', label: 'What It Is' },
   { id: 'diagnose', label: 'Diagnose First' },
@@ -50,18 +61,43 @@ const faqs = [
   { q: 'Can I undo the registry change?', a: 'Yes, if you made a backup and documented the original value. The safest recovery path is to restore the original registry value and ownership rather than assuming a hard-coded value applies identically to every Windows build.' },
 ];
 
-// 🚀 Self-contained FAQPage + BreadcrumbList schema, rendered directly via
-// SchemaMarkup rather than through SEOEngine's `schemaTypes: ['FAQPage']`
-// path. SEOEngine's WebPage->FAQPage branch falls back to
-// `KCROC_GRAPH.faqs` (every FAQ on the entire site) whenever the entity has
-// no `featuredFAQIds` — this page's 8 FAQs aren't registered as global FAQ
-// entities, so enabling that schemaType on the graph entity would have
-// silently attached every site-wide FAQ to this page instead of just these
-// 8. Same pattern already used on ScreenProtectionTips.tsx and
-// GamingPCCooling.tsx.
+// 🚀 Self-contained TechArticle + Person + HowTo + FAQPage + BreadcrumbList
+// schema, rendered directly via SchemaMarkup rather than through SEOEngine's
+// `schemaTypes` path. Two independent reasons this page opts out of
+// SEOEngine's auto-generation instead of just the FAQPage piece:
+//
+// 1. FAQPage: SEOEngine's WebPage->FAQPage branch falls back to
+//    `KCROC_GRAPH.faqs` (every FAQ on the entire site) whenever the entity
+//    has no `featuredFAQIds` — this page's 8 FAQs aren't registered as
+//    global FAQ entities, so enabling that schemaType on the graph entity
+//    would have silently attached every site-wide FAQ to this page instead
+//    of just these 8. Same pattern already used on ScreenProtectionTips.tsx
+//    and GamingPCCooling.tsx.
+// 2. Article/BreadcrumbList/Person: the graph entity for this page used to
+//    carry `schemaTypes: ['Article','BreadcrumbList','ImageObject']`, which
+//    made SEOEngine ALSO push its own generic `Article` node at the exact
+//    same `#article` @id as this file's hand-rolled `TechArticle`, plus a
+//    second, redundant `BreadcrumbList` node — two competing type
+//    declarations for one @id is an invalid/ambiguous graph, not just
+//    wasted bytes. Fixed by trimming the entity's `schemaTypes` down to
+//    `['WebPage']` in graph.ts (keeps the `#webpage` node this page's
+//    `mainEntityOfPage` and `HowTo` reference, drops the colliding
+//    Article/Breadcrumb/Person auto-emission) and hand-rolling the Person
+//    node below instead, using the same canonical `AUTHOR_ID` shape
+//    SEOEngine uses elsewhere so it resolves consistently site-wide.
+const AUTHOR_ID = `${business.websiteUrl}/author/imran#person`;
+
 const STRUCTURED_DATA = {
   "@context": "https://schema.org",
   "@graph": [
+    {
+      "@type": "Person",
+      "@id": AUTHOR_ID,
+      "name": "Imran Natiq",
+      "url": `${business.websiteUrl}/author/imran`,
+      "jobTitle": "Founder & Lead Technician",
+      "worksFor": { "@id": `${business.websiteUrl}/#business` }
+    },
     {
       "@type": "TechArticle",
       "@id": `${PAGE_URL}#article`,
@@ -69,9 +105,26 @@ const STRUCTURED_DATA = {
       "description": "What is GameBarPresenceWriter.exe? A measured, evidence-first guide to what the Windows Game Bar component does, whether it's causing high CPU use or stutter, and how to disable related Game Bar activity.",
       "url": PAGE_URL,
       "isPartOf": { "@id": `${business.websiteUrl}/#website` },
+      "mainEntityOfPage": { "@id": `${PAGE_URL}#webpage` },
       "about": { "@id": `${business.websiteUrl}/#business` },
-      "author": { "@id": `${business.websiteUrl}/#business` },
+      "author": { "@id": AUTHOR_ID },
+      "publisher": { "@id": `${business.websiteUrl}/#business` },
+      "image": IMAGES.gaming.rgbLighting.src,
+      "articleSection": "Guides",
       "dateModified": "2026-08-23"
+    },
+    {
+      "@type": "HowTo",
+      "@id": `${PAGE_URL}#howto`,
+      "name": "How to test and fix GameBarPresenceWriter.exe-related stutter",
+      "description": "A measure-first sequence for isolating whether Game Bar Presence Writer is contributing to gaming stutter, from least to most invasive.",
+      "step": [
+        { "@type": "HowToStep", "position": 1, "name": "Diagnose before you modify anything", "text": "Reproduce the stutter in a repeatable scene and log frame-time, temperatures, and background load to identify what's actually correlated with the symptom.", "url": `${PAGE_URL}#diagnose` },
+        { "@type": "HowToStep", "position": 2, "name": "Disable Xbox Game Bar and capture settings", "text": "Turn off Game Bar and background captures in Settings, reboot, and compare frame-time in the same scene. This is the lowest-risk step and doesn't touch the registry.", "url": `${PAGE_URL}#safe-method` },
+        { "@type": "HowToStep", "position": 3, "name": "Back up before touching the registry", "text": "If the safe method doesn't resolve it, create a restore point and export the ActivatableClassId registry key before changing any permissions or values.", "url": `${PAGE_URL}#registry` },
+        { "@type": "HowToStep", "position": 4, "name": "Test the ActivationType value", "text": "Change the ActivationType DWORD from an elevated terminal, retest, and keep the documented original value so you can restore it exactly.", "url": `${PAGE_URL}#command-line` },
+        { "@type": "HowToStep", "position": 5, "name": "Confirm with a targeted taskkill test", "text": "Terminate the running process for a quick before/after comparison — this confirms correlation for the current session but isn't a permanent disable.", "url": `${PAGE_URL}#taskkill` }
+      ]
     },
     {
       "@type": "FAQPage",
@@ -207,7 +260,7 @@ export default function GameBarPresenceWriterGuide() {
               <Badge className="mb-3 border-cyan-500/30 bg-cyan-500/10 text-cyan-300">What it actually does</Badge>
               <h2 className="text-2xl font-bold sm:text-4xl">The “ghost” is real — the bottleneck is not automatically proven.</h2>
               <p className={`mt-4 ${proseClass}`}>
-                Microsoft documents Game Bar Presence Writer as a Windows component that receives game presence events such as focus gained, focus lost, and game close. When the relevant Xbox functionality is enabled, the default implementation can update Xbox Live presence for the running game. That is a much narrower and more defensible description than saying the executable is inherently a telemetry process that steals gaming network bandwidth.
+                <a href={MS_DOCS_URL} target="_blank" rel="noopener noreferrer" className="font-semibold text-cyan-300 underline decoration-cyan-500/40 underline-offset-4 hover:text-cyan-200">Microsoft's own developer documentation</a> describes Game Bar Presence Writer as a Windows component that receives game presence events such as focus gained, focus lost, and game close. When the relevant Xbox functionality is enabled, the default implementation can update Xbox Live presence for the running game. That is a much narrower and more defensible description than saying the executable is inherently a telemetry process that steals gaming network bandwidth.
               </p>
               <p className={`mt-4 ${proseClass}`}>
                 That distinction matters. If your frame-time graph shows a reproducible improvement after Game Bar activity is removed, the tweak may be worthwhile on your particular system. If nothing changes, restore the defaults and investigate the actual source instead.
@@ -306,7 +359,7 @@ export default function GameBarPresenceWriterGuide() {
               </div>
             </div>
             <Callout title="Important: this is not an official Microsoft gaming optimization" danger>
-              Microsoft documents the Presence Writer component and its registration architecture, but that does not make a registry override an officially recommended gaming-performance optimization. Treat it as an advanced troubleshooting experiment and keep a clean rollback path.
+              Microsoft documents what Presence Writer does and how a developer registers a <em>replacement</em> implementation — a different registry path than the ActivatableClassId override shown here. This override is a community-discovered workaround, not something Microsoft documents or recommends as a disable method. Treat it as an advanced troubleshooting experiment and keep a clean rollback path.
             </Callout>
           </div>
         </div>
@@ -378,10 +431,10 @@ export default function GameBarPresenceWriterGuide() {
               <Badge className="mb-3 border-orange-500/30 bg-orange-500/10 text-orange-300"><Thermometer className="mr-2 h-4 w-4" /> Kuwait-specific reality</Badge>
               <h2 className="text-2xl font-bold sm:text-4xl">A software tweak cannot beat thermal physics</h2>
               <p className={`mt-4 ${proseClass}`}>
-                Gaming PCs, laptops, and Windows handhelds operating in Kuwait can have far less thermal margin during hot weather, especially when filters are dusty, heatsinks are clogged, fans are degraded, or thermal interfaces have aged. If performance degrades as the system heats up, prioritize cooling and hardware diagnostics over registry tweaking.
+                When Kuwait's summer ambient temperature climbs into the mid-40s°C or higher, a gaming PC, laptop, or Windows handheld starts with far less thermal headroom before it even loads a game — and that gap widens further when filters are dusty, heatsinks are clogged, fans are degraded, or thermal interfaces have aged. If performance degrades as the system heats up, prioritize cooling and hardware diagnostics over registry tweaking.
               </p>
               <div className="mt-5 flex flex-wrap gap-2 text-xs text-slate-400">
-                {['Thermal throttling', 'Dust buildup', 'Aged thermal paste', 'VRM instability', 'GPU memory errors', 'Power-limit behavior'].map((x) => <span key={x} className="rounded-full border border-slate-800 bg-slate-950 px-3 py-1.5">{x}</span>)}
+                {['Ambient 45–50°C in summer', 'Thermal throttling', 'Dust buildup', 'Aged thermal paste', 'VRM instability', 'GPU memory errors', 'Power-limit behavior'].map((x) => <span key={x} className="rounded-full border border-slate-800 bg-slate-950 px-3 py-1.5">{x}</span>)}
               </div>
             </div>
             <div className="rounded-2xl border border-orange-500/20 bg-orange-500/5 p-6">
@@ -435,9 +488,16 @@ export default function GameBarPresenceWriterGuide() {
         </div>
       </section>
 
-      <footer className="border-t border-slate-900 px-4 py-8 text-center text-xs text-slate-500">
-        Last reviewed: August 23, 2026. Windows behavior can vary by Windows release, installed Xbox components, and device configuration. Always keep a rollback path before modifying protected system configuration.
-      </footer>
+      {/* ─── LAST REVIEWED / AUTHOR (E-E-A-T signal) ─── */}
+      <section className="border-t border-slate-900 bg-slate-950/60">
+        <div className="mx-auto max-w-4xl px-4 py-10 text-xs sm:text-sm text-slate-500 sm:px-6">
+          <p>
+            <strong className="text-slate-300">Last reviewed:</strong> {LAST_REVIEWED} by{' '}
+            <Link to="/author/imran" className="text-cyan-400 hover:text-cyan-300 underline">Imran Natiq</Link>, Hardware Repair Engineer, KCROC. Windows behavior can vary by Windows release, installed Xbox components, and device configuration — always keep a rollback path before modifying protected system configuration. What Presence Writer does is sourced from{' '}
+            <a href={MS_DOCS_URL} target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:text-cyan-300 underline">Microsoft's developer documentation</a>; the disable methods themselves are community workarounds, not Microsoft-recommended optimizations.
+          </p>
+        </div>
+      </section>
     </div>
   );
 }
