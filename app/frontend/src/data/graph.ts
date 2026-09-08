@@ -299,7 +299,16 @@ export const rawGraphData: RawGraphData = {
         description: 'What is GameBarPresenceWriter.exe? Learn what the Windows Game Bar component does, how to test whether it affects performance or stuttering, and safer ways to disable related Game Bar activity.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/guides/gamebar-presence-writer-fix',
         ogType: 'article',
-        schemaTypes: ['Article', 'BreadcrumbList', 'ImageObject']
+        // Deliberately just 'WebPage' — this page hand-rolls its own
+        // TechArticle/Person/HowTo/FAQPage/BreadcrumbList via SchemaMarkup
+        // (see the STRUCTURED_DATA comment in GameBarPresenceWriterGuide.tsx).
+        // Previously included 'Article' + 'BreadcrumbList', which made
+        // SEOEngine ALSO emit a generic Article node at the same #article
+        // @id as the hand-rolled TechArticle, plus a duplicate
+        // BreadcrumbList — two competing type declarations for one @id.
+        // 'WebPage' is kept because the hand-rolled TechArticle/HowTo
+        // reference `#webpage` via mainEntityOfPage.
+        schemaTypes: ['WebPage']
       }
     } as WebPageEntity,
 
