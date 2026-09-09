@@ -299,15 +299,46 @@ export const BrandSchema = RoutableEntitySchema.extend({
 
 export const ProblemSchema = RoutableEntitySchema.extend({
   entityType: z.literal('Problem'),
+  primaryKeyword: z.string().optional(),
+  secondaryKeywords: z.array(z.string()).optional(),
+  synonyms: z.array(z.string()).optional(),
   symptom: z.string(),
   causes: z.array(z.string()),
   doNotDo: z.string().optional(),
   solution: z.string(),
   urgency: z.string(),
   relatedServiceIds: z.array(z.string()),
-  // 🚀 NEW: Contextual in-page photo (sourced from the /gallery image set),
-  // rendered by ProblemTemplate alongside the symptom/solution content so
-  // the page isn't text-only.
+
+  // Premium problem-page content. These fields let high-intent Problem pages
+  // carry first-party diagnostic expertise without turning every problem into
+  // a generic blog post.
+  intro: z.string().optional(),
+  diagnosticSteps: z.array(z.object({
+    step: z.number(),
+    title: z.string(),
+    description: z.string(),
+  })).optional(),
+  decisionTree: z.array(z.object({
+    symptom: z.string(),
+    direction: z.string(),
+    href: z.string().optional(),
+    linkLabel: z.string().optional(),
+  })).optional(),
+  technicianMethod: z.array(z.object({
+    step: z.number(),
+    title: z.string(),
+    description: z.string(),
+  })).optional(),
+  safetyNotes: z.array(z.string()).optional(),
+  kuwaitContext: z.array(z.string()).optional(),
+  coveredBrands: z.array(z.string()).optional(),
+  faqs: z.array(z.object({
+    question: z.string(),
+    answer: z.string(),
+  })).optional(),
+  relatedGuideSlug: z.string().optional(),
+
+  // Contextual in-page photo (sourced from the /gallery image set).
   contentImages: z.array(z.object({
     src: z.string(),
     alt: z.string(),
