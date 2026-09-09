@@ -9,7 +9,7 @@ export const ServiceAreas = () => {
   const areas = loc?.serviceAreas || [];
 
   return (
-    <section className="py-12 sm:py-24 px-4 sm:px-6 bg-slate-900 border-t border-slate-800 relative overflow-hidden">
+    <section className="py-12 sm:py-24 px-4 sm:px-6 bg-slate-900/40 border-t border-slate-800 relative overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-12 items-center mb-10 sm:mb-14">
           <div>
