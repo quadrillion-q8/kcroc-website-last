@@ -258,12 +258,43 @@ export const BrandSchema = RoutableEntitySchema.extend({
     severity: z.string(),
     description: z.string()
   })),
-  pricing: z.object({ 
-    startingFrom: z.number(), 
-    currency: z.string(), 
-    quoteRequired: z.boolean(), 
-    displayLabel: z.string() 
+  pricing: z.object({
+    startingFrom: z.number(),
+    currency: z.string(),
+    quoteRequired: z.boolean(),
+    displayLabel: z.string()
   }).optional(),
+
+  // Rich brand-hub architecture. These IDs create explicit Brand → Service →
+  // Problem relationships without creating duplicate brand-specific problem URLs.
+  familyGroups: z.array(z.object({
+    name: z.string(),
+    description: z.string(),
+    models: z.array(z.string()),
+    repairFocus: z.array(z.string()),
+  })).optional(),
+  relatedServiceIds: z.array(z.string()).default([]),
+  relatedProblemIds: z.array(z.string()).default([]),
+  relatedGuidePaths: z.array(z.object({
+    label: z.string(),
+    path: z.string(),
+  })).default([]),
+  faqs: z.array(z.object({
+    id: z.string(),
+    title: z.string(),
+    answer: z.string(),
+  })).default([]),
+  repairProcess: z.array(z.object({
+    step: z.number(),
+    title: z.string(),
+    description: z.string(),
+  })).default([]),
+  technicalCapabilities: z.array(z.string()).default([]),
+  contentImages: z.array(z.object({
+    src: z.string(),
+    alt: z.string(),
+    caption: z.string().optional(),
+  })).default([]),
 });
 
 export const ProblemSchema = RoutableEntitySchema.extend({
