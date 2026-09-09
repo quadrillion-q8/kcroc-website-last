@@ -130,7 +130,7 @@ export default function Windows10EndOfSupportGuide() {
       <SEOEngine entityId="guide-windows-10-eos" />
       <SchemaMarkup schema={structuredData} />
 
-      <main className="min-h-screen bg-slate-950 text-white pt-28 pb-24">
+      <main className="min-h-screen bg-transparent text-white pt-28 pb-24">
         <article className="max-w-5xl mx-auto px-5 md:px-8">
           <nav aria-label="Breadcrumb" className="text-sm text-slate-400 mb-7">
             <Link to="/" className="hover:text-cyan-400">Home</Link>
