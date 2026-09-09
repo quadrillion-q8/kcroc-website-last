@@ -128,7 +128,7 @@ export default function IntelVsAmdGuide() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-300">
+    <div className="min-h-screen bg-transparent text-slate-300">
       <SEOEngine entityId="guide-intel-vs-amd" />
       <SchemaMarkup schema={faqSchema} />
 
