@@ -252,7 +252,7 @@ const AnimatedBackground = () => (
 ───────────────────────────────────────────────────────────────────────────── */
 export default function BlogScreenProtection() {
   return (
-    <div className="min-h-screen bg-gray-950 text-white selection:bg-cyan-500/30 relative">
+    <div className="min-h-screen bg-transparent text-white selection:bg-cyan-500/30 relative">
       
       {/* 🚀 Independent SEO tags (React 19 native head hoisting) */}
       <Head>
