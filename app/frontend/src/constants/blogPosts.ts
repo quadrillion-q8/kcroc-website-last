@@ -2237,6 +2237,10 @@ export const BLOG_POSTS: BlogPost[] = [
         "text": "If your gaming PC has a modern CPU and GPU and already performs perfectly, disabling background recording may have little visible effect. Good optimization is about removing unnecessary work, not claiming every switch produces a huge FPS increase."
       },
       {
+        "type": "paragraph",
+        "text": "If you want to test the deeper registry configuration after trying the Settings method, see GameBarPresenceWriter.exe: What It Does, How to Fix Performance Issues, and How to Disable It for the advanced Game DVR registry procedure and rollback guidance."
+      },
+      {
         "type": "h2",
         "text": "17. Set Up Night Light If You Prefer a Warmer Display",
         "id": "night-light"
