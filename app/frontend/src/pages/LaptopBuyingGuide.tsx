@@ -297,7 +297,7 @@ function DataTable({ headers, rows }: { headers: string[]; rows: string[][] }) {
 ───────────────────────────────────────────────────────────────────────────── */
 export default function LaptopBuyingGuide() {
   return (
-    <div className="min-h-screen bg-gray-950 text-white selection:bg-cyan-500/30">
+    <div className="min-h-screen bg-transparent text-white selection:bg-cyan-500/30">
 
       <Head>
         <title>Laptop Buying Guide Kuwait (2026): What the Spec Sheet Won't Tell You</title>
