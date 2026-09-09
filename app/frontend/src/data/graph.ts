@@ -2330,17 +2330,124 @@ export const rawGraphData: RawGraphData = {
     'brand-lenovo': {
       id: 'brand-lenovo', slug: 'lenovo-laptop-repair-kuwait', entityType: 'Brand', isActive: true,
       title: 'Lenovo Laptop Repair Kuwait', brandName: 'Lenovo', officialWebsite: 'https://www.lenovo.com',
-      description: 'Lenovo laptops — specifically IdeaPad and Legion gaming models — frequently encounter chassis stress and thermal issues in Kuwait. Legion models often require specialized cooling maintenance, while IdeaPad hinges are prone to snapping under daily use. We stock replacement parts for ThinkPad, IdeaPad, Yoga, and Legion series.',
-      commonModels: ['Legion Pro 5', 'Legion 7', 'IdeaPad 3', 'IdeaPad 5', 'ThinkPad T-Series', 'Yoga 7i'],
+      description: 'Independent Lenovo laptop repair in Kuwait for ThinkPad, IdeaPad, Yoga, Legion, LOQ and ThinkBook systems. KCROC diagnoses the fault before recommending repair, with component-level board work where practical, plus screen, charging, battery, cooling and upgrade services.',
+      commonModels: [
+        'ThinkPad T Series', 'ThinkPad X Series', 'ThinkPad L Series', 'ThinkPad E Series', 'ThinkPad P Series',
+        'IdeaPad 1', 'IdeaPad 3', 'IdeaPad 5', 'IdeaPad Slim', 'IdeaPad Pro',
+        'Yoga 6', 'Yoga 7', 'Yoga Slim', 'Yoga Pro',
+        'Legion 5', 'Legion 7', 'Legion Pro', 'Legion Slim', 'LOQ',
+        'ThinkBook'
+      ],
       commonIssues: [
-        { id: 'lenovo-hinge', title: 'Hinge torn from chassis', severity: 'high', description: 'IdeaPad plastic casing fracturing around the hinge mount.' },
-        { id: 'lenovo-thermal', title: 'Legion overheating', severity: 'high', description: 'Thermal throttling causing FPS drops; requires fresh phase-change material.' },
-        { id: 'lenovo-charge', title: 'USB-C charging failure', severity: 'medium', description: 'Type-C port physical damage or power delivery IC failure.' },
-        { id: 'lenovo-keyboard', title: 'Keyboard keys not working', severity: 'low', description: 'Common on older ThinkPads and IdeaPads from dust accumulation.' }
+        { id: 'lenovo-no-power', title: 'Lenovo will not turn on', severity: 'high', description: 'Power-button, charging-input and motherboard faults are diagnosed before a board replacement is recommended.' },
+        { id: 'lenovo-not-charging', title: 'Lenovo plugged in but not charging', severity: 'high', description: 'Battery, charger, DC-in or USB-C charging paths can be tested to isolate the actual failure.' },
+        { id: 'lenovo-usb-c', title: 'USB-C charging or port failure', severity: 'high', description: 'The port and surrounding power-delivery circuitry can be inspected before deciding on port or board repair.' },
+        { id: 'lenovo-overheating', title: 'Lenovo overheating and thermal throttling', severity: 'high', description: 'Cooling, fan and thermal-material condition can be checked, especially on performance-oriented Legion and LOQ systems.' },
+        { id: 'lenovo-black-screen', title: 'Lenovo turns on but screen is black', severity: 'high', description: 'Display, cable, RAM, firmware and board-level causes can be isolated through staged testing.' },
+        { id: 'lenovo-hinge', title: 'Broken or damaged Lenovo hinge', severity: 'high', description: 'Hinge tension, mounting points and surrounding chassis damage are inspected before structural repair or part replacement.' },
+        { id: 'lenovo-keyboard', title: 'Lenovo keyboard not working', severity: 'medium', description: 'Keyboard, connector and board-side causes can be tested rather than assuming the keyboard assembly is the only fault.' },
+        { id: 'lenovo-wifi', title: 'Lenovo Wi-Fi problems', severity: 'medium', description: 'Adapter, antenna, driver and board-side causes can be separated during diagnosis.' },
+        { id: 'lenovo-slow', title: 'Lenovo laptop running slowly', severity: 'medium', description: 'Storage health, RAM capacity, thermals and Windows performance are checked before recommending an upgrade.' },
+        { id: 'lenovo-boot', title: 'Lenovo Windows or boot problems', severity: 'high', description: 'Storage, firmware and operating-system causes are checked to determine whether the fault is hardware or software.' },
+        { id: 'lenovo-motherboard', title: 'Lenovo motherboard fault', severity: 'high', description: 'Where technically practical, component-level diagnosis is used to identify the failed circuit or component before a full-board replacement is considered.' },
+        { id: 'lenovo-liquid', title: 'Lenovo liquid damage', severity: 'critical', description: 'Power isolation, corrosion inspection and board cleaning can be used to assess liquid-damaged hardware.' }
+      ],
+      familyGroups: [
+        {
+          name: 'ThinkPad',
+          description: 'Business and professional Lenovo laptops.',
+          models: ['T Series', 'X Series', 'L Series', 'E Series', 'P Series'],
+          repairFocus: ['Power', 'Charging', 'Keyboard', 'Display', 'USB-C', 'Battery', 'Motherboard']
+        },
+        {
+          name: 'IdeaPad',
+          description: 'Everyday, student and productivity laptops.',
+          models: ['IdeaPad 1', 'IdeaPad 3', 'IdeaPad 5', 'IdeaPad Slim', 'IdeaPad Pro'],
+          repairFocus: ['Hinges', 'Screens', 'Battery', 'Charging', 'Keyboard', 'Cooling', 'Motherboard']
+        },
+        {
+          name: 'Yoga',
+          description: 'Convertible and 2-in-1 Lenovo systems.',
+          models: ['Yoga 6', 'Yoga 7', 'Yoga Slim', 'Yoga Pro'],
+          repairFocus: ['Hinges', 'Touch/Display', 'Battery', 'Charging', 'Keyboard', 'Motherboard']
+        },
+        {
+          name: 'Legion',
+          description: 'Performance and gaming laptops.',
+          models: ['Legion 5', 'Legion 7', 'Legion Pro', 'Legion Slim'],
+          repairFocus: ['Cooling', 'Thermals', 'Power', 'Charging', 'Display', 'Motherboard', 'GPU-related diagnosis']
+        },
+        {
+          name: 'LOQ',
+          description: 'Lenovo gaming laptops in the LOQ family.',
+          models: ['LOQ'],
+          repairFocus: ['Thermals', 'Charging', 'Power', 'Display', 'Performance', 'Motherboard']
+        },
+        {
+          name: 'ThinkBook',
+          description: 'Business-focused Lenovo laptops.',
+          models: ['ThinkBook'],
+          repairFocus: ['USB-C', 'Charging', 'Display', 'Keyboard', 'Battery', 'Motherboard']
+        }
+      ],
+      relatedServiceIds: ['srv-laptop', 'srv-motherboard', 'srv-screen', 'srv-battery', 'srv-gaming-laptop-cleaning'],
+      relatedProblemIds: [
+        'problem-no-power', 'problem-not-charging', 'problem-overheating', 'problem-black-screen',
+        'problem-hinge-break', 'problem-keyboard-fail', 'problem-wifi-fail', 'problem-slow',
+        'problem-windows-wont-boot', 'problem-liquid-spill', 'problem-cracked-screen'
+      ],
+      relatedGuidePaths: [
+        { label: 'Laptop overheating guide', path: '/guides/dell-laptop-overheating' },
+        { label: 'Laptop battery warning signs', path: '/guides/laptop-battery-warning-signs' },
+        { label: 'BIOS / UEFI recovery guide', path: '/guides/bios-uefi-recovery-kuwait' }
+      ],
+      repairProcess: [
+        { step: 1, title: 'Pickup & intake', description: 'Arrange KCROC pickup and provide the Lenovo model and symptoms so the repair can be triaged correctly.' },
+        { step: 2, title: 'Diagnostic inspection', description: 'The laptop is inspected and tested to identify the fault before repair work is approved.' },
+        { step: 3, title: 'Repair quotation', description: 'You receive the recommended repair and price before paid repair work begins.' },
+        { step: 4, title: 'Targeted repair', description: 'Where practical, KCROC repairs the failed component or assembly instead of automatically replacing the entire motherboard.' },
+        { step: 5, title: 'Post-repair testing', description: 'Relevant power, charging, display, ports, thermals and stability functions are tested before return.' },
+        { step: 6, title: 'Return', description: 'The repaired Lenovo is returned through KCROC pickup and delivery service across Kuwait.' }
+      ],
+      technicalCapabilities: [
+        'Multimeter-based electrical diagnosis',
+        'Thermal inspection and cooling-system diagnosis',
+        'Board-level fault tracing',
+        'Micro-soldering where technically appropriate',
+        'Power-rail and charging-circuit testing',
+        'USB-C and charging-path diagnosis',
+        'Corrosion inspection after liquid exposure',
+        'Post-repair functional and stability testing'
+      ],
+      faqs: [
+        { id: 'lenovo-cost', title: 'How much does Lenovo laptop repair cost in Kuwait?', answer: 'The cost depends on the model, fault and parts required. KCROC diagnoses the problem first and provides the repair quotation before repair work begins. The current Lenovo page lists diagnostics first with repairs from 15 KWD where applicable.' },
+        { id: 'lenovo-motherboard', title: 'Do you repair Lenovo motherboards?', answer: 'Yes, where the fault is technically repairable. KCROC can diagnose individual board-level faults and repair failed components where practical rather than automatically recommending a complete motherboard replacement.' },
+        { id: 'lenovo-legion', title: 'Do you repair Lenovo Legion gaming laptops?', answer: 'Yes. Legion systems can require cooling, power, charging, display or motherboard diagnosis, and the repair path depends on the actual fault found.' },
+        { id: 'lenovo-thinkpad', title: 'Do you repair Lenovo ThinkPad laptops?', answer: 'Yes. KCROC handles ThinkPad-related power, charging, display, keyboard, USB-C, battery and motherboard faults.' },
+        { id: 'lenovo-usbc', title: 'Can you repair a Lenovo USB-C charging port?', answer: 'Yes. The port and surrounding charging or power-delivery circuitry can be tested to determine whether the appropriate repair is a port replacement or a board-level repair.' },
+        { id: 'lenovo-yoga', title: 'Do you repair Lenovo Yoga laptops?', answer: 'Yes. Yoga systems can be assessed for hinge, touch/display, battery, charging, keyboard and motherboard-related faults.' },
+        { id: 'lenovo-pickup', title: 'Do you offer Lenovo laptop pickup in Kuwait?', answer: 'Yes. KCROC offers pickup and delivery service across Kuwait.' },
+        { id: 'lenovo-diagnosis', title: 'Is Lenovo diagnosis free?', answer: 'The current KCROC Lenovo offer lists a free diagnostic before repair. The final repair quotation depends on the fault and required work.' }
+      ],
+      contentImages: [
+        { src: '/images/lenovo-laptop-battery-fan-heatsink-open.webp', alt: 'Lenovo laptop opened for battery, fan and heatsink inspection', caption: 'Lenovo cooling and internal hardware inspection on the repair bench.' },
+        { src: '/images/lenovo-laptop-cooling-fan-ssd-slot.webp', alt: 'Lenovo laptop cooling fan and M.2 SSD area', caption: 'Inspecting the cooling system and internal upgrade components.' },
+        { src: '/images/lenovo-laptop-dc-power-adapter.webp', alt: 'Lenovo laptop DC power adapter', caption: 'Checking the correct power adapter as part of charging diagnosis.' }
       ],
       pricing: { startingFrom: 15, currency: 'KWD', quoteRequired: true, displayLabel: 'From 15 KWD — free diagnostic first' },
-      seo: { title: 'Lenovo Service Center & Laptop Repair Kuwait | KCROC', description: 'Independent Lenovo laptop repair in Kuwait for Legion, IdeaPad, ThinkPad and Yoga. Gaming thermal issues, hinges, USB-C charging and motherboard faults. Free pick-up and drop-off.', canonicalUrl: 'https://www.computerrepairkuwait.com/lenovo-laptop-repair-kuwait', ogType: 'article', schemaTypes: ['Service'] },
-      navigationPriority: 70, popular: true 
+      seo: {
+        title: 'Lenovo Laptop Repair Kuwait | ThinkPad, Legion & More | KCROC',
+        description: 'Lenovo laptop repair in Kuwait for ThinkPad, IdeaPad, Yoga, Legion, LOQ and ThinkBook. Diagnose first, quote before repair, with component-level repair where practical.',
+        canonicalUrl: 'https://www.computerrepairkuwait.com/lenovo-laptop-repair-kuwait',
+        ogType: 'website',
+        schemaTypes: ['Brand', 'Service', 'FAQPage', 'BreadcrumbList'],
+        breadcrumbs: [
+          { name: 'Home', url: '/' },
+          { name: 'Brands', url: '/brands' },
+          { name: 'Lenovo Laptop Repair Kuwait', url: '/lenovo-laptop-repair-kuwait' }
+        ]
+      },
+      navigationPriority: 95, isFeatured: true, popular: true
     } as BrandEntity,
 
     'brand-asus': {
