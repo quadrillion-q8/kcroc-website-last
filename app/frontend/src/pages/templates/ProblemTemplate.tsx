@@ -1,4 +1,4 @@
-\// File: app/frontend/src/pages/templates/ProblemTemplate.tsx
+// File: app/frontend/src/pages/templates/ProblemTemplate.tsx
 import React from 'react';
 import { useLocation, Navigate } from 'react-router-dom';
 import { KCROC_GRAPH } from '../../data/graph'; 
