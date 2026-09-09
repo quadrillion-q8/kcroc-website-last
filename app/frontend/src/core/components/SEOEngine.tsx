@@ -282,12 +282,22 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
           }
         } else if (entity.entityType === 'Problem') {
           const problemEntity = entity as ProblemEntity;
-          questions = [
-            { title: `What causes ${problemEntity.title.toLowerCase()}?`, answer: `Common causes include: ${problemEntity.causes.join(', ')}.` },
-            { title: `How do you fix ${problemEntity.title.toLowerCase()}?`, answer: problemEntity.solution }
-          ];
-          if (problemEntity.doNotDo) {
-            questions.push({ title: "What should I avoid doing if my laptop has this problem?", answer: problemEntity.doNotDo });
+          // Prefer the exact FAQ copy rendered on the page. This keeps structured
+          // data aligned with the visible customer-facing answers instead of
+          // generating generic questions from the entity title.
+          if (problemEntity.faqs && problemEntity.faqs.length > 0) {
+            questions = problemEntity.faqs.map(faq => ({
+              title: faq.question,
+              answer: faq.answer
+            }));
+          } else {
+            questions = [
+              { title: `What causes ${problemEntity.title.toLowerCase()}?`, answer: `Common causes include: ${problemEntity.causes.join(', ')}.` },
+              { title: `How do you fix ${problemEntity.title.toLowerCase()}?`, answer: problemEntity.solution }
+            ];
+            if (problemEntity.doNotDo) {
+              questions.push({ title: "What should I avoid doing if my laptop has this problem?", answer: problemEntity.doNotDo });
+            }
           }
         } else if (entity.entityType === 'WebPage') {
           const webPage = entity as WebPageEntity;
@@ -366,17 +376,34 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
           });
         } else if (entity.entityType === 'Problem') {
           const problemEntity = entity as ProblemEntity;
+          const articleText = [
+            problemEntity.description,
+            problemEntity.intro,
+            `Symptom: ${problemEntity.symptom}.`,
+            `Common causes: ${problemEntity.causes.join('; ')}.`,
+            ...(problemEntity.diagnosticSteps ?? []).map(step => `${step.title}: ${step.description}`),
+            ...(problemEntity.technicianMethod ?? []).map(step => `${step.title}: ${step.description}`),
+            `Solution: ${problemEntity.solution}`,
+            ...(problemEntity.kuwaitContext ?? []),
+            ...(problemEntity.faqs ?? []).map(faq => `FAQ: ${faq.question} ${faq.answer}`)
+          ].filter(Boolean).join(' ');
           schemaGraph.push({
             "@type": "TechArticle",
             "@id": `${fullCanonicalUrl}#article`,
             "headline": problemEntity.title,
             "description": problemEntity.description,
             "proficiencyLevel": "Beginner",
-            "articleSection": "Hardware Troubleshooting",
-            "text": `Symptom: ${problemEntity.symptom}. Solution: ${problemEntity.solution}`,
+            "articleSection": "Laptop Troubleshooting",
+            "keywords": [
+              ...(problemEntity.primaryKeyword ? [problemEntity.primaryKeyword] : []),
+              ...(problemEntity.secondaryKeywords ?? [])
+            ],
+            "text": articleText,
+            ...(problemEntity.featuredImage?.ogImage && { "image": problemEntity.featuredImage.ogImage }),
             "author": { "@id": AUTHOR_ID },
             "publisher": { "@id": `${business.websiteUrl}/#business` },
-            "mainEntityOfPage": { "@id": `${fullCanonicalUrl}#webpage` }
+            "mainEntityOfPage": { "@id": `${fullCanonicalUrl}#webpage` },
+            ...(entity.seo.lastModified && { "dateModified": entity.seo.lastModified })
           });
         } else if (entity.entityType === 'WebPage') {
           const webPage = entity as WebPageEntity;
