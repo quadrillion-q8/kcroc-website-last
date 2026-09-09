@@ -18,7 +18,7 @@ export const LeadMagnet = () => {
   )}`;
 
   return (
-    <section className="w-full py-12 sm:py-24 px-4 sm:px-6 bg-slate-950 relative overflow-hidden">
+    <section className="w-full py-12 sm:py-24 px-4 sm:px-6 bg-slate-950/40 relative overflow-hidden">
       {/* Background ambient glow */}
       <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/10 via-transparent to-transparent pointer-events-none" />
       
