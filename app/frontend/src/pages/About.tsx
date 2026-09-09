@@ -62,7 +62,7 @@ export default function About() {
   const WA_LINK = `https://wa.me/${business.telephone}?text=${encodeURIComponent('Hi KCROC, I am looking for a professional computer repair service.')}`;
 
   return (
-    <main className="w-full min-h-screen bg-gray-950 text-white font-sans selection:bg-cyan-500/30">
+    <main className="w-full min-h-screen bg-transparent text-white font-sans selection:bg-cyan-500/30">
       
       {/* 🚀 Dynamic SEO Engine Integration */}
       <SEOEngine entityId="page-about" />
