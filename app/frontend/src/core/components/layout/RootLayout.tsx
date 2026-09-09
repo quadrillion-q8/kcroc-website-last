@@ -1,12 +1,13 @@
-// File: app/frontend/src/core/components/layout/RootLayout.tsx
+\// File: app/frontend/src/core/components/layout/RootLayout.tsx
 import React, { Suspense, lazy } from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 
 import Header from './Header';
 import Footer from './Footer';
 import { ErrorBoundary } from '../ErrorBoundary';
 import { CookieConsentBanner } from '../CookieConsentBanner';
 import { StickyMobileCTA } from '../../../components/home/StickyMobileCTA';
+import { KCROC_GRAPH } from '../../data/graph';
 
 // 🚀 CWV: AnimatedBackground is a pure SVG/CSS effect now (no particle
 // engine — an earlier tsParticles-based version was already replaced), but
@@ -17,13 +18,57 @@ const AnimatedBackground = lazy(() =>
   import('./AnimatedBackground').then((module) => ({ default: module.AnimatedBackground }))
 );
 
+// The PCB background is a page-level visual, not a site-wide chrome element.
+// Keep it on the layouts that were authored with transparent/glass surfaces
+// and keep utility, legal, booking, and dense article pages on their own
+// deliberate solid backgrounds.
+const shouldShowAnimatedBackground = (pathname: string): boolean => {
+  const path = pathname.replace(/\/+$/, '') || '/';
+
+  // Homepage and intentionally transparent visual hubs/templates.
+  if (path === '/' || path === '/blog' || path === '/gallery' || path === '/contact' || path === '/faq') {
+    return true;
+  }
+
+  // Transparent first-class content templates.
+  if (
+    path === '/case-studies' ||
+    path.startsWith('/case-studies/') ||
+    path.startsWith('/pillar/') ||
+    path === '/location/hawalli' ||
+    path.startsWith('/location/')
+  ) {
+    return true;
+  }
+
+  // The security page intentionally uses a transparent technical surface.
+  if (path === '/privacy-security-kuwait') return true;
+
+  // Root-level Service / Brand / Problem entities use transparent templates.
+  // Checking the graph prevents unknown one-segment URLs/404s from inheriting
+  // the visual background.
+  if (path.split('/').filter(Boolean).length === 1) {
+    const slug = path.slice(1);
+    return Boolean(
+      KCROC_GRAPH.services.some((item) => item.slug === slug) ||
+      KCROC_GRAPH.brands.some((item) => item.slug === slug) ||
+      KCROC_GRAPH.problems.some((item) => item.slug === slug)
+    );
+  }
+
+  return false;
+};
+
 export const RootLayout: React.FC = () => {
+  const { pathname } = useLocation();
+  const showAnimatedBackground = shouldShowAnimatedBackground(pathname);
+
   return (
     <>
         {/* AnalyticsProvider is mounted once, at the outer AppWrapper level in
             App.tsx — do not add a second one here, it previously caused
             duplicate virtual_pageview events. */}
-        <div className="relative min-h-screen flex flex-col bg-transparent text-slate-200 font-sans selection:bg-cyan-500/30">
+        <div className="relative min-h-screen flex flex-col bg-slate-950 text-slate-200 font-sans selection:bg-cyan-500/30">
           
           {/* 🚀 WCAG 2.2 AA Compliance: Global Skip Link for keyboard navigation */}
           <a 
@@ -33,12 +78,13 @@ export const RootLayout: React.FC = () => {
             Skip to main content
           </a>
 
-          {/* The global background that sits behind all pages — deferred; falls
-              back to the plain bg-slate-950 base color (matches AnimatedBackground's
-              own base layer) until the chunk loads, so there's no visible pop-in. */}
-          <Suspense fallback={<div className="fixed inset-0 z-0 bg-slate-950" />}>
-            <AnimatedBackground />
-          </Suspense>
+          {/* Page-scoped technical background. It is deliberately NOT mounted
+              on every route: opaque/utility pages keep their own backgrounds. */}
+          {showAnimatedBackground && (
+            <Suspense fallback={<div className="fixed inset-0 z-0 bg-slate-950" />}>
+              <AnimatedBackground />
+            </Suspense>
+          )}
 
           <Header />
 
