@@ -23,11 +23,29 @@ const BrandTemplate: React.FC = () => {
 
   if (!brand) return <Navigate to="/404" replace />;
 
-  const relatedServices = brand.relatedServiceIds
+  // NOTE: only 'brand-lenovo' currently has the full rich-brand-hub data set
+  // (familyGroups, relatedServiceIds, relatedProblemIds, relatedGuidePaths,
+  // repairProcess, technicalCapabilities, faqs). The KnowledgeGraph zod schema
+  // marks these as defaulting to [] when absent, but that default is only
+  // applied inside scripts/validate-build.ts's throwaway RawGraphSchema.parse()
+  // call — it never gets written back onto the KCROC_GRAPH object that the app
+  // actually renders from. So for every other brand (Dell, HP, Asus, Acer, MSI)
+  // these fields are genuinely `undefined` at runtime, and calling `.map()` on
+  // them crashes SSG. Default them here so the template degrades gracefully.
+  const relatedServiceIds = brand.relatedServiceIds ?? [];
+  const relatedProblemIds = brand.relatedProblemIds ?? [];
+  const commonIssues = brand.commonIssues ?? [];
+  const repairProcess = brand.repairProcess ?? [];
+  const relatedGuidePaths = brand.relatedGuidePaths ?? [];
+  const technicalCapabilities = brand.technicalCapabilities ?? [];
+  const faqs = brand.faqs ?? [];
+  const familyGroups = brand.familyGroups ?? [];
+
+  const relatedServices = relatedServiceIds
     .map((id) => KCROC_GRAPH.services.find((service) => service.id === id))
     .filter(Boolean);
 
-  const relatedProblems = brand.relatedProblemIds
+  const relatedProblems = relatedProblemIds
     .map((id) => KCROC_GRAPH.problems.find((problem) => problem.id === id))
     .filter(Boolean);
 
@@ -71,8 +89,9 @@ const BrandTemplate: React.FC = () => {
                 {brand.title}
               </h1>
               <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-300 md:text-xl">
-                Component-level diagnosis and targeted repair for ThinkPad, IdeaPad, Yoga,
-                Legion, LOQ and ThinkBook systems — with the fault identified before repair
+                Component-level diagnosis and targeted repair for {brand.commonModels?.length
+                  ? brand.commonModels.slice(0, 5).join(', ')
+                  : `${brand.brandName} laptops`} — with the fault identified before repair
                 is approved.
               </p>
 
@@ -125,22 +144,22 @@ const BrandTemplate: React.FC = () => {
 
       <main className="mx-auto max-w-6xl px-6 py-16">
         {/* Brand families */}
-        {brand.familyGroups?.length > 0 && (
+        {familyGroups.length > 0 && (
           <section aria-labelledby="lenovo-families" className="mb-20">
             <div className="mb-9 max-w-3xl">
-              <p className="mb-2 text-sm font-bold uppercase tracking-[0.18em] text-cyan-400">Lenovo portfolio</p>
+              <p className="mb-2 text-sm font-bold uppercase tracking-[0.18em] text-cyan-400">{brand.brandName} portfolio</p>
               <h2 id="lenovo-families" className="text-3xl font-black text-white md:text-4xl">
-                Lenovo laptop families we repair
+                {brand.brandName} laptop families we repair
               </h2>
               <p className="mt-4 leading-7 text-slate-400">
-                Different Lenovo families use different chassis, thermal, charging and board
+                Different {brand.brandName} families use different chassis, thermal, charging and board
                 designs. This page covers the major families without creating duplicate pages
                 for every model.
               </p>
             </div>
 
             <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-              {brand.familyGroups.map((family) => (
+              {familyGroups.map((family) => (
                 <article key={family.name} className="rounded-2xl border border-slate-800 bg-slate-900/55 p-6 backdrop-blur-sm">
                   <h3 className="text-xl font-bold text-white">{family.name}</h3>
                   <p className="mt-2 text-sm leading-6 text-slate-400">{family.description}</p>
@@ -162,21 +181,22 @@ const BrandTemplate: React.FC = () => {
         )}
 
         {/* Problems */}
+        {commonIssues.length > 0 && (
         <section aria-labelledby="lenovo-problems" className="mb-20">
           <div className="mb-9 max-w-3xl">
             <p className="mb-2 text-sm font-bold uppercase tracking-[0.18em] text-cyan-400">Repair coverage</p>
             <h2 id="lenovo-problems" className="text-3xl font-black text-white md:text-4xl">
-              Lenovo laptop problems we repair
+              {brand.brandName} laptop problems we repair
             </h2>
             <p className="mt-4 leading-7 text-slate-400">
               We diagnose the symptom first, then follow the appropriate repair path. The links
               below point to KCROC's existing problem entities rather than creating thin,
-              duplicate Lenovo problem pages.
+              duplicate {brand.brandName} problem pages.
             </p>
           </div>
 
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {brand.commonIssues.map((issue) => {
+            {commonIssues.map((issue) => {
               const relatedId = issueProblemMap[issue.id];
               const related = relatedProblems.find((problem) => problem?.id === relatedId);
 
@@ -200,6 +220,7 @@ const BrandTemplate: React.FC = () => {
             })}
           </div>
         </section>
+        )}
 
         {/* Technical expertise */}
         <section aria-labelledby="component-repair" className="mb-20 rounded-3xl border border-cyan-900/50 bg-cyan-950/20 p-7 md:p-10">
@@ -207,7 +228,7 @@ const BrandTemplate: React.FC = () => {
             <div>
               <p className="mb-2 text-sm font-bold uppercase tracking-[0.18em] text-cyan-400">Diagnosis before replacement</p>
               <h2 id="component-repair" className="text-3xl font-black text-white md:text-4xl">
-                A Lenovo motherboard fault does not automatically mean a new motherboard
+                A {brand.brandName} motherboard fault does not automatically mean a new motherboard
               </h2>
               <p className="mt-5 leading-8 text-slate-300">
                 A no-power, charging or intermittent fault can originate in a particular
@@ -223,7 +244,7 @@ const BrandTemplate: React.FC = () => {
             </div>
 
             <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
-              {(brand.technicalCapabilities ?? []).map((capability) => (
+              {technicalCapabilities.map((capability) => (
                 <div key={capability} className="flex items-start gap-3 rounded-xl border border-slate-800 bg-slate-950/50 p-4">
                   <CircuitBoard className="mt-0.5 h-5 w-5 flex-shrink-0 text-cyan-400" aria-hidden="true" />
                   <span className="text-sm font-semibold leading-6 text-slate-200">{capability}</span>
@@ -234,11 +255,12 @@ const BrandTemplate: React.FC = () => {
         </section>
 
         {/* Services */}
+        {relatedServices.length > 0 && (
         <section aria-labelledby="lenovo-services" className="mb-20">
           <div className="mb-9">
             <p className="mb-2 text-sm font-bold uppercase tracking-[0.18em] text-cyan-400">Related KCROC services</p>
             <h2 id="lenovo-services" className="text-3xl font-black text-white md:text-4xl">
-              Lenovo repair services
+              {brand.brandName} repair services
             </h2>
           </div>
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -258,17 +280,19 @@ const BrandTemplate: React.FC = () => {
             ))}
           </div>
         </section>
+        )}
 
         {/* Process */}
+        {repairProcess.length > 0 && (
         <section aria-labelledby="lenovo-process" className="mb-20">
           <div className="mb-9 max-w-3xl">
             <p className="mb-2 text-sm font-bold uppercase tracking-[0.18em] text-cyan-400">Repair workflow</p>
             <h2 id="lenovo-process" className="text-3xl font-black text-white md:text-4xl">
-              How KCROC handles a Lenovo repair
+              How KCROC handles a {brand.brandName} repair
             </h2>
           </div>
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {brand.repairProcess.map((step) => (
+            {repairProcess.map((step) => (
               <div key={step.step} className="rounded-2xl border border-slate-800 bg-slate-900/55 p-6">
                 <span className="text-sm font-black text-cyan-400">0{step.step}</span>
                 <h3 className="mt-3 font-bold text-white">{step.title}</h3>
@@ -277,9 +301,11 @@ const BrandTemplate: React.FC = () => {
             ))}
           </div>
         </section>
+        )}
 
         {/* Guides + evidence */}
         <section aria-labelledby="lenovo-resources" className="mb-20 grid gap-6 lg:grid-cols-2">
+          {relatedGuidePaths.length > 0 && (
           <div className="rounded-3xl border border-slate-800 bg-slate-900/50 p-7">
             <div className="flex items-center gap-3">
               <Thermometer className="h-6 w-6 text-cyan-400" aria-hidden="true" />
@@ -289,7 +315,7 @@ const BrandTemplate: React.FC = () => {
               These existing KCROC guides support the problems covered on this brand hub.
             </p>
             <div className="mt-5 space-y-3">
-              {brand.relatedGuidePaths.map((guide) => (
+              {relatedGuidePaths.map((guide) => (
                 <Link key={guide.path} to={guide.path} className="flex items-center justify-between rounded-xl border border-slate-800 bg-slate-950/50 p-4 font-semibold text-slate-200 hover:border-cyan-900 hover:text-cyan-300">
                   {guide.label}
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -297,6 +323,7 @@ const BrandTemplate: React.FC = () => {
               ))}
             </div>
           </div>
+          )}
 
           <div className="overflow-hidden rounded-3xl border border-slate-800 bg-slate-900/50">
             {brand.contentImages?.[1] && (
@@ -327,9 +354,9 @@ const BrandTemplate: React.FC = () => {
           <div className="flex items-start gap-4">
             <MapPin className="mt-1 h-7 w-7 flex-shrink-0 text-cyan-400" aria-hidden="true" />
             <div>
-              <h2 id="lenovo-kuwait" className="text-3xl font-black text-white">Lenovo laptop repair across Kuwait</h2>
+              <h2 id="lenovo-kuwait" className="text-3xl font-black text-white">{brand.brandName} laptop repair across Kuwait</h2>
               <p className="mt-4 max-w-3xl leading-8 text-slate-400">
-                KCROC provides pickup and delivery service across Kuwait. If your Lenovo has a
+                KCROC provides pickup and delivery service across Kuwait. If your {brand.brandName} has a
                 power, charging, screen, hinge, thermal, battery or motherboard problem, start
                 with the symptom and model; the repair path can then be determined from the diagnosis.
               </p>
@@ -346,16 +373,16 @@ const BrandTemplate: React.FC = () => {
         </section>
 
         {/* FAQ */}
-        {brand.faqs?.length > 0 && (
+        {faqs.length > 0 && (
           <section aria-labelledby="lenovo-faq" className="mb-20">
             <div className="mb-9 max-w-3xl">
               <p className="mb-2 text-sm font-bold uppercase tracking-[0.18em] text-cyan-400">Questions</p>
               <h2 id="lenovo-faq" className="text-3xl font-black text-white md:text-4xl">
-                Lenovo repair FAQs
+                {brand.brandName} repair FAQs
               </h2>
             </div>
             <div className="divide-y divide-slate-800 overflow-hidden rounded-3xl border border-slate-800 bg-slate-900/50">
-              {brand.faqs.map((faq) => (
+              {faqs.map((faq) => (
                 <details key={faq.id} className="group p-6">
                   <summary className="cursor-pointer list-none pr-8 font-bold text-white marker:hidden">
                     {faq.title}
@@ -370,9 +397,9 @@ const BrandTemplate: React.FC = () => {
         {/* Final conversion */}
         <section className="rounded-3xl border border-cyan-900/60 bg-cyan-950/30 p-8 text-center md:p-12">
           <MonitorSmartphone className="mx-auto h-10 w-10 text-cyan-400" aria-hidden="true" />
-          <h2 className="mt-4 text-3xl font-black text-white md:text-4xl">Need Lenovo laptop repair in Kuwait?</h2>
+          <h2 className="mt-4 text-3xl font-black text-white md:text-4xl">Need {brand.brandName} laptop repair in Kuwait?</h2>
           <p className="mx-auto mt-4 max-w-2xl leading-7 text-slate-300">
-            Tell us the Lenovo model and what it is doing. KCROC can diagnose the fault first,
+            Tell us the {brand.brandName} model and what it is doing. KCROC can diagnose the fault first,
             explain the repair path and quote before repair work begins.
           </p>
           <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
