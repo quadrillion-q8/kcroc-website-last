@@ -27,14 +27,16 @@ const registryPath = 'HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\WindowsRuntime\\A
 // disable method. Cited for the "what it does" claim only; the registry
 // section is explicit that the override itself is unofficial.
 const MS_DOCS_URL = 'https://learn.microsoft.com/en-us/windows/win32/devnotes/gamebar-presencewriter';
+const MS_GAMEDVR_POLICY_URL = 'https://learn.microsoft.com/en-us/windows/client-management/mdm/policy-csp-applicationmanagement';
 
-const LAST_REVIEWED = 'August 23, 2026';
+const LAST_REVIEWED = 'September 9, 2026';
 
 const toc = [
   { id: 'what-it-is', label: 'What It Is' },
   { id: 'diagnose', label: 'Diagnose First' },
   { id: 'safe-method', label: 'Low-Risk Method' },
-  { id: 'registry', label: 'Registry Override' },
+  { id: 'game-dvr-registry', label: 'Game DVR Registry' },
+  { id: 'registry', label: 'Presence Writer Registry' },
   { id: 'command-line', label: 'Command Line' },
   { id: 'taskkill', label: 'Task Isolation' },
   { id: 'other-causes', label: 'Other Stutter Causes' },
@@ -58,7 +60,10 @@ const faqs = [
   { q: 'Can I just use taskkill?', a: 'You can terminate a currently running process, but that is not a guaranteed permanent disable mechanism. Windows or the application stack can start a component again when its activation conditions are met.' },
   { q: 'What should I check if disabling Game Bar does not fix stutter?', a: 'Check frame-time consistency, CPU/GPU utilization, temperatures, clock speeds, RAM pressure, storage activity, graphics-driver behavior, overlays, shader compilation, and DPC/ISR latency. Hardware instability should also be considered.' },
   { q: 'Is this especially relevant to gaming laptops and handhelds?', a: 'It can be worth testing on constrained systems such as gaming laptops and Windows handhelds because background activity competes within a tighter thermal and power budget. But thermal and power-limit behavior should be investigated first when symptoms appear after sustained gaming.' },
-  { q: 'Can I undo the registry change?', a: 'Yes, if you made a backup and documented the original value. The safest recovery path is to restore the original registry value and ownership rather than assuming a hard-coded value applies identically to every Windows build.' },
+  { q: 'What does AllowGameDVR do?', a: 'The AllowGameDVR policy controls Windows Game Recording and Broadcasting. A value of 0 means the policy does not allow Game Recording and Broadcasting; a value of 1 allows it. This guide uses the policy as an advanced troubleshooting control rather than presenting it as a guaranteed FPS optimization.' },
+  { q: 'Will disabling Game DVR increase FPS?', a: 'It may reduce background capture-related activity on a system where Game DVR is contributing to the workload, but the result is configuration-dependent. Do not treat the source PDF's 10–20% or “up to 20%” claim as a guaranteed result. Measure the same game scene, frame-time behavior, CPU/GPU load, and temperatures before and after.' },
+  { q: 'Do I need the registry method if I already disabled background recording in Settings?', a: 'Usually start with the Settings method. The registry method is a deeper troubleshooting step for power users when you specifically want to test the Game DVR policy and current-user configuration. Avoid changing the registry simply because a process exists in Task Manager.' },
+  { q: 'Can I undo the registry change?', a: 'Yes. Before editing, export the affected keys and record the original values. For the Game DVR method, restore the original GameDVR_Enabled value and remove or restore the GameDVR policy key only if you created it for this test. Do not assume a hard-coded rollback value matches every Windows installation.' },
 ];
 
 // 🚀 Self-contained TechArticle + Person + HowTo + FAQPage + BreadcrumbList
@@ -111,7 +116,7 @@ const STRUCTURED_DATA = {
       "publisher": { "@id": `${business.websiteUrl}/#business` },
       "image": IMAGES.gaming.rgbLighting.src,
       "articleSection": "Guides",
-      "dateModified": "2026-08-23"
+      "dateModified": "2026-09-09"
     },
     {
       "@type": "HowTo",
@@ -121,9 +126,10 @@ const STRUCTURED_DATA = {
       "step": [
         { "@type": "HowToStep", "position": 1, "name": "Diagnose before you modify anything", "text": "Reproduce the stutter in a repeatable scene and log frame-time, temperatures, and background load to identify what's actually correlated with the symptom.", "url": `${PAGE_URL}#diagnose` },
         { "@type": "HowToStep", "position": 2, "name": "Disable Xbox Game Bar and capture settings", "text": "Turn off Game Bar and background captures in Settings, reboot, and compare frame-time in the same scene. This is the lowest-risk step and doesn't touch the registry.", "url": `${PAGE_URL}#safe-method` },
-        { "@type": "HowToStep", "position": 3, "name": "Back up before touching the registry", "text": "If the safe method doesn't resolve it, create a restore point and export the ActivatableClassId registry key before changing any permissions or values.", "url": `${PAGE_URL}#registry` },
-        { "@type": "HowToStep", "position": 4, "name": "Test the ActivationType value", "text": "Change the ActivationType DWORD from an elevated terminal, retest, and keep the documented original value so you can restore it exactly.", "url": `${PAGE_URL}#command-line` },
-        { "@type": "HowToStep", "position": 5, "name": "Confirm with a targeted taskkill test", "text": "Terminate the running process for a quick before/after comparison — this confirms correlation for the current session but isn't a permanent disable.", "url": `${PAGE_URL}#taskkill` }
+        { "@type": "HowToStep", "position": 3, "name": "Disable Game DVR with the registry", "text": "Back up the registry, set GameDVR_Enabled to 0 under HKEY_CURRENT_USER\\System\\GameConfigStore, create the GameDVR policy key under HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows, set AllowGameDVR to 0, reboot, and retest the same game scene.", "url": `${PAGE_URL}#game-dvr-registry` },
+        { "@type": "HowToStep", "position": 4, "name": "Back up before the Presence Writer registry override", "text": "If the Game DVR method does not resolve the issue, create a restore point and export the ActivatableClassId registry key before changing any permissions or values.", "url": `${PAGE_URL}#registry` },
+        { "@type": "HowToStep", "position": 5, "name": "Test the ActivationType value", "text": "Change the ActivationType DWORD from an elevated terminal only after documenting its original state, then retest.", "url": `${PAGE_URL}#command-line` },
+        { "@type": "HowToStep", "position": 6, "name": "Confirm with a targeted taskkill test", "text": "Terminate the running process for a quick before/after comparison — this confirms correlation for the current session but isn't a permanent disable.", "url": `${PAGE_URL}#taskkill` }
       ]
     },
     {
@@ -332,9 +338,57 @@ export default function GameBarPresenceWriterGuide() {
         </div>
       </section>
 
+      <section id="game-dvr-registry" className={`${sectionClass} bg-slate-900/40`}>
+        <div className="container mx-auto max-w-5xl">
+          <Badge className="mb-3 border-amber-500/30 bg-amber-500/10 text-amber-300">Advanced Game DVR method</Badge>
+          <h2 className="text-2xl font-bold sm:text-4xl">Disable Game DVR with the Windows Registry</h2>
+          <p className={`mt-4 max-w-3xl ${proseClass}`}>
+            If turning off Game Bar and background recording in Settings does not settle the question, power users can test the Game DVR configuration directly. This is more invasive than the Settings method, so back up first and measure the same game scene before and after.
+          </p>
+          <div className="mt-6 grid gap-6 lg:grid-cols-2">
+            <div className="space-y-5">
+              <div className="rounded-2xl border border-slate-800 bg-slate-950 p-5">
+                <h3 className="font-bold text-white">1. Back up before editing</h3>
+                <p className="mt-2 text-sm leading-6 text-slate-400">Create a restore point and export both affected registry areas. Write down the original value of <code className="text-cyan-300">GameDVR_Enabled</code> so the test is reversible.</p>
+              </div>
+              <div className="rounded-2xl border border-slate-800 bg-slate-950 p-5">
+                <h3 className="font-bold text-white">2. Disable the current-user Game DVR setting</h3>
+                <CodeBlock>{'HKEY_CURRENT_USER\\System\\GameConfigStore'}</CodeBlock>
+                <p className="mt-3 text-sm leading-6 text-slate-400">Locate <code className="text-cyan-300">GameDVR_Enabled</code> and set its value data to <code className="text-cyan-300">0</code>.</p>
+              </div>
+              <div className="rounded-2xl border border-slate-800 bg-slate-950 p-5">
+                <h3 className="font-bold text-white">3. Set the Game DVR policy</h3>
+                <CodeBlock>{'HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows'}</CodeBlock>
+                <p className="mt-3 text-sm leading-6 text-slate-400">Create a key named <code className="text-cyan-300">GameDVR</code>. Inside it, create a <strong>DWORD (32-bit) Value</strong> named <code className="text-cyan-300">AllowGameDVR</code> and set it to <code className="text-cyan-300">0</code>.</p>
+              </div>
+              <div className="rounded-2xl border border-slate-800 bg-slate-950 p-5">
+                <h3 className="font-bold text-white">4. Restart and measure</h3>
+                <p className="mt-2 text-sm leading-6 text-slate-400">Restart Windows, reproduce the same workload, and compare frame-time, FPS, CPU/GPU utilization, disk activity, temperatures, and clock speeds. Keep the change only if it produces a repeatable improvement without breaking a capture feature you need.</p>
+              </div>
+            </div>
+            <div className="space-y-5">
+              <Callout title="What the supplied KCROC PDF says — and what we can safely promise">
+                The supplied KCROC Game DVR guide presents this registry procedure and claims a 10–20% or “up to 20%” performance uplift on some systems. That figure is not a universal benchmark established by the document, so this website guide treats it as a claim to test rather than a promised result. Your actual change may be negligible, especially on a modern system that is not capture- or CPU-limited.
+              </Callout>
+              <Callout title="Microsoft policy note">
+                Microsoft documents <code className="text-cyan-300">AllowGameDVR</code> as a policy controlling Windows Game Recording and Broadcasting, with <code className="text-cyan-300">0</code> meaning not allowed and <code className="text-cyan-300">1</code> meaning allowed. See <a href={MS_GAMEDVR_POLICY_URL} target="_blank" rel="noopener noreferrer" className="text-cyan-300 underline hover:text-cyan-200">Microsoft's ApplicationManagement Policy CSP</a>. The current-user <code className="text-cyan-300">GameDVR_Enabled</code> value is included here as an advanced troubleshooting step from the supplied KCROC technical material; it should not be presented as a Microsoft-certified performance optimization.
+              </Callout>
+              <Callout title="Rollback">
+                If the test causes an unwanted change, restore the exported registry keys and original values. If you created the <code className="text-cyan-300">GameDVR</code> policy key specifically for this experiment, remove it only after confirming that no existing policy depends on it.
+              </Callout>
+            </div>
+          </div>
+          <p className="mt-6 max-w-3xl text-sm leading-6 text-slate-400">
+            This is the advanced path. For the safer Settings-based approach, start with{' '}
+            <Link to="/guides/windows-11-settings-tweaks" className="font-semibold text-cyan-300 hover:text-cyan-200">18 Windows 11 Settings Worth Changing</Link>{' '}
+            and return here only if you need a deeper Game DVR configuration test.
+          </p>
+        </div>
+      </section>
+
       <section id="registry" className={`${sectionClass} bg-slate-900/40`}>
         <div className="container mx-auto max-w-5xl">
-          <Badge className="mb-3 border-amber-500/30 bg-amber-500/10 text-amber-300">Step 3 — advanced</Badge>
+          <Badge className="mb-3 border-amber-500/30 bg-amber-500/10 text-amber-300">Step 4 — advanced</Badge>
           <h2 className="text-2xl font-bold sm:text-4xl">Registry override: use only when you understand the trade-off</h2>
           <p className={`mt-4 max-w-3xl ${proseClass}`}>
             The commonly circulated tweak targets the Windows Runtime ActivatableClassId registration for Presence Writer. Because this is a protected system area, changing ownership or permissions is materially more invasive than turning off Game Bar.
@@ -367,7 +421,7 @@ export default function GameBarPresenceWriterGuide() {
 
       <section id="command-line" className={sectionClass}>
         <div className="container mx-auto max-w-5xl">
-          <Badge className="mb-3 border-violet-500/30 bg-violet-500/10 text-violet-300">Step 4 — command line</Badge>
+          <Badge className="mb-3 border-violet-500/30 bg-violet-500/10 text-violet-300">Step 5 — command line</Badge>
           <h2 className="text-2xl font-bold sm:text-4xl">Automate the registry test from an elevated terminal</h2>
           <p className={`mt-4 max-w-3xl ${proseClass}`}>If you have already backed up the key and verified that the value exists on your Windows build, an elevated Command Prompt can change the DWORD without navigating the GUI.</p>
           <div className="mt-6 grid gap-5 lg:grid-cols-2">
@@ -387,7 +441,7 @@ export default function GameBarPresenceWriterGuide() {
 
       <section id="taskkill" className={`${sectionClass} bg-slate-900/40`}>
         <div className="container mx-auto max-w-5xl">
-          <Badge className="mb-3 border-sky-500/30 bg-sky-500/10 text-sky-300">Step 5 — targeted test</Badge>
+          <Badge className="mb-3 border-sky-500/30 bg-sky-500/10 text-sky-300">Step 6 — targeted test</Badge>
           <h2 className="text-2xl font-bold sm:text-4xl">Terminate the current process — but don't confuse that with a permanent disable</h2>
           <p className={`mt-4 max-w-3xl ${proseClass}`}>For a quick A/B test, you can terminate the currently running executable from an elevated terminal. This tells you whether the current process instance correlates with the symptom, but it does not guarantee that Windows will not start it again.</p>
           <div className="mt-6 max-w-3xl"><CodeBlock>{'taskkill /f /im gamebarpresencewriter.exe'}</CodeBlock></div>
