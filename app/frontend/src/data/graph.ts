@@ -9,8 +9,8 @@ import { IMAGES } from '../constants/images';
 
 export const rawGraphData: RawGraphData = {
   metadata: {
-    version: '3.4.0',
-    lastUpdated: '2026-08-12T00:00:00+03:00',
+    version: '3.5.0',
+    lastUpdated: '2026-09-10T00:00:00+03:00',
     environment: 'production'
   },
 
@@ -2503,21 +2503,87 @@ export const rawGraphData: RawGraphData = {
       id: 'problem-no-power', slug: 'laptop-wont-turn-on', entityType: 'Problem', isActive: true,
       title: 'Laptop Won\'t Turn On (No Power)',
       primaryKeyword: "laptop won't turn on",
-      secondaryKeywords: ['laptop no power', 'laptop not turning on', 'dead laptop'],
-      synonyms: ['laptop will not turn on', 'laptop completely dead'],
-      description: 'Diagnostic guide for laptops that are completely dead with no lights or fan spin.',
-      symptom: 'The laptop is completely unresponsive when the power button is pressed. No charging lights illuminate when plugged in, and no fan noise is heard.',
-      causes: ['Failed charging port (DC Jack/USB-C)', 'Dead or shorted battery preventing boot', 'Shorted input MOSFET on motherboard', 'Blown main power rail (e.g., PPBUS_G3H on MacBooks)'],
-      doNotDo: 'Do not repeatedly forcefully press the power button or wiggle the charging cable, as this can cause sparking and further component damage.',
-      solution: 'Component-level board diagnosis using a multimeter to trace voltage drops. Usually resolved by replacing a single shorted capacitor or MOSFET.',
+      secondaryKeywords: [
+        'laptop no power', 'laptop not turning on', 'dead laptop',
+        'laptop completely dead', 'laptop won\'t start', 'computer no power'
+      ],
+      synonyms: ['laptop will not turn on', 'laptop completely dead', 'laptop has no power'],
+      description: 'A technician-led no-power diagnostic for laptops with no lights, no fan spin, no charging response or a dead power button.',
+      shortDescription: 'Find out whether the fault is the charger, charging port, battery, firmware or motherboard before replacing parts.',
+      intro: 'When a laptop will not turn on, the most important question is not “what part should I replace?” It is “is this actually a no-power fault?” A machine with no LEDs, no fan movement and no response needs a different diagnosis from one that powers on with a black screen or reaches the manufacturer logo and then stops. This KCROC problem page is built around that distinction, with safe checks first and technician-level diagnosis only when the external power path has been ruled out.',
+      symptom: 'The laptop is completely unresponsive when the power button is pressed. No charging lights illuminate when plugged in, no fan noise is heard, and there is no visible sign of startup.',
+      causes: [
+        'Failed or incorrectly rated charger or power adapter',
+        'Damaged DC charging jack or USB-C charging input',
+        'Dead, disconnected or shorted battery',
+        'Input protection component, fuse or MOSFET failure',
+        'Shorted motherboard power rail or charging circuit',
+        'Liquid damage, corrosion or a damaged connector',
+        'Embedded-controller or firmware fault that prevents normal power sequencing'
+      ],
+      doNotDo: 'Do not repeatedly force the power button, wiggle a loose charging connector, reconnect a charger that sparks or trips its protection, puncture a swollen battery, or attempt a DIY motherboard “reflow.” If there is liquid, burning smell, sparking, melted plastic or a swollen battery, disconnect power and stop testing.',
+      solution: 'KCROC works from the outside in: verify the power source and correct adapter, inspect the charging input, isolate the battery when appropriate, then measure the motherboard power path if the laptop remains genuinely dead. On board-level cases, the objective is to locate the failed stage—such as an input MOSFET, fuse, charging IC, shorted capacitor or damaged rail—before deciding whether a component repair or board replacement makes financial sense.',
       urgency: 'high',
       relatedServiceIds: ['srv-motherboard', 'srv-laptop'],
-      contentImages: [
-        { src: IMAGES.laptopHardware.dellChassis.src, alt: IMAGES.laptopHardware.dellChassis.alt, width: IMAGES.laptopHardware.dellChassis.width, height: IMAGES.laptopHardware.dellChassis.height, placement: 'causes', caption: 'Inspecting the chassis and power delivery components on a laptop that won\'t power on.' },
-        { src: IMAGES.motherboard.breadboarding.src, alt: IMAGES.motherboard.breadboarding.alt, width: IMAGES.motherboard.breadboarding.width, height: IMAGES.motherboard.breadboarding.height, placement: 'solution', caption: 'Breadboarding the motherboard outside the chassis to trace the shorted component with a multimeter.' },
+      relatedGuideSlug: 'laptop-wont-turn-on',
+      coveredBrands: ['Dell', 'HP', 'Lenovo', 'ASUS', 'Acer', 'MSI', 'Apple MacBook'],
+      diagnosticSteps: [
+        { step: 1, title: 'Confirm the symptom', description: 'Press the power button once and watch for any charging LED, keyboard light, fan movement, screen backlight, startup sound or blink code. If there is any consistent activity, the case may belong to a black-screen or boot-failure path instead.' },
+        { step: 2, title: 'Verify the external power path', description: 'Test a known-good wall outlet and the correct charger. Check the cable, adapter indicator and connector for damage. On USB-C laptops, use a charger and cable capable of delivering the power profile the laptop requires.' },
+        { step: 3, title: 'Inspect the charging input', description: 'Look for a loose or damaged DC jack, debris, a recessed connector or a USB-C port that does not accept charging. Do not force a plug or keep testing a port that sparks or becomes abnormally hot.' },
+        { step: 4, title: 'Remove simple variables', description: 'Disconnect docks, USB devices, external drives, memory-card readers and other accessories. On models that support it safely, perform the manufacturer-recommended power reset without opening the chassis.' },
+        { step: 5, title: 'Separate battery from board fault', description: 'A removable battery can sometimes be isolated safely and the laptop tested on the correct AC adapter. Internal battery isolation is a technician-level procedure on many modern laptops and should not be attempted just to “see if it works.”' },
+        { step: 6, title: 'Measure before replacing parts', description: 'If a known-good power source and charging input produce no response, electrical diagnosis can identify missing or collapsed power rails, input protection faults, shorted components or charging-circuit failures instead of guessing at an entire motherboard replacement.' }
       ],
-      seo: { title: 'Laptop Won\'t Turn On Kuwait — Diagnosis & Repair | KCROC', description: 'Laptop not turning on in Kuwait? We diagnose dead input MOSFETs, blown fuses, and power rail shorts at component level. Free diagnostic. Free pick & drop.', canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-wont-turn-on', ogType: 'article', schemaTypes: ['Article', 'FAQPage'] },
-      navigationPriority: 100, popular: true 
+      decisionTree: [
+        { symptom: 'No lights + no fan + no response', direction: 'Treat it as a true no-power case. Check outlet → correct charger → charging input → battery → motherboard power path.', href: '#technician-diagnosis', linkLabel: 'See technician diagnosis' },
+        { symptom: 'Charging light works but power button does nothing', direction: 'Some input power is present. Investigate the power-button circuit, embedded controller, battery state and motherboard sequencing.' },
+        { symptom: 'Lights or fans turn on but screen stays black', direction: 'This is usually not a true no-power fault. Follow the black-screen diagnostic path.', href: '/laptop-black-screen-kuwait', linkLabel: 'Laptop black-screen problem' },
+        { symptom: 'Logo appears but Windows does not load', direction: 'Power-up succeeded; investigate boot, storage, Windows or firmware instead of the no-power path.', href: '/windows-wont-boot-kuwait', linkLabel: 'Windows boot problem' },
+        { symptom: 'Laptop turns on only with charger connected', direction: 'Battery health, battery connection or the charging system may be involved.', href: '/battery-replacement-kuwait', linkLabel: 'Battery service' }
+      ],
+      technicianMethod: [
+        { step: 1, title: 'Visual and safety inspection', description: 'Inspect the chassis, charging connector, battery condition and signs of liquid or corrosion before energizing a suspicious machine.' },
+        { step: 2, title: 'Input voltage verification', description: 'Confirm that the correct adapter is delivering the expected input and that power reaches the laptop’s charging/input stage.' },
+        { step: 3, title: 'Resistance and short testing', description: 'Measure relevant rails and compare readings to the board design to identify a rail being pulled down by a short or failed component.' },
+        { step: 4, title: 'Power-rail sequencing', description: 'Trace the always-on and startup rails to determine where power stops progressing through the board.' },
+        { step: 5, title: 'Thermal and component isolation', description: 'Where appropriate, controlled testing and thermal imaging can help localize a component creating an abnormal heat signature on a shorted rail.' },
+        { step: 6, title: 'Repair and post-repair validation', description: 'Repair the confirmed fault at component level when practical, then verify startup and perform stability testing before the device is returned.' }
+      ],
+      safetyNotes: [
+        'Stop immediately if the laptop has a swollen battery, liquid exposure, burning smell, visible sparking or melted plastic.',
+        'Do not keep reconnecting a charger that immediately trips, sparks or becomes unusually hot.',
+        'Do not open a sealed laptop solely to disconnect the battery unless you are qualified to work around internal batteries and board components.',
+        'Do not assume a black screen means the motherboard is dead; lights and fan activity change the diagnostic path.'
+      ],
+      kuwaitContext: [
+        'Laptops used in Kuwait can move between very hot vehicles or outdoor conditions and strongly air-conditioned rooms. Let an overheated device return to normal indoor temperature before powering it if there is concern about heat exposure.',
+        'Fine dust can accumulate around ports and inside chassis openings. Dust is not proof of a no-power fault, but it can contribute to connector and cooling problems and is worth documenting during inspection.',
+        'KCROC diagnoses no-power faults from its Hawalli lab and offers free pickup and delivery across Kuwait, so customers do not need to transport a completely dead laptop themselves.'
+      ],
+      faqs: [
+        { question: 'Why is my laptop completely dead even when plugged in?', answer: 'Start with the wall outlet and the correct charger. If both are known good and there is still no charging light, fan activity or other response, the fault may be the charging port, battery, input protection, charging circuit or motherboard power rails. Measurements are needed to separate those possibilities.' },
+        { question: 'Can a dead battery stop a laptop from turning on?', answer: 'Yes, depending on the laptop design and how the battery has failed. Some models can operate from the correct AC adapter with the battery isolated, while others can behave differently when the battery or its connection is faulty. A swollen battery should not be repeatedly charged or tested.' },
+        { question: 'Why does my charger light turn off when I plug it into the laptop?', answer: 'On some adapter designs, an indicator that goes out when connected can indicate the adapter is entering protection because of an overload or short on the laptop side. A faulty adapter can cause similar behavior, so controlled testing with a correct known-good adapter is safer than repeated reconnection.' },
+        { question: 'My laptop has lights and fan noise but no picture. Is that a no-power fault?', answer: 'Usually not. Lights or fans show that at least part of the power system is active. The more appropriate path is black-screen or POST diagnosis, which can involve RAM, the display system, BIOS/UEFI, GPU or motherboard initialization.' },
+        { question: 'Can I use a phone USB-C charger to test my laptop?', answer: 'Only if it supports the USB Power Delivery profile and wattage the laptop requires. A connector can fit while the charger is still too low-powered to start the laptop. Use a manufacturer-approved or correctly rated USB-C PD charger for a meaningful test.' },
+        { question: 'Will holding the power button for 30 seconds fix a dead laptop?', answer: 'It can clear residual power or reset a controller that is stuck, but it cannot repair a failed charger, broken jack, shorted component or damaged motherboard. Treat it as a safe reset step, not a guaranteed repair.' },
+        { question: 'Is a laptop that will not turn on automatically a motherboard replacement?', answer: 'No. The cause can be the outlet, charger, charging jack, battery, cable, firmware or a localized board-level component. A diagnosis should identify the failed stage before an entire motherboard is replaced.' },
+        { question: 'Can my files stay safe if the laptop has a no-power motherboard fault?', answer: 'Often, the goal of repair is to restore the original board rather than replace it. Whether data remains accessible depends on the device design and the nature of the damage. KCROC diagnoses the original hardware first and does not assume a board replacement is necessary.' }
+      ],
+      contentImages: [
+        { src: IMAGES.laptopHardware.dellChassis.src, alt: IMAGES.laptopHardware.dellChassis.alt, width: IMAGES.laptopHardware.dellChassis.width, height: IMAGES.laptopHardware.dellChassis.height, placement: 'causes', caption: 'Inspecting the chassis and power-delivery area before deeper no-power diagnosis.' },
+        { src: IMAGES.motherboard.breadboarding.src, alt: IMAGES.motherboard.breadboarding.alt, width: IMAGES.motherboard.breadboarding.width, height: IMAGES.motherboard.breadboarding.height, placement: 'solution', caption: 'Breadboarding the motherboard outside the chassis to trace a power fault with electrical measurements.' },
+      ],
+      seo: {
+        title: 'Laptop Won\'t Turn On in Kuwait? No Power Diagnosis & Repair | KCROC',
+        description: 'Laptop won\'t turn on in Kuwait? Learn how to separate charger, battery, charging-port and motherboard faults, then see how KCROC diagnoses no-power failures.',
+        canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-wont-turn-on',
+        ogType: 'article',
+        schemaTypes: ['TechArticle', 'FAQPage', 'BreadcrumbList'],
+        lastModified: '2026-09-10T00:00:00+03:00'
+      },
+      navigationPriority: 100, popular: true
     } as ProblemEntity,
 
     'problem-overheating': {
