@@ -105,7 +105,7 @@ export const DellLaptopOverheatingPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-950 text-slate-300 selection:bg-cyan-500/30 pb-24">
+    <div className="min-h-screen bg-transparent text-slate-300 selection:bg-cyan-500/30 pb-24">
       <Head>
         <title>{PAGE_TITLE}</title>
         <meta name="description" content={PAGE_DESCRIPTION} />
