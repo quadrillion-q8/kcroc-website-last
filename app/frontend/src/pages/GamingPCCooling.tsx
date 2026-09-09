@@ -251,7 +251,7 @@ export default function GamingPCCooling() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-950 text-white selection:bg-cyan-500/30">
+    <div className="min-h-screen bg-transparent text-white selection:bg-cyan-500/30">
       
       {/* 🚀 Independent SEO tags (React 19 native head hoisting) */}
       <Head>
