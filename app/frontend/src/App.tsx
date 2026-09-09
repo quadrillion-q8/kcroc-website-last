@@ -76,6 +76,7 @@ const BatteryHealthGuide = lazy(() => import('./pages/BatteryHealthGuide'));
 const BiosUefiRecoveryGuide = lazy(() => import('./pages/BiosUefiRecoveryGuide'));
 const DellLaptopOverheatingPage = lazy(() => import('./pages/DellLaptopOverheatingPage').then(module => ({ default: module.DellLaptopOverheatingPage })));
 const GameBarPresenceWriterGuide = lazy(() => import('./pages/GameBarPresenceWriterGuide'));
+const Windows10EndOfSupportGuide = lazy(() => import('./pages/Windows10EndOfSupportGuide'));
 
 // 🚀 CWV Optimization: Extracted routing logic that requires graph.ts into a deferred chunk.
 const DynamicRouteHandler = lazy(() => import('./core/routing/DynamicRoutes').then(m => ({ default: m.DynamicRouteHandler })));
@@ -151,6 +152,7 @@ export const routes: RouteObject[] = [
           { path: 'guides/bios-uefi-recovery-kuwait', element: <BiosUefiRecoveryGuide /> },
           { path: 'guides/dell-laptop-overheating', element: <DellLaptopOverheatingPage /> },
           { path: 'guides/gamebar-presence-writer-fix', element: <GameBarPresenceWriterGuide /> },
+          { path: 'guides/windows-10-end-of-support', element: <Windows10EndOfSupportGuide /> },
           // 🩹 FIX (audit): both of these now also have real server-side 301s in
           // vercel.json (added alongside this fix), so production traffic never
           // hits this client-only stub. Kept as a fallback for local dev / any
