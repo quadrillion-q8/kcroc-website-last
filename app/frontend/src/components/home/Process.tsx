@@ -11,7 +11,7 @@ export const Process = () => {
   const steps = processData.steps;
 
   return (
-    <section className="py-12 sm:py-24 px-4 sm:px-6 bg-slate-950 relative overflow-hidden">
+    <section className="py-12 sm:py-24 px-4 sm:px-6 bg-slate-950/40 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-950/10 to-transparent pointer-events-none" />
 
       <div className="max-w-6xl mx-auto relative z-10">
