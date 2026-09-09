@@ -182,7 +182,7 @@ function Callout({ title, children, danger = false }: { title: string; children:
 
 export default function GameBarPresenceWriterGuide() {
   return (
-    <div className="min-h-screen bg-gray-950 text-white selection:bg-cyan-500/30">
+    <div className="min-h-screen bg-transparent text-white selection:bg-cyan-500/30">
       <SEOEngine entityId="guide-gamebar-presence-writer" />
       <SchemaMarkup schema={STRUCTURED_DATA} />
 
