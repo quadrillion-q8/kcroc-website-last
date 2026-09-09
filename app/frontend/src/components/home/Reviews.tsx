@@ -11,7 +11,7 @@ export default function Reviews() {
   if (reviews.length === 0) return null;
 
   return (
-    <section className="w-full py-8 sm:py-24 px-4 sm:px-6 border-t border-slate-800/50 bg-slate-950">
+    <section className="w-full py-8 sm:py-24 px-4 sm:px-6 border-t border-slate-800/50 bg-slate-950/40">
       <div className="max-w-7xl mx-auto">
         <SectionHeader title="Verified Customer Reviews" align="center" className="mb-4 sm:mb-16" />
 
