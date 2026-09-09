@@ -27,7 +27,21 @@ const shouldShowAnimatedBackground = (pathname: string): boolean => {
   const path = pathname.replace(/\/+$/, '') || '/';
 
   // Homepage and intentionally transparent visual hubs/templates.
-  if (path === '/' || path === '/blog' || path.startsWith('/blog/') || path === '/gallery' || path === '/contact' || path === '/faq') {
+  if (
+    path === '/' ||
+    path === '/blog' ||
+    path.startsWith('/blog/') ||
+    path === '/gallery' ||
+    path === '/contact' ||
+    path === '/faq' ||
+    path === '/pricing' ||
+    path === '/brands' ||
+    path === '/problems' ||
+    path === '/guides' ||
+    path.startsWith('/guides/') ||
+    path === '/about' ||
+    path === '/near-me'
+  ) {
     return true;
   }
 
