@@ -158,7 +158,7 @@ const proseClass = 'text-sm leading-7 text-slate-300 sm:text-base';
 
 function CodeBlock({ children }: { children: React.ReactNode }) {
   return (
-    <pre className="overflow-x-auto rounded-xl border border-slate-800 bg-slate-950 p-4 text-xs leading-6 text-cyan-200 sm:text-sm">
+    <pre className="min-w-0 max-w-full overflow-x-auto rounded-xl border border-slate-800 bg-slate-950 p-4 text-xs leading-6 text-cyan-200 sm:text-sm">
       <code>{children}</code>
     </pre>
   );
@@ -166,7 +166,7 @@ function CodeBlock({ children }: { children: React.ReactNode }) {
 
 function Callout({ title, children, danger = false }: { title: string; children: React.ReactNode; danger?: boolean }) {
   return (
-    <div className={`rounded-2xl border p-5 ${danger ? 'border-red-500/30 bg-red-500/5' : 'border-cyan-500/20 bg-cyan-500/5'}`}>
+    <div className={`min-w-0 rounded-2xl border p-5 ${danger ? 'border-red-500/30 bg-red-500/5' : 'border-cyan-500/20 bg-cyan-500/5'}`}>
       <div className="flex items-start gap-3">
         <div className={`rounded-xl p-2 ${danger ? 'bg-red-500/10' : 'bg-cyan-500/10'}`}>
           {danger ? <ShieldAlert className="h-5 w-5 text-red-400" /> : <CircleHelp className="h-5 w-5 text-cyan-400" />}
@@ -346,7 +346,7 @@ export default function GameBarPresenceWriterGuide() {
             If turning off Game Bar and background recording in Settings does not settle the question, power users can test the Game DVR configuration directly. This is more invasive than the Settings method, so back up first and measure the same game scene before and after.
           </p>
           <div className="mt-6 grid gap-6 lg:grid-cols-2">
-            <div className="space-y-5">
+            <div className="min-w-0 space-y-5">
               <div className="rounded-2xl border border-slate-800 bg-slate-950 p-5">
                 <h3 className="font-bold text-white">1. Back up before editing</h3>
                 <p className="mt-2 text-sm leading-6 text-slate-400">Create a restore point and export both affected registry areas. Write down the original value of <code className="text-cyan-300">GameDVR_Enabled</code> so the test is reversible.</p>
@@ -366,7 +366,7 @@ export default function GameBarPresenceWriterGuide() {
                 <p className="mt-2 text-sm leading-6 text-slate-400">Restart Windows, reproduce the same workload, and compare frame-time, FPS, CPU/GPU utilization, disk activity, temperatures, and clock speeds. Keep the change only if it produces a repeatable improvement without breaking a capture feature you need.</p>
               </div>
             </div>
-            <div className="space-y-5">
+            <div className="min-w-0 space-y-5">
               <Callout title="What the supplied KCROC PDF says — and what we can safely promise">
                 The supplied KCROC Game DVR guide presents this registry procedure and claims a 10–20% or “up to 20%” performance uplift on some systems. That figure is not a universal benchmark established by the document, so this website guide treats it as a claim to test rather than a promised result. Your actual change may be negligible, especially on a modern system that is not capture- or CPU-limited.
               </Callout>
@@ -394,7 +394,7 @@ export default function GameBarPresenceWriterGuide() {
             The commonly circulated tweak targets the Windows Runtime ActivatableClassId registration for Presence Writer. Because this is a protected system area, changing ownership or permissions is materially more invasive than turning off Game Bar.
           </p>
           <div className="mt-6 grid gap-6 lg:grid-cols-[1.05fr_.95fr]">
-            <div className="space-y-5">
+            <div className="min-w-0 space-y-5">
               <div className="rounded-2xl border border-slate-800 bg-slate-950 p-5">
                 <h3 className="font-bold text-white">1. Back up the key first</h3>
                 <p className="mt-2 text-sm leading-6 text-slate-400">Create a restore point and export the registry key before changing permissions or values.</p>
@@ -425,12 +425,12 @@ export default function GameBarPresenceWriterGuide() {
           <h2 className="text-2xl font-bold sm:text-4xl">Automate the registry test from an elevated terminal</h2>
           <p className={`mt-4 max-w-3xl ${proseClass}`}>If you have already backed up the key and verified that the value exists on your Windows build, an elevated Command Prompt can change the DWORD without navigating the GUI.</p>
           <div className="mt-6 grid gap-5 lg:grid-cols-2">
-            <div>
+            <div className="min-w-0">
               <h3 className="mb-2 flex items-center gap-2 font-bold"><Terminal className="h-5 w-5 text-violet-400" /> Test command</h3>
               <CodeBlock>{`reg add "${registryPath}" /v ActivationType /t REG_DWORD /d 0 /f`}</CodeBlock>
               <p className="mt-3 text-xs leading-5 text-slate-500">Only use this if the value is present and you have documented the original state.</p>
             </div>
-            <div>
+            <div className="min-w-0">
               <h3 className="mb-2 flex items-center gap-2 font-bold"><RotateCcw className="h-5 w-5 text-emerald-400" /> Example rollback</h3>
               <CodeBlock>{`reg add "${registryPath}" /v ActivationType /t REG_DWORD /d 1 /f`}</CodeBlock>
               <p className="mt-3 text-xs leading-5 text-slate-500">Do not use a hard-coded rollback value if your original configuration was different; restore your exported key when possible.</p>
