@@ -247,7 +247,7 @@ function DataTable({ headers, rows }: { headers: string[]; rows: string[][] }) {
 ───────────────────────────────────────────────────────────────────────────── */
 export default function LaptopBuyingGuideAR() {
   return (
-    <div className="min-h-screen bg-gray-950 text-white selection:bg-cyan-500/30" dir="rtl">
+    <div className="min-h-screen bg-transparent text-white selection:bg-cyan-500/30" dir="rtl">
 
       <Head htmlAttributes={{ lang: 'ar-KW', dir: 'rtl' }}>
         <title>دليل شراء اللابتوب في الكويت 2026: شلون تختار أفضل لابتوب؟ | KCROC</title>
