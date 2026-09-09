@@ -149,7 +149,7 @@ const LAST_REVIEWED = 'August 30, 2026';
 
 export default function BiosUefiRecoveryGuide() {
   return (
-    <div className="min-h-screen bg-slate-950 text-white selection:bg-cyan-500/30">
+    <div className="min-h-screen bg-transparent text-white selection:bg-cyan-500/30">
 
       {/* Dynamic SEO Engine Integration */}
       <SEOEngine entityId="guide-bios-uefi" />
