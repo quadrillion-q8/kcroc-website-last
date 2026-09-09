@@ -293,10 +293,10 @@ export const rawGraphData: RawGraphData = {
       entityType: 'WebPage',
       isActive: true,
       title: 'GameBarPresenceWriter.exe: What It Does, How to Fix Performance Issues, and How to Disable It',
-      description: 'What is GameBarPresenceWriter.exe? A measured, evidence-first guide covering what the Windows Game Bar component does, how to check if it is causing high CPU use or stutter, and how to disable related Game Bar activity.',
+      description: 'What is GameBarPresenceWriter.exe? A measured, evidence-first guide covering Game Bar stutter, background capture activity, the advanced Game DVR registry method, and safer rollback-first troubleshooting.',
       seo: {
         title: 'GameBarPresenceWriter.exe: What It Is, Performance Fixes & How to Disable It | KCROC',
-        description: 'What is GameBarPresenceWriter.exe? Learn what the Windows Game Bar component does, how to test whether it affects performance or stuttering, and safer ways to disable related Game Bar activity.',
+        description: 'What is GameBarPresenceWriter.exe? Learn how to test Game Bar stutter, background capture activity, and the advanced Game DVR registry method without making unsupported FPS promises.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/guides/gamebar-presence-writer-fix',
         ogType: 'article',
         // Deliberately just 'WebPage' — this page hand-rolls its own
