@@ -312,6 +312,26 @@ export const rawGraphData: RawGraphData = {
       }
     } as WebPageEntity,
 
+    'guide-windows-10-eos': {
+      id: 'guide-windows-10-eos',
+      slug: 'guides/windows-10-end-of-support',
+      entityType: 'WebPage',
+      isActive: true,
+      title: 'Windows 10 End of Support: What It Means and What to Do in 2026',
+      description: 'Windows 10 support ended on October 14, 2025. Understand Consumer ESU through October 2027, Windows 11 eligibility, and when to upgrade, repair, replace, or switch operating systems.',
+      seo: {
+        title: 'Windows 10 End of Support (2026): ESU, Upgrade or Replace? | KCROC',
+        description: 'Windows 10 support ended in 2025. Learn how ESU works through October 2027 and whether to upgrade to Windows 11, repair, or replace your PC.',
+        canonicalUrl: 'https://www.computerrepairkuwait.com/guides/windows-10-end-of-support',
+        lastModified: '2026-09-09T00:00:00+03:00',
+        ogType: 'article',
+        // The custom page emits Article + FAQPage + BreadcrumbList directly.
+        // Keep only WebPage here so SEOEngine supplies the canonical #webpage
+        // without duplicating the page-specific structured data.
+        schemaTypes: ['WebPage']
+      }
+    } as WebPageEntity,
+
     'guide-windows-11-services': {
       id: 'guide-windows-11-services',
       slug: 'guides/windows-11-background-services-audit',
