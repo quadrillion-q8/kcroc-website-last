@@ -201,6 +201,19 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
   if (Array.isArray(schemaTypes)) {
     schemaTypes.forEach(type => {
 
+      // Brand entity schema. Brand pages also expose their commercial
+      // repair Service schema below, so Google can understand both the
+      // manufacturer entity and KCROC's service for that brand.
+      if (type === 'Brand' && entity.entityType === 'Brand') {
+        const brandEntity = entity as BrandEntity;
+        schemaGraph.push({
+          "@type": "Brand",
+          "@id": `${fullCanonicalUrl}#brand`,
+          "name": brandEntity.brandName,
+          "url": brandEntity.officialWebsite
+        });
+      }
+
       // Service & Offer Catalog Schema
       if (type === 'Service') {
         if (entity.entityType === 'Service') {
@@ -261,6 +274,11 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
           const serviceFaqs = (entity as ServiceEntity).faqs;
           if (serviceFaqs && serviceFaqs.length > 0) {
             questions = serviceFaqs.map(faq => ({ title: faq.title, answer: faq.answer }));
+          }
+        } else if (entity.entityType === 'Brand') {
+          const brandFaqs = (entity as BrandEntity).faqs;
+          if (brandFaqs && brandFaqs.length > 0) {
+            questions = brandFaqs.map(faq => ({ title: faq.title, answer: faq.answer }));
           }
         } else if (entity.entityType === 'Problem') {
           const problemEntity = entity as ProblemEntity;
