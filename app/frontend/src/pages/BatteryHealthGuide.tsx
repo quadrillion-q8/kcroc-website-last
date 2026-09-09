@@ -393,7 +393,7 @@ const toneClasses: Record<string, string> = {
 
 export default function BatteryHealthGuide() {
   return (
-    <div className="min-h-screen bg-gray-950 text-white selection:bg-cyan-500/30">
+    <div className="min-h-screen bg-transparent text-white selection:bg-cyan-500/30">
 
       {/* Dynamic SEO Engine Integration */}
       <SEOEngine entityId="guide-battery" />
