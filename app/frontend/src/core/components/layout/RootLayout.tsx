@@ -7,7 +7,7 @@ import Footer from './Footer';
 import { ErrorBoundary } from '../ErrorBoundary';
 import { CookieConsentBanner } from '../CookieConsentBanner';
 import { StickyMobileCTA } from '../../../components/home/StickyMobileCTA';
-import { KCROC_GRAPH } from '../../data/graph';
+import { KCROC_GRAPH } from '../../../data/graph';
 
 // 🚀 CWV: AnimatedBackground is a pure SVG/CSS effect now (no particle
 // engine — an earlier tsParticles-based version was already replaced), but
