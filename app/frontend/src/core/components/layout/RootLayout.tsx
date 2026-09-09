@@ -20,13 +20,14 @@ const AnimatedBackground = lazy(() =>
 
 // The PCB background is a page-level visual, not a site-wide chrome element.
 // Keep it on the layouts that were authored with transparent/glass surfaces
-// and keep utility, legal, booking, and dense article pages on their own
-// deliberate solid backgrounds.
+// (including blog posts, which now render on a transparent surface too) and
+// keep utility, legal, and booking pages on their own deliberate solid
+// backgrounds.
 const shouldShowAnimatedBackground = (pathname: string): boolean => {
   const path = pathname.replace(/\/+$/, '') || '/';
 
   // Homepage and intentionally transparent visual hubs/templates.
-  if (path === '/' || path === '/blog' || path === '/gallery' || path === '/contact' || path === '/faq') {
+  if (path === '/' || path === '/blog' || path.startsWith('/blog/') || path === '/gallery' || path === '/contact' || path === '/faq') {
     return true;
   }
 
