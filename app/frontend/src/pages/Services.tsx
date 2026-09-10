@@ -25,13 +25,14 @@ export default function Services() {
         <div className="max-w-7xl mx-auto px-6">
           
           <header className="mb-16 text-center lg:text-left">
-            <h1 className="text-4xl md:text-5xl font-black text-white mb-6">Expert Repair Services</h1>
-            <p className="text-xl text-slate-400 max-w-2xl">
-              We diagnose at the component level. Select your device below to see common problems, turnaround times, and pricing.
+            <p className="text-xs uppercase tracking-[0.22em] font-bold text-emerald-400 mb-4">{services.length} specialist repair services</p>
+            <h1 className="text-4xl md:text-5xl font-black text-white mb-6">Expert Computer Repair Services in Kuwait</h1>
+            <p className="text-xl text-slate-400 max-w-3xl">
+              From laptop and MacBook repair to charging ports, hinges, keyboards, upgrades, liquid damage and board-level faults, KCROC diagnoses the actual failure before recommending the right repair.
             </p>
           </header>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((service) => {
               const ServiceIcon = ICON_MAP[service.iconKey] || Wrench;
               
