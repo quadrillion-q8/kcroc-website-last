@@ -621,7 +621,7 @@ export const rawGraphData: RawGraphData = {
         { id: 'upgrade-faq-2', title: 'Can you upgrade laptop RAM?', answer: 'Yes, when the laptop has upgradeable memory. We verify the exact model and supported capacity before recommending a module.' },
         { id: 'upgrade-faq-3', title: 'Can you clone my existing Windows installation?', answer: 'Often yes, when the existing storage is healthy and the hardware configuration supports a clean clone. We verify booting and storage health afterward.' },
         { id: 'upgrade-faq-4', title: 'Can every laptop have its RAM upgraded?', answer: 'No. Some laptops use soldered memory, while others have one or more SO-DIMM slots. We check the exact model before recommending an upgrade.' },
-        { id: 'upgrade-faq-5', title: 'What is the difference between SATA and NVMe SSDs?', answer: 'They use different interfaces and can have different performance and physical formats. We identify the laptop's supported interface before selecting the replacement drive.' },
+        { id: 'upgrade-faq-5', title: 'What is the difference between SATA and NVMe SSDs?', answer: 'They use different interfaces and can have different performance and physical formats. We identify the laptop’s supported interface before selecting the replacement drive.' },
         { id: 'upgrade-faq-6', title: 'Can you move my existing Windows installation to the new SSD?', answer: 'Often yes when the source drive is healthy and the configuration supports cloning. We verify the cloned system boots correctly and check the new drive after migration.' },
       ],
       relatedServiceIds: ['srv-laptop', 'srv-gaming', 'srv-gaming-laptop-cleaning'],
@@ -719,7 +719,6 @@ export const rawGraphData: RawGraphData = {
           { condition: 'Device failed days after the spill', action: 'Request a corrosion-focused inspection because delayed failures can occur after the original incident.' }
         ]
       },
-      relatedCaseStudyPath: { label: 'Real MacBook Liquid-Damage Case Study', path: '/case-studies/macbook-liquid-damage-salmiya' },
       inspectionChecklist: ['Confirm liquid type and affected area', 'Isolate battery and external power', 'Inspect board and connectors', 'Map corrosion and contamination', 'Test affected power rails', 'Verify all repaired functions under load'],
       warranty: { duration: '30 Days', coverage: 'Parts and labour for components repaired or replaced during the liquid-damage service', noFixNoFee: true },
       seo: { title: 'Laptop Liquid Damage Repair Kuwait | KCROC', description: 'Laptop and MacBook liquid damage repair in Kuwait. Corrosion inspection, board cleaning, micro-soldering and component-level diagnostics with free pickup.', canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-liquid-damage-repair-kuwait', ogType: 'article', schemaTypes: ['Service', 'FAQPage'] },
