@@ -2,6 +2,7 @@
 import { Head } from 'vite-react-ssg';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import StickyTOC from '@/components/blog/StickyTOC';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -313,6 +314,7 @@ export default function LaptopBuyingGuide() {
       </Head>
 
       <SchemaMarkup schema={{ '@graph': PILLAR_SCHEMA }} />
+      <StickyTOC toc={toc} />
 
       {/* Breadcrumb */}
       <div className="pt-20 sm:pt-24 px-4 sm:px-6">
