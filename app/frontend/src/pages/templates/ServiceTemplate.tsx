@@ -1,7 +1,7 @@
 // File: app/frontend/src/pages/templates/ServiceTemplate.tsx
 import React, { useState } from 'react';
 import { Navigate } from 'react-router-dom';
-import { Laptop, Apple, Gamepad2, Cpu, Wrench, ShieldCheck, Clock, MessageCircle, Users, Monitor, ChevronDown, AlertTriangle, MapPin } from 'lucide-react';
+import { Laptop, Apple, Gamepad2, Cpu, Wrench, ShieldCheck, Clock, MessageCircle, Users, Monitor, ChevronDown, AlertTriangle, MapPin, Gauge, ArrowRight, BookOpen, Tag } from 'lucide-react';
 import { KCROC_GRAPH } from '../../data/graph';
 import { SEOEngine } from '../../core/components/SEOEngine';
 import { useAnalytics } from '../../core/analytics/AnalyticsProvider';
@@ -99,22 +99,40 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
                 </p>
               )}
 
-              <div className="flex flex-wrap gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 max-w-4xl">
+                <div className="bg-slate-950/80 px-4 py-3 rounded-xl border border-slate-800 flex items-center gap-3">
+                  <Gauge className="w-5 h-5 text-cyan-400 flex-shrink-0" />
+                  <div>
+                    <span className="block text-[10px] text-slate-500 uppercase font-black tracking-wider">Repair level</span>
+                    <span className="font-semibold text-white capitalize">{entity.repairLevel.replace(/-/g, ' ')}</span>
+                  </div>
+                </div>
+
+                <div className="bg-slate-950/80 px-4 py-3 rounded-xl border border-slate-800 flex items-center gap-3">
+                  <Clock className="w-5 h-5 text-cyan-400 flex-shrink-0" />
+                  <div>
+                    <span className="block text-[10px] text-slate-500 uppercase font-black tracking-wider">Typical turnaround</span>
+                    <span className="font-semibold text-white">{entity.estimatedTurnaround}</span>
+                  </div>
+                </div>
+
                 {entity.warranty && (
-                  <div className="bg-slate-950/80 px-5 py-3 rounded-xl border border-slate-800 flex items-center gap-3">
-                    <Clock className="w-5 h-5 text-cyan-400" />
+                  <div className="bg-slate-950/80 px-4 py-3 rounded-xl border border-slate-800 flex items-center gap-3">
+                    <ShieldCheck className="w-5 h-5 text-cyan-400 flex-shrink-0" />
                     <div>
-                      <span className="block text-xs text-slate-400 uppercase font-bold tracking-wider">Warranty</span>
+                      <span className="block text-[10px] text-slate-500 uppercase font-black tracking-wider">Warranty</span>
                       <span className="font-semibold text-white">{entity.warranty.duration}</span>
                     </div>
                   </div>
                 )}
 
-                {entity.pricing?.displayLabel && (
-                  <div className="bg-cyan-900/20 px-5 py-3 rounded-xl border border-cyan-500/30 flex items-center gap-3">
-                    <span className="font-bold text-cyan-400">{entity.pricing.displayLabel}</span>
+                <div className="bg-cyan-900/20 px-4 py-3 rounded-xl border border-cyan-500/30 flex items-center gap-3">
+                  <Tag className="w-5 h-5 text-cyan-400 flex-shrink-0" />
+                  <div>
+                    <span className="block text-[10px] text-cyan-300/70 uppercase font-black tracking-wider">Pricing</span>
+                    <span className="font-semibold text-cyan-300">{entity.pricing?.displayLabel || 'Quote after diagnosis'}</span>
                   </div>
-                )}
+                </div>
               </div>
             </div>
 
@@ -148,6 +166,33 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
                 <div key={idx} className="bg-slate-900/50 backdrop-blur-sm p-6 rounded-2xl border border-slate-800 hover:border-cyan-500/30 transition-colors">
                   <h3 className="text-white font-bold mb-2">{point.title}</h3>
                   <p className="text-sm text-slate-400 leading-relaxed">{point.description}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {entity.technicalOverview && (
+          <section className="max-w-7xl mx-auto px-6 py-12 border-t border-slate-800/50 relative z-10">
+            <div className="max-w-4xl">
+              <h2 className="text-2xl font-bold mb-6 text-white">{entity.technicalOverview.heading}</h2>
+              <div className="space-y-4 text-slate-300 leading-relaxed">
+                {entity.technicalOverview.paragraphs.map((paragraph, idx) => (
+                  <p key={idx}>{paragraph}</p>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {entity.repairDecision && entity.repairDecision.items.length > 0 && (
+          <section className="max-w-7xl mx-auto px-6 py-12 border-t border-slate-800/50 relative z-10">
+            <h2 className="text-2xl font-bold mb-8 text-white">{entity.repairDecision.heading}</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {entity.repairDecision.items.map((item, idx) => (
+                <div key={idx} className="bg-slate-900/50 backdrop-blur-sm p-6 rounded-2xl border border-slate-800">
+                  <h3 className="text-white font-bold mb-2">{item.condition}</h3>
+                  <p className="text-sm text-slate-400 leading-relaxed">{item.action}</p>
                 </div>
               ))}
             </div>
@@ -340,6 +385,72 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
                 );
               })}
             </div>
+          </section>
+        )}
+
+        {(entity.relatedServiceIds.length > 0 || entity.relatedProblemIds.length > 0 || entity.relatedBrandIds.length > 0 || entity.relatedGuidePaths.length > 0 || entity.relatedCaseStudyPath) && (
+          <section className="max-w-7xl mx-auto px-6 py-12 border-t border-slate-800/50 relative z-10">
+            <h2 className="text-2xl font-bold mb-3 text-white">Related Repair Resources</h2>
+            <p className="text-sm text-slate-400 mb-8 max-w-3xl">Explore the closest repair services, troubleshooting pages, brand specialists and practical guides for this type of fault.</p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+              {entity.relatedServiceIds.length > 0 && (
+                <div className="bg-slate-900/50 border border-slate-800 rounded-2xl p-5">
+                  <h3 className="text-sm uppercase tracking-wider font-black text-cyan-400 mb-4">Related services</h3>
+                  <div className="space-y-2">
+                    {entity.relatedServiceIds.map((id) => {
+                      const item = KCROC_GRAPH.services.find((service) => service.id === id);
+                      return item ? <a key={id} href={`/${item.slug}`} className="flex items-center justify-between gap-2 text-sm text-slate-300 hover:text-white transition-colors"><span>{item.title}</span><ArrowRight className="w-4 h-4 text-slate-600" /></a> : null;
+                    })}
+                  </div>
+                </div>
+              )}
+
+              {entity.relatedProblemIds.length > 0 && (
+                <div className="bg-slate-900/50 border border-slate-800 rounded-2xl p-5">
+                  <h3 className="text-sm uppercase tracking-wider font-black text-cyan-400 mb-4">Troubleshooting pages</h3>
+                  <div className="space-y-2">
+                    {entity.relatedProblemIds.map((id) => {
+                      const item = KCROC_GRAPH.problems.find((problem) => problem.id === id);
+                      return item ? <a key={id} href={`/${item.slug}`} className="flex items-center justify-between gap-2 text-sm text-slate-300 hover:text-white transition-colors"><span>{item.title}</span><ArrowRight className="w-4 h-4 text-slate-600" /></a> : null;
+                    })}
+                  </div>
+                </div>
+              )}
+
+              {entity.relatedBrandIds.length > 0 && (
+                <div className="bg-slate-900/50 border border-slate-800 rounded-2xl p-5">
+                  <h3 className="text-sm uppercase tracking-wider font-black text-cyan-400 mb-4">Brand specialists</h3>
+                  <div className="space-y-2">
+                    {entity.relatedBrandIds.map((id) => {
+                      const item = KCROC_GRAPH.brands.find((brand) => brand.id === id);
+                      return item ? <a key={id} href={`/${item.slug}`} className="flex items-center justify-between gap-2 text-sm text-slate-300 hover:text-white transition-colors"><span>{item.title}</span><ArrowRight className="w-4 h-4 text-slate-600" /></a> : null;
+                    })}
+                  </div>
+                </div>
+              )}
+
+              {entity.relatedGuidePaths.length > 0 && (
+                <div className="bg-slate-900/50 border border-slate-800 rounded-2xl p-5">
+                  <h3 className="text-sm uppercase tracking-wider font-black text-cyan-400 mb-4 flex items-center gap-2"><BookOpen className="w-4 h-4" /> Guides</h3>
+                  <div className="space-y-2">
+                    {entity.relatedGuidePaths.map((guide) => (
+                      <a key={guide.path} href={guide.path} className="flex items-center justify-between gap-2 text-sm text-slate-300 hover:text-white transition-colors"><span>{guide.label}</span><ArrowRight className="w-4 h-4 text-slate-600" /></a>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {entity.relatedCaseStudyPath && (
+              <a href={entity.relatedCaseStudyPath.path} className="mt-5 flex items-center justify-between gap-4 rounded-2xl border border-cyan-500/20 bg-cyan-900/10 px-5 py-4 hover:border-cyan-500/40 transition-colors">
+                <div>
+                  <span className="block text-[10px] uppercase tracking-wider font-black text-cyan-400 mb-1">First-party repair evidence</span>
+                  <span className="text-white font-semibold">{entity.relatedCaseStudyPath.label}</span>
+                </div>
+                <ArrowRight className="w-5 h-5 text-cyan-400" />
+              </a>
+            )}
           </section>
         )}
 
