@@ -194,6 +194,31 @@ export const ServiceSchema = RoutableEntitySchema.extend({
     placement: z.enum(['hero', 'commonIssues', 'coreFeatures', 'process']),
     caption: z.string().optional(),
   })).optional(),
+
+  // Explicit service-hub relationships keep commercial pages connected to
+  // their closest problem, brand, guide, and complementary-service intents.
+  relatedServiceIds: z.array(z.string()).default([]),
+  relatedProblemIds: z.array(z.string()).default([]),
+  relatedBrandIds: z.array(z.string()).default([]),
+  relatedGuidePaths: z.array(z.object({
+    label: z.string(),
+    path: z.string(),
+  })).default([]),
+  relatedCaseStudyPath: z.object({
+    label: z.string(),
+    path: z.string(),
+  }).optional(),
+  technicalOverview: z.object({
+    heading: z.string(),
+    paragraphs: z.array(z.string()),
+  }).optional(),
+  repairDecision: z.object({
+    heading: z.string(),
+    items: z.array(z.object({
+      condition: z.string(),
+      action: z.string(),
+    })),
+  }).optional(),
 });
 
 export const LocationSchema = RoutableEntitySchema.extend({
