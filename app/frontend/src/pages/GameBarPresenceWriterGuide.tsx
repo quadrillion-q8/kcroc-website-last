@@ -10,6 +10,7 @@ import {
 } from 'lucide-react';
 import { SEOEngine } from '../core/components/SEOEngine';
 import { KCROC_GRAPH } from '../data/graph';
+import StickyTOC from '@/components/blog/StickyTOC';
 import { IMAGES } from '../constants/images';
 import SchemaMarkup from '../components/seo/SchemaMarkup';
 
@@ -185,6 +186,7 @@ export default function GameBarPresenceWriterGuide() {
     <div className="min-h-screen bg-transparent text-white selection:bg-cyan-500/30">
       <SEOEngine entityId="guide-gamebar-presence-writer" />
       <SchemaMarkup schema={STRUCTURED_DATA} />
+      <StickyTOC toc={toc} />
 
       <section className="relative overflow-hidden border-b border-slate-800/80 px-4 pb-10 pt-24 sm:px-6 sm:pb-16">
         <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-transparent to-violet-500/10" />
