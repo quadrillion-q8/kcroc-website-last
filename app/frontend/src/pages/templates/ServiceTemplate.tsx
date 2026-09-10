@@ -31,6 +31,14 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
   const ServiceIcon = ICON_MAP[entity.iconKey] || Wrench;
   const business = KCROC_GRAPH.business;
 
+  // Optional-with-default fields per the knowledge-graph schema — not every
+  // service entity in graph.ts sets these, so guard against undefined here
+  // (mirrors the pattern already used in BrandTemplate/ProblemTemplate).
+  const relatedServiceIds = entity.relatedServiceIds ?? [];
+  const relatedProblemIds = entity.relatedProblemIds ?? [];
+  const relatedBrandIds = entity.relatedBrandIds ?? [];
+  const relatedGuidePaths = entity.relatedGuidePaths ?? [];
+
   const getContentImage = (placement: 'hero' | 'commonIssues' | 'coreFeatures' | 'process') =>
     entity.contentImages?.find((img) => img.placement === placement);
 
@@ -388,17 +396,17 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
           </section>
         )}
 
-        {(entity.relatedServiceIds.length > 0 || entity.relatedProblemIds.length > 0 || entity.relatedBrandIds.length > 0 || entity.relatedGuidePaths.length > 0 || entity.relatedCaseStudyPath) && (
+        {(relatedServiceIds.length > 0 || relatedProblemIds.length > 0 || relatedBrandIds.length > 0 || relatedGuidePaths.length > 0 || entity.relatedCaseStudyPath) && (
           <section className="max-w-7xl mx-auto px-6 py-12 border-t border-slate-800/50 relative z-10">
             <h2 className="text-2xl font-bold mb-3 text-white">Related Repair Resources</h2>
             <p className="text-sm text-slate-400 mb-8 max-w-3xl">Explore the closest repair services, troubleshooting pages, brand specialists and practical guides for this type of fault.</p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-              {entity.relatedServiceIds.length > 0 && (
+              {relatedServiceIds.length > 0 && (
                 <div className="bg-slate-900/50 border border-slate-800 rounded-2xl p-5">
                   <h3 className="text-sm uppercase tracking-wider font-black text-cyan-400 mb-4">Related services</h3>
                   <div className="space-y-2">
-                    {entity.relatedServiceIds.map((id) => {
+                    {relatedServiceIds.map((id) => {
                       const item = KCROC_GRAPH.services.find((service) => service.id === id);
                       return item ? <a key={id} href={`/${item.slug}`} className="flex items-center justify-between gap-2 text-sm text-slate-300 hover:text-white transition-colors"><span>{item.title}</span><ArrowRight className="w-4 h-4 text-slate-600" /></a> : null;
                     })}
@@ -406,11 +414,11 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
                 </div>
               )}
 
-              {entity.relatedProblemIds.length > 0 && (
+              {relatedProblemIds.length > 0 && (
                 <div className="bg-slate-900/50 border border-slate-800 rounded-2xl p-5">
                   <h3 className="text-sm uppercase tracking-wider font-black text-cyan-400 mb-4">Troubleshooting pages</h3>
                   <div className="space-y-2">
-                    {entity.relatedProblemIds.map((id) => {
+                    {relatedProblemIds.map((id) => {
                       const item = KCROC_GRAPH.problems.find((problem) => problem.id === id);
                       return item ? <a key={id} href={`/${item.slug}`} className="flex items-center justify-between gap-2 text-sm text-slate-300 hover:text-white transition-colors"><span>{item.title}</span><ArrowRight className="w-4 h-4 text-slate-600" /></a> : null;
                     })}
@@ -418,11 +426,11 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
                 </div>
               )}
 
-              {entity.relatedBrandIds.length > 0 && (
+              {relatedBrandIds.length > 0 && (
                 <div className="bg-slate-900/50 border border-slate-800 rounded-2xl p-5">
                   <h3 className="text-sm uppercase tracking-wider font-black text-cyan-400 mb-4">Brand specialists</h3>
                   <div className="space-y-2">
-                    {entity.relatedBrandIds.map((id) => {
+                    {relatedBrandIds.map((id) => {
                       const item = KCROC_GRAPH.brands.find((brand) => brand.id === id);
                       return item ? <a key={id} href={`/${item.slug}`} className="flex items-center justify-between gap-2 text-sm text-slate-300 hover:text-white transition-colors"><span>{item.title}</span><ArrowRight className="w-4 h-4 text-slate-600" /></a> : null;
                     })}
@@ -430,11 +438,11 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
                 </div>
               )}
 
-              {entity.relatedGuidePaths.length > 0 && (
+              {relatedGuidePaths.length > 0 && (
                 <div className="bg-slate-900/50 border border-slate-800 rounded-2xl p-5">
                   <h3 className="text-sm uppercase tracking-wider font-black text-cyan-400 mb-4 flex items-center gap-2"><BookOpen className="w-4 h-4" /> Guides</h3>
                   <div className="space-y-2">
-                    {entity.relatedGuidePaths.map((guide) => (
+                    {relatedGuidePaths.map((guide) => (
                       <a key={guide.path} href={guide.path} className="flex items-center justify-between gap-2 text-sm text-slate-300 hover:text-white transition-colors"><span>{guide.label}</span><ArrowRight className="w-4 h-4 text-slate-600" /></a>
                     ))}
                   </div>
