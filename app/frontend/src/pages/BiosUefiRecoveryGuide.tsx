@@ -9,6 +9,7 @@ import {
   Volume2, Wrench, Zap, XCircle
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import StickyTOC from '@/components/blog/StickyTOC';
 
 import { KCROC_GRAPH } from '../data/graph';
 import { SEOEngine } from '../core/components/SEOEngine';
@@ -153,6 +154,8 @@ export default function BiosUefiRecoveryGuide() {
 
       {/* Dynamic SEO Engine Integration */}
       <SEOEngine entityId="guide-bios-uefi" />
+
+      <StickyTOC toc={toc} />
 
       {/* ─── HERO ─── */}
       <section className="relative overflow-hidden border-b border-slate-800/80 px-4 pb-10 pt-24 sm:px-6 sm:pb-16">
