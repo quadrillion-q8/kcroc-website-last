@@ -407,6 +407,32 @@ export const rawGraphData: RawGraphData = {
         { id: 'charging-port-faq-2', title: 'Why does my laptop charge only when the cable is moved?', answer: 'A loose or worn connector, cracked solder joint, or damaged port mounting can cause intermittent contact. We test the port mechanically and electrically before quoting a repair.' },
         { id: 'charging-port-faq-3', title: 'Do you repair USB-C charging ports?', answer: 'Yes. USB-C charging faults are diagnosed at the connector, power-delivery, and charging-circuit levels where appropriate.' }
       ],
+      relatedServiceIds: ['srv-battery', 'srv-motherboard', 'srv-laptop'],
+      relatedProblemIds: ['problem-not-charging', 'problem-no-power'],
+      relatedBrandIds: ['brand-dell', 'brand-hp', 'brand-lenovo', 'brand-asus'],
+      relatedGuidePaths: [
+        { label: 'Laptop Plugged In but Not Charging', path: '/laptop-plugged-in-not-charging' },
+        { label: 'Laptop Repair Guide', path: '/laptop-repair-kuwait' },
+      ],
+        { id: 'charging-port-faq-4', title: 'Is the charging port or motherboard damaged?', answer: 'It can be either. We test the charger, port, connector joints, input protection, charging circuit and relevant power rails so the quote reflects the confirmed fault.' },
+        { id: 'charging-port-faq-5', title: 'Can you repair USB-C charging on a laptop?', answer: 'Yes. We can diagnose the USB-C connector and charging path, including power-delivery and board-level faults where the model supports repair.' },
+        { id: 'charging-port-faq-6', title: 'Will charging-port repair affect my files?', answer: 'A connector-level repair does not normally affect your stored data. When board work is required, we work on the original board where practical rather than replacing it unnecessarily.' },
+      technicalOverview: {
+        heading: 'What We Diagnose Behind a Charging Port',
+        paragraphs: [
+          'A laptop that will not charge is not automatically a battery problem. The fault can sit in the DC jack or USB-C connector, solder joints, input protection, charging controller, cable negotiation, or the motherboard power path.',
+          'We start with a known-good compatible adapter and inspect the connector mechanically and electrically. Where board damage is present, relevant input and charging rails are measured before deciding whether a connector repair, component repair, or a larger repair is appropriate.'
+        ]
+      },
+      repairDecision: {
+        heading: 'Charging Port Repair vs Motherboard Repair',
+        items: [
+          { condition: 'Loose or physically damaged connector', action: 'Inspect and replace or rework the charging port where the board allows it.' },
+          { condition: 'Cracked solder joints or lifted connector pads', action: 'Repair the connection and reinforce the affected mounting area where practical.' },
+          { condition: 'Port is healthy but the laptop still will not charge', action: 'Trace the charging circuit, input protection and relevant power rails before replacing parts.' },
+          { condition: 'Battery is the actual failed component', action: 'Redirect the repair to the battery service rather than replacing a healthy charging port.' }
+        ]
+      },
       inspectionChecklist: ['Test charger and cable', 'Inspect port mechanically', 'Check connector solder joints', 'Measure input and charging rails', 'Test USB-C power delivery where applicable', 'Confirm battery charging after repair'],
       performanceOutcomes: { disclaimer: 'Outcomes depend on the confirmed fault and the exact laptop model.', items: [
         { metric: 'Charging stability', outcome: 'Verified under repeated plug/unplug and load conditions.' },
@@ -459,6 +485,32 @@ export const rawGraphData: RawGraphData = {
         { id: 'hinge-faq-2', title: 'Should I keep using a laptop with a stiff hinge?', answer: 'It is better to stop forcing it. A stiff hinge can transfer load into the bezel, display cable, and screen.' },
         { id: 'hinge-faq-3', title: 'Do you inspect the screen cable too?', answer: 'Yes. Hinge damage and repeated cable flexing can create display problems, so the cable and connector are checked during diagnosis.' }
       ],
+      relatedServiceIds: ['srv-screen', 'srv-laptop'],
+      relatedProblemIds: ['problem-hinge-break', 'problem-cracked-screen'],
+      relatedBrandIds: ['brand-dell', 'brand-hp', 'brand-lenovo', 'brand-msi'],
+      relatedGuidePaths: [
+        { label: 'How to Protect Your Laptop Screen', path: '/blog/how-to-protect-laptop-screen' },
+        { label: 'Laptop Repair Guide', path: '/laptop-repair-kuwait' },
+      ],
+        { id: 'hinge-faq-4', title: 'Can you repair the broken plastic around the hinge?', answer: 'In suitable cases, yes. We assess the mounting structure and can reinforce or reconstruct damaged hinge mounts when that is more appropriate than replacing an entire chassis assembly.' },
+        { id: 'hinge-faq-5', title: 'Should I replace the hinge or the whole screen assembly?', answer: 'Not necessarily. We inspect the hinge, mounts, bezel, display cable and panel separately. The repair recommendation depends on which components are actually damaged.' },
+        { id: 'hinge-faq-6', title: 'Can a broken hinge crack my laptop screen?', answer: 'Yes. A stiff or detached hinge can transfer force into the panel and cable. Stopping use early can prevent a hinge repair from becoming a hinge plus screen repair.' },
+      technicalOverview: {
+        heading: 'Why a Stiff Hinge Can Become a Screen Repair',
+        paragraphs: [
+          'Laptop hinges transfer opening and closing force into small mounting points inside the lid and base. When the hinge becomes excessively tight or its mounts crack, that force can pull the bezel apart and flex the display cable or panel.',
+          'We inspect hinge resistance, mounting hardware, chassis plastics, bezel alignment and cable routing as one mechanical system. This lets us fix the structural cause instead of simply making the lid look closed again.'
+        ]
+      },
+      repairDecision: {
+        heading: 'Hinge Repair or Full Assembly Replacement?',
+        items: [
+          { condition: 'Hinge is damaged but mounts are intact', action: 'Replace the hinge assembly with the correct model-specific part where available.' },
+          { condition: 'Plastic mounting points are cracked', action: 'Reinforce or reconstruct the mounting area when the chassis design permits a durable repair.' },
+          { condition: 'Bezel or display cable is already damaged', action: 'Add the affected component to the repair plan so the hinge fault does not mask secondary damage.' },
+          { condition: 'Screen panel is cracked from hinge stress', action: 'Assess the display separately and quote the necessary screen repair or replacement.' }
+        ]
+      },
       inspectionChecklist: ['Measure hinge resistance', 'Inspect mounting points', 'Check bezel and lid', 'Inspect display cable routing', 'Check screen for pressure damage', 'Test repeated open/close movement'],
       warranty: { duration: '30 Days', coverage: 'Parts and labour for the completed hinge/chassis repair', noFixNoFee: true },
       seo: { title: 'Laptop Hinge Repair Kuwait | Chassis Fix | KCROC', description: 'Broken or stiff laptop hinge repair in Kuwait. Chassis reinforcement, hinge replacement and display-cable inspection with free pickup and 30-day warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-hinge-repair-kuwait', ogType: 'article', schemaTypes: ['Service', 'FAQPage'] },
@@ -502,6 +554,32 @@ export const rawGraphData: RawGraphData = {
         { id: 'keyboard-faq-2', title: 'Can you fix a keyboard after a liquid spill?', answer: 'Yes, but the device should be powered off immediately. We inspect both the keyboard and the underlying electronics for liquid damage.' },
         { id: 'keyboard-faq-3', title: 'Do you replace backlit keyboards?', answer: 'Yes, where a compatible backlit assembly is available for the exact laptop configuration.' }
       ],
+      relatedServiceIds: ['srv-laptop', 'srv-liquid-damage', 'srv-battery'],
+      relatedProblemIds: ['problem-keyboard-fail', 'problem-liquid-spill'],
+      relatedBrandIds: ['brand-dell', 'brand-hp', 'brand-lenovo', 'brand-asus'],
+      relatedGuidePaths: [
+        { label: 'Laptop Repair Guide', path: '/laptop-repair-kuwait' },
+        { label: 'Liquid Damage Repair', path: '/laptop-liquid-damage-repair-kuwait' },
+      ],
+        { id: 'keyboard-faq-4', title: 'Can you repair the keyboard instead of replacing it?', answer: 'Sometimes. If the fault is a connector, contamination issue or related circuit problem, that can be addressed without replacing a healthy keyboard. A failed keyboard matrix usually requires the correct replacement assembly.' },
+        { id: 'keyboard-faq-5', title: 'Do you install Arabic and English laptop keyboards?', answer: 'Where a compatible Arabic/English or other required layout is available for the exact model, we can source and install the appropriate assembly after confirmation.' },
+        { id: 'keyboard-faq-6', title: 'Will a keyboard replacement erase my data?', answer: 'No. A normal keyboard replacement does not erase the operating system or personal files. We still test the device before and after the repair.' },
+      technicalOverview: {
+        heading: 'How We Diagnose a Laptop Keyboard Fault',
+        paragraphs: [
+          'A keyboard can fail because of the keyboard matrix, a loose ribbon connector, liquid contamination, damaged switches or membranes, or a fault in the input circuitry. Replacing the assembly without testing can therefore solve the wrong problem.',
+          'We test representative keys and failure patterns, inspect the ribbon and connector, check for liquid contamination, and verify backlighting where fitted. The exact keyboard layout and assembly are matched to the laptop configuration before installation.'
+        ]
+      },
+      repairDecision: {
+        heading: 'Keyboard Repair or Replacement?',
+        items: [
+          { condition: 'Ribbon or connector issue', action: 'Repair, reseat or replace the affected connection when appropriate.' },
+          { condition: 'Keyboard matrix has failed', action: 'Fit the correct keyboard assembly for the exact model and layout.' },
+          { condition: 'Liquid reached the keyboard', action: 'Inspect the keyboard and underlying electronics before installing a replacement.' },
+          { condition: 'MacBook top-case or model-specific assembly', action: 'Confirm the exact generation and compatible assembly before parts are ordered.' }
+        ]
+      },
       inspectionChecklist: ['Test every key', 'Check ribbon connector', 'Inspect for liquid contamination', 'Verify backlight where fitted', 'Confirm exact replacement part', 'Run post-repair input test'],
       warranty: { duration: '30 Days', coverage: 'Parts and labour for the completed keyboard replacement', noFixNoFee: true },
       seo: { title: 'Laptop Keyboard Replacement Kuwait | KCROC', description: 'Laptop and MacBook keyboard replacement in Kuwait for Dell, HP, Lenovo, ASUS, Acer, MSI and Apple. Free pickup and 30-day warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-keyboard-replacement-kuwait', ogType: 'article', schemaTypes: ['Service', 'FAQPage'] },
@@ -543,6 +621,32 @@ export const rawGraphData: RawGraphData = {
         { id: 'upgrade-faq-2', title: 'Can you upgrade laptop RAM?', answer: 'Yes, when the laptop has upgradeable memory. We verify the exact model and supported capacity before recommending a module.' },
         { id: 'upgrade-faq-3', title: 'Can you clone my existing Windows installation?', answer: 'Often yes, when the existing storage is healthy and the hardware configuration supports a clean clone. We verify booting and storage health afterward.' }
       ],
+      relatedServiceIds: ['srv-laptop', 'srv-gaming', 'srv-gaming-laptop-cleaning'],
+      relatedProblemIds: ['problem-slow', 'problem-freezing-crashing'],
+      relatedBrandIds: ['brand-dell', 'brand-hp', 'brand-lenovo', 'brand-asus'],
+      relatedGuidePaths: [
+        { label: 'Why 8GB RAM Is No Longer Enough', path: '/blog/why-8gb-ram-is-no-longer-enough-for-windows-11' },
+        { label: 'Laptop Buying Guide 2026', path: '/blog/laptop-buying-guide-kuwait-2026' },
+      ],
+        { id: 'upgrade-faq-4', title: 'Can every laptop have its RAM upgraded?', answer: 'No. Some laptops use soldered memory, while others have one or more SO-DIMM slots. We check the exact model before recommending an upgrade.' },
+        { id: 'upgrade-faq-5', title: 'What is the difference between SATA and NVMe SSDs?', answer: 'They use different interfaces and can have different performance and physical formats. We identify the laptop's supported interface before selecting the replacement drive.' },
+        { id: 'upgrade-faq-6', title: 'Can you move my existing Windows installation to the new SSD?', answer: 'Often yes when the source drive is healthy and the configuration supports cloning. We verify the cloned system boots correctly and check the new drive after migration.' },
+      technicalOverview: {
+        heading: 'SSD and RAM Upgrades Start With Compatibility',
+        paragraphs: [
+          'An upgrade only helps when it matches the machine and the actual bottleneck. We identify whether the laptop uses SATA or NVMe storage, check the physical format and supported capacity, and determine whether RAM is replaceable, partially soldered, or fully soldered.',
+          'For storage migrations, we assess the health of the existing drive before cloning. A failing source drive may need a different migration strategy, while a healthy system can often be moved to the new SSD with its Windows installation and applications intact.'
+        ]
+      },
+      repairDecision: {
+        heading: 'Which Upgrade Makes More Sense?',
+        items: [
+          { condition: 'Mechanical HDD is the main bottleneck', action: 'Prioritize a compatible SSD to improve storage responsiveness and boot times.' },
+          { condition: 'Memory pressure causes heavy paging', action: 'Add compatible RAM when the laptop supports a memory upgrade.' },
+          { condition: 'RAM is soldered or storage is restricted', action: 'Confirm the platform limits before spending money on incompatible upgrade hardware.' },
+          { condition: 'Existing drive is unhealthy', action: 'Prioritize a safe migration plan rather than blindly cloning a failing disk.' }
+        ]
+      },
       inspectionChecklist: ['Check storage health', 'Identify SSD interface', 'Check RAM type and slots', 'Confirm maximum supported capacity', 'Assess cloning suitability', 'Verify boot and stability after upgrade'],
       performanceOutcomes: { disclaimer: 'Actual gains depend on the original hardware and the bottleneck identified during diagnosis.', items: [
         { metric: 'Boot responsiveness', outcome: 'SSD upgrades can substantially reduce storage-related boot and application loading delays.' },
@@ -588,6 +692,34 @@ export const rawGraphData: RawGraphData = {
         { id: 'liquid-faq-2', title: 'Can a laptop still be repaired after a coffee spill?', answer: 'Often yes, depending on where the liquid reached and how much corrosion or component damage occurred. Early power isolation improves the chances of saving the original board.' },
         { id: 'liquid-faq-3', title: 'Do you repair liquid-damaged MacBooks?', answer: 'Yes. We inspect the logic board and affected circuits at component level where appropriate, including USB-C power and display-related faults.' }
       ],
+      relatedServiceIds: ['srv-motherboard', 'srv-keyboard', 'srv-macbook'],
+      relatedProblemIds: ['problem-liquid-spill', 'problem-no-power', 'problem-black-screen'],
+      relatedBrandIds: ['brand-dell', 'brand-hp', 'brand-lenovo', 'brand-msi'],
+      relatedGuidePaths: [
+        { label: 'Laptop Repair Guide', path: '/laptop-repair-kuwait' },
+        { label: 'MacBook Repair', path: '/macbook-repair-kuwait' },
+      ],
+      relatedCaseStudyPath: { label: 'Real MacBook Liquid-Damage Case Study', path: '/case-studies/macbook-liquid-damage-salmiya' },
+        { id: 'liquid-faq-4', title: 'Should I put a wet laptop in rice?', answer: 'No. Rice does not remove contamination from connectors or circuit boards and can introduce debris. Shut the laptop down, disconnect power, and arrange a proper inspection instead.' },
+        { id: 'liquid-faq-5', title: 'Can a laptop fail days after a spill?', answer: 'Yes. Residue and corrosion can continue affecting contacts and components after the device appears dry. Delayed faults are one reason a post-spill inspection matters.' },
+        { id: 'liquid-faq-6', title: 'Can you save the original motherboard after liquid damage?', answer: 'Sometimes. The outcome depends on where the liquid reached, the corrosion level and which components or traces were affected. We assess repairability before recommending replacement.' },
+      technicalOverview: {
+        heading: 'What Happens Inside a Liquid-Damaged Laptop',
+        paragraphs: [
+          'Liquid can bridge electrical contacts immediately and leave residues that continue to affect connectors, traces and components after the visible moisture has disappeared. Coffee, soft drinks and other contaminated liquids can be especially problematic because drying does not remove the residue.',
+          'KCROC isolates power before detailed inspection, maps contamination and corrosion, then tests affected circuits. When the original board is repairable, component-level work can preserve it instead of treating every spill as an automatic motherboard replacement.'
+        ]
+      },
+      repairDecision: {
+        heading: 'Liquid Damage: What To Do Before Pickup',
+        items: [
+          { condition: 'Laptop is still powered on', action: 'Shut it down immediately and disconnect the charger. Do not keep testing it.' },
+          { condition: 'Liquid reached the keyboard or ports', action: 'Do not reconnect power just because the outside appears dry; internal contamination may remain.' },
+          { condition: 'Laptop appears dead after a spill', action: 'Arrange inspection rather than repeatedly pressing the power button, which can worsen a short.' },
+          { condition: 'Device failed days after the spill', action: 'Request a corrosion-focused inspection because delayed failures can occur after the original incident.' }
+        ]
+      },
+      relatedCaseStudyPath: { label: 'Real MacBook Liquid-Damage Case Study', path: '/case-studies/macbook-liquid-damage-salmiya' },
       inspectionChecklist: ['Confirm liquid type and affected area', 'Isolate battery and external power', 'Inspect board and connectors', 'Map corrosion and contamination', 'Test affected power rails', 'Verify all repaired functions under load'],
       warranty: { duration: '30 Days', coverage: 'Parts and labour for components repaired or replaced during the liquid-damage service', noFixNoFee: true },
       seo: { title: 'Laptop Liquid Damage Repair Kuwait | KCROC', description: 'Laptop and MacBook liquid damage repair in Kuwait. Corrosion inspection, board cleaning, micro-soldering and component-level diagnostics with free pickup.', canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-liquid-damage-repair-kuwait', ogType: 'article', schemaTypes: ['Service', 'FAQPage'] },
