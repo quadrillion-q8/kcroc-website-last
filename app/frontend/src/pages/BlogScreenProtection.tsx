@@ -28,6 +28,13 @@ const WA_LINK = `https://wa.me/${business.telephone}?text=${encodeURIComponent(
   'Hi KCROC, I read your screen protection guide and need a display diagnostic. Please arrange a free pickup.'
 )}`;
 
+const faq = [
+  { q: 'Can a physically cracked display panel be repaired without replacement?', a: 'No. Fractured LCD or OLED internal pixel substrates cannot be glued back together or software-resolved. The absolute only hardware route to restore display health is a structural panel assembly change.' },
+  { q: 'How long does a complete laptop screen replacement procedure take?', a: 'If components are pre-stocked within our specialized Hawalli lab shelves, physical screen replacements take between 1 to 2 hours maximum to complete.' },
+  { q: 'What is the root cause of internal display bleeding when outer glass is safe?', a: 'Lids are highly flexible. If external force hits your bag, the plastic/aluminum backing bends inward, focusing a crushing force that splits inner pixel layers while the elastic outer panel face survives unbroken.' },
+  { q: 'Does your laptop screen replacement include full warranty protection?', a: 'Yes. Every successful structural display panel swap carried out within our center leaves with comprehensive warranty protection covering performance stability.' }
+];
+
 const STRUCTURED_DATA = {
   "@context": "https://schema.org",
   "@graph": [
@@ -62,6 +69,15 @@ const STRUCTURED_DATA = {
         { "@type": "ListItem", "position": 2, "name": "Blog", "item": `${business.websiteUrl}/blog` },
         { "@type": "ListItem", "position": 3, "name": "How to Protect Your Laptop Screen", "item": PAGE_URL }
       ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${PAGE_URL}#faq`,
+      "mainEntity": faq.map((item) => ({
+        "@type": "Question",
+        "name": item.q,
+        "acceptedAnswer": { "@type": "Answer", "text": item.a }
+      }))
     }
   ]
 };
@@ -215,13 +231,6 @@ const preventionGuide = [
   { title: 'Top-Center Lifting Execution', description: 'Open your laptop exclusively from the absolute midpoint of the top bezel to balance structural torque loads safely.', icon: Wrench, frequency: 'Continuous' },
   { title: 'Webcam Slider Elimination', description: 'Remove aftermarket physical webcam shutter plates entirely to prevent crushing thin display glass faces.', icon: Monitor, frequency: 'Immediate Action' },
   { title: 'Microfiber deck cleaning', description: 'Clear dust off the physical frame deck before any closure step to negate micro- Fulcrum damage hazards.', icon: Wind, frequency: 'Daily Basis' }
-];
-
-const faq = [
-  { q: 'Can a physically cracked display panel be repaired without replacement?', a: 'No. Fractured LCD or OLED internal pixel substrates cannot be glued back together or software-resolved. The absolute only hardware route to restore display health is a structural panel assembly change.' },
-  { q: 'How long does a complete laptop screen replacement procedure take?', a: 'If components are pre-stocked within our specialized Hawalli lab shelves, physical screen replacements take between 1 to 2 hours maximum to complete.' },
-  { q: 'What is the root cause of internal display bleeding when outer glass is safe?', a: 'Lids are highly flexible. If external force hits your bag, the plastic/aluminum backing bends inward, focusing a crushing force that splits inner pixel layers while the elastic outer panel face survives unbroken.' },
-  { q: 'Does your laptop screen replacement include full warranty protection?', a: 'Yes. Every successful structural display panel swap carried out within our center leaves with comprehensive warranty protection covering performance stability.' }
 ];
 
 /* ─────────────────────────────────────────────────────────────────────────────
