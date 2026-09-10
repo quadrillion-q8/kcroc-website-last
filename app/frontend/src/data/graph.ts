@@ -2589,36 +2589,128 @@ export const rawGraphData: RawGraphData = {
     'problem-overheating': {
       id: 'problem-overheating', slug: 'laptop-overheating-kuwait', entityType: 'Problem', isActive: true,
       title: 'Laptop Overheating Kuwait',
+      primaryKeyword: 'laptop overheating kuwait',
+      secondaryKeywords: ['laptop overheating', 'laptop shutting down from heat', 'laptop thermal throttling', 'laptop fan loud and hot'],
+      synonyms: ['laptop running hot', 'laptop gets too hot', 'laptop overheats and shuts down'],
       description: 'Diagnostic guide for laptops thermal throttling and shutting down from extreme heat.',
+      shortDescription: 'Separate normal fan noise from a real thermal fault before deciding the laptop needs a full cleaning and re-paste.',
+      intro: 'An overheating laptop is rarely a single-part failure — it is usually a chain of small problems (dust, dried thermal paste, a tired fan) that compound each other, and Kuwait\'s climate accelerates every link in that chain. This page walks through how to tell normal warm-running from a genuine thermal fault, what to check before booking a cleaning, and what KCROC actually does once the laptop is on the bench.',
       symptom: 'Laptop extremely hot to touch, fans running at maximum speed, performance dropping under load.',
       causes: ['Dust-blocked cooling fins — most common in Kuwait\'s particulate environment', 'Dried thermal paste — accelerates in 45°C+ summer temperatures', 'Failed or worn fan bearing'],
       doNotDo: 'Do not use a laptop that is thermal throttling on intensive tasks — sustained overheating degrades the CPU and eventually kills the motherboard.',
       solution: 'Ultrasonic cleaning of the cooling system, fresh phase-change thermal material application, and fan inspection. We also check BIOS thermal limits.',
       urgency: 'medium',
       relatedServiceIds: ['srv-laptop', 'srv-gaming', 'srv-gaming-laptop-cleaning'],
+      coveredBrands: ['Dell', 'HP', 'Lenovo', 'ASUS', 'Acer', 'MSI', 'Apple MacBook'],
+      diagnosticSteps: [
+        { step: 1, title: 'Check where the heat actually is', description: 'Feel the underside near the vents and the keyboard area above the CPU/GPU. Heat concentrated in one spot near the fan exhaust points to a cooling blockage; even heat across the whole chassis is more often a design characteristic than a fault.' },
+        { step: 2, title: 'Listen to the fan behavior', description: 'A fan that spins at maximum speed constantly, or that changes pitch/grinds, suggests dust resistance or a worn bearing. A fan that never seems to speed up under load can point to a blocked airflow path instead.' },
+        { step: 3, title: 'Check the vents and intake', description: 'Look at the visible vents and intake grille for dust or lint. Elevate the laptop off soft surfaces like beds and cushions, which block the intake and can look like a hardware fault by themselves.' },
+        { step: 4, title: 'Watch for throttling patterns', description: 'Note whether performance only drops during sustained load (gaming, exports, compiling) or even during light use — sustained-only throttling points toward thermal paste and dust; constant slowness can indicate a separate issue.' },
+        { step: 5, title: 'Rule out software causes', description: 'Background updates, malware, or a stuck process pinning the CPU can look identical to a thermal fault. Check Task Manager for a process using continuous high CPU before assuming it is hardware.' },
+        { step: 6, title: 'Decide if it is time for a professional cleaning', description: 'If the laptop is 12+ months old, has never been cleaned, or shows the pattern above, an internal cleaning and re-paste is the appropriate next step rather than continuing to run it hot.' }
+      ],
+      decisionTree: [
+        { symptom: 'Hot only under heavy load, fan loud but performance still fine', direction: 'Likely early-stage dust buildup or aging thermal paste. Cleaning now can prevent throttling from developing.' },
+        { symptom: 'Hot and throttling (visible slowdown) during gaming or heavy tasks', direction: 'Thermal paste has likely dried out or the cooling fins are blocked. A cleaning and re-paste service is the direct fix.', href: '#technician-diagnosis', linkLabel: 'See how KCROC diagnoses this' },
+        { symptom: 'Hot even during light browsing, or shuts down unexpectedly', direction: 'This is more advanced — check for a runaway background process first, then treat as an urgent cooling-system fault if the laptop shuts itself off.' },
+        { symptom: 'Laptop is hot but the screen is also flickering or has display corruption', direction: 'Extreme heat can affect the GPU or the display cable. Also check the black-screen problem path if the display is affected.', href: '/laptop-black-screen-kuwait', linkLabel: 'Laptop black-screen problem' }
+      ],
+      technicianMethod: [
+        { step: 1, title: 'Baseline temperature test', description: 'We run the laptop under controlled load and log CPU/GPU temperatures before opening the chassis, so the improvement after service can be verified rather than assumed.' },
+        { step: 2, title: 'Full disassembly and inspection', description: 'The chassis is opened and the heatsink, fan assembly and vents are inspected directly for dust density, worn fan grease and paste condition.' },
+        { step: 3, title: 'Ultrasonic and compressed cleaning', description: 'The heatsink and fan are cleaned to remove dust and debris that surface cleaning through vents cannot reach.' },
+        { step: 4, title: 'Fresh thermal material application', description: 'Dried factory paste is removed and replaced with a phase-change or high-grade thermal compound rated for sustained performance in high-heat environments.' },
+        { step: 5, title: 'BIOS thermal-limit and fan-curve check', description: 'We confirm the fan curve and thermal limits in BIOS are behaving as designed, since an incorrect fan curve can mimic a hardware cooling fault.' },
+        { step: 6, title: 'Post-service verification', description: 'The same load test is repeated after service and compared against the baseline reading before the laptop is returned.' }
+      ],
+      safetyNotes: [
+        'Stop running intensive workloads (gaming, exports, compiling) on a laptop that is visibly throttling — sustained heat stress shortens CPU and motherboard life.',
+        'Do not block the intake vents by using the laptop on a bed, sofa or other soft surface for extended periods.',
+        'Do not attempt to open the chassis and apply thermal paste yourself unless you are comfortable with laptop disassembly — incorrect paste application or reassembly can cause more damage than the original heat issue.'
+      ],
+      kuwaitContext: [
+        'Kuwait\'s ambient summer temperatures regularly exceed 45°C, which accelerates the drying and cracking of factory thermal paste well ahead of the timelines seen in cooler climates.',
+        'Fine airborne dust and sand are more prevalent locally, which clogs cooling fins faster than in most other regions — a laptop that would need cleaning every 18-24 months elsewhere may need it every 8-12 months here.',
+        'KCROC sees overheating as one of the most common Kuwait-specific repair categories and offers free pickup and delivery across all governorates so the laptop does not need to be carried in during peak heat.'
+      ],
+      faqs: [
+        { question: 'Is it normal for a laptop to feel hot in Kuwait?', answer: 'Some warmth under load is normal, especially with high ambient room temperatures. It becomes a problem when the fan runs at maximum constantly, performance visibly drops under load, or the laptop shuts down unexpectedly.' },
+        { question: 'How often should a laptop be cleaned in Kuwait\'s climate?', answer: 'As a general guide, every 8-12 months for regular use, sooner for gaming laptops or laptops used in dusty environments. A laptop that has never been cleaned and is 12+ months old is a reasonable candidate regardless of symptoms.' },
+        { question: 'Can overheating actually damage my laptop permanently?', answer: 'Yes. Sustained high temperatures accelerate wear on the CPU, GPU, battery and solder joints, and can eventually cause motherboard-level failures that are far more expensive than a routine cleaning.' },
+        { question: 'Will cleaning fix my laptop if it is already shutting down from heat?', answer: 'In most cases a cleaning and re-paste resolves shutdown-from-heat issues caused by dust and dried paste. If the fan bearing has failed or the shutdown persists after cleaning, further diagnosis of the fan or thermal sensor may be needed.' },
+        { question: 'Does using a cooling pad actually help?', answer: 'A cooling pad can modestly reduce ambient temperature around the chassis, but it cannot remove internal dust or restore dried thermal paste — it is a supplement to cleaning, not a replacement for it.' },
+        { question: 'How long does a laptop cleaning and re-paste take at KCROC?', answer: 'Most laptops are completed within a few hours for standard cleaning and re-pasting, same-day in most cases when the laptop is dropped off or picked up in the morning.' }
+      ],
       contentImages: [
         { src: IMAGES.laptopHardware.laptopDustCleaningOverheatingKuwait.src, alt: IMAGES.laptopHardware.laptopDustCleaningOverheatingKuwait.alt, width: IMAGES.laptopHardware.laptopDustCleaningOverheatingKuwait.width, height: IMAGES.laptopHardware.laptopDustCleaningOverheatingKuwait.height, placement: 'causes', caption: 'Dust buildup inside the cooling system — the leading cause of overheating in Kuwait\'s climate.' },
         { src: IMAGES.laptopHardware.copperHeatsink2.src, alt: IMAGES.laptopHardware.copperHeatsink2.alt, width: IMAGES.laptopHardware.copperHeatsink2.width, height: IMAGES.laptopHardware.copperHeatsink2.height, placement: 'solution', caption: 'Cleaning the copper heatsink and applying fresh thermal material during the repair.' },
       ],
-      seo: { title: 'Laptop Overheating Kuwait — Fix & Thermal Service | KCROC', description: 'Laptop overheating in Kuwait? Kuwait\'s summer heat destroys thermal paste and clogs cooling fins. We deep-clean and re-paste. Free pick & drop. Same-day service.', canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-overheating-kuwait', ogType: 'article', schemaTypes: ['Article', 'FAQPage'] },
+      seo: { title: 'Laptop Overheating Kuwait — Fix & Thermal Service | KCROC', description: 'Laptop overheating in Kuwait? Kuwait\'s summer heat destroys thermal paste and clogs cooling fins. We deep-clean and re-paste. Free pick & drop. Same-day service.', canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-overheating-kuwait', ogType: 'article', schemaTypes: ['TechArticle', 'FAQPage'], lastModified: '2026-09-10T00:00:00+03:00' },
       navigationPriority: 90, popular: true 
     } as ProblemEntity,
 
     'problem-black-screen': {
       id: 'problem-black-screen', slug: 'laptop-black-screen-kuwait', entityType: 'Problem', isActive: true,
       title: 'Laptop Turns On But Screen is Black',
+      primaryKeyword: 'laptop screen black',
+      secondaryKeywords: ['laptop turns on but no display', 'laptop black screen fix', 'laptop powers on no picture', 'blank screen laptop fan running'],
+      synonyms: ['laptop powers on but no display', 'blank screen laptop', 'laptop black screen but fans running'],
       description: 'Diagnostic guide for laptops that power on (lights/fans) but display nothing on the screen.',
+      shortDescription: 'Tell apart a display-cable fault, a blown backlight fuse, a RAM issue and a GPU or firmware failure before opening the laptop.',
+      intro: 'A black screen with the fans running and lights on is one of the most confusing laptop faults, because it means the laptop is powering up — the fault is somewhere between the power-on stage and the point where an image should appear. That could be RAM, the display panel, the video cable, the GPU or the firmware. This page walks through the checks that narrow that list before any parts are opened or replaced.',
       symptom: 'You press the power button, the keyboard lights up, and you can hear the fans spinning, but the screen remains completely black. Connecting to an external monitor might sometimes show a picture.',
       causes: ['Failed RAM stick or poorly seated RAM', 'Blown backlight fuse on the motherboard', 'Damaged internal display cable', 'Failed GPU (Graphics Processing Unit)', 'Corrupted BIOS firmware'],
       doNotDo: 'Do not repeatedly force-restart the laptop by holding the power button. If the BIOS is trying to recover or update, force-restarting will brick the motherboard permanently.',
       solution: 'We first test RAM and external outputs. If it is a motherboard issue, we use boardview schematics to locate and replace the blown backlight fuse or reflash the BIOS chip directly.',
       urgency: 'high',
       relatedServiceIds: ['srv-screen', 'srv-motherboard'],
+      coveredBrands: ['Dell', 'HP', 'Lenovo', 'ASUS', 'Acer', 'MSI', 'Apple MacBook'],
+      diagnosticSteps: [
+        { step: 1, title: 'Test on an external monitor', description: 'Connect an external monitor or TV via HDMI/USB-C. If a picture appears there, the fault is likely the internal panel, its cable or the backlight — not the GPU or motherboard.' },
+        { step: 2, title: 'Check for any faint image', description: 'Shine a flashlight closely at the screen at an angle in a dark room. A very faint, dim image usually means a backlight fault (the screen is technically working); no image at all points elsewhere.' },
+        { step: 3, title: 'Listen for POST beep codes', description: 'Some laptops emit a beep pattern when RAM or the display path fails during startup. Note the pattern and check the manufacturer\'s beep-code reference if present.' },
+        { step: 4, title: 'Try a single-RAM-stick test', description: 'On laptops with accessible RAM, if there are two modules, try booting with only one installed at a time — a failed or poorly seated stick is a common and inexpensive cause of a black screen.' },
+        { step: 5, title: 'Rule out sleep/display-driver confusion', description: 'Press the power button briefly and wait, and try the keyboard backlight or caps-lock key to see if the system responds — occasionally a stuck sleep state or corrupted display driver looks identical to a hardware fault.' },
+        { step: 6, title: 'Stop if the fault followed a BIOS update', description: 'If the black screen appeared right after a firmware/BIOS update, treat it as a firmware recovery case rather than a display fault — do not repeatedly power-cycle the laptop.' }
+      ],
+      decisionTree: [
+        { symptom: 'External monitor shows a picture, internal screen stays black', direction: 'Points to the internal panel, backlight fuse or display cable rather than the GPU or motherboard logic.' },
+        { symptom: 'No image on external monitor either, but lights/fans are on', direction: 'Points toward RAM, GPU or motherboard-level POST failure. Try the single-RAM-stick test before assuming a board fault.', href: '#technician-diagnosis', linkLabel: 'See technician diagnosis' },
+        { symptom: 'Black screen appeared right after a BIOS/firmware update', direction: 'This is a firmware recovery case, not a typical black-screen fault. See the BIOS & UEFI recovery guide.', href: '/guides/bios-uefi-recovery-kuwait', linkLabel: 'BIOS & UEFI recovery guide' },
+        { symptom: 'No lights, no fan, completely unresponsive', direction: 'This is not a black-screen case — it is a true no-power fault. Follow the no-power diagnostic path instead.', href: '/laptop-wont-turn-on', linkLabel: 'Laptop won\'t turn on problem' }
+      ],
+      technicianMethod: [
+        { step: 1, title: 'External display and POST verification', description: 'We confirm whether the system POSTs correctly and outputs to an external display before opening the chassis, isolating the panel/cable from the motherboard/GPU path.' },
+        { step: 2, title: 'RAM testing and reseating', description: 'RAM modules are tested individually and reseated or swapped to rule out a seating or module failure.' },
+        { step: 3, title: 'Backlight fuse and inverter check', description: 'Using boardview schematics, we test the backlight fuse and related circuit for continuity — a common, relatively low-cost point of failure.' },
+        { step: 4, title: 'Display cable and panel inspection', description: 'The internal video/eDP cable and connector are inspected for damage, pinched routing or a loose connection at the hinge.' },
+        { step: 5, title: 'GPU and firmware diagnosis', description: 'Where the fault is not explained by the above, GPU-level testing and firmware/BIOS verification (including reflashing where appropriate) are used to isolate the remaining possibilities.' },
+        { step: 6, title: 'Repair and verification', description: 'The confirmed component (fuse, cable, panel or chip-level fault) is repaired or replaced, then the laptop is run through a full display and stability test before return.' }
+      ],
+      safetyNotes: [
+        'Do not repeatedly force-restart a laptop that just received a BIOS/firmware update — this can turn a recoverable firmware issue into a bricked motherboard.',
+        'Avoid pressing on or flexing the display panel to "test" it — physical pressure can turn a cable fault into a cracked panel.',
+        'If the black screen followed a drop or impact, treat it as possible physical damage and avoid closing/opening the lid repeatedly.'
+      ],
+      kuwaitContext: [
+        'Heat and dust exposure common in Kuwait can accelerate connector and cable wear at the hinge, which is one of the more common causes of an intermittent or permanent black screen over a laptop\'s lifetime.',
+        'Voltage fluctuations during power outages, which occur periodically in parts of Kuwait, can occasionally coincide with firmware corruption — if the black screen started right after a power interruption, mention this during diagnosis.',
+        'KCROC keeps common backlight fuses, display cables and panels for major brands in stock at the Hawalli lab to shorten turnaround on this specific fault.'
+      ],
+      faqs: [
+        { question: 'My laptop has power and fan noise but a black screen — is this a motherboard problem?', answer: 'Not necessarily. It can be RAM, the display panel, the backlight fuse, the display cable, the GPU or firmware. An external-monitor test is the fastest way to narrow it down before assuming the motherboard is at fault.' },
+        { question: 'Can a failed RAM stick really cause a completely black screen?', answer: 'Yes. Many laptops will not display anything, not even a manufacturer logo, if the installed RAM is faulty or poorly seated. This is one of the most common and least expensive causes of this symptom.' },
+        { question: 'What is a backlight fuse and why does it blow?', answer: 'It is a small protective component on the motherboard that can fail due to a power surge, physical damage or age. When it blows, the screen usually still works but produces no visible light, which can look identical to a fully dead display.' },
+        { question: 'Should I try reflashing the BIOS myself?', answer: 'This is not recommended without the correct equipment and file for your exact model. An incorrect or interrupted flash can turn a recoverable issue into a laptop that will not power on at all.' },
+        { question: 'Does an external monitor working mean my laptop screen is definitely broken?', answer: 'It strongly suggests the fault is isolated to the internal display path (panel, cable or backlight) rather than the motherboard or GPU, but a technician inspection is still needed to confirm the exact component.' },
+        { question: 'How long does black-screen diagnosis and repair typically take?', answer: 'Simple cases like RAM reseating or a backlight fuse replacement can often be completed the same day. Panel replacements or firmware recovery cases may take 1-2 days depending on parts availability.' }
+      ],
       contentImages: [
         { src: IMAGES.laptopHardware.monitorBlueScreenErrorDiagnostic.src, alt: IMAGES.laptopHardware.monitorBlueScreenErrorDiagnostic.alt, width: IMAGES.laptopHardware.monitorBlueScreenErrorDiagnostic.width, height: IMAGES.laptopHardware.monitorBlueScreenErrorDiagnostic.height, placement: 'causes', caption: 'Testing display output on an external monitor to isolate whether the fault is the panel or the board.' },
         { src: IMAGES.laptopHardware.laptopBiosDiagnosticScreenRepair.src, alt: IMAGES.laptopHardware.laptopBiosDiagnosticScreenRepair.alt, width: IMAGES.laptopHardware.laptopBiosDiagnosticScreenRepair.width, height: IMAGES.laptopHardware.laptopBiosDiagnosticScreenRepair.height, placement: 'solution', caption: 'Running BIOS-level diagnostics to locate the blown fuse or corrupted firmware causing the black screen.' },
       ],
-      seo: { title: 'Laptop Turns On But Screen is Black — Fix in Kuwait | KCROC', description: 'Laptop has power but a black screen? We diagnose backlight fuses, RAM failures, and dead displays. Free pick & drop in Kuwait.', canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-black-screen-kuwait', ogType: 'article', schemaTypes: ['Article', 'FAQPage'] },
+      seo: { title: 'Laptop Turns On But Screen is Black — Fix in Kuwait | KCROC', description: 'Laptop has power but a black screen? We diagnose backlight fuses, RAM failures, and dead displays. Free pick & drop in Kuwait.', canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-black-screen-kuwait', ogType: 'article', schemaTypes: ['TechArticle', 'FAQPage'], lastModified: '2026-09-10T00:00:00+03:00' },
       navigationPriority: 80, popular: true 
     } as ProblemEntity,
 
@@ -2643,18 +2735,65 @@ export const rawGraphData: RawGraphData = {
     'problem-not-charging': {
       id: 'problem-not-charging', slug: 'laptop-plugged-in-not-charging', entityType: 'Problem', isActive: true,
       title: 'Laptop Plugged In But Not Charging',
+      primaryKeyword: 'laptop plugged in not charging',
+      secondaryKeywords: ['laptop says plugged in not charging', 'laptop battery not charging', 'laptop only works plugged in', 'laptop charging port broken'],
+      synonyms: ['laptop won\'t charge', 'laptop battery stuck at percentage', 'laptop dies when unplugged'],
       description: 'Troubleshooting a laptop that detects the charger but the battery percentage does not increase.',
+      shortDescription: 'Work out whether it is the battery, the charging port, the charger itself, or a motherboard charging chip before booking a repair.',
+      intro: '"Plugged in, not charging" is a message that can mean several unrelated things: the battery itself has degraded, the charging port is loose or damaged, the adapter is failing, or the charging circuit on the motherboard has failed. Guessing which one it is by replacing parts one at a time gets expensive fast — this page walks through the checks that actually narrow it down first.',
       symptom: 'The laptop recognizes the charger is plugged in (Windows says "Plugged in"), but the battery level stays the same or slowly drops. Or, the laptop only works when plugged into the wall and dies instantly if unplugged.',
       causes: ['Severely degraded lithium battery cells', 'Damaged DC-In charging jack', 'Failed charging IC chip on the motherboard', 'Counterfeit or underpowered charger'],
       doNotDo: 'Do not forcefully bend the charging cable at extreme angles trying to "find the sweet spot" to make it charge — this usually breaks the internal port off the motherboard.',
       solution: 'We test your battery health and charger voltage. If the battery is dead, we replace it. If the motherboard charging circuit has failed, we replace the specific charging IC (like the BQ chip or CD3215 on MacBooks).',
       urgency: 'medium',
       relatedServiceIds: ['srv-battery', 'srv-laptop'],
+      relatedGuideSlug: 'laptop-battery-warning-signs',
+      coveredBrands: ['Dell', 'HP', 'Lenovo', 'ASUS', 'Acer', 'MSI', 'Apple MacBook'],
+      diagnosticSteps: [
+        { step: 1, title: 'Test with a known-good charger', description: 'If possible, borrow or buy a correctly rated OEM or certified charger and cable, and test with that first — a failing or counterfeit adapter is one of the most common and cheapest causes.' },
+        { step: 2, title: 'Check the "plugged in" message carefully', description: 'Windows distinguishes between "Plugged in, charging" and "Plugged in, not charging." The latter specifically points away from a totally dead charger (which would usually show no charging status at all) and toward the battery or charging circuit.' },
+        { step: 3, title: 'Inspect and wiggle-test the port gently', description: 'With the laptop off, gently check if the charging port feels loose, wobbly or recessed compared to when new. Do not force or repeatedly flex the connector — a visibly damaged port is enough evidence on its own.' },
+        { step: 4, title: 'Check the battery health report', description: 'On Windows, generate a battery report (see the battery warning-signs guide) — a battery showing severely reduced capacity is a likely contributor even if it is not the whole story.' },
+        { step: 5, title: 'Note whether it charges intermittently', description: 'If gently repositioning the cable makes charging start and stop, this points strongly to a loose DC jack or connector rather than the battery or motherboard chip.' },
+        { step: 6, title: 'Decide the likely path before booking', description: 'A dead-but-stable charging status with a known-good charger usually means battery or motherboard charging IC; an intermittent, cable-position-dependent fault usually means the port.' }
+      ],
+      decisionTree: [
+        { symptom: 'Known-good charger tested, still "plugged in, not charging"', direction: 'Points toward the battery itself or the motherboard charging circuit. A battery health check is the next step.', href: '/guides/laptop-battery-warning-signs', linkLabel: 'Battery warning signs guide' },
+        { symptom: 'Charging works only when the cable is held at a specific angle', direction: 'Points strongly toward a loose or damaged DC-in/USB-C charging port rather than the battery.' },
+        { symptom: 'Original charger shows no light or response at all, on any device', direction: 'The charger itself has likely failed — replace with a correct-wattage OEM or certified adapter before assuming a laptop-side fault.' },
+        { symptom: 'Laptop shuts off instantly when unplugged, even at high reported battery %', direction: 'The reported percentage is unreliable — this is a strong sign of a genuinely failed battery that can no longer hold or deliver charge.' }
+      ],
+      technicianMethod: [
+        { step: 1, title: 'Charger output verification', description: 'The adapter\'s voltage and current output are measured directly to confirm it is delivering the correct, stable power before any laptop-side component is suspected.' },
+        { step: 2, title: 'Charging port inspection', description: 'The DC-in or USB-C port is inspected and tested for a secure mechanical and electrical connection, since a loose port is a common and low-cost fix.' },
+        { step: 3, title: 'Battery health and cell testing', description: 'The battery is tested for capacity, voltage under load and physical condition (checking for swelling) to determine whether it can still hold and deliver a usable charge.' },
+        { step: 4, title: 'Charging IC diagnosis', description: 'If the charger, port and battery all test as functional, the motherboard\'s charging IC (such as a BQ-series chip or Apple\'s CD3215 on MacBooks) is tested for the specific failure.' },
+        { step: 5, title: 'Component-level repair', description: 'Depending on findings, we replace the battery, repair or replace the charging port, or replace the specific failed charging IC rather than the entire motherboard.' },
+        { step: 6, title: 'Charge-cycle verification', description: 'After repair, the laptop is charged and discharged through a verification cycle to confirm stable charging before it is returned.' }
+      ],
+      safetyNotes: [
+        'Do not continue using a laptop that only powers on while plugged in if the battery also shows any swelling or unusual heat — disconnect and have it inspected.',
+        'Do not use uncertified or unbranded fast chargers not rated for your laptop\'s required wattage; they can damage the charging circuit over time.',
+        'Avoid forcing a charging cable into a port that feels loose or misaligned — this often breaks the port fully off the motherboard, turning a simple repair into a bigger one.'
+      ],
+      kuwaitContext: [
+        'Kuwait\'s heat can accelerate battery cell degradation, so a "plugged in, not charging" fault paired with a laptop that is 2+ years old is statistically more likely to be the battery than in a cooler climate.',
+        'Counterfeit and third-party chargers are common in the local market — verifying the charger with a known-good replacement early in diagnosis avoids paying for a battery or board repair that would not have fixed the actual fault.',
+        'KCROC stocks common OEM-equivalent batteries and charging ICs for major brands at the Hawalli lab, and offers free pickup and delivery across Kuwait for this repair.'
+      ],
+      faqs: [
+        { question: 'Why does my laptop say "plugged in, not charging"?', answer: 'This specific message usually means the laptop is receiving some power but the battery cannot accept a charge — most often due to a degraded battery or a failed charging circuit, rather than a completely dead charger.' },
+        { question: 'Can a bad charger cause "plugged in, not charging" specifically?', answer: 'It can, particularly with counterfeit or underpowered chargers that deliver unstable power. Testing with a known-good, correctly rated charger is the fastest way to rule this out.' },
+        { question: 'Is it dangerous to keep using a laptop that only works when plugged in?', answer: 'It is not inherently dangerous by itself, but it means the battery has likely failed and can no longer act as a safety buffer against power interruptions, and in some cases indicates an underlying issue worth diagnosing before it worsens.' },
+        { question: 'How much does it cost to fix a laptop charging port?', answer: 'This depends on the laptop model and whether the port itself needs replacement or the surrounding motherboard connector is affected. A diagnosis at KCROC identifies the exact scope before any cost is quoted.' },
+        { question: 'Can I just replace the battery myself to fix this?', answer: 'Only if the battery is confirmed to be the actual cause. Replacing a battery when the real fault is the charging port or a motherboard IC will not solve the problem and adds unnecessary cost.' },
+        { question: 'Will I lose my data if the charging IC needs replacing?', answer: 'No — a charging IC repair is a motherboard power-circuit fix and does not involve the storage drive. Your data is not touched during this type of repair.' }
+      ],
       contentImages: [
         { src: IMAGES.laptopHardware.chargerInventory.src, alt: IMAGES.laptopHardware.chargerInventory.alt, width: IMAGES.laptopHardware.chargerInventory.width, height: IMAGES.laptopHardware.chargerInventory.height, placement: 'causes', caption: 'Testing charger output and battery health — a "plugged in, not charging" fault can be either component.' },
         { src: IMAGES.laptopHardware.dellAdapter.src, alt: IMAGES.laptopHardware.dellAdapter.alt, width: IMAGES.laptopHardware.dellAdapter.width, height: IMAGES.laptopHardware.dellAdapter.height, placement: 'solution', caption: 'Verifying the correct-wattage OEM adapter as part of confirming the actual cause of the charging fault.' },
       ],
-      seo: { title: 'Laptop Plugged In But Not Charging — Repair Kuwait | KCROC', description: 'Laptop battery not charging? We diagnose dead batteries, broken charging ports, and failed motherboard power chips. Same-day service available.', canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-plugged-in-not-charging', ogType: 'article', schemaTypes: ['Article', 'FAQPage'] },
+      seo: { title: 'Laptop Plugged In But Not Charging — Repair Kuwait | KCROC', description: 'Laptop battery not charging? We diagnose dead batteries, broken charging ports, and failed motherboard power chips. Same-day service available.', canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-plugged-in-not-charging', ogType: 'article', schemaTypes: ['TechArticle', 'FAQPage'], lastModified: '2026-09-10T00:00:00+03:00' },
       navigationPriority: 60, popular: false
     } as ProblemEntity,
 
