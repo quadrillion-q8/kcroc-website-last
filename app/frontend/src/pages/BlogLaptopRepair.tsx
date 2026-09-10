@@ -28,6 +28,25 @@ const WA_LINK = `https://wa.me/${business.telephone}?text=${encodeURIComponent(
   'Hi KCROC, I read your guide on laptop repair and need a diagnostic. Please arrange a free pickup.'
 )}`;
 
+const faq = [
+  {
+    q: 'Do you offer free pickup and delivery for laptops?',
+    a: 'Yes, we offer completely free pickup and delivery across all Kuwait governorates including Hawalli, Salmiya, Farwaniya, Jahra, and Kuwait City.'
+  },
+  {
+    q: 'What does "No Fix, No Fee" mean?',
+    a: 'We provide free diagnostics. If we examine your laptop and determine it cannot be fixed, or if you decline the quoted price, you do not pay for the repair attempt.'
+  },
+  {
+    q: 'How long does a typical laptop repair take?',
+    a: 'Standard repairs like screen, battery, or keyboard replacements are usually done the same day. Complex motherboard micro-soldering takes 2-4 days.'
+  },
+  {
+    q: 'Will I lose my data during the repair?',
+    a: 'Data privacy is our priority. We do not wipe your hard drive unless it is a software/OS issue and we have your explicit permission. For hardware repairs, your data remains untouched.'
+  }
+];
+
 // Preserving your elite structured data for Article Rich Snippets
 const STRUCTURED_DATA = {
   '@context': 'https://schema.org',
@@ -60,6 +79,15 @@ const STRUCTURED_DATA = {
       },
       datePublished: PUBLISHED_DATE,
       dateModified: PUBLISHED_DATE,
+    },
+    {
+      '@type': 'FAQPage',
+      '@id': `${PAGE_URL}#faq`,
+      mainEntity: faq.map((item) => ({
+        '@type': 'Question',
+        name: item.q,
+        acceptedAnswer: { '@type': 'Answer', text: item.a },
+      })),
     }
   ]
 };
@@ -223,25 +251,6 @@ const laptopBrands = [
     models: 'ThinkPad, Yoga, IdeaPad',
     expertise: 'TrackPoint restoration, motherboard repair, port replacement',
     common: 'USB-C charging port failure, motherboard shorts',
-  }
-];
-
-const faq = [
-  {
-    q: 'Do you offer free pickup and delivery for laptops?',
-    a: 'Yes, we offer completely free pickup and delivery across all Kuwait governorates including Hawalli, Salmiya, Farwaniya, Jahra, and Kuwait City.'
-  },
-  {
-    q: 'What does "No Fix, No Fee" mean?',
-    a: 'We provide free diagnostics. If we examine your laptop and determine it cannot be fixed, or if you decline the quoted price, you do not pay for the repair attempt.'
-  },
-  {
-    q: 'How long does a typical laptop repair take?',
-    a: 'Standard repairs like screen, battery, or keyboard replacements are usually done the same day. Complex motherboard micro-soldering takes 2-4 days.'
-  },
-  {
-    q: 'Will I lose my data during the repair?',
-    a: 'Data privacy is our priority. We do not wipe your hard drive unless it is a software/OS issue and we have your explicit permission. For hardware repairs, your data remains untouched.'
   }
 ];
 
