@@ -9,7 +9,7 @@ import { IMAGES } from '../constants/images';
 
 export const rawGraphData: RawGraphData = {
   metadata: {
-    version: '3.5.0',
+    version: '3.6.0',
     lastUpdated: '2026-09-10T00:00:00+03:00',
     environment: 'production'
   },
@@ -30,7 +30,7 @@ export const rawGraphData: RawGraphData = {
       schemaOpeningHours: { dayOfWeek: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'], opens: '10:00', closes: '22:00' },
       aggregateRating: { ratingValue: '4.9', reviewCount: 153, bestRating: 5 },
       socialLinks: { facebook: 'https://www.facebook.com/computerrepairkuwait', instagram: 'https://www.instagram.com/computerrepairkuwait' },
-      aiSummary: 'Kuwait Computer Repair On Call (KCROC) is a Hawalli-based component-level computer repair specialist. Services include MacBook logic board micro-soldering, laptop screen replacement, gaming PC thermal repair, motherboard chip-level diagnostics, SSD upgrades, and virus removal. Free pickup and delivery across all Kuwait governorates. 30-day warranty on all repairs. No Fix, No Fee policy.',
+      aiSummary: 'Kuwait Computer Repair On Call (KCROC) is a Hawalli-based component-level computer repair specialist. Services include laptop and MacBook repair, gaming PC repair, motherboard chip-level diagnostics, screen replacement, battery replacement, charging-port repair, hinge and chassis repair, keyboard replacement, SSD and RAM upgrades, liquid-damage repair, gaming laptop thermal servicing, and virus removal. Free pickup and delivery across all Kuwait governorates. 30-day warranty on completed repairs. No Fix, No Fee policy.',
     } as BusinessEntity,
 
     /* ═══════════════════════════════════════════════════════════════
@@ -91,7 +91,7 @@ export const rawGraphData: RawGraphData = {
       ], 
       featuredUSPIds: ['usp-component', 'usp-nofix', 'usp-logistics', 'usp-privacy']
     } as WebPageEntity,
-    'page-services': { id: 'page-services', slug: 'services', entityType: 'WebPage', isActive: true, title: 'Services', description: 'All KCROC repair services', seo: { title: 'Laptop, MacBook & PC Repair Services Kuwait | KCROC', description: 'Expert laptop repair, MacBook repair, gaming PC diagnostics, motherboard chip-level repair, and screen replacement in Kuwait. Free pickup. 30-day warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/services', ogType: 'website', schemaTypes: ['CollectionPage', 'WebPage', 'BreadcrumbList', 'LocalBusiness'], breadcrumbs: [{ name: 'Home', url: '/' }, { name: 'Services', url: '/services' }] } } as WebPageEntity,
+    'page-services': { id: 'page-services', slug: 'services', entityType: 'WebPage', isActive: true, title: 'Services', description: 'All KCROC repair services', seo: { title: 'Laptop, MacBook & PC Repair Services Kuwait | KCROC', description: '12 specialist computer repair services in Kuwait, including laptop and MacBook repair, gaming PC diagnostics, motherboard chip-level repair, screens, batteries, charging ports, hinges, keyboards, upgrades and liquid damage. Free pickup and 30-day warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/services', ogType: 'website', schemaTypes: ['CollectionPage', 'WebPage', 'BreadcrumbList', 'LocalBusiness'], breadcrumbs: [{ name: 'Home', url: '/' }, { name: 'Services', url: '/services' }] } } as WebPageEntity,
     'page-near-me': {
       id: 'page-near-me', slug: 'near-me', entityType: 'WebPage', isActive: true,
       title: 'Computer Repair Near Me in Kuwait',
@@ -367,6 +367,233 @@ export const rawGraphData: RawGraphData = {
     /* ═══════════════════════════════════════════════════════════════
        SERVICES
     ═══════════════════════════════════════════════════════════════ */
+    'srv-charging-port': {
+      id: 'srv-charging-port',
+      slug: 'laptop-charging-port-repair-kuwait',
+      entityType: 'Service',
+      isActive: true,
+      title: 'Laptop Charging Port Repair Kuwait',
+      iconKey: 'cpu',
+      shortDescription: 'DC jack and USB-C charging-port repair, connector replacement, and board-level power diagnostics for laptops across Kuwait.',
+      description: 'If your laptop only charges when the cable is held at an angle, the charging port feels loose, USB-C charging suddenly stopped, or the machine shows no response from a known-good adapter, the fault may be the connector or the power path behind it. KCROC tests the adapter, port, connector pins, charging circuit, and motherboard before replacing anything. When the board is repairable, we micro-solder the damaged connector or failed power component instead of defaulting to a full motherboard replacement.',
+      idealCustomer: 'Laptop owners dealing with intermittent charging, a loose or damaged DC jack, USB-C charging failure, or a machine that refuses to recognize a known-good charger.',
+      deviceTypes: ['Windows Laptops', 'USB-C Charging Laptops', 'Gaming Laptops', 'Business Ultrabooks', '2-in-1 / Convertible Laptops'],
+      repairLevel: 'component-level',
+      estimatedTurnaround: 'Same Day / 24 Hours',
+      coreFeatures: ['DC Jack Replacement', 'USB-C Port Repair', 'Charging Connector Micro-Soldering', 'Charging IC Diagnostics', 'Power Rail Testing', 'Adapter & Cable Verification', 'Motherboard Trace Inspection', 'Post-Repair Charging Test', 'Free Pick & Drop', '30-Day Warranty'],
+      brands: ['Dell', 'HP', 'Lenovo', 'ASUS', 'Acer', 'MSI', 'Microsoft Surface'],
+      whyChooseUs: [
+        { title: 'Test the Power Path First', description: 'We separate charger, connector, charging IC, and motherboard faults before recommending a part.' },
+        { title: 'Micro-Soldering Where Appropriate', description: 'A damaged port does not automatically mean a motherboard replacement. Repairable connectors and board damage are handled at component level.' },
+        { title: 'Known-Good Adapter Verification', description: 'We test with a verified compatible power source so a bad charger is not mistaken for a laptop fault.' },
+        { title: 'No Guesswork Quotes', description: 'Diagnosis comes first and the repair quote is based on the confirmed failure, not the symptom alone.' }
+      ],
+      commonIssues: [
+        { id: 'charging-port-loose', title: 'Charging Port Feels Loose', severity: 'high', description: 'A loose DC jack or USB-C connector can create intermittent contact and may damage the connector pads if continued use flexes it.' },
+        { id: 'charges-angle', title: 'Laptop Charges Only at an Angle', severity: 'high', description: 'Often points to worn connector contacts, a cracked solder joint, or damaged port mounting rather than a bad battery.' },
+        { id: 'usb-c-no-charge', title: 'USB-C Charger Not Recognized', severity: 'high', description: 'The connector, cable, PD negotiation, charging IC, or motherboard power path may be involved; each is tested separately.' },
+        { id: 'no-charge-known-good', title: 'Known-Good Charger Still Does Not Charge', severity: 'critical', description: 'A verified adapter with no charging response warrants inspection of the port, input protection, charging circuit, and main power rails.' }
+      ],
+      process: [
+        { step: 1, title: 'Free Pickup', description: 'We collect the laptop from your home or office anywhere in Kuwait.' },
+        { step: 2, title: 'Power & Port Diagnosis', description: 'We test the adapter, connector, charging negotiation, and board-level power path.' },
+        { step: 3, title: 'Repair Quote', description: 'You receive the confirmed fault and repair price before any paid work begins.' },
+        { step: 4, title: 'Port or Board Repair', description: 'The damaged connector, solder joints, or failed power component is repaired or replaced as appropriate.' },
+        { step: 5, title: 'Charging Stress Test', description: 'Charging stability, battery detection, and power delivery are tested before reassembly.' },
+        { step: 6, title: 'Return with Warranty', description: 'The repaired laptop is returned with KCROC\'s 30-day parts and labour warranty.' }
+      ],
+      faqs: [
+        { id: 'charging-port-faq-1', title: 'Can you repair a broken laptop charging port?', answer: 'Yes. We inspect the connector and the board behind it. If the damage is repairable, we can replace the port or micro-solder the affected connection rather than automatically replacing the motherboard.' },
+        { id: 'charging-port-faq-2', title: 'Why does my laptop charge only when the cable is moved?', answer: 'A loose or worn connector, cracked solder joint, or damaged port mounting can cause intermittent contact. We test the port mechanically and electrically before quoting a repair.' },
+        { id: 'charging-port-faq-3', title: 'Do you repair USB-C charging ports?', answer: 'Yes. USB-C charging faults are diagnosed at the connector, power-delivery, and charging-circuit levels where appropriate.' }
+      ],
+      inspectionChecklist: ['Test charger and cable', 'Inspect port mechanically', 'Check connector solder joints', 'Measure input and charging rails', 'Test USB-C power delivery where applicable', 'Confirm battery charging after repair'],
+      performanceOutcomes: { disclaimer: 'Outcomes depend on the confirmed fault and the exact laptop model.', items: [
+        { metric: 'Charging stability', outcome: 'Verified under repeated plug/unplug and load conditions.' },
+        { metric: 'Power-path confidence', outcome: 'Connector and charging circuit tested before the device is returned.' }
+      ] },
+      warranty: { duration: '30 Days', coverage: 'Parts and labour for the completed charging-port repair', noFixNoFee: true },
+      seo: { title: 'Laptop Charging Port Repair Kuwait | KCROC', description: 'Laptop DC jack and USB-C charging port repair in Kuwait. Board-level charging diagnostics, micro-soldering, free pickup and 30-day warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-charging-port-repair-kuwait', ogType: 'article', schemaTypes: ['Service', 'FAQPage'] },
+      navigationPriority: 55,
+      isFeatured: false,
+      popular: false
+    } as ServiceEntity,
+
+    'srv-hinge': {
+      id: 'srv-hinge',
+      slug: 'laptop-hinge-repair-kuwait',
+      entityType: 'Service',
+      isActive: true,
+      title: 'Laptop Hinge & Chassis Repair Kuwait',
+      iconKey: 'laptop',
+      shortDescription: 'Structural hinge, bezel, lid, and chassis repair for laptops before a stiff hinge turns into screen or cable damage.',
+      description: 'A hinge that is stiff, cracking the bezel, or pulling the screen assembly away from the chassis should not be ignored. Continued force can damage the display cable, crack the panel, or tear the hinge mounts out of the plastic chassis. KCROC checks hinge tension, mounting points, bezel condition, lid alignment, and cable routing, then repairs the structural damage or replaces the failed hinge assembly where required.',
+      idealCustomer: 'Laptop owners whose lid is difficult to open, the bezel is separating, the hinge has become uneven, or the chassis has cracked around the hinge mounts.',
+      deviceTypes: ['Business Laptops', 'Everyday Windows Laptops', 'Gaming Laptops', '2-in-1 / Convertible Laptops', 'MacBooks'],
+      repairLevel: 'advanced',
+      estimatedTurnaround: 'Same Day / 24 Hours',
+      coreFeatures: ['Hinge Assembly Repair', 'Hinge Replacement', 'Chassis Reinforcement', 'Bezel Repair', 'Lid Alignment', 'Display Cable Inspection', 'Mounting Point Reconstruction', 'Post-Repair Hinge Tension Test', 'Free Pick & Drop', '30-Day Warranty'],
+      brands: ['Dell', 'HP', 'Lenovo', 'ASUS', 'Acer', 'MSI', 'MacBook'],
+      whyChooseUs: [
+        { title: 'Prevent Secondary Damage', description: 'We address the hinge before continued force damages the display panel or internal cable.' },
+        { title: 'Structural Repair', description: 'Broken mounting points can sometimes be reinforced rather than replacing a large assembly unnecessarily.' },
+        { title: 'Cable & Bezel Inspection', description: 'We check surrounding components because hinge failures often create related display problems.' },
+        { title: 'Model-Specific Diagnosis', description: 'Hinge tension and mounting design vary by model, so we inspect the actual assembly before quoting.' }
+      ],
+      commonIssues: [
+        { id: 'hinge-stiff', title: 'Hinge Suddenly Became Very Stiff', severity: 'high', description: 'Excess hinge resistance can transfer force into the bezel and mounting points every time the lid is opened.' },
+        { id: 'bezel-separating', title: 'Screen Bezel Is Popping Open', severity: 'high', description: 'Often caused by hinge or mounting-point failure. Continuing to open the lid can worsen the separation.' },
+        { id: 'hinge-broken', title: 'Hinge Has Detached From the Chassis', severity: 'critical', description: 'Detached mounting points require structural inspection before the lid is operated again.' },
+        { id: 'lid-uneven', title: 'Screen Lid Sits Unevenly', severity: 'medium', description: 'Uneven alignment can indicate hinge damage, bent hardware, or chassis distortion.' }
+      ],
+      process: [
+        { step: 1, title: 'Free Pickup', description: 'We collect your laptop from home or office across Kuwait.' },
+        { step: 2, title: 'Hinge & Chassis Inspection', description: 'We inspect hinge resistance, mounts, bezel, lid, and display cable routing.' },
+        { step: 3, title: 'Repair Quote', description: 'The confirmed structural fault and required parts or reinforcement are explained before work starts.' },
+        { step: 4, title: 'Structural Repair', description: 'We repair or replace the hinge assembly and reinforce damaged mounting points where appropriate.' },
+        { step: 5, title: 'Alignment & Stress Test', description: 'The lid is aligned and opened and closed repeatedly to verify safe hinge movement.' },
+        { step: 6, title: 'Return with Warranty', description: 'The completed repair is returned with a 30-day parts and labour warranty.' }
+      ],
+      faqs: [
+        { id: 'hinge-faq-1', title: 'Can a broken laptop hinge be repaired?', answer: 'Yes. Depending on the model and damage, we can repair or replace the hinge assembly and reconstruct damaged chassis mounting points.' },
+        { id: 'hinge-faq-2', title: 'Should I keep using a laptop with a stiff hinge?', answer: 'It is better to stop forcing it. A stiff hinge can transfer load into the bezel, display cable, and screen.' },
+        { id: 'hinge-faq-3', title: 'Do you inspect the screen cable too?', answer: 'Yes. Hinge damage and repeated cable flexing can create display problems, so the cable and connector are checked during diagnosis.' }
+      ],
+      inspectionChecklist: ['Measure hinge resistance', 'Inspect mounting points', 'Check bezel and lid', 'Inspect display cable routing', 'Check screen for pressure damage', 'Test repeated open/close movement'],
+      warranty: { duration: '30 Days', coverage: 'Parts and labour for the completed hinge/chassis repair', noFixNoFee: true },
+      seo: { title: 'Laptop Hinge Repair Kuwait | Chassis Fix | KCROC', description: 'Broken or stiff laptop hinge repair in Kuwait. Chassis reinforcement, hinge replacement and display-cable inspection with free pickup and 30-day warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-hinge-repair-kuwait', ogType: 'article', schemaTypes: ['Service', 'FAQPage'] },
+      navigationPriority: 54,
+      isFeatured: false,
+      popular: false
+    } as ServiceEntity,
+
+    'srv-keyboard': {
+      id: 'srv-keyboard', slug: 'laptop-keyboard-replacement-kuwait', entityType: 'Service', isActive: true,
+      title: 'Laptop Keyboard Replacement Kuwait', iconKey: 'laptop',
+      shortDescription: 'Keyboard replacement and key-input fault diagnosis for Dell, HP, Lenovo, ASUS, Acer, MSI and MacBook systems.',
+      description: 'Dead keys, repeated characters, liquid-damaged keyboards, stuck keys, and keyboards that stop responding can come from the keyboard assembly, ribbon connection, liquid contamination, or the motherboard input circuit. KCROC tests the failure first, then replaces the keyboard or repairs the related connection where appropriate. For MacBooks, we also distinguish between butterfly and Magic Keyboard generations before ordering parts.',
+      idealCustomer: 'Students, office users, developers, gamers, and anyone with missing, stuck, liquid-damaged, or intermittently responding laptop keys.',
+      deviceTypes: ['Windows Laptops', 'Gaming Laptops', 'Business Laptops', '2-in-1 Laptops', 'MacBook Air & MacBook Pro'],
+      repairLevel: 'advanced', estimatedTurnaround: 'Same Day / 24 Hours',
+      coreFeatures: ['Keyboard Assembly Replacement', 'Individual Key Fault Diagnosis', 'Ribbon Connector Inspection', 'Liquid Contamination Inspection', 'Backlit Keyboard Testing', 'MacBook Keyboard Service', 'Post-Repair Input Testing', 'Free Pick & Drop', '30-Day Warranty'],
+      brands: ['Dell', 'HP', 'Lenovo', 'ASUS', 'Acer', 'MSI', 'MacBook'],
+      whyChooseUs: [
+        { title: 'Diagnose Before Replacing', description: 'A dead key can be caused by the keyboard, connector, liquid damage, or input circuitry. We identify which one first.' },
+        { title: 'Correct Part Matching', description: 'Keyboard layouts, backlighting, languages, and top-case designs vary by exact model and configuration.' },
+        { title: 'Liquid Damage Inspection', description: 'Spills can affect more than the keyboard, so the surrounding area and connectors are checked when relevant.' },
+        { title: 'Full Input Verification', description: 'Every key row, modifier, backlight function where fitted, and touchpad interaction is tested before return.' }
+      ],
+      commonIssues: [
+        { id: 'dead-keys', title: 'Some Keys Do Not Work', severity: 'medium', description: 'A localized key failure may be the keyboard matrix, contamination, or a connector issue.' },
+        { id: 'keyboard-not-working', title: 'Entire Keyboard Not Responding', severity: 'high', description: 'The keyboard assembly and ribbon connection are tested before assuming motherboard failure.' },
+        { id: 'liquid-keyboard', title: 'Keys Stopped Working After a Spill', severity: 'critical', description: 'Power should be removed promptly because liquid can continue damaging the keyboard and motherboard.' },
+        { id: 'repeated-keys', title: 'Keys Type Repeated Characters', severity: 'medium', description: 'Can result from switch or membrane damage, contamination, or a failing keyboard matrix.' }
+      ],
+      process: [
+        { step: 1, title: 'Free Pickup', description: 'We collect the device across Kuwait.' },
+        { step: 2, title: 'Keyboard Diagnosis', description: 'We test keys, ribbon connections, backlighting and related input circuitry.' },
+        { step: 3, title: 'Confirm Model & Quote', description: 'The exact keyboard assembly and repair cost are confirmed before ordering or fitting.' },
+        { step: 4, title: 'Keyboard Replacement', description: 'The damaged keyboard or required assembly is fitted carefully to the exact model.' },
+        { step: 5, title: 'Full Input Test', description: 'Keys, modifiers, backlight, touchpad interaction and operating-system input are verified.' },
+        { step: 6, title: 'Return with Warranty', description: 'The completed repair is returned with a 30-day parts and labour warranty.' }
+      ],
+      faqs: [
+        { id: 'keyboard-faq-1', title: 'Can you replace a laptop keyboard?', answer: 'Yes. We replace keyboards for major Windows laptop brands and MacBook models after confirming the exact model and failure.' },
+        { id: 'keyboard-faq-2', title: 'Can you fix a keyboard after a liquid spill?', answer: 'Yes, but the device should be powered off immediately. We inspect both the keyboard and the underlying electronics for liquid damage.' },
+        { id: 'keyboard-faq-3', title: 'Do you replace backlit keyboards?', answer: 'Yes, where a compatible backlit assembly is available for the exact laptop configuration.' }
+      ],
+      inspectionChecklist: ['Test every key', 'Check ribbon connector', 'Inspect for liquid contamination', 'Verify backlight where fitted', 'Confirm exact replacement part', 'Run post-repair input test'],
+      warranty: { duration: '30 Days', coverage: 'Parts and labour for the completed keyboard replacement', noFixNoFee: true },
+      seo: { title: 'Laptop Keyboard Replacement Kuwait | KCROC', description: 'Laptop and MacBook keyboard replacement in Kuwait for Dell, HP, Lenovo, ASUS, Acer, MSI and Apple. Free pickup and 30-day warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-keyboard-replacement-kuwait', ogType: 'article', schemaTypes: ['Service', 'FAQPage'] },
+      navigationPriority: 53, isFeatured: false, popular: false
+    } as ServiceEntity,
+
+    'srv-ssd-ram': {
+      id: 'srv-ssd-ram', slug: 'ssd-ram-upgrade-kuwait', entityType: 'Service', isActive: true,
+      title: 'SSD & RAM Upgrade Kuwait', iconKey: 'cpu',
+      shortDescription: 'Practical SSD and memory upgrades for slower laptops and PCs, with compatibility checks, cloning options and post-upgrade testing.',
+      description: 'If a laptop takes minutes to boot, browsers stutter under normal workloads, or Windows constantly runs short of usable memory, an SSD or RAM upgrade can produce a much larger real-world improvement than random software tweaks. KCROC checks the existing storage interface, memory type and upgrade limits first. Where practical, we can clone the existing system to the new SSD, verify the boot environment, and test the upgraded machine under normal workloads.',
+      idealCustomer: 'Users with slow boot times, limited memory, an aging hard drive, frequent paging, or a laptop that is otherwise worth keeping.',
+      deviceTypes: ['Windows Laptops', 'Business Laptops', 'Everyday Laptops', 'Gaming Laptops', 'Desktop PCs'],
+      repairLevel: 'advanced', estimatedTurnaround: 'Same Day / 24 Hours',
+      coreFeatures: ['NVMe SSD Upgrade', 'SATA SSD Upgrade', 'RAM Upgrade', 'Memory Compatibility Check', 'Storage Health Check', 'System Cloning Where Suitable', 'Boot Verification', 'Performance Testing', 'Free Pick & Drop', '30-Day Warranty'],
+      brands: ['Dell', 'HP', 'Lenovo', 'ASUS', 'Acer', 'MSI', 'Microsoft Surface'],
+      whyChooseUs: [
+        { title: 'Compatibility First', description: 'We verify interface, physical format, supported memory type, capacity limits, and model-specific constraints before recommending hardware.' },
+        { title: 'Keep the Existing System Where Practical', description: 'Suitable systems can be cloned to the new SSD so applications and settings do not need to be rebuilt from scratch.' },
+        { title: 'Measure the Bottleneck', description: 'We check storage health and memory pressure so you upgrade the part that is actually limiting the system.' },
+        { title: 'Post-Upgrade Testing', description: 'The machine is boot-tested and checked for storage health, memory recognition, and stability before return.' }
+      ],
+      commonIssues: [
+        { id: 'slow-hard-drive', title: 'Laptop Still Uses a Mechanical Hard Drive', severity: 'medium', description: 'An SSD upgrade can dramatically reduce boot and application load times when the existing HDD is the main storage bottleneck.' },
+        { id: 'low-ram', title: 'Windows Runs Out of Memory', severity: 'medium', description: 'Heavy paging, browser workloads, and multitasking can expose a RAM limitation even when the laptop is otherwise healthy.' },
+        { id: 'storage-health', title: 'Storage Health Is Declining', severity: 'high', description: 'A failing drive should be assessed before an upgrade so the replacement plan protects the system and existing data as far as possible.' },
+        { id: 'slow-laptop', title: 'Laptop Is Slow Despite Being Clean', severity: 'medium', description: 'We separate storage, memory, thermal, startup and software bottlenecks before recommending an upgrade.' }
+      ],
+      process: [
+        { step: 1, title: 'Free Pickup', description: 'We collect the laptop or PC across Kuwait.' },
+        { step: 2, title: 'Hardware Assessment', description: 'We check storage health, RAM configuration, interfaces and supported upgrade limits.' },
+        { step: 3, title: 'Upgrade Plan', description: 'You receive compatible SSD/RAM options and a clear quote before installation.' },
+        { step: 4, title: 'Install or Clone', description: 'The selected hardware is installed and the existing system is cloned where the configuration supports it.' },
+        { step: 5, title: 'Boot & Stability Test', description: 'Windows, storage health, memory recognition and basic workload stability are verified.' },
+        { step: 6, title: 'Return with Warranty', description: 'The upgraded device is returned with a 30-day parts and labour warranty on the completed work.' }
+      ],
+      faqs: [
+        { id: 'upgrade-faq-1', title: 'Will an SSD make my laptop faster?', answer: 'If the current drive is the main bottleneck, yes. We check the system first so you do not buy an SSD when another component is responsible for the slowdown.' },
+        { id: 'upgrade-faq-2', title: 'Can you upgrade laptop RAM?', answer: 'Yes, when the laptop has upgradeable memory. We verify the exact model and supported capacity before recommending a module.' },
+        { id: 'upgrade-faq-3', title: 'Can you clone my existing Windows installation?', answer: 'Often yes, when the existing storage is healthy and the hardware configuration supports a clean clone. We verify booting and storage health afterward.' }
+      ],
+      inspectionChecklist: ['Check storage health', 'Identify SSD interface', 'Check RAM type and slots', 'Confirm maximum supported capacity', 'Assess cloning suitability', 'Verify boot and stability after upgrade'],
+      performanceOutcomes: { disclaimer: 'Actual gains depend on the original hardware and the bottleneck identified during diagnosis.', items: [
+        { metric: 'Boot responsiveness', outcome: 'SSD upgrades can substantially reduce storage-related boot and application loading delays.' },
+        { metric: 'Multitasking', outcome: 'Additional compatible RAM can reduce paging when memory pressure is the actual bottleneck.' }
+      ] },
+      warranty: { duration: '30 Days', coverage: 'Parts and labour for the completed SSD/RAM installation', noFixNoFee: true },
+      seo: { title: 'SSD & RAM Upgrade Kuwait | Laptop Performance | KCROC', description: 'SSD and RAM upgrades for laptops and PCs in Kuwait. Compatibility checks, cloning where suitable, performance testing, free pickup and 30-day warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/ssd-ram-upgrade-kuwait', ogType: 'article', schemaTypes: ['Service', 'FAQPage'] },
+      navigationPriority: 52, isFeatured: false, popular: false
+    } as ServiceEntity,
+
+    'srv-liquid-damage': {
+      id: 'srv-liquid-damage', slug: 'laptop-liquid-damage-repair-kuwait', entityType: 'Service', isActive: true,
+      title: 'Laptop Liquid Damage Repair Kuwait', iconKey: 'cpu',
+      shortDescription: 'Liquid-spill assessment, corrosion inspection, board cleaning and component-level repair for laptops and MacBooks.',
+      description: 'Coffee, water, juice and other spills can create short circuits immediately and corrosion that continues after the visible liquid is gone. KCROC isolates power, documents the affected areas, inspects connectors and board traces, and cleans contamination before deciding which components can be saved. The objective is to repair the original electronics where practical, while being honest when corrosion or component damage makes a repair uneconomical.',
+      idealCustomer: 'Laptop and MacBook owners who have experienced a recent spill, moisture exposure, corrosion, or a device that stopped working after liquid contact.',
+      deviceTypes: ['Windows Laptops', 'MacBook Air', 'MacBook Pro', 'Gaming Laptops', 'Business Laptops'],
+      repairLevel: 'component-level', estimatedTurnaround: '24-72 Hours',
+      coreFeatures: ['Immediate Power Isolation', 'Liquid Damage Inspection', 'Corrosion Mapping', 'Board Cleaning', 'Connector Inspection', 'Component-Level Diagnostics', 'Micro-Soldering Where Required', 'Post-Repair Stress Testing', 'Free Pick & Drop', '30-Day Warranty'],
+      brands: ['Dell', 'HP', 'Lenovo', 'ASUS', 'Acer', 'MSI', 'MacBook'],
+      whyChooseUs: [
+        { title: 'Power-Off First', description: 'We prioritize electrical isolation because continuing to power a wet or contaminated board can worsen the damage.' },
+        { title: 'Corrosion Inspection', description: 'Visible drying does not mean the electronics are safe. Connectors, traces and components are inspected for contamination and corrosion.' },
+        { title: 'Original Board Where Practical', description: 'When the board is repairable, component-level work can preserve the original hardware instead of defaulting to a board swap.' },
+        { title: 'Honest Repairability Assessment', description: 'If corrosion or component damage makes repair uneconomical, we explain that before further paid work.' }
+      ],
+      commonIssues: [
+        { id: 'spill-no-power', title: 'Laptop Died After a Spill', severity: 'critical', description: 'Power should be isolated immediately. The board is then inspected for shorts, corrosion and damaged power components.' },
+        { id: 'spill-keyboard', title: 'Keyboard Stopped Working After Liquid', severity: 'high', description: 'The keyboard and the electronics underneath it are checked because liquid can travel beyond the visible spill area.' },
+        { id: 'liquid-black-screen', title: 'Laptop Powers On but Screen Is Black', severity: 'critical', description: 'Liquid can affect display power, backlight circuits, connectors or the motherboard even when fans still spin.' },
+        { id: 'corrosion-later', title: 'Laptop Failed Days After a Spill', severity: 'high', description: 'Delayed corrosion can turn a minor-looking spill into an intermittent or complete hardware failure.' }
+      ],
+      process: [
+        { step: 1, title: 'Emergency Pickup', description: 'We collect the affected device across Kuwait. If it is still powered on, shut it down and disconnect power first.' },
+        { step: 2, title: 'Power Isolation & Teardown', description: 'The battery and power sources are isolated before the affected areas are inspected.' },
+        { step: 3, title: 'Corrosion Assessment', description: 'We map contamination, inspect connectors and test relevant board rails and components.' },
+        { step: 4, title: 'Cleaning & Component Repair', description: 'Contamination is cleaned and repairable components, traces or connectors are addressed at board level where practical.' },
+        { step: 5, title: 'Functional Stress Test', description: 'Charging, display, keyboard, storage, thermals and other affected functions are tested after repair.' },
+        { step: 6, title: 'Return with Warranty', description: 'The repaired device is returned with a 30-day parts and labour warranty on the completed repair.' }
+      ],
+      faqs: [
+        { id: 'liquid-faq-1', title: 'What should I do immediately after spilling liquid on my laptop?', answer: 'Shut it down, disconnect the charger, and do not keep powering it on to check whether it works. Arrange an inspection as soon as practical.' },
+        { id: 'liquid-faq-2', title: 'Can a laptop still be repaired after a coffee spill?', answer: 'Often yes, depending on where the liquid reached and how much corrosion or component damage occurred. Early power isolation improves the chances of saving the original board.' },
+        { id: 'liquid-faq-3', title: 'Do you repair liquid-damaged MacBooks?', answer: 'Yes. We inspect the logic board and affected circuits at component level where appropriate, including USB-C power and display-related faults.' }
+      ],
+      inspectionChecklist: ['Confirm liquid type and affected area', 'Isolate battery and external power', 'Inspect board and connectors', 'Map corrosion and contamination', 'Test affected power rails', 'Verify all repaired functions under load'],
+      warranty: { duration: '30 Days', coverage: 'Parts and labour for components repaired or replaced during the liquid-damage service', noFixNoFee: true },
+      seo: { title: 'Laptop Liquid Damage Repair Kuwait | KCROC', description: 'Laptop and MacBook liquid damage repair in Kuwait. Corrosion inspection, board cleaning, micro-soldering and component-level diagnostics with free pickup.', canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-liquid-damage-repair-kuwait', ogType: 'article', schemaTypes: ['Service', 'FAQPage'] },
+      navigationPriority: 51, isFeatured: false, popular: false
+    } as ServiceEntity,
+
     'srv-macbook': { 
       id: 'srv-macbook', 
       slug: 'macbook-repair-kuwait', 
@@ -2524,7 +2751,7 @@ export const rawGraphData: RawGraphData = {
       doNotDo: 'Do not repeatedly force the power button, wiggle a loose charging connector, reconnect a charger that sparks or trips its protection, puncture a swollen battery, or attempt a DIY motherboard “reflow.” If there is liquid, burning smell, sparking, melted plastic or a swollen battery, disconnect power and stop testing.',
       solution: 'KCROC works from the outside in: verify the power source and correct adapter, inspect the charging input, isolate the battery when appropriate, then measure the motherboard power path if the laptop remains genuinely dead. On board-level cases, the objective is to locate the failed stage—such as an input MOSFET, fuse, charging IC, shorted capacitor or damaged rail—before deciding whether a component repair or board replacement makes financial sense.',
       urgency: 'high',
-      relatedServiceIds: ['srv-motherboard', 'srv-laptop'],
+      relatedServiceIds: ['srv-motherboard', 'srv-laptop', 'srv-charging-port', 'srv-liquid-damage'],
       relatedGuideSlug: 'laptop-wont-turn-on',
       coveredBrands: ['Dell', 'HP', 'Lenovo', 'ASUS', 'Acer', 'MSI', 'Apple MacBook'],
       diagnosticSteps: [
@@ -2723,7 +2950,7 @@ export const rawGraphData: RawGraphData = {
       doNotDo: 'DO NOT put it in rice (rice dust makes it worse). DO NOT use a hairdryer (pushes liquid deeper). DO NOT TRY TO TURN IT ON to "see if it works" — this causes the electrical shorts that kill the board.',
       solution: 'Immediate power disconnection. We fully disassemble the device, remove the motherboard, and run it through an industrial ultrasonic cleaner to strip all liquid and corrosion. We then replace any shorted chips via micro-soldering.',
       urgency: 'critical',
-      relatedServiceIds: ['srv-motherboard', 'srv-macbook'],
+      relatedServiceIds: ['srv-motherboard', 'srv-macbook', 'srv-liquid-damage'],
       contentImages: [
         { src: IMAGES.laptopHardware.dellLaptopCorruptedScreenGpuFailure.src, alt: IMAGES.laptopHardware.dellLaptopCorruptedScreenGpuFailure.alt, width: IMAGES.laptopHardware.dellLaptopCorruptedScreenGpuFailure.width, height: IMAGES.laptopHardware.dellLaptopCorruptedScreenGpuFailure.height, placement: 'causes', caption: 'Display corruption after a liquid spill — a sign the short has reached the graphics circuit.' },
         { src: IMAGES.laptopHardware.laptopBatteryMotherboardOpenRepair.src, alt: IMAGES.laptopHardware.laptopBatteryMotherboardOpenRepair.alt, width: IMAGES.laptopHardware.laptopBatteryMotherboardOpenRepair.width, height: IMAGES.laptopHardware.laptopBatteryMotherboardOpenRepair.height, placement: 'solution', caption: 'The motherboard removed for ultrasonic cleaning and corrosion inspection before any chip is replaced.' },
@@ -2746,7 +2973,7 @@ export const rawGraphData: RawGraphData = {
       doNotDo: 'Do not forcefully bend the charging cable at extreme angles trying to "find the sweet spot" to make it charge — this usually breaks the internal port off the motherboard.',
       solution: 'We test your battery health and charger voltage. If the battery is dead, we replace it. If the motherboard charging circuit has failed, we replace the specific charging IC (like the BQ chip or CD3215 on MacBooks).',
       urgency: 'medium',
-      relatedServiceIds: ['srv-battery', 'srv-laptop'],
+      relatedServiceIds: ['srv-battery', 'srv-laptop', 'srv-charging-port'],
       relatedGuideSlug: 'laptop-battery-warning-signs',
       coveredBrands: ['Dell', 'HP', 'Lenovo', 'ASUS', 'Acer', 'MSI', 'Apple MacBook'],
       diagnosticSteps: [
@@ -2806,7 +3033,7 @@ export const rawGraphData: RawGraphData = {
       doNotDo: 'Do not pry the keys off with a knife or screwdriver to "clean underneath." Modern laptop key hinges (especially MacBooks) are extremely fragile and will snap, requiring a full keyboard replacement anyway.',
       solution: 'We first check for software/driver issues. If hardware has failed, we replace the entire keyboard assembly. If the battery is swollen and crushing the keyboard, we safely remove the hazard and replace both.',
       urgency: 'medium',
-      relatedServiceIds: ['srv-laptop', 'srv-macbook'],
+      relatedServiceIds: ['srv-laptop', 'srv-macbook', 'srv-keyboard'],
       contentImages: [
         { src: IMAGES.laptopHardware.laptopKeyboardTopCaseAssemblyRemoval.src, alt: IMAGES.laptopHardware.laptopKeyboardTopCaseAssemblyRemoval.alt, width: IMAGES.laptopHardware.laptopKeyboardTopCaseAssemblyRemoval.width, height: IMAGES.laptopHardware.laptopKeyboardTopCaseAssemblyRemoval.height, placement: 'causes', caption: 'The keyboard and top case assembly removed to check for liquid damage, dust, or a swollen battery underneath.' },
         { src: IMAGES.laptopHardware.laptopKeyboardHeatsinkAssemblyRemoval.src, alt: IMAGES.laptopHardware.laptopKeyboardHeatsinkAssemblyRemoval.alt, width: IMAGES.laptopHardware.laptopKeyboardHeatsinkAssemblyRemoval.width, height: IMAGES.laptopHardware.laptopKeyboardHeatsinkAssemblyRemoval.height, placement: 'solution', caption: 'Replacing the keyboard assembly and ribbon cable connection during reassembly.' },
@@ -2842,7 +3069,7 @@ export const rawGraphData: RawGraphData = {
       doNotDo: 'Do not buy expensive "PC Cleaner" software subscriptions online. They rarely solve hardware bottlenecks and often act as malware themselves.',
       solution: 'If the laptop has an old HDD, an SSD upgrade is the ultimate fix—it reduces boot times from minutes to seconds. We clone your exact system to a new SSD or perform a clean Windows installation.',
       urgency: 'medium',
-      relatedServiceIds: ['srv-laptop', 'srv-gaming'],
+      relatedServiceIds: ['srv-laptop', 'srv-gaming', 'srv-ssd-ram'],
       contentImages: [
         { src: IMAGES.upgrades.hddSeagate.src, alt: IMAGES.upgrades.hddSeagate.alt, width: IMAGES.upgrades.hddSeagate.width, height: IMAGES.upgrades.hddSeagate.height, placement: 'causes', caption: 'An aging mechanical hard drive — one of the most common causes of a laptop that takes minutes to boot.' },
         { src: IMAGES.upgrades.ssdSamsung2.src, alt: IMAGES.upgrades.ssdSamsung2.alt, width: IMAGES.upgrades.ssdSamsung2.width, height: IMAGES.upgrades.ssdSamsung2.height, placement: 'solution', caption: 'Cloning the system to a new SSD — the fix that cuts boot times from minutes to seconds.' },
@@ -2860,7 +3087,7 @@ export const rawGraphData: RawGraphData = {
       doNotDo: 'DO NOT force the laptop open or closed if you feel resistance. Forcing a stiff hinge will snap the internal display cable and crack the actual LCD screen, doubling the repair cost.',
       solution: 'We loosen the hinge mechanism to factory tension, repair the broken plastic chassis using industrial resin or structural replacement, and realign the screen assembly.',
       urgency: 'high',
-      relatedServiceIds: ['srv-laptop', 'srv-screen'],
+      relatedServiceIds: ['srv-laptop', 'srv-screen', 'srv-hinge'],
       contentImages: [
         { src: IMAGES.laptopHardware.brokenHinge.src, alt: IMAGES.laptopHardware.brokenHinge.alt, width: IMAGES.laptopHardware.brokenHinge.width, height: IMAGES.laptopHardware.brokenHinge.height, placement: 'causes', caption: 'A hinge that has cracked the surrounding plastic chassis — common after heat cycles or a corner drop.' },
         { src: IMAGES.laptopHardware.laptopLidBackCoverPanelReplacement.src, alt: IMAGES.laptopHardware.laptopLidBackCoverPanelReplacement.alt, width: IMAGES.laptopHardware.laptopLidBackCoverPanelReplacement.width, height: IMAGES.laptopHardware.laptopLidBackCoverPanelReplacement.height, placement: 'solution', caption: 'Fitting a replacement lid and back cover panel after the hinge mechanism is repaired and re-tensioned.' },
@@ -3141,7 +3368,12 @@ export const rawGraphData: RawGraphData = {
           { label: 'Gaming Laptop Cleaning Kuwait', path: '/gaming-laptop-cleaning-kuwait' },
           { label: 'Motherboard Repair Kuwait', path: '/motherboard-repair-kuwait' },
           { label: 'Screen Replacement Kuwait', path: '/laptop-screen-repair-kuwait' },
-          { label: 'Battery Replacement Kuwait', path: '/battery-replacement-kuwait' }
+          { label: 'Battery Replacement Kuwait', path: '/battery-replacement-kuwait' },
+          { label: 'Laptop Charging Port Repair', path: '/laptop-charging-port-repair-kuwait' },
+          { label: 'Laptop Hinge & Chassis Repair', path: '/laptop-hinge-repair-kuwait' },
+          { label: 'Laptop Keyboard Replacement', path: '/laptop-keyboard-replacement-kuwait' },
+          { label: 'SSD & RAM Upgrade Kuwait', path: '/ssd-ram-upgrade-kuwait' },
+          { label: 'Laptop Liquid Damage Repair', path: '/laptop-liquid-damage-repair-kuwait' }
         ],
         company: [
           { label: 'About us',       path: '/about' },
