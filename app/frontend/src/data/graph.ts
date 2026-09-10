@@ -405,7 +405,10 @@ export const rawGraphData: RawGraphData = {
       faqs: [
         { id: 'charging-port-faq-1', title: 'Can you repair a broken laptop charging port?', answer: 'Yes. We inspect the connector and the board behind it. If the damage is repairable, we can replace the port or micro-solder the affected connection rather than automatically replacing the motherboard.' },
         { id: 'charging-port-faq-2', title: 'Why does my laptop charge only when the cable is moved?', answer: 'A loose or worn connector, cracked solder joint, or damaged port mounting can cause intermittent contact. We test the port mechanically and electrically before quoting a repair.' },
-        { id: 'charging-port-faq-3', title: 'Do you repair USB-C charging ports?', answer: 'Yes. USB-C charging faults are diagnosed at the connector, power-delivery, and charging-circuit levels where appropriate.' }
+        { id: 'charging-port-faq-3', title: 'Do you repair USB-C charging ports?', answer: 'Yes. USB-C charging faults are diagnosed at the connector, power-delivery, and charging-circuit levels where appropriate.' },
+        { id: 'charging-port-faq-4', title: 'Is the charging port or motherboard damaged?', answer: 'It can be either. We test the charger, port, connector joints, input protection, charging circuit and relevant power rails so the quote reflects the confirmed fault.' },
+        { id: 'charging-port-faq-5', title: 'Can you repair USB-C charging on a laptop?', answer: 'Yes. We can diagnose the USB-C connector and charging path, including power-delivery and board-level faults where the model supports repair.' },
+        { id: 'charging-port-faq-6', title: 'Will charging-port repair affect my files?', answer: 'A connector-level repair does not normally affect your stored data. When board work is required, we work on the original board where practical rather than replacing it unnecessarily.' },
       ],
       relatedServiceIds: ['srv-battery', 'srv-motherboard', 'srv-laptop'],
       relatedProblemIds: ['problem-not-charging', 'problem-no-power'],
@@ -414,9 +417,6 @@ export const rawGraphData: RawGraphData = {
         { label: 'Laptop Plugged In but Not Charging', path: '/laptop-plugged-in-not-charging' },
         { label: 'Laptop Repair Guide', path: '/laptop-repair-kuwait' },
       ],
-        { id: 'charging-port-faq-4', title: 'Is the charging port or motherboard damaged?', answer: 'It can be either. We test the charger, port, connector joints, input protection, charging circuit and relevant power rails so the quote reflects the confirmed fault.' },
-        { id: 'charging-port-faq-5', title: 'Can you repair USB-C charging on a laptop?', answer: 'Yes. We can diagnose the USB-C connector and charging path, including power-delivery and board-level faults where the model supports repair.' },
-        { id: 'charging-port-faq-6', title: 'Will charging-port repair affect my files?', answer: 'A connector-level repair does not normally affect your stored data. When board work is required, we work on the original board where practical rather than replacing it unnecessarily.' },
       technicalOverview: {
         heading: 'What We Diagnose Behind a Charging Port',
         paragraphs: [
@@ -483,7 +483,10 @@ export const rawGraphData: RawGraphData = {
       faqs: [
         { id: 'hinge-faq-1', title: 'Can a broken laptop hinge be repaired?', answer: 'Yes. Depending on the model and damage, we can repair or replace the hinge assembly and reconstruct damaged chassis mounting points.' },
         { id: 'hinge-faq-2', title: 'Should I keep using a laptop with a stiff hinge?', answer: 'It is better to stop forcing it. A stiff hinge can transfer load into the bezel, display cable, and screen.' },
-        { id: 'hinge-faq-3', title: 'Do you inspect the screen cable too?', answer: 'Yes. Hinge damage and repeated cable flexing can create display problems, so the cable and connector are checked during diagnosis.' }
+        { id: 'hinge-faq-3', title: 'Do you inspect the screen cable too?', answer: 'Yes. Hinge damage and repeated cable flexing can create display problems, so the cable and connector are checked during diagnosis.' },
+        { id: 'hinge-faq-4', title: 'Can you repair the broken plastic around the hinge?', answer: 'In suitable cases, yes. We assess the mounting structure and can reinforce or reconstruct damaged hinge mounts when that is more appropriate than replacing an entire chassis assembly.' },
+        { id: 'hinge-faq-5', title: 'Should I replace the hinge or the whole screen assembly?', answer: 'Not necessarily. We inspect the hinge, mounts, bezel, display cable and panel separately. The repair recommendation depends on which components are actually damaged.' },
+        { id: 'hinge-faq-6', title: 'Can a broken hinge crack my laptop screen?', answer: 'Yes. A stiff or detached hinge can transfer force into the panel and cable. Stopping use early can prevent a hinge repair from becoming a hinge plus screen repair.' },
       ],
       relatedServiceIds: ['srv-screen', 'srv-laptop'],
       relatedProblemIds: ['problem-hinge-break', 'problem-cracked-screen'],
@@ -492,9 +495,6 @@ export const rawGraphData: RawGraphData = {
         { label: 'How to Protect Your Laptop Screen', path: '/blog/how-to-protect-laptop-screen' },
         { label: 'Laptop Repair Guide', path: '/laptop-repair-kuwait' },
       ],
-        { id: 'hinge-faq-4', title: 'Can you repair the broken plastic around the hinge?', answer: 'In suitable cases, yes. We assess the mounting structure and can reinforce or reconstruct damaged hinge mounts when that is more appropriate than replacing an entire chassis assembly.' },
-        { id: 'hinge-faq-5', title: 'Should I replace the hinge or the whole screen assembly?', answer: 'Not necessarily. We inspect the hinge, mounts, bezel, display cable and panel separately. The repair recommendation depends on which components are actually damaged.' },
-        { id: 'hinge-faq-6', title: 'Can a broken hinge crack my laptop screen?', answer: 'Yes. A stiff or detached hinge can transfer force into the panel and cable. Stopping use early can prevent a hinge repair from becoming a hinge plus screen repair.' },
       technicalOverview: {
         heading: 'Why a Stiff Hinge Can Become a Screen Repair',
         paragraphs: [
@@ -552,7 +552,10 @@ export const rawGraphData: RawGraphData = {
       faqs: [
         { id: 'keyboard-faq-1', title: 'Can you replace a laptop keyboard?', answer: 'Yes. We replace keyboards for major Windows laptop brands and MacBook models after confirming the exact model and failure.' },
         { id: 'keyboard-faq-2', title: 'Can you fix a keyboard after a liquid spill?', answer: 'Yes, but the device should be powered off immediately. We inspect both the keyboard and the underlying electronics for liquid damage.' },
-        { id: 'keyboard-faq-3', title: 'Do you replace backlit keyboards?', answer: 'Yes, where a compatible backlit assembly is available for the exact laptop configuration.' }
+        { id: 'keyboard-faq-3', title: 'Do you replace backlit keyboards?', answer: 'Yes, where a compatible backlit assembly is available for the exact laptop configuration.' },
+        { id: 'keyboard-faq-4', title: 'Can you repair the keyboard instead of replacing it?', answer: 'Sometimes. If the fault is a connector, contamination issue or related circuit problem, that can be addressed without replacing a healthy keyboard. A failed keyboard matrix usually requires the correct replacement assembly.' },
+        { id: 'keyboard-faq-5', title: 'Do you install Arabic and English laptop keyboards?', answer: 'Where a compatible Arabic/English or other required layout is available for the exact model, we can source and install the appropriate assembly after confirmation.' },
+        { id: 'keyboard-faq-6', title: 'Will a keyboard replacement erase my data?', answer: 'No. A normal keyboard replacement does not erase the operating system or personal files. We still test the device before and after the repair.' },
       ],
       relatedServiceIds: ['srv-laptop', 'srv-liquid-damage', 'srv-battery'],
       relatedProblemIds: ['problem-keyboard-fail', 'problem-liquid-spill'],
@@ -561,9 +564,6 @@ export const rawGraphData: RawGraphData = {
         { label: 'Laptop Repair Guide', path: '/laptop-repair-kuwait' },
         { label: 'Liquid Damage Repair', path: '/laptop-liquid-damage-repair-kuwait' },
       ],
-        { id: 'keyboard-faq-4', title: 'Can you repair the keyboard instead of replacing it?', answer: 'Sometimes. If the fault is a connector, contamination issue or related circuit problem, that can be addressed without replacing a healthy keyboard. A failed keyboard matrix usually requires the correct replacement assembly.' },
-        { id: 'keyboard-faq-5', title: 'Do you install Arabic and English laptop keyboards?', answer: 'Where a compatible Arabic/English or other required layout is available for the exact model, we can source and install the appropriate assembly after confirmation.' },
-        { id: 'keyboard-faq-6', title: 'Will a keyboard replacement erase my data?', answer: 'No. A normal keyboard replacement does not erase the operating system or personal files. We still test the device before and after the repair.' },
       technicalOverview: {
         heading: 'How We Diagnose a Laptop Keyboard Fault',
         paragraphs: [
@@ -619,7 +619,10 @@ export const rawGraphData: RawGraphData = {
       faqs: [
         { id: 'upgrade-faq-1', title: 'Will an SSD make my laptop faster?', answer: 'If the current drive is the main bottleneck, yes. We check the system first so you do not buy an SSD when another component is responsible for the slowdown.' },
         { id: 'upgrade-faq-2', title: 'Can you upgrade laptop RAM?', answer: 'Yes, when the laptop has upgradeable memory. We verify the exact model and supported capacity before recommending a module.' },
-        { id: 'upgrade-faq-3', title: 'Can you clone my existing Windows installation?', answer: 'Often yes, when the existing storage is healthy and the hardware configuration supports a clean clone. We verify booting and storage health afterward.' }
+        { id: 'upgrade-faq-3', title: 'Can you clone my existing Windows installation?', answer: 'Often yes, when the existing storage is healthy and the hardware configuration supports a clean clone. We verify booting and storage health afterward.' },
+        { id: 'upgrade-faq-4', title: 'Can every laptop have its RAM upgraded?', answer: 'No. Some laptops use soldered memory, while others have one or more SO-DIMM slots. We check the exact model before recommending an upgrade.' },
+        { id: 'upgrade-faq-5', title: 'What is the difference between SATA and NVMe SSDs?', answer: 'They use different interfaces and can have different performance and physical formats. We identify the laptop's supported interface before selecting the replacement drive.' },
+        { id: 'upgrade-faq-6', title: 'Can you move my existing Windows installation to the new SSD?', answer: 'Often yes when the source drive is healthy and the configuration supports cloning. We verify the cloned system boots correctly and check the new drive after migration.' },
       ],
       relatedServiceIds: ['srv-laptop', 'srv-gaming', 'srv-gaming-laptop-cleaning'],
       relatedProblemIds: ['problem-slow', 'problem-freezing-crashing'],
@@ -628,9 +631,6 @@ export const rawGraphData: RawGraphData = {
         { label: 'Why 8GB RAM Is No Longer Enough', path: '/blog/why-8gb-ram-is-no-longer-enough-for-windows-11' },
         { label: 'Laptop Buying Guide 2026', path: '/blog/laptop-buying-guide-kuwait-2026' },
       ],
-        { id: 'upgrade-faq-4', title: 'Can every laptop have its RAM upgraded?', answer: 'No. Some laptops use soldered memory, while others have one or more SO-DIMM slots. We check the exact model before recommending an upgrade.' },
-        { id: 'upgrade-faq-5', title: 'What is the difference between SATA and NVMe SSDs?', answer: 'They use different interfaces and can have different performance and physical formats. We identify the laptop's supported interface before selecting the replacement drive.' },
-        { id: 'upgrade-faq-6', title: 'Can you move my existing Windows installation to the new SSD?', answer: 'Often yes when the source drive is healthy and the configuration supports cloning. We verify the cloned system boots correctly and check the new drive after migration.' },
       technicalOverview: {
         heading: 'SSD and RAM Upgrades Start With Compatibility',
         paragraphs: [
@@ -690,7 +690,10 @@ export const rawGraphData: RawGraphData = {
       faqs: [
         { id: 'liquid-faq-1', title: 'What should I do immediately after spilling liquid on my laptop?', answer: 'Shut it down, disconnect the charger, and do not keep powering it on to check whether it works. Arrange an inspection as soon as practical.' },
         { id: 'liquid-faq-2', title: 'Can a laptop still be repaired after a coffee spill?', answer: 'Often yes, depending on where the liquid reached and how much corrosion or component damage occurred. Early power isolation improves the chances of saving the original board.' },
-        { id: 'liquid-faq-3', title: 'Do you repair liquid-damaged MacBooks?', answer: 'Yes. We inspect the logic board and affected circuits at component level where appropriate, including USB-C power and display-related faults.' }
+        { id: 'liquid-faq-3', title: 'Do you repair liquid-damaged MacBooks?', answer: 'Yes. We inspect the logic board and affected circuits at component level where appropriate, including USB-C power and display-related faults.' },
+        { id: 'liquid-faq-4', title: 'Should I put a wet laptop in rice?', answer: 'No. Rice does not remove contamination from connectors or circuit boards and can introduce debris. Shut the laptop down, disconnect power, and arrange a proper inspection instead.' },
+        { id: 'liquid-faq-5', title: 'Can a laptop fail days after a spill?', answer: 'Yes. Residue and corrosion can continue affecting contacts and components after the device appears dry. Delayed faults are one reason a post-spill inspection matters.' },
+        { id: 'liquid-faq-6', title: 'Can you save the original motherboard after liquid damage?', answer: 'Sometimes. The outcome depends on where the liquid reached, the corrosion level and which components or traces were affected. We assess repairability before recommending replacement.' },
       ],
       relatedServiceIds: ['srv-motherboard', 'srv-keyboard', 'srv-macbook'],
       relatedProblemIds: ['problem-liquid-spill', 'problem-no-power', 'problem-black-screen'],
@@ -700,9 +703,6 @@ export const rawGraphData: RawGraphData = {
         { label: 'MacBook Repair', path: '/macbook-repair-kuwait' },
       ],
       relatedCaseStudyPath: { label: 'Real MacBook Liquid-Damage Case Study', path: '/case-studies/macbook-liquid-damage-salmiya' },
-        { id: 'liquid-faq-4', title: 'Should I put a wet laptop in rice?', answer: 'No. Rice does not remove contamination from connectors or circuit boards and can introduce debris. Shut the laptop down, disconnect power, and arrange a proper inspection instead.' },
-        { id: 'liquid-faq-5', title: 'Can a laptop fail days after a spill?', answer: 'Yes. Residue and corrosion can continue affecting contacts and components after the device appears dry. Delayed faults are one reason a post-spill inspection matters.' },
-        { id: 'liquid-faq-6', title: 'Can you save the original motherboard after liquid damage?', answer: 'Sometimes. The outcome depends on where the liquid reached, the corrosion level and which components or traces were affected. We assess repairability before recommending replacement.' },
       technicalOverview: {
         heading: 'What Happens Inside a Liquid-Damaged Laptop',
         paragraphs: [
