@@ -57,8 +57,24 @@ export const PricingTable = () => {
                 </div>
               </div>
               <p className="text-lg font-black text-cyan-400 whitespace-nowrap mt-3 sm:mt-0 sm:ml-4">
+                {/* 🩹 FIX: the old fallback interpolated
+                  `From ${service.pricing?.startingFrom} ${service.pricing?.currency}`
+                  even when `service.pricing` was undefined entirely — the
+                  Zod schema (ServiceSchema in knowledgeGraph.ts) marks
+                  `pricing` as a fully optional object, so an active service
+                  legitimately CAN have no pricing at all (e.g. quote-only
+                  work). That produced the literal string
+                  "From undefined undefined" instead of a deliberate state.
+                  All 12 currently active services do have complete pricing
+                  data (verified against the graph directly), so this branch
+                  isn't firing today — but it's a landmine for the next
+                  service added without pricing. Now falls through three
+                  explicit, valid states instead of ever interpolating
+                  undefined. */}
                 {service.pricing?.displayLabel?.split(' — ')[0] ??
-                  `From ${service.pricing?.startingFrom} ${service.pricing?.currency}`}
+                  (service.pricing?.startingFrom != null && service.pricing?.currency
+                    ? `From ${service.pricing.startingFrom} ${service.pricing.currency}`
+                    : 'Contact us for pricing')}
               </p>
             </a>
             );
