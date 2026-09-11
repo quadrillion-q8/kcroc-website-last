@@ -1640,7 +1640,7 @@ export const BLOG_POSTS: BlogPost[] = [
         "text": "No Fix, No Fee."
       }
     ],
-    "image": "/images/guides/windows-11-background-services-audit-2026.png",
+    "image": "/images/blog/windows-11-background-services-audit-2026.png",
     "date": "2026-09-05",
     "author": "KCROC Technical Team — Windows & Hardware Troubleshooting",
     "category": "Windows & Software",
