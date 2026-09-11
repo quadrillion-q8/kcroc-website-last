@@ -668,9 +668,9 @@ export const rawGraphData: RawGraphData = {
         { metric: 'Multitasking', outcome: 'Additional compatible RAM can reduce paging when memory pressure is the actual bottleneck.' }
       ] },
       contentImages: [
-        { src: IMAGES.laptopHardware.ssdM2Install.src, alt: IMAGES.laptopHardware.ssdM2Install.alt, width: IMAGES.laptopHardware.ssdM2Install.width, height: IMAGES.laptopHardware.ssdM2Install.height, placement: 'commonIssues', caption: 'Installing an M.2 NVMe SSD as part of a laptop performance upgrade.' },
-        { src: IMAGES.laptopHardware.acerLaptopMotherboardRamHeatsink.src, alt: IMAGES.laptopHardware.acerLaptopMotherboardRamHeatsink.alt, width: IMAGES.laptopHardware.acerLaptopMotherboardRamHeatsink.width, height: IMAGES.laptopHardware.acerLaptopMotherboardRamHeatsink.height, placement: 'coreFeatures', caption: 'Laptop motherboard with accessible RAM and storage components inspected for upgrade compatibility.' },
-        { src: IMAGES.laptopHardware.ssdMicron.src, alt: IMAGES.laptopHardware.ssdMicron.alt, width: IMAGES.laptopHardware.ssdMicron.width, height: IMAGES.laptopHardware.ssdMicron.height, placement: 'process', caption: 'M.2 NVMe storage selected and installed after compatibility checks.' }
+        { src: IMAGES.upgrades.ssdM2Install.src, alt: IMAGES.upgrades.ssdM2Install.alt, width: IMAGES.upgrades.ssdM2Install.width, height: IMAGES.upgrades.ssdM2Install.height, placement: 'commonIssues', caption: 'Installing an M.2 NVMe SSD as part of a laptop performance upgrade.' },
+        { src: IMAGES.upgrades.acerLaptopMotherboardRamHeatsink.src, alt: IMAGES.upgrades.acerLaptopMotherboardRamHeatsink.alt, width: IMAGES.upgrades.acerLaptopMotherboardRamHeatsink.width, height: IMAGES.upgrades.acerLaptopMotherboardRamHeatsink.height, placement: 'coreFeatures', caption: 'Laptop motherboard with accessible RAM and storage components inspected for upgrade compatibility.' },
+        { src: IMAGES.upgrades.ssdMicron.src, alt: IMAGES.upgrades.ssdMicron.alt, width: IMAGES.upgrades.ssdMicron.width, height: IMAGES.upgrades.ssdMicron.height, placement: 'process', caption: 'M.2 NVMe storage selected and installed after compatibility checks.' }
       ],
       warranty: { duration: '30 Days', coverage: 'Parts and labour for the completed SSD/RAM installation', noFixNoFee: true },
       seo: { title: 'SSD & RAM Upgrade Kuwait | Laptop Performance | KCROC', description: 'SSD and RAM upgrades for laptops and PCs in Kuwait. Compatibility checks, cloning where suitable, performance testing, free pickup and 30-day warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/ssd-ram-upgrade-kuwait', ogType: 'article', schemaTypes: ['Service', 'FAQPage'] },
@@ -2851,7 +2851,7 @@ export const rawGraphData: RawGraphData = {
         { id: 'asus-wifi', title: 'MediaTek WiFi dropping', severity: 'medium', description: 'Frequent WiFi drops requiring card upgrade to Intel AX series.' },
         { id: 'asus-screen', title: 'Screen flickering', severity: 'medium', description: 'Display cable wear from Zephyrus "ErgoLift" hinge design.' }
       ],
-      contentImages: [{ src: IMAGES.laptopHardware.asusMotherboardChipsetHeatsinkRepair.src, alt: IMAGES.laptopHardware.asusMotherboardChipsetHeatsinkRepair.alt, width: IMAGES.laptopHardware.asusMotherboardChipsetHeatsinkRepair.width, height: IMAGES.laptopHardware.asusMotherboardChipsetHeatsinkRepair.height, caption: 'ASUS motherboard and heatsink area during component-level diagnosis and repair.' }],
+      contentImages: [{ src: IMAGES.motherboard.asusMotherboardChipsetHeatsinkRepair.src, alt: IMAGES.motherboard.asusMotherboardChipsetHeatsinkRepair.alt, width: IMAGES.motherboard.asusMotherboardChipsetHeatsinkRepair.width, height: IMAGES.motherboard.asusMotherboardChipsetHeatsinkRepair.height, caption: 'ASUS motherboard and heatsink area during component-level diagnosis and repair.' }],
       pricing: { startingFrom: 15, currency: 'KWD', quoteRequired: true, displayLabel: 'From 15 KWD — free diagnostic first' },
       seo: { title: 'ASUS Laptop Repair Kuwait | ROG & TUF Specialists | KCROC', description: 'Independent ASUS ROG and TUF laptop repair in Kuwait. Liquid-metal thermal service, motherboard, charging and screen repair with free pick-up and drop-off.', canonicalUrl: 'https://www.computerrepairkuwait.com/asus-laptop-repair-kuwait', ogType: 'article', schemaTypes: ['Service'] },
       navigationPriority: 60, popular: false
@@ -2867,7 +2867,7 @@ export const rawGraphData: RawGraphData = {
         { id: 'acer-thermal', title: 'Loud fans & high temps', severity: 'medium', description: 'Predator cooling fins heavily blocked by dust.' },
         { id: 'acer-hinge', title: 'Screen bezel separating', severity: 'medium', description: 'Aspire hinge stress causing the screen assembly to split.' }
       ],
-      contentImages: [{ src: IMAGES.laptopHardware.acerLaptopMotherboardRamHeatsink.src, alt: IMAGES.laptopHardware.acerLaptopMotherboardRamHeatsink.alt, width: IMAGES.laptopHardware.acerLaptopMotherboardRamHeatsink.width, height: IMAGES.laptopHardware.acerLaptopMotherboardRamHeatsink.height, caption: 'Acer laptop internal motherboard, RAM and cooling hardware inspected for repair.' }],
+      contentImages: [{ src: IMAGES.upgrades.acerLaptopMotherboardRamHeatsink.src, alt: IMAGES.upgrades.acerLaptopMotherboardRamHeatsink.alt, width: IMAGES.upgrades.acerLaptopMotherboardRamHeatsink.width, height: IMAGES.upgrades.acerLaptopMotherboardRamHeatsink.height, caption: 'Acer laptop internal motherboard, RAM and cooling hardware inspected for repair.' }],
       pricing: { startingFrom: 15, currency: 'KWD', quoteRequired: true, displayLabel: 'From 15 KWD — free diagnostic first' },
       seo: { title: 'Acer Laptop Repair Kuwait | Nitro & Predator | KCROC', description: 'Independent Acer laptop repair in Kuwait for Nitro, Predator, Aspire and Swift. Charging-port, cooling, hinge and motherboard diagnostics with free pick-up and drop-off.', canonicalUrl: 'https://www.computerrepairkuwait.com/acer-laptop-repair-kuwait', ogType: 'article', schemaTypes: ['Service'] },
       navigationPriority: 50, popular: false
