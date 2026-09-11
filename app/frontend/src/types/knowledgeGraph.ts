@@ -488,8 +488,22 @@ export const RawGraphSchema = z.object({
 });
 
 /* --- EXPORTED TYPES --- */
+// 🩹 FIX (Knowledge Graph audit): `RoutableEntity` is a hand-maintained type,
+// not derived via z.infer from the schemas above — and it was missing
+// `entityType`, even though every schema that composes it (Service, Brand,
+// Problem, Location, CaseStudy, WebPage) requires `entityType` as its Zod
+// discriminant. SEOEngine.tsx — the component that generates every page's
+// canonical tag, meta description, and JSON-LD schema graph — switches on
+// `entity.entityType` in ~20 places to decide which schema.org type to
+// emit. Without this field on the type, none of those checks were actually
+// type-checked (TS2339 "Property 'entityType' does not exist"), meaning the
+// one file most responsible for the site's structured data had no compiler
+// protection against a typo'd or renamed entityType silently breaking SEO
+// output. Adding the field here just tells TypeScript what was already true
+// at runtime, so the compiler starts catching regressions in that logic.
 export type RoutableEntity = {
   id: string;
+  entityType: EntityType;
   isActive: boolean;
   title: string;
   slug: string;
