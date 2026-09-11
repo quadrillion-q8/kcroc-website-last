@@ -438,6 +438,11 @@ export const rawGraphData: RawGraphData = {
         { metric: 'Charging stability', outcome: 'Verified under repeated plug/unplug and load conditions.' },
         { metric: 'Power-path confidence', outcome: 'Connector and charging circuit tested before the device is returned.' }
       ] },
+      contentImages: [
+        { src: IMAGES.laptopHardware.lenovoLaptopDcPowerAdapter.src, alt: IMAGES.laptopHardware.lenovoLaptopDcPowerAdapter.alt, width: IMAGES.laptopHardware.lenovoLaptopDcPowerAdapter.width, height: IMAGES.laptopHardware.lenovoLaptopDcPowerAdapter.height, placement: 'commonIssues', caption: 'Checking a compatible laptop power adapter as part of charging-path diagnosis.' },
+        { src: IMAGES.laptopHardware.laptopOpenRepairBench.src, alt: IMAGES.laptopHardware.laptopOpenRepairBench.alt, width: IMAGES.laptopHardware.laptopOpenRepairBench.width, height: IMAGES.laptopHardware.laptopOpenRepairBench.height, placement: 'coreFeatures', caption: 'An opened laptop on the repair bench for connector, charging-circuit and motherboard inspection.' },
+        { src: IMAGES.laptopHardware.dellRepair.src, alt: IMAGES.laptopHardware.dellRepair.alt, width: IMAGES.laptopHardware.dellRepair.width, height: IMAGES.laptopHardware.dellRepair.height, placement: 'process', caption: 'Internal hardware access during a component-level charging and power repair.' }
+      ],
       warranty: { duration: '30 Days', coverage: 'Parts and labour for the completed charging-port repair', noFixNoFee: true },
       seo: { title: 'Laptop Charging Port Repair Kuwait | KCROC', description: 'Laptop DC jack and USB-C charging port repair in Kuwait. Board-level charging diagnostics, micro-soldering, free pickup and 30-day warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-charging-port-repair-kuwait', ogType: 'article', schemaTypes: ['Service', 'FAQPage'] },
       navigationPriority: 55,
@@ -512,6 +517,11 @@ export const rawGraphData: RawGraphData = {
         ]
       },
       inspectionChecklist: ['Measure hinge resistance', 'Inspect mounting points', 'Check bezel and lid', 'Inspect display cable routing', 'Check screen for pressure damage', 'Test repeated open/close movement'],
+      contentImages: [
+        { src: IMAGES.laptopHardware.brokenHinge.src, alt: IMAGES.laptopHardware.brokenHinge.alt, width: IMAGES.laptopHardware.brokenHinge.width, height: IMAGES.laptopHardware.brokenHinge.height, placement: 'commonIssues', caption: 'Broken hinge mounts and cracked plastic chassis damage before structural repair.' },
+        { src: IMAGES.laptopHardware.screenBezel.src, alt: IMAGES.laptopHardware.screenBezel.alt, width: IMAGES.laptopHardware.screenBezel.width, height: IMAGES.laptopHardware.screenBezel.height, placement: 'coreFeatures', caption: 'Screen bezel and hinge work during chassis reconstruction and alignment.' },
+        { src: IMAGES.laptopHardware.dellRepair.src, alt: IMAGES.laptopHardware.dellRepair.alt, width: IMAGES.laptopHardware.dellRepair.width, height: IMAGES.laptopHardware.dellRepair.height, placement: 'process', caption: 'Laptop chassis opened so hinge mounts, display cable routing and surrounding structure can be inspected.' }
+      ],
       warranty: { duration: '30 Days', coverage: 'Parts and labour for the completed hinge/chassis repair', noFixNoFee: true },
       seo: { title: 'Laptop Hinge Repair Kuwait | Chassis Fix | KCROC', description: 'Broken or stiff laptop hinge repair in Kuwait. Chassis reinforcement, hinge replacement and display-cable inspection with free pickup and 30-day warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-hinge-repair-kuwait', ogType: 'article', schemaTypes: ['Service', 'FAQPage'] },
       navigationPriority: 54,
@@ -581,6 +591,11 @@ export const rawGraphData: RawGraphData = {
         ]
       },
       inspectionChecklist: ['Test every key', 'Check ribbon connector', 'Inspect for liquid contamination', 'Verify backlight where fitted', 'Confirm exact replacement part', 'Run post-repair input test'],
+      contentImages: [
+        { src: IMAGES.laptopHardware.laptopKeyboardTopCaseAssemblyRemoval.src, alt: IMAGES.laptopHardware.laptopKeyboardTopCaseAssemblyRemoval.alt, width: IMAGES.laptopHardware.laptopKeyboardTopCaseAssemblyRemoval.width, height: IMAGES.laptopHardware.laptopKeyboardTopCaseAssemblyRemoval.height, placement: 'commonIssues', caption: 'Removing the keyboard top-case assembly to inspect the keyboard and connector path.' },
+        { src: IMAGES.laptopHardware.laptopKeyboardHeatsinkAssemblyRemoval.src, alt: IMAGES.laptopHardware.laptopKeyboardHeatsinkAssemblyRemoval.alt, width: IMAGES.laptopHardware.laptopKeyboardHeatsinkAssemblyRemoval.width, height: IMAGES.laptopHardware.laptopKeyboardHeatsinkAssemblyRemoval.height, placement: 'coreFeatures', caption: 'Internal assembly removal during keyboard replacement and related hardware diagnosis.' },
+        { src: IMAGES.laptopHardware.laptopOpenRepairBench.src, alt: IMAGES.laptopHardware.laptopOpenRepairBench.alt, width: IMAGES.laptopHardware.laptopOpenRepairBench.width, height: IMAGES.laptopHardware.laptopOpenRepairBench.height, placement: 'process', caption: 'Laptop opened on the repair bench for connector checks and post-replacement testing.' }
+      ],
       warranty: { duration: '30 Days', coverage: 'Parts and labour for the completed keyboard replacement', noFixNoFee: true },
       seo: { title: 'Laptop Keyboard Replacement Kuwait | KCROC', description: 'Laptop and MacBook keyboard replacement in Kuwait for Dell, HP, Lenovo, ASUS, Acer, MSI and Apple. Free pickup and 30-day warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-keyboard-replacement-kuwait', ogType: 'article', schemaTypes: ['Service', 'FAQPage'] },
       navigationPriority: 53, isFeatured: false, popular: false
@@ -652,6 +667,11 @@ export const rawGraphData: RawGraphData = {
         { metric: 'Boot responsiveness', outcome: 'SSD upgrades can substantially reduce storage-related boot and application loading delays.' },
         { metric: 'Multitasking', outcome: 'Additional compatible RAM can reduce paging when memory pressure is the actual bottleneck.' }
       ] },
+      contentImages: [
+        { src: IMAGES.laptopHardware.ssdM2Install.src, alt: IMAGES.laptopHardware.ssdM2Install.alt, width: IMAGES.laptopHardware.ssdM2Install.width, height: IMAGES.laptopHardware.ssdM2Install.height, placement: 'commonIssues', caption: 'Installing an M.2 NVMe SSD as part of a laptop performance upgrade.' },
+        { src: IMAGES.laptopHardware.acerLaptopMotherboardRamHeatsink.src, alt: IMAGES.laptopHardware.acerLaptopMotherboardRamHeatsink.alt, width: IMAGES.laptopHardware.acerLaptopMotherboardRamHeatsink.width, height: IMAGES.laptopHardware.acerLaptopMotherboardRamHeatsink.height, placement: 'coreFeatures', caption: 'Laptop motherboard with accessible RAM and storage components inspected for upgrade compatibility.' },
+        { src: IMAGES.laptopHardware.ssdMicron.src, alt: IMAGES.laptopHardware.ssdMicron.alt, width: IMAGES.laptopHardware.ssdMicron.width, height: IMAGES.laptopHardware.ssdMicron.height, placement: 'process', caption: 'M.2 NVMe storage selected and installed after compatibility checks.' }
+      ],
       warranty: { duration: '30 Days', coverage: 'Parts and labour for the completed SSD/RAM installation', noFixNoFee: true },
       seo: { title: 'SSD & RAM Upgrade Kuwait | Laptop Performance | KCROC', description: 'SSD and RAM upgrades for laptops and PCs in Kuwait. Compatibility checks, cloning where suitable, performance testing, free pickup and 30-day warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/ssd-ram-upgrade-kuwait', ogType: 'article', schemaTypes: ['Service', 'FAQPage'] },
       navigationPriority: 52, isFeatured: false, popular: false
@@ -720,6 +740,11 @@ export const rawGraphData: RawGraphData = {
         ]
       },
       inspectionChecklist: ['Confirm liquid type and affected area', 'Isolate battery and external power', 'Inspect board and connectors', 'Map corrosion and contamination', 'Test affected power rails', 'Verify all repaired functions under load'],
+      contentImages: [
+        { src: IMAGES.laptopHardware.laptopOpenRepairBench.src, alt: IMAGES.laptopHardware.laptopOpenRepairBench.alt, width: IMAGES.laptopHardware.laptopOpenRepairBench.width, height: IMAGES.laptopHardware.laptopOpenRepairBench.height, placement: 'commonIssues', caption: 'An opened laptop ready for liquid-damage inspection and corrosion assessment.' },
+        { src: IMAGES.laptopHardware.dellTeardown.src, alt: IMAGES.laptopHardware.dellTeardown.alt, width: IMAGES.laptopHardware.dellTeardown.width, height: IMAGES.laptopHardware.dellTeardown.height, placement: 'coreFeatures', caption: 'Internal hardware exposed for detailed motherboard and connector inspection after liquid exposure.' },
+        { src: IMAGES.laptopHardware.dellRepair.src, alt: IMAGES.laptopHardware.dellRepair.alt, width: IMAGES.laptopHardware.dellRepair.width, height: IMAGES.laptopHardware.dellRepair.height, placement: 'process', caption: 'Component-level repair work after cleaning and fault isolation on a liquid-damaged laptop.' }
+      ],
       warranty: { duration: '30 Days', coverage: 'Parts and labour for components repaired or replaced during the liquid-damage service', noFixNoFee: true },
       seo: { title: 'Laptop Liquid Damage Repair Kuwait | KCROC', description: 'Laptop and MacBook liquid damage repair in Kuwait. Corrosion inspection, board cleaning, micro-soldering and component-level diagnostics with free pickup.', canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-liquid-damage-repair-kuwait', ogType: 'article', schemaTypes: ['Service', 'FAQPage'] },
       navigationPriority: 51, isFeatured: false, popular: false
@@ -1544,6 +1569,11 @@ export const rawGraphData: RawGraphData = {
         }
       ],
 
+      contentImages: [
+        { src: IMAGES.gaming.rgbLighting.src, alt: IMAGES.gaming.rgbLighting.alt, width: IMAGES.gaming.rgbLighting.width, height: IMAGES.gaming.rgbLighting.height, placement: 'commonIssues', caption: 'A high-performance custom gaming PC representative of the systems we diagnose and repair.' },
+        { src: IMAGES.gaming.diagnostics.src, alt: IMAGES.gaming.diagnostics.alt, width: IMAGES.gaming.diagnostics.width, height: IMAGES.gaming.diagnostics.height, placement: 'coreFeatures', caption: 'Gaming PC teardown and diagnostics at the workbench to isolate hardware faults.' },
+        { src: IMAGES.gaming.zotacCard.src, alt: IMAGES.gaming.zotacCard.alt, width: IMAGES.gaming.zotacCard.width, height: IMAGES.gaming.zotacCard.height, placement: 'process', caption: 'GPU handling and component inspection during gaming PC diagnosis and repair.' }
+      ],
       warranty: { 
         duration: '30 Days', 
         coverage: 'Covers all replaced components, thermal applications, and micro-soldering labor.', 
@@ -2665,6 +2695,7 @@ export const rawGraphData: RawGraphData = {
         { id: 'dell-screen',   title: 'Screen flickering or lines',    severity: 'medium', description: 'Display cable wear near the hinge.' },
         { id: 'dell-battery',  title: 'Battery swollen',               severity: 'high',   description: 'Lithium degradation from Kuwait summer temperatures.' }
       ],
+      contentImages: [{ src: IMAGES.laptopHardware.dellTeardown.src, alt: IMAGES.laptopHardware.dellTeardown.alt, width: IMAGES.laptopHardware.dellTeardown.width, height: IMAGES.laptopHardware.dellTeardown.height, caption: 'Dell laptop internal hardware opened for repair and diagnosis.' }],
       pricing: { startingFrom: 15, currency: 'KWD', quoteRequired: true, displayLabel: 'From 15 KWD — free diagnostic first' },
       seo: { title: 'Dell Service Center & Laptop Repair Kuwait | KCROC', description: 'Independent Dell laptop repair in Kuwait for Inspiron, Latitude, XPS, G15 and Alienware. Screen, battery, hinge and motherboard repair with free pick-up and drop-off.', canonicalUrl: 'https://www.computerrepairkuwait.com/dell-laptop-repair-kuwait', ogType: 'article', schemaTypes: ['Service'] },
       navigationPriority: 90, popular: true 
@@ -2680,6 +2711,7 @@ export const rawGraphData: RawGraphData = {
         { id: 'hp-hinge', title: 'Hinge separation', severity: 'high', description: 'Envy and Pavilion hinge mounts breaking from chassis.' },
         { id: 'hp-fan',   title: 'Fan error on boot', severity: 'medium', description: 'HP system fan (90b) error due to dust accumulation.' }
       ],
+      contentImages: [{ src: IMAGES.laptopHardware.hpLaptopMotherboardThermalPasteCleanup.src, alt: IMAGES.laptopHardware.hpLaptopMotherboardThermalPasteCleanup.alt, width: IMAGES.laptopHardware.hpLaptopMotherboardThermalPasteCleanup.width, height: IMAGES.laptopHardware.hpLaptopMotherboardThermalPasteCleanup.height, caption: 'HP laptop motherboard and cooling hardware inspected during repair.' }],
       pricing: { startingFrom: 15, currency: 'KWD', quoteRequired: true, displayLabel: 'From 15 KWD — free diagnostic first' },
       seo: { title: 'HP Laptop Repair Kuwait | Free Pickup, No Fix No Fee', description: 'HP EliteBook, Pavilion, ProBook & OMEN repair in Kuwait. Free pickup & drop-off, No Fix No Fee, 30-day warranty. Certified HP technicians in Hawalli.', canonicalUrl: 'https://www.computerrepairkuwait.com/hp-laptop-repair-kuwait', ogType: 'article', schemaTypes: ['Service'] },
       navigationPriority: 80, popular: true 
@@ -2819,6 +2851,7 @@ export const rawGraphData: RawGraphData = {
         { id: 'asus-wifi', title: 'MediaTek WiFi dropping', severity: 'medium', description: 'Frequent WiFi drops requiring card upgrade to Intel AX series.' },
         { id: 'asus-screen', title: 'Screen flickering', severity: 'medium', description: 'Display cable wear from Zephyrus "ErgoLift" hinge design.' }
       ],
+      contentImages: [{ src: IMAGES.laptopHardware.asusMotherboardChipsetHeatsinkRepair.src, alt: IMAGES.laptopHardware.asusMotherboardChipsetHeatsinkRepair.alt, width: IMAGES.laptopHardware.asusMotherboardChipsetHeatsinkRepair.width, height: IMAGES.laptopHardware.asusMotherboardChipsetHeatsinkRepair.height, caption: 'ASUS motherboard and heatsink area during component-level diagnosis and repair.' }],
       pricing: { startingFrom: 15, currency: 'KWD', quoteRequired: true, displayLabel: 'From 15 KWD — free diagnostic first' },
       seo: { title: 'ASUS Laptop Repair Kuwait | ROG & TUF Specialists | KCROC', description: 'Independent ASUS ROG and TUF laptop repair in Kuwait. Liquid-metal thermal service, motherboard, charging and screen repair with free pick-up and drop-off.', canonicalUrl: 'https://www.computerrepairkuwait.com/asus-laptop-repair-kuwait', ogType: 'article', schemaTypes: ['Service'] },
       navigationPriority: 60, popular: false
@@ -2834,6 +2867,7 @@ export const rawGraphData: RawGraphData = {
         { id: 'acer-thermal', title: 'Loud fans & high temps', severity: 'medium', description: 'Predator cooling fins heavily blocked by dust.' },
         { id: 'acer-hinge', title: 'Screen bezel separating', severity: 'medium', description: 'Aspire hinge stress causing the screen assembly to split.' }
       ],
+      contentImages: [{ src: IMAGES.laptopHardware.acerLaptopMotherboardRamHeatsink.src, alt: IMAGES.laptopHardware.acerLaptopMotherboardRamHeatsink.alt, width: IMAGES.laptopHardware.acerLaptopMotherboardRamHeatsink.width, height: IMAGES.laptopHardware.acerLaptopMotherboardRamHeatsink.height, caption: 'Acer laptop internal motherboard, RAM and cooling hardware inspected for repair.' }],
       pricing: { startingFrom: 15, currency: 'KWD', quoteRequired: true, displayLabel: 'From 15 KWD — free diagnostic first' },
       seo: { title: 'Acer Laptop Repair Kuwait | Nitro & Predator | KCROC', description: 'Independent Acer laptop repair in Kuwait for Nitro, Predator, Aspire and Swift. Charging-port, cooling, hinge and motherboard diagnostics with free pick-up and drop-off.', canonicalUrl: 'https://www.computerrepairkuwait.com/acer-laptop-repair-kuwait', ogType: 'article', schemaTypes: ['Service'] },
       navigationPriority: 50, popular: false
@@ -2849,6 +2883,7 @@ export const rawGraphData: RawGraphData = {
         { id: 'msi-motherboard', title: 'Short circuit on power', severity: 'high', description: 'Blown capacitors on the main power rail preventing boot.' },
         { id: 'msi-battery', title: 'Battery expanding', severity: 'medium', description: 'Swollen battery pushing up on the trackpad.' }
       ],
+      contentImages: [{ src: IMAGES.gaming.msiWorkstation.src, alt: IMAGES.gaming.msiWorkstation.alt, width: IMAGES.gaming.msiWorkstation.width, height: IMAGES.gaming.msiWorkstation.height, caption: 'MSI gaming laptop and GPU repair workstation for high-performance hardware diagnosis.' }],
       pricing: { startingFrom: 20, currency: 'KWD', quoteRequired: true, displayLabel: 'From 20 KWD — free diagnostic first' },
       seo: { title: 'MSI Laptop Repair Kuwait | Hinge & Motherboard | KCROC', description: 'Professional MSI laptop repair in Kuwait. Specialist in MSI hinge repair, motherboard short circuits, and thermal repasting. Free pick & drop.', canonicalUrl: 'https://www.computerrepairkuwait.com/msi-laptop-repair-kuwait', ogType: 'article', schemaTypes: ['Service'] },
       navigationPriority: 40, popular: false
