@@ -9,8 +9,8 @@ import { IMAGES } from '../constants/images';
 
 export const rawGraphData: RawGraphData = {
   metadata: {
-    version: '3.6.0',
-    lastUpdated: '2026-09-10T00:00:00+03:00',
+    version: '3.6.1',
+    lastUpdated: '2026-09-11T03:20:00+03:00',
     environment: 'production'
   },
 
@@ -380,6 +380,7 @@ export const rawGraphData: RawGraphData = {
       deviceTypes: ['Windows Laptops', 'USB-C Charging Laptops', 'Gaming Laptops', 'Business Ultrabooks', '2-in-1 / Convertible Laptops'],
       repairLevel: 'component-level',
       estimatedTurnaround: 'Same Day / 24 Hours',
+            pricing: { startingFrom: 20, currency: 'KWD', quoteRequired: true, displayLabel: 'From 20 KWD — free diagnostic first' },
       coreFeatures: ['DC Jack Replacement', 'USB-C Port Repair', 'Charging Connector Micro-Soldering', 'Charging IC Diagnostics', 'Power Rail Testing', 'Adapter & Cable Verification', 'Motherboard Trace Inspection', 'Post-Repair Charging Test', 'Free Pick & Drop', '30-Day Warranty'],
       brands: ['Dell', 'HP', 'Lenovo', 'ASUS', 'Acer', 'MSI', 'Microsoft Surface'],
       whyChooseUs: [
@@ -463,6 +464,7 @@ export const rawGraphData: RawGraphData = {
       deviceTypes: ['Business Laptops', 'Everyday Windows Laptops', 'Gaming Laptops', '2-in-1 / Convertible Laptops', 'MacBooks'],
       repairLevel: 'advanced',
       estimatedTurnaround: 'Same Day / 24 Hours',
+            pricing: { startingFrom: 15, currency: 'KWD', quoteRequired: true, displayLabel: 'From 15 KWD' },
       coreFeatures: ['Hinge Assembly Repair', 'Hinge Replacement', 'Chassis Reinforcement', 'Bezel Repair', 'Lid Alignment', 'Display Cable Inspection', 'Mounting Point Reconstruction', 'Post-Repair Hinge Tension Test', 'Free Pick & Drop', '30-Day Warranty'],
       brands: ['Dell', 'HP', 'Lenovo', 'ASUS', 'Acer', 'MSI', 'MacBook'],
       whyChooseUs: [
@@ -537,6 +539,7 @@ export const rawGraphData: RawGraphData = {
       idealCustomer: 'Students, office users, developers, gamers, and anyone with missing, stuck, liquid-damaged, or intermittently responding laptop keys.',
       deviceTypes: ['Windows Laptops', 'Gaming Laptops', 'Business Laptops', '2-in-1 Laptops', 'MacBook Air & MacBook Pro'],
       repairLevel: 'advanced', estimatedTurnaround: 'Same Day / 24 Hours',
+            pricing: { startingFrom: 10, currency: 'KWD', quoteRequired: true, displayLabel: 'From 10 KWD + part' },
       coreFeatures: ['Keyboard Assembly Replacement', 'Individual Key Fault Diagnosis', 'Ribbon Connector Inspection', 'Liquid Contamination Inspection', 'Backlit Keyboard Testing', 'MacBook Keyboard Service', 'Post-Repair Input Testing', 'Free Pick & Drop', '30-Day Warranty'],
       brands: ['Dell', 'HP', 'Lenovo', 'ASUS', 'Acer', 'MSI', 'MacBook'],
       whyChooseUs: [
@@ -609,6 +612,7 @@ export const rawGraphData: RawGraphData = {
       idealCustomer: 'Users with slow boot times, limited memory, an aging hard drive, frequent paging, or a laptop that is otherwise worth keeping.',
       deviceTypes: ['Windows Laptops', 'Business Laptops', 'Everyday Laptops', 'Gaming Laptops', 'Desktop PCs'],
       repairLevel: 'advanced', estimatedTurnaround: 'Same Day / 24 Hours',
+            pricing: { startingFrom: 5, currency: 'KWD', quoteRequired: true, displayLabel: 'From 5 KWD + part' },
       coreFeatures: ['NVMe SSD Upgrade', 'SATA SSD Upgrade', 'RAM Upgrade', 'Memory Compatibility Check', 'Storage Health Check', 'System Cloning Where Suitable', 'Boot Verification', 'Performance Testing', 'Free Pick & Drop', '30-Day Warranty'],
       brands: ['Dell', 'HP', 'Lenovo', 'ASUS', 'Acer', 'MSI', 'Microsoft Surface'],
       whyChooseUs: [
@@ -685,6 +689,7 @@ export const rawGraphData: RawGraphData = {
       idealCustomer: 'Laptop and MacBook owners who have experienced a recent spill, moisture exposure, corrosion, or a device that stopped working after liquid contact.',
       deviceTypes: ['Windows Laptops', 'MacBook Air', 'MacBook Pro', 'Gaming Laptops', 'Business Laptops'],
       repairLevel: 'component-level', estimatedTurnaround: '24-72 Hours',
+            pricing: { startingFrom: 35, currency: 'KWD', quoteRequired: true, displayLabel: 'From 35 KWD' },
       coreFeatures: ['Immediate Power Isolation', 'Liquid Damage Inspection', 'Corrosion Mapping', 'Board Cleaning', 'Connector Inspection', 'Component-Level Diagnostics', 'Micro-Soldering Where Required', 'Post-Repair Stress Testing', 'Free Pick & Drop', '30-Day Warranty'],
       brands: ['Dell', 'HP', 'Lenovo', 'ASUS', 'Acer', 'MSI', 'MacBook'],
       whyChooseUs: [
@@ -770,6 +775,14 @@ export const rawGraphData: RawGraphData = {
       repairLevel: 'chip-level', 
       estimatedTurnaround: '24-48 Hours', 
       pricing: { startingFrom: 25, currency: 'KWD', quoteRequired: true, displayLabel: 'From 25 KWD — free diagnostic first' }, 
+      relatedServiceIds: ['srv-motherboard', 'srv-charging-port', 'srv-battery', 'srv-liquid-damage'],
+      relatedProblemIds: ['problem-liquid-spill', 'problem-not-charging', 'problem-no-power', 'problem-black-screen'],
+      relatedBrandIds: [],
+      relatedGuidePaths: [
+        { label: 'BIOS / UEFI Recovery Guide', path: '/guides/bios-uefi-recovery-kuwait' },
+        { label: 'Laptop Battery Warning Signs', path: '/guides/laptop-battery-warning-signs' },
+      ],
+      relatedCaseStudyPath: { label: 'MacBook Liquid-Damage Case Study — Salmiya', path: '/case-studies/macbook-liquid-damage-salmiya' },
       coreFeatures: [
         'Logic Board Micro-Soldering',
         'USB-C Power IC Replacement',
@@ -1061,6 +1074,15 @@ export const rawGraphData: RawGraphData = {
       repairLevel: 'advanced', 
       estimatedTurnaround: 'Same Day / 24 Hours', 
       pricing: { startingFrom: 15, currency: 'KWD', quoteRequired: true, displayLabel: 'From 15 KWD' }, 
+      relatedServiceIds: ['srv-macbook', 'srv-motherboard', 'srv-screen', 'srv-battery', 'srv-charging-port', 'srv-gaming-laptop-cleaning'],
+      relatedProblemIds: ['problem-no-power', 'problem-overheating', 'problem-black-screen', 'problem-not-charging', 'problem-slow', 'problem-freezing-crashing', 'problem-hinge-break', 'problem-cracked-screen', 'problem-windows-wont-boot'],
+      relatedBrandIds: ['brand-dell', 'brand-hp', 'brand-lenovo', 'brand-asus', 'brand-acer', 'brand-msi'],
+      relatedGuidePaths: [
+        { label: "Laptop Won't Turn On? Complete Troubleshooting Guide", path: '/guides/laptop-wont-turn-on' },
+        { label: 'Laptop Battery Warning Signs', path: '/guides/laptop-battery-warning-signs' },
+        { label: 'Dell Laptop Overheating Guide', path: '/guides/dell-laptop-overheating' },
+        { label: 'BIOS / UEFI Recovery Guide', path: '/guides/bios-uefi-recovery-kuwait' },
+      ],
       coreFeatures: [
         'Hinge & Chassis Reconstruction',
         'DC Jack / Charging Port Micro-Soldering',
@@ -1314,6 +1336,15 @@ export const rawGraphData: RawGraphData = {
         quoteRequired: true, 
         displayLabel: 'From 25 KWD — Free Diagnostic First' 
       }, 
+      relatedServiceIds: ['srv-gaming-laptop-cleaning', 'srv-motherboard', 'srv-laptop'],
+      relatedProblemIds: ['problem-overheating', 'problem-freezing-crashing'],
+      relatedBrandIds: ['brand-asus', 'brand-msi', 'brand-lenovo', 'brand-dell'],
+      relatedGuidePaths: [
+        { label: 'Dell Laptop Overheating Guide', path: '/guides/dell-laptop-overheating' },
+        { label: 'Gaming PC Cooling Guide', path: '/blog/gaming-pc-cooling' },
+        { label: 'BIOS / UEFI Recovery Guide', path: '/guides/bios-uefi-recovery-kuwait' },
+      ],
+      relatedCaseStudyPath: { label: 'ASUS ROG Dead Motherboard Case Study — Hawalli', path: '/case-studies/asus-rog-dead-motherboard-hawalli' },
       coreFeatures: [
         'GPU Chip-Level & VRAM Repair',
         'Liquid Metal & Phase-Change Thermal Overhauls',
@@ -1801,6 +1832,14 @@ export const rawGraphData: RawGraphData = {
       repairLevel: 'chip-level', 
       estimatedTurnaround: '24-48 Hours', 
       pricing: { startingFrom: 25, currency: 'KWD', quoteRequired: true, displayLabel: 'From 25 KWD — free diagnostic first' }, 
+      relatedServiceIds: ['srv-laptop', 'srv-macbook', 'srv-charging-port', 'srv-liquid-damage', 'srv-gaming'],
+      relatedProblemIds: ['problem-no-power', 'problem-not-charging', 'problem-black-screen', 'problem-liquid-spill'],
+      relatedBrandIds: ['brand-dell', 'brand-hp', 'brand-lenovo', 'brand-asus', 'brand-msi'],
+      relatedGuidePaths: [
+        { label: 'BIOS / UEFI Recovery Guide', path: '/guides/bios-uefi-recovery-kuwait' },
+        { label: "Laptop Won't Turn On? Complete Troubleshooting Guide", path: '/guides/laptop-wont-turn-on' },
+      ],
+      relatedCaseStudyPath: { label: 'ASUS ROG Dead Motherboard Case Study — Hawalli', path: '/case-studies/asus-rog-dead-motherboard-hawalli' },
       coreFeatures: [
         'Power Rail Voltage Tracing',
         'MOSFET & Power IC Replacement',
@@ -2058,7 +2097,15 @@ export const rawGraphData: RawGraphData = {
       ],
       repairLevel: 'basic',
       estimatedTurnaround: 'Same Day (if panel in stock)',
-      pricing: { startingFrom: 20, currency: 'KWD', quoteRequired: false, displayLabel: 'From 20 KWD' },
+      pricing: { startingFrom: 30, currency: 'KWD', quoteRequired: true, displayLabel: 'From 30 KWD + part' },
+      relatedServiceIds: ['srv-laptop', 'srv-hinge'],
+      relatedProblemIds: ['problem-cracked-screen', 'problem-black-screen'],
+      relatedBrandIds: ['brand-dell', 'brand-hp', 'brand-lenovo', 'brand-asus', 'brand-msi'],
+      relatedGuidePaths: [
+        { label: 'Laptop Repair Guide', path: '/laptop-repair-kuwait' },
+        { label: 'Laptop Screen Cracked — What to Do', path: '/laptop-screen-cracked-kuwait' },
+      ],
+      relatedCaseStudyPath: { label: 'Dell XPS Screen Replacement Case Study — Kuwait City', path: '/case-studies/dell-xps-screen-replacement-kuwait-city' },
       coreFeatures: [
         'LCD / IPS / OLED Panel Replacement',
         'MacBook Retina Display Replacement',
@@ -2145,7 +2192,7 @@ export const rawGraphData: RawGraphData = {
         { id: 'faq-external-monitor-works', title: 'The screen is black but an external monitor works fine — what does that mean?', answer: 'It points to the internal display or its cable rather than the graphics hardware, since the system is clearly still producing a valid display signal.' },
         { id: 'faq-macbook-retina-screen', title: 'Do you replace MacBook Retina displays?', answer: 'Yes, including careful handling of the True Tone sensor, which we recalibrate after replacement so colour accuracy stays correct.' },
         { id: 'faq-touchscreen-replace', title: 'Can you replace a touchscreen on a 2-in-1 laptop?', answer: 'Yes. The touch digitizer can fail independently of the display panel beneath it, and we diagnose and replace whichever layer is actually at fault.' },
-        { id: 'faq-screen-cost', title: 'How much does laptop screen replacement cost?', answer: 'From 20 KWD for standard panels, with the exact price depending on size, resolution, and whether it\'s a standard panel or a MacBook Retina display.' },
+        { id: 'faq-screen-cost', title: 'How much does laptop screen replacement cost?', answer: 'From 30 KWD for standard panels, with the exact price depending on size, resolution, and whether it\'s a standard panel or a MacBook Retina display.' },
         { id: 'faq-screen-oem', title: 'Do you use OEM screens?', answer: 'We offer OEM and high-grade compatible panels and explain the difference in quality and price before you choose.' },
         { id: 'faq-screen-data-safety', title: 'Is my data safe during a screen replacement?', answer: 'Yes — screen replacement is a hardware-only procedure that never touches your storage drive or files.' },
         { id: 'faq-screen-warranty', title: 'Is there a warranty on screen replacements?', answer: 'Yes, 30 days covering the panel and labor.' },
@@ -2209,7 +2256,14 @@ export const rawGraphData: RawGraphData = {
       ],
       repairLevel: 'basic', 
       estimatedTurnaround: 'Same Day', 
-      pricing: { startingFrom: 12, currency: 'KWD', quoteRequired: true, displayLabel: 'From 12 KWD — free diagnostic first' }, 
+      pricing: { startingFrom: 8, currency: 'KWD', quoteRequired: true, displayLabel: 'From 8 KWD + part' }, 
+      relatedServiceIds: ['srv-laptop', 'srv-macbook', 'srv-charging-port'],
+      relatedProblemIds: ['problem-not-charging', 'problem-no-power', 'problem-slow'],
+      relatedBrandIds: ['brand-dell', 'brand-hp', 'brand-lenovo', 'brand-asus', 'brand-acer', 'brand-msi'],
+      relatedGuidePaths: [
+        { label: 'Laptop Battery Warning Signs', path: '/guides/laptop-battery-warning-signs' },
+        { label: 'Laptop Repair Guide', path: '/laptop-repair-kuwait' },
+      ],
       coreFeatures: [
         'Battery Health & Wear Analysis',
         'Cycle Count Verification',
