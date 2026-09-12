@@ -36,6 +36,9 @@ const shouldShowAnimatedBackground = (pathname: string): boolean => {
     path === '/faq' ||
     path === '/pricing' ||
     path === '/services' ||
+    path === '/book' ||
+    path === '/privacy-policy' ||
+    path === '/terms-of-service' ||
     path === '/brands' ||
     path === '/problems' ||
     path === '/guides' ||
