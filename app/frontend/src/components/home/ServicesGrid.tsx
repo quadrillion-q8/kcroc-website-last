@@ -74,7 +74,7 @@ export default function ServicesGrid() {
   if (!services || services.length === 0) return null;
 
   return (
-    <section className="w-full py-6 sm:py-14 px-4 sm:px-8 bg-kcroc-slate-950">
+    <section className="w-full py-6 sm:py-14 px-4 sm:px-8 bg-brand-dark">
       <div className="max-w-6xl mx-auto">
         <SectionHeader
           eyebrow="What we fix"
