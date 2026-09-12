@@ -271,7 +271,7 @@ export default function Blog() {
               {/* IMAGE */}
               <Link
                 to={post.href}
-                className="block aspect-[16/9] overflow-hidden bg-slate-950"
+                className="block aspect-[16/9] overflow-hidden bg-brand-dark"
                 rel="bookmark"
               >
                 <img

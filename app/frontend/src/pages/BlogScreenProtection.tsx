@@ -329,7 +329,7 @@ export default function BlogScreenProtection() {
                 <Card key={index} className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 border-cyan-500/20 backdrop-blur-sm hover:border-cyan-500/40 transition-all">
                   <CardContent className="pt-4 sm:pt-8 text-center p-4 md:p-6">
                     <div className="flex justify-center mb-2 sm:mb-4">
-                      <div className="bg-slate-950 p-2 sm:p-4 rounded-full border border-slate-800">
+                      <div className="bg-brand-dark p-2 sm:p-4 rounded-full border border-slate-800">
                         <Icon className={`w-5 h-5 sm:w-8 sm:h-8 ${stat.color}`} />
                       </div>
                     </div>
@@ -466,14 +466,14 @@ export default function BlogScreenProtection() {
                       loading="lazy"
                     />
                     <div className="absolute top-2 right-2 md:top-3 md:right-3">
-                      <Badge className="bg-slate-950/90 text-cyan-400 border border-cyan-500/30 text-[10px] md:text-sm px-2 py-0.5 md:px-3 md:py-1 font-bold">
+                      <Badge className="bg-brand-dark/90 text-cyan-400 border border-cyan-500/30 text-[10px] md:text-sm px-2 py-0.5 md:px-3 md:py-1 font-bold">
                         {solution.price}
                       </Badge>
                     </div>
                   </div>
                   <CardHeader className="p-4 md:p-6 flex-grow">
                     <div className="flex items-center gap-2 md:gap-3 mb-2 md:mb-3">
-                      <div className="bg-slate-950 border border-slate-800 p-2 md:p-2.5 rounded-lg">
+                      <div className="bg-brand-dark border border-slate-800 p-2 md:p-2.5 rounded-lg">
                         <Icon className="w-4 h-4 md:w-5 md:h-5 text-cyan-400" />
                       </div>
                     </div>
@@ -483,7 +483,7 @@ export default function BlogScreenProtection() {
                       <span className="text-xs sm:text-sm font-bold text-slate-300">{solution.duration}</span>
                     </div>
                   </CardHeader>
-                  <CardContent className="bg-slate-950/30 pt-3 md:pt-4 border-t border-slate-800 p-4 md:p-6">
+                  <CardContent className="bg-brand-dark/30 pt-3 md:pt-4 border-t border-slate-800 p-4 md:p-6">
                     <ul className="space-y-1.5 sm:space-y-2">
                       {solution.benefits.slice(0,3).map((benefit, idx) => (
                         <li key={idx} className="flex items-start gap-1.5 md:gap-2 text-slate-300 text-xs sm:text-sm">
@@ -517,7 +517,7 @@ export default function BlogScreenProtection() {
               <Card key={index} className="scroll-row-item w-[85%] sm:w-auto bg-gradient-to-br from-slate-800/80 to-slate-900/80 border-slate-800 backdrop-blur-sm">
                 <CardHeader className="p-4 sm:p-6">
                   <CardTitle className="text-lg sm:text-2xl text-white mb-2">{brand.brand}</CardTitle>
-                  <Badge className="bg-slate-950 text-slate-400 border border-slate-800 w-fit">{brand.models}</Badge>
+                  <Badge className="bg-brand-dark text-slate-400 border border-slate-800 w-fit">{brand.models}</Badge>
                 </CardHeader>
                 <CardContent className="space-y-3 sm:space-y-4 p-4 sm:p-6 pt-0">
                   <div>

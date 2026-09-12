@@ -159,7 +159,7 @@ const proseClass = 'text-sm leading-7 text-slate-300 sm:text-base';
 
 function CodeBlock({ children }: { children: React.ReactNode }) {
   return (
-    <pre className="min-w-0 max-w-full overflow-x-auto rounded-xl border border-slate-800 bg-slate-950 p-4 text-xs leading-6 text-cyan-200 sm:text-sm">
+    <pre className="min-w-0 max-w-full overflow-x-auto rounded-xl border border-slate-800 bg-brand-dark p-4 text-xs leading-6 text-cyan-200 sm:text-sm">
       <code>{children}</code>
     </pre>
   );
@@ -217,7 +217,7 @@ export default function GameBarPresenceWriterGuide() {
               </div>
               <div className="mt-6 flex flex-wrap gap-2">
                 {toc.map((item) => (
-                  <a key={item.id} href={`#${item.id}`} className="rounded-full border border-slate-800 bg-slate-950/40 px-3 py-1.5 text-[11px] text-slate-400 transition hover:border-cyan-500/50 hover:text-cyan-300">
+                  <a key={item.id} href={`#${item.id}`} className="rounded-full border border-slate-800 bg-brand-dark/40 px-3 py-1.5 text-[11px] text-slate-400 transition hover:border-cyan-500/50 hover:text-cyan-300">
                     {item.label}
                   </a>
                 ))}
@@ -256,7 +256,7 @@ export default function GameBarPresenceWriterGuide() {
         <div className="container mx-auto max-w-5xl">
           <figure className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900">
             <img src={IMAGES.gaming.rgbLighting.src} alt={IMAGES.gaming.rgbLighting.alt} width={IMAGES.gaming.rgbLighting.width} height={IMAGES.gaming.rgbLighting.height} loading="eager" decoding="async" className="h-auto max-h-[420px] w-full object-cover" />
-            <figcaption className="border-t border-slate-800/60 bg-slate-950/80 p-3 text-xs text-slate-400">A high-performance gaming system still needs clean software scheduling, stable drivers, and adequate thermal headroom.</figcaption>
+            <figcaption className="border-t border-slate-800/60 bg-brand-dark/80 p-3 text-xs text-slate-400">A high-performance gaming system still needs clean software scheduling, stable drivers, and adequate thermal headroom.</figcaption>
           </figure>
         </div>
       </section>
@@ -290,7 +290,7 @@ export default function GameBarPresenceWriterGuide() {
           </div>
           <div className="grid gap-4 md:grid-cols-2">
             {symptoms.map((item) => (
-              <div key={item.symptom} className="rounded-2xl border border-slate-800 bg-slate-950/70 p-5">
+              <div key={item.symptom} className="rounded-2xl border border-slate-800 bg-brand-dark/70 p-5">
                 <h3 className="font-bold text-white">{item.symptom}</h3>
                 <p className="mt-2 text-sm leading-6 text-slate-400"><span className="font-semibold text-cyan-300">Likely:</span> {item.likely}</p>
                 <p className="mt-2 text-sm leading-6 text-slate-400"><span className="font-semibold text-emerald-300">Check:</span> {item.check}</p>
@@ -304,7 +304,7 @@ export default function GameBarPresenceWriterGuide() {
               ['Background load', 'Check CPU, disk, network, overlays, and capture activity.', MonitorCog],
             ].map(([title, text, Icon]) => {
               const I = Icon as React.ElementType;
-              return <div key={title as string} className="rounded-2xl border border-slate-800 bg-slate-950 p-5"><I className="h-5 w-5 text-cyan-400" /><h3 className="mt-3 font-bold text-white">{title as string}</h3><p className="mt-2 text-sm leading-6 text-slate-400">{text as string}</p></div>;
+              return <div key={title as string} className="rounded-2xl border border-slate-800 bg-brand-dark p-5"><I className="h-5 w-5 text-cyan-400" /><h3 className="mt-3 font-bold text-white">{title as string}</h3><p className="mt-2 text-sm leading-6 text-slate-400">{text as string}</p></div>;
             })}
           </div>
           <p className="mt-6 max-w-3xl text-sm leading-6 text-slate-400">
@@ -349,21 +349,21 @@ export default function GameBarPresenceWriterGuide() {
           </p>
           <div className="mt-6 grid gap-6 lg:grid-cols-2">
             <div className="min-w-0 space-y-5">
-              <div className="rounded-2xl border border-slate-800 bg-slate-950 p-5">
+              <div className="rounded-2xl border border-slate-800 bg-brand-dark p-5">
                 <h3 className="font-bold text-white">1. Back up before editing</h3>
                 <p className="mt-2 text-sm leading-6 text-slate-400">Create a restore point and export both affected registry areas. Write down the original value of <code className="text-cyan-300">GameDVR_Enabled</code> so the test is reversible.</p>
               </div>
-              <div className="rounded-2xl border border-slate-800 bg-slate-950 p-5">
+              <div className="rounded-2xl border border-slate-800 bg-brand-dark p-5">
                 <h3 className="font-bold text-white">2. Disable the current-user Game DVR setting</h3>
                 <CodeBlock>{'HKEY_CURRENT_USER\\System\\GameConfigStore'}</CodeBlock>
                 <p className="mt-3 text-sm leading-6 text-slate-400">Locate <code className="text-cyan-300">GameDVR_Enabled</code> and set its value data to <code className="text-cyan-300">0</code>.</p>
               </div>
-              <div className="rounded-2xl border border-slate-800 bg-slate-950 p-5">
+              <div className="rounded-2xl border border-slate-800 bg-brand-dark p-5">
                 <h3 className="font-bold text-white">3. Set the Game DVR policy</h3>
                 <CodeBlock>{'HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows'}</CodeBlock>
                 <p className="mt-3 text-sm leading-6 text-slate-400">Create a key named <code className="text-cyan-300">GameDVR</code>. Inside it, create a <strong>DWORD (32-bit) Value</strong> named <code className="text-cyan-300">AllowGameDVR</code> and set it to <code className="text-cyan-300">0</code>.</p>
               </div>
-              <div className="rounded-2xl border border-slate-800 bg-slate-950 p-5">
+              <div className="rounded-2xl border border-slate-800 bg-brand-dark p-5">
                 <h3 className="font-bold text-white">4. Restart and measure</h3>
                 <p className="mt-2 text-sm leading-6 text-slate-400">Restart Windows, reproduce the same workload, and compare frame-time, FPS, CPU/GPU utilization, disk activity, temperatures, and clock speeds. Keep the change only if it produces a repeatable improvement without breaking a capture feature you need.</p>
               </div>
@@ -397,19 +397,19 @@ export default function GameBarPresenceWriterGuide() {
           </p>
           <div className="mt-6 grid gap-6 lg:grid-cols-[1.05fr_.95fr]">
             <div className="min-w-0 space-y-5">
-              <div className="rounded-2xl border border-slate-800 bg-slate-950 p-5">
+              <div className="rounded-2xl border border-slate-800 bg-brand-dark p-5">
                 <h3 className="font-bold text-white">1. Back up the key first</h3>
                 <p className="mt-2 text-sm leading-6 text-slate-400">Create a restore point and export the registry key before changing permissions or values.</p>
               </div>
-              <div className="rounded-2xl border border-slate-800 bg-slate-950 p-5">
+              <div className="rounded-2xl border border-slate-800 bg-brand-dark p-5">
                 <h3 className="font-bold text-white">2. Navigate to the ActivatableClassId</h3>
                 <CodeBlock>{registryPath}</CodeBlock>
               </div>
-              <div className="rounded-2xl border border-slate-800 bg-slate-950 p-5">
+              <div className="rounded-2xl border border-slate-800 bg-brand-dark p-5">
                 <h3 className="font-bold text-white">3. Change permissions only if necessary</h3>
                 <p className="mt-2 text-sm leading-6 text-slate-400">If the key is owned by TrustedInstaller and your build blocks modification, do not blindly replace ownership. Export the key first, understand the recovery path, and change only the minimum permission required.</p>
               </div>
-              <div className="rounded-2xl border border-slate-800 bg-slate-950 p-5">
+              <div className="rounded-2xl border border-slate-800 bg-brand-dark p-5">
                 <h3 className="font-bold text-white">4. Test the ActivationType value</h3>
                 <p className="mt-2 text-sm leading-6 text-slate-400">If your Windows build exposes the documented DWORD as <code className="text-cyan-300">ActivationType</code>, record its original value before testing an alternative. Do not assume a value of 0 or 1 is universal across every Windows release.</p>
               </div>
@@ -452,7 +452,7 @@ export default function GameBarPresenceWriterGuide() {
               ['Useful for', 'A quick before/after experiment.', CheckCircle2],
               ['Not proof of', 'A permanent Windows configuration change.', CircleHelp],
               ['If it returns', 'Investigate its activation path instead of repeatedly killing it.', RotateCcw],
-            ].map(([title, text, Icon]) => { const I = Icon as React.ElementType; return <div key={title as string} className="rounded-2xl border border-slate-800 bg-slate-950 p-5"><I className="h-5 w-5 text-cyan-400" /><h3 className="mt-3 font-bold text-white">{title as string}</h3><p className="mt-2 text-sm leading-6 text-slate-400">{text as string}</p></div>; })}
+            ].map(([title, text, Icon]) => { const I = Icon as React.ElementType; return <div key={title as string} className="rounded-2xl border border-slate-800 bg-brand-dark p-5"><I className="h-5 w-5 text-cyan-400" /><h3 className="mt-3 font-bold text-white">{title as string}</h3><p className="mt-2 text-sm leading-6 text-slate-400">{text as string}</p></div>; })}
           </div>
         </div>
       </section>
@@ -490,7 +490,7 @@ export default function GameBarPresenceWriterGuide() {
                 When Kuwait's summer ambient temperature climbs into the mid-40s°C or higher, a gaming PC, laptop, or Windows handheld starts with far less thermal headroom before it even loads a game — and that gap widens further when filters are dusty, heatsinks are clogged, fans are degraded, or thermal interfaces have aged. If performance degrades as the system heats up, prioritize cooling and hardware diagnostics over registry tweaking.
               </p>
               <div className="mt-5 flex flex-wrap gap-2 text-xs text-slate-400">
-                {['Ambient 45–50°C in summer', 'Thermal throttling', 'Dust buildup', 'Aged thermal paste', 'VRM instability', 'GPU memory errors', 'Power-limit behavior'].map((x) => <span key={x} className="rounded-full border border-slate-800 bg-slate-950 px-3 py-1.5">{x}</span>)}
+                {['Ambient 45–50°C in summer', 'Thermal throttling', 'Dust buildup', 'Aged thermal paste', 'VRM instability', 'GPU memory errors', 'Power-limit behavior'].map((x) => <span key={x} className="rounded-full border border-slate-800 bg-brand-dark px-3 py-1.5">{x}</span>)}
               </div>
             </div>
             <div className="rounded-2xl border border-orange-500/20 bg-orange-500/5 p-6">
@@ -545,7 +545,7 @@ export default function GameBarPresenceWriterGuide() {
       </section>
 
       {/* ─── LAST REVIEWED / AUTHOR (E-E-A-T signal) ─── */}
-      <section className="border-t border-slate-900 bg-slate-950/60">
+      <section className="border-t border-slate-900 bg-brand-dark/60">
         <div className="mx-auto max-w-4xl px-4 py-10 text-xs sm:text-sm text-slate-500 sm:px-6">
           <p>
             <strong className="text-slate-300">Last reviewed:</strong> {LAST_REVIEWED} by{' '}

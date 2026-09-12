@@ -31,7 +31,7 @@ export default function CaseStudiesIndex() {
                 to={`/case-studies/${study.slug}`}
                 className="group bg-slate-900/40 backdrop-blur-xl border border-slate-800 rounded-3xl overflow-hidden hover:border-cyan-500/50 transition-all duration-300 hover:-translate-y-1 flex flex-col"
               >
-                <div className="h-48 bg-slate-950 border-b border-slate-800 relative overflow-hidden">
+                <div className="h-48 bg-brand-dark border-b border-slate-800 relative overflow-hidden">
                   {study.featuredImage?.thumbnail ? (
                     <img
                       src={study.featuredImage.thumbnail.webp}
@@ -42,7 +42,7 @@ export default function CaseStudiesIndex() {
                   ) : (
                     <div className="absolute inset-0 bg-gradient-to-br from-slate-800 to-slate-900 group-hover:scale-105 transition-transform duration-500" />
                   )}
-                  <div className="absolute bottom-4 left-4 bg-slate-950/80 backdrop-blur-md border border-slate-700 px-3 py-1 rounded-full text-xs font-bold text-cyan-400 uppercase">
+                  <div className="absolute bottom-4 left-4 bg-brand-dark/80 backdrop-blur-md border border-slate-700 px-3 py-1 rounded-full text-xs font-bold text-cyan-400 uppercase">
                     {study.deviceCategory?.replace('-', ' ') || 'Hardware Repair'}
                   </div>
                 </div>

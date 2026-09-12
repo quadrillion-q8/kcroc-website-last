@@ -35,7 +35,7 @@ export default function BrandsIndex() {
                 to={`/${brand.slug}`}
                 className="group block bg-slate-900 border border-slate-800 rounded-2xl p-8 hover:border-cyan-500/50 hover:bg-slate-800/50 transition-all duration-300"
               >
-                <div className="w-14 h-14 bg-slate-950 border border-slate-800 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 mb-6">
+                <div className="w-14 h-14 bg-brand-dark border border-slate-800 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 mb-6">
                   <Cpu className="w-7 h-7 text-cyan-400" />
                 </div>
 

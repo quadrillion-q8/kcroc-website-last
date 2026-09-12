@@ -434,7 +434,7 @@ export default function Pricing() {
 
       <section className="px-4 pb-12 sm:px-6 sm:pb-16">
         <div className="mx-auto max-w-6xl overflow-hidden rounded-3xl border border-slate-800 bg-slate-900/45 shadow-2xl shadow-black/20 backdrop-blur-xl">
-          <div className="border-b border-slate-800 bg-slate-950/50 px-5 py-5 sm:px-8">
+          <div className="border-b border-slate-800 bg-brand-dark/50 px-5 py-5 sm:px-8">
             <div className="flex items-center gap-3">
               <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-emerald-500/20 bg-emerald-500/10">
                 <ShieldCheck
@@ -651,7 +651,7 @@ export default function Pricing() {
                   <CardHeader className="border-b border-slate-800/70 p-5 sm:p-6">
                     <div className="flex items-start justify-between gap-4">
                       <div className="flex items-start gap-3">
-                        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-slate-800 bg-slate-950">
+                        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-slate-800 bg-brand-dark">
                           <Icon
                             className="h-5 w-5 text-cyan-400"
                             aria-hidden="true"
@@ -682,7 +682,7 @@ export default function Pricing() {
                       {category.items.map((item) => (
                         <li
                           key={item.name}
-                          className="flex items-start justify-between gap-4 p-5 transition-colors hover:bg-slate-950/30 sm:p-6"
+                          className="flex items-start justify-between gap-4 p-5 transition-colors hover:bg-brand-dark/30 sm:p-6"
                         >
                           <div className="min-w-0 flex-1">
                             <div className="flex items-start gap-2">
@@ -773,7 +773,7 @@ export default function Pricing() {
 
       <section
         aria-labelledby="price-factors-heading"
-        className="border-y border-slate-800/70 bg-slate-950/35 px-4 py-16 sm:px-6 sm:py-20"
+        className="border-y border-slate-800/70 bg-brand-dark/35 px-4 py-16 sm:px-6 sm:py-20"
       >
         <div className="mx-auto max-w-6xl">
           <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
@@ -897,7 +897,7 @@ export default function Pricing() {
                 </div>
               </div>
 
-              <div className="border-t border-slate-800 bg-slate-950/50 p-6 sm:p-9 lg:border-l lg:border-t-0 lg:p-12">
+              <div className="border-t border-slate-800 bg-brand-dark/50 p-6 sm:p-9 lg:border-l lg:border-t-0 lg:p-12">
                 <div className="flex h-full flex-col justify-center">
                   <div className="flex items-center gap-3">
                     <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-cyan-500/20 bg-cyan-500/10">
@@ -1218,7 +1218,7 @@ export default function Pricing() {
                   to={link.path}
                   className="group rounded-2xl border border-slate-800 bg-slate-900/35 p-5 transition-all hover:-translate-y-1 hover:border-cyan-500/40 hover:bg-slate-900/60 sm:p-6"
                 >
-                  <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-slate-800 bg-slate-950">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-slate-800 bg-brand-dark">
                     <Icon
                       className="h-5 w-5 text-cyan-500"
                       aria-hidden="true"
@@ -1284,7 +1284,7 @@ export default function Pricing() {
             <Button
               asChild
               variant="outline"
-              className="h-12 rounded-xl border-slate-700 bg-slate-950/50 px-7 font-bold text-white hover:border-cyan-500/40 hover:bg-slate-950"
+              className="h-12 rounded-xl border-slate-700 bg-brand-dark/50 px-7 font-bold text-white hover:border-cyan-500/40 hover:bg-brand-dark"
             >
               <a href={`tel:+${business.telephone}`}>
                 Call +{business.telephone}

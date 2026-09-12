@@ -281,7 +281,7 @@ export default function Windows10EndOfSupportGuide() {
             </div>
           </Section>
 
-          <section className="mt-12 rounded-3xl border border-cyan-500/30 bg-gradient-to-br from-slate-900 to-slate-950 p-7 md:p-10">
+          <section className="mt-12 rounded-3xl border border-cyan-500/30 bg-gradient-to-br from-slate-900 to-brand-dark p-7 md:p-10">
             <h2 className="text-3xl font-black mb-4">Windows 10 upgrade and computer repair help in Kuwait</h2>
             <p className="text-lg text-slate-300 leading-8 mb-6">
               If you are unsure whether to upgrade, repair, or replace your PC, KCROC can check the actual hardware, Windows 11 compatibility, TPM/Secure Boot configuration, storage health, RAM, Windows Update, and the economics of repair before you spend money.

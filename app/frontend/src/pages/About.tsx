@@ -73,7 +73,7 @@ export default function About() {
 
       {/* ─── HERO SECTION (Technical Noir Aesthetic) ─── */}
       <section className="relative pt-8 sm:pt-16 lg:pt-24 pb-8 sm:pb-24 px-4 sm:px-6 overflow-hidden border-b border-slate-900">
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-gray-950 to-slate-950" />
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-gray-950 to-brand-dark" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_20%,rgba(34,211,238,0.05),transparent_50%)]" />
         
         {/* Breadcrumbs */}
@@ -133,7 +133,7 @@ export default function About() {
             <Card key={stat.label} className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 border-cyan-500/20 backdrop-blur-sm hover:border-cyan-500/40 transition-all">
               <CardContent className="pt-6 sm:pt-8 text-center p-4 sm:p-6">
                 <div className="flex justify-center mb-2 sm:mb-4">
-                  <div className="bg-slate-950 p-3 sm:p-4 rounded-full border border-slate-800">
+                  <div className="bg-brand-dark p-3 sm:p-4 rounded-full border border-slate-800">
                     <stat.icon className="w-6 h-6 sm:w-8 sm:h-8 text-cyan-400" aria-hidden="true" /> 
                   </div>
                 </div>
@@ -196,16 +196,16 @@ export default function About() {
                     loading="lazy"
                     onError={(e) => { e.currentTarget.src = `https://ui-avatars.com/api/?name=${member.fallback}&size=300&background=06b6d4&color=0A0A0A&bold=true&format=png`; }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent opacity-90" aria-hidden="true" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/40 to-transparent opacity-90" aria-hidden="true" />
                   <div className="absolute bottom-6 sm:bottom-8 left-6 sm:left-8">
-                    <span className="bg-slate-950/80 backdrop-blur-sm text-cyan-400 border border-cyan-500/30 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-[10px] sm:text-xs font-black uppercase tracking-widest shadow-[0_0_10px_rgba(34,211,238,0.1)]">
+                    <span className="bg-brand-dark/80 backdrop-blur-sm text-cyan-400 border border-cyan-500/30 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-[10px] sm:text-xs font-black uppercase tracking-widest shadow-[0_0_10px_rgba(34,211,238,0.1)]">
                       {member.role}
                     </span>
                     {/* FIXED H3: Scaled to 20px (text-xl) on mobile */}
                     <h3 className="text-xl sm:text-3xl font-black text-white mt-3 sm:mt-4 tracking-tight">{member.name}</h3>
                   </div>
                 </div>
-                <div className="p-6 sm:p-10 bg-slate-950/50 flex-grow flex flex-col">
+                <div className="p-6 sm:p-10 bg-brand-dark/50 flex-grow flex flex-col">
                   <p className="text-slate-400 text-xs sm:text-base leading-relaxed mb-6 sm:mb-8 flex-grow">{member.bio}</p>
                   <div className="flex flex-wrap gap-2">
                     {member.skills.map((skill) => (
@@ -234,7 +234,7 @@ export default function About() {
             {values.map((v) => (
               <Card key={v.title} className="scroll-row-item w-[85%] sm:w-auto bg-slate-900/30 backdrop-blur-md border border-slate-800 hover:border-cyan-500/30 transition-all text-left">
                 <CardHeader className="p-5 sm:p-6">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-slate-950 rounded-xl flex items-center justify-center mb-4 sm:mb-6 border border-slate-800 shrink-0">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-brand-dark rounded-xl flex items-center justify-center mb-4 sm:mb-6 border border-slate-800 shrink-0">
                     <v.icon className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-400" aria-hidden="true" />
                   </div>
                   {/* FIXED H3: Scaled to 18px (text-lg) on mobile */}

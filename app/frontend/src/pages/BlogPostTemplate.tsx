@@ -174,7 +174,7 @@ const RichBlock: React.FC<{ block: ContentBlock; headingRef?: (el: HTMLElement |
           <ol className="relative border-l border-slate-800 pl-6 space-y-6">
             {block.steps.map((step, i) => (
               <li key={i} className="relative">
-                <span className="absolute -left-[31px] top-1 w-3.5 h-3.5 rounded-full bg-cyan-500 ring-4 ring-slate-950" aria-hidden="true" />
+                <span className="absolute -left-[31px] top-1 w-3.5 h-3.5 rounded-full bg-cyan-500 ring-4 ring-brand-dark" aria-hidden="true" />
                 <p className="font-bold text-white">{step.label}</p>
                 {step.note && <p className="text-sm text-slate-400 mt-0.5">{step.note}</p>}
               </li>

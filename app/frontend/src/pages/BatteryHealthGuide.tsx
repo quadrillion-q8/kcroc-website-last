@@ -431,7 +431,7 @@ export default function BatteryHealthGuide() {
               </div>
               <div className="mt-6 flex flex-wrap gap-2">
                 {toc.map((item) => (
-                  <a key={item.id} href={`#${item.id}`} className="rounded-full border border-slate-800 bg-slate-950/40 px-3 py-1.5 text-[11px] text-slate-400 transition hover:border-cyan-500/50 hover:text-cyan-300">
+                  <a key={item.id} href={`#${item.id}`} className="rounded-full border border-slate-800 bg-brand-dark/40 px-3 py-1.5 text-[11px] text-slate-400 transition hover:border-cyan-500/50 hover:text-cyan-300">
                     {item.label}
                   </a>
                 ))}
@@ -471,7 +471,7 @@ export default function BatteryHealthGuide() {
           </div>
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
             {quickSigns.map((sign, i) => (
-              <div key={sign} className={`rounded-xl border p-4 ${i === 5 || i === 6 ? 'border-red-500/30 bg-red-500/5' : 'border-slate-800 bg-slate-950/50'}`}>
+              <div key={sign} className={`rounded-xl border p-4 ${i === 5 || i === 6 ? 'border-red-500/30 bg-red-500/5' : 'border-slate-800 bg-brand-dark/50'}`}>
                 <div className={`mb-3 flex h-8 w-8 items-center justify-center rounded-lg text-sm font-bold ${i === 5 || i === 6 ? 'bg-red-500/15 text-red-300' : 'bg-cyan-500/10 text-cyan-300'}`}>
                   {i + 1}
                 </div>
@@ -531,7 +531,7 @@ export default function BatteryHealthGuide() {
               const Icon = sign.icon;
               const urgent = index === 2 || index === 5 || index === 6 || index === 9;
               return (
-                <article key={sign.title} className={`rounded-2xl border p-5 transition hover:border-slate-700 sm:p-6 ${urgent ? 'border-red-500/25 bg-red-500/[0.035]' : 'border-slate-800 bg-slate-950/40'}`}>
+                <article key={sign.title} className={`rounded-2xl border p-5 transition hover:border-slate-700 sm:p-6 ${urgent ? 'border-red-500/25 bg-red-500/[0.035]' : 'border-slate-800 bg-brand-dark/40'}`}>
                   <div className="flex items-start gap-4">
                     <div className={`${sign.bgColor} shrink-0 rounded-xl p-3`}>
                       <Icon className={`h-5 w-5 ${sign.color}`} aria-hidden="true" />
@@ -607,7 +607,7 @@ export default function BatteryHealthGuide() {
                 </div>
                 <h3 className="text-base sm:text-lg font-bold text-white">Windows 11: Battery Report</h3>
               </div>
-              <div className="bg-slate-950/60 p-4 rounded-xl border border-slate-800/60 mb-4">
+              <div className="bg-brand-dark/60 p-4 rounded-xl border border-slate-800/60 mb-4">
                 <span className="block text-[10px] sm:text-xs text-indigo-400 font-bold uppercase tracking-wider mb-2">Steps:</span>
                 <ol className="list-decimal list-inside text-xs sm:text-sm text-slate-300 space-y-2">
                   <li>Open <strong>Command Prompt</strong> or <strong>Terminal</strong>.</li>
@@ -636,7 +636,7 @@ export default function BatteryHealthGuide() {
                 </div>
                 <h3 className="text-base sm:text-lg font-bold text-white">MacBook: Battery Health</h3>
               </div>
-              <div className="bg-slate-950/60 p-4 rounded-xl border border-slate-800/60 mb-4">
+              <div className="bg-brand-dark/60 p-4 rounded-xl border border-slate-800/60 mb-4">
                 <span className="block text-[10px] sm:text-xs text-slate-300 font-bold uppercase tracking-wider mb-2">Steps:</span>
                 <ol className="list-decimal list-inside text-xs sm:text-sm text-slate-300 space-y-2">
                   <li>Open <strong>System Settings</strong>.</li>
@@ -812,7 +812,7 @@ export default function BatteryHealthGuide() {
                 </div>
                 <h3 className="text-base sm:text-lg font-bold text-white">Two Settings Worth Checking</h3>
               </div>
-              <div className="bg-slate-950/60 p-4 rounded-xl border border-slate-800/60 mb-4">
+              <div className="bg-brand-dark/60 p-4 rounded-xl border border-slate-800/60 mb-4">
                 <span className="block text-[10px] sm:text-xs text-indigo-400 font-bold uppercase tracking-wider mb-2">Set lid-close to Hibernate:</span>
                 <ol className="list-decimal list-inside text-xs sm:text-sm text-slate-300 space-y-2">
                   <li>Open the Start Menu and type <strong>"Lid"</strong>.</li>
@@ -820,7 +820,7 @@ export default function BatteryHealthGuide() {
                   <li>Under "On battery", set it to <strong>"Hibernate"</strong> and save.</li>
                 </ol>
               </div>
-              <div className="bg-slate-950/60 p-4 rounded-xl border border-slate-800/60">
+              <div className="bg-brand-dark/60 p-4 rounded-xl border border-slate-800/60">
                 <span className="block text-[10px] sm:text-xs text-orange-400 font-bold uppercase tracking-wider mb-2">Disable Wi-Fi wake-on-LAN:</span>
                 <ol className="list-decimal list-inside text-xs sm:text-sm text-slate-300 space-y-2">
                   <li>Open Start, type <strong>"Device Manager"</strong>.</li>
@@ -983,7 +983,7 @@ export default function BatteryHealthGuide() {
           </div>
           <div className="space-y-3">
             {faq.map((item, index) => (
-              <details key={item.q} className="group rounded-xl border border-slate-800 bg-slate-950/40 p-4 open:border-cyan-500/30 open:bg-slate-900/60 sm:p-5" open={index === 0}>
+              <details key={item.q} className="group rounded-xl border border-slate-800 bg-brand-dark/40 p-4 open:border-cyan-500/30 open:bg-slate-900/60 sm:p-5" open={index === 0}>
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-sm font-bold text-white sm:text-base">
                   <span>{item.q}</span>
                   <ChevronRight className="h-5 w-5 shrink-0 text-slate-500 transition-transform group-open:rotate-90 group-open:text-cyan-400" />

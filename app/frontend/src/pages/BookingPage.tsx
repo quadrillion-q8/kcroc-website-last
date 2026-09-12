@@ -77,7 +77,7 @@ export default function BookingPage() {
   };
 
   return (
-    <main className="w-full min-h-screen bg-slate-950 text-slate-100 font-sans pt-24 pb-16">
+    <main className="w-full min-h-screen bg-brand-dark text-slate-100 font-sans pt-24 pb-16">
       
       {/* SEOEngine (driven by the 'page-booking' graph entity) is the single authority
           for title/meta/canonical/WebPage/BreadcrumbList on this page. SchemaMarkup below
@@ -120,7 +120,7 @@ export default function BookingPage() {
                         className={`p-3 text-sm font-semibold rounded-xl border transition-all ${
                           deviceType === type 
                             ? 'bg-cyan-500/10 border-cyan-500 text-cyan-400 scale-[1.02]' 
-                            : 'bg-slate-950 border-slate-800 text-slate-400 hover:border-slate-600'
+                            : 'bg-brand-dark border-slate-800 text-slate-400 hover:border-slate-600'
                         }`}
                       >
                         {type}
@@ -137,7 +137,7 @@ export default function BookingPage() {
                   </label>
                   <textarea 
                     rows={3}
-                    className="w-full bg-slate-950 border border-slate-800 rounded-xl p-4 text-slate-200 placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 transition-shadow"
+                    className="w-full bg-brand-dark border border-slate-800 rounded-xl p-4 text-slate-200 placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 transition-shadow"
                     placeholder="e.g., Spilled water on it, won't turn on, overheating..."
                     value={issue}
                     onChange={(e) => setIssue(e.target.value)}
@@ -154,7 +154,7 @@ export default function BookingPage() {
                     <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500" />
                     <input 
                       type="text"
-                      className="w-full bg-slate-950 border border-slate-800 rounded-xl py-4 pl-12 pr-4 text-slate-200 placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 transition-shadow"
+                      className="w-full bg-brand-dark border border-slate-800 rounded-xl py-4 pl-12 pr-4 text-slate-200 placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 transition-shadow"
                       placeholder="e.g., Salmiya, Hawalli, Kuwait City..."
                       value={location}
                       onChange={(e) => setLocation(e.target.value)}

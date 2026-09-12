@@ -21,7 +21,7 @@ export default function Services() {
     <>
       <SEOEngine entityId="page-services" />
 
-      <main className="min-h-screen bg-slate-950 text-white pt-32 pb-24">
+      <main className="min-h-screen bg-brand-dark text-white pt-32 pb-24">
         <div className="max-w-7xl mx-auto px-6">
           
           <header className="mb-16 text-center lg:text-left">
@@ -43,7 +43,7 @@ export default function Services() {
                   className="group block bg-slate-900 border border-slate-800 rounded-2xl p-8 hover:border-emerald-500/50 hover:bg-slate-800/50 transition-all duration-300"
                 >
                   <div className="flex items-start justify-between mb-6">
-                    <div className="w-14 h-14 bg-slate-950 border border-slate-800 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-14 h-14 bg-brand-dark border border-slate-800 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                       <ServiceIcon className="w-7 h-7 text-emerald-500" />
                     </div>
                     {service.pricing?.displayLabel && (

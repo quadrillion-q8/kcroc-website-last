@@ -66,7 +66,7 @@ export default function NearMeAR() {
 
       {/* Hero */}
       <section className="relative overflow-hidden border-b border-slate-800 px-4 pb-14 pt-10 sm:px-6 sm:pb-24 sm:pt-16 lg:pt-24">
-        <div className="absolute inset-0 bg-gradient-to-bl from-slate-950 via-slate-900 to-slate-950" />
+        <div className="absolute inset-0 bg-gradient-to-bl from-brand-dark via-slate-900 to-brand-dark" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_15%,rgba(34,211,238,0.10),transparent_45%)]" />
         <div className="relative z-10 mx-auto max-w-6xl">
           <nav aria-label="Breadcrumb" className="mb-8 text-xs font-medium text-slate-400 sm:text-sm">
@@ -112,7 +112,7 @@ export default function NearMeAR() {
                 loading="eager"
                 className="h-72 w-full object-cover sm:h-80"
               />
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent px-5 pb-5 pt-16">
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-brand-dark via-brand-dark/80 to-transparent px-5 pb-5 pt-16">
                 <p className="text-sm font-bold text-white">مختبر حولي المركزي</p>
                 <p className="mt-1 text-xs text-slate-300">نفحص ونصلح الأجهزة في مختبرنا بحولي، باستخدام معدات تشخيص متخصصة وأدوات إصلاح دقيقة.</p>
               </div>
@@ -137,7 +137,7 @@ export default function NearMeAR() {
               { icon: BadgeCheck, title: 'خصوصية بياناتك تهمّنا', desc: 'نركّز على فحص الجهاز وإصلاح العطل فقط، وفنيونا لا يحتاجون إلى فتح ملفاتك الشخصية أثناء الإصلاح.' },
             ].map((usp) => (
               <div key={usp.title} className="rounded-2xl border border-slate-800 bg-slate-900/50 p-5">
-                <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl border border-slate-700 bg-slate-950 text-cyan-400"><usp.icon className="h-5 w-5" aria-hidden="true" /></div>
+                <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl border border-slate-700 bg-brand-dark text-cyan-400"><usp.icon className="h-5 w-5" aria-hidden="true" /></div>
                 <h3 className="font-bold text-white">{usp.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-slate-400">{usp.desc}</p>
               </div>
@@ -156,7 +156,7 @@ export default function NearMeAR() {
           </div>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {AREAS_AR.map((area) => (
-              <Link key={area.slug} to={`/location/${area.slug}`} className="group rounded-2xl border border-slate-800 bg-slate-950/70 p-5 transition hover:border-cyan-500/50 hover:bg-slate-900">
+              <Link key={area.slug} to={`/location/${area.slug}`} className="group rounded-2xl border border-slate-800 bg-brand-dark/70 p-5 transition hover:border-cyan-500/50 hover:bg-slate-900">
                 <div className="flex items-start justify-between gap-4">
                   <div>
                     <div className="flex items-center gap-2 text-cyan-400"><MapPin className="h-4 w-4" aria-hidden="true" /><span className="text-xs font-bold uppercase tracking-wider">منطقة خدمة</span></div>
@@ -184,7 +184,7 @@ export default function NearMeAR() {
             {SERVICES_AR.map((service) => (
               <Link key={service.slug} to={`/${service.slug}`} className="group rounded-2xl border border-slate-800 bg-slate-900/40 p-5 transition hover:border-cyan-500/40 hover:bg-slate-900">
                 <div className="flex items-start gap-4">
-                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-slate-700 bg-slate-950 text-cyan-400"><service.icon className="h-5 w-5" aria-hidden="true" /></div>
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-slate-700 bg-brand-dark text-cyan-400"><service.icon className="h-5 w-5" aria-hidden="true" /></div>
                   <div><h3 className="font-bold text-white group-hover:text-cyan-300">{service.title}</h3><p className="mt-1 text-sm leading-relaxed text-slate-400">{service.description}</p></div>
                 </div>
               </Link>
@@ -206,7 +206,7 @@ export default function NearMeAR() {
               ['٢', 'نستلم جهازك', 'نرتب لك استلامًا مجانيًا من المنزل أو المكتب في أي منطقة بالكويت، ويصل الجهاز إلى مختبرنا في حولي.'],
               ['٣', 'نفحص، نصلح، ونسلّمك الجهاز', 'نفحص الجهاز ونحدد العطل، ونوضح لك تكلفة الإصلاح قبل البدء. بعد موافقتك ننفّذ الإصلاح، نختبر الجهاز، ثم نرتّب توصيله إليك.'],
             ].map(([number, title, text]) => (
-              <div key={number} className="rounded-2xl border border-slate-800 bg-slate-950/70 p-6">
+              <div key={number} className="rounded-2xl border border-slate-800 bg-brand-dark/70 p-6">
                 <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-cyan-500 font-black text-slate-950">{number}</div>
                 <h3 className="text-lg font-bold text-white">{title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-slate-400">{text}</p>
@@ -233,7 +233,7 @@ export default function NearMeAR() {
           </div>
           <div className="space-y-3">
             {faqs.map((faq) => faq && (
-              <details key={faq.id} className="group rounded-2xl border border-slate-800 bg-slate-950/70 p-5">
+              <details key={faq.id} className="group rounded-2xl border border-slate-800 bg-brand-dark/70 p-5">
                 <summary className="cursor-pointer list-none pl-8 font-bold text-white marker:hidden">
                   {faq.title}
                   <span className="float-left text-cyan-400 group-open:rotate-45">+</span>

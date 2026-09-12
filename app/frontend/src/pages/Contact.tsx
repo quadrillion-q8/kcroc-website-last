@@ -112,12 +112,12 @@ export default function Contact() {
             <h2 className="text-2xl font-black mb-6">Send us a Message</h2>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
-                <input name="name" value={formData.name} onChange={handleInputChange} required placeholder="Full Name" className="w-full bg-slate-950/50 border border-slate-700 px-4 py-3 rounded-xl focus:outline-none focus:border-cyan-500 transition-colors" />
-                <input name="phone" value={formData.phone} onChange={handleInputChange} required placeholder="+965 XXXX XXXX" className="w-full bg-slate-950/50 border border-slate-700 px-4 py-3 rounded-xl focus:outline-none focus:border-cyan-500 transition-colors" />
+                <input name="name" value={formData.name} onChange={handleInputChange} required placeholder="Full Name" className="w-full bg-brand-dark/50 border border-slate-700 px-4 py-3 rounded-xl focus:outline-none focus:border-cyan-500 transition-colors" />
+                <input name="phone" value={formData.phone} onChange={handleInputChange} required placeholder="+965 XXXX XXXX" className="w-full bg-brand-dark/50 border border-slate-700 px-4 py-3 rounded-xl focus:outline-none focus:border-cyan-500 transition-colors" />
               </div>
-              <input name="email" type="email" value={formData.email} onChange={handleInputChange} placeholder="Email" className="w-full bg-slate-950/50 border border-slate-700 px-4 py-3 rounded-xl focus:outline-none focus:border-cyan-500 transition-colors" />
-              <input name="subject" value={formData.subject} onChange={handleInputChange} required placeholder="Subject" className="w-full bg-slate-950/50 border border-slate-700 px-4 py-3 rounded-xl focus:outline-none focus:border-cyan-500 transition-colors" />
-              <textarea name="message" value={formData.message} onChange={handleInputChange} required rows={5} placeholder="Message" className="w-full bg-slate-950/50 border border-slate-700 px-4 py-3 rounded-xl focus:outline-none focus:border-cyan-500 transition-colors resize-none" />
+              <input name="email" type="email" value={formData.email} onChange={handleInputChange} placeholder="Email" className="w-full bg-brand-dark/50 border border-slate-700 px-4 py-3 rounded-xl focus:outline-none focus:border-cyan-500 transition-colors" />
+              <input name="subject" value={formData.subject} onChange={handleInputChange} required placeholder="Subject" className="w-full bg-brand-dark/50 border border-slate-700 px-4 py-3 rounded-xl focus:outline-none focus:border-cyan-500 transition-colors" />
+              <textarea name="message" value={formData.message} onChange={handleInputChange} required rows={5} placeholder="Message" className="w-full bg-brand-dark/50 border border-slate-700 px-4 py-3 rounded-xl focus:outline-none focus:border-cyan-500 transition-colors resize-none" />
               <button type="submit" disabled={isSubmitting} className="w-full bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black py-4 rounded-xl flex items-center justify-center gap-2 transition-colors disabled:opacity-70 disabled:cursor-not-allowed">
                 {isSubmitting ? (
                   <><Loader2 className="animate-spin" size={20} /> Sending...</>

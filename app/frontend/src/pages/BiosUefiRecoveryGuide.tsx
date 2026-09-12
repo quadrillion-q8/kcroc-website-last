@@ -187,7 +187,7 @@ export default function BiosUefiRecoveryGuide() {
               </div>
               <div className="mt-6 flex flex-wrap gap-2">
                 {toc.map((item) => (
-                  <a key={item.id} href={`#${item.id}`} className="rounded-full border border-slate-800 bg-slate-950/40 px-3 py-1.5 text-[11px] text-slate-400 transition hover:border-cyan-500/50 hover:text-cyan-300">
+                  <a key={item.id} href={`#${item.id}`} className="rounded-full border border-slate-800 bg-brand-dark/40 px-3 py-1.5 text-[11px] text-slate-400 transition hover:border-cyan-500/50 hover:text-cyan-300">
                     {item.label}
                   </a>
                 ))}
@@ -233,7 +233,7 @@ export default function BiosUefiRecoveryGuide() {
               decoding="async"
               className="w-full h-auto max-h-[420px] object-cover"
             />
-            <figcaption className="p-3 text-xs text-slate-400 bg-slate-950/80 border-t border-slate-800/60">
+            <figcaption className="p-3 text-xs text-slate-400 bg-brand-dark/80 border-t border-slate-800/60">
               Hardware-level firmware diagnostics and motherboard circuit analysis.
             </figcaption>
           </figure>
@@ -252,7 +252,7 @@ export default function BiosUefiRecoveryGuide() {
             {decisionTree.map((item) => {
               const Icon = item.icon;
               return (
-                <a key={item.prompt} href={item.anchor} className="group flex items-start gap-4 rounded-2xl border border-slate-800 bg-slate-950/50 p-5 transition hover:border-cyan-500/40 hover:bg-slate-900/60">
+                <a key={item.prompt} href={item.anchor} className="group flex items-start gap-4 rounded-2xl border border-slate-800 bg-brand-dark/50 p-5 transition hover:border-cyan-500/40 hover:bg-slate-900/60">
                   <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-300">
                     <Icon className="h-5 w-5" aria-hidden="true" />
                   </div>
@@ -342,7 +342,7 @@ export default function BiosUefiRecoveryGuide() {
             </figure>
           </div>
 
-          <div className="mt-6 sm:mt-8 rounded-2xl border border-slate-800 bg-slate-950/50 p-5 sm:p-6">
+          <div className="mt-6 sm:mt-8 rounded-2xl border border-slate-800 bg-brand-dark/50 p-5 sm:p-6">
             <div className="flex items-center gap-3 mb-3">
               <div className="bg-cyan-500/10 p-2 rounded-lg shrink-0">
                 <GitBranch className="w-5 h-5 text-cyan-400" aria-hidden="true" />
@@ -431,7 +431,7 @@ export default function BiosUefiRecoveryGuide() {
           </div>
           <div className="grid gap-4 md:grid-cols-2">
             {warningSigns.map((sign) => (
-              <article key={sign.number} className={`rounded-2xl border p-5 transition hover:border-slate-700 sm:p-6 ${sign.urgent ? 'border-red-500/25 bg-red-500/[0.035]' : 'border-slate-800 bg-slate-950/40'}`}>
+              <article key={sign.number} className={`rounded-2xl border p-5 transition hover:border-slate-700 sm:p-6 ${sign.urgent ? 'border-red-500/25 bg-red-500/[0.035]' : 'border-slate-800 bg-brand-dark/40'}`}>
                 <div className="flex items-start gap-4">
                   <div className={`shrink-0 rounded-xl p-3 text-sm font-bold ${sign.urgent ? 'bg-red-500/15 text-red-300' : 'bg-cyan-500/10 text-cyan-300'}`}>
                     {sign.number}
@@ -486,7 +486,7 @@ export default function BiosUefiRecoveryGuide() {
           </figure>
 
           <div id="post-hardware" className="scroll-mt-24 grid sm:grid-cols-2 gap-4 sm:gap-6">
-            <div className="rounded-2xl border border-slate-800 bg-slate-950/50 p-5 sm:p-6">
+            <div className="rounded-2xl border border-slate-800 bg-brand-dark/50 p-5 sm:p-6">
               <div className="flex items-center gap-3 mb-3">
                 <div className="bg-cyan-500/10 p-2.5 rounded-xl shrink-0">
                   <FileWarning className="w-5 h-5 text-cyan-400" aria-hidden="true" />
@@ -501,7 +501,7 @@ export default function BiosUefiRecoveryGuide() {
                 <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">Verify the platform &rarr; preserve board-specific data &rarr; use the correct recovery image &rarr; program the firmware device &rarr; verify POST.</p>
               </div>
             </div>
-            <div className="rounded-2xl border border-slate-800 bg-slate-950/50 p-5 sm:p-6">
+            <div className="rounded-2xl border border-slate-800 bg-brand-dark/50 p-5 sm:p-6">
               <div className="flex items-center gap-3 mb-3">
                 <div className="bg-orange-500/10 p-2.5 rounded-xl shrink-0">
                   <Wrench className="w-5 h-5 text-orange-400" aria-hidden="true" />
@@ -593,7 +593,7 @@ export default function BiosUefiRecoveryGuide() {
           </div>
           <div className="grid gap-3 sm:grid-cols-2">
             {recoveryIntake.map((item, index) => (
-              <div key={item.title} className="rounded-xl border border-slate-800 bg-slate-950/50 p-4 sm:p-5">
+              <div key={item.title} className="rounded-xl border border-slate-800 bg-brand-dark/50 p-4 sm:p-5">
                 <div className="flex items-start gap-3">
                   <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-cyan-500/10 text-xs font-bold text-cyan-300">
                     {index + 1}
@@ -629,7 +629,7 @@ export default function BiosUefiRecoveryGuide() {
 
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {manufacturerNotes.map((item) => (
-              <div key={item.brand} className="border border-slate-800 rounded-xl p-4 sm:p-5 bg-slate-950/40">
+              <div key={item.brand} className="border border-slate-800 rounded-xl p-4 sm:p-5 bg-brand-dark/40">
                 <h3 className="text-white font-bold text-sm sm:text-base mb-2">{item.brand}</h3>
                 <p className="text-slate-400 text-xs sm:text-sm leading-relaxed mb-3">{item.text}</p>
                 <Link to={item.link} className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-cyan-300 hover:text-cyan-200">
@@ -686,7 +686,7 @@ export default function BiosUefiRecoveryGuide() {
             {recoverySteps.map((step, index) => {
               const Icon = step.icon;
               return (
-                <div key={step.title} className="border border-slate-800 rounded-xl p-4 sm:p-5 bg-slate-950/40">
+                <div key={step.title} className="border border-slate-800 rounded-xl p-4 sm:p-5 bg-brand-dark/40">
                   <div className="flex items-center justify-between mb-4">
                     <Icon className="h-6 w-6 text-cyan-400" aria-hidden="true" />
                     <span className="text-[10px] font-bold text-slate-500">STEP {index + 1}</span>
@@ -729,7 +729,7 @@ export default function BiosUefiRecoveryGuide() {
             </figure>
           </div>
 
-          <div className="rounded-2xl border border-slate-800 bg-slate-950/50 p-5 sm:p-6">
+          <div className="rounded-2xl border border-slate-800 bg-brand-dark/50 p-5 sm:p-6">
             <div className="flex gap-4">
               <Lock className="mt-1 h-5 w-5 shrink-0 text-cyan-400" aria-hidden="true" />
               <div>
@@ -811,7 +811,7 @@ export default function BiosUefiRecoveryGuide() {
       <section id="post-codes" className="scroll-mt-20 py-8 sm:py-16 px-4 sm:px-6 bg-slate-900/30 border-t border-slate-900">
         <div className="container mx-auto max-w-4xl">
           <h2 className="text-xl sm:text-3xl font-bold text-white mb-6 sm:mb-8">POST Codes, Beep Codes &amp; Diagnostic LEDs</h2>
-          <div className="rounded-2xl border border-slate-800 bg-slate-950/50 p-5 sm:p-6 flex gap-4">
+          <div className="rounded-2xl border border-slate-800 bg-brand-dark/50 p-5 sm:p-6 flex gap-4">
             <Volume2 className="mt-1 h-5 w-5 shrink-0 text-cyan-400" aria-hidden="true" />
             <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
               Boards and laptops report early boot failures \u2014 before there's any video output \u2014 through beep patterns, blinking LEDs (often Caps Lock/Num Lock, or dedicated debug LEDs), or two-digit POST code displays. These are <strong className="text-white">manufacturer- and often model-specific</strong>: the same pattern can mean something different on different brands, so always check the exact model's documentation rather than a generic chart. What's consistent is the category flagged \u2014 memory, CPU, GPU/display, or a general boot-device/firmware failure \u2014 worth noting for a technician even without decoding the exact meaning yourself.
@@ -835,7 +835,7 @@ export default function BiosUefiRecoveryGuide() {
                 className="w-full h-full object-cover"
               />
             </div>
-            <div className="rounded-2xl border border-slate-800 bg-slate-950/50 p-5 sm:p-6 flex gap-4">
+            <div className="rounded-2xl border border-slate-800 bg-brand-dark/50 p-5 sm:p-6 flex gap-4">
               <Database className="mt-1 h-5 w-5 shrink-0 text-cyan-400" aria-hidden="true" />
               <div className="text-slate-300 text-xs sm:text-sm leading-relaxed">
                 <p>
@@ -924,7 +924,7 @@ export default function BiosUefiRecoveryGuide() {
       <section className="py-8 sm:py-16 px-4 sm:px-6 bg-slate-900/30 border-t border-slate-900">
         <div className="container mx-auto max-w-4xl">
           <h2 className="text-xl sm:text-3xl font-bold text-white mb-6 sm:mb-8">Cost &amp; Time Expectations</h2>
-          <div className="rounded-2xl border border-slate-800 bg-slate-950/50 p-5 sm:p-6 flex gap-4">
+          <div className="rounded-2xl border border-slate-800 bg-brand-dark/50 p-5 sm:p-6 flex gap-4">
             <Clock className="mt-1 h-5 w-5 shrink-0 text-cyan-400" aria-hidden="true" />
             <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
               A straightforward firmware reprogramming job can often be completed the same day. Cases involving board-level diagnosis, multiple firmware devices, EC firmware, or a genuine hardware fault take longer. See{' '}
@@ -951,7 +951,7 @@ export default function BiosUefiRecoveryGuide() {
               ['Thermal stability', 'Do not update a machine that is already shutting down from overheating or has a known cooling fault. Fix the stability problem first.'],
               ['No unnecessary changes', 'Do not combine a firmware update with random BIOS settings, RAM swaps or multiple firmware files. Change one variable at a time so the failure remains diagnosable.'],
             ].map(([title, text]) => (
-              <div key={title} className="rounded-xl border border-slate-800 bg-slate-950/50 p-4 sm:p-5">
+              <div key={title} className="rounded-xl border border-slate-800 bg-brand-dark/50 p-4 sm:p-5">
                 <h3 className="text-white font-bold text-sm sm:text-base">{title}</h3>
                 <p className="mt-1.5 text-slate-400 text-xs sm:text-sm leading-relaxed">{text}</p>
               </div>
@@ -963,7 +963,7 @@ export default function BiosUefiRecoveryGuide() {
       {/* ─── KUWAIT CTA ─── */}
       <section className="py-8 sm:py-16 px-4 sm:px-6 border-t border-slate-900">
         <div className="container mx-auto max-w-4xl">
-          <div className="rounded-2xl border border-slate-800 bg-slate-950/50 p-6 sm:p-10">
+          <div className="rounded-2xl border border-slate-800 bg-brand-dark/50 p-6 sm:p-10">
             <Badge className="mb-4 border-cyan-500/30 bg-cyan-500/10 text-cyan-300">BIOS &amp; Motherboard Recovery in Kuwait</Badge>
             <h2 className="text-2xl sm:text-4xl font-bold text-white mb-3">Laptop or Motherboard Stopped Booting After a BIOS Update?</h2>
             <p className="text-slate-300 text-xs sm:text-base leading-relaxed mb-6 max-w-2xl">
@@ -1002,7 +1002,7 @@ export default function BiosUefiRecoveryGuide() {
           </div>
           <div className="space-y-3">
             {faq.map((item, index) => (
-              <details key={item.q} className="group rounded-xl border border-slate-800 bg-slate-950/40 p-4 open:border-cyan-500/30 open:bg-slate-900/60 sm:p-5" open={index === 0}>
+              <details key={item.q} className="group rounded-xl border border-slate-800 bg-brand-dark/40 p-4 open:border-cyan-500/30 open:bg-slate-900/60 sm:p-5" open={index === 0}>
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-sm font-bold text-white sm:text-base">
                   <span>{item.q}</span>
                   <ChevronRight className="h-5 w-5 shrink-0 text-slate-500 transition-transform group-open:rotate-90 group-open:text-cyan-400" />
@@ -1073,7 +1073,7 @@ export default function BiosUefiRecoveryGuide() {
       </section>
 
       {/* ─── LAST REVIEWED / SOURCES (E-E-A-T signal) ─── */}
-      <section className="border-t border-slate-900 bg-slate-950/60">
+      <section className="border-t border-slate-900 bg-brand-dark/60">
         <div className="mx-auto max-w-4xl px-4 py-10 text-xs sm:text-sm text-slate-500 sm:px-6">
           <p>
             <strong className="text-slate-300">Last reviewed:</strong> {LAST_REVIEWED} by{' '}

@@ -68,7 +68,7 @@ const BrandTemplate: React.FC = () => {
       <SEOEngine entityId={brand.id} />
 
       {/* Premium brand hero */}
-      <section className="relative overflow-hidden border-b border-slate-800 bg-slate-950/55 px-6 pb-16 pt-24 backdrop-blur-md">
+      <section className="relative overflow-hidden border-b border-slate-800 bg-brand-dark/55 px-6 pb-16 pt-24 backdrop-blur-md">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(34,211,238,0.10),transparent_38%)]" aria-hidden="true" />
         <div className="relative mx-auto max-w-6xl">
           <nav aria-label="Breadcrumb" className="mb-8 text-sm text-slate-500">
@@ -245,7 +245,7 @@ const BrandTemplate: React.FC = () => {
 
             <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
               {technicalCapabilities.map((capability) => (
-                <div key={capability} className="flex items-start gap-3 rounded-xl border border-slate-800 bg-slate-950/50 p-4">
+                <div key={capability} className="flex items-start gap-3 rounded-xl border border-slate-800 bg-brand-dark/50 p-4">
                   <CircuitBoard className="mt-0.5 h-5 w-5 flex-shrink-0 text-cyan-400" aria-hidden="true" />
                   <span className="text-sm font-semibold leading-6 text-slate-200">{capability}</span>
                 </div>
@@ -316,7 +316,7 @@ const BrandTemplate: React.FC = () => {
             </p>
             <div className="mt-5 space-y-3">
               {relatedGuidePaths.map((guide) => (
-                <Link key={guide.path} to={guide.path} className="flex items-center justify-between rounded-xl border border-slate-800 bg-slate-950/50 p-4 font-semibold text-slate-200 hover:border-cyan-900 hover:text-cyan-300">
+                <Link key={guide.path} to={guide.path} className="flex items-center justify-between rounded-xl border border-slate-800 bg-brand-dark/50 p-4 font-semibold text-slate-200 hover:border-cyan-900 hover:text-cyan-300">
                   {guide.label}
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </Link>

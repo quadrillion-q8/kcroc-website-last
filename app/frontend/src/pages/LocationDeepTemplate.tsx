@@ -258,7 +258,7 @@ export default function LocationDeepTemplate() {
                   className="w-full h-56 sm:h-72 lg:h-[420px] object-cover"
                 />
                 {location.contentImage.caption && (
-                  <p className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-950/90 to-transparent text-xs text-slate-200 px-4 py-3">
+                  <p className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-brand-dark/90 to-transparent text-xs text-slate-200 px-4 py-3">
                     {location.contentImage.caption}
                   </p>
                 )}
@@ -343,7 +343,7 @@ export default function LocationDeepTemplate() {
                   className="group bg-slate-900/50 p-5 sm:p-6 rounded-2xl border border-slate-800 hover:border-cyan-500 transition-all flex flex-col focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
                   aria-label={`Learn more about ${service.title}`}
                 >
-                  <div className="bg-slate-950 border border-slate-800 w-11 h-11 rounded-xl flex items-center justify-center mb-4 shrink-0">
+                  <div className="bg-brand-dark border border-slate-800 w-11 h-11 rounded-xl flex items-center justify-center mb-4 shrink-0">
                     <ServiceIcon className="w-5 h-5 text-cyan-500" aria-hidden="true" />
                   </div>
                   <h3 className="text-base font-bold text-white mb-1.5 group-hover:text-cyan-400 transition-colors">
@@ -444,7 +444,7 @@ export default function LocationDeepTemplate() {
                   decoding="async"
                   className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                 />
-                <p className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-950/90 to-transparent text-[11px] sm:text-xs text-slate-200 px-3 py-2">
+                <p className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-brand-dark/90 to-transparent text-[11px] sm:text-xs text-slate-200 px-3 py-2">
                   {img.caption}
                 </p>
               </div>

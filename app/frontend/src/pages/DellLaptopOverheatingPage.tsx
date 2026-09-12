@@ -172,7 +172,7 @@ export const DellLaptopOverheatingPage = () => {
 
         {/* Symptoms & Causes Grid */}
         <div className="grid md:grid-cols-2 gap-6">
-          <Card className="bg-slate-950/50 border-slate-800">
+          <Card className="bg-brand-dark/50 border-slate-800">
             <CardHeader className="border-b border-slate-800/50 pb-4">
               <CardTitle className="text-xl text-white flex items-center gap-2">
                 <Thermometer className="text-orange-400 w-5 h-5" /> Warning Symptoms
@@ -196,7 +196,7 @@ export const DellLaptopOverheatingPage = () => {
             </CardContent>
           </Card>
 
-          <Card className="bg-slate-950/50 border-slate-800">
+          <Card className="bg-brand-dark/50 border-slate-800">
             <CardHeader className="border-b border-slate-800/50 pb-4">
               <CardTitle className="text-xl text-white flex items-center gap-2">
                 <Cpu className="text-cyan-400 w-5 h-5" /> Common Causes

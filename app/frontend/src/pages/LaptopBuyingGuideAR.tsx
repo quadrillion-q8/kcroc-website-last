@@ -230,7 +230,7 @@ function DataTable({ headers, rows }: { headers: string[]; rows: string[][] }) {
         </thead>
         <tbody className="divide-y divide-slate-800">
           {rows.map((row, ri) => (
-            <tr key={ri} className={ri % 2 === 0 ? 'bg-slate-950/40' : 'bg-slate-900/40'}>
+            <tr key={ri} className={ri % 2 === 0 ? 'bg-brand-dark/40' : 'bg-slate-900/40'}>
               {row.map((cell, ci) => (
                 <td key={ci} className="px-3 sm:px-4 py-2.5 sm:py-3 text-slate-300 align-top">{cell}</td>
               ))}
@@ -774,7 +774,7 @@ export default function LaptopBuyingGuideAR() {
           <SectionHeading id="mistakes-inner" kicker="تعلم من الأخطاء" title="10 أخطاء نشوفها عند شراء اللابتوب" icon={AlertTriangle} />
           <div className="space-y-3 sm:space-y-4">
             {commonMistakes.map((m, i) => (
-              <Card key={i} className="bg-slate-950/40 border-slate-800">
+              <Card key={i} className="bg-brand-dark/40 border-slate-800">
                 <CardContent className="p-4 sm:p-5 flex gap-3 sm:gap-4 items-start text-start">
                   <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-red-500/15 text-red-400 text-xs sm:text-sm font-bold flex items-center justify-center flex-shrink-0 mt-1">
                     {i + 1}
@@ -856,7 +856,7 @@ export default function LaptopBuyingGuideAR() {
       {/* Author Box */}
       <section className="py-8 sm:py-16 px-4 sm:px-6 bg-slate-900/30 border-y border-slate-800">
         <div className="container mx-auto max-w-4xl">
-          <Card className="bg-slate-950/40 border-slate-800">
+          <Card className="bg-brand-dark/40 border-slate-800">
             <CardContent className="p-5 sm:p-8 flex flex-col sm:flex-row gap-4 sm:gap-6 items-start text-start">
               <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-gradient-to-bl from-cyan-500 to-blue-600 flex items-center justify-center text-xl sm:text-2xl font-bold text-white flex-shrink-0">
                 ع

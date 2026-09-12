@@ -207,9 +207,9 @@ export default function IntelVsAmdGuide() {
               <P>Some Core Ultra designs also include <strong className="text-white">low-power E-cores</strong>. These are intended for very light activity so the system can avoid waking higher-power cores unnecessarily. Intel’s <strong className="text-white">Thread Director</strong> helps the operating system make scheduling decisions about which work should run on which core type.</P>
               <P>Core Ultra also uses a tiled/chiplet-style package in several generations, allowing different functional blocks — such as compute, graphics and I/O — to be integrated into one processor package. The exact tile arrangement changes by generation, so “Core Ultra” is not a single architecture.</P>
               <TechnicalDiagram title="Intel Core Ultra: a system of compute blocks" icon={Cpu}>
-                <div className="rounded-xl border border-slate-800 bg-slate-950/50 p-4"><strong className="text-white">P-cores</strong><p className="mt-1 text-sm text-slate-400">Demanding foreground work and high responsiveness.</p></div>
-                <div className="rounded-xl border border-slate-800 bg-slate-950/50 p-4"><strong className="text-white">E-cores + LP E-cores</strong><p className="mt-1 text-sm text-slate-400">Parallel/background work and low-power activity.</p></div>
-                <div className="rounded-xl border border-slate-800 bg-slate-950/50 p-4"><strong className="text-white">NPU + GPU</strong><p className="mt-1 text-sm text-slate-400">Dedicated AI acceleration and integrated graphics on supported designs.</p></div>
+                <div className="rounded-xl border border-slate-800 bg-brand-dark/50 p-4"><strong className="text-white">P-cores</strong><p className="mt-1 text-sm text-slate-400">Demanding foreground work and high responsiveness.</p></div>
+                <div className="rounded-xl border border-slate-800 bg-brand-dark/50 p-4"><strong className="text-white">E-cores + LP E-cores</strong><p className="mt-1 text-sm text-slate-400">Parallel/background work and low-power activity.</p></div>
+                <div className="rounded-xl border border-slate-800 bg-brand-dark/50 p-4"><strong className="text-white">NPU + GPU</strong><p className="mt-1 text-sm text-slate-400">Dedicated AI acceleration and integrated graphics on supported designs.</p></div>
               </TechnicalDiagram>
             </Section>
 

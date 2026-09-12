@@ -112,7 +112,7 @@ export default function AuthorImran() {
                 </p>
                 <div className="flex flex-wrap gap-2 mb-4">
                   {['Hardware Testing', 'Data Safety', 'Micro-Soldering'].map((skill) => (
-                    <span key={skill} className="bg-slate-950/80 border border-slate-800 text-slate-300 px-3 py-1 rounded-full text-[10px] sm:text-xs font-medium">
+                    <span key={skill} className="bg-brand-dark/80 border border-slate-800 text-slate-300 px-3 py-1 rounded-full text-[10px] sm:text-xs font-medium">
                       {skill}
                     </span>
                   ))}
@@ -139,7 +139,7 @@ export default function AuthorImran() {
               'Component-level micro-soldering',
               'Gaming laptop thermal troubleshooting',
             ].map((item) => (
-              <Card key={item} className="bg-slate-950/40 border-slate-800">
+              <Card key={item} className="bg-brand-dark/40 border-slate-800">
                 <CardContent className="p-4 flex items-center gap-3 text-sm sm:text-base text-slate-300">
                   <Wrench className="w-4 h-4 text-cyan-400 flex-shrink-0" />
                   {item}

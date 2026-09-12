@@ -32,7 +32,7 @@ export default function Gallery() {
 
       {/* Lightbox */}
       {selectedIndex !== null && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-950/95 backdrop-blur-sm p-4" onClick={() => setSelectedIndex(null)}>
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-brand-dark/95 backdrop-blur-sm p-4" onClick={() => setSelectedIndex(null)}>
           <button className="absolute top-4 sm:top-8 right-4 sm:right-8 text-white p-2 sm:p-3 bg-slate-900/50 rounded-full hover:bg-slate-800 transition-colors" onClick={() => setSelectedIndex(null)}>
             <X className="w-8 h-8 sm:w-10 sm:h-10"/>
           </button>

@@ -46,7 +46,7 @@ export default function NearMe() {
 
       {/* Hero */}
       <section className="relative overflow-hidden border-b border-slate-800 px-4 pb-14 pt-10 sm:px-6 sm:pb-24 sm:pt-16 lg:pt-24">
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950" />
+        <div className="absolute inset-0 bg-gradient-to-br from-brand-dark via-slate-900 to-brand-dark" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_15%,rgba(34,211,238,0.10),transparent_45%)]" />
         <div className="relative z-10 mx-auto max-w-6xl">
           <nav aria-label="Breadcrumb" className="mb-8 text-xs font-medium text-slate-400 sm:text-sm">
@@ -92,7 +92,7 @@ export default function NearMe() {
                 loading="eager"
                 className="h-72 w-full object-cover sm:h-80"
               />
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent px-5 pb-5 pt-16">
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-brand-dark via-brand-dark/80 to-transparent px-5 pb-5 pt-16">
                 <p className="text-sm font-bold text-white">Central Hawalli repair lab</p>
                 <p className="mt-1 text-xs text-slate-300">Devices collected locally are diagnosed and repaired at our workshop.</p>
               </div>
@@ -112,7 +112,7 @@ export default function NearMe() {
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             {usps.map((usp) => (
               <div key={usp.id} className="rounded-2xl border border-slate-800 bg-slate-900/50 p-5">
-                <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl border border-slate-700 bg-slate-950 text-cyan-400"><ShieldCheck className="h-5 w-5" aria-hidden="true" /></div>
+                <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl border border-slate-700 bg-brand-dark text-cyan-400"><ShieldCheck className="h-5 w-5" aria-hidden="true" /></div>
                 <h3 className="font-bold text-white">{usp.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-slate-400">{usp.description}</p>
               </div>
@@ -131,7 +131,7 @@ export default function NearMe() {
           </div>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {locations.map((location) => (
-              <Link key={location.id} to={`/location/${location.slug}`} className="group rounded-2xl border border-slate-800 bg-slate-950/70 p-5 transition hover:border-cyan-500/50 hover:bg-slate-900">
+              <Link key={location.id} to={`/location/${location.slug}`} className="group rounded-2xl border border-slate-800 bg-brand-dark/70 p-5 transition hover:border-cyan-500/50 hover:bg-slate-900">
                 <div className="flex items-start justify-between gap-4">
                   <div>
                     <div className="flex items-center gap-2 text-cyan-400"><MapPin className="h-4 w-4" aria-hidden="true" /><span className="text-xs font-bold uppercase tracking-wider">Service Area</span></div>
@@ -164,7 +164,7 @@ export default function NearMe() {
               const Icon = SERVICE_ICONS[service.slug] ?? Wrench;
               return <Link key={service.id} to={`/${service.slug}`} className="group rounded-2xl border border-slate-800 bg-slate-900/40 p-5 transition hover:border-cyan-500/40 hover:bg-slate-900">
                 <div className="flex items-start gap-4">
-                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-slate-700 bg-slate-950 text-cyan-400"><Icon className="h-5 w-5" aria-hidden="true" /></div>
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-slate-700 bg-brand-dark text-cyan-400"><Icon className="h-5 w-5" aria-hidden="true" /></div>
                   <div><h3 className="font-bold text-white group-hover:text-cyan-300">{service.title}</h3><p className="mt-1 text-sm leading-relaxed text-slate-400">{service.description}</p></div>
                 </div>
               </Link>;
@@ -185,7 +185,7 @@ export default function NearMe() {
               ['1', 'Tell us what is wrong', 'Message KCROC with your area, device and symptoms. We help identify the right next step.'],
               ['2', 'We collect your device', 'Arrange a pickup from your home or office across Kuwait. Your device comes to the Hawalli lab for proper diagnosis.'],
               ['3', 'Repair, test and return', 'We diagnose the fault, explain the repair, complete the approved work, test the device and arrange its return.'],
-            ].map(([number, title, text]) => <div key={number} className="rounded-2xl border border-slate-800 bg-slate-950/70 p-6"><div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-cyan-500 font-black text-slate-950">{number}</div><h3 className="text-lg font-bold text-white">{title}</h3><p className="mt-2 text-sm leading-relaxed text-slate-400">{text}</p></div>)}
+            ].map(([number, title, text]) => <div key={number} className="rounded-2xl border border-slate-800 bg-brand-dark/70 p-6"><div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-cyan-500 font-black text-slate-950">{number}</div><h3 className="text-lg font-bold text-white">{title}</h3><p className="mt-2 text-sm leading-relaxed text-slate-400">{text}</p></div>)}
           </div>
         </div>
       </section>
@@ -209,7 +209,7 @@ export default function NearMe() {
 
       {/* Arabic local-intent section */}
       <section lang="ar" dir="rtl" className="border-t border-slate-800/60 px-4 py-12 sm:px-6 sm:py-20">
-        <div className="mx-auto max-w-5xl rounded-3xl border border-slate-800 bg-slate-950/60 p-6 sm:p-10">
+        <div className="mx-auto max-w-5xl rounded-3xl border border-slate-800 bg-brand-dark/60 p-6 sm:p-10">
           <p className="text-xs font-bold uppercase tracking-widest text-cyan-400">خدمة إصلاح محلية في الكويت</p>
           <h2 className="mt-2 text-3xl font-black text-white sm:text-4xl">فني كمبيوتر في الكويت وإصلاح لابتوب قريب منك</h2>
           <p className="mt-5 max-w-3xl text-base leading-loose text-slate-300">
@@ -245,7 +245,7 @@ export default function NearMe() {
         <div className="mx-auto max-w-4xl">
           <div className="mb-10 text-center"><p className="mb-2 text-xs font-bold uppercase tracking-widest text-cyan-400">Near-me questions</p><h2 className="text-3xl font-black text-white sm:text-4xl">Computer Repair Near Me — FAQs</h2></div>
           <div className="space-y-3">
-            {faqs.map((faq) => faq && <details key={faq.id} className="group rounded-2xl border border-slate-800 bg-slate-950/70 p-5"><summary className="cursor-pointer list-none pr-8 font-bold text-white marker:hidden">{faq.title}<span className="float-right text-cyan-400 group-open:rotate-45">+</span></summary><p className="mt-3 max-w-3xl text-sm leading-relaxed text-slate-400">{faq.answer}</p></details>)}
+            {faqs.map((faq) => faq && <details key={faq.id} className="group rounded-2xl border border-slate-800 bg-brand-dark/70 p-5"><summary className="cursor-pointer list-none pr-8 font-bold text-white marker:hidden">{faq.title}<span className="float-right text-cyan-400 group-open:rotate-45">+</span></summary><p className="mt-3 max-w-3xl text-sm leading-relaxed text-slate-400">{faq.answer}</p></details>)}
           </div>
         </div>
       </section>

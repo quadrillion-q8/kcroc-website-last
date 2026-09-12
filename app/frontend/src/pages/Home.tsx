@@ -21,7 +21,7 @@ export default function Home() {
   if (!homePage) return null;
 
   return (
-    // ✅ FIXED: Changed bg-slate-950 to bg-transparent
+    // ✅ FIXED: Changed bg-brand-dark to bg-transparent
     <main className="w-full min-h-screen bg-transparent">
       <SEOEngine entityId="page-home" />
 

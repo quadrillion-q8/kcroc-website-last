@@ -87,7 +87,7 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
           <div className={`grid gap-10 items-center ${heroImage ? 'lg:grid-cols-[1.15fr_1fr]' : ''}`}>
             <div>
               <div className="flex items-center space-x-4 mb-6">
-                <div className="w-16 h-16 bg-slate-950 border border-slate-800 rounded-2xl flex items-center justify-center shadow-inner">
+                <div className="w-16 h-16 bg-brand-dark border border-slate-800 rounded-2xl flex items-center justify-center shadow-inner">
                   <ServiceIcon className="w-8 h-8 text-cyan-400" />
                 </div>
                 <h1 className="text-4xl md:text-5xl font-black text-white">{entity.title}</h1>
@@ -108,7 +108,7 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
               )}
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 max-w-4xl">
-                <div className="bg-slate-950/80 px-4 py-3 rounded-xl border border-slate-800 flex items-center gap-3">
+                <div className="bg-brand-dark/80 px-4 py-3 rounded-xl border border-slate-800 flex items-center gap-3">
                   <Gauge className="w-5 h-5 text-cyan-400 flex-shrink-0" />
                   <div>
                     <span className="block text-[10px] text-slate-500 uppercase font-black tracking-wider">Repair level</span>
@@ -116,7 +116,7 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
                   </div>
                 </div>
 
-                <div className="bg-slate-950/80 px-4 py-3 rounded-xl border border-slate-800 flex items-center gap-3">
+                <div className="bg-brand-dark/80 px-4 py-3 rounded-xl border border-slate-800 flex items-center gap-3">
                   <Clock className="w-5 h-5 text-cyan-400 flex-shrink-0" />
                   <div>
                     <span className="block text-[10px] text-slate-500 uppercase font-black tracking-wider">Typical turnaround</span>
@@ -125,7 +125,7 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
                 </div>
 
                 {entity.warranty && (
-                  <div className="bg-slate-950/80 px-4 py-3 rounded-xl border border-slate-800 flex items-center gap-3">
+                  <div className="bg-brand-dark/80 px-4 py-3 rounded-xl border border-slate-800 flex items-center gap-3">
                     <ShieldCheck className="w-5 h-5 text-cyan-400 flex-shrink-0" />
                     <div>
                       <span className="block text-[10px] text-slate-500 uppercase font-black tracking-wider">Warranty</span>
@@ -155,7 +155,7 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
                   className="w-full h-64 sm:h-80 lg:h-full object-cover"
                 />
                 {heroImage.caption && (
-                  <p className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-950/90 to-transparent text-xs text-slate-200 px-4 py-3">
+                  <p className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-brand-dark/90 to-transparent text-xs text-slate-200 px-4 py-3">
                     {heroImage.caption}
                   </p>
                 )}
@@ -500,7 +500,7 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
                 </a>
               )}
               {entity.warranty?.noFixNoFee && (
-                <div className="flex items-center justify-center px-8 py-4 border border-slate-800 rounded-xl bg-slate-950/80 text-slate-300 font-medium">
+                <div className="flex items-center justify-center px-8 py-4 border border-slate-800 rounded-xl bg-brand-dark/80 text-slate-300 font-medium">
                   <ShieldCheck className="w-5 h-5 text-cyan-400 mr-2" />
                   No Fix, No Fee Guarantee
                 </div>

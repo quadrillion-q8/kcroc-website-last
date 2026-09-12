@@ -70,7 +70,7 @@ export default function LocationTemplate() {
 
       {/* ─── HERO SECTION ─── */}
       <section className="relative pt-8 sm:pt-16 lg:pt-24 pb-12 sm:pb-24 px-4 sm:px-6 overflow-hidden border-b border-slate-900">
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-gray-950 to-slate-950" />
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-gray-950 to-brand-dark" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_20%,rgba(34,211,238,0.05),transparent_50%)]" />
         
         {/* Breadcrumbs */}
@@ -121,7 +121,7 @@ export default function LocationTemplate() {
                   className="w-full h-64 sm:h-80 lg:h-full object-cover"
                 />
                 {location.contentImage.caption && (
-                  <p className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-950/90 to-transparent text-xs text-slate-200 px-4 py-3">
+                  <p className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-brand-dark/90 to-transparent text-xs text-slate-200 px-4 py-3">
                     {location.contentImage.caption}
                   </p>
                 )}
@@ -142,7 +142,7 @@ export default function LocationTemplate() {
           <div className="scroll-row gap-3 -mx-4 px-4 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-3 sm:gap-6">
             <Card className="scroll-row-item w-[85%] sm:w-auto bg-slate-900/30 backdrop-blur-md border border-slate-800 text-left">
               <CardHeader className="p-6">
-                <div className="w-12 h-12 bg-slate-950 rounded-xl flex items-center justify-center mb-4 border border-slate-800 shrink-0">
+                <div className="w-12 h-12 bg-brand-dark rounded-xl flex items-center justify-center mb-4 border border-slate-800 shrink-0">
                   <Truck className="w-5 h-5 text-cyan-400" aria-hidden="true" />
                 </div>
                 <CardTitle className="text-xl font-black text-white mb-2">Free Logistics</CardTitle>
@@ -152,7 +152,7 @@ export default function LocationTemplate() {
             
             <Card className="scroll-row-item w-[85%] sm:w-auto bg-slate-900/30 backdrop-blur-md border border-slate-800 text-left">
               <CardHeader className="p-6">
-                <div className="w-12 h-12 bg-slate-950 rounded-xl flex items-center justify-center mb-4 border border-slate-800 shrink-0">
+                <div className="w-12 h-12 bg-brand-dark rounded-xl flex items-center justify-center mb-4 border border-slate-800 shrink-0">
                   <Cpu className="w-5 h-5 text-cyan-400" aria-hidden="true" />
                 </div>
                 <CardTitle className="text-xl font-black text-white mb-2">Component-Level Repair</CardTitle>
@@ -162,7 +162,7 @@ export default function LocationTemplate() {
 
             <Card className="scroll-row-item w-[85%] sm:w-auto bg-slate-900/30 backdrop-blur-md border border-slate-800 text-left">
               <CardHeader className="p-6">
-                <div className="w-12 h-12 bg-slate-950 rounded-xl flex items-center justify-center mb-4 border border-slate-800 shrink-0">
+                <div className="w-12 h-12 bg-brand-dark rounded-xl flex items-center justify-center mb-4 border border-slate-800 shrink-0">
                   <Shield className="w-5 h-5 text-cyan-400" aria-hidden="true" />
                 </div>
                 <CardTitle className="text-xl font-black text-white mb-2">Data Privacy</CardTitle>
@@ -184,7 +184,7 @@ export default function LocationTemplate() {
                 to={`/${service.slug}`}
                 className="group bg-slate-900/50 p-6 rounded-2xl border border-slate-800 hover:border-cyan-500 transition-all flex items-start text-left"
               >
-                <div className="bg-slate-950 border border-slate-800 w-12 h-12 rounded-xl flex items-center justify-center mr-4 shrink-0 mt-1">
+                <div className="bg-brand-dark border border-slate-800 w-12 h-12 rounded-xl flex items-center justify-center mr-4 shrink-0 mt-1">
                   <Wrench className="w-5 h-5 text-cyan-500" aria-hidden="true" />
                 </div>
                 <div>

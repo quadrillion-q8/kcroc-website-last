@@ -328,7 +328,7 @@ export default function BlogLaptopRepair() {
                 <Card key={index} className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 border-cyan-500/20 backdrop-blur-sm hover:border-cyan-500/40 transition-all">
                   <CardContent className="pt-6 sm:pt-8 text-center p-4 sm:p-6">
                     <div className="flex justify-center mb-2 sm:mb-4">
-                      <div className="bg-slate-950 p-3 sm:p-4 rounded-full border border-slate-800">
+                      <div className="bg-brand-dark p-3 sm:p-4 rounded-full border border-slate-800">
                         <Icon className={`w-6 h-6 sm:w-8 sm:h-8 ${stat.color}`} />
                       </div>
                     </div>
@@ -422,14 +422,14 @@ export default function BlogLaptopRepair() {
                       loading="lazy"
                     />
                     <div className="absolute top-2 right-2 sm:top-3 sm:right-3">
-                      <Badge className="bg-slate-950/90 text-cyan-400 border border-cyan-500/30 text-[10px] sm:text-sm px-2 py-0.5 sm:px-3 sm:py-1 font-bold shadow-lg">
+                      <Badge className="bg-brand-dark/90 text-cyan-400 border border-cyan-500/30 text-[10px] sm:text-sm px-2 py-0.5 sm:px-3 sm:py-1 font-bold shadow-lg">
                         {solution.price}
                       </Badge>
                     </div>
                   </div>
                   <CardHeader className="flex-grow p-4 sm:p-6">
                     <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
-                      <div className="bg-slate-950 border border-slate-800 p-2 sm:p-2.5 rounded-md sm:rounded-lg">
+                      <div className="bg-brand-dark border border-slate-800 p-2 sm:p-2.5 rounded-md sm:rounded-lg">
                         <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-400" />
                       </div>
                     </div>
@@ -442,7 +442,7 @@ export default function BlogLaptopRepair() {
                       <span className="text-[10px] sm:text-sm font-bold text-slate-300">{solution.duration}</span>
                     </div>
                   </CardHeader>
-                  <CardContent className="bg-slate-950/30 pt-3 sm:pt-4 border-t border-slate-800 p-4 sm:p-6 hidden sm:block">
+                  <CardContent className="bg-brand-dark/30 pt-3 sm:pt-4 border-t border-slate-800 p-4 sm:p-6 hidden sm:block">
                     <ul className="space-y-1.5 sm:space-y-2">
                       {solution.benefits.map((benefit, idx) => (
                         <li key={idx} className="flex items-start gap-1.5 sm:gap-2 text-slate-300 text-xs sm:text-sm">
@@ -479,7 +479,7 @@ export default function BlogLaptopRepair() {
               <Card key={index} className="scroll-row-item w-[85%] sm:w-auto bg-gradient-to-br from-slate-800/80 to-slate-900/80 border-slate-700 backdrop-blur-sm">
                 <CardHeader className="p-4 sm:p-6">
                   <CardTitle className="text-lg sm:text-2xl text-white mb-1.5 sm:mb-2">{brand.brand}</CardTitle>
-                  <Badge className="bg-slate-950 text-slate-300 border border-slate-700 w-fit text-[9px] sm:text-xs">{brand.models}</Badge>
+                  <Badge className="bg-brand-dark text-slate-300 border border-slate-700 w-fit text-[9px] sm:text-xs">{brand.models}</Badge>
                 </CardHeader>
                 <CardContent className="space-y-3 sm:space-y-4 p-4 sm:p-6 pt-0">
                   <div>

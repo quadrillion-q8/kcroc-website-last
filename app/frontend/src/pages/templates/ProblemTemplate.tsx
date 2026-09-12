@@ -51,7 +51,7 @@ const ProblemTemplate: React.FC = () => {
   );
 
   return (
-    // ✅ FIXED: Changed bg-slate-950 to bg-transparent
+    // ✅ FIXED: Changed bg-brand-dark to bg-transparent
     <div className="bg-transparent min-h-screen text-slate-200">
       <SEOEngine entityId={problem.id} />
       
@@ -62,7 +62,7 @@ const ProblemTemplate: React.FC = () => {
           <h1 className="text-4xl md:text-5xl font-black text-white mb-6">
             {problem.title}
           </h1>
-          <div className="p-4 bg-slate-950/60 backdrop-blur-md rounded-xl border border-slate-700 text-left inline-block shadow-inner">
+          <div className="p-4 bg-brand-dark/60 backdrop-blur-md rounded-xl border border-slate-700 text-left inline-block shadow-inner">
             <span className="text-sm font-bold text-rose-400 uppercase tracking-wider block mb-1">Symptom</span>
             <p className="text-slate-300">{problem.symptom}</p>
           </div>
@@ -179,7 +179,7 @@ const ProblemTemplate: React.FC = () => {
                 </div>
                 <div className="mt-6 grid gap-4 md:grid-cols-3">
                   {problem.kuwaitContext.map((item, idx) => (
-                    <p key={idx} className="rounded-2xl border border-slate-800 bg-slate-950/40 p-5 text-sm leading-6 text-slate-300">{item}</p>
+                    <p key={idx} className="rounded-2xl border border-slate-800 bg-brand-dark/40 p-5 text-sm leading-6 text-slate-300">{item}</p>
                   ))}
                 </div>
               </div>
