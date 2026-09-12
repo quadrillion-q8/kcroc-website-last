@@ -122,7 +122,7 @@ export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnte
         )}
         
         {/* Render the standard list items */}
-        <div className={`p-4 flex flex-col gap-2 ${hasFeatured ? 'bg-slate-950' : 'bg-slate-900'}`}>
+        <div className={`p-4 flex flex-col gap-2 ${hasFeatured ? 'bg-brand-dark' : 'bg-slate-900'}`}>
           {config.sections.map((section, idx) => (
             <div key={idx} className="flex flex-col gap-2">
               {section.title && <span className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1 px-3">{section.title}</span>}

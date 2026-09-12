@@ -59,7 +59,7 @@ export class ErrorBoundary extends React.Component<Props, State> {
   public render() {
     if (this.state.hasError) {
       return (
-        <div className="flex flex-col items-center justify-center min-h-[60vh] p-8 text-center bg-slate-950 text-slate-50">
+        <div className="flex flex-col items-center justify-center min-h-[60vh] p-8 text-center bg-brand-dark text-slate-50">
           <h2 className="text-2xl font-extrabold text-cyan-400 mb-4">
             {this.state.isChunkError ? 'Updating the site…' : 'Something went wrong.'}
           </h2>

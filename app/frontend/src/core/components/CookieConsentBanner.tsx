@@ -64,7 +64,7 @@ export const CookieConsentBanner: React.FC = () => {
       className="fixed bottom-24 left-0 right-0 z-[100] transform transition-transform duration-500 ease-in-out font-sans md:bottom-0"
       style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
     >
-      <div className="bg-slate-950/95 backdrop-blur-xl border-t border-slate-800 shadow-[0_-10px_30px_rgba(0,0,0,0.5)] p-4 sm:p-6">
+      <div className="bg-brand-dark/95 backdrop-blur-xl border-t border-slate-800 shadow-[0_-10px_30px_rgba(0,0,0,0.5)] p-4 sm:p-6">
         <div className="container mx-auto max-w-6xl flex flex-col md:flex-row items-center justify-between gap-4 sm:gap-6">
           
           <div className="flex items-start sm:items-center gap-4">

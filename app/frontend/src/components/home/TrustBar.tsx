@@ -15,7 +15,7 @@ export const TrustBar = () => {
   const badges = KCROC_GRAPH.trustBadges;
 
   return (
-    <div className="flex justify-center gap-8 py-6 border-y border-white/5 bg-slate-950/40 flex-wrap">
+    <div className="flex justify-center gap-8 py-6 border-y border-white/5 bg-brand-dark/40 flex-wrap">
       {badges.map((badge) => {
         const Icon = ICON_MAP[badge.iconKey];
         return (

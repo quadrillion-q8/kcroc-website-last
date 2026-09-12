@@ -79,7 +79,7 @@ export default function MobileMenu({ isOpen, onClose, mobileRef, navModel, clean
         role="dialog"
         aria-modal="true"
         aria-label="Mobile Navigation"
-        className={`fixed inset-y-0 right-0 z-[100] w-full max-w-sm bg-slate-950 border-l border-slate-800 shadow-2xl transform transition-transform duration-300 ease-in-out lg:hidden flex flex-col ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}
+        className={`fixed inset-y-0 right-0 z-[100] w-full max-w-sm bg-brand-dark border-l border-slate-800 shadow-2xl transform transition-transform duration-300 ease-in-out lg:hidden flex flex-col ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}
       >
         <div className="flex items-center justify-between p-4 border-b border-slate-800/60 shrink-0">
           <span className="font-black text-white text-lg tracking-tight">Menu</span>
@@ -120,7 +120,7 @@ export default function MobileMenu({ isOpen, onClose, mobileRef, navModel, clean
                   </button>
 
                   <div className={`transition-all duration-300 ease-in-out overflow-hidden ${isExpanded ? 'max-h-[1500px] opacity-100' : 'max-h-0 opacity-0'}`}>
-                    <div className="p-3 bg-slate-950/50 space-y-4 border-t border-slate-800/60">
+                    <div className="p-3 bg-brand-dark/50 space-y-4 border-t border-slate-800/60">
                       
                       {megaConfig.featured && megaConfig.featured.length > 0 && (
                         <div className="space-y-2">

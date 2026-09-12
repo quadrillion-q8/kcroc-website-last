@@ -11,7 +11,7 @@ export const Process = () => {
   const steps = processData.steps;
 
   return (
-    <section className="py-12 sm:py-24 px-4 sm:px-6 bg-slate-950/40 relative overflow-hidden">
+    <section className="py-12 sm:py-24 px-4 sm:px-6 bg-brand-dark/40 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-950/10 to-transparent pointer-events-none" />
 
       <div className="max-w-6xl mx-auto relative z-10">
@@ -36,13 +36,13 @@ export const Process = () => {
                 loading="lazy"
               />
             </picture>
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/40 to-transparent"></div>
             <div className="absolute bottom-4 left-6 right-6 flex flex-wrap items-center justify-between gap-4">
-              <div className="flex items-center gap-2 text-xs font-bold text-cyan-400 bg-slate-950/80 backdrop-blur-md px-3.5 py-2 rounded-xl border border-cyan-500/30">
+              <div className="flex items-center gap-2 text-xs font-bold text-cyan-400 bg-brand-dark/80 backdrop-blur-md px-3.5 py-2 rounded-xl border border-cyan-500/30">
                 <Cpu className="w-4 h-4 text-cyan-400 animate-pulse" />
                 <span>Thermal Imaging &amp; Logic Board Tracing</span>
               </div>
-              <div className="flex items-center gap-2 text-xs font-bold text-emerald-400 bg-slate-950/80 backdrop-blur-md px-3.5 py-2 rounded-xl border border-emerald-500/30">
+              <div className="flex items-center gap-2 text-xs font-bold text-emerald-400 bg-brand-dark/80 backdrop-blur-md px-3.5 py-2 rounded-xl border border-emerald-500/30">
                 <ShieldCheck className="w-4 h-4 text-emerald-400" />
                 <span>Data Privacy Guaranteed</span>
               </div>
@@ -71,7 +71,7 @@ export const Process = () => {
 
               <div className="flex gap-4 md:block rounded-2xl border border-slate-800/80 bg-slate-900/40 p-5 md:rounded-none md:border-0 md:bg-transparent md:p-4 md:text-center">
                 <div className="shrink-0 flex flex-col items-center md:mb-5 md:block">
-                  <span className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full border border-cyan-500/40 bg-slate-900 text-sm font-bold text-cyan-400 md:h-11 md:w-11 md:mx-auto md:border-2 md:bg-slate-950 md:font-black">
+                  <span className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full border border-cyan-500/40 bg-slate-900 text-sm font-bold text-cyan-400 md:h-11 md:w-11 md:mx-auto md:border-2 md:bg-brand-dark md:font-black">
                     {item.step}
                   </span>
                   {idx < steps.length - 1 && (

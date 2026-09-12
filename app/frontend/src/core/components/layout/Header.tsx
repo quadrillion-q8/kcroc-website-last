@@ -121,7 +121,7 @@ export default function Header() {
 
   return (
     <>
-      <header ref={headerRef} className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-slate-950/95 backdrop-blur-xl border-b border-slate-800/80 shadow-lg shadow-black/20' : 'bg-slate-950/80 backdrop-blur-md border-b border-slate-800/40'}`}>
+      <header ref={headerRef} className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-brand-dark/95 backdrop-blur-xl border-b border-slate-800/80 shadow-lg shadow-black/20' : 'bg-brand-dark/80 backdrop-blur-md border-b border-slate-800/40'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="flex items-center justify-between h-16">
             
@@ -229,14 +229,14 @@ export default function Header() {
       {searchOpen && (
         <>
           <div
-            className="fixed inset-0 z-40 bg-slate-950/60 backdrop-blur-sm"
+            className="fixed inset-0 z-40 bg-brand-dark/60 backdrop-blur-sm"
             onClick={() => setSearchOpen(false)}
             aria-hidden="true"
           />
           <div
             id="header-search-panel"
             role="search"
-            className="fixed top-16 left-0 right-0 z-50 bg-slate-950/95 backdrop-blur-xl border-b border-slate-800/80 shadow-lg shadow-black/20 px-4 sm:px-6 py-6"
+            className="fixed top-16 left-0 right-0 z-50 bg-brand-dark/95 backdrop-blur-xl border-b border-slate-800/80 shadow-lg shadow-black/20 px-4 sm:px-6 py-6"
           >
             <Suspense fallback={<div className="max-w-2xl mx-auto h-14 rounded-full bg-slate-900 animate-pulse" />}>
               <SearchBar autoFocus onResultSelect={() => setSearchOpen(false)} />

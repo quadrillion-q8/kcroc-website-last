@@ -45,7 +45,7 @@ export function TechnicalDiagram({ title, children, icon: Icon = Cpu }: { title:
 
 export function DiagramStep({ title, text, emphasis }: { title: string; text: string; emphasis?: boolean }) {
   return (
-    <div className={`rounded-xl border p-4 ${emphasis ? 'border-cyan-500/40 bg-cyan-500/10' : 'border-slate-800 bg-slate-950/50'}`}>
+    <div className={`rounded-xl border p-4 ${emphasis ? 'border-cyan-500/40 bg-cyan-500/10' : 'border-slate-800 bg-brand-dark/50'}`}>
       <p className="font-black text-white">{title}</p>
       <p className="mt-1 text-sm leading-relaxed text-slate-400">{text}</p>
     </div>

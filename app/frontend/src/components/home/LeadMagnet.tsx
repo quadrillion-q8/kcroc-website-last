@@ -18,7 +18,7 @@ export const LeadMagnet = () => {
   )}`;
 
   return (
-    <section className="w-full py-12 sm:py-24 px-4 sm:px-6 bg-slate-950/40 relative overflow-hidden">
+    <section className="w-full py-12 sm:py-24 px-4 sm:px-6 bg-brand-dark/40 relative overflow-hidden">
       {/* Background ambient glow */}
       <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/10 via-transparent to-transparent pointer-events-none" />
       
@@ -52,7 +52,7 @@ export const LeadMagnet = () => {
                 placeholder="e.g. MacBook Pro 2021"
                 value={device}
                 onChange={(e) => setDevice(e.target.value)}
-                className="w-full rounded-xl border border-slate-700 bg-slate-950/50 px-5 py-4 text-white placeholder:text-slate-500 focus:outline-none focus:border-emerald-500/50 transition-colors"
+                className="w-full rounded-xl border border-slate-700 bg-brand-dark/50 px-5 py-4 text-white placeholder:text-slate-500 focus:outline-none focus:border-emerald-500/50 transition-colors"
                 required
               />
               <input
@@ -60,7 +60,7 @@ export const LeadMagnet = () => {
                 placeholder="e.g. Won't turn on"
                 value={issue}
                 onChange={(e) => setIssue(e.target.value)}
-                className="w-full rounded-xl border border-slate-700 bg-slate-950/50 px-5 py-4 text-white placeholder:text-slate-500 focus:outline-none focus:border-emerald-500/50 transition-colors"
+                className="w-full rounded-xl border border-slate-700 bg-brand-dark/50 px-5 py-4 text-white placeholder:text-slate-500 focus:outline-none focus:border-emerald-500/50 transition-colors"
                 required
               />
             </div>
@@ -95,7 +95,7 @@ export const LeadMagnet = () => {
           
           {/* Status Badge overlay */}
           <div className="absolute bottom-6 left-6 right-6 flex justify-end">
-            <div className="inline-flex items-center gap-2 text-xs font-bold text-emerald-400 bg-slate-950/80 backdrop-blur-md px-4 py-2 rounded-xl border border-emerald-500/30 shadow-lg">
+            <div className="inline-flex items-center gap-2 text-xs font-bold text-emerald-400 bg-brand-dark/80 backdrop-blur-md px-4 py-2 rounded-xl border border-emerald-500/30 shadow-lg">
               <CheckCircle2 className="w-4 h-4 text-emerald-400" />
               <span>Tested &amp; Ready for Delivery</span>
             </div>

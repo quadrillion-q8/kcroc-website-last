@@ -32,7 +32,7 @@ export const AnimatedBackground: React.FC = () => {
   ];
 
   return (
-    <div className="fixed inset-0 z-0 bg-slate-950 overflow-hidden pointer-events-none">
+    <div className="fixed inset-0 z-0 bg-brand-dark overflow-hidden pointer-events-none">
       
       <style>{`
         /* Energy Packets traveling along the SVG paths */
@@ -76,7 +76,7 @@ export const AnimatedBackground: React.FC = () => {
       `}</style>
 
       {/* LAYER 1: Deep slate gradient background */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-slate-900 via-slate-950 to-slate-950" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-slate-900 via-brand-dark to-brand-dark" />
 
       {/* LAYER 5: Hero Spotlight (Soft cyan glow behind text) */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-cyan-500/10 blur-[100px] rounded-[50%]" />

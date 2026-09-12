@@ -66,7 +66,7 @@ export const BeforeAfterShowcase = () => {
                   <div className="grid grid-cols-2">
                     <div className="relative">
                       <Picture variant={before} alt={c.title + ' - before repair'} />
-                      <span className="absolute top-2 left-2 text-[10px] uppercase tracking-wide bg-slate-950/80 text-slate-300 px-2 py-1 rounded-full">
+                      <span className="absolute top-2 left-2 text-[10px] uppercase tracking-wide bg-brand-dark/80 text-slate-300 px-2 py-1 rounded-full">
                         Before
                       </span>
                     </div>
@@ -82,7 +82,7 @@ export const BeforeAfterShowcase = () => {
                 <div className="p-4 sm:p-8">
                   <div className="flex items-center justify-between mb-3 sm:mb-6">
                     <h3 className="text-white font-bold text-base sm:text-lg">{c.title}</h3>
-                    <span className="text-[10px] uppercase tracking-wide bg-slate-950 text-slate-500 px-2 py-1 rounded-full whitespace-nowrap ml-3">
+                    <span className="text-[10px] uppercase tracking-wide bg-brand-dark text-slate-500 px-2 py-1 rounded-full whitespace-nowrap ml-3">
                       {c.location}
                     </span>
                   </div>

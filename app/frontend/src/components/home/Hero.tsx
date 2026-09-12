@@ -240,7 +240,7 @@ export default function Hero() {
             <div className="relative">
               <div className="absolute -inset-2 bg-gradient-to-r from-cyan-500/20 to-emerald-500/20 rounded-3xl blur-2xl opacity-75"></div>
               <Card className="relative bg-slate-900/80 border border-slate-800 rounded-3xl backdrop-blur overflow-hidden shadow-2xl">
-                <div className="aspect-[16/10] overflow-hidden bg-slate-950 relative group">
+                <div className="aspect-[16/10] overflow-hidden bg-brand-dark relative group">
                   
                   {/* 🚀 FIX: Responsive Picture Tag with srcset.
                       This whole section is CSS-hidden below lg (1024px) via
@@ -268,8 +268,8 @@ export default function Hero() {
                     />
                   </picture>
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-80"></div>
-                  <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between text-xs font-bold text-cyan-400 bg-slate-950/80 backdrop-blur-md px-3 py-1.5 rounded-xl border border-cyan-500/20 shadow-lg">
+                  <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-transparent to-transparent opacity-80"></div>
+                  <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between text-xs font-bold text-cyan-400 bg-brand-dark/80 backdrop-blur-md px-3 py-1.5 rounded-xl border border-cyan-500/20 shadow-lg">
                     <span>ESD-Safe Hawalli Laboratory</span>
                     <span className="text-emerald-400">● Live Diagnostics</span>
                   </div>

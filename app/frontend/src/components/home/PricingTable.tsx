@@ -17,7 +17,7 @@ export const PricingTable = () => {
   if (services.length === 0) return null;
 
   return (
-    <section className="w-full py-8 sm:py-24 px-4 sm:px-6 border-t border-slate-800/50 bg-slate-950/40">
+    <section className="w-full py-8 sm:py-24 px-4 sm:px-6 border-t border-slate-800/50 bg-brand-dark/40">
       <div className="max-w-5xl mx-auto">
         <SectionHeader
           eyebrow="No Hidden Fees"

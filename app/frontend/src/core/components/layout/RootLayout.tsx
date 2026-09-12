@@ -83,7 +83,7 @@ export const RootLayout: React.FC = () => {
         {/* AnalyticsProvider is mounted once, at the outer AppWrapper level in
             App.tsx — do not add a second one here, it previously caused
             duplicate virtual_pageview events. */}
-        <div className="relative min-h-screen flex flex-col bg-slate-950 text-slate-200 font-sans selection:bg-cyan-500/30">
+        <div className="relative min-h-screen flex flex-col bg-brand-dark text-slate-200 font-sans selection:bg-cyan-500/30">
           
           {/* 🚀 WCAG 2.2 AA Compliance: Global Skip Link for keyboard navigation */}
           <a 
@@ -96,7 +96,7 @@ export const RootLayout: React.FC = () => {
           {/* Page-scoped technical background. It is deliberately NOT mounted
               on every route: opaque/utility pages keep their own backgrounds. */}
           {showAnimatedBackground && (
-            <Suspense fallback={<div className="fixed inset-0 z-0 bg-slate-950" />}>
+            <Suspense fallback={<div className="fixed inset-0 z-0 bg-brand-dark" />}>
               <AnimatedBackground />
             </Suspense>
           )}

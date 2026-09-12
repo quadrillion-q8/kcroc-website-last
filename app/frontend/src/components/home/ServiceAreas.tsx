@@ -36,7 +36,7 @@ export const ServiceAreas = () => {
           </div>
 
           {/* Kuwait City / Service Area Illustration Card */}
-          <div className="relative group rounded-3xl overflow-hidden border border-slate-800 bg-slate-950 shadow-2xl">
+          <div className="relative group rounded-3xl overflow-hidden border border-slate-800 bg-brand-dark shadow-2xl">
             <div className="aspect-[16/10] relative overflow-hidden">
               {/* 🚀 PERF FIX: was serving the full 1600x873 (81 KB) source into a
                   ~380x237 mobile slot. Responsive <picture> now serves a
@@ -52,8 +52,8 @@ export const ServiceAreas = () => {
                   loading="lazy"
                 />
               </picture>
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-60"></div>
-              <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-xs font-bold text-cyan-400 bg-slate-950/80 backdrop-blur-md px-4 py-2 rounded-xl border border-cyan-500/30">
+              <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-transparent to-transparent opacity-60"></div>
+              <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-xs font-bold text-cyan-400 bg-brand-dark/80 backdrop-blur-md px-4 py-2 rounded-xl border border-cyan-500/30">
                 <span>Shop 19, Al-Mulla Complex, Hawally</span>
                 <span className="text-emerald-400">● Active Dispatch</span>
               </div>
