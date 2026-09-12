@@ -21,7 +21,7 @@ export default function Services() {
     <>
       <SEOEngine entityId="page-services" />
 
-      <main className="min-h-screen bg-brand-dark text-white pt-32 pb-24">
+      <main className="min-h-screen bg-transparent text-white pt-32 pb-24">
         <div className="max-w-7xl mx-auto px-6">
           
           <header className="mb-16 text-center lg:text-left">
