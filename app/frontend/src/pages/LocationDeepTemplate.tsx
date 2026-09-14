@@ -85,9 +85,48 @@ export default function LocationDeepTemplate() {
   const otherLocations = KCROC_GRAPH.locations.filter((l) => l.id !== location.id);
   const nearbyAreas = location.serviceAreas.filter((a) => a !== location.title);
 
-  const services = KCROC_GRAPH.services;
-  const problems = KCROC_GRAPH.problems;
-  const brands = KCROC_GRAPH.brands;
+  // Keep location pages crawlable through the main hubs, but prioritize the
+  // most relevant entities here instead of repeating the entire graph on every
+  // service-area page.
+  const locationPriorityMap: Record<string, { services: string[]; problems: string[]; brands: string[] }> = {
+    hawalli: {
+      services: ['srv-laptop', 'srv-motherboard', 'srv-gaming', 'srv-macbook', 'srv-screen'],
+      problems: ['problem-no-power', 'problem-overheating', 'problem-black-screen', 'problem-not-charging', 'problem-liquid-spill'],
+      brands: ['brand-dell', 'brand-lenovo', 'brand-asus', 'brand-hp'],
+    },
+    salmiya: {
+      services: ['srv-laptop', 'srv-macbook', 'srv-liquid-damage', 'srv-motherboard', 'srv-screen'],
+      problems: ['problem-liquid-spill', 'problem-no-power', 'problem-black-screen', 'problem-not-charging'],
+      brands: ['brand-dell', 'brand-lenovo', 'brand-hp', 'brand-asus'],
+    },
+    'kuwait-city': {
+      services: ['srv-laptop', 'srv-screen', 'srv-motherboard', 'srv-macbook'],
+      problems: ['problem-black-screen', 'problem-cracked-screen', 'problem-no-power', 'problem-not-charging'],
+      brands: ['brand-dell', 'brand-lenovo', 'brand-hp', 'brand-asus'],
+    },
+  };
+
+  const defaultPriority = {
+    services: ['srv-laptop', 'srv-motherboard', 'srv-screen', 'srv-macbook', 'srv-gaming-laptop-cleaning'],
+    problems: ['problem-no-power', 'problem-overheating', 'problem-not-charging', 'problem-black-screen', 'problem-liquid-spill'],
+    brands: ['brand-dell', 'brand-lenovo', 'brand-asus', 'brand-hp'],
+  };
+  const locationPriority = locationPriorityMap[location.slug] ?? defaultPriority;
+  const services = locationPriority.services
+    .map((id) => KCROC_GRAPH.services.find((service) => service.id === id))
+    .filter(Boolean);
+  const problems = locationPriority.problems
+    .map((id) => KCROC_GRAPH.problems.find((problem) => problem.id === id))
+    .filter(Boolean);
+  const brands = locationPriority.brands
+    .map((id) => KCROC_GRAPH.brands.find((brand) => brand.id === id))
+    .filter(Boolean);
+  const prioritizedOtherLocations = otherLocations
+    .filter((loc) => nearbyAreas.includes(loc.title) || location.serviceAreas.includes(loc.title))
+    .slice(0, 5);
+  const displayedOtherLocations = prioritizedOtherLocations.length > 0
+    ? prioritizedOtherLocations
+    : otherLocations.slice(0, 5);
 
   const phone = business.telephone; // read from KCROC_GRAPH, e.g. Kuwait mobile in international format
   const phoneDisplay = `+965 ${phone.slice(3, 7)} ${phone.slice(7)}`;
@@ -594,7 +633,7 @@ export default function LocationDeepTemplate() {
       </section>
 
       {/* ─── OTHER AREAS WE SERVE ─── */}
-      {otherLocations.length > 0 && (
+      {displayedOtherLocations.length > 0 && (
         <section className="py-8 sm:py-14 px-4 sm:px-6 bg-slate-900/20 border-t border-slate-800/50">
           <div className="container mx-auto max-w-6xl">
             <h2 className="text-2xl sm:text-3xl font-black mb-4 text-white tracking-tight">
@@ -605,7 +644,7 @@ export default function LocationDeepTemplate() {
               including:
             </p>
             <div className="flex flex-wrap gap-3">
-              {otherLocations.map((loc) => (
+              {displayedOtherLocations.map((loc) => (
                 <Link
                   key={loc.id}
                   to={`/location/${loc.slug}`}
