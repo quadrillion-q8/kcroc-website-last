@@ -13,6 +13,7 @@ import { KCROC_GRAPH } from '../data/graph';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { StandaloneRelatedLinks } from '@/components/content/StandaloneRelatedLinks';
 
 export const DellLaptopOverheatingPage = () => {
   const business = KCROC_GRAPH.business!;
@@ -356,6 +357,18 @@ export const DellLaptopOverheatingPage = () => {
             </Card>
           </div>
         </section>
+
+
+        <StandaloneRelatedLinks
+          title="Dell overheating: related repair paths"
+          intro="If overheating is accompanied by shutdowns, board symptoms, or a model-specific repair need, continue through the most relevant KCROC destination."
+          links={[
+            { href: '/dell-laptop-repair-kuwait', label: 'Dell Laptop Repair Kuwait', description: 'Use the Dell brand hub for broader model-specific repair and diagnostics.' },
+            { href: '/laptop-overheating-kuwait', label: 'Laptop Overheating Problem', description: 'Move from this Dell-specific guide to the broader overheating diagnostic path.' },
+            { href: '/gaming-laptop-cleaning-kuwait', label: 'Gaming Laptop Cleaning', description: 'Relevant when dust, airflow restriction, fan wear, or thermal maintenance is the underlying issue.' },
+            { href: '/motherboard-repair-kuwait', label: 'Motherboard Repair Kuwait', description: 'Use component-level diagnosis when thermal damage or a board fault remains after cooling checks.' },
+          ]}
+        />
 
         {/* FAQs */}
         <section className="border-t border-slate-800 pt-12">
