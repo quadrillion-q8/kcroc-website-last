@@ -50,6 +50,9 @@ const BrandTemplate: React.FC = () => {
     .filter(Boolean);
 
   const whatsappLink = getIntentWhatsAppLink('service', brand.title);
+  // Map each brand-specific symptom card to an existing KCROC problem entity.
+  // This keeps brand pages as useful hubs without creating thin duplicate pages
+  // for every brand/problem combination.
   const issueProblemMap: Record<string, string> = {
     'lenovo-no-power': 'problem-no-power',
     'lenovo-not-charging': 'problem-not-charging',
@@ -61,6 +64,24 @@ const BrandTemplate: React.FC = () => {
     'lenovo-slow': 'problem-slow',
     'lenovo-boot': 'problem-windows-wont-boot',
     'lenovo-liquid': 'problem-liquid-spill',
+    'dell-hinge': 'problem-hinge-break',
+    'dell-thermal': 'problem-overheating',
+    'dell-dc-jack': 'problem-not-charging',
+    'dell-screen': 'problem-black-screen',
+    'dell-battery': 'problem-not-charging',
+    'hp-power': 'problem-no-power',
+    'hp-hinge': 'problem-hinge-break',
+    'hp-fan': 'problem-overheating',
+    'asus-liquid-metal': 'problem-overheating',
+    'asus-power': 'problem-no-power',
+    'asus-wifi': 'problem-wifi-fail',
+    'asus-screen': 'problem-black-screen',
+    'acer-dc-jack': 'problem-not-charging',
+    'acer-thermal': 'problem-overheating',
+    'acer-hinge': 'problem-hinge-break',
+    'msi-hinge': 'problem-hinge-break',
+    'msi-motherboard': 'problem-no-power',
+    'msi-battery': 'problem-not-charging',
   };
 
   return (
