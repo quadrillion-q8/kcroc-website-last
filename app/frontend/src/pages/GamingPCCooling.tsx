@@ -6,6 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge';
 import { Thermometer, Wind, Droplets, AlertTriangle, CheckCircle2, Phone, MessageCircle, Shield, Zap, Clock, Flame, Fan, Sun, CloudRain } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { StandaloneRelatedLinks } from '@/components/content/StandaloneRelatedLinks';
 
 import { KCROC_GRAPH } from '../data/graph';
 import SchemaMarkup from '../components/seo/SchemaMarkup';
@@ -540,6 +541,17 @@ export default function GamingPCCooling() {
           </div>
         </div>
       </section>
+
+      <StandaloneRelatedLinks
+        title="Gaming cooling: related repair paths"
+        intro="Persistent thermal or performance symptoms may point beyond routine cleaning. Use the matching repair destination."
+        links={[
+          { href: '/gaming-pc-repair-kuwait', label: 'Gaming PC & GPU Repair Kuwait', description: 'For overheating, crashes, artifacting, GPU, RAM, VRM, or power-delivery diagnosis.' },
+          { href: '/gaming-laptop-cleaning-kuwait', label: 'Gaming Laptop Cleaning', description: 'For gaming laptops with dust-restricted airflow, fan noise, or thermal maintenance needs.' },
+          { href: '/motherboard-repair-kuwait', label: 'Motherboard Repair Kuwait', description: 'For board-level thermal, power, or component faults that cleaning cannot solve.' },
+          { href: '/case-studies/asus-rog-dead-motherboard-hawalli', label: 'ASUS ROG Repair Case Study', description: 'See a real motherboard-level gaming repair example from KCROC.' },
+        ]}
+      />
 
       {/* ─── CTA SECTION ─── */}
       <section className="py-8 sm:py-24 px-4 sm:px-6">
