@@ -9,6 +9,7 @@ import {
   Phone, MessageCircle, Sun, Wind, Droplets, Monitor, Laptop 
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { StandaloneRelatedLinks } from '@/components/content/StandaloneRelatedLinks';
 
 import { KCROC_GRAPH } from '../data/graph';
 import SchemaMarkup from '../components/seo/SchemaMarkup';
@@ -138,6 +139,17 @@ export default function ScreenProtectionTips() {
           </Card>
         </div>
       </section>
+
+      <StandaloneRelatedLinks
+        title="Screen protection: repair paths if damage happens"
+        intro="When prevention cannot undo existing damage, use the specific repair path instead of treating every display symptom as the same problem."
+        links={[
+          { href: '/laptop-screen-repair-kuwait', label: 'Laptop Screen Repair Kuwait', description: 'For cracked, bleeding, flickering, or physically damaged displays.' },
+          { href: '/laptop-hinge-repair-kuwait', label: 'Laptop Hinge Repair Kuwait', description: 'For hinge stiffness, separation, or chassis stress that can contribute to screen damage.' },
+          { href: '/laptop-repair-kuwait', label: 'Laptop Repair Kuwait', description: 'For broader hardware diagnosis when display damage is not the only fault.' },
+          { href: '/book', label: 'Book a Repair', description: 'Arrange free pickup for a professional display or laptop inspection.' },
+        ]}
+      />
 
       {/* FAQ */}
       <section className="py-24 px-4">
