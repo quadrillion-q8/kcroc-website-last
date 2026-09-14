@@ -15,10 +15,65 @@ import { AutoLink } from '../utils/linkGraph';
 import { getIntentWhatsAppLink } from '../utils/whatsappIntent';
 import { trackLead } from '../utils/analytics';
 import SchemaMarkup from '../components/seo/SchemaMarkup';
+import { StandaloneRelatedLinks, RelatedLinkItem } from '@/components/content/StandaloneRelatedLinks';
 
 // Single source of truth for business identity — see graph.ts 'biz-kcroc'.
 // (Previously duplicated via constants/data.ts's BUSINESS_INFO.)
 const business = KCROC_GRAPH.business!;
+
+
+const STANDALONE_REPAIR_PATHS: Record<string, { title: string; intro: string; links: RelatedLinkItem[] }> = {
+  'laptop-wont-turn-on': {
+    title: "Laptop won't turn on: related repair paths",
+    intro: 'Use the symptom that best matches what the laptop is actually doing before choosing a repair destination.',
+    links: [
+      { href: '/windows-wont-boot-kuwait', label: "Windows Won't Boot", description: 'Use this path when the laptop powers on but Windows cannot complete startup.' },
+      { href: '/blue-screen-of-death-bsod-fix-kuwait', label: 'BSOD Diagnostic', description: 'For repeated Windows blue screens after the machine successfully powers on.' },
+      { href: '/laptop-plugged-in-not-charging', label: 'Laptop Plugged in but Not Charging', description: 'For charging-light, adapter, port, or battery symptoms rather than a true no-power case.' },
+      { href: '/motherboard-repair-kuwait', label: 'Motherboard Repair Kuwait', description: 'For measured board-level diagnosis when external power checks do not explain the failure.' },
+    ],
+  },
+  'laptop-temperatures-kuwait-safe-cpu-gpu-temperatures': {
+    title: 'Laptop temperatures: related repair paths',
+    intro: 'If temperature readings are accompanied by performance loss, shutdowns, or persistent fan problems, continue to the matching service path.',
+    links: [
+      { href: '/laptop-overheating-kuwait', label: 'Laptop Overheating', description: 'Use the problem page for sustained heat, thermal throttling, or unexpected shutdowns.' },
+      { href: '/gaming-laptop-cleaning-kuwait', label: 'Gaming Laptop Cleaning', description: 'For dust-restricted airflow, fan noise, and thermal maintenance on gaming laptops.' },
+      { href: '/laptop-repair-kuwait', label: 'Laptop Repair Kuwait', description: 'For broader diagnosis when cooling symptoms overlap with other hardware faults.' },
+      { href: '/motherboard-repair-kuwait', label: 'Motherboard Repair Kuwait', description: 'For board-level power or component faults that remain after cooling checks.' },
+    ],
+  },
+  'why-8gb-ram-is-no-longer-enough-for-windows-11': {
+    title: 'RAM upgrade: related repair paths',
+    intro: 'When memory pressure is the issue, connect the informational article to the upgrade and diagnostic services that can resolve it.',
+    links: [
+      { href: '/ssd-ram-upgrade-kuwait', label: 'SSD & RAM Upgrade Kuwait', description: 'The direct service path for memory upgrades and storage improvements.' },
+      { href: '/laptop-running-very-slow', label: 'Laptop Running Very Slow', description: 'For slowdowns where RAM, storage, thermals, or background software may all contribute.' },
+      { href: '/laptop-repair-kuwait', label: 'Laptop Repair Kuwait', description: 'Use broader diagnosis when performance problems are not explained by memory alone.' },
+      { href: '/gaming-pc-repair-kuwait', label: 'Gaming PC & GPU Repair Kuwait', description: 'For gaming systems where RAM capacity interacts with GPU, CPU, thermals, or stability.' },
+    ],
+  },
+  '10-reasons-why-people-are-dumping-windows-11': {
+    title: 'Windows troubleshooting: related repair paths',
+    intro: 'If a Windows complaint has become a concrete fault, move to the relevant diagnostic destination instead of treating every issue as an operating-system problem.',
+    links: [
+      { href: '/windows-wont-boot-kuwait', label: "Windows Won't Boot", description: 'For startup failures, boot loops, or systems that cannot reach Windows normally.' },
+      { href: '/blue-screen-of-death-bsod-fix-kuwait', label: 'BSOD Diagnostic', description: 'For repeated blue-screen crashes and stop-code troubleshooting.' },
+      { href: '/virus-malware-removal-kuwait', label: 'Virus & Malware Removal', description: 'For suspected infection or persistent malicious software symptoms.' },
+      { href: '/laptop-repair-kuwait', label: 'Laptop Repair Kuwait', description: 'For hardware or mixed software/hardware faults that need technician diagnosis.' },
+    ],
+  },
+  'gaming-pc-mistakes-kuwait': {
+    title: 'Gaming PC problems: related repair paths',
+    intro: 'Connect common gaming-PC mistakes to the service or evidence page that matches the resulting hardware symptom.',
+    links: [
+      { href: '/gaming-pc-repair-kuwait', label: 'Gaming PC & GPU Repair Kuwait', description: 'For instability, crashes, artifacting, GPU, RAM, power, and component-level faults.' },
+      { href: '/blog/gaming-pc-cooling', label: 'Gaming PC Cooling Guide', description: 'For heat, dust, fan, airflow, and thermal-interface problems.' },
+      { href: '/motherboard-repair-kuwait', label: 'Motherboard Repair Kuwait', description: 'For board-level faults caused by power, thermal, or component problems.' },
+      { href: '/case-studies/asus-rog-dead-motherboard-hawalli', label: 'ASUS ROG Repair Case Study', description: 'See a real gaming-motherboard repair example from KCROC.' },
+    ],
+  },
+};
 
 const AUTHOR_URL = `${business.websiteUrl}/author/imran`;
 const AUTHOR_IMAGE_URL =
@@ -597,6 +652,12 @@ export default function BlogPostTemplate() {
               </div>
             </section>
           </article>
+
+          {STANDALONE_REPAIR_PATHS[post.slug] && (
+            <StandaloneRelatedLinks
+              {...STANDALONE_REPAIR_PATHS[post.slug]}
+            />
+          )}
 
           {relatedPosts.length > 0 && (
             <section className="max-w-4xl mt-16 border-t border-slate-800/50 pt-12">
