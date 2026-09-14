@@ -249,7 +249,7 @@ export const BLOG_POSTS: BlogPost[] = [
     clusterParent: "laptop-repair-kuwait-2026",
     tags: ["gaming laptop cleaning", "gaming laptop thermal paste", "thermal throttling", "gaming laptop overheating", "gaming laptop maintenance", "Kuwait", "laptop cooling", "dust cleaning"],
     seoTitle: "Gaming Laptop Cleaning & Thermal Paste in Kuwait"
-  }
+  },
 
   {
     id: "guide-laptop-wont-turn-on-2026",
