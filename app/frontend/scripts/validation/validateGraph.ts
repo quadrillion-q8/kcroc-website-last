@@ -14,8 +14,10 @@ export async function validateGraph() {
 
   // The actual relational arrays used in the Knowledge Graph
   const relationalKeys = [
-    'relatedServiceIds', 
-    'featuredFAQIds', 
+    'relatedServiceIds',
+    'relatedProblemIds',
+    'relatedBrandIds',
+    'featuredFAQIds',
     'featuredUSPIds'
   ];
 
@@ -69,6 +71,26 @@ export async function validateGraph() {
         });
       }
     });
+
+    // Explicit path relationships are intentionally URL-based rather than ID-based.
+    // Validate their shape here so malformed guide/case-study links are caught even
+    // though they cannot participate in entity-ID incoming-edge counts.
+    if (Array.isArray(entity.relatedGuidePaths)) {
+      entity.relatedGuidePaths.forEach((guide: any) => {
+        hasOutgoingLinks = true;
+        if (!guide || typeof guide.label !== 'string' || typeof guide.path !== 'string' || !guide.path.startsWith('/')) {
+          errors.push(`[${entity.id}] Invalid relatedGuidePaths entry: expected { label, path } with an absolute site path.`);
+        }
+      });
+    }
+
+    if (entity.relatedCaseStudyPath !== undefined) {
+      hasOutgoingLinks = true;
+      const cs = entity.relatedCaseStudyPath;
+      if (!cs || typeof cs.label !== 'string' || typeof cs.path !== 'string' || !cs.path.startsWith('/')) {
+        errors.push(`[${entity.id}] Invalid relatedCaseStudyPath: expected { label, path } with an absolute site path.`);
+      }
+    }
     
     entity._hasOutgoing = hasOutgoingLinks;
   });
