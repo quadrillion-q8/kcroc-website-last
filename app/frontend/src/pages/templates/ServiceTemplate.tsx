@@ -468,11 +468,27 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
               <MapPin className="w-6 h-6 text-cyan-400" /> Service Areas in Kuwait
             </h2>
             <div className="flex flex-wrap gap-3">
-              {KCROC_GRAPH.locations.map((loc) => (
-                <span key={loc.id} className="px-4 py-2 rounded-full bg-slate-900/60 border border-slate-800 text-slate-200 text-sm font-medium">
-                  {loc.title}
-                </span>
-              ))}
+              {KCROC_GRAPH.locations
+                .filter((loc) => loc.isPhysicalLocation || ['hawalli', 'salmiya', 'farwaniya', 'kuwait-city', 'jahra'].includes(loc.slug))
+                .map((loc) => (
+                  loc.isPhysicalLocation ? (
+                    <Link
+                      key={loc.id}
+                      to={loc.seo?.canonicalUrl?.replace(/^https?:\/\/[^/]+/, '') || `/location/${loc.slug}`}
+                      className="px-4 py-2 rounded-full bg-slate-900/60 border border-slate-800 text-slate-200 text-sm font-medium hover:border-cyan-500/40 hover:text-cyan-300 transition-colors"
+                    >
+                      {loc.title}
+                    </Link>
+                  ) : (
+                    <Link
+                      key={loc.id}
+                      to={`/location/${loc.slug}`}
+                      className="px-4 py-2 rounded-full bg-slate-900/60 border border-slate-800 text-slate-200 text-sm font-medium hover:border-cyan-500/40 hover:text-cyan-300 transition-colors"
+                    >
+                      {loc.title}
+                    </Link>
+                  )
+                ))}
             </div>
           </section>
         )}
