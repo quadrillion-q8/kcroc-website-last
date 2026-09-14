@@ -66,6 +66,7 @@ const ScreenProtectionTips = lazy(() => import('./pages/ScreenProtectionTips'));
 // Content Pillars & Clusters
 const LaptopBuyingGuide = lazy(() => import('./pages/LaptopBuyingGuide'));
 const LaptopBuyingGuideAR = lazy(() => import('./pages/LaptopBuyingGuideAR'));
+const GamingLaptopCleaningAR = lazy(() => import('./pages/GamingLaptopCleaningAR'));
 const IntelVsAmdGuide = lazy(() => import('./pages/IntelVsAmdGuide')); 
 
 // Author Bio Pages
@@ -146,6 +147,7 @@ export const routes: RouteObject[] = [
           { path: 'blog/gaming-pc-cooling', element: <GamingPCCooling /> },
           { path: 'blog/laptop-buying-guide-kuwait-2026', element: <LaptopBuyingGuide /> },
           { path: 'blog/ar/laptop-buying-guide-kuwait-2026', element: <LaptopBuyingGuideAR /> },
+          { path: 'blog/ar/how-often-clean-laptop-replace-thermal-paste-kuwait', element: <GamingLaptopCleaningAR /> },
           { path: 'blog/intel-core-ultra-vs-amd-ryzen-ai', element: <IntelVsAmdGuide /> },
           { path: 'author/imran', element: <AuthorImran /> },
           { path: 'guides/laptop-battery-warning-signs', element: <BatteryHealthGuide /> },
