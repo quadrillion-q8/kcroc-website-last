@@ -9,6 +9,7 @@ import {
   ChevronRight, Sun, PowerOff, TrendingDown
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { StandaloneRelatedLinks } from '@/components/content/StandaloneRelatedLinks';
 import StickyTOC from '@/components/blog/StickyTOC';
 
 import { KCROC_GRAPH } from '../data/graph';
@@ -969,6 +970,17 @@ export default function BatteryHealthGuide() {
           </p>
         </div>
       </section>
+
+      <StandaloneRelatedLinks
+        title="Battery warning signs: what to do next"
+        intro="Use these related KCROC paths when battery symptoms overlap with charging, power, or broader laptop faults."
+        links={[
+          { href: '/battery-replacement-kuwait', label: 'Laptop Battery Replacement Kuwait', description: 'Move from battery-health symptoms to professional testing and replacement.' },
+          { href: '/laptop-plugged-in-not-charging', label: 'Laptop Plugged in but Not Charging', description: 'Use this problem path when the battery issue may actually be charging or power related.' },
+          { href: '/laptop-repair-kuwait', label: 'Laptop Repair Kuwait', description: 'Broader diagnosis when the fault may involve the charging circuit or motherboard.' },
+          { href: '/guides/laptop-wont-turn-on', label: "Laptop Won't Turn On Guide", description: 'Follow the no-power path when battery symptoms are accompanied by a dead or unresponsive laptop.' },
+        ]}
+      />
 
       {/* ─── FAQ ─── */}
       <section id="faq" className="scroll-mt-20 border-t border-slate-900 px-4 py-10 sm:px-6 sm:py-20">
