@@ -23,6 +23,16 @@ const business = KCROC_GRAPH.business!;
 
 
 const STANDALONE_REPAIR_PATHS: Record<string, { title: string; intro: string; links: RelatedLinkItem[] }> = {
+  'how-often-clean-laptop-replace-thermal-paste-kuwait': {
+    title: 'Laptop cooling: related repair paths',
+    intro: 'If cleaning or thermal maintenance is no longer enough, use the repair path that matches the symptom.',
+    links: [
+      { href: '/laptop-overheating-kuwait', label: 'Laptop Overheating', description: 'For persistent high temperatures, thermal throttling, or unexpected shutdowns.' },
+      { href: '/gaming-laptop-cleaning-kuwait', label: 'Gaming Laptop Cleaning', description: 'For dust-restricted airflow, fan noise, and gaming-laptop thermal maintenance.' },
+      { href: '/laptop-repair-kuwait', label: 'Laptop Repair Kuwait', description: 'For broader diagnosis when cooling symptoms overlap with another hardware fault.' },
+      { href: '/motherboard-repair-kuwait', label: 'Motherboard Repair Kuwait', description: 'For board-level faults that remain after cooling checks.' },
+    ],
+  },
   'laptop-wont-turn-on': {
     title: "Laptop won't turn on: related repair paths",
     intro: 'Use the symptom that best matches what the laptop is actually doing before choosing a repair destination.',
