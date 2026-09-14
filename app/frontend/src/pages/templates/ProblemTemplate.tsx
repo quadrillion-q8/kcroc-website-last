@@ -18,6 +18,10 @@ const ProblemTemplate: React.FC = () => {
     .map((id) => KCROC_GRAPH.services.find((service) => service.id === id))
     .filter((service): service is NonNullable<typeof service> => Boolean(service));
 
+  const relatedBrands = (problem.relatedBrandIds ?? [])
+    .map((id) => KCROC_GRAPH.brands.find((brand) => brand.id === id))
+    .filter((brand): brand is NonNullable<typeof brand> => Boolean(brand));
+
   // Real repairs already tagged with this exact problem — proof, not promises.
   const relatedCaseStudies = KCROC_GRAPH.caseStudies.filter((cs) =>
     cs.problemIds?.includes(problem.id)
@@ -231,12 +235,17 @@ const ProblemTemplate: React.FC = () => {
             </div>
           </section>
 
-          {problem.coveredBrands && problem.coveredBrands.length > 0 && (
+          {((problem.coveredBrands && problem.coveredBrands.length > 0) || relatedBrands.length > 0) && (
             <section aria-labelledby="brands-covered">
               <h2 id="brands-covered" className="text-2xl font-black text-white">Brands and devices covered</h2>
-              <p className="mt-2 text-slate-400">The no-power diagnostic approach applies across major laptop designs; the exact power architecture varies by model.</p>
+              <p className="mt-2 text-slate-400">The diagnostic approach applies across major laptop designs; the exact hardware path varies by model.</p>
               <div className="mt-5 flex flex-wrap gap-3">
-                {problem.coveredBrands.map((brand) => (
+                {relatedBrands.map((brand) => (
+                  <a key={brand.id} href={`/${brand.slug}`} className="rounded-full border border-slate-800 bg-slate-900/60 px-4 py-2 text-sm font-bold text-cyan-300 hover:border-cyan-500/40">
+                    {brand.brandName}
+                  </a>
+                ))}
+                {(problem.coveredBrands ?? []).filter((name) => !relatedBrands.some((brand) => brand.brandName.toLowerCase() === name.toLowerCase())).map((brand) => (
                   <span key={brand} className="rounded-full border border-slate-800 bg-slate-900/60 px-4 py-2 text-sm text-slate-300">{brand}</span>
                 ))}
               </div>
