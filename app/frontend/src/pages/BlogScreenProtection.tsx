@@ -2,6 +2,7 @@
 import { Head } from 'vite-react-ssg';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { StandaloneRelatedLinks } from '@/components/content/StandaloneRelatedLinks';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -574,6 +575,17 @@ export default function BlogScreenProtection() {
           </div>
         </div>
       </section>
+
+      <StandaloneRelatedLinks
+        title="Screen protection: related repair paths"
+        intro="If prevention is too late and the display or chassis is already damaged, these are the most relevant KCROC destinations."
+        links={[
+          { href: '/laptop-screen-repair-kuwait', label: 'Laptop Screen Repair Kuwait', description: 'For cracked panels, display damage, flickering, lines, or internal panel failure.' },
+          { href: '/laptop-hinge-repair-kuwait', label: 'Laptop Hinge Repair Kuwait', description: 'Relevant when display damage is connected to hinge stiffness, separation, or chassis stress.' },
+          { href: '/laptop-repair-kuwait', label: 'Laptop Repair Kuwait', description: 'Use the broader laptop repair path when the screen issue is part of a larger hardware fault.' },
+          { href: '/book', label: 'Book a Repair', description: 'Arrange KCROC pickup when the laptop needs professional inspection or replacement.' },
+        ]}
+      />
 
       {/* FAQ Section */}
       <section className="py-8 sm:py-24 px-4 border-t border-slate-900 bg-slate-900/20">
