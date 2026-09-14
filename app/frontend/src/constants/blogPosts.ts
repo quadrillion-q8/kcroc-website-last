@@ -222,7 +222,7 @@ export const BLOG_POSTS: BlogPost[] = [
     category: "Hardware Maintenance",
     readTime: "10 min read",
     clusterParent: "laptop-repair-kuwait-2026",
-    tags: ["laptop cleaning", "thermal paste", "laptop overheating", "laptop maintenance", "Kuwait", "laptop cooling", "dust cleaning", "gaming laptop"]
+    tags: ["laptop cleaning", "thermal paste", "laptop overheating", "laptop maintenance", "Kuwait", "laptop cooling", "dust cleaning", "gaming laptop"],
     seoTitle: "How Often to Clean a Laptop & Replace Thermal Paste in Kuwait"
   },
 
