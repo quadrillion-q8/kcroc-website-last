@@ -14,6 +14,7 @@ import StickyTOC from '@/components/blog/StickyTOC';
 import { KCROC_GRAPH } from '../data/graph';
 import { SEOEngine } from '../core/components/SEOEngine';
 import { IMAGES } from '../constants/images';
+import { StandaloneRelatedLinks } from '@/components/content/StandaloneRelatedLinks';
 
 // Dynamic Business Data
 const business = KCROC_GRAPH.business!;
@@ -919,6 +920,18 @@ export default function BiosUefiRecoveryGuide() {
           </div>
         </div>
       </section>
+
+
+      <StandaloneRelatedLinks
+        title="BIOS recovery: related diagnostic paths"
+        intro="Firmware failures can resemble power, POST, Windows, or motherboard faults. Use the path that matches the actual symptom."
+        links={[
+          { href: '/windows-wont-boot-kuwait', label: "Windows Won't Boot", description: 'Use this path when firmware setup works but Windows cannot complete startup.' },
+          { href: '/blue-screen-of-death-bsod-fix-kuwait', label: 'BSOD Diagnostic', description: 'Follow the Windows crash path when the system reaches Windows but repeatedly blue-screens.' },
+          { href: '/laptop-wont-turn-on', label: "Laptop Won't Turn On", description: 'Separate a true no-power condition from a firmware or POST failure.' },
+          { href: '/motherboard-repair-kuwait', label: 'Motherboard Repair Kuwait', description: 'For board-level diagnosis when recovery attempts do not explain the failure.' },
+        ]}
+      />
 
       {/* ─── COST & TIME ─── */}
       <section className="py-8 sm:py-16 px-4 sm:px-6 bg-slate-900/30 border-t border-slate-900">
