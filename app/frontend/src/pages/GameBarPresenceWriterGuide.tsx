@@ -1,6 +1,7 @@
 // File: app/frontend/src/pages/GameBarPresenceWriterGuide.tsx
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { StandaloneRelatedLinks } from '@/components/content/StandaloneRelatedLinks';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import {
@@ -502,6 +503,17 @@ export default function GameBarPresenceWriterGuide() {
           </div>
         </div>
       </section>
+
+      <StandaloneRelatedLinks
+        title="GameBar performance: related troubleshooting paths"
+        intro="If the executable is not the real bottleneck, move from software symptoms to the relevant gaming hardware or Windows diagnostic path."
+        links={[
+          { href: '/gaming-pc-repair-kuwait', label: 'Gaming PC & GPU Repair Kuwait', description: 'For persistent stutter, crashes, artifacting, thermals, GPU, RAM, or power instability.' },
+          { href: '/blog/gaming-pc-cooling', label: 'Gaming PC Cooling Guide', description: 'Check cooling, dust, fans, thermal interfaces, and sustained-load behavior before registry tweaks.' },
+          { href: '/laptop-overheating-kuwait', label: 'Laptop Overheating Problem', description: 'Useful when gaming performance falls as a laptop heats up.' },
+          { href: '/windows-wont-boot-kuwait', label: "Windows Won't Boot", description: 'Use the Windows startup path when performance troubleshooting becomes a broader boot problem.' },
+        ]}
+      />
 
       <section id="faq" className={sectionClass}>
         <div className="container mx-auto max-w-5xl">
