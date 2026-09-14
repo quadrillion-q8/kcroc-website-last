@@ -268,6 +268,27 @@ export const rawGraphData: RawGraphData = {
         schemaTypes: ['Article', 'FAQPage', 'BreadcrumbList']
       }
     } as WebPageEntity,
+    'blog-gaming-laptop-cleaning-ar': {
+      id: 'blog-gaming-laptop-cleaning-ar',
+      slug: 'blog/ar/how-often-clean-laptop-replace-thermal-paste-kuwait',
+      entityType: 'WebPage',
+      isActive: true,
+      title: 'كل كم لازم تنظف لابتوب القيمنق وتغيّر المعجون الحراري في الكويت؟',
+      description: 'دليل عملي باللهجة الكويتية عن تنظيف لابتوب القيمنق وتغيير المعجون الحراري وتأثير حرارة وغبار الكويت على التبريد.',
+      seo: {
+        title: 'تنظيف لابتوب القيمنق وتغيير المعجون الحراري في الكويت | KCROC',
+        description: 'كل كم لازم تنظف لابتوب القيمنق في الكويت؟ تعرف على جدول تنظيف الغبار، متى تغيّر المعجون الحراري، وعلامات ارتفاع الحرارة والـthermal throttling.',
+        canonicalUrl: 'https://www.computerrepairkuwait.com/blog/ar/how-often-clean-laptop-replace-thermal-paste-kuwait',
+        ogType: 'article',
+        locale: 'ar_KW',
+        alternates: {
+          'en-KW': '/blog/how-often-clean-laptop-replace-thermal-paste-kuwait',
+          'ar-KW': '/blog/ar/how-often-clean-laptop-replace-thermal-paste-kuwait',
+          'x-default': '/blog/how-often-clean-laptop-replace-thermal-paste-kuwait'
+        },
+        schemaTypes: ['Article', 'FAQPage', 'BreadcrumbList', 'Person']
+      }
+    } as WebPageEntity,
     // 🩹 REMOVED (audit): 'guide-dell-inspiron-overheating' used to live here,
     // pointing at slug 'guides/dell-inspiron-15-3000-overheating' with its own
     // canonicalUrl declaring that URL canonical. But App.tsx's route for that
