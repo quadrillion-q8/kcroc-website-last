@@ -122,6 +122,8 @@ export interface BlogPost {
   clusterParent?: string;
   tags?: string[];
   seoTitle?: string;
+  /** Optional Arabic counterpart for hreflang/cross-language discovery. */
+  arabicSlug?: string;
   /** Public IA route for this content. Defaults to the Blog. */
   contentType?: 'blog' | 'guide';
 }
@@ -248,7 +250,8 @@ export const BLOG_POSTS: BlogPost[] = [
     readTime: "12 min read",
     clusterParent: "laptop-repair-kuwait-2026",
     tags: ["gaming laptop cleaning", "gaming laptop thermal paste", "thermal throttling", "gaming laptop overheating", "gaming laptop maintenance", "Kuwait", "laptop cooling", "dust cleaning"],
-    seoTitle: "Gaming Laptop Cleaning & Thermal Paste in Kuwait"
+    seoTitle: "Gaming Laptop Cleaning & Thermal Paste in Kuwait",
+    arabicSlug: "ar/how-often-clean-laptop-replace-thermal-paste-kuwait"
   },
 
   {
