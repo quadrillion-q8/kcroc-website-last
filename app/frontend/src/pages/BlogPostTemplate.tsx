@@ -465,6 +465,13 @@ export default function BlogPostTemplate() {
         <title>{post.seoTitle || `${post.title.length > 57 ? `${post.title.slice(0, 57)}…` : post.title} | KCROC`}</title>
         <meta name="description" content={(post.description || post.excerpt).slice(0, 155)} />
         <link rel="canonical" href={pageUrl} />
+        {post.arabicSlug && (
+          <>
+            <link rel="alternate" hrefLang="en-KW" href={pageUrl} />
+            <link rel="alternate" hrefLang="ar-KW" href={`${business.websiteUrl}/blog/${post.arabicSlug}`} />
+            <link rel="alternate" hrefLang="x-default" href={pageUrl} />
+          </>
+        )}
         <meta property="og:type" content="article" />
         <meta property="og:title" content={post.seoTitle || post.title} />
         <meta property="og:description" content={post.description || post.excerpt} />
