@@ -2,6 +2,7 @@
 import { Head } from 'vite-react-ssg';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { StandaloneRelatedLinks } from '@/components/content/StandaloneRelatedLinks';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -496,6 +497,17 @@ export default function BlogLaptopRepair() {
           </div>
         </div>
       </section>
+
+      <StandaloneRelatedLinks
+        title="Laptop repair topics to explore next"
+        intro="This overview connects common laptop-repair symptoms to the specific service or troubleshooting destination that fits them."
+        links={[
+          { href: '/guides/laptop-wont-turn-on', label: "Laptop Won't Turn On", description: 'Start here for no-power, charger, battery, charging-port, and motherboard power symptoms.' },
+          { href: '/laptop-overheating-kuwait', label: 'Laptop Overheating', description: 'Follow the thermal path for shutdowns, loud fans, dust buildup, or heat-related performance loss.' },
+          { href: '/battery-replacement-kuwait', label: 'Battery Replacement Kuwait', description: 'For swollen, degraded, rapidly draining, or otherwise failing laptop batteries.' },
+          { href: '/motherboard-repair-kuwait', label: 'Motherboard Repair Kuwait', description: 'For component-level faults when ordinary part replacement is not the right answer.' },
+        ]}
+      />
 
       {/* FAQ Section */}
       <section className="py-8 sm:py-24 px-4 sm:px-6 border-t border-slate-800 bg-slate-900/30">
