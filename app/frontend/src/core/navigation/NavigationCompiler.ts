@@ -209,7 +209,6 @@ export class NavigationCompiler {
         { id: 'b9', slug: 'blog/why-8gb-ram-is-no-longer-enough-for-windows-11', title: '8GB RAM & Windows 11', description: 'Why 8GB is now the bottleneck', iconKey: 'cpu', entityType: 'Page' as any, primaryKeyword: 'ram', weight: 0, commercialIntent: 'info' },
         { id: 'b10', slug: 'blog/10-reasons-why-people-are-dumping-windows-11', title: '10 Reasons People Are Dumping Windows 11', description: 'A close look at the Windows 11 backlash', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'windows 11', weight: 0, commercialIntent: 'info' },
         { id: 'b11', slug: 'blog/gaming-pc-mistakes-kuwait', title: 'Gaming PC Mistakes', description: 'Common build & cooling mistakes to avoid', iconKey: 'gaming', entityType: 'Page' as any, primaryKeyword: 'gaming pc mistakes', weight: 0, commercialIntent: 'info' },
-        { id: 'b13', slug: 'blog/how-often-clean-laptop-replace-thermal-paste-kuwait', title: 'Clean a Laptop & Replace Thermal Paste', description: 'Cleaning intervals and thermal paste guidance', iconKey: 'cpu', entityType: 'Page' as any, primaryKeyword: 'thermal paste', weight: 0, commercialIntent: 'info' },
       ],
       sections: [{
         title: 'More',
@@ -220,6 +219,7 @@ export class NavigationCompiler {
           { id: 'b3', slug: 'laptop-screen-protection-tips', title: 'Screen Protection Tips', description: '', iconKey: 'shield', entityType: 'Page' as any, primaryKeyword: 'tips', weight: 0, commercialIntent: 'info' },
           { id: 'b4', slug: 'blog/how-to-protect-laptop-screen', title: 'Protect Laptop Screen', description: '', iconKey: 'monitor', entityType: 'Page' as any, primaryKeyword: 'protect', weight: 0, commercialIntent: 'info' },
           { id: 'b5', slug: 'blog/gaming-pc-cooling', title: 'Gaming PC Cooling', description: '', iconKey: 'gaming', entityType: 'Page' as any, primaryKeyword: 'cooling', weight: 0, commercialIntent: 'info' },
+          { id: 'b13', slug: 'blog/how-often-clean-laptop-replace-thermal-paste-kuwait', title: 'How Often to Clean a Gaming Laptop & Replace Thermal Paste', description: 'Cleaning intervals and thermal-paste guidance for Kuwait heat and dust', iconKey: 'cpu', entityType: 'Page' as any, primaryKeyword: 'gaming laptop cleaning thermal paste', weight: 0, commercialIntent: 'info' },
         ]
       }]
     };
@@ -339,16 +339,48 @@ export class NavigationCompiler {
 // which still has to execute synchronously on mount before paint).
 export const COMPILED_NAVIGATION: CompiledNavigationModel = NavigationCompiler.compileNavigation();
 
-// 🩹 FIX: Header.tsx imports `getLocalizedNavigation(pathname)` (presumably
-// intended to swap in Arabic labels/hrefs for /ar/* routes down the line),
-// but no such export existed here, which broke the production build
-// ("getLocalizedNavigation" is not exported by NavigationCompiler.ts).
-// There's currently no separate localized nav dataset anywhere in the repo
-// (NAV_GRAPH carries no per-locale labels), so for now this just returns the
-// single compiled navigation model regardless of path — functionally
-// identical to referencing COMPILED_NAVIGATION directly. The pathname
-// parameter is kept so Header's call site doesn't need to change again once
-// real per-locale nav data exists.
-export function getLocalizedNavigation(_pathname: string): CompiledNavigationModel {
-  return COMPILED_NAVIGATION;
+/**
+ * Localizes navigation presentation for the current route without rebuilding
+ * the static navigation model. English remains the default; Arabic blog
+ * routes receive their Arabic counterpart for items that have one.
+ *
+ * Keeping this transformation here means Header.tsx does not own blog/menu
+ * content, while COMPILED_NAVIGATION can remain a build-time, immutable model.
+ */
+const BLOG_ARABIC_VARIANTS: Record<string, Pick<NavEntity, 'slug' | 'title' | 'description' | 'primaryKeyword'>> = {
+  b13: {
+    slug: 'blog/ar/how-often-clean-laptop-replace-thermal-paste-kuwait',
+    title: 'كل كم لازم تنظف لابتوب القيمنق وتغيّر المعجون الحراري في الكويت؟',
+    description: 'دليل عملي باللهجة الكويتية عن تنظيف لابتوب القيمنق وتغيير المعجون الحراري وتأثير حرارة وغبار الكويت على التبريد.',
+    primaryKeyword: 'تنظيف لابتوب القيمنق والمعجون الحراري',
+  },
+};
+
+export function getLocalizedNavigation(pathname: string): CompiledNavigationModel {
+  const isArabicRoute = pathname === '/ar' || pathname.startsWith('/ar/') || pathname.startsWith('/blog/ar/');
+
+  if (!isArabicRoute) return COMPILED_NAVIGATION;
+
+  const blogMenu = COMPILED_NAVIGATION.megaMenus.blog_mega;
+  if (!blogMenu) return COMPILED_NAVIGATION;
+
+  const localize = (item: NavEntity): NavEntity => {
+    const variant = BLOG_ARABIC_VARIANTS[item.id];
+    return variant ? { ...item, ...variant } : item;
+  };
+
+  return {
+    ...COMPILED_NAVIGATION,
+    megaMenus: {
+      ...COMPILED_NAVIGATION.megaMenus,
+      blog_mega: {
+        ...blogMenu,
+        featured: blogMenu.featured.map(localize),
+        sections: blogMenu.sections.map(section => ({
+          ...section,
+          items: section.items.map(localize),
+        })),
+      },
+    },
+  };
 }
