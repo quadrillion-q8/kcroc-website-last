@@ -53,6 +53,14 @@ const EXTRA_GUIDES: ExtraGuideCard[] = [
     date: '2026-08-07',
     readTime: 'قراءة 23 دقيقة',
   },
+  {
+    entityId: 'blog-gaming-laptop-cleaning-ar',
+    href: '/blog/ar/how-often-clean-laptop-replace-thermal-paste-kuwait',
+    image: '/images/blog/gaming-pc-thermal-throttling-kuwait.webp',
+    category: 'صيانة لابتوب القيمنق',
+    date: '2026-09-14',
+    readTime: 'قراءة 12 دقيقة',
+  },
 ];
 
 interface BlogCardItem {
