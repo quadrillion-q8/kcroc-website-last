@@ -3,7 +3,7 @@ import React, { useState, useRef, useEffect, useCallback, Suspense } from 'react
 import { Link, useLocation, matchPath } from 'react-router-dom';
 import { Menu, X, ChevronDown, Phone, CalendarCheck, Laptop, Search } from 'lucide-react';
 import { NAV_GRAPH } from '../../../data/navGraph.generated';
-import { COMPILED_NAVIGATION } from '../../navigation/NavigationCompiler';
+import { COMPILED_NAVIGATION, getLocalizedNavigation } from '../../navigation/NavigationCompiler';
 import { useAnalytics } from '../../analytics/AnalyticsProvider';
 import { Button } from '@/components/ui/button';
 import MobileMenu from './MobileMenu';
@@ -42,7 +42,7 @@ export default function Header() {
   const location = useLocation();
   const { trackConversion } = useAnalytics();
   
-  const navModel = COMPILED_NAVIGATION;
+  const navModel = getLocalizedNavigation(location.pathname);
   
   const phoneDisplay = NAV_GRAPH.business!.telephone;
   const cleanTel = phoneDisplay.replace(/\D/g, '');
