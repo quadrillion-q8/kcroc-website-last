@@ -568,12 +568,12 @@ export const BLOG_POSTS: BlogPost[] = [
     id: "blog-gaming-cooling",
     slug: "gaming-pc-cooling",
     title: "Why Your Gaming PC is Overheating in Kuwait",
-    excerpt: "Experiencing severe FPS drops in Warzone or Valorant? Thermal throttling is likely the culprit. Here is how to fix it permanently.",
+    excerpt: "Experiencing severe FPS drops in Warzone or Valorant? Cooling, drivers, power delivery and other bottlenecks can all contribute. Here is how to investigate overheating without assuming one cause.",
     content: [
-      "Gaming PCs generate massive amounts of heat. When you pair an RTX 4080 or RX 7900 XTX with Kuwait's intense summer climate, standard factory cooling solutions fail rapidly.",
-      "Thermal paste degradation is the number one cause of sudden performance drops. Factory-applied paste dries out and cracks, creating microscopic air pockets between your CPU and the cooler. This is known as 'pump-out' effect.",
-      "When the CPU hits 95°C, it automatically throttles its clock speed to prevent melting. In-game, this looks like massive stuttering and FPS drops.",
-      "The permanent solution for Kuwait gamers involves stripping the factory paste and applying advanced phase-change materials or liquid metal, coupled with aggressively tuned fan curves in the BIOS. Maintaining positive case pressure also prevents the fine Kuwaiti dust from choking your radiator fins."
+      "Gaming PCs can generate substantial heat under sustained load. Kuwait's warm ambient conditions reduce cooling headroom, but a healthy factory cooling system does not automatically fail or require replacement; airflow, dust, fan condition, cooler capacity and workload all matter.",
+      "Thermal-interface degradation is one possible contributor to rising temperatures, but it should not be treated as the default diagnosis. Dust-packed fins, restricted airflow, failing fans, cooler mounting, high ambient temperature, software load and power settings can produce similar symptoms.",
+      "Modern CPUs and GPUs use temperature and power-management controls that may reduce clocks when operating limits are reached. The exact limits vary by processor, firmware and workload, so a single 95°C reading is not proof of failure; compare sustained temperatures, clock behavior, utilization and frame-time changes.",
+      "The appropriate fix depends on the measured cause. It may involve cleaning filters and heatsinks, correcting airflow, checking fan operation, reviewing fan curves, verifying cooler mounting, or replacing thermal interface material when inspection supports it. Positive case pressure can help manage dust when the case has properly filtered intakes, but it does not replace regular inspection and cleaning."
     ],
     image: "/images/blog/gaming-pc-thermal-throttling-kuwait.webp",
     date: "2026-06-22",
