@@ -338,3 +338,49 @@ export class NavigationCompiler {
 // (previously via `useMemo(() => NavigationCompiler.compileNavigation(), [])`,
 // which still has to execute synchronously on mount before paint).
 export const COMPILED_NAVIGATION: CompiledNavigationModel = NavigationCompiler.compileNavigation();
+
+/**
+ * Localizes navigation presentation for the current route without rebuilding
+ * the static navigation model. English remains the default; Arabic blog
+ * routes receive their Arabic counterpart for items that have one.
+ *
+ * Keeping this transformation here means Header.tsx does not own blog/menu
+ * content, while COMPILED_NAVIGATION can remain a build-time, immutable model.
+ */
+const BLOG_ARABIC_VARIANTS: Record<string, Pick<NavEntity, 'slug' | 'title' | 'description' | 'primaryKeyword'>> = {
+  b13: {
+    slug: 'blog/ar/how-often-clean-laptop-replace-thermal-paste-kuwait',
+    title: 'كل كم لازم تنظف لابتوب القيمنق وتغيّر المعجون الحراري في الكويت؟',
+    description: 'دليل عملي باللهجة الكويتية عن تنظيف لابتوب القيمنق وتغيير المعجون الحراري وتأثير حرارة وغبار الكويت على التبريد.',
+    primaryKeyword: 'تنظيف لابتوب القيمنق والمعجون الحراري',
+  },
+};
+
+export function getLocalizedNavigation(pathname: string): CompiledNavigationModel {
+  const isArabicRoute = pathname === '/ar' || pathname.startsWith('/ar/') || pathname.startsWith('/blog/ar/');
+
+  if (!isArabicRoute) return COMPILED_NAVIGATION;
+
+  const blogMenu = COMPILED_NAVIGATION.megaMenus.blog_mega;
+  if (!blogMenu) return COMPILED_NAVIGATION;
+
+  const localize = (item: NavEntity): NavEntity => {
+    const variant = BLOG_ARABIC_VARIANTS[item.id];
+    return variant ? { ...item, ...variant } : item;
+  };
+
+  return {
+    ...COMPILED_NAVIGATION,
+    megaMenus: {
+      ...COMPILED_NAVIGATION.megaMenus,
+      blog_mega: {
+        ...blogMenu,
+        featured: blogMenu.featured.map(localize),
+        sections: blogMenu.sections.map(section => ({
+          ...section,
+          items: section.items.map(localize),
+        })),
+      },
+    },
+  };
+}
