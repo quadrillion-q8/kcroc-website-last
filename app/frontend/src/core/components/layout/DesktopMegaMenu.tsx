@@ -49,26 +49,58 @@ export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnte
 
   const handleKeyDown = useCallback((e: KeyboardEvent) => {
     if (!isOpen || !panelRef.current) return;
-    if (e.key === 'Escape') { onClose(); return; }
-    if (e.key === 'Tab') {
-      const focusable = panelRef.current.querySelectorAll<HTMLElement>('a[href], button:not([disabled])');
-      if (focusable.length === 0) return;
-      const first = focusable[0];
-      const last = focusable[focusable.length - 1];
-      if (e.shiftKey && document.activeElement === first) {
-        last.focus();
-        e.preventDefault();
-      } else if (!e.shiftKey && document.activeElement === last) {
-        first.focus();
-        e.preventDefault();
-      }
+
+    const focusable = Array.from(
+      panelRef.current.querySelectorAll<HTMLElement>('a[href], button:not([disabled])')
+    );
+    const activeIndex = focusable.indexOf(document.activeElement as HTMLElement);
+
+    if (e.key === 'Escape') {
+      e.preventDefault();
+      onClose();
+      requestAnimationFrame(() => {
+        document.querySelector<HTMLElement>(`[aria-controls="mega-menu-${config.id}"]`)?.focus();
+      });
+      return;
     }
-  }, [isOpen, onClose]);
+
+    if (focusable.length === 0) return;
+
+    if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+      e.preventDefault();
+      const nextIndex = activeIndex >= 0 ? (activeIndex + 1) % focusable.length : 0;
+      focusable[nextIndex].focus();
+      return;
+    }
+
+    if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+      e.preventDefault();
+      const previousIndex = activeIndex > 0 ? activeIndex - 1 : focusable.length - 1;
+      focusable[previousIndex].focus();
+      return;
+    }
+
+    // Keep Tab as the native sequential navigation mechanism. This avoids
+    // trapping keyboard focus inside a non-modal mega menu while still
+    // allowing every menu item to be reached with Tab/Shift+Tab.
+  }, [config.id, isOpen, onClose]);
 
   useEffect(() => {
     document.addEventListener('keydown', handleKeyDown);
     return () => document.removeEventListener('keydown', handleKeyDown);
   }, [handleKeyDown]);
+
+  // When a keyboard user opens a menu from its header trigger, move focus
+  // into the menu. Pointer/hover opening does not steal focus.
+  useEffect(() => {
+    if (!isOpen || !panelRef.current) return;
+    const trigger = document.querySelector<HTMLElement>(`[aria-controls="mega-menu-${config.id}"]`);
+    if (document.activeElement === trigger) {
+      requestAnimationFrame(() => {
+        panelRef.current?.querySelector<HTMLElement>('a[href], button:not([disabled])')?.focus();
+      });
+    }
+  }, [config.id, isOpen]);
 
   if (!config) return null;
 
@@ -77,6 +109,7 @@ export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnte
       ref={panelRef}
       id={`mega-menu-${config.id}`}
       role="menu"
+      aria-label={config.title}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
       style={{
