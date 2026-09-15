@@ -219,7 +219,7 @@ export class NavigationCompiler {
           { id: 'b3', slug: 'laptop-screen-protection-tips', title: 'Screen Protection Tips', description: '', iconKey: 'shield', entityType: 'Page' as any, primaryKeyword: 'tips', weight: 0, commercialIntent: 'info' },
           { id: 'b4', slug: 'blog/how-to-protect-laptop-screen', title: 'Protect Laptop Screen', description: '', iconKey: 'monitor', entityType: 'Page' as any, primaryKeyword: 'protect', weight: 0, commercialIntent: 'info' },
           { id: 'b5', slug: 'blog/gaming-pc-cooling', title: 'Gaming PC Cooling', description: '', iconKey: 'gaming', entityType: 'Page' as any, primaryKeyword: 'cooling', weight: 0, commercialIntent: 'info' },
-          { id: 'b13', slug: 'blog/how-often-clean-laptop-replace-thermal-paste-kuwait', title: 'How Often to Clean a Gaming Laptop & Replace Thermal Paste', description: 'Cleaning intervals and thermal-paste guidance for Kuwait heat and dust', iconKey: 'cpu', entityType: 'Page' as any, primaryKeyword: 'gaming laptop cleaning thermal paste', weight: 0, commercialIntent: 'info' },
+          { id: 'b13', slug: 'blog/ar/how-often-clean-laptop-replace-thermal-paste-kuwait', title: 'How Often to Clean a Gaming Laptop & Replace Thermal Paste', description: 'Cleaning intervals and thermal-paste guidance for Kuwait heat and dust', iconKey: 'cpu', entityType: 'Page' as any, primaryKeyword: 'gaming laptop cleaning thermal paste', weight: 0, commercialIntent: 'info' },
         ]
       }]
     };
