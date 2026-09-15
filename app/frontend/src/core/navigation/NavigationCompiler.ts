@@ -220,6 +220,12 @@ export class NavigationCompiler {
           { id: 'b4', slug: 'blog/how-to-protect-laptop-screen', title: 'Protect Laptop Screen', description: '', iconKey: 'monitor', entityType: 'Page' as any, primaryKeyword: 'protect', weight: 0, commercialIntent: 'info' },
           { id: 'b5', slug: 'blog/gaming-pc-cooling', title: 'Gaming PC Cooling', description: '', iconKey: 'gaming', entityType: 'Page' as any, primaryKeyword: 'cooling', weight: 0, commercialIntent: 'info' },
           { id: 'b13', slug: 'blog/how-often-clean-laptop-replace-thermal-paste-kuwait', title: 'How Often to Clean a Gaming Laptop & Replace Thermal Paste', description: 'Cleaning intervals and thermal-paste guidance for Kuwait heat and dust', iconKey: 'cpu', entityType: 'Page' as any, primaryKeyword: 'gaming laptop cleaning thermal paste', weight: 0, commercialIntent: 'info' },
+          // 🩹 FIX: previously this Arabic post only appeared via the
+          // BLOG_ARABIC_VARIANTS swap below, which only activates once the
+          // visitor is already on an /ar/ route — so there was no way to
+          // discover it from the normal English site. Added as a permanent
+          // entry, matching the b8 (buying guide) Arabic pattern.
+          { id: 'b14', slug: 'blog/ar/how-often-clean-laptop-replace-thermal-paste-kuwait', title: 'كل كم لازم تنظف لابتوب القيمنق وتغيّر المعجون الحراري في الكويت؟', description: 'دليل عملي باللهجة الكويتية عن تنظيف لابتوب القيمنق وتغيير المعجون الحراري وتأثير حرارة وغبار الكويت على التبريد.', iconKey: 'cpu', entityType: 'Page' as any, primaryKeyword: 'تنظيف لابتوب القيمنق والمعجون الحراري', weight: 0, commercialIntent: 'info' },
         ]
       }]
     };
@@ -347,14 +353,11 @@ export const COMPILED_NAVIGATION: CompiledNavigationModel = NavigationCompiler.c
  * Keeping this transformation here means Header.tsx does not own blog/menu
  * content, while COMPILED_NAVIGATION can remain a build-time, immutable model.
  */
-const BLOG_ARABIC_VARIANTS: Record<string, Pick<NavEntity, 'slug' | 'title' | 'description' | 'primaryKeyword'>> = {
-  b13: {
-    slug: 'blog/ar/how-often-clean-laptop-replace-thermal-paste-kuwait',
-    title: 'كل كم لازم تنظف لابتوب القيمنق وتغيّر المعجون الحراري في الكويت؟',
-    description: 'دليل عملي باللهجة الكويتية عن تنظيف لابتوب القيمنق وتغيير المعجون الحراري وتأثير حرارة وغبار الكويت على التبريد.',
-    primaryKeyword: 'تنظيف لابتوب القيمنق والمعجون الحراري',
-  },
-};
+// 🩹 FIX: b13's Arabic counterpart (b14) is now a permanent, always-visible
+// menu entry (see compileBlogMegaMenu above) instead of a route-conditional
+// swap, so this map is intentionally empty — keeping getLocalizedNavigation
+// in place in case a future post needs a true swap-on-route-match variant.
+const BLOG_ARABIC_VARIANTS: Record<string, Pick<NavEntity, 'slug' | 'title' | 'description' | 'primaryKeyword'>> = {};
 
 export function getLocalizedNavigation(pathname: string): CompiledNavigationModel {
   const isArabicRoute = pathname === '/ar' || pathname.startsWith('/ar/') || pathname.startsWith('/blog/ar/');
