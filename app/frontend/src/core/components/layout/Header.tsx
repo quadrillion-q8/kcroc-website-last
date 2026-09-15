@@ -1,4 +1,4 @@
-\// File: app/frontend/src/core/components/layout/Header.tsx
+// File: app/frontend/src/core/components/layout/Header.tsx
 import React, { useState, useRef, useEffect, useCallback, Suspense } from 'react';
 import { Link, useLocation, matchPath } from 'react-router-dom';
 import { Menu, X, ChevronDown, Phone, CalendarCheck, Laptop, Search } from 'lucide-react';
