@@ -111,15 +111,20 @@ export default function MobileMenu({ isOpen, onClose, mobileRef, navModel, clean
               return (
                 <div key={link.id} className="border border-slate-800/60 rounded-xl overflow-hidden bg-slate-900/30">
                   <button
+                    type="button"
                     onClick={() => toggleAccordion(link.id)}
                     aria-expanded={isExpanded}
-                    className={`w-full flex items-center justify-between p-4 text-left font-semibold transition-colors focus:outline-none focus-visible:bg-slate-800 ${isExpanded ? 'text-cyan-400 bg-slate-800/50' : 'text-slate-200 hover:bg-slate-800/30'}`}
+                    aria-controls={`mobile-mega-${link.id}`}
+                    className={`w-full flex items-center justify-between p-4 text-left font-semibold transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 ${isExpanded ? 'text-cyan-400 bg-slate-800/50' : 'text-slate-200 hover:bg-slate-800/30'}`}
                   >
                     {link.label}
                     <ChevronDown size={18} className={`transition-transform duration-200 ${isExpanded ? 'rotate-180 text-cyan-400' : 'text-slate-500'}`} />
                   </button>
 
-                  <div className={`transition-all duration-300 ease-in-out overflow-hidden ${isExpanded ? 'max-h-[1500px] opacity-100' : 'max-h-0 opacity-0'}`}>
+                  <div
+                    id={`mobile-mega-${link.id}`}
+                    className={`transition-all duration-300 ease-in-out overflow-hidden ${isExpanded ? 'max-h-[1500px] opacity-100' : 'max-h-0 opacity-0'}`}
+                  >
                     <div className="p-3 bg-brand-dark/50 space-y-4 border-t border-slate-800/60">
                       
                       {megaConfig.featured && megaConfig.featured.length > 0 && (
