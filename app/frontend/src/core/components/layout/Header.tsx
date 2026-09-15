@@ -1,4 +1,4 @@
-// File: app/frontend/src/core/components/layout/Header.tsx
+\// File: app/frontend/src/core/components/layout/Header.tsx
 import React, { useState, useRef, useEffect, useCallback, Suspense } from 'react';
 import { Link, useLocation, matchPath } from 'react-router-dom';
 import { Menu, X, ChevronDown, Phone, CalendarCheck, Laptop, Search } from 'lucide-react';
@@ -11,7 +11,7 @@ import MobileMenu from './MobileMenu';
 const DesktopMegaMenu = React.lazy(() => import('./DesktopMegaMenu'));
 const SearchBar = React.lazy(() => import('../SearchBar').then(m => ({ default: m.SearchBar })));
 
-const INTENT_OPEN_DELAY = 150;
+const INTENT_OPEN_DELAY = 220;
 const INTENT_CLOSE_DELAY = 250;
 
 export default function Header() {
@@ -79,6 +79,31 @@ export default function Header() {
   const handleMouseLeave = useCallback(() => {
     if (timerRef.current) clearTimeout(timerRef.current);
     timerRef.current = setTimeout(() => setActiveMegaId(null), INTENT_CLOSE_DELAY);
+  }, []);
+
+  const handleMegaTriggerKeyDown = useCallback((e: React.KeyboardEvent<HTMLButtonElement>, megaId: string) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      if (timerRef.current) clearTimeout(timerRef.current);
+      setActiveMegaId(prev => prev === megaId ? null : megaId);
+      return;
+    }
+
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      if (timerRef.current) clearTimeout(timerRef.current);
+      setActiveMegaId(megaId);
+      requestAnimationFrame(() => {
+        document.querySelector<HTMLElement>(`#mega-menu-${megaId} a[href], #mega-menu-${megaId} button:not([disabled])`)?.focus();
+      });
+      return;
+    }
+
+    if (e.key === 'Escape') {
+      e.preventDefault();
+      if (timerRef.current) clearTimeout(timerRef.current);
+      setActiveMegaId(null);
+    }
   }, []);
 
   useEffect(() => {
@@ -151,9 +176,15 @@ export default function Header() {
                     <div key={link.id} className="relative" onMouseEnter={() => handleMouseEnter(link.megaMenuId!)} onMouseLeave={handleMouseLeave}>
                       <button
                         ref={el => navRefs.current[link.megaMenuId!] = el}
+                        type="button"
                         aria-expanded={isOpen}
                         aria-haspopup="menu"
                         aria-controls={`mega-menu-${link.megaMenuId}`}
+                        onClick={() => {
+                          if (timerRef.current) clearTimeout(timerRef.current);
+                          setActiveMegaId(prev => prev === link.megaMenuId ? null : link.megaMenuId!);
+                        }}
+                        onKeyDown={e => handleMegaTriggerKeyDown(e, link.megaMenuId!)}
                         className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 ${isOpen || isGraphMatch ? 'text-cyan-400 bg-cyan-500/10' : 'text-slate-300 hover:text-white hover:bg-slate-800/60'}`}
                       >
                         {link.label}
