@@ -338,3 +338,17 @@ export class NavigationCompiler {
 // (previously via `useMemo(() => NavigationCompiler.compileNavigation(), [])`,
 // which still has to execute synchronously on mount before paint).
 export const COMPILED_NAVIGATION: CompiledNavigationModel = NavigationCompiler.compileNavigation();
+
+// 🩹 FIX: Header.tsx imports `getLocalizedNavigation(pathname)` (presumably
+// intended to swap in Arabic labels/hrefs for /ar/* routes down the line),
+// but no such export existed here, which broke the production build
+// ("getLocalizedNavigation" is not exported by NavigationCompiler.ts).
+// There's currently no separate localized nav dataset anywhere in the repo
+// (NAV_GRAPH carries no per-locale labels), so for now this just returns the
+// single compiled navigation model regardless of path — functionally
+// identical to referencing COMPILED_NAVIGATION directly. The pathname
+// parameter is kept so Header's call site doesn't need to change again once
+// real per-locale nav data exists.
+export function getLocalizedNavigation(_pathname: string): CompiledNavigationModel {
+  return COMPILED_NAVIGATION;
+}
