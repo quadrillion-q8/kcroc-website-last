@@ -368,7 +368,7 @@ export const BLOG_POSTS: BlogPost[] = [
     category: "Laptop Troubleshooting",
     readTime: "11-13 min read",
     tags: ["Laptop Won't Turn On", "Laptop No Power", "Laptop Troubleshooting", "Motherboard Repair", "Laptop Charger", "Computer Repair Kuwait"],
-    seoTitle: "Laptop Won't Turn On? Troubleshooting Guide | KCROC",
+    seoTitle: "Laptop Won't Turn On? Complete Troubleshooting Guide | KCROC",
     contentType: "guide"
   },
 
