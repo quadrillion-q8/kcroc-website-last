@@ -9,8 +9,8 @@ import { IMAGES } from '../constants/images';
 
 export const rawGraphData: RawGraphData = {
   metadata: {
-    version: '3.6.1',
-    lastUpdated: '2026-09-11T03:20:00+03:00',
+    version: '3.6.2',
+    lastUpdated: '2026-09-16T18:55:00+03:00',
     environment: 'production'
   },
 
@@ -171,7 +171,7 @@ export const rawGraphData: RawGraphData = {
     'page-terms-of-service': { id: 'page-terms-of-service', slug: 'terms-of-service', entityType: 'WebPage', isActive: true, title: 'Terms of Service', description: 'KCROC Terms and Conditions of Service', seo: { title: 'Terms of Service | KCROC Kuwait', description: 'Read the official Terms of Service and conditions for computer repair, pick & drop, and warranties at Kuwait Computer Repair On Call.', canonicalUrl: 'https://www.computerrepairkuwait.com/terms-of-service', ogType: 'website', schemaTypes: ['WebPage'] } } as WebPageEntity,
     'page-case-studies': { id: 'page-case-studies', slug: 'case-studies', entityType: 'WebPage', isActive: true, title: 'Case Studies', description: 'Real repair success stories.', seo: { title: 'Repair Case Studies | KCROC Kuwait', description: 'Read real case studies of laptops and MacBooks we saved from liquid damage and catastrophic failure.', canonicalUrl: 'https://www.computerrepairkuwait.com/case-studies', ogType: 'website', schemaTypes: ['CollectionPage'] } } as WebPageEntity,
     'page-author-imran': { id: 'page-author-imran', slug: 'author/imran', entityType: 'WebPage', isActive: true, title: 'Imran Natiq', description: 'Author bio page for Imran Natiq, Founder & Lead Technician at KCROC, referenced from the Person schema on blog articles he authored.', seo: { title: 'Imran Natiq — Hardware Repair Engineer at KCROC Kuwait', description: 'Imran Natiq is a hardware repair engineer and founder of KCROC in Hawalli, Kuwait, specializing in motherboard diagnostics and micro-soldering.', canonicalUrl: 'https://www.computerrepairkuwait.com/author/imran', ogType: 'profile', schemaTypes: ['ProfilePage', 'Person', 'BreadcrumbList'] } } as WebPageEntity,
-    'guide-battery': { id: 'guide-battery', slug: 'guides/laptop-battery-warning-signs', entityType: 'WebPage', isActive: true, title: 'Laptop Battery Warning Signs', description: 'Learn the 10 critical warning signs of lithium-ion battery failure, how to check battery health on Windows 11 and macOS, and what to do about a swollen battery.', seo: { title: 'Laptop Battery Warning Signs (10 to Watch For) | KCROC', description: 'How can you tell if a laptop battery is failing? Learn 10 warning signs, how to check battery health on Windows 11 and macOS, and when battery replacement is worth considering.', canonicalUrl: 'https://www.computerrepairkuwait.com/guides/laptop-battery-warning-signs', ogType: 'article', schemaTypes: ['Article', 'FAQPage'] },
+    'guide-battery': { id: 'guide-battery', slug: 'guides/laptop-battery-warning-signs', entityType: 'WebPage', isActive: true, title: 'Laptop Battery Warning Signs', description: 'Learn the 10 critical warning signs of lithium-ion battery failure, how to check battery health on Windows 11 and macOS, and how to distinguish battery problems from charger, charging-port, and motherboard faults.', seo: { title: 'Laptop Battery Warning Signs: How to Tell If It’s Bad | KCROC', description: 'How to tell if a laptop battery is bad: warning signs, Windows 11 and macOS battery-health checks, swelling safety, and when the charger or charging circuit may be the real problem.', canonicalUrl: 'https://www.computerrepairkuwait.com/guides/laptop-battery-warning-signs', ogType: 'article', schemaTypes: ['Article', 'FAQPage'] },
       featuredFAQIds: [
         'faq-battery-how-to-know',
         'faq-battery-check-windows',
