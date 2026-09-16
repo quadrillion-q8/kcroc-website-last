@@ -30,10 +30,10 @@ const WA_LINK = `https://wa.me/${business.telephone}?text=${encodeURIComponent(
 )}`;
 
 const faq = [
-  { q: 'Can a physically cracked display panel be repaired without replacement?', a: 'No. Fractured LCD or OLED internal pixel substrates cannot be glued back together or software-resolved. The absolute only hardware route to restore display health is a structural panel assembly change.' },
-  { q: 'How long does a complete laptop screen replacement procedure take?', a: 'If components are pre-stocked within our specialized Hawalli lab shelves, physical screen replacements take between 1 to 2 hours maximum to complete.' },
+  { q: 'Can a physically cracked display panel be repaired without replacement?', a: 'A physically fractured LCD or OLED panel is not restored by software. In practice, a damaged panel normally requires replacement of the affected display assembly, while the correct repair depends on the exact panel and chassis design.' },
+  { q: 'How long does a complete laptop screen replacement procedure take?', a: 'Turnaround depends on the exact laptop model, panel availability and the condition of the surrounding hinges, bezel and cables. Some stocked replacements can be completed quickly; other models require parts sourcing first.' },
   { q: 'What is the root cause of internal display bleeding when outer glass is safe?', a: 'Lids are highly flexible. If external force hits your bag, the plastic/aluminum backing bends inward, focusing a crushing force that splits inner pixel layers while the elastic outer panel face survives unbroken.' },
-  { q: 'Does your laptop screen replacement include full warranty protection?', a: 'Yes. Every successful structural display panel swap carried out within our center leaves with comprehensive warranty protection covering performance stability.' }
+  { q: 'Does your laptop screen replacement include full warranty protection?', a: 'Yes. Warranty coverage depends on the specific repair and the terms provided with the completed service. Ask KCROC to confirm the applicable warranty for the exact replacement before work begins.' }
 ];
 
 const STRUCTURED_DATA = {
@@ -113,7 +113,7 @@ const challenges = [
   },
   {
     title: 'Extreme Vehicular Heat',
-    description: 'Leaving machines in cars during a Kuwait summer allows indoor cabin heat to surpass 65°C. This liquefies the Optically Clear Adhesive (OCA) holding panel sheets together, yielding delamination.',
+    description: 'Leaving a laptop in a hot vehicle can expose the display and chassis to temperatures well outside normal operating conditions. Avoid prolonged vehicle heat and allow the machine to return toward room temperature before normal use.',
     icon: Sun,
     color: 'text-orange-500',
     bgColor: 'bg-orange-500/10',
@@ -122,7 +122,7 @@ const challenges = [
   },
   {
     title: 'Condensation Damage',
-    description: 'Moving your laptop rapidly from freezing air-conditioned office suites straight into outdoor humidity creates rapid internal dew condensation, shorting panel gate drivers instantly.',
+    description: 'Rapid movement between very different environments can create condensation risk when a cold device is exposed to warm, humid air. Give the laptop time to acclimate before powering it on if condensation is suspected.',
     icon: Droplets,
     color: 'text-blue-500',
     bgColor: 'bg-blue-500/10',
@@ -572,6 +572,35 @@ export default function BlogScreenProtection() {
                 </Card>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      {/* Expanded prevention guidance: this article owns prevention, while the service page owns repair */}
+      <section className="py-8 sm:py-24 px-4 relative z-10 border-t border-slate-800">
+        <div className="container mx-auto max-w-6xl">
+          <div className="text-center mb-8 sm:mb-12">
+            <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30 px-3 sm:px-4 py-1.5 sm:py-2 text-[10px] sm:text-sm mb-3 sm:mb-4">Daily protection checklist</Badge>
+            <h2 className="text-2xl sm:text-5xl font-bold text-white mb-3 sm:mb-6">Simple Habits That Prevent Screen Damage</h2>
+            <p className="text-sm sm:text-xl text-slate-300 max-w-3xl mx-auto">Most prevention is mechanical: reduce pressure, twisting and hinge stress before they become a repair.</p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+            {[
+              ['Before closing the lid', 'Check the keyboard for pens, earbuds, USB drives, coins and other hard objects.'],
+              ['Carry it with support', 'Use a properly fitted laptop compartment and avoid compressing the lid inside an overfilled bag.'],
+              ['Open from the center', 'Lift the lid smoothly rather than repeatedly twisting one corner of the display assembly.'],
+              ['Watch the hinges', 'Stiffness, clicking, separation or cracking plastic can be early signs that hinge service is needed.'],
+              ['Clean the panel correctly', 'Use a soft microfiber cloth and a method appropriate for the display manufacturer; avoid abrasive materials and excessive liquid.'],
+              ['Avoid hot-car storage', 'Do not leave a laptop exposed to prolonged vehicle heat. Store and transport it within the conditions recommended for the device.'],
+              ['Acclimate after major temperature changes', 'If condensation is possible, let the device acclimate before powering it on.'],
+              ['Separate prevention from repair', 'A prevention article cannot replace diagnosis. Cracks, lines, flicker or pressure marks should be assessed for panel, cable or hinge damage.'],
+              ['Back up important data', 'A display failure does not normally erase data, but a current backup protects you if a larger hardware problem occurs.']
+            ].map(([title, text]) => (
+              <Card key={title} className="bg-slate-900/70 border-slate-700">
+                <CardHeader className="p-5 sm:p-6"><CardTitle className="text-lg text-white">{title}</CardTitle></CardHeader>
+                <CardContent className="px-5 pb-5 sm:px-6 sm:pb-6"><p className="text-sm text-slate-300 leading-relaxed">{text}</p></CardContent>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
