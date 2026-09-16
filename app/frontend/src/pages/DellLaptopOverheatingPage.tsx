@@ -164,7 +164,7 @@ export const DellLaptopOverheatingPage = () => {
             <AlertTriangle className="text-red-400 w-6 h-6" /> The Quick Answer
           </h2>
           <p className="text-slate-300 leading-relaxed text-lg m-0">
-            A Dell laptop that becomes unusually hot is commonly affected by restricted airflow, dust buildup, high CPU usage, fan problems, or degraded thermal paste. Start with the low-risk DIY checks below. If the laptop repeatedly shuts down, the fan behaves abnormally, or temperatures remain high despite clear airflow, the internal cooling system should be professionally inspected to prevent permanent motherboard damage.
+            A Dell laptop that becomes unusually hot can be affected by restricted airflow, dust buildup, high CPU usage, fan problems, thermal-interface condition, or another hardware or software issue. Start with the low-risk checks below. If the laptop repeatedly shuts down, the fan behaves abnormally, or temperatures remain high after basic checks, the cooling system should be professionally inspected rather than assuming thermal paste is the answer.
           </p>
           <p className="text-slate-400 leading-relaxed mt-5 mb-0">
             This guide applies across Dell laptop families including Inspiron, Latitude, Vostro, XPS, Precision, G Series, and Alienware. The exact cooling design varies by model and generation, so internal repair steps should always be matched to the specific service manual and hardware configuration.
@@ -208,9 +208,9 @@ export const DellLaptopOverheatingPage = () => {
                 {[
                   "Dust Accumulation: Restricts airflow through the fan and heatsink fins.",
                   "Restricted Airflow: Using the laptop on beds or blankets suffocates the intake.",
-                  "Thermal Paste Degradation: Compound dries out after years of heat cycling.",
+                  "Thermal-interface condition: Paste or pads can contribute to heat problems, but their condition should be assessed alongside airflow, fan operation and heatsink mounting.",
                   "Fan Problems: A worn or failing cooling fan stops moving enough air.",
-                  "Hot Environment: Kuwait's high ambient temperatures drastically reduce cooling efficiency."
+                  "High Ambient Temperature: Kuwait's summer heat reduces the available thermal headroom, so the same workload can produce higher temperatures than it would in a cooler room."
                 ].map((cause, i) => (
                   <li key={i} className="flex items-start gap-3 text-slate-300 text-sm leading-relaxed">
                     <Wind className="w-4 h-4 text-cyan-400 flex-shrink-0 mt-1" />
@@ -352,7 +352,7 @@ export const DellLaptopOverheatingPage = () => {
               <CardContent className="p-6 text-center">
                 <Shield className="w-8 h-8 text-cyan-400 mx-auto mb-4" />
                 <h3 className="text-lg font-bold text-white mb-2">Deep Clean & Re-paste</h3>
-                <p className="text-sm text-slate-400">ESD-safe removal of dust blocks and application of premium phase-change thermal materials to restore factory cooling performance.</p>
+                <p className="text-sm text-slate-400">ESD-safe cleaning and thermal-interface service when testing shows that airflow or the thermal interface is contributing to the problem.</p>
               </CardContent>
             </Card>
           </div>
@@ -365,6 +365,7 @@ export const DellLaptopOverheatingPage = () => {
           links={[
             { href: '/dell-laptop-repair-kuwait', label: 'Dell Laptop Repair Kuwait', description: 'Use the Dell brand hub for broader model-specific repair and diagnostics.' },
             { href: '/laptop-overheating-kuwait', label: 'Laptop Overheating Problem', description: 'Move from this Dell-specific guide to the broader overheating diagnostic path.' },
+            { href: '/blog/laptop-temperatures-kuwait-safe-cpu-gpu-temperatures', label: 'Laptop Temperature Guide', description: 'Use this guide to interpret CPU/GPU readings and decide what temperature behavior needs investigation.' },
             { href: '/gaming-laptop-cleaning-kuwait', label: 'Gaming Laptop Cleaning', description: 'Relevant when dust, airflow restriction, fan wear, or thermal maintenance is the underlying issue.' },
             { href: '/motherboard-repair-kuwait', label: 'Motherboard Repair Kuwait', description: 'Use component-level diagnosis when thermal damage or a board fault remains after cooling checks.' },
           ]}
