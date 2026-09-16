@@ -354,7 +354,7 @@ export default function BiosUefiRecoveryGuide() {
               Power On &rarr; Platform Firmware Initializes &rarr; Hardware / POST &rarr; UEFI Boot Manager Reads NVRAM Boot Variables &rarr; Boot Manager Loads an <code className="bg-slate-900 px-1 py-0.5 rounded text-cyan-300">.efi</code> Bootloader from the ESP &rarr; Bootloader Hands Off to the Operating System
             </p>
             <p className="text-slate-400 text-xs sm:text-sm leading-relaxed mt-3">
-              Firmware, the ESP, and the operating system live in three separate places. Most "is this a BIOS problem?" confusion traces back to blurring those three together.
+              Firmware, the ESP, and the operating system live in three separate places. Most "is this a BIOS problem?" confusion traces back to blurring those three together. If the machine has no lights or no response at all, start with our <Link to="/guides/laptop-wont-turn-on" className="text-cyan-300 underline hover:text-cyan-200">Laptop Won't Turn On guide</Link> instead; that path classifies the external power and no-power symptoms before firmware recovery is considered.
             </p>
           </div>
 
