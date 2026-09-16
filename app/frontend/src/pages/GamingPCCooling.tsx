@@ -17,9 +17,9 @@ const PAGE_URL = `${business.websiteUrl}/blog/gaming-pc-cooling`;
 
 export default function GamingPCCooling() {
   const statistics = [
-    { value: '50°C+', label: 'Summer Temperatures', icon: Sun, color: 'text-orange-400' },
-    { value: '24/7', label: 'Cooling Required', icon: Fan, color: 'text-cyan-400' },
-    { value: '100%', label: 'Performance Protected', icon: Shield, color: 'text-emerald-400' }
+    { value: '4 checks', label: 'Start with temperature + load + airflow + fans', icon: Thermometer, color: 'text-orange-400' },
+    { value: '1 cause', label: 'Find the measured cause before replacing parts', icon: Fan, color: 'text-cyan-400' },
+    { value: '0 guesses', label: 'Cooling service should follow diagnosis', icon: Shield, color: 'text-emerald-400' }
   ];
 
   const challenges = [
@@ -64,31 +64,31 @@ export default function GamingPCCooling() {
   const temperatureThresholds = [
     {
       component: 'CPU',
-      safe: '30-70°C',
-      warning: '70-85°C',
-      critical: '85°C+',
-      description: 'Throttles at 85°C, risking damage above 95°C'
+      safe: 'Model dependent',
+      warning: 'Sustained high load',
+      critical: 'Check manufacturer limit',
+      description: 'Use the exact CPU specification and watch sustained temperature, clocks and performance'
     },
     {
       component: 'GPU',
-      safe: '30-75°C',
-      warning: '75-85°C',
-      critical: '85°C+',
-      description: 'Clocks reduce at 83°C, hotspots exceed 100°C'
+      safe: 'Model dependent',
+      warning: 'Sustained high load',
+      critical: 'Check GPU limit',
+      description: 'GPU temperature and hotspot behavior vary by model, cooler and power target'
     },
     {
       component: 'RAM',
-      safe: '30-45°C',
-      warning: '45-55°C',
-      critical: '55°C+',
-      description: 'Memory errors and instability increase above 50°C'
+      safe: 'Platform dependent',
+      warning: 'Investigate instability',
+      critical: 'Check module specification',
+      description: 'Do not apply a universal RAM temperature cutoff; use the module/platform specification'
     },
     {
       component: 'SSD/NVMe',
-      safe: '30-50°C',
-      warning: '50-70°C',
-      critical: '70°C+',
-      description: 'Storage throttles at 70°C, data risks above 80°C'
+      safe: 'Drive dependent',
+      warning: 'Check sustained load',
+      critical: 'Check drive specification',
+      description: 'NVMe temperature limits and throttling behavior vary by drive model'
     }
   ];
 
@@ -102,7 +102,7 @@ export default function GamingPCCooling() {
       image: '/images/gaming-motherboard-cpu-fresh-thermal-paste.webp',
       benefits: [
         'Arctic MX-5 / Kryonaut',
-        'Drop temps 10-20°C',
+        'Measure before/after temperatures',
         'CPU & GPU service'
       ]
     },
@@ -128,7 +128,7 @@ export default function GamingPCCooling() {
       image: '/images/nzxt-aio-liquid-cooler-pc-build.webp',
       benefits: [
         'Noctua / be quiet!',
-        'Drop temps 20-30°C',
+        'Verify cooler capacity and mounting',
         'Whisper-quiet'
       ]
     },
@@ -161,8 +161,8 @@ export default function GamingPCCooling() {
       frequency: '3 months'
     },
     {
-      title: 'Annual Paste Refresh',
-      description: 'Replace CPU/GPU paste yearly.',
+      title: 'Condition-Based Paste Service',
+      description: 'Replace thermal interface material when inspection/testing supports it.',
       icon: Droplets,
       frequency: 'Annually'
     },
@@ -552,6 +552,32 @@ export default function GamingPCCooling() {
           { href: '/case-studies/asus-rog-dead-motherboard-hawalli', label: 'ASUS ROG Repair Case Study', description: 'See a real motherboard-level gaming repair example from KCROC.' },
         ]}
       />
+
+      {/* Diagnostic workflow: this page owns desktop overheating diagnosis, not generic maintenance */}
+      <section className="py-8 sm:py-24 px-4 sm:px-6 border-t border-slate-800 bg-slate-900/30">
+        <div className="container mx-auto max-w-6xl">
+          <div className="text-center mb-8 sm:mb-12">
+            <Badge className="bg-orange-500/20 text-orange-300 border-orange-500/30 px-3 sm:px-4 py-1.5 sm:py-2 text-[10px] sm:text-sm mb-3 sm:mb-4">Diagnostic workflow</Badge>
+            <h2 className="text-2xl sm:text-5xl font-bold text-white mb-3 sm:mb-6">How to Diagnose a Gaming PC That Runs Too Hot</h2>
+            <p className="text-sm sm:text-xl text-slate-300 max-w-3xl mx-auto">Start with measurements and observations. Do not replace thermal paste, fans or the cooler simply because a temperature number looks high.</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+            {[
+              ['1. Reproduce the symptom', 'Record CPU/GPU temperature, utilization, clock speed and frame-rate or frame-time behavior during the same workload.'],
+              ['2. Check airflow', 'Inspect front/intake restrictions, dust filters, exhaust paths and fan direction. A case can have working fans and still have poor airflow.'],
+              ['3. Check the cooling hardware', 'Verify fan operation, cooler mounting, heatsink contact and, for AIO systems, pump/radiator behavior where applicable.'],
+              ['4. Check software and power behavior', 'Background load, power limits, fan curves and driver/software conditions can change heat output without a hardware failure.'],
+              ['5. Service only the measured cause', 'Cleaning, fan replacement, airflow changes, cooler work or thermal-interface replacement should follow the evidence from testing.'],
+              ['6. Escalate when unstable', 'Repeated shutdowns, abnormal electrical smells, failed fans, severe performance collapse or suspected component damage warrant professional diagnosis.']
+            ].map(([title, text]) => (
+              <Card key={title} className="bg-slate-900/70 border-slate-700">
+                <CardHeader className="p-5 sm:p-6"><CardTitle className="text-lg sm:text-xl text-white">{title}</CardTitle></CardHeader>
+                <CardContent className="px-5 pb-5 sm:px-6 sm:pb-6"><p className="text-sm sm:text-base text-slate-300 leading-relaxed">{text}</p></CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* ─── CTA SECTION ─── */}
       <section className="py-8 sm:py-24 px-4 sm:px-6">
