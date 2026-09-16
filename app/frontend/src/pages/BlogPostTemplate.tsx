@@ -40,6 +40,8 @@ const STANDALONE_REPAIR_PATHS: Record<string, { title: string; intro: string; li
       { href: '/windows-wont-boot-kuwait', label: "Windows Won't Boot", description: 'Use this path when the laptop powers on but Windows cannot complete startup.' },
       { href: '/blue-screen-of-death-bsod-fix-kuwait', label: 'BSOD Diagnostic', description: 'For repeated Windows blue screens after the machine successfully powers on.' },
       { href: '/laptop-plugged-in-not-charging', label: 'Laptop Plugged in but Not Charging', description: 'For charging-light, adapter, port, or battery symptoms rather than a true no-power case.' },
+      { href: '/guides/laptop-battery-warning-signs', label: 'Laptop Battery Warning Signs', description: 'For rapid drain, reduced battery capacity, swelling, or other signs that the battery itself may be failing.' },
+      { href: '/battery-replacement-kuwait', label: 'Laptop Battery Replacement Kuwait', description: 'For professional battery testing and replacement when battery failure is confirmed.' },
       { href: '/motherboard-repair-kuwait', label: 'Motherboard Repair Kuwait', description: 'For measured board-level diagnosis when external power checks do not explain the failure.' },
     ],
   },
