@@ -35,8 +35,8 @@ const GUIDES: GuideLink[] = [
     // content of its own — this card linked straight into an empty page.
     // Repointed at the real, rendered guide page it redirects to.
     slug: 'guides/dell-laptop-overheating',
-    title: 'Dell Inspiron 15 3000 Overheating',
-    description: 'Step-by-step thermal troubleshooting for the Dell Inspiron 15 3000 series — causes, safe checks, and when to bring it in.',
+    title: 'Dell Laptop Overheating Guide',
+    description: 'Step-by-step thermal troubleshooting for Dell laptops, including Inspiron, Latitude, Vostro, XPS, Precision, G Series, and Alienware families.',
     icon: Cpu,
   },
   {
@@ -87,8 +87,10 @@ export default function GuidesIndex() {
           <header className="mb-16 text-center lg:text-left">
             <h1 className="text-4xl md:text-5xl font-black text-white mb-6">DIY & Repair Guides</h1>
             <p className="text-xl text-slate-400 max-w-2xl">
-              Free, technician-written guides to help you diagnose common laptop problems before
-              deciding whether it's a DIY fix or a job for the lab.
+              Free, technician-written guides to help you understand a problem, perform safe checks,
+              and decide whether it is a DIY fix or a job for the lab. Each guide has a specific
+              purpose, so use the guide that matches your symptom rather than repeating the same
+              troubleshooting steps across several pages.
             </p>
           </header>
 
