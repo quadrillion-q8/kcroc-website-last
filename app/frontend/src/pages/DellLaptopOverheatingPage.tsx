@@ -164,7 +164,7 @@ export const DellLaptopOverheatingPage = () => {
             <AlertTriangle className="text-red-400 w-6 h-6" /> The Quick Answer
           </h2>
           <p className="text-slate-300 leading-relaxed text-lg m-0">
-            A Dell laptop that becomes unusually hot can be affected by restricted airflow, dust buildup, high CPU usage, fan problems, thermal-interface condition, or another hardware or software issue. Start with the low-risk checks below. If the laptop repeatedly shuts down, the fan behaves abnormally, or temperatures remain high after basic checks, the cooling system should be professionally inspected rather than assuming thermal paste is the answer.
+            A Dell laptop that becomes unusually hot can be affected by restricted airflow, dust buildup, high CPU usage, fan problems, thermal-interface condition, or another hardware or software issue. This guide focuses on Dell-specific checks and symptoms; use the separate laptop-temperature guide when you need help interpreting a CPU/GPU reading, and use the gaming-laptop cleaning guide for maintenance intervals. Start with the low-risk checks below. If the laptop repeatedly shuts down, the fan behaves abnormally, or temperatures remain high after basic checks, the cooling system should be professionally inspected rather than assuming thermal paste is the answer.
           </p>
           <p className="text-slate-400 leading-relaxed mt-5 mb-0">
             This guide applies across Dell laptop families including Inspiron, Latitude, Vostro, XPS, Precision, G Series, and Alienware. The exact cooling design varies by model and generation, so internal repair steps should always be matched to the specific service manual and hardware configuration.
