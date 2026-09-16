@@ -123,7 +123,7 @@ const challenges = [
   },
   {
     title: 'Motherboard Shorts',
-    description: 'Coastal humidity combined with indoor AC creates microscopic condensation, leading to logic board oxidation and shorts.',
+    description: "Liquid exposure, corrosion, electrical shorts and component faults can affect a laptop's logic board. Rapid professional inspection is important after a spill or other liquid incident.",
     icon: Zap,
     color: 'text-purple-500',
     bgColor: 'bg-purple-500/10',
@@ -132,7 +132,7 @@ const challenges = [
   },
   {
     title: 'Hinge & Screen Stress',
-    description: 'Repeatedly opening laptops in hot environments stresses brittle plastic mounts, leading to snapped hinges and screen pressure fractures.',
+    description: 'Repeated mechanical stress, stiff hinges, pressure in bags and objects left between the keyboard and display can contribute to hinge, bezel and screen damage.',
     icon: Monitor,
     color: 'text-blue-500',
     bgColor: 'bg-blue-500/10',
@@ -456,6 +456,38 @@ export default function BlogLaptopRepair() {
                 </Card>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      {/* Repair-path hub: keep the pillar broad and send detailed intent to specialist pages */}
+      <section className="py-8 sm:py-24 px-4 sm:px-6 bg-slate-900/30 border-y border-slate-800">
+        <div className="container mx-auto max-w-6xl">
+          <div className="text-center mb-8 sm:mb-12">
+            <Badge className="bg-cyan-500/20 text-cyan-300 border-cyan-500/30 px-3 sm:px-4 py-1.5 sm:py-2 text-[10px] sm:text-sm mb-3 sm:mb-4">
+              Choose the right repair path
+            </Badge>
+            <h2 className="text-2xl sm:text-5xl font-bold text-white mb-3 sm:mb-6">
+              Start With the Symptom
+            </h2>
+            <p className="text-sm sm:text-xl text-slate-300 max-w-3xl mx-auto">
+              This guide is the overview. Use the specialist page that matches the problem for detailed troubleshooting and repair information.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+            {[
+              ['/guides/laptop-wont-turn-on', "Laptop won't turn on", 'For no lights, no fan response, charging problems and genuine no-power symptoms.'],
+              ['/blog/laptop-temperatures-kuwait-safe-cpu-gpu-temperatures', 'Laptop temperatures', 'For interpreting CPU/GPU readings, sustained heat and possible thermal limiting.'],
+              ['/how-to-protect-laptop-screen', 'Protect your screen', 'For prevention, hinge stress, transport and avoiding physical display damage.'],
+              ['/laptop-screen-repair-kuwait', 'Screen repair', 'For cracked panels, lines, flickering, backlight and other display faults.'],
+              ['/gaming-laptop-cleaning-kuwait', 'Gaming laptop maintenance', 'For dust cleaning, cooling maintenance and thermal-paste decisions.'],
+              ['/motherboard-repair-kuwait', 'Motherboard repair', 'For component-level power, charging, short and board faults after basic checks.']
+            ].map(([href, title, description]) => (
+              <Link key={href} to={href} className="block rounded-2xl border border-slate-700 bg-slate-900/70 p-5 hover:border-cyan-500/50 transition-colors">
+                <h3 className="text-lg sm:text-xl font-bold text-white mb-2">{title}</h3>
+                <p className="text-sm text-slate-300 leading-relaxed">{description}</p>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
