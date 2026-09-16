@@ -376,6 +376,7 @@ const faq = [
 
 const toc = [
   { id: 'check-health', label: 'Check Battery Health' },
+  { id: 'battery-vs-charging', label: 'Battery vs Charging' },
   { id: 'warning-signs', label: 'Warning Signs' },
   { id: 'windows-11', label: 'Windows 11' },
   { id: 'macbook', label: 'MacBook' },
@@ -416,7 +417,7 @@ export default function BatteryHealthGuide() {
               <h1 className="max-w-3xl text-3xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">
                 Laptop Battery Warning Signs:
                 <span className="block bg-gradient-to-r from-cyan-400 to-emerald-400 bg-clip-text text-transparent">
-                  Know What to Do Next
+                  How to Tell If It&apos;s Bad
                 </span>
               </h1>
               <p className="mt-5 max-w-2xl text-sm leading-7 text-slate-300 sm:text-lg">
@@ -489,7 +490,34 @@ export default function BatteryHealthGuide() {
         </div>
       </section>
 
-      {/* ─── SYMPTOM \u2192 MEANING \u2192 ACTION TABLE ─── */}
+      {/* ─── BATTERY VS CHARGING SYSTEM ─── */}
+      <section id="battery-vs-charging" className="scroll-mt-20 border-t border-slate-900 px-4 py-10 sm:px-6 sm:py-16">
+        <div className="container mx-auto max-w-5xl">
+          <div className="mb-7 max-w-3xl">
+            <Badge className="mb-3 border-amber-500/30 bg-amber-500/10 text-amber-300">Before replacing anything</Badge>
+            <h2 className="text-2xl font-bold text-white sm:text-4xl">Is It Really the Battery? Battery vs. Charger vs. Charging Circuit</h2>
+            <p className="mt-3 text-sm leading-6 text-slate-300 sm:text-base">
+              A laptop that drains quickly may have a worn battery, but charging symptoms can come from the charger, charging port, charging circuit, or motherboard. Use the symptom that best matches what you see before buying a replacement battery.
+            </p>
+          </div>
+          <div className="grid gap-4 md:grid-cols-3">
+            {[
+              { title: 'Battery', text: 'Rapid drain, sharply reduced runtime, unexpected shutdowns, or a health report showing substantial wear can point toward battery degradation.', href: '/battery-replacement-kuwait', label: 'Battery replacement' },
+              { title: 'Charger or Port', text: 'No charging, intermittent charging, a loose connector, or a charger that works on another device can point toward the external power path.', href: '/laptop-plugged-in-not-charging', label: 'Not charging troubleshooting' },
+              { title: 'Charging Circuit / Board', text: 'If the correct charger and charging input are good but the laptop still will not charge or power correctly, board-level diagnosis may be needed.', href: '/laptop-charging-port-repair-kuwait', label: 'Charging-port repair' },
+            ].map((item) => (
+              <article key={item.title} className="rounded-2xl border border-slate-800 bg-brand-dark/40 p-5">
+                <h3 className="text-lg font-bold text-white">{item.title}</h3>
+                <p className="mt-2 text-sm leading-6 text-slate-400">{item.text}</p>
+                <Link to={item.href} className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-cyan-300 hover:text-cyan-200">
+                  {item.label} <ChevronRight className="h-4 w-4" aria-hidden="true" />
+                </Link>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="py-8 sm:py-16 px-4 sm:px-6 scroll-mt-20">
         <div className="container mx-auto max-w-4xl">
           <div className="text-center mb-6 sm:mb-10">
@@ -977,6 +1005,7 @@ export default function BatteryHealthGuide() {
         links={[
           { href: '/battery-replacement-kuwait', label: 'Laptop Battery Replacement Kuwait', description: 'Move from battery-health symptoms to professional testing and replacement.' },
           { href: '/laptop-plugged-in-not-charging', label: 'Laptop Plugged in but Not Charging', description: 'Use this problem path when the battery issue may actually be charging or power related.' },
+          { href: '/laptop-charging-port-repair-kuwait', label: 'Laptop Charging Port Repair', description: 'For loose, damaged, intermittent, or non-charging DC and USB-C input ports.' },
           { href: '/laptop-repair-kuwait', label: 'Laptop Repair Kuwait', description: 'Broader diagnosis when the fault may involve the charging circuit or motherboard.' },
           { href: '/guides/laptop-wont-turn-on', label: "Laptop Won't Turn On Guide", description: 'Follow the no-power path when battery symptoms are accompanied by a dead or unresponsive laptop.' },
         ]}
@@ -1081,4 +1110,5 @@ export default function BatteryHealthGuide() {
       </section>
     </div>
   );
-}
+}      {/* ─── SYMPTOM \u2192 MEANING \u2192 ACTION TABLE ─── */}
+
