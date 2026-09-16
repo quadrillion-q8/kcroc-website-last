@@ -42,7 +42,7 @@ const GUIDES: GuideLink[] = [
   {
     slug: 'guides/laptop-battery-warning-signs',
     title: 'Laptop Battery Warning Signs',
-    description: 'The 4 critical warning signs of lithium-ion battery failure, and what to do before it becomes a safety issue.',
+    description: '10 warning signs of lithium-ion battery failure, plus safe health checks and what to do before it becomes a safety issue.',
     icon: BatteryWarning,
   },
   {
