@@ -549,8 +549,8 @@ export const BLOG_POSTS: BlogPost[] = [
     id: "blog-laptop-repair-2026",
     slug: "laptop-repair-kuwait-2026",
     title: "The Ultimate Guide to Laptop Repair in Kuwait (2026)",
-    excerpt: "Kuwait's extreme climate creates unique hardware challenges. Learn how heat and dust destroy laptops and how component-level repair saves them.",
-    description: "A comprehensive 2026 guide to laptop repair in Kuwait. Learn about thermal throttling, logic board failures, and how component-level repair saves you money.",
+    excerpt: "A practical Kuwait guide to laptop repair: how to identify common hardware problems, choose the right diagnostic path, and understand when component-level repair, parts replacement or maintenance makes sense.",
+    description: "A broad 2026 laptop-repair guide for Kuwait covering diagnosis, power, screens, batteries, cooling, upgrades, motherboard faults, repair-versus-replacement decisions and links to specialist KCROC guides.",
     content: [
       "In Kuwait, the ambient summer temperatures routinely exceed 45°C. For high-performance laptops and MacBooks, this environment is absolutely brutal. Heat and fine particulate dust combine to create the perfect storm for hardware failure.",
       "Most official service centers in Kuwait will immediately suggest replacing the entire motherboard when a laptop fails. This costs hundreds of Dinars and results in total data loss. However, over 90% of these 'dead' motherboards just have a single shorted capacitor or blown MOSFET.",
@@ -603,25 +603,25 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     id: "blog-8gb-ram-2026",
     slug: "why-8gb-ram-is-no-longer-enough-for-windows-11",
-    title: "Why 8GB RAM Is No Longer Enough for Windows 11 in 2026",
+    title: "Is 8GB RAM Enough for Windows 11 in 2026?",
     seoTitle: "Is 8GB RAM Enough for Windows 11 in 2026? | KCROC",
     excerpt: "Windows 11 technically runs on 8GB RAM — but running isn't the same as running well. Here's what's actually happening under the hood, and when an upgrade is worth it.",
-    description: "8GB RAM struggling on Windows 11 in 2026? Here's why Chrome, Photoshop, and multitasking hit a wall at 8GB, what a RAM upgrade actually fixes, and when to consider 16GB or 32GB.",
+    description: "Is 8GB RAM enough for Windows 11 in 2026? Learn how workload, multitasking, memory pressure and laptop upgradeability affect the choice between 8GB, 16GB and 32GB.",
     content: [
       "Windows 11 technically runs on 8GB RAM — but running isn't the same as running well.",
       "Chrome, Slack, Spotify, and Windows background services can consume the majority of 8GB before you've even opened a real application.",
-      "A RAM upgrade to 16GB is the single most cost-effective performance fix for most everyday laptops in 2026."
+      "For many multitasking Windows 11 users, moving from 8GB to 16GB can provide useful headroom, but the right upgrade depends on the laptop's RAM configuration and the actual performance bottleneck."
     ],
     richContent: [
       { type: 'paragraph', text: "Windows 11 technically runs on 8GB RAM — but running isn't the same as running well. If your laptop shipped with 8GB a few years ago and it's started feeling sluggish under everyday use, the operating system hasn't changed the goalposts on its own. What's changed is how much memory a normal browsing and work session actually demands." },
-      { type: 'callout', variant: 'didyouknow', title: 'Did You Know?', text: "A single Chrome tab with a few extensions active can use 300–500MB of RAM on its own. Ten tabs open at once is a common, completely ordinary way to use up 4–5GB before touching any other application." },
+      { type: 'callout', variant: 'didyouknow', title: 'Did You Know?', text: "Browser memory usage varies substantially by site, extensions, media and process state. Multiple tabs can consume several gigabytes, but there is no useful universal per-tab number; monitor actual memory pressure on the laptop you are evaluating." },
       { type: 'h2', text: 'Where Your 8GB Actually Goes', id: 'where-your-8gb-goes' },
-      { type: 'paragraph', text: "Windows 11 itself reserves roughly 2–3GB for background services, drivers, and the shell before you open a single program. That leaves 5–6GB of usable memory on an 8GB machine — and modern browsers, chat apps, and creative tools were not designed with that budget in mind." },
+      { type: 'paragraph', text: "Windows 11 uses part of available memory for the operating system, drivers, security features, caching and background activity. The amount varies by build, hardware and configuration, so a fixed 2–3GB figure should not be treated as a universal baseline." },
       
       // ✅ FIXED: Updated to .webp
       { type: 'image', src: '/images/blog/windows-11-ram-performance.webp', alt: 'Windows 11 Background RAM Usage', caption: 'Windows 11 base processes and background apps consume a significant portion of an 8GB pool before user applications are even launched.' },
       
-      { type: 'paragraph', text: "Chrome is the most common culprit, but it isn't alone. Slack, Spotify's desktop app, Discord, and Windows' own background app refresh all sit in memory persistently, even when minimized. None of these are unusually greedy by 2026 standards — they're just competing for a pool of memory that hasn't grown since the laptop was built." },
+      { type: 'paragraph', text: "Chrome is a common contributor, but it is not alone. Slack, Spotify, Discord and other background applications can all consume memory, and actual usage varies with tabs, extensions, workloads and configuration. The important signal is sustained memory pressure and paging, not a fixed number of megabytes for one application." },
       { type: 'h2', text: 'What Happens When RAM Runs Out', id: 'memory-swapping' },
       { type: 'paragraph', text: "When physical RAM fills up, Windows doesn't crash — it starts using your storage drive as overflow memory, a process called paging or memory swapping. This keeps things technically running, but storage is dramatically slower than RAM, even on a fast NVMe SSD. The result is the specific kind of stutter familiar to anyone who's had too many things open at once: everything freezes for a second, then catches up." },
       
@@ -835,7 +835,7 @@ export const BLOG_POSTS: BlogPost[] = [
       { type: 'callout', variant: 'info', title: 'How to use this checklist', text: "This article covers broad setup and performance mistakes. For a full desktop cooling diagnosis—including airflow, fans, coolers and thermal interfaces—see our dedicated gaming-PC overheating guide instead of repeating the same cooling procedure here." },
 
       { type: 'h2', text: '1. Letting Dust Choke Your Airflow', id: 'dust-buildup' },
-      { type: 'paragraph', text: "This is the single most common issue we open a case to find. Dust doesn't just sit on the outside — it packs into radiator fins, heatsink fins, and fan blades until airflow is a fraction of what it was on day one. A GPU or CPU cooler rated for 200W of heat dissipation can lose most of its effectiveness once its fins are matted with dust, and the fans spin louder just to push the same (reduced) amount of air through." },
+      { type: 'paragraph', text: "Dust buildup is one possible performance and cooling problem. It can restrict airflow through heatsink fins and filters, forcing fans to work harder. The practical check is to inspect the actual cooling path rather than assume that every temperature problem is caused by dust." },
       { type: 'image', src: '/images/custom-gaming-pc-teardown-and-diagnostics-workbench.webp', alt: 'A gaming PC opened up on a diagnostics workbench for a full cleaning and inspection', caption: "A full teardown clean — radiators, heatsinks, fans, and dust filters — restores airflow that slowly disappears over months of normal use." },
       { type: 'paragraph', text: "A proper clean isn't just wiping the outside of the case. It means pulling the GPU, removing fan shrouds where possible, and blowing compressed air through radiator fins from the clean side out, not just from the front. For many dusty or floor-level setups in Kuwait, inspecting filters and cooling every 3–6 months is a practical starting point. Clean when buildup or symptoms appear; no interval can guarantee that thermal throttling will be prevented." },
 
