@@ -179,7 +179,7 @@ export default function FAQ() {
               Welcome to the KCROC Support Center. Operating from our central lab in Hawalli, we provide professional computer and laptop repair services across Kuwait. We understand that device failures are stressful, which is why we offer <strong>100% free pickup and delivery</strong> to make the repair process as seamless as possible.
             </p>
             <p>
-              Whether you need a rapid SSD upgrade, virus removal, or a complex logic board repair, our transparent pricing and "No Fix, No Fee" policy ensure you never pay for unverified work. Every hardware repair we complete is backed by a solid 30-day warranty. Browse our {GLOBAL_FAQS.length} frequently asked questions below to learn more about our timelines, data security protocols, and exact service coverage.
+              Whether you need a rapid SSD upgrade, virus removal, or a complex motherboard repair, our transparent pricing and "No Fix, No Fee" policy ensure you never pay for unverified work. Every hardware repair we complete is backed by a solid 30-day warranty. Browse our {GLOBAL_FAQS.length} frequently asked questions below to learn more about our timelines, data security protocols, and exact service coverage.
             </p>
           </div>
           <div className="flex flex-wrap items-center gap-6 text-sm font-bold text-slate-500 uppercase tracking-wider border-t border-slate-800/50 pt-6">
