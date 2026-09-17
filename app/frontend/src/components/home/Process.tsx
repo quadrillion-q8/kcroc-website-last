@@ -40,7 +40,7 @@ export const Process = () => {
             <div className="absolute bottom-4 left-6 right-6 flex flex-wrap items-center justify-between gap-4">
               <div className="flex items-center gap-2 text-xs font-bold text-cyan-400 bg-brand-dark/80 backdrop-blur-md px-3.5 py-2 rounded-xl border border-cyan-500/30">
                 <Cpu className="w-4 h-4 text-cyan-400 animate-pulse" />
-                <span>Thermal Imaging &amp; Logic Board Tracing</span>
+                <span>Thermal Imaging &amp; Motherboard Tracing</span>
               </div>
               <div className="flex items-center gap-2 text-xs font-bold text-emerald-400 bg-brand-dark/80 backdrop-blur-md px-3.5 py-2 rounded-xl border border-emerald-500/30">
                 <ShieldCheck className="w-4 h-4 text-emerald-400" />
