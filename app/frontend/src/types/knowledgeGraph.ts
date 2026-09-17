@@ -200,7 +200,7 @@ export const ServiceSchema = RoutableEntitySchema.extend({
   relatedServiceIds: z.array(z.string()).default([]),
   relatedProblemIds: z.array(z.string()).default([]),
   relatedBrandIds: z.array(z.string()).default([]),
-  relatedGuidePaths: z.array(z.object({
+  relatedResourcePaths: z.array(z.object({
     label: z.string(),
     path: z.string(),
   })).default([]),
@@ -208,6 +208,7 @@ export const ServiceSchema = RoutableEntitySchema.extend({
     label: z.string(),
     path: z.string(),
   }).optional(),
+  relatedCaseStudyIds: z.array(z.string()).default([]),
   technicalOverview: z.object({
     heading: z.string(),
     paragraphs: z.array(z.string()),
@@ -239,6 +240,13 @@ export const LocationSchema = RoutableEntitySchema.extend({
     height: z.number().optional(),
     caption: z.string().optional(),
   }).optional(),
+  // Explicit local topical relationships keep location hubs aligned with the
+  // service/problem/brand graph used by the UI.
+  relatedServiceIds: z.array(z.string()).default([]),
+  relatedProblemIds: z.array(z.string()).default([]),
+  relatedBrandIds: z.array(z.string()).default([]),
+  relatedLocationIds: z.array(z.string()).default([]),
+  relatedCaseStudyIds: z.array(z.string()).default([]),
 });
 
 export const FAQSchema = RoutableEntitySchema.extend({
@@ -300,10 +308,11 @@ export const BrandSchema = RoutableEntitySchema.extend({
   })).optional(),
   relatedServiceIds: z.array(z.string()).default([]),
   relatedProblemIds: z.array(z.string()).default([]),
-  relatedGuidePaths: z.array(z.object({
+  relatedResourcePaths: z.array(z.object({
     label: z.string(),
     path: z.string(),
   })).default([]),
+  relatedCaseStudyIds: z.array(z.string()).default([]),
   faqs: z.array(z.object({
     id: z.string(),
     title: z.string(),
