@@ -45,7 +45,7 @@ export const rawGraphData: RawGraphData = {
       id: 'stats-row', entityType: 'Stats', isActive: true, title: 'Homepage Stats',
       items: [
         { label: 'Repairs completed', value: '500+',    sub: 'Since launch across Kuwait' },
-        { label: 'Success rate',        value: '98%',     sub: 'On complex logic board repairs' },
+        { label: 'Success rate',        value: '98%',     sub: 'On complex motherboard repairs' },
         { label: 'Warranty',            value: '30 days', sub: 'All parts and labor' },
         { label: 'Pick & drop',         value: 'Free',    sub: 'Zero hidden transport fees' }
       ]
@@ -77,9 +77,9 @@ export const rawGraphData: RawGraphData = {
     ═══════════════════════════════════════════════════════════════ */
     'page-home': {
       id: 'page-home', slug: '', entityType: 'WebPage', isActive: true,
-      title: 'Home', description: 'KCROC — laptop, MacBook and computer repair in Kuwait with free pickup and expert diagnostics.',
-      seo: { title: 'Laptop & Computer Repair Kuwait | Free Pickup | KCROC', description: 'Laptop, MacBook and PC repair in Kuwait with free pickup and drop-off, no-fix-no-fee policy and a 30-day warranty. Expert diagnostics by KCROC.', canonicalUrl: 'https://www.computerrepairkuwait.com', ogType: 'website', schemaTypes: ['LocalBusiness', 'WebSite', 'WebPage'] },
-      hero: { headline: 'Laptop & Computer Repair in Kuwait', subheadline: 'Expert diagnostics, board-level repair and free pickup across Kuwait.', description: 'KCROC repairs laptops, MacBooks, PCs and gaming systems — from screens, batteries and charging faults to motherboard and component-level failures.', primaryCTA: { text: 'WhatsApp a Technician', route: 'https://wa.me/96555301913' }, secondaryCTA: { text: 'View All Services', route: '/services' } },
+      title: 'Home', description: 'KCROC Homepage — Component-level computer repair in Kuwait',
+      seo: { title: 'Free Pickup Computer Repair Kuwait | No Fix No Fee | KCROC', description: 'KCROC repairs laptops, MacBooks & PCs across Kuwait with free pickup & drop-off. No Fix No Fee, 30-day warranty, 4.9★ rated. WhatsApp +965 55301913.', canonicalUrl: 'https://www.computerrepairkuwait.com', ogType: 'website', schemaTypes: ['LocalBusiness', 'WebSite', 'WebPage'] },
+      hero: { headline: 'Kuwait\'s Expert Component-Level Repair Service.', subheadline: 'We fix the board. We don\'t just swap it.', description: 'We diagnose and repair failed components at board level — restoring devices that most repair shops in Kuwait would simply declare beyond repair.', primaryCTA: { text: 'WhatsApp a Technician', route: 'https://wa.me/96555301913' }, secondaryCTA: { text: 'View All Services', route: '/services' } },
       featuredFAQIds: [
         'faq-pick-and-drop', 
         'faq-liquid-damage', 
@@ -162,7 +162,7 @@ export const rawGraphData: RawGraphData = {
     'page-contact': { id: 'page-contact', slug: 'contact', entityType: 'WebPage', isActive: true, title: 'Contact Us', description: 'Contact KCROC for repair services.', seo: { title: 'Contact KCROC | Computer Repair Kuwait', description: 'Get in touch with Kuwait Computer Repair On Call. Book a free pick & drop repair service today.', canonicalUrl: 'https://www.computerrepairkuwait.com/contact', ogType: 'website', schemaTypes: ['ContactPage'] } } as WebPageEntity,
     'page-faq': { id: 'page-faq', slug: 'faq', entityType: 'WebPage', isActive: true, title: 'FAQ', description: 'Frequently asked questions.', seo: { title: 'Frequently Asked Questions | KCROC Kuwait', description: 'Answers to common questions about our laptop repair services, pricing, warranty, and data privacy.', canonicalUrl: 'https://www.computerrepairkuwait.com/faq', ogType: 'website', schemaTypes: ['FAQPage'] } } as WebPageEntity,
     'page-gallery': { id: 'page-gallery', slug: 'gallery', entityType: 'WebPage', isActive: true, title: 'Gallery', description: 'Lab and repair gallery.', seo: { title: 'Repair Gallery | KCROC Hawalli Lab', description: 'View our ESD-safe repair lab in Hawalli and real examples of our component-level micro-soldering.', canonicalUrl: 'https://www.computerrepairkuwait.com/gallery', ogType: 'website', schemaTypes: ['CollectionPage'] } } as WebPageEntity,
-    'page-pricing': { id: 'page-pricing', slug: 'pricing', entityType: 'WebPage', isActive: true, title: 'Pricing', description: 'Transparent repair pricing.', seo: { title: 'Computer Repair Pricing Kuwait | KCROC', description: 'Transparent pricing for laptop screen replacement, battery replacement, and logic board repairs in Kuwait.', canonicalUrl: 'https://www.computerrepairkuwait.com/pricing', ogType: 'website', schemaTypes: ['WebPage'] } } as WebPageEntity,
+    'page-pricing': { id: 'page-pricing', slug: 'pricing', entityType: 'WebPage', isActive: true, title: 'Pricing', description: 'Transparent repair pricing.', seo: { title: 'Computer Repair Pricing Kuwait | KCROC', description: 'Transparent pricing for laptop screen replacement, battery replacement, and motherboard repairs in Kuwait.', canonicalUrl: 'https://www.computerrepairkuwait.com/pricing', ogType: 'website', schemaTypes: ['WebPage'] } } as WebPageEntity,
     
     'page-booking': { id: 'page-booking', slug: 'book', entityType: 'WebPage', isActive: true, title: 'Book a Repair', description: 'Book free laptop and computer repair pickup anywhere in Kuwait. Same-day hardware assessment. 30-day warranty.', seo: { title: 'Book Laptop & Computer Repair Pickup in Kuwait | KCROC', description: 'Book free laptop and computer repair pickup anywhere in Kuwait. Same-day hardware assessment. 30-day warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/book', ogType: 'website', schemaTypes: ['WebPage'] } } as WebPageEntity,
     
@@ -736,7 +736,7 @@ export const rawGraphData: RawGraphData = {
       faqs: [
         { id: 'liquid-faq-1', title: 'What should I do immediately after spilling liquid on my laptop?', answer: 'Shut it down, disconnect the charger, and do not keep powering it on to check whether it works. Arrange an inspection as soon as practical.' },
         { id: 'liquid-faq-2', title: 'Can a laptop still be repaired after a coffee spill?', answer: 'Often yes, depending on where the liquid reached and how much corrosion or component damage occurred. Early power isolation improves the chances of saving the original board.' },
-        { id: 'liquid-faq-3', title: 'Do you repair liquid-damaged MacBooks?', answer: 'Yes. We inspect the logic board and affected circuits at component level where appropriate, including USB-C power and display-related faults.' },
+        { id: 'liquid-faq-3', title: 'Do you repair liquid-damaged MacBooks?', answer: 'Yes. We inspect the motherboard and affected circuits at component level where appropriate, including USB-C power and display-related faults.' },
         { id: 'liquid-faq-4', title: 'Should I put a wet laptop in rice?', answer: 'No. Rice does not remove contamination from connectors or circuit boards and can introduce debris. Shut the laptop down, disconnect power, and arrange a proper inspection instead.' },
         { id: 'liquid-faq-5', title: 'Can a laptop fail days after a spill?', answer: 'Yes. Residue and corrosion can continue affecting contacts and components after the device appears dry. Delayed faults are one reason a post-spill inspection matters.' },
         { id: 'liquid-faq-6', title: 'Can you save the original motherboard after liquid damage?', answer: 'Sometimes. The outcome depends on where the liquid reached, the corrosion level and which components or traces were affected. We assess repairability before recommending replacement.' },
@@ -783,9 +783,9 @@ export const rawGraphData: RawGraphData = {
       isActive: true, 
       title: 'MacBook Repair Kuwait', 
       iconKey: 'apple', 
-      shortDescription: 'Chip-level logic board repair, USB-C power IC replacement, and liquid damage recovery — without Apple\'s full board-swap and data-loss policy.',
-      description: 'Your MacBook won\'t turn on, a spilled drink has just hit the keyboard, or neither Thunderbolt port will charge it anymore — and an Apple Authorized Service Provider has quoted a full logic board replacement that costs hundreds of KWD and, on most Apple Silicon models, means starting over with zero access to your original files. That last part isn\'t a scare tactic — it\'s how the hardware works: on M1/M2/M3 MacBooks, storage is soldered directly to the board and encrypted against that specific board\'s Secure Enclave, so a swapped board is a genuinely different machine as far as your data is concerned. We take the other path. Using thermal imaging and a multimeter, we trace the fault to the exact failed component — a shorted MOSFET, a blown power IC, a corroded trace — and repair that one point via micro-soldering, on your original board. Your SSD, your Secure Enclave, and your data stay exactly where they were.', 
-      idealCustomer: 'Creative professionals, developers, students, and business professionals who\'ve been quoted an expensive board-swap by Apple or a reseller and need the original logic board — and the data on it — recovered rather than replaced.',
+      shortDescription: 'Chip-level motherboard repair, USB-C power IC replacement, and liquid damage recovery — without Apple\'s full board-swap and data-loss policy.',
+      description: 'Your MacBook won\'t turn on, a spilled drink has just hit the keyboard, or neither Thunderbolt port will charge it anymore — and an Apple Authorized Service Provider has quoted a full motherboard replacement that costs hundreds of KWD and, on most Apple Silicon models, means starting over with zero access to your original files. That last part isn\'t a scare tactic — it\'s how the hardware works: on M1/M2/M3 MacBooks, storage is soldered directly to the board and encrypted against that specific board\'s Secure Enclave, so a swapped board is a genuinely different machine as far as your data is concerned. We take the other path. Using thermal imaging and a multimeter, we trace the fault to the exact failed component — a shorted MOSFET, a blown power IC, a corroded trace — and repair that one point via micro-soldering, on your original board. Your SSD, your Secure Enclave, and your data stay exactly where they were.', 
+      idealCustomer: 'Creative professionals, developers, students, and business professionals who\'ve been quoted an expensive board-swap by Apple or a reseller and need the original motherboard — and the data on it — recovered rather than replaced.',
       deviceTypes: [
         'MacBook Air (M1, M2, M3)',
         'MacBook Pro 13" (Intel & M-series)',
@@ -805,7 +805,7 @@ export const rawGraphData: RawGraphData = {
       ],
       relatedCaseStudyPath: { label: 'MacBook Liquid-Damage Case Study — Salmiya', path: '/case-studies/macbook-liquid-damage-salmiya' },
       coreFeatures: [
-        'Logic Board Micro-Soldering',
+        'Motherboard Micro-Soldering',
         'USB-C Power IC Replacement',
         'Liquid Damage Ultrasonic Cleaning',
         'Data-Safe Board-Level Repair (Apple Silicon & Intel)',
@@ -821,7 +821,7 @@ export const rawGraphData: RawGraphData = {
       brands: ['MacBook Air', 'MacBook Pro 13"', 'MacBook Pro 14"', 'MacBook Pro 16"'], 
 
       whyChooseUs: [
-        { title: 'Chip-Level Logic Board Repair', description: 'We trace the fault to the specific failed component — a MOSFET, a power IC, a corroded trace — and repair it directly, instead of defaulting to a full board swap.' },
+        { title: 'Chip-Level Motherboard Repair', description: 'We trace the fault to the specific failed component — a MOSFET, a power IC, a corroded trace — and repair it directly, instead of defaulting to a full board swap.' },
         { title: 'Data Preserved By Design', description: 'Because we repair your original board rather than replacing it, your SSD and Secure Enclave never change — a real distinction on Apple Silicon models, where a swapped board means the storage encryption no longer matches.' },
         { title: 'USB-C Power IC Specialists', description: 'Charging and port failures are among the most common MacBook faults we see, and are frequently a single failed IC rather than a reason to replace the board.' },
         { title: 'Liquid Damage Ultrasonic Cleaning', description: 'The board is fully stripped and run through an industrial ultrasonic cleaner to remove corrosion at a microscopic level before we assess what, if anything, needs replacing.' },
@@ -836,7 +836,7 @@ export const rawGraphData: RawGraphData = {
           id: 'no-power', 
           title: 'No Power / Completely Dead Device', 
           severity: 'critical', 
-          description: 'No charging light, no fan spin, no response to the power button. Usually a shorted input MOSFET or a blown main power rail (PPBUS_G3H and similar) rather than a dead logic board outright — we trace it with a multimeter before assuming the worst.' 
+          description: 'No charging light, no fan spin, no response to the power button. Usually a shorted input MOSFET or a blown main power rail (PPBUS_G3H and similar) rather than a dead motherboard outright — we trace it with a multimeter before assuming the worst.' 
         },
         { 
           id: 'liquid-damage', 
@@ -924,10 +924,10 @@ export const rawGraphData: RawGraphData = {
       performanceOutcomes: {
         disclaimer: 'The outcomes below describe typical results for these repair categories, not a guarantee for any specific device — every repair is quoted after its own diagnostic.',
         items: [
-          { metric: 'Board Recovery Rate', outcome: 'The majority of logic boards referred to us as "needs full replacement" are repairable at component level once the fault is traced to its actual source.' },
+          { metric: 'Board Recovery Rate', outcome: 'The majority of motherboards referred to us as "needs full replacement" are repairable at component level once the fault is traced to its actual source.' },
           { metric: 'Data Preservation', outcome: 'Because the original board is repaired rather than swapped, the original SSD and Secure Enclave remain untouched in the large majority of repairs — data stays accessible without a separate recovery step.' },
           { metric: 'Liquid Damage Cases', outcome: 'Boards brought in within 24-48 hours of a spill, without being powered on again after the incident, have meaningfully better recovery outcomes than those that were repeatedly tested first.' },
-          { metric: 'Cost vs. Board-Swap Quotes', outcome: 'Component-level repair typically costs a fraction of an out-of-warranty full logic board replacement quote.' }
+          { metric: 'Cost vs. Board-Swap Quotes', outcome: 'Component-level repair typically costs a fraction of an out-of-warranty full motherboard replacement quote.' }
         ]
       },
 
@@ -953,7 +953,7 @@ export const rawGraphData: RawGraphData = {
           {
             id: 'apple-said-unfixable',
             title: 'MacBook Pro: Data Recovered From a Board Apple Called Unfixable',
-            symptoms: 'The MacBook was completely dead with no display; Apple quoted a full logic board replacement with total data loss, since the Apple Silicon storage encryption is tied to the original board\'s Secure Enclave.',
+            symptoms: 'The MacBook was completely dead with no display; Apple quoted a full motherboard replacement with total data loss, since the Apple Silicon storage encryption is tied to the original board\'s Secure Enclave.',
             diagnosis: 'Thermal imaging under a safe test voltage located a single shorted component on the main power rail.',
             repair: 'The shorted component was replaced via micro-soldering rather than swapping the board.',
             outcome: 'The original SSD and Secure Enclave were never touched — all data remained accessible once the board powered on again.'
@@ -976,7 +976,7 @@ export const rawGraphData: RawGraphData = {
       faqs: [
         {
           id: 'faq-apple-said-unfixable',
-          title: 'Can you repair a MacBook Apple said needs a full logic board replacement?',
+          title: 'Can you repair a MacBook Apple said needs a full motherboard replacement?',
           answer: 'Often, yes. Apple Authorized Service Providers are generally set up to replace the whole board rather than repair the individual failed component — "needs a new board" from Apple usually means beyond their repair model, not beyond repair entirely. We diagnose the specific fault before agreeing either way.'
         },
         {
@@ -1006,7 +1006,7 @@ export const rawGraphData: RawGraphData = {
         },
         {
           id: 'faq-macbook-repair-cost-vs-apple',
-          title: 'How much does MacBook logic board repair cost compared to Apple?',
+          title: 'How much does MacBook motherboard repair cost compared to Apple?',
           answer: 'Diagnostics are free, and component-level repairs start from 25 KWD, typically a fraction of an out-of-warranty full board-swap quote from Apple — the exact price depends on which component failed.'
         },
         {
@@ -1026,7 +1026,7 @@ export const rawGraphData: RawGraphData = {
         },
         {
           id: 'faq-macbook-warranty',
-          title: 'Do you offer a warranty on logic board repairs?',
+          title: 'Do you offer a warranty on motherboard repairs?',
           answer: 'Yes, 30 days covering all parts and labor on the repair performed.'
         },
         {
@@ -1052,7 +1052,7 @@ export const rawGraphData: RawGraphData = {
           width: IMAGES.macbook.logicBoard.width,
           height: IMAGES.macbook.logicBoard.height,
           placement: 'coreFeatures',
-          caption: 'Component-level logic board and fan repair — replacing the exact failed chip rather than the whole board.'
+          caption: 'Component-level motherboard and fan repair — replacing the exact failed chip rather than the whole board.'
         },
         {
           src: IMAGES.macbook.swollenBattery1.src,
@@ -1064,8 +1064,8 @@ export const rawGraphData: RawGraphData = {
         }
       ],
       seo: { 
-        title: 'MacBook Repair Kuwait | Logic Board Experts | KCROC', 
-        description: 'Chip-level MacBook logic board repair in Kuwait. USB-C power IC replacement, liquid damage recovery, and data-safe board repair for Intel & Apple Silicon models. Free pick & drop.', 
+        title: 'MacBook Repair Kuwait | Motherboard Experts | KCROC', 
+        description: 'Chip-level MacBook motherboard repair in Kuwait. USB-C power IC replacement, liquid damage recovery, and data-safe board repair for Intel & Apple Silicon models. Free pick & drop.', 
         canonicalUrl: 'https://www.computerrepairkuwait.com/macbook-repair-kuwait', 
         ogType: 'article', 
         schemaTypes: ['Service', 'FAQPage'] 
@@ -1846,7 +1846,7 @@ export const rawGraphData: RawGraphData = {
       idealCustomer: 'Users with completely dead or liquid-damaged devices who have been told by standard retail shops that their laptop is "unfixable" and want to save up to 80% versus a full board replacement.',
       deviceTypes: [
         'Windows Laptop Motherboards (Dell, HP, Lenovo, ASUS, Acer, MSI)',
-        'MacBook Logic Boards (Intel & Apple Silicon)',
+        'MacBook Motherboards (Intel & Apple Silicon)',
         'Gaming Laptop Motherboards (high-draw VRM designs)',
         'Desktop Motherboards (ATX / Micro-ATX)'
       ],
@@ -2036,8 +2036,8 @@ export const rawGraphData: RawGraphData = {
         },
         {
           id: 'faq-macbook-and-windows-boards',
-          title: 'Do you repair both MacBook logic boards and Windows motherboards?',
-          answer: 'Yes — MacBook logic boards (Intel and Apple Silicon) and Windows laptop or desktop motherboards across all major brands.'
+          title: 'Do you repair both MacBook motherboards and Windows motherboards?',
+          answer: 'Yes — MacBook motherboards (Intel and Apple Silicon) and Windows laptop or desktop motherboards across all major brands.'
         },
         {
           id: 'faq-motherboard-not-repairable',
@@ -2377,7 +2377,7 @@ export const rawGraphData: RawGraphData = {
           id: 'macbook-battery-service-recommended',
           title: '"Service Recommended" / "Replace Now" macOS Battery Warning',
           severity: 'medium',
-          description: 'macOS\'s own battery health indicator flags degraded cells before they cause visible symptoms — we replace the internal battery without affecting the rest of the logic board.'
+          description: 'macOS\'s own battery health indicator flags degraded cells before they cause visible symptoms — we replace the internal battery without affecting the rest of the motherboard.'
         },
         {
           id: 'short-runtime-full-charge',
@@ -2493,7 +2493,7 @@ export const rawGraphData: RawGraphData = {
         {
           id: 'faq-macbook-battery',
           title: 'Can you replace MacBook batteries?',
-          answer: 'Yes — MacBook Air and MacBook Pro across all generations, as an internal battery replacement that doesn\'t affect the rest of the logic board or your data.'
+          answer: 'Yes — MacBook Air and MacBook Pro across all generations, as an internal battery replacement that doesn\'t affect the rest of the motherboard or your data.'
         },
         {
           id: 'faq-charging-not-battery',
@@ -2569,7 +2569,7 @@ export const rawGraphData: RawGraphData = {
     'loc-kuwait-city': { 
       id: 'loc-kuwait-city', slug: 'kuwait-city', entityType: 'Location', isActive: true, isPhysicalLocation: false, title: 'Kuwait City', description: 'Fast, professional corporate IT support and component-level laptop repair for businesses and residents in Kuwait City.', landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)', coords: { lat: 29.3759, lng: 47.9774 }, serviceRadiusKm: 15, serviceAreas: ['Kuwait City', 'Sharq', 'Dasman', 'Mirqab', 'Qibla'], 
       contentImage: { src: IMAGES.brand.technicians.src, alt: IMAGES.brand.technicians.alt, width: IMAGES.brand.technicians.width, height: IMAGES.brand.technicians.height, caption: 'Our technicians handling component-level laptop repair for businesses and residents across Kuwait City.' },
-      seo: { title: 'Computer Repair Kuwait City | Corporate & Home | KCROC', description: 'Expert computer repair, MacBook logic board micro-soldering, and IT support for businesses and residents in Kuwait City. Free pick and drop.', canonicalUrl: 'https://www.computerrepairkuwait.com/location/kuwait-city', ogType: 'website', schemaTypes: ['LocalBusiness'] }, 
+      seo: { title: 'Computer Repair Kuwait City | Corporate & Home | KCROC', description: 'Expert computer repair, MacBook motherboard micro-soldering, and IT support for businesses and residents in Kuwait City. Free pick and drop.', canonicalUrl: 'https://www.computerrepairkuwait.com/location/kuwait-city', ogType: 'website', schemaTypes: ['LocalBusiness'] }, 
       navigationPriority: 95 
     } as LocationEntity,
     
@@ -2577,7 +2577,7 @@ export const rawGraphData: RawGraphData = {
 
     'loc-farwaniya': { id: 'loc-farwaniya', slug: 'farwaniya', entityType: 'Location', isActive: true, isPhysicalLocation: false, title: 'Farwaniya', description: 'Expert motherboard repair, screen replacement, and PC diagnostics for the Farwaniya governorate.', landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)', coords: { lat: 29.2770, lng: 47.9590 }, serviceRadiusKm: 20, serviceAreas: ['Farwaniya', 'Khaitan', 'Riggae', 'Ardiya', 'Jleeb Al-Shuyoukh'], contentImage: { src: IMAGES.services.motherboardRepair.src, alt: IMAGES.services.motherboardRepair.alt, width: IMAGES.services.motherboardRepair.width, height: IMAGES.services.motherboardRepair.height, caption: 'Chip-level motherboard repair and screen replacement serving the Farwaniya governorate.' }, seo: { title: 'Computer Repair Farwaniya Kuwait | Laptop & PC | KCROC', description: 'Laptop, PC and motherboard repair in Farwaniya, including Khaitan, Riggae and Ardiya, with free pickup and delivery to KCROC\'s Hawalli lab.', canonicalUrl: 'https://www.computerrepairkuwait.com/location/farwaniya', ogType: 'website', schemaTypes: ['LocalBusiness'] }, navigationPriority: 80 } as LocationEntity,
 
-    'loc-jahra': { id: 'loc-jahra', slug: 'jahra', entityType: 'Location', isActive: true, isPhysicalLocation: false, title: 'Jahra', description: 'Comprehensive computer repair, thermal repasting, and logic board diagnostics delivered directly to Jahra.', landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)', coords: { lat: 29.3370, lng: 47.6580 }, serviceRadiusKm: 40, serviceAreas: ['Jahra', 'Saad Al Abdullah', 'Naeem', 'Qasr', 'Taima'], contentImage: { src: IMAGES.motherboard.thermalGrizzly1.src, alt: IMAGES.motherboard.thermalGrizzly1.alt, width: IMAGES.motherboard.thermalGrizzly1.width, height: IMAGES.motherboard.thermalGrizzly1.height, caption: 'Thermal repasting and logic board diagnostics delivered directly to Jahra.' }, seo: { title: 'Computer Repair in Jahra, Kuwait | Laptop Repair | KCROC', description: 'Computer and laptop repair in Jahra with free pickup and delivery, including thermal maintenance and logic-board diagnostics at KCROC\'s Hawalli lab.', canonicalUrl: 'https://www.computerrepairkuwait.com/location/jahra', ogType: 'website', schemaTypes: ['LocalBusiness'] }, navigationPriority: 70 } as LocationEntity,
+    'loc-jahra': { id: 'loc-jahra', slug: 'jahra', entityType: 'Location', isActive: true, isPhysicalLocation: false, title: 'Jahra', description: 'Comprehensive computer repair, thermal repasting, and motherboard diagnostics delivered directly to Jahra.', landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)', coords: { lat: 29.3370, lng: 47.6580 }, serviceRadiusKm: 40, serviceAreas: ['Jahra', 'Saad Al Abdullah', 'Naeem', 'Qasr', 'Taima'], contentImage: { src: IMAGES.motherboard.thermalGrizzly1.src, alt: IMAGES.motherboard.thermalGrizzly1.alt, width: IMAGES.motherboard.thermalGrizzly1.width, height: IMAGES.motherboard.thermalGrizzly1.height, caption: 'Thermal repasting and motherboard diagnostics delivered directly to Jahra.' }, seo: { title: 'Computer Repair in Jahra, Kuwait | Laptop Repair | KCROC', description: 'Computer and laptop repair in Jahra with free pickup and delivery, including thermal maintenance and motherboard diagnostics at KCROC\'s Hawalli lab.', canonicalUrl: 'https://www.computerrepairkuwait.com/location/jahra', ogType: 'website', schemaTypes: ['LocalBusiness'] }, navigationPriority: 70 } as LocationEntity,
 
     'loc-ahmadi': { id: 'loc-ahmadi', slug: 'ahmadi', entityType: 'Location', isActive: true, isPhysicalLocation: false, title: 'Ahmadi', description: 'Premium gaming PC repair and Apple MacBook diagnostics serving Ahmadi and southern Kuwait.', landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)', coords: { lat: 29.0833, lng: 48.0833 }, serviceRadiusKm: 30, serviceAreas: ['Ahmadi', 'Fahaheel', 'Mangaf', 'Mahboula', 'Sabahiya'], contentImage: { src: IMAGES.gaming.rgbLighting.src, alt: IMAGES.gaming.rgbLighting.alt, width: IMAGES.gaming.rgbLighting.width, height: IMAGES.gaming.rgbLighting.height, caption: 'Gaming PC and Apple MacBook diagnostics serving Ahmadi and southern Kuwait.' }, seo: { title: 'Computer Repair Ahmadi Kuwait | Laptop & MacBook | KCROC', description: 'Laptop, MacBook and gaming PC repair in Ahmadi, Fahaheel, Mangaf and Mahboula, with free pickup and delivery to KCROC\'s Hawalli lab.', canonicalUrl: 'https://www.computerrepairkuwait.com/location/ahmadi', ogType: 'website', schemaTypes: ['LocalBusiness'] }, navigationPriority: 60 } as LocationEntity,
 
@@ -2588,7 +2588,7 @@ export const rawGraphData: RawGraphData = {
     // Each gets its own entity below (same LocationDeepTemplate pattern as
     // Salmiya/Farwaniya/Jahra/Ahmadi) with a distinct angle and image per
     // page so the cluster doesn't read as templated duplicate content.
-    'loc-fahaheel': { id: 'loc-fahaheel', slug: 'fahaheel', entityType: 'Location', isActive: true, isPhysicalLocation: false, title: 'Fahaheel', description: 'Free pickup and delivery for laptop, MacBook, and gaming PC repair across Fahaheel\'s residential and family communities, with every device diagnosed at KCROC\'s Hawalli lab.', landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)', coords: { lat: 29.0810, lng: 48.1288 }, serviceRadiusKm: 20, serviceAreas: ['Fahaheel', 'Mangaf', 'Abu Halifa', 'Sabah Al-Ahmad Sea City'], contentImage: { src: IMAGES.macbook.logicBoard.src, alt: IMAGES.macbook.logicBoard.alt, width: IMAGES.macbook.logicBoard.width, height: IMAGES.macbook.logicBoard.height, caption: 'MacBook logic board repair for families and residents across Fahaheel.' }, seo: { title: 'Computer Repair Fahaheel Kuwait | Free Pickup | KCROC', description: 'Free pickup and delivery for laptop, MacBook, and gaming PC repair across Fahaheel\'s residential and family communities, with every device diagnosed at KCROC\'s Hawalli lab.', canonicalUrl: 'https://www.computerrepairkuwait.com/location/fahaheel', ogType: 'website', schemaTypes: ['LocalBusiness'] }, navigationPriority: 55 } as LocationEntity,
+    'loc-fahaheel': { id: 'loc-fahaheel', slug: 'fahaheel', entityType: 'Location', isActive: true, isPhysicalLocation: false, title: 'Fahaheel', description: 'Free pickup and delivery for laptop, MacBook, and gaming PC repair across Fahaheel\'s residential and family communities, with every device diagnosed at KCROC\'s Hawalli lab.', landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)', coords: { lat: 29.0810, lng: 48.1288 }, serviceRadiusKm: 20, serviceAreas: ['Fahaheel', 'Mangaf', 'Abu Halifa', 'Sabah Al-Ahmad Sea City'], contentImage: { src: IMAGES.macbook.logicBoard.src, alt: IMAGES.macbook.logicBoard.alt, width: IMAGES.macbook.logicBoard.width, height: IMAGES.macbook.logicBoard.height, caption: 'MacBook motherboard repair for families and residents across Fahaheel.' }, seo: { title: 'Computer Repair Fahaheel Kuwait | Free Pickup | KCROC', description: 'Free pickup and delivery for laptop, MacBook, and gaming PC repair across Fahaheel\'s residential and family communities, with every device diagnosed at KCROC\'s Hawalli lab.', canonicalUrl: 'https://www.computerrepairkuwait.com/location/fahaheel', ogType: 'website', schemaTypes: ['LocalBusiness'] }, navigationPriority: 55 } as LocationEntity,
 
     'loc-mangaf': { id: 'loc-mangaf', slug: 'mangaf', entityType: 'Location', isActive: true, isPhysicalLocation: false, title: 'Mangaf', description: 'Component-level laptop, MacBook, and motherboard repair for Mangaf residents and the wider Ahmadi workforce community, collected and delivered free of charge.', landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)', coords: { lat: 29.0975, lng: 48.1197 }, serviceRadiusKm: 20, serviceAreas: ['Mangaf', 'Fahaheel', 'Abu Halifa', 'Ahmadi'], contentImage: { src: IMAGES.gaming.waterCooled.src, alt: IMAGES.gaming.waterCooled.alt, width: IMAGES.gaming.waterCooled.width, height: IMAGES.gaming.waterCooled.height, caption: 'Custom water-cooled gaming PC build serviced for the Mangaf community.' }, seo: { title: 'Computer Repair Mangaf Kuwait | Free Pickup | KCROC', description: 'Component-level laptop, MacBook, and motherboard repair for Mangaf residents and the wider Ahmadi workforce community, collected and delivered free of charge.', canonicalUrl: 'https://www.computerrepairkuwait.com/location/mangaf', ogType: 'website', schemaTypes: ['LocalBusiness'] }, navigationPriority: 50 } as LocationEntity,
 
@@ -2695,15 +2695,15 @@ export const rawGraphData: RawGraphData = {
        FAQS
     ═══════════════════════════════════════════════════════════════ */
     'faq-pick-and-drop': { id: 'faq-pick-and-drop', slug: 'pick-and-drop', entityType: 'FAQ', isActive: true, title: 'Do you offer a pick and drop service across Kuwait?', description: 'Free pickup and delivery across all Kuwait governorates.', answer: 'Yes. Kuwait Computer Repair On Call provides completely free pickup and delivery across all Kuwait governorates — including Hawalli, Salmiya, Kuwait City, Farwaniya, Ahmadi, Jahra, Fahaheel, Mangaf, and Mahboula. Book via WhatsApp at any time. There are no hidden transport charges.', seo: { title: 'FAQ: Free Pick & Drop Service', description: 'Free pickup and delivery across all Kuwait.', canonicalUrl: 'https://www.computerrepairkuwait.com/faq#pick-and-drop', schemaTypes: ['FAQPage'] } } as FAQEntity,
-    'faq-liquid-damage': { id: 'faq-liquid-damage', slug: 'liquid-damage', entityType: 'FAQ', isActive: true, title: 'Do you repair liquid-damaged laptops and MacBooks?', description: 'Details about our ultrasonic liquid damage repair process.', answer: 'Yes. We fully disassemble the device, run the logic board through an industrial ultrasonic cleaner to strip corrosion, then trace and replace the specific shorted components using micro-soldering.', seo: { title: 'FAQ: Liquid Damage Repair', description: 'Liquid damage repair process details.', canonicalUrl: 'https://www.computerrepairkuwait.com/faq#liquid-damage', schemaTypes: ['FAQPage'] } } as FAQEntity,
+    'faq-liquid-damage': { id: 'faq-liquid-damage', slug: 'liquid-damage', entityType: 'FAQ', isActive: true, title: 'Do you repair liquid-damaged laptops and MacBooks?', description: 'Details about our ultrasonic liquid damage repair process.', answer: 'Yes. We fully disassemble the device, run the motherboard through an industrial ultrasonic cleaner to strip corrosion, then trace and replace the specific shorted components using micro-soldering.', seo: { title: 'FAQ: Liquid Damage Repair', description: 'Liquid damage repair process details.', canonicalUrl: 'https://www.computerrepairkuwait.com/faq#liquid-damage', schemaTypes: ['FAQPage'] } } as FAQEntity,
     'faq-no-fix': { id: 'faq-no-fix', slug: 'no-fix', entityType: 'FAQ', isActive: true, title: 'What does No Fix, No Fee mean exactly?', description: 'Our transparent pricing guarantee.', answer: 'If we cannot successfully repair your device after a full diagnostic, you pay absolutely nothing — not for the diagnostic, labor, or parts tested. You only pay if you approve the quote and the repair is successful.', seo: { title: 'FAQ: No Fix No Fee Policy', description: 'How our no fix no fee guarantee works.', canonicalUrl: 'https://www.computerrepairkuwait.com/faq#no-fix', schemaTypes: ['FAQPage'] } } as FAQEntity,
     'faq-warranty': { id: 'faq-warranty', slug: 'warranty', entityType: 'FAQ', isActive: true, title: 'What warranty do you provide on repairs?', description: '30-day warranty coverage details.', answer: 'All successful hardware repairs at KCROC carry a 30-day warranty covering both parts and labor. Screen replacements, battery replacements, and board-level repairs all carry this same 30-day coverage.', seo: { title: 'FAQ: Repair Warranty', description: '30-day warranty on all hardware repairs.', canonicalUrl: 'https://www.computerrepairkuwait.com/faq#warranty', schemaTypes: ['FAQPage'] } } as FAQEntity,
-    'faq-data-safe': { id: 'faq-data-safe', slug: 'data-safety', entityType: 'FAQ', isActive: true, title: 'Is my personal data safe during repair?', description: 'Our strict data privacy protocol.', answer: 'Yes. We operate a strict hardware-only, no-snooping policy. For logic board and motherboard repairs, you are welcome to remove your storage drive before handing the device over.', seo: { title: 'FAQ: Data Safety During Repair', description: 'How we protect your data during computer repair.', canonicalUrl: 'https://www.computerrepairkuwait.com/faq#data-safety', schemaTypes: ['FAQPage'] } } as FAQEntity,
+    'faq-data-safe': { id: 'faq-data-safe', slug: 'data-safety', entityType: 'FAQ', isActive: true, title: 'Is my personal data safe during repair?', description: 'Our strict data privacy protocol.', answer: 'Yes. We operate a strict hardware-only, no-snooping policy. For motherboard and motherboard repairs, you are welcome to remove your storage drive before handing the device over.', seo: { title: 'FAQ: Data Safety During Repair', description: 'How we protect your data during computer repair.', canonicalUrl: 'https://www.computerrepairkuwait.com/faq#data-safety', schemaTypes: ['FAQPage'] } } as FAQEntity,
     'faq-same-day': { id: 'faq-same-day', slug: 'same-day-repair', entityType: 'FAQ', isActive: true, title: 'Do you offer same-day computer repair in Kuwait?', description: 'Same-day service availability and cutoff times.', answer: 'Yes, same-day repair is available for eligible jobs booked before 11:00 AM. Services typically completed same day include: screen replacements, battery replacements, keyboard repairs, SSD upgrades, and Windows installation.', seo: { title: 'FAQ: Same-Day Repair Service', description: 'Same-day computer repair availability in Kuwait.', canonicalUrl: 'https://www.computerrepairkuwait.com/faq#same-day', schemaTypes: ['FAQPage'] } } as FAQEntity,
     'faq-cost': { id: 'faq-cost', slug: 'repair-cost', entityType: 'FAQ', isActive: true, title: 'How much does computer repair cost in Kuwait?', description: 'Base pricing for common repair services.', answer: 'Diagnostics are free. Screen replacement starts from 20 KWD, battery replacement from 12 KWD, laptop hardware repair from 15 KWD, MacBook repair from 25 KWD, and motherboard chip-level repair from 25 KWD.', seo: { title: 'FAQ: Repair Costs Kuwait', description: 'Computer repair pricing in Kuwait.', canonicalUrl: 'https://www.computerrepairkuwait.com/faq#cost', schemaTypes: ['FAQPage'] } } as FAQEntity,
     
-    'faq-macbook-brands': { id: 'faq-macbook-brands', slug: 'macbook-models', entityType: 'FAQ', isActive: true, title: 'Which MacBook models do you repair?', description: 'List of supported Apple MacBook models for repair.', answer: 'We repair all MacBook models including MacBook Air (M1, M2, M3), MacBook Pro 13", 14", and 16" (M1, M2, M3, M3 Pro, M3 Max), and all Intel MacBook models from 2015 onward. This includes logic board micro-soldering, USB-C power IC replacement, screen replacement, battery replacement, and liquid damage recovery for all these models.', seo: { title: 'Which MacBook models do you repair?', description: 'We repair all MacBook Air and Pro models including M1, M2, M3, and Intel variations.', canonicalUrl: 'https://www.computerrepairkuwait.com/faq#macbook-models', schemaTypes: ['FAQPage'] } } as FAQEntity,
-    'faq-data-loss': { id: 'faq-data-loss', slug: 'data-loss', entityType: 'FAQ', isActive: true, title: 'Will I lose my data during repair?', description: 'Information regarding data preservation during component repairs.', answer: 'Most hardware repairs — including screen replacement, battery replacement, keyboard repair, and charging port repair — do not affect your data at all. For motherboard and logic board repairs, we repair your original board rather than replacing it, which preserves your data entirely.', seo: { title: 'Will I lose my data during repair?', description: 'Our component-level repair preserves your data completely.', canonicalUrl: 'https://www.computerrepairkuwait.com/faq#data-loss', schemaTypes: ['FAQPage'] } } as FAQEntity,
+    'faq-macbook-brands': { id: 'faq-macbook-brands', slug: 'macbook-models', entityType: 'FAQ', isActive: true, title: 'Which MacBook models do you repair?', description: 'List of supported Apple MacBook models for repair.', answer: 'We repair all MacBook models including MacBook Air (M1, M2, M3), MacBook Pro 13", 14", and 16" (M1, M2, M3, M3 Pro, M3 Max), and all Intel MacBook models from 2015 onward. This includes motherboard micro-soldering, USB-C power IC replacement, screen replacement, battery replacement, and liquid damage recovery for all these models.', seo: { title: 'Which MacBook models do you repair?', description: 'We repair all MacBook Air and Pro models including M1, M2, M3, and Intel variations.', canonicalUrl: 'https://www.computerrepairkuwait.com/faq#macbook-models', schemaTypes: ['FAQPage'] } } as FAQEntity,
+    'faq-data-loss': { id: 'faq-data-loss', slug: 'data-loss', entityType: 'FAQ', isActive: true, title: 'Will I lose my data during repair?', description: 'Information regarding data preservation during component repairs.', answer: 'Most hardware repairs — including screen replacement, battery replacement, keyboard repair, and charging port repair — do not affect your data at all. For motherboard and motherboard repairs, we repair your original board rather than replacing it, which preserves your data entirely.', seo: { title: 'Will I lose my data during repair?', description: 'Our component-level repair preserves your data completely.', canonicalUrl: 'https://www.computerrepairkuwait.com/faq#data-loss', schemaTypes: ['FAQPage'] } } as FAQEntity,
     'faq-same-day-booking': { id: 'faq-same-day-booking', slug: 'same-day-booking', entityType: 'FAQ', isActive: true, title: 'How do I book a same-day repair?', description: 'Instructions for booking a same-day repair service.', answer: 'Message us on WhatsApp before 11:00 AM for same-day collection and repair eligibility. Share your device model, the fault description, and your area in Kuwait. We confirm availability and send our driver to collect within a few hours.', seo: { title: 'How do I book a same-day repair?', description: 'Message us on WhatsApp before 11:00 AM for same-day computer repair in Kuwait.', canonicalUrl: 'https://www.computerrepairkuwait.com/faq#same-day-booking', schemaTypes: ['FAQPage'] } } as FAQEntity,
     'faq-payment': { id: 'faq-payment', slug: 'payment', entityType: 'FAQ', isActive: true, title: 'What payment methods do you accept?', description: 'Available payment methods for repair services.', answer: 'We accept cash on delivery when we return your repaired device. Payment is only due after the repair is completed, tested, and you are satisfied. We never take payment upfront.', seo: { title: 'What payment methods do you accept?', description: 'Cash on delivery accepted after successful computer repair.', canonicalUrl: 'https://www.computerrepairkuwait.com/faq#payment', schemaTypes: ['FAQPage'] } } as FAQEntity,
     'faq-ssd-upgrade': { id: 'faq-ssd-upgrade', slug: 'ssd-upgrade', entityType: 'FAQ', isActive: true, title: 'Can you upgrade my laptop to an SSD?', description: 'Information on NVMe and SATA SSD upgrade services.', answer: 'Yes. SSD upgrades are one of the most cost-effective performance improvements for older laptops. We install NVMe or SATA SSDs compatible with your model, migrate your existing Windows installation to the new drive, and verify performance after installation.', seo: { title: 'Can you upgrade my laptop to an SSD?', description: 'We provide NVMe and SATA SSD upgrades to drastically improve laptop speed.', canonicalUrl: 'https://www.computerrepairkuwait.com/faq#ssd-upgrade', schemaTypes: ['FAQPage'] } } as FAQEntity,
@@ -3444,7 +3444,7 @@ export const rawGraphData: RawGraphData = {
     'case-macbook-liquid-salmiya': {
       id: 'case-macbook-liquid-salmiya', slug: 'macbook-liquid-damage-salmiya', entityType: 'CaseStudy', isActive: true,
       title: 'MacBook Pro M2 Liquid Damage Repair — Salmiya',
-      description: 'Real repair case study of a coffee-damaged MacBook Pro M2 logic board restoration.',
+      description: 'Real repair case study of a coffee-damaged MacBook Pro M2 motherboard restoration.',
       device: 'MacBook Pro 14" M2 Pro',
       location: 'Salmiya',
       symptom: 'Coffee spill. Device powered off immediately. Fan spins briefly on power button, no display.',
@@ -3461,7 +3461,7 @@ export const rawGraphData: RawGraphData = {
       problemIds: ['problem-liquid-spill'],
       locationId: 'loc-salmiya',
       authorId: 'https://www.computerrepairkuwait.com/author/imran#person',
-      repairCategory: 'Logic board liquid-damage repair',
+      repairCategory: 'Motherboard liquid-damage repair',
       difficulty: 'component-level',
       repairStatus: 'success',
       diagnosticTools: ['Ultrasonic cleaner', 'Multimeter', 'Micro-soldering / hot-air rework'],
@@ -3475,9 +3475,9 @@ export const rawGraphData: RawGraphData = {
       featuredImage: {
         thumbnail: { raw: IMAGES.macbook.diagnostics.src, webp: IMAGES.macbook.diagnostics.src, avif: IMAGES.macbook.diagnostics.src, width: IMAGES.macbook.diagnostics.width, height: IMAGES.macbook.diagnostics.height },
         hero: { raw: IMAGES.macbook.logicBoard.src, webp: IMAGES.macbook.logicBoard.src, avif: IMAGES.macbook.logicBoard.src, width: IMAGES.macbook.logicBoard.width, height: IMAGES.macbook.logicBoard.height },
-        altText: 'MacBook Pro M2 logic board diagnostic and repair after coffee spill damage'
+        altText: 'MacBook Pro M2 motherboard diagnostic and repair after coffee spill damage'
       },
-      seo: { title: 'MacBook Pro M2 Liquid Damage Repair — Salmiya | KCROC', description: 'Coffee spill destroyed a MacBook Pro M2 in Salmiya. KCROC repaired the logic board for 65 KWD, preserving all data. Apple wanted 280 KWD for a board swap.', canonicalUrl: 'https://www.computerrepairkuwait.com/case-studies/macbook-liquid-damage-salmiya', ogType: 'article', schemaTypes: ['Article', 'BreadcrumbList', 'ImageObject'] },
+      seo: { title: 'MacBook Pro M2 Liquid Damage Repair — Salmiya | KCROC', description: 'Coffee spill destroyed a MacBook Pro M2 in Salmiya. KCROC repaired the motherboard for 65 KWD, preserving all data. Apple wanted 280 KWD for a board swap.', canonicalUrl: 'https://www.computerrepairkuwait.com/case-studies/macbook-liquid-damage-salmiya', ogType: 'article', schemaTypes: ['Article', 'BreadcrumbList', 'ImageObject'] },
       
       // 🚀 NEW
       narrative: {
@@ -3494,7 +3494,7 @@ export const rawGraphData: RawGraphData = {
           'Fuse replacement: the blown backlight fuse was traced and replaced, restoring power to the display.',
           'Stress testing: after reassembly with fresh thermal paste, the board ran a continuous 4-hour full-load test to confirm thermal and electrical stability.'
         ],
-        closingOutcome: 'The MacBook powered on and passed full hardware diagnostics. Because the original logic board was repaired rather than replaced, the onboard storage — soldered directly to that board and tied to its Secure Enclave — was never touched, so all client data was preserved. The device was back in Salmiya within 36 hours, at 65 KWD versus the 280 KWD board-swap quote: a 215 KWD saving, with data intact and a 30-day warranty included.',
+        closingOutcome: 'The MacBook powered on and passed full hardware diagnostics. Because the original motherboard was repaired rather than replaced, the onboard storage — soldered directly to that board and tied to its Secure Enclave — was never touched, so all client data was preserved. The device was back in Salmiya within 36 hours, at 65 KWD versus the 280 KWD board-swap quote: a 215 KWD saving, with data intact and a 30-day warranty included.',
         urgentWarning: 'If you spill liquid on a MacBook: disconnect power immediately, do not attempt to turn it on to "check" it, and do not plug it into a charger. Both actions risk completing an electrical short that a simple clean-and-repair could otherwise avoid.'
       }
     } as CaseStudyEntity,
