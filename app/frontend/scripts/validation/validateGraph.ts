@@ -17,6 +17,8 @@ export async function validateGraph() {
     'relatedServiceIds',
     'relatedProblemIds',
     'relatedBrandIds',
+    'relatedLocationIds',
+    'relatedCaseStudyIds',
     'featuredFAQIds',
     'featuredUSPIds'
   ];
@@ -72,14 +74,14 @@ export async function validateGraph() {
       }
     });
 
-    // Explicit path relationships are intentionally URL-based rather than ID-based.
-    // Validate their shape here so malformed guide/case-study links are caught even
+    // Explicit resource/case-study path relationships are intentionally URL-based rather than ID-based.
+    // Validate their shape here so malformed resource/case-study links are caught even
     // though they cannot participate in entity-ID incoming-edge counts.
-    if (Array.isArray(entity.relatedGuidePaths)) {
-      entity.relatedGuidePaths.forEach((guide: any) => {
+    if (Array.isArray(entity.relatedResourcePaths)) {
+      entity.relatedResourcePaths.forEach((resource: any) => {
         hasOutgoingLinks = true;
-        if (!guide || typeof guide.label !== 'string' || typeof guide.path !== 'string' || !guide.path.startsWith('/')) {
-          errors.push(`[${entity.id}] Invalid relatedGuidePaths entry: expected { label, path } with an absolute site path.`);
+        if (!resource || typeof resource.label !== 'string' || typeof resource.path !== 'string' || !resource.path.startsWith('/')) {
+          errors.push(`[${entity.id}] Invalid relatedResourcePaths entry: expected { label, path } with an absolute site path.`);
         }
       });
     }
