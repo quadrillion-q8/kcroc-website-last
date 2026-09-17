@@ -16,7 +16,7 @@ export const IMAGES = {
     // Public Domain / CC0 (Wikimedia)
     ch341aSpiProgrammer: { src: "/images/guides/bios-recovery/ch341a-spi-programmer.webp", alt: "CH341A USB hardware programmer connected with SOIC8 test clip for in-circuit SPI flash recovery", width: 600, height: 400 },
     // Unsplash License \u2014 free for commercial use, no attribution required
-    microSolderingBiosIc: { src: "/images/guides/bios-recovery/micro-soldering-bios-ic.webp", alt: "Micro-soldering station desoldering an 8-pin SPI flash chip from a laptop logic board", width: 600, height: 400 },
+    microSolderingBiosIc: { src: "/images/guides/bios-recovery/micro-soldering-bios-ic.webp", alt: "Micro-soldering station desoldering an 8-pin SPI flash chip from a laptop motherboard", width: 600, height: 400 },
     // Unsplash License \u2014 free for commercial use, no attribution required
     tpmSecurityChip: { src: "/images/guides/bios-recovery/tpm-security-chip.webp", alt: "Hardware security chip on a circuit board representing TPM, Secure Boot and BitLocker", width: 800, height: 450 },
   },
@@ -64,7 +64,7 @@ export const IMAGES = {
 
   // --- MACBOOK REPAIR ---
   macbook: {
-    logicBoard: { src: "/images/apple-macbook-logic-board-and-fan-repair.webp", alt: "MacBook logic board repair", width: 1000, height: 600 },
+    logicBoard: { src: "/images/apple-macbook-motherboard-and-fan-repair.webp", alt: "MacBook motherboard repair", width: 1000, height: 600 },
     diagnostics: { src: "/images/technician-holding-opened-macbook-for-repair.webp", alt: "MacBook diagnostics", width: 1200, height: 630 },
     swollenBattery1: { src: "/images/swollen-apple-macbook-battery-replacement.webp", alt: "Swollen MacBook battery", width: 800, height: 600 },
     swollenBattery2: { src: "/images/swollen-macbook-battery-replacement-2.webp", alt: "MacBook battery replacement", width: 800, height: 600 },
