@@ -123,7 +123,7 @@ const PILLAR_SCHEMA = [
     },
     knowsAbout: [
       'Laptop motherboard diagnostics',
-      'MacBook logic board repair',
+      'MacBook motherboard repair',
       'Component-level micro-soldering',
       'Gaming laptop thermal troubleshooting',
     ],
@@ -1171,7 +1171,7 @@ export default function LaptopBuyingGuide() {
             <p>
               Every laptop, regardless of how carefully it was specified at purchase, is eventually subject to
               the same physical process: <strong className="text-white">thermal cycling</strong>. As a laptop
-              heats up under load and cools down when powered off, the logic board physically expands and
+              heats up under load and cools down when powered off, the motherboard physically expands and
               contracts by tiny amounts. Repeated over months and years, this cycling gradually stresses the
               solder joints connecting components to the board — the charging circuitry, voltage regulators,
               capacitors, and connectors that keep the system running.
@@ -1202,7 +1202,7 @@ export default function LaptopBuyingGuide() {
               </Link>{' '}
               for laptop and{' '}
               <Link to="/macbook-repair-kuwait" className="text-cyan-400 underline hover:text-cyan-300">
-                MacBook logic boards
+                MacBook motherboards
               </Link>
               , rather than defaulting to full-board replacement. Before replacing a laptop over a motherboard
               fault, it's worth letting a technician diagnose which specific component actually failed — the fix
@@ -1255,7 +1255,7 @@ export default function LaptopBuyingGuide() {
                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1.5 mb-3">
                   {[
                     'Laptop motherboard diagnostics',
-                    'MacBook logic board repair',
+                    'MacBook motherboard repair',
                     'Component-level micro-soldering',
                     'Gaming laptop thermal troubleshooting',
                   ].map((s, i) => (
