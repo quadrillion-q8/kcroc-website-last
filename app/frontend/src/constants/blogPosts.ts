@@ -554,7 +554,7 @@ export const BLOG_POSTS: BlogPost[] = [
     content: [
       "In Kuwait, the ambient summer temperatures routinely exceed 45°C. For high-performance laptops and MacBooks, this environment is absolutely brutal. Heat and fine particulate dust combine to create the perfect storm for hardware failure.",
       "Most official service centers in Kuwait will immediately suggest replacing the entire motherboard when a laptop fails. This costs hundreds of Dinars and results in total data loss. However, over 90% of these 'dead' motherboards just have a single shorted capacitor or blown MOSFET.",
-      "By utilizing precision micro-soldering and thermal imaging, modern ESD-safe labs can isolate the exact failing chip on the logic board. This component-level approach not only saves the original data but usually costs a fraction of a factory board swap.",
+      "By utilizing precision micro-soldering and thermal imaging, modern ESD-safe labs can isolate the exact failing chip on the motherboard. This component-level approach not only saves the original data but usually costs a fraction of a factory board swap.",
       "If your laptop feels sluggish, the first step isn't buying a new one. A thorough ultrasonic cleaning, application of high-grade liquid metal or phase-change thermal paste, and a fast NVMe SSD upgrade can make a five-year-old laptop perform better than new."
     ],
     image: "/images/blog/laptop-dust-cleaning-overheating-kuwait.webp",
