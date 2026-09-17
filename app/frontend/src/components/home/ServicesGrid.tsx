@@ -79,8 +79,8 @@ export default function ServicesGrid() {
         <SectionHeader
           eyebrow="What we fix"
           tone="cyan"
-          title="Component-level expertise."
-          description="For the failures others give up on."
+          title="Laptop, MacBook & Computer Repair Services"
+          description="From everyday laptop faults to board-level repairs, with dedicated pages for each service."
           className="mb-4 sm:mb-8"
         />
 
