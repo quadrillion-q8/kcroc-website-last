@@ -135,7 +135,7 @@ export default function HawalliLocationPage() {
     {
       id: 'faq-hawalli-macbook',
       question: 'Do you repair MacBooks in Hawalli?',
-      answer: `Yes, MacBook repair — including logic board and liquid damage recovery — is one of our core services at the Hawalli lab. See our full MacBook repair service for details.`,
+      answer: `Yes, MacBook repair — including motherboard and liquid damage recovery — is one of our core services at the Hawalli lab. See our full MacBook repair service for details.`,
     },
     {
       id: 'faq-hawalli-gaming',
