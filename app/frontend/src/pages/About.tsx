@@ -39,7 +39,7 @@ const teamMembers = [
   {
     name: 'Imran Natiq',
     role: 'Founder & Lead Technician',
-    bio: "Senior technician with 20+ years of experience in Kuwait's enterprise hardware market. Specializes in advanced hardware testing, strict data safety protocols, and component-level logic board recovery. Committed to transparent service and reclaiming hardware from the 'beyond repair' category.",
+    bio: "Senior technician with 20+ years of experience in Kuwait's enterprise hardware market. Specializes in advanced hardware testing, strict data safety protocols, and component-level motherboard recovery. Committed to transparent service and reclaiming hardware from the 'beyond repair' category.",
     skills: ['Hardware Testing', 'Data Safety', 'Micro-Soldering'],
     image: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto:good,w_800,c_limit/KCROC-Owner-Image_zpdyg4',
     fallback: 'Imran+Natiq'
@@ -48,7 +48,7 @@ const teamMembers = [
     name: 'Riyaz Kawa',
     role: 'Co-Founder & CTO',
     bio: 'Lead engineer specializing in advanced troubleshooting and performance optimization. Expert in custom gaming builds, high-end systems, and mitigating Kuwait\'s extreme thermal stress on hardware. Passionate about delivering cutting-edge technical solutions.',
-    skills: ['Thermal Optimization', 'Custom PC Tuning', 'Logic Boards'],
+    skills: ['Thermal Optimization', 'Custom PC Tuning', 'Motherboards'],
     image: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto:good,w_800,c_limit/KCROC-Co-Founder-Image_salp7t',
     fallback: 'Riyaz+Kawa'
   }
@@ -98,7 +98,7 @@ export default function About() {
                 <span className="text-slate-500">We Don't Swap It.</span>
               </h1>
               <p className="text-sm sm:text-lg text-slate-300 leading-relaxed max-w-xl">
-                Kuwait’s elite component-level laboratory specializing in micro-soldering and logic board repairs that standard retail shops declare impossible.
+                Kuwait’s elite component-level laboratory specializing in micro-soldering and motherboard repairs that standard retail shops declare impossible.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-4">
                 <Button size="lg" className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black px-6 sm:px-8 w-full sm:w-auto" asChild>
@@ -153,7 +153,7 @@ export default function About() {
             {/* FIXED H2: Scaled to 24px (text-2xl) on mobile */}
             <h2 className="text-2xl sm:text-4xl font-black text-white mb-6 sm:mb-8 tracking-tight">Pushing Back Against Disposable Tech</h2>
             <div className="space-y-4 sm:space-y-6 text-slate-300 text-sm sm:text-lg leading-relaxed">
-              <p>Standard repair centers operate on a "part swapping" model. If a small component shorts out on your MacBook, authorized dealers will quote you hundreds of dinars to replace the entire logic board—destroying your original data in the process.</p>
+              <p>Standard repair centers operate on a "part swapping" model. If a small component shorts out on your MacBook, authorized dealers will quote you hundreds of dinars to replace the entire motherboard—destroying your original data in the process.</p>
               <p>KCROC was founded with a simple mission rooted in technical defiance: we reclaim hardware from the "beyond repair" category. By surgically isolating and replacing the exact failed chips, we save your device, save your money, and keep your data exactly where it belongs: with you.</p>
               <p>What started as a small operation has grown into Kuwait's premier computer repair service—serving customers across Hawalli, Salmiya, Kuwait City, and Farwaniya with same-day service and a 30-day warranty.</p>
             </div>
