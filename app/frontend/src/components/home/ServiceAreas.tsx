@@ -20,9 +20,12 @@ export const ServiceAreas = () => {
             <p className="text-slate-400 text-base leading-relaxed mb-6">
               Based in Hawalli (Al-Mulla Complex), our certified technicians provide free pick-up and drop-off services across all major governorates and residential areas in Kuwait.
             </p>
-            <div className="mt-6">
+            <div className="mt-6 flex flex-wrap gap-3">
               <Link to="/near-me" className="inline-flex items-center gap-2 rounded-xl border border-cyan-500/30 bg-cyan-500/10 px-4 py-2.5 text-sm font-bold text-cyan-300 transition hover:border-cyan-400 hover:bg-cyan-500/15">
                 <MapPin className="h-4 w-4" aria-hidden="true" /> Find computer repair near you
+              </Link>
+              <Link to="/location/hawalli" className="inline-flex items-center gap-2 rounded-xl border border-slate-700 bg-slate-900/50 px-4 py-2.5 text-sm font-bold text-slate-200 transition hover:border-cyan-500/50 hover:text-cyan-300">
+                Computer Repair Hawalli <span aria-hidden="true">→</span>
               </Link>
             </div>
             <div className="flex flex-wrap gap-4 text-xs font-semibold text-slate-300">
