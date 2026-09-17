@@ -9,8 +9,8 @@ import { IMAGES } from '../constants/images';
 
 export const rawGraphData: RawGraphData = {
   metadata: {
-    version: '3.6.2',
-    lastUpdated: '2026-09-16T18:55:00+03:00',
+    version: '3.6.3',
+    lastUpdated: '2026-09-17T03:38:00+03:00',
     environment: 'production'
   },
 
@@ -435,7 +435,7 @@ export const rawGraphData: RawGraphData = {
       relatedServiceIds: ['srv-battery', 'srv-motherboard', 'srv-laptop'],
       relatedProblemIds: ['problem-not-charging', 'problem-no-power'],
       relatedBrandIds: ['brand-dell', 'brand-hp', 'brand-lenovo', 'brand-asus'],
-      relatedGuidePaths: [
+      relatedResourcePaths: [
         { label: 'Laptop Plugged In but Not Charging', path: '/laptop-plugged-in-not-charging' },
         { label: 'Laptop Repair Guide', path: '/laptop-repair-kuwait' },
       ],
@@ -519,7 +519,7 @@ export const rawGraphData: RawGraphData = {
       relatedServiceIds: ['srv-screen', 'srv-laptop'],
       relatedProblemIds: ['problem-hinge-break', 'problem-cracked-screen'],
       relatedBrandIds: ['brand-dell', 'brand-hp', 'brand-lenovo', 'brand-msi'],
-      relatedGuidePaths: [
+      relatedResourcePaths: [
         { label: 'How to Protect Your Laptop Screen', path: '/blog/how-to-protect-laptop-screen' },
         { label: 'Laptop Repair Guide', path: '/laptop-repair-kuwait' },
       ],
@@ -594,7 +594,7 @@ export const rawGraphData: RawGraphData = {
       relatedServiceIds: ['srv-laptop', 'srv-liquid-damage', 'srv-battery'],
       relatedProblemIds: ['problem-keyboard-fail', 'problem-liquid-spill'],
       relatedBrandIds: ['brand-dell', 'brand-hp', 'brand-lenovo', 'brand-asus'],
-      relatedGuidePaths: [
+      relatedResourcePaths: [
         { label: 'Laptop Repair Guide', path: '/laptop-repair-kuwait' },
         { label: 'Liquid Damage Repair', path: '/laptop-liquid-damage-repair-kuwait' },
       ],
@@ -667,7 +667,7 @@ export const rawGraphData: RawGraphData = {
       relatedServiceIds: ['srv-laptop', 'srv-gaming', 'srv-gaming-laptop-cleaning'],
       relatedProblemIds: ['problem-slow', 'problem-freezing-crashing'],
       relatedBrandIds: ['brand-dell', 'brand-hp', 'brand-lenovo', 'brand-asus'],
-      relatedGuidePaths: [
+      relatedResourcePaths: [
         { label: 'Why 8GB RAM Is No Longer Enough', path: '/blog/why-8gb-ram-is-no-longer-enough-for-windows-11' },
         { label: 'Laptop Buying Guide 2026', path: '/blog/laptop-buying-guide-kuwait-2026' },
       ],
@@ -744,7 +744,7 @@ export const rawGraphData: RawGraphData = {
       relatedServiceIds: ['srv-motherboard', 'srv-keyboard', 'srv-macbook'],
       relatedProblemIds: ['problem-liquid-spill', 'problem-no-power', 'problem-black-screen'],
       relatedBrandIds: ['brand-dell', 'brand-hp', 'brand-lenovo', 'brand-msi'],
-      relatedGuidePaths: [
+      relatedResourcePaths: [
         { label: 'Laptop Repair Guide', path: '/laptop-repair-kuwait' },
         { label: 'MacBook Repair', path: '/macbook-repair-kuwait' },
       ],
@@ -799,7 +799,7 @@ export const rawGraphData: RawGraphData = {
       relatedServiceIds: ['srv-motherboard', 'srv-charging-port', 'srv-battery', 'srv-liquid-damage'],
       relatedProblemIds: ['problem-liquid-spill', 'problem-not-charging', 'problem-no-power', 'problem-black-screen'],
       relatedBrandIds: [],
-      relatedGuidePaths: [
+      relatedResourcePaths: [
         { label: 'BIOS / UEFI Recovery Guide', path: '/guides/bios-uefi-recovery-kuwait' },
         { label: 'Laptop Battery Warning Signs', path: '/guides/laptop-battery-warning-signs' },
       ],
@@ -1098,10 +1098,10 @@ export const rawGraphData: RawGraphData = {
       relatedServiceIds: ['srv-macbook', 'srv-motherboard', 'srv-screen', 'srv-battery', 'srv-charging-port', 'srv-gaming-laptop-cleaning'],
       relatedProblemIds: ['problem-no-power', 'problem-overheating', 'problem-black-screen', 'problem-not-charging', 'problem-slow', 'problem-freezing-crashing', 'problem-hinge-break', 'problem-cracked-screen', 'problem-windows-wont-boot'],
       relatedBrandIds: ['brand-dell', 'brand-hp', 'brand-lenovo', 'brand-asus', 'brand-acer', 'brand-msi'],
-      relatedGuidePaths: [
+      relatedResourcePaths: [
         { label: "Laptop Won't Turn On? Complete Troubleshooting Guide", path: '/guides/laptop-wont-turn-on' },
         { label: 'Laptop Battery Warning Signs', path: '/guides/laptop-battery-warning-signs' },
-        { label: 'Dell Laptop Overheating Guide', path: '/guides/dell-laptop-overheating' },
+        { label: 'Laptop Overheating Diagnostic Path', path: '/laptop-overheating-kuwait' },
         { label: 'BIOS / UEFI Recovery Guide', path: '/guides/bios-uefi-recovery-kuwait' },
       ],
       coreFeatures: [
@@ -1360,8 +1360,7 @@ export const rawGraphData: RawGraphData = {
       relatedServiceIds: ['srv-gaming-laptop-cleaning', 'srv-motherboard', 'srv-laptop'],
       relatedProblemIds: ['problem-overheating', 'problem-freezing-crashing'],
       relatedBrandIds: ['brand-asus', 'brand-msi', 'brand-lenovo', 'brand-dell'],
-      relatedGuidePaths: [
-        { label: 'Dell Laptop Overheating Guide', path: '/guides/dell-laptop-overheating' },
+      relatedResourcePaths: [
         { label: 'Gaming PC Cooling Guide', path: '/blog/gaming-pc-cooling' },
         { label: 'BIOS / UEFI Recovery Guide', path: '/guides/bios-uefi-recovery-kuwait' },
       ],
@@ -1856,7 +1855,7 @@ export const rawGraphData: RawGraphData = {
       relatedServiceIds: ['srv-laptop', 'srv-macbook', 'srv-charging-port', 'srv-liquid-damage', 'srv-gaming'],
       relatedProblemIds: ['problem-no-power', 'problem-not-charging', 'problem-black-screen', 'problem-liquid-spill'],
       relatedBrandIds: ['brand-dell', 'brand-hp', 'brand-lenovo', 'brand-asus', 'brand-msi'],
-      relatedGuidePaths: [
+      relatedResourcePaths: [
         { label: 'BIOS / UEFI Recovery Guide', path: '/guides/bios-uefi-recovery-kuwait' },
         { label: "Laptop Won't Turn On? Complete Troubleshooting Guide", path: '/guides/laptop-wont-turn-on' },
       ],
@@ -2122,7 +2121,7 @@ export const rawGraphData: RawGraphData = {
       relatedServiceIds: ['srv-laptop', 'srv-hinge'],
       relatedProblemIds: ['problem-cracked-screen', 'problem-black-screen'],
       relatedBrandIds: ['brand-dell', 'brand-hp', 'brand-lenovo', 'brand-asus', 'brand-msi'],
-      relatedGuidePaths: [
+      relatedResourcePaths: [
         { label: 'Laptop Repair Guide', path: '/laptop-repair-kuwait' },
         { label: 'Laptop Screen Cracked — What to Do', path: '/laptop-screen-cracked-kuwait' },
       ],
@@ -2281,7 +2280,7 @@ export const rawGraphData: RawGraphData = {
       relatedServiceIds: ['srv-laptop', 'srv-macbook', 'srv-charging-port'],
       relatedProblemIds: ['problem-not-charging', 'problem-no-power', 'problem-slow'],
       relatedBrandIds: ['brand-dell', 'brand-hp', 'brand-lenovo', 'brand-asus', 'brand-acer', 'brand-msi'],
-      relatedGuidePaths: [
+      relatedResourcePaths: [
         { label: 'Laptop Battery Warning Signs', path: '/guides/laptop-battery-warning-signs' },
         { label: 'Laptop Repair Guide', path: '/laptop-repair-kuwait' },
       ],
@@ -2772,7 +2771,7 @@ export const rawGraphData: RawGraphData = {
       ],
       relatedServiceIds: ['srv-laptop', 'srv-motherboard', 'srv-screen', 'srv-battery', 'srv-charging-port', 'srv-hinge', 'srv-gaming-laptop-cleaning'],
       relatedProblemIds: ['problem-hinge-break', 'problem-overheating', 'problem-not-charging', 'problem-black-screen'],
-      relatedGuidePaths: [{ label: 'Dell laptop overheating guide', path: '/guides/dell-laptop-overheating' }],
+      relatedResourcePaths: [{ label: 'Dell laptop overheating guide', path: '/guides/dell-laptop-overheating' }],
       contentImages: [{ src: IMAGES.laptopHardware.dellTeardown.src, alt: IMAGES.laptopHardware.dellTeardown.alt, width: IMAGES.laptopHardware.dellTeardown.width, height: IMAGES.laptopHardware.dellTeardown.height, caption: 'Dell laptop internal hardware opened for repair and diagnosis.' }],
       pricing: { startingFrom: 15, currency: 'KWD', quoteRequired: true, displayLabel: 'From 15 KWD — free diagnostic first' },
       seo: { title: 'Dell Service Center & Laptop Repair Kuwait | KCROC', description: 'Independent Dell laptop repair in Kuwait for Inspiron, Latitude, XPS, G15 and Alienware. Screen, battery, hinge and motherboard repair with free pick-up and drop-off.', canonicalUrl: 'https://www.computerrepairkuwait.com/dell-laptop-repair-kuwait', ogType: 'article', schemaTypes: ['Service'] },
@@ -2866,8 +2865,8 @@ export const rawGraphData: RawGraphData = {
         'problem-hinge-break', 'problem-keyboard-fail', 'problem-wifi-fail', 'problem-slow',
         'problem-windows-wont-boot', 'problem-liquid-spill', 'problem-cracked-screen'
       ],
-      relatedGuidePaths: [
-        { label: 'Laptop overheating guide', path: '/guides/dell-laptop-overheating' },
+      relatedResourcePaths: [
+        { label: 'Laptop Overheating Problem', path: '/laptop-overheating-kuwait' },
         { label: 'Laptop battery warning signs', path: '/guides/laptop-battery-warning-signs' },
         { label: 'BIOS / UEFI recovery guide', path: '/guides/bios-uefi-recovery-kuwait' }
       ],
@@ -3659,13 +3658,94 @@ export const rawGraphData: RawGraphData = {
 /* ═══════════════════════════════════════════════════════════════════
    KCROC_GRAPH SINGLETON — consumed by all UI components and SEO Engine
    Contains strict null-safe fallbacks (?? []) to ensure 100% build stability.
+   Phase 4 adds explicit location topology and case-study inbound edges here
+   so the runtime graph matches the links already rendered by the UI.
 ═══════════════════════════════════════════════════════════════════ */
-const allEntities = Object.values(rawGraphData.entities);
+const LOCATION_RELATIONSHIPS: Record<string, {
+  relatedServiceIds: string[];
+  relatedProblemIds: string[];
+  relatedBrandIds: string[];
+  relatedLocationIds: string[];
+}> = {
+  hawalli: {
+    relatedServiceIds: ['srv-laptop', 'srv-motherboard', 'srv-gaming', 'srv-macbook', 'srv-screen'],
+    relatedProblemIds: ['problem-no-power', 'problem-overheating', 'problem-black-screen', 'problem-not-charging', 'problem-liquid-spill'],
+    relatedBrandIds: ['brand-dell', 'brand-lenovo', 'brand-asus', 'brand-hp'],
+    relatedLocationIds: ['loc-salmiya', 'loc-kuwait-city', 'loc-farwaniya', 'loc-jahra', 'loc-ahmadi'],
+  },
+  salmiya: {
+    relatedServiceIds: ['srv-laptop', 'srv-macbook', 'srv-liquid-damage', 'srv-motherboard', 'srv-screen'],
+    relatedProblemIds: ['problem-liquid-spill', 'problem-no-power', 'problem-black-screen', 'problem-not-charging'],
+    relatedBrandIds: ['brand-dell', 'brand-lenovo', 'brand-hp', 'brand-asus'],
+    relatedLocationIds: ['loc-hawalli', 'loc-kuwait-city', 'loc-jabriya'],
+  },
+  'kuwait-city': {
+    relatedServiceIds: ['srv-laptop', 'srv-screen', 'srv-motherboard', 'srv-macbook'],
+    relatedProblemIds: ['problem-black-screen', 'problem-cracked-screen', 'problem-no-power', 'problem-not-charging'],
+    relatedBrandIds: ['brand-dell', 'brand-lenovo', 'brand-hp', 'brand-asus'],
+    relatedLocationIds: ['loc-hawalli', 'loc-salmiya', 'loc-jabriya'],
+  },
+  farwaniya: {
+    relatedServiceIds: ['srv-laptop', 'srv-motherboard', 'srv-screen', 'srv-battery', 'srv-charging-port'],
+    relatedProblemIds: ['problem-no-power', 'problem-cracked-screen', 'problem-not-charging', 'problem-black-screen'],
+    relatedBrandIds: ['brand-dell', 'brand-lenovo', 'brand-hp', 'brand-asus'],
+    relatedLocationIds: ['loc-hawalli', 'loc-kuwait-city', 'loc-jabriya'],
+  },
+  jahra: {
+    relatedServiceIds: ['srv-laptop', 'srv-motherboard', 'srv-gaming-laptop-cleaning', 'srv-battery', 'srv-screen'],
+    relatedProblemIds: ['problem-overheating', 'problem-no-power', 'problem-not-charging', 'problem-black-screen'],
+    relatedBrandIds: ['brand-dell', 'brand-lenovo', 'brand-hp', 'brand-asus'],
+    relatedLocationIds: ['loc-hawalli', 'loc-kuwait-city', 'loc-farwaniya'],
+  },
+  ahmadi: {
+    relatedServiceIds: ['srv-gaming', 'srv-macbook', 'srv-laptop', 'srv-motherboard', 'srv-gaming-laptop-cleaning'],
+    relatedProblemIds: ['problem-overheating', 'problem-no-power', 'problem-freezing-crashing', 'problem-liquid-spill'],
+    relatedBrandIds: ['brand-asus', 'brand-msi', 'brand-dell', 'brand-lenovo'],
+    relatedLocationIds: ['loc-fahaheel', 'loc-mangaf', 'loc-abu-halifa'],
+  },
+  fahaheel: { relatedServiceIds: ['srv-laptop','srv-macbook','srv-gaming','srv-motherboard','srv-screen'], relatedProblemIds: ['problem-no-power','problem-overheating','problem-not-charging','problem-liquid-spill'], relatedBrandIds: ['brand-dell','brand-lenovo','brand-asus','brand-hp'], relatedLocationIds: ['loc-ahmadi','loc-mangaf','loc-abu-halifa'] },
+  mangaf: { relatedServiceIds: ['srv-laptop','srv-macbook','srv-motherboard','srv-gaming'], relatedProblemIds: ['problem-no-power','problem-overheating','problem-liquid-spill'], relatedBrandIds: ['brand-dell','brand-lenovo','brand-asus','brand-msi'], relatedLocationIds: ['loc-ahmadi','loc-fahaheel','loc-abu-halifa'] },
+  'abu-halifa': { relatedServiceIds: ['srv-laptop','srv-macbook','srv-gaming','srv-motherboard'], relatedProblemIds: ['problem-no-power','problem-overheating','problem-not-charging'], relatedBrandIds: ['brand-dell','brand-lenovo','brand-hp','brand-asus'], relatedLocationIds: ['loc-fahaheel','loc-mangaf','loc-fintas'] },
+  jabriya: { relatedServiceIds: ['srv-laptop','srv-macbook','srv-gaming','srv-motherboard','srv-screen'], relatedProblemIds: ['problem-black-screen','problem-no-power','problem-not-charging','problem-overheating'], relatedBrandIds: ['brand-dell','brand-lenovo','brand-hp','brand-asus'], relatedLocationIds: ['loc-hawalli','loc-kuwait-city','loc-salmiya'] },
+  'mubarak-al-kabeer': { relatedServiceIds: ['srv-laptop','srv-motherboard','srv-screen','srv-battery'], relatedProblemIds: ['problem-no-power','problem-overheating','problem-not-charging'], relatedBrandIds: ['brand-dell','brand-lenovo','brand-hp','brand-asus'], relatedLocationIds: ['loc-fintas','loc-sabah-al-salem','loc-abu-halifa'] },
+  fintas: { relatedServiceIds: ['srv-laptop','srv-macbook','srv-gaming','srv-motherboard'], relatedProblemIds: ['problem-overheating','problem-no-power','problem-liquid-spill'], relatedBrandIds: ['brand-asus','brand-msi','brand-dell','brand-lenovo'], relatedLocationIds: ['loc-abu-halifa','loc-fahaheel','loc-mangaf'] },
+  'sabah-al-salem': { relatedServiceIds: ['srv-laptop','srv-motherboard','srv-screen','srv-macbook'], relatedProblemIds: ['problem-no-power','problem-black-screen','problem-cracked-screen','problem-not-charging'], relatedBrandIds: ['brand-dell','brand-lenovo','brand-hp','brand-asus'], relatedLocationIds: ['loc-mubarak-al-kabeer','loc-fintas','loc-hawalli'] },
+};
 
-export const GRAPH_INDEXES = rawGraphData.entities;
+const rawEntities = Object.values(rawGraphData.entities);
+const rawCaseStudies = rawEntities.filter((e): e is CaseStudyEntity => e.entityType === 'CaseStudy' && e.isActive);
+
+const allEntities = rawEntities.map((entity) => {
+  if (entity.entityType === 'Location') {
+    const rel = LOCATION_RELATIONSHIPS[entity.slug];
+    const relatedCaseStudyIds = rawCaseStudies
+      .filter((caseStudy) => caseStudy.locationId === entity.id || caseStudy.location === entity.title)
+      .map((caseStudy) => caseStudy.id);
+    return {
+      ...entity,
+      ...(rel ?? { relatedServiceIds: [], relatedProblemIds: [], relatedBrandIds: [], relatedLocationIds: [] }),
+      relatedCaseStudyIds,
+    } as LocationEntity;
+  }
+
+  if (entity.entityType === 'Service' || entity.entityType === 'Brand') {
+    const relatedCaseStudyIds = rawCaseStudies
+      .filter((caseStudy) => {
+        if (entity.entityType === 'Service') return caseStudy.serviceIds?.includes(entity.id);
+        return caseStudy.brandId === entity.id;
+      })
+      .map((caseStudy) => caseStudy.id);
+    return { ...entity, relatedCaseStudyIds } as ServiceEntity | BrandEntity;
+  }
+
+  return entity;
+});
+
+export const GRAPH_INDEXES = Object.fromEntries(allEntities.map((entity) => [entity.id, entity]));
 
 export const KCROC_GRAPH = {
   ...rawGraphData,
+  entities: GRAPH_INDEXES,
   routableEntities: allEntities.filter((e): e is RoutableEntity => 'seo' in e && e.isActive && e.entityType !== 'FAQ') ?? [],
   business:    allEntities.find((e): e is BusinessEntity    => e.entityType === 'Business') ?? null,
   pages:       allEntities.filter((e): e is WebPageEntity   => e.entityType === 'WebPage'   && e.isActive) ?? [],
