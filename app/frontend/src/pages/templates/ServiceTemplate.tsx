@@ -37,7 +37,8 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
   const relatedServiceIds = entity.relatedServiceIds ?? [];
   const relatedProblemIds = entity.relatedProblemIds ?? [];
   const relatedBrandIds = entity.relatedBrandIds ?? [];
-  const relatedGuidePaths = entity.relatedGuidePaths ?? [];
+  const relatedResourcePaths = entity.relatedResourcePaths ?? [];
+  const relatedCaseStudyIds = entity.relatedCaseStudyIds ?? [];
 
   const getContentImage = (placement: 'hero' | 'commonIssues' | 'coreFeatures' | 'process') =>
     entity.contentImages?.find((img) => img.placement === placement);
@@ -45,8 +46,8 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
   const heroImage = getContentImage('hero');
 
   const ContentImage = ({ image }: { image: NonNullable<typeof entity.contentImages>[number] }) => (
-    <a
-      href="/gallery"
+    <Link
+      to="/gallery"
       className="group block mb-8 rounded-2xl overflow-hidden border border-slate-800 bg-slate-900/50 hover:border-cyan-500/40 transition-colors"
       aria-label={`${image.alt} — view more repair photos in our gallery`}
     >
@@ -63,7 +64,7 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
           {image.caption}
         </p>
       )}
-    </a>
+    </Link>
   );
 
   const whatsappMessage = encodeURIComponent(
@@ -396,7 +397,7 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
           </section>
         )}
 
-        {(relatedServiceIds.length > 0 || relatedProblemIds.length > 0 || relatedBrandIds.length > 0 || relatedGuidePaths.length > 0 || entity.relatedCaseStudyPath) && (
+        {(relatedServiceIds.length > 0 || relatedProblemIds.length > 0 || relatedBrandIds.length > 0 || relatedResourcePaths.length > 0 || relatedCaseStudyIds.length > 0 || entity.relatedCaseStudyPath) && (
           <section className="max-w-7xl mx-auto px-6 py-12 border-t border-slate-800/50 relative z-10">
             <h2 className="text-2xl font-bold mb-3 text-white">Related Repair Resources</h2>
             <p className="text-sm text-slate-400 mb-8 max-w-3xl">Explore the closest repair services, troubleshooting pages, brand specialists and practical guides for this type of fault.</p>
@@ -408,7 +409,7 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
                   <div className="space-y-2">
                     {relatedServiceIds.map((id) => {
                       const item = KCROC_GRAPH.services.find((service) => service.id === id);
-                      return item ? <a key={id} href={`/${item.slug}`} className="flex items-center justify-between gap-2 text-sm text-slate-300 hover:text-white transition-colors"><span>{item.title}</span><ArrowRight className="w-4 h-4 text-slate-600" /></a> : null;
+                      return item ? <Link key={id} to={`/${item.slug}`} className="flex items-center justify-between gap-2 text-sm text-slate-300 hover:text-white transition-colors"><span>{item.title}</span><ArrowRight className="w-4 h-4 text-slate-600" /></Link> : null;
                     })}
                   </div>
                 </div>
@@ -420,7 +421,7 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
                   <div className="space-y-2">
                     {relatedProblemIds.map((id) => {
                       const item = KCROC_GRAPH.problems.find((problem) => problem.id === id);
-                      return item ? <a key={id} href={`/${item.slug}`} className="flex items-center justify-between gap-2 text-sm text-slate-300 hover:text-white transition-colors"><span>{item.title}</span><ArrowRight className="w-4 h-4 text-slate-600" /></a> : null;
+                      return item ? <Link key={id} to={`/${item.slug}`} className="flex items-center justify-between gap-2 text-sm text-slate-300 hover:text-white transition-colors"><span>{item.title}</span><ArrowRight className="w-4 h-4 text-slate-600" /></Link> : null;
                     })}
                   </div>
                 </div>
@@ -432,18 +433,18 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
                   <div className="space-y-2">
                     {relatedBrandIds.map((id) => {
                       const item = KCROC_GRAPH.brands.find((brand) => brand.id === id);
-                      return item ? <a key={id} href={`/${item.slug}`} className="flex items-center justify-between gap-2 text-sm text-slate-300 hover:text-white transition-colors"><span>{item.title}</span><ArrowRight className="w-4 h-4 text-slate-600" /></a> : null;
+                      return item ? <Link key={id} to={`/${item.slug}`} className="flex items-center justify-between gap-2 text-sm text-slate-300 hover:text-white transition-colors"><span>{item.title}</span><ArrowRight className="w-4 h-4 text-slate-600" /></Link> : null;
                     })}
                   </div>
                 </div>
               )}
 
-              {relatedGuidePaths.length > 0 && (
+              {relatedResourcePaths.length > 0 && (
                 <div className="bg-slate-900/50 border border-slate-800 rounded-2xl p-5">
                   <h3 className="text-sm uppercase tracking-wider font-black text-cyan-400 mb-4 flex items-center gap-2"><BookOpen className="w-4 h-4" /> Guides</h3>
                   <div className="space-y-2">
-                    {relatedGuidePaths.map((guide) => (
-                      <a key={guide.path} href={guide.path} className="flex items-center justify-between gap-2 text-sm text-slate-300 hover:text-white transition-colors"><span>{guide.label}</span><ArrowRight className="w-4 h-4 text-slate-600" /></a>
+                    {relatedResourcePaths.map((guide) => (
+                      <Link key={guide.path} to={guide.path} className="flex items-center justify-between gap-2 text-sm text-slate-300 hover:text-white transition-colors"><span>{guide.label}</span><ArrowRight className="w-4 h-4 text-slate-600" /></Link>
                     ))}
                   </div>
                 </div>
@@ -451,13 +452,26 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
             </div>
 
             {entity.relatedCaseStudyPath && (
-              <a href={entity.relatedCaseStudyPath.path} className="mt-5 flex items-center justify-between gap-4 rounded-2xl border border-cyan-500/20 bg-cyan-900/10 px-5 py-4 hover:border-cyan-500/40 transition-colors">
+              <Link to={entity.relatedCaseStudyPath.path} className="mt-5 flex items-center justify-between gap-4 rounded-2xl border border-cyan-500/20 bg-cyan-900/10 px-5 py-4 hover:border-cyan-500/40 transition-colors">
                 <div>
                   <span className="block text-[10px] uppercase tracking-wider font-black text-cyan-400 mb-1">First-party repair evidence</span>
                   <span className="text-white font-semibold">{entity.relatedCaseStudyPath.label}</span>
                 </div>
                 <ArrowRight className="w-5 h-5 text-cyan-400" />
-              </a>
+              </Link>
+            )}
+            {!entity.relatedCaseStudyPath && relatedCaseStudyIds.length > 0 && (
+              <div className="mt-5 grid gap-3 sm:grid-cols-2">
+                {relatedCaseStudyIds.slice(0, 3).map((id) => {
+                  const study = KCROC_GRAPH.caseStudies.find((item) => item.id === id);
+                  return study ? (
+                    <Link key={id} to={`/case-studies/${study.slug}`} className="flex items-center justify-between gap-3 rounded-xl border border-cyan-500/20 bg-cyan-900/10 px-4 py-3 hover:border-cyan-500/40 transition-colors">
+                      <span className="text-sm font-semibold text-white">{study.title}</span>
+                      <ArrowRight className="w-4 h-4 text-cyan-400 shrink-0" />
+                    </Link>
+                  ) : null;
+                })}
+              </div>
             )}
           </section>
         )}
