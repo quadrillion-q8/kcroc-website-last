@@ -215,7 +215,7 @@ export const GLOBAL_FAQS = [
     category: "MacBook Repair",
     question: "Do you repair Apple MacBooks?",
     answer:
-      "Yes. We repair MacBook Air and MacBook Pro models including screen replacement, battery replacement, keyboard repair, logic board repair, and software troubleshooting."
+      "Yes. We repair MacBook Air and MacBook Pro models including screen replacement, battery replacement, keyboard repair, motherboard repair, and software troubleshooting."
   },
 
   // ─── BUSINESS IT ─────────────────────────────────────────────────
