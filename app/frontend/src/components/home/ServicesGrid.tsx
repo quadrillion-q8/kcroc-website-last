@@ -27,7 +27,7 @@ const ServiceCard = React.memo(({ service, idx }: { service: ServiceEntity, idx:
       className={`scroll-row-item w-[78%] sm:w-auto transition-all duration-700 h-full ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
     >
       <Link
-        to={service.seo.canonicalUrl}
+        to={`/${service.slug}`}
         className="group block relative bg-kcroc-card rounded-[14px] border border-white/[0.08] hover:border-kcroc-cyan transition-all duration-300 h-full overflow-hidden"
       >
         {cardImage && (
