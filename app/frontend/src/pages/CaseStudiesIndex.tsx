@@ -19,7 +19,7 @@ export default function CaseStudiesIndex() {
             Repair <span className="text-cyan-400">Case Studies</span>
           </h1>
           <p className="text-xl text-slate-400 max-w-2xl mx-auto">
-            Deep dives into complex logic board repairs, micro-soldering recoveries, and hardware diagnostics performed in our Hawalli lab.
+            Deep dives into complex motherboard repairs, micro-soldering recoveries, and hardware diagnostics performed in our Hawalli lab.
           </p>
         </div>
 
@@ -64,7 +64,7 @@ export default function CaseStudiesIndex() {
           ) : (
             <div className="col-span-full bg-slate-900/40 backdrop-blur-md border border-slate-800 rounded-3xl p-12 text-center">
               <h3 className="text-2xl font-bold text-slate-300 mb-2">Documentation in Progress</h3>
-              <p className="text-slate-500">We are currently compiling our recent successful logic board repairs. Check back soon for detailed technical breakdowns.</p>
+              <p className="text-slate-500">We are currently compiling our recent successful motherboard repairs. Check back soon for detailed technical breakdowns.</p>
             </div>
           )}
         </div>
