@@ -125,7 +125,7 @@ const pricingCategories = [
     ],
   },
   {
-    title: 'Advanced Logic Board Repair',
+    title: 'Advanced Motherboard Repair',
     eyebrow: 'Component-level repair',
     icon: Cpu,
     featured: true,
@@ -190,7 +190,7 @@ const faqs = Object.freeze([
   },
   {
     q: 'How long does a motherboard repair take?',
-    a: 'Most component-level motherboard and logic-board repairs are completed within 24 to 48 hours, including full-load stress testing before the device is returned.',
+    a: 'Most component-level motherboard and motherboard repairs are completed within 24 to 48 hours, including full-load stress testing before the device is returned.',
   },
   {
     q: 'Is my personal data safe during repair?',
@@ -207,7 +207,7 @@ const serviceLinks = Object.freeze([
     title: 'MacBook Repair',
     path: '/macbook-repair-kuwait',
     icon: Laptop,
-    desc: 'Logic board and USB-C IC replacement.',
+    desc: 'Motherboard and USB-C IC replacement.',
   },
   {
     title: 'Motherboard Repair',
