@@ -1,6 +1,6 @@
 // File: app/frontend/src/pages/templates/ProblemTemplate.tsx
 import React from 'react';
-import { useLocation, Navigate } from 'react-router-dom';
+import { useLocation, Navigate, Link } from 'react-router-dom';
 import { KCROC_GRAPH } from '../../data/graph'; 
 import { SEOEngine } from '../../core/components/SEOEngine';
 import { getIntentWhatsAppLink } from '../../utils/whatsappIntent';
@@ -33,8 +33,8 @@ const ProblemTemplate: React.FC = () => {
   const relatedGuideHref = problem.relatedGuideSlug ? `/guides/${problem.relatedGuideSlug}` : null;
 
   const ContentImage = ({ image }: { image: NonNullable<typeof problem.contentImages>[number] }) => (
-    <a
-      href="/gallery"
+    <Link
+      to="/gallery"
       className="group block mb-6 rounded-2xl overflow-hidden border border-slate-800 bg-slate-900/50 hover:border-cyan-500/40 transition-colors"
       aria-label={`${image.alt} — view more repair photos in our gallery`}
     >
@@ -51,7 +51,7 @@ const ProblemTemplate: React.FC = () => {
           {image.caption}
         </p>
       )}
-    </a>
+    </Link>
   );
 
   return (
@@ -227,9 +227,9 @@ const ProblemTemplate: React.FC = () => {
                   Book a Free Diagnostic <ArrowRight className="h-5 w-5" />
                 </a>
                 {relatedGuideHref && (
-                  <a href={relatedGuideHref} className="inline-flex items-center gap-2 rounded-full border border-slate-700 bg-slate-900 px-7 py-4 font-bold text-slate-200 hover:border-cyan-500/50 hover:text-cyan-200">
+                  <Link to={relatedGuideHref} className="inline-flex items-center gap-2 rounded-full border border-slate-700 bg-slate-900 px-7 py-4 font-bold text-slate-200 hover:border-cyan-500/50 hover:text-cyan-200">
                     <BookOpen className="h-5 w-5" /> Read the full troubleshooting guide
-                  </a>
+                  </Link>
                 )}
               </div>
             </div>
@@ -241,9 +241,9 @@ const ProblemTemplate: React.FC = () => {
               <p className="mt-2 text-slate-400">The diagnostic approach applies across major laptop designs; the exact hardware path varies by model.</p>
               <div className="mt-5 flex flex-wrap gap-3">
                 {relatedBrands.map((brand) => (
-                  <a key={brand.id} href={`/${brand.slug}`} className="rounded-full border border-slate-800 bg-slate-900/60 px-4 py-2 text-sm font-bold text-cyan-300 hover:border-cyan-500/40">
+                  <Link key={brand.id} to={`/${brand.slug}`} className="rounded-full border border-slate-800 bg-slate-900/60 px-4 py-2 text-sm font-bold text-cyan-300 hover:border-cyan-500/40">
                     {brand.brandName}
-                  </a>
+                  </Link>
                 ))}
                 {(problem.coveredBrands ?? []).filter((name) => !relatedBrands.some((brand) => brand.brandName.toLowerCase() === name.toLowerCase())).map((brand) => (
                   <span key={brand} className="rounded-full border border-slate-800 bg-slate-900/60 px-4 py-2 text-sm text-slate-300">{brand}</span>
@@ -258,9 +258,9 @@ const ProblemTemplate: React.FC = () => {
               <h2 id="handled-under" className="mt-2 text-2xl font-black text-white">Handled under</h2>
               <div className="mt-4 flex flex-wrap gap-3">
                 {relatedServices.map((service) => (
-                  <a key={service.id} href={`/${service.slug}`} className="rounded-full border border-slate-800 bg-slate-900/60 px-4 py-2 text-sm font-bold text-cyan-300 hover:border-cyan-500/40">
+                  <Link key={service.id} to={`/${service.slug}`} className="rounded-full border border-slate-800 bg-slate-900/60 px-4 py-2 text-sm font-bold text-cyan-300 hover:border-cyan-500/40">
                     {service.title}
-                  </a>
+                  </Link>
                 ))}
               </div>
             </section>
