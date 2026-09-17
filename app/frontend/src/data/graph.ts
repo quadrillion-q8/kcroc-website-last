@@ -77,9 +77,9 @@ export const rawGraphData: RawGraphData = {
     ═══════════════════════════════════════════════════════════════ */
     'page-home': {
       id: 'page-home', slug: '', entityType: 'WebPage', isActive: true,
-      title: 'Home', description: 'KCROC Homepage — Component-level computer repair in Kuwait',
-      seo: { title: 'Free Pickup Computer Repair Kuwait | No Fix No Fee | KCROC', description: 'KCROC repairs laptops, MacBooks & PCs across Kuwait with free pickup & drop-off. No Fix No Fee, 30-day warranty, 4.9★ rated. WhatsApp +965 55301913.', canonicalUrl: 'https://www.computerrepairkuwait.com', ogType: 'website', schemaTypes: ['LocalBusiness', 'WebSite', 'WebPage'] },
-      hero: { headline: 'Kuwait\'s Expert Component-Level Repair Service.', subheadline: 'We fix the board. We don\'t just swap it.', description: 'We diagnose and repair failed components at board level — restoring devices that most repair shops in Kuwait would simply declare beyond repair.', primaryCTA: { text: 'WhatsApp a Technician', route: 'https://wa.me/96555301913' }, secondaryCTA: { text: 'View All Services', route: '/services' } },
+      title: 'Home', description: 'KCROC — laptop, MacBook and computer repair in Kuwait with free pickup and expert diagnostics.',
+      seo: { title: 'Laptop & Computer Repair Kuwait | Free Pickup | KCROC', description: 'Laptop, MacBook and PC repair in Kuwait with free pickup and drop-off, no-fix-no-fee policy and a 30-day warranty. Expert diagnostics by KCROC.', canonicalUrl: 'https://www.computerrepairkuwait.com', ogType: 'website', schemaTypes: ['LocalBusiness', 'WebSite', 'WebPage'] },
+      hero: { headline: 'Laptop & Computer Repair in Kuwait', subheadline: 'Expert diagnostics, board-level repair and free pickup across Kuwait.', description: 'KCROC repairs laptops, MacBooks, PCs and gaming systems — from screens, batteries and charging faults to motherboard and component-level failures.', primaryCTA: { text: 'WhatsApp a Technician', route: 'https://wa.me/96555301913' }, secondaryCTA: { text: 'View All Services', route: '/services' } },
       featuredFAQIds: [
         'faq-pick-and-drop', 
         'faq-liquid-damage', 
