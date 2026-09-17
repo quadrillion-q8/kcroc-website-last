@@ -50,7 +50,7 @@ export const AutoLink: React.FC<AutoLinkProps> = ({ text, currentEntityId }) => 
       });
     });
 
-    // 3. Sort by length descending (Match "MacBook Logic Board" before "MacBook")
+    // 3. Sort by length descending (Match "MacBook Motherboard" before "MacBook")
     return terms.sort((a, b) => b.phrase.length - a.phrase.length);
   }, [currentEntityId]);
 
