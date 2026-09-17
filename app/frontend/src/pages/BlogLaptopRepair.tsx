@@ -123,7 +123,7 @@ const challenges = [
   },
   {
     title: 'Motherboard Shorts',
-    description: "Liquid exposure, corrosion, electrical shorts and component faults can affect a laptop's logic board. Rapid professional inspection is important after a spill or other liquid incident.",
+    description: "Liquid exposure, corrosion, electrical shorts and component faults can affect a laptop's motherboard. Rapid professional inspection is important after a spill or other liquid incident.",
     icon: Zap,
     color: 'text-purple-500',
     bgColor: 'bg-purple-500/10',
@@ -232,7 +232,7 @@ const laptopBrands = [
   {
     brand: 'Apple MacBook',
     models: 'Pro, Air, M1/M2/M3 Series',
-    expertise: 'Logic board micro-soldering, Flexgate hinge repair, Retina screen replacement',
+    expertise: 'Motherboard micro-soldering, Flexgate hinge repair, Retina screen replacement',
     common: 'Liquid damage, battery swelling, screen fractures',
   },
   {
