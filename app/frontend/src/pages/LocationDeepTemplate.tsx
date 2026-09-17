@@ -158,7 +158,7 @@ export default function LocationDeepTemplate() {
     {
       id: `faq-${location.slug}-macbook`,
       question: `Do you repair MacBooks for customers in ${location.title}?`,
-      answer: `Yes, MacBook repair — including logic board and liquid damage recovery — is one of our core services, available with free pickup from ${location.title}.`,
+      answer: `Yes, MacBook repair — including motherboard and liquid damage recovery — is one of our core services, available with free pickup from ${location.title}.`,
     },
     {
       id: `faq-${location.slug}-gaming`,
