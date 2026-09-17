@@ -296,6 +296,17 @@ export default function IntelVsAmdGuide() {
               </div>
             </Section>
 
+            <section className="rounded-2xl border border-slate-800 bg-slate-900/50 p-6 sm:p-8" aria-labelledby="continue-reading">
+              <p className="text-xs font-black uppercase tracking-[0.18em] text-cyan-400">Continue the laptop research</p>
+              <h2 id="continue-reading" className="mt-2 text-2xl font-black text-white">Related KCROC resources</h2>
+              <p className="mt-3 max-w-2xl text-sm leading-7 text-slate-400">These pages cover the next practical questions after comparing processor platforms: what laptop to buy, how upgradeable the machine is, and what to do when a system is running hot or needs hardware repair.</p>
+              <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                <Link to="/blog/laptop-buying-guide-kuwait-2026" className="rounded-xl border border-slate-800 bg-slate-900/60 p-4 font-bold text-white hover:border-cyan-500/40 hover:text-cyan-300">Laptop Buying Guide <ArrowRight className="ml-1 inline" size={15} /></Link>
+                <Link to="/ssd-ram-upgrade-kuwait" className="rounded-xl border border-slate-800 bg-slate-900/60 p-4 font-bold text-white hover:border-cyan-500/40 hover:text-cyan-300">SSD &amp; RAM Upgrades <ArrowRight className="ml-1 inline" size={15} /></Link>
+                <Link to="/laptop-overheating-kuwait" className="rounded-xl border border-slate-800 bg-slate-900/60 p-4 font-bold text-white hover:border-cyan-500/40 hover:text-cyan-300">Laptop Overheating Guide <ArrowRight className="ml-1 inline" size={15} /></Link>
+              </div>
+            </section>
+
             <section className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6 sm:p-8">
               <h2 className="text-2xl font-black text-white">Need a second opinion on a laptop?</h2>
               <p className="mt-3 max-w-2xl text-slate-400">KCROC can help diagnose whether a current laptop’s slowdown is related to RAM, storage, cooling or another hardware fault. We offer free pickup and delivery across Kuwait.</p>
