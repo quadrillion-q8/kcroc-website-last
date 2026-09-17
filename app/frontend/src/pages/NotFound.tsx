@@ -20,7 +20,7 @@ export default function NotFound() {
           <h2 className="text-2xl font-bold text-slate-200 mb-6 relative z-10">Looks like a dead trace.</h2>
           
           <p className="text-lg text-slate-400 mb-10 leading-relaxed relative z-10">
-            We couldn't find the page you're looking for, but we are experts at repairing broken logic boards and reviving dead components. Let's get you back to safety.
+            We couldn't find the page you're looking for, but we are experts at repairing broken motherboards and reviving dead components. Let's get you back to safety.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center relative z-10">
