@@ -112,7 +112,7 @@ export default function BookingPage() {
                     What needs fixing?
                   </label>
                   <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                    {['MacBook / Apple', 'Gaming PC', 'Windows Laptop', 'Logic Board', 'Other'].map((type) => (
+                    {['MacBook / Apple', 'Gaming PC', 'Windows Laptop', 'Motherboard', 'Other'].map((type) => (
                       <button
                         key={type}
                         type="button"
