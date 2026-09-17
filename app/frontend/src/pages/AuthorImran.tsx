@@ -37,7 +37,7 @@ const PERSON_SCHEMA = [
     },
     knowsAbout: [
       'Laptop motherboard diagnostics',
-      'MacBook logic board repair',
+      'MacBook motherboard repair',
       'Component-level micro-soldering',
       'Gaming laptop thermal troubleshooting',
     ],
@@ -107,7 +107,7 @@ export default function AuthorImran() {
                 <p className="text-slate-300 text-sm sm:text-base leading-relaxed mb-4">
                   Senior technician with 20+ years of experience in Kuwait's enterprise hardware market.
                   Specializes in advanced hardware testing, strict data safety protocols, and
-                  component-level logic board recovery. Committed to transparent service and reclaiming
+                  component-level motherboard recovery. Committed to transparent service and reclaiming
                   hardware from the "beyond repair" category.
                 </p>
                 <div className="flex flex-wrap gap-2 mb-4">
@@ -135,7 +135,7 @@ export default function AuthorImran() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
             {[
               'Laptop motherboard diagnostics',
-              'MacBook logic board repair',
+              'MacBook motherboard repair',
               'Component-level micro-soldering',
               'Gaming laptop thermal troubleshooting',
             ].map((item) => (
