@@ -24,7 +24,7 @@ const BrandTemplate: React.FC = () => {
   if (!brand) return <Navigate to="/404" replace />;
 
   // NOTE: only 'brand-lenovo' currently has the full rich-brand-hub data set
-  // (familyGroups, relatedServiceIds, relatedProblemIds, relatedGuidePaths,
+  // (familyGroups, relatedServiceIds, relatedProblemIds, relatedResourcePaths,
   // repairProcess, technicalCapabilities, faqs). The KnowledgeGraph zod schema
   // marks these as defaulting to [] when absent, but that default is only
   // applied inside scripts/validate-build.ts's throwaway RawGraphSchema.parse()
@@ -36,7 +36,7 @@ const BrandTemplate: React.FC = () => {
   const relatedProblemIds = brand.relatedProblemIds ?? [];
   const commonIssues = brand.commonIssues ?? [];
   const repairProcess = brand.repairProcess ?? [];
-  const relatedGuidePaths = brand.relatedGuidePaths ?? [];
+  const relatedResourcePaths = brand.relatedResourcePaths ?? [];
   const technicalCapabilities = brand.technicalCapabilities ?? [];
   const faqs = brand.faqs ?? [];
   const familyGroups = brand.familyGroups ?? [];
@@ -326,7 +326,7 @@ const BrandTemplate: React.FC = () => {
 
         {/* Guides + evidence */}
         <section aria-labelledby="lenovo-resources" className="mb-20 grid gap-6 lg:grid-cols-2">
-          {relatedGuidePaths.length > 0 && (
+          {relatedResourcePaths.length > 0 && (
           <div className="rounded-3xl border border-slate-800 bg-slate-900/50 p-7">
             <div className="flex items-center gap-3">
               <Thermometer className="h-6 w-6 text-cyan-400" aria-hidden="true" />
@@ -336,7 +336,7 @@ const BrandTemplate: React.FC = () => {
               These existing KCROC guides support the problems covered on this brand hub.
             </p>
             <div className="mt-5 space-y-3">
-              {relatedGuidePaths.map((guide) => (
+              {relatedResourcePaths.map((guide) => (
                 <Link key={guide.path} to={guide.path} className="flex items-center justify-between rounded-xl border border-slate-800 bg-brand-dark/50 p-4 font-semibold text-slate-200 hover:border-cyan-900 hover:text-cyan-300">
                   {guide.label}
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
