@@ -136,7 +136,7 @@ export default function LocationTemplate() {
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-10 sm:mb-16">
             <h2 className="text-2xl sm:text-4xl font-black text-white mb-3 tracking-tight">We Fix The Board. We Don't Just Swap It.</h2>
-            <p className="text-slate-400 text-sm sm:text-base">Premium micro-soldering and logic board recovery brought directly to your door.</p>
+            <p className="text-slate-400 text-sm sm:text-base">Premium micro-soldering and motherboard recovery brought directly to your door.</p>
           </div>
 
           <div className="scroll-row gap-3 -mx-4 px-4 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-3 sm:gap-6">
@@ -156,7 +156,7 @@ export default function LocationTemplate() {
                   <Cpu className="w-5 h-5 text-cyan-400" aria-hidden="true" />
                 </div>
                 <CardTitle className="text-xl font-black text-white mb-2">Component-Level Repair</CardTitle>
-                <p className="text-slate-400 text-sm leading-relaxed">We isolate and replace the exact failed chips on your logic board, saving you hundreds of dinars over standard part swapping.</p>
+                <p className="text-slate-400 text-sm leading-relaxed">We isolate and replace the exact failed chips on your motherboard, saving you hundreds of dinars over standard part swapping.</p>
               </CardHeader>
             </Card>
 
