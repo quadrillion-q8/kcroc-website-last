@@ -74,7 +74,8 @@ export default function LocationDeepTemplate() {
   const PAGE_URL = `${BASE_URL}/location/${location.slug}`;
 
   const process = KCROC_GRAPH.processes?.find((p) => p.id === 'proc-standard');
-  const caseStudy = KCROC_GRAPH.caseStudies.find((c) => c.location === location.title);
+  const caseStudy = (location.relatedCaseStudyIds ?? []).map((id) => KCROC_GRAPH.caseStudies.find((c) => c.id === id)).find(Boolean)
+    ?? KCROC_GRAPH.caseStudies.find((c) => c.locationId === location.id || c.location === location.title);
   const reviews = KCROC_GRAPH.reviews;
   const localReview = reviews?.items.find((r) => r.location === location.title);
   const trustBadges = KCROC_GRAPH.trustBadges;
@@ -85,44 +86,22 @@ export default function LocationDeepTemplate() {
   const otherLocations = KCROC_GRAPH.locations.filter((l) => l.id !== location.id);
   const nearbyAreas = location.serviceAreas.filter((a) => a !== location.title);
 
-  // Keep location pages crawlable through the main hubs, but prioritize the
-  // most relevant entities here instead of repeating the entire graph on every
-  // service-area page.
-  const locationPriorityMap: Record<string, { services: string[]; problems: string[]; brands: string[] }> = {
-    hawalli: {
-      services: ['srv-laptop', 'srv-motherboard', 'srv-gaming', 'srv-macbook', 'srv-screen'],
-      problems: ['problem-no-power', 'problem-overheating', 'problem-black-screen', 'problem-not-charging', 'problem-liquid-spill'],
-      brands: ['brand-dell', 'brand-lenovo', 'brand-asus', 'brand-hp'],
-    },
-    salmiya: {
-      services: ['srv-laptop', 'srv-macbook', 'srv-liquid-damage', 'srv-motherboard', 'srv-screen'],
-      problems: ['problem-liquid-spill', 'problem-no-power', 'problem-black-screen', 'problem-not-charging'],
-      brands: ['brand-dell', 'brand-lenovo', 'brand-hp', 'brand-asus'],
-    },
-    'kuwait-city': {
-      services: ['srv-laptop', 'srv-screen', 'srv-motherboard', 'srv-macbook'],
-      problems: ['problem-black-screen', 'problem-cracked-screen', 'problem-no-power', 'problem-not-charging'],
-      brands: ['brand-dell', 'brand-lenovo', 'brand-hp', 'brand-asus'],
-    },
-  };
-
-  const defaultPriority = {
-    services: ['srv-laptop', 'srv-motherboard', 'srv-screen', 'srv-macbook', 'srv-gaming-laptop-cleaning'],
-    problems: ['problem-no-power', 'problem-overheating', 'problem-not-charging', 'problem-black-screen', 'problem-liquid-spill'],
-    brands: ['brand-dell', 'brand-lenovo', 'brand-asus', 'brand-hp'],
-  };
-  const locationPriority = locationPriorityMap[location.slug] ?? defaultPriority;
-  const services = locationPriority.services
+  // Phase 4: location topology now lives in KCROC_GRAPH so the UI and graph
+  // validator operate on the same service/problem/brand/location relationships.
+  const services = (location.relatedServiceIds ?? [])
     .map((id) => KCROC_GRAPH.services.find((service) => service.id === id))
     .filter(Boolean);
-  const problems = locationPriority.problems
+  const problems = (location.relatedProblemIds ?? [])
     .map((id) => KCROC_GRAPH.problems.find((problem) => problem.id === id))
     .filter(Boolean);
-  const brands = locationPriority.brands
+  const brands = (location.relatedBrandIds ?? [])
     .map((id) => KCROC_GRAPH.brands.find((brand) => brand.id === id))
     .filter(Boolean);
-  const prioritizedOtherLocations = otherLocations
-    .filter((loc) => nearbyAreas.includes(loc.title) || location.serviceAreas.includes(loc.title))
+  const graphRelatedLocations = (location.relatedLocationIds ?? [])
+    .map((id) => KCROC_GRAPH.locations.find((loc) => loc.id === id))
+    .filter(Boolean);
+  const prioritizedOtherLocations = (graphRelatedLocations.length > 0 ? graphRelatedLocations : otherLocations
+    .filter((loc) => nearbyAreas.includes(loc.title) || location.serviceAreas.includes(loc.title)))
     .slice(0, 5);
   const displayedOtherLocations = prioritizedOtherLocations.length > 0
     ? prioritizedOtherLocations
