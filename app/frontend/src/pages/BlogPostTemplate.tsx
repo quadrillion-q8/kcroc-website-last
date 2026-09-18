@@ -142,7 +142,7 @@ const FAQAccordionItem: React.FC<{ question: string; answer: string }> = ({ ques
    RICH CONTENT BLOCK RENDERER
 ═══════════════════════════════════════════════════════════════════ */
 
-const RichBlock: React.FC<{ block: ContentBlock; headingRef?: (el: HTMLElement | null) => void }> = ({ block, headingRef }) => {
+const RichBlock: React.FC<{ block: ContentBlock; headingRef?: (el: HTMLElement | null) => void; currentEntityId?: string }> = ({ block, headingRef, currentEntityId }) => {
   switch (block.type) {
     case 'h2':
       return (
@@ -159,7 +159,7 @@ const RichBlock: React.FC<{ block: ContentBlock; headingRef?: (el: HTMLElement |
     case 'paragraph':
       return (
         <p className="text-slate-300 leading-relaxed mb-6">
-          {block.text.includes('https://') ? linkTechnicalSources(block.text) : <AutoLink text={block.text} />}
+          {block.text.includes('https://') ? linkTechnicalSources(block.text) : <AutoLink text={block.text} currentEntityId={currentEntityId} />}
         </p>
       );
     case 'list': {
@@ -179,7 +179,7 @@ const RichBlock: React.FC<{ block: ContentBlock; headingRef?: (el: HTMLElement |
           <div>
             <p className={`text-xs font-black uppercase tracking-wider mb-1.5 ${style.text}`}>{block.title || style.label}</p>
             {/* Added AutoLink for consistency within Callouts */}
-            <p className="text-slate-300 text-sm leading-relaxed"><AutoLink text={block.text} /></p>
+            <p className="text-slate-300 text-sm leading-relaxed"><AutoLink text={block.text} currentEntityId={currentEntityId} /></p>
           </div>
         </div>
       );
@@ -189,7 +189,7 @@ const RichBlock: React.FC<{ block: ContentBlock; headingRef?: (el: HTMLElement |
         <blockquote className="my-10 border-l-4 border-cyan-500 pl-6 py-2">
           <QuoteIcon className="w-6 h-6 text-cyan-500/50 mb-2" aria-hidden="true" />
           {/* Added AutoLink for consistency within Quotes */}
-          <p className="text-xl md:text-2xl text-white font-medium leading-relaxed italic"><AutoLink text={block.text} /></p>
+          <p className="text-xl md:text-2xl text-white font-medium leading-relaxed italic"><AutoLink text={block.text} currentEntityId={currentEntityId} /></p>
           {block.attribution && <cite className="block mt-3 text-sm text-slate-500 not-italic">— {block.attribution}</cite>}
         </blockquote>
       );
@@ -284,6 +284,15 @@ export default function BlogPostTemplate() {
   const contentRoute = (post: BlogPost) =>
     getContentRoute(post.slug, post.contentType ?? 'blog');
   const post = BLOG_POSTS.find((p) => p.slug === slug);
+  const currentGraphEntityId = useMemo(() => {
+    if (!post) return undefined;
+    const route = contentRoute(post);
+    const matchingEntity = KCROC_GRAPH.pages.find((page) => {
+      const canonicalPath = page.seo.canonicalUrl.replace(/^https?:\/\/[^/]+/, '').replace(/\/$/, '') || '/';
+      return canonicalPath === route;
+    });
+    return matchingEntity?.id;
+  }, [post]);
 
   const [progress, setProgress] = useState(0);
   const [showBackToTop, setShowBackToTop] = useState(false);
@@ -617,13 +626,14 @@ export default function BlogPostTemplate() {
                       key={index}
                       block={block}
                       headingRef={block.type === 'h2' ? setHeadingRef(block.id) : undefined}
+                      currentEntityId={currentGraphEntityId}
                     />
                   ))}
                 </div>
               ) : post.content?.length > 0 ? (
                 <div className="space-y-6">
                   {post.content.map((paragraph, index) => (
-                    <p key={index}><AutoLink text={paragraph} /></p>
+                    <p key={index}><AutoLink text={paragraph} currentEntityId={currentGraphEntityId} /></p>
                   ))}
                 </div>
               ) : (
