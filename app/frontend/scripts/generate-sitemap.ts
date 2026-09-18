@@ -22,18 +22,10 @@ const DOMAIN = KCROC_GRAPH.business!.websiteUrl;
 // runs. Rather than let that keep happening silently, list them here
 // explicitly so they're always included until they get a proper graph
 // entity. Add future orphan pages to this list as they're discovered.
-const EXTRA_STANDALONE_PAGES: string[] = [
-  '/laptop-screen-protection-tips',
-  // 🩹 FIX (audit): real, directly-routed page (App.tsx ->
-  // DellLaptopOverheatingPage, not a redirect) with its own content, but no
-  // graph entity — same missing-orphan pattern as the line above. It was
-  // previously masked because nothing linked to it directly (internal links
-  // went through the /guides/dell-inspiron-15-3000-overheating redirect
-  // stub instead, which WAS in the sitemap). Now that NavigationCompiler.ts
-  // and GuidesIndex.tsx link straight to this page, it needs to be
-  // prerendered and indexable in its own right.
-  '/guides/dell-laptop-overheating',
-];
+// Formerly standalone routes are now first-class WebPage entities in graph.ts.
+// Keep sitemap membership derived from the graph + BLOG_POSTS so generated
+// routes, navigation and discovery cannot drift apart.
+const EXTRA_STANDALONE_PAGES: string[] = [];
 
 // 🚀 FIX: Flat priority/changefreq (0.8/weekly on every URL) told crawlers
 // nothing about which pages matter most. Tier by entity type + URL shape:
