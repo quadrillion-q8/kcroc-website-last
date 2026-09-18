@@ -1,15 +1,13 @@
 // File: app/frontend/src/pages/GuidesIndex.tsx
-//
-// 🩹 FIX: "/guides" previously had no route at all, so it 404'd — the only
-// registered guide routes were the two specific guide pages themselves
-// (App.tsx: /guides/laptop-battery-warning-signs and
-// /guides/dell-inspiron-15-3000-overheating). It was also missing from the
-// Guides mega menu dropdown, whose `sections` array was empty (see
-// NavigationCompiler.ts). This page + its route in App.tsx fixes both.
+// The guide index derives its content metadata from KCROC_GRAPH + BLOG_POSTS
+// so the sitemap, navigation and index cannot drift into separate inventories.
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { BatteryWarning, Cpu, HardDrive, Gamepad2, Shield, Power, Settings2, ChevronRight, MonitorUp } from 'lucide-react';
 import { SEOEngine } from '../core/components/SEOEngine';
+import { KCROC_GRAPH } from '../data/graph';
+import { BLOG_POSTS } from '../constants/blogPosts';
+import { getContentRoute } from '../constants/routes';
 
 interface GuideLink {
   slug: string;
@@ -18,64 +16,64 @@ interface GuideLink {
   icon: React.ElementType;
 }
 
-// Kept as an explicit static list so guide display order and descriptions
-// stay intentional. Add each new guide here, in NavigationCompiler.ts's
-// compileGuidesMegaMenu(), and ensure its route is covered by the shared
-// /guides/:slug handler or an explicit route when a custom page is needed.
-const GUIDES: GuideLink[] = [
-  {
-    slug: 'guides/laptop-wont-turn-on',
-    title: "Laptop Won't Turn On?",
-    description: 'A safe, step-by-step no-power diagnostic guide covering chargers, batteries, charging ports, black-screen lookalikes and motherboard faults.',
-    icon: Power,
-  },
-  {
-    // 🩹 FIX (audit): was 'guides/dell-inspiron-15-3000-overheating', a
-    // client-side-only <Navigate> redirect stub in App.tsx with no rendered
-    // content of its own — this card linked straight into an empty page.
-    // Repointed at the real, rendered guide page it redirects to.
-    slug: 'guides/dell-laptop-overheating',
-    title: 'Dell Laptop Overheating Guide',
-    description: 'Step-by-step thermal troubleshooting for Dell laptops, including Inspiron, Latitude, Vostro, XPS, Precision, G Series, and Alienware families.',
-    icon: Cpu,
-  },
-  {
-    slug: 'guides/laptop-battery-warning-signs',
-    title: 'Laptop Battery Warning Signs',
-    description: '10 warning signs of lithium-ion battery failure, plus safe health checks and what to do before it becomes a safety issue.',
-    icon: BatteryWarning,
-  },
-  {
-    slug: 'guides/bios-uefi-recovery-kuwait',
-    title: 'BIOS & UEFI Recovery Guide',
-    description: 'Troubleshoot failed BIOS/UEFI updates, tell firmware corruption apart from hardware failure, and learn how professional firmware recovery works.',
-    icon: HardDrive,
-  },
-  {
-    slug: 'guides/gamebar-presence-writer-fix',
-    title: 'GameBarPresenceWriter.exe Fix',
-    description: 'A measured, evidence-first diagnostic guide to GameBarPresenceWriter.exe and Windows Game Bar background activity causing gaming stutter.',
-    icon: Gamepad2,
-  },
-  {
-    slug: 'guides/windows-10-end-of-support',
-    title: 'Windows 10 End of Support: 2026 Update',
-    description: 'Understand ESU through October 2027, Windows 11 eligibility, and when an older PC should be upgraded, repaired or replaced.',
-    icon: MonitorUp,
-  },
-  {
-    slug: 'guides/windows-11-background-services-audit',
-    title: 'Windows 11 Background Services Audit',
-    description: 'Understand WHESVC, DiagTrack, SysMain and MapsBroker, and learn how to investigate background services without blindly disabling Windows components.',
-    icon: Shield,
-  },
-  {
-    slug: 'guides/windows-11-settings-tweaks',
-    title: '18 Windows 11 Settings Worth Changing',
-    description: 'A technician-written guide to privacy, startup, battery, gaming, security and better Windows control—without pretending every setting makes a PC faster.',
-    icon: Settings2,
-  },
+const GUIDE_ORDER = [
+  'guides/laptop-wont-turn-on',
+  'guides/dell-laptop-overheating',
+  'guides/laptop-battery-warning-signs',
+  'guides/bios-uefi-recovery-kuwait',
+  'guides/gamebar-presence-writer-fix',
+  'guides/windows-10-end-of-support',
+  'guides/windows-11-background-services-audit',
+  'guides/windows-11-settings-tweaks',
 ];
+
+const ICON_BY_SLUG: Record<string, React.ElementType> = {
+  'guides/laptop-wont-turn-on': Power,
+  'guides/dell-laptop-overheating': Cpu,
+  'guides/laptop-battery-warning-signs': BatteryWarning,
+  'guides/bios-uefi-recovery-kuwait': HardDrive,
+  'guides/gamebar-presence-writer-fix': Gamepad2,
+  'guides/windows-10-end-of-support': MonitorUp,
+  'guides/windows-11-background-services-audit': Shield,
+  'guides/windows-11-settings-tweaks': Settings2,
+};
+
+const normalizeRoute = (route: string) => (route.startsWith('/') ? route : `/${route}`).replace(/\/$/, '');
+
+// Metadata comes from the same graph/content sources that power sitemap and
+// navigation. This page owns only presentation order and icon selection.
+const guideByRoute = new Map<string, GuideLink>();
+
+for (const page of KCROC_GRAPH.pages ?? []) {
+  const route = normalizeRoute(page.slug);
+  if (!route.startsWith('/guides/')) continue;
+  guideByRoute.set(route, {
+    slug: route.slice(1),
+    title: page.title,
+    description: page.description,
+    icon: ICON_BY_SLUG[route] ?? HardDrive,
+  });
+}
+
+for (const post of BLOG_POSTS.filter((entry) => entry.contentType === 'guide')) {
+  const route = normalizeRoute(getContentRoute(post.slug, 'guide'));
+  if (guideByRoute.has(route)) continue;
+  guideByRoute.set(route, {
+    slug: route.slice(1),
+    title: post.title,
+    description: post.description ?? post.excerpt,
+    icon: ICON_BY_SLUG[route] ?? HardDrive,
+  });
+}
+
+const GUIDES: GuideLink[] = [
+  ...GUIDE_ORDER.map((route) => guideByRoute.get(`/${route}`)).filter((guide): guide is GuideLink => Boolean(guide)),
+  ...[...guideByRoute.entries()]
+    .filter(([route]) => !GUIDE_ORDER.includes(route.slice(1)))
+    .sort((a, b) => a[1].title.localeCompare(b[1].title))
+    .map(([, guide]) => guide),
+];
+
 
 export default function GuidesIndex() {
   return (
