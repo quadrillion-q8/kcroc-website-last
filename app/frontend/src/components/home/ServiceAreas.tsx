@@ -45,9 +45,9 @@ export const ServiceAreas = () => {
                   ~380x237 mobile slot. Responsive <picture> now serves a
                   pre-sized variant instead. */}
               <picture>
-                <source media="(max-width: 640px)" srcSet="/images/home/computer-repair-service-kuwait-city-640.webp" />
+                <source media="(max-width: 640px)" srcSet="/images/kcroc-laptop-repair-technicians-hawalli-kuwait.webp" />
                 <img 
-                  src="/images/home/computer-repair-service-kuwait-city-960.webp" 
+                  src="/images/kcroc-laptop-repair-technicians-hawalli-kuwait.webp" 
                   alt="KCROC Computer Repair Service Across Kuwait City and Governorates" 
                   width="960"
                   height="524"
