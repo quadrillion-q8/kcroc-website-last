@@ -22,7 +22,7 @@ const business = KCROC_GRAPH.business!;
    1. PAGE DATA & SEO (Preserving your rich Article Schema)
 ───────────────────────────────────────────────────────────────────────────── */
 const PAGE_URL = `${business.websiteUrl}/blog/laptop-repair-kuwait-2026`;
-const HERO_IMAGE_URL = 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_1200/v1781139061/2026-01-22_9_qfanpt.jpg';
+const HERO_IMAGE_URL = `${business.websiteUrl}/images/laptop-repair-kuwait.webp`;
 const PUBLISHED_DATE = '2026-06-14T08:00:00+03:00';
 
 const WA_LINK = `https://wa.me/${business.telephone}?text=${encodeURIComponent(
@@ -128,7 +128,7 @@ const challenges = [
     color: 'text-purple-500',
     bgColor: 'bg-purple-500/10',
     borderColor: 'border-purple-500/30',
-    image: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1781139061/2026-01-22_9_qfanpt.jpg'
+    image: HERO_IMAGE_URL
   },
   {
     title: 'Hinge & Screen Stress',
@@ -148,7 +148,7 @@ const repairSolutions = [
     price: 'Free Diagnostic',
     duration: '2-4 Days',
     icon: Cpu,
-    image: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1781139061/2026-01-22_9_qfanpt.jpg',
+    image: HERO_IMAGE_URL,
     benefits: [
       'Identifies blown capacitors & ICs',
       'Fraction of the cost of a new board',
@@ -218,7 +218,7 @@ const repairSolutions = [
     price: 'From 15 KD',
     duration: 'Same Day',
     icon: Keyboard,
-    image: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1781139061/2026-01-22_9_qfanpt.jpg',
+    image: HERO_IMAGE_URL,
     benefits: [
       'OEM palmrest assemblies',
       'Ribbon cable replacement',
