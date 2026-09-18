@@ -64,7 +64,7 @@ export const IMAGES = {
 
   // --- MACBOOK REPAIR ---
   macbook: {
-    logicBoard: { src: "/images/apple-macbook-motherboard-and-fan-repair.webp", alt: "MacBook motherboard repair", width: 1000, height: 600 },
+    logicBoard: { src: "/images/apple-macbook-logic-board-and-fan-repair.webp", alt: "MacBook motherboard repair", width: 1000, height: 600 },
     diagnostics: { src: "/images/technician-holding-opened-macbook-for-repair.webp", alt: "MacBook diagnostics", width: 1200, height: 630 },
     swollenBattery1: { src: "/images/swollen-apple-macbook-battery-replacement.webp", alt: "Swollen MacBook battery", width: 800, height: 600 },
     swollenBattery2: { src: "/images/swollen-macbook-battery-replacement-2.webp", alt: "MacBook battery replacement", width: 800, height: 600 },
