@@ -56,21 +56,24 @@ const getDefaultBreadcrumbs = (entity: RoutableEntity): { name: string; url: str
   if (path === '/') return [{ name: 'Home', url: '/' }];
 
   const parts = path.split('/').filter(Boolean);
-  const sectionLabels: Record<string, string> = {
-    services: 'Services',
-    brands: 'Brands',
-    problems: 'Problems',
-    guides: 'Guides',
-    location: 'Locations',
-    blog: 'Blog',
-    'case-studies': 'Case Studies',
-    author: 'Author'
+  const sectionLabels: Record<string, { label: string; url: string }> = {
+    services: { label: 'Services', url: '/services' },
+    brands: { label: 'Brands', url: '/brands' },
+    problems: { label: 'Problems', url: '/problems' },
+    guides: { label: 'Guides', url: '/guides' },
+    location: { label: 'Computer Repair Near Me', url: '/near-me' },
+    blog: { label: 'Blog', url: '/blog' },
+    'case-studies': { label: 'Case Studies', url: '/case-studies' },
+    author: { label: 'Blog', url: '/blog' }
   };
 
   const crumbs: { name: string; url: string }[] = [{ name: 'Home', url: '/' }];
   if (parts.length > 1) {
     const section = parts[0];
-    crumbs.push({ name: sectionLabels[section] || section.replace(/-/g, ' '), url: `/${section}` });
+    const parent = sectionLabels[section];
+    if (parent && parent.url !== path) {
+      crumbs.push({ name: parent.label, url: parent.url });
+    }
   }
   crumbs.push({ name: entity.title, url: path });
   return crumbs;
