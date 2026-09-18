@@ -156,6 +156,21 @@ export const rawGraphData: RawGraphData = {
     'page-brands': { id: 'page-brands', slug: 'brands', entityType: 'WebPage', isActive: true, title: 'Supported Laptop Brands', description: 'Laptop and computer brands repaired by KCROC in Kuwait.', seo: { title: 'Laptop Brands We Repair: Dell, HP, Lenovo & More | KCROC', description: 'Component-level laptop repair for Dell, HP, Lenovo, ASUS, Acer, MSI and other major brands across Kuwait.', canonicalUrl: 'https://www.computerrepairkuwait.com/brands', ogType: 'website', schemaTypes: ['CollectionPage', 'WebPage', 'BreadcrumbList'], breadcrumbs: [{ name: 'Home', url: '/' }, { name: 'Brands', url: '/brands' }] } } as WebPageEntity,
     'page-problems': { id: 'page-problems', slug: 'problems', entityType: 'WebPage', isActive: true, title: 'Common Computer Problems', description: 'Common laptop and computer problems diagnosed and repaired by KCROC in Kuwait.', seo: { title: 'Common Laptop & Computer Problems We Fix | KCROC Kuwait', description: 'Find causes, safe troubleshooting steps and repair options for common laptop and computer problems in Kuwait.', canonicalUrl: 'https://www.computerrepairkuwait.com/problems', ogType: 'website', schemaTypes: ['CollectionPage', 'WebPage', 'BreadcrumbList'], breadcrumbs: [{ name: 'Home', url: '/' }, { name: 'Problems', url: '/problems' }] } } as WebPageEntity,
     'page-guides': { id: 'page-guides', slug: 'guides', entityType: 'WebPage', isActive: true, title: 'DIY & Repair Guides', description: 'Technician-written laptop and computer troubleshooting guides from KCROC Kuwait.', seo: { title: 'Laptop & Computer Repair Guides | KCROC Kuwait', description: 'Free technician-written guides for diagnosing laptop and computer problems, battery issues, overheating, BIOS recovery and more.', canonicalUrl: 'https://www.computerrepairkuwait.com/guides', ogType: 'website', schemaTypes: ['CollectionPage', 'WebPage', 'BreadcrumbList'], breadcrumbs: [{ name: 'Home', url: '/' }, { name: 'Guides', url: '/guides' }] } } as WebPageEntity,
+    'page-screen-protection-tips': {
+      id: 'page-screen-protection-tips',
+      slug: 'laptop-screen-protection-tips',
+      entityType: 'WebPage',
+      isActive: true,
+      title: '7 Tips to Protect Your Laptop Screen',
+      description: 'Expert tips from Kuwait Computer Repair On Call to help you avoid broken screens, compression damage, and costly display repairs.',
+      seo: {
+        title: '7 Tips to Protect Your Laptop Screen | KCROC Kuwait',
+        description: 'Expert tips from Kuwait Computer Repair On Call to help you avoid broken screens, compression damage, and costly display repairs.',
+        canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-screen-protection-tips',
+        ogType: 'article',
+        schemaTypes: ['WebPage', 'BreadcrumbList']
+      }
+    } as WebPageEntity,
     'page-404': { id: 'page-404', slug: '404', entityType: 'WebPage', isActive: true, title: 'Page Not Found', description: 'The requested KCROC page could not be found.', seo: { title: 'Page Not Found | KCROC Kuwait', description: 'The requested page could not be found.', canonicalUrl: 'https://www.computerrepairkuwait.com/404', ogType: 'website', robots: 'noindex, follow, max-image-preview:none', schemaTypes: ['WebPage'] } } as WebPageEntity,
     'page-blog': { id: 'page-blog', slug: 'blog', entityType: 'WebPage', isActive: true, title: 'Tech Blog', description: 'Expert repair guides and tech insights.', seo: { title: 'KCROC Tech Blog | Computer Repair Guides Kuwait', description: 'Expert computer repair guides, laptop fixes, MacBook troubleshooting, and PC performance tips in Kuwait.', canonicalUrl: 'https://www.computerrepairkuwait.com/blog', ogType: 'website', schemaTypes: ['CollectionPage'] } } as WebPageEntity,
     'page-about': { id: 'page-about', slug: 'about', entityType: 'WebPage', isActive: true, title: 'About Us', description: 'Learn about KCROC.', seo: { title: 'About KCROC | Computer Repair Experts Kuwait', description: 'Learn about Kuwait Computer Repair On Call, our Hawalli lab, and our commitment to component-level repair.', canonicalUrl: 'https://www.computerrepairkuwait.com/about', ogType: 'website', schemaTypes: ['AboutPage'] } } as WebPageEntity,
@@ -304,6 +319,25 @@ export const rawGraphData: RawGraphData = {
     // (DellLaptopOverheatingPage). Deleted rather than fixed in place, since
     // keeping a graph node for a URL that only ever redirects invites this
     // same drift again.
+
+    'guide-dell-laptop-overheating': {
+      id: 'guide-dell-laptop-overheating',
+      slug: 'guides/dell-laptop-overheating',
+      entityType: 'WebPage',
+      isActive: true,
+      title: 'Dell Laptop Overheating Guide',
+      description: 'Step-by-step thermal troubleshooting for Dell laptops, including Inspiron, Latitude, Vostro, XPS, Precision, G Series, and Alienware families.',
+      seo: {
+        title: 'Dell Laptop Overheating: Causes, Fixes & Repair | KCROC Kuwait',
+        description: 'Is your Dell laptop overheating, shutting down, or running loud? Learn the common causes, safe fixes, thermal throttling signs, and when professional repair is needed in Kuwait.',
+        canonicalUrl: 'https://www.computerrepairkuwait.com/guides/dell-laptop-overheating',
+        ogType: 'article',
+        schemaTypes: ['WebPage', 'BreadcrumbList']
+      },
+      navigationPriority: 90,
+      isFeatured: true,
+      popular: true
+    } as WebPageEntity,
 
     // 🚀 NEW: GameBarPresenceWriter.exe diagnostic guide. schemaTypes is
     // 'Article' only (no 'FAQPage') — this page's FAQPage + BreadcrumbList
@@ -1792,6 +1826,14 @@ export const rawGraphData: RawGraphData = {
       ],
 
       relatedServiceIds: ['srv-gaming', 'srv-laptop', 'srv-motherboard'],
+      relatedProblemIds: ['problem-overheating', 'problem-freezing-crashing'],
+      relatedBrandIds: ['brand-asus', 'brand-lenovo', 'brand-msi', 'brand-acer', 'brand-dell', 'brand-hp'],
+      relatedResourcePaths: [
+        { label: 'Laptop Overheating Kuwait — Diagnostic Guide', path: '/laptop-overheating-kuwait' },
+        { label: 'How Often to Clean a Gaming Laptop & Replace Thermal Paste', path: '/blog/how-often-clean-laptop-replace-thermal-paste-kuwait' },
+        { label: 'Laptop Temperatures in Kuwait', path: '/blog/laptop-temperatures-kuwait-safe-cpu-gpu-temperatures' },
+        { label: 'Gaming PC Cooling Guide', path: '/blog/gaming-pc-cooling' },
+      ],
 
       warranty: {
         duration: '30 Days',
@@ -3088,6 +3130,11 @@ export const rawGraphData: RawGraphData = {
       solution: 'Ultrasonic cleaning of the cooling system, fresh phase-change thermal material application, and fan inspection. We also check BIOS thermal limits.',
       urgency: 'medium',
       relatedServiceIds: ['srv-laptop', 'srv-gaming', 'srv-gaming-laptop-cleaning'],
+      relatedResourcePaths: [
+        { label: 'Gaming Laptop Cleaning & Thermal Repaste Kuwait', path: '/gaming-laptop-cleaning-kuwait' },
+        { label: 'How Often to Clean a Gaming Laptop & Replace Thermal Paste', path: '/blog/how-often-clean-laptop-replace-thermal-paste-kuwait' },
+        { label: 'Laptop Temperatures in Kuwait', path: '/blog/laptop-temperatures-kuwait-safe-cpu-gpu-temperatures' },
+      ],
       coveredBrands: ['Dell', 'HP', 'Lenovo', 'ASUS', 'Acer', 'MSI', 'Apple MacBook'],
       diagnosticSteps: [
         { step: 1, title: 'Check where the heat actually is', description: 'Feel the underside near the vents and the keyboard area above the CPU/GPU. Heat concentrated in one spot near the fan exhaust points to a cooling blockage; even heat across the whole chassis is more often a design characteristic than a fault.' },
@@ -3723,6 +3770,11 @@ const LOCATION_RELATIONSHIPS: Record<string, {
 
 const rawEntities = Object.values(rawGraphData.entities);
 const rawCaseStudies = rawEntities.filter((e): e is CaseStudyEntity => e.entityType === 'CaseStudy' && e.isActive);
+const brandIdByName = new Map(
+  rawEntities
+    .filter((e): e is BrandEntity => e.entityType === 'Brand' && e.isActive)
+    .map((brand) => [brand.brandName.trim().toLowerCase(), brand.id])
+);
 
 const allEntities = rawEntities.map((entity) => {
   if (entity.entityType === 'Location') {
@@ -3735,6 +3787,17 @@ const allEntities = rawEntities.map((entity) => {
       ...(rel ?? { relatedServiceIds: [], relatedProblemIds: [], relatedBrandIds: [], relatedLocationIds: [] }),
       relatedCaseStudyIds,
     } as LocationEntity;
+  }
+
+  if (entity.entityType === 'Problem') {
+    const explicitBrandIds = Array.isArray(entity.relatedBrandIds) ? entity.relatedBrandIds : [];
+    const derivedBrandIds = (entity.coveredBrands ?? [])
+      .map((brandName) => brandIdByName.get(brandName.trim().toLowerCase()))
+      .filter((id): id is string => Boolean(id));
+    return {
+      ...entity,
+      relatedBrandIds: explicitBrandIds.length > 0 ? explicitBrandIds : derivedBrandIds,
+    } as ProblemEntity;
   }
 
   if (entity.entityType === 'Service' || entity.entityType === 'Brand') {
