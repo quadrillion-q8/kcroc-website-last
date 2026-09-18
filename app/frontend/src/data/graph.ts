@@ -218,7 +218,10 @@ export const rawGraphData: RawGraphData = {
         'faq-bios-mac-firmware-flash',
         'faq-bios-security-risk'
       ],
-      relatedServiceIds: ['srv-motherboard', 'srv-laptop', 'srv-gaming']
+      relatedServiceIds: ['srv-motherboard', 'srv-laptop', 'srv-gaming'],
+      contentImages: [
+        { src: '/images/guides/bios-recovery/bios-chip-repair-kuwait-laptop-motherboard.webp', alt: 'BIOS chip repair on a laptop motherboard in Kuwait', width: 800, height: 450, placement: 'hero', caption: 'BIOS chip and motherboard repair work for firmware recovery.' }
+      ]
     } as WebPageEntity,
     'guide-intel-vs-amd': { 
       id: 'guide-intel-vs-amd', 
@@ -461,9 +464,9 @@ export const rawGraphData: RawGraphData = {
         { metric: 'Power-path confidence', outcome: 'Connector and charging circuit tested before the device is returned.' }
       ] },
       contentImages: [
-        { src: IMAGES.laptopHardware.lenovoLaptopDcPowerAdapter.src, alt: IMAGES.laptopHardware.lenovoLaptopDcPowerAdapter.alt, width: IMAGES.laptopHardware.lenovoLaptopDcPowerAdapter.width, height: IMAGES.laptopHardware.lenovoLaptopDcPowerAdapter.height, placement: 'commonIssues', caption: 'Checking a compatible laptop power adapter as part of charging-path diagnosis.' },
+        { src: IMAGES.laptopHardware.laptopDcPowerJackConnectorReplacement.src, alt: IMAGES.laptopHardware.laptopDcPowerJackConnectorReplacement.alt, width: IMAGES.laptopHardware.laptopDcPowerJackConnectorReplacement.width, height: IMAGES.laptopHardware.laptopDcPowerJackConnectorReplacement.height, placement: 'commonIssues', caption: 'Laptop DC power jack and connector replacement during charging-port diagnosis.' },
         { src: IMAGES.laptopHardware.laptopOpenRepairBench.src, alt: IMAGES.laptopHardware.laptopOpenRepairBench.alt, width: IMAGES.laptopHardware.laptopOpenRepairBench.width, height: IMAGES.laptopHardware.laptopOpenRepairBench.height, placement: 'coreFeatures', caption: 'An opened laptop on the repair bench for connector, charging-circuit and motherboard inspection.' },
-        { src: IMAGES.laptopHardware.dellRepair.src, alt: IMAGES.laptopHardware.dellRepair.alt, width: IMAGES.laptopHardware.dellRepair.width, height: IMAGES.laptopHardware.dellRepair.height, placement: 'process', caption: 'Internal hardware access during a component-level charging and power repair.' }
+        { src: IMAGES.laptopHardware.laptopDcPowerJackConnectorReplacement.src, alt: IMAGES.laptopHardware.laptopDcPowerJackConnectorReplacement.alt, width: IMAGES.laptopHardware.laptopDcPowerJackConnectorReplacement.width, height: IMAGES.laptopHardware.laptopDcPowerJackConnectorReplacement.height, placement: 'process', caption: 'DC power jack replacement as part of a targeted laptop charging-port repair.' }
       ],
       warranty: { duration: '30 Days', coverage: 'Parts and labour for the completed charging-port repair', noFixNoFee: true },
       seo: { title: 'Laptop Charging Port Repair Kuwait | KCROC', description: 'Laptop DC jack and USB-C charging port repair in Kuwait. Board-level charging diagnostics, micro-soldering, free pickup and 30-day warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-charging-port-repair-kuwait', ogType: 'article', schemaTypes: ['Service', 'FAQPage'] },
@@ -543,7 +546,7 @@ export const rawGraphData: RawGraphData = {
       contentImages: [
         { src: IMAGES.laptopHardware.brokenHinge.src, alt: IMAGES.laptopHardware.brokenHinge.alt, width: IMAGES.laptopHardware.brokenHinge.width, height: IMAGES.laptopHardware.brokenHinge.height, placement: 'commonIssues', caption: 'Broken hinge mounts and cracked plastic chassis damage before structural repair.' },
         { src: IMAGES.laptopHardware.screenBezel.src, alt: IMAGES.laptopHardware.screenBezel.alt, width: IMAGES.laptopHardware.screenBezel.width, height: IMAGES.laptopHardware.screenBezel.height, placement: 'coreFeatures', caption: 'Screen bezel and hinge work during chassis reconstruction and alignment.' },
-        { src: IMAGES.laptopHardware.dellRepair.src, alt: IMAGES.laptopHardware.dellRepair.alt, width: IMAGES.laptopHardware.dellRepair.width, height: IMAGES.laptopHardware.dellRepair.height, placement: 'process', caption: 'Laptop chassis opened so hinge mounts, display cable routing and surrounding structure can be inspected.' }
+        { src: IMAGES.services.laptopRepair.src, alt: IMAGES.services.laptopRepair.alt, width: IMAGES.services.laptopRepair.width, height: IMAGES.services.laptopRepair.height, placement: 'process', caption: 'Laptop opened for inspection of the chassis, display cable routing and surrounding hardware.' }
       ],
       warranty: { duration: '30 Days', coverage: 'Parts and labour for the completed hinge/chassis repair', noFixNoFee: true },
       seo: { title: 'Laptop Hinge Repair Kuwait | Chassis Fix | KCROC', description: 'Broken or stiff laptop hinge repair in Kuwait. Chassis reinforcement, hinge replacement and display-cable inspection with free pickup and 30-day warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-hinge-repair-kuwait', ogType: 'article', schemaTypes: ['Service', 'FAQPage'] },
@@ -2524,12 +2527,12 @@ export const rawGraphData: RawGraphData = {
       warranty: { duration: '30 Days', coverage: 'Battery and labor.', noFixNoFee: true }, 
       contentImages: [
         {
-          src: IMAGES.laptopHardware.getacBattery.src,
-          alt: IMAGES.laptopHardware.getacBattery.alt,
-          width: IMAGES.laptopHardware.getacBattery.width,
-          height: IMAGES.laptopHardware.getacBattery.height,
+          src: IMAGES.laptopHardware.hpBattery2.src,
+          alt: IMAGES.laptopHardware.hpBattery2.alt,
+          width: IMAGES.laptopHardware.hpBattery2.width,
+          height: IMAGES.laptopHardware.hpBattery2.height,
           placement: 'commonIssues',
-          caption: 'A worn laptop battery pack removed for health testing before we confirm it — not the charging circuit — is the fault.'
+          caption: 'A mainstream laptop battery replacement example used during battery-health and power diagnosis.'
         },
         {
           src: IMAGES.macbook.expandedBattery.src,
@@ -2790,7 +2793,10 @@ export const rawGraphData: RawGraphData = {
       ],
       relatedServiceIds: ['srv-laptop', 'srv-motherboard', 'srv-hinge', 'srv-gaming-laptop-cleaning'],
       relatedProblemIds: ['problem-no-power', 'problem-hinge-break', 'problem-overheating'],
-      contentImages: [{ src: IMAGES.laptopHardware.hpLaptopMotherboardThermalPasteCleanup.src, alt: IMAGES.laptopHardware.hpLaptopMotherboardThermalPasteCleanup.alt, width: IMAGES.laptopHardware.hpLaptopMotherboardThermalPasteCleanup.width, height: IMAGES.laptopHardware.hpLaptopMotherboardThermalPasteCleanup.height, caption: 'HP laptop motherboard and cooling hardware inspected during repair.' }],
+      contentImages: [
+        { src: IMAGES.laptopHardware.hpLaptopMotherboardRepairOpen.src, alt: IMAGES.laptopHardware.hpLaptopMotherboardRepairOpen.alt, width: IMAGES.laptopHardware.hpLaptopMotherboardRepairOpen.width, height: IMAGES.laptopHardware.hpLaptopMotherboardRepairOpen.height, caption: 'HP laptop opened for motherboard and internal hardware diagnosis.' },
+        { src: IMAGES.laptopHardware.hpLaptopMotherboardThermalPasteCleanup.src, alt: IMAGES.laptopHardware.hpLaptopMotherboardThermalPasteCleanup.alt, width: IMAGES.laptopHardware.hpLaptopMotherboardThermalPasteCleanup.width, height: IMAGES.laptopHardware.hpLaptopMotherboardThermalPasteCleanup.height, caption: 'HP cooling and thermal hardware inspected as part of repair.' }
+      ],
       pricing: { startingFrom: 15, currency: 'KWD', quoteRequired: true, displayLabel: 'From 15 KWD — free diagnostic first' },
       seo: { title: 'HP Laptop Repair Kuwait | Free Pickup, No Fix No Fee', description: 'HP EliteBook, Pavilion, ProBook & OMEN repair in Kuwait. Free pickup & drop-off, No Fix No Fee, 30-day warranty. Certified HP technicians in Hawalli.', canonicalUrl: 'https://www.computerrepairkuwait.com/hp-laptop-repair-kuwait', ogType: 'article', schemaTypes: ['Service'] },
       navigationPriority: 80, popular: true 
@@ -2932,7 +2938,10 @@ export const rawGraphData: RawGraphData = {
       ],
       relatedServiceIds: ['srv-laptop', 'srv-gaming', 'srv-gaming-laptop-cleaning', 'srv-motherboard', 'srv-screen'],
       relatedProblemIds: ['problem-overheating', 'problem-no-power', 'problem-wifi-fail', 'problem-black-screen'],
-      contentImages: [{ src: IMAGES.motherboard.asusMotherboardChipsetHeatsinkRepair.src, alt: IMAGES.motherboard.asusMotherboardChipsetHeatsinkRepair.alt, width: IMAGES.motherboard.asusMotherboardChipsetHeatsinkRepair.width, height: IMAGES.motherboard.asusMotherboardChipsetHeatsinkRepair.height, caption: 'ASUS motherboard and heatsink area during component-level diagnosis and repair.' }],
+      contentImages: [
+        { src: IMAGES.laptopHardware.laptopDisassemblyInternalRepair.src, alt: 'ASUS laptop opened for internal repair and diagnosis', width: IMAGES.laptopHardware.laptopDisassemblyInternalRepair.width, height: IMAGES.laptopHardware.laptopDisassemblyInternalRepair.height, caption: 'ASUS laptop opened for internal hardware diagnosis and repair.' },
+        { src: IMAGES.motherboard.asusMotherboardChipsetHeatsinkRepair.src, alt: IMAGES.motherboard.asusMotherboardChipsetHeatsinkRepair.alt, width: IMAGES.motherboard.asusMotherboardChipsetHeatsinkRepair.width, height: IMAGES.motherboard.asusMotherboardChipsetHeatsinkRepair.height, caption: 'ASUS motherboard and heatsink area during component-level diagnosis and repair.' }
+      ],
       pricing: { startingFrom: 15, currency: 'KWD', quoteRequired: true, displayLabel: 'From 15 KWD — free diagnostic first' },
       seo: { title: 'ASUS Laptop Repair Kuwait | ROG & TUF Specialists | KCROC', description: 'Independent ASUS ROG and TUF laptop repair in Kuwait. Liquid-metal thermal service, motherboard, charging and screen repair with free pick-up and drop-off.', canonicalUrl: 'https://www.computerrepairkuwait.com/asus-laptop-repair-kuwait', ogType: 'article', schemaTypes: ['Service'] },
       navigationPriority: 60, popular: false
@@ -3185,7 +3194,7 @@ export const rawGraphData: RawGraphData = {
         { question: 'How long does black-screen diagnosis and repair typically take?', answer: 'Simple cases like RAM reseating or a backlight fuse replacement can often be completed the same day. Panel replacements or firmware recovery cases may take 1-2 days depending on parts availability.' }
       ],
       contentImages: [
-        { src: IMAGES.laptopHardware.monitorBlueScreenErrorDiagnostic.src, alt: IMAGES.laptopHardware.monitorBlueScreenErrorDiagnostic.alt, width: IMAGES.laptopHardware.monitorBlueScreenErrorDiagnostic.width, height: IMAGES.laptopHardware.monitorBlueScreenErrorDiagnostic.height, placement: 'causes', caption: 'Testing display output on an external monitor to isolate whether the fault is the panel or the board.' },
+        { src: IMAGES.laptopHardware.dellLaptopScreenRepairCompleted.src, alt: IMAGES.laptopHardware.dellLaptopScreenRepairCompleted.alt, width: IMAGES.laptopHardware.dellLaptopScreenRepairCompleted.width, height: IMAGES.laptopHardware.dellLaptopScreenRepairCompleted.height, placement: 'causes', caption: 'Laptop display hardware during screen-failure diagnosis and repair.' },
         { src: IMAGES.laptopHardware.laptopBiosDiagnosticScreenRepair.src, alt: IMAGES.laptopHardware.laptopBiosDiagnosticScreenRepair.alt, width: IMAGES.laptopHardware.laptopBiosDiagnosticScreenRepair.width, height: IMAGES.laptopHardware.laptopBiosDiagnosticScreenRepair.height, placement: 'solution', caption: 'Running BIOS-level diagnostics to locate the blown fuse or corrupted firmware causing the black screen.' },
       ],
       seo: { title: 'Laptop Turns On But Screen is Black — Fix in Kuwait | KCROC', description: 'Laptop has power but a black screen? We diagnose backlight fuses, RAM failures, and dead displays. Free pick & drop in Kuwait.', canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-black-screen-kuwait', ogType: 'article', schemaTypes: ['TechArticle', 'FAQPage'], lastModified: '2026-09-10T00:00:00+03:00' },
@@ -3430,7 +3439,7 @@ export const rawGraphData: RawGraphData = {
       urgency: 'medium',
       relatedServiceIds: ['srv-laptop', 'srv-gaming'],
       contentImages: [
-        { src: IMAGES.laptopHardware.dellChassis.src, alt: IMAGES.laptopHardware.dellChassis.alt, width: IMAGES.laptopHardware.dellChassis.width, height: IMAGES.laptopHardware.dellChassis.height, placement: 'causes', caption: 'Inspecting a customer laptop before starting an out-of-OS malware scan.' },
+        { src: IMAGES.laptopHardware.fujitsuLaptopWindowsErrorScreenRepair.src, alt: IMAGES.laptopHardware.fujitsuLaptopWindowsErrorScreenRepair.alt, width: IMAGES.laptopHardware.fujitsuLaptopWindowsErrorScreenRepair.width, height: IMAGES.laptopHardware.fujitsuLaptopWindowsErrorScreenRepair.height, placement: 'causes', caption: 'Windows software-repair diagnostics before malware cleanup or system recovery.' },
         { src: IMAGES.services.windowsInstall.src, alt: IMAGES.services.windowsInstall.alt, width: IMAGES.services.windowsInstall.width, height: IMAGES.services.windowsInstall.height, placement: 'solution', caption: 'A clean Windows installation guarantees a severe or ransomware infection cannot survive, once your files are safely backed up.' },
       ],
       seo: { title: 'Virus & Malware Removal Kuwait — Same-Day Service | KCROC', description: 'Pop-ups, hijacked browser, or ransomware on your laptop? Professional virus and malware removal, with safe file backup first. Free pick & drop in Kuwait.', canonicalUrl: 'https://www.computerrepairkuwait.com/virus-malware-removal-kuwait', ogType: 'article', schemaTypes: ['Article', 'FAQPage'] },
