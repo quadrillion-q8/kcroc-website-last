@@ -366,6 +366,14 @@ export const ProblemSchema = RoutableEntitySchema.extend({
   safetyNotes: z.array(z.string()).optional(),
   kuwaitContext: z.array(z.string()).optional(),
   coveredBrands: z.array(z.string()).optional(),
+  // Explicit brand/resource relationships let problem pages participate in the
+  // same topical graph as service and brand hubs instead of leaving covered
+  // brands as plain text only.
+  relatedBrandIds: z.array(z.string()).default([]),
+  relatedResourcePaths: z.array(z.object({
+    label: z.string(),
+    path: z.string(),
+  })).default([]),
   faqs: z.array(z.object({
     question: z.string(),
     answer: z.string(),
