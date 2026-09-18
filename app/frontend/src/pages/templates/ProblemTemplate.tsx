@@ -266,6 +266,26 @@ const ProblemTemplate: React.FC = () => {
             </section>
           )}
 
+          {problem.relatedResourcePaths && problem.relatedResourcePaths.length > 0 && (
+            <section aria-labelledby="related-resources">
+              <div className="mb-5">
+                <p className="text-sm font-bold uppercase tracking-[0.18em] text-cyan-400">Continue the diagnosis</p>
+                <h2 id="related-resources" className="mt-2 text-2xl font-black text-white">Related guides and repair resources</h2>
+                <p className="mt-2 text-slate-400">Use the most specific guide or service page for the symptom you are actually seeing.</p>
+              </div>
+              <div className="grid gap-4 md:grid-cols-2">
+                {problem.relatedResourcePaths.map((resource) => (
+                  <Link key={resource.path} to={resource.path} className="group rounded-2xl border border-slate-800 bg-slate-900/50 p-5 hover:border-cyan-500/40 transition-colors">
+                    <span className="flex items-center justify-between gap-4">
+                      <span className="font-bold text-white group-hover:text-cyan-300 transition-colors">{resource.label}</span>
+                      <ArrowRight className="h-5 w-5 flex-shrink-0 text-cyan-400" />
+                    </span>
+                  </Link>
+                ))}
+              </div>
+            </section>
+          )}
+
           {relatedCaseStudies.length > 0 && (
             <section aria-labelledby="real-repairs">
               <div className="mb-6">
