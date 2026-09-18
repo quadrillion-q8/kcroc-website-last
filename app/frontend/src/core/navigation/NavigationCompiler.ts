@@ -196,71 +196,126 @@ export class NavigationCompiler {
 
   // 6. Blog Mega Menu
   private static compileBlogMegaMenu(): MegaMenuConfig {
+    const toContentNavEntity = (entry: (typeof NAV_GRAPH.blogEntries)[number]): NavEntity => ({
+      id: entry.id,
+      slug: entry.slug,
+      entityType: 'Page' as any,
+      primaryKeyword: entry.primaryKeyword,
+      title: entry.title,
+      description: entry.description,
+      iconKey: entry.iconKey || 'laptop',
+      weight: 0,
+      commercialIntent: 'informational',
+    });
+
+    const bySlug = new Map(NAV_GRAPH.blogEntries.map((entry) => [entry.slug, toContentNavEntity(entry)]));
+    const featuredPaths = [
+      'blog/laptop-buying-guide-kuwait-2026',
+      'blog/intel-core-ultra-vs-amd-ryzen-ai',
+      'blog/laptop-temperatures-kuwait-safe-cpu-gpu-temperatures',
+      'blog/why-8gb-ram-is-no-longer-enough-for-windows-11',
+      'blog/10-reasons-why-people-are-dumping-windows-11',
+      'blog/gaming-pc-mistakes-kuwait',
+    ];
+
+    const featured = featuredPaths
+      .map((path) => bySlug.get(path))
+      .filter((item): item is NavEntity => Boolean(item));
+
+    const featuredIds = new Set(featured.map((item) => item.id));
+    const allOthers = NAV_GRAPH.blogEntries
+      .map(toContentNavEntity)
+      .filter((item) => !featuredIds.has(item.id));
+
+    const blogIndex: NavEntity = {
+      id: 'blog_index',
+      slug: 'blog',
+      title: 'All Posts',
+      description: 'Browse all KCROC repair articles and technical updates',
+      iconKey: 'laptop',
+      entityType: 'Page' as any,
+      primaryKeyword: 'blog',
+      weight: 100,
+      commercialIntent: 'informational',
+    };
+
+    // This custom-rendered page is not a BLOG_POST, so it remains an explicit
+    // graph-owned utility link rather than duplicating its content metadata.
+    const screenProtection: NavEntity = {
+      id: 'page-screen-protection-tips',
+      slug: 'laptop-screen-protection-tips',
+      title: 'Screen Protection Tips',
+      description: 'Practical habits that help prevent laptop display damage',
+      iconKey: 'shield',
+      entityType: 'Page' as any,
+      primaryKeyword: 'laptop screen protection',
+      weight: 0,
+      commercialIntent: 'informational',
+    };
+
     return {
       id: 'blog_mega',
       title: 'Blog & Updates',
-      // 🎨 CONSISTENCY FIX: bumped from 3 to 6 featured cards (2 full rows,
-      // same as Guides) by promoting the next 3 strongest posts out of the
-      // old "More Posts" pill-cluster and into the card grid.
-      featured: [
-        { id: 'b6', slug: 'blog/laptop-buying-guide-kuwait-2026', title: 'Laptop Buying Guide 2026', description: 'Which specs actually matter in 2026', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'buying guide', weight: 0, commercialIntent: 'info' },
-        { id: 'b7', slug: 'blog/intel-core-ultra-vs-amd-ryzen-ai', title: 'Intel vs AMD CPUs', description: 'Core Ultra vs Ryzen AI compared', iconKey: 'cpu', entityType: 'Page' as any, primaryKeyword: 'cpu', weight: 0, commercialIntent: 'info' },
-        { id: 'b12', slug: 'blog/laptop-temperatures-kuwait-safe-cpu-gpu-temperatures', title: 'Laptop Temperatures in Kuwait', description: 'CPU & GPU temperature guide', iconKey: 'cpu', entityType: 'Page' as any, primaryKeyword: 'laptop temperature', weight: 0, commercialIntent: 'info' },
-        { id: 'b9', slug: 'blog/why-8gb-ram-is-no-longer-enough-for-windows-11', title: '8GB RAM & Windows 11', description: 'Why 8GB is now the bottleneck', iconKey: 'cpu', entityType: 'Page' as any, primaryKeyword: 'ram', weight: 0, commercialIntent: 'info' },
-        { id: 'b10', slug: 'blog/10-reasons-why-people-are-dumping-windows-11', title: '10 Reasons People Are Dumping Windows 11', description: 'A close look at the Windows 11 backlash', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'windows 11', weight: 0, commercialIntent: 'info' },
-        { id: 'b11', slug: 'blog/gaming-pc-mistakes-kuwait', title: 'Gaming PC Mistakes', description: 'Common build & cooling mistakes to avoid', iconKey: 'gaming', entityType: 'Page' as any, primaryKeyword: 'gaming pc mistakes', weight: 0, commercialIntent: 'info' },
-      ],
+      featured,
       sections: [{
         title: 'More',
-        items: [
-          { id: 'b1', slug: 'blog', title: 'All Posts', description: '', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'blog', weight: 0, commercialIntent: 'info' },
-          { id: 'b8', slug: 'blog/ar/laptop-buying-guide-kuwait-2026', title: 'دليل شراء اللابتوب 2026', description: '', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'buying guide ar', weight: 0, commercialIntent: 'info' },
-          { id: 'b2', slug: 'blog/laptop-repair-kuwait-2026', title: 'Repair Guide 2026', description: '', iconKey: 'wrench', entityType: 'Page' as any, primaryKeyword: 'guide', weight: 0, commercialIntent: 'info' },
-          { id: 'b3', slug: 'laptop-screen-protection-tips', title: 'Screen Protection Tips', description: '', iconKey: 'shield', entityType: 'Page' as any, primaryKeyword: 'tips', weight: 0, commercialIntent: 'info' },
-          { id: 'b4', slug: 'blog/how-to-protect-laptop-screen', title: 'Protect Laptop Screen', description: '', iconKey: 'monitor', entityType: 'Page' as any, primaryKeyword: 'protect', weight: 0, commercialIntent: 'info' },
-          { id: 'b5', slug: 'blog/gaming-pc-cooling', title: 'Gaming PC Cooling', description: '', iconKey: 'gaming', entityType: 'Page' as any, primaryKeyword: 'cooling', weight: 0, commercialIntent: 'info' },
-          { id: 'b13', slug: 'blog/how-often-clean-laptop-replace-thermal-paste-kuwait', title: 'How Often to Clean a Gaming Laptop & Replace Thermal Paste', description: 'Cleaning intervals and thermal-paste guidance for Kuwait heat and dust', iconKey: 'cpu', entityType: 'Page' as any, primaryKeyword: 'gaming laptop cleaning thermal paste', weight: 0, commercialIntent: 'info' },
-          // 🩹 FIX: previously this Arabic post only appeared via the
-          // BLOG_ARABIC_VARIANTS swap below, which only activates once the
-          // visitor is already on an /ar/ route — so there was no way to
-          // discover it from the normal English site. Added as a permanent
-          // entry, matching the b8 (buying guide) Arabic pattern.
-          { id: 'b14', slug: 'blog/ar/how-often-clean-laptop-replace-thermal-paste-kuwait', title: 'كل كم لازم تنظف لابتوب القيمنق وتغيّر المعجون الحراري في الكويت؟', description: 'دليل عملي باللهجة الكويتية عن تنظيف لابتوب القيمنق وتغيير المعجون الحراري وتأثير حرارة وغبار الكويت على التبريد.', iconKey: 'cpu', entityType: 'Page' as any, primaryKeyword: 'تنظيف لابتوب القيمنق والمعجون الحراري', weight: 0, commercialIntent: 'info' },
-        ]
-      }]
+        items: [blogIndex, screenProtection, ...allOthers],
+      }],
     };
   }
 
   // 7. Guides Mega Menu
   private static compileGuidesMegaMenu(): MegaMenuConfig {
+    const toContentNavEntity = (entry: (typeof NAV_GRAPH.guideEntries)[number]): NavEntity => ({
+      id: entry.id,
+      slug: entry.slug,
+      entityType: 'Page' as any,
+      primaryKeyword: entry.primaryKeyword,
+      title: entry.title,
+      description: entry.description,
+      iconKey: entry.iconKey || 'laptop',
+      weight: 0,
+      commercialIntent: 'informational',
+    });
+
+    const bySlug = new Map(NAV_GRAPH.guideEntries.map((entry) => [entry.slug, toContentNavEntity(entry)]));
+    const featuredPaths = [
+      'guides/laptop-wont-turn-on',
+      'guides/dell-laptop-overheating',
+      'guides/laptop-battery-warning-signs',
+      'guides/bios-uefi-recovery-kuwait',
+      'guides/gamebar-presence-writer-fix',
+      'guides/windows-10-end-of-support',
+      'guides/windows-11-background-services-audit',
+      'guides/windows-11-settings-tweaks',
+    ];
+
+    const featured = featuredPaths
+      .map((path) => bySlug.get(path))
+      .filter((item): item is NavEntity => Boolean(item));
+
+    const featuredIds = new Set(featured.map((item) => item.id));
+    const additional = NAV_GRAPH.guideEntries
+      .map(toContentNavEntity)
+      .filter((item) => !featuredIds.has(item.id));
+
+    const guidesIndex: NavEntity = {
+      id: 'guides_index',
+      slug: 'guides',
+      title: 'All Guides',
+      description: 'Browse every KCROC troubleshooting and repair guide',
+      iconKey: 'laptop',
+      entityType: 'Page' as any,
+      primaryKeyword: 'guides',
+      weight: 100,
+      commercialIntent: 'informational',
+    };
+
     return {
       id: 'guides_mega',
       title: 'DIY & Repair Guides',
-      featured: [
-        { id: 'g6', slug: 'guides/laptop-wont-turn-on', title: "Laptop Won't Turn On?", description: 'No-power troubleshooting guide', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: "laptop won't turn on", weight: 0, commercialIntent: 'info' },
-        // 🩹 FIX (audit): was pointing at 'guides/dell-inspiron-15-3000-overheating',
-        // which App.tsx routes as a client-side-only <Navigate> stub with no
-        // rendered content of its own (empty title/meta/canonical/H1 in the
-        // prerendered HTML). Every click from this mega-menu item landed on
-        // that empty page and then bounced again client-side. Repointed
-        // straight at the real, rendered guide page.
-        { id: 'g1', slug: 'guides/dell-laptop-overheating', title: 'Dell Inspiron Overheating', description: 'Thermal troubleshooting guide', iconKey: 'cpu', entityType: 'Page' as any, primaryKeyword: 'overheating', weight: 0, commercialIntent: 'info' },
-        { id: 'g2', slug: 'guides/laptop-battery-warning-signs', title: 'Battery Warning Signs', description: 'Lithium-ion failure checklist', iconKey: 'battery', entityType: 'Page' as any, primaryKeyword: 'battery', weight: 0, commercialIntent: 'info' },
-        { id: 'g3', slug: 'guides/bios-uefi-recovery-kuwait', title: 'BIOS & UEFI Recovery', description: 'Firmware update failures & recovery', iconKey: 'cpu', entityType: 'Page' as any, primaryKeyword: 'bios', weight: 0, commercialIntent: 'info' },
-        { id: 'g4', slug: 'guides/gamebar-presence-writer-fix', title: 'GameBarPresenceWriter.exe Fix', description: 'Diagnose gaming stutter the right way', iconKey: 'gaming', entityType: 'Page' as any, primaryKeyword: 'gamebar', weight: 0, commercialIntent: 'info' },
-        { id: 'g8', slug: 'guides/windows-10-end-of-support', title: 'Windows 10 End of Support', description: 'ESU, Windows 11, repair or replace', iconKey: 'shield', entityType: 'Page' as any, primaryKeyword: 'windows 10 end of support', weight: 0, commercialIntent: 'info' },
-        { id: 'g5', slug: 'guides/windows-11-background-services-audit', title: 'Windows 11 Services Audit', description: 'Audit background services safely', iconKey: 'shield', entityType: 'Page' as any, primaryKeyword: 'windows 11 services', weight: 0, commercialIntent: 'info' },
-        { id: 'g7', slug: 'guides/windows-11-settings-tweaks', title: 'Windows 11 Settings Tweaks', description: 'Privacy, speed & better control', iconKey: 'shield', entityType: 'Page' as any, primaryKeyword: 'windows 11 tweaks', weight: 0, commercialIntent: 'info' },
-      ],
-      // 🩹 FIX: paired with a new "/guides" index page + route (see App.tsx /
-      // pages/GuidesIndex.tsx). This menu had an empty `sections` array with
-      // no way to reach an index, and "/guides" itself 404'd.
-      sections: [{
-        title: 'More',
-        items: [
-          { id: 'g_index', slug: 'guides', title: 'All Guides', description: '', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'guides', weight: 0, commercialIntent: 'info' },
-        ]
-      }]
+      featured,
+      sections: [{ title: 'More', items: [guidesIndex, ...additional] }],
     };
   }
 
@@ -353,10 +408,8 @@ export const COMPILED_NAVIGATION: CompiledNavigationModel = NavigationCompiler.c
  * Keeping this transformation here means Header.tsx does not own blog/menu
  * content, while COMPILED_NAVIGATION can remain a build-time, immutable model.
  */
-// 🩹 FIX: b13's Arabic counterpart (b14) is now a permanent, always-visible
-// menu entry (see compileBlogMegaMenu above) instead of a route-conditional
-// swap, so this map is intentionally empty — keeping getLocalizedNavigation
-// in place in case a future post needs a true swap-on-route-match variant.
+// Arabic content is represented as explicit entries in the generated menu.
+// This map is reserved for future presentation-only locale swaps.
 const BLOG_ARABIC_VARIANTS: Record<string, Pick<NavEntity, 'slug' | 'title' | 'description' | 'primaryKeyword'>> = {};
 
 export function getLocalizedNavigation(pathname: string): CompiledNavigationModel {
