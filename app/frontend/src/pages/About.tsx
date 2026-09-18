@@ -112,7 +112,7 @@ export default function About() {
             
             {/* Abstract Tech Hero Visual */}
             <div className="relative h-64 sm:h-96 rounded-3xl overflow-hidden border border-slate-800 bg-slate-900/50 hidden lg:block">
-              <div className="absolute inset-0 opacity-20 bg-[url('https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1781139061/2026-01-22_9_qfanpt.jpg')] bg-cover bg-center mix-blend-luminosity" />
+              <div className="absolute inset-0 opacity-20 bg-[url('/images/computer-repair-shop-hawalli-kuwait.webp')] bg-cover bg-center mix-blend-luminosity" />
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="w-32 h-32 border border-cyan-500/30 rounded-full flex items-center justify-center animate-[spin_10s_linear_infinite]">
                   <div className="w-24 h-24 border border-cyan-500/50 rounded-full flex items-center justify-center animate-[spin_5s_linear_infinite_reverse]">
