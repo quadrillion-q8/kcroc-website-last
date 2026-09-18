@@ -255,10 +255,10 @@ export default function Hero() {
                       1x1 placeholder instead. */}
                   <picture>
                     <source media="(max-width: 1023px)" srcSet="/images/home/blank.webp" />
-                    <source media="(max-width: 1280px)" srcSet="/images/home/kcroc-component-level-motherboard-repair-lab-900.webp" />
+                    <source media="(max-width: 1280px)" srcSet="/images/kcroc-laptop-repair-technicians-hawalli-kuwait.webp" />
                     <img 
-                      src="/images/home/kcroc-component-level-motherboard-repair-lab.webp" 
-                      alt="KCROC Component-Level Repair Lab in Hawalli Kuwait"
+                      src="/images/kcroc-laptop-repair-technicians-hawalli-kuwait.webp" 
+                      alt="KCROC technicians working in the Hawalli computer repair workshop"
                       width="1600"
                       height="873"
                       fetchPriority="high"
