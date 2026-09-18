@@ -26,9 +26,9 @@ export const Process = () => {
         <div className="mb-14 rounded-3xl overflow-hidden border border-slate-800 bg-slate-900/60 backdrop-blur-md shadow-2xl relative group">
           <div className="aspect-[21/9] sm:aspect-[2.4/1] relative overflow-hidden">
             <picture>
-              <source media="(max-width: 640px)" srcSet="/images/home/computer-repair-diagnostic-process-640.webp" />
+              <source media="(max-width: 640px)" srcSet="/images/kcroc-lead-technician-laptop-repair-workbench.webp" />
               <img
-                src="/images/home/computer-repair-diagnostic-process-960.webp"
+                src="/images/kcroc-lead-technician-laptop-repair-workbench.webp"
                 alt="KCROC Computer Repair and Precision Diagnostic Process in Kuwait"
                 width="960"
                 height="524"
