@@ -79,9 +79,9 @@ export const LeadMagnet = () => {
               ~380x163 mobile slot. Responsive <picture> now serves a
               pre-sized variant instead. */}
           <picture>
-            <source media="(max-width: 640px)" srcSet="/images/home/laptop-repair-success-restoration-640.webp" />
+            <source media="(max-width: 640px)" srcSet="/images/laptop-repair-shop-workbench-laptops.webp" />
             <img 
-              src="/images/home/laptop-repair-success-restoration-960.webp" 
+              src="/images/laptop-repair-shop-workbench-laptops.webp" 
               alt="Successful Laptop Hardware Restoration at KCROC" 
               width="960"
               height="524"
