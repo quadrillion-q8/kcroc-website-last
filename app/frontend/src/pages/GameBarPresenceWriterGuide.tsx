@@ -18,6 +18,8 @@ import SchemaMarkup from '../components/seo/SchemaMarkup';
 const business = KCROC_GRAPH.business!;
 const WA_LINK = `https://wa.me/${business.telephone}?text=${encodeURIComponent('I need gaming PC performance diagnostics in Kuwait')}`;
 const PAGE_URL = `${business.websiteUrl}/guides/gamebar-presence-writer-fix`;
+const GUIDE_IMAGE_URL = '/images/blog/windows-11-laptop-multitasking.webp';
+const GUIDE_IMAGE_ALT = 'Windows 11 laptop multitasking and performance troubleshooting';
 
 const registryPath = 'HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\WindowsRuntime\\ActivatableClassId\\Windows.Gaming.GameBar.PresenceServer.Internal.PresenceWriter';
 
@@ -116,7 +118,7 @@ const STRUCTURED_DATA = {
       "about": { "@id": `${business.websiteUrl}/#business` },
       "author": { "@id": AUTHOR_ID },
       "publisher": { "@id": `${business.websiteUrl}/#business` },
-      "image": IMAGES.gaming.rgbLighting.src,
+      "image": GUIDE_IMAGE_URL,
       "articleSection": "Guides",
       "dateModified": "2026-09-09"
     },
@@ -256,7 +258,7 @@ export default function GameBarPresenceWriterGuide() {
       <section className="border-b border-slate-800/80 px-4 py-8 sm:px-6 sm:py-10">
         <div className="container mx-auto max-w-5xl">
           <figure className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900">
-            <img src={IMAGES.gaming.rgbLighting.src} alt={IMAGES.gaming.rgbLighting.alt} width={IMAGES.gaming.rgbLighting.width} height={IMAGES.gaming.rgbLighting.height} loading="eager" decoding="async" className="h-auto max-h-[420px] w-full object-cover" />
+            <img src={GUIDE_IMAGE_URL} alt={GUIDE_IMAGE_ALT} width={1376} height={768} loading="eager" decoding="async" className="h-auto max-h-[420px] w-full object-cover" />
             <figcaption className="border-t border-slate-800/60 bg-brand-dark/80 p-3 text-xs text-slate-400">A high-performance gaming system still needs clean software scheduling, stable drivers, and adequate thermal headroom.</figcaption>
           </figure>
         </div>
