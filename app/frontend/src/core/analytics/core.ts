@@ -1,5 +1,6 @@
 // File: app/frontend/src/core/analytics/core.ts
 import { AnalyticsEvent, BaseEventPayload, DeviceType, SystemMetadata, BookingEvent } from './types';
+import { hasAnalyticsConsent } from '../privacy/consent';
 
 declare global {
   interface Window {
@@ -31,7 +32,10 @@ export const getSystemMetadata = (): SystemMetadata => {
 };
 
 export const trackEvent = (event: AnalyticsEvent | BookingEvent, payload: BaseEventPayload = {}): void => {
-  // TODO: Future integration point for Consent Management (e.g., if (!hasConsent) return;)
+  // Optional analytics must never dispatch until the visitor has granted
+  // optional tracking consent. This guard is intentionally inside the core
+  // dispatcher so individual buttons/components cannot bypass it.
+  if (!hasAnalyticsConsent()) return;
 
   try {
     const fullyCompiledPayload = {
