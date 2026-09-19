@@ -109,7 +109,7 @@ const challenges = [
     color: 'text-amber-500',
     bgColor: 'bg-amber-500/10',
     borderColor: 'border-amber-500/30',
-    image: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1781139061/2026-01-22_9_qfanpt.jpg'
+    image: '/images/laptop-screen-protection-kuwait.webp'
   },
   {
     title: 'Extreme Vehicular Heat',
@@ -118,7 +118,7 @@ const challenges = [
     color: 'text-orange-500',
     bgColor: 'bg-orange-500/10',
     borderColor: 'border-orange-500/30',
-    image: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1769908596/CPU_cooling_fan_replacement_and_maintenance_-_Salmiya_client_mflsla.png'
+    image: '/images/laptop-screen-protection-kuwait.webp'
   },
   {
     title: 'Condensation Damage',
@@ -127,7 +127,7 @@ const challenges = [
     color: 'text-blue-500',
     bgColor: 'bg-blue-500/10',
     borderColor: 'border-blue-500/30',
-    image: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1769908596/Whats-App-Image-2026-01-29-at-3-19-40-AM_i2mpms.jpg'
+    image: '/images/laptop-screen-protection-kuwait.webp'
   }
 ];
 
@@ -176,7 +176,7 @@ const repairCatalog = [
     price: 'From 45 KD',
     duration: 'Same Day',
     icon: Zap,
-    image: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1781139061/2026-01-22_9_qfanpt.jpg',
+    image: '/images/laptop-screen-protection-kuwait.webp',
     benefits: [
       'Perfect color accuracy validation',
       'Deep contrast matching protocols',
@@ -190,7 +190,7 @@ const repairCatalog = [
     price: 'Model Dependent',
     duration: '1-2 Hours',
     icon: Laptop,
-    image: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1769908595/Dell_laptop_screen_protection_installation_-_Kuwait_City_service_ghokkb.jpg',
+    image: '/images/laptop-screen-protection-kuwait.webp',
     benefits: [
       'Preserves original design tolerances',
       'ALS sensor hardware matching',
