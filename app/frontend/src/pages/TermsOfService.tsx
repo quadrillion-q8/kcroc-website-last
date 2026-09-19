@@ -15,7 +15,7 @@ const PHONE_DISPLAY = `+965 ${business.telephone.slice(3, 7)} ${business.telepho
 const PHONE_CLEAN = business.telephone;
 const EMAIL = business.email;
 const LEGAL_NAME = `${business.legalName} (${business.alternateName})`;
-const LAST_UPDATED = 'August 4, 2026';
+const LAST_UPDATED = 'September 19, 2026';
 
 const SECTIONS = [
   {
