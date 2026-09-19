@@ -15,7 +15,8 @@ export type AnalyticsEvent =
   | 'book_pickup_click'
   | 'contact_submit'
   | 'internal_search'
-  | 'cta_click';
+  | 'cta_click'
+  | 'generate_lead';
 
 export type BookingEvent = 'begin_booking' | 'booking_complete' | 'booking_cancelled';
 
