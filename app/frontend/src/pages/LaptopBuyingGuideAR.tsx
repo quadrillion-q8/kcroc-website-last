@@ -23,7 +23,7 @@ const business = KCROC_GRAPH.business!;
 ───────────────────────────────────────────────────────────────────────────── */
 const PAGE_URL = `${business.websiteUrl}/blog/ar/laptop-buying-guide-kuwait-2026`;
 const EN_PAGE_URL = `${business.websiteUrl}/blog/laptop-buying-guide-kuwait-2026`;
-const HERO_IMAGE_URL = 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_1200/v1781139061/2026-01-22_9_qfanpt.jpg';
+const HERO_IMAGE_URL = `${business.websiteUrl}/images/blog/laptop-buying-guide-kuwait-arabic-2026.webp`;
 const PUBLISHED_DATE = '2026-08-07T09:00:00+03:00';
 
 const WA_LINK = `https://wa.me/${business.telephone}?text=${encodeURIComponent(
