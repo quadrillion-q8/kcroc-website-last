@@ -399,7 +399,7 @@ export default function GamingPCCooling() {
               </CardHeader>
               <CardContent className="p-4 sm:p-6 pt-0">
                 <img 
-                  src="https://mgx-backend-cdn.metadl.com/generate/images/681399/2026-02-01/d1e21d3e-0010-4d04-b480-ce46e0782b3c.png"
+                  src="/images/blog/laptop-temperatures-kuwait-cpu-gpu-cooling.webp"
                   alt="Temperature zones diagram"
                   className="w-full h-auto object-contain rounded-lg"
                   loading="lazy"
