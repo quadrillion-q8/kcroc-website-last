@@ -1332,20 +1332,28 @@ export const rawGraphData: RawGraphData = {
       warranty: { duration: '30 Days', coverage: 'All parts and labor.', noFixNoFee: true }, 
       contentImages: [
         {
+          src: IMAGES.services.laptopRepair.src,
+          alt: IMAGES.services.laptopRepair.alt,
+          width: IMAGES.services.laptopRepair.width,
+          height: IMAGES.services.laptopRepair.height,
+          placement: 'commonIssues',
+          caption: 'A representative laptop repair setup for diagnosing hardware, display, power, cooling and Windows faults.'
+        },
+        {
           src: IMAGES.laptopHardware.dellRepair.src,
           alt: IMAGES.laptopHardware.dellRepair.alt,
           width: IMAGES.laptopHardware.dellRepair.width,
           height: IMAGES.laptopHardware.dellRepair.height,
-          placement: 'commonIssues',
+          placement: 'coreFeatures',
           caption: 'A Dell laptop chassis opened for hardware repair — a typical starting point for hinge, DC jack, and motherboard faults.'
         },
         {
-          src: IMAGES.laptopHardware.brokenHinge.src,
-          alt: IMAGES.laptopHardware.brokenHinge.alt,
-          width: IMAGES.laptopHardware.brokenHinge.width,
-          height: IMAGES.laptopHardware.brokenHinge.height,
+          src: IMAGES.laptopHardware.hpLaptopMotherboardRepairOpen.src,
+          alt: IMAGES.laptopHardware.hpLaptopMotherboardRepairOpen.alt,
+          width: IMAGES.laptopHardware.hpLaptopMotherboardRepairOpen.width,
+          height: IMAGES.laptopHardware.hpLaptopMotherboardRepairOpen.height,
           placement: 'coreFeatures',
-          caption: 'Cracked hinge chassis damage — one of the most common structural repairs we handle on Windows laptops.'
+          caption: 'HP laptop opened for motherboard and internal hardware diagnosis.'
         },
         {
           src: IMAGES.laptopHardware.laptopOpenRepairBench.src,
@@ -1353,7 +1361,15 @@ export const rawGraphData: RawGraphData = {
           width: IMAGES.laptopHardware.laptopOpenRepairBench.width,
           height: IMAGES.laptopHardware.laptopOpenRepairBench.height,
           placement: 'process',
-          caption: 'A laptop fully opened on the repair bench during diagnostic and reassembly work.'
+          caption: 'Laptop opened on the repair bench during diagnostic and reassembly work.'
+        },
+        {
+          src: '/images/lenovo-laptop-battery-fan-heatsink-open.webp',
+          alt: 'Lenovo laptop opened for battery, fan and heatsink inspection',
+          width: 1000,
+          height: 1000,
+          placement: 'process',
+          caption: 'Lenovo internal hardware inspection covering battery, cooling and motherboard access.'
         }
       ],
       seo: { 
@@ -3325,7 +3341,8 @@ export const rawGraphData: RawGraphData = {
       ],
       contentImages: [
         { src: IMAGES.laptopHardware.chargerInventory.src, alt: IMAGES.laptopHardware.chargerInventory.alt, width: IMAGES.laptopHardware.chargerInventory.width, height: IMAGES.laptopHardware.chargerInventory.height, placement: 'causes', caption: 'Testing charger output and battery health — a "plugged in, not charging" fault can be either component.' },
-        { src: IMAGES.laptopHardware.dellAdapter.src, alt: IMAGES.laptopHardware.dellAdapter.alt, width: IMAGES.laptopHardware.dellAdapter.width, height: IMAGES.laptopHardware.dellAdapter.height, placement: 'solution', caption: 'Verifying the correct-wattage OEM adapter as part of confirming the actual cause of the charging fault.' },
+        { src: IMAGES.laptopHardware.laptopDcPowerJackConnectorReplacement.src, alt: IMAGES.laptopHardware.laptopDcPowerJackConnectorReplacement.alt, width: IMAGES.laptopHardware.laptopDcPowerJackConnectorReplacement.width, height: IMAGES.laptopHardware.laptopDcPowerJackConnectorReplacement.height, placement: 'solution', caption: 'Inspecting and repairing the DC charging jack when the laptop is plugged in but not charging.' },
+        { src: IMAGES.laptopHardware.dellAdapter.src, alt: IMAGES.laptopHardware.dellAdapter.alt, width: IMAGES.laptopHardware.dellAdapter.width, height: IMAGES.laptopHardware.dellAdapter.height, placement: 'solution', caption: 'Verifying the correct-wattage adapter as part of confirming the actual cause of the charging fault.' },
       ],
       seo: { title: 'Laptop Plugged In But Not Charging — Repair Kuwait | KCROC', description: 'Laptop battery not charging? We diagnose dead batteries, broken charging ports, and failed motherboard power chips. Same-day service available.', canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-plugged-in-not-charging', ogType: 'article', schemaTypes: ['TechArticle', 'FAQPage'], lastModified: '2026-09-10T00:00:00+03:00' },
       navigationPriority: 60, popular: false
