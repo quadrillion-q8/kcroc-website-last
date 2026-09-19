@@ -161,7 +161,7 @@ export default function About() {
           <div className="bg-slate-900/30 backdrop-blur-sm border border-slate-800 rounded-3xl p-2 sm:p-3 shadow-2xl relative group">
             <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl pointer-events-none" aria-hidden="true" />
             <img
-              src="https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto,w_800/v1769908596/Whats-App-Image-2026-01-29-at-3-19-40-AM_i2mpms.jpg"
+              src="/images/kcroc-computer-repair-technician-team.webp"
               alt="KCROC repair workshop – Kuwait Computer Repair On Call, Hawalli"
               loading="lazy"
               className="w-full h-64 sm:h-[400px] object-cover rounded-2xl opacity-90 transition-opacity duration-500 group-hover:opacity-100"
