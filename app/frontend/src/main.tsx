@@ -2,6 +2,12 @@
 import { ViteReactSSG } from 'vite-react-ssg';
 import { routes } from './App.tsx';
 import './index.css';
+import { initializeGoogleConsent } from './core/privacy/consent';
+
+// Consent defaults must be queued before the React app mounts so future
+// Google measurement/advertising tags cannot observe optional signals before
+// the visitor has made a choice.
+initializeGoogleConsent();
 
 // 🩹 FIX: "Failed to fetch dynamically imported module: .../DesktopMegaMenu...js"
 // (and the same error for any other React.lazy()-loaded chunk).
