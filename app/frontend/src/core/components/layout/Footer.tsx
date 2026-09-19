@@ -8,7 +8,7 @@ import { MapPin, Phone, MessageCircle, CalendarClock, ShieldCheck, Clock, Star, 
 // ~190KB knowledge graph. NAV_GRAPH is a generated slim projection of
 // graph.ts (see scripts/generate-nav-data.ts) kept in sync automatically.
 import { NAV_GRAPH } from '../../../data/navGraph.generated';
-import { openConsentPreferences } from '../privacy/consent';
+import { openConsentPreferences } from '../../privacy/consent';
 
 const TRUST_ICON_MAP: Record<string, React.ElementType> = {
   ShieldCheck,
