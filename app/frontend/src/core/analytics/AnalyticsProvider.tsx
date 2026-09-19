@@ -14,6 +14,7 @@ import { useLocation } from 'react-router-dom';
 import { NAV_GRAPH } from '../../data/navGraph.generated';
 import { trackEvent, buildEntityPayload } from './index'; 
 import { AnalyticsEvent, BaseEventPayload, BookingEvent } from './types';
+import { hasAnalyticsConsent, subscribeToConsentChanges } from '../privacy/consent';
 
 // Extend the global Window interface to support Google Tag Manager telemetry layers
 declare global {
@@ -41,30 +42,36 @@ export const AnalyticsProvider: React.FC<{ children: React.ReactNode }> = ({ chi
 
   // 2. Automated Virtual Pageview Telemetry Pipeline
   useEffect(() => {
-    window.dataLayer = window.dataLayer || [];
+    const sendVirtualPageview = () => {
+      if (!hasAnalyticsConsent()) return;
 
-    // Delayed microtask execution window (100ms) as a safety margin before
-    // data payloads hit Googlebot or GA4. (No longer gating on react-helmet-async's
-    // head sync — SEO metadata is now rendered via React 19's native <title>/<meta>/
-    // <link> hoisting, which commits synchronously with render, not via a deferred
-    // client-side DOM patch.)
-    const timeoutId = setTimeout(() => {
+      window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({
         event: 'virtual_pageview',
         page_path: location.pathname + location.search,
-        page_title: document.title
+        page_title: document.title,
       });
-    }, 100);
+    };
 
-    return () => clearTimeout(timeoutId);
+    // Keep the small post-render delay that protects page metadata from being
+    // sampled before React has committed it, but never emit without consent.
+    const timeoutId = setTimeout(sendVirtualPageview, 100);
+    const unsubscribe = subscribeToConsentChanges((state) => {
+      if (state === 'granted') sendVirtualPageview();
+    });
+
+    return () => {
+      clearTimeout(timeoutId);
+      unsubscribe();
+    };
   }, [location]);
 
   // 3. Conversion Tracking Pipeline
   const trackConversion = (event: AnalyticsEvent | BookingEvent, payload: BaseEventPayload) => {
+    if (!hasAnalyticsConsent()) return;
+
     const entityContext = currentEntity ? buildEntityPayload(currentEntity, 'Service') : {};
-    
-    // Concurrently push event actions directly into the window layer 
-    // to allow strict event matching rules inside Tag Manager containers
+
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
       event: event,
@@ -72,7 +79,6 @@ export const AnalyticsProvider: React.FC<{ children: React.ReactNode }> = ({ chi
       ...payload
     });
 
-    // Execute core internal logging actions
     trackEvent(event, { ...entityContext, ...payload });
   };
 
