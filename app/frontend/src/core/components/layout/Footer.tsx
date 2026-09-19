@@ -8,6 +8,7 @@ import { MapPin, Phone, MessageCircle, CalendarClock, ShieldCheck, Clock, Star, 
 // ~190KB knowledge graph. NAV_GRAPH is a generated slim projection of
 // graph.ts (see scripts/generate-nav-data.ts) kept in sync automatically.
 import { NAV_GRAPH } from '../../../data/navGraph.generated';
+import { openConsentPreferences } from '../privacy/consent';
 
 const TRUST_ICON_MAP: Record<string, React.ElementType> = {
   ShieldCheck,
@@ -217,6 +218,7 @@ export function Footer() {
           <div className="flex gap-6">
             <Link to="/privacy-policy" className="text-slate-600 hover:text-slate-400 text-sm transition-colors">Privacy Policy</Link>
             <Link to="/terms-of-service" className="text-slate-600 hover:text-slate-400 text-sm transition-colors">Terms of Service</Link>
+            <button type="button" onClick={openConsentPreferences} className="text-slate-600 hover:text-slate-400 text-sm transition-colors">Privacy Settings</button>
           </div>
         </div>
       </div>
