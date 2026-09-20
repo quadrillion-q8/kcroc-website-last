@@ -239,27 +239,13 @@ export class NavigationCompiler {
       commercialIntent: 'informational',
     };
 
-    // This custom-rendered page is not a BLOG_POST, so it remains an explicit
-    // graph-owned utility link rather than duplicating its content metadata.
-    const screenProtection: NavEntity = {
-      id: 'page-screen-protection-tips',
-      slug: 'laptop-screen-protection-tips',
-      title: 'Screen Protection Tips',
-      description: 'Practical habits that help prevent laptop display damage',
-      iconKey: 'shield',
-      entityType: 'Page' as any,
-      primaryKeyword: 'laptop screen protection',
-      weight: 0,
-      commercialIntent: 'informational',
-    };
-
     return {
       id: 'blog_mega',
       title: 'Blog & Updates',
       featured,
       sections: [{
         title: 'More',
-        items: [blogIndex, screenProtection, ...allOthers],
+        items: [blogIndex, ...allOthers],
       }],
     };
   }
