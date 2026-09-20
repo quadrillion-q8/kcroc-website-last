@@ -25,14 +25,14 @@ export const LeadMagnet = () => {
       <div className="max-w-6xl mx-auto rounded-3xl overflow-hidden border border-slate-800 bg-slate-900/50 shadow-2xl flex flex-col lg:flex-row relative z-10">
         
         {/* Form Section */}
-        <div className="p-8 sm:p-12 lg:w-1/2 flex flex-col justify-center">
+        <div className="p-5 sm:p-12 lg:w-1/2 flex flex-col justify-center">
           <p className="text-xs font-bold text-emerald-400 uppercase tracking-wider mb-3 flex items-center gap-2">
             <MessageCircle className="w-4 h-4" /> Not Sure What's Wrong?
           </p>
-          <h2 className="text-3xl sm:text-4xl font-black text-white mb-4 leading-tight">
+          <h2 className="text-2xl sm:text-4xl font-black text-white mb-4 leading-tight">
             Get an Instant Price Estimate
           </h2>
-          <p className="text-slate-400 text-sm sm:text-base leading-relaxed mb-8">
+          <p className="text-slate-400 text-sm sm:text-base leading-relaxed mb-5 sm:mb-8">
             Tell us your device and symptom — we'll reply on WhatsApp with a
             ballpark price range, no commitment.
           </p>
@@ -74,7 +74,7 @@ export const LeadMagnet = () => {
         </div>
 
         {/* Image Section */}
-        <div className="lg:w-1/2 relative min-h-[300px] lg:min-h-[auto] overflow-hidden group border-t lg:border-t-0 lg:border-l border-slate-800">
+        <div className="lg:w-1/2 relative min-h-[180px] sm:min-h-[260px] lg:min-h-[auto] overflow-hidden group border-t lg:border-t-0 lg:border-l border-slate-800">
           {/* 🚀 PERF FIX: was serving the full 1600x873 (55 KB) source into a
               ~380x163 mobile slot. Responsive <picture> now serves a
               pre-sized variant instead. */}
@@ -94,8 +94,8 @@ export const LeadMagnet = () => {
           <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent lg:hidden"></div>
           
           {/* Status Badge overlay */}
-          <div className="absolute bottom-6 left-6 right-6 flex justify-end">
-            <div className="inline-flex items-center gap-2 text-xs font-bold text-emerald-400 bg-brand-dark/80 backdrop-blur-md px-4 py-2 rounded-xl border border-emerald-500/30 shadow-lg">
+          <div className="absolute bottom-3 left-3 right-3 sm:bottom-6 sm:left-6 sm:right-6 flex justify-end">
+            <div className="inline-flex items-center gap-2 text-xs font-bold text-emerald-400 bg-brand-dark/80 backdrop-blur-md px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl border border-emerald-500/30 shadow-lg">
               <CheckCircle2 className="w-4 h-4 text-emerald-400" />
               <span>Tested &amp; Ready for Delivery</span>
             </div>
