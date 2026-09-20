@@ -9,8 +9,8 @@ import { IMAGES } from '../constants/images';
 
 export const rawGraphData: RawGraphData = {
   metadata: {
-    version: '3.6.3',
-    lastUpdated: '2026-09-17T03:38:00+03:00',
+    version: '3.6.4',
+    lastUpdated: '2026-09-20T04:20:00+03:00',
     environment: 'production'
   },
 
@@ -132,11 +132,11 @@ export const rawGraphData: RawGraphData = {
     // correct <html lang> automatically — see SEOEngine.tsx.
     'page-near-me-ar': {
       id: 'page-near-me-ar', slug: 'ar/near-me', entityType: 'WebPage', isActive: true,
-      title: 'فني كمبيوتر وتصليح لابتوب بالقرب مني في الكويت',
+      title: 'فني كمبيوتر وتصليح لابتوب في الكويت',
       description: 'دليل عربي شامل لخدمات فني الكمبيوتر وتصليح اللابتوب في الكويت، يغطي حولي والنعيمي والمناطق المجاورة، مع استلام وتوصيل مجاني.',
       seo: {
-        title: 'فني كمبيوتر بالقرب مني في الكويت | استلام مجاني | KCROC',
-        description: 'تبحث عن فني كمبيوتر أو تصليح لابتوب قريب منك في الكويت؟ KCROC يوفر استلام وتوصيل مجاني، فحص مجاني، وضمان 30 يومًا من مختبرنا في حولي.',
+        title: 'فني كمبيوتر في الكويت | تصليح لابتوب واستلام مجاني | KCROC',
+        description: 'تبحث عن فني كمبيوتر أو تصليح لابتوب في الكويت؟ KCROC يوفر تشخيصًا أولًا، استلامًا وتوصيلًا مجانيًا، وضمان 30 يومًا من مختبرنا في حولي.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/ar/near-me',
         locale: 'ar_KW',
         alternates: {
@@ -146,7 +146,7 @@ export const rawGraphData: RawGraphData = {
         },
         ogType: 'website',
         schemaTypes: ['WebPage', 'FAQPage', 'BreadcrumbList'],
-        breadcrumbs: [{ name: 'الرئيسية', url: '/' }, { name: 'فني كمبيوتر بالقرب مني', url: '/ar/near-me' }]
+        breadcrumbs: [{ name: 'الرئيسية', url: '/' }, { name: 'فني كمبيوتر في الكويت', url: '/ar/near-me' }]
       },
       featuredFAQIds: [
         'faq-arabic-computer-technician', 'faq-ar-hawalli-technician', 'faq-ar-pricing',
@@ -156,28 +156,13 @@ export const rawGraphData: RawGraphData = {
     'page-brands': { id: 'page-brands', slug: 'brands', entityType: 'WebPage', isActive: true, title: 'Supported Laptop Brands', description: 'Laptop and computer brands repaired by KCROC in Kuwait.', seo: { title: 'Laptop Brands We Repair: Dell, HP, Lenovo & More | KCROC', description: 'Component-level laptop repair for Dell, HP, Lenovo, ASUS, Acer, MSI and other major brands across Kuwait.', canonicalUrl: 'https://www.computerrepairkuwait.com/brands', ogType: 'website', schemaTypes: ['CollectionPage', 'WebPage', 'BreadcrumbList'], breadcrumbs: [{ name: 'Home', url: '/' }, { name: 'Brands', url: '/brands' }] } } as WebPageEntity,
     'page-problems': { id: 'page-problems', slug: 'problems', entityType: 'WebPage', isActive: true, title: 'Common Computer Problems', description: 'Common laptop and computer problems diagnosed and repaired by KCROC in Kuwait.', seo: { title: 'Common Laptop & Computer Problems We Fix | KCROC Kuwait', description: 'Find causes, safe troubleshooting steps and repair options for common laptop and computer problems in Kuwait.', canonicalUrl: 'https://www.computerrepairkuwait.com/problems', ogType: 'website', schemaTypes: ['CollectionPage', 'WebPage', 'BreadcrumbList'], breadcrumbs: [{ name: 'Home', url: '/' }, { name: 'Problems', url: '/problems' }] } } as WebPageEntity,
     'page-guides': { id: 'page-guides', slug: 'guides', entityType: 'WebPage', isActive: true, title: 'DIY & Repair Guides', description: 'Technician-written laptop and computer troubleshooting guides from KCROC Kuwait.', seo: { title: 'Laptop & Computer Repair Guides | KCROC Kuwait', description: 'Free technician-written guides for diagnosing laptop and computer problems, battery issues, overheating, BIOS recovery and more.', canonicalUrl: 'https://www.computerrepairkuwait.com/guides', ogType: 'website', schemaTypes: ['CollectionPage', 'WebPage', 'BreadcrumbList'], breadcrumbs: [{ name: 'Home', url: '/' }, { name: 'Guides', url: '/guides' }] } } as WebPageEntity,
-    'page-screen-protection-tips': {
-      id: 'page-screen-protection-tips',
-      slug: 'laptop-screen-protection-tips',
-      entityType: 'WebPage',
-      isActive: true,
-      title: '7 Tips to Protect Your Laptop Screen',
-      description: 'Expert tips from Kuwait Computer Repair On Call to help you avoid broken screens, compression damage, and costly display repairs.',
-      seo: {
-        title: '7 Tips to Protect Your Laptop Screen | KCROC Kuwait',
-        description: 'Expert tips from Kuwait Computer Repair On Call to help you avoid broken screens, compression damage, and costly display repairs.',
-        canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-screen-protection-tips',
-        ogType: 'article',
-        schemaTypes: ['WebPage', 'BreadcrumbList']
-      }
-    } as WebPageEntity,
     'page-404': { id: 'page-404', slug: '404', entityType: 'WebPage', isActive: true, title: 'Page Not Found', description: 'The requested KCROC page could not be found.', seo: { title: 'Page Not Found | KCROC Kuwait', description: 'The requested page could not be found.', canonicalUrl: 'https://www.computerrepairkuwait.com/404', ogType: 'website', robots: 'noindex, follow, max-image-preview:none', schemaTypes: ['WebPage'] } } as WebPageEntity,
     'page-blog': { id: 'page-blog', slug: 'blog', entityType: 'WebPage', isActive: true, title: 'Tech Blog', description: 'Expert repair guides and tech insights.', seo: { title: 'KCROC Tech Blog | Computer Repair Guides Kuwait', description: 'Expert computer repair guides, laptop fixes, MacBook troubleshooting, and PC performance tips in Kuwait.', canonicalUrl: 'https://www.computerrepairkuwait.com/blog', ogType: 'website', schemaTypes: ['CollectionPage'] } } as WebPageEntity,
     'page-about': { id: 'page-about', slug: 'about', entityType: 'WebPage', isActive: true, title: 'About Us', description: 'Learn about KCROC.', seo: { title: 'About KCROC | Computer Repair Experts Kuwait', description: 'Learn about Kuwait Computer Repair On Call, our Hawalli lab, and our commitment to component-level repair.', canonicalUrl: 'https://www.computerrepairkuwait.com/about', ogType: 'website', schemaTypes: ['AboutPage'] } } as WebPageEntity,
     'page-contact': { id: 'page-contact', slug: 'contact', entityType: 'WebPage', isActive: true, title: 'Contact Us', description: 'Contact KCROC for repair services.', seo: { title: 'Contact KCROC | Computer Repair Kuwait', description: 'Get in touch with Kuwait Computer Repair On Call. Book a free pick & drop repair service today.', canonicalUrl: 'https://www.computerrepairkuwait.com/contact', ogType: 'website', schemaTypes: ['ContactPage'] } } as WebPageEntity,
     'page-faq': { id: 'page-faq', slug: 'faq', entityType: 'WebPage', isActive: true, title: 'FAQ', description: 'Frequently asked questions.', seo: { title: 'Frequently Asked Questions | KCROC Kuwait', description: 'Answers to common questions about our laptop repair services, pricing, warranty, and data privacy.', canonicalUrl: 'https://www.computerrepairkuwait.com/faq', ogType: 'website', schemaTypes: ['FAQPage'] } } as WebPageEntity,
     'page-gallery': { id: 'page-gallery', slug: 'gallery', entityType: 'WebPage', isActive: true, title: 'Gallery', description: 'Lab and repair gallery.', seo: { title: 'Repair Gallery | KCROC Hawalli Lab', description: 'View our ESD-safe repair lab in Hawalli and real examples of our component-level micro-soldering.', canonicalUrl: 'https://www.computerrepairkuwait.com/gallery', ogType: 'website', schemaTypes: ['CollectionPage'] } } as WebPageEntity,
-    'page-pricing': { id: 'page-pricing', slug: 'pricing', entityType: 'WebPage', isActive: true, title: 'Pricing', description: 'Transparent repair pricing.', seo: { title: 'Computer Repair Pricing Kuwait | KCROC', description: 'Transparent pricing for laptop screen replacement, battery replacement, and motherboard repairs in Kuwait.', canonicalUrl: 'https://www.computerrepairkuwait.com/pricing', ogType: 'website', schemaTypes: ['WebPage'] } } as WebPageEntity,
+    'page-pricing': { id: 'page-pricing', slug: 'pricing', entityType: 'WebPage', isActive: true, title: 'Pricing', description: 'Transparent repair pricing.', seo: { title: 'Computer Repair Prices Kuwait | KWD Pricing | KCROC', description: 'See KCROC repair prices in KWD for screens, batteries and motherboard work. Diagnosis comes first, then a repair quote for approval. Free pickup across Kuwait.', canonicalUrl: 'https://www.computerrepairkuwait.com/pricing', ogType: 'website', schemaTypes: ['WebPage'] } } as WebPageEntity,
     
     'page-booking': { id: 'page-booking', slug: 'book', entityType: 'WebPage', isActive: true, title: 'Book a Repair', description: 'Book free laptop and computer repair pickup anywhere in Kuwait. Same-day hardware assessment. 30-day warranty.', seo: { title: 'Book Laptop & Computer Repair Pickup in Kuwait | KCROC', description: 'Book free laptop and computer repair pickup anywhere in Kuwait. Same-day hardware assessment. 30-day warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/book', ogType: 'website', schemaTypes: ['WebPage'] } } as WebPageEntity,
     
@@ -186,7 +171,7 @@ export const rawGraphData: RawGraphData = {
     'page-terms-of-service': { id: 'page-terms-of-service', slug: 'terms-of-service', entityType: 'WebPage', isActive: true, title: 'Terms of Service', description: 'KCROC Terms and Conditions of Service', seo: { title: 'Terms of Service | KCROC Kuwait', description: 'Read the official Terms of Service and conditions for computer repair, pick & drop, and warranties at Kuwait Computer Repair On Call.', canonicalUrl: 'https://www.computerrepairkuwait.com/terms-of-service', ogType: 'website', schemaTypes: ['WebPage'] } } as WebPageEntity,
     'page-case-studies': { id: 'page-case-studies', slug: 'case-studies', entityType: 'WebPage', isActive: true, title: 'Case Studies', description: 'Real repair success stories.', seo: { title: 'Repair Case Studies | KCROC Kuwait', description: 'Read real case studies of laptops and MacBooks we saved from liquid damage and catastrophic failure.', canonicalUrl: 'https://www.computerrepairkuwait.com/case-studies', ogType: 'website', schemaTypes: ['CollectionPage'] } } as WebPageEntity,
     'page-author-imran': { id: 'page-author-imran', slug: 'author/imran', entityType: 'WebPage', isActive: true, title: 'Imran Natiq', description: 'Author bio page for Imran Natiq, Founder & Lead Technician at KCROC, referenced from the Person schema on blog articles he authored.', seo: { title: 'Imran Natiq — Hardware Repair Engineer at KCROC Kuwait', description: 'Imran Natiq is a hardware repair engineer and founder of KCROC in Hawalli, Kuwait, specializing in motherboard diagnostics and micro-soldering.', canonicalUrl: 'https://www.computerrepairkuwait.com/author/imran', ogType: 'profile', schemaTypes: ['ProfilePage', 'Person', 'BreadcrumbList'] } } as WebPageEntity,
-    'guide-battery': { id: 'guide-battery', slug: 'guides/laptop-battery-warning-signs', entityType: 'WebPage', isActive: true, title: 'Laptop Battery Warning Signs', description: 'Learn the 10 critical warning signs of lithium-ion battery failure, how to check battery health on Windows 11 and macOS, and how to distinguish battery problems from charger, charging-port, and motherboard faults.', seo: { title: 'Laptop Battery Warning Signs: How to Tell If It’s Bad | KCROC', description: 'How to tell if a laptop battery is bad: warning signs, Windows 11 and macOS battery-health checks, swelling safety, and when the charger or charging circuit may be the real problem.', canonicalUrl: 'https://www.computerrepairkuwait.com/guides/laptop-battery-warning-signs', ogType: 'article', schemaTypes: ['Article', 'FAQPage'] },
+    'guide-battery': { id: 'guide-battery', slug: 'guides/laptop-battery-warning-signs', entityType: 'WebPage', isActive: true, title: 'Laptop Battery Warning Signs', description: 'Learn the 10 critical warning signs of lithium-ion battery failure, how to check battery health on Windows 11 and macOS, and how to distinguish battery problems from charger, charging-port, and motherboard faults.', seo: { title: 'Laptop Battery Warning Signs | When to Replace | KCROC', description: 'Learn how to spot a bad laptop battery: swelling, fast drain, shutdowns and charging symptoms. Safe Windows/macOS checks and when replacement is needed.', canonicalUrl: 'https://www.computerrepairkuwait.com/guides/laptop-battery-warning-signs', ogType: 'article', schemaTypes: ['Article', 'FAQPage'] },
       featuredFAQIds: [
         'faq-battery-how-to-know',
         'faq-battery-check-windows',
@@ -209,8 +194,8 @@ export const rawGraphData: RawGraphData = {
       title: 'BIOS & UEFI Troubleshooting, Update Failures & Firmware Recovery',
       description: "A black screen after a BIOS update, a boot loop, or a system that won't POST can come from corrupted firmware \u2014 or from RAM, power, EC, or motherboard faults that only look like a BIOS problem. Covers warning signs, Secure Boot/BitLocker behavior, manufacturer recovery methods, and professional SPI/EEPROM reprogramming.",
       seo: {
-        title: 'BIOS & UEFI Recovery: Update Failures & Firmware | KCROC',
-        description: "Laptop or PC won't boot after a BIOS/UEFI update? Learn the 10 warning signs of firmware corruption, how to tell it apart from a hardware fault, and how professional BIOS chip recovery works in Kuwait.",
+        title: 'BIOS & UEFI Recovery | Fix Update Failures | KCROC',
+        description: "Laptop or PC won’t boot after a BIOS/UEFI update? Learn warning signs, safe recovery steps and when professional firmware or motherboard diagnosis is needed in Kuwait.",
         canonicalUrl: 'https://www.computerrepairkuwait.com/guides/bios-uefi-recovery-kuwait',
         ogType: 'article',
         schemaTypes: ['Article', 'FAQPage']
@@ -246,8 +231,8 @@ export const rawGraphData: RawGraphData = {
       title: 'Intel Core Ultra vs AMD Ryzen AI: Which Is Better?', 
       description: 'Intel Core Ultra vs AMD Ryzen AI: compare CPU performance, integrated graphics, NPU features, power limits, cooling and laptop configuration before you buy.', 
       seo: { 
-        title: 'Intel Core Ultra vs AMD Ryzen AI: Which Is Better? | KCROC', 
-        description: 'Intel Core Ultra vs AMD Ryzen AI: compare CPU performance, graphics, NPU features, power limits, cooling and the exact laptop configuration before choosing.', 
+        title: 'Intel Core Ultra vs Ryzen AI | Laptop Guide 2026 | KCROC', 
+        description: 'Intel Core Ultra vs AMD Ryzen AI: compare CPU performance, graphics, NPU features, power limits, cooling and laptop configurations before buying.', 
         canonicalUrl: 'https://www.computerrepairkuwait.com/blog/intel-core-ultra-vs-amd-ryzen-ai', 
         ogType: 'article', 
         schemaTypes: ['Article', 'FAQPage', 'BreadcrumbList'] 
@@ -258,11 +243,11 @@ export const rawGraphData: RawGraphData = {
       slug: 'blog/laptop-buying-guide-kuwait-2026',
       entityType: 'WebPage',
       isActive: true,
-      title: "Laptop Buying Guide Kuwait (2026): What the Spec Sheet Won't Tell You",
-      description: 'Confused by Intel, Ryzen and RTX naming in 2026? A Kuwait repair engineer explains which laptop specs actually matter — and which don\'t.',
+      title: 'Laptop Buying Guide Kuwait 2026 | Specs That Matter | KCROC',
+      description: 'Laptop buying guide for Kuwait: compare CPU, RAM, SSD, GPU, cooling and upgradeability so you can choose a configuration that fits your actual workload.',
       seo: {
-        title: "Laptop Buying Guide Kuwait (2026): What the Spec Sheet Won't Tell You",
-        description: 'Confused by Intel, Ryzen and RTX naming in 2026? A Kuwait repair engineer explains which laptop specs actually matter — and which don\'t.',
+        title: 'Laptop Buying Guide Kuwait 2026 | Specs That Matter | KCROC',
+        description: 'Laptop buying guide for Kuwait: compare CPU, RAM, SSD, GPU, cooling and upgradeability so you can choose a configuration that fits your actual workload.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/blog/laptop-buying-guide-kuwait-2026',
         ogType: 'article',
         alternates: { 'en-KW': '/blog/laptop-buying-guide-kuwait-2026', 'ar-KW': '/blog/ar/laptop-buying-guide-kuwait-2026', 'x-default': '/blog/laptop-buying-guide-kuwait-2026' },
@@ -353,8 +338,8 @@ export const rawGraphData: RawGraphData = {
       title: 'GameBarPresenceWriter.exe: What It Does, How to Fix Performance Issues, and How to Disable It',
       description: 'What is GameBarPresenceWriter.exe? A measured, evidence-first guide covering Game Bar stutter, background capture activity, the advanced Game DVR registry method, and safer rollback-first troubleshooting.',
       seo: {
-        title: 'GameBarPresenceWriter.exe: What It Is, Performance Fixes & How to Disable It | KCROC',
-        description: 'What is GameBarPresenceWriter.exe? Learn how to test Game Bar stutter, background capture activity, and the advanced Game DVR registry method without making unsupported FPS promises.',
+        title: 'GameBarPresenceWriter.exe | Fix & Disable Guide | KCROC',
+        description: 'What is GameBarPresenceWriter.exe? Learn how to test Game Bar stutter, background capture activity and safer ways to disable or roll back changes.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/guides/gamebar-presence-writer-fix',
         ogType: 'article',
         // Deliberately just 'WebPage' — this page hand-rolls its own
@@ -414,8 +399,8 @@ export const rawGraphData: RawGraphData = {
       title: '18 Windows 11 Settings Worth Changing for Privacy, Speed & Better Control',
       description: 'Review 18 Windows 11 settings for privacy, startup speed, battery life, gaming and security. Practical advice from KCROC computer technicians in Kuwait.',
       seo: {
-        title: '18 Windows 11 Settings to Change in 2026 (Not Services) | KCROC',
-        description: 'A Settings-app audit of Windows 11 — privacy, startup, power and UAC controls. Looking for background services instead? See our Services Audit guide.',
+        title: '18 Windows 11 Settings to Change in 2026 | KCROC',
+        description: 'Review 18 Windows 11 settings for privacy, startup, power, gaming and security. Practical technician guidance without unsafe “debloat” claims.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/guides/windows-11-settings-tweaks',
         ogType: 'article',
         schemaTypes: ['Article', 'BreadcrumbList', 'ImageObject']
@@ -1101,8 +1086,8 @@ export const rawGraphData: RawGraphData = {
         }
       ],
       seo: { 
-        title: 'MacBook Repair Kuwait | Motherboard Experts | KCROC', 
-        description: 'Chip-level MacBook motherboard repair in Kuwait. USB-C power IC replacement, liquid damage recovery, and data-safe board repair for Intel & Apple Silicon models. Free pick & drop.', 
+        title: 'MacBook Repair Kuwait | Board-Level Repair | KCROC', 
+        description: 'MacBook repair in Kuwait for charging, liquid and board-level faults. Original-board micro-soldering where practical, free pickup and 30-day warranty.', 
         canonicalUrl: 'https://www.computerrepairkuwait.com/macbook-repair-kuwait', 
         ogType: 'article', 
         schemaTypes: ['Service', 'FAQPage'] 
@@ -1373,8 +1358,8 @@ export const rawGraphData: RawGraphData = {
         }
       ],
       seo: { 
-        title: 'Laptop Repair Kuwait | Screen, Hinge & Motherboard | KCROC', 
-        description: 'Expert Windows laptop repair in Kuwait. Dell, HP, Lenovo, ASUS & Acer. Broken hinges, DC jacks, screens, SSD upgrades, and thermal fixes. Free pick & drop.', 
+        title: 'Laptop Repair Kuwait | Same-Day Diagnosis & Pickup | KCROC', 
+        description: 'Laptop repair in Kuwait for screens, hinges, charging ports, batteries, cooling and motherboard faults. Free pickup, diagnosis first, 30-day warranty.', 
         canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-repair-kuwait', 
         ogType: 'article', 
         schemaTypes: ['Service', 'FAQPage'] 
@@ -2635,7 +2620,7 @@ export const rawGraphData: RawGraphData = {
     
     'loc-salmiya': { id: 'loc-salmiya', slug: 'salmiya', entityType: 'Location', isActive: true, isPhysicalLocation: false, title: 'Salmiya', description: 'Fast, professional computer and laptop repair services for residents and businesses in Salmiya.', landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)', coords: { lat: 29.3400, lng: 48.0800 }, serviceRadiusKm: 15, serviceAreas: ['Salmiya', 'Rumaithiya', 'Salwa', 'Bidaa'], contentImage: { src: IMAGES.services.laptopRepair.src, alt: IMAGES.services.laptopRepair.alt, width: IMAGES.services.laptopRepair.width, height: IMAGES.services.laptopRepair.height, caption: 'Professional laptop repair for residents and businesses across Salmiya.' }, seo: { title: 'Computer Repair in Salmiya, Kuwait | Laptop Repair | KCROC', description: 'Laptop and computer repair in Salmiya with free pickup and delivery. Devices are diagnosed and repaired at KCROC\'s central Hawalli lab.', canonicalUrl: 'https://www.computerrepairkuwait.com/location/salmiya', ogType: 'website', schemaTypes: ['LocalBusiness'] }, navigationPriority: 90 } as LocationEntity,
 
-    'loc-farwaniya': { id: 'loc-farwaniya', slug: 'farwaniya', entityType: 'Location', isActive: true, isPhysicalLocation: false, title: 'Farwaniya', description: 'Expert motherboard repair, screen replacement, and PC diagnostics for the Farwaniya governorate.', landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)', coords: { lat: 29.2770, lng: 47.9590 }, serviceRadiusKm: 20, serviceAreas: ['Farwaniya', 'Khaitan', 'Riggae', 'Ardiya', 'Jleeb Al-Shuyoukh'], contentImage: { src: IMAGES.services.motherboardRepair.src, alt: IMAGES.services.motherboardRepair.alt, width: IMAGES.services.motherboardRepair.width, height: IMAGES.services.motherboardRepair.height, caption: 'Chip-level motherboard repair and screen replacement serving the Farwaniya governorate.' }, seo: { title: 'Computer Repair Farwaniya Kuwait | Laptop & PC | KCROC', description: 'Laptop, PC and motherboard repair in Farwaniya, including Khaitan, Riggae and Ardiya, with free pickup and delivery to KCROC\'s Hawalli lab.', canonicalUrl: 'https://www.computerrepairkuwait.com/location/farwaniya', ogType: 'website', schemaTypes: ['LocalBusiness'] }, navigationPriority: 80 } as LocationEntity,
+    'loc-farwaniya': { id: 'loc-farwaniya', slug: 'farwaniya', entityType: 'Location', isActive: true, isPhysicalLocation: false, title: 'Farwaniya', description: 'Expert motherboard repair, screen replacement, and PC diagnostics for the Farwaniya governorate.', landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)', coords: { lat: 29.2770, lng: 47.9590 }, serviceRadiusKm: 20, serviceAreas: ['Farwaniya', 'Khaitan', 'Riggae', 'Ardiya', 'Jleeb Al-Shuyoukh'], contentImage: { src: IMAGES.services.motherboardRepair.src, alt: IMAGES.services.motherboardRepair.alt, width: IMAGES.services.motherboardRepair.width, height: IMAGES.services.motherboardRepair.height, caption: 'Chip-level motherboard repair and screen replacement serving the Farwaniya governorate.' }, seo: { title: 'Computer Repair Farwaniya Kuwait | Free Pickup | KCROC', description: 'Computer and laptop repair in Farwaniya, Kuwait, including Khaitan, Riggae and Ardiya. Free pickup and delivery to KCROC’s Hawalli repair lab.', canonicalUrl: 'https://www.computerrepairkuwait.com/location/farwaniya', ogType: 'website', schemaTypes: ['LocalBusiness'] }, navigationPriority: 80 } as LocationEntity,
 
     'loc-jahra': { id: 'loc-jahra', slug: 'jahra', entityType: 'Location', isActive: true, isPhysicalLocation: false, title: 'Jahra', description: 'Comprehensive computer repair, thermal repasting, and motherboard diagnostics delivered directly to Jahra.', landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)', coords: { lat: 29.3370, lng: 47.6580 }, serviceRadiusKm: 40, serviceAreas: ['Jahra', 'Saad Al Abdullah', 'Naeem', 'Qasr', 'Taima'], contentImage: { src: IMAGES.motherboard.thermalGrizzly1.src, alt: IMAGES.motherboard.thermalGrizzly1.alt, width: IMAGES.motherboard.thermalGrizzly1.width, height: IMAGES.motherboard.thermalGrizzly1.height, caption: 'Thermal repasting and motherboard diagnostics delivered directly to Jahra.' }, seo: { title: 'Computer Repair in Jahra, Kuwait | Laptop Repair | KCROC', description: 'Computer and laptop repair in Jahra with free pickup and delivery, including thermal maintenance and motherboard diagnostics at KCROC\'s Hawalli lab.', canonicalUrl: 'https://www.computerrepairkuwait.com/location/jahra', ogType: 'website', schemaTypes: ['LocalBusiness'] }, navigationPriority: 70 } as LocationEntity,
 
@@ -2835,7 +2820,7 @@ export const rawGraphData: RawGraphData = {
       relatedResourcePaths: [{ label: 'Dell laptop overheating guide', path: '/guides/dell-laptop-overheating' }],
       contentImages: [{ src: IMAGES.laptopHardware.dellTeardown.src, alt: IMAGES.laptopHardware.dellTeardown.alt, width: IMAGES.laptopHardware.dellTeardown.width, height: IMAGES.laptopHardware.dellTeardown.height, caption: 'Dell laptop internal hardware opened for repair and diagnosis.' }],
       pricing: { startingFrom: 15, currency: 'KWD', quoteRequired: true, displayLabel: 'From 15 KWD — free diagnostic first' },
-      seo: { title: 'Dell Service Center & Laptop Repair Kuwait | KCROC', description: 'Independent Dell laptop repair in Kuwait for Inspiron, Latitude, XPS, G15 and Alienware. Screen, battery, hinge and motherboard repair with free pick-up and drop-off.', canonicalUrl: 'https://www.computerrepairkuwait.com/dell-laptop-repair-kuwait', ogType: 'article', schemaTypes: ['Service'] },
+      seo: { title: 'Dell Laptop Repair Kuwait | Free Pickup | KCROC', description: 'Dell laptop repair in Kuwait for Inspiron, Latitude, XPS, G-series and Alienware. Screen, battery, hinge and motherboard diagnosis with free pickup.', canonicalUrl: 'https://www.computerrepairkuwait.com/dell-laptop-repair-kuwait', ogType: 'article', schemaTypes: ['Service'] },
       navigationPriority: 90, popular: true 
     } as BrandEntity,
 
@@ -2856,7 +2841,7 @@ export const rawGraphData: RawGraphData = {
         { src: IMAGES.laptopHardware.hpLaptopMotherboardThermalPasteCleanup.src, alt: IMAGES.laptopHardware.hpLaptopMotherboardThermalPasteCleanup.alt, width: IMAGES.laptopHardware.hpLaptopMotherboardThermalPasteCleanup.width, height: IMAGES.laptopHardware.hpLaptopMotherboardThermalPasteCleanup.height, caption: 'HP cooling and thermal hardware inspected as part of repair.' }
       ],
       pricing: { startingFrom: 15, currency: 'KWD', quoteRequired: true, displayLabel: 'From 15 KWD — free diagnostic first' },
-      seo: { title: 'HP Laptop Repair Kuwait | Free Pickup, No Fix No Fee', description: 'HP EliteBook, Pavilion, ProBook & OMEN repair in Kuwait. Free pickup & drop-off, No Fix No Fee, 30-day warranty. Certified HP technicians in Hawalli.', canonicalUrl: 'https://www.computerrepairkuwait.com/hp-laptop-repair-kuwait', ogType: 'article', schemaTypes: ['Service'] },
+      seo: { title: 'HP Laptop Repair Kuwait | Free Pickup | KCROC', description: 'HP laptop repair in Kuwait for EliteBook, Pavilion, ProBook and OMEN. Free pickup, diagnosis before repair, and 30-day warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/hp-laptop-repair-kuwait', ogType: 'article', schemaTypes: ['Service'] },
       navigationPriority: 80, popular: true 
     } as BrandEntity,
 
