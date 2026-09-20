@@ -23,8 +23,8 @@ export const Process = () => {
         />
 
         {/* Visual Diagnostic Process Banner — unchanged */}
-        <div className="mb-14 rounded-3xl overflow-hidden border border-slate-800 bg-slate-900/60 backdrop-blur-md shadow-2xl relative group">
-          <div className="aspect-[21/9] sm:aspect-[2.4/1] relative overflow-hidden">
+        <div className="mb-7 sm:mb-14 rounded-2xl sm:rounded-3xl overflow-hidden border border-slate-800 bg-slate-900/60 backdrop-blur-md shadow-2xl relative group">
+          <div className="aspect-[2.2/1] sm:aspect-[2.4/1] relative overflow-hidden">
             <picture>
               <source media="(max-width: 640px)" srcSet="/images/kcroc-lead-technician-laptop-repair-workbench.webp" />
               <img
@@ -37,12 +37,12 @@ export const Process = () => {
               />
             </picture>
             <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/40 to-transparent"></div>
-            <div className="absolute bottom-4 left-6 right-6 flex flex-wrap items-center justify-between gap-4">
-              <div className="flex items-center gap-2 text-xs font-bold text-cyan-400 bg-brand-dark/80 backdrop-blur-md px-3.5 py-2 rounded-xl border border-cyan-500/30">
+            <div className="absolute bottom-3 left-3 right-3 sm:bottom-4 sm:left-6 sm:right-6 flex flex-wrap items-center justify-between gap-2 sm:gap-4">
+              <div className="flex items-center gap-1.5 text-[10px] sm:text-xs font-bold text-cyan-400 bg-brand-dark/80 backdrop-blur-md px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-xl border border-cyan-500/30">
                 <Cpu className="w-4 h-4 text-cyan-400 animate-pulse" />
                 <span>Thermal Imaging &amp; Motherboard Tracing</span>
               </div>
-              <div className="flex items-center gap-2 text-xs font-bold text-emerald-400 bg-brand-dark/80 backdrop-blur-md px-3.5 py-2 rounded-xl border border-emerald-500/30">
+              <div className="flex items-center gap-1.5 text-[10px] sm:text-xs font-bold text-emerald-400 bg-brand-dark/80 backdrop-blur-md px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-xl border border-emerald-500/30">
                 <ShieldCheck className="w-4 h-4 text-emerald-400" />
                 <span>Data Privacy Guaranteed</span>
               </div>
