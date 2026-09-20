@@ -11,13 +11,13 @@ export const StickyMobileCTA = () => {
 
   return (
     <div
-      className="md:hidden fixed bottom-0 left-0 right-0 z-50 border-t border-slate-800 bg-brand-dark/95 backdrop-blur px-4 pt-3 flex gap-3"
+      className="md:hidden fixed bottom-0 left-0 right-0 z-50 border-t border-slate-800 bg-brand-dark/95 backdrop-blur px-3 pt-2.5 flex gap-2.5"
       style={{ paddingBottom: 'max(0.75rem, calc(0.75rem + env(safe-area-inset-bottom)))' }}
     >
       <a
         href={`tel:+${phone}`}
         onClick={() => trackConversion('phone_call_click', { cta_name: 'sticky_mobile_call', button_position: 'bottom_bar' })}
-        className="flex-1 text-center rounded-full border border-slate-700 text-slate-200 font-semibold py-3"
+        className="flex-1 text-center rounded-xl border border-slate-700 text-slate-200 font-semibold py-2.5 min-h-[44px]"
       >
         Call
       </a>
@@ -26,7 +26,7 @@ export const StickyMobileCTA = () => {
         target="_blank"
         rel="noopener noreferrer"
         onClick={() => trackConversion('whatsapp_click', { cta_name: 'sticky_mobile_wa', button_position: 'bottom_bar' })}
-        className="flex-[2] text-center rounded-full bg-cyan-500 text-slate-950 font-bold py-3"
+        className="flex-[2] text-center rounded-xl bg-cyan-500 text-slate-950 font-bold py-2.5 min-h-[44px]"
       >
         WhatsApp a Technician
       </a>
