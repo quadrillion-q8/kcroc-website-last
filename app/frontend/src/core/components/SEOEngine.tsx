@@ -67,8 +67,22 @@ const getDefaultBreadcrumbs = (entity: RoutableEntity): { name: string; url: str
     author: { label: 'Blog', url: '/blog' }
   };
 
+  // Root-level commercial pages are deliberately flat in their URLs for
+  // readability (/laptop-repair-kuwait, /brand-slug, /problem-slug). Their
+  // breadcrumb hierarchy should still expose the semantic parent collection
+  // so users and crawlers see Home > Services/Brands/Problems > Page.
+  const entityTypeParents: Partial<Record<RoutableEntity['entityType'], { label: string; url: string }>> = {
+    Service: { label: 'Services', url: '/services' },
+    Brand: { label: 'Brands', url: '/brands' },
+    Problem: { label: 'Problems', url: '/problems' },
+    Location: { label: 'Computer Repair Near Me', url: '/near-me' },
+  };
+
   const crumbs: { name: string; url: string }[] = [{ name: 'Home', url: '/' }];
-  if (parts.length > 1) {
+  const entityParent = entityTypeParents[entity.entityType];
+  if (entityParent && entityParent.url !== path) {
+    crumbs.push({ name: entityParent.label, url: entityParent.url });
+  } else if (parts.length > 1) {
     const section = parts[0];
     const parent = sectionLabels[section];
     if (parent && parent.url !== path) {
