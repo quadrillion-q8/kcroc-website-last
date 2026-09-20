@@ -31,14 +31,14 @@ export default function Home() {
       {/* 2. Immediate trust signals */}
       <TrustBar />
 
-      {/* 3. Brand recognition strip — "we know your device" */}
+      {/* 3. Core services — the fastest path from search intent to a repair page */}
+      <ServicesGrid />
+
+      {/* 4. Brand recognition — kept after service discovery so mobile users reach what we fix first */}
       <BrandStrip />
 
-      {/* 4. Hard numbers */}
+      {/* 5. Hard numbers — compact trust reinforcement */}
       <StatsRow />
-
-      {/* 5. Core services */}
-      <ServicesGrid />
 
       {/* 6. Case-study proof of component-level repair (the core differentiator) */}
       <BeforeAfterShowcase />
