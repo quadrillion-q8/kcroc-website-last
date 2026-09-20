@@ -80,7 +80,7 @@ const faqs = [
 //    has no `featuredFAQIds` — this page's 8 FAQs aren't registered as
 //    global FAQ entities, so enabling that schemaType on the graph entity
 //    would have silently attached every site-wide FAQ to this page instead
-//    of just these 8. Same pattern already used on ScreenProtectionTips.tsx
+//    of just these 8. Same pattern used by the page-specific schema components
 //    and GamingPCCooling.tsx.
 // 2. Article/BreadcrumbList/Person: the graph entity for this page used to
 //    carry `schemaTypes: ['Article','BreadcrumbList','ImageObject']`, which
