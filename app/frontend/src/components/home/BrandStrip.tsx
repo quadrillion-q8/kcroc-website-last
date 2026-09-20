@@ -16,10 +16,10 @@ export const BrandStrip = () => {
   return (
     <section
       aria-label="Brands we service"
-      className="w-full border-y border-slate-800/50 bg-slate-900/20 py-4 sm:py-8"
+      className="w-full border-b border-slate-800/50 bg-slate-900/20 py-3 sm:py-8"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <p className="text-center text-xs font-bold text-emerald-500 uppercase tracking-wider mb-3 sm:mb-6">
+        <p className="text-center text-[10px] sm:text-xs font-bold text-emerald-500 uppercase tracking-wider mb-2 sm:mb-6">
           Trusted Repair Partner For Every Major Brand
         </p>
         {/* Mobile: horizontal touch-scroll strip. Desktop (sm+): wrapped, centered pills. */}
@@ -29,7 +29,7 @@ export const BrandStrip = () => {
               key={brand.id}
               href={`/${brand.slug}`}
               onClick={() => trackConversion('cta_click', { cta_name: 'brand_strip_click', button_position: 'brand_strip', brand: brand.brandName })}
-              className="scroll-row-item text-sm font-semibold text-slate-400 hover:text-cyan-400 border border-slate-800 hover:border-cyan-500/30 rounded-full px-4 py-2 transition-all whitespace-nowrap"
+              className="scroll-row-item text-xs sm:text-sm font-semibold text-slate-400 hover:text-cyan-400 border border-slate-800 hover:border-cyan-500/30 rounded-full px-3 sm:px-4 py-1.5 sm:py-2 transition-all whitespace-nowrap"
             >
               {brand.brandName}
             </a>
