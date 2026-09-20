@@ -43,15 +43,15 @@ const STRUCTURED_DATA = {
       "@type": "WebPage",
       "@id": `${PAGE_URL}#webpage`,
       "url": PAGE_URL,
-      "name": "How to Protect Your Laptop Screen & Repair Guide | KCROC",
+      "name": "How to Protect Your Laptop Screen in Kuwait | KCROC Guide",
       "isPartOf": { "@id": `${business.websiteUrl}/#website` },
       "breadcrumb": { "@id": `${PAGE_URL}#breadcrumb` }
     },
     {
       "@type": "Article",
       "@id": `${PAGE_URL}#article`,
-      "headline": "How to Protect Your Laptop Screen: The Ultimate Expert Care & Repair Guide",
-      "description": "Expert advice from KCROC technicians on preventing laptop screen damage. Learn the physics of screen failure, Kuwait climate impacts, and repair costs.",
+      "headline": "How to Protect Your Laptop Screen in Kuwait: Practical Prevention & Repair Guide",
+      "description": "Practical ways to prevent laptop screen damage in Kuwait, with technician guidance on pressure, hinges, heat and when display repair is needed.",
       "author": { 
         "@type": "Person", 
         "name": "Imran Natiq",
@@ -266,8 +266,8 @@ export default function BlogScreenProtection() {
       
       {/* 🚀 Independent SEO tags (React 19 native head hoisting) */}
       <Head>
-        <title>How to Protect Your Laptop Screen: The Ultimate Care Guide | KCROC</title>
-        <meta name="description" content="Expert advice from KCROC technicians on preventing laptop screen damage. Learn the physics of screen failure, Kuwait climate impacts, and repair costs." />
+        <title>How to Protect Your Laptop Screen in Kuwait | KCROC Guide</title>
+        <meta name="description" content="Practical ways to prevent laptop screen damage in Kuwait: reduce lid pressure, protect hinges, avoid hot-car storage and know when display repair is needed." />
         <link rel="canonical" href={PAGE_URL} />
       </Head>
 
