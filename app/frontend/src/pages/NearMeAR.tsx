@@ -36,6 +36,8 @@ const SERVICES_AR: { slug: string; icon: React.ElementType; title: string; descr
   { slug: 'gaming-pc-repair-kuwait', icon: Gamepad2, title: 'تصليح كمبيوتر قيمنق', description: 'تشخيص وإصلاح أجهزة الألعاب المكتبية، ومشاكل كروت الشاشة والتبريد والطاقة وغيرها.' },
   { slug: 'motherboard-repair-kuwait', icon: Cpu, title: 'تصليح اللوحة الأم', description: 'إصلاح اللوحة الأم على مستوى القطعة الإلكترونية بدل استبدال اللوحة بالكامل، متى ما كان ذلك ممكنًا.' },
   { slug: 'laptop-screen-repair-kuwait', icon: Monitor, title: 'تغيير شاشة اللابتوب', description: 'تغيير شاشات اللابتوب المكسورة أو المتضررة، وإصلاح مشاكل الخطوط أو الإضاءة حسب حالة الشاشة.' },
+  { slug: 'battery-replacement-kuwait', icon: ShieldCheck, title: 'تغيير بطارية اللابتوب', description: 'فحص صحة البطارية أولًا ثم استبدالها عند التأكد من أن البطارية هي سبب المشكلة.' },
+  { slug: 'laptop-charging-port-repair-kuwait', icon: Cpu, title: 'إصلاح مدخل الشحن', description: 'تشخيص منفذ الشحن ودوائر الطاقة، مع إصلاح المنفذ أو العطل على مستوى اللوحة عندما يكون ذلك ممكنًا.' },
 ];
 
 const AREAS_AR = [
@@ -57,7 +59,7 @@ export default function NearMeAR() {
   if (!business || !page) return null;
 
   const waLink = `https://wa.me/${business.telephone}?text=${encodeURIComponent(
-    'مرحباً KCROC، أبحث عن فني كمبيوتر بالقرب مني في الكويت وأحتاج ترتيب استلام للجهاز.'
+    'مرحباً KCROC، أبحث عن فني كمبيوتر في الكويت في الكويت وأحتاج ترتيب استلام للجهاز.'
   )}`;
 
   return (
@@ -73,7 +75,7 @@ export default function NearMeAR() {
             <ol className="flex items-center gap-2">
               <li><Link to="/" className="hover:text-cyan-400">الرئيسية</Link></li>
               <li className="text-slate-600">/</li>
-              <li aria-current="page" className="text-cyan-400">فني كمبيوتر بالقرب مني</li>
+              <li aria-current="page" className="text-cyan-400">فني كمبيوتر في الكويت</li>
             </ol>
           </nav>
 
@@ -83,10 +85,10 @@ export default function NearMeAR() {
                 <MapPin className="ml-2 inline h-3.5 w-3.5" aria-hidden="true" /> خدمة محلية في الكويت
               </Badge>
               <h1 className="text-4xl font-black leading-[1.15] tracking-tight text-white sm:text-5xl lg:text-6xl">
-                فني كمبيوتر وتصليح لابتوب <span className="text-cyan-400">بالقرب مني</span>
+                فني كمبيوتر وتصليح لابتوب <span className="text-cyan-400">في الكويت</span>
               </h1>
               <p className="mt-6 max-w-2xl text-base leading-loose text-slate-300 sm:text-lg">
-                تبحث عن فني كمبيوتر أو فني تصليح لابتوب قريب منك في الكويت؟ توفّر لك KCROC إصلاح الكمبيوتر واللابتوب والماك بوك وأجهزة الألعاب من مختبرنا المركزي في حولي، مع استلام وتوصيل مجاني لجهازك من أي منطقة في الكويت.
+                تبحث عن فني كمبيوتر أو فني تصليح لابتوب في الكويت؟ توفّر لك KCROC تشخيصًا وإصلاحًا للكمبيوتر واللابتوب والماك بوك وأجهزة الألعاب من مختبرنا المركزي في حولي، مع استلام وتوصيل مجاني لجهازك من أي منطقة في الكويت.
               </p>
               <div className="mt-7 flex flex-col gap-3 sm:flex-row">
                 <Button size="lg" className="w-full bg-cyan-500 font-black text-slate-950 hover:bg-cyan-400 sm:w-auto" asChild>
