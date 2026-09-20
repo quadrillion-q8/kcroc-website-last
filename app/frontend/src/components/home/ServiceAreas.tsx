@@ -20,7 +20,7 @@ export const ServiceAreas = () => {
             <p className="text-slate-400 text-base leading-relaxed mb-6">
               Based in Hawalli (Al-Mulla Complex), our certified technicians provide free pick-up and drop-off services across all major governorates and residential areas in Kuwait.
             </p>
-            <div className="mt-6 flex flex-wrap gap-3">
+            <div className="mt-5 flex flex-col sm:flex-row gap-2.5">
               <Link to="/near-me" className="inline-flex items-center gap-2 rounded-xl border border-cyan-500/30 bg-cyan-500/10 px-4 py-2.5 text-sm font-bold text-cyan-300 transition hover:border-cyan-400 hover:bg-cyan-500/15">
                 <MapPin className="h-4 w-4" aria-hidden="true" /> Find computer repair near you
               </Link>
@@ -28,7 +28,7 @@ export const ServiceAreas = () => {
                 Computer Repair Hawalli <span aria-hidden="true">→</span>
               </Link>
             </div>
-            <div className="flex flex-wrap gap-4 text-xs font-semibold text-slate-300">
+            <div className="grid grid-cols-1 sm:flex sm:flex-wrap gap-2.5 text-xs font-semibold text-slate-300">
               <div className="flex items-center gap-2 bg-slate-800/60 border border-slate-700/60 px-3.5 py-2.5 rounded-xl">
                 <Truck className="w-4 h-4 text-cyan-400" /> Free Door-to-Door Collection
               </div>
@@ -40,7 +40,7 @@ export const ServiceAreas = () => {
 
           {/* Kuwait City / Service Area Illustration Card */}
           <div className="relative group rounded-3xl overflow-hidden border border-slate-800 bg-brand-dark shadow-2xl">
-            <div className="aspect-[16/10] relative overflow-hidden">
+            <div className="aspect-[16/9] sm:aspect-[16/10] relative overflow-hidden">
               {/* 🚀 PERF FIX: was serving the full 1600x873 (81 KB) source into a
                   ~380x237 mobile slot. Responsive <picture> now serves a
                   pre-sized variant instead. */}
@@ -56,8 +56,8 @@ export const ServiceAreas = () => {
                 />
               </picture>
               <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-transparent to-transparent opacity-60"></div>
-              <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-xs font-bold text-cyan-400 bg-brand-dark/80 backdrop-blur-md px-4 py-2 rounded-xl border border-cyan-500/30">
-                <span>Shop 19, Al-Mulla Complex, Hawally</span>
+              <div className="absolute bottom-3 left-3 right-3 sm:bottom-4 sm:left-4 sm:right-4 flex items-center justify-between text-[10px] sm:text-xs font-bold text-cyan-400 bg-brand-dark/80 backdrop-blur-md px-4 py-2 rounded-xl border border-cyan-500/30">
+                <span className="truncate">Shop 19, Al-Mulla Complex, Hawally</span>
                 <span className="text-emerald-400">● Active Dispatch</span>
               </div>
             </div>
@@ -65,9 +65,9 @@ export const ServiceAreas = () => {
         </div>
 
         {/* Mobile: horizontal touch-scroll strip. Desktop (sm+): wrapped pills. */}
-        <div className="scroll-row gap-2 -mx-4 px-4 sm:mx-0 sm:px-0 sm:flex-wrap sm:overflow-visible">
+        <div className="flex flex-wrap gap-2">
           {areas.map((area: string) => (
-            <span key={area} className="scroll-row-item px-4 py-2.5 bg-slate-800/80 rounded-xl text-sm text-cyan-100 border border-slate-700 hover:border-cyan-500 transition-colors whitespace-nowrap">
+            <span key={area} className="px-3 py-2 bg-slate-800/80 rounded-xl text-sm text-cyan-100 border border-slate-700 hover:border-cyan-500 transition-colors whitespace-nowrap">
               {area}
             </span>
           ))}
