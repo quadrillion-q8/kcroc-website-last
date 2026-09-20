@@ -15,11 +15,11 @@ export default function Reviews() {
       <div className="max-w-7xl mx-auto">
         <SectionHeader title="Verified Customer Reviews" align="center" className="mb-4 sm:mb-16" />
 
-        <div className="flex flex-row overflow-x-auto snap-x snap-mandatory gap-3 -mx-4 px-4 md:mx-0 md:px-0 md:grid md:grid-cols-3 md:gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-6">
           {reviews.map((review: any, idx: number) => (
             <div
               key={idx}
-              className="snap-center shrink-0 w-[82%] md:w-auto bg-slate-900/30 p-5 sm:p-8 rounded-3xl border border-slate-800 h-full hover:border-cyan-500/30 transition-all flex flex-col"
+              className="bg-slate-900/30 p-5 sm:p-8 rounded-2xl sm:rounded-3xl border border-slate-800 h-full hover:border-cyan-500/30 transition-all flex flex-col"
             >
               <div className="flex text-cyan-400 mb-3 sm:mb-5">
                 {[...Array(review.rating || 5)].map((_, i) => (
