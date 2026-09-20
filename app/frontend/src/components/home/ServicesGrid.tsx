@@ -24,14 +24,14 @@ const ServiceCard = React.memo(({ service, idx }: { service: ServiceEntity, idx:
     <div
       ref={ref}
       style={{ transitionDelay: `${idx * 50}ms` }}
-      className={`scroll-row-item w-[78%] sm:w-auto transition-all duration-700 h-full ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+      className={`w-full transition-all duration-700 h-full ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
     >
       <Link
         to={`/${service.slug}`}
-        className="group block relative bg-kcroc-card rounded-[14px] border border-white/[0.08] hover:border-kcroc-cyan transition-all duration-300 h-full overflow-hidden"
+        className="group block relative bg-kcroc-card rounded-2xl border border-white/[0.08] hover:border-kcroc-cyan transition-all duration-300 h-full overflow-hidden"
       >
         {cardImage && (
-          <div className="relative h-32 sm:h-36 overflow-hidden">
+          <div className="relative h-24 sm:h-36 overflow-hidden">
             <img
               src={cardImage.src}
               alt={cardImage.alt}
@@ -43,20 +43,20 @@ const ServiceCard = React.memo(({ service, idx }: { service: ServiceEntity, idx:
             <div className="absolute inset-0 bg-gradient-to-t from-kcroc-card via-kcroc-card/10 to-transparent" />
           </div>
         )}
-        <div className="flex flex-col h-full gap-2 sm:gap-3 p-5 sm:p-6">
-          <div className="w-10 h-10 rounded-[10px] bg-kcroc-cyan/10 border border-kcroc-cyan/25 flex items-center justify-center mb-1 sm:mb-2">
-            <Icon className="w-5 h-5 text-kcroc-cyan" />
+        <div className="flex flex-col h-full gap-1.5 sm:gap-3 p-3.5 sm:p-6">
+          <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-[10px] bg-kcroc-cyan/10 border border-kcroc-cyan/25 flex items-center justify-center mb-1 sm:mb-2">
+            <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-kcroc-cyan" />
           </div>
 
-          <h3 className="text-sm font-medium text-white leading-tight">
+          <h3 className="text-[13px] sm:text-sm font-semibold text-white leading-tight">
             {service.title}
           </h3>
 
-          <p className="text-kcroc-muted text-[13px] leading-relaxed line-clamp-2">
+          <p className="text-kcroc-muted text-xs sm:text-[13px] leading-relaxed line-clamp-2">
             {cardText}
           </p>
 
-          <div className="text-kcroc-emerald text-[11px] font-bold flex items-center gap-1 mt-1 sm:mt-2">
+          <div className="text-kcroc-emerald text-[10px] sm:text-[11px] font-bold flex items-center gap-1 mt-1 sm:mt-2">
             <i className="ti ti-clock" aria-hidden="true" />
             Learn more
           </div>
@@ -74,7 +74,7 @@ export default function ServicesGrid() {
   if (!services || services.length === 0) return null;
 
   return (
-    <section className="w-full py-6 sm:py-14 px-4 sm:px-8 bg-brand-dark">
+    <section className="w-full py-7 sm:py-14 px-4 sm:px-8 bg-brand-dark">
       <div className="max-w-6xl mx-auto">
         <SectionHeader
           eyebrow="What we fix"
@@ -84,8 +84,8 @@ export default function ServicesGrid() {
           className="mb-4 sm:mb-8"
         />
 
-        {/* Mobile: horizontal swipe carousel, next card peeking. Desktop (sm+): grid. */}
-        <div className="scroll-row gap-3 -mx-4 px-4 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-4">
+        {/* Mobile-first two-column service grid; desktop expands to three columns. */}
+        <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-2 lg:grid-cols-3 sm:gap-4">
           {services.map((s, idx) => (
             <ServiceCard key={s.id} service={s} idx={idx} />
           ))}
