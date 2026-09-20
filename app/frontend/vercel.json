@@ -60,6 +60,56 @@
       "permanent": true
     },
     {
+      "source": "/screen-replacement-kuwait",
+      "destination": "/laptop-screen-repair-kuwait",
+      "permanent": true
+    },
+    {
+      "source": "/best-laptop-repair-ibn-khaldoun-hawalli",
+      "destination": "/location/hawalli",
+      "permanent": true
+    },
+    {
+      "source": "/chip-level-motherboard-repair-hawalli",
+      "destination": "/motherboard-repair-kuwait",
+      "permanent": true
+    },
+    {
+      "source": "/laptop-repair-in-khaitan",
+      "destination": "/location/farwaniya",
+      "permanent": true
+    },
+    {
+      "source": "/computer-repair-in-kuwait-city",
+      "destination": "/location/kuwait-city",
+      "permanent": true
+    },
+    {
+      "source": "/laptop-repair-in-hawalli",
+      "destination": "/location/hawalli",
+      "permanent": true
+    },
+    {
+      "source": "/blog/fix-slow-laptop-ssd",
+      "destination": "/laptop-running-very-slow",
+      "permanent": true
+    },
+    {
+      "source": "/guides/gamebarpresencewriter-exe",
+      "destination": "/guides/gamebar-presence-writer-fix",
+      "permanent": true
+    },
+    {
+      "source": "/blog/windows-11-background-services-audit",
+      "destination": "/guides/windows-11-background-services-audit",
+      "permanent": true
+    },
+    {
+      "source": "/laptop-screen-protection-tips",
+      "destination": "/blog/how-to-protect-laptop-screen",
+      "permanent": true
+    },
+    {
       "source": "/macbook-repair",
       "destination": "/macbook-repair-kuwait",
       "permanent": true
@@ -71,7 +121,7 @@
     },
     {
       "source": "/laptop-repair-hawalli-kuwait",
-      "destination": "/laptop-repair-kuwait",
+      "destination": "/location/hawalli",
       "permanent": true
     },
     {
@@ -136,7 +186,7 @@
     },
     {
       "source": "/blog/laptop-screen-protection-tips",
-      "destination": "/laptop-screen-protection-tips",
+      "destination": "/blog/how-to-protect-laptop-screen",
       "permanent": true
     },
     {
