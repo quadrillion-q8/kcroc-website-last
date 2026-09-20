@@ -89,32 +89,26 @@ export default function Hero() {
     <>
       <h1 className="sr-only">{headline}</h1>
 
-      {/* Mobile Hero Section */}
-      {/* 🚀 MOBILE SPACING FIX: pt-24 (96px) was fixed/non-responsive, on
-          top of the 64px the layout already reserves for the header — 160px
-          of blank space before the logo on the homepage's single highest-
-          traffic entry point. Scaling it down on small screens also pulls
-          the trust-rating line up out of the zone the fixed chat bubble
-          occupies, reducing the overlap seen on load. */}
-      <section className="bg-transparent pt-8 sm:pt-16 pb-8 relative overflow-hidden lg:hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-cyan-950/40 via-transparent to-emerald-950/20" />
+      {/* Mobile Hero Section — deliberately designed as a compact conversion block. */}
+      <section className="bg-transparent pt-4 sm:pt-8 pb-6 sm:pb-8 relative overflow-hidden lg:hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-cyan-950/35 via-transparent to-emerald-950/15" />
 
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="flex justify-center mb-4">
+        <div className="container mx-auto px-4 relative z-10 max-w-xl">
+          <div className="flex justify-center mb-3 sm:mb-4">
             <img
               src={logoUrl}
               alt={`${business?.title ?? 'KCROC'} Logo`}
               width="48"
               height="48"
-              className="h-12 w-auto object-contain drop-shadow-xl"
+              className="h-10 sm:h-12 w-auto object-contain drop-shadow-xl"
             />
           </div>
 
-          <p aria-hidden="true" className="text-white text-[28px] font-black text-center leading-[1.2]">
+          <p aria-hidden="true" className="text-white text-[25px] sm:text-[28px] font-black text-center leading-[1.14] tracking-tight">
             {headline}
           </p>
 
-          <p className="text-slate-400 text-base text-center leading-relaxed mt-3">
+          <p className="text-slate-400 text-sm sm:text-base text-center leading-relaxed mt-3 max-w-md mx-auto">
             {hero?.description ??
               'Free pickup & delivery. Expert engineer. Data-safe repairs for home and office.'}
           </p>
@@ -123,26 +117,25 @@ export default function Hero() {
             {['Free pickup', '30-day warranty', 'No fix, no fee'].map((label) => (
               <span
                 key={label}
-                /* 🚀 FIX: Bumped emerald-400 to emerald-300 for perfect WCAG Contrast */
-                className="text-[11px] font-semibold text-emerald-300 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-2.5 py-1"
+                className="text-[10px] sm:text-[11px] font-semibold text-emerald-300 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-2.5 py-1"
               >
                 {label}
               </span>
             ))}
           </div>
 
-          <div className="space-y-3 mt-4">
+          <div className="grid grid-cols-2 gap-2.5 mt-4">
             <Button
               size="lg"
               asChild
-              className="w-full h-14 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-lg rounded-full shadow-lg min-h-[44px]"
+              className="w-full h-12 sm:h-14 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-base sm:text-lg rounded-xl sm:rounded-full shadow-lg min-h-[48px]"
             >
               <a
                 href={`tel:+${phone}`}
                 aria-label="Call Kuwait Computer Repair On Call"
                 onClick={() => trackConversion('phone_call_click', { cta_name: 'hero_mobile_call', button_position: 'hero_mobile' })}
               >
-                <Phone className="w-5 h-5 mr-2" aria-hidden="true" />
+                <Phone className="w-5 h-5 mr-1.5" aria-hidden="true" />
                 Call Now
               </a>
             </Button>
@@ -150,7 +143,7 @@ export default function Hero() {
               size="lg"
               asChild
               variant="outline"
-              className="w-full h-14 border-2 border-emerald-500 text-emerald-400 hover:bg-emerald-500/10 font-bold text-lg rounded-full min-h-[44px]"
+              className="w-full h-12 sm:h-14 border-2 border-emerald-500 text-emerald-300 hover:bg-emerald-500/10 font-bold text-base sm:text-lg rounded-xl sm:rounded-full min-h-[48px]"
             >
               <a
                 href={`https://wa.me/${phone}`}
@@ -159,14 +152,14 @@ export default function Hero() {
                 aria-label="Message Kuwait Computer Repair On Call on WhatsApp"
                 onClick={() => trackConversion('whatsapp_click', { cta_name: 'hero_mobile_whatsapp', button_position: 'hero_mobile' })}
               >
-                <MessageCircle className="w-5 h-5 mr-2" aria-hidden="true" />
-                WhatsApp Us
+                <MessageCircle className="w-5 h-5 mr-1.5" aria-hidden="true" />
+                WhatsApp
               </a>
             </Button>
           </div>
 
-          <p className="text-slate-400 text-sm text-center font-medium mt-3">
-            {rating}★ Google rating · Trusted by {repairsStat?.value ?? '500+'} customers across Kuwait
+          <p className="text-slate-400 text-xs sm:text-sm text-center font-medium mt-3">
+            <span className="text-cyan-400 font-bold">{rating}★</span> Google rating · Trusted across Kuwait
           </p>
         </div>
       </section>
