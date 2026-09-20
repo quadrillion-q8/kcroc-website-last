@@ -61,7 +61,6 @@ const CaseStudyTemplate = lazy(() => import('./pages/templates/CaseStudyTemplate
 const BlogLaptopRepair = lazy(() => import('./pages/BlogLaptopRepair'));
 const BlogScreenProtection = lazy(() => import('./pages/BlogScreenProtection'));
 const GamingPCCooling = lazy(() => import('./pages/GamingPCCooling'));
-const ScreenProtectionTips = lazy(() => import('./pages/ScreenProtectionTips'));
 
 // Content Pillars & Clusters
 const LaptopBuyingGuide = lazy(() => import('./pages/LaptopBuyingGuide'));
@@ -161,8 +160,6 @@ export const routes: RouteObject[] = [
           // deploy target without vercel.json's redirects applied.
           { path: 'guides/dell-inspiron-15-3000-overheating', element: <Navigate to="/guides/dell-laptop-overheating" replace /> },
           { path: 'guides/dell-overheating', element: <Navigate to="/guides/dell-laptop-overheating" replace /> },
-          { path: 'laptop-screen-protection-tips', element: <ScreenProtectionTips /> },
-          { path: 'blog/laptop-screen-protection-tips', element: <Navigate to="/laptop-screen-protection-tips" replace /> },
           { path: 'battery-replacement', element: <Navigate to="/battery-replacement-kuwait" replace /> },
           // 🩹 FIX: was a static path with no `:slug` param, so
           // BlogPostTemplate's useParams<{slug}>() read undefined and could
