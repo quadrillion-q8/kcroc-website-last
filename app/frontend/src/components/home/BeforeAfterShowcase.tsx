@@ -51,7 +51,7 @@ export const BeforeAfterShowcase = () => {
           className="mb-4 sm:mb-16"
         />
 
-        <div className="scroll-row gap-3 -mx-4 px-4 md:mx-0 md:px-0 md:grid md:grid-cols-2 md:gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
           {caseStudies.map((c) => {
             const before = c.featuredImage?.thumbnail;
             const after = c.featuredImage?.hero;
@@ -60,7 +60,7 @@ export const BeforeAfterShowcase = () => {
             return (
               <div
                 key={c.id}
-                className="scroll-row-item w-[85%] md:w-auto bg-slate-900/30 border border-slate-800 hover:border-cyan-500/30 rounded-3xl overflow-hidden transition-all"
+                className="bg-slate-900/30 border border-slate-800 hover:border-cyan-500/30 rounded-3xl overflow-hidden transition-all"
               >
                 {hasImages && (
                   <div className="grid grid-cols-2">
