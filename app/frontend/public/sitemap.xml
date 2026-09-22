@@ -44,11 +44,16 @@
     <priority>0.5</priority>
   </url>
   <url>
-  <url>
     <loc>https://www.computerrepairkuwait.com/blog</loc>
     <lastmod>2026-09-17T03:38:00+03:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.computerrepairkuwait.com/blog/windows-11-100-disk-usage-causes-solutions</loc>
+    <lastmod>2026-09-22T00:00:00+03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.computerrepairkuwait.com/about</loc>
