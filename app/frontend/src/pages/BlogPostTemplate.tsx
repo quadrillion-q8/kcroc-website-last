@@ -101,6 +101,19 @@ const AUTHOR_URL = `${business.websiteUrl}/author/imran`;
 const AUTHOR_IMAGE_URL =
   'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto:good,w_800,c_limit/KCROC-Owner-Image_zpdyg4';
 
+const TECHNICAL_SOURCE_LABELS: Record<string, string> = {
+  'https://support.microsoft.com/en-us/windows/experience/performance-optimization/tips-to-improve-pc-performance-in-windows':
+    'Microsoft Support — Tips to improve PC performance in Windows',
+  'https://support.microsoft.com/en-us/windows/experience/storage-filemanagement/storage-settings-in-windows':
+    'Microsoft Support — Storage settings in Windows',
+  'https://support.microsoft.com/en-us/windows/experience/storage-filemanagement/free-up-drive-space-in-windows':
+    'Microsoft Support — Free up drive space in Windows',
+  'https://support.microsoft.com/en-us/windows/experience/storage-filemanagement/defragment-optimize-your-data-drives-in-windows':
+    'Microsoft Support — Defragment / optimize your data drives in Windows',
+};
+
+const getTechnicalSourceLabel = (url: string) => TECHNICAL_SOURCE_LABELS[url] ?? 'Microsoft Support source';
+
 const linkTechnicalSources = (text: string) => {
   const urlRegex = /(https:\/\/[^\s]+)/g;
   const parts = text.split(urlRegex);
@@ -113,7 +126,7 @@ const linkTechnicalSources = (text: string) => {
         rel="noopener noreferrer"
         className="text-cyan-400 hover:text-cyan-300 underline underline-offset-2"
       >
-        Manufacturer source
+        {getTechnicalSourceLabel(part)}
       </a>
     ) : (
       <React.Fragment key={index}>{part}</React.Fragment>
