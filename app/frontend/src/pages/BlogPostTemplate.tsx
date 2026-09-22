@@ -23,6 +23,16 @@ const business = KCROC_GRAPH.business!;
 
 
 const STANDALONE_REPAIR_PATHS: Record<string, { title: string; intro: string; links: RelatedLinkItem[] }> = {
+  'windows-11-100-disk-usage-causes-solutions': {
+    title: 'Windows 11 100% Disk Usage: related repair paths',
+    intro: 'Once you identify persistent storage activity, use the matching KCROC service or problem path instead of changing Windows settings at random.',
+    links: [
+      { href: '/laptop-running-very-slow', label: 'Laptop Running Extremely Slow', description: 'For slow boots, freezing and persistent high disk usage across everyday tasks.' },
+      { href: '/ssd-ram-upgrade-kuwait', label: 'SSD & RAM Upgrade Kuwait', description: 'For confirmed storage or memory bottlenecks that can be solved with a compatible upgrade.' },
+      { href: '/laptop-repair-kuwait', label: 'Laptop Repair Kuwait', description: 'For deeper diagnosis when Windows, thermals, storage and hardware symptoms overlap.' },
+      { href: '/laptop-overheating-kuwait', label: 'Laptop Overheating', description: 'For cases where slow performance is accompanied by high temperatures or thermal throttling.' },
+    ],
+  },
   'how-often-clean-laptop-replace-thermal-paste-kuwait': {
     title: 'Laptop cooling: related repair paths',
     intro: 'If cleaning or thermal maintenance is no longer enough, use the repair path that matches the symptom.',
