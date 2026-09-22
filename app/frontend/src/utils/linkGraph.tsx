@@ -17,6 +17,11 @@ export const AutoLink: React.FC<AutoLinkProps> = ({ text, currentEntityId }) => 
   // Memoize the term dictionary so we only build this massive array once per render cycle
   const sortedTerms = useMemo(() => {
     const terms: { phrase: string; entityId: string; url: string; title: string }[] = [];
+    // Generic navigation labels should not become semantic article links.
+    // In particular, the entity title "Services" can collide with ordinary
+    // Windows phrasing such as "Windows services" and create misleading
+    // links to KCROC's /services page.
+    const excludedGenericPhrases = new Set(['service', 'services']);
 
     Object.values(KCROC_GRAPH.entities).forEach((entity: any) => {
       // 1. Skip inactive entities or the current page (No self-linking)
@@ -39,7 +44,8 @@ export const AutoLink: React.FC<AutoLinkProps> = ({ text, currentEntityId }) => 
       ];
 
       phrases.forEach(phrase => {
-        if (phrase && typeof phrase === 'string' && phrase.trim().length > 3) { // Ignore tiny words like "PC" to prevent false positives
+        const normalizedPhrase = typeof phrase === 'string' ? phrase.trim().toLowerCase() : '';
+        if (phrase && typeof phrase === 'string' && normalizedPhrase.length > 3 && !excludedGenericPhrases.has(normalizedPhrase)) {
           terms.push({
             phrase: phrase.trim(),
             entityId: entity.id,
