@@ -108,7 +108,11 @@ export const RootLayout: React.FC = () => {
           <Header />
 
           {/* Wrapper for all page content. Must remain transparent. */}
-          <main id="main-content" className="relative z-10 flex-grow flex flex-col pt-16 bg-transparent">
+          <main
+            id="main-content"
+            data-page-type={pathname === '/' ? 'home' : 'inner'}
+            className="relative z-10 flex-grow flex flex-col pt-16 bg-transparent"
+          >
             {/* 🚀 Protects the entire routing tree from white-screen crashes */}
             <ErrorBoundary>
               <Suspense fallback={
