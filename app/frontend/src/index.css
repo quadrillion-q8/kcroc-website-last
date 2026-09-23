@@ -103,3 +103,123 @@
     flex-shrink: 0;
   }
 }
+
+
+/* ==========================================================================
+   KCROC MOBILE CONSISTENCY LAYER
+   The homepage has intentionally compact mobile components. Many older
+   inner pages were authored with desktop-first spacing/heading utilities,
+   which made those pages feel much larger and less balanced on phones.
+   Keep the homepage untouched and normalize only inner pages below 768px.
+   ========================================================================== */
+@media (max-width: 767px) {
+  #main-content[data-page-type="inner"] {
+    width: 100%;
+    min-width: 0;
+    overflow-x: clip;
+  }
+
+  /* Consistent mobile typography: readable without oversized hero headings. */
+  #main-content[data-page-type="inner"] h1 {
+    font-size: clamp(1.85rem, 7.5vw, 2.35rem) !important;
+    line-height: 1.12 !important;
+    letter-spacing: -0.025em;
+    overflow-wrap: anywhere;
+  }
+
+  #main-content[data-page-type="inner"] h2 {
+    font-size: clamp(1.45rem, 6vw, 1.9rem) !important;
+    line-height: 1.18 !important;
+    overflow-wrap: anywhere;
+  }
+
+  #main-content[data-page-type="inner"] h3 {
+    font-size: 1.08rem !important;
+    line-height: 1.3 !important;
+    overflow-wrap: anywhere;
+  }
+
+  #main-content[data-page-type="inner"] h4 {
+    font-size: 1rem !important;
+    line-height: 1.35 !important;
+  }
+
+  /* Desktop-only utility sizes that otherwise create cramped mobile cards. */
+  #main-content[data-page-type="inner"] .text-6xl,
+  #main-content[data-page-type="inner"] .text-5xl {
+    font-size: clamp(1.85rem, 7.5vw, 2.35rem) !important;
+    line-height: 1.12 !important;
+  }
+
+  #main-content[data-page-type="inner"] .text-4xl {
+    font-size: clamp(1.7rem, 6.8vw, 2.15rem) !important;
+    line-height: 1.15 !important;
+  }
+
+  /* Keep common content grids from becoming 3/4 columns on narrow phones. */
+  #main-content[data-page-type="inner"] .grid-cols-4,
+  #main-content[data-page-type="inner"] .grid-cols-3 {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  /* Two-column cards remain compact like the homepage service grid. */
+  #main-content[data-page-type="inner"] .grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  /* Desktop card padding is often too generous on phones. */
+  #main-content[data-page-type="inner"] .p-12 {
+    padding: 1.25rem !important;
+  }
+
+  #main-content[data-page-type="inner"] .p-8 {
+    padding: 1rem !important;
+  }
+
+  /* Prevent long URLs, code, tables and technical strings from breaking the
+     viewport. Horizontal scrolling is retained where the content truly
+     needs a wider canvas (tables/code). */
+  #main-content[data-page-type="inner"] :is(p, li, a, h1, h2, h3, h4, blockquote) {
+    overflow-wrap: anywhere;
+    word-break: normal;
+  }
+
+  #main-content[data-page-type="inner"] pre,
+  #main-content[data-page-type="inner"] .overflow-x-auto {
+    max-width: 100%;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  #main-content[data-page-type="inner"] table {
+    max-width: 100%;
+  }
+
+  #main-content[data-page-type="inner"] img,
+  #main-content[data-page-type="inner"] video,
+  #main-content[data-page-type="inner"] iframe {
+    max-width: 100%;
+  }
+
+  /* Long-form content gets the same comfortable mobile rhythm as the
+     homepage: tighter gaps, but enough breathing room between sections. */
+  #main-content[data-page-type="inner"] .gap-12 {
+    gap: 1.5rem !important;
+  }
+
+  #main-content[data-page-type="inner"] .space-y-12 > :not([hidden]) ~ :not([hidden]) {
+    margin-top: 2rem !important;
+  }
+}
+
+/* Extra-small phones: give content a little more usable width. */
+@media (max-width: 380px) {
+  #main-content[data-page-type="inner"] .px-6 {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  #main-content[data-page-type="inner"] .px-8 {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+}
