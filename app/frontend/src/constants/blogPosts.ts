@@ -115,6 +115,8 @@ export interface BlogPost {
   richContent?: ContentBlock[]; // optional rich format — used when present
   image: string;
   date: string;
+  /** Optional article-specific technical review date shown in the author/review panel. */
+  technicalReviewDate?: string;
   author: string;
   category: string;
   readTime: string;
@@ -3163,6 +3165,7 @@ export const BLOG_POSTS: BlogPost[] = [
     ],
     image: "/images/blog/windows-11-laptop-multitasking.webp",
     date: "2026-09-26",
+    technicalReviewDate: "September 26, 2026",
     author: "Imran Natiq",
     category: "Laptop Performance",
     readTime: "18-22 min read",
