@@ -589,6 +589,15 @@ export const NAV_GRAPH = {
   ],
   "blogEntries": [
     {
+      "id": "blog-laptop-slow-2026",
+      "slug": "blog/why-is-my-laptop-so-slow-2026",
+      "title": "Why Is My Laptop So Slow in 2026? 15 Causes, Tests & Fixes",
+      "description": "Why is your laptop so slow in 2026? Diagnose 15 common causes including RAM, SSD/HDD, 100% disk usage, overheating, startup apps, Windows 11 and hardware faults.",
+      "iconKey": "laptop",
+      "date": "2026-09-26",
+      "primaryKeyword": "Laptop Running Slow"
+    },
+    {
       "id": "blog-gaming-laptop-cleaning-ar",
       "slug": "blog/ar/how-often-clean-laptop-replace-thermal-paste-kuwait",
       "title": "كل كم لازم تنظف لابتوب القيمنق وتغيّر المعجون الحراري في الكويت؟",
