@@ -130,7 +130,7 @@ const TECHNICAL_SOURCE_LABELS: Record<string, string> = {
   'https://support.microsoft.com/en-us/windows/experience/backup-recovery/recovery-options-in-windows':
     'Microsoft Support — Recovery options in Windows',
   'https://support.microsoft.com/en-us/windows/experience/compatibility/how-to-know-it-s-time-for-a-new-pc':
-    'Microsoft Support — How to know it's time for a new PC',
+    "Microsoft Support — How to know it's time for a new PC",
 };
 
 const getTechnicalSourceLabel = (url: string) => TECHNICAL_SOURCE_LABELS[url] ?? 'Microsoft Support source';
