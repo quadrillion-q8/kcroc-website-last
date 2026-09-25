@@ -210,11 +210,11 @@ export class NavigationCompiler {
 
     const bySlug = new Map(NAV_GRAPH.blogEntries.map((entry) => [entry.slug, toContentNavEntity(entry)]));
     const featuredPaths = [
+      'blog/why-is-my-laptop-so-slow-2026',
       'blog/laptop-buying-guide-kuwait-2026',
       'blog/intel-core-ultra-vs-amd-ryzen-ai',
       'blog/laptop-temperatures-kuwait-safe-cpu-gpu-temperatures',
       'blog/why-8gb-ram-is-no-longer-enough-for-windows-11',
-      'blog/10-reasons-why-people-are-dumping-windows-11',
       'blog/gaming-pc-mistakes-kuwait',
     ];
 
