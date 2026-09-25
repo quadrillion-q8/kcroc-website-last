@@ -95,6 +95,17 @@ const STANDALONE_REPAIR_PATHS: Record<string, { title: string; intro: string; li
       { href: '/case-studies/asus-rog-dead-motherboard-hawalli', label: 'ASUS ROG Repair Case Study', description: 'See a real gaming-motherboard repair example from KCROC.' },
     ],
   },
+  'why-is-my-laptop-so-slow-2026': {
+    title: 'Slow laptop: related KCROC repair paths',
+    intro: 'Match the measured bottleneck to the relevant KCROC service instead of replacing parts at random.',
+    links: [
+      { href: '/laptop-running-very-slow', label: 'Laptop Running Extremely Slow', description: 'For persistent slowdowns where the cause is not yet clear or several symptoms overlap.' },
+      { href: '/ssd-ram-upgrade-kuwait', label: 'SSD & RAM Upgrade Kuwait', description: 'For confirmed memory pressure, an old HDD, or a storage upgrade that fits the laptop.' },
+      { href: '/laptop-overheating-kuwait', label: 'Laptop Overheating', description: 'For slowdowns caused or accompanied by high temperature and thermal throttling.' },
+      { href: '/laptop-repair-kuwait', label: 'Laptop Repair Kuwait', description: 'For deeper hardware/software diagnosis when performance symptoms remain unexplained.' },
+      { href: '/motherboard-repair-kuwait', label: 'Motherboard Repair Kuwait', description: 'For measured board-level faults affecting power, storage, charging or system stability.' },
+    ],
+  },
 };
 
 const AUTHOR_URL = `${business.websiteUrl}/author/imran`;
@@ -110,6 +121,16 @@ const TECHNICAL_SOURCE_LABELS: Record<string, string> = {
     'Microsoft Support — Free up drive space in Windows',
   'https://support.microsoft.com/en-us/windows/experience/storage-filemanagement/defragment-optimize-your-data-drives-in-windows':
     'Microsoft Support — Defragment / optimize your data drives in Windows',
+  'https://support.microsoft.com/en-us/windows/security/windows-security/device-performance-and-health-in-the-windows-security-app':
+    'Microsoft Support — Device performance & health',
+  'https://support.microsoft.com/en-US/Windows/Experience/Startup-Boot/configure-startup-applications-in-windows':
+    'Microsoft Support — Configure Startup applications',
+  'https://support.microsoft.com/en-us/windows/security/threat-malware-protection/protect-your-pc-from-unwanted-software':
+    'Microsoft Support — Protect your PC from unwanted software',
+  'https://support.microsoft.com/en-us/windows/experience/backup-recovery/recovery-options-in-windows':
+    'Microsoft Support — Recovery options in Windows',
+  'https://support.microsoft.com/en-us/windows/experience/compatibility/how-to-know-it-s-time-for-a-new-pc':
+    'Microsoft Support — How to know it's time for a new PC',
 };
 
 const getTechnicalSourceLabel = (url: string) => TECHNICAL_SOURCE_LABELS[url] ?? 'Microsoft Support source';
