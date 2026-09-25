@@ -656,7 +656,7 @@ export default function BlogPostTemplate() {
                         Hardware Repair Engineer at KCROC, focused on laptop thermal troubleshooting, hardware testing and component-level repair in Kuwait.
                       </p>
                       <p className="text-xs text-slate-500 mt-2">
-                        Technical review: September 1, 2026 · Hawalli, Kuwait
+                        Technical review: {post.technicalReviewDate || 'September 1, 2026'} · Hawalli, Kuwait
                       </p>
                     </div>
                   </div>
