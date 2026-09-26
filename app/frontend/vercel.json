@@ -49,17 +49,6 @@
       "permanent": true
     },
     {
-      "source": "/:path((?!google[a-zA-Z0-9_-]*\\.html).*)",
-      "has": [
-        {
-          "type": "host",
-          "value": "kcroc-website-last.vercel.app"
-        }
-      ],
-      "destination": "https://www.computerrepairkuwait.com/:path*",
-      "permanent": true
-    },
-    {
       "source": "/screen-replacement-kuwait",
       "destination": "/laptop-screen-repair-kuwait",
       "permanent": true
