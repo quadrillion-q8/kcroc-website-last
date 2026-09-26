@@ -1,111 +1,27 @@
-// File: app/frontend/scripts/validation/validateGraph.ts
-import { KCROC_GRAPH } from '../../src/data/graph';
+// File: app/frontend/scripts/validateGraph.ts
+// Build-time wrapper for the Knowledge Graph integrity validator.
+import { validateGraph } from './validation/validateGraph';
 
-export async function validateGraph() {
-  const errors: string[] = [];
-  const warnings: string[] = [];
-  
-  const entities = Object.values(KCROC_GRAPH.entities);
-  const allEntityIds = new Set(Object.keys(KCROC_GRAPH.entities));
-  
-  const slugSet = new Set<string>();
-  const canonicalSet = new Set<string>();
-  const incomingMap = new Map<string, string[]>();
+async function run() {
+  console.log('🔍 Running KCROC Knowledge Graph integrity validation...');
+  const result = await validateGraph();
 
-  // The actual relational arrays used in the Knowledge Graph
-  const relationalKeys = [
-    'relatedServiceIds',
-    'relatedProblemIds',
-    'relatedBrandIds',
-    'relatedLocationIds',
-    'relatedCaseStudyIds',
-    'featuredFAQIds',
-    'featuredUSPIds'
-  ];
+  if (result.warnings.length > 0) {
+    console.warn(`⚠️ ${result.warnings.length} graph warning(s):`);
+    result.warnings.forEach((warning) => console.warn(`  - ${warning}`));
+  }
 
-  entities.forEach((entity: any) => {
-    // 1. Strict Schema Enforcement (Core Fields for ALL entities)
-    if (!entity.id || !entity.title || !entity.entityType) {
-      errors.push(`Structural error in [${entity.id || 'Unknown'}]: Missing ID, Title, or EntityType.`);
-    }
+  if (!result.passed) {
+    console.error(`❌ ${result.errors.length} graph error(s):`);
+    result.errors.forEach((error) => console.error(`  - ${error}`));
+    console.error('🛑 Build halted. Fix the knowledge-graph integrity errors above.');
+    process.exit(1);
+  }
 
-    // Determine if the entity is meant to generate a page/URL
-    const isRoutable = 'seo' in entity && 'slug' in entity;
-
-    // 2. SEO, Slug & Canonical Validation (Routable Entities ONLY)
-    if (isRoutable) {
-      if (typeof entity.slug !== 'string') {
-        errors.push(`[${entity.id}] Routable entity missing a valid slug.`);
-      } else {
-        if (slugSet.has(entity.slug)) {
-          errors.push(`[${entity.id}] Duplicate slug detected: /${entity.slug}`);
-        }
-        slugSet.add(entity.slug);
-      }
-
-      if (!entity.seo?.canonicalUrl) {
-        errors.push(`[${entity.id}] Routable entity missing canonicalUrl.`);
-      } else {
-        if (canonicalSet.has(entity.seo.canonicalUrl)) {
-          errors.push(`[${entity.id}] Duplicate canonical URL detected: ${entity.seo.canonicalUrl}`);
-        }
-        canonicalSet.add(entity.seo.canonicalUrl);
-      }
-    }
-
-    // 3. Graph Integrity & Broken Link Validation
-    let hasOutgoingLinks = false;
-    
-    relationalKeys.forEach(key => {
-      if (Array.isArray(entity[key])) {
-        entity[key].forEach((targetId: string) => {
-          hasOutgoingLinks = true;
-          
-          // Validate that the ID it points to actually exists in the graph
-          if (!allEntityIds.has(targetId)) {
-            errors.push(`[${entity.id}] Broken reference: '${key}' points to non-existent ID '${targetId}'.`);
-          }
-          
-          // Track incoming edges for orphan detection
-          const arr = incomingMap.get(targetId) || [];
-          arr.push(entity.id);
-          incomingMap.set(targetId, arr);
-        });
-      }
-    });
-
-    // Explicit resource/case-study path relationships are intentionally URL-based rather than ID-based.
-    // Validate their shape here so malformed resource/case-study links are caught even
-    // though they cannot participate in entity-ID incoming-edge counts.
-    if (Array.isArray(entity.relatedResourcePaths)) {
-      entity.relatedResourcePaths.forEach((resource: any) => {
-        hasOutgoingLinks = true;
-        if (!resource || typeof resource.label !== 'string' || typeof resource.path !== 'string' || !resource.path.startsWith('/')) {
-          errors.push(`[${entity.id}] Invalid relatedResourcePaths entry: expected { label, path } with an absolute site path.`);
-        }
-      });
-    }
-
-    if (entity.relatedCaseStudyPath !== undefined) {
-      hasOutgoingLinks = true;
-      const cs = entity.relatedCaseStudyPath;
-      if (!cs || typeof cs.label !== 'string' || typeof cs.path !== 'string' || !cs.path.startsWith('/')) {
-        errors.push(`[${entity.id}] Invalid relatedCaseStudyPath: expected { label, path } with an absolute site path.`);
-      }
-    }
-    
-    entity._hasOutgoing = hasOutgoingLinks;
-  });
-
-  // 4. Integrity Post-Process (Orphan Detection)
-  entities.forEach((e: any) => {
-    // Root level configurations and singletons are naturally unlinked, exclude them from orphan warnings
-    const isSingletonOrRoot = ['Business', 'WebPage', 'Stats', 'Footer', 'Reviews'].includes(e.entityType);
-    
-    if (!isSingletonOrRoot && !incomingMap.has(e.id) && !e._hasOutgoing) {
-      warnings.push(`Orphan entity detected (no incoming/outgoing links): ${e.id} (${e.entityType})`);
-    }
-  });
-
-  return { passed: errors.length === 0, errors, warnings };
+  console.log(`✅ Knowledge Graph integrity passed (${result.errors.length} errors, ${result.warnings.length} warnings).`);
 }
+
+run().catch((error) => {
+  console.error('❌ Knowledge Graph validation crashed:', error);
+  process.exit(1);
+});
