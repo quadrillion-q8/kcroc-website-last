@@ -10,7 +10,7 @@ import { IMAGES } from '../constants/images';
 export const rawGraphData: RawGraphData = {
   metadata: {
     version: '3.6.4',
-    lastUpdated: '2026-09-20T04:20:00+03:00',
+    lastUpdated: '2026-09-26T00:00:00+03:00',
     environment: 'production'
   },
 
