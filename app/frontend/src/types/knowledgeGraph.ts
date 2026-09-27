@@ -209,6 +209,7 @@ export const ServiceSchema = RoutableEntitySchema.extend({
     path: z.string(),
   }).optional(),
   relatedCaseStudyIds: z.array(z.string()).default([]),
+  relatedLocationIds: z.array(z.string()).default([]),
   technicalOverview: z.object({
     heading: z.string(),
     paragraphs: z.array(z.string()),
@@ -240,6 +241,13 @@ export const LocationSchema = RoutableEntitySchema.extend({
     height: z.number().optional(),
     caption: z.string().optional(),
   }).optional(),
+  // Optional local copy lets priority service-area pages carry a genuinely
+  // distinct local angle without creating duplicate free-text in the template.
+  localIntro: z.string().optional(),
+  localHighlights: z.array(z.object({
+    title: z.string(),
+    description: z.string(),
+  })).default([]),
   // Explicit local topical relationships keep location hubs aligned with the
   // service/problem/brand graph used by the UI.
   relatedServiceIds: z.array(z.string()).default([]),
@@ -313,6 +321,7 @@ export const BrandSchema = RoutableEntitySchema.extend({
     path: z.string(),
   })).default([]),
   relatedCaseStudyIds: z.array(z.string()).default([]),
+  relatedLocationIds: z.array(z.string()).default([]),
   faqs: z.array(z.object({
     id: z.string(),
     title: z.string(),
