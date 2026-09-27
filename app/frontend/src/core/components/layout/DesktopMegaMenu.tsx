@@ -47,7 +47,8 @@ export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnte
     ).values()
   );
   const hasMenuItems = allMenuItems.length > 0;
-  const PANEL_WIDTH = hasMenuItems ? 1040 : 420;
+  const isAboutMenu = config.id === 'about_mega';
+  const PANEL_WIDTH = isAboutMenu ? 760 : (hasMenuItems ? 1040 : 420);
 
   const getClampedLeft = () => {
     if (typeof window === 'undefined') return '50%';
@@ -147,34 +148,100 @@ export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnte
     >
       <div className="bg-slate-900 border border-slate-700/60 rounded-2xl shadow-2xl shadow-black/60 overflow-hidden flex flex-col">
         
-        {/* All menu destinations use the same compact fitted-card design. */}
-        {hasMenuItems && (
-          <div className="p-4 grid grid-cols-3 gap-3 bg-slate-900/50">
-            {allMenuItems.map(entity => {
-              const Icon = getIcon(entity.iconKey);
-              return (
-                <Link
-                  key={entity.slug}
-                  to={`/${entity.slug}`}
-                  role="menuitem"
-                  tabIndex={isOpen ? 0 : -1}
-                  onMouseEnter={() => prefetchRoute(entity.slug)}
-                  onClick={() => {
-                    trackConversion('cta_click', { cta_name: 'mega_menu_card', button_position: 'header' });
-                    onClose();
-                  }}
-                  className="group min-w-0 flex items-center gap-3 p-3 rounded-xl bg-slate-800/40 hover:bg-cyan-500/10 border border-slate-700/40 hover:border-cyan-500/40 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
-                >
-                  <div className="w-8 h-8 rounded-lg bg-cyan-500/15 border border-cyan-500/25 flex items-center justify-center shrink-0">
-                    <Icon className="w-4 h-4 text-cyan-400" aria-hidden="true" />
+        {/* About keeps the original two-part shape: featured cards on top,
+            followed by a compact Service Areas list. All other menus use the
+            new all-destinations-as-cards design. */}
+        {isAboutMenu ? (
+          <>
+            {config.featured?.length ? (
+              <div className="p-5 grid grid-cols-3 gap-3 border-b border-slate-800/60 bg-slate-900/50">
+                {config.featured.map(entity => {
+                  const Icon = getIcon(entity.iconKey);
+                  return (
+                    <Link
+                      key={entity.slug}
+                      to={`/${entity.slug}`}
+                      role="menuitem"
+                      tabIndex={isOpen ? 0 : -1}
+                      onMouseEnter={() => prefetchRoute(entity.slug)}
+                      onClick={() => {
+                        trackConversion('cta_click', { cta_name: 'mega_menu_card', button_position: 'header' });
+                        onClose();
+                      }}
+                      className="group flex flex-col gap-3 p-4 rounded-xl bg-slate-800/40 hover:bg-cyan-500/10 border border-slate-700/40 hover:border-cyan-500/40 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+                    >
+                      <div className="w-9 h-9 rounded-lg bg-cyan-500/15 border border-cyan-500/25 flex items-center justify-center shrink-0">
+                        <Icon className="w-4 h-4 text-cyan-400" aria-hidden="true" />
+                      </div>
+                      <div>
+                        <p className="text-sm font-bold text-white group-hover:text-cyan-400 transition-colors leading-snug mb-1">{entity.title}</p>
+                        <p className="text-xs text-slate-400 leading-relaxed line-clamp-2">{entity.description}</p>
+                      </div>
+                    </Link>
+                  );
+                })}
+              </div>
+            ) : null}
+
+            <div className="p-4 flex flex-col gap-2 bg-brand-dark">
+              {config.sections.map((section, idx) => (
+                <div key={idx} className="flex flex-col gap-2">
+                  {section.title && (
+                    <span className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1 px-3">
+                      {section.title}
+                    </span>
+                  )}
+                  <div className="grid grid-cols-4 gap-2">
+                    {section.items.map(entity => (
+                      <Link
+                        key={entity.slug}
+                        to={`/${entity.slug}`}
+                        role="menuitem"
+                        tabIndex={isOpen ? 0 : -1}
+                        onMouseEnter={() => prefetchRoute(entity.slug)}
+                        onClick={() => {
+                          trackConversion('cta_click', { cta_name: 'mega_menu_link', button_position: 'header' });
+                          onClose();
+                        }}
+                        className="text-sm font-medium px-3 py-2 rounded-lg text-slate-300 hover:text-cyan-400 hover:bg-slate-800/60 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+                      >
+                        {entity.title}
+                      </Link>
+                    ))}
                   </div>
-                  <p className="min-w-0 text-sm font-bold text-white group-hover:text-cyan-400 transition-colors leading-snug line-clamp-2">
-                    {entity.title}
-                  </p>
-                </Link>
-              );
-            })}
-          </div>
+                </div>
+              ))}
+            </div>
+          </>
+        ) : (
+          hasMenuItems && (
+            <div className="p-4 grid grid-cols-3 gap-3 bg-slate-900/50">
+              {allMenuItems.map(entity => {
+                const Icon = getIcon(entity.iconKey);
+                return (
+                  <Link
+                    key={entity.slug}
+                    to={`/${entity.slug}`}
+                    role="menuitem"
+                    tabIndex={isOpen ? 0 : -1}
+                    onMouseEnter={() => prefetchRoute(entity.slug)}
+                    onClick={() => {
+                      trackConversion('cta_click', { cta_name: 'mega_menu_card', button_position: 'header' });
+                      onClose();
+                    }}
+                    className="group min-w-0 flex items-center gap-3 p-3 rounded-xl bg-slate-800/40 hover:bg-cyan-500/10 border border-slate-700/40 hover:border-cyan-500/40 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+                  >
+                    <div className="w-8 h-8 rounded-lg bg-cyan-500/15 border border-cyan-500/25 flex items-center justify-center shrink-0">
+                      <Icon className="w-4 h-4 text-cyan-400" aria-hidden="true" />
+                    </div>
+                    <p className="min-w-0 text-sm font-bold text-white group-hover:text-cyan-400 transition-colors leading-snug line-clamp-2">
+                      {entity.title}
+                    </p>
+                  </Link>
+                );
+              })}
+            </div>
+          )
         )}
 
       </div>
