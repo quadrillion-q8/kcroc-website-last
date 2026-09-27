@@ -59,7 +59,7 @@ export class NavigationCompiler {
       slug: 'services',
       entityType: 'Page' as any,
       primaryKeyword: 'services',
-      title: 'All Services',
+      title: `All Services (${allServices.length})`,
       description: 'Browse every repair service we offer',
       iconKey: 'wrench',
       weight: 100,
@@ -73,7 +73,7 @@ export class NavigationCompiler {
       // full 2-row card grid (top 6 by weight) instead of only 3 cards
       // plus a crowded row of leftover pill-links.
       featured: sorted.slice(0, 6),
-      sections: [{ title: 'More', items: [servicesIndex, ...sorted.slice(6)] }]
+      sections: [{ title: `More Services (${Math.max(0, sorted.length - 6)})`, items: [servicesIndex, ...sorted.slice(6)] }]
     };
   }
 
@@ -90,7 +90,7 @@ export class NavigationCompiler {
       slug: 'brands',
       entityType: 'Page' as any,
       primaryKeyword: 'brands',
-      title: 'All Brands',
+      title: `All Brands (${allBrands.length})`,
       description: 'Every laptop brand we repair',
       iconKey: 'cpu',
       weight: 100,
@@ -103,7 +103,7 @@ export class NavigationCompiler {
       // 🎨 CONSISTENCY FIX: all 6 brands now get the Guides-style card
       // treatment, with just the index link tucked below.
       featured: allBrands.slice(0, 6),
-      sections: [{ title: 'More', items: [brandsIndex, ...allBrands.slice(6)] }]
+      sections: [{ title: allBrands.length > 6 ? `More Brands (${allBrands.length - 6})` : 'Browse All Brands', items: [brandsIndex, ...allBrands.slice(6)] }]
     };
   }
 
@@ -119,7 +119,7 @@ export class NavigationCompiler {
       slug: 'problems',
       entityType: 'Page' as any,
       primaryKeyword: 'problems',
-      title: 'All Problems',
+      title: `All Problems (${allProblems.length})`,
       description: 'Every issue we diagnose and repair',
       iconKey: 'shield',
       weight: 100,
@@ -133,7 +133,7 @@ export class NavigationCompiler {
       // Guides; the remaining 8 (14 total) sit in the "More" section as
       // compact links rather than crowding the card grid.
       featured: sortedProblems.slice(0, 6),
-      sections: [{ title: 'More', items: [problemsIndex, ...sortedProblems.slice(6)] }]
+      sections: [{ title: `More Problems (${Math.max(0, sortedProblems.length - 6)})`, items: [problemsIndex, ...sortedProblems.slice(6)] }]
     };
   }
 
@@ -160,7 +160,7 @@ export class NavigationCompiler {
       sections: [{
         title: 'Browse All',
         items: [
-          { id: 'cs_index', slug: 'case-studies', title: 'All Case Studies', description: '', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'cases', weight: 100, commercialIntent: 'info' },
+          { id: 'cs_index', slug: 'case-studies', title: `All Case Studies (${allCaseStudies.length})`, description: '', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'cases', weight: 100, commercialIntent: 'info' },
           ...allCaseStudies.slice(6)
         ]
       }]
@@ -190,7 +190,7 @@ export class NavigationCompiler {
       // 🎨 CONSISTENCY FIX: same 6-card grid as the Services menu (same
       // underlying list), matching the Guides menu's layout.
       featured: sorted.slice(0, 6),
-      sections: [{ title: 'More', items: [priceIndex, ...sorted.slice(6)] }]
+      sections: [{ title: `More Pricing (${Math.max(0, sorted.length - 6)})`, items: [priceIndex, ...sorted.slice(6)] }]
     };
   }
 
@@ -208,7 +208,7 @@ export class NavigationCompiler {
       commercialIntent: 'informational',
     });
 
-    const bySlug = new Map(NAV_GRAPH.blogEntries.map((entry) => [entry.slug, toContentNavEntity(entry)]));
+    const bySlug = new Map<string, NavEntity>(NAV_GRAPH.blogEntries.map((entry) => [entry.slug, toContentNavEntity(entry)]));
     const featuredPaths = [
       'blog/why-is-my-laptop-so-slow-2026',
       'blog/laptop-buying-guide-kuwait-2026',
@@ -218,10 +218,20 @@ export class NavigationCompiler {
       'blog/gaming-pc-mistakes-kuwait',
     ];
 
-    const featured = featuredPaths
+    const selectedFeatured = featuredPaths
       .map((path) => bySlug.get(path))
       .filter((item): item is NavEntity => Boolean(item));
 
+    // Keep the curated cards, but backfill them from the newest entries if a
+    // slug is renamed/removed. This prevents a stale hard-coded path from
+    // silently shrinking the menu.
+    const selectedIds = new Set(selectedFeatured.map((item) => item.id));
+    const fallbackFeatured = NAV_GRAPH.blogEntries
+      .map(toContentNavEntity)
+      .filter((item) => !selectedIds.has(item.id))
+      .slice(0, Math.max(0, 6 - selectedFeatured.length));
+
+    const featured = [...selectedFeatured, ...fallbackFeatured];
     const featuredIds = new Set(featured.map((item) => item.id));
     const allOthers = NAV_GRAPH.blogEntries
       .map(toContentNavEntity)
@@ -230,8 +240,8 @@ export class NavigationCompiler {
     const blogIndex: NavEntity = {
       id: 'blog_index',
       slug: 'blog',
-      title: 'All Posts',
-      description: 'Browse all KCROC repair articles and technical updates',
+      title: `All Posts (${NAV_GRAPH.blogEntries.length})`,
+      description: `Browse all ${NAV_GRAPH.blogEntries.length} unique KCROC blog articles`,
       iconKey: 'laptop',
       entityType: 'Page' as any,
       primaryKeyword: 'blog',
@@ -244,7 +254,7 @@ export class NavigationCompiler {
       title: 'Blog & Updates',
       featured,
       sections: [{
-        title: 'More',
+        title: `More Articles (${allOthers.length})`,
         items: [blogIndex, ...allOthers],
       }],
     };
@@ -264,7 +274,7 @@ export class NavigationCompiler {
       commercialIntent: 'informational',
     });
 
-    const bySlug = new Map(NAV_GRAPH.guideEntries.map((entry) => [entry.slug, toContentNavEntity(entry)]));
+    const bySlug = new Map<string, NavEntity>(NAV_GRAPH.guideEntries.map((entry) => [entry.slug, toContentNavEntity(entry)]));
     const featuredPaths = [
       'guides/laptop-wont-turn-on',
       'guides/dell-laptop-overheating',
@@ -288,7 +298,7 @@ export class NavigationCompiler {
     const guidesIndex: NavEntity = {
       id: 'guides_index',
       slug: 'guides',
-      title: 'All Guides',
+      title: `All Guides (${NAV_GRAPH.guideEntries.length})`,
       description: 'Browse every KCROC troubleshooting and repair guide',
       iconKey: 'laptop',
       entityType: 'Page' as any,
@@ -301,7 +311,7 @@ export class NavigationCompiler {
       id: 'guides_mega',
       title: 'DIY & Repair Guides',
       featured,
-      sections: [{ title: 'More', items: [guidesIndex, ...additional] }],
+      sections: [{ title: additional.length ? `More Guides (${additional.length})` : 'Browse All Guides', items: [guidesIndex, ...additional] }],
     };
   }
 
@@ -322,24 +332,22 @@ export class NavigationCompiler {
         { id: 'a4', slug: 'privacy-security-kuwait', title: 'Privacy & Security', description: 'How we protect your data and devices', iconKey: 'shield', entityType: 'Page' as any, primaryKeyword: 'privacy', weight: 0, commercialIntent: 'info' },
       ],
       sections: [
-        // Dedicated Locations Section
         {
-          title: 'Service Areas',
-          items: [
-            { id: 'loc-hawalli', slug: 'location/hawalli', title: 'Hawalli (Lab)', description: '', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'hawalli', weight: 0, commercialIntent: 'info' },
-            { id: 'loc-salmiya', slug: 'location/salmiya', title: 'Salmiya', description: '', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'salmiya', weight: 0, commercialIntent: 'info' },
-            { id: 'loc-farwaniya', slug: 'location/farwaniya', title: 'Farwaniya', description: '', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'farwaniya', weight: 0, commercialIntent: 'info' },
-            { id: 'loc-ahmadi', slug: 'location/ahmadi', title: 'Ahmadi', description: '', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'ahmadi', weight: 0, commercialIntent: 'info' },
-            { id: 'loc-jahra', slug: 'location/jahra', title: 'Jahra', description: '', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'jahra', weight: 0, commercialIntent: 'info' },
-            { id: 'loc-fahaheel', slug: 'location/fahaheel', title: 'Fahaheel', description: '', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'fahaheel', weight: 0, commercialIntent: 'info' },
-            { id: 'loc-mangaf', slug: 'location/mangaf', title: 'Mangaf', description: '', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'mangaf', weight: 0, commercialIntent: 'info' },
-            { id: 'loc-abu-halifa', slug: 'location/abu-halifa', title: 'Abu Halifa', description: '', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'abu halifa', weight: 0, commercialIntent: 'info' },
-            { id: 'loc-jabriya', slug: 'location/jabriya', title: 'Jabriya', description: '', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'jabriya', weight: 0, commercialIntent: 'info' },
-            { id: 'loc-mubarak-al-kabeer', slug: 'location/mubarak-al-kabeer', title: 'Mubarak Al-Kabeer', description: '', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'mubarak al-kabeer', weight: 0, commercialIntent: 'info' },
-            { id: 'loc-fintas', slug: 'location/fintas', title: 'Fintas', description: '', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'fintas', weight: 0, commercialIntent: 'info' },
-            { id: 'loc-sabah-al-salem', slug: 'location/sabah-al-salem', title: 'Sabah Al-Salem', description: '', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'sabah al-salem', weight: 0, commercialIntent: 'info' },
-          ]
-        }
+          title: `Service Areas (${NAV_GRAPH.locations?.length ?? 0})`,
+          items: (NAV_GRAPH.locations ?? [])
+            .map((location) => ({
+              id: location.id,
+              slug: `location/${location.slug}`,
+              title: location.title === 'Hawalli Repair Center' ? 'Hawalli (Lab)' : location.title,
+              description: '',
+              iconKey: 'map-pin',
+              entityType: 'Page' as any,
+              primaryKeyword: location.title.toLowerCase(),
+              weight: location.navigationPriority ?? 0,
+              commercialIntent: 'info',
+            }))
+            .sort((a, b) => b.weight - a.weight),
+        },
       ]
     };
   }
