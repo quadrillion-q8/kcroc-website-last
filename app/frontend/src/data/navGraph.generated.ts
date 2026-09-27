@@ -587,6 +587,86 @@ export const NAV_GRAPH = {
       "description": "Rapid turnaround logistics and OEM display replacement for a corporate client."
     }
   ],
+  "locations": [
+    {
+      "id": "loc-hawalli",
+      "slug": "hawalli",
+      "title": "Hawalli Repair Center",
+      "navigationPriority": 100
+    },
+    {
+      "id": "loc-kuwait-city",
+      "slug": "kuwait-city",
+      "title": "Kuwait City",
+      "navigationPriority": 95
+    },
+    {
+      "id": "loc-salmiya",
+      "slug": "salmiya",
+      "title": "Salmiya",
+      "navigationPriority": 90
+    },
+    {
+      "id": "loc-farwaniya",
+      "slug": "farwaniya",
+      "title": "Farwaniya",
+      "navigationPriority": 80
+    },
+    {
+      "id": "loc-jahra",
+      "slug": "jahra",
+      "title": "Jahra",
+      "navigationPriority": 70
+    },
+    {
+      "id": "loc-ahmadi",
+      "slug": "ahmadi",
+      "title": "Ahmadi",
+      "navigationPriority": 60
+    },
+    {
+      "id": "loc-fahaheel",
+      "slug": "fahaheel",
+      "title": "Fahaheel",
+      "navigationPriority": 55
+    },
+    {
+      "id": "loc-mangaf",
+      "slug": "mangaf",
+      "title": "Mangaf",
+      "navigationPriority": 50
+    },
+    {
+      "id": "loc-abu-halifa",
+      "slug": "abu-halifa",
+      "title": "Abu Halifa",
+      "navigationPriority": 45
+    },
+    {
+      "id": "loc-jabriya",
+      "slug": "jabriya",
+      "title": "Jabriya",
+      "navigationPriority": 40
+    },
+    {
+      "id": "loc-mubarak-al-kabeer",
+      "slug": "mubarak-al-kabeer",
+      "title": "Mubarak Al-Kabeer",
+      "navigationPriority": 35
+    },
+    {
+      "id": "loc-fintas",
+      "slug": "fintas",
+      "title": "Fintas",
+      "navigationPriority": 30
+    },
+    {
+      "id": "loc-sabah-al-salem",
+      "slug": "sabah-al-salem",
+      "title": "Sabah Al-Salem",
+      "navigationPriority": 25
+    }
+  ],
   "blogEntries": [
     {
       "id": "blog-laptop-slow-2026",
