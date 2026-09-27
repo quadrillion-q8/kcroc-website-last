@@ -43,16 +43,20 @@ const STANDALONE_REPAIR_PATHS: Record<string, { title: string; intro: string; li
       { href: '/motherboard-repair-kuwait', label: 'Motherboard Repair Kuwait', description: 'For board-level faults that remain after cooling checks.' },
     ],
   },
-  'laptop-wont-turn-on': {
+  'laptop-wont-turn-on-causes-fixes': {
     title: "Laptop won't turn on: related repair paths",
     intro: 'Use the symptom that best matches what the laptop is actually doing before choosing a repair destination.',
     links: [
-      { href: '/windows-wont-boot-kuwait', label: "Windows Won't Boot", description: 'Use this path when the laptop powers on but Windows cannot complete startup.' },
-      { href: '/blue-screen-of-death-bsod-fix-kuwait', label: 'BSOD Diagnostic', description: 'For repeated Windows blue screens after the machine successfully powers on.' },
-      { href: '/laptop-plugged-in-not-charging', label: 'Laptop Plugged in but Not Charging', description: 'For charging-light, adapter, port, or battery symptoms rather than a true no-power case.' },
-      { href: '/guides/laptop-battery-warning-signs', label: 'Laptop Battery Warning Signs', description: 'For rapid drain, reduced battery capacity, swelling, or other signs that the battery itself may be failing.' },
-      { href: '/battery-replacement-kuwait', label: 'Laptop Battery Replacement Kuwait', description: 'For professional battery testing and replacement when battery failure is confirmed.' },
-      { href: '/motherboard-repair-kuwait', label: 'Motherboard Repair Kuwait', description: 'For measured board-level diagnosis when external power checks do not explain the failure.' },
+      { href: '/laptop-repair-kuwait', label: 'Laptop Repair Kuwait', description: 'The broader repair and diagnosis path when the exact cause of the no-start problem is not yet known.' },
+      { href: '/motherboard-repair-kuwait', label: 'Motherboard Repair Kuwait', description: 'For measured board-level power, charging, short-circuit, or component faults.' },
+      { href: '/laptop-screen-repair-kuwait', label: 'Laptop Screen Repair', description: 'For laptops that power on but remain on a black or failed internal display.' },
+      { href: '/battery-replacement-kuwait', label: 'Battery Replacement', description: 'For confirmed battery wear, swelling, failed cells, or battery-related shutdown symptoms.' },
+      { href: '/problems', label: 'Laptop Problems', description: 'Browse the broader laptop and computer problem hub when the startup symptom is still being classified.' },
+      { href: '/blog/why-is-my-laptop-so-slow-2026', label: "Why Is My Laptop So Slow in 2026?", description: 'Related troubleshooting for performance problems that can be confused with general startup or boot complaints.' },
+      { href: '/laptop-overheating-kuwait', label: 'Laptop Overheating', description: 'For shutdowns or startup failures associated with excessive heat, thermal throttling, or cooling problems.' },
+      { href: '/windows-wont-boot-kuwait', label: "Windows Won't Boot", description: 'Use this path when the laptop powers on and reaches the boot or Windows stage but cannot start the operating system.' },
+      { href: '/gaming-pc-repair-kuwait', label: 'Gaming PC Repair', description: 'For related power, startup, GPU, or stability symptoms on gaming systems.' },
+      { href: '/contact', label: 'Contact / Booking', description: 'Contact KCROC to arrange diagnosis and repair after basic checks have been completed.' },
     ],
   },
   'laptop-temperatures-kuwait-safe-cpu-gpu-temperatures': {
@@ -518,7 +522,7 @@ export default function BlogPostTemplate() {
 
       <Head>
         <title>{post.seoTitle || `${post.title.length > 57 ? `${post.title.slice(0, 57)}…` : post.title} | KCROC`}</title>
-        <meta name="description" content={(post.description || post.excerpt).slice(0, 155)} />
+        <meta name="description" content={post.seoDescription || (post.description || post.excerpt).slice(0, 155)} />
         <link rel="canonical" href={pageUrl} />
         {post.arabicSlug && (
           <>
