@@ -1,12 +1,22 @@
 // File: app/frontend/src/core/components/layout/DesktopMegaMenu.tsx
 import React, { useEffect, useRef, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import { Apple, Laptop, Gamepad2, Cpu, Monitor, BatteryWarning, HardDrive, ShieldCheck, Wrench, ArrowRight } from 'lucide-react';
+import { Apple, Laptop, Gamepad2, Cpu, Monitor, BatteryWarning, HardDrive, ShieldCheck, Wrench, MapPin } from 'lucide-react';
 import { MegaMenuConfig } from '../../navigation/types';
 import { useAnalytics } from '../../analytics/AnalyticsProvider';
 
 const ICON_REGISTRY: Record<string, React.ElementType> = {
-  apple: Apple, laptop: Laptop, gaming: Gamepad2, cpu: Cpu, monitor: Monitor, battery: BatteryWarning, hardDrive: HardDrive, shield: ShieldCheck, wrench: Wrench
+  apple: Apple,
+  laptop: Laptop,
+  gaming: Gamepad2,
+  cpu: Cpu,
+  monitor: Monitor,
+  battery: BatteryWarning,
+  hardDrive: HardDrive,
+  'hard-drive': HardDrive,
+  shield: ShieldCheck,
+  wrench: Wrench,
+  'map-pin': MapPin,
 };
 const getIcon = (key: string) => ICON_REGISTRY[key] ?? Wrench;
 
@@ -25,9 +35,10 @@ export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnte
   const panelRef = useRef<HTMLDivElement>(null);
   const { trackConversion } = useAnalytics();
   
-  // Conditionally size the width based on whether there are featured cards
+  // Give content-heavy menus enough room for 4 compact columns while
+  // keeping the panel inside the viewport on smaller desktop widths.
   const hasFeatured = config.featured && config.featured.length > 0;
-  const PANEL_WIDTH = hasFeatured ? 680 : 300; 
+  const PANEL_WIDTH = hasFeatured ? 760 : 420;
 
   const getClampedLeft = () => {
     if (typeof window === 'undefined') return '50%';
@@ -86,9 +97,10 @@ export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnte
   }, [config.id, isOpen, onClose]);
 
   useEffect(() => {
+    if (!isOpen) return;
     document.addEventListener('keydown', handleKeyDown);
     return () => document.removeEventListener('keydown', handleKeyDown);
-  }, [handleKeyDown]);
+  }, [handleKeyDown, isOpen]);
 
   // When a keyboard user opens a menu from its header trigger, move focus
   // into the menu. Pointer/hover opening does not steal focus.
@@ -110,6 +122,7 @@ export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnte
       id={`mega-menu-${config.id}`}
       role="menu"
       aria-label={config.title}
+      aria-hidden={!isOpen}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
       style={{
@@ -117,10 +130,11 @@ export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnte
         top: '68px',
         left: getClampedLeft(),
         transform: 'translateX(-50%)',
-        width: `${PANEL_WIDTH}px`,
+        width: `min(${PANEL_WIDTH}px, calc(100vw - 32px))`,
+        maxHeight: 'calc(100vh - 84px)',
         zIndex: 9999,
       }}
-      className={`transition-all duration-200 origin-top ${isOpen ? 'opacity-100 scale-100 pointer-events-auto' : 'opacity-0 scale-95 pointer-events-none'}`}
+      className={`max-h-full overflow-y-auto transition-all duration-200 origin-top ${isOpen ? 'opacity-100 scale-100 pointer-events-auto' : 'opacity-0 scale-95 pointer-events-none'}`}
     >
       <div className="bg-slate-900 border border-slate-700/60 rounded-2xl shadow-2xl shadow-black/60 overflow-hidden flex flex-col">
         
@@ -134,6 +148,7 @@ export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnte
                   key={entity.slug}
                   to={`/${entity.slug}`}
                   role="menuitem"
+                  tabIndex={isOpen ? 0 : -1}
                   onMouseEnter={() => prefetchRoute(entity.slug)}
                   onClick={() => {
                     trackConversion('cta_click', { cta_name: 'mega_menu_card', button_position: 'header' });
@@ -159,22 +174,26 @@ export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnte
           {config.sections.map((section, idx) => (
             <div key={idx} className="flex flex-col gap-2">
               {section.title && <span className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1 px-3">{section.title}</span>}
-              <div className={hasFeatured ? "flex flex-wrap gap-2" : "flex flex-col gap-1"}>
-                {section.items.map(entity => (
+              <div className={hasFeatured ? "grid grid-cols-4 gap-2" : "grid grid-cols-2 gap-1"}>
+                {section.items.map(entity => {
+                  const isIndexLink = entity.id.endsWith('_index');
+                  return (
                   <Link
                     key={entity.slug}
                     to={`/${entity.slug}`}
                     role="menuitem"
+                    tabIndex={isOpen ? 0 : -1}
                     onMouseEnter={() => prefetchRoute(entity.slug)}
                     onClick={() => {
                       trackConversion('cta_click', { cta_name: 'mega_menu_link', button_position: 'header' });
                       onClose();
                     }}
-                    className="text-sm font-medium text-slate-300 hover:text-cyan-400 px-3 py-2 rounded-lg hover:bg-slate-800/60 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+                    className={`text-sm font-medium px-3 py-2 rounded-lg transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 ${isIndexLink ? 'col-span-full text-cyan-300 bg-cyan-500/10 border border-cyan-500/20 hover:bg-cyan-500/15' : 'text-slate-300 hover:text-cyan-400 hover:bg-slate-800/60'}`}
                   >
                     {entity.title}
                   </Link>
-                ))}
+                  );
+                })}
               </div>
             </div>
           ))}
