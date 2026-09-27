@@ -39,6 +39,7 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
   const relatedBrandIds = entity.relatedBrandIds ?? [];
   const relatedResourcePaths = entity.relatedResourcePaths ?? [];
   const relatedCaseStudyIds = entity.relatedCaseStudyIds ?? [];
+  const relatedLocationIds = entity.relatedLocationIds ?? [];
 
   const getContentImage = (placement: 'hero' | 'commonIssues' | 'coreFeatures' | 'process') =>
     entity.contentImages?.find((img) => img.placement === placement);
@@ -143,6 +144,9 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
                   </div>
                 </div>
               </div>
+              <Link to="/pricing" className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-cyan-400 hover:text-cyan-300">
+                See KCROC repair pricing and starting prices <ArrowRight className="w-4 h-4" aria-hidden="true" />
+              </Link>
             </div>
 
             {heroImage && (
@@ -473,6 +477,31 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
                 })}
               </div>
             )}
+          </section>
+        )}
+
+        {relatedLocationIds.length > 0 && (
+          <section className="max-w-7xl mx-auto px-6 py-12 border-t border-slate-800/50 relative z-10">
+            <h2 className="text-2xl font-bold mb-3 text-white flex items-center gap-3">
+              <MapPin className="w-6 h-6 text-cyan-400" /> Where We Handle This Repair
+            </h2>
+            <p className="text-sm text-slate-400 mb-7 max-w-3xl">
+              These are the Kuwait service areas most directly connected to this repair type. Pickup is arranged through KCROC rather than requiring a walk-in visit.
+            </p>
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+              {relatedLocationIds.map((id) => {
+                const location = KCROC_GRAPH.locations.find((item) => item.id === id);
+                return location ? (
+                  <Link
+                    key={id}
+                    to={`/location/${location.slug}`}
+                    className="rounded-xl border border-slate-800 bg-slate-900/50 px-4 py-4 text-sm font-bold text-slate-200 transition-colors hover:border-cyan-500/40 hover:text-cyan-300"
+                  >
+                    {location.title}
+                  </Link>
+                ) : null;
+              })}
+            </div>
           </section>
         )}
 
