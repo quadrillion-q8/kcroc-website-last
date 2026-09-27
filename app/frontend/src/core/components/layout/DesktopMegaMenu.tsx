@@ -35,10 +35,11 @@ export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnte
   const panelRef = useRef<HTMLDivElement>(null);
   const { trackConversion } = useAnalytics();
   
-  // Give content-heavy menus enough room for 4 compact columns while
-  // keeping the panel inside the viewport on smaller desktop widths.
+  // Compact desktop mega-menu: six small fitted cards in a 3×2 grid.
+  // The dropdown is a visual navigation surface; full inventories remain
+  // available through the section's "View All" destination.
   const hasFeatured = config.featured && config.featured.length > 0;
-  const PANEL_WIDTH = hasFeatured ? 760 : 420;
+  const PANEL_WIDTH = hasFeatured ? 1040 : 420;
 
   const getClampedLeft = () => {
     if (typeof window === 'undefined') return '50%';
@@ -138,10 +139,10 @@ export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnte
     >
       <div className="bg-slate-900 border border-slate-700/60 rounded-2xl shadow-2xl shadow-black/60 overflow-hidden flex flex-col">
         
-        {/* Only render the top grid if we actually have featured items */}
+        {/* Compact featured-card grid: 3 columns × 2 rows on desktop. */}
         {hasFeatured && (
-          <div className="p-5 grid grid-cols-3 gap-3 border-b border-slate-800/60 bg-slate-900/50">
-            {config.featured.map(entity => {
+          <div className="p-4 grid grid-cols-3 gap-3 bg-slate-900/50">
+            {config.featured.slice(0, 6).map(entity => {
               const Icon = getIcon(entity.iconKey);
               return (
                 <Link
@@ -154,50 +155,45 @@ export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnte
                     trackConversion('cta_click', { cta_name: 'mega_menu_card', button_position: 'header' });
                     onClose();
                   }}
-                  className="group flex flex-col gap-3 p-4 rounded-xl bg-slate-800/40 hover:bg-cyan-500/10 border border-slate-700/40 hover:border-cyan-500/40 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+                  className="group min-w-0 flex items-center gap-3 p-3 rounded-xl bg-slate-800/40 hover:bg-cyan-500/10 border border-slate-700/40 hover:border-cyan-500/40 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
                 >
-                  <div className="w-9 h-9 rounded-lg bg-cyan-500/15 border border-cyan-500/25 flex items-center justify-center shrink-0">
+                  <div className="w-8 h-8 rounded-lg bg-cyan-500/15 border border-cyan-500/25 flex items-center justify-center shrink-0">
                     <Icon className="w-4 h-4 text-cyan-400" aria-hidden="true" />
                   </div>
-                  <div>
-                    <p className="text-sm font-bold text-white group-hover:text-cyan-400 transition-colors leading-snug mb-1">{entity.title}</p>
-                    <p className="text-xs text-slate-400 leading-relaxed line-clamp-2">{entity.description}</p>
-                  </div>
+                  <p className="min-w-0 text-sm font-bold text-white group-hover:text-cyan-400 transition-colors leading-snug line-clamp-2">
+                    {entity.title}
+                  </p>
                 </Link>
               );
             })}
           </div>
         )}
-        
-        {/* Render the standard list items */}
-        <div className={`p-4 flex flex-col gap-2 ${hasFeatured ? 'bg-brand-dark' : 'bg-slate-900'}`}>
-          {config.sections.map((section, idx) => (
-            <div key={idx} className="flex flex-col gap-2">
-              {section.title && <span className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1 px-3">{section.title}</span>}
-              <div className={hasFeatured ? "grid grid-cols-4 gap-2" : "grid grid-cols-2 gap-1"}>
-                {section.items.map(entity => {
-                  const isIndexLink = entity.id.endsWith('_index');
-                  return (
-                  <Link
-                    key={entity.slug}
-                    to={`/${entity.slug}`}
-                    role="menuitem"
-                    tabIndex={isOpen ? 0 : -1}
-                    onMouseEnter={() => prefetchRoute(entity.slug)}
-                    onClick={() => {
-                      trackConversion('cta_click', { cta_name: 'mega_menu_link', button_position: 'header' });
-                      onClose();
-                    }}
-                    className={`text-sm font-medium px-3 py-2 rounded-lg transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 ${isIndexLink ? 'col-span-full text-cyan-300 bg-cyan-500/10 border border-cyan-500/20 hover:bg-cyan-500/15' : 'text-slate-300 hover:text-cyan-400 hover:bg-slate-800/60'}`}
-                  >
-                    {entity.title}
-                  </Link>
-                  );
-                })}
-              </div>
+
+        {/* Only show the section's index destination; remaining items stay on
+            the full index page instead of creating a second link-heavy panel. */}
+        {config.sections.map((section, idx) => {
+          const indexEntity = section.items.find(entity => entity.id.endsWith('_index'));
+          if (!indexEntity) return null;
+          return (
+            <div key={idx} className="px-4 pb-4 pt-1 bg-slate-900/50">
+              <Link
+                to={`/${indexEntity.slug}`}
+                role="menuitem"
+                tabIndex={isOpen ? 0 : -1}
+                onMouseEnter={() => prefetchRoute(indexEntity.slug)}
+                onClick={() => {
+                  trackConversion('cta_click', { cta_name: 'mega_menu_view_all', button_position: 'header' });
+                  onClose();
+                }}
+                className="group flex items-center justify-end gap-2 px-3 py-2 text-xs font-bold uppercase tracking-wider text-cyan-300 hover:text-cyan-200 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 rounded-lg"
+              >
+                <span>{indexEntity.title.replace(/^All /, 'View All ')}</span>
+                <span aria-hidden="true" className="text-sm transition-transform group-hover:translate-x-0.5">→</span>
+              </Link>
             </div>
-          ))}
-        </div>
+          );
+        })}
+
       </div>
     </div>
   );
