@@ -56,6 +56,14 @@ const AREAS_AR = [
   { slug: 'sabah-al-salem', title: 'صباح السالم' },
 ];
 
+const AR_COMMERCIAL_CLUSTER = [
+  { href: '/ar/computer-repair-kuwait', title: 'تصليح كمبيوتر في الكويت', desc: 'صفحة الخدمة العامة للكمبيوتر واللابتوب واللوحة الأم.' },
+  { href: '/ar/laptop-repair-kuwait', title: 'تصليح لابتوب في الكويت', desc: 'خدمات الشاشة والبطارية والشحن والتبريد واللوحة الأم.' },
+  { href: '/ar/motherboard-repair-kuwait', title: 'تصليح المذربورد واللوحة الأم', desc: 'تشخيص وإصلاح دوائر الطاقة والشحن والمكونات عندما يكون ذلك ممكنًا.' },
+  { href: '/ar/gaming-pc-repair-kuwait', title: 'تصليح Gaming PC في الكويت', desc: 'GPU والحرارة والطاقة والتبريد ومشاكل الأداء تحت الضغط.' },
+  { href: '/ar/laptop-screen-repair-kuwait', title: 'تصليح وتبديل شاشة اللابتوب', desc: 'تشخيص الشاشة السوداء والخطوط والوميض قبل طلب القطعة.' },
+];
+
 const HIGH_INTENT_AR = [
   { href: '/laptop-repair-kuwait', title: 'تصليح لابتوب في الكويت', desc: 'خدمة شاملة للأعطال الشائعة، الشحن، البطارية، الشاشة، المفصلات واللوحة الأم.' },
   { href: '/motherboard-repair-kuwait', title: 'تصليح اللوحة الأم', desc: 'تشخيص أعطال الطاقة والدوائر وإصلاح المكوّن المتضرر عندما يكون الإصلاح ممكنًا.' },
@@ -205,6 +213,25 @@ export default function NearMeAR() {
                   <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-slate-700 bg-brand-dark text-cyan-400"><service.icon className="h-5 w-5" aria-hidden="true" /></div>
                   <div><h3 className="font-bold text-white group-hover:text-cyan-300">{service.title}</h3><p className="mt-1 text-sm leading-relaxed text-slate-400">{service.description}</p></div>
                 </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Arabic commercial cluster */}
+      <section className="border-y border-slate-800/60 bg-brand-dark/40 px-4 py-12 sm:px-6 sm:py-20">
+        <div className="mx-auto max-w-6xl">
+          <div className="mb-10 max-w-3xl">
+            <p className="mb-2 text-xs font-bold uppercase tracking-widest text-cyan-400">الخدمات التجارية بالعربي</p>
+            <h2 className="text-3xl font-black text-white sm:text-4xl">ابدأ من صفحة الخدمة المناسبة لجهازك</h2>
+            <p className="mt-4 leading-loose text-slate-400">هذه الصفحات تجمع تفاصيل الخدمة مع المشاكل الشائعة، الماركات، مناطق الاستلام وطرق التواصل حتى تصل من نية البحث إلى طلب الإصلاح بشكل أوضح.</p>
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {AR_COMMERCIAL_CLUSTER.map((item) => (
+              <Link key={item.href} to={item.href} className="group rounded-2xl border border-slate-800 bg-slate-900/60 p-5 transition hover:border-cyan-500/50">
+                <h3 className="font-black text-white group-hover:text-cyan-300">{item.title}</h3>
+                <p className="mt-2 text-sm leading-6 text-slate-400">{item.desc}</p>
               </Link>
             ))}
           </div>
