@@ -72,6 +72,7 @@ export default function Header() {
   }, []);
 
   const handleMouseEnter = useCallback((megaId: string) => {
+    setSearchOpen(false);
     if (timerRef.current) clearTimeout(timerRef.current);
     timerRef.current = setTimeout(() => setActiveMegaId(megaId), INTENT_OPEN_DELAY);
   }, []);
@@ -166,7 +167,7 @@ export default function Header() {
               <span className="font-black text-white text-lg tracking-tight hidden sm:block">KCROC<span className="text-cyan-400">.</span></span>
             </Link>
 
-            <nav aria-label="Main navigation" className="hidden lg:flex items-center gap-1">
+            <nav aria-label="Main navigation" className="hidden lg:flex items-center gap-0">
               {navModel.header.map(link => {
                 const isGraphMatch = !!matchPath({ path: link.href, end: false }, location.pathname);
 
@@ -182,10 +183,11 @@ export default function Header() {
                         aria-controls={`mega-menu-${link.megaMenuId}`}
                         onClick={() => {
                           if (timerRef.current) clearTimeout(timerRef.current);
+                          setSearchOpen(false);
                           setActiveMegaId(prev => prev === link.megaMenuId ? null : link.megaMenuId!);
                         }}
                         onKeyDown={e => handleMegaTriggerKeyDown(e, link.megaMenuId!)}
-                        className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 ${isOpen || isGraphMatch ? 'text-cyan-400 bg-cyan-500/10' : 'text-slate-300 hover:text-white hover:bg-slate-800/60'}`}
+                        className={`flex items-center gap-1.5 px-3 py-2 rounded-lg whitespace-nowrap text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 ${isOpen || isGraphMatch ? 'text-cyan-400 bg-cyan-500/10' : 'text-slate-300 hover:text-white hover:bg-slate-800/60'}`}
                       >
                         {link.label}
                         <ChevronDown size={15} className={`transition-transform duration-200 ${isOpen ? 'rotate-180 text-cyan-400' : ''}`} aria-hidden="true" />
@@ -195,7 +197,7 @@ export default function Header() {
                 }
 
                 return (
-                  <Link key={link.id} to={link.href} className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 ${isGraphMatch ? 'text-cyan-400 bg-cyan-500/10' : 'text-slate-300 hover:text-white hover:bg-slate-800/60'}`}>
+                  <Link key={link.id} to={link.href} className={`px-3 py-2 rounded-lg text-sm font-medium whitespace-nowrap transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 ${isGraphMatch ? 'text-cyan-400 bg-cyan-500/10' : 'text-slate-300 hover:text-white hover:bg-slate-800/60'}`}>
                     {link.label}
                   </Link>
                 );
@@ -204,7 +206,11 @@ export default function Header() {
 
             <div className="hidden lg:flex items-center gap-3">
               <button
-                onClick={() => setSearchOpen(prev => !prev)}
+                onClick={() => {
+                  setActiveMegaId(null);
+                  setMobileOpen(false);
+                  setSearchOpen(prev => !prev);
+                }}
                 aria-expanded={searchOpen}
                 aria-controls="header-search-panel"
                 aria-label={searchOpen ? 'Close search' : 'Search'}
@@ -235,7 +241,11 @@ export default function Header() {
                 // under the 44×44px minimum. min-h/min-w-11 (44px) with a
                 // centered icon fixes this without changing the visual icon size.
                 className="min-h-11 min-w-11 flex items-center justify-center rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
-                onClick={() => setSearchOpen(prev => !prev)}
+                onClick={() => {
+                  setActiveMegaId(null);
+                  setMobileOpen(false);
+                  setSearchOpen(prev => !prev);
+                }}
                 aria-expanded={searchOpen}
                 aria-controls="header-search-panel"
                 aria-label={searchOpen ? 'Close search' : 'Search'}
@@ -245,7 +255,11 @@ export default function Header() {
               <button
                 ref={mobileToggleRef}
                 className="min-h-11 min-w-11 flex items-center justify-center rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
-                onClick={() => setMobileOpen(prev => !prev)}
+                onClick={() => {
+                  setActiveMegaId(null);
+                  setSearchOpen(false);
+                  setMobileOpen(prev => !prev);
+                }}
                 aria-expanded={mobileOpen}
                 aria-controls="mobile-nav-panel"
                 aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
