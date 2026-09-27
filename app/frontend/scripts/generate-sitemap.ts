@@ -45,6 +45,7 @@ const getPriorityAndFreq = (
   if (
     entityType === 'Service' ||
     path === '/near-me' ||
+    /^\/ar\/(computer-repair-kuwait|laptop-repair-kuwait|motherboard-repair-kuwait|gaming-pc-repair-kuwait|laptop-screen-repair-kuwait)\/?$/.test(path) ||
     /^\/(services|pricing|contact|booking)\/?$/.test(path)
   ) {
     return { priority: '0.9', changefreq: 'weekly' };
