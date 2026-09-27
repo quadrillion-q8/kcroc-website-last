@@ -820,7 +820,7 @@ export const NAV_GRAPH = {
       "title": "Laptop Won't Turn On? Complete Troubleshooting Guide",
       "description": "Laptop won't turn on? Follow a safe step-by-step diagnosis for no power, no charging light, black screen, battery, charger, USB-C and motherboard faults, with Kuwait-specific repair guidance from KCROC.",
       "iconKey": "laptop",
-      "date": "2026-09-07",
+      "date": "2026-09-27",
       "primaryKeyword": "Laptop Won't Turn On"
     },
     {
