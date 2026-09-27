@@ -148,6 +148,7 @@ export const routes: RouteObject[] = [
           { path: 'blog/ar/laptop-buying-guide-kuwait-2026', element: <LaptopBuyingGuideAR /> },
           { path: 'blog/ar/how-often-clean-laptop-replace-thermal-paste-kuwait', element: <GamingLaptopCleaningAR /> },
           { path: 'blog/intel-core-ultra-vs-amd-ryzen-ai', element: <IntelVsAmdGuide /> },
+          { path: 'blog/laptop-wont-turn-on', element: <Navigate to="/blog/laptop-wont-turn-on-causes-fixes" replace /> },
           { path: 'author/imran', element: <AuthorImran /> },
           { path: 'guides/laptop-battery-warning-signs', element: <BatteryHealthGuide /> },
           { path: 'guides/bios-uefi-recovery-kuwait', element: <BiosUefiRecoveryGuide /> },
