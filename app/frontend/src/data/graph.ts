@@ -9,8 +9,8 @@ import { IMAGES } from '../constants/images';
 
 export const rawGraphData: RawGraphData = {
   metadata: {
-    version: '3.6.4',
-    lastUpdated: '2026-09-26T00:00:00+03:00',
+    version: '3.7.0',
+    lastUpdated: '2026-09-28T00:00:00+03:00',
     environment: 'production'
   },
 
@@ -155,6 +155,85 @@ export const rawGraphData: RawGraphData = {
         'faq-ar-hours', 'faq-ar-maintenance', 'faq-ar-laptop-repair-process'
       ]
     } as WebPageEntity,
+    'page-ar-computer-repair': {
+      id: 'page-ar-computer-repair', slug: 'ar/computer-repair-kuwait', entityType: 'WebPage', isActive: true,
+      title: 'تصليح كمبيوتر في الكويت',
+      description: 'خدمة تصليح كمبيوتر ولابتوب في الكويت من KCROC، مع تشخيص أولي واستلام وتوصيل مجاني إلى مختبرنا في حولي.',
+      seo: {
+        title: 'تصليح كمبيوتر الكويت | فني كمبيوتر واستلام مجاني | KCROC',
+        description: 'تحتاج تصليح كمبيوتر أو لابتوب في الكويت؟ KCROC يوفر تشخيصًا أولًا، إصلاح أعطال الهاردوير واللوحة الأم، واستلامًا وتوصيلًا مجانيًا.',
+        canonicalUrl: 'https://www.computerrepairkuwait.com/ar/computer-repair-kuwait',
+        locale: 'ar_KW', ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList'],
+        lastModified: '2026-09-28T00:00:00+03:00',
+        breadcrumbs: [{ name: 'الرئيسية', url: '/' }, { name: 'تصليح كمبيوتر في الكويت', url: '/ar/computer-repair-kuwait' }]
+      },
+      relatedServiceIds: ['srv-laptop', 'srv-motherboard', 'srv-gaming', 'srv-macbook', 'srv-screen']
+    } as WebPageEntity,
+
+    'page-ar-laptop-repair': {
+      id: 'page-ar-laptop-repair', slug: 'ar/laptop-repair-kuwait', entityType: 'WebPage', isActive: true,
+      title: 'تصليح لابتوب في الكويت',
+      description: 'تصليح لابتوبات في الكويت لمشاكل الشاشة والبطارية والشحن والتبريد واللوحة الأم، مع استلام وتوصيل مجاني.',
+      seo: {
+        title: 'تصليح لابتوب الكويت | فني لابتوب واستلام مجاني | KCROC',
+        description: 'تصليح لابتوب في الكويت لمشاكل الشاشة، البطارية، الشحن، الحرارة واللوحة الأم. تشخيص قبل الإصلاح واستلام وتوصيل مجاني.',
+        canonicalUrl: 'https://www.computerrepairkuwait.com/ar/laptop-repair-kuwait',
+        locale: 'ar_KW',
+        alternates: { 'ar-KW': 'https://www.computerrepairkuwait.com/ar/laptop-repair-kuwait', 'en-KW': 'https://www.computerrepairkuwait.com/laptop-repair-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/laptop-repair-kuwait' },
+        ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList'], lastModified: '2026-09-28T00:00:00+03:00',
+        breadcrumbs: [{ name: 'الرئيسية', url: '/' }, { name: 'تصليح لابتوب في الكويت', url: '/ar/laptop-repair-kuwait' }]
+      },
+      relatedServiceIds: ['srv-laptop', 'srv-motherboard', 'srv-screen', 'srv-battery', 'srv-charging-port']
+    } as WebPageEntity,
+
+    'page-ar-motherboard-repair': {
+      id: 'page-ar-motherboard-repair', slug: 'ar/motherboard-repair-kuwait', entityType: 'WebPage', isActive: true,
+      title: 'تصليح اللوحة الأم في الكويت',
+      description: 'تصليح مكونات اللوحة الأم للابتوب والكمبيوتر في الكويت بدل استبدال اللوحة كاملة عندما يكون الإصلاح ممكنًا.',
+      seo: {
+        title: 'تصليح المذربورد واللوحة الأم الكويت | إصلاح تشيب ليفل | KCROC',
+        description: 'تشخيص وإصلاح أعطال اللوحة الأم والـ motherboard في الكويت، بما فيها دوائر الطاقة والشحن والأعطال الناتجة عن السوائل، مع استلام مجاني.',
+        canonicalUrl: 'https://www.computerrepairkuwait.com/ar/motherboard-repair-kuwait',
+        locale: 'ar_KW',
+        alternates: { 'ar-KW': 'https://www.computerrepairkuwait.com/ar/motherboard-repair-kuwait', 'en-KW': 'https://www.computerrepairkuwait.com/motherboard-repair-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/motherboard-repair-kuwait' },
+        ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList'], lastModified: '2026-09-28T00:00:00+03:00',
+        breadcrumbs: [{ name: 'الرئيسية', url: '/' }, { name: 'تصليح اللوحة الأم', url: '/ar/motherboard-repair-kuwait' }]
+      },
+      relatedServiceIds: ['srv-motherboard', 'srv-laptop', 'srv-charging-port', 'srv-liquid-damage']
+    } as WebPageEntity,
+
+    'page-ar-gaming-pc-repair': {
+      id: 'page-ar-gaming-pc-repair', slug: 'ar/gaming-pc-repair-kuwait', entityType: 'WebPage', isActive: true,
+      title: 'تصليح كمبيوتر ألعاب في الكويت',
+      description: 'تصليح gaming PC وكروت الشاشة ومشاكل الحرارة والطاقة في الكويت، مع فحص عملي واستلام وتوصيل مجاني.',
+      seo: {
+        title: 'تصليح Gaming PC الكويت | إصلاح GPU والحرارة | KCROC',
+        description: 'تصليح أجهزة الألعاب وكروت الشاشة في الكويت: حرارة، تقطيع، إطفاء مفاجئ، مشاكل GPU والطاقة والتبريد، مع استلام وتوصيل مجاني.',
+        canonicalUrl: 'https://www.computerrepairkuwait.com/ar/gaming-pc-repair-kuwait',
+        locale: 'ar_KW',
+        alternates: { 'ar-KW': 'https://www.computerrepairkuwait.com/ar/gaming-pc-repair-kuwait', 'en-KW': 'https://www.computerrepairkuwait.com/gaming-pc-repair-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/gaming-pc-repair-kuwait' },
+        ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList'], lastModified: '2026-09-28T00:00:00+03:00',
+        breadcrumbs: [{ name: 'الرئيسية', url: '/' }, { name: 'تصليح كمبيوتر ألعاب', url: '/ar/gaming-pc-repair-kuwait' }]
+      },
+      relatedServiceIds: ['srv-gaming', 'srv-gaming-laptop-cleaning', 'srv-motherboard', 'srv-laptop']
+    } as WebPageEntity,
+
+    'page-ar-laptop-screen-repair': {
+      id: 'page-ar-laptop-screen-repair', slug: 'ar/laptop-screen-repair-kuwait', entityType: 'WebPage', isActive: true,
+      title: 'تصليح وتبديل شاشة اللابتوب في الكويت',
+      description: 'تبديل شاشة اللابتوب وإصلاح مشاكل الصورة والإضاءة في الكويت، مع مطابقة القطعة للموديل واستلام وتوصيل مجاني.',
+      seo: {
+        title: 'تبديل شاشة اللابتوب الكويت | تصليح شاشة اللاب | KCROC',
+        description: 'شاشة اللابتوب مكسورة أو سوداء أو تومض؟ KCROC يشخص العطل ويبدل الشاشة المناسبة للموديل مع استلام وتوصيل مجاني في الكويت.',
+        canonicalUrl: 'https://www.computerrepairkuwait.com/ar/laptop-screen-repair-kuwait',
+        locale: 'ar_KW',
+        alternates: { 'ar-KW': 'https://www.computerrepairkuwait.com/ar/laptop-screen-repair-kuwait', 'en-KW': 'https://www.computerrepairkuwait.com/laptop-screen-repair-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/laptop-screen-repair-kuwait' },
+        ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList'], lastModified: '2026-09-28T00:00:00+03:00',
+        breadcrumbs: [{ name: 'الرئيسية', url: '/' }, { name: 'تصليح شاشة اللابتوب', url: '/ar/laptop-screen-repair-kuwait' }]
+      },
+      relatedServiceIds: ['srv-screen', 'srv-laptop', 'srv-battery', 'srv-hinge']
+    } as WebPageEntity,
+
     'page-brands': { id: 'page-brands', slug: 'brands', entityType: 'WebPage', isActive: true, title: 'Supported Laptop Brands', description: 'Laptop and computer brands repaired by KCROC in Kuwait.', seo: { title: 'Laptop Brands We Repair: Dell, HP, Lenovo & More | KCROC', description: 'Component-level laptop repair for Dell, HP, Lenovo, ASUS, Acer, MSI and other major brands across Kuwait.', canonicalUrl: 'https://www.computerrepairkuwait.com/brands', ogType: 'website', schemaTypes: ['CollectionPage', 'WebPage', 'BreadcrumbList'], breadcrumbs: [{ name: 'Home', url: '/' }, { name: 'Brands', url: '/brands' }] } } as WebPageEntity,
     'page-problems': { id: 'page-problems', slug: 'problems', entityType: 'WebPage', isActive: true, title: 'Common Computer Problems', description: 'Common laptop and computer problems diagnosed and repaired by KCROC in Kuwait.', seo: { title: 'Common Laptop & Computer Problems We Fix | KCROC Kuwait', description: 'Find causes, safe troubleshooting steps and repair options for common laptop and computer problems in Kuwait.', canonicalUrl: 'https://www.computerrepairkuwait.com/problems', ogType: 'website', schemaTypes: ['CollectionPage', 'WebPage', 'BreadcrumbList'], breadcrumbs: [{ name: 'Home', url: '/' }, { name: 'Problems', url: '/problems' }] } } as WebPageEntity,
     'page-guides': { id: 'page-guides', slug: 'guides', entityType: 'WebPage', isActive: true, title: 'DIY & Repair Guides', description: 'Technician-written laptop and computer troubleshooting guides from KCROC Kuwait.', seo: { title: 'Laptop & Computer Repair Guides | KCROC Kuwait', description: 'Free technician-written guides for diagnosing laptop and computer problems, battery issues, overheating, BIOS recovery and more.', canonicalUrl: 'https://www.computerrepairkuwait.com/guides', ogType: 'website', schemaTypes: ['CollectionPage', 'WebPage', 'BreadcrumbList'], breadcrumbs: [{ name: 'Home', url: '/' }, { name: 'Guides', url: '/guides' }] } } as WebPageEntity,
@@ -1081,6 +1160,24 @@ export const rawGraphData: RawGraphData = {
         }
       ],
 
+      technicalOverview: {
+        heading: 'Can your laptop be repaired, how much will it cost, and what happens first?',
+        paragraphs: [
+          'Most laptop faults are not a simple buy-or-replace decision. The repair path depends on the symptom, model, failed component, parts availability and whether the chassis, board or display is physically damaged. KCROC diagnoses the hardware first, then explains the practical repair options before work is approved.',
+          'For power, charging, overheating, display, storage or motherboard problems, the technician starts by separating the symptom from the likely cause. A laptop that powers on with a black display is not the same problem as a machine with no charging response at all, so the diagnostic path and quote can be different.',
+          'Pricing starts with diagnosis rather than a blanket promise. Common work has starting rates on the pricing page, while board-level, liquid-damage and model-specific repairs require a fault-based quotation. Pickup and delivery are handled through KCROC\'s Kuwait-wide service model, and data-sensitive board repairs can be performed without browsing personal files.'
+        ]
+      },
+      repairDecision: {
+        heading: 'When is laptop repair worth doing?',
+        items: [
+          { condition: 'Screen, hinge, battery, charging port, fan or keyboard has failed but the rest of the laptop is healthy.', action: 'A targeted part or structural repair is usually the first path to evaluate.' },
+          { condition: 'Laptop is completely dead, not charging, or shuts down under load.', action: 'Test the power and thermal path before assuming the motherboard must be replaced.' },
+          { condition: 'Motherboard has a component-level fault or liquid damage.', action: 'Trace the affected circuit and compare board-level repair with replacement cost before deciding.' },
+          { condition: 'Older laptop is slow because of storage or memory limitations.', action: 'Check SSD/RAM upgrade compatibility and data-migration needs before replacing the machine.' },
+          { condition: 'The chassis or board is severely burned or the repair is economically unreasonable.', action: 'KCROC will explain the limitation and, under the No Fix, No Fee policy, you are not charged for an unsuccessful repair diagnosis.' }
+        ]
+      },
       warranty: { duration: '30 Days', coverage: 'All parts and labor.', noFixNoFee: true }, 
       contentImages: [
         {
@@ -1143,8 +1240,9 @@ export const rawGraphData: RawGraphData = {
       relatedServiceIds: ['srv-macbook', 'srv-motherboard', 'srv-screen', 'srv-battery', 'srv-charging-port', 'srv-gaming-laptop-cleaning'],
       relatedProblemIds: ['problem-no-power', 'problem-overheating', 'problem-black-screen', 'problem-not-charging', 'problem-slow', 'problem-freezing-crashing', 'problem-hinge-break', 'problem-cracked-screen', 'problem-windows-wont-boot'],
       relatedBrandIds: ['brand-dell', 'brand-hp', 'brand-lenovo', 'brand-asus', 'brand-acer', 'brand-msi'],
+      relatedLocationIds: ['loc-hawalli', 'loc-salmiya', 'loc-kuwait-city', 'loc-farwaniya', 'loc-jahra', 'loc-ahmadi', 'loc-fahaheel'],
       relatedResourcePaths: [
-        { label: "Laptop Won't Turn On? Complete Troubleshooting Guide", path: '/guides/laptop-wont-turn-on' },
+        { label: "Laptop Won't Turn On? Complete Troubleshooting Guide", path: '/blog/laptop-wont-turn-on-causes-fixes' },
         { label: 'Laptop Battery Warning Signs', path: '/guides/laptop-battery-warning-signs' },
         { label: 'Laptop Overheating Diagnostic Path', path: '/laptop-overheating-kuwait' },
         { label: 'BIOS / UEFI Recovery Guide', path: '/guides/bios-uefi-recovery-kuwait' },
@@ -1383,7 +1481,7 @@ export const rawGraphData: RawGraphData = {
       seo: { 
         title: 'Laptop Repair Kuwait | Same-Day Diagnosis & Pickup | KCROC', 
         description: 'Laptop repair in Kuwait for screens, hinges, charging ports, batteries, cooling and motherboard faults. Free pickup and delivery, diagnosis before repair, component-level options, and a 30-day warranty.', 
-        canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-repair-kuwait', 
+        canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-repair-kuwait', locale: 'en_KW', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/laptop-repair-kuwait', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/laptop-repair-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/laptop-repair-kuwait' }, 
         ogType: 'article', 
         schemaTypes: ['Service', 'FAQPage'],
         lastModified: '2026-09-27T00:00:00+03:00'
@@ -1419,9 +1517,28 @@ export const rawGraphData: RawGraphData = {
         quoteRequired: true, 
         displayLabel: 'From 25 KWD — Free Diagnostic First' 
       }, 
+      technicalOverview: {
+        heading: 'Gaming PC repair in Kuwait: diagnose the fault before replacing expensive hardware',
+        paragraphs: [
+          'Gaming systems combine high power draw, dense cooling hardware and sustained load, so the same symptom can come from very different causes. FPS drops can be thermal throttling, a failing fan, unstable memory, a GPU fault, power delivery or software; random shutdowns can point to thermal protection or a power-stage problem.',
+          'KCROC checks the system under the workload that exposes the fault. Depending on the device, this can include GPU and CPU temperatures, hotspot behaviour, fan response, power delivery, memory stability, storage health and firmware settings. The objective is to identify the failed layer before recommending a replacement GPU, motherboard or cooling assembly.',
+          'For liquid cooling, thermal interface service or board-level GPU/motherboard faults, the quote follows the actual diagnosis. Free pickup and delivery are part of the Kuwait-wide service path, so gaming desktops and laptops do not need to be transported by the customer personally.'
+        ]
+      },
+      repairDecision: {
+        heading: 'What should be repaired first on a gaming PC?',
+        items: [
+          { condition: 'Temperatures rise quickly and performance falls during a sustained game.', action: 'Check dust, fan response, thermal interfaces and throttling before blaming the GPU.' },
+          { condition: 'Screen artifacts, crashes or driver resets appear under GPU load.', action: 'Test the GPU, VRAM behaviour, power delivery and system stability before buying a replacement card.' },
+          { condition: 'The PC or gaming laptop shuts down suddenly.', action: 'Separate thermal protection, PSU/power-stage faults and motherboard issues with controlled load testing.' },
+          { condition: 'AIO or custom-loop temperatures rise unexpectedly.', action: 'Inspect pump/fan operation, coolant flow indicators where available, radiator condition and mounting.' },
+          { condition: 'The motherboard has a localized power or VRM fault.', action: 'Assess component-level repair before defaulting to a full motherboard replacement.' }
+        ]
+      },
       relatedServiceIds: ['srv-gaming-laptop-cleaning', 'srv-motherboard', 'srv-laptop'],
-      relatedProblemIds: ['problem-overheating', 'problem-freezing-crashing'],
-      relatedBrandIds: ['brand-asus', 'brand-msi', 'brand-lenovo', 'brand-dell'],
+      relatedProblemIds: ['problem-overheating', 'problem-freezing-crashing', 'problem-no-power', 'problem-black-screen'],
+      relatedBrandIds: ['brand-asus', 'brand-msi', 'brand-lenovo', 'brand-dell', 'brand-hp', 'brand-acer'],
+      relatedLocationIds: ['loc-hawalli', 'loc-salmiya', 'loc-kuwait-city', 'loc-farwaniya', 'loc-jahra', 'loc-ahmadi', 'loc-fahaheel'],
       relatedResourcePaths: [
         { label: 'Gaming PC Cooling Guide', path: '/blog/gaming-pc-cooling' },
         { label: 'BIOS / UEFI Recovery Guide', path: '/guides/bios-uefi-recovery-kuwait' },
@@ -1695,7 +1812,7 @@ export const rawGraphData: RawGraphData = {
       seo: { 
         title: 'Gaming PC & GPU Repair Kuwait | FPS & Thermal Fix | KCROC', 
         description: 'Stop losing frames to Kuwait\'s heat. Expert component-level gaming PC and GPU repair. Liquid metal, AIO fixes, and micro-soldering. Free pick & drop.', 
-        canonicalUrl: 'https://www.computerrepairkuwait.com/gaming-pc-repair-kuwait', 
+        canonicalUrl: 'https://www.computerrepairkuwait.com/gaming-pc-repair-kuwait', locale: 'en_KW', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/gaming-pc-repair-kuwait', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/gaming-pc-repair-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/gaming-pc-repair-kuwait' }, 
         ogType: 'article', 
         schemaTypes: ['Service', 'FAQPage'] 
       },
@@ -2160,7 +2277,7 @@ export const rawGraphData: RawGraphData = {
       seo: { 
         title: 'Motherboard Repair Kuwait | Chip-Level MOSFET Fix | KCROC', 
         description: 'Chip-level motherboard repair in Kuwait. Power rail tracing, MOSFET replacement, BGA rework, and liquid damage recovery — up to 80% cheaper than a full board replacement. Free pick & drop.', 
-        canonicalUrl: 'https://www.computerrepairkuwait.com/motherboard-repair-kuwait', 
+        canonicalUrl: 'https://www.computerrepairkuwait.com/motherboard-repair-kuwait', locale: 'en_KW', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/motherboard-repair-kuwait', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/motherboard-repair-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/motherboard-repair-kuwait' }, 
         ogType: 'article', 
         schemaTypes: ['Service', 'FAQPage'] 
       },
@@ -2319,7 +2436,7 @@ export const rawGraphData: RawGraphData = {
       seo: {
         title: 'Laptop Screen Replacement Kuwait | Same Day | KCROC',
         description: 'Same-day laptop and MacBook screen replacement in Kuwait. LCD, IPS, OLED & Retina panels, plus display cable repair. Free pick & drop, 30-day warranty.',
-        canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-screen-repair-kuwait',
+        canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-screen-repair-kuwait', locale: 'en_KW', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/laptop-screen-repair-kuwait', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/laptop-screen-repair-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/laptop-screen-repair-kuwait' },
         ogType: 'article',
         schemaTypes: ['Service', 'FAQPage']
       },
@@ -2644,7 +2761,13 @@ export const rawGraphData: RawGraphData = {
     
     'loc-salmiya': { id: 'loc-salmiya', slug: 'salmiya', entityType: 'Location', isActive: true, isPhysicalLocation: false, title: 'Salmiya', description: 'Fast, professional computer and laptop repair services for residents and businesses in Salmiya.', landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)', coords: { lat: 29.3400, lng: 48.0800 }, serviceRadiusKm: 15, serviceAreas: ['Salmiya', 'Rumaithiya', 'Salwa', 'Bidaa'], contentImage: { src: IMAGES.services.laptopRepair.src, alt: IMAGES.services.laptopRepair.alt, width: IMAGES.services.laptopRepair.width, height: IMAGES.services.laptopRepair.height, caption: 'Professional laptop repair for residents and businesses across Salmiya.' }, seo: { title: 'Computer Repair Salmiya Kuwait | Free Pickup | KCROC', description: 'Laptop and computer repair in Salmiya with free pickup and delivery. Devices are diagnosed and repaired at KCROC\'s central Hawalli lab.', canonicalUrl: 'https://www.computerrepairkuwait.com/location/salmiya', ogType: 'website', schemaTypes: ['LocalBusiness'], lastModified: '2026-09-27T00:00:00+03:00' }, navigationPriority: 90 } as LocationEntity,
 
-    'loc-farwaniya': { id: 'loc-farwaniya', slug: 'farwaniya', entityType: 'Location', isActive: true, isPhysicalLocation: false, title: 'Farwaniya', description: 'Expert motherboard repair, screen replacement, and PC diagnostics for the Farwaniya governorate.', landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)', coords: { lat: 29.2770, lng: 47.9590 }, serviceRadiusKm: 20, serviceAreas: ['Farwaniya', 'Khaitan', 'Riggae', 'Ardiya', 'Jleeb Al-Shuyoukh'], contentImage: { src: IMAGES.services.motherboardRepair.src, alt: IMAGES.services.motherboardRepair.alt, width: IMAGES.services.motherboardRepair.width, height: IMAGES.services.motherboardRepair.height, caption: 'Chip-level motherboard repair and screen replacement serving the Farwaniya governorate.' }, seo: { title: 'Computer Repair Farwaniya Kuwait | Free Pickup | KCROC', description: 'Computer and laptop repair in Farwaniya, Kuwait, including Khaitan, Riggae and Ardiya. Free pickup and delivery to KCROC’s Hawalli repair lab.', canonicalUrl: 'https://www.computerrepairkuwait.com/location/farwaniya', ogType: 'website', schemaTypes: ['LocalBusiness'], lastModified: '2026-09-27T00:00:00+03:00' }, navigationPriority: 80 } as LocationEntity,
+    'loc-farwaniya': { id: 'loc-farwaniya', slug: 'farwaniya', entityType: 'Location', isActive: true, isPhysicalLocation: false, title: 'Farwaniya', description: 'Computer and laptop repair for Farwaniya, with a practical focus on power, charging, display, battery and motherboard faults and free pickup to KCROC\'s Hawalli workshop.', localIntro: 'For Farwaniya customers, the easiest path is usually pickup rather than driving to a shop. KCROC collects the device, performs the diagnosis in the Hawalli lab, explains the repair path and returns the device after testing. The Farwaniya service area includes Khaitan, Riggae, Ardiya and Jleeb Al-Shuyoukh.', localHighlights: [
+        { title: 'Pickup from Farwaniya, Khaitan and Riggae', description: 'Tell us your area and device symptom and we can arrange the collection through the Kuwait-wide pickup service.' },
+        { title: 'Power and charging diagnosis', description: 'For dead laptops, loose charging ports and no-charge symptoms, the power path is tested before a motherboard replacement is recommended.' },
+        { title: 'Screen, battery and motherboard work', description: 'The page connects Farwaniya customers directly to the relevant repair services instead of forcing them through a generic computer-repair page.' },
+        { title: 'Repair happens at the Hawalli lab', description: 'Farwaniya is a service area, not a walk-in branch. Devices are processed at the central KCROC repair lab and delivered back after testing.'
+        },
+      ], landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)', coords: { lat: 29.2770, lng: 47.9590 }, serviceRadiusKm: 20, serviceAreas: ['Farwaniya', 'Khaitan', 'Riggae', 'Ardiya', 'Jleeb Al-Shuyoukh'], contentImage: { src: IMAGES.services.motherboardRepair.src, alt: IMAGES.services.motherboardRepair.alt, width: IMAGES.services.motherboardRepair.width, height: IMAGES.services.motherboardRepair.height, caption: 'Chip-level motherboard repair and screen replacement serving the Farwaniya governorate.' }, seo: { title: 'Computer Repair Farwaniya Kuwait | Free Pickup | KCROC', description: 'Computer and laptop repair in Farwaniya, Kuwait, including Khaitan, Riggae and Ardiya. Free pickup and delivery to KCROC’s Hawalli repair lab.', canonicalUrl: 'https://www.computerrepairkuwait.com/location/farwaniya', ogType: 'website', schemaTypes: ['LocalBusiness'], lastModified: '2026-09-27T00:00:00+03:00' }, navigationPriority: 80 } as LocationEntity,
 
     'loc-jahra': { id: 'loc-jahra', slug: 'jahra', entityType: 'Location', isActive: true, isPhysicalLocation: false, title: 'Jahra', description: 'Comprehensive computer repair, thermal repasting, and motherboard diagnostics delivered directly to Jahra.', landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)', coords: { lat: 29.3370, lng: 47.6580 }, serviceRadiusKm: 40, serviceAreas: ['Jahra', 'Saad Al Abdullah', 'Naeem', 'Qasr', 'Taima'], contentImage: { src: IMAGES.motherboard.thermalGrizzly1.src, alt: IMAGES.motherboard.thermalGrizzly1.alt, width: IMAGES.motherboard.thermalGrizzly1.width, height: IMAGES.motherboard.thermalGrizzly1.height, caption: 'Thermal repasting and motherboard diagnostics delivered directly to Jahra.' }, seo: { title: 'Computer Repair Jahra Kuwait | Free Pickup | KCROC', description: 'Computer and laptop repair in Jahra with free pickup and delivery, including thermal maintenance and motherboard diagnostics at KCROC\'s Hawalli lab.', canonicalUrl: 'https://www.computerrepairkuwait.com/location/jahra', ogType: 'website', schemaTypes: ['LocalBusiness'], lastModified: '2026-09-27T00:00:00+03:00' }, navigationPriority: 70 } as LocationEntity,
 
@@ -2841,10 +2964,29 @@ export const rawGraphData: RawGraphData = {
       ],
       relatedServiceIds: ['srv-laptop', 'srv-motherboard', 'srv-screen', 'srv-battery', 'srv-charging-port', 'srv-hinge', 'srv-gaming-laptop-cleaning'],
       relatedProblemIds: ['problem-hinge-break', 'problem-overheating', 'problem-not-charging', 'problem-black-screen'],
+      relatedLocationIds: ['loc-hawalli', 'loc-salmiya', 'loc-kuwait-city', 'loc-farwaniya', 'loc-jahra', 'loc-ahmadi'],
       relatedResourcePaths: [{ label: 'Dell laptop overheating guide', path: '/guides/dell-laptop-overheating' }],
       contentImages: [{ src: IMAGES.laptopHardware.dellTeardown.src, alt: IMAGES.laptopHardware.dellTeardown.alt, width: IMAGES.laptopHardware.dellTeardown.width, height: IMAGES.laptopHardware.dellTeardown.height, caption: 'Dell laptop internal hardware opened for repair and diagnosis.' }],
+      familyGroups: [
+        { name: 'Inspiron & Vostro', description: 'Everyday and business Dell laptops with frequent hinge, charging, battery and thermal repair needs.', models: ['Inspiron 14', 'Inspiron 15', 'Vostro'], repairFocus: ['Hinge/chassis', 'DC jack', 'Battery', 'Cooling'] },
+        { name: 'Latitude', description: 'Business systems where reliable power, USB-C charging, keyboard and board diagnosis matter.', models: ['Latitude 5xxx', 'Latitude 7xxx'], repairFocus: ['Charging', 'Power rails', 'Keyboard', 'Motherboard'] },
+        { name: 'XPS & Alienware', description: 'Premium and gaming Dell systems where thermals, display assemblies and board faults can be costly.', models: ['XPS 13', 'XPS 15', 'Alienware m16', 'G15 Gaming'], repairFocus: ['Display', 'Thermals', 'GPU/power', 'Motherboard'] }
+      ],
+      repairProcess: [
+        { step: 1, title: 'Confirm model and symptom', description: 'We identify the exact Dell model, reported symptom and any recent drop, spill, charger or overheating event.' },
+        { step: 2, title: 'Inspect power, display and thermal paths', description: 'The diagnostic follows the symptom instead of replacing parts by assumption.' },
+        { step: 3, title: 'Quote the repair path', description: 'You receive the repair recommendation and pricing before component work is approved.' },
+        { step: 4, title: 'Repair and test', description: 'Relevant power, display, charging, thermals and stability are tested before return.' }
+      ],
+      technicalCapabilities: ['DC jack and USB-C charging diagnosis', 'Motherboard power-rail testing', 'Screen and display-cable diagnosis', 'Hinge and chassis repair', 'Battery and thermal service', 'Board-level repair where technically practical'],
+      faqs: [
+        { id: 'dell-cost', title: 'How much does Dell laptop repair cost in Kuwait?', answer: 'The cost depends on the model and fault. KCROC diagnoses the problem first and gives the repair quotation before repair work begins; common service starting rates are listed on the pricing page.' },
+        { id: 'dell-motherboard', title: 'Do you repair Dell motherboards?', answer: 'Yes, when the board fault is technically repairable. The diagnostic looks for the failed component or circuit before a full-board replacement is considered.' },
+        { id: 'dell-pickup', title: 'Do you offer Dell laptop pickup in Kuwait?', answer: 'Yes. Pickup and delivery are available across Kuwait through KCROC\'s repair service.' },
+        { id: 'dell-screen', title: 'Can you replace a Dell laptop screen?', answer: 'Yes. The display panel and cable path are checked first so the repair matches the actual fault.' }
+      ],
       pricing: { startingFrom: 15, currency: 'KWD', quoteRequired: true, displayLabel: 'From 15 KWD — free diagnostic first' },
-      seo: { title: 'Dell Laptop Repair Kuwait | Free Pickup | KCROC', description: 'Dell laptop repair in Kuwait for Inspiron, Latitude, XPS, G-series and Alienware. Screen, battery, hinge and motherboard diagnosis with free pickup.', canonicalUrl: 'https://www.computerrepairkuwait.com/dell-laptop-repair-kuwait', ogType: 'article', schemaTypes: ['Service'] },
+      seo: { title: 'Dell Laptop Repair Kuwait | Free Pickup | KCROC', description: 'Dell laptop repair in Kuwait for Inspiron, Latitude, XPS, G-series and Alienware. Screen, battery, hinge and motherboard diagnosis with free pickup.', canonicalUrl: 'https://www.computerrepairkuwait.com/dell-laptop-repair-kuwait', ogType: 'article', schemaTypes: ['Brand', 'Service', 'FAQPage', 'BreadcrumbList'] },
       navigationPriority: 90, popular: true 
     } as BrandEntity,
 
@@ -2860,12 +3002,31 @@ export const rawGraphData: RawGraphData = {
       ],
       relatedServiceIds: ['srv-laptop', 'srv-motherboard', 'srv-hinge', 'srv-gaming-laptop-cleaning'],
       relatedProblemIds: ['problem-no-power', 'problem-hinge-break', 'problem-overheating'],
+      relatedLocationIds: ['loc-hawalli', 'loc-salmiya', 'loc-kuwait-city', 'loc-farwaniya', 'loc-jahra', 'loc-ahmadi'],
       contentImages: [
         { src: IMAGES.laptopHardware.hpLaptopMotherboardRepairOpen.src, alt: IMAGES.laptopHardware.hpLaptopMotherboardRepairOpen.alt, width: IMAGES.laptopHardware.hpLaptopMotherboardRepairOpen.width, height: IMAGES.laptopHardware.hpLaptopMotherboardRepairOpen.height, caption: 'HP laptop opened for motherboard and internal hardware diagnosis.' },
         { src: IMAGES.laptopHardware.hpLaptopMotherboardThermalPasteCleanup.src, alt: IMAGES.laptopHardware.hpLaptopMotherboardThermalPasteCleanup.alt, width: IMAGES.laptopHardware.hpLaptopMotherboardThermalPasteCleanup.width, height: IMAGES.laptopHardware.hpLaptopMotherboardThermalPasteCleanup.height, caption: 'HP cooling and thermal hardware inspected as part of repair.' }
       ],
+      familyGroups: [
+        { name: 'Pavilion & Envy', description: 'Consumer HP systems where hinges, thermals, batteries, screens and everyday charging faults are common repair paths.', models: ['Pavilion', 'Envy', '14/15-inch systems'], repairFocus: ['Hinge/chassis', 'Cooling', 'Battery', 'Screen'] },
+        { name: 'EliteBook & ProBook', description: 'Business laptops where power, keyboard, USB-C and board-level diagnosis can matter more than cosmetic repair.', models: ['EliteBook', 'ProBook'], repairFocus: ['Power', 'Charging', 'Keyboard', 'Motherboard'] },
+        { name: 'OMEN & Victus', description: 'Gaming-focused HP systems that need thermal, GPU, power and display diagnosis under load.', models: ['OMEN', 'Victus'], repairFocus: ['Thermals', 'GPU', 'Power', 'Cooling'] }
+      ],
+      repairProcess: [
+        { step: 1, title: 'Model and symptom check', description: 'We confirm the HP family and separate no-power, black-screen, thermal and charging symptoms.' },
+        { step: 2, title: 'Hardware diagnosis', description: 'Power, charging, cooling, display and board paths are tested before a part is ordered.' },
+        { step: 3, title: 'Clear quotation', description: 'The repair path and expected cost are explained before work starts.' },
+        { step: 4, title: 'Repair and verification', description: 'The repaired HP is stress-tested and key functions are checked before delivery.' }
+      ],
+      technicalCapabilities: ['HP power and charging diagnosis', 'Hinge and chassis repair', 'Cooling and fan service', 'Screen and display diagnosis', 'Motherboard fault tracing', 'Battery replacement'],
+      faqs: [
+        { id: 'hp-cost', title: 'How much does HP laptop repair cost in Kuwait?', answer: 'Pricing depends on the exact HP model, fault and parts required. KCROC diagnoses first, then gives a quotation before repair.' },
+        { id: 'hp-motherboard', title: 'Do you repair HP motherboard faults?', answer: 'Yes, where technically practical. A board-level fault can be investigated before deciding that the entire motherboard needs replacement.' },
+        { id: 'hp-pickup', title: 'Can you collect my HP laptop from Farwaniya or Salmiya?', answer: 'Yes. KCROC offers pickup and delivery across Kuwait.' },
+        { id: 'hp-overheating', title: 'Can you fix an HP laptop that overheats?', answer: 'Yes. The cooling system, fan behaviour and thermal interface are checked to determine whether cleaning, fan replacement or another hardware repair is appropriate.' }
+      ],
       pricing: { startingFrom: 15, currency: 'KWD', quoteRequired: true, displayLabel: 'From 15 KWD — free diagnostic first' },
-      seo: { title: 'HP Laptop Repair Kuwait | Free Pickup | KCROC', description: 'HP laptop repair in Kuwait for EliteBook, Pavilion, ProBook and OMEN. Free pickup, diagnosis before repair, and 30-day warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/hp-laptop-repair-kuwait', ogType: 'article', schemaTypes: ['Service'] },
+      seo: { title: 'HP Laptop Repair Kuwait | Free Pickup | KCROC', description: 'HP laptop repair in Kuwait for EliteBook, Pavilion, ProBook and OMEN. Free pickup, diagnosis before repair, and 30-day warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/hp-laptop-repair-kuwait', ogType: 'article', schemaTypes: ['Brand', 'Service', 'FAQPage', 'BreadcrumbList'] },
       navigationPriority: 80, popular: true 
     } as BrandEntity,
 
@@ -2938,6 +3099,7 @@ export const rawGraphData: RawGraphData = {
         'problem-hinge-break', 'problem-keyboard-fail', 'problem-wifi-fail', 'problem-slow',
         'problem-windows-wont-boot', 'problem-liquid-spill', 'problem-cracked-screen'
       ],
+      relatedLocationIds: ['loc-hawalli', 'loc-salmiya', 'loc-kuwait-city', 'loc-farwaniya', 'loc-jahra', 'loc-ahmadi', 'loc-fahaheel'],
       relatedResourcePaths: [
         { label: 'Laptop Overheating Problem', path: '/laptop-overheating-kuwait' },
         { label: 'Laptop battery warning signs', path: '/guides/laptop-battery-warning-signs' },
@@ -3005,12 +3167,30 @@ export const rawGraphData: RawGraphData = {
       ],
       relatedServiceIds: ['srv-laptop', 'srv-gaming', 'srv-gaming-laptop-cleaning', 'srv-motherboard', 'srv-screen'],
       relatedProblemIds: ['problem-overheating', 'problem-no-power', 'problem-wifi-fail', 'problem-black-screen'],
+      relatedLocationIds: ['loc-hawalli', 'loc-salmiya', 'loc-kuwait-city', 'loc-farwaniya', 'loc-ahmadi', 'loc-fahaheel'],
       contentImages: [
         { src: IMAGES.laptopHardware.laptopDisassemblyInternalRepair.src, alt: 'ASUS laptop opened for internal repair and diagnosis', width: IMAGES.laptopHardware.laptopDisassemblyInternalRepair.width, height: IMAGES.laptopHardware.laptopDisassemblyInternalRepair.height, caption: 'ASUS laptop opened for internal hardware diagnosis and repair.' },
         { src: IMAGES.motherboard.asusMotherboardChipsetHeatsinkRepair.src, alt: IMAGES.motherboard.asusMotherboardChipsetHeatsinkRepair.alt, width: IMAGES.motherboard.asusMotherboardChipsetHeatsinkRepair.width, height: IMAGES.motherboard.asusMotherboardChipsetHeatsinkRepair.height, caption: 'ASUS motherboard and heatsink area during component-level diagnosis and repair.' }
       ],
+      familyGroups: [
+        { name: 'ROG & TUF Gaming', description: 'High-performance ASUS systems where thermal, power and display faults often need model-specific diagnosis.', models: ['ROG Strix', 'ROG Zephyrus', 'TUF Gaming'], repairFocus: ['Thermal service', 'GPU/power', 'Motherboard', 'Display'] },
+        { name: 'ZenBook & VivoBook', description: 'Thin and everyday ASUS laptops with charging, display, battery and board-level repair needs.', models: ['ZenBook', 'VivoBook'], repairFocus: ['Charging', 'Battery', 'Screen', 'Motherboard'] }
+      ],
+      repairProcess: [
+        { step: 1, title: 'Identify the ASUS platform', description: 'We confirm the exact model and whether the symptom is thermal, power, charging, display or motherboard related.' },
+        { step: 2, title: 'Inspect the cooling and power path', description: 'High-load systems are assessed for fan, thermal-interface, power and board behaviour.' },
+        { step: 3, title: 'Approve the repair plan', description: 'We quote the required work before repair.' },
+        { step: 4, title: 'Repair and load-test', description: 'Relevant temperatures, charging, display and stability functions are verified.' }
+      ],
+      technicalCapabilities: ['ROG/TUF thermal service', 'USB-C and DC charging diagnosis', 'GPU and motherboard fault tracing', 'Liquid-metal service on compatible models', 'Screen replacement', 'Battery service'],
+      faqs: [
+        { id: 'asus-cost', title: 'How much does ASUS laptop repair cost in Kuwait?', answer: 'The cost depends on the ASUS model and the fault found. KCROC diagnoses first and quotes the repair path before work.' },
+        { id: 'asus-liquid-metal', title: 'Do you service ASUS ROG liquid-metal cooling?', answer: 'On compatible models, yes. The cooling design is checked first because liquid metal is not suitable for every laptop.' },
+        { id: 'asus-pickup', title: 'Do you offer ASUS laptop pickup in Kuwait?', answer: 'Yes. Pickup and delivery are available across Kuwait.' },
+        { id: 'asus-motherboard', title: 'Can you repair a dead ASUS motherboard?', answer: 'A dead board can be diagnosed at component level when practical, rather than automatically assuming a full motherboard replacement is required.' }
+      ],
       pricing: { startingFrom: 15, currency: 'KWD', quoteRequired: true, displayLabel: 'From 15 KWD — free diagnostic first' },
-      seo: { title: 'ASUS Laptop Repair Kuwait | ROG & TUF Specialists | KCROC', description: 'Independent ASUS ROG and TUF laptop repair in Kuwait. Liquid-metal thermal service, motherboard, charging and screen repair with free pick-up and drop-off.', canonicalUrl: 'https://www.computerrepairkuwait.com/asus-laptop-repair-kuwait', ogType: 'article', schemaTypes: ['Service'] },
+      seo: { title: 'ASUS Laptop Repair Kuwait | ROG & TUF Specialists | KCROC', description: 'Independent ASUS ROG and TUF laptop repair in Kuwait. Liquid-metal thermal service, motherboard, charging and screen repair with free pick-up and drop-off.', canonicalUrl: 'https://www.computerrepairkuwait.com/asus-laptop-repair-kuwait', ogType: 'article', schemaTypes: ['Brand', 'Service', 'FAQPage', 'BreadcrumbList'] },
       navigationPriority: 60, popular: false
     } as BrandEntity,
 
@@ -3026,9 +3206,27 @@ export const rawGraphData: RawGraphData = {
       ],
       relatedServiceIds: ['srv-laptop', 'srv-gaming-laptop-cleaning', 'srv-charging-port', 'srv-hinge', 'srv-motherboard'],
       relatedProblemIds: ['problem-not-charging', 'problem-overheating', 'problem-hinge-break'],
+      relatedLocationIds: ['loc-hawalli', 'loc-salmiya', 'loc-kuwait-city', 'loc-farwaniya', 'loc-jahra', 'loc-ahmadi'],
       contentImages: [{ src: IMAGES.upgrades.acerLaptopMotherboardRamHeatsink.src, alt: IMAGES.upgrades.acerLaptopMotherboardRamHeatsink.alt, width: IMAGES.upgrades.acerLaptopMotherboardRamHeatsink.width, height: IMAGES.upgrades.acerLaptopMotherboardRamHeatsink.height, caption: 'Acer laptop internal motherboard, RAM and cooling hardware inspected for repair.' }],
+      familyGroups: [
+        { name: 'Aspire & Swift', description: 'Everyday Acer systems where charging, hinge, battery, display and cooling issues are common repair paths.', models: ['Aspire 3', 'Aspire 5', 'Swift 3'], repairFocus: ['Charging', 'Hinge', 'Battery', 'Display'] },
+        { name: 'Nitro & Predator', description: 'Gaming Acer systems that need thermal, GPU, power and cooling checks under sustained load.', models: ['Nitro 5', 'Predator Helios 300'], repairFocus: ['Thermals', 'GPU', 'Cooling', 'Motherboard'] }
+      ],
+      repairProcess: [
+        { step: 1, title: 'Confirm model', description: 'We identify the Acer model and the symptom that needs to be repaired.' },
+        { step: 2, title: 'Trace the fault', description: 'Charging, power, thermal, display and board circuits are tested as appropriate.' },
+        { step: 3, title: 'Quote before repair', description: 'The repair path is explained before any paid repair work starts.' },
+        { step: 4, title: 'Repair and test', description: 'The system is tested for normal operation before return.' }
+      ],
+      technicalCapabilities: ['DC jack and charging repair', 'Cooling and fan service', 'Hinge/chassis repair', 'Screen replacement', 'Motherboard fault diagnosis', 'Battery replacement'],
+      faqs: [
+        { id: 'acer-cost', title: 'How much does Acer laptop repair cost in Kuwait?', answer: 'The quotation depends on the Acer model and actual fault. KCROC diagnoses first and gives the repair price before work begins.' },
+        { id: 'acer-charging', title: 'Can you repair an Acer charging port?', answer: 'Yes. The port and charging circuit are checked to determine whether a connector repair or board-level repair is required.' },
+        { id: 'acer-pickup', title: 'Do you collect Acer laptops from Farwaniya or Jahra?', answer: 'Yes. Pickup and delivery are available across Kuwait.' },
+        { id: 'acer-gaming', title: 'Can you service Acer Nitro and Predator laptops?', answer: 'Yes. Gaming thermal, power, charging, display and motherboard faults are covered as part of the relevant repair services.' }
+      ],
       pricing: { startingFrom: 15, currency: 'KWD', quoteRequired: true, displayLabel: 'From 15 KWD — free diagnostic first' },
-      seo: { title: 'Acer Laptop Repair Kuwait | Nitro & Predator | KCROC', description: 'Independent Acer laptop repair in Kuwait for Nitro, Predator, Aspire and Swift. Charging-port, cooling, hinge and motherboard diagnostics with free pick-up and drop-off.', canonicalUrl: 'https://www.computerrepairkuwait.com/acer-laptop-repair-kuwait', ogType: 'article', schemaTypes: ['Service'] },
+      seo: { title: 'Acer Laptop Repair Kuwait | Nitro & Predator | KCROC', description: 'Independent Acer laptop repair in Kuwait for Nitro, Predator, Aspire and Swift. Charging-port, cooling, hinge and motherboard diagnostics with free pick-up and drop-off.', canonicalUrl: 'https://www.computerrepairkuwait.com/acer-laptop-repair-kuwait', ogType: 'article', schemaTypes: ['Brand', 'Service', 'FAQPage', 'BreadcrumbList'] },
       navigationPriority: 50, popular: false
     } as BrandEntity,
 
@@ -3044,9 +3242,27 @@ export const rawGraphData: RawGraphData = {
       ],
       relatedServiceIds: ['srv-laptop', 'srv-gaming', 'srv-gaming-laptop-cleaning', 'srv-motherboard', 'srv-hinge', 'srv-battery'],
       relatedProblemIds: ['problem-hinge-break', 'problem-no-power', 'problem-not-charging', 'problem-overheating'],
+      relatedLocationIds: ['loc-hawalli', 'loc-salmiya', 'loc-kuwait-city', 'loc-farwaniya', 'loc-ahmadi', 'loc-fahaheel'],
       contentImages: [{ src: IMAGES.gaming.msiWorkstation.src, alt: IMAGES.gaming.msiWorkstation.alt, width: IMAGES.gaming.msiWorkstation.width, height: IMAGES.gaming.msiWorkstation.height, caption: 'MSI gaming laptop and GPU repair workstation for high-performance hardware diagnosis.' }],
+      familyGroups: [
+        { name: 'Katana & Thin', description: 'Gaming MSI laptops where thermals, hinges, charging and power circuits need practical diagnosis.', models: ['Katana GF66', 'Thin GF63'], repairFocus: ['Thermals', 'Hinge', 'Charging', 'Power'] },
+        { name: 'Raider & Stealth', description: 'Higher-end MSI systems with dense cooling and high-load power requirements.', models: ['Raider GE76', 'Stealth GS66', 'Cyborg 15'], repairFocus: ['Cooling', 'GPU/power', 'Display', 'Motherboard'] }
+      ],
+      repairProcess: [
+        { step: 1, title: 'Confirm MSI model and symptom', description: 'We establish whether the issue is power, cooling, charging, display, battery or board related.' },
+        { step: 2, title: 'Controlled diagnosis', description: 'Thermal behaviour, charging input and board-level power can be checked under the conditions that reproduce the fault.' },
+        { step: 3, title: 'Quote and approval', description: 'The actual repair path and price are presented before work begins.' },
+        { step: 4, title: 'Repair and stability test', description: 'Key power, temperature, display and system stability functions are verified.' }
+      ],
+      technicalCapabilities: ['MSI thermal and fan service', 'Hinge/chassis repair', 'Charging and power diagnosis', 'Motherboard fault tracing', 'Battery replacement', 'Gaming stability testing'],
+      faqs: [
+        { id: 'msi-cost', title: 'How much does MSI laptop repair cost in Kuwait?', answer: 'MSI repair cost depends on the model, fault and parts required. KCROC diagnoses first and quotes before repair.' },
+        { id: 'msi-motherboard', title: 'Do you repair MSI motherboard power faults?', answer: 'Yes, when the failed component or circuit is technically repairable. We diagnose the board before considering a full replacement.' },
+        { id: 'msi-pickup', title: 'Do you offer MSI laptop pickup in Kuwait?', answer: 'Yes. Pickup and delivery are available across Kuwait.' },
+        { id: 'msi-overheating', title: 'Can you service an overheating MSI gaming laptop?', answer: 'Yes. Cooling condition, fan operation and thermal interface are checked, and the repair path is based on the actual cause.' }
+      ],
       pricing: { startingFrom: 20, currency: 'KWD', quoteRequired: true, displayLabel: 'From 20 KWD — free diagnostic first' },
-      seo: { title: 'MSI Laptop Repair Kuwait | Hinge & Motherboard | KCROC', description: 'Professional MSI laptop repair in Kuwait. Specialist in MSI hinge repair, motherboard short circuits, and thermal repasting. Free pick & drop.', canonicalUrl: 'https://www.computerrepairkuwait.com/msi-laptop-repair-kuwait', ogType: 'article', schemaTypes: ['Service'] },
+      seo: { title: 'MSI Laptop Repair Kuwait | Hinge & Motherboard | KCROC', description: 'Professional MSI laptop repair in Kuwait. Specialist in MSI hinge repair, motherboard short circuits, and thermal repasting. Free pick & drop.', canonicalUrl: 'https://www.computerrepairkuwait.com/msi-laptop-repair-kuwait', ogType: 'article', schemaTypes: ['Brand', 'Service', 'FAQPage', 'BreadcrumbList'] },
       navigationPriority: 40, popular: false
     } as BrandEntity,
 
