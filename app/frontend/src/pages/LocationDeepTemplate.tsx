@@ -334,14 +334,26 @@ export default function LocationDeepTemplate() {
             Computer &amp; Laptop Repair for {location.title}
           </h2>
           <p className="text-slate-300 leading-relaxed">
-            KCROC brings genuine component-level diagnosis and repair to {location.title} — not
-            just part-swapping — without you needing to visit a shop. We collect your device with
-            a free pickup, repair it at our central Hawalli workshop, and deliver it straight back
-            to you. Our technicians work on laptops, MacBooks, gaming PCs, and motherboards,
-            tracing faults down to the individual component wherever that's possible, and we do it
-            with a privacy-conscious, hardware-only diagnostic process so your files stay
-            untouched.
+            {location.localIntro || <>
+              KCROC brings genuine component-level diagnosis and repair to {location.title} — not
+              just part-swapping — without you needing to visit a shop. We collect your device with
+              a free pickup, repair it at our central Hawalli workshop, and deliver it straight back
+              to you. Our technicians work on laptops, MacBooks, gaming PCs, and motherboards,
+              tracing faults down to the individual component wherever that's possible, and we do it
+              with a privacy-conscious, hardware-only diagnostic process so your files stay
+              untouched.
+            </>}
           </p>
+          {(location.localHighlights ?? []).length > 0 && (
+            <div className="mt-8 grid gap-4 sm:grid-cols-2">
+              {(location.localHighlights ?? []).map((item) => (
+                <article key={item.title} className="rounded-2xl border border-slate-800 bg-slate-900/45 p-5">
+                  <h3 className="font-bold text-white">{item.title}</h3>
+                  <p className="mt-2 text-sm leading-6 text-slate-400">{item.description}</p>
+                </article>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
