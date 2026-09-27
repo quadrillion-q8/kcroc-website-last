@@ -463,7 +463,7 @@ export const BLOG_POSTS: BlogPost[] = [
     id: "guide-laptop-wont-turn-on-2026",
     slug: "laptop-wont-turn-on",
     title: "Laptop Won't Turn On? Complete Troubleshooting Guide",
-    excerpt: "Laptop completely dead, showing no charging light, or refusing to start? Use this technician-led checklist to separate a charger or battery issue from a display, firmware, or motherboard power fault before paying for repair.",
+    excerpt: "Laptop completely dead, showing no charging light, or refusing to start? Use this technician-led checklist to separate charger, battery, display, firmware and motherboard faults before paying for repair in Kuwait.",
     description: "Laptop won't turn on? Follow a safe step-by-step diagnosis for no power, no charging light, black screen, battery, charger, USB-C and motherboard faults, with Kuwait-specific repair guidance from KCROC.",
     content: [
       "A laptop that will not turn on can mean several very different things. Some machines are truly dead with no lights, no fan movement and no response at all. Others are receiving power but cannot complete startup or show an image.",
@@ -568,12 +568,12 @@ export const BLOG_POSTS: BlogPost[] = [
       { type: 'paragraph', text: "Work from the outside in: verify the wall outlet, correct charger, charging port, accessories and a safe power reset. Stop if there are signs of liquid, swelling, burning or sparking. If the laptop remains completely dead with a known-good power source, the next useful step is measured diagnosis of the charging input and motherboard power rails rather than guessing at parts." }
     ],
     image: "/images/laptop-motherboard-diagnostic-bench-repair.webp",
-    date: "2026-09-07",
+    date: "2026-09-27",
     author: "Imran Natiq",
     category: "Laptop Troubleshooting",
     readTime: "11-13 min read",
     tags: ["Laptop Won't Turn On", "Laptop No Power", "Laptop Troubleshooting", "Motherboard Repair", "Laptop Charger", "Computer Repair Kuwait"],
-    seoTitle: "Laptop Won't Turn On? Complete Troubleshooting Guide | KCROC",
+    seoTitle: "Laptop Won't Turn On | Causes & Safe Checks | KCROC",
     contentType: "guide"
   },
   {
