@@ -61,6 +61,13 @@ const slimCaseStudy = (e: NavEntitySource) => ({
   description: e.description ?? '',
 });
 
+const slimLocation = (e: NavEntitySource & { navigationPriority?: number }) => ({
+  id: e.id,
+  slug: e.slug ?? '',
+  title: e.title ?? e.name ?? 'Unknown',
+  navigationPriority: e.navigationPriority ?? 0,
+});
+
 const iconForContent = (slug: string): string => {
   const normalized = slug.toLowerCase();
   if (normalized.includes('gaming') || normalized.includes('gamebar')) return 'gaming';
@@ -161,6 +168,7 @@ const navData = {
   brands: (KCROC_GRAPH.brands ?? []).map(slimEntity),
   problems: (KCROC_GRAPH.problems ?? []).map(slimEntity),
   caseStudies: (KCROC_GRAPH.caseStudies ?? []).map(slimCaseStudy),
+  locations: (KCROC_GRAPH.locations ?? []).map(slimLocation),
   blogEntries,
   guideEntries,
 };
