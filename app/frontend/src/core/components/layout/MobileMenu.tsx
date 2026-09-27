@@ -1,12 +1,22 @@
 // File: app/frontend/src/core/components/layout/MobileMenu.tsx
 import React, { useState, useEffect, useRef } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { ChevronDown, Phone, CalendarCheck, X, Wrench, ShieldCheck, Laptop, Apple, Gamepad2, Cpu, Monitor, BatteryWarning, HardDrive } from 'lucide-react';
+import { Link, useLocation, matchPath } from 'react-router-dom';
+import { ChevronDown, Phone, CalendarCheck, X, Wrench, ShieldCheck, Laptop, Apple, Gamepad2, Cpu, Monitor, BatteryWarning, HardDrive, MapPin } from 'lucide-react';
 import { CompiledNavigationModel } from '../../navigation/types';
 import { useAnalytics } from '../../analytics/AnalyticsProvider';
 
 const ICON_REGISTRY: Record<string, React.ElementType> = {
-  apple: Apple, laptop: Laptop, gaming: Gamepad2, cpu: Cpu, monitor: Monitor, battery: BatteryWarning, hardDrive: HardDrive, shield: ShieldCheck, wrench: Wrench
+  apple: Apple,
+  laptop: Laptop,
+  gaming: Gamepad2,
+  cpu: Cpu,
+  monitor: Monitor,
+  battery: BatteryWarning,
+  hardDrive: HardDrive,
+  'hard-drive': HardDrive,
+  shield: ShieldCheck,
+  wrench: Wrench,
+  'map-pin': MapPin,
 };
 const getIcon = (key: string) => ICON_REGISTRY[key] ?? Wrench;
 
@@ -79,6 +89,7 @@ export default function MobileMenu({ isOpen, onClose, mobileRef, navModel, clean
         role="dialog"
         aria-modal="true"
         aria-label="Mobile Navigation"
+        aria-hidden={!isOpen}
         className={`fixed inset-y-0 right-0 z-[100] w-full max-w-sm bg-brand-dark border-l border-slate-800 shadow-2xl transform transition-transform duration-300 ease-in-out lg:hidden flex flex-col ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}
       >
         <div className="flex items-center justify-between p-4 border-b border-slate-800/60 shrink-0">
@@ -89,6 +100,7 @@ export default function MobileMenu({ isOpen, onClose, mobileRef, navModel, clean
             // 🚀 TOUCH TARGET FIX: min-h/w-11 (44px) hit area, was ~40px with p-2 + 24px icon
             className="min-h-11 min-w-11 flex items-center justify-center rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
             aria-label="Close menu"
+            tabIndex={isOpen ? 0 : -1}
           >
             <X size={24} />
           </button>
@@ -96,7 +108,7 @@ export default function MobileMenu({ isOpen, onClose, mobileRef, navModel, clean
 
         <div className="flex-1 overflow-y-auto py-4 px-4 space-y-3">
           {navModel.header.map((link) => {
-            const isActive = location.pathname.includes(link.href) && link.href !== '/' && link.href !== '#';
+            const isActive = link.href !== '/' && link.href !== '#' && !!matchPath({ path: link.href, end: false }, location.pathname);
             const isHomeActive = link.href === '/' && location.pathname === '/';
             const activelyHighlighted = isActive || isHomeActive;
 
@@ -115,6 +127,7 @@ export default function MobileMenu({ isOpen, onClose, mobileRef, navModel, clean
                     onClick={() => toggleAccordion(link.id)}
                     aria-expanded={isExpanded}
                     aria-controls={`mobile-mega-${link.id}`}
+                    tabIndex={isOpen ? 0 : -1}
                     className={`w-full flex items-center justify-between p-4 text-left font-semibold transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 ${isExpanded ? 'text-cyan-400 bg-slate-800/50' : 'text-slate-200 hover:bg-slate-800/30'}`}
                   >
                     {link.label}
@@ -123,7 +136,7 @@ export default function MobileMenu({ isOpen, onClose, mobileRef, navModel, clean
 
                   <div
                     id={`mobile-mega-${link.id}`}
-                    className={`transition-all duration-300 ease-in-out overflow-hidden ${isExpanded ? 'max-h-[1500px] opacity-100' : 'max-h-0 opacity-0'}`}
+                    className={`transition-all duration-300 ease-in-out overflow-hidden ${isExpanded ? 'max-h-[calc(100vh-8rem)] overflow-y-auto opacity-100' : 'max-h-0 opacity-0'}`}
                   >
                     <div className="p-3 bg-brand-dark/50 space-y-4 border-t border-slate-800/60">
                       
@@ -138,6 +151,7 @@ export default function MobileMenu({ isOpen, onClose, mobileRef, navModel, clean
                                   key={entity.slug}
                                   to={`/${entity.slug}`}
                                   onClick={() => trackConversion('cta_click', { cta_name: 'mobile_mega_featured', button_position: 'mobile_menu' })}
+                                  tabIndex={isOpen ? 0 : -1}
                                   className="flex items-center gap-3 p-2.5 rounded-lg hover:bg-cyan-500/10 border border-transparent hover:border-cyan-500/20 transition-colors group focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
                                 >
                                   <div className="w-8 h-8 rounded-md bg-slate-800 flex items-center justify-center shrink-0 group-hover:bg-cyan-500/20 transition-colors">
@@ -160,6 +174,7 @@ export default function MobileMenu({ isOpen, onClose, mobileRef, navModel, clean
                                 key={entity.slug}
                                 to={`/${entity.slug}`}
                                 onClick={() => trackConversion('cta_click', { cta_name: 'mobile_mega_link', button_position: 'mobile_menu' })}
+                                tabIndex={isOpen ? 0 : -1}
                                 className="text-sm font-medium text-slate-400 hover:text-cyan-400 p-2.5 rounded-lg hover:bg-slate-800/50 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
                               >
                                 {entity.title}
@@ -179,6 +194,7 @@ export default function MobileMenu({ isOpen, onClose, mobileRef, navModel, clean
               <Link
                 key={link.id}
                 to={link.href}
+                tabIndex={isOpen ? 0 : -1}
                 className={`block p-4 rounded-xl font-semibold transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 ${activelyHighlighted ? 'bg-cyan-500/10 text-cyan-400 border border-cyan-500/20' : 'bg-slate-900/30 text-slate-200 border border-slate-800/60 hover:bg-slate-800/50'}`}
               >
                 {link.label}
@@ -191,6 +207,7 @@ export default function MobileMenu({ isOpen, onClose, mobileRef, navModel, clean
           <a
             href={`tel:+${cleanTel}`}
             onClick={() => trackConversion('phone_call_click', { cta_name: 'mobile_menu_phone', button_position: 'mobile_menu' })}
+            tabIndex={isOpen ? 0 : -1}
             className="flex items-center justify-center gap-2 w-full py-3.5 rounded-xl border border-slate-700 bg-slate-800 text-white font-semibold hover:bg-slate-700 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
           >
             <Phone size={18} className="text-cyan-400" />
@@ -199,6 +216,7 @@ export default function MobileMenu({ isOpen, onClose, mobileRef, navModel, clean
           <Link
             to="/book"
             onClick={() => trackConversion('cta_click', { cta_name: 'mobile_menu_book', button_position: 'mobile_menu' })}
+            tabIndex={isOpen ? 0 : -1}
             className="flex items-center justify-center gap-2 w-full py-3.5 rounded-xl bg-cyan-500 text-slate-950 font-black shadow-[0_0_15px_rgba(34,211,238,0.2)] hover:bg-cyan-400 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
           >
             <CalendarCheck size={18} />
