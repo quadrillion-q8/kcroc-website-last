@@ -42,11 +42,27 @@ const SERVICES_AR: { slug: string; icon: React.ElementType; title: string; descr
 
 const AREAS_AR = [
   { slug: 'hawalli', title: 'حولي' },
-  { slug: 'farwaniya', title: 'الفروانية' },
   { slug: 'salmiya', title: 'السالمية' },
-  { slug: 'ahmadi', title: 'الأحمدي' },
+  { slug: 'farwaniya', title: 'الفروانية' },
+  { slug: 'kuwait-city', title: 'مدينة الكويت' },
   { slug: 'jahra', title: 'الجهراء' },
+  { slug: 'ahmadi', title: 'الأحمدي' },
   { slug: 'fahaheel', title: 'الفحيحيل' },
+  { slug: 'mangaf', title: 'المنقف' },
+  { slug: 'abu-halifa', title: 'أبو حليفة' },
+  { slug: 'jabriya', title: 'الجابرية' },
+  { slug: 'fintas', title: 'الفنطاس' },
+  { slug: 'mubarak-al-kabeer', title: 'مبارك الكبير' },
+  { slug: 'sabah-al-salem', title: 'صباح السالم' },
+];
+
+const HIGH_INTENT_AR = [
+  { href: '/laptop-repair-kuwait', title: 'تصليح لابتوب في الكويت', desc: 'خدمة شاملة للأعطال الشائعة، الشحن، البطارية، الشاشة، المفصلات واللوحة الأم.' },
+  { href: '/motherboard-repair-kuwait', title: 'تصليح اللوحة الأم', desc: 'تشخيص أعطال الطاقة والدوائر وإصلاح المكوّن المتضرر عندما يكون الإصلاح ممكنًا.' },
+  { href: '/laptop-wont-turn-on', title: 'اللابتوب لا يعمل', desc: 'فرّق بين مشكلة الشاحن والبطارية ومدخل الشحن واللوحة الأم قبل تبديل القطع.' },
+  { href: '/laptop-overheating-kuwait', title: 'اللابتوب يسخن', desc: 'تشخيص الحرارة المرتفعة والاختناق الحراري ومشاكل التبريد في أجواء الكويت.' },
+  { href: '/laptop-screen-repair-kuwait', title: 'تغيير شاشة اللابتوب', desc: 'شاشات مكسورة أو سوداء أو فيها خطوط ووميض، بعد تشخيص المشكلة.' },
+  { href: '/battery-replacement-kuwait', title: 'تغيير بطارية اللابتوب', desc: 'فحص البطارية أولًا ثم الاستبدال عند ثبوت التلف أو التدهور.' },
 ];
 
 export default function NearMeAR() {
@@ -191,6 +207,33 @@ export default function NearMeAR() {
                 </div>
               </Link>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* High-intent repair paths */}
+      <section className="border-y border-slate-800/60 bg-slate-900/30 px-4 py-12 sm:px-6 sm:py-20">
+        <div className="mx-auto max-w-6xl">
+          <div className="mb-10 max-w-3xl">
+            <p className="mb-2 text-xs font-bold uppercase tracking-widest text-cyan-400">أكثر عمليات البحث شيوعًا</p>
+            <h2 className="text-3xl font-black text-white sm:text-4xl">اختر المشكلة أو خدمة الإصلاح الأقرب لجهازك</h2>
+            <p className="mt-4 leading-loose text-slate-400">إذا كنت تعرف المشكلة التي يعاني منها جهازك، انتقل مباشرة إلى صفحة التشخيص والخدمة المناسبة بدل البحث عن محل بشكل عام.</p>
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {HIGH_INTENT_AR.map((item) => (
+              <Link key={item.href} to={item.href} className="group rounded-2xl border border-slate-800 bg-brand-dark/70 p-5 transition hover:border-cyan-500/50 hover:bg-slate-900">
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <h3 className="text-lg font-black text-white group-hover:text-cyan-300">{item.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-slate-400">{item.desc}</p>
+                  </div>
+                  <ArrowRight className="mt-1 h-5 w-5 shrink-0 rotate-180 text-slate-600 transition group-hover:-translate-x-1 group-hover:text-cyan-400" aria-hidden="true" />
+                </div>
+              </Link>
+            ))}
+          </div>
+          <div className="mt-6 text-center">
+            <Link to="/pricing" className="text-sm font-bold text-cyan-400 hover:text-cyan-300">شاهد أسعار إصلاح الكمبيوتر في الكويت ←</Link>
           </div>
         </div>
       </section>
