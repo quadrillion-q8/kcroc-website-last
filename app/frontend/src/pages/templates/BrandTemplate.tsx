@@ -23,9 +23,9 @@ const BrandTemplate: React.FC = () => {
 
   if (!brand) return <Navigate to="/404" replace />;
 
-  // NOTE: only 'brand-lenovo' currently has the full rich-brand-hub data set
-  // (familyGroups, relatedServiceIds, relatedProblemIds, relatedResourcePaths,
-  // repairProcess, technicalCapabilities, faqs). The KnowledgeGraph zod schema
+  // Rich-brand hub fields are optional in the graph, so the template remains
+  // null-safe while allowing each supported brand to carry its own family,
+  // repair-process, capability, FAQ and location content. The KnowledgeGraph zod schema
   // marks these as defaulting to [] when absent, but that default is only
   // applied inside scripts/validate-build.ts's throwaway RawGraphSchema.parse()
   // call — it never gets written back onto the KCROC_GRAPH object that the app
@@ -37,9 +37,13 @@ const BrandTemplate: React.FC = () => {
   const commonIssues = brand.commonIssues ?? [];
   const repairProcess = brand.repairProcess ?? [];
   const relatedResourcePaths = brand.relatedResourcePaths ?? [];
+  const relatedLocationIds = brand.relatedLocationIds ?? [];
   const technicalCapabilities = brand.technicalCapabilities ?? [];
   const faqs = brand.faqs ?? [];
   const familyGroups = brand.familyGroups ?? [];
+  const relatedCaseStudies = (brand.relatedCaseStudyIds ?? [])
+    .map((id) => KCROC_GRAPH.caseStudies.find((caseStudy) => caseStudy.id === id))
+    .filter(Boolean);
 
   const relatedServices = relatedServiceIds
     .map((id) => KCROC_GRAPH.services.find((service) => service.id === id))
@@ -410,6 +414,65 @@ const BrandTemplate: React.FC = () => {
                   </summary>
                   <p className="mt-3 max-w-4xl text-sm leading-7 text-slate-400">{faq.answer}</p>
                 </details>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {relatedLocationIds.length > 0 && (
+          <section aria-labelledby="brand-service-areas" className="mb-20 rounded-3xl border border-slate-800 bg-slate-900/55 p-7 md:p-10">
+            <div className="flex items-start gap-4">
+              <MapPin className="mt-1 h-7 w-7 flex-shrink-0 text-cyan-400" aria-hidden="true" />
+              <div className="w-full">
+                <h2 id="brand-service-areas" className="text-3xl font-black text-white">{brand.brandName} laptop repair across Kuwait</h2>
+                <p className="mt-3 max-w-3xl leading-7 text-slate-400">
+                  Brand-specific repair is available through KCROC pickup and delivery. Use the local page that matches your area, then send the model and symptoms to a technician.
+                </p>
+                <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+                  {relatedLocationIds.map((id) => {
+                    const location = KCROC_GRAPH.locations.find((item) => item.id === id);
+                    return location ? (
+                      <Link
+                        key={id}
+                        to={`/location/${location.slug}`}
+                        className="rounded-xl border border-slate-800 bg-brand-dark/50 px-4 py-3 text-sm font-bold text-slate-200 transition-colors hover:border-cyan-500/40 hover:text-cyan-300"
+                      >
+                        {location.title}
+                      </Link>
+                    ) : null;
+                  })}
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
+
+        {relatedCaseStudies.length > 0 && (
+          <section aria-labelledby="brand-case-studies" className="mb-20">
+            <div className="mb-9 max-w-3xl">
+              <p className="mb-2 text-sm font-bold uppercase tracking-[0.18em] text-cyan-400">Documented repair work</p>
+              <h2 id="brand-case-studies" className="text-3xl font-black text-white md:text-4xl">{brand.brandName} repair case studies</h2>
+              <p className="mt-3 leading-7 text-slate-400">Real KCROC repair cases connected to this brand, including the original symptoms, diagnosis, repair path and testing.</p>
+            </div>
+            <div className="grid gap-5 md:grid-cols-2">
+              {relatedCaseStudies.map((caseStudy) => caseStudy && (
+                <Link key={caseStudy.id} to={`/case-studies/${caseStudy.slug}`} className="group overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/50 transition hover:border-cyan-500/40">
+                  {caseStudy.featuredImage?.hero && (
+                    <img
+                      src={caseStudy.featuredImage.hero.webp}
+                      alt={caseStudy.featuredImage.altText || caseStudy.title}
+                      width={caseStudy.featuredImage.hero.width}
+                      height={caseStudy.featuredImage.hero.height}
+                      loading="lazy"
+                      className="h-48 w-full object-cover transition group-hover:scale-[1.02]"
+                    />
+                  )}
+                  <div className="p-6">
+                    <h3 className="text-xl font-black text-white group-hover:text-cyan-300">{caseStudy.title}</h3>
+                    <p className="mt-3 text-sm leading-6 text-slate-400">{caseStudy.description}</p>
+                    <span className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-cyan-400">Read case study <ArrowRight className="h-4 w-4" aria-hidden="true" /></span>
+                  </div>
+                </Link>
               ))}
             </div>
           </section>
