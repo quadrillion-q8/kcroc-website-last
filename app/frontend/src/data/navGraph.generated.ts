@@ -696,6 +696,15 @@ export const NAV_GRAPH = {
       "primaryKeyword": "gaming laptop cleaning"
     },
     {
+      "id": "blog-laptop-wont-turn-on-causes-fixes",
+      "slug": "blog/laptop-wont-turn-on-causes-fixes",
+      "title": "Laptop Won’t Turn On? 15 Causes, Tests & What to Do Before Repair",
+      "description": "Laptop won’t turn on? Learn how to diagnose charging, battery, power, RAM, BIOS, display and motherboard problems safely before bringing your laptop for repair in Kuwait.",
+      "iconKey": "laptop",
+      "date": "2026-09-07",
+      "primaryKeyword": "laptop won't turn on"
+    },
+    {
       "id": "blog-laptop-temperatures-kuwait-2026",
       "slug": "blog/laptop-temperatures-kuwait-safe-cpu-gpu-temperatures",
       "title": "Laptop Temperatures in Kuwait: What Is Normal, What Is Too Hot?",
