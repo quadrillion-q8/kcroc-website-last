@@ -10,6 +10,7 @@ import { PricingTable } from '../components/home/PricingTable';
 import { BeforeAfterShowcase } from '../components/home/BeforeAfterShowcase';
 import { Process } from '../components/home/Process';
 import Reviews from '../components/home/Reviews';
+import BehindBench from '../components/home/BehindBench';
 import { LeadMagnet } from '../components/home/LeadMagnet';
 import FAQSection from '../components/home/FAQSection';
 import { ServiceAreas } from '../components/home/ServiceAreas';
@@ -49,16 +50,19 @@ export default function Home() {
       {/* 8. How it works */}
       <Process />
 
-      {/* 9. Social proof */}
+      {/* 9. Behind the bench — visual repair workflow */}
+      <BehindBench />
+
+      {/* 10. Social proof */}
       <Reviews />
 
-      {/* 10. Low-commitment lead capture for visitors not ready to book */}
+      {/* 11. Low-commitment lead capture for visitors not ready to book */}
       <LeadMagnet />
 
-      {/* 11. Objection handling */}
+      {/* 12. Objection handling */}
       <FAQSection />
 
-      {/* 12. Coverage / local SEO confidence */}
+      {/* 13. Coverage / local SEO confidence */}
       <ServiceAreas />
 
       {/* 🚀 MOBILE CTA FIX: StickyMobileCTA (Call + WhatsApp bar) moved to
