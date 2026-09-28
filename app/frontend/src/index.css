@@ -239,3 +239,20 @@
     padding-right: 1rem !important;
   }
 }
+
+
+/* KCROC UX + Conversion Pass 3 */
+.kcroc-cwv-defer {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 720px;
+}
+
+.kcroc-cwv-defer :is(button, a) {
+  touch-action: manipulation;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kcroc-cwv-defer * {
+    scroll-behavior: auto !important;
+  }
+}
