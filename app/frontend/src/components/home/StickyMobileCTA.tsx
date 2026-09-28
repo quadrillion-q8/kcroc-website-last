@@ -26,7 +26,7 @@ export const StickyMobileCTA = () => {
         target="_blank"
         rel="noopener noreferrer"
         onClick={() => trackConversion('whatsapp_click', { cta_name: 'sticky_mobile_wa', button_position: 'bottom_bar' })}
-        className="flex-[2] text-center rounded-xl bg-cyan-500 text-slate-950 font-bold py-2.5 min-h-[44px]"
+        className="flex-[2] text-center rounded-xl bg-[#25D366] text-slate-950 font-bold py-2.5 min-h-[44px] whatsapp-pulse"
       >
         WhatsApp a Technician
       </a>
