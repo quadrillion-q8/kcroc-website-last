@@ -44,6 +44,7 @@ const toc = [
   { id: 'command-line', label: 'Command Line' },
   { id: 'taskkill', label: 'Task Isolation' },
   { id: 'other-causes', label: 'Other Stutter Causes' },
+  { id: 'cluster', label: 'Windows Gaming Guides' },
   { id: 'kuwait', label: 'Kuwait Heat' },
   { id: 'faq', label: 'FAQ' },
 ];
@@ -483,6 +484,34 @@ export default function GameBarPresenceWriterGuide() {
         </div>
       </section>
 
+      <section id="cluster" className={`${sectionClass} bg-slate-950/40`}>
+        <div className="container mx-auto max-w-5xl">
+          <Badge className="mb-3 border-cyan-500/30 bg-cyan-500/10 text-cyan-300">Windows gaming performance cluster</Badge>
+          <h2 className="text-2xl font-bold sm:text-4xl">When Game Bar is only one piece of the stutter</h2>
+          <p className={`mt-4 max-w-3xl ${proseClass}`}>
+            This guide is the Game Bar-specific branch. When the measurements point somewhere else, use the matching KCROC technical guide instead of continuing to change Game Bar or registry settings.
+          </p>
+          <div className="mt-7 grid gap-4 md:grid-cols-2">
+            {[
+              { href: '/guides/windows-gaming-performance-stutter-fix', title: 'Windows Gaming Stutter in 2026', text: 'The main decision tree for frame-time, overlays, drivers, shaders, thermals and hardware.' },
+              { href: '/guides/windows-gaming-frame-time-stutter', title: 'Gaming Stutter With High FPS', text: 'Learn why a high average FPS can still hide long frame-time spikes.' },
+              { href: '/guides/shader-compilation-stutter-windows', title: 'Shader Compilation Stutter', text: 'Check first-use shader and pipeline compilation before deleting caches or blaming the GPU.' },
+              { href: '/guides/dpc-latency-gaming-stutter', title: 'DPC Latency & Gaming Stutter', text: 'Advanced driver-timing diagnosis for repeatable latency-sensitive hitches.' },
+            ].map((item) => (
+              <Link key={item.href} to={item.href} className="group rounded-2xl border border-slate-800 bg-brand-dark p-5 transition hover:border-cyan-500/40 hover:bg-slate-900">
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <h3 className="font-bold text-white group-hover:text-cyan-300">{item.title}</h3>
+                    <p className="mt-2 text-sm leading-6 text-slate-400">{item.text}</p>
+                  </div>
+                  <ChevronRight className="mt-0.5 h-5 w-5 shrink-0 text-cyan-400" />
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section id="kuwait" className={`${sectionClass} bg-slate-900/40`}>
         <div className="container mx-auto max-w-5xl">
           <div className="grid gap-8 lg:grid-cols-[1fr_.8fr] lg:items-center">
@@ -510,6 +539,10 @@ export default function GameBarPresenceWriterGuide() {
         title="GameBar performance: related troubleshooting paths"
         intro="If the executable is not the real bottleneck, move from software symptoms to the relevant gaming hardware or Windows diagnostic path."
         links={[
+          { href: '/guides/windows-gaming-performance-stutter-fix', label: 'Windows Gaming Stutter Guide', description: 'The broader technical decision tree for frame-time, overlays, shaders, drivers and thermals.' },
+          { href: '/guides/windows-gaming-frame-time-stutter', label: 'High FPS but Gaming Stutter', description: 'Measure frame-time spikes instead of relying on average FPS alone.' },
+          { href: '/guides/shader-compilation-stutter-windows', label: 'Shader Compilation Stutter', description: 'Use when hitches follow first-use effects, materials or game areas.' },
+          { href: '/guides/dpc-latency-gaming-stutter', label: 'DPC Latency & Gaming Stutter', description: 'Advanced driver-timing branch for repeatable latency-sensitive hitches.' },
           { href: '/gaming-pc-repair-kuwait', label: 'Gaming PC & GPU Repair Kuwait', description: 'For persistent stutter, crashes, artifacting, thermals, GPU, RAM, or power instability.' },
           { href: '/blog/gaming-pc-cooling', label: 'Gaming PC Cooling Guide', description: 'Check cooling, dust, fans, thermal interfaces, and sustained-load behavior before registry tweaks.' },
           { href: '/laptop-overheating-kuwait', label: 'Laptop Overheating Problem', description: 'Useful when gaming performance falls as a laptop heats up.' },
