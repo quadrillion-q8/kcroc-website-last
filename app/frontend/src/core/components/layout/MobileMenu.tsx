@@ -4,6 +4,7 @@ import { Link, useLocation, matchPath } from 'react-router-dom';
 import { ChevronDown, Phone, CalendarCheck, X, Wrench, ShieldCheck, Laptop, Apple, Gamepad2, Cpu, Monitor, BatteryWarning, HardDrive, MapPin } from 'lucide-react';
 import { CompiledNavigationModel } from '../../navigation/types';
 import { useAnalytics } from '../../analytics/AnalyticsProvider';
+import { getLanguageSwitchPath } from '../../../utils/locale';
 
 const ICON_REGISTRY: Record<string, React.ElementType> = {
   apple: Apple,
@@ -33,6 +34,7 @@ interface MobileMenuProps {
 export default function MobileMenu({ isOpen, onClose, mobileRef, navModel, cleanTel, phoneDisplay, triggerRef }: MobileMenuProps) {
   const [openAccordion, setOpenAccordion] = useState<string | null>(null);
   const location = useLocation();
+  const languageSwitch = getLanguageSwitchPath(location.pathname);
   const { trackConversion } = useAnalytics();
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const wasOpenRef = useRef(false);
@@ -93,7 +95,17 @@ export default function MobileMenu({ isOpen, onClose, mobileRef, navModel, clean
         className={`fixed inset-y-0 right-0 z-[100] w-full max-w-sm bg-brand-dark border-l border-slate-800 shadow-2xl transform transition-transform duration-300 ease-in-out lg:hidden flex flex-col ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}
       >
         <div className="flex items-center justify-between p-4 border-b border-slate-800/60 shrink-0">
-          <span className="font-black text-white text-lg tracking-tight">Menu</span>
+          <div className="flex items-center gap-3">
+            <span className="font-black text-white text-lg tracking-tight">Menu</span>
+            <Link
+              to={languageSwitch.href}
+              lang={languageSwitch.targetLanguage === 'ar' ? 'ar' : 'en'}
+              onClick={onClose}
+              className="rounded-lg border border-slate-700 px-2.5 py-1.5 text-xs font-black text-slate-200 hover:border-cyan-500/50 hover:text-cyan-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+            >
+              {languageSwitch.targetLanguage === 'ar' ? 'عربي' : 'EN'}
+            </Link>
+          </div>
           <button
             ref={closeButtonRef}
             onClick={onClose}
