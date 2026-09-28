@@ -1102,6 +1102,35 @@ export default function Pricing() {
         </div>
       </section>
 
+      {/* Commercial repair paths */}
+      <section className="mx-auto max-w-6xl px-4 pb-10 sm:px-6" aria-labelledby="commercial-pricing-paths">
+        <div className="rounded-3xl border border-slate-800 bg-slate-900/45 p-6 sm:p-8">
+          <p className="text-xs font-black uppercase tracking-[0.18em] text-cyan-400">Choose by repair need</p>
+          <h2 id="commercial-pricing-paths" className="mt-2 text-2xl font-black text-white sm:text-3xl">Laptop, gaming and specialist repair pricing</h2>
+          <p className="mt-3 max-w-3xl text-sm leading-6 text-slate-400">
+            Pricing gives the starting point. The service pages explain what is actually repaired, what changes the quote and how pickup works.
+          </p>
+          <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            <Link to="/laptop-repair-kuwait" className="rounded-2xl border border-slate-800 bg-brand-dark/60 p-4 transition-colors hover:border-cyan-500/30">
+              <span className="font-bold text-white">Laptop Repair Kuwait</span>
+              <span className="mt-1 block text-xs leading-5 text-slate-400">Screens, hinges, charging, batteries and motherboards.</span>
+            </Link>
+            <Link to="/gaming-pc-repair-kuwait" className="rounded-2xl border border-slate-800 bg-brand-dark/60 p-4 transition-colors hover:border-cyan-500/30">
+              <span className="font-bold text-white">Gaming PC Repair Kuwait</span>
+              <span className="mt-1 block text-xs leading-5 text-slate-400">GPU, thermal, VRM, BIOS/VBIOS and cooling diagnosis.</span>
+            </Link>
+            <Link to="/dell-laptop-repair-kuwait" className="rounded-2xl border border-slate-800 bg-brand-dark/60 p-4 transition-colors hover:border-cyan-500/30">
+              <span className="font-bold text-white">Dell Laptop Repair</span>
+              <span className="mt-1 block text-xs leading-5 text-slate-400">Inspiron, Latitude, XPS, G-series and Alienware.</span>
+            </Link>
+            <Link to="/hp-laptop-repair-kuwait" className="rounded-2xl border border-slate-800 bg-brand-dark/60 p-4 transition-colors hover:border-cyan-500/30">
+              <span className="font-bold text-white">HP Laptop Repair</span>
+              <span className="mt-1 block text-xs leading-5 text-slate-400">Pavilion, EliteBook, ProBook, Envy, OMEN and Victus.</span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* ─────────────────────────────────────────────────────────────────────
           FAQ
       ───────────────────────────────────────────────────────────────────── */}
