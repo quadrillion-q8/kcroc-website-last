@@ -3,7 +3,7 @@ import { trackEvent } from '../core/analytics/core';
 
 /**
  * Reusable utility to track lead-related interactions across the KCROC website.
- * The core analytics dispatcher enforces the site's optional-tracking consent gate.
+ * Consent is enforced by Google Consent Mode (see index.html).
  */
 export const trackLead = (
   buttonName: string,
