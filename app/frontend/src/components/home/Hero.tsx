@@ -1,7 +1,7 @@
 // File: app/frontend/src/components/home/Hero.tsx
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Phone, MessageCircle, CalendarClock, Star } from 'lucide-react';
+import { MessageCircle, CalendarClock, Star } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ROUTES } from '../../constants/routes';
@@ -87,8 +87,6 @@ export default function Hero() {
 
   return (
     <>
-      <h1 className="sr-only">{headline}</h1>
-
       {/* Mobile Hero Section — deliberately designed as a compact conversion block. */}
       <section className="bg-transparent pt-4 sm:pt-8 pb-6 sm:pb-8 relative overflow-hidden lg:hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-cyan-950/35 via-transparent to-emerald-950/15" />
@@ -104,11 +102,15 @@ export default function Hero() {
             />
           </div>
 
-          <p aria-hidden="true" className="text-white text-[25px] sm:text-[28px] font-black text-center leading-[1.14] tracking-tight">
+          <h1 className="text-white text-[25px] sm:text-[28px] font-black text-center leading-[1.14] tracking-tight">
             {headline}
+          </h1>
+
+          <p className="text-cyan-400 text-sm sm:text-base text-center font-bold mt-3">
+            {hero?.subheadline ?? "We fix the board. We don't just swap it."}
           </p>
 
-          <p className="text-slate-400 text-sm sm:text-base text-center leading-relaxed mt-3 max-w-md mx-auto">
+          <p className="text-slate-400 text-sm sm:text-base text-center leading-relaxed mt-2 max-w-md mx-auto">
             {hero?.description ??
               'Free pickup & delivery. Expert engineer. Data-safe repairs for home and office.'}
           </p>
@@ -128,22 +130,20 @@ export default function Hero() {
             <Button
               size="lg"
               asChild
-              className="w-full h-12 sm:h-14 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-base sm:text-lg rounded-xl sm:rounded-full shadow-lg min-h-[48px]"
+              className="w-full h-12 sm:h-14 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-sm sm:text-base rounded-xl sm:rounded-full shadow-lg min-h-[48px]"
             >
-              <a
-                href={`tel:+${phone}`}
-                aria-label="Call Kuwait Computer Repair On Call"
-                onClick={() => trackConversion('phone_call_click', { cta_name: 'hero_mobile_call', button_position: 'hero_mobile' })}
+              <Link
+                to={ROUTES.BOOKING}
+                onClick={() => trackConversion('cta_click', { cta_name: 'hero_mobile_book_pickup', button_position: 'hero_mobile' })}
               >
-                <Phone className="w-5 h-5 mr-1.5" aria-hidden="true" />
-                Call Now
-              </a>
+                <CalendarClock className="w-5 h-5 mr-1.5" aria-hidden="true" />
+                Book Free Pickup
+              </Link>
             </Button>
             <Button
               size="lg"
               asChild
-              variant="outline"
-              className="w-full h-12 sm:h-14 border-2 border-emerald-500 text-emerald-300 hover:bg-emerald-500/10 font-bold text-base sm:text-lg rounded-xl sm:rounded-full min-h-[48px]"
+              className="w-full h-12 sm:h-14 bg-[#25D366] hover:brightness-95 text-slate-950 font-bold text-sm sm:text-base rounded-xl sm:rounded-full min-h-[48px] whatsapp-pulse"
             >
               <a
                 href={`https://wa.me/${phone}`}
@@ -172,9 +172,9 @@ export default function Hero() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
               <div>
-                <p aria-hidden="true" className="text-white text-4xl xl:text-5xl font-black leading-tight">
+                <h1 className="text-white text-4xl xl:text-5xl font-black leading-tight">
                   {headline}
-                </p>
+                </h1>
                 <p className="mt-4 text-cyan-400 text-xl font-semibold">
                   {hero?.subheadline ?? "We fix the board. We don't just swap it."}
                 </p>
@@ -203,29 +203,30 @@ export default function Hero() {
                   asChild
                   className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 px-8 py-6 text-lg font-black rounded-full transition-all duration-300 min-h-[44px]"
                 >
-                  <a
-                    href={`tel:+${phone}`}
-                    aria-label="Call Kuwait Computer Repair On Call"
-                    onClick={() => trackConversion('phone_call_click', { cta_name: 'hero_desktop_call', button_position: 'hero_desktop' })}
-                  >
-                    <Phone className="w-5 h-5 mr-2" aria-hidden="true" />
-                    Call Now: +{phone}
-                  </a>
-                </Button>
-
-                <Button
-                  size="lg"
-                  variant="outline"
-                  asChild
-                  className="border-2 border-emerald-500 text-emerald-400 hover:bg-emerald-500/10 px-8 py-6 text-lg font-black rounded-full min-h-[44px]"
-                >
                   <Link
                     to={ROUTES.BOOKING}
                     onClick={() => trackConversion('cta_click', { cta_name: 'hero_book_pickup', button_position: 'hero_desktop' })}
                   >
                     <CalendarClock className="w-5 h-5 mr-2" aria-hidden="true" />
-                    Book Pickup Now
+                    Book Free Pickup
                   </Link>
+                </Button>
+
+                <Button
+                  size="lg"
+                  asChild
+                  className="bg-[#25D366] hover:brightness-95 text-slate-950 px-8 py-6 text-lg font-black rounded-full min-h-[44px] whatsapp-pulse"
+                >
+                  <a
+                    href={`https://wa.me/${phone}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Message Kuwait Computer Repair On Call on WhatsApp"
+                    onClick={() => trackConversion('whatsapp_click', { cta_name: 'hero_desktop_whatsapp', button_position: 'hero_desktop' })}
+                  >
+                    <MessageCircle className="w-5 h-5 mr-2" aria-hidden="true" />
+                    WhatsApp a Technician
+                  </a>
                 </Button>
               </div>
             </div>
@@ -264,7 +265,7 @@ export default function Hero() {
                   <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-transparent to-transparent opacity-80"></div>
                   <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between text-xs font-bold text-cyan-400 bg-brand-dark/80 backdrop-blur-md px-3 py-1.5 rounded-xl border border-cyan-500/20 shadow-lg">
                     <span>ESD-Safe Hawalli Laboratory</span>
-                    <span className="text-emerald-400">● Live Diagnostics</span>
+                    <span className="text-emerald-400">● Open 10 AM–10 PM</span>
                   </div>
                 </div>
                 <CardContent className="p-8">
