@@ -1,8 +1,7 @@
 // File: app/frontend/src/components/home/Hero.tsx
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
-import { MessageCircle, CalendarClock, Star } from 'lucide-react';
-import { useState, useEffect } from 'react';
+import { CalendarClock, Check, MessageCircle, ShieldCheck, Star, ArrowRight } from 'lucide-react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ROUTES } from '../../constants/routes';
 import { KCROC_GRAPH } from '../../data/graph';
@@ -18,20 +17,13 @@ export default function Hero() {
   const business = KCROC_GRAPH.business;
   const phone = business!.telephone;
   const rating = business?.aggregateRating?.ratingValue ?? '4.9';
-  const repairsStat = KCROC_GRAPH.stats?.items?.find((s: any) => s.label === 'Repairs completed');
-  // 🚀 FIX: was business?.logoUrl ?? '/logo.png' — two bugs at once: (1) the
-  // primary value was an absolute production URL, wrong for a visible <img>
-  // (see Header.tsx for the full explanation), and (2) the fallback pointed
-  // at '/logo.png', a file that doesn't exist (the real file is logo.webp) —
-  // dead in practice since business.logoUrl is always defined, but wrong if
-  // it were ever hit.
-  const logoUrl = '/logo.webp';
-
+  const reviewCount = business?.aggregateRating?.reviewCount ?? 150;
   const headline = hero?.headline ?? "Kuwait's Expert Component-Level Repair Service.";
+  const desktopImage = '/images/kcroc-laptop-repair-technicians-hawalli-kuwait.webp';
 
   useEffect(() => {
-    const loadingTimer = setTimeout(() => setStatsLoading(false), 800);
-    const animationTimer = setTimeout(() => setStatsAnimated(true), 1000);
+    const loadingTimer = setTimeout(() => setStatsLoading(false), 500);
+    const animationTimer = setTimeout(() => setStatsAnimated(true), 700);
     return () => {
       clearTimeout(loadingTimer);
       clearTimeout(animationTimer);
@@ -39,269 +31,198 @@ export default function Hero() {
   }, []);
 
   const stats = [
-    { number: 500, suffix: '+', label: 'Repairs Completed' },
-    { number: 98, suffix: '%', label: 'Success Rate' },
-    { number: 24, suffix: '/7', label: 'Support Available' },
+    { number: 500, suffix: '+', label: 'repairs completed' },
+    { number: 98, suffix: '%', label: 'success rate' },
+    { number: 30, suffix: ' days', label: 'parts + labour warranty' },
   ];
 
-  const Counter = ({
-    end,
-    suffix = '',
-    duration = 2000,
-  }: {
-    end: number;
-    suffix?: string;
-    duration?: number;
-  }) => {
+  const Counter = ({ end, suffix = '', duration = 1300 }: { end: number; suffix?: string; duration?: number }) => {
     const [count, setCount] = useState(0);
     const [hasAnimated, setHasAnimated] = useState(false);
 
     useEffect(() => {
       if (!statsAnimated || hasAnimated || statsLoading) return;
       setHasAnimated(true);
-
-      let startTime: number;
-      const animate = (currentTime: number) => {
-        if (!startTime) startTime = currentTime;
-        const progress = Math.min((currentTime - startTime) / duration, 1);
+      let startTime = 0;
+      const animate = (time: number) => {
+        if (!startTime) startTime = time;
+        const progress = Math.min((time - startTime) / duration, 1);
         setCount(Math.floor(progress * end));
-
-        if (progress < 1) {
-          requestAnimationFrame(animate);
-        } else {
-          setCount(end); 
-        }
+        if (progress < 1) requestAnimationFrame(animate);
+        else setCount(end);
       };
-
       requestAnimationFrame(animate);
     }, [statsAnimated, hasAnimated, statsLoading, end, duration]);
 
-    if (statsLoading) return <span className="counter loading-state">--</span>;
-
-    return (
-      <span className="counter">
-        {count}{suffix}
-      </span>
-    );
+    if (statsLoading) return <span>—</span>;
+    return <span>{count}{suffix}</span>;
   };
 
   return (
     <>
-      {/* Mobile Hero Section — deliberately designed as a compact conversion block. */}
-      <section className="bg-transparent pt-4 sm:pt-8 pb-6 sm:pb-8 relative overflow-hidden lg:hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-cyan-950/35 via-transparent to-emerald-950/15" />
-
-        <div className="container mx-auto px-4 relative z-10 max-w-xl">
-          <div className="flex justify-center mb-3 sm:mb-4">
-            <img
-              src={logoUrl}
-              alt={`${business?.title ?? 'KCROC'} Logo`}
-              width="48"
-              height="48"
-              className="h-10 sm:h-12 w-auto object-contain drop-shadow-xl"
-            />
+      {/* Mobile */}
+      <section className="relative overflow-hidden lg:hidden bg-transparent pt-5 pb-8 sm:pt-7 sm:pb-10">
+        <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_50%_0%,rgba(201,128,77,0.18),transparent_42%)]" />
+        <div className="container relative z-10 mx-auto px-4 max-w-xl">
+          <div className="mb-4 flex items-center justify-center gap-2">
+            <span className="kcroc-kicker">Precision repair laboratory</span>
           </div>
 
-          <h1 className="text-white text-[25px] sm:text-[28px] font-black text-center leading-[1.14] tracking-tight">
+          <h1 className="kcroc-display text-center text-[2rem] sm:text-[2.4rem] font-black leading-[1.03] tracking-[-0.045em] text-white">
             {headline}
           </h1>
 
-          <p className="text-cyan-400 text-sm sm:text-base text-center font-bold mt-3">
+          <p className="mx-auto mt-3 max-w-lg text-center text-base sm:text-lg font-extrabold leading-snug text-cyan-300">
             {hero?.subheadline ?? "We fix the board. We don't just swap it."}
           </p>
 
-          <p className="text-slate-400 text-sm sm:text-base text-center leading-relaxed mt-2 max-w-md mx-auto">
-            {hero?.description ??
-              'Free pickup & delivery. Expert engineer. Data-safe repairs for home and office.'}
+          <p className="mx-auto mt-3 max-w-lg text-center text-sm sm:text-base leading-relaxed text-slate-300">
+            {hero?.description ?? 'Free pickup and delivery across Kuwait. Diagnosis first, quote second, repair only with your approval.'}
           </p>
 
-          <div className="flex items-center justify-center gap-1.5 mt-3 flex-wrap">
+          <div className="mt-4 flex flex-wrap justify-center gap-2">
             {['Free pickup', '30-day warranty', 'No fix, no fee'].map((label) => (
-              <span
-                key={label}
-                className="text-[10px] sm:text-[11px] font-semibold text-emerald-300 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-2.5 py-1"
-              >
+              <span key={label} className="inline-flex items-center gap-1.5 rounded-full border border-cyan-500/25 bg-cyan-500/10 px-3 py-1.5 text-[11px] font-bold text-cyan-200">
+                <Check className="h-3.5 w-3.5 text-cyan-400" aria-hidden="true" />
                 {label}
               </span>
             ))}
           </div>
 
-          <div className="grid grid-cols-2 gap-2.5 mt-4">
-            <Button
-              size="lg"
-              asChild
-              className="w-full h-12 sm:h-14 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-sm sm:text-base rounded-xl sm:rounded-full shadow-lg min-h-[48px]"
-            >
-              <Link
-                to={ROUTES.BOOKING}
-                onClick={() => trackConversion('cta_click', { cta_name: 'hero_mobile_book_pickup', button_position: 'hero_mobile' })}
-              >
-                <CalendarClock className="w-5 h-5 mr-1.5" aria-hidden="true" />
-                Book Free Pickup
+          <div className="mt-5 grid grid-cols-2 gap-2.5">
+            <Button asChild size="lg" variant="ctaPrimary" className="h-14 w-full rounded-xl text-sm sm:text-base">
+              <Link to={ROUTES.BOOKING} onClick={() => trackConversion('cta_click', { cta_name: 'hero_mobile_book_pickup', button_position: 'hero_mobile' })}>
+                <CalendarClock className="h-5 w-5" aria-hidden="true" />
+                Book Pickup
               </Link>
             </Button>
-            <Button
-              size="lg"
-              asChild
-              className="w-full h-12 sm:h-14 bg-[#25D366] hover:brightness-95 text-slate-950 font-bold text-sm sm:text-base rounded-xl sm:rounded-full min-h-[48px] whatsapp-pulse"
-            >
-              <a
-                href={`https://wa.me/${phone}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Message Kuwait Computer Repair On Call on WhatsApp"
-                onClick={() => trackConversion('whatsapp_click', { cta_name: 'hero_mobile_whatsapp', button_position: 'hero_mobile' })}
-              >
-                <MessageCircle className="w-5 h-5 mr-1.5" aria-hidden="true" />
+            <Button asChild size="lg" className="h-14 w-full rounded-xl bg-[#25D366] font-extrabold text-slate-950 hover:brightness-95 whatsapp-pulse">
+              <a href={`https://wa.me/${phone}`} target="_blank" rel="noopener noreferrer" onClick={() => trackConversion('whatsapp_click', { cta_name: 'hero_mobile_whatsapp', button_position: 'hero_mobile' })}>
+                <MessageCircle className="h-5 w-5" aria-hidden="true" />
                 WhatsApp
               </a>
             </Button>
           </div>
 
-          <p className="text-slate-400 text-xs sm:text-sm text-center font-medium mt-3">
-            <span className="text-cyan-400 font-bold">{rating}★</span> Google rating · Trusted across Kuwait
-          </p>
+          <div className="mt-4 flex items-center justify-center gap-2 text-xs font-semibold text-slate-300">
+            <div className="flex" aria-hidden="true">{[...Array(5)].map((_, i) => <Star key={i} className="h-3.5 w-3.5 fill-current text-cyan-400" />)}</div>
+            <span>{rating} Google rating · {reviewCount}+ reviews</span>
+          </div>
+
+          <div className="kcroc-photo-frame kcroc-copper-glow mt-6 aspect-[4/3] bg-slate-900">
+            <img src={desktopImage} alt="KCROC technician working on a laptop in the Hawalli repair laboratory" width="900" height="900" loading="eager" fetchPriority="high" decoding="async" className="h-full w-full object-cover object-center" />
+            <div className="absolute inset-x-3 bottom-3 z-10 flex items-center justify-between rounded-xl border border-white/[0.10] bg-black/[0.45] px-3 py-2 backdrop-blur-md">
+              <span className="text-[10px] font-bold uppercase tracking-[0.12em] text-white">Hawalli workshop</span>
+              <span className="text-[10px] font-bold text-cyan-300">Open 10 AM–10 PM</span>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Desktop Hero Section */}
-      <section className="hidden lg:block min-h-screen bg-transparent pt-24 pb-16 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-cyan-950/30 via-transparent to-emerald-950/20" />
-
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8">
-              <div>
-                <h1 className="text-white text-4xl xl:text-5xl font-black leading-tight">
-                  {headline}
-                </h1>
-                <p className="mt-4 text-cyan-400 text-xl font-semibold">
-                  {hero?.subheadline ?? "We fix the board. We don't just swap it."}
-                </p>
-                <p className="mt-4 text-slate-400 text-lg leading-relaxed max-w-xl">
-                  {hero?.description ??
-                    'We diagnose and repair failed components at board level — restoring devices that most repair shops in Kuwait would simply declare beyond repair.'}
-                </p>
+      {/* Desktop */}
+      <section className="relative hidden min-h-[calc(100vh-4rem)] overflow-hidden bg-transparent pt-24 pb-16 lg:block">
+        <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_15%_20%,rgba(201,128,77,0.13),transparent_32%),radial-gradient(circle_at_86%_18%,rgba(223,170,98,0.08),transparent_26%)]" />
+        <div className="container relative z-10 mx-auto px-4 lg:px-8">
+          <div className="grid items-center gap-14 xl:grid-cols-[0.95fr_1.05fr]">
+            <div className="max-w-2xl">
+              <div className="mb-6 flex items-center gap-3">
+                <span className="kcroc-kicker">Kuwait · Component-level specialists</span>
               </div>
 
-              <div className="grid grid-cols-3 gap-4 max-w-md">
-                {stats.map((s) => (
-                  <div key={s.label} className="text-center">
-                    <div className="text-2xl font-black text-white">
-                      <Counter end={s.number} suffix={s.suffix} />
-                    </div>
-                    <div className="text-[11px] text-slate-400 uppercase tracking-wide mt-1">
-                      {s.label}
-                    </div>
-                  </div>
+              <h1 className="kcroc-display max-w-2xl text-5xl font-black leading-[0.98] text-white xl:text-6xl 2xl:text-7xl">
+                {headline}
+              </h1>
+
+              <p className="mt-6 max-w-xl text-2xl font-extrabold leading-tight text-cyan-300">
+                {hero?.subheadline ?? "We fix the board. We don't just swap it."}
+              </p>
+
+              <p className="mt-5 max-w-xl text-lg leading-8 text-slate-300">
+                {hero?.description ?? 'We diagnose failed components at board level and restore devices that other repair shops may write off as uneconomical to repair.'}
+              </p>
+
+              <div className="mt-7 flex flex-wrap gap-3">
+                {['Free pickup & delivery', '30-day parts + labour warranty', 'No fix, no fee'].map((label) => (
+                  <span key={label} className="inline-flex items-center gap-2 rounded-full border border-white/[0.10] bg-white/[0.035] px-3.5 py-2 text-xs font-bold text-slate-200">
+                    <Check className="h-4 w-4 text-cyan-400" aria-hidden="true" />
+                    {label}
+                  </span>
                 ))}
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button
-                  size="lg"
-                  asChild
-                  className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 px-8 py-6 text-lg font-black rounded-full transition-all duration-300 min-h-[44px]"
-                >
-                  <Link
-                    to={ROUTES.BOOKING}
-                    onClick={() => trackConversion('cta_click', { cta_name: 'hero_book_pickup', button_position: 'hero_desktop' })}
-                  >
-                    <CalendarClock className="w-5 h-5 mr-2" aria-hidden="true" />
+              <div className="mt-9 flex flex-wrap gap-4">
+                <Button asChild size="lg" variant="ctaPrimary" className="h-14 rounded-xl px-7 text-base">
+                  <Link to={ROUTES.BOOKING} onClick={() => trackConversion('cta_click', { cta_name: 'hero_book_pickup', button_position: 'hero_desktop' })}>
+                    <CalendarClock className="h-5 w-5" aria-hidden="true" />
                     Book Free Pickup
                   </Link>
                 </Button>
-
-                <Button
-                  size="lg"
-                  asChild
-                  className="bg-[#25D366] hover:brightness-95 text-slate-950 px-8 py-6 text-lg font-black rounded-full min-h-[44px] whatsapp-pulse"
-                >
-                  <a
-                    href={`https://wa.me/${phone}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Message Kuwait Computer Repair On Call on WhatsApp"
-                    onClick={() => trackConversion('whatsapp_click', { cta_name: 'hero_desktop_whatsapp', button_position: 'hero_desktop' })}
-                  >
-                    <MessageCircle className="w-5 h-5 mr-2" aria-hidden="true" />
+                <Button asChild size="lg" className="h-14 rounded-xl bg-[#25D366] px-7 text-base font-extrabold text-slate-950 hover:brightness-95 whatsapp-pulse">
+                  <a href={`https://wa.me/${phone}`} target="_blank" rel="noopener noreferrer" onClick={() => trackConversion('whatsapp_click', { cta_name: 'hero_desktop_whatsapp', button_position: 'hero_desktop' })}>
+                    <MessageCircle className="h-5 w-5" aria-hidden="true" />
                     WhatsApp a Technician
                   </a>
                 </Button>
               </div>
+
+              <div className="mt-10 grid max-w-xl grid-cols-3 divide-x divide-white/10 border-y border-white/[0.10] py-5">
+                {stats.map((stat) => (
+                  <div key={stat.label} className="px-4 first:pl-0 last:pr-0">
+                    <div className="text-2xl font-black tracking-tight text-white xl:text-3xl">
+                      <Counter end={stat.number} suffix={stat.suffix} />
+                    </div>
+                    <div className="mt-1 text-[10px] font-bold uppercase leading-tight tracking-[0.12em] text-slate-500">{stat.label}</div>
+                  </div>
+                ))}
+              </div>
             </div>
 
             <div className="relative">
-              <div className="absolute -inset-2 bg-gradient-to-r from-cyan-500/20 to-emerald-500/20 rounded-3xl blur-2xl opacity-75"></div>
-              <Card className="relative bg-slate-900/80 border border-slate-800 rounded-3xl backdrop-blur overflow-hidden shadow-2xl">
-                <div className="aspect-[16/10] overflow-hidden bg-brand-dark relative group">
-                  
-                  {/* 🚀 FIX: Responsive Picture Tag with srcset.
-                      This whole section is CSS-hidden below lg (1024px) via
-                      the parent's `hidden lg:block`, but browsers still
-                      fetch an <img> even when a display:none ancestor hides
-                      it. Without a mobile-width source, phones were
-                      downloading the 900w desktop photo at fetchPriority
-                      "high" for an image they'd never see — stealing
-                      network priority from the real above-the-fold mobile
-                      content and hurting mobile LCP/FCP. The
-                      (max-width: 1023px) source below routes mobile to a
-                      1x1 placeholder instead. */}
-                  <picture>
-                    <source media="(max-width: 1023px)" srcSet="/images/home/blank.webp" />
-                    <source media="(max-width: 1280px)" srcSet="/images/kcroc-laptop-repair-technicians-hawalli-kuwait.webp" />
-                    <img 
-                      src="/images/kcroc-laptop-repair-technicians-hawalli-kuwait.webp" 
-                      alt="KCROC technicians working in the Hawalli computer repair workshop"
-                      width="1000"
-                      height="1000"
-                      sizes="(max-width: 1279px) 50vw, 600px"
-                      fetchPriority="high"
-                      loading="eager"
-                      decoding="sync"
-                      className="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-700 ease-out"
-                    />
-                  </picture>
-
-                  <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-transparent to-transparent opacity-80"></div>
-                  <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between text-xs font-bold text-cyan-400 bg-brand-dark/80 backdrop-blur-md px-3 py-1.5 rounded-xl border border-cyan-500/20 shadow-lg">
-                    <span>ESD-Safe Hawalli Laboratory</span>
-                    <span className="text-emerald-400">● Open 10 AM–10 PM</span>
+              <div className="absolute -inset-8 rounded-[2rem] bg-cyan-500/10 blur-3xl" />
+              <div className="relative">
+                <div className="absolute -right-5 -top-5 z-20 flex max-w-xs items-center gap-3 rounded-2xl border border-white/[0.10] bg-[#0f1618]/[0.88] px-4 py-3 shadow-2xl backdrop-blur-xl">
+                  <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-cyan-500/10 text-cyan-300">
+                    <ShieldCheck className="h-5 w-5" aria-hidden="true" />
+                  </div>
+                  <div>
+                    <p className="text-xs font-black uppercase tracking-[0.12em] text-white">Diagnosis first</p>
+                    <p className="mt-0.5 text-[11px] text-slate-400">Repair only after approval</p>
                   </div>
                 </div>
-                <CardContent className="p-8">
-                  <div className="flex items-center gap-2 mb-3">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-current text-cyan-400" aria-hidden="true" />
-                    ))}
-                    <span className="text-slate-400 text-sm ml-1">
-                      {rating} rated · {business?.aggregateRating?.reviewCount ?? 150}+ reviews
-                    </span>
+
+                <div className="kcroc-photo-frame kcroc-copper-glow aspect-[1.03/1] bg-slate-900">
+                  <img src={desktopImage} alt="KCROC technicians working in the Hawalli computer repair workshop" width="1000" height="1000" loading="eager" fetchPriority="high" decoding="sync" className="h-full w-full object-cover object-center transition-transform duration-700 hover:scale-[1.025]" />
+                  <div className="absolute inset-x-5 bottom-5 z-10 rounded-2xl border border-white/[0.10] bg-[#0b1113]/[0.78] p-4 backdrop-blur-xl">
+                    <div className="flex items-end justify-between gap-4">
+                      <div>
+                        <p className="text-[10px] font-black uppercase tracking-[0.16em] text-cyan-300">KCROC Hawalli Laboratory</p>
+                        <p className="mt-1 text-lg font-black text-white">Board repair. Microsoldering. Precision diagnostics.</p>
+                      </div>
+                      <div className="hidden shrink-0 text-right sm:block">
+                        <div className="flex justify-end" aria-hidden="true">{[...Array(5)].map((_, i) => <Star key={i} className="h-4 w-4 fill-current text-cyan-400" />)}</div>
+                        <p className="mt-1 text-[11px] font-semibold text-slate-400">{rating} · {reviewCount}+ reviews</p>
+                      </div>
+                    </div>
                   </div>
-                  <h3 className="text-white text-xl font-bold mb-2">
-                    {hero?.secondaryCTA?.text ?? 'Need a precise diagnostic?'}
-                  </h3>
-                  <p className="text-slate-400 text-sm mb-6">
-                    Send us your device symptoms. We trace the fault at board-level — free of charge, no obligation.
-                  </p>
-                  <Button
-                    asChild
-                    size="lg"
-                    className="w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold rounded-full shadow-lg"
-                  >
-                    <a
-                      href={`https://wa.me/${phone}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label="Message Kuwait Computer Repair On Call on WhatsApp"
-                      onClick={() => trackConversion('whatsapp_click', { cta_name: 'hero_desktop_card_whatsapp', button_position: 'hero_desktop_card' })}
-                    >
-                      <MessageCircle className="w-5 h-5 mr-2" aria-hidden="true" />
-                      Message on WhatsApp
-                    </a>
-                  </Button>
-                </CardContent>
-              </Card>
+                </div>
+
+                <div className="mt-4 grid grid-cols-3 gap-3">
+                  {[
+                    { label: 'ESD-safe lab', value: 'Precision work' },
+                    { label: 'Pickup', value: 'Across Kuwait' },
+                    { label: 'Warranty', value: '30 days' },
+                  ].map((item) => (
+                    <div key={item.label} className="rounded-2xl border border-white/[0.08] bg-white/[0.03] px-3 py-3 text-center">
+                      <p className="text-[9px] font-black uppercase tracking-[0.13em] text-slate-500">{item.label}</p>
+                      <p className="mt-1 text-xs font-bold text-slate-200">{item.value}</p>
+                    </div>
+                  ))}
+                </div>
+
+                <Link to="/case-studies" className="mt-4 inline-flex items-center gap-2 text-sm font-extrabold text-cyan-300 hover:text-cyan-200 transition-colors">
+                  See real repair case studies <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </Link>
+              </div>
             </div>
           </div>
         </div>
