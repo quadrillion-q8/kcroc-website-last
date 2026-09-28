@@ -158,12 +158,12 @@ export const rawGraphData: RawGraphData = {
     'page-ar-computer-repair': {
       id: 'page-ar-computer-repair', slug: 'ar/computer-repair-kuwait', entityType: 'WebPage', isActive: true,
       title: 'تصليح كمبيوتر في الكويت',
-      description: 'خدمة تصليح كمبيوتر ولابتوب في الكويت من KCROC، مع تشخيص أولي واستلام وتوصيل مجاني إلى مختبرنا في حولي.',
+      description: 'تصليح كمبيوتر ولابتوب في الكويت مع تشخيص واضح قبل الإصلاح، استلام وتوصيل مجاني، وإمكانية إصلاح المكونات واللوحات عندما يكون ذلك مناسبًا.',
       seo: {
         title: 'تصليح كمبيوتر الكويت | فني كمبيوتر واستلام مجاني | KCROC',
-        description: 'تحتاج تصليح كمبيوتر أو لابتوب في الكويت؟ KCROC يوفر تشخيصًا أولًا، إصلاح أعطال الهاردوير واللوحة الأم، واستلامًا وتوصيلًا مجانيًا.',
+        description: 'تصليح كمبيوتر ولابتوب في الكويت مع تشخيص قبل الإصلاح، عرض سعر واضح، استلام وتوصيل مجاني، وإصلاح المذربورد على مستوى المكونات في مختبر KCROC بحولي.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/ar/computer-repair-kuwait',
-        locale: 'ar_KW', ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList'],
+        locale: 'ar_KW', ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList', 'FAQPage', 'Service'],
         lastModified: '2026-09-28T00:00:00+03:00',
         breadcrumbs: [{ name: 'الرئيسية', url: '/' }, { name: 'تصليح كمبيوتر في الكويت', url: '/ar/computer-repair-kuwait' }]
       },
