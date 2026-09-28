@@ -53,7 +53,7 @@ export const AnimatedBackground: React.FC = () => {
         }
         
         .trace-energy {
-          stroke: #0ea5e9; /* KCROC Cyan */
+          stroke: #c9804d; /* KCROC Cyan */
           stroke-width: 2;
           fill: none;
           stroke-linecap: round;
@@ -66,7 +66,7 @@ export const AnimatedBackground: React.FC = () => {
         .energy-4 { animation: flow-energy 14s linear infinite 5s; }
 
         .node-via {
-          fill: #10b981; /* KCROC Emerald */
+          fill: #dfaa62; /* KCROC Emerald */
           transform-origin: center;
           transform-box: fill-box;
         }
@@ -79,7 +79,7 @@ export const AnimatedBackground: React.FC = () => {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-slate-900 via-brand-dark to-brand-dark" />
 
       {/* LAYER 5: Hero Spotlight (Soft cyan glow behind text) */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-cyan-500/10 blur-[100px] rounded-[50%]" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[520px] bg-cyan-500/[0.08] blur-[120px] rounded-[50%]" />
 
       {/* LAYERS 2, 3, & 4: Custom Asymmetrical Vector Motherboard */}
       <svg 
@@ -119,7 +119,7 @@ export const AnimatedBackground: React.FC = () => {
       <div 
         className="absolute inset-0 z-10 pointer-events-none"
         style={{
-          background: 'radial-gradient(ellipse at center, transparent 40%, rgba(2,6,23,0.8) 100%)'
+          background: 'radial-gradient(ellipse at center, transparent 40%, rgba(4,8,9,0.86) 100%)'
         }}
       />
     </div>
