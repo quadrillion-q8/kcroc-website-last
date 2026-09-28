@@ -24,7 +24,10 @@ const getDeviceType = (): DeviceType => {
 export const getSystemMetadata = (): SystemMetadata => {
   return {
     page_title: typeof document !== 'undefined' ? document.title : '',
-    page_location: typeof window !== 'undefined' ? window.location.pathname : '',
+    page_location: typeof window !== 'undefined' ? window.location.href : '',
+    page_path: typeof window !== 'undefined'
+      ? `${window.location.pathname}${window.location.search}`
+      : '',
     page_url: typeof window !== 'undefined' ? window.location.href : '',
     device_type: getDeviceType(),
     language: typeof navigator !== 'undefined' ? navigator.language : 'en',
