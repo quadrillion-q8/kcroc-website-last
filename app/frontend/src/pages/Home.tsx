@@ -11,6 +11,7 @@ import { BeforeAfterShowcase } from '../components/home/BeforeAfterShowcase';
 import { Process } from '../components/home/Process';
 import Reviews from '../components/home/Reviews';
 import BehindBench from '../components/home/BehindBench';
+import RepairProofCTA from '../components/home/RepairProofCTA';
 import { LeadMagnet } from '../components/home/LeadMagnet';
 import FAQSection from '../components/home/FAQSection';
 import { ServiceAreas } from '../components/home/ServiceAreas';
@@ -36,34 +37,37 @@ export default function Home() {
       <ServicesGrid />
 
       {/* 4. Brand recognition — kept after service discovery so mobile users reach what we fix first */}
-      <BrandStrip />
+      <div className="kcroc-cwv-defer"><BrandStrip /></div>
 
       {/* 5. Hard numbers — compact trust reinforcement */}
-      <StatsRow />
+      <div className="kcroc-cwv-defer"><StatsRow /></div>
 
       {/* 6. Case-study proof of component-level repair (the core differentiator) */}
-      <BeforeAfterShowcase />
+      <div className="kcroc-cwv-defer"><BeforeAfterShowcase /></div>
 
       {/* 7. Transparent pricing, sourced from real service data — reduces booking friction */}
-      <PricingTable />
+      <div className="kcroc-cwv-defer"><PricingTable /></div>
 
       {/* 8. How it works */}
-      <Process />
+      <div className="kcroc-cwv-defer"><Process /></div>
 
       {/* 9. Behind the bench — visual repair workflow */}
-      <BehindBench />
+      <div className="kcroc-cwv-defer"><BehindBench /></div>
 
       {/* 10. Social proof */}
-      <Reviews />
+      <div className="kcroc-cwv-defer"><Reviews /></div>
+
+      {/* 10b. Post-proof conversion step */}
+      <div className="kcroc-cwv-defer"><RepairProofCTA /></div>
 
       {/* 11. Low-commitment lead capture for visitors not ready to book */}
-      <LeadMagnet />
+      <div className="kcroc-cwv-defer"><LeadMagnet /></div>
 
       {/* 12. Objection handling */}
-      <FAQSection />
+      <div className="kcroc-cwv-defer"><FAQSection /></div>
 
       {/* 13. Coverage / local SEO confidence */}
-      <ServiceAreas />
+      <div className="kcroc-cwv-defer"><ServiceAreas /></div>
 
       {/* 🚀 MOBILE CTA FIX: StickyMobileCTA (Call + WhatsApp bar) moved to
           RootLayout so it renders on every route — service pages, location
