@@ -54,6 +54,7 @@ export interface EntityMetadata {
 export interface SystemMetadata {
   page_title: string;
   page_location: string;
+  page_path: string;
   page_url: string;
   device_type: DeviceType;
   language: string;
