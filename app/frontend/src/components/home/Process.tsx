@@ -32,8 +32,11 @@ export const Process = () => {
                 alt="KCROC Computer Repair and Precision Diagnostic Process in Kuwait"
                 width="960"
                 height="524"
+                sizes="(max-width: 640px) 100vw, (max-width: 1023px) 92vw, 960px"
                 className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out opacity-90"
                 loading="lazy"
+                decoding="async"
+                fetchPriority="low"
               />
             </picture>
             <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/40 to-transparent"></div>
