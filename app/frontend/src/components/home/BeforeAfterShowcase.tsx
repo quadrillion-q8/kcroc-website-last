@@ -9,10 +9,12 @@ const Picture = ({
   variant,
   alt,
   className = '',
+  sizes = '100vw',
 }: {
   variant: { raw: string; webp: string; avif: string } | undefined;
   alt: string;
   className?: string;
+  sizes?: string;
 }) => {
   if (!variant) return null;
   return (
@@ -24,9 +26,11 @@ const Picture = ({
         alt={alt}
         width={800}
         height={480}
+        sizes={sizes}
         className={`w-full h-full object-cover ${className}`}
         loading="lazy"
         decoding="async"
+        fetchPriority="low"
       />
     </picture>
   );
