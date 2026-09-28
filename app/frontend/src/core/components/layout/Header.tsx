@@ -7,6 +7,7 @@ import { COMPILED_NAVIGATION, getLocalizedNavigation } from '../../navigation/Na
 import { useAnalytics } from '../../analytics/AnalyticsProvider';
 import { Button } from '@/components/ui/button';
 import MobileMenu from './MobileMenu';
+import { getLanguageSwitchPath } from '../../../utils/locale';
 
 const DesktopMegaMenu = React.lazy(() => import('./DesktopMegaMenu'));
 const SearchBar = React.lazy(() => import('../SearchBar').then(m => ({ default: m.SearchBar })));
@@ -43,6 +44,7 @@ export default function Header() {
   const { trackConversion } = useAnalytics();
   
   const navModel = getLocalizedNavigation(location.pathname);
+  const languageSwitch = getLanguageSwitchPath(location.pathname);
   
   const phoneDisplay = NAV_GRAPH.business!.telephone;
   const cleanTel = phoneDisplay.replace(/\D/g, '');
@@ -205,6 +207,14 @@ export default function Header() {
             </nav>
 
             <div className="hidden lg:flex items-center gap-3">
+              <Link
+                to={languageSwitch.href}
+                lang={languageSwitch.targetLanguage === 'ar' ? 'ar' : 'en'}
+                aria-label={languageSwitch.targetLanguage === 'ar' ? 'Switch to Arabic' : 'Switch to English'}
+                className="rounded-lg border border-slate-700 px-3 py-2 text-xs font-black text-slate-200 transition-colors hover:border-cyan-500/50 hover:text-cyan-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+              >
+                {languageSwitch.targetLanguage === 'ar' ? 'عربي' : 'EN'}
+              </Link>
               <button
                 onClick={() => {
                   setActiveMegaId(null);
@@ -235,6 +245,14 @@ export default function Header() {
             </div>
 
             <div className="lg:hidden flex items-center gap-1">
+              <Link
+                to={languageSwitch.href}
+                lang={languageSwitch.targetLanguage === 'ar' ? 'ar' : 'en'}
+                aria-label={languageSwitch.targetLanguage === 'ar' ? 'Switch to Arabic' : 'Switch to English'}
+                className="min-h-11 min-w-11 flex items-center justify-center rounded-lg border border-slate-700 text-xs font-black text-slate-200 transition-colors hover:border-cyan-500/50 hover:text-cyan-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+              >
+                {languageSwitch.targetLanguage === 'ar' ? 'عربي' : 'EN'}
+              </Link>
               <button
                 ref={searchToggleRef}
                 // 🚀 TOUCH TARGET FIX: p-2 + a 20px icon was a ~36px hit area,
