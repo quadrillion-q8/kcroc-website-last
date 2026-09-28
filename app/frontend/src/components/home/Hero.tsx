@@ -253,8 +253,9 @@ export default function Hero() {
                     <img 
                       src="/images/kcroc-laptop-repair-technicians-hawalli-kuwait.webp" 
                       alt="KCROC technicians working in the Hawalli computer repair workshop"
-                      width="1600"
-                      height="873"
+                      width="1000"
+                      height="1000"
+                      sizes="(max-width: 1279px) 50vw, 600px"
                       fetchPriority="high"
                       loading="eager"
                       decoding="sync"
