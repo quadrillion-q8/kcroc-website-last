@@ -43,6 +43,36 @@
     <!-- Preconnects for the third parties allowed by the CSP in vercel.json -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Google tag (gtag.js) with Consent Mode v2.
+         Defaults are DENIED; the cookie banner upgrades them via
+         src/core/privacy/consent.ts. gtag MUST push the `arguments` object
+         (not a rest-args array) or Google silently ignores every command. -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('consent', 'default', {
+        analytics_storage: 'denied',
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+        wait_for_update: 500
+      });
+      try {
+        if (localStorage.getItem('kcroc-cookie-consent') === 'granted') {
+          gtag('consent', 'update', {
+            analytics_storage: 'granted',
+            ad_storage: 'granted',
+            ad_user_data: 'granted',
+            ad_personalization: 'granted'
+          });
+        }
+      } catch (e) {}
+      gtag('js', new Date());
+      // SPA: page_view is sent manually on route change (AnalyticsProvider).
+      gtag('config', 'G-H2BXCZJ8NX', { send_page_view: false });
+    </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H2BXCZJ8NX"></script>
   </head>
   <body>
     <div id="root"></div>
