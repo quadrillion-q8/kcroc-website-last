@@ -40,14 +40,14 @@ export const AnalyticsProvider: React.FC<{ children: React.ReactNode }> = ({ chi
     return NAV_GRAPH.services.find(s => s.slug === slug) || null;
   }, [location.pathname]);
 
-  // 2. Automated Virtual Pageview Telemetry Pipeline
+  // 2. Automated SPA Pageview Tracking Pipeline
   useEffect(() => {
-    const sendVirtualPageview = () => {
+    const sendPageview = () => {
       if (!hasAnalyticsConsent()) return;
 
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({
-        event: 'virtual_pageview',
+      // GA4 pageviews are sent directly through the Google tag. KCROC disables
+      // the tag's automatic pageview so SPA route changes are measured once.
+      trackEvent('page_view', {
         page_path: location.pathname + location.search,
         page_title: document.title,
       });
@@ -55,9 +55,9 @@ export const AnalyticsProvider: React.FC<{ children: React.ReactNode }> = ({ chi
 
     // Keep the small post-render delay that protects page metadata from being
     // sampled before React has committed it, but never emit without consent.
-    const timeoutId = setTimeout(sendVirtualPageview, 100);
+    const timeoutId = setTimeout(sendPageview, 100);
     const unsubscribe = subscribeToConsentChanges((state) => {
-      if (state === 'granted') sendVirtualPageview();
+      if (state === 'granted') sendPageview();
     });
 
     return () => {
