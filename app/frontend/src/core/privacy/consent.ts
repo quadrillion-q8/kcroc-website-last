@@ -1,3 +1,5 @@
+import { loadGoogleTag } from '../analytics/googleTag';
+
 // File: app/frontend/src/core/privacy/consent.ts
 // Centralized client-side consent state for optional analytics/advertising.
 // This is intentionally separate from the UI so analytics cannot accidentally
@@ -75,7 +77,10 @@ export const initializeGoogleConsent = (): void => {
   });
 
   const stored = getConsentState();
-  if (stored === 'granted') applyGoogleConsent('granted');
+  if (stored === 'granted') {
+    applyGoogleConsent('granted');
+    loadGoogleTag();
+  }
 }
 
 export const setConsentState = (state: 'granted' | 'denied'): void => {
@@ -83,6 +88,7 @@ export const setConsentState = (state: 'granted' | 'denied'): void => {
 
   window.localStorage.setItem(CONSENT_STORAGE_KEY, state);
   applyGoogleConsent(state);
+  if (state === 'granted') loadGoogleTag();
   window.dispatchEvent(
     new CustomEvent<ConsentEventDetail>(CONSENT_EVENT, { detail: { state } })
   );
