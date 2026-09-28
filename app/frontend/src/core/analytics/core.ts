@@ -1,6 +1,5 @@
 // File: app/frontend/src/core/analytics/core.ts
 import { AnalyticsEvent, BaseEventPayload, DeviceType, SystemMetadata, BookingEvent } from './types';
-import { hasAnalyticsConsent } from '../privacy/consent';
 
 declare global {
   interface Window {
@@ -35,11 +34,8 @@ export const getSystemMetadata = (): SystemMetadata => {
 };
 
 export const trackEvent = (event: AnalyticsEvent | BookingEvent, payload: BaseEventPayload = {}): void => {
-  // Optional analytics must never dispatch until the visitor has granted
-  // optional tracking consent. This guard is intentionally inside the core
-  // dispatcher so individual buttons/components cannot bypass it.
-  if (!hasAnalyticsConsent()) return;
-
+  // Consent is enforced by Google Consent Mode (see index.html + consent.ts):
+  // with consent denied, Google only receives cookieless, anonymous pings.
   try {
     const fullyCompiledPayload = {
       ...getSystemMetadata(),
