@@ -57,7 +57,7 @@ export const CookieConsentBanner: React.FC = () => {
                 Privacy & Cookie Choices
               </h3>
               <p className="text-slate-400 text-xs sm:text-sm leading-relaxed max-w-3xl">
-                KCROC keeps optional analytics and advertising tracking disabled until you choose. Necessary site functions can still operate without optional tracking. Read our{' '}
+                KCROC uses Google Analytics to understand traffic. Until you choose, only anonymous, cookie-free measurement is used; accepting allows cookies for fuller analytics and advertising measurement. Read our{' '}
                 <Link to="/privacy-policy" className="text-cyan-500 hover:text-cyan-400 underline underline-offset-2">
                   Privacy Policy
                 </Link>{' '}
