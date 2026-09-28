@@ -149,6 +149,13 @@ export const ServiceSchema = RoutableEntitySchema.extend({
   // by SEOEngine when the entity's seo.schemaTypes includes 'FAQPage').
   idealCustomer: z.string().optional(),
   deviceTypes: z.array(z.string()).optional(),
+  // Commercial-intent answers surfaced near the top of service pages. These
+  // are deliberately short, service-specific answers to repairability, price,
+  // turnaround, pickup, technical scope, data safety and coverage questions.
+  commercialAnswers: z.array(z.object({
+    question: z.string(),
+    answer: z.string(),
+  })).optional(),
   process: z.array(z.object({
     step: z.number(),
     title: z.string(),
