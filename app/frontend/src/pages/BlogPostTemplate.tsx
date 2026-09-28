@@ -99,6 +99,51 @@ const STANDALONE_REPAIR_PATHS: Record<string, { title: string; intro: string; li
       { href: '/case-studies/asus-rog-dead-motherboard-hawalli', label: 'ASUS ROG Repair Case Study', description: 'See a real gaming-motherboard repair example from KCROC.' },
     ],
   },
+  'windows-gaming-performance-stutter-fix': {
+    title: 'Windows gaming performance: related troubleshooting paths',
+    intro: 'Use the cluster as a decision tree: measure frame-time first, then branch into Game Bar, shaders, driver latency, thermals or hardware.',
+    links: [
+      { href: '/guides/gamebar-presence-writer-fix', label: 'GameBarPresenceWriter.exe Fix', description: 'The proven KCROC guide for Game Bar presence, capture activity and advanced rollback-first troubleshooting.' },
+      { href: '/guides/windows-gaming-frame-time-stutter', label: 'High FPS but Gaming Stutter', description: 'Understand frame-time spikes and test smoothness before changing system settings.' },
+      { href: '/guides/shader-compilation-stutter-windows', label: 'Shader Compilation Stutter', description: 'Recognize first-use shader and pipeline compilation hitches and avoid unnecessary cache resets.' },
+      { href: '/guides/dpc-latency-gaming-stutter', label: 'DPC Latency & Gaming Stutter', description: 'Advanced driver-latency troubleshooting for repeatable timing-related hitches.' },
+      { href: '/blog/gaming-pc-cooling', label: 'Gaming PC Cooling Guide', description: 'Investigate dust, fans, thermal interfaces and sustained-load heat when stutter follows temperature.' },
+      { href: '/gaming-pc-repair-kuwait', label: 'Gaming PC & GPU Repair Kuwait', description: 'For crashes, artifacts, unstable power, thermal faults or hardware problems that survive software testing.' },
+    ],
+  },
+  'windows-gaming-frame-time-stutter': {
+    title: 'Frame-time troubleshooting: next steps',
+    intro: 'Once you know the hitch is real, use the branch that matches the trigger instead of applying a generic gaming-optimization list.',
+    links: [
+      { href: '/guides/windows-gaming-performance-stutter-fix', label: 'Windows Gaming Stutter Guide', description: 'The cluster hub for frame-time, overlays, shaders, driver latency and thermal testing.' },
+      { href: '/guides/gamebar-presence-writer-fix', label: 'GameBarPresenceWriter.exe Fix', description: 'Use when the hitch is linked specifically to Game Bar or capture activity.' },
+      { href: '/guides/shader-compilation-stutter-windows', label: 'Shader Compilation Stutter', description: 'Use when hitches follow first-use effects, materials or game areas.' },
+      { href: '/blog/gaming-pc-cooling', label: 'Gaming PC Cooling Guide', description: 'Use when frame-time becomes worse as temperature rises.' },
+      { href: '/gaming-pc-repair-kuwait', label: 'Gaming PC & GPU Repair Kuwait', description: 'For persistent stutter with crashes, artifacts, power or hardware symptoms.' },
+    ],
+  },
+  'shader-compilation-stutter-windows': {
+    title: 'Shader stutter: related troubleshooting paths',
+    intro: 'Compare first-use shader behavior with the other common causes of PC gaming hitching before changing drivers or deleting caches.',
+    links: [
+      { href: '/guides/windows-gaming-performance-stutter-fix', label: 'Windows Gaming Stutter Guide', description: 'Broader decision tree for frame-time, overlays, drivers, shaders and thermals.' },
+      { href: '/guides/windows-gaming-frame-time-stutter', label: 'High FPS but Gaming Stutter', description: 'Learn how to distinguish frame-time spikes from an ordinary GPU-bound workload.' },
+      { href: '/guides/gamebar-presence-writer-fix', label: 'GameBarPresenceWriter.exe Fix', description: 'Use the dedicated Game Bar branch when the hitch follows overlay or capture activity.' },
+      { href: '/guides/dpc-latency-gaming-stutter', label: 'DPC Latency & Gaming Stutter', description: 'Advanced branch when timing-related driver activity is a stronger hypothesis.' },
+      { href: '/gaming-pc-repair-kuwait', label: 'Gaming PC & GPU Repair Kuwait', description: 'For stutter accompanied by crashes, artifacts or suspected GPU/VRAM/power instability.' },
+    ],
+  },
+  'dpc-latency-gaming-stutter': {
+    title: 'DPC latency: related troubleshooting paths',
+    intro: 'DPC/ISR analysis is an advanced branch. Use the simpler gaming-performance branches first and return here when the evidence points to driver timing.',
+    links: [
+      { href: '/guides/windows-gaming-performance-stutter-fix', label: 'Windows Gaming Stutter Guide', description: 'Start here to separate frame-time, overlays, shaders, thermals and driver-related causes.' },
+      { href: '/guides/windows-gaming-frame-time-stutter', label: 'High FPS but Gaming Stutter', description: 'Confirm that the symptom is a real frame-time problem before tracing drivers.' },
+      { href: '/guides/gamebar-presence-writer-fix', label: 'GameBarPresenceWriter.exe Fix', description: 'Test Game Bar and capture activity separately from driver latency.' },
+      { href: '/guides/shader-compilation-stutter-windows', label: 'Shader Compilation Stutter', description: 'Check first-use shader and pipeline compilation before blaming drivers.' },
+      { href: '/gaming-pc-repair-kuwait', label: 'Gaming PC & GPU Repair Kuwait', description: 'For persistent instability, crashes, artifacts, thermal faults or hardware problems.' },
+    ],
+  },
   'why-is-my-laptop-so-slow-2026': {
     title: 'Slow laptop: related KCROC repair paths',
     intro: 'Match the measured bottleneck to the relevant KCROC service instead of replacing parts at random.',
@@ -135,6 +180,18 @@ const TECHNICAL_SOURCE_LABELS: Record<string, string> = {
     'Microsoft Support — Recovery options in Windows',
   'https://support.microsoft.com/en-us/windows/experience/compatibility/how-to-know-it-s-time-for-a-new-pc':
     "Microsoft Support — How to know it's time for a new PC",
+  'https://learn.microsoft.com/en-us/windows/apps/develop/settings/settings-windows-11':
+    'Microsoft Learn — Windows 11 settings reference',
+  'https://learn.microsoft.com/en-us/windows/client-management/mdm/policy-csp-applicationmanagement':
+    'Microsoft Learn — AllowGameDVR policy',
+  'https://learn.microsoft.com/en-us/windows/hardware/drivers/kernel/introduction-to-dpc-objects':
+    'Microsoft Learn — Introduction to DPC objects',
+  'https://learn.microsoft.com/en-us/windows-hardware/drivers/devtest/example-15--measuring-dpc-isr-time':
+    'Microsoft Learn — Measuring DPC/ISR time',
+  'https://learn.microsoft.com/en-us/samples/microsoft/directx-graphics-samples/d3d12-pipeline-state-cache-sample-win32/':
+    'Microsoft Learn — Direct3D 12 pipeline-state cache sample',
+  'https://support.microsoft.com/en-us/windows/hardware/display-graphics/optimizations-for-windowed-games-in-windows-11':
+    'Microsoft Support — Optimizations for windowed games in Windows 11',
 };
 
 const getTechnicalSourceLabel = (url: string) => TECHNICAL_SOURCE_LABELS[url] ?? 'Microsoft Support source';
