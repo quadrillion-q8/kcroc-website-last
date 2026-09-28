@@ -5,25 +5,27 @@
 
 @layer base {
   :root {
-    --background: 211 82% 30%;
-    --foreground: 210 40% 98%;
-    
-    --brand-dark: #144b86;
-    --brand-primary: #06b6d4;
-    --brand-accent: #38bdf8;
-    
-    --surface-default: #0f172a;
-    --surface-hover: #1e293b;
-    --surface-elevated: #334155;
-    --surface-glass: rgba(15, 23, 42, 0.7);
-    
-    --status-success: #10b981;
-    --status-warning: #f59e0b;
-    --status-danger: #ef4444;
-    --status-info: #3b82f6;
+    --background: 210 18% 7%;
+    --foreground: 38 22% 94%;
 
-    --radius-card: 1rem;
-    --radius-button: 0.5rem;
+    --brand-dark: #0a0f11;
+    --brand-primary: #c9804d;
+    --brand-accent: #dfaa62;
+    --brand-copper-deep: #8f4f2c;
+
+    --surface-default: #101618;
+    --surface-hover: #182022;
+    --surface-elevated: #232c2f;
+    --surface-glass: rgba(16, 22, 24, 0.76);
+    --surface-warm: #f4efe7;
+
+    --status-success: #2aa879;
+    --status-warning: #dfaa62;
+    --status-danger: #df6f5f;
+    --status-info: #6fc4d1;
+
+    --radius-card: 1.15rem;
+    --radius-button: 0.75rem;
   }
 
   @media (prefers-contrast: more) {
@@ -46,10 +48,10 @@
      silently falling back to unstyled browser defaults, which is why
      heading size varied between sections that otherwise look identical. */
   h1 {
-    @apply text-4xl sm:text-5xl font-black tracking-tight text-white leading-tight;
+    @apply text-4xl sm:text-5xl font-black tracking-tight text-white leading-[1.03];
   }
   h2 {
-    @apply text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight text-white leading-tight;
+    @apply text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight text-white leading-[1.08];
   }
   h3 {
     @apply text-lg sm:text-xl font-bold text-white leading-snug;
@@ -97,6 +99,102 @@
   .whatsapp-pulse {
     animation: none !important;
   }
+}
+
+
+/* ================================================================
+   KCROC VISUAL IDENTITY 2.0
+   Graphite + Copper + Gold + restrained technical cyan.
+   The site should feel like a premium repair laboratory, not a SaaS dashboard.
+   ================================================================ */
+
+::selection {
+  background: rgba(201, 128, 77, 0.32);
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 2px solid #dfa86f;
+  outline-offset: 3px;
+}
+
+.kcroc-display {
+  font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+  letter-spacing: -0.045em;
+}
+
+.kcroc-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #dfa86f;
+  font-size: 0.72rem;
+  line-height: 1;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.kcroc-kicker::before {
+  content: '';
+  width: 1.9rem;
+  height: 1px;
+  background: linear-gradient(90deg, #c9804d, #dfa86f);
+}
+
+.kcroc-section-light {
+  background: #f4efe7;
+  color: #152022;
+}
+
+.kcroc-section-light h1,
+.kcroc-section-light h2,
+.kcroc-section-light h3,
+.kcroc-section-light h4 {
+  color: #11191b;
+}
+
+.kcroc-section-light p,
+.kcroc-section-light li {
+  color: #5b6669;
+}
+
+.kcroc-metal-line {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(223, 170, 98, 0.65), rgba(201, 128, 77, 0.25), transparent);
+}
+
+.kcroc-photo-frame {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: 1.35rem;
+  box-shadow: 0 26px 70px rgba(0, 0, 0, 0.30);
+}
+
+.kcroc-photo-frame::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(10, 15, 17, 0.02) 42%, rgba(10, 15, 17, 0.66) 100%);
+}
+
+.kcroc-copper-glow {
+  box-shadow: 0 0 0 1px rgba(201, 128, 77, 0.08), 0 20px 50px rgba(201, 128, 77, 0.12);
+}
+
+.kcroc-grid-texture {
+  background-image:
+    linear-gradient(rgba(223,170,98,0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(223,170,98,0.045) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: linear-gradient(to bottom, black, transparent 88%);
+}
+
+@media (max-width: 767px) {
+  .kcroc-kicker { letter-spacing: 0.12em; }
+  .kcroc-photo-frame { border-radius: 1rem; }
 }
 
 @layer utilities {
