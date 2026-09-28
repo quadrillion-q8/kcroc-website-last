@@ -83,6 +83,22 @@
   }
 }
 
+
+@keyframes whatsapp-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+  50% { box-shadow: 0 0 0 5px rgba(37, 211, 102, 0.12); }
+}
+
+.whatsapp-pulse {
+  animation: whatsapp-pulse 2.8s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .whatsapp-pulse {
+    animation: none !important;
+  }
+}
+
 @layer utilities {
   /* Horizontal swipe-carousel utilities: native touch scroll + CSS snap.
      Usage: <div class="scroll-row"><div class="scroll-row-item">...</div></div> */
