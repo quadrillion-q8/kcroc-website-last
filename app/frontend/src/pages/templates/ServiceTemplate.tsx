@@ -169,6 +169,26 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
           </div>
         </header>
 
+        {entity.commercialAnswers && entity.commercialAnswers.length > 0 && (
+          <section className="max-w-7xl mx-auto px-6 py-12 border-t border-slate-800/50 relative z-10" aria-labelledby="commercial-answers">
+            <div className="max-w-3xl mb-8">
+              <p className="text-xs font-black uppercase tracking-[0.18em] text-cyan-400 mb-2">Before you book</p>
+              <h2 id="commercial-answers" className="text-2xl sm:text-3xl font-black text-white">What to know before choosing this repair service</h2>
+              <p className="mt-3 text-sm leading-6 text-slate-400">
+                The practical questions customers usually ask about repairability, price, turnaround, pickup, data and technical scope.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {entity.commercialAnswers.map((item) => (
+                <article key={item.question} className="rounded-2xl border border-slate-800 bg-slate-900/50 p-5">
+                  <h3 className="text-base font-bold text-white">{item.question}</h3>
+                  <p className="mt-2 text-sm leading-6 text-slate-400">{item.answer}</p>
+                </article>
+              ))}
+            </div>
+          </section>
+        )}
+
         {entity.whyChooseUs && entity.whyChooseUs.length > 0 && (
           <section className="max-w-7xl mx-auto px-6 py-12 border-t border-slate-800/50 relative z-10">
             <h2 className="text-2xl font-bold mb-8 text-white flex items-center gap-3">
