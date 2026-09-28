@@ -14,7 +14,6 @@ import { useLocation } from 'react-router-dom';
 import { NAV_GRAPH } from '../../data/navGraph.generated';
 import { trackEvent, buildEntityPayload } from './index'; 
 import { AnalyticsEvent, BaseEventPayload, BookingEvent } from './types';
-import { hasAnalyticsConsent, subscribeToConsentChanges } from '../privacy/consent';
 
 // Extend the global Window interface to support Google Tag Manager telemetry layers
 declare global {
@@ -41,35 +40,21 @@ export const AnalyticsProvider: React.FC<{ children: React.ReactNode }> = ({ chi
   }, [location.pathname]);
 
   // 2. Automated SPA Pageview Tracking Pipeline
+  // The tag is configured with send_page_view:false, so route changes are
+  // reported here exactly once. Consent Mode decides what Google stores.
   useEffect(() => {
-    const sendPageview = () => {
-      if (!hasAnalyticsConsent()) return;
-
-      // GA4 pageviews are sent directly through the Google tag. KCROC disables
-      // the tag's automatic pageview so SPA route changes are measured once.
+    const timeoutId = setTimeout(() => {
       trackEvent('page_view', {
         page_path: location.pathname + location.search,
         page_title: document.title,
       });
-    };
+    }, 100);
 
-    // Keep the small post-render delay that protects page metadata from being
-    // sampled before React has committed it, but never emit without consent.
-    const timeoutId = setTimeout(sendPageview, 100);
-    const unsubscribe = subscribeToConsentChanges((state) => {
-      if (state === 'granted') sendPageview();
-    });
-
-    return () => {
-      clearTimeout(timeoutId);
-      unsubscribe();
-    };
+    return () => clearTimeout(timeoutId);
   }, [location]);
 
   // 3. Conversion Tracking Pipeline
   const trackConversion = (event: AnalyticsEvent | BookingEvent, payload: BaseEventPayload) => {
-    if (!hasAnalyticsConsent()) return;
-
     const entityContext = currentEntity ? buildEntityPayload(currentEntity, 'Service') : {};
 
     window.dataLayer = window.dataLayer || [];
