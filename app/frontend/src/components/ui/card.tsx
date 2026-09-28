@@ -24,10 +24,10 @@ const cardVariants = cva('transition-all duration-300', {
   variants: {
     level: {
       feature:
-        'bg-slate-900/50 backdrop-blur-md border border-white/10 rounded-2xl p-6 sm:p-8 hover:border-cyan-500/40 shadow-lg shadow-black/20',
+        'bg-[#111719]/[0.82] backdrop-blur-md border border-white/[0.10] rounded-[1.15rem] p-6 sm:p-8 hover:border-cyan-500/[0.45] shadow-xl shadow-black/20 hover:-translate-y-0.5',
       standard:
-        'bg-slate-900/40 border border-slate-800 rounded-xl p-5 hover:border-slate-700',
-      compact: 'flex items-center gap-3',
+        'bg-[#111719]/[0.58] border border-white/[0.08] rounded-xl p-5 hover:border-cyan-500/25 hover:bg-[#131b1d]/[0.78]',
+      compact: 'flex items-center gap-3 text-slate-200',
       none: '',
     },
   },
