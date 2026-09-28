@@ -1,5 +1,3 @@
-import { loadGoogleTag } from '../analytics/googleTag';
-
 // File: app/frontend/src/core/privacy/consent.ts
 // Centralized client-side consent state for optional analytics/advertising.
 // This is intentionally separate from the UI so analytics cannot accidentally
@@ -42,9 +40,12 @@ const ensureGoogleTagQueue = (): void => {
   // Standard gtag queue stub. This is harmless until a Google tag is added,
   // and it ensures consent defaults are queued before any future Google tag
   // can send measurement or advertising signals.
-  window.gtag = window.gtag || ((...args: any[]) => {
-    window.dataLayer!.push(args);
-  });
+  // Must be a real function pushing the `arguments` object: gtag.js ignores
+  // plain arrays (rest-args) pushed to dataLayer.
+  window.gtag = window.gtag || function () {
+    // eslint-disable-next-line prefer-rest-params
+    window.dataLayer!.push(arguments);
+  };
 };
 
 const consentSignalsFor = (state: 'granted' | 'denied') => ({
@@ -64,31 +65,17 @@ export const applyGoogleConsent = (state: 'granted' | 'denied'): void => {
 export const initializeGoogleConsent = (): void => {
   if (!isBrowser()) return;
 
+  // The consent default (denied), any stored grant, and the Google tag itself
+  // are set up in index.html before this bundle runs. Only make sure the
+  // queue exists as a safety net.
   ensureGoogleTagQueue();
-
-  // Default to denied before any future Google measurement/advertising tag is
-  // allowed to run. A previously saved explicit grant is applied immediately.
-  window.gtag?.('consent', 'default', {
-    analytics_storage: 'denied',
-    ad_storage: 'denied',
-    ad_user_data: 'denied',
-    ad_personalization: 'denied',
-    wait_for_update: 500,
-  });
-
-  const stored = getConsentState();
-  if (stored === 'granted') {
-    applyGoogleConsent('granted');
-    loadGoogleTag();
-  }
-}
+};
 
 export const setConsentState = (state: 'granted' | 'denied'): void => {
   if (!isBrowser()) return;
 
   window.localStorage.setItem(CONSENT_STORAGE_KEY, state);
   applyGoogleConsent(state);
-  if (state === 'granted') loadGoogleTag();
   window.dispatchEvent(
     new CustomEvent<ConsentEventDetail>(CONSENT_EVENT, { detail: { state } })
   );
