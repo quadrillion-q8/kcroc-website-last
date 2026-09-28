@@ -85,8 +85,7 @@ export const RootLayout: React.FC = () => {
   return (
     <>
         {/* AnalyticsProvider is mounted once, at the outer AppWrapper level in
-            App.tsx — do not add a second one here, it previously caused
-            duplicate virtual_pageview events. */}
+            App.tsx — do not add a second analytics provider here. */}
         <div className="relative min-h-screen flex flex-col bg-brand-dark text-slate-200 font-sans selection:bg-cyan-500/30">
           
           {/* 🚀 WCAG 2.2 AA Compliance: Global Skip Link for keyboard navigation */}
