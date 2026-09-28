@@ -797,6 +797,42 @@ export const NAV_GRAPH = {
   ],
   "guideEntries": [
     {
+      "id": "guide-dpc-latency-gaming-stutter",
+      "slug": "guides/dpc-latency-gaming-stutter",
+      "title": "DPC Latency and Gaming Stutter: How Driver Interrupt Delays Can Affect Smoothness",
+      "description": "DPC latency gaming guide: understand ISR and DPC activity, recognize driver-related hitch patterns, and use evidence before changing device drivers or Windows settings.",
+      "iconKey": "gaming",
+      "date": "2026-09-29",
+      "primaryKeyword": "DPC Latency"
+    },
+    {
+      "id": "guide-shader-compilation-stutter-windows",
+      "slug": "guides/shader-compilation-stutter-windows",
+      "title": "Shader Compilation Stutter in PC Games: Why High FPS Can Still Hitch",
+      "description": "Shader compilation stutter explained: why PC games can hitch when new effects appear, how driver updates affect caches, and what to test before changing Windows settings.",
+      "iconKey": "gaming",
+      "date": "2026-09-29",
+      "primaryKeyword": "Shader Compilation"
+    },
+    {
+      "id": "guide-windows-gaming-frame-time-stutter",
+      "slug": "guides/windows-gaming-frame-time-stutter",
+      "title": "Gaming Stutter With High FPS: How to Read Frame-Time in Windows 11",
+      "description": "Gaming stutter with high FPS? Learn how frame-time spikes work, how to reproduce hitching, and how to separate rendering stutter from input, network, CPU, GPU and thermal problems.",
+      "iconKey": "gaming",
+      "date": "2026-09-29",
+      "primaryKeyword": "Gaming Stutter"
+    },
+    {
+      "id": "guide-windows-gaming-performance-pillar",
+      "slug": "guides/windows-gaming-performance-stutter-fix",
+      "title": "Windows Gaming Stutter in 2026: Frame-Time, Overlays, Drivers & Thermal Troubleshooting",
+      "description": "Windows 11 gaming stutter guide: diagnose frame-time spikes, Game Bar overlays, DPC/driver latency, shader compilation, CPU/GPU limits and thermal throttling before applying tweaks.",
+      "iconKey": "gaming",
+      "date": "2026-09-29",
+      "primaryKeyword": "Windows 11 Gaming"
+    },
+    {
       "id": "guide-windows-10-eos",
       "slug": "guides/windows-10-end-of-support",
       "title": "Windows 10 End of Support: What It Means and What to Do in 2026",
