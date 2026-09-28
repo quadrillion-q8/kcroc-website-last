@@ -55,7 +55,7 @@ const SECTIONS = [
     id: 'cookies',
     title: '5. Cookies, Analytics & Advertising',
     body: [
-      `KCROC uses necessary technologies to operate the website. Optional analytics and advertising technologies are kept disabled until you make a privacy choice. If you accept optional technologies, we may use measurement services such as Google Analytics and, when enabled, Google advertising services including AdSense to understand traffic and support relevant advertising.`,
+      `KCROC uses necessary technologies to operate the website. Until you make a privacy choice, Google Analytics runs in a restricted mode that does not set cookies and sends only anonymous, aggregated signals. If you accept optional technologies, we may use measurement services such as Google Analytics and, when enabled, Google advertising services including AdSense to understand traffic and support relevant advertising.`,
       `When Google advertising services are used, third-party vendors, including Google, may use cookies to serve ads based on a user's prior visits to this website or other websites. Google's use of advertising cookies may allow Google and its partners to serve ads based on those visits.`,
       `You can manage or opt out of personalized advertising through Google Ads Settings. You can also review available third-party advertising choices through industry opt-out tools where available.`,
       `For visitors in the European Economic Area, the United Kingdom, and Switzerland, Google requires additional consent-management measures when personalized ads are served. KCROC will use Google's supported consent-management tooling or another Google-certified CMP where required before serving personalized advertising in those regions.`,
