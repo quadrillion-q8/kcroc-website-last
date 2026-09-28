@@ -78,6 +78,7 @@ export const ServiceAreas = () => {
                   alt="KCROC computer repair technicians serving customers across Kuwait from the Hawalli lab"
                   width="960"
                   height="524"
+                  sizes="(max-width: 1023px) 100vw, 50vw"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out opacity-90"
                   loading="lazy"
                   decoding="async"
