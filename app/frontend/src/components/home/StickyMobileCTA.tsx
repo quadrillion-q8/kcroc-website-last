@@ -17,7 +17,8 @@ export const StickyMobileCTA = () => {
       <a
         href={`tel:+${phone}`}
         onClick={() => trackConversion('phone_call_click', { cta_name: 'sticky_mobile_call', button_position: 'bottom_bar' })}
-        className="flex-1 text-center rounded-xl border border-slate-700 text-slate-200 font-semibold py-2.5 min-h-[44px]"
+        className="flex-1 text-center rounded-xl border border-slate-700 text-slate-200 font-semibold py-2.5 min-h-[44px] touch-manipulation transition-colors active:scale-[0.99] focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+        aria-label="Call KCROC"
       >
         Call
       </a>
@@ -25,8 +26,9 @@ export const StickyMobileCTA = () => {
         href={`https://wa.me/${phone}`}
         target="_blank"
         rel="noopener noreferrer"
+        aria-label="Message KCROC on WhatsApp"
         onClick={() => trackConversion('whatsapp_click', { cta_name: 'sticky_mobile_wa', button_position: 'bottom_bar' })}
-        className="flex-[2] text-center rounded-xl bg-[#25D366] text-slate-950 font-bold py-2.5 min-h-[44px] whatsapp-pulse"
+        className="flex-[2] text-center rounded-xl bg-[#25D366] text-slate-950 font-bold py-2.5 min-h-[44px] whatsapp-pulse touch-manipulation transition-transform active:scale-[0.99] focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300"
       >
         WhatsApp a Technician
       </a>
