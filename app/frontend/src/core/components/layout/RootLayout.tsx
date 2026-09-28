@@ -86,7 +86,7 @@ export const RootLayout: React.FC = () => {
     <>
         {/* AnalyticsProvider is mounted once, at the outer AppWrapper level in
             App.tsx — do not add a second analytics provider here. */}
-        <div className="relative min-h-screen flex flex-col bg-brand-dark text-slate-200 font-sans selection:bg-cyan-500/30">
+        <div className="relative min-h-screen flex flex-col bg-brand-dark text-slate-200 font-sans selection:bg-cyan-500/25">
           
           {/* 🚀 WCAG 2.2 AA Compliance: Global Skip Link for keyboard navigation */}
           <a 
