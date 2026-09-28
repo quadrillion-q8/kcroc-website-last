@@ -1234,6 +1234,16 @@ export const rawGraphData: RawGraphData = {
         '2-in-1 / Convertibles (Yoga, Spectre)',
         'Microsoft Surface Devices'
       ],
+      commercialAnswers: [
+        { question: 'Can my laptop actually be repaired?', answer: 'Usually the first step is diagnosis rather than replacement. KCROC checks the actual fault and explains whether a component repair, part replacement or a full replacement makes more sense.' },
+        { question: 'How much does laptop repair cost in Kuwait?', answer: 'Common laptop repair services start from 15 KWD, while the final price depends on the device, fault and parts required. You receive the repair quote before paid work begins.' },
+        { question: 'How long does laptop repair take?', answer: 'Many routine repairs are completed the same day or within 24 hours when the required part is available. Board-level faults and parts orders can take longer.' },
+        { question: 'Do you pick up laptops from my area?', answer: 'Yes. Free pickup and delivery are available across Kuwait, including Farwaniya, Hawalli, Salmiya, Kuwait City, Jahra and Ahmadi.' },
+        { question: 'Do you repair laptop motherboard faults?', answer: 'Yes. Power rails, charging circuits, MOSFETs, ICs and other board-level faults can be tested and repaired where the board is technically repairable.' },
+        { question: 'Will my files stay safe during repair?', answer: 'The repair process focuses on the requested hardware fault. For board-level work, you can remove the SSD before handing over the laptop, and important files should always be backed up beforehand.' },
+        { question: 'Which laptop brands do you repair?', answer: 'KCROC handles Dell, HP, Lenovo, ASUS, Acer, MSI and Microsoft Surface laptops, plus MacBook repair through a separate service page.' },
+        { question: 'Do I have to visit the Hawalli workshop?', answer: 'No. Most customers use the pickup-and-delivery route. Devices are diagnosed and repaired at the Hawalli lab, then returned after testing.' },
+      ],
       repairLevel: 'advanced', 
       estimatedTurnaround: 'Same Day / 24 Hours', 
       pricing: { startingFrom: 15, currency: 'KWD', quoteRequired: true, displayLabel: 'From 15 KWD' }, 
@@ -1508,6 +1518,16 @@ export const rawGraphData: RawGraphData = {
         'Standalone GPUs (RTX / Radeon RX series)',
         'Streaming & Content Creation Workstations',
         'Liquid-Cooled Custom Loop Systems'
+      ],
+      commercialAnswers: [
+        { question: 'Can you repair a gaming PC instead of replacing the GPU or motherboard?', answer: 'That depends on the fault. KCROC diagnoses the GPU, power delivery, cooling and board-level circuits first, then explains whether component repair or replacement is appropriate.' },
+        { question: 'How much does gaming PC repair cost in Kuwait?', answer: 'Gaming PC repair starts from 25 KWD for the service-level diagnosis/repair path shown on this page; complex GPU, motherboard and cooling work is quoted after diagnosis.' },
+        { question: 'How long does gaming PC repair take?', answer: 'Typical specialist work is around 24–48 hours when the required parts are available. Complex board-level faults or parts orders may require more time.' },
+        { question: 'Do you collect gaming PCs and towers from my area?', answer: 'Yes. Pickup and delivery are available Kuwait-wide, including large desktop systems, so you do not need to transport the tower to the Hawalli lab yourself.' },
+        { question: 'Do you repair GPU, VRAM, VRM and BIOS/VBIOS faults?', answer: 'Yes. The service covers GPU and VRAM diagnosis, motherboard power-stage faults, and BIOS/VBIOS recovery where the hardware is technically repairable.' },
+        { question: 'Can you diagnose FPS drops and overheating?', answer: 'Yes. The diagnostic path can include GPU/CPU temperatures, hotspot behaviour, fan or pump response, power delivery, memory stability and controlled load testing.' },
+        { question: 'Which gaming brands do you work on?', answer: 'The service covers custom builds and major gaming hardware families including ASUS ROG, Alienware, MSI, Lenovo Legion, Razer, Gigabyte Aorus and NZXT systems.' },
+        { question: 'Is my data touched during gaming PC repair?', answer: 'For GPU, motherboard and cooling work, the storage drive is normally not the repair target. Backups are still recommended before any hardware service.' },
       ],
       repairLevel: 'chip-level', 
       estimatedTurnaround: '24-48 Hours', 
@@ -1810,7 +1830,7 @@ export const rawGraphData: RawGraphData = {
         noFixNoFee: true 
       }, 
       seo: { 
-        title: 'Gaming PC & GPU Repair Kuwait | FPS & Thermal Fix | KCROC', 
+        title: 'Gaming PC Repair Kuwait | GPU, FPS & Thermal Repair | KCROC', 
         description: 'Stop losing frames to Kuwait\'s heat. Expert component-level gaming PC and GPU repair. Liquid metal, AIO fixes, and micro-soldering. Free pick & drop.', 
         canonicalUrl: 'https://www.computerrepairkuwait.com/gaming-pc-repair-kuwait', locale: 'en_KW', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/gaming-pc-repair-kuwait', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/gaming-pc-repair-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/gaming-pc-repair-kuwait' }, 
         ogType: 'article', 
@@ -2983,7 +3003,8 @@ export const rawGraphData: RawGraphData = {
         { id: 'dell-cost', title: 'How much does Dell laptop repair cost in Kuwait?', answer: 'The cost depends on the model and fault. KCROC diagnoses the problem first and gives the repair quotation before repair work begins; common service starting rates are listed on the pricing page.' },
         { id: 'dell-motherboard', title: 'Do you repair Dell motherboards?', answer: 'Yes, when the board fault is technically repairable. The diagnostic looks for the failed component or circuit before a full-board replacement is considered.' },
         { id: 'dell-pickup', title: 'Do you offer Dell laptop pickup in Kuwait?', answer: 'Yes. Pickup and delivery are available across Kuwait through KCROC\'s repair service.' },
-        { id: 'dell-screen', title: 'Can you replace a Dell laptop screen?', answer: 'Yes. The display panel and cable path are checked first so the repair matches the actual fault.' }
+        { id: 'dell-screen', title: 'Can you replace a Dell laptop screen?', answer: 'Yes. The display panel and cable path are checked first so the repair matches the actual fault.' },
+        { id: 'dell-authorized', title: 'Is KCROC an official Dell service center?', answer: 'No. KCROC is an independent computer-repair provider in Kuwait, not an official Dell-authorized service center. We diagnose and repair Dell hardware independently and explain the repair path before work begins.' }
       ],
       pricing: { startingFrom: 15, currency: 'KWD', quoteRequired: true, displayLabel: 'From 15 KWD — free diagnostic first' },
       seo: { title: 'Dell Laptop Repair Kuwait | Free Pickup | KCROC', description: 'Dell laptop repair in Kuwait for Inspiron, Latitude, XPS, G-series and Alienware. Screen, battery, hinge and motherboard diagnosis with free pickup.', canonicalUrl: 'https://www.computerrepairkuwait.com/dell-laptop-repair-kuwait', ogType: 'article', schemaTypes: ['Brand', 'Service', 'FAQPage', 'BreadcrumbList'] },
@@ -3023,7 +3044,8 @@ export const rawGraphData: RawGraphData = {
         { id: 'hp-cost', title: 'How much does HP laptop repair cost in Kuwait?', answer: 'Pricing depends on the exact HP model, fault and parts required. KCROC diagnoses first, then gives a quotation before repair.' },
         { id: 'hp-motherboard', title: 'Do you repair HP motherboard faults?', answer: 'Yes, where technically practical. A board-level fault can be investigated before deciding that the entire motherboard needs replacement.' },
         { id: 'hp-pickup', title: 'Can you collect my HP laptop from Farwaniya or Salmiya?', answer: 'Yes. KCROC offers pickup and delivery across Kuwait.' },
-        { id: 'hp-overheating', title: 'Can you fix an HP laptop that overheats?', answer: 'Yes. The cooling system, fan behaviour and thermal interface are checked to determine whether cleaning, fan replacement or another hardware repair is appropriate.' }
+        { id: 'hp-overheating', title: 'Can you fix an HP laptop that overheats?', answer: 'Yes. The cooling system, fan behaviour and thermal interface are checked to determine whether cleaning, fan replacement or another hardware repair is appropriate.' },
+        { id: 'hp-authorized', title: 'Is KCROC an official HP service center?', answer: 'No. KCROC is an independent computer-repair provider in Kuwait, not an official HP-authorized service center. We diagnose the actual hardware fault and quote the repair path before work begins.' }
       ],
       pricing: { startingFrom: 15, currency: 'KWD', quoteRequired: true, displayLabel: 'From 15 KWD — free diagnostic first' },
       seo: { title: 'HP Laptop Repair Kuwait | Free Pickup | KCROC', description: 'HP laptop repair in Kuwait for EliteBook, Pavilion, ProBook and OMEN. Free pickup, diagnosis before repair, and 30-day warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/hp-laptop-repair-kuwait', ogType: 'article', schemaTypes: ['Brand', 'Service', 'FAQPage', 'BreadcrumbList'] },
@@ -3987,10 +4009,10 @@ const LOCATION_RELATIONSHIPS: Record<string, {
     relatedLocationIds: ['loc-hawalli', 'loc-salmiya', 'loc-jabriya'],
   },
   farwaniya: {
-    relatedServiceIds: ['srv-laptop', 'srv-motherboard', 'srv-screen', 'srv-battery', 'srv-charging-port'],
-    relatedProblemIds: ['problem-no-power', 'problem-cracked-screen', 'problem-not-charging', 'problem-black-screen'],
-    relatedBrandIds: ['brand-dell', 'brand-lenovo', 'brand-hp', 'brand-asus'],
-    relatedLocationIds: ['loc-hawalli', 'loc-kuwait-city', 'loc-jabriya'],
+    relatedServiceIds: ['srv-laptop', 'srv-motherboard', 'srv-screen', 'srv-battery', 'srv-charging-port', 'srv-gaming'],
+    relatedProblemIds: ['problem-no-power', 'problem-cracked-screen', 'problem-not-charging', 'problem-black-screen', 'problem-overheating'],
+    relatedBrandIds: ['brand-dell', 'brand-hp', 'brand-lenovo', 'brand-asus', 'brand-msi'],
+    relatedLocationIds: ['loc-hawalli', 'loc-kuwait-city', 'loc-salmiya', 'loc-jahra'],
   },
   jahra: {
     relatedServiceIds: ['srv-laptop', 'srv-motherboard', 'srv-gaming-laptop-cleaning', 'srv-battery', 'srv-screen'],
