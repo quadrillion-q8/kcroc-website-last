@@ -343,6 +343,8 @@ export const BrandSchema = RoutableEntitySchema.extend({
   contentImages: z.array(z.object({
     src: z.string(),
     alt: z.string(),
+    width: z.number().optional(),
+    height: z.number().optional(),
     caption: z.string().optional(),
   })).default([]),
 });
