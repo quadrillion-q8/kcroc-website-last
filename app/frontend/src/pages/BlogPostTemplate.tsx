@@ -574,6 +574,8 @@ export default function BlogPostTemplate() {
   // All hooks have now run unconditionally on every render — safe to bail out.
   if (!post) return <Navigate to={isGuide ? ROUTES.GUIDES : ROUTES.BLOG} replace />;
 
+  const isGamingPerformanceGuide = post.slug === 'windows-gaming-performance-stutter-fix';
+
   return (
     <main className="w-full min-h-screen bg-transparent text-slate-200 pt-8 sm:pt-16 lg:pt-32 pb-8 sm:pb-16 lg:pb-24">
 
@@ -747,10 +749,12 @@ export default function BlogPostTemplate() {
 
               <div className="bg-slate-900/50 backdrop-blur-md border border-slate-700/50 p-8 rounded-2xl my-12 text-center">
                 <h3 className="text-2xl text-white font-black mb-4 flex items-center justify-center gap-2">
-                  <Share2 size={24} className="text-cyan-400" aria-hidden="true" /> Is Your Laptop Running Slow?
+                  <Share2 size={24} className="text-cyan-400" aria-hidden="true" /> {isGamingPerformanceGuide ? 'Gaming PC or Laptop Stuttering?' : 'Is Your Laptop Running Slow?'}
                 </h3>
                 <p className="text-slate-400 mb-8 text-base max-w-lg mx-auto">
-                  If your laptop freezes, slows down during multitasking, or struggles with everyday apps, our technicians can diagnose whether it's RAM, storage, overheating, or a hardware fault — for free.
+                  {isGamingPerformanceGuide
+                    ? 'Persistent stutter, overheating, crashes, frame-time spikes or performance drops can come from software, drivers, cooling or hardware. KCROC can diagnose the actual cause before repair.'
+                    : "If your laptop freezes, slows down during multitasking, or struggles with everyday apps, our technicians can diagnose whether it's RAM, storage, overheating, or a hardware fault — for free."}
                 </p>
                 <div className="flex flex-wrap items-center justify-center gap-3 mb-6">
                   <Link to={ROUTES.BOOKING} onClick={() => trackLead('Blog_CTA_BookRepair')} className="inline-flex items-center gap-2 bg-cyan-500 hover:bg-cyan-400 transition-colors text-black px-6 py-3 rounded-xl font-black shadow-[0_0_15px_rgba(34,211,238,0.2)]">
