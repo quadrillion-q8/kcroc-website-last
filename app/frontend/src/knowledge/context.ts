@@ -1,6 +1,6 @@
 // File: app/frontend/src/knowledge/context.ts
-import { KCROC_GRAPH } from '../data/graph';
-import { KCROC_POLICY } from '../constants/businessPolicy';
+import { KCROC_GRAPH } from '../data/graph.js';
+import { KCROC_POLICY } from '../constants/businessPolicy.js';
 
 /**
  * Generates the system instructions for the KCROC AI assistant.
