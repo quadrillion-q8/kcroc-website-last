@@ -74,6 +74,7 @@ const AuthorImran = lazy(() => import('./pages/AuthorImran'));
 
 // 🚀 Custom AI-Generated Guides
 const BatteryHealthGuide = lazy(() => import('./pages/BatteryHealthGuide'));
+const LaptopOverheatingGuide = lazy(() => import('./pages/LaptopOverheatingGuide'));
 const BiosUefiRecoveryGuide = lazy(() => import('./pages/BiosUefiRecoveryGuide'));
 const DellLaptopOverheatingPage = lazy(() => import('./pages/DellLaptopOverheatingPage').then(module => ({ default: module.DellLaptopOverheatingPage })));
 const GameBarPresenceWriterGuide = lazy(() => import('./pages/GameBarPresenceWriterGuide'));
@@ -153,6 +154,7 @@ export const routes: RouteObject[] = [
           { path: 'blog/laptop-wont-turn-on', element: <Navigate to="/blog/laptop-wont-turn-on-causes-fixes" replace /> },
           { path: 'author/imran', element: <AuthorImran /> },
           { path: 'guides/laptop-battery-warning-signs', element: <BatteryHealthGuide /> },
+          { path: 'guides/why-is-my-laptop-so-hot', element: <LaptopOverheatingGuide /> },
           { path: 'guides/bios-uefi-recovery-kuwait', element: <BiosUefiRecoveryGuide /> },
           { path: 'guides/dell-laptop-overheating', element: <DellLaptopOverheatingPage /> },
           { path: 'guides/gamebar-presence-writer-fix', element: <GameBarPresenceWriterGuide /> },
