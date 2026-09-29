@@ -1,11 +1,11 @@
 // File: app/frontend/api/chat.ts
-import { VercelRequest, VercelResponse } from '@vercel/node';
+import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { Ratelimit } from '@upstash/ratelimit';
 import { Redis } from '@upstash/redis';
 
-import { getKnowledgeContext } from '../src/knowledge/context';
-import { evaluateHandoff } from '../src/api/HandoffEngine';
-import { KCROC_GRAPH } from '../src/data/graph';
+import { getKnowledgeContext } from '../src/knowledge/context.js';
+import { evaluateHandoff } from '../src/api/HandoffEngine.js';
+import { KCROC_GRAPH } from '../src/data/graph.js';
 
 const SUPPORT_PHONE_LOCAL = KCROC_GRAPH.business!.telephone.slice(3);
 
