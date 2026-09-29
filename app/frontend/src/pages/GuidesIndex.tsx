@@ -3,7 +3,7 @@
 // so the sitemap, navigation and index cannot drift into separate inventories.
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { BatteryWarning, Cpu, HardDrive, Gamepad2, Shield, Power, Settings2, ChevronRight, MonitorUp } from 'lucide-react';
+import { BatteryWarning, Cpu, HardDrive, Gamepad2, Shield, Power, Settings2, ChevronRight, MonitorUp, Wifi, Globe2, RefreshCcw } from 'lucide-react';
 import { SEOEngine } from '../core/components/SEOEngine';
 import { KCROC_GRAPH } from '../data/graph';
 import { BLOG_POSTS } from '../constants/blogPosts';
@@ -21,6 +21,11 @@ const GUIDE_ORDER = [
   'guides/dell-laptop-overheating',
   'guides/laptop-battery-warning-signs',
   'guides/bios-uefi-recovery-kuwait',
+  'guides/windows-11-wifi-keeps-disconnecting',
+  'guides/windows-11-connected-to-wifi-but-no-internet',
+  'guides/windows-11-100-cpu-usage',
+  'guides/ssd-not-detected-windows-11',
+  'guides/windows-11-update-problems',
   'guides/windows-gaming-performance-stutter-fix',
   'guides/gamebar-presence-writer-fix',
   'guides/windows-gaming-frame-time-stutter',
@@ -36,6 +41,11 @@ const ICON_BY_SLUG: Record<string, React.ElementType> = {
   'guides/dell-laptop-overheating': Cpu,
   'guides/laptop-battery-warning-signs': BatteryWarning,
   'guides/bios-uefi-recovery-kuwait': HardDrive,
+  'guides/windows-11-wifi-keeps-disconnecting': Wifi,
+  'guides/windows-11-connected-to-wifi-but-no-internet': Globe2,
+  'guides/windows-11-100-cpu-usage': Cpu,
+  'guides/ssd-not-detected-windows-11': HardDrive,
+  'guides/windows-11-update-problems': RefreshCcw,
   'guides/windows-gaming-performance-stutter-fix': Gamepad2,
   'guides/gamebar-presence-writer-fix': Gamepad2,
   'guides/windows-gaming-frame-time-stutter': Gamepad2,
