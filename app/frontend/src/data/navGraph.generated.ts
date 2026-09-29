@@ -826,8 +826,8 @@ export const NAV_GRAPH = {
     {
       "id": "guide-windows-gaming-performance-pillar",
       "slug": "guides/windows-gaming-performance-stutter-fix",
-      "title": "Windows Gaming Stutter in 2026: Frame-Time, Overlays, Drivers & Thermal Troubleshooting",
-      "description": "Windows 11 gaming stutter guide: diagnose frame-time spikes, Game Bar overlays, DPC/driver latency, shader compilation, CPU/GPU limits and thermal throttling before applying tweaks.",
+      "title": "Windows 11 Gaming Stutter & FPS Drops: Complete Fix Guide for 2026",
+      "description": "Gaming stuttering despite high FPS? Diagnose frame-time spikes, shaders, Game Bar, DPC latency, drivers, RAM, GPU limits and thermal throttling in Windows 11.",
       "iconKey": "gaming",
       "date": "2026-09-29",
       "primaryKeyword": "Windows 11 Gaming"
