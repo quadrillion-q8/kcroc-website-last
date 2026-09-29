@@ -3,7 +3,7 @@ import { KCROC_GRAPH } from '../data/graph';
 import { KCROC_POLICY } from '../constants/businessPolicy';
 
 /**
- * Generates the System Prompt for the Gemini AI.
+ * Generates the system instructions for the KCROC AI assistant.
  * Dynamically pulls all data from the Knowledge Graph.
  * If graph.ts is updated, the AI learns it instantly on next deployment.
  */
