@@ -70,14 +70,7 @@ function getClientIp(req: VercelRequest): string {
   return 'unknown';
 }
 
-type OpenAIHttpResponse = {
-  ok: boolean;
-  status: number;
-  headers?: { get(name: string): string | null };
-  json(): Promise<unknown>;
-};
-
-async function readOpenAIError(response: OpenAIHttpResponse): Promise<string> {
+async function readOpenAIError(response: globalThis.Response): Promise<string> {
   try {
     const payload = await response.json() as { error?: { message?: string } };
     return payload?.error?.message || `HTTP ${response.status}`;
@@ -162,7 +155,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const knowledgeContext = getKnowledgeContext(sanitizedMessage);
     const model = process.env.OPENAI_MODEL || 'gpt-5.6-luna';
 
-    const openAIResponse: OpenAIHttpResponse = await globalThis.fetch('https://api.openai.com/v1/responses', {
+    const openAIResponse = await fetch('https://api.openai.com/v1/responses', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -179,23 +172,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     if (!openAIResponse.ok) {
       const providerError = await readOpenAIError(openAIResponse);
-      const requestId = openAIResponse.headers?.get('x-request-id') || 'unknown';
-      console.error(
-        `OpenAI API request failed (${openAIResponse.status}) request_id=${requestId}: ${providerError}`,
-      );
-
-      if (openAIResponse.status === 401 || openAIResponse.status === 403) {
-        return res.status(502).json({
-          reply: `The chat service credentials need attention. Please contact us directly on WhatsApp at ${SUPPORT_PHONE_LOCAL}.`,
-        });
-      }
-
-      if (openAIResponse.status === 429) {
-        return res.status(502).json({
-          reply: `The chat service is temporarily rate-limited. Please try again shortly or contact us on WhatsApp at ${SUPPORT_PHONE_LOCAL}.`,
-        });
-      }
-
+      console.error(`OpenAI API request failed (${openAIResponse.status}): ${providerError}`);
       return res.status(502).json({
         reply: `I am currently experiencing technical difficulties. Please contact us directly on WhatsApp at ${SUPPORT_PHONE_LOCAL}.`,
       });
