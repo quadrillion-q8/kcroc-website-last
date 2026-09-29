@@ -3468,9 +3468,9 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     id: "guide-windows-gaming-performance-pillar",
     slug: "windows-gaming-performance-stutter-fix",
-    title: "Windows Gaming Stutter in 2026: Frame-Time, Overlays, Drivers & Thermal Troubleshooting",
-    excerpt: "Gaming feels choppy even when the FPS counter looks high? This technician-written Windows 11 guide shows how to separate frame-time spikes, Game Bar and overlay activity, driver latency, shader compilation, CPU/GPU limits, RAM pressure and thermal throttling before changing system settings.",
-    description: "Windows 11 gaming stutter guide: diagnose frame-time spikes, Game Bar overlays, DPC/driver latency, shader compilation, CPU/GPU limits and thermal throttling before applying tweaks.",
+    title: "Windows 11 Gaming Stutter & FPS Drops: Complete Fix Guide for 2026",
+    excerpt: "Frame-time spikes, shader compilation, Game Bar, DPC latency, drivers, CPU/GPU limits and thermal throttling explained — with a diagnosis-first method for fixing gaming stutter without blindly applying registry tweaks.",
+    description: "Gaming stuttering despite high FPS? Diagnose frame-time spikes, shaders, Game Bar, DPC latency, drivers, RAM, GPU limits and thermal throttling in Windows 11.",
     content: [
       "Gaming stutter is a symptom, not a diagnosis. A high average FPS can still hide uneven frame delivery, while a stable frame rate can coexist with other problems such as input latency or network lag.",
       "This KCROC guide uses a controlled troubleshooting order: reproduce the stutter, measure the right signal, change one variable at a time, and only then decide whether the problem is software, driver, thermal or hardware related."
@@ -3478,7 +3478,7 @@ export const BLOG_POSTS: BlogPost[] = [
     richContent: [
       { type: "paragraph", text: "If a Windows 11 game reports 100+ FPS but still feels jerky, the first question should not be which registry tweak to apply. The useful question is whether frames are arriving consistently. Average FPS describes the amount of rendered work over time; it does not fully describe the spacing between individual frames. A short burst of slow frames can make gameplay feel uneven even when the average number looks healthy." },
       { type: "callout", variant: "expert", title: "KCROC diagnostic principle", text: "Treat stutter as an evidence problem. Reproduce the same scene, observe the same workload, change one variable, and compare the result. Do not assume GameBarPresenceWriter.exe, Game Bar, Windows 11, the GPU or the registry is the cause simply because one of them is visible during the symptom." },
-      { type: "image", src: "/images/blog/windows-11-laptop-multitasking.webp", alt: "Windows 11 laptop multitasking during system performance troubleshooting", caption: "The same gaming symptom can come from frame-time behavior, drivers, thermals, storage, memory or background software. Measurement comes first." },
+      { type: "image", src: "/images/gaming-laptop-dual-fan-motherboard-diagnostics.webp", alt: "Gaming laptop motherboard, cooling fans and components during performance diagnostics", caption: "Gaming stutter can originate in frame-time behavior, drivers, memory, storage, cooling or hardware. The useful starting point is measured evidence." },
 
       { type: "h2", text: "The Four Questions to Answer Before Changing Anything", id: "four-questions" },
       { type: "list", ordered: true, items: [
@@ -3491,6 +3491,12 @@ export const BLOG_POSTS: BlogPost[] = [
 
       { type: "h2", text: "1. Measure Frame-Time, Not Only Average FPS", id: "measure-frame-time" },
       { type: "paragraph", text: "At 60 FPS, one ideal frame takes about 16.7 ms. At 120 FPS it is about 8.3 ms, and at 144 FPS about 6.9 ms. The important idea is consistency: if most frames arrive near the expected interval but a few frames suddenly take much longer, you can feel those spikes as hitching. A headline FPS value does not reveal that pattern by itself." },
+      { type: "comparisonTable", title: "FPS versus ideal frame-time", columns: ["Target FPS", "Ideal frame-time", "Why a spike matters"], rows: [
+        { feature: "60 FPS", values: ["16.7 ms", "A 50–100 ms frame can create a clearly visible hitch"] },
+        { feature: "120 FPS", values: ["8.3 ms", "One much longer frame can break an otherwise fast cadence"] },
+        { feature: "144 FPS", values: ["6.9 ms", "Long outlier frames stand out because normal frames are short"] },
+        { feature: "240 FPS", values: ["4.2 ms", "Very short normal frames make timing spikes easier to notice"] }
+      ] },
       { type: "comparisonTable", title: "What the gaming symptom can tell you", columns: ["Pattern", "What it suggests", "First useful test"], rows: [
         { feature: "High average FPS + visible hitch", values: ["Uneven frame delivery", "Use the game's frame-time or performance graph if available and reproduce the same scene"] },
         { feature: "FPS drops as temperatures rise", values: ["Thermal or power limit", "Log CPU/GPU temperatures and clock behavior over the same session"] },
@@ -3534,7 +3540,7 @@ export const BLOG_POSTS: BlogPost[] = [
 
       { type: "h2", text: "8. Check for Thermal Throttling and Power Limits", id: "thermal-power" },
       { type: "paragraph", text: "A gaming laptop or compact Windows system can feel perfect for the first few minutes and become less consistent after sustained heat builds. Compare the beginning and later part of the same session. If CPU/GPU temperature rises while clock speeds or performance fall, the thermal path becomes a stronger suspect than Game Bar or a single Windows registry value." },
-      { type: "paragraph", text: "Inspect vents, fans, heatsinks and the system's physical condition. Kuwait's high ambient temperatures can reduce thermal headroom further, especially when dust or degraded thermal interfaces are already limiting cooling. Existing KCROC resources on laptop temperatures and gaming-PC cooling cover this branch in more detail." },
+      { type: "paragraph", text: "Inspect vents, fans, heatsinks and the system's physical condition. Kuwait's high ambient temperatures can reduce thermal headroom further, especially when dust or degraded thermal interfaces are already limiting cooling. For KCROC, this is an important local diagnostic branch because a gaming laptop that stutters only after it gets hot should be tested as a cooling problem before it is treated as a Windows-tweak problem." },
       { type: "list", items: [
         "Fast when cold, slow when hot → investigate thermals first.",
         "Fan behavior changes abruptly with performance loss → investigate the cooling and power profile.",
@@ -3568,7 +3574,8 @@ export const BLOG_POSTS: BlogPost[] = [
 
       { type: "h2", text: "Kuwait-Specific Note: Heat Changes the Baseline", id: "kuwait" },
       { type: "paragraph", text: "Ambient temperature is part of the test environment. A machine that behaves normally in a cool room can have less thermal margin in Kuwait's hotter months. The useful evidence is not a generic temperature number alone; it is the relationship between temperature, clock speed, fan behavior and performance during the same workload." },
-      { type: "callout", variant: "recommendation", title: "Measure before you buy or reinstall", text: "If the system is overheating or throttling, cooling service may matter more than another Windows optimization. If memory or storage is actually the bottleneck, an upgrade may be appropriate. The correct intervention follows the measured cause." },
+      { type: "callout", variant: "recommendation", title: "Still stuttering after software testing?", text: "If gaming performance drops as temperatures rise, the laptop or PC may need physical inspection rather than another Windows tweak. KCROC can test thermals, fans, heatsinks, storage, RAM, GPU/VRAM stability and motherboard power behavior before recommending a repair." },
+      { type: "paragraph", text: "If the system is overheating or throttling, cooling service may matter more than another Windows optimization. If memory or storage is actually the bottleneck, an upgrade may be appropriate. The correct intervention follows the measured cause." },
 
       { type: "h2", text: "Frequently Asked Questions", id: "faq" },
       { type: "faq", items: [
@@ -3579,6 +3586,8 @@ export const BLOG_POSTS: BlogPost[] = [
         { question: "Can DPC latency cause gaming problems?", answer: "Driver interrupt and DPC activity can contribute to latency in some workloads. Severe cases should be correlated with the actual symptom using appropriate tracing or diagnostics rather than assuming any single driver is guilty." },
         { question: "Can shader compilation cause a hitch?", answer: "Yes. Some games compile shaders or pipeline states during loading or gameplay. A hitch that repeats when a particular effect or area appears can be a clue, especially after a driver or game change." },
         { question: "Should I delete the shader cache?", answer: "Not as a universal first step. Cache behavior is part of the rendering pipeline, and deleting it can simply force compilation again. First determine whether the stutter pattern actually points toward shader compilation." },
+        { question: "Can V-Sync or VRR fix gaming stutter?", answer: "They can change how frames are presented and may improve perceived smoothness in some configurations, but they do not automatically remove the underlying cause of a long frame. Diagnose the frame-time problem before treating display settings as the root fix." },
+        { question: "Should I reinstall Windows to fix gaming stutter?", answer: "Not as a first step. A reinstall can leave the real cause untouched when the problem is thermal throttling, a driver issue, shader compilation, storage or memory pressure, GPU/VRAM instability, or another hardware fault. Measure the symptom and test the likely branch first." },
         { question: "When should I bring a gaming PC or laptop for diagnosis?", answer: "Professional diagnosis makes sense when stutter is persistent across controlled tests, accompanied by crashes, artifacts, overheating, abnormal power behavior, storage errors or unexplained whole-system freezes." }
       ] },
 
@@ -3586,7 +3595,7 @@ export const BLOG_POSTS: BlogPost[] = [
       { type: "paragraph", text: "The most useful gaming optimization is often better diagnosis. Start with frame-time behavior, then separate Game Bar and other overlays, CPU/GPU limits, memory and storage pressure, driver latency, shader compilation, Windows graphics settings and thermal behavior. Use A/B testing and roll back changes that do not prove the hypothesis." },
       { type: "paragraph", text: "KCROC's GameBarPresenceWriter guide is one specialized branch of this larger troubleshooting model. When that branch does not explain the symptom, move to the evidence that does rather than forcing every stutter problem into a Windows-tweak explanation." }
     ],
-    image: "/images/blog/windows-11-laptop-multitasking.webp",
+    image: "/images/gaming-laptop-dual-fan-motherboard-diagnostics.webp",
     date: "2026-09-29",
     technicalReviewDate: "September 29, 2026",
     author: "Imran Natiq",
@@ -3594,7 +3603,8 @@ export const BLOG_POSTS: BlogPost[] = [
     readTime: "16-20 min read",
     isPillar: true,
     tags: ["Windows 11 Gaming", "Gaming Stutter", "Frame Time", "Game Bar", "DPC Latency", "Shader Compilation", "Thermal Throttling", "Gaming PC Repair Kuwait"],
-    seoTitle: "Windows Gaming Stutter in 2026: Frame-Time & Fixes | KCROC",
+    seoTitle: "Windows 11 Gaming Stutter & FPS Drops: Fix Guide 2026 | KCROC",
+    seoDescription: "Gaming stuttering despite high FPS? Diagnose frame-time spikes, shaders, Game Bar, DPC latency, drivers, RAM, GPU limits and thermal throttling in Windows 11.",
     contentType: "guide"
   },
 
