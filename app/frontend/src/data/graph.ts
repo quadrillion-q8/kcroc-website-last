@@ -4,8 +4,8 @@ import {
   FAQEntity, WebPageEntity, BusinessEntity, USPEntity, TrustBadgeEntity,
   ProcessEntity, StatsEntity, FooterEntity, ReviewsEntity,
   BrandEntity, ProblemEntity, CaseStudyEntity
-} from '../types/knowledgeGraph';
-import { IMAGES } from '../constants/images';
+} from '../types/knowledgeGraph.js';
+import { IMAGES } from '../constants/images.js';
 
 export const rawGraphData: RawGraphData = {
   metadata: {
