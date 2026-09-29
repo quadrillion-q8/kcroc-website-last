@@ -99,6 +99,55 @@ const STANDALONE_REPAIR_PATHS: Record<string, { title: string; intro: string; li
       { href: '/case-studies/asus-rog-dead-motherboard-hawalli', label: 'ASUS ROG Repair Case Study', description: 'See a real gaming-motherboard repair example from KCROC.' },
     ],
   },
+  'windows-11-wifi-keeps-disconnecting': {
+    title: 'Windows 11 Wi-Fi disconnects: related troubleshooting and repair paths',
+    intro: 'Use the network guides together to separate Wi-Fi-link failures from internet-access failures, then move to hardware diagnosis when the symptom follows the laptop.',
+    links: [
+      { href: '/guides/windows-11-connected-to-wifi-but-no-internet', label: 'Connected to Wi-Fi but No Internet', description: 'Use this guide when the Wi-Fi link remains connected but websites and apps lose internet access.' },
+      { href: '/guides/windows-gaming-frame-time-stutter', label: 'Windows Gaming Frame-Time Stutter', description: 'For gaming performance symptoms that can be confused with network or input problems.' },
+      { href: '/laptop-repair-kuwait', label: 'Laptop Repair Kuwait', description: 'For persistent hardware faults involving the adapter, antenna, motherboard or physical damage.' },
+      { href: '/motherboard-repair-kuwait', label: 'Motherboard Repair Kuwait', description: 'For measured board-level faults when wireless and related devices fail together.' },
+    ],
+  },
+  'windows-11-connected-to-wifi-but-no-internet': {
+    title: 'Windows 11 no-internet troubleshooting: related paths',
+    intro: 'Use the symptom split to determine whether the failure is the local Wi-Fi link, Windows networking, the router or the upstream internet connection.',
+    links: [
+      { href: '/guides/windows-11-wifi-keeps-disconnecting', label: 'Windows 11 Wi-Fi Keeps Disconnecting', description: 'Use this when the laptop repeatedly loses the wireless connection itself.' },
+      { href: '/laptop-repair-kuwait', label: 'Laptop Repair Kuwait', description: 'For persistent laptop-side connectivity faults after controlled network testing.' },
+      { href: '/problems', label: 'Computer Problems', description: 'Browse KCROC problem pages when the symptom turns into a broader Windows or hardware fault.' },
+    ],
+  },
+  'windows-11-100-cpu-usage': {
+    title: 'Windows 11 high CPU usage: related performance paths',
+    intro: 'Connect CPU symptoms to the relevant performance, thermal and repair pages instead of replacing hardware before the bottleneck is proven.',
+    links: [
+      { href: '/laptop-running-very-slow', label: 'Laptop Running Very Slow', description: 'For performance problems involving CPU, memory, storage, thermals or background software.' },
+      { href: '/laptop-overheating-kuwait', label: 'Laptop Overheating', description: 'For high CPU usage paired with excessive temperatures, fan problems or thermal throttling.' },
+      { href: '/guides/windows-11-100-disk-usage-causes-solutions', label: 'Windows 11 100% Disk Usage', description: 'Use this when CPU spikes are accompanied by severe disk activity and system paging.' },
+      { href: '/laptop-repair-kuwait', label: 'Laptop Repair Kuwait', description: 'For persistent high load, instability, shutdowns or hardware faults that survive software diagnosis.' },
+    ],
+  },
+  'ssd-not-detected-windows-11': {
+    title: 'SSD not detected: related storage and repair paths',
+    intro: 'A missing SSD can be a Windows volume problem, a compatibility issue, a slot/controller problem or a failing drive. Preserve data before making changes.',
+    links: [
+      { href: '/ssd-ram-upgrade-kuwait', label: 'SSD & RAM Upgrade Kuwait', description: 'For new SSD installations and confirmed upgrade needs.' },
+      { href: '/guides/windows-11-100-disk-usage-causes-solutions', label: 'Windows 11 100% Disk Usage', description: 'Related troubleshooting for storage bottlenecks and high disk activity.' },
+      { href: '/laptop-repair-kuwait', label: 'Laptop Repair Kuwait', description: 'For storage faults that require hands-on diagnostics of slots, controllers or system hardware.' },
+      { href: '/motherboard-repair-kuwait', label: 'Motherboard Repair Kuwait', description: 'For board-level storage controller, power or slot faults.' },
+    ],
+  },
+  'windows-11-update-problems': {
+    title: 'Windows 11 Update problems: related repair paths',
+    intro: 'When an update failure turns into a specific symptom, move from generic Windows Update troubleshooting to the problem page that matches what the machine is actually doing.',
+    links: [
+      { href: '/windows-wont-boot-kuwait', label: "Windows Won't Boot", description: 'For systems that no longer reach Windows after an update or restart.' },
+      { href: '/blue-screen-of-death-bsod-fix-kuwait', label: 'BSOD Diagnostic', description: 'For repeated stop-code crashes that began after an update or driver change.' },
+      { href: '/laptop-repair-kuwait', label: 'Laptop Repair Kuwait', description: 'For update failures associated with storage, power, thermal or hardware instability.' },
+      { href: '/guides/ssd-not-detected-windows-11', label: 'SSD Not Detected in Windows 11', description: 'For updates that expose storage or drive-detection problems.' },
+    ],
+  },
   'windows-gaming-performance-stutter-fix': {
     title: 'Windows gaming performance: related troubleshooting paths',
     intro: 'Use the cluster as a decision tree: measure frame-time first, then branch into Game Bar, shaders, driver latency, thermals or hardware.',
@@ -575,6 +624,13 @@ export default function BlogPostTemplate() {
   if (!post) return <Navigate to={isGuide ? ROUTES.GUIDES : ROUTES.BLOG} replace />;
 
   const isGamingPerformanceGuide = post.slug === 'windows-gaming-performance-stutter-fix';
+  const isWindowsTroubleshootingGuide = [
+    'windows-11-wifi-keeps-disconnecting',
+    'windows-11-connected-to-wifi-but-no-internet',
+    'windows-11-100-cpu-usage',
+    'ssd-not-detected-windows-11',
+    'windows-11-update-problems',
+  ].includes(post.slug);
 
   return (
     <main className="w-full min-h-screen bg-transparent text-slate-200 pt-8 sm:pt-16 lg:pt-32 pb-8 sm:pb-16 lg:pb-24">
@@ -749,12 +805,14 @@ export default function BlogPostTemplate() {
 
               <div className="bg-slate-900/50 backdrop-blur-md border border-slate-700/50 p-8 rounded-2xl my-12 text-center">
                 <h3 className="text-2xl text-white font-black mb-4 flex items-center justify-center gap-2">
-                  <Share2 size={24} className="text-cyan-400" aria-hidden="true" /> {isGamingPerformanceGuide ? 'Gaming PC or Laptop Stuttering?' : 'Is Your Laptop Running Slow?'}
+                  <Share2 size={24} className="text-cyan-400" aria-hidden="true" /> {isGamingPerformanceGuide ? 'Gaming PC or Laptop Stuttering?' : isWindowsTroubleshootingGuide ? 'Windows, Network or Storage Problem?' : 'Is Your Laptop Running Slow?'}
                 </h3>
                 <p className="text-slate-400 mb-8 text-base max-w-lg mx-auto">
                   {isGamingPerformanceGuide
                     ? 'Persistent stutter, overheating, crashes, frame-time spikes or performance drops can come from software, drivers, cooling or hardware. KCROC can diagnose the actual cause before repair.'
-                    : "If your laptop freezes, slows down during multitasking, or struggles with everyday apps, our technicians can diagnose whether it's RAM, storage, overheating, or a hardware fault — for free."}
+                    : isWindowsTroubleshootingGuide
+                      ? 'Persistent Windows, Wi-Fi, SSD or update problems can come from software, drivers, configuration or hardware. KCROC can diagnose the actual cause before repair.'
+                      : "If your laptop freezes, slows down during multitasking, or struggles with everyday apps, our technicians can diagnose whether it's RAM, storage, overheating, or a hardware fault — for free."}
                 </p>
                 <div className="flex flex-wrap items-center justify-center gap-3 mb-6">
                   <Link to={ROUTES.BOOKING} onClick={() => trackLead('Blog_CTA_BookRepair')} className="inline-flex items-center gap-2 bg-cyan-500 hover:bg-cyan-400 transition-colors text-black px-6 py-3 rounded-xl font-black shadow-[0_0_15px_rgba(34,211,238,0.2)]">
