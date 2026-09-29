@@ -28,18 +28,23 @@ const sectionBadge =
 // ── STATIC CONTENT (module scope: none of this depends on props/state,
 // so it's defined once rather than re-created on every render) ──
 
-// QUICK ANSWER: the 10 signs, for the featured-snippet-style intro
+// QUICK ANSWER: the core warning signs, for featured-snippet-style coverage
 const quickSigns = [
   'Battery drains far faster than it used to',
   'Runtime has dropped dramatically from what it used to be',
-  'Laptop shuts down unexpectedly, even showing charge left',
-  "Battery won't charge, or charges inconsistently",
+  'Laptop shuts down unexpectedly while charge remains',
+  "Battery won't charge, or charging stops early",
   'Battery percentage jumps, freezes, or behaves erratically',
-  'Battery or case is visibly swollen or deformed',
-  'Excessive heat specifically from the battery area',
-  'Battery health/wear report shows severe degradation',
-  'Windows or macOS shows a battery health warning',
-  'Laptop becomes unstable or slows down only on battery power'
+  'Battery or laptop case is swollen, raised, or deformed',
+  'Trackpad or keyboard is being pushed upward',
+  'Unusual heat is concentrated around the battery area',
+  'Battery health/wear report shows substantial capacity loss',
+  'Windows or macOS shows a battery health/service warning',
+  'Laptop works normally on AC but becomes unstable on battery',
+  'Laptop only works when the charger is connected',
+  'Battery drains unusually while sleeping or closed',
+  'Charging pauses or behaves differently because of a charge-limit feature',
+  'Battery condition has worsened noticeably over time'
 ];
 
 // SYMPTOM → MEANING → ACTION TABLE
@@ -81,7 +86,7 @@ const symptomTable = [
   }
 ];
 
-// 10 WARNING SIGNS (expanded, detailed)
+// WARNING SIGNS (expanded, detailed)
 const warningSigns = [
   {
     title: 'Rapid Battery Drain',
@@ -338,7 +343,7 @@ const faq = [
   },
   {
     q: 'How many charge cycles does a laptop battery have?',
-    a: 'Most modern laptop batteries are rated for roughly 300\u2013500 full cycles before capacity drops meaningfully, though this varies by manufacturer and cell chemistry. A "cycle" is one full discharge, not necessarily one charging session.'
+    a: 'Cycle limits vary substantially by model, battery chemistry, and manufacturer. Apple, for example, publishes a model-specific maximum cycle count rather than one universal laptop number. A cycle represents cumulative battery usage equivalent to 100% of capacity, not necessarily one charging session.'
   },
   {
     q: 'Why is my laptop battery draining so fast?',
@@ -384,6 +389,7 @@ const toc = [
   { id: 'brand-guide', label: 'Brand Guide' },
   { id: 'fast-drain', label: 'Fast Drain' },
   { id: 'replace-guide', label: 'Should I Replace?' },
+  { id: 'references', label: 'References' },
   { id: 'faq', label: 'FAQ' }
 ];
 
@@ -421,7 +427,7 @@ export default function BatteryHealthGuide() {
                 </span>
               </h1>
               <p className="mt-5 max-w-2xl text-sm leading-7 text-slate-300 sm:text-lg">
-                Learn the 10 warning signs of a failing laptop battery, check its health on Windows 11 or MacBook, and quickly tell the difference between a battery problem and a software or charging problem.
+                Learn 15+ warning signs of a failing laptop battery, check battery health on Windows 11 or MacBook, and tell the difference between battery wear, software drain, charger faults, and charging-circuit problems.
               </p>
               <div className="mt-6 flex flex-col gap-3 sm:flex-row">
                 <Button size="lg" asChild className="w-full bg-cyan-500 px-6 py-6 font-bold text-slate-950 hover:bg-cyan-400 sm:w-auto">
@@ -550,7 +556,7 @@ export default function BatteryHealthGuide() {
               <AlertTriangle className="mr-2 inline h-4 w-4" />
               Warning signs
             </Badge>
-            <h2 className="text-2xl font-bold text-white sm:text-4xl">10 Battery Warning Signs, Explained Simply</h2>
+            <h2 className="text-2xl font-bold text-white sm:text-4xl">15+ Laptop Battery Warning Signs, Explained Simply</h2>
             <p className="mt-3 text-sm leading-6 text-slate-400 sm:text-base">
               Scan the cards below. Each one tells you what you may notice, why it happens, and what the sensible next step is.
             </p>
@@ -996,6 +1002,33 @@ export default function BatteryHealthGuide() {
           <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
             As a Kuwait-based repair shop, KCROC sees this pattern often enough that it\u2019s worth calling out \u2014 avoiding car storage, direct sun, and dust buildup around vents goes a long way.
           </p>
+        </div>
+      </section>
+
+      {/* ─── TECHNICAL REFERENCES ─── */}
+      <section id="references" className="scroll-mt-20 border-t border-slate-900 px-4 py-10 sm:px-6 sm:py-16">
+        <div className="container mx-auto max-w-4xl">
+          <div className="mb-6">
+            <Badge className={`mb-3 border-slate-700 bg-slate-900 text-slate-300 ${sectionBadge}`}>Technical references</Badge>
+            <h2 className="text-2xl font-bold text-white sm:text-3xl">Primary Sources & Manufacturer Guidance</h2>
+            <p className="mt-3 text-sm leading-6 text-slate-400">
+              Battery behavior varies by model. These primary sources are the references used for the Windows, Mac, and swollen-battery safety guidance in this article.
+            </p>
+          </div>
+          <div className="grid gap-3 sm:grid-cols-3">
+            <a href="https://support.microsoft.com/en-US/Windows/Experience/Power-Battery/caring-for-your-battery-in-windows" target="_blank" rel="noopener noreferrer" className="rounded-xl border border-slate-800 bg-brand-dark/40 p-4 transition hover:border-cyan-500/40">
+              <span className="text-sm font-bold text-white">Microsoft Support</span>
+              <span className="mt-1 block text-xs leading-5 text-slate-400">Windows 11 battery care and battery-report guidance.</span>
+            </a>
+            <a href="https://support.apple.com/en-au/102589" target="_blank" rel="noopener noreferrer" className="rounded-xl border border-slate-800 bg-brand-dark/40 p-4 transition hover:border-cyan-500/40">
+              <span className="text-sm font-bold text-white">Apple Support</span>
+              <span className="mt-1 block text-xs leading-5 text-slate-400">Mac battery health, maximum capacity, and battery-health management.</span>
+            </a>
+            <a href="https://www.dell.com/support/kbdoc/en-us/000143524/the-battery-drains-quicker-than-expected-on-a-dell-notebook-with-modern-standby-mode-enabled" target="_blank" rel="noopener noreferrer" className="rounded-xl border border-slate-800 bg-brand-dark/40 p-4 transition hover:border-cyan-500/40">
+              <span className="text-sm font-bold text-white">Dell Support</span>
+              <span className="mt-1 block text-xs leading-5 text-slate-400">Swollen/deformed battery identification and safety guidance.</span>
+            </a>
+          </div>
         </div>
       </section>
 
