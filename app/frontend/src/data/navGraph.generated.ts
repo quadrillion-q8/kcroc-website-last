@@ -815,6 +815,51 @@ export const NAV_GRAPH = {
       "primaryKeyword": "Shader Compilation"
     },
     {
+      "id": "guide-ssd-not-detected-windows-11",
+      "slug": "guides/ssd-not-detected-windows-11",
+      "title": "SSD Not Detected in Windows 11: Complete Diagnosis & Fix Guide",
+      "description": "SSD not detected in Windows 11? Check BIOS/UEFI, Disk Management, drive letters, controllers, compatibility and hardware health without risking your data.",
+      "iconKey": "shield",
+      "date": "2026-09-29",
+      "primaryKeyword": "Windows 11"
+    },
+    {
+      "id": "guide-windows-11-100-cpu-usage",
+      "slug": "guides/windows-11-100-cpu-usage",
+      "title": "Windows 11 100% CPU Usage: Causes, Diagnosis & Safe Fixes",
+      "description": "Windows 11 100% CPU usage? Find the process, check startup apps, thermals, updates and malware, and know when hardware diagnosis is needed.",
+      "iconKey": "cpu",
+      "date": "2026-09-29",
+      "primaryKeyword": "Windows 11"
+    },
+    {
+      "id": "guide-windows-11-connected-to-wifi-no-internet",
+      "slug": "guides/windows-11-connected-to-wifi-but-no-internet",
+      "title": "Connected to Wi-Fi but No Internet in Windows 11: Complete Fix Guide",
+      "description": "Connected to Wi-Fi but no internet in Windows 11? Diagnose router, DNS, DHCP, VPN, proxy, Windows and adapter problems step by step.",
+      "iconKey": "shield",
+      "date": "2026-09-29",
+      "primaryKeyword": "Windows 11"
+    },
+    {
+      "id": "guide-windows-11-update-problems",
+      "slug": "guides/windows-11-update-problems",
+      "title": "Windows 11 Update Problems: Errors, Failed Installs & Safe Fixes",
+      "description": "Windows 11 Update problems? Diagnose failed installs, error codes, restart loops, storage space, drivers and update recovery safely.",
+      "iconKey": "shield",
+      "date": "2026-09-29",
+      "primaryKeyword": "Windows 11"
+    },
+    {
+      "id": "guide-windows-11-wifi-keeps-disconnecting",
+      "slug": "guides/windows-11-wifi-keeps-disconnecting",
+      "title": "Windows 11 Wi-Fi Keeps Disconnecting: Complete Fix Guide for 2026",
+      "description": "Windows 11 Wi-Fi keeps disconnecting? Diagnose adapter, driver, power management, router, interference, VPN and Windows causes step by step.",
+      "iconKey": "shield",
+      "date": "2026-09-29",
+      "primaryKeyword": "Windows 11"
+    },
+    {
       "id": "guide-windows-gaming-frame-time-stutter",
       "slug": "guides/windows-gaming-frame-time-stutter",
       "title": "Gaming Stutter With High FPS: How to Read Frame-Time in Windows 11",
@@ -833,6 +878,15 @@ export const NAV_GRAPH = {
       "primaryKeyword": "Windows 11 Gaming"
     },
     {
+      "id": "guide-laptop-wont-turn-on-2026",
+      "slug": "guides/laptop-wont-turn-on",
+      "title": "Laptop Won't Turn On? Complete Troubleshooting Guide",
+      "description": "Laptop won't turn on? Follow a safe step-by-step diagnosis for no power, no charging light, black screen, battery, charger, USB-C and motherboard faults, with Kuwait-specific repair guidance from KCROC.",
+      "iconKey": "laptop",
+      "date": "2026-09-27",
+      "primaryKeyword": "Laptop Won't Turn On"
+    },
+    {
       "id": "guide-windows-10-eos",
       "slug": "guides/windows-10-end-of-support",
       "title": "Windows 10 End of Support: What It Means and What to Do in 2026",
@@ -849,15 +903,6 @@ export const NAV_GRAPH = {
       "iconKey": "shield",
       "date": "2026-09-08",
       "primaryKeyword": "Windows 11"
-    },
-    {
-      "id": "guide-laptop-wont-turn-on-2026",
-      "slug": "guides/laptop-wont-turn-on",
-      "title": "Laptop Won't Turn On? Complete Troubleshooting Guide",
-      "description": "Laptop won't turn on? Follow a safe step-by-step diagnosis for no power, no charging light, black screen, battery, charger, USB-C and motherboard faults, with Kuwait-specific repair guidance from KCROC.",
-      "iconKey": "laptop",
-      "date": "2026-09-27",
-      "primaryKeyword": "Laptop Won't Turn On"
     },
     {
       "id": "guide-windows-11-background-services-audit-2026",
