@@ -126,7 +126,7 @@ export default function MobileMenu({ isOpen, onClose, mobileRef, navModel, clean
   return (
     <>
       <div
-        className={`fixed inset-0 z-[90] bg-black/70 backdrop-blur-md transition-opacity duration-300 motion-reduce:transition-none lg:hidden ${isOpen ? 'opacity-100' : 'pointer-events-none opacity-0'}`}
+        className={`fixed inset-0 z-[90] bg-black/70 backdrop-blur-md transition-opacity duration-300 motion-reduce:transition-none xl:hidden ${isOpen ? 'opacity-100' : 'pointer-events-none opacity-0'}`}
         onClick={onClose}
         aria-hidden="true"
       />
@@ -138,7 +138,7 @@ export default function MobileMenu({ isOpen, onClose, mobileRef, navModel, clean
         aria-modal="true"
         aria-label="Mobile navigation"
         aria-hidden={!isOpen}
-        className={`fixed inset-y-0 right-0 z-[100] w-full max-w-lg border-l border-white/[0.08] bg-[#0b1012] shadow-[0_30px_90px_rgba(0,0,0,0.6)] transform transition-transform duration-300 ease-out motion-reduce:transition-none lg:hidden flex flex-col ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}
+        className={`fixed inset-y-0 right-0 z-[100] w-full max-w-lg border-l border-white/[0.08] bg-[#0b1012] shadow-[0_30px_90px_rgba(0,0,0,0.6)] transform transition-transform duration-300 ease-out motion-reduce:transition-none xl:hidden flex flex-col ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}
       >
         <div className="shrink-0 border-b border-white/[0.08] bg-[#0b1012]/95 px-4 pb-4 pt-[max(0.75rem,env(safe-area-inset-top))] backdrop-blur-xl sm:px-5">
           <div className="flex items-center justify-between gap-3">
