@@ -4,8 +4,8 @@ import { cn } from '@/lib/utils';
 
 interface SectionHeaderProps {
   eyebrow?: string;
-  /** Eyebrow color — the site mostly uses emerald, ServicesGrid uses cyan. */
-  tone?: 'emerald' | 'cyan';
+  /** Eyebrow accent within the KCROC metallic palette. */
+  tone?: 'copper' | 'gold';
   title: string;
   description?: string;
   align?: 'left' | 'center';
@@ -19,7 +19,7 @@ interface SectionHeaderProps {
  */
 export function SectionHeader({
   eyebrow,
-  tone = 'emerald',
+  tone = 'copper',
   title,
   description,
   align = 'left',
@@ -32,7 +32,7 @@ export function SectionHeader({
         <p
           className={cn(
             'text-[11px] font-bold uppercase tracking-[1px] mb-2 sm:mb-3',
-            tone === 'cyan' ? 'text-cyan-400' : 'text-emerald-500'
+            tone === 'gold' ? 'text-[#dfa86f]' : 'text-[#c9804d]'
           )}
         >
           {eyebrow}
