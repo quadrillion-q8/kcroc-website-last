@@ -584,7 +584,26 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
   }
 
   const resolvedOgType = entity.entityType === 'Service' && ogType === 'article' ? 'website' : (ogType || 'website');
-  const resolvedOgImage = ogImage || entity.featuredImage?.ogImage || `${business.websiteUrl}/og-image.webp`;
+
+  // Prefer an explicit SEO image, then a knowledge-graph featured image, then
+  // a contextual hero/content image. This prevents article/guide pages from
+  // silently falling back to the same generic site-wide OG image. All image
+  // URLs are normalized to absolute URLs because social crawlers and Discover
+  // need a fetchable canonical asset URL.
+  const contentImage = (entity as any).contentImages?.find((image: any) => image?.placement === 'hero')
+    || (entity as any).contentImages?.[0];
+  const rawOgImage =
+    ogImage
+    || entity.featuredImage?.ogImage
+    || contentImage?.src
+    || entity.featuredImage?.hero?.webp
+    || `${business.websiteUrl}/og-image.webp`;
+  const resolvedOgImage = rawOgImage.startsWith('http')
+    ? rawOgImage
+    : `${business.websiteUrl}${rawOgImage.startsWith('/') ? rawOgImage : `/${rawOgImage}`}`;
+  const isDiscoverImage = resolvedOgImage.includes('/images/discover/');
+  const resolvedOgImageWidth = isDiscoverImage ? '1200' : '1200';
+  const resolvedOgImageHeight = isDiscoverImage ? '675' : '630';
   const resolvedLocale = locale || 'en_KW';
   const resolvedTwitterCard = twitterCard || 'summary_large_image';
   const resolvedRobots = robots || 'index, follow, max-image-preview:large';
@@ -615,8 +634,8 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
       <meta property="og:url" content={fullCanonicalUrl} />
       <meta property="og:type" content={resolvedOgType} />
       <meta property="og:image" content={resolvedOgImage} />
-      <meta property="og:image:width" content="1200" />
-      <meta property="og:image:height" content="630" />
+      <meta property="og:image:width" content={resolvedOgImageWidth} />
+      <meta property="og:image:height" content={resolvedOgImageHeight} />
       <meta property="og:image:alt" content={ogImageAlt || title} />
       <meta property="og:image:type" content="image/webp" />
       <meta property="og:site_name" content={business.legalName} />
