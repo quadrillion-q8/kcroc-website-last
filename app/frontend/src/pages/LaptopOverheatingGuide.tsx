@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
-  AlertTriangle, CheckCircle2, ChevronRight, Cpu, Fan, Gauge,
+  AlertTriangle, CheckCircle2, ChevronRight, Cpu, Gauge,
   HelpCircle, Monitor, ShieldAlert, Thermometer, Wind, Wrench
 } from 'lucide-react';
 import { SEOEngine } from '../core/components/SEOEngine';
@@ -12,9 +12,13 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { StandaloneRelatedLinks } from '../components/content/StandaloneRelatedLinks';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { IMAGES } from '../constants/images';
 
 const GUIDE_PATH = '/guides/why-is-my-laptop-so-hot';
 const PAGE_URL = `https://www.computerrepairkuwait.com${GUIDE_PATH}`;
+const AUTHOR_ID = 'https://www.computerrepairkuwait.com/author/imran#person';
+const DATE_MODIFIED = '2026-09-30';
+const LAST_REVIEWED = 'September 30, 2026';
 
 const symptoms = [
   { label: 'Hot + fan is constantly loud', value: 'fan' },
@@ -48,6 +52,42 @@ const causes = [
   ['Power, firmware or control behaviour', 'BIOS/firmware, OEM performance modes and platform power-management systems can change fan behaviour, power limits and sustained performance.'],
   ['Background software activity', 'Updates, indexing, browsers, synchronization, malware or a runaway process can keep a system busy when the user expects it to be idle.'],
   ['Ambient temperature', 'A warmer room reduces the cooling system’s temperature headroom. The laptop still needs to be evaluated against its own design and manufacturer guidance.'],
+];
+
+const symptomMatrix = [
+  ['Hot + loud fan', 'High workload, background activity, restricted airflow or fan-control behaviour', 'Check CPU/GPU usage, vents and fan response'],
+  ['Hot + slow', 'Thermal throttling, power limiting, background load or another performance fault', 'Compare temperature, clocks, utilization and performance'],
+  ['Hot + gaming stutter', 'CPU/GPU thermal or power limiting, airflow restriction or workload change', 'Record temperature, clocks, utilization and frame-time over the same session'],
+  ['Hot at idle', 'Background process, update/indexing/sync activity or cooling problem', 'Check resource usage first; then investigate cooling if load stays low'],
+  ['Hot while charging', 'Charging heat plus workload, AC power profile or battery/charger issue', 'Compare the same workload on AC and battery'],
+  ['Hot + shutdown/restart', 'Thermal protection, power fault or another hardware problem', 'Stop repeated stress tests and investigate the cooling/power path'],
+  ['Hot after cleaning', 'Fan/heatsink issue, disturbed thermal interface, incorrect reassembly or a different workload', 'Repeat a controlled before/after test and inspect the cooling assembly'],
+  ['One area unusually hot', 'Localized component, battery, VRM or cooling-path problem', 'Stop if accompanied by swelling, smell, smoke or physical damage'],
+];
+
+const temperatureSensors = [
+  ['CPU package/core', 'Processor sensor reading', 'Interpret with CPU utilization, clock speed, workload and the processor documentation'],
+  ['GPU temperature', 'Primary graphics-processor sensor', 'Use the exact GPU/system specification rather than a generic chart'],
+  ['GPU hotspot/junction', 'Localized maximum GPU sensor on supported hardware', 'Do not compare directly with the GPU core reading'],
+  ['SSD temperature', 'Storage-device sensor', 'A storage thermal issue can cause its own throttling even when CPU/GPU temperatures look normal'],
+  ['Battery temperature', 'Battery-management sensor', 'Treat unusual heat with charging changes, swelling or chassis deformation as a safety concern'],
+  ['Chassis/surface temperature', 'Physical laptop enclosure', 'It is not equivalent to an internal CPU or GPU sensor'],
+];
+
+const toc = [
+  ['quick-answer', 'Quick answer'],
+  ['diagnostic', 'Interactive triage'],
+  ['symptoms', 'Symptoms and warning signs'],
+  ['causes', 'Common causes'],
+  ['temperature', 'How hot is too hot?'],
+  ['sensors', 'Which temperature are you seeing?'],
+  ['measure', 'How to diagnose overheating'],
+  ['platforms', 'Windows, macOS, Linux and ChromeOS'],
+  ['workloads', 'Idle, charging and gaming'],
+  ['safe-fixes', 'Safe ways to cool a laptop'],
+  ['stop', 'When to stop using it'],
+  ['faq', 'FAQ'],
+  ['references', 'Technical references'],
 ];
 
 const faq = [
@@ -160,19 +200,35 @@ export default function LaptopOverheatingGuide() {
     '@context': 'https://schema.org',
     '@graph': [
       {
+        '@type': 'Person',
+        '@id': AUTHOR_ID,
+        name: 'Imran Natiq',
+        url: `${business.websiteUrl}/author/imran`,
+        jobTitle: 'Founder & Lead Technician',
+        worksFor: { '@id': `${business.websiteUrl}/#business` }
+      },
+      {
         '@type': 'TechArticle',
         '@id': `${PAGE_URL}#article`,
         headline: 'Why Is My Laptop So Hot? Universal Overheating Causes, Diagnosis & Fixes',
-        description: 'A platform-independent laptop overheating guide covering workload, airflow, dust, fans, thermal throttling, temperature interpretation, safe checks and repair warning signs.',
+        description: 'A universal laptop overheating guide covering workload, airflow, dust, fan faults, thermal throttling, temperature interpretation, safe cooling checks and repair warning signs across Windows, macOS, Linux and ChromeOS.',
         url: PAGE_URL,
-        mainEntityOfPage: { '@type': 'WebPage', '@id': `${PAGE_URL}#webpage` },
-        author: { '@type': 'Person', name: 'Imran Natiq', url: `${business.websiteUrl}/author/imran` },
-        publisher: { '@type': 'Organization', name: business.legalName, url: business.websiteUrl },
+        mainEntityOfPage: { '@id': `${PAGE_URL}#webpage` },
+        isPartOf: { '@id': `${business.websiteUrl}/#website` },
+        author: { '@id': AUTHOR_ID },
+        publisher: { '@id': `${business.websiteUrl}/#business` },
+        image: [
+          `${business.websiteUrl}${IMAGES.laptopHardware.copperHeatsink1.src}`,
+          `${business.websiteUrl}${IMAGES.laptopHardware.copperHeatsink3.src}`,
+          `${business.websiteUrl}/images/laptop-fan-copper-heatpipe-closeup.webp`
+        ],
         articleSection: 'Computer & Laptop Troubleshooting Guides',
+        dateModified: DATE_MODIFIED,
         inLanguage: 'en'
       },
       {
         '@type': 'FAQPage',
+        '@id': `${PAGE_URL}#faq`,
         mainEntity: faq.map(item => ({
           '@type': 'Question',
           name: item.q,
@@ -181,6 +237,7 @@ export default function LaptopOverheatingGuide() {
       },
       {
         '@type': 'BreadcrumbList',
+        '@id': `${PAGE_URL}#breadcrumb`,
         itemListElement: [
           { '@type': 'ListItem', position: 1, name: 'Home', item: business.websiteUrl },
           { '@type': 'ListItem', position: 2, name: 'Guides', item: `${business.websiteUrl}/guides` },
@@ -234,6 +291,35 @@ export default function LaptopOverheatingGuide() {
               height="750"
               loading="eager"
             />
+          </div>
+        </section>
+
+        <section className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-slate-400" aria-label="Guide authorship and review information">
+          <span>Written and technically reviewed by <Link to="/author/imran" className="font-semibold text-slate-200 hover:text-cyan-300">Imran Natiq</Link>, Founder &amp; Lead Technician at KCROC.</span>
+          <span>Last reviewed: {LAST_REVIEWED}</span>
+        </section>
+
+        <nav className="mt-8 rounded-2xl border border-slate-800 bg-slate-900/70 p-6" aria-label="On this page">
+          <h2 className="text-lg font-semibold text-white">On this page</h2>
+          <div className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+            {toc.map(([id, label]) => (
+              <a key={id} href={`#${id}`} className="text-sm text-cyan-300 hover:text-cyan-200">{label}</a>
+            ))}
+          </div>
+        </nav>
+
+        <section id="quick-answer" className="mt-10 rounded-2xl border border-cyan-400/20 bg-cyan-400/5 p-6 sm:p-8">
+          <h2 className="text-2xl font-semibold">Quick answer: why is my laptop so hot?</h2>
+          <p className="mt-3 max-w-4xl leading-7 text-slate-300">A laptop can become hot because of normal CPU/GPU boost behaviour, sustained workload, restricted airflow, dust, a failing fan, background software, charging or power-management behaviour, high ambient temperature, or a cooling-system fault. Heat alone does not prove overheating. The useful clues are what the laptop is doing, which sensor is hot, whether clocks or performance change, and whether instability or shutdowns occur.</p>
+          <div className="mt-6 overflow-x-auto">
+            <table className="w-full min-w-[640px] text-left text-sm">
+              <thead><tr className="border-b border-slate-700 text-slate-200"><th className="p-3">What you notice</th><th className="p-3">Check first</th></tr></thead>
+              <tbody>
+                {symptomMatrix.slice(0, 6).map(([symptomText, , check]) => (
+                  <tr key={symptomText} className="border-b border-slate-800"><td className="p-3 font-medium text-slate-200">{symptomText}</td><td className="p-3 text-slate-400">{check}</td></tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </section>
 
@@ -367,6 +453,13 @@ export default function LaptopOverheatingGuide() {
           </div>
         </section>
 
+        <section className="mt-10 overflow-hidden rounded-2xl border border-slate-800" aria-labelledby="symptom-matrix-title">
+          <div className="bg-slate-900 p-6"><h3 id="symptom-matrix-title" className="text-xl font-semibold">Symptoms → possible causes → first checks</h3><p className="mt-2 text-sm text-slate-400">Use this as a diagnostic starting point, not a substitute for model-specific testing.</p></div>
+          <div className="overflow-x-auto">
+            <table className="w-full min-w-[900px] text-left text-sm"><thead><tr className="border-b border-slate-700 bg-slate-900/60 text-slate-200"><th className="p-4">Symptom</th><th className="p-4">Possible causes</th><th className="p-4">First checks</th></tr></thead><tbody>{symptomMatrix.map(([symptomText, cause, check]) => <tr key={symptomText} className="border-b border-slate-800"><td className="p-4 font-medium text-slate-200">{symptomText}</td><td className="p-4 text-slate-400">{cause}</td><td className="p-4 text-slate-400">{check}</td></tr>)}</tbody></table>
+          </div>
+        </section>
+
         <section className="mt-16" id="causes">
           <h2 className="text-3xl font-bold">The major causes of laptop heat</h2>
           <div className="mt-6 grid gap-4 sm:grid-cols-2">
@@ -383,6 +476,39 @@ export default function LaptopOverheatingGuide() {
                 </CardContent>
               </Card>
             ))}
+          </div>
+        </section>
+
+        <section className="mt-16" id="temperature">
+          <h2 className="text-3xl font-bold">What temperature is too hot for a laptop?</h2>
+          <p className="mt-3 max-w-4xl leading-7 text-slate-300">There is no single temperature number that applies to every laptop. Processor and GPU limits vary by model, while laptop manufacturers also control power targets, fan curves and chassis cooling differently. A short boost near a documented limit is not automatically equivalent to a sustained thermal fault.</p>
+          <p className="mt-3 max-w-4xl text-slate-400 leading-7">For diagnosis, record the exact component and sensor, workload, temperature trend, clock speed, utilization and performance. A repeatable relationship between rising temperature and falling clocks or performance is more informative than a generic “90°C is bad” or “100°C is fine” rule.</p>
+          <div className="mt-6 grid gap-6 lg:grid-cols-2">
+            <div className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900">
+              <img src={IMAGES.laptopHardware.copperHeatsink3.src} alt="Laptop copper heatsink showing dried thermal interface material" width="800" height="600" loading="lazy" className="w-full" />
+              <p className="p-4 text-sm text-slate-400">Thermal-interface condition is one possible cause, but it should be assessed after airflow, workload and fan behaviour are considered.</p>
+            </div>
+            <div className="rounded-2xl border border-slate-800 bg-slate-900/70 p-6">
+              <h3 className="text-xl font-semibold">A better thermal question</h3>
+              <ol className="mt-4 space-y-3 text-sm leading-6 text-slate-300">
+                <li><strong>1.</strong> What component and sensor are you measuring?</li>
+                <li><strong>2.</strong> What workload was running?</li>
+                <li><strong>3.</strong> How long did the temperature stay elevated?</li>
+                <li><strong>4.</strong> Did clocks, power or performance change?</li>
+                <li><strong>5.</strong> Does the behaviour match the exact manufacturer's specifications?</li>
+              </ol>
+            </div>
+          </div>
+        </section>
+
+        <section className="mt-16" id="sensors">
+          <h2 className="text-3xl font-bold">Which laptop temperature are you actually seeing?</h2>
+          <p className="mt-3 max-w-4xl text-slate-400 leading-7">Monitoring software can expose several different sensors. They are not interchangeable, so a number should always be interpreted with its sensor name and the component it represents.</p>
+          <div className="mt-6 overflow-x-auto rounded-2xl border border-slate-800">
+            <table className="w-full min-w-[760px] text-left text-sm">
+              <thead className="bg-slate-900"><tr className="border-b border-slate-700 text-slate-200"><th className="p-4">Measurement</th><th className="p-4">What it represents</th><th className="p-4">Diagnostic note</th></tr></thead>
+              <tbody>{temperatureSensors.map(([measurement, represents, note]) => <tr key={measurement} className="border-b border-slate-800 bg-slate-950/30"><td className="p-4 font-medium text-slate-200">{measurement}</td><td className="p-4 text-slate-400">{represents}</td><td className="p-4 text-slate-400">{note}</td></tr>)}</tbody>
+            </table>
           </div>
         </section>
 
@@ -467,10 +593,24 @@ export default function LaptopOverheatingGuide() {
           </Card>
         </section>
 
+        <section className="mt-16" id="workloads">
+          <h2 className="text-3xl font-bold">Common situations: idle, charging and gaming</h2>
+          <div className="mt-6 grid gap-6 lg:grid-cols-3">
+            <Card className="border-slate-800 bg-slate-900/70"><CardHeader><CardTitle>Hot while idle</CardTitle></CardHeader><CardContent className="text-sm leading-6 text-slate-400">Check CPU/GPU activity, updates, indexing, synchronization, browser processes and other background work. If utilization remains low while heat and fan activity stay abnormal, investigate airflow, sensors and the cooling system.</CardContent></Card>
+            <Card className="border-slate-800 bg-slate-900/70"><CardHeader><CardTitle>Hot while charging</CardTitle></CardHeader><CardContent className="text-sm leading-6 text-slate-400">Charging can add heat while AC power can also change performance behaviour. Compare the same workload on battery and AC. If heat is localized around the battery, charging port or chassis, especially with swelling or deformation, stop using the machine and seek inspection.</CardContent></Card>
+            <Card className="border-slate-800 bg-slate-900/70"><CardHeader><CardTitle>Hot while gaming</CardTitle></CardHeader><CardContent className="text-sm leading-6 text-slate-400">Sustained CPU/GPU load can make gaming laptops hot and loud. Investigate when FPS or frame-time behaviour deteriorates after warm-up, clocks fall with rising temperature, airflow is restricted, or instability/shutdowns occur.</CardContent></Card>
+          </div>
+          <div className="mt-6 grid gap-6 lg:grid-cols-[.9fr_1.1fr]">
+            <div className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900"><img src={IMAGES.laptopHardware.cloggedFan.src} alt="Dusty laptop cooling fan and heatsink airflow path" width="800" height="600" loading="lazy" className="w-full" /><p className="p-4 text-sm text-slate-400">Restricted airflow can increase fan noise and sustained temperatures. External airflow checks are the safest first step.</p></div>
+            <div className="rounded-2xl border border-slate-800 bg-slate-900/70 p-6"><h3 className="text-xl font-semibold">Why is my laptop fan always running?</h3><p className="mt-3 text-sm leading-6 text-slate-400">A constantly audible fan does not automatically mean the laptop is overheating. The fan may be responding correctly to CPU/GPU workload, a performance profile, high ambient temperature or background activity. If the fan runs hard during light work, first identify the workload; then check airflow and fan behaviour before assuming the fan itself has failed.</p><p className="mt-4 text-sm leading-6 text-slate-400">If gaming heat is your main problem, continue to the <Link to="/guides/gamebar-presence-writer-fix" className="text-cyan-300 hover:text-cyan-200">Windows gaming guide</Link> where relevant, or use the <Link to="/guides/dell-laptop-overheating" className="text-cyan-300 hover:text-cyan-200">Dell overheating guide</Link> for model-family-specific checks.</p></div>
+          </div>
+        </section>
+
         <section className="mt-16" id="safe-fixes">
           <div className="mb-6">
             <h2 className="text-3xl font-bold">Safe checks to try first</h2>
             <p className="mt-3 text-slate-400">These checks are deliberately low-risk and do not require opening the laptop.</p>
+            <p className="mt-3 text-sm text-slate-500">If heat is accompanied by swelling, charging changes or chassis deformation, see the <Link to="/guides/laptop-battery-warning-signs" className="text-cyan-300 hover:text-cyan-200">laptop battery warning-signs guide</Link> rather than treating it as ordinary cooling maintenance.</p>
           </div>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {[
@@ -491,7 +631,7 @@ export default function LaptopOverheatingGuide() {
           </div>
         </section>
 
-        <section className="mt-16 grid gap-8 lg:grid-cols-2">
+        <section className="mt-16 grid gap-8 lg:grid-cols-2" id="stop">
           <Card className="border-red-900/40 bg-red-950/10">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-red-300">
@@ -573,6 +713,12 @@ export default function LaptopOverheatingGuide() {
           </div>
         </section>
 
+        <section className="mt-12 rounded-2xl border border-slate-800 bg-slate-900/60 p-6 sm:p-8">
+          <h2 className="text-xl font-semibold">About this guide</h2>
+          <p className="mt-3 max-w-4xl text-sm leading-7 text-slate-400">This guide was written and technically reviewed by <Link to="/author/imran" className="font-semibold text-slate-200 hover:text-cyan-300">Imran Natiq</Link>, Founder &amp; Lead Technician at KCROC. It is designed as a platform-independent troubleshooting reference: manufacturer specifications and model-specific service procedures take precedence over generic temperature charts.</p>
+          <p className="mt-3 text-xs text-slate-500">Last reviewed September 30, 2026. Significant future technical changes should be reflected in the review date and structured data.</p>
+        </section>
+
         <section className="mt-16 rounded-2xl border border-cyan-500/20 bg-cyan-500/5 p-6 sm:p-8">
           <h2 className="text-2xl font-semibold">Need a model-specific diagnosis?</h2>
           <p className="mt-3 max-w-3xl leading-7 text-slate-300">
@@ -603,7 +749,7 @@ export default function LaptopOverheatingGuide() {
           ]}
         />
 
-        <section className="mt-14 border-t border-slate-800 pt-8">
+        <section className="mt-14 border-t border-slate-800 pt-8" id="references">
           <h2 className="text-lg font-semibold">Technical references</h2>
           <p className="mt-2 text-sm leading-6 text-slate-500">
             This guide intentionally avoids a universal “safe temperature” number. Thermal limits and behaviour
