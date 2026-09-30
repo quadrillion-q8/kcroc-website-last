@@ -628,6 +628,15 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
       <meta name="description" content={description} />
       {shouldIndex && <link rel="canonical" href={fullCanonicalUrl} />}
       <meta name="robots" content={resolvedRobots} />
+      {entityId === 'page-home' && (
+        <link
+          rel="preload"
+          as="image"
+          href="/images/kcroc-laptop-repair-technicians-hawalli-kuwait.w768.webp"
+          type="image/webp"
+          fetchPriority="high"
+        />
+      )}
 
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
