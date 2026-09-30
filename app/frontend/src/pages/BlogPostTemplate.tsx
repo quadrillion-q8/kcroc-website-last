@@ -110,6 +110,52 @@ const STANDALONE_REPAIR_PATHS: Record<string, { title: string; intro: string; li
       { href: '/case-studies/asus-rog-dead-motherboard-hawalli', label: 'ASUS ROG Repair Case Study', description: 'See a real gaming-motherboard repair example from KCROC.' },
     ],
   },
+  'gaming-pc-not-turning-on-kuwait': {
+    title: 'Gaming PC no-power: related repair paths',
+    intro: 'Use the symptom path to separate total no-power, no-POST and no-display failures before ordering parts.',
+    links: [
+      { href: '/gaming-pc-repair-kuwait', label: 'Gaming PC Repair Kuwait', description: 'Main repair service for power, motherboard, GPU, cooling and stability faults.' },
+      { href: '/guides/gaming-pc-black-screen-no-display-kuwait', label: 'Gaming PC Black Screen / No Display', description: 'Use this when the PC powers on but the monitor remains blank.' },
+      { href: '/guides/gaming-pc-random-shutdown-kuwait', label: 'Gaming PC Random Shutdown', description: 'For instant power loss during gaming or sustained load.' },
+      { href: '/guides/gaming-pc-bios-failed-update-kuwait', label: 'Gaming PC BIOS Recovery', description: 'For systems that stopped reaching POST after a firmware update.' },
+    ],
+  },
+  'gaming-pc-black-screen-no-display-kuwait': {
+    title: 'Gaming PC no-display: related repair paths',
+    intro: 'A black screen can be a display-path, GPU, RAM, BIOS or motherboard problem. Use the related paths to classify it.',
+    links: [
+      { href: '/gaming-pc-repair-kuwait', label: 'Gaming PC Repair Kuwait', description: 'For GPU, VRAM, BIOS/VBIOS, motherboard and stability diagnosis.' },
+      { href: '/guides/gaming-gpu-artifacts-repair-kuwait', label: 'GPU Artifacting & Black Screen', description: 'For visual corruption, flickering or black screens that appear under GPU load.' },
+      { href: '/guides/gaming-pc-bios-failed-update-kuwait', label: 'Gaming PC BIOS Recovery', description: 'For no-POST or no-display symptoms that started after a firmware update.' },
+    ],
+  },
+  'gaming-gpu-artifacts-repair-kuwait': {
+    title: 'GPU artifacting: related repair paths',
+    intro: 'Artifacting can be software, display-path, thermal or hardware related. Use repeatability and load behavior to narrow the fault.',
+    links: [
+      { href: '/gaming-pc-repair-kuwait', label: 'Gaming PC Repair Kuwait', description: 'For GPU, VRAM, power-delivery and board-level gaming hardware diagnosis.' },
+      { href: '/blog/gaming-pc-cooling', label: 'Gaming PC Cooling Guide', description: 'For thermal behavior, airflow, fans and cooling-related instability.' },
+      { href: '/guides/gaming-pc-random-shutdown-kuwait', label: 'Gaming PC Random Shutdown', description: 'For GPU or system instability that ends in sudden power loss.' },
+    ],
+  },
+  'gaming-pc-random-shutdown-kuwait': {
+    title: 'Gaming PC shutdowns: related repair paths',
+    intro: 'Sudden power loss under gaming load points toward a smaller set of power, thermal and stability branches.',
+    links: [
+      { href: '/gaming-pc-repair-kuwait', label: 'Gaming PC Repair Kuwait', description: 'For PSU, VRM, cooling, GPU and controlled-load diagnostics.' },
+      { href: '/blog/gaming-pc-cooling', label: 'Gaming PC Cooling Guide', description: 'For overheating, airflow, fan, cooler and thermal-interface issues.' },
+      { href: '/guides/gaming-pc-not-turning-on-kuwait', label: 'Gaming PC Won’t Turn On', description: 'For systems that became completely dead or intermittently refuse to start.' },
+    ],
+  },
+  'gaming-pc-bios-failed-update-kuwait': {
+    title: 'Gaming PC BIOS failure: related repair paths',
+    intro: 'Firmware failures can look like GPU or no-display faults. Use the sequence of events and POST behavior to separate the branches.',
+    links: [
+      { href: '/gaming-pc-repair-kuwait', label: 'Gaming PC Repair Kuwait', description: 'For BIOS/VBIOS recovery and board-level gaming hardware diagnosis.' },
+      { href: '/guides/bios-uefi-recovery-kuwait', label: 'BIOS & UEFI Recovery Guide', description: 'Broader firmware troubleshooting before specialist repair.' },
+      { href: '/guides/gaming-pc-black-screen-no-display-kuwait', label: 'Gaming PC Black Screen / No Display', description: 'For systems that power on but never produce a usable video signal.' },
+    ],
+  },
   'windows-11-wifi-keeps-disconnecting': {
     title: 'Windows 11 Wi-Fi disconnects: related troubleshooting and repair paths',
     intro: 'Use the network guides together to separate Wi-Fi-link failures from internet-access failures, then move to hardware diagnosis when the symptom follows the laptop.',
