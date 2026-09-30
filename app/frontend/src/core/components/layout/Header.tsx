@@ -181,7 +181,7 @@ export default function Header() {
                         ref={el => navRefs.current[link.megaMenuId!] = el}
                         type="button"
                         aria-expanded={isOpen}
-                        aria-haspopup="menu"
+                        aria-haspopup="true"
                         aria-controls={`mega-menu-${link.megaMenuId}`}
                         onClick={() => {
                           if (timerRef.current) clearTimeout(timerRef.current);
