@@ -260,7 +260,54 @@ export class NavigationCompiler {
     };
   }
 
-  // 7. Guides Mega Menu
+  // 7. News Mega Menu
+  private static compileNewsMegaMenu(): MegaMenuConfig {
+    const toContentNavEntity = (entry: (typeof NAV_GRAPH.newsEntries)[number]): NavEntity => ({
+      id: entry.id,
+      slug: entry.slug,
+      entityType: 'Page' as any,
+      primaryKeyword: entry.primaryKeyword,
+      title: entry.title,
+      description: entry.description,
+      iconKey: entry.iconKey || 'cpu',
+      weight: 0,
+      commercialIntent: 'informational',
+    });
+
+    const latest = NAV_GRAPH.newsEntries.map(toContentNavEntity).slice(0, 6);
+    const categories: NavEntity[] = [
+      { id: 'news_windows', slug: 'news?category=windows', title: 'Windows & Microsoft', description: 'Windows releases, updates, support changes and practical technician context.', iconKey: 'shield', entityType: 'Page' as any, primaryKeyword: 'windows news', weight: 0, commercialIntent: 'informational' },
+      { id: 'news_hardware', slug: 'news?category=hardware', title: 'Hardware', description: 'CPU, GPU, SSD, RAM and component technology news explained in practical terms.', iconKey: 'cpu', entityType: 'Page' as any, primaryKeyword: 'hardware news', weight: 0, commercialIntent: 'informational' },
+      { id: 'news_gaming', slug: 'news?category=gaming', title: 'Gaming Technology', description: 'Gaming hardware, drivers, performance and platform updates.', iconKey: 'gaming', entityType: 'Page' as any, primaryKeyword: 'gaming tech news', weight: 0, commercialIntent: 'informational' },
+      { id: 'news_apple', slug: 'news?category=apple', title: 'Apple & Mac', description: 'Mac, MacBook and Apple hardware/software news with repair implications.', iconKey: 'apple', entityType: 'Page' as any, primaryKeyword: 'apple mac news', weight: 0, commercialIntent: 'informational' },
+      { id: 'news_security', slug: 'news?category=cybersecurity', title: 'Cybersecurity', description: 'Security updates and device risks that matter to Windows and Mac users.', iconKey: 'shield', entityType: 'Page' as any, primaryKeyword: 'cybersecurity news', weight: 0, commercialIntent: 'informational' },
+      { id: 'news_ai', slug: 'news?category=ai', title: 'AI & PC Technology', description: 'AI PCs, processors, software features and changes affecting everyday computers.', iconKey: 'cpu', entityType: 'Page' as any, primaryKeyword: 'ai pc news', weight: 0, commercialIntent: 'informational' },
+    ];
+
+    const newsIndex: NavEntity = {
+      id: 'news_index',
+      slug: 'news',
+      title: `All News (${NAV_GRAPH.newsEntries.length})`,
+      description: 'Browse current KCROC technology news and technician analysis',
+      iconKey: 'cpu',
+      entityType: 'Page' as any,
+      primaryKeyword: 'tech news',
+      weight: 100,
+      commercialIntent: 'informational',
+    };
+
+    return {
+      id: 'news_mega',
+      title: 'Tech News',
+      featured: latest.length ? latest : categories,
+      sections: [{
+        title: latest.length ? 'News Categories' : 'News Desk',
+        items: latest.length ? [newsIndex, ...categories] : [newsIndex, ...categories],
+      }],
+    };
+  }
+
+  // 8. Guides Mega Menu
   private static compileGuidesMegaMenu(): MegaMenuConfig {
     const toContentNavEntity = (entry: (typeof NAV_GRAPH.guideEntries)[number]): NavEntity => ({
       id: entry.id,
@@ -316,7 +363,7 @@ export class NavigationCompiler {
     };
   }
 
-  // 8. About Mega Menu
+  // 9. About Mega Menu
   private static compileAboutMegaMenu(): MegaMenuConfig {
     return {
       id: 'about_mega',
@@ -365,6 +412,7 @@ export class NavigationCompiler {
         { id: 'nav_case_studies', label: 'Case Studies', href: '/case-studies', hasMega: true, megaMenuId: 'case_studies_mega' }, 
         { id: 'nav_pricing', label: 'Pricing', href: '/pricing', hasMega: true, megaMenuId: 'pricing_mega' },
         { id: 'nav_blog', label: 'Blog', href: '/blog', hasMega: true, megaMenuId: 'blog_mega' },
+        { id: 'nav_news', label: 'News', href: '/news', hasMega: true, megaMenuId: 'news_mega' },
         { id: 'nav_guides', label: 'Guides', href: '/guides', hasMega: true, megaMenuId: 'guides_mega' },
         { id: 'nav_about', label: 'About', href: '/about', hasMega: true, megaMenuId: 'about_mega' },
       ],
@@ -375,6 +423,7 @@ export class NavigationCompiler {
         case_studies_mega: this.compileCaseStudiesMegaMenu(),
         pricing_mega: this.compilePricingMegaMenu(),
         blog_mega: this.compileBlogMegaMenu(),
+        news_mega: this.compileNewsMegaMenu(),
         guides_mega: this.compileGuidesMegaMenu(),
         about_mega: this.compileAboutMegaMenu(),
       },
