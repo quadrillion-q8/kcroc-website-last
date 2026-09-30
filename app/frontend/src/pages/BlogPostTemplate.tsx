@@ -205,10 +205,23 @@ const STANDALONE_REPAIR_PATHS: Record<string, { title: string; intro: string; li
       { href: '/guides/ssd-not-detected-windows-11', label: 'SSD Not Detected in Windows 11', description: 'For updates that expose storage or drive-detection problems.' },
     ],
   },
+  'gaming-pc-optimization-2026': {
+    title: 'Gaming PC optimization: the measurement-first cluster',
+    intro: 'Start with the bottleneck, then branch into frame-time, shaders, drivers, RAM, thermals, latency and hardware diagnosis.',
+    links: [
+      { href: '/guides/windows-gaming-performance-stutter-fix', label: 'Windows Gaming Stutter Guide', description: 'Deep troubleshooting for frame-time spikes, overlays, shaders, driver latency and thermal behavior.' },
+      { href: '/guides/windows-gaming-frame-time-stutter', label: 'Gaming Stutter With High FPS', description: 'Use frame-time to explain why high average FPS can still feel uneven.' },
+      { href: '/guides/shader-compilation-stutter-windows', label: 'Shader Compilation Stutter', description: 'For repeatable first-use hitches caused by rendering pipeline preparation.' },
+      { href: '/guides/dpc-latency-gaming-stutter', label: 'DPC Latency & Gaming Stutter', description: 'Advanced driver-timing diagnostics when simpler branches do not explain the hitch.' },
+      { href: '/blog/gaming-pc-cooling', label: 'Gaming PC Cooling Guide', description: 'Investigate temperature, airflow, fans and sustained-load performance.' },
+      { href: '/gaming-pc-repair-kuwait', label: 'Gaming PC & GPU Repair Kuwait', description: 'For artifacts, crashes, unstable power, thermal faults or hardware instability.' },
+    ],
+  },
   'windows-gaming-performance-stutter-fix': {
     title: 'Windows gaming performance: related troubleshooting paths',
     intro: 'Use the cluster as a decision tree: measure frame-time first, then branch into Game Bar, shaders, driver latency, thermals or hardware.',
     links: [
+      { href: '/guides/gaming-pc-optimization-2026', label: 'Gaming PC Optimization 2026', description: 'Start with the broader measurement-first optimization workflow before branching into stutter-specific diagnostics.' },
       { href: '/guides/gamebar-presence-writer-fix', label: 'GameBarPresenceWriter.exe Fix', description: 'The proven KCROC guide for Game Bar presence, capture activity and advanced rollback-first troubleshooting.' },
       { href: '/guides/windows-gaming-frame-time-stutter', label: 'High FPS but Gaming Stutter', description: 'Understand frame-time spikes and test smoothness before changing system settings.' },
       { href: '/guides/shader-compilation-stutter-windows', label: 'Shader Compilation Stutter', description: 'Recognize first-use shader and pipeline compilation hitches and avoid unnecessary cache resets.' },
@@ -221,6 +234,7 @@ const STANDALONE_REPAIR_PATHS: Record<string, { title: string; intro: string; li
     title: 'Frame-time troubleshooting: next steps',
     intro: 'Once you know the hitch is real, use the branch that matches the trigger instead of applying a generic gaming-optimization list.',
     links: [
+      { href: '/guides/gaming-pc-optimization-2026', label: 'Gaming PC Optimization 2026', description: 'Return to the measurement-first pillar before applying a specialized stutter fix.' },
       { href: '/guides/windows-gaming-performance-stutter-fix', label: 'Windows Gaming Stutter Guide', description: 'The cluster hub for frame-time, overlays, shaders, driver latency and thermal testing.' },
       { href: '/guides/gamebar-presence-writer-fix', label: 'GameBarPresenceWriter.exe Fix', description: 'Use when the hitch is linked specifically to Game Bar or capture activity.' },
       { href: '/guides/shader-compilation-stutter-windows', label: 'Shader Compilation Stutter', description: 'Use when hitches follow first-use effects, materials or game areas.' },
@@ -232,6 +246,7 @@ const STANDALONE_REPAIR_PATHS: Record<string, { title: string; intro: string; li
     title: 'Shader stutter: related troubleshooting paths',
     intro: 'Compare first-use shader behavior with the other common causes of PC gaming hitching before changing drivers or deleting caches.',
     links: [
+      { href: '/guides/gaming-pc-optimization-2026', label: 'Gaming PC Optimization 2026', description: 'Return to the measurement-first pillar before applying a specialized stutter fix.' },
       { href: '/guides/windows-gaming-performance-stutter-fix', label: 'Windows Gaming Stutter Guide', description: 'Broader decision tree for frame-time, overlays, drivers, shaders and thermals.' },
       { href: '/guides/windows-gaming-frame-time-stutter', label: 'High FPS but Gaming Stutter', description: 'Learn how to distinguish frame-time spikes from an ordinary GPU-bound workload.' },
       { href: '/guides/gamebar-presence-writer-fix', label: 'GameBarPresenceWriter.exe Fix', description: 'Use the dedicated Game Bar branch when the hitch follows overlay or capture activity.' },
@@ -243,6 +258,7 @@ const STANDALONE_REPAIR_PATHS: Record<string, { title: string; intro: string; li
     title: 'DPC latency: related troubleshooting paths',
     intro: 'DPC/ISR analysis is an advanced branch. Use the simpler gaming-performance branches first and return here when the evidence points to driver timing.',
     links: [
+      { href: '/guides/gaming-pc-optimization-2026', label: 'Gaming PC Optimization 2026', description: 'Return to the measurement-first pillar before applying a specialized stutter fix.' },
       { href: '/guides/windows-gaming-performance-stutter-fix', label: 'Windows Gaming Stutter Guide', description: 'Start here to separate frame-time, overlays, shaders, thermals and driver-related causes.' },
       { href: '/guides/windows-gaming-frame-time-stutter', label: 'High FPS but Gaming Stutter', description: 'Confirm that the symptom is a real frame-time problem before tracing drivers.' },
       { href: '/guides/gamebar-presence-writer-fix', label: 'GameBarPresenceWriter.exe Fix', description: 'Test Game Bar and capture activity separately from driver latency.' },
