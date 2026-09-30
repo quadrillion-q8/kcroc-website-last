@@ -107,7 +107,11 @@ const generateSitemap = () => {
   const blogUrlEntries = BLOG_POSTS.map(post => ({
     url: `${DOMAIN}${getContentRoute(post.slug, post.contentType ?? 'blog')}`,
     entityType: 'BlogPost' as const,
-    lastModified: post.date || KCROC_GRAPH.metadata.lastUpdated,
+    // Keep sitemap freshness aligned with the page's visible technical review
+    // date and Article.dateModified when a post has received a substantive review.
+    lastModified: (post.technicalReviewDate
+      ? new Date(post.technicalReviewDate).toISOString()
+      : post.date) || KCROC_GRAPH.metadata.lastUpdated,
   }));
 
   const extraUrlEntries = EXTRA_STANDALONE_PAGES.map(route => ({
