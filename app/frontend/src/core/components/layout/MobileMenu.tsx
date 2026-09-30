@@ -182,7 +182,7 @@ export default function MobileMenu({ isOpen, onClose, mobileRef, navModel, clean
               <span className="flex items-center justify-center gap-1.5"><Phone className="h-3.5 w-3.5 text-[#dfa86f]" aria-hidden="true" /> Call</span>
             </a>
             <a
-              href="https://wa.me/96555301913"
+              href={`https://wa.me/${cleanTel}`}
               target="_blank"
               rel="noreferrer"
               onClick={() => trackConversion('cta_click', { cta_name: 'mobile_menu_quick_whatsapp', button_position: 'mobile_menu' })}
@@ -337,7 +337,7 @@ export default function MobileMenu({ isOpen, onClose, mobileRef, navModel, clean
 
         <div className="shrink-0 border-t border-white/[0.08] bg-[#0b1012]/95 px-4 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-3 backdrop-blur-xl sm:px-5">
           <a
-            href="https://wa.me/96555301913"
+            href={`https://wa.me/${cleanTel}`}
             target="_blank"
             rel="noreferrer"
             onClick={() => trackConversion('cta_click', { cta_name: 'mobile_menu_footer_whatsapp', button_position: 'mobile_menu' })}
