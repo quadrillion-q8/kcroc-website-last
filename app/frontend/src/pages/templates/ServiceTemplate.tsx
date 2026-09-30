@@ -189,6 +189,35 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
           </section>
         )}
 
+        {entity.symptomLinks && entity.symptomLinks.length > 0 && (
+          <section className="max-w-7xl mx-auto px-6 py-12 border-t border-slate-800/50 relative z-10" aria-labelledby="symptom-finder">
+            <div className="max-w-3xl mb-8">
+              <p className="text-xs font-black uppercase tracking-[0.18em] text-cyan-400 mb-2">Start with your symptom</p>
+              <h2 id="symptom-finder" className="text-2xl sm:text-3xl font-black text-white">What is your gaming PC doing?</h2>
+              <p className="mt-3 text-sm leading-6 text-slate-400">
+                Choose the closest symptom. Each path explains the common causes, safe checks and the point at which a repair diagnosis makes more sense than another part swap.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {entity.symptomLinks.map((item) => (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  className="group rounded-2xl border border-slate-800 bg-slate-900/55 p-5 transition-all hover:-translate-y-0.5 hover:border-cyan-500/40 hover:bg-slate-900/75"
+                >
+                  <div className="flex items-start justify-between gap-4">
+                    <div>
+                      <h3 className="text-base font-bold text-white group-hover:text-cyan-300 transition-colors">{item.label}</h3>
+                      <p className="mt-2 text-sm leading-6 text-slate-400">{item.description}</p>
+                    </div>
+                    <ArrowRight className="mt-1 h-5 w-5 flex-shrink-0 text-cyan-400 transition-transform group-hover:translate-x-1" />
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
+
         {entity.whyChooseUs && entity.whyChooseUs.length > 0 && (
           <section className="max-w-7xl mx-auto px-6 py-12 border-t border-slate-800/50 relative z-10">
             <h2 className="text-2xl font-bold mb-8 text-white flex items-center gap-3">
