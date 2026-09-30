@@ -74,7 +74,7 @@ export default function Blog() {
   const pageUrl = business.websiteUrl + ROUTES.BLOG;
 
   const displayPosts: BlogCardItem[] = useMemo(() => {
-    const fromBlogPosts: BlogCardItem[] = BLOG_POSTS.filter((post) => post.contentType !== 'guide').map((post) => ({
+    const fromBlogPosts: BlogCardItem[] = BLOG_POSTS.filter((post) => post.contentType !== 'guide' && post.contentType !== 'news').map((post) => ({
       key: post.slug,
       href: getBlogRoute(post.slug),
       title: post.title,
@@ -151,7 +151,7 @@ export default function Blog() {
           })),
         },
 
-        ...BLOG_POSTS.map((post) => ({
+        ...BLOG_POSTS.filter((post) => post.contentType !== 'guide' && post.contentType !== 'news').map((post) => ({
           '@type': 'BlogPosting',
           '@id':
             business.websiteUrl +
