@@ -114,6 +114,8 @@ export interface BlogPost {
   content: string[];          // legacy simple format — always kept for back-compat
   richContent?: ContentBlock[]; // optional rich format — used when present
   image: string;
+  /** 16:9, 1200px-wide representative image used for Discover/social previews. */
+  discoverImage?: string;
   date: string;
   /** Optional article-specific technical review date shown in the author/review panel. */
   technicalReviewDate?: string;
@@ -314,6 +316,7 @@ export const BLOG_POSTS: BlogPost[] = [
       { type: 'callout', variant: 'recommendation', title: 'Still seeing 100% Disk Usage?', text: "Do not buy parts based on the Task Manager percentage alone. KCROC can test the system, identify whether the bottleneck is storage, RAM, Windows, thermals or another hardware fault, then give you the repair or upgrade options before paid work begins." }
     ],
     image: "/images/windows-os-software-repair-and-installation-kuwait.webp",
+    discoverImage: "/images/discover/windows-os-software-repair-and-installation-kuwait-1200x675.webp",
     date: "2026-09-22",
     author: "Imran Natiq",
     category: "Windows & Performance",
@@ -449,6 +452,7 @@ export const BLOG_POSTS: BlogPost[] = [
       ] }
     ],
     image: "/images/blog/gaming-pc-thermal-throttling-kuwait.webp",
+    discoverImage: "/images/discover/gaming-pc-thermal-throttling-kuwait-1200x675.webp",
     date: "2026-09-14",
     author: "Imran Natiq",
     category: "Gaming Laptop Maintenance",
@@ -568,6 +572,7 @@ export const BLOG_POSTS: BlogPost[] = [
       { type: 'paragraph', text: "Work from the outside in: verify the wall outlet, correct charger, charging port, accessories and a safe power reset. Stop if there are signs of liquid, swelling, burning or sparking. If the laptop remains completely dead with a known-good power source, the next useful step is measured diagnosis of the charging input and motherboard power rails rather than guessing at parts." }
     ],
     image: "/images/laptop-motherboard-diagnostic-bench-repair.webp",
+    discoverImage: "/images/discover/laptop-motherboard-diagnostic-bench-repair-1200x675.webp",
     date: "2026-09-27",
     author: "Imran Natiq",
     category: "Laptop Troubleshooting",
@@ -847,6 +852,7 @@ export const BLOG_POSTS: BlogPost[] = [
       { type: 'paragraph', text: "We fix the board. We don't just swap it." },
     ],
     image: "/images/laptop-motherboard-diagnostic-bench-repair.webp",
+    discoverImage: "/images/discover/laptop-motherboard-diagnostic-bench-repair-1200x675.webp",
     date: "2026-09-07",
     author: "Imran Natiq",
     category: "Laptop Troubleshooting",
@@ -1023,6 +1029,7 @@ export const BLOG_POSTS: BlogPost[] = [
       { type: 'callout', variant: 'recommendation', title: 'Laptop Running Too Hot?', text: "If your laptop is consistently reaching high temperatures, thermal throttling, shutting down, or running its fans unusually hard, KCROC can inspect the cooling system and determine whether the issue is dust, airflow, fan condition, thermal interface, software load or another hardware fault. If the symptoms already point to overheating, start with the Laptop Overheating Kuwait diagnostic guide rather than replacing the laptop based on one temperature reading." },
     ],
     image: "/images/blog/laptop-temperatures-kuwait-cpu-gpu-cooling.webp",
+    discoverImage: "/images/discover/laptop-temperatures-kuwait-cpu-gpu-cooling-1200x675.webp",
     date: "2026-09-01",
     author: "Imran Natiq",
     category: "Hardware",
@@ -1043,6 +1050,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "If your laptop feels sluggish, the first step isn't buying a new one. A thorough ultrasonic cleaning, application of high-grade liquid metal or phase-change thermal paste, and a fast NVMe SSD upgrade can make a five-year-old laptop perform better than new."
     ],
     image: "/images/blog/laptop-dust-cleaning-overheating-kuwait.webp",
+    discoverImage: "/images/discover/laptop-dust-cleaning-overheating-kuwait-1200x675.webp",
     date: "2026-06-15",
     author: "KCROC Engineering Team",
     category: "Hardware",
@@ -1061,6 +1069,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "The appropriate fix depends on the measured cause. It may involve cleaning filters and heatsinks, correcting airflow, checking fan operation, reviewing fan curves, verifying cooler mounting, or replacing thermal interface material when inspection supports it. Positive case pressure can help manage dust when the case has properly filtered intakes, but it does not replace regular inspection and cleaning."
     ],
     image: "/images/blog/gaming-pc-thermal-throttling-kuwait.webp",
+    discoverImage: "/images/discover/gaming-pc-thermal-throttling-kuwait-1200x675.webp",
     date: "2026-06-22",
     author: "KCROC Gaming Specialists",
     category: "Gaming",
@@ -1079,6 +1088,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "If you notice your hinges becoming incredibly stiff or hearing a cracking plastic sound when opening the lid, stop using it immediately. Have the hinges loosened and repaired before they rip through the display cable and screen panel."
     ],
     image: "/images/blog/laptop-screen-protection-kuwait.webp",
+    discoverImage: "/images/discover/laptop-screen-protection-kuwait-1200x675.webp",
     date: "2026-07-02",
     author: "KCROC Repair Team",
     category: "Maintenance",
@@ -1167,6 +1177,7 @@ export const BLOG_POSTS: BlogPost[] = [
     
     // ✅ FIXED: Main featured image updated to .webp
     image: "/images/blog/windows-11-8gb-ram-performance.webp",
+    discoverImage: "/images/discover/windows-11-8gb-ram-performance-1200x675.webp",
     
     date: "2026-07-30",
     author: "KCROC Technical Team",
@@ -1296,6 +1307,7 @@ export const BLOG_POSTS: BlogPost[] = [
       { type: 'paragraph', text: "The right move depends on your hardware, your software needs, your privacy preferences, and your budget — not on which side of the online debate sounds more convincing. And the answer isn't always \"buy a new computer.\" Often it's \"diagnose the one you have.\" If your Windows 11 PC is slow, unstable, overheating, or refusing to update properly, a proper hardware diagnostic — the kind we run before any Laptop Repair Kuwait or Motherboard Repair Kuwait job — usually finds the real cause faster than a full OS switch or a new machine would." }
     ],
     image: "/images/dell-laptop-windows-update-repair-stack.webp",
+    discoverImage: "/images/discover/dell-laptop-windows-update-repair-stack-1200x675.webp",
     date: "2026-08-16",
     author: "Imran",
     category: "Windows & Software",
@@ -1401,6 +1413,7 @@ export const BLOG_POSTS: BlogPost[] = [
       { type: 'paragraph', text: "Most gaming PC performance problems trace back to a small, predictable list: dust, dried thermal paste, airflow direction, disabled XMP, an underpowered PSU, and outdated drivers. None of these require a new build to fix. If you've worked through this list and your PC still throttles, crashes, or underperforms for its specs, that's the point where a proper diagnostic — the kind we run on every Gaming PC Repair job — separates a genuine hardware fault from a setup issue." }
     ],
     image: "/images/custom-gaming-pc-teardown-and-diagnostics-workbench.webp",
+    discoverImage: "/images/discover/custom-gaming-pc-teardown-and-diagnostics-workbench-1200x675.webp",
     date: "2026-08-17",
     author: "KCROC Gaming Specialists",
     category: "Gaming",
@@ -3446,6 +3459,7 @@ export const BLOG_POSTS: BlogPost[] = [
       { type: "paragraph", text: "Related KCROC guides: Windows 11 100% Disk Usage, Is 8GB RAM Enough for Windows 11 in 2026?, Laptop Temperatures in Kuwait, and The Ultimate Guide to Laptop Repair in Kuwait (2026)." }
     ],
     image: "/images/blog/windows-11-laptop-multitasking.webp",
+    discoverImage: "/images/discover/windows-11-laptop-multitasking-1200x675.webp",
     date: "2026-09-26",
     technicalReviewDate: "September 26, 2026",
     author: "Imran Natiq",
@@ -3596,6 +3610,7 @@ export const BLOG_POSTS: BlogPost[] = [
       { type: "paragraph", text: "KCROC's GameBarPresenceWriter guide is one specialized branch of this larger troubleshooting model. When that branch does not explain the symptom, move to the evidence that does rather than forcing every stutter problem into a Windows-tweak explanation." }
     ],
     image: "/images/gaming-laptop-dual-fan-motherboard-diagnostics.webp",
+    discoverImage: "/images/discover/gaming-laptop-dual-fan-motherboard-diagnostics-1200x675.webp",
     date: "2026-09-29",
     technicalReviewDate: "September 29, 2026",
     author: "Imran Natiq",
@@ -3658,6 +3673,7 @@ export const BLOG_POSTS: BlogPost[] = [
       { type: "paragraph", text: "When a game feels stuttery at high FPS, frame-time gives you a better diagnostic starting point than the FPS headline alone. Reproduce the hitch, look for a repeatable spike pattern, and then test overlays, game settings, drivers, shaders, thermals and hardware in a controlled order." }
     ],
     image: "/images/blog/windows-11-laptop-multitasking.webp",
+    discoverImage: "/images/discover/windows-11-laptop-multitasking-1200x675.webp",
     date: "2026-09-29",
     technicalReviewDate: "September 29, 2026",
     author: "Imran Natiq",
@@ -3726,6 +3742,7 @@ export const BLOG_POSTS: BlogPost[] = [
       { type: "paragraph", text: "Shader compilation can create real, short-lived game hitches, but the pattern matters. Look for first-use triggers, repeatability and improvement on subsequent passes. Do not confuse a normal compilation event with a failing GPU, and do not turn cache deletion into a generic optimization routine." }
     ],
     image: "/images/gaming-pc-rgb-installing-windows-11.webp",
+    discoverImage: "/images/discover/gaming-pc-rgb-installing-windows-11-1200x675.webp",
     date: "2026-09-29",
     technicalReviewDate: "September 29, 2026",
     author: "Imran Natiq",
@@ -3801,6 +3818,7 @@ export const BLOG_POSTS: BlogPost[] = [
       { type: "paragraph", text: "DPC and ISR analysis is a legitimate Windows engineering technique, but it is an advanced branch of gaming troubleshooting. Start with repeatable frame-time behavior and obvious causes. Move to DPC/ISR tracing only when the evidence points toward driver timing, and use that evidence to test rather than guess." }
     ],
     image: "/images/custom-gaming-pc-teardown-and-diagnostics-workbench.webp",
+    discoverImage: "/images/discover/custom-gaming-pc-teardown-and-diagnostics-workbench-1200x675.webp",
     date: "2026-09-29",
     technicalReviewDate: "September 29, 2026",
     author: "Imran Natiq",
@@ -3880,6 +3898,7 @@ export const BLOG_POSTS: BlogPost[] = [
       { type: "paragraph", text: "Do not treat every Wi-Fi disconnect as a Windows problem. First determine whether the laptop loses the wireless link, the router path, or only internet access. Then isolate the laptop from the network, check the adapter and driver, test power/sleep behavior, investigate the access point, and use resets only when the evidence points there. If the fault follows the laptop across known-good networks, it is time to consider wireless hardware, antenna or motherboard diagnosis." }
     ],
     image: "/images/laptop-wireless-network-card-replacement.webp",
+    discoverImage: "/images/discover/laptop-wireless-network-card-replacement-1200x675.webp",
     date: "2026-09-29",
     technicalReviewDate: "September 29, 2026",
     author: "Imran Natiq",
@@ -3959,6 +3978,7 @@ export const BLOG_POSTS: BlogPost[] = [
       { type: "paragraph", text: "The phrase 'connected to Wi-Fi but no internet' describes several different failures. Compare another device, test another network, inspect the gateway and DNS path, remove VPN/proxy variables, and only then use deeper Windows resets. The goal is not to reset everything; it is to prove which layer stopped working." }
     ],
     image: "/images/laptop-wifi-network-card.webp",
+    discoverImage: "/images/discover/laptop-wifi-network-card-1200x675.webp",
     date: "2026-09-29",
     technicalReviewDate: "September 29, 2026",
     author: "Imran Natiq",
@@ -4029,6 +4049,7 @@ export const BLOG_POSTS: BlogPost[] = [
       { type: "paragraph", text: "100% CPU usage is a measurement, not a diagnosis. Identify the process, reproduce the load, and compare CPU usage with temperature, clock speed, memory, disk and the exact task being performed. Many cases are normal workloads or software problems; the cases that need repair are the ones where instability, thermal behavior or hardware evidence survives proper troubleshooting." }
     ],
     image: "/images/asus-strix-z890f-cpu-installation-gaming-pc-kuwait-1000.webp",
+    discoverImage: "/images/discover/asus-strix-z890f-cpu-installation-gaming-pc-kuwait-1000-1200x675.webp",
     date: "2026-09-29",
     technicalReviewDate: "September 29, 2026",
     author: "Imran Natiq",
@@ -4107,6 +4128,7 @@ export const BLOG_POSTS: BlogPost[] = [
       { type: "paragraph", text: "Start with BIOS/UEFI, then Disk Management, then Device Manager and compatibility. Treat a brand-new blank SSD differently from an existing drive full of data. The safest troubleshooting path is the one that proves where the SSD disappears without destroying the information you are trying to recover." }
     ],
     image: "/images/lexar-nvme-ssd-upgrade-pc-repair-kuwait-1000.webp",
+    discoverImage: "/images/discover/lexar-nvme-ssd-upgrade-pc-repair-kuwait-1000-1200x675.webp",
     date: "2026-09-29",
     technicalReviewDate: "September 29, 2026",
     author: "Imran Natiq",
@@ -4184,6 +4206,7 @@ export const BLOG_POSTS: BlogPost[] = [
       { type: "paragraph", text: "The goal is not to force every Windows update to install at any cost. Capture the error, identify the failure stage, confirm power/network/free-space basics, run the current Windows troubleshooter, and branch into drivers, system repair or recovery only when the evidence supports it. When updates consistently expose freezing, storage errors, thermal shutdowns or blue screens, the underlying hardware or installation needs diagnosis—not another round of blind update resets." }
     ],
     image: "/images/dell-laptop-windows-update-repair-stack.webp",
+    discoverImage: "/images/discover/dell-laptop-windows-update-repair-stack-1200x675.webp",
     date: "2026-09-29",
     technicalReviewDate: "September 29, 2026",
     author: "Imran Natiq",
