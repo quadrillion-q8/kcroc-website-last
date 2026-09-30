@@ -34,7 +34,7 @@ const CONFIG: Record<string, {
     h1: 'تصليح كمبيوتر في الكويت',
     eyebrow: 'فني كمبيوتر وخدمة استلام من الباب',
     intro: 'جهازك خربان أو صار يعلق أو يطفي؟ في KCROC نشخص العطل أولًا، ثم نشرح لك الحل المناسب بدل تبديل قطع على التخمين. نستلم الجهاز من البيت أو المكتب، نصلحه في مختبرنا في حولي، وبعد الفحص والاختبار نرجعه لك.',
-    bullets: ['تشخيص أعطال الهاردوير قبل الإصلاح', 'تصليح لابتوب وكمبيوتر وMacBook وGaming PC', 'إصلاح مكونات اللوحة الأم عندما يكون ذلك ممكنًا', 'استلام وتوصيل مجاني داخل الكويت', 'ضمان 30 يومًا على الإصلاحات المكتملة'],
+    bullets: ['تشخيص أعطال الهاردوير قبل الإصلاح', 'تصليح كمبيوتر ألعاب وGaming PC ولابتوبات', 'إصلاح مكونات اللوحة الأم عندما يكون ذلك ممكنًا', 'استلام وتوصيل مجاني داخل الكويت', 'ضمان 30 يومًا على الإصلاحات المكتملة'],
     faq: [
       { q: 'هل يوجد استلام من منطقة سكني؟', a: 'نعم. KCROC يوفر خدمة استلام وتوصيل في مناطق الكويت، وتقدر ترسل لنا منطقتك ومشكلة الجهاز عبر واتساب.' },
       { q: 'هل يتم تبديل المذربورد كاملة مباشرة؟', a: 'ليس بالضرورة. يتم تشخيص العطل أولًا، وعندما يكون الإصلاح على مستوى المكونات ممكنًا يتم شرح هذا الخيار قبل قرار استبدال اللوحة كاملة.' },
@@ -90,14 +90,14 @@ const CONFIG: Record<string, {
     serviceIds: ['srv-motherboard', 'srv-laptop', 'srv-charging-port', 'srv-liquid-damage']
   },
   'gaming-pc-repair-kuwait': {
-    h1: 'تصليح Gaming PC وكرت الشاشة في الكويت',
-    eyebrow: 'حرارة، تهنيق، FPS drops، GPU ومشاكل الطاقة',
-    intro: 'إذا الـGaming PC يطفي وقت اللعب، الحرارة ترتفع، الفريمات تنزل أو تظهر تقطيعات وصور غريبة، لا تبدأ بشراء كرت جديد. نحدد أولًا هل السبب حرارة، تبريد، GPU، VRAM، طاقة، رام أو مذربورد.',
-    bullets: ['GPU وVRAM وتشخيص الأعطال تحت الضغط', 'Cooling وThermal Service', 'Power/VRM ومشاكل المذربورد', 'BIOS/VBIOS والفحص بعد الإصلاح', 'اختبار استقرار قبل التسليم'],
+    h1: 'تصليح Gaming PC وبي سي قيمنق وكرت الشاشة بالكويت',
+    eyebrow: 'حرارة، تهنيق، FPS Drops، GPU ومشاكل الطاقة',
+    intro: 'إذا الـGaming PC عندك يطفي وقت اللعب، يهنّق، الـFPS ينزل، أو الحرارة تصير عالية، لا تستعيل وتبدّل كرت أو قطعة غالية. خلنا نشيك على السبب أول، ونحدد هل المشكلة من الحرارة، التبريد، GPU، VRAM، الطاقة، الرام أو المذربورد.',
+    bullets: ['تصليح كرت الشاشة وGPU وVRAM', 'تغيير المعجون الحراري وخدمة التبريد', 'فحص الهاردوير تحت الضغط واختبار الاستقرار', 'Power/VRM ومشاكل المذربورد', 'BIOS/VBIOS والفحص بعد الإصلاح'],
     faq: [
-      { q: 'هل تصلحون مشاكل ارتفاع الحرارة في Gaming PC؟', a: 'نعم. يتم فحص التبريد والمراوح والـthermal interface والسلوك تحت الحمل لتحديد السبب الفعلي.' },
-      { q: 'هل تصلحون كروت الشاشة؟', a: 'يتم تشخيص أعطال كرت الشاشة والطاقة والمكونات المرتبطة به، ويحدد التقرير ما إذا كان الإصلاح ممكنًا قبل استبدال الكرت.' },
-      { q: 'هل تستلمون Gaming PC من البيت؟', a: 'نعم، الاستلام والتوصيل متاحان عبر خدمة KCROC داخل الكويت.' }
+      { q: 'بي سي القيمنق حرارته عالية، شتسوون؟', a: 'نشيك على الغبار، المراوح، الـAIO، المعجون أو الـthermal interface، وتدفق الهوا وحرارة CPU/GPU تحت الضغط عشان نعرف السبب الحقيقي.' },
+      { q: 'كرت الشاشة خربان أو يطلع خطوط، تقدرون تصلحونه؟', a: 'نفحص الـGPU والـVRAM والطاقة والاتصال والاستقرار أول. إذا فيه إصلاح فني ممكن، نشرح لك الخيار قبل ما تفكر تبدّل الكرت كامل.' },
+      { q: 'تستلمون بي سي قيمنق من البيت؟', a: 'إي نعم. نرتب الاستلام والتوصيل داخل الكويت، وما يحتاج تشيل البرج وتوديه حولي بنفسك.' }
     ],
     englishPath: '/gaming-pc-repair-kuwait',
     arabicLinks: [
@@ -217,33 +217,33 @@ const AR_COMPUTER_PROOF_IMAGES = [
 
 const GAMING_AR_SYMPTOMS = [
   {
-    title: 'يطفي أو يسوي Restart وقت اللعب',
-    text: 'نفصل بين الحرارة، مزود الطاقة، VRM، المذربورد أو عدم استقرار الذاكرة بدل تغيير قطعة عشوائيًا.',
+    title: 'الكمبيوتر يطفي وقت اللعب أو يسوي Restart',
+    text: 'نشيك هل السالفة من الحرارة، الباور، الـVRM، المذربورد أو الرام، بدل لا نرمي عليك تغيير قطعة على طول.',
     icon: Power,
   },
   {
-    title: 'FPS نازل أو فيه تقطيع',
-    text: 'نفحص حرارة CPU/GPU، الـhotspot، التبريد، الذاكرة، الطاقة وسلوك الجهاز تحت الحمل.',
+    title: 'مشكلة هبوط الفريمات أو التقطيع',
+    text: 'نشيك حرارة CPU/GPU والـhotspot والتبريد والرام والطاقة، ونشوف شلون يتصرف الجهاز تحت الضغط.',
     icon: Gauge,
   },
   {
     title: 'GPU يطلع خطوط أو تشويش',
-    text: 'نفحص الكرت والـVRAM والطاقة والاتصال والاستقرار قبل الحكم أن الكرت "انتهى".',
+    text: 'نشيك الكرت والـVRAM والطاقة والاتصال والاستقرار قبل لا نقول لك إن الكرت خلاص انتهى.',
     icon: MonitorCog,
   },
   {
-    title: 'حرارة عالية ومراوحها تصرخ',
-    text: 'نفحص الغبار، المراوح، الـAIO، الـthermal interface وتدفق الهواء ونختبر النتيجة بعد الخدمة.',
+    title: 'حل مشكلة ارتفاع حرارة البي سي',
+    text: 'نشوف الغبار والمراوح والـAIO والـthermal interface وتدفق الهوا، وبعدها نختبر الحرارة.',
     icon: Thermometer,
   },
   {
-    title: 'ما يعطي Display أو شاشة سوداء',
-    text: 'نحدد هل المشكلة من GPU أو RAM أو BIOS/VBIOS أو طاقة أو مسار العرض.',
+    title: 'شاشة سوداء وقت اللعب أو ما يعطي Display',
+    text: 'نشيك هل السالفة من GPU أو RAM أو BIOS/VBIOS أو الباور أو مسار العرض.',
     icon: MonitorCog,
   },
   {
     title: 'بعد تجميعة أو ترقية الجهاز مو ثابت',
-    text: 'نفحص توافق المكونات، إعدادات BIOS، RAM/XMP أو EXPO، الطاقة والحرارة ثم نعمل اختبار استقرار.',
+    text: 'نشوف توافق القطع وإعدادات BIOS وRAM/XMP أو EXPO والطاقة والحرارة، وبعدها نختبر استقرار الجهاز.',
     icon: Cpu,
   },
 ];
@@ -278,43 +278,47 @@ const GAMING_AR_AREAS = [
 const GAMING_AR_FAQ = [
   {
     q: 'تصلحون بي سي قيمنق وGaming PC المكتبي؟',
-    a: 'نعم. نخدم الـGaming Desktop والتجميعات Custom PC والأجهزة الجاهزة، إضافة إلى أعطال كروت الشاشة والتبريد والطاقة والمذربورد والـBIOS/VBIOS حسب حالة الهاردوير.',
+    a: 'إي نعم. نخدم الـGaming Desktop والتجميعات الـCustom PC والأجهزة الجاهزة، ونشيك كروت الشاشة والتبريد والطاقة والمذربورد والـBIOS/VBIOS حسب حالة الجهاز.',
   },
   {
     q: 'شنو تصلحون إذا الـGaming PC يهنّق أو يطفي وقت اللعب؟',
-    a: 'نبدأ من العَرَض نفسه: حرارة CPU/GPU، سلوك الـhotspot، المراوح أو مضخة الـAIO، RAM والاستقرار، مزود الطاقة، VRM والمذربورد. الهدف تحديد الطبقة المتسببة بالعطل قبل استبدال قطعة غالية.',
+    a: 'نبدأ من اللي قاعد يصير: حرارة CPU/GPU، الـhotspot، المراوح أو مضخة الـAIO، الرام، الباور، الـVRM والمذربورد. نبي نعرف السبب قبل لا تبدّل قطعة غالية.',
   },
   {
     q: 'كرت الشاشة يطلع خطوط أو Artifacts، تصلحونه؟',
-    a: 'يتم تشخيص GPU وVRAM والطاقة والاتصالات المرتبطة بالكرت. إذا كان الإصلاح الفني ممكنًا نشرح لك الخيار قبل قرار استبدال الكرت كاملًا.',
+    a: 'نشيك الـGPU والـVRAM والطاقة والاتصالات اللي تخص الكرت. إذا فيه إصلاح ممكن، نقول لك شنو ينفع قبل قرار تبديل الكرت كامل.',
   },
   {
     q: 'عندي FPS Drops وتقطيع، هل المشكلة أكيد من كرت الشاشة؟',
-    a: 'لا. انخفاض الفريمات والتقطيع قد يرتبط بالحرارة أو الاختناق الحراري أو الذاكرة أو الطاقة أو سلوك CPU/GPU أو إعدادات النظام. لذلك نختبر الجهاز تحت الحمل الذي يظهر فيه العطل.',
+    a: 'مو شرط. الـFPS Drops والتقطيع ممكن يكونون من الحرارة أو الـthermal throttling أو الرام أو الباور أو سلوك CPU/GPU أو الإعدادات. عشان جذي نختبر الجهاز وقت الحمل اللي تطلع فيه المشكلة.',
   },
   {
     q: 'الحرارة مرتفعة في بي سي القيمنق بالكويت، شنو أفحص؟',
-    a: 'نفحص الغبار وتدفق الهواء وحالة المراوح والـAIO والـthermal interface وسلوك CPU/GPU تحت الحمل. ارتفاع الحرارة بحد ذاته ليس تشخيصًا لقطعة محددة.',
+    a: 'نشيك الغبار وتدفق الهوا والمراوح والـAIO والـthermal interface وحرارة CPU/GPU تحت الضغط. الحرارة بروحها ما تقول لنا أي قطعة هي السبب.',
   },
   {
     q: 'هل تصلحون BIOS أو VBIOS إذا صار فشل بالتحديث؟',
-    a: 'نعم، توجد حالات يمكن فيها استعادة BIOS أو VBIOS حسب اللوحة أو الكرت وحالة الذاكرة والـfirmware. يتم تقييم الجهاز قبل اختيار طريقة الاستعادة.',
+    a: 'إي، بعض الحالات نقدر نستعيد فيها BIOS أو VBIOS، حسب المذربورد أو الكرت وحالة الـfirmware. أول شي نشوف الجهاز وبعدين نحدد الطريقة المناسبة.',
   },
   {
     q: 'كم سعر تصليح الـGaming PC في الكويت؟',
-    a: 'خدمة Gaming PC & GPU تبدأ من 25 د.ك حسب مسار التشخيص/الإصلاح المذكور للخدمة. الأعطال المعقدة في GPU أو المذربورد أو التبريد تحتاج تشخيصًا قبل تحديد السعر النهائي.',
+    a: 'تصليح Gaming PC وGPU يبدأ من 25 د.ك حسب نوع الشغلة والتشخيص. إذا المشكلة معقدة في GPU أو المذربورد أو التبريد، نحتاج نشيك الجهاز أول قبل نعطيك السعر النهائي.',
   },
   {
     q: 'كم يستغرق تصليح بي سي قيمنق؟',
-    a: 'الأعمال المتخصصة المعتادة تستغرق تقريبًا 24–48 ساعة عندما تكون القطع المطلوبة متوفرة. الأعطال المعقدة أو طلب القطع قد تحتاج مدة أطول.',
+    a: 'غالبًا الشغلات المتخصصة تاخذ 24–48 ساعة إذا القطع المطلوبة متوفرة. بعض الأعطال المعقدة أو القطع اللي تحتاج طلب ممكن تاخذ وقت أكثر.',
   },
   {
     q: 'تستلمون برج الـGaming PC من البيت؟',
-    a: 'نعم. الاستلام والتوصيل متاحان داخل الكويت، وما تحتاج تشيل البرج وتوصله إلى حولي بنفسك.',
+    a: 'إي نعم. نوفر استلام وتوصيل داخل الكويت، يعني ما يحتاج تشيل البرج وتوديه حولي بنفسك.',
   },
   {
     q: 'هل تصلحون Gaming PC بعد تجميعة أو ترقية RAM/GPU؟',
-    a: 'نعم، نقدر نفحص حالات عدم الإقلاع أو عدم ظهور الصورة أو عدم الاستقرار بعد ترقية أو تجميعة، ونراجع المكونات والإعدادات والطاقة والحرارة حسب الأعراض.',
+    a: 'إي. إذا الجهاز صار ما يقلع، ما يعطي صورة أو صار مو ثابت بعد تجميعة أو ترقية RAM/GPU، نشيك القطع والإعدادات والطاقة والحرارة حسب اللي قاعد يصير.',
+  },
+  {
+    q: 'تقدمون تصليح كمبيوتر خدمة منازل؟',
+    a: 'إذا قصدك الفني يشتغل عندك داخل البيت، هالخدمة مو هي المقصودة. اللي نوفره هو استلام الـGaming PC من البيت وتوصيله لمختبر KCROC في حولي، وبعد الإصلاح والاختبار نرجعه لك.',
   },
 ];
 
@@ -338,7 +342,7 @@ function ArabicGamingPcRepairPage({
       {
         '@type': 'Service',
         '@id': `${canonicalUrl}#service`,
-        name: 'تصليح Gaming PC وبي سي قيمنق وكرت الشاشة في الكويت',
+        name: 'تصليح Gaming PC وبي سي قيمنق وتصليح كرت الشاشة في الكويت',
         serviceType: 'Gaming PC & GPU Repair',
         description: 'تشخيص وإصلاح مشاكل Gaming PC والـGPU والحرارة والطاقة والتبريد وVRAM وBIOS/VBIOS في الكويت، مع استلام وتوصيل.',
         url: canonicalUrl,
@@ -403,19 +407,19 @@ function ArabicGamingPcRepairPage({
               </div>
 
               <h1 className="mt-5 text-3xl font-black leading-[1.15] text-white sm:text-5xl lg:text-6xl">
-                تصليح بي سي قيمنق وGaming PC وكرت الشاشة في الكويت
+                تصليح بي سي قيمنق وGaming PC وكرت الشاشة بالكويت
               </h1>
 
               <p className="mt-5 max-w-3xl text-base leading-8 text-slate-200 sm:text-xl">
-                بي سي القيمنق يهنّق؟ يطفي وقت اللعب؟ الـFPS نازل؟ الحرارة طالعة؟ أو كرت الشاشة يطلع خطوط وArtifacts؟
-                <span className="font-black text-white"> قل لنا شنو قاعد يصير، وإحنا نبدأ من العطل نفسه مو من تبديل أغلى قطعة.</span>
+                بي سي القيمنق يهنّق؟ يطفي وقت اللعب؟ الـFPS نازل؟ فيه تقطيع؟ أو كرت الشاشة يطلع خطوط وArtifacts؟
+                <span className="font-black text-white">قل لنا شنو صاير مع الجهاز، وإحنا نبدأ من العطل نفسه، مو من تبديل أغلى قطعة.</span>
               </p>
 
               <div className="mt-6 grid gap-3 sm:grid-cols-3">
                 {[
-                  ['من 25 د.ك', 'سعر بداية الخدمة'],
+                  ['من 25 د.ك', 'سعر بداية تصليح Gaming PC'],
                   [turnaround, 'المدة المعتادة للأعمال المتخصصة'],
-                  ['30 يوم', 'ضمان على الإصلاحات المكتملة'],
+                  ['30 يوم', 'ضمان على الإصلاح المكتمل'],
                 ].map(([value, label]) => (
                   <div key={label} className="rounded-2xl border border-slate-800 bg-black/20 p-4">
                     <div className="text-xl font-black text-white">{value}</div>
@@ -427,30 +431,30 @@ function ArabicGamingPcRepairPage({
               <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <a href={wa} target="_blank" rel="noreferrer" className="inline-flex min-h-13 items-center justify-center gap-2 rounded-full bg-cyan-400 px-7 py-4 font-black text-slate-950 transition hover:bg-cyan-300">
                   <MessageCircle className="h-5 w-5" aria-hidden="true" />
-                  أرسل مشكلة الـGaming PC على واتساب
+                  أرسل مشكلة الـGaming PC على الواتساب
                 </a>
                 <Link to="/book" className="inline-flex min-h-13 items-center justify-center gap-2 rounded-full border border-slate-700 bg-slate-900/70 px-7 py-4 font-black text-white transition hover:border-cyan-500/40 hover:text-cyan-300">
                   <Truck className="h-5 w-5" aria-hidden="true" />
-                  احجز الاستلام من منطقتك
+                  رتب استلام الـGaming PC من منطقتك
                 </Link>
               </div>
 
               <p className="mt-4 text-sm leading-7 text-slate-400">
-                ما تحتاج تعرف اسم العطل. أرسل <span className="font-bold text-slate-200">موديل الجهاز + كرت الشاشة + المنطقة + وصف المشكلة</span>، وحتى فيديو قصير للعطل إذا عندك.
+                مو لازم تعرف اسم العطل. أرسل لنا <span className="font-bold text-slate-200">موديل الجهاز + كرت الشاشة + منطقتك + شنو قاعد يصير</span>، وإذا عندك فيديو قصير للعطل دزّه لنا.
               </p>
             </div>
 
             <figure className="overflow-hidden rounded-[1.75rem] border border-slate-800 bg-slate-950">
               <img
                 src={IMAGES.gaming.diagnostics.src}
-                alt="تشخيص Gaming PC وتجهيزات كرت الشاشة داخل مختبر KCROC في الكويت"
+                alt="تشخيص بي سي قيمنق وكرت الشاشة داخل مختبر KCROC بالكويت"
                 width={IMAGES.gaming.diagnostics.width}
                 height={IMAGES.gaming.diagnostics.height}
                 loading="eager"
                 className="aspect-[4/3] w-full object-cover"
               />
               <figcaption className="border-t border-slate-800 px-5 py-4 text-sm leading-6 text-slate-400">
-                فحص Gaming PC وكرت الشاشة على طاولة العمل لتحديد مصدر العطل قبل الإصلاح.
+                نشّيك على الـGaming PC وكرت الشاشة على طاولة العمل عشان نحدد مصدر المشكلة قبل لا نصلّح.
               </figcaption>
             </figure>
           </div>
@@ -459,10 +463,10 @@ function ArabicGamingPcRepairPage({
         <section className="mt-10 rounded-[1.75rem] border border-amber-500/20 bg-amber-500/5 p-6 sm:p-8" aria-labelledby="gaming-symptoms">
           <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <p className="text-sm font-black tracking-[0.08em] text-amber-300">المشكلة عندك شنو بالضبط؟</p>
-              <h2 id="gaming-symptoms" className="mt-2 text-2xl font-black text-white sm:text-3xl">إذا جهازك يسوي واحد من هالأشياء، ابدأ من هنا</h2>
+              <p className="text-sm font-black tracking-[0.08em] text-amber-300">شنو المشكلة اللي صايرة مع جهازك؟</p>
+              <h2 id="gaming-symptoms" className="mt-2 text-2xl font-black text-white sm:text-3xl">إذا جهازك يسوي واحد من هالأشياء، خلنا نبدأ من هني</h2>
             </div>
-            <span className="text-xs font-bold text-slate-400">التشخيص يحدد السبب قبل القطعة</span>
+            <span className="text-xs font-bold text-slate-400">نشخّص السبب قبل لا نبدّل قطعة</span>
           </div>
 
           <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -484,15 +488,15 @@ function ArabicGamingPcRepairPage({
             <p className="text-sm font-black tracking-[0.08em] text-cyan-400">مو كل مشكلة = تبديل GPU</p>
             <h2 id="gaming-diagnosis" className="mt-2 text-3xl font-black text-white">نبدأ من السبب، مو من أغلى قطعة</h2>
             <p className="mt-4 leading-8 text-slate-300">
-              نفس العرض ممكن يطلع من أكثر من مكان. انخفاض الـFPS، مثلًا، مو شرط يعني أن كرت الشاشة ضعيف أو خربان؛ ممكن يكون السبب حرارة، تبريد، RAM، طاقة أو عدم استقرار تحت الحمل.
+              ترى نفس المشكلة ممكن تطلع من أكثر من مكان. نزول الـFPS مثلًا مو شرط يعني إن كرت الشاشة خربان؛ ممكن الحرارة، التبريد، الـRAM، الطاقة أو عدم استقرار الجهاز تحت الضغط.
             </p>
             <ul className="mt-6 space-y-3 text-sm leading-7 text-slate-300">
               {[
-                'فحص حرارة CPU/GPU والـhotspot وسلوك الجهاز تحت الحمل.',
-                'فحص المراوح أو مضخة الـAIO وتدفق الهواء والـthermal interface.',
-                'فحص GPU وVRAM والطاقة ومشاكل الـblack screen والـartifacts.',
-                'فحص RAM والاستقرار وBIOS/VBIOS وإعدادات الجهاز المرتبطة بالعطل.',
-                'بعد الإصلاح: اختبار استقرار قبل تسليم الجهاز لك.',
+                'نشّيك على حرارة CPU/GPU والـhotspot وسلوك الجهاز تحت الضغط.',
+                'نشّيك على المراوح أو مضخة الـAIO وتدفق الهوا والـthermal interface.',
+                'نشّيك على الـGPU والـVRAM والطاقة ومشاكل الـblack screen والـartifacts.',
+                'نشّيك على الـRAM والاستقرار وBIOS/VBIOS والإعدادات اللي ممكن تكون مرتبطة بالعطل.',
+                'وبعد الإصلاح: نختبر استقرار الجهاز قبل لا نسلّمه لك.',
               ].map((item) => (
                 <li key={item} className="flex items-start gap-3">
                   <CheckCircle2 className="mt-1 h-5 w-5 shrink-0 text-cyan-400" aria-hidden="true" />
@@ -505,7 +509,7 @@ function ArabicGamingPcRepairPage({
           <figure className="overflow-hidden rounded-[1.75rem] border border-slate-800 bg-slate-950">
             <img
               src={IMAGES.gaming.zotacCard.src}
-              alt="فحص كرت شاشة Gaming PC في مختبر KCROC"
+              alt="فحص كرت شاشة بي سي قيمنق في مختبر KCROC"
               width={IMAGES.gaming.zotacCard.width}
               height={IMAGES.gaming.zotacCard.height}
               loading="lazy"
@@ -520,16 +524,16 @@ function ArabicGamingPcRepairPage({
         <section className="mt-10" aria-labelledby="gaming-services">
           <div className="mb-7">
             <p className="text-sm font-black tracking-[0.08em] text-cyan-400">شنو نصلح؟</p>
-            <h2 id="gaming-services" className="mt-2 text-3xl font-black text-white">خدمة Gaming PC تغطي العطل من أول عرض إلى آخر اختبار</h2>
+            <h2 id="gaming-services" className="mt-2 text-3xl font-black text-white">خدمة Gaming PC عندنا تبدأ من المشكلة وتنتهي باختبار الجهاز</h2>
           </div>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {[
-              ['GPU وVRAM', 'تشخيص الأعطال تحت الحمل، Artifacts، Driver Resets، مشاكل الطاقة والاستقرار.'],
-              ['حرارة وتبريد', 'تنظيف مسارات الهواء، فحص المراوح والـAIO والـthermal interface واختبار الحرارة.'],
-              ['PSU وVRM والطاقة', 'فصل مشاكل انطفاء الجهاز وإعادة التشغيل وعدم الاستقرار عن بقية الأسباب المحتملة.'],
-              ['BIOS / VBIOS', 'تقييم حالات فشل التحديث أو مشاكل الـfirmware واستعادة الجهاز حسب الحالة الفنية.'],
-              ['RAM والاستقرار', 'فحص الذاكرة وإعدادات XMP/EXPO وسلوك الجهاز تحت الحمل عندما تظهر المشكلة بعد ترقية أو تجميعة.'],
-              ['مذربورد وChip-Level', 'تقييم دوائر الطاقة والمكونات على مستوى البورد عندما يكون الإصلاح الفني مناسبًا.'],
+              ['GPU وVRAM', 'نشخّص الـGPU تحت الضغط، ونفحص Artifacts وDriver Resets والطاقة والاستقرار.'],
+              ['حرارة وتبريد', 'ننظف مسارات الهوا، ونفحص المراوح والـAIO والـthermal interface، وبعدين نختبر الحرارة.'],
+              ['PSU وVRM والطاقة', 'نشيك ليش الجهاز يطفي أو يسوي Restart وليش الاستقرار مو مضبوط، ونفصل السبب عن باقي الاحتمالات.'],
+              ['BIOS / VBIOS', 'نفحص فشل التحديث أو مشاكل الـfirmware ونشوف إذا الاستعادة ممكنة حسب حالة الجهاز.'],
+              ['RAM والاستقرار', 'نشّيك على الذاكرة وإعدادات XMP/EXPO وسلوك الجهاز تحت الضغط، خصوصًا إذا المشكلة بدت بعد ترقية أو تجميعة.'],
+              ['مذربورد وChip-Level', 'نشوف دوائر الطاقة والمكونات على مستوى البورد إذا كانت حالة الجهاز تستاهل إصلاح فني.'],
             ].map(([title, text]) => (
               <article key={title} className="rounded-2xl border border-slate-800 bg-slate-900/45 p-6">
                 <Cpu className="h-6 w-6 text-cyan-400" aria-hidden="true" />
@@ -544,9 +548,9 @@ function ArabicGamingPcRepairPage({
           <div className="grid lg:grid-cols-[0.7fr_1.3fr]">
             <div className="p-7 sm:p-9">
               <p className="text-sm font-black tracking-[0.08em] text-cyan-400">دليل بصري</p>
-              <h2 id="gaming-proof" className="mt-2 text-3xl font-black text-white">شوف جهازك قبل وبعد التشخيص</h2>
+              <h2 id="gaming-proof" className="mt-2 text-3xl font-black text-white">شوف شنسوي داخل الورشة</h2>
               <p className="mt-4 leading-8 text-slate-400">
-                بدل الكلام العام، نعرض صورًا فعلية من أعمال Gaming PC وكروت الشاشة والتبريد داخل بيئة العمل في KCROC.
+                بدل الكلام العام، نوريك صور فعلية من شغل الـGaming PC وكروت الشاشة والتبريد داخل ورشة KCROC.
               </p>
               <Link to="/gallery" className="mt-6 inline-flex items-center gap-2 rounded-full border border-slate-700 px-5 py-3 text-sm font-black text-white hover:border-cyan-500/40 hover:text-cyan-300">
                 شوف معرض الصور <ArrowLeft className="h-4 w-4" aria-hidden="true" />
@@ -574,22 +578,22 @@ function ArabicGamingPcRepairPage({
 
         <section className="mt-10 grid gap-6 lg:grid-cols-[0.9fr_1.1fr]" aria-labelledby="gaming-brands">
           <div className="rounded-[1.75rem] border border-slate-800 bg-slate-900/45 p-6 sm:p-8">
-            <p className="text-sm font-black tracking-[0.08em] text-cyan-400">البراند مو مشكلة</p>
-            <h2 id="gaming-brands" className="mt-2 text-3xl font-black text-white">نخدم تجميعات وأجهزة Gaming من براندات مختلفة</h2>
+            <p className="text-sm font-black tracking-[0.08em] text-cyan-400">البراند مو فارق</p>
+            <h2 id="gaming-brands" className="mt-2 text-3xl font-black text-white">نخدم Gaming PC وتجميعات من براندات مختلفة</h2>
             <div className="mt-6 flex flex-wrap gap-2">
               {GAMING_AR_BRANDS.map((brand) => (
                 <span key={brand} className="rounded-full border border-slate-700 bg-slate-950/70 px-4 py-2 text-sm font-bold text-slate-200">{brand}</span>
               ))}
             </div>
             <p className="mt-5 text-sm leading-7 text-slate-400">
-              المشكلة أهم من الشعار: إذا العطل في GPU أو تبريد أو طاقة أو مذربورد، نحدد الطبقة المتسببة بالمشكلة أولًا.
+              المهم شنو المشكلة، مو شنو مكتوب على الجهاز. وإذا تبي صيانة بي سي قيمنق أو تصليح كمبيوتر ألعاب، نبدأ من العطل ونحدد السبب أول شي.
             </p>
           </div>
 
           <div className="rounded-[1.75rem] border border-slate-800 bg-slate-900/45 p-6 sm:p-8">
-            <p className="text-sm font-black tracking-[0.08em] text-cyan-400">منطقة سكنك؟ ما في مشكلة</p>
-            <h2 className="mt-2 text-3xl font-black text-white">نستلم الـGaming PC من مناطق الكويت</h2>
-            <p className="mt-3 leading-8 text-slate-400">مختبر KCROC في حولي، لكنك مو مضطر تنقل البرج بنفسك. أرسل منطقتك ونرتب الاستلام ثم نرجع الجهاز بعد الإصلاح والاختبار.</p>
+            <p className="text-sm font-black tracking-[0.08em] text-cyan-400">ساكن بأي منطقة؟ ما عليك</p>
+            <h2 className="mt-2 text-3xl font-black text-white">نستلم الـGaming PC من منطقتك بالكويت</h2>
+            <p className="mt-3 leading-8 text-slate-400">مختبر KCROC في حولي، بس مو لازم تشيل البرج وتوديه بنفسك. إذا تبي <strong>فني كمبيوتر حولي</strong> أو تبي <strong>تصليح كمبيوتر استلام وتوصيل</strong> من منطقتك، دز لنا موقعك ونرتب الاستلام ونرجع الجهاز لك بعد الإصلاح والاختبار.</p>
             <div className="mt-5 flex flex-wrap gap-2">
               {GAMING_AR_AREAS.map((area) => (
                 <Link key={area.path} to={area.path} className="rounded-full border border-slate-800 bg-slate-950/60 px-4 py-2 text-sm font-bold text-slate-300 hover:border-cyan-500/40 hover:text-cyan-300">
@@ -602,15 +606,15 @@ function ArabicGamingPcRepairPage({
 
         <section className="mt-10 rounded-[1.75rem] border border-slate-800 bg-slate-900/45 p-6 sm:p-8" aria-labelledby="gaming-process">
           <div className="mb-7">
-            <p className="text-sm font-black tracking-[0.08em] text-cyan-400">من أول رسالة إلى التسليم</p>
-            <h2 id="gaming-process" className="mt-2 text-3xl font-black text-white">طريقة الشغل واضحة</h2>
+            <p className="text-sm font-black tracking-[0.08em] text-cyan-400">من أول رسالة لين يرجع جهازك</p>
+            <h2 id="gaming-process" className="mt-2 text-3xl font-black text-white">طريقة الشغل سهلة وواضحة</h2>
           </div>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {[
-              ['01', 'أرسل المشكلة', 'الموديل + الكرت + المنطقة + وصف بسيط أو فيديو قصير.'],
-              ['02', 'نستلم الجهاز', 'نرتب الاستلام من منطقتك إلى مختبر KCROC في حولي.'],
-              ['03', 'نشخّص ونشرح', 'نحدد السبب وخيارات الإصلاح والتكلفة قبل تنفيذ الإصلاح.'],
-              ['04', 'نصلح ونختبر', 'بعد الإصلاح نعمل اختبار استقرار قبل إرجاع الـGaming PC لك.'],
+              ['01', 'أرسل المشكلة', 'الموديل + الكرت + منطقتك + شنو قاعد يصير، وإذا تقدر دز فيديو قصير.'],
+              ['02', 'نستلم الجهاز', 'نرتب استلام الجهاز من منطقتك ونوصله لمختبر KCROC في حولي.'],
+              ['03', 'نشخّص ونشرح', 'نقول لك شنو السبب وشنو خيارات الإصلاح والتكلفة قبل لا نبدأ.'],
+              ['04', 'نصلح ونختبر', 'بعد الإصلاح نختبر الجهاز زين قبل لا نرجعه لك.'],
             ].map(([n, title, text]) => (
               <article key={n} className="rounded-2xl border border-slate-800 bg-slate-950/40 p-5">
                 <div className="text-4xl font-black text-cyan-500/30">{n}</div>
@@ -624,15 +628,15 @@ function ArabicGamingPcRepairPage({
         <section className="mt-10 grid gap-6 lg:grid-cols-2" aria-labelledby="gaming-confidence">
           <div className="rounded-[1.75rem] border border-slate-800 bg-slate-900/45 p-6 sm:p-8">
             <p className="text-sm font-black tracking-[0.08em] text-cyan-400">ليش KCROC؟</p>
-            <h2 id="gaming-confidence" className="mt-2 text-3xl font-black text-white">أشياء تهمك قبل ما تسلم جهاز غالي</h2>
+            <h2 id="gaming-confidence" className="mt-2 text-3xl font-black text-white">هذي الأشياء تهمك قبل لا تسلمنا جهازك</h2>
             <div className="mt-6 grid gap-3">
               {[
-                ['تشخيص قبل الإصلاح', 'ما نبدل GPU أو مذربورد لمجرد أن العَرَض شكله كبير.'],
-                ['No Fix, No Fee', 'السياسة الحالية للخدمات المؤهلة: إذا ما تم الإصلاح، ما عليك رسوم إصلاح وفق الشروط.'],
-                ['ضمان 30 يوم', 'الإصلاحات المكتملة مشمولة بضمان 30 يوم وفق سياسة KCROC.'],
-                ['استلام وتوصيل مجاني', 'خدمة الاستلام والتوصيل متاحة داخل الكويت.'],
-                ['مختبر ESD-Safe', 'الأعمال الحساسة تنفذ في بيئة عمل مناسبة للإلكترونيات الدقيقة.'],
-                ['اختبار قبل التسليم', 'النتيجة ليست مجرد "الجهاز اشتغل"؛ يتم التحقق من سلوك الجهاز بعد الإصلاح.'],
+                ['تشخيص قبل الإصلاح', 'ما نبدل GPU أو مذربورد لمجرد إن العَرَض شكله كبير.'],
+                ['No Fix, No Fee', 'للحالات المؤهلة حسب سياسة KCROC: إذا ما صار الإصلاح، ما عليك رسوم إصلاح وفق الشروط.'],
+                ['ضمان 30 يوم', 'الإصلاح المكتمل عليه ضمان 30 يوم حسب سياسة KCROC.'],
+                ['استلام وتوصيل مجاني', 'الاستلام والتوصيل متوفر داخل الكويت.'],
+                ['مختبر ESD-Safe', 'الأعمال الحساسة نسويها في بيئة ESD-Safe مناسبة للإلكترونيات الدقيقة.'],
+                ['اختبار قبل التسليم', 'مو هدفنا بس إن الجهاز يشتغل؛ نختبر سلوكه واستقراره بعد الإصلاح قبل التسليم.'],
               ].map(([title, text]) => (
                 <div key={title} className="flex gap-3 rounded-2xl border border-slate-800 bg-slate-950/40 p-4">
                   <BadgeCheck className="mt-0.5 h-5 w-5 shrink-0 text-cyan-400" aria-hidden="true" />
@@ -647,13 +651,13 @@ function ArabicGamingPcRepairPage({
 
           <div className="rounded-[1.75rem] border border-amber-500/20 bg-amber-500/5 p-6 sm:p-8">
             <p className="text-sm font-black tracking-[0.08em] text-amber-300">قبل لا ترسل الجهاز</p>
-            <h2 className="mt-2 text-3xl font-black text-white">عطنا هالأربع معلومات وخل التشخيص يبدأ أسرع</h2>
+            <h2 className="mt-2 text-3xl font-black text-white">دز لنا هالأربع معلومات وخلك أسرع في التشخيص</h2>
             <div className="mt-6 grid gap-3">
               {[
                 'اسم الجهاز أو موديل الـmotherboard إذا تعرفه',
                 'نوع كرت الشاشة GPU',
-                'منطقتك داخل الكويت',
-                'شنو يصير بالضبط ومتى يصير — ومعاه فيديو إذا متوفر',
+                'منطقتك بالكويت',
+                'شنو يصير بالضبط ومتى يصير — وإذا عندك فيديو دزّه',
               ].map((item, idx) => (
                 <div key={item} className="rounded-2xl border border-amber-500/15 bg-black/10 p-4">
                   <div className="text-xs font-black text-amber-300">0{idx + 1}</div>
@@ -666,8 +670,8 @@ function ArabicGamingPcRepairPage({
 
         <section className="mt-10" aria-labelledby="gaming-faq">
           <div className="mb-7">
-            <p className="text-sm font-black tracking-[0.08em] text-cyan-400">الأسئلة اللي تنسأل وايد</p>
-            <h2 id="gaming-faq" className="mt-2 text-3xl font-black text-white sm:text-4xl">قبل ما تقول "أبي أبدل الكرت"</h2>
+            <p className="text-sm font-black tracking-[0.08em] text-cyan-400">الأسئلة اللي نسأل عنها وايد</p>
+            <h2 id="gaming-faq" className="mt-2 text-3xl font-black text-white sm:text-4xl">قبل لا تقول: "أبي أبدّل الكرت"</h2>
           </div>
           <div className="overflow-hidden rounded-[1.75rem] border border-slate-800 bg-slate-900/40">
             {GAMING_AR_FAQ.map((item) => (
@@ -691,20 +695,20 @@ function ArabicGamingPcRepairPage({
                 <span>استلام وتوصيل داخل الكويت</span>
               </div>
               <h2 id="gaming-final-cta" className="mt-3 text-3xl font-black leading-tight text-white sm:text-4xl">
-                الـGaming PC عندك يسوي مشكلة؟ لا تخمّن — أرسل لنا العَرَض
+                الـGaming PC عندك فيه مشكلة؟ لا تحتار — دز لنا شنو قاعد يصير
               </h2>
               <p className="mt-4 max-w-2xl leading-8 text-slate-300">
-                مو لازم تعرف هل المشكلة GPU أو PSU أو RAM أو حرارة. عطنا المعلومات اللي عندك، ونبدأ من المكان الصح.
+                مو لازم تعرف هل المشكلة GPU أو PSU أو RAM أو حرارة. دز لنا اللي تعرفه عن المشكلة، وإحنا نبدأ من المكان الصح.
               </p>
             </div>
             <div className="flex flex-col gap-3 sm:min-w-[290px]">
               <a href={wa} target="_blank" rel="noreferrer" className="inline-flex min-h-13 items-center justify-center gap-2 rounded-full bg-cyan-400 px-7 py-4 font-black text-slate-950 transition hover:bg-cyan-300">
                 <MessageCircle className="h-5 w-5" aria-hidden="true" />
-                واتساب فني KCROC
+                دز واتساب لفني KCROC
               </a>
               <Link to="/book" className="inline-flex min-h-13 items-center justify-center gap-2 rounded-full border border-slate-700 bg-slate-950/60 px-7 py-4 font-black text-white hover:border-cyan-500/40 hover:text-cyan-300">
                 <Truck className="h-5 w-5" aria-hidden="true" />
-                احجز الاستلام
+                رتب الاستلام
               </Link>
             </div>
           </div>
@@ -950,7 +954,7 @@ function ArabicComputerRepairPage({
               <h2 id="repair-process" className="mt-2 text-3xl font-black text-white sm:text-4xl">كيف يتم الإصلاح في KCROC؟</h2>
             </div>
             <Link to="/book" className="inline-flex items-center gap-2 text-sm font-black text-cyan-300 hover:text-cyan-200">
-              احجز الاستلام <ArrowLeft className="h-4 w-4" aria-hidden="true" />
+              رتب الاستلام <ArrowLeft className="h-4 w-4" aria-hidden="true" />
             </Link>
           </div>
 
@@ -1109,7 +1113,7 @@ function ArabicComputerRepairPage({
               </a>
               <Link to="/book" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-slate-700 bg-slate-950/60 px-7 py-3.5 font-black text-white transition hover:border-cyan-500/40 hover:text-cyan-300">
                 <Truck className="h-5 w-5" aria-hidden="true" />
-                احجز الاستلام المجاني
+                رتب الاستلام المجاني
               </Link>
             </div>
           </div>
@@ -1226,7 +1230,7 @@ export default function ArabicCommercialPage() {
           <div className="flex items-start gap-4">
             <MapPin className="mt-1 h-6 w-6 shrink-0 text-cyan-400" aria-hidden="true" />
             <div>
-              <h2 id="arabic-local" className="text-2xl font-black text-white">استلام من منطقتك داخل الكويت</h2>
+              <h2 id="arabic-local" className="text-2xl font-black text-white">استلام من منطقتك بالكويت</h2>
               <p className="mt-3 max-w-3xl leading-8 text-slate-400">ما تحتاج تودي الجهاز بنفسك إلى حولي. أرسل منطقتك وموديل الجهاز والمشكلة، ونرتب الاستلام ثم يتم الفحص والإصلاح في مختبر KCROC في حولي وإرجاع الجهاز لك بعد الاختبار.</p>
               <Link to="/ar/near-me" className="mt-5 inline-flex items-center gap-2 font-bold text-cyan-300 hover:text-cyan-200">فني كمبيوتر وتصليح لابتوب بالقرب مني <ArrowLeft className="h-4 w-4" aria-hidden="true" /></Link>
             </div>
