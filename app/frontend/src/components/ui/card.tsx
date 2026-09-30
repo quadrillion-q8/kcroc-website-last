@@ -24,9 +24,9 @@ const cardVariants = cva('transition-all duration-300', {
   variants: {
     level: {
       feature:
-        'bg-[#111719]/[0.82] backdrop-blur-md border border-white/[0.10] rounded-[1.15rem] p-6 sm:p-8 hover:border-cyan-500/[0.45] shadow-xl shadow-black/20 hover:-translate-y-0.5',
+        'bg-[#11171b]/[0.88] backdrop-blur-md border border-white/[0.09] rounded-[1rem] p-6 sm:p-7 shadow-kcroc-card hover:border-[#c9804d]/[0.38] hover:-translate-y-px',
       standard:
-        'bg-[#111719]/[0.58] border border-white/[0.08] rounded-xl p-5 hover:border-cyan-500/25 hover:bg-[#131b1d]/[0.78]',
+        'bg-[#11171b]/[0.62] border border-white/[0.08] rounded-[0.9rem] p-5 hover:border-[#c9804d]/25 hover:bg-[#151d21]/[0.82]',
       compact: 'flex items-center gap-3 text-slate-200',
       none: '',
     },
@@ -75,7 +75,7 @@ CardContent.displayName = 'CardContent';
 
 const CardFooter = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
   ({ className, ...props }, ref) => (
-    <div ref={ref} className={cn('flex items-center mt-4 pt-4 border-t border-slate-800/60', className)} {...props} />
+    <div ref={ref} className={cn('flex items-center mt-4 pt-4 border-t border-white/[0.07]', className)} {...props} />
   )
 );
 CardFooter.displayName = 'CardFooter';
