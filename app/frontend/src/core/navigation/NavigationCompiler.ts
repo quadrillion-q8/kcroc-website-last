@@ -278,6 +278,7 @@ export class NavigationCompiler {
     const featuredPaths = [
       'guides/laptop-wont-turn-on',
       'guides/dell-laptop-overheating',
+      'guides/why-is-my-laptop-so-hot',
       'guides/laptop-battery-warning-signs',
       'guides/bios-uefi-recovery-kuwait',
       'guides/gamebar-presence-writer-fix',
