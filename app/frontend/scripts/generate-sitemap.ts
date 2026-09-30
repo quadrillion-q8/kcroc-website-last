@@ -58,13 +58,13 @@ const getPriorityAndFreq = (
     entityType === 'Problem' ||
     entityType === 'CaseStudy' ||
     path === '/location/hawalli' ||
-    /^\/(blog|faq)\/?$/.test(path)
+    /^\/(blog|news|faq)\/?$/.test(path)
   ) {
     return { priority: '0.7', changefreq: 'weekly' };
   }
 
   // Individual blog/guide posts and other location-area pages
-  if ((path.startsWith('/blog/') || path.startsWith('/guides/')) || entityType === 'Location') {
+  if ((path.startsWith('/blog/') || path.startsWith('/guides/') || path.startsWith('/news/')) || entityType === 'Location') {
     return { priority: '0.6', changefreq: 'monthly' };
   }
 
