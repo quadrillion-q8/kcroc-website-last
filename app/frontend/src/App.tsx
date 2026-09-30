@@ -20,7 +20,8 @@ const PrivacySecurity = lazy(() => import('./pages/PrivacySecurity'));
 const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
 const TermsOfService = lazy(() => import('./pages/TermsOfService'));
 const FAQ = lazy(() => import('./pages/FAQ'));
-const Blog = lazy(() => import('./pages/Blog')); 
+const Blog = lazy(() => import('./pages/Blog'));
+const News = lazy(() => import('./pages/News'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 const BookingPage = lazy(() => import('./pages/BookingPage'));
 
@@ -144,6 +145,7 @@ export const routes: RouteObject[] = [
           { path: 'terms', element: <Navigate to="/terms-of-service" replace /> },
           { path: 'faq', element: <FAQ /> },
           { path: 'blog', element: <Blog /> },
+          { path: 'news', element: <News /> },
           { path: 'blog/laptop-repair-kuwait-2026', element: <BlogLaptopRepair /> },
           { path: 'blog/how-to-protect-laptop-screen', element: <BlogScreenProtection /> },
           { path: 'blog/gaming-pc-cooling', element: <GamingPCCooling /> },
@@ -177,6 +179,7 @@ export const routes: RouteObject[] = [
           { path: 'guides/:slug', element: <BlogPostTemplate /> },
           { path: 'blog/windows-11-background-services-audit', element: <Navigate to="/guides/windows-11-background-services-audit" replace /> },
           { path: 'blog/:slug', element: <BlogPostTemplate /> },
+          { path: 'news/:slug', element: <BlogPostTemplate /> },
           { path: 'computer-repair-:slug', element: <LocationTemplate /> },
           { path: 'laptop-repair-:slug', element: <LocationTemplate /> },
           { path: 'location/hawalli', element: <HawalliLocationPage /> },
