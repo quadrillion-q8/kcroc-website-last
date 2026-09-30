@@ -7,6 +7,7 @@ import {
 import { SEOEngine } from '../core/components/SEOEngine';
 import SchemaMarkup from '../components/seo/SchemaMarkup';
 import { KCROC_GRAPH } from '../data/graph';
+import { buildWhatsAppLink } from '../utils/whatsappIntent';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import StandaloneRelatedLinks from '../components/content/StandaloneRelatedLinks';
 import { Badge } from '@/components/ui/badge';
@@ -581,7 +582,7 @@ export default function LaptopOverheatingGuide() {
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
             <Button asChild className="bg-cyan-500 font-bold text-slate-950 hover:bg-cyan-400">
-              <a href="https://wa.me/96555301913?text=Hi%20KCROC%2C%20my%20laptop%20is%20overheating%20and%20I%20need%20a%20diagnostic." target="_blank" rel="noopener noreferrer">
+              <a href={buildWhatsAppLink('Hi KCROC, my laptop is overheating and I need a diagnostic.')} target="_blank" rel="noopener noreferrer">
                 Book a KCROC diagnostic
               </a>
             </Button>
