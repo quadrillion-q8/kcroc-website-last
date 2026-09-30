@@ -40,10 +40,6 @@
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="theme-color" content="#090c0f" />
 
-    <!-- Preconnects for the third parties allowed by the CSP in vercel.json -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
     <!-- Google tag (gtag.js) with Consent Mode v2.
          Defaults are DENIED; the cookie banner upgrades them via
          src/core/privacy/consent.ts. gtag MUST push the `arguments` object
@@ -72,7 +68,34 @@
       // SPA: page_view is sent manually on route change (AnalyticsProvider).
       gtag('config', 'G-H2BXCZJ8NX', { send_page_view: false });
     </script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H2BXCZJ8NX"></script>
+    <script>
+      (function () {
+        var tagLoaded = false;
+        var loadGoogleTag = function () {
+          if (tagLoaded || document.getElementById('kcroc-google-tag')) return;
+          tagLoaded = true;
+          var script = document.createElement('script');
+          script.id = 'kcroc-google-tag';
+          script.async = true;
+          script.src = 'https://www.googletagmanager.com/gtag/js?id=G-H2BXCZJ8NX';
+          document.head.appendChild(script);
+        };
+
+        // Consent can be granted before idle; load immediately in that case.
+        window.addEventListener('kcroc:consent-changed', function (event) {
+          if (event && event.detail && event.detail.state === 'granted') loadGoogleTag();
+        });
+
+        // Otherwise keep the analytics library off the critical path.
+        if ('requestIdleCallback' in window) {
+          window.requestIdleCallback(loadGoogleTag, { timeout: 2500 });
+        } else {
+          window.addEventListener('load', function () {
+            window.setTimeout(loadGoogleTag, 1200);
+        }, { once: true });
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
