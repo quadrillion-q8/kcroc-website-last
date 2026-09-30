@@ -259,6 +259,17 @@ export default function GamingPCCooling() {
         <title>Gaming PC Cooling Services Kuwait | KCROC</title>
         <meta name="description" content="Professional cooling solutions designed for extreme climates. Protect your gaming PC from overheating and thermal throttling in Kuwait." />
         <link rel="canonical" href={PAGE_URL} />
+        <meta name="robots" content="index, follow, max-image-preview:large" />
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content="Gaming PC Cooling Services Kuwait | KCROC" />
+        <meta property="og:description" content="Professional cooling solutions designed for extreme climates. Protect your gaming PC from overheating and thermal throttling in Kuwait." />
+        <meta property="og:url" content={PAGE_URL} />
+        <meta property="og:image" content={`${business.websiteUrl}/images/discover/gaming-laptop-overheating-repair-1200x675.webp`} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="675" />
+        <meta property="og:image:alt" content="Gaming PC cooling and thermal troubleshooting in Kuwait" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content={`${business.websiteUrl}/images/discover/gaming-laptop-overheating-repair-1200x675.webp`} />
       </Head>
       <SchemaMarkup schema={STRUCTURED_DATA} />
 
