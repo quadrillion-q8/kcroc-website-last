@@ -797,6 +797,15 @@ export const NAV_GRAPH = {
   ],
   "guideEntries": [
     {
+      "id": "guide-laptop-overheating",
+      "slug": "guides/why-is-my-laptop-so-hot",
+      "title": "Why Is My Laptop So Hot? Overheating Causes, Diagnosis & Fixes",
+      "description": "Diagnose laptop overheating without guessing: airflow, dust, fan faults, workload, thermal throttling and when to seek repair.",
+      "iconKey": "cpu",
+      "date": "2026-09-30",
+      "primaryKeyword": "laptop overheating"
+    },
+    {
       "id": "guide-dpc-latency-gaming-stutter",
       "slug": "guides/dpc-latency-gaming-stutter",
       "title": "DPC Latency and Gaming Stutter: How Driver Interrupt Delays Can Affect Smoothness",
