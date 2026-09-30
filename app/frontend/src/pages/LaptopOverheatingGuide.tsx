@@ -9,7 +9,7 @@ import SchemaMarkup from '../components/seo/SchemaMarkup';
 import { KCROC_GRAPH } from '../data/graph';
 import { buildWhatsAppLink } from '../utils/whatsappIntent';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import StandaloneRelatedLinks from '../components/content/StandaloneRelatedLinks';
+import { StandaloneRelatedLinks } from '../components/content/StandaloneRelatedLinks';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 
