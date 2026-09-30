@@ -94,12 +94,13 @@
 
 
 @keyframes whatsapp-pulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
-  50% { box-shadow: 0 0 0 5px rgba(37, 211, 102, 0.12); }
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.012); }
 }
 
 .whatsapp-pulse {
   animation: whatsapp-pulse 2.8s ease-in-out infinite;
+  will-change: transform;
 }
 
 @media (prefers-reduced-motion: reduce) {
