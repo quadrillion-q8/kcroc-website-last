@@ -7,6 +7,9 @@ import { ROUTES } from '../constants/routes';
 
 // 🚀 FIXED: Pointing directly to the newly upgraded blogPosts constant
 import { BLOG_POSTS } from '../constants/blogPosts';
+import { KCROC_GRAPH } from '../data/graph';
+
+const business = KCROC_GRAPH.business!;
 
 export default function PillarTemplate() {
   const { slug } = useParams<{ slug: string }>();
@@ -28,10 +31,14 @@ export default function PillarTemplate() {
         <title>{`${pillarData.title} | KCROC Ultimate Guide`}</title>
         <meta name="description" content={pillarData.description || pillarData.excerpt || `Comprehensive guide to ${pillarData.title} in Kuwait.`} />
         <link rel="canonical" href={pageUrl} />
+        <meta name="robots" content="index, follow, max-image-preview:large" />
         <meta property="og:type" content="article" />
+        <meta property="og:url" content={pageUrl} />
+        <meta name="twitter:card" content="summary_large_image" />
         <meta property="og:title" content={pillarData.title} />
         <meta property="og:description" content={pillarData.description || pillarData.excerpt} />
-        {pillarData.image && <meta property="og:image" content={pillarData.image} />}
+        {pillarData.image && <meta property="og:image" content={pillarData.image.startsWith('http') ? pillarData.image : `${business.websiteUrl}${pillarData.image.startsWith('/') ? pillarData.image : `/${pillarData.image}`}`} />}
+        {pillarData.image && <meta name="twitter:image" content={pillarData.image.startsWith('http') ? pillarData.image : `${business.websiteUrl}${pillarData.image.startsWith('/') ? pillarData.image : `/${pillarData.image}`}`} />}
       </Head>
 
       <article className="max-w-5xl mx-auto px-6">
