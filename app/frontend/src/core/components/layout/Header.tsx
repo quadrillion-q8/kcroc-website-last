@@ -27,7 +27,7 @@ export default function Header() {
   // Suspense, keyed per megaMenuId) so React attempted it on first mount
   // regardless of isOpen — triggering its lazy chunk download on EVERY page
   // load, including mobile, where the desktop nav (and therefore the mega
-  // menu) is never even reachable (`hidden lg:flex`). Gate the whole block
+  // menu) is never even reachable (`hidden xl:flex`). Gate the whole block
   // behind an actual desktop viewport check so mobile visitors never fetch
   // this chunk at all, and desktop visitors only fetch it once mounted
   // post-render instead of blocking the initial critical path.
@@ -55,7 +55,7 @@ export default function Header() {
   // Was firing an extra same-origin-looking-but-still-external request on
   // every single page load (confirmed via a full-site Puppeteer crawl —
   // every page's header logo issued this identical extra request).
-  const logoUrl = '/logo.webp';
+  const logoUrl = '/logo-mark.webp';
 
   useEffect(() => {
     if (!headerRef.current) return;
@@ -122,7 +122,7 @@ export default function Header() {
   }, []);
 
   useEffect(() => {
-    const mq = window.matchMedia('(min-width: 1024px)');
+    const mq = window.matchMedia('(min-width: 1280px)');
     setIsDesktopViewport(mq.matches);
     const listener = (e: MediaQueryListEvent) => setIsDesktopViewport(e.matches);
     mq.addEventListener('change', listener);
@@ -149,27 +149,27 @@ export default function Header() {
 
   return (
     <>
-      <header ref={headerRef} className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-[#0a0f11]/[0.96] backdrop-blur-xl border-b border-white/[0.10] shadow-lg shadow-black/30' : 'bg-[#0a0f11]/[0.78] backdrop-blur-md border-b border-white/[0.08]'}`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="flex items-center justify-between h-16">
+      <header ref={headerRef} className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-[#090c0f]/[0.97] backdrop-blur-xl border-b border-white/[0.10] shadow-[0_12px_36px_rgba(0,0,0,.22)]' : 'bg-[#090c0f]/[0.88] backdrop-blur-md border-b border-white/[0.08]'}`}>
+        <div className="max-w-7xl mx-auto px-5 sm:px-6">
+          <div className="flex items-center justify-between h-[70px]">
             
-            <Link to="/" className="flex items-center gap-2.5 shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300 rounded-lg" aria-label="KCROC Home">
+            <Link to="/" className="flex items-center gap-2.5 shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f] rounded-lg" aria-label="KCROC Home">
               {!logoError ? (
                 <img 
                   src={logoUrl} 
-                  alt={`${NAV_GRAPH.business?.title ?? 'KCROC'} Logo`} 
-                  width="32" 
-                  height="32" 
-                  className="h-9 w-auto object-contain drop-shadow-[0_6px_16px_rgba(201,128,77,0.16)]"
+                  alt="KCROC logo mark" 
+                  width="512" 
+                  height="512" 
+                  className="h-10 w-10 object-contain drop-shadow-[0_8px_18px_rgba(201,128,77,0.18)]"
                   onError={() => setLogoError(true)}
                 />
               ) : (
-                <Laptop className="w-6 h-6 text-cyan-400" aria-hidden="true" />
+                <Laptop className="w-6 h-6 text-[#dfa86f]" aria-hidden="true" />
               )}
-              <span className="font-black text-white text-lg tracking-[-0.03em] hidden sm:block">KCROC<span className="text-cyan-400">.</span></span>
+              <span className="font-black text-white text-[19px] tracking-[-0.035em] hidden sm:block">KCROC<span className="text-[#dfa86f]">.</span></span>
             </Link>
 
-            <nav aria-label="Main navigation" className="hidden lg:flex items-center gap-0">
+            <nav aria-label="Main navigation" className="hidden xl:flex items-center gap-0.5">
               {navModel.header.map(link => {
                 const isGraphMatch = !!matchPath({ path: link.href, end: false }, location.pathname);
 
@@ -189,29 +189,29 @@ export default function Header() {
                           setActiveMegaId(prev => prev === link.megaMenuId ? null : link.megaMenuId!);
                         }}
                         onKeyDown={e => handleMegaTriggerKeyDown(e, link.megaMenuId!)}
-                        className={`flex items-center gap-1.5 px-3 py-2 rounded-lg whitespace-nowrap text-sm font-semibold transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300 ${isOpen || isGraphMatch ? 'text-cyan-300 bg-cyan-500/10' : 'text-slate-300 hover:text-white hover:bg-white/5'}`}
+                        className={`flex items-center gap-1.5 px-2.5 py-2 rounded-lg whitespace-nowrap text-[13px] font-semibold transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f] ${isOpen || isGraphMatch ? 'text-[#dfa86f] bg-[#c9804d]/10' : 'text-slate-300 hover:text-white hover:bg-white/5'}`}
                       >
                         {link.label}
-                        <ChevronDown size={15} className={`transition-transform duration-200 ${isOpen ? 'rotate-180 text-cyan-400' : ''}`} aria-hidden="true" />
+                        <ChevronDown size={15} className={`transition-transform duration-200 ${isOpen ? 'rotate-180 text-[#dfa86f]' : ''}`} aria-hidden="true" />
                       </button>
                     </div>
                   );
                 }
 
                 return (
-                  <Link key={link.id} to={link.href} className={`px-3 py-2 rounded-lg text-sm font-semibold whitespace-nowrap transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300 ${isGraphMatch ? 'text-cyan-300 bg-cyan-500/10' : 'text-slate-300 hover:text-white hover:bg-white/5'}`}>
+                  <Link key={link.id} to={link.href} className={`px-3 py-2 rounded-lg text-sm font-semibold whitespace-nowrap transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f] ${isGraphMatch ? 'text-[#dfa86f] bg-[#c9804d]/10' : 'text-slate-300 hover:text-white hover:bg-white/5'}`}>
                     {link.label}
                   </Link>
                 );
               })}
             </nav>
 
-            <div className="hidden lg:flex items-center gap-3">
+            <div className="hidden xl:flex items-center gap-2.5">
               <Link
                 to={languageSwitch.href}
                 lang={languageSwitch.targetLanguage === 'ar' ? 'ar' : 'en'}
                 aria-label={languageSwitch.targetLanguage === 'ar' ? 'Switch to Arabic' : 'Switch to English'}
-                className="rounded-lg border border-white/[0.10] bg-white/[0.03] px-3 py-2 text-xs font-black text-slate-200 transition-all hover:border-cyan-500/[0.45] hover:text-cyan-300 hover:bg-white/[0.05] focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300"
+                className="rounded-lg border border-white/[0.10] bg-white/[0.03] px-3 py-2 text-xs font-black text-slate-200 transition-all hover:border-[#c9804d]/[0.45] hover:text-[#efc19c] hover:bg-white/[0.05] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f]"
               >
                 {languageSwitch.targetLanguage === 'ar' ? 'عربي' : 'EN'}
               </Link>
@@ -224,18 +224,18 @@ export default function Header() {
                 aria-expanded={searchOpen}
                 aria-controls="header-search-panel"
                 aria-label={searchOpen ? 'Close search' : 'Search'}
-                className={`p-2 rounded-lg transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300 ${searchOpen ? 'text-cyan-400 bg-cyan-500/10' : 'text-slate-300 hover:text-white hover:bg-white/5'}`}
+                className={`p-2 rounded-lg transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f] ${searchOpen ? 'text-[#dfa86f] bg-[#c9804d]/10' : 'text-slate-300 hover:text-white hover:bg-white/5'}`}
               >
                 {searchOpen ? <X size={18} aria-hidden="true" /> : <Search size={18} aria-hidden="true" />}
               </button>
               <a href={`tel:+${cleanTel}`} onClick={() => trackConversion('phone_call_click', { cta_name: 'header_phone', button_position: 'header' })} className="flex items-center gap-2 text-sm font-medium text-slate-300 hover:text-white transition-colors">
-                <Phone size={15} className="text-cyan-400" aria-hidden="true" />
-                <span className="hidden xl:block">{phoneDisplay}</span>
+                <Phone size={15} className="text-[#dfa86f]" aria-hidden="true" />
+                <span className="hidden 2xl:block">{phoneDisplay}</span>
               </a>
               <Button
                 asChild
                 variant="ctaPrimary"
-                className="h-auto gap-2 rounded-lg px-4 py-2 text-sm transition-all hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(34,211,238,0.25)]"
+                className="h-auto gap-2 rounded-lg px-4 py-2 text-sm transition-all hover:shadow-[0_12px_28px_rgba(201,128,77,0.15)]"
               >
                 <Link to="/book" onClick={() => trackConversion('cta_click', { cta_name: 'header_book', button_position: 'header' })}>
                   <CalendarCheck size={15} aria-hidden="true" />
@@ -244,12 +244,12 @@ export default function Header() {
               </Button>
             </div>
 
-            <div className="lg:hidden flex items-center gap-1">
+            <div className="xl:hidden flex items-center gap-1">
               <Link
                 to={languageSwitch.href}
                 lang={languageSwitch.targetLanguage === 'ar' ? 'ar' : 'en'}
                 aria-label={languageSwitch.targetLanguage === 'ar' ? 'Switch to Arabic' : 'Switch to English'}
-                className="min-h-11 min-w-11 flex items-center justify-center rounded-lg border border-white/[0.10] text-xs font-black text-slate-200 transition-colors hover:border-cyan-500/50 hover:text-cyan-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300"
+                className="min-h-11 min-w-11 flex items-center justify-center rounded-lg border border-white/[0.10] text-xs font-black text-slate-200 transition-colors hover:border-cyan-500/50 hover:text-[#efc19c] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f]"
               >
                 {languageSwitch.targetLanguage === 'ar' ? 'عربي' : 'EN'}
               </Link>
@@ -258,7 +258,7 @@ export default function Header() {
                 // 🚀 TOUCH TARGET FIX: p-2 + a 20px icon was a ~36px hit area,
                 // under the 44×44px minimum. min-h/min-w-11 (44px) with a
                 // centered icon fixes this without changing the visual icon size.
-                className="min-h-11 min-w-11 flex items-center justify-center rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300"
+                className="min-h-11 min-w-11 flex items-center justify-center rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f]"
                 onClick={() => {
                   setActiveMegaId(null);
                   setMobileOpen(false);
@@ -272,7 +272,7 @@ export default function Header() {
               </button>
               <button
                 ref={mobileToggleRef}
-                className="min-h-11 min-w-11 flex items-center justify-center rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300"
+                className="min-h-11 min-w-11 flex items-center justify-center rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f]"
                 onClick={() => {
                   setActiveMegaId(null);
                   setSearchOpen(false);
@@ -299,7 +299,7 @@ export default function Header() {
           <div
             id="header-search-panel"
             role="search"
-            className="fixed top-16 left-0 right-0 z-50 bg-[#0a0f11]/[0.96] backdrop-blur-xl border-b border-white/[0.10] shadow-lg shadow-black/30 px-4 sm:px-6 py-6"
+            className="fixed top-16 left-0 right-0 z-50 bg-[#090c0f]/[0.97] backdrop-blur-xl border-b border-white/[0.10] shadow-[0_12px_36px_rgba(0,0,0,.22)] px-4 sm:px-6 py-6"
           >
             <Suspense fallback={<div className="max-w-2xl mx-auto h-14 rounded-full bg-slate-900 animate-pulse" />}>
               <SearchBar autoFocus onResultSelect={() => setSearchOpen(false)} />
