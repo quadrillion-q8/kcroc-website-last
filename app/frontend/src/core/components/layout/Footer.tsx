@@ -49,7 +49,7 @@ export function Footer() {
               const Icon = TRUST_ICON_MAP[badge.iconKey];
               return (
                 <div key={badge.id} className="flex items-center gap-2 text-xs font-semibold text-slate-400 uppercase tracking-wider">
-                  {Icon && <Icon className="w-4 h-4 text-cyan-400" aria-hidden="true" />}
+                  {Icon && <Icon className="w-4 h-4 text-[#dfa86f]" aria-hidden="true" />}
                   {badge.title}
                 </div>
               );
@@ -74,12 +74,12 @@ export function Footer() {
                   height="112"
                   loading="lazy"
                   decoding="async"
-                  className="h-14 w-auto object-contain rounded-xl"
+                  className="h-16 w-auto object-contain"
                   onError={() => setLogoError(true)}
                 />
               ) : (
                 <div className="flex items-center gap-2">
-                  <ShieldCheck className="w-8 h-8 text-cyan-400" aria-hidden="true" />
+                  <ShieldCheck className="w-8 h-8 text-[#dfa86f]" aria-hidden="true" />
                   <span className="text-2xl font-black text-white tracking-tight">{business.alternateName || 'KCROC'}</span>
                 </div>
               )}
@@ -88,7 +88,7 @@ export function Footer() {
               <div className="flex items-center gap-2 mb-4">
                 <div className="flex" aria-hidden="true">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-current text-cyan-400" />
+                    <Star key={i} className="w-4 h-4 fill-current text-[#dfa86f]" />
                   ))}
                 </div>
                 <span className="text-slate-400 text-xs font-medium">
@@ -103,7 +103,7 @@ export function Footer() {
 
             {business.openingHours && (
               <p className="flex items-center gap-2 text-slate-500 text-xs mb-6">
-                <Clock className="w-4 h-4 text-cyan-400 flex-shrink-0" aria-hidden="true" />
+                <Clock className="w-4 h-4 text-[#dfa86f] flex-shrink-0" aria-hidden="true" />
                 {business.openingHours}
               </p>
             )}
@@ -113,7 +113,7 @@ export function Footer() {
                 href={WA_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-bold transition-colors"
+                className="inline-flex items-center gap-2 text-[#dfa86f] hover:text-[#efc19c] font-bold transition-colors"
               >
                 <MessageCircle size={20} aria-hidden="true" /> WhatsApp Us
               </a>
@@ -127,7 +127,7 @@ export function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={facebookAriaLabel}
-                    className="w-9 h-9 flex items-center justify-center rounded-full border border-white/[0.10] text-slate-400 hover:text-cyan-400 hover:border-cyan-500/30 transition-colors"
+                    className="w-9 h-9 flex items-center justify-center rounded-full border border-white/[0.10] text-slate-400 hover:text-[#dfa86f] hover:border-[#c9804d]/30 transition-colors"
                   >
                     <Facebook size={16} aria-hidden="true" />
                   </a>
@@ -138,7 +138,7 @@ export function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={instagramAriaLabel}
-                    className="w-9 h-9 flex items-center justify-center rounded-full border border-white/[0.10] text-slate-400 hover:text-cyan-400 hover:border-cyan-500/30 transition-colors"
+                    className="w-9 h-9 flex items-center justify-center rounded-full border border-white/[0.10] text-slate-400 hover:text-[#dfa86f] hover:border-[#c9804d]/30 transition-colors"
                   >
                     <Instagram size={16} aria-hidden="true" />
                   </a>
@@ -153,7 +153,7 @@ export function Footer() {
             <ul className="space-y-3">
               {footerData.links.services.map((link, idx) => (
                 <li key={idx}>
-                  <Link to={link.path} className="text-slate-400 hover:text-cyan-400 transition-colors text-sm">
+                  <Link to={link.path} className="text-slate-400 hover:text-[#dfa86f] transition-colors text-sm">
                     {link.label}
                   </Link>
                 </li>
@@ -167,7 +167,7 @@ export function Footer() {
             <ul className="space-y-3">
               {footerData.links.company.map((link, idx) => (
                 <li key={idx}>
-                  <Link to={link.path} className="text-slate-400 hover:text-cyan-400 transition-colors text-sm">
+                  <Link to={link.path} className="text-slate-400 hover:text-[#dfa86f] transition-colors text-sm">
                     {link.label}
                   </Link>
                 </li>
@@ -180,18 +180,18 @@ export function Footer() {
             <h3 className="text-white font-bold mb-6 uppercase tracking-wider text-sm">Connect</h3>
             <ul className="space-y-4">
               <li className="flex items-start gap-3 text-slate-400 text-sm">
-                <MapPin className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-0.5" aria-hidden="true" />
+                <MapPin className="w-5 h-5 text-[#dfa86f] flex-shrink-0 mt-0.5" aria-hidden="true" />
                 <span className="leading-tight">{business.streetAddress}, {business.addressLocality}</span>
               </li>
               <li className="flex items-center gap-3 text-slate-400 text-sm">
-                <Phone className="w-5 h-5 text-cyan-400 flex-shrink-0" aria-hidden="true" />
+                <Phone className="w-5 h-5 text-[#dfa86f] flex-shrink-0" aria-hidden="true" />
                 <a href={'tel:+' + business.telephone} className="hover:text-white transition-colors">
                   +{business.telephone}
                 </a>
               </li>
               <li className="flex items-center gap-3 text-slate-400 text-sm mt-4">
-                <CalendarClock className="w-5 h-5 text-cyan-400 flex-shrink-0" aria-hidden="true" />
-                <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="text-cyan-400 font-bold hover:text-cyan-300 transition-colors">
+                <CalendarClock className="w-5 h-5 text-[#dfa86f] flex-shrink-0" aria-hidden="true" />
+                <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="text-[#dfa86f] font-bold hover:text-[#efc19c] transition-colors">
                   Book Free Pickup Now
                 </a>
               </li>
@@ -201,7 +201,7 @@ export function Footer() {
               <h4 className="text-slate-500 font-bold text-xs uppercase mb-3">Service Areas</h4>
               <div className="flex flex-wrap gap-2">
                 {footerData.links.areas.map((area, idx) => (
-                  <Link key={idx} to={area.path} className="text-xs text-slate-400 hover:text-cyan-400 transition-colors bg-white/[0.03] px-2 py-1 rounded border border-white/[0.10]">
+                  <Link key={idx} to={area.path} className="text-xs text-slate-400 hover:text-[#dfa86f] transition-colors bg-white/[0.03] px-2 py-1 rounded border border-white/[0.10]">
                     {area.label.replace('Computer Repair ', '')}
                   </Link>
                 ))}
