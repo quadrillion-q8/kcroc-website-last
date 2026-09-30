@@ -204,16 +204,16 @@ export const rawGraphData: RawGraphData = {
 
     'page-ar-gaming-pc-repair': {
       id: 'page-ar-gaming-pc-repair', slug: 'ar/gaming-pc-repair-kuwait', entityType: 'WebPage', isActive: true,
-      title: 'تصليح كمبيوتر ألعاب في الكويت',
-      description: 'تصليح gaming PC وكروت الشاشة ومشاكل الحرارة والطاقة في الكويت، مع فحص عملي واستلام وتوصيل مجاني.',
+      title: 'تصليح بي سي قيمنق وGaming PC في الكويت',
+      description: 'تصليح Gaming PC وبي سي قيمنق وكرت الشاشة في الكويت: FPS، حرارة، تقطيع، إطفاء مفاجئ، GPU، VRAM، طاقة وتبريد، مع استلام وتوصيل داخل الكويت.',
       seo: {
-        title: 'تصليح Gaming PC الكويت | إصلاح GPU والحرارة | KCROC',
-        description: 'تصليح أجهزة الألعاب وكروت الشاشة في الكويت: حرارة، تقطيع، إطفاء مفاجئ، مشاكل GPU والطاقة والتبريد، مع استلام وتوصيل مجاني.',
+        title: 'تصليح بي سي قيمنق وGaming PC الكويت | GPU وFPS | KCROC',
+        description: 'بي سي قيمنق يهنّق أو يطفي؟ FPS نازل أو GPU يطلع خطوط؟ تشخيص وإصلاح Gaming PC وكرت الشاشة والحرارة والطاقة في الكويت. من 25 د.ك، واستلام وتوصيل.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/ar/gaming-pc-repair-kuwait',
         locale: 'ar_KW',
         alternates: { 'ar-KW': 'https://www.computerrepairkuwait.com/ar/gaming-pc-repair-kuwait', 'en-KW': 'https://www.computerrepairkuwait.com/gaming-pc-repair-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/gaming-pc-repair-kuwait' },
-        ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList'], lastModified: '2026-09-28T00:00:00+03:00',
-        breadcrumbs: [{ name: 'الرئيسية', url: '/' }, { name: 'تصليح كمبيوتر ألعاب', url: '/ar/gaming-pc-repair-kuwait' }]
+        ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList', 'Service'], lastModified: '2026-09-30T00:00:00+03:00',
+        breadcrumbs: [{ name: 'الرئيسية', url: '/' }, { name: 'تصليح Gaming PC وبي سي قيمنق', url: '/ar/gaming-pc-repair-kuwait' }]
       },
       relatedServiceIds: ['srv-gaming', 'srv-gaming-laptop-cleaning', 'srv-motherboard', 'srv-laptop']
     } as WebPageEntity,
