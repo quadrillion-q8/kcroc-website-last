@@ -269,6 +269,16 @@ export default function BlogScreenProtection() {
         <title>How to Protect Your Laptop Screen in Kuwait | KCROC Guide</title>
         <meta name="description" content="Practical ways to prevent laptop screen damage in Kuwait: reduce lid pressure, protect hinges, avoid hot-car storage and know when display repair is needed." />
         <link rel="canonical" href={PAGE_URL} />
+        <meta name="robots" content="index, follow, max-image-preview:large" />
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content="How to Protect Your Laptop Screen in Kuwait | KCROC Guide" />
+        <meta property="og:description" content="Practical ways to prevent laptop screen damage in Kuwait: reduce lid pressure, protect hinges, avoid hot-car storage and know when display repair is needed." />
+        <meta property="og:url" content={PAGE_URL} />
+        <meta property="og:image" content={HERO_IMAGE_URL} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:alt" content="Laptop screen protection and display repair in Kuwait" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content={HERO_IMAGE_URL} />
       </Head>
 
       <SchemaMarkup schema={STRUCTURED_DATA} />
