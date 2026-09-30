@@ -8,23 +8,29 @@
     --background: 210 18% 7%;
     --foreground: 38 22% 94%;
 
-    --brand-dark: #0a0f11;
+    /* KCROC brand palette — derived from the physical logo. */
+    --brand-dark: #090c0f;
+    --brand-ink: #0d1216;
     --brand-primary: #c9804d;
     --brand-accent: #dfaa62;
+    --brand-gold-light: #efc697;
     --brand-copper-deep: #8f4f2c;
+    --brand-tech: #79c8ff;
 
-    --surface-default: #101618;
-    --surface-hover: #182022;
-    --surface-elevated: #232c2f;
-    --surface-glass: rgba(16, 22, 24, 0.76);
+    --surface-default: #11171b;
+    --surface-hover: #171f24;
+    --surface-elevated: #1c252b;
+    --surface-glass: rgba(17, 23, 27, 0.82);
     --surface-warm: #f4efe7;
+    --line-subtle: rgba(255, 255, 255, 0.08);
+    --line-strong: rgba(255, 255, 255, 0.13);
 
     --status-success: #2aa879;
     --status-warning: #dfaa62;
     --status-danger: #df6f5f;
-    --status-info: #6fc4d1;
+    --status-info: #79c8ff;
 
-    --radius-card: 1.15rem;
+    --radius-card: 1rem;
     --radius-button: 0.75rem;
   }
 
@@ -69,6 +75,7 @@
     background-color: var(--brand-dark);
     color: var(--foreground);
     min-height: 100vh;
+    color-scheme: dark;
     
     /* Typography Crispness Optimization for Dark Mode */
     -webkit-font-smoothing: antialiased;
@@ -104,7 +111,7 @@
 
 /* ================================================================
    KCROC VISUAL IDENTITY 2.0
-   Graphite + Copper + Gold + restrained technical cyan.
+   Graphite + Copper + Gold + restrained technical blue.
    The site should feel like a premium repair laboratory, not a SaaS dashboard.
    ================================================================ */
 
@@ -168,7 +175,7 @@
   position: relative;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.10);
-  border-radius: 1.35rem;
+  border-radius: 1.25rem;
   box-shadow: 0 26px 70px rgba(0, 0, 0, 0.30);
 }
 
@@ -352,5 +359,130 @@
 @media (prefers-reduced-motion: reduce) {
   .kcroc-cwv-defer * {
     scroll-behavior: auto !important;
+  }
+}
+
+
+/* ============================================================================
+   KCROC DESKTOP POLISH LAYER
+   A restrained premium system built around the actual KCROC logo colors.
+   This layer intentionally avoids content changes and only governs geometry,
+   contrast, surfaces, interaction states and desktop rendering quality.
+   ============================================================================ */
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-gutter: stable;
+}
+
+body {
+  letter-spacing: -0.004em;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--brand-primary) 34%, transparent);
+  color: #fff;
+}
+
+/* Keep the desktop reading canvas disciplined while backgrounds stay full-bleed. */
+.container {
+  width: 100%;
+  max-width: 1280px;
+  padding-inline: 24px;
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding-inline: 32px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .container {
+    padding-inline: 24px;
+  }
+}
+
+/* Consistent premium surface primitives available to all pages. */
+.kcroc-surface {
+  background: linear-gradient(180deg, rgba(255,255,255,.028), rgba(255,255,255,.012));
+  border: 1px solid var(--line-subtle);
+  box-shadow: 0 18px 48px rgba(0,0,0,.18);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.kcroc-surface:hover {
+  border-color: rgba(201,128,77,.24);
+}
+
+.kcroc-metal-border {
+  border-color: rgba(201,128,77,.26) !important;
+}
+
+.kcroc-focus-ring:focus-visible,
+.kcroc-focus-ring:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(201,128,77,.18);
+}
+
+/* Brand-colorled links should feel precise, not neon. */
+a {
+  text-underline-offset: 3px;
+}
+
+/* Sharper icon and raster alignment on high-density displays. */
+img,
+svg {
+  shape-rendering: geometricPrecision;
+}
+
+/* Hide only the browser-specific scrollbar chrome, not actual overflow. */
+.kcroc-scrollbar::-webkit-scrollbar { width: 8px; height: 8px; }
+.kcroc-scrollbar::-webkit-scrollbar-track { background: transparent; }
+.kcroc-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,.12);
+  border-radius: 999px;
+}
+.kcroc-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(201,128,77,.32);
+}
+
+@media (min-width: 1024px) {
+  /* Micro labels below 11px are difficult to scan on normal desktop displays. */
+  .text-\[9px\],
+  .text-\[10px\] {
+    font-size: 0.6875rem !important;
+    line-height: 1.3 !important;
+  }
+
+  /* Desktop type guardrails for components that do not provide explicit sizes. */
+  #main-content[data-page-type="inner"] h1 {
+    font-size: clamp(2.9rem, 4vw, 4rem);
+    line-height: 1.04;
+  }
+
+  #main-content[data-page-type="inner"] h2 {
+    font-size: clamp(2rem, 2.8vw, 2.75rem);
+    line-height: 1.08;
+  }
+
+  #main-content[data-page-type="inner"] h3 {
+    font-size: 1.25rem;
+    line-height: 1.25;
+  }
+
+  #main-content[data-page-type="inner"] p,
+  #main-content[data-page-type="inner"] li {
+    text-rendering: optimizeLegibility;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
   }
 }
