@@ -20,7 +20,7 @@ export const TrustBar = () => {
         const Icon = ICON_MAP[badge.iconKey];
         return (
           <div key={badge.id} className="flex items-center justify-center gap-2 px-3 py-3 sm:px-0 sm:py-6 text-[10px] sm:text-xs font-semibold text-slate-400 uppercase tracking-wide">
-            {Icon && <Icon className="w-4 h-4 text-emerald-500" />}
+            {Icon && <Icon className="w-4 h-4 text-[#dfa86f]" />}
             {badge.title}
           </div>
         );
