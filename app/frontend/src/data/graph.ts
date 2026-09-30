@@ -1293,7 +1293,7 @@ export const rawGraphData: RawGraphData = {
       repairLevel: 'advanced', 
       estimatedTurnaround: 'Same Day / 24 Hours', 
       pricing: { startingFrom: 15, currency: 'KWD', quoteRequired: true, displayLabel: 'From 15 KWD' }, 
-      relatedServiceIds: ['srv-macbook', 'srv-motherboard', 'srv-screen', 'srv-battery', 'srv-charging-port', 'srv-gaming-laptop-cleaning'],
+      relatedServiceIds: ['srv-gaming', 'srv-macbook', 'srv-motherboard', 'srv-screen', 'srv-battery', 'srv-charging-port', 'srv-gaming-laptop-cleaning'],
       relatedProblemIds: ['problem-no-power', 'problem-overheating', 'problem-black-screen', 'problem-not-charging', 'problem-slow', 'problem-freezing-crashing', 'problem-hinge-break', 'problem-cracked-screen', 'problem-windows-wont-boot'],
       relatedBrandIds: ['brand-dell', 'brand-hp', 'brand-lenovo', 'brand-asus', 'brand-acer', 'brand-msi'],
       relatedLocationIds: ['loc-hawalli', 'loc-salmiya', 'loc-kuwait-city', 'loc-farwaniya', 'loc-jahra', 'loc-ahmadi', 'loc-fahaheel'],
@@ -1552,11 +1552,18 @@ export const rawGraphData: RawGraphData = {
       slug: 'gaming-pc-repair-kuwait', 
       entityType: 'Service', 
       isActive: true, 
-      title: 'Gaming PC & GPU Repair Kuwait', 
+      title: 'Gaming PC Repair Kuwait', 
       iconKey: 'gaming', 
-      shortDescription: 'Component-level GPU diagnostics, liquid metal thermal restoration, and custom loop / AIO maintenance for high-performance gaming systems in Kuwait.', 
-      description: 'If your gaming PC shuts down mid-match, starts stuttering without warning, or shows artifacting under load, the problem is usually a specific hardware fault rather than a dead GPU or a ruined motherboard. In Kuwait, intense heat, fine dust, and frequent AC cycling accelerate thermal paste degradation, cooling failures, and power-stage stress, which is why these systems often need specialized diagnosis instead of guesswork. We use thermal imaging, load benchmarking, and component-level testing to isolate the actual fault on RTX 40-series and 50-series cards, RX 7000-series GPUs, Ryzen X3D and Intel Core Ultra/i9 builds, liquid-cooled rigs, and more. Wherever possible, we repair the failed component instead of pushing you into an expensive full-part replacement. Send us your symptoms on WhatsApp for a free diagnostic — pickup and delivery are free anywhere in Kuwait, and every repair includes a 30-day warranty.', 
-      idealCustomer: 'Gamers, esports players, streamers, content creators, 3D designers, architects, engineers, video editors, developers, and anyone running a high-performance desktop or laptop that isn\'t performing the way it should.',
+      shortDescription: 'Gaming computer, GPU and performance repair in Kuwait for no power, black screen, GPU artifacts, FPS drops, overheating, crashes, shutdowns and cooling faults.', 
+      description: 'Need gaming computer repair in Kuwait? If your gaming PC shuts down mid-match, shows no display, stutters, drops FPS, overheats, crashes, artifacts, or refuses to power on, KCROC diagnoses the failure before recommending an expensive part swap. We use thermal imaging, controlled load testing and component-level diagnostics for custom desktops, pre-built gaming PCs, standalone GPUs, liquid-cooled systems and high-performance rigs. We service NVIDIA GeForce RTX and AMD Radeon systems, Ryzen and Intel builds, and major gaming-PC families. Where technically repairable, we repair the failed stage instead of defaulting to a full motherboard or GPU replacement. Free pickup and delivery are available across Kuwait, with a 30-day repair warranty.', 
+      idealCustomer: 'Gaming PC owners, esports players, streamers, content creators, PC builders and professionals who need a real hardware diagnosis for power, display, GPU, FPS, cooling or stability problems.',
+      symptomLinks: [
+        { label: 'Gaming PC won’t turn on', path: '/guides/gaming-pc-not-turning-on-kuwait', description: 'No power, intermittent startup, dead tower or a PC that clicks on then shuts back off.' },
+        { label: 'Gaming PC has no display', path: '/guides/gaming-pc-black-screen-no-display-kuwait', description: 'Fans and RGB work but the monitor stays black or reports no signal.' },
+        { label: 'GPU artifacting / black screen', path: '/guides/gaming-gpu-artifacts-repair-kuwait', description: 'Colored blocks, flickering textures, driver resets or black screens under GPU load.' },
+        { label: 'Gaming PC shuts down while gaming', path: '/guides/gaming-pc-random-shutdown-kuwait', description: 'Instant power loss or restarts during demanding games and stress tests.' },
+        { label: 'BIOS update failed / no POST', path: '/guides/gaming-pc-bios-failed-update-kuwait', description: 'The system stopped booting or displaying after a BIOS/UEFI update.' },
+      ],
       deviceTypes: [
         'Custom Desktop Builds', 
         'Pre-Built Gaming PCs (Alienware, OMEN)', 
@@ -1566,6 +1573,12 @@ export const rawGraphData: RawGraphData = {
         'Liquid-Cooled Custom Loop Systems'
       ],
       commercialAnswers: [
+        { question: 'Do you repair gaming computers and desktop towers in Kuwait?', answer: 'Yes. The service covers custom-built gaming PCs, pre-built towers, standalone GPUs and high-performance systems. Kuwait-wide pickup and delivery are available, including full-size desktop towers.' },
+        { question: 'Can you fix a gaming PC with no display or a black screen?', answer: 'Yes. We separate monitor/cable issues from GPU, VRAM, motherboard, BIOS and power faults, then test the actual failure before quoting repair.' },
+        { question: 'Can you repair GPU artifacting instead of replacing the graphics card?', answer: 'When the card is technically repairable, the diagnosis can include VRAM, GPU power delivery, board-level faults and solder-related failures before a replacement card is recommended.' },
+        { question: 'Can you fix a gaming PC that keeps shutting down while gaming?', answer: 'Yes. We test thermal protection, PSU output, motherboard power stages, cooling and sustained-load stability so the cause is not guessed from the symptom alone.' },
+        { question: 'Do you repair gaming PCs in Salmiya, Hawalli, Farwaniya and other Kuwait areas?', answer: 'Yes. KCROC collects and returns gaming PCs and other computers across Kuwait, so customers do not need to transport a large tower to the Hawalli laboratory themselves.' },
+
         { question: 'Can you repair a gaming PC instead of replacing the GPU or motherboard?', answer: 'That depends on the fault. KCROC diagnoses the GPU, power delivery, cooling and board-level circuits first, then explains whether component repair or replacement is appropriate.' },
         { question: 'How much does gaming PC repair cost in Kuwait?', answer: 'Gaming PC repair starts from 25 KWD for the service-level diagnosis/repair path shown on this page; complex GPU, motherboard and cooling work is quoted after diagnosis.' },
         { question: 'How long does gaming PC repair take?', answer: 'Typical specialist work is around 24–48 hours when the required parts are available. Complex board-level faults or parts orders may require more time.' },
@@ -1601,12 +1614,17 @@ export const rawGraphData: RawGraphData = {
           { condition: 'The motherboard has a localized power or VRM fault.', action: 'Assess component-level repair before defaulting to a full motherboard replacement.' }
         ]
       },
-      relatedServiceIds: ['srv-gaming-laptop-cleaning', 'srv-motherboard', 'srv-laptop'],
+      relatedServiceIds: ['srv-gaming', 'srv-gaming-laptop-cleaning', 'srv-motherboard', 'srv-laptop'],
       relatedProblemIds: ['problem-overheating', 'problem-freezing-crashing', 'problem-no-power', 'problem-black-screen'],
       relatedBrandIds: ['brand-asus', 'brand-msi', 'brand-lenovo', 'brand-dell', 'brand-hp', 'brand-acer'],
-      relatedLocationIds: ['loc-hawalli', 'loc-salmiya', 'loc-kuwait-city', 'loc-farwaniya', 'loc-jahra', 'loc-ahmadi', 'loc-fahaheel'],
+      relatedLocationIds: ['loc-hawalli', 'loc-salmiya', 'loc-kuwait-city', 'loc-farwaniya', 'loc-jahra', 'loc-ahmadi', 'loc-fahaheel', 'loc-mangaf', 'loc-abu-halifa', 'loc-jabriya', 'loc-mubarak-al-kabeer', 'loc-fintas', 'loc-sabah-al-salem'],
       relatedResourcePaths: [
         { label: 'Gaming PC Cooling Guide', path: '/blog/gaming-pc-cooling' },
+        { label: 'Gaming PC Won’t Turn On? Diagnosis Guide', path: '/guides/gaming-pc-not-turning-on-kuwait' },
+        { label: 'Gaming PC Black Screen / No Display Guide', path: '/guides/gaming-pc-black-screen-no-display-kuwait' },
+        { label: 'GPU Artifacting & Black Screen Guide', path: '/guides/gaming-gpu-artifacts-repair-kuwait' },
+        { label: 'Gaming PC Random Shutdown Guide', path: '/guides/gaming-pc-random-shutdown-kuwait' },
+        { label: 'Failed Gaming PC BIOS Update Guide', path: '/guides/gaming-pc-bios-failed-update-kuwait' },
         { label: 'BIOS / UEFI Recovery Guide', path: '/guides/bios-uefi-recovery-kuwait' },
       ],
       relatedCaseStudyPath: { label: 'ASUS ROG Dead Motherboard Case Study — Hawalli', path: '/case-studies/asus-rog-dead-motherboard-hawalli' },
@@ -1876,11 +1894,11 @@ export const rawGraphData: RawGraphData = {
         noFixNoFee: true 
       }, 
       seo: { 
-        title: 'Gaming PC Repair Kuwait | GPU, FPS & Thermal Repair | KCROC', 
-        description: 'Stop losing frames to Kuwait\'s heat. Expert component-level gaming PC and GPU repair. Liquid metal, AIO fixes, and micro-soldering. Free pick & drop.', 
+        title: 'Gaming PC Repair Kuwait | Gaming Computer & GPU Fix | KCROC', 
+        description: 'Gaming PC and gaming computer repair in Kuwait for no power, black screen, GPU artifacts, FPS drops, overheating, crashes, PSU and cooling faults. Free pickup.', 
         canonicalUrl: 'https://www.computerrepairkuwait.com/gaming-pc-repair-kuwait', locale: 'en_KW', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/gaming-pc-repair-kuwait', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/gaming-pc-repair-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/gaming-pc-repair-kuwait' }, 
-        ogType: 'article', 
-        schemaTypes: ['Service', 'FAQPage'] 
+        ogType: 'website', 
+        schemaTypes: ['Service', 'FAQPage'], lastModified: '2026-10-01T00:00:00+03:00' 
       },
       navigationPriority: 80, 
       isFeatured: true, 
@@ -2816,13 +2834,13 @@ export const rawGraphData: RawGraphData = {
     /* ═══════════════════════════════════════════════════════════════
        LOCATION
     ═══════════════════════════════════════════════════════════════ */
-    'loc-hawalli': { id: 'loc-hawalli', slug: 'hawalli', entityType: 'Location', isActive: true, isPhysicalLocation: true, title: 'Hawalli Repair Center', description: 'Professional laptop, MacBook, gaming PC and motherboard repair from KCROC\'s Hawalli service location, with pickup and delivery available across Kuwait.', landmark: 'Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19', coords: { lat: 29.3356, lng: 48.0250 }, serviceRadiusKm: 40, serviceAreas: ['Hawalli', 'Salmiya', 'Kuwait City', 'Farwaniya', 'Ahmadi', 'Jahra', 'Fahaheel'], contentImage: { src: IMAGES.brand.shopExteriorDay.src, alt: IMAGES.brand.shopExteriorDay.alt, width: IMAGES.brand.shopExteriorDay.width, height: IMAGES.brand.shopExteriorDay.height, caption: 'Our repair center at Al Mullah Complex, Ibn Khaldoun St, Hawalli.' }, seo: { title: 'Computer Repair Hawalli Kuwait | Free Pickup | KCROC', description: 'Computer repair in Hawalli, Kuwait from KCROC, covering laptops, MacBooks, motherboards and gaming PCs with pickup and delivery across Kuwait.', canonicalUrl: 'https://www.computerrepairkuwait.com/location/hawalli', ogType: 'website', schemaTypes: ['LocalBusiness'], lastModified: '2026-09-27T00:00:00+03:00' }, navigationPriority: 100 } as LocationEntity,
+    'loc-hawalli': { id: 'loc-hawalli', slug: 'hawalli', entityType: 'Location', isActive: true, isPhysicalLocation: true, title: 'Hawalli Repair Center', description: 'Professional laptop, MacBook, gaming PC and motherboard repair from KCROC\'s Hawalli service location, with pickup and delivery available across Kuwait.', landmark: 'Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19', coords: { lat: 29.3356, lng: 48.0250 }, serviceRadiusKm: 40, serviceAreas: ['Hawalli', 'Salmiya', 'Kuwait City', 'Farwaniya', 'Ahmadi', 'Jahra', 'Fahaheel'], contentImage: { src: IMAGES.brand.shopExteriorDay.src, alt: IMAGES.brand.shopExteriorDay.alt, width: IMAGES.brand.shopExteriorDay.width, height: IMAGES.brand.shopExteriorDay.height, caption: 'Our repair center at Al Mullah Complex, Ibn Khaldoun St, Hawalli.' }, seo: { title: 'Computer Repair Hawalli Kuwait | Free Pickup | KCROC', description: 'Computer repair in Hawalli, Kuwait from KCROC, covering laptops, MacBooks, motherboards and gaming PCs with pickup and delivery across Kuwait.', canonicalUrl: 'https://www.computerrepairkuwait.com/location/hawalli', ogType: 'website', schemaTypes: ['LocalBusiness'], lastModified: '2026-09-27T00:00:00+03:00' }, relatedServiceIds: ['srv-gaming', 'srv-laptop', 'srv-motherboard', 'srv-gaming-laptop-cleaning'], navigationPriority: 100 } as LocationEntity,
 
     'loc-kuwait-city': { 
       id: 'loc-kuwait-city', slug: 'kuwait-city', entityType: 'Location', isActive: true, isPhysicalLocation: false, title: 'Kuwait City', description: 'Fast, professional corporate IT support and component-level laptop repair for businesses and residents in Kuwait City.', landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)', coords: { lat: 29.3759, lng: 47.9774 }, serviceRadiusKm: 15, serviceAreas: ['Kuwait City', 'Sharq', 'Dasman', 'Mirqab', 'Qibla'], 
       contentImage: { src: IMAGES.brand.technicians.src, alt: IMAGES.brand.technicians.alt, width: IMAGES.brand.technicians.width, height: IMAGES.brand.technicians.height, caption: 'Our technicians handling component-level laptop repair for businesses and residents across Kuwait City.' },
       seo: { title: 'Computer Repair Kuwait City | Free Pickup | KCROC', description: 'Expert computer repair, MacBook motherboard micro-soldering, and IT support for businesses and residents in Kuwait City. Free pick and drop.', canonicalUrl: 'https://www.computerrepairkuwait.com/location/kuwait-city', ogType: 'website', schemaTypes: ['LocalBusiness'], lastModified: '2026-09-27T00:00:00+03:00' }, 
-      navigationPriority: 95 
+      relatedServiceIds: ['srv-gaming', 'srv-laptop', 'srv-motherboard', 'srv-gaming-laptop-cleaning'], navigationPriority: 95 
     } as LocationEntity,
     
     'loc-salmiya': { id: 'loc-salmiya', slug: 'salmiya', entityType: 'Location', isActive: true, isPhysicalLocation: false, title: 'Salmiya', description: 'Fast, professional computer and laptop repair services for residents and businesses in Salmiya.', landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)', coords: { lat: 29.3400, lng: 48.0800 }, serviceRadiusKm: 15, serviceAreas: ['Salmiya', 'Rumaithiya', 'Salwa', 'Bidaa'], contentImage: { src: IMAGES.services.laptopRepair.src, alt: IMAGES.services.laptopRepair.alt, width: IMAGES.services.laptopRepair.width, height: IMAGES.services.laptopRepair.height, caption: 'Professional laptop repair for residents and businesses across Salmiya.' }, seo: { title: 'Computer Repair Salmiya Kuwait | Free Pickup | KCROC', description: 'Laptop and computer repair in Salmiya with free pickup and delivery. Devices are diagnosed and repaired at KCROC\'s central Hawalli lab.', canonicalUrl: 'https://www.computerrepairkuwait.com/location/salmiya', ogType: 'website', schemaTypes: ['LocalBusiness'], lastModified: '2026-09-27T00:00:00+03:00' }, navigationPriority: 90 } as LocationEntity,
@@ -3028,7 +3046,7 @@ export const rawGraphData: RawGraphData = {
         { id: 'dell-screen',   title: 'Screen flickering or lines',    severity: 'medium', description: 'Display cable wear near the hinge.' },
         { id: 'dell-battery',  title: 'Battery swollen',               severity: 'high',   description: 'Lithium degradation from Kuwait summer temperatures.' }
       ],
-      relatedServiceIds: ['srv-laptop', 'srv-motherboard', 'srv-screen', 'srv-battery', 'srv-charging-port', 'srv-hinge', 'srv-gaming-laptop-cleaning'],
+      relatedServiceIds: ['srv-gaming', 'srv-laptop', 'srv-motherboard', 'srv-screen', 'srv-battery', 'srv-charging-port', 'srv-hinge', 'srv-gaming-laptop-cleaning'],
       relatedProblemIds: ['problem-hinge-break', 'problem-overheating', 'problem-not-charging', 'problem-black-screen'],
       relatedLocationIds: ['loc-hawalli', 'loc-salmiya', 'loc-kuwait-city', 'loc-farwaniya', 'loc-jahra', 'loc-ahmadi'],
       relatedResourcePaths: [{ label: 'Dell laptop overheating guide', path: '/guides/dell-laptop-overheating' }],
@@ -3067,7 +3085,7 @@ export const rawGraphData: RawGraphData = {
         { id: 'hp-hinge', title: 'Hinge separation', severity: 'high', description: 'Envy and Pavilion hinge mounts breaking from chassis.' },
         { id: 'hp-fan',   title: 'Fan error on boot', severity: 'medium', description: 'HP system fan (90b) error due to dust accumulation.' }
       ],
-      relatedServiceIds: ['srv-laptop', 'srv-motherboard', 'srv-hinge', 'srv-gaming-laptop-cleaning'],
+      relatedServiceIds: ['srv-gaming', 'srv-laptop', 'srv-motherboard', 'srv-hinge', 'srv-gaming-laptop-cleaning'],
       relatedProblemIds: ['problem-no-power', 'problem-hinge-break', 'problem-overheating'],
       relatedLocationIds: ['loc-hawalli', 'loc-salmiya', 'loc-kuwait-city', 'loc-farwaniya', 'loc-jahra', 'loc-ahmadi'],
       contentImages: [
@@ -3161,7 +3179,7 @@ export const rawGraphData: RawGraphData = {
           repairFocus: ['USB-C', 'Charging', 'Display', 'Keyboard', 'Battery', 'Motherboard']
         }
       ],
-      relatedServiceIds: ['srv-laptop', 'srv-motherboard', 'srv-screen', 'srv-battery', 'srv-gaming-laptop-cleaning'],
+      relatedServiceIds: ['srv-gaming', 'srv-laptop', 'srv-motherboard', 'srv-screen', 'srv-battery', 'srv-gaming-laptop-cleaning'],
       relatedProblemIds: [
         'problem-no-power', 'problem-not-charging', 'problem-overheating', 'problem-black-screen',
         'problem-hinge-break', 'problem-keyboard-fail', 'problem-wifi-fail', 'problem-slow',
@@ -3272,7 +3290,7 @@ export const rawGraphData: RawGraphData = {
         { id: 'acer-thermal', title: 'Loud fans & high temps', severity: 'medium', description: 'Predator cooling fins heavily blocked by dust.' },
         { id: 'acer-hinge', title: 'Screen bezel separating', severity: 'medium', description: 'Aspire hinge stress causing the screen assembly to split.' }
       ],
-      relatedServiceIds: ['srv-laptop', 'srv-gaming-laptop-cleaning', 'srv-charging-port', 'srv-hinge', 'srv-motherboard'],
+      relatedServiceIds: ['srv-gaming', 'srv-laptop', 'srv-gaming-laptop-cleaning', 'srv-charging-port', 'srv-hinge', 'srv-motherboard'],
       relatedProblemIds: ['problem-not-charging', 'problem-overheating', 'problem-hinge-break'],
       relatedLocationIds: ['loc-hawalli', 'loc-salmiya', 'loc-kuwait-city', 'loc-farwaniya', 'loc-jahra', 'loc-ahmadi'],
       contentImages: [{ src: IMAGES.upgrades.acerLaptopMotherboardRamHeatsink.src, alt: IMAGES.upgrades.acerLaptopMotherboardRamHeatsink.alt, width: IMAGES.upgrades.acerLaptopMotherboardRamHeatsink.width, height: IMAGES.upgrades.acerLaptopMotherboardRamHeatsink.height, caption: 'Acer laptop internal motherboard, RAM and cooling hardware inspected for repair.' }],
@@ -4062,7 +4080,7 @@ const LOCATION_RELATIONSHIPS: Record<string, {
     relatedLocationIds: ['loc-hawalli', 'loc-kuwait-city', 'loc-salmiya', 'loc-jahra'],
   },
   jahra: {
-    relatedServiceIds: ['srv-laptop', 'srv-motherboard', 'srv-gaming-laptop-cleaning', 'srv-battery', 'srv-screen'],
+    relatedServiceIds: ['srv-gaming', 'srv-laptop', 'srv-motherboard', 'srv-gaming-laptop-cleaning', 'srv-battery', 'srv-screen'],
     relatedProblemIds: ['problem-overheating', 'problem-no-power', 'problem-not-charging', 'problem-black-screen'],
     relatedBrandIds: ['brand-dell', 'brand-lenovo', 'brand-hp', 'brand-asus'],
     relatedLocationIds: ['loc-hawalli', 'loc-kuwait-city', 'loc-farwaniya'],
