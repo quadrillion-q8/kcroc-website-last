@@ -111,6 +111,13 @@ export const DellLaptopOverheatingPage = () => {
         <title>{PAGE_TITLE}</title>
         <meta name="description" content={PAGE_DESCRIPTION} />
         <link rel="canonical" href={PAGE_URL} />
+        <meta name="robots" content="index, follow, max-image-preview:large" />
+        <meta property="og:image" content={`${business.websiteUrl}/images/discover/gaming-laptop-overheating-repair-1200x675.webp`} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="675" />
+        <meta property="og:image:alt" content="Laptop cooling fan and overheating repair diagnostics" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content={`${business.websiteUrl}/images/discover/gaming-laptop-overheating-repair-1200x675.webp`} />
         <meta property="og:title" content={PAGE_TITLE} />
         <meta property="og:description" content={PAGE_DESCRIPTION} />
         <meta property="og:url" content={PAGE_URL} />
