@@ -1,5 +1,5 @@
 // File: app/frontend/src/core/components/layout/RootLayout.tsx
-import React, { Suspense, lazy } from 'react';
+import React, { Suspense, lazy, useEffect, useState } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 
 import Header from './Header';
@@ -7,7 +7,7 @@ import Footer from './Footer';
 import { ErrorBoundary } from '../ErrorBoundary';
 import { CookieConsentBanner } from '../CookieConsentBanner';
 import { StickyMobileCTA } from '../../../components/home/StickyMobileCTA';
-import { KCROC_GRAPH } from '../../../data/graph';
+import { NAV_GRAPH } from '../../../data/navGraph.generated';
 
 // 🚀 CWV: AnimatedBackground is a pure SVG/CSS effect now (no particle
 // engine — an earlier tsParticles-based version was already replaced), but
@@ -69,9 +69,9 @@ const shouldShowAnimatedBackground = (pathname: string): boolean => {
   if (path.split('/').filter(Boolean).length === 1) {
     const slug = path.slice(1);
     return Boolean(
-      KCROC_GRAPH.services.some((item) => item.slug === slug) ||
-      KCROC_GRAPH.brands.some((item) => item.slug === slug) ||
-      KCROC_GRAPH.problems.some((item) => item.slug === slug)
+      NAV_GRAPH.services.some((item) => item.slug === slug) ||
+      NAV_GRAPH.brands.some((item) => item.slug === slug) ||
+      NAV_GRAPH.problems.some((item) => item.slug === slug)
     );
   }
 
@@ -81,6 +81,36 @@ const shouldShowAnimatedBackground = (pathname: string): boolean => {
 export const RootLayout: React.FC = () => {
   const { pathname } = useLocation();
   const showAnimatedBackground = shouldShowAnimatedBackground(pathname);
+  const [decorativeBackgroundReady, setDecorativeBackgroundReady] = useState(false);
+
+  useEffect(() => {
+    if (!showAnimatedBackground) {
+      setDecorativeBackgroundReady(false);
+      return;
+    }
+
+    let cancelled = false;
+    const activate = () => {
+      if (!cancelled) setDecorativeBackgroundReady(true);
+    };
+
+    // Decorative PCB animation never belongs on the critical rendering path.
+    // Give the hero/LCP a clean first paint, then hydrate the visual layer once
+    // the browser is idle. The timeout protects devices that stay busy.
+    if ('requestIdleCallback' in window) {
+      const idleId = window.requestIdleCallback(activate, { timeout: 1800 });
+      return () => {
+        cancelled = true;
+        window.cancelIdleCallback(idleId);
+      };
+    }
+
+    const timerId = window.setTimeout(activate, 1200);
+    return () => {
+      cancelled = true;
+      window.clearTimeout(timerId);
+    };
+  }, [showAnimatedBackground, pathname]);
 
   return (
     <>
@@ -98,7 +128,7 @@ export const RootLayout: React.FC = () => {
 
           {/* Page-scoped technical background. It is deliberately NOT mounted
               on every route: opaque/utility pages keep their own backgrounds. */}
-          {showAnimatedBackground && (
+          {showAnimatedBackground && decorativeBackgroundReady && (
             <Suspense fallback={<div className="fixed inset-0 z-0 bg-brand-dark" />}>
               <AnimatedBackground />
             </Suspense>
