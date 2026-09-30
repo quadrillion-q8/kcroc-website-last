@@ -85,6 +85,13 @@ const MENU_META: Record<string, {
     allHref: '/blog',
     featureLabel: 'Featured articles',
   },
+  news_mega: {
+    eyebrow: 'TECH NEWS',
+    subtitle: 'Current Windows, hardware, gaming, Apple, cybersecurity and AI news — with practical technician context.',
+    allLabel: 'Read all news',
+    allHref: '/news',
+    featureLabel: 'Latest news',
+  },
   guides_mega: {
     eyebrow: 'TROUBLESHOOTING GUIDES',
     subtitle: 'Symptom-first guides for diagnosing common laptop and computer problems before you decide what to do next.',
@@ -124,7 +131,7 @@ const getMoreItems = (config: MegaMenuConfig) => {
 
 const getIndexItem = (config: MegaMenuConfig) => {
   const candidates = config.sections.flatMap(section => section.items);
-  return candidates.find(item => item.entityType === 'Page' && /^(services|brands|problems|case-studies|pricing|blog|guides)$/.test(item.slug)) ?? null;
+  return candidates.find(item => item.entityType === 'Page' && /^(services|brands|problems|case-studies|pricing|blog|news|guides)$/.test(item.slug)) ?? null;
 };
 
 interface Props {
