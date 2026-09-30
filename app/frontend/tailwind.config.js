@@ -26,9 +26,10 @@ export default {
         kcroc: {
           copper: '#c9804d',
           gold: '#dfaa62',
-          cyan: '#22c7dc',
-          'cyan-dk': '#1aa6b9',
-          emerald: '#2aa879',
+          cyan: '#c9804d',
+          'cyan-dk': '#a95f32',
+          tech: '#79c8ff',
+          emerald: '#c9804d',
           slate: {
             950: '#080b0c',
             900: '#0d1214',
@@ -40,9 +41,22 @@ export default {
           muted: '#a3abad',
           card: 'rgba(23, 29, 31, 0.72)',
         },
-        // Override the default Tailwind cool cyan/slate ramps used across
-        // legacy pages so the whole site inherits the KCROC visual identity.
+        // Legacy utility ramps intentionally resolve to the KCROC metallic identity
+        // so older components inherit the same visual system without content rewrites.
         cyan: {
+          50: '#fff8f1',
+          100: '#fbeee2',
+          200: '#f7dbc5',
+          300: '#efc19c',
+          400: '#dfa86f',
+          500: '#c9804d',
+          600: '#b76d3b',
+          700: '#98562f',
+          800: '#7c4729',
+          900: '#633b26',
+          950: '#3b2418',
+        },
+        emerald: {
           50: '#fff8f1',
           100: '#fbeee2',
           200: '#f7dbc5',
@@ -89,6 +103,11 @@ export default {
       borderRadius: {
         card: 'var(--radius-card)',
         button: 'var(--radius-button)',
+      },
+      boxShadow: {
+        'kcroc-card': '0 18px 48px rgba(0,0,0,.18)',
+        'kcroc-hero': '0 28px 80px rgba(0,0,0,.34)',
+        'kcroc-brand': '0 10px 34px rgba(201,128,77,.16)',
       },
       keyframes: {
         blob: {
