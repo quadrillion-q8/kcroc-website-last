@@ -267,6 +267,17 @@ export default function BlogLaptopRepair() {
         <title>Laptop Repair Kuwait: The 2026 Guide to Hardware Preservation</title>
         <meta name="description" content="An in-depth look at how Kuwait's climate impacts laptop hardware, thermal management, and professional component-level repair techniques." />
         <link rel="canonical" href={PAGE_URL} />
+        <meta name="robots" content="index, follow, max-image-preview:large" />
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content="Laptop Repair Kuwait: The 2026 Guide to Hardware Preservation" />
+        <meta property="og:description" content="An in-depth look at how Kuwait's climate impacts laptop hardware, thermal management, and professional component-level repair techniques." />
+        <meta property="og:url" content={PAGE_URL} />
+        <meta property="og:image" content={`${business.websiteUrl}/images/discover/laptop-repair-kuwait-1200x675.webp`} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="675" />
+        <meta property="og:image:alt" content="Laptop repair and hardware diagnostics in Kuwait" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content={`${business.websiteUrl}/images/discover/laptop-repair-kuwait-1200x675.webp`} />
       </Head>
       
       <SchemaMarkup schema={STRUCTURED_DATA} />
