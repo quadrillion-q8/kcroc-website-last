@@ -78,8 +78,8 @@ export default function AuthorImran() {
         <meta property="og:description" content="Imran Natiq is a hardware repair engineer and founder of KCROC in Hawalli, Kuwait, specializing in motherboard diagnostics, micro-soldering, and laptop thermal repair." />
         <meta property="og:url" content={PAGE_URL} />
         <meta property="og:image" content={`${business.websiteUrl}/logo.webp`} />
-        <meta property="og:image:width" content="224" />
-        <meta property="og:image:height" content="224" />
+        <meta property="og:image:width" content="1024" />
+        <meta property="og:image:height" content="1024" />
       </Head>
 
       <SchemaMarkup schema={{ '@graph': PERSON_SCHEMA }} />
