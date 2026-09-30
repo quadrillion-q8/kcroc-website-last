@@ -152,11 +152,11 @@ export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnte
   const allHref = indexItem ? getEntityHref(indexItem) : meta.allHref;
   const allLabel = indexItem ? meta.allLabel : meta.allLabel;
   const isAboutMenu = config.id === 'about_mega';
-  const panelWidth = isAboutMenu ? 1140 : 1160;
+  const panelWidth = isAboutMenu ? 1080 : 1120;
 
   const getClampedLeft = () => {
     if (typeof window === 'undefined') return '50%';
-    const safePadding = 18;
+    const safePadding = 20;
     const minLeft = panelWidth / 2 + safePadding;
     const maxLeft = window.innerWidth - panelWidth / 2 - safePadding;
     const clamped = Math.max(minLeft, Math.min(panelLeft || window.innerWidth / 2, maxLeft));
@@ -244,18 +244,18 @@ export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnte
       onMouseLeave={onMouseLeave}
       style={{
         position: 'fixed',
-        top: '72px',
+        top: '78px',
         left: getClampedLeft(),
         transform: 'translateX(-50%)',
-        width: `min(${panelWidth}px, calc(100vw - 28px))`,
+        width: `min(${panelWidth}px, calc(100vw - 40px))`,
         maxHeight: 'calc(100vh - 90px)',
         zIndex: 9999,
       }}
       className={`max-h-full overflow-hidden transition-all duration-200 motion-reduce:transition-none origin-top ${isOpen ? 'opacity-100 scale-100 pointer-events-auto' : 'opacity-0 scale-[0.985] pointer-events-none'}`}
     >
-      <div className="relative overflow-hidden rounded-[26px] border border-white/[0.11] bg-[#0e1416]/[0.985] shadow-[0_30px_90px_rgba(0,0,0,0.55)] backdrop-blur-2xl">
+      <div className="relative overflow-hidden rounded-[20px] border border-white/[0.11] bg-[#0d1317]/[0.985] shadow-[0_28px_80px_rgba(0,0,0,0.50)] backdrop-blur-2xl">
         <div className="pointer-events-none absolute -top-24 -right-16 h-64 w-64 rounded-full bg-[#c9804d]/10 blur-3xl" />
-        <div className="pointer-events-none absolute -bottom-28 -left-16 h-72 w-72 rounded-full bg-[#22c7dc]/[0.045] blur-3xl" />
+        <div className="pointer-events-none absolute -bottom-28 -left-16 h-72 w-72 rounded-full bg-[#dfaa62]/[0.035] blur-3xl" />
 
         <div className="relative border-b border-white/[0.08] px-6 py-5 lg:px-7 lg:py-6">
           <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
@@ -311,7 +311,7 @@ export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnte
                         trackConversion('cta_click', { cta_name: 'mega_menu_card', button_position: 'header' });
                         onClose();
                       }}
-                      className="group flex min-h-[108px] items-start gap-3 rounded-2xl border border-white/[0.07] bg-white/[0.025] p-4 transition-all hover:-translate-y-0.5 hover:border-[#c9804d]/30 hover:bg-[#c9804d]/[0.055] motion-reduce:transition-none motion-reduce:hover:translate-y-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f]"
+                      className="group flex min-h-[108px] items-start gap-3 rounded-[16px] border border-white/[0.075] bg-white/[0.023] p-4 transition-[transform,border-color,background-color] hover:-translate-y-px hover:border-[#c9804d]/30 hover:bg-[#c9804d]/[0.055] motion-reduce:transition-none motion-reduce:hover:translate-y-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f]"
                     >
                       <div className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[#c9804d]/25 bg-[#c9804d]/10 text-[#dfa86f] transition-colors group-hover:border-[#c9804d]/45 group-hover:bg-[#c9804d]/15">
                         <Icon className="h-[18px] w-[18px]" aria-hidden="true" />
@@ -384,7 +384,7 @@ export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnte
                           trackConversion('cta_click', { cta_name: 'mega_menu_featured', button_position: 'header' });
                           onClose();
                         }}
-                        className="group flex min-h-[112px] items-start gap-3 rounded-2xl border border-white/[0.07] bg-white/[0.025] p-4 transition-all hover:-translate-y-0.5 hover:border-[#c9804d]/30 hover:bg-[#c9804d]/[0.055] motion-reduce:transition-none motion-reduce:hover:translate-y-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f]"
+                        className="group flex min-h-[112px] items-start gap-3 rounded-[16px] border border-white/[0.075] bg-white/[0.023] p-4 transition-[transform,border-color,background-color] hover:-translate-y-px hover:border-[#c9804d]/30 hover:bg-[#c9804d]/[0.055] motion-reduce:transition-none motion-reduce:hover:translate-y-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f]"
                       >
                         <div className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[#c9804d]/25 bg-[#c9804d]/10 text-[#dfa86f] transition-colors group-hover:border-[#c9804d]/45 group-hover:bg-[#c9804d]/15">
                           <Icon className="h-[18px] w-[18px]" aria-hidden="true" />
