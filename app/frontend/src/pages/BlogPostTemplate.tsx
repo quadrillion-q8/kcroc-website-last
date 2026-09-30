@@ -221,6 +221,15 @@ const AUTHOR_URL = `${business.websiteUrl}/author/imran`;
 const AUTHOR_IMAGE_URL =
   'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto:good,w_800,c_limit/KCROC-Owner-Image_zpdyg4';
 
+const INTERNAL_LINK_LABELS: Record<string, string> = {
+  'https://www.computerrepairkuwait.com/guides/windows-11-update-problems':
+    'Windows 11 Update Problems',
+  'https://www.computerrepairkuwait.com/blog/windows-11-100-disk-usage-causes-solutions':
+    'Windows 11 100% Disk Usage: Causes & Solutions',
+  'https://www.computerrepairkuwait.com/guides/bios-uefi-recovery-kuwait':
+    'BIOS & UEFI Recovery Guide',
+};
+
 const TECHNICAL_SOURCE_LABELS: Record<string, string> = {
   'https://support.microsoft.com/en-us/windows/experience/performance-optimization/tips-to-improve-pc-performance-in-windows':
     'Microsoft Support — Tips to improve PC performance in Windows',
@@ -256,11 +265,38 @@ const TECHNICAL_SOURCE_LABELS: Record<string, string> = {
 
 const getTechnicalSourceLabel = (url: string) => TECHNICAL_SOURCE_LABELS[url] ?? 'Microsoft Support source';
 
+const getInternalLinkPath = (url: string) => {
+  if (!INTERNAL_LINK_LABELS[url]) return null;
+  try {
+    const parsed = new URL(url);
+    return `${parsed.pathname}${parsed.search}${parsed.hash}` || '/';
+  } catch {
+    return null;
+  }
+};
+
 const linkTechnicalSources = (text: string) => {
   const urlRegex = /(https:\/\/[^\s]+)/g;
   const parts = text.split(urlRegex);
-  return parts.map((part, index) =>
-    part.startsWith('https://') ? (
+  return parts.map((part, index) => {
+    if (!part.startsWith('https://')) {
+      return <React.Fragment key={index}>{part}</React.Fragment>;
+    }
+
+    const internalPath = getInternalLinkPath(part);
+    if (internalPath) {
+      return (
+        <Link
+          key={`${part}-${index}`}
+          to={internalPath}
+          className="text-cyan-400 hover:text-cyan-300 underline underline-offset-2"
+        >
+          {INTERNAL_LINK_LABELS[part]}
+        </Link>
+      );
+    }
+
+    return (
       <a
         key={`${part}-${index}`}
         href={part}
@@ -270,10 +306,8 @@ const linkTechnicalSources = (text: string) => {
       >
         {getTechnicalSourceLabel(part)}
       </a>
-    ) : (
-      <React.Fragment key={index}>{part}</React.Fragment>
-    )
-  );
+    );
+  });
 };
 
 /* ═══════════════════════════════════════════════════════════════════
