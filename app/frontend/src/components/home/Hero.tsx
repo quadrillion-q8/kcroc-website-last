@@ -16,7 +16,7 @@ export default function Hero() {
   const hero = homePage?.hero;
   const business = KCROC_GRAPH.business;
   const phone = business!.telephone;
-  const rating = business?.aggregateRating?.ratingValue ?? '4.9';
+  const rating = business!.aggregateRating!.ratingValue;
   const reviewCount = business?.aggregateRating?.reviewCount ?? 150;
   const headline = hero?.headline ?? "Kuwait's Expert Component-Level Repair Service.";
   const desktopImage = '/images/kcroc-laptop-repair-technicians-hawalli-kuwait.webp';
