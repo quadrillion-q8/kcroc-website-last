@@ -120,28 +120,28 @@ export default function Hero() {
       </section>
 
       {/* Desktop */}
-      <section className="relative hidden min-h-[calc(100vh-4rem)] overflow-hidden bg-transparent pt-24 pb-16 lg:block">
+      <section className="relative hidden min-h-[calc(100vh-70px)] overflow-hidden bg-transparent pt-20 pb-14 lg:block">
         <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_15%_20%,rgba(201,128,77,0.13),transparent_32%),radial-gradient(circle_at_86%_18%,rgba(223,170,98,0.08),transparent_26%)]" />
         <div className="container relative z-10 mx-auto px-4 lg:px-8">
-          <div className="grid items-center gap-14 xl:grid-cols-[0.95fr_1.05fr]">
+          <div className="grid items-center gap-12 xl:grid-cols-[0.98fr_1.02fr] 2xl:gap-16">
             <div className="max-w-2xl">
               <div className="mb-6 flex items-center gap-3">
                 <span className="kcroc-kicker">Kuwait · Component-level specialists</span>
               </div>
 
-              <h1 className="kcroc-display max-w-2xl text-5xl font-black leading-[0.98] text-white xl:text-6xl 2xl:text-7xl">
+              <h1 className="kcroc-display max-w-2xl text-[3.3rem] font-black leading-[1.01] tracking-[-0.045em] text-white xl:text-[3.85rem] 2xl:text-[4.25rem]">
                 {headline}
               </h1>
 
-              <p className="mt-6 max-w-xl text-2xl font-extrabold leading-tight text-cyan-300">
+              <p className="mt-5 max-w-xl text-[1.7rem] font-extrabold leading-tight text-cyan-300">
                 {hero?.subheadline ?? "We fix the board. We don't just swap it."}
               </p>
 
-              <p className="mt-5 max-w-xl text-lg leading-8 text-slate-300">
+              <p className="mt-4 max-w-xl text-[1.05rem] leading-7 text-slate-300">
                 {hero?.description ?? 'We diagnose failed components at board level and restore devices that other repair shops may write off as uneconomical to repair.'}
               </p>
 
-              <div className="mt-7 flex flex-wrap gap-3">
+              <div className="mt-6 flex flex-wrap gap-2.5">
                 {['Free pickup & delivery', '30-day parts + labour warranty', 'No fix, no fee'].map((label) => (
                   <span key={label} className="inline-flex items-center gap-2 rounded-full border border-white/[0.10] bg-white/[0.035] px-3.5 py-2 text-xs font-bold text-slate-200">
                     <Check className="h-4 w-4 text-cyan-400" aria-hidden="true" />
@@ -150,7 +150,7 @@ export default function Hero() {
                 ))}
               </div>
 
-              <div className="mt-9 flex flex-wrap gap-4">
+              <div className="mt-8 flex flex-wrap gap-3.5">
                 <Button asChild size="lg" variant="ctaPrimary" className="h-14 rounded-xl px-7 text-base">
                   <Link to={ROUTES.BOOKING} onClick={() => trackConversion('cta_click', { cta_name: 'hero_book_pickup', button_position: 'hero_desktop' })}>
                     <CalendarClock className="h-5 w-5" aria-hidden="true" />
@@ -165,7 +165,7 @@ export default function Hero() {
                 </Button>
               </div>
 
-              <div className="mt-10 grid max-w-xl grid-cols-3 divide-x divide-white/10 border-y border-white/[0.10] py-5">
+              <div className="mt-8 grid max-w-xl grid-cols-3 divide-x divide-white/10 border-y border-white/[0.10] py-5">
                 {stats.map((stat) => (
                   <div key={stat.label} className="px-4 first:pl-0 last:pr-0">
                     <div className="text-2xl font-black tracking-tight text-white xl:text-3xl">
@@ -180,7 +180,7 @@ export default function Hero() {
             <div className="relative">
               <div className="absolute -inset-8 rounded-[2rem] bg-cyan-500/10 blur-3xl" />
               <div className="relative">
-                <div className="absolute -right-5 -top-5 z-20 flex max-w-xs items-center gap-3 rounded-2xl border border-white/[0.10] bg-[#0f1618]/[0.88] px-4 py-3 shadow-2xl backdrop-blur-xl">
+                <div className="absolute -right-5 -top-5 z-20 flex max-w-xs items-center gap-3 rounded-[16px] border border-white/[0.10] bg-[#0f1618]/[0.90] px-4 py-3 shadow-2xl backdrop-blur-xl">
                   <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-cyan-500/10 text-cyan-300">
                     <ShieldCheck className="h-5 w-5" aria-hidden="true" />
                   </div>
@@ -190,8 +190,8 @@ export default function Hero() {
                   </div>
                 </div>
 
-                <div className="kcroc-photo-frame kcroc-copper-glow aspect-[1.03/1] bg-slate-900">
-                  <img src={desktopImage} alt="KCROC technicians working in the Hawalli computer repair workshop" width="1000" height="1000" loading="eager" fetchPriority="high" decoding="sync" className="h-full w-full object-cover object-center transition-transform duration-700 hover:scale-[1.025]" />
+                <div className="kcroc-photo-frame kcroc-copper-glow aspect-[4/3] bg-slate-900">
+                  <img src={desktopImage} alt="KCROC technicians working in the Hawalli computer repair workshop" width="1000" height="1000" loading="eager" fetchPriority="high" decoding="async" className="h-full w-full object-cover object-center transition-transform duration-500 hover:scale-[1.015]" />
                   <div className="absolute inset-x-5 bottom-5 z-10 rounded-2xl border border-white/[0.10] bg-[#0b1113]/[0.78] p-4 backdrop-blur-xl">
                     <div className="flex items-end justify-between gap-4">
                       <div>
@@ -212,7 +212,7 @@ export default function Hero() {
                     { label: 'Pickup', value: 'Across Kuwait' },
                     { label: 'Warranty', value: '30 days' },
                   ].map((item) => (
-                    <div key={item.label} className="rounded-2xl border border-white/[0.08] bg-white/[0.03] px-3 py-3 text-center">
+                    <div key={item.label} className="rounded-[14px] border border-white/[0.075] bg-white/[0.028] px-3 py-3 text-center">
                       <p className="text-[9px] font-black uppercase tracking-[0.13em] text-slate-500">{item.label}</p>
                       <p className="mt-1 text-xs font-bold text-slate-200">{item.value}</p>
                     </div>
