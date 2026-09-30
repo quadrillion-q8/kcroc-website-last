@@ -131,7 +131,7 @@ export interface BlogPost {
   /** Optional Arabic counterpart for hreflang/cross-language discovery. */
   arabicSlug?: string;
   /** Public IA route for this content. Defaults to the Blog. */
-  contentType?: 'blog' | 'guide';
+  contentType?: 'blog' | 'guide' | 'news';
 }
 
 export const BLOG_POSTS: BlogPost[] = [
