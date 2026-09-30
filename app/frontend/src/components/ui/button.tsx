@@ -15,22 +15,19 @@ const buttonVariants = cva(
         secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/80',
         ghost: 'hover:bg-accent hover:text-accent-foreground',
         link: 'text-primary underline-offset-4 hover:underline',
-        // CTA hierarchy — spec Section 16. Centralizes the cyan/emerald/
-        // underline patterns already hand-rolled inline across Hero,
-        // PricingTable, FAQSection etc. Existing inline-styled buttons are
-        // untouched; new code can reach for these instead of re-typing
-        // "bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold rounded-full".
+        // KCROC CTA hierarchy — copper/gold first, neutral second,
+        // functional green reserved for WhatsApp and status messaging.
         ctaPrimary:
-          'bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-extrabold rounded-xl shadow-lg shadow-cyan-700/20 min-h-[46px] hover:-translate-y-0.5',
+          'bg-[linear-gradient(135deg,#dfa86f_0%,#c9804d_58%,#a85f34_100%)] hover:brightness-105 text-[#17110c] font-extrabold rounded-xl shadow-kcroc-brand min-h-[46px] transition-[transform,filter,box-shadow] hover:-translate-y-px',
         ctaSecondary:
-          'border border-emerald-500/70 text-emerald-300 hover:bg-emerald-500/10 font-extrabold rounded-xl bg-transparent min-h-[46px] hover:-translate-y-0.5',
+          'border border-[#c9804d]/55 text-[#efc19c] hover:border-[#c9804d]/80 hover:bg-[#c9804d]/[0.08] font-extrabold rounded-xl bg-transparent min-h-[46px] transition-[transform,background-color,border-color] hover:-translate-y-px',
         ctaTertiary:
-          'text-cyan-400 hover:text-cyan-300 font-bold underline underline-offset-4 bg-transparent p-0 h-auto',
+          'text-[#dfa86f] hover:text-[#efc19c] font-bold underline underline-offset-4 bg-transparent p-0 h-auto',
       },
       size: {
         default: 'h-10 px-4 py-2',
-        sm: 'h-9 rounded-md px-3',
-        lg: 'h-11 rounded-md px-8',
+        sm: 'h-9 rounded-lg px-3',
+        lg: 'h-11 rounded-xl px-8',
         icon: 'h-10 w-10',
       },
     },
