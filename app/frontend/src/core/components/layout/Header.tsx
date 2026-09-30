@@ -55,7 +55,7 @@ export default function Header() {
   // Was firing an extra same-origin-looking-but-still-external request on
   // every single page load (confirmed via a full-site Puppeteer crawl —
   // every page's header logo issued this identical extra request).
-  const logoUrl = '/logo-mark.webp';
+  const logoUrl = '/logo-mark.w96.webp';
 
   useEffect(() => {
     if (!headerRef.current) return;
@@ -158,8 +158,8 @@ export default function Header() {
                 <img 
                   src={logoUrl} 
                   alt="KCROC logo mark" 
-                  width="512" 
-                  height="512" 
+                  width="96"
+                  height="96" 
                   className="h-10 w-10 object-contain drop-shadow-[0_8px_18px_rgba(201,128,77,0.18)]"
                   onError={() => setLogoError(true)}
                 />
