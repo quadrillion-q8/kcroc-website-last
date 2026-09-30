@@ -307,6 +307,17 @@ export default function LaptopBuyingGuide() {
           content="Confused by Intel, Ryzen and RTX naming in 2026? A Kuwait repair engineer explains which laptop specs actually matter — and which don't."
         />
         <link rel="canonical" href={PAGE_URL} />
+        <meta name="robots" content="index, follow, max-image-preview:large" />
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content="Laptop Buying Guide Kuwait (2026): What the Spec Sheet Won't Tell You" />
+        <meta property="og:description" content="Confused by Intel, Ryzen and RTX naming in 2026? A Kuwait repair engineer explains which laptop specs actually matter — and which don't." />
+        <meta property="og:url" content={PAGE_URL} />
+        <meta property="og:image" content={HERO_IMAGE_URL} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="675" />
+        <meta property="og:image:alt" content="Laptop buying guide for Kuwait in 2026" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content={HERO_IMAGE_URL} />
         {/* Multilingual SEO */}
         <link rel="alternate" hrefLang="en-KW" href={PAGE_URL} />
         <link rel="alternate" hrefLang="ar-KW" href={AR_PAGE_URL} />
