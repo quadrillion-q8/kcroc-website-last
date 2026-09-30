@@ -96,11 +96,28 @@ for (const file of htmlFiles) {
   const hasTitle = /<title[^>]*>[^<]{5,}<\/title>/i.test(html);
   const hasJsonLd = /<script[^>]+type=["']application\/ld\+json["']/i.test(html);
   const hasMetaDescription = /<meta[^>]+name=["']description["'][^>]+content="[^"]{20,}"/i.test(html);
+  const robotsMatch = html.match(/<meta[^>]+name=["']robots["'][^>]+content=["']([^"']+)["']/i);
+  const robotsContent = robotsMatch?.[1] || '';
+  const isNoindex = /noindex/i.test(robotsContent);
+  const hasLargeImagePreview = /max-image-preview\s*:\s*large/i.test(robotsContent);
+  const ogImageMatch = html.match(/<meta[^>]+property=["']og:image["'][^>]+content=["']([^"']+)["']/i);
+  const ogImageWidth = html.match(/<meta[^>]+property=["']og:image:width["'][^>]+content=["']([^"']+)["']/i);
+  const ogImageHeight = html.match(/<meta[^>]+property=["']og:image:height["'][^>]+content=["']([^"']+)["']/i);
+  const ogTypeMatch = html.match(/<meta[^>]+property=["']og:type["'][^>]+content=["']([^"']+)["']/i);
+  const isArticle = /article/i.test(ogTypeMatch?.[1] || '') || /BlogPosting|TechArticle|"Article"/i.test(html);
+  const isGenericSiteImage = /\/og-image\.webp(?:["'\s]|$)/i.test(ogImageMatch?.[1] || '');
 
-  if (!hasCanonical) fail(`${relPath}: missing <link rel="canonical">.`);
+  if (!hasCanonical && !isNoindex) fail(`${relPath}: missing <link rel="canonical">.`);
   if (!hasTitle) fail(`${relPath}: missing or too-short <title>.`);
   if (!hasJsonLd) fail(`${relPath}: no JSON-LD (<script type="application/ld+json">) found.`);
   if (!hasMetaDescription) warn(`${relPath}: missing or too-short meta description.`);
+  if (!isNoindex) {
+    if (!hasLargeImagePreview) fail(`${relPath}: indexable page is missing robots max-image-preview:large.`);
+    if (!ogImageMatch) fail(`${relPath}: indexable page is missing og:image.`);
+    if (!ogImageWidth || !ogImageHeight) warn(`${relPath}: og:image width/height metadata is incomplete.`);
+    if (isArticle && isGenericSiteImage) warn(`${relPath}: article-like page falls back to the generic /og-image.webp asset; add a page-specific representative image.`);
+    if (ogImageMatch && !/^https?:\/\//i.test(ogImageMatch[1])) warn(`${relPath}: og:image is not an absolute URL.`);
+  }
 }
 
 // ── Report ──────────────────────────────────────────────────────────────
@@ -119,4 +136,4 @@ if (errors.length) {
   process.exit(1);
 }
 
-console.log('✅ SEO audit passed: robots.txt, sitemap.xml, canonical tags, titles, and JSON-LD are all present in the shipped build.');
+console.log('✅ SEO audit passed: robots.txt, sitemap.xml, canonical tags, titles, JSON-LD, and Discover-relevant image metadata checks are satisfied.');
