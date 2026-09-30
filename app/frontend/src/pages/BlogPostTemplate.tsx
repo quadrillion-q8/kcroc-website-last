@@ -21,6 +21,17 @@ import { StandaloneRelatedLinks, RelatedLinkItem } from '@/components/content/St
 // (Previously duplicated via constants/data.ts's BUSINESS_INFO.)
 const business = KCROC_GRAPH.business!;
 
+const toAbsoluteAssetUrl = (value: string) =>
+  value.startsWith('http')
+    ? value
+    : `${business.websiteUrl}${value.startsWith('/') ? value : `/${value}`}`;
+
+const getModifiedDate = (post: BlogPost) => {
+  if (!post.technicalReviewDate) return post.date;
+  const parsed = new Date(post.technicalReviewDate);
+  return Number.isNaN(parsed.getTime()) ? post.date : parsed.toISOString();
+};
+
 
 const STANDALONE_REPAIR_PATHS: Record<string, { title: string; intro: string; links: RelatedLinkItem[] }> = {
   'windows-11-100-disk-usage-causes-solutions': {
@@ -587,9 +598,9 @@ export default function BlogPostTemplate() {
           "@id": `${pageUrl}#article`,
           "headline": post.title,
           "description": post.excerpt,
-          "image": post.image,
+          "image": toAbsoluteAssetUrl(post.discoverImage || post.image),
           "datePublished": post.date,
-          "dateModified": post.date,
+          "dateModified": getModifiedDate(post),
           "author": post.author === "Imran Natiq" ? { "@type": "Person", "@id": `${AUTHOR_URL}#person`, "name": "Imran Natiq", "url": AUTHOR_URL, "jobTitle": "Hardware Repair Engineer", "worksFor": { "@type": "Organization", "name": business.legalName, "url": business.websiteUrl } } : { "@type": "Organization", "name": post.author },
           "publisher": {
             "@type": "Organization",
@@ -639,6 +650,7 @@ export default function BlogPostTemplate() {
         <title>{post.seoTitle || `${post.title.length > 57 ? `${post.title.slice(0, 57)}…` : post.title} | KCROC`}</title>
         <meta name="description" content={post.seoDescription || (post.description || post.excerpt).slice(0, 155)} />
         <link rel="canonical" href={pageUrl} />
+        <meta name="robots" content="index, follow, max-image-preview:large" />
         {post.arabicSlug && (
           <>
             <link rel="alternate" hrefLang="en-KW" href={pageUrl} />
@@ -646,13 +658,33 @@ export default function BlogPostTemplate() {
             <link rel="alternate" hrefLang="x-default" href={pageUrl} />
           </>
         )}
-        <meta property="og:type" content="article" />
-        <meta property="og:title" content={post.seoTitle || post.title} />
-        <meta property="og:description" content={post.description || post.excerpt} />
-        {post.image && <meta property="og:image" content={post.image} />}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={post.seoTitle || post.title} />
-        <meta name="twitter:description" content={post.description || post.excerpt} />
+        {(() => {
+          const socialImage = toAbsoluteAssetUrl(post.discoverImage || post.image);
+          const discoverReady = Boolean(post.discoverImage);
+          return (
+            <>
+              <meta property="og:type" content="article" />
+              <meta property="og:title" content={post.seoTitle || post.title} />
+              <meta property="og:description" content={post.description || post.excerpt} />
+              <meta property="og:url" content={pageUrl} />
+              <meta property="og:site_name" content={business.legalName} />
+              <meta property="og:locale" content="en_KW" />
+              <meta property="og:image" content={socialImage} />
+              {discoverReady && <meta property="og:image:width" content="1200" />}
+              {discoverReady && <meta property="og:image:height" content="675" />}
+              <meta property="og:image:alt" content={post.title} />
+              <meta property="og:image:type" content="image/webp" />
+              <meta property="article:published_time" content={post.date} />
+              <meta property="article:modified_time" content={getModifiedDate(post)} />
+              <meta property="article:section" content={isGuide ? "Guides" : post.category} />
+              <meta name="twitter:card" content="summary_large_image" />
+              <meta name="twitter:title" content={post.seoTitle || post.title} />
+              <meta name="twitter:description" content={post.description || post.excerpt} />
+              <meta name="twitter:image" content={socialImage} />
+              <meta name="twitter:image:alt" content={post.title} />
+            </>
+          );
+        })()}
       </Head>
 
       <SchemaMarkup schema={SCHEMA_DATA} />
