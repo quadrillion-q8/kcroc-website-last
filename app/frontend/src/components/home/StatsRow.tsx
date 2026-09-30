@@ -15,7 +15,7 @@ export const StatsRow = () => {
         {stats.map((s: any, i: number) => (
           <div key={i} className="text-center px-1.5 py-3 sm:px-4 sm:py-8">
             <div className="text-lg sm:text-3xl font-black text-white mb-0.5 sm:mb-1">{s.value}</div>
-            <div className="text-[8px] sm:text-xs font-bold text-emerald-500 uppercase tracking-wider leading-tight">{s.label}</div>
+            <div className="text-[8px] sm:text-xs font-bold text-[#dfa86f] uppercase tracking-wider leading-tight">{s.label}</div>
             <div className="hidden sm:block text-[10px] text-slate-500 mt-1 sm:mt-2">{s.sub}</div>
           </div>
         ))}
