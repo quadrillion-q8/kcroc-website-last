@@ -446,6 +446,7 @@ export default function BlogPostTemplate() {
   const { slug } = useParams<{ slug: string }>();
   const location = useLocation();
   const isGuide = location.pathname.startsWith('/guides/');
+  const isNews = location.pathname.startsWith('/news/');
   const contentRoute = (post: BlogPost) =>
     getContentRoute(post.slug, post.contentType ?? 'blog');
   const post = BLOG_POSTS.find((p) => p.slug === slug);
@@ -594,7 +595,7 @@ export default function BlogPostTemplate() {
           "isPartOf": { "@id": `${business.websiteUrl}/#website` }
         },
         {
-          "@type": isGuide ? "Article" : ["BlogPosting", "Article"],
+          "@type": isNews ? "NewsArticle" : isGuide ? "Article" : ["BlogPosting", "Article"],
           "@id": `${pageUrl}#article`,
           "headline": post.title,
           "description": post.excerpt,
@@ -614,7 +615,7 @@ export default function BlogPostTemplate() {
           "@id": `${pageUrl}#breadcrumb`,
           "itemListElement": [
             { "@type": "ListItem", "position": 1, "name": "Home", "item": business.websiteUrl },
-            { "@type": "ListItem", "position": 2, "name": isGuide ? "Guides" : "Blog", "item": `${business.websiteUrl}${isGuide ? ROUTES.GUIDES : ROUTES.BLOG}` },
+            { "@type": "ListItem", "position": 2, "name": isNews ? "News" : isGuide ? "Guides" : "Blog", "item": `${business.websiteUrl}${isNews ? ROUTES.NEWS : isGuide ? ROUTES.GUIDES : ROUTES.BLOG}` },
             { "@type": "ListItem", "position": 3, "name": post.title, "item": pageUrl }
           ]
         },
@@ -629,10 +630,10 @@ export default function BlogPostTemplate() {
         }] : [])
       ]
     };
-  }, [post, pageUrl, allFaqItems, isGuide]);
+  }, [post, pageUrl, allFaqItems, isGuide, isNews]);
 
   // All hooks have now run unconditionally on every render — safe to bail out.
-  if (!post) return <Navigate to={isGuide ? ROUTES.GUIDES : ROUTES.BLOG} replace />;
+  if (!post) return <Navigate to={isNews ? ROUTES.NEWS : isGuide ? ROUTES.GUIDES : ROUTES.BLOG} replace />;
 
   const isGamingPerformanceGuide = post.slug === 'windows-gaming-performance-stutter-fix';
   const isWindowsTroubleshootingGuide = [
@@ -654,7 +655,7 @@ export default function BlogPostTemplate() {
         {post.arabicSlug && (
           <>
             <link rel="alternate" hrefLang="en-KW" href={pageUrl} />
-            <link rel="alternate" hrefLang="ar-KW" href={`${business.websiteUrl}/blog/${post.arabicSlug}`} />
+            <link rel="alternate" hrefLang="ar-KW" href={`${business.websiteUrl}${isNews ? '/news/' : '/blog/'}${post.arabicSlug}`} />
             <link rel="alternate" hrefLang="x-default" href={pageUrl} />
           </>
         )}
@@ -676,7 +677,7 @@ export default function BlogPostTemplate() {
               <meta property="og:image:type" content="image/webp" />
               <meta property="article:published_time" content={post.date} />
               <meta property="article:modified_time" content={getModifiedDate(post)} />
-              <meta property="article:section" content={isGuide ? "Guides" : post.category} />
+              <meta property="article:section" content={isNews ? `News — ${post.category}` : isGuide ? "Guides" : post.category} />
               <meta name="twitter:card" content="summary_large_image" />
               <meta name="twitter:title" content={post.seoTitle || post.title} />
               <meta name="twitter:description" content={post.description || post.excerpt} />
@@ -701,7 +702,7 @@ export default function BlogPostTemplate() {
         <ol className="flex items-center gap-2 text-sm text-slate-400 overflow-x-auto pb-2 scrollbar-hide">
           <li><Link to={ROUTES.HOME} className="hover:text-cyan-400">Home</Link></li>
           <ChevronRight size={14} aria-hidden="true" />
-          <li><Link to={isGuide ? ROUTES.GUIDES : ROUTES.BLOG} className="hover:text-cyan-400">{isGuide ? "Guides" : "Blog"}</Link></li>
+          <li><Link to={isNews ? ROUTES.NEWS : isGuide ? ROUTES.GUIDES : ROUTES.BLOG} className="hover:text-cyan-400">{isNews ? "News" : isGuide ? "Guides" : "Blog"}</Link></li>
           <ChevronRight size={14} aria-hidden="true" />
           <li className="text-cyan-400 truncate" aria-current="page">{post.title}</li>
         </ol>
@@ -712,8 +713,8 @@ export default function BlogPostTemplate() {
         <div>
           <article className="max-w-4xl" ref={articleRef}>
             <header className="mb-12">
-              <Link to={isGuide ? ROUTES.GUIDES : ROUTES.BLOG} className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors mb-8 font-medium">
-                <ArrowLeft size={16} aria-hidden="true" /> Back to {isGuide ? "Guides" : "Blog"}
+              <Link to={isNews ? ROUTES.NEWS : isGuide ? ROUTES.GUIDES : ROUTES.BLOG} className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors mb-8 font-medium">
+                <ArrowLeft size={16} aria-hidden="true" /> Back to {isNews ? "News" : isGuide ? "Guides" : "Blog"}
               </Link>
 
               <div className="flex flex-wrap gap-4 text-xs font-bold text-slate-400 mb-6 uppercase tracking-wider">
