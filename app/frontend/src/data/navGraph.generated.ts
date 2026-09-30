@@ -795,7 +795,17 @@ export const NAV_GRAPH = {
       "primaryKeyword": "laptop buying guide kuwait (2026): what the spec sheet won't tell you"
     }
   ],
-  "newsEntries": [],
+  "newsEntries": [
+    {
+      "id": "news-windows-11-26h2-iso-released",
+      "slug": "news/windows-11-26h2-iso-released",
+      "title": "Windows 11 26H2 ISO Is Now Available — What PC Users Should Know Before Installing",
+      "description": "Windows 11 26H2 ISO is now available. Learn the official download options, requirements, upgrade vs clean install paths, installation troubleshooting and post-install checks.",
+      "iconKey": "shield",
+      "date": "2026-09-30",
+      "primaryKeyword": "Windows 11 26H2"
+    }
+  ],
   "guideEntries": [
     {
       "id": "guide-laptop-overheating",
