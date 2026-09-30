@@ -456,6 +456,23 @@ export const rawGraphData: RawGraphData = {
       }
     } as WebPageEntity,
 
+    'guide-laptop-overheating': {
+      id: 'guide-laptop-overheating',
+      slug: 'guides/why-is-my-laptop-so-hot',
+      entityType: 'WebPage',
+      isActive: true,
+      title: 'Why Is My Laptop So Hot? Overheating Causes, Diagnosis & Fixes',
+      description: 'A practical laptop overheating diagnostic guide covering airflow, dust, fan problems, workload, thermal throttling, temperature interpretation and when to seek repair.',
+      seo: {
+        title: 'Why Is My Laptop So Hot? Overheating Causes & Fixes | KCROC',
+        description: 'Why is your laptop so hot? Diagnose airflow, dust, fan faults, thermal throttling and workload-related heat with this evidence-first troubleshooting guide.',
+        canonicalUrl: 'https://www.computerrepairkuwait.com/guides/why-is-my-laptop-so-hot',
+        lastModified: '2026-09-30T00:00:00+03:00',
+        ogType: 'article',
+        schemaTypes: ['WebPage']
+      }
+    } as WebPageEntity,
+
     'guide-windows-10-eos': {
       id: 'guide-windows-10-eos',
       slug: 'guides/windows-10-end-of-support',
