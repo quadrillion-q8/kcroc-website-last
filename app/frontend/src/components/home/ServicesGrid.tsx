@@ -28,10 +28,10 @@ const ServiceCard = React.memo(({ service, idx }: { service: ServiceEntity, idx:
     >
       <Link
         to={`/${service.slug}`}
-        className="group block relative bg-kcroc-card rounded-2xl border border-white/[0.08] hover:border-kcroc-cyan transition-all duration-300 h-full overflow-hidden"
+        className="group block relative bg-kcroc-card rounded-[16px] border border-white/[0.08] hover:border-kcroc-cyan transition-[border-color,background-color,transform] duration-300 hover:-translate-y-px h-full overflow-hidden"
       >
         {cardImage && (
-          <div className="relative h-24 sm:h-36 overflow-hidden">
+          <div className="relative h-28 sm:h-40 overflow-hidden">
             <img
               src={cardImage.src}
               alt={cardImage.alt}
@@ -51,7 +51,7 @@ const ServiceCard = React.memo(({ service, idx }: { service: ServiceEntity, idx:
             <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-kcroc-cyan" />
           </div>
 
-          <h3 className="text-[13px] sm:text-sm font-semibold text-white leading-tight">
+          <h3 className="text-sm sm:text-[15px] font-semibold text-white leading-tight">
             {service.title}
           </h3>
 
@@ -59,7 +59,7 @@ const ServiceCard = React.memo(({ service, idx }: { service: ServiceEntity, idx:
             {cardText}
           </p>
 
-          <div className="text-kcroc-emerald text-[10px] sm:text-[11px] font-bold flex items-center gap-1 mt-1 sm:mt-2">
+          <div className="text-[#dfa86f] text-[11px] sm:text-xs font-bold flex items-center gap-1 mt-1 sm:mt-2">
             <i className="ti ti-clock" aria-hidden="true" />
             Learn more
           </div>
@@ -81,7 +81,7 @@ export default function ServicesGrid() {
       <div className="max-w-6xl mx-auto">
         <SectionHeader
           eyebrow="What we fix"
-          tone="cyan"
+          tone="copper"
           title="Laptop, MacBook & Computer Repair Services"
           description="From everyday laptop faults to board-level repairs, with dedicated pages for each service."
           className="mb-4 sm:mb-8"
