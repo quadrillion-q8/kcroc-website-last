@@ -20,6 +20,7 @@ export default function Hero() {
   const reviewCount = business?.aggregateRating?.reviewCount ?? 150;
   const headline = hero?.headline ?? "Kuwait's Expert Component-Level Repair Service.";
   const desktopImage = '/images/kcroc-laptop-repair-technicians-hawalli-kuwait.webp';
+  const heroImage768 = '/images/kcroc-laptop-repair-technicians-hawalli-kuwait.w768.webp';
 
   useEffect(() => {
     const loadingTimer = setTimeout(() => setStatsLoading(false), 500);
@@ -110,7 +111,18 @@ export default function Hero() {
           </div>
 
           <div className="kcroc-photo-frame kcroc-copper-glow mt-6 aspect-[4/3] bg-slate-900">
-            <img src={desktopImage} alt="KCROC technician working on a laptop in the Hawalli repair laboratory" width="900" height="900" loading="eager" fetchPriority="high" decoding="async" className="h-full w-full object-cover object-center" />
+            <img
+              src={heroImage768}
+              srcSet={`${heroImage768} 768w, ${desktopImage} 1000w`}
+              sizes="(max-width: 1023px) 100vw, 50vw"
+              alt="KCROC technician working on a laptop in the Hawalli repair laboratory"
+              width="1000"
+              height="1000"
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
+              className="h-full w-full object-cover object-center"
+            />
             <div className="absolute inset-x-3 bottom-3 z-10 flex items-center justify-between rounded-xl border border-white/[0.10] bg-black/[0.45] px-3 py-2 backdrop-blur-md">
               <span className="text-[10px] font-bold uppercase tracking-[0.12em] text-white">Hawalli workshop</span>
               <span className="text-[10px] font-bold text-cyan-300">Open 10 AM–10 PM</span>
@@ -191,7 +203,18 @@ export default function Hero() {
                 </div>
 
                 <div className="kcroc-photo-frame kcroc-copper-glow aspect-[4/3] bg-slate-900">
-                  <img src={desktopImage} alt="KCROC technicians working in the Hawalli computer repair workshop" width="1000" height="1000" loading="eager" fetchPriority="high" decoding="async" className="h-full w-full object-cover object-center transition-transform duration-500 hover:scale-[1.015]" />
+                  <img
+                    src={heroImage768}
+                    srcSet={`${heroImage768} 768w, ${desktopImage} 1000w`}
+                    sizes="(min-width: 1280px) 50vw, 52vw"
+                    alt="KCROC technicians working in the Hawalli computer repair workshop"
+                    width="1000"
+                    height="1000"
+                    loading="eager"
+                    fetchPriority="high"
+                    decoding="async"
+                    className="h-full w-full object-cover object-center transition-transform duration-500 hover:scale-[1.015]"
+                  />
                   <div className="absolute inset-x-5 bottom-5 z-10 rounded-2xl border border-white/[0.10] bg-[#0b1113]/[0.78] p-4 backdrop-blur-xl">
                     <div className="flex items-end justify-between gap-4">
                       <div>
