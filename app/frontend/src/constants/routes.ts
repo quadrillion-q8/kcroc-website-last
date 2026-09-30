@@ -3,6 +3,7 @@
 export const ROUTES = {
   // --- CORE STATIC PAGES ---
   HOME: '/',
+  NEWS: '/news',
   ABOUT: '/about',
   SERVICES: '/services',      
   CONTACT: '/contact',
@@ -21,6 +22,7 @@ export const ROUTES = {
   LOCATION_DETAIL: '/location/:locationSlug', // Audit correction: Location routing
   BLOG_DETAIL: '/blog/:slug',                // Dynamic blog post route
   GUIDE_DETAIL: '/guides/:slug',             // Dynamic guide post route
+  NEWS_DETAIL: '/news/:slug',                // Dynamic news article route
 
   // --- SYSTEM ---
   NOT_FOUND: '*'
@@ -33,7 +35,12 @@ export const getGuideRoute = (slug: string) => `/guides/${slug}`;
 
 // Content posts can be rendered by the shared BlogPostTemplate while keeping
 // their public information architecture explicit and crawlable.
-export const getContentRoute = (slug: string, contentType: BlogPostRoute = 'blog') =>
-  contentType === 'guide' ? getGuideRoute(slug) : getBlogRoute(slug);
+export const getNewsRoute = (slug: string) => `/news/${slug}`;
 
-export type BlogPostRoute = 'blog' | 'guide';
+export const getContentRoute = (slug: string, contentType: BlogPostRoute = 'blog') => {
+  if (contentType === 'guide') return getGuideRoute(slug);
+  if (contentType === 'news') return getNewsRoute(slug);
+  return getBlogRoute(slug);
+};
+
+export type BlogPostRoute = 'blog' | 'guide' | 'news';
