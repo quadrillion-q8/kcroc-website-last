@@ -34,6 +34,7 @@ const ServiceCard = React.memo(({ service, idx }: { service: ServiceEntity, idx:
           <div className="relative h-28 sm:h-40 overflow-hidden">
             <img
               src={cardImage.src}
+              srcSet={`${cardImage.src.replace(/\.webp$/, '.w480.webp')} 480w, ${cardImage.src} ${cardImage.width || 1000}w`}
               alt={cardImage.alt}
               width={cardImage.width}
               height={cardImage.height}
