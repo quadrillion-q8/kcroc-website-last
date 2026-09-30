@@ -156,6 +156,13 @@ export const ServiceSchema = RoutableEntitySchema.extend({
     question: z.string(),
     answer: z.string(),
   })).optional(),
+  // Symptom-first navigation for high-intent service pages. These links surface
+  // the customer's actual problem before the general service details.
+  symptomLinks: z.array(z.object({
+    label: z.string(),
+    path: z.string(),
+    description: z.string(),
+  })).optional(),
   process: z.array(z.object({
     step: z.number(),
     title: z.string(),
