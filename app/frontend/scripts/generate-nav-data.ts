@@ -153,6 +153,10 @@ const guideEntries = [...contentEntries.values()]
   .filter((entry) => entry.slug.startsWith('guides/'))
   .sort((a, b) => b.date.localeCompare(a.date) || a.slug.localeCompare(b.slug));
 
+const newsEntries = [...contentEntries.values()]
+  .filter((entry) => entry.slug.startsWith('news/'))
+  .sort((a, b) => b.date.localeCompare(a.date) || a.slug.localeCompare(b.slug));
+
 const navData = {
   // The Business entity itself is small (~600 bytes) — Header/Footer need
   // most of its fields (phone, logo, socials, address, rating, hours), so it
@@ -171,6 +175,7 @@ const navData = {
   locations: (KCROC_GRAPH.locations ?? []).map(slimLocation),
   blogEntries,
   guideEntries,
+  newsEntries,
 };
 
 const banner = `// File: app/frontend/src/data/navGraph.generated.ts
