@@ -19,6 +19,7 @@ import {
 } from 'lucide-react';
 import { MegaMenuConfig, NavEntity } from '../../navigation/types';
 import { useAnalytics } from '../../analytics/AnalyticsProvider';
+import { NAV_GRAPH } from '../../../data/navGraph.generated';
 
 const ICON_REGISTRY: Record<string, React.ElementType> = {
   apple: Apple,
@@ -443,7 +444,7 @@ export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnte
             </div>
           </div>
           <a
-            href="https://wa.me/96555301913"
+            href={`https://wa.me/${NAV_GRAPH.business!.telephone}`}
             target="_blank"
             rel="noreferrer"
             onClick={() => trackConversion('cta_click', { cta_name: 'mega_menu_whatsapp', button_position: 'header' })}
