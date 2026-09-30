@@ -240,6 +240,31 @@ export const rawGraphData: RawGraphData = {
     'page-404': { id: 'page-404', slug: '404', entityType: 'WebPage', isActive: true, title: 'Page Not Found', description: 'The requested KCROC page could not be found.', seo: { title: 'Page Not Found | KCROC Kuwait', description: 'The requested page could not be found.', canonicalUrl: 'https://www.computerrepairkuwait.com/404', ogType: 'website', robots: 'noindex, follow, max-image-preview:none', schemaTypes: ['WebPage'] } } as WebPageEntity,
     'page-blog': { id: 'page-blog', slug: 'blog', entityType: 'WebPage', isActive: true, title: 'Tech Blog', description: 'Expert repair guides and tech insights.', seo: { title: 'KCROC Tech Blog | Computer Repair Guides Kuwait', description: 'Expert computer repair guides, laptop fixes, MacBook troubleshooting, and PC performance tips in Kuwait.', canonicalUrl: 'https://www.computerrepairkuwait.com/blog', ogType: 'website', schemaTypes: ['CollectionPage'] } } as WebPageEntity,
     'page-news': { id: 'page-news', slug: 'news', entityType: 'WebPage', isActive: true, title: 'KCROC Tech News', description: 'Current computer, Windows, hardware, gaming, Apple, cybersecurity and AI technology news explained with practical technician context.', seo: { title: 'KCROC Tech News | Windows, Hardware & Gaming News Kuwait', description: 'Latest computer, Windows, hardware, gaming, Apple, cybersecurity and AI technology news — explained by KCROC technicians for practical next steps.', canonicalUrl: 'https://www.computerrepairkuwait.com/news', ogType: 'website', schemaTypes: ['CollectionPage', 'WebPage', 'BreadcrumbList'], breadcrumbs: [{ name: 'Home', url: '/' }, { name: 'News', url: '/news' }], lastModified: '2026-09-30T00:00:00+03:00' } } as WebPageEntity,
+    'news-windows-11-26h2-iso-released': {
+      id: 'news-windows-11-26h2-iso-released',
+      slug: 'news/windows-11-26h2-iso-released',
+      entityType: 'WebPage',
+      isActive: true,
+      title: 'Windows 11 26H2 ISO Is Now Available — What PC Users Should Know Before Installing',
+      description: 'Windows 11 26H2 ISO is now available. Learn the official download options, requirements, upgrade vs clean install paths, installation troubleshooting and post-install checks.',
+      seo: {
+        title: 'Windows 11 26H2 ISO: Install, Upgrade & Fixes | KCROC',
+        description: 'Windows 11 26H2 ISO is now available. See official download options, requirements, upgrade vs clean install steps, and troubleshooting checks.',
+        canonicalUrl: 'https://www.computerrepairkuwait.com/news/windows-11-26h2-iso-released',
+        ogImage: 'https://www.computerrepairkuwait.com/images/discover/windows-os-software-repair-and-installation-kuwait-1200x675.webp',
+        ogType: 'article',
+        schemaTypes: ['WebPage'],
+        lastModified: '2026-09-30T00:00:00+03:00',
+        breadcrumbs: [{ name: 'Home', url: '/' }, { name: 'News', url: '/news' }, { name: 'Windows 11 26H2 ISO Is Now Available', url: '/news/windows-11-26h2-iso-released' }]
+      },
+      relatedServiceIds: ['srv-laptop', 'srv-ssd-ram', 'srv-motherboard', 'srv-gaming'],
+      relatedResourcePaths: [
+        { label: 'Windows 11 Update Problems', path: '/guides/windows-11-update-problems' },
+        { label: 'SSD Not Detected in Windows 11', path: '/guides/ssd-not-detected-windows-11' },
+        { label: 'BIOS & UEFI Recovery', path: '/guides/bios-uefi-recovery-kuwait' },
+        { label: 'Windows 11 100% Disk Usage', path: '/blog/windows-11-100-disk-usage-causes-solutions' }
+      ]
+    } as WebPageEntity,
     'blog-windows-11-100-disk-usage': { id: 'blog-windows-11-100-disk-usage', slug: 'blog/windows-11-100-disk-usage-causes-solutions', entityType: 'WebPage', isActive: true, title: 'Windows 11 100% Disk Usage: Causes & Solutions', description: 'Windows 11 100% Disk Usage? Learn how to identify the process, separate software from hardware causes, and know when an SSD upgrade or professional diagnosis makes sense.', seo: { title: 'Windows 11 100% Disk Usage: Causes & Fixes | KCROC', description: 'Windows 11 100% Disk Usage? Learn the causes, safe fixes, HDD vs SSD warning signs, RAM paging, and when an SSD upgrade or KCROC diagnosis makes sense.', canonicalUrl: 'https://www.computerrepairkuwait.com/blog/windows-11-100-disk-usage-causes-solutions', ogType: 'article', schemaTypes: ['BlogPosting', 'Article', 'FAQPage', 'BreadcrumbList', 'Person'], lastModified: '2026-09-22T00:00:00+03:00' }, relatedServiceIds: ['srv-laptop', 'srv-ssd-ram'] } as WebPageEntity,
     'blog-laptop-slow-2026': { id: 'blog-laptop-slow-2026', slug: 'blog/why-is-my-laptop-so-slow-2026', entityType: 'WebPage', isActive: true, title: 'Why Is My Laptop So Slow in 2026? 15 Causes, Tests & Fixes', description: 'Diagnose 15 common causes of a slow laptop in 2026, including RAM pressure, storage, overheating, startup apps, Windows 11, unwanted software and hardware faults.', seo: { title: 'Why Is My Laptop So Slow in 2026? Causes & Fixes | KCROC', description: 'Why is your laptop so slow in 2026? Diagnose 15 common causes including RAM, SSD/HDD, 100% disk usage, overheating, startup apps, Windows 11 and hardware faults.', canonicalUrl: 'https://www.computerrepairkuwait.com/blog/why-is-my-laptop-so-slow-2026', ogType: 'article', schemaTypes: ['BlogPosting', 'Article', 'FAQPage', 'BreadcrumbList', 'Person'], lastModified: '2026-09-26T00:00:00+03:00' }, relatedServiceIds: ['srv-laptop', 'srv-ssd-ram'] } as WebPageEntity,
     'blog-laptop-wont-turn-on-causes-fixes': {
