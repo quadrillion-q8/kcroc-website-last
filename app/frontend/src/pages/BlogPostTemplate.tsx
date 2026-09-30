@@ -640,7 +640,7 @@ export default function BlogPostTemplate() {
           "publisher": {
             "@type": "Organization",
             "name": business.legalName,
-            "logo": { "@type": "ImageObject", "url": `${business.websiteUrl}/logo.webp`, "width": 224, "height": 224 }
+            "logo": { "@type": "ImageObject", "url": `${business.websiteUrl}/logo.webp`, "width": 1024, "height": 1024 }
           },
           "mainEntityOfPage": { "@id": `${pageUrl}#webpage` }
         },
