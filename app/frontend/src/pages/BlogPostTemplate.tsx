@@ -290,6 +290,14 @@ const INTERNAL_LINK_LABELS: Record<string, string> = {
     'Windows 11 100% Disk Usage: Causes & Solutions',
   'https://www.computerrepairkuwait.com/guides/bios-uefi-recovery-kuwait':
     'BIOS & UEFI Recovery Guide',
+  'https://www.computerrepairkuwait.com/guides/windows-gaming-frame-time-stutter':
+    'Gaming Stutter With High FPS',
+  'https://www.computerrepairkuwait.com/guides/shader-compilation-stutter-windows':
+    'Shader Compilation Stutter',
+  'https://www.computerrepairkuwait.com/guides/dpc-latency-gaming-stutter':
+    'DPC Latency & Gaming Stutter',
+  'https://www.computerrepairkuwait.com/gaming-pc-repair-kuwait':
+    'Gaming PC & GPU Repair Kuwait',
 };
 
 const TECHNICAL_SOURCE_LABELS: Record<string, string> = {
@@ -322,7 +330,17 @@ const TECHNICAL_SOURCE_LABELS: Record<string, string> = {
   'https://learn.microsoft.com/en-us/samples/microsoft/directx-graphics-samples/d3d12-pipeline-state-cache-sample-win32/':
     'Microsoft Learn — Direct3D 12 pipeline-state cache sample',
   'https://support.microsoft.com/en-us/windows/hardware/display-graphics/optimizations-for-windowed-games-in-windows-11':
-    'Microsoft Support — Optimizations for windowed games in Windows 11',
+    'Microsoft — Optimizations for windowed games in Windows 11',
+  'https://www.nvidia.com/en-gb/geforce/news/geforce-rtx-30-series-resizable-bar-support/':
+    'NVIDIA — Resizable BAR',
+  'https://www.amd.com/en/products/processors/chipsets/am5.html':
+    'AMD — AM5 and EXPO platform information',
+  'https://docs.amd.com/r/en-US/68886-ryzen-master-user-guide/Curve-Optimizer':
+    'AMD — Ryzen Master Curve Optimizer',
+  'https://www.nvidia.com/en-us/geforce/technologies/reflex/':
+    'NVIDIA — Reflex',
+  'https://www.nvidia.com/en-gb/geforce/guides/system-latency-optimization-guide/':
+    'NVIDIA — System latency optimization',
 };
 
 const getTechnicalSourceLabel = (url: string) => TECHNICAL_SOURCE_LABELS[url] ?? 'Microsoft Support source';
@@ -340,35 +358,41 @@ const getInternalLinkPath = (url: string) => {
 const linkTechnicalSources = (text: string) => {
   const urlRegex = /(https:\/\/[^\s]+)/g;
   const parts = text.split(urlRegex);
+
   return parts.map((part, index) => {
     if (!part.startsWith('https://')) {
       return <React.Fragment key={index}>{part}</React.Fragment>;
     }
 
-    const internalPath = getInternalLinkPath(part);
-    if (internalPath) {
-      return (
-        <Link
-          key={`${part}-${index}`}
-          to={internalPath}
-          className="text-cyan-400 hover:text-cyan-300 underline underline-offset-2"
-        >
-          {INTERNAL_LINK_LABELS[part]}
-        </Link>
-      );
-    }
+    // Sentence punctuation often follows a URL in article prose.
+    // Keep that punctuation outside the link so exact source/internal mappings still resolve.
+    const cleanUrl = part.replace(/[.,!?;:)\]]+$/g, '');
+    const trailingPunctuation = part.slice(cleanUrl.length);
 
-    return (
+    const internalPath = getInternalLinkPath(cleanUrl);
+    const link = internalPath ? (
+      <Link
+        key={`${cleanUrl}-${index}`}
+        to={internalPath}
+        className="text-cyan-400 hover:text-cyan-300 underline underline-offset-2"
+      >
+        {INTERNAL_LINK_LABELS[cleanUrl]}
+      </Link>
+    ) : (
       <a
-        key={`${part}-${index}`}
-        href={part}
+        key={`${cleanUrl}-${index}`}
+        href={cleanUrl}
         target="_blank"
         rel="noopener noreferrer"
         className="text-cyan-400 hover:text-cyan-300 underline underline-offset-2"
       >
-        {getTechnicalSourceLabel(part)}
+        {getTechnicalSourceLabel(cleanUrl)}
       </a>
     );
+
+    return trailingPunctuation
+      ? <React.Fragment key={`${cleanUrl}-${index}-with-punctuation`}>{link}{trailingPunctuation}</React.Fragment>
+      : link;
   });
 };
 
@@ -731,7 +755,10 @@ export default function BlogPostTemplate() {
   // All hooks have now run unconditionally on every render — safe to bail out.
   if (!post) return <Navigate to={isNews ? ROUTES.NEWS : isGuide ? ROUTES.GUIDES : ROUTES.BLOG} replace />;
 
-  const isGamingPerformanceGuide = post.slug === 'windows-gaming-performance-stutter-fix';
+  const isGamingPerformanceGuide = [
+    'gaming-pc-optimization-2026',
+    'windows-gaming-performance-stutter-fix',
+  ].includes(post.slug);
   const isWindowsTroubleshootingGuide = [
     'windows-11-wifi-keeps-disconnecting',
     'windows-11-connected-to-wifi-but-no-internet',
