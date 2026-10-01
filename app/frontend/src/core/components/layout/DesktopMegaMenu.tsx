@@ -152,7 +152,7 @@ export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnte
   const allHref = indexItem ? getEntityHref(indexItem) : meta.allHref;
   const allLabel = indexItem ? meta.allLabel : meta.allLabel;
   const isAboutMenu = config.id === 'about_mega';
-  const panelWidth = isAboutMenu ? 1080 : 1120;
+  const panelWidth = isAboutMenu ? 1000 : 1040;
 
   const getClampedLeft = () => {
     if (typeof window === 'undefined') return '50%';
@@ -257,7 +257,7 @@ export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnte
         <div className="pointer-events-none absolute -top-24 -right-16 h-64 w-64 rounded-full bg-[#c9804d]/10 blur-3xl" />
         <div className="pointer-events-none absolute -bottom-28 -left-16 h-72 w-72 rounded-full bg-[#dfaa62]/[0.035] blur-3xl" />
 
-        <div className="relative border-b border-white/[0.08] px-6 py-5 lg:px-7 lg:py-6">
+        <div className="relative border-b border-white/[0.08] px-5 py-4 lg:px-6 lg:py-5">
           <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
             <div className="min-w-0 max-w-3xl">
               <div className="mb-2 flex flex-wrap items-center gap-2">
@@ -268,7 +268,7 @@ export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnte
                 </span>
               </div>
               <div className="flex items-baseline gap-3">
-                <h2 className="!m-0 !text-2xl font-black tracking-[-0.035em] text-white lg:!text-[30px]">{config.title}</h2>
+                <h2 className="!m-0 !text-2xl font-black tracking-[-0.035em] text-white lg:!text-[28px]">{config.title}</h2>
               </div>
               <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-400">{meta.subtitle}</p>
             </div>
@@ -311,7 +311,7 @@ export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnte
                         trackConversion('cta_click', { cta_name: 'mega_menu_card', button_position: 'header' });
                         onClose();
                       }}
-                      className="group flex min-h-[108px] items-start gap-3 rounded-[16px] border border-white/[0.075] bg-white/[0.023] p-4 transition-[transform,border-color,background-color] hover:-translate-y-px hover:border-[#c9804d]/30 hover:bg-[#c9804d]/[0.055] motion-reduce:transition-none motion-reduce:hover:translate-y-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f]"
+                      className="group flex min-h-[100px] items-start gap-3 rounded-[16px] border border-white/[0.075] bg-white/[0.023] p-3.5 transition-[transform,border-color,background-color] hover:-translate-y-px hover:border-[#c9804d]/30 hover:bg-[#c9804d]/[0.055] motion-reduce:transition-none motion-reduce:hover:translate-y-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f]"
                     >
                       <div className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[#c9804d]/25 bg-[#c9804d]/10 text-[#dfa86f] transition-colors group-hover:border-[#c9804d]/45 group-hover:bg-[#c9804d]/15">
                         <Icon className="h-[18px] w-[18px]" aria-hidden="true" />
@@ -359,7 +359,7 @@ export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnte
             </section>
           </div>
         ) : (
-          <div className="relative max-h-[calc(100vh-280px)] overflow-y-auto p-5 lg:p-6">
+          <div className="relative max-h-[calc(100vh-280px)] overflow-y-auto p-4 lg:p-5">
             {config.featured?.length ? (
               <section aria-labelledby={`${config.id}-featured`}>
                 <div className="mb-3 flex items-end justify-between gap-3 px-1">
@@ -384,7 +384,7 @@ export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnte
                           trackConversion('cta_click', { cta_name: 'mega_menu_featured', button_position: 'header' });
                           onClose();
                         }}
-                        className="group flex min-h-[112px] items-start gap-3 rounded-[16px] border border-white/[0.075] bg-white/[0.023] p-4 transition-[transform,border-color,background-color] hover:-translate-y-px hover:border-[#c9804d]/30 hover:bg-[#c9804d]/[0.055] motion-reduce:transition-none motion-reduce:hover:translate-y-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f]"
+                        className="group flex min-h-[104px] items-start gap-3 rounded-[16px] border border-white/[0.075] bg-white/[0.023] p-3.5 transition-[transform,border-color,background-color] hover:-translate-y-px hover:border-[#c9804d]/30 hover:bg-[#c9804d]/[0.055] motion-reduce:transition-none motion-reduce:hover:translate-y-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f]"
                       >
                         <div className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[#c9804d]/25 bg-[#c9804d]/10 text-[#dfa86f] transition-colors group-hover:border-[#c9804d]/45 group-hover:bg-[#c9804d]/15">
                           <Icon className="h-[18px] w-[18px]" aria-hidden="true" />
@@ -440,7 +440,7 @@ export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnte
           </div>
         )}
 
-        <div className="relative flex flex-col gap-3 border-t border-white/[0.08] bg-black/10 px-5 py-4 sm:flex-row sm:items-center sm:justify-between lg:px-6">
+        <div className="relative flex flex-col gap-2.5 border-t border-white/[0.08] bg-black/10 px-4 py-3.5 sm:flex-row sm:items-center sm:justify-between lg:px-5">
           <div className="flex items-start gap-3">
             <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#c9804d]/25 bg-[#c9804d]/10 text-[#dfa86f]">
               <MessageCircle className="h-4 w-4" aria-hidden="true" />
