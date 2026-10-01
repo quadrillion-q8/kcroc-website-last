@@ -4349,7 +4349,7 @@ export const BLOG_POSTS: BlogPost[] = [
         { feature: "CPU per-thread load", values: ["CPU bottleneck location", "Game-engine/CPU-bound diagnosis"] },
         { feature: "System latency", values: ["Input-to-display delay", "Competitive/high-refresh gaming"] }
       ] },
-      { type: "paragraph", text: "For an existing high-FPS stutter problem, continue into KCROC's dedicated guide: /guides/windows-gaming-frame-time-stutter." },
+      { type: "paragraph", text: "For an existing high-FPS stutter problem, continue into KCROC's dedicated guide: https://www.computerrepairkuwait.com/guides/windows-gaming-frame-time-stutter." },
       { type: "h2", text: "Step 2: Find the Real Bottleneck", id: "find-bottleneck" },
       { type: "comparisonTable", title: "Symptom-to-bottleneck map", columns: ["Observed pattern", "Likely branch", "First test"], rows: [
         { feature: "GPU stays around 95–99% and FPS rises when GPU settings are lowered", values: ["GPU-bound", "Lower one GPU-heavy setting and repeat the scene"] },
@@ -4409,10 +4409,10 @@ export const BLOG_POSTS: BlogPost[] = [
       ] },
       { type: "h2", text: "Shader Compilation and Asset Streaming", id: "shaders" },
       { type: "paragraph", text: "Some games compile shaders or prepare rendering pipelines when new effects, materials or areas are encountered. Asset streaming can create another class of transient hitch. If the same hitch happens predictably during first-use events and then becomes less frequent, that pattern differs from random system-wide frame-time spikes." },
-      { type: "paragraph", text: "Use KCROC's dedicated shader guide when the evidence points to first-use rendering work instead of deleting caches or reinstalling Windows automatically: /guides/shader-compilation-stutter-windows." },
+      { type: "paragraph", text: "Use KCROC's dedicated shader guide when the evidence points to first-use rendering work instead of deleting caches or reinstalling Windows automatically: https://www.computerrepairkuwait.com/guides/shader-compilation-stutter-windows." },
       { type: "h2", text: "DPC/ISR Latency: An Advanced Branch", id: "dpc" },
       { type: "paragraph", text: "Driver interrupt and Deferred Procedure Call activity can matter for latency-sensitive workloads, but a high latency measurement alone does not prove that one driver is causing every gaming hitch. Correlate timing with the actual symptom and use controlled device or driver tests before making broad changes." },
-      { type: "paragraph", text: "If the evidence points toward driver timing, continue with KCROC's advanced guide: /guides/dpc-latency-gaming-stutter." },
+      { type: "paragraph", text: "If the evidence points toward driver timing, continue with KCROC's advanced guide: https://www.computerrepairkuwait.com/guides/dpc-latency-gaming-stutter." },
       { type: "h2", text: "The Optimization Myths I Would Not Follow Blindly", id: "myths" },
       { type: "comparisonTable", title: "Claim vs evidence-based response", columns: ["Common claim", "Better response"], rows: [
         { feature: "Disable every Windows service for more FPS", values: ["Change only services linked to a measured problem and keep a rollback path"] },
@@ -4433,7 +4433,7 @@ export const BLOG_POSTS: BlogPost[] = [
       ] },
       { type: "h2", text: "When Optimization Turns Into Repair", id: "when-repair" },
       { type: "paragraph", text: "Optimization should stop when evidence points to failing or unstable hardware. Repeated crashes under GPU load, artifacts, abnormal temperatures, sudden shutdowns, storage errors, memory-test failures, unstable power behavior or performance that collapses as the machine heats up can require physical diagnosis." },
-      { type: "paragraph", text: "KCROC's Gaming PC & GPU Repair Kuwait service is the next branch when software tuning cannot explain the behavior: /gaming-pc-repair-kuwait." },
+      { type: "paragraph", text: "KCROC's Gaming PC & GPU Repair Kuwait service is the next branch when software tuning cannot explain the behavior: https://www.computerrepairkuwait.com/gaming-pc-repair-kuwait." },
       { type: "h2", text: "Kuwait Gaming PC Optimization: Heat Changes the Test Environment", id: "kuwait" },
       { type: "paragraph", text: "Kuwait's hot ambient conditions can reduce thermal headroom compared with a cooler test environment. For a gaming PC or laptop used heavily in Kuwait, compare performance at the beginning of a session with performance after sustained load. If temperatures rise while clocks or FPS fall, treat cooling as part of performance tuning rather than separate maintenance." },
       { type: "callout", variant: "recommendation", title: "The KCROC standard", text: "Diagnose first. Tune second. Repair only when the evidence points to hardware. The goal is repeatable gaming performance, not the largest possible list of tweaks." },
