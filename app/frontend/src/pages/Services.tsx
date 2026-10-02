@@ -1,7 +1,7 @@
 // File: app/frontend/src/pages/Services.tsx
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Laptop, Apple, Gamepad2, Cpu, Wrench, ChevronRight } from 'lucide-react';
+import { Laptop, Apple, Gamepad2, Cpu, Monitor, Wrench, ChevronRight } from 'lucide-react';
 import { KCROC_GRAPH } from '../data/graph';
 import { SEOEngine } from '../core/components/SEOEngine';
 
@@ -11,6 +11,7 @@ const ICON_MAP: Record<string, React.ElementType> = {
   'laptop': Laptop,
   'gaming': Gamepad2,
   'cpu': Cpu,
+  'monitor': Monitor,
 };
 
 export default function Services() {
