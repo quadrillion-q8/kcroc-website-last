@@ -1,7 +1,7 @@
 // File: app/frontend/src/pages/LocationDeepTemplate.tsx
 //
-// 🚀 RICH SERVICE-AREA LOCATION PAGE — /location/farwaniya, /location/salmiya,
-// /location/kuwait-city, /location/jahra, /location/ahmadi
+// 🚀 RICH SERVICE-AREA LOCATION PAGE — shared by all non-physical
+// /location/:slug service-area pages (Hawalli has its own dedicated branch page).
 //
 // Built to match the depth and layout of HawalliLocationPage.tsx (KCROC's
 // single physical branch), but data-driven off a `:slug` route param so all
@@ -11,7 +11,7 @@
 // specific case study or review) is read from KCROC_GRAPH, so nothing here
 // can drift out of sync with the rest of the site.
 //
-// Unlike Hawalli, these five locations are NOT physical branches — KCROC's
+// Unlike Hawalli, service-area locations are NOT physical branches — KCROC's
 // only walk-in lab is in Hawalli. So this template is honest about that:
 // no street address is presented as a local shop, "Get Directions" points
 // to the central Hawalli workshop where devices are actually repaired, and
