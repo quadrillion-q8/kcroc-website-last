@@ -167,18 +167,17 @@ export class NavigationCompiler {
     };
   }
 
-  // 5. Pricing Mega Menu
+  // 5. Pricing Mega Menu — retained for backwards compatibility, but the
+  // primary header now uses Pricing as a direct link so service cards do not
+  // appear inside the pricing navigation.
   private static compilePricingMegaMenu(): MegaMenuConfig {
-    const allServices = (NAV_GRAPH.services || []).map(s => this.compileNavEntity(s, 'Service', 'wrench'));
-    const sorted = [...allServices].sort((a, b) => b.weight - a.weight);
-
     const priceIndex: NavEntity = {
       id: 'pricing_index',
       slug: 'pricing',
       entityType: 'Page' as any,
       primaryKeyword: 'pricing',
       title: 'Full Price List',
-      description: 'Every repair price in one place',
+      description: 'See repair pricing and starting points before you book.',
       iconKey: 'laptop',
       weight: 100,
       commercialIntent: 'high',
@@ -187,10 +186,8 @@ export class NavigationCompiler {
     return {
       id: 'pricing_mega',
       title: 'Repair Pricing',
-      // 🎨 CONSISTENCY FIX: same 6-card grid as the Services menu (same
-      // underlying list), matching the Guides menu's layout.
-      featured: sorted.slice(0, 6),
-      sections: [{ title: `More Pricing (${Math.max(0, sorted.length - 6)})`, items: [priceIndex, ...sorted.slice(6)] }]
+      featured: [priceIndex],
+      sections: [],
     };
   }
 
@@ -459,30 +456,11 @@ export class NavigationCompiler {
       // stranded in a separate "More" pill list — into the card grid.
       featured: [
         { id: 'a1', slug: 'about', title: 'About Us', description: 'Our story and the team behind KCROC', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'about', weight: 0, commercialIntent: 'info' },
-        { id: 'a7', slug: 'near-me', title: 'Find Computer Repair Near You', description: 'Find your Kuwait service area and arrange pickup', iconKey: 'map-pin', entityType: 'Page' as any, primaryKeyword: 'computer repair near me', weight: 0, commercialIntent: 'transactional' },
-        { id: 'a2', slug: 'gallery', title: 'Gallery', description: 'A look inside the workshop', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'gallery', weight: 0, commercialIntent: 'info' },
         { id: 'a6', slug: 'contact', title: 'Contact', description: 'Get in touch or find our lab', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'contact', weight: 0, commercialIntent: 'info' },
         { id: 'a3', slug: 'faq', title: 'FAQ', description: 'Answers to common repair questions', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'faq', weight: 0, commercialIntent: 'info' },
         { id: 'a4', slug: 'privacy-security-kuwait', title: 'Privacy & Security', description: 'How we protect your data and devices', iconKey: 'shield', entityType: 'Page' as any, primaryKeyword: 'privacy', weight: 0, commercialIntent: 'info' },
       ],
-      sections: [
-        {
-          title: `Service Areas (${NAV_GRAPH.locations?.length ?? 0})`,
-          items: (NAV_GRAPH.locations ?? [])
-            .map((location) => ({
-              id: location.id,
-              slug: `location/${location.slug}`,
-              title: location.title === 'Hawalli Repair Center' ? 'Hawalli (Lab)' : location.title,
-              description: '',
-              iconKey: 'map-pin',
-              entityType: 'Page' as any,
-              primaryKeyword: location.title.toLowerCase(),
-              weight: location.navigationPriority ?? 0,
-              commercialIntent: 'info',
-            }))
-            .sort((a, b) => b.weight - a.weight),
-        },
-      ]
+      sections: [],
     };
   }
 
@@ -493,21 +471,20 @@ export class NavigationCompiler {
         { id: 'nav_brands', label: 'Brands', href: '/brands', hasMega: true, megaMenuId: 'brands_mega' },
         { id: 'nav_problems', label: 'Problems', href: '/problems', hasMega: true, megaMenuId: 'problems_mega' },
         { id: 'nav_locations', label: 'Locations', href: '/locations', hasMega: true, megaMenuId: 'locations_mega' },
-        { id: 'nav_pricing', label: 'Pricing', href: '/pricing', hasMega: true, megaMenuId: 'pricing_mega' },
-        { id: 'nav_resources', label: 'Resources', href: '/guides', hasMega: true, megaMenuId: 'resources_mega' },
+        { id: 'nav_pricing', label: 'Pricing', href: '/pricing', hasMega: false },
+        { id: 'nav_case_study', label: 'Case Study', href: '/case-studies', hasMega: true, megaMenuId: 'case_studies_mega' },
+        { id: 'nav_blog', label: 'Blog', href: '/blog', hasMega: false },
+        { id: 'nav_news', label: 'News', href: '/news', hasMega: false },
+        { id: 'nav_guides', label: 'Guides', href: '/guides', hasMega: false },
         { id: 'nav_about', label: 'About', href: '/about', hasMega: true, megaMenuId: 'about_mega' },
+        { id: 'nav_gallery', label: 'Gallery', href: '/gallery', hasMega: false },
       ],
       megaMenus: {
         services_mega: this.compileServicesMegaMenu(),
         brands_mega: this.compileBrandsMegaMenu(),
         problems_mega: this.compileProblemsMegaMenu(),
-        case_studies_mega: this.compileCaseStudiesMegaMenu(),
-        pricing_mega: this.compilePricingMegaMenu(),
-        blog_mega: this.compileBlogMegaMenu(),
-        news_mega: this.compileNewsMegaMenu(),
-        guides_mega: this.compileGuidesMegaMenu(),
         locations_mega: this.compileLocationsMegaMenu(),
-        resources_mega: this.compileResourcesMegaMenu(),
+        case_studies_mega: this.compileCaseStudiesMegaMenu(),
         about_mega: this.compileAboutMegaMenu(),
       },
       footer: {
