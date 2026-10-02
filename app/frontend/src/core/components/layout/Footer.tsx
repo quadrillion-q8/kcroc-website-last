@@ -116,7 +116,7 @@ export function Footer() {
                   height="112"
                   loading="lazy"
                   decoding="async"
-                  className="h-16 sm:h-[4.5rem] w-auto object-contain"
+                  className="h-20 sm:h-[5.5rem] w-auto object-contain"
                   onError={() => setLogoError(true)}
                 />
               ) : (
