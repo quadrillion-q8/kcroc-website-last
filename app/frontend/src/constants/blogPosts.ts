@@ -1686,8 +1686,8 @@ export const BLOG_POSTS: BlogPost[] = [
     category: "Laptop Troubleshooting",
     readTime: "12-14 min read",
     tags: ["laptop won't turn on", "laptop not turning on", "laptop won't power on", "laptop won't turn on but charging light is on", "laptop power button not working", "laptop turns on but screen is black", "laptop no power", "laptop won't start", "Laptop Troubleshooting", "Motherboard Repair", "Computer Repair Kuwait"],
-    seoTitle: "Laptop Won’t Turn On? 15 Causes & Fixes | Kuwait",
-    seoDescription: "Laptop won’t turn on? Learn how to diagnose charging, battery, power, RAM, BIOS, display and motherboard problems safely before bringing your laptop for repair in Kuwait.",
+    seoTitle: "Laptop Won’t Turn On? 15 Causes, Safe Tests & Fixes | KCROC",
+    seoDescription: "Laptop won’t turn on? Check no-power, black-screen, POST, charging, battery, RAM and BIOS causes with safe tests before replacing parts or booking repair.",
     contentType: "blog"
   },
 
@@ -1927,9 +1927,9 @@ export const BLOG_POSTS: BlogPost[] = [
     id: "blog-8gb-ram-2026",
     slug: "why-8gb-ram-is-no-longer-enough-for-windows-11",
     title: "Is 8GB RAM Enough for Windows 11 in 2026?",
-    seoTitle: "Is 8GB RAM Enough for Windows 11 in 2026? | KCROC",
+    seoTitle: "Is 8GB RAM Enough for Windows 11? 8GB vs 16GB vs 32GB | KCROC",
     excerpt: "Windows 11 technically runs on 8GB RAM — but running isn't the same as running well. Here's what's actually happening under the hood, and when an upgrade is worth it.",
-    description: "Is 8GB RAM enough for Windows 11 in 2026? Learn how workload, multitasking, memory pressure and laptop upgradeability affect the choice between 8GB, 16GB and 32GB.",
+    description: "Is 8GB RAM enough for Windows 11 in 2026? Compare 8GB, 16GB and 32GB for multitasking, gaming, memory pressure and laptop upgradeability.",
     content: [
       "Windows 11 technically runs on 8GB RAM — but running isn't the same as running well.",
       "Chrome, Slack, Spotify, and Windows background services can consume the majority of 8GB before you've even opened a real application.",
