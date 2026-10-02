@@ -49,6 +49,8 @@ const MENU_COPY: Record<string, { eyebrow: string; subtitle: string; allLabel: s
   blog_mega: { eyebrow: 'TECH BLOG', subtitle: 'Useful tech articles for everyday users.', allLabel: 'All articles', allHref: '/blog' },
   news_mega: { eyebrow: 'TECH NEWS', subtitle: 'Current computer, Windows, hardware, gaming, Apple, cybersecurity and AI news with technician context.', allLabel: 'All news', allHref: '/news' },
   guides_mega: { eyebrow: 'TROUBLESHOOTING GUIDES', subtitle: 'Safe, practical steps before you book repair.', allLabel: 'All guides', allHref: '/guides' },
+  locations_mega: { eyebrow: 'KUWAIT SERVICE AREAS', subtitle: 'Browse all 31 pickup and delivery service areas.', allLabel: 'All 31 areas', allHref: '/locations' },
+  resources_mega: { eyebrow: 'KCROC RESOURCES', subtitle: 'Guides, blog, news and real repair case studies.', allLabel: 'Start with guides', allHref: '/guides' },
   about_mega: { eyebrow: 'KCROC', subtitle: 'The lab, the team and the Kuwait service area.', allLabel: 'About KCROC', allHref: '/about' },
 };
 
