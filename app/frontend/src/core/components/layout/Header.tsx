@@ -150,8 +150,8 @@ export default function Header() {
   return (
     <>
       <header ref={headerRef} className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-[#090c0f]/[0.97] backdrop-blur-xl border-b border-white/[0.10] shadow-[0_12px_36px_rgba(0,0,0,.22)]' : 'bg-[#090c0f]/[0.88] backdrop-blur-md border-b border-white/[0.08]'}`}>
-        <div className="max-w-7xl mx-auto px-5 sm:px-6">
-          <div className="flex items-center justify-between h-[70px]">
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-6">
+          <div className="flex items-center justify-between h-[74px]">
             
             <Link to="/" className="flex items-center gap-2.5 shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f] rounded-lg" aria-label="KCROC Home">
               {!logoError ? (
@@ -160,18 +160,20 @@ export default function Header() {
                   alt="KCROC logo mark" 
                   width="96"
                   height="96" 
-                  className="h-10 w-10 object-contain drop-shadow-[0_8px_18px_rgba(201,128,77,0.18)]"
+                  className="h-12 w-12 object-contain drop-shadow-[0_8px_18px_rgba(201,128,77,0.18)]"
                   onError={() => setLogoError(true)}
                 />
               ) : (
                 <Laptop className="w-6 h-6 text-[#dfa86f]" aria-hidden="true" />
               )}
-              <span className="font-black text-white text-[19px] tracking-[-0.035em] hidden sm:block">KCROC<span className="text-[#dfa86f]">.</span></span>
+              <span className="font-black text-white text-[21px] tracking-[-0.04em] hidden sm:block">KCROC<span className="text-[#dfa86f]">.</span></span>
             </Link>
 
             <nav aria-label="Main navigation" className="hidden xl:flex items-center gap-0.5">
               {navModel.header.map(link => {
-                const isGraphMatch = !!matchPath({ path: link.href, end: false }, location.pathname);
+                const resourcePath = /^(\/guides|\/blog|\/news|\/case-studies)(?:\/|$)/.test(location.pathname);
+                const isGroupedResource = link.megaMenuId === 'resources_mega' && resourcePath;
+                const isGraphMatch = isGroupedResource || !!matchPath({ path: link.href, end: false }, location.pathname);
 
                 if (link.hasMega && link.megaMenuId) {
                   const isOpen = activeMegaId === link.megaMenuId;
@@ -239,7 +241,7 @@ export default function Header() {
               >
                 <Link to="/book" onClick={() => trackConversion('cta_click', { cta_name: 'header_book', button_position: 'header' })}>
                   <CalendarCheck size={15} aria-hidden="true" />
-                  Book Online
+                  Book Free Pickup
                 </Link>
               </Button>
             </div>
