@@ -9,8 +9,8 @@ import { IMAGES } from '../constants/images.js';
 
 export const rawGraphData: RawGraphData = {
   metadata: {
-    version: '3.8.0',
-    lastUpdated: '2026-10-02T00:00:00+03:00',
+    version: '3.8.1',
+    lastUpdated: '2026-10-03T00:00:00+03:00',
     environment: 'production'
   },
 
@@ -36,9 +36,9 @@ export const rawGraphData: RawGraphData = {
     /* ═══════════════════════════════════════════════════════════════
        TRUST BADGES & STATS
     ═══════════════════════════════════════════════════════════════ */
-    'badge-privacy':  { id: 'badge-privacy',  entityType: 'TrustBadge', isActive: true, title: 'Data Privacy Guaranteed', iconKey: 'ShieldCheck' } as TrustBadgeEntity,
-    'badge-pickup':   { id: 'badge-pickup',   entityType: 'TrustBadge', isActive: true, title: 'Free Pick & Drop',        iconKey: 'Truck'       } as TrustBadgeEntity,
-    'badge-warranty': { id: 'badge-warranty', entityType: 'TrustBadge', isActive: true, title: '30-Day Warranty',         iconKey: 'Clock'       } as TrustBadgeEntity,
+    'badge-privacy':  { id: 'badge-privacy',  entityType: 'TrustBadge', isActive: true, title: 'Privacy Protected', iconKey: 'ShieldCheck' } as TrustBadgeEntity,
+    'badge-pickup':   { id: 'badge-pickup',   entityType: 'TrustBadge', isActive: true, title: 'Free Pickup & Delivery',        iconKey: 'Truck'       } as TrustBadgeEntity,
+    'badge-warranty': { id: 'badge-warranty', entityType: 'TrustBadge', isActive: true, title: '30-Day Repair Warranty',         iconKey: 'Clock'       } as TrustBadgeEntity,
     'badge-esd':      { id: 'badge-esd',      entityType: 'TrustBadge', isActive: true, title: 'ESD-Safe Lab',            iconKey: 'Zap'         } as TrustBadgeEntity,
 
     'stats-row': {
@@ -92,6 +92,7 @@ export const rawGraphData: RawGraphData = {
       featuredUSPIds: ['usp-component', 'usp-nofix', 'usp-logistics', 'usp-privacy']
     } as WebPageEntity,
     'page-services': { id: 'page-services', slug: 'services', entityType: 'WebPage', isActive: true, title: 'Services', description: 'All KCROC repair services', seo: { title: 'Laptop, MacBook & PC Repair Services Kuwait | KCROC', description: 'Specialist computer repair services in Kuwait including laptop, MacBook, gaming PC and gaming laptop repair, screens, batteries, charging ports, upgrades and board-level faults. Free pickup and 30-day warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/services', ogType: 'website', schemaTypes: ['CollectionPage', 'WebPage', 'BreadcrumbList', 'LocalBusiness'], breadcrumbs: [{ name: 'Home', url: '/' }, { name: 'Services', url: '/services' }] } } as WebPageEntity,
+    'page-locations': { id: 'page-locations', slug: 'locations', entityType: 'WebPage', isActive: true, title: 'Service Areas', description: 'KCROC service areas across Kuwait.', seo: { title: 'Computer Repair Service Areas Across Kuwait | KCROC', description: 'Explore KCROC\'s dedicated computer and laptop repair service areas across Kuwait. Free pickup and delivery from our central Hawalli repair lab.', canonicalUrl: 'https://www.computerrepairkuwait.com/locations', ogType: 'website', schemaTypes: ['CollectionPage', 'WebPage', 'BreadcrumbList'], lastModified: '2026-10-03T00:00:00+03:00', breadcrumbs: [{ name: 'Home', url: '/' }, { name: 'Service Areas', url: '/locations' }] } } as WebPageEntity,
     'page-near-me': {
       id: 'page-near-me', slug: 'near-me', entityType: 'WebPage', isActive: true,
       title: 'Computer Repair Near Me in Kuwait',
@@ -1527,7 +1528,7 @@ export const rawGraphData: RawGraphData = {
       whyChooseUs: [
         { title: 'Repair Over Replacement', description: 'We reconstruct broken hinges and micro-solder broken charging ports instead of replacing the entire screen assembly or motherboard, saving you up to 70%.' },
         { title: 'Kuwait Climate Specialists', description: 'We don\'t just blow compressed air; we fully strip cooling assemblies, clean out fine desert dust, and apply phase-change thermal materials suited for 45°C+ ambient temperatures.' },
-        { title: 'Data Privacy Guaranteed', description: 'We work on the hardware, not your files. You can even remove your SSD before handing us the laptop for board-level repairs.' },
+        { title: 'Privacy Protected', description: 'We work on the hardware, not your files. You can even remove your SSD before handing us the laptop for board-level repairs.' },
         { title: 'Broad Brand Expertise', description: 'Dell, HP, Lenovo, ASUS, Acer—we know the specific structural weaknesses (like Dell Inspiron hinges or HP Pavilion power ICs) of each brand.' },
         { title: 'Free Pickup & Delivery', description: 'We collect from Hawalli, Salmiya, Kuwait City, Farwaniya, Jahra, and Ahmadi at no extra cost.' },
         { title: 'No Fix, No Fee', description: 'If your laptop is catastrophically damaged and uneconomical to repair, you pay absolutely nothing for the diagnostic.' }
@@ -4540,6 +4541,7 @@ export const rawGraphData: RawGraphData = {
           { label: 'FAQ',            path: '/faq' },
           { label: 'Pricing',        path: '/pricing' },
           { label: 'Computer Repair Near Me', path: '/near-me' },
+          { label: 'All Service Areas', path: '/locations' },
         ],
         areas: [
           { label: 'Computer Repair Hawalli',      path: '/location/hawalli' },
@@ -4567,6 +4569,12 @@ export const rawGraphData: RawGraphData = {
           { label: 'Computer Repair Adan',          path: '/location/adan' },
           { label: 'Computer Repair Qurain',        path: '/location/qurain' },
           { label: 'Computer Repair Saad Al Abdullah', path: '/location/saad-al-abdullah' },
+          { label: 'Computer Repair Abu Ftaira',     path: '/location/abu-ftaira' },
+          { label: 'Computer Repair Qortuba',       path: '/location/qortuba' },
+          { label: 'Computer Repair Rawda',         path: '/location/rawda' },
+          { label: 'Computer Repair Messila',       path: '/location/messila' },
+          { label: 'Computer Repair Mishrif',       path: '/location/mishrif' },
+          { label: 'Computer Repair Adailiya',      path: '/location/adailiya' },
         ]
       }
     } as FooterEntity,
