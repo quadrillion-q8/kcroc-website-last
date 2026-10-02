@@ -135,6 +135,11 @@
       "permanent": true
     },
     {
+      "source": "/computer-repair-in-farwaniya",
+      "destination": "/location/farwaniya",
+      "permanent": true
+    },
+    {
       "source": "/laptop-repair-in-farwaniya",
       "destination": "/location/farwaniya",
       "permanent": true
