@@ -16,6 +16,8 @@ import {
   ChevronRight,
   MessageCircle,
   Sparkles,
+  BookOpen,
+  Newspaper,
 } from 'lucide-react';
 import { MegaMenuConfig, NavEntity } from '../../navigation/types';
 import { useAnalytics } from '../../analytics/AnalyticsProvider';
@@ -33,6 +35,8 @@ const ICON_REGISTRY: Record<string, React.ElementType> = {
   shield: ShieldCheck,
   wrench: Wrench,
   'map-pin': MapPin,
+  'book-open': BookOpen,
+  'newspaper': Newspaper,
 };
 const getIcon = (key: string) => ICON_REGISTRY[key] ?? Wrench;
 
@@ -99,6 +103,20 @@ const MENU_META: Record<string, {
     allHref: '/guides',
     featureLabel: 'Start with a popular guide',
   },
+  locations_mega: {
+    eyebrow: 'KUWAIT SERVICE AREAS',
+    subtitle: 'Browse the 31 dedicated areas covered by KCROC pickup and delivery, with one canonical page for each location.',
+    allLabel: 'View all 31 areas',
+    allHref: '/locations',
+    featureLabel: 'Popular service areas',
+  },
+  resources_mega: {
+    eyebrow: 'KCROC RESOURCES',
+    subtitle: 'Repair guides, practical tech articles, current news and real repair case studies in one place.',
+    allLabel: 'Start with guides',
+    allHref: '/guides',
+    featureLabel: 'Useful starting points',
+  },
   about_mega: {
     eyebrow: 'KCROC',
     subtitle: 'Meet the team, see the workshop and find the right service area across Kuwait.',
@@ -151,8 +169,8 @@ export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnte
   const indexItem = getIndexItem(config);
   const allHref = indexItem ? getEntityHref(indexItem) : meta.allHref;
   const allLabel = indexItem ? meta.allLabel : meta.allLabel;
-  const isAboutMenu = config.id === 'about_mega';
-  const panelWidth = isAboutMenu ? 1000 : 1040;
+  const isServiceAreaMenu = config.id === 'about_mega' || config.id === 'locations_mega';
+  const panelWidth = isServiceAreaMenu ? 1100 : 1040;
 
   const getClampedLeft = () => {
     if (typeof window === 'undefined') return '50%';
@@ -288,13 +306,13 @@ export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnte
           </div>
         </div>
 
-        {isAboutMenu ? (
+        {isServiceAreaMenu ? (
           <div className="relative grid min-h-0 grid-cols-1 lg:grid-cols-[1.55fr_1fr]">
             <section className="border-b border-white/[0.07] p-5 lg:border-b-0 lg:border-r lg:p-6" aria-labelledby={`${config.id}-featured`}>
               <div className="mb-3 flex items-center justify-between gap-3 px-1">
                 <div>
                   <p id={`${config.id}-featured`} className="text-xs font-black uppercase tracking-[0.16em] text-slate-500">{meta.featureLabel}</p>
-                  <p className="mt-1 text-xs text-slate-500">Everything you need to understand the workshop.</p>
+                  <p className="mt-1 text-xs text-slate-500">{config.id === 'locations_mega' ? 'Popular areas first, then every service area in one clean index.' : 'Quick paths to understand KCROC and the service model.'}</p>
                 </div>
               </div>
               <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
