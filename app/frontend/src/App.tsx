@@ -162,6 +162,7 @@ export const routes: RouteObject[] = [
           { path: 'case-studies/:slug', element: <CaseStudyTemplate /> },
           { path: 'book', element: <BookingPage /> },
           { path: 'booking', element: <Navigate to="/book" replace /> },
+          { path: 'book-repair', element: <Navigate to="/book" replace /> },
           { path: 'pricing', element: <Pricing /> },
           { path: 'contact', element: <Contact /> },
           { path: 'gallery', element: <Gallery /> },
