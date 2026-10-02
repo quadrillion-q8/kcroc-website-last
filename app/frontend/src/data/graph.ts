@@ -377,7 +377,7 @@ export const rawGraphData: RawGraphData = {
     'page-terms-of-service': { id: 'page-terms-of-service', slug: 'terms-of-service', entityType: 'WebPage', isActive: true, title: 'Terms of Service', description: 'KCROC Terms and Conditions of Service', seo: { title: 'Terms of Service | KCROC Kuwait', description: 'Read the official Terms of Service and conditions for computer repair, pick & drop, and warranties at Kuwait Computer Repair On Call.', canonicalUrl: 'https://www.computerrepairkuwait.com/terms-of-service', ogType: 'website', schemaTypes: ['WebPage'] } } as WebPageEntity,
     'page-case-studies': { id: 'page-case-studies', slug: 'case-studies', entityType: 'WebPage', isActive: true, title: 'Case Studies', description: 'Real repair success stories.', seo: { title: 'Repair Case Studies | KCROC Kuwait', description: 'Read real case studies of laptops and MacBooks we saved from liquid damage and catastrophic failure.', canonicalUrl: 'https://www.computerrepairkuwait.com/case-studies', ogType: 'website', schemaTypes: ['CollectionPage'] } } as WebPageEntity,
     'page-author-imran': { id: 'page-author-imran', slug: 'author/imran', entityType: 'WebPage', isActive: true, title: 'Imran Natiq', description: 'Author bio page for Imran Natiq, Founder & Lead Technician at KCROC, referenced from the Person schema on blog articles he authored.', seo: { title: 'Imran Natiq — Hardware Repair Engineer at KCROC Kuwait', description: 'Imran Natiq is a hardware repair engineer and founder of KCROC in Hawalli, Kuwait, specializing in motherboard diagnostics and micro-soldering.', canonicalUrl: 'https://www.computerrepairkuwait.com/author/imran', ogType: 'profile', schemaTypes: ['ProfilePage', 'Person', 'BreadcrumbList'] } } as WebPageEntity,
-    'guide-battery': { id: 'guide-battery', slug: 'guides/laptop-battery-warning-signs', entityType: 'WebPage', isActive: true, title: 'Laptop Battery Warning Signs: 15+ Signs & Tests', description: 'A practical laptop battery authority guide covering 15+ warning signs, Windows 11 and Mac battery-health checks, swollen-battery safety, diagnosis, and replacement decisions.', seo: { title: 'Laptop Battery Warning Signs: 15+ Signs & Tests | KCROC', description: 'Learn 15+ signs of a failing laptop battery, how to test battery health on Windows 11 and Mac, what swelling means, and when replacement is appropriate.', canonicalUrl: 'https://www.computerrepairkuwait.com/guides/laptop-battery-warning-signs', ogImage: 'https://www.computerrepairkuwait.com/images/discover/swollen-macbook-battery-replacement-2-1200x675.webp', ogType: 'article', schemaTypes: ['Article', 'FAQPage', 'BreadcrumbList'], lastModified: '2026-09-30T00:00:00+03:00' },
+    'guide-battery': { id: 'guide-battery', slug: 'guides/laptop-battery-warning-signs', entityType: 'WebPage', isActive: true, title: 'Laptop Battery Warning Signs: 15+ Signs & Tests', description: 'A practical laptop battery authority guide covering 15+ warning signs, Windows 11 and Mac battery-health checks, swollen-battery safety, diagnosis, and replacement decisions.', seo: { title: 'Laptop Battery Warning Signs: 15+ Symptoms & Tests | KCROC', description: 'Learn 15+ signs of a failing laptop battery, how to check battery health on Windows 11 and Mac, what swelling means, and when replacement is appropriate.', canonicalUrl: 'https://www.computerrepairkuwait.com/guides/laptop-battery-warning-signs', ogImage: 'https://www.computerrepairkuwait.com/images/discover/swollen-macbook-battery-replacement-2-1200x675.webp', ogType: 'article', schemaTypes: ['Article', 'FAQPage', 'BreadcrumbList'], lastModified: '2026-09-30T00:00:00+03:00' },
       featuredFAQIds: [
         'faq-battery-how-to-know',
         'faq-battery-check-windows',
@@ -400,8 +400,8 @@ export const rawGraphData: RawGraphData = {
       title: 'BIOS & UEFI Troubleshooting, Update Failures & Firmware Recovery',
       description: "A black screen after a BIOS update, a boot loop, or a system that won't POST can come from corrupted firmware \u2014 or from RAM, power, EC, or motherboard faults that only look like a BIOS problem. Covers warning signs, Secure Boot/BitLocker behavior, manufacturer recovery methods, and professional SPI/EEPROM reprogramming.",
       seo: {
-        title: 'BIOS & UEFI Recovery | Fix Update Failures | KCROC',
-        description: "Laptop or PC won’t boot after a BIOS/UEFI update? Learn warning signs, safe recovery steps and when professional firmware or motherboard diagnosis is needed in Kuwait.",
+        title: 'BIOS/UEFI Recovery After a Failed Update | KCROC',
+        description: "Laptop or PC won’t boot after a BIOS/UEFI update? Learn how to distinguish firmware corruption from RAM, power and motherboard faults, plus safe recovery options in Kuwait.",
         canonicalUrl: 'https://www.computerrepairkuwait.com/guides/bios-uefi-recovery-kuwait',
         ogImage: 'https://www.computerrepairkuwait.com/images/discover/bios-hero-motherboard-1200x675.webp',
         ogType: 'article',
@@ -438,8 +438,8 @@ export const rawGraphData: RawGraphData = {
       title: 'Intel Core Ultra vs AMD Ryzen AI: Which Is Better?', 
       description: 'Intel Core Ultra vs AMD Ryzen AI: compare CPU performance, integrated graphics, NPU features, power limits, cooling and laptop configuration before you buy.', 
       seo: { 
-        title: 'Intel Core Ultra vs Ryzen AI | Laptop Guide 2026 | KCROC', 
-        description: 'Intel Core Ultra vs AMD Ryzen AI: compare CPU performance, graphics, NPU features, power limits, cooling and laptop configurations before buying.', 
+        title: 'Intel Core Ultra vs AMD Ryzen AI: 2026 Laptop Comparison | KCROC', 
+        description: 'Intel Core Ultra vs AMD Ryzen AI in 2026: compare CPU performance, integrated graphics, NPU features, power limits, cooling and laptop configurations.', 
         canonicalUrl: 'https://www.computerrepairkuwait.com/blog/intel-core-ultra-vs-amd-ryzen-ai', 
         ogType: 'article', 
         schemaTypes: ['Article', 'FAQPage', 'BreadcrumbList'] 
@@ -546,8 +546,8 @@ export const rawGraphData: RawGraphData = {
       title: 'GameBarPresenceWriter.exe: What It Does, How to Fix Performance Issues, and How to Disable It',
       description: 'What is GameBarPresenceWriter.exe? A measured, evidence-first guide covering Game Bar stutter, background capture activity, the advanced Game DVR registry method, and safer rollback-first troubleshooting.',
       seo: {
-        title: 'GameBarPresenceWriter.exe | Fix & Disable Guide | KCROC',
-        description: 'What is GameBarPresenceWriter.exe? Learn how to test Game Bar stutter, background capture activity and safer ways to disable or roll back changes.',
+        title: 'GameBarPresenceWriter.exe: Windows 11 Stutter Fix | KCROC',
+        description: 'GameBarPresenceWriter.exe can be linked to Game Bar capture activity and gaming stutter. Learn how to test the cause, disable Game Bar features safely, and roll back changes.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/guides/gamebar-presence-writer-fix',
         ogImage: 'https://www.computerrepairkuwait.com/images/discover/windows-11-laptop-multitasking-1200x675.webp',
         ogType: 'article',
@@ -610,8 +610,8 @@ export const rawGraphData: RawGraphData = {
       title: 'Windows 11 Background Services You Can Audit in 2026',
       description: 'A technician-written Windows 11 guide covering WHESVC, DiagTrack, SysMain and MapsBroker, with evidence-first checks before changing service settings.',
       seo: {
-        title: 'Windows 11 Background Services Audit | KCROC',
-        description: 'Learn how to audit Windows 11 background services, investigate WHESVC, DiagTrack, SysMain and MapsBroker, and avoid unsafe debloating.',
+        title: 'Windows 11 Background Services: What to Check | KCROC',
+        description: 'Learn how to audit WHESVC, DiagTrack, SysMain and MapsBroker in Windows 11, what each service does, and what to check before disabling anything.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/guides/windows-11-background-services-audit',
         ogType: 'article',
         schemaTypes: ['Article', 'BreadcrumbList']
