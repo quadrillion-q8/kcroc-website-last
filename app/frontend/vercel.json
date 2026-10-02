@@ -154,6 +154,11 @@
       "permanent": true
     },
     {
+      "source": "/book-repair",
+      "destination": "/book",
+      "permanent": true
+    },
+    {
       "source": "/privacy",
       "destination": "/privacy-policy",
       "permanent": true
