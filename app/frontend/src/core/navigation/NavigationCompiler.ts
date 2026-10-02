@@ -167,10 +167,16 @@ export class NavigationCompiler {
     };
   }
 
-  // 5. Pricing Mega Menu — retained for backwards compatibility, but the
-  // primary header now uses Pricing as a direct link so service cards do not
-  // appear inside the pricing navigation.
+  // 5. Pricing Mega Menu — pricing categories only; repair services stay
+  // in the dedicated Services mega menu.
   private static compilePricingMegaMenu(): MegaMenuConfig {
+    const categories: NavEntity[] = [
+      { id: 'price_diagnostics', slug: 'pricing#price-list', entityType: 'Page' as any, primaryKeyword: 'diagnostics pricing', title: 'Diagnostics & System Setup', description: 'Free diagnostic plus Windows, malware and BIOS recovery starting points.', iconKey: 'search', weight: 90, commercialIntent: 'high' },
+      { id: 'price_thermal', slug: 'pricing#price-list', entityType: 'Page' as any, primaryKeyword: 'thermal service pricing', title: 'Thermal & Performance Tuning', description: 'Laptop and gaming PC cleaning, thermal and tuning price ranges.', iconKey: 'thermometer', weight: 80, commercialIntent: 'high' },
+      { id: 'price_hardware', slug: 'pricing#price-list', entityType: 'Page' as any, primaryKeyword: 'hardware replacement pricing', title: 'Hardware Replacements', description: 'Typical labor ranges for batteries, keyboards, screens and chassis work.', iconKey: 'laptop', weight: 70, commercialIntent: 'high' },
+      { id: 'price_board', slug: 'pricing#price-list', entityType: 'Page' as any, primaryKeyword: 'motherboard repair pricing', title: 'Advanced Motherboard Repair', description: 'Component-level, liquid-damage and MacBook board repair starting points.', iconKey: 'cpu', weight: 60, commercialIntent: 'high' },
+    ];
+
     const priceIndex: NavEntity = {
       id: 'pricing_index',
       slug: 'pricing',
@@ -178,7 +184,7 @@ export class NavigationCompiler {
       primaryKeyword: 'pricing',
       title: 'Full Price List',
       description: 'See repair pricing and starting points before you book.',
-      iconKey: 'laptop',
+      iconKey: 'circle-dollar-sign',
       weight: 100,
       commercialIntent: 'high',
     };
@@ -186,8 +192,8 @@ export class NavigationCompiler {
     return {
       id: 'pricing_mega',
       title: 'Repair Pricing',
-      featured: [priceIndex],
-      sections: [],
+      featured: categories,
+      sections: [{ title: 'Pricing overview', items: [priceIndex] }],
     };
   }
 
@@ -471,11 +477,11 @@ export class NavigationCompiler {
         { id: 'nav_brands', label: 'Brands', href: '/brands', hasMega: true, megaMenuId: 'brands_mega' },
         { id: 'nav_problems', label: 'Problems', href: '/problems', hasMega: true, megaMenuId: 'problems_mega' },
         { id: 'nav_locations', label: 'Locations', href: '/locations', hasMega: true, megaMenuId: 'locations_mega' },
-        { id: 'nav_pricing', label: 'Pricing', href: '/pricing', hasMega: false },
+        { id: 'nav_pricing', label: 'Pricing', href: '/pricing', hasMega: true, megaMenuId: 'pricing_mega' },
         { id: 'nav_case_study', label: 'Case Study', href: '/case-studies', hasMega: true, megaMenuId: 'case_studies_mega' },
-        { id: 'nav_blog', label: 'Blog', href: '/blog', hasMega: false },
-        { id: 'nav_news', label: 'News', href: '/news', hasMega: false },
-        { id: 'nav_guides', label: 'Guides', href: '/guides', hasMega: false },
+        { id: 'nav_blog', label: 'Blog', href: '/blog', hasMega: true, megaMenuId: 'blog_mega' },
+        { id: 'nav_news', label: 'News', href: '/news', hasMega: true, megaMenuId: 'news_mega' },
+        { id: 'nav_guides', label: 'Guides', href: '/guides', hasMega: true, megaMenuId: 'guides_mega' },
         { id: 'nav_about', label: 'About', href: '/about', hasMega: true, megaMenuId: 'about_mega' },
         { id: 'nav_gallery', label: 'Gallery', href: '/gallery', hasMega: false },
       ],
@@ -484,7 +490,11 @@ export class NavigationCompiler {
         brands_mega: this.compileBrandsMegaMenu(),
         problems_mega: this.compileProblemsMegaMenu(),
         locations_mega: this.compileLocationsMegaMenu(),
+        pricing_mega: this.compilePricingMegaMenu(),
         case_studies_mega: this.compileCaseStudiesMegaMenu(),
+        blog_mega: this.compileBlogMegaMenu(),
+        news_mega: this.compileNewsMegaMenu(),
+        guides_mega: this.compileGuidesMegaMenu(),
         about_mega: this.compileAboutMegaMenu(),
       },
       footer: {
