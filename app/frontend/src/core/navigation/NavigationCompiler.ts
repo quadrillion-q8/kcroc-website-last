@@ -363,6 +363,92 @@ export class NavigationCompiler {
     };
   }
 
+  // 9. Locations Mega Menu
+  private static compileLocationsMegaMenu(): MegaMenuConfig {
+    const locations = (NAV_GRAPH.locations || []).map(location => ({
+      id: location.id,
+      slug: `location/${location.slug}`,
+      entityType: 'Page' as any,
+      primaryKeyword: (location.title || '').toLowerCase(),
+      title: location.title === 'Hawalli Repair Center' ? 'Hawalli (Lab)' : location.title,
+      description: location.description || 'Computer and laptop repair service area with free pickup and delivery across Kuwait.',
+      iconKey: 'map-pin',
+      weight: location.navigationPriority ?? 0,
+      commercialIntent: 'transactional',
+    } as NavEntity)).sort((a, b) => b.weight - a.weight);
+
+    return {
+      id: 'locations_mega',
+      title: 'Service Areas',
+      featured: locations.slice(0, 6),
+      sections: [{
+        title: `All Service Areas (${locations.length})`,
+        items: [
+          {
+            id: 'locations_index',
+            slug: 'locations',
+            entityType: 'Page' as any,
+            primaryKeyword: 'computer repair locations Kuwait',
+            title: 'All 31 Service Areas',
+            description: 'Browse every KCROC pickup and delivery service area in Kuwait.',
+            iconKey: 'map-pin',
+            weight: 100,
+            commercialIntent: 'transactional',
+          },
+          ...locations,
+        ],
+      }],
+    };
+  }
+
+  // 10. Resources Mega Menu — combines guides, blog, news and case studies
+  private static compileResourcesMegaMenu(): MegaMenuConfig {
+    const toContent = (entry: { id: string; slug: string; title: string; description: string; iconKey?: string; primaryKeyword?: string }): NavEntity => ({
+      id: entry.id,
+      slug: entry.slug,
+      entityType: 'Page' as any,
+      primaryKeyword: entry.primaryKeyword || entry.title.toLowerCase(),
+      title: entry.title,
+      description: entry.description,
+      iconKey: entry.iconKey || 'laptop',
+      weight: 0,
+      commercialIntent: 'informational',
+    });
+
+    const guideFeatured = [
+      'guides/laptop-wont-turn-on',
+      'guides/why-is-my-laptop-so-hot',
+      'guides/dell-laptop-overheating',
+    ].map(path => NAV_GRAPH.guideEntries.find(entry => entry.slug === path)).filter(Boolean).map(toContent);
+    const blogFeatured = [
+      'blog/why-is-my-laptop-so-slow-2026',
+      'blog/laptop-buying-guide-kuwait-2026',
+    ].map(path => NAV_GRAPH.blogEntries.find(entry => entry.slug === path)).filter(Boolean).map(toContent);
+    const caseFeatured = (NAV_GRAPH.caseStudies || []).slice(0, 1).map(cs => toContent({
+      id: cs.id,
+      slug: `case-studies/${cs.slug}`,
+      title: cs.title,
+      description: cs.description || '',
+      iconKey: 'wrench',
+      primaryKeyword: cs.title.toLowerCase(),
+    }));
+
+    const featured = [...guideFeatured, ...blogFeatured, ...caseFeatured].slice(0, 6);
+    const links: NavEntity[] = [
+      { id: 'resources-guides', slug: 'guides', title: 'Troubleshooting Guides', description: 'Problem-first repair and troubleshooting guides.', iconKey: 'shield', entityType: 'Page' as any, primaryKeyword: 'computer repair guides', weight: 80, commercialIntent: 'informational' },
+      { id: 'resources-blog', slug: 'blog', title: 'Tech Blog', description: 'Practical explainers, buying guides and repair advice.', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'tech blog Kuwait', weight: 70, commercialIntent: 'informational' },
+      { id: 'resources-news', slug: 'news', title: 'Tech News', description: 'Current Windows, hardware, Apple, gaming and AI news.', iconKey: 'monitor', entityType: 'Page' as any, primaryKeyword: 'tech news', weight: 60, commercialIntent: 'informational' },
+      { id: 'resources-cases', slug: 'case-studies', title: 'Repair Case Studies', description: 'Real-world repairs and diagnostic outcomes from the KCROC lab.', iconKey: 'wrench', entityType: 'Page' as any, primaryKeyword: 'computer repair case studies', weight: 50, commercialIntent: 'informational' },
+    ];
+
+    return {
+      id: 'resources_mega',
+      title: 'Resources',
+      featured,
+      sections: [{ title: 'Browse Resources', items: links }],
+    };
+  }
+
   // 9. About Mega Menu
   private static compileAboutMegaMenu(): MegaMenuConfig {
     return {
@@ -404,16 +490,11 @@ export class NavigationCompiler {
     return {
       header: [
         { id: 'nav_services', label: 'Services', href: '/services', hasMega: true, megaMenuId: 'services_mega' },
-        // 🩹 FIX: was '#' — broke the active-state highlighting (matchPath)
-        // in Header.tsx and the mobile menu's fallback link. Now points at
-        // the new index pages below.
         { id: 'nav_brands', label: 'Brands', href: '/brands', hasMega: true, megaMenuId: 'brands_mega' },
         { id: 'nav_problems', label: 'Problems', href: '/problems', hasMega: true, megaMenuId: 'problems_mega' },
-        { id: 'nav_case_studies', label: 'Case Studies', href: '/case-studies', hasMega: true, megaMenuId: 'case_studies_mega' }, 
+        { id: 'nav_locations', label: 'Locations', href: '/locations', hasMega: true, megaMenuId: 'locations_mega' },
         { id: 'nav_pricing', label: 'Pricing', href: '/pricing', hasMega: true, megaMenuId: 'pricing_mega' },
-        { id: 'nav_blog', label: 'Blog', href: '/blog', hasMega: true, megaMenuId: 'blog_mega' },
-        { id: 'nav_news', label: 'News', href: '/news', hasMega: true, megaMenuId: 'news_mega' },
-        { id: 'nav_guides', label: 'Guides', href: '/guides', hasMega: true, megaMenuId: 'guides_mega' },
+        { id: 'nav_resources', label: 'Resources', href: '/guides', hasMega: true, megaMenuId: 'resources_mega' },
         { id: 'nav_about', label: 'About', href: '/about', hasMega: true, megaMenuId: 'about_mega' },
       ],
       megaMenus: {
@@ -425,6 +506,8 @@ export class NavigationCompiler {
         blog_mega: this.compileBlogMegaMenu(),
         news_mega: this.compileNewsMegaMenu(),
         guides_mega: this.compileGuidesMegaMenu(),
+        locations_mega: this.compileLocationsMegaMenu(),
+        resources_mega: this.compileResourcesMegaMenu(),
         about_mega: this.compileAboutMegaMenu(),
       },
       footer: {
