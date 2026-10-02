@@ -11,6 +11,7 @@ const ICON_MAP: Record<string, React.ElementType> = {
   'laptop': Laptop,
   'gaming': Gamepad2,
   'cpu': Cpu,
+  'monitor': Monitor,
 };
 
 interface ServiceTemplateProps {
