@@ -151,7 +151,7 @@ export default function Header() {
     <>
       <header ref={headerRef} className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-[#090c0f]/[0.97] backdrop-blur-xl border-b border-white/[0.10] shadow-[0_12px_36px_rgba(0,0,0,.22)]' : 'bg-[#090c0f]/[0.88] backdrop-blur-md border-b border-white/[0.08]'}`}>
         <div className="max-w-[1440px] mx-auto px-5 sm:px-6">
-          <div className="flex items-center justify-between h-[80px]">
+          <div className="flex items-center justify-between h-[84px]">
             
             <Link to="/" className="flex items-center shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f] rounded-lg" aria-label="KCROC Home">
               {!logoError ? (
@@ -160,7 +160,7 @@ export default function Header() {
                   alt="KCROC — Kuwait Computer Repair On Call"
                   width="80"
                   height="80"
-                  className="h-16 w-16 object-contain drop-shadow-[0_8px_18px_rgba(201,128,77,0.18)]"
+                  className="h-[72px] w-[72px] object-contain brightness-[1.08] saturate-[1.04] drop-shadow-[0_10px_22px_rgba(201,128,77,0.22)]"
                   onError={() => setLogoError(true)}
                 />
               ) : (
@@ -173,9 +173,7 @@ export default function Header() {
 
             <nav aria-label="Main navigation" className="hidden xl:flex items-center gap-0.5">
               {navModel.header.map(link => {
-                const resourcePath = /^(\/guides|\/blog|\/news|\/case-studies)(?:\/|$)/.test(location.pathname);
-                const isGroupedResource = link.megaMenuId === 'resources_mega' && resourcePath;
-                const isGraphMatch = isGroupedResource || !!matchPath({ path: link.href, end: false }, location.pathname);
+                const isGraphMatch = !!matchPath({ path: link.href, end: false }, location.pathname);
 
                 if (link.hasMega && link.megaMenuId) {
                   const isOpen = activeMegaId === link.megaMenuId;
@@ -193,7 +191,7 @@ export default function Header() {
                           setActiveMegaId(prev => prev === link.megaMenuId ? null : link.megaMenuId!);
                         }}
                         onKeyDown={e => handleMegaTriggerKeyDown(e, link.megaMenuId!)}
-                        className={`flex items-center gap-1.5 px-2.5 py-2 rounded-lg whitespace-nowrap text-[13px] font-semibold transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f] ${isOpen || isGraphMatch ? 'text-[#dfa86f] bg-[#c9804d]/10' : 'text-slate-300 hover:text-white hover:bg-white/5'}`}
+                        className={`flex items-center gap-1.5 px-2 py-2 rounded-lg whitespace-nowrap text-[12.5px] font-semibold transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f] ${isOpen || isGraphMatch ? 'text-[#dfa86f] bg-[#c9804d]/10' : 'text-slate-300 hover:text-white hover:bg-white/5'}`}
                       >
                         {link.label}
                         <ChevronDown size={15} className={`transition-transform duration-200 ${isOpen ? 'rotate-180 text-[#dfa86f]' : ''}`} aria-hidden="true" />
@@ -203,7 +201,7 @@ export default function Header() {
                 }
 
                 return (
-                  <Link key={link.id} to={link.href} className={`px-3 py-2 rounded-lg text-sm font-semibold whitespace-nowrap transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f] ${isGraphMatch ? 'text-[#dfa86f] bg-[#c9804d]/10' : 'text-slate-300 hover:text-white hover:bg-white/5'}`}>
+                  <Link key={link.id} to={link.href} className={`px-2.5 py-2 rounded-lg text-[12.5px] font-semibold whitespace-nowrap transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f] ${isGraphMatch ? 'text-[#dfa86f] bg-[#c9804d]/10' : 'text-slate-300 hover:text-white hover:bg-white/5'}`}>
                     {link.label}
                   </Link>
                 );
