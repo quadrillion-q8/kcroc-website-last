@@ -27,6 +27,7 @@ const BookingPage = lazy(() => import('./pages/BookingPage'));
 
 // Dynamic Enterprise Templates
 const Services = lazy(() => import('./pages/Services'));
+const Locations = lazy(() => import('./pages/Locations'));
 const PillarTemplate = lazy(() => import('./pages/PillarTemplate'));
 const LocationTemplate = lazy(() => import('./pages/LocationTemplate'));
 // 🩹 FIX: index pages for /brands, /problems, /guides — previously missing
@@ -150,6 +151,7 @@ export const routes: RouteObject[] = [
           { path: 'ar/near-me', element: <NearMeAR /> },
           { path: 'ar/:slug', element: <ArabicCommercialPage /> },
           { path: 'services', element: <Services /> },
+          { path: 'locations', element: <Locations /> },
           { path: 'services/:serviceSlug', element: <LegacyServiceRedirect /> },
           // 🩹 FIX: these three 404'd previously — there was no route for
           // them at all, so they fell through to the dynamic `:slug`
@@ -209,6 +211,9 @@ export const routes: RouteObject[] = [
           { path: 'blog/windows-11-background-services-audit', element: <Navigate to="/guides/windows-11-background-services-audit" replace /> },
           { path: 'blog/:slug', element: <BlogPostTemplate /> },
           { path: 'news/:slug', element: <BlogPostTemplate /> },
+          // Keep explicit client fallbacks alongside the server-side 301s in vercel.json.
+          { path: 'computer-repair-in-farwaniya', element: <Navigate to="/location/farwaniya" replace /> },
+          { path: 'laptop-repair-in-hawalli', element: <Navigate to="/location/hawalli" replace /> },
           { path: 'computer-repair-:slug', element: <LocationTemplate /> },
           { path: 'laptop-repair-:slug', element: <LocationTemplate /> },
           { path: 'location/hawalli', element: <HawalliLocationPage /> },
