@@ -55,7 +55,7 @@ export default function Header() {
   // Was firing an extra same-origin-looking-but-still-external request on
   // every single page load (confirmed via a full-site Puppeteer crawl —
   // every page's header logo issued this identical extra request).
-  const logoUrl = '/logo-mark.w96.webp';
+  const logoUrl = '/logo.webp';
 
   useEffect(() => {
     if (!headerRef.current) return;
@@ -151,22 +151,24 @@ export default function Header() {
     <>
       <header ref={headerRef} className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-[#090c0f]/[0.97] backdrop-blur-xl border-b border-white/[0.10] shadow-[0_12px_36px_rgba(0,0,0,.22)]' : 'bg-[#090c0f]/[0.88] backdrop-blur-md border-b border-white/[0.08]'}`}>
         <div className="max-w-[1440px] mx-auto px-5 sm:px-6">
-          <div className="flex items-center justify-between h-[74px]">
+          <div className="flex items-center justify-between h-[80px]">
             
-            <Link to="/" className="flex items-center gap-2.5 shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f] rounded-lg" aria-label="KCROC Home">
+            <Link to="/" className="flex items-center shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f] rounded-lg" aria-label="KCROC Home">
               {!logoError ? (
-                <img 
-                  src={logoUrl} 
-                  alt="KCROC logo mark" 
-                  width="96"
-                  height="96" 
-                  className="h-12 w-12 object-contain drop-shadow-[0_8px_18px_rgba(201,128,77,0.18)]"
+                <img
+                  src={logoUrl}
+                  alt="KCROC — Kuwait Computer Repair On Call"
+                  width="80"
+                  height="80"
+                  className="h-16 w-16 object-contain drop-shadow-[0_8px_18px_rgba(201,128,77,0.18)]"
                   onError={() => setLogoError(true)}
                 />
               ) : (
-                <Laptop className="w-6 h-6 text-[#dfa86f]" aria-hidden="true" />
+                <span className="flex items-center gap-2" aria-hidden="true">
+                  <Laptop className="w-6 h-6 text-[#dfa86f]" />
+                  <span className="font-black text-white text-[21px] tracking-[-0.04em]">KCROC<span className="text-[#dfa86f]">.</span></span>
+                </span>
               )}
-              <span className="font-black text-white text-[21px] tracking-[-0.04em] hidden sm:block">KCROC<span className="text-[#dfa86f]">.</span></span>
             </Link>
 
             <nav aria-label="Main navigation" className="hidden xl:flex items-center gap-0.5">
