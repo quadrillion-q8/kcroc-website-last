@@ -3094,6 +3094,210 @@ export const rawGraphData: RawGraphData = {
 
     'loc-sabah-al-salem': { id: 'loc-sabah-al-salem', slug: 'sabah-al-salem', entityType: 'Location', isActive: true, isPhysicalLocation: false, title: 'Sabah Al-Salem', description: 'Laptop, MacBook, and motherboard repair for Sabah Al-Salem families and residents, with free door-to-door pickup and delivery to KCROC\'s Hawalli lab.', landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)', coords: { lat: 29.2075, lng: 48.0975 }, serviceRadiusKm: 15, serviceAreas: ['Sabah Al-Salem', 'Mubarak Al-Kabeer', 'Adan', 'Qurain'], contentImage: { src: IMAGES.laptopHardware.dellLaptopScreenRepairCompleted.src, alt: IMAGES.laptopHardware.dellLaptopScreenRepairCompleted.alt, width: IMAGES.laptopHardware.dellLaptopScreenRepairCompleted.width, height: IMAGES.laptopHardware.dellLaptopScreenRepairCompleted.height, caption: 'Laptop screen repair completed and back in service for a Sabah Al-Salem family.' }, seo: { title: 'Computer Repair Sabah Al-Salem Kuwait | Free Pickup | KCROC', description: 'Laptop, MacBook, and motherboard repair for Sabah Al-Salem families and residents, with free door-to-door pickup and delivery to KCROC\'s Hawalli lab.', canonicalUrl: 'https://www.computerrepairkuwait.com/location/sabah-al-salem', ogType: 'website', schemaTypes: ['LocalBusiness'] }, navigationPriority: 25 } as LocationEntity,
 
+    'loc-salwa': { id: 'loc-salwa', slug: 'salwa', entityType: 'Location', isActive: true, isPhysicalLocation: false,
+      title: 'Salwa',
+      description: 'Computer and laptop repair for Salwa residents and families, with free pickup to KCROC\'s Hawalli lab for screen, battery, charging and motherboard faults.',
+      localIntro: 'For Salwa customers, KCROC keeps the repair process simple: we collect the laptop or MacBook from your area, diagnose it at the Hawalli lab, explain the repair options and return it after testing. Salwa is served as a pickup area rather than a separate walk-in branch.',
+      localHighlights: [
+        { title: 'Pickup across Salwa blocks', description: 'Free device collection is available across Salwa, with return delivery after diagnosis and testing.' },
+        { title: 'Screen, battery and charging faults', description: 'Common laptop problems are assessed at component and part level before replacement is recommended.' },
+        { title: 'MacBook and laptop repair', description: 'Apple MacBooks and Windows laptops are both supported, including motherboard and liquid-damage diagnosis.' },
+        { title: 'Central Hawalli repair lab', description: 'Repairs are completed by KCROC\'s technicians at the main Hawalli workshop, not at a temporary local storefront.' }
+      ],
+      landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)',
+      coords: { lat: 29.2950, lng: 48.0780 }, serviceRadiusKm: 15, serviceAreas: ['Salwa', 'Rumaithiya', 'Bidaa', 'Shaab'],
+      contentImage: { src: IMAGES.services.laptopRepair.src, alt: IMAGES.services.laptopRepair.alt, width: IMAGES.services.laptopRepair.width, height: IMAGES.services.laptopRepair.height, caption: 'Laptop and MacBook repair serving Salwa and nearby coastal neighborhoods.' },
+      seo: { title: 'Computer Repair Salwa Kuwait | Free Pickup | KCROC', description: 'Laptop, MacBook and computer repair in Salwa with free pickup and delivery to KCROC\'s Hawalli lab, including screen, battery, charging and motherboard diagnosis.', canonicalUrl: 'https://www.computerrepairkuwait.com/location/salwa', ogType: 'website', schemaTypes: ['LocalBusiness'], lastModified: '2026-10-02T00:00:00+03:00' },
+      navigationPriority: 80
+    } as LocationEntity,
+
+    'loc-rumaithiya': { id: 'loc-rumaithiya', slug: 'rumaithiya', entityType: 'Location', isActive: true, isPhysicalLocation: false,
+      title: 'Rumaithiya',
+      description: 'Laptop, MacBook and gaming PC repair for Rumaithiya with free pickup and delivery to KCROC\'s central Hawalli workshop.',
+      localIntro: 'Rumaithiya is close to KCROC\'s Hawalli service area, so customers can use the same pickup-and-lab workflow without bringing a heavy desktop or laptop across Kuwait. Devices are diagnosed in the central workshop and returned after repair testing.',
+      localHighlights: [
+        { title: 'Close-in pickup service', description: 'Pickup is available throughout Rumaithiya and nearby Hawalli-side neighborhoods.' },
+        { title: 'Gaming and thermal problems', description: 'Gaming laptops and PCs can be checked for overheating, cooling faults, shutdowns and performance issues.' },
+        { title: 'Board-level diagnosis', description: 'Motherboard faults are investigated to the component level where technically feasible instead of defaulting to whole-board replacement.' },
+        { title: 'Privacy-conscious handling', description: 'Repair diagnostics focus on the hardware fault, with files left untouched unless customer-authorized work requires otherwise.' }
+      ],
+      landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)',
+      coords: { lat: 29.3270, lng: 48.0510 }, serviceRadiusKm: 10, serviceAreas: ['Rumaithiya', 'Salwa', 'Shaab', 'Jabriya'],
+      contentImage: { src: IMAGES.gaming.gamingLaptopFan.src, alt: IMAGES.gaming.gamingLaptopFan.alt, width: IMAGES.gaming.gamingLaptopFan.width, height: IMAGES.gaming.gamingLaptopFan.height, caption: 'Gaming laptop cooling and motherboard diagnostics for Rumaithiya customers.' },
+      seo: { title: 'Computer Repair Rumaithiya Kuwait | Free Pickup | KCROC', description: 'Computer and laptop repair in Rumaithiya with free pickup and delivery, including gaming laptop cooling, motherboard and screen repairs.', canonicalUrl: 'https://www.computerrepairkuwait.com/location/rumaithiya', ogType: 'website', schemaTypes: ['LocalBusiness'], lastModified: '2026-10-02T00:00:00+03:00' },
+      navigationPriority: 78
+    } as LocationEntity,
+
+    'loc-shaab': { id: 'loc-shaab', slug: 'shaab', entityType: 'Location', isActive: true, isPhysicalLocation: false,
+      title: 'Shaab',
+      description: 'Professional laptop, MacBook and computer repair for Shaab residents and businesses, with pickup to KCROC\'s Hawalli lab.',
+      localIntro: 'Shaab customers can arrange pickup without visiting a repair shop. KCROC handles diagnosis and repair at the Hawalli workshop, with service coverage suited to laptops, MacBooks, gaming machines and common power or display faults.',
+      localHighlights: [
+        { title: 'Pickup for homes and offices', description: 'Collection is available for residents and small businesses in Shaab and nearby areas.' },
+        { title: 'Display and no-power diagnostics', description: 'Black screens, no-power symptoms and charging faults are checked systematically before parts are replaced.' },
+        { title: 'MacBook and component repair', description: 'MacBook board faults and component-level laptop repairs are available through the central lab.' },
+        { title: 'Return after testing', description: 'Devices are tested after repair before they are delivered back to the customer.' }
+      ],
+      landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)',
+      coords: { lat: 29.3500, lng: 48.0350 }, serviceRadiusKm: 12, serviceAreas: ['Shaab', 'Kuwait City', 'Salmiya', 'Rumaithiya'],
+      contentImage: { src: IMAGES.macbook.logicBoard.src, alt: IMAGES.macbook.logicBoard.alt, width: IMAGES.macbook.logicBoard.width, height: IMAGES.macbook.logicBoard.height, caption: 'Component-level MacBook and laptop diagnostics for Shaab customers.' },
+      seo: { title: 'Computer Repair Shaab Kuwait | Free Pickup | KCROC', description: 'Laptop, MacBook and computer repair in Shaab with free pickup, component-level diagnostics and delivery from KCROC\'s Hawalli workshop.', canonicalUrl: 'https://www.computerrepairkuwait.com/location/shaab', ogType: 'website', schemaTypes: ['LocalBusiness'], lastModified: '2026-10-02T00:00:00+03:00' },
+      navigationPriority: 76
+    } as LocationEntity,
+
+    'loc-surra': { id: 'loc-surra', slug: 'surra', entityType: 'Location', isActive: true, isPhysicalLocation: false,
+      title: 'Surra',
+      description: 'Laptop and computer repair for Surra residents with free pickup to KCROC\'s Hawalli lab, covering no-power, overheating, screen and charging problems.',
+      localIntro: 'For Surra homes and small offices, KCROC provides a pickup-first repair workflow. Devices are collected locally, repaired and tested at the Hawalli lab, then delivered back without requiring the customer to arrange transport.',
+      localHighlights: [
+        { title: 'Residential pickup service', description: 'Free collection is available across Surra and nearby central neighborhoods.' },
+        { title: 'Laptop fault diagnosis', description: 'No-power, charging, overheating and black-screen faults are diagnosed before a repair path is quoted.' },
+        { title: 'Screen and battery work', description: 'Common wear parts such as screens and batteries are replaced when diagnosis shows they are the correct fix.' },
+        { title: 'Central workshop processing', description: 'Surra is a service area; devices are repaired at KCROC\'s Hawalli workshop by the main technical team.' }
+      ],
+      landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)',
+      coords: { lat: 29.3050, lng: 48.0400 }, serviceRadiusKm: 12, serviceAreas: ['Surra', 'Qadsiya', 'Jabriya', 'Hawalli'],
+      contentImage: { src: IMAGES.laptopHardware.dellLaptopScreenRepairCompleted.src, alt: IMAGES.laptopHardware.dellLaptopScreenRepairCompleted.alt, width: IMAGES.laptopHardware.dellLaptopScreenRepairCompleted.width, height: IMAGES.laptopHardware.dellLaptopScreenRepairCompleted.height, caption: 'Laptop screen and hardware repair serving Surra and nearby central Kuwait areas.' },
+      seo: { title: 'Computer Repair Surra Kuwait | Free Pickup | KCROC', description: 'Laptop and computer repair in Surra with free pickup and delivery, including screen, battery, charging and motherboard diagnosis at KCROC\'s Hawalli lab.', canonicalUrl: 'https://www.computerrepairkuwait.com/location/surra', ogType: 'website', schemaTypes: ['LocalBusiness'], lastModified: '2026-10-02T00:00:00+03:00' },
+      navigationPriority: 74
+    } as LocationEntity,
+
+    'loc-khaitan': { id: 'loc-khaitan', slug: 'khaitan', entityType: 'Location', isActive: true, isPhysicalLocation: false,
+      title: 'Khaitan',
+      description: 'Computer and laptop repair for Khaitan, with free pickup for screen, charging, battery, no-power and motherboard faults.',
+      localIntro: 'Khaitan customers can use KCROC\'s Farwaniya-side pickup service without needing to carry a damaged laptop across Kuwait. Devices are collected from Khaitan, diagnosed at the Hawalli workshop and returned after testing.',
+      localHighlights: [
+        { title: 'Khaitan pickup coverage', description: 'Free pickup is available from Khaitan and connects directly into KCROC\'s existing Farwaniya service network.' },
+        { title: 'Power and charging faults', description: 'Dead laptops, intermittent charging and damaged charging ports are tested before component replacement.' },
+        { title: 'Screens and batteries', description: 'Screen and battery replacement are available for supported laptop and MacBook models.' },
+        { title: 'Motherboard repair', description: 'Component-level board diagnosis is available when a simple part swap is not the right answer.' }
+      ],
+      landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)',
+      coords: { lat: 29.2700, lng: 47.9900 }, serviceRadiusKm: 18, serviceAreas: ['Khaitan', 'Farwaniya', 'Riggae', 'Ardiya'],
+      contentImage: { src: IMAGES.motherboard.thermalGrizzly1.src, alt: IMAGES.motherboard.thermalGrizzly1.alt, width: IMAGES.motherboard.thermalGrizzly1.width, height: IMAGES.motherboard.thermalGrizzly1.height, caption: 'Motherboard and thermal repair serving Khaitan and Farwaniya-area customers.' },
+      seo: { title: 'Computer Repair Khaitan Kuwait | Free Pickup | KCROC', description: 'Laptop and computer repair in Khaitan with free pickup and delivery, covering charging, screen, battery, overheating and motherboard faults.', canonicalUrl: 'https://www.computerrepairkuwait.com/location/khaitan', ogType: 'website', schemaTypes: ['LocalBusiness'], lastModified: '2026-10-02T00:00:00+03:00' },
+      navigationPriority: 72
+    } as LocationEntity,
+
+    'loc-riggae': { id: 'loc-riggae', slug: 'riggae', entityType: 'Location', isActive: true, isPhysicalLocation: false,
+      title: 'Riggae',
+      description: 'Laptop, MacBook and computer repair for Riggae with free pickup to KCROC\'s Hawalli lab, covering common power, display and charging issues.',
+      localIntro: 'Riggae is part of KCROC\'s Farwaniya-area pickup network. Customers can arrange collection locally while the actual diagnosis, board work and testing happen at the main Hawalli workshop.',
+      localHighlights: [
+        { title: 'Pickup from Riggae', description: 'Free collection and return delivery are available for residents and home offices in Riggae.' },
+        { title: 'No-power and charging diagnosis', description: 'Charging ports, power rails and related motherboard faults are checked systematically.' },
+        { title: 'Screen repair', description: 'Cracked, dim or failed laptop displays can be assessed for panel, cable and board causes.' },
+        { title: 'MacBook support', description: 'Apple MacBooks are handled alongside Windows laptops, including liquid-damage and board diagnostics.' }
+      ],
+      landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)',
+      coords: { lat: 29.2770, lng: 47.9500 }, serviceRadiusKm: 18, serviceAreas: ['Riggae', 'Khaitan', 'Farwaniya', 'Ardiya'],
+      contentImage: { src: IMAGES.services.motherboardRepair.src, alt: IMAGES.services.motherboardRepair.alt, width: IMAGES.services.motherboardRepair.width, height: IMAGES.services.motherboardRepair.height, caption: 'Laptop motherboard and computer repair serving Riggae and nearby Farwaniya areas.' },
+      seo: { title: 'Computer Repair Riggae Kuwait | Free Pickup | KCROC', description: 'Computer and laptop repair in Riggae with free pickup and delivery, including charging, screen, motherboard and MacBook repairs.', canonicalUrl: 'https://www.computerrepairkuwait.com/location/riggae', ogType: 'website', schemaTypes: ['LocalBusiness'], lastModified: '2026-10-02T00:00:00+03:00' },
+      navigationPriority: 70
+    } as LocationEntity,
+
+    'loc-ardiya': { id: 'loc-ardiya', slug: 'ardiya', entityType: 'Location', isActive: true, isPhysicalLocation: false,
+      title: 'Ardiya',
+      description: 'Laptop and computer repair for Ardiya with pickup to KCROC\'s Hawalli lab, including motherboard, screen, battery and gaming PC work.',
+      localIntro: 'Ardiya customers can book a pickup instead of searching for a local shop. KCROC diagnoses the device in the central workshop, performs the approved repair and returns it after functional testing.',
+      localHighlights: [
+        { title: 'Ardiya pickup service', description: 'Free device collection is available across Ardiya and nearby Farwaniya-area communities.' },
+        { title: 'Laptop and gaming PC repair', description: 'Both everyday laptops and gaming systems are supported, including thermal and no-power issues.' },
+        { title: 'Board-level troubleshooting', description: 'Motherboard faults can be traced to individual components when repairable at component level.' },
+        { title: 'Free return delivery', description: 'After the repair is tested, the device is delivered back to the customer.' }
+      ],
+      landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)',
+      coords: { lat: 29.2850, lng: 47.9250 }, serviceRadiusKm: 20, serviceAreas: ['Ardiya', 'Farwaniya', 'Riggae', 'Jleeb Al-Shuyoukh'],
+      contentImage: { src: IMAGES.gaming.gamingOverheating.src, alt: IMAGES.gaming.gamingOverheating.alt, width: IMAGES.gaming.gamingOverheating.width, height: IMAGES.gaming.gamingOverheating.height, caption: 'Gaming PC cooling and laptop repair serving Ardiya customers.' },
+      seo: { title: 'Computer Repair Ardiya Kuwait | Free Pickup | KCROC', description: 'Computer, laptop and gaming PC repair in Ardiya with free pickup and delivery, including motherboard, screen and thermal diagnostics.', canonicalUrl: 'https://www.computerrepairkuwait.com/location/ardiya', ogType: 'website', schemaTypes: ['LocalBusiness'], lastModified: '2026-10-02T00:00:00+03:00' },
+      navigationPriority: 68
+    } as LocationEntity,
+
+    'loc-jleeb-al-shuyoukh': { id: 'loc-jleeb-al-shuyoukh', slug: 'jleeb-al-shuyoukh', entityType: 'Location', isActive: true, isPhysicalLocation: false,
+      title: 'Jleeb Al-Shuyoukh',
+      description: 'Laptop and computer repair for Jleeb Al-Shuyoukh with free pickup and delivery to KCROC\'s Hawalli workshop.',
+      localIntro: 'KCROC serves Jleeb Al-Shuyoukh through the same Kuwait-wide pickup network used across Farwaniya. The device is collected locally, repaired at the central Hawalli lab and returned after testing.',
+      localHighlights: [
+        { title: 'Door-to-door collection', description: 'Pickup is available from Jleeb Al-Shuyoukh homes and businesses without a shop visit.' },
+        { title: 'Hardware-first diagnosis', description: 'Power, charging, display, battery and motherboard faults are checked with a hardware-focused diagnostic process.' },
+        { title: 'Laptop and MacBook repair', description: 'Major Windows laptop brands and Apple MacBooks are supported.' },
+        { title: 'Testing before return', description: 'Completed work is function-tested before the device is handed back to the customer.' }
+      ],
+      landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)',
+      coords: { lat: 29.2540, lng: 47.9310 }, serviceRadiusKm: 25, serviceAreas: ['Jleeb Al-Shuyoukh', 'Ardiya', 'Farwaniya', 'Riggae'],
+      contentImage: { src: IMAGES.laptopHardware.hpLaptopMotherboardRepairOpen.src, alt: IMAGES.laptopHardware.hpLaptopMotherboardRepairOpen.alt, width: IMAGES.laptopHardware.hpLaptopMotherboardRepairOpen.width, height: IMAGES.laptopHardware.hpLaptopMotherboardRepairOpen.height, caption: 'Laptop motherboard repair and diagnostics serving Jleeb Al-Shuyoukh.' },
+      seo: { title: 'Computer Repair Jleeb Al-Shuyoukh Kuwait | Free Pickup | KCROC', description: 'Laptop and computer repair in Jleeb Al-Shuyoukh with free pickup and delivery, including motherboard, charging, screen and battery repairs.', canonicalUrl: 'https://www.computerrepairkuwait.com/location/jleeb-al-shuyoukh', ogType: 'website', schemaTypes: ['LocalBusiness'], lastModified: '2026-10-02T00:00:00+03:00' },
+      navigationPriority: 66
+    } as LocationEntity,
+
+    'loc-mahboula': { id: 'loc-mahboula', slug: 'mahboula', entityType: 'Location', isActive: true, isPhysicalLocation: false,
+      title: 'Mahboula',
+      description: 'Laptop, MacBook and gaming PC repair for Mahboula with free pickup and delivery to KCROC\'s Hawalli lab.',
+      localIntro: 'Mahboula customers can use KCROC\'s southern pickup route for laptops, MacBooks and gaming systems. Devices are repaired and tested centrally rather than at a separate local branch.',
+      localHighlights: [
+        { title: 'Southern Kuwait pickup', description: 'Free pickup is available in Mahboula and nearby Ahmadi-area communities.' },
+        { title: 'Gaming PC and laptop cooling', description: 'Overheating, thermal throttling, shutdowns and fan-related issues can be diagnosed and repaired.' },
+        { title: 'MacBook and board repair', description: 'MacBook liquid damage and motherboard faults are handled at component level where feasible.' },
+        { title: 'Convenient return delivery', description: 'After testing, the repaired device is delivered back without requiring a second shop visit.' }
+      ],
+      landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)',
+      coords: { lat: 29.1470, lng: 48.1300 }, serviceRadiusKm: 20, serviceAreas: ['Mahboula', 'Mangaf', 'Abu Halifa', 'Fahaheel'],
+      contentImage: { src: IMAGES.gaming.waterCooled.src, alt: IMAGES.gaming.waterCooled.alt, width: IMAGES.gaming.waterCooled.width, height: IMAGES.gaming.waterCooled.height, caption: 'Gaming PC and hardware servicing for Mahboula and nearby southern Kuwait.' },
+      seo: { title: 'Computer Repair Mahboula Kuwait | Free Pickup | KCROC', description: 'Laptop, MacBook and gaming PC repair in Mahboula with free pickup and delivery to KCROC\'s Hawalli lab, including thermal and motherboard diagnostics.', canonicalUrl: 'https://www.computerrepairkuwait.com/location/mahboula', ogType: 'website', schemaTypes: ['LocalBusiness'], lastModified: '2026-10-02T00:00:00+03:00' },
+      navigationPriority: 64
+    } as LocationEntity,
+
+    'loc-adan': { id: 'loc-adan', slug: 'adan', entityType: 'Location', isActive: true, isPhysicalLocation: false,
+      title: 'Adan',
+      description: 'Laptop and motherboard repair for Adan residents with free pickup to KCROC\'s Hawalli workshop, covering screens, batteries, charging and no-power faults.',
+      localIntro: 'Adan is served through KCROC\'s Mubarak Al-Kabeer pickup network. Customers can arrange collection from home, then receive the device back after diagnosis, repair and functional testing at the Hawalli lab.',
+      localHighlights: [
+        { title: 'Adan pickup network', description: 'Free pickup connects Adan with KCROC\'s wider Mubarak Al-Kabeer service coverage.' },
+        { title: 'No-power and charging faults', description: 'Power, charging ports and motherboard causes are tested before parts are approved.' },
+        { title: 'Screen and battery repair', description: 'Common laptop wear parts can be replaced after confirming the fault and part compatibility.' },
+        { title: 'Laptop and MacBook support', description: 'Both Windows laptops and MacBooks can be collected for specialist repair.' }
+      ],
+      landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)',
+      coords: { lat: 29.2250, lng: 48.0800 }, serviceRadiusKm: 20, serviceAreas: ['Adan', 'Qurain', 'Mubarak Al-Kabeer', 'Sabah Al-Salem'],
+      contentImage: { src: IMAGES.services.laptopRepair.src, alt: IMAGES.services.laptopRepair.alt, width: IMAGES.services.laptopRepair.width, height: IMAGES.services.laptopRepair.height, caption: 'Laptop and motherboard repair serving Adan and surrounding southern residential areas.' },
+      seo: { title: 'Computer Repair Adan Kuwait | Free Pickup | KCROC', description: 'Laptop and computer repair in Adan with free pickup and delivery, including screen, battery, charging and motherboard diagnosis.', canonicalUrl: 'https://www.computerrepairkuwait.com/location/adan', ogType: 'website', schemaTypes: ['LocalBusiness'], lastModified: '2026-10-02T00:00:00+03:00' },
+      navigationPriority: 62
+    } as LocationEntity,
+
+    'loc-qurain': { id: 'loc-qurain', slug: 'qurain', entityType: 'Location', isActive: true, isPhysicalLocation: false,
+      title: 'Qurain',
+      description: 'Computer, laptop and MacBook repair for Qurain with free pickup and delivery to KCROC\'s Hawalli lab.',
+      localIntro: 'Qurain customers can arrange a pickup for laptops, MacBooks and gaming systems. KCROC performs the detailed diagnosis and repair at its central Hawalli workshop, then returns the tested device.',
+      localHighlights: [
+        { title: 'Pickup across Qurain', description: 'Free collection is available throughout Qurain and nearby Mubarak Al-Kabeer areas.' },
+        { title: 'Motherboard and power diagnosis', description: 'No-power, intermittent power and charging problems are investigated at component level where possible.' },
+        { title: 'MacBook and screen repair', description: 'MacBook board faults and laptop display problems are supported through the central repair lab.' },
+        { title: 'No need to travel', description: 'The pickup-and-delivery workflow means customers can start the repair from home.' }
+      ],
+      landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)',
+      coords: { lat: 29.2320, lng: 48.0650 }, serviceRadiusKm: 20, serviceAreas: ['Qurain', 'Adan', 'Qusour', 'Mubarak Al-Kabeer'],
+      contentImage: { src: IMAGES.macbook.macbookProOpenMacosScreen.src, alt: IMAGES.macbook.macbookProOpenMacosScreen.alt, width: IMAGES.macbook.macbookProOpenMacosScreen.width, height: IMAGES.macbook.macbookProOpenMacosScreen.height, caption: 'MacBook and laptop repair serving Qurain and nearby Mubarak Al-Kabeer areas.' },
+      seo: { title: 'Computer Repair Qurain Kuwait | Free Pickup | KCROC', description: 'Computer, laptop and MacBook repair in Qurain with free pickup and delivery, including screen, charging and motherboard repair.', canonicalUrl: 'https://www.computerrepairkuwait.com/location/qurain', ogType: 'website', schemaTypes: ['LocalBusiness'], lastModified: '2026-10-02T00:00:00+03:00' },
+      navigationPriority: 60
+    } as LocationEntity,
+
+    'loc-saad-al-abdullah': { id: 'loc-saad-al-abdullah', slug: 'saad-al-abdullah', entityType: 'Location', isActive: true, isPhysicalLocation: false,
+      title: 'Saad Al Abdullah',
+      description: 'Computer and laptop repair for Saad Al Abdullah with free pickup and delivery to KCROC\'s Hawalli lab, covering power, display, battery and motherboard faults.',
+      localIntro: 'Customers in Saad Al Abdullah can use KCROC\'s Kuwait-wide pickup service for laptops, desktops and MacBooks. Devices are diagnosed and repaired at the central Hawalli workshop, then returned after testing.',
+      localHighlights: [
+        { title: 'Jahra-area pickup', description: 'Free collection connects Saad Al Abdullah with KCROC\'s northern Kuwait service network.' },
+        { title: 'Laptop and desktop repair', description: 'Common home and gaming computer faults are assessed from power, thermal and display symptoms to board-level causes.' },
+        { title: 'Motherboard diagnostics', description: 'Component-level testing is available when a board fault can be repaired instead of replaced.' },
+        { title: 'Tested before delivery', description: 'Completed repairs are checked for stable operation before return delivery.' }
+      ],
+      landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)',
+      coords: { lat: 29.3700, lng: 47.7350 }, serviceRadiusKm: 40, serviceAreas: ['Saad Al Abdullah', 'Jahra', 'Naeem', 'Qasr'],
+      contentImage: { src: IMAGES.gaming.asusRogCase.src, alt: IMAGES.gaming.asusRogCase.alt, width: IMAGES.gaming.asusRogCase.width, height: IMAGES.gaming.asusRogCase.height, caption: 'Gaming PC and computer repair serving Saad Al Abdullah and northern Kuwait.' },
+      seo: { title: 'Computer Repair Saad Al Abdullah Kuwait | Free Pickup | KCROC', description: 'Computer and laptop repair in Saad Al Abdullah with free pickup and delivery, including motherboard, display, battery and power diagnostics.', canonicalUrl: 'https://www.computerrepairkuwait.com/location/saad-al-abdullah', ogType: 'website', schemaTypes: ['LocalBusiness'], lastModified: '2026-10-02T00:00:00+03:00' },
+      navigationPriority: 58
+    } as LocationEntity,
+
     /* ═══════════════════════════════════════════════════════════════
        REVIEWS
     ═══════════════════════════════════════════════════════════════ */
@@ -4247,6 +4451,18 @@ export const rawGraphData: RawGraphData = {
           { label: 'Computer Repair Mubarak Al-Kabeer', path: '/location/mubarak-al-kabeer' },
           { label: 'Computer Repair Fintas',       path: '/location/fintas' },
           { label: 'Computer Repair Sabah Al-Salem', path: '/location/sabah-al-salem' },
+          { label: 'Computer Repair Salwa',         path: '/location/salwa' },
+          { label: 'Computer Repair Rumaithiya',    path: '/location/rumaithiya' },
+          { label: 'Computer Repair Shaab',         path: '/location/shaab' },
+          { label: 'Computer Repair Surra',         path: '/location/surra' },
+          { label: 'Computer Repair Khaitan',       path: '/location/khaitan' },
+          { label: 'Computer Repair Riggae',        path: '/location/riggae' },
+          { label: 'Computer Repair Ardiya',        path: '/location/ardiya' },
+          { label: 'Computer Repair Jleeb Al-Shuyoukh', path: '/location/jleeb-al-shuyoukh' },
+          { label: 'Computer Repair Mahboula',      path: '/location/mahboula' },
+          { label: 'Computer Repair Adan',          path: '/location/adan' },
+          { label: 'Computer Repair Qurain',        path: '/location/qurain' },
+          { label: 'Computer Repair Saad Al Abdullah', path: '/location/saad-al-abdullah' },
         ]
       }
     } as FooterEntity,
@@ -4308,6 +4524,19 @@ const LOCATION_RELATIONSHIPS: Record<string, {
   'mubarak-al-kabeer': { relatedServiceIds: ['srv-laptop','srv-motherboard','srv-screen','srv-battery'], relatedProblemIds: ['problem-no-power','problem-overheating','problem-not-charging'], relatedBrandIds: ['brand-dell','brand-lenovo','brand-hp','brand-asus'], relatedLocationIds: ['loc-fintas','loc-sabah-al-salem','loc-abu-halifa'] },
   fintas: { relatedServiceIds: ['srv-laptop','srv-macbook','srv-gaming','srv-motherboard'], relatedProblemIds: ['problem-overheating','problem-no-power','problem-liquid-spill'], relatedBrandIds: ['brand-asus','brand-msi','brand-dell','brand-lenovo'], relatedLocationIds: ['loc-abu-halifa','loc-fahaheel','loc-mangaf'] },
   'sabah-al-salem': { relatedServiceIds: ['srv-laptop','srv-motherboard','srv-screen','srv-macbook'], relatedProblemIds: ['problem-no-power','problem-black-screen','problem-cracked-screen','problem-not-charging'], relatedBrandIds: ['brand-dell','brand-lenovo','brand-hp','brand-asus'], relatedLocationIds: ['loc-mubarak-al-kabeer','loc-fintas','loc-hawalli'] },
+
+  salwa: { relatedServiceIds: ['srv-laptop','srv-macbook','srv-screen','srv-battery'], relatedProblemIds: ['problem-cracked-screen','problem-black-screen','problem-not-charging','problem-liquid-spill'], relatedBrandIds: ['brand-dell','brand-lenovo','brand-hp','brand-asus'], relatedLocationIds: ['loc-salmiya','loc-rumaithiya','loc-shaab','loc-jabriya'] },
+  rumaithiya: { relatedServiceIds: ['srv-laptop','srv-gaming-laptop-cleaning','srv-macbook','srv-motherboard'], relatedProblemIds: ['problem-overheating','problem-no-power','problem-black-screen','problem-not-charging'], relatedBrandIds: ['brand-asus','brand-dell','brand-lenovo','brand-hp'], relatedLocationIds: ['loc-salwa','loc-shaab','loc-jabriya','loc-hawalli'] },
+  shaab: { relatedServiceIds: ['srv-laptop','srv-macbook','srv-motherboard','srv-screen'], relatedProblemIds: ['problem-black-screen','problem-no-power','problem-cracked-screen','problem-liquid-spill'], relatedBrandIds: ['brand-dell','brand-dell','brand-lenovo','brand-hp'], relatedLocationIds: ['loc-kuwait-city','loc-salwa','loc-rumaithiya','loc-jabriya'] },
+  surra: { relatedServiceIds: ['srv-laptop','srv-screen','srv-battery','srv-motherboard'], relatedProblemIds: ['problem-no-power','problem-not-charging','problem-overheating','problem-black-screen'], relatedBrandIds: ['brand-dell','brand-hp','brand-lenovo','brand-asus'], relatedLocationIds: ['loc-jabriya','loc-salwa','loc-hawalli'] },
+  khaitan: { relatedServiceIds: ['srv-laptop','srv-charging-port','srv-screen','srv-motherboard'], relatedProblemIds: ['problem-no-power','problem-not-charging','problem-cracked-screen','problem-overheating'], relatedBrandIds: ['brand-dell','brand-hp','brand-lenovo','brand-asus'], relatedLocationIds: ['loc-farwaniya','loc-riggae','loc-ardiya'] },
+  riggae: { relatedServiceIds: ['srv-laptop','srv-macbook','srv-screen','srv-motherboard'], relatedProblemIds: ['problem-no-power','problem-not-charging','problem-black-screen','problem-liquid-spill'], relatedBrandIds: ['brand-dell','brand-hp','brand-lenovo','brand-dell'], relatedLocationIds: ['loc-khaitan','loc-farwaniya','loc-ardiya'] },
+  ardiya: { relatedServiceIds: ['srv-laptop','srv-gaming','srv-motherboard','srv-screen'], relatedProblemIds: ['problem-overheating','problem-no-power','problem-black-screen','problem-not-charging'], relatedBrandIds: ['brand-asus','brand-msi','brand-dell','brand-lenovo'], relatedLocationIds: ['loc-farwaniya','loc-riggae','loc-jleeb-al-shuyoukh'] },
+  'jleeb-al-shuyoukh': { relatedServiceIds: ['srv-laptop','srv-motherboard','srv-screen','srv-battery'], relatedProblemIds: ['problem-no-power','problem-not-charging','problem-black-screen','problem-cracked-screen'], relatedBrandIds: ['brand-dell','brand-hp','brand-lenovo','brand-asus'], relatedLocationIds: ['loc-ardiya','loc-farwaniya','loc-riggae'] },
+  mahboula: { relatedServiceIds: ['srv-laptop','srv-macbook','srv-gaming','srv-gaming-laptop-cleaning'], relatedProblemIds: ['problem-overheating','problem-freezing-crashing','problem-no-power','problem-liquid-spill'], relatedBrandIds: ['brand-asus','brand-msi','brand-dell','brand-lenovo'], relatedLocationIds: ['loc-mangaf','loc-abu-halifa','loc-fahaheel','loc-ahmadi'] },
+  adan: { relatedServiceIds: ['srv-laptop','srv-motherboard','srv-screen','srv-battery'], relatedProblemIds: ['problem-no-power','problem-not-charging','problem-cracked-screen','problem-black-screen'], relatedBrandIds: ['brand-dell','brand-lenovo','brand-hp','brand-asus'], relatedLocationIds: ['loc-qurain','loc-mubarak-al-kabeer','loc-sabah-al-salem'] },
+  qurain: { relatedServiceIds: ['srv-laptop','srv-macbook','srv-motherboard','srv-screen'], relatedProblemIds: ['problem-no-power','problem-not-charging','problem-black-screen','problem-liquid-spill'], relatedBrandIds: ['brand-dell','brand-dell','brand-lenovo','brand-hp'], relatedLocationIds: ['loc-adan','loc-mubarak-al-kabeer','loc-sabah-al-salem'] },
+  'saad-al-abdullah': { relatedServiceIds: ['srv-laptop','srv-gaming','srv-motherboard','srv-screen'], relatedProblemIds: ['problem-no-power','problem-overheating','problem-black-screen','problem-not-charging'], relatedBrandIds: ['brand-asus','brand-msi','brand-dell','brand-lenovo'], relatedLocationIds: ['loc-jahra','loc-farwaniya','loc-hawalli'] },
 };
 
 const rawEntities = Object.values(rawGraphData.entities);
