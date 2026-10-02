@@ -20,6 +20,9 @@ import {
   MessageCircle,
   ArrowUpRight,
   Sparkles,
+  Search,
+  Thermometer,
+  CircleDollarSign,
 } from 'lucide-react';
 import { CompiledNavigationModel, MegaMenuConfig } from '../../navigation/types';
 import { useAnalytics } from '../../analytics/AnalyticsProvider';
@@ -37,6 +40,9 @@ const ICON_REGISTRY: Record<string, React.ElementType> = {
   shield: ShieldCheck,
   wrench: Wrench,
   'map-pin': MapPin,
+  search: Search,
+  thermometer: Thermometer,
+  'circle-dollar-sign': CircleDollarSign,
 };
 const getIcon = (key: string) => ICON_REGISTRY[key] ?? Wrench;
 
