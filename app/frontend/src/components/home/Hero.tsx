@@ -69,9 +69,9 @@ export default function Hero() {
             <span className="kcroc-kicker">Precision repair laboratory</span>
           </div>
 
-          <h1 className="kcroc-display text-center text-[2rem] sm:text-[2.4rem] font-black leading-[1.03] tracking-[-0.045em] text-white">
+          <div role="heading" aria-level={1} className="kcroc-display text-center text-[2rem] sm:text-[2.4rem] font-black leading-[1.03] tracking-[-0.045em] text-white">
             {headline}
-          </h1>
+          </div>
 
           <p className="mx-auto mt-3 max-w-lg text-center text-base sm:text-lg font-extrabold leading-snug text-cyan-300">
             {hero?.subheadline ?? "We fix the board. We don't just swap it."}
