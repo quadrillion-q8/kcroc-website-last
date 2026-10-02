@@ -18,6 +18,9 @@ import {
   Sparkles,
   BookOpen,
   Newspaper,
+  Search,
+  Thermometer,
+  CircleDollarSign,
 } from 'lucide-react';
 import { MegaMenuConfig, NavEntity } from '../../navigation/types';
 import { useAnalytics } from '../../analytics/AnalyticsProvider';
@@ -35,6 +38,9 @@ const ICON_REGISTRY: Record<string, React.ElementType> = {
   shield: ShieldCheck,
   wrench: Wrench,
   'map-pin': MapPin,
+  search: Search,
+  thermometer: Thermometer,
+  'circle-dollar-sign': CircleDollarSign,
   'book-open': BookOpen,
   'newspaper': Newspaper,
 };
@@ -169,7 +175,7 @@ export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnte
   const indexItem = getIndexItem(config);
   const allHref = indexItem ? getEntityHref(indexItem) : meta.allHref;
   const allLabel = indexItem ? meta.allLabel : meta.allLabel;
-  const isServiceAreaMenu = config.id === 'about_mega' || config.id === 'locations_mega';
+  const isServiceAreaMenu = config.id === 'locations_mega';
   const panelWidth = isServiceAreaMenu ? 1100 : 1040;
 
   const getClampedLeft = () => {
