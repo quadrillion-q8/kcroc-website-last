@@ -134,6 +134,10 @@ export const NAV_GRAPH = {
       {
         "label": "Computer Repair Near Me",
         "path": "/near-me"
+      },
+      {
+        "label": "All Service Areas",
+        "path": "/locations"
       }
     ],
     "areas": [
@@ -266,17 +270,17 @@ export const NAV_GRAPH = {
   "trustBadges": [
     {
       "id": "badge-privacy",
-      "title": "Data Privacy Guaranteed",
+      "title": "Privacy Protected",
       "iconKey": "ShieldCheck"
     },
     {
       "id": "badge-pickup",
-      "title": "Free Pick & Drop",
+      "title": "Free Pickup & Delivery",
       "iconKey": "Truck"
     },
     {
       "id": "badge-warranty",
-      "title": "30-Day Warranty",
+      "title": "30-Day Repair Warranty",
       "iconKey": "Clock"
     },
     {
