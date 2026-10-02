@@ -46,6 +46,11 @@ const CONFIG: Record<string, {
       { label: 'تصليح مذربورد', path: '/ar/motherboard-repair-kuwait' },
       { label: 'تصليح Gaming PC', path: '/ar/gaming-pc-repair-kuwait' },
       { label: 'تصليح شاشة لابتوب', path: '/ar/laptop-screen-repair-kuwait' },
+      { label: 'تصليح MacBook', path: '/ar/macbook-repair-kuwait' },
+      { label: 'تبديل بطارية اللابتوب', path: '/ar/battery-replacement-kuwait' },
+      { label: 'ترقية SSD وRAM', path: '/ar/ssd-ram-upgrade-kuwait' },
+      { label: 'تصليح Gaming Laptop', path: '/ar/gaming-laptop-repair-kuwait' },
+      { label: 'تصليح كمبيوتر حولي', path: '/ar/computer-repair-hawalli' },
       { label: 'فني كمبيوتر بالقرب مني', path: '/ar/near-me' }
     ],
     serviceIds: ['srv-laptop', 'srv-motherboard', 'srv-gaming', 'srv-macbook', 'srv-screen']
@@ -126,6 +131,126 @@ const CONFIG: Record<string, {
       { label: 'فني كمبيوتر بالقرب مني', path: '/ar/near-me' }
     ],
     serviceIds: ['srv-screen', 'srv-laptop', 'srv-battery', 'srv-hinge']
+  }
+,
+  'computer-repair-hawalli': {
+    h1: 'تصليح كمبيوتر حولي',
+    eyebrow: 'مختبر KCROC في حولي • استلام وتوصيل مجاني',
+    intro: 'تحتاج فني كمبيوتر أو لابتوب في حولي؟ مختبر KCROC موجود في حولي لتشخيص الكمبيوتر واللابتوب، مع استلام وتوصيل مجاني من المنزل أو المكتب وباقي مناطق الكويت.',
+    bullets: ['مختبر فعلي في حولي', 'تشخيص قبل الإصلاح', 'تصليح لابتوب وكمبيوتر وMacBook', 'لوحات أم وMicrosoldering حسب الحالة', 'ضمان 30 يومًا على الإصلاح المكتمل'],
+    faq: [
+      { q: 'وين موقع مختبر KCROC في حولي؟', a: 'مختبر KCROC في مجمع الملا، شارع ابن خلدون، محل 19 في البدروم، حولي.' },
+      { q: 'هل لازم أروح حولي بنفسي؟', a: 'لا. نرتب الاستلام والتوصيل داخل الكويت، وبعد الإصلاح والاختبار نرجع الجهاز لك.' },
+      { q: 'هل تصلحون MacBook والـGaming PC في حولي؟', a: 'نعم، يتم تشخيص MacBook والـGaming PC واللابتوبات والكمبيوترات حسب نوع المشكلة والقطعة المطلوبة.' }
+    ],
+    englishPath: '/location/hawalli',
+    arabicLinks: [
+      { label: 'تصليح كمبيوتر الكويت', path: '/ar/computer-repair-kuwait' },
+      { label: 'تصليح لابتوب', path: '/ar/laptop-repair-kuwait' },
+      { label: 'تصليح MacBook', path: '/ar/macbook-repair-kuwait' },
+      { label: 'تصليح Gaming Laptop', path: '/ar/gaming-laptop-repair-kuwait' },
+      { label: 'فني كمبيوتر بالقرب مني', path: '/ar/near-me' }
+    ],
+    serviceIds: ['srv-laptop', 'srv-motherboard', 'srv-screen', 'srv-battery', 'srv-macbook', 'srv-macbook-screen', 'srv-gaming', 'srv-gaming-laptop']
+  },
+  'macbook-repair-kuwait': {
+    h1: 'تصليح MacBook في الكويت',
+    eyebrow: 'MacBook Air وMacBook Pro • تشخيص قبل الإصلاح',
+    intro: 'MacBook ما يشتغل؟ ما يشحن؟ الشاشة سوداء أو البطارية ضعفت؟ في KCROC نشخص العطل الفعلي أولًا، ونحدد هل المشكلة في الطاقة أو الشحن أو الشاشة أو البطارية أو اللوحة الأم قبل اقتراح الاستبدال.',
+    bullets: ['MacBook Air وMacBook Pro', 'أعطال الشاشة والشحن والطاقة', 'تصليح اللوحة على مستوى المكونات عند الإمكان', 'تبديل البطارية والشاشة حسب الموديل', 'استلام وتوصيل مجاني داخل الكويت'],
+    faq: [
+      { q: 'هل تصلحون MacBook Air وMacBook Pro؟', a: 'نعم. نحدد الموديل والجيل أولًا ثم نفحص المشكلة والقطع المتوافقة.' },
+      { q: 'هل تفحصون اللوحة قبل اقتراح تبديلها؟', a: 'نعم. في الأعطال القابلة للإصلاح نفحص مسار الطاقة والشحن والمكونات قبل القفز إلى تبديل اللوحة كاملة.' },
+      { q: 'هل توفرون استلام MacBook من منطقتي؟', a: 'نعم. خدمة الاستلام والتوصيل متاحة داخل الكويت، بينما يتم الإصلاح في مختبر KCROC بحولي.' }
+    ],
+    englishPath: '/macbook-repair-kuwait',
+    arabicLinks: [
+      { label: 'تبديل شاشة MacBook', path: '/ar/macbook-screen-replacement-kuwait' },
+      { label: 'تبديل البطارية', path: '/ar/battery-replacement-kuwait' },
+      { label: 'تصليح مذربورد', path: '/ar/motherboard-repair-kuwait' },
+      { label: 'تصليح لابتوب', path: '/ar/laptop-repair-kuwait' },
+      { label: 'تصليح كمبيوتر حولي', path: '/ar/computer-repair-hawalli' }
+    ],
+    serviceIds: ['srv-macbook', 'srv-macbook-screen', 'srv-battery', 'srv-motherboard']
+  },
+  'macbook-screen-replacement-kuwait': {
+    h1: 'تبديل شاشة MacBook في الكويت',
+    eyebrow: 'MacBook Air وMacBook Pro • مطابقة الموديل قبل تركيب الشاشة',
+    intro: 'إذا شاشة MacBook مكسورة أو سوداء أو فيها خطوط أو تومض، لا نطلب شاشة جديدة قبل التأكد من سبب العطل. نطابق الجيل والموديل والـdisplay assembly ثم نعطيك السعر قبل التركيب.',
+    bullets: ['MacBook Air وMacBook Pro', 'فحص الشاشة والكابل والإضاءة', 'تبديل شاشة مناسبة للموديل', 'من 30 د.ك + القطعة حسب الحالة', 'استلام وتوصيل مجاني داخل الكويت'],
+    faq: [
+      { q: 'كم سعر تبديل شاشة MacBook؟', a: 'الخدمة تبدأ من 30 د.ك + القطعة، والسعر النهائي يعتمد على الموديل وتجميعة الشاشة المطلوبة.' },
+      { q: 'هل كل شاشة سوداء تحتاج تبديل؟', a: 'لا. نفحص اللوحة والكابل والإضاءة ومسار الصورة قبل طلب شاشة جديدة.' },
+      { q: 'هل توفرون تبديل الشاشة في نفس اليوم؟', a: 'يمكن أن يكون نفس اليوم عندما تكون القطعة المناسبة متوفرة، وإلا يحدد الموعد حسب توفر القطعة.' }
+    ],
+    englishPath: '/macbook-screen-replacement-kuwait',
+    arabicLinks: [
+      { label: 'تصليح MacBook', path: '/ar/macbook-repair-kuwait' },
+      { label: 'تبديل شاشة اللابتوب', path: '/ar/laptop-screen-repair-kuwait' },
+      { label: 'تبديل البطارية', path: '/ar/battery-replacement-kuwait' },
+      { label: 'تصليح كمبيوتر حولي', path: '/ar/computer-repair-hawalli' }
+    ],
+    serviceIds: ['srv-macbook-screen', 'srv-macbook', 'srv-screen']
+  },
+  'battery-replacement-kuwait': {
+    h1: 'تبديل بطارية اللابتوب وMacBook في الكويت',
+    eyebrow: 'فحص صحة البطارية ودائرة الشحن قبل التبديل',
+    intro: 'البطارية تخلص بسرعة أو الجهاز يطفي فجأة؟ نتحقق أولًا هل المشكلة من البطارية نفسها أو من دائرة الشحن والطاقة، ثم نركب البطارية المناسبة للموديل عند الحاجة.',
+    bullets: ['تبديل بطاريات اللابتوب وMacBook', 'فحص صحة البطارية ودوراتها', 'فحص دائرة الشحن والطاقة', 'من 8 د.ك + القطعة حسب الحالة', 'استلام وتوصيل مجاني وضمان 30 يومًا'],
+    faq: [
+      { q: 'كم يبدأ سعر تبديل بطارية اللابتوب؟', a: 'الخدمة تبدأ من 8 د.ك + القطعة، والسعر النهائي يعتمد على موديل الجهاز والبطارية المناسبة.' },
+      { q: 'هل كل مشكلة بطارية تحتاج بطارية جديدة؟', a: 'لا. أحيانًا تكون المشكلة في الشحن أو دائرة الطاقة، لذلك نختبر السبب قبل التبديل.' },
+      { q: 'هل تبدلون بطارية MacBook؟', a: 'نعم، حسب الموديل والبطارية المتوافقة وحالة الجهاز.' }
+    ],
+    englishPath: '/battery-replacement-kuwait',
+    arabicLinks: [
+      { label: 'تبديل شاشة MacBook', path: '/ar/macbook-screen-replacement-kuwait' },
+      { label: 'تصليح MacBook', path: '/ar/macbook-repair-kuwait' },
+      { label: 'تصليح لابتوب', path: '/ar/laptop-repair-kuwait' },
+      { label: 'ترقية SSD وRAM', path: '/ar/ssd-ram-upgrade-kuwait' },
+      { label: 'تصليح كمبيوتر حولي', path: '/ar/computer-repair-hawalli' }
+    ],
+    serviceIds: ['srv-battery', 'srv-laptop', 'srv-macbook', 'srv-charging-port']
+  },
+  'ssd-ram-upgrade-kuwait': {
+    h1: 'ترقية SSD وRAM لتسريع اللابتوب في الكويت',
+    eyebrow: 'سرعة أعلى تبدأ بتحديد سبب البطء',
+    intro: 'اللابتوب بطيء؟ قبل ما تشتري قطعة عشوائيًا، نفحص التخزين والرام والحرارة وسلامة القرص ونحدد هل SSD أو RAM هو الاختناق الحقيقي. وعندما يكون مناسبًا نركب القطعة ونختبر الجهاز بعد الترقية.',
+    bullets: ['SSD SATA أو NVMe حسب الموديل', 'ترقية RAM عندما تكون قابلة للترقية', 'فحص صحة التخزين', 'استنساخ Windows عندما يكون مناسبًا', 'استلام وتوصيل مجاني وضمان 30 يومًا'],
+    faq: [
+      { q: 'هل SSD يسرع اللابتوب؟', a: 'إذا كان القرص الحالي هو سبب البطء، فغالبًا يعطي SSD فرقًا واضحًا في الإقلاع وفتح البرامج.' },
+      { q: 'هل يمكن ترقية RAM في كل لابتوب؟', a: 'لا. بعض الأجهزة تستخدم ذاكرة ملحومة وبعضها يحتوي على فتحات قابلة للترقية، لذلك نتحقق من الموديل أولًا.' },
+      { q: 'هل يمكن نقل Windows إلى SSD الجديد؟', a: 'غالبًا نعم عندما يكون القرص الأصلي بحالة مناسبة ويكون إعداد الجهاز قابلًا للاستنساخ، ثم نتحقق من الإقلاع وصحة القرص.' }
+    ],
+    englishPath: '/ssd-ram-upgrade-kuwait',
+    arabicLinks: [
+      { label: 'تصليح لابتوب', path: '/ar/laptop-repair-kuwait' },
+      { label: 'تبديل البطارية', path: '/ar/battery-replacement-kuwait' },
+      { label: 'تصليح Gaming Laptop', path: '/ar/gaming-laptop-repair-kuwait' },
+      { label: 'دليل اللابتوب البطيء', path: '/blog/why-is-my-laptop-so-slow-2026' },
+      { label: 'تصليح كمبيوتر حولي', path: '/ar/computer-repair-hawalli' }
+    ],
+    serviceIds: ['srv-ssd-ram', 'srv-laptop', 'srv-gaming-laptop']
+  },
+  'gaming-laptop-repair-kuwait': {
+    h1: 'تصليح Gaming Laptop في الكويت',
+    eyebrow: 'ROG • TUF • Legion • MSI • Predator • OMEN',
+    intro: 'Gaming Laptop يحرّ؟ يطفي؟ ما يعطي صورة؟ الشحن يتقطع؟ الـFPS ينزل بعد فترة؟ نفحص التبريد والطاقة وGPU والرام والـBIOS واللوحة قبل اقتراح تبديل قطعة غالية.',
+    bullets: ['Overheating وThermal Throttling', 'Black Screen وNo Power', 'GPU وVRAM واختبار الاستقرار', 'Charging والبطارية واللوحة الأم', 'استلام وتوصيل مجاني وضمان 30 يومًا'],
+    faq: [
+      { q: 'هل تصلحون ASUS ROG وTUF وLenovo Legion وMSI؟', a: 'نعم، وتشمل الخدمة عائلات Gaming Laptop الرئيسية، مع تحديد الموديل والجيل قبل الإصلاح.' },
+      { q: 'Gaming Laptop يسخن وFPS ينزل، شنو السبب؟', a: 'قد يكون من التبريد أو الحرارة أو الطاقة أو GPU، لذلك نقيس درجات الحرارة وسلوك الأداء تحت الحمل بدل التخمين.' },
+      { q: 'هل تصلحون Gaming Laptop ما يشتغل أو شاشته سوداء؟', a: 'نعم، نفصل بين الطاقة والذاكرة وGPU والـBIOS والشاشة واللوحة قبل طلب قطعة جديدة.' }
+    ],
+    englishPath: '/gaming-laptop-repair-kuwait',
+    arabicLinks: [
+      { label: 'خدمة تنظيف Gaming Laptop', path: '/gaming-laptop-cleaning-kuwait' },
+      { label: 'تصليح Gaming PC', path: '/ar/gaming-pc-repair-kuwait' },
+      { label: 'تصليح لابتوب', path: '/ar/laptop-repair-kuwait' },
+      { label: 'ترقية SSD وRAM', path: '/ar/ssd-ram-upgrade-kuwait' },
+      { label: 'تصليح كمبيوتر حولي', path: '/ar/computer-repair-hawalli' }
+    ],
+    serviceIds: ['srv-gaming-laptop', 'srv-gaming-laptop-cleaning', 'srv-gaming', 'srv-laptop', 'srv-screen', 'srv-battery']
   }
 };
 
@@ -1159,6 +1284,17 @@ export default function ArabicCommercialPage() {
   const services = cfg.serviceIds
     .map((id) => KCROC_GRAPH.services.find((service) => service.id === id))
     .filter(Boolean);
+  const arabicServicePathById: Record<string, string> = {
+    'srv-laptop': '/ar/laptop-repair-kuwait',
+    'srv-motherboard': '/ar/motherboard-repair-kuwait',
+    'srv-gaming': '/ar/gaming-pc-repair-kuwait',
+    'srv-screen': '/ar/laptop-screen-repair-kuwait',
+    'srv-macbook': '/ar/macbook-repair-kuwait',
+    'srv-macbook-screen': '/ar/macbook-screen-replacement-kuwait',
+    'srv-battery': '/ar/battery-replacement-kuwait',
+    'srv-ssd-ram': '/ar/ssd-ram-upgrade-kuwait',
+    'srv-gaming-laptop': '/ar/gaming-laptop-repair-kuwait',
+  };
   const faqSchema = {
     '@graph': [{
       '@type': 'FAQPage',
@@ -1217,7 +1353,7 @@ export default function ArabicCommercialPage() {
           </div>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {services.map((service) => service && (
-              <Link key={service.id} to={`/${service.slug}`} className="group rounded-2xl border border-slate-800 bg-slate-900/45 p-6 hover:border-cyan-500/40">
+              <Link key={service.id} to={arabicServicePathById[service.id] ?? `/${service.slug}`} className="group rounded-2xl border border-slate-800 bg-slate-900/45 p-6 hover:border-cyan-500/40">
                 <Wrench className="h-6 w-6 text-cyan-400" aria-hidden="true" />
                 <h3 className="mt-4 text-lg font-bold text-white group-hover:text-cyan-300">{service.title.replace(' Kuwait', '')}</h3>
                 <p className="mt-2 text-sm leading-6 text-slate-400">{service.shortDescription}</p>
