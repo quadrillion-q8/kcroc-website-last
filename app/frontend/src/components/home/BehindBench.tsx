@@ -90,7 +90,7 @@ export default function BehindBench() {
             <ArrowRight className="w-4 h-4" aria-hidden="true" />
           </Link>
           <Link
-            to="/book-repair"
+            to="/book"
             className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-cyan-400 text-slate-950 hover:bg-cyan-300 transition-colors font-bold text-sm"
           >
             Book Free Pickup
