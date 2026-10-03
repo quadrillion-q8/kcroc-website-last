@@ -13,6 +13,7 @@ export default function Reviews() {
 
   const rating = Number(aggregate?.ratingValue || 4.9);
   const reviewCount = Number(aggregate?.reviewCount || reviews.length);
+  const googleProfileUrl = KCROC_GRAPH?.business?.socialLinks?.googleMaps;
 
   const scrollReviews = (direction: number) => {
     trackRef.current?.scrollBy({
@@ -93,6 +94,20 @@ export default function Reviews() {
             <ChevronRight className="w-5 h-5" aria-hidden="true" />
           </button>
         </div>
+
+        {googleProfileUrl && (
+          <div className="mt-6 sm:mt-10 flex justify-center">
+            <a
+              href={googleProfileUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-cyan-500/40 text-cyan-400 font-bold text-sm hover:bg-cyan-500/10 hover:border-cyan-400 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+            >
+              <Star className="w-4 h-4 fill-current" aria-hidden="true" />
+              <span>Read our Google reviews</span>
+            </a>
+          </div>
+        )}
       </div>
     </section>
   );
