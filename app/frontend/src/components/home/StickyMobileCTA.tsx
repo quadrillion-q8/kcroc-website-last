@@ -1,13 +1,16 @@
 // File: app/frontend/src/components/home/StickyMobileCTA.tsx
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import { KCROC_GRAPH } from '../../data/graph';
+import { getPageWhatsAppLink } from '../../utils/whatsappIntent';
 import { useAnalytics } from '../../core/analytics/AnalyticsProvider';
 
 export const StickyMobileCTA = () => {
   const business = KCROC_GRAPH.business;
   const phone = business!.telephone;
-  
+  const { pathname } = useLocation();
   const { trackConversion } = useAnalytics();
+  const whatsappLink = getPageWhatsAppLink(pathname);
 
   return (
     <div
@@ -23,14 +26,14 @@ export const StickyMobileCTA = () => {
         Call
       </a>
       <a
-        href={`https://wa.me/${phone}`}
+        href={whatsappLink}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Message KCROC on WhatsApp"
         onClick={() => trackConversion('whatsapp_click', { cta_name: 'sticky_mobile_wa', button_position: 'bottom_bar' })}
         className="flex-[2] text-center rounded-xl bg-[#25D366] text-slate-950 font-bold py-2.5 min-h-[44px] whatsapp-pulse touch-manipulation transition-transform active:scale-[0.99] focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300"
       >
-        WhatsApp a Technician
+        WhatsApp Us
       </a>
     </div>
   );
