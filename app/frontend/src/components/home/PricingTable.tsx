@@ -59,7 +59,6 @@ export const PricingTable = () => {
                     {service.estimatedTurnaround}
                   </p>
                 </div>
-              </div>
               </Link>
               <div className="flex items-center gap-2 shrink-0">
                 <p className="hidden sm:block text-sm sm:text-lg font-black text-cyan-400 whitespace-nowrap">
