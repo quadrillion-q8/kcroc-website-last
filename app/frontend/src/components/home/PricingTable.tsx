@@ -3,14 +3,15 @@ import React from 'react';
 import { KCROC_GRAPH } from '../../data/graph';
 import { useAnalytics } from '../../core/analytics/AnalyticsProvider';
 import { SectionHeader } from '@/components/ui/section-header';
+import { Link } from 'react-router-dom';
+import { MessageCircle } from 'lucide-react';
+import { buildWhatsAppLink } from '../../utils/whatsappIntent';
 
 export const PricingTable = () => {
   const services = [...KCROC_GRAPH.services].sort(
     (a, b) => (b.navigationPriority ?? 0) - (a.navigationPriority ?? 0)
   );
 
-  const business = KCROC_GRAPH.business;
-  const whatsappNumber = business!.telephone;
   
   const { trackConversion } = useAnalytics();
 
@@ -31,14 +32,17 @@ export const PricingTable = () => {
         <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 sm:gap-4">
           {services.map((service) => {
             const thumb = service.contentImages?.[0];
+            const whatsappLink = buildWhatsAppLink(`Hi KCROC, I'd like to ask about ${service.title}. What is the starting price and what do you need to confirm the exact quote?`);
             return (
-              <a
+              <div
               key={service.id}
-              href={`/${service.slug}`}
-              onClick={() => trackConversion('cta_click', { cta_name: 'pricing_service_card', button_position: 'pricing_table' })}
-              className="flex items-center justify-between bg-slate-900/30 border border-slate-800 hover:border-cyan-500/30 rounded-xl px-3.5 py-3 sm:px-6 sm:py-5 transition-all"
+              className="flex items-center justify-between gap-3 bg-slate-900/30 border border-slate-800 hover:border-cyan-500/30 rounded-xl px-3.5 py-3 sm:px-6 sm:py-5 transition-all"
             >
-              <div className="flex items-center gap-3 sm:gap-4">
+              <Link
+                to={`/${service.slug}`}
+                onClick={() => trackConversion('cta_click', { cta_name: 'pricing_service_card', button_position: 'pricing_table', service_id: service.id })}
+                className="min-w-0 flex flex-1 items-center gap-3 sm:gap-4"
+              >
                 {thumb && (
                   <img
                     src={thumb.src}
@@ -56,7 +60,9 @@ export const PricingTable = () => {
                   </p>
                 </div>
               </div>
-              <p className="text-sm sm:text-lg font-black text-cyan-400 whitespace-nowrap ml-3">
+              </Link>
+              <div className="flex items-center gap-2 shrink-0">
+                <p className="hidden sm:block text-sm sm:text-lg font-black text-cyan-400 whitespace-nowrap">
                 {/* 🩹 FIX: the old fallback interpolated
                   `From ${service.pricing?.startingFrom} ${service.pricing?.currency}`
                   even when `service.pricing` was undefined entirely — the
@@ -71,19 +77,31 @@ export const PricingTable = () => {
                   service added without pricing. Now falls through three
                   explicit, valid states instead of ever interpolating
                   undefined. */}
-                {service.pricing?.displayLabel?.split(' — ')[0] ??
-                  (service.pricing?.startingFrom != null && service.pricing?.currency
-                    ? `From ${service.pricing.startingFrom} ${service.pricing.currency}`
-                    : 'Contact us for pricing')}
-              </p>
-            </a>
+                  {service.pricing?.displayLabel?.split(' — ')[0] ??
+                    (service.pricing?.startingFrom != null && service.pricing?.currency
+                      ? `From ${service.pricing.startingFrom} ${service.pricing.currency}`
+                      : 'Contact us')}
+                </p>
+                <a
+                  href={whatsappLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Ask KCROC about ${service.title}`}
+                  onClick={() => trackConversion('whatsapp_click', { cta_name: 'pricing_service_whatsapp', button_position: 'pricing_table', service_id: service.id })}
+                  className="inline-flex min-h-10 min-w-10 items-center justify-center gap-1.5 rounded-lg border border-emerald-500/25 bg-emerald-500/10 px-2.5 text-emerald-300 transition-colors hover:border-emerald-400/40 hover:bg-emerald-500/15 sm:px-3"
+                >
+                  <MessageCircle className="h-4 w-4" aria-hidden="true" />
+                  <span className="hidden sm:inline text-xs font-black">Ask</span>
+                </a>
+              </div>
+            </div>
             );
           })}
         </div>
 
         <div className="mt-6 sm:mt-10 text-center">
           <a
-            href={`https://wa.me/${whatsappNumber}`}
+            href={buildWhatsAppLink('Hi KCROC, I would like a free repair quote. Can you advise me on the next step?')}
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => trackConversion('whatsapp_click', { cta_name: 'pricing_whatsapp_cta', button_position: 'pricing_table' })}
