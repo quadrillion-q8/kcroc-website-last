@@ -33,23 +33,77 @@ initializeGoogleConsent();
 // even after a fresh reload) reloads once and then falls through to the
 // ErrorBoundary instead of reload-looping the visitor forever.
 if (typeof window !== 'undefined') {
+  const CHUNK_RELOAD_GUARD_KEY = 'kcroc:chunk-reload-attempted';
+  const SSG_MANIFEST_RELOAD_GUARD_KEY = 'kcroc:ssg-manifest-reload-attempted';
+
+  const getErrorText = (value: unknown): string => {
+    if (value instanceof Error) {
+      return [value.name, value.message, value.stack].filter(Boolean).join(' ');
+    }
+
+    if (typeof value === 'string') return value;
+
+    if (value && typeof value === 'object') {
+      const candidate = value as { message?: unknown; stack?: unknown; cause?: unknown };
+      return [
+        candidate.message,
+        candidate.stack,
+        candidate.cause instanceof Error ? candidate.cause.message : candidate.cause
+      ]
+        .filter(Boolean)
+        .map(String)
+        .join(' ');
+    }
+
+    return String(value ?? '');
+  };
+
+  const isStaleSsgManifestError = (value: unknown): boolean => {
+    const text = getErrorText(value);
+    const mentionsManifest = /static-loader-data-manifest(?:-[^\s/'\"]+)?/i.test(text);
+    const looksLikeInvalidManifestJson = /unexpected token|not valid json|json\.parse/i.test(text) && /manifest/i.test(text);
+    return mentionsManifest || looksLikeInvalidManifestJson;
+  };
+
+  const reloadOnce = (guardKey: string): boolean => {
+    if (sessionStorage.getItem(guardKey)) return false;
+    sessionStorage.setItem(guardKey, '1');
+    window.location.reload();
+    return true;
+  };
+
   window.addEventListener('vite:preloadError', (event) => {
-    const RELOAD_GUARD_KEY = 'kcroc:chunk-reload-attempted';
-    if (sessionStorage.getItem(RELOAD_GUARD_KEY)) {
+    if (sessionStorage.getItem(CHUNK_RELOAD_GUARD_KEY)) {
       // Already tried once this session — a hard reload didn't fix it, so
       // let the error surface normally (ErrorBoundary) rather than loop.
       return;
     }
     event.preventDefault();
-    sessionStorage.setItem(RELOAD_GUARD_KEY, '1');
-    window.location.reload();
+    reloadOnce(CHUNK_RELOAD_GUARD_KEY);
   });
 
-  // Clear the guard once a page has loaded cleanly, so a stale chunk error
-  // days from now doesn't get silently swallowed by a guard left over from
-  // an old session.
+  // vite-react-ssg can fetch build-time loader data from a generated manifest
+  // during client-side navigations. If a browser or intermediary has retained
+  // HTML from an older deployment, that HTML can point at a manifest filename
+  // that is no longer present in the current deployment. Recover from that
+  // narrowly-targeted failure with one reload instead of leaving the visitor
+  // on an "Unexpected Application Error" screen.
+  const handleStaleSsgManifestError = (event: PromiseRejectionEvent | ErrorEvent) => {
+    const value = event instanceof PromiseRejectionEvent ? event.reason : event.error ?? event.message;
+    if (!isStaleSsgManifestError(value)) return;
+
+    event.preventDefault?.();
+    reloadOnce(SSG_MANIFEST_RELOAD_GUARD_KEY);
+  };
+
+  window.addEventListener('unhandledrejection', (event) => handleStaleSsgManifestError(event));
+  window.addEventListener('error', (event) => handleStaleSsgManifestError(event));
+
+  // Clear the guards once a page has loaded cleanly, so a later, unrelated
+  // stale-build event is not blocked by a guard left behind from an old load.
   window.addEventListener('load', () => {
-    sessionStorage.removeItem('kcroc:chunk-reload-attempted');
+    sessionStorage.removeItem(CHUNK_RELOAD_GUARD_KEY);
+    sessionStorage.removeItem(SSG_MANIFEST_RELOAD_GUARD_KEY);
   });
 }
 
