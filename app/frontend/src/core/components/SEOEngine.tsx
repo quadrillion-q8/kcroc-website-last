@@ -167,7 +167,14 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
       "opens": business.schemaOpeningHours.opens,
       "closes": business.schemaOpeningHours.closes
     } : undefined,
-    "sameAs": business.socialLinks ? Object.values(business.socialLinks) : []
+    "sameAs": business.socialLinks ? Object.values(business.socialLinks) : [],
+    "contactPoint": [{
+      "@type": "ContactPoint",
+      "telephone": `+${business.telephone}`,
+      "contactType": "customer service",
+      "areaServed": "KW",
+      "availableLanguage": ["en-KW", "ar-KW"]
+    }]
   };
 
   const schemaGraph: any[] = [baseLocalBusiness];
