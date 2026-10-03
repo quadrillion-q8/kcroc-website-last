@@ -47,7 +47,8 @@ export const NAV_GRAPH = {
     },
     "socialLinks": {
       "facebook": "https://www.facebook.com/computerrepairkuwait",
-      "instagram": "https://www.instagram.com/computerrepairkuwait"
+      "instagram": "https://www.instagram.com/computerrepairkuwait",
+      "googleMaps": "https://share.google/bDiraX9R7Tc1u7tm4"
     },
     "aiSummary": "Kuwait Computer Repair On Call (KCROC) is a Hawalli-based component-level computer repair specialist. Services include laptop and MacBook repair, gaming PC repair, motherboard chip-level diagnostics, screen replacement, battery replacement, charging-port repair, hinge and chassis repair, keyboard replacement, SSD and RAM upgrades, liquid-damage repair, gaming laptop thermal servicing, and virus removal. Free pickup and delivery across all Kuwait governorates. 30-day warranty on completed repairs. No Fix, No Fee policy."
   },
