@@ -110,6 +110,16 @@ const STANDALONE_REPAIR_PATHS: Record<string, { title: string; intro: string; li
       { href: '/case-studies/asus-rog-dead-motherboard-hawalli', label: 'ASUS ROG Repair Case Study', description: 'See a real gaming-motherboard repair example from KCROC.' },
     ],
   },
+  'microsoft-windows-surface-event-october-7-2026': {
+    title: 'Next PC research: related KCROC guides and repair paths',
+    intro: 'Use these existing KCROC pages to compare laptop platforms, plan a purchase, or move from a technology question to a real repair or upgrade diagnosis.',
+    links: [
+      { href: '/blog/laptop-buying-guide-kuwait-2026', label: 'Laptop Buying Guide 2026', description: 'Compare processor, memory, storage, cooling, display and ownership factors before buying a laptop in Kuwait.' },
+      { href: '/blog/intel-core-ultra-vs-amd-ryzen-ai', label: 'Intel Core Ultra vs AMD Ryzen AI', description: 'A practical comparison of current Windows processor platforms and the role of AI acceleration.' },
+      { href: '/laptop-repair-kuwait', label: 'Laptop Repair Kuwait', description: 'For persistent performance, thermal, power or hardware problems that need technician diagnosis.' },
+      { href: '/gaming-pc-repair-kuwait', label: 'Gaming PC & GPU Repair Kuwait', description: 'For GPU, gaming, power, cooling and component-level faults on high-performance systems.' },
+    ],
+  },
   'gaming-pc-not-turning-on-kuwait': {
     title: 'Gaming PC no-power: related repair paths',
     intro: 'Use the symptom path to separate total no-power, no-POST and no-display failures before ordering parts.',
