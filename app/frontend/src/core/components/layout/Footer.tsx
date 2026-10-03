@@ -49,6 +49,7 @@ export function Footer() {
   const brandLabel = business.alternateName || business.title;
   const facebookAriaLabel = brandLabel + ' on Facebook';
   const instagramAriaLabel = brandLabel + ' on Instagram';
+  const googleAriaLabel = brandLabel + ' on Google';
 
   const visibleServices = footerData.links.services.slice(0, 8);
   const visibleAreas = footerData.links.areas.slice(0, 8);
@@ -164,7 +165,7 @@ export function Footer() {
               <span>Chat with us on WhatsApp</span>
             </a>
 
-            {(business.socialLinks?.facebook || business.socialLinks?.instagram) && (
+            {(business.socialLinks?.facebook || business.socialLinks?.instagram || business.socialLinks?.googleMaps) && (
               <div className="flex items-center gap-3 mt-5">
                 {business.socialLinks.facebook && (
                   <a
@@ -186,6 +187,17 @@ export function Footer() {
                     className="w-9 h-9 flex items-center justify-center rounded-full border border-white/[0.10] text-slate-400 hover:text-[#dfa86f] hover:border-[#c9804d]/30 transition-colors"
                   >
                     <Instagram size={16} aria-hidden="true" />
+                  </a>
+                )}
+                {business.socialLinks.googleMaps && (
+                  <a
+                    href={business.socialLinks.googleMaps}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={googleAriaLabel}
+                    className="w-9 h-9 flex items-center justify-center rounded-full border border-white/[0.10] text-slate-400 hover:text-[#dfa86f] hover:border-[#c9804d]/30 transition-colors"
+                  >
+                    <MapPin size={16} aria-hidden="true" />
                   </a>
                 )}
               </div>
