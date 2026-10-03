@@ -52,3 +52,48 @@ export const getIntentWhatsAppLink = (context: IntentContext, entityName?: strin
 
   return buildWhatsAppLink(message);
 };
+
+/**
+ * Context-aware WhatsApp entry point for the global mobile CTA.
+ * It reads the current route so visitors on a service or location page start
+ * a conversation with useful context instead of a generic message.
+ */
+export const getPageWhatsAppLink = (pathname: string): string => {
+  const path = `/${pathname.replace(/^\/+|\/+$/g, '')}`;
+
+  if (path === '/ar' || path.startsWith('/ar/')) {
+    const slug = path.replace(/^\/ar\//, '');
+    const arabicNames: Record<string, string> = {
+      'laptop-repair-kuwait': 'تصليح لابتوب في الكويت',
+      'computer-repair-kuwait': 'تصليح كمبيوتر في الكويت',
+      'motherboard-repair-kuwait': 'تصليح المذربورد واللوحة الأم في الكويت',
+      'gaming-pc-repair-kuwait': 'تصليح Gaming PC في الكويت',
+      'laptop-screen-repair-kuwait': 'تبديل شاشة اللابتوب في الكويت',
+      'macbook-repair-kuwait': 'تصليح MacBook في الكويت',
+      'macbook-screen-replacement-kuwait': 'تبديل شاشة MacBook في الكويت',
+      'battery-replacement-kuwait': 'تبديل بطارية اللابتوب في الكويت',
+      'ssd-ram-upgrade-kuwait': 'ترقية SSD وRAM في الكويت',
+      'gaming-laptop-repair-kuwait': 'تصليح Gaming Laptop في الكويت',
+      'computer-repair-hawalli': 'تصليح كمبيوتر حولي',
+    };
+    const name = arabicNames[slug] ?? 'تصليح كمبيوتر ولابتوب في الكويت';
+    return buildWhatsAppLink(`السلام عليكم KCROC، أحتاج ${name}. أريد أعرف طريقة الاستلام والتشخيص.`);
+  }
+
+  const service = KCROC_GRAPH.services.find((item) => `/${item.slug}` === path);
+  if (service) return getIntentWhatsAppLink('service', service.title);
+
+  const location = KCROC_GRAPH.locations.find((item) => `/location/${item.slug}` === path);
+  if (location) return getIntentWhatsAppLink('location', location.title);
+
+  const entity = KCROC_GRAPH.routableEntities.find((item) => {
+    const canonicalPath = item.seo?.canonicalUrl?.replace(/^https?:\/\/[^/]+/, '').replace(/\/$/, '') || '';
+    return canonicalPath === path;
+  });
+
+  if (entity && (path.startsWith('/blog/') || path.startsWith('/guides/') || path.startsWith('/case-studies/'))) {
+    return getIntentWhatsAppLink('blog', entity.title);
+  }
+
+  return buildWhatsAppLink('Hi KCROC, I need help with a computer or laptop repair. Can you advise me on the next step?');
+};
