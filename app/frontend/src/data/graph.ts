@@ -213,7 +213,7 @@ export const rawGraphData: RawGraphData = {
         canonicalUrl: 'https://www.computerrepairkuwait.com/ar/gaming-pc-repair-kuwait',
         locale: 'ar_KW',
         alternates: { 'ar-KW': 'https://www.computerrepairkuwait.com/ar/gaming-pc-repair-kuwait', 'en-KW': 'https://www.computerrepairkuwait.com/gaming-pc-repair-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/gaming-pc-repair-kuwait' },
-        ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList', 'Service'], lastModified: '2026-09-30T00:00:00+03:00',
+        ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList', 'Service'], lastModified: '2026-10-03T00:00:00+03:00',
         breadcrumbs: [{ name: 'الرئيسية', url: '/' }, { name: 'تصليح Gaming PC وبي سي قيمنق', url: '/ar/gaming-pc-repair-kuwait' }]
       },
       relatedServiceIds: ['srv-gaming', 'srv-gaming-laptop-cleaning', 'srv-motherboard', 'srv-laptop']
@@ -320,7 +320,36 @@ export const rawGraphData: RawGraphData = {
     'page-guides': { id: 'page-guides', slug: 'guides', entityType: 'WebPage', isActive: true, title: 'DIY & Repair Guides', description: 'Technician-written laptop and computer troubleshooting guides from KCROC Kuwait.', seo: { title: 'Laptop & Computer Repair Guides | KCROC Kuwait', description: 'Free technician-written guides for diagnosing laptop and computer problems, battery issues, overheating, BIOS recovery and more.', canonicalUrl: 'https://www.computerrepairkuwait.com/guides', ogType: 'website', schemaTypes: ['CollectionPage', 'WebPage', 'BreadcrumbList'], breadcrumbs: [{ name: 'Home', url: '/' }, { name: 'Guides', url: '/guides' }] } } as WebPageEntity,
     'page-404': { id: 'page-404', slug: '404', entityType: 'WebPage', isActive: true, title: 'Page Not Found', description: 'The requested KCROC page could not be found.', seo: { title: 'Page Not Found | KCROC Kuwait', description: 'The requested page could not be found.', canonicalUrl: 'https://www.computerrepairkuwait.com/404', ogType: 'website', robots: 'noindex, follow, max-image-preview:none', schemaTypes: ['WebPage'] } } as WebPageEntity,
     'page-blog': { id: 'page-blog', slug: 'blog', entityType: 'WebPage', isActive: true, title: 'Tech Blog', description: 'Expert repair guides and tech insights.', seo: { title: 'KCROC Tech Blog | Computer Repair Guides Kuwait', description: 'Expert computer repair guides, laptop fixes, MacBook troubleshooting, and PC performance tips in Kuwait.', canonicalUrl: 'https://www.computerrepairkuwait.com/blog', ogType: 'website', schemaTypes: ['CollectionPage'] } } as WebPageEntity,
-    'page-news': { id: 'page-news', slug: 'news', entityType: 'WebPage', isActive: true, title: 'KCROC Tech News', description: 'Current computer, Windows, hardware, gaming, Apple, cybersecurity and AI technology news explained with practical technician context.', seo: { title: 'KCROC Tech News | Windows, Hardware & Gaming News Kuwait', description: 'Latest computer, Windows, hardware, gaming, Apple, cybersecurity and AI technology news — explained by KCROC technicians for practical next steps.', canonicalUrl: 'https://www.computerrepairkuwait.com/news', ogType: 'website', schemaTypes: ['CollectionPage', 'WebPage', 'BreadcrumbList'], breadcrumbs: [{ name: 'Home', url: '/' }, { name: 'News', url: '/news' }], lastModified: '2026-09-30T00:00:00+03:00' } } as WebPageEntity,
+    'page-news': { id: 'page-news', slug: 'news', entityType: 'WebPage', isActive: true, title: 'KCROC Tech News', description: 'Current computer, Windows, hardware, gaming, Apple, cybersecurity and AI technology news explained with practical technician context.', seo: { title: 'KCROC Tech News | Windows, Hardware & Gaming News Kuwait', description: 'Latest computer, Windows, hardware, gaming, Apple, cybersecurity and AI technology news — explained by KCROC technicians for practical next steps.', canonicalUrl: 'https://www.computerrepairkuwait.com/news', ogType: 'website', schemaTypes: ['CollectionPage', 'WebPage', 'BreadcrumbList'], breadcrumbs: [{ name: 'Home', url: '/' }, { name: 'News', url: '/news' }], lastModified: '2026-10-03T00:00:00+03:00' } } as WebPageEntity,
+    'news-microsoft-windows-surface-event-october-7-2026': {
+      id: 'news-microsoft-windows-surface-event-october-7-2026',
+      slug: 'news/microsoft-windows-surface-event-october-7-2026',
+      entityType: 'WebPage',
+      isActive: true,
+      title: 'Microsoft Windows & Surface Event on October 7, 2026: What to Expect',
+      description: "Microsoft's October 7 Windows and Surface event puts local AI PCs, Surface hardware and NVIDIA RTX Spark technology in focus. Here is what is confirmed, what remains unknown, and what buyers in Kuwait should watch.",
+      seo: {
+        title: 'Microsoft Windows & Surface Event 2026: What to Expect',
+        description: "Microsoft's October 7 Windows and Surface event: Surface Laptop Ultra, NVIDIA RTX Spark, local AI PCs, Windows news, and what buyers in Kuwait should know.",
+        canonicalUrl: 'https://www.computerrepairkuwait.com/news/microsoft-windows-surface-event-october-7-2026',
+        ogImage: 'https://www.computerrepairkuwait.com/images/news-microsoft-windows-surface-event-2026-kcroc.webp',
+        ogType: 'article',
+        schemaTypes: ['WebPage', 'NewsArticle', 'BreadcrumbList', 'Person'],
+        lastModified: '2026-10-03T00:00:00+03:00',
+        breadcrumbs: [
+          { name: 'Home', url: '/' },
+          { name: 'News', url: '/news' },
+          { name: 'Microsoft Windows & Surface Event on October 7, 2026', url: '/news/microsoft-windows-surface-event-october-7-2026' }
+        ]
+      },
+      relatedServiceIds: ['srv-laptop', 'srv-gaming', 'srv-ssd-ram'],
+      relatedResourcePaths: [
+        { label: 'Laptop Buying Guide 2026', path: '/blog/laptop-buying-guide-kuwait-2026' },
+        { label: 'Intel Core Ultra vs AMD Ryzen AI', path: '/blog/intel-core-ultra-vs-amd-ryzen-ai' },
+        { label: 'Laptop Repair Kuwait', path: '/laptop-repair-kuwait' },
+        { label: 'Gaming PC & GPU Repair Kuwait', path: '/gaming-pc-repair-kuwait' }
+      ]
+    } as WebPageEntity,
     'news-windows-11-26h2-iso-released': {
       id: 'news-windows-11-26h2-iso-released',
       slug: 'news/windows-11-26h2-iso-released',
