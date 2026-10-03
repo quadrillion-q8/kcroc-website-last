@@ -311,6 +311,16 @@ const INTERNAL_LINK_LABELS: Record<string, string> = {
 };
 
 const TECHNICAL_SOURCE_LABELS: Record<string, string> = {
+  'https://blogs.windows.com/windows-insider/2026/10/02/announcing-new-builds-for-2-october-2026/':
+    'Windows Insider — October 2, 2026 event announcement',
+  'https://www.microsoft.com/en-us/surface/devices/surface-laptop-ultra':
+    'Microsoft Surface — Surface Laptop Ultra',
+  'https://nvidianews.nvidia.com/news/nvidia-microsoft-windows-pcs-agents-rtx-spark':
+    'NVIDIA Newsroom — RTX Spark and Microsoft Windows PCs',
+  'https://www.qualcomm.com/news/onq/2026/09/snapdragon-summit-agentic-ai-pcs-linux':
+    'Qualcomm — Snapdragon Summit 2026: Agentic AI PCs',
+  'https://www.youtube.com/@Windows':
+    'Official Windows YouTube channel',
   'https://support.microsoft.com/en-us/windows/experience/performance-optimization/tips-to-improve-pc-performance-in-windows':
     'Microsoft Support — Tips to improve PC performance in Windows',
   'https://support.microsoft.com/en-us/windows/experience/storage-filemanagement/storage-settings-in-windows':
@@ -353,7 +363,7 @@ const TECHNICAL_SOURCE_LABELS: Record<string, string> = {
     'NVIDIA — System latency optimization',
 };
 
-const getTechnicalSourceLabel = (url: string) => TECHNICAL_SOURCE_LABELS[url] ?? 'Microsoft Support source';
+const getTechnicalSourceLabel = (url: string) => TECHNICAL_SOURCE_LABELS[url] ?? 'External source';
 
 const getInternalLinkPath = (url: string) => {
   if (!INTERNAL_LINK_LABELS[url]) return null;
