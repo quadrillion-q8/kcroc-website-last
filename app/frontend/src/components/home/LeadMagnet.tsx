@@ -1,6 +1,7 @@
 // File: app/frontend/src/components/home/LeadMagnet.tsx
 import React, { useMemo, useState } from 'react';
 import { KCROC_GRAPH } from '../../data/graph';
+import { buildWhatsAppLink } from '../../utils/whatsappIntent';
 import { useAnalytics } from '../../core/analytics/AnalyticsProvider';
 import {
   MessageCircle,
@@ -45,8 +46,6 @@ const ISSUES: (Option & { serviceIds: string[] })[] = [
 export const LeadMagnet = () => {
   const [device, setDevice] = useState('');
   const [issue, setIssue] = useState('');
-  const business = KCROC_GRAPH.business;
-  const whatsappNumber = business!.telephone;
   const { trackConversion } = useAnalytics();
 
   const selectedDevice = DEVICES.find((item) => item.id === device);
@@ -63,11 +62,22 @@ export const LeadMagnet = () => {
     return Math.min(...starts);
   }, [selectedIssue]);
 
-  const waLink = selectedDevice && selectedIssue
-    ? `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
-        `Hi KCROC, I need help with my ${selectedDevice.label}. Issue: ${selectedIssue.label}. Please advise on the diagnosis and estimated repair cost.`
-      )}`
-    : `https://wa.me/${whatsappNumber}?text=${encodeURIComponent('Hi KCROC, I need help with a computer or laptop repair. Please advise how to start.')}`;
+  const waMessage = selectedDevice && selectedIssue
+    ? `Hi KCROC, I need help with my ${selectedDevice.label}. Issue: ${selectedIssue.label}. Please advise on the diagnosis and estimated repair cost.`
+    : selectedDevice
+      ? `Hi KCROC, I need help with my ${selectedDevice.label}. Can you advise on diagnosis and repair options?`
+      : selectedIssue
+        ? `Hi KCROC, my device has this issue: ${selectedIssue.label}. Can you advise on diagnosis and repair options?`
+        : 'Hi KCROC, I need help with a computer or laptop repair. Please advise how to start.';
+
+  const waLink = buildWhatsAppLink(waMessage);
+  const actionLabel = selectedDevice && selectedIssue
+    ? `WhatsApp: ${selectedDevice.label} · ${selectedIssue.label}`
+    : selectedDevice
+      ? `WhatsApp about ${selectedDevice.label}`
+      : selectedIssue
+        ? `WhatsApp about ${selectedIssue.label}`
+        : 'Chat with a technician now';
 
   const selectClass = (active: boolean) =>
     `group relative rounded-2xl border p-3.5 sm:p-4 text-left transition-all min-h-[92px] sm:min-h-[104px] ${
@@ -87,7 +97,7 @@ export const LeadMagnet = () => {
               <p className="text-xs font-bold text-emerald-400 uppercase tracking-wider flex items-center gap-2">
                 <MessageCircle className="w-4 h-4" aria-hidden="true" /> Quick Repair Check
               </p>
-              <span className="text-[11px] text-slate-500 font-semibold">2 steps</span>
+              <span className="text-[11px] text-slate-500 font-semibold">Optional — start with WhatsApp</span>
             </div>
             <h2 className="text-2xl sm:text-4xl font-black text-white mb-3 leading-tight">
               Tell us what is wrong with your device
@@ -157,22 +167,21 @@ export const LeadMagnet = () => {
                       href={waLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      onClick={() => trackConversion('whatsapp_click', { cta_name: 'lead_magnet_visual_selector', button_position: 'lead_magnet' })}
-                      className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#25D366] px-5 py-3.5 text-sm font-black text-slate-950 hover:brightness-95 transition-all min-h-[48px] sm:min-w-[230px]"
+                      onClick={() => trackConversion('whatsapp_click', { cta_name: 'lead_magnet_visual_selector', button_position: 'lead_magnet', device: device || 'unspecified', issue: issue || 'unspecified' })}
+                      className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#25D366] px-5 py-3.5 text-sm font-black text-slate-950 hover:brightness-95 transition-all min-h-[48px] sm:min-w-[250px]"
                     >
                       <MessageCircle className="w-5 h-5" aria-hidden="true" />
-                      Send Diagnosis to WhatsApp
+                      {actionLabel}
                     </a>
                   </div>
                 </div>
               )}
 
-              {(!selectedDevice || !selectedIssue) && (
-                <div className="flex items-center gap-2 text-xs text-slate-500">
-                  <ArrowRight className="w-4 h-4 text-cyan-500" aria-hidden="true" />
-                  Choose both options to reveal the WhatsApp diagnosis action.
-                </div>
-              )}
+              <div className="flex items-start gap-2 text-xs text-slate-500">
+                <ArrowRight className="w-4 h-4 text-cyan-500 mt-0.5 shrink-0" aria-hidden="true" />
+                <span>You can message us immediately. Your selections only make the WhatsApp message more specific.</span>
+              </div>
+              <p className="text-[11px] leading-5 text-slate-500">🔒 We keep repair handling privacy-conscious and do not browse personal files as part of normal hardware diagnostics.</p>
             </div>
           </div>
 
