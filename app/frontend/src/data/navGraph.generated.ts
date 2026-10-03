@@ -1233,6 +1233,15 @@ export const NAV_GRAPH = {
   ],
   "newsEntries": [
     {
+      "id": "news-microsoft-windows-surface-event-october-7-2026",
+      "slug": "news/microsoft-windows-surface-event-october-7-2026",
+      "title": "Microsoft Windows & Surface Event on October 7, 2026: What to Expect",
+      "description": "Microsoft's October 7 Windows and Surface event puts local AI PCs, Surface hardware and NVIDIA RTX Spark technology in focus. Here is what is confirmed, what remains unknown, and what buyers in Kuwait should watch.",
+      "iconKey": "shield",
+      "date": "2026-10-03",
+      "primaryKeyword": "Microsoft Surface"
+    },
+    {
       "id": "news-windows-11-26h2-iso-released",
       "slug": "news/windows-11-26h2-iso-released",
       "title": "Windows 11 26H2 ISO Is Now Available — What PC Users Should Know Before Installing",
