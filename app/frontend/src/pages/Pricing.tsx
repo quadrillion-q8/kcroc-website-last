@@ -34,6 +34,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { SEOEngine } from '../core/components/SEOEngine';
 import SchemaMarkup from '../components/seo/SchemaMarkup';
 import { KCROC_GRAPH } from '../data/graph';
+import { buildWhatsAppLink } from '../utils/whatsappIntent';
 
 const business = KCROC_GRAPH.business!;
 
@@ -709,10 +710,21 @@ export default function Pricing() {
                             </div>
                           </div>
 
-                          <div className="shrink-0 rounded-xl border border-cyan-500/15 bg-cyan-950/20 px-3 py-2 text-right">
-                            <div className="text-xs font-black text-cyan-400 sm:text-sm">
-                              {item.price}
+                          <div className="flex shrink-0 flex-col items-end gap-2">
+                            <div className="rounded-xl border border-cyan-500/15 bg-cyan-950/20 px-3 py-2 text-right">
+                              <div className="text-xs font-black text-cyan-400 sm:text-sm">
+                                {item.price}
+                              </div>
                             </div>
+                            <a
+                              href={buildWhatsAppLink(`Hi KCROC, I'd like to ask about ${item.name}. I saw the listed price of ${item.price}. Can you confirm what you need to quote my exact repair?`)}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1 rounded-lg border border-emerald-500/20 bg-emerald-500/10 px-2.5 py-1.5 text-[10px] font-black text-emerald-300 transition-colors hover:border-emerald-400/40 hover:bg-emerald-500/15"
+                            >
+                              <MessageCircle className="h-3.5 w-3.5" aria-hidden="true" />
+                              Ask about this
+                            </a>
                           </div>
                         </li>
                       ))}
