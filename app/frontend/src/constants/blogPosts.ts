@@ -147,12 +147,6 @@ export const BLOG_POSTS: BlogPost[] = [
     ],
     "richContent": [
       {
-        "type": "callout",
-        "variant": "info",
-        "title": "What is confirmed as of October 3, 2026",
-        "text": "Microsoft has confirmed a Windows and Surface event for October 7 at 10 a.m. Pacific Time. Microsoft's Surface website features Surface Laptop Ultra as a pre-release product, while NVIDIA has officially announced RTX Spark and its collaboration with Microsoft around AI-focused Windows PCs. Final event-day configurations, pricing and regional availability remain separate questions."
-      },
-      {
         "type": "image",
         "src": "/images/news-microsoft-windows-surface-event-2026-kcroc.webp",
         "alt": "Original KCROC illustration of a laptop running local AI workloads ahead of Microsoft's Windows and Surface event",
@@ -166,6 +160,10 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         "type": "paragraph",
         "text": "Microsoft's Windows Insider team confirmed the event in its October 2 update and said the Windows and Surface event will begin at 10 a.m. Pacific Time on October 7, with the livestream available through the Windows YouTube channel. For viewers in Kuwait, that is 8 p.m. local time. https://blogs.windows.com/windows-insider/2026/10/02/announcing-new-builds-for-2-october-2026/"
+      },
+      {
+        "type": "paragraph",
+        "text": "Surface Laptop Ultra should not be described as an October 7 reveal. Microsoft officially introduced the device on May 31, 2026 and says it will be available later in 2026. October 7 is therefore a follow-on Windows and Surface event where Microsoft may provide additional information, configurations, software details or other announcements. https://blogs.windows.com/devices/2026/05/31/introducing-surface-laptop-ultra-made-for-world-makers/"
       },
       {
         "type": "paragraph",
@@ -209,10 +207,16 @@ export const BLOG_POSTS: BlogPost[] = [
         "type": "statCards",
         "items": [
           { "value": "15-inch", "label": "mini-LED 3:2 display" },
-          { "value": "≤18 mm", "label": "published thickness" },
+          { "value": "<18 mm", "label": "published thickness" },
           { "value": "128 GB", "label": "up to unified memory" },
-          { "value": "1 PF", "label": "stated AI compute ceiling" }
+          { "value": "Up to 1 PF", "label": "theoretical AI compute — vendor-stated" }
         ]
+      },
+      {
+        "type": "callout",
+        "variant": "warning",
+        "title": "How to read the 1-petaflop figure",
+        "text": "The up-to-1-petaflop figure is a theoretical, vendor-reported AI performance figure. Microsoft's product announcement footnote identifies it as theoretical FP4 TOPS using sparsity, so it should not be treated as an independent real-world application benchmark. https://blogs.windows.com/devices/2026/05/31/introducing-surface-laptop-ultra-made-for-world-makers/"
       },
       {
         "type": "paragraph",
@@ -278,7 +282,11 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         "type": "paragraph",
-        "text": "The event also lands in a Windows market where Arm-based PCs are becoming more visible. Qualcomm's September 2026 coverage says new Microsoft Surface Pro 12-inch and Surface Laptop 13-inch models use Snapdragon X2 Plus, with Qualcomm reporting improvements in local AI inferencing, battery life and GPU performance versus the previous generation. Those figures are Qualcomm's own comparisons and depend on test conditions, workload and configuration. https://www.qualcomm.com/news/onq/2026/09/snapdragon-summit-agentic-ai-pcs-linux"
+        "text": "The event also lands in a Windows market where Arm-based PCs are becoming more visible. Microsoft's September 23 announcement says the new Surface Pro 12-inch and Surface Laptop 13-inch use Snapdragon X2 Plus and reports up to 95% faster on-device AI, more than 60% faster graphics and up to 18% more efficient battery performance versus the previous generation. Microsoft notes that the comparisons depend on the benchmark, device, workload and configuration. https://blogs.windows.com/devices/2026/09/23/introducing-surface-pro-12-inch-and-surface-laptop-13-inch-with-snapdragon-x2/"
+      },
+      {
+        "type": "paragraph",
+        "text": "Qualcomm's September 23 Snapdragon Summit coverage independently describes the expanding Snapdragon X2 ecosystem and on-device AI focus. Because vendor pages use different test methods and comparison baselines, KCROC treats those numbers as manufacturer-reported figures rather than independent benchmarks. https://www.qualcomm.com/news/onq/2026/09/snapdragon-summit-agentic-ai-pcs-linux"
       },
       {
         "type": "paragraph",
@@ -391,8 +399,12 @@ export const BLOG_POSTS: BlogPost[] = [
             "answer": "RTX Spark is NVIDIA's AI-focused PC platform built around a Grace CPU, Blackwell graphics technology and unified memory, with published configurations reaching up to 128GB of unified memory and up to one petaflop of FP4 AI performance."
           },
           {
-            "question": "Will every AI application become faster on an AI PC?",
-            "answer": "No. The result depends on application support, model design, software optimization, driver behavior, memory requirements and which processor or accelerator is actually used."
+            "question": "What does 1 petaflop of AI compute actually mean?",
+            "answer": "It is a theoretical peak AI-compute figure rather than a promise of the same speed in every application. Microsoft's published material identifies the Surface Laptop Ultra figure as theoretical FP4 performance using sparsity, so real application results will vary."
+          },
+          {
+            "question": "Are Snapdragon X2 Plus Surface PCs compatible with all Windows software?",
+            "answer": "Compatibility depends on whether an application has a native Arm build or runs through Windows compatibility technology such as emulation. Before buying, users with specialist, legacy, driver-dependent or virtualization-heavy software should verify support for their exact workload."
           },
           {
             "question": "Will these new PCs automatically be available in Kuwait?",
@@ -415,15 +427,23 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         "type": "paragraph",
-        "text": "Microsoft Surface Laptop Ultra: https://www.microsoft.com/en-us/surface/devices/surface-laptop-ultra"
+        "text": "Surface Laptop Ultra product page: https://www.microsoft.com/en-us/surface/devices/surface-laptop-ultra"
       },
       {
         "type": "paragraph",
-        "text": "NVIDIA RTX Spark and Microsoft Windows PCs: https://nvidianews.nvidia.com/news/nvidia-microsoft-windows-pcs-agents-rtx-spark"
+        "text": "Surface Laptop Ultra announcement, May 31, 2026: https://blogs.windows.com/devices/2026/05/31/introducing-surface-laptop-ultra-made-for-world-makers/"
       },
       {
         "type": "paragraph",
-        "text": "Qualcomm Snapdragon Summit 2026 coverage: https://www.qualcomm.com/news/onq/2026/09/snapdragon-summit-agentic-ai-pcs-linux"
+        "text": "RTX Spark and Microsoft Windows PCs: https://nvidianews.nvidia.com/news/nvidia-microsoft-windows-pcs-agents-rtx-spark"
+      },
+      {
+        "type": "paragraph",
+        "text": "Surface Pro 12-inch and Surface Laptop 13-inch with Snapdragon X2 Plus: https://blogs.windows.com/devices/2026/09/23/introducing-surface-pro-12-inch-and-surface-laptop-13-inch-with-snapdragon-x2/"
+      },
+      {
+        "type": "paragraph",
+        "text": "Snapdragon Summit 2026 coverage: https://www.qualcomm.com/news/onq/2026/09/snapdragon-summit-agentic-ai-pcs-linux"
       },
       {
         "type": "callout",
