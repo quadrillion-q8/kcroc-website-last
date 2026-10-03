@@ -1,7 +1,7 @@
 // File: app/frontend/src/core/analytics/googleTag.ts
-// Google tag (GA4) is now loaded directly from index.html with Consent Mode v2
-// (defaults denied, upgraded by the cookie banner). This module is kept only
-// so existing imports keep working; loading here would double-configure GA4.
+// Google Analytics is currently loaded directly from index.html, while the
+// GTM container is also installed there as the future tag-management layer.
+// Keep this module as a stable compatibility shim for existing imports.
 
 declare global {
   interface Window {
@@ -10,5 +10,7 @@ declare global {
   }
 }
 
-// Intentionally a no-op: the tag is loaded and configured in index.html.
+// The GTM container is initialized by index.html. We intentionally do not
+// load or configure another Google tag from this module, which prevents
+// duplicate analytics initialization.
 export const loadGoogleTag = (): void => {};
