@@ -312,13 +312,17 @@ const INTERNAL_LINK_LABELS: Record<string, string> = {
 
 const TECHNICAL_SOURCE_LABELS: Record<string, string> = {
   'https://blogs.windows.com/windows-insider/2026/10/02/announcing-new-builds-for-2-october-2026/':
-    'Windows Insider — October 2, 2026 event announcement',
+    'Microsoft official source — Windows Insider event announcement',
   'https://www.microsoft.com/en-us/surface/devices/surface-laptop-ultra':
-    'Microsoft Surface — Surface Laptop Ultra',
+    'Microsoft official source — Surface Laptop Ultra product page',
+  'https://blogs.windows.com/devices/2026/05/31/introducing-surface-laptop-ultra-made-for-world-makers/':
+    'Microsoft official source — Surface Laptop Ultra announcement',
   'https://nvidianews.nvidia.com/news/nvidia-microsoft-windows-pcs-agents-rtx-spark':
-    'NVIDIA Newsroom — RTX Spark and Microsoft Windows PCs',
+    'NVIDIA official source — RTX Spark and Microsoft Windows PCs',
+  'https://blogs.windows.com/devices/2026/09/23/introducing-surface-pro-12-inch-and-surface-laptop-13-inch-with-snapdragon-x2/':
+    'Microsoft official source — Snapdragon X2 Plus Surface announcement',
   'https://www.qualcomm.com/news/onq/2026/09/snapdragon-summit-agentic-ai-pcs-linux':
-    'Qualcomm — Snapdragon Summit 2026: Agentic AI PCs',
+    'Qualcomm official source — Snapdragon Summit 2026 coverage',
   'https://www.youtube.com/@Windows':
     'Official Windows YouTube channel',
   'https://support.microsoft.com/en-us/windows/experience/performance-optimization/tips-to-improve-pc-performance-in-windows':
@@ -483,8 +487,9 @@ const RichBlock: React.FC<{ block: ContentBlock; headingRef?: (el: HTMLElement |
           <Icon className={`w-6 h-6 shrink-0 ${style.text}`} aria-hidden="true" />
           <div>
             <p className={`text-xs font-black uppercase tracking-wider mb-1.5 ${style.text}`}>{block.title || style.label}</p>
-            {/* Added AutoLink for consistency within Callouts */}
-            <p className="text-slate-300 text-sm leading-relaxed"><AutoLink text={block.text} currentEntityId={currentEntityId} /></p>
+            <p className="text-slate-300 text-sm leading-relaxed">
+              {block.text.includes('https://') ? linkTechnicalSources(block.text) : <AutoLink text={block.text} currentEntityId={currentEntityId} />}
+            </p>
           </div>
         </div>
       );
@@ -786,6 +791,7 @@ export default function BlogPostTemplate() {
     'ssd-not-detected-windows-11',
     'windows-11-update-problems',
   ].includes(post.slug);
+  const isMicrosoftSurfaceEventNews = post.slug === 'microsoft-windows-surface-event-october-7-2026';
 
   return (
     <main className="w-full min-h-screen bg-transparent text-slate-200 pt-8 sm:pt-16 lg:pt-32 pb-8 sm:pb-16 lg:pb-24">
@@ -909,29 +915,13 @@ export default function BlogPostTemplate() {
               </div>
             </header>
 
-            {/* Mobile-only collapsible TOC */}
-            {headings.length > 0 && (
-              <details className="lg:hidden mb-10 border border-slate-800 rounded-2xl bg-slate-900/40 open:border-cyan-500/30">
-                <summary className="flex items-center gap-2 p-4 font-bold text-white cursor-pointer list-none">
-                  <List size={16} className="text-cyan-400" aria-hidden="true" /> Table of Contents
-                </summary>
-                <ol className="px-4 pb-4 space-y-2">
-                  {headings.map(h => (
-                    <li key={h.id}>
-                      <a href={`#${h.id}`} className="text-sm text-slate-400 hover:text-cyan-400">{h.text}</a>
-                    </li>
-                  ))}
-                </ol>
-              </details>
-            )}
-
             <section className="prose prose-invert prose-lg max-w-none prose-p:text-slate-300 prose-headings:text-white prose-a:text-cyan-400 mb-16">
               <p className="text-xl md:text-2xl text-slate-300 font-medium leading-relaxed border-l-4 border-cyan-500 pl-6 mb-10">
                 {post.excerpt}
               </p>
 
               {post.author === 'Imran Natiq' && (
-                <aside className="mb-12 rounded-2xl border border-slate-800 bg-slate-900/50 p-5 sm:p-6" aria-label="Author and technical review">
+                <aside className="mb-10 rounded-2xl border border-slate-800 bg-slate-900/50 p-5 sm:p-6" aria-label="Author and technical review">
                   <div className="flex items-start gap-4">
                     <img
                       src={AUTHOR_IMAGE_URL}
@@ -956,6 +946,45 @@ export default function BlogPostTemplate() {
                     </div>
                   </div>
                 </aside>
+              )}
+
+              {isMicrosoftSurfaceEventNews && (
+                <div className="grid gap-5 md:grid-cols-2 mb-10" aria-label="Pre-event status">
+                  <aside className="rounded-2xl border border-cyan-500/30 bg-cyan-500/5 p-6" role="note">
+                    <p className="text-xs font-black uppercase tracking-[0.16em] text-cyan-400 mb-2">News Flash · What’s confirmed — Oct. 3, 2026</p>
+                    <ul className="space-y-2 text-sm text-slate-300 leading-relaxed">
+                      <li>Microsoft has confirmed the Windows and Surface event for October 7 at 10 a.m. Pacific Time.</li>
+                      <li>Surface Laptop Ultra was already officially announced on May 31 and remains a pre-release product.</li>
+                      <li>NVIDIA RTX Spark has already been officially announced.</li>
+                      <li>Windows 12 has not been announced for this event.</li>
+                    </ul>
+                  </aside>
+                  <aside className="rounded-2xl border border-amber-500/30 bg-amber-500/5 p-6" role="note">
+                    <p className="text-xs font-black uppercase tracking-[0.16em] text-amber-400 mb-2">Still to be confirmed on October 7</p>
+                    <ul className="space-y-2 text-sm text-slate-300 leading-relaxed">
+                      <li>Final Surface Laptop Ultra retail configurations</li>
+                      <li>Regional pricing and Kuwait availability</li>
+                      <li>Final shipping dates</li>
+                      <li>Additional Windows AI features or hardware announcements</li>
+                      <li>Independent real-world performance results</li>
+                    </ul>
+                  </aside>
+                </div>
+              )}
+
+              {headings.length > 0 && (
+                <details className="lg:hidden mb-10 border border-slate-800 rounded-2xl bg-slate-900/40 open:border-cyan-500/30">
+                  <summary className="flex items-center gap-2 p-4 font-bold text-white cursor-pointer list-none">
+                    <List size={16} className="text-cyan-400" aria-hidden="true" /> On This Page
+                  </summary>
+                  <ol className="px-4 pb-4 space-y-2">
+                    {headings.map(h => (
+                      <li key={h.id}>
+                        <a href={`#${h.id}`} className="text-sm text-slate-400 hover:text-cyan-400">{h.text}</a>
+                      </li>
+                    ))}
+                  </ol>
+                </details>
               )}
 
               {post.richContent && post.richContent.length > 0 ? (
