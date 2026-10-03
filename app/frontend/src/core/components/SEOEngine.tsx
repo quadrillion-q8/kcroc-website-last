@@ -168,6 +168,7 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
       "closes": business.schemaOpeningHours.closes
     } : undefined,
     "sameAs": business.socialLinks ? Object.values(business.socialLinks) : [],
+    "hasMap": business.socialLinks?.googleMaps,
     "contactPoint": [{
       "@type": "ContactPoint",
       "telephone": `+${business.telephone}`,
