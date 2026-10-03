@@ -5,6 +5,7 @@ import { Laptop, Apple, Gamepad2, Cpu, Wrench, ShieldCheck, Clock, MessageCircle
 import { KCROC_GRAPH } from '../../data/graph';
 import { SEOEngine } from '../../core/components/SEOEngine';
 import { useAnalytics } from '../../core/analytics/AnalyticsProvider';
+import { buildWhatsAppLink } from '../../utils/whatsappIntent';
 
 const ICON_MAP: Record<string, React.ElementType> = {
   'apple': Apple,
@@ -69,9 +70,7 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
     </Link>
   );
 
-  const whatsappMessage = encodeURIComponent(
-    `Hi KCROC, I'd like a free estimate for ${entity.title}.`
-  );
+  const whatsappLink = buildWhatsAppLink(`Hi KCROC, I'd like a free estimate for ${entity.title}.`);
 
   const severityStyles: Record<string, string> = {
     critical: 'border-red-500/40 bg-red-950/20 text-red-300',
@@ -595,7 +594,7 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               {business?.telephone && (
                 <a 
-                  href={`https://wa.me/${business.telephone}?text=${whatsappMessage}`}
+                  href={whatsappLink}
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => trackConversion(
