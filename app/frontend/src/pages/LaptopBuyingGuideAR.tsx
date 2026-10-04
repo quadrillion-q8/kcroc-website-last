@@ -256,6 +256,7 @@ export default function LaptopBuyingGuideAR() {
           content="تبي تشتري لابتوب في الكويت؟ تعرّف على أفضل مواصفات المعالج والرام وSSD وRTX والتبريد والبطارية حسب استخدامك، مع قائمة فحص قبل الشراء."
         />
         <link rel="canonical" href={PAGE_URL} />
+        <meta name="robots" content="index, follow, max-image-preview:large" />
         {/* Multilingual SEO */}
         <link rel="alternate" hrefLang="ar-KW" href={PAGE_URL} />
         <link rel="alternate" hrefLang="en-KW" href={EN_PAGE_URL} />
