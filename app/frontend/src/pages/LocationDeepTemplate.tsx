@@ -35,6 +35,13 @@ import { IMAGES } from '../constants/images';
 
 const BASE_URL = KCROC_GRAPH.business!.websiteUrl;
 
+// Service areas that have a dedicated Arabic page (hreflang-linked in graph.ts).
+const ARABIC_LOCATION_PAGES: Record<string, string> = {
+  salmiya: '/ar/computer-repair-salmiya',
+  farwaniya: '/ar/computer-repair-farwaniya',
+  'kuwait-city': '/ar/computer-repair-kuwait-city',
+};
+
 const SERVICE_ICON_MAP: Record<string, React.ElementType> = {
   apple: Apple,
   laptop: Laptop,
@@ -232,6 +239,16 @@ export default function LocationDeepTemplate() {
           <li aria-hidden="true" className="text-slate-600">/</li>
           <li aria-current="page" className="text-cyan-400">Computer Repair {location.title}</li>
         </ol>
+        {ARABIC_LOCATION_PAGES[location.slug] && (
+          <Link
+            to={ARABIC_LOCATION_PAGES[location.slug]}
+            hrefLang="ar-KW"
+            lang="ar"
+            className="mt-3 inline-block text-sm font-bold text-cyan-400 hover:text-cyan-300"
+          >
+            هذه الصفحة بالعربية
+          </Link>
+        )}
       </nav>
 
       {/* ─── HERO ─── */}
