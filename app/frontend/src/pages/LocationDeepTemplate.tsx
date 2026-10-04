@@ -157,13 +157,23 @@ export default function LocationDeepTemplate() {
     {
       id: `faq-${location.slug}-cost`,
       question: `How much does laptop repair cost for ${location.title} customers?`,
-      answer: `Diagnostics are free, and pricing depends on the specific fault and part required. Visit our pricing page for starting rates on common repairs.`,
+      answer: `Diagnostics are free. Common laptop repairs start from 15 KWD, screen replacement from 30 KWD and component-level motherboard repair from 25 KWD, with the final price depending on the device, the fault and the parts. You receive the confirmed quote before any paid work begins, and under our No Fix, No Fee policy you pay nothing if we cannot fix it.`,
     },
     {
       id: `faq-${location.slug}-turnaround`,
-      question: 'How long does computer repair take?',
-      answer: `Turnaround depends on the diagnosis, parts availability, and repair complexity, so we're not able to promise a fixed time upfront. We'll give you a clear estimate after diagnosing your device.`,
+      question: `How long does a repair take for ${location.title} customers?`,
+      answer: `Many repairs are completed within 24-48 hours of us receiving the device, same-day service is possible for some screen and battery jobs when the part is in stock, and component-level motherboard work typically takes 24-72 hours. We confirm a realistic estimate after diagnosis, because parts availability and the exact fault decide the timing.`,
     },
+    ...(nearbyAreas.length > 0
+      ? [{
+          id: `faq-${location.slug}-coverage`,
+          question: `Which areas near ${location.title} do you collect from?`,
+          answer: `Besides ${location.title}, we collect from ${nearbyAreas.join(', ')}. Pickup and delivery are free, and you can confirm your exact street or block with us on WhatsApp.`,
+        }]
+      : []),
+    // Area-specific questions defined per location in KCROC_GRAPH, so each
+    // page carries questions that are genuinely different from its siblings.
+    ...(location.localFaqs ?? []),
   ];
 
   // BreadcrumbList is intentionally omitted here — SEOEngine already generates
