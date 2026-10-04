@@ -1,0 +1,68 @@
+name: KCROC Production Build and SEO Certification
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "app/frontend/**"
+      - ".github/workflows/production-certification.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+defaults:
+  run:
+    working-directory: app/frontend
+
+jobs:
+  production-certification:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "pnpm"
+          cache-dependency-path: app/frontend/pnpm-lock.yaml
+
+      - name: Setup pnpm 8.10.0
+        uses: pnpm/action-setup@v4
+        with:
+          version: "8.10.0"
+          run_install: false
+
+      - name: Verify toolchain
+        run: |
+          node --version
+          pnpm --version
+          test "$(pnpm --version)" = "8.10.0"
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Production build
+        run: pnpm run build
+
+      - name: SEO certification audit
+        run: pnpm run audit:seo 2>&1 | tee seo-audit.log
+
+      - name: Lint source
+        run: pnpm run lint
+
+      - name: Upload certification evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: kcroc-production-certification
+          path: |
+            app/frontend/seo-audit.log
+            app/frontend/dist/sitemap.xml
+            app/frontend/dist/robots.txt
+          if-no-files-found: ignore
+          retention-days: 14
