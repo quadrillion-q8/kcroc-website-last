@@ -51,7 +51,11 @@ if (existsSync(sitemapPath)) {
   for (const url of sitemapUrls) {
     let pathname;
     try {
-      pathname = new URL(url).pathname;
+      const parsedUrl = new URL(url);
+      pathname = parsedUrl.pathname;
+      if (parsedUrl.protocol !== 'https:' || parsedUrl.hostname !== 'www.computerrepairkuwait.com') {
+        fail(`Sitemap URL must use the HTTPS canonical hostname www.computerrepairkuwait.com: "${url}"`);
+      }
     } catch {
       fail(`Sitemap contains an unparsable URL: "${url}"`);
       continue;
@@ -83,6 +87,7 @@ function walkHtmlFiles(dir) {
 }
 
 const htmlFiles = walkHtmlFiles(DIST_DIR);
+const titleOwners = new Map();
 
 if (htmlFiles.length === 0) {
   fail('No prerendered index.html files found under dist/.');
@@ -92,8 +97,27 @@ for (const file of htmlFiles) {
   const html = readFileSync(file, 'utf-8');
   const relPath = file.replace(DIST_DIR, 'dist');
 
-  const hasCanonical = /<link[^>]+rel=["']canonical["']/i.test(html);
+  const canonicalMatch = html.match(/<link[^>]+rel=["']canonical["'][^>]+href=["']([^"']+)["']/i)
+    || html.match(/<link[^>]+href=["']([^"']+)["'][^>]+rel=["']canonical["']/i);
+  const hasCanonical = Boolean(canonicalMatch);
   const hasTitle = /<title[^>]*>[^<]{5,}<\/title>/i.test(html);
+  const titleMatch = html.match(/<title[^>]*>([^<]+)<\/title>/i);
+  const pageTitle = titleMatch?.[1]?.trim();
+  if (pageTitle && !/noindex/i.test(html.match(/<meta[^>]+name=["']robots["'][^>]+content=["']([^"']+)["']/i)?.[1] || '')) {
+    const previousOwner = titleOwners.get(pageTitle.toLowerCase());
+    if (previousOwner) warn(`${relPath}: duplicate page title "${pageTitle}" also used by ${previousOwner}.`);
+    else titleOwners.set(pageTitle.toLowerCase(), relPath);
+  }
+  if (canonicalMatch) {
+    try {
+      const canonicalUrl = new URL(canonicalMatch[1]);
+      if (canonicalUrl.protocol !== 'https:' || canonicalUrl.hostname !== 'www.computerrepairkuwait.com') {
+        fail(`${relPath}: canonical must use HTTPS www.computerrepairkuwait.com, found "${canonicalMatch[1]}".`);
+      }
+    } catch {
+      fail(`${relPath}: canonical URL is invalid: "${canonicalMatch[1]}".`);
+    }
+  }
   const hasJsonLd = /<script[^>]+type=["']application\/ld\+json["']/i.test(html);
   const hasMetaDescription = /<meta[^>]+name=["']description["'][^>]+content="[^"]{20,}"/i.test(html);
   const robotsMatch = html.match(/<meta[^>]+name=["']robots["'][^>]+content=["']([^"']+)["']/i);
