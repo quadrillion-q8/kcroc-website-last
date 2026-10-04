@@ -250,6 +250,51 @@ export const rawGraphData: RawGraphData = {
       relatedServiceIds: ['srv-laptop', 'srv-motherboard', 'srv-screen', 'srv-battery', 'srv-macbook', 'srv-gaming', 'srv-gaming-laptop']
     } as WebPageEntity,
 
+    'page-ar-salmiya-computer-repair': {
+      id: 'page-ar-salmiya-computer-repair', slug: 'ar/computer-repair-salmiya', entityType: 'WebPage', isActive: true,
+      title: "تصليح كمبيوتر السالمية وفني لابتوب",
+      description: "تصليح كمبيوتر ولابتوب في السالمية مع استلام وتوصيل مجاني من الرميثية وسلوى والبدع، والإصلاح في مختبر KCROC بحولي.",
+      seo: {
+        title: "تصليح كمبيوتر السالمية | فني لابتوب واستلام مجاني | KCROC",
+        description: "تصليح كمبيوتر ولابتوب في السالمية والرميثية وسلوى والبدع. تشخيص قبل الإصلاح، معالجة أضرار السوائل، استلام وتوصيل مجاني، وضمان 30 يومًا.",
+        canonicalUrl: 'https://www.computerrepairkuwait.com/ar/computer-repair-salmiya',
+        locale: 'ar_KW', alternates: { 'ar-KW': 'https://www.computerrepairkuwait.com/ar/computer-repair-salmiya', 'en-KW': 'https://www.computerrepairkuwait.com/location/salmiya', 'x-default': 'https://www.computerrepairkuwait.com/location/salmiya' },
+        ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList'], lastModified: '2026-10-04T00:00:00+03:00',
+        breadcrumbs: [{ name: 'الرئيسية', url: '/' }, { name: "تصليح كمبيوتر ولابتوب في السالمية", url: '/ar/computer-repair-salmiya' }]
+      },
+      relatedServiceIds: ['srv-laptop', 'srv-macbook', 'srv-motherboard', 'srv-screen', 'srv-battery']
+    } as WebPageEntity,
+
+    'page-ar-farwaniya-computer-repair': {
+      id: 'page-ar-farwaniya-computer-repair', slug: 'ar/computer-repair-farwaniya', entityType: 'WebPage', isActive: true,
+      title: "تصليح كمبيوتر الفروانية وفني لابتوب",
+      description: "تصليح كمبيوتر ولابتوب في الفروانية مع استلام وتوصيل مجاني من خيطان والرقعي والعارضية وجليب الشيوخ، والإصلاح في مختبر KCROC بحولي.",
+      seo: {
+        title: "تصليح كمبيوتر الفروانية | فني لابتوب واستلام مجاني | KCROC",
+        description: "تصليح كمبيوتر ولابتوب في الفروانية وخيطان والرقعي والعارضية وجليب الشيوخ. فحص الطاقة والشحن، شاشات وبطاريات، استلام وتوصيل مجاني، وضمان 30 يومًا.",
+        canonicalUrl: 'https://www.computerrepairkuwait.com/ar/computer-repair-farwaniya',
+        locale: 'ar_KW', alternates: { 'ar-KW': 'https://www.computerrepairkuwait.com/ar/computer-repair-farwaniya', 'en-KW': 'https://www.computerrepairkuwait.com/location/farwaniya', 'x-default': 'https://www.computerrepairkuwait.com/location/farwaniya' },
+        ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList'], lastModified: '2026-10-04T00:00:00+03:00',
+        breadcrumbs: [{ name: 'الرئيسية', url: '/' }, { name: "تصليح كمبيوتر ولابتوب في الفروانية", url: '/ar/computer-repair-farwaniya' }]
+      },
+      relatedServiceIds: ['srv-laptop', 'srv-motherboard', 'srv-screen', 'srv-battery', 'srv-gaming']
+    } as WebPageEntity,
+
+    'page-ar-kuwait-city-computer-repair': {
+      id: 'page-ar-kuwait-city-computer-repair', slug: 'ar/computer-repair-kuwait-city', entityType: 'WebPage', isActive: true,
+      title: "تصليح كمبيوتر مدينة الكويت وفني لابتوب",
+      description: "تصليح كمبيوتر ولابتوب في مدينة الكويت مع استلام وتوصيل مجاني من شرق ودسمان والمرقاب والقبلة، والإصلاح في مختبر KCROC بحولي.",
+      seo: {
+        title: "تصليح كمبيوتر مدينة الكويت | فني لابتوب واستلام مجاني | KCROC",
+        description: "تصليح كمبيوتر ولابتوب في مدينة الكويت وشرق ودسمان والمرقاب والقبلة. شاشات وأعطال الطاقة والشحن، استلام وتوصيل مجاني من البيت أو المكتب، وضمان 30 يومًا.",
+        canonicalUrl: 'https://www.computerrepairkuwait.com/ar/computer-repair-kuwait-city',
+        locale: 'ar_KW', alternates: { 'ar-KW': 'https://www.computerrepairkuwait.com/ar/computer-repair-kuwait-city', 'en-KW': 'https://www.computerrepairkuwait.com/location/kuwait-city', 'x-default': 'https://www.computerrepairkuwait.com/location/kuwait-city' },
+        ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList'], lastModified: '2026-10-04T00:00:00+03:00',
+        breadcrumbs: [{ name: 'الرئيسية', url: '/' }, { name: "تصليح كمبيوتر ولابتوب في مدينة الكويت", url: '/ar/computer-repair-kuwait-city' }]
+      },
+      relatedServiceIds: ['srv-laptop', 'srv-screen', 'srv-motherboard', 'srv-macbook', 'srv-battery']
+    } as WebPageEntity,
+
     'page-ar-macbook-repair': {
       id: 'page-ar-macbook-repair', slug: 'ar/macbook-repair-kuwait', entityType: 'WebPage', isActive: true,
       title: 'تصليح MacBook في الكويت', description: 'تصليح MacBook واللوحة الأم والشحن والطاقة وأعطال الشاشة والبطارية في الكويت، مع تشخيص قبل الإصلاح واستلام مجاني.',
@@ -3089,7 +3134,7 @@ export const rawGraphData: RawGraphData = {
         { id: "faq-kuwait-city-local-2", question: "My laptop screen is black but the laptop seems to be on. Can you check it from Kuwait City?", answer: "Yes. A black screen can come from the panel, the display cable, the backlight circuit or the motherboard. We diagnose it at the lab and tell you which one it is before you approve any repair." },
       ], title: 'Kuwait City', description: 'Fast, professional corporate IT support and component-level laptop repair for businesses and residents in Kuwait City.', landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)', coords: { lat: 29.3759, lng: 47.9774 }, serviceRadiusKm: 15, serviceAreas: ['Kuwait City', 'Sharq', 'Dasman', 'Mirqab', 'Qibla'], 
       contentImage: { src: IMAGES.brand.technicians.src, alt: IMAGES.brand.technicians.alt, width: IMAGES.brand.technicians.width, height: IMAGES.brand.technicians.height, caption: 'Our technicians handling component-level laptop repair for businesses and residents across Kuwait City.' },
-      seo: { title: 'Computer Repair Kuwait City | Free Pickup | KCROC', description: 'Expert computer repair, MacBook motherboard micro-soldering, and IT support for businesses and residents in Kuwait City. Free pick and drop.', canonicalUrl: 'https://www.computerrepairkuwait.com/location/kuwait-city', ogType: 'website', schemaTypes: ['LocalBusiness'], lastModified: '2026-09-27T00:00:00+03:00' }, 
+      seo: { title: 'Computer Repair Kuwait City | Free Pickup | KCROC', description: 'Expert computer repair, MacBook motherboard micro-soldering, and IT support for businesses and residents in Kuwait City. Free pick and drop.', canonicalUrl: 'https://www.computerrepairkuwait.com/location/kuwait-city', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/location/kuwait-city', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/computer-repair-kuwait-city', 'x-default': 'https://www.computerrepairkuwait.com/location/kuwait-city' }, ogType: 'website', schemaTypes: ['LocalBusiness'], lastModified: '2026-09-27T00:00:00+03:00' }, 
       relatedServiceIds: ['srv-gaming', 'srv-laptop', 'srv-motherboard', 'srv-gaming-laptop-cleaning'], navigationPriority: 95 
     } as LocationEntity,
     
@@ -3101,7 +3146,7 @@ export const rawGraphData: RawGraphData = {
       ], localFaqs: [
         { id: "faq-salmiya-local-1", question: "I spilled water on my laptop in Salmiya. What should I do before you collect it?", answer: "Switch it off, unplug the charger and do not try to power it on again. Message us on WhatsApp and we will arrange pickup so the board can be cleaned and tested as soon as possible." },
         { id: "faq-salmiya-local-2", question: "Do you collect from Rumaithiya, Salwa and Bidaa as well?", answer: "Yes. These areas fall inside our Salmiya service zone and get the same free pickup and delivery." },
-      ], title: 'Salmiya', description: 'Fast, professional computer and laptop repair services for residents and businesses in Salmiya.', landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)', coords: { lat: 29.3400, lng: 48.0800 }, serviceRadiusKm: 15, serviceAreas: ['Salmiya', 'Rumaithiya', 'Salwa', 'Bidaa'], contentImage: { src: IMAGES.services.laptopRepair.src, alt: IMAGES.services.laptopRepair.alt, width: IMAGES.services.laptopRepair.width, height: IMAGES.services.laptopRepair.height, caption: 'Professional laptop repair for residents and businesses across Salmiya.' }, seo: { title: 'Computer Repair Salmiya Kuwait | Free Pickup | KCROC', description: 'Laptop and computer repair in Salmiya with free pickup and delivery. Devices are diagnosed and repaired at KCROC\'s central Hawalli lab.', canonicalUrl: 'https://www.computerrepairkuwait.com/location/salmiya', ogType: 'website', schemaTypes: ['LocalBusiness'], lastModified: '2026-09-27T00:00:00+03:00' }, navigationPriority: 90 } as LocationEntity,
+      ], title: 'Salmiya', description: 'Fast, professional computer and laptop repair services for residents and businesses in Salmiya.', landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)', coords: { lat: 29.3400, lng: 48.0800 }, serviceRadiusKm: 15, serviceAreas: ['Salmiya', 'Rumaithiya', 'Salwa', 'Bidaa'], contentImage: { src: IMAGES.services.laptopRepair.src, alt: IMAGES.services.laptopRepair.alt, width: IMAGES.services.laptopRepair.width, height: IMAGES.services.laptopRepair.height, caption: 'Professional laptop repair for residents and businesses across Salmiya.' }, seo: { title: 'Computer Repair Salmiya Kuwait | Free Pickup | KCROC', description: 'Laptop and computer repair in Salmiya with free pickup and delivery. Devices are diagnosed and repaired at KCROC\'s central Hawalli lab.', canonicalUrl: 'https://www.computerrepairkuwait.com/location/salmiya', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/location/salmiya', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/computer-repair-salmiya', 'x-default': 'https://www.computerrepairkuwait.com/location/salmiya' }, ogType: 'website', schemaTypes: ['LocalBusiness'], lastModified: '2026-09-27T00:00:00+03:00' }, navigationPriority: 90 } as LocationEntity,
 
     'loc-farwaniya': { id: 'loc-farwaniya', slug: 'farwaniya', entityType: 'Location', isActive: true, isPhysicalLocation: false, title: 'Farwaniya', description: 'Computer and laptop repair for Farwaniya, with a practical focus on power, charging, display, battery and motherboard faults and free pickup to KCROC\'s Hawalli workshop.', localIntro: 'For Farwaniya customers, the easiest path is usually pickup rather than driving to a shop. KCROC collects the device, performs the diagnosis in the Hawalli lab, explains the repair path and returns the device after testing. The Farwaniya service area includes Khaitan, Riggae, Ardiya and Jleeb Al-Shuyoukh.', localHighlights: [
         { title: 'Pickup from Farwaniya, Khaitan and Riggae', description: 'Tell us your area and device symptom and we can arrange the collection through the Kuwait-wide pickup service.' },
@@ -3109,7 +3154,7 @@ export const rawGraphData: RawGraphData = {
         { title: 'Screen, battery and motherboard work', description: 'The page connects Farwaniya customers directly to the relevant repair services instead of forcing them through a generic computer-repair page.' },
         { title: 'Repair happens at the Hawalli lab', description: 'Farwaniya is a service area, not a walk-in branch. Devices are processed at the central KCROC repair lab and delivered back after testing.'
         },
-      ], landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)', coords: { lat: 29.2770, lng: 47.9590 }, serviceRadiusKm: 20, serviceAreas: ['Farwaniya', 'Khaitan', 'Riggae', 'Ardiya', 'Jleeb Al-Shuyoukh'], contentImage: { src: IMAGES.services.motherboardRepair.src, alt: IMAGES.services.motherboardRepair.alt, width: IMAGES.services.motherboardRepair.width, height: IMAGES.services.motherboardRepair.height, caption: 'Chip-level motherboard repair and screen replacement serving the Farwaniya governorate.' }, seo: { title: 'Computer Repair Farwaniya Kuwait | Free Pickup | KCROC', description: 'Computer and laptop repair in Farwaniya, Kuwait, including Khaitan, Riggae and Ardiya. Free pickup and delivery to KCROC’s Hawalli repair lab.', canonicalUrl: 'https://www.computerrepairkuwait.com/location/farwaniya', ogType: 'website', schemaTypes: ['LocalBusiness'], lastModified: '2026-09-27T00:00:00+03:00' }, navigationPriority: 80 } as LocationEntity,
+      ], landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)', coords: { lat: 29.2770, lng: 47.9590 }, serviceRadiusKm: 20, serviceAreas: ['Farwaniya', 'Khaitan', 'Riggae', 'Ardiya', 'Jleeb Al-Shuyoukh'], contentImage: { src: IMAGES.services.motherboardRepair.src, alt: IMAGES.services.motherboardRepair.alt, width: IMAGES.services.motherboardRepair.width, height: IMAGES.services.motherboardRepair.height, caption: 'Chip-level motherboard repair and screen replacement serving the Farwaniya governorate.' }, seo: { title: 'Computer Repair Farwaniya Kuwait | Free Pickup | KCROC', description: 'Computer and laptop repair in Farwaniya, Kuwait, including Khaitan, Riggae and Ardiya. Free pickup and delivery to KCROC’s Hawalli repair lab.', canonicalUrl: 'https://www.computerrepairkuwait.com/location/farwaniya', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/location/farwaniya', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/computer-repair-farwaniya', 'x-default': 'https://www.computerrepairkuwait.com/location/farwaniya' }, ogType: 'website', schemaTypes: ['LocalBusiness'], lastModified: '2026-09-27T00:00:00+03:00' }, navigationPriority: 80 } as LocationEntity,
 
     'loc-jahra': { id: 'loc-jahra', slug: 'jahra', entityType: 'Location', isActive: true, isPhysicalLocation: false, localIntro: "Jahra is further from our Hawalli lab than most service areas, which is exactly why pickup matters: you do not need to make the trip. We collect from Jahra, Saad Al Abdullah, Naeem, Qasr and Taima, repair the device in Hawalli and return it once it has passed testing. Overheating, thermal maintenance and motherboard diagnostics are the main focus here.", localHighlights: [
         { title: "Pickup from Jahra, Naeem, Qasr, Taima and Saad Al Abdullah", description: "Share your area and device on WhatsApp and we will arrange free collection and return." },
