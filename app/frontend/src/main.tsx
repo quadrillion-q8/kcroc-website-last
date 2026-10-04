@@ -60,7 +60,7 @@ if (typeof window !== 'undefined') {
 
   const isStaleSsgManifestError = (value: unknown): boolean => {
     const text = getErrorText(value);
-    const mentionsManifest = /static-loader-data-manifest(?:-[^\s/'\"]+)?/i.test(text);
+    const mentionsManifest = /static-loader-data-manifest(?:-[^\s/'"]+)?/i.test(text);
     const looksLikeInvalidManifestJson = /unexpected token|not valid json|json\.parse/i.test(text) && /manifest/i.test(text);
     return mentionsManifest || looksLikeInvalidManifestJson;
   };
