@@ -7,11 +7,9 @@ export const usePageTracking = () => {
   const location = useLocation();
 
   useEffect(() => {
-    let animationFrameId: number;
-
     // requestAnimationFrame ensures the DOM paint has completed 
     // and your SEO Helmet has successfully updated the document.title
-    animationFrameId = requestAnimationFrame(() => {
+    const animationFrameId = requestAnimationFrame(() => {
       trackPageView();
     });
 
