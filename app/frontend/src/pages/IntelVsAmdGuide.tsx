@@ -113,7 +113,9 @@ export default function IntelVsAmdGuide() {
       await navigator.clipboard.writeText(window.location.href);
       setCopied(true);
       window.setTimeout(() => setCopied(false), 1800);
-    } catch {}
+    } catch {
+      // Clipboard access can be denied; fail silently.
+    }
   };
 
   const faqSchema = {
