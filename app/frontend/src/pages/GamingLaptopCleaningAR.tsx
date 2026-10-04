@@ -149,6 +149,7 @@ export default function GamingLaptopCleaningAR() {
         <link rel="canonical" href={PAGE_URL} />
         <meta name="robots" content="index, follow, max-image-preview:large" />
         <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="675" />
         <meta property="og:image:alt" content="تنظيف لابتوب القيمنق وتبريد الجهاز في الكويت" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:image" content={HERO_IMAGE_URL} />
