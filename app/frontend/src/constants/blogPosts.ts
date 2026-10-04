@@ -3433,6 +3433,7 @@ export const BLOG_POSTS: BlogPost[] = [
       }
     ],
     "image": "/images/blog/windows-11-background-services-audit-2026.png",
+    "discoverImage": "/images/discover/windows-11-8gb-ram-performance-1200x675.webp",
     "date": "2026-09-05",
     "author": "KCROC Technical Team — Windows & Hardware Troubleshooting",
     "category": "Windows & Software",
@@ -4423,6 +4424,7 @@ export const BLOG_POSTS: BlogPost[] = [
       }
     ],
     "image": "/images/windows-11-operating-system-installation-gaming-pc.webp",
+    "discoverImage": "/images/discover/windows-11-laptop-multitasking-1200x675.webp",
     "date": "2026-09-08",
     "author": "KCROC Technical Team — Windows & Hardware Troubleshooting",
     "category": "Windows & Software",
