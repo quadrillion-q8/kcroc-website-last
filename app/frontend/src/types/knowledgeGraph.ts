@@ -262,6 +262,13 @@ export const LocationSchema = RoutableEntitySchema.extend({
     title: z.string(),
     description: z.string(),
   })).default([]),
+  // Optional area-specific FAQs, merged after the shared FAQs by LocationDeepTemplate
+  // so each service-area page carries questions unique to that area.
+  localFaqs: z.array(z.object({
+    id: z.string(),
+    question: z.string(),
+    answer: z.string(),
+  })).default([]),
   // Explicit local topical relationships keep location hubs aligned with the
   // service/problem/brand graph used by the UI.
   relatedServiceIds: z.array(z.string()).default([]),
