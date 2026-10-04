@@ -792,6 +792,8 @@ export default function BlogPostTemplate() {
     'windows-11-update-problems',
   ].includes(post.slug);
   const isMicrosoftSurfaceEventNews = post.slug === 'microsoft-windows-surface-event-october-7-2026';
+  const socialImage = toAbsoluteAssetUrl(post.discoverImage || post.image);
+  const discoverReady = Boolean(post.discoverImage);
 
   return (
     <main className="w-full min-h-screen bg-transparent text-slate-200 pt-8 sm:pt-16 lg:pt-32 pb-8 sm:pb-16 lg:pb-24">
@@ -801,40 +803,28 @@ export default function BlogPostTemplate() {
         <meta name="description" content={post.seoDescription || (post.description || post.excerpt).slice(0, 155)} />
         <link rel="canonical" href={pageUrl} />
         <meta name="robots" content="index, follow, max-image-preview:large" />
-        {post.arabicSlug && (
-          <>
-            <link rel="alternate" hrefLang="en-KW" href={pageUrl} />
-            <link rel="alternate" hrefLang="ar-KW" href={`${business.websiteUrl}${isNews ? '/news/' : '/blog/'}${post.arabicSlug}`} />
-            <link rel="alternate" hrefLang="x-default" href={pageUrl} />
-          </>
-        )}
-        {(() => {
-          const socialImage = toAbsoluteAssetUrl(post.discoverImage || post.image);
-          const discoverReady = Boolean(post.discoverImage);
-          return (
-            <>
-              <meta property="og:type" content="article" />
-              <meta property="og:title" content={post.seoTitle || post.title} />
-              <meta property="og:description" content={post.description || post.excerpt} />
-              <meta property="og:url" content={pageUrl} />
-              <meta property="og:site_name" content={business.legalName} />
-              <meta property="og:locale" content="en_KW" />
-              <meta property="og:image" content={socialImage} />
-              {discoverReady && <meta property="og:image:width" content="1200" />}
-              {discoverReady && <meta property="og:image:height" content="675" />}
-              <meta property="og:image:alt" content={post.title} />
-              <meta property="og:image:type" content="image/webp" />
-              <meta property="article:published_time" content={post.date} />
-              <meta property="article:modified_time" content={getModifiedDate(post)} />
-              <meta property="article:section" content={isNews ? `News — ${post.category}` : isGuide ? "Guides" : post.category} />
-              <meta name="twitter:card" content="summary_large_image" />
-              <meta name="twitter:title" content={post.seoTitle || post.title} />
-              <meta name="twitter:description" content={post.description || post.excerpt} />
-              <meta name="twitter:image" content={socialImage} />
-              <meta name="twitter:image:alt" content={post.title} />
-            </>
-          );
-        })()}
+        {post.arabicSlug && <link rel="alternate" hrefLang="en-KW" href={pageUrl} />}
+        {post.arabicSlug && <link rel="alternate" hrefLang="ar-KW" href={`${business.websiteUrl}${isNews ? '/news/' : '/blog/'}${post.arabicSlug}`} />}
+        {post.arabicSlug && <link rel="alternate" hrefLang="x-default" href={pageUrl} />}
+      <meta property="og:type" content="article" />
+      <meta property="og:title" content={post.seoTitle || post.title} />
+      <meta property="og:description" content={post.description || post.excerpt} />
+      <meta property="og:url" content={pageUrl} />
+      <meta property="og:site_name" content={business.legalName} />
+      <meta property="og:locale" content="en_KW" />
+      <meta property="og:image" content={socialImage} />
+      {discoverReady && <meta property="og:image:width" content="1200" />}
+      {discoverReady && <meta property="og:image:height" content="675" />}
+      <meta property="og:image:alt" content={post.title} />
+      <meta property="og:image:type" content="image/webp" />
+      <meta property="article:published_time" content={post.date} />
+      <meta property="article:modified_time" content={getModifiedDate(post)} />
+      <meta property="article:section" content={isNews ? `News — ${post.category}` : isGuide ? "Guides" : post.category} />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content={post.seoTitle || post.title} />
+      <meta name="twitter:description" content={post.description || post.excerpt} />
+      <meta name="twitter:image" content={socialImage} />
+      <meta name="twitter:image:alt" content={post.title} />
       </Head>
 
       <SchemaMarkup schema={SCHEMA_DATA} />
