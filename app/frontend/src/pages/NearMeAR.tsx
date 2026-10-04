@@ -26,6 +26,14 @@ import { SEOEngine } from '../core/components/SEOEngine';
 import { KCROC_GRAPH } from '../data/graph';
 import { IMAGES } from '../constants/images';
 
+// Service areas with a dedicated Arabic page link there; others fall back to English.
+const AR_LOCATION_PATHS: Record<string, string> = {
+  hawalli: '/ar/computer-repair-hawalli',
+  salmiya: '/ar/computer-repair-salmiya',
+  farwaniya: '/ar/computer-repair-farwaniya',
+  'kuwait-city': '/ar/computer-repair-kuwait-city',
+};
+
 // Arabic labels for existing (English-slugged) service pages — the
 // underlying service pages stay English for now, but Arabic visitors get
 // Arabic labels/descriptions pointing to them, same pattern already used in
@@ -182,7 +190,7 @@ export default function NearMeAR() {
           </div>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {AREAS_AR.map((area) => (
-              <Link key={area.slug} to={`/location/${area.slug}`} className="group rounded-2xl border border-slate-800 bg-brand-dark/70 p-5 transition hover:border-cyan-500/50 hover:bg-slate-900">
+              <Link key={area.slug} to={AR_LOCATION_PATHS[area.slug] ?? `/location/${area.slug}`} className="group rounded-2xl border border-slate-800 bg-brand-dark/70 p-5 transition hover:border-cyan-500/50 hover:bg-slate-900">
                 <div className="flex items-start justify-between gap-4">
                   <div>
                     <div className="flex items-center gap-2 text-cyan-400"><MapPin className="h-4 w-4" aria-hidden="true" /><span className="text-xs font-bold uppercase tracking-wider">منطقة خدمة</span></div>
