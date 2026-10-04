@@ -4389,7 +4389,7 @@ export const rawGraphData: RawGraphData = {
       costVsReplacement: 'Repair: 65 KWD. Apple Authorized Center quote: 280 KWD for board swap with data loss.',
       publishDate: '2026-05-12',
       deviceCategory: 'macbook',
-      deviceModel: 'MacBook Pro 14\" M2 Pro',
+      deviceModel: 'MacBook Pro 14" M2 Pro',
       brandId: undefined,
       serviceIds: ['srv-macbook', 'srv-motherboard'],
       problemIds: ['problem-liquid-spill'],
