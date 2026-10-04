@@ -32,7 +32,7 @@ export const AutoLink: React.FC<AutoLinkProps> = ({ text, currentEntityId }) => 
       if (!entity.seo || !entity.seo.canonicalUrl) return;
 
       // Ensure React Router uses relative paths to prevent hard page reloads
-      const relativeUrl = entity.seo.canonicalUrl.replace(/^https?:\/\/[^\/]+/, '') || '/';
+      const relativeUrl = entity.seo.canonicalUrl.replace(/^https?:\/\/[^/]+/, '') || '/';
 
       // 2. Gather all possible anchor text variations
       const phrases = [
