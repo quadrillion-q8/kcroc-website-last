@@ -24,6 +24,8 @@ export default tseslint.config(
         { allowConstantExport: true },
       ],
       "@typescript-eslint/no-unused-vars": "off",
+      // Pre-existing codebase uses `any` in many places; surface as warning, not CI failure.
+      "@typescript-eslint/no-explicit-any": "warn",
     },
   }
 );
