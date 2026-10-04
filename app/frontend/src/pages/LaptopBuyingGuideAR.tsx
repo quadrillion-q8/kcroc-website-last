@@ -271,6 +271,8 @@ export default function LaptopBuyingGuideAR() {
         />
         <meta property="og:url" content={PAGE_URL} />
         <meta property="og:image" content={HERO_IMAGE_URL} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="675" />
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="دليل شراء اللابتوب في الكويت 2026" />
