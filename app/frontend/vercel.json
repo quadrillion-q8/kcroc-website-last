@@ -221,6 +221,576 @@
       "source": "/battery-replacement",
       "destination": "/battery-replacement-kuwait",
       "permanent": true
+    },
+    {
+      "source": "/computer-repair-in-abu-ftaira",
+      "destination": "/location/abu-ftaira",
+      "permanent": true
+    },
+    {
+      "source": "/laptop-repair-in-abu-ftaira",
+      "destination": "/location/abu-ftaira",
+      "permanent": true
+    },
+    {
+      "source": "/computer-repair-abu-ftaira",
+      "destination": "/location/abu-ftaira",
+      "permanent": true
+    },
+    {
+      "source": "/laptop-repair-abu-ftaira",
+      "destination": "/location/abu-ftaira",
+      "permanent": true
+    },
+    {
+      "source": "/computer-repair-in-abu-halifa",
+      "destination": "/location/abu-halifa",
+      "permanent": true
+    },
+    {
+      "source": "/computer-repair-abu-halifa",
+      "destination": "/location/abu-halifa",
+      "permanent": true
+    },
+    {
+      "source": "/laptop-repair-abu-halifa",
+      "destination": "/location/abu-halifa",
+      "permanent": true
+    },
+    {
+      "source": "/computer-repair-in-adailiya",
+      "destination": "/location/adailiya",
+      "permanent": true
+    },
+    {
+      "source": "/laptop-repair-in-adailiya",
+      "destination": "/location/adailiya",
+      "permanent": true
+    },
+    {
+      "source": "/computer-repair-adailiya",
+      "destination": "/location/adailiya",
+      "permanent": true
+    },
+    {
+      "source": "/laptop-repair-adailiya",
+      "destination": "/location/adailiya",
+      "permanent": true
+    },
+    {
+      "source": "/computer-repair-in-adan",
+      "destination": "/location/adan",
+      "permanent": true
+    },
+    {
+      "source": "/laptop-repair-in-adan",
+      "destination": "/location/adan",
+      "permanent": true
+    },
+    {
+      "source": "/computer-repair-adan",
+      "destination": "/location/adan",
+      "permanent": true
+    },
+    {
+      "source": "/laptop-repair-adan",
+      "destination": "/location/adan",
+      "permanent": true
+    },
+    {
+      "source": "/computer-repair-in-ahmadi",
+      "destination": "/location/ahmadi",
+      "permanent": true
+    },
+    {
+      "source": "/laptop-repair-in-ahmadi",
+      "destination": "/location/ahmadi",
+      "permanent": true
+    },
+    {
+      "source": "/computer-repair-ahmadi",
+      "destination": "/location/ahmadi",
+      "permanent": true
+    },
+    {
+      "source": "/laptop-repair-ahmadi",
+      "destination": "/location/ahmadi",
+      "permanent": true
+    },
+    {
+      "source": "/computer-repair-in-ardiya",
+      "destination": "/location/ardiya",
+      "permanent": true
+    },
+    {
+      "source": "/laptop-repair-in-ardiya",
+      "destination": "/location/ardiya",
+      "permanent": true
+    },
+    {
+      "source": "/computer-repair-ardiya",
+      "destination": "/location/ardiya",
+      "permanent": true
+    },
+    {
+      "source": "/laptop-repair-ardiya",
+      "destination": "/location/ardiya",
+      "permanent": true
+    },
+    {
+      "source": "/computer-repair-in-fahaheel",
+      "destination": "/location/fahaheel",
+      "permanent": true
+    },
+    {
+      "source": "/computer-repair-fahaheel",
+      "destination": "/location/fahaheel",
+      "permanent": true
+    },
+    {
+      "source": "/laptop-repair-fahaheel",
+      "destination": "/location/fahaheel",
+      "permanent": true
+    },
+    {
+      "source": "/computer-repair-farwaniya",
+      "destination": "/location/farwaniya",
+      "permanent": true
+    },
+    {
+      "source": "/laptop-repair-farwaniya",
+      "destination": "/location/farwaniya",
+      "permanent": true
+    },
+    {
+      "source": "/computer-repair-in-fintas",
+      "destination": "/location/fintas",
+      "permanent": true
+    },
+    {
+      "source": "/laptop-repair-in-fintas",
+      "destination": "/location/fintas",
+      "permanent": true
+    },
+    {
+      "source": "/computer-repair-fintas",
+      "destination": "/location/fintas",
+      "permanent": true
+    },
+    {
+      "source": "/laptop-repair-fintas",
+      "destination": "/location/fintas",
+      "permanent": true
+    },
+    {
+      "source": "/computer-repair-in-hawalli",
+      "destination": "/location/hawalli",
+      "permanent": true
+    },
+    {
+      "source": "/computer-repair-in-jabriya",
+      "destination": "/location/jabriya",
+      "permanent": true
+    },
+    {
+      "source": "/laptop-repair-in-jabriya",
+      "destination": "/location/jabriya",
+      "permanent": true
+    },
+    {
+      "source": "/computer-repair-jabriya",
+      "destination": "/location/jabriya",
+      "permanent": true
+    },
+    {
+      "source": "/laptop-repair-jabriya",
+      "destination": "/location/jabriya",
+      "permanent": true
+    },
+    {
+      "source": "/computer-repair-in-jahra",
+      "destination": "/location/jahra",
+      "permanent": true
+    },
+    {
+      "source": "/laptop-repair-in-jahra",
+      "destination": "/location/jahra",
+      "permanent": true
+    },
+    {
+      "source": "/computer-repair-jahra",
+      "destination": "/location/jahra",
+      "permanent": true
+    },
+    {
+      "source": "/laptop-repair-jahra",
+      "destination": "/location/jahra",
+      "permanent": true
+    },
+    {
+      "source": "/computer-repair-in-jleeb-al-shuyoukh",
+      "destination": "/location/jleeb-al-shuyoukh",
+      "permanent": true
+    },
+    {
+      "source": "/laptop-repair-in-jleeb-al-shuyoukh",
+      "destination": "/location/jleeb-al-shuyoukh",
+      "permanent": true
+    },
+    {
+      "source": "/computer-repair-jleeb-al-shuyoukh",
+      "destination": "/location/jleeb-al-shuyoukh",
+      "permanent": true
+    },
+    {
+      "source": "/laptop-repair-jleeb-al-shuyoukh",
+      "destination": "/location/jleeb-al-shuyoukh",
+      "permanent": true
+    },
+    {
+      "source": "/computer-repair-in-khaitan",
+      "destination": "/location/khaitan",
+      "permanent": true
+    },
+    {
+      "source": "/computer-repair-khaitan",
+      "destination": "/location/khaitan",
+      "permanent": true
+    },
+    {
+      "source": "/laptop-repair-khaitan",
+      "destination": "/location/khaitan",
+      "permanent": true
+    },
+    {
+      "source": "/laptop-repair-in-kuwait-city",
+      "destination": "/location/kuwait-city",
+      "permanent": true
+    },
+    {
+      "source": "/computer-repair-kuwait-city",
+      "destination": "/location/kuwait-city",
+      "permanent": true
+    },
+    {
+      "source": "/laptop-repair-kuwait-city",
+      "destination": "/location/kuwait-city",
+      "permanent": true
+    },
+    {
+      "source": "/computer-repair-in-mahboula",
+      "destination": "/location/mahboula",
+      "permanent": true
+    },
+    {
+      "source": "/laptop-repair-in-mahboula",
+      "destination": "/location/mahboula",
+      "permanent": true
+    },
+    {
+      "source": "/computer-repair-mahboula",
+      "destination": "/location/mahboula",
+      "permanent": true
+    },
+    {
+      "source": "/laptop-repair-mahboula",
+      "destination": "/location/mahboula",
+      "permanent": true
+    },
+    {
+      "source": "/computer-repair-in-mangaf",
+      "destination": "/location/mangaf",
+      "permanent": true
+    },
+    {
+      "source": "/computer-repair-mangaf",
+      "destination": "/location/mangaf",
+      "permanent": true
+    },
+    {
+      "source": "/laptop-repair-mangaf",
+      "destination": "/location/mangaf",
+      "permanent": true
+    },
+    {
+      "source": "/computer-repair-in-messila",
+      "destination": "/location/messila",
+      "permanent": true
+    },
+    {
+      "source": "/laptop-repair-in-messila",
+      "destination": "/location/messila",
+      "permanent": true
+    },
+    {
+      "source": "/computer-repair-messila",
+      "destination": "/location/messila",
+      "permanent": true
+    },
+    {
+      "source": "/laptop-repair-messila",
+      "destination": "/location/messila",
+      "permanent": true
+    },
+    {
+      "source": "/computer-repair-in-mishrif",
+      "destination": "/location/mishrif",
+      "permanent": true
+    },
+    {
+      "source": "/laptop-repair-in-mishrif",
+      "destination": "/location/mishrif",
+      "permanent": true
+    },
+    {
+      "source": "/computer-repair-mishrif",
+      "destination": "/location/mishrif",
+      "permanent": true
+    },
+    {
+      "source": "/laptop-repair-mishrif",
+      "destination": "/location/mishrif",
+      "permanent": true
+    },
+    {
+      "source": "/computer-repair-in-mubarak-al-kabeer",
+      "destination": "/location/mubarak-al-kabeer",
+      "permanent": true
+    },
+    {
+      "source": "/laptop-repair-in-mubarak-al-kabeer",
+      "destination": "/location/mubarak-al-kabeer",
+      "permanent": true
+    },
+    {
+      "source": "/computer-repair-mubarak-al-kabeer",
+      "destination": "/location/mubarak-al-kabeer",
+      "permanent": true
+    },
+    {
+      "source": "/laptop-repair-mubarak-al-kabeer",
+      "destination": "/location/mubarak-al-kabeer",
+      "permanent": true
+    },
+    {
+      "source": "/computer-repair-in-qortuba",
+      "destination": "/location/qortuba",
+      "permanent": true
+    },
+    {
+      "source": "/laptop-repair-in-qortuba",
+      "destination": "/location/qortuba",
+      "permanent": true
+    },
+    {
+      "source": "/computer-repair-qortuba",
+      "destination": "/location/qortuba",
+      "permanent": true
+    },
+    {
+      "source": "/laptop-repair-qortuba",
+      "destination": "/location/qortuba",
+      "permanent": true
+    },
+    {
+      "source": "/computer-repair-in-qurain",
+      "destination": "/location/qurain",
+      "permanent": true
+    },
+    {
+      "source": "/laptop-repair-in-qurain",
+      "destination": "/location/qurain",
+      "permanent": true
+    },
+    {
+      "source": "/computer-repair-qurain",
+      "destination": "/location/qurain",
+      "permanent": true
+    },
+    {
+      "source": "/laptop-repair-qurain",
+      "destination": "/location/qurain",
+      "permanent": true
+    },
+    {
+      "source": "/computer-repair-in-rawda",
+      "destination": "/location/rawda",
+      "permanent": true
+    },
+    {
+      "source": "/laptop-repair-in-rawda",
+      "destination": "/location/rawda",
+      "permanent": true
+    },
+    {
+      "source": "/computer-repair-rawda",
+      "destination": "/location/rawda",
+      "permanent": true
+    },
+    {
+      "source": "/laptop-repair-rawda",
+      "destination": "/location/rawda",
+      "permanent": true
+    },
+    {
+      "source": "/computer-repair-in-riggae",
+      "destination": "/location/riggae",
+      "permanent": true
+    },
+    {
+      "source": "/laptop-repair-in-riggae",
+      "destination": "/location/riggae",
+      "permanent": true
+    },
+    {
+      "source": "/computer-repair-riggae",
+      "destination": "/location/riggae",
+      "permanent": true
+    },
+    {
+      "source": "/laptop-repair-riggae",
+      "destination": "/location/riggae",
+      "permanent": true
+    },
+    {
+      "source": "/computer-repair-in-rumaithiya",
+      "destination": "/location/rumaithiya",
+      "permanent": true
+    },
+    {
+      "source": "/laptop-repair-in-rumaithiya",
+      "destination": "/location/rumaithiya",
+      "permanent": true
+    },
+    {
+      "source": "/computer-repair-rumaithiya",
+      "destination": "/location/rumaithiya",
+      "permanent": true
+    },
+    {
+      "source": "/laptop-repair-rumaithiya",
+      "destination": "/location/rumaithiya",
+      "permanent": true
+    },
+    {
+      "source": "/computer-repair-in-saad-al-abdullah",
+      "destination": "/location/saad-al-abdullah",
+      "permanent": true
+    },
+    {
+      "source": "/laptop-repair-in-saad-al-abdullah",
+      "destination": "/location/saad-al-abdullah",
+      "permanent": true
+    },
+    {
+      "source": "/computer-repair-saad-al-abdullah",
+      "destination": "/location/saad-al-abdullah",
+      "permanent": true
+    },
+    {
+      "source": "/laptop-repair-saad-al-abdullah",
+      "destination": "/location/saad-al-abdullah",
+      "permanent": true
+    },
+    {
+      "source": "/computer-repair-in-sabah-al-salem",
+      "destination": "/location/sabah-al-salem",
+      "permanent": true
+    },
+    {
+      "source": "/laptop-repair-in-sabah-al-salem",
+      "destination": "/location/sabah-al-salem",
+      "permanent": true
+    },
+    {
+      "source": "/computer-repair-sabah-al-salem",
+      "destination": "/location/sabah-al-salem",
+      "permanent": true
+    },
+    {
+      "source": "/laptop-repair-sabah-al-salem",
+      "destination": "/location/sabah-al-salem",
+      "permanent": true
+    },
+    {
+      "source": "/computer-repair-in-salmiya",
+      "destination": "/location/salmiya",
+      "permanent": true
+    },
+    {
+      "source": "/laptop-repair-in-salmiya",
+      "destination": "/location/salmiya",
+      "permanent": true
+    },
+    {
+      "source": "/computer-repair-salmiya",
+      "destination": "/location/salmiya",
+      "permanent": true
+    },
+    {
+      "source": "/laptop-repair-salmiya",
+      "destination": "/location/salmiya",
+      "permanent": true
+    },
+    {
+      "source": "/computer-repair-in-salwa",
+      "destination": "/location/salwa",
+      "permanent": true
+    },
+    {
+      "source": "/laptop-repair-in-salwa",
+      "destination": "/location/salwa",
+      "permanent": true
+    },
+    {
+      "source": "/computer-repair-salwa",
+      "destination": "/location/salwa",
+      "permanent": true
+    },
+    {
+      "source": "/laptop-repair-salwa",
+      "destination": "/location/salwa",
+      "permanent": true
+    },
+    {
+      "source": "/computer-repair-in-shaab",
+      "destination": "/location/shaab",
+      "permanent": true
+    },
+    {
+      "source": "/laptop-repair-in-shaab",
+      "destination": "/location/shaab",
+      "permanent": true
+    },
+    {
+      "source": "/computer-repair-shaab",
+      "destination": "/location/shaab",
+      "permanent": true
+    },
+    {
+      "source": "/laptop-repair-shaab",
+      "destination": "/location/shaab",
+      "permanent": true
+    },
+    {
+      "source": "/computer-repair-in-surra",
+      "destination": "/location/surra",
+      "permanent": true
+    },
+    {
+      "source": "/laptop-repair-in-surra",
+      "destination": "/location/surra",
+      "permanent": true
+    },
+    {
+      "source": "/computer-repair-surra",
+      "destination": "/location/surra",
+      "permanent": true
+    },
+    {
+      "source": "/laptop-repair-surra",
+      "destination": "/location/surra",
+      "permanent": true
     }
   ],
   "rewrites": [
