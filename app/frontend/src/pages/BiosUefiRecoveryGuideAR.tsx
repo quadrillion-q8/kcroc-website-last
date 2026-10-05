@@ -221,7 +221,7 @@ export default function BiosUefiRecoveryGuideAR() {
 
   return (
     <main dir="rtl" lang="ar-KW" className="w-full min-h-screen bg-transparent text-slate-200 pt-8 sm:pt-16 lg:pt-32 pb-8 sm:pb-16 lg:pb-24">
-      <Head>
+      <Head htmlAttributes={{ lang: 'ar-KW', dir: 'rtl' }}>
         <title>استرداد BIOS بعد فشل التحديث: دليل UEFI والأعطال | KCROC</title>
         <meta name="description" content="لابتوب أو كمبيوتر لا يقلع بعد تحديث BIOS أو UEFI؟ تعرّف كيف تفرّق بين تلف الفيرموير وأعطال الرام والطاقة واللوحة الأم، وخيارات الاسترداد الآمنة في الكويت." />
         <link rel="canonical" href={PAGE_URL} />
