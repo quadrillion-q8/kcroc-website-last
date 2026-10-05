@@ -147,7 +147,7 @@ const toc = [
   { id: 'faq', label: 'FAQ' },
 ];
 
-const LAST_REVIEWED = 'August 30, 2026';
+const LAST_REVIEWED = 'October 5, 2026';
 
 export default function BiosUefiRecoveryGuide() {
   return (
@@ -1079,6 +1079,9 @@ export default function BiosUefiRecoveryGuide() {
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 mt-6 sm:mt-8 text-xs sm:text-sm">
+            <Link to="/guides/ar/bios-uefi-recovery-kuwait" hrefLang="ar-KW" className="text-cyan-400 hover:text-cyan-300 inline-flex items-center gap-1.5 transition-colors">
+              اقرأ الدليل بالعربية
+            </Link>
             <Link to="/motherboard-repair-kuwait" className="text-slate-400 hover:text-cyan-400 inline-flex items-center gap-1.5 transition-colors">
               Motherboard Repair
             </Link>
