@@ -62,7 +62,6 @@ const CaseStudyTemplate = lazy(() => import('./pages/templates/CaseStudyTemplate
 
 // Custom Standalone Blog Pages
 const BlogLaptopRepair = lazy(() => import('./pages/BlogLaptopRepair'));
-const BlogScreenProtection = lazy(() => import('./pages/BlogScreenProtection'));
 const GamingPCCooling = lazy(() => import('./pages/GamingPCCooling'));
 
 // Content Pillars & Clusters
@@ -179,7 +178,6 @@ export const routes: RouteObject[] = [
           { path: 'blog', element: <Blog /> },
           { path: 'news', element: <News /> },
           { path: 'blog/laptop-repair-kuwait-2026', element: <BlogLaptopRepair /> },
-          { path: 'blog/how-to-protect-laptop-screen', element: <BlogScreenProtection /> },
           { path: 'blog/gaming-pc-cooling', element: <GamingPCCooling /> },
           { path: 'blog/laptop-buying-guide-kuwait-2026', element: <LaptopBuyingGuide /> },
           { path: 'blog/ar/laptop-buying-guide-kuwait-2026', element: <LaptopBuyingGuideAR /> },
