@@ -216,7 +216,7 @@ export default function GamingPCCooling() {
   // LocalBusiness/publisher link, no FAQPage schema despite having real FAQ
   // content above. It predates (or bypassed) the SEOEngine/SchemaMarkup
   // pattern every other page on the site follows. Wired up here to match
-  // the sibling pattern used in BlogScreenProtection.tsx.
+  // the same SEO/structured-data pattern used by the standalone repair guides.
   const STRUCTURED_DATA = {
     "@context": "https://schema.org",
     "@graph": [
