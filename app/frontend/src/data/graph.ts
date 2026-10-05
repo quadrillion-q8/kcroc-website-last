@@ -9,8 +9,8 @@ import { IMAGES } from '../constants/images.js';
 
 export const rawGraphData: RawGraphData = {
   metadata: {
-    version: '3.8.1',
-    lastUpdated: '2026-10-03T00:00:00+03:00',
+    version: '3.8.2',
+    lastUpdated: '2026-10-05T00:00:00+03:00',
     environment: 'production'
   },
 
@@ -1863,6 +1863,103 @@ export const rawGraphData: RawGraphData = {
       popular: true
     } as ServiceEntity,
     
+    'srv-desktop-pc': {
+      id: 'srv-desktop-pc',
+      slug: 'desktop-pc-repair-kuwait',
+      entityType: 'Service',
+      isActive: true,
+      title: 'Desktop & PC Repair Kuwait',
+      iconKey: 'monitor',
+      shortDescription: 'Desktop and PC repair in Kuwait for no power, crashes, blue screens, overheating, storage faults, display problems, upgrades and motherboard issues.',
+      description: 'Desktop PC repair in Kuwait for home computers, office desktops, workstations, pre-built towers and custom PCs. KCROC diagnoses the actual hardware or software fault before recommending a replacement. We handle power failures, no display, Windows boot problems, blue screens, overheating, fan faults, storage and SSD issues, RAM instability, motherboard faults, PSU-related shutdowns and hardware upgrades. Where a component-level repair is technically practical, we repair the failed stage instead of defaulting to a full motherboard or system replacement. Free pickup and delivery are available across Kuwait, with repair completed at the Hawalli laboratory.',
+      idealCustomer: 'Home users, office users, professionals and PC owners with a desktop that will not power on, crashes, overheats, loses display, runs slowly or needs targeted hardware repair or upgrades.',
+      deviceTypes: ['Desktop PCs', 'Custom-Built PCs', 'Pre-Built Towers', 'Office Workstations', 'All-in-One PCs', 'Small-Form-Factor Desktops'],
+      repairLevel: 'component-level',
+      estimatedTurnaround: '24–48 Hours',
+      pricing: { startingFrom: 15, currency: 'KWD', quoteRequired: true, displayLabel: 'From 15 KWD — free diagnostic first' },
+      coreFeatures: ['Desktop Power Diagnosis', 'No-Display Diagnosis', 'PSU & Power-Path Testing', 'Motherboard Repair', 'RAM & Storage Diagnostics', 'SSD Upgrade', 'Cooling & Thermal Service', 'Windows Boot Troubleshooting', 'Free Pick & Drop', '30-Day Warranty'],
+      brands: ['Dell', 'HP', 'Lenovo', 'ASUS', 'Acer', 'MSI', 'Custom PC Builds'],
+      commercialAnswers: [
+        { question: 'Do you repair desktop PCs and computer towers in Kuwait?', answer: 'Yes. KCROC repairs home desktops, office PCs, workstations, pre-built towers and custom systems, with pickup and delivery across Kuwait.' },
+        { question: 'Can you repair a desktop that has no power?', answer: 'Yes. We separate wall power, PSU, motherboard power delivery, front-panel faults and short-circuit conditions before recommending a replacement.' },
+        { question: 'Can you fix a PC that turns on but shows no display?', answer: 'Yes. The diagnosis separates monitor and cable issues from RAM, GPU, BIOS, motherboard and power faults.' },
+        { question: 'Do you repair PC motherboards instead of replacing them?', answer: 'When the board is technically repairable, component-level diagnosis can identify failed power components, shorted rails, damaged connectors and other board faults before a complete motherboard replacement is recommended.' },
+        { question: 'Do you collect desktop PCs from home in Kuwait?', answer: 'Yes. Free pickup and delivery are available across Kuwait, including full-size desktop towers.' },
+        { question: 'How much does desktop PC repair cost in Kuwait?', answer: 'The service starts from 15 KWD for the repair path shown here; complex motherboard, GPU, PSU and liquid-cooling work is quoted after diagnosis.' }
+      ],
+      symptomLinks: [
+        { label: 'PC won’t turn on', path: '/guides/gaming-pc-not-turning-on-kuwait', description: 'Use the power and no-start troubleshooting path before replacing the PSU or motherboard.' },
+        { label: 'PC has no display', path: '/guides/gaming-pc-black-screen-no-display-kuwait', description: 'Separate monitor, cable, RAM, GPU, BIOS and motherboard causes.' },
+        { label: 'PC shuts down under load', path: '/guides/gaming-pc-random-shutdown-kuwait', description: 'Check thermal protection, PSU output and motherboard power delivery.' },
+        { label: 'PC BIOS update failed', path: '/guides/gaming-pc-bios-failed-update-kuwait', description: 'Understand recovery options before clearing firmware or replacing the board.' }
+      ],
+      process: [
+        { step: 1, title: 'Free Pickup', description: 'We collect the desktop or tower from your home or office anywhere in Kuwait.' },
+        { step: 2, title: 'Hardware & System Diagnosis', description: 'We test power, display, storage, memory, thermals and relevant board-level circuits based on the symptom.' },
+        { step: 3, title: 'Repair Quote', description: 'You receive the confirmed fault and repair price before paid work begins.' },
+        { step: 4, title: 'Targeted Repair', description: 'We repair or replace the failed component or subsystem that the diagnosis identifies.' },
+        { step: 5, title: 'Stress Test', description: 'The repaired system is tested under representative workload before return.' },
+        { step: 6, title: 'Return with Warranty', description: 'The desktop is returned with KCROC’s 30-day parts and labour warranty.' }
+      ],
+      faqs: [
+        { id: 'desktop-pc-faq-1', title: 'Do you repair desktop computers as well as laptops?', answer: 'Yes. KCROC repairs desktop PCs, towers, workstations and custom systems as well as laptops and MacBooks.' },
+        { id: 'desktop-pc-faq-2', title: 'Can you diagnose a PC that powers on but does not boot?', answer: 'Yes. We separate POST, BIOS, RAM, storage, GPU and operating-system failures so the repair is based on evidence rather than the symptom alone.' },
+        { id: 'desktop-pc-faq-3', title: 'Do you repair PSU-related PC shutdowns?', answer: 'Yes. PSU output and the motherboard power path can be tested when a desktop shuts down or restarts under load.' },
+        { id: 'desktop-pc-faq-4', title: 'Can you upgrade a slow desktop with an SSD or RAM?', answer: 'Yes. We can assess the existing system and recommend compatible SSD or RAM upgrades where they provide a practical improvement.' },
+        { id: 'desktop-pc-faq-5', title: 'Do you repair custom gaming desktops?', answer: 'Yes. Custom gaming systems are covered, including GPU, cooling, PSU, motherboard and stability problems. For specialist gaming faults, the Gaming PC Repair Kuwait service provides the deeper diagnostic path.' }
+      ],
+      whyChooseUs: [
+        { title: 'Diagnosis Before Replacement', description: 'We identify the failed subsystem before recommending a motherboard, GPU, PSU or storage replacement.' },
+        { title: 'Component-Level Capability', description: 'Where technically practical, board-level faults can be repaired instead of automatically replacing the entire board.' },
+        { title: 'Large-System Pickup', description: 'You do not need to transport a heavy desktop tower yourself; pickup and delivery are available across Kuwait.' },
+        { title: 'Kuwait Heat & Dust Awareness', description: 'Cooling, dust buildup and sustained summer heat are considered when diagnosing desktop stability and thermal problems.' }
+      ],
+      commonIssues: [
+        { id: 'desktop-no-power', title: 'Desktop Has No Power', severity: 'critical', description: 'No fans, LEDs or response can come from PSU, motherboard power delivery, cabling or a short condition.' },
+        { id: 'desktop-no-display', title: 'Desktop Turns On but No Display', severity: 'high', description: 'The cause can involve RAM, GPU, monitor path, BIOS or motherboard faults and should be separated systematically.' },
+        { id: 'desktop-overheating', title: 'Desktop Overheats or Becomes Unstable', severity: 'high', description: 'Dust, failed fans, poor thermal contact, blocked airflow or component faults can cause throttling and shutdowns.' },
+        { id: 'desktop-slow', title: 'Desktop Is Very Slow', severity: 'medium', description: 'Storage health, RAM, Windows load, background processes and thermal behaviour should be checked before assuming the CPU needs replacement.' }
+      ],
+      relatedServiceIds: ['srv-laptop', 'srv-gaming', 'srv-motherboard', 'srv-charging-port'],
+      relatedProblemIds: ['problem-no-power', 'problem-black-screen', 'problem-overheating', 'problem-freezing-crashing'],
+      relatedBrandIds: ['brand-dell', 'brand-hp', 'brand-lenovo', 'brand-asus', 'brand-acer', 'brand-msi'],
+      relatedResourcePaths: [
+        { label: 'Gaming PC Repair Kuwait', path: '/gaming-pc-repair-kuwait' },
+        { label: 'Motherboard Repair Kuwait', path: '/motherboard-repair-kuwait' },
+        { label: 'SSD & RAM Upgrade Kuwait', path: '/laptop-ssd-ram-upgrade-kuwait' },
+        { label: 'Gaming PC No-Power Guide', path: '/guides/gaming-pc-not-turning-on-kuwait' }
+      ],
+      relatedLocationIds: ['loc-hawalli', 'loc-salmiya', 'loc-kuwait-city', 'loc-farwaniya', 'loc-jahra'],
+      technicalOverview: {
+        heading: 'Desktop PC repair in Kuwait: test the system layer by layer',
+        paragraphs: [
+          'A desktop that is dead, unstable or slow can have a fault in the power path, motherboard, memory, graphics card, storage, cooling system or Windows installation. Replacing the most expensive part first is rarely a reliable diagnostic method.',
+          'KCROC starts with the symptom and builds an evidence trail: power behaviour, POST status, display output, memory stability, storage health, temperatures and component-level measurements where appropriate. This keeps the quote tied to the actual failure.',
+          'For custom gaming towers, the specialist Gaming PC Repair Kuwait service adds GPU, VRAM, BIOS/VBIOS, sustained-load and thermal diagnostics.'
+        ]
+      },
+      repairDecision: {
+        heading: 'Repair or replace a desktop component?',
+        items: [
+          { condition: 'The PC is completely dead.', action: 'Test the incoming power path, PSU and motherboard rails before buying a replacement motherboard.' },
+          { condition: 'Fans spin but there is no display.', action: 'Check RAM, GPU, display path and POST/BIOS behaviour before replacing graphics hardware.' },
+          { condition: 'The PC shuts down during demanding workloads.', action: 'Test temperatures, PSU behaviour, cooling and motherboard power delivery under controlled load.' },
+          { condition: 'The PC is slow but otherwise stable.', action: 'Check storage health, RAM pressure and Windows startup load before recommending a platform replacement.' }
+        ]
+      },
+      inspectionChecklist: ['Verify power and PSU behaviour', 'Check POST/BIOS status', 'Test RAM and memory stability', 'Check GPU and display path', 'Inspect storage health', 'Measure temperatures and cooling performance', 'Stress-test after repair'],
+      performanceOutcomes: { disclaimer: 'Results depend on the confirmed fault, hardware configuration and condition of the system.', items: [
+        { metric: 'Power stability', outcome: 'Verified after repair under repeated startup and representative load conditions.' },
+        { metric: 'Thermal behaviour', outcome: 'Checked after cooling or component work before return.' },
+        { metric: 'System stability', outcome: 'Stress-tested after the confirmed fault is repaired.' }
+      ] },
+      warranty: { duration: '30 Days', coverage: 'Parts and labour for the completed desktop PC repair', noFixNoFee: true },
+      seo: { title: 'Desktop & PC Repair Kuwait | Free Pickup | KCROC', description: 'Desktop and PC repair in Kuwait for no power, no display, crashes, overheating, PSU, motherboard, storage and upgrades. Free pickup, diagnosis first and 30-day warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/desktop-pc-repair-kuwait', locale: 'en_KW', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/desktop-pc-repair-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/desktop-pc-repair-kuwait' }, ogType: 'article', schemaTypes: ['Service', 'FAQPage'], lastModified: '2026-10-05T00:00:00+03:00' },
+      navigationPriority: 78,
+      isFeatured: true,
+      popular: false
+    } as ServiceEntity,
+
     'srv-gaming': { 
       id: 'srv-gaming', 
       slug: 'gaming-pc-repair-kuwait', 
