@@ -19,12 +19,12 @@ export const NAV_GRAPH = {
     "addressRegion": "Hawalli Governorate",
     "addressCountry": "KW",
     "coords": {
-      "lat": 29.3356,
-      "lng": 48.025
+      "lat": 29.3416921515256,
+      "lng": 48.00761257498341
     },
     "websiteUrl": "https://www.computerrepairkuwait.com",
     "logoUrl": "https://www.computerrepairkuwait.com/logo.webp",
-    "email": "quadrillion1980@gmail.com",
+    "email": "info@computerrepairkuwait.com",
     "priceRange": "$$",
     "openingHours": "Open daily 10:00 AM – 10:00 PM",
     "schemaOpeningHours": {
@@ -42,7 +42,7 @@ export const NAV_GRAPH = {
     },
     "aggregateRating": {
       "ratingValue": "4.9",
-      "reviewCount": 153,
+      "reviewCount": 158,
       "bestRating": 5
     },
     "socialLinks": {
