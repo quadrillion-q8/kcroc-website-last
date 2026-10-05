@@ -480,6 +480,13 @@ export const rawGraphData: RawGraphData = {
         canonicalUrl: 'https://www.computerrepairkuwait.com/guides/bios-uefi-recovery-kuwait',
         ogImage: 'https://www.computerrepairkuwait.com/images/discover/bios-hero-motherboard-1200x675.webp',
         ogType: 'article',
+        locale: 'en_KW',
+        alternates: {
+          'en-KW': 'https://www.computerrepairkuwait.com/guides/bios-uefi-recovery-kuwait',
+          'ar-KW': 'https://www.computerrepairkuwait.com/guides/ar/bios-uefi-recovery-kuwait',
+          'x-default': 'https://www.computerrepairkuwait.com/guides/bios-uefi-recovery-kuwait'
+        },
+        lastModified: '2026-10-05',
         schemaTypes: ['Article', 'FAQPage']
       },
       featuredFAQIds: [
@@ -501,6 +508,8 @@ export const rawGraphData: RawGraphData = {
         'faq-bios-security-risk'
       ],
       relatedServiceIds: ['srv-motherboard', 'srv-laptop', 'srv-gaming'],
+      dateModified: '2026-10-05',
+      articleSection: 'BIOS, UEFI & Firmware Recovery',
       contentImages: [
         { src: '/images/guides/bios-recovery/bios-chip-repair-kuwait-laptop-motherboard.webp', alt: 'BIOS chip repair on a laptop motherboard in Kuwait', width: 800, height: 450, placement: 'hero', caption: 'BIOS chip and motherboard repair work for firmware recovery.' }
       ]
