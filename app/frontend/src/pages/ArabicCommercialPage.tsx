@@ -964,7 +964,7 @@ function ArabicGamingPcRepairPage({
           <div className="grid items-center gap-8 lg:grid-cols-[1fr_auto]">
             <div>
               <div className="flex flex-wrap items-center gap-3 text-sm font-black text-cyan-300">
-                <span>4.9 ★ من 153+ مراجعة</span>
+                <span>4.9 ★ من 158+ مراجعة</span>
                 <span className="text-slate-600">•</span>
                 <span>استلام وتوصيل داخل الكويت</span>
               </div>
@@ -1135,7 +1135,7 @@ function ArabicComputerRepairPage({
               <div className="mt-10 grid gap-3 sm:grid-cols-4">
                 {[
                   ['500+', 'جهاز تم إصلاحه'],
-                  ['4.9 ★', '153+ مراجعة'],
+                  ['4.9 ★', '158+ مراجعة'],
                   ['30 يوم', 'ضمان على الإصلاح'],
                   ['No Fix', 'No Fee'],
                 ].map(([value, label]) => (
@@ -1375,7 +1375,7 @@ function ArabicComputerRepairPage({
             <div>
               <div className="flex items-center gap-2 text-sm font-black text-cyan-300">
                 <Star className="h-4 w-4 fill-current" aria-hidden="true" />
-                4.9 ★ من 153+ مراجعة
+                4.9 ★ من 158+ مراجعة
               </div>
               <h2 id="final-cta" className="mt-3 text-3xl font-black leading-tight text-white sm:text-4xl">قول لنا المشكلة مثل ما هي — والباقي علينا</h2>
               <p className="mt-4 max-w-2xl leading-8 text-slate-300">أرسل موديل الجهاز، منطقتك، ووصفًا بسيطًا للعطل على واتساب. نبدأ من التشخيص ونوضح لك الخطوة التالية قبل الإصلاح.</p>
