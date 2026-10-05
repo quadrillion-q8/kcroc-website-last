@@ -300,6 +300,10 @@ const INTERNAL_LINK_LABELS: Record<string, string> = {
     'Windows 11 100% Disk Usage: Causes & Solutions',
   'https://www.computerrepairkuwait.com/guides/bios-uefi-recovery-kuwait':
     'BIOS & UEFI Recovery Guide',
+  'https://www.computerrepairkuwait.com/guides/gaming-pc-bios-failed-update-kuwait':
+    'Gaming PC BIOS Failed Update Guide',
+  'https://www.computerrepairkuwait.com/guides/bitlocker-recovery-key-after-bios-update':
+    'BitLocker Recovery Key After a BIOS Update',
   'https://www.computerrepairkuwait.com/guides/windows-gaming-frame-time-stutter':
     'Gaming Stutter With High FPS',
   'https://www.computerrepairkuwait.com/guides/shader-compilation-stutter-windows':
@@ -365,6 +369,10 @@ const TECHNICAL_SOURCE_LABELS: Record<string, string> = {
     'NVIDIA — Reflex',
   'https://www.nvidia.com/en-gb/geforce/guides/system-latency-optimization-guide/':
     'NVIDIA — System latency optimization',
+  'https://support.microsoft.com/en-us/help/4026181':
+    'Microsoft Support — Find your BitLocker recovery key',
+  'https://learn.microsoft.com/en-us/troubleshoot/windows-client/windows-security/suspend-bitlocker-protection-non-microsoft-updates':
+    'Microsoft Learn — Suspend BitLocker protection for non-Microsoft updates',
 };
 
 const getTechnicalSourceLabel = (url: string) => TECHNICAL_SOURCE_LABELS[url] ?? 'External source';
