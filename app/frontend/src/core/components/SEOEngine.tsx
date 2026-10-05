@@ -203,6 +203,7 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
       "url": fullCanonicalUrl,
       "name": title,
       "description": description,
+      "inLanguage": locale || 'en-KW',
       "isPartOf": { "@id": `${business.websiteUrl}/#website` },
       ...(schemaTypes?.includes('ProfilePage') && { "mainEntity": { "@id": AUTHOR_ID } })
     });
@@ -444,6 +445,7 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
             "@id": `${fullCanonicalUrl}#article`,
             "headline": webPage.title,
             "description": webPage.description,
+            "inLanguage": locale || 'en-KW',
             "author": {
               "@id": webPage.authorUrl ? `${webPage.authorUrl}#person` : AUTHOR_ID
             },
@@ -452,6 +454,7 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
             "articleSection": articleSection,
             ...(webPage.datePublished && { "datePublished": webPage.datePublished }),
             ...(webPage.dateModified && { "dateModified": webPage.dateModified }),
+            ...(entity.seo.lastModified && !webPage.dateModified && { "dateModified": entity.seo.lastModified }),
             ...(webPage.featuredImage?.ogImage && { "image": webPage.featuredImage.ogImage })
           });
         }
@@ -657,6 +660,16 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
       <meta property="og:image:type" content="image/webp" />
       <meta property="og:site_name" content={business.legalName} />
       <meta property="og:locale" content={resolvedLocale} />
+      {alternates && Object.entries(alternates)
+        .filter(([hreflang]) => hreflang !== 'x-default')
+        .filter(([hreflang]) => hreflang.toLowerCase() !== resolvedLocale.replace('_', '-').toLowerCase())
+        .map(([hreflang]) => (
+          <meta
+            key={`og-locale-${hreflang}`}
+            property="og:locale:alternate"
+            content={hreflang.replace('-', '_')}
+          />
+        ))}
 
       <meta name="twitter:card" content={resolvedTwitterCard} />
       <meta name="twitter:title" content={title} />
