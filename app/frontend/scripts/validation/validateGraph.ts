@@ -168,6 +168,31 @@ function checkRequiredFields(entitiesByType: Map<string, AnyEntity[]>): Validati
   return issues;
 }
 
+function checkDuplicateRelationalLinks(entities: AnyEntity[]): ValidationError[] {
+  const issues: ValidationError[] = [];
+  for (const entity of entities) {
+    for (const field of RELATIONAL_ID_FIELDS) {
+      const ids = entity[field];
+      if (!Array.isArray(ids)) continue;
+      const seen = new Set<string>();
+      for (const targetId of ids) {
+        if (typeof targetId !== 'string') continue;
+        if (seen.has(targetId)) {
+          issues.push({
+            entityId: entity.id,
+            field,
+            message: `Duplicate relational link: "${targetId}" appears more than once in ${field}.`,
+            severity: severityFor('DUPLICATE_RELATIONAL_LINK', 'ERROR'),
+          });
+        } else {
+          seen.add(targetId);
+        }
+      }
+    }
+  }
+  return issues;
+}
+
 function checkBrokenRelationalLinks(
   entitiesById: Record<string, AnyEntity>,
   entities: AnyEntity[]
@@ -276,6 +301,7 @@ export async function validateGraph(): Promise<GraphValidationResult> {
     ...checkDuplicateCanonicals(routableEntities),
     ...checkRequiredFields(entitiesByType),
     ...checkBrokenRelationalLinks(entitiesById, allEntities),
+    ...checkDuplicateRelationalLinks(allEntities),
     ...checkMissingFaqs(KCROC_GRAPH.services as unknown as AnyEntity[]),
     ...checkCoordinates(KCROC_GRAPH.locations as unknown as AnyEntity[]),
     ...checkKeywordCoverage(KCROC_GRAPH.problems as unknown as AnyEntity[]),
