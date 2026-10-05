@@ -98,17 +98,17 @@ const warningSigns = [
       'Percentage drops noticeably within minutes of unplugging',
       'A full charge no longer lasts anywhere near as long as before',
       'Drains even while asleep or nearly idle',
-      'Worth comparing against this laptop\u2019s own history, not a generic number'
+      'Worth comparing against this laptop’s own history, not a generic number'
     ]
   },
   {
     title: 'Runtime Has Become Very Short',
-    description: 'This is distinct from a sudden drop — it\u2019s a gradual decline in how long the laptop lasts on a full charge compared to when it was new.',
+    description: 'This is distinct from a sudden drop — it’s a gradual decline in how long the laptop lasts on a full charge compared to when it was new.',
     icon: Clock,
     color: 'text-cyan-400',
     bgColor: 'bg-cyan-500/10',
     points: [
-      'Compare current runtime to this specific laptop\u2019s original runtime',
+      'Compare current runtime to this specific laptop’s original runtime',
       'A heavier workload today can also explain shorter runtime — see the drain-troubleshooting section',
       'Consistent decline over months points toward wear',
       'Battery health reports (below) give an objective number to check against'
@@ -121,7 +121,7 @@ const warningSigns = [
     color: 'text-red-500',
     bgColor: 'bg-red-500/10',
     points: [
-      'Reported percentage becomes unreliable once the battery can\u2019t sustain load',
+      'Reported percentage becomes unreliable once the battery can’t sustain load',
       'Often happens under a sudden CPU/GPU demand spike',
       'A hardware sign worth taking seriously, especially if repeated',
       'Run a battery diagnostic rather than guessing'
@@ -129,7 +129,7 @@ const warningSigns = [
   },
   {
     title: "Battery Won't Charge Properly",
-    description: 'Charging stalls, stops early, or never starts — but the battery isn\u2019t automatically the cause.',
+    description: 'Charging stalls, stops early, or never starts — but the battery isn’t automatically the cause.',
     icon: Zap,
     color: 'text-yellow-400',
     bgColor: 'bg-yellow-500/10',
@@ -142,7 +142,7 @@ const warningSigns = [
   },
   {
     title: 'Battery Percentage Behaves Strangely',
-    description: 'The reported charge level doesn\u2019t match reality — a software or calibration symptom as often as a hardware one.',
+    description: 'The reported charge level doesn’t match reality — a software or calibration symptom as often as a hardware one.',
     icon: Gauge,
     color: 'text-orange-400',
     bgColor: 'bg-orange-500/10',
@@ -189,7 +189,7 @@ const warningSigns = [
       'Windows: powercfg battery report (full guide below)',
       'macOS: Battery section in System Settings (full guide below)',
       'Manufacturer utilities (Dell, HP, Lenovo, ASUS, Acer) offer similar reports',
-      'A single percentage isn\u2019t an automatic verdict — read it in context'
+      'A single percentage isn’t an automatic verdict — read it in context'
     ]
   },
   {
@@ -207,12 +207,12 @@ const warningSigns = [
   },
   {
     title: 'Unstable Only on Battery Power',
-    description: 'The laptop runs fine plugged in, but freezes, restarts, or throttles heavily as soon as it\u2019s unplugged.',
+    description: 'The laptop runs fine plugged in, but freezes, restarts, or throttles heavily as soon as it’s unplugged.',
     icon: RefreshCw,
     color: 'text-red-400',
     bgColor: 'bg-red-500/10',
     points: [
-      'A sign the battery can\u2019t deliver stable power under real load',
+      'A sign the battery can’t deliver stable power under real load',
       'Different from simple short runtime — this is about stability, not duration',
       'Can also point to a power-delivery fault rather than the battery itself',
       'Worth a proper diagnosis rather than replacing the battery on a guess'
@@ -224,7 +224,7 @@ const brandGuide = [
   {
     brand: 'Dell',
     tool: 'Dell SupportAssist / BIOS diagnostics',
-    signs: 'BIOS battery warnings and error codes (601\u2013607 range) at boot.',
+    signs: 'BIOS battery warnings and error codes (601–607 range) at boot.',
     replacement: 'Genuine or high-quality compatible, matched exactly by voltage (commonly 11.1V or 14.8V) and part number.',
     safety: 'Reputable compatible batteries are safe when specs match exactly — verify before buying.'
   },
@@ -282,7 +282,7 @@ const careTips = [
   { title: 'Use the Original or Certified Charger', description: 'Mismatched chargers can affect charging behavior and, over time, battery condition.', icon: Zap },
   { title: 'Avoid Routine Deep Discharge', description: "Regularly draining to 0% isn't a maintenance step — it adds stress with no health benefit for modern batteries.", icon: RefreshCw },
   { title: 'Keep Firmware and OS Updated', description: 'Manufacturers periodically improve battery-management and power algorithms through updates.', icon: Shield },
-  { title: "Don't Store at Full or Empty Charge", description: 'If storing a laptop for a long period, a mid-range charge (roughly 40\u201360%) is gentler than 0% or 100%.', icon: Battery }
+  { title: "Don't Store at Full or Empty Charge", description: 'If storing a laptop for a long period, a mid-range charge (roughly 40–60%) is gentler than 0% or 100%.', icon: Battery }
 ];
 
 // Decision guide — each "yes" branch now always resolves to a real
@@ -335,11 +335,11 @@ const faq = [
   },
   {
     q: 'What percentage of battery health means I should replace it?',
-    a: 'There\u2019s no single universal threshold across brands and models. As a general guide, health well below 80% combined with real-world symptoms (short runtime, shutdowns) is a reasonable point to consider replacement — treat it as one input, not a strict rule.'
+    a: 'There’s no single universal threshold across brands and models. As a general guide, health well below 80% combined with real-world symptoms (short runtime, shutdowns) is a reasonable point to consider replacement — treat it as one input, not a strict rule.'
   },
   {
     q: 'How many years does a laptop battery last?',
-    a: "It varies with chemistry, charge cycles, heat exposure, and charging habits — commonly somewhere in the 2\u20134 year range for typical daily use, but a well-cared-for battery can last longer and a poorly treated one can degrade faster."
+    a: "It varies with chemistry, charge cycles, heat exposure, and charging habits — commonly somewhere in the 2–4 year range for typical daily use, but a well-cared-for battery can last longer and a poorly treated one can degrade faster."
   },
   {
     q: 'How many charge cycles does a laptop battery have?',
@@ -355,7 +355,7 @@ const faq = [
   },
   {
     q: 'Why is my laptop battery not charging?',
-    a: 'Could be the charger, the cable, the port, the internal charging circuit, or the battery itself. Test with a known-good charger first; if that doesn\u2019t help, it needs a proper diagnosis rather than a battery swap on a guess.'
+    a: 'Could be the charger, the cable, the port, the internal charging circuit, or the battery itself. Test with a known-good charger first; if that doesn’t help, it needs a proper diagnosis rather than a battery swap on a guess.'
   },
   {
     q: 'Is it safe to use a laptop with a swollen battery?',
@@ -367,7 +367,7 @@ const faq = [
   },
   {
     q: 'Can I use my laptop while charging?',
-    a: 'Yes. Modern laptops route power directly to components when plugged in, largely bypassing the battery, so this doesn\u2019t meaningfully add wear.'
+    a: 'Yes. Modern laptops route power directly to components when plugged in, largely bypassing the battery, so this doesn’t meaningfully add wear.'
   },
   {
     q: 'Is a compatible (non-original) laptop battery safe?',
@@ -375,7 +375,7 @@ const faq = [
   },
   {
     q: 'How long does laptop battery replacement take?',
-    a: 'For most laptops in Kuwait, 1\u20132 hours if the correct battery is in stock. Some MacBook models take 1\u20132 days due to adhesive removal and calibration.'
+    a: 'For most laptops in Kuwait, 1–2 hours if the correct battery is in stock. Some MacBook models take 1–2 days due to adhesive removal and calibration.'
   }
 ];
 
@@ -607,11 +607,11 @@ export default function BatteryHealthGuide() {
           <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
             <div className="border border-slate-800 rounded-xl p-4 sm:p-5">
               <h3 className="text-cyan-300 font-bold text-sm sm:text-base mb-1.5">Battery Health</h3>
-              <p className="text-slate-400 text-xs sm:text-sm leading-relaxed">The actual physical condition and remaining capacity of the battery cell itself \u2014 what a Windows or macOS health report measures.</p>
+              <p className="text-slate-400 text-xs sm:text-sm leading-relaxed">The actual physical condition and remaining capacity of the battery cell itself — what a Windows or macOS health report measures.</p>
             </div>
             <div className="border border-slate-800 rounded-xl p-4 sm:p-5">
               <h3 className="text-emerald-300 font-bold text-sm sm:text-base mb-1.5">Battery Life / Runtime</h3>
-              <p className="text-slate-400 text-xs sm:text-sm leading-relaxed">How long the laptop actually lasts on one charge right now \u2014 affected by workload, brightness, and background activity as much as by the battery.</p>
+              <p className="text-slate-400 text-xs sm:text-sm leading-relaxed">How long the laptop actually lasts on one charge right now — affected by workload, brightness, and background activity as much as by the battery.</p>
             </div>
           </div>
           <p className="text-slate-300 text-xs sm:text-sm leading-relaxed mt-4">
@@ -653,13 +653,13 @@ export default function BatteryHealthGuide() {
               </div>
               <h4 className="text-white font-semibold text-sm mb-2">How to Read the Report</h4>
               <ul className="space-y-1.5 mb-3">
-                <li className="flex items-start gap-1.5 text-slate-400 text-xs sm:text-sm"><CheckCircle2 className="w-3 h-3 text-indigo-400 flex-shrink-0 mt-0.5" aria-hidden="true" /><span><strong className="text-slate-300">Design Capacity</strong> \u2014 what the battery was built to hold when new.</span></li>
-                <li className="flex items-start gap-1.5 text-slate-400 text-xs sm:text-sm"><CheckCircle2 className="w-3 h-3 text-indigo-400 flex-shrink-0 mt-0.5" aria-hidden="true" /><span><strong className="text-slate-300">Full Charge Capacity</strong> \u2014 what it can currently hold.</span></li>
-                <li className="flex items-start gap-1.5 text-slate-400 text-xs sm:text-sm"><CheckCircle2 className="w-3 h-3 text-indigo-400 flex-shrink-0 mt-0.5" aria-hidden="true" /><span><strong className="text-slate-300">Capacity history</strong> \u2014 shows degradation trend over time.</span></li>
-                <li className="flex items-start gap-1.5 text-slate-400 text-xs sm:text-sm"><CheckCircle2 className="w-3 h-3 text-indigo-400 flex-shrink-0 mt-0.5" aria-hidden="true" /><span><strong className="text-slate-300">Recent usage</strong> \u2014 useful for spotting unusual drain patterns.</span></li>
+                <li className="flex items-start gap-1.5 text-slate-400 text-xs sm:text-sm"><CheckCircle2 className="w-3 h-3 text-indigo-400 flex-shrink-0 mt-0.5" aria-hidden="true" /><span><strong className="text-slate-300">Design Capacity</strong> — what the battery was built to hold when new.</span></li>
+                <li className="flex items-start gap-1.5 text-slate-400 text-xs sm:text-sm"><CheckCircle2 className="w-3 h-3 text-indigo-400 flex-shrink-0 mt-0.5" aria-hidden="true" /><span><strong className="text-slate-300">Full Charge Capacity</strong> — what it can currently hold.</span></li>
+                <li className="flex items-start gap-1.5 text-slate-400 text-xs sm:text-sm"><CheckCircle2 className="w-3 h-3 text-indigo-400 flex-shrink-0 mt-0.5" aria-hidden="true" /><span><strong className="text-slate-300">Capacity history</strong> — shows degradation trend over time.</span></li>
+                <li className="flex items-start gap-1.5 text-slate-400 text-xs sm:text-sm"><CheckCircle2 className="w-3 h-3 text-indigo-400 flex-shrink-0 mt-0.5" aria-hidden="true" /><span><strong className="text-slate-300">Recent usage</strong> — useful for spotting unusual drain patterns.</span></li>
               </ul>
               <p className="text-slate-400 text-xs sm:text-sm leading-relaxed">
-                Cycle-count reporting varies by device and isn\u2019t always included. As a rough frame: capacity close to design is <strong className="text-emerald-300">healthy</strong>, a noticeable gap is <strong className="text-yellow-300">worth monitoring</strong>, and a large, consistent gap combined with real-world symptoms is <strong className="text-red-300">worth acting on</strong> \u2014 there\u2019s no single threshold every manufacturer agrees on.
+                Cycle-count reporting varies by device and isn’t always included. As a rough frame: capacity close to design is <strong className="text-emerald-300">healthy</strong>, a noticeable gap is <strong className="text-yellow-300">worth monitoring</strong>, and a large, consistent gap combined with real-world symptoms is <strong className="text-red-300">worth acting on</strong> — there’s no single threshold every manufacturer agrees on.
               </p>
             </div>
 
@@ -680,12 +680,12 @@ export default function BatteryHealthGuide() {
                 </ol>
               </div>
               <ul className="space-y-1.5 mb-3">
-                <li className="flex items-start gap-1.5 text-slate-400 text-xs sm:text-sm"><CheckCircle2 className="w-3 h-3 text-slate-300 flex-shrink-0 mt-0.5" aria-hidden="true" /><span><strong className="text-slate-300">Maximum Capacity</strong> \u2014 current capacity as a percentage of original.</span></li>
-                <li className="flex items-start gap-1.5 text-slate-400 text-xs sm:text-sm"><CheckCircle2 className="w-3 h-3 text-slate-300 flex-shrink-0 mt-0.5" aria-hidden="true" /><span><strong className="text-slate-300">Cycle Count</strong> \u2014 total full charge cycles used so far.</span></li>
-                <li className="flex items-start gap-1.5 text-slate-400 text-xs sm:text-sm"><CheckCircle2 className="w-3 h-3 text-slate-300 flex-shrink-0 mt-0.5" aria-hidden="true" /><span><strong className="text-slate-300">Condition</strong> \u2014 Normal, Service Recommended, or Replace Soon.</span></li>
+                <li className="flex items-start gap-1.5 text-slate-400 text-xs sm:text-sm"><CheckCircle2 className="w-3 h-3 text-slate-300 flex-shrink-0 mt-0.5" aria-hidden="true" /><span><strong className="text-slate-300">Maximum Capacity</strong> — current capacity as a percentage of original.</span></li>
+                <li className="flex items-start gap-1.5 text-slate-400 text-xs sm:text-sm"><CheckCircle2 className="w-3 h-3 text-slate-300 flex-shrink-0 mt-0.5" aria-hidden="true" /><span><strong className="text-slate-300">Cycle Count</strong> — total full charge cycles used so far.</span></li>
+                <li className="flex items-start gap-1.5 text-slate-400 text-xs sm:text-sm"><CheckCircle2 className="w-3 h-3 text-slate-300 flex-shrink-0 mt-0.5" aria-hidden="true" /><span><strong className="text-slate-300">Condition</strong> — Normal, Service Recommended, or Replace Soon.</span></li>
               </ul>
               <p className="text-slate-400 text-xs sm:text-sm leading-relaxed">
-                Exact wording and available detail can differ between macOS versions and Mac models. A "Service Recommended" or "Replace Soon" status is Apple\u2019s own signal that capacity has dropped enough to matter \u2014 treat it as reliable.
+                Exact wording and available detail can differ between macOS versions and Mac models. A "Service Recommended" or "Replace Soon" status is Apple’s own signal that capacity has dropped enough to matter — treat it as reliable.
               </p>
             </div>
           </div>
@@ -801,7 +801,7 @@ export default function BatteryHealthGuide() {
               Fast Drain Doesn&apos;t Always Mean a Bad Battery
             </h2>
             <p className="text-slate-300 text-xs sm:text-base max-w-2xl mx-auto leading-relaxed">
-              Before assuming the battery itself is failing, rule out the software causes below \u2014 they\u2019re far more common than genuine hardware wear.
+              Before assuming the battery itself is failing, rule out the software causes below — they’re far more common than genuine hardware wear.
             </p>
           </div>
 
@@ -898,7 +898,7 @@ export default function BatteryHealthGuide() {
             </div>
           </div>
           <p className="text-slate-300 text-xs sm:text-sm leading-relaxed mt-4">
-            Not every compatible battery is unsafe, and not every genuine battery is necessary \u2014 what matters is exact voltage, connector type, correct part/model number, and a reputable, certified manufacturer. Verify those four things regardless of which route you choose.
+            Not every compatible battery is unsafe, and not every genuine battery is necessary — what matters is exact voltage, connector type, correct part/model number, and a reputable, certified manufacturer. Verify those four things regardless of which route you choose.
           </p>
         </div>
       </section>
@@ -981,7 +981,7 @@ export default function BatteryHealthGuide() {
 
           <div className="rounded-xl border border-slate-800 p-4 sm:p-5">
             <p className="text-slate-400 text-xs sm:text-sm leading-relaxed">
-              <strong className="text-slate-200">A note on "20\u201380% charging" and "calibration":</strong> keeping a battery away from prolonged extreme states can reduce stress, but it isn\u2019t a strict rule every user needs to follow manually \u2014 use a manufacturer-supported charge limit where available instead. And letting a battery drain to 0% before recharging doesn\u2019t restore lost capacity; it only recalibrates the OS\u2019s percentage estimate, and only on devices where that\u2019s actually recommended. Treat health and percentage accuracy as two different things.
+              <strong className="text-slate-200">A note on "20–80% charging" and "calibration":</strong> keeping a battery away from prolonged extreme states can reduce stress, but it isn’t a strict rule every user needs to follow manually — use a manufacturer-supported charge limit where available instead. And letting a battery drain to 0% before recharging doesn’t restore lost capacity; it only recalibrates the OS’s percentage estimate, and only on devices where that’s actually recommended. Treat health and percentage accuracy as two different things.
             </p>
           </div>
         </div>
@@ -997,10 +997,10 @@ export default function BatteryHealthGuide() {
             <h2 className="text-xl sm:text-3xl font-bold text-white">Laptop Batteries in Kuwait&apos;s Heat</h2>
           </div>
           <p className="text-slate-300 text-xs sm:text-sm leading-relaxed mb-3">
-            High ambient temperatures put extra thermal stress on lithium-ion cells \u2014 particularly relevant locally, where laptops are often left in parked cars, used near direct sunlight, or run gaming workloads in poorly ventilated rooms. Heat is one of several factors that accelerate degradation, alongside cycle count and charging habits; Kuwait\u2019s climate doesn\u2019t on its own guarantee battery failure, but it does make good thermal habits worth taking seriously.
+            High ambient temperatures put extra thermal stress on lithium-ion cells — particularly relevant locally, where laptops are often left in parked cars, used near direct sunlight, or run gaming workloads in poorly ventilated rooms. Heat is one of several factors that accelerate degradation, alongside cycle count and charging habits; Kuwait’s climate doesn’t on its own guarantee battery failure, but it does make good thermal habits worth taking seriously.
           </p>
           <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
-            As a Kuwait-based repair shop, KCROC sees this pattern often enough that it\u2019s worth calling out \u2014 avoiding car storage, direct sun, and dust buildup around vents goes a long way.
+            As a Kuwait-based repair shop, KCROC sees this pattern often enough that it’s worth calling out — avoiding car storage, direct sun, and dust buildup around vents goes a long way.
           </p>
         </div>
       </section>
@@ -1074,7 +1074,7 @@ export default function BatteryHealthGuide() {
         <div className="container mx-auto max-w-2xl text-center">
           <h2 className="text-2xl sm:text-4xl font-bold text-white mb-2 sm:mb-3">Need a New Battery in Kuwait?</h2>
           <p className="text-slate-300 text-xs sm:text-base mb-6 sm:mb-8">
-            Not sure whether the battery is actually failing? We diagnose before we replace \u2014 genuine or high-grade compatible batteries with professional installation.
+            Not sure whether the battery is actually failing? We diagnose before we replace — genuine or high-grade compatible batteries with professional installation.
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-slate-800 border border-slate-800 rounded-2xl overflow-hidden mb-6 sm:mb-8">
