@@ -111,7 +111,9 @@ export function Footer() {
             <Link to="/" className="inline-flex items-center mb-5" aria-label="Return to KCROC home page">
               {!logoError ? (
                 <img
-                  src="/logo.webp"
+                  src="/logo-128.webp"
+                  srcSet="/logo-128.webp 128w, /logo-256.webp 256w"
+                  sizes="(max-width: 640px) 80px, 112px"
                   alt={brandLabel + ' Logo'}
                   width="112"
                   height="112"
