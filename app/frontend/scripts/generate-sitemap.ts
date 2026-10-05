@@ -25,9 +25,7 @@ const DOMAIN = KCROC_GRAPH.business!.websiteUrl;
 // Formerly standalone routes are now first-class WebPage entities in graph.ts.
 // Keep sitemap membership derived from the graph + BLOG_POSTS so generated
 // routes, navigation and discovery cannot drift apart.
-const EXTRA_STANDALONE_PAGES: string[] = [
-  '/guides/ar/bios-uefi-recovery-kuwait',
-];
+const EXTRA_STANDALONE_PAGES: string[] = [];
 
 // Google ignores <priority> and <changefreq>. Keep the sitemap focused on
 // canonical URLs and accurate <lastmod> values instead.
