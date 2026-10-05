@@ -489,7 +489,7 @@ export default function BlogLaptopRepair() {
             {[
               ['/guides/laptop-wont-turn-on', "Laptop won't turn on", 'For no lights, no fan response, charging problems and genuine no-power symptoms.'],
               ['/blog/laptop-temperatures-kuwait-safe-cpu-gpu-temperatures', 'Laptop temperatures', 'For interpreting CPU/GPU readings, sustained heat and possible thermal limiting.'],
-              ['/how-to-protect-laptop-screen', 'Protect your screen', 'For prevention, hinge stress, transport and avoiding physical display damage.'],
+              ['/blog/how-to-protect-laptop-screen', 'Protect your screen', 'For prevention, hinge stress, transport and avoiding physical display damage.'],
               ['/laptop-screen-repair-kuwait', 'Screen repair', 'For cracked panels, lines, flickering, backlight and other display faults.'],
               ['/gaming-laptop-cleaning-kuwait', 'Gaming laptop maintenance', 'For dust cleaning, cooling maintenance and thermal-paste decisions.'],
               ['/motherboard-repair-kuwait', 'Motherboard repair', 'For component-level power, charging, short and board faults after basic checks.']
