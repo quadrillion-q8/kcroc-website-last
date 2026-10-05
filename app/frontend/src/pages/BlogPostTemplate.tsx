@@ -191,7 +191,7 @@ const STANDALONE_REPAIR_PATHS: Record<string, { title: string; intro: string; li
     links: [
       { href: '/laptop-running-very-slow', label: 'Laptop Running Very Slow', description: 'For performance problems involving CPU, memory, storage, thermals or background software.' },
       { href: '/laptop-overheating-kuwait', label: 'Laptop Overheating', description: 'For high CPU usage paired with excessive temperatures, fan problems or thermal throttling.' },
-      { href: '/guides/windows-11-100-disk-usage-causes-solutions', label: 'Windows 11 100% Disk Usage', description: 'Use this when CPU spikes are accompanied by severe disk activity and system paging.' },
+      { href: '/blog/windows-11-100-disk-usage-causes-solutions', label: 'Windows 11 100% Disk Usage', description: 'Use this when CPU spikes are accompanied by severe disk activity and system paging.' },
       { href: '/laptop-repair-kuwait', label: 'Laptop Repair Kuwait', description: 'For persistent high load, instability, shutdowns or hardware faults that survive software diagnosis.' },
     ],
   },
@@ -200,7 +200,7 @@ const STANDALONE_REPAIR_PATHS: Record<string, { title: string; intro: string; li
     intro: 'A missing SSD can be a Windows volume problem, a compatibility issue, a slot/controller problem or a failing drive. Preserve data before making changes.',
     links: [
       { href: '/ssd-ram-upgrade-kuwait', label: 'SSD & RAM Upgrade Kuwait', description: 'For new SSD installations and confirmed upgrade needs.' },
-      { href: '/guides/windows-11-100-disk-usage-causes-solutions', label: 'Windows 11 100% Disk Usage', description: 'Related troubleshooting for storage bottlenecks and high disk activity.' },
+      { href: '/blog/windows-11-100-disk-usage-causes-solutions', label: 'Windows 11 100% Disk Usage', description: 'Related troubleshooting for storage bottlenecks and high disk activity.' },
       { href: '/laptop-repair-kuwait', label: 'Laptop Repair Kuwait', description: 'For storage faults that require hands-on diagnostics of slots, controllers or system hardware.' },
       { href: '/motherboard-repair-kuwait', label: 'Motherboard Repair Kuwait', description: 'For board-level storage controller, power or slot faults.' },
     ],
