@@ -1,13 +1,12 @@
 // File: app/frontend/src/components/home/StickyMobileCTA.tsx
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import { KCROC_GRAPH } from '../../data/graph';
+import { NAV_GRAPH } from '../../data/navGraph.generated';
 import { getPageWhatsAppLink } from '../../utils/whatsappIntent';
 import { useAnalytics } from '../../core/analytics/AnalyticsProvider';
 
 export const StickyMobileCTA = () => {
-  const business = KCROC_GRAPH.business;
-  const phone = business!.telephone;
+  const phone = NAV_GRAPH.business.telephone;
   const { pathname } = useLocation();
   const { trackConversion } = useAnalytics();
   const whatsappLink = getPageWhatsAppLink(pathname);
