@@ -18,7 +18,7 @@ import { StandaloneRelatedLinks } from '@/components/content/StandaloneRelatedLi
 
 // Dynamic Business Data
 const business = KCROC_GRAPH.business!;
-const WA_LINK = `https://wa.me/${business.telephone}?text=${encodeURIComponent('My laptop or PC won\u2019t boot after a BIOS update in Kuwait')}`;
+const WA_LINK = `https://wa.me/${business.telephone}?text=${encodeURIComponent('My laptop or PC won’t boot after a BIOS update in Kuwait')}`;
 
 const sectionBadge = 'px-3 sm:px-4 py-1.5 text-[10px] sm:text-sm mb-3 sm:mb-4';
 
@@ -69,11 +69,11 @@ const warningSigns = [
 const manufacturerNotes = [
   { brand: 'Dell', text: 'Dell provides BIOS Recovery features on many systems, with the exact recovery source and supported procedure depending on the model and generation. Confirm the current Dell documentation for the exact service tag/model before using a recovery file.', link: '/dell-laptop-repair-kuwait', linkLabel: 'Dell repair in Kuwait' },
   { brand: 'HP', text: "HP notebooks commonly provide BIOS recovery features, but the supported key sequence, file handling and recovery path vary by model. HP Sure Start platforms use a different protected recovery architecture, so do not assume a generic USB/key-combination procedure applies.", link: '/hp-laptop-repair-kuwait', linkLabel: 'HP repair in Kuwait' },
-  { brand: 'Lenovo', text: 'Recovery behavior differs meaningfully between ThinkPad, IdeaPad, Legion and other Lenovo families. Always confirm the exact procedure for the specific model on Lenovo\u2019s official support pages.', link: '/lenovo-laptop-repair-kuwait', linkLabel: 'Lenovo repair in Kuwait' },
-  { brand: 'ASUS', text: 'ASUS boards generally use one of two mechanisms: CrashFree BIOS 3 (automatic recovery from a USB drive) or USB BIOS FlashBack on higher-end boards, which reflashes using standby power alone \u2014 no CPU or RAM required.', link: '/asus-laptop-repair-kuwait', linkLabel: 'ASUS repair in Kuwait' },
+  { brand: 'Lenovo', text: 'Recovery behavior differs meaningfully between ThinkPad, IdeaPad, Legion and other Lenovo families. Always confirm the exact procedure for the specific model on Lenovo’s official support pages.', link: '/lenovo-laptop-repair-kuwait', linkLabel: 'Lenovo repair in Kuwait' },
+  { brand: 'ASUS', text: 'ASUS boards generally use one of two mechanisms: CrashFree BIOS 3 (automatic recovery from a USB drive) or USB BIOS FlashBack on higher-end boards, which reflashes using standby power alone — no CPU or RAM required.', link: '/asus-laptop-repair-kuwait', linkLabel: 'ASUS repair in Kuwait' },
   { brand: 'Acer', text: "Acer firmware recovery procedures vary by model and platform generation. Use the manufacturer's model-specific instructions rather than a generic key combination.", link: '/acer-laptop-repair-kuwait', linkLabel: 'Acer repair in Kuwait' },
   { brand: 'MSI / Gigabyte', text: 'Some MSI and Gigabyte desktop boards provide redundant firmware or dedicated flashback/recovery features, but this is not universal. Confirm whether the exact board has Dual BIOS, Flash BIOS Button/Q-Flash Plus, or another recovery mechanism before relying on it.', link: '/msi-laptop-repair-kuwait', linkLabel: 'MSI repair in Kuwait' },
-  { brand: 'Apple', text: 'Apple Silicon and Intel Macs use a fundamentally different architecture \u2014 recovery relies on DFU mode with Finder on a second Mac. The exact key sequence varies by chip generation, so always confirm on Apple\u2019s current support page.', link: '/macbook-repair-kuwait', linkLabel: 'MacBook repair in Kuwait' },
+  { brand: 'Apple', text: 'Apple Silicon and Intel Macs use a fundamentally different architecture — recovery relies on DFU mode with Finder on a second Mac. The exact key sequence varies by chip generation, so always confirm on Apple’s current support page.', link: '/macbook-repair-kuwait', linkLabel: 'MacBook repair in Kuwait' },
 ];
 
 const recoveryLevels = [
@@ -110,8 +110,8 @@ const beforeYouFlash = [
 
 const bitlockerGuidance = [
   'Back up the recovery key and suspend BitLocker before any firmware update on an encrypted machine.',
-  'If asked for the key after an update, entering it is expected and safe \u2014 not evidence of tampering.',
-  "If the key was never saved, that's a data-access problem, not a firmware-repair one \u2014 reflashing won't retrieve encrypted data.",
+  'If asked for the key after an update, entering it is expected and safe — not evidence of tampering.',
+  "If the key was never saved, that's a data-access problem, not a firmware-repair one — reflashing won't retrieve encrypted data.",
   "After recovery, verify that Secure Boot and TPM settings match the configuration required by Windows and your organization's security policy; do not change them unnecessarily while troubleshooting.",
 ];
 
@@ -176,7 +176,7 @@ export default function BiosUefiRecoveryGuide() {
                 </span>
               </h1>
               <p className="mt-5 max-w-2xl text-sm leading-7 text-slate-300 sm:text-lg">
-                "BIOS" and "UEFI" get used interchangeably, and neither failure mode is what most people assume. A black screen after an update, a boot loop, or a system that won't POST can come from corrupted firmware \u2014 or from RAM, power, EC, or motherboard faults that only look like a BIOS problem.
+                "BIOS" and "UEFI" get used interchangeably, and neither failure mode is what most people assume. A black screen after an update, a boot loop, or a system that won't POST can come from corrupted firmware — or from RAM, power, EC, or motherboard faults that only look like a BIOS problem.
               </p>
               <div className="mt-6 flex flex-col gap-3 sm:flex-row">
                 <Button size="lg" asChild className="w-full bg-cyan-500 px-6 py-6 font-bold text-slate-950 hover:bg-cyan-400 sm:w-auto">
@@ -298,7 +298,7 @@ export default function BiosUefiRecoveryGuide() {
               <p className="text-slate-400 text-xs sm:text-sm leading-relaxed">Legacy BIOS runs in 16-bit mode and commonly pairs with MBR partitioning, whose traditional addressing limit is about 2&nbsp;TiB. UEFI runs in 32-bit or 64-bit mode and commonly pairs with GPT, which removes that limit.</p>
             </div>
             <div className="border border-slate-800 rounded-xl p-4 sm:p-5">
-              <h3 className="text-emerald-300 font-bold text-sm sm:text-base mb-1.5">Storage \u2014 Firmware \u2260 ESP \u2260 OS</h3>
+              <h3 className="text-emerald-300 font-bold text-sm sm:text-base mb-1.5">Storage — Firmware ≠ ESP ≠ OS</h3>
               <p className="text-slate-400 text-xs sm:text-sm leading-relaxed">UEFI firmware lives in the motherboard's flash chip, same as legacy BIOS. What's different: UEFI requires an EFI System Partition (ESP) holding bootloader <code className="bg-slate-900 px-1 py-0.5 rounded text-cyan-300">.efi</code> files, plus boot-order data kept in firmware NVRAM variables.</p>
             </div>
             <div className="border border-slate-800 rounded-xl p-4 sm:p-5">
@@ -359,7 +359,7 @@ export default function BiosUefiRecoveryGuide() {
           </div>
 
           <p className="text-slate-400 text-xs sm:text-sm leading-relaxed mt-4">
-            "POST" (Power-On Self-Test) is the diagnostic sequence firmware runs before handing off to the OS. A POST failure can be caused by firmware \u2014 or by hardware. See <a href="#firmware-vs-hardware" className="text-cyan-300 underline hover:text-cyan-200">BIOS Corruption vs Hardware Failure</a> below.
+            "POST" (Power-On Self-Test) is the diagnostic sequence firmware runs before handing off to the OS. A POST failure can be caused by firmware — or by hardware. See <a href="#firmware-vs-hardware" className="text-cyan-300 underline hover:text-cyan-200">BIOS Corruption vs Hardware Failure</a> below.
           </p>
         </div>
       </section>
@@ -387,7 +387,7 @@ export default function BiosUefiRecoveryGuide() {
             <div className="border border-slate-800 rounded-xl p-4 sm:p-5">
               <h3 className="text-red-300 font-bold text-sm sm:text-base mb-2">Often Better to Leave Alone</h3>
               <ul className="space-y-1.5">
-                {['The system is stable with no symptom the update claims to fix', "You'd be jumping several versions at once \u2014 check if step updates are required", "You're on battery or unstable power, where an interruption is the real risk"].map(item => (
+                {['The system is stable with no symptom the update claims to fix', "You'd be jumping several versions at once — check if step updates are required", "You're on battery or unstable power, where an interruption is the real risk"].map(item => (
                   <li key={item} className="flex items-start gap-1.5 text-slate-400 text-xs sm:text-sm">
                     <XCircle className="w-3.5 h-3.5 text-red-400 flex-shrink-0 mt-0.5" aria-hidden="true" />
                     <span className="leading-snug">{item}</span>
@@ -398,8 +398,8 @@ export default function BiosUefiRecoveryGuide() {
           </div>
 
           <div id="update-failed" className="scroll-mt-24 rounded-2xl border-2 border-red-500/30 bg-red-500/10 p-5 sm:p-6">
-            <h3 className="text-white font-bold text-base sm:text-lg mb-1">When a BIOS Update Fails \u2014 Immediate Response</h3>
-            <p className="text-slate-300 text-xs sm:text-sm leading-relaxed mb-4">An interruption during the flash \u2014 power loss, forced shutdown, a crash mid-write \u2014 is the most common cause of firmware corruption.</p>
+            <h3 className="text-white font-bold text-base sm:text-lg mb-1">When a BIOS Update Fails — Immediate Response</h3>
+            <p className="text-slate-300 text-xs sm:text-sm leading-relaxed mb-4">An interruption during the flash — power loss, forced shutdown, a crash mid-write — is the most common cause of firmware corruption.</p>
             <div className="grid gap-2">
               {[
                 { text: "Don't repeatedly power-cycle the machine", bad: true },
@@ -545,7 +545,7 @@ export default function BiosUefiRecoveryGuide() {
           <div className="grid sm:grid-cols-3 gap-3 sm:gap-4 mb-5">
             <div className="border border-slate-800 rounded-xl p-4 sm:p-5">
               <h3 className="text-white font-bold text-sm sm:text-base mb-1.5">CMOS Reset</h3>
-              <p className="text-slate-400 text-xs sm:text-sm leading-relaxed">Clears stored settings \u2014 boot order, overclock profiles, fan curves. Does not touch the firmware code and will not fix genuine corruption.</p>
+              <p className="text-slate-400 text-xs sm:text-sm leading-relaxed">Clears stored settings — boot order, overclock profiles, fan curves. Does not touch the firmware code and will not fix genuine corruption.</p>
             </div>
             <div className="border border-slate-800 rounded-xl p-4 sm:p-5">
               <h3 className="text-white font-bold text-sm sm:text-base mb-1.5">NVRAM / PRAM Reset (Mac)</h3>
@@ -553,11 +553,11 @@ export default function BiosUefiRecoveryGuide() {
             </div>
             <div className="border border-cyan-500/30 bg-cyan-500/5 rounded-xl p-4 sm:p-5">
               <h3 className="text-cyan-300 font-bold text-sm sm:text-base mb-1.5">BIOS/UEFI Recovery</h3>
-              <p className="text-slate-400 text-xs sm:text-sm leading-relaxed">Rewrites the actual firmware program on the flash chip \u2014 what's needed for genuine corruption.</p>
+              <p className="text-slate-400 text-xs sm:text-sm leading-relaxed">Rewrites the actual firmware program on the flash chip — what's needed for genuine corruption.</p>
             </div>
           </div>
           <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
-            A settings reset is worth trying first for boot-order confusion or overclock instability \u2014 harmless and fast \u2014 but it's not a substitute for firmware recovery when the firmware itself is the problem.
+            A settings reset is worth trying first for boot-order confusion or overclock instability — harmless and fast — but it's not a substitute for firmware recovery when the firmware itself is the problem.
           </p>
         </div>
       </section>
@@ -624,7 +624,7 @@ export default function BiosUefiRecoveryGuide() {
             </Badge>
             <h2 className="text-2xl sm:text-4xl font-bold text-white">Recovery Methods Differ by Manufacturer</h2>
             <p className="text-slate-300 text-xs sm:text-base max-w-2xl mx-auto leading-relaxed mt-3">
-              General orientation only \u2014 every procedure is model/generation-dependent and OEMs revise them over time. Always confirm on the manufacturer's current support page before attempting recovery.
+              General orientation only — every procedure is model/generation-dependent and OEMs revise them over time. Always confirm on the manufacturer's current support page before attempting recovery.
             </p>
           </div>
 
@@ -751,7 +751,7 @@ export default function BiosUefiRecoveryGuide() {
             <Badge className={`bg-indigo-500/20 text-indigo-300 border-indigo-500/30 ${sectionBadge}`}>Security Layer</Badge>
             <h2 className="text-2xl sm:text-4xl font-bold text-white">Secure Boot, TPM &amp; BitLocker</h2>
             <p className="text-slate-300 text-xs sm:text-base max-w-2xl mx-auto leading-relaxed mt-3">
-              A common, expected consequence of a routine firmware update \u2014 frequently mistaken for a BIOS failure.
+              A common, expected consequence of a routine firmware update — frequently mistaken for a BIOS failure.
             </p>
           </div>
 
@@ -779,7 +779,7 @@ export default function BiosUefiRecoveryGuide() {
                 <h3 className="text-base sm:text-lg font-bold text-white">What Happens</h3>
               </div>
               <p className="text-slate-400 text-xs sm:text-sm leading-relaxed">
-                BitLocker can bind its unlock key to TPM measurements ("PCR values") of the boot environment. A firmware update changes those measurements \u2014 expected, not a malfunction \u2014 so the TPM can't silently release the key, and BitLocker asks for the recovery key as a security check.
+                BitLocker can bind its unlock key to TPM measurements ("PCR values") of the boot environment. A firmware update changes those measurements — expected, not a malfunction — so the TPM can't silently release the key, and BitLocker asks for the recovery key as a security check.
               </p>
             </div>
             <div className="p-5 sm:p-7">
@@ -805,6 +805,14 @@ export default function BiosUefiRecoveryGuide() {
               </ul>
             </div>
           </div>
+          <p className="mt-4 text-slate-400 text-xs sm:text-sm leading-relaxed">
+            Want the full walkthrough? Read{' '}
+            <Link to="/guides/bitlocker-recovery-key-after-bios-update" className="text-cyan-300 underline hover:text-cyan-200">why Windows asks for a BitLocker recovery key after a BIOS update</Link>
+            . Official Microsoft guidance:{' '}
+            <a href="https://support.microsoft.com/en-us/help/4026181" target="_blank" rel="noopener noreferrer" className="text-cyan-300 underline hover:text-cyan-200">find your BitLocker recovery key</a>
+            {' '}and{' '}
+            <a href="https://learn.microsoft.com/en-us/troubleshoot/windows-client/windows-security/suspend-bitlocker-protection-non-microsoft-updates" target="_blank" rel="noopener noreferrer" className="text-cyan-300 underline hover:text-cyan-200">suspend BitLocker before firmware updates</a>.
+          </p>
         </div>
       </section>
 
@@ -815,7 +823,7 @@ export default function BiosUefiRecoveryGuide() {
           <div className="rounded-2xl border border-slate-800 bg-brand-dark/50 p-5 sm:p-6 flex gap-4">
             <Volume2 className="mt-1 h-5 w-5 shrink-0 text-cyan-400" aria-hidden="true" />
             <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
-              Boards and laptops report early boot failures \u2014 before there's any video output \u2014 through beep patterns, blinking LEDs (often Caps Lock/Num Lock, or dedicated debug LEDs), or two-digit POST code displays. These are <strong className="text-white">manufacturer- and often model-specific</strong>: the same pattern can mean something different on different brands, so always check the exact model's documentation rather than a generic chart. What's consistent is the category flagged \u2014 memory, CPU, GPU/display, or a general boot-device/firmware failure \u2014 worth noting for a technician even without decoding the exact meaning yourself.
+              Boards and laptops report early boot failures — before there's any video output — through beep patterns, blinking LEDs (often Caps Lock/Num Lock, or dedicated debug LEDs), or two-digit POST code displays. These are <strong className="text-white">manufacturer- and often model-specific</strong>: the same pattern can mean something different on different brands, so always check the exact model's documentation rather than a generic chart. What's consistent is the category flagged — memory, CPU, GPU/display, or a general boot-device/firmware failure — worth noting for a technician even without decoding the exact meaning yourself.
             </p>
           </div>
         </div>
@@ -847,11 +855,11 @@ export default function BiosUefiRecoveryGuide() {
                 <ul className="mt-2 space-y-1.5">
                   <li className="flex items-start gap-1.5 text-slate-400">
                     <CheckCircle2 className="w-3.5 h-3.5 text-cyan-400 flex-shrink-0 mt-0.5" aria-hidden="true" />
-                    <span>An update can trigger a BitLocker/FileVault recovery-key prompt \u2014 data isn't at risk, but becomes inaccessible without the key.</span>
+                    <span>An update can trigger a BitLocker/FileVault recovery-key prompt — data isn't at risk, but becomes inaccessible without the key.</span>
                   </li>
                   <li className="flex items-start gap-1.5 text-slate-400">
                     <CheckCircle2 className="w-3.5 h-3.5 text-cyan-400 flex-shrink-0 mt-0.5" aria-hidden="true" />
-                    <span>A technician mishandling the drive during physical disassembly is a handling risk, not a firmware-recovery risk \u2014 ask what precautions are taken.</span>
+                    <span>A technician mishandling the drive during physical disassembly is a handling risk, not a firmware-recovery risk — ask what precautions are taken.</span>
                   </li>
                 </ul>
               </div>
@@ -930,6 +938,8 @@ export default function BiosUefiRecoveryGuide() {
           { href: '/blue-screen-of-death-bsod-fix-kuwait', label: 'BSOD Diagnostic', description: 'Follow the Windows crash path when the system reaches Windows but repeatedly blue-screens.' },
           { href: '/laptop-wont-turn-on', label: "Laptop Won't Turn On", description: 'Separate a true no-power condition from a firmware or POST failure.' },
           { href: '/motherboard-repair-kuwait', label: 'Motherboard Repair Kuwait', description: 'For board-level diagnosis when recovery attempts do not explain the failure.' },
+          { href: '/guides/bitlocker-recovery-key-after-bios-update', label: 'BitLocker Recovery Key After a BIOS Update', description: 'Why the blue recovery screen appears after a firmware update, where to find the key and how to avoid it.' },
+          { href: '/guides/gaming-pc-bios-failed-update-kuwait', label: 'Gaming PC Won’t Boot After a BIOS Update', description: 'The desktop and gaming-PC angle: board-level recovery features, no-display symptoms and GPU confusion.' },
         ]}
       />
 
@@ -1090,7 +1100,7 @@ export default function BiosUefiRecoveryGuide() {
         <div className="mx-auto max-w-4xl px-4 py-10 text-xs sm:text-sm text-slate-500 sm:px-6">
           <p>
             <strong className="text-slate-300">Last reviewed:</strong> {LAST_REVIEWED} by{' '}
-            <Link to="/author/imran" className="text-cyan-400 hover:text-cyan-300 underline">Imran Natiq</Link>, Hardware Repair Engineer, KCROC. Manufacturer-specific procedures (key combinations, file names, supported models) change over time \u2014 always confirm current steps on the manufacturer's own support page before attempting recovery.
+            <Link to="/author/imran" className="text-cyan-400 hover:text-cyan-300 underline">Imran Natiq</Link>, Hardware Repair Engineer, KCROC. Manufacturer-specific procedures (key combinations, file names, supported models) change over time — always confirm current steps on the manufacturer's own support page before attempting recovery.
           </p>
         </div>
       </section>
