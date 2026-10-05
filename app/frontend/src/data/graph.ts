@@ -742,6 +742,25 @@ export const rawGraphData: RawGraphData = {
       }
     } as WebPageEntity,
 
+    'page-ar-charging-port-repair': {
+      id: 'page-ar-charging-port-repair', slug: 'ar/laptop-charging-port-repair-kuwait', entityType: 'WebPage', isActive: true,
+      title: 'تصليح مدخل شحن اللابتوب في الكويت', description: 'تصليح مدخل شحن اللابتوب وUSB-C وDC Jack في الكويت مع تشخيص مسار الطاقة وإصلاح المكونات عند الإمكان.',
+      seo: { title: 'تصليح مدخل شحن اللابتوب الكويت | USB-C وDC Jack | KCROC', description: 'تصليح مدخل شحن اللابتوب وUSB-C وDC Jack في الكويت. تشخيص قبل الإصلاح، استلام وتوصيل مجاني، وضمان 30 يومًا.', canonicalUrl: 'https://www.computerrepairkuwait.com/ar/laptop-charging-port-repair-kuwait', locale: 'ar_KW', alternates: { 'ar-KW': 'https://www.computerrepairkuwait.com/ar/laptop-charging-port-repair-kuwait', 'en-KW': 'https://www.computerrepairkuwait.com/laptop-charging-port-repair-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/laptop-charging-port-repair-kuwait' }, ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList', 'FAQPage', 'Service'], lastModified: '2026-10-05T00:00:00+03:00', breadcrumbs: [{ name: 'الرئيسية', url: '/' }, { name: 'تصليح مدخل شحن اللابتوب', url: '/ar/laptop-charging-port-repair-kuwait' }] },
+      relatedServiceIds: ['srv-charging-port', 'srv-motherboard', 'srv-battery', 'srv-laptop']
+    } as WebPageEntity,
+    'page-ar-keyboard-replacement': {
+      id: 'page-ar-keyboard-replacement', slug: 'ar/laptop-keyboard-replacement-kuwait', entityType: 'WebPage', isActive: true,
+      title: 'تصليح وتبديل كيبورد اللابتوب في الكويت', description: 'تبديل وتصليح كيبورد اللابتوب في الكويت مع فحص الكابل وأضرار السوائل والتوافق مع موديل الجهاز.',
+      seo: { title: 'تبديل كيبورد اللابتوب الكويت | إصلاح أزرار اللابتوب | KCROC', description: 'تبديل وتصليح كيبورد اللابتوب في الكويت. فحص الكابل وأضرار السوائل والتوافق مع الموديل، مع استلام وتوصيل مجاني.', canonicalUrl: 'https://www.computerrepairkuwait.com/ar/laptop-keyboard-replacement-kuwait', locale: 'ar_KW', alternates: { 'ar-KW': 'https://www.computerrepairkuwait.com/ar/laptop-keyboard-replacement-kuwait', 'en-KW': 'https://www.computerrepairkuwait.com/laptop-keyboard-replacement-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/laptop-keyboard-replacement-kuwait' }, ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList', 'FAQPage', 'Service'], lastModified: '2026-10-05T00:00:00+03:00', breadcrumbs: [{ name: 'الرئيسية', url: '/' }, { name: 'تبديل كيبورد اللابتوب', url: '/ar/laptop-keyboard-replacement-kuwait' }] },
+      relatedServiceIds: ['srv-keyboard', 'srv-laptop', 'srv-liquid-damage', 'srv-motherboard']
+    } as WebPageEntity,
+    'page-ar-liquid-damage-repair': {
+      id: 'page-ar-liquid-damage-repair', slug: 'ar/laptop-liquid-damage-repair-kuwait', entityType: 'WebPage', isActive: true,
+      title: 'تصليح لابتوب بعد انسكاب الماء والسوائل في الكويت', description: 'تصليح أضرار الماء والقهوة والسوائل للابتوب وMacBook في الكويت مع فحص التآكل واللوحة الأم وإصلاح المكونات عند الإمكان.',
+      seo: { title: 'تصليح لابتوب بعد انسكاب الماء الكويت | KCROC', description: 'تصليح أضرار الماء والقهوة والسوائل للابتوب وMacBook في الكويت. فحص التآكل واللوحة الأم، استلام مجاني وضمان 30 يومًا.', canonicalUrl: 'https://www.computerrepairkuwait.com/ar/laptop-liquid-damage-repair-kuwait', locale: 'ar_KW', alternates: { 'ar-KW': 'https://www.computerrepairkuwait.com/ar/laptop-liquid-damage-repair-kuwait', 'en-KW': 'https://www.computerrepairkuwait.com/laptop-liquid-damage-repair-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/laptop-liquid-damage-repair-kuwait' }, ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList', 'FAQPage', 'Service'], lastModified: '2026-10-05T00:00:00+03:00', breadcrumbs: [{ name: 'الرئيسية', url: '/' }, { name: 'تصليح أضرار السوائل', url: '/ar/laptop-liquid-damage-repair-kuwait' }] },
+      relatedServiceIds: ['srv-liquid-damage', 'srv-motherboard', 'srv-keyboard', 'srv-macbook']
+    } as WebPageEntity,
+
     /* ═══════════════════════════════════════════════════════════════
        SERVICES
     ═══════════════════════════════════════════════════════════════ */
@@ -823,7 +842,7 @@ export const rawGraphData: RawGraphData = {
         { src: IMAGES.laptopHardware.laptopDcPowerJackConnectorReplacement.src, alt: IMAGES.laptopHardware.laptopDcPowerJackConnectorReplacement.alt, width: IMAGES.laptopHardware.laptopDcPowerJackConnectorReplacement.width, height: IMAGES.laptopHardware.laptopDcPowerJackConnectorReplacement.height, placement: 'process', caption: 'DC power jack replacement as part of a targeted laptop charging-port repair.' }
       ],
       warranty: { duration: '30 Days', coverage: 'Parts and labour for the completed charging-port repair', noFixNoFee: true },
-      seo: { title: 'Laptop Charging Port Repair Kuwait | KCROC', description: 'Laptop DC jack and USB-C charging port repair in Kuwait. Board-level charging diagnostics, micro-soldering, free pickup and 30-day warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-charging-port-repair-kuwait', ogType: 'article', schemaTypes: ['Service', 'FAQPage'] },
+      seo: { title: 'Laptop Charging Port Repair Kuwait | KCROC', description: 'Laptop DC jack and USB-C charging port repair in Kuwait. Board-level charging diagnostics, micro-soldering, free pickup and 30-day warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-charging-port-repair-kuwait', locale: 'en_KW', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/laptop-charging-port-repair-kuwait', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/laptop-charging-port-repair-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/laptop-charging-port-repair-kuwait' }, ogType: 'article', schemaTypes: ['Service', 'FAQPage'] },
       navigationPriority: 55,
       isFeatured: false,
       popular: false
@@ -978,7 +997,7 @@ export const rawGraphData: RawGraphData = {
         { src: IMAGES.laptopHardware.laptopOpenRepairBench.src, alt: IMAGES.laptopHardware.laptopOpenRepairBench.alt, width: IMAGES.laptopHardware.laptopOpenRepairBench.width, height: IMAGES.laptopHardware.laptopOpenRepairBench.height, placement: 'process', caption: 'Laptop opened on the repair bench for connector checks and post-replacement testing.' }
       ],
       warranty: { duration: '30 Days', coverage: 'Parts and labour for the completed keyboard replacement', noFixNoFee: true },
-      seo: { title: 'Laptop Keyboard Replacement Kuwait | KCROC', description: 'Laptop and MacBook keyboard replacement in Kuwait for Dell, HP, Lenovo, ASUS, Acer, MSI and Apple. Free pickup and 30-day warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-keyboard-replacement-kuwait', ogType: 'article', schemaTypes: ['Service', 'FAQPage'] },
+      seo: { title: 'Laptop Keyboard Replacement Kuwait | KCROC', description: 'Laptop and MacBook keyboard replacement in Kuwait for Dell, HP, Lenovo, ASUS, Acer, MSI and Apple. Free pickup and 30-day warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-keyboard-replacement-kuwait', locale: 'en_KW', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/laptop-keyboard-replacement-kuwait', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/laptop-keyboard-replacement-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/laptop-keyboard-replacement-kuwait' }, ogType: 'article', schemaTypes: ['Service', 'FAQPage'] },
       navigationPriority: 53, isFeatured: false, popular: false
     } as ServiceEntity,
 
@@ -1258,7 +1277,7 @@ export const rawGraphData: RawGraphData = {
         { src: IMAGES.laptopHardware.dellRepair.src, alt: IMAGES.laptopHardware.dellRepair.alt, width: IMAGES.laptopHardware.dellRepair.width, height: IMAGES.laptopHardware.dellRepair.height, placement: 'process', caption: 'Component-level repair work after cleaning and fault isolation on a liquid-damaged laptop.' }
       ],
       warranty: { duration: '30 Days', coverage: 'Parts and labour for components repaired or replaced during the liquid-damage service', noFixNoFee: true },
-      seo: { title: 'Laptop Liquid Damage Repair Kuwait | KCROC', description: 'Laptop and MacBook liquid damage repair in Kuwait. Corrosion inspection, board cleaning, micro-soldering and component-level diagnostics with free pickup.', canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-liquid-damage-repair-kuwait', ogType: 'article', schemaTypes: ['Service', 'FAQPage'] },
+      seo: { title: 'Laptop Liquid Damage Repair Kuwait | KCROC', description: 'Laptop and MacBook liquid damage repair in Kuwait. Corrosion inspection, board cleaning, micro-soldering and component-level diagnostics with free pickup.', canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-liquid-damage-repair-kuwait', locale: 'en_KW', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/laptop-liquid-damage-repair-kuwait', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/laptop-liquid-damage-repair-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/laptop-liquid-damage-repair-kuwait' }, ogType: 'article', schemaTypes: ['Service', 'FAQPage'] },
       navigationPriority: 51, isFeatured: false, popular: false
     } as ServiceEntity,
 
