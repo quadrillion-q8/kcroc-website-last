@@ -37,6 +37,7 @@ export const IMAGES = {
     pcDoctor: { src: "/images/kcroc-pc-doctor-windows-repair-services.webp", alt: "PC Doctor services", width: 800, height: 600 },
     teamFun: { src: "/images/kcroc-team-member-imran-hat-fun.webp", alt: "KCROC team fun", width: 800, height: 800 },
     logo: { src: "/logo.webp", alt: "KCROC Logo", width: 1024, height: 1024 },
+    logoOptimized: { src: "/logo-256.webp", alt: "KCROC Logo", width: 256, height: 256 },
     // ✅ Updated to the verified lead technician workbench image
     heroBanner: { 
       src: "/images/kcroc-lead-technician-laptop-repair-workbench.webp", 
