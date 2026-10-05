@@ -15,13 +15,8 @@ import RepairProofCTA from '../components/home/RepairProofCTA';
 import { LeadMagnet } from '../components/home/LeadMagnet';
 import FAQSection from '../components/home/FAQSection';
 import { ServiceAreas } from '../components/home/ServiceAreas';
-import { KCROC_GRAPH } from '../data/graph';
 
 export default function Home() {
-  // Ensure the page data is loaded
-  const homePage = KCROC_GRAPH.pages?.find(p => p.id === 'page-home');
-  if (!homePage) return null;
-
   return (
     // ✅ FIXED: Changed bg-brand-dark to bg-transparent
     <main className="w-full min-h-screen bg-transparent">
