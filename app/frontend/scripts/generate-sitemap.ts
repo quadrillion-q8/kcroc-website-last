@@ -95,6 +95,21 @@ const generateSitemap = () => {
     return true;
   });
 
+  // Hard fail on source-to-sitemap drift. BLOG_POSTS is a first-class content
+  // inventory and every active post must have exactly one canonical sitemap
+  // entry. This prevents stale checked-in sitemap artifacts from surviving a
+  // successful build when new guides/news/blog posts are added.
+  const sitemapUrls = new Set(allEntries.map(entry => entry.url));
+  const missingBlogRoutes = BLOG_POSTS
+    .map(post => `${DOMAIN}${getContentRoute(post.slug, post.contentType ?? 'blog')}`)
+    .filter(url => !sitemapUrls.has(url));
+
+  if (missingBlogRoutes.length > 0) {
+    throw new Error(
+      `[generate-sitemap] ${missingBlogRoutes.length} BLOG_POSTS route(s) are missing from the generated sitemap: ${missingBlogRoutes.join(', ')}`
+    );
+  }
+
   const urlNodes = allEntries.map(({ url: finalUrl, entityType, lastModified }) => {
     if (finalUrl.includes('#')) {
       throw new Error(`Sitemap cannot contain fragment URLs: ${finalUrl}`);
