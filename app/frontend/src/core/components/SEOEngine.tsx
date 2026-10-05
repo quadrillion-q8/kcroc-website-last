@@ -144,6 +144,7 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
     "url": business.websiteUrl,
     "image": business.logoUrl,
     "telephone": `+${business.telephone}`,
+    "email": business.email,
     "priceRange": business.priceRange,
     "address": {
       "@type": "PostalAddress",
@@ -316,21 +317,13 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
               title: faq.question,
               answer: faq.answer
             }));
-          } else {
-            questions = [
-              { title: `What causes ${problemEntity.title.toLowerCase()}?`, answer: `Common causes include: ${problemEntity.causes.join(', ')}.` },
-              { title: `How do you fix ${problemEntity.title.toLowerCase()}?`, answer: problemEntity.solution }
-            ];
-            if (problemEntity.doNotDo) {
-              questions.push({ title: "What should I avoid doing if my laptop has this problem?", answer: problemEntity.doNotDo });
-            }
           }
         } else if (entity.entityType === 'WebPage') {
           const webPage = entity as WebPageEntity;
           const featuredIds = webPage.featuredFAQIds || [];
           const sourceFaqs = featuredIds.length > 0
             ? featuredIds.map(id => KCROC_GRAPH.faqs.find(f => f.id === id)).filter((f): f is FAQEntity => Boolean(f))
-            : KCROC_GRAPH.faqs;
+            : [];
           
           questions = sourceFaqs.map(faq => ({ title: faq.title, answer: faq.answer }));
         }
