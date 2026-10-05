@@ -613,6 +613,28 @@ export default function BlogPostTemplate() {
     return matchingEntity?.id;
   }, [post]);
 
+  const currentGraphEntity = useMemo(
+    () => currentGraphEntityId ? KCROC_GRAPH.pages.find((page) => page.id === currentGraphEntityId) : undefined,
+    [currentGraphEntityId]
+  );
+
+  const graphRelatedServices = useMemo(() => {
+    return (currentGraphEntity?.relatedServiceIds ?? [])
+      .map((id) => KCROC_GRAPH.services.find((service) => service.id === id))
+      .filter(Boolean)
+      .slice(0, 6);
+  }, [currentGraphEntity]);
+
+  const graphArabicEquivalent = useMemo(() => {
+    const englishCanonical = currentGraphEntity?.seo.canonicalUrl;
+    if (!englishCanonical) return undefined;
+    return KCROC_GRAPH.pages.find((page) =>
+      page.isActive &&
+      page.seo.locale === 'ar_KW' &&
+      page.seo.alternates?.['en-KW'] === englishCanonical
+    );
+  }, [currentGraphEntity]);
+
   const [progress, setProgress] = useState(0);
   const [showBackToTop, setShowBackToTop] = useState(false);
   const [activeHeadingId, setActiveHeadingId] = useState<string | null>(null);
@@ -1056,6 +1078,44 @@ export default function BlogPostTemplate() {
             <StandaloneRelatedLinks
               {...STANDALONE_REPAIR_PATHS[post.slug]}
             />
+          )}
+
+          {(graphRelatedServices.length > 0 || graphArabicEquivalent) && (
+            <section className="max-w-4xl mt-10 border-t border-slate-800/50 pt-10" aria-labelledby="graph-related-services">
+              <div className="flex flex-wrap items-end justify-between gap-4">
+                <div>
+                  <p className="text-xs font-black uppercase tracking-[0.18em] text-cyan-400">KCROC repair paths</p>
+                  <h3 id="graph-related-services" className="mt-2 text-2xl font-black text-white">Where this problem or guide leads</h3>
+                  <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-400">These links come from the same knowledge graph that drives KCROC services and are intended to connect research intent with the relevant repair destination.</p>
+                </div>
+                {graphArabicEquivalent && (
+                  <Link
+                    to={graphArabicEquivalent.seo.canonicalUrl.replace(/^https?:\/\/[^/]+/, '')}
+                    lang="ar-KW"
+                    dir="rtl"
+                    className="inline-flex items-center gap-2 rounded-full border border-amber-500/25 bg-amber-500/5 px-4 py-2 text-sm font-bold text-amber-200 hover:border-amber-400/40"
+                  >
+                    اقرأ بالعربية
+                    <ArrowLeft size={15} aria-hidden="true" />
+                  </Link>
+                )}
+              </div>
+              {graphRelatedServices.length > 0 && (
+                <div className="mt-6 grid gap-4 sm:grid-cols-2">
+                  {graphRelatedServices.map((service) => (
+                    <Link key={service.id} to={`/${service.slug}`} className="group rounded-2xl border border-slate-800 bg-slate-900/45 p-5 hover:border-cyan-500/40">
+                      <div className="flex items-start justify-between gap-4">
+                        <div>
+                          <h4 className="font-bold text-white group-hover:text-cyan-300">{service.title}</h4>
+                          <p className="mt-2 text-sm leading-6 text-slate-400">{service.shortDescription}</p>
+                        </div>
+                        <ArrowLeft className="mt-1 h-4 w-4 shrink-0 text-cyan-400" aria-hidden="true" />
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </section>
           )}
 
           {relatedPosts.length > 0 && (
