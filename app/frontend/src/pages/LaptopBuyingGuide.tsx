@@ -652,12 +652,15 @@ export default function LaptopBuyingGuide() {
 
           <div className="mt-5">
             <Callout>
-              Match the suffix to the workload, not the number after "Core" or "Ryzen."
-              {/* INTERNAL LINK PLACEHOLDER: Intel Core Ultra vs AMD Ryzen AI comparison — link here once
-                  /blog/intel-core-ultra-vs-amd-ryzen-ai is published. Do not invent a URL. */}
-              {' '}A dedicated Intel Core Ultra vs. AMD Ryzen AI comparison covering efficiency curves and
-              integrated graphics is in progress — in the meantime, WhatsApp us the two models you're comparing
-              for a direct answer now.
+              Match the suffix to the workload, not the number after "Core" or "Ryzen."{' '}
+              <Link
+                to="/blog/intel-core-ultra-vs-amd-ryzen-ai"
+                className="text-cyan-400 underline hover:text-cyan-300"
+              >
+                Read our Intel Core Ultra vs. AMD Ryzen AI comparison →
+              </Link>{' '}
+              for a practical look at efficiency, integrated graphics, AI acceleration, cooling, and real-world
+              laptop buying trade-offs.
             </Callout>
           </div>
         </div>
