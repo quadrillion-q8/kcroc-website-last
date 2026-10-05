@@ -546,6 +546,28 @@ export const rawGraphData: RawGraphData = {
         schemaTypes: ['Article', 'FAQPage', 'BreadcrumbList', 'Person']
       }
     } as WebPageEntity,
+    'guide-bios-uefi-ar': {
+      id: 'guide-bios-uefi-ar',
+      slug: 'guides/ar/bios-uefi-recovery-kuwait',
+      entityType: 'WebPage',
+      isActive: true,
+      title: 'استرداد BIOS بعد فشل التحديث: دليل UEFI والأعطال',
+      description: 'دليل لتمييز تلف فيرموير BIOS/UEFI عن أعطال الرام والطاقة واللوحة الأم، مع طرق الاسترداد الآمنة وبرمجة شريحة SPI في الكويت.',
+      seo: {
+        title: 'استرداد BIOS بعد فشل التحديث: دليل UEFI والأعطال | KCROC',
+        description: 'لابتوب أو كمبيوتر لا يقلع بعد تحديث BIOS أو UEFI؟ تعرّف كيف تفرّق بين تلف الفيرموير وأعطال الرام والطاقة واللوحة الأم، وخيارات الاسترداد الآمنة في الكويت.',
+        canonicalUrl: 'https://www.computerrepairkuwait.com/guides/ar/bios-uefi-recovery-kuwait',
+        ogType: 'article',
+        locale: 'ar_KW',
+        alternates: {
+          'en-KW': 'https://www.computerrepairkuwait.com/guides/bios-uefi-recovery-kuwait',
+          'ar-KW': 'https://www.computerrepairkuwait.com/guides/ar/bios-uefi-recovery-kuwait',
+          'x-default': 'https://www.computerrepairkuwait.com/guides/bios-uefi-recovery-kuwait'
+        },
+        lastModified: '2026-10-05',
+        schemaTypes: ['Article', 'FAQPage', 'BreadcrumbList']
+      }
+    } as WebPageEntity,
     'guide-laptop-buying-ar': {
       id: 'guide-laptop-buying-ar',
       slug: 'blog/ar/laptop-buying-guide-kuwait-2026',
