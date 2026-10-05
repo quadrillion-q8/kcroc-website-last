@@ -40,10 +40,9 @@
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="theme-color" content="#090c0f" />
 
-    <!-- Google tag (gtag.js) with Consent Mode v2.
-         Defaults are DENIED; the cookie banner upgrades them via
-         src/core/privacy/consent.ts. gtag MUST push the `arguments` object
-         (not a rest-args array) or Google silently ignores every command. -->
+    <!-- Google Consent Mode v2 bootstrap. Keep the queue tiny and synchronous;
+         the actual Google libraries are deferred until after the page has loaded
+         so analytics/marketing code cannot compete with the homepage LCP. -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -65,59 +64,63 @@
         }
       } catch (e) {}
       gtag('js', new Date());
-      // SPA: page_view is sent manually on route change (AnalyticsProvider).
+      // SPA pageviews remain manually dispatched by AnalyticsProvider.
       gtag('config', 'G-H2BXCZJ8NX', { send_page_view: false });
     </script>
     <script>
       (function () {
-        var tagLoaded = false;
-        var loadGoogleTag = function () {
-          if (tagLoaded || document.getElementById('kcroc-google-tag')) return;
-          tagLoaded = true;
+        var googleLoaded = false;
+        var gtmLoaded = false;
+
+        var loadScript = function (id, src) {
+          if (document.getElementById(id)) return false;
           var script = document.createElement('script');
-          script.id = 'kcroc-google-tag';
+          script.id = id;
           script.async = true;
-          script.src = 'https://www.googletagmanager.com/gtag/js?id=G-H2BXCZJ8NX';
+          script.src = src;
           document.head.appendChild(script);
+          return true;
         };
 
-        // Consent can be granted before idle; load immediately in that case.
-        window.addEventListener('kcroc:consent-changed', function (event) {
-          if (event && event.detail && event.detail.state === 'granted') loadGoogleTag();
+        var loadGoogleTag = function () {
+          if (googleLoaded || document.getElementById('kcroc-google-tag')) return;
+          googleLoaded = loadScript('kcroc-google-tag', 'https://www.googletagmanager.com/gtag/js?id=G-H2BXCZJ8NX');
+        };
+
+        var loadGtm = function () {
+          if (gtmLoaded || document.getElementById('kcroc-gtm')) return;
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+          gtmLoaded = loadScript('kcroc-gtm', 'https://www.googletagmanager.com/gtm.js?id=GTM-5L7Z7D6K');
+        };
+
+        var scheduleAfterLoad = function (fn, idleTimeout) {
+          var run = function () {
+            if ('requestIdleCallback' in window) {
+              window.requestIdleCallback(fn, { timeout: idleTimeout });
+            } else {
+              window.setTimeout(fn, idleTimeout);
+            }
+          };
+          if (document.readyState === 'complete') run();
+          else window.addEventListener('load', run, { once: true });
+        };
+
+        // Consent updates remain immediate; the network libraries wait until
+        // after the initial page load/idle period.
+        window.addEventListener('kcroc:consent-changed', function () {
+          scheduleAfterLoad(loadGoogleTag, 2500);
+          scheduleAfterLoad(loadGtm, 4500);
         });
 
-        // Otherwise keep the analytics library off the critical path.
-        if ('requestIdleCallback' in window) {
-          window.requestIdleCallback(loadGoogleTag, { timeout: 2500 });
-        } else {
-          window.addEventListener('load', function () {
-            window.setTimeout(loadGoogleTag, 1200);
-        }, { once: true });
-        }
+        // Preserve analytics without putting GA/GTM/TikTok in the critical path.
+        scheduleAfterLoad(loadGoogleTag, 2500);
+        scheduleAfterLoad(loadGtm, 4500);
       })();
     </script>
-    <!-- Google Tag Manager: GTM-5L7Z7D6K
-         Consent defaults are queued above before the container loads.
-         GA4 remains in place for now so measurement is not interrupted until
-         the GTM container has its Google tag configured and verified. -->
-    <script>
-      (function (w, d, s, l, i) {
-        w[l] = w[l] || [];
-        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
-        var f = d.getElementsByTagName(s)[0],
-            j = d.createElement(s),
-            dl = l != 'dataLayer' ? '&l=' + l : '';
-        j.async = true;
-        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-        f.parentNode.insertBefore(j, f);
-      })(window, document, 'script', 'dataLayer', 'GTM-5L7Z7D6K');
-    </script>
+    <!-- Google Tag Manager is intentionally loaded after the initial page load. -->
   </head>
   <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5L7Z7D6K"
-      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
