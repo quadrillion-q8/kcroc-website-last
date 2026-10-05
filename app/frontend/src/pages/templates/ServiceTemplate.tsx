@@ -37,11 +37,38 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
   // service entity in graph.ts sets these, so guard against undefined here
   // (mirrors the pattern already used in BrandTemplate/ProblemTemplate).
   const relatedServiceIds = entity.relatedServiceIds ?? [];
-  const relatedProblemIds = entity.relatedProblemIds ?? [];
+
+  // Build a conservative reverse-link layer from the knowledge graph. Some
+  // Problem and Location nodes already point to this service, but older service
+  // records do not always repeat every reciprocal edge. Surfacing those existing
+  // edges here strengthens the Problem → Service → Location path without creating
+  // new URLs or relying on keyword-stuffed copy.
+  const reverseProblemIds = KCROC_GRAPH.problems
+    .filter((problem) => (problem.relatedServiceIds ?? []).includes(entity.id))
+    .map((problem) => problem.id);
+  const relatedProblemIds = [...new Set([...(entity.relatedProblemIds ?? []), ...reverseProblemIds])].slice(0, 8);
+
+  const reverseLocationIds = KCROC_GRAPH.locations
+    .filter((location) => (location.relatedServiceIds ?? []).includes(entity.id))
+    .map((location) => location.id);
+  const locationPriority = ['hawalli', 'salmiya', 'kuwait-city', 'farwaniya', 'jahra', 'ahmadi', 'fahaheel', 'mangaf'];
+  const relatedLocationIds = [...new Set([...(entity.relatedLocationIds ?? []), ...reverseLocationIds])]
+    .sort((a, b) => {
+      const aSlug = KCROC_GRAPH.locations.find((location) => location.id === a)?.slug ?? '';
+      const bSlug = KCROC_GRAPH.locations.find((location) => location.id === b)?.slug ?? '';
+      return (locationPriority.indexOf(aSlug) < 0 ? 999 : locationPriority.indexOf(aSlug)) -
+        (locationPriority.indexOf(bSlug) < 0 ? 999 : locationPriority.indexOf(bSlug));
+    })
+    .slice(0, 8);
+
   const relatedBrandIds = entity.relatedBrandIds ?? [];
   const relatedResourcePaths = entity.relatedResourcePaths ?? [];
   const relatedCaseStudyIds = entity.relatedCaseStudyIds ?? [];
-  const relatedLocationIds = entity.relatedLocationIds ?? [];
+  const arabicEquivalent = KCROC_GRAPH.pages.find((page) =>
+    page.isActive &&
+    page.seo.locale === 'ar_KW' &&
+    page.seo.alternates?.['en-KW'] === entity.seo.canonicalUrl
+  );
 
   const getContentImage = (placement: 'hero' | 'commonIssues' | 'coreFeatures' | 'process') =>
     entity.contentImages?.find((img) => img.placement === placement);
@@ -450,7 +477,7 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
           </section>
         )}
 
-        {(relatedServiceIds.length > 0 || relatedProblemIds.length > 0 || relatedBrandIds.length > 0 || relatedResourcePaths.length > 0 || relatedCaseStudyIds.length > 0 || entity.relatedCaseStudyPath) && (
+        {(relatedServiceIds.length > 0 || relatedProblemIds.length > 0 || relatedBrandIds.length > 0 || relatedResourcePaths.length > 0 || relatedCaseStudyIds.length > 0 || entity.relatedCaseStudyPath || arabicEquivalent) && (
           <section className="max-w-7xl mx-auto px-6 py-12 border-t border-slate-800/50 relative z-10">
             <h2 className="text-2xl font-bold mb-3 text-white">Related Repair Resources</h2>
             <p className="text-sm text-slate-400 mb-8 max-w-3xl">Explore the closest repair services, troubleshooting pages, brand specialists and practical guides for this type of fault.</p>
@@ -500,6 +527,21 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
                       <Link key={guide.path} to={guide.path} className="flex items-center justify-between gap-2 text-sm text-slate-300 hover:text-white transition-colors"><span>{guide.label}</span><ArrowRight className="w-4 h-4 text-slate-600" /></Link>
                     ))}
                   </div>
+                </div>
+              )}
+
+              {arabicEquivalent && (
+                <div className="bg-slate-900/50 border border-amber-500/20 rounded-2xl p-5" dir="rtl">
+                  <h3 className="text-sm uppercase tracking-wider font-black text-amber-300 mb-4">الخدمة بالعربية</h3>
+                  <Link
+                    to={arabicEquivalent.seo.canonicalUrl.replace(/^https?:\/\/[^/]+/, '')}
+                    className="flex items-center justify-between gap-3 text-sm font-bold text-slate-200 hover:text-amber-200 transition-colors"
+                    lang="ar-KW"
+                  >
+                    <span>{arabicEquivalent.title}</span>
+                    <ArrowRight className="w-4 h-4 text-amber-300 shrink-0 rotate-180" />
+                  </Link>
+                  <p className="mt-3 text-xs leading-5 text-slate-500">صفحة عربية مخصصة لنفس خدمة الإصلاح في الكويت.</p>
                 </div>
               )}
             </div>
