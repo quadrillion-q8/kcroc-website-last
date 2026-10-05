@@ -143,7 +143,7 @@ export default function GamingLaptopCleaningAR() {
 
   return (
     <main dir="rtl" lang="ar-KW" className="w-full min-h-screen bg-transparent text-slate-200 pt-8 sm:pt-16 lg:pt-32 pb-8 sm:pb-16 lg:pb-24">
-      <Head>
+      <Head htmlAttributes={{ lang: 'ar-KW', dir: 'rtl' }}>
         <title>تنظيف لابتوب القيمنق وتغيير المعجون الحراري في الكويت | KCROC</title>
         <meta name="description" content="كل كم لازم تنظف لابتوب القيمنق في الكويت؟ تعرف على جدول تنظيف الغبار، متى تغيّر المعجون الحراري، وعلامات ارتفاع الحرارة والـthermal throttling." />
         <link rel="canonical" href={PAGE_URL} />
