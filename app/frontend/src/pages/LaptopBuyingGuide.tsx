@@ -652,15 +652,11 @@ export default function LaptopBuyingGuide() {
 
           <div className="mt-5">
             <Callout>
-              Match the suffix to the workload, not the number after "Core" or "Ryzen."{' '}
-              <Link
-                to="/blog/intel-core-ultra-vs-amd-ryzen-ai"
-                className="text-cyan-400 underline hover:text-cyan-300"
-              >
-                Read our Intel Core Ultra vs. AMD Ryzen AI comparison →
-              </Link>{' '}
-              for a practical look at efficiency, integrated graphics, AI acceleration, cooling, and real-world
-              laptop buying trade-offs.
+              Match the suffix to the workload, not the number after "Core" or "Ryzen."
+              {' '}For a direct processor comparison, see our{' '}
+              <a href="/blog/intel-core-ultra-vs-amd-ryzen-ai" className="text-cyan-300 underline underline-offset-4 hover:text-cyan-200">Intel Core Ultra vs. AMD Ryzen AI comparison</a>{' '}
+              covering efficiency, integrated graphics and workload fit; then WhatsApp us the two models you're comparing
+              for a direct answer now.
             </Callout>
           </div>
         </div>
