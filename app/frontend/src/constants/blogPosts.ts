@@ -2591,10 +2591,9 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     "id": "guide-windows-11-background-services-audit-2026",
     "slug": "windows-11-background-services-audit",
-    "title": "Windows 11 Services to Disable? What’s Safe to Audit in 2026",
-    "excerpt": "Which Windows 11 services are safe to disable? Learn what WHESVC, DiagTrack, SysMain and MapsBroker do, what to leave alone, and how to test a service without blindly debloating Windows.",
-    "description": "Windows 11 services to disable: a practical 2026 audit of WHESVC, DiagTrack, SysMain and MapsBroker, including what is safe to change, what should stay enabled, and how to troubleshoot real CPU, disk and performance problems.",
-
+    "title": "Windows 11 Background Services You Can Audit in 2026",
+    "excerpt": "Windows 11 runs many background services most users never inspect. Learn what WHESVC, DiagTrack, SysMain and MapsBroker do and when disabling them makes sense.",
+    "description": "Windows 11 background services: understand WHESVC, DiagTrack, SysMain and MapsBroker, when to investigate them, and why measured troubleshooting is safer than random debloating.",
     "content": [
       "Windows 11 is designed to do a lot before you ever open an application.",
       "A fresh installation can have dozens of Microsoft services, scheduled tasks, background components and helper processes running quietly behind the desktop. Most of them exist for a legitimate reason. Some support security, networking or hardware. Others improve convenience. A few are there for features you may never use."
@@ -2643,38 +2642,6 @@ export const BLOG_POSTS: BlogPost[] = [
         "text": "Technical note: Service recommendations in this guide are based on Microsoft documentation, Windows diagnostic behaviour, and hands-on troubleshooting methodology. Service behaviour can vary by Windows 11 version, hardware, policy and installed software."
       },
       {
-        "type": "callout",
-        "variant": "recommendation",
-        "title": "Quick answer: which Windows 11 services can you disable?",
-        "text": "There is no universal safe-to-disable list. WHESVC, DiagTrack and SysMain should normally stay enabled unless testing or administration gives you a specific reason to change them. MapsBroker is the most clearly optional of these four when offline maps are genuinely unused."
-      },
-      {
-        "type": "h2",
-        "text": "Windows 11 service audit: the safe starting point",
-        "id": "windows-11-service-audit-safe-start"
-      },
-      {
-        "type": "paragraph",
-        "text": "If you searched for Windows 11 services to disable because your PC is slow, start with the symptom rather than the service name. A service that is merely present is not automatically a performance problem."
-      },
-      {
-        "type": "list",
-        "items": [
-          "Check Task Manager for sustained CPU, Memory and Disk usage rather than short startup spikes.",
-          "Use Resource Monitor or Event Viewer when you need to identify what is generating the activity.",
-          "Record the service name, the time the problem occurs and what else changed on the PC.",
-          "Test one change at a time so you can tell whether the change actually helped.",
-          "If stopping a service does not produce a repeatable improvement, restore it and investigate the underlying hardware, driver, update or application instead.",
-          "Create a restore point or otherwise keep a documented rollback path before making configuration changes."
-        ]
-      },
-      {
-        "type": "callout",
-        "variant": "warning",
-        "title": "Do not use a blanket debloat script",
-        "text": "Bulk-disabling Windows services can break updates, diagnostics, networking, optional features or recovery workflows. Audit the specific machine and change only what you can justify and reverse."
-      },
-      {
         "type": "h2",
         "text": "First: Don't Treat Every Background Service as Bloat",
         "id": "first-don-t-treat-every-background-service-as-bloat"
@@ -2714,15 +2681,6 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         "type": "paragraph",
         "text": "The objective is to make your particular PC run correctly with only the features you actually need."
-      },
-      {
-        "type": "h2",
-        "text": "Which services should you actually change?",
-        "id": "which-windows-services-should-you-change"
-      },
-      {
-        "type": "paragraph",
-        "text": "Use this simple rule: leave a service alone when the PC is healthy and there is no feature or administrative reason to change it. Consider a temporary test only when you can reproduce a symptom and measure whether the service is involved."
       },
       {
         "type": "h3",
@@ -3441,14 +3399,6 @@ export const BLOG_POSTS: BlogPost[] = [
           {
             "question": "How can I find what is really slowing my computer?",
             "answer": "Start with Task Manager and Resource Monitor, then check storage health, memory usage, temperatures, startup software, Reliability Monitor and Windows system integrity. A proper diagnosis is more useful than blindly disabling services."
-          },
-          {
-            "question": "What are the safest Windows 11 services to disable?",
-            "answer": "There is no universal safe list because Windows features, editions, policies and installed software differ. Of the four services covered here, MapsBroker is the clearest optional candidate when offline maps are genuinely unused; WHESVC, DiagTrack and SysMain should normally be left enabled unless a measured troubleshooting or administrative reason exists."
-          },
-          {
-            "question": "Will disabling Windows services improve FPS or gaming performance?",
-            "answer": "Usually not by itself. If gaming performance is poor, investigate GPU and CPU utilization, temperatures, drivers, RAM, storage, power settings and background applications before disabling core Windows services. A tiny reduction in background activity is not the same as fixing a bottleneck."
           }
         ]
       },
@@ -3483,7 +3433,7 @@ export const BLOG_POSTS: BlogPost[] = [
       }
     ],
     "image": "/images/blog/windows-11-background-services-audit-2026.png",
-    "discoverImage": "/images/discover/windows-11-background-services-audit-1200x675.webp",
+    "discoverImage": "/images/discover/windows-11-8gb-ram-performance-1200x675.webp",
     "date": "2026-09-05",
     "author": "KCROC Technical Team — Windows & Hardware Troubleshooting",
     "category": "Windows & Software",
@@ -3498,7 +3448,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "Windows Troubleshooting",
       "Computer Repair Kuwait"
     ],
-    "seoTitle": "Windows 11 Services to Disable? Safe Audit Guide 2026",
+    "seoTitle": "Windows 11 Background Services to Audit in 2026",
     "contentType": "guide",
     "clusterParent": "laptop-repair-kuwait-2026"
   },
@@ -6453,6 +6403,213 @@ export const BLOG_POSTS: BlogPost[] = [
     "seoTitle": "BitLocker Recovery Key After BIOS Update: Why & What to Do | KCROC",
     "seoDescription": "Windows asks for a BitLocker recovery key after a BIOS update? Learn why it happens, where to find the key, and how to suspend BitLocker before firmware updates.",
     "contentType": "guide"
-  }
+  },
+
+  {
+    id: "blog-pc-gaming-graphics-settings-better-visuals-fps",
+    slug: "pc-gaming-graphics-settings-better-visuals-fps",
+    title: "You Don’t Need Max Graphics Settings for Great PC Gaming Visuals",
+    excerpt: "You do not need to run every PC graphics setting at Ultra. Prioritize the settings that noticeably improve image quality without wasting GPU performance.",
+    description: "You do not need every PC graphics setting at Ultra. Learn which settings are worth keeping high for better gaming visuals without giving away unnecessary FPS.",
+    content: [
+      "A common PC gaming mistake is assuming that every graphics setting needs to be pushed to Ultra for a game to look great. It does not.",
+      "Some settings provide a noticeable improvement in image quality while having a relatively small effect on performance. Other settings can consume a lot more GPU power for an improvement that is difficult to notice during normal gameplay.",
+      "The trick is knowing which settings are worth keeping high.",
+    ],
+    richContent: [
+      {
+        type: "image",
+        src: "/images/geforce-rtx-gaming-pc-rgb-lighting.webp",
+        alt: "GeForce RTX gaming PC with RGB lighting in a desktop setup",
+        caption: "Good-looking PC gaming does not require every graphics option to be set to Ultra. The goal is to spend GPU performance where the visual improvement is easiest to see."
+      },
+      {
+        type: "paragraph",
+        text: "A common PC gaming mistake is assuming that every graphics setting needs to be pushed to Ultra for a game to look great. It doesn’t. Some settings provide a noticeable improvement in image quality while having a relatively small effect on performance. Other settings can consume a lot more GPU power for an improvement that is difficult to notice during normal gameplay. The trick is knowing which settings are worth keeping high."
+      },
+      {
+        type: "h2",
+        text: "1. Set Anisotropic Filtering to 16×",
+        id: "anisotropic-filtering"
+      },
+      {
+        type: "paragraph",
+        text: "Anisotropic Filtering, often called AF, improves the clarity of textures viewed at an angle or farther away from the player. You can notice it on surfaces such as roads, floors, walls and terrain that stretch toward the distance. Without sufficient texture filtering, these surfaces can appear blurry as they extend away from the camera."
+      },
+      {
+        type: "paragraph",
+        text: "On modern gaming hardware, Anisotropic Filtering generally has a relatively small performance cost, while the visual improvement can be easy to notice. AMD's current documentation says Anisotropic Filtering has a small FPS cost and offers levels up to 16×: https://www.amd.com/en/resources/support-articles/faqs/DH3-012.html"
+      },
+      {
+        type: "callout",
+        variant: "recommendation",
+        title: "Our starting point",
+        text: "16× Anisotropic Filtering, then reduce it only if a particular game or GPU workload shows a meaningful performance benefit from doing so."
+      },
+      {
+        type: "h3",
+        text: "Where to find it",
+        id: "where-to-find-af"
+      },
+      {
+        type: "paragraph",
+        text: "On NVIDIA systems, driver-level graphics settings are available through the NVIDIA App and NVIDIA Control Panel, depending on the setting and driver version. NVIDIA's current app exposes legacy driver settings such as Anisotropic Filtering under its Graphics workflow: https://www.nvidia.com/en-us/geforce/news/nvidia-app-global-dlss-overrides-rtx-40-series-smooth-motion/"
+      },
+      {
+        type: "paragraph",
+        text: "On AMD systems, open AMD Software: Adrenalin Edition and look under the Gaming or Graphics settings for Anisotropic Filtering. For individual games, using the game's own setting is usually the simplest option."
+      },
+      {
+        type: "h2",
+        text: "2. Keep Texture Quality High — as long as your VRAM can handle it",
+        id: "texture-quality"
+      },
+      {
+        type: "paragraph",
+        text: "Texture Quality is one of the settings that is often misunderstood. Increasing texture quality does not automatically mean a huge FPS reduction. The bigger question is whether your graphics card has enough VRAM to hold the higher-quality textures comfortably."
+      },
+      {
+        type: "paragraph",
+        text: "When there is enough VRAM available, High or Ultra textures can provide a significant improvement in surface detail without being nearly as expensive as some other graphics settings. The problem begins when a game needs more video memory than the GPU can comfortably provide."
+      },
+      {
+        type: "paragraph",
+        text: "That can lead to texture streaming problems, stuttering and inconsistent frame delivery as the system has to move data between different types of memory. So rather than automatically choosing Low or Medium textures to gain FPS, check your GPU's VRAM usage first."
+      },
+      {
+        type: "callout",
+        variant: "tip",
+        title: "A good rule",
+        text: "Keep textures as high as your GPU's VRAM comfortably allows."
+      },
+      {
+        type: "h2",
+        text: "3. Don’t be afraid of SSAO",
+        id: "ssao"
+      },
+      {
+        type: "paragraph",
+        text: "Screen-Space Ambient Occlusion (SSAO) adds subtle shading where objects meet surfaces or where geometry creates small areas of shadow. It can make a scene feel more grounded."
+      },
+      {
+        type: "paragraph",
+        text: "Without ambient occlusion, objects can sometimes look as though they are floating slightly above the environment. With it enabled, contact areas around objects can have more visual depth."
+      },
+      {
+        type: "paragraph",
+        text: "SSAO is usually a much better candidate for keeping enabled than some of the heavier lighting, shadow or ray-tracing options. The exact performance cost varies significantly between games and implementations, so there is no universal FPS number that applies to every PC."
+      },
+      {
+        type: "callout",
+        variant: "recommendation",
+        title: "Our starting point",
+        text: "Use SSAO or the game's equivalent ambient-occlusion setting, then reduce it only if you actually need the performance."
+      },
+      {
+        type: "h2",
+        text: "4. Use image sharpening when your game looks soft",
+        id: "image-sharpening"
+      },
+      {
+        type: "paragraph",
+        text: "Modern games frequently use technologies such as TAA or resolution scaling to produce smoother images and better performance. The downside is that the final image can sometimes look slightly soft. A moderate sharpening filter can bring some of that definition back."
+      },
+      {
+        type: "paragraph",
+        text: "NVIDIA provides image scaling and sharpening controls in its graphics ecosystem, while AMD offers Radeon Image Sharpening (RIS). AMD describes RIS as a sharpening technology designed to restore clarity to game visuals with very little performance impact: https://www.amd.com/en/products/software/adrenalin/radeon-image-sharpening.html"
+      },
+      {
+        type: "paragraph",
+        text: "A useful approach is to start with a relatively low sharpening value and increase it gradually. Around 20–30% is a reasonable starting point, but the ideal value depends on the game, resolution, anti-aliasing method and monitor."
+      },
+      {
+        type: "callout",
+        variant: "warning",
+        title: "More sharpening is not always better",
+        text: "Too much sharpening can create halos around objects and make fine details look artificial. Judge it in motion at your normal resolution rather than from a paused screenshot."
+      },
+      {
+        type: "h2",
+        text: "The better way to optimize your graphics settings",
+        id: "better-graphics-optimization"
+      },
+      {
+        type: "paragraph",
+        text: "You don't have to choose between beautiful graphics and good FPS. Instead, prioritize the settings that give you the most visible improvement for their performance cost."
+      },
+      {
+        type: "comparisonTable",
+        title: "A sensible starting point",
+        columns: ["Setting", "Starting point"],
+        rows: [
+          { feature: "Anisotropic Filtering", values: ["16×"] },
+          { feature: "Texture Quality", values: ["High/Ultra when VRAM allows"] },
+          { feature: "Ambient Occlusion / SSAO", values: ["Enabled or High"] },
+          { feature: "Image Sharpening", values: ["Moderate"] },
+          { feature: "Heavy shadows, reflections and ray tracing", values: ["Reduce these first when you need more FPS"] }
+        ]
+      },
+      {
+        type: "paragraph",
+        text: "The exact balance will depend on your GPU, CPU, resolution and the game itself."
+      },
+      {
+        type: "h2",
+        text: "When graphics settings are not the real problem",
+        id: "when-settings-arent-the-problem"
+      },
+      {
+        type: "paragraph",
+        text: "If a game still struggles after sensible graphics tuning, the problem may not be a graphics-setting problem at all. Thermal throttling, outdated drivers, insufficient RAM, VRAM limitations, storage issues or hardware faults can also cause poor gaming performance."
+      },
+      {
+        type: "paragraph",
+        text: "That's where proper PC diagnosis matters. KCROC troubleshoots gaming PCs from software and performance problems through to cooling, GPU, motherboard and component-level faults: https://www.computerrepairkuwait.com/gaming-pc-repair-kuwait"
+      },
+      {
+        type: "callout",
+        variant: "expert",
+        title: "Need help with an underperforming gaming PC?",
+        text: "KCROC can diagnose the actual problem instead of simply telling you to turn the graphics down. Use the gaming PC repair page when overheating, stuttering, crashing or unexplained performance loss continues after sensible tuning."
+      },
+      {
+        type: "h2",
+        text: "Official references",
+        id: "official-references"
+      },
+      {
+        type: "list",
+        items: [
+          "AMD — Customize Graphics Settings with AMD Software: Adrenalin Edition: https://www.amd.com/en/resources/support-articles/faqs/DH3-012.html",
+          "AMD — Radeon Image Sharpening: https://www.amd.com/en/products/software/adrenalin/radeon-image-sharpening.html",
+          "NVIDIA — NVIDIA App graphics and legacy driver settings: https://www.nvidia.com/en-us/geforce/news/nvidia-app-global-dlss-overrides-rtx-40-series-smooth-motion/",
+          "NVIDIA — NVIDIA App overview and Graphics settings: https://www.nvidia.com/en-us/geforce/news/nvidia-app-download-and-features/"
+        ]
+      }
+    ],
+    image: "/images/geforce-rtx-gaming-pc-rgb-lighting.webp",
+    discoverImage: "/images/discover/gaming-pc-thermal-throttling-kuwait-1200x675.webp",
+    date: "2026-10-05",
+    technicalReviewDate: "October 5, 2026",
+    author: "Imran Natiq",
+    category: "Gaming Performance",
+    readTime: "3-4 min read",
+    clusterParent: "gaming-pc-optimization-2026",
+    tags: [
+      "PC Gaming",
+      "Graphics Settings",
+      "Anisotropic Filtering",
+      "Texture Quality",
+      "SSAO",
+      "Image Sharpening",
+      "FPS Optimization",
+      "VRAM",
+      "Gaming PC Performance"
+    ],
+    seoTitle: "PC Gaming Graphics Settings: Better Visuals Without Maxing Everything | KCROC",
+    seoDescription: "Which PC graphics settings are worth keeping high? Learn how to improve image quality without wasting GPU performance or FPS.",
+    contentType: "blog"
+  },
+
 
 ];
