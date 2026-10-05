@@ -77,7 +77,7 @@ const CONFIG: Record<string, {
       { label: 'تبديل شاشة اللابتوب', path: '/ar/laptop-screen-repair-kuwait' },
       { label: 'فني كمبيوتر بالقرب مني', path: '/ar/near-me' }
     ],
-    serviceIds: ['srv-laptop', 'srv-motherboard', 'srv-screen', 'srv-battery', 'srv-charging-port']
+    serviceIds: ['srv-laptop', 'srv-motherboard', 'srv-screen', 'srv-battery', 'srv-charging-port', 'srv-keyboard', 'srv-liquid-damage']
   },
   'motherboard-repair-kuwait': {
     h1: 'تصليح المذربورد واللوحة الأم في الكويت',
@@ -319,6 +319,67 @@ const CONFIG: Record<string, {
       { label: 'تصليح كمبيوتر حولي', path: '/ar/computer-repair-hawalli' }
     ],
     serviceIds: ['srv-ssd-ram', 'srv-laptop', 'srv-gaming-laptop']
+  },
+  'laptop-charging-port-repair-kuwait': {
+    h1: 'تصليح مدخل شحن اللابتوب في الكويت',
+    eyebrow: 'الشاحن ما يشحن؟ المنفذ مرتخي؟ USB-C أو DC Jack',
+    intro: 'إذا اللابتوب ما يشحن إلا بزاوية معينة، مدخل الشحن مرتخي، أو USB-C وقف يشحن، لا تفترض أن البطارية أو المذربورد كلها خربانة. نفحص الشاحن والمنفذ ونقاط اللحام ومسار الطاقة أول، وبعدها نعطيك الحل والسعر قبل أي إصلاح مدفوع.',
+    bullets: ['تصليح DC Jack ومداخل الشحن', 'تشخيص USB-C والشحن السريع حسب الموديل', 'فحص دائرة الشحن ومسار الطاقة على البورد', 'إصلاح نقاط اللحام والمكونات عند الإمكان', 'استلام وتوصيل مجاني داخل الكويت'],
+    faq: [
+      { q: 'اللابتوب يشحن إذا حركت السلك، شنو المشكلة؟', a: 'غالبًا يكون هناك ارتخاء أو تلف في المنفذ أو نقطة لحام متشققة، لكن نفحصه كهربائيًا وميكانيكيًا قبل تحديد السبب.' },
+      { q: 'هل تصلحون USB-C في اللابتوب؟', a: 'نعم، نفحص المنفذ ومسار الطاقة ودوائر USB-C والشحن حسب تصميم الجهاز قبل طلب قطعة أو مذربورد جديدة.' },
+      { q: 'هل تبديل مدخل الشحن يعني تبديل المذربورد؟', a: 'ليس بالضرورة. إذا كان العطل في المنفذ أو التوصيلات أو مكوّن قابل للإصلاح، يمكن معالجة المشكلة بدون تبديل البورد كاملة.' },
+      { q: 'كم سعر تصليح مدخل الشحن؟', a: 'أسعار إصلاح مدخل الشحن تبدأ من 20 د.ك حسب الموديل ونوع المنفذ والعطل، والسعر النهائي يتحدد بعد التشخيص.' }
+    ],
+    englishPath: '/laptop-charging-port-repair-kuwait',
+    arabicLinks: [
+      { label: 'تصليح لابتوب', path: '/ar/laptop-repair-kuwait' },
+      { label: 'تصليح مذربورد', path: '/ar/motherboard-repair-kuwait' },
+      { label: 'تبديل البطارية', path: '/ar/battery-replacement-kuwait' },
+      { label: 'فني كمبيوتر بالقرب مني', path: '/ar/near-me' }
+    ],
+    serviceIds: ['srv-charging-port', 'srv-motherboard', 'srv-battery', 'srv-laptop']
+  },
+  'laptop-keyboard-replacement-kuwait': {
+    h1: 'تصليح وتبديل كيبورد اللابتوب في الكويت',
+    eyebrow: 'أزرار لا تعمل، كيبورد مكسور أو ضرر بعد سائل',
+    intro: 'بعض مشاكل الكيبورد تكون من لوحة المفاتيح نفسها، وبعضها يبدأ من الكابل أو السوائل أو اللوحة الأم. نفحص السبب أول، ثم نحدد هل المطلوب تنظيف أو إصلاح اتصال أو تبديل الكيبورد، مع معرفة السعر قبل التنفيذ.',
+    bullets: ['تبديل كيبورد اللابتوب حسب الموديل', 'فحص كابل وتوصيل الكيبورد', 'مشاكل الأزرار والكتابة المتقطعة', 'تشخيص أضرار السوائل قبل تبديل القطعة', 'استلام وتوصيل مجاني داخل الكويت'],
+    faq: [
+      { q: 'بعض أزرار اللابتوب ما تشتغل، هل لازم تبديل الكيبورد؟', a: 'ليس دائمًا. نفحص لوحة المفاتيح والكابل وآثار السوائل والاتصال قبل تحديد القطعة المطلوبة.' },
+      { q: 'هل تبدلون كيبورد Dell وHP وLenovo وASUS؟', a: 'نعم حسب الموديل وتوفر القطعة. نتحقق من رقم الموديل وشكل الكيبورد والتوافق قبل الطلب.' },
+      { q: 'إذا انكب ماي على الكيبورد، هل يكفي تبديله؟', a: 'ليس بالضرورة. السائل ممكن يوصل للوحة الأم، لذلك نفحص الجهاز كامل قبل اعتبار المشكلة مجرد كيبورد.' },
+      { q: 'هل تعطوني السعر قبل التركيب؟', a: 'نعم. نحدد العطل والموديل والقطعة المطلوبة ثم نوضح السعر قبل أي عمل مدفوع.' }
+    ],
+    englishPath: '/laptop-keyboard-replacement-kuwait',
+    arabicLinks: [
+      { label: 'تصليح لابتوب', path: '/ar/laptop-repair-kuwait' },
+      { label: 'تصليح أضرار السوائل', path: '/ar/laptop-liquid-damage-repair-kuwait' },
+      { label: 'تصليح مذربورد', path: '/ar/motherboard-repair-kuwait' },
+      { label: 'فني كمبيوتر بالقرب مني', path: '/ar/near-me' }
+    ],
+    serviceIds: ['srv-keyboard', 'srv-laptop', 'srv-liquid-damage', 'srv-motherboard']
+  },
+  'laptop-liquid-damage-repair-kuwait': {
+    h1: 'تصليح لابتوب بعد انسكاب الماء والسوائل في الكويت',
+    eyebrow: 'ماء، قهوة، عصير أو أي سائل — لا تعيد تشغيل الجهاز',
+    intro: 'إذا انكب سائل على اللابتوب، أهم خطوة هي إيقاف التشغيل وفصل الشاحن وعدم الاستمرار في التجربة. السائل ممكن يسبب شورت أو تآكل حتى بعد ما ينشف الجهاز من الخارج. في KCROC نفحص التلوث واللوحة والدوائر ونحدد هل يمكن إنقاذ البورد الأصلي قبل التفكير في الاستبدال.',
+    bullets: ['فحص أضرار الماء والقهوة والسوائل', 'تنظيف وفحص التآكل والدوائر', 'تشخيص الشورت ومشاكل الطاقة بعد الانسكاب', 'إصلاح اللوحة على مستوى المكونات عند الإمكان', 'استلام وتوصيل مجاني داخل الكويت'],
+    faq: [
+      { q: 'شنو أسوي إذا انكب ماي على اللابتوب؟', a: 'طفي الجهاز فورًا، افصل الشاحن، ولا تعيد تشغيله للتجربة. الأفضل فحصه بأسرع وقت بدل الاعتماد على التجفيف الخارجي فقط.' },
+      { q: 'هل ينفع أحط اللابتوب في الرز؟', a: 'لا. الرز ما يزيل بقايا السوائل من اللوحة والوصلات وقد يضيف أوساخًا. افصل الطاقة وخله للفحص الفني.' },
+      { q: 'اللابتوب كان شغال وبعد يومين مات، ممكن يكون من الانسكاب؟', a: 'نعم. بقايا السوائل والتآكل ممكن تسبب عطلًا متأخرًا حتى إذا الجهاز اشتغل في البداية.' },
+      { q: 'هل تقدرون تصلحون المذربورد بعد الماء؟', a: 'أحيانًا نعم. يعتمد على مكان السائل ودرجة التآكل ونوع المكونات المتضررة. نفحص قابلية الإصلاح قبل اقتراح تبديل البورد.' }
+    ],
+    englishPath: '/laptop-liquid-damage-repair-kuwait',
+    arabicLinks: [
+      { label: 'تصليح لابتوب', path: '/ar/laptop-repair-kuwait' },
+      { label: 'تصليح مذربورد', path: '/ar/motherboard-repair-kuwait' },
+      { label: 'تصليح MacBook', path: '/ar/macbook-repair-kuwait' },
+      { label: 'تبديل كيبورد', path: '/ar/laptop-keyboard-replacement-kuwait' },
+      { label: 'فني كمبيوتر بالقرب مني', path: '/ar/near-me' }
+    ],
+    serviceIds: ['srv-liquid-damage', 'srv-motherboard', 'srv-keyboard', 'srv-macbook']
   },
   'gaming-laptop-repair-kuwait': {
     h1: 'تصليح Gaming Laptop في الكويت',
@@ -1382,6 +1443,9 @@ export default function ArabicCommercialPage() {
     'srv-battery': '/ar/battery-replacement-kuwait',
     'srv-ssd-ram': '/ar/ssd-ram-upgrade-kuwait',
     'srv-gaming-laptop': '/ar/gaming-laptop-repair-kuwait',
+    'srv-charging-port': '/ar/laptop-charging-port-repair-kuwait',
+    'srv-keyboard': '/ar/laptop-keyboard-replacement-kuwait',
+    'srv-liquid-damage': '/ar/laptop-liquid-damage-repair-kuwait',
   };
   const faqSchema = {
     '@graph': [{
