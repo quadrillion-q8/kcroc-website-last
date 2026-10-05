@@ -78,6 +78,7 @@ const AuthorImran = lazy(() => import('./pages/AuthorImran'));
 const BatteryHealthGuide = lazy(() => import('./pages/BatteryHealthGuide'));
 const LaptopOverheatingGuide = lazy(() => import('./pages/LaptopOverheatingGuide'));
 const BiosUefiRecoveryGuide = lazy(() => import('./pages/BiosUefiRecoveryGuide'));
+const BiosUefiRecoveryGuideAR = lazy(() => import('./pages/BiosUefiRecoveryGuideAR'));
 const DellLaptopOverheatingPage = lazy(() => import('./pages/DellLaptopOverheatingPage').then(module => ({ default: module.DellLaptopOverheatingPage })));
 const GameBarPresenceWriterGuide = lazy(() => import('./pages/GameBarPresenceWriterGuide'));
 const Windows10EndOfSupportGuide = lazy(() => import('./pages/Windows10EndOfSupportGuide'));
@@ -189,6 +190,7 @@ export const routes: RouteObject[] = [
           { path: 'guides/laptop-battery-warning-signs', element: <BatteryHealthGuide /> },
           { path: 'guides/why-is-my-laptop-so-hot', element: <LaptopOverheatingGuide /> },
           { path: 'guides/bios-uefi-recovery-kuwait', element: <BiosUefiRecoveryGuide /> },
+          { path: 'guides/ar/bios-uefi-recovery-kuwait', element: <BiosUefiRecoveryGuideAR /> },
           { path: 'guides/dell-laptop-overheating', element: <DellLaptopOverheatingPage /> },
           { path: 'guides/gamebar-presence-writer-fix', element: <GameBarPresenceWriterGuide /> },
           { path: 'guides/windows-10-end-of-support', element: <Windows10EndOfSupportGuide /> },
