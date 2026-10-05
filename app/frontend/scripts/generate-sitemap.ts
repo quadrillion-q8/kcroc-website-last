@@ -25,56 +25,22 @@ const DOMAIN = KCROC_GRAPH.business!.websiteUrl;
 // Formerly standalone routes are now first-class WebPage entities in graph.ts.
 // Keep sitemap membership derived from the graph + BLOG_POSTS so generated
 // routes, navigation and discovery cannot drift apart.
-const EXTRA_STANDALONE_PAGES: string[] = [];
+const EXTRA_STANDALONE_PAGES: string[] = [
+  '/guides/ar/bios-uefi-recovery-kuwait',
+];
 
-// 🚀 FIX: Flat priority/changefreq (0.8/weekly on every URL) told crawlers
-// nothing about which pages matter most. Tier by entity type + URL shape:
-// homepage highest, core money-pages next, then supporting content, then
-// legal/utility pages lowest. Google mostly ignores <priority> today, but
-// it's a free, low-effort signal and correctly documents page importance
-// for any crawler that still reads it.
-const getPriorityAndFreq = (
-  finalUrl: string,
-  entityType?: string
-): { priority: string; changefreq: string } => {
-  const path = finalUrl.replace(DOMAIN, '') || '/';
-
-  if (path === '/') return { priority: '1.0', changefreq: 'daily' };
-
-  // Core conversion pages: services, pricing, main services hub, contact/booking
-  if (
-    entityType === 'Service' ||
-    path === '/near-me' ||
-    /^\/ar\/(computer-repair-kuwait|laptop-repair-kuwait|motherboard-repair-kuwait|gaming-pc-repair-kuwait|laptop-screen-repair-kuwait)\/?$/.test(path) ||
-    /^\/(services|pricing|contact|booking)\/?$/.test(path)
-  ) {
-    return { priority: '0.9', changefreq: 'weekly' };
+// Google ignores <priority> and <changefreq>. Keep the sitemap focused on
+// canonical URLs and accurate <lastmod> values instead.
+const normalizeLastModified = (value: string): string => {
+  const parsed = new Date(value);
+  if (Number.isNaN(parsed.getTime())) {
+    throw new Error(`Invalid sitemap lastModified value: ${value}`);
   }
-
-  // High-intent supporting content: brand pages, problem/symptom pages,
-  // case studies, the physical Hawalli location page, and the blog/FAQ hubs
-  if (
-    entityType === 'Brand' ||
-    entityType === 'Problem' ||
-    entityType === 'CaseStudy' ||
-    path === '/location/hawalli' ||
-    /^\/(blog|news|faq)\/?$/.test(path)
-  ) {
-    return { priority: '0.7', changefreq: 'weekly' };
+  const now = Date.now();
+  if (parsed.getTime() > now + 5 * 60 * 1000) {
+    throw new Error(`Future sitemap lastModified value: ${value}`);
   }
-
-  // Individual blog/guide posts and other location-area pages
-  if ((path.startsWith('/blog/') || path.startsWith('/guides/') || path.startsWith('/news/')) || entityType === 'Location') {
-    return { priority: '0.6', changefreq: 'monthly' };
-  }
-
-  // Legal/utility/company pages
-  if (/^\/(privacy-policy|terms-of-service|privacy-security|about)\/?$/.test(path)) {
-    return { priority: '0.3', changefreq: 'yearly' };
-  }
-
-  // Default for anything not explicitly tiered above
-  return { priority: '0.5', changefreq: 'monthly' };
+  return value;
 };
 
 const generateSitemap = () => {
@@ -117,7 +83,9 @@ const generateSitemap = () => {
   const extraUrlEntries = EXTRA_STANDALONE_PAGES.map(route => ({
     url: `${DOMAIN}${route}`,
     entityType: undefined,
-    lastModified: KCROC_GRAPH.metadata.lastUpdated,
+    lastModified: route === '/guides/ar/bios-uefi-recovery-kuwait'
+      ? '2026-10-05'
+      : KCROC_GRAPH.metadata.lastUpdated,
   }));
 
   // De-duplicate in case a slug is ever represented in both the graph and
@@ -130,13 +98,13 @@ const generateSitemap = () => {
   });
 
   const urlNodes = allEntries.map(({ url: finalUrl, entityType, lastModified }) => {
-    const { priority, changefreq } = getPriorityAndFreq(finalUrl, entityType);
+    if (finalUrl.includes('#')) {
+      throw new Error(`Sitemap cannot contain fragment URLs: ${finalUrl}`);
+    }
     return `
   <url>
     <loc>${finalUrl}</loc>
-    <lastmod>${lastModified}</lastmod>
-    <changefreq>${changefreq}</changefreq>
-    <priority>${priority}</priority>
+    <lastmod>${normalizeLastModified(lastModified)}</lastmod>
   </url>`;
   }).join('');
 
