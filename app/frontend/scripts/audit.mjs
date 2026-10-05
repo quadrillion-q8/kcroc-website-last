@@ -26,6 +26,17 @@ function warn(msg) {
   warnings.push(msg);
 }
 
+function assertNotFutureSitemapDate(value, url) {
+  const parsed = new Date(value);
+  if (Number.isNaN(parsed.getTime())) {
+    fail(`Sitemap URL "${url}" has invalid <lastmod>: "${value}".`);
+    return;
+  }
+  if (parsed.getTime() > Date.now() + 5 * 60 * 1000) {
+    fail(`Sitemap URL "${url}" has a future <lastmod>: "${value}".`);
+  }
+}
+
 if (!existsSync(DIST_DIR)) {
   console.error('❌ No dist/ directory found. Run `pnpm run build` before `pnpm run audit:seo`.');
   process.exit(1);
@@ -48,11 +59,16 @@ if (existsSync(sitemapPath)) {
     fail('dist/sitemap.xml contains no <loc> entries.');
   }
 
+  const sitemapEntries = [...sitemapXml.matchAll(/<url>[\s\S]*?<loc>(.*?)<\/loc>[\s\S]*?(?:<lastmod>(.*?)<\/lastmod>)?[\s\S]*?<\/url>/g)];
+
   for (const url of sitemapUrls) {
     let pathname;
     try {
       const parsedUrl = new URL(url);
       pathname = parsedUrl.pathname;
+      if (parsedUrl.hash) {
+        fail(`Sitemap URL must not contain a URL fragment: "${url}"`);
+      }
       if (parsedUrl.protocol !== 'https:' || parsedUrl.hostname !== 'www.computerrepairkuwait.com') {
         fail(`Sitemap URL must use the HTTPS canonical hostname www.computerrepairkuwait.com: "${url}"`);
       }
@@ -60,6 +76,10 @@ if (existsSync(sitemapPath)) {
       fail(`Sitemap contains an unparsable URL: "${url}"`);
       continue;
     }
+
+    const entry = sitemapEntries.find((match) => match[1].trim() === url);
+    if (entry?.[2]) assertNotFutureSitemapDate(entry[2].trim(), url);
+
     const htmlPath =
       pathname === '/' ? join(DIST_DIR, 'index.html') : join(DIST_DIR, `${pathname.replace(/^\//, '')}.html`);
 
@@ -88,6 +108,56 @@ function walkHtmlFiles(dir) {
 
 const htmlFiles = walkHtmlFiles(DIST_DIR);
 const titleOwners = new Map();
+
+const htmlByCanonical = new Map();
+
+function extractCanonical(html) {
+  const match = html.match(/<link[^>]+rel=["']canonical["'][^>]+href=["']([^"']+)["']/i)
+    || html.match(/<link[^>]+href=["']([^"']+)["'][^>]+rel=["']canonical["']/i);
+  return match?.[1]?.trim() || null;
+}
+
+function extractAlternates(html) {
+  const out = new Map();
+  const re = /<link[^>]+rel=["']alternate["'][^>]+hrefLang=["']([^"']+)["'][^>]+href=["']([^"']+)["']/gi;
+  for (const match of html.matchAll(re)) out.set(match[1].toLowerCase(), match[2]);
+  return out;
+}
+
+for (const file of htmlFiles) {
+  const html = readFileSync(file, 'utf-8');
+  const canonical = extractCanonical(html);
+  if (canonical) {
+    htmlByCanonical.set(canonical, { file, alternates: extractAlternates(html) });
+  }
+}
+
+for (const [canonical, page] of htmlByCanonical.entries()) {
+  if (page.alternates.size === 0) continue;
+
+  if (!page.alternates.has('x-default')) {
+    warn(`${page.file.replace(DIST_DIR, 'dist')}: hreflang set is missing x-default.`);
+  }
+
+  for (const [lang, href] of page.alternates.entries()) {
+    if (lang === 'x-default') continue;
+
+    if (!href.startsWith('https://www.computerrepairkuwait.com/')) {
+      fail(`${page.file.replace(DIST_DIR, 'dist')}: hreflang ${lang} points outside the canonical hostname: "${href}".`);
+      continue;
+    }
+
+    const target = htmlByCanonical.get(href);
+    if (!target) {
+      fail(`${page.file.replace(DIST_DIR, 'dist')}: hreflang ${lang} target is not a prerendered canonical page: "${href}".`);
+      continue;
+    }
+
+    if (![...target.alternates.values()].includes(canonical)) {
+      fail(`${page.file.replace(DIST_DIR, 'dist')}: hreflang ${lang} target "${href}" does not link back to "${canonical}".`);
+    }
+  }
+}
 
 if (htmlFiles.length === 0) {
   fail('No prerendered index.html files found under dist/.');
