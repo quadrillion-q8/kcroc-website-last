@@ -48,15 +48,6 @@ export default function Header() {
   
   const phoneDisplay = NAV_GRAPH.business!.telephone;
   const cleanTel = phoneDisplay.replace(/\D/g, '');
-  // 🚀 FIX: was NAV_GRAPH.business?.logoUrl, which is an ABSOLUTE production
-  // URL (https://www.computerrepairkuwait.com/logo.webp) — correct for
-  // schema.org JSON-LD (which needs fully-qualified image URLs) but wrong
-  // for a visible <img>, which should just fetch the locally-bundled file.
-  // Was firing an extra same-origin-looking-but-still-external request on
-  // every single page load (confirmed via a full-site Puppeteer crawl —
-  // every page's header logo issued this identical extra request).
-  const logoUrl = '/logo.webp';
-
   useEffect(() => {
     if (!headerRef.current) return;
     const observer = new ResizeObserver(() => {
@@ -156,10 +147,14 @@ export default function Header() {
             <Link to="/" className="flex items-center shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f] rounded-lg" aria-label="KCROC Home">
               {!logoError ? (
                 <img
-                  src={logoUrl}
+                  src="/logo-128.webp"
+                  srcSet="/logo-128.webp 128w, /logo-256.webp 256w"
+                  sizes="72px"
                   alt="KCROC — Kuwait Computer Repair On Call"
-                  width="80"
-                  height="80"
+                  width="72"
+                  height="72"
+                  decoding="async"
+                  fetchPriority="high"
                   className="h-[72px] w-[72px] object-contain brightness-[1.08] saturate-[1.04] drop-shadow-[0_10px_22px_rgba(201,128,77,0.22)]"
                   onError={() => setLogoError(true)}
                 />
