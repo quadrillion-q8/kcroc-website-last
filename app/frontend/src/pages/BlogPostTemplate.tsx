@@ -205,6 +205,18 @@ const STANDALONE_REPAIR_PATHS: Record<string, { title: string; intro: string; li
       { href: '/motherboard-repair-kuwait', label: 'Motherboard Repair Kuwait', description: 'For board-level storage controller, power or slot faults.' },
     ],
   },
+  'windows-troubleshooting-complete-guide': {
+    title: 'Windows troubleshooting: related repair paths',
+    intro: 'Once the symptom points to a specific layer, move from the universal framework to the guide or service that matches what the machine is actually doing.',
+    links: [
+      { href: '/guides/windows-11-update-problems', label: 'Windows 11 Update Problems', description: 'Error codes, failed installs and update recovery in detail.' },
+      { href: '/guides/windows-11-connected-to-wifi-but-no-internet', label: 'Connected to Wi-Fi but No Internet', description: 'Router, DNS, DHCP, VPN and adapter checks in order.' },
+      { href: '/guides/ssd-not-detected-windows-11', label: 'SSD Not Detected in Windows 11', description: 'For storage that disappears or fails during repair.' },
+      { href: '/windows-wont-boot-kuwait', label: "Windows Won't Boot", description: 'For boot loops and systems that cannot reach Windows.' },
+      { href: '/blue-screen-of-death-bsod-fix-kuwait', label: 'BSOD Diagnostic', description: 'For repeated stop-code crashes that survive software checks.' },
+      { href: '/laptop-repair-kuwait', label: 'Laptop Repair Kuwait', description: 'For hardware faults in storage, memory, power or cooling.' },
+    ],
+  },
   'windows-11-update-problems': {
     title: 'Windows 11 Update problems: related repair paths',
     intro: 'When an update failure turns into a specific symptom, move from generic Windows Update troubleshooting to the problem page that matches what the machine is actually doing.',
@@ -820,6 +832,7 @@ export default function BlogPostTemplate() {
     'windows-11-100-cpu-usage',
     'ssd-not-detected-windows-11',
     'windows-11-update-problems',
+    'windows-troubleshooting-complete-guide',
   ].includes(post.slug);
   const isMicrosoftSurfaceEventNews = post.slug === 'microsoft-windows-surface-event-october-7-2026';
   const socialImage = toAbsoluteAssetUrl(post.discoverImage || post.image);
