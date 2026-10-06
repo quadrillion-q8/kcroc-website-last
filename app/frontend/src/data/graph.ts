@@ -78,7 +78,7 @@ export const rawGraphData: RawGraphData = {
     'page-home': {
       id: 'page-home', slug: '', entityType: 'WebPage', isActive: true,
       title: 'Home', description: 'KCROC Homepage — Component-level computer repair in Kuwait',
-      seo: { title: 'Kuwait Computer Repair On Call | Hawalli Lab | KCROC', description: 'Kuwait Computer Repair On Call (KCROC): laptop, PC and MacBook repair from our Hawalli lab. Free pickup and delivery, 30-day warranty, No Fix No Fee.', canonicalUrl: 'https://www.computerrepairkuwait.com/', ogType: 'website', schemaTypes: ['LocalBusiness', 'WebSite', 'WebPage'], lastModified: '2026-10-02T00:00:00+03:00' },
+      seo: { title: 'Kuwait Computer Repair On Call | Hawalli Lab | KCROC', description: 'Kuwait Computer Repair On Call (KCROC): laptop, PC and MacBook repair from our Hawalli lab. Free pickup and delivery, 30-day warranty, No Fix No Fee.', canonicalUrl: 'https://www.computerrepairkuwait.com/', locale: 'en_KW', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/computer-repair-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/' }, ogType: 'website', schemaTypes: ['LocalBusiness', 'WebSite', 'WebPage'], lastModified: '2026-10-02T00:00:00+03:00' },
       hero: { headline: 'Kuwait\'s Expert Component-Level Repair Service.', subheadline: 'We Fix the Board. We Don\'t Just Swap It.', description: 'We diagnose and repair failed components at board level — restoring devices that most repair shops in Kuwait would simply declare beyond repair.', primaryCTA: { text: 'WhatsApp a Technician', route: 'https://wa.me/96555301913' }, secondaryCTA: { text: 'View All Services', route: '/services' } },
       featuredFAQIds: [
         'faq-pick-and-drop', 
