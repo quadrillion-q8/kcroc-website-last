@@ -32,7 +32,7 @@
 // Helmet implementation and one provider in the tree.
 import React from 'react';
 import { Head } from 'vite-react-ssg';
-import { KCROC_GRAPH } from '../../data/graph';
+import { SEO_GRAPH } from '../../data/seoGraph.generated';
 import {
   ServiceEntity,
   LocationEntity,
@@ -95,9 +95,9 @@ const getDefaultBreadcrumbs = (entity: RoutableEntity): { name: string; url: str
 
 export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
   // 1. Fetch Core Graph Entities
-  const entity = KCROC_GRAPH.routableEntities.find(e => e.id === entityId);
-  const business = KCROC_GRAPH.business;
-  const primaryLocation = KCROC_GRAPH.locations.find(l => l.id === 'loc-hawalli');
+  const entity = SEO_GRAPH.routableEntities.find(e => e.id === entityId);
+  const business = SEO_GRAPH.business;
+  const primaryLocation = SEO_GRAPH.related.locations.find(l => l.id === 'loc-hawalli');
 
   // 2. Fallback to default SEO if entity is missing
   if (!entity || !entity.seo || !business) {
@@ -322,7 +322,7 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
           const webPage = entity as WebPageEntity;
           const featuredIds = webPage.featuredFAQIds || [];
           const sourceFaqs = featuredIds.length > 0
-            ? featuredIds.map(id => KCROC_GRAPH.faqs.find(f => f.id === id)).filter((f): f is FAQEntity => Boolean(f))
+            ? featuredIds.map(id => SEO_GRAPH.faqs.find(f => f.id === id)).filter((f): f is FAQEntity => Boolean(f))
             : [];
           
           questions = sourceFaqs.map(faq => ({ title: faq.title, answer: faq.answer }));
@@ -350,16 +350,16 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
           const caseEntity = entity as CaseStudyEntity;
           const caseImage = caseEntity.featuredImage?.hero?.webp || caseEntity.featuredImage?.ogImage;
           const relatedBrand = caseEntity.brandId
-            ? KCROC_GRAPH.brands?.find(brand => brand.id === caseEntity.brandId)
+            ? SEO_GRAPH.related.brands?.find(brand => brand.id === caseEntity.brandId)
             : undefined;
           const relatedServices = (caseEntity.serviceIds ?? [])
-            .map(id => KCROC_GRAPH.services.find(service => service.id === id))
+            .map(id => SEO_GRAPH.related.services.find(service => service.id === id))
             .filter(Boolean);
           const relatedProblems = (caseEntity.problemIds ?? [])
-            .map(id => KCROC_GRAPH.problems?.find(problem => problem.id === id))
+            .map(id => SEO_GRAPH.related.problems?.find(problem => problem.id === id))
             .filter(Boolean);
           const relatedLocation = caseEntity.locationId
-            ? KCROC_GRAPH.locations.find(location => location.id === caseEntity.locationId)
+            ? SEO_GRAPH.related.locations.find(location => location.id === caseEntity.locationId)
             : undefined;
 
           schemaGraph.push({
