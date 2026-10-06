@@ -71,7 +71,7 @@ export default function Home() {
           via Google, never the homepage, and previously had no persistent
           one-thumb-reach conversion path on those pages. See RootLayout.tsx. */}
 
-      {/* Footer and ChatWidget removed from here as they are managed globally by RootLayout.tsx and App.tsx */}
+      {/* Footer is managed globally by RootLayout.tsx. */}
     </main>
   );
 }
