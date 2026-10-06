@@ -17,6 +17,7 @@ interface GuideLink {
 }
 
 const GUIDE_ORDER = [
+  'guides/windows-troubleshooting-complete-guide',
   'guides/why-is-my-laptop-so-hot',
   'guides/laptop-wont-turn-on',
   'guides/dell-laptop-overheating',
@@ -39,6 +40,7 @@ const GUIDE_ORDER = [
 ];
 
 const ICON_BY_SLUG: Record<string, React.ElementType> = {
+  'guides/windows-troubleshooting-complete-guide': Settings2,
   'guides/laptop-wont-turn-on': Power,
   'guides/dell-laptop-overheating': Cpu,
   'guides/laptop-battery-warning-signs': BatteryWarning,
