@@ -144,13 +144,7 @@ export const RootLayout: React.FC = () => {
           >
             {/* 🚀 Protects the entire routing tree from white-screen crashes */}
             <ErrorBoundary>
-              <Suspense fallback={
-                <div className="w-full h-[60vh] flex items-center justify-center bg-transparent">
-                  <div className="w-10 h-10 border-4 border-slate-800 border-t-cyan-400 rounded-full animate-spin"></div>
-                </div>
-              }>
-                <Outlet />
-              </Suspense>
+              <Outlet />
             </ErrorBoundary>
           </main>
 
