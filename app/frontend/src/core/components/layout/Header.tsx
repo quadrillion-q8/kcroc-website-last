@@ -136,6 +136,9 @@ export default function Header() {
 
   const handleMobileClose = useCallback(() => {
     setMobileOpen(false);
+    // MobileMenu is unmounted on close, so return focus here rather than
+    // relying on the menu's unmount cleanup.
+    requestAnimationFrame(() => mobileToggleRef.current?.focus());
   }, []);
 
   return (
@@ -305,28 +308,31 @@ export default function Header() {
         </>
       )}
 
-      {isDesktopViewport && Object.entries(navModel.megaMenus).map(([megaId, config]) => (
-        <Suspense key={megaId} fallback={null}>
-          <DesktopMegaMenu 
-            isOpen={activeMegaId === megaId} 
-            panelLeft={panelPositions[megaId] || 0}
-            config={config} 
-            onMouseEnter={() => handleMouseEnter(megaId)} 
+      {isDesktopViewport && activeMegaId && navModel.megaMenus[activeMegaId] && (
+        <Suspense fallback={null}>
+          <DesktopMegaMenu
+            isOpen
+            panelLeft={panelPositions[activeMegaId] || 0}
+            config={navModel.megaMenus[activeMegaId]}
+            onMouseEnter={() => handleMouseEnter(activeMegaId)}
             onMouseLeave={handleMouseLeave}
             onClose={() => setActiveMegaId(null)}
           />
         </Suspense>
-      ))}
+      )}
 
-      <MobileMenu 
-        isOpen={mobileOpen} 
-        onClose={handleMobileClose} 
-        mobileRef={mobileRef} 
-        navModel={navModel}
-        cleanTel={cleanTel}
-        phoneDisplay={phoneDisplay}
-        triggerRef={mobileToggleRef}
-      />
+      {mobileOpen && (
+        <MobileMenu
+          isOpen
+          onClose={handleMobileClose}
+          mobileRef={mobileRef}
+          navModel={navModel}
+          cleanTel={cleanTel}
+          phoneDisplay={phoneDisplay}
+          triggerRef={mobileToggleRef}
+        />
+      )}
+
     </>
   );
 }
