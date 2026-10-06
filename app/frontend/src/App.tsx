@@ -1,52 +1,16 @@
 // File: app/frontend/src/App.tsx
-import React, { Suspense, lazy, useEffect, useState } from 'react';
+import React, { lazy } from 'react';
 import { RouteObject, Navigate, Outlet } from 'react-router-dom';
 import { RootLayout } from './core/components/layout/RootLayout';
 import { AnalyticsProvider } from './core/analytics/AnalyticsProvider';
 
-// 🚀 CWV Optimization: Defer heavy third-party UI to protect Interaction to Next Paint (INP)
-const ChatWidget = lazy(() => import('./components/ChatWidget').then(module => ({ default: module.ChatWidget })));
-
 // High-level wrapper to maintain Context Providers without a BrowserRouter
 // (ViteReactSSG provides its own Router implementation automatically)
-const AppWrapper = () => {
-  const [chatReady, setChatReady] = useState(false);
-
-  useEffect(() => {
-    let cancelled = false;
-    const activate = () => {
-      if (!cancelled) setChatReady(true);
-    };
-
-    // Chat is conversion-supporting but not above-the-fold content. Wait until
-    // the browser has painted the primary page before starting its chunk.
-    if ('requestIdleCallback' in window) {
-      const idleId = window.requestIdleCallback(activate, { timeout: 2500 });
-      return () => {
-        cancelled = true;
-        window.cancelIdleCallback(idleId);
-      };
-    }
-
-    const timerId = window.setTimeout(activate, 1500);
-    return () => {
-      cancelled = true;
-      window.clearTimeout(timerId);
-    };
-  }, []);
-
-  return (
-    <AnalyticsProvider>
-      <Outlet />
-
-      {chatReady && (
-        <Suspense fallback={null}>
-          <ChatWidget />
-        </Suspense>
-      )}
-    </AnalyticsProvider>
-  );
-};
+const AppWrapper = () => (
+  <AnalyticsProvider>
+    <Outlet />
+  </AnalyticsProvider>
+);
 
 // 🚀 EXPLICIT ROUTE ARRAY EXPORT REQUIRED BY VITE-REACT-SSG
 export const routes: RouteObject[] = [
