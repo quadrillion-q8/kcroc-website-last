@@ -12,8 +12,8 @@ import { NAV_GRAPH } from '../../../data/navGraph.generated';
 // 🚀 CWV: AnimatedBackground is a pure SVG/CSS effect now (no particle
 // engine — an earlier tsParticles-based version was already replaced), but
 // it's still purely decorative and has no business being in the critical
-// initial bundle. Deferred the same way ChatWidget is in App.tsx, so it
-// loads after first paint instead of blocking it.
+// initial bundle. Deferred until after first paint, so it
+// does not block the critical initial render.
 const AnimatedBackground = lazy(() =>
   import('./AnimatedBackground').then((module) => ({ default: module.AnimatedBackground }))
 );
