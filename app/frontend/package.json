@@ -8,7 +8,8 @@
   "scripts": {
     "dev": "npx tsx scripts/generate-nav-data.ts && vite",
     "generate:nav": "npx tsx scripts/generate-nav-data.ts",
-    "prebuild": "npx tsx scripts/check-gbp-rating.ts; npx tsx scripts/validate-build.ts && npx tsx scripts/validateGraph.ts && npx tsx scripts/validateConstants.ts && npx tsx scripts/validateResponsiveImages.ts && pnpm run generate:nav",
+    "generate:seo": "npx tsx scripts/generate-seo-data.ts",
+    "prebuild": "npx tsx scripts/check-gbp-rating.ts; npx tsx scripts/validate-build.ts && npx tsx scripts/validateGraph.ts && npx tsx scripts/validateConstants.ts && npx tsx scripts/validateResponsiveImages.ts && pnpm run generate:nav && pnpm run generate:seo",
     "validate:constants": "npx tsx scripts/validateConstants.ts",
     "generate:sitemap": "npx tsx scripts/generate-sitemap.ts",
     "build": "pnpm run prebuild && pnpm run generate:sitemap && vite-react-ssg build && pnpm run audit:seo",
