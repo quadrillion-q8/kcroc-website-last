@@ -7,92 +7,6 @@ import { AnalyticsProvider } from './core/analytics/AnalyticsProvider';
 // 🚀 CWV Optimization: Defer heavy third-party UI to protect Interaction to Next Paint (INP)
 const ChatWidget = lazy(() => import('./components/ChatWidget').then(module => ({ default: module.ChatWidget })));
 
-// Core Pages
-const Home = lazy(() => import('./pages/Home'));
-const NearMe = lazy(() => import('./pages/NearMe'));
-const NearMeAR = lazy(() => import('./pages/NearMeAR'));
-const ArabicCommercialPage = lazy(() => import('./pages/ArabicCommercialPage'));
-const Pricing = lazy(() => import('./pages/Pricing'));
-const Contact = lazy(() => import('./pages/Contact'));
-const Gallery = lazy(() => import('./pages/Gallery'));
-const About = lazy(() => import('./pages/About'));
-const PrivacySecurity = lazy(() => import('./pages/PrivacySecurity'));
-const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
-const TermsOfService = lazy(() => import('./pages/TermsOfService'));
-const FAQ = lazy(() => import('./pages/FAQ'));
-const Blog = lazy(() => import('./pages/Blog'));
-const News = lazy(() => import('./pages/News'));
-const NotFound = lazy(() => import('./pages/NotFound'));
-const BookingPage = lazy(() => import('./pages/BookingPage'));
-
-// Dynamic Enterprise Templates
-const Services = lazy(() => import('./pages/Services'));
-const Locations = lazy(() => import('./pages/Locations'));
-const PillarTemplate = lazy(() => import('./pages/PillarTemplate'));
-const LocationTemplate = lazy(() => import('./pages/LocationTemplate'));
-// 🩹 FIX: index pages for /brands, /problems, /guides — previously missing
-// entirely, which is why those URLs 404'd and had no home in the mega menus.
-const BrandsIndex = lazy(() => import('./pages/BrandsIndex'));
-const ProblemsIndex = lazy(() => import('./pages/ProblemsIndex'));
-const GuidesIndex = lazy(() => import('./pages/GuidesIndex'));
-// 🚀 Hawalli is KCROC's only physical branch and one of the site's
-// highest-traffic pages — it gets a dedicated page instead of being forced
-// through the shared LocationTemplate used by the other (service-area) locations.
-const HawalliLocationPage = lazy(() => import('./pages/HawalliLocationPage'));
-// 🚀 The five service-area locations (Farwaniya, Salmiya, Kuwait City, Jahra,
-// Ahmadi) now get the same rich page depth as Hawalli via a shared,
-// data-driven template rather than the older, thinner LocationTemplate.
-//
-// 🩹 FIX: this MUST stay a single dynamic `location/:slug` route (below),
-// not five separate static route entries (one per location). vite-react-ssg
-// prerenders every route in `public/sitemap.xml` in one Node process, and
-// registering five sibling static RouteObjects for the same `location/*`
-// pattern caused the SSG renderer to flush several of them before the page
-// content actually resolved — producing near-empty static HTML (no <h1>,
-// wrong content) for everything except Hawalli, even though the page
-// worked perfectly in the browser after client-side hydration. Routing all
-// five through one dynamic route — the same pattern the old LocationTemplate
-// already used successfully — avoids the issue entirely.
-const LocationDeepTemplate = lazy(() => import('./pages/LocationDeepTemplate'));
-const BlogPostTemplate = lazy(() => import('./pages/BlogPostTemplate'));
-
-// Case Studies Index Page
-const CaseStudiesIndex = lazy(() => import('./pages/CaseStudiesIndex'));
-const CaseStudyTemplate = lazy(() => import('./pages/templates/CaseStudyTemplate'));
-
-// Custom Standalone Blog Pages
-const BlogLaptopRepair = lazy(() => import('./pages/BlogLaptopRepair'));
-const GamingPCCooling = lazy(() => import('./pages/GamingPCCooling'));
-
-// Content Pillars & Clusters
-const LaptopBuyingGuide = lazy(() => import('./pages/LaptopBuyingGuide'));
-const LaptopBuyingGuideAR = lazy(() => import('./pages/LaptopBuyingGuideAR'));
-const GamingLaptopCleaningAR = lazy(() => import('./pages/GamingLaptopCleaningAR'));
-const IntelVsAmdGuide = lazy(() => import('./pages/IntelVsAmdGuide')); 
-
-// Author Bio Pages
-const AuthorImran = lazy(() => import('./pages/AuthorImran'));
-
-// 🚀 Custom AI-Generated Guides
-const BatteryHealthGuide = lazy(() => import('./pages/BatteryHealthGuide'));
-const LaptopOverheatingGuide = lazy(() => import('./pages/LaptopOverheatingGuide'));
-const BiosUefiRecoveryGuide = lazy(() => import('./pages/BiosUefiRecoveryGuide'));
-const BiosUefiRecoveryGuideAR = lazy(() => import('./pages/BiosUefiRecoveryGuideAR'));
-const DellLaptopOverheatingPage = lazy(() => import('./pages/DellLaptopOverheatingPage').then(module => ({ default: module.DellLaptopOverheatingPage })));
-const GameBarPresenceWriterGuide = lazy(() => import('./pages/GameBarPresenceWriterGuide'));
-const Windows10EndOfSupportGuide = lazy(() => import('./pages/Windows10EndOfSupportGuide'));
-
-// 🚀 CWV Optimization: Extracted routing logic that requires graph.ts into a deferred chunk.
-const DynamicRouteHandler = lazy(() => import('./core/routing/DynamicRoutes').then(m => ({ default: m.DynamicRouteHandler })));
-const LegacyServiceRedirect = lazy(() => import('./core/routing/DynamicRoutes').then(m => ({ default: m.LegacyServiceRedirect })));
-
-// UI: Global loading spinner
-const PageLoader = () => (
-  <div className="w-full h-[60vh] flex items-center justify-center bg-transparent">
-    <div className="w-10 h-10 border-4 border-slate-800 border-t-cyan-400 rounded-full animate-spin"></div>
-  </div>
-);
-
 // High-level wrapper to maintain Context Providers without a BrowserRouter
 // (ViteReactSSG provides its own Router implementation automatically)
 const AppWrapper = () => {
@@ -123,9 +37,7 @@ const AppWrapper = () => {
 
   return (
     <AnalyticsProvider>
-      <Suspense fallback={<PageLoader />}>
-        <Outlet />
-      </Suspense>
+      <Outlet />
 
       {chatReady && (
         <Suspense fallback={null}>
@@ -146,52 +58,52 @@ export const routes: RouteObject[] = [
         path: '/',
         element: <RootLayout />,
         children: [
-          { index: true, element: <Home /> },
-          { path: 'near-me', element: <NearMe /> },
-          { path: 'ar/near-me', element: <NearMeAR /> },
-          { path: 'ar/:slug', element: <ArabicCommercialPage /> },
-          { path: 'services', element: <Services /> },
-          { path: 'locations', element: <Locations /> },
-          { path: 'services/:serviceSlug', element: <LegacyServiceRedirect /> },
+          { index: true, lazy: async () => ({ Component: (await import('./pages/Home')).default }) },
+          { path: 'near-me', lazy: async () => ({ Component: (await import('./pages/NearMe')).default }) },
+          { path: 'ar/near-me', lazy: async () => ({ Component: (await import('./pages/NearMeAR')).default }) },
+          { path: 'ar/:slug', lazy: async () => ({ Component: (await import('./pages/ArabicCommercialPage')).default }) },
+          { path: 'services', lazy: async () => ({ Component: (await import('./pages/Services')).default }) },
+          { path: 'locations', lazy: async () => ({ Component: (await import('./pages/Locations')).default }) },
+          { path: 'services/:serviceSlug', lazy: async () => { const { LegacyServiceRedirect } = await import('./core/routing/DynamicRoutes'); return { Component: LegacyServiceRedirect }; } },
           // 🩹 FIX: these three 404'd previously — there was no route for
           // them at all, so they fell through to the dynamic `:slug`
           // handler, which only resolves slugs that exist as an actual
           // Service/Brand/Problem entity in the graph.
-          { path: 'brands', element: <BrandsIndex /> },
-          { path: 'problems', element: <ProblemsIndex /> },
-          { path: 'guides', element: <GuidesIndex /> },
-          { path: 'case-studies', element: <CaseStudiesIndex /> },
-          { path: 'case-studies/:slug', element: <CaseStudyTemplate /> },
-          { path: 'book', element: <BookingPage /> },
+          { path: 'brands', lazy: async () => ({ Component: (await import('./pages/BrandsIndex')).default }) },
+          { path: 'problems', lazy: async () => ({ Component: (await import('./pages/ProblemsIndex')).default }) },
+          { path: 'guides', lazy: async () => ({ Component: (await import('./pages/GuidesIndex')).default }) },
+          { path: 'case-studies', lazy: async () => ({ Component: (await import('./pages/CaseStudiesIndex')).default }) },
+          { path: 'case-studies/:slug', lazy: async () => ({ Component: (await import('./pages/templates/CaseStudyTemplate')).default }) },
+          { path: 'book', lazy: async () => ({ Component: (await import('./pages/BookingPage')).default }) },
           { path: 'booking', element: <Navigate to="/book" replace /> },
           { path: 'book-repair', element: <Navigate to="/book" replace /> },
-          { path: 'pricing', element: <Pricing /> },
-          { path: 'contact', element: <Contact /> },
-          { path: 'gallery', element: <Gallery /> },
-          { path: 'about', element: <About /> },
-          { path: 'privacy-security-kuwait', element: <PrivacySecurity /> },
-          { path: 'privacy-policy', element: <PrivacyPolicy /> },
-          { path: 'terms-of-service', element: <TermsOfService /> },
+          { path: 'pricing', lazy: async () => ({ Component: (await import('./pages/Pricing')).default }) },
+          { path: 'contact', lazy: async () => ({ Component: (await import('./pages/Contact')).default }) },
+          { path: 'gallery', lazy: async () => ({ Component: (await import('./pages/Gallery')).default }) },
+          { path: 'about', lazy: async () => ({ Component: (await import('./pages/About')).default }) },
+          { path: 'privacy-security-kuwait', lazy: async () => ({ Component: (await import('./pages/PrivacySecurity')).default }) },
+          { path: 'privacy-policy', lazy: async () => ({ Component: (await import('./pages/PrivacyPolicy')).default }) },
+          { path: 'terms-of-service', lazy: async () => ({ Component: (await import('./pages/TermsOfService')).default }) },
           { path: 'privacy', element: <Navigate to="/privacy-policy" replace /> },
           { path: 'terms', element: <Navigate to="/terms-of-service" replace /> },
-          { path: 'faq', element: <FAQ /> },
-          { path: 'blog', element: <Blog /> },
-          { path: 'news', element: <News /> },
-          { path: 'blog/laptop-repair-kuwait-2026', element: <BlogLaptopRepair /> },
-          { path: 'blog/gaming-pc-cooling', element: <GamingPCCooling /> },
-          { path: 'blog/laptop-buying-guide-kuwait-2026', element: <LaptopBuyingGuide /> },
-          { path: 'blog/ar/laptop-buying-guide-kuwait-2026', element: <LaptopBuyingGuideAR /> },
-          { path: 'blog/ar/how-often-clean-laptop-replace-thermal-paste-kuwait', element: <GamingLaptopCleaningAR /> },
-          { path: 'blog/intel-core-ultra-vs-amd-ryzen-ai', element: <IntelVsAmdGuide /> },
+          { path: 'faq', lazy: async () => ({ Component: (await import('./pages/FAQ')).default }) },
+          { path: 'blog', lazy: async () => ({ Component: (await import('./pages/Blog')).default }) },
+          { path: 'news', lazy: async () => ({ Component: (await import('./pages/News')).default }) },
+          { path: 'blog/laptop-repair-kuwait-2026', lazy: async () => ({ Component: (await import('./pages/BlogLaptopRepair')).default }) },
+          { path: 'blog/gaming-pc-cooling', lazy: async () => ({ Component: (await import('./pages/GamingPCCooling')).default }) },
+          { path: 'blog/laptop-buying-guide-kuwait-2026', lazy: async () => ({ Component: (await import('./pages/LaptopBuyingGuide')).default }) },
+          { path: 'blog/ar/laptop-buying-guide-kuwait-2026', lazy: async () => ({ Component: (await import('./pages/LaptopBuyingGuideAR')).default }) },
+          { path: 'blog/ar/how-often-clean-laptop-replace-thermal-paste-kuwait', lazy: async () => ({ Component: (await import('./pages/GamingLaptopCleaningAR')).default }) },
+          { path: 'blog/intel-core-ultra-vs-amd-ryzen-ai', lazy: async () => ({ Component: (await import('./pages/IntelVsAmdGuide')).default }) },
           { path: 'blog/laptop-wont-turn-on', element: <Navigate to="/blog/laptop-wont-turn-on-causes-fixes" replace /> },
-          { path: 'author/imran', element: <AuthorImran /> },
-          { path: 'guides/laptop-battery-warning-signs', element: <BatteryHealthGuide /> },
-          { path: 'guides/why-is-my-laptop-so-hot', element: <LaptopOverheatingGuide /> },
-          { path: 'guides/bios-uefi-recovery-kuwait', element: <BiosUefiRecoveryGuide /> },
-          { path: 'guides/ar/bios-uefi-recovery-kuwait', element: <BiosUefiRecoveryGuideAR /> },
-          { path: 'guides/dell-laptop-overheating', element: <DellLaptopOverheatingPage /> },
-          { path: 'guides/gamebar-presence-writer-fix', element: <GameBarPresenceWriterGuide /> },
-          { path: 'guides/windows-10-end-of-support', element: <Windows10EndOfSupportGuide /> },
+          { path: 'author/imran', lazy: async () => ({ Component: (await import('./pages/AuthorImran')).default }) },
+          { path: 'guides/laptop-battery-warning-signs', lazy: async () => ({ Component: (await import('./pages/BatteryHealthGuide')).default }) },
+          { path: 'guides/why-is-my-laptop-so-hot', lazy: async () => ({ Component: (await import('./pages/LaptopOverheatingGuide')).default }) },
+          { path: 'guides/bios-uefi-recovery-kuwait', lazy: async () => ({ Component: (await import('./pages/BiosUefiRecoveryGuide')).default }) },
+          { path: 'guides/ar/bios-uefi-recovery-kuwait', lazy: async () => ({ Component: (await import('./pages/BiosUefiRecoveryGuideAR')).default }) },
+          { path: 'guides/dell-laptop-overheating', lazy: async () => { const { DellLaptopOverheatingPage } = await import('./pages/DellLaptopOverheatingPage'); return { Component: DellLaptopOverheatingPage }; } },
+          { path: 'guides/gamebar-presence-writer-fix', lazy: async () => ({ Component: (await import('./pages/GameBarPresenceWriterGuide')).default }) },
+          { path: 'guides/windows-10-end-of-support', lazy: async () => ({ Component: (await import('./pages/Windows10EndOfSupportGuide')).default }) },
           // 🩹 FIX (audit): both of these now also have real server-side 301s in
           // vercel.json (added alongside this fix), so production traffic never
           // hits this client-only stub. Kept as a fallback for local dev / any
@@ -207,18 +119,18 @@ export const routes: RouteObject[] = [
           // segments (guides/dell-laptop-overheating, etc., registered
           // above) higher than this dynamic one, so those routes still win
           // and only this one falls through to BlogPostTemplate.
-          { path: 'guides/:slug', element: <BlogPostTemplate /> },
+          { path: 'guides/:slug', lazy: async () => ({ Component: (await import('./pages/BlogPostTemplate')).default }) },
           { path: 'blog/windows-11-background-services-audit', element: <Navigate to="/guides/windows-11-background-services-audit" replace /> },
-          { path: 'blog/:slug', element: <BlogPostTemplate /> },
-          { path: 'news/:slug', element: <BlogPostTemplate /> },
+          { path: 'blog/:slug', lazy: async () => ({ Component: (await import('./pages/BlogPostTemplate')).default }) },
+          { path: 'news/:slug', lazy: async () => ({ Component: (await import('./pages/BlogPostTemplate')).default }) },
           // Keep explicit client fallbacks alongside the server-side 301s in vercel.json.
           { path: 'computer-repair-in-farwaniya', element: <Navigate to="/location/farwaniya" replace /> },
           { path: 'laptop-repair-in-hawalli', element: <Navigate to="/location/hawalli" replace /> },
-          { path: 'computer-repair-:slug', element: <LocationTemplate /> },
-          { path: 'laptop-repair-:slug', element: <LocationTemplate /> },
-          { path: 'location/hawalli', element: <HawalliLocationPage /> },
-          { path: 'location/:slug', element: <LocationDeepTemplate /> },
-          { path: 'pillar/:slug', element: <PillarTemplate /> },
+          { path: 'computer-repair-:slug', lazy: async () => ({ Component: (await import('./pages/LocationTemplate')).default }) },
+          { path: 'laptop-repair-:slug', lazy: async () => ({ Component: (await import('./pages/LocationTemplate')).default }) },
+          { path: 'location/hawalli', lazy: async () => ({ Component: (await import('./pages/HawalliLocationPage')).default }) },
+          { path: 'location/:slug', lazy: async () => ({ Component: (await import('./pages/LocationDeepTemplate')).default }) },
+          { path: 'pillar/:slug', lazy: async () => ({ Component: (await import('./pages/PillarTemplate')).default }) },
           { path: 'faq/:faqSlug', element: <Navigate to="/faq" replace /> },
 
           // 🩹 FIX: explicit /404 route. Previously `<Navigate to="/404" />`
@@ -226,14 +138,14 @@ export const routes: RouteObject[] = [
           // (which only resolves to NotFound indirectly, when no graph
           // entity is named "404"). This registers it directly so it no
           // longer depends on that indirection.
-          { path: '404', element: <NotFound /> },
+          { path: '404', lazy: async () => ({ Component: (await import('./pages/NotFound')).default }) },
 
           // 🚀 DYNAMIC ROOT-LEVEL SEO ROUTES (Services, Brands, Problems)
           // Moved to the bottom so explicit routes match first
-          { path: ':slug', element: <DynamicRouteHandler /> },
+          { path: ':slug', lazy: async () => { const { DynamicRouteHandler } = await import('./core/routing/DynamicRoutes'); return { Component: DynamicRouteHandler }; } },
           
           // Secure Catch-All for 404s
-          { path: '*', element: <NotFound /> }
+          { path: '*', lazy: async () => ({ Component: (await import('./pages/NotFound')).default }) }
         ]
       }
     ]
