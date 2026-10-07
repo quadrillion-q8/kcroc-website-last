@@ -271,6 +271,21 @@ export const rawGraphData: RawGraphData = {
       relatedServiceIds: ['srv-laptop', 'srv-macbook', 'srv-motherboard', 'srv-screen', 'srv-battery']
     } as WebPageEntity,
 
+    'page-ar-jahra-computer-repair': {
+      id: 'page-ar-jahra-computer-repair', slug: 'ar/computer-repair-jahra', entityType: 'WebPage', isActive: true,
+      title: "تصليح كمبيوتر الجهراء وفني لابتوب",
+      description: "تصليح كمبيوتر ولابتوب في الجهراء مع استلام وتوصيل مجاني من سعد العبدالله والنعيم والقصر وتيماء، والإصلاح في مختبر KCROC بحولي.",
+      seo: {
+        title: "تصليح كمبيوتر الجهراء | فني لابتوب واستلام مجاني | KCROC",
+        description: "تصليح كمبيوتر ولابتوب في الجهراء وسعد العبدالله والنعيم والقصر وتيماء. تنظيف وتغيير المعجون الحراري، فحص اللوحة الأم، استلام وتوصيل مجاني، وضمان 30 يومًا.",
+        canonicalUrl: 'https://www.computerrepairkuwait.com/ar/computer-repair-jahra',
+        locale: 'ar_KW', alternates: { 'ar-KW': 'https://www.computerrepairkuwait.com/ar/computer-repair-jahra', 'en-KW': 'https://www.computerrepairkuwait.com/location/jahra', 'x-default': 'https://www.computerrepairkuwait.com/location/jahra' },
+        ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList'], lastModified: '2026-10-07T00:00:00+03:00',
+        breadcrumbs: [{ name: 'الرئيسية', url: '/' }, { name: "تصليح كمبيوتر ولابتوب في الجهراء", url: '/ar/computer-repair-jahra' }]
+      },
+      relatedServiceIds: ['srv-laptop', 'srv-gaming-laptop-cleaning', 'srv-motherboard', 'srv-gaming-laptop', 'srv-battery']
+    } as WebPageEntity,
+
     'page-ar-farwaniya-computer-repair': {
       id: 'page-ar-farwaniya-computer-repair', slug: 'ar/computer-repair-farwaniya', entityType: 'WebPage', isActive: true,
       title: "تصليح كمبيوتر الفروانية وفني لابتوب",
@@ -3336,7 +3351,7 @@ export const rawGraphData: RawGraphData = {
         { id: "faq-jahra-local-4", question: "My laptop switches itself off under load. Is it overheating or a motherboard fault?", answer: "It can be either. Overheating shutdowns are a protective cut-off, while a failing power circuit can look the same. We check temperatures under load first, then test the power path on the bench before suggesting board work." },
         { id: "faq-jahra-local-5", question: "Can you collect a laptop from Jahra if it will not turn on at all?", answer: "Yes. Tell us what happened before it stopped and what lights, if any, come on. Collection is free, and the motherboard is diagnosed at the lab. You pay nothing if we cannot fix it." },
         { id: "faq-jahra-local-6", question: "Where is my laptop repaired, and do I have to travel?", answer: "You do not need to travel. Jahra is a service area, not a branch, and devices are repaired at our Hawalli lab (Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19). Repairs carry a 30-day warranty." },
-      ], title: 'Jahra', description: 'Comprehensive computer repair, thermal repasting, and motherboard diagnostics delivered directly to Jahra.', landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)', coords: { lat: 29.3370, lng: 47.6580 }, serviceRadiusKm: 40, serviceAreas: ['Jahra', 'Saad Al Abdullah', 'Naeem', 'Qasr', 'Taima'], contentImage: { src: IMAGES.motherboard.thermalGrizzly1.src, alt: IMAGES.motherboard.thermalGrizzly1.alt, width: IMAGES.motherboard.thermalGrizzly1.width, height: IMAGES.motherboard.thermalGrizzly1.height, caption: 'Thermal repasting and motherboard diagnostics delivered directly to Jahra.' }, seo: { title: 'Computer Repair Jahra Kuwait | Free Pickup | KCROC', description: 'Computer and laptop repair in Jahra with free pickup and delivery, including thermal maintenance and motherboard diagnostics at KCROC\'s Hawalli lab.', canonicalUrl: 'https://www.computerrepairkuwait.com/location/jahra', ogType: 'website', schemaTypes: ['LocalBusiness'], lastModified: '2026-09-27T00:00:00+03:00' }, navigationPriority: 70 } as LocationEntity,
+      ], title: 'Jahra', description: 'Comprehensive computer repair, thermal repasting, and motherboard diagnostics delivered directly to Jahra.', landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)', coords: { lat: 29.3370, lng: 47.6580 }, serviceRadiusKm: 40, serviceAreas: ['Jahra', 'Saad Al Abdullah', 'Naeem', 'Qasr', 'Taima'], contentImage: { src: IMAGES.motherboard.thermalGrizzly1.src, alt: IMAGES.motherboard.thermalGrizzly1.alt, width: IMAGES.motherboard.thermalGrizzly1.width, height: IMAGES.motherboard.thermalGrizzly1.height, caption: 'Thermal repasting and motherboard diagnostics delivered directly to Jahra.' }, seo: { title: 'Computer Repair Jahra Kuwait | Free Pickup | KCROC', description: 'Computer and laptop repair in Jahra with free pickup and delivery, including thermal maintenance and motherboard diagnostics at KCROC\'s Hawalli lab.', canonicalUrl: 'https://www.computerrepairkuwait.com/location/jahra', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/location/jahra', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/computer-repair-jahra', 'x-default': 'https://www.computerrepairkuwait.com/location/jahra' }, ogType: 'website', schemaTypes: ['LocalBusiness'], lastModified: '2026-09-27T00:00:00+03:00' }, navigationPriority: 70 } as LocationEntity,
 
     'loc-ahmadi': { id: 'loc-ahmadi', slug: 'ahmadi', entityType: 'Location', isActive: true, isPhysicalLocation: false, localIntro: "Ahmadi and southern Kuwait are served through free pickup rather than a long drive to Hawalli. We collect from Ahmadi, Fahaheel, Mangaf, Mahboula and Sabahiya, repair the device at our lab and deliver it back after testing. Gaming PCs, MacBooks and thermal problems are the focus of this page.", localHighlights: [
         { title: "Pickup from Ahmadi, Fahaheel, Mangaf, Mahboula and Sabahiya", description: "Message us your area and the fault and we will arrange free collection." },
