@@ -1,6 +1,6 @@
 // File: app/frontend/src/components/home/Hero.tsx
 import { Button } from '@/components/ui/button';
-import { CalendarClock, Check, MessageCircle, ShieldCheck, Star, ArrowRight } from 'lucide-react';
+import { CalendarClock, Check, MessageCircle, Star, ArrowRight } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ROUTES } from '../../constants/routes';
@@ -97,7 +97,7 @@ export default function Hero() {
                 Book Pickup
               </Link>
             </Button>
-            <Button asChild size="lg" className="h-14 w-full rounded-xl bg-[#25D366] font-extrabold text-slate-950 hover:brightness-95 whatsapp-pulse">
+            <Button asChild size="lg" className="h-14 w-full rounded-xl bg-[#25D366] font-extrabold text-slate-950 hover:brightness-95">
               <a href={`https://wa.me/${phone}`} target="_blank" rel="noopener noreferrer" onClick={() => trackConversion('whatsapp_click', { cta_name: 'hero_mobile_whatsapp', button_position: 'hero_mobile' })}>
                 <MessageCircle className="h-5 w-5" aria-hidden="true" />
                 WhatsApp
@@ -169,7 +169,7 @@ export default function Hero() {
                     Book Free Pickup
                   </Link>
                 </Button>
-                <Button asChild size="lg" className="h-14 rounded-xl bg-[#25D366] px-7 text-base font-extrabold text-slate-950 hover:brightness-95 whatsapp-pulse">
+                <Button asChild size="lg" className="h-14 rounded-xl bg-[#25D366] px-7 text-base font-extrabold text-slate-950 hover:brightness-95">
                   <a href={`https://wa.me/${phone}`} target="_blank" rel="noopener noreferrer" onClick={() => trackConversion('whatsapp_click', { cta_name: 'hero_desktop_whatsapp', button_position: 'hero_desktop' })}>
                     <MessageCircle className="h-5 w-5" aria-hidden="true" />
                     WhatsApp a Technician
@@ -190,18 +190,8 @@ export default function Hero() {
             </div>
 
             <div className="relative">
-              <div className="absolute -inset-8 rounded-[2rem] bg-cyan-500/10 blur-3xl" />
+              <div className="absolute -inset-4 rounded-[2rem] bg-[#c9804d]/[0.06] blur-3xl" />
               <div className="relative">
-                <div className="absolute -right-5 -top-5 z-20 flex max-w-xs items-center gap-3 rounded-[16px] border border-white/[0.10] bg-[#0f1618]/[0.90] px-4 py-3 shadow-2xl backdrop-blur-xl">
-                  <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-cyan-500/10 text-cyan-300">
-                    <ShieldCheck className="h-5 w-5" aria-hidden="true" />
-                  </div>
-                  <div>
-                    <p className="text-xs font-black uppercase tracking-[0.12em] text-white">Diagnosis first</p>
-                    <p className="mt-0.5 text-[11px] text-slate-400">Repair only after approval</p>
-                  </div>
-                </div>
-
                 <div className="kcroc-photo-frame kcroc-copper-glow aspect-[4/3] bg-slate-900">
                   <img
                     src={heroImage768}
@@ -215,10 +205,10 @@ export default function Hero() {
                     decoding="async"
                     className="h-full w-full object-cover object-center transition-transform duration-500 hover:scale-[1.015]"
                   />
-                  <div className="absolute inset-x-5 bottom-5 z-10 rounded-2xl border border-white/[0.10] bg-[#0b1113]/[0.78] p-4 backdrop-blur-xl">
+                  <div className="absolute inset-x-5 bottom-5 z-10 rounded-2xl border border-white/[0.08] bg-[#0b1113]/[0.84] p-4">
                     <div className="flex items-end justify-between gap-4">
                       <div>
-                        <p className="text-[10px] font-black uppercase tracking-[0.16em] text-cyan-300">KCROC Hawalli Laboratory</p>
+                        <p className="text-[10px] font-black uppercase tracking-[0.16em] text-[#dfa86f]">KCROC Hawalli Laboratory</p>
                         <p className="mt-1 text-lg font-black text-white">Board repair. Microsoldering. Precision diagnostics.</p>
                       </div>
                       <div className="hidden shrink-0 text-right sm:block">
@@ -242,7 +232,7 @@ export default function Hero() {
                   ))}
                 </div>
 
-                <Link to="/case-studies" className="mt-4 inline-flex items-center gap-2 text-sm font-extrabold text-cyan-300 hover:text-cyan-200 transition-colors">
+                <Link to="/case-studies" className="mt-4 inline-flex items-center gap-2 text-sm font-extrabold text-[#efc19c] hover:text-white transition-colors">
                   See real repair case studies <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </Link>
               </div>
