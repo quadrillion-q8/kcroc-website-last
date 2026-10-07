@@ -144,8 +144,8 @@ export default function Header() {
   return (
     <>
       <header ref={headerRef} className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-[#090c0f]/[0.97] backdrop-blur-xl border-b border-white/[0.10] shadow-[0_12px_36px_rgba(0,0,0,.22)]' : 'bg-[#090c0f]/[0.88] backdrop-blur-md border-b border-white/[0.08]'}`}>
-        <div className="max-w-[1440px] mx-auto px-5 sm:px-6">
-          <div className="flex items-center justify-between h-[84px]">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 xl:px-8">
+          <div className="flex items-center justify-between h-[78px]">
             
             <Link to="/" className="flex items-center shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f] rounded-lg" aria-label="KCROC Home">
               {!logoError ? (
@@ -169,7 +169,7 @@ export default function Header() {
               )}
             </Link>
 
-            <nav aria-label="Main navigation" className="hidden xl:flex items-center gap-0.5">
+            <nav aria-label="Main navigation" className="hidden xl:flex items-center gap-1">
               {navModel.header.map(link => {
                 const isGraphMatch = !!matchPath({ path: link.href, end: false }, location.pathname);
 
@@ -189,7 +189,7 @@ export default function Header() {
                           setActiveMegaId(prev => prev === link.megaMenuId ? null : link.megaMenuId!);
                         }}
                         onKeyDown={e => handleMegaTriggerKeyDown(e, link.megaMenuId!)}
-                        className={`flex items-center gap-1.5 px-2 py-2 rounded-lg whitespace-nowrap text-[12.5px] font-semibold transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f] ${isOpen || isGraphMatch ? 'text-[#dfa86f] bg-[#c9804d]/10' : 'text-slate-300 hover:text-white hover:bg-white/5'}`}
+                        className={`flex items-center gap-1.5 px-2.5 py-2 rounded-md whitespace-nowrap text-[12px] font-medium transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f] ${isOpen || isGraphMatch ? 'text-[#efc19c] border-b border-[#c9804d]/70' : 'text-slate-300 hover:text-white'}`}
                       >
                         {link.label}
                         <ChevronDown size={15} className={`transition-transform duration-200 ${isOpen ? 'rotate-180 text-[#dfa86f]' : ''}`} aria-hidden="true" />
@@ -199,7 +199,7 @@ export default function Header() {
                 }
 
                 return (
-                  <Link key={link.id} to={link.href} className={`px-2.5 py-2 rounded-lg text-[12.5px] font-semibold whitespace-nowrap transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f] ${isGraphMatch ? 'text-[#dfa86f] bg-[#c9804d]/10' : 'text-slate-300 hover:text-white hover:bg-white/5'}`}>
+                  <Link key={link.id} to={link.href} className={`px-2.5 py-2 rounded-md text-[12px] font-medium whitespace-nowrap transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f] ${isGraphMatch ? 'text-[#efc19c] border-b border-[#c9804d]/70' : 'text-slate-300 hover:text-white'}`}>
                     {link.label}
                   </Link>
                 );
@@ -211,7 +211,7 @@ export default function Header() {
                 to={languageSwitch.href}
                 lang={languageSwitch.targetLanguage === 'ar' ? 'ar' : 'en'}
                 aria-label={languageSwitch.targetLanguage === 'ar' ? 'Switch to Arabic' : 'Switch to English'}
-                className="rounded-lg border border-white/[0.10] bg-white/[0.03] px-3 py-2 text-xs font-black text-slate-200 transition-all hover:border-[#c9804d]/[0.45] hover:text-[#efc19c] hover:bg-white/[0.05] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f]"
+                className="rounded-md border border-white/[0.08] bg-transparent px-2.5 py-1.5 text-xs font-black text-slate-200 transition-all hover:border-[#c9804d]/[0.45] hover:text-[#efc19c] hover:bg-white/[0.05] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f]"
               >
                 {languageSwitch.targetLanguage === 'ar' ? 'عربي' : 'EN'}
               </Link>
@@ -224,7 +224,7 @@ export default function Header() {
                 aria-expanded={searchOpen}
                 aria-controls="header-search-panel"
                 aria-label={searchOpen ? 'Close search' : 'Search'}
-                className={`p-2 rounded-lg transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f] ${searchOpen ? 'text-[#dfa86f] bg-[#c9804d]/10' : 'text-slate-300 hover:text-white hover:bg-white/5'}`}
+                className={`p-2 rounded-md transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f] ${searchOpen ? 'text-[#dfa86f] bg-[#c9804d]/10' : 'text-slate-300 hover:text-white hover:bg-white/5'}`}
               >
                 {searchOpen ? <X size={18} aria-hidden="true" /> : <Search size={18} aria-hidden="true" />}
               </button>
@@ -235,7 +235,7 @@ export default function Header() {
               <Button
                 asChild
                 variant="ctaPrimary"
-                className="h-auto gap-2 rounded-lg px-4 py-2 text-sm transition-all hover:shadow-[0_12px_28px_rgba(201,128,77,0.15)]"
+                className="h-auto gap-2 rounded-md px-4 py-2 text-sm transition-all hover:shadow-[0_12px_28px_rgba(201,128,77,0.15)]"
               >
                 <Link to="/book" onClick={() => trackConversion('cta_click', { cta_name: 'header_book', button_position: 'header' })}>
                   <CalendarCheck size={15} aria-hidden="true" />
