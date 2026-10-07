@@ -22,16 +22,16 @@
     --surface-elevated: #1c252b;
     --surface-glass: rgba(17, 23, 27, 0.82);
     --surface-warm: #f4efe7;
-    --line-subtle: rgba(255, 255, 255, 0.08);
-    --line-strong: rgba(255, 255, 255, 0.13);
+    --line-subtle: rgba(255, 255, 255, 0.065);
+    --line-strong: rgba(255, 255, 255, 0.105);
 
     --status-success: #2aa879;
     --status-warning: #dfaa62;
     --status-danger: #df6f5f;
     --status-info: #79c8ff;
 
-    --radius-card: 1rem;
-    --radius-button: 0.75rem;
+    --radius-card: 0.875rem;
+    --radius-button: 0.7rem;
   }
 
   @media (prefers-contrast: more) {
@@ -485,5 +485,159 @@ svg {
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+  }
+}
+
+
+/* ==========================================================================
+   KCROC VISUAL REFINEMENT 3.0
+   Quiet technical luxury: fewer effects, stronger grid, cleaner hierarchy.
+   This layer intentionally overrides legacy visual treatments without
+   changing content, routing, analytics, or conversion behaviour.
+   ========================================================================== */
+:root {
+  --kcroc-content-max: 1280px;
+  --kcroc-gutter: clamp(1rem, 2.8vw, 2rem);
+  --kcroc-section-y: clamp(4rem, 7vw, 7rem);
+  --kcroc-section-y-mobile: 3.5rem;
+}
+
+.container,
+.max-w-6xl,
+.max-w-7xl {
+  max-width: var(--kcroc-content-max);
+}
+
+.kcroc-kicker {
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  color: #dfa86f;
+}
+
+.kcroc-kicker::before {
+  width: 1.5rem;
+  background: #c9804d;
+}
+
+/* Keep the technical background atmospheric rather than decorative. */
+.kcroc-grid-texture {
+  opacity: 0.45;
+  background-size: 40px 40px;
+}
+
+/* Reduce the site-wide sense of floating objects. */
+.shadow-2xl,
+.shadow-xl {
+  --tw-shadow: 0 16px 42px rgba(0,0,0,.20) !important;
+  --tw-shadow-colored: 0 16px 42px var(--tw-shadow-color) !important;
+}
+
+/* Shared section rhythm on the homepage. */
+#main-content[data-page-type="home"] > .kcroc-cwv-defer > section,
+#main-content[data-page-type="home"] > section {
+  scroll-margin-top: 96px;
+}
+
+/* Service cards: image-led, flatter, quieter. */
+#main-content[data-page-type="home"] a.group.block.relative.bg-kcroc-card {
+  border-color: rgba(255,255,255,.065);
+  background: rgba(17,23,27,.68);
+  border-radius: .875rem;
+  box-shadow: none;
+}
+
+#main-content[data-page-type="home"] a.group.block.relative.bg-kcroc-card:hover {
+  border-color: rgba(201,128,77,.30);
+  background: rgba(23,31,36,.82);
+  transform: translateY(-2px);
+}
+
+#main-content[data-page-type="home"] a.group.block.relative.bg-kcroc-card .w-8,
+#main-content[data-page-type="home"] a.group.block.relative.bg-kcroc-card [class*="sm:w-10"] {
+  background: rgba(201,128,77,.08);
+  border-color: rgba(201,128,77,.16);
+}
+
+/* Pills are now quiet metadata rather than primary UI objects. */
+#main-content[data-page-type="home"] .rounded-full.border {
+  border-color: rgba(255,255,255,.075);
+  background: rgba(255,255,255,.018);
+}
+
+/* Brand strip becomes editorial text navigation instead of a row of pills. */
+#main-content[data-page-type="home"] .scroll-row-item {
+  border-color: transparent;
+  border-radius: .35rem;
+  padding-left: .45rem;
+  padding-right: .45rem;
+  color: #8f9a9d;
+}
+
+#main-content[data-page-type="home"] .scroll-row-item:hover {
+  border-color: transparent;
+  color: #efc19c;
+  background: transparent;
+}
+
+/* Section headers: compact eyebrow, generous title-to-body relationship. */
+#main-content[data-page-type="home"] .mb-8.sm\\:mb-12 {
+  margin-bottom: 2.25rem;
+}
+
+/* Form controls and buttons share one visual language. */
+button,
+a[role="button"],
+input,
+textarea,
+select {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Mobile: protect composition from desktop utility density. */
+@media (max-width: 767px) {
+  :root {
+    --kcroc-gutter: 1rem;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 9vw, 2.65rem);
+    line-height: 1.06;
+    letter-spacing: -0.035em;
+  }
+
+  h2 {
+    font-size: clamp(1.65rem, 7vw, 2rem);
+    line-height: 1.1;
+  }
+
+  h3 {
+    line-height: 1.2;
+  }
+
+  #main-content[data-page-type="home"] section {
+    scroll-margin-top: 80px;
+  }
+
+  #main-content[data-page-type="home"] .kcroc-photo-frame {
+    border-radius: .875rem;
+    box-shadow: 0 14px 32px rgba(0,0,0,.20);
+  }
+}
+
+@media (min-width: 1280px) {
+  .container,
+  .max-w-6xl,
+  .max-w-7xl {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
   }
 }
