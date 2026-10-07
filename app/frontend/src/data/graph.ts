@@ -9,8 +9,8 @@ import { IMAGES } from '../constants/images.js';
 
 export const rawGraphData: RawGraphData = {
   metadata: {
-    version: '3.8.2',
-    lastUpdated: '2026-10-05T00:00:00+03:00',
+    version: '3.8.3',
+    lastUpdated: '2026-10-08T00:00:00+03:00',
     environment: 'production'
   },
 
@@ -78,7 +78,7 @@ export const rawGraphData: RawGraphData = {
     'page-home': {
       id: 'page-home', slug: '', entityType: 'WebPage', isActive: true,
       title: 'Home', description: 'KCROC Homepage — Component-level computer repair in Kuwait',
-      seo: { title: 'Kuwait Computer Repair On Call | Hawalli Lab | KCROC', description: 'Kuwait Computer Repair On Call (KCROC): laptop, PC and MacBook repair from our Hawalli lab. Free pickup and delivery, 30-day warranty, No Fix No Fee.', canonicalUrl: 'https://www.computerrepairkuwait.com/', locale: 'en_KW', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/computer-repair-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/' }, ogType: 'website', schemaTypes: ['LocalBusiness', 'WebSite', 'WebPage'], lastModified: '2026-10-02T00:00:00+03:00' },
+      seo: { title: 'Computer Repair Kuwait | Free Pickup | KCROC', description: 'Computer, laptop, gaming PC and MacBook repair in Kuwait from our Hawalli lab. Free pickup and delivery, diagnosis before repair, No Fix No Fee and 30-day warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/', locale: 'en_KW', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/computer-repair-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/' }, ogType: 'website', schemaTypes: ['LocalBusiness', 'WebSite', 'WebPage'], lastModified: '2026-10-02T00:00:00+03:00' },
       hero: { headline: 'Kuwait\'s Expert Component-Level Repair Service.', subheadline: 'We Fix the Board. We Don\'t Just Swap It.', description: 'We diagnose and repair failed components at board level — restoring devices that most repair shops in Kuwait would simply declare beyond repair.', primaryCTA: { text: 'WhatsApp a Technician', route: 'https://wa.me/96555301913' }, secondaryCTA: { text: 'View All Services', route: '/services' } },
       featuredFAQIds: [
         'faq-pick-and-drop', 
@@ -98,8 +98,8 @@ export const rawGraphData: RawGraphData = {
       title: 'Computer Repair Near Me in Kuwait',
       description: 'Find a computer or laptop repair technician near you in Kuwait for PCs, MacBooks and gaming systems, with free pickup and delivery from our Hawalli repair lab.',
       seo: {
-        title: 'Computer, PC & Laptop Repair Near Me Kuwait | KCROC',
-        description: 'Need a computer, PC or laptop repair technician near you in Kuwait? KCROC offers free pickup and delivery from its Hawalli lab, diagnosis before repair, and a 30-day warranty.',
+        title: 'Computer Repair Near Me Kuwait | Free Pickup | KCROC',
+        description: 'Need a computer repair shop near you? KCROC collects your laptop or PC from home or office, repairs it at our Hawalli lab and delivers it back. Free pickup, diagnosis first and 30-day warranty.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/near-me',
         locale: 'en_KW',
         alternates: {
@@ -137,8 +137,8 @@ export const rawGraphData: RawGraphData = {
       title: 'فني كمبيوتر وتصليح لابتوب في الكويت',
       description: 'دليل عربي لخدمات فني الكمبيوتر وتصليح اللابتوب في الكويت، مع استلام وتوصيل مجاني من مختبر KCROC في حولي.',
       seo: {
-        title: 'فني كمبيوتر الكويت | تصليح لابتوب واستلام مجاني | KCROC',
-        description: 'تبحث عن فني كمبيوتر أو تصليح لابتوب في الكويت؟ KCROC يقدم تشخيصًا أولًا، استلامًا وتوصيلًا مجانيًا، وضمان 30 يومًا من مختبرنا في حولي.',
+        title: 'فني كمبيوتر الكويت | تصليح كمبيوتر ولابتوب | KCROC',
+        description: 'تحتاج فني كمبيوتر في الكويت؟ تشخيص قبل الإصلاح، استلام وتوصيل مجاني من مختبر KCROC في حولي، وضمان 30 يومًا. تواصل معنا عبر واتساب.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/ar/near-me',
         locale: 'ar_KW',
         alternates: {
@@ -464,7 +464,7 @@ export const rawGraphData: RawGraphData = {
     'page-contact': { id: 'page-contact', slug: 'contact', entityType: 'WebPage', isActive: true, title: 'Contact Us', description: 'Contact KCROC for repair services.', seo: { title: 'Contact KCROC | Computer Repair Kuwait', description: 'Get in touch with Kuwait Computer Repair On Call. Book a free pick & drop repair service today.', canonicalUrl: 'https://www.computerrepairkuwait.com/contact', ogType: 'website', schemaTypes: ['ContactPage'] } } as WebPageEntity,
     'page-faq': { id: 'page-faq', slug: 'faq', entityType: 'WebPage', isActive: true, title: 'FAQ', description: 'Frequently asked questions.', seo: { title: 'Frequently Asked Questions | KCROC Kuwait', description: 'Answers to common questions about our laptop repair services, pricing, warranty, and data privacy.', canonicalUrl: 'https://www.computerrepairkuwait.com/faq', ogType: 'website', schemaTypes: ['FAQPage'] } } as WebPageEntity,
     'page-gallery': { id: 'page-gallery', slug: 'gallery', entityType: 'WebPage', isActive: true, title: 'Gallery', description: 'Lab and repair gallery.', seo: { title: 'Repair Gallery | KCROC Hawalli Lab', description: 'View our ESD-safe repair lab in Hawalli and real examples of our component-level micro-soldering.', canonicalUrl: 'https://www.computerrepairkuwait.com/gallery', ogType: 'website', schemaTypes: ['CollectionPage'] } } as WebPageEntity,
-    'page-pricing': { id: 'page-pricing', slug: 'pricing', entityType: 'WebPage', isActive: true, title: 'Pricing', description: 'Transparent repair pricing.', seo: { title: 'Laptop & Computer Repair Prices in Kuwait (KWD) | KCROC', description: 'Check KCROC repair starting prices in Kuwait: laptop screens from 30 KWD plus part, batteries from 8 KWD plus part, and SSD/RAM installation from 5 KWD plus part. Diagnosis first; approve the quote before repair.', canonicalUrl: 'https://www.computerrepairkuwait.com/pricing', ogType: 'website', schemaTypes: ['WebPage'], lastModified: '2026-09-27T00:00:00+03:00' } } as WebPageEntity,
+    'page-pricing': { id: 'page-pricing', slug: 'pricing', entityType: 'WebPage', isActive: true, title: 'Pricing', description: 'Transparent repair pricing.', seo: { title: 'Laptop & Computer Repair Prices in Kuwait (KWD) | KCROC', description: 'Check computer and laptop repair prices in Kuwait: screens from 30 KWD + part, batteries from 8 KWD + part, and SSD/RAM installation from 5 KWD + part. Get your exact quote before repair.', canonicalUrl: 'https://www.computerrepairkuwait.com/pricing', ogType: 'website', schemaTypes: ['WebPage'], lastModified: '2026-09-27T00:00:00+03:00' } } as WebPageEntity,
     
     'page-booking': { id: 'page-booking', slug: 'book', entityType: 'WebPage', isActive: true, title: 'Book a Repair', description: 'Book free laptop and computer repair pickup anywhere in Kuwait. Same-day hardware assessment. 30-day warranty.', seo: { title: 'Book Laptop & Computer Repair Pickup in Kuwait | KCROC', description: 'Book free laptop and computer repair pickup anywhere in Kuwait. Same-day hardware assessment. 30-day warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/book', ogType: 'website', schemaTypes: ['WebPage'] } } as WebPageEntity,
     
@@ -1608,7 +1608,7 @@ export const rawGraphData: RawGraphData = {
         }
       ],
       seo: { 
-        title: 'MacBook Repair Kuwait | Air, Pro & Board Repair | KCROC', 
+        title: 'MacBook Repair Kuwait | Screen & Board Repair | KCROC', 
         description: 'MacBook repair in Kuwait for charging, liquid and board-level faults. Original-board micro-soldering where practical, free pickup and 30-day warranty.', 
         canonicalUrl: 'https://www.computerrepairkuwait.com/macbook-repair-kuwait', locale: 'en_KW', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/macbook-repair-kuwait', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/macbook-repair-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/macbook-repair-kuwait' }, 
         ogType: 'article', 
@@ -1891,7 +1891,7 @@ export const rawGraphData: RawGraphData = {
         }
       ],
       seo: { 
-        title: 'Laptop Repair Kuwait | Free Pickup & 30-Day Warranty | KCROC', 
+        title: 'Laptop Repair Kuwait | From 15 KWD | KCROC', 
         description: 'Laptop repair in Kuwait for screens, batteries, charging, hinges, overheating and motherboard faults. Free pickup and delivery, diagnosis before repair, quote approval, and a 30-day warranty.', 
         canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-repair-kuwait', locale: 'en_KW', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/laptop-repair-kuwait', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/laptop-repair-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/laptop-repair-kuwait' }, 
         ogType: 'article', 
@@ -2008,7 +2008,7 @@ export const rawGraphData: RawGraphData = {
       title: 'Gaming PC Repair Kuwait', 
       iconKey: 'gaming', 
       shortDescription: 'Gaming computer, GPU and performance repair in Kuwait for no power, black screen, GPU artifacts, FPS drops, overheating, crashes, shutdowns and cooling faults.', 
-      description: 'Need gaming computer repair in Kuwait? If your gaming PC shuts down mid-match, shows no display, stutters, drops FPS, overheats, crashes, artifacts, or refuses to power on, KCROC diagnoses the failure before recommending an expensive part swap. We use thermal imaging, controlled load testing and component-level diagnostics for custom desktops, pre-built gaming PCs, standalone GPUs, liquid-cooled systems and high-performance rigs. We service NVIDIA GeForce RTX and AMD Radeon systems, Ryzen and Intel builds, and major gaming-PC families. Where technically repairable, we repair the failed stage instead of defaulting to a full motherboard or GPU replacement. Free pickup and delivery are available across Kuwait, with a 30-day repair warranty.', 
+      description: 'Gaming PC repair in Kuwait for FPS drops, overheating, crashes, black screen, GPU artifacts and no-power faults. KCROC diagnoses the failure before recommending an expensive part swap.', We use thermal imaging, controlled load testing and component-level diagnostics for custom desktops, pre-built gaming PCs, standalone GPUs, liquid-cooled systems and high-performance rigs. We service NVIDIA GeForce RTX and AMD Radeon systems, Ryzen and Intel builds, and major gaming-PC families. Where technically repairable, we repair the failed stage instead of defaulting to a full motherboard or GPU replacement. Free pickup and delivery are available across Kuwait, with a 30-day repair warranty.', 
       idealCustomer: 'Gaming PC owners, esports players, streamers, content creators, PC builders and professionals who need a real hardware diagnosis for power, display, GPU, FPS, cooling or stability problems.',
       symptomLinks: [
         { label: 'Gaming PC won’t turn on', path: '/guides/gaming-pc-not-turning-on-kuwait', description: 'No power, intermittent startup, dead tower or a PC that clicks on then shuts back off.' },
@@ -2347,7 +2347,7 @@ export const rawGraphData: RawGraphData = {
         noFixNoFee: true 
       }, 
       seo: { 
-        title: 'Gaming PC Repair Kuwait | Gaming Computer & GPU Fix | KCROC', 
+        title: 'Gaming PC Repair Kuwait | GPU, FPS & Overheating Fix | KCROC', 
         description: 'Gaming PC and gaming computer repair in Kuwait for no power, black screen, GPU artifacts, FPS drops, overheating, crashes, PSU and cooling faults. Free pickup.', 
         canonicalUrl: 'https://www.computerrepairkuwait.com/gaming-pc-repair-kuwait', locale: 'en_KW', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/gaming-pc-repair-kuwait', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/gaming-pc-repair-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/gaming-pc-repair-kuwait' }, 
         ogType: 'website', 
@@ -2813,7 +2813,7 @@ export const rawGraphData: RawGraphData = {
       ],
       seo: { 
         title: 'Motherboard Repair Kuwait | Chip-Level MOSFET Fix | KCROC', 
-        description: 'Chip-level motherboard repair in Kuwait. Power rail tracing, MOSFET replacement, BGA rework, and liquid damage recovery — up to 80% cheaper than a full board replacement. Free pick & drop.', 
+        description: 'Chip-level motherboard repair in Kuwait for no-power, charging and short-circuit faults. Power-rail tracing, MOSFET replacement and board repair with free pickup and 30-day warranty.', 
         canonicalUrl: 'https://www.computerrepairkuwait.com/motherboard-repair-kuwait', locale: 'en_KW', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/motherboard-repair-kuwait', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/motherboard-repair-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/motherboard-repair-kuwait' }, 
         ogType: 'article', 
         schemaTypes: ['Service', 'FAQPage'] 
@@ -2972,7 +2972,7 @@ export const rawGraphData: RawGraphData = {
       ],
       seo: {
         title: 'Laptop Screen Replacement Kuwait | From 30 KWD | KCROC',
-        description: 'Cracked, black or flickering laptop screen? Replacement from 30 KWD + part, same-day when the panel is in stock. Free Kuwait-wide pickup and 30-day warranty.',
+        description: 'Laptop screen replacement from 30 KWD + part. Cracked, black or flickering display? Free diagnosis, same-day service when in stock, Kuwait-wide pickup and 30-day warranty.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-screen-repair-kuwait', locale: 'en_KW', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/laptop-screen-repair-kuwait', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/laptop-screen-repair-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/laptop-screen-repair-kuwait' },
         ogType: 'article',
         schemaTypes: ['Service', 'FAQPage']
