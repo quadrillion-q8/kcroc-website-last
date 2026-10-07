@@ -40,6 +40,7 @@ const ARABIC_LOCATION_PAGES: Record<string, string> = {
   salmiya: '/ar/computer-repair-salmiya',
   farwaniya: '/ar/computer-repair-farwaniya',
   'kuwait-city': '/ar/computer-repair-kuwait-city',
+  jahra: '/ar/computer-repair-jahra',
 };
 
 const SERVICE_ICON_MAP: Record<string, React.ElementType> = {
