@@ -14,7 +14,7 @@ export default function RepairProofCTA() {
       className="w-full px-4 sm:px-6 py-7 sm:py-12"
       aria-labelledby="repair-proof-cta-title"
     >
-      <div className="max-w-6xl mx-auto rounded-3xl border border-cyan-500/20 bg-gradient-to-br from-cyan-950/30 via-slate-900/70 to-emerald-950/20 p-5 sm:p-8 lg:p-10 shadow-2xl">
+      <div className="max-w-6xl mx-auto rounded-2xl border border-white/[0.08] bg-[#11171b] p-5 sm:p-8 lg:p-10 shadow-none">
         <div className="grid lg:grid-cols-[1fr_auto] gap-7 lg:gap-10 items-center">
           <div>
             <p className="text-cyan-400 text-xs font-black uppercase tracking-[0.14em] mb-3">
@@ -28,13 +28,13 @@ export default function RepairProofCTA() {
             </p>
 
             <div className="flex flex-wrap gap-2 mt-5">
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-slate-700 bg-slate-950/40 px-3 py-2 text-[11px] font-semibold text-slate-300">
+              <span className="inline-flex items-center gap-1.5 rounded-md border border-white/[0.07] bg-white/[0.018] px-3 py-2 text-[11px] font-semibold text-slate-300">
                 <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" aria-hidden="true" /> Diagnosis first
               </span>
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-slate-700 bg-slate-950/40 px-3 py-2 text-[11px] font-semibold text-slate-300">
+              <span className="inline-flex items-center gap-1.5 rounded-md border border-white/[0.07] bg-white/[0.018] px-3 py-2 text-[11px] font-semibold text-slate-300">
                 <Truck className="w-3.5 h-3.5 text-cyan-400" aria-hidden="true" /> Free pickup across Kuwait
               </span>
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-slate-700 bg-slate-950/40 px-3 py-2 text-[11px] font-semibold text-slate-300">
+              <span className="inline-flex items-center gap-1.5 rounded-md border border-white/[0.07] bg-white/[0.018] px-3 py-2 text-[11px] font-semibold text-slate-300">
                 <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" aria-hidden="true" /> Warranty on eligible repairs
               </span>
             </div>
