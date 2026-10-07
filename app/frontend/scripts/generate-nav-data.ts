@@ -91,7 +91,7 @@ const contentEntries = new Map<string, ContentEntry>();
 // BLOG_POSTS is the canonical content inventory for posts and guide-style
 // posts. Arabic counterparts are first-class menu entries rather than being
 // swapped only after a visitor is already on an Arabic URL.
-for (const post of BLOG_POSTS) {
+for (const post of BLOG_POSTS.filter((p) => !p.redirectTo)) {
   const route = normalizePath(getContentRoute(post.slug, post.contentType ?? 'blog'));
   const baseEntry: ContentEntry = {
     id: post.id,
