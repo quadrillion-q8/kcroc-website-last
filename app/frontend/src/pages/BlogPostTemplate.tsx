@@ -733,7 +733,7 @@ export default function BlogPostTemplate() {
   }, [post]);
 
   const recentPosts = useMemo(
-    () => post ? BLOG_POSTS.filter(p => p.slug !== post.slug).sort((a, b) => +new Date(b.date) - +new Date(a.date)).slice(0, 4) : [],
+    () => post ? BLOG_POSTS.filter(p => !p.redirectTo && p.slug !== post.slug).sort((a, b) => +new Date(b.date) - +new Date(a.date)).slice(0, 4) : [],
     [post]
   );
 
