@@ -447,9 +447,12 @@ export const rawGraphData: RawGraphData = {
       id: 'blog-laptop-wont-turn-on-causes-fixes',
       slug: 'blog/laptop-wont-turn-on-causes-fixes',
       entityType: 'WebPage',
-      isActive: true,
+      // Consolidated into the stronger Problem entity at /laptop-wont-turn-on.
+      // Keep the record for historical references, but exclude it from the
+      // active sitemap/routable entity set.
+      isActive: false,
       title: "Laptop Won’t Turn On? 15 Causes, Tests & What to Do Before Repair",
-      description: "Laptop won’t turn on? Learn how to diagnose charging, battery, power, RAM, BIOS, display and motherboard problems safely before bringing your laptop for repair in Kuwait.",
+      description: "Consolidated into the KCROC no-power diagnostic page at /laptop-wont-turn-on.",
       seo: {
         title: "Laptop Won’t Turn On? 15 Causes & Fixes | Kuwait",
         description: "Laptop won’t turn on? Learn how to diagnose charging, battery, power, RAM, BIOS, display and motherboard problems safely before bringing your laptop for repair in Kuwait.",
