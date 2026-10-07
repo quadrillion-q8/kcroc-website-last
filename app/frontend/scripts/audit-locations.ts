@@ -29,7 +29,7 @@ const GENERIC_FAQ_COUNT = 4;
 
 // Arabic pages wired up in LocationDeepTemplate.tsx (ARABIC_LOCATION_PAGES) —
 // the audit also reads seo.alternates['ar-KW'] from the graph.
-const ARABIC_SLUGS_IN_TEMPLATE = new Set(['salmiya', 'farwaniya', 'kuwait-city']);
+const ARABIC_SLUGS_IN_TEMPLATE = new Set(['salmiya', 'farwaniya', 'kuwait-city', 'jahra']);
 
 // ── Types ─────────────────────────────────────────────────────────────────
 type Loc = (typeof KCROC_GRAPH.locations)[number];
