@@ -223,23 +223,128 @@
       "permanent": true
     },
     {
+      "source": "/location/saad-al-abdullah",
+      "destination": "/location/jahra",
+      "permanent": true
+    },
+    {
+      "source": "/computer-repair-in-saad-al-abdullah",
+      "destination": "/location/jahra",
+      "permanent": true
+    },
+    {
+      "source": "/laptop-repair-in-saad-al-abdullah",
+      "destination": "/location/jahra",
+      "permanent": true
+    },
+    {
+      "source": "/computer-repair-saad-al-abdullah",
+      "destination": "/location/jahra",
+      "permanent": true
+    },
+    {
+      "source": "/laptop-repair-saad-al-abdullah",
+      "destination": "/location/jahra",
+      "permanent": true
+    },
+    {
+      "source": "/location/mishrif",
+      "destination": "/location/hawalli",
+      "permanent": true
+    },
+    {
+      "source": "/computer-repair-in-mishrif",
+      "destination": "/location/hawalli",
+      "permanent": true
+    },
+    {
+      "source": "/laptop-repair-in-mishrif",
+      "destination": "/location/hawalli",
+      "permanent": true
+    },
+    {
+      "source": "/computer-repair-mishrif",
+      "destination": "/location/hawalli",
+      "permanent": true
+    },
+    {
+      "source": "/laptop-repair-mishrif",
+      "destination": "/location/hawalli",
+      "permanent": true
+    },
+    {
+      "source": "/location/jleeb-al-shuyoukh",
+      "destination": "/location/farwaniya",
+      "permanent": true
+    },
+    {
+      "source": "/computer-repair-in-jleeb-al-shuyoukh",
+      "destination": "/location/farwaniya",
+      "permanent": true
+    },
+    {
+      "source": "/laptop-repair-in-jleeb-al-shuyoukh",
+      "destination": "/location/farwaniya",
+      "permanent": true
+    },
+    {
+      "source": "/computer-repair-jleeb-al-shuyoukh",
+      "destination": "/location/farwaniya",
+      "permanent": true
+    },
+    {
+      "source": "/laptop-repair-jleeb-al-shuyoukh",
+      "destination": "/location/farwaniya",
+      "permanent": true
+    },
+    {
+      "source": "/location/adan",
+      "destination": "/location/mubarak-al-kabeer",
+      "permanent": true
+    },
+    {
+      "source": "/computer-repair-in-adan",
+      "destination": "/location/mubarak-al-kabeer",
+      "permanent": true
+    },
+    {
+      "source": "/laptop-repair-in-adan",
+      "destination": "/location/mubarak-al-kabeer",
+      "permanent": true
+    },
+    {
+      "source": "/computer-repair-adan",
+      "destination": "/location/mubarak-al-kabeer",
+      "permanent": true
+    },
+    {
+      "source": "/laptop-repair-adan",
+      "destination": "/location/mubarak-al-kabeer",
+      "permanent": true
+    },
+    {
+      "source": "/location/abu-ftaira",
+      "destination": "/location/fintas",
+      "permanent": true
+    },
+    {
       "source": "/computer-repair-in-abu-ftaira",
-      "destination": "/location/abu-ftaira",
+      "destination": "/location/fintas",
       "permanent": true
     },
     {
       "source": "/laptop-repair-in-abu-ftaira",
-      "destination": "/location/abu-ftaira",
+      "destination": "/location/fintas",
       "permanent": true
     },
     {
       "source": "/computer-repair-abu-ftaira",
-      "destination": "/location/abu-ftaira",
+      "destination": "/location/fintas",
       "permanent": true
     },
     {
       "source": "/laptop-repair-abu-ftaira",
-      "destination": "/location/abu-ftaira",
+      "destination": "/location/fintas",
       "permanent": true
     },
     {
@@ -275,26 +380,6 @@
     {
       "source": "/laptop-repair-adailiya",
       "destination": "/location/adailiya",
-      "permanent": true
-    },
-    {
-      "source": "/computer-repair-in-adan",
-      "destination": "/location/adan",
-      "permanent": true
-    },
-    {
-      "source": "/laptop-repair-in-adan",
-      "destination": "/location/adan",
-      "permanent": true
-    },
-    {
-      "source": "/computer-repair-adan",
-      "destination": "/location/adan",
-      "permanent": true
-    },
-    {
-      "source": "/laptop-repair-adan",
-      "destination": "/location/adan",
       "permanent": true
     },
     {
@@ -428,26 +513,6 @@
       "permanent": true
     },
     {
-      "source": "/computer-repair-in-jleeb-al-shuyoukh",
-      "destination": "/location/jleeb-al-shuyoukh",
-      "permanent": true
-    },
-    {
-      "source": "/laptop-repair-in-jleeb-al-shuyoukh",
-      "destination": "/location/jleeb-al-shuyoukh",
-      "permanent": true
-    },
-    {
-      "source": "/computer-repair-jleeb-al-shuyoukh",
-      "destination": "/location/jleeb-al-shuyoukh",
-      "permanent": true
-    },
-    {
-      "source": "/laptop-repair-jleeb-al-shuyoukh",
-      "destination": "/location/jleeb-al-shuyoukh",
-      "permanent": true
-    },
-    {
       "source": "/computer-repair-in-khaitan",
       "destination": "/location/khaitan",
       "permanent": true
@@ -530,26 +595,6 @@
     {
       "source": "/laptop-repair-messila",
       "destination": "/location/messila",
-      "permanent": true
-    },
-    {
-      "source": "/computer-repair-in-mishrif",
-      "destination": "/location/mishrif",
-      "permanent": true
-    },
-    {
-      "source": "/laptop-repair-in-mishrif",
-      "destination": "/location/mishrif",
-      "permanent": true
-    },
-    {
-      "source": "/computer-repair-mishrif",
-      "destination": "/location/mishrif",
-      "permanent": true
-    },
-    {
-      "source": "/laptop-repair-mishrif",
-      "destination": "/location/mishrif",
       "permanent": true
     },
     {
@@ -670,26 +715,6 @@
     {
       "source": "/laptop-repair-rumaithiya",
       "destination": "/location/rumaithiya",
-      "permanent": true
-    },
-    {
-      "source": "/computer-repair-in-saad-al-abdullah",
-      "destination": "/location/saad-al-abdullah",
-      "permanent": true
-    },
-    {
-      "source": "/laptop-repair-in-saad-al-abdullah",
-      "destination": "/location/saad-al-abdullah",
-      "permanent": true
-    },
-    {
-      "source": "/computer-repair-saad-al-abdullah",
-      "destination": "/location/saad-al-abdullah",
-      "permanent": true
-    },
-    {
-      "source": "/laptop-repair-saad-al-abdullah",
-      "destination": "/location/saad-al-abdullah",
       "permanent": true
     },
     {
