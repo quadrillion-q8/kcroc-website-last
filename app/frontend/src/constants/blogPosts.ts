@@ -132,6 +132,8 @@ export interface BlogPost {
   arabicSlug?: string;
   /** Public IA route for this content. Defaults to the Blog. */
   contentType?: 'blog' | 'guide' | 'news';
+  /** Retired post: its URL permanently redirects here. Excluded from the sitemap, SSG and listings. */
+  redirectTo?: string;
 }
 
 export const BLOG_POSTS: BlogPost[] = [
@@ -1750,6 +1752,7 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     id: "blog-laptop-wont-turn-on-causes-fixes",
     slug: "laptop-wont-turn-on-causes-fixes",
+    redirectTo: "/laptop-wont-turn-on",
     title: "Laptop Won’t Turn On? 15 Causes, Tests & What to Do Before Repair",
     excerpt: "Laptop won't turn on? Learn how to separate a true no-power condition from a black-screen, POST, boot, charging or Windows problem before replacing parts.",
     description: "Laptop won’t turn on? Learn how to diagnose charging, battery, power, RAM, BIOS, display and motherboard problems safely before bringing your laptop for repair in Kuwait.",
