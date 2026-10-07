@@ -59,7 +59,11 @@ export const routes: RouteObject[] = [
           { path: 'blog/ar/laptop-buying-guide-kuwait-2026', lazy: async () => ({ Component: (await import('./pages/LaptopBuyingGuideAR')).default }) },
           { path: 'blog/ar/how-often-clean-laptop-replace-thermal-paste-kuwait', lazy: async () => ({ Component: (await import('./pages/GamingLaptopCleaningAR')).default }) },
           { path: 'blog/intel-core-ultra-vs-amd-ryzen-ai', lazy: async () => ({ Component: (await import('./pages/IntelVsAmdGuide')).default }) },
-          { path: 'blog/laptop-wont-turn-on', element: <Navigate to="/blog/laptop-wont-turn-on-causes-fixes" replace /> },
+          // Consolidated: the stronger /laptop-wont-turn-on problem page now
+          // owns this search intent. Keep both historical blog URLs as client
+          // fallbacks; production also gets permanent server redirects below.
+          { path: 'blog/laptop-wont-turn-on', element: <Navigate to="/laptop-wont-turn-on" replace /> },
+          { path: 'blog/laptop-wont-turn-on-causes-fixes', element: <Navigate to="/laptop-wont-turn-on" replace /> },
           { path: 'author/imran', lazy: async () => ({ Component: (await import('./pages/AuthorImran')).default }) },
           { path: 'guides/laptop-battery-warning-signs', lazy: async () => ({ Component: (await import('./pages/BatteryHealthGuide')).default }) },
           { path: 'guides/why-is-my-laptop-so-hot', lazy: async () => ({ Component: (await import('./pages/LaptopOverheatingGuide')).default }) },
