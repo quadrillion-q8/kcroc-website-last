@@ -32,6 +32,7 @@ const AR_LOCATION_PATHS: Record<string, string> = {
   salmiya: '/ar/computer-repair-salmiya',
   farwaniya: '/ar/computer-repair-farwaniya',
   'kuwait-city': '/ar/computer-repair-kuwait-city',
+  jahra: '/ar/computer-repair-jahra',
 };
 
 // Arabic labels for existing (English-slugged) service pages — the
