@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { ROUTES } from '../../constants/routes';
 import { KCROC_GRAPH } from '../../data/graph';
 import { useAnalytics } from '../../core/analytics/AnalyticsProvider';
+import { buildWhatsAppLink } from '../../utils/whatsappIntent';
 
 export default function Hero() {
   const [statsAnimated, setStatsAnimated] = useState(false);
@@ -15,7 +16,7 @@ export default function Hero() {
   const homePage = KCROC_GRAPH.pages?.find((p) => p.id === 'page-home');
   const hero = homePage?.hero;
   const business = KCROC_GRAPH.business;
-  const phone = business!.telephone;
+  const heroWhatsAppLink = buildWhatsAppLink('Hi KCROC, I need computer repair in Kuwait. Can I get a free diagnosis and pickup?');
   const rating = business!.aggregateRating!.ratingValue;
   const reviewCount = business?.aggregateRating?.reviewCount ?? 150;
   const headline = hero?.headline ?? "Kuwait's Expert Component-Level Repair Service.";
@@ -94,13 +95,13 @@ export default function Hero() {
             <Button asChild size="lg" variant="ctaPrimary" className="h-14 w-full rounded-xl text-sm sm:text-base">
               <Link to={ROUTES.BOOKING} onClick={() => trackConversion('cta_click', { cta_name: 'hero_mobile_book_pickup', button_position: 'hero_mobile' })}>
                 <CalendarClock className="h-5 w-5" aria-hidden="true" />
-                Book Pickup
+                Get Free Quote
               </Link>
             </Button>
             <Button asChild size="lg" className="h-14 w-full rounded-xl bg-[#25D366] font-extrabold text-slate-950 hover:brightness-95">
-              <a href={`https://wa.me/${phone}`} target="_blank" rel="noopener noreferrer" onClick={() => trackConversion('whatsapp_click', { cta_name: 'hero_mobile_whatsapp', button_position: 'hero_mobile' })}>
+              <a href={heroWhatsAppLink} target="_blank" rel="noopener noreferrer" onClick={() => trackConversion('whatsapp_click', { cta_name: 'hero_mobile_quote', button_position: 'hero_mobile' })}>
                 <MessageCircle className="h-5 w-5" aria-hidden="true" />
-                WhatsApp
+                Book Pickup
               </a>
             </Button>
           </div>
@@ -166,13 +167,13 @@ export default function Hero() {
                 <Button asChild size="lg" variant="ctaPrimary" className="h-14 rounded-xl px-7 text-base">
                   <Link to={ROUTES.BOOKING} onClick={() => trackConversion('cta_click', { cta_name: 'hero_book_pickup', button_position: 'hero_desktop' })}>
                     <CalendarClock className="h-5 w-5" aria-hidden="true" />
-                    Book Free Pickup
+                    Get Free Repair Quote
                   </Link>
                 </Button>
                 <Button asChild size="lg" className="h-14 rounded-xl bg-[#25D366] px-7 text-base font-extrabold text-slate-950 hover:brightness-95">
-                  <a href={`https://wa.me/${phone}`} target="_blank" rel="noopener noreferrer" onClick={() => trackConversion('whatsapp_click', { cta_name: 'hero_desktop_whatsapp', button_position: 'hero_desktop' })}>
+                  <a href={heroWhatsAppLink} target="_blank" rel="noopener noreferrer" onClick={() => trackConversion('whatsapp_click', { cta_name: 'hero_desktop_quote', button_position: 'hero_desktop' })}>
                     <MessageCircle className="h-5 w-5" aria-hidden="true" />
-                    WhatsApp a Technician
+                    Book Free Pickup
                   </a>
                 </Button>
               </div>
