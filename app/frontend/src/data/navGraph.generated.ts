@@ -48,7 +48,7 @@ export const NAV_GRAPH = {
     "socialLinks": {
       "facebook": "https://www.facebook.com/computerrepairkuwait",
       "instagram": "https://www.instagram.com/computerrepairkuwait",
-      "googleMaps": "https://share.google/bDiraX9R7Tc1u7tm4"
+      "googleMaps": "https://www.google.com/maps/place/?q=place_id:ChIJzapykEqbzz8RZsrwoaORhjY"
     },
     "aiSummary": "Kuwait Computer Repair On Call (KCROC) is a Hawalli-based component-level computer repair specialist. Services include laptop and MacBook repair, gaming PC repair, motherboard chip-level diagnostics, screen replacement, battery replacement, charging-port repair, hinge and chassis repair, keyboard replacement, SSD and RAM upgrades, liquid-damage repair, gaming laptop thermal servicing, and virus removal. Free pickup and delivery across all Kuwait governorates. 30-day warranty on completed repairs. No Fix, No Fee policy."
   },
@@ -223,28 +223,12 @@ export const NAV_GRAPH = {
         "path": "/location/ardiya"
       },
       {
-        "label": "Computer Repair Jleeb Al-Shuyoukh",
-        "path": "/location/jleeb-al-shuyoukh"
-      },
-      {
         "label": "Computer Repair Mahboula",
         "path": "/location/mahboula"
       },
       {
-        "label": "Computer Repair Adan",
-        "path": "/location/adan"
-      },
-      {
         "label": "Computer Repair Qurain",
         "path": "/location/qurain"
-      },
-      {
-        "label": "Computer Repair Saad Al Abdullah",
-        "path": "/location/saad-al-abdullah"
-      },
-      {
-        "label": "Computer Repair Abu Ftaira",
-        "path": "/location/abu-ftaira"
       },
       {
         "label": "Computer Repair Qortuba",
@@ -257,10 +241,6 @@ export const NAV_GRAPH = {
       {
         "label": "Computer Repair Messila",
         "path": "/location/messila"
-      },
-      {
-        "label": "Computer Repair Mishrif",
-        "path": "/location/mishrif"
       },
       {
         "label": "Computer Repair Adailiya",
@@ -386,6 +366,17 @@ export const NAV_GRAPH = {
       "description": "Everyday Windows laptops—from budget student IdeaPads to high-end XPS workstations—face a tough life. Between daily transport, dropped bags, and Kuwait's extreme summer heat combined with fine desert dust, mechanical and thermal failures are inevitable. We see it every day: hinges separating from plastic chassis, DC charging jacks pushed inward, cooling fans grinding or seizing, and systems slowing to a crawl. Instead of telling you to buy a new laptop, we fix the actual broken part. We repair snapped hinges with structural resin, micro-solder broken charging ports directly to the motherboard, ultrasonic-clean dust-choked cooling systems, and revive slow systems with SSD and RAM upgrades. We stock OEM and high-grade compatible parts for Dell, HP, Lenovo, ASUS, Acer, and MSI.",
       "iconKey": "laptop",
       "popular": true,
+      "noFixNoFee": true,
+      "hasManyFeatures": true,
+      "hasPricing": true
+    },
+    {
+      "id": "srv-desktop-pc",
+      "slug": "desktop-pc-repair-kuwait",
+      "title": "Desktop & PC Repair Kuwait",
+      "description": "Desktop PC repair in Kuwait for home computers, office desktops, workstations, pre-built towers and custom PCs. KCROC diagnoses the actual hardware or software fault before recommending a replacement. We handle power failures, no display, Windows boot problems, blue screens, overheating, fan faults, storage and SSD issues, RAM instability, motherboard faults, PSU-related shutdowns and hardware upgrades. Where a component-level repair is technically practical, we repair the failed stage instead of defaulting to a full motherboard or system replacement. Free pickup and delivery are available across Kuwait, with repair completed at the Hawalli laboratory.",
+      "iconKey": "monitor",
+      "popular": false,
       "noFixNoFee": true,
       "hasManyFeatures": true,
       "hasPricing": true
@@ -716,88 +707,16 @@ export const NAV_GRAPH = {
       "navigationPriority": 80
     },
     {
-      "id": "loc-salwa",
-      "slug": "salwa",
-      "title": "Salwa",
-      "navigationPriority": 80
-    },
-    {
-      "id": "loc-rumaithiya",
-      "slug": "rumaithiya",
-      "title": "Rumaithiya",
-      "navigationPriority": 78
-    },
-    {
-      "id": "loc-shaab",
-      "slug": "shaab",
-      "title": "Shaab",
-      "navigationPriority": 76
-    },
-    {
-      "id": "loc-surra",
-      "slug": "surra",
-      "title": "Surra",
-      "navigationPriority": 74
-    },
-    {
-      "id": "loc-khaitan",
-      "slug": "khaitan",
-      "title": "Khaitan",
-      "navigationPriority": 72
-    },
-    {
       "id": "loc-jahra",
       "slug": "jahra",
       "title": "Jahra",
       "navigationPriority": 70
     },
     {
-      "id": "loc-riggae",
-      "slug": "riggae",
-      "title": "Riggae",
-      "navigationPriority": 70
-    },
-    {
-      "id": "loc-ardiya",
-      "slug": "ardiya",
-      "title": "Ardiya",
-      "navigationPriority": 68
-    },
-    {
-      "id": "loc-jleeb-al-shuyoukh",
-      "slug": "jleeb-al-shuyoukh",
-      "title": "Jleeb Al-Shuyoukh",
-      "navigationPriority": 66
-    },
-    {
-      "id": "loc-mahboula",
-      "slug": "mahboula",
-      "title": "Mahboula",
-      "navigationPriority": 64
-    },
-    {
-      "id": "loc-adan",
-      "slug": "adan",
-      "title": "Adan",
-      "navigationPriority": 62
-    },
-    {
       "id": "loc-ahmadi",
       "slug": "ahmadi",
       "title": "Ahmadi",
       "navigationPriority": 60
-    },
-    {
-      "id": "loc-qurain",
-      "slug": "qurain",
-      "title": "Qurain",
-      "navigationPriority": 60
-    },
-    {
-      "id": "loc-saad-al-abdullah",
-      "slug": "saad-al-abdullah",
-      "title": "Saad Al Abdullah",
-      "navigationPriority": 58
     },
     {
       "id": "loc-fahaheel",
@@ -840,11 +759,60 @@ export const NAV_GRAPH = {
       "slug": "sabah-al-salem",
       "title": "Sabah Al-Salem",
       "navigationPriority": 25
-    },    {
-      "id": "loc-abu-ftaira",
-      "slug": "abu-ftaira",
-      "title": "Abu Ftaira",
-      "navigationPriority": 56
+    },
+    {
+      "id": "loc-salwa",
+      "slug": "salwa",
+      "title": "Salwa",
+      "navigationPriority": 80
+    },
+    {
+      "id": "loc-rumaithiya",
+      "slug": "rumaithiya",
+      "title": "Rumaithiya",
+      "navigationPriority": 78
+    },
+    {
+      "id": "loc-shaab",
+      "slug": "shaab",
+      "title": "Shaab",
+      "navigationPriority": 76
+    },
+    {
+      "id": "loc-surra",
+      "slug": "surra",
+      "title": "Surra",
+      "navigationPriority": 74
+    },
+    {
+      "id": "loc-khaitan",
+      "slug": "khaitan",
+      "title": "Khaitan",
+      "navigationPriority": 72
+    },
+    {
+      "id": "loc-riggae",
+      "slug": "riggae",
+      "title": "Riggae",
+      "navigationPriority": 70
+    },
+    {
+      "id": "loc-ardiya",
+      "slug": "ardiya",
+      "title": "Ardiya",
+      "navigationPriority": 68
+    },
+    {
+      "id": "loc-mahboula",
+      "slug": "mahboula",
+      "title": "Mahboula",
+      "navigationPriority": 64
+    },
+    {
+      "id": "loc-qurain",
+      "slug": "qurain",
+      "title": "Qurain",
+      "navigationPriority": 60
     },
     {
       "id": "loc-qortuba",
@@ -865,12 +833,6 @@ export const NAV_GRAPH = {
       "navigationPriority": 50
     },
     {
-      "id": "loc-mishrif",
-      "slug": "mishrif",
-      "title": "Mishrif",
-      "navigationPriority": 48
-    },
-    {
       "id": "loc-adailiya",
       "slug": "adailiya",
       "title": "Adailiya",
@@ -878,6 +840,15 @@ export const NAV_GRAPH = {
     }
   ],
   "blogEntries": [
+    {
+      "id": "blog-pc-gaming-graphics-settings-better-visuals-fps",
+      "slug": "blog/pc-gaming-graphics-settings-better-visuals-fps",
+      "title": "You Don’t Need Max Graphics Settings for Great PC Gaming Visuals",
+      "description": "You do not need every PC graphics setting at Ultra. Learn which settings are worth keeping high for better gaming visuals without giving away unnecessary FPS.",
+      "iconKey": "gaming",
+      "date": "2026-10-05",
+      "primaryKeyword": "PC Gaming"
+    },
     {
       "id": "blog-laptop-slow-2026",
       "slug": "blog/why-is-my-laptop-so-slow-2026",
@@ -954,7 +925,7 @@ export const NAV_GRAPH = {
       "id": "blog-8gb-ram-2026",
       "slug": "blog/why-8gb-ram-is-no-longer-enough-for-windows-11",
       "title": "Is 8GB RAM Enough for Windows 11 in 2026?",
-      "description": "Is 8GB RAM enough for Windows 11 in 2026? Learn how workload, multitasking, memory pressure and laptop upgradeability affect the choice between 8GB, 16GB and 32GB.",
+      "description": "Is 8GB RAM enough for Windows 11 in 2026? Compare 8GB, 16GB and 32GB for multitasking, gaming, memory pressure and laptop upgradeability.",
       "iconKey": "shield",
       "date": "2026-07-30",
       "primaryKeyword": "Windows 11"
@@ -1015,6 +986,42 @@ export const NAV_GRAPH = {
     }
   ],
   "guideEntries": [
+    {
+      "id": "guide-windows-troubleshooting-complete-guide",
+      "slug": "guides/windows-troubleshooting-complete-guide",
+      "title": "Windows Troubleshooting: A Complete Guide to Diagnosing and Fixing Windows Problems",
+      "description": "Windows troubleshooting guide for Windows 11 and Windows 10: triage by symptom, read stop codes, use Safe Mode, DISM and SFC, and know when it is hardware.",
+      "iconKey": "shield",
+      "date": "2026-10-06",
+      "primaryKeyword": "Windows Troubleshooting"
+    },
+    {
+      "id": "guide-bios-uefi-ar",
+      "slug": "guides/ar/bios-uefi-recovery-kuwait",
+      "title": "استرداد BIOS بعد فشل التحديث: دليل UEFI والأعطال",
+      "description": "دليل لتمييز تلف فيرموير BIOS/UEFI عن أعطال الرام والطاقة واللوحة الأم، مع طرق الاسترداد الآمنة وبرمجة شريحة SPI في الكويت.",
+      "iconKey": "cpu",
+      "date": "2026-10-05",
+      "primaryKeyword": "استرداد bios بعد فشل التحديث: دليل uefi والأعطال"
+    },
+    {
+      "id": "guide-bios-uefi",
+      "slug": "guides/bios-uefi-recovery-kuwait",
+      "title": "BIOS & UEFI Troubleshooting, Update Failures & Firmware Recovery",
+      "description": "A black screen after a BIOS update, a boot loop, or a system that won't POST can come from corrupted firmware — or from RAM, power, EC, or motherboard faults that only look like a BIOS problem. Covers warning signs, Secure Boot/BitLocker behavior, manufacturer recovery methods, and professional SPI/EEPROM reprogramming.",
+      "iconKey": "cpu",
+      "date": "2026-10-05",
+      "primaryKeyword": "bios & uefi troubleshooting, update failures & firmware recovery"
+    },
+    {
+      "id": "guide-bitlocker-recovery-key-after-bios-update",
+      "slug": "guides/bitlocker-recovery-key-after-bios-update",
+      "title": "Why Windows Asks for a BitLocker Recovery Key After a BIOS Update (and What to Do)",
+      "description": "Windows asking for a BitLocker recovery key after a BIOS update? Learn why it happens, where to find the key, how to suspend BitLocker before firmware updates, and what to do if the key is lost.",
+      "iconKey": "cpu",
+      "date": "2026-10-05",
+      "primaryKeyword": "BitLocker Recovery Key"
+    },
     {
       "id": "guide-gaming-gpu-artifacts-repair-kuwait",
       "slug": "guides/gaming-gpu-artifacts-repair-kuwait",
@@ -1212,15 +1219,6 @@ export const NAV_GRAPH = {
       "iconKey": "shield",
       "date": "2026-09-05",
       "primaryKeyword": "Windows 11"
-    },
-    {
-      "id": "guide-bios-uefi",
-      "slug": "guides/bios-uefi-recovery-kuwait",
-      "title": "BIOS & UEFI Troubleshooting, Update Failures & Firmware Recovery",
-      "description": "A black screen after a BIOS update, a boot loop, or a system that won't POST can come from corrupted firmware — or from RAM, power, EC, or motherboard faults that only look like a BIOS problem. Covers warning signs, Secure Boot/BitLocker behavior, manufacturer recovery methods, and professional SPI/EEPROM reprogramming.",
-      "iconKey": "cpu",
-      "date": "",
-      "primaryKeyword": "bios & uefi troubleshooting, update failures & firmware recovery"
     },
     {
       "id": "guide-gamebar-presence-writer",
