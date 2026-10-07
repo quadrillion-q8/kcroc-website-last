@@ -133,6 +133,16 @@
       "permanent": true
     },
     {
+      "source": "/blog/laptop-wont-turn-on",
+      "destination": "/laptop-wont-turn-on",
+      "permanent": true
+    },
+    {
+      "source": "/blog/laptop-wont-turn-on-causes-fixes",
+      "destination": "/laptop-wont-turn-on",
+      "permanent": true
+    },
+    {
       "source": "/laptop-screen-protection-tips",
       "destination": "/blog/how-to-protect-laptop-screen",
       "permanent": true
