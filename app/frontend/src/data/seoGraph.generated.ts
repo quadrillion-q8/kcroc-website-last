@@ -1013,7 +1013,7 @@ export const SEO_GRAPH = {
     {
       "id": "blog-laptop-wont-turn-on-causes-fixes",
       "entityType": "WebPage",
-      "isActive": true,
+      "isActive": false,
       "title": "Laptop Won’t Turn On? 15 Causes, Tests & What to Do Before Repair",
       "slug": "blog/laptop-wont-turn-on-causes-fixes",
       "seo": {
