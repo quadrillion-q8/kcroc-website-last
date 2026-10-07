@@ -20,6 +20,7 @@ import { KCROC_GRAPH } from '../src/data/graph.js';
 const TIER_B = new Set([
   'salmiya', 'kuwait-city', 'farwaniya', 'jahra', 'ahmadi', 'fahaheel',
   'mangaf', 'jabriya', 'mubarak-al-kabeer', 'fintas', 'sabah-al-salem',
+  'abu-halifa', // added on GSC evidence (77 impressions, same band as Fintas/Jabriya)
 ]);
 
 // Must mirror LocationDeepTemplate.tsx: the shared FAQ block rendered on every
@@ -188,17 +189,17 @@ function audit(): Row[] {
     const gap = [...contentFactors].sort((a, b) => (b.max - b.got) - (a.max - a.got))[0];
     const weakest = gap.max - gap.got <= 0.5 ? '—' : gap.name;
 
-    const g = gsc.get(`${base}/location/${l.slug}`);
+    const g = gsc.size ? (gsc.get(`${base}/location/${l.slug}`) ?? { clicks: 0, impressions: 0, position: 0 }) : undefined;
+    const demand = !g ? 'unknown' : g.impressions >= 100 ? 'high' : g.impressions >= 20 ? 'some' : 'negligible';
     let priority: string, action: string;
     if (isPhysical) { priority = 'Maintain'; action = 'Dedicated page (HawalliLocationPage.tsx) — not scored on the service-area rubric; keep photos, reviews and cases real and fresh'; }
     else if (score >= 85) { priority = 'Maintain'; action = evidencePts < 10 ? 'Content solid — add a real case/review when one exists' : 'Maintain'; }
-    else if (score >= 70) { priority = tier === 'B' ? 'High' : 'Medium'; action = 'Upgrade: ' + weakest; }
-    else if (score >= 55) { priority = 'High'; action = 'Substantial rewrite: ' + weakest; }
+    else if (score >= 70) { priority = demand === 'high' ? 'High' : tier === 'B' ? 'Medium' : 'Low'; action = 'Upgrade: ' + weakest; }
+    else if (score >= 55) { priority = demand === 'high' || demand === 'some' ? 'High' : demand === 'negligible' ? 'Low' : 'Medium'; action = demand === 'negligible' ? 'Low demand — hold content spend; ' + weakest + ' when cheap' : 'Substantial rewrite: ' + weakest; }
     else {
-      priority = 'Review';
-      action = g && g.impressions > 50
-        ? 'Rewrite — GSC shows demand'
-        : g ? 'Consider consolidating (301) — low GSC demand' : 'Check GSC before rewriting or consolidating (301)';
+      priority = demand === 'negligible' ? 'Review' : 'High';
+      action = demand === 'negligible' ? 'No GSC demand — consider consolidating (301 to nearest hub) after checking indexing'
+        : demand === 'unknown' ? 'Check GSC before rewriting or consolidating (301)' : 'Rewrite — GSC shows demand';
     }
 
     rows.push({
