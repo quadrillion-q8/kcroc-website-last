@@ -15,11 +15,11 @@ export const TrustBar = () => {
   const badges = KCROC_GRAPH.trustBadges;
 
   return (
-    <div className="grid grid-cols-2 sm:flex sm:justify-center gap-0 sm:gap-8 border-y border-white/5 bg-brand-dark/40">
+    <div className="grid grid-cols-2 sm:flex sm:justify-center gap-0 sm:gap-10 border-y border-white/[0.06] bg-brand-dark/30">
       {badges.map((badge) => {
         const Icon = ICON_MAP[badge.iconKey];
         return (
-          <div key={badge.id} className="flex items-center justify-center gap-2 px-3 py-3 sm:px-0 sm:py-6 text-[10px] sm:text-xs font-semibold text-slate-400 uppercase tracking-wide">
+          <div key={badge.id} className="flex items-center justify-center gap-2 px-3 py-3.5 sm:px-0 sm:py-5 text-[10px] sm:text-xs font-semibold text-slate-400 uppercase tracking-wide">
             {Icon && <Icon className="w-4 h-4 text-[#dfa86f]" />}
             {badge.title}
           </div>
