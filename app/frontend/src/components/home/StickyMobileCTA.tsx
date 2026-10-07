@@ -10,7 +10,20 @@ export const StickyMobileCTA = () => {
   const { pathname } = useLocation();
   const { trackConversion } = useAnalytics();
   const whatsappLink = getPageWhatsAppLink(pathname);
-  const ctaLabel = pathname === '/pricing' ? 'Get Exact Price' : pathname.includes('battery') ? 'Battery Help' : pathname.includes('screen') ? 'Screen Price' : pathname.includes('gaming') ? 'Gaming Help' : pathname.startsWith('/location/') ? 'Book Pickup' : 'WhatsApp Us';
+
+  // Keep the visible promise identical to the action behind it. The sticky
+  // bar always opens WhatsApp, so location pages explicitly say "via WhatsApp"
+  // rather than implying a direct booking-form submission.
+  const ctaLabel =
+    pathname === '/pricing' ? 'Get Exact Price' :
+    pathname.includes('battery') ? 'Battery Help' :
+    pathname.includes('screen') ? 'Screen Price' :
+    pathname.includes('gaming') ? 'Gaming Help' :
+    pathname.includes('motherboard') ? 'Board Repair' :
+    pathname.includes('macbook') ? 'MacBook Help' :
+    pathname.startsWith('/location/') ? 'Book Pickup via WhatsApp' :
+    pathname.startsWith('/guides/') || pathname.startsWith('/blog/') ? 'Ask a Technician' :
+    'WhatsApp a Technician';
 
   return (
     <div
