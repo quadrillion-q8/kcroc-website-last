@@ -10,6 +10,7 @@ export const StickyMobileCTA = () => {
   const { pathname } = useLocation();
   const { trackConversion } = useAnalytics();
   const whatsappLink = getPageWhatsAppLink(pathname);
+  const ctaLabel = pathname === '/pricing' ? 'Get Exact Price' : pathname.includes('battery') ? 'Battery Help' : pathname.includes('screen') ? 'Screen Price' : pathname.includes('gaming') ? 'Gaming Help' : pathname.startsWith('/location/') ? 'Book Pickup' : 'WhatsApp Us';
 
   return (
     <div
@@ -32,7 +33,7 @@ export const StickyMobileCTA = () => {
         onClick={() => trackConversion('whatsapp_click', { cta_name: 'sticky_mobile_wa', button_position: 'bottom_bar' })}
         className="flex-[2] text-center rounded-lg bg-[#25D366] text-slate-950 font-bold py-2.5 min-h-[44px] touch-manipulation transition-transform active:scale-[0.99] focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300"
       >
-        WhatsApp Us
+        {ctaLabel}
       </a>
     </div>
   );
