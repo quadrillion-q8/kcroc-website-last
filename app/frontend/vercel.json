@@ -103,6 +103,16 @@
       "permanent": true
     },
     {
+      "source": "/computer-repair-in-kuwaitcity",
+      "destination": "/location/kuwait-city",
+      "permanent": true
+    },
+    {
+      "source": "/computer-repair-in-shuwaikh",
+      "destination": "/location/kuwait-city",
+      "permanent": true
+    },
+    {
       "source": "/laptop-repair-in-hawalli",
       "destination": "/location/hawalli",
       "permanent": true
