@@ -68,7 +68,7 @@ const generateSitemap = () => {
   // static page for them, and production served the homepage fallback for
   // every /blog/:slug URL. Explicitly add each post's canonical URL here so
   // it's included in sitemap.xml and therefore in SSG's includedRoutes.
-  const blogUrlEntries = BLOG_POSTS.map(post => ({
+  const blogUrlEntries = BLOG_POSTS.filter(post => !post.redirectTo).map(post => ({
     url: `${DOMAIN}${getContentRoute(post.slug, post.contentType ?? 'blog')}`,
     entityType: 'BlogPost' as const,
     // Keep sitemap freshness aligned with the page's visible technical review
@@ -101,6 +101,7 @@ const generateSitemap = () => {
   // successful build when new guides/news/blog posts are added.
   const sitemapUrls = new Set(allEntries.map(entry => entry.url));
   const missingBlogRoutes = BLOG_POSTS
+    .filter(post => !post.redirectTo)
     .map(post => `${DOMAIN}${getContentRoute(post.slug, post.contentType ?? 'blog')}`)
     .filter(url => !sitemapUrls.has(url));
 
