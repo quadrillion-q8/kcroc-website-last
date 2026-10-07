@@ -28,10 +28,13 @@ export default function Home() {
       {/* 2. Immediate trust signals */}
       <TrustBar />
 
-      {/* 3. Core services — the fastest path from search intent to a repair page */}
+      {/* 3. Low-friction quote path — moved directly after trust so organic visitors can act before scrolling through the full site. */}
+      <div className="kcroc-cwv-defer"><LeadMagnet /></div>
+
+      {/* 4. Core services — the fastest path from search intent to a repair page */}
       <ServicesGrid />
 
-      {/* 4. Brand recognition — kept after service discovery so mobile users reach what we fix first */}
+      {/* 5. Brand recognition — kept after service discovery so mobile users reach what we fix first */}
       <div className="kcroc-cwv-defer"><BrandStrip /></div>
 
       {/* 5. Hard numbers — compact trust reinforcement */}
@@ -55,10 +58,7 @@ export default function Home() {
       {/* 10b. Post-proof conversion step */}
       <div className="kcroc-cwv-defer"><RepairProofCTA /></div>
 
-      {/* 11. Low-commitment lead capture for visitors not ready to book */}
-      <div className="kcroc-cwv-defer"><LeadMagnet /></div>
-
-      {/* 12. Objection handling */}
+      {/* 11. Objection handling */}
       <div className="kcroc-cwv-defer"><FAQSection /></div>
 
       {/* 13. Coverage / local SEO confidence */}
