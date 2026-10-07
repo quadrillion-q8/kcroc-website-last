@@ -120,12 +120,10 @@ export default function LocationDeepTemplate() {
     `Hi KCROC, I am in ${location.title} and need a device repaired. Can we arrange a pickup?`
   )}`;
 
+  // Only four universal questions stay shared across every service-area page.
+  // Everything else is area-specific and lives in each location's `localFaqs` in KCROC_GRAPH,
+  // so the 31 URLs do not repeat the same block of text.
   const localFaqs: LocalFAQ[] = [
-    {
-      id: `faq-${location.slug}-service`,
-      question: `Do you provide computer repair in ${location.title}?`,
-      answer: `Yes. KCROC offers component-level laptop, MacBook, gaming PC, and motherboard repair for ${location.title}, with completely free pickup and delivery — you don't need to travel anywhere.`,
-    },
     {
       id: `faq-${location.slug}-shop`,
       question: `Do you have a repair shop in ${location.title}?`,
@@ -137,31 +135,6 @@ export default function LocationDeepTemplate() {
       answer: `Yes. Free pickup and delivery is available from ${location.title}${nearbyAreas.length ? ` and nearby areas including ${nearbyAreas.join(', ')}` : ''}. Message us on WhatsApp with your area and device symptoms to arrange a collection time.`,
     },
     {
-      id: `faq-${location.slug}-brands`,
-      question: `What laptop brands do you repair for ${location.title} customers?`,
-      answer: `We repair major laptop brands including ${brands.map((b) => b.brandName).join(', ')}, as well as Apple MacBooks.`,
-    },
-    {
-      id: `faq-${location.slug}-macbook`,
-      question: `Do you repair MacBooks for customers in ${location.title}?`,
-      answer: `Yes, MacBook repair — including motherboard and liquid damage recovery — is one of our core services, available with free pickup from ${location.title}.`,
-    },
-    {
-      id: `faq-${location.slug}-gaming`,
-      question: 'Do you repair gaming laptops and gaming PCs?',
-      answer: `Yes. Our lab handles gaming PC and GPU repair as well as gaming laptop cleaning and thermal repaste for systems running hot or underperforming, with pickup available from ${location.title}.`,
-    },
-    {
-      id: `faq-${location.slug}-motherboard`,
-      question: 'Can you repair a laptop motherboard?',
-      answer: `Yes. Component-level motherboard repair is a specialty at KCROC — we trace and replace the specific failed chip on the board rather than automatically swapping the entire motherboard where that's technically possible.`,
-    },
-    {
-      id: `faq-${location.slug}-parts`,
-      question: 'Do you replace laptop screens and batteries?',
-      answer: `Yes, screen replacement and battery replacement are both available. See the linked service pages for details on each.`,
-    },
-    {
       id: `faq-${location.slug}-cost`,
       question: `How much does laptop repair cost for ${location.title} customers?`,
       answer: `Diagnostics are free. Common laptop repairs start from 15 KWD, screen replacement from 30 KWD and component-level motherboard repair from 25 KWD, with the final price depending on the device, the fault and the parts. You receive the confirmed quote before any paid work begins, and under our No Fix, No Fee policy you pay nothing if we cannot fix it.`,
@@ -171,13 +144,6 @@ export default function LocationDeepTemplate() {
       question: `How long does a repair take for ${location.title} customers?`,
       answer: `Many repairs are completed within 24-48 hours of us receiving the device, same-day service is possible for some screen and battery jobs when the part is in stock, and component-level motherboard work typically takes 24-72 hours. We confirm a realistic estimate after diagnosis, because parts availability and the exact fault decide the timing.`,
     },
-    ...(nearbyAreas.length > 0
-      ? [{
-          id: `faq-${location.slug}-coverage`,
-          question: `Which areas near ${location.title} do you collect from?`,
-          answer: `Besides ${location.title}, we collect from ${nearbyAreas.join(', ')}. Pickup and delivery are free, and you can confirm your exact street or block with us on WhatsApp.`,
-        }]
-      : []),
     // Area-specific questions defined per location in KCROC_GRAPH, so each
     // page carries questions that are genuinely different from its siblings.
     ...(location.localFaqs ?? []),
