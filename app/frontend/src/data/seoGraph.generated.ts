@@ -447,6 +447,42 @@ export const SEO_GRAPH = {
       "featuredFAQIds": []
     },
     {
+      "id": "page-ar-jahra-computer-repair",
+      "entityType": "WebPage",
+      "isActive": true,
+      "title": "تصليح كمبيوتر الجهراء وفني لابتوب",
+      "slug": "ar/computer-repair-jahra",
+      "seo": {
+        "title": "تصليح كمبيوتر الجهراء | فني لابتوب واستلام مجاني | KCROC",
+        "description": "تصليح كمبيوتر ولابتوب في الجهراء وسعد العبدالله والنعيم والقصر وتيماء. تنظيف وتغيير المعجون الحراري، فحص اللوحة الأم، استلام وتوصيل مجاني، وضمان 30 يومًا.",
+        "canonicalUrl": "https://www.computerrepairkuwait.com/ar/computer-repair-jahra",
+        "locale": "ar_KW",
+        "alternates": {
+          "ar-KW": "https://www.computerrepairkuwait.com/ar/computer-repair-jahra",
+          "en-KW": "https://www.computerrepairkuwait.com/location/jahra",
+          "x-default": "https://www.computerrepairkuwait.com/location/jahra"
+        },
+        "ogType": "website",
+        "schemaTypes": [
+          "WebPage",
+          "BreadcrumbList"
+        ],
+        "lastModified": "2026-10-07T00:00:00+03:00",
+        "breadcrumbs": [
+          {
+            "name": "الرئيسية",
+            "url": "/"
+          },
+          {
+            "name": "تصليح كمبيوتر ولابتوب في الجهراء",
+            "url": "/ar/computer-repair-jahra"
+          }
+        ]
+      },
+      "description": "تصليح كمبيوتر ولابتوب في الجهراء مع استلام وتوصيل مجاني من سعد العبدالله والنعيم والقصر وتيماء، والإصلاح في مختبر KCROC بحولي.",
+      "featuredFAQIds": []
+    },
+    {
       "id": "page-ar-farwaniya-computer-repair",
       "entityType": "WebPage",
       "isActive": true,
@@ -2759,7 +2795,8 @@ export const SEO_GRAPH = {
         "Farwaniya",
         "Ahmadi",
         "Jahra",
-        "Fahaheel"
+        "Fahaheel",
+        "Mishrif"
       ]
     },
     {
@@ -2769,8 +2806,8 @@ export const SEO_GRAPH = {
       "title": "Kuwait City",
       "slug": "kuwait-city",
       "seo": {
-        "title": "Computer Repair Kuwait City | Free Pickup | KCROC",
-        "description": "Expert computer repair, MacBook motherboard micro-soldering, and IT support for businesses and residents in Kuwait City. Free pick and drop.",
+        "title": "Laptop Repair Kuwait City | Free Pickup, No Fix No Fee",
+        "description": "Free pickup in Kuwait City, Sharq, Dasman, Mirqab and Qibla. Black or cracked screens, no power and charging faults diagnosed free. 30-day warranty.",
         "canonicalUrl": "https://www.computerrepairkuwait.com/location/kuwait-city",
         "alternates": {
           "en-KW": "https://www.computerrepairkuwait.com/location/kuwait-city",
@@ -2834,8 +2871,8 @@ export const SEO_GRAPH = {
       "title": "Farwaniya",
       "slug": "farwaniya",
       "seo": {
-        "title": "Computer Repair Farwaniya Kuwait | Free Pickup | KCROC",
-        "description": "Computer and laptop repair in Farwaniya, Kuwait, including Khaitan, Riggae and Ardiya. Free pickup and delivery to KCROC’s Hawalli repair lab.",
+        "title": "Laptop Repair Farwaniya | Free Pickup, No Fix No Fee",
+        "description": "Free pickup from Farwaniya, Khaitan, Riggae and Ardiya. Free diagnostics, No Fix, No Fee and a 30-day warranty. Repaired at our Hawalli lab.",
         "canonicalUrl": "https://www.computerrepairkuwait.com/location/farwaniya",
         "alternates": {
           "en-KW": "https://www.computerrepairkuwait.com/location/farwaniya",
@@ -2870,6 +2907,11 @@ export const SEO_GRAPH = {
         "title": "Computer Repair Jahra Kuwait | Free Pickup | KCROC",
         "description": "Computer and laptop repair in Jahra with free pickup and delivery, including thermal maintenance and motherboard diagnostics at KCROC's Hawalli lab.",
         "canonicalUrl": "https://www.computerrepairkuwait.com/location/jahra",
+        "alternates": {
+          "en-KW": "https://www.computerrepairkuwait.com/location/jahra",
+          "ar-KW": "https://www.computerrepairkuwait.com/ar/computer-repair-jahra",
+          "x-default": "https://www.computerrepairkuwait.com/location/jahra"
+        },
         "ogType": "website",
         "schemaTypes": [
           "LocalBusiness"
@@ -3071,7 +3113,8 @@ export const SEO_GRAPH = {
         "Fintas",
         "Abu Halifa",
         "Mangaf",
-        "Fahaheel"
+        "Fahaheel",
+        "Abu Ftaira"
       ]
     },
     {
@@ -3290,33 +3333,6 @@ export const SEO_GRAPH = {
       ]
     },
     {
-      "id": "loc-jleeb-al-shuyoukh",
-      "entityType": "Location",
-      "isActive": true,
-      "title": "Jleeb Al-Shuyoukh",
-      "slug": "jleeb-al-shuyoukh",
-      "seo": {
-        "title": "Computer Repair Jleeb Al-Shuyoukh Kuwait | Free Pickup | KCROC",
-        "description": "Laptop and computer repair in Jleeb Al-Shuyoukh with free pickup and delivery, including motherboard, charging, screen and battery repairs.",
-        "canonicalUrl": "https://www.computerrepairkuwait.com/location/jleeb-al-shuyoukh",
-        "ogType": "website",
-        "schemaTypes": [
-          "LocalBusiness"
-        ],
-        "lastModified": "2026-10-02T00:00:00+03:00"
-      },
-      "coords": {
-        "lat": 29.254,
-        "lng": 47.931
-      },
-      "serviceAreas": [
-        "Jleeb Al-Shuyoukh",
-        "Ardiya",
-        "Farwaniya",
-        "Riggae"
-      ]
-    },
-    {
       "id": "loc-mahboula",
       "entityType": "Location",
       "isActive": true,
@@ -3344,33 +3360,6 @@ export const SEO_GRAPH = {
       ]
     },
     {
-      "id": "loc-adan",
-      "entityType": "Location",
-      "isActive": true,
-      "title": "Adan",
-      "slug": "adan",
-      "seo": {
-        "title": "Computer Repair Adan Kuwait | Free Pickup | KCROC",
-        "description": "Laptop and computer repair in Adan with free pickup and delivery, including screen, battery, charging and motherboard diagnosis.",
-        "canonicalUrl": "https://www.computerrepairkuwait.com/location/adan",
-        "ogType": "website",
-        "schemaTypes": [
-          "LocalBusiness"
-        ],
-        "lastModified": "2026-10-02T00:00:00+03:00"
-      },
-      "coords": {
-        "lat": 29.225,
-        "lng": 48.08
-      },
-      "serviceAreas": [
-        "Adan",
-        "Qurain",
-        "Mubarak Al-Kabeer",
-        "Sabah Al-Salem"
-      ]
-    },
-    {
       "id": "loc-qurain",
       "entityType": "Location",
       "isActive": true,
@@ -3395,60 +3384,6 @@ export const SEO_GRAPH = {
         "Adan",
         "Qusour",
         "Mubarak Al-Kabeer"
-      ]
-    },
-    {
-      "id": "loc-saad-al-abdullah",
-      "entityType": "Location",
-      "isActive": true,
-      "title": "Saad Al Abdullah",
-      "slug": "saad-al-abdullah",
-      "seo": {
-        "title": "Computer Repair Saad Al Abdullah Kuwait | Free Pickup | KCROC",
-        "description": "Computer and laptop repair in Saad Al Abdullah with free pickup and delivery, including motherboard, display, battery and power diagnostics.",
-        "canonicalUrl": "https://www.computerrepairkuwait.com/location/saad-al-abdullah",
-        "ogType": "website",
-        "schemaTypes": [
-          "LocalBusiness"
-        ],
-        "lastModified": "2026-10-02T00:00:00+03:00"
-      },
-      "coords": {
-        "lat": 29.37,
-        "lng": 47.735
-      },
-      "serviceAreas": [
-        "Saad Al Abdullah",
-        "Jahra",
-        "Naeem",
-        "Qasr"
-      ]
-    },
-    {
-      "id": "loc-abu-ftaira",
-      "entityType": "Location",
-      "isActive": true,
-      "title": "Abu Ftaira",
-      "slug": "abu-ftaira",
-      "seo": {
-        "title": "Computer Repair Abu Ftaira Kuwait | Free Pickup | KCROC",
-        "description": "Laptop, MacBook and computer repair in Abu Ftaira with free pickup and delivery to KCROC's Hawalli lab, including screen, battery, charging and motherboard diagnosis.",
-        "canonicalUrl": "https://www.computerrepairkuwait.com/location/abu-ftaira",
-        "ogType": "website",
-        "schemaTypes": [
-          "LocalBusiness"
-        ],
-        "lastModified": "2026-10-02T00:00:00+03:00"
-      },
-      "coords": {
-        "lat": 29.19898,
-        "lng": 48.10097
-      },
-      "serviceAreas": [
-        "Abu Ftaira",
-        "Fintas",
-        "Fnaitees",
-        "Messila"
       ]
     },
     {
@@ -3530,33 +3465,6 @@ export const SEO_GRAPH = {
         "Abu Ftaira",
         "Fnaitees",
         "Mubarak Al-Kabeer"
-      ]
-    },
-    {
-      "id": "loc-mishrif",
-      "entityType": "Location",
-      "isActive": true,
-      "title": "Mishrif",
-      "slug": "mishrif",
-      "seo": {
-        "title": "Computer Repair Mishrif Kuwait | Free Pickup | KCROC",
-        "description": "Computer, laptop and MacBook repair in Mishrif with free pickup and delivery, including screen, battery, charging and motherboard diagnosis.",
-        "canonicalUrl": "https://www.computerrepairkuwait.com/location/mishrif",
-        "ogType": "website",
-        "schemaTypes": [
-          "LocalBusiness"
-        ],
-        "lastModified": "2026-10-02T00:00:00+03:00"
-      },
-      "coords": {
-        "lat": 29.28917,
-        "lng": 48.05
-      },
-      "serviceAreas": [
-        "Mishrif",
-        "Bayan",
-        "Salwa",
-        "Sabah Al-Salem"
       ]
     },
     {
@@ -5756,7 +5664,8 @@ export const SEO_GRAPH = {
           "Farwaniya",
           "Ahmadi",
           "Jahra",
-          "Fahaheel"
+          "Fahaheel",
+          "Mishrif"
         ]
       },
       {
@@ -5916,7 +5825,8 @@ export const SEO_GRAPH = {
           "Fintas",
           "Abu Halifa",
           "Mangaf",
-          "Fahaheel"
+          "Fahaheel",
+          "Abu Ftaira"
         ]
       },
       {
@@ -6032,20 +5942,6 @@ export const SEO_GRAPH = {
         ]
       },
       {
-        "id": "loc-jleeb-al-shuyoukh",
-        "title": "Jleeb Al-Shuyoukh",
-        "coords": {
-          "lat": 29.254,
-          "lng": 47.931
-        },
-        "serviceAreas": [
-          "Jleeb Al-Shuyoukh",
-          "Ardiya",
-          "Farwaniya",
-          "Riggae"
-        ]
-      },
-      {
         "id": "loc-mahboula",
         "title": "Mahboula",
         "coords": {
@@ -6060,20 +5956,6 @@ export const SEO_GRAPH = {
         ]
       },
       {
-        "id": "loc-adan",
-        "title": "Adan",
-        "coords": {
-          "lat": 29.225,
-          "lng": 48.08
-        },
-        "serviceAreas": [
-          "Adan",
-          "Qurain",
-          "Mubarak Al-Kabeer",
-          "Sabah Al-Salem"
-        ]
-      },
-      {
         "id": "loc-qurain",
         "title": "Qurain",
         "coords": {
@@ -6085,34 +5967,6 @@ export const SEO_GRAPH = {
           "Adan",
           "Qusour",
           "Mubarak Al-Kabeer"
-        ]
-      },
-      {
-        "id": "loc-saad-al-abdullah",
-        "title": "Saad Al Abdullah",
-        "coords": {
-          "lat": 29.37,
-          "lng": 47.735
-        },
-        "serviceAreas": [
-          "Saad Al Abdullah",
-          "Jahra",
-          "Naeem",
-          "Qasr"
-        ]
-      },
-      {
-        "id": "loc-abu-ftaira",
-        "title": "Abu Ftaira",
-        "coords": {
-          "lat": 29.19898,
-          "lng": 48.10097
-        },
-        "serviceAreas": [
-          "Abu Ftaira",
-          "Fintas",
-          "Fnaitees",
-          "Messila"
         ]
       },
       {
@@ -6155,20 +6009,6 @@ export const SEO_GRAPH = {
           "Abu Ftaira",
           "Fnaitees",
           "Mubarak Al-Kabeer"
-        ]
-      },
-      {
-        "id": "loc-mishrif",
-        "title": "Mishrif",
-        "coords": {
-          "lat": 29.28917,
-          "lng": 48.05
-        },
-        "serviceAreas": [
-          "Mishrif",
-          "Bayan",
-          "Salwa",
-          "Sabah Al-Salem"
         ]
       },
       {
