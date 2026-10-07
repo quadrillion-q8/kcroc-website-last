@@ -136,6 +136,15 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
                 </p>
               )}
 
+              <div className="mt-2 mb-6 flex flex-wrap gap-3">
+                <a href={whatsappLink} target="_blank" rel="noopener noreferrer" onClick={() => trackConversion('whatsapp_click', { cta_name: `service_hero_whatsapp_${entity.id}`, button_position: 'service_hero' })} className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-xl bg-[#25D366] px-5 py-3 text-sm font-extrabold text-slate-950 shadow-lg shadow-emerald-950/20 hover:brightness-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300">
+                  <MessageCircle className="h-5 w-5" aria-hidden="true" /> Get a Free Quote on WhatsApp
+                </a>
+                <Link to="/book" onClick={() => trackConversion('cta_click', { cta_name: `service_hero_book_pickup_${entity.id}`, button_position: 'service_hero' })} className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-xl border border-cyan-500/40 bg-cyan-500/10 px-5 py-3 text-sm font-extrabold text-cyan-200 hover:bg-cyan-500/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400">
+                  <ArrowRight className="h-5 w-5" aria-hidden="true" /> Book Free Pickup
+                </Link>
+              </div>
+
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 max-w-4xl">
                 <div className="bg-brand-dark/80 px-4 py-3 rounded-xl border border-slate-800 flex items-center gap-3">
                   <Gauge className="w-5 h-5 text-cyan-400 flex-shrink-0" />
