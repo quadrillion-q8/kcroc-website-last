@@ -99,7 +99,7 @@ export const rawGraphData: RawGraphData = {
       description: 'Find a computer or laptop repair technician near you in Kuwait for PCs, MacBooks and gaming systems, with free pickup and delivery from our Hawalli repair lab.',
       seo: {
         title: 'Computer Repair Near Me Kuwait | Free Pickup | KCROC',
-        description: 'Need a computer repair shop near you? KCROC collects your laptop or PC from home or office, repairs it at our Hawalli lab and delivers it back. Free pickup, diagnosis first and 30-day warranty.',
+        description: 'Computer repair near you in Kuwait: we collect your laptop or PC free, repair it at our Hawalli lab and deliver it back. Diagnosis first, 30-day warranty.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/near-me',
         locale: 'en_KW',
         alternates: {
@@ -467,7 +467,7 @@ export const rawGraphData: RawGraphData = {
     'page-contact': { id: 'page-contact', slug: 'contact', entityType: 'WebPage', isActive: true, title: 'Contact Us', description: 'Contact KCROC for repair services.', seo: { title: 'Contact KCROC | Computer Repair Kuwait', description: 'Get in touch with Kuwait Computer Repair On Call. Book a free pick & drop repair service today.', canonicalUrl: 'https://www.computerrepairkuwait.com/contact', ogType: 'website', schemaTypes: ['ContactPage'] } } as WebPageEntity,
     'page-faq': { id: 'page-faq', slug: 'faq', entityType: 'WebPage', isActive: true, title: 'FAQ', description: 'Frequently asked questions.', seo: { title: 'Frequently Asked Questions | KCROC Kuwait', description: 'Answers to common questions about our laptop repair services, pricing, warranty, and data privacy.', canonicalUrl: 'https://www.computerrepairkuwait.com/faq', ogType: 'website', schemaTypes: ['FAQPage'] } } as WebPageEntity,
     'page-gallery': { id: 'page-gallery', slug: 'gallery', entityType: 'WebPage', isActive: true, title: 'Gallery', description: 'Lab and repair gallery.', seo: { title: 'Repair Gallery | KCROC Hawalli Lab', description: 'View our ESD-safe repair lab in Hawalli and real examples of our component-level micro-soldering.', canonicalUrl: 'https://www.computerrepairkuwait.com/gallery', ogType: 'website', schemaTypes: ['CollectionPage'] } } as WebPageEntity,
-    'page-pricing': { id: 'page-pricing', slug: 'pricing', entityType: 'WebPage', isActive: true, title: 'Pricing', description: 'Transparent repair pricing.', seo: { title: 'Laptop & Computer Repair Prices in Kuwait (KWD) | KCROC', description: 'Check computer and laptop repair prices in Kuwait: screens from 30 KWD + part, batteries from 8 KWD + part, and SSD/RAM installation from 5 KWD + part. Get your exact quote before repair.', canonicalUrl: 'https://www.computerrepairkuwait.com/pricing', ogType: 'website', schemaTypes: ['WebPage'], lastModified: '2026-09-27T00:00:00+03:00' } } as WebPageEntity,
+    'page-pricing': { id: 'page-pricing', slug: 'pricing', entityType: 'WebPage', isActive: true, title: 'Pricing', description: 'Transparent repair pricing.', seo: { title: 'Laptop & Computer Repair Prices in Kuwait (KWD) | KCROC', description: 'Laptop repair prices in Kuwait: screens from 30 KWD + part, batteries from 8 KWD + part, SSD/RAM from 5 KWD + part. Exact quote before repair.', canonicalUrl: 'https://www.computerrepairkuwait.com/pricing', ogType: 'website', schemaTypes: ['WebPage'], lastModified: '2026-09-27T00:00:00+03:00' } } as WebPageEntity,
     
     'page-booking': { id: 'page-booking', slug: 'book', entityType: 'WebPage', isActive: true, title: 'Book a Repair', description: 'Book free laptop and computer repair pickup anywhere in Kuwait. Same-day hardware assessment. 30-day warranty.', seo: { title: 'Book Laptop & Computer Repair Pickup in Kuwait | KCROC', description: 'Book free laptop and computer repair pickup anywhere in Kuwait. Same-day hardware assessment. 30-day warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/book', ogType: 'website', schemaTypes: ['WebPage'] } } as WebPageEntity,
     
@@ -1895,7 +1895,7 @@ export const rawGraphData: RawGraphData = {
       ],
       seo: { 
         title: 'Laptop Repair Kuwait | From 15 KWD | KCROC', 
-        description: 'Laptop repair in Kuwait for screens, batteries, charging, hinges, overheating and motherboard faults. Free pickup and delivery, diagnosis before repair, quote approval, and a 30-day warranty.', 
+        description: 'Laptop repair in Kuwait: screens, batteries, charging, overheating and motherboard faults. Free pickup and delivery, quote before repair, 30-day warranty.', 
         canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-repair-kuwait', locale: 'en_KW', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/laptop-repair-kuwait', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/laptop-repair-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/laptop-repair-kuwait' }, 
         ogType: 'article', 
         schemaTypes: ['Service', 'FAQPage'],
