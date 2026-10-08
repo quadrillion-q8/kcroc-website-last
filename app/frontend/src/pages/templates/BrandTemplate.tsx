@@ -4,6 +4,7 @@ import { useLocation, Navigate, Link } from 'react-router-dom';
 import { KCROC_GRAPH } from '../../data/graph';
 import { SEOEngine } from '../../core/components/SEOEngine';
 import { getIntentWhatsAppLink } from '../../utils/whatsappIntent';
+import CoreRepairPillars from '../../components/content/CoreRepairPillars';
 import {
   Wrench,
   CheckCircle,
@@ -477,6 +478,8 @@ const BrandTemplate: React.FC = () => {
             </div>
           </section>
         )}
+
+        <CoreRepairPillars context={`For ${brand.brandName} faults, use the focused laptop repair hub for the main repair path or the broader computer repair hub for desktop and other PC needs.`} />
 
         {/* Final conversion */}
         <section className="rounded-3xl border border-cyan-900/60 bg-cyan-950/30 p-8 text-center md:p-12">
