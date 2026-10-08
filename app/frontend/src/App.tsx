@@ -26,6 +26,7 @@ export const routes: RouteObject[] = [
           { path: 'near-me', lazy: async () => ({ Component: (await import('./pages/NearMe')).default }) },
           { path: 'ar/near-me', lazy: async () => ({ Component: (await import('./pages/NearMeAR')).default }) },
           { path: 'ar/:slug', lazy: async () => ({ Component: (await import('./pages/ArabicCommercialPage')).default }) },
+          { path: 'computer-repair-kuwait', lazy: async () => ({ Component: (await import('./pages/ComputerRepairKuwait')).default }) },
           { path: 'services', lazy: async () => ({ Component: (await import('./pages/Services')).default }) },
           { path: 'locations', lazy: async () => ({ Component: (await import('./pages/Locations')).default }) },
           { path: 'services/:serviceSlug', lazy: async () => { const { LegacyServiceRedirect } = await import('./core/routing/DynamicRoutes'); return { Component: LegacyServiceRedirect }; } },
