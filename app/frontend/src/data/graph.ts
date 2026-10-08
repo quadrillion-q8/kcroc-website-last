@@ -156,6 +156,34 @@ export const rawGraphData: RawGraphData = {
         'faq-ar-hours', 'faq-ar-maintenance', 'faq-ar-laptop-repair-process'
       ]
     } as WebPageEntity,
+    'page-computer-repair': {
+      id: 'page-computer-repair',
+      slug: 'computer-repair-kuwait',
+      entityType: 'WebPage',
+      isActive: true,
+      title: 'Computer Repair Kuwait',
+      description: 'Computer and laptop repair in Kuwait with diagnosis before repair, free pickup and delivery, starting prices from 15 KWD, and a 30-day warranty on completed repairs.',
+      seo: {
+        title: 'Computer Repair Kuwait | Laptop & PC Repair From 15 KWD | KCROC',
+        description: 'Computer repair in Kuwait from 15 KWD. Laptop, PC, MacBook and motherboard repair, free pickup and delivery, and 30-day warranty from KCROC.',
+        canonicalUrl: 'https://www.computerrepairkuwait.com/computer-repair-kuwait',
+        locale: 'en_KW',
+        alternates: {
+          'en-KW': 'https://www.computerrepairkuwait.com/computer-repair-kuwait',
+          'ar-KW': 'https://www.computerrepairkuwait.com/ar/computer-repair-kuwait',
+          'x-default': 'https://www.computerrepairkuwait.com/computer-repair-kuwait'
+        },
+        ogType: 'website',
+        schemaTypes: ['WebPage', 'BreadcrumbList', 'FAQPage'],
+        lastModified: '2026-10-08T00:00:00+03:00',
+        breadcrumbs: [
+          { name: 'Home', url: '/' },
+          { name: 'Computer Repair Kuwait', url: '/computer-repair-kuwait' }
+        ]
+      },
+      featuredFAQIds: []
+    } as WebPageEntity,
+
     'page-ar-computer-repair': {
       id: 'page-ar-computer-repair', slug: 'ar/computer-repair-kuwait', entityType: 'WebPage', isActive: true,
       title: 'فني كمبيوتر في الكويت | تصليح كمبيوتر ولابتوب',
@@ -4839,6 +4867,7 @@ export const rawGraphData: RawGraphData = {
           { label: 'Battery Health Guide', path: '/guides/laptop-battery-warning-signs' },
           { label: 'FAQ',            path: '/faq' },
           { label: 'Pricing',        path: '/pricing' },
+          { label: 'Computer Repair Kuwait', path: '/computer-repair-kuwait' },
           { label: 'Computer Repair Near Me', path: '/near-me' },
           { label: 'All Service Areas', path: '/locations' },
         ],
