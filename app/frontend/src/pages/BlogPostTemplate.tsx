@@ -16,6 +16,7 @@ import { getIntentWhatsAppLink } from '../utils/whatsappIntent';
 import { trackLead } from '../utils/analytics';
 import SchemaMarkup from '../components/seo/SchemaMarkup';
 import { StandaloneRelatedLinks, RelatedLinkItem } from '@/components/content/StandaloneRelatedLinks';
+import { KuwaitLocalCTA } from '@/components/content/KuwaitLocalCTA';
 
 // Single source of truth for business identity — see graph.ts 'biz-kcroc'.
 // (Previously duplicated via constants/data.ts's BUSINESS_INFO.)
@@ -947,6 +948,9 @@ export default function BlogPostTemplate() {
                 </button>
               </div>
             </header>
+
+            {/* Shown only to visitors browsing from Kuwait; see KuwaitLocalCTA. */}
+            <KuwaitLocalCTA topic={post.title} placement={isNews ? 'news_post' : isGuide ? 'guide_post' : 'blog_post'} />
 
             <section className="prose prose-invert prose-lg max-w-none prose-p:text-slate-300 prose-headings:text-white prose-a:text-cyan-400 mb-16">
               <p className="text-xl md:text-2xl text-slate-300 font-medium leading-relaxed border-l-4 border-cyan-500 pl-6 mb-10">
