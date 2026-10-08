@@ -27,7 +27,10 @@ export const ServiceAreas = () => {
             </div>
             <h2 className="text-white text-3xl sm:text-4xl font-black mb-4">Free Pickup &amp; Delivery Across Kuwait</h2>
             <p className="text-slate-400 text-base leading-relaxed mb-6">
-              Based in Hawalli (Al-Mulla Complex), KCROC collects laptops, MacBooks, gaming PCs and other computers from homes and offices across Kuwait. Repairs are completed at the central lab, then the device is returned after testing.
+              Based in Hawalli (Al-Mulla Complex), KCROC collects laptops, MacBooks, gaming PCs and other computers from homes and offices across Kuwait. Repairs are completed at the central lab, then the device is returned after testing. See our main pages for{' '}
+              <Link to="/laptop-repair-kuwait" className="font-semibold text-cyan-400 hover:text-cyan-300">laptop repair in Kuwait</Link>
+              {' '}and{' '}
+              <Link to="/computer-repair-kuwait" className="font-semibold text-cyan-400 hover:text-cyan-300">computer repair in Kuwait</Link>.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-5">
