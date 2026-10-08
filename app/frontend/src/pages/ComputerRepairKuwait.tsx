@@ -16,6 +16,7 @@ import { KCROC_GRAPH } from '../data/graph';
 import { SEOEngine } from '../core/components/SEOEngine';
 import SchemaMarkup from '../components/seo/SchemaMarkup';
 import { buildWhatsAppLink } from '../utils/whatsappIntent';
+import CoreRepairPillars from '../components/content/CoreRepairPillars';
 
 const SERVICES = [
   { label: 'Laptop Repair Kuwait', path: '/laptop-repair-kuwait', icon: Laptop, description: 'Screens, batteries, charging, overheating, hinges, keyboards and motherboard faults.' },
@@ -164,6 +165,8 @@ export default function ComputerRepairKuwait() {
             </Link>
           </div>
         </section>
+
+        <CoreRepairPillars context="This is the broad Computer Repair Kuwait hub. If your device is specifically a laptop, use the focused laptop repair service for the most relevant repair path." />
 
         <section className="mt-14" aria-labelledby="repair-types">
           <div className="mb-7">

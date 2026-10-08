@@ -6,6 +6,7 @@ import { KCROC_GRAPH } from '../../data/graph';
 import { SEOEngine } from '../../core/components/SEOEngine';
 import { useAnalytics } from '../../core/analytics/AnalyticsProvider';
 import { buildWhatsAppLink } from '../../utils/whatsappIntent';
+import CoreRepairPillars from '../../components/content/CoreRepairPillars';
 
 const ICON_MAP: Record<string, React.ElementType> = {
   'apple': Apple,
@@ -579,6 +580,8 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
             )}
           </section>
         )}
+
+        <CoreRepairPillars context="Use the main computer repair hub for broader PC and device faults, or the focused laptop repair hub when the device is a laptop." />
 
         {relatedLocationIds.length > 0 && (
           <section className="max-w-7xl mx-auto px-6 py-12 border-t border-slate-800/50 relative z-10">
