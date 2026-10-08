@@ -33,7 +33,16 @@ export const getSystemMetadata = (): SystemMetadata => {
   };
 };
 
+// Timestamp of the last call/WhatsApp conversion. The global click listener in
+// AnalyticsProvider uses it to avoid double-counting links that already track
+// themselves with an explicit onClick handler.
+let lastContactConversionAt = 0;
+export const getLastContactConversionAt = (): number => lastContactConversionAt;
+
 export const trackEvent = (event: AnalyticsEvent | BookingEvent, payload: BaseEventPayload = {}): void => {
+  if (event === 'whatsapp_click' || event === 'phone_call_click') {
+    lastContactConversionAt = Date.now();
+  }
   // Consent is enforced by Google Consent Mode (see index.html + consent.ts):
   // with consent denied, Google only receives cookieless, anonymous pings.
   try {
