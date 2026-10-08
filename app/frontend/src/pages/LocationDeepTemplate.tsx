@@ -255,6 +255,9 @@ export default function LocationDeepTemplate() {
               >
                 <Phone className="w-4 h-4" aria-hidden="true" /> Call {phoneDisplay}
               </a>
+              <p className="text-xs sm:text-sm text-slate-400 font-medium">
+                Free pickup from {location.title} · No Fix, No Fee · 30-day warranty · Hawalli lab open daily 10 AM to 10 PM
+              </p>
             </div>
 
             {location.contentImage && (
@@ -775,6 +778,17 @@ export default function LocationDeepTemplate() {
             })}
           </div>
         </div>
+      </section>
+
+      {/* ─── KUWAIT-WIDE SERVICE LINKS (consolidates head-term signals) ─── */}
+      <section className="px-4 sm:px-6 pb-4">
+        <p className="container mx-auto max-w-4xl text-center text-sm sm:text-base text-slate-400">
+          Part of KCROC's Kuwait-wide service: see our main{' '}
+          <Link to="/laptop-repair-kuwait" className="text-cyan-400 hover:text-cyan-300 font-semibold">laptop repair in Kuwait</Link>
+          {' '}and{' '}
+          <Link to="/computer-repair-kuwait" className="text-cyan-400 hover:text-cyan-300 font-semibold">computer repair in Kuwait</Link>
+          {' '}pages for prices, repair types and warranty.
+        </p>
       </section>
 
       {/* ─── FINAL CTA ─── */}
