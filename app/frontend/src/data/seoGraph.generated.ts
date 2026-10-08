@@ -148,6 +148,43 @@ export const SEO_GRAPH = {
       ]
     },
     {
+      "id": "page-computer-repair",
+      "entityType": "WebPage",
+      "isActive": true,
+      "title": "Computer Repair Kuwait",
+      "slug": "computer-repair-kuwait",
+      "seo": {
+        "title": "Computer Repair Kuwait | Laptop & PC Repair From 15 KWD | KCROC",
+        "description": "Computer repair in Kuwait from 15 KWD. Laptop, PC, MacBook and motherboard repair, free pickup and delivery, and 30-day warranty from KCROC.",
+        "canonicalUrl": "https://www.computerrepairkuwait.com/computer-repair-kuwait",
+        "locale": "en_KW",
+        "alternates": {
+          "en-KW": "https://www.computerrepairkuwait.com/computer-repair-kuwait",
+          "ar-KW": "https://www.computerrepairkuwait.com/ar/computer-repair-kuwait",
+          "x-default": "https://www.computerrepairkuwait.com/computer-repair-kuwait"
+        },
+        "ogType": "website",
+        "schemaTypes": [
+          "WebPage",
+          "BreadcrumbList",
+          "FAQPage"
+        ],
+        "lastModified": "2026-10-08T00:00:00+03:00",
+        "breadcrumbs": [
+          {
+            "name": "Home",
+            "url": "/"
+          },
+          {
+            "name": "Computer Repair Kuwait",
+            "url": "/computer-repair-kuwait"
+          }
+        ]
+      },
+      "description": "Computer and laptop repair in Kuwait with diagnosis before repair, free pickup and delivery, starting prices from 15 KWD, and a 30-day warranty on completed repairs.",
+      "featuredFAQIds": []
+    },
+    {
       "id": "page-near-me-ar",
       "entityType": "WebPage",
       "isActive": true,
@@ -204,8 +241,8 @@ export const SEO_GRAPH = {
         "locale": "ar_KW",
         "alternates": {
           "ar-KW": "https://www.computerrepairkuwait.com/ar/computer-repair-kuwait",
-          "en-KW": "https://www.computerrepairkuwait.com/",
-          "x-default": "https://www.computerrepairkuwait.com/"
+          "en-KW": "https://www.computerrepairkuwait.com/computer-repair-kuwait",
+          "x-default": "https://www.computerrepairkuwait.com/computer-repair-kuwait"
         },
         "ogType": "website",
         "schemaTypes": [
