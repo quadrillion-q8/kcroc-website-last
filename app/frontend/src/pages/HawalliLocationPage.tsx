@@ -31,6 +31,7 @@ import SchemaMarkup from '../components/seo/SchemaMarkup';
 import MapComponent from '../components/MapComponent';
 import { KCROC_GRAPH } from '../data/graph';
 import { useAnalytics } from '../core/analytics/AnalyticsProvider';
+import CoreRepairPillars from '../components/content/CoreRepairPillars';
 // 🩹 FIX: real workshop/branch photos already exist in the codebase but
 // were never used anywhere on this page — the entire page relied on a
 // single hero image (location.contentImage). These power the new "Inside
