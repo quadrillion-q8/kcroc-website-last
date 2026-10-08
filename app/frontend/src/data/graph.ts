@@ -169,8 +169,9 @@ export const rawGraphData: RawGraphData = {
         canonicalUrl: 'https://www.computerrepairkuwait.com/computer-repair-kuwait',
         locale: 'en_KW',
         alternates: {
+          // No ar-KW alternate: /ar/computer-repair-kuwait is the Arabic counterpart of '/'
+          // (it declares en-KW -> '/'), so claiming it here would be a non-reciprocal hreflang.
           'en-KW': 'https://www.computerrepairkuwait.com/computer-repair-kuwait',
-          'ar-KW': 'https://www.computerrepairkuwait.com/ar/computer-repair-kuwait',
           'x-default': 'https://www.computerrepairkuwait.com/computer-repair-kuwait'
         },
         ogType: 'website',
