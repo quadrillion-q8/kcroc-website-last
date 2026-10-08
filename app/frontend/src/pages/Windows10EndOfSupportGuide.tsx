@@ -8,6 +8,7 @@ import {
 import { SEOEngine } from '../core/components/SEOEngine';
 import SchemaMarkup from '../components/seo/SchemaMarkup';
 import { KCROC_GRAPH } from '../data/graph';
+import { KuwaitLocalCTA } from '@/components/content/KuwaitLocalCTA';
 import { IMAGES } from '../constants/images';
 
 const business = KCROC_GRAPH.business!;
@@ -151,6 +152,8 @@ export default function Windows10EndOfSupportGuide() {
               Windows 10 support ended on <strong className="text-white">October 14, 2025</strong>. Your PC still works, but the normal security-maintenance safety net is gone. Here is how to decide between Windows 11, ESU, repair, replacement, or Linux without spending money blindly.
             </p>
           </header>
+
+          <KuwaitLocalCTA topic="Windows 10 End of Support" placement="windows10_eos_guide" />
 
           <Figure
             src={IMAGES.services.windowsInstall.src}
