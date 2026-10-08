@@ -61,6 +61,10 @@ export const getIntentWhatsAppLink = (context: IntentContext, entityName?: strin
 export const getPageWhatsAppLink = (pathname: string): string => {
   const path = `/${pathname.replace(/^\/+|\/+$/g, '')}`;
 
+  if (path === '/computer-repair-kuwait') {
+    return buildWhatsAppLink('Hi KCROC, I need computer repair in Kuwait. I would like to arrange diagnosis and free pickup.');
+  }
+
   if (path === '/ar' || path.startsWith('/ar/')) {
     const slug = path.replace(/^\/ar\//, '');
     const arabicNames: Record<string, string> = {
