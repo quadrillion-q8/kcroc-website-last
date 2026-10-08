@@ -133,6 +133,10 @@ export const NAV_GRAPH = {
         "path": "/pricing"
       },
       {
+        "label": "Computer Repair Kuwait",
+        "path": "/computer-repair-kuwait"
+      },
+      {
         "label": "Computer Repair Near Me",
         "path": "/near-me"
       },
