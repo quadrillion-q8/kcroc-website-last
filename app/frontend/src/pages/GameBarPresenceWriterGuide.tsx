@@ -14,6 +14,7 @@ import { KCROC_GRAPH } from '../data/graph';
 import StickyTOC from '@/components/blog/StickyTOC';
 import { IMAGES } from '../constants/images';
 import SchemaMarkup from '../components/seo/SchemaMarkup';
+import { KuwaitLocalCTA } from '@/components/content/KuwaitLocalCTA';
 
 const business = KCROC_GRAPH.business!;
 const WA_LINK = `https://wa.me/${business.telephone}?text=${encodeURIComponent('I need gaming PC performance diagnostics in Kuwait')}`;
@@ -253,6 +254,12 @@ export default function GameBarPresenceWriterGuide() {
               It's a Windows component associated with Xbox Game Bar's presence functionality. Microsoft documents it as reacting to a game gaining focus, losing focus, or closing, and — when the relevant Xbox features are enabled — updating Xbox Live game presence for the running title. It is not, by itself, proof of a CPU, GPU, or network problem; treat it as one variable to test rather than an automatic culprit.
             </p>
           </div>
+        </div>
+      </section>
+
+      <section className="px-4 sm:px-6">
+        <div className="container mx-auto max-w-5xl">
+          <KuwaitLocalCTA topic="GameBarPresenceWriter.exe" placement="gamebar_guide" />
         </div>
       </section>
 
