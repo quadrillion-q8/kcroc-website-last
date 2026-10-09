@@ -5,6 +5,7 @@ import { KCROC_GRAPH } from '../data/graph';
 import { SEOEngine } from '../core/components/SEOEngine';
 import SchemaMarkup from '../components/seo/SchemaMarkup';
 import { IMAGES } from '../constants/images';
+import { ArabicHeadTermLinks } from '@/components/content/ArabicHeadTermLinks';
 
 const LOCAL_LINKS = [
   { label: 'حولي', path: '/ar/computer-repair-hawalli' },
@@ -1026,6 +1027,7 @@ function ArabicGamingPcRepairPage({
           <Link to="/guides/bios-uefi-recovery-kuwait" className="rounded-full border border-slate-800 px-4 py-2 text-sm font-bold text-slate-300 hover:border-cyan-500/40 hover:text-cyan-300">دليل BIOS / UEFI</Link>
         </div>
       </main>
+      <ArabicHeadTermLinks />
     </div>
   );
 }
@@ -1434,6 +1436,7 @@ function ArabicComputerRepairPage({
           </a>
         </footer>
       </main>
+      <ArabicHeadTermLinks />
     </div>
   );
 }
@@ -1628,6 +1631,7 @@ export default function ArabicCommercialPage() {
           </a>
         </section>
       </main>
+      <ArabicHeadTermLinks />
     </div>
   );
 }
