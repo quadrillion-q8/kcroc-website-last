@@ -11,7 +11,7 @@ export const SEO_GRAPH = {
       "slug": "",
       "seo": {
         "title": "Laptop & Computer Repair Kuwait | From 15 KWD | KCROC",
-        "description": "Laptop and computer repair in Kuwait from 15 KWD. Screen, battery, charging and motherboard diagnosis at our Hawalli lab, with free pickup, a clear quote before repair and a 30-day warranty.",
+        "description": "Need laptop or computer repair in Kuwait? Repairs start at 15 KWD, with free pickup and delivery, a quote before work begins, and a 30-day warranty on completed repairs at KCROC.",
         "canonicalUrl": "https://www.computerrepairkuwait.com/",
         "locale": "en_KW",
         "alternates": {
@@ -1149,8 +1149,8 @@ export const SEO_GRAPH = {
       "title": "Pricing",
       "slug": "pricing",
       "seo": {
-        "title": "Laptop Repair Prices Kuwait | Screen, Battery & PC | KCROC",
-        "description": "Compare KCROC laptop and computer repair starting prices in Kuwait. Screen replacement from 30 KWD plus part, battery replacement from 8 KWD plus part, and SSD/RAM upgrades from 5 KWD plus part. Confirmed quote before repair.",
+        "title": "Computer Repair Prices Kuwait | Laptop, Screen & Battery | KCROC",
+        "description": "Check KCROC computer and laptop repair prices in Kuwait: screens from 30 KWD + part, batteries from 8 KWD + part, and SSD/RAM installation from 5 KWD. Free initial diagnostics and a quote before repair.",
         "canonicalUrl": "https://www.computerrepairkuwait.com/pricing",
         "ogType": "website",
         "schemaTypes": [
@@ -2217,8 +2217,8 @@ export const SEO_GRAPH = {
       "title": "Laptop Repair Kuwait",
       "slug": "laptop-repair-kuwait",
       "seo": {
-        "title": "Laptop Repair Kuwait | Free Pickup, From 15 KWD | KCROC",
-        "description": "Laptop repair in Kuwait from 15 KWD. Screen, battery, charging, overheating and motherboard faults diagnosed at our Hawalli lab. Free pickup, clear quote before repair and 30-day warranty.",
+        "title": "Laptop Repair Kuwait | From 15 KWD + Free Pickup | KCROC",
+        "description": "Need laptop repair in Kuwait? Screen, battery, charging, overheating and motherboard faults checked at KCROC’s Hawalli lab. From 15 KWD, with free pickup, a quote before repair and a 30-day warranty.",
         "canonicalUrl": "https://www.computerrepairkuwait.com/laptop-repair-kuwait",
         "locale": "en_KW",
         "alternates": {
