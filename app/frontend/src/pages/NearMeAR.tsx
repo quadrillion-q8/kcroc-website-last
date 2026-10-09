@@ -25,6 +25,7 @@ import { Badge } from '@/components/ui/badge';
 import { SEOEngine } from '../core/components/SEOEngine';
 import { KCROC_GRAPH } from '../data/graph';
 import { IMAGES } from '../constants/images';
+import { ArabicHeadTermLinks } from '@/components/content/ArabicHeadTermLinks';
 
 // Service areas with a dedicated Arabic page link there; others fall back to English.
 const AR_LOCATION_PATHS: Record<string, string> = {
@@ -339,6 +340,7 @@ export default function NearMeAR() {
           <p className="mt-5 text-xs text-slate-500">مختبر الإصلاح المركزي: {business.streetAddress}، {business.addressLocality}، الكويت</p>
         </div>
       </section>
+      <ArabicHeadTermLinks />
     </div>
   );
 }
