@@ -4,10 +4,10 @@
 // hub at /ar/near-me. Previously the site's entire Arabic footprint was one
 // blog post plus a single FAQ section anchored inside the English /near-me
 // page (see the "Arabic local-intent section" in NearMe.tsx) — no dedicated
-// URL, no hreflang, no independent canonical. Despite that, "فني كمبيوتر"
-// already ranks #2 in GSC with ~900 monthly impressions, which is the
-// strongest content-ROI signal in the account. This page gives that demand
-// a real home instead of a scroll-anchor inside an English page.
+// URL, no hreflang, no independent canonical. In the supplied three-month GSC
+// export, "فني كمبيوتر" had 614 impressions, average position 3.04 and zero
+// clicks. This page gives that demand a dedicated Arabic destination and now
+// links directly to existing high-intent Arabic service pages.
 //
 // SEO wiring: entity `page-near-me-ar` in graph.ts carries `locale: 'ar_KW'`
 // and `alternates` pointing back to the English `/near-me` page (and vice
@@ -47,6 +47,8 @@ const SERVICES_AR: { slug: string; icon: React.ElementType; title: string; descr
   { slug: 'motherboard-repair-kuwait', icon: Cpu, title: 'تصليح اللوحة الأم', description: 'إصلاح اللوحة الأم على مستوى القطعة الإلكترونية بدل استبدال اللوحة بالكامل، متى ما كان ذلك ممكنًا.' },
   { slug: 'laptop-screen-repair-kuwait', icon: Monitor, title: 'تغيير شاشة اللابتوب', description: 'تغيير شاشات اللابتوب المكسورة أو المتضررة، وإصلاح مشاكل الخطوط أو الإضاءة حسب حالة الشاشة.' },
   { slug: 'battery-replacement-kuwait', icon: ShieldCheck, title: 'تغيير بطارية اللابتوب', description: 'فحص صحة البطارية أولًا ثم استبدالها عند التأكد من أن البطارية هي سبب المشكلة.' },
+  { slug: 'laptop-keyboard-replacement-kuwait', icon: Laptop, title: 'تبديل كيبورد اللابتوب', description: 'تبديل الكيبورد أو تشخيص الأزرار التي لا تعمل والإضاءة ومشاكل السوائل حسب موديل الجهاز.' },
+  { slug: 'ssd-ram-upgrade-kuwait', icon: Cpu, title: 'ترقية SSD وRAM', description: 'ترقية التخزين والذاكرة بعد فحص التوافق ودعم الجهاز، مع نقل البيانات عند الإمكان.' },
   { slug: 'laptop-charging-port-repair-kuwait', icon: Cpu, title: 'إصلاح مدخل الشحن', description: 'تشخيص منفذ الشحن ودوائر الطاقة، مع إصلاح المنفذ أو العطل على مستوى اللوحة عندما يكون ذلك ممكنًا.' },
 ];
 
@@ -81,6 +83,9 @@ const HIGH_INTENT_AR = [
   { href: '/laptop-overheating-kuwait', title: 'اللابتوب يسخن', desc: 'تشخيص الحرارة المرتفعة والاختناق الحراري ومشاكل التبريد في أجواء الكويت.' },
   { href: '/laptop-screen-repair-kuwait', title: 'تغيير شاشة اللابتوب', desc: 'شاشات مكسورة أو سوداء أو فيها خطوط ووميض، بعد تشخيص المشكلة.' },
   { href: '/battery-replacement-kuwait', title: 'تغيير بطارية اللابتوب', desc: 'فحص البطارية أولًا ثم الاستبدال عند ثبوت التلف أو التدهور.' },
+  { href: '/laptop-keyboard-replacement-kuwait', title: 'تبديل كيبورد اللابتوب', desc: 'تشخيص الأزرار التي لا تعمل ثم تحديد ما إذا كان المطلوب إصلاحًا أو استبدالًا.' },
+  { href: '/ssd-ram-upgrade-kuwait', title: 'ترقية SSD وRAM', desc: 'تحسين سرعة الجهاز بعد فحص توافق التخزين والذاكرة مع موديل اللابتوب.' },
+  { href: '/blog/ar/how-often-clean-laptop-replace-thermal-paste-kuwait', title: 'تنظيف اللابتوب وتغيير المعجون الحراري', desc: 'متى يحتاج الجهاز إلى تنظيف داخلي وفحص المراوح والمعجون الحراري؟' },
 ];
 
 export default function NearMeAR() {
@@ -93,7 +98,7 @@ export default function NearMeAR() {
   if (!business || !page) return null;
 
   const waLink = `https://wa.me/${business.telephone}?text=${encodeURIComponent(
-    'مرحباً KCROC، أبحث عن فني كمبيوتر في الكويت في الكويت وأحتاج ترتيب استلام للجهاز.'
+    'مرحباً KCROC، أبحث عن فني كمبيوتر في الكويت وأحتاج ترتيب استلام للجهاز.'
   )}`;
 
   return (
