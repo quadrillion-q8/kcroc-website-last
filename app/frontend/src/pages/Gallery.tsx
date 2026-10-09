@@ -1,6 +1,6 @@
 // File: app/frontend/src/pages/Gallery.tsx
-import React, { useState, useMemo } from 'react';
-import { X, Maximize2, Phone, MessageCircle } from 'lucide-react';
+import React, { useState, useMemo, useEffect, useCallback } from 'react';
+import { X, Maximize2, Phone, MessageCircle, ChevronLeft, ChevronRight } from 'lucide-react';
 import { GALLERY_ITEMS, galleryCategories } from '../constants/galleryData';
 import { SEOEngine } from '../core/components/SEOEngine';
 import { buildWhatsAppLink } from '../utils/whatsappIntent';
@@ -34,6 +34,37 @@ export default function Gallery() {
   const visibleItems = filteredItems.slice(0, visibleCount);
   const remaining = filteredItems.length - visibleItems.length;
 
+  // Lightbox navigation: wraps around the full filtered list (not just the
+  // tiles currently rendered), so arrows keep working past the last tile.
+  const closeLightbox = useCallback(() => setSelectedIndex(null), []);
+  const showPrev = useCallback(() => {
+    setSelectedIndex((i) => (i === null ? i : (i - 1 + filteredItems.length) % filteredItems.length));
+  }, [filteredItems.length]);
+  const showNext = useCallback(() => {
+    setSelectedIndex((i) => (i === null ? i : (i + 1) % filteredItems.length));
+  }, [filteredItems.length]);
+
+  // Keyboard: Esc closes, arrow keys move. Only active while the lightbox is open.
+  useEffect(() => {
+    if (selectedIndex === null) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') closeLightbox();
+      else if (e.key === 'ArrowLeft') showPrev();
+      else if (e.key === 'ArrowRight') showNext();
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [selectedIndex, closeLightbox, showPrev, showNext]);
+
+  // Preload only the next full-size photo so "next" feels instant without
+  // downloading the whole set.
+  useEffect(() => {
+    if (selectedIndex === null || filteredItems.length < 2) return;
+    const next = filteredItems[(selectedIndex + 1) % filteredItems.length];
+    const img = new Image();
+    img.src = withSlash(next.image.src);
+  }, [selectedIndex, filteredItems]);
+
   return (
     <main className="w-full min-h-screen bg-transparent text-white font-sans pt-8 sm:pt-16 lg:pt-24 pb-8 sm:pb-24 px-4 sm:px-6">
       
@@ -41,14 +72,48 @@ export default function Gallery() {
 
       {/* Lightbox */}
       {selectedIndex !== null && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-brand-dark/95 backdrop-blur-sm p-4" onClick={() => setSelectedIndex(null)}>
-          <button className="absolute top-4 sm:top-8 right-4 sm:right-8 text-white p-2 sm:p-3 bg-slate-900/50 rounded-full hover:bg-slate-800 transition-colors" onClick={() => setSelectedIndex(null)}>
-            <X className="w-8 h-8 sm:w-10 sm:h-10"/>
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-brand-dark/95 backdrop-blur-sm p-4"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Photo viewer"
+          onClick={closeLightbox}
+        >
+          <button
+            type="button"
+            aria-label="Close photo"
+            className="absolute top-4 sm:top-8 right-4 sm:right-8 text-white p-2 sm:p-3 bg-slate-900/50 rounded-full hover:bg-slate-800 transition-colors"
+            onClick={closeLightbox}
+          >
+            <X className="w-8 h-8 sm:w-10 sm:h-10" aria-hidden="true" />
           </button>
+
+          {filteredItems.length > 1 && (
+            <>
+              <button
+                type="button"
+                aria-label="Previous photo"
+                className="absolute left-2 sm:left-8 top-1/2 -translate-y-1/2 text-white p-2 sm:p-3 bg-slate-900/50 rounded-full hover:bg-slate-800 transition-colors"
+                onClick={(e) => { e.stopPropagation(); showPrev(); }}
+              >
+                <ChevronLeft className="w-7 h-7 sm:w-9 sm:h-9" aria-hidden="true" />
+              </button>
+              <button
+                type="button"
+                aria-label="Next photo"
+                className="absolute right-2 sm:right-8 top-1/2 -translate-y-1/2 text-white p-2 sm:p-3 bg-slate-900/50 rounded-full hover:bg-slate-800 transition-colors"
+                onClick={(e) => { e.stopPropagation(); showNext(); }}
+              >
+                <ChevronRight className="w-7 h-7 sm:w-9 sm:h-9" aria-hidden="true" />
+              </button>
+            </>
+          )}
+
           <img 
             src={withSlash(filteredItems[selectedIndex].image.src)} 
             alt={filteredItems[selectedIndex].image.alt} 
             className="max-w-full max-h-[85vh] object-contain rounded-xl shadow-2xl" 
+            onClick={(e) => e.stopPropagation()}
           />
         </div>
       )}
@@ -89,7 +154,7 @@ export default function Gallery() {
                 alt={item.image.alt} 
                 width={item.image.thumb ? item.image.thumbWidth : item.image.width}
                 height={item.image.thumb ? item.image.thumbHeight : item.image.height}
-                loading={i < 8 ? 'eager' : 'lazy'}
+                loading={i < 4 ? 'eager' : 'lazy'}
                 decoding="async"
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 onError={(e) => {
