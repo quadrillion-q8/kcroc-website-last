@@ -372,10 +372,10 @@ export default function Pricing() {
           </Badge>
 
           <h1 className="text-4xl font-black leading-[1.04] tracking-tight text-white sm:text-5xl lg:text-6xl">
-            Know the price.
+            Computer Repair Prices in Kuwait
             <br />
             <span className="bg-gradient-to-r from-cyan-300 via-cyan-400 to-blue-500 bg-clip-text text-transparent">
-              Approve the repair.
+              Know the price. Approve the repair.
             </span>
           </h1>
 
