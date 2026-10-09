@@ -1,5 +1,6 @@
 // File: src/constants/galleryData.ts
 import { IMAGES } from './images';
+import { GALLERY_PHOTOS } from './galleryPhotos';
 
 // Standardized categories for your filter buttons
 export const galleryCategories = [
@@ -10,6 +11,24 @@ export const galleryCategories = [
   'Hardware Maintenance', 
   'Workshop'
 ] as const;
+
+/**
+ * One gallery tile. `thumb` is optional: photos that ship a small
+ * 640px derivative use it for the grid and load `src` (full size) only
+ * when opened in the lightbox. Older photos without a thumb fall back to `src`.
+ */
+export interface GalleryItem {
+  category: string;
+  image: {
+    src: string;
+    alt: string;
+    width?: number;
+    height?: number;
+    thumb?: string;
+    thumbWidth?: number;
+    thumbHeight?: number;
+  };
+}
 
 // 🩹 FIX: requested removal of these 11 photos from the /gallery page.
 // Filtered by src (not deleted from constants/images.ts) because several of
@@ -34,9 +53,26 @@ const GALLERY_EXCLUDED_SRCS = new Set([
 ]);
 
 /**
+ * Newest photos first: the batch in galleryPhotos.ts (with thumbnails),
+ * mapped into the same shape as the older registry-driven items.
+ */
+const NEW_GALLERY_ITEMS: GalleryItem[] = GALLERY_PHOTOS.map((p) => ({
+  category: p.category,
+  image: {
+    src: `/images/gallery/${p.name}.webp`,
+    thumb: `/images/gallery/${p.name}.w640.webp`,
+    alt: p.alt,
+    width: p.width,
+    height: p.height,
+    thumbWidth: p.thumbWidth,
+    thumbHeight: p.thumbHeight,
+  },
+}));
+
+/**
  * Dynamically maps your new categorized IMAGES constant into the Gallery grid.
  */
-export const GALLERY_ITEMS = [
+const REGISTRY_GALLERY_ITEMS: GalleryItem[] = [
   // --- WORKSHOP ---
   ...Object.values(IMAGES.brand).map(img => ({
     category: 'Workshop',
@@ -76,5 +112,6 @@ export const GALLERY_ITEMS = [
   }))
 ]
   .filter(item => item.image.src !== "/logo.webp") // Prevent logo from appearing in the gallery grid
-  .filter(item => !GALLERY_EXCLUDED_SRCS.has(item.image.src)) as const;
+  .filter(item => !GALLERY_EXCLUDED_SRCS.has(item.image.src));
 
+export const GALLERY_ITEMS: GalleryItem[] = [...NEW_GALLERY_ITEMS, ...REGISTRY_GALLERY_ITEMS];
