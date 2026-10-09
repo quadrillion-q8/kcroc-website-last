@@ -103,6 +103,31 @@ export const ServiceAreas = () => {
             </span>
           ))}
         </div>
+
+        {/* Existing Arabic commercial URLs are surfaced from the homepage for bilingual local discovery.
+            This strengthens internal paths without generating thin service-by-area URL combinations. */}
+        <div dir="rtl" lang="ar" className="mt-10 rounded-2xl border border-cyan-900/40 bg-slate-950/45 p-5 sm:p-6">
+          <p className="text-sm font-bold text-cyan-400">خدمة الكمبيوتر واللابتوب في الكويت</p>
+          <h3 className="mt-2 text-xl font-black text-white sm:text-2xl">تبحث عن فني كمبيوتر أو تصليح لابتوب؟</h3>
+          <p className="mt-3 max-w-3xl text-sm leading-7 text-slate-300">
+            نشخص أعطال الكمبيوتر واللابتوب قبل الإصلاح، ونرتب استلام الجهاز من المنزل أو المكتب وتوصيله من مختبرنا في حولي. اختر الخدمة المناسبة أو افتح صفحة المنطقة لمعرفة تفاصيل التغطية.
+          </p>
+          <div className="mt-4 flex flex-wrap gap-2">
+            {[
+              { label: 'فني كمبيوتر في الكويت', path: '/ar/near-me' },
+              { label: 'تصليح كمبيوتر حولي', path: '/ar/computer-repair-hawalli' },
+              { label: 'تصليح لابتوب', path: '/ar/laptop-repair-kuwait' },
+              { label: 'تبديل بطارية', path: '/ar/battery-replacement-kuwait' },
+              { label: 'تبديل شاشة', path: '/ar/laptop-screen-repair-kuwait' },
+              { label: 'تبديل كيبورد', path: '/ar/laptop-keyboard-replacement-kuwait' },
+              { label: 'ترقية SSD وRAM', path: '/ar/ssd-ram-upgrade-kuwait' },
+            ].map((item) => (
+              <Link key={item.path} to={item.path} className="rounded-full border border-slate-700 bg-slate-900 px-3.5 py-2 text-sm font-semibold text-slate-200 transition hover:border-cyan-500/60 hover:text-cyan-300">
+                {item.label}
+              </Link>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
