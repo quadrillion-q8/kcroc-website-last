@@ -10,8 +10,8 @@ export const SEO_GRAPH = {
       "title": "Home",
       "slug": "",
       "seo": {
-        "title": "Laptop & Computer Repair Kuwait | Free Pickup | KCROC",
-        "description": "Need laptop or computer repair in Kuwait? KCROC diagnoses and repairs laptops, PCs, MacBooks, screens, batteries and charging faults from our Hawalli lab, with free pickup, clear quotes and a 30-day repair warranty.",
+        "title": "Laptop & Computer Repair Kuwait | From 15 KWD | KCROC",
+        "description": "Laptop and computer repair in Kuwait from 15 KWD. Screen, battery, charging and motherboard diagnosis at our Hawalli lab, with free pickup, a clear quote before repair and a 30-day warranty.",
         "canonicalUrl": "https://www.computerrepairkuwait.com/",
         "locale": "en_KW",
         "alternates": {
@@ -25,7 +25,7 @@ export const SEO_GRAPH = {
           "WebSite",
           "WebPage"
         ],
-        "lastModified": "2026-10-09T00:00:00+03:00"
+        "lastModified": "2026-10-10T00:00:00+03:00"
       },
       "description": "KCROC Homepage — Component-level computer repair in Kuwait",
       "featuredFAQIds": [
@@ -154,8 +154,8 @@ export const SEO_GRAPH = {
       "title": "Computer Repair Kuwait",
       "slug": "computer-repair-kuwait",
       "seo": {
-        "title": "Computer Repair Kuwait | Laptop & PC Repair From 15 KWD | KCROC",
-        "description": "Computer repair in Kuwait from 15 KWD. Laptop, PC, MacBook and motherboard repair, free pickup and delivery, and 30-day warranty from KCROC.",
+        "title": "Computer Repair Kuwait | PC & Laptop Repair | KCROC",
+        "description": "Need computer repair in Kuwait? KCROC diagnoses laptop, desktop PC, MacBook and motherboard faults at our Hawalli lab. Free pickup and delivery, clear quote before repair, and a 30-day warranty.",
         "canonicalUrl": "https://www.computerrepairkuwait.com/computer-repair-kuwait",
         "locale": "en_KW",
         "alternates": {
@@ -169,7 +169,7 @@ export const SEO_GRAPH = {
           "BreadcrumbList",
           "FAQPage"
         ],
-        "lastModified": "2026-10-08T00:00:00+03:00",
+        "lastModified": "2026-10-10T00:00:00+03:00",
         "breadcrumbs": [
           {
             "name": "Home",
@@ -1149,14 +1149,14 @@ export const SEO_GRAPH = {
       "title": "Pricing",
       "slug": "pricing",
       "seo": {
-        "title": "Laptop & Computer Repair Prices in Kuwait (KWD) | KCROC",
-        "description": "Check KCROC repair starting prices in Kuwait: laptop screens from 30 KWD plus part, batteries from 8 KWD plus part, and SSD/RAM installation from 5 KWD plus part. Diagnosis first; approve the quote before repair.",
+        "title": "Laptop Repair Prices Kuwait | Screen, Battery & PC | KCROC",
+        "description": "Compare KCROC laptop and computer repair starting prices in Kuwait. Screen replacement from 30 KWD plus part, battery replacement from 8 KWD plus part, and SSD/RAM upgrades from 5 KWD plus part. Confirmed quote before repair.",
         "canonicalUrl": "https://www.computerrepairkuwait.com/pricing",
         "ogType": "website",
         "schemaTypes": [
           "WebPage"
         ],
-        "lastModified": "2026-09-27T00:00:00+03:00"
+        "lastModified": "2026-10-10T00:00:00+03:00"
       },
       "description": "Transparent repair pricing.",
       "featuredFAQIds": []
@@ -2217,8 +2217,8 @@ export const SEO_GRAPH = {
       "title": "Laptop Repair Kuwait",
       "slug": "laptop-repair-kuwait",
       "seo": {
-        "title": "Laptop Repair Kuwait | Free Pickup & 30-Day Warranty | KCROC",
-        "description": "Laptop repair in Kuwait for screens, batteries, charging, hinges, overheating and motherboard faults. Free pickup and delivery, diagnosis before repair, quote approval, and a 30-day warranty.",
+        "title": "Laptop Repair Kuwait | Free Pickup, From 15 KWD | KCROC",
+        "description": "Laptop repair in Kuwait from 15 KWD. Screen, battery, charging, overheating and motherboard faults diagnosed at our Hawalli lab. Free pickup, clear quote before repair and 30-day warranty.",
         "canonicalUrl": "https://www.computerrepairkuwait.com/laptop-repair-kuwait",
         "locale": "en_KW",
         "alternates": {
@@ -2231,7 +2231,7 @@ export const SEO_GRAPH = {
           "Service",
           "FAQPage"
         ],
-        "lastModified": "2026-09-27T00:00:00+03:00"
+        "lastModified": "2026-10-10T00:00:00+03:00"
       },
       "description": "Everyday Windows laptops—from budget student IdeaPads to high-end XPS workstations—face a tough life. Between daily transport, dropped bags, and Kuwait's extreme summer heat combined with fine desert dust, mechanical and thermal failures are inevitable. We see it every day: hinges separating from plastic chassis, DC charging jacks pushed inward, cooling fans grinding or seizing, and systems slowing to a crawl. Instead of telling you to buy a new laptop, we fix the actual broken part. We repair snapped hinges with structural resin, micro-solder broken charging ports directly to the motherboard, ultrasonic-clean dust-choked cooling systems, and revive slow systems with SSD and RAM upgrades. We stock OEM and high-grade compatible parts for Dell, HP, Lenovo, ASUS, Acer, and MSI.",
       "pricing": {
@@ -2807,8 +2807,8 @@ export const SEO_GRAPH = {
       "title": "Hawalli Repair Center",
       "slug": "hawalli",
       "seo": {
-        "title": "Computer Repair Hawalli | Laptop Repair & Pickup | KCROC",
-        "description": "Laptop and computer repair in Hawalli at KCROC, Al Mullah Complex on Ibn Khaldoun Street. Diagnosis before repair, clear quotes, free pickup and delivery across Kuwait, and a 30-day repair warranty.",
+        "title": "Computer & Laptop Repair Hawalli | KCROC",
+        "description": "Computer and laptop repair in Hawalli at KCROC, Al Mullah Complex on Ibn Khaldoun Street. Get fault diagnosis, a clear quote before repair, free pickup and delivery across Kuwait, and a 30-day repair warranty.",
         "canonicalUrl": "https://www.computerrepairkuwait.com/location/hawalli",
         "alternates": {
           "en-KW": "https://www.computerrepairkuwait.com/location/hawalli",
@@ -2819,7 +2819,7 @@ export const SEO_GRAPH = {
         "schemaTypes": [
           "LocalBusiness"
         ],
-        "lastModified": "2026-10-09T00:00:00+03:00"
+        "lastModified": "2026-10-10T00:00:00+03:00"
       },
       "coords": {
         "lat": 29.3416921515256,
@@ -2908,8 +2908,8 @@ export const SEO_GRAPH = {
       "title": "Farwaniya",
       "slug": "farwaniya",
       "seo": {
-        "title": "Laptop Repair Farwaniya | Free Pickup & Delivery | KCROC",
-        "description": "Laptop and computer repair for Farwaniya, Khaitan, Riggae, Ardiya and Jleeb Al-Shuyoukh. Free pickup, diagnosis before repair and return delivery from KCROC’s Hawalli lab, with a 30-day repair warranty.",
+        "title": "Computer & Laptop Repair Farwaniya | KCROC",
+        "description": "Computer and laptop repair for Farwaniya, Khaitan, Riggae, Ardiya and Jleeb Al-Shuyoukh. Free pickup to KCROC’s Hawalli lab, diagnosis and a clear quote before repair, plus return delivery and a 30-day warranty.",
         "canonicalUrl": "https://www.computerrepairkuwait.com/location/farwaniya",
         "alternates": {
           "en-KW": "https://www.computerrepairkuwait.com/location/farwaniya",
@@ -2920,7 +2920,7 @@ export const SEO_GRAPH = {
         "schemaTypes": [
           "LocalBusiness"
         ],
-        "lastModified": "2026-10-09T00:00:00+03:00"
+        "lastModified": "2026-10-10T00:00:00+03:00"
       },
       "coords": {
         "lat": 29.277,
