@@ -14,9 +14,16 @@ import { KCROC_GRAPH } from '../data/graph';
 const WA_LINK = buildWhatsAppLink('Hi KCROC, I need a professional repair. Please arrange free pickup.');
 const CALL_LINK = `tel:+${KCROC_GRAPH.business!.telephone}`;
 
+// Only this many tiles are rendered at a time; "Load more" reveals the next
+// batch. Keeps the DOM and image requests small no matter how many photos the
+// gallery grows to.
+const PAGE_SIZE = 24;
+const withSlash = (src: string) => (src.startsWith('/') ? src : `/${src}`);
+
 export default function Gallery() {
   const [activeCategory, setActiveCategory] = useState<string>('All');
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  const [visibleCount, setVisibleCount] = useState<number>(PAGE_SIZE);
 
   const filteredItems = useMemo(() =>
       activeCategory === 'All'
@@ -24,6 +31,8 @@ export default function Gallery() {
         : GALLERY_ITEMS.filter((item) => item.category === activeCategory),
     [activeCategory]
   );
+  const visibleItems = filteredItems.slice(0, visibleCount);
+  const remaining = filteredItems.length - visibleItems.length;
 
   return (
     <main className="w-full min-h-screen bg-transparent text-white font-sans pt-8 sm:pt-16 lg:pt-24 pb-8 sm:pb-24 px-4 sm:px-6">
@@ -37,7 +46,7 @@ export default function Gallery() {
             <X className="w-8 h-8 sm:w-10 sm:h-10"/>
           </button>
           <img 
-            src={filteredItems[selectedIndex].image.src.startsWith('/') ? filteredItems[selectedIndex].image.src : `/${filteredItems[selectedIndex].image.src}`} 
+            src={withSlash(filteredItems[selectedIndex].image.src)} 
             alt={filteredItems[selectedIndex].image.alt} 
             className="max-w-full max-h-[85vh] object-contain rounded-xl shadow-2xl" 
           />
@@ -55,7 +64,7 @@ export default function Gallery() {
           {['All', ...galleryCategories].map((cat) => (
             <button
               key={cat}
-              onClick={() => setActiveCategory(cat)}
+              onClick={() => { setActiveCategory(cat); setVisibleCount(PAGE_SIZE); }}
               className={`scroll-row-item px-4 py-2 rounded-full text-[11px] sm:text-sm font-bold transition-colors whitespace-nowrap ${
                 activeCategory === cat
                   ? 'bg-cyan-500 text-slate-950'
@@ -69,16 +78,19 @@ export default function Gallery() {
 
         {/* Gallery Grid */}
         <section className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6 mb-12 sm:mb-24">
-          {filteredItems.map((item, i) => (
+          {visibleItems.map((item, i) => (
             <div 
-              key={i} 
+              key={item.image.src} 
               onClick={() => setSelectedIndex(i)} 
               className="group relative aspect-[4/3] rounded-2xl sm:rounded-3xl overflow-hidden cursor-pointer border border-slate-800 bg-slate-900 shadow-xl"
             >
               <img 
-                src={item.image.src.startsWith('/') ? item.image.src : `/${item.image.src}`}
+                src={withSlash(item.image.thumb ?? item.image.src)}
                 alt={item.image.alt} 
-                loading="lazy"
+                width={item.image.thumb ? item.image.thumbWidth : item.image.width}
+                height={item.image.thumb ? item.image.thumbHeight : item.image.height}
+                loading={i < 8 ? 'eager' : 'lazy'}
+                decoding="async"
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 onError={(e) => {
                   if (import.meta.env.DEV) console.error("Image load error:", item.image.src);
@@ -95,6 +107,18 @@ export default function Gallery() {
             </div>
           ))}
         </section>
+
+        {remaining > 0 && (
+          <div className="text-center -mt-6 sm:-mt-16 mb-12 sm:mb-24">
+            <button
+              type="button"
+              onClick={() => setVisibleCount((c) => c + PAGE_SIZE)}
+              className="px-8 py-3 rounded-full bg-slate-800 border border-slate-700 hover:border-cyan-500/50 text-white font-bold text-sm sm:text-base transition-colors"
+            >
+              Load more photos ({remaining} left)
+            </button>
+          </div>
+        )}
 
         {/* CTA Footer */}
         <section className="max-w-4xl mx-auto text-center">
