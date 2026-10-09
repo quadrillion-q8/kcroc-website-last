@@ -10,8 +10,8 @@ export const SEO_GRAPH = {
       "title": "Home",
       "slug": "",
       "seo": {
-        "title": "Kuwait Computer Repair On Call | Hawalli Lab | KCROC",
-        "description": "Kuwait Computer Repair On Call (KCROC): laptop, PC and MacBook repair from our Hawalli lab. Free pickup and delivery, 30-day warranty, No Fix No Fee.",
+        "title": "Laptop & Computer Repair Kuwait | Free Pickup | KCROC",
+        "description": "Need laptop or computer repair in Kuwait? KCROC diagnoses and repairs laptops, PCs, MacBooks, screens, batteries and charging faults from our Hawalli lab, with free pickup, clear quotes and a 30-day repair warranty.",
         "canonicalUrl": "https://www.computerrepairkuwait.com/",
         "locale": "en_KW",
         "alternates": {
@@ -25,7 +25,7 @@ export const SEO_GRAPH = {
           "WebSite",
           "WebPage"
         ],
-        "lastModified": "2026-10-02T00:00:00+03:00"
+        "lastModified": "2026-10-09T00:00:00+03:00"
       },
       "description": "KCROC Homepage — Component-level computer repair in Kuwait",
       "featuredFAQIds": [
@@ -191,8 +191,8 @@ export const SEO_GRAPH = {
       "title": "فني كمبيوتر وتصليح لابتوب في الكويت",
       "slug": "ar/near-me",
       "seo": {
-        "title": "فني كمبيوتر الكويت | تصليح لابتوب واستلام مجاني | KCROC",
-        "description": "تبحث عن فني كمبيوتر أو تصليح لابتوب في الكويت؟ KCROC يقدم تشخيصًا أولًا، استلامًا وتوصيلًا مجانيًا، وضمان 30 يومًا من مختبرنا في حولي.",
+        "title": "فني كمبيوتر الكويت | تصليح كمبيوتر حولي ولابتوب | KCROC",
+        "description": "تحتاج فني كمبيوتر في الكويت أو حولي؟ نشخص أعطال الكمبيوتر واللابتوب قبل الإصلاح، ونرتب استلام الجهاز من المنزل أو المكتب وتوصيله مجانًا من مختبرنا في حولي. عرض سعر واضح وضمان 30 يومًا.",
         "canonicalUrl": "https://www.computerrepairkuwait.com/ar/near-me",
         "locale": "ar_KW",
         "alternates": {
@@ -206,7 +206,7 @@ export const SEO_GRAPH = {
           "FAQPage",
           "BreadcrumbList"
         ],
-        "lastModified": "2026-09-27T00:00:00+03:00",
+        "lastModified": "2026-10-09T00:00:00+03:00",
         "breadcrumbs": [
           {
             "name": "الرئيسية",
@@ -418,8 +418,8 @@ export const SEO_GRAPH = {
       "title": "تصليح كمبيوتر حولي وفني لابتوب",
       "slug": "ar/computer-repair-hawalli",
       "seo": {
-        "title": "تصليح كمبيوتر حولي | فني لابتوب واستلام مجاني | KCROC",
-        "description": "تصليح كمبيوتر حولي ولابتوب حولي من مختبر KCROC. تشخيص قبل الإصلاح، استلام وتوصيل مجاني، وضمان 30 يومًا داخل الكويت.",
+        "title": "تصليح كمبيوتر حولي | فني كمبيوتر ولابتوب | KCROC",
+        "description": "تحتاج فني كمبيوتر في حولي؟ KCROC يصلح الكمبيوتر واللابتوب من مختبره في مجمع الملا، شارع ابن خلدون. تشخيص قبل الإصلاح، استلام وتوصيل مجاني، وعرض سعر واضح وضمان 30 يومًا.",
         "canonicalUrl": "https://www.computerrepairkuwait.com/ar/computer-repair-hawalli",
         "locale": "ar_KW",
         "alternates": {
@@ -432,7 +432,7 @@ export const SEO_GRAPH = {
           "WebPage",
           "BreadcrumbList"
         ],
-        "lastModified": "2026-10-02T00:00:00+03:00",
+        "lastModified": "2026-10-09T00:00:00+03:00",
         "breadcrumbs": [
           {
             "name": "الرئيسية",
@@ -2807,8 +2807,8 @@ export const SEO_GRAPH = {
       "title": "Hawalli Repair Center",
       "slug": "hawalli",
       "seo": {
-        "title": "Computer Repair Hawalli Kuwait | Lab & Free Pickup | KCROC",
-        "description": "Computer and laptop repair from KCROC's physical Hawalli lab, covering MacBooks, gaming PCs, motherboards and more with pickup and delivery across Kuwait.",
+        "title": "Computer Repair Hawalli | Laptop Repair & Pickup | KCROC",
+        "description": "Laptop and computer repair in Hawalli at KCROC, Al Mullah Complex on Ibn Khaldoun Street. Diagnosis before repair, clear quotes, free pickup and delivery across Kuwait, and a 30-day repair warranty.",
         "canonicalUrl": "https://www.computerrepairkuwait.com/location/hawalli",
         "alternates": {
           "en-KW": "https://www.computerrepairkuwait.com/location/hawalli",
@@ -2819,7 +2819,7 @@ export const SEO_GRAPH = {
         "schemaTypes": [
           "LocalBusiness"
         ],
-        "lastModified": "2026-09-27T00:00:00+03:00"
+        "lastModified": "2026-10-09T00:00:00+03:00"
       },
       "coords": {
         "lat": 29.3416921515256,
@@ -2908,8 +2908,8 @@ export const SEO_GRAPH = {
       "title": "Farwaniya",
       "slug": "farwaniya",
       "seo": {
-        "title": "Laptop Repair Farwaniya | Free Pickup, No Fix No Fee",
-        "description": "Free pickup from Farwaniya, Khaitan, Riggae and Ardiya. Free diagnostics, No Fix, No Fee and a 30-day warranty. Repaired at our Hawalli lab.",
+        "title": "Laptop Repair Farwaniya | Free Pickup & Delivery | KCROC",
+        "description": "Laptop and computer repair for Farwaniya, Khaitan, Riggae, Ardiya and Jleeb Al-Shuyoukh. Free pickup, diagnosis before repair and return delivery from KCROC’s Hawalli lab, with a 30-day repair warranty.",
         "canonicalUrl": "https://www.computerrepairkuwait.com/location/farwaniya",
         "alternates": {
           "en-KW": "https://www.computerrepairkuwait.com/location/farwaniya",
@@ -2920,7 +2920,7 @@ export const SEO_GRAPH = {
         "schemaTypes": [
           "LocalBusiness"
         ],
-        "lastModified": "2026-09-27T00:00:00+03:00"
+        "lastModified": "2026-10-09T00:00:00+03:00"
       },
       "coords": {
         "lat": 29.277,
