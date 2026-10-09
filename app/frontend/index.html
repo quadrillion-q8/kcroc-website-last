@@ -40,6 +40,11 @@
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="theme-color" content="#090c0f" />
 
+    <!-- Google AdSense account ownership. This meta tag lets AdSense verify the
+         site WITHOUT loading any ad code, so ads/cookies stay behind consent
+         (see loadAdSense below). -->
+    <meta name="google-adsense-account" content="ca-pub-9092827813961234" />
+
     <!-- Google Consent Mode v2 bootstrap. Keep the queue tiny and synchronous;
          the actual Google libraries are deferred until after the page has loaded
          so analytics/marketing code cannot compete with the homepage LCP. -->
@@ -71,6 +76,7 @@
       (function () {
         var googleLoaded = false;
         var gtmLoaded = false;
+        var adsenseLoaded = false;
 
         var loadScript = function (id, src) {
           if (document.getElementById(id)) return false;
@@ -94,6 +100,25 @@
           gtmLoaded = loadScript('kcroc-gtm', 'https://www.googletagmanager.com/gtm.js?id=GTM-5L7Z7D6K');
         };
 
+        // Google AdSense is advertising, so it only loads once the visitor has
+        // accepted optional technologies in the cookie banner (the same
+        // 'granted' choice that enables ad_storage in Consent Mode). Without
+        // consent no AdSense request is made at all.
+        var hasAdvertisingConsent = function () {
+          try { return localStorage.getItem('kcroc-cookie-consent') === 'granted'; } catch (e) { return false; }
+        };
+
+        var loadAdSense = function () {
+          if (adsenseLoaded || !hasAdvertisingConsent() || document.getElementById('kcroc-adsense')) return;
+          var script = document.createElement('script');
+          script.id = 'kcroc-adsense';
+          script.async = true;
+          script.crossOrigin = 'anonymous';
+          script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9092827813961234';
+          document.head.appendChild(script);
+          adsenseLoaded = true;
+        };
+
         var scheduleAfterLoad = function (fn, idleTimeout) {
           var run = function () {
             if ('requestIdleCallback' in window) {
@@ -111,11 +136,13 @@
         window.addEventListener('kcroc:consent-changed', function () {
           scheduleAfterLoad(loadGoogleTag, 2500);
           scheduleAfterLoad(loadGtm, 4500);
+          scheduleAfterLoad(loadAdSense, 3500);
         });
 
         // Preserve analytics without putting GA/GTM/TikTok in the critical path.
         scheduleAfterLoad(loadGoogleTag, 2500);
         scheduleAfterLoad(loadGtm, 4500);
+        scheduleAfterLoad(loadAdSense, 3500);
       })();
     </script>
     <!-- Google Tag Manager is intentionally loaded after the initial page load. -->
