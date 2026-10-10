@@ -2,12 +2,14 @@ import React from 'react';
 import { ArrowRight, CalendarClock, CheckCircle2, MessageCircle, ShieldCheck, Truck } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { ROUTES } from '../../constants/routes';
-import { KCROC_GRAPH } from '../../data/graph';
+import { buildWhatsAppLink } from '../../utils/whatsappIntent';
 import { useAnalytics } from '../../core/analytics/AnalyticsProvider';
 
 export default function RepairProofCTA() {
-  const phone = KCROC_GRAPH.business?.telephone ?? '';
   const { trackConversion } = useAnalytics();
+  const whatsappLink = buildWhatsAppLink(
+    "Hi KCROC, I'd like help diagnosing my device before deciding on a repair. I'll share the model and symptoms. Can you advise on repair options and free pickup?"
+  );
 
   return (
     <section
@@ -51,7 +53,7 @@ export default function RepairProofCTA() {
               <ArrowRight className="w-4 h-4" aria-hidden="true" />
             </Link>
             <a
-              href={`https://wa.me/${phone}`}
+              href={whatsappLink}
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => trackConversion('whatsapp_click', { cta_name: 'repair_proof_whatsapp', button_position: 'repair_proof_cta' })}
