@@ -85,10 +85,11 @@ export default function MobileMenu({ isOpen, onClose, mobileRef, navModel, clean
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const wasOpenRef = useRef(false);
 
+  // Reset the expanded section when the route changes. Header.tsx already
+  // owns closing the mobile panel on navigation; calling onClose() here
+  // also ran on mount and immediately closed the menu as soon as it opened.
   useEffect(() => {
-    onClose();
     setOpenAccordion(null);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.pathname]);
 
   useEffect(() => {
@@ -234,7 +235,7 @@ export default function MobileMenu({ isOpen, onClose, mobileRef, navModel, clean
                       onClick={() => toggleAccordion(link.id)}
                       aria-expanded={isExpanded}
                       aria-controls={`mobile-mega-${link.id}`}
-                      tabIndex={isOpen ? 0 : -1}
+                      tabIndex={isOpen && isExpanded ? 0 : -1}
                       className={`w-full min-h-14 flex items-center justify-between gap-3 px-4 py-3.5 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f] ${isExpanded ? 'text-white' : 'text-slate-100'}`}
                     >
                       <span className="min-w-0">
@@ -246,6 +247,7 @@ export default function MobileMenu({ isOpen, onClose, mobileRef, navModel, clean
 
                     <div
                       id={`mobile-mega-${link.id}`}
+                      aria-hidden={!isExpanded}
                       className={`grid transition-[grid-template-rows,opacity] duration-300 motion-reduce:transition-none ${isExpanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}
                     >
                       <div className="min-h-0 overflow-hidden border-t border-white/[0.07]">
@@ -258,7 +260,7 @@ export default function MobileMenu({ isOpen, onClose, mobileRef, navModel, clean
                             <Link
                               to={allHref}
                               onClick={() => onClose()}
-                              tabIndex={isOpen ? 0 : -1}
+                              tabIndex={isOpen && isExpanded ? 0 : -1}
                               className="inline-flex min-h-10 shrink-0 items-center gap-1 rounded-lg border border-white/[0.08] bg-black/10 px-3 text-xs font-extrabold text-white hover:border-[#c9804d]/30 hover:text-[#efc19c] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f]"
                             >
                               {copy.allLabel}
@@ -280,7 +282,7 @@ export default function MobileMenu({ isOpen, onClose, mobileRef, navModel, clean
                                       key={entity.slug}
                                       to={`/${entity.slug}`}
                                       onClick={() => trackConversion('cta_click', { cta_name: 'mobile_mega_featured', button_position: 'mobile_menu' })}
-                                      tabIndex={isOpen ? 0 : -1}
+                                      tabIndex={isOpen && isExpanded ? 0 : -1}
                                       className="group flex min-h-14 items-center gap-3 rounded-xl border border-white/[0.06] bg-white/[0.018] px-3 py-2.5 transition-colors hover:border-[#c9804d]/25 hover:bg-[#c9804d]/[0.045] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f]"
                                     >
                                       <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[#c9804d]/20 bg-[#c9804d]/[0.08] text-[#dfa86f]">
@@ -309,7 +311,7 @@ export default function MobileMenu({ isOpen, onClose, mobileRef, navModel, clean
                                       key={entity.slug}
                                       to={`/${entity.slug}`}
                                       onClick={() => trackConversion('cta_click', { cta_name: 'mobile_mega_link', button_position: 'mobile_menu' })}
-                                      tabIndex={isOpen ? 0 : -1}
+                                      tabIndex={isOpen && isExpanded ? 0 : -1}
                                       className="group flex min-h-11 items-center gap-2.5 rounded-xl border border-transparent px-3 py-2.5 text-xs font-semibold text-slate-400 transition-colors hover:border-white/[0.06] hover:bg-white/[0.035] hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f]"
                                     >
                                       <Icon className="h-3.5 w-3.5 shrink-0 text-slate-600 group-hover:text-[#dfa86f]" aria-hidden="true" />
