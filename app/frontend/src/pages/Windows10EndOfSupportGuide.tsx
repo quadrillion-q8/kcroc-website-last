@@ -131,7 +131,7 @@ export default function Windows10EndOfSupportGuide() {
       <SEOEngine entityId="guide-windows-10-eos" />
       <SchemaMarkup schema={structuredData} />
 
-      <main className="min-h-screen bg-transparent text-white pt-28 pb-24">
+      <div className="min-h-screen bg-transparent text-white pt-28 pb-24">
         <article className="max-w-5xl mx-auto px-5 md:px-8">
           <nav aria-label="Breadcrumb" className="text-sm text-slate-400 mb-7">
             <Link to="/" className="hover:text-cyan-400">Home</Link>
@@ -299,7 +299,7 @@ export default function Windows10EndOfSupportGuide() {
             <p><strong>Editorial note:</strong> Microsoft support and ESU terms are time-sensitive. This page was reviewed on {LAST_REVIEWED} against Microsoft’s official Windows 10 ESU, Windows 11 requirements, and PC Health Check documentation. Microsoft’s own pages linked above remain the authority for enrollment terms.</p>
           </footer>
         </article>
-      </main>
+      </div>
     </>
   );
 }
