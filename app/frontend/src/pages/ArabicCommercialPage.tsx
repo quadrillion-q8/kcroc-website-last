@@ -695,7 +695,7 @@ function ArabicGamingPcRepairPage({
       <SEOEngine entityId={page.id} />
       <SchemaMarkup schema={schema} />
 
-      <main className="mx-auto max-w-6xl px-4 pb-16 pt-7 sm:px-6 sm:pt-10">
+      <div className="mx-auto max-w-6xl px-4 pb-16 pt-7 sm:px-6 sm:pt-10">
         <nav aria-label="مسار التنقل" className="mb-6 text-sm text-slate-500">
           <Link to="/" className="hover:text-cyan-300">الرئيسية</Link>
           <span className="mx-2">/</span>
@@ -1026,7 +1026,7 @@ function ArabicGamingPcRepairPage({
           <Link to="/blog/gaming-pc-cooling" className="rounded-full border border-slate-800 px-4 py-2 text-sm font-bold text-slate-300 hover:border-cyan-500/40 hover:text-cyan-300">دليل تبريد Gaming PC</Link>
           <Link to="/guides/bios-uefi-recovery-kuwait" className="rounded-full border border-slate-800 px-4 py-2 text-sm font-bold text-slate-300 hover:border-cyan-500/40 hover:text-cyan-300">دليل BIOS / UEFI</Link>
         </div>
-      </main>
+      </div>
       <ArabicHeadTermLinks />
     </div>
   );
@@ -1122,7 +1122,7 @@ function ArabicComputerRepairPage({
       <SEOEngine entityId={page.id} />
       <SchemaMarkup schema={schema} />
 
-      <main id="main-content" className="mx-auto max-w-7xl px-4 pb-20 pt-8 sm:px-6 sm:pt-12">
+      <div className="mx-auto max-w-7xl px-4 pb-20 pt-8 sm:px-6 sm:pt-12">
         <nav aria-label="مسار التنقل" className="mb-6 flex flex-wrap items-center gap-2 text-sm text-slate-500">
           <Link to="/" className="transition-colors hover:text-cyan-300">الرئيسية</Link>
           <ArrowLeft className="h-3.5 w-3.5" aria-hidden="true" />
@@ -1435,7 +1435,7 @@ function ArabicComputerRepairPage({
             {business.telephone}
           </a>
         </footer>
-      </main>
+      </div>
       <ArabicHeadTermLinks />
     </div>
   );
@@ -1497,7 +1497,7 @@ export default function ArabicCommercialPage() {
       <SEOEngine entityId={page.id} />
       <SchemaMarkup schema={faqSchema} />
 
-      <main className="mx-auto max-w-6xl px-4 pb-16 pt-8 sm:px-6 sm:pt-12">
+      <div className="mx-auto max-w-6xl px-4 pb-16 pt-8 sm:px-6 sm:pt-12">
         <nav aria-label="مسار التنقل" className="mb-8 text-sm text-slate-500">
           <Link to="/" className="hover:text-cyan-300">الرئيسية</Link>
           <span className="mx-2">/</span>
@@ -1630,7 +1630,7 @@ export default function ArabicCommercialPage() {
             <MessageCircle className="h-5 w-5" aria-hidden="true" /> تواصل مع فني KCROC
           </a>
         </section>
-      </main>
+      </div>
       <ArabicHeadTermLinks />
     </div>
   );
