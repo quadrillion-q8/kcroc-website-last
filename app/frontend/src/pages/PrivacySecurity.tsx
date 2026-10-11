@@ -88,7 +88,7 @@ export default function PrivacySecurity() {
   );
 
   return (
-    <main className="w-full min-h-screen bg-transparent text-slate-200 selection:bg-cyan-500/30 pt-32 pb-24 font-sans">
+    <div className="w-full min-h-screen bg-transparent text-slate-200 selection:bg-cyan-500/30 pt-32 pb-24 font-sans">
       
       {/* 🚀 PHASE 2 AUTOMATION IN ACTION */}
       {/* 🔧 FIX: entityId now matches the 'page-privacy' entity registered in graph.ts —
@@ -211,6 +211,6 @@ export default function PrivacySecurity() {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }
