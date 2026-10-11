@@ -19,7 +19,7 @@ import { ServiceAreas } from '../components/home/ServiceAreas';
 export default function Home() {
   return (
     // ✅ FIXED: Changed bg-brand-dark to bg-transparent
-    <main className="w-full min-h-screen bg-transparent">
+    <div className="w-full min-h-screen bg-transparent">
       <SEOEngine entityId="page-home" />
 
       {/* 1. Hero — primary CTA, first impression */}
@@ -72,6 +72,6 @@ export default function Home() {
           one-thumb-reach conversion path on those pages. See RootLayout.tsx. */}
 
       {/* Footer is managed globally by RootLayout.tsx. */}
-    </main>
+    </div>
   );
 }
