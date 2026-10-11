@@ -12,7 +12,7 @@ export default function CaseStudiesIndex() {
   return (
     <>
       <SEOEngine entityId="page-case-studies" />
-      <main className="min-h-screen bg-transparent pt-32 pb-24 px-6 relative z-10">
+      <div className="min-h-screen bg-transparent pt-32 pb-24 px-6 relative z-10">
         
         <div className="max-w-7xl mx-auto text-center mb-16">
           <h1 className="text-4xl md:text-6xl font-black text-white mb-6 tracking-tight">
@@ -69,7 +69,7 @@ export default function CaseStudiesIndex() {
           )}
         </div>
 
-      </main>
+      </div>
     </>
   );
 }
