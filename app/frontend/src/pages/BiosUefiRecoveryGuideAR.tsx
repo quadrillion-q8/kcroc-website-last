@@ -220,7 +220,7 @@ export default function BiosUefiRecoveryGuideAR() {
   }, []);
 
   return (
-    <main dir="rtl" lang="ar-KW" className="w-full min-h-screen bg-transparent text-slate-200 pt-8 sm:pt-16 lg:pt-32 pb-8 sm:pb-16 lg:pb-24">
+    <div dir="rtl" lang="ar-KW" className="w-full min-h-screen bg-transparent text-slate-200 pt-8 sm:pt-16 lg:pt-32 pb-8 sm:pb-16 lg:pb-24">
       <Head htmlAttributes={{ lang: 'ar-KW', dir: 'rtl' }}>
         <title>استرداد BIOS بعد فشل التحديث: دليل UEFI والأعطال | KCROC</title>
         <meta name="description" content="لابتوب أو كمبيوتر لا يقلع بعد تحديث BIOS أو UEFI؟ تعرّف كيف تفرّق بين تلف الفيرموير وأعطال الرام والطاقة واللوحة الأم، وخيارات الاسترداد الآمنة في الكويت." />
@@ -517,6 +517,6 @@ export default function BiosUefiRecoveryGuideAR() {
           هذه النسخة العربية مبنية على <a href={EN_PAGE_URL} hrefLang="en" className={linkClass}>الدليل الإنجليزي لاسترداد BIOS و UEFI</a>. الإجراءات الخاصة بكل شركة (تركيبات المفاتيح وأسماء الملفات والموديلات المدعومة) تتغير مع الوقت، فأكّد الخطوات الحالية من صفحة دعم الشركة المصنّعة قبل أي محاولة استرداد.
         </p>
       </article>
-    </main>
+    </div>
   );
 }
