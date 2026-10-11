@@ -840,7 +840,7 @@ export default function BlogPostTemplate() {
   const discoverReady = Boolean(post.discoverImage);
 
   return (
-    <main className="w-full min-h-screen bg-transparent text-slate-200 pt-8 sm:pt-16 lg:pt-32 pb-8 sm:pb-16 lg:pb-24">
+    <div className="w-full min-h-screen bg-transparent text-slate-200 pt-8 sm:pt-16 lg:pt-32 pb-8 sm:pb-16 lg:pb-24">
 
       <Head>
         <title>{post.seoTitle || `${post.title.length > 57 ? `${post.title.slice(0, 57)}…` : post.title} | KCROC`}</title>
@@ -1248,6 +1248,6 @@ export default function BlogPostTemplate() {
           <ArrowUp size={20} aria-hidden="true" />
         </button>
       )}
-    </main>
+    </div>
   );
 }
