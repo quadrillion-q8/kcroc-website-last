@@ -22,7 +22,7 @@ export default function Locations() {
     <>
       <SEOEngine entityId="page-locations" />
 
-      <main className="min-h-screen bg-transparent text-white pt-28 sm:pt-32 pb-24">
+      <div className="min-h-screen bg-transparent text-white pt-28 sm:pt-32 pb-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <nav aria-label="Breadcrumb" className="mb-8">
             <ol className="flex items-center gap-2 text-xs sm:text-sm text-slate-500">
@@ -108,7 +108,7 @@ export default function Locations() {
             </div>
           </section>
         </div>
-      </main>
+      </div>
     </>
   );
 }
