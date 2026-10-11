@@ -8,7 +8,7 @@ export default function NotFound() {
   return (
     <>
       <SEOEngine entityId="page-404" />
-      <main className="min-h-screen bg-transparent flex items-center justify-center px-6 py-24">
+      <div className="min-h-screen bg-transparent flex items-center justify-center px-6 py-24">
         <div className="bg-slate-900/40 backdrop-blur-xl border border-slate-800 rounded-3xl p-12 max-w-2xl w-full text-center shadow-2xl relative overflow-hidden">
           
           {/* Subtle glow behind the 404 */}
@@ -40,7 +40,7 @@ export default function NotFound() {
             </Link>
           </div>
         </div>
-      </main>
+      </div>
     </>
   );
 }
