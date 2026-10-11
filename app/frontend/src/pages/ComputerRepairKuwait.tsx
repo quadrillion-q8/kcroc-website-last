@@ -103,7 +103,7 @@ export default function ComputerRepairKuwait() {
       <SEOEngine entityId={page.id} />
       <SchemaMarkup schema={faqSchema} />
 
-      <main className="mx-auto max-w-7xl px-4 pb-20 pt-8 sm:px-6 sm:pt-12">
+      <div className="mx-auto max-w-7xl px-4 pb-20 pt-8 sm:px-6 sm:pt-12">
         <nav aria-label="Breadcrumb" className="mb-8 text-sm text-slate-500">
           <Link to="/" className="hover:text-cyan-300">Home</Link>
           <span className="mx-2">/</span>
@@ -330,7 +330,7 @@ export default function ComputerRepairKuwait() {
             </div>
           </div>
         </section>
-      </main>
+      </div>
     </div>
   );
 }
