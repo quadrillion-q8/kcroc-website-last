@@ -163,7 +163,7 @@ export const DellLaptopOverheatingPage = () => {
         </div>
       </section>
 
-      <main className="container mx-auto max-w-5xl px-4 sm:px-6 py-8 sm:py-12 space-y-16">
+      <div className="container mx-auto max-w-5xl px-4 sm:px-6 py-8 sm:py-12 space-y-16">
         
         {/* Quick Answer */}
         <section className="bg-slate-900/60 border border-slate-800 p-6 sm:p-10 rounded-3xl shadow-2xl backdrop-blur-sm">
@@ -426,7 +426,7 @@ export const DellLaptopOverheatingPage = () => {
           </Card>
         </section>
 
-      </main>
+      </div>
     </div>
   );
 };
