@@ -66,7 +66,7 @@ export default function Gallery() {
   }, [selectedIndex, filteredItems]);
 
   return (
-    <main className="w-full min-h-screen bg-transparent text-white font-sans pt-8 sm:pt-16 lg:pt-24 pb-8 sm:pb-24 px-4 sm:px-6">
+    <div className="w-full min-h-screen bg-transparent text-white font-sans pt-8 sm:pt-16 lg:pt-24 pb-8 sm:pb-24 px-4 sm:px-6">
       
       <SEOEngine entityId="page-gallery" />
 
@@ -200,6 +200,6 @@ export default function Gallery() {
             </div>
         </section>
       </div>
-    </main>
+    </div>
   );
 }
