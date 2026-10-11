@@ -115,7 +115,7 @@ export default function TermsOfService() {
   );
 
   return (
-    <main className="w-full min-h-screen bg-transparent text-slate-200 pt-32 pb-24">
+    <div className="w-full min-h-screen bg-transparent text-slate-200 pt-32 pb-24">
       <SEOEngine entityId="page-terms-of-service" />
       <Head>
         <title>Terms of Service | KCROC Computer Repair Kuwait</title>
@@ -191,6 +191,6 @@ export default function TermsOfService() {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }
