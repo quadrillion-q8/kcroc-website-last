@@ -79,7 +79,7 @@ export default function Contact() {
   };
 
   return (
-    <main className="w-full min-h-screen bg-transparent text-white font-sans selection:bg-cyan-500/30 pt-8 sm:pt-16 lg:pt-32">
+    <div className="w-full min-h-screen bg-transparent text-white font-sans selection:bg-cyan-500/30 pt-8 sm:pt-16 lg:pt-32">
       
       {/* 🚀 PHASE 2 AUTOMATION IN ACTION: Using the Hawalli Location Entity */}
       <SEOEngine entityId="page-contact" />
@@ -201,6 +201,6 @@ export default function Contact() {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }
