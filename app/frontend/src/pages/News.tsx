@@ -39,7 +39,7 @@ export default function News() {
     <>
       <SEOEngine entityId={pageEntity?.id ?? 'page-news'} />
 
-      <main className="min-h-screen bg-transparent text-white pt-32 pb-24">
+      <div className="min-h-screen bg-transparent text-white pt-32 pb-24">
         <div className="max-w-7xl mx-auto px-6">
           <nav aria-label="Breadcrumb" className="mb-8">
             <ol className="flex items-center gap-2 text-sm text-slate-400">
@@ -136,7 +136,7 @@ export default function News() {
             )}
           </section>
         </div>
-      </main>
+      </div>
     </>
   );
 }
