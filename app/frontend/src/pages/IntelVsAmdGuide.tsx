@@ -138,7 +138,7 @@ export default function IntelVsAmdGuide() {
         <div className="h-full bg-cyan-400 transition-[width] duration-150" style={{ width: '100%' }} />
       </div>
 
-      <main className="mx-auto max-w-7xl px-4 sm:px-6 pt-20 sm:pt-28 pb-20">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 pt-20 sm:pt-28 pb-20">
         <nav aria-label="Breadcrumb" className="mb-8 text-sm text-slate-500">
           <ol className="flex flex-wrap items-center gap-2">
             <li><Link to="/" className="hover:text-cyan-400">Home</Link></li><li>/</li>
@@ -337,7 +337,7 @@ export default function IntelVsAmdGuide() {
             </div>
           </aside>
         </div>
-      </main>
+      </div>
     </div>
   );
 }
