@@ -114,7 +114,7 @@ export default function PrivacyPolicy() {
   );
 
   return (
-    <main className="w-full min-h-screen bg-transparent text-slate-200 pt-32 pb-24">
+    <div className="w-full min-h-screen bg-transparent text-slate-200 pt-32 pb-24">
       <SEOEngine entityId="page-privacy-policy" />
       <Head>
         <title>Privacy Policy | KCROC Computer Repair Kuwait</title>
@@ -229,6 +229,6 @@ export default function PrivacyPolicy() {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }
