@@ -316,7 +316,7 @@ export default function Pricing() {
   )}`;
 
   return (
-    <main className="w-full min-h-screen overflow-hidden bg-transparent font-sans text-slate-100 selection:bg-cyan-500/30">
+    <div className="w-full min-h-screen overflow-hidden bg-transparent font-sans text-slate-100 selection:bg-cyan-500/30">
       <SEOEngine entityId="page-pricing" />
       <SchemaMarkup schema={{ '@graph': PRICING_SCHEMA }} />
 
@@ -1351,6 +1351,6 @@ export default function Pricing() {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }
