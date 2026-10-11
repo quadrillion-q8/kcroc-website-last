@@ -64,7 +64,7 @@ export default function AuthorImran() {
   )}`;
 
   return (
-    <main className="w-full min-h-screen bg-gray-950 text-white font-sans selection:bg-cyan-500/30">
+    <div className="w-full min-h-screen bg-gray-950 text-white font-sans selection:bg-cyan-500/30">
       <Head>
         <title>Imran Natiq — Hardware Repair Engineer at KCROC Kuwait</title>
         <meta
@@ -207,6 +207,6 @@ export default function AuthorImran() {
           </Card>
         </div>
       </section>
-    </main>
+    </div>
   );
 }
