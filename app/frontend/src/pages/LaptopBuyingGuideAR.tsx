@@ -285,7 +285,7 @@ export default function LaptopBuyingGuideAR() {
 
       <SchemaMarkup schema={{ '@graph': PILLAR_SCHEMA }} />
 
-      <main>
+      <div>
       <article>
 
       {/* Breadcrumb */}
@@ -947,7 +947,7 @@ export default function LaptopBuyingGuideAR() {
       </section>
 
       </article>
-      </main>
+      </div>
     </div>
   );
 }
