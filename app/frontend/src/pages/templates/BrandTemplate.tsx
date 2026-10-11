@@ -167,7 +167,7 @@ const BrandTemplate: React.FC = () => {
         </div>
       </section>
 
-      <main className="mx-auto max-w-6xl px-6 py-16">
+      <div className="mx-auto max-w-6xl px-6 py-16">
         {/* Brand families */}
         {familyGroups.length > 0 && (
           <section aria-labelledby="lenovo-families" className="mb-20">
@@ -501,7 +501,7 @@ const BrandTemplate: React.FC = () => {
             </Link>
           </div>
         </section>
-      </main>
+      </div>
     </div>
   );
 };
