@@ -71,7 +71,7 @@ export default function CaseStudyTemplate() {
   const evidence = [...(caseStudy.evidence ?? [])].sort((a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0));
 
   return (
-    <main className="w-full min-h-screen bg-transparent">
+    <div className="w-full min-h-screen bg-transparent">
       <SEOEngine entityId={caseStudy.id} />
 
       <article className="max-w-5xl mx-auto px-4 sm:px-6 py-16">
@@ -288,6 +288,6 @@ export default function CaseStudyTemplate() {
           </a>
         </div>
       </article>
-    </main>
+    </div>
   );
 }
