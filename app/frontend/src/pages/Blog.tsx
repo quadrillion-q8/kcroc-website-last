@@ -195,7 +195,7 @@ export default function Blog() {
   );
 
   return (
-    <main className="w-full min-h-screen bg-transparent text-slate-200 pt-8 sm:pt-16 lg:pt-32 pb-8 sm:pb-16 lg:pb-24">
+    <div className="w-full min-h-screen bg-transparent text-slate-200 pt-8 sm:pt-16 lg:pt-32 pb-8 sm:pb-16 lg:pb-24">
       <SEOEngine entityId="page-blog" />
 
       <SchemaMarkup schema={SCHEMA_DATA} />
@@ -354,6 +354,6 @@ export default function Blog() {
           ))}
         </div>
       </section>
-    </main>
+    </div>
   );
 }
