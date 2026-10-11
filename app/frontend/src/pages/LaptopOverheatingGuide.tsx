@@ -252,7 +252,7 @@ export default function LaptopOverheatingGuide() {
       <SEOEngine entityId="guide-laptop-overheating" />
       <SchemaMarkup schema={schema} />
 
-      <main className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
         <nav className="mb-8 text-sm text-slate-400" aria-label="Breadcrumb">
           <Link to="/" className="hover:text-cyan-300">Home</Link>
           <span className="mx-2">/</span>
@@ -763,7 +763,7 @@ export default function LaptopOverheatingGuide() {
             <a className="text-cyan-300 hover:text-cyan-200" href="https://support.microsoft.com/en-us/windows/experience/system-configuration-tools-in-windows" target="_blank" rel="noopener noreferrer">Microsoft Windows Task Manager guidance</a>
           </div>
         </section>
-      </main>
+      </div>
     </div>
   );
 }
