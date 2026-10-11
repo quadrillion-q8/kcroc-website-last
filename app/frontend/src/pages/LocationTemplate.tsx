@@ -57,7 +57,7 @@ export default function LocationTemplate() {
   const WA_LINK = `https://wa.me/${business.telephone}?text=${encodeURIComponent(`Hi KCROC, I am located in ${location.title} and need a device repaired. Can we arrange a pickup?`)}`;
 
   return (
-    <main className="w-full min-h-screen bg-gray-950 text-white font-sans selection:bg-cyan-500/30">
+    <div className="w-full min-h-screen bg-gray-950 text-white font-sans selection:bg-cyan-500/30">
       
       {/* 🚀 Dynamic SEO Engine automatically handles LocalBusiness/Service schema for this specific area */}
       <SEOEngine entityId={location.id} />
@@ -223,6 +223,6 @@ export default function LocationTemplate() {
         </section>
       )}
 
-    </main>
+    </div>
   );
 }
