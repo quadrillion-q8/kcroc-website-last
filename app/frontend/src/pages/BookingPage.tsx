@@ -77,7 +77,7 @@ export default function BookingPage() {
   };
 
   return (
-    <main className="w-full min-h-screen bg-transparent text-slate-100 font-sans pt-24 pb-16">
+    <div className="w-full min-h-screen bg-transparent text-slate-100 font-sans pt-24 pb-16">
       
       {/* SEOEngine (driven by the 'page-booking' graph entity) is the single authority
           for title/meta/canonical/WebPage/BreadcrumbList on this page. SchemaMarkup below
@@ -227,6 +227,6 @@ export default function BookingPage() {
 
         </div>
       </div>
-    </main>
+    </div>
   );
 }
