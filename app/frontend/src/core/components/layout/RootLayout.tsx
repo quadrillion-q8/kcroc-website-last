@@ -154,12 +154,11 @@ export const RootLayout: React.FC = () => {
               on mobile. Spacer below prevents it from permanently covering
               the start of the Footer. */}
           <StickyMobileCTA />
-          <div className="md:hidden h-24 shrink-0" aria-hidden="true" />
+          <div className="kcroc-mobile-cta-spacer md:hidden shrink-0" style={{ height: 'calc(5.25rem + env(safe-area-inset-bottom))' }} aria-hidden="true" />
 
-          {/* 🚀 Mount the Consent Banner globally. Positioned above the
-              StickyMobileCTA bar on mobile (bottom-24) instead of bottom-0
-              so the two fixed bottom bars never overlap/cover each other;
-              see CookieConsentBanner.tsx for the matching offset. */}
+          {/* Mount consent choices globally. The responsive CSS keeps the
+              panel compact, scrollable, and immediately above the safe-area-
+              aware sticky contact bar on mobile. */}
           <CookieConsentBanner />
 
           <Footer />
