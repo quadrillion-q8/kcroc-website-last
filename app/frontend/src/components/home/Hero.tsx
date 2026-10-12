@@ -70,9 +70,9 @@ export default function Hero() {
             <span className="kcroc-kicker">Precision repair laboratory</span>
           </div>
 
-          <div role="heading" aria-level={1} className="kcroc-display text-center text-[2rem] sm:text-[2.4rem] font-black leading-[1.03] tracking-[-0.045em] text-white">
+          <h1 className="kcroc-display text-center text-[2rem] sm:text-[2.4rem] font-black leading-[1.03] tracking-[-0.045em] text-white">
             {headline}
-          </div>
+          </h1>
 
           <p className="mx-auto mt-3 max-w-lg text-center text-base sm:text-lg font-extrabold leading-snug text-cyan-300">
             {hero?.subheadline ?? "We fix the board. We don't just swap it."}
@@ -92,13 +92,13 @@ export default function Hero() {
           </div>
 
           <div className="mt-5 grid grid-cols-2 gap-2.5">
-            <Button asChild size="lg" variant="ctaPrimary" className="h-14 w-full rounded-xl text-sm sm:text-base">
+            <Button asChild size="lg" variant="ctaPrimary" className="h-14 min-w-0 w-full rounded-xl px-2 sm:px-5 text-[13px] sm:text-base">
               <Link to={ROUTES.BOOKING} onClick={() => trackConversion('cta_click', { cta_name: 'hero_mobile_book_pickup', button_position: 'hero_mobile' })}>
                 <CalendarClock className="h-5 w-5" aria-hidden="true" />
                 Get Free Quote
               </Link>
             </Button>
-            <Button asChild size="lg" className="h-14 w-full rounded-xl bg-[#25D366] font-extrabold text-slate-950 hover:brightness-95">
+            <Button asChild size="lg" className="h-14 min-w-0 w-full rounded-xl px-2 sm:px-5 text-[13px] sm:text-base font-extrabold text-slate-950 hover:brightness-95">
               <a href={heroWhatsAppLink} target="_blank" rel="noopener noreferrer" onClick={() => trackConversion('whatsapp_click', { cta_name: 'hero_mobile_quote', button_position: 'hero_mobile' })}>
                 <MessageCircle className="h-5 w-5" aria-hidden="true" />
                 Book Pickup
@@ -115,7 +115,7 @@ export default function Hero() {
             <img
               src={heroImage768}
               srcSet={`${heroImage768} 768w, ${desktopImage} 1000w`}
-              sizes="(max-width: 1023px) 100vw, 50vw"
+              sizes="(max-width: 1023px) calc(100vw - 2rem), 50vw"
               alt="KCROC technician working on a laptop in the Hawalli repair laboratory"
               width="1000"
               height="1000"
