@@ -57,6 +57,7 @@ const SECTIONS = [
     body: [
       `KCROC uses necessary technologies to operate the website. Until you make a privacy choice, Google Analytics runs in a restricted mode that does not set cookies and sends only anonymous, aggregated signals. If you accept optional technologies, we may use measurement services such as Google Analytics and, when enabled, Google advertising services including AdSense to understand traffic and support relevant advertising.`,
       `When Google advertising services are used, third-party vendors, including Google, may use cookies to serve ads based on a user's prior visits to this website or other websites. Google's use of advertising cookies may allow Google and its partners to serve ads based on those visits.`,
+      `Google's use of the advertising cookie (such as the DoubleClick cookie) enables it and its partners to serve ads to visitors based on their visit to this site and/or other sites on the Internet. You can learn how Google uses information from sites or apps that use its services, including how it handles data when you visit our site, at the link below.`,
       `You can manage or opt out of personalized advertising through Google Ads Settings. You can also review available third-party advertising choices through industry opt-out tools where available.`,
       `For visitors in the European Economic Area, the United Kingdom, and Switzerland, Google requires additional consent-management measures when personalized ads are served. KCROC will use Google's supported consent-management tooling or another Google-certified CMP where required before serving personalized advertising in those regions.`,
     ],
@@ -200,6 +201,14 @@ export default function PrivacyPolicy() {
                     className="text-cyan-400 hover:text-cyan-300 underline underline-offset-2"
                   >
                     AboutAds.info Choices
+                  </a>
+                  <a
+                    href="https://policies.google.com/technologies/partner-sites"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-cyan-400 hover:text-cyan-300 underline underline-offset-2"
+                  >
+                    How Google uses information from sites that use its services
                   </a>
                 </div>
               )}
