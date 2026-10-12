@@ -40,8 +40,7 @@ export const CookieConsentBanner: React.FC = () => {
 
   return (
     <div
-      className="fixed bottom-24 left-0 right-0 z-[100] font-sans md:bottom-0"
-      style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
+      className="kcroc-cookie-banner fixed bottom-24 left-0 right-0 z-[100] font-sans md:bottom-0"
       role="dialog"
       aria-label="Privacy and cookie choices"
       aria-live="polite"
@@ -66,20 +65,22 @@ export const CookieConsentBanner: React.FC = () => {
             </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row w-full md:w-auto gap-3 shrink-0">
+          <div className="flex flex-row w-full md:w-auto gap-2 sm:gap-3 shrink-0">
             <button
               onClick={handleDecline}
-              className="flex-1 md:flex-none flex items-center justify-center px-4 py-2.5 sm:px-6 sm:py-3 rounded-xl border border-slate-700 bg-transparent text-slate-300 hover:bg-slate-800 hover:text-white font-bold text-sm transition-all"
+              className="flex-1 md:flex-none flex min-h-[44px] items-center justify-center px-4 py-2.5 sm:px-6 sm:py-3 rounded-xl border border-slate-700 bg-transparent text-slate-300 hover:bg-slate-800 hover:text-white font-bold text-sm touch-manipulation transition-colors focus-visible:ring-2 focus-visible:ring-cyan-400"
             >
-              <X className="w-4 h-4 mr-2" aria-hidden="true" />
-              Reject Optional
+              <X className="w-4 h-4 shrink-0 mr-1.5 sm:mr-2" aria-hidden="true" />
+              <span className="sm:hidden">Reject</span>
+              <span className="hidden sm:inline">Reject Optional</span>
             </button>
             <button
               onClick={handleAccept}
-              className="flex-1 md:flex-none flex items-center justify-center px-4 py-2.5 sm:px-6 sm:py-3 rounded-xl border border-transparent bg-cyan-500 text-slate-950 hover:bg-cyan-400 font-black text-sm shadow-[0_0_15px_rgba(6,182,212,0.2)] hover:scale-[1.02] transition-all"
+              className="flex-1 md:flex-none flex min-h-[44px] items-center justify-center px-4 py-2.5 sm:px-6 sm:py-3 rounded-xl border border-transparent bg-cyan-500 text-slate-950 hover:bg-cyan-400 font-black text-sm shadow-[0_0_15px_rgba(6,182,212,0.2)] touch-manipulation transition-colors focus-visible:ring-2 focus-visible:ring-cyan-300"
             >
-              <Check className="w-4 h-4 mr-2" aria-hidden="true" />
-              Accept Optional
+              <Check className="w-4 h-4 shrink-0 mr-1.5 sm:mr-2" aria-hidden="true" />
+              <span className="sm:hidden">Accept</span>
+              <span className="hidden sm:inline">Accept Optional</span>
             </button>
           </div>
         </div>
