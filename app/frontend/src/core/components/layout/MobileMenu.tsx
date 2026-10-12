@@ -27,6 +27,7 @@ import {
 import { CompiledNavigationModel, MegaMenuConfig } from '../../navigation/types';
 import { useAnalytics } from '../../analytics/AnalyticsProvider';
 import { getLanguageSwitchPath } from '../../../utils/locale';
+import { buildWhatsAppLink } from '../../../utils/whatsappIntent';
 
 const ICON_REGISTRY: Record<string, React.ElementType> = {
   apple: Apple,
@@ -82,6 +83,10 @@ export default function MobileMenu({ isOpen, onClose, mobileRef, navModel, clean
   const location = useLocation();
   const languageSwitch = getLanguageSwitchPath(location.pathname);
   const { trackConversion } = useAnalytics();
+  const mobileMenuWhatsAppLink = buildWhatsAppLink(
+    'Hi KCROC, I need help with a computer or laptop repair and would like to arrange free pickup.',
+    cleanTel,
+  );
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const wasOpenRef = useRef(false);
 
@@ -146,7 +151,7 @@ export default function MobileMenu({ isOpen, onClose, mobileRef, navModel, clean
         aria-modal="true"
         aria-label="Mobile navigation"
         aria-hidden={!isOpen}
-        className={`fixed inset-y-0 right-0 z-[100] w-full max-w-lg border-l border-white/[0.08] bg-[#0b1012] shadow-[0_30px_90px_rgba(0,0,0,0.6)] transform transition-transform duration-300 ease-out motion-reduce:transition-none xl:hidden flex flex-col ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}
+        className={`fixed inset-y-0 right-0 z-[110] w-full max-w-lg border-l border-white/[0.08] bg-[#0b1012] shadow-[0_30px_90px_rgba(0,0,0,0.6)] transform transition-transform duration-300 ease-out motion-reduce:transition-none xl:hidden flex flex-col ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}
       >
         <div className="shrink-0 border-b border-white/[0.08] bg-[#0b1012]/95 px-4 pb-4 pt-[max(0.75rem,env(safe-area-inset-top))] backdrop-blur-xl sm:px-5">
           <div className="flex items-center justify-between gap-3">
@@ -191,10 +196,10 @@ export default function MobileMenu({ isOpen, onClose, mobileRef, navModel, clean
               <span className="flex items-center justify-center gap-1.5"><Phone className="h-3.5 w-3.5 text-[#dfa86f]" aria-hidden="true" /> Call</span>
             </a>
             <a
-              href={`https://wa.me/${cleanTel}`}
+              href={mobileMenuWhatsAppLink}
               target="_blank"
               rel="noreferrer"
-              onClick={() => trackConversion('cta_click', { cta_name: 'mobile_menu_quick_whatsapp', button_position: 'mobile_menu' })}
+              onClick={() => trackConversion('whatsapp_click', { cta_name: 'mobile_menu_quick_whatsapp', button_position: 'mobile_menu' })}
               tabIndex={isOpen ? 0 : -1}
               className="min-h-11 rounded-xl border border-[#25D366]/15 bg-[#25D366]/[0.06] px-2.5 py-2 text-center text-xs font-bold text-[#7cf0ab] transition-colors hover:border-[#25D366]/30 hover:bg-[#25D366]/[0.10] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366]"
             >
@@ -347,10 +352,10 @@ export default function MobileMenu({ isOpen, onClose, mobileRef, navModel, clean
 
         <div className="shrink-0 border-t border-white/[0.08] bg-[#0b1012]/95 px-4 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-3 backdrop-blur-xl sm:px-5">
           <a
-            href={`https://wa.me/${cleanTel}`}
+            href={mobileMenuWhatsAppLink}
             target="_blank"
             rel="noreferrer"
-            onClick={() => trackConversion('cta_click', { cta_name: 'mobile_menu_footer_whatsapp', button_position: 'mobile_menu' })}
+            onClick={() => trackConversion('whatsapp_click', { cta_name: 'mobile_menu_footer_whatsapp', button_position: 'mobile_menu' })}
             tabIndex={isOpen ? 0 : -1}
             className="flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#25D366] px-4 py-3 text-sm font-black text-[#062b16] transition-all hover:brightness-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366]"
           >
