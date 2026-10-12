@@ -1,5 +1,5 @@
 // File: app/frontend/src/pages/BookingPage.tsx
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { ShieldCheck, Truck, Clock, MapPin, MessageCircle, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -9,16 +9,13 @@ import SchemaMarkup from '../components/seo/SchemaMarkup';
 import { SEOEngine } from '../core/components/SEOEngine';
 import { KCROC_GRAPH } from '../data/graph';
 import { useAnalytics } from '../core/analytics/AnalyticsProvider';
+import { buildWhatsAppLink } from '../utils/whatsappIntent';
 
 /* ─────────────────────────────────────────────────────────────────────────────
    1. PAGE DATA & SEO CONSTANTS (Retained from your original file)
 ───────────────────────────────────────────────────────────────────────────── */
 const business = KCROC_GRAPH.business!;
 const BASE_URL = business.websiteUrl;
-const PAGE_URL = `${BASE_URL}/book`;
-const PHONE_DISPLAY = `+${business.telephone}`;
-const PHONE_CLEAN = business.telephone;
-const BUSINESS_NAME = business.legalName;
 
 // NOTE: WebPage + BreadcrumbList nodes are intentionally omitted here — SEOEngine
 // (driven by the 'page-booking' graph entity) is the single authority for those on
@@ -65,15 +62,30 @@ export default function BookingPage() {
   const [deviceType, setDeviceType] = useState('MacBook / Apple');
   const [issue, setIssue] = useState('');
   const [location, setLocation] = useState('');
+  const bookingStarted = useRef(false);
+
+  // Count a booking start only once per visit to this form. A WhatsApp handoff
+  // is tracked separately and is not treated as a completed booking.
+  const trackBookingStart = () => {
+    if (bookingStarted.current) return;
+    bookingStarted.current = true;
+    trackConversion('begin_booking', {
+      booking_type: 'pickup',
+      location_context: location.trim() || 'not_provided',
+      cta_name: 'booking_form_interaction',
+      button_position: 'booking_page',
+    });
+  };
 
   // Generate the formatted WhatsApp link
-  const handleWhatsAppRedirect = (e: React.MouseEvent) => {
+  const handleWhatsAppRedirect = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    trackBookingStart();
     trackConversion('whatsapp_click', { cta_name: 'booking_form_submit', button_position: 'booking_page' });
     
     const text = `*New Repair Inquiry*\n\n*Device:* ${deviceType}\n*Location:* ${location || 'Not provided'}\n*Issue:* ${issue || 'Needs diagnostic'}\n\n_Hi KCROC, I would like to claim my free diagnostic and pickup._`;
-    const url = `https://wa.me/${PHONE_CLEAN}?text=${encodeURIComponent(text)}`;
-    window.open(url, '_blank');
+    const url = buildWhatsAppLink(text);
+    window.open(url, '_blank', 'noopener,noreferrer');
   };
 
   return (
@@ -103,21 +115,22 @@ export default function BookingPage() {
           <Card className="lg:col-span-3 bg-slate-900/50 border border-slate-800 backdrop-blur shadow-2xl rounded-3xl overflow-hidden">
             <div className="h-2 w-full bg-gradient-to-r from-cyan-500 to-emerald-500" />
             <CardContent className="p-6 sm:p-10">
-              <form className="space-y-8">
+              <form className="space-y-8" onFocusCapture={trackBookingStart} onSubmit={handleWhatsAppRedirect}>
                 
                 {/* Step 1: Device (Visual Chips instead of Dropdown) */}
                 <div className="space-y-3">
-                  <label className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
+                  <div id="device-type-label" className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
                     <span className="bg-cyan-500/20 text-cyan-400 w-6 h-6 rounded-full flex items-center justify-center text-xs">1</span>
                     What needs fixing?
-                  </label>
-                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                  </div>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-3" role="group" aria-labelledby="device-type-label">
                     {['MacBook / Apple', 'Gaming PC', 'Windows Laptop', 'Motherboard', 'Other'].map((type) => (
                       <button
                         key={type}
                         type="button"
-                        onClick={() => setDeviceType(type)}
-                        className={`p-3 text-sm font-semibold rounded-xl border transition-all ${
+                        aria-pressed={deviceType === type}
+                        onClick={() => { trackBookingStart(); setDeviceType(type); }}
+                        className={`min-h-[44px] touch-manipulation p-3 text-sm font-semibold rounded-xl border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 ${
                           deviceType === type 
                             ? 'bg-cyan-500/10 border-cyan-500 text-cyan-400 scale-[1.02]' 
                             : 'bg-brand-dark border-slate-800 text-slate-400 hover:border-slate-600'
@@ -131,13 +144,15 @@ export default function BookingPage() {
 
                 {/* Step 2: The Issue */}
                 <div className="space-y-3">
-                  <label className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
+                  <label htmlFor="booking-issue" className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
                     <span className="bg-cyan-500/20 text-cyan-400 w-6 h-6 rounded-full flex items-center justify-center text-xs">2</span>
                     What are the symptoms?
                   </label>
-                  <textarea 
+                  <textarea
+                    id="booking-issue"
+                    name="issue"
                     rows={3}
-                    className="w-full bg-brand-dark border border-slate-800 rounded-xl p-4 text-slate-200 placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 transition-shadow"
+                    className="w-full min-h-[100px] bg-brand-dark border border-slate-800 rounded-xl p-4 text-base text-slate-200 placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 transition-shadow"
                     placeholder="e.g., Spilled water on it, won't turn on, overheating..."
                     value={issue}
                     onChange={(e) => setIssue(e.target.value)}
@@ -146,15 +161,18 @@ export default function BookingPage() {
 
                 {/* Step 3: Location */}
                 <div className="space-y-3">
-                  <label className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
+                  <label htmlFor="booking-location" className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
                     <span className="bg-cyan-500/20 text-cyan-400 w-6 h-6 rounded-full flex items-center justify-center text-xs">3</span>
                     Where in Kuwait are you?
                   </label>
                   <div className="relative">
                     <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500" />
-                    <input 
+                    <input
+                      id="booking-location"
+                      name="location"
                       type="text"
-                      className="w-full bg-brand-dark border border-slate-800 rounded-xl py-4 pl-12 pr-4 text-slate-200 placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 transition-shadow"
+                      autoComplete="address-level2"
+                      className="w-full min-h-[52px] bg-brand-dark border border-slate-800 rounded-xl py-4 pl-12 pr-4 text-base text-slate-200 placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 transition-shadow"
                       placeholder="e.g., Salmiya, Hawalli, Kuwait City..."
                       value={location}
                       onChange={(e) => setLocation(e.target.value)}
@@ -164,10 +182,10 @@ export default function BookingPage() {
 
                 {/* Submit to WhatsApp */}
                 <div className="pt-4">
-                  <Button 
-                    onClick={handleWhatsAppRedirect}
-                    size="lg" 
-                    className="w-full h-16 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-lg rounded-2xl shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:scale-[1.02] transition-all"
+                  <Button
+                    type="submit"
+                    size="lg"
+                    className="w-full min-h-[56px] h-auto whitespace-normal px-4 sm:px-6 py-4 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-base sm:text-lg rounded-2xl shadow-[0_0_20px_rgba(16,185,129,0.3)] transition-colors"
                   >
                     <MessageCircle className="w-6 h-6 mr-2" />
                     Send to WhatsApp & Book
