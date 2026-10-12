@@ -28,11 +28,11 @@ export default function Home() {
       {/* 2. Immediate trust signals */}
       <TrustBar />
 
-      {/* 3. Low-friction quote path — moved directly after trust so organic visitors can act before scrolling through the full site. */}
-      <div className="kcroc-cwv-defer"><LeadMagnet /></div>
-
-      {/* 4. Core services — the fastest path from search intent to a repair page */}
+      {/* 3. Core service categories — make the fastest path from search intent to a repair page available before the interactive quote selector. */}
       <ServicesGrid />
+
+      {/* 4. Low-friction quote path — visitors who prefer guided advice can choose a device and symptom here. */}
+      <div className="kcroc-cwv-defer"><LeadMagnet /></div>
 
       {/* 5. Brand recognition — kept after service discovery so mobile users reach what we fix first */}
       <div className="kcroc-cwv-defer"><BrandStrip /></div>
