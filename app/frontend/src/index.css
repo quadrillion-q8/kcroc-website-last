@@ -353,6 +353,30 @@
   contain-intrinsic-size: auto 720px;
 }
 
+/* Mobile conversion controls: keep the consent panel above the persistent
+   contact bar without allowing it to consume the full short viewport. */
+.kcroc-cookie-banner {
+  max-height: calc(100vh - 7rem - env(safe-area-inset-bottom));
+  max-height: calc(100dvh - 7rem - env(safe-area-inset-bottom));
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 767px) {
+  .kcroc-cookie-banner {
+    bottom: calc(4.25rem + env(safe-area-inset-bottom));
+    max-height: min(calc(100vh - 7rem - env(safe-area-inset-bottom)), 15rem);
+    max-height: min(calc(100dvh - 7rem - env(safe-area-inset-bottom)), 15rem);
+  }
+}
+
+@media (min-width: 768px) {
+  .kcroc-cookie-banner {
+    max-height: min(80vh, 38rem);
+  }
+}
+
 .kcroc-cwv-defer :is(button, a) {
   touch-action: manipulation;
 }
