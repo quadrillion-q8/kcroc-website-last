@@ -3520,6 +3520,14 @@ export const rawGraphData: RawGraphData = {
         { title: 'MacBook and laptop repair', description: 'Apple MacBooks and Windows laptops are both supported, including motherboard and liquid-damage diagnosis.' },
         { title: 'Central Hawalli repair lab', description: 'Repairs are completed by KCROC\'s technicians at the main Hawalli workshop, not at a temporary local storefront.' }
       ],
+            localFaqs: [
+        { id: "faq-salwa-local-1", question: "Do you collect from Salwa, Rumaithiya, Bidaa and Shaab?", answer: "Yes. Salwa, Rumaithiya, Bidaa and Shaab are covered by free pickup and delivery. Send your area and the device symptoms on WhatsApp and we will arrange collection." },
+        { id: "faq-salwa-local-2", question: "My MacBook screen has a vertical line or a flickering band. Is it repairable?", answer: "A line or flickering band can come from the display panel, the flex cable or the board. Replacing the display is common, but we confirm the cause first so you do not pay for a part that does not fix it. Tell us the exact model and year when you message us." },
+        { id: "faq-salwa-local-3", question: "My laptop battery is swelling at the bottom of the case. What should I do?", answer: "Stop using and charging the laptop, keep it away from heat and do not press on the bulge. A swollen battery can be hazardous. Contact us and mention it, and we will arrange to collect it so the battery can be replaced safely." },
+        { id: "faq-salwa-local-4", question: "My MacBook does not turn on after a software update. Can you help?", answer: "Try holding the power button for ten seconds, connect the charger and try another cable. If it still does not respond, there may be a hardware problem that appeared at the same time as the update. We diagnose it on the bench to find out whether it is a software or hardware cause." },
+        { id: "faq-salwa-local-5", question: "My laptop screen is too dark even at full brightness. Is it the backlight?", answer: "It may be. Shine a torch at the screen at an angle. If you can see a faint picture, the backlight or its circuit is the probable cause. We check the backlight, the cable and the board, and confirm the repair and quote before work begins." },
+        { id: "faq-salwa-local-6", question: "Is there a branch in Salwa, and where is the repair done?", answer: "There is no walk-in branch in Salwa. Devices are repaired at our Hawalli lab (Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19), open daily from 10:00 AM to 10:00 PM. You can bring a device in yourself or have it collected for free, and repairs carry a 30-day warranty." },
+      ],
       landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)',
       coords: { lat: 29.2950, lng: 48.0780 }, serviceRadiusKm: 15, serviceAreas: ['Salwa', 'Rumaithiya', 'Bidaa', 'Shaab'],
       contentImage: { src: IMAGES.services.laptopRepair.src, alt: IMAGES.services.laptopRepair.alt, width: IMAGES.services.laptopRepair.width, height: IMAGES.services.laptopRepair.height, caption: 'Laptop and MacBook repair serving Salwa and nearby coastal neighborhoods.' },
@@ -3536,6 +3544,14 @@ export const rawGraphData: RawGraphData = {
         { title: 'Gaming and thermal problems', description: 'Gaming laptops and PCs can be checked for overheating, cooling faults, shutdowns and performance issues.' },
         { title: 'Board-level diagnosis', description: 'Motherboard faults are investigated to the component level where technically feasible instead of defaulting to whole-board replacement.' },
         { title: 'Privacy-conscious handling', description: 'Repair diagnostics focus on the hardware fault, with files left untouched unless customer-authorized work requires otherwise.' }
+      ],
+            localFaqs: [
+        { id: "faq-rumaithiya-local-1", question: "Do you collect from Rumaithiya, Salwa, Shaab and Jabriya?", answer: "Yes. Rumaithiya, Salwa, Shaab and Jabriya are covered by free pickup and delivery. Send your area and the device symptoms on WhatsApp and we will arrange collection." },
+        { id: "faq-rumaithiya-local-2", question: "My gaming laptop is slower than it used to be. Could cleaning help?", answer: "It can. If the laptop thermal throttles, it reduces its speed to stay cool, so games feel slower. Dust build-up and dried thermal paste are common causes. Cleaning the fans and heatsink and re-pasting the chips often restores performance. We check temperatures under load before and after." },
+        { id: "faq-rumaithiya-local-3", question: "My laptop is completely dead after I plugged in a different charger. What happened?", answer: "A charger with the wrong voltage can damage the charging circuit. Unplug it and do not keep trying. Check that the adapter matches the laptop's rating. We test the adapter, the port and the power path on the bench and replace the damaged component where possible." },
+        { id: "faq-rumaithiya-local-4", question: "My MacBook runs hot and the fan spins loudly even when I am not doing much. Why?", answer: "Heavy background processes can cause that, so check Activity Monitor first. If nothing unusual shows, dust and aging thermal paste can raise temperatures. We check the cooling system and the temperatures, and tell you whether a clean-up or a part replacement is needed." },
+        { id: "faq-rumaithiya-local-5", question: "My laptop does not recognise USB devices. Is the port damaged?", answer: "Try another device and another port first. If one port fails but others work, that port or its connection to the board may be damaged. If all ports fail, a driver issue or a board fault is more likely. We test the ports on the bench and explain what we find." },
+        { id: "faq-rumaithiya-local-6", question: "Is there a branch in Rumaithiya, and where is the repair done?", answer: "There is no walk-in branch in Rumaithiya. Devices are repaired at our Hawalli lab (Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19), open daily from 10:00 AM to 10:00 PM. You can bring a device in yourself or have it collected for free, and repairs carry a 30-day warranty." },
       ],
       landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)',
       coords: { lat: 29.3270, lng: 48.0510 }, serviceRadiusKm: 10, serviceAreas: ['Rumaithiya', 'Salwa', 'Shaab', 'Jabriya'],
@@ -3554,6 +3570,14 @@ export const rawGraphData: RawGraphData = {
         { title: 'MacBook and component repair', description: 'MacBook board faults and component-level laptop repairs are available through the central lab.' },
         { title: 'Return after testing', description: 'Devices are tested after repair before they are delivered back to the customer.' }
       ],
+            localFaqs: [
+        { id: "faq-shaab-local-1", question: "Do you collect from Shaab, Kuwait City, Salmiya and Rumaithiya?", answer: "Yes. Shaab, Kuwait City, Salmiya and Rumaithiya are covered by free pickup and delivery. Send your area and the device symptoms on WhatsApp and we will arrange collection." },
+        { id: "faq-shaab-local-2", question: "My laptop gets stuck on the logo or restarts again and again. What does that mean?", answer: "A boot loop can come from a failing drive, corrupted system files, faulty memory or a hardware fault on the board. Avoid repeated forced shutdowns, because they can make file corruption worse. Tell us what you see on screen and we will test the drive and memory before looking at the board." },
+        { id: "faq-shaab-local-3", question: "The charging port on my laptop is loose. Can it be fixed without changing the board?", answer: "In many cases yes. A loose charging port can be resoldered or replaced as a component, without replacing the whole motherboard. We inspect the port and the surrounding board and confirm the repair path and quote before any paid work." },
+        { id: "faq-shaab-local-4", question: "My MacBook gets wet and the keyboard no longer responds. What now?", answer: "Turn it off straight away, do not charge it and do not keep trying the keys. Liquid under the keyboard can reach the board and corrode it over time. Bring it in quickly so we can open it, check for corrosion and repair at component level." },
+        { id: "faq-shaab-local-5", question: "My laptop screen shows coloured stripes. Is it the panel?", answer: "Coloured stripes can come from the panel, the display cable or the graphics hardware. Plug in an external monitor. If the stripes appear there too, the graphics hardware is more likely at fault. If the external screen is clean, the panel or cable is more likely. We confirm the cause before quoting." },
+        { id: "faq-shaab-local-6", question: "Is there a branch in Shaab, and where is the repair done?", answer: "There is no walk-in branch in Shaab. Devices are repaired at our Hawalli lab (Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19), open daily from 10:00 AM to 10:00 PM. You can bring a device in yourself or have it collected for free, and repairs carry a 30-day warranty." },
+      ],
       landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)',
       coords: { lat: 29.3500, lng: 48.0350 }, serviceRadiusKm: 12, serviceAreas: ['Shaab', 'Kuwait City', 'Salmiya', 'Rumaithiya'],
       contentImage: { src: IMAGES.macbook.logicBoard.src, alt: IMAGES.macbook.logicBoard.alt, width: IMAGES.macbook.logicBoard.width, height: IMAGES.macbook.logicBoard.height, caption: 'Component-level MacBook and laptop diagnostics for Shaab customers.' },
@@ -3570,6 +3594,14 @@ export const rawGraphData: RawGraphData = {
         { title: 'Laptop fault diagnosis', description: 'No-power, charging, overheating and black-screen faults are diagnosed before a repair path is quoted.' },
         { title: 'Screen and battery work', description: 'Common wear parts such as screens and batteries are replaced when diagnosis shows they are the correct fix.' },
         { title: 'Central workshop processing', description: 'Surra is a service area; devices are repaired at KCROC\'s Hawalli workshop by the main technical team.' }
+      ],
+            localFaqs: [
+        { id: "faq-surra-local-1", question: "Do you collect from Surra, Qadsiya, Jabriya and Hawalli?", answer: "Yes. Surra, Qadsiya, Jabriya and Hawalli are covered by free pickup and delivery. Send your area and the device symptoms on WhatsApp and we will arrange collection." },
+        { id: "faq-surra-local-2", question: "My laptop battery lasts only a few minutes now. Do I need a new one?", answer: "Most likely, if the laptop is a few years old. Check the battery health report in Windows if you can. If the battery is replaced and the problem remains, the charging circuit may be at fault. We test both so you replace only what is actually faulty." },
+        { id: "faq-surra-local-3", question: "My laptop screen has a dark patch spreading from one corner. Why?", answer: "That usually means pressure or impact damage to the panel, which can spread over time. Avoid pressing on it. The panel normally needs replacing, and we match it to your exact model. We confirm the quote before work begins." },
+        { id: "faq-surra-local-4", question: "My laptop does not charge unless I move the cable. Is it the charger?", answer: "Try another charger first. If the laptop charges reliably with another one, the first charger is at fault. If it still depends on the cable angle, the charging port is probably loose. We check both the adapter and the port on the bench." },
+        { id: "faq-surra-local-5", question: "My laptop turns off when I unplug the charger. Is the battery dead?", answer: "That suggests the battery is no longer holding charge, though a fault in the battery connection or charging circuit can look the same. We test the battery and the circuit together and tell you which one needs attention." },
+        { id: "faq-surra-local-6", question: "Is there a branch in Surra, and where is the repair done?", answer: "There is no walk-in branch in Surra. Devices are repaired at our Hawalli lab (Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19), open daily from 10:00 AM to 10:00 PM. You can bring a device in yourself or have it collected for free, and repairs carry a 30-day warranty." },
       ],
       landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)',
       coords: { lat: 29.3050, lng: 48.0400 }, serviceRadiusKm: 12, serviceAreas: ['Surra', 'Qadsiya', 'Jabriya', 'Hawalli'],
@@ -3588,6 +3620,14 @@ export const rawGraphData: RawGraphData = {
         { title: 'Screens and batteries', description: 'Screen and battery replacement are available for supported laptop and MacBook models.' },
         { title: 'Motherboard repair', description: 'Component-level board diagnosis is available when a simple part swap is not the right answer.' }
       ],
+            localFaqs: [
+        { id: "faq-khaitan-local-1", question: "Do you collect from Khaitan, Farwaniya, Riggae and Ardiya?", answer: "Yes. Khaitan, Farwaniya, Riggae and Ardiya are covered by free pickup and delivery. Send your area and the device symptoms on WhatsApp and we will arrange collection." },
+        { id: "faq-khaitan-local-2", question: "My charger fits but the laptop will not charge. Is the charging port broken?", answer: "Check the charger light, try another outlet and look inside the port for debris. If the charger works on another laptop, the port or the charging circuit is the likely cause. We test the adapter, the port and the power path on the bench before recommending a repair." },
+        { id: "faq-khaitan-local-3", question: "My laptop screen shows lines after I closed it hard. Is it the cable?", answer: "It might be the display cable or the hinge area stressing it, though the panel itself can also be damaged. Open and close the lid slowly and see whether the picture changes. If it does, the cable is the likely cause. We confirm it before quoting." },
+        { id: "faq-khaitan-local-4", question: "My laptop is not turning on and there is no light at all. Where do I start?", answer: "Check the outlet and the charger light, remove any USB devices and hold the power button for around 30 seconds. If there is still no sign of life, the adapter, the battery or the power circuit may have failed. We test each of them on the bench." },
+        { id: "faq-khaitan-local-5", question: "A repair I was quoted elsewhere was a full motherboard replacement. Is there another option?", answer: "Often there is. Many motherboard faults come from a single failed component, such as a power chip, which can be repaired at component level instead of replacing the board. Bring it in and we will diagnose it, explain the options and give a quote before any paid work." },
+        { id: "faq-khaitan-local-6", question: "Is there a branch in Khaitan, and where is the repair done?", answer: "There is no walk-in branch in Khaitan. Devices are repaired at our Hawalli lab (Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19), open daily from 10:00 AM to 10:00 PM. You can bring a device in yourself or have it collected for free, and repairs carry a 30-day warranty." },
+      ],
       landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)',
       coords: { lat: 29.2700, lng: 47.9900 }, serviceRadiusKm: 18, serviceAreas: ['Khaitan', 'Farwaniya', 'Riggae', 'Ardiya'],
       contentImage: { src: IMAGES.motherboard.thermalGrizzly1.src, alt: IMAGES.motherboard.thermalGrizzly1.alt, width: IMAGES.motherboard.thermalGrizzly1.width, height: IMAGES.motherboard.thermalGrizzly1.height, caption: 'Motherboard and thermal repair serving Khaitan and Farwaniya-area customers.' },
@@ -3604,6 +3644,14 @@ export const rawGraphData: RawGraphData = {
         { title: 'No-power and charging diagnosis', description: 'Charging ports, power rails and related motherboard faults are checked systematically.' },
         { title: 'Screen repair', description: 'Cracked, dim or failed laptop displays can be assessed for panel, cable and board causes.' },
         { title: 'MacBook support', description: 'Apple MacBooks are handled alongside Windows laptops, including liquid-damage and board diagnostics.' }
+      ],
+            localFaqs: [
+        { id: "faq-riggae-local-1", question: "Do you collect from Riggae, Khaitan, Farwaniya and Ardiya?", answer: "Yes. Riggae, Khaitan, Farwaniya and Ardiya are covered by free pickup and delivery. Send your area and the device symptoms on WhatsApp and we will arrange collection." },
+        { id: "faq-riggae-local-2", question: "My laptop shuts off by itself after a few minutes. What could be causing it?", answer: "The usual causes are overheating, a failing battery or a power-delivery fault on the board. If the laptop feels very hot or the fan is loud, thermal build-up is likely. If it dies even when plugged in, the charging circuit needs testing. We diagnose it on the bench before suggesting any part." },
+        { id: "faq-riggae-local-3", question: "Some keys on my laptop stopped working. Is it the keyboard or something else?", answer: "Plug in a USB keyboard to check. If the external keyboard works normally, the laptop's keyboard or its ribbon cable is the problem. If keys also fail on the external one, a software or board fault is more likely. Liquid spills are a common cause of patchy key failure, so mention any past spill when you contact us." },
+        { id: "faq-riggae-local-4", question: "My MacBook got wet and still turns on. Does it still need repair?", answer: "Yes, it is worth having it checked even if it still works. Liquid damage can keep corroding components after it seems fine, and faults sometimes appear days later. Switch it off, keep it unplugged and bring it in as soon as you can so the board can be inspected and cleaned at component level." },
+        { id: "faq-riggae-local-5", question: "My laptop screen flickers or shows a faint image. What does that point to?", answer: "Shine a torch at the screen at an angle. A faint image usually points to the backlight, while flickering that changes when you move the lid often points to the display cable. An external monitor that works properly points away from the board. We confirm which part has failed before quoting." },
+        { id: "faq-riggae-local-6", question: "Is there a branch in Riggae, and where is the repair done?", answer: "There is no walk-in branch in Riggae. Devices are repaired at our Hawalli lab (Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19), open daily from 10:00 AM to 10:00 PM. You can bring a device in yourself or have it collected for free, and repairs carry a 30-day warranty." },
       ],
       landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)',
       coords: { lat: 29.2770, lng: 47.9500 }, serviceRadiusKm: 18, serviceAreas: ['Riggae', 'Khaitan', 'Farwaniya', 'Ardiya'],
@@ -3622,6 +3670,14 @@ export const rawGraphData: RawGraphData = {
         { title: 'Board-level troubleshooting', description: 'Motherboard faults can be traced to individual components when repairable at component level.' },
         { title: 'Free return delivery', description: 'After the repair is tested, the device is delivered back to the customer.' }
       ],
+            localFaqs: [
+        { id: "faq-ardiya-local-1", question: "Do you collect from Ardiya, Farwaniya, Riggae and Jleeb Al-Shuyoukh?", answer: "Yes. Ardiya, Farwaniya, Riggae and Jleeb Al-Shuyoukh are covered by free pickup and delivery. Send your area and the device symptoms on WhatsApp and we will arrange collection." },
+        { id: "faq-ardiya-local-2", question: "My gaming PC shuts down during games. Is the power supply failing?", answer: "It can be. A weak power supply, overheating or a faulty graphics card can all cause a shutdown under load. Check that the fans spin and that dust has not clogged the case. We test the power supply and monitor temperatures to narrow down the cause." },
+        { id: "faq-ardiya-local-3", question: "My laptop screen is black but I can hear it starting. What does that mean?", answer: "If you can hear the fans and startup sounds but see nothing, connect an external monitor. If an image appears, the panel or cable is the likely problem. If there is still nothing, we test the board and the graphics hardware on the bench." },
+        { id: "faq-ardiya-local-4", question: "My laptop battery is drained within minutes even when new. Why?", answer: "A new battery that drains quickly can point to a fault in the charging circuit or something drawing too much power. We test both the battery and the charging circuit, so you do not buy a second battery that does not fix the issue." },
+        { id: "faq-ardiya-local-5", question: "The motherboard on my laptop might be damaged. Will you replace it right away?", answer: "No. We trace the fault to the failed component first and repair it at component level where possible, because replacing the whole motherboard costs more. We tell you what we found and the quote before any paid work, and No Fix, No Fee applies." },
+        { id: "faq-ardiya-local-6", question: "Is there a branch in Ardiya, and where is the repair done?", answer: "There is no walk-in branch in Ardiya. Devices are repaired at our Hawalli lab (Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19), open daily from 10:00 AM to 10:00 PM. You can bring a device in yourself or have it collected for free, and repairs carry a 30-day warranty." },
+      ],
       landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)',
       coords: { lat: 29.2850, lng: 47.9250 }, serviceRadiusKm: 20, serviceAreas: ['Ardiya', 'Farwaniya', 'Riggae', 'Jleeb Al-Shuyoukh'],
       contentImage: { src: IMAGES.gaming.gamingOverheating.src, alt: IMAGES.gaming.gamingOverheating.alt, width: IMAGES.gaming.gamingOverheating.width, height: IMAGES.gaming.gamingOverheating.height, caption: 'Gaming PC cooling and laptop repair serving Ardiya customers.' },
@@ -3638,6 +3694,14 @@ export const rawGraphData: RawGraphData = {
         { title: 'Gaming PC and laptop cooling', description: 'Overheating, thermal throttling, shutdowns and fan-related issues can be diagnosed and repaired.' },
         { title: 'MacBook and board repair', description: 'MacBook liquid damage and motherboard faults are handled at component level where feasible.' },
         { title: 'Convenient return delivery', description: 'After testing, the repaired device is delivered back without requiring a second shop visit.' }
+      ],
+            localFaqs: [
+        { id: "faq-mahboula-local-1", question: "Do you collect from Mahboula, Mangaf, Abu Halifa and Fahaheel?", answer: "Yes. Mahboula, Mangaf, Abu Halifa and Fahaheel are covered by free pickup and delivery. Send your area and the device symptoms on WhatsApp and we will arrange collection." },
+        { id: "faq-mahboula-local-2", question: "My gaming laptop thermal throttles and the fans are very loud. What can be done?", answer: "Heavy gaming loads heat up the cooling system quickly. Dust in the vents and old thermal paste on the processor and graphics chip are the usual causes, and cleaning plus fresh paste often brings temperatures down. We check the fans and heatpipes and test under load before returning the laptop." },
+        { id: "faq-mahboula-local-3", question: "My gaming PC turns on but there is no picture. Where should I look first?", answer: "Check that the monitor cable is plugged into the graphics card rather than the motherboard, try another cable or port and reseat the memory. If the fans spin but there is still no display, the graphics card, memory or board may be at fault, and we test them on the bench." },
+        { id: "faq-mahboula-local-4", question: "How often should a gaming laptop be cleaned and re-pasted?", answer: "There is no single interval because it depends on how much you play and how dusty the environment is. A sensible sign is rising temperatures or louder fans than before. When that happens, a cleaning and fresh thermal paste usually helps. We can check the temperatures and tell you if it is time." },
+        { id: "faq-mahboula-local-5", question: "My laptop screen has dead pixels or a bright patch. Can it be repaired?", answer: "Individual dead pixels are a panel defect and cannot normally be repaired, though the panel can be replaced if they bother you. A bright patch or pressure mark can also point to a damaged panel. We check the screen and confirm whether replacement is worthwhile before you spend anything." },
+        { id: "faq-mahboula-local-6", question: "Is there a branch in Mahboula, and where is the repair done?", answer: "There is no walk-in branch in Mahboula. Devices are repaired at our Hawalli lab (Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19), open daily from 10:00 AM to 10:00 PM. You can bring a device in yourself or have it collected for free, and repairs carry a 30-day warranty." },
       ],
       landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)',
       coords: { lat: 29.1470, lng: 48.1300 }, serviceRadiusKm: 20, serviceAreas: ['Mahboula', 'Mangaf', 'Abu Halifa', 'Fahaheel'],
@@ -3656,6 +3720,14 @@ export const rawGraphData: RawGraphData = {
         { title: 'MacBook and screen repair', description: 'MacBook board faults and laptop display problems are supported through the central repair lab.' },
         { title: 'No need to travel', description: 'The pickup-and-delivery workflow means customers can start the repair from home.' }
       ],
+            localFaqs: [
+        { id: "faq-qurain-local-1", question: "Do you collect from Qurain, Adan and Qusour?", answer: "Yes. Qurain, Adan and Qusour are covered by free pickup and delivery. Send your area and the device symptoms on WhatsApp and we will arrange collection." },
+        { id: "faq-qurain-local-2", question: "My MacBook shows it is plugged in but the battery percentage keeps falling. What should I check?", answer: "Try a different USB-C cable and a different port first, and look inside the port for lint or debris. If the charger light or the MacBook still shows no charging, the fault may be in the charging circuit on the board rather than the adapter. We test the charger and the power path on the bench and explain what we find before any paid repair." },
+        { id: "faq-qurain-local-3", question: "I spilled a drink on my laptop. What should I do before you collect it?", answer: "Switch it off straight away, unplug the charger and do not try to turn it on again to see if it still works. Do not charge it. Liquid residue keeps corroding the board after the spill, so it is better to hand it over quickly. We open it, inspect for corrosion and clean and repair at component level where possible." },
+        { id: "faq-qurain-local-4", question: "My laptop has power but nothing appears on screen. Is the motherboard dead?", answer: "Not necessarily. Connect an external monitor or TV if you can. If that works, the panel or its cable is the likely cause. If there is still no image, we check the power rails and the board components on the bench. A dead-looking laptop is often a failed component rather than a failed motherboard." },
+        { id: "faq-qurain-local-5", question: "My laptop screen has lines or a cracked corner. Can the screen be replaced, or is it the board?", answer: "Vertical or horizontal lines can come from the panel, the display cable or, less often, the board. A physical crack means the panel needs replacing. Tell us the exact model when you message us so we can check that a matching panel is available, and we confirm the quote before paid work begins." },
+        { id: "faq-qurain-local-6", question: "Is there a branch in Qurain, and where is the repair done?", answer: "There is no walk-in branch in Qurain. Devices are repaired at our Hawalli lab (Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19), open daily from 10:00 AM to 10:00 PM. You can bring a device in yourself or have it collected for free, and repairs carry a 30-day warranty." },
+      ],
       landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)',
       coords: { lat: 29.2320, lng: 48.0650 }, serviceRadiusKm: 20, serviceAreas: ['Qurain', 'Adan', 'Qusour', 'Mubarak Al-Kabeer'],
       contentImage: { src: IMAGES.macbook.macbookProOpenMacosScreen.src, alt: IMAGES.macbook.macbookProOpenMacosScreen.alt, width: IMAGES.macbook.macbookProOpenMacosScreen.width, height: IMAGES.macbook.macbookProOpenMacosScreen.height, caption: 'MacBook and laptop repair serving Qurain and nearby Mubarak Al-Kabeer areas.' },
@@ -3672,6 +3744,14 @@ export const rawGraphData: RawGraphData = {
         { title: 'Power, charging and display faults', description: 'No-power, charging and black-screen symptoms are diagnosed systematically before parts are replaced.' },
         { title: 'MacBook and motherboard repair', description: 'MacBook logic-board and component-level laptop faults are supported through the specialist repair lab.' },
         { title: 'Tested before return', description: 'Repairs are function-tested at the workshop before the device is delivered back to the customer.' }
+      ],
+            localFaqs: [
+        { id: "faq-qortuba-local-1", question: "Do you collect from Qortuba, Adailiya, Rawda and Surra?", answer: "Yes. Qortuba, Adailiya, Rawda and Surra are covered by free pickup and delivery. Send your area and the device symptoms on WhatsApp and we will arrange collection." },
+        { id: "faq-qortuba-local-2", question: "My laptop will not connect to Wi-Fi but my phone does. What is wrong?", answer: "First check airplane mode and restart the laptop and router. If other devices connect normally, the problem is on the laptop: a driver issue, a disabled adapter, a loose antenna cable or a failed wireless card. We check each of these on the bench and only replace a part when it has actually failed." },
+        { id: "faq-qortuba-local-3", question: "My laptop restarts into a blue screen or boot loop. Should I reinstall Windows?", answer: "Please do not reinstall before checking the cause, because a reinstall can erase the files you want to keep. Blue screens can come from failing storage, faulty memory, overheating or a bad update. Tell us what error appeared and what happened just before it started, and we will diagnose the hardware first." },
+        { id: "faq-qortuba-local-4", question: "The battery on my MacBook drains very fast. Is it only the battery?", answer: "A worn battery is the most common cause, but heavy background processes and charging faults can look similar. Check Battery Health in System Settings if you can and note the cycle count. If the battery needs replacing, we explain the options and the quote before you decide." },
+        { id: "faq-qortuba-local-5", question: "My laptop screen cracked but the picture still shows. Is it safe to keep using it?", answer: "It is better not to. A cracked panel can spread, spill dark patches and in some cases cut the fingers. If the display still works, back up your files as soon as you can. We replace the panel with one matched to your model and confirm the quote first." },
+        { id: "faq-qortuba-local-6", question: "Is there a branch in Qortuba, and where is the repair done?", answer: "There is no walk-in branch in Qortuba. Devices are repaired at our Hawalli lab (Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19), open daily from 10:00 AM to 10:00 PM. You can bring a device in yourself or have it collected for free, and repairs carry a 30-day warranty." },
       ],
       landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)',
       coords: { lat: 29.31194, lng: 47.98727 }, serviceRadiusKm: 12, serviceAreas: ['Qortuba', 'Adailiya', 'Rawda', 'Surra'],
@@ -3690,6 +3770,14 @@ export const rawGraphData: RawGraphData = {
         { title: 'No-power and black-screen diagnosis', description: 'Power-path and display faults are investigated systematically rather than replaced by guesswork.' },
         { title: 'Central workshop processing', description: 'Rawda is a service area, not a separate branch; repairs are completed at the Hawalli lab and returned after testing.' }
       ],
+            localFaqs: [
+        { id: "faq-rawda-local-1", question: "Do you collect from Rawda, Adailiya, Surra and Hawalli?", answer: "Yes. Rawda, Adailiya, Surra and Hawalli are covered by free pickup and delivery. Send your area and the device symptoms on WhatsApp and we will arrange collection." },
+        { id: "faq-rawda-local-2", question: "My laptop battery swelled and the trackpad is lifting. Is it dangerous?", answer: "A swollen battery should be treated as a safety issue. Stop using and charging the laptop, keep it away from heat and do not press on the swelling or try to remove the battery yourself. Contact us and mention the swelling so we can arrange a careful collection and replace the battery." },
+        { id: "faq-rawda-local-3", question: "My laptop gets very hot and the fan is loud. Can it be fixed without replacing it?", answer: "Usually yes. Dust-clogged vents and dried thermal paste are common causes, and cleaning the cooling system and applying fresh paste often brings temperatures back down. If the fan has failed, it can be replaced. We check the temperature under load before and after the work." },
+        { id: "faq-rawda-local-4", question: "My laptop only charges when the cable is held at an angle. What is that?", answer: "That usually means a worn or loose charging port. Avoid wiggling the plug, because it can damage the board around the socket. We inspect the port and its solder joints and replace or repair it, then test charging from several angles before returning the laptop." },
+        { id: "faq-rawda-local-5", question: "My laptop screen is dim and I can barely see the picture. Is the screen finished?", answer: "A very dim picture often means the backlight has failed and not the whole panel. Shine a torch at the screen to see if a faint image is visible. If it is, a backlight or panel repair is likely, and we will tell you which part is at fault before you approve any work." },
+        { id: "faq-rawda-local-6", question: "Is there a branch in Rawda, and where is the repair done?", answer: "There is no walk-in branch in Rawda. Devices are repaired at our Hawalli lab (Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19), open daily from 10:00 AM to 10:00 PM. You can bring a device in yourself or have it collected for free, and repairs carry a 30-day warranty." },
+      ],
       landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)',
       coords: { lat: 29.32992, lng: 47.99842 }, serviceRadiusKm: 12, serviceAreas: ['Rawda', 'Adailiya', 'Surra', 'Hawalli'],
       contentImage: { src: IMAGES.services.laptopRepair.src, alt: IMAGES.services.laptopRepair.alt, width: IMAGES.services.laptopRepair.width, height: IMAGES.services.laptopRepair.height, caption: 'Laptop and computer repair serving Rawda and nearby central Kuwait neighborhoods.' },
@@ -3707,6 +3795,14 @@ export const rawGraphData: RawGraphData = {
         { title: 'Gaming PC support', description: 'Gaming systems can be checked for overheating, shutdowns, thermal throttling and hardware instability.' },
         { title: 'No need to visit the lab', description: 'Pickup and return delivery keep the repair process convenient for customers in Messila.' }
       ],
+            localFaqs: [
+        { id: "faq-messila-local-1", question: "Do you collect from Messila, Abu Ftaira, Fnaitees and Mubarak Al-Kabeer?", answer: "Yes. Messila, Abu Ftaira, Fnaitees and Mubarak Al-Kabeer are covered by free pickup and delivery. Send your area and the device symptoms on WhatsApp and we will arrange collection." },
+        { id: "faq-messila-local-2", question: "My gaming laptop crashes in the middle of a game. Is it overheating?", answer: "Overheating is one of the most common causes. Dust in the vents, worn fans or old thermal paste can push temperatures high enough to force a shutdown. Failing graphics hardware and faulty memory can also cause crashes. We monitor temperatures under load and check the hardware to find the cause." },
+        { id: "faq-messila-local-3", question: "My laptop does not turn on after a power cut. What may have happened?", answer: "A power surge can damage the adapter, the charging circuit or components on the board. Try a different charger if you have one, and hold the power button for around 30 seconds. If it stays dead, we trace the power path on the bench and replace the failed component where possible." },
+        { id: "faq-messila-local-4", question: "My MacBook starts but the screen stays black. Can it be repaired?", answer: "Check whether you can hear the startup sound or see a faint image with a torch held to the screen. A faint image points to the backlight. If there is nothing at all, the display, the cable or the board may be at fault. We diagnose it at component level before quoting." },
+        { id: "faq-messila-local-5", question: "Is it worth repairing an older gaming laptop?", answer: "Often yes, if the fault is a repairable part such as a fan, a screen, the battery or a failed component on the board. We tell you the cost of the repair after diagnosis, so you can compare it with the value of the laptop before you decide. Diagnosis is free and No Fix, No Fee applies." },
+        { id: "faq-messila-local-6", question: "Is there a branch in Messila, and where is the repair done?", answer: "There is no walk-in branch in Messila. Devices are repaired at our Hawalli lab (Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19), open daily from 10:00 AM to 10:00 PM. You can bring a device in yourself or have it collected for free, and repairs carry a 30-day warranty." },
+      ],
       landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)',
       coords: { lat: 29.24961, lng: 48.09397 }, serviceRadiusKm: 20, serviceAreas: ['Messila', 'Abu Ftaira', 'Fnaitees', 'Mubarak Al-Kabeer'],
       contentImage: { src: IMAGES.gaming.gamingLaptopFan.src, alt: IMAGES.gaming.gamingLaptopFan.alt, width: IMAGES.gaming.gamingLaptopFan.width, height: IMAGES.gaming.gamingLaptopFan.height, caption: 'Gaming laptop cooling and hardware diagnostics for customers in Messila.' },
@@ -3723,6 +3819,14 @@ export const rawGraphData: RawGraphData = {
         { title: 'Screen and battery replacement', description: 'Cracked displays, worn batteries and charging problems are diagnosed before compatible parts are fitted.' },
         { title: 'Motherboard and power diagnosis', description: 'No-power and board faults are traced at component level where technically feasible.' },
         { title: 'Central Hawalli repair lab', description: 'Adailiya is a service area rather than a separate walk-in branch; completed devices are tested before return.' }
+      ],
+            localFaqs: [
+        { id: "faq-adailiya-local-1", question: "Do you collect from Adailiya, Qortuba, Rawda and Qadsiya?", answer: "Yes. Adailiya, Qortuba, Rawda and Qadsiya are covered by free pickup and delivery. Send your area and the device symptoms on WhatsApp and we will arrange collection." },
+        { id: "faq-adailiya-local-2", question: "My laptop takes several minutes to start and everything is slow. What can I do?", answer: "A very slow laptop is often caused by a nearly full or failing drive, a hard disk that would benefit from an SSD, malware or overheating. Check how much storage is free and whether the fan is working hard. We can test the drive health and temperatures and tell you whether an SSD upgrade or a cleanup is the right fix." },
+        { id: "faq-adailiya-local-3", question: "My MacBook is not charging when I plug it in. Where should I start?", answer: "Try another cable and charger, check the port for debris and test a different power outlet. If it still does not charge, the fault could be the charging port, the battery or the charging circuit. We test the charger and the power path to find the cause before suggesting a repair." },
+        { id: "faq-adailiya-local-4", question: "My laptop does nothing when I press the power button. Is it the charger or the board?", answer: "Check the charger light, try another outlet and unplug all USB devices. Hold the power button for around 30 seconds and try again. If there is still no sign of life, the fault may be in the adapter, the battery or the power circuit on the board. We test each of these on the bench." },
+        { id: "faq-adailiya-local-5", question: "There are vertical lines across my laptop screen. Does that mean a new screen?", answer: "Lines can come from the panel, the display cable or the graphics circuit. If the lines also show on an external monitor, the board or graphics hardware is more likely at fault. If the external monitor looks perfect, the panel or cable is the probable cause. We confirm the fault before quoting." },
+        { id: "faq-adailiya-local-6", question: "Is there a branch in Adailiya, and where is the repair done?", answer: "There is no walk-in branch in Adailiya. Devices are repaired at our Hawalli lab (Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19), open daily from 10:00 AM to 10:00 PM. You can bring a device in yourself or have it collected for free, and repairs carry a 30-day warranty." },
       ],
       landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)',
       coords: { lat: 29.32655, lng: 47.98141 }, serviceRadiusKm: 12, serviceAreas: ['Adailiya', 'Qortuba', 'Rawda', 'Qadsiya'],
@@ -4520,6 +4624,34 @@ export const rawGraphData: RawGraphData = {
         { src: IMAGES.laptopHardware.laptopKeyboardTopCaseAssemblyRemoval.src, alt: IMAGES.laptopHardware.laptopKeyboardTopCaseAssemblyRemoval.alt, width: IMAGES.laptopHardware.laptopKeyboardTopCaseAssemblyRemoval.width, height: IMAGES.laptopHardware.laptopKeyboardTopCaseAssemblyRemoval.height, placement: 'causes', caption: 'The keyboard and top case assembly removed to check for liquid damage, dust, or a swollen battery underneath.' },
         { src: IMAGES.laptopHardware.laptopKeyboardHeatsinkAssemblyRemoval.src, alt: IMAGES.laptopHardware.laptopKeyboardHeatsinkAssemblyRemoval.alt, width: IMAGES.laptopHardware.laptopKeyboardHeatsinkAssemblyRemoval.width, height: IMAGES.laptopHardware.laptopKeyboardHeatsinkAssemblyRemoval.height, placement: 'solution', caption: 'Replacing the keyboard assembly and ribbon cable connection during reassembly.' },
       ],
+      intro: "When some keys stop working, or the whole keyboard goes dead, the cause is usually a liquid spill, a damaged ribbon cable, a worn keyboard assembly or something pushing up from underneath, such as a swollen battery. The pattern of dead keys often tells us where to look first, so note which keys fail before you contact us.",
+      diagnosticSteps: [
+        { step: 1, title: "Test with an external keyboard", description: "Plug in a USB keyboard. If it works normally, the laptop's own keyboard or its connection is at fault. If it also misbehaves, the problem is more likely software or the board." },
+        { step: 2, title: "See whether the keys work outside Windows", description: "Restart and press the key to open the BIOS or boot menu. If the keys respond there but not in Windows, a driver or software setting is the cause." },
+        { step: 3, title: "Look at the pattern", description: "A diagonal line of dead keys or a block of keys often points to a damaged track. A completely dead keyboard often points to the ribbon cable or its connector." },
+        { step: 4, title: "Check for a swollen battery", description: "If the trackpad is lifting, the case does not sit flat or the keyboard bulges, stop using the laptop. A swollen battery can push up against the keyboard." },
+        { step: 5, title: "Remember any spills", description: "Even a small spill weeks ago can corrode the tracks under the keyboard. Tell us about it, as it changes what we check." },
+      ],
+      decisionTree: [
+        { symptom: "External keyboard works, built-in keys do not", direction: "The built-in keyboard or its ribbon cable has failed and usually needs replacing." },
+        { symptom: "Keys fail only in Windows", direction: "Check drivers and settings first. Hardware is less likely." },
+        { symptom: "Keys type repeatedly or by themselves", direction: "Liquid residue or a damaged membrane is likely. Stop using the keyboard." },
+        { symptom: "Keyboard bulges or the trackpad lifts", direction: "Possible swollen battery. Stop using and charging it, and contact us." },
+      ],
+      technicianMethod: [
+        { step: 1, title: "Test and inspect", description: "We confirm the fault with an external keyboard and then open the laptop to look for liquid residue, corrosion, a loose ribbon cable and battery swelling." },
+        { step: 2, title: "Reseat or replace the cable", description: "If the ribbon cable or connector is the problem, we reseat or replace it before replacing the keyboard." },
+        { step: 3, title: "Replace the keyboard assembly", description: "If the keyboard itself has failed, we fit a replacement matched to your model." },
+        { step: 4, title: "Make the laptop safe", description: "If the battery is swollen, we remove it safely and replace it, because it could damage the new keyboard as well." },
+        { step: 5, title: "Test every key", description: "We test each key before returning the laptop. The repair carries a 30-day warranty." },
+      ],
+      safetyNotes: ["Do not pry keys off with a knife or screwdriver. The hinges are fragile, especially on MacBooks, and snapped hinges can turn a small fault into a full keyboard replacement.", "Do not use or charge a laptop with a bulging battery or a lifting trackpad.", "Do not clean under the keys with liquids, because it can spread residue to the board."],
+      faqs: [
+        { question: "Can a single dead key be repaired?", answer: "Sometimes a stuck or dirty key can be freed, but on most laptops a failed key means replacing the keyboard assembly. We check the cause first and explain the option before you approve any work." },
+        { question: "Is a MacBook keyboard replacement more involved?", answer: "On many MacBooks the keyboard is part of the top case, which makes the replacement larger than on a typical Windows laptop. We confirm the scope and the quote after identifying your exact model." },
+        { question: "Can I use an external keyboard while I wait?", answer: "Yes. A USB or Bluetooth keyboard works as a stop-gap, but do not keep using a laptop whose battery looks swollen." },
+        { question: "Could the spill have damaged more than the keyboard?", answer: "It can. Liquid can reach the board and corrode it over time, so we inspect underneath before we quote. Mention any spill, even an old one." },
+      ],
       seo: { title: 'Laptop Keyboard Not Working — Repair in Kuwait | KCROC', description: 'Laptop keyboard dead or typing by itself? We replace keyboards for Dell, HP, Lenovo, and MacBooks. Fast service with free pick & drop in Kuwait.', canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-keyboard-not-working', ogType: 'article', schemaTypes: ['Article', 'FAQPage'] },
       navigationPriority: 50, popular: false
     } as ProblemEntity,
@@ -4537,6 +4669,33 @@ export const rawGraphData: RawGraphData = {
       contentImages: [
         { src: IMAGES.laptopHardware.wifiLaptop1.src, alt: IMAGES.laptopHardware.wifiLaptop1.alt, width: IMAGES.laptopHardware.wifiLaptop1.width, height: IMAGES.laptopHardware.wifiLaptop1.height, placement: 'causes', caption: 'Checking the internal Wi-Fi card and antenna connections when the network icon disappears.' },
         { src: IMAGES.laptopHardware.wifiIntel2.src, alt: IMAGES.laptopHardware.wifiIntel2.alt, width: IMAGES.laptopHardware.wifiIntel2.width, height: IMAGES.laptopHardware.wifiIntel2.height, placement: 'solution', caption: 'Installing a high-quality Intel Wi-Fi 6 card to permanently resolve dropouts from a failed budget card.' },
+      ],
+      intro: "Wi-Fi faults fall into four groups: settings and drivers, a loose or failed wireless card, a disconnected antenna cable, and, rarely, a fault on the motherboard. Finding out which group you are in matters, because resetting Windows will not repair a card that is physically failing, and replacing the card will not help if the real cause is a driver or a loose cable.",
+      diagnosticSteps: [
+        { step: 1, title: "Check whether other devices connect", description: "If your phone connects to the same network but the laptop does not, the router is fine. Also try a phone hotspot. If the laptop fails on every network, the fault is in the laptop." },
+        { step: 2, title: "Check the simple switches", description: "Make sure Airplane mode is off, try the Wi-Fi key on the keyboard (often combined with an Fn key) and restart the laptop. A hardware switch or key can turn the adapter off." },
+        { step: 3, title: "Look in Device Manager", description: "Open Device Manager and expand Network adapters. If a wireless adapter is listed, the card is detected and the problem may be a driver. If no wireless adapter appears at all, the laptop is not detecting the card." },
+        { step: 4, title: "Reinstall the driver from the maker", description: "If the adapter shows a warning icon, uninstall it and install the latest driver from the laptop manufacturer's support page. Use a cable or another device to download it if needed." },
+        { step: 5, title: "Notice how the signal behaves", description: "A laptop that only connects when it is next to the router often has an antenna cable that has come loose inside. Drops during gaming or streaming can point to a failing card." },
+      ],
+      decisionTree: [
+        { symptom: "Wi-Fi icon missing and no wireless adapter in Device Manager", direction: "The card is not being detected. It may be loose, failed or have a slot problem, and needs bench inspection." },
+        { symptom: "Adapter listed with a warning icon", direction: "Usually a driver problem. Reinstalling the driver often fixes it; if not, the card may be failing." },
+        { symptom: "Connects only very close to the router", direction: "An antenna cable has probably come loose or been damaged. It is a small repair but needs the laptop opened." },
+        { symptom: "Drops out repeatedly during games or video calls", direction: "Test the card and its power-saving settings. A budget card that has degraded is replaced with a better one." },
+      ],
+      technicianMethod: [
+        { step: 1, title: "Open and inspect", description: "We open the laptop, check that the wireless card is seated properly and that both antenna leads are attached to the right connectors." },
+        { step: 2, title: "Separate card from slot", description: "We test with a known-good card where needed, so we can tell a failed card apart from a faulty slot on the board." },
+        { step: 3, title: "Replace only what failed", description: "If the card has failed, we fit a compatible Intel Wi-Fi 6 card for your model. If it was a loose cable or a driver, we fix that instead." },
+        { step: 4, title: "Test before return", description: "We check connection stability and speed over time before returning the laptop, and the repair is covered by our 30-day warranty." },
+      ],
+      safetyNotes: ["Switch the laptop off and unplug the charger before it is opened. Antenna cables are thin and easily damaged, so they should not be pulled.", "A Wi-Fi card replacement does not touch your storage drive, so your files are not part of the repair."],
+      faqs: [
+        { question: "Can my Wi-Fi be fixed without replacing the card?", answer: "Often yes. A driver reinstall or a reconnected antenna cable fixes many cases. We only replace the card when testing shows that it has failed." },
+        { question: "Will a Wi-Fi 6 card work in my laptop?", answer: "It depends on the model and the type of slot it has. We check compatibility before replacing anything, and tell you which card we recommend." },
+        { question: "My laptop works on a network cable but not on Wi-Fi. What does that mean?", answer: "The rest of the laptop is working and the fault is in the wireless path: the driver, the card or the antenna cables. A cable connection can keep you online while the repair is arranged." },
+        { question: "Is it worth upgrading the card on an older laptop?", answer: "Frequently. A card swap is one of the cheaper repairs, and a newer card can give a more stable connection. We tell you the price after diagnosis, and No Fix, No Fee applies." },
       ],
       seo: { title: 'Laptop WiFi Not Connecting — Fix & Upgrade Kuwait | KCROC', description: 'WiFi icon missing or connection dropping on your laptop? We diagnose driver issues and upgrade failed WiFi cards to fast Wi-Fi 6. Free pick & drop.', canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-wifi-not-connecting', ogType: 'article', schemaTypes: ['Article', 'FAQPage'] },
       navigationPriority: 40, popular: false
@@ -4559,6 +4718,33 @@ export const rawGraphData: RawGraphData = {
       relatedResourcePaths: [
         { label: 'Windows 11 100% Disk Usage: Causes & Solutions', path: '/blog/windows-11-100-disk-usage-causes-solutions' },
       ],
+      intro: "A laptop that takes minutes to start or freezes while you work is almost always held back by one of four things: an old hard drive, a nearly full drive, too little memory, or heat that forces the processor to slow itself down. Malware and heavy start-up programs can add to it. A short test of each tells us whether a clean-up, an SSD or something else will make the difference.",
+      diagnosticSteps: [
+        { step: 1, title: "Look at Task Manager", description: "Press Ctrl + Shift + Esc and watch the Performance tab. A disk sitting at or near 100 percent usage while you are doing little points to the drive. High memory usage points to too little RAM." },
+        { step: 2, title: "Check free storage", description: "If the drive is almost full, Windows has little room to work. Free up space or move files off the laptop and see if it improves." },
+        { step: 3, title: "Listen for the drive", description: "Clicking, grinding or long pauses from a mechanical hard drive can mean it is failing. Back up your files and stop heavy use." },
+        { step: 4, title: "Check temperature and fans", description: "If the laptop is very hot, the fan is loud or it slows down after a few minutes, thermal throttling may be the cause." },
+        { step: 5, title: "Review start-up programs and scan for malware", description: "Too many start-up programs slow down every boot, and unwanted software can use resources in the background." },
+      ],
+      decisionTree: [
+        { symptom: "Slow to start, disk at 100 percent, still using a hard drive", direction: "An SSD upgrade is the most effective fix." },
+        { symptom: "Slows down after a few minutes and runs hot", direction: "Cooling clean-up and fresh thermal paste, not storage." },
+        { symptom: "Memory usage always high", direction: "More RAM, if the model allows it." },
+        { symptom: "Clicking or grinding from the drive", direction: "Back up now. The drive may be failing and should be replaced." },
+      ],
+      technicianMethod: [
+        { step: 1, title: "Test the drive", description: "We check the drive's health and read speed to find out whether it is failing or just slow." },
+        { step: 2, title: "Check temperatures and cooling", description: "We look at temperatures under load and check the fan and vents for dust and the thermal paste for age." },
+        { step: 3, title: "Upgrade or clean as needed", description: "Where it fits, we move your Windows installation and files to an SSD, add memory or clean the cooling, rather than recommending everything." },
+        { step: 4, title: "Measure the result", description: "We compare start-up time and responsiveness after the work, and the repair carries a 30-day warranty." },
+      ],
+      safetyNotes: ["Back up your files before any storage work if you can. If the drive is failing, tell us so we handle it carefully.", "Do not keep forcing a laptop off during updates or repeatedly power-cycling it, as that can corrupt the system files."],
+      faqs: [
+        { question: "How much faster will an SSD make my laptop?", answer: "The difference is usually large on a laptop that has a mechanical hard drive. Start-up and application loading are noticeably quicker. We tell you whether an SSD is the right fix after we test the drive." },
+        { question: "Will I lose my files and programs when you upgrade the drive?", answer: "In most cases we move your existing Windows installation and files onto the new SSD. It is still sensible to keep a backup of anything important." },
+        { question: "Can you add more RAM to my laptop?", answer: "It depends on the model. Some have slots, others have memory soldered to the board. We check what your laptop supports before suggesting an upgrade." },
+        { question: "My laptop is slow only when gaming or running heavy software. Is that the same problem?", answer: "Not necessarily. Heat is a common cause there. We check the temperatures and the cooling system before suggesting an upgrade." },
+      ],
       seo: { title: 'Laptop Running Extremely Slow? SSD Upgrades Kuwait | KCROC', description: 'Laptop freezing or taking forever to turn on? An SSD upgrade and RAM boost will make it 10x faster. We migrate your data safely. Free diagnostic.', canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-running-very-slow', ogType: 'article', schemaTypes: ['Article', 'FAQPage'] },
       navigationPriority: 30, popular: false
     } as ProblemEntity,
@@ -4576,6 +4762,33 @@ export const rawGraphData: RawGraphData = {
       contentImages: [
         { src: IMAGES.laptopHardware.brokenHinge.src, alt: IMAGES.laptopHardware.brokenHinge.alt, width: IMAGES.laptopHardware.brokenHinge.width, height: IMAGES.laptopHardware.brokenHinge.height, placement: 'causes', caption: 'A hinge that has cracked the surrounding plastic chassis — common after heat cycles or a corner drop.' },
         { src: IMAGES.laptopHardware.laptopLidBackCoverPanelReplacement.src, alt: IMAGES.laptopHardware.laptopLidBackCoverPanelReplacement.alt, width: IMAGES.laptopHardware.laptopLidBackCoverPanelReplacement.width, height: IMAGES.laptopHardware.laptopLidBackCoverPanelReplacement.height, placement: 'solution', caption: 'Fitting a replacement lid and back cover panel after the hinge mechanism is repaired and re-tensioned.' },
+      ],
+      intro: "A hinge that is loose, noisy or cracked puts strain on the screen and its cable. The sooner it is repaired, the less likely the damage is to spread to the display or the plastic around it. The key question is whether the hinge itself is worn or broken, or whether the plastic that holds it has cracked.",
+      diagnosticSteps: [
+        { step: 1, title: "Open and close the lid slowly", description: "Notice whether the screen wobbles, pops, drops back on its own or feels stiff on one side." },
+        { step: 2, title: "Look for gaps and cracks", description: "A gap between the screen frame and the laptop body, or a crack near the hinge, suggests the housing around it has broken." },
+        { step: 3, title: "Check for a lifted bezel", description: "If the plastic frame around the screen has separated at the corners, the hinge may be pulling against it." },
+        { step: 4, title: "Stop opening the lid fully", description: "If a hinge is cracked, forcing the lid open or closed can damage the display cable that passes through it." },
+        { step: 5, title: "Note the laptop model", description: "Hinges and covers differ by model, so the exact model number helps us check the right part." },
+      ],
+      decisionTree: [
+        { symptom: "Screen wobbles but nothing is cracked", direction: "Hinge brackets or screws may be loose or worn and need replacing." },
+        { symptom: "Crack or gap near the hinge", direction: "The plastic around it has probably broken and needs repair or replacement of the cover." },
+        { symptom: "Display flickers when the lid moves", direction: "The display cable may have been stretched or damaged and needs checking." },
+        { symptom: "One side of the lid is stiff", direction: "One hinge may have seized, which puts pressure on the other." },
+      ],
+      technicianMethod: [
+        { step: 1, title: "Open and inspect", description: "We open the laptop and check the hinge brackets, the screws and the plastic mounting points." },
+        { step: 2, title: "Repair or replace", description: "We replace worn hinges and repair or replace the cover or mounting where it is cracked, with parts matched to your model." },
+        { step: 3, title: "Check the display cable", description: "We check that the cable running through the hinge has not been stretched or damaged." },
+        { step: 4, title: "Test the movement", description: "We open and close the lid repeatedly and check that the display is stable, and the repair carries a 30-day warranty." },
+      ],
+      safetyNotes: ["Do not force the lid open or closed. A broken hinge can pinch or tear the display cable.", "Avoid gluing a broken hinge or housing, as glue makes a proper repair harder and can get into the parts."],
+      faqs: [
+        { question: "Can a broken hinge damage my screen?", answer: "Yes. The display cable passes through the hinge area, and a hinge that moves unevenly can stretch it or crack the panel. Early repair usually costs less." },
+        { question: "What if the plastic around the hinge has cracked?", answer: "Then the hinge alone will not hold. The cover or mounting needs repairing or replacing, depending on the model. We confirm what is needed after inspecting it." },
+        { question: "Do you need my laptop model to quote?", answer: "The exact model number, usually on the underside, helps us check parts first. The final quote is confirmed after inspection and before any paid work." },
+        { question: "Can I keep using the laptop until it is repaired?", answer: "It is better not to, because every open and close adds stress. If you must use it, open the lid gently with both hands and avoid carrying it by the screen." },
       ],
       seo: { title: 'Broken Laptop Hinge Repair Kuwait — Fast Fix | KCROC', description: 'Laptop screen hinge broken or popping open? Stop using it before the screen cracks! We repair chassis and hinges for HP, Dell, Lenovo, and MSI.', canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-hinge-broken', ogType: 'article', schemaTypes: ['Article', 'FAQPage'] },
       navigationPriority: 20, popular: false
