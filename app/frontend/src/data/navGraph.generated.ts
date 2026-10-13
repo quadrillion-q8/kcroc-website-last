@@ -42,7 +42,7 @@ export const NAV_GRAPH = {
     },
     "aggregateRating": {
       "ratingValue": "4.9",
-      "reviewCount": 158,
+      "reviewCount": 157,
       "bestRating": 5
     },
     "socialLinks": {
