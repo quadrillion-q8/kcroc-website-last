@@ -138,7 +138,7 @@ export default function LocationDeepTemplate() {
     {
       id: `faq-${location.slug}-cost`,
       question: `How much does laptop repair cost for ${location.title} customers?`,
-      answer: `Diagnostics are free. Common laptop repairs start from 15 KWD, screen replacement from 30 KWD and component-level motherboard repair from 25 KWD, with the final price depending on the device, the fault and the parts. You receive the confirmed quote before any paid work begins, and under our No Fix, No Fee policy you pay nothing if we cannot fix it.`,
+      answer: `Diagnostics are free. Common laptop repairs start from 15 KWD, screen-replacement labor from 30 KWD plus the panel, and component-level motherboard repair from 25 KWD. The final price depends on the device, fault and parts. You receive the confirmed quote before paid work begins, and under our No Fix, No Fee policy you pay nothing if we cannot fix it.`,
     },
     {
       id: `faq-${location.slug}-turnaround`,
