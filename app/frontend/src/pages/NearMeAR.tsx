@@ -1,24 +1,18 @@
 // File: app/frontend/src/pages/NearMeAR.tsx
 //
-// 🚀 ARABIC HUB PAGE — real, standalone, crawlable Arabic near-me + services
-// hub at /ar/near-me. Previously the site's entire Arabic footprint was one
-// blog post plus a single FAQ section anchored inside the English /near-me
-// page (see the "Arabic local-intent section" in NearMe.tsx) — no dedicated
-// URL, no hreflang, no independent canonical. In the supplied three-month GSC
-// export, "فني كمبيوتر" had 614 impressions, average position 3.04 and zero
-// clicks. This page gives that demand a dedicated Arabic destination and now
-// links directly to existing high-intent Arabic service pages.
+// ARABIC NEAR-ME PAGE — /ar/near-me is intentionally focused on proximity,
+// pickup/delivery logistics, and the central Hawalli repair lab. The broad
+// technician/computer-repair intent is assigned to /ar/computer-repair-kuwait
+// and linked here so the two pages have clearer search intent and user paths.
 //
-// SEO wiring: entity `page-near-me-ar` in graph.ts carries `locale: 'ar_KW'`
-// and `alternates` pointing back to the English `/near-me` page (and vice
-// versa). SEOEngine reads `locale` to automatically set `dir="rtl"` and the
-// correct `lang` attribute, and emits the hreflang <link> tags from
-// `alternates` — both were previously unused/unwired mechanisms.
+// SEO wiring: `page-near-me-ar` in graph.ts has locale `ar_KW` and reciprocal
+// alternates with the English `/near-me` page. SEOEngine emits the language
+// metadata from that source; validate the generated projection during build.
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {
   MapPin, Truck, ShieldCheck, Laptop, Monitor, Cpu, Apple,
-  Gamepad2, ArrowRight, MessageCircle, Star, Home as HomeIcon, Clock, BadgeCheck,
+  Gamepad2, ArrowRight, ArrowLeft, MessageCircle, Star, Home as HomeIcon, Clock, BadgeCheck,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -98,7 +92,7 @@ export default function NearMeAR() {
   if (!business || !page) return null;
 
   const waLink = `https://wa.me/${business.telephone}?text=${encodeURIComponent(
-    'مرحباً KCROC، أبحث عن فني كمبيوتر في الكويت وأحتاج ترتيب استلام للجهاز.'
+    'مرحباً KCROC، أبحث عن خدمة تصليح كمبيوتر بالقرب مني في الكويت وأحتاج ترتيب استلام للجهاز.'
   )}`;
 
   return (
@@ -114,7 +108,7 @@ export default function NearMeAR() {
             <ol className="flex items-center gap-2">
               <li><Link to="/" className="hover:text-cyan-400">الرئيسية</Link></li>
               <li className="text-slate-600">/</li>
-              <li aria-current="page" className="text-cyan-400">فني كمبيوتر في الكويت</li>
+              <li aria-current="page" className="text-cyan-400">تصليح كمبيوتر بالقرب منك</li>
             </ol>
           </nav>
 
@@ -124,10 +118,10 @@ export default function NearMeAR() {
                 <MapPin className="ml-2 inline h-3.5 w-3.5" aria-hidden="true" /> خدمة محلية في الكويت
               </Badge>
               <h1 className="text-4xl font-black leading-[1.15] tracking-tight text-white sm:text-5xl lg:text-6xl">
-                فني كمبيوتر وتصليح لابتوب <span className="text-cyan-400">في الكويت</span>
+                تصليح كمبيوتر ولابتوب <span className="text-cyan-400">بالقرب منك في الكويت</span>
               </h1>
               <p className="mt-6 max-w-2xl text-base leading-loose text-slate-300 sm:text-lg">
-                تبحث عن فني كمبيوتر أو فني تصليح لابتوب في الكويت؟ توفّر لك KCROC تشخيصًا وإصلاحًا للكمبيوتر واللابتوب والماك بوك وأجهزة الألعاب من مختبرنا المركزي في حولي، مع استلام وتوصيل مجاني لجهازك من أي منطقة في الكويت.
+                تبحث عن تصليح كمبيوتر قريب منك؟ نرتب استلام اللابتوب أو الكمبيوتر من المنزل أو المكتب في مناطق الكويت التي نخدمها، ونفحصه ونصلحه في مختبر KCROC بحولي، ثم نوصله لك بعد الاختبار مع عرض سعر قبل بدء الإصلاح.
               </p>
               <div className="mt-7 flex flex-col gap-3 sm:flex-row">
                 <Button size="lg" className="w-full bg-cyan-500 font-black text-slate-950 hover:bg-cyan-400 sm:w-auto" asChild>
@@ -137,6 +131,7 @@ export default function NearMeAR() {
                   <a href={waLink} target="_blank" rel="noopener noreferrer"><MessageCircle className="ml-2 h-5 w-5" aria-hidden="true" /> تواصل عبر واتساب</a>
                 </Button>
               </div>
+              <Link to="/ar/computer-repair-kuwait" className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-cyan-300 underline-offset-4 hover:text-cyan-200 hover:underline">فني كمبيوتر في الكويت لتصليح الكمبيوتر واللابتوب <ArrowLeft className="h-4 w-4" aria-hidden="true" /></Link>
               <div className="mt-7 flex flex-wrap gap-x-5 gap-y-2 text-sm text-slate-400">
                 <span className="inline-flex items-center gap-1.5"><Star className="h-4 w-4 fill-current text-amber-400" aria-hidden="true" /> تقييم {business.aggregateRating.ratingValue}★</span>
                 <span>تقييم Google · شاهد التقييمات الحالية</span>
