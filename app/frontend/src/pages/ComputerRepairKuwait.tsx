@@ -130,7 +130,7 @@ export default function ComputerRepairKuwait() {
               ['From 15 KWD', 'Common laptop repairs start here'],
               ['Free pickup', 'Kuwait-wide collection & delivery'],
               ['30-day warranty', 'On completed repairs'],
-              ['4.9★', '158+ customer reviews'],
+              ['4.9★', 'Google rating'],
             ].map(([title, text]) => (
               <div key={title} className="rounded-2xl border border-slate-800 bg-slate-950/50 p-5">
                 <p className="text-lg font-black text-white">{title}</p>
@@ -219,7 +219,7 @@ export default function ComputerRepairKuwait() {
           <div className="rounded-3xl border border-cyan-900/50 bg-cyan-950/20 p-7">
             <Star className="h-7 w-7 fill-current text-cyan-300" aria-hidden="true" />
             <p className="mt-5 text-4xl font-black text-white">4.9★</p>
-            <p className="mt-1 font-bold text-slate-200">158+ reviews</p>
+            <p className="mt-1 font-bold text-slate-200">Google rating · Current reviews</p>
             <p className="mt-5 text-sm leading-7 text-slate-400">
               Customers across Kuwait use KCROC for laptop, PC, MacBook and component-level repair.
             </p>
