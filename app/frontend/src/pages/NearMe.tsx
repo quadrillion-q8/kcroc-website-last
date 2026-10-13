@@ -78,7 +78,7 @@ export default function NearMe() {
               </div>
               <div className="mt-7 flex flex-wrap gap-x-5 gap-y-2 text-sm text-slate-400">
                 <span className="inline-flex items-center gap-1.5"><Star className="h-4 w-4 fill-current text-amber-400" aria-hidden="true" /> {business.aggregateRating.ratingValue}★ rated</span>
-                <span>{business.aggregateRating.reviewCount}+ reviews</span>
+                <span>Google rating · current reviews</span>
                 <span>Free pickup & delivery</span>
               </div>
             </div>
