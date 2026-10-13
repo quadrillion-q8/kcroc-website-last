@@ -12,7 +12,6 @@ export default function Reviews() {
   if (reviews.length === 0) return null;
 
   const rating = Number(aggregate?.ratingValue || 4.9);
-  const reviewCount = Number(aggregate?.reviewCount || reviews.length);
   const googleProfileUrl = KCROC_GRAPH?.business?.socialLinks?.googleMaps;
 
   const scrollReviews = (direction: number) => {
@@ -33,7 +32,7 @@ export default function Reviews() {
           />
           <div className="shrink-0 md:text-right">
             <div className="text-white text-2xl sm:text-3xl font-black">{rating.toFixed(1)}/5</div>
-            <div className="text-slate-500 text-xs sm:text-sm mt-1">{reviewCount}+ reviews</div>
+            <div className="text-slate-500 text-xs sm:text-sm mt-1">Google rating · current reviews linked below</div>
           </div>
         </div>
 
