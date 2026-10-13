@@ -5,7 +5,7 @@ const checks = [];
 const add = (name, pass, detail = '') => checks.push({ name, pass, detail });
 const read = (relative) => readFile(path.resolve('src', relative), 'utf8');
 
-const [app, graph, seoProjection, locale, pricingPage, sitemap, hero, reviews, footer, nearMe, nearMeAr, locations, hawalli, computerRepair, about, booking, arabicCommercial] = await Promise.all([
+const [app, graph, seoProjection, locale, pricingPage, sitemap, hero, reviews, footer, nearMe, nearMeAr, locations, hawalli, computerRepair, about, booking, arabicCommercial, serviceAreas, englishPricing] = await Promise.all([
   read('App.tsx'),
   read('data/graph.ts'),
   read('data/seoGraph.generated.ts'),
@@ -23,6 +23,8 @@ const [app, graph, seoProjection, locale, pricingPage, sitemap, hero, reviews, f
   read('pages/About.tsx'),
   read('pages/BookingPage.tsx'),
   read('pages/ArabicCommercialPage.tsx'),
+  read('components/home/ServiceAreas.tsx'),
+  read('pages/Pricing.tsx'),
 ]);
 
 const url = 'https://www.computerrepairkuwait.com/ar/pricing';
@@ -38,6 +40,14 @@ add('Homepage review widget no longer prints a fixed count', !reviews.includes('
 add('Homepage statistic strip uses service promises instead of unverified counters', graph.includes("label: 'Initial diagnosis', value: 'FREE'") && !graph.includes("value: '500+'"));
 add('Commercial, footer, and local pages avoid printed fixed review counts', !footer.includes('reviewCount') && !nearMe.includes('reviewCount') && !nearMeAr.includes('reviewCount') && !locations.includes('reviewCount') && !hawalli.includes('reviewCount') && !computerRepair.includes('158+ reviews') && !computerRepair.includes('158+ customer reviews') && !arabicCommercial.includes('158+ مراجعة'));
 add('Unverified customer/repair totals removed from sales copy', !about.includes("number: '500+'") && !booking.includes('500+ professionals') && !arabicCommercial.includes("['500+', 'جهاز تم إصلاحه']"));
+
+add('Arabic technician head term is assigned to the main Arabic commercial page', graph.includes("title: 'فني كمبيوتر في الكويت | تصليح كمبيوتر ولابتوب'") && graph.includes("title: 'فني كمبيوتر في الكويت | تصليح كمبيوتر ولابتوب | KCROC'") && arabicCommercial.includes("h1: 'فني كمبيوتر في الكويت لتصليح الكمبيوتر واللابتوب'"));
+add('Arabic nearby page targets proximity intent and links to the main service page', graph.includes("title: 'تصليح كمبيوتر بالقرب منك في الكويت | استلام وتوصيل | KCROC'") && nearMeAr.includes('تصليح كمبيوتر ولابتوب') && nearMeAr.includes('to="/ar/computer-repair-kuwait"'));
+add('Arabic hreflang projection matches homepage alternate', graph.includes("'en-KW': 'https://www.computerrepairkuwait.com/'") && seoProjection.includes('\"en-KW\": \"https://www.computerrepairkuwait.com/\"'));
+add('Homepage hero exposes a tracked Arabic commercial link on mobile and desktop', (hero.match(/hero_arabic_computer_repair/g) || []).length === 2 && (hero.match(/to="\/ar\/computer-repair-kuwait"/g) || []).length === 2);
+add('Homepage Arabic links distinguish technician and near-me intent', serviceAreas.includes("{ label: 'فني كمبيوتر في الكويت', path: '/ar/computer-repair-kuwait' }") && serviceAreas.includes("{ label: 'تصليح كمبيوتر بالقرب مني', path: '/ar/near-me' }"));
+add('English pricing snippet leads with qualified starting labor prices', graph.includes('Laptop screen labor from 30 KWD + panel; battery labor from 8 KWD + battery') && seoProjection.includes('Laptop screen labor from 30 KWD + panel; battery labor from 8 KWD + battery'));
+add('Pricing hero visibly shows qualified prices with relevant service links', englishPricing.includes('From 30 KWD + panel') && englishPricing.includes('From 8 KWD + battery') && englishPricing.includes('to="/ssd-ram-upgrade-kuwait"'));
 
 for (const check of checks) console.log(`${check.pass ? '✅' : '❌'} ${check.name}${check.detail ? ` — ${check.detail}` : ''}`);
 const failed = checks.filter((check) => !check.pass);
