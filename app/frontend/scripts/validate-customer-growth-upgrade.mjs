@@ -1,0 +1,45 @@
+import { readFile } from 'node:fs/promises';
+import path from 'node:path';
+
+const checks = [];
+const add = (name, pass, detail = '') => checks.push({ name, pass, detail });
+const read = (relative) => readFile(path.resolve('src', relative), 'utf8');
+
+const [app, graph, seoProjection, locale, pricingPage, sitemap, hero, reviews, footer, nearMe, nearMeAr, locations, hawalli, computerRepair, about, booking, arabicCommercial] = await Promise.all([
+  read('App.tsx'),
+  read('data/graph.ts'),
+  read('data/seoGraph.generated.ts'),
+  read('utils/locale.ts'),
+  read('pages/ArabicPricingPage.tsx'),
+  readFile(path.resolve('public/sitemap.xml'), 'utf8'),
+  read('components/home/Hero.tsx'),
+  read('components/home/Reviews.tsx'),
+  read('core/components/layout/Footer.tsx'),
+  read('pages/NearMe.tsx'),
+  read('pages/NearMeAR.tsx'),
+  read('pages/LocationDeepTemplate.tsx'),
+  read('pages/HawalliLocationPage.tsx'),
+  read('pages/ComputerRepairKuwait.tsx'),
+  read('pages/About.tsx'),
+  read('pages/BookingPage.tsx'),
+  read('pages/ArabicCommercialPage.tsx'),
+]);
+
+const url = 'https://www.computerrepairkuwait.com/ar/pricing';
+add('Arabic pricing route is registered', app.includes("path: 'ar/pricing'"));
+add('Arabic pricing page exists and has a native Arabic H1', pricingPage.includes('export default function ArabicPricingPage') && pricingPage.includes('أسعار تصليح الكمبيوتر واللابتوب في الكويت'));
+add('Arabic pricing SEO entity and canonical URL are present', graph.includes("id: 'page-ar-pricing'") && graph.includes(`canonicalUrl: '${url}'`));
+add('Generated SEO projection contains the Arabic page', seoProjection.includes('"id": "page-ar-pricing"') && seoProjection.includes(`"canonicalUrl": "${url}"`));
+add('English and Arabic pricing language switch is reciprocal', locale.includes("'/pricing': '/ar/pricing'") && locale.includes("'/ar/pricing': '/pricing'"));
+add('Arabic pricing URL is in the checked-in sitemap', sitemap.includes(`<loc>${url}</loc>`));
+add('Pricing hreflang alternates are reciprocal', graph.includes("'ar-KW': 'https://www.computerrepairkuwait.com/ar/pricing'") && graph.includes("'en-KW': 'https://www.computerrepairkuwait.com/pricing'"));
+add('Homepage no longer displays a hard-coded review count', !hero.includes('reviewCount') && !hero.includes('+ reviews'));
+add('Homepage review widget no longer prints a fixed count', !reviews.includes('reviewCount') && !reviews.includes('+ reviews'));
+add('Homepage statistic strip uses service promises instead of unverified counters', graph.includes("label: 'Initial diagnosis', value: 'FREE'") && !graph.includes("value: '500+'"));
+add('Commercial, footer, and local pages avoid printed fixed review counts', !footer.includes('reviewCount') && !nearMe.includes('reviewCount') && !nearMeAr.includes('reviewCount') && !locations.includes('reviewCount') && !hawalli.includes('reviewCount') && !computerRepair.includes('158+ reviews') && !computerRepair.includes('158+ customer reviews') && !arabicCommercial.includes('158+ مراجعة'));
+add('Unverified customer/repair totals removed from sales copy', !about.includes("number: '500+'") && !booking.includes('500+ professionals') && !arabicCommercial.includes("['500+', 'جهاز تم إصلاحه']"));
+
+for (const check of checks) console.log(`${check.pass ? '✅' : '❌'} ${check.name}${check.detail ? ` — ${check.detail}` : ''}`);
+const failed = checks.filter((check) => !check.pass);
+if (failed.length) process.exit(1);
+console.log(`\n✅ Customer-growth regression checks passed (${checks.length} checks).`);
