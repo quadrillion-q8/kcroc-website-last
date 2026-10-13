@@ -1156,9 +1156,60 @@ export const SEO_GRAPH = {
         "schemaTypes": [
           "WebPage"
         ],
-        "lastModified": "2026-10-10T00:00:00+03:00"
+        "lastModified": "2026-10-13T00:00:00+03:00",
+        "locale": "en_KW",
+        "alternates": {
+          "en-KW": "https://www.computerrepairkuwait.com/pricing",
+          "ar-KW": "https://www.computerrepairkuwait.com/ar/pricing",
+          "x-default": "https://www.computerrepairkuwait.com/pricing"
+        },
+        "breadcrumbs": [
+          {
+            "name": "Home",
+            "url": "/"
+          },
+          {
+            "name": "Pricing",
+            "url": "/pricing"
+          }
+        ]
       },
       "description": "Transparent repair pricing.",
+      "featuredFAQIds": []
+    },
+    {
+      "id": "page-ar-pricing",
+      "entityType": "WebPage",
+      "isActive": true,
+      "title": "أسعار تصليح الكمبيوتر واللابتوب في الكويت",
+      "slug": "ar/pricing",
+      "seo": {
+        "title": "أسعار تصليح الكمبيوتر واللابتوب في الكويت | KCROC",
+        "description": "تعرف على أسعار تصليح الكمبيوتر واللابتوب في الكويت لدى KCROC. فحص أولي مجاني، أسعار بداية واضحة، استلام وتوصيل مجاني، وعرض سعر ثابت قبل بدء الإصلاح.",
+        "canonicalUrl": "https://www.computerrepairkuwait.com/ar/pricing",
+        "locale": "ar_KW",
+        "alternates": {
+          "ar-KW": "https://www.computerrepairkuwait.com/ar/pricing",
+          "en-KW": "https://www.computerrepairkuwait.com/pricing",
+          "x-default": "https://www.computerrepairkuwait.com/pricing"
+        },
+        "ogType": "website",
+        "schemaTypes": [
+          "WebPage"
+        ],
+        "lastModified": "2026-10-13T00:00:00+03:00",
+        "breadcrumbs": [
+          {
+            "name": "الرئيسية",
+            "url": "/"
+          },
+          {
+            "name": "أسعار التصليح",
+            "url": "/ar/pricing"
+          }
+        ]
+      },
+      "description": "أسعار واضحة لتصليح الكمبيوتر واللابتوب في الكويت: فحص مجاني، وأسعار بداية للشاشات والبطاريات والشحن واللوحة الأم، مع عرض سعر قبل الإصلاح.",
       "featuredFAQIds": []
     },
     {
