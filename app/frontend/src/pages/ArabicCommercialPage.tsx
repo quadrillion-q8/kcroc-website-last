@@ -995,7 +995,7 @@ function ArabicGamingPcRepairPage({
           <div className="grid items-center gap-8 lg:grid-cols-[1fr_auto]">
             <div>
               <div className="flex flex-wrap items-center gap-3 text-sm font-black text-cyan-300">
-                <span>4.9 ★ من 158+ مراجعة</span>
+                <span>تقييم 4.9 ★ على Google</span>
                 <span className="text-slate-600">•</span>
                 <span>استلام وتوصيل داخل الكويت</span>
               </div>
@@ -1166,8 +1166,8 @@ function ArabicComputerRepairPage({
 
               <div className="mt-10 grid gap-3 sm:grid-cols-4">
                 {[
-                  ['500+', 'جهاز تم إصلاحه'],
-                  ['4.9 ★', '158+ مراجعة'],
+                  ['مجاني', 'الفحص الأولي'],
+                  ['4.9 ★', 'تقييم Google'],
                   ['30 يوم', 'ضمان على الإصلاح'],
                   ['No Fix', 'No Fee'],
                 ].map(([value, label]) => (
@@ -1407,7 +1407,7 @@ function ArabicComputerRepairPage({
             <div>
               <div className="flex items-center gap-2 text-sm font-black text-cyan-300">
                 <Star className="h-4 w-4 fill-current" aria-hidden="true" />
-                4.9 ★ من 158+ مراجعة
+                تقييم 4.9 ★ على Google
               </div>
               <h2 id="final-cta" className="mt-3 text-3xl font-black leading-tight text-white sm:text-4xl">قول لنا المشكلة مثل ما هي — والباقي علينا</h2>
               <p className="mt-4 max-w-2xl leading-8 text-slate-300">أرسل موديل الجهاز، منطقتك، ووصفًا بسيطًا للعطل على واتساب. نبدأ من التشخيص ونوضح لك الخطوة التالية قبل الإصلاح.</p>
@@ -1576,6 +1576,7 @@ export default function ArabicCommercialPage() {
               <h2 id="arabic-local" className="text-2xl font-black text-white">استلام من منطقتك بالكويت</h2>
               <p className="mt-3 max-w-3xl leading-8 text-slate-400">ما تحتاج تودي الجهاز بنفسك إلى حولي. أرسل منطقتك وموديل الجهاز والمشكلة، ونرتب الاستلام ثم يتم الفحص والإصلاح في مختبر KCROC في حولي وإرجاع الجهاز لك بعد الاختبار.</p>
               <Link to="/ar/near-me" className="mt-5 inline-flex items-center gap-2 font-bold text-cyan-300 hover:text-cyan-200">فني كمبيوتر وتصليح لابتوب بالقرب مني <ArrowLeft className="h-4 w-4" aria-hidden="true" /></Link>
+              <Link to="/ar/pricing" className="mt-4 inline-flex items-center gap-2 font-bold text-cyan-300 hover:text-cyan-200">أسعار تصليح الكمبيوتر واللابتوب في الكويت <ArrowLeft className="h-4 w-4" aria-hidden="true" /></Link>
             </div>
           </div>
         </section>
