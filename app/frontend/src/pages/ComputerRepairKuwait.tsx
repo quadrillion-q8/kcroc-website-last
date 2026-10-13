@@ -254,9 +254,9 @@ export default function ComputerRepairKuwait() {
                 <p className="text-sm font-black uppercase tracking-[0.14em] text-cyan-400">Repair pricing</p>
                 <h2 id="pricing" className="mt-2 text-3xl font-black text-white">Clear starting prices, diagnosis before commitment</h2>
                 <p className="mt-3 max-w-3xl leading-7 text-slate-400">
-                  Common laptop repairs start from 15 KWD. Screen replacement starts from 30 KWD and
-                  component-level motherboard repair starts from 25 KWD. The final price depends on the model,
-                  fault and part required.
+                  Common laptop repairs start from 15 KWD. Screen-replacement labor starts from 30 KWD, plus the panel, and
+                  component-level motherboard repair starts from 25 KWD. The full price depends on the model,
+                  fault and parts required; we confirm it before paid work begins.
                 </p>
               </div>
               <Link to="/pricing" className="shrink-0 font-bold text-cyan-300 hover:text-cyan-200">
@@ -266,7 +266,7 @@ export default function ComputerRepairKuwait() {
             <div className="mt-7 grid gap-3 sm:grid-cols-3">
               {[
                 ['Laptop repair', 'From 15 KWD'],
-                ['Screen replacement', 'From 30 KWD'],
+                ['Screen replacement', 'Labor from 30 KWD + panel'],
                 ['Motherboard repair', 'From 25 KWD'],
               ].map(([name, price]) => (
                 <div key={name} className="rounded-2xl border border-slate-800 bg-slate-950/45 p-5">
