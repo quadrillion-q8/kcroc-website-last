@@ -3,8 +3,8 @@ import { Head } from 'vite-react-ssg';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { 
-  Award, Users, Clock, Shield, Zap, Heart, Star,
-  MapPin, Phone, MessageCircle, Wrench, Cpu, 
+  Award, Clock, Shield, Zap, Heart, Star,
+  MapPin, Phone, MessageCircle, Wrench, Cpu, Truck,
   Microscope, Crosshair, Thermometer, Lock
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -22,7 +22,7 @@ const business = KCROC_GRAPH.business!;
    1. PAGE DATA
 ───────────────────────────────────────────────────────────────────────────── */
 const stats = [
-  { icon: Users,  number: '500+', label: 'Happy Customers' },
+  { icon: Truck,  number: 'Free', label: 'Pickup & Delivery' },
   { icon: Clock,  number: '10–10', label: 'Open Daily' },
   { icon: Award,  number: '4.9★', label: 'Customer Rating' },
   { icon: Wrench, number: '20+',  label: 'Years Experience' },
