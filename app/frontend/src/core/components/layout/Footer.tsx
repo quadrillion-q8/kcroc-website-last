@@ -138,7 +138,7 @@ export function Footer() {
                   ))}
                 </div>
                 <span className="text-slate-400 text-xs font-medium">
-                  {business.aggregateRating.ratingValue} - {business.aggregateRating.reviewCount}+ reviews
+                  {business.aggregateRating.ratingValue} Google rating · view current reviews
                 </span>
               </div>
             )}
