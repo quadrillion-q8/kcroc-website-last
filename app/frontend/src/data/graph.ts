@@ -9,8 +9,8 @@ import { IMAGES } from '../constants/images.js';
 
 export const rawGraphData: RawGraphData = {
   metadata: {
-    version: '3.8.3',
-    lastUpdated: '2026-10-08T00:00:00+03:00',
+    version: '3.8.4',
+    lastUpdated: '2026-10-13T00:00:00+03:00',
     environment: 'production'
   },
 
@@ -28,7 +28,7 @@ export const rawGraphData: RawGraphData = {
       logoUrl: 'https://www.computerrepairkuwait.com/logo.webp', email: 'info@computerrepairkuwait.com',
       priceRange: '$$', openingHours: 'Open daily 10:00 AM – 10:00 PM',
       schemaOpeningHours: { dayOfWeek: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'], opens: '10:00', closes: '22:00' },
-      aggregateRating: { ratingValue: '4.9', reviewCount: 158, bestRating: 5 },
+      aggregateRating: { ratingValue: '4.9', reviewCount: 157, bestRating: 5 },
       socialLinks: { facebook: 'https://www.facebook.com/computerrepairkuwait', instagram: 'https://www.instagram.com/computerrepairkuwait', googleMaps: 'https://www.google.com/maps/place/?q=place_id:ChIJzapykEqbzz8RZsrwoaORhjY' },
       aiSummary: 'Kuwait Computer Repair On Call (KCROC) is a Hawalli-based component-level computer repair specialist. Services include laptop and MacBook repair, gaming PC repair, motherboard chip-level diagnostics, screen replacement, battery replacement, charging-port repair, hinge and chassis repair, keyboard replacement, SSD and RAM upgrades, liquid-damage repair, gaming laptop thermal servicing, and virus removal. Free pickup and delivery across all Kuwait governorates. 30-day warranty on completed repairs. No Fix, No Fee policy.',
     } as BusinessEntity,
@@ -44,10 +44,10 @@ export const rawGraphData: RawGraphData = {
     'stats-row': {
       id: 'stats-row', entityType: 'Stats', isActive: true, title: 'Homepage Stats',
       items: [
-        { label: 'Repairs completed', value: '500+',    sub: 'Since launch across Kuwait' },
-        { label: 'Success rate',        value: '98%',     sub: 'On complex motherboard repairs' },
-        { label: 'Warranty',            value: '30 days', sub: 'All parts and labor' },
-        { label: 'Pick & drop',         value: 'Free',    sub: 'Zero hidden transport fees' }
+        { label: 'Initial diagnosis', value: 'FREE', sub: 'No-obligation assessment' },
+        { label: 'Repair quote', value: 'First', sub: 'Approve before paid work' },
+        { label: 'Repair warranty', value: '30 days', sub: 'On completed repairs' },
+        { label: 'Pickup & delivery', value: 'Free', sub: 'Across Kuwait' }
       ]
     } as StatsEntity,
 
@@ -496,7 +496,8 @@ export const rawGraphData: RawGraphData = {
     'page-contact': { id: 'page-contact', slug: 'contact', entityType: 'WebPage', isActive: true, title: 'Contact Us', description: 'Contact KCROC for repair services.', seo: { title: 'Contact KCROC | Computer Repair Kuwait', description: 'Get in touch with Kuwait Computer Repair On Call. Book a free pick & drop repair service today.', canonicalUrl: 'https://www.computerrepairkuwait.com/contact', ogType: 'website', schemaTypes: ['ContactPage'] } } as WebPageEntity,
     'page-faq': { id: 'page-faq', slug: 'faq', entityType: 'WebPage', isActive: true, title: 'FAQ', description: 'Frequently asked questions.', seo: { title: 'Frequently Asked Questions | KCROC Kuwait', description: 'Answers to common questions about our laptop repair services, pricing, warranty, and data privacy.', canonicalUrl: 'https://www.computerrepairkuwait.com/faq', ogType: 'website', schemaTypes: ['FAQPage'] } } as WebPageEntity,
     'page-gallery': { id: 'page-gallery', slug: 'gallery', entityType: 'WebPage', isActive: true, title: 'Gallery', description: 'Lab and repair gallery.', seo: { title: 'Repair Gallery | KCROC Hawalli Lab', description: 'View our ESD-safe repair lab in Hawalli and real examples of our component-level micro-soldering.', canonicalUrl: 'https://www.computerrepairkuwait.com/gallery', ogType: 'website', schemaTypes: ['CollectionPage'] } } as WebPageEntity,
-    'page-pricing': { id: 'page-pricing', slug: 'pricing', entityType: 'WebPage', isActive: true, title: 'Pricing', description: 'Transparent repair pricing.', seo: { title: 'Computer Repair Prices Kuwait | Laptop, Screen & Battery | KCROC', description: 'Check KCROC computer and laptop repair prices in Kuwait: screens from 30 KWD + part, batteries from 8 KWD + part, and SSD/RAM installation from 5 KWD. Free initial diagnostics and a quote before repair.', canonicalUrl: 'https://www.computerrepairkuwait.com/pricing', ogType: 'website', schemaTypes: ['WebPage'], lastModified: '2026-10-10T00:00:00+03:00' } } as WebPageEntity,
+    'page-pricing': { id: 'page-pricing', slug: 'pricing', entityType: 'WebPage', isActive: true, title: 'Pricing', description: 'Transparent repair pricing.', seo: { title: 'Computer Repair Prices Kuwait | Laptop, Screen & Battery | KCROC', description: 'Check KCROC computer and laptop repair prices in Kuwait: screens from 30 KWD + part, batteries from 8 KWD + part, and SSD/RAM installation from 5 KWD. Free initial diagnostics and a quote before repair.', canonicalUrl: 'https://www.computerrepairkuwait.com/pricing', locale: 'en_KW', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/pricing', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/pricing', 'x-default': 'https://www.computerrepairkuwait.com/pricing' }, ogType: 'website', schemaTypes: ['WebPage'], lastModified: '2026-10-13T00:00:00+03:00', breadcrumbs: [{ name: 'Home', url: '/' }, { name: 'Pricing', url: '/pricing' }] } } as WebPageEntity,
+    'page-ar-pricing': { id: 'page-ar-pricing', slug: 'ar/pricing', entityType: 'WebPage', isActive: true, title: 'أسعار تصليح الكمبيوتر واللابتوب في الكويت', description: 'أسعار واضحة لتصليح الكمبيوتر واللابتوب في الكويت: فحص مجاني، وأسعار بداية للشاشات والبطاريات والشحن واللوحة الأم، مع عرض سعر قبل الإصلاح.', seo: { title: 'أسعار تصليح الكمبيوتر واللابتوب في الكويت | KCROC', description: 'تعرف على أسعار تصليح الكمبيوتر واللابتوب في الكويت لدى KCROC. فحص أولي مجاني، أسعار بداية واضحة، استلام وتوصيل مجاني، وعرض سعر ثابت قبل بدء الإصلاح.', canonicalUrl: 'https://www.computerrepairkuwait.com/ar/pricing', locale: 'ar_KW', alternates: { 'ar-KW': 'https://www.computerrepairkuwait.com/ar/pricing', 'en-KW': 'https://www.computerrepairkuwait.com/pricing', 'x-default': 'https://www.computerrepairkuwait.com/pricing' }, ogType: 'website', schemaTypes: ['WebPage'], lastModified: '2026-10-13T00:00:00+03:00', breadcrumbs: [{ name: 'الرئيسية', url: '/' }, { name: 'أسعار التصليح', url: '/ar/pricing' }] }, relatedServiceIds: ['srv-laptop', 'srv-screen', 'srv-battery', 'srv-charging-port', 'srv-motherboard', 'srv-ssd-ram'] } as WebPageEntity,
     
     'page-booking': { id: 'page-booking', slug: 'book', entityType: 'WebPage', isActive: true, title: 'Book a Repair', description: 'Book free laptop and computer repair pickup anywhere in Kuwait. Same-day hardware assessment. 30-day warranty.', seo: { title: 'Book Laptop & Computer Repair Pickup in Kuwait | KCROC', description: 'Book free laptop and computer repair pickup anywhere in Kuwait. Same-day hardware assessment. 30-day warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/book', ogType: 'website', schemaTypes: ['WebPage'] } } as WebPageEntity,
     
@@ -3839,7 +3840,7 @@ export const rawGraphData: RawGraphData = {
        REVIEWS
     ═══════════════════════════════════════════════════════════════ */
     'reviews-row': { 
-      id: 'reviews-row', entityType: 'Reviews', isActive: true, title: 'Verified Google Reviews', aggregateRating: { ratingValue: '4.9', reviewCount: 158 }, 
+      id: 'reviews-row', entityType: 'Reviews', isActive: true, title: 'Verified Google Reviews', aggregateRating: { ratingValue: '4.9', reviewCount: 157 }, 
       items: [
         { name: 'Ahmad Al-Sabah', location: 'Salmiya', time: '2 weeks ago', rating: 5, device: 'MacBook Pro — Screen Replacement', text: 'Fixed the MacBook Pro screen in 24 hours, price exactly as quoted.' },
         { name: 'Fatima A.', location: 'Hawalli', time: '1 month ago', rating: 5, device: 'MacBook Air — Liquid Damage', text: 'Spilled coffee on my Mac. Apple told me I lost all my data and needed a new board. KCROC fixed the original board and saved my files. Absolute lifesavers.' },
@@ -5259,6 +5260,6 @@ export const KCROC_GRAPH = {
 
 export const KCROC_AGGREGATE_RATING = {
   ratingValue: '4.9',
-  reviewCount:  158,
+  reviewCount:  157,
   bestRating:   5,
 };
