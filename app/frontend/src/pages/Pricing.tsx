@@ -105,18 +105,18 @@ const pricingCategories = [
     items: [
       {
         name: 'Battery Replacement',
-        price: '8–15 KWD + Part',
-        desc: 'Includes safe swollen-cell extraction',
+        price: '8–15 KWD labor + battery',
+        desc: 'Battery installation labor and safe handling; battery cost is separate.',
       },
       {
         name: 'Keyboard Replacement',
-        price: '10–20 KWD + Part',
-        desc: 'Labor for top-case or riveted layouts',
+        price: '10–20 KWD labor + keyboard/assembly',
+        desc: 'Labor varies by keyboard and top-case design; component cost is separate.',
       },
       {
         name: 'Laptop Screen Replacement',
-        price: 'From 30 KWD + Part',
-        desc: 'LCD, IPS, OLED & high-refresh panels',
+        price: 'Labor from 30 KWD + panel',
+        desc: 'Panel installation labor; the LCD, IPS, OLED or high-refresh panel is priced separately.',
       },
       {
         name: 'Hinge / Chassis Reconstruction',
@@ -171,11 +171,11 @@ const faqs = Object.freeze([
   },
   {
     q: 'Will the final price always match the price shown here?',
-    a: 'The prices shown are starting rates or typical service ranges. The final price can depend on your exact device, fault, screen specifications, required parts, repair complexity and part availability. We diagnose the specific machine and provide a fixed, no-obligation quote before repair begins.',
+    a: 'The prices shown are starting rates or typical service ranges. The final price depends on your exact device, fault, repair complexity and part availability. For screen, battery and keyboard replacements, any amount marked as labor plus a panel, battery, keyboard or other part does not include that component. We provide a fixed, no-obligation total quote before repair begins.',
   },
   {
     q: 'Why are some prices listed as "Labor + Part"?',
-    a: 'Parts vary significantly between models. Separating labor from the part cost means you are quoted for the exact component your specific machine requires rather than paying a generic part price.',
+    a: 'Parts vary significantly by model and grade. On screen, battery and keyboard replacements, the listed labor charge is separate from the panel, battery, keyboard or assembly itself. We confirm the component option and complete price with you before any paid work begins.',
   },
   {
     q: 'What happens if I do not approve the repair?',
@@ -590,9 +590,9 @@ export default function Pricing() {
 
               <p className="mt-2 text-sm leading-7 text-slate-300">
                 Prices below are starting rates or service ranges. The final
-                price can depend on the exact device, fault, screen
-                specifications, required parts, repair complexity and part
-                availability.
+                price depends on the exact device, fault, repair complexity and
+                part availability. For screen, battery and keyboard replacements,
+                the amount marked as labor plus a part does not include that component.
               </p>
 
               <p className="mt-3 text-sm leading-7 text-slate-300">
