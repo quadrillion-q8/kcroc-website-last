@@ -4,6 +4,7 @@ const ENGLISH_TO_ARABIC: Record<string, string> = {
   '/': '/ar/computer-repair-kuwait',
   '/services': '/ar/computer-repair-kuwait',
   '/near-me': '/ar/near-me',
+  '/pricing': '/ar/pricing',
   '/laptop-repair-kuwait': '/ar/laptop-repair-kuwait',
   '/motherboard-repair-kuwait': '/ar/motherboard-repair-kuwait',
   '/gaming-pc-repair-kuwait': '/ar/gaming-pc-repair-kuwait',
@@ -14,6 +15,7 @@ const ENGLISH_TO_ARABIC: Record<string, string> = {
 
 const ARABIC_TO_ENGLISH: Record<string, string> = {
   '/ar/near-me': '/near-me',
+  '/ar/pricing': '/pricing',
   '/ar/computer-repair-kuwait': '/services',
   '/ar/laptop-repair-kuwait': '/laptop-repair-kuwait',
   '/ar/motherboard-repair-kuwait': '/motherboard-repair-kuwait',
