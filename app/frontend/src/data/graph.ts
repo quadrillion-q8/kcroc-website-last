@@ -78,7 +78,7 @@ export const rawGraphData: RawGraphData = {
     'page-home': {
       id: 'page-home', slug: '', entityType: 'WebPage', isActive: true,
       title: 'Home', description: 'KCROC Homepage — Component-level computer repair in Kuwait',
-      seo: { title: 'Laptop & Computer Repair Kuwait | From 15 KWD | KCROC', description: 'Need laptop or computer repair in Kuwait? Repairs start at 15 KWD, with free pickup and delivery, a quote before work begins, and a 30-day warranty on completed repairs at KCROC.', canonicalUrl: 'https://www.computerrepairkuwait.com/', locale: 'en_KW', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/computer-repair-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/' }, ogType: 'website', schemaTypes: ['LocalBusiness', 'WebSite', 'WebPage'], lastModified: '2026-10-10T00:00:00+03:00' },
+      seo: { title: 'Laptop & Computer Repair Kuwait | From 15 KWD | KCROC', description: 'Need laptop or computer repair in Kuwait? Repairs start at 15 KWD, with free pickup and delivery, a quote before work begins, and a 30-day warranty on completed repairs at KCROC.', canonicalUrl: 'https://www.computerrepairkuwait.com/', locale: 'en_KW', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/computer-repair-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/' }, ogType: 'website', schemaTypes: ['LocalBusiness', 'WebSite', 'WebPage'], lastModified: '2026-10-13T00:00:00+03:00' },
       hero: { headline: 'Expert Laptop & Computer Repair in Kuwait.', subheadline: 'We Fix the Board. We Don\'t Just Swap It.', description: 'We diagnose and repair failed components at board level — restoring devices that most repair shops in Kuwait would simply declare beyond repair.', primaryCTA: { text: 'WhatsApp a Technician', route: 'https://wa.me/96555301913' }, secondaryCTA: { text: 'View All Services', route: '/services' } },
       featuredFAQIds: [
         'faq-pick-and-drop', 
@@ -126,19 +126,18 @@ export const rawGraphData: RawGraphData = {
       featuredUSPIds: ['usp-logistics', 'usp-component', 'usp-nofix', 'usp-privacy']
     } as WebPageEntity,
 
-    // 🚀 ARABIC HUB: real, standalone, crawlable Arabic page — not just an
-    // anchor/section inside the English near-me page. Targets the highest
-    // demand-to-content-ratio queries in GSC (فني كمبيوتر at position #2 with
-    // almost no dedicated Arabic content). Hreflang-linked to page-near-me
-    // above, and locale 'ar_KW' makes SEOEngine render this page RTL with a
-    // correct <html lang> automatically — see SEOEngine.tsx.
+    // Arabic near-me page: standalone, crawlable, and language-linked to the
+    // English near-me route. Keep this page focused on proximity and pickup /
+    // delivery intent; the broad high-value query “فني كمبيوتر” is assigned to
+    // /ar/computer-repair-kuwait to reduce overlap between the two destinations.
+    // Locale 'ar_KW' lets SEOEngine emit the appropriate language/direction.
     'page-near-me-ar': {
       id: 'page-near-me-ar', slug: 'ar/near-me', entityType: 'WebPage', isActive: true,
-      title: 'فني كمبيوتر وتصليح لابتوب في الكويت',
-      description: 'فني كمبيوتر في الكويت لتشخيص وإصلاح الكمبيوتر واللابتوب والماك بوك. استلام من المنزل أو المكتب وتوصيل مجاني من مختبر حولي، مع عرض السعر قبل الإصلاح وضمان 30 يومًا.',
+      title: 'تصليح كمبيوتر ولابتوب بالقرب منك في الكويت',
+      description: 'خدمة تصليح كمبيوتر ولابتوب بالقرب منك في الكويت مع استلام من المنزل أو المكتب، وإصلاح في مختبر KCROC بحولي، وتوصيل بعد الاختبار وعرض سعر قبل الإصلاح.',
       seo: {
-        title: 'فني كمبيوتر الكويت | تصليح لابتوب وكمبيوتر | KCROC',
-        description: 'تحتاج فني كمبيوتر في الكويت؟ نشخّص أعطال الكمبيوتر واللابتوب أولًا، ونستلم الجهاز من المنزل أو المكتب ونوصله إلى مختبرنا في حولي. تعرف على التكلفة قبل الإصلاح واستفد من ضمان 30 يومًا على الإصلاحات المكتملة.',
+        title: 'تصليح كمبيوتر بالقرب منك في الكويت | استلام وتوصيل | KCROC',
+        description: 'تحتاج خدمة تصليح كمبيوتر قريبة منك؟ نرتب استلام اللابتوب أو الكمبيوتر من المنزل أو المكتب ونصلحه في مختبرنا بحولي، مع توصيل مجاني وعرض سعر قبل بدء العمل.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/ar/near-me',
         locale: 'ar_KW',
         alternates: {
@@ -148,8 +147,8 @@ export const rawGraphData: RawGraphData = {
         },
         ogType: 'website',
         schemaTypes: ['WebPage', 'FAQPage', 'BreadcrumbList'],
-        lastModified: '2026-10-10T00:00:00+03:00',
-        breadcrumbs: [{ name: 'الرئيسية', url: '/' }, { name: 'فني كمبيوتر في الكويت', url: '/ar/near-me' }]
+        lastModified: '2026-10-13T00:00:00+03:00',
+        breadcrumbs: [{ name: 'الرئيسية', url: '/' }, { name: 'تصليح كمبيوتر بالقرب منك', url: '/ar/near-me' }]
       },
       featuredFAQIds: [
         'faq-arabic-computer-technician', 'faq-ar-hawalli-technician', 'faq-ar-pricing',
@@ -188,10 +187,10 @@ export const rawGraphData: RawGraphData = {
     'page-ar-computer-repair': {
       id: 'page-ar-computer-repair', slug: 'ar/computer-repair-kuwait', entityType: 'WebPage', isActive: true,
       title: 'فني كمبيوتر في الكويت | تصليح كمبيوتر ولابتوب',
-      description: 'فني كمبيوتر في الكويت لتصليح الكمبيوتر واللابتوب مع تشخيص قبل الإصلاح، استلام وتوصيل مجاني، وضمان 30 يومًا من مختبر KCROC في حولي.',
+      description: 'تحتاج فني كمبيوتر في الكويت؟ تصليح كمبيوتر ولابتوب وماك وبي سي مع تشخيص قبل الإصلاح، واستلام وتوصيل مجاني من مختبر KCROC في حولي، وعرض سعر قبل بدء العمل.',
       seo: {
-        title: 'تصليح كمبيوتر الكويت | صيانة كمبيوتر ولابتوب | KCROC',
-        description: 'تصليح وصيانة كمبيوتر ولابتوب في الكويت. تشخيص قبل الإصلاح، استلام وتوصيل مجاني، ضمان 30 يوم، ومختبر KCROC في حولي مفتوح يوميًا من 10 ص إلى 10 م.',
+        title: 'فني كمبيوتر في الكويت | تصليح كمبيوتر ولابتوب | KCROC',
+        description: 'تحتاج فني كمبيوتر في الكويت؟ تصليح كمبيوتر ولابتوب وماك وبي سي، مع تشخيص قبل الإصلاح، واستلام وتوصيل مجاني من مختبرنا في حولي، وضمان 30 يومًا.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/ar/computer-repair-kuwait',
         locale: 'ar_KW',
         alternates: {
@@ -200,8 +199,8 @@ export const rawGraphData: RawGraphData = {
           'x-default': 'https://www.computerrepairkuwait.com/'
         },
         ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList', 'FAQPage', 'Service'],
-        lastModified: '2026-09-28T00:00:00+03:00',
-        breadcrumbs: [{ name: 'الرئيسية', url: '/' }, { name: 'تصليح كمبيوتر في الكويت', url: '/ar/computer-repair-kuwait' }]
+        lastModified: '2026-10-13T00:00:00+03:00',
+        breadcrumbs: [{ name: 'الرئيسية', url: '/' }, { name: 'فني كمبيوتر في الكويت', url: '/ar/computer-repair-kuwait' }]
       },
       relatedServiceIds: ['srv-laptop', 'srv-motherboard', 'srv-gaming', 'srv-macbook', 'srv-screen']
     } as WebPageEntity,
@@ -496,7 +495,7 @@ export const rawGraphData: RawGraphData = {
     'page-contact': { id: 'page-contact', slug: 'contact', entityType: 'WebPage', isActive: true, title: 'Contact Us', description: 'Contact KCROC for repair services.', seo: { title: 'Contact KCROC | Computer Repair Kuwait', description: 'Get in touch with Kuwait Computer Repair On Call. Book a free pick & drop repair service today.', canonicalUrl: 'https://www.computerrepairkuwait.com/contact', ogType: 'website', schemaTypes: ['ContactPage'] } } as WebPageEntity,
     'page-faq': { id: 'page-faq', slug: 'faq', entityType: 'WebPage', isActive: true, title: 'FAQ', description: 'Frequently asked questions.', seo: { title: 'Frequently Asked Questions | KCROC Kuwait', description: 'Answers to common questions about our laptop repair services, pricing, warranty, and data privacy.', canonicalUrl: 'https://www.computerrepairkuwait.com/faq', ogType: 'website', schemaTypes: ['FAQPage'] } } as WebPageEntity,
     'page-gallery': { id: 'page-gallery', slug: 'gallery', entityType: 'WebPage', isActive: true, title: 'Gallery', description: 'Lab and repair gallery.', seo: { title: 'Repair Gallery | KCROC Hawalli Lab', description: 'View our ESD-safe repair lab in Hawalli and real examples of our component-level micro-soldering.', canonicalUrl: 'https://www.computerrepairkuwait.com/gallery', ogType: 'website', schemaTypes: ['CollectionPage'] } } as WebPageEntity,
-    'page-pricing': { id: 'page-pricing', slug: 'pricing', entityType: 'WebPage', isActive: true, title: 'Pricing', description: 'Transparent repair pricing.', seo: { title: 'Computer Repair Prices Kuwait | Laptop, Screen & Battery | KCROC', description: 'Check KCROC repair prices in Kuwait: screen-replacement labor from 30 KWD plus the panel, battery-replacement labor from 8 KWD plus the battery, and SSD/RAM installation labor from 5 KWD. Free initial diagnostics and a quote before repair.', canonicalUrl: 'https://www.computerrepairkuwait.com/pricing', locale: 'en_KW', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/pricing', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/pricing', 'x-default': 'https://www.computerrepairkuwait.com/pricing' }, ogType: 'website', schemaTypes: ['WebPage'], lastModified: '2026-10-13T00:00:00+03:00', breadcrumbs: [{ name: 'Home', url: '/' }, { name: 'Pricing', url: '/pricing' }] } } as WebPageEntity,
+    'page-pricing': { id: 'page-pricing', slug: 'pricing', entityType: 'WebPage', isActive: true, title: 'Pricing', description: 'Transparent repair pricing.', seo: { title: 'Computer Repair Prices Kuwait | Screen & Battery Labor | KCROC', description: 'Laptop screen labor from 30 KWD + panel; battery labor from 8 KWD + battery. Free initial diagnosis and a quote before repair in Kuwait.', canonicalUrl: 'https://www.computerrepairkuwait.com/pricing', locale: 'en_KW', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/pricing', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/pricing', 'x-default': 'https://www.computerrepairkuwait.com/pricing' }, ogType: 'website', schemaTypes: ['WebPage'], lastModified: '2026-10-13T00:00:00+03:00', breadcrumbs: [{ name: 'Home', url: '/' }, { name: 'Pricing', url: '/pricing' }] } } as WebPageEntity,
     'page-ar-pricing': { id: 'page-ar-pricing', slug: 'ar/pricing', entityType: 'WebPage', isActive: true, title: 'أسعار تصليح الكمبيوتر واللابتوب في الكويت', description: 'أسعار واضحة لتصليح الكمبيوتر واللابتوب في الكويت: فحص مجاني، وأسعار بداية للشاشات والبطاريات والشحن واللوحة الأم، مع عرض سعر قبل الإصلاح.', seo: { title: 'أسعار تصليح الكمبيوتر واللابتوب في الكويت | KCROC', description: 'تعرف على أسعار تصليح الكمبيوتر واللابتوب في الكويت لدى KCROC. فحص أولي مجاني، أسعار بداية واضحة، استلام وتوصيل مجاني، وعرض سعر ثابت قبل بدء الإصلاح.', canonicalUrl: 'https://www.computerrepairkuwait.com/ar/pricing', locale: 'ar_KW', alternates: { 'ar-KW': 'https://www.computerrepairkuwait.com/ar/pricing', 'en-KW': 'https://www.computerrepairkuwait.com/pricing', 'x-default': 'https://www.computerrepairkuwait.com/pricing' }, ogType: 'website', schemaTypes: ['WebPage'], lastModified: '2026-10-13T00:00:00+03:00', breadcrumbs: [{ name: 'الرئيسية', url: '/' }, { name: 'أسعار التصليح', url: '/ar/pricing' }] }, relatedServiceIds: ['srv-laptop', 'srv-screen', 'srv-battery', 'srv-charging-port', 'srv-motherboard', 'srv-ssd-ram'] } as WebPageEntity,
     
     'page-booking': { id: 'page-booking', slug: 'book', entityType: 'WebPage', isActive: true, title: 'Book a Repair', description: 'Book free laptop and computer repair pickup anywhere in Kuwait. Same-day hardware assessment. 30-day warranty.', seo: { title: 'Book Laptop & Computer Repair Pickup in Kuwait | KCROC', description: 'Book free laptop and computer repair pickup anywhere in Kuwait. Same-day hardware assessment. 30-day warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/book', ogType: 'website', schemaTypes: ['WebPage'] } } as WebPageEntity,
