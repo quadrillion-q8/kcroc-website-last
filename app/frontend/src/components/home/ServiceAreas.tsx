@@ -114,7 +114,8 @@ export const ServiceAreas = () => {
           </p>
           <div className="mt-4 flex flex-wrap gap-2">
             {[
-              { label: 'فني كمبيوتر في الكويت', path: '/ar/near-me' },
+              { label: 'فني كمبيوتر في الكويت', path: '/ar/computer-repair-kuwait' },
+              { label: 'تصليح كمبيوتر بالقرب مني', path: '/ar/near-me' },
               { label: 'تصليح كمبيوتر حولي', path: '/ar/computer-repair-hawalli' },
               { label: 'تصليح لابتوب', path: '/ar/laptop-repair-kuwait' },
               { label: 'تبديل بطارية', path: '/ar/battery-replacement-kuwait' },
