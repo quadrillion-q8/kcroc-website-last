@@ -294,7 +294,7 @@ export default function LocationDeepTemplate() {
                 <div className="flex items-center gap-2 text-sm text-slate-300 shrink-0">
                   <Star className="w-4 h-4 text-cyan-400 fill-cyan-400" aria-hidden="true" />
                   <span className="font-bold text-white">{reviews.aggregateRating.ratingValue}</span>
-                  <span className="text-slate-500">· {reviews.aggregateRating.reviewCount}+ reviews</span>
+                  <span className="text-slate-500">· Google rating</span>
                 </div>
               )}
             </div>
@@ -712,7 +712,7 @@ export default function LocationDeepTemplate() {
               <Star className="w-5 h-5 text-cyan-400 fill-cyan-400" aria-hidden="true" />
               <span className="text-xl font-black text-white">{reviews.aggregateRating.ratingValue}</span>
               <span className="text-slate-500 text-sm">
-                · {reviews.aggregateRating.reviewCount}+ verified Google reviews
+                · Google rating · view current reviews
               </span>
             </div>
             <blockquote className="bg-slate-900/50 border border-slate-800 rounded-2xl p-6 sm:p-8">
