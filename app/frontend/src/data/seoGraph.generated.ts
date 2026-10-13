@@ -1150,7 +1150,7 @@ export const SEO_GRAPH = {
       "slug": "pricing",
       "seo": {
         "title": "Computer Repair Prices Kuwait | Laptop, Screen & Battery | KCROC",
-        "description": "Check KCROC computer and laptop repair prices in Kuwait: screens from 30 KWD + part, batteries from 8 KWD + part, and SSD/RAM installation from 5 KWD. Free initial diagnostics and a quote before repair.",
+        "description": "Check KCROC repair prices in Kuwait: screen-replacement labor from 30 KWD plus the panel, battery-replacement labor from 8 KWD plus the battery, and SSD/RAM installation labor from 5 KWD. Free initial diagnostics and a quote before repair.",
         "canonicalUrl": "https://www.computerrepairkuwait.com/pricing",
         "ogType": "website",
         "schemaTypes": [
@@ -1972,13 +1972,13 @@ export const SEO_GRAPH = {
         "startingFrom": 30,
         "currency": "KWD",
         "quoteRequired": true,
-        "displayLabel": "From 30 KWD + part"
+        "displayLabel": "Labor from 30 KWD + display assembly"
       },
       "faqs": [
         {
           "id": "mac-screen-faq-1",
           "title": "How much is MacBook screen replacement in Kuwait?",
-          "answer": "The service starts from 30 KWD + part. Exact pricing depends on the MacBook model and the display assembly required."
+          "answer": "Display-replacement labor starts from 30 KWD; the display assembly is charged separately. Exact pricing depends on the MacBook model and assembly required."
         },
         {
           "id": "mac-screen-faq-2",
@@ -2679,8 +2679,8 @@ export const SEO_GRAPH = {
       "title": "Screen Replacement Kuwait",
       "slug": "laptop-screen-repair-kuwait",
       "seo": {
-        "title": "Laptop Screen Replacement Kuwait | From 30 KWD | KCROC",
-        "description": "Cracked, black or flickering laptop screen? Replacement from 30 KWD + part, same-day when the panel is in stock. Free Kuwait-wide pickup and 30-day warranty.",
+        "title": "Laptop Screen Replacement Kuwait | Labor from 30 KWD | KCROC",
+        "description": "Laptop screen-replacement labor from 30 KWD, plus the panel cost. Free diagnosis, same-day service when in stock, Kuwait-wide pickup and a 30-day warranty.",
         "canonicalUrl": "https://www.computerrepairkuwait.com/laptop-screen-repair-kuwait",
         "locale": "en_KW",
         "alternates": {
@@ -2699,7 +2699,7 @@ export const SEO_GRAPH = {
         "startingFrom": 30,
         "currency": "KWD",
         "quoteRequired": true,
-        "displayLabel": "From 30 KWD + part"
+        "displayLabel": "Labor from 30 KWD + panel"
       },
       "faqs": [
         {
@@ -2730,7 +2730,7 @@ export const SEO_GRAPH = {
         {
           "id": "faq-screen-cost",
           "title": "How much does laptop screen replacement cost?",
-          "answer": "From 30 KWD for standard panels, with the exact price depending on size, resolution, and whether it's a standard panel or a MacBook Retina display."
+          "answer": "Screen-replacement labor starts from 30 KWD, with the panel priced separately. The complete price depends on panel size, resolution, display type and exact model."
         },
         {
           "id": "faq-screen-oem",
@@ -2761,8 +2761,8 @@ export const SEO_GRAPH = {
       "title": "Laptop & MacBook Battery Replacement Kuwait",
       "slug": "battery-replacement-kuwait",
       "seo": {
-        "title": "Laptop Battery Replacement Kuwait | From 8 KWD | KCROC",
-        "description": "Laptop battery replacement from 8 KWD + part. We test battery health and charging faults first, with same-day service, free pickup and a 30-day warranty.",
+        "title": "Laptop Battery Replacement Kuwait | Labor from 8 KWD | KCROC",
+        "description": "Laptop battery-replacement labor from 8 KWD, plus the battery cost. We test battery health and charging faults first, with same-day service, free pickup and a 30-day warranty.",
         "canonicalUrl": "https://www.computerrepairkuwait.com/battery-replacement-kuwait",
         "locale": "en_KW",
         "alternates": {
@@ -2781,7 +2781,7 @@ export const SEO_GRAPH = {
         "startingFrom": 8,
         "currency": "KWD",
         "quoteRequired": true,
-        "displayLabel": "From 8 KWD + part"
+        "displayLabel": "Labor from 8 KWD + battery"
       },
       "faqs": [
         {
@@ -5216,7 +5216,7 @@ export const SEO_GRAPH = {
     {
       "id": "faq-cost",
       "title": "How much does computer repair cost in Kuwait?",
-      "answer": "Diagnostics are free. Screen replacement starts from 20 KWD, battery replacement from 12 KWD, laptop hardware repair from 15 KWD, MacBook repair from 25 KWD, and motherboard chip-level repair from 25 KWD."
+      "answer": "Diagnostics are free. Screen-replacement labor starts from 30 KWD, plus the panel; battery-replacement labor starts from 8 KWD (typically 8–15 KWD), plus the battery. Common laptop repairs start from 15 KWD, MacBook repair from 25 KWD, and component-level motherboard repair from 25 KWD. The complete price depends on the model, fault and parts, and is confirmed before paid work begins."
     },
     {
       "id": "faq-macbook-brands",
