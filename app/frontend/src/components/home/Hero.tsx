@@ -66,6 +66,18 @@ export default function Hero() {
             </Button>
           </div>
 
+          <div className="mt-4 flex justify-center">
+            <Link
+              to="/ar/computer-repair-kuwait"
+              lang="ar"
+              dir="rtl"
+              onClick={() => trackConversion('cta_click', { cta_name: 'hero_arabic_computer_repair', button_position: 'hero_mobile' })}
+              className="inline-flex min-h-11 items-center justify-center rounded-lg px-3 py-2 text-sm font-bold text-cyan-200 underline decoration-cyan-500/50 underline-offset-4 transition-colors hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+            >
+              فني كمبيوتر في الكويت · تصليح كمبيوتر ولابتوب
+            </Link>
+          </div>
+
           <div className="mt-4 flex items-center justify-center gap-2 text-xs font-semibold text-slate-300">
             <div className="flex" aria-hidden="true">{[...Array(5)].map((_, i) => <Star key={i} className="h-3.5 w-3.5 fill-current text-cyan-400" />)}</div>
             {rating && googleProfileUrl ? (
@@ -140,6 +152,18 @@ export default function Hero() {
                     Book Free Pickup
                   </a>
                 </Button>
+              </div>
+
+              <div className="mt-4">
+                <Link
+                  to="/ar/computer-repair-kuwait"
+                  lang="ar"
+                  dir="rtl"
+                  onClick={() => trackConversion('cta_click', { cta_name: 'hero_arabic_computer_repair', button_position: 'hero_desktop' })}
+                  className="inline-flex min-h-11 items-center rounded-lg px-2 py-2 text-sm font-bold text-cyan-200 underline decoration-cyan-500/50 underline-offset-4 transition-colors hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+                >
+                  فني كمبيوتر في الكويت · تصليح كمبيوتر ولابتوب
+                </Link>
               </div>
 
               <div className="mt-8 grid max-w-xl grid-cols-3 divide-x divide-white/10 border-y border-white/[0.10] py-5">
