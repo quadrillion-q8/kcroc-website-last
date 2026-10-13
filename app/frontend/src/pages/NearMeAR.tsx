@@ -139,7 +139,7 @@ export default function NearMeAR() {
               </div>
               <div className="mt-7 flex flex-wrap gap-x-5 gap-y-2 text-sm text-slate-400">
                 <span className="inline-flex items-center gap-1.5"><Star className="h-4 w-4 fill-current text-amber-400" aria-hidden="true" /> تقييم {business.aggregateRating.ratingValue}★</span>
-                <span>+{business.aggregateRating.reviewCount} تقييم</span>
+                <span>تقييم Google · شاهد التقييمات الحالية</span>
                 <span>استلام وتوصيل مجاني</span>
               </div>
             </div>
@@ -275,7 +275,7 @@ export default function NearMeAR() {
             ))}
           </div>
           <div className="mt-6 text-center">
-            <Link to="/pricing" className="text-sm font-bold text-cyan-400 hover:text-cyan-300">شاهد أسعار إصلاح الكمبيوتر في الكويت ←</Link>
+            <Link to="/ar/pricing" className="text-sm font-bold text-cyan-400 hover:text-cyan-300">شاهد أسعار تصليح الكمبيوتر في الكويت ←</Link>
           </div>
         </div>
       </section>
