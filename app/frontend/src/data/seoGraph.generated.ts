@@ -25,7 +25,7 @@ export const SEO_GRAPH = {
           "WebSite",
           "WebPage"
         ],
-        "lastModified": "2026-10-10T00:00:00+03:00"
+        "lastModified": "2026-10-13T00:00:00+03:00"
       },
       "description": "KCROC Homepage — Component-level computer repair in Kuwait",
       "featuredFAQIds": [
@@ -188,11 +188,11 @@ export const SEO_GRAPH = {
       "id": "page-near-me-ar",
       "entityType": "WebPage",
       "isActive": true,
-      "title": "فني كمبيوتر وتصليح لابتوب في الكويت",
+      "title": "تصليح كمبيوتر ولابتوب بالقرب منك في الكويت",
       "slug": "ar/near-me",
       "seo": {
-        "title": "فني كمبيوتر الكويت | تصليح لابتوب وكمبيوتر | KCROC",
-        "description": "تحتاج فني كمبيوتر في الكويت؟ نشخّص أعطال الكمبيوتر واللابتوب أولًا، ونستلم الجهاز من المنزل أو المكتب ونوصله إلى مختبرنا في حولي. تعرف على التكلفة قبل الإصلاح واستفد من ضمان 30 يومًا على الإصلاحات المكتملة.",
+        "title": "تصليح كمبيوتر بالقرب منك في الكويت | استلام وتوصيل | KCROC",
+        "description": "تحتاج خدمة تصليح كمبيوتر قريبة منك؟ نرتب استلام اللابتوب أو الكمبيوتر من المنزل أو المكتب ونصلحه في مختبرنا بحولي، مع توصيل مجاني وعرض سعر قبل بدء العمل.",
         "canonicalUrl": "https://www.computerrepairkuwait.com/ar/near-me",
         "locale": "ar_KW",
         "alternates": {
@@ -206,19 +206,19 @@ export const SEO_GRAPH = {
           "FAQPage",
           "BreadcrumbList"
         ],
-        "lastModified": "2026-10-10T00:00:00+03:00",
+        "lastModified": "2026-10-13T00:00:00+03:00",
         "breadcrumbs": [
           {
             "name": "الرئيسية",
             "url": "/"
           },
           {
-            "name": "فني كمبيوتر في الكويت",
+            "name": "تصليح كمبيوتر بالقرب منك",
             "url": "/ar/near-me"
           }
         ]
       },
-      "description": "دليل عربي لخدمات فني الكمبيوتر وتصليح اللابتوب في الكويت، مع استلام وتوصيل مجاني من مختبر KCROC في حولي.",
+      "description": "خدمة تصليح كمبيوتر ولابتوب بالقرب منك في الكويت مع استلام من المنزل أو المكتب، وإصلاح في مختبر KCROC بحولي، وتوصيل بعد الاختبار وعرض سعر قبل الإصلاح.",
       "featuredFAQIds": [
         "faq-arabic-computer-technician",
         "faq-ar-hawalli-technician",
@@ -235,14 +235,14 @@ export const SEO_GRAPH = {
       "title": "فني كمبيوتر في الكويت | تصليح كمبيوتر ولابتوب",
       "slug": "ar/computer-repair-kuwait",
       "seo": {
-        "title": "فني كمبيوتر الكويت | تصليح كمبيوتر ولابتوب | KCROC",
-        "description": "فني كمبيوتر في الكويت لتصليح الكمبيوتر واللابتوب. تشخيص قبل الإصلاح، استلام وتوصيل مجاني، ضمان 30 يوم، وفحص احترافي في مختبر KCROC بحولي.",
+        "title": "فني كمبيوتر في الكويت | تصليح كمبيوتر ولابتوب | KCROC",
+        "description": "تحتاج فني كمبيوتر في الكويت؟ تصليح كمبيوتر ولابتوب وماك وبي سي، مع تشخيص قبل الإصلاح، واستلام وتوصيل مجاني من مختبرنا في حولي، وضمان 30 يومًا.",
         "canonicalUrl": "https://www.computerrepairkuwait.com/ar/computer-repair-kuwait",
         "locale": "ar_KW",
         "alternates": {
           "ar-KW": "https://www.computerrepairkuwait.com/ar/computer-repair-kuwait",
-          "en-KW": "https://www.computerrepairkuwait.com/computer-repair-kuwait",
-          "x-default": "https://www.computerrepairkuwait.com/computer-repair-kuwait"
+          "en-KW": "https://www.computerrepairkuwait.com/",
+          "x-default": "https://www.computerrepairkuwait.com/"
         },
         "ogType": "website",
         "schemaTypes": [
@@ -251,19 +251,19 @@ export const SEO_GRAPH = {
           "FAQPage",
           "Service"
         ],
-        "lastModified": "2026-09-28T00:00:00+03:00",
+        "lastModified": "2026-10-13T00:00:00+03:00",
         "breadcrumbs": [
           {
             "name": "الرئيسية",
             "url": "/"
           },
           {
-            "name": "تصليح كمبيوتر في الكويت",
+            "name": "فني كمبيوتر في الكويت",
             "url": "/ar/computer-repair-kuwait"
           }
         ]
       },
-      "description": "فني كمبيوتر في الكويت لتصليح الكمبيوتر واللابتوب مع تشخيص قبل الإصلاح، استلام وتوصيل مجاني، وضمان 30 يومًا من مختبر KCROC في حولي.",
+      "description": "تحتاج فني كمبيوتر في الكويت؟ تصليح كمبيوتر ولابتوب وماك وبي سي مع تشخيص قبل الإصلاح، واستلام وتوصيل مجاني من مختبر KCROC في حولي، وعرض سعر قبل بدء العمل.",
       "featuredFAQIds": []
     },
     {
@@ -1149,8 +1149,8 @@ export const SEO_GRAPH = {
       "title": "Pricing",
       "slug": "pricing",
       "seo": {
-        "title": "Computer Repair Prices Kuwait | Laptop, Screen & Battery | KCROC",
-        "description": "Check KCROC repair prices in Kuwait: screen-replacement labor from 30 KWD plus the panel, battery-replacement labor from 8 KWD plus the battery, and SSD/RAM installation labor from 5 KWD. Free initial diagnostics and a quote before repair.",
+        "title": "Computer Repair Prices Kuwait | Screen & Battery Labor | KCROC",
+        "description": "Laptop screen labor from 30 KWD + panel; battery labor from 8 KWD + battery. Free initial diagnosis and a quote before repair in Kuwait.",
         "canonicalUrl": "https://www.computerrepairkuwait.com/pricing",
         "ogType": "website",
         "schemaTypes": [
