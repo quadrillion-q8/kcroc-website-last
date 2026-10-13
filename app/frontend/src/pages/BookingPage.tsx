@@ -238,7 +238,7 @@ export default function BookingPage() {
               <div className="text-4xl font-black text-white leading-none">4.9<span className="text-cyan-400 text-2xl">★</span></div>
               <div>
                 <p className="text-sm text-white font-bold mb-1">Google Reviews</p>
-                <p className="text-xs text-slate-400">Trusted by over 500+ professionals and gamers across Kuwait.</p>
+                <p className="text-xs text-slate-400">Laptop, PC and gaming-system repair support across Kuwait.</p>
               </div>
             </div>
           </div>
