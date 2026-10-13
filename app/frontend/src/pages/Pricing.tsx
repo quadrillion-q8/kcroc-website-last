@@ -426,6 +426,28 @@ export default function Pricing() {
               </span>
             ))}
           </div>
+
+          <div className="mx-auto mt-8 max-w-5xl text-left" aria-label="Starting repair labor prices">
+            <p className="mb-3 text-xs font-black uppercase tracking-[0.16em] text-cyan-300">Starting prices · parts charged separately where stated</p>
+            <div className="grid gap-3 sm:grid-cols-3">
+              <Link to="/laptop-screen-repair-kuwait" className="rounded-2xl border border-slate-800 bg-slate-900/70 p-4 transition-colors hover:border-cyan-500/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400">
+                <span className="text-xs font-bold text-slate-400">Laptop screen labor</span>
+                <span className="mt-1 block text-xl font-black text-white">From 30 KWD + panel</span>
+                <span className="mt-1 block text-xs leading-5 text-slate-400">The replacement display panel is priced separately.</span>
+              </Link>
+              <Link to="/battery-replacement-kuwait" className="rounded-2xl border border-slate-800 bg-slate-900/70 p-4 transition-colors hover:border-cyan-500/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400">
+                <span className="text-xs font-bold text-slate-400">Laptop battery labor</span>
+                <span className="mt-1 block text-xl font-black text-white">From 8 KWD + battery</span>
+                <span className="mt-1 block text-xs leading-5 text-slate-400">Battery price depends on model and availability.</span>
+              </Link>
+              <Link to="/ssd-ram-upgrade-kuwait" className="rounded-2xl border border-slate-800 bg-slate-900/70 p-4 transition-colors hover:border-cyan-500/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400">
+                <span className="text-xs font-bold text-slate-400">SSD / RAM installation labor</span>
+                <span className="mt-1 block text-xl font-black text-white">From 5 KWD</span>
+                <span className="mt-1 block text-xs leading-5 text-slate-400">Upgrade parts and data migration are separate where required.</span>
+              </Link>
+            </div>
+            <p className="mt-3 text-xs leading-5 text-slate-500">A free initial diagnosis is available. You receive the repair quote and approve it before paid repair work begins.</p>
+          </div>
         </div>
       </section>
 
