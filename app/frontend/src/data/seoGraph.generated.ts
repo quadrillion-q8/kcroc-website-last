@@ -2858,8 +2858,8 @@ export const SEO_GRAPH = {
       "title": "Hawalli Repair Center",
       "slug": "hawalli",
       "seo": {
-        "title": "Computer & Laptop Repair Hawalli | KCROC",
-        "description": "Computer and laptop repair in Hawalli at KCROC, Al Mullah Complex on Ibn Khaldoun Street. Get fault diagnosis, a clear quote before repair, free pickup and delivery across Kuwait, and a 30-day repair warranty.",
+        "title": "Computer Repair Hawalli | Laptop & PC Repair | KCROC",
+        "description": "Visit KCROC’s Hawalli lab on Ibn Khaldoun St for laptop, PC, MacBook and motherboard repair. Diagnosis first, free pickup across Kuwait and a 30-day warranty.",
         "canonicalUrl": "https://www.computerrepairkuwait.com/location/hawalli",
         "alternates": {
           "en-KW": "https://www.computerrepairkuwait.com/location/hawalli",
@@ -2870,7 +2870,7 @@ export const SEO_GRAPH = {
         "schemaTypes": [
           "LocalBusiness"
         ],
-        "lastModified": "2026-10-10T00:00:00+03:00"
+        "lastModified": "2026-10-14T00:00:00+03:00"
       },
       "coords": {
         "lat": 29.3416921515256,
@@ -2959,8 +2959,8 @@ export const SEO_GRAPH = {
       "title": "Farwaniya",
       "slug": "farwaniya",
       "seo": {
-        "title": "Computer & Laptop Repair Farwaniya | KCROC",
-        "description": "Computer and laptop repair for Farwaniya, Khaitan, Riggae, Ardiya and Jleeb Al-Shuyoukh. Free pickup to KCROC’s Hawalli lab, diagnosis and a clear quote before repair, plus return delivery and a 30-day warranty.",
+        "title": "Computer Repair Farwaniya | Free Laptop Pickup | KCROC",
+        "description": "Computer and laptop repair in Farwaniya, Khaitan, Riggae, Ardiya and Jleeb Al-Shuyoukh. Free pickup to Hawalli, clear quote before repair and 30-day warranty.",
         "canonicalUrl": "https://www.computerrepairkuwait.com/location/farwaniya",
         "alternates": {
           "en-KW": "https://www.computerrepairkuwait.com/location/farwaniya",
@@ -2971,7 +2971,7 @@ export const SEO_GRAPH = {
         "schemaTypes": [
           "LocalBusiness"
         ],
-        "lastModified": "2026-10-10T00:00:00+03:00"
+        "lastModified": "2026-10-14T00:00:00+03:00"
       },
       "coords": {
         "lat": 29.277,
@@ -3675,8 +3675,8 @@ export const SEO_GRAPH = {
       "title": "HP Laptop Repair Kuwait",
       "slug": "hp-laptop-repair-kuwait",
       "seo": {
-        "title": "HP Laptop Repair Kuwait | Free Pickup | KCROC",
-        "description": "HP laptop repair in Kuwait for EliteBook, Pavilion, ProBook and OMEN. Free pickup, diagnosis before repair, and 30-day warranty.",
+        "title": "HP Laptop Repair Kuwait | Independent Service | KCROC",
+        "description": "Independent HP laptop repair in Kuwait for Pavilion, EliteBook, ProBook, Envy, OMEN and Victus. Free pickup, diagnosis first, quote before repair and a 30-day warranty.",
         "canonicalUrl": "https://www.computerrepairkuwait.com/hp-laptop-repair-kuwait",
         "ogType": "article",
         "schemaTypes": [
@@ -5576,8 +5576,8 @@ export const SEO_GRAPH = {
         "title": "HP Laptop Repair Kuwait",
         "officialWebsite": "https://www.hp.com",
         "seo": {
-          "title": "HP Laptop Repair Kuwait | Free Pickup | KCROC",
-          "description": "HP laptop repair in Kuwait for EliteBook, Pavilion, ProBook and OMEN. Free pickup, diagnosis before repair, and 30-day warranty.",
+          "title": "HP Laptop Repair Kuwait | Independent Service | KCROC",
+          "description": "Independent HP laptop repair in Kuwait for Pavilion, EliteBook, ProBook, Envy, OMEN and Victus. Free pickup, diagnosis first, quote before repair and a 30-day warranty.",
           "canonicalUrl": "https://www.computerrepairkuwait.com/hp-laptop-repair-kuwait",
           "ogType": "article",
           "schemaTypes": [
