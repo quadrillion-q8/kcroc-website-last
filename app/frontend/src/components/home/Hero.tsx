@@ -1,7 +1,6 @@
 // File: app/frontend/src/components/home/Hero.tsx
 import { Button } from '@/components/ui/button';
 import { CalendarClock, Check, MessageCircle, Star, ArrowRight } from 'lucide-react';
-import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ROUTES } from '../../constants/routes';
 import { KCROC_GRAPH } from '../../data/graph';
@@ -9,56 +8,17 @@ import { useAnalytics } from '../../core/analytics/AnalyticsProvider';
 import { buildWhatsAppLink } from '../../utils/whatsappIntent';
 
 export default function Hero() {
-  const [statsAnimated, setStatsAnimated] = useState(false);
-  const [statsLoading, setStatsLoading] = useState(true);
   const { trackConversion } = useAnalytics();
 
   const homePage = KCROC_GRAPH.pages?.find((p) => p.id === 'page-home');
   const hero = homePage?.hero;
   const business = KCROC_GRAPH.business;
   const heroWhatsAppLink = buildWhatsAppLink('Hi KCROC, I need computer repair in Kuwait. Can I get a free diagnosis and pickup?');
-  const rating = business!.aggregateRating!.ratingValue;
-  const reviewCount = business?.aggregateRating?.reviewCount ?? 150;
+  const rating = business?.aggregateRating?.ratingValue;
+  const googleProfileUrl = business?.socialLinks?.googleMaps;
   const headline = hero?.headline ?? "Kuwait's Expert Component-Level Repair Service.";
   const desktopImage = '/images/kcroc-laptop-repair-technicians-hawalli-kuwait.webp';
   const heroImage768 = '/images/kcroc-laptop-repair-technicians-hawalli-kuwait.w768.webp';
-
-  useEffect(() => {
-    const loadingTimer = setTimeout(() => setStatsLoading(false), 500);
-    const animationTimer = setTimeout(() => setStatsAnimated(true), 700);
-    return () => {
-      clearTimeout(loadingTimer);
-      clearTimeout(animationTimer);
-    };
-  }, []);
-
-  const stats = [
-    { number: 500, suffix: '+', label: 'repairs completed' },
-    { number: 98, suffix: '%', label: 'success rate' },
-    { number: 30, suffix: ' days', label: 'parts + labour warranty' },
-  ];
-
-  const Counter = ({ end, suffix = '', duration = 1300 }: { end: number; suffix?: string; duration?: number }) => {
-    const [count, setCount] = useState(0);
-    const [hasAnimated, setHasAnimated] = useState(false);
-
-    useEffect(() => {
-      if (!statsAnimated || hasAnimated || statsLoading) return;
-      setHasAnimated(true);
-      let startTime = 0;
-      const animate = (time: number) => {
-        if (!startTime) startTime = time;
-        const progress = Math.min((time - startTime) / duration, 1);
-        setCount(Math.floor(progress * end));
-        if (progress < 1) requestAnimationFrame(animate);
-        else setCount(end);
-      };
-      requestAnimationFrame(animate);
-    }, [statsAnimated, hasAnimated, statsLoading, end, duration]);
-
-    if (statsLoading) return <span>—</span>;
-    return <span>{count}{suffix}</span>;
-  };
 
   return (
     <>
@@ -108,7 +68,11 @@ export default function Hero() {
 
           <div className="mt-4 flex items-center justify-center gap-2 text-xs font-semibold text-slate-300">
             <div className="flex" aria-hidden="true">{[...Array(5)].map((_, i) => <Star key={i} className="h-3.5 w-3.5 fill-current text-cyan-400" />)}</div>
-            <span>{rating} Google rating · {reviewCount}+ reviews</span>
+            {rating && googleProfileUrl ? (
+              <a href={googleProfileUrl} target="_blank" rel="noopener noreferrer" className="underline-offset-4 hover:text-cyan-200 hover:underline">
+                {rating} Google rating · Read current reviews
+              </a>
+            ) : <span>Customer reviews on Google</span>}
           </div>
 
           <div className="kcroc-photo-frame kcroc-copper-glow mt-6 aspect-[4/3] bg-slate-900">
@@ -179,12 +143,14 @@ export default function Hero() {
               </div>
 
               <div className="mt-8 grid max-w-xl grid-cols-3 divide-x divide-white/10 border-y border-white/[0.10] py-5">
-                {stats.map((stat) => (
-                  <div key={stat.label} className="px-4 first:pl-0 last:pr-0">
-                    <div className="text-2xl font-black tracking-tight text-white xl:text-3xl">
-                      <Counter end={stat.number} suffix={stat.suffix} />
-                    </div>
-                    <div className="mt-1 text-[10px] font-bold uppercase leading-tight tracking-[0.12em] text-slate-500">{stat.label}</div>
+                {[
+                  { value: 'Free', label: 'Initial diagnosis' },
+                  { value: 'Quote first', label: 'Before paid work' },
+                  { value: '30 days', label: 'Repair warranty' },
+                ].map((item) => (
+                  <div key={item.label} className="px-4 first:pl-0 last:pr-0">
+                    <div className="text-lg font-black tracking-tight text-white xl:text-2xl">{item.value}</div>
+                    <div className="mt-1 text-[10px] font-bold uppercase leading-tight tracking-[0.12em] text-slate-500">{item.label}</div>
                   </div>
                 ))}
               </div>
@@ -214,7 +180,9 @@ export default function Hero() {
                       </div>
                       <div className="hidden shrink-0 text-right sm:block">
                         <div className="flex justify-end" aria-hidden="true">{[...Array(5)].map((_, i) => <Star key={i} className="h-4 w-4 fill-current text-cyan-400" />)}</div>
-                        <p className="mt-1 text-[11px] font-semibold text-slate-400">{rating} · {reviewCount}+ reviews</p>
+                        {rating && googleProfileUrl ? (
+                          <a href={googleProfileUrl} target="_blank" rel="noopener noreferrer" className="mt-1 block text-[11px] font-semibold text-slate-400 hover:text-cyan-300">{rating} Google rating · View reviews</a>
+                        ) : <p className="mt-1 text-[11px] font-semibold text-slate-400">Customer reviews</p>}
                       </div>
                     </div>
                   </div>
