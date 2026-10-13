@@ -70,6 +70,7 @@ export const getPageWhatsAppLink = (pathname: string): string => {
     const arabicNames: Record<string, string> = {
       'laptop-repair-kuwait': 'تصليح لابتوب في الكويت',
       'computer-repair-kuwait': 'تصليح كمبيوتر في الكويت',
+      'pricing': 'أسعار تصليح الكمبيوتر واللابتوب في الكويت',
       'motherboard-repair-kuwait': 'تصليح المذربورد واللوحة الأم في الكويت',
       'gaming-pc-repair-kuwait': 'تصليح Gaming PC في الكويت',
       'laptop-screen-repair-kuwait': 'تبديل شاشة اللابتوب في الكويت',
