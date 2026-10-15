@@ -5,6 +5,15 @@ const checks = [];
 const add = (name, pass, detail = '') => checks.push({ name, pass, detail });
 const read = (relative) => readFile(path.resolve('src', relative), 'utf8');
 
+// Normalise formatting-only differences (quote style, whitespace, invisible Unicode)
+// so cosmetic edits do not fail the build. The Arabic wording itself is still matched exactly.
+const norm = (s) =>
+  s
+    .replace(/[​-‏‪-‮⁦-⁩﻿ـ]/g, '')
+    .replace(/["`]/g, "'")
+    .replace(/\s+/g, ' ');
+const has = (source, needle) => norm(source).includes(norm(needle));
+
 const [app, graph, seoProjection, locale, pricingPage, sitemap, hero, reviews, footer, nearMe, nearMeAr, locations, hawalli, computerRepair, about, booking, arabicCommercial, serviceAreas, englishPricing] = await Promise.all([
   read('App.tsx'),
   read('data/graph.ts'),
@@ -41,7 +50,13 @@ add('Homepage statistic strip uses service promises instead of unverified counte
 add('Commercial, footer, and local pages avoid printed fixed review counts', !footer.includes('reviewCount') && !nearMe.includes('reviewCount') && !nearMeAr.includes('reviewCount') && !locations.includes('reviewCount') && !hawalli.includes('reviewCount') && !computerRepair.includes('158+ reviews') && !computerRepair.includes('158+ customer reviews') && !arabicCommercial.includes('158+ مراجعة'));
 add('Unverified customer/repair totals removed from sales copy', !about.includes("number: '500+'") && !booking.includes('500+ professionals') && !arabicCommercial.includes("['500+', 'جهاز تم إصلاحه']"));
 
-add('Arabic technician head term is assigned to the main Arabic commercial page', graph.includes("title: 'فني كمبيوتر في الكويت | تصليح كمبيوتر ولابتوب'") && graph.includes("title: 'فني كمبيوتر في الكويت | تصليح كمبيوتر ولابتوب | KCROC'") && arabicCommercial.includes("h1: 'فني كمبيوتر في الكويت لتصليح الكمبيوتر واللابتوب'"));
+// Arabic technician head term: split into three checks so a failure names the exact missing string.
+const arTitle = 'فني كمبيوتر في الكويت | تصليح كمبيوتر ولابتوب';
+const arH1 = 'فني كمبيوتر في الكويت لتصليح الكمبيوتر واللابتوب';
+add('Arabic technician head term: page title in graph', has(graph, `title: '${arTitle}'`), `expected in src/data/graph.ts: title: '${arTitle}'`);
+add('Arabic technician head term: SEO title in graph', has(graph, `title: '${arTitle} | KCROC'`), `expected in src/data/graph.ts: title: '${arTitle} | KCROC'`);
+add('Arabic technician head term: H1 on main Arabic commercial page', has(arabicCommercial, `h1: '${arH1}'`), `expected in src/pages/ArabicCommercialPage.tsx: h1: '${arH1}'`);
+
 add('Arabic nearby page targets proximity intent and links to the main service page', graph.includes("title: 'تصليح كمبيوتر بالقرب منك في الكويت | استلام وتوصيل | KCROC'") && nearMeAr.includes('تصليح كمبيوتر ولابتوب') && nearMeAr.includes('to="/ar/computer-repair-kuwait"'));
 add('Arabic hreflang projection matches homepage alternate', graph.includes("'en-KW': 'https://www.computerrepairkuwait.com/'") && seoProjection.includes('\"en-KW\": \"https://www.computerrepairkuwait.com/\"'));
 add('Homepage hero exposes a tracked Arabic commercial link on mobile and desktop', (hero.match(/hero_arabic_computer_repair/g) || []).length === 2 && (hero.match(/to="\/ar\/computer-repair-kuwait"/g) || []).length === 2);
@@ -54,7 +69,7 @@ add('Farwaniya service-area metadata is synchronized and does not imply a local 
 add('HP title and description clarify independent service in both SEO projection copies', graph.includes("title: 'HP Laptop Repair Kuwait | Independent Service | KCROC'") && graph.includes("Independent HP laptop repair in Kuwait for Pavilion, EliteBook, ProBook, Envy, OMEN and Victus. Free pickup, diagnosis first, quote before repair and a 30-day warranty.") && (seoProjection.match(/HP Laptop Repair Kuwait \| Independent Service \| KCROC/g) || []).length === 2 && (seoProjection.match(/Independent HP laptop repair in Kuwait for Pavilion, EliteBook, ProBook, Envy, OMEN and Victus\. Free pickup, diagnosis first, quote before repair and a 30-day warranty\./g) || []).length === 2);
 add('Local SEO metadata dates were updated only for the refreshed Hawalli and Farwaniya pages', graph.includes("lastModified: '2026-10-14T00:00:00+03:00'") && (seoProjection.match(/\"lastModified\": \"2026-10-14T00:00:00\+03:00\"/g) || []).length === 2);
 
-for (const check of checks) console.log(`${check.pass ? '✅' : '❌'} ${check.name}${check.detail ? ` — ${check.detail}` : ''}`);
+for (const check of checks) console.log(`${check.pass ? '✅' : '❌'} ${check.name}${!check.pass && check.detail ? ` — ${check.detail}` : ''}`);
 const failed = checks.filter((check) => !check.pass);
 if (failed.length) process.exit(1);
 console.log(`\n✅ Customer-growth regression checks passed (${checks.length} checks).`);
