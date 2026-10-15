@@ -10,6 +10,7 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { StandaloneRelatedLinks } from '@/components/content/StandaloneRelatedLinks';
+import { HeadTermCallout } from '@/components/content/HeadTermCallout';
 import StickyTOC from '@/components/blog/StickyTOC';
 
 import { KCROC_GRAPH } from '../data/graph';
@@ -1031,6 +1032,10 @@ export default function BatteryHealthGuide() {
           </div>
         </div>
       </section>
+
+      <div className="container mx-auto max-w-4xl px-4 sm:px-6">
+        <HeadTermCallout lead="If your battery is draining fast, swelling or not holding charge," placement="BatteryHealthGuide" />
+      </div>
 
       <StandaloneRelatedLinks
         title="Battery warning signs: what to do next"
