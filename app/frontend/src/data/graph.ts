@@ -9,8 +9,8 @@ import { IMAGES } from '../constants/images.js';
 
 export const rawGraphData: RawGraphData = {
   metadata: {
-    version: '3.8.4',
-    lastUpdated: '2026-10-13T00:00:00+03:00',
+    version: '3.8.5',
+    lastUpdated: '2026-10-15T00:00:00+03:00',
     environment: 'production'
   },
 
@@ -3385,6 +3385,52 @@ export const rawGraphData: RawGraphData = {
         { id: "faq-jahra-local-6", question: "Where is my laptop repaired, and do I have to travel?", answer: "You do not need to travel. Jahra is a service area, not a branch, and devices are repaired at our Hawalli lab (Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19). Repairs carry a 30-day warranty." },
       ], title: 'Jahra', description: 'Comprehensive computer repair, thermal repasting, and motherboard diagnostics delivered directly to Jahra.', landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)', coords: { lat: 29.3370, lng: 47.6580 }, serviceRadiusKm: 40, serviceAreas: ['Jahra', 'Saad Al Abdullah', 'Naeem', 'Qasr', 'Taima'], contentImage: { src: IMAGES.motherboard.thermalGrizzly1.src, alt: IMAGES.motherboard.thermalGrizzly1.alt, width: IMAGES.motherboard.thermalGrizzly1.width, height: IMAGES.motherboard.thermalGrizzly1.height, caption: 'Thermal repasting and motherboard diagnostics delivered directly to Jahra.' }, seo: { title: 'Computer Repair Jahra | Free Pickup, Open Till 10 PM | KCROC', description: 'Computer and laptop repair in Jahra with free pickup and delivery, including thermal maintenance and motherboard diagnostics at KCROC\'s Hawalli lab.', canonicalUrl: 'https://www.computerrepairkuwait.com/location/jahra', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/location/jahra', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/computer-repair-jahra', 'x-default': 'https://www.computerrepairkuwait.com/location/jahra' }, ogType: 'website', schemaTypes: ['LocalBusiness'], lastModified: '2026-09-27T00:00:00+03:00' }, navigationPriority: 70 } as LocationEntity,
 
+    'loc-saad-al-abdullah': {
+      id: 'loc-saad-al-abdullah',
+      slug: 'saad-al-abdullah',
+      entityType: 'Location',
+      isActive: true,
+      isPhysicalLocation: false,
+      title: 'Saad Al Abdullah',
+      description: 'Computer and laptop repair in Saad Al Abdullah City, Kuwait, with free pickup and delivery to KCROC’s Hawalli lab, diagnosis before paid work, and a clear repair quote.',
+      localIntro: 'For residents of Saad Al Abdullah City, computer repair can start at home instead of with a trip to a workshop. KCROC arranges pickup from homes and offices, records the device model and symptoms, diagnoses the fault at our Hawalli lab, confirms the price before paid work, and returns the device after testing. This page focuses on the practical repair needs of the area: laptops that will not turn on or charge, cracked or black screens, overheating and fan noise, and storage or memory upgrades. Saad Al Abdullah is a service area, not a walk-in branch.',
+      localHighlights: [
+        { title: 'Pickup from Saad Al Abdullah City homes and offices', description: 'Send your block or nearby landmark, device model and symptoms on WhatsApp so the team can arrange collection and return.' },
+        { title: 'No-power and charging diagnosis', description: 'A laptop that will not start may have an adapter, battery, charging-port or motherboard fault. These are checked before a replacement is recommended.' },
+        { title: 'Screens, batteries and everyday laptop faults', description: 'Cracked displays, weak batteries, keyboard faults and charging issues are diagnosed against the exact device model before parts and total price are confirmed.' },
+        { title: 'Cooling and component-level repair', description: 'Dust-related overheating, fan noise and motherboard faults can be investigated at the Hawalli lab. The team explains the repair path and quote before paid work begins.' },
+      ],
+      localFaqs: [
+        { id: 'faq-saad-al-abdullah-local-1', question: 'Do you provide computer repair pickup in Saad Al Abdullah City?', answer: 'Yes. KCROC can arrange free pickup and delivery for supported repair requests in Saad Al Abdullah City. Send your block or landmark, device model and the problem on WhatsApp to coordinate a collection time.' },
+        { id: 'faq-saad-al-abdullah-local-2', question: 'Can you repair a laptop that will not turn on?', answer: 'Yes. Tell us whether any charging lights, fan movement or keyboard lights appear and what happened before the laptop stopped. At the lab we check the adapter, battery and power path before deciding whether component-level motherboard work is needed.' },
+        { id: 'faq-saad-al-abdullah-local-3', question: 'My laptop is plugged in but the battery is not charging. What could be wrong?', answer: 'The cause can be the charger, charging port, battery or charging circuit on the motherboard. Avoid forcing a loose connector or using a visibly damaged charger. We test the likely causes before recommending parts or repair.' },
+        { id: 'faq-saad-al-abdullah-local-4', question: 'How much does laptop or computer repair cost in Saad Al Abdullah?', answer: 'Common laptop repairs start from 15 KWD. Screen-replacement labour starts from 30 KWD plus the panel, and component-level motherboard repair starts from 25 KWD. The final price depends on the model, fault and parts required; you receive the quote before approving paid work.' },
+        { id: 'faq-saad-al-abdullah-local-5', question: 'Can you finish a repair on the same day?', answer: 'Some screen and battery repairs may be completed the same day when the correct part is available. Many repairs take around 24–48 hours after the device reaches the lab, while complex motherboard work can take longer. We confirm a realistic estimate after diagnosis.' },
+        { id: 'faq-saad-al-abdullah-local-6', question: 'Where is my computer actually repaired?', answer: 'Saad Al Abdullah is a pickup service area rather than a KCROC walk-in branch. Repairs are completed and tested at our Hawalli lab: Ibn Khaldoun Street, Al Mullah Complex, Basement Shop 19. The team arranges delivery after testing.' },
+        { id: 'faq-saad-al-abdullah-local-7', question: 'Do you also cover nearby Naeem, Qasr and Taima?', answer: 'These nearby areas are part of the wider Jahra-side pickup coverage shown on our service-area pages. Send your exact area on WhatsApp so the team can confirm collection arrangements.' },
+      ],
+      landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)',
+      coords: { lat: 29.3139, lng: 47.7194 },
+      serviceRadiusKm: 12,
+      serviceAreas: ['Saad Al Abdullah', 'Saad Al Abdullah City', 'Naeem', 'Qasr', 'Taima'],
+      contentImage: {
+        src: IMAGES.services.laptopRepair.src,
+        alt: 'Laptop repair work at KCROC for customers in Saad Al Abdullah City',
+        width: IMAGES.services.laptopRepair.width,
+        height: IMAGES.services.laptopRepair.height,
+        caption: 'Computer and laptop repairs for Saad Al Abdullah City, handled at KCROC’s Hawalli lab.',
+      },
+      seo: {
+        title: 'Computer Repair Saad Al Abdullah | Free Pickup & Delivery | KCROC',
+        description: 'Computer and laptop repair in Saad Al Abdullah City, Kuwait. Arrange free pickup and delivery, diagnosis before paid work, a clear quote, 30-day repair warranty and No Fix, No Fee.',
+        canonicalUrl: 'https://www.computerrepairkuwait.com/location/saad-al-abdullah',
+        ogType: 'website',
+        schemaTypes: ['LocalBusiness'],
+        lastModified: '2026-10-15T00:00:00+03:00',
+      },
+      navigationPriority: 68,
+    } as LocationEntity,
+
     'loc-ahmadi': { id: 'loc-ahmadi', slug: 'ahmadi', entityType: 'Location', isActive: true, isPhysicalLocation: false, localIntro: "Ahmadi and southern Kuwait are served through free pickup rather than a long drive to Hawalli. We collect from Ahmadi, Fahaheel, Mangaf, Mahboula and Sabahiya, repair the device at our lab and deliver it back after testing. Gaming PCs, MacBooks and thermal problems are the focus of this page.", localHighlights: [
         { title: "Pickup from Ahmadi, Fahaheel, Mangaf, Mahboula and Sabahiya", description: "Message us your area and the fault and we will arrange free collection." },
         { title: "Gaming PC and gaming laptop service", description: "Overheating, crashes and performance drops are diagnosed on the bench, including cleaning and thermal work." },
@@ -5158,7 +5204,13 @@ const LOCATION_RELATIONSHIPS: Record<string, {
     relatedServiceIds: ['srv-gaming', 'srv-laptop', 'srv-motherboard', 'srv-gaming-laptop-cleaning', 'srv-battery', 'srv-screen'],
     relatedProblemIds: ['problem-overheating', 'problem-no-power', 'problem-not-charging', 'problem-black-screen'],
     relatedBrandIds: ['brand-dell', 'brand-lenovo', 'brand-hp', 'brand-asus'],
-    relatedLocationIds: ['loc-hawalli', 'loc-kuwait-city', 'loc-farwaniya'],
+    relatedLocationIds: ['loc-saad-al-abdullah', 'loc-hawalli', 'loc-kuwait-city', 'loc-farwaniya'],
+  },
+  'saad-al-abdullah': {
+    relatedServiceIds: ['srv-laptop', 'srv-screen', 'srv-battery', 'srv-charging-port', 'srv-motherboard', 'srv-ssd-ram', 'srv-gaming-laptop-cleaning'],
+    relatedProblemIds: ['problem-no-power', 'problem-not-charging', 'problem-black-screen', 'problem-cracked-screen', 'problem-overheating', 'problem-slow'],
+    relatedBrandIds: ['brand-dell', 'brand-hp', 'brand-lenovo', 'brand-asus', 'brand-acer', 'brand-msi'],
+    relatedLocationIds: ['loc-jahra', 'loc-hawalli'],
   },
   ahmadi: {
     relatedServiceIds: ['srv-gaming', 'srv-macbook', 'srv-laptop', 'srv-motherboard', 'srv-gaming-laptop-cleaning'],
