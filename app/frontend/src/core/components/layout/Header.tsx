@@ -144,7 +144,7 @@ export default function Header() {
   return (
     <>
       <header ref={headerRef} className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-[#090c0f]/[0.97] backdrop-blur-xl border-b border-white/[0.10] shadow-[0_12px_36px_rgba(0,0,0,.22)]' : 'bg-[#090c0f]/[0.88] backdrop-blur-md border-b border-white/[0.08]'}`}>
-        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 xl:px-8">
+        <div className="kcroc-header-inner max-w-[1360px] mx-auto px-4 sm:px-6 xl:px-8 2xl:px-12">
           <div className="flex items-center justify-between h-[78px]">
             
             <Link to="/" className="flex items-center shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f] rounded-lg" aria-label="KCROC Home">
@@ -189,7 +189,7 @@ export default function Header() {
                           setActiveMegaId(prev => prev === link.megaMenuId ? null : link.megaMenuId!);
                         }}
                         onKeyDown={e => handleMegaTriggerKeyDown(e, link.megaMenuId!)}
-                        className={`flex items-center gap-1.5 px-2.5 py-2 rounded-md whitespace-nowrap text-[12px] font-medium transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f] ${isOpen || isGraphMatch ? 'text-[#efc19c] border-b border-[#c9804d]/70' : 'text-slate-300 hover:text-white'}`}
+                        className={`flex items-center gap-1.5 px-2.5 py-2 rounded-md whitespace-nowrap text-[13px] font-medium transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f] ${isOpen || isGraphMatch ? 'text-[#efc19c] border-b border-[#c9804d]/70' : 'text-slate-300 hover:text-white'}`}
                       >
                         {link.label}
                         <ChevronDown size={15} className={`transition-transform duration-200 ${isOpen ? 'rotate-180 text-[#dfa86f]' : ''}`} aria-hidden="true" />
@@ -199,7 +199,7 @@ export default function Header() {
                 }
 
                 return (
-                  <Link key={link.id} to={link.href} className={`px-2.5 py-2 rounded-md text-[12px] font-medium whitespace-nowrap transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f] ${isGraphMatch ? 'text-[#efc19c] border-b border-[#c9804d]/70' : 'text-slate-300 hover:text-white'}`}>
+                  <Link key={link.id} to={link.href} className={`px-2.5 py-2 rounded-md text-[13px] font-medium whitespace-nowrap transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f] ${isGraphMatch ? 'text-[#efc19c] border-b border-[#c9804d]/70' : 'text-slate-300 hover:text-white'}`}>
                     {link.label}
                   </Link>
                 );

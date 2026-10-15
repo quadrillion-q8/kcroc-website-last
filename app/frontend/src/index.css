@@ -665,3 +665,74 @@ select {
     transition-duration: .01ms !important;
   }
 }
+
+
+/* ==========================================================================
+   KCROC WIDE-DESKTOP EXPERIENCE PASS — 2026-10-15
+   A consistent, fluid content grid for desktop and large desktop displays.
+   Preserve the existing mobile/tablet rules and keep reading widths deliberate.
+   ========================================================================== */
+
+.kcroc-header-inner {
+  width: 100%;
+  max-width: 1360px;
+  margin-inline: auto;
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --kcroc-desktop-gutter: clamp(1.5rem, 2.35vw, 2rem);
+  }
+
+  #main-content {
+    width: 100%;
+    min-width: 0;
+  }
+
+  #main-content > * {
+    min-width: 0;
+  }
+
+  /* Widen shared section shells gradually without making the viewport edge-to-edge. */
+  .container:not([class*="max-w-"]) {
+    width: 100%;
+    max-width: min(100%, 1360px);
+    padding-inline: var(--kcroc-desktop-gutter);
+  }
+
+  /* More balanced heading wraps across service and information pages. */
+  #main-content[data-page-type="inner"] :is(h1, h2),
+  #main-content[data-page-type="home"] h1 {
+    text-wrap: balance;
+  }
+}
+
+@media (min-width: 1536px) {
+  :root {
+    --kcroc-desktop-gutter: clamp(2.25rem, 3.1vw, 3rem);
+  }
+
+  .container:not([class*="max-w-"]) {
+    max-width: min(100%, 1480px);
+    padding-inline: var(--kcroc-desktop-gutter);
+  }
+
+  .kcroc-header-inner {
+    max-width: 1480px;
+  }
+}
+
+@media (min-width: 1920px) {
+  :root {
+    --kcroc-desktop-gutter: 3rem;
+  }
+
+  .container:not([class*="max-w-"]) {
+    max-width: min(100%, 1560px);
+    padding-inline: var(--kcroc-desktop-gutter);
+  }
+
+  .kcroc-header-inner {
+    max-width: 1560px;
+  }
+}
