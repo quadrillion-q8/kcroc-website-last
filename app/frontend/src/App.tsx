@@ -2,6 +2,7 @@
 import React, { lazy } from 'react';
 import { RouteObject, Navigate, Outlet } from 'react-router-dom';
 import { RootLayout } from './core/components/layout/RootLayout';
+import { RouteErrorBoundary } from './core/components/RouteErrorBoundary';
 import { AnalyticsProvider } from './core/analytics/AnalyticsProvider';
 
 // High-level wrapper to maintain Context Providers without a BrowserRouter
@@ -17,6 +18,10 @@ export const routes: RouteObject[] = [
   {
     path: '/',
     element: <AppWrapper />,
+    // Replaces React Router's default "Unexpected Application Error!" screen
+    // and auto-recovers once from stale-deploy failures (old HTML asking for a
+    // loader-data manifest or chunk that a newer deploy removed).
+    errorElement: <RouteErrorBoundary />,
     children: [
       {
         path: '/',
