@@ -1043,6 +1043,18 @@ function ArabicComputerRepairPage({
 }) {
   const faq = [
     {
+      q: 'هل تصلحون الكمبيوتر المكتبي وPC الألعاب أو فقط اللابتوب؟',
+      a: 'نعم. نخدم اللابتوبات والكمبيوتر المكتبي وGaming PC وMacBook. نبدأ بتحديد العطل، ثم نشرح خيار الإصلاح والتكلفة قبل تنفيذ أي عمل مدفوع.',
+    },
+    {
+      q: 'كم سعر تصليح الكمبيوتر في الكويت؟',
+      a: 'الفحص الأولي مجاني. بعض إصلاحات اللابتوب الشائعة تبدأ من 15 د.ك، وتبديل شاشة اللابتوب من 30 د.ك، وإصلاح اللوحة الأم على مستوى المكونات من 25 د.ك عندما تنطبق الخدمة. يعتمد السعر النهائي على الموديل والعطل والقطعة المطلوبة، ونؤكده قبل بدء العمل المدفوع.',
+    },
+    {
+      q: 'هل يجي الفني يصلح الكمبيوتر داخل البيت؟',
+      a: 'الإصلاح والفحص الفني يتمان في مختبر KCROC في حولي. نرتب استلام الجهاز من البيت أو المكتب وتوصيله بعد الإصلاح والاختبار حسب منطقة الخدمة؛ لا تعتمد الخدمة على إصلاح الجهاز داخل المنزل.',
+    },
+    {
       q: 'هل تستلمون الجهاز من البيت أو المكتب؟',
       a: 'نعم. أرسل لنا منطقتك وموديل الجهاز ووصف المشكلة عبر واتساب، ونرتب خدمة الاستلام والتوصيل حسب منطقتك.',
     },
@@ -1115,6 +1127,51 @@ function ArabicComputerRepairPage({
     { n: '02', title: 'نستلم الجهاز', text: 'نرتب الاستلام من موقعك ونسجل الحالة عند وصول الجهاز.' },
     { n: '03', title: 'نشخّص ونشرح', text: 'نحدد سبب المشكلة ونوضح خيارات الإصلاح والتكلفة.' },
     { n: '04', title: 'نصلح بعد موافقتك', text: 'يتم تنفيذ الإصلاح ثم اختبار الجهاز قبل إرجاعه.' },
+  ];
+
+  const issueCards = [
+    {
+      title: 'الكمبيوتر ما يشتغل أو يطفي فجأة',
+      text: 'نفحص مصدر الطاقة ومسار التشغيل واللوحة الأم لتحديد السبب بدل تبديل القطع بالتخمين.',
+      path: '/ar/motherboard-repair-kuwait',
+      link: 'فحص الطاقة واللوحة الأم',
+    },
+    {
+      title: 'اللابتوب ما يشحن أو يفصل مع الشاحن',
+      text: 'نقيّم الشاحن ومنفذ الشحن والبطارية ومسار الطاقة، ثم نحدد القطعة أو الدائرة المتسببة بالعطل.',
+      path: '/ar/laptop-charging-port-repair-kuwait',
+      link: 'تصليح منفذ الشحن',
+    },
+    {
+      title: 'الشاشة سوداء أو مكسورة',
+      text: 'نفحص الشاشة والكابل والإضاءة والاتصال قبل طلب قطعة بديلة، لأن الشاشة ليست دائمًا سبب المشكلة.',
+      path: '/ar/laptop-screen-repair-kuwait',
+      link: 'تصليح شاشة اللابتوب',
+    },
+    {
+      title: 'الجهاز بطيء أو يتأخر في التشغيل',
+      text: 'نقيّم حالة التخزين والذاكرة والتوافق قبل اقتراح ترقية SSD أو RAM لتحسين الاستجابة.',
+      path: '/ar/ssd-ram-upgrade-kuwait',
+      link: 'ترقية SSD وRAM',
+    },
+    {
+      title: 'حرارة عالية أو مروحة صوتها قوي',
+      text: 'نراجع التبريد والمراوح والغبار والمعجون الحراري عند الحاجة، ونحدد سبب السخونة قبل الصيانة.',
+      path: '/ar/laptop-repair-kuwait',
+      link: 'تصليح اللابتوب',
+    },
+    {
+      title: 'Gaming PC يهنّق أو يطيح الـFPS',
+      text: 'نفحص الحرارة وكرت الشاشة والطاقة والاستقرار لتحديد سبب التقطيع أو الإطفاء أثناء اللعب.',
+      path: '/ar/gaming-pc-repair-kuwait',
+      link: 'تصليح Gaming PC',
+    },
+  ];
+
+  const startingPrices = [
+    { price: 'من 15 د.ك', title: 'إصلاحات لابتوب شائعة', text: 'تختلف التكلفة حسب العطل والموديل والقطعة المطلوبة.' },
+    { price: 'من 30 د.ك', title: 'تبديل شاشة اللابتوب', text: 'السعر النهائي يعتمد على موديل الجهاز ونوع الشاشة وتوفرها.' },
+    { price: 'من 25 د.ك', title: 'إصلاح اللوحة الأم', text: 'لإصلاح المكونات عند ملاءمة الحالة فنيًا؛ بعض الأعطال تحتاج خيارًا مختلفًا.' },
   ];
 
   return (
@@ -1209,6 +1266,53 @@ function ArabicComputerRepairPage({
               <p className="mt-1 text-sm leading-6 text-slate-400">{text}</p>
             </div>
           ))}
+        </section>
+
+        <section className="mt-12" aria-labelledby="common-computer-problems">
+          <div className="mb-7 max-w-3xl">
+            <p className="text-sm font-black tracking-[0.08em] text-cyan-400">تصليح كمبيوتر حسب العطل</p>
+            <h2 id="common-computer-problems" className="mt-2 text-3xl font-black text-white sm:text-4xl">
+              شنو المشكلة اللي تواجهك؟
+            </h2>
+            <p className="mt-4 leading-8 text-slate-400">
+              سواء كنت تبحث عن فني كمبيوتر في الكويت أو محل تصليح كمبيوترات، ابدأ من الأعراض الظاهرة. نساعدك تختار الخدمة الأقرب للمشكلة بدل ما تفترض أن قطعة معيّنة تحتاج تبديل.
+            </p>
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {issueCards.map((item) => (
+              <article key={item.title} className="flex h-full flex-col rounded-3xl border border-slate-800 bg-slate-900/45 p-6 transition hover:border-cyan-500/30">
+                <h3 className="text-lg font-black leading-7 text-white">{item.title}</h3>
+                <p className="mt-3 flex-1 text-sm leading-7 text-slate-400">{item.text}</p>
+                <Link to={item.path} className="mt-5 inline-flex items-center gap-2 text-sm font-black text-cyan-300 hover:text-cyan-200">
+                  {item.link} <ArrowLeft className="h-4 w-4" aria-hidden="true" />
+                </Link>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="mt-12 rounded-[2rem] border border-cyan-500/15 bg-slate-900/35 p-6 sm:p-8" aria-labelledby="computer-repair-prices">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+            <div className="max-w-3xl">
+              <p className="text-sm font-black tracking-[0.08em] text-cyan-400">أسعار واضحة قبل الإصلاح</p>
+              <h2 id="computer-repair-prices" className="mt-2 text-3xl font-black text-white sm:text-4xl">كم سعر تصليح الكمبيوتر في الكويت؟</h2>
+              <p className="mt-3 leading-8 text-slate-400">
+                الفحص الأولي مجاني. هذه أسعار بداية لبعض الخدمات وليست سعرًا نهائيًا لكل جهاز؛ نحدد التكلفة بعد معرفة الموديل والعطل والقطعة المطلوبة، ولا نبدأ عملًا مدفوعًا قبل موافقتك.
+              </p>
+            </div>
+            <Link to="/ar/pricing" className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full border border-slate-700 px-5 py-3 text-sm font-black text-cyan-300 transition hover:border-cyan-500/40 hover:text-cyan-200">
+              تفاصيل الأسعار <ArrowLeft className="h-4 w-4" aria-hidden="true" />
+            </Link>
+          </div>
+          <div className="mt-6 grid gap-4 md:grid-cols-3">
+            {startingPrices.map((item) => (
+              <article key={item.title} className="rounded-2xl border border-slate-800 bg-slate-950/60 p-5">
+                <p className="text-2xl font-black text-white">{item.price}</p>
+                <h3 className="mt-2 font-black text-cyan-200">{item.title}</h3>
+                <p className="mt-2 text-sm leading-7 text-slate-400">{item.text}</p>
+              </article>
+            ))}
+          </div>
         </section>
 
         <section className="mt-16" aria-labelledby="why-repair">
