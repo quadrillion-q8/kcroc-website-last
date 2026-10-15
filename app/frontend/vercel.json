@@ -252,28 +252,23 @@
       "permanent": true
     },
     {
-      "source": "/location/saad-al-abdullah",
-      "destination": "/location/jahra",
-      "permanent": true
-    },
-    {
       "source": "/computer-repair-in-saad-al-abdullah",
-      "destination": "/location/jahra",
+      "destination": "/location/saad-al-abdullah",
       "permanent": true
     },
     {
       "source": "/laptop-repair-in-saad-al-abdullah",
-      "destination": "/location/jahra",
+      "destination": "/location/saad-al-abdullah",
       "permanent": true
     },
     {
       "source": "/computer-repair-saad-al-abdullah",
-      "destination": "/location/jahra",
+      "destination": "/location/saad-al-abdullah",
       "permanent": true
     },
     {
       "source": "/laptop-repair-saad-al-abdullah",
-      "destination": "/location/jahra",
+      "destination": "/location/saad-al-abdullah",
       "permanent": true
     },
     {
