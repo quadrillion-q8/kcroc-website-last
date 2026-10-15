@@ -186,10 +186,10 @@ export const rawGraphData: RawGraphData = {
 
     'page-ar-computer-repair': {
       id: 'page-ar-computer-repair', slug: 'ar/computer-repair-kuwait', entityType: 'WebPage', isActive: true,
-      title: 'تصليح كمبيوتر في الكويت | فني كمبيوتر ولابتوب',
+      title: 'فني كمبيوتر في الكويت | تصليح كمبيوتر ولابتوب',
       description: 'خدمة تصليح كمبيوتر في الكويت للابتوب والكمبيوتر المكتبي وMacBook وGaming PC. فحص أولي مجاني، واستلام وتوصيل مجاني، وعرض سعر قبل الإصلاح وضمان 30 يومًا من مختبر KCROC في حولي.',
       seo: {
-        title: 'تصليح كمبيوتر في الكويت | فني كمبيوتر ولابتوب | KCROC',
+        title: 'فني كمبيوتر في الكويت | تصليح كمبيوتر ولابتوب | KCROC',
         description: 'تحتاج تصليح كمبيوتر في الكويت؟ فني كمبيوتر للابتوب والـPC وMacBook وGaming PC. فحص أولي مجاني، واستلام وتوصيل مجاني، وسعر قبل الإصلاح وضمان 30 يومًا من مختبر حولي.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/ar/computer-repair-kuwait',
         locale: 'ar_KW',
