@@ -230,7 +230,7 @@ export default function Header() {
               </button>
               <a href={`tel:+${cleanTel}`} onClick={() => trackConversion('phone_call_click', { cta_name: 'header_phone', button_position: 'header' })} className="flex items-center gap-2 text-sm font-medium text-slate-300 hover:text-white transition-colors">
                 <Phone size={15} className="text-[#dfa86f]" aria-hidden="true" />
-                <span className="hidden 2xl:block">{phoneDisplay}</span>
+                <span className="hidden kcroc-header-phone-number 2xl:block">{phoneDisplay}</span>
               </a>
               <Button
                 asChild

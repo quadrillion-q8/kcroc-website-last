@@ -841,13 +841,6 @@ select {
   }
 }
 
-@media (min-width: 1280px) and (max-width: 1399px) {
-  header nav[aria-label="Main navigation"] > a,
-  header nav[aria-label="Main navigation"] > div > button {
-    font-size: 0.6875rem;
-  }
-}
-
 @media (min-width: 1680px) {
   header nav[aria-label="Main navigation"] {
     gap: 0.25rem;
@@ -857,5 +850,11 @@ select {
   header nav[aria-label="Main navigation"] > div > button {
     padding-inline: 0.625rem;
     font-size: 0.8125rem;
+  }
+}
+
+@media (min-width: 1536px) and (max-width: 1679px) {
+  header .kcroc-header-phone-number {
+    display: none;
   }
 }
