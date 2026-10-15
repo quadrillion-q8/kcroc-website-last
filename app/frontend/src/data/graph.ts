@@ -186,11 +186,11 @@ export const rawGraphData: RawGraphData = {
 
     'page-ar-computer-repair': {
       id: 'page-ar-computer-repair', slug: 'ar/computer-repair-kuwait', entityType: 'WebPage', isActive: true,
-      title: 'فني كمبيوتر في الكويت | تصليح كمبيوتر ولابتوب',
-      description: 'تحتاج فني كمبيوتر في الكويت؟ تصليح كمبيوتر ولابتوب وماك وبي سي مع تشخيص قبل الإصلاح، واستلام وتوصيل مجاني من مختبر KCROC في حولي، وعرض سعر قبل بدء العمل.',
+      title: 'تصليح كمبيوتر في الكويت | فني كمبيوتر ولابتوب',
+      description: 'خدمة تصليح كمبيوتر في الكويت للابتوب والكمبيوتر المكتبي وMacBook وGaming PC. فحص أولي مجاني، واستلام وتوصيل مجاني، وعرض سعر قبل الإصلاح وضمان 30 يومًا من مختبر KCROC في حولي.',
       seo: {
-        title: 'فني كمبيوتر في الكويت | تصليح كمبيوتر ولابتوب | KCROC',
-        description: 'تحتاج فني كمبيوتر في الكويت؟ تصليح كمبيوتر ولابتوب وماك وبي سي، مع تشخيص قبل الإصلاح، واستلام وتوصيل مجاني من مختبرنا في حولي، وضمان 30 يومًا.',
+        title: 'تصليح كمبيوتر في الكويت | فني كمبيوتر ولابتوب | KCROC',
+        description: 'تحتاج تصليح كمبيوتر في الكويت؟ فني كمبيوتر للابتوب والـPC وMacBook وGaming PC. فحص أولي مجاني، واستلام وتوصيل مجاني، وسعر قبل الإصلاح وضمان 30 يومًا من مختبر حولي.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/ar/computer-repair-kuwait',
         locale: 'ar_KW',
         alternates: {
@@ -199,8 +199,8 @@ export const rawGraphData: RawGraphData = {
           'x-default': 'https://www.computerrepairkuwait.com/'
         },
         ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList', 'FAQPage', 'Service'],
-        lastModified: '2026-10-13T00:00:00+03:00',
-        breadcrumbs: [{ name: 'الرئيسية', url: '/' }, { name: 'فني كمبيوتر في الكويت', url: '/ar/computer-repair-kuwait' }]
+        lastModified: '2026-10-15T00:00:00+03:00',
+        breadcrumbs: [{ name: 'الرئيسية', url: '/' }, { name: 'تصليح كمبيوتر في الكويت', url: '/ar/computer-repair-kuwait' }]
       },
       relatedServiceIds: ['srv-laptop', 'srv-motherboard', 'srv-gaming', 'srv-macbook', 'srv-screen']
     } as WebPageEntity,
