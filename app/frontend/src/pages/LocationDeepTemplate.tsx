@@ -32,6 +32,7 @@ import MapComponent from '../components/MapComponent';
 import { KCROC_GRAPH } from '../data/graph';
 import { useAnalytics } from '../core/analytics/AnalyticsProvider';
 import { IMAGES } from '../constants/images';
+import CoreRepairPillars from '../components/content/CoreRepairPillars';
 
 const BASE_URL = KCROC_GRAPH.business!.websiteUrl;
 
