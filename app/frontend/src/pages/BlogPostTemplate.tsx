@@ -17,6 +17,7 @@ import { trackLead } from '../utils/analytics';
 import SchemaMarkup from '../components/seo/SchemaMarkup';
 import { StandaloneRelatedLinks, RelatedLinkItem } from '@/components/content/StandaloneRelatedLinks';
 import { KuwaitLocalCTA } from '@/components/content/KuwaitLocalCTA';
+import { HeadTermCallout } from '@/components/content/HeadTermCallout';
 
 // Single source of truth for business identity — see graph.ts 'biz-kcroc'.
 // (Previously duplicated via constants/data.ts's BUSINESS_INFO.)
@@ -69,6 +70,18 @@ const STANDALONE_REPAIR_PATHS: Record<string, { title: string; intro: string; li
       { href: '/windows-wont-boot-kuwait', label: "Windows Won't Boot", description: 'Use this path when the laptop powers on and reaches the boot or Windows stage but cannot start the operating system.' },
       { href: '/gaming-pc-repair-kuwait', label: 'Gaming PC Repair', description: 'For related power, startup, GPU, or stability symptoms on gaming systems.' },
       { href: '/contact', label: 'Contact / Booking', description: 'Contact KCROC to arrange diagnosis and repair after basic checks have been completed.' },
+    ],
+  },
+  'laptop-wont-turn-on': {
+    title: "Laptop won't turn on: related repair paths",
+    intro: 'Use the symptom that best matches what the laptop is actually doing before choosing a repair destination.',
+    links: [
+      { href: '/laptop-repair-kuwait', label: 'Laptop Repair Kuwait', description: 'The broader repair and diagnosis path when the exact cause of the no-start problem is not yet known.' },
+      { href: '/computer-repair-kuwait', label: 'Computer Repair Kuwait', description: 'For desktops, gaming PCs and other devices that will not power on.' },
+      { href: '/motherboard-repair-kuwait', label: 'Motherboard Repair Kuwait', description: 'For measured board-level power, charging, short-circuit, or component faults.' },
+      { href: '/laptop-screen-repair-kuwait', label: 'Laptop Screen Repair', description: 'For laptops that power on but remain on a black or failed internal display.' },
+      { href: '/battery-replacement-kuwait', label: 'Battery Replacement', description: 'For confirmed battery wear, swelling, failed cells, or battery-related shutdown symptoms.' },
+      { href: '/windows-wont-boot-kuwait', label: "Windows Won't Boot", description: 'Use this path when the laptop powers on but cannot start the operating system.' },
     ],
   },
   'laptop-temperatures-kuwait-safe-cpu-gpu-temperatures': {
@@ -1090,6 +1103,10 @@ export default function BlogPostTemplate() {
               </div>
             </section>
           </article>
+
+          {!isNews && (
+            <HeadTermCallout placement={isGuide ? 'guide_post_headterm' : 'blog_post_headterm'} />
+          )}
 
           {STANDALONE_REPAIR_PATHS[post.slug] && (
             <StandaloneRelatedLinks
