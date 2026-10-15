@@ -175,7 +175,7 @@ export default function LocationTemplate() {
 
       {/* ─── LOCAL SERVICES GRID ─── */}
       <section className="py-12 sm:py-24 px-4 sm:px-6 bg-slate-900/20">
-        <div className="container mx-auto max-w-5xl">
+        <div className="container mx-auto max-w-6xl">
           <h2 className="text-2xl sm:text-4xl font-black mb-8 sm:mb-12 text-center text-white tracking-tight">Services Available in {location.title}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {activeServices.map((service) => (

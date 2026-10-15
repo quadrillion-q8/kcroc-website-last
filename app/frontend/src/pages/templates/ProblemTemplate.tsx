@@ -73,7 +73,7 @@ const ProblemTemplate: React.FC = () => {
         </div>
       </section>
 
-      <section className="py-16 px-6 max-w-5xl mx-auto relative z-10">
+      <section className="py-16 px-6 max-w-7xl mx-auto relative z-10">
         <div className="space-y-14">
 
           {problem.intro && (

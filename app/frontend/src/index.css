@@ -736,3 +736,126 @@ select {
     max-width: 1560px;
   }
 }
+
+
+/* ==========================================================================
+   KCROC DESKTOP INTERNATIONAL PASS 2 — 2026-10-15
+   Shared desktop canvas, spacing and overflow guardrails for all route families.
+   Narrow editorial/article measures remain intentionally constrained.
+   ========================================================================== */
+
+@media (min-width: 1024px) {
+  :root {
+    --kcroc-content-max: 1360px;
+    --kcroc-desktop-gutter: clamp(1.5rem, 2.35vw, 2rem);
+  }
+
+  /* All broad shell widths now use the same breakpoint-aware design grid. */
+  .container:not([class*="max-w-"]) {
+    width: 100%;
+    max-width: min(100%, var(--kcroc-content-max));
+    padding-inline: var(--kcroc-desktop-gutter);
+    box-sizing: border-box;
+  }
+
+  .kcroc-header-inner {
+    width: 100%;
+    max-width: var(--kcroc-content-max);
+    margin-inline: auto;
+    padding-inline: var(--kcroc-desktop-gutter);
+    box-sizing: border-box;
+  }
+
+  /* Keep broad page shells centered and fluid without widening prose columns. */
+  .max-w-6xl.mx-auto,
+  .max-w-7xl.mx-auto {
+    width: 100%;
+    max-width: var(--kcroc-content-max);
+    margin-inline: auto;
+    box-sizing: border-box;
+  }
+
+  /* The legacy polish layer neutralized authored px-* classes on these shells.
+     Restore deliberate gutters only where the component explicitly requests them.
+     Unpadded nested .container shells keep their parent's section gutter. */
+  .max-w-6xl.mx-auto[class*="px-"],
+  .max-w-7xl.mx-auto[class*="px-"] {
+    padding-inline: var(--kcroc-desktop-gutter);
+  }
+
+  #main-content,
+  #main-content > * {
+    min-width: 0;
+  }
+
+  /* Avoid grid overflow from long device models, article titles and translated text. */
+  #main-content [class*="grid-cols-"] > * {
+    min-width: 0;
+  }
+
+  #main-content :is(img, video, iframe) {
+    max-width: 100%;
+  }
+
+  #main-content :is(h1, h2, h3) {
+    text-wrap: balance;
+  }
+
+  #main-content :is(p, li, blockquote) {
+    overflow-wrap: break-word;
+  }
+
+  #main-content :is(code, pre, a) {
+    overflow-wrap: anywhere;
+  }
+
+  #main-content :is(pre, .overflow-x-auto) {
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  /* Compact, readable nav density on regular laptops; restore full spacing
+     and the phone number on genuinely wide desktop viewports. */
+  header nav[aria-label="Main navigation"] {
+    gap: 0;
+  }
+
+  header nav[aria-label="Main navigation"] > a,
+  header nav[aria-label="Main navigation"] > div > button {
+    padding-inline: clamp(0.25rem, 0.35vw, 0.45rem);
+    font-size: 0.75rem;
+  }
+}
+
+@media (min-width: 1536px) {
+  :root {
+    --kcroc-content-max: 1480px;
+    --kcroc-desktop-gutter: clamp(2.25rem, 2.7vw, 3rem);
+  }
+}
+
+@media (min-width: 1920px) {
+  :root {
+    --kcroc-content-max: 1560px;
+    --kcroc-desktop-gutter: 3rem;
+  }
+}
+
+@media (min-width: 1280px) and (max-width: 1399px) {
+  header nav[aria-label="Main navigation"] > a,
+  header nav[aria-label="Main navigation"] > div > button {
+    font-size: 0.6875rem;
+  }
+}
+
+@media (min-width: 1680px) {
+  header nav[aria-label="Main navigation"] {
+    gap: 0.25rem;
+  }
+
+  header nav[aria-label="Main navigation"] > a,
+  header nav[aria-label="Main navigation"] > div > button {
+    padding-inline: 0.625rem;
+    font-size: 0.8125rem;
+  }
+}

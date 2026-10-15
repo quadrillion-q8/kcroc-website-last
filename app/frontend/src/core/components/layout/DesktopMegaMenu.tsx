@@ -275,7 +275,7 @@ export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnte
         maxHeight: 'calc(100vh - 90px)',
         zIndex: 9999,
       }}
-      className={`max-h-full overflow-hidden transition-all duration-200 motion-reduce:transition-none origin-top ${isOpen ? 'opacity-100 scale-100 pointer-events-auto' : 'opacity-0 scale-[0.985] pointer-events-none'}`}
+      className={`kcroc-mega-menu-scroll max-h-full overflow-x-hidden overflow-y-auto overscroll-contain transition-all duration-200 motion-reduce:transition-none origin-top ${isOpen ? 'opacity-100 scale-100 pointer-events-auto' : 'opacity-0 scale-[0.985] pointer-events-none'}`}
     >
       <div className="relative overflow-hidden rounded-[20px] border border-white/[0.11] bg-[#0d1317]/[0.985] shadow-[0_28px_80px_rgba(0,0,0,0.50)] backdrop-blur-2xl">
         <div className="pointer-events-none absolute -top-24 -right-16 h-64 w-64 rounded-full bg-[#c9804d]/10 blur-3xl" />
