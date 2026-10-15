@@ -96,10 +96,10 @@ export const rawGraphData: RawGraphData = {
     'page-near-me': {
       id: 'page-near-me', slug: 'near-me', entityType: 'WebPage', isActive: true,
       title: 'Computer Repair Near Me in Kuwait',
-      description: 'Find a computer or laptop repair technician near you in Kuwait for PCs, MacBooks and gaming systems, with free pickup and delivery from our Hawalli repair lab.',
+      description: 'Find computer and laptop repair near you in Kuwait. Free pickup from your home or office, with all diagnosis and repairs performed at KCROC’s Hawalli workshop.',
       seo: {
-        title: 'Computer Repair Near Me | Free Pickup, Open Till 10 PM | KCROC',
-        description: 'Computer repair near you in Kuwait: we collect your laptop or PC free, repair it at our Hawalli lab and deliver it back. Diagnosis first, 30-day warranty.',
+        title: 'Computer Repair Near Me | Free Pickup & Delivery | KCROC',
+        description: 'Free computer repair pickup in Kuwait. Devices are diagnosed and repaired at KCROC’s Hawalli workshop, then returned after testing. No home visits.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/near-me',
         locale: 'en_KW',
         alternates: {
@@ -109,12 +109,12 @@ export const rawGraphData: RawGraphData = {
         },
         ogType: 'website',
         schemaTypes: ['WebPage', 'FAQPage', 'BreadcrumbList'],
-        lastModified: '2026-09-27T00:00:00+03:00',
+        lastModified: '2026-10-15T00:00:00+03:00',
         breadcrumbs: [{ name: 'Home', url: '/' }, { name: 'Computer Repair Near Me', url: '/near-me' }]
       },
       hero: {
         headline: 'Computer Repair Near Me in Kuwait',
-        subheadline: 'A local technician, without the trip to the shop.',
+        subheadline: 'Local workshop repairs, with convenient pickup and delivery.',
         description: 'KCROC provides professional PC, laptop, MacBook, gaming PC and motherboard repair from our Hawalli lab, with free pickup and delivery across Kuwait.',
         primaryCTA: { text: 'Book Free Pickup', route: '/book' },
         secondaryCTA: { text: 'Find Your Area', route: '/location/hawalli' }
@@ -134,10 +134,10 @@ export const rawGraphData: RawGraphData = {
     'page-near-me-ar': {
       id: 'page-near-me-ar', slug: 'ar/near-me', entityType: 'WebPage', isActive: true,
       title: 'تصليح كمبيوتر ولابتوب بالقرب منك في الكويت',
-      description: 'خدمة تصليح كمبيوتر ولابتوب بالقرب منك في الكويت مع استلام من المنزل أو المكتب، وإصلاح في مختبر KCROC بحولي، وتوصيل بعد الاختبار وعرض سعر قبل الإصلاح.',
+      description: 'خدمة تصليح كمبيوتر ولابتوب بالقرب منك في الكويت مع استلام من المنزل أو المكتب ونقل الجهاز إلى مختبر KCROC في حولي للفحص والإصلاح ثم توصيله بعد الاختبار. لا نقدم إصلاحًا داخل المنزل.',
       seo: {
         title: 'تصليح كمبيوتر بالقرب منك في الكويت | استلام وتوصيل | KCROC',
-        description: 'تحتاج خدمة تصليح كمبيوتر قريبة منك؟ نرتب استلام اللابتوب أو الكمبيوتر من المنزل أو المكتب ونصلحه في مختبرنا بحولي، مع توصيل مجاني وعرض سعر قبل بدء العمل.',
+        description: 'تحتاج خدمة تصليح كمبيوتر قريبة منك؟ نرتب استلام اللابتوب أو الكمبيوتر من المنزل أو المكتب ثم ننقله إلى مختبرنا في حولي للفحص والإصلاح، مع توصيل مجاني وعرض سعر قبل بدء العمل. لا نقدم إصلاحًا داخل المنزل.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/ar/near-me',
         locale: 'ar_KW',
         alternates: {
@@ -147,7 +147,7 @@ export const rawGraphData: RawGraphData = {
         },
         ogType: 'website',
         schemaTypes: ['WebPage', 'FAQPage', 'BreadcrumbList'],
-        lastModified: '2026-10-13T00:00:00+03:00',
+        lastModified: '2026-10-15T00:00:00+03:00',
         breadcrumbs: [{ name: 'الرئيسية', url: '/' }, { name: 'تصليح كمبيوتر بالقرب منك', url: '/ar/near-me' }]
       },
       featuredFAQIds: [
@@ -164,7 +164,7 @@ export const rawGraphData: RawGraphData = {
       description: 'Computer and laptop repair in Kuwait with diagnosis before repair, free pickup and delivery, starting prices from 15 KWD, and a 30-day warranty on completed repairs.',
       seo: {
         title: 'Computer Repair Kuwait | PC & Laptop Repair | KCROC',
-        description: 'Need computer repair in Kuwait? KCROC diagnoses laptop, desktop PC, MacBook and motherboard faults at our Hawalli lab. Free pickup and delivery, clear quote before repair, and a 30-day warranty.',
+        description: 'Need computer repair or a computer technician in Kuwait? KCROC diagnoses PC, laptop, MacBook and motherboard faults at our Hawalli workshop. Free pickup and delivery, a clear quote before repair, and a 30-day warranty.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/computer-repair-kuwait',
         locale: 'en_KW',
         alternates: {
@@ -175,7 +175,7 @@ export const rawGraphData: RawGraphData = {
         },
         ogType: 'website',
         schemaTypes: ['WebPage', 'BreadcrumbList', 'FAQPage'],
-        lastModified: '2026-10-10T00:00:00+03:00',
+        lastModified: '2026-10-15T00:00:00+03:00',
         breadcrumbs: [
           { name: 'Home', url: '/' },
           { name: 'Computer Repair Kuwait', url: '/computer-repair-kuwait' }
@@ -187,10 +187,10 @@ export const rawGraphData: RawGraphData = {
     'page-ar-computer-repair': {
       id: 'page-ar-computer-repair', slug: 'ar/computer-repair-kuwait', entityType: 'WebPage', isActive: true,
       title: 'فني كمبيوتر في الكويت | تصليح كمبيوتر ولابتوب',
-      description: 'خدمة تصليح كمبيوتر في الكويت للابتوب والكمبيوتر المكتبي وMacBook وGaming PC. فحص أولي مجاني، واستلام وتوصيل مجاني، وعرض سعر قبل الإصلاح وضمان 30 يومًا من مختبر KCROC في حولي.',
+      description: 'خدمة فني كمبيوتر في الكويت للابتوب والكمبيوتر المكتبي وMacBook وGaming PC. نستلم الجهاز من المنزل أو المكتب ونفحصه ونصلحه في مختبر KCROC بحولي، ثم نوصله بعد الاختبار.',
       seo: {
-        title: 'فني كمبيوتر في الكويت | تصليح كمبيوتر ولابتوب | KCROC',
-        description: 'تحتاج تصليح كمبيوتر في الكويت؟ فني كمبيوتر للابتوب والـPC وMacBook وGaming PC. فحص أولي مجاني، واستلام وتوصيل مجاني، وسعر قبل الإصلاح وضمان 30 يومًا من مختبر حولي.',
+        title: 'فني كمبيوتر في الكويت | استلام وتوصيل مجاني | KCROC',
+        description: 'تحتاج فني كمبيوتر في الكويت؟ نستلم الكمبيوتر أو اللابتوب من المنزل أو المكتب ونفحصه ونصلحه في مختبرنا بحولي، ثم نوصله بعد الاختبار. تشخيص وسعر واضح قبل الإصلاح.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/ar/computer-repair-kuwait',
         locale: 'ar_KW',
         alternates: {
@@ -771,8 +771,8 @@ export const rawGraphData: RawGraphData = {
       title: 'Windows 11 Background Services You Can Audit in 2026',
       description: 'A technician-written Windows 11 guide covering WHESVC, DiagTrack, SysMain and MapsBroker, with evidence-first checks before changing service settings.',
       seo: {
-        title: 'Windows 11 Background Services: What to Check | KCROC',
-        description: 'Learn how to audit WHESVC, DiagTrack, SysMain and MapsBroker in Windows 11, what each service does, and what to check before disabling anything.',
+        title: 'WHESVC Explained: Windows Health and Optimized Experiences | KCROC',
+        description: 'What is WHESVC in Windows 11? Learn what Windows Health and Optimized Experiences does, how to check its status, CVE-2025-59241, and safer troubleshooting.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/guides/windows-11-background-services-audit',
         ogType: 'article',
         schemaTypes: ['Article', 'BreadcrumbList']
@@ -3393,7 +3393,7 @@ export const rawGraphData: RawGraphData = {
       isPhysicalLocation: false,
       title: 'Saad Al Abdullah',
       description: 'Computer and laptop repair in Saad Al Abdullah City, Kuwait, with free pickup and delivery to KCROC’s Hawalli lab, diagnosis before paid work, and a clear repair quote.',
-      localIntro: 'For residents of Saad Al Abdullah City, computer repair can start at home instead of with a trip to a workshop. KCROC arranges pickup from homes and offices, records the device model and symptoms, diagnoses the fault at our Hawalli lab, confirms the price before paid work, and returns the device after testing. This page focuses on the practical repair needs of the area: laptops that will not turn on or charge, cracked or black screens, overheating and fan noise, and storage or memory upgrades. Saad Al Abdullah is a service area, not a walk-in branch.',
+      localIntro: 'For residents of Saad Al Abdullah City, KCROC can arrange device pickup from home or office instead of requiring a trip to the workshop. The device is taken to our Hawalli lab, where technicians record the model and symptoms, diagnose the fault, confirm the price before paid work, and return the device after testing. This page focuses on the practical repair needs of the area: laptops that will not turn on or charge, cracked or black screens, overheating and fan noise, and storage or memory upgrades. Saad Al Abdullah is a service area, not a walk-in branch.',
       localHighlights: [
         { title: 'Pickup from Saad Al Abdullah City homes and offices', description: 'Send your block or nearby landmark, device model and symptoms on WhatsApp so the team can arrange collection and return.' },
         { title: 'No-power and charging diagnosis', description: 'A laptop that will not start may have an adapter, battery, charging-port or motherboard fault. These are checked before a replacement is recommended.' },
@@ -3902,11 +3902,11 @@ export const rawGraphData: RawGraphData = {
       seo: { title: 'FAQ: Local Computer Repair Near Me Kuwait', description: 'How KCROC provides local computer repair across Kuwait.', canonicalUrl: 'https://www.computerrepairkuwait.com/faq#local-computer-repair-near-me', schemaTypes: ['FAQPage'] }
     } as FAQEntity,
     'faq-near-me-home': {
-      id: 'faq-near-me-home', slug: 'in-home-computer-repair', entityType: 'FAQ', isActive: true,
-      title: 'Can I arrange computer repair from my home or office?',
-      description: 'Pickup and on-call options for customers who need repair at their location.',
-      answer: 'Yes. KCROC can arrange pickup from your home or office across Kuwait, so you do not need to carry a heavy desktop or laptop to the workshop. Where an on-site visit is appropriate, we can confirm the available option for your specific problem; board-level repairs are performed at the Hawalli lab.',
-      seo: { title: 'FAQ: In-Home Computer Repair Kuwait', description: 'Arrange computer repair pickup from your home or office in Kuwait.', canonicalUrl: 'https://www.computerrepairkuwait.com/faq#in-home-computer-repair', schemaTypes: ['FAQPage'] }
+      id: 'faq-near-me-home', slug: 'computer-repair-pickup-delivery', entityType: 'FAQ', isActive: true,
+      title: 'Can KCROC collect my computer or laptop from home or office?',
+      description: 'How pickup and delivery work for customers across Kuwait.',
+      answer: 'Yes. KCROC can arrange pickup from your home or office across Kuwait. The device is transported to our Hawalli workshop for diagnosis and repair, then returned after testing. We do not offer at-home or on-site computer repairs.',
+      seo: { title: 'FAQ: Computer Repair Pickup & Delivery Kuwait', description: 'Learn how KCROC collects devices from home or office and repairs them at the Hawalli workshop.', canonicalUrl: 'https://www.computerrepairkuwait.com/near-me', schemaTypes: ['FAQPage'] }
     } as FAQEntity,
     'faq-arabic-computer-technician': {
       id: 'faq-arabic-computer-technician', slug: 'arabic-computer-technician-kuwait', entityType: 'FAQ', isActive: true,
