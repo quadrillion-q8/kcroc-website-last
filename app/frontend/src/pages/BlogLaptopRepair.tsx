@@ -3,6 +3,7 @@ import { Head } from 'vite-react-ssg';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { StandaloneRelatedLinks } from '@/components/content/StandaloneRelatedLinks';
+import { HeadTermCallout } from '@/components/content/HeadTermCallout';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -540,6 +541,10 @@ export default function BlogLaptopRepair() {
           </div>
         </div>
       </section>
+
+      <div className="container mx-auto max-w-4xl px-4 sm:px-6">
+        <HeadTermCallout lead="For a hands-on diagnosis," placement="BlogLaptopRepair" />
+      </div>
 
       <StandaloneRelatedLinks
         title="Laptop repair topics to explore next"
