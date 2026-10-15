@@ -15,6 +15,7 @@ import { KCROC_GRAPH } from '../data/graph';
 import { SEOEngine } from '../core/components/SEOEngine';
 import { IMAGES } from '../constants/images';
 import { StandaloneRelatedLinks } from '@/components/content/StandaloneRelatedLinks';
+import { HeadTermCallout } from '@/components/content/HeadTermCallout';
 
 // Dynamic Business Data
 const business = KCROC_GRAPH.business!;
@@ -929,6 +930,10 @@ export default function BiosUefiRecoveryGuide() {
         </div>
       </section>
 
+
+      <div className="container mx-auto max-w-4xl px-4 sm:px-6">
+        <HeadTermCallout lead="If your device still will not boot after a BIOS or UEFI update," placement="BiosUefiRecoveryGuide" />
+      </div>
 
       <StandaloneRelatedLinks
         title="BIOS recovery: related diagnostic paths"
