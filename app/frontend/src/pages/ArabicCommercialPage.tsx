@@ -1052,7 +1052,7 @@ function ArabicComputerRepairPage({
     },
     {
       q: 'هل يجي الفني يصلح الكمبيوتر داخل البيت؟',
-      a: 'الإصلاح والفحص الفني يتمان في مختبر KCROC في حولي. نرتب استلام الجهاز من البيت أو المكتب وتوصيله بعد الإصلاح والاختبار حسب منطقة الخدمة؛ لا تعتمد الخدمة على إصلاح الجهاز داخل المنزل.',
+      a: 'لا نقدم إصلاحًا داخل المنزل أو زيارة فني للموقع. يتم الفحص والإصلاح في مختبر KCROC في حولي؛ ونرتب استلام الجهاز من البيت أو المكتب ثم نوصله بعد الإصلاح والاختبار حسب منطقة الخدمة.',
     },
     {
       q: 'هل تستلمون الجهاز من البيت أو المكتب؟',
@@ -1217,7 +1217,7 @@ function ArabicComputerRepairPage({
                 </Link>
                 <a href={`tel:+${business.telephone}`} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-slate-800 px-6 py-3.5 font-bold text-slate-300 transition hover:border-slate-600 hover:text-white">
                   <Phone className="h-5 w-5" aria-hidden="true" />
-                  ${business.telephone.replace(/^\+?965/, '')}
+                  +965 {business.telephone.replace(/^\+?965\s?/, '')}
                 </a>
               </div>
 
