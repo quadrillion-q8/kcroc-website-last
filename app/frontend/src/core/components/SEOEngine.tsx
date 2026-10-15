@@ -596,11 +596,38 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
   // need a fetchable canonical asset URL.
   const contentImage = (entity as any).contentImages?.find((image: any) => image?.placement === 'hero')
     || (entity as any).contentImages?.[0];
+
+  // Last-resort, first-party image selection for article/guide routes that do
+  // not yet have an explicit graph/SEO image. These files are already present
+  // under public/images/discover/ and are purpose-cropped to 1200x675. Keep
+  // explicit SEO and graph image assignments authoritative; this only fills
+  // missing assignments and avoids the generic site-wide /og-image.webp.
+  const imagePath = `${canonicalUrl} ${title}`.toLowerCase();
+  const discoverFallbacks: Array<[RegExp, string]> = [
+    [/bios|uefi|firmware/, '/images/discover/bios-hero-motherboard-1200x675.webp'],
+    [/wifi|wi-fi|wireless|network/, '/images/discover/laptop-wifi-network-card-1200x675.webp'],
+    [/battery|swollen|charging|power/, '/images/discover/swollen-macbook-battery-replacement-2-1200x675.webp'],
+    [/overheat|thermal|temperature|throttl|cooling|fan|heat/, '/images/discover/laptop-dust-cleaning-overheating-kuwait-1200x675.webp'],
+    [/gaming|gpu|graphics|rtx|game/, '/images/discover/gaming-pc-thermal-throttling-kuwait-1200x675.webp'],
+    [/ssd|storage|nvme|disk|drive/, '/images/discover/lexar-nvme-ssd-upgrade-pc-repair-kuwait-1000-1200x675.webp'],
+    [/ram|memory/, '/images/discover/windows-11-8gb-ram-performance-1200x675.webp'],
+    [/screen|display|hinge/, '/images/discover/laptop-screen-protection-kuwait-1200x675.webp'],
+    [/windows|software|driver|update|boot|blue-screen|bsod/, '/images/discover/windows-os-software-repair-and-installation-kuwait-1200x675.webp'],
+    [/motherboard|diagnostic|repair|laptop/, '/images/discover/laptop-repair-kuwait-1200x675.webp'],
+  ];
+  const isArticleLike = /\/(blog|guides|news|case-studies)\//i.test(canonicalUrl)
+    || (ogType || '').toLowerCase() === 'article'
+    || (schemaTypes || []).some((type: string) => ['Article', 'BlogPosting', 'TechArticle'].includes(type));
+  const contextualFallback = isArticleLike
+    ? (discoverFallbacks.find(([pattern]) => pattern.test(imagePath))?.[1]
+      || '/images/discover/laptop-repair-kuwait-1200x675.webp')
+    : undefined;
   const rawOgImage =
     ogImage
     || entity.featuredImage?.ogImage
     || contentImage?.src
     || entity.featuredImage?.hero?.webp
+    || contextualFallback
     || `${business.websiteUrl}/og-image.webp`;
   const resolvedOgImage = rawOgImage.startsWith('http')
     ? rawOgImage
