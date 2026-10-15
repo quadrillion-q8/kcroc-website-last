@@ -2,6 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { StandaloneRelatedLinks } from '@/components/content/StandaloneRelatedLinks';
+import { HeadTermCallout } from '@/components/content/HeadTermCallout';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import {
@@ -541,6 +542,10 @@ export default function GameBarPresenceWriterGuide() {
           </div>
         </div>
       </section>
+
+      <div className="container mx-auto max-w-4xl px-4 sm:px-6">
+        <HeadTermCallout lead="If the stutter or high CPU use continues after these fixes," placement="GameBarPresenceWriterGuide" />
+      </div>
 
       <StandaloneRelatedLinks
         title="GameBar performance: related troubleshooting paths"
