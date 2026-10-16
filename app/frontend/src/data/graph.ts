@@ -398,13 +398,17 @@ export const rawGraphData: RawGraphData = {
 
     'page-ar-gaming-laptop-repair': {
       id: 'page-ar-gaming-laptop-repair', slug: 'ar/gaming-laptop-repair-kuwait', entityType: 'WebPage', isActive: true,
-      title: 'تصليح Gaming Laptop في الكويت', description: 'تصليح Gaming Laptop وROG وLegion وMSI في الكويت لمشاكل الحرارة والشاشة والشحن والطاقة والـGPU والـFPS.',
+      title: 'تصليح Gaming Laptop في الكويت', description: 'تصليح لابتوب قيمنق في الكويت لمشاكل الحرارة وهبوط FPS والشاشة السوداء والطاقة والشحن وGPU والمذربورد.',
       seo: {
-        title: 'تصليح Gaming Laptop الكويت | ROG وLegion وMSI | KCROC',
-        description: 'تصليح Gaming Laptop في الكويت للحرارة، الشاشة السوداء، عدم التشغيل، الشحن، GPU وFPS Drops. استلام مجاني وضمان 30 يومًا.',
-        canonicalUrl: 'https://www.computerrepairkuwait.com/ar/gaming-laptop-repair-kuwait', locale: 'ar_KW',
+        title: 'تصليح Gaming Laptop في الكويت | ROG وLegion وMSI | KCROC',
+        description: 'تصليح لابتوب قيمنق في الكويت لمشاكل الحرارة وهبوط FPS والشاشة السوداء والطاقة والشحن وGPU والمذربورد. تشخيص مجاني، استلام وتوصيل مجاني وضمان 30 يومًا.',
+        canonicalUrl: 'https://www.computerrepairkuwait.com/ar/gaming-laptop-repair-kuwait',
+        ogImage: '/images/msi-gaming-laptop-and-gpu-repair-workstation.webp',
+        ogImageAlt: 'لابتوب MSI للألعاب على طاولة فحص داخل ورشة KCROC',
+        ogImageWidth: 1200, ogImageHeight: 800,
+        locale: 'ar_KW',
         alternates: { 'ar-KW': 'https://www.computerrepairkuwait.com/ar/gaming-laptop-repair-kuwait', 'en-KW': 'https://www.computerrepairkuwait.com/gaming-laptop-repair-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/gaming-laptop-repair-kuwait' },
-        ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList'], lastModified: '2026-10-02T00:00:00+03:00', breadcrumbs: [{ name: 'الرئيسية', url: '/' }, { name: 'تصليح Gaming Laptop', url: '/ar/gaming-laptop-repair-kuwait' }]
+        ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList'], lastModified: '2026-10-17T00:00:00+03:00', breadcrumbs: [{ name: 'الرئيسية', url: '/' }, { name: 'تصليح Gaming Laptop', url: '/ar/gaming-laptop-repair-kuwait' }]
       },
       relatedServiceIds: ['srv-gaming-laptop', 'srv-gaming-laptop-cleaning', 'srv-gaming', 'srv-laptop', 'srv-screen', 'srv-battery']
     } as WebPageEntity,
