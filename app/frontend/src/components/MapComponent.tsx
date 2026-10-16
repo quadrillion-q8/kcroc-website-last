@@ -1,7 +1,7 @@
 // File: app/frontend/src/components/MapComponent.tsx
 import React from 'react';
 
-export default function MapComponent() {
+export default function MapComponent({ title = 'KCROC Computer Repair - Hawalli Lab Location' }: { title?: string }) {
   return (
     <div className="rounded-3xl overflow-hidden border border-slate-800 shadow-2xl bg-slate-900 p-2 w-full">
       <iframe
@@ -12,7 +12,7 @@ export default function MapComponent() {
         allowFullScreen
         loading="lazy"
         referrerPolicy="strict-origin-when-cross-origin"
-        title="KCROC Computer Repair - Hawalli Lab Location"
+        title={title}
       />
     </div>
   );
