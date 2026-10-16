@@ -21,7 +21,7 @@ export default function Services() {
     <>
       <SEOEngine entityId="page-services" />
 
-      <main className="min-h-screen bg-transparent text-white pt-32 pb-24">
+      <div className="min-h-screen bg-transparent text-white pt-32 pb-24">
         <div className="max-w-7xl mx-auto px-6">
           <header className="mb-12 max-w-4xl">
             <p className="text-xs uppercase tracking-[0.22em] font-bold text-emerald-400 mb-4">
@@ -103,7 +103,7 @@ export default function Services() {
             </Link>
           </section>
         </div>
-      </main>
+      </div>
     </>
   );
 }
