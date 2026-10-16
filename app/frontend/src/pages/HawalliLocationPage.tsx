@@ -81,7 +81,8 @@ export default function HawalliLocationPage() {
   const location = KCROC_GRAPH.locations.find((l) => l.id === 'loc-hawalli');
   const business = KCROC_GRAPH.business;
   const process = KCROC_GRAPH.processes?.find((p) => p.id === 'proc-standard');
-  const caseStudy = KCROC_GRAPH.caseStudies.find((c) => c.id === 'case-rog-motherboard-hawalli');
+  // Do not promote a customer-specific story unless publication consent and first-party evidence are present.
+  const caseStudy = KCROC_GRAPH.caseStudies.find((c) => c.id === 'case-rog-motherboard-hawalli' && c.customerConsent?.granted === true && c.customerConsent.scope.includes('device') && c.customerConsent.scope.includes('repair-details') && c.evidence.length > 0);
   const reviews = KCROC_GRAPH.reviews;
   const hawalliReview = reviews?.items.find((r) => r.location === 'Hawalli');
   const trustBadges = KCROC_GRAPH.trustBadges;
@@ -258,13 +259,24 @@ export default function HawalliLocationPage() {
                   </a>
                 </Button>
               </div>
-              <a
-                href={`tel:+${phone}`}
-                onClick={() => handleCallClick('hero_tertiary')}
-                className="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-cyan-400 transition-colors"
-              >
-                <Phone className="w-4 h-4" aria-hidden="true" /> Call {phoneDisplay}
-              </a>
+              <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+                <a
+                  href={`tel:+${phone}`}
+                  onClick={() => handleCallClick('hero_tertiary')}
+                  className="inline-flex min-h-11 items-center gap-2 text-sm text-slate-400 hover:text-cyan-400 transition-colors"
+                >
+                  <Phone className="w-4 h-4" aria-hidden="true" /> Call {phoneDisplay}
+                </a>
+                <a
+                  href={HAWALLI_MAPS_PLACE_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => trackConversion('cta_click', { cta_name: 'hawalli_directions', button_position: 'hero' })}
+                  className="inline-flex min-h-11 items-center gap-2 text-sm font-bold text-cyan-300 hover:text-cyan-200 transition-colors"
+                >
+                  <MapPin className="w-4 h-4" aria-hidden="true" /> Get Directions
+                </a>
+              </div>
               <p className="text-xs sm:text-sm text-slate-400 font-medium">
                 Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19 · Open daily 10 AM to 10 PM · No Fix, No Fee · 30-day warranty
               </p>
