@@ -277,7 +277,7 @@ export default function Blog() {
       ========================= */}
       <section className="max-w-6xl mx-auto px-6 mb-12" aria-label="Choose a guide">
         <div className="grid gap-4 md:grid-cols-3">
-          <Link to="/blog/stop-laptop-overheating" className="group rounded-2xl border border-slate-800 bg-slate-900/50 p-5 transition hover:border-cyan-500/50">
+          <Link to="/guides/why-is-my-laptop-so-hot" className="group rounded-2xl border border-slate-800 bg-slate-900/50 p-5 transition hover:border-cyan-500/50">
             <span className="text-xs font-bold uppercase tracking-widest text-cyan-400">Troubleshooting</span>
             <h2 className="mt-2 text-lg font-bold text-white group-hover:text-cyan-300">Laptop running hot?</h2>
             <p className="mt-2 text-sm leading-relaxed text-slate-400">Review common causes of overheating and the safe checks to try before booking a repair.</p>
