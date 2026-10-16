@@ -39,7 +39,7 @@ const related = {
   services: (KCROC_GRAPH.services ?? []).map((e: any) => ({ id: e.id, title: e.title, description: e.description })),
   brands: (KCROC_GRAPH.brands ?? []).map((e: any) => ({ id: e.id, slug: e.slug, brandName: e.brandName, title: e.title, officialWebsite: e.officialWebsite, seo: e.seo })),
   problems: (KCROC_GRAPH.problems ?? []).map((e: any) => ({ id: e.id, title: e.title })),
-  locations: (KCROC_GRAPH.locations ?? []).map((e: any) => ({ id: e.id, title: e.title, coords: e.coords, serviceAreas: e.serviceAreas ?? [] }))
+  locations: (KCROC_GRAPH.locations ?? []).map((e: any) => ({ id: e.id, title: e.title, landmark: e.landmark, coords: e.coords, serviceAreas: e.serviceAreas ?? [] }))
 };
 
 const business = KCROC_GRAPH.business ? {
