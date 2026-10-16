@@ -104,8 +104,11 @@ export default function BookingPage() {
           <h1 className="text-3xl sm:text-5xl font-black mb-4 tracking-tight text-white">
             Claim Your <span className="text-cyan-400">Free Diagnostic</span>
           </h1>
-          <p className="text-slate-400 text-lg">
-            Tell us what's wrong. We'll pick it up, diagnose it at the component level for free, and give you a fixed quote.
+          <p className="text-slate-300 text-lg leading-relaxed">
+            Share your device, symptoms and area. This form prepares a message to our team on WhatsApp so we can discuss pickup, assess the next diagnostic step and explain the quote before repair work begins.
+          </p>
+          <p className="mt-4 text-sm leading-relaxed text-slate-500">
+            Sending this form starts a repair enquiry; it does not confirm a booking or commit you to a repair.
           </p>
         </div>
 
@@ -244,6 +247,31 @@ export default function BookingPage() {
           </div>
 
         </div>
+
+        <section className="mt-12 border-t border-slate-800 pt-10" aria-labelledby="booking-next-steps">
+          <div className="mb-6 max-w-3xl">
+            <h2 id="booking-next-steps" className="text-2xl font-black text-white sm:text-3xl">What happens after you contact us?</h2>
+            <p className="mt-3 leading-relaxed text-slate-400">A clear process helps you decide what to do next without guessing the fault or approving work too early.</p>
+          </div>
+          <ol className="grid gap-4 md:grid-cols-3">
+            <li className="rounded-2xl border border-slate-800 bg-slate-900/40 p-5">
+              <span className="text-xs font-black uppercase tracking-widest text-cyan-400">Step 1</span>
+              <h3 className="mt-2 font-bold text-white">Share the symptoms</h3>
+              <p className="mt-2 text-sm leading-relaxed text-slate-400">Tell us the device model if known, what happened, and your area in Kuwait. Photos or a short video can help explain visible symptoms.</p>
+            </li>
+            <li className="rounded-2xl border border-slate-800 bg-slate-900/40 p-5">
+              <span className="text-xs font-black uppercase tracking-widest text-cyan-400">Step 2</span>
+              <h3 className="mt-2 font-bold text-white">Confirm pickup and diagnosis</h3>
+              <p className="mt-2 text-sm leading-relaxed text-slate-400">Our team discusses the collection details. The device is assessed at the Hawalli lab; the exact fault may only be clear after testing.</p>
+            </li>
+            <li className="rounded-2xl border border-slate-800 bg-slate-900/40 p-5">
+              <span className="text-xs font-black uppercase tracking-widest text-cyan-400">Step 3</span>
+              <h3 className="mt-2 font-bold text-white">Review the quote</h3>
+              <p className="mt-2 text-sm leading-relaxed text-slate-400">We explain the recommended repair and cost so you can decide whether to proceed. Completion time depends on the fault and parts availability.</p>
+            </li>
+          </ol>
+          <p className="mt-5 text-sm text-slate-500">Not sure which repair you need? <a href="/services" className="font-semibold text-cyan-400 hover:text-cyan-300">Browse repair services</a> or <a href="/near-me" className="font-semibold text-cyan-400 hover:text-cyan-300">read about local pickup</a>.</p>
+        </section>
       </div>
     </div>
   );
