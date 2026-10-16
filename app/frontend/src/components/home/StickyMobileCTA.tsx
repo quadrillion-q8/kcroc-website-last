@@ -17,7 +17,8 @@ export const StickyMobileCTA = () => {
   const ctaLabel =
     pathname === '/pricing' ? 'Get Exact Price' :
     pathname.includes('battery') ? 'Battery Help' :
-    pathname.includes('screen') ? 'Screen Price' :
+    (pathname.startsWith('/ar/') && pathname.includes('screen')) ? 'سعر تبديل الشاشة' :
+    pathname.includes('screen') ? 'Get Screen Quote' :
     pathname.includes('gaming') ? 'Gaming Help' :
     pathname.includes('motherboard') ? 'Board Repair' :
     pathname.includes('macbook') ? 'MacBook Help' :

@@ -2860,10 +2860,10 @@ export const rawGraphData: RawGraphData = {
       slug: 'laptop-screen-repair-kuwait',
       entityType: 'Service',
       isActive: true,
-      title: 'Screen Replacement Kuwait',
+      title: 'Laptop Screen Repair Kuwait',
       iconKey: 'monitor',
-      shortDescription: 'Same-day LCD, IPS, and OLED panel replacement for cracked, flickering, or dead laptop and MacBook screens.',
-      description: 'A cracked panel, a screen full of vertical lines, or a display that flickers whenever the lid moves doesn\'t mean the laptop is done — in almost every case it\'s a screen or cable fault, not a motherboard problem, and it\'s fixable the same day if the panel is in stock. We stock standard 14" and 15.6" FHD, IPS, and OLED panels for Dell, HP, Lenovo, ASUS, and Acer, plus Retina panels for MacBook Air and Pro. Kuwait\'s heat and dust also take a toll here specifically: display cables routed near the hinge flex thousands of times a year and wear through faster in high-temperature environments, which is why a "cracked screen" call often turns out to be a cable fault once we open the lid — a cheaper fix than a full panel.',
+      shortDescription: 'Repair for cracked, black, flickering or lined laptop screens in Kuwait. We check the panel, display cable and backlight before recommending replacement.',
+      description: 'A cracked panel, vertical lines, a black display or flicker does not always mean the panel itself has failed. We check the display panel, cable, connector and backlight path, then confirm compatible options, total price and turnaround before any paid work. Repairs are completed in our Hawalli lab, with free pickup and delivery across Kuwait.',
       idealCustomer: 'Anyone with a cracked, flickering, lined, or dead laptop or MacBook screen who needs a fast, OEM-quality panel replacement without paying for a new machine.',
       deviceTypes: [
         'Windows Laptops (14" & 15.6" FHD/IPS)',
@@ -2872,14 +2872,13 @@ export const rawGraphData: RawGraphData = {
         '2-in-1 / Convertible Touchscreens'
       ],
       repairLevel: 'basic',
-      estimatedTurnaround: 'Same Day (if panel in stock)',
+      estimatedTurnaround: 'Same day when the correct panel is available',
       pricing: { startingFrom: 30, currency: 'KWD', quoteRequired: true, displayLabel: 'Labor from 30 KWD + panel' },
       relatedServiceIds: ['srv-laptop', 'srv-hinge', 'srv-macbook-screen'],
       relatedProblemIds: ['problem-cracked-screen', 'problem-black-screen'],
       relatedBrandIds: ['brand-dell', 'brand-hp', 'brand-lenovo', 'brand-asus', 'brand-msi'],
       relatedResourcePaths: [
-        { label: 'Laptop Repair Guide', path: '/laptop-repair-kuwait' },
-        { label: 'Laptop Screen Cracked — What to Do', path: '/laptop-screen-cracked-kuwait' },
+        { label: 'How to Protect Your Laptop Screen', path: '/blog/how-to-protect-laptop-screen' },
       ],
       relatedCaseStudyPath: { label: 'Dell XPS Screen Replacement Case Study — Kuwait City', path: '/case-studies/dell-xps-screen-replacement-kuwait-city' },
       coreFeatures: [
@@ -2894,20 +2893,20 @@ export const rawGraphData: RawGraphData = {
       brands: ['Dell', 'HP', 'Lenovo', 'ASUS', 'Acer', 'MacBook'],
     
       whyChooseUs: [
-        { title: 'Cable Fault Checked Before Panel Replacement', description: 'A cracked-looking display with lines or flicker is sometimes a worn display cable near the hinge, not the panel itself — we check this first so you\'re not paying for a new screen you don\'t need.' },
-        { title: 'OEM & High-Grade Compatible Panels In Stock', description: 'We stock standard 14" and 15.6" FHD/IPS panels for the most common brands, which is what makes same-day turnaround possible.' },
-        { title: 'MacBook Retina Specialists', description: 'Retina and True Tone displays require careful handling of the delicate flex cables and True Tone sensor — we work on these daily, not occasionally.' },
-        { title: 'Colour & Brightness Calibrated Before Return', description: 'Every replacement panel is checked for dead pixels, uniform backlighting, and colour accuracy before the laptop goes back to you.' },
+        { title: 'Display Fault Diagnosed Before Replacement', description: 'Flicker, lines or a black display can come from the panel, cable, connector or backlight circuit. We test the likely cause before recommending a part.' },
+        { title: 'Model-Matched Panel Options', description: 'We confirm the exact laptop model and required panel specifications before quoting. Part availability and turnaround are checked for your device rather than assumed.' },
+        { title: 'MacBook Display Care', description: 'We identify the MacBook model and display assembly before work, then check supported display functions after installation.' },
+        { title: 'Display Checks Before Return', description: 'After fitting, we check image stability, brightness and visible display defects appropriate to the replacement and device.' },
         { title: 'Free Pickup & Delivery, Kuwait-Wide', description: 'Collected from and returned to your home or office anywhere in Kuwait at no extra cost.' },
-        { title: 'No Fix, No Fee', description: 'If the fault turns out to be something we can\'t resolve, you pay nothing for the diagnostic.' }
+        { title: 'Quote Before Paid Repair', description: 'You receive a quote for the confirmed fault, parts and labour before paid work begins. No replacement part is fitted without your approval.' }
       ],
     
       commonIssues: [
         { id: 'cracked-screen', title: 'Cracked or Shattered Screen', severity: 'high', description: 'Physical impact from a drop or closing the lid on an object. The panel itself is replaced; the surrounding bezel and hinge are checked for related damage at the same time.' },
         { id: 'screen-flicker', title: 'Screen Flickering', severity: 'medium', description: 'Often a worn display cable near the hinge rather than the panel — we test the cable separately before assuming a full panel swap is needed.' },
-        { id: 'vertical-lines', title: 'Vertical or Horizontal Lines on Display', severity: 'high', description: 'Usually a damaged panel or a loose display cable connection. We reseat the cable first, since that alone resolves a portion of these cases.' },
+        { id: 'vertical-lines', title: 'Vertical or Horizontal Lines on Display', severity: 'high', description: 'Lines may come from a damaged panel, cable or connector. We check the connection and display path before quoting a panel replacement.' },
         { id: 'black-screen-external-works', title: 'Black Screen, But External Monitor Works', severity: 'high', description: 'Points to the panel or its cable rather than the graphics hardware, since the system is clearly still rendering a display signal correctly.' },
-        { id: 'backlight-dim', title: 'Screen Very Dim or Backlight Not Working', severity: 'medium', description: 'The image is faintly visible under a flashlight but not on its own — typically a blown backlight fuse or a failed backlight driver, not the panel itself.' },
+        { id: 'backlight-dim', title: 'Screen Very Dim or Backlight Not Working', severity: 'medium', description: 'A faint image can point to a backlight, fuse, driver or panel fault. We test the display path before recommending replacement.' },
         { id: 'discoloration', title: 'Discoloration or Uneven Tint', severity: 'low', description: 'Can be early-stage backlight degradation or a panel manufacturing fault appearing over time; we confirm which before quoting a replacement.' },
         { id: 'touchscreen-unresponsive', title: 'Touchscreen Not Responding', severity: 'medium', description: 'On 2-in-1 and convertible models, the touch digitizer layer can fail independently of the display panel underneath it.' },
         { id: 'hinge-related-cable-wear', title: 'Flicker That Gets Worse When Opening/Closing the Lid', severity: 'medium', description: 'A strong sign the display cable is worn from repeated flexing near the hinge rather than a fault in the panel itself.' }
@@ -2925,9 +2924,9 @@ export const rawGraphData: RawGraphData = {
       performanceOutcomes: {
         disclaimer: 'The outcomes below describe typical results for this repair category, not a guarantee for any specific device — every repair is quoted after its own diagnostic.',
         items: [
-          { metric: 'Turnaround', outcome: 'Most standard 14"/15.6" panel replacements complete same-day when the panel is in stock.' },
-          { metric: 'Cable vs. Panel Diagnosis', outcome: 'A meaningful share of "cracked screen" calls that show no physical damage turn out to be a display cable fault, a cheaper fix than a full panel.' },
-          { metric: 'Cost vs. Manufacturer Quotes', outcome: 'Panel replacement typically costs a fraction of a manufacturer or authorized-center screen assembly quote.' }
+          { metric: 'Turnaround', outcome: 'Standard panel replacements may be completed the same day when the correct part is available and collection and diagnosis timing allow. We confirm timing for your model.' },
+          { metric: 'Panel vs. Cable Diagnosis', outcome: 'Flickering, lines and black-display symptoms can originate from the cable, connector, backlight or panel. Diagnosis helps avoid replacing a panel when another repair is appropriate.' },
+          { metric: 'Price Clarity', outcome: 'Labour starts at 30 KWD plus the panel. The final quote depends on the exact model, panel type and availability; parts and labour are confirmed before paid work.' }
         ]
       },
     
@@ -2969,8 +2968,8 @@ export const rawGraphData: RawGraphData = {
         { id: 'faq-macbook-retina-screen', title: 'Do you replace MacBook Retina displays?', answer: 'Yes, including careful handling of the True Tone sensor, which we recalibrate after replacement so colour accuracy stays correct.' },
         { id: 'faq-touchscreen-replace', title: 'Can you replace a touchscreen on a 2-in-1 laptop?', answer: 'Yes. The touch digitizer can fail independently of the display panel beneath it, and we diagnose and replace whichever layer is actually at fault.' },
         { id: 'faq-screen-cost', title: 'How much does laptop screen replacement cost?', answer: 'Screen-replacement labor starts from 30 KWD, with the panel priced separately. The complete price depends on the panel size, resolution, display type and exact laptop model.' },
-        { id: 'faq-screen-oem', title: 'Do you use OEM screens?', answer: 'We offer OEM and high-grade compatible panels and explain the difference in quality and price before you choose.' },
-        { id: 'faq-screen-data-safety', title: 'Is my data safe during a screen replacement?', answer: 'Yes — screen replacement is a hardware-only procedure that never touches your storage drive or files.' },
+        { id: 'faq-screen-oem', title: 'Do you offer original-manufacturer or compatible screens?', answer: 'Available options depend on the exact laptop model. We explain the quoted part type and price, including the difference between an original-manufacturer part and a compatible replacement, before you approve the work.' },
+        { id: 'faq-screen-data-safety', title: 'Is my data safe during a screen replacement?', answer: 'A screen replacement normally does not require accessing the storage drive. We focus on the display repair; let us know before collection if you have specific data-handling preferences.' },
         { id: 'faq-screen-warranty', title: 'Is there a warranty on screen replacements?', answer: 'Yes, 30 days covering the panel and labor.' },
         { id: 'faq-backlight-vs-panel', title: 'My screen is very dim — do I need a new panel?', answer: 'Not necessarily. A dim but faintly visible image often means a blown backlight fuse or failed backlight driver rather than the panel itself, which is a cheaper fix — we test for this before quoting a full replacement.' }
       ],
@@ -2982,8 +2981,8 @@ export const rawGraphData: RawGraphData = {
           alt: IMAGES.laptopHardware.laptopScreenAssemblyDisassemblyRepair.alt,
           width: IMAGES.laptopHardware.laptopScreenAssemblyDisassemblyRepair.width,
           height: IMAGES.laptopHardware.laptopScreenAssemblyDisassemblyRepair.height,
-          placement: 'commonIssues',
-          caption: 'A laptop screen assembly being disassembled to check whether the fault is the panel or the display cable.'
+          placement: 'hero',
+          caption: 'A laptop screen assembly being inspected to distinguish panel damage from a cable or connector fault.'
         },
         {
           src: IMAGES.laptopHardware.laptopLcdPanelReplacementPart.src,
@@ -2991,7 +2990,7 @@ export const rawGraphData: RawGraphData = {
           width: IMAGES.laptopHardware.laptopLcdPanelReplacementPart.width,
           height: IMAGES.laptopHardware.laptopLcdPanelReplacementPart.height,
           placement: 'coreFeatures',
-          caption: 'A replacement LCD panel ready for installation — we stock standard FHD and IPS panels for same-day turnaround.'
+          caption: 'A replacement LCD panel example; the compatible specification and availability are checked against the exact laptop model.'
         },
         {
           src: IMAGES.laptopHardware.screenBezel.src,
@@ -3008,7 +3007,7 @@ export const rawGraphData: RawGraphData = {
         canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-screen-repair-kuwait', locale: 'en_KW', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/laptop-screen-repair-kuwait', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/laptop-screen-repair-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/laptop-screen-repair-kuwait' },
         ogType: 'article',
         schemaTypes: ['Service', 'FAQPage'],
-        lastModified: '2026-10-16T00:00:00+03:00'
+        lastModified: '2026-10-17T00:00:00+03:00'
       },
       navigationPriority: 60,
       isFeatured: false,

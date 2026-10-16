@@ -257,9 +257,13 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
             })),
             "offers": service.pricing ? {
               "@type": "Offer",
+              "name": service.pricing.displayLabel ?? `From ${service.pricing.startingFrom} ${service.pricing.currency}`,
+              "description": service.slug === 'laptop-screen-repair-kuwait'
+                ? "The 30 KWD starting figure is labour only; the replacement panel is priced separately. Final pricing depends on the exact laptop model and compatible part, and is confirmed before paid work begins."
+                : undefined,
               "priceCurrency": service.pricing.currency,
               "price": service.pricing.startingFrom,
-              "availability": "https://schema.org/InStock",
+              "availability": service.slug === 'laptop-screen-repair-kuwait' ? undefined : "https://schema.org/InStock",
               "priceValidUntil": new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toISOString().split('T')[0]
             } : undefined
           });
