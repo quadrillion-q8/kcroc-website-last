@@ -120,13 +120,15 @@ const CONFIG: Record<string, {
   },
   'laptop-screen-repair-kuwait': {
     h1: 'تصليح وتبديل شاشة اللابتوب في الكويت',
-    eyebrow: 'شاشة مكسورة، سوداء، تومض أو فيها خطوط',
-    intro: 'مو كل شاشة سوداء تحتاج تبديل شاشة. ممكن يكون الكابل أو الدائرة أو مشكلة في الجهاز نفسه. لذلك نفحص الصورة والإضاءة والاتصال قبل طلب القطعة، وإذا كانت الشاشة مكسورة نطابق البديل مع موديل جهازك.',
-    bullets: ['تشخيص black screen قبل استبدال الشاشة', 'تبديل الشاشات المناسبة للموديل', 'فحص كابل الشاشة والاتصال الداخلي', 'خدمة للـDell وHP وLenovo وASUS وغيرها', 'استلام وتوصيل مجاني داخل الكويت'],
+    eyebrow: 'شاشة مكسورة أو سوداء أو فيها خطوط ووميض • فحص قبل تبديل القطعة',
+    intro: 'شاشة اللابتوب مكسورة؟ سوداء؟ فيها خطوط أو تومض؟ مو كل مشكلة تعني أن الشاشة لازم تتبدل؛ ممكن يكون السبب كابل الشاشة أو الإضاءة أو اتصال داخلي. نفحص العطل ونطابق القطعة مع موديل جهازك، وبعدها نعطيك السعر والمدة المتوقعة قبل أي إصلاح مدفوع. أجرة تبديل الشاشة تبدأ من 30 د.ك، وسعر الشاشة يُحسب بشكل منفصل.',
+    bullets: ['فحص الشاشة والكابل والإضاءة قبل تبديل القطعة', 'أجرة العمل تبدأ من 30 د.ك + سعر الشاشة', 'مطابقة الشاشة حسب موديل الجهاز والمواصفات', 'تأكيد توفر القطعة والمدة قبل الموافقة', 'استلام وتوصيل مجاني في مناطق الكويت'],
     faq: [
-      { q: 'هل الشاشة السوداء تعني أن الشاشة خربانة؟', a: 'ليس دائمًا. قد يكون السبب كابل الشاشة أو الإضاءة أو RAM أو مسار عرض آخر؛ لذلك يبدأ التشخيص قبل طلب شاشة جديدة.' },
-      { q: 'هل تبدلون شاشة اللابتوب في نفس اليوم؟', a: 'المدة تعتمد على الموديل وتوفر القطعة. بعد معرفة الموديل يمكن تحديد الخيار المتاح والمدة المتوقعة.' },
-      { q: 'هل توفرون استلامًا من المنطقة؟', a: 'نعم. نرتب الاستلام والتوصيل ضمن خدمة KCROC في الكويت.' }
+      { q: 'هل الشاشة السوداء تعني أن الشاشة خربانة؟', a: 'مو بالضرورة. ممكن يكون السبب الشاشة أو الكابل أو الإضاءة أو اتصال داخلي آخر. نفحص العطل أولًا قبل اقتراح تبديل الشاشة.' },
+      { q: 'كم سعر تبديل شاشة اللابتوب؟ هل سعر 30 د.ك يشمل الشاشة؟', a: 'أجرة العمل تبدأ من 30 د.ك، وسعر الشاشة يُحسب بشكل منفصل حسب الموديل والمقاس والدقة ونوع الشاشة وتوفرها. نؤكد لك السعر النهائي قبل أي عمل مدفوع.' },
+      { q: 'هل تبدلون الشاشة في نفس اليوم؟', a: 'ممكن إذا كانت الشاشة المناسبة متوفرة وكان وقت الاستلام والتشخيص والتركيب يسمح. نؤكد توفر القطعة والمدة المتوقعة لموديل جهازك قبل موافقتك على السعر.' },
+      { q: 'هل يوجد ضمان على تبديل الشاشة؟', a: 'نعم، ضمان 30 يومًا على الشاشة وأجرة العمل وفق شروط الخدمة. نوضح لك تفاصيل التغطية قبل الإصلاح.' },
+      { q: 'هل تستلمون اللابتوب من منطقتي؟', a: 'نعم، نرتب الاستلام والتوصيل من مناطق الكويت. يتم الفحص والإصلاح في مختبر KCROC بحولي، ثم نرجع الجهاز لك بعد الاختبار.' }
     ],
     englishPath: '/laptop-screen-repair-kuwait',
     arabicLinks: [
@@ -136,8 +138,7 @@ const CONFIG: Record<string, {
       { label: 'فني كمبيوتر بالقرب مني', path: '/ar/near-me' }
     ],
     serviceIds: ['srv-screen', 'srv-laptop', 'srv-battery', 'srv-hinge']
-  }
-,
+  },
   'computer-repair-hawalli': {
     h1: 'تصليح كمبيوتر حولي',
     eyebrow: 'مختبر KCROC في حولي • استلام وتوصيل مجاني',
@@ -1170,7 +1171,7 @@ function ArabicComputerRepairPage({
 
   const startingPrices = [
     { price: 'من 15 د.ك', title: 'إصلاحات لابتوب شائعة', text: 'تختلف التكلفة حسب العطل والموديل والقطعة المطلوبة.' },
-    { price: 'من 30 د.ك', title: 'تبديل شاشة اللابتوب', text: 'السعر النهائي يعتمد على موديل الجهاز ونوع الشاشة وتوفرها.' },
+    { price: slug === 'laptop-screen-repair-kuwait' ? 'أجرة العمل من 30 د.ك + الشاشة' : 'من 30 د.ك', title: 'تبديل شاشة اللابتوب', text: slug === 'laptop-screen-repair-kuwait' ? 'هذا السعر لأجرة العمل فقط؛ سعر الشاشة يُحسب بشكل منفصل حسب الموديل والمواصفات والتوفر. نؤكد السعر النهائي قبل الإصلاح.' : 'السعر النهائي يعتمد على موديل الجهاز ونوع الشاشة وتوفرها.' },
     { price: 'من 25 د.ك', title: 'إصلاح اللوحة الأم', text: 'لإصلاح المكونات عند ملاءمة الحالة فنيًا؛ بعض الأعطال تحتاج خيارًا مختلفًا.' },
   ];
 
@@ -1559,7 +1560,10 @@ export default function ArabicCommercialPage() {
 
   if (!cfg || !page || !business) return <Navigate to="/404" replace />;
 
-  const wa = `https://wa.me/${business.telephone}?text=${encodeURIComponent(`السلام عليكم KCROC، أحتاج ${cfg.h1}. أريد أعرف طريقة الاستلام والتشخيص.`)}`;
+  const whatsappMessage = slug === 'laptop-screen-repair-kuwait'
+    ? 'السلام عليكم KCROC، أحتاج تصليح أو تبديل شاشة اللابتوب. الماركة والموديل: ____. المشكلة: ____. منطقتي بالكويت: ____. فضلاً أكدوا توفر الشاشة والسعر النهائي شامل أجرة العمل والقطعة والمدة المتوقعة قبل الإصلاح.'
+    : `السلام عليكم KCROC، أحتاج ${cfg.h1}. أريد أعرف طريقة الاستلام والتشخيص.`;
+  const wa = `https://wa.me/${business.telephone}?text=${encodeURIComponent(whatsappMessage)}`;
 
   if (slug === 'computer-repair-kuwait') {
     return <ArabicComputerRepairPage page={page as ArabicComputerPage} business={business} wa={wa} />;
@@ -1570,6 +1574,27 @@ export default function ArabicCommercialPage() {
   const services = cfg.serviceIds
     .map((id) => KCROC_GRAPH.services.find((service) => service.id === id))
     .filter(Boolean);
+  const arabicScreenServiceCopy: Record<string, { title: string; description: string }> = {
+    'srv-screen': {
+      title: 'تصليح وتبديل شاشة اللابتوب',
+      description: 'للشاشة المكسورة أو السوداء أو التي تومض أو تظهر خطوطًا. نفحص الشاشة والكابل والإضاءة ونطابق القطعة مع الموديل.'
+    },
+    'srv-laptop': {
+      title: 'تصليح اللابتوب',
+      description: 'تشخيص مشاكل الشحن والبطارية والحرارة والمفصلات واللوحة الأم قبل اقتراح تبديل القطع.'
+    },
+    'srv-battery': {
+      title: 'تبديل بطارية اللابتوب',
+      description: 'فحص البطارية والشحن والتأكد من توافق البطارية مع موديل جهازك قبل طلب القطعة.'
+    },
+    'srv-hinge': {
+      title: 'تصليح مفصلات وهيكل اللابتوب',
+      description: 'فحص المفصلات والغطاء والإطار لتحديد الضرر وتجنب زيادة الضغط على الشاشة أو كابلها.'
+    }
+  };
+  const relatedGuides = slug === 'laptop-screen-repair-kuwait'
+    ? [...AR_GUIDES, { title: 'دليل حماية شاشة اللابتوب من الكسر (بالإنجليزية)', path: '/blog/how-to-protect-laptop-screen' }]
+    : AR_GUIDES;
   const arabicServicePathById: Record<string, string> = {
     'srv-laptop': '/ar/laptop-repair-kuwait',
     'srv-motherboard': '/ar/motherboard-repair-kuwait',
@@ -1584,6 +1609,38 @@ export default function ArabicCommercialPage() {
     'srv-keyboard': '/ar/laptop-keyboard-replacement-kuwait',
     'srv-liquid-damage': '/ar/laptop-liquid-damage-repair-kuwait',
   };
+  const screenServiceSchema = slug === 'laptop-screen-repair-kuwait' ? {
+    '@graph': [{
+      '@type': 'Service',
+      '@id': `${page.seo.canonicalUrl}#service`,
+      name: 'تصليح وتبديل شاشة اللابتوب في الكويت',
+      serviceType: 'تصليح وتبديل شاشة اللابتوب',
+      description: cfg.intro,
+      url: page.seo.canonicalUrl,
+      image: `${business.websiteUrl}${IMAGES.laptopHardware.laptopScreenAssemblyDisassemblyRepair.src}`,
+      areaServed: { '@type': 'Country', name: 'Kuwait' },
+      provider: {
+        '@type': 'LocalBusiness',
+        name: business.title,
+        url: business.websiteUrl,
+        telephone: `+${business.telephone}`,
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: business.streetAddress,
+          addressLocality: business.addressLocality,
+          addressRegion: business.addressRegion,
+          addressCountry: business.addressCountry,
+        },
+      },
+      offers: {
+        '@type': 'Offer',
+        name: 'أجرة العمل من 30 د.ك + سعر الشاشة',
+        description: 'أجرة العمل تبدأ من 30 د.ك، وسعر الشاشة يُحسب بشكل منفصل حسب الموديل والمواصفات وتوفر القطعة. نؤكد السعر النهائي قبل أي عمل مدفوع.',
+        priceCurrency: 'KWD',
+        price: 30,
+      },
+    }]
+  } : null;
   const faqSchema = {
     '@graph': [{
       '@type': 'FAQPage',
@@ -1599,6 +1656,7 @@ export default function ArabicCommercialPage() {
   return (
     <div dir="rtl" lang="ar-KW" className="min-h-screen bg-transparent text-slate-100">
       <SEOEngine entityId={page.id} />
+      {screenServiceSchema && <SchemaMarkup schema={screenServiceSchema} />}
       <SchemaMarkup schema={faqSchema} />
 
       <div className="mx-auto max-w-6xl px-4 pb-16 pt-8 sm:px-6 sm:pt-12">
@@ -1623,16 +1681,31 @@ export default function ArabicCommercialPage() {
             ))}
           </div>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <a href={wa} target="_blank" rel="noreferrer" className="inline-flex items-center justify-center gap-2 rounded-full bg-cyan-500 px-7 py-3.5 font-black text-slate-950 hover:bg-cyan-400">
-              <MessageCircle className="h-5 w-5" aria-hidden="true" /> واتساب KCROC
+            <a href={wa} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-500 px-7 py-3.5 font-black text-slate-950 hover:bg-cyan-400">
+              <MessageCircle className="h-5 w-5" aria-hidden="true" /> {slug === 'laptop-screen-repair-kuwait' ? 'أرسل موديل اللابتوب واحصل على عرض سعر' : 'واتساب KCROC'}
             </a>
             <Link to="/book" className="inline-flex items-center justify-center gap-2 rounded-full border border-slate-600 px-7 py-3.5 font-bold text-white hover:border-cyan-700 hover:text-cyan-300">
               <ShieldCheck className="h-5 w-5" aria-hidden="true" /> احجز استلام الجهاز
             </Link>
             <Link to={cfg.englishPath} className="inline-flex items-center justify-center gap-2 rounded-full border border-slate-800 px-7 py-3.5 font-semibold text-slate-300 hover:text-white">
-              English service page <ArrowLeft className="h-4 w-4" aria-hidden="true" />
+              {slug === 'laptop-screen-repair-kuwait' ? 'الصفحة باللغة الإنجليزية' : 'English service page'} <ArrowLeft className="h-4 w-4" aria-hidden="true" />
             </Link>
           </div>
+          {slug === 'laptop-screen-repair-kuwait' && (
+            <figure className="mt-8 overflow-hidden rounded-2xl border border-slate-800 bg-slate-950 sm:mt-10">
+              <img
+                src={IMAGES.laptopHardware.laptopScreenAssemblyDisassemblyRepair.src}
+                alt="فحص مجموعة شاشة اللابتوب لتمييز عطل الشاشة من الكابل أو الاتصال"
+                width={IMAGES.laptopHardware.laptopScreenAssemblyDisassemblyRepair.width}
+                height={IMAGES.laptopHardware.laptopScreenAssemblyDisassemblyRepair.height}
+                loading="eager"
+                className="aspect-[16/9] w-full object-cover"
+              />
+              <figcaption className="border-t border-slate-800 px-4 py-3 text-sm leading-6 text-slate-400 sm:px-5">
+                نفحص الشاشة والكابل والإضاءة قبل تحديد القطعة المطلوبة؛ توفر الشاشة والمدة يتأكدان حسب موديل الجهاز.
+              </figcaption>
+            </figure>
+          )}
         </section>
 
         {cfg.highlights && cfg.highlights.length > 0 && (
@@ -1666,8 +1739,8 @@ export default function ArabicCommercialPage() {
             {services.map((service) => service && (
               <Link key={service.id} to={arabicServicePathById[service.id] ?? `/${service.slug}`} className="group rounded-2xl border border-slate-800 bg-slate-900/45 p-6 hover:border-cyan-500/40">
                 <Wrench className="h-6 w-6 text-cyan-400" aria-hidden="true" />
-                <h3 className="mt-4 text-lg font-bold text-white group-hover:text-cyan-300">{service.title.replace(' Kuwait', '')}</h3>
-                <p className="mt-2 text-sm leading-6 text-slate-400">{service.shortDescription}</p>
+                <h3 className="mt-4 text-lg font-bold text-white group-hover:text-cyan-300">{(slug === 'laptop-screen-repair-kuwait' ? arabicScreenServiceCopy[service.id]?.title : undefined) ?? service.title.replace(' Kuwait', '')}</h3>
+                <p className="mt-2 text-sm leading-6 text-slate-400">{(slug === 'laptop-screen-repair-kuwait' ? arabicScreenServiceCopy[service.id]?.description : undefined) ?? service.shortDescription}</p>
               </Link>
             ))}
           </div>
@@ -1699,7 +1772,7 @@ export default function ArabicCommercialPage() {
           <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">أدلة عربية مرتبطة</p>
           <h2 id="arabic-guides" className="mt-2 text-2xl font-black text-white sm:text-3xl">معلومات تساعدك قبل قرار الإصلاح</h2>
           <div className="mt-6 grid gap-3 sm:grid-cols-2">
-            {AR_GUIDES.map((item) => (
+            {relatedGuides.map((item) => (
               <Link key={item.path} to={item.path} className="rounded-2xl border border-slate-800 bg-slate-900/45 p-5 font-semibold text-slate-200 hover:border-cyan-500/40 hover:text-cyan-300">{item.title}</Link>
             ))}
           </div>
