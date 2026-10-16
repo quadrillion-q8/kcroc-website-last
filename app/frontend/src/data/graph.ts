@@ -256,14 +256,14 @@ export const rawGraphData: RawGraphData = {
     'page-ar-laptop-screen-repair': {
       id: 'page-ar-laptop-screen-repair', slug: 'ar/laptop-screen-repair-kuwait', entityType: 'WebPage', isActive: true,
       title: 'تصليح وتبديل شاشة اللابتوب في الكويت',
-      description: 'تبديل شاشة اللابتوب وإصلاح مشاكل الصورة والإضاءة في الكويت، مع مطابقة القطعة للموديل واستلام وتوصيل مجاني.',
+      description: 'تصليح وتبديل شاشة اللابتوب بالكويت للشاشة المكسورة أو السوداء أو التي تومض أو تظهر خطوطًا. نفحص الكابل والإضاءة؛ أجرة العمل من 30 د.ك + الشاشة، مع استلام وتوصيل مجاني وسعر واضح قبل الإصلاح.',
       seo: {
-        title: 'تبديل شاشة اللابتوب الكويت | تصليح شاشة اللاب | KCROC',
-        description: 'شاشة اللابتوب مكسورة أو سوداء أو تومض؟ KCROC يشخص العطل ويبدل الشاشة المناسبة للموديل مع استلام وتوصيل مجاني في الكويت.',
+        title: 'تصليح شاشة اللابتوب الكويت | أجرة من 30 د.ك | KCROC',
+        description: 'شاشة اللابتوب مكسورة أو سوداء أو فيها خطوط ووميض؟ نفحص الشاشة والكابل والإضاءة أولًا. أجرة العمل من 30 د.ك + سعر الشاشة، مع استلام وتوصيل مجاني بالكويت وسعر نهائي قبل الإصلاح.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/ar/laptop-screen-repair-kuwait',
         locale: 'ar_KW',
         alternates: { 'ar-KW': 'https://www.computerrepairkuwait.com/ar/laptop-screen-repair-kuwait', 'en-KW': 'https://www.computerrepairkuwait.com/laptop-screen-repair-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/laptop-screen-repair-kuwait' },
-        ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList'], lastModified: '2026-09-28T00:00:00+03:00',
+        ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList'], lastModified: '2026-10-17T00:00:00+03:00',
         breadcrumbs: [{ name: 'الرئيسية', url: '/' }, { name: 'تصليح شاشة اللابتوب', url: '/ar/laptop-screen-repair-kuwait' }]
       },
       relatedServiceIds: ['srv-screen', 'srv-laptop', 'srv-battery', 'srv-hinge']
