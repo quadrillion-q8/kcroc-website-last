@@ -9,6 +9,7 @@ const ENGLISH_TO_ARABIC: Record<string, string> = {
   '/motherboard-repair-kuwait': '/ar/motherboard-repair-kuwait',
   '/gaming-pc-repair-kuwait': '/ar/gaming-pc-repair-kuwait',
   '/laptop-screen-repair-kuwait': '/ar/laptop-screen-repair-kuwait',
+  '/location/hawalli': '/ar/computer-repair-hawalli',
   '/blog/laptop-buying-guide-kuwait-2026': '/blog/ar/laptop-buying-guide-kuwait-2026',
   '/blog/how-often-clean-laptop-replace-thermal-paste-kuwait': '/blog/ar/how-often-clean-laptop-replace-thermal-paste-kuwait',
 };
@@ -21,6 +22,7 @@ const ARABIC_TO_ENGLISH: Record<string, string> = {
   '/ar/motherboard-repair-kuwait': '/motherboard-repair-kuwait',
   '/ar/gaming-pc-repair-kuwait': '/gaming-pc-repair-kuwait',
   '/ar/laptop-screen-repair-kuwait': '/laptop-screen-repair-kuwait',
+  '/ar/computer-repair-hawalli': '/location/hawalli',
   '/blog/ar/laptop-buying-guide-kuwait-2026': '/blog/laptop-buying-guide-kuwait-2026',
   '/blog/ar/how-often-clean-laptop-replace-thermal-paste-kuwait': '/blog/how-often-clean-laptop-replace-thermal-paste-kuwait',
 };

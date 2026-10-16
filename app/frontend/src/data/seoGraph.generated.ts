@@ -418,8 +418,8 @@ export const SEO_GRAPH = {
       "title": "تصليح كمبيوتر حولي وفني لابتوب",
       "slug": "ar/computer-repair-hawalli",
       "seo": {
-        "title": "تصليح كمبيوتر حولي | فني كمبيوتر ولابتوب | KCROC",
-        "description": "تحتاج فني كمبيوتر في حولي؟ KCROC يصلح الكمبيوتر واللابتوب من مختبره في مجمع الملا، شارع ابن خلدون. تشخيص قبل الإصلاح، استلام وتوصيل مجاني، وعرض سعر واضح وضمان 30 يومًا.",
+        "title": "تصليح كمبيوتر حولي | فني لابتوب وموقع المختبر | KCROC",
+        "description": "تحتاج تصليح كمبيوتر أو لابتوب في حولي؟ زور مختبر KCROC في مجمع الملا، شارع ابن خلدون، محل 19. ساعات العمل يوميًا 10 صباحًا إلى 10 مساءً، مع تشخيص واضح واستلام وتوصيل مجاني وضمان 30 يومًا.",
         "canonicalUrl": "https://www.computerrepairkuwait.com/ar/computer-repair-hawalli",
         "locale": "ar_KW",
         "alternates": {
@@ -432,7 +432,7 @@ export const SEO_GRAPH = {
           "WebPage",
           "BreadcrumbList"
         ],
-        "lastModified": "2026-10-09T00:00:00+03:00",
+        "lastModified": "2026-10-16T00:00:00+03:00",
         "breadcrumbs": [
           {
             "name": "الرئيسية",
@@ -2858,8 +2858,8 @@ export const SEO_GRAPH = {
       "title": "Hawalli Repair Center",
       "slug": "hawalli",
       "seo": {
-        "title": "Computer Repair Hawalli | Laptop & PC Repair | KCROC",
-        "description": "Visit KCROC’s Hawalli lab on Ibn Khaldoun St for laptop, PC, MacBook and motherboard repair. Diagnosis first, free pickup across Kuwait and a 30-day warranty.",
+        "title": "Computer Repair Hawalli | Laptop, MacBook & PC | KCROC",
+        "description": "Visit KCROC at Al Mullah Complex, Basement Shop 19, Hawalli. Laptop, MacBook, PC and motherboard repair daily 10 AM–10 PM. Free pickup across Kuwait.",
         "canonicalUrl": "https://www.computerrepairkuwait.com/location/hawalli",
         "alternates": {
           "en-KW": "https://www.computerrepairkuwait.com/location/hawalli",
@@ -2870,7 +2870,7 @@ export const SEO_GRAPH = {
         "schemaTypes": [
           "LocalBusiness"
         ],
-        "lastModified": "2026-10-14T00:00:00+03:00"
+        "lastModified": "2026-10-16T00:00:00+03:00"
       },
       "coords": {
         "lat": 29.3416921515256,
