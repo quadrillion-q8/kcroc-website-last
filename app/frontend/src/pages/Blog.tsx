@@ -258,11 +258,43 @@ export default function Blog() {
             </span>
           </h1>
 
-          <p className="text-lg text-slate-400 max-w-2xl mx-auto">
-            Expert repair guides, troubleshooting tips,
-            and hardware insights from Kuwait’s leading
-            computer technicians.
+          <p className="text-lg leading-relaxed text-slate-300 max-w-2xl mx-auto">
+            Practical laptop, MacBook and PC troubleshooting, hardware explainers and buying advice for people in Kuwait. Start with a symptom, compare your options, or learn what to check before arranging a repair.
           </p>
+          <div className="mt-7 flex flex-wrap justify-center gap-3">
+            <Link to="/problems" className="inline-flex min-h-11 items-center rounded-xl border border-slate-700 bg-slate-900/70 px-4 py-2 text-sm font-bold text-white transition hover:border-cyan-500/50 hover:text-cyan-300">
+              Browse common problems <ArrowRight size={15} className="ml-2" aria-hidden="true" />
+            </Link>
+            <Link to="/services" className="inline-flex min-h-11 items-center rounded-xl border border-slate-700 bg-slate-900/70 px-4 py-2 text-sm font-bold text-white transition hover:border-cyan-500/50 hover:text-cyan-300">
+              Explore repair services <ArrowRight size={15} className="ml-2" aria-hidden="true" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* =========================
+          READER PATHWAYS
+      ========================= */}
+      <section className="max-w-6xl mx-auto px-6 mb-12" aria-label="Choose a guide">
+        <div className="grid gap-4 md:grid-cols-3">
+          <Link to="/blog/stop-laptop-overheating" className="group rounded-2xl border border-slate-800 bg-slate-900/50 p-5 transition hover:border-cyan-500/50">
+            <span className="text-xs font-bold uppercase tracking-widest text-cyan-400">Troubleshooting</span>
+            <h2 className="mt-2 text-lg font-bold text-white group-hover:text-cyan-300">Laptop running hot?</h2>
+            <p className="mt-2 text-sm leading-relaxed text-slate-400">Review common causes of overheating and the safe checks to try before booking a repair.</p>
+            <span className="mt-4 inline-flex items-center text-sm font-bold text-cyan-400">Read overheating guide <ArrowRight size={14} className="ml-1" aria-hidden="true" /></span>
+          </Link>
+          <Link to="/services/laptop-repair-kuwait" className="group rounded-2xl border border-slate-800 bg-slate-900/50 p-5 transition hover:border-cyan-500/50">
+            <span className="text-xs font-bold uppercase tracking-widest text-cyan-400">Repair options</span>
+            <h2 className="mt-2 text-lg font-bold text-white group-hover:text-cyan-300">Need a laptop assessment?</h2>
+            <p className="mt-2 text-sm leading-relaxed text-slate-400">See the laptop repair service page for common faults and how to arrange an assessment.</p>
+            <span className="mt-4 inline-flex items-center text-sm font-bold text-cyan-400">Laptop repair details <ArrowRight size={14} className="ml-1" aria-hidden="true" /></span>
+          </Link>
+          <Link to="/book" className="group rounded-2xl border border-slate-800 bg-slate-900/50 p-5 transition hover:border-cyan-500/50">
+            <span className="text-xs font-bold uppercase tracking-widest text-cyan-400">Next step</span>
+            <h2 className="mt-2 text-lg font-bold text-white group-hover:text-cyan-300">Ready to ask a technician?</h2>
+            <p className="mt-2 text-sm leading-relaxed text-slate-400">Send the device type, symptoms and your area so the team can discuss pickup and diagnosis.</p>
+            <span className="mt-4 inline-flex items-center text-sm font-bold text-cyan-400">Start a repair enquiry <ArrowRight size={14} className="ml-1" aria-hidden="true" /></span>
+          </Link>
         </div>
       </section>
 
