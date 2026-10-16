@@ -742,8 +742,8 @@ export const SEO_GRAPH = {
       "title": "تصليح Gaming Laptop في الكويت",
       "slug": "ar/gaming-laptop-repair-kuwait",
       "seo": {
-        "title": "تصليح Gaming Laptop الكويت | ROG وLegion وMSI | KCROC",
-        "description": "تصليح Gaming Laptop في الكويت للحرارة، الشاشة السوداء، عدم التشغيل، الشحن، GPU وFPS Drops. استلام مجاني وضمان 30 يومًا.",
+        "title": "تصليح Gaming Laptop في الكويت | ROG وLegion وMSI | KCROC",
+        "description": "تصليح لابتوب قيمنق في الكويت لمشاكل الحرارة وهبوط FPS والشاشة السوداء والطاقة والشحن وGPU والمذربورد. تشخيص مجاني، استلام وتوصيل مجاني وضمان 30 يومًا.",
         "canonicalUrl": "https://www.computerrepairkuwait.com/ar/gaming-laptop-repair-kuwait",
         "locale": "ar_KW",
         "alternates": {
@@ -756,7 +756,7 @@ export const SEO_GRAPH = {
           "WebPage",
           "BreadcrumbList"
         ],
-        "lastModified": "2026-10-02T00:00:00+03:00",
+        "lastModified": "2026-10-17T00:00:00+03:00",
         "breadcrumbs": [
           {
             "name": "الرئيسية",
@@ -766,9 +766,13 @@ export const SEO_GRAPH = {
             "name": "تصليح Gaming Laptop",
             "url": "/ar/gaming-laptop-repair-kuwait"
           }
-        ]
+        ],
+        "ogImage": "/images/msi-gaming-laptop-and-gpu-repair-workstation.webp",
+        "ogImageAlt": "لابتوب MSI للألعاب على طاولة فحص داخل ورشة KCROC",
+        "ogImageWidth": 1200,
+        "ogImageHeight": 800
       },
-      "description": "تصليح Gaming Laptop وROG وLegion وMSI في الكويت لمشاكل الحرارة والشاشة والشحن والطاقة والـGPU والـFPS.",
+      "description": "تصليح لابتوب قيمنق في الكويت لمشاكل الحرارة وهبوط FPS والشاشة السوداء والطاقة والشحن وGPU والمذربورد.",
       "featuredFAQIds": []
     },
     {

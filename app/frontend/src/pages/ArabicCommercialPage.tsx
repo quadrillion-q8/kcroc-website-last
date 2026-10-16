@@ -415,23 +415,27 @@ const CONFIG: Record<string, {
   },
   'gaming-laptop-repair-kuwait': {
     h1: 'تصليح Gaming Laptop في الكويت',
-    eyebrow: 'ROG • TUF • Legion • MSI • Predator • OMEN',
-    intro: 'الـGaming Laptop يسخن؟ يطفي؟ ما يعطي صورة؟ الشحن يتقطع؟ والـFPS ينزل بعد فترة؟ لا تبدّل قطعة غالية على التخمين. نفحص التبريد والطاقة وGPU والرام والـBIOS واللوحة ونحدد شنو السبب قبل ما نقترح أي إصلاح.',
-    bullets: ['Overheating وThermal Throttling', 'Black Screen وNo Power', 'GPU وVRAM واختبار الاستقرار', 'Charging والبطارية واللوحة الأم', 'استلام وتوصيل مجاني وضمان 30 يومًا'],
+    eyebrow: 'فحص Gaming Laptop من مختبر KCROC في حولي مع استلام مجاني داخل الكويت',
+    intro: 'إذا لابتوب القيمنق يسخن، أو الـFPS يهبط بعد اللعب، أو الجهاز يطفي أو شاشته تصير سوداء أو الشحن يتقطع، لا تبدّل قطعة غالية على التخمين. نفحص التبريد ودرجات CPU/GPU والطاقة والشحن والرام والـBIOS ومسار العرض حسب الأعراض. نشرح لك نتيجة التشخيص والسعر قبل أي إصلاح مدفوع، وبعد الإصلاح نختبر الجهاز تحت الضغط المناسب للعطل.',
+    bullets: ['تشخيص السخونة وهبوط FPS والـThermal Throttling', 'فحص الشاشة السوداء وعدم التشغيل ومشاكل الـBIOS', 'اختبارات GPU وVRAM والطاقة والمذربورد', 'فحص الشحن المتقطع والبطارية ومدخل الشحن', 'استلام وتوصيل مجاني في الكويت وضمان 30 يومًا'],
     faq: [
-      { q: 'تصلحون ASUS ROG وTUF وLenovo Legion وMSI؟', a: 'إي نعم. نخدم عائلات Gaming Laptop الرئيسية، ونحدد الموديل والجيل أول قبل الفحص والإصلاح.' },
-      { q: 'Gaming Laptop يسخن وFPS ينزل، شنو السبب؟', a: 'ممكن يكون السبب من التبريد أو الحرارة أو الطاقة أو GPU. عشان جذي نقيس درجات الحرارة وسلوك الأداء تحت الضغط بدل التخمين.' },
-      { q: 'إذا الـGaming Laptop ما يشتغل أو شاشته سوداء، تقدرون تفحصونه؟', a: 'إي نعم. نفصل بين مشكلة الطاقة والرام وGPU والـBIOS والشاشة واللوحة، وبعدها نحدد القطعة أو الإصلاح المطلوب.' }
+      { q: 'تصلحون ASUS ROG وTUF وLenovo Legion وMSI؟', a: 'إي نعم. نفحص موديلات ASUS ROG وTUF وLenovo Legion وMSI وAcer Predator/Nitro وHP OMEN/Victus وDell G Series وAlienware وRazer Blade. نحتاج الموديل الدقيق عشان نحدد الفحص المناسب والتوافق قبل طلب أي قطعة.' },
+      { q: 'Gaming Laptop يسخن وFPS ينزل بعد اللعب، شنو تفحصون؟', a: 'نفحص المراوح ومسار الهواء والمشتت والمعجون الحراري ودرجات CPU/GPU وسلوك الترددات تحت الضغط. هبوط الفريمات ممكن يكون من الحرارة أو الطاقة أو أسباب ثانية، لذلك نحدد السبب بالقياس قبل اقتراح الإصلاح.' },
+      { q: 'إذا الجهاز ما يشتغل أو الشاشة سوداء، تقدرون تفحصونه؟', a: 'إي نعم. نفحص مسار الطاقة والشحن والرام والـBIOS ومسار الشاشة وGPU والمذربورد حسب الأعراض. ما نفترض إن الشاشة أو اللوحة خربانة قبل ما تظهر نتيجة الفحص.' },
+      { q: 'كم تكلفة تصليح لابتوب قيمنق في الكويت؟', a: 'التشخيص الأولي مجاني. السعر يعتمد على العطل المؤكد والقطعة المطلوبة وأجرة العمل. نشرح لك الحل والسعر النهائي قبل أي إصلاح مدفوع؛ ما نستخدم سعر ثابت لكل الأعطال.' },
+      { q: 'كم ياخذ وقت تصليح Gaming Laptop؟', a: 'كثير من الإصلاحات الشائعة قد تستغرق تقريبًا 24–48 ساعة بعد التشخيص. أعطال اللوحة أو GPU المعقدة، والحاجة إلى قطعة غير متوفرة، ممكن تطوّل المدة؛ نوضح لك الوقت المتوقع مع عرض السعر.' },
+      { q: 'توفرون استلام وتوصيل مجاني من منطقتي؟', a: 'نعم، الاستلام والتوصيل المجاني متوفران في مناطق الكويت. الإصلاح والفحص يتمان في مختبر KCROC في حولي، مو في فروع محلية غير موجودة، ونرجع الجهاز بعد الاختبار.' },
+      { q: 'تصلحون أعطال GPU والمذربورد بدل تبديل اللوحة كاملة؟', a: 'نفحص GPU وVRAM ودوائر الطاقة وVRM والمذربورد. إذا كان الإصلاح على مستوى المكوّن مناسبًا فنيًا نشرح لك الخيار، وإذا ما كان مناسبًا نوضح البدائل قبل أي عمل مدفوع.' }
     ],
     englishPath: '/gaming-laptop-repair-kuwait',
     arabicLinks: [
-      { label: 'خدمة تنظيف Gaming Laptop', path: '/gaming-laptop-cleaning-kuwait' },
+      { label: 'تصليح المذربورد والدوائر الإلكترونية', path: '/ar/motherboard-repair-kuwait' },
       { label: 'تصليح Gaming PC', path: '/ar/gaming-pc-repair-kuwait' },
       { label: 'تصليح لابتوب', path: '/ar/laptop-repair-kuwait' },
       { label: 'ترقية SSD وRAM', path: '/ar/ssd-ram-upgrade-kuwait' },
       { label: 'تصليح كمبيوتر حولي', path: '/ar/computer-repair-hawalli' }
     ],
-    serviceIds: ['srv-gaming-laptop', 'srv-gaming-laptop-cleaning', 'srv-gaming', 'srv-laptop', 'srv-screen', 'srv-battery']
+    serviceIds: ['srv-gaming-laptop-cleaning', 'srv-gaming', 'srv-laptop', 'srv-motherboard', 'srv-screen', 'srv-battery']
   }
 };
 
@@ -1562,7 +1566,9 @@ export default function ArabicCommercialPage() {
 
   const whatsappMessage = slug === 'laptop-screen-repair-kuwait'
     ? 'السلام عليكم KCROC، أحتاج تصليح أو تبديل شاشة اللابتوب. الماركة والموديل: ____. المشكلة: ____. منطقتي بالكويت: ____. فضلاً أكدوا توفر الشاشة والسعر النهائي شامل أجرة العمل والقطعة والمدة المتوقعة قبل الإصلاح.'
-    : `السلام عليكم KCROC، أحتاج ${cfg.h1}. أريد أعرف طريقة الاستلام والتشخيص.`;
+    : slug === 'gaming-laptop-repair-kuwait'
+      ? 'السلام عليكم KCROC، أحتاج تصليح Gaming Laptop في الكويت. الماركة والموديل الدقيق: ____. المشكلة والأعراض: ____. منطقتي بالكويت: ____. أقدر أرسل صورة أو فيديو للعطل إذا يفيد. فضلاً وضحوا التشخيص والمدة المتوقعة والسعر النهائي قبل أي إصلاح مدفوع.'
+      : `السلام عليكم KCROC، أحتاج ${cfg.h1}. أريد أعرف طريقة الاستلام والتشخيص.`;
   const wa = `https://wa.me/${business.telephone}?text=${encodeURIComponent(whatsappMessage)}`;
 
   if (slug === 'computer-repair-kuwait') {
@@ -1592,9 +1598,40 @@ export default function ArabicCommercialPage() {
       description: 'فحص المفصلات والغطاء والإطار لتحديد الضرر وتجنب زيادة الضغط على الشاشة أو كابلها.'
     }
   };
+  const arabicGamingServiceCopy: Record<string, { title: string; description: string }> = {
+    'srv-gaming-laptop-cleaning': {
+      title: 'تنظيف وتبريد Gaming Laptop',
+      description: 'فحص المراوح والمشتت والمعجون الحراري ومسار الهواء لمعالجة السخونة بعد تحديد السبب.'
+    },
+    'srv-gaming': {
+      title: 'تصليح Gaming PC وكرت الشاشة',
+      description: 'تشخيص أعطال GPU والطاقة والحرارة والاستقرار في أجهزة الألعاب المكتبية.'
+    },
+    'srv-laptop': {
+      title: 'تصليح اللابتوب',
+      description: 'فحص مشاكل التشغيل والشحن والحرارة والشاشة واللوحة قبل اقتراح القطع.'
+    },
+    'srv-motherboard': {
+      title: 'تصليح المذربورد واللوحة الأم',
+      description: 'تشخيص دوائر الطاقة والشحن وأعطال المكونات، مع إصلاح على مستوى المكوّن عندما يكون مناسبًا.'
+    },
+    'srv-screen': {
+      title: 'تصليح وتبديل شاشة اللابتوب',
+      description: 'فحص الشاشة والكابل ومسار العرض قبل طلب شاشة بديلة متوافقة مع الموديل.'
+    },
+    'srv-battery': {
+      title: 'فحص وتبديل بطارية اللابتوب',
+      description: 'فحص البطارية ومسار الشحن والتأكد من التوافق قبل طلب القطعة.'
+    }
+  };
   const relatedGuides = slug === 'laptop-screen-repair-kuwait'
     ? [...AR_GUIDES, { title: 'دليل حماية شاشة اللابتوب من الكسر (بالإنجليزية)', path: '/blog/how-to-protect-laptop-screen' }]
-    : AR_GUIDES;
+    : slug === 'gaming-laptop-repair-kuwait'
+      ? [
+          { title: 'متى تنظف لابتوب القيمنق وتغيّر المعجون الحراري؟', path: '/blog/ar/how-often-clean-laptop-replace-thermal-paste-kuwait' },
+          { title: 'درجات حرارة اللابتوب في الكويت: شنو الطبيعي وشنو العالي؟ (بالإنجليزية)', path: '/blog/laptop-temperatures-kuwait-safe-cpu-gpu-temperatures' }
+        ]
+      : AR_GUIDES;
   const arabicServicePathById: Record<string, string> = {
     'srv-laptop': '/ar/laptop-repair-kuwait',
     'srv-motherboard': '/ar/motherboard-repair-kuwait',
@@ -1694,7 +1731,7 @@ export default function ArabicCommercialPage() {
           )}
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <a href={wa} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-500 px-7 py-3.5 font-black text-slate-950 hover:bg-cyan-400">
-              <MessageCircle className="h-5 w-5" aria-hidden="true" /> {slug === 'laptop-screen-repair-kuwait' ? 'أرسل موديل اللابتوب واحصل على عرض سعر' : 'واتساب KCROC'}
+              <MessageCircle className="h-5 w-5" aria-hidden="true" /> {slug === 'laptop-screen-repair-kuwait' ? 'أرسل موديل اللابتوب واحصل على عرض سعر' : slug === 'gaming-laptop-repair-kuwait' ? 'أرسل الموديل والعطل على واتساب' : 'واتساب KCROC'}
             </a>
             <Link to="/book" className="inline-flex items-center justify-center gap-2 rounded-full border border-slate-600 px-7 py-3.5 font-bold text-white hover:border-cyan-700 hover:text-cyan-300">
               <ShieldCheck className="h-5 w-5" aria-hidden="true" /> احجز استلام الجهاز
@@ -1703,6 +1740,23 @@ export default function ArabicCommercialPage() {
               {slug === 'laptop-screen-repair-kuwait' ? 'الصفحة باللغة الإنجليزية' : 'English service page'} <ArrowLeft className="h-4 w-4" aria-hidden="true" />
             </Link>
           </div>
+          {slug === 'gaming-laptop-repair-kuwait' && (
+            <figure className="mt-8 overflow-hidden rounded-2xl border border-slate-800 bg-slate-950 sm:mt-10">
+              <img
+                src={IMAGES.gaming.msiWorkstation.src}
+                alt="لابتوب MSI للألعاب على طاولة فحص داخل ورشة KCROC"
+                width={IMAGES.gaming.msiWorkstation.width}
+                height={IMAGES.gaming.msiWorkstation.height}
+                loading="eager"
+                fetchPriority="high"
+                decoding="async"
+                className="aspect-[16/9] w-full object-cover"
+              />
+              <figcaption className="border-t border-slate-800 px-4 py-3 text-sm leading-6 text-slate-400 sm:px-5">
+                فحص أجهزة Gaming Laptop يتم على طاولة التشخيص في مختبر KCROC؛ نحدد العطل قبل اقتراح القطعة أو الإصلاح.
+              </figcaption>
+            </figure>
+          )}
           {slug === 'laptop-screen-repair-kuwait' && (
             <figure className="mt-8 overflow-hidden rounded-2xl border border-slate-800 bg-slate-950 sm:mt-10">
               <img
@@ -1719,6 +1773,27 @@ export default function ArabicCommercialPage() {
             </figure>
           )}
         </section>
+
+        {slug === 'gaming-laptop-repair-kuwait' && (
+          <section className="mt-12 rounded-3xl border border-slate-800 bg-slate-900/40 p-6 sm:p-8" aria-labelledby="arabic-gaming-process">
+            <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">فحص قبل الإصلاح</p>
+            <h2 id="arabic-gaming-process" className="mt-2 text-2xl font-black text-white sm:text-3xl">شلون نشخّص عطل Gaming Laptop؟</h2>
+            <p className="mt-3 max-w-3xl leading-8 text-slate-400">الأعراض المتشابهة مو شرط يكون سببها واحد. نتبع خطوات واضحة عشان ما تطلب قطعة مو هي سبب المشكلة.</p>
+            <ol className="mt-6 grid gap-4 sm:grid-cols-2">
+              {[
+                { title: '١. تسجيل الموديل والأعراض', description: 'نسجل الماركة والموديل الدقيق ومتى تظهر المشكلة، خصوصًا إذا كانت تظهر بعد اللعب أو مع الحرارة.' },
+                { title: '٢. فحوصات حسب العطل', description: 'نفحص الحرارة والمراوح والطاقة والشحن والرام ومسار الشاشة والـBIOS حسب الأعراض، مو على التخمين.' },
+                { title: '٣. شرح التشخيص والسعر', description: 'نوضح لك النتيجة وخيارات الإصلاح والتكلفة المتوقعة قبل بدء أي عمل مدفوع.' },
+                { title: '٤. إصلاح واختبار تحت الضغط', description: 'بعد موافقتك، ننفذ الإصلاح المناسب ونختبر الجهاز حسب نوع العطل قبل إرجاعه.' }
+              ].map((step) => (
+                <li key={step.title} className="rounded-2xl border border-slate-800 bg-slate-950/45 p-5">
+                  <h3 className="font-bold text-white">{step.title}</h3>
+                  <p className="mt-2 text-sm leading-7 text-slate-400">{step.description}</p>
+                </li>
+              ))}
+            </ol>
+          </section>
+        )}
 
         {cfg.highlights && cfg.highlights.length > 0 && (
           <section className="mt-12" aria-labelledby="arabic-local-highlights">
@@ -1751,8 +1826,8 @@ export default function ArabicCommercialPage() {
             {services.map((service) => service && (
               <Link key={service.id} to={arabicServicePathById[service.id] ?? `/${service.slug}`} className="group rounded-2xl border border-slate-800 bg-slate-900/45 p-6 hover:border-cyan-500/40">
                 <Wrench className="h-6 w-6 text-cyan-400" aria-hidden="true" />
-                <h3 className="mt-4 text-lg font-bold text-white group-hover:text-cyan-300">{(slug === 'laptop-screen-repair-kuwait' ? arabicScreenServiceCopy[service.id]?.title : undefined) ?? service.title.replace(' Kuwait', '')}</h3>
-                <p className="mt-2 text-sm leading-6 text-slate-400">{(slug === 'laptop-screen-repair-kuwait' ? arabicScreenServiceCopy[service.id]?.description : undefined) ?? service.shortDescription}</p>
+                <h3 className="mt-4 text-lg font-bold text-white group-hover:text-cyan-300">{(slug === 'laptop-screen-repair-kuwait' ? arabicScreenServiceCopy[service.id]?.title : slug === 'gaming-laptop-repair-kuwait' ? arabicGamingServiceCopy[service.id]?.title : undefined) ?? service.title.replace(' Kuwait', '')}</h3>
+                <p className="mt-2 text-sm leading-6 text-slate-400">{(slug === 'laptop-screen-repair-kuwait' ? arabicScreenServiceCopy[service.id]?.description : slug === 'gaming-laptop-repair-kuwait' ? arabicGamingServiceCopy[service.id]?.description : undefined) ?? service.shortDescription}</p>
               </Link>
             ))}
           </div>
@@ -1769,6 +1844,17 @@ export default function ArabicCommercialPage() {
             </div>
           </div>
         </section>
+
+        {slug === 'gaming-laptop-repair-kuwait' && (
+          <section className="mt-12 overflow-hidden rounded-3xl border border-cyan-900/60 bg-cyan-950/20 p-6 sm:p-8" aria-labelledby="arabic-gaming-case">
+            <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-300">مثال إصلاح موثق</p>
+            <h2 id="arabic-gaming-case" className="mt-2 text-2xl font-black text-white sm:text-3xl">حالة ASUS ROG Strix G15 ما كان يشتغل</h2>
+            <p className="mt-3 max-w-3xl leading-8 text-slate-300">في حالة موثقة داخل موقع KCROC، كان جهاز ASUS ROG Strix G15 لا يعمل ولا تظهر لمبات الشحن. كشف الفحص قصرًا في خط الطاقة الرئيسي 19V وتلف مكوّن قرب دائرة طاقة المعالج، ثم أُجري إصلاح على مستوى المكوّن واختبار استقرار قبل التسليم. هذه حالة محددة وليست وعدًا بأن كل عطل له نفس السبب أو الحل.</p>
+            <Link to="/case-studies/asus-rog-dead-motherboard-hawalli" className="mt-5 inline-flex items-center gap-2 rounded-full border border-cyan-500/40 px-5 py-3 font-bold text-cyan-200 transition hover:border-cyan-400 hover:text-white">
+              عرض تفاصيل حالة الإصلاح (الصفحة بالإنجليزية) <ArrowLeft className="h-4 w-4" aria-hidden="true" />
+            </Link>
+          </section>
+        )}
 
         <section className="mt-12" aria-labelledby="arabic-areas">
           <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">مناطق الخدمة</p>
@@ -1817,7 +1903,7 @@ export default function ArabicCommercialPage() {
           <h2 className="text-2xl font-black text-white sm:text-3xl">قول لنا المشكلة مثل ما هي</h2>
           <p className="mx-auto mt-4 max-w-2xl leading-8 text-slate-300">ارسل موديل الجهاز، منطقتك، ووصف بسيط للعطل على واتساب. نبدأ من التشخيص ونوضح لك الخطوة التالية قبل الإصلاح.</p>
           <a href={wa} target="_blank" rel="noreferrer" className="mt-7 inline-flex items-center justify-center gap-2 rounded-full bg-cyan-500 px-8 py-3.5 font-black text-slate-950 hover:bg-cyan-400">
-            <MessageCircle className="h-5 w-5" aria-hidden="true" /> تواصل مع فني KCROC
+            <MessageCircle className="h-5 w-5" aria-hidden="true" /> {slug === 'gaming-laptop-repair-kuwait' ? 'أرسل الموديل والعطل على واتساب' : 'تواصل مع فني KCROC'}
           </a>
         </section>
       </div>
