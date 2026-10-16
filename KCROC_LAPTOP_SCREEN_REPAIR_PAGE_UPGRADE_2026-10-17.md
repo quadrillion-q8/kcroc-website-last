@@ -13,6 +13,7 @@ Focused on the existing `/laptop-screen-repair-kuwait` route. No new service or 
 - Changed mobile sticky CTAs to request a quote, with Arabic copy for the Arabic screen-repair route.
 - Made the screen-repair structured offer explicitly describe the 30 KWD starting figure as labour only plus panel cost and removed the screen service's unqualified InStock value.
 - Updated screen-page modification metadata and added targeted regression checks.
+- Follow-up review also tightened FAQ, process, flicker, hinge, backlight and MacBook feature claims to avoid implying unsupported diagnostics, standard same-day return or universal True Tone recalibration.
 
 ## Validation required
 The repository's normal build runs validators, regenerates navigation and SEO projections, generates the sitemap, and runs `validate-customer-growth-upgrade.mjs` before SSG. Production build and Vercel deployment still need to run after these source changes. Then inspect rendered production metadata and test WhatsApp, phone and pickup conversion events on mobile/desktop.
