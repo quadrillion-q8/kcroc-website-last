@@ -5770,7 +5770,8 @@ export const SEO_GRAPH = {
           "Jahra",
           "Fahaheel",
           "Mishrif"
-        ]
+        ],
+        "landmark": "Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19"
       },
       {
         "id": "loc-kuwait-city",
