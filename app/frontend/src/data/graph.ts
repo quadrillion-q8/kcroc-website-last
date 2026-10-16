@@ -2864,7 +2864,7 @@ export const rawGraphData: RawGraphData = {
       iconKey: 'monitor',
       shortDescription: 'Repair for cracked, black, flickering or lined laptop screens in Kuwait. We check the panel, display cable and backlight before recommending replacement.',
       description: 'A cracked panel, vertical lines, a black display or flicker does not always mean the panel itself has failed. We check the display panel, cable, connector and backlight path, then confirm compatible options, total price and turnaround before any paid work. Repairs are completed in our Hawalli lab, with free pickup and delivery across Kuwait.',
-      idealCustomer: 'Anyone with a cracked, flickering, lined, or dead laptop or MacBook screen who needs a fast, OEM-quality panel replacement without paying for a new machine.',
+      idealCustomer: 'Anyone in Kuwait with a cracked, flickering, lined or blank laptop/MacBook display who wants the fault checked and a model-matched repair quote before authorizing work.',
       deviceTypes: [
         'Windows Laptops (14" & 15.6" FHD/IPS)',
         'MacBook Air & MacBook Pro (Retina)',
@@ -2903,22 +2903,22 @@ export const rawGraphData: RawGraphData = {
     
       commonIssues: [
         { id: 'cracked-screen', title: 'Cracked or Shattered Screen', severity: 'high', description: 'Physical impact from a drop or closing the lid on an object. The panel itself is replaced; the surrounding bezel and hinge are checked for related damage at the same time.' },
-        { id: 'screen-flicker', title: 'Screen Flickering', severity: 'medium', description: 'Often a worn display cable near the hinge rather than the panel — we test the cable separately before assuming a full panel swap is needed.' },
+        { id: 'screen-flicker', title: 'Screen Flickering', severity: 'medium', description: 'Flicker may be linked to the panel, cable or connector, especially if it changes when the lid moves. We test the display path before recommending a part.' },
         { id: 'vertical-lines', title: 'Vertical or Horizontal Lines on Display', severity: 'high', description: 'Lines may come from a damaged panel, cable or connector. We check the connection and display path before quoting a panel replacement.' },
         { id: 'black-screen-external-works', title: 'Black Screen, But External Monitor Works', severity: 'high', description: 'Points to the panel or its cable rather than the graphics hardware, since the system is clearly still rendering a display signal correctly.' },
         { id: 'backlight-dim', title: 'Screen Very Dim or Backlight Not Working', severity: 'medium', description: 'A faint image can point to a backlight, fuse, driver or panel fault. We test the display path before recommending replacement.' },
         { id: 'discoloration', title: 'Discoloration or Uneven Tint', severity: 'low', description: 'Can be early-stage backlight degradation or a panel manufacturing fault appearing over time; we confirm which before quoting a replacement.' },
         { id: 'touchscreen-unresponsive', title: 'Touchscreen Not Responding', severity: 'medium', description: 'On 2-in-1 and convertible models, the touch digitizer layer can fail independently of the display panel underneath it.' },
-        { id: 'hinge-related-cable-wear', title: 'Flicker That Gets Worse When Opening/Closing the Lid', severity: 'medium', description: 'A strong sign the display cable is worn from repeated flexing near the hinge rather than a fault in the panel itself.' }
+        { id: 'hinge-related-cable-wear', title: 'Flicker That Gets Worse When Opening/Closing the Lid', severity: 'medium', description: 'A flicker that changes with lid movement can indicate display-cable wear near the hinge. We inspect the cable and connectors to confirm the cause.' }
       ],
     
       process: [
         { step: 1, title: 'Free Pickup', description: 'We collect your laptop or MacBook from your home or office anywhere in Kuwait.' },
         { step: 2, title: 'Panel & Cable Diagnostic', description: 'We confirm whether the fault is the panel, the display cable, or the backlight circuit before quoting anything.' },
         { step: 3, title: 'Confirm the Fault & Quote', description: 'You get a clear, itemized quote before any work starts — no surprise charges for parts that turned out not to be needed.' },
-        { step: 4, title: 'Panel or Cable Replacement', description: 'The new panel or cable is fitted in our ESD-safe lab, with careful handling of ribbon connectors and, on MacBooks, the True Tone sensor.' },
+        { step: 4, title: 'Panel or Cable Replacement', description: 'The confirmed panel or cable fault is repaired in our ESD-safe lab, with careful handling of ribbon connectors and model-dependent sensors or display features where applicable.' },
         { step: 5, title: 'Calibration & Dead-Pixel Check', description: 'The new display is checked for dead pixels, backlight uniformity, and colour accuracy before reassembly.' },
-        { step: 6, title: 'Return with 30-Day Warranty', description: 'Delivered back to you the same day in most cases, with a 30-day warranty on the panel and labor.' }
+        { step: 6, title: 'Return with 30-Day Warranty', description: 'We return the device after the agreed repair and final checks, with a 30-day warranty on the panel and labour. The expected turnaround is confirmed with your quote.' }
       ],
     
       performanceOutcomes: {
@@ -2939,7 +2939,7 @@ export const rawGraphData: RawGraphData = {
             symptoms: 'Vertical lines and flickering appeared gradually, worsening whenever the lid was opened or closed, with no visible physical damage to the panel.',
             diagnosis: 'Testing an external monitor confirmed the graphics hardware was fine; reseating the display cable temporarily resolved the flicker, confirming a worn cable near the hinge.',
             repair: 'The display cable was replaced rather than the panel.',
-            outcome: 'The screen returned to normal with no lines or flicker, at a fraction of the cost of a full panel replacement.'
+            outcome: 'The display returned to normal after the cable was replaced. This illustrates why the fault should be confirmed before pricing a replacement panel.'
           },
           {
             id: 'macbook-retina-crack',
@@ -2962,16 +2962,16 @@ export const rawGraphData: RawGraphData = {
       ],
     
       faqs: [
-        { id: 'faq-screen-same-day', title: 'Can screen replacement be done the same day?', answer: 'Yes, in most cases, provided the panel is in stock — we carry standard 14" and 15.6" FHD/IPS panels for the most common brands.' },
+        { id: 'faq-screen-same-day', title: 'Can screen replacement be done the same day?', answer: 'It may be possible if the correct panel is available and collection, diagnosis and fitting timing allow. We confirm part availability and the expected turnaround for your exact model before you approve the quote.' },
         { id: 'faq-flicker-not-crack', title: 'My screen is flickering but not cracked — is that still a screen problem?', answer: 'Often, yes, but not always the panel itself. Flickering that worsens when opening or closing the lid usually points to a worn display cable near the hinge, which we test for before quoting a full panel replacement.' },
         { id: 'faq-external-monitor-works', title: 'The screen is black but an external monitor works fine — what does that mean?', answer: 'It points to the internal display or its cable rather than the graphics hardware, since the system is clearly still producing a valid display signal.' },
-        { id: 'faq-macbook-retina-screen', title: 'Do you replace MacBook Retina displays?', answer: 'Yes, including careful handling of the True Tone sensor, which we recalibrate after replacement so colour accuracy stays correct.' },
+        { id: 'faq-macbook-retina-screen', title: 'Do you replace MacBook Retina displays?', answer: 'We handle supported MacBook Retina display assemblies. Post-repair checks, including True Tone where the model supports it, depend on the exact MacBook generation and replacement assembly.' },
         { id: 'faq-touchscreen-replace', title: 'Can you replace a touchscreen on a 2-in-1 laptop?', answer: 'Yes. The touch digitizer can fail independently of the display panel beneath it, and we diagnose and replace whichever layer is actually at fault.' },
         { id: 'faq-screen-cost', title: 'How much does laptop screen replacement cost?', answer: 'Screen-replacement labor starts from 30 KWD, with the panel priced separately. The complete price depends on the panel size, resolution, display type and exact laptop model.' },
         { id: 'faq-screen-oem', title: 'Do you offer original-manufacturer or compatible screens?', answer: 'Available options depend on the exact laptop model. We explain the quoted part type and price, including the difference between an original-manufacturer part and a compatible replacement, before you approve the work.' },
         { id: 'faq-screen-data-safety', title: 'Is my data safe during a screen replacement?', answer: 'A screen replacement normally does not require accessing the storage drive. We focus on the display repair; let us know before collection if you have specific data-handling preferences.' },
         { id: 'faq-screen-warranty', title: 'Is there a warranty on screen replacements?', answer: 'Yes, 30 days covering the panel and labor.' },
-        { id: 'faq-backlight-vs-panel', title: 'My screen is very dim — do I need a new panel?', answer: 'Not necessarily. A dim but faintly visible image often means a blown backlight fuse or failed backlight driver rather than the panel itself, which is a cheaper fix — we test for this before quoting a full replacement.' }
+        { id: 'faq-backlight-vs-panel', title: 'My screen is very dim — do I need a new panel?', answer: 'Not necessarily. A faint image can involve the backlight, fuse, driver or panel. We test the display path before quoting the part or repair that is actually needed.' }
       ],
     
       warranty: { duration: '30 Days', coverage: 'Screen panel and labor.', noFixNoFee: false },
