@@ -2009,6 +2009,8 @@ export const SEO_GRAPH = {
         "canonicalUrl": "https://www.computerrepairkuwait.com/gaming-laptop-repair-kuwait",
         "ogImage": "/images/msi-gaming-laptop-and-gpu-repair-workstation.webp",
         "ogImageAlt": "MSI gaming laptop and graphics hardware on a repair workstation",
+        "ogImageWidth": 1200,
+        "ogImageHeight": 800,
         "locale": "en_KW",
         "alternates": {
           "en-KW": "https://www.computerrepairkuwait.com/gaming-laptop-repair-kuwait",
