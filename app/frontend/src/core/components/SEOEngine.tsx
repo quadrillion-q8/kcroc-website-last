@@ -548,6 +548,12 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
               "latitude": location.coords.lat,
               "longitude": location.coords.lng
             } : undefined,
+            "openingHoursSpecification": business.schemaOpeningHours ? [{
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": business.schemaOpeningHours.dayOfWeek.map(day => `https://schema.org/${day}`),
+              "opens": business.schemaOpeningHours.opens,
+              "closes": business.schemaOpeningHours.closes
+            }] : undefined,
             "areaServed": location.serviceAreas.map(area => ({
               "@type": "City",
               "name": area
