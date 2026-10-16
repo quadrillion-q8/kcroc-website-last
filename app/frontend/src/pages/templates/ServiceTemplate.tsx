@@ -101,7 +101,9 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
   const isScreenService = entity.id === 'srv-screen';
   const whatsappLink = buildWhatsAppLink(isScreenService
     ? 'Hi KCROC, I need a laptop screen repair quote in Kuwait. Laptop brand/model: ____. Screen symptom: ____. Area in Kuwait: ____. I can send a photo if needed. Please confirm compatible panel availability and the total price including panel and labour.'
-    : `Hi KCROC, I'd like a free estimate for ${entity.title}.`);
+    : entity.id === 'srv-gaming-laptop'
+      ? 'Hi KCROC, I need gaming-laptop repair in Kuwait. Brand and exact model: ____. Main symptom: ____. Kuwait area: ____. I can share photos or a short video if useful. Please advise on diagnosis, the expected turnaround and the quote before repair.'
+      : `Hi KCROC, I'd like a free estimate for ${entity.title}.`);
 
   const severityStyles: Record<string, string> = {
     critical: 'border-red-500/40 bg-red-950/20 text-red-300',
@@ -123,15 +125,15 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
                 <div className="w-16 h-16 bg-brand-dark border border-slate-800 rounded-2xl flex items-center justify-center shadow-inner">
                   <ServiceIcon className="w-8 h-8 text-cyan-400" />
                 </div>
-                <h1 className={`${isScreenService ? 'text-3xl sm:text-4xl md:text-5xl leading-tight' : 'text-4xl md:text-5xl'} font-black text-white`}>{isScreenService ? 'Laptop Screen Repair & Replacement in Kuwait' : entity.title}</h1>
+                <h1 className="text-3xl sm:text-4xl md:text-5xl leading-tight font-black text-white">{isScreenService ? 'Laptop Screen Repair & Replacement in Kuwait' : entity.title}</h1>
               </div>
 
-              <p className="text-xl text-slate-300 max-w-3xl mb-8 leading-relaxed">
+              <div className="max-w-3xl mb-8 space-y-3">
                 {entity.shortDescription && (
-                  <span className="block text-2xl font-bold text-white mb-3">{entity.shortDescription}</span>
+                  <p className="text-lg sm:text-xl font-bold text-white leading-relaxed">{entity.shortDescription}</p>
                 )}
-                {entity.description}
-              </p>
+                <p className="text-base sm:text-lg text-slate-300 leading-relaxed">{entity.description}</p>
+              </div>
 
               {entity.idealCustomer && (
                 <p className="flex items-start gap-3 text-sm text-slate-400 max-w-3xl mb-8">
@@ -197,6 +199,8 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
                   width={heroImage.width}
                   height={heroImage.height}
                   loading="eager"
+                  fetchPriority="high"
+                  decoding="async"
                   className="w-full h-64 sm:h-80 lg:h-full object-cover"
                 />
                 {heroImage.caption && (
@@ -333,7 +337,7 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
               </div>
             )}
 
-            {entity.brands && entity.brands.length > 0 && (
+            {entity.id !== 'srv-gaming-laptop' && entity.brands && entity.brands.length > 0 && (
               <div>
                 <h3 className="text-sm uppercase tracking-wider font-bold text-slate-400 mb-4">Brands We Service</h3>
                 <div className="flex flex-wrap gap-2">
@@ -613,7 +617,7 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
           </section>
         )}
 
-        {KCROC_GRAPH.locations && KCROC_GRAPH.locations.length > 0 && (
+        {KCROC_GRAPH.locations && KCROC_GRAPH.locations.length > 0 && relatedLocationIds.length === 0 && (
           <section className="max-w-7xl mx-auto px-6 py-12 border-t border-slate-800/50 relative z-10">
             <h2 className="text-2xl font-bold mb-8 text-white flex items-center gap-3">
               <MapPin className="w-6 h-6 text-cyan-400" /> Service Areas in Kuwait

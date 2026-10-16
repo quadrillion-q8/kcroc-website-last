@@ -323,7 +323,7 @@ export const NAV_GRAPH = {
       "id": "srv-gaming-laptop",
       "slug": "gaming-laptop-repair-kuwait",
       "title": "Gaming Laptop Repair Kuwait",
-      "description": "Gaming laptops combine high-wattage CPU and GPU hardware with compact cooling, so the same symptom can come from heat, power, display, memory, firmware or board-level faults. KCROC diagnoses the actual cause before recommending a part swap. We work on ASUS ROG and TUF, Lenovo Legion, MSI, Acer Predator, HP OMEN and other performance laptops, with Kuwait-wide pickup and delivery from our Hawalli laboratory.",
+      "description": "KCROC diagnoses gaming-laptop faults across cooling, power delivery, display, memory, firmware and motherboard circuits before recommending parts. We work on ASUS ROG/TUF, Lenovo Legion, MSI, Acer Predator, HP OMEN, Dell G Series/Alienware and Razer Blade models. Repairs are completed and tested at our Hawalli workshop, with free pickup and delivery across Kuwait.",
       "iconKey": "gaming",
       "popular": true,
       "noFixNoFee": true,

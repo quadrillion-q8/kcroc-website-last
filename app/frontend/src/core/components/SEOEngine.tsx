@@ -643,8 +643,9 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
     ? rawOgImage
     : `${business.websiteUrl}${rawOgImage.startsWith('/') ? rawOgImage : `/${rawOgImage}`}`;
   const isDiscoverImage = resolvedOgImage.includes('/images/discover/');
-  const resolvedOgImageWidth = isDiscoverImage ? '1200' : '1200';
-  const resolvedOgImageHeight = isDiscoverImage ? '675' : '630';
+  const usesContentImageDimensions = Boolean(contentImage?.src && rawOgImage === contentImage.src);
+  const resolvedOgImageWidth = isDiscoverImage ? '1200' : usesContentImageDimensions ? String(contentImage.width ?? 1200) : '1200';
+  const resolvedOgImageHeight = isDiscoverImage ? '675' : usesContentImageDimensions ? String(contentImage.height ?? 630) : '630';
   const resolvedLocale = locale || 'en_KW';
   const resolvedTwitterCard = twitterCard || 'summary_large_image';
   const resolvedRobots = robots || 'index, follow, max-image-preview:large';
