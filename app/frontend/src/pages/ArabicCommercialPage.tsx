@@ -1171,7 +1171,7 @@ function ArabicComputerRepairPage({
 
   const startingPrices = [
     { price: 'من 15 د.ك', title: 'إصلاحات لابتوب شائعة', text: 'تختلف التكلفة حسب العطل والموديل والقطعة المطلوبة.' },
-    { price: slug === 'laptop-screen-repair-kuwait' ? 'أجرة العمل من 30 د.ك + الشاشة' : 'من 30 د.ك', title: 'تبديل شاشة اللابتوب', text: slug === 'laptop-screen-repair-kuwait' ? 'هذا السعر لأجرة العمل فقط؛ سعر الشاشة يُحسب بشكل منفصل حسب الموديل والمواصفات والتوفر. نؤكد السعر النهائي قبل الإصلاح.' : 'السعر النهائي يعتمد على موديل الجهاز ونوع الشاشة وتوفرها.' },
+    { price: 'من 30 د.ك', title: 'تبديل شاشة اللابتوب', text: 'السعر النهائي يعتمد على موديل الجهاز ونوع الشاشة وتوفرها.' },
     { price: 'من 25 د.ك', title: 'إصلاح اللوحة الأم', text: 'لإصلاح المكونات عند ملاءمة الحالة فنيًا؛ بعض الأعطال تحتاج خيارًا مختلفًا.' },
   ];
 
@@ -1680,6 +1680,18 @@ export default function ArabicCommercialPage() {
               </div>
             ))}
           </div>
+          {slug === 'laptop-screen-repair-kuwait' && (
+            <div className="mt-6 flex flex-col gap-3 rounded-2xl border border-cyan-500/25 bg-cyan-500/5 p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6">
+              <div>
+                <p className="text-xs font-black uppercase tracking-[0.12em] text-cyan-300">سعر البداية</p>
+                <p className="mt-2 text-xl font-black text-white sm:text-2xl">أجرة العمل تبدأ من 30 د.ك + سعر الشاشة</p>
+                <p className="mt-2 text-sm leading-7 text-slate-400">سعر الشاشة منفصل ويتحدد حسب موديل الجهاز والمواصفات وتوفر القطعة. نؤكد السعر النهائي قبل أي إصلاح مدفوع.</p>
+              </div>
+              <Link to="/ar/pricing" className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full border border-slate-700 px-5 py-3 text-sm font-black text-cyan-300 transition hover:border-cyan-500/40 hover:text-cyan-200">
+                تفاصيل الأسعار <ArrowLeft className="h-4 w-4" aria-hidden="true" />
+              </Link>
+            </div>
+          )}
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <a href={wa} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-500 px-7 py-3.5 font-black text-slate-950 hover:bg-cyan-400">
               <MessageCircle className="h-5 w-5" aria-hidden="true" /> {slug === 'laptop-screen-repair-kuwait' ? 'أرسل موديل اللابتوب واحصل على عرض سعر' : 'واتساب KCROC'}
