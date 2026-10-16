@@ -81,6 +81,9 @@ export const getPageWhatsAppLink = (pathname: string): string => {
       'gaming-laptop-repair-kuwait': 'تصليح Gaming Laptop في الكويت',
       'computer-repair-hawalli': 'تصليح كمبيوتر حولي',
     };
+    if (slug === 'laptop-screen-repair-kuwait') {
+      return buildWhatsAppLink('السلام عليكم KCROC، أحتاج تصليح أو تبديل شاشة اللابتوب. الماركة والموديل: ____. المشكلة: ____. منطقتي بالكويت: ____. فضلاً أكدوا توفر الشاشة والسعر النهائي شامل أجرة العمل والقطعة والمدة المتوقعة قبل الإصلاح.');
+    }
     const name = arabicNames[slug] ?? 'تصليح كمبيوتر ولابتوب في الكويت';
     return buildWhatsAppLink(`السلام عليكم KCROC، أحتاج ${name}. أريد أعرف طريقة الاستلام والتشخيص.`);
   }
