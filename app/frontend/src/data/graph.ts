@@ -1160,7 +1160,6 @@ export const rawGraphData: RawGraphData = {
       relatedServiceIds: ['srv-gaming', 'srv-gaming-laptop-cleaning', 'srv-laptop', 'srv-screen', 'srv-battery', 'srv-motherboard'],
       relatedProblemIds: ['problem-overheating', 'problem-black-screen', 'problem-no-power', 'problem-not-charging', 'problem-freezing-crashing'],
       relatedBrandIds: ['brand-asus', 'brand-lenovo', 'brand-msi', 'brand-hp', 'brand-dell', 'brand-acer'],
-      relatedCaseStudyIds: ['case-rog-motherboard-hawalli'],
       relatedLocationIds: ['loc-hawalli', 'loc-salmiya', 'loc-kuwait-city', 'loc-farwaniya', 'loc-jahra', 'loc-ahmadi', 'loc-fahaheel'],
       relatedResourcePaths: [
         { label: 'Why Is My Laptop Running Hot?', path: '/guides/why-is-my-laptop-so-hot' },
@@ -5002,7 +5001,7 @@ export const rawGraphData: RawGraphData = {
       deviceCategory: 'gaming-laptop',
       deviceModel: 'ASUS ROG Strix G15',
       brandId: 'brand-asus',
-      serviceIds: ['srv-gaming', 'srv-motherboard'],
+      serviceIds: ['srv-gaming', 'srv-gaming-laptop', 'srv-motherboard'],
       problemIds: ['problem-no-power'],
       locationId: 'loc-hawalli',
       authorId: 'https://www.computerrepairkuwait.com/author/imran#person',
