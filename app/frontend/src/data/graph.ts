@@ -10,7 +10,7 @@ import { IMAGES } from '../constants/images.js';
 export const rawGraphData: RawGraphData = {
   metadata: {
     version: '3.8.5',
-    lastUpdated: '2026-10-15T00:00:00+03:00',
+    lastUpdated: '2026-10-16T00:00:00+03:00',
     environment: 'production'
   },
 
@@ -3003,11 +3003,12 @@ export const rawGraphData: RawGraphData = {
         }
       ],
       seo: {
-        title: 'Laptop Screen Replacement Kuwait | Labor from 30 KWD | KCROC',
-        description: 'Laptop screen-replacement labor from 30 KWD, plus the panel cost. Free diagnosis, same-day service when in stock, Kuwait-wide pickup and a 30-day warranty.',
+        title: 'Laptop Screen Repair Kuwait | Labor from 30 KWD | KCROC',
+        description: 'Laptop screen repair for cracked, flickering, black or lined displays in Kuwait. Replacement labor from 30 KWD plus panel cost; free pickup, quote before repair and 30-day warranty.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-screen-repair-kuwait', locale: 'en_KW', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/laptop-screen-repair-kuwait', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/laptop-screen-repair-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/laptop-screen-repair-kuwait' },
         ogType: 'article',
-        schemaTypes: ['Service', 'FAQPage']
+        schemaTypes: ['Service', 'FAQPage'],
+        lastModified: '2026-10-16T00:00:00+03:00'
       },
       navigationPriority: 60,
       isFeatured: false,
@@ -3369,7 +3370,7 @@ export const rawGraphData: RawGraphData = {
         { id: "faq-farwaniya-local-4", question: "Should I send the charger with the laptop?", answer: "It helps to include the charger you normally use, because charging faults can involve the adapter as well as the laptop. Mention anything you noticed, such as a burning smell, a loose plug or the laptop only charging at certain angles." },
         { id: "faq-farwaniya-local-5", question: "My battery drops from 30 percent to zero. Is it the battery or something else?", answer: "It can be a worn battery, but the charging circuit can also give the same symptom, so we check both. If the battery needs replacing, we explain the available options before you choose." },
         { id: "faq-farwaniya-local-6", question: "Is there a branch in Farwaniya, and where is the repair done?", answer: "There is no walk-in branch in Farwaniya. Devices are repaired at our Hawalli lab (Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19), open daily from 10:00 AM to 10:00 PM. You can bring a device in yourself or have it collected for free, and repairs carry a 30-day warranty." },
-      ], landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)', coords: { lat: 29.2770, lng: 47.9590 }, serviceRadiusKm: 20, serviceAreas: ['Farwaniya', 'Khaitan', 'Riggae', 'Ardiya', 'Jleeb Al-Shuyoukh'], contentImage: { src: IMAGES.services.motherboardRepair.src, alt: IMAGES.services.motherboardRepair.alt, width: IMAGES.services.motherboardRepair.width, height: IMAGES.services.motherboardRepair.height, caption: 'Chip-level motherboard repair and screen replacement serving the Farwaniya governorate.' }, seo: { title: 'Computer Repair Farwaniya | Free Laptop Pickup | KCROC', description: 'Computer and laptop repair in Farwaniya, Khaitan, Riggae, Ardiya and Jleeb Al-Shuyoukh. Free pickup to Hawalli, clear quote before repair and 30-day warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/location/farwaniya', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/location/farwaniya', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/computer-repair-farwaniya', 'x-default': 'https://www.computerrepairkuwait.com/location/farwaniya' }, ogType: 'website', schemaTypes: ['LocalBusiness'], lastModified: '2026-10-14T00:00:00+03:00' }, navigationPriority: 80 } as LocationEntity,
+      ], landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)', coords: { lat: 29.2770, lng: 47.9590 }, serviceRadiusKm: 20, serviceAreas: ['Farwaniya', 'Khaitan', 'Riggae', 'Ardiya', 'Jleeb Al-Shuyoukh'], contentImage: { src: IMAGES.services.motherboardRepair.src, alt: IMAGES.services.motherboardRepair.alt, width: IMAGES.services.motherboardRepair.width, height: IMAGES.services.motherboardRepair.height, caption: 'Chip-level motherboard repair and screen replacement serving the Farwaniya governorate.' }, seo: { title: 'Laptop & Computer Repair Farwaniya | Free Pickup | KCROC', description: 'Laptop and PC repair for Farwaniya, Khaitan, Riggae, Ardiya and Jleeb Al-Shuyoukh. Free pickup to our Hawalli lab, clear quote before repair and 30-day warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/location/farwaniya', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/location/farwaniya', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/computer-repair-farwaniya', 'x-default': 'https://www.computerrepairkuwait.com/location/farwaniya' }, ogType: 'website', schemaTypes: ['LocalBusiness'], lastModified: '2026-10-16T00:00:00+03:00' }, navigationPriority: 80 } as LocationEntity,
 
     'loc-jahra': { id: 'loc-jahra', slug: 'jahra', entityType: 'Location', isActive: true, isPhysicalLocation: false, localIntro: "Jahra is further from our Hawalli lab than most service areas, which is exactly why pickup matters: you do not need to make the trip. We collect from Jahra, Saad Al Abdullah, Naeem, Qasr and Taima, repair the device in Hawalli and return it once it has passed testing. Overheating, thermal maintenance and motherboard diagnostics are the main focus here.", localHighlights: [
         { title: "Pickup from Jahra, Naeem, Qasr, Taima and Saad Al Abdullah", description: "Share your area and device on WhatsApp and we will arrange free collection and return." },
@@ -4075,7 +4076,7 @@ export const rawGraphData: RawGraphData = {
     'brand-hp': {
       id: 'brand-hp', slug: 'hp-laptop-repair-kuwait', entityType: 'Brand', isActive: true,
       title: 'HP Laptop Repair Kuwait', brandName: 'HP', officialWebsite: 'https://www.hp.com',
-      description: 'HP laptops — from the budget Pavilion to the business EliteBook — are among the most repaired devices in our Hawalli lab. HP\'s power management systems are particularly sensitive to Kuwait\'s frequent voltage fluctuations, which cause power IC failures more commonly than in other markets.',
+      description: 'HP laptops—from Pavilion and Envy to EliteBook, ProBook, OMEN and Victus—can develop charging, power, hinge, cooling, battery and display faults. KCROC checks the exact model and symptoms at the Hawalli workshop before recommending a repair.',
       commonModels: ['Pavilion', 'EliteBook', 'ProBook', 'Spectre x360', 'Envy', 'OMEN', 'Victus'],
       commonIssues: [
         { id: 'hp-power', title: 'Power IC Failure', severity: 'high', description: 'Voltage fluctuation damages power management chips.' },
@@ -4109,7 +4110,7 @@ export const rawGraphData: RawGraphData = {
         { id: 'hp-authorized', title: 'Is KCROC an official HP service center?', answer: 'No. KCROC is an independent computer-repair provider in Kuwait, not an official HP-authorized service center. We diagnose the actual hardware fault and quote the repair path before work begins.' }
       ],
       pricing: { startingFrom: 15, currency: 'KWD', quoteRequired: true, displayLabel: 'From 15 KWD — free diagnostic first' },
-      seo: { title: 'HP Laptop Repair Kuwait | Independent Service | KCROC', description: 'Independent HP laptop repair in Kuwait for Pavilion, EliteBook, ProBook, Envy, OMEN and Victus. Free pickup, diagnosis first, quote before repair and a 30-day warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/hp-laptop-repair-kuwait', ogType: 'article', schemaTypes: ['Brand', 'Service', 'FAQPage', 'BreadcrumbList'] },
+      seo: { title: 'HP Laptop Repair Kuwait | Pavilion, EliteBook & OMEN | KCROC', description: 'Independent HP laptop repair in Kuwait for Pavilion, EliteBook, ProBook, Envy, OMEN and Victus. Free pickup, diagnosis first, quote before repair and 30-day warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/hp-laptop-repair-kuwait', ogType: 'article', schemaTypes: ['Brand', 'Service', 'FAQPage', 'BreadcrumbList'], lastModified: '2026-10-16T00:00:00+03:00' },
       navigationPriority: 80, popular: true 
     } as BrandEntity,
 

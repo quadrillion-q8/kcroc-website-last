@@ -2679,8 +2679,8 @@ export const SEO_GRAPH = {
       "title": "Screen Replacement Kuwait",
       "slug": "laptop-screen-repair-kuwait",
       "seo": {
-        "title": "Laptop Screen Replacement Kuwait | Labor from 30 KWD | KCROC",
-        "description": "Laptop screen-replacement labor from 30 KWD, plus the panel cost. Free diagnosis, same-day service when in stock, Kuwait-wide pickup and a 30-day warranty.",
+        "title": "Laptop Screen Repair Kuwait | Labor from 30 KWD | KCROC",
+        "description": "Laptop screen repair for cracked, flickering, black or lined displays in Kuwait. Replacement labor from 30 KWD plus panel cost; free pickup, quote before repair and 30-day warranty.",
         "canonicalUrl": "https://www.computerrepairkuwait.com/laptop-screen-repair-kuwait",
         "locale": "en_KW",
         "alternates": {
@@ -2692,7 +2692,8 @@ export const SEO_GRAPH = {
         "schemaTypes": [
           "Service",
           "FAQPage"
-        ]
+        ],
+        "lastModified": "2026-10-16T00:00:00+03:00"
       },
       "description": "A cracked panel, a screen full of vertical lines, or a display that flickers whenever the lid moves doesn't mean the laptop is done — in almost every case it's a screen or cable fault, not a motherboard problem, and it's fixable the same day if the panel is in stock. We stock standard 14\" and 15.6\" FHD, IPS, and OLED panels for Dell, HP, Lenovo, ASUS, and Acer, plus Retina panels for MacBook Air and Pro. Kuwait's heat and dust also take a toll here specifically: display cables routed near the hinge flex thousands of times a year and wear through faster in high-temperature environments, which is why a \"cracked screen\" call often turns out to be a cable fault once we open the lid — a cheaper fix than a full panel.",
       "pricing": {
@@ -2959,8 +2960,8 @@ export const SEO_GRAPH = {
       "title": "Farwaniya",
       "slug": "farwaniya",
       "seo": {
-        "title": "Computer Repair Farwaniya | Free Laptop Pickup | KCROC",
-        "description": "Computer and laptop repair in Farwaniya, Khaitan, Riggae, Ardiya and Jleeb Al-Shuyoukh. Free pickup to Hawalli, clear quote before repair and 30-day warranty.",
+        "title": "Laptop & Computer Repair Farwaniya | Free Pickup | KCROC",
+        "description": "Laptop and PC repair for Farwaniya, Khaitan, Riggae, Ardiya and Jleeb Al-Shuyoukh. Free pickup to our Hawalli lab, clear quote before repair and 30-day warranty.",
         "canonicalUrl": "https://www.computerrepairkuwait.com/location/farwaniya",
         "alternates": {
           "en-KW": "https://www.computerrepairkuwait.com/location/farwaniya",
@@ -2971,7 +2972,7 @@ export const SEO_GRAPH = {
         "schemaTypes": [
           "LocalBusiness"
         ],
-        "lastModified": "2026-10-14T00:00:00+03:00"
+        "lastModified": "2026-10-16T00:00:00+03:00"
       },
       "coords": {
         "lat": 29.277,
@@ -3675,8 +3676,8 @@ export const SEO_GRAPH = {
       "title": "HP Laptop Repair Kuwait",
       "slug": "hp-laptop-repair-kuwait",
       "seo": {
-        "title": "HP Laptop Repair Kuwait | Independent Service | KCROC",
-        "description": "Independent HP laptop repair in Kuwait for Pavilion, EliteBook, ProBook, Envy, OMEN and Victus. Free pickup, diagnosis first, quote before repair and a 30-day warranty.",
+        "title": "HP Laptop Repair Kuwait | Pavilion, EliteBook & OMEN | KCROC",
+        "description": "Independent HP laptop repair in Kuwait for Pavilion, EliteBook, ProBook, Envy, OMEN and Victus. Free pickup, diagnosis first, quote before repair and 30-day warranty.",
         "canonicalUrl": "https://www.computerrepairkuwait.com/hp-laptop-repair-kuwait",
         "ogType": "article",
         "schemaTypes": [
@@ -3684,7 +3685,8 @@ export const SEO_GRAPH = {
           "Service",
           "FAQPage",
           "BreadcrumbList"
-        ]
+        ],
+        "lastModified": "2026-10-16T00:00:00+03:00"
       },
       "brandName": "HP",
       "officialWebsite": "https://www.hp.com",
