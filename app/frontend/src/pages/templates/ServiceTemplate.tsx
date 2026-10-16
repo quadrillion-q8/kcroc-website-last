@@ -98,7 +98,10 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
     </Link>
   );
 
-  const whatsappLink = buildWhatsAppLink(`Hi KCROC, I'd like a free estimate for ${entity.title}.`);
+  const isScreenService = entity.id === 'srv-screen';
+  const whatsappLink = buildWhatsAppLink(isScreenService
+    ? 'Hi KCROC, I need a laptop screen repair quote in Kuwait. Laptop brand/model: ____. Screen symptom: ____. Area in Kuwait: ____. I can send a photo if needed. Please confirm compatible panel availability and the total price including panel and labour.'
+    : `Hi KCROC, I'd like a free estimate for ${entity.title}.`);
 
   const severityStyles: Record<string, string> = {
     critical: 'border-red-500/40 bg-red-950/20 text-red-300',
@@ -120,7 +123,7 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
                 <div className="w-16 h-16 bg-brand-dark border border-slate-800 rounded-2xl flex items-center justify-center shadow-inner">
                   <ServiceIcon className="w-8 h-8 text-cyan-400" />
                 </div>
-                <h1 className="text-4xl md:text-5xl font-black text-white">{entity.title}</h1>
+                <h1 className={`${isScreenService ? 'text-3xl sm:text-4xl md:text-5xl leading-tight' : 'text-4xl md:text-5xl'} font-black text-white`}>{isScreenService ? 'Laptop Screen Repair & Replacement in Kuwait' : entity.title}</h1>
               </div>
 
               <p className="text-xl text-slate-300 max-w-3xl mb-8 leading-relaxed">
@@ -139,7 +142,7 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
 
               <div className="mt-2 mb-6 flex flex-wrap gap-3">
                 <a href={whatsappLink} target="_blank" rel="noopener noreferrer" onClick={() => trackConversion('whatsapp_click', { cta_name: `service_hero_whatsapp_${entity.id}`, button_position: 'service_hero' })} className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-xl bg-[#25D366] px-5 py-3 text-sm font-extrabold text-slate-950 shadow-lg shadow-emerald-950/20 hover:brightness-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300">
-                  <MessageCircle className="h-5 w-5" aria-hidden="true" /> Get a Free Quote on WhatsApp
+                  <MessageCircle className="h-5 w-5" aria-hidden="true" /> {isScreenService ? 'Get a Screen Repair Quote on WhatsApp' : 'Get a Free Quote on WhatsApp'}
                 </a>
                 <Link to="/book" onClick={() => trackConversion('cta_click', { cta_name: `service_hero_book_pickup_${entity.id}`, button_position: 'service_hero' })} className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-xl border border-cyan-500/40 bg-cyan-500/10 px-5 py-3 text-sm font-extrabold text-cyan-200 hover:bg-cyan-500/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400">
                   <ArrowRight className="h-5 w-5" aria-hidden="true" /> Book Free Pickup
@@ -359,9 +362,11 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
                 >
                   <div className="flex items-center justify-between gap-3 mb-3">
                     <h3 className="text-lg font-bold text-white">{issue.title}</h3>
-                    <span className="text-[10px] uppercase tracking-wider font-black px-2.5 py-1 rounded-full bg-black/30 flex-shrink-0">
-                      {issue.severity}
-                    </span>
+                    {!isScreenService && (
+                      <span className="text-[10px] uppercase tracking-wider font-black px-2.5 py-1 rounded-full bg-black/30 flex-shrink-0">
+                        {issue.severity}
+                      </span>
+                    )}
                   </div>
                   <p className="text-sm leading-relaxed opacity-90">{issue.description}</p>
                 </div>
