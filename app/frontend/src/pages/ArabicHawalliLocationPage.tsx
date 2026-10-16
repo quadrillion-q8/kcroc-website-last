@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import {
   Apple,
@@ -13,7 +12,6 @@ import {
   MessageCircle,
   Monitor,
   Phone,
-  ShieldCheck,
   Star,
   Truck,
   Wrench,
