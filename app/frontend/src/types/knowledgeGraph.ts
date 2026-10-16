@@ -31,6 +31,8 @@ export const SEOSchema = z.object({
   ogType: z.string().optional(),
   ogImage: z.string().optional(),
   ogImageAlt: z.string().optional(),
+  ogImageWidth: z.number().int().positive().optional(),
+  ogImageHeight: z.number().int().positive().optional(),
   locale: z.string().optional(),
   twitterCard: z.string().optional(),
   robots: z.string().optional(),

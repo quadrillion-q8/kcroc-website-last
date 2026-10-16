@@ -1119,15 +1119,15 @@ export const rawGraphData: RawGraphData = {
     'srv-gaming-laptop': {
       id: 'srv-gaming-laptop', slug: 'gaming-laptop-repair-kuwait', entityType: 'Service', isActive: true,
       title: 'Gaming Laptop Repair Kuwait', iconKey: 'gaming',
-      shortDescription: 'Gaming laptop repair for overheating, black screen, no power, charging, GPU, FPS drops, crashes, keyboard and motherboard faults.',
-      description: 'Gaming laptops combine high-wattage CPU and GPU hardware with compact cooling, so the same symptom can come from heat, power, display, memory, firmware or board-level faults. KCROC diagnoses the actual cause before recommending a part swap. We work on ASUS ROG and TUF, Lenovo Legion, MSI, Acer Predator, HP OMEN and other performance laptops, with Kuwait-wide pickup and delivery from our Hawalli laboratory.',
+      shortDescription: 'Gaming laptop repair in Kuwait for overheating, FPS drops, black screens, power and charging faults.',
+      description: 'KCROC diagnoses gaming-laptop faults across cooling, power delivery, display, memory, firmware and motherboard circuits before recommending parts. We work on ASUS ROG/TUF, Lenovo Legion, MSI, Acer Predator, HP OMEN, Dell G Series/Alienware and Razer Blade models. Repairs are completed and tested at our Hawalli workshop, with free pickup and delivery across Kuwait.',
       idealCustomer: 'Gamers, streamers, students and professionals whose gaming laptop runs hot, loses FPS, shuts down, shows no display, fails to charge, crashes or has another hardware problem.',
       deviceTypes: ['ASUS ROG / TUF', 'Lenovo Legion', 'MSI Gaming', 'Acer Predator / Nitro', 'HP OMEN / Victus', 'Dell G Series / Alienware', 'Razer Blade'],
-      repairLevel: 'advanced', estimatedTurnaround: '24-48 Hours',
+      repairLevel: 'advanced', estimatedTurnaround: 'Usually 24–48 hours',
       coreFeatures: [
         'Gaming Laptop No-Power Diagnosis', 'Black Screen / No Display Diagnosis', 'CPU & GPU Thermal Testing', 'Fan, Heatsink and Thermal Service',
         'Charging and Power-Circuit Diagnosis', 'GPU / VRAM Stability Testing', 'Motherboard and VRM Diagnostics', 'BIOS / Firmware Recovery Where Repairable',
-        'Keyboard, Hinge and Display Repair', 'Free Pick & Drop', '30-Day Warranty'
+        'Keyboard, Hinge and Display Repair', 'Post-Repair Thermal and Gaming-Load Testing'
       ],
       brands: ['ASUS ROG', 'ASUS TUF Gaming', 'Lenovo Legion', 'MSI Gaming', 'Acer Predator', 'HP OMEN', 'Dell G Series', 'Alienware', 'Razer Blade'],
       whyChooseUs: [
@@ -1143,13 +1143,6 @@ export const rawGraphData: RawGraphData = {
         { id: 'gaming-laptop-fps-drop', title: 'FPS Drops After Playing for a While', severity: 'high', description: 'A strong clue for thermal throttling or another sustained-load problem, but it still requires measurement of CPU/GPU temperature and clocks.' },
         { id: 'gaming-laptop-charging', title: 'Not Charging or Charging Intermittently', severity: 'high', description: 'The adapter, DC-in/USB-C path, battery and charging circuitry need to be separated before any replacement is chosen.' }
       ],
-      commercialAnswers: [
-        { question: 'Do you repair ASUS ROG, Lenovo Legion and MSI gaming laptops?', answer: 'Yes. The service covers major gaming families including ASUS ROG/TUF, Lenovo Legion, MSI Gaming, Acer Predator, HP OMEN, Dell G Series, Alienware and Razer Blade.' },
-        { question: 'Can you fix a gaming laptop that overheats and loses FPS?', answer: 'Yes. We test cooling, CPU/GPU temperatures, fan behaviour and sustained clocks so thermal throttling can be separated from a GPU, power or software issue.' },
-        { question: 'Can you repair a gaming laptop with a black screen?', answer: 'Yes. We check display, cable, memory, GPU, BIOS and motherboard causes before ordering a replacement screen.' },
-        { question: 'How much does gaming laptop repair cost in Kuwait?', answer: 'The service starts from 20 KWD for the repair/diagnostic path shown on this page; complex GPU, board, display and cooling work is quoted after diagnosis.' },
-        { question: 'Do you collect gaming laptops from home?', answer: 'Yes. Free pickup and delivery are available across Kuwait, with the device repaired and tested in the Hawalli laboratory.' }
-      ],
       process: [
         { step: 1, title: 'Collect & Log', description: 'We collect the gaming laptop and record the exact model and reported symptoms.' },
         { step: 2, title: 'Measure the Fault', description: 'Thermal, power, display, storage, memory and firmware checks are selected based on the symptoms.' },
@@ -1157,27 +1150,28 @@ export const rawGraphData: RawGraphData = {
         { step: 4, title: 'Repair & Stress-Test', description: 'The repair is completed, then the system is tested under the workload relevant to the failure.' }
       ],
       faqs: [
-        { id: 'gaming-laptop-faq-1', title: 'Can you repair a gaming laptop that overheats?', answer: 'Yes. We check airflow, fans, heatsinks, thermal interfaces and sustained CPU/GPU behaviour before deciding what needs service.' },
-        { id: 'gaming-laptop-faq-2', title: 'Do you repair gaming laptop GPU and motherboard faults?', answer: 'Where technically repairable, we diagnose GPU, VRM and motherboard faults before recommending complete board replacement.' },
-        { id: 'gaming-laptop-faq-3', title: 'Do you repair gaming laptop charging problems?', answer: 'Yes. We separate adapter, port, battery and charging-circuit faults before choosing a replacement part.' },
-        { id: 'gaming-laptop-faq-4', title: 'Do you replace gaming laptop screens?', answer: 'Yes. Display and cable faults are diagnosed first, with panel replacement when the display assembly is the failed component.' }
+        { id: "gaming-laptop-faq-1", title: "Can you fix gaming-laptop overheating and FPS drops?", answer: "We inspect airflow, fans, heatsinks, thermal interfaces and sustained CPU/GPU temperatures and clocks. This helps distinguish thermal throttling from power, GPU or software-related faults before recommending work." },
+        { id: "gaming-laptop-faq-2", title: "Do you repair gaming-laptop GPU and motherboard faults?", answer: "We diagnose GPU, VRM and motherboard faults and explain component-level options where technically practical. If a repair is not suitable, we explain the alternatives before paid work begins." },
+        { id: "gaming-laptop-faq-3", title: "How much does gaming-laptop repair cost in Kuwait?", answer: "Initial diagnosis is free. Repair cost depends on the confirmed fault, required parts and labour. KCROC explains the recommended repair and quote before any paid work begins; see the pricing page for listed starting rates for specific services." },
+        { id: "gaming-laptop-faq-4", title: "How long does gaming-laptop repair take?", answer: "Many common repairs may take around 24–48 hours after diagnosis. Complex GPU or board-level faults, testing needs and parts availability can extend the turnaround; we confirm the expected timeline with your quote." },
+        { id: "gaming-laptop-faq-5", title: "Can you collect my gaming laptop from home in Kuwait?", answer: "Yes. Free pickup and delivery are available across Kuwait. Your laptop is repaired and tested at the KCROC workshop in Hawalli, rather than at an unlisted local branch." },
+        { id: "gaming-laptop-faq-6", title: "Do you repair gaming-laptop charging and power problems?", answer: "Yes. We check the adapter, DC-in or supported USB-C charging path, battery and charging circuitry to identify the cause before choosing a part or repair." }
       ],
       relatedServiceIds: ['srv-gaming', 'srv-gaming-laptop-cleaning', 'srv-laptop', 'srv-screen', 'srv-battery', 'srv-motherboard'],
       relatedProblemIds: ['problem-overheating', 'problem-black-screen', 'problem-no-power', 'problem-not-charging', 'problem-freezing-crashing'],
       relatedBrandIds: ['brand-asus', 'brand-lenovo', 'brand-msi', 'brand-hp', 'brand-dell', 'brand-acer'],
       relatedLocationIds: ['loc-hawalli', 'loc-salmiya', 'loc-kuwait-city', 'loc-farwaniya', 'loc-jahra', 'loc-ahmadi', 'loc-fahaheel'],
       relatedResourcePaths: [
-        { label: 'Gaming Laptop Cleaning & Thermal Service', path: '/gaming-laptop-cleaning-kuwait' },
-        { label: 'Laptop Repair Kuwait', path: '/laptop-repair-kuwait' },
-        { label: 'Gaming PC Repair Kuwait', path: '/gaming-pc-repair-kuwait' }
+        { label: 'Why Is My Laptop Running Hot?', path: '/guides/why-is-my-laptop-so-hot' },
+        { label: 'BIOS & UEFI Recovery Guide', path: '/guides/bios-uefi-recovery-kuwait' }
       ],
       contentImages: [
-        { src: IMAGES.gaming.msiWorkstation.src, alt: 'Gaming laptop repair workstation in Kuwait', width: IMAGES.gaming.msiWorkstation.width, height: IMAGES.gaming.msiWorkstation.height, placement: 'hero', caption: 'Gaming laptop hardware diagnostics at the KCROC repair bench.' },
+        { src: IMAGES.gaming.msiWorkstation.src, alt: 'MSI gaming laptop and graphics hardware on a repair workstation', width: IMAGES.gaming.msiWorkstation.width, height: IMAGES.gaming.msiWorkstation.height, placement: 'hero', caption: 'Gaming laptop hardware on the KCROC diagnostic bench.' },
         { src: IMAGES.gaming.gamingLaptopFan.src, alt: 'Gaming laptop cooling and motherboard diagnostics', width: IMAGES.gaming.gamingLaptopFan.width, height: IMAGES.gaming.gamingLaptopFan.height, placement: 'commonIssues', caption: 'Gaming laptop cooling and motherboard inspection during diagnosis.' },
         { src: IMAGES.gaming.gamingOverheating.src, alt: 'Gaming laptop overheating repair in Kuwait', width: IMAGES.gaming.gamingOverheating.width, height: IMAGES.gaming.gamingOverheating.height, placement: 'process', caption: 'Thermal diagnostics for sustained gaming performance.' }
       ],
       warranty: { duration: '30 Days', coverage: 'Parts and labour for the completed gaming laptop repair', noFixNoFee: true },
-      seo: { title: 'Gaming Laptop Repair Kuwait | ROG, Legion & MSI | KCROC', description: 'Gaming laptop repair in Kuwait for overheating, black screen, no power, charging, GPU, FPS drops and motherboard faults. Free pickup and 30-day warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/gaming-laptop-repair-kuwait', locale: 'en_KW', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/gaming-laptop-repair-kuwait', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/gaming-laptop-repair-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/gaming-laptop-repair-kuwait' }, ogType: 'article', schemaTypes: ['Service', 'FAQPage'], lastModified: '2026-10-02T00:00:00+03:00' },
+      seo: { title: 'Gaming Laptop Repair Kuwait | ROG, Legion & MSI | KCROC', description: 'Gaming laptop repair in Kuwait for overheating, FPS drops, black screen, power, charging and GPU or motherboard faults. Free pickup, diagnosis before repair and 30-day warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/gaming-laptop-repair-kuwait', ogImage: '/images/msi-gaming-laptop-and-gpu-repair-workstation.webp', ogImageAlt: 'MSI gaming laptop and graphics hardware on a repair workstation', ogImageWidth: 1200, ogImageHeight: 800, locale: 'en_KW', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/gaming-laptop-repair-kuwait', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/gaming-laptop-repair-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/gaming-laptop-repair-kuwait' }, ogType: 'website', schemaTypes: ['Service', 'FAQPage'], lastModified: '2026-10-17T00:00:00+03:00' },
       navigationPriority: 67, isFeatured: true,
       popular: true
     } as ServiceEntity,
