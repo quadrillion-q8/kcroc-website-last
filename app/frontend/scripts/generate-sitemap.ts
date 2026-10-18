@@ -133,6 +133,26 @@ const generateSitemap = () => {
 
   const sitemapPath = path.join(publicDir, 'sitemap.xml');
   fs.writeFileSync(sitemapPath, sitemapXml);
+
+  // Non-indexable case-study URLs must still be statically prerendered so
+  // direct visits receive the intentional noindex fallback, not a generic SPA shell.
+  // They remain excluded from sitemap.xml.
+  const prerenderOnlyRoutes = [...new Set(filteredEntities
+    .filter(entity =>
+      (entity as { entityType?: string }).entityType === 'CaseStudy'
+      && (entity.seo.robots || '').toLowerCase().includes('noindex')
+    )
+    .map(entity => {
+      const canonicalUrl = entity.seo.canonicalUrl.startsWith('http')
+        ? entity.seo.canonicalUrl
+        : `${DOMAIN}${entity.seo.canonicalUrl.startsWith('/') ? '' : '/'}${entity.seo.canonicalUrl}`;
+      return new URL(canonicalUrl).pathname;
+    })
+  )].sort();
+
+  const prerenderRoutesPath = path.resolve(__dirname, '../prerender-routes.generated.json');
+  fs.writeFileSync(prerenderRoutesPath, `${JSON.stringify(prerenderOnlyRoutes, null, 2)}\n`);
+
   
   // ✅ FIX: Log the actual count of routes for build accuracy
   console.log(`✅ Sitemap successfully mapped ${allEntries.length} active routes to public/sitemap.xml (${filteredEntities.length} from the knowledge graph, ${blogUrlEntries.length} from BLOG_POSTS)`);
