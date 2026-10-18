@@ -2,6 +2,7 @@
 import React from 'react';
 import { useLocation, Navigate, Link } from 'react-router-dom';
 import { KCROC_GRAPH } from '../../data/graph';
+import { canPublishCaseStudyPhotos, isCaseStudyPublishable } from '../../utils/publicationEligibility';
 import { SEOEngine } from '../../core/components/SEOEngine';
 import { getIntentWhatsAppLink } from '../../utils/whatsappIntent';
 import CoreRepairPillars from '../../components/content/CoreRepairPillars';
@@ -44,7 +45,7 @@ const BrandTemplate: React.FC = () => {
   const familyGroups = brand.familyGroups ?? [];
   const relatedCaseStudies = (brand.relatedCaseStudyIds ?? [])
     .map((id) => KCROC_GRAPH.caseStudies.find((caseStudy) => caseStudy.id === id))
-    .filter(Boolean);
+    .filter((caseStudy) => Boolean(caseStudy && isCaseStudyPublishable(caseStudy)));
 
   const relatedServices = relatedServiceIds
     .map((id) => KCROC_GRAPH.services.find((service) => service.id === id))
@@ -458,7 +459,7 @@ const BrandTemplate: React.FC = () => {
             <div className="grid gap-5 md:grid-cols-2">
               {relatedCaseStudies.map((caseStudy) => caseStudy && (
                 <Link key={caseStudy.id} to={`/case-studies/${caseStudy.slug}`} className="group overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/50 transition hover:border-cyan-500/40">
-                  {caseStudy.featuredImage?.hero && (
+                  {canPublishCaseStudyPhotos(caseStudy) && caseStudy.featuredImage?.hero && (
                     <img
                       src={caseStudy.featuredImage.hero.webp}
                       alt={caseStudy.featuredImage.altText || caseStudy.title}
