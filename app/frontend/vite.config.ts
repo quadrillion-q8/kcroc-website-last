@@ -5,7 +5,7 @@ import react from '@vitejs/plugin-react-swc';
 import fs from 'fs';
 import { XMLParser } from 'fast-xml-parser';
 
-// Helper to read the generated sitemap
+// Read the canonical sitemap plus deliberately non-indexable routes that need static noindex fallbacks.
 // 🩹 FIX: this used to silently fall back to `['/']` whenever the sitemap
 // was missing, unparseable, or empty. That meant a failed/skipped
 // `generate:sitemap` step wouldn't fail the build — it would silently
@@ -54,8 +54,29 @@ function getSitemapRoutes() {
     );
   }
 
-  return routes;
-}
+  const prerenderRoutesPath = path.resolve(__dirname, 'prerender-routes.generated.json');
+  if (!fs.existsSync(prerenderRoutesPath)) {
+    throw new Error(
+      `[vite.config.ts] Generated prerender route manifest missing at ${prerenderRoutesPath}. `
+      + 'Run "pnpm run generate:sitemap" before building.'
+    );
+  }
+
+  let extraRoutes: unknown;
+  try {
+    extraRoutes = JSON.parse(fs.readFileSync(prerenderRoutesPath, 'utf-8'));
+  } catch (e) {
+    throw new Error(
+      `[vite.config.ts] Failed to parse prerender route manifest: ${(e as Error).message}`
+    );
+  }
+  if (!Array.isArray(extraRoutes) || extraRoutes.some((route) => typeof route !== 'string' || !route.startsWith('/'))) {
+    throw new Error('[vite.config.ts] Prerender route manifest must be a JSON array of absolute paths.');
+  }
+
+  // Sitemap URLs remain indexable-only; this manifest adds static output for hidden/noindex routes.
+  return [...new Set([...routes, ...extraRoutes])];
+
 
 export default defineConfig({
   plugins: [react()],

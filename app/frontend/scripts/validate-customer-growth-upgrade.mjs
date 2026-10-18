@@ -92,10 +92,10 @@ const arabicHawalli = await read('pages/ArabicHawalliLocationPage.tsx');
 add('English and Arabic Hawalli language switch is reciprocal', locale.includes("'/location/hawalli': '/ar/computer-repair-hawalli'") && locale.includes("'/ar/computer-repair-hawalli': '/location/hawalli'"));
 add('Dedicated Arabic Hawalli location route is registered and localized', app.includes("path: 'ar/computer-repair-hawalli'") && app.indexOf("path: 'ar/computer-repair-hawalli'") < app.indexOf("path: 'ar/:slug'") && arabicHawalli.includes('dir="rtl" lang="ar-KW"') && arabicHawalli.includes('DIRECTIONS_URL') && arabicHawalli.includes('FAQPage'));
 add('Hawalli location metadata is synchronized between graph and SEO projection', graph.includes("title: 'Computer Repair Hawalli | Laptop, MacBook & PC | KCROC'") && graph.includes('Visit KCROC at Al Mullah Complex, Basement Shop 19, Hawalli. Laptop, MacBook, PC and motherboard repair daily 10 AM–10 PM. Free pickup across Kuwait.') && seoProjection.includes('Computer Repair Hawalli | Laptop, MacBook & PC | KCROC') && seoProjection.includes('Visit KCROC at Al Mullah Complex, Basement Shop 19, Hawalli. Laptop, MacBook, PC and motherboard repair daily 10 AM–10 PM. Free pickup across Kuwait.') && graph.includes("title: 'تصليح كمبيوتر حولي | فني لابتوب وموقع المختبر | KCROC'") && seoProjection.includes('تصليح كمبيوتر حولي | فني لابتوب وموقع المختبر | KCROC'));
-add('Hawalli hero includes directions and case-study promotion requires consent/evidence', hawalli.includes("cta_name: 'hawalli_directions'") && hawalli.includes('c.customerConsent?.granted === true') && hawalli.includes('c.evidence.length > 0'));
+add('Hawalli hero includes directions and case-study promotion requires consent/evidence', hawalli.includes("cta_name: 'hawalli_directions'") && hawalli.includes('isCaseStudyPublishable(c)'));
 
 
-const [caseEligibility, caseShowcase, caseIndex, caseTemplateForValidation, locationDeepForValidation, hawalliForValidation, reviewsForValidation, graphForValidation, seoForValidation, sitemapForValidation, reviewSchemaForValidation, auditLocationsForValidation, locationTemplateForValidation, brandTemplateForValidation, problemTemplateForValidation, serviceTemplateForValidation] = await Promise.all([
+const [caseEligibility, caseShowcase, caseIndex, caseTemplateForValidation, locationDeepForValidation, hawalliForValidation, reviewsForValidation, graphForValidation, seoForValidation, sitemapForValidation, reviewSchemaForValidation, auditLocationsForValidation, locationTemplateForValidation, brandTemplateForValidation, problemTemplateForValidation, serviceTemplateForValidation, prerenderManifestForValidation, sitemapGeneratorForValidation, viteConfigForValidation] = await Promise.all([
   read('utils/publicationEligibility.ts'),
   read('components/home/BeforeAfterShowcase.tsx'),
   read('pages/CaseStudiesIndex.tsx'),
@@ -112,6 +112,9 @@ const [caseEligibility, caseShowcase, caseIndex, caseTemplateForValidation, loca
   read('pages/templates/BrandTemplate.tsx'),
   read('pages/templates/ProblemTemplate.tsx'),
   read('pages/templates/ServiceTemplate.tsx'),
+  readFile(path.resolve('prerender-routes.generated.json'), 'utf8'),
+  read('scripts/generate-sitemap.ts'),
+  read('vite.config.ts'),
 ]);
 add('Case-study publishing requires explicit consent, device/repair scope and first-party evidence',
   caseEligibility.includes("consent?.granted === true")
@@ -155,6 +158,12 @@ add('All public related-case cards across location, brand, problem and service t
   && problemTemplateForValidation.includes('isCaseStudyPublishable(cs)')
   && serviceTemplateForValidation.includes('relatedCaseStudyPath = entity.relatedCaseStudyPath')
   && serviceTemplateForValidation.includes('isCaseStudyPublishable(study)'));
+add('Unpublished case-study URLs are prerendered separately from the indexable sitemap',
+  ['/case-studies/macbook-liquid-damage-salmiya', '/case-studies/asus-rog-dead-motherboard-hawalli', '/case-studies/dell-xps-screen-replacement-kuwait-city'].every((route) => prerenderManifestForValidation.includes(route))
+  && sitemapGeneratorForValidation.includes('prerender-routes.generated.json')
+  && sitemapGeneratorForValidation.includes("entityType?: string")
+  && viteConfigForValidation.includes('prerender-routes.generated.json')
+  && viteConfigForValidation.includes('return [...new Set([...routes, ...extraRoutes])];'));
 add('Sitemap excludes all three unpublished customer-specific case-study URLs',
   !sitemapForValidation.includes('/case-studies/macbook-liquid-damage-salmiya')
   && !sitemapForValidation.includes('/case-studies/asus-rog-dead-motherboard-hawalli')
