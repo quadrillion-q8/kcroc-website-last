@@ -169,6 +169,15 @@ add('Sitemap excludes all three unpublished customer-specific case-study URLs',
   && !sitemapForValidation.includes('/case-studies/asus-rog-dead-motherboard-hawalli')
   && !sitemapForValidation.includes('/case-studies/dell-xps-screen-replacement-kuwait-city'));
 
+add('Case-study hub stays indexable and provides useful diagnostic methods when customer stories are withheld',
+  graphForValidation.includes("'page-case-studies': {")
+  && !graphForValidation.slice(graphForValidation.indexOf("'page-case-studies': {"), graphForValidation.indexOf("} as WebPageEntity,", graphForValidation.indexOf("'page-case-studies': {"))).includes("robots: 'noindex")
+  && caseIndex.includes('Diagnostic methods')
+  && caseIndex.includes('/motherboard-repair-kuwait')
+  && caseIndex.includes('/laptop-liquid-damage-repair-kuwait')
+  && caseIndex.includes('/laptop-screen-repair-kuwait')
+  && sitemapForValidation.includes('https://www.computerrepairkuwait.com/case-studies'));
+
 for (const check of checks) console.log(`${check.pass ? '✅' : '❌'} ${check.name}${!check.pass && check.detail ? ` — ${check.detail}` : ''}`);
 const failed = checks.filter((check) => !check.pass);
 if (failed.length) process.exit(1);
