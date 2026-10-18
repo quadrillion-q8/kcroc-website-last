@@ -4984,6 +4984,7 @@ export const SEO_GRAPH = {
         "description": "Coffee spill destroyed a MacBook Pro M2 in Salmiya. KCROC repaired the motherboard for 65 KWD, preserving all data. Apple wanted 280 KWD for a board swap.",
         "canonicalUrl": "https://www.computerrepairkuwait.com/case-studies/macbook-liquid-damage-salmiya",
         "ogType": "article",
+        "robots": "noindex, follow",
         "schemaTypes": [
           "Article",
           "BreadcrumbList",
@@ -5045,6 +5046,7 @@ export const SEO_GRAPH = {
         "description": "Dead ASUS ROG Strix gaming laptop restored via chip-level micro-soldering in Hawalli. Saved customer 300+ KWD on a replacement board.",
         "canonicalUrl": "https://www.computerrepairkuwait.com/case-studies/asus-rog-dead-motherboard-hawalli",
         "ogType": "article",
+        "robots": "noindex, follow",
         "schemaTypes": [
           "Article",
           "BreadcrumbList",
@@ -5107,6 +5109,7 @@ export const SEO_GRAPH = {
         "description": "Cracked Dell XPS 15 screen replaced with OEM panel in just 5 hours, including free pick and drop to Kuwait City.",
         "canonicalUrl": "https://www.computerrepairkuwait.com/case-studies/dell-xps-screen-replacement-kuwait-city",
         "ogType": "article",
+        "robots": "noindex, follow",
         "schemaTypes": [
           "Article"
         ]

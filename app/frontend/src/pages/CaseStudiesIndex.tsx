@@ -4,10 +4,11 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
 import { SEOEngine } from '../core/components/SEOEngine';
 import { KCROC_GRAPH } from '../data/graph';
+import { canPublishCaseStudyPhotos, isCaseStudyPublishable } from '../utils/publicationEligibility';
 
 export default function CaseStudiesIndex() {
   // Pull case studies from your data graph, or default to an empty array if not yet populated
-  const caseStudies = KCROC_GRAPH.caseStudies || [];
+  const caseStudies = (KCROC_GRAPH.caseStudies || []).filter(isCaseStudyPublishable);
 
   return (
     <>
@@ -32,7 +33,7 @@ export default function CaseStudiesIndex() {
                 className="group bg-slate-900/40 backdrop-blur-xl border border-slate-800 rounded-3xl overflow-hidden hover:border-cyan-500/50 transition-all duration-300 hover:-translate-y-1 flex flex-col"
               >
                 <div className="h-48 bg-brand-dark border-b border-slate-800 relative overflow-hidden">
-                  {study.featuredImage?.thumbnail ? (
+                  {canPublishCaseStudyPhotos(study) && study.featuredImage?.thumbnail ? (
                     <img
                       src={study.featuredImage.thumbnail.webp}
                       alt={study.featuredImage.altText ?? study.title}
@@ -64,7 +65,11 @@ export default function CaseStudiesIndex() {
           ) : (
             <div className="col-span-full bg-slate-900/40 backdrop-blur-md border border-slate-800 rounded-3xl p-12 text-center">
               <h3 className="text-2xl font-bold text-slate-300 mb-2">Documentation in Progress</h3>
-              <p className="text-slate-500">We are currently compiling our recent successful motherboard repairs. Check back soon for detailed technical breakdowns.</p>
+              <p className="text-slate-500">We publish detailed repair stories only after the supporting records and publication permissions have been confirmed.</p>
+              <div className="mt-6 flex flex-wrap justify-center gap-3">
+                <Link to="/services" className="inline-flex items-center gap-2 rounded-xl bg-cyan-500 px-5 py-3 text-sm font-bold text-slate-950 hover:bg-cyan-400">Explore repair services <ArrowRight className="h-4 w-4" /></Link>
+                <Link to="/contact" className="inline-flex items-center gap-2 rounded-xl border border-slate-700 px-5 py-3 text-sm font-bold text-slate-200 hover:border-cyan-500/40">Ask about a repair</Link>
+              </div>
             </div>
           )}
         </div>

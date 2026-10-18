@@ -33,6 +33,7 @@ import { KCROC_GRAPH } from '../data/graph';
 import { useAnalytics } from '../core/analytics/AnalyticsProvider';
 import { IMAGES } from '../constants/images';
 import CoreRepairPillars from '../components/content/CoreRepairPillars';
+import { canPublishCaseStudyPhotos, isCaseStudyPublishable, isReviewPublishable } from '../utils/publicationEligibility';
 
 const BASE_URL = KCROC_GRAPH.business!.websiteUrl;
 
@@ -83,10 +84,14 @@ export default function LocationDeepTemplate() {
   const PAGE_URL = `${BASE_URL}/location/${location.slug}`;
 
   const process = KCROC_GRAPH.processes?.find((p) => p.id === 'proc-standard');
-  const caseStudy = (location.relatedCaseStudyIds ?? []).map((id) => KCROC_GRAPH.caseStudies.find((c) => c.id === id)).find(Boolean)
-    ?? KCROC_GRAPH.caseStudies.find((c) => c.locationId === location.id || c.location === location.title);
+  const caseStudy = (location.relatedCaseStudyIds ?? [])
+    .map((id) => KCROC_GRAPH.caseStudies.find((c) => c.id === id))
+    .find((candidate) => Boolean(candidate && isCaseStudyPublishable(candidate)))
+    ?? KCROC_GRAPH.caseStudies.find((c) =>
+      (c.locationId === location.id || c.location === location.title) && isCaseStudyPublishable(c)
+    );
   const reviews = KCROC_GRAPH.reviews;
-  const localReview = reviews?.items.find((r) => r.location === location.title);
+  const localReview = reviews?.items.find((r) => r.location === location.title && isReviewPublishable(r));
   const trustBadges = KCROC_GRAPH.trustBadges;
   const noFixNoFee = KCROC_GRAPH.usps?.find((u) => u.id === 'usp-nofix');
   const componentRepairUsp = KCROC_GRAPH.usps?.find((u) => u.id === 'usp-component');
@@ -498,7 +503,7 @@ export default function LocationDeepTemplate() {
               to={`/case-studies/${caseStudy.slug}`}
               className="group grid sm:grid-cols-[1fr_1.3fr] gap-0 bg-slate-900/50 border border-slate-800 hover:border-cyan-500/40 rounded-2xl overflow-hidden transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
             >
-              {caseStudy.featuredImage?.hero && (
+              {canPublishCaseStudyPhotos(caseStudy) && caseStudy.featuredImage?.hero && (
                 <img
                   src={caseStudy.featuredImage.hero.webp}
                   alt={caseStudy.featuredImage.altText || caseStudy.title}

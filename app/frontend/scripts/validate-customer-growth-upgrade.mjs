@@ -94,6 +94,61 @@ add('Dedicated Arabic Hawalli location route is registered and localized', app.i
 add('Hawalli location metadata is synchronized between graph and SEO projection', graph.includes("title: 'Computer Repair Hawalli | Laptop, MacBook & PC | KCROC'") && graph.includes('Visit KCROC at Al Mullah Complex, Basement Shop 19, Hawalli. Laptop, MacBook, PC and motherboard repair daily 10 AM–10 PM. Free pickup across Kuwait.') && seoProjection.includes('Computer Repair Hawalli | Laptop, MacBook & PC | KCROC') && seoProjection.includes('Visit KCROC at Al Mullah Complex, Basement Shop 19, Hawalli. Laptop, MacBook, PC and motherboard repair daily 10 AM–10 PM. Free pickup across Kuwait.') && graph.includes("title: 'تصليح كمبيوتر حولي | فني لابتوب وموقع المختبر | KCROC'") && seoProjection.includes('تصليح كمبيوتر حولي | فني لابتوب وموقع المختبر | KCROC'));
 add('Hawalli hero includes directions and case-study promotion requires consent/evidence', hawalli.includes("cta_name: 'hawalli_directions'") && hawalli.includes('c.customerConsent?.granted === true') && hawalli.includes('c.evidence.length > 0'));
 
+
+const [caseEligibility, caseShowcase, caseIndex, caseTemplateForValidation, locationDeepForValidation, hawalliForValidation, reviewsForValidation, graphForValidation, seoForValidation, sitemapForValidation, reviewSchemaForValidation, auditLocationsForValidation] = await Promise.all([
+  read('utils/publicationEligibility.ts'),
+  read('components/home/BeforeAfterShowcase.tsx'),
+  read('pages/CaseStudiesIndex.tsx'),
+  read('pages/templates/CaseStudyTemplate.tsx'),
+  read('pages/LocationDeepTemplate.tsx'),
+  read('pages/HawalliLocationPage.tsx'),
+  read('components/home/Reviews.tsx'),
+  read('data/graph.ts'),
+  read('data/seoGraph.generated.ts'),
+  readFile(path.resolve('public/sitemap.xml'), 'utf8'),
+  read('types/knowledgeGraph.ts'),
+  readFile(path.resolve('scripts/audit-locations.ts'), 'utf8'),
+]);
+add('Case-study publishing requires explicit consent, device/repair scope and first-party evidence',
+  caseEligibility.includes("consent?.granted === true")
+  && caseEligibility.includes("consent.scope.includes('device')")
+  && caseEligibility.includes("consent.scope.includes('repair-details')")
+  && caseEligibility.includes('caseStudy.evidence.length > 0'));
+add('All three unapproved case studies are noindex in source and generated SEO data',
+  ['case-macbook-liquid-salmiya', 'case-rog-motherboard-hawalli', 'case-dell-screen-kuwait-city'].every((id) => {
+    const at = graphForValidation.indexOf("'" + id + "': {");
+    const end = graphForValidation.indexOf('} as CaseStudyEntity,', at);
+    const item = graphForValidation.slice(at, end);
+    const seoAt = seoForValidation.indexOf('"id": "' + id + '"');
+    const seoEnd = seoForValidation.indexOf('"id":', seoAt + 10);
+    const generatedItem = seoForValidation.slice(seoAt, seoEnd > seoAt ? seoEnd : seoAt + 5000);
+    return at >= 0 && end > at && item.includes("robots: 'noindex, follow'") && generatedItem.includes('"robots": "noindex, follow"');
+  }));
+add('Unpublished case studies are omitted from homepage and index cards',
+  caseShowcase.includes('isCaseStudyPublishable(study)')
+  && caseShowcase.includes('canPublishCaseStudyPhotos(study)')
+  && caseIndex.includes('.filter(isCaseStudyPublishable)')
+  && caseIndex.includes('canPublishCaseStudyPhotos(study)'));
+add('Direct unpublished case-study URLs render a noindex fallback without story content',
+  caseTemplateForValidation.includes('SEOEngine entityId="page-404"')
+  && caseTemplateForValidation.includes('isCaseStudyPublishable(caseStudy)')
+  && caseTemplateForValidation.includes('Repair story unavailable'));
+add('Service-area and Hawalli pages only show consented/evidenced cases and verified reviews',
+  locationDeepForValidation.includes('isCaseStudyPublishable(candidate)')
+  && locationDeepForValidation.includes('isReviewPublishable(r)')
+  && hawalliForValidation.includes('isCaseStudyPublishable(c)')
+  && hawalliForValidation.includes('isReviewPublishable(r)')
+  && auditLocationsForValidation.includes('isReviewPublishable(r)'));
+add('Unverified quote cards are not rendered; review provenance fields are available for future approved quotes',
+  !reviewsForValidation.includes('review.text')
+  && !reviewsForValidation.includes('review.name')
+  && reviewSchemaForValidation.includes('sourceUrl: z.string().url().optional()')
+  && reviewSchemaForValidation.includes('publicationVerified: z.boolean().optional()'));
+add('Sitemap excludes all three unpublished customer-specific case-study URLs',
+  !sitemapForValidation.includes('/case-studies/macbook-liquid-damage-salmiya')
+  && !sitemapForValidation.includes('/case-studies/asus-rog-dead-motherboard-hawalli')
+  && !sitemapForValidation.includes('/case-studies/dell-xps-screen-replacement-kuwait-city'));
+
 for (const check of checks) console.log(`${check.pass ? '✅' : '❌'} ${check.name}${!check.pass && check.detail ? ` — ${check.detail}` : ''}`);
 const failed = checks.filter((check) => !check.pass);
 if (failed.length) process.exit(1);

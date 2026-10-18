@@ -4,6 +4,7 @@ import { Stethoscope, Wrench, CheckCircle2, MoveHorizontal } from 'lucide-react'
 import { KCROC_GRAPH } from '../../data/graph';
 import { SectionHeader } from '@/components/ui/section-header';
 import { useAnalytics } from '../../core/analytics/AnalyticsProvider';
+import { canPublishCaseStudyPhotos, isCaseStudyPublishable } from '../../utils/publicationEligibility';
 
 const Picture = ({
   variant,
@@ -99,7 +100,11 @@ const ComparisonSlider = ({
 };
 
 export const BeforeAfterShowcase = () => {
-  const caseStudies = KCROC_GRAPH.caseStudies;
+  const caseStudies = KCROC_GRAPH.caseStudies.filter((study) =>
+    isCaseStudyPublishable(study)
+      && canPublishCaseStudyPhotos(study)
+      && Boolean(study.featuredImage?.thumbnail && study.featuredImage?.hero)
+  );
   const { trackConversion } = useAnalytics();
 
   if (caseStudies.length === 0) return null;

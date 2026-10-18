@@ -3883,12 +3883,10 @@ export const rawGraphData: RawGraphData = {
        REVIEWS
     ═══════════════════════════════════════════════════════════════ */
     'reviews-row': { 
-      id: 'reviews-row', entityType: 'Reviews', isActive: true, title: 'Verified Google Reviews', aggregateRating: { ratingValue: '4.9', reviewCount: 157 }, 
+      id: 'reviews-row', entityType: 'Reviews', isActive: true, title: 'Google Business Profile reviews', aggregateRating: { ratingValue: '4.9', reviewCount: 157 }, 
       items: [
-        { name: 'Ahmad Al-Sabah', location: 'Salmiya', time: '2 weeks ago', rating: 5, device: 'MacBook Pro — Screen Replacement', text: 'Fixed the MacBook Pro screen in 24 hours, price exactly as quoted.' },
-        { name: 'Fatima A.', location: 'Hawalli', time: '1 month ago', rating: 5, device: 'MacBook Air — Liquid Damage', text: 'Spilled coffee on my Mac. Apple told me I lost all my data and needed a new board. KCROC fixed the original board and saved my files. Absolute lifesavers.' },
-        { name: 'Tareq M.', location: 'Kuwait City', time: '2 months ago', rating: 5, device: 'ASUS ROG — Overheating', text: 'My gaming laptop was hitting 95C and dropping frames. They cleaned it and apply liquid metal. Now it runs perfectly cool. Very professional lab.' },
-        { name: 'Sarah K.', location: 'Farwaniya', time: '3 months ago', rating: 5, device: 'Dell XPS — Dead Motherboard', text: 'Laptop was completely dead. The free pick and drop service was super convenient. They diagnosed a shorted chip, fixed it in 2 days, and gave a 30-day warranty.' }
+        // No individual quote is published until its source and publication permission are verified.
+      
       ] 
     } as ReviewsEntity,
 
@@ -4967,7 +4965,7 @@ export const rawGraphData: RawGraphData = {
         hero: { raw: IMAGES.macbook.logicBoard.src, webp: IMAGES.macbook.logicBoard.src, avif: IMAGES.macbook.logicBoard.src, width: IMAGES.macbook.logicBoard.width, height: IMAGES.macbook.logicBoard.height },
         altText: 'MacBook Pro M2 motherboard diagnostic and repair after coffee spill damage'
       },
-      seo: { title: 'MacBook Pro M2 Liquid Damage Repair — Salmiya | KCROC', description: 'Coffee spill destroyed a MacBook Pro M2 in Salmiya. KCROC repaired the motherboard for 65 KWD, preserving all data. Apple wanted 280 KWD for a board swap.', canonicalUrl: 'https://www.computerrepairkuwait.com/case-studies/macbook-liquid-damage-salmiya', ogType: 'article', schemaTypes: ['Article', 'BreadcrumbList', 'ImageObject'] },
+      seo: { title: 'MacBook Pro M2 Liquid Damage Repair — Salmiya | KCROC', description: 'Coffee spill destroyed a MacBook Pro M2 in Salmiya. KCROC repaired the motherboard for 65 KWD, preserving all data. Apple wanted 280 KWD for a board swap.', canonicalUrl: 'https://www.computerrepairkuwait.com/case-studies/macbook-liquid-damage-salmiya', ogType: 'article', robots: 'noindex, follow', schemaTypes: ['Article', 'BreadcrumbList', 'ImageObject'] },
       
       // 🚀 NEW
       narrative: {
@@ -5025,7 +5023,7 @@ export const rawGraphData: RawGraphData = {
         hero: { raw: IMAGES.gaming.asusRogCpuThermalPasteGpuBuild.src, webp: IMAGES.gaming.asusRogCpuThermalPasteGpuBuild.src, avif: IMAGES.gaming.asusRogCpuThermalPasteGpuBuild.src, width: IMAGES.gaming.asusRogCpuThermalPasteGpuBuild.width, height: IMAGES.gaming.asusRogCpuThermalPasteGpuBuild.height },
         altText: 'ASUS ROG Strix gaming laptop motherboard teardown and MOSFET repair'
       },
-      seo: { title: 'ASUS ROG Dead Motherboard Repair — Hawalli | KCROC', description: 'Dead ASUS ROG Strix gaming laptop restored via chip-level micro-soldering in Hawalli. Saved customer 300+ KWD on a replacement board.', canonicalUrl: 'https://www.computerrepairkuwait.com/case-studies/asus-rog-dead-motherboard-hawalli', ogType: 'article', schemaTypes: ['Article', 'BreadcrumbList', 'ImageObject'] },
+      seo: { title: 'ASUS ROG Dead Motherboard Repair — Hawalli | KCROC', description: 'Dead ASUS ROG Strix gaming laptop restored via chip-level micro-soldering in Hawalli. Saved customer 300+ KWD on a replacement board.', canonicalUrl: 'https://www.computerrepairkuwait.com/case-studies/asus-rog-dead-motherboard-hawalli', ogType: 'article', robots: 'noindex, follow', schemaTypes: ['Article', 'BreadcrumbList', 'ImageObject'] },
       narrative: {
         clientContext: 'Hardcore Gamer, Hawalli',
         hook: 'The client was in the middle of an intense gaming session when their ASUS ROG Strix G15 abruptly shut off with a quiet pop. The laptop was completely dead—no charging lights, no fan spin, and totally unresponsive to the power button. An official service center diagnosed a catastrophically failed motherboard and quoted an astronomical 350 KWD for a complete board replacement. Hoping for a more reasonable solution, the client brought the heavy machine to our Hawalli lab for a component-level diagnostic.',
@@ -5079,7 +5077,7 @@ export const rawGraphData: RawGraphData = {
         hero: { raw: IMAGES.laptopHardware.laptopLcdPanelReplacementPart.src, webp: IMAGES.laptopHardware.laptopLcdPanelReplacementPart.src, avif: IMAGES.laptopHardware.laptopLcdPanelReplacementPart.src, width: IMAGES.laptopHardware.laptopLcdPanelReplacementPart.width, height: IMAGES.laptopHardware.laptopLcdPanelReplacementPart.height },
         altText: 'Dell XPS 15 cracked screen diagnosis and OEM 4K panel replacement'
       },
-      seo: { title: 'Same-Day Dell XPS Screen Replacement Kuwait City | KCROC', description: 'Cracked Dell XPS 15 screen replaced with OEM panel in just 5 hours, including free pick and drop to Kuwait City.', canonicalUrl: 'https://www.computerrepairkuwait.com/case-studies/dell-xps-screen-replacement-kuwait-city', ogType: 'article', schemaTypes: ['Article'] },
+      seo: { title: 'Same-Day Dell XPS Screen Replacement Kuwait City | KCROC', description: 'Cracked Dell XPS 15 screen replaced with OEM panel in just 5 hours, including free pick and drop to Kuwait City.', canonicalUrl: 'https://www.computerrepairkuwait.com/case-studies/dell-xps-screen-replacement-kuwait-city', ogType: 'article', robots: 'noindex, follow', schemaTypes: ['Article'] },
       narrative: {
         clientContext: 'Corporate Executive, Kuwait City',
         hook: 'A corporate executive in Kuwait City dropped their Dell XPS 15 right before a critical board presentation, completely shattering the premium 4K display. While the laptop still functioned when plugged into an external monitor, it was useless for travel or the upcoming meeting. Buying a brand-new XPS 15 would cost over 600 KWD, and waiting weeks for a warranty mail-in repair was out of the question. The client contacted us at 9:00 AM needing an emergency same-day turnaround.',

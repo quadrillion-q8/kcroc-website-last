@@ -32,6 +32,7 @@ import MapComponent from '../components/MapComponent';
 import { KCROC_GRAPH } from '../data/graph';
 import { useAnalytics } from '../core/analytics/AnalyticsProvider';
 import CoreRepairPillars from '../components/content/CoreRepairPillars';
+import { canPublishCaseStudyPhotos, isCaseStudyPublishable, isReviewPublishable } from '../utils/publicationEligibility';
 // 🩹 FIX: real workshop/branch photos already exist in the codebase but
 // were never used anywhere on this page — the entire page relied on a
 // single hero image (location.contentImage). These power the new "Inside
@@ -82,9 +83,9 @@ export default function HawalliLocationPage() {
   const business = KCROC_GRAPH.business;
   const process = KCROC_GRAPH.processes?.find((p) => p.id === 'proc-standard');
   // Do not promote a customer-specific story unless publication consent and first-party evidence are present.
-  const caseStudy = KCROC_GRAPH.caseStudies.find((c) => c.id === 'case-rog-motherboard-hawalli' && c.customerConsent?.granted === true && c.customerConsent.scope.includes('device') && c.customerConsent.scope.includes('repair-details') && c.evidence.length > 0);
+  const caseStudy = KCROC_GRAPH.caseStudies.find((c) => c.id === 'case-rog-motherboard-hawalli' && isCaseStudyPublishable(c));
   const reviews = KCROC_GRAPH.reviews;
-  const hawalliReview = reviews?.items.find((r) => r.location === 'Hawalli');
+  const hawalliReview = reviews?.items.find((r) => r.location === 'Hawalli' && isReviewPublishable(r));
   const trustBadges = KCROC_GRAPH.trustBadges;
   const noFixNoFee = KCROC_GRAPH.usps?.find((u) => u.id === 'usp-nofix');
   const componentRepairUsp = KCROC_GRAPH.usps?.find((u) => u.id === 'usp-component');
@@ -501,7 +502,7 @@ export default function HawalliLocationPage() {
               to={`/case-studies/${caseStudy.slug}`}
               className="group grid sm:grid-cols-[1fr_1.3fr] gap-0 bg-slate-900/50 border border-slate-800 hover:border-cyan-500/40 rounded-2xl overflow-hidden transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
             >
-              {caseStudy.featuredImage?.hero && (
+              {canPublishCaseStudyPhotos(caseStudy) && caseStudy.featuredImage?.hero && (
                 <img
                   src={caseStudy.featuredImage.hero.webp}
                   alt={caseStudy.featuredImage.altText || caseStudy.title}
