@@ -151,7 +151,7 @@ const generateSitemap = () => {
   )].sort();
 
   const prerenderRoutesPath = path.resolve(__dirname, '../prerender-routes.generated.json');
-  fs.writeFileSync(prerenderRoutesPath, `${JSON.stringify(prerenderOnlyRoutes, null, 2)}\\n`);
+  fs.writeFileSync(prerenderRoutesPath, `${JSON.stringify(prerenderOnlyRoutes, null, 2)}\n`);
 
   
   // ✅ FIX: Log the actual count of routes for build accuracy
