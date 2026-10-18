@@ -8,7 +8,7 @@ Reduce avoidable trust risk raised by the r/Kuwait discussion without inventing 
 - Case studies require explicit permission for device and repair details, plus at least one supporting first-party evidence asset.
 - Customer photos require separate `photos` permission. Customer-context narratives require the `testimonial` scope.
 - Applied the policy to the homepage before/after showcase, case-study index and detail pages, Hawalli and service-area location pages, plus location, brand, problem and service related-case cards.
-- Marked the three currently unapproved case-study URLs `noindex, follow`, synchronized that status in generated SEO data, and removed them from the sitemap. The direct route presents a neutral noindex fallback.
+- Marked the three currently unapproved case-study URLs `noindex, follow`, synchronized that status in generated SEO data, and removed them from the sitemap. A separate generated prerender-route manifest keeps their direct URLs statically rendered so they return a neutral noindex fallback rather than a generic SPA shell.
 - Removed hardcoded individual review quotations from the visible homepage review area and source graph. The homepage now links visitors to current Google reviews.
 - Added optional review source and publication-verification fields to the knowledge-graph schema for future approved quotations.
 - Added regression checks for consent, evidence, noindex, sitemap exclusion and review provenance.

@@ -95,7 +95,7 @@ add('Hawalli location metadata is synchronized between graph and SEO projection'
 add('Hawalli hero includes directions and case-study promotion requires consent/evidence', hawalli.includes("cta_name: 'hawalli_directions'") && hawalli.includes('c.customerConsent?.granted === true') && hawalli.includes('c.evidence.length > 0'));
 
 
-const [caseEligibility, caseShowcase, caseIndex, caseTemplateForValidation, locationDeepForValidation, hawalliForValidation, reviewsForValidation, graphForValidation, seoForValidation, sitemapForValidation, reviewSchemaForValidation, auditLocationsForValidation, locationTemplateForValidation, brandTemplateForValidation, problemTemplateForValidation, serviceTemplateForValidation] = await Promise.all([
+const [caseEligibility, caseShowcase, caseIndex, caseTemplateForValidation, locationDeepForValidation, hawalliForValidation, reviewsForValidation, graphForValidation, seoForValidation, sitemapForValidation, reviewSchemaForValidation, auditLocationsForValidation, locationTemplateForValidation, brandTemplateForValidation, problemTemplateForValidation, serviceTemplateForValidation, prerenderManifestForValidation, sitemapGeneratorForValidation, viteConfigForValidation] = await Promise.all([
   read('utils/publicationEligibility.ts'),
   read('components/home/BeforeAfterShowcase.tsx'),
   read('pages/CaseStudiesIndex.tsx'),
@@ -112,6 +112,9 @@ const [caseEligibility, caseShowcase, caseIndex, caseTemplateForValidation, loca
   read('pages/templates/BrandTemplate.tsx'),
   read('pages/templates/ProblemTemplate.tsx'),
   read('pages/templates/ServiceTemplate.tsx'),
+  readFile(path.resolve('prerender-routes.generated.json'), 'utf8'),
+  read('scripts/generate-sitemap.ts'),
+  read('vite.config.ts'),
 ]);
 add('Case-study publishing requires explicit consent, device/repair scope and first-party evidence',
   caseEligibility.includes("consent?.granted === true")
@@ -155,6 +158,12 @@ add('All public related-case cards across location, brand, problem and service t
   && problemTemplateForValidation.includes('isCaseStudyPublishable(cs)')
   && serviceTemplateForValidation.includes('relatedCaseStudyPath = entity.relatedCaseStudyPath')
   && serviceTemplateForValidation.includes('isCaseStudyPublishable(study)'));
+add('Unpublished case-study URLs are prerendered separately from the indexable sitemap',
+  ['/case-studies/macbook-liquid-damage-salmiya', '/case-studies/asus-rog-dead-motherboard-hawalli', '/case-studies/dell-xps-screen-replacement-kuwait-city'].every((route) => prerenderManifestForValidation.includes(route))
+  && sitemapGeneratorForValidation.includes('prerender-routes.generated.json')
+  && sitemapGeneratorForValidation.includes("entityType?: string")
+  && viteConfigForValidation.includes('prerender-routes.generated.json')
+  && viteConfigForValidation.includes('return [...new Set([...routes, ...extraRoutes])];'));
 add('Sitemap excludes all three unpublished customer-specific case-study URLs',
   !sitemapForValidation.includes('/case-studies/macbook-liquid-damage-salmiya')
   && !sitemapForValidation.includes('/case-studies/asus-rog-dead-motherboard-hawalli')
