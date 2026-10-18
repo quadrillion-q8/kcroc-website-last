@@ -113,8 +113,8 @@ const [caseEligibility, caseShowcase, caseIndex, caseTemplateForValidation, loca
   read('pages/templates/ProblemTemplate.tsx'),
   read('pages/templates/ServiceTemplate.tsx'),
   readFile(path.resolve('prerender-routes.generated.json'), 'utf8'),
-  read('scripts/generate-sitemap.ts'),
-  read('vite.config.ts'),
+  readFile(path.resolve('scripts/generate-sitemap.ts'), 'utf8'),
+  readFile(path.resolve('vite.config.ts'), 'utf8'),
 ]);
 add('Case-study publishing requires explicit consent, device/repair scope and first-party evidence',
   caseEligibility.includes("consent?.granted === true")
