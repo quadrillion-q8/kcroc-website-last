@@ -139,10 +139,16 @@ function audit(): Row[] {
     const faq = isPhysical ? 12 : scale(nLocalFaq, 5, 12);
 
     // 6. Real local evidence (15): case study 10 + location-tagged review 5
-    const hasCase =
-      (l.relatedCaseStudyIds ?? []).length > 0 ||
-      KCROC_GRAPH.caseStudies.some((c) => c.locationId === l.id || c.location === l.title);
-    const hasReview = !!KCROC_GRAPH.reviews?.items?.some((r: any) => r.location === l.title);
+    const hasCase = KCROC_GRAPH.caseStudies.some((c) =>
+      isCaseStudyPublishable(c) && (
+        (l.relatedCaseStudyIds ?? []).includes(c.id)
+        || c.locationId === l.id
+        || c.location === l.title
+      )
+    );
+    const hasReview = !!KCROC_GRAPH.reviews?.items?.some(
+      (r: any) => r.location === l.title && isReviewPublishable(r)
+    );
     const evidence = (hasCase ? 10 : 0) + (hasReview ? 5 : 0);
 
     // 7. Real local photo evidence (10) — only a location-unique image earns full marks

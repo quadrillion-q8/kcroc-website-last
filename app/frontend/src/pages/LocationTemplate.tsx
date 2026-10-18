@@ -14,6 +14,7 @@ import { Card, CardHeader, CardTitle } from '@/components/ui/card';
 import { SEOEngine } from '../core/components/SEOEngine';
 import SchemaMarkup from '../components/seo/SchemaMarkup';
 import { KCROC_GRAPH } from '../data/graph';
+import { isCaseStudyPublishable } from '../utils/publicationEligibility';
 
 export default function LocationTemplate() {
   const { slug } = useParams<{ slug: string }>();
@@ -26,7 +27,7 @@ export default function LocationTemplate() {
 
   // Real repairs already tagged with this exact location — proof this isn't a doorway page.
   const relatedCaseStudies = KCROC_GRAPH.caseStudies?.filter(
-    (cs) => cs.locationId === location?.id
+    (cs) => cs.locationId === location?.id && isCaseStudyPublishable(cs)
   ) || [];
 
   // 🚀 Generate Breadcrumb Schema for Local SEO Rich Results

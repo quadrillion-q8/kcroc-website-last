@@ -20,6 +20,7 @@ import { SEOEngine } from '../../core/components/SEOEngine';
 import { KCROC_GRAPH } from '../../data/graph';
 import { useAnalytics } from '../../core/analytics/AnalyticsProvider';
 import { KCROC_POLICY } from '../../constants/businessPolicy';
+import { canPublishCaseStudyPhotos, isCaseStudyPublishable } from '../../utils/publicationEligibility';
 
 const entityHref = (entity: { slug: string; entityType: string; seo?: { canonicalUrl?: string } }) => {
   if (entity.seo?.canonicalUrl) {
@@ -40,6 +41,24 @@ export default function CaseStudyTemplate() {
 
   if (!caseStudy || !business) return null;
 
+  if (!isCaseStudyPublishable(caseStudy)) {
+    return (
+      <div className="min-h-screen bg-transparent px-4 py-24">
+        <SEOEngine entityId="page-404" />
+        <section aria-labelledby="repair-story-unavailable-title" className="mx-auto max-w-2xl rounded-3xl border border-slate-800 bg-slate-900/40 p-8 text-center sm:p-12">
+          <h1 id="repair-story-unavailable-title" className="text-3xl font-black text-white">Repair story unavailable</h1>
+          <p className="mt-4 text-sm leading-relaxed text-slate-300">
+            Detailed customer repair stories are published only after the required permission and supporting documentation are confirmed.
+          </p>
+          <div className="mt-7 flex flex-wrap justify-center gap-3">
+            <Link to="/services" className="rounded-xl bg-cyan-500 px-5 py-3 text-sm font-bold text-slate-950 hover:bg-cyan-400">Explore repair services</Link>
+            <Link to="/contact" className="rounded-xl border border-slate-700 px-5 py-3 text-sm font-bold text-slate-200 hover:border-cyan-500/40">Contact KCROC</Link>
+          </div>
+        </section>
+      </div>
+    );
+  }
+
   const relatedBrand = caseStudy.brandId
     ? KCROC_GRAPH.brands?.find(brand => brand.id === caseStudy.brandId)
     : undefined;
@@ -53,7 +72,7 @@ export default function CaseStudyTemplate() {
     ? KCROC_GRAPH.locations.find(location => location.id === caseStudy.locationId)
     : undefined;
   const relatedCases = KCROC_GRAPH.caseStudies
-    .filter(cs => cs.id !== caseStudy.id && (
+    .filter(cs => isCaseStudyPublishable(cs) && cs.id !== caseStudy.id && (
       (caseStudy.brandId && cs.brandId === caseStudy.brandId) ||
       (caseStudy.locationId && cs.locationId === caseStudy.locationId) ||
       (caseStudy.serviceIds ?? []).some(id => (cs.serviceIds ?? []).includes(id))
@@ -67,8 +86,10 @@ export default function CaseStudyTemplate() {
     `Hi KCROC, I saw the ${caseStudy.device} case study and need help with a similar issue.`
   )}`;
 
-  const hasNarrative = Boolean(caseStudy.narrative);
-  const evidence = [...(caseStudy.evidence ?? [])].sort((a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0));
+  const hasNarrative = Boolean(caseStudy.narrative) && caseStudy.customerConsent?.scope.includes('testimonial') === true;
+  const evidence = canPublishCaseStudyPhotos(caseStudy)
+    ? [...(caseStudy.evidence ?? [])].sort((a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0))
+    : [];
 
   return (
     <div className="w-full min-h-screen bg-transparent">
@@ -121,7 +142,7 @@ export default function CaseStudyTemplate() {
           </div>
         </div>
 
-        {caseStudy.featuredImage?.hero && (
+        {canPublishCaseStudyPhotos(caseStudy) && caseStudy.featuredImage?.hero && (
           <figure className="mb-14">
             <img
               src={caseStudy.featuredImage.hero.webp}

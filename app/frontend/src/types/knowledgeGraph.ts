@@ -126,7 +126,9 @@ export const ReviewsSchema = CoreNodeSchema.extend({
     time: z.string(),
     rating: z.number(), 
     device: z.string(),
-    text: z.string() 
+    text: z.string(),
+    sourceUrl: z.string().url().optional(),
+    publicationVerified: z.boolean().optional(),
   }))
 });
 
