@@ -76,7 +76,7 @@ function getSitemapRoutes() {
 
   // Sitemap URLs remain indexable-only; this manifest adds static output for hidden/noindex routes.
   return [...new Set([...routes, ...extraRoutes])];
-
+}
 
 export default defineConfig({
   plugins: [react()],
