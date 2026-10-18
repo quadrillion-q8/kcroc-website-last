@@ -95,7 +95,7 @@ add('Hawalli location metadata is synchronized between graph and SEO projection'
 add('Hawalli hero includes directions and case-study promotion requires consent/evidence', hawalli.includes("cta_name: 'hawalli_directions'") && hawalli.includes('c.customerConsent?.granted === true') && hawalli.includes('c.evidence.length > 0'));
 
 
-const [caseEligibility, caseShowcase, caseIndex, caseTemplateForValidation, locationDeepForValidation, hawalliForValidation, reviewsForValidation, graphForValidation, seoForValidation, sitemapForValidation, reviewSchemaForValidation, auditLocationsForValidation] = await Promise.all([
+const [caseEligibility, caseShowcase, caseIndex, caseTemplateForValidation, locationDeepForValidation, hawalliForValidation, reviewsForValidation, graphForValidation, seoForValidation, sitemapForValidation, reviewSchemaForValidation, auditLocationsForValidation, locationTemplateForValidation, brandTemplateForValidation, problemTemplateForValidation, serviceTemplateForValidation] = await Promise.all([
   read('utils/publicationEligibility.ts'),
   read('components/home/BeforeAfterShowcase.tsx'),
   read('pages/CaseStudiesIndex.tsx'),
@@ -108,6 +108,10 @@ const [caseEligibility, caseShowcase, caseIndex, caseTemplateForValidation, loca
   readFile(path.resolve('public/sitemap.xml'), 'utf8'),
   read('types/knowledgeGraph.ts'),
   readFile(path.resolve('scripts/audit-locations.ts'), 'utf8'),
+  read('pages/LocationTemplate.tsx'),
+  read('pages/templates/BrandTemplate.tsx'),
+  read('pages/templates/ProblemTemplate.tsx'),
+  read('pages/templates/ServiceTemplate.tsx'),
 ]);
 add('Case-study publishing requires explicit consent, device/repair scope and first-party evidence',
   caseEligibility.includes("consent?.granted === true")
@@ -144,6 +148,13 @@ add('Unverified quote cards are not rendered; review provenance fields are avail
   && !reviewsForValidation.includes('review.name')
   && reviewSchemaForValidation.includes('sourceUrl: z.string().url().optional()')
   && reviewSchemaForValidation.includes('publicationVerified: z.boolean().optional()'));
+add('All public related-case cards across location, brand, problem and service templates use the publication gate',
+  locationTemplateForValidation.includes('isCaseStudyPublishable(cs)')
+  && brandTemplateForValidation.includes('isCaseStudyPublishable(caseStudy)')
+  && brandTemplateForValidation.includes('canPublishCaseStudyPhotos(caseStudy)')
+  && problemTemplateForValidation.includes('isCaseStudyPublishable(cs)')
+  && serviceTemplateForValidation.includes('relatedCaseStudyPath = entity.relatedCaseStudyPath')
+  && serviceTemplateForValidation.includes('isCaseStudyPublishable(study)'));
 add('Sitemap excludes all three unpublished customer-specific case-study URLs',
   !sitemapForValidation.includes('/case-studies/macbook-liquid-damage-salmiya')
   && !sitemapForValidation.includes('/case-studies/asus-rog-dead-motherboard-hawalli')
