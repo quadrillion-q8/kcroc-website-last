@@ -1292,18 +1292,19 @@ export const SEO_GRAPH = {
       "id": "page-case-studies",
       "entityType": "WebPage",
       "isActive": true,
-      "title": "Case Studies",
+      "title": "Repair Case Studies & Diagnostic Methods",
       "slug": "case-studies",
       "seo": {
-        "title": "Repair Case Studies | KCROC Kuwait",
-        "description": "Read real case studies of laptops and MacBooks we saved from liquid damage and catastrophic failure.",
+        "title": "Repair Case Studies & Diagnostic Methods | KCROC Kuwait",
+        "description": "Understand KCROC’s diagnostic approach to motherboard faults, liquid damage and laptop displays. Customer-specific repair reports are published only after supporting records and permissions are verified.",
         "canonicalUrl": "https://www.computerrepairkuwait.com/case-studies",
         "ogType": "website",
         "schemaTypes": [
           "CollectionPage"
-        ]
+        ],
+        "lastModified": "2026-10-19T00:00:00+03:00"
       },
-      "description": "Real repair success stories.",
+      "description": "Repair methods and customer case studies, published only when supporting records and required permissions are verified.",
       "featuredFAQIds": []
     },
     {
