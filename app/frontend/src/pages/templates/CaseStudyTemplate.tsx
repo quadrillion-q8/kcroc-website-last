@@ -45,8 +45,8 @@ export default function CaseStudyTemplate() {
     return (
       <div className="min-h-screen bg-transparent px-4 py-24">
         <SEOEngine entityId="page-404" />
-        <main className="mx-auto max-w-2xl rounded-3xl border border-slate-800 bg-slate-900/40 p-8 text-center sm:p-12">
-          <h1 className="text-3xl font-black text-white">Repair story unavailable</h1>
+        <section aria-labelledby="repair-story-unavailable-title" className="mx-auto max-w-2xl rounded-3xl border border-slate-800 bg-slate-900/40 p-8 text-center sm:p-12">
+          <h1 id="repair-story-unavailable-title" className="text-3xl font-black text-white">Repair story unavailable</h1>
           <p className="mt-4 text-sm leading-relaxed text-slate-300">
             Detailed customer repair stories are published only after the required permission and supporting documentation are confirmed.
           </p>
@@ -54,7 +54,7 @@ export default function CaseStudyTemplate() {
             <Link to="/services" className="rounded-xl bg-cyan-500 px-5 py-3 text-sm font-bold text-slate-950 hover:bg-cyan-400">Explore repair services</Link>
             <Link to="/contact" className="rounded-xl border border-slate-700 px-5 py-3 text-sm font-bold text-slate-200 hover:border-cyan-500/40">Contact KCROC</Link>
           </div>
-        </main>
+        </section>
       </div>
     );
   }
