@@ -1,7 +1,8 @@
 // File: app/frontend/src/pages/templates/ProblemTemplate.tsx
 import React from 'react';
 import { useLocation, Navigate, Link } from 'react-router-dom';
-import { KCROC_GRAPH } from '../../data/graph'; 
+import { KCROC_GRAPH } from '../../data/graph';
+import { isCaseStudyPublishable } from '../../utils/publicationEligibility'; 
 import { SEOEngine } from '../../core/components/SEOEngine';
 import { getIntentWhatsAppLink } from '../../utils/whatsappIntent';
 import { AlertOctagon, CheckCircle2, ShieldAlert, ArrowRight, Search, Wrench, MapPin, HelpCircle, BookOpen, Clock3 } from 'lucide-react';
@@ -24,7 +25,7 @@ const ProblemTemplate: React.FC = () => {
 
   // Real repairs already tagged with this exact problem — proof, not promises.
   const relatedCaseStudies = KCROC_GRAPH.caseStudies.filter((cs) =>
-    cs.problemIds?.includes(problem.id)
+    isCaseStudyPublishable(cs) && cs.problemIds?.includes(problem.id)
   );
 
   const getContentImage = (placement: 'causes' | 'solution') =>
