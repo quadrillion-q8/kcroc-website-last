@@ -1,5 +1,6 @@
 // File: app/frontend/src/components/home/BrandStrip.tsx
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { KCROC_GRAPH } from '../../data/graph';
 import { useAnalytics } from '../../core/analytics/AnalyticsProvider';
 
@@ -25,14 +26,15 @@ export const BrandStrip = () => {
         {/* Mobile: horizontal touch-scroll strip. Desktop (sm+): wrapped, centered pills. */}
         <div className="scroll-row gap-2 -mx-4 px-4 sm:mx-0 sm:px-0 sm:flex-wrap sm:items-center sm:justify-center sm:overflow-visible">
           {brands.map((brand) => (
-            <a
+            <Link
               key={brand.id}
-              href={`/${brand.slug}`}
+              to={`/${brand.slug}`}
+              aria-label={brand.title}
               onClick={() => trackConversion('cta_click', { cta_name: 'brand_strip_click', button_position: 'brand_strip', brand: brand.brandName })}
               className="scroll-row-item text-xs sm:text-sm font-semibold text-slate-400 hover:text-cyan-400 border border-slate-800 hover:border-cyan-500/30 rounded-full px-3 sm:px-4 py-1.5 sm:py-2 transition-all whitespace-nowrap"
             >
-              {brand.brandName}
-            </a>
+              {brand.title}
+            </Link>
           ))}
         </div>
       </div>
