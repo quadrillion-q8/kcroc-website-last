@@ -46,7 +46,7 @@ This pass repairs several repeatable issues in shared controls and common conver
 - Footer accordion, social, booking, phone, and legal controls had several hit areas below the requested 44px baseline.
 - Cookie panel semantics implied a modal interaction it did not implement.
 
-**Refactor:** corrected current-route announcements, increased interactive hit areas, improved footer legal-link readability, and made the consent panel accurately describe itself as a non-modal region.
+**Refactor:** corrected current-route announcements, increased interactive hit areas, improved footer legal-link readability, made the consent panel accurately describe itself as a non-modal region, and added a prominent service-grid logistics banner with a direct `/book` CTA. The hero, service grid, booking page and footer now explicitly state free pick-up/drop across all Kuwait governorates.
 
 ## II. KCROC business and architecture guardrails
 
