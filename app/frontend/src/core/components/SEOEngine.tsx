@@ -676,7 +676,7 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
         <link
           rel="preload"
           as="image"
-          href="/images/kcroc-laptop-repair-technicians-hawalli-kuwait.w768.webp"
+          href="/images/kcroc-pc-doctor-windows-repair-services.w768.webp"
           type="image/webp"
           fetchPriority="high"
         />
