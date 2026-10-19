@@ -23,7 +23,7 @@ export default function SchemaMarkup({ schema = {} }: SchemaMarkupProps) {
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(mergedSchema) }}
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(mergedSchema).replace(/</g, '\\u003c') }}
     />
   );
 }
