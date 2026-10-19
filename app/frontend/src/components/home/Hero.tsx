@@ -17,8 +17,8 @@ export default function Hero() {
   const rating = business?.aggregateRating?.ratingValue;
   const googleProfileUrl = business?.socialLinks?.googleMaps;
   const headline = hero?.headline ?? "Kuwait's Expert Component-Level Repair Service.";
-  const desktopImage = '/images/kcroc-laptop-repair-technicians-hawalli-kuwait.webp';
-  const heroImage768 = '/images/kcroc-laptop-repair-technicians-hawalli-kuwait.w768.webp';
+  const desktopImage = '/images/kcroc-pc-doctor-windows-repair-services.webp';
+  const heroImage768 = '/images/kcroc-pc-doctor-windows-repair-services.w768.webp';
 
   return (
     <>
