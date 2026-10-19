@@ -58,7 +58,6 @@ export default function RepairProofCTA() {
               rel="noopener noreferrer"
               onClick={() => trackConversion('whatsapp_click', { cta_name: 'repair_proof_whatsapp', button_position: 'repair_proof_cta' })}
               className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#25D366] hover:brightness-95 text-slate-950 px-5 py-3.5 min-h-[48px] font-black text-sm transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-200 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 touch-manipulation"
-              aria-label="Message KCROC on WhatsApp"
             >
               <MessageCircle className="w-5 h-5" aria-hidden="true" />
               WhatsApp a Technician

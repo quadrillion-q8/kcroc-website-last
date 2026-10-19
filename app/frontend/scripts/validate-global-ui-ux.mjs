@@ -15,7 +15,7 @@ async function walk(directory) {
 
 await walk(root);
 const read = (relativePath) => readFile(path.join(root, relativePath), 'utf8');
-const [button, header, footer, contact, cookie, hero, globalCss, legacyCss, schema, servicesGrid, booking] = await Promise.all([
+const [button, header, footer, contact, cookie, hero, globalCss, legacyCss, schema, servicesGrid, booking, repairProof, stickyCta] = await Promise.all([
   read('components/ui/button.tsx'),
   read('core/components/layout/Header.tsx'),
   read('core/components/layout/Footer.tsx'),
@@ -27,6 +27,8 @@ const [button, header, footer, contact, cookie, hero, globalCss, legacyCss, sche
   read('components/seo/SchemaMarkup.tsx'),
   read('components/home/ServicesGrid.tsx'),
   read('pages/BookingPage.tsx'),
+  read('components/home/RepairProofCTA.tsx'),
+  read('components/home/StickyMobileCTA.tsx'),
 ]);
 
 const issues = [];
@@ -56,6 +58,9 @@ requireContains(hero, 'Free pick-up & drop across all Kuwait governorates', 'com
 requireContains(servicesGrid, 'Free pick-up &amp; drop across all Kuwait governorates', 'components/home/ServicesGrid.tsx', 'the service grid must expose the Kuwait-wide free pickup promise.');
 requireContains(servicesGrid, 'Arrange free pickup', 'components/home/ServicesGrid.tsx', 'the service-grid logistics banner must have a next step.');
 requireContains(booking, 'Free pick-up and delivery across all Kuwait governorates.', 'pages/BookingPage.tsx', 'the booking page must restate the accurate governorate-wide pickup guarantee.');
+requireContains(repairProof, 'WhatsApp a Technician', 'components/home/RepairProofCTA.tsx', 'the repair proof CTA must use its visible label as its accessible name.');
+if (repairProof.includes('aria-label="Message KCROC on WhatsApp"')) issues.push('components/home/RepairProofCTA.tsx: accessible name must contain the visible “WhatsApp a Technician” text.');
+requireContains(stickyCta, 'aria-label={`${ctaLabel} via WhatsApp`}', 'components/home/StickyMobileCTA.tsx', 'dynamic sticky CTA accessible name must include its visible label.');
 requireContains(globalCss, 'outline: 3px solid #efc697', 'index.css', 'global focus visibility must use a prominent outline.');
 requireContains(globalCss, '@media (prefers-reduced-motion: reduce)', 'index.css', 'global UI motion must respect reduced-motion preferences.');
 requireContains(legacyCss, "'Plus Jakarta Sans'", 'styles/kcroc.css', 'legacy CSS must not override the site-wide typography.');

@@ -43,7 +43,7 @@ export const StickyMobileCTA = () => {
         href={whatsappLink}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Message KCROC on WhatsApp"
+        aria-label={`${ctaLabel} via WhatsApp`}
         onClick={() => trackConversion('whatsapp_click', { cta_name: 'sticky_mobile_wa', button_position: 'bottom_bar' })}
         className="min-w-0 flex-[2] text-center rounded-lg bg-[#25D366] text-slate-950 font-bold text-sm sm:text-base leading-tight py-2.5 px-1 min-h-[44px] whitespace-normal touch-manipulation transition-transform active:scale-[0.99] focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300"
       >

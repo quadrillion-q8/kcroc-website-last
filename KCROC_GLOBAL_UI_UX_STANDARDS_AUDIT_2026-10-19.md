@@ -56,6 +56,12 @@ This pass repairs several repeatable issues in shared controls and common conver
 - Booking and WhatsApp destination flows remain unchanged; the changes improve semantics and hit-area reliability.
 - Existing prebuild checks remain in place, with an additional UI/UX source-regression gate wired into the build.
 
+## Rendered accessibility and responsive checks
+
+A headless Chromium + axe-core smoke test was run against the local production preview for `/`, `/contact`, `/book`, `/services`, `/laptop-repair-kuwait`, and `/ar/computer-repair-kuwait`. The first pass found the same WCAG 2.5.3 “Label in Name” violation in two shared WhatsApp controls: the visible label “WhatsApp a Technician” was overridden by the accessible name “Message KCROC on WhatsApp”. The source has now been corrected: the repair-proof CTA uses its visible text as its name, and the dynamic sticky CTA's accessible name includes the visible label (“… via WhatsApp”). These controls are now guarded by the source regression script.
+
+The same test measured horizontal scroll width at 320, 360, 390, 768, 1024, 1440, and 2560 CSS pixels for those routes. **No horizontal overflow was detected** in that sample. A fresh axe run must confirm the corrected controls are clear; this is a sampled automated audit, not exhaustive keyboard, screen-reader, cognitive, or manual visual contrast testing.
+
 ## Build/deployment regression found during certification
 
 A repository-local ESLint run also caught a redundant boolean cast in the new desktop active-route `aria-current` expression; this has been removed and added to the source regression rule.\n\nThe first post-refactor Vercel deployment exposed one build-blocking existing guardrail: `validateConstants.ts` flagged the Contact phone-field placeholder `+965 55301913` as a hardcoded local-format KCROC phone number. The placeholder was therefore changed to `Your number, including country code (+965)`; the official KCROC number remains sourced from the knowledge graph for business contact links. The UI/UX regression script now protects against reintroducing that exact literal.
