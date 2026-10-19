@@ -38,7 +38,7 @@ requireContains(button, 'min-h-11', 'components/ui/button.tsx', 'shared buttons 
 requireContains(button, "icon: 'h-11 w-11'", 'components/ui/button.tsx', 'icon buttons must provide a 44px square target.');
 requireContains(button, 'disabled:cursor-not-allowed', 'components/ui/button.tsx', 'disabled controls must visually communicate state.');
 requireContains(button, 'motion-reduce:transition-none', 'components/ui/button.tsx', 'shared button transitions must honour reduced motion.');
-requireContains(header, 'aria-current={!!matchPath', 'core/components/layout/Header.tsx', 'the active desktop route must be announced to assistive technology.');
+requireContains(header, 'aria-current={matchPath', 'core/components/layout/Header.tsx', 'the active desktop route must be announced to assistive technology without a redundant boolean cast.');
 requireContains(header, "phoneDigits.startsWith('965')", 'core/components/layout/Header.tsx', 'display phone numbers in the Kuwait international format.');
 requireContains(footer, 'w-11 h-11 flex items-center justify-center rounded-full', 'core/components/layout/Footer.tsx', 'footer social controls must use 44px square targets.');
 requireContains(footer, '<address className="not-italic', 'core/components/layout/Footer.tsx', 'the NAP address must use semantic address markup.');
