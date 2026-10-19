@@ -256,6 +256,15 @@ const laptopBrands = [
   }
 ];
 
+const getLaptopBrandRepairSlug = (brandName: string): string | undefined => {
+  if (brandName === 'Apple MacBook') {
+    return KCROC_GRAPH.services.find((service) => service.id === 'srv-macbook')?.slug;
+  }
+  return KCROC_GRAPH.brands.find(
+    (brand) => brand.brandName.toLowerCase() === brandName.toLowerCase()
+  )?.slug;
+};
+
 /* ─────────────────────────────────────────────────────────────────────────────
    3. MAIN COMPONENT
 ───────────────────────────────────────────────────────────────────────────── */
@@ -535,6 +544,15 @@ export default function BlogLaptopRepair() {
                     <h4 className="text-orange-400 font-bold text-[10px] sm:text-xs uppercase tracking-wider mb-1">Common Issues:</h4>
                     <p className="text-slate-300 text-[11px] sm:text-sm">{brand.common}</p>
                   </div>
+                  {getLaptopBrandRepairSlug(brand.brand) && (
+                    <Link
+                      to={`/${getLaptopBrandRepairSlug(brand.brand)}`}
+                      aria-label={`Explore ${brand.brand} laptop repair in Kuwait`}
+                      className="inline-flex mt-2 text-xs font-bold text-cyan-300 hover:text-cyan-200 sm:text-sm"
+                    >
+                      Explore {brand.brand} repair in Kuwait →
+                    </Link>
+                  )}
                 </CardContent>
               </Card>
             ))}
@@ -552,6 +570,8 @@ export default function BlogLaptopRepair() {
         links={[
           { href: '/guides/laptop-wont-turn-on', label: "Laptop Won't Turn On", description: 'Start here for no-power, charger, battery, charging-port, and motherboard power symptoms.' },
           { href: '/laptop-overheating-kuwait', label: 'Laptop Overheating', description: 'Follow the thermal path for shutdowns, loud fans, dust buildup, or heat-related performance loss.' },
+          { href: '/laptop-repair-kuwait', label: 'Laptop Repair Kuwait', description: 'Use the main laptop repair service for power, charging, display, battery, hinge, cooling and performance faults.' },
+          { href: '/laptop-screen-repair-kuwait', label: 'Laptop Screen Repair Kuwait', description: 'For cracked panels, dead or black displays, flickering, lines, and display-cable symptoms.' },
           { href: '/battery-replacement-kuwait', label: 'Battery Replacement Kuwait', description: 'For swollen, degraded, rapidly draining, or otherwise failing laptop batteries.' },
           { href: '/motherboard-repair-kuwait', label: 'Motherboard Repair Kuwait', description: 'For component-level faults when ordinary part replacement is not the right answer.' },
         ]}
