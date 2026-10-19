@@ -203,32 +203,27 @@ const faqs = Object.freeze([
    SPECIALIST SERVICES
 ───────────────────────────────────────────────────────────────────────────── */
 
-const serviceLinks = Object.freeze([
-  {
-    title: 'MacBook Repair',
-    path: '/macbook-repair-kuwait',
-    icon: Laptop,
-    desc: 'Motherboard and USB-C IC replacement.',
-  },
-  {
-    title: 'Motherboard Repair',
-    path: '/motherboard-repair-kuwait',
-    icon: Cpu,
-    desc: 'Microsoldering and liquid-damage recovery.',
-  },
-  {
-    title: 'Gaming PC Repair',
-    path: '/gaming-pc-repair-kuwait',
-    icon: Activity,
-    desc: 'GPU diagnostics and thermal tuning.',
-  },
-  {
-    title: 'Screen Replacement',
-    path: '/laptop-screen-repair-kuwait',
-    icon: Laptop,
-    desc: 'Same-day OLED, IPS & LCD panels.',
-  },
-]);
+const specialistServiceIds = [
+  'srv-laptop',
+  'srv-macbook',
+  'srv-motherboard',
+  'srv-screen',
+  'srv-battery',
+  'srv-gaming',
+] as const;
+
+// Keep link targets and displayed service names sourced from the knowledge graph.
+const serviceLinks = Object.freeze(
+  specialistServiceIds
+    .map((id) => KCROC_GRAPH.services.find((service) => service.id === id))
+    .filter((service): service is NonNullable<typeof service> => Boolean(service))
+    .map((service) => ({
+      title: service.title,
+      path: `/${service.slug}`,
+      icon: service.id === 'srv-motherboard' ? Cpu : service.id === 'srv-gaming' ? Activity : Laptop,
+      desc: service.shortDescription || service.description,
+    }))
+);
 
 /* ─────────────────────────────────────────────────────────────────────────────
    SEO / STRUCTURED DATA
@@ -1306,6 +1301,29 @@ export default function Pricing() {
                 </Link>
               );
             })}
+          </div>
+
+          <div className="mt-8 rounded-2xl border border-slate-800 bg-slate-900/30 p-5 sm:p-6">
+            <h3 className="text-base font-black text-white sm:text-lg">
+              Need repair for a specific laptop brand?
+            </h3>
+            <p className="mt-2 text-xs leading-6 text-slate-500 sm:text-sm">
+              Open the dedicated repair page for your manufacturer to find model-specific symptoms and repair options.
+            </p>
+            <div className="mt-4 flex flex-wrap gap-2">
+              {[...KCROC_GRAPH.brands]
+                .sort((a, b) => (b.navigationPriority ?? 0) - (a.navigationPriority ?? 0))
+                .map((brand) => (
+                  <Link
+                    key={brand.id}
+                    to={`/${brand.slug}`}
+                    aria-label={brand.title}
+                    className="inline-flex items-center rounded-full border border-slate-700 bg-slate-900/60 px-3 py-2 text-xs font-semibold text-cyan-300 transition-colors hover:border-cyan-500/40 hover:text-cyan-200 sm:text-sm"
+                  >
+                    {brand.title}
+                  </Link>
+                ))}
+            </div>
           </div>
         </div>
       </section>
