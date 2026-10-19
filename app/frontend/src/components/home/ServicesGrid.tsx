@@ -74,6 +74,10 @@ ServiceCard.displayName = 'ServiceCard';
 
 export default function ServicesGrid() {
   const services = KCROC_GRAPH.services;
+  const featuredServiceIds = ['srv-laptop', 'srv-screen', 'srv-battery'];
+  const featuredServices = featuredServiceIds
+    .map((id) => services.find((service) => service.id === id))
+    .filter((service): service is ServiceEntity => Boolean(service));
 
   if (!services || services.length === 0) return null;
 
@@ -94,6 +98,25 @@ export default function ServicesGrid() {
             <ServiceCard key={s.id} service={s} idx={idx} />
           ))}
         </div>
+
+        {featuredServices.length > 0 && (
+          <div className="mt-5 rounded-2xl border border-white/[0.08] bg-slate-900/35 px-4 py-4 sm:mt-7 sm:px-6">
+            <p className="text-xs leading-relaxed text-kcroc-muted sm:text-sm">
+              Need a specific repair? Go directly to our main laptop repair service, dedicated screen repair, or laptop battery replacement page.
+            </p>
+            <div className="mt-3 flex flex-wrap gap-2">
+              {featuredServices.map((service) => (
+                <Link
+                  key={service.id}
+                  to={`/${service.slug}`}
+                  className="inline-flex items-center rounded-full border border-kcroc-cyan/25 bg-kcroc-cyan/5 px-3 py-2 text-xs font-semibold text-kcroc-cyan transition-colors hover:border-kcroc-cyan/50 hover:bg-kcroc-cyan/10 sm:text-sm"
+                >
+                  {service.title}
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );
