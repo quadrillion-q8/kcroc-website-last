@@ -9,7 +9,7 @@ import { KCROC_GRAPH } from '../src/data/graph.js';
 const publicDir = path.resolve(process.cwd(), 'public');
 
 const required = new Set<string>([
-  '/images/kcroc-laptop-repair-technicians-hawalli-kuwait.w768.webp',
+  '/images/kcroc-pc-doctor-windows-repair-services.w768.webp',
   '/logo-mark.w96.webp',
 ]);
 
