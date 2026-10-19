@@ -15,7 +15,7 @@ async function walk(directory) {
 
 await walk(root);
 const read = (relativePath) => readFile(path.join(root, relativePath), 'utf8');
-const [button, header, footer, contact, cookie, hero, globalCss, legacyCss, schema] = await Promise.all([
+const [button, header, footer, contact, cookie, hero, globalCss, legacyCss, schema, servicesGrid, booking] = await Promise.all([
   read('components/ui/button.tsx'),
   read('core/components/layout/Header.tsx'),
   read('core/components/layout/Footer.tsx'),
@@ -25,6 +25,8 @@ const [button, header, footer, contact, cookie, hero, globalCss, legacyCss, sche
   read('index.css'),
   read('styles/kcroc.css'),
   read('components/seo/SchemaMarkup.tsx'),
+  read('components/home/ServicesGrid.tsx'),
+  read('pages/BookingPage.tsx'),
 ]);
 
 const issues = [];
@@ -49,7 +51,10 @@ requireContains(contact, 'aria-live="polite"', 'pages/Contact.tsx', 'submit feed
 requireContains(cookie, 'role="region"', 'core/components/CookieConsentBanner.tsx', 'the non-modal consent banner must not claim modal dialog semantics.');
 requireContains(cookie, 'aria-labelledby="cookie-consent-title"', 'core/components/CookieConsentBanner.tsx', 'the consent region must have an accessible name.');
 requireContains(hero, 'fetchPriority="high"', 'components/home/Hero.tsx', 'the hero image must retain high fetch priority.');
-requireContains(hero, 'Free pickup & delivery across Kuwait', 'components/home/Hero.tsx', 'mobile hero trust signals must state the Kuwait-wide pickup promise.');
+requireContains(hero, 'Free pick-up & drop across all Kuwait governorates', 'components/home/Hero.tsx', 'hero trust signals must state the full governorate-wide pickup promise.');
+requireContains(servicesGrid, 'Free pick-up &amp; drop across all Kuwait governorates', 'components/home/ServicesGrid.tsx', 'the service grid must expose the Kuwait-wide free pickup promise.');
+requireContains(servicesGrid, 'Arrange free pickup', 'components/home/ServicesGrid.tsx', 'the service-grid logistics banner must have a next step.');
+requireContains(booking, 'Free pick-up and delivery across all Kuwait governorates.', 'pages/BookingPage.tsx', 'the booking page must restate the accurate governorate-wide pickup guarantee.');
 requireContains(globalCss, 'outline: 3px solid #efc697', 'index.css', 'global focus visibility must use a prominent outline.');
 requireContains(globalCss, '@media (prefers-reduced-motion: reduce)', 'index.css', 'global UI motion must respect reduced-motion preferences.');
 requireContains(legacyCss, "'Plus Jakarta Sans'", 'styles/kcroc.css', 'legacy CSS must not override the site-wide typography.');
