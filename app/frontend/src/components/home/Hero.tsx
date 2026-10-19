@@ -43,7 +43,7 @@ export default function Hero() {
           </p>
 
           <div className="mt-4 flex flex-wrap justify-center gap-2">
-            {['Free pickup', '30-day warranty', 'No fix, no fee'].map((label) => (
+            {['Free pickup & delivery across Kuwait', '30-day warranty', 'No fix, no fee'].map((label) => (
               <span key={label} className="inline-flex items-center gap-1.5 rounded-full border border-cyan-500/25 bg-cyan-500/10 px-3 py-1.5 text-[11px] font-bold text-cyan-200">
                 <Check className="h-3.5 w-3.5 text-cyan-400" aria-hidden="true" />
                 {label}
