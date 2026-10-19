@@ -47,6 +47,7 @@ for (const id of ['contact-name', 'contact-phone', 'contact-email', 'contact-sub
   requireContains(contact, `id="${id}"`, 'pages/Contact.tsx', `field ${id} must have a stable input ID.`);
 }
 requireContains(contact, 'inputMode="tel"', 'pages/Contact.tsx', 'the phone field must present a telephone-friendly mobile keyboard.');
+if (contact.includes('placeholder="+965 55301913"')) issues.push('pages/Contact.tsx: do not hardcode KCROC\'s own phone number as an example customer phone; it trips constant-drift validation.');
 requireContains(contact, 'aria-live="polite"', 'pages/Contact.tsx', 'submit feedback must be announced accessibly.');
 requireContains(cookie, 'role="region"', 'core/components/CookieConsentBanner.tsx', 'the non-modal consent banner must not claim modal dialog semantics.');
 requireContains(cookie, 'aria-labelledby="cookie-consent-title"', 'core/components/CookieConsentBanner.tsx', 'the consent region must have an accessible name.');
