@@ -200,7 +200,7 @@ export default function Header() {
                 }
 
                 return (
-                  <Link key={link.id} to={link.href} aria-current={!!matchPath({ path: link.href, end: true }, location.pathname) ? 'page' : undefined} className={`inline-flex min-h-11 items-center px-2.5 py-2 rounded-md text-[13px] font-medium whitespace-nowrap transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f] ${isGraphMatch ? 'text-[#efc19c] border-b border-[#c9804d]/70' : 'text-slate-300 hover:text-white'}`}>
+                  <Link key={link.id} to={link.href} aria-current={matchPath({ path: link.href, end: true }, location.pathname) ? 'page' : undefined} className={`inline-flex min-h-11 items-center px-2.5 py-2 rounded-md text-[13px] font-medium whitespace-nowrap transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f] ${isGraphMatch ? 'text-[#efc19c] border-b border-[#c9804d]/70' : 'text-slate-300 hover:text-white'}`}>
                     {link.label}
                   </Link>
                 );
