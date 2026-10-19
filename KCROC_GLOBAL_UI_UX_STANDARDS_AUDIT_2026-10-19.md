@@ -58,7 +58,7 @@ This pass repairs several repeatable issues in shared controls and common conver
 
 ## Build/deployment regression found during certification
 
-The first post-refactor Vercel deployment exposed one build-blocking existing guardrail: `validateConstants.ts` flagged the Contact phone-field placeholder `+965 55301913` as a hardcoded local-format KCROC phone number. The placeholder was therefore changed to `Your number, including country code (+965)`; the official KCROC number remains sourced from the knowledge graph for business contact links. The UI/UX regression script now protects against reintroducing that exact literal.
+A repository-local ESLint run also caught a redundant boolean cast in the new desktop active-route `aria-current` expression; this has been removed and added to the source regression rule.\n\nThe first post-refactor Vercel deployment exposed one build-blocking existing guardrail: `validateConstants.ts` flagged the Contact phone-field placeholder `+965 55301913` as a hardcoded local-format KCROC phone number. The placeholder was therefore changed to `Your number, including country code (+965)`; the official KCROC number remains sourced from the knowledge graph for business contact links. The UI/UX regression script now protects against reintroducing that exact literal.
 
 This demonstrates why production build validation must remain a release gate. The reported deployment failed before the full certification workflow could pass; the updated pull-request workflow must complete successfully before calling this pass build-clean.
 
