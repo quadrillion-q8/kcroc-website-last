@@ -9,7 +9,7 @@
     "dev": "npx tsx scripts/generate-nav-data.ts && vite",
     "generate:nav": "npx tsx scripts/generate-nav-data.ts",
     "generate:seo": "npx tsx scripts/generate-seo-data.ts",
-    "prebuild": "npx tsx scripts/check-gbp-rating.ts; npx tsx scripts/validate-build.ts && node scripts/validate-main-landmarks.mjs && node scripts/validate-mobile-improvements.mjs && npx tsx scripts/validateGraph.ts && npx tsx scripts/validateConstants.ts && npx tsx scripts/validateResponsiveImages.ts && pnpm run generate:nav && pnpm run generate:seo",
+    "prebuild": "npx tsx scripts/check-gbp-rating.ts; npx tsx scripts/validate-build.ts && node scripts/validate-main-landmarks.mjs && node scripts/validate-mobile-improvements.mjs && node scripts/validate-global-ui-ux.mjs && npx tsx scripts/validateGraph.ts && npx tsx scripts/validateConstants.ts && npx tsx scripts/validateResponsiveImages.ts && pnpm run generate:nav && pnpm run generate:seo",
     "validate:constants": "npx tsx scripts/validateConstants.ts",
     "generate:sitemap": "npx tsx scripts/generate-sitemap.ts",
     "build": "pnpm run prebuild && pnpm run generate:sitemap && node scripts/validate-customer-growth-upgrade.mjs && vite-react-ssg build && pnpm run audit:seo",
