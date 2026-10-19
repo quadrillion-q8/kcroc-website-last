@@ -74,7 +74,7 @@ export function Footer() {
         type="button"
         onClick={onToggle}
         aria-expanded={open}
-        className="md:hidden w-full flex items-center justify-between text-left text-white font-bold py-2 mb-2 uppercase tracking-[0.16em] text-xs"
+        className="md:hidden flex min-h-11 w-full items-center justify-between text-start text-white font-bold py-2 mb-2 uppercase tracking-[0.16em] text-xs"
       >
         <span>{title}</span>
         <ChevronDown className={`w-4 h-4 text-[#dfa86f] transition-transform ${open ? 'rotate-180' : ''}`} aria-hidden="true" />
@@ -161,7 +161,7 @@ export function Footer() {
               href={WA_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-[#dfa86f] hover:text-white font-bold transition-colors"
+              className="inline-flex min-h-11 items-center gap-2 text-[#dfa86f] hover:text-white font-bold transition-colors"
             >
               <MessageCircle size={19} aria-hidden="true" />
               <span>Chat with us on WhatsApp</span>
@@ -175,7 +175,7 @@ export function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={facebookAriaLabel}
-                    className="w-9 h-9 flex items-center justify-center rounded-full border border-white/[0.10] text-slate-400 hover:text-[#dfa86f] hover:border-[#c9804d]/30 transition-colors"
+                    className="w-11 h-11 flex items-center justify-center rounded-full border border-white/[0.10] text-slate-400 hover:text-[#dfa86f] hover:border-[#c9804d]/30 transition-colors"
                   >
                     <Facebook size={16} aria-hidden="true" />
                   </a>
@@ -216,7 +216,7 @@ export function Footer() {
             <ul className={`${mobileServicesOpen ? 'block' : 'hidden'} md:block space-y-3`}>
               {visibleServices.map((link) => (
                 <li key={link.path}>
-                  <Link to={link.path} className="text-slate-400 hover:text-[#dfa86f] transition-colors text-sm">
+                  <Link to={link.path} className="inline-flex min-h-11 items-center text-slate-400 hover:text-[#dfa86f] transition-colors text-sm">
                     {link.label.replace(' Kuwait', '')}
                   </Link>
                 </li>
@@ -253,12 +253,12 @@ export function Footer() {
             <ul className="space-y-4">
               <li className="flex items-start gap-3 text-slate-400 text-sm">
                 <MapPin className="w-5 h-5 text-[#dfa86f] flex-shrink-0 mt-0.5" aria-hidden="true" />
-                <span className="leading-relaxed">{business.streetAddress}, {business.addressLocality}</span>
+                <address className="not-italic leading-relaxed">{business.streetAddress}, {business.addressLocality}, Kuwait</address>
               </li>
               <li className="flex items-center gap-3 text-slate-400 text-sm">
                 <Phone className="w-5 h-5 text-[#dfa86f] flex-shrink-0" aria-hidden="true" />
-                <a href={'tel:+' + business.telephone} className="hover:text-white transition-colors">
-                  +965 {business.telephone.slice(3, 6)} {business.telephone.slice(6, 9)} {business.telephone.slice(9)}
+                <a href={'tel:+' + business.telephone} className="inline-flex min-h-11 items-center hover:text-white transition-colors">
+                  +965 {business.telephone.replace(/^965/, '')}
                 </a>
               </li>
               <li className="pt-1">
@@ -266,7 +266,7 @@ export function Footer() {
                   href={WA_LINK}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-lg bg-[#dfa86f] px-4 py-2.5 text-sm font-black text-[#101416] hover:bg-[#efc19c] transition-colors"
+                  className="inline-flex min-h-11 items-center gap-2 rounded-lg bg-[#dfa86f] px-4 py-2.5 text-sm font-black text-[#101416] hover:bg-[#efc19c] transition-colors"
                 >
                   <CalendarClock className="w-4 h-4" aria-hidden="true" />
                   BOOK FREE PICKUP
@@ -308,9 +308,9 @@ export function Footer() {
             {'© ' + new Date().getFullYear() + ' ' + business.legalName + '. All rights reserved.'}
           </p>
           <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
-            <Link to="/privacy-policy" className="text-slate-600 hover:text-slate-400 text-xs sm:text-sm transition-colors">Privacy Policy</Link>
-            <Link to="/terms-of-service" className="text-slate-600 hover:text-slate-400 text-xs sm:text-sm transition-colors">Terms of Service</Link>
-            <button type="button" onClick={openConsentPreferences} className="text-slate-600 hover:text-slate-400 text-xs sm:text-sm transition-colors">Cookie Settings</button>
+            <Link to="/privacy-policy" className="min-h-11 inline-flex items-center text-slate-400 hover:text-white text-xs sm:text-sm transition-colors">Privacy Policy</Link>
+            <Link to="/terms-of-service" className="min-h-11 inline-flex items-center text-slate-400 hover:text-white text-xs sm:text-sm transition-colors">Terms of Service</Link>
+            <button type="button" onClick={openConsentPreferences} className="min-h-11 inline-flex items-center text-slate-400 hover:text-white text-xs sm:text-sm transition-colors">Cookie Settings</button>
           </div>
         </div>
       </div>

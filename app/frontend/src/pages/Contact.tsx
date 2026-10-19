@@ -26,8 +26,8 @@ const ADDRESS_LINES = [
 ];
 
 const EMAIL = business.email;
-const PHONE_DISPLAY = `+965 ${business.telephone.slice(3, 7)} ${business.telephone.slice(7)}`;
-const PHONE_CLEAN = business.telephone;
+const PHONE_CLEAN = business.telephone.replace(/\D/g, '');
+const PHONE_DISPLAY = `+965 ${PHONE_CLEAN.replace(/^965/, '')}`;
 
 type FormData = {
   name: string; email: string; phone: string; subject: string; message: string;
@@ -99,7 +99,7 @@ export default function Contact() {
           Contact <span className="text-cyan-400">KCROC</span>
         </h1>
         <p className="text-slate-400 max-w-md mx-auto text-lg">
-          Expert hardware support. We offer free pick & drop service across Kuwait.
+          Expert component-level hardware repair, with free pick-up and delivery across all Kuwait governorates.
         </p>
       </section>
 
@@ -112,19 +112,20 @@ export default function Contact() {
             <h2 className="text-2xl font-black mb-6">Send us a Message</h2>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
-                <input name="name" value={formData.name} onChange={handleInputChange} required placeholder="Full Name" className="w-full bg-brand-dark/50 border border-slate-700 px-4 py-3 rounded-xl focus:outline-none focus:border-cyan-500 transition-colors" />
-                <input name="phone" value={formData.phone} onChange={handleInputChange} required placeholder="+965 XXXX XXXX" className="w-full bg-brand-dark/50 border border-slate-700 px-4 py-3 rounded-xl focus:outline-none focus:border-cyan-500 transition-colors" />
+                <label className="sr-only" htmlFor="contact-name">Full name</label><input id="contact-name" autoComplete="name" name="name" value={formData.name} onChange={handleInputChange} required placeholder="Full Name" className="w-full bg-brand-dark/50 border border-slate-700 px-4 py-3 rounded-xl focus:outline-none focus:border-cyan-500 transition-colors" />
+                <label className="sr-only" htmlFor="contact-phone">Phone number</label><input id="contact-phone" type="tel" inputMode="tel" autoComplete="tel" name="phone" value={formData.phone} onChange={handleInputChange} required placeholder="+965 55301913" className="w-full bg-brand-dark/50 border border-slate-700 px-4 py-3 rounded-xl focus:outline-none focus:border-cyan-500 transition-colors" />
               </div>
-              <input name="email" type="email" value={formData.email} onChange={handleInputChange} placeholder="Email" className="w-full bg-brand-dark/50 border border-slate-700 px-4 py-3 rounded-xl focus:outline-none focus:border-cyan-500 transition-colors" />
-              <input name="subject" value={formData.subject} onChange={handleInputChange} required placeholder="Subject" className="w-full bg-brand-dark/50 border border-slate-700 px-4 py-3 rounded-xl focus:outline-none focus:border-cyan-500 transition-colors" />
-              <textarea name="message" value={formData.message} onChange={handleInputChange} required rows={5} placeholder="Message" className="w-full bg-brand-dark/50 border border-slate-700 px-4 py-3 rounded-xl focus:outline-none focus:border-cyan-500 transition-colors resize-none" />
-              <button type="submit" disabled={isSubmitting} className="w-full bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black py-4 rounded-xl flex items-center justify-center gap-2 transition-colors disabled:opacity-70 disabled:cursor-not-allowed">
+              <label className="sr-only" htmlFor="contact-email">Email address</label><input id="contact-email" name="email" type="email" autoComplete="email" value={formData.email} onChange={handleInputChange} placeholder="Email" className="w-full bg-brand-dark/50 border border-slate-700 px-4 py-3 rounded-xl focus:outline-none focus:border-cyan-500 transition-colors" />
+              <label className="sr-only" htmlFor="contact-subject">Subject</label><input id="contact-subject" name="subject" value={formData.subject} onChange={handleInputChange} required placeholder="Subject" className="w-full bg-brand-dark/50 border border-slate-700 px-4 py-3 rounded-xl focus:outline-none focus:border-cyan-500 transition-colors" />
+              <label className="sr-only" htmlFor="contact-message">Message</label><textarea id="contact-message" name="message" value={formData.message} onChange={handleInputChange} required rows={5} placeholder="Message" className="w-full bg-brand-dark/50 border border-slate-700 px-4 py-3 rounded-xl focus:outline-none focus:border-cyan-500 transition-colors resize-none" />
+              <button type="submit" disabled={isSubmitting} aria-busy={isSubmitting} className="w-full min-h-11 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black py-4 rounded-xl flex items-center justify-center gap-2 transition-colors disabled:opacity-70 disabled:cursor-not-allowed">
                 {isSubmitting ? (
                   <><Loader2 className="animate-spin" size={20} /> Sending...</>
                 ) : (
                   <><Send size={20} /> Send Message via WhatsApp</>
                 )}
               </button>
+              <p className="sr-only" aria-live="polite">{isSubmitting ? 'Preparing your WhatsApp message.' : ''}</p>
             </form>
           </div>
 
@@ -137,11 +138,11 @@ export default function Contact() {
                 {/* Phone */}
                 <div className="flex items-start gap-4">
                   <div className="bg-cyan-500/10 p-3 rounded-full shrink-0">
-                    <Phone className="text-cyan-400" size={24} />
+                    <Phone className="text-cyan-400" size={24} aria-hidden="true" />
                   </div>
                   <div>
                     <h3 className="font-bold text-white mb-1">Call Us</h3>
-                    <a href={`tel:${PHONE_CLEAN}`} className="text-slate-400 hover:text-cyan-400 transition-colors block">
+                    <a href={`tel:+${PHONE_CLEAN}`} className="text-slate-400 hover:text-cyan-400 transition-colors block">
                       {PHONE_DISPLAY}
                     </a>
                   </div>
@@ -150,7 +151,7 @@ export default function Contact() {
                 {/* Email */}
                 <div className="flex items-start gap-4">
                   <div className="bg-cyan-500/10 p-3 rounded-full shrink-0">
-                    <Mail className="text-cyan-400" size={24} />
+                    <Mail className="text-cyan-400" size={24} aria-hidden="true" />
                   </div>
                   <div>
                     <h3 className="font-bold text-white mb-1">Email</h3>
@@ -163,7 +164,7 @@ export default function Contact() {
                 {/* Address */}
                 <div className="flex items-start gap-4">
                   <div className="bg-cyan-500/10 p-3 rounded-full shrink-0">
-                    <MapPin className="text-cyan-400" size={24} />
+                    <MapPin className="text-cyan-400" size={24} aria-hidden="true" />
                   </div>
                   <div>
                     <h3 className="font-bold text-white mb-1">Visit Lab</h3>
@@ -178,7 +179,7 @@ export default function Contact() {
                 {/* Hours */}
                 <div className="flex items-start gap-4">
                   <div className="bg-cyan-500/10 p-3 rounded-full shrink-0">
-                    <Clock className="text-cyan-400" size={24} />
+                    <Clock className="text-cyan-400" size={24} aria-hidden="true" />
                   </div>
                   <div>
                     <h3 className="font-bold text-white mb-1">Business Hours</h3>

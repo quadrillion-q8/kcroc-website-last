@@ -122,7 +122,7 @@
 }
 
 :focus-visible {
-  outline: 2px solid #dfa86f;
+  outline: 3px solid #efc697;
   outline-offset: 3px;
 }
 
@@ -856,5 +856,22 @@ select {
 @media (min-width: 1536px) and (max-width: 1679px) {
   header .kcroc-header-phone-number {
     display: none;
+  }
+}
+
+
+/* Global reduced-motion contract: preserve content and focus feedback without non-essential movement. */
+@media (prefers-reduced-motion: reduce) {
+  html,
+  html:focus-within {
+    scroll-behavior: auto !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
