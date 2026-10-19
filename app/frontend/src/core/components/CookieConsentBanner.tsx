@@ -41,8 +41,8 @@ export const CookieConsentBanner: React.FC = () => {
   return (
     <div
       className="kcroc-cookie-banner fixed bottom-24 left-0 right-0 z-[100] font-sans md:bottom-0"
-      role="dialog"
-      aria-label="Privacy and cookie choices"
+      role="region"
+      aria-labelledby="cookie-consent-title"
       aria-live="polite"
     >
       <div className="bg-brand-dark/95 backdrop-blur-xl border-t border-slate-800 shadow-[0_-10px_30px_rgba(0,0,0,0.5)] p-4 sm:p-6">
@@ -52,7 +52,7 @@ export const CookieConsentBanner: React.FC = () => {
               <Shield className="w-6 h-6 text-cyan-500" aria-hidden="true" />
             </div>
             <div>
-              <h3 className="text-white font-bold text-base sm:text-lg tracking-tight mb-1">
+              <h3 id="cookie-consent-title" className="text-white font-bold text-base sm:text-lg tracking-tight mb-1">
                 Privacy & Cookie Choices
               </h3>
               <p className="text-slate-400 text-xs sm:text-sm leading-relaxed max-w-3xl">
@@ -67,16 +67,18 @@ export const CookieConsentBanner: React.FC = () => {
 
           <div className="flex flex-row w-full md:w-auto gap-2 sm:gap-3 shrink-0">
             <button
+              type="button"
               onClick={handleDecline}
-              className="flex-1 md:flex-none flex min-h-[44px] items-center justify-center px-4 py-2.5 sm:px-6 sm:py-3 rounded-xl border border-slate-700 bg-transparent text-slate-300 hover:bg-slate-800 hover:text-white font-bold text-sm touch-manipulation transition-colors focus-visible:ring-2 focus-visible:ring-cyan-400"
+              className="flex-1 md:flex-none flex min-h-[44px] items-center justify-center px-4 py-2.5 sm:px-6 sm:py-3 rounded-xl border border-slate-700 bg-transparent text-slate-300 hover:bg-slate-800 hover:text-white font-bold text-sm touch-manipulation transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
             >
               <X className="w-4 h-4 shrink-0 mr-1.5 sm:mr-2" aria-hidden="true" />
               <span className="sm:hidden">Reject</span>
               <span className="hidden sm:inline">Reject Optional</span>
             </button>
             <button
+              type="button"
               onClick={handleAccept}
-              className="flex-1 md:flex-none flex min-h-[44px] items-center justify-center px-4 py-2.5 sm:px-6 sm:py-3 rounded-xl border border-transparent bg-cyan-500 text-slate-950 hover:bg-cyan-400 font-black text-sm shadow-[0_0_15px_rgba(6,182,212,0.2)] touch-manipulation transition-colors focus-visible:ring-2 focus-visible:ring-cyan-300"
+              className="flex-1 md:flex-none flex min-h-[44px] items-center justify-center px-4 py-2.5 sm:px-6 sm:py-3 rounded-xl border border-transparent bg-cyan-500 text-slate-950 hover:bg-cyan-400 font-black text-sm shadow-[0_0_15px_rgba(6,182,212,0.2)] touch-manipulation transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
             >
               <Check className="w-4 h-4 shrink-0 mr-1.5 sm:mr-2" aria-hidden="true" />
               <span className="sm:hidden">Accept</span>
