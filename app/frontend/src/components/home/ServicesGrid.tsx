@@ -1,7 +1,7 @@
 // File: src/components/home/ServicesGrid.tsx
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Laptop, Gamepad2, Cpu, Apple, Wrench } from 'lucide-react';
+import { ArrowRight, Laptop, Gamepad2, Cpu, Apple, Wrench, Truck } from 'lucide-react';
 import { KCROC_GRAPH } from '../../data/graph';
 import { ServiceEntity } from '../../types/knowledgeGraph';
 import { useFadeIn } from '../../hooks/useFadeIn';
@@ -97,6 +97,22 @@ export default function ServicesGrid() {
           {services.map((s, idx) => (
             <ServiceCard key={s.id} service={s} idx={idx} />
           ))}
+        </div>
+
+        <div className="mt-4 flex flex-col gap-3 rounded-2xl border border-[#c9804d]/25 bg-[#c9804d]/[0.06] p-4 sm:mt-6 sm:flex-row sm:items-center sm:gap-4 sm:px-5">
+          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[#c9804d]/25 bg-[#c9804d]/[0.10] text-[#dfa86f]">
+            <Truck className="h-5 w-5" aria-hidden="true" />
+          </div>
+          <div className="min-w-0 flex-1">
+            <h3 className="text-sm font-extrabold text-white sm:text-base">Free pick-up &amp; drop across all Kuwait governorates</h3>
+            <p className="mt-1 text-xs leading-relaxed text-slate-300 sm:text-sm">We collect from your home or office. Diagnosis first, quote second, repair only with your approval.</p>
+          </div>
+          <Link
+            to="/book"
+            className="inline-flex min-h-11 w-full shrink-0 items-center justify-center gap-2 rounded-xl bg-[#dfa86f] px-4 py-2.5 text-sm font-extrabold text-[#17110c] transition-colors hover:bg-[#efc697] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#efc697] focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark sm:w-auto"
+          >
+            Arrange free pickup <ArrowRight className="h-4 w-4" aria-hidden="true" />
+          </Link>
         </div>
 
         {featuredServices.length > 0 && (

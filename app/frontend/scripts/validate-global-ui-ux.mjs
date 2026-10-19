@@ -15,7 +15,7 @@ async function walk(directory) {
 
 await walk(root);
 const read = (relativePath) => readFile(path.join(root, relativePath), 'utf8');
-const [button, header, footer, contact, cookie, hero, globalCss, legacyCss, schema] = await Promise.all([
+const [button, header, footer, contact, cookie, hero, globalCss, legacyCss, schema, servicesGrid, booking] = await Promise.all([
   read('components/ui/button.tsx'),
   read('core/components/layout/Header.tsx'),
   read('core/components/layout/Footer.tsx'),
@@ -25,6 +25,8 @@ const [button, header, footer, contact, cookie, hero, globalCss, legacyCss, sche
   read('index.css'),
   read('styles/kcroc.css'),
   read('components/seo/SchemaMarkup.tsx'),
+  read('components/home/ServicesGrid.tsx'),
+  read('pages/BookingPage.tsx'),
 ]);
 
 const issues = [];
@@ -36,7 +38,7 @@ requireContains(button, 'min-h-11', 'components/ui/button.tsx', 'shared buttons 
 requireContains(button, "icon: 'h-11 w-11'", 'components/ui/button.tsx', 'icon buttons must provide a 44px square target.');
 requireContains(button, 'disabled:cursor-not-allowed', 'components/ui/button.tsx', 'disabled controls must visually communicate state.');
 requireContains(button, 'motion-reduce:transition-none', 'components/ui/button.tsx', 'shared button transitions must honour reduced motion.');
-requireContains(header, 'aria-current={!!matchPath', 'core/components/layout/Header.tsx', 'the active desktop route must be announced to assistive technology.');
+requireContains(header, 'aria-current={matchPath', 'core/components/layout/Header.tsx', 'the active desktop route must be announced to assistive technology without a redundant boolean cast.');
 requireContains(header, "phoneDigits.startsWith('965')", 'core/components/layout/Header.tsx', 'display phone numbers in the Kuwait international format.');
 requireContains(footer, 'w-11 h-11 flex items-center justify-center rounded-full', 'core/components/layout/Footer.tsx', 'footer social controls must use 44px square targets.');
 requireContains(footer, '<address className="not-italic', 'core/components/layout/Footer.tsx', 'the NAP address must use semantic address markup.');
@@ -45,11 +47,15 @@ for (const id of ['contact-name', 'contact-phone', 'contact-email', 'contact-sub
   requireContains(contact, `id="${id}"`, 'pages/Contact.tsx', `field ${id} must have a stable input ID.`);
 }
 requireContains(contact, 'inputMode="tel"', 'pages/Contact.tsx', 'the phone field must present a telephone-friendly mobile keyboard.');
+if (contact.includes('placeholder="+965 55301913"')) issues.push('pages/Contact.tsx: do not hardcode KCROC\'s own phone number as an example customer phone; it trips constant-drift validation.');
 requireContains(contact, 'aria-live="polite"', 'pages/Contact.tsx', 'submit feedback must be announced accessibly.');
 requireContains(cookie, 'role="region"', 'core/components/CookieConsentBanner.tsx', 'the non-modal consent banner must not claim modal dialog semantics.');
 requireContains(cookie, 'aria-labelledby="cookie-consent-title"', 'core/components/CookieConsentBanner.tsx', 'the consent region must have an accessible name.');
 requireContains(hero, 'fetchPriority="high"', 'components/home/Hero.tsx', 'the hero image must retain high fetch priority.');
-requireContains(hero, 'Free pickup & delivery across Kuwait', 'components/home/Hero.tsx', 'mobile hero trust signals must state the Kuwait-wide pickup promise.');
+requireContains(hero, 'Free pick-up & drop across all Kuwait governorates', 'components/home/Hero.tsx', 'hero trust signals must state the full governorate-wide pickup promise.');
+requireContains(servicesGrid, 'Free pick-up &amp; drop across all Kuwait governorates', 'components/home/ServicesGrid.tsx', 'the service grid must expose the Kuwait-wide free pickup promise.');
+requireContains(servicesGrid, 'Arrange free pickup', 'components/home/ServicesGrid.tsx', 'the service-grid logistics banner must have a next step.');
+requireContains(booking, 'Free pick-up and delivery across all Kuwait governorates.', 'pages/BookingPage.tsx', 'the booking page must restate the accurate governorate-wide pickup guarantee.');
 requireContains(globalCss, 'outline: 3px solid #efc697', 'index.css', 'global focus visibility must use a prominent outline.');
 requireContains(globalCss, '@media (prefers-reduced-motion: reduce)', 'index.css', 'global UI motion must respect reduced-motion preferences.');
 requireContains(legacyCss, "'Plus Jakarta Sans'", 'styles/kcroc.css', 'legacy CSS must not override the site-wide typography.');

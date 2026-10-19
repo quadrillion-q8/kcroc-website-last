@@ -46,7 +46,7 @@ This pass repairs several repeatable issues in shared controls and common conver
 - Footer accordion, social, booking, phone, and legal controls had several hit areas below the requested 44px baseline.
 - Cookie panel semantics implied a modal interaction it did not implement.
 
-**Refactor:** corrected current-route announcements, increased interactive hit areas, improved footer legal-link readability, and made the consent panel accurately describe itself as a non-modal region.
+**Refactor:** corrected current-route announcements, increased interactive hit areas, improved footer legal-link readability, made the consent panel accurately describe itself as a non-modal region, and added a prominent service-grid logistics banner with a direct `/book` CTA. The hero, service grid, booking page and footer now explicitly state free pick-up/drop across all Kuwait governorates.
 
 ## II. KCROC business and architecture guardrails
 
@@ -55,6 +55,12 @@ This pass repairs several repeatable issues in shared controls and common conver
 - No route, service/location entity, case study, sitemap graph node, or URL was removed or renamed.
 - Booking and WhatsApp destination flows remain unchanged; the changes improve semantics and hit-area reliability.
 - Existing prebuild checks remain in place, with an additional UI/UX source-regression gate wired into the build.
+
+## Build/deployment regression found during certification
+
+A repository-local ESLint run also caught a redundant boolean cast in the new desktop active-route `aria-current` expression; this has been removed and added to the source regression rule.\n\nThe first post-refactor Vercel deployment exposed one build-blocking existing guardrail: `validateConstants.ts` flagged the Contact phone-field placeholder `+965 55301913` as a hardcoded local-format KCROC phone number. The placeholder was therefore changed to `Your number, including country code (+965)`; the official KCROC number remains sourced from the knowledge graph for business contact links. The UI/UX regression script now protects against reintroducing that exact literal.
+
+This demonstrates why production build validation must remain a release gate. The reported deployment failed before the full certification workflow could pass; the updated pull-request workflow must complete successfully before calling this pass build-clean.
 
 ## III. Validation and work still needed for certification
 

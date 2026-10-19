@@ -213,7 +213,7 @@ export default function BookingPage() {
                   </div>
                   <div>
                     <h4 className="text-white font-bold mb-1">Free Pick & Drop</h4>
-                    <p className="text-sm text-slate-400 leading-relaxed">Secure, insured collection and delivery to any governorate in Kuwait.</p>
+                    <p className="text-sm text-slate-400 leading-relaxed">Free pick-up and delivery across all Kuwait governorates.</p>
                   </div>
                 </li>
                 <li className="flex gap-4">

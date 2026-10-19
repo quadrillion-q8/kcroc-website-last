@@ -147,7 +147,7 @@ export function Footer() {
               Trusted Computer &amp; Laptop Repair in Kuwait
             </h2>
             <p className="text-slate-400 text-sm leading-relaxed mb-4 max-w-sm">
-              Professional repair for laptops, MacBooks, gaming PCs and computers. Free pickup and delivery across Kuwait. No Fix, No Fee.
+              Professional repair for laptops, MacBooks, gaming PCs and computers. Free pick-up and delivery across all Kuwait governorates. No Fix, No Fee.
             </p>
 
             {business.openingHours && (
@@ -271,7 +271,7 @@ export function Footer() {
                   <CalendarClock className="w-4 h-4" aria-hidden="true" />
                   BOOK FREE PICKUP
                 </a>
-                <span className="block text-slate-500 text-xs mt-2 ml-1">Pickup &amp; delivery across Kuwait</span>
+                <span className="block text-slate-500 text-xs mt-2 ml-1">Pick-up &amp; drop across all Kuwait governorates</span>
               </li>
             </ul>
 
