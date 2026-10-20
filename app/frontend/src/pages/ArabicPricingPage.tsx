@@ -7,6 +7,7 @@ import {
 import { SEOEngine } from '../core/components/SEOEngine';
 import SchemaMarkup from '../components/seo/SchemaMarkup';
 import { KCROC_GRAPH } from '../data/graph';
+import { IMAGES } from '../constants/images';
 import { buildWhatsAppLink } from '../utils/whatsappIntent';
 
 const PRICE_GROUPS = [
@@ -53,6 +54,34 @@ const PRICE_GROUPS = [
   },
 ] as const;
 
+
+const PRICE_LINKS: Partial<Record<string, { href: string; label: string }>> = {
+  'الفحص والتشخيص الأولي': { href: '/ar/computer-repair-kuwait', label: 'تفاصيل خدمة التصليح والفحص' },
+  'إعادة تثبيت Windows وضبط النظام': { href: '/ar/computer-repair-kuwait', label: 'عرض خدمات الكمبيوتر' },
+  'إزالة الفيروسات والبرامج الضارة': { href: '/ar/computer-repair-kuwait', label: 'عرض خدمات الكمبيوتر' },
+  'استعادة BIOS أو Firmware': { href: '/ar/laptop-repair-kuwait', label: 'تفاصيل تصليح اللابتوب' },
+  'تنظيف اللابتوب وخدمة التبريد': { href: '/ar/laptop-repair-kuwait', label: 'تفاصيل تصليح اللابتوب' },
+  'خدمة تبريد Gaming PC': { href: '/ar/gaming-pc-repair-kuwait', label: 'تفاصيل تصليح Gaming PC' },
+  'ضبط أداء Gaming PC': { href: '/ar/gaming-pc-repair-kuwait', label: 'تفاصيل تصليح Gaming PC' },
+  'تركيب RAM أو SSD': { href: '/ar/ssd-ram-upgrade-kuwait', label: 'تفاصيل ترقية SSD وRAM' },
+  'تبديل بطارية اللابتوب': { href: '/ar/battery-replacement-kuwait', label: 'تفاصيل تبديل البطارية' },
+  'تبديل كيبورد اللابتوب': { href: '/ar/laptop-keyboard-replacement-kuwait', label: 'تفاصيل تبديل الكيبورد' },
+  'تبديل شاشة اللابتوب': { href: '/ar/laptop-screen-repair-kuwait', label: 'تفاصيل تبديل الشاشة' },
+  'إصلاح المفصلات والهيكل': { href: '/ar/laptop-repair-kuwait', label: 'تفاصيل تصليح اللابتوب' },
+  'إصلاح منفذ الشحن': { href: '/ar/laptop-charging-port-repair-kuwait', label: 'تفاصيل إصلاح منفذ الشحن' },
+  'إصلاح مكونات اللوحة الأم': { href: '/ar/motherboard-repair-kuwait', label: 'تفاصيل إصلاح اللوحة الأم' },
+  'إصلاح متقدم للوحة الأم': { href: '/ar/motherboard-repair-kuwait', label: 'تفاصيل إصلاح اللوحة الأم' },
+  'إصلاح أضرار السوائل': { href: '/ar/laptop-liquid-damage-repair-kuwait', label: 'تفاصيل إصلاح أضرار السوائل' },
+  'إصلاح لوحة MacBook': { href: '/ar/macbook-repair-kuwait', label: 'تفاصيل تصليح MacBook' },
+};
+
+const PRICE_HIGHLIGHTS = [
+  { label: 'الفحص الأولي', price: 'مجاني', note: 'تقييم أولي بدون التزام بالإصلاح', href: '/ar/computer-repair-kuwait' },
+  { label: 'أجرة تبديل الشاشة', price: 'من 30 د.ك + الشاشة', note: 'سعر اللوحة يختلف حسب المواصفات والموديل', href: '/ar/laptop-screen-repair-kuwait' },
+  { label: 'أجرة تبديل البطارية', price: 'من 8 د.ك + البطارية', note: 'نتحقق من رقم الموديل وتوافق القطعة', href: '/ar/battery-replacement-kuwait' },
+  { label: 'تركيب SSD أو RAM', price: 'من 5 د.ك', note: 'القطع ونقل البيانات منفصلة عند الحاجة', href: '/ar/ssd-ram-upgrade-kuwait' },
+] as const;
+
 const FAQS = [
   {
     q: 'هل الفحص الأولي مجاني؟',
@@ -78,6 +107,26 @@ const FAQS = [
     q: 'هل أوافق على الإصلاح قبل أن تبدأوا؟',
     a: 'نعم. نشرح العطل والتكلفة المتوقعة أولًا، ولا يبدأ العمل المدفوع إلا بعد موافقتك على عرض السعر.',
   },
+  {
+    q: 'هل سعر تبديل الشاشة يشمل الشاشة نفسها؟',
+    a: 'لا، السعر الذي يظهر بصيغة «من 30 د.ك + الشاشة» هو أجرة العمل المبدئية، وتضاف تكلفة لوحة الشاشة المتوافقة. المقاس والدقة واللمس ومعدل التحديث ونوع اللوحة وتوفرها كلها عوامل تؤثر في السعر النهائي.',
+  },
+  {
+    q: 'هل يوجد ضمان على الإصلاح؟',
+    a: 'نعم، الإصلاحات المكتملة مشمولة بضمان لمدة 30 يومًا على العمل الذي تم تنفيذه، وفق شروط الإصلاح الموضحة عند التسليم. نوضح نطاق الضمان قبل الموافقة.',
+  },
+  {
+    q: 'شنو المعلومات المطلوبة للحصول على سعر أدق؟',
+    a: 'أرسل نوع الجهاز ورقم الموديل وصورة واضحة للعطل إن أمكن، واشرح متى بدأت المشكلة وهل تعرض الجهاز لسائل أو سقوط. اذكر منطقتك في الكويت إذا كنت تحتاج الاستلام والتوصيل.',
+  },
+  {
+    q: 'هل أسعار MacBook مثل أسعار اللابتوبات العادية؟',
+    a: 'ليس بالضرورة؛ تختلف قطع MacBook وطريقة تفكيكها ومستوى إصلاح اللوحة حسب الجيل والموديل والعطل. نعطيك تقديرًا أوليًا ثم نوضح السعر النهائي بعد التشخيص وتأكيد توفر القطعة عند الحاجة.',
+  },
+  {
+    q: 'هل يمكن ضمان الإصلاح في نفس اليوم؟',
+    a: 'لا يمكن تأكيد المدة قبل معرفة العطل وتوفر القطع وجدول الاستلام. بعض الإصلاحات البسيطة قد تنجز سريعًا، بينما قد تحتاج أعطال اللوحة الأم أو القطع الخاصة إلى وقت أطول.',
+  },
 ] as const;
 
 const canonicalUrl = 'https://www.computerrepairkuwait.com/ar/pricing';
@@ -102,6 +151,18 @@ const schema = {
         '@type': 'Question',
         name: item.q,
         acceptedAnswer: { '@type': 'Answer', text: item.a },
+      })),
+    },
+    {
+      '@type': 'ItemList',
+      '@id': canonicalUrl + '#price-highlights',
+      name: 'أسعار بداية خدمات تصليح الكمبيوتر واللابتوب في الكويت',
+      itemListElement: PRICE_HIGHLIGHTS.map((item, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        name: item.label,
+        description: item.price + ' — ' + item.note,
+        url: business.websiteUrl + item.href,
       })),
     },
   ],
@@ -179,7 +240,18 @@ export default function ArabicPricingPage() {
           <div className="mb-8 max-w-3xl">
             <p className="text-xs font-black uppercase tracking-widest text-cyan-400">قائمة الأسعار</p>
             <h2 id="arabic-pricing-list" className="mt-2 text-2xl font-black text-white sm:text-4xl">كم يكلف تصليح جهازك؟</h2>
-            <p className="mt-3 leading-7 text-slate-400">هذه أسعار بداية أو نطاقات الخدمة، وليست بديلًا عن عرض السعر الخاص بموديلك. انتبه لعبارة «+ القطعة» عندما تكون تكلفة القطعة منفصلة عن أجرة الخدمة.</p>
+            <p className="mt-3 leading-7 text-slate-400">الأسعار بالدينار الكويتي، وهي أسعار بداية أو نطاقات إرشادية لخدمات KCROC وليست متوسط أسعار السوق. السعر الدقيق يعتمد على موديل الجهاز والعطل والقطعة المتوافقة. عبارة «+ القطعة» تعني أن أجرة العمل لا تشمل ثمن القطعة.</p>
+          </div>
+
+          <div className="mb-8 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+            {PRICE_HIGHLIGHTS.map((item) => (
+              <Link key={item.href} to={item.href} className="group rounded-2xl border border-cyan-500/20 bg-slate-900/70 p-5 transition hover:border-cyan-400/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400">
+                <span className="block text-sm font-bold text-slate-300">{item.label}</span>
+                <span className="mt-2 block text-xl font-black text-cyan-300">{item.price}</span>
+                <span className="mt-2 block text-xs leading-6 text-slate-400">{item.note}</span>
+                <span className="mt-3 block text-xs font-bold text-white group-hover:text-cyan-200">تفاصيل الخدمة ←</span>
+              </Link>
+            ))}
           </div>
 
           <div className="grid items-start gap-5 lg:grid-cols-2">
@@ -202,6 +274,11 @@ export default function ArabicPricingPage() {
                         <p className="shrink-0 text-base font-black text-cyan-300 sm:text-left">{item.price}</p>
                       </div>
                       <p className="mt-2 text-sm leading-6 text-slate-400">{item.note}</p>
+                      {PRICE_LINKS[item.name] && (
+                        <Link to={PRICE_LINKS[item.name]!.href} className="mt-3 inline-flex min-h-9 items-center text-sm font-bold text-cyan-300 underline-offset-4 hover:text-cyan-200 hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400">
+                          {PRICE_LINKS[item.name]!.label} ←
+                        </Link>
+                      )}
                     </li>
                   ))}
                 </ul>
@@ -213,6 +290,89 @@ export default function ArabicPricingPage() {
             <CircleHelp className="mt-0.5 h-5 w-5 shrink-0 text-amber-300" aria-hidden="true" />
             <p className="text-sm leading-7 text-slate-300">إذا ما لقيت العطل أو نوع جهازك في القائمة، راسلنا بالموديل وصورة العطل إن أمكن. نوضح لك الخطوة التالية والتكلفة المتوقعة قبل أي إصلاح مدفوع.</p>
           </div>
+        </div>
+      </section>
+
+
+      <section className="border-y border-slate-800 bg-slate-900/30 px-4 py-12 sm:px-6 sm:py-16" aria-labelledby="arabic-pricing-visual-guide">
+        <div className="mx-auto max-w-6xl">
+          <p className="text-xs font-black uppercase tracking-widest text-cyan-400">دليل بصري</p>
+          <h2 id="arabic-pricing-visual-guide" className="mt-2 text-2xl font-black text-white sm:text-3xl">صور توضيحية لقطع وأعمال تؤثر في سعر الإصلاح</h2>
+          <p className="mt-3 max-w-3xl leading-7 text-slate-400">تساعدك هذه الصور على فهم نوع العمل والقطعة التي قد تدخل في عرض السعر. هي أمثلة توضيحية وليست وعدًا بأن كل جهاز يحتاج إلى تبديل القطعة نفسها.</p>
+          <div className="mt-7 grid gap-5 md:grid-cols-3">
+            {[
+              {
+                image: IMAGES.laptopHardware.laptopLcdPanelReplacementPart,
+                alt: 'لوحة شاشة LCD بديلة لفحص المقاس والتوصيل قبل تبديل شاشة اللابتوب',
+                title: 'شاشة اللابتوب',
+                desc: 'تتأثر تكلفة الشاشة بالمقاس والدقة واللمس ومعدل التحديث ونوع اللوحة وتوفرها. أجرة العمل تبدأ من 30 د.ك، وتضاف قيمة الشاشة.',
+                href: '/ar/laptop-screen-repair-kuwait',
+                link: 'شوف تفاصيل تبديل الشاشة',
+              },
+              {
+                image: IMAGES.laptopHardware.laptopDustRemovalCoolingService,
+                alt: 'تنظيف الغبار من نظام تبريد اللابتوب لتحسين تدفق الهواء',
+                title: 'التبريد والتنظيف الداخلي',
+                desc: 'يختلف وقت العمل حسب تصميم الجهاز وحالة المراوح والمشتت الحراري. الغبار والحرارة يستدعيان تشخيصًا قبل تحديد الخدمة المناسبة.',
+                href: '/ar/laptop-repair-kuwait',
+                link: 'تفاصيل تصليح اللابتوب',
+              },
+              {
+                image: IMAGES.laptopHardware.laptopMotherboardDiagnosticBenchRepair,
+                alt: 'تشخيص اللوحة الأم للابتوب على طاولة إصلاح مخصصة',
+                title: 'اللوحة الأم والأعطال المتقدمة',
+                desc: 'قبل تسعير إصلاح اللوحة نحدد دائرة الطاقة أو المكوّن المتأثر ونقيّم إمكانية إصلاحه بدل استبدال اللوحة كاملة.',
+                href: '/ar/motherboard-repair-kuwait',
+                link: 'تفاصيل إصلاح اللوحة الأم',
+              },
+            ].map((item) => (
+              <article key={item.href} className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-950/70">
+                <Link to={item.href} className="block overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400">
+                  <img src={item.image.src} alt={item.alt} width={item.image.width} height={item.image.height} loading="lazy" decoding="async" className="aspect-[4/3] w-full object-cover transition duration-300 hover:scale-[1.02]" />
+                </Link>
+                <div className="p-5">
+                  <h3 className="text-lg font-black text-white">{item.title}</h3>
+                  <p className="mt-2 text-sm leading-7 text-slate-400">{item.desc}</p>
+                  <Link to={item.href} className="mt-4 inline-flex min-h-10 items-center font-bold text-cyan-300 hover:text-cyan-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400">{item.link} ←</Link>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="px-4 py-12 sm:px-6 sm:py-16" aria-labelledby="arabic-pricing-cost-factors">
+        <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-2">
+          <div>
+            <p className="text-xs font-black uppercase tracking-widest text-cyan-400">كيف نحسب التكلفة؟</p>
+            <h2 id="arabic-pricing-cost-factors" className="mt-2 text-2xl font-black text-white sm:text-3xl">ما الذي يحدد سعر تصليح الكمبيوتر في الكويت؟</h2>
+            <p className="mt-4 leading-7 text-slate-300">لا يكفي اسم الخدمة وحده لتحديد السعر. بعد معرفة موديل الجهاز والعَرَض، نحدد هل المشكلة تحتاج ضبطًا برمجيًا أو أجرة تركيب قطعة أو إصلاحًا على مستوى المكونات.</p>
+            <ul className="mt-5 space-y-3 text-sm leading-7 text-slate-300">
+              <li><strong className="text-white">الموديل والجيل:</strong> قد تختلف القطع وطريقة الفك بين جهازين من السلسلة نفسها.</li>
+              <li><strong className="text-white">نوع القطعة ومواصفاتها:</strong> مثل شاشة لمس أو OLED أو معدل تحديث مرتفع، أو بطارية ذات رقم قطعة محدد.</li>
+              <li><strong className="text-white">أجرة العمل مقابل ثمن القطعة:</strong> أي سعر مكتوب بجانبه «+ القطعة» لا يمثل إجمالي الفاتورة.</li>
+              <li><strong className="text-white">مدى الضرر:</strong> قد يحتاج السائل أو الشحن أو اللوحة الأم إلى فحوصات إضافية لتحديد المكونات المتأثرة.</li>
+              <li><strong className="text-white">التوفر ووقت التوريد:</strong> نعتمد التوافق قبل طلب القطعة ونوضح لك إن كان الطلب سيؤثر في موعد الإنجاز.</li>
+              <li><strong className="text-white">الاختبار بعد الإصلاح:</strong> نحدد العمل المطلوب للتأكد من أن العطل الأساسي عولج، لا أن العرض اختفى مؤقتًا فقط.</li>
+            </ul>
+          </div>
+          <aside className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5 sm:p-7">
+            <h3 className="text-xl font-black text-white">شلون تحصل على عرض سعر أدق؟</h3>
+            <ol className="mt-5 space-y-4">
+              {[
+                ['١', 'اكتب نوع الجهاز والموديل أو رقم المنتج الموجود على الملصق.'],
+                ['٢', 'اشرح العَرَض ومتى بدأ، وأخبرنا إذا تعرض الجهاز لسائل أو سقوط.'],
+                ['٣', 'أرسل صورة واضحة للعطل إن أمكن، واذكر المنطقة داخل الكويت.'],
+                ['٤', 'نوضح نتيجة الفحص والسعر قبل بدء أي عمل مدفوع، ولا نبدأ دون موافقتك.'],
+              ].map(([number, text]) => (
+                <li key={number} className="flex gap-3 text-sm leading-7 text-slate-300">
+                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-cyan-500/30 text-xs font-black text-cyan-300">{number}</span>
+                  <span>{text}</span>
+                </li>
+              ))}
+            </ol>
+            <p className="mt-5 rounded-xl border border-cyan-500/20 bg-cyan-500/5 p-4 text-sm leading-7 text-slate-300">مختبر KCROC في حولي، مع استلام وتوصيل مجاني من مناطق الكويت. نؤكد موعد الاستلام حسب المنطقة والتوفر.</p>
+          </aside>
         </div>
       </section>
 

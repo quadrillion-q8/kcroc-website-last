@@ -10,7 +10,7 @@ import { IMAGES } from '../constants/images.js';
 export const rawGraphData: RawGraphData = {
   metadata: {
     version: '3.8.5',
-    lastUpdated: '2026-10-16T00:00:00+03:00',
+    lastUpdated: '2026-10-21T00:00:00+03:00',
     environment: 'production'
   },
 
@@ -500,8 +500,37 @@ export const rawGraphData: RawGraphData = {
     'page-faq': { id: 'page-faq', slug: 'faq', entityType: 'WebPage', isActive: true, title: 'FAQ', description: 'Frequently asked questions.', seo: { title: 'Frequently Asked Questions | KCROC Kuwait', description: 'Answers to common questions about our laptop repair services, pricing, warranty, and data privacy.', canonicalUrl: 'https://www.computerrepairkuwait.com/faq', ogType: 'website', schemaTypes: ['FAQPage'] } } as WebPageEntity,
     'page-gallery': { id: 'page-gallery', slug: 'gallery', entityType: 'WebPage', isActive: true, title: 'Gallery', description: 'Lab and repair gallery.', seo: { title: 'Repair Gallery | KCROC Hawalli Lab', description: 'View our ESD-safe repair lab in Hawalli and real examples of our component-level micro-soldering.', canonicalUrl: 'https://www.computerrepairkuwait.com/gallery', ogType: 'website', schemaTypes: ['CollectionPage'] } } as WebPageEntity,
     'page-pricing': { id: 'page-pricing', slug: 'pricing', entityType: 'WebPage', isActive: true, title: 'Pricing', description: 'Transparent repair pricing.', seo: { title: 'Computer Repair Prices Kuwait | Screen & Battery Labor | KCROC', description: 'Laptop screen labor from 30 KWD + panel; battery labor from 8 KWD + battery. Free initial diagnosis and a quote before repair in Kuwait.', canonicalUrl: 'https://www.computerrepairkuwait.com/pricing', locale: 'en_KW', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/pricing', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/pricing', 'x-default': 'https://www.computerrepairkuwait.com/pricing' }, ogType: 'website', schemaTypes: ['WebPage'], lastModified: '2026-10-13T00:00:00+03:00', breadcrumbs: [{ name: 'Home', url: '/' }, { name: 'Pricing', url: '/pricing' }] } } as WebPageEntity,
-    'page-ar-pricing': { id: 'page-ar-pricing', slug: 'ar/pricing', entityType: 'WebPage', isActive: true, title: 'أسعار تصليح الكمبيوتر واللابتوب في الكويت', description: 'أسعار واضحة لتصليح الكمبيوتر واللابتوب في الكويت: فحص مجاني، وأسعار بداية للشاشات والبطاريات والشحن واللوحة الأم، مع عرض سعر قبل الإصلاح.', seo: { title: 'أسعار تصليح الكمبيوتر واللابتوب في الكويت | KCROC', description: 'تعرف على أسعار تصليح الكمبيوتر واللابتوب في الكويت لدى KCROC. فحص أولي مجاني، أسعار بداية واضحة، استلام وتوصيل مجاني، وعرض سعر ثابت قبل بدء الإصلاح.', canonicalUrl: 'https://www.computerrepairkuwait.com/ar/pricing', locale: 'ar_KW', alternates: { 'ar-KW': 'https://www.computerrepairkuwait.com/ar/pricing', 'en-KW': 'https://www.computerrepairkuwait.com/pricing', 'x-default': 'https://www.computerrepairkuwait.com/pricing' }, ogType: 'website', schemaTypes: ['WebPage'], lastModified: '2026-10-13T00:00:00+03:00', breadcrumbs: [{ name: 'الرئيسية', url: '/' }, { name: 'أسعار التصليح', url: '/ar/pricing' }] }, relatedServiceIds: ['srv-laptop', 'srv-screen', 'srv-battery', 'srv-charging-port', 'srv-motherboard', 'srv-ssd-ram'] } as WebPageEntity,
-    
+    'page-ar-pricing': {
+      id: 'page-ar-pricing',
+      slug: 'ar/pricing',
+      entityType: 'WebPage',
+      isActive: true,
+      title: 'أسعار تصليح الكمبيوتر واللابتوب في الكويت',
+      description: 'قائمة أسعار تصليح الكمبيوتر واللابتوب في الكويت لدى KCROC: فحص أولي مجاني، أجور عمل مبدئية للشاشة والبطارية والكيبورد وSSD وRAM، وأسعار إرشادية لإصلاح اللوحة الأم مع توضيح تكلفة القطع قبل الموافقة.',
+      seo: {
+        title: 'أسعار تصليح الكمبيوتر واللابتوب في الكويت | KCROC',
+        description: 'تعرف على أسعار تصليح الكمبيوتر واللابتوب في الكويت لدى KCROC. فحص أولي مجاني، أجور عمل واضحة، أسعار بداية للشاشة والبطارية والكيبورد وSSD وRAM واللوحة الأم، واستلام وتوصيل مجاني قبل موافقتك على الإصلاح.',
+        canonicalUrl: 'https://www.computerrepairkuwait.com/ar/pricing',
+        locale: 'ar_KW',
+        alternates: {
+          'ar-KW': 'https://www.computerrepairkuwait.com/ar/pricing',
+          'en-KW': 'https://www.computerrepairkuwait.com/pricing',
+          'x-default': 'https://www.computerrepairkuwait.com/pricing'
+        },
+        ogType: 'website',
+        schemaTypes: ['WebPage'],
+        lastModified: '2026-10-21T00:00:00+03:00',
+        breadcrumbs: [
+          { name: 'الرئيسية', url: '/' },
+          { name: 'أسعار التصليح', url: '/ar/pricing' }
+        ]
+      },
+      featuredImage: {
+        ogImage: IMAGES.brand.heroBanner.src,
+        altText: 'فني يعمل على إصلاح لابتوب في مختبر KCROC في حولي مع خدمة أسعار تصليح الكمبيوتر بالكويت'
+      },
+      relatedServiceIds: ['srv-laptop', 'srv-screen', 'srv-battery', 'srv-charging-port', 'srv-motherboard', 'srv-ssd-ram']
+    } as WebPageEntity,
     'page-booking': { id: 'page-booking', slug: 'book', entityType: 'WebPage', isActive: true, title: 'Book a Repair', description: 'Book free laptop and computer repair pickup anywhere in Kuwait. Same-day hardware assessment. 30-day warranty.', seo: { title: 'Book Laptop & Computer Repair Pickup in Kuwait | KCROC', description: 'Book free laptop and computer repair pickup anywhere in Kuwait. Same-day hardware assessment. 30-day warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/book', ogType: 'website', schemaTypes: ['WebPage'] } } as WebPageEntity,
     
     'page-privacy': { id: 'page-privacy', slug: 'privacy-security-kuwait', entityType: 'WebPage', isActive: true, title: 'Privacy & Security', description: 'Our data privacy guarantee.', seo: { title: 'Data Privacy & Security Guarantee | KCROC', description: 'Read about our strict hardware-only protocol that guarantees your personal data remains 100% private during repairs.', canonicalUrl: 'https://www.computerrepairkuwait.com/privacy-security-kuwait', ogType: 'website', schemaTypes: ['WebPage'] } } as WebPageEntity,
