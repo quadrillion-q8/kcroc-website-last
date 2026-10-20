@@ -106,11 +106,14 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
   );
 
   const isScreenService = entity.id === 'srv-screen';
+  const isMacbookScreenService = entity.id === 'srv-macbook-screen';
   const whatsappLink = buildWhatsAppLink(isScreenService
     ? 'Hi KCROC, I need a laptop screen repair quote in Kuwait. Laptop brand/model: ____. Screen symptom: ____. Area in Kuwait: ____. I can send a photo if needed. Please confirm compatible panel availability and the total price including panel and labour.'
-    : entity.id === 'srv-gaming-laptop'
-      ? 'Hi KCROC, I need gaming-laptop repair in Kuwait. Brand and exact model: ____. Main symptom: ____. Kuwait area: ____. I can share photos or a short video if useful. Please advise on diagnosis, the expected turnaround and the quote before repair.'
-      : `Hi KCROC, I'd like a free estimate for ${entity.title}.`);
+    : isMacbookScreenService
+      ? 'Hi KCROC, I need MacBook screen replacement in Kuwait. Exact MacBook model and generation: ____. Screen symptoms: ____. Area in Kuwait: ____. Please confirm compatible display availability, the total price including labour and display assembly, and the expected turnaround before repair.'
+      : entity.id === 'srv-gaming-laptop'
+        ? 'Hi KCROC, I need gaming-laptop repair in Kuwait. Brand and exact model: ____. Main symptom: ____. Kuwait area: ____. I can share photos or a short video if useful. Please advise on diagnosis, the expected turnaround and the quote before repair.'
+        : `Hi KCROC, I'd like a free estimate for ${entity.title}.`);
 
   const severityStyles: Record<string, string> = {
     critical: 'border-red-500/40 bg-red-950/20 text-red-300',
@@ -151,7 +154,7 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
 
               <div className="mt-2 mb-6 flex flex-wrap gap-3">
                 <a href={whatsappLink} target="_blank" rel="noopener noreferrer" onClick={() => trackConversion('whatsapp_click', { cta_name: `service_hero_whatsapp_${entity.id}`, button_position: 'service_hero' })} className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-xl bg-[#25D366] px-5 py-3 text-sm font-extrabold text-slate-950 shadow-lg shadow-emerald-950/20 hover:brightness-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300">
-                  <MessageCircle className="h-5 w-5" aria-hidden="true" /> {isScreenService ? 'Get a Screen Repair Quote on WhatsApp' : 'Get a Free Quote on WhatsApp'}
+                  <MessageCircle className="h-5 w-5" aria-hidden="true" /> {isScreenService ? 'Get a Screen Repair Quote on WhatsApp' : isMacbookScreenService ? 'Get a MacBook Screen Quote on WhatsApp' : 'Get a Free Quote on WhatsApp'}
                 </a>
                 <Link to="/book" onClick={() => trackConversion('cta_click', { cta_name: `service_hero_book_pickup_${entity.id}`, button_position: 'service_hero' })} className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-xl border border-cyan-500/40 bg-cyan-500/10 px-5 py-3 text-sm font-extrabold text-cyan-200 hover:bg-cyan-500/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400">
                   <ArrowRight className="h-5 w-5" aria-hidden="true" /> Book Free Pickup
