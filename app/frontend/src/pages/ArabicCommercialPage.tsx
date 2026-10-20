@@ -388,20 +388,33 @@ const CONFIG: Record<string, {
   },
   'laptop-keyboard-replacement-kuwait': {
     h1: 'تصليح وتبديل كيبورد اللابتوب في الكويت',
-    eyebrow: 'أزرار لا تعمل، كيبورد مكسور أو ضرر بعد سائل',
-    intro: 'بعض مشاكل الكيبورد تكون من لوحة المفاتيح نفسها، وبعضها يبدأ من الكابل أو السوائل أو اللوحة الأم. نفحص السبب أول، ثم نحدد هل المطلوب تنظيف أو إصلاح اتصال أو تبديل الكيبورد، مع معرفة السعر قبل التنفيذ.',
-    bullets: ['تبديل كيبورد اللابتوب حسب الموديل', 'فحص كابل وتوصيل الكيبورد', 'مشاكل الأزرار والكتابة المتقطعة', 'تشخيص أضرار السوائل قبل تبديل القطعة', 'استلام وتوصيل مجاني داخل الكويت'],
+    eyebrow: 'أزرار ما تشتغل؟ كتابة مكررة؟ كيبورد عربي أو إنجليزي؟',
+    intro: 'إذا بعض أزرار اللابتوب ما تستجيب، أو تكتب أكثر من مرة، أو الكيبورد كله توقف بعد انسكاب سائل، فمو كل الحالات تحتاج تبديل لوحة المفاتيح كاملة. نفحص نمط العطل، وتوصيلة الكيبورد، وآثار السوائل، وإعدادات اللغة والإدخال قبل تحديد السبب. توفر KCROC استلامًا وتوصيلًا مجانيًا في مناطق الكويت، ويتم الإصلاح في مختبرنا بحولي بعد تأكيد الموديل والسعر قبل أي عمل مدفوع.',
+    bullets: [
+      'فحص الأزرار العالقة أو المتقطعة والكتابة المكررة',
+      'تبديل لوحة المفاتيح حسب موديل اللابتوب ورقم القطعة',
+      'مطابقة تخطيط عربي/إنجليزي والإضاءة الخلفية حسب التوفر',
+      'فحص الكابل وآثار السوائل قبل الحكم على المذربورد',
+      'أجرة العمل تبدأ من 10 د.ك + سعر الكيبورد، مع ضمان 30 يومًا على الإصلاح المكتمل'
+    ],
     faq: [
-      { q: 'بعض أزرار اللابتوب ما تشتغل، هل لازم تبديل الكيبورد؟', a: 'ليس دائمًا. نفحص لوحة المفاتيح والكابل وآثار السوائل والاتصال قبل تحديد القطعة المطلوبة.' },
-      { q: 'هل تبدلون كيبورد Dell وHP وLenovo وASUS؟', a: 'نعم حسب الموديل وتوفر القطعة. نتحقق من رقم الموديل وشكل الكيبورد والتوافق قبل الطلب.' },
-      { q: 'إذا انكب ماي على الكيبورد، هل يكفي تبديله؟', a: 'ليس بالضرورة. السائل ممكن يوصل للوحة الأم، لذلك نفحص الجهاز كامل قبل اعتبار المشكلة مجرد كيبورد.' },
-      { q: 'هل تعطوني السعر قبل التركيب؟', a: 'نعم. نحدد العطل والموديل والقطعة المطلوبة ثم نوضح السعر قبل أي عمل مدفوع.' }
+      { q: 'بعض أزرار اللابتوب ما تشتغل، هل لازم أبدّل الكيبورد؟', a: 'مو دائمًا. قد يكون العطل في آلية زر محدد أو مصفوفة لوحة المفاتيح أو الكابل أو تلوث بسبب سائل. نفحص نمط الأزرار المتأثرة والاتصال قبل تحديد إذا كان الإصلاح أو التبديل هو الأنسب.' },
+      { q: 'الكيبورد يكتب حروفًا غير اللي أضغطها، هل هو خربان؟', a: 'إذا كانت المشكلة أن الحروف تظهر باللغة أو التخطيط الخطأ، تحقق أولًا من لغة الإدخال وتخطيط Arabic/English في Windows. أما إذا كانت مفاتيح محددة لا تعمل أو تكرر الأحرف حتى مع التخطيط الصحيح، فقد يحتاج الجهاز إلى فحص هاردوير.' },
+      { q: 'شنو أسوي إذا انكب ماي أو قهوة على الكيبورد؟', a: 'أوقف تشغيل اللابتوب وافصل الشاحن إذا كان ذلك آمنًا، ولا تضغط على الأزرار ولا تعاود تشغيل الجهاز للتجربة. لا تستخدم مجفف الشعر ولا تصب منظفات على الكيبورد. السائل قد يصل إلى التوصيلات أو المذربورد، لذلك أرسل الجهاز للفحص.' },
+      { q: 'كم سعر تبديل كيبورد اللابتوب في الكويت؟', a: 'أجرة العمل تبدأ من 10 د.ك، ويُحسب سعر الكيبورد أو التجميعة بشكل منفصل حسب الموديل والتخطيط والإضاءة الخلفية وتوفر القطعة. نؤكد السعر النهائي قبل الطلب أو التركيب.' },
+      { q: 'هل تبدلون كيبورد Dell وHP وLenovo وASUS وAcer وMSI؟', a: 'نعم، حسب الموديل الدقيق وتوفر القطعة المتوافقة. أرسل اسم الموديل أو Service Tag/Model Number؛ اسم الماركة وحده لا يكفي لمطابقة الكيبورد الصحيح.' },
+      { q: 'هل تصلحون كيبورد MacBook؟', a: 'نفحص موديل MacBook والجيل أولًا، لأن تصميم لوحة المفاتيح وطريقة تركيبها يختلفان بين الأجيال وقد تكون جزءًا من تجميعة أكبر. نوضح خيار الإصلاح أو التجميعة المطلوبة وسعرها قبل الموافقة.' },
+      { q: 'الكيبورد يشتغل لكن الإضاءة الخلفية لا تعمل، هل أحتاج كيبورد جديد؟', a: 'ليس بالضرورة. يعتمد السبب على الموديل وقد يكون من إعدادات الإضاءة أو الاتصال أو وحدة الإضاءة نفسها. نتحقق من الوظائف المتوفرة في جهازك قبل التوصية بتبديل القطعة.' },
+      { q: 'هل تبديل الكيبورد يمسح ملفاتي؟', a: 'تبديل لوحة المفاتيح وحده لا يمسح عادةً نظام التشغيل أو الملفات الشخصية. وإذا كشف الفحص أن هناك خطوة إضافية قد تؤثر على البيانات، نشرحها لك قبل المتابعة.' },
+      { q: 'هل عندكم كيبورد عربي وإنجليزي؟', a: 'نؤكد توفر التخطيط العربي/الإنجليزي المناسب حسب موديل الجهاز ورقم القطعة. لا نعد بتوفر كل تخطيط لكل موديل قبل التحقق من القطعة.' }
     ],
     englishPath: '/laptop-keyboard-replacement-kuwait',
     arabicLinks: [
       { label: 'تصليح لابتوب', path: '/ar/laptop-repair-kuwait' },
       { label: 'تصليح أضرار السوائل', path: '/ar/laptop-liquid-damage-repair-kuwait' },
-      { label: 'تصليح مذربورد', path: '/ar/motherboard-repair-kuwait' },
+      { label: 'تصليح المذربورد والدوائر', path: '/ar/motherboard-repair-kuwait' },
+      { label: 'تصليح MacBook', path: '/ar/macbook-repair-kuwait' },
+      { label: 'الأسعار', path: '/ar/pricing' },
       { label: 'فني كمبيوتر بالقرب مني', path: '/ar/near-me' }
     ],
     serviceIds: ['srv-keyboard', 'srv-laptop', 'srv-liquid-damage', 'srv-motherboard']
@@ -1584,6 +1597,8 @@ export default function ArabicCommercialPage() {
       ? 'السلام عليكم KCROC، أحتاج تصليح أو تبديل شاشة اللابتوب. الماركة والموديل: ____. المشكلة: ____. منطقتي بالكويت: ____. فضلاً أكدوا توفر الشاشة والسعر النهائي شامل أجرة العمل والقطعة والمدة المتوقعة قبل الإصلاح.'
       : slug === 'gaming-laptop-repair-kuwait'
       ? 'السلام عليكم KCROC، أحتاج تصليح Gaming Laptop في الكويت. الماركة والموديل الدقيق: ____. المشكلة والأعراض: ____. منطقتي بالكويت: ____. أقدر أرسل صورة أو فيديو للعطل إذا يفيد. فضلاً وضحوا التشخيص والمدة المتوقعة والسعر النهائي قبل أي إصلاح مدفوع.'
+      : slug === 'laptop-keyboard-replacement-kuwait'
+      ? 'السلام عليكم KCROC، أحتاج تصليح أو تبديل كيبورد اللابتوب. الماركة والموديل الدقيق: ____. الأعراض: أزرار لا تعمل / كتابة مكررة / تخطيط لغة / إضاءة خلفية / سائل. التخطيط المطلوب: عربي وإنجليزي / إنجليزي / آخر. هل انسكب سائل؟ ____. منطقتي بالكويت: ____. أقدر أرسل صورة للكيبورد. فضلاً أكدوا توافق القطعة والسعر النهائي والمدة قبل الإصلاح.'
       : slug === 'laptop-charging-port-repair-kuwait'
       ? 'السلام عليكم KCROC، أحتاج فحص مدخل شحن اللابتوب. الماركة والموديل الدقيق: ____. نوع المنفذ: DC Jack / USB-C / غير متأكد. الأعراض: ____. هل يشحن عند تحريك السلك؟ ____. منطقتي بالكويت: ____. أستطيع إرسال صورة للمنفذ والشاحن. فضلاً وضحوا التشخيص والسعر النهائي والمدة قبل الإصلاح.'
       : `السلام عليكم KCROC، أحتاج ${cfg.h1}. أريد أعرف طريقة الاستلام والتشخيص.`;
@@ -1615,6 +1630,12 @@ export default function ArabicCommercialPage() {
       title: 'تصليح مفصلات وهيكل اللابتوب',
       description: 'فحص المفصلات والغطاء والإطار لتحديد الضرر وتجنب زيادة الضغط على الشاشة أو كابلها.'
     }
+  };
+  const arabicKeyboardServiceCopy: Record<string, { title: string; description: string }> = {
+    'srv-keyboard': { title: 'تصليح وتبديل كيبورد اللابتوب', description: 'فحص الأزرار والكابل والتخطيط والإضاءة الخلفية قبل مطابقة لوحة مفاتيح بديلة.' },
+    'srv-laptop': { title: 'تصليح اللابتوب', description: 'تشخيص أعطال الإدخال والتشغيل والاتصال قبل اقتراح القطع.' },
+    'srv-liquid-damage': { title: 'تصليح أضرار السوائل', description: 'فحص آثار الماء والقهوة والتآكل في الكيبورد والتوصيلات والمذربورد.' },
+    'srv-motherboard': { title: 'تصليح المذربورد', description: 'فحص دوائر الإدخال والتوصيلات عند وجود دليل على عطل في اللوحة.' }
   };
   const arabicChargingServiceCopy: Record<string, { title: string; description: string }> = {
     'srv-charging-port': {
@@ -1678,7 +1699,13 @@ export default function ArabicCommercialPage() {
       description: 'فحص البطارية ومسار الشحن والتأكد من التوافق قبل طلب القطعة.'
     }
   };
-  const relatedGuides = slug === 'laptop-charging-port-repair-kuwait'
+  const relatedGuides = slug === 'laptop-keyboard-replacement-kuwait'
+    ? [
+        { title: 'تصليح أضرار السوائل للابتوب', path: '/ar/laptop-liquid-damage-repair-kuwait' },
+        { title: 'تصليح المذربورد في الكويت', path: '/ar/motherboard-repair-kuwait' },
+        { title: 'تبديل كيبورد اللابتوب (English)', path: '/laptop-keyboard-replacement-kuwait' }
+      ]
+    : slug === 'laptop-charging-port-repair-kuwait'
     ? [
         { title: 'اللابتوب متصل بالشاحن لكنه لا يشحن (بالإنجليزية)', path: '/laptop-plugged-in-not-charging' },
         { title: 'تصليح المذربورد ومسار الطاقة في الكويت', path: '/ar/motherboard-repair-kuwait' }
@@ -1767,6 +1794,41 @@ export default function ArabicCommercialPage() {
         description: 'أجرة العمل تبدأ من 30 د.ك، وسعر تجميعة شاشة MacBook يُحسب بشكل منفصل حسب الموديل والجيل وتوفر القطعة. نؤكد السعر النهائي قبل أي عمل مدفوع.',
         priceCurrency: 'KWD',
         price: 30,
+      },
+    }]
+  } : slug === 'laptop-keyboard-replacement-kuwait' ? {
+    '@graph': [{
+      '@type': 'Service',
+      '@id': `${page.seo.canonicalUrl}#service`,
+      name: 'تصليح وتبديل كيبورد اللابتوب في الكويت',
+      serviceType: 'تشخيص وإصلاح واستبدال لوحة مفاتيح اللابتوب',
+      description: cfg.intro,
+      url: page.seo.canonicalUrl,
+      image: `${business.websiteUrl}${IMAGES.laptopHardware.laptopKeyboardTopCaseAssemblyRemoval.src}`,
+      areaServed: { '@type': 'Country', name: 'Kuwait' },
+      provider: {
+        '@type': 'LocalBusiness',
+        name: business.title,
+        url: business.websiteUrl,
+        telephone: `+${business.telephone}`,
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: business.streetAddress,
+          addressLocality: business.addressLocality,
+          addressRegion: business.addressRegion,
+          addressCountry: business.addressCountry,
+        },
+      },
+      offers: {
+        '@type': 'Offer',
+        name: 'أجرة تبديل كيبورد اللابتوب تبدأ من 10 د.ك + سعر القطعة',
+        description: 'أجرة العمل تبدأ من 10 د.ك. تُحسب لوحة المفاتيح أو التجميعة بشكل منفصل حسب الموديل والتخطيط وتوفر القطعة؛ السعر النهائي يؤكد قبل الإصلاح.',
+        priceCurrency: 'KWD',
+        priceSpecification: {
+          '@type': 'PriceSpecification',
+          priceCurrency: 'KWD',
+          minPrice: 10,
+        },
       },
     }]
   } : slug === 'laptop-charging-port-repair-kuwait' ? {
@@ -1868,9 +1930,21 @@ export default function ArabicCommercialPage() {
               </Link>
             </div>
           )}
+          {slug === 'laptop-keyboard-replacement-kuwait' && (
+            <div className="mt-6 flex flex-col gap-3 rounded-2xl border border-cyan-500/25 bg-cyan-500/5 p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6">
+              <div>
+                <p className="text-xs font-black uppercase tracking-[0.12em] text-cyan-300">سعر بداية الخدمة</p>
+                <p className="mt-2 text-xl font-black text-white sm:text-2xl">أجرة العمل من 10 د.ك + سعر الكيبورد</p>
+                <p className="mt-2 text-sm leading-7 text-slate-400">سعر القطعة يختلف حسب الموديل والتخطيط والإضاءة الخلفية. نؤكد توفر الكيبورد والسعر النهائي قبل الطلب أو التركيب.</p>
+              </div>
+              <Link to="/ar/pricing" className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full border border-slate-700 px-5 py-3 text-sm font-black text-cyan-300 transition hover:border-cyan-500/40 hover:text-cyan-200">
+                تفاصيل الأسعار <ArrowLeft className="h-4 w-4" aria-hidden="true" />
+              </Link>
+            </div>
+          )}
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <a href={wa} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-500 px-7 py-3.5 font-black text-slate-950 hover:bg-cyan-400">
-              <MessageCircle className="h-5 w-5" aria-hidden="true" /> {slug === 'laptop-screen-repair-kuwait' ? 'أرسل موديل اللابتوب واحصل على عرض سعر' : slug === 'gaming-laptop-repair-kuwait' ? 'أرسل الموديل والعطل على واتساب' : slug === 'laptop-charging-port-repair-kuwait' ? 'أرسل موديل الجهاز وصورة المنفذ على واتساب' : 'واتساب KCROC'}
+              <MessageCircle className="h-5 w-5" aria-hidden="true" /> {slug === 'laptop-screen-repair-kuwait' ? 'أرسل موديل اللابتوب واحصل على عرض سعر' : slug === 'gaming-laptop-repair-kuwait' ? 'أرسل الموديل والعطل على واتساب' : slug === 'laptop-keyboard-replacement-kuwait' ? 'أرسل موديل الجهاز وصورة الكيبورد على واتساب' : slug === 'laptop-charging-port-repair-kuwait' ? 'أرسل موديل الجهاز وصورة المنفذ على واتساب' : 'واتساب KCROC'}
             </a>
             <Link to="/book" className="inline-flex items-center justify-center gap-2 rounded-full border border-slate-600 px-7 py-3.5 font-bold text-white hover:border-cyan-700 hover:text-cyan-300">
               <ShieldCheck className="h-5 w-5" aria-hidden="true" /> احجز استلام الجهاز
@@ -1879,6 +1953,23 @@ export default function ArabicCommercialPage() {
               {slug === 'laptop-screen-repair-kuwait' ? 'الصفحة باللغة الإنجليزية' : 'English service page'} <ArrowLeft className="h-4 w-4" aria-hidden="true" />
             </Link>
           </div>
+          {slug === 'laptop-keyboard-replacement-kuwait' && (
+            <figure className="mt-8 overflow-hidden rounded-2xl border border-slate-800 bg-slate-950 sm:mt-10">
+              <img
+                src={IMAGES.laptopHardware.laptopKeyboardTopCaseAssemblyRemoval.src}
+                alt="فك تجميعة لوحة مفاتيح اللابتوب لفحص الكيبورد والتوصيلات قبل الاستبدال"
+                width={IMAGES.laptopHardware.laptopKeyboardTopCaseAssemblyRemoval.width}
+                height={IMAGES.laptopHardware.laptopKeyboardTopCaseAssemblyRemoval.height}
+                loading="eager"
+                fetchPriority="high"
+                decoding="async"
+                className="aspect-[16/9] w-full object-cover"
+              />
+              <figcaption className="border-t border-slate-800 px-4 py-3 text-sm leading-6 text-slate-400 sm:px-5">
+                صورة من عملية فك تجميعة اللابتوب للوصول إلى لوحة المفاتيح والتوصيلات؛ نتحقق من الموديل قبل طلب أي قطعة.
+              </figcaption>
+            </figure>
+          )}
           {slug === 'laptop-charging-port-repair-kuwait' && (
             <figure className="mt-8 overflow-hidden rounded-2xl border border-slate-800 bg-slate-950 sm:mt-10">
               <img
@@ -2070,6 +2161,81 @@ export default function ArabicCommercialPage() {
           </section>
         )}
 
+        {slug === 'laptop-keyboard-replacement-kuwait' && (
+          <>
+            <section className="mt-12 rounded-3xl border border-slate-800 bg-slate-900/40 p-6 sm:p-8" aria-labelledby="keyboard-fault-guide">
+              <div className="grid items-start gap-7 lg:grid-cols-[1.1fr_0.9fr]">
+                <div>
+                  <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">تشخيص حسب الأعراض</p>
+                  <h2 id="keyboard-fault-guide" className="mt-2 text-2xl font-black text-white sm:text-3xl">شلون تفرق بين عطل الكيبورد ومشكلة الإعدادات؟</h2>
+                  <p className="mt-3 leading-8 text-slate-400">مو كل مشكلة كتابة تعني أن القطعة خربانة. نميز بين خلل تخطيط اللغة، ومفاتيح تتكرر أو تتوقف، ومشكلة توصيل أو آثار سائل حتى ما تدفع على تبديل غير ضروري.</p>
+                  <figure className="mt-6 overflow-hidden rounded-2xl border border-slate-800 bg-slate-950">
+                    <img src={IMAGES.laptopHardware.laptopKeyboardHeatsinkAssemblyRemoval.src}
+                      alt="الوصول إلى تجميعة الكيبورد والتوصيلات الداخلية أثناء فحص عطل لوحة المفاتيح"
+                      width={IMAGES.laptopHardware.laptopKeyboardHeatsinkAssemblyRemoval.width}
+                      height={IMAGES.laptopHardware.laptopKeyboardHeatsinkAssemblyRemoval.height}
+                      loading="lazy" decoding="async" className="aspect-[4/3] w-full object-cover" />
+                    <figcaption className="border-t border-slate-800 px-4 py-3 text-sm leading-6 text-slate-400">نفحص الكيبورد والتوصيلات وفق تصميم الجهاز؛ بعض الموديلات تحتاج فك جزء أكبر من الهيكل للوصول إلى اللوحة.</figcaption>
+                  </figure>
+                </div>
+                <div className="grid gap-4 sm:grid-cols-2">
+                  {[
+                    { title: 'مفتاح واحد أو مجموعة مفاتيح', text: 'قد يكون السبب تلف آلية المفتاح أو مسارات لوحة المفاتيح أو اتساخًا؛ لا يمكن تحديده من العرض وحده.' },
+                    { title: 'الحروف تتكرر أو المفتاح يعلق', text: 'قد ينتج ذلك من تلف ميكانيكي أو تلوث أو عطل في مصفوفة الكيبورد. لا ترش منظفات داخل لوحة المفاتيح.' },
+                    { title: 'الكيبورد كله لا يستجيب', text: 'نفحص الكابل والتوصيلة ونمط العطل، وقد نجرب لوحة خارجية للمساعدة في التمييز بين الإدخال الداخلي والمشكلة العامة.' },
+                    { title: 'الحروف العربية والإنجليزية معكوسة', text: 'تحقق من تخطيط اللغة في Windows أولًا. إذا كانت الحروف غير صحيحة بسبب اختيار لغة إدخال مختلفة، فلا يحتاج الجهاز بالضرورة إلى تبديل هاردوير.' }
+                  ].map((item) => (
+                    <article key={item.title} className="rounded-2xl border border-slate-800 bg-slate-950/50 p-5"><h3 className="font-bold text-white">{item.title}</h3><p className="mt-2 text-sm leading-7 text-slate-400">{item.text}</p></article>
+                  ))}
+                </div>
+              </div>
+            </section>
+
+            <section className="mt-10 rounded-3xl border border-amber-500/20 bg-amber-500/5 p-6 sm:p-8" aria-labelledby="keyboard-spill-safety">
+              <p className="text-sm font-bold uppercase tracking-[0.14em] text-amber-300">مهم إذا انسكب سائل</p>
+              <h2 id="keyboard-spill-safety" className="mt-2 text-2xl font-black text-white sm:text-3xl">إذا انكب ماي أو قهوة على الكيبورد</h2>
+              <ul className="mt-5 grid gap-3 sm:grid-cols-2">
+                {[
+                  'أوقف تشغيل الجهاز وافصل الشاحن إذا كان ذلك آمنًا.',
+                  'لا تحاول تشغيل اللابتوب أو توصيل الشاحن للتأكد من أنه ما زال يعمل.',
+                  'لا تستخدم مجفف الشعر، ولا تضع الجهاز في الرز، ولا تصب منظفات على الأزرار.',
+                  'أخبر الفني بنوع السائل ومتى حدث الانسكاب؛ قد تحتاج التوصيلات والمذربورد إلى فحص أيضًا.'
+                ].map((item) => (<li key={item} className="flex gap-3 rounded-2xl border border-slate-800 bg-slate-950/50 p-4 text-sm leading-7 text-slate-300"><CheckCircle2 className="mt-1 h-5 w-5 shrink-0 text-cyan-400" aria-hidden="true" /><span>{item}</span></li>))}
+              </ul>
+              <p className="mt-5 text-sm leading-7 text-slate-400">إذا ظهرت حرارة غير طبيعية أو دخان أو رائحة احتراق، لا تعاود توصيل الطاقة. افصل الكهرباء فقط إذا كان ذلك آمنًا واتبع احتياطات السلامة.</p>
+              <a href={wa} target="_blank" rel="noreferrer" className="mt-5 inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-500 px-6 py-3 font-black text-slate-950 transition hover:bg-cyan-400"><MessageCircle className="h-5 w-5" aria-hidden="true" /> أرسل وصف المشكلة وموديل اللابتوب</a>
+            </section>
+
+            <section className="mt-10 rounded-3xl border border-slate-800 bg-slate-900/40 p-6 sm:p-8" aria-labelledby="keyboard-repair-process">
+              <div className="grid items-start gap-7 lg:grid-cols-[0.9fr_1.1fr]">
+                <div>
+                  <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">خطوات موضحة</p>
+                  <h2 id="keyboard-repair-process" className="mt-2 text-2xl font-black text-white sm:text-3xl">من فحص الكيبورد إلى اختبار كل مفتاح</h2>
+                  <p className="mt-3 leading-8 text-slate-400">نعتمد على رقم الموديل وتخطيط اللغة ونوع الإضاءة، وليس على مقاس الكيبورد فقط. لا نطلب القطعة قبل تأكيد التوافق والسعر معك.</p>
+                  <figure className="mt-6 overflow-hidden rounded-2xl border border-slate-800 bg-slate-950">
+                    <img src={IMAGES.laptopHardware.laptopOpenRepairBench.src}
+                      alt="لابتوب مفتوح على طاولة الفحص لإجراء فحوصات الهاردوير قبل التسليم"
+                      width={IMAGES.laptopHardware.laptopOpenRepairBench.width}
+                      height={IMAGES.laptopHardware.laptopOpenRepairBench.height}
+                      loading="lazy" decoding="async" className="aspect-[4/3] w-full object-cover" />
+                    <figcaption className="border-t border-slate-800 px-4 py-3 text-sm leading-6 text-slate-400">بعد الإصلاح، نتحقق من استجابة الأزرار والوظائف المتوفرة في موديلك قبل إعادة الجهاز.</figcaption>
+                  </figure>
+                </div>
+                <ol className="grid gap-4 sm:grid-cols-2">
+                  {[
+                    { title: '١. تسجيل الموديل والأعراض', text: 'نحدد رقم الموديل الدقيق، وتخطيط اللغة المطلوب، وهل المشكلة في مفاتيح محددة أو كل اللوحة.' },
+                    { title: '٢. فحص الإدخال والاتصال', text: 'نفحص نمط المفاتيح والكابل وآثار السوائل، ونميز عطل الإعدادات من عطل الهاردوير عند الإمكان.' },
+                    { title: '٣. تأكيد القطعة والسعر', text: 'نطابق التخطيط العربي/الإنجليزي والإضاءة والتجميعة ثم نؤكد سعر العمل والقطعة قبل الموافقة.' },
+                    { title: '٤. إصلاح أو تبديل مناسب', text: 'نصلح التوصيل إذا كان هو السبب، أو نركب الكيبورد/التجميعة الصحيحة حسب الموديل.' },
+                    { title: '٥. اختبار عملي', text: 'نختبر الأزرار والـShift وEnter والوظائف الخاصة والإضاءة الخلفية إذا كانت موجودة.' },
+                    { title: '٦. إعادة الجهاز بضمان', text: 'نعيد الجهاز بعد الاختبار مع ضمان 30 يومًا على الإصلاح المكتمل حسب شروط الخدمة.' }
+                  ].map((item) => (<li key={item.title} className="rounded-2xl border border-slate-800 bg-slate-950/45 p-5"><h3 className="font-bold text-white">{item.title}</h3><p className="mt-2 text-sm leading-7 text-slate-400">{item.text}</p></li>))}
+                </ol>
+              </div>
+            </section>
+          </>
+        )}
+
         {cfg.highlights && cfg.highlights.length > 0 && (
           <section className="mt-12" aria-labelledby="arabic-local-highlights">
             <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">خدمة محلية</p>
@@ -2101,8 +2267,8 @@ export default function ArabicCommercialPage() {
             {services.map((service) => service && (
               <Link key={service.id} to={arabicServicePathById[service.id] ?? `/${service.slug}`} className="group rounded-2xl border border-slate-800 bg-slate-900/45 p-6 hover:border-cyan-500/40">
                 <Wrench className="h-6 w-6 text-cyan-400" aria-hidden="true" />
-                <h3 className="mt-4 text-lg font-bold text-white group-hover:text-cyan-300">{(slug === 'laptop-screen-repair-kuwait' ? arabicScreenServiceCopy[service.id]?.title : slug === 'gaming-laptop-repair-kuwait' ? arabicGamingServiceCopy[service.id]?.title : slug === 'macbook-screen-replacement-kuwait' ? arabicMacbookScreenServiceCopy[service.id]?.title : slug === 'laptop-charging-port-repair-kuwait' ? arabicChargingServiceCopy[service.id]?.title : undefined) ?? service.title.replace(' Kuwait', '')}</h3>
-                <p className="mt-2 text-sm leading-6 text-slate-400">{(slug === 'laptop-screen-repair-kuwait' ? arabicScreenServiceCopy[service.id]?.description : slug === 'gaming-laptop-repair-kuwait' ? arabicGamingServiceCopy[service.id]?.description : slug === 'macbook-screen-replacement-kuwait' ? arabicMacbookScreenServiceCopy[service.id]?.description : slug === 'laptop-charging-port-repair-kuwait' ? arabicChargingServiceCopy[service.id]?.description : undefined) ?? service.shortDescription}</p>
+                <h3 className="mt-4 text-lg font-bold text-white group-hover:text-cyan-300">{(slug === 'laptop-screen-repair-kuwait' ? arabicScreenServiceCopy[service.id]?.title : slug === 'gaming-laptop-repair-kuwait' ? arabicGamingServiceCopy[service.id]?.title : slug === 'macbook-screen-replacement-kuwait' ? arabicMacbookScreenServiceCopy[service.id]?.title : slug === 'laptop-keyboard-replacement-kuwait' ? arabicKeyboardServiceCopy[service.id]?.title : slug === 'laptop-charging-port-repair-kuwait' ? arabicChargingServiceCopy[service.id]?.title : undefined) ?? service.title.replace(' Kuwait', '')}</h3>
+                <p className="mt-2 text-sm leading-6 text-slate-400">{(slug === 'laptop-screen-repair-kuwait' ? arabicScreenServiceCopy[service.id]?.description : slug === 'gaming-laptop-repair-kuwait' ? arabicGamingServiceCopy[service.id]?.description : slug === 'macbook-screen-replacement-kuwait' ? arabicMacbookScreenServiceCopy[service.id]?.description : slug === 'laptop-keyboard-replacement-kuwait' ? arabicKeyboardServiceCopy[service.id]?.description : slug === 'laptop-charging-port-repair-kuwait' ? arabicChargingServiceCopy[service.id]?.description : undefined) ?? service.shortDescription}</p>
               </Link>
             ))}
           </div>
@@ -2144,8 +2310,8 @@ export default function ArabicCommercialPage() {
         </section>
 
         <section className="mt-12" aria-labelledby="arabic-guides">
-          <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">{slug === 'laptop-charging-port-repair-kuwait' ? 'مراجع وخدمات مرتبطة بمشكلة الشحن' : 'أدلة عربية مرتبطة'}</p>
-          <h2 id="arabic-guides" className="mt-2 text-2xl font-black text-white sm:text-3xl">{slug === 'laptop-charging-port-repair-kuwait' ? 'معلومات إضافية لتحديد سبب عدم الشحن' : 'معلومات تساعدك قبل قرار الإصلاح'}</h2>
+          <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">{slug === 'laptop-keyboard-replacement-kuwait' ? 'خدمات ومراجع مرتبطة بالكيبورد' : slug === 'laptop-charging-port-repair-kuwait' ? 'مراجع وخدمات مرتبطة بمشكلة الشحن' : 'أدلة عربية مرتبطة'}</p>
+          <h2 id="arabic-guides" className="mt-2 text-2xl font-black text-white sm:text-3xl">{slug === 'laptop-keyboard-replacement-kuwait' ? 'الخطوة التالية حسب العطل' : slug === 'laptop-charging-port-repair-kuwait' ? 'معلومات إضافية لتحديد سبب عدم الشحن' : 'معلومات تساعدك قبل قرار الإصلاح'}</h2>
           <div className="mt-6 grid gap-3 sm:grid-cols-2">
             {relatedGuides.map((item) => (
               <Link key={item.path} to={item.path} className="rounded-2xl border border-slate-800 bg-slate-900/45 p-5 font-semibold text-slate-200 hover:border-cyan-500/40 hover:text-cyan-300">{item.title}</Link>

@@ -829,8 +829,34 @@ export const rawGraphData: RawGraphData = {
     } as WebPageEntity,
     'page-ar-keyboard-replacement': {
       id: 'page-ar-keyboard-replacement', slug: 'ar/laptop-keyboard-replacement-kuwait', entityType: 'WebPage', isActive: true,
-      title: 'تصليح وتبديل كيبورد اللابتوب في الكويت', description: 'تبديل وتصليح كيبورد اللابتوب في الكويت مع فحص الكابل وأضرار السوائل والتوافق مع موديل الجهاز.',
-      seo: { title: 'تبديل كيبورد اللابتوب الكويت | إصلاح أزرار اللابتوب | KCROC', description: 'تبديل وتصليح كيبورد اللابتوب في الكويت. فحص الكابل وأضرار السوائل والتوافق مع الموديل، مع استلام وتوصيل مجاني.', canonicalUrl: 'https://www.computerrepairkuwait.com/ar/laptop-keyboard-replacement-kuwait', locale: 'ar_KW', alternates: { 'ar-KW': 'https://www.computerrepairkuwait.com/ar/laptop-keyboard-replacement-kuwait', 'en-KW': 'https://www.computerrepairkuwait.com/laptop-keyboard-replacement-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/laptop-keyboard-replacement-kuwait' }, ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList', 'FAQPage', 'Service'], lastModified: '2026-10-05T00:00:00+03:00', breadcrumbs: [{ name: 'الرئيسية', url: '/' }, { name: 'تبديل كيبورد اللابتوب', url: '/ar/laptop-keyboard-replacement-kuwait' }] },
+      title: 'تصليح وتبديل كيبورد اللابتوب في الكويت',
+      description: 'تصليح وتبديل كيبورد اللابتوب في الكويت، مشاكل الأزرار والكتابة المكررة وتخطيط عربي/إنجليزي وأضرار السوائل، مع استلام مجاني وضمان 30 يومًا.',
+      seo: {
+        title: 'تبديل كيبورد اللابتوب بالكويت | عربي وإنجليزي | KCROC',
+        description: 'كيبورد اللابتوب ما يشتغل أو يكرر الحروف؟ فحص وتبديل كيبورد Dell وHP وLenovo وASUS وMacBook بالكويت. أجرة من 10 د.ك + القطعة.',
+        canonicalUrl: 'https://www.computerrepairkuwait.com/ar/laptop-keyboard-replacement-kuwait',
+        ogImage: '/images/laptop-keyboard-top-case-assembly-removal.webp',
+        ogImageAlt: 'فك تجميعة لوحة مفاتيح اللابتوب لفحص الكيبورد والتوصيلات قبل الاستبدال',
+        ogImageWidth: 800,
+        ogImageHeight: 600,
+        locale: 'ar_KW',
+        alternates: {
+          'ar-KW': 'https://www.computerrepairkuwait.com/ar/laptop-keyboard-replacement-kuwait',
+          'en-KW': 'https://www.computerrepairkuwait.com/laptop-keyboard-replacement-kuwait',
+          'x-default': 'https://www.computerrepairkuwait.com/laptop-keyboard-replacement-kuwait'
+        },
+        ogType: 'website',
+        schemaTypes: ['WebPage', 'BreadcrumbList', 'FAQPage', 'Service', 'ImageObject'],
+        lastModified: '2026-10-21T00:00:00+03:00',
+        breadcrumbs: [
+          { name: 'الرئيسية', url: '/' },
+          { name: 'تصليح وتبديل كيبورد اللابتوب', url: '/ar/laptop-keyboard-replacement-kuwait' }
+        ]
+      },
+      featuredImage: {
+        ogImage: '/images/laptop-keyboard-top-case-assembly-removal.webp',
+        altText: 'فك تجميعة لوحة مفاتيح اللابتوب لفحص الكيبورد والتوصيلات قبل الاستبدال'
+      },
       relatedServiceIds: ['srv-keyboard', 'srv-laptop', 'srv-liquid-damage', 'srv-motherboard']
     } as WebPageEntity,
     'page-ar-liquid-damage-repair': {
