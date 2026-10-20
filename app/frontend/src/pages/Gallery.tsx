@@ -174,13 +174,20 @@ export default function Gallery() {
         </section>
 
         {remaining > 0 && (
-          <div className="text-center -mt-6 sm:-mt-16 mb-12 sm:mb-24">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 -mt-6 sm:-mt-16 mb-12 sm:mb-24">
             <button
               type="button"
               onClick={() => setVisibleCount((c) => c + PAGE_SIZE)}
               className="px-8 py-3 rounded-full bg-slate-800 border border-slate-700 hover:border-cyan-500/50 text-white font-bold text-sm sm:text-base transition-colors"
             >
               Load more photos ({remaining} left)
+            </button>
+            <button
+              type="button"
+              onClick={() => setVisibleCount(filteredItems.length)}
+              className="px-8 py-3 rounded-full bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black text-sm sm:text-base transition-colors"
+            >
+              Load All photos ({filteredItems.length})
             </button>
           </div>
         )}
