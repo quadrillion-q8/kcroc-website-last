@@ -17,7 +17,7 @@ const CALL_LINK = `tel:+${KCROC_GRAPH.business!.telephone}`;
 // Only this many tiles are rendered at a time; "Load more" reveals the next
 // batch. Keeps the DOM and image requests small no matter how many photos the
 // gallery grows to.
-const PAGE_SIZE = 24;
+const PAGE_SIZE = 72; // multiple of 2, 3 and 4 so every grid layout ends on a full row
 const withSlash = (src: string) => (src.startsWith('/') ? src : `/${src}`);
 
 export default function Gallery() {
