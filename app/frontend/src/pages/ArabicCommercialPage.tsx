@@ -1828,6 +1828,42 @@ export default function ArabicCommercialPage() {
               </figcaption>
             </figure>
           )}
+          {slug === 'macbook-screen-replacement-kuwait' && (
+            <div className="mt-8">
+              <h2 className="mb-4 text-lg font-black text-white">صور من فحص وإصلاح شاشة MacBook</h2>
+              <div className="grid gap-5 md:grid-cols-2">
+                <figure className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-950">
+                  <img
+                    src={IMAGES.macbook.diagnostics.src}
+                    alt="فحص جهاز MacBook قبل إصلاح الشاشة في الكويت"
+                    width={IMAGES.macbook.diagnostics.width}
+                    height={IMAGES.macbook.diagnostics.height}
+                    loading="eager"
+                    fetchPriority="high"
+                    decoding="async"
+                    className="aspect-[16/9] w-full object-cover"
+                  />
+                  <figcaption className="border-t border-slate-800 px-4 py-3 text-sm leading-6 text-slate-400">
+                    فحص MacBook ومطابقة الموديل قبل اختيار تجميعة الشاشة المناسبة.
+                  </figcaption>
+                </figure>
+                <figure className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-950">
+                  <img
+                    src={IMAGES.laptopHardware.laptopScreenAssemblyDisassemblyRepair.src}
+                    alt="فحص مجموعة شاشة اللابتوب أثناء الفك وإعادة التركيب"
+                    width={IMAGES.laptopHardware.laptopScreenAssemblyDisassemblyRepair.width}
+                    height={IMAGES.laptopHardware.laptopScreenAssemblyDisassemblyRepair.height}
+                    loading="lazy"
+                    decoding="async"
+                    className="aspect-[16/9] w-full object-cover"
+                  />
+                  <figcaption className="border-t border-slate-800 px-4 py-3 text-sm leading-6 text-slate-400">
+                    فحص مجموعة الشاشة وإعادة تركيبها ثم اختبار الصورة قبل تسليم الجهاز.
+                  </figcaption>
+                </figure>
+              </div>
+            </div>
+          )}
         </section>
 
         {slug === 'gaming-laptop-repair-kuwait' && (
