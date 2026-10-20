@@ -1613,13 +1613,9 @@ export default function ArabicCommercialPage() {
       title: 'تصليح MacBook',
       description: 'تشخيص مشاكل الشحن والبطارية واللوحة الأم والسوائل، مع إصلاح على مستوى المكونات عندما يكون مناسبًا.'
     },
-    'srv-battery': {
-      title: 'تبديل بطارية اللابتوب وMacBook',
-      description: 'نفحص البطارية ومسار الشحن ونطابق البديل مع الموديل قبل طلب القطعة.'
-    },
-    'srv-motherboard': {
-      title: 'تصليح المذربورد واللوحة الأم',
-      description: 'تشخيص أعطال الطاقة والشحن والمكونات، وإصلاح اللوحة عندما يكون ذلك ممكنًا فنيًا.'
+    'srv-screen': {
+      title: 'تبديل شاشة اللابتوب',
+      description: 'فحص الشاشة والكابل والإضاءة ومطابقة القطعة مع الموديل قبل اقتراح التبديل.'
     }
   };
   const arabicGamingServiceCopy: Record<string, { title: string; description: string }> = {
