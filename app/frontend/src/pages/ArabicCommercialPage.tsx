@@ -309,12 +309,11 @@ const CONFIG: Record<string, {
     ],
     englishPath: '/macbook-screen-replacement-kuwait',
     arabicLinks: [
-      { label: 'تصليح MacBook', path: '/ar/macbook-repair-kuwait' },
-      { label: 'تبديل شاشة اللابتوب', path: '/ar/laptop-screen-repair-kuwait' },
       { label: 'تبديل البطارية', path: '/ar/battery-replacement-kuwait' },
+      { label: 'تصليح لابتوب', path: '/ar/laptop-repair-kuwait' },
       { label: 'تصليح كمبيوتر حولي', path: '/ar/computer-repair-hawalli' }
     ],
-    serviceIds: ['srv-macbook-screen', 'srv-macbook', 'srv-screen']
+    serviceIds: ['srv-macbook', 'srv-screen', 'srv-motherboard']
   },
   'battery-replacement-kuwait': {
     h1: 'تبديل بطارية اللابتوب وMacBook في الكويت',
@@ -1616,6 +1615,10 @@ export default function ArabicCommercialPage() {
     'srv-screen': {
       title: 'تبديل شاشة اللابتوب',
       description: 'فحص الشاشة والكابل والإضاءة ومطابقة القطعة مع الموديل قبل اقتراح التبديل.'
+    },
+    'srv-motherboard': {
+      title: 'تصليح المذربورد واللوحة الأم',
+      description: 'نفحص دوائر الطاقة والمكونات ونحدد إذا كان إصلاح اللوحة ممكنًا فنيًا قبل اقتراح الاستبدال.'
     }
   };
   const arabicGamingServiceCopy: Record<string, { title: string; description: string }> = {
