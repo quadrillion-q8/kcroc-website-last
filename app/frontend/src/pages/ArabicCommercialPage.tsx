@@ -357,20 +357,31 @@ const CONFIG: Record<string, {
   },
   'laptop-charging-port-repair-kuwait': {
     h1: 'تصليح مدخل شحن اللابتوب في الكويت',
-    eyebrow: 'الشاحن ما يشحن؟ المنفذ مرتخي؟ USB-C أو DC Jack',
-    intro: 'إذا اللابتوب ما يشحن إلا بزاوية معينة، مدخل الشحن مرتخي، أو USB-C وقف يشحن، لا تفترض أن البطارية أو المذربورد كلها خربانة. نفحص الشاحن والمنفذ ونقاط اللحام ومسار الطاقة أول، وبعدها نعطيك الحل والسعر قبل أي إصلاح مدفوع.',
-    bullets: ['تصليح DC Jack ومداخل الشحن', 'تشخيص USB-C والشحن السريع حسب الموديل', 'فحص دائرة الشحن ومسار الطاقة على البورد', 'إصلاح نقاط اللحام والمكونات عند الإمكان', 'استلام وتوصيل مجاني داخل الكويت'],
+    eyebrow: 'اللابتوب ما يشحن؟ المنفذ يتحرك؟ نفحص USB-C وDC Jack ومسار الطاقة',
+    intro: 'إذا اللابتوب ما يشحن، أو يشحن فقط عندما تحرك السلك، أو منفذ USB-C لا يتعرف على الشاحن، فلا تفترض أن البطارية أو المذربورد تحتاج تبديلًا. نفحص توافق الشاحن والكابل، والمنفذ ونقاط تثبيته، ثم دائرة الشحن ومسار الطاقة حسب تصميم الجهاز. مختبر KCROC في حولي يستقبل أجهزة من البيت أو المكتب في مناطق الكويت، ونوضح لك سبب العطل والسعر قبل بدء أي إصلاح مدفوع.',
+    bullets: [
+      'فحص الشاحن والكابل والقدرة المناسبة لموديل الجهاز',
+      'إصلاح أو تبديل مدخل DC Jack أو USB-C حسب التصميم',
+      'فحص نقاط اللحام وحماية المدخل ودائرة الشحن',
+      'تشخيص مسار الطاقة قبل اقتراح تبديل المذربورد',
+      'استلام وتوصيل مجاني داخل الكويت وضمان 30 يومًا على الإصلاح المكتمل'
+    ],
     faq: [
-      { q: 'اللابتوب يشحن إذا حركت السلك، شنو المشكلة؟', a: 'غالبًا يكون هناك ارتخاء أو تلف في المنفذ أو نقطة لحام متشققة، لكن نفحصه كهربائيًا وميكانيكيًا قبل تحديد السبب.' },
-      { q: 'هل تصلحون USB-C في اللابتوب؟', a: 'نعم، نفحص المنفذ ومسار الطاقة ودوائر USB-C والشحن حسب تصميم الجهاز قبل طلب قطعة أو مذربورد جديدة.' },
-      { q: 'هل تبديل مدخل الشحن يعني تبديل المذربورد؟', a: 'ليس بالضرورة. إذا كان العطل في المنفذ أو التوصيلات أو مكوّن قابل للإصلاح، يمكن معالجة المشكلة بدون تبديل البورد كاملة.' },
-      { q: 'كم سعر تصليح مدخل الشحن؟', a: 'أسعار إصلاح مدخل الشحن تبدأ من 20 د.ك حسب الموديل ونوع المنفذ والعطل، والسعر النهائي يتحدد بعد التشخيص.' }
+      { q: 'اللابتوب يشحن إذا حركت السلك، شنو السبب؟', a: 'قد يكون المنفذ مرتخيًا أو متآكلًا أو توجد نقطة لحام متشققة أو تلف في تثبيت المنفذ. لا تواصل ثني السلك؛ الحركة المتكررة قد تزيد الضرر. نفحص المنفذ والتوصيلات قبل تحديد الإصلاح.' },
+      { q: 'هل تصلحون مدخل USB-C في اللابتوب؟', a: 'نعم، للأجهزة المدعومة نفحص منفذ USB-C وتوافق الشاحن والكابل ومفاوضة الطاقة USB Power Delivery ودائرة الشحن بحسب تصميم الموديل. لا يعني وجود منفذ USB-C أن كل شاحن أو كل منفذ يدعم شحن اللابتوب.' },
+      { q: 'هل شاحن الموبايل USB-C يكفي لشحن اللابتوب؟', a: 'ليس بالضرورة. قد تكون قدرة الشاحن أقل من المطلوب أو لا يدعم معيار الطاقة المناسب للجهاز. استخدم شاحنًا متوافقًا مع مواصفات الشركة المصنّعة ولا تجبر الموصل إذا لم يثبت بشكل طبيعي.' },
+      { q: 'هل تصليح مدخل الشحن يتطلب تبديل المذربورد كاملة؟', a: 'مو بالضرورة. بعد الفحص قد يتضح أن العطل في المنفذ أو نقاط اللحام أو مكوّن بدائرة الطاقة، ويمكن إصلاحه عندما تسمح حالة اللوحة بذلك. إذا كان الضرر أوسع، نشرح الخيارات قبل التنفيذ.' },
+      { q: 'كم سعر تصليح مدخل شحن اللابتوب في الكويت؟', a: 'تبدأ أسعار إصلاح مدخل الشحن من 20 د.ك، ويعتمد السعر النهائي على موديل الجهاز ونوع المنفذ ومدى الضرر والقطعة المطلوبة. نوضح لك السعر بعد التشخيص وقبل بدء أي عمل مدفوع.' },
+      { q: 'كم يستغرق إصلاح مدخل الشحن؟', a: 'تتحدد المدة بعد معرفة موديل الجهاز والخلل وتوفر القطعة. بعض الأعطال البسيطة قد تكتمل بسرعة، أما إصلاح نقاط اللوحة أو دائرة الطاقة فقد يحتاج وقتًا أطول. نخبرك بالتقدير قبل الموافقة.' },
+      { q: 'هل يؤثر إصلاح مدخل الشحن على ملفاتي؟', a: 'إصلاح الموصل عادةً لا يتطلب فتح الملفات الشخصية. نركز على فحص الهاردوير، وإذا ظهرت حاجة لإجراء قد يؤثر على البيانات نوضح ذلك لك قبل المتابعة.' },
+      { q: 'هل يمكنني الاستمرار باستخدام اللابتوب إذا ظهر شرر أو رائحة احتراق؟', a: 'لا. افصل الشاحن إذا كان ذلك آمنًا، وأوقف استخدام الجهاز ولا تحاول إعادة الشحن. الحرارة غير الطبيعية أو الشرر أو رائحة الاحتراق تحتاج فحصًا قبل توصيل الطاقة مرة أخرى.' }
     ],
     englishPath: '/laptop-charging-port-repair-kuwait',
     arabicLinks: [
       { label: 'تصليح لابتوب', path: '/ar/laptop-repair-kuwait' },
-      { label: 'تصليح مذربورد', path: '/ar/motherboard-repair-kuwait' },
-      { label: 'تبديل البطارية', path: '/ar/battery-replacement-kuwait' },
+      { label: 'تصليح مذربورد ومسار الطاقة', path: '/ar/motherboard-repair-kuwait' },
+      { label: 'تبديل بطارية اللابتوب', path: '/ar/battery-replacement-kuwait' },
+      { label: 'اللابتوب متصل بالشاحن ولا يشحن (بالإنجليزية)', path: '/laptop-plugged-in-not-charging' },
       { label: 'فني كمبيوتر بالقرب مني', path: '/ar/near-me' }
     ],
     serviceIds: ['srv-charging-port', 'srv-motherboard', 'srv-battery', 'srv-laptop']
@@ -1573,6 +1584,8 @@ export default function ArabicCommercialPage() {
       ? 'السلام عليكم KCROC، أحتاج تصليح أو تبديل شاشة اللابتوب. الماركة والموديل: ____. المشكلة: ____. منطقتي بالكويت: ____. فضلاً أكدوا توفر الشاشة والسعر النهائي شامل أجرة العمل والقطعة والمدة المتوقعة قبل الإصلاح.'
       : slug === 'gaming-laptop-repair-kuwait'
       ? 'السلام عليكم KCROC، أحتاج تصليح Gaming Laptop في الكويت. الماركة والموديل الدقيق: ____. المشكلة والأعراض: ____. منطقتي بالكويت: ____. أقدر أرسل صورة أو فيديو للعطل إذا يفيد. فضلاً وضحوا التشخيص والمدة المتوقعة والسعر النهائي قبل أي إصلاح مدفوع.'
+      : slug === 'laptop-charging-port-repair-kuwait'
+      ? 'السلام عليكم KCROC، أحتاج فحص مدخل شحن اللابتوب. الماركة والموديل الدقيق: ____. نوع المنفذ: DC Jack / USB-C / غير متأكد. الأعراض: ____. هل يشحن عند تحريك السلك؟ ____. منطقتي بالكويت: ____. أستطيع إرسال صورة للمنفذ والشاحن. فضلاً وضحوا التشخيص والسعر النهائي والمدة قبل الإصلاح.'
       : `السلام عليكم KCROC، أحتاج ${cfg.h1}. أريد أعرف طريقة الاستلام والتشخيص.`;
   const wa = `https://wa.me/${business.telephone}?text=${encodeURIComponent(whatsappMessage)}`;
 
@@ -1601,6 +1614,24 @@ export default function ArabicCommercialPage() {
     'srv-hinge': {
       title: 'تصليح مفصلات وهيكل اللابتوب',
       description: 'فحص المفصلات والغطاء والإطار لتحديد الضرر وتجنب زيادة الضغط على الشاشة أو كابلها.'
+    }
+  };
+  const arabicChargingServiceCopy: Record<string, { title: string; description: string }> = {
+    'srv-charging-port': {
+      title: 'تصليح مدخل شحن اللابتوب',
+      description: 'تشخيص وإصلاح DC Jack وUSB-C ونقاط اللحام ودائرة الشحن حسب موديل الجهاز.'
+    },
+    'srv-motherboard': {
+      title: 'تصليح المذربورد ومسار الطاقة',
+      description: 'فحص حماية المدخل ودائرة الشحن ومكونات اللوحة قبل اقتراح الاستبدال.'
+    },
+    'srv-battery': {
+      title: 'فحص وتبديل بطارية اللابتوب',
+      description: 'التأكد من البطارية والشحن قبل شراء بطارية بديلة.'
+    },
+    'srv-laptop': {
+      title: 'تصليح اللابتوب',
+      description: 'تشخيص أعطال التشغيل والشحن والطاقة قبل اقتراح القطع.'
     }
   };
   const arabicMacbookScreenServiceCopy: Record<string, { title: string; description: string }> = {
@@ -1647,7 +1678,12 @@ export default function ArabicCommercialPage() {
       description: 'فحص البطارية ومسار الشحن والتأكد من التوافق قبل طلب القطعة.'
     }
   };
-  const relatedGuides = slug === 'macbook-screen-replacement-kuwait'
+  const relatedGuides = slug === 'laptop-charging-port-repair-kuwait'
+    ? [
+        { title: 'اللابتوب متصل بالشاحن لكنه لا يشحن (بالإنجليزية)', path: '/laptop-plugged-in-not-charging' },
+        { title: 'تصليح المذربورد ومسار الطاقة في الكويت', path: '/ar/motherboard-repair-kuwait' }
+      ]
+    : slug === 'macbook-screen-replacement-kuwait'
     ? [{ title: 'دليل حماية شاشة اللابتوب من الكسر (بالإنجليزية)', path: '/blog/how-to-protect-laptop-screen' }]
     : slug === 'laptop-screen-repair-kuwait'
       ? [...AR_GUIDES, { title: 'دليل حماية شاشة اللابتوب من الكسر (بالإنجليزية)', path: '/blog/how-to-protect-laptop-screen' }]
@@ -1733,6 +1769,41 @@ export default function ArabicCommercialPage() {
         price: 30,
       },
     }]
+  } : slug === 'laptop-charging-port-repair-kuwait' ? {
+    '@graph': [{
+      '@type': 'Service',
+      '@id': `${page.seo.canonicalUrl}#service`,
+      name: 'تصليح مدخل شحن اللابتوب في الكويت',
+      serviceType: 'تصليح مدخل DC Jack وUSB-C وتشخيص دائرة الشحن والطاقة',
+      description: cfg.intro,
+      url: page.seo.canonicalUrl,
+      image: `${business.websiteUrl}/images/laptop-dc-power-jack-connector-replacement-kuwait-1000.webp`,
+      areaServed: { '@type': 'Country', name: 'Kuwait' },
+      provider: {
+        '@type': 'LocalBusiness',
+        name: business.title,
+        url: business.websiteUrl,
+        telephone: `+${business.telephone}`,
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: business.streetAddress,
+          addressLocality: business.addressLocality,
+          addressRegion: business.addressRegion,
+          addressCountry: business.addressCountry,
+        },
+      },
+      offers: {
+        '@type': 'Offer',
+        name: 'سعر بداية إصلاح مدخل الشحن من 20 د.ك',
+        description: 'السعر بداية تقديرية حسب العطل والموديل؛ يتم تأكيد السعر النهائي بعد التشخيص وقبل بدء أي عمل مدفوع.',
+        priceCurrency: 'KWD',
+        priceSpecification: {
+          '@type': 'PriceSpecification',
+          priceCurrency: 'KWD',
+          minPrice: 20,
+        },
+      },
+    }]
   } : null;
   const faqSchema = {
     '@graph': [{
@@ -1785,9 +1856,21 @@ export default function ArabicCommercialPage() {
               </Link>
             </div>
           )}
+          {slug === 'laptop-charging-port-repair-kuwait' && (
+            <div className="mt-6 flex flex-col gap-3 rounded-2xl border border-cyan-500/25 bg-cyan-500/5 p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6">
+              <div>
+                <p className="text-xs font-black uppercase tracking-[0.12em] text-cyan-300">سعر بداية الإصلاح</p>
+                <p className="mt-2 text-xl font-black text-white sm:text-2xl">من 20 د.ك حسب العطل والموديل</p>
+                <p className="mt-2 text-sm leading-7 text-slate-400">السعر المبدئي ليس عرضًا نهائيًا؛ نحدد المنفذ أو دائرة الطاقة المتسببة بالمشكلة ونؤكد السعر قبل أي عمل مدفوع.</p>
+              </div>
+              <Link to="/ar/pricing" className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full border border-slate-700 px-5 py-3 text-sm font-black text-cyan-300 transition hover:border-cyan-500/40 hover:text-cyan-200">
+                تفاصيل الأسعار <ArrowLeft className="h-4 w-4" aria-hidden="true" />
+              </Link>
+            </div>
+          )}
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <a href={wa} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-500 px-7 py-3.5 font-black text-slate-950 hover:bg-cyan-400">
-              <MessageCircle className="h-5 w-5" aria-hidden="true" /> {slug === 'laptop-screen-repair-kuwait' ? 'أرسل موديل اللابتوب واحصل على عرض سعر' : slug === 'gaming-laptop-repair-kuwait' ? 'أرسل الموديل والعطل على واتساب' : 'واتساب KCROC'}
+              <MessageCircle className="h-5 w-5" aria-hidden="true" /> {slug === 'laptop-screen-repair-kuwait' ? 'أرسل موديل اللابتوب واحصل على عرض سعر' : slug === 'gaming-laptop-repair-kuwait' ? 'أرسل الموديل والعطل على واتساب' : slug === 'laptop-charging-port-repair-kuwait' ? 'أرسل موديل الجهاز وصورة المنفذ على واتساب' : 'واتساب KCROC'}
             </a>
             <Link to="/book" className="inline-flex items-center justify-center gap-2 rounded-full border border-slate-600 px-7 py-3.5 font-bold text-white hover:border-cyan-700 hover:text-cyan-300">
               <ShieldCheck className="h-5 w-5" aria-hidden="true" /> احجز استلام الجهاز
@@ -1796,6 +1879,23 @@ export default function ArabicCommercialPage() {
               {slug === 'laptop-screen-repair-kuwait' ? 'الصفحة باللغة الإنجليزية' : 'English service page'} <ArrowLeft className="h-4 w-4" aria-hidden="true" />
             </Link>
           </div>
+          {slug === 'laptop-charging-port-repair-kuwait' && (
+            <figure className="mt-8 overflow-hidden rounded-2xl border border-slate-800 bg-slate-950 sm:mt-10">
+              <img
+                src="/images/laptop-dc-power-jack-connector-replacement-kuwait-1000.webp"
+                alt="فحص واستبدال منفذ طاقة DC Jack في لوحة لابتوب"
+                width={1000}
+                height={1000}
+                loading="eager"
+                fetchPriority="high"
+                decoding="async"
+                className="aspect-[16/9] w-full object-cover"
+              />
+              <figcaption className="border-t border-slate-800 px-4 py-3 text-sm leading-6 text-slate-400 sm:px-5">
+                منفذ DC Jack التالف قد يسبب شحنًا متقطعًا. نتحقق من حالة المنفذ ونقاط التثبيت قبل تحديد إمكانية الإصلاح أو الاستبدال.
+              </figcaption>
+            </figure>
+          )}
           {slug === 'gaming-laptop-repair-kuwait' && (
             <figure className="mt-8 overflow-hidden rounded-2xl border border-slate-800 bg-slate-950 sm:mt-10">
               <img
@@ -1866,6 +1966,89 @@ export default function ArabicCommercialPage() {
           )}
         </section>
 
+        {slug === 'laptop-charging-port-repair-kuwait' && (
+          <>
+            <section className="mt-12 rounded-3xl border border-slate-800 bg-slate-900/40 p-6 sm:p-8" aria-labelledby="charging-port-diagnosis">
+              <div className="grid items-start gap-7 lg:grid-cols-[0.9fr_1.1fr]">
+                <div>
+                  <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">تشخيص قبل تبديل القطع</p>
+                  <h2 id="charging-port-diagnosis" className="mt-2 text-2xl font-black text-white sm:text-3xl">شلون نحدد سبب مشكلة الشحن؟</h2>
+                  <p className="mt-3 leading-8 text-slate-400">نبدأ بالاحتمالات الأقل تكلفة والأوضح في الاختبار، ثم ننتقل إلى فحص اللوحة فقط إذا كانت العلامات تشير إلى عطل داخلي. هذه الطريقة تساعد على تجنّب تبديل بطارية أو منفذ سليم بسبب أعراض متشابهة.</p>
+                  <figure className="mt-6 overflow-hidden rounded-2xl border border-slate-800 bg-slate-950">
+                    <img
+                      src="/images/laptop-motherboard-usb-ports-cables.webp"
+                      alt="منافذ وتوصيلات لوحة لابتوب أثناء تشخيص عطل الشحن والطاقة"
+                      width={800}
+                      height={600}
+                      loading="lazy"
+                      decoding="async"
+                      className="aspect-[4/3] w-full object-cover"
+                    />
+                    <figcaption className="border-t border-slate-800 px-4 py-3 text-sm leading-6 text-slate-400">
+                      إذا كان المنفذ سليمًا، نتحقق من التوصيلات ودائرة الشحن ومسار الطاقة حسب تصميم اللوحة.
+                    </figcaption>
+                  </figure>
+                </div>
+                <div className="grid gap-4 sm:grid-cols-2">
+                  {[
+                    { title: 'يشحن عند تحريك السلك', text: 'قد يشير إلى تآكل الموصل أو ارتخائه أو تشقق اللحام. أوقف تحريك القابس لأن ذلك قد يوسّع الضرر.' },
+                    { title: 'USB-C لا يتعرف على الشاحن', text: 'قد يكون السبب في الكابل أو قدرة الشاحن أو توافق USB Power Delivery أو المنفذ أو دائرة الشحن؛ شكل المنفذ وحده لا يثبت توافق الشحن.' },
+                    { title: 'لا تظهر لمبة الشحن', text: 'نستبعد مشكلة المقبس والشاحن المتوافق أولًا، ثم نفحص مدخل الطاقة والحماية والدائرة الداخلية حسب الأعراض.' },
+                    { title: 'البطارية لا تزيد رغم توصيل الشاحن', text: 'قد يكون السبب من الشاحن أو البطارية أو دائرة الشحن. نختبر مسار الطاقة قبل التوصية بتبديل أي قطعة.' }
+                  ].map((item) => (
+                    <article key={item.title} className="rounded-2xl border border-slate-800 bg-slate-950/50 p-5">
+                      <h3 className="font-bold text-white">{item.title}</h3>
+                      <p className="mt-2 text-sm leading-7 text-slate-400">{item.text}</p>
+                    </article>
+                  ))}
+                </div>
+              </div>
+            </section>
+
+            <section className="mt-10 rounded-3xl border border-slate-800 bg-slate-900/40 p-6 sm:p-8" aria-labelledby="charging-port-repair-process">
+              <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">خطوات واضحة</p>
+              <h2 id="charging-port-repair-process" className="mt-2 text-2xl font-black text-white sm:text-3xl">من الاستلام إلى اختبار الشحن</h2>
+              <p className="mt-3 max-w-3xl leading-8 text-slate-400">تتغير خطوات الفحص حسب موديل اللابتوب ونوع المنفذ، لكن الإصلاح لا يبدأ قبل شرح النتيجة والسعر والحصول على موافقتك.</p>
+              <ol className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {[
+                  { title: '١. تحديد الموديل والأعراض', text: 'نحتاج الماركة والموديل الدقيق، نوع المنفذ إن كان معروفًا، ومتى بدأت المشكلة.' },
+                  { title: '٢. اختبار الشاحن والكابل', text: 'نتأكد من توافق مصدر الطاقة وقدرته قبل الحكم على اللابتوب نفسه.' },
+                  { title: '٣. فحص المنفذ والتوصيلات', text: 'نفحص التثبيت والتلامس ونقاط اللحام والضرر الظاهر دون افتراض أن المنفذ هو السبب دائمًا.' },
+                  { title: '٤. تشخيص دائرة الطاقة', text: 'عند الحاجة نفحص مكوّنات الحماية ومسار الشحن واللوحة لتحديد مكان الخلل.' },
+                  { title: '٥. موافقة قبل الإصلاح', text: 'نوضح العطل وخياراته والسعر قبل أي عمل مدفوع، ولا نبدّل المذربورد تلقائيًا.' },
+                  { title: '٦. اختبار بعد الإصلاح', text: 'نختبر استقرار الشحن والتعرّف على البطارية قبل إعادة الجهاز.' }
+                ].map((item) => (
+                  <li key={item.title} className="rounded-2xl border border-slate-800 bg-slate-950/45 p-5">
+                    <h3 className="font-bold text-white">{item.title}</h3>
+                    <p className="mt-2 text-sm leading-7 text-slate-400">{item.text}</p>
+                  </li>
+                ))}
+              </ol>
+            </section>
+
+            <section className="mt-10 rounded-3xl border border-amber-500/20 bg-amber-500/5 p-6 sm:p-8" aria-labelledby="charging-port-safe-checks">
+              <p className="text-sm font-bold uppercase tracking-[0.14em] text-amber-300">فحوصات آمنة قبل التواصل</p>
+              <h2 id="charging-port-safe-checks" className="mt-2 text-2xl font-black text-white sm:text-3xl">شنو تقدر تفحص بنفسك بدون مخاطرة؟</h2>
+              <ul className="mt-5 grid gap-3 sm:grid-cols-2">
+                {[
+                  'جرّب مقبس كهرباء آخر إذا كان ذلك آمنًا، وتأكد أن الشاحن متصل جيدًا من الطرفين.',
+                  'استخدم الشاحن الأصلي أو شاحنًا متوافقًا تمامًا مع مواصفات الموديل؛ لا تعتمد على شكل القابس وحده.',
+                  'افحص المنفذ من الخارج فقط. لا تدخل دبوسًا أو أداة معدنية ولا تستخدم سوائل للتنظيف.',
+                  'إذا وجدت حرارة غير طبيعية أو شررًا أو رائحة احتراق أو سبق انسكاب سائل، أوقف الاستخدام وافصل الطاقة إذا كان ذلك آمنًا.'
+                ].map((item) => (
+                  <li key={item} className="flex gap-3 rounded-2xl border border-slate-800 bg-slate-950/50 p-4 text-sm leading-7 text-slate-300">
+                    <CheckCircle2 className="mt-1 h-5 w-5 shrink-0 text-cyan-400" aria-hidden="true" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-5 text-sm leading-7 text-slate-400">لا تواصل تحريك الكابل بحثًا عن زاوية شحن، ولا تفتح الجهاز وهو متصل بالكهرباء. أرسل موديل اللابتوب وصورة واضحة للمنفذ والشاحن على واتساب لتسريع تحديد الخطوة التالية.</p>
+              <a href={wa} target="_blank" rel="noreferrer" className="mt-5 inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-500 px-6 py-3 font-black text-slate-950 transition hover:bg-cyan-400">
+                <MessageCircle className="h-5 w-5" aria-hidden="true" /> أرسل صورة المنفذ والشاحن
+              </a>
+            </section>
+          </>
+        )}
         {slug === 'gaming-laptop-repair-kuwait' && (
           <section className="mt-12 rounded-3xl border border-slate-800 bg-slate-900/40 p-6 sm:p-8" aria-labelledby="arabic-gaming-process">
             <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">فحص قبل الإصلاح</p>
@@ -1918,8 +2101,8 @@ export default function ArabicCommercialPage() {
             {services.map((service) => service && (
               <Link key={service.id} to={arabicServicePathById[service.id] ?? `/${service.slug}`} className="group rounded-2xl border border-slate-800 bg-slate-900/45 p-6 hover:border-cyan-500/40">
                 <Wrench className="h-6 w-6 text-cyan-400" aria-hidden="true" />
-                <h3 className="mt-4 text-lg font-bold text-white group-hover:text-cyan-300">{(slug === 'laptop-screen-repair-kuwait' ? arabicScreenServiceCopy[service.id]?.title : slug === 'gaming-laptop-repair-kuwait' ? arabicGamingServiceCopy[service.id]?.title : slug === 'macbook-screen-replacement-kuwait' ? arabicMacbookScreenServiceCopy[service.id]?.title : undefined) ?? service.title.replace(' Kuwait', '')}</h3>
-                <p className="mt-2 text-sm leading-6 text-slate-400">{(slug === 'laptop-screen-repair-kuwait' ? arabicScreenServiceCopy[service.id]?.description : slug === 'gaming-laptop-repair-kuwait' ? arabicGamingServiceCopy[service.id]?.description : slug === 'macbook-screen-replacement-kuwait' ? arabicMacbookScreenServiceCopy[service.id]?.description : undefined) ?? service.shortDescription}</p>
+                <h3 className="mt-4 text-lg font-bold text-white group-hover:text-cyan-300">{(slug === 'laptop-screen-repair-kuwait' ? arabicScreenServiceCopy[service.id]?.title : slug === 'gaming-laptop-repair-kuwait' ? arabicGamingServiceCopy[service.id]?.title : slug === 'macbook-screen-replacement-kuwait' ? arabicMacbookScreenServiceCopy[service.id]?.title : slug === 'laptop-charging-port-repair-kuwait' ? arabicChargingServiceCopy[service.id]?.title : undefined) ?? service.title.replace(' Kuwait', '')}</h3>
+                <p className="mt-2 text-sm leading-6 text-slate-400">{(slug === 'laptop-screen-repair-kuwait' ? arabicScreenServiceCopy[service.id]?.description : slug === 'gaming-laptop-repair-kuwait' ? arabicGamingServiceCopy[service.id]?.description : slug === 'macbook-screen-replacement-kuwait' ? arabicMacbookScreenServiceCopy[service.id]?.description : slug === 'laptop-charging-port-repair-kuwait' ? arabicChargingServiceCopy[service.id]?.description : undefined) ?? service.shortDescription}</p>
               </Link>
             ))}
           </div>
@@ -1961,8 +2144,8 @@ export default function ArabicCommercialPage() {
         </section>
 
         <section className="mt-12" aria-labelledby="arabic-guides">
-          <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">أدلة عربية مرتبطة</p>
-          <h2 id="arabic-guides" className="mt-2 text-2xl font-black text-white sm:text-3xl">معلومات تساعدك قبل قرار الإصلاح</h2>
+          <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">{slug === 'laptop-charging-port-repair-kuwait' ? 'مراجع وخدمات مرتبطة بمشكلة الشحن' : 'أدلة عربية مرتبطة'}</p>
+          <h2 id="arabic-guides" className="mt-2 text-2xl font-black text-white sm:text-3xl">{slug === 'laptop-charging-port-repair-kuwait' ? 'معلومات إضافية لتحديد سبب عدم الشحن' : 'معلومات تساعدك قبل قرار الإصلاح'}</h2>
           <div className="mt-6 grid gap-3 sm:grid-cols-2">
             {relatedGuides.map((item) => (
               <Link key={item.path} to={item.path} className="rounded-2xl border border-slate-800 bg-slate-900/45 p-5 font-semibold text-slate-200 hover:border-cyan-500/40 hover:text-cyan-300">{item.title}</Link>

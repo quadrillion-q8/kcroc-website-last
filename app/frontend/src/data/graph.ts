@@ -801,6 +801,33 @@ export const rawGraphData: RawGraphData = {
 
     'page-ar-charging-port-repair': {
       id: 'page-ar-charging-port-repair', slug: 'ar/laptop-charging-port-repair-kuwait', entityType: 'WebPage', isActive: true,
+      title: 'تصليح مدخل شحن اللابتوب في الكويت', description: 'تصليح مدخل شحن اللابتوب وUSB-C وDC Jack في الكويت مع فحص الشاحن ونقاط اللحام ودائرة الطاقة. استلام وتوصيل مجاني، وسعر بداية الإصلاح من 20 د.ك حسب العطل.',
+      seo: {
+        title: 'تصليح مدخل شحن اللابتوب بالكويت | USB-C وDC Jack | KCROC',
+        description: 'اللابتوب ما يشحن أو المنفذ مرتخي؟ فحص وإصلاح USB-C وDC Jack في الكويت، من 20 د.ك حسب العطل، مع استلام مجاني وضمان 30 يومًا.',
+        canonicalUrl: 'https://www.computerrepairkuwait.com/ar/laptop-charging-port-repair-kuwait',
+        ogImage: '/images/laptop-dc-power-jack-connector-replacement-kuwait-1000.webp',
+        ogImageAlt: 'فحص واستبدال منفذ طاقة DC Jack في لوحة لابتوب',
+        ogImageWidth: 1000,
+        ogImageHeight: 1000,
+        locale: 'ar_KW',
+        alternates: {
+          'ar-KW': 'https://www.computerrepairkuwait.com/ar/laptop-charging-port-repair-kuwait',
+          'en-KW': 'https://www.computerrepairkuwait.com/laptop-charging-port-repair-kuwait',
+          'x-default': 'https://www.computerrepairkuwait.com/laptop-charging-port-repair-kuwait'
+        },
+        ogType: 'website',
+        schemaTypes: ['WebPage', 'BreadcrumbList', 'FAQPage', 'Service'],
+        lastModified: '2026-10-21T00:00:00+03:00',
+        breadcrumbs: [{ name: 'الرئيسية', url: '/' }, { name: 'تصليح مدخل شحن اللابتوب', url: '/ar/laptop-charging-port-repair-kuwait' }]
+      },
+      featuredImage: {
+        ogImage: '/images/laptop-dc-power-jack-connector-replacement-kuwait-1000.webp',
+        altText: 'فحص واستبدال منفذ طاقة DC Jack في لوحة لابتوب'
+      },
+      relatedServiceIds: ['srv-charging-port', 'srv-motherboard', 'srv-battery', 'srv-laptop']
+    } as WebPageEntity,
+      id: 'page-ar-charging-port-repair', slug: 'ar/laptop-charging-port-repair-kuwait', entityType: 'WebPage', isActive: true,
       title: 'تصليح مدخل شحن اللابتوب في الكويت', description: 'تصليح مدخل شحن اللابتوب وUSB-C وDC Jack في الكويت مع تشخيص مسار الطاقة وإصلاح المكونات عند الإمكان.',
       seo: { title: 'تصليح مدخل شحن اللابتوب الكويت | USB-C وDC Jack | KCROC', description: 'تصليح مدخل شحن اللابتوب وUSB-C وDC Jack في الكويت. تشخيص قبل الإصلاح، استلام وتوصيل مجاني، وضمان 30 يومًا.', canonicalUrl: 'https://www.computerrepairkuwait.com/ar/laptop-charging-port-repair-kuwait', locale: 'ar_KW', alternates: { 'ar-KW': 'https://www.computerrepairkuwait.com/ar/laptop-charging-port-repair-kuwait', 'en-KW': 'https://www.computerrepairkuwait.com/laptop-charging-port-repair-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/laptop-charging-port-repair-kuwait' }, ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList', 'FAQPage', 'Service'], lastModified: '2026-10-05T00:00:00+03:00', breadcrumbs: [{ name: 'الرئيسية', url: '/' }, { name: 'تصليح مدخل شحن اللابتوب', url: '/ar/laptop-charging-port-repair-kuwait' }] },
       relatedServiceIds: ['srv-charging-port', 'srv-motherboard', 'srv-battery', 'srv-laptop']
