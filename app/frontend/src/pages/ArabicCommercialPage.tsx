@@ -1668,16 +1668,15 @@ export default function ArabicCommercialPage() {
     'srv-keyboard': '/ar/laptop-keyboard-replacement-kuwait',
     'srv-liquid-damage': '/ar/laptop-liquid-damage-repair-kuwait',
   };
-  const isMacbookScreenService = slug === 'macbook-screen-replacement-kuwait';
-  const screenServiceSchema = (slug === 'laptop-screen-repair-kuwait' || isMacbookScreenService) ? {
+  const screenServiceSchema = slug === 'laptop-screen-repair-kuwait' ? {
     '@graph': [{
       '@type': 'Service',
       '@id': `${page.seo.canonicalUrl}#service`,
-      name: isMacbookScreenService ? 'تبديل شاشة MacBook في الكويت' : 'تصليح وتبديل شاشة اللابتوب في الكويت',
-      serviceType: isMacbookScreenService ? 'تبديل شاشة MacBook' : 'تصليح وتبديل شاشة اللابتوب',
+      name: 'تصليح وتبديل شاشة اللابتوب في الكويت',
+      serviceType: 'تصليح وتبديل شاشة اللابتوب',
       description: cfg.intro,
       url: page.seo.canonicalUrl,
-      image: `${business.websiteUrl}${isMacbookScreenService ? IMAGES.macbook.diagnostics.src : IMAGES.laptopHardware.laptopScreenAssemblyDisassemblyRepair.src}`,
+      image: `${business.websiteUrl}${IMAGES.laptopHardware.laptopScreenAssemblyDisassemblyRepair.src}`,
       areaServed: { '@type': 'Country', name: 'Kuwait' },
       provider: {
         '@type': 'LocalBusiness',
@@ -1694,8 +1693,39 @@ export default function ArabicCommercialPage() {
       },
       offers: {
         '@type': 'Offer',
-        name: isMacbookScreenService ? 'أجرة العمل من 30 د.ك + سعر شاشة MacBook' : 'أجرة العمل من 30 د.ك + سعر الشاشة',
-        description: isMacbookScreenService ? 'أجرة العمل تبدأ من 30 د.ك، وسعر تجميعة شاشة MacBook يُحسب بشكل منفصل حسب الموديل والجيل وتوفر القطعة. نؤكد السعر النهائي قبل أي عمل مدفوع.' : 'أجرة العمل تبدأ من 30 د.ك، وسعر الشاشة يُحسب بشكل منفصل حسب الموديل والمواصفات وتوفر القطعة. نؤكد السعر النهائي قبل أي عمل مدفوع.',
+        name: 'أجرة العمل من 30 د.ك + سعر الشاشة',
+        description: 'أجرة العمل تبدأ من 30 د.ك، وسعر الشاشة يُحسب بشكل منفصل حسب الموديل والمواصفات وتوفر القطعة. نؤكد السعر النهائي قبل أي عمل مدفوع.',
+        priceCurrency: 'KWD',
+        price: 30,
+      },
+    }]
+  } : slug === 'macbook-screen-replacement-kuwait' ? {
+    '@graph': [{
+      '@type': 'Service',
+      '@id': `${page.seo.canonicalUrl}#service`,
+      name: 'تبديل شاشة MacBook في الكويت',
+      serviceType: 'تبديل شاشة MacBook',
+      description: cfg.intro,
+      url: page.seo.canonicalUrl,
+      image: `${business.websiteUrl}${IMAGES.macbook.diagnostics.src}`,
+      areaServed: { '@type': 'Country', name: 'Kuwait' },
+      provider: {
+        '@type': 'LocalBusiness',
+        name: business.title,
+        url: business.websiteUrl,
+        telephone: `+${business.telephone}`,
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: business.streetAddress,
+          addressLocality: business.addressLocality,
+          addressRegion: business.addressRegion,
+          addressCountry: business.addressCountry,
+        },
+      },
+      offers: {
+        '@type': 'Offer',
+        name: 'أجرة العمل من 30 د.ك + سعر شاشة MacBook',
+        description: 'أجرة العمل تبدأ من 30 د.ك، وسعر تجميعة شاشة MacBook يُحسب بشكل منفصل حسب الموديل والجيل وتوفر القطعة. نؤكد السعر النهائي قبل أي عمل مدفوع.',
         priceCurrency: 'KWD',
         price: 30,
       },
