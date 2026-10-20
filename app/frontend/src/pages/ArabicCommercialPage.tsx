@@ -119,22 +119,28 @@ const CONFIG: Record<string, {
     serviceIds: ['srv-gaming', 'srv-gaming-laptop-cleaning', 'srv-motherboard', 'srv-laptop']
   },
   'laptop-screen-repair-kuwait': {
-    h1: 'تصليح وتبديل شاشة اللابتوب في الكويت',
-    eyebrow: 'شاشة مكسورة أو سوداء أو فيها خطوط ووميض • فحص قبل تبديل القطعة',
-    intro: 'شاشة اللابتوب مكسورة؟ سوداء؟ فيها خطوط أو تومض؟ مو كل مشكلة تعني أن الشاشة لازم تتبدل؛ ممكن يكون السبب كابل الشاشة أو الإضاءة أو اتصال داخلي. نفحص العطل ونطابق القطعة مع موديل جهازك، وبعدها نعطيك السعر والمدة المتوقعة قبل أي إصلاح مدفوع. أجرة تبديل الشاشة تبدأ من 30 د.ك، وسعر الشاشة يُحسب بشكل منفصل.',
-    bullets: ['فحص الشاشة والكابل والإضاءة قبل تبديل القطعة', 'أجرة العمل تبدأ من 30 د.ك + سعر الشاشة', 'مطابقة الشاشة حسب موديل الجهاز والمواصفات', 'تأكيد توفر القطعة والمدة قبل الموافقة', 'استلام وتوصيل مجاني في مناطق الكويت'],
+    h1: 'تصليح شاشة اللابتوب في الكويت – فحص وتبديل حسب الموديل',
+    eyebrow: 'شاشة مكسورة أو سوداء أو فيها خطوط ووميض • نشخّص السبب قبل طلب القطعة',
+    intro: 'شاشة اللابتوب مكسورة أو فيها بقع سوداء أو خطوط؟ الصورة تومض، تختفي عند تحريك الغطاء، أو الشاشة سوداء والجهاز يبدو أنه يعمل؟ لا تفترض أن اللوحة نفسها تالفة؛ قد يكون السبب في لوحة LCD، أو كابل الشاشة ومفصلاتها، أو الإضاءة أو مسار العرض. في KCROC نفحص الأعراض وموديل الجهاز، ونطابق الشاشة حسب رقم القطعة والمواصفات، ثم نوضح أجرة العمل وسعر الشاشة والمدة المتوقعة قبل أي إصلاح مدفوع.',
+    bullets: ['تشخيص الشاشة والكابل والإضاءة قبل طلب قطعة بديلة', 'أجرة العمل تبدأ من 30 د.ك + سعر الشاشة', 'مطابقة الموديل والدقة ومعدل التحديث واللمس والمنفذ حسب الجهاز', 'تأكيد السعر النهائي وتوفر القطعة والمدة قبل الموافقة', 'استلام وتوصيل مجاني من مناطق الكويت والإصلاح في مختبر حولي'],
     faq: [
-      { q: 'هل الشاشة السوداء تعني أن الشاشة خربانة؟', a: 'مو بالضرورة. ممكن يكون السبب الشاشة أو الكابل أو الإضاءة أو اتصال داخلي آخر. نفحص العطل أولًا قبل اقتراح تبديل الشاشة.' },
-      { q: 'كم سعر تبديل شاشة اللابتوب؟ هل سعر 30 د.ك يشمل الشاشة؟', a: 'أجرة العمل تبدأ من 30 د.ك، وسعر الشاشة يُحسب بشكل منفصل حسب الموديل والمقاس والدقة ونوع الشاشة وتوفرها. نؤكد لك السعر النهائي قبل أي عمل مدفوع.' },
-      { q: 'هل تبدلون الشاشة في نفس اليوم؟', a: 'ممكن إذا كانت الشاشة المناسبة متوفرة وكان وقت الاستلام والتشخيص والتركيب يسمح. نؤكد توفر القطعة والمدة المتوقعة لموديل جهازك قبل موافقتك على السعر.' },
-      { q: 'هل يوجد ضمان على تبديل الشاشة؟', a: 'نعم، ضمان 30 يومًا على الشاشة وأجرة العمل وفق شروط الخدمة. نوضح لك تفاصيل التغطية قبل الإصلاح.' },
-      { q: 'هل تستلمون اللابتوب من منطقتي؟', a: 'نعم، نرتب الاستلام والتوصيل من مناطق الكويت. يتم الفحص والإصلاح في مختبر KCROC بحولي، ثم نرجع الجهاز لك بعد الاختبار.' }
+      { q: 'الشاشة سوداء لكن اللابتوب يشتغل، هل لازم أبدّل الشاشة؟', a: 'مو بالضرورة. قد يكون السبب من الشاشة أو الكابل أو الإضاءة أو مسار العرض. إذا كان لديك شاشة خارجية وكابل متوافق، يمكن اختبار العرض الخارجي للمساعدة على عزل الاحتمالات، لكن النتيجة وحدها لا تؤكد القطعة التالفة. نفحص الجهاز قبل اقتراح التبديل.' },
+      { q: 'كم سعر تبديل شاشة اللابتوب؟ هل سعر 30 د.ك يشمل الشاشة؟', a: 'أجرة العمل تبدأ من 30 د.ك، وسعر الشاشة منفصل ويتحدد حسب الماركة والموديل ورقم القطعة والدقة ومعدل التحديث واللمس وتوفر القطعة. نوضح السعر النهائي شامل أجرة العمل والقطعة قبل أي إصلاح مدفوع.' },
+      { q: 'كيف تتأكدون أن الشاشة الجديدة متوافقة مع جهازي؟', a: 'ما نعتمد على المقاس وحده. نراجع الموديل الدقيق ورقم الشاشة الأصلي عندما يكون متاحًا، والدقة ومعدل التحديث ونوع الموصل واللمس ونقاط التثبيت حسب تصميم الجهاز. نتحقق من التوفر والتكلفة قبل طلب القطعة.' },
+      { q: 'الخطوط أو الوميض يظهران إذا حرّكت غطاء اللابتوب، شنو السبب؟', a: 'قد يشير ذلك إلى كابل شاشة متضرر أو مشكلة في الموصل أو المفصلات، لكنه لا يثبت السبب وحده. تجنب تحريك الغطاء بالقوة؛ نفحص مجموعة الشاشة والتوصيلات قبل تحديد الإصلاح.' },
+      { q: 'هل تبدلون الشاشة في نفس اليوم؟', a: 'قد يكون ذلك ممكنًا إذا كانت القطعة الصحيحة متوفرة وأتاح وقت الاستلام والتشخيص والتركيب ذلك. لا نؤكد إصلاحًا في نفس اليوم قبل التحقق من موديل جهازك وتوفر الشاشة والمدة.' },
+      { q: 'هل تقدرون تبدّلون شاشة لمس أو شاشة بمعدل تحديث عالٍ؟', a: 'نحدد النوع من موديل الجهاز ورقم القطعة والمواصفات. شاشات اللمس والدقة العالية ومعدلات التحديث المختلفة ليست بدائل متطابقة حتى لو كان المقاس واحدًا؛ نتحقق من التوافق قبل طلب القطعة.' },
+      { q: 'هل يوجد ضمان على تبديل الشاشة؟', a: 'توجد تغطية ضمان لمدة 30 يومًا على الإصلاحات المشمولة وفق شروط الخدمة التي نوضحها قبل التنفيذ. نبيّن لك نطاق التغطية على الشاشة والعمل قبل الموافقة.' },
+      { q: 'هل شاشة MacBook لها صفحة وسعر خاصان؟', a: 'نعم، لتبديل شاشة MacBook Air أو MacBook Pro صفحة مخصصة لأن موديل الجهاز والجيل وتجميعة الشاشة تختلف. يمكنك مراجعة صفحة خدمة شاشة MacBook لمعرفة التفاصيل.' },
+      { q: 'هل تستلمون اللابتوب من منطقتي في الكويت؟', a: 'نعم، نرتب الاستلام والتوصيل من مناطق الكويت حسب الموعد والتوفر. الفحص والإصلاح يتمان في مختبر KCROC بحولي؛ بقية المناطق مناطق خدمة وليست فروعًا مستقلة.' }
     ],
     englishPath: '/laptop-screen-repair-kuwait',
     arabicLinks: [
-      { label: 'تصليح لابتوب', path: '/ar/laptop-repair-kuwait' },
-      { label: 'تصليح كمبيوتر', path: '/ar/computer-repair-kuwait' },
-      { label: 'تصليح مذربورد', path: '/ar/motherboard-repair-kuwait' },
+      { label: 'تبديل شاشة MacBook Air وMacBook Pro', path: '/ar/macbook-screen-replacement-kuwait' },
+      { label: 'تصليح اللابتوب في الكويت', path: '/ar/laptop-repair-kuwait' },
+      { label: 'تصليح مفصلات وهيكل اللابتوب', path: '/laptop-hinge-repair-kuwait' },
+      { label: 'تصليح المذربورد واللوحة الأم', path: '/ar/motherboard-repair-kuwait' },
+      { label: 'أسعار تصليح الكمبيوتر واللابتوب', path: '/ar/pricing' },
       { label: 'فني كمبيوتر بالقرب مني', path: '/ar/near-me' }
     ],
     serviceIds: ['srv-screen', 'srv-laptop', 'srv-battery', 'srv-hinge']
@@ -1602,7 +1608,7 @@ export default function ArabicCommercialPage() {
   const whatsappMessage = slug === 'macbook-screen-replacement-kuwait'
     ? 'السلام عليكم KCROC، أحتاج تبديل شاشة MacBook في الكويت. موديل الجهاز والجيل: ____. أعراض الشاشة: ____. منطقتي بالكويت: ____. فضلاً أكدوا توفر الشاشة المناسبة والسعر النهائي شامل أجرة العمل والشاشة والمدة المتوقعة قبل الإصلاح.'
     : slug === 'laptop-screen-repair-kuwait'
-      ? 'السلام عليكم KCROC، أحتاج تصليح أو تبديل شاشة اللابتوب. الماركة والموديل: ____. المشكلة: ____. منطقتي بالكويت: ____. فضلاً أكدوا توفر الشاشة والسعر النهائي شامل أجرة العمل والقطعة والمدة المتوقعة قبل الإصلاح.'
+      ? 'السلام عليكم KCROC، أحتاج فحص أو تبديل شاشة اللابتوب في الكويت. الماركة والموديل الدقيق أو Service Tag: ____. الأعراض: كسر / بقع سوداء / خطوط / وميض / شاشة سوداء / تتغير مع حركة الغطاء / أخرى. هل الشاشة لمس أو ذات معدل تحديث عالٍ إذا كنت تعرف؟ ____. أستطيع إرسال صور للشاشة والجهاز. منطقتي بالكويت: ____. فضلاً أكدوا رقم القطعة أو توافقها، وتوفرها، والسعر النهائي شامل أجرة العمل والشاشة والمدة المتوقعة قبل أي إصلاح مدفوع.'
       : slug === 'gaming-laptop-repair-kuwait'
       ? 'السلام عليكم KCROC، أحتاج تصليح Gaming Laptop في الكويت. الماركة والموديل الدقيق: ____. المشكلة والأعراض: ____. منطقتي بالكويت: ____. أقدر أرسل صورة أو فيديو للعطل إذا يفيد. فضلاً وضحوا التشخيص والمدة المتوقعة والسعر النهائي قبل أي إصلاح مدفوع.'
       : slug === 'laptop-keyboard-replacement-kuwait'
@@ -1752,7 +1758,12 @@ export default function ArabicCommercialPage() {
     : slug === 'macbook-screen-replacement-kuwait'
     ? [{ title: 'دليل حماية شاشة اللابتوب من الكسر (بالإنجليزية)', path: '/blog/how-to-protect-laptop-screen' }]
     : slug === 'laptop-screen-repair-kuwait'
-      ? [...AR_GUIDES, { title: 'دليل حماية شاشة اللابتوب من الكسر (بالإنجليزية)', path: '/blog/how-to-protect-laptop-screen' }]
+      ? [
+          { title: 'تبديل شاشة MacBook Air وMacBook Pro', path: '/ar/macbook-screen-replacement-kuwait' },
+          { title: 'تصليح اللابتوب في الكويت', path: '/ar/laptop-repair-kuwait' },
+          { title: 'أسعار تصليح الشاشة والقطع في الكويت', path: '/ar/pricing' },
+          { title: 'دليل حماية شاشة اللابتوب من الكسر (بالإنجليزية)', path: '/blog/how-to-protect-laptop-screen' }
+        ]
     : slug === 'gaming-laptop-repair-kuwait'
       ? [
           { title: 'متى تنظف لابتوب القيمنق وتغيّر المعجون الحراري؟', path: '/blog/ar/how-often-clean-laptop-replace-thermal-paste-kuwait' },
@@ -2088,14 +2099,16 @@ export default function ArabicCommercialPage() {
             <figure className="mt-8 overflow-hidden rounded-2xl border border-slate-800 bg-slate-950 sm:mt-10">
               <img
                 src={IMAGES.laptopHardware.laptopScreenAssemblyDisassemblyRepair.src}
-                alt="فحص مجموعة شاشة اللابتوب لتمييز عطل الشاشة من الكابل أو الاتصال"
+                alt="فني يفحص مجموعة شاشة اللابتوب وكابل العرض قبل تحديد هل العطل من لوحة LCD أو التوصيل"
                 width={IMAGES.laptopHardware.laptopScreenAssemblyDisassemblyRepair.width}
                 height={IMAGES.laptopHardware.laptopScreenAssemblyDisassemblyRepair.height}
                 loading="eager"
+                fetchPriority="high"
+                decoding="async"
                 className="aspect-[16/9] w-full object-cover"
               />
               <figcaption className="border-t border-slate-800 px-4 py-3 text-sm leading-6 text-slate-400 sm:px-5">
-                نفحص الشاشة والكابل والإضاءة قبل تحديد القطعة المطلوبة؛ توفر الشاشة والمدة يتأكدان حسب موديل الجهاز.
+                الصورة من أعمال فك وفحص مجموعة شاشة اللابتوب. نفحص الشاشة والكابل وموصلات العرض حسب الموديل، ونؤكد القطعة والتكلفة والمدة قبل التركيب.
               </figcaption>
             </figure>
           )}
@@ -2154,6 +2167,123 @@ export default function ArabicCommercialPage() {
               </figcaption>
             </figure>
           )}
+
+
+        {slug === 'laptop-screen-repair-kuwait' && (
+          <>
+            <section className="mt-12 rounded-3xl border border-slate-800 bg-slate-900/40 p-6 sm:p-8" aria-labelledby="laptop-screen-symptom-guide">
+              <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">دليل الأعطال حسب الأعراض</p>
+              <h2 id="laptop-screen-symptom-guide" className="mt-2 text-2xl font-black text-white sm:text-3xl">شلون نعرف إذا العطل من الشاشة أو الكابل أو مسار العرض؟</h2>
+              <p className="mt-3 max-w-3xl leading-8 text-slate-400">الشاشة السوداء والخطوط والوميض قد تنتج من أكثر من سبب. هدف التشخيص هو تجنّب طلب شاشة جديدة إذا كانت المشكلة في كابل أو موصل أو مكوّن آخر، مع عدم افتراض أن كل عطل قابل للإصلاح قبل الفحص.</p>
+              <div className="mt-6 grid gap-5 md:grid-cols-3">
+                {[
+                  {
+                    image: IMAGES.laptopHardware.laptopLcdPanelReplacementPart,
+                    alt: 'لوحة LCD بديلة للابتوب للفحص ومطابقة رقم القطعة والمواصفات قبل التركيب',
+                    title: 'كسر أو بقع سوداء أو حبر منتشر',
+                    description: 'التشققات وآثار الضغط والبقع الداكنة التي تتوسع قد تشير إلى تلف لوحة العرض. نطابق رقم القطعة والمواصفات قبل تأكيد الاستبدال.',
+                  },
+                  {
+                    image: IMAGES.laptopHardware.laptopScreenAssemblyDisassemblyRepair,
+                    alt: 'مجموعة شاشة اللابتوب وكابل العرض أثناء الفحص الفني',
+                    title: 'خطوط أو وميض أو صورة متقطعة',
+                    description: 'السبب قد يكون لوحة الشاشة أو الكابل أو الموصل أو مسار العرض. إذا كان العطل يتغير مع زاوية الغطاء، لا تحركه بالقوة؛ قد يلزم فحص المفصلات والكابل.',
+                  },
+                  {
+                    image: IMAGES.laptopHardware.screenBezel,
+                    alt: 'إطار الشاشة ومفصلات اللابتوب أثناء فحص الهيكل والتوصيلات',
+                    title: 'الصورة تختفي عند فتح الغطاء',
+                    description: 'قد يكون هناك ضغط على كابل الشاشة أو تلف في المفصلة أو الإطار. نقيّم مجموعة الشاشة والهيكل معًا حتى لا يتكرر الضرر بعد التركيب.',
+                  },
+                ].map((item) => (
+                  <article key={item.title} className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-950/60">
+                    <img src={item.image.src} alt={item.alt} width={item.image.width} height={item.image.height} loading="lazy" decoding="async" className="aspect-[4/3] w-full object-cover" />
+                    <div className="p-5">
+                      <h3 className="text-lg font-black text-white">{item.title}</h3>
+                      <p className="mt-2 text-sm leading-7 text-slate-400">{item.description}</p>
+                    </div>
+                  </article>
+                ))}
+              </div>
+              <div className="mt-6 rounded-2xl border border-cyan-500/20 bg-cyan-500/5 p-5">
+                <h3 className="font-black text-white">فحص آمن أولي إذا كانت الشاشة سوداء</h3>
+                <p className="mt-2 text-sm leading-7 text-slate-300">لاحظ هل توجد لمبات تشغيل أو أصوات بدء تشغيل. إذا توفر لديك تلفزيون أو شاشة خارجية وكابل متوافق، يمكن تجربة العرض الخارجي دون فتح اللابتوب؛ بعض الأجهزة تحتاج إعدادات أو محولًا مناسبًا، وعدم ظهور الصورة الخارجية لا يحدد العطل وحده. أوقف التجارب إذا ظهر صوت غير طبيعي أو رائحة احتراق أو سبق انسكاب سائل.</p>
+              </div>
+            </section>
+
+            <section className="mt-10 rounded-3xl border border-slate-800 bg-slate-900/40 p-6 sm:p-8" aria-labelledby="laptop-screen-compatibility">
+              <div className="grid items-start gap-7 lg:grid-cols-[0.9fr_1.1fr]">
+                <div>
+                  <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">مطابقة القطعة قبل الطلب</p>
+                  <h2 id="laptop-screen-compatibility" className="mt-2 text-2xl font-black text-white sm:text-3xl">ليش ما يكفي نعرف مقاس الشاشة فقط؟</h2>
+                  <p className="mt-3 leading-8 text-slate-400">قد تتشابه شاشتان في المقاس لكن تختلفان في الموصل والدقة ومعدل التحديث واللمس ونقاط التثبيت. صورة ملصق الشاشة أو رقم الموديل تساعد على تقليل احتمال طلب قطعة غير متوافقة.</p>
+                  <figure className="mt-6 overflow-hidden rounded-2xl border border-slate-800 bg-slate-950">
+                    <img src={IMAGES.laptopHardware.dellLaptopScreenRepairCompleted.src} alt="لابتوب بعد تركيب الشاشة واختبار العرض" width={IMAGES.laptopHardware.dellLaptopScreenRepairCompleted.width} height={IMAGES.laptopHardware.dellLaptopScreenRepairCompleted.height} loading="lazy" decoding="async" className="aspect-[4/3] w-full object-cover" />
+                    <figcaption className="border-t border-slate-800 px-4 py-3 text-sm leading-6 text-slate-400">بعد التركيب نختبر عرض الصورة والإضاءة والوظائف المتعلقة بالإصلاح قبل التسليم.</figcaption>
+                  </figure>
+                </div>
+                <div className="grid gap-4 sm:grid-cols-2">
+                  {[
+                    { title: 'الموديل ورقم القطعة', text: 'نسجل الماركة والموديل الدقيق ورقم الشاشة الأصلي إن أمكن، بدل الاختيار من المقاس وحده.' },
+                    { title: 'الدقة ومعدل التحديث', text: 'HD وFHD وQHD و4K ومعدلات التحديث المختلفة ليست بدائل تلقائية لبعضها؛ نتأكد من دعم الجهاز والتوافق.' },
+                    { title: 'اللمس ونوع اللوحة', text: 'شاشة اللمس وتجميعة الشاشة العادية قد تختلفان في القطع وطريقة التركيب. نطابق النوع قبل طلبها.' },
+                    { title: 'الموصل ونقاط التثبيت', text: 'نوع الموصل ومكانه وإطار التثبيت مهم للتوافق. لا نعد بأن أي لوحة بالمقاس نفسه ستعمل.' }
+                  ].map((item) => (
+                    <article key={item.title} className="rounded-2xl border border-slate-800 bg-slate-950/50 p-5">
+                      <h3 className="font-bold text-white">{item.title}</h3>
+                      <p className="mt-2 text-sm leading-7 text-slate-400">{item.text}</p>
+                    </article>
+                  ))}
+                </div>
+              </div>
+            </section>
+
+            <section className="mt-10 rounded-3xl border border-slate-800 bg-slate-900/40 p-6 sm:p-8" aria-labelledby="laptop-screen-repair-process">
+              <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">خطوات واضحة</p>
+              <h2 id="laptop-screen-repair-process" className="mt-2 text-2xl font-black text-white sm:text-3xl">من فحص الشاشة إلى اختبار الصورة</h2>
+              <p className="mt-3 max-w-3xl leading-8 text-slate-400">نوضح سبب المشكلة وخيارات الإصلاح والتكلفة قبل العمل. أجرة الاستبدال تبدأ من 30 د.ك، أما الشاشة نفسها فتُحسب منفصلة حسب الموديل والمواصفات وتوفر القطعة.</p>
+              <ol className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {[
+                  { title: '١. تحديد الموديل والأعراض', text: 'نحتاج الماركة والموديل الدقيق، ونوع الأثر الظاهر ومتى بدأ، وهل حصل سقوط أو ضغط على الغطاء.' },
+                  { title: '٢. عزل احتمالات العطل', text: 'نراجع أعراض الشاشة والكابل والإضاءة والموصلات، ونستخدم اختبارات مناسبة حسب تصميم الجهاز.' },
+                  { title: '٣. مطابقة الشاشة', text: 'نتحقق من رقم القطعة والمقاس والدقة ومعدل التحديث واللمس والموصل ونقاط التثبيت.' },
+                  { title: '٤. عرض السعر والتوفر', text: 'نوضح أجرة العمل وسعر الشاشة وأي ملاحظة تخص القطعة والمدة قبل طلبها أو بدء الإصلاح.' },
+                  { title: '٥. التركيب الآمن', text: 'يتم تركيب القطعة المتوافقة وفق تصميم الجهاز؛ وقد تتطلب بعض الموديلات فكًا أكثر تعقيدًا من غيرها.' },
+                  { title: '٦. اختبار ما بعد الإصلاح', text: 'نختبر الصورة والإضاءة والتوصيل والوظائف المرتبطة بالإصلاح، ثم نعيد الجهاز بعد شرح الضمان.' }
+                ].map((item) => (
+                  <li key={item.title} className="rounded-2xl border border-slate-800 bg-slate-950/45 p-5">
+                    <h3 className="font-bold text-white">{item.title}</h3>
+                    <p className="mt-2 text-sm leading-7 text-slate-400">{item.text}</p>
+                  </li>
+                ))}
+              </ol>
+            </section>
+
+            <section className="mt-10 rounded-3xl border border-slate-800 bg-slate-900/40 p-6 sm:p-8" aria-labelledby="screen-quote-checklist">
+              <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">لتسريع عرض السعر</p>
+              <h2 id="screen-quote-checklist" className="mt-2 text-2xl font-black text-white sm:text-3xl">شنو ترسل لنا على واتساب؟</h2>
+              <div className="mt-5 grid gap-3 sm:grid-cols-2">
+                {[
+                  'الماركة والموديل الدقيق أو صورة ملصق Service Tag إذا كان متاحًا.',
+                  'صورة واضحة للشاشة وهي مطفأة وأخرى أثناء ظهور العطل إن أمكن.',
+                  'هل توجد كسور أو بقع سوداء أو خطوط أو وميض أو انطفاء عند تحريك الغطاء؟',
+                  'هل الجهاز بشاشة لمس أو تعرف الدقة ومعدل التحديث؟ لا بأس إن لم تكن تعرف.',
+                  'اذكر إن حصل سقوط أو ضغط أو انسكاب سائل، حتى نرتب التشخيص المناسب.',
+                  'اكتب منطقتك في الكويت لتنسيق الاستلام والتوصيل.'
+                ].map((item) => (
+                  <div key={item} className="flex gap-3 rounded-2xl border border-slate-800 bg-slate-950/50 p-4 text-sm leading-7 text-slate-300">
+                    <CheckCircle2 className="mt-1 h-5 w-5 shrink-0 text-cyan-400" aria-hidden="true" />
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
+              <p className="mt-5 text-sm leading-7 text-slate-400">لا ترسل كلمة مرور جهازك في رسالة عرض السعر. نحدد معك أي حاجة لفحص إضافي بعد الاستلام وبموافقتك.</p>
+              <a href={wa} target="_blank" rel="noreferrer" className="mt-5 inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-500 px-6 py-3 font-black text-slate-950 transition hover:bg-cyan-400">
+                <MessageCircle className="h-5 w-5" aria-hidden="true" /> أرسل موديل الجهاز وصورة الشاشة
+              </a>
+            </section>
+          </>
+        )}
 
         {slug === 'macbook-repair-kuwait' && (
           <>
