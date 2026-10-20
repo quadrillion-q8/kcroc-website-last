@@ -345,18 +345,36 @@ export const rawGraphData: RawGraphData = {
     } as WebPageEntity,
 
     'page-ar-macbook-repair': {
-      id: 'page-ar-macbook-repair', slug: 'ar/macbook-repair-kuwait', entityType: 'WebPage', isActive: true,
-      title: 'تصليح MacBook في الكويت', description: 'تصليح MacBook واللوحة الأم والشحن والطاقة وأعطال الشاشة والبطارية في الكويت، مع تشخيص قبل الإصلاح واستلام مجاني.',
+      id: 'page-ar-macbook-repair',
+      slug: 'ar/macbook-repair-kuwait',
+      entityType: 'WebPage',
+      isActive: true,
+      title: 'تصليح MacBook Air وMacBook Pro في الكويت',
+      description: 'تصليح MacBook في الكويت لأعطال عدم التشغيل والشحن وUSB-C والشاشة والبطارية واللوحة الأم وأضرار السوائل. تشخيص حسب الموديل والجيل، عرض سعر قبل الإصلاح، وضمان 30 يومًا على الإصلاحات المكتملة.',
       seo: {
-        title: 'تصليح MacBook الكويت | ماك بوك واستلام مجاني | KCROC',
-        description: 'تصليح MacBook في الكويت لمشاكل الشاشة والشحن والطاقة والبطارية واللوحة الأم. تشخيص قبل الإصلاح واستلام وتوصيل مجاني.',
-        canonicalUrl: 'https://www.computerrepairkuwait.com/ar/macbook-repair-kuwait', locale: 'ar_KW',
-        alternates: { 'ar-KW': 'https://www.computerrepairkuwait.com/ar/macbook-repair-kuwait', 'en-KW': 'https://www.computerrepairkuwait.com/macbook-repair-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/macbook-repair-kuwait' },
-        ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList'], lastModified: '2026-10-02T00:00:00+03:00', breadcrumbs: [{ name: 'الرئيسية', url: '/' }, { name: 'تصليح MacBook', url: '/ar/macbook-repair-kuwait' }]
+        title: 'تصليح MacBook في الكويت | Air وPro والشحن واللوحة – KCROC',
+        description: 'MacBook ما يشتغل أو ما يشحن؟ نفحص MacBook Air وPro للشاشة والبطارية وUSB-C واللوحة وأضرار السوائل. تشخيص قبل الإصلاح، استلام مجاني من مناطق الكويت، ومختبر في حولي.',
+        canonicalUrl: 'https://www.computerrepairkuwait.com/ar/macbook-repair-kuwait',
+        locale: 'ar_KW',
+        alternates: {
+          'ar-KW': 'https://www.computerrepairkuwait.com/ar/macbook-repair-kuwait',
+          'en-KW': 'https://www.computerrepairkuwait.com/macbook-repair-kuwait',
+          'x-default': 'https://www.computerrepairkuwait.com/macbook-repair-kuwait'
+        },
+        ogType: 'website',
+        schemaTypes: ['WebPage', 'BreadcrumbList', 'FAQPage', 'Service', 'ImageObject'],
+        lastModified: '2026-10-21T00:00:00+03:00',
+        breadcrumbs: [
+          { name: 'الرئيسية', url: '/' },
+          { name: 'تصليح MacBook', url: '/ar/macbook-repair-kuwait' }
+        ]
       },
-      relatedServiceIds: ['srv-macbook', 'srv-macbook-screen', 'srv-battery', 'srv-motherboard']
+      featuredImage: {
+        ogImage: IMAGES.macbook.diagnostics.src,
+        altText: 'فني يفحص جهاز MacBook مفتوحًا لتشخيص أعطال الشاشة والبطارية واللوحة الأم في مختبر إصلاح بالكويت'
+      },
+      relatedServiceIds: ['srv-macbook', 'srv-macbook-screen', 'srv-battery', 'srv-motherboard', 'srv-liquid-damage']
     } as WebPageEntity,
-
     'page-ar-macbook-screen-replacement': {
       id: 'page-ar-macbook-screen-replacement', slug: 'ar/macbook-screen-replacement-kuwait', entityType: 'WebPage', isActive: true,
       title: 'تبديل شاشة MacBook في الكويت', description: 'تبديل شاشة MacBook Air وMacBook Pro في الكويت للشاشة المكسورة أو السوداء أو التي فيها خطوط أو وميض. فحص قبل التبديل، أجرة العمل من 30 د.ك + سعر الشاشة، واستلام وتوصيل مجاني.',

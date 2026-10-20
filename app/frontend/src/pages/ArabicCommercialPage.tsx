@@ -274,24 +274,32 @@ const CONFIG: Record<string, {
     ]
   },
   'macbook-repair-kuwait': {
-    h1: 'تصليح MacBook في الكويت',
-    eyebrow: 'MacBook Air وMacBook Pro • نفحص الجهاز قبل لا نبدّل أي قطعة',
-    intro: 'الـMacBook ما يشتغل؟ ما يشحن؟ الشاشة سوداء أو البطارية تخلص بسرعة؟ في KCROC نفحص الجهاز أول ونحدد وين المشكلة بالضبط، سواء كانت من الشحن أو البطارية أو الشاشة أو اللوحة الأم، وبعدها نقول لك شنو يحتاج الجهاز قبل لا تبدّل أي قطعة.',
-    bullets: ['MacBook Air وMacBook Pro', 'فحص مشاكل الشاشة والشحن والطاقة', 'إصلاح اللوحة على مستوى المكوّنات عند الإمكان', 'تبديل البطارية والشاشة حسب الموديل', 'استلام وتوصيل مجاني داخل الكويت'],
+    h1: 'تصليح MacBook Air وMacBook Pro في الكويت',
+    eyebrow: 'تشخيص MacBook قبل تبديل الشاشة أو البطارية أو اللوحة الأم',
+    intro: 'الـMacBook ما يشتغل أو ما يشحن؟ الشاشة سوداء، البطارية تنتفخ أو تخلص بسرعة، الجهاز يسخن أو انسكب عليه سائل؟ في KCROC نفحص MacBook Air وMacBook Pro حسب رقم الموديل والجيل، ونميز بين عطل الشاحن أو البطارية أو الشاشة أو منفذ USB‑C أو اللوحة الأم. نشرح خيارات الإصلاح والتكلفة قبل أي عمل مدفوع؛ ما نفترض أن تبديل اللوحة كاملة هو الحل في كل حالة.',
+    bullets: ['MacBook Air وMacBook Pro من أجيال Intel وApple Silicon حسب حالة الجهاز', 'تشخيص عدم التشغيل والشحن المتقطع والشاشة السوداء', 'فحص البطارية المنتفخة أو سريعة النفاد بأولوية السلامة', 'إصلاح اللوحة الأم على مستوى المكونات عندما يكون ذلك مناسبًا فنيًا', 'استلام وتوصيل مجاني من مناطق الكويت والإصلاح في مختبر حولي'],
     faq: [
-      { q: 'تصلحون MacBook Air وMacBook Pro؟', a: 'إي نعم. نحدد الموديل والجيل أول، وبعدها نفحص العطل والقطع المتوافقة قبل ما نقرر شنو يحتاج الجهاز.' },
-      { q: 'إذا قالوا لي المذربورد خربانة، تفحصونها قبل التبديل؟', a: 'إي نعم. قبل لا نقترح تبديل اللوحة كاملة، نفحص مسار الطاقة والشحن والمكوّنات ونشوف إذا الإصلاح ممكن فنيًا.' },
-      { q: 'تقدرون تستلمون الـMacBook من منطقتي؟', a: 'إي نعم. نرتب الاستلام والتوصيل داخل الكويت، والإصلاح والفحص يتم في مختبر KCROC في حولي.' }
+      { q: 'تصلحون MacBook Air وMacBook Pro؟', a: 'نعم، نفحص موديلات MacBook Air وMacBook Pro بحسب الجيل ورقم الموديل. قبل طلب الشاشة أو البطارية أو أي قطعة، نتحقق من التوافق والتوفر ونوضح لك التكلفة المتوقعة.' },
+      { q: 'MacBook ما يشتغل ولا تظهر لمبة أو استجابة، شنو السبب؟', a: 'عدم التشغيل قد ينتج من الشاحن أو منفذ USB‑C أو البطارية أو دائرة الطاقة أو اللوحة الأم. لا يمكن تحديد السبب من العرض وحده؛ نسجل الأعراض ونفحص مصدر الطاقة ومسار الشحن قبل اقتراح الإصلاح.' },
+      { q: 'MacBook يشحن بشكل متقطع أو ما يتعرف على الشاحن؟', a: 'قد تكون المشكلة من الكابل أو قدرة الشاحن وتوافقه، أو المنفذ، أو البطارية، أو دائرة الشحن. لا تحرك القابس باستمرار ولا تستخدم أدوات معدنية داخل المنفذ. أرسل رقم الموديل وصورة للمنفذ والشاحن إن أمكن.' },
+      { q: 'الشاشة سوداء لكن الجهاز يصدر صوتًا أو يعمل؟', a: 'الشاشة السوداء لا تثبت أن الشاشة نفسها تالفة. نفحص الصورة والإضاءة والتوصيلات والعلامات الأخرى حسب تصميم الجهاز، ثم نوضح إن كان المطلوب إصلاحًا أو تبديلًا.' },
+      { q: 'هل تفحصون اللوحة الأم قبل اقتراح تبديلها؟', a: 'نعم. نفحص مسار الطاقة والشحن والمكونات المتأثرة، وعندما يكون العطل قابلًا للإصلاح فنيًا واقتصاديًا نوضح هذا الخيار بدل افتراض الحاجة إلى لوحة كاملة. بعض الأعطال لا تكون قابلة للإصلاح أو قد لا يكون إصلاحها مجديًا.' },
+      { q: 'بطارية MacBook منتفخة، هل أقدر أواصل استخدامه؟', a: 'لا. أوقف استخدام الجهاز ولا تضغط على الغطاء أو لوحة التتبع ولا تحاول ثقب البطارية أو فكها بنفسك. افصل الشاحن إذا كان ذلك آمنًا، وأبعد الجهاز عن الحرارة والمواد القابلة للاشتعال، وتواصل لترتيب فحص آمن.' },
+      { q: 'انسكب ماء أو قهوة على MacBook، شنو أسوي؟', a: 'أوقف التشغيل فورًا إذا كان ذلك آمنًا وافصل الشاحن. لا تعاود تشغيل الجهاز للتجربة، ولا تستخدم مجفف شعر أو أرز أو منظفات. اذكر نوع السائل ووقت الانسكاب؛ قد يلزم فحص التآكل واللوحة والتوصيلات حتى لو عاد الجهاز للعمل.' },
+      { q: 'كم سعر تصليح MacBook في الكويت؟', a: 'السعر يعتمد على الموديل والجيل والعطل والقطعة المطلوبة. أجرة تبديل شاشة MacBook تبدأ من 30 د.ك بالإضافة إلى سعر الشاشة وفق صفحة خدمة الشاشة؛ أما البطارية وأعطال اللوحة فتحتاج إلى مطابقة وتشخيص. راجع قائمة الأسعار أو أرسل الموديل للحصول على تقدير قبل الإصلاح.' },
+      { q: 'كم يستغرق الإصلاح وهل تعطون ضمانًا؟', a: 'المدة تتأثر بنوع العطل وتوفر القطعة ونتيجة التشخيص، لذلك نوضح تقديرًا بعد الفحص ولا نضمن إصلاحًا في نفس اليوم قبل التأكد. الإصلاحات المكتملة مشمولة بضمان 30 يومًا على العمل المنفذ وفق شروط الإصلاح التي نوضحها عند التسليم.' },
+      { q: 'هل تستلمون MacBook من جميع مناطق الكويت؟', a: 'نوفر استلامًا وتوصيلًا مجانيين من مناطق الكويت حسب موعد الاستلام والتوفر. المختبر الفعلي في حولي؛ بقية المناطق مناطق خدمة وليست فروعًا مستقلة.' }
     ],
     englishPath: '/macbook-repair-kuwait',
     arabicLinks: [
-      { label: 'تبديل شاشة MacBook', path: '/ar/macbook-screen-replacement-kuwait' },
-      { label: 'تبديل البطارية', path: '/ar/battery-replacement-kuwait' },
-      { label: 'تصليح مذربورد', path: '/ar/motherboard-repair-kuwait' },
-      { label: 'تصليح لابتوب', path: '/ar/laptop-repair-kuwait' },
-      { label: 'تصليح كمبيوتر حولي', path: '/ar/computer-repair-hawalli' }
+      { label: 'تبديل شاشة MacBook Air وMacBook Pro', path: '/ar/macbook-screen-replacement-kuwait' },
+      { label: 'تبديل بطارية اللابتوب', path: '/ar/battery-replacement-kuwait' },
+      { label: 'تصليح اللوحة الأم ودوائر الطاقة', path: '/ar/motherboard-repair-kuwait' },
+      { label: 'تصليح أضرار السوائل', path: '/ar/laptop-liquid-damage-repair-kuwait' },
+      { label: 'أسعار التصليح بالدينار الكويتي', path: '/ar/pricing' },
+      { label: 'تصليح اللابتوب في الكويت', path: '/ar/laptop-repair-kuwait' }
     ],
-    serviceIds: ['srv-macbook', 'srv-macbook-screen', 'srv-battery', 'srv-motherboard']
+    serviceIds: ['srv-macbook', 'srv-macbook-screen', 'srv-battery', 'srv-motherboard', 'srv-liquid-damage']
   },
   'macbook-screen-replacement-kuwait': {
     h1: 'تبديل شاشة MacBook في الكويت',
@@ -1602,7 +1610,8 @@ export default function ArabicCommercialPage() {
       : slug === 'laptop-charging-port-repair-kuwait'
       ? 'السلام عليكم KCROC، أحتاج فحص مدخل شحن اللابتوب. الماركة والموديل الدقيق: ____. نوع المنفذ: DC Jack / USB-C / غير متأكد. الأعراض: ____. هل يشحن عند تحريك السلك؟ ____. منطقتي بالكويت: ____. أستطيع إرسال صورة للمنفذ والشاحن. فضلاً وضحوا التشخيص والسعر النهائي والمدة قبل الإصلاح.'
       : `السلام عليكم KCROC، أحتاج ${cfg.h1}. أريد أعرف طريقة الاستلام والتشخيص.`;
-  const wa = `https://wa.me/${business.telephone}?text=${encodeURIComponent(whatsappMessage)}`;
+  const macbookWhatsappMessage = 'السلام عليكم KCROC، أحتاج فحص MacBook في الكويت. النوع: MacBook Air / MacBook Pro. رقم الموديل أو الجيل: ____. الأعراض: لا يشتغل / لا يشحن / شاشة سوداء / بطارية / حرارة / سائل / مشكلة أخرى. هل انسكب سائل أو انتفخت البطارية؟ ____. منطقتي بالكويت: ____. أرسل صورة للموديل والعطل إذا لزم. فضلاً وضحوا التشخيص وخيارات الإصلاح والسعر النهائي والمدة المتوقعة قبل أي عمل مدفوع.';
+  const wa = `https://wa.me/${business.telephone}?text=${encodeURIComponent(slug === 'macbook-repair-kuwait' ? macbookWhatsappMessage : whatsappMessage)}`;
 
   if (slug === 'computer-repair-kuwait') {
     return <ArabicComputerRepairPage page={page as ArabicComputerPage} business={business} wa={wa} />;
@@ -1655,6 +1664,28 @@ export default function ArabicCommercialPage() {
       description: 'تشخيص أعطال التشغيل والشحن والطاقة قبل اقتراح القطع.'
     }
   };
+  const arabicMacbookServiceCopy: Record<string, { title: string; description: string }> = {
+    'srv-macbook': {
+      title: 'تشخيص وإصلاح MacBook Air وMacBook Pro',
+      description: 'نفحص أعراض عدم التشغيل والشحن والحرارة واللوحة الأم بحسب الموديل والجيل، ونوضح خيارات الإصلاح قبل الموافقة.'
+    },
+    'srv-macbook-screen': {
+      title: 'تبديل شاشة MacBook',
+      description: 'نفحص الشاشة والكابل والصورة قبل طلب تجميعة متوافقة مع رقم الموديل والجيل، مع توضيح أجرة العمل وثمن الشاشة بشكل منفصل.'
+    },
+    'srv-battery': {
+      title: 'فحص وتبديل البطارية',
+      description: 'نفحص أعراض البطارية والشحن، ونتأكد من توافق القطعة. البطارية المنتفخة تحتاج إلى التعامل معها بأولوية السلامة.'
+    },
+    'srv-motherboard': {
+      title: 'تصليح لوحة MacBook ودوائر الطاقة',
+      description: 'نحدد مسار العطل في اللوحة عندما يكون ذلك ممكنًا ونشرح الإصلاح على مستوى المكونات أو البدائل الواقعية.'
+    },
+    'srv-liquid-damage': {
+      title: 'فحص أضرار السوائل في MacBook',
+      description: 'فحص آثار السوائل والتآكل والتوصيلات؛ إيقاف التشغيل وعدم إعادة الشحن بعد الانسكاب يساعد على تجنب ضرر إضافي.'
+    }
+  };
   const arabicMacbookScreenServiceCopy: Record<string, { title: string; description: string }> = {
     'srv-macbook-screen': {
       title: 'تبديل شاشة MacBook Air وMacBook Pro',
@@ -1699,7 +1730,15 @@ export default function ArabicCommercialPage() {
       description: 'فحص البطارية ومسار الشحن والتأكد من التوافق قبل طلب القطعة.'
     }
   };
-  const relatedGuides = slug === 'laptop-keyboard-replacement-kuwait'
+  const relatedGuides = slug === 'macbook-repair-kuwait'
+    ? [
+        { title: 'تبديل شاشة MacBook Air وMacBook Pro', path: '/ar/macbook-screen-replacement-kuwait' },
+        { title: 'تصليح MacBook بعد انسكاب السوائل', path: '/ar/laptop-liquid-damage-repair-kuwait' },
+        { title: 'تشخيص اللوحة الأم ودوائر الطاقة', path: '/ar/motherboard-repair-kuwait' },
+        { title: 'أسعار تصليح الكمبيوتر واللابتوب في الكويت', path: '/ar/pricing' },
+        { title: 'صفحة تصليح MacBook بالإنجليزية', path: '/macbook-repair-kuwait' }
+      ]
+    : slug === 'laptop-keyboard-replacement-kuwait'
     ? [
         { title: 'تصليح أضرار السوائل للابتوب', path: '/ar/laptop-liquid-damage-repair-kuwait' },
         { title: 'تصليح المذربورد في الكويت', path: '/ar/motherboard-repair-kuwait' },
@@ -1734,6 +1773,46 @@ export default function ArabicCommercialPage() {
     'srv-keyboard': '/ar/laptop-keyboard-replacement-kuwait',
     'srv-liquid-damage': '/ar/laptop-liquid-damage-repair-kuwait',
   };
+  const macbookServiceSchema = slug === 'macbook-repair-kuwait' ? {
+    '@graph': [{
+      '@type': 'Service',
+      '@id': \`\${page.seo.canonicalUrl}#service\`,
+      name: 'تصليح MacBook Air وMacBook Pro في الكويت',
+      serviceType: 'تشخيص وإصلاح أجهزة Apple MacBook، بما في ذلك الشاشة والبطارية والشحن واللوحة الأم',
+      description: cfg.intro,
+      url: page.seo.canonicalUrl,
+      image: \`\${business.websiteUrl}\${IMAGES.macbook.diagnostics.src}\`,
+      areaServed: { '@type': 'Country', name: 'Kuwait' },
+      provider: {
+        '@type': 'LocalBusiness',
+        name: business.title,
+        url: business.websiteUrl,
+        telephone: \`+\${business.telephone}\`,
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: business.streetAddress,
+          addressLocality: business.addressLocality,
+          addressRegion: business.addressRegion,
+          addressCountry: business.addressCountry,
+        },
+      },
+      availableChannel: {
+        '@type': 'ServiceChannel',
+        serviceLocation: {
+          '@type': 'Place',
+          name: 'KCROC MacBook repair lab',
+          address: {
+            '@type': 'PostalAddress',
+            streetAddress: business.streetAddress,
+            addressLocality: business.addressLocality,
+            addressRegion: business.addressRegion,
+            addressCountry: business.addressCountry,
+          },
+        },
+        servicePhone: \`+\${business.telephone}\`,
+      },
+    }]
+  } : null;
   const screenServiceSchema = slug === 'laptop-screen-repair-kuwait' ? {
     '@graph': [{
       '@type': 'Service',
@@ -1882,7 +1961,8 @@ export default function ArabicCommercialPage() {
   return (
     <div dir="rtl" lang="ar-KW" className="min-h-screen bg-transparent text-slate-100">
       <SEOEngine entityId={page.id} />
-      {screenServiceSchema && <SchemaMarkup schema={screenServiceSchema} />}
+      {macbookServiceSchema && <SchemaMarkup schema={macbookServiceSchema} />}
+      {screenServiceSchema && <SchemaMarkup schema={screenServiceSchema} />
       <SchemaMarkup schema={faqSchema} />
 
       <div className="mx-auto max-w-6xl px-4 pb-16 pt-8 sm:px-6 sm:pt-12">
@@ -2056,6 +2136,106 @@ export default function ArabicCommercialPage() {
             </div>
           )}
         </section>
+
+          {slug === 'macbook-repair-kuwait' && (
+            <figure className="mt-8 overflow-hidden rounded-2xl border border-slate-800 bg-slate-950 sm:mt-10">
+              <img
+                src={IMAGES.macbook.diagnostics.src}
+                alt="فني يفحص جهاز MacBook مفتوحًا لتشخيص أعطال الشاشة والبطارية واللوحة الأم في مختبر إصلاح بالكويت"
+                width={IMAGES.macbook.diagnostics.width}
+                height={IMAGES.macbook.diagnostics.height}
+                loading="eager"
+                fetchPriority="high"
+                decoding="async"
+                className="aspect-[16/9] w-full object-cover"
+              />
+              <figcaption className="border-t border-slate-800 px-4 py-3 text-sm leading-6 text-slate-400 sm:px-5">
+                فحص MacBook قبل اختيار الإصلاح: نحدد الموديل والجيل والعطل، ثم نوضح الخيارات والتكلفة قبل طلب القطعة أو بدء العمل.
+              </figcaption>
+            </figure>
+          )}
+
+        {slug === 'macbook-repair-kuwait' && (
+          <>
+            <section className="mt-12 rounded-3xl border border-slate-800 bg-slate-900/40 p-6 sm:p-8" aria-labelledby="macbook-symptom-guide">
+              <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">دليل حسب الأعراض</p>
+              <h2 id="macbook-symptom-guide" className="mt-2 text-2xl font-black text-white sm:text-3xl">شلون نحدد سبب عطل MacBook؟</h2>
+              <p className="mt-3 max-w-3xl leading-8 text-slate-400">أعراض MacBook قد تتشابه رغم اختلاف السبب. نبدأ بالموديل والجيل والفحوصات المرتبطة بالعرض، بدل تبديل الشاشة أو البطارية أو اللوحة بناءً على التخمين.</p>
+              <div className="mt-6 grid gap-5 md:grid-cols-3">
+                {[
+                  {
+                    image: IMAGES.macbook.logicBoard,
+                    alt: 'لوحة MacBook الداخلية ونظام التبريد أثناء فحص اللوحة الأم',
+                    title: 'لا يعمل أو توجد مشكلة طاقة',
+                    description: 'قد يكون السبب في الشاحن أو البطارية أو منفذ USB-C أو دائرة الطاقة. نفحص مسار الطاقة قبل الحكم على اللوحة الأم.',
+                    href: '/ar/motherboard-repair-kuwait',
+                    link: 'خدمة إصلاح اللوحة الأم',
+                  },
+                  {
+                    image: IMAGES.macbook.swollenBattery1,
+                    alt: 'بطارية MacBook منتفخة تحتاج إلى تعامل آمن وفحص مختص',
+                    title: 'بطارية منتفخة أو ضعيفة',
+                    description: 'التورم أو ارتفاع الهيكل قد يشير إلى انتفاخ البطارية. أوقف الاستخدام ولا تضغط على الجهاز أو تحاول فك البطارية بنفسك.',
+                    href: '/ar/battery-replacement-kuwait',
+                    link: 'تفاصيل خدمة البطارية',
+                  },
+                  {
+                    image: IMAGES.macbook.service,
+                    alt: 'مكونات داخلية لجهاز MacBook أثناء خدمة استبدال البطارية',
+                    title: 'تبديل قطعة أو صيانة داخلية',
+                    description: 'تختلف القطع وطريقة الفك حسب الموديل والجيل. نطابق رقم الموديل والتوفر ونؤكد السعر والمدة قبل تنفيذ الإصلاح.',
+                    href: '/ar/pricing',
+                    link: 'راجع قائمة الأسعار',
+                  },
+                ].map((item) => (
+                  <article key={item.title} className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-950/60">
+                    <Link to={item.href} className="block overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400">
+                      <img src={item.image.src} alt={item.alt} width={item.image.width} height={item.image.height} loading="lazy" decoding="async" className="aspect-[4/3] w-full object-cover transition duration-300 hover:scale-[1.02]" />
+                    </Link>
+                    <div className="p-5">
+                      <h3 className="text-lg font-black text-white">{item.title}</h3>
+                      <p className="mt-2 text-sm leading-7 text-slate-400">{item.description}</p>
+                      <Link to={item.href} className="mt-4 inline-flex min-h-10 items-center font-bold text-cyan-300 hover:text-cyan-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400">{item.link} ←</Link>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </section>
+
+            <section className="mt-10 rounded-3xl border border-slate-800 bg-slate-900/40 p-6 sm:p-8" aria-labelledby="macbook-repair-process">
+              <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">طريقة العمل</p>
+              <h2 id="macbook-repair-process" className="mt-2 text-2xl font-black text-white sm:text-3xl">من الاستلام إلى اختبار MacBook</h2>
+              <p className="mt-3 max-w-3xl leading-8 text-slate-400">الموديل والجيل مهمان لاختيار القطع وإجراءات التشخيص. نوضح نتيجة الفحص والتكلفة المتوقعة قبل بدء أي عمل مدفوع.</p>
+              <ol className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {[
+                  { title: '١. تسجيل الموديل والأعراض', text: 'نحدد MacBook Air أو Pro ورقم الموديل والجيل، ونوثق الأعراض وأي سقوط أو انسكاب سوائل.' },
+                  { title: '٢. فحص الطاقة والشحن', text: 'نقيّم الشاحن والكابل والمنفذ والبطارية حسب الأعراض، ولا نفترض أن اللوحة هي السبب مباشرة.' },
+                  { title: '٣. فحص الشاشة والبطارية', text: 'نميز بين الشاشة نفسها ومشكلات الصورة أو التوصيل، ونقيّم حالة البطارية وتورمها عند الاشتباه.' },
+                  { title: '٤. تقييم اللوحة الأم', text: 'عند الحاجة نفحص دوائر الطاقة والمكونات. إمكانية إصلاح اللوحة تختلف حسب الضرر والموديل.' },
+                  { title: '٥. الموافقة على السعر', text: 'نشرح الخيار والتكلفة والقطعة والمدة المتوقعة. لا يبدأ الإصلاح المدفوع دون موافقتك.' },
+                  { title: '٦. التحقق قبل التسليم', text: 'نختبر الوظيفة التي تم إصلاحها، ونتحقق من الشحن والصورة والتشغيل حسب نطاق العمل المنفذ.' },
+                ].map((item) => (
+                  <li key={item.title} className="rounded-2xl border border-slate-800 bg-slate-950/45 p-5">
+                    <h3 className="font-bold text-white">{item.title}</h3>
+                    <p className="mt-2 text-sm leading-7 text-slate-400">{item.text}</p>
+                  </li>
+                ))}
+              </ol>
+              <div className="mt-6 flex flex-col gap-3 rounded-2xl border border-amber-500/25 bg-amber-500/5 p-5 sm:flex-row sm:items-start">
+                <ShieldCheck className="mt-1 h-5 w-5 shrink-0 text-amber-300" aria-hidden="true" />
+                <div>
+                  <h3 className="font-bold text-white">تنبيه سلامة البطارية المنتفخة أو انسكاب السوائل</h3>
+                  <p className="mt-2 text-sm leading-7 text-slate-300">أوقف استخدام الجهاز عند انتفاخ البطارية أو وجود حرارة أو رائحة غير طبيعية. لا تثقب البطارية ولا تضغط على الغطاء ولا تحاول فتحها بالقوة. بعد انسكاب سائل، أوقف التشغيل وافصل الكهرباء إذا كان ذلك آمنًا ولا تعاود التشغيل أو الشحن للتجربة. رتّب فحصًا متخصصًا بدل المخاطرة بضرر إضافي.</p>
+                </div>
+              </div>
+              <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                <Link to="/ar/macbook-screen-replacement-kuwait" className="inline-flex min-h-11 items-center justify-center rounded-full border border-slate-700 px-5 py-3 text-sm font-bold text-cyan-300 hover:border-cyan-500/40">تبديل شاشة MacBook</Link>
+                <Link to="/ar/laptop-liquid-damage-repair-kuwait" className="inline-flex min-h-11 items-center justify-center rounded-full border border-slate-700 px-5 py-3 text-sm font-bold text-cyan-300 hover:border-cyan-500/40">تصليح أضرار السوائل</Link>
+                <Link to="/ar/pricing" className="inline-flex min-h-11 items-center justify-center rounded-full border border-slate-700 px-5 py-3 text-sm font-bold text-cyan-300 hover:border-cyan-500/40">أسعار التصليح</Link>
+              </div>
+            </section>
+          </>
+        )}
 
         {slug === 'laptop-charging-port-repair-kuwait' && (
           <>
@@ -2267,8 +2447,8 @@ export default function ArabicCommercialPage() {
             {services.map((service) => service && (
               <Link key={service.id} to={arabicServicePathById[service.id] ?? `/${service.slug}`} className="group rounded-2xl border border-slate-800 bg-slate-900/45 p-6 hover:border-cyan-500/40">
                 <Wrench className="h-6 w-6 text-cyan-400" aria-hidden="true" />
-                <h3 className="mt-4 text-lg font-bold text-white group-hover:text-cyan-300">{(slug === 'laptop-screen-repair-kuwait' ? arabicScreenServiceCopy[service.id]?.title : slug === 'gaming-laptop-repair-kuwait' ? arabicGamingServiceCopy[service.id]?.title : slug === 'macbook-screen-replacement-kuwait' ? arabicMacbookScreenServiceCopy[service.id]?.title : slug === 'laptop-keyboard-replacement-kuwait' ? arabicKeyboardServiceCopy[service.id]?.title : slug === 'laptop-charging-port-repair-kuwait' ? arabicChargingServiceCopy[service.id]?.title : undefined) ?? service.title.replace(' Kuwait', '')}</h3>
-                <p className="mt-2 text-sm leading-6 text-slate-400">{(slug === 'laptop-screen-repair-kuwait' ? arabicScreenServiceCopy[service.id]?.description : slug === 'gaming-laptop-repair-kuwait' ? arabicGamingServiceCopy[service.id]?.description : slug === 'macbook-screen-replacement-kuwait' ? arabicMacbookScreenServiceCopy[service.id]?.description : slug === 'laptop-keyboard-replacement-kuwait' ? arabicKeyboardServiceCopy[service.id]?.description : slug === 'laptop-charging-port-repair-kuwait' ? arabicChargingServiceCopy[service.id]?.description : undefined) ?? service.shortDescription}</p>
+                <h3 className="mt-4 text-lg font-bold text-white group-hover:text-cyan-300">{(slug === 'macbook-repair-kuwait' ? arabicMacbookServiceCopy[service.id]?.title : slug === 'laptop-screen-repair-kuwait' ? arabicScreenServiceCopy[service.id]?.title : slug === 'gaming-laptop-repair-kuwait' ? arabicGamingServiceCopy[service.id]?.title : slug === 'macbook-screen-replacement-kuwait' ? arabicMacbookScreenServiceCopy[service.id]?.title : slug === 'laptop-keyboard-replacement-kuwait' ? arabicKeyboardServiceCopy[service.id]?.title : slug === 'laptop-charging-port-repair-kuwait' ? arabicChargingServiceCopy[service.id]?.title : undefined) ?? service.title.replace(' Kuwait', '')}</h3>
+                <p className="mt-2 text-sm leading-6 text-slate-400">{(slug === 'macbook-repair-kuwait' ? arabicMacbookServiceCopy[service.id]?.description : slug === 'laptop-screen-repair-kuwait' ? arabicScreenServiceCopy[service.id]?.description : slug === 'gaming-laptop-repair-kuwait' ? arabicGamingServiceCopy[service.id]?.description : slug === 'macbook-screen-replacement-kuwait' ? arabicMacbookScreenServiceCopy[service.id]?.description : slug === 'laptop-keyboard-replacement-kuwait' ? arabicKeyboardServiceCopy[service.id]?.description : slug === 'laptop-charging-port-repair-kuwait' ? arabicChargingServiceCopy[service.id]?.description : undefined) ?? service.shortDescription}</p>
               </Link>
             ))}
           </div>
