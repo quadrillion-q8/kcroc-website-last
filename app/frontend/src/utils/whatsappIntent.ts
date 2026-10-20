@@ -81,11 +81,18 @@ export const getPageWhatsAppLink = (pathname: string): string => {
       'gaming-laptop-repair-kuwait': 'تصليح Gaming Laptop في الكويت',
       'computer-repair-hawalli': 'تصليح كمبيوتر حولي',
     };
+    if (slug === 'macbook-screen-replacement-kuwait') {
+      return buildWhatsAppLink('السلام عليكم KCROC، أحتاج تبديل شاشة MacBook في الكويت. موديل الجهاز والجيل: ____. أعراض الشاشة: ____. منطقتي بالكويت: ____. فضلاً أكدوا توفر الشاشة المناسبة والسعر النهائي شامل أجرة العمل والشاشة والمدة المتوقعة قبل الإصلاح.');
+    }
     if (slug === 'laptop-screen-repair-kuwait') {
       return buildWhatsAppLink('السلام عليكم KCROC، أحتاج تصليح أو تبديل شاشة اللابتوب. الماركة والموديل: ____. المشكلة: ____. منطقتي بالكويت: ____. فضلاً أكدوا توفر الشاشة والسعر النهائي شامل أجرة العمل والقطعة والمدة المتوقعة قبل الإصلاح.');
     }
     const name = arabicNames[slug] ?? 'تصليح كمبيوتر ولابتوب في الكويت';
     return buildWhatsAppLink(`السلام عليكم KCROC، أحتاج ${name}. أريد أعرف طريقة الاستلام والتشخيص.`);
+  }
+
+  if (path === '/macbook-screen-replacement-kuwait') {
+    return buildWhatsAppLink('Hi KCROC, I need MacBook screen replacement in Kuwait. Exact MacBook model and generation: ____. Screen symptoms: ____. Area in Kuwait: ____. Please confirm compatible display availability, the total price including labour and display assembly, and the expected turnaround before repair.');
   }
 
   const service = KCROC_GRAPH.services.find((item) => `/${item.slug}` === path);
