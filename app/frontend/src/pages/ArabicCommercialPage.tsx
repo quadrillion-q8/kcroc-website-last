@@ -1962,7 +1962,7 @@ export default function ArabicCommercialPage() {
     <div dir="rtl" lang="ar-KW" className="min-h-screen bg-transparent text-slate-100">
       <SEOEngine entityId={page.id} />
       {macbookServiceSchema && <SchemaMarkup schema={macbookServiceSchema} />}
-      {screenServiceSchema && <SchemaMarkup schema={screenServiceSchema} />
+      {screenServiceSchema && <SchemaMarkup schema={screenServiceSchema} />}
       <SchemaMarkup schema={faqSchema} />
 
       <div className="mx-auto max-w-6xl px-4 pb-16 pt-8 sm:px-6 sm:pt-12">
