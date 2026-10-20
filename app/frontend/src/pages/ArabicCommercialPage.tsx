@@ -1776,18 +1776,18 @@ export default function ArabicCommercialPage() {
   const macbookServiceSchema = slug === 'macbook-repair-kuwait' ? {
     '@graph': [{
       '@type': 'Service',
-      '@id': \`\${page.seo.canonicalUrl}#service\`,
+      '@id': `${page.seo.canonicalUrl}#service`,
       name: 'تصليح MacBook Air وMacBook Pro في الكويت',
       serviceType: 'تشخيص وإصلاح أجهزة Apple MacBook، بما في ذلك الشاشة والبطارية والشحن واللوحة الأم',
       description: cfg.intro,
       url: page.seo.canonicalUrl,
-      image: \`\${business.websiteUrl}\${IMAGES.macbook.diagnostics.src}\`,
+      image: `${business.websiteUrl}${IMAGES.macbook.diagnostics.src}`,
       areaServed: { '@type': 'Country', name: 'Kuwait' },
       provider: {
         '@type': 'LocalBusiness',
         name: business.title,
         url: business.websiteUrl,
-        telephone: \`+\${business.telephone}\`,
+        telephone: `+${business.telephone}`,
         address: {
           '@type': 'PostalAddress',
           streetAddress: business.streetAddress,
@@ -1809,7 +1809,7 @@ export default function ArabicCommercialPage() {
             addressCountry: business.addressCountry,
           },
         },
-        servicePhone: \`+\${business.telephone}\`,
+        servicePhone: `+${business.telephone}`,
       },
     }]
   } : null;
