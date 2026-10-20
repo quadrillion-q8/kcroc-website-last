@@ -126,7 +126,7 @@ export default function Gallery() {
 
         {/* Category Filter - Horizontal Scroll on Mobile */}
         <div className="scroll-row gap-2 -mx-4 px-4 sm:mx-0 sm:px-0 sm:flex-wrap sm:justify-center mb-6 sm:mb-10">
-          {['All', ...galleryCategories].map((cat) => (
+          {galleryCategories.map((cat) => (
             <button
               key={cat}
               onClick={() => { setActiveCategory(cat); setVisibleCount(PAGE_SIZE); }}
