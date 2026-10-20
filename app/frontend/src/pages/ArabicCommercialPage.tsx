@@ -1608,7 +1608,7 @@ export default function ArabicCommercialPage() {
   const whatsappMessage = slug === 'macbook-screen-replacement-kuwait'
     ? 'السلام عليكم KCROC، أحتاج تبديل شاشة MacBook في الكويت. موديل الجهاز والجيل: ____. أعراض الشاشة: ____. منطقتي بالكويت: ____. فضلاً أكدوا توفر الشاشة المناسبة والسعر النهائي شامل أجرة العمل والشاشة والمدة المتوقعة قبل الإصلاح.'
     : slug === 'laptop-screen-repair-kuwait'
-      ? 'السلام عليكم KCROC، أحتاج فحص أو تبديل شاشة اللابتوب في الكويت. الماركة والموديل الدقيق أو Service Tag: ____. الأعراض: كسر / بقع سوداء / خطوط / وميض / شاشة سوداء / تتغير مع حركة الغطاء / أخرى. هل الشاشة لمس أو ذات معدل تحديث عالٍ إذا كنت تعرف؟ ____. أستطيع إرسال صور للشاشة والجهاز. منطقتي بالكويت: ____. فضلاً أكدوا رقم القطعة أو توافقها، وتوفرها، والسعر النهائي شامل أجرة العمل والشاشة والمدة المتوقعة قبل أي إصلاح مدفوع.'
+      ? 'السلام عليكم KCROC، أحتاج تصليح أو تبديل شاشة اللابتوب في الكويت. الماركة والموديل: ____. المشكلة: ____. منطقتي بالكويت: ____. رقم الموديل الدقيق أو Service Tag إن توفر: ____. الأعراض: كسر / بقع سوداء / خطوط / وميض / شاشة سوداء / يتغير العرض مع حركة الغطاء / أخرى. هل الشاشة لمس أو ذات معدل تحديث عالٍ إذا كنت تعرف؟ ____. أستطيع إرسال صور للشاشة والجهاز. فضلاً أكدوا توافق ورقم القطعة وتوفرها والسعر النهائي شامل أجرة العمل والقطعة والمدة المتوقعة قبل الإصلاح.'
       : slug === 'gaming-laptop-repair-kuwait'
       ? 'السلام عليكم KCROC، أحتاج تصليح Gaming Laptop في الكويت. الماركة والموديل الدقيق: ____. المشكلة والأعراض: ____. منطقتي بالكويت: ____. أقدر أرسل صورة أو فيديو للعطل إذا يفيد. فضلاً وضحوا التشخيص والمدة المتوقعة والسعر النهائي قبل أي إصلاح مدفوع.'
       : slug === 'laptop-keyboard-replacement-kuwait'
@@ -2099,7 +2099,7 @@ export default function ArabicCommercialPage() {
             <figure className="mt-8 overflow-hidden rounded-2xl border border-slate-800 bg-slate-950 sm:mt-10">
               <img
                 src={IMAGES.laptopHardware.laptopScreenAssemblyDisassemblyRepair.src}
-                alt="فني يفحص مجموعة شاشة اللابتوب وكابل العرض قبل تحديد هل العطل من لوحة LCD أو التوصيل"
+                alt="فحص مجموعة شاشة اللابتوب لتمييز عطل الشاشة من الكابل أو الاتصال والإضاءة"
                 width={IMAGES.laptopHardware.laptopScreenAssemblyDisassemblyRepair.width}
                 height={IMAGES.laptopHardware.laptopScreenAssemblyDisassemblyRepair.height}
                 loading="eager"
