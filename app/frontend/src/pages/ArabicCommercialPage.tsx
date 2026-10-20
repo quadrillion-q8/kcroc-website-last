@@ -295,13 +295,17 @@ const CONFIG: Record<string, {
   },
   'macbook-screen-replacement-kuwait': {
     h1: 'تبديل شاشة MacBook في الكويت',
-    eyebrow: 'MacBook Air وMacBook Pro • نتأكد من العطل قبل تركيب الشاشة',
-    intro: 'شاشة الـMacBook مكسورة؟ فيها خطوط؟ تومض؟ أو صارت سوداء؟ قبل لا نطلب شاشة جديدة، نفحص الجهاز ونتأكد وين المشكلة بالضبط. نطابق الموديل والجيل والـdisplay assembly، وبعدها نعطيك السعر قبل التركيب.',
-    bullets: ['MacBook Air وMacBook Pro', 'فحص الشاشة والكابل والإضاءة', 'تبديل شاشة مناسبة للموديل', 'من 30 د.ك + القطعة حسب الحالة', 'استلام وتوصيل مجاني داخل الكويت'],
+    eyebrow: 'MacBook Air وMacBook Pro • فحص الشاشة والكابل والإضاءة قبل التبديل',
+    intro: 'شاشة الـMacBook مكسورة أو فيها خطوط أو وميض أو صارت سوداء؟ مو كل عطل يحتاج تبديل الشاشة كاملة. نفحص الشاشة والكابل والموصل والإضاءة ومسار الصورة، ونتأكد من موديل الـMacBook والجيل وتجميعة الشاشة المتوافقة. أجرة العمل تبدأ من 30 د.ك ويُحسب سعر الشاشة بشكل منفصل حسب الموديل والتوفر. نوضح لك السعر النهائي والمدة قبل بدء الإصلاح.',
+    bullets: ['خدمة MacBook Air وMacBook Pro مع مطابقة الموديل والجيل', 'فحص الشاشة والكابل والموصل والإضاءة قبل طلب القطعة', 'أجرة العمل تبدأ من 30 د.ك + سعر الشاشة', 'تأكيد التوفر والسعر النهائي والمدة قبل التركيب', 'استلام وتوصيل مجاني داخل الكويت'],
     faq: [
-      { q: 'كم يكلف تبديل شاشة MacBook؟', a: 'الخدمة تبدأ من 30 د.ك + القطعة، والسعر النهائي يعتمد على موديل الـMacBook وتجميعة الشاشة المناسبة.' },
-      { q: 'كل شاشة سوداء معناها لازم تتبدل؟', a: 'لا. مو كل شاشة سوداء تحتاج تبديل. نفحص الكابل والإضاءة ومسار الصورة والجهاز نفسه قبل طلب شاشة جديدة.' },
-      { q: 'ممكن تبديل الشاشة بنفس اليوم؟', a: 'ممكن إذا الشاشة المناسبة لموديل جهازك متوفرة. إذا مو متوفرة، نحدد لك المدة حسب توفر القطعة.' }
+      { q: 'كم يكلف تبديل شاشة MacBook في الكويت؟', a: 'أجرة العمل تبدأ من 30 د.ك، وسعر الشاشة يُحسب بشكل منفصل حسب موديل الـMacBook والجيل وتجميعة الشاشة المطلوبة. نؤكد لك السعر النهائي قبل التركيب.' },
+      { q: 'كل شاشة سوداء أو فيها خطوط معناها لازم تتبدل؟', a: 'لا. ممكن يكون السبب الشاشة أو الكابل أو الموصل أو الإضاءة أو مسار الصورة. نفحص العطل أولًا قبل اقتراح تبديل الشاشة كاملة.' },
+      { q: 'هل تبدلون شاشات MacBook Air وMacBook Pro؟', a: 'نعم، للأجهزة المدعومة بعد التأكد من الموديل والجيل وتجميعة الشاشة المتوافقة؛ لأن القطع تختلف بين الإصدارات.' },
+      { q: 'ممكن تبديل الشاشة بنفس اليوم؟', a: 'ممكن إذا الشاشة المتوافقة متوفرة وكان وقت التشخيص والتركيب يسمح. نؤكد توفر القطعة والمدة المتوقعة بعد معرفة موديل جهازك.' },
+      { q: 'هل تحتاجون الدخول إلى ملفاتي أثناء تبديل الشاشة؟', a: 'تبديل الشاشة إصلاح هاردوير ولا يتطلب عادة فتح ملفاتك الشخصية، ولا نتصفح الملفات ضمن هذه الخدمة. إذا احتجنا أي خطوة إضافية قد تؤثر على البيانات، نوضحها لك قبل المتابعة.' },
+      { q: 'هل يوجد ضمان على تبديل شاشة MacBook؟', a: 'نعم، يشمل الإصلاح المكتمل ضمان 30 يومًا على تجميعة الشاشة وأجرة العمل وفق شروط الخدمة. نوضح لك نطاق التغطية قبل الإصلاح.' },
+      { q: 'هل الاستلام والتوصيل مجاني في الكويت؟', a: 'نعم، نرتب الاستلام والتوصيل من مناطق الكويت، ويتم الفحص والإصلاح في مختبر KCROC بحولي ثم نرجع الجهاز لك بعد الاختبار.' }
     ],
     englishPath: '/macbook-screen-replacement-kuwait',
     arabicLinks: [
@@ -1564,9 +1568,11 @@ export default function ArabicCommercialPage() {
 
   if (!cfg || !page || !business) return <Navigate to="/404" replace />;
 
-  const whatsappMessage = slug === 'laptop-screen-repair-kuwait'
-    ? 'السلام عليكم KCROC، أحتاج تصليح أو تبديل شاشة اللابتوب. الماركة والموديل: ____. المشكلة: ____. منطقتي بالكويت: ____. فضلاً أكدوا توفر الشاشة والسعر النهائي شامل أجرة العمل والقطعة والمدة المتوقعة قبل الإصلاح.'
-    : slug === 'gaming-laptop-repair-kuwait'
+  const whatsappMessage = slug === 'macbook-screen-replacement-kuwait'
+    ? 'السلام عليكم KCROC، أحتاج تبديل شاشة MacBook في الكويت. موديل الجهاز والجيل: ____. أعراض الشاشة: ____. منطقتي بالكويت: ____. فضلاً أكدوا توفر الشاشة المناسبة والسعر النهائي شامل أجرة العمل والشاشة والمدة المتوقعة قبل الإصلاح.'
+    : slug === 'laptop-screen-repair-kuwait'
+      ? 'السلام عليكم KCROC، أحتاج تصليح أو تبديل شاشة اللابتوب. الماركة والموديل: ____. المشكلة: ____. منطقتي بالكويت: ____. فضلاً أكدوا توفر الشاشة والسعر النهائي شامل أجرة العمل والقطعة والمدة المتوقعة قبل الإصلاح.'
+      : slug === 'gaming-laptop-repair-kuwait'
       ? 'السلام عليكم KCROC، أحتاج تصليح Gaming Laptop في الكويت. الماركة والموديل الدقيق: ____. المشكلة والأعراض: ____. منطقتي بالكويت: ____. أقدر أرسل صورة أو فيديو للعطل إذا يفيد. فضلاً وضحوا التشخيص والمدة المتوقعة والسعر النهائي قبل أي إصلاح مدفوع.'
       : `السلام عليكم KCROC، أحتاج ${cfg.h1}. أريد أعرف طريقة الاستلام والتشخيص.`;
   const wa = `https://wa.me/${business.telephone}?text=${encodeURIComponent(whatsappMessage)}`;
@@ -1598,6 +1604,20 @@ export default function ArabicCommercialPage() {
       description: 'فحص المفصلات والغطاء والإطار لتحديد الضرر وتجنب زيادة الضغط على الشاشة أو كابلها.'
     }
   };
+  const arabicMacbookScreenServiceCopy: Record<string, { title: string; description: string }> = {
+    'srv-macbook-screen': {
+      title: 'تبديل شاشة MacBook Air وMacBook Pro',
+      description: 'نفحص الموديل والجيل والشاشة والكابل والإضاءة قبل طلب القطعة، ونوضح أجرة العمل وسعر الشاشة والمدة قبل التركيب.'
+    },
+    'srv-macbook': {
+      title: 'تصليح MacBook',
+      description: 'تشخيص مشاكل الشحن والبطارية واللوحة الأم والسوائل، مع إصلاح على مستوى المكونات عندما يكون مناسبًا.'
+    },
+    'srv-screen': {
+      title: 'تبديل شاشة اللابتوب',
+      description: 'فحص الشاشة والكابل والإضاءة ومطابقة القطعة مع الموديل قبل اقتراح التبديل.'
+    }
+  };
   const arabicGamingServiceCopy: Record<string, { title: string; description: string }> = {
     'srv-gaming-laptop-cleaning': {
       title: 'تنظيف وتبريد Gaming Laptop',
@@ -1624,8 +1644,10 @@ export default function ArabicCommercialPage() {
       description: 'فحص البطارية ومسار الشحن والتأكد من التوافق قبل طلب القطعة.'
     }
   };
-  const relatedGuides = slug === 'laptop-screen-repair-kuwait'
-    ? [...AR_GUIDES, { title: 'دليل حماية شاشة اللابتوب من الكسر (بالإنجليزية)', path: '/blog/how-to-protect-laptop-screen' }]
+  const relatedGuides = slug === 'macbook-screen-replacement-kuwait'
+    ? [{ title: 'دليل حماية شاشة اللابتوب من الكسر (بالإنجليزية)', path: '/blog/how-to-protect-laptop-screen' }]
+    : slug === 'laptop-screen-repair-kuwait'
+      ? [...AR_GUIDES, { title: 'دليل حماية شاشة اللابتوب من الكسر (بالإنجليزية)', path: '/blog/how-to-protect-laptop-screen' }]
     : slug === 'gaming-laptop-repair-kuwait'
       ? [
           { title: 'متى تنظف لابتوب القيمنق وتغيّر المعجون الحراري؟', path: '/blog/ar/how-often-clean-laptop-replace-thermal-paste-kuwait' },
@@ -1646,15 +1668,16 @@ export default function ArabicCommercialPage() {
     'srv-keyboard': '/ar/laptop-keyboard-replacement-kuwait',
     'srv-liquid-damage': '/ar/laptop-liquid-damage-repair-kuwait',
   };
-  const screenServiceSchema = slug === 'laptop-screen-repair-kuwait' ? {
+  const isMacbookScreenService = slug === 'macbook-screen-replacement-kuwait';
+  const screenServiceSchema = (slug === 'laptop-screen-repair-kuwait' || isMacbookScreenService) ? {
     '@graph': [{
       '@type': 'Service',
       '@id': `${page.seo.canonicalUrl}#service`,
-      name: 'تصليح وتبديل شاشة اللابتوب في الكويت',
-      serviceType: 'تصليح وتبديل شاشة اللابتوب',
+      name: isMacbookScreenService ? 'تبديل شاشة MacBook في الكويت' : 'تصليح وتبديل شاشة اللابتوب في الكويت',
+      serviceType: isMacbookScreenService ? 'تبديل شاشة MacBook' : 'تصليح وتبديل شاشة اللابتوب',
       description: cfg.intro,
       url: page.seo.canonicalUrl,
-      image: `${business.websiteUrl}${IMAGES.laptopHardware.laptopScreenAssemblyDisassemblyRepair.src}`,
+      image: `${business.websiteUrl}${isMacbookScreenService ? IMAGES.macbook.diagnostics.src : IMAGES.laptopHardware.laptopScreenAssemblyDisassemblyRepair.src}`,
       areaServed: { '@type': 'Country', name: 'Kuwait' },
       provider: {
         '@type': 'LocalBusiness',
@@ -1671,8 +1694,8 @@ export default function ArabicCommercialPage() {
       },
       offers: {
         '@type': 'Offer',
-        name: 'أجرة العمل من 30 د.ك + سعر الشاشة',
-        description: 'أجرة العمل تبدأ من 30 د.ك، وسعر الشاشة يُحسب بشكل منفصل حسب الموديل والمواصفات وتوفر القطعة. نؤكد السعر النهائي قبل أي عمل مدفوع.',
+        name: isMacbookScreenService ? 'أجرة العمل من 30 د.ك + سعر شاشة MacBook' : 'أجرة العمل من 30 د.ك + سعر الشاشة',
+        description: isMacbookScreenService ? 'أجرة العمل تبدأ من 30 د.ك، وسعر تجميعة شاشة MacBook يُحسب بشكل منفصل حسب الموديل والجيل وتوفر القطعة. نؤكد السعر النهائي قبل أي عمل مدفوع.' : 'أجرة العمل تبدأ من 30 د.ك، وسعر الشاشة يُحسب بشكل منفصل حسب الموديل والمواصفات وتوفر القطعة. نؤكد السعر النهائي قبل أي عمل مدفوع.',
         priceCurrency: 'KWD',
         price: 30,
       },
@@ -1826,8 +1849,8 @@ export default function ArabicCommercialPage() {
             {services.map((service) => service && (
               <Link key={service.id} to={arabicServicePathById[service.id] ?? `/${service.slug}`} className="group rounded-2xl border border-slate-800 bg-slate-900/45 p-6 hover:border-cyan-500/40">
                 <Wrench className="h-6 w-6 text-cyan-400" aria-hidden="true" />
-                <h3 className="mt-4 text-lg font-bold text-white group-hover:text-cyan-300">{(slug === 'laptop-screen-repair-kuwait' ? arabicScreenServiceCopy[service.id]?.title : slug === 'gaming-laptop-repair-kuwait' ? arabicGamingServiceCopy[service.id]?.title : undefined) ?? service.title.replace(' Kuwait', '')}</h3>
-                <p className="mt-2 text-sm leading-6 text-slate-400">{(slug === 'laptop-screen-repair-kuwait' ? arabicScreenServiceCopy[service.id]?.description : slug === 'gaming-laptop-repair-kuwait' ? arabicGamingServiceCopy[service.id]?.description : undefined) ?? service.shortDescription}</p>
+                <h3 className="mt-4 text-lg font-bold text-white group-hover:text-cyan-300">{(slug === 'laptop-screen-repair-kuwait' ? arabicScreenServiceCopy[service.id]?.title : slug === 'gaming-laptop-repair-kuwait' ? arabicGamingServiceCopy[service.id]?.title : slug === 'macbook-screen-replacement-kuwait' ? arabicMacbookScreenServiceCopy[service.id]?.title : undefined) ?? service.title.replace(' Kuwait', '')}</h3>
+                <p className="mt-2 text-sm leading-6 text-slate-400">{(slug === 'laptop-screen-repair-kuwait' ? arabicScreenServiceCopy[service.id]?.description : slug === 'gaming-laptop-repair-kuwait' ? arabicGamingServiceCopy[service.id]?.description : slug === 'macbook-screen-replacement-kuwait' ? arabicMacbookScreenServiceCopy[service.id]?.description : undefined) ?? service.shortDescription}</p>
               </Link>
             ))}
           </div>
@@ -1839,8 +1862,10 @@ export default function ArabicCommercialPage() {
             <div>
               <h2 id="arabic-local" className="text-2xl font-black text-white">استلام من منطقتك بالكويت</h2>
               <p className="mt-3 max-w-3xl leading-8 text-slate-400">ما تحتاج تودي الجهاز بنفسك إلى حولي. أرسل منطقتك وموديل الجهاز والمشكلة، ونرتب الاستلام ثم يتم الفحص والإصلاح في مختبر KCROC في حولي وإرجاع الجهاز لك بعد الاختبار.</p>
-              <Link to="/ar/near-me" className="mt-5 inline-flex items-center gap-2 font-bold text-cyan-300 hover:text-cyan-200">فني كمبيوتر وتصليح لابتوب بالقرب مني <ArrowLeft className="h-4 w-4" aria-hidden="true" /></Link>
-              <Link to="/ar/pricing" className="mt-4 inline-flex items-center gap-2 font-bold text-cyan-300 hover:text-cyan-200">أسعار تصليح الكمبيوتر واللابتوب في الكويت <ArrowLeft className="h-4 w-4" aria-hidden="true" /></Link>
+              <div className="mt-5 flex flex-wrap gap-x-5 gap-y-3">
+                <Link to="/ar/near-me" className="inline-flex items-center gap-2 font-bold text-cyan-300 hover:text-cyan-200">فني كمبيوتر وتصليح لابتوب بالقرب مني <ArrowLeft className="h-4 w-4" aria-hidden="true" /></Link>
+                <Link to="/ar/pricing" className="inline-flex items-center gap-2 font-bold text-cyan-300 hover:text-cyan-200">أسعار تصليح الكمبيوتر واللابتوب في الكويت <ArrowLeft className="h-4 w-4" aria-hidden="true" /></Link>
+              </div>
             </div>
           </div>
         </section>

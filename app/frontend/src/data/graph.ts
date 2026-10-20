@@ -359,13 +359,13 @@ export const rawGraphData: RawGraphData = {
 
     'page-ar-macbook-screen-replacement': {
       id: 'page-ar-macbook-screen-replacement', slug: 'ar/macbook-screen-replacement-kuwait', entityType: 'WebPage', isActive: true,
-      title: 'تبديل شاشة MacBook في الكويت', description: 'تبديل شاشة MacBook Air وMacBook Pro في الكويت للشاشة المكسورة أو السوداء أو التي فيها خطوط أو وميض، مع مطابقة الموديل.',
+      title: 'تبديل شاشة MacBook في الكويت', description: 'تبديل شاشة MacBook Air وMacBook Pro في الكويت للشاشة المكسورة أو السوداء أو التي فيها خطوط أو وميض. فحص قبل التبديل، أجرة العمل من 30 د.ك + سعر الشاشة، واستلام وتوصيل مجاني.',
       seo: {
-        title: 'تبديل شاشة MacBook الكويت | Air وPro | KCROC',
-        description: 'تبديل شاشة MacBook Air وPro في الكويت للشاشات المكسورة أو السوداء أو التي تومض. مطابقة الموديل، استلام مجاني وضمان 30 يومًا.',
+        title: 'تبديل شاشة ماك بوك في الكويت | MacBook Air وPro – KCROC',
+        description: 'شاشة MacBook مكسورة أو سوداء؟ نفحص الشاشة والكابل والإضاءة قبل التبديل. أسعار تبدأ من 30 د.ك + القطعة، مع استلام وتوصيل مجاني في الكويت وضمان 30 يومًا على الإصلاحات المشمولة.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/ar/macbook-screen-replacement-kuwait', locale: 'ar_KW',
         alternates: { 'ar-KW': 'https://www.computerrepairkuwait.com/ar/macbook-screen-replacement-kuwait', 'en-KW': 'https://www.computerrepairkuwait.com/macbook-screen-replacement-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/macbook-screen-replacement-kuwait' },
-        ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList'], lastModified: '2026-10-02T00:00:00+03:00', breadcrumbs: [{ name: 'الرئيسية', url: '/' }, { name: 'تبديل شاشة MacBook', url: '/ar/macbook-screen-replacement-kuwait' }]
+        ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList'], lastModified: '2026-10-20T00:00:00+03:00', breadcrumbs: [{ name: 'الرئيسية', url: '/' }, { name: 'تبديل شاشة MacBook', url: '/ar/macbook-screen-replacement-kuwait' }]
       },
       relatedServiceIds: ['srv-macbook-screen', 'srv-macbook', 'srv-screen']
     } as WebPageEntity,
@@ -1061,11 +1061,11 @@ export const rawGraphData: RawGraphData = {
     'srv-macbook-screen': {
       id: 'srv-macbook-screen', slug: 'macbook-screen-replacement-kuwait', entityType: 'Service', isActive: true,
       title: 'MacBook Screen Replacement Kuwait', iconKey: 'monitor',
-      shortDescription: 'MacBook Air and Pro display replacement for cracked, black, flickering or damaged Retina screens, with model-specific compatibility checks.',
-      description: 'MacBook display damage needs more than a generic laptop panel swap. KCROC identifies the exact MacBook generation, screen assembly and display fault first, then matches the replacement to the model before installation. For cracked, black or flickering displays, we also check the display cable, backlight path and surrounding hardware so a full screen assembly is not ordered when a smaller fault explains the symptom.',
+      shortDescription: 'MacBook Air and Pro screen replacement in Kuwait for cracked, black, flickering or lined displays, with exact-model checks and a clear quote before fitting.',
+      description: 'KCROC checks the exact MacBook model and generation before sourcing a compatible display assembly. For cracked glass, lines, flicker or a black screen, we inspect the display, cable, connector and backlight path first; these symptoms do not always mean the full assembly has failed. Replacement labour starts from 30 KWD plus the display assembly. We confirm part compatibility, availability, final price and expected turnaround before installation, then test image stability, brightness and supported display functions before return. Free pickup and delivery are available across Kuwait; repairs are completed at our Hawalli workshop.',
       idealCustomer: 'MacBook Air and MacBook Pro owners in Kuwait with cracked glass, dead pixels, black display, flickering, lines, backlight problems or display damage after a drop.',
       deviceTypes: ['MacBook Air', 'MacBook Pro 13-inch', 'MacBook Pro 14-inch', 'MacBook Pro 16-inch', 'Intel and Apple Silicon MacBooks'],
-      repairLevel: 'basic', estimatedTurnaround: 'Same Day / 24-48 Hours',
+      repairLevel: 'basic', estimatedTurnaround: 'Same day when a compatible display is in stock; otherwise timing depends on model and part availability',
       pricing: { startingFrom: 30, currency: 'KWD', quoteRequired: true, displayLabel: 'Labor from 30 KWD + display assembly' },
       coreFeatures: [
         'MacBook Air Display Replacement', 'MacBook Pro Retina Display Replacement', 'Model and Connector Matching',
@@ -1086,10 +1086,13 @@ export const rawGraphData: RawGraphData = {
         { id: 'macbook-dim-display', title: 'Dim or Uneven Backlight', severity: 'medium', description: 'A dim panel is checked for display and backlight faults rather than automatically replacing the full display.' }
       ],
       commercialAnswers: [
-        { question: 'How much does MacBook screen replacement cost in Kuwait?', answer: 'MacBook display-replacement labor starts from 30 KWD, with the display assembly priced separately. The final quote depends on the exact MacBook model and assembly required.' },
-        { question: 'Do you replace MacBook Air and MacBook Pro screens?', answer: 'Yes. We work on MacBook Air and MacBook Pro generations after confirming the exact model and compatible display assembly.' },
-        { question: 'Can a flickering MacBook screen be a cable problem?', answer: 'Yes. Flicker, lines and intermittent display behaviour can come from the display connection or related hardware, so we test those paths before quoting a complete replacement.' },
-        { question: 'Do you offer pickup anywhere in Kuwait?', answer: 'Yes. KCROC provides free pickup and delivery across Kuwait, with the actual display work completed in the Hawalli lab.' }
+        { question: 'How much does MacBook screen replacement cost in Kuwait?', answer: 'Display-replacement labour starts from 30 KWD, with the compatible display assembly charged separately. The exact model, generation and assembly availability determine the final quote, which we confirm before installation.' },
+        { question: 'Do you replace MacBook Air and MacBook Pro screens?', answer: 'Yes. We service supported MacBook Air and MacBook Pro models after verifying the exact model identifier and compatible display assembly.' },
+        { question: 'Can a black or flickering MacBook screen be a cable problem?', answer: 'Yes. A black screen, flicker or lines can come from the panel, connection, cable, backlight path or another hardware fault. We inspect likely causes before quoting a full display replacement.' },
+        { question: 'Can you replace a MacBook screen the same day?', answer: 'Same-day completion may be possible when a compatible display is in stock and the diagnosis and workload allow it. We confirm expected timing after checking availability.' },
+        { question: 'Will you access my files during screen replacement?', answer: 'Screen replacement is a hardware repair and does not normally require opening personal files. We do not browse stored files as part of this service; any additional step that could affect data is explained before proceeding.' },
+        { question: 'Do you offer free pickup and delivery across Kuwait?', answer: 'Yes. Free pickup and delivery are available across Kuwait, and the repair is completed at our Hawalli workshop.' },
+        { question: 'What warranty applies to MacBook screen replacement?', answer: 'A 30-day warranty covers the completed repair, including the replacement display assembly and labour, according to the service terms. We confirm applicable coverage before repair.' }
       ],
       process: [
         { step: 1, title: 'Confirm Model', description: 'Identify the exact MacBook generation and display configuration.' },
@@ -1098,24 +1101,26 @@ export const rawGraphData: RawGraphData = {
         { step: 4, title: 'Install and Test', description: 'Fit the display assembly, verify image quality and test the completed MacBook.' }
       ],
       faqs: [
-        { id: 'mac-screen-faq-1', title: 'How much is MacBook screen replacement in Kuwait?', answer: 'Display-replacement labor starts from 30 KWD; the display assembly is charged separately. Exact pricing depends on the MacBook model and assembly required.' },
-        { id: 'mac-screen-faq-2', title: 'Do you repair the screen cable instead of replacing the display?', answer: 'When the cable or connector is the actual fault, we diagnose that path before recommending a full display assembly.' },
-        { id: 'mac-screen-faq-3', title: 'How quickly can a MacBook screen be replaced?', answer: 'Same-day service is possible for compatible displays that are in stock; otherwise the turnaround depends on part availability.' },
-        { id: 'mac-screen-faq-4', title: 'Is my data safe during screen replacement?', answer: 'Yes. Display replacement is a hardware service and does not require browsing your stored files.' }
+        { id: 'mac-screen-faq-1', title: 'How much does MacBook screen replacement cost in Kuwait?', answer: 'Display-replacement labour starts from 30 KWD, with the compatible display assembly charged separately. The exact model, generation and assembly availability determine the final quote, which we confirm before installation.' },
+        { id: 'mac-screen-faq-2', title: 'Do you replace MacBook Air and MacBook Pro screens?', answer: 'Yes. We service supported MacBook Air and MacBook Pro models after verifying the exact model identifier and compatible display assembly.' },
+        { id: 'mac-screen-faq-3', title: 'Can a black or flickering MacBook screen be a cable problem?', answer: 'Yes. A black screen, flicker or lines can come from the panel, connection, cable, backlight path or another hardware fault. We inspect likely causes before quoting a full display replacement.' },
+        { id: 'mac-screen-faq-4', title: 'Can you replace a MacBook screen the same day?', answer: 'Same-day completion may be possible when a compatible display is in stock and the diagnosis and workload allow it. We confirm expected timing after checking availability.' },
+        { id: 'mac-screen-faq-5', title: 'Will you access my files during screen replacement?', answer: 'Screen replacement is a hardware repair and does not normally require opening personal files. We do not browse stored files as part of this service; any additional step that could affect data is explained before proceeding.' },
+        { id: 'mac-screen-faq-6', title: 'Do you offer free pickup and delivery across Kuwait?', answer: 'Yes. Free pickup and delivery are available across Kuwait, and the repair is completed at our Hawalli workshop.' },
+        { id: 'mac-screen-faq-7', title: 'What warranty applies to MacBook screen replacement?', answer: 'A 30-day warranty covers the completed repair, including the replacement display assembly and labour, according to the service terms. We confirm applicable coverage before repair.' }
       ],
       relatedServiceIds: ['srv-macbook', 'srv-screen', 'srv-laptop', 'srv-battery'],
       relatedProblemIds: ['problem-cracked-screen', 'problem-black-screen'],
       relatedBrandIds: [],
       relatedResourcePaths: [
-        { label: 'Laptop Screen Repair Guide', path: '/laptop-screen-repair-kuwait' },
-        { label: 'MacBook Repair Kuwait', path: '/macbook-repair-kuwait' }
+        { label: 'How to Protect Your Laptop Screen', path: '/blog/how-to-protect-laptop-screen' }
       ],
       contentImages: [
         { src: IMAGES.macbook.diagnostics.src, alt: 'MacBook diagnostics before display repair in Kuwait', width: IMAGES.macbook.diagnostics.width, height: IMAGES.macbook.diagnostics.height, placement: 'hero', caption: 'MacBook inspection before display repair and model matching.' },
         { src: IMAGES.laptopHardware.laptopScreenAssemblyDisassemblyRepair.src, alt: 'Laptop display assembly service and screen repair', width: IMAGES.laptopHardware.laptopScreenAssemblyDisassemblyRepair.width, height: IMAGES.laptopHardware.laptopScreenAssemblyDisassemblyRepair.height, placement: 'process', caption: 'Display assembly inspection and reassembly during screen service.' }
       ],
       warranty: { duration: '30 Days', coverage: 'Replacement display assembly and labour for the completed repair', noFixNoFee: true },
-      seo: { title: 'MacBook Screen Replacement Kuwait | Air & Pro | KCROC', description: 'MacBook Air and Pro screen replacement in Kuwait for cracked, black or flickering displays. Model-specific matching, free pickup and 30-day warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/macbook-screen-replacement-kuwait', locale: 'en_KW', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/macbook-screen-replacement-kuwait', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/macbook-screen-replacement-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/macbook-screen-replacement-kuwait' }, ogType: 'article', schemaTypes: ['Service', 'FAQPage'], lastModified: '2026-10-02T00:00:00+03:00' },
+      seo: { title: 'MacBook Screen Replacement Kuwait | From 30 KWD + Part | KCROC', description: 'MacBook Air & Pro screen replacement in Kuwait. Labour from 30 KWD plus the display assembly. Model, cable and backlight checks, free pickup and a 30-day warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/macbook-screen-replacement-kuwait', locale: 'en_KW', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/macbook-screen-replacement-kuwait', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/macbook-screen-replacement-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/macbook-screen-replacement-kuwait' }, ogType: 'article', schemaTypes: ['Service', 'FAQPage'], lastModified: '2026-10-20T00:00:00+03:00' },
       navigationPriority: 68, isFeatured: true,
       popular: true
     } as ServiceEntity,
