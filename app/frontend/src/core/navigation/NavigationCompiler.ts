@@ -374,7 +374,7 @@ export class NavigationCompiler {
     };
   }
 
-  // 10. Resources Mega Menu — combines guides, blog, news and case studies
+  // 10. Resources Mega Menu — combines guides, blog and news
   private static compileResourcesMegaMenu(): MegaMenuConfig {
     const toContent = (entry: { id: string; slug: string; title: string; description: string; iconKey?: string; primaryKeyword?: string }): NavEntity => ({
       id: entry.id,

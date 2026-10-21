@@ -100,92 +100,78 @@ const arabicHawalli = await read('pages/ArabicHawalliLocationPage.tsx');
 add('English and Arabic Hawalli language switch is reciprocal', locale.includes("'/location/hawalli': '/ar/computer-repair-hawalli'") && locale.includes("'/ar/computer-repair-hawalli': '/location/hawalli'"));
 add('Dedicated Arabic Hawalli location route is registered and localized', app.includes("path: 'ar/computer-repair-hawalli'") && app.indexOf("path: 'ar/computer-repair-hawalli'") < app.indexOf("path: 'ar/:slug'") && arabicHawalli.includes('dir="rtl" lang="ar-KW"') && arabicHawalli.includes('DIRECTIONS_URL') && arabicHawalli.includes('FAQPage'));
 add('Hawalli location metadata is synchronized between graph and SEO projection', graph.includes("title: 'Computer Repair Hawalli | Laptop, MacBook & PC | KCROC'") && graph.includes('Visit KCROC at Al Mullah Complex, Basement Shop 19, Hawalli. Laptop, MacBook, PC and motherboard repair daily 10 AM–10 PM. Free pickup across Kuwait.') && seoProjection.includes('Computer Repair Hawalli | Laptop, MacBook & PC | KCROC') && seoProjection.includes('Visit KCROC at Al Mullah Complex, Basement Shop 19, Hawalli. Laptop, MacBook, PC and motherboard repair daily 10 AM–10 PM. Free pickup across Kuwait.') && graph.includes("title: 'تصليح كمبيوتر حولي | فني لابتوب وموقع المختبر | KCROC'") && seoProjection.includes('تصليح كمبيوتر حولي | فني لابتوب وموقع المختبر | KCROC'));
-add('Hawalli hero includes directions and case-study promotion requires consent/evidence', hawalli.includes("cta_name: 'hawalli_directions'") && hawalli.includes('isCaseStudyPublishable(c)'));
+add('Hawalli hero retains workshop directions without case-study promotion', hawalli.includes("cta_name: 'hawalli_directions'") && !hawalli.includes('case-rog-motherboard-hawalli'));
 
-
-const [caseEligibility, caseShowcase, caseIndex, caseTemplateForValidation, locationDeepForValidation, hawalliForValidation, reviewsForValidation, graphForValidation, seoForValidation, sitemapForValidation, reviewSchemaForValidation, auditLocationsForValidation, locationTemplateForValidation, brandTemplateForValidation, problemTemplateForValidation, serviceTemplateForValidation, prerenderManifestForValidation, sitemapGeneratorForValidation, viteConfigForValidation] = await Promise.all([
-  read('utils/publicationEligibility.ts'),
-  read('components/home/BeforeAfterShowcase.tsx'),
-  read('pages/CaseStudiesIndex.tsx'),
-  read('pages/templates/CaseStudyTemplate.tsx'),
-  read('pages/LocationDeepTemplate.tsx'),
-  read('pages/HawalliLocationPage.tsx'),
-  read('components/home/Reviews.tsx'),
+const [caseStudyRemovalApp, caseStudyRemovalNavigation, caseStudyRemovalDesktopMenu, caseStudyRemovalMobileMenu, caseStudyRemovalHome, caseStudyRemovalRootLayout, caseStudyRemovalGraph, caseStudyRemovalSEO, caseStudyRemovalSitemap, caseStudyRemovalPrerender, caseStudyRemovalSitemapGenerator, caseStudyRemovalArabicCommercial, caseStudyRemovalBiosGuide, caseStudyRemovalBlogTemplate, caseStudyRemovalCoolingGuide, caseStudyRemovalLocation, caseStudyRemovalLocationDeep, caseStudyRemovalHawalli, caseStudyRemovalBrand, caseStudyRemovalProblem, caseStudyRemovalService] = await Promise.all([
+  read('App.tsx'),
+  read('core/navigation/NavigationCompiler.ts'),
+  read('core/components/layout/DesktopMegaMenu.tsx'),
+  read('core/components/layout/MobileMenu.tsx'),
+  read('pages/Home.tsx'),
+  read('core/components/layout/RootLayout.tsx'),
   read('data/graph.ts'),
   read('data/seoGraph.generated.ts'),
   readFile(path.resolve('public/sitemap.xml'), 'utf8'),
-  read('types/knowledgeGraph.ts'),
-  readFile(path.resolve('scripts/audit-locations.ts'), 'utf8'),
+  readFile(path.resolve('prerender-routes.generated.json'), 'utf8'),
+  readFile(path.resolve('scripts/generate-sitemap.ts'), 'utf8'),
+  read('pages/ArabicCommercialPage.tsx'),
+  read('pages/BiosUefiRecoveryGuide.tsx'),
+  read('pages/BlogPostTemplate.tsx'),
+  read('pages/GamingPCCooling.tsx'),
   read('pages/LocationTemplate.tsx'),
+  read('pages/LocationDeepTemplate.tsx'),
+  read('pages/HawalliLocationPage.tsx'),
   read('pages/templates/BrandTemplate.tsx'),
   read('pages/templates/ProblemTemplate.tsx'),
   read('pages/templates/ServiceTemplate.tsx'),
-  readFile(path.resolve('prerender-routes.generated.json'), 'utf8'),
-  readFile(path.resolve('scripts/generate-sitemap.ts'), 'utf8'),
-  readFile(path.resolve('vite.config.ts'), 'utf8'),
 ]);
-add('Case-study publishing requires explicit consent, device/repair scope and first-party evidence',
-  caseEligibility.includes("consent?.granted === true")
-  && caseEligibility.includes("consent.scope.includes('device')")
-  && caseEligibility.includes("consent.scope.includes('repair-details')")
-  && caseEligibility.includes('caseStudy.evidence.length > 0'));
-add('All three unapproved case studies are noindex in source and generated SEO data',
-  ['case-macbook-liquid-salmiya', 'case-rog-motherboard-hawalli', 'case-dell-screen-kuwait-city'].every((id) => {
-    const at = graphForValidation.indexOf("'" + id + "': {");
-    const end = graphForValidation.indexOf('} as CaseStudyEntity,', at);
-    const item = graphForValidation.slice(at, end);
-    const seoAt = seoForValidation.indexOf('"id": "' + id + '"');
-    const seoEnd = seoForValidation.indexOf('"id":', seoAt + 10);
-    const generatedItem = seoForValidation.slice(seoAt, seoEnd > seoAt ? seoEnd : seoAt + 5000);
-    return at >= 0 && end > at && item.includes("robots: 'noindex, follow'") && generatedItem.includes('"robots": "noindex, follow"');
-  }));
-add('Unpublished case studies are omitted from homepage and index cards',
-  caseShowcase.includes('isCaseStudyPublishable(study)')
-  && caseShowcase.includes('canPublishCaseStudyPhotos(study)')
-  && caseIndex.includes('.filter(isCaseStudyPublishable)')
-  && caseIndex.includes('canPublishCaseStudyPhotos(study)'));
-add('Direct unpublished case-study URLs render a noindex fallback without story content',
-  caseTemplateForValidation.includes('SEOEngine entityId="page-404"')
-  && caseTemplateForValidation.includes('isCaseStudyPublishable(caseStudy)')
-  && caseTemplateForValidation.includes('Repair story unavailable'));
-add('Service-area and Hawalli pages only show consented/evidenced cases and verified reviews',
-  locationDeepForValidation.includes('isCaseStudyPublishable(candidate)')
-  && locationDeepForValidation.includes('isReviewPublishable(r)')
-  && hawalliForValidation.includes('isCaseStudyPublishable(c)')
-  && hawalliForValidation.includes('isReviewPublishable(r)')
-  && auditLocationsForValidation.includes('isReviewPublishable(r)'));
-add('Unverified quote cards are not rendered; review provenance fields are available for future approved quotes',
-  !reviewsForValidation.includes('review.text')
-  && !reviewsForValidation.includes('review.name')
-  && reviewSchemaForValidation.includes('sourceUrl: z.string().url().optional()')
-  && reviewSchemaForValidation.includes('publicationVerified: z.boolean().optional()'));
-add('All public related-case cards across location, brand, problem and service templates use the publication gate',
-  locationTemplateForValidation.includes('isCaseStudyPublishable(cs)')
-  && brandTemplateForValidation.includes('isCaseStudyPublishable(caseStudy)')
-  && brandTemplateForValidation.includes('canPublishCaseStudyPhotos(caseStudy)')
-  && problemTemplateForValidation.includes('isCaseStudyPublishable(cs)')
-  && serviceTemplateForValidation.includes('relatedCaseStudyPath = entity.relatedCaseStudyPath')
-  && serviceTemplateForValidation.includes('isCaseStudyPublishable(study)'));
-add('Unpublished case-study URLs are prerendered separately from the indexable sitemap',
-  ['/case-studies/macbook-liquid-damage-salmiya', '/case-studies/asus-rog-dead-motherboard-hawalli', '/case-studies/dell-xps-screen-replacement-kuwait-city'].every((route) => prerenderManifestForValidation.includes(route))
-  && sitemapGeneratorForValidation.includes('prerender-routes.generated.json')
-  && sitemapGeneratorForValidation.includes("entityType?: string")
-  && viteConfigForValidation.includes('prerender-routes.generated.json')
-  && viteConfigForValidation.includes('return [...new Set([...routes, ...extraRoutes])];'));
-add('Sitemap excludes all three unpublished customer-specific case-study URLs',
-  !sitemapForValidation.includes('/case-studies/macbook-liquid-damage-salmiya')
-  && !sitemapForValidation.includes('/case-studies/asus-rog-dead-motherboard-hawalli')
-  && !sitemapForValidation.includes('/case-studies/dell-xps-screen-replacement-kuwait-city'));
 
-add('Case-study hub stays indexable and provides useful diagnostic methods when customer stories are withheld',
-  graphForValidation.includes("'page-case-studies': {")
-  && !graphForValidation.slice(graphForValidation.indexOf("'page-case-studies': {"), graphForValidation.indexOf("} as WebPageEntity,", graphForValidation.indexOf("'page-case-studies': {"))).includes("robots: 'noindex")
-  && caseIndex.includes('Diagnostic methods')
-  && caseIndex.includes('/motherboard-repair-kuwait')
-  && caseIndex.includes('/laptop-liquid-damage-repair-kuwait')
-  && caseIndex.includes('/laptop-screen-repair-kuwait')
-  && sitemapForValidation.includes('https://www.computerrepairkuwait.com/case-studies'));
+add('Case-study hub/detail routes and homepage showcase are removed',
+  !caseStudyRemovalApp.includes("path: 'case-studies'")
+  && !caseStudyRemovalHome.includes('BeforeAfterShowcase')
+  && !caseStudyRemovalRootLayout.includes("path === '/case-studies'")
+  && !caseStudyRemovalRootLayout.includes("path.startsWith('/case-studies/')"));
 
+add('Case-study navigation is removed from desktop, mobile and resources menus',
+  !caseStudyRemovalNavigation.includes('nav_case_study')
+  && !caseStudyRemovalNavigation.includes('case_studies_mega')
+  && !caseStudyRemovalNavigation.includes("slug: 'case-studies'")
+  && !caseStudyRemovalNavigation.includes('compileCaseStudiesMegaMenu')
+  && !caseStudyRemovalDesktopMenu.includes('case_studies_mega')
+  && !caseStudyRemovalMobileMenu.includes('case_studies_mega'));
+
+add('Customer-specific case-study records and links are removed from public content',
+  !caseStudyRemovalGraph.includes("'page-case-studies': {")
+  && !caseStudyRemovalGraph.includes("'case-macbook-liquid-salmiya': {")
+  && !caseStudyRemovalGraph.includes("'case-rog-motherboard-hawalli': {")
+  && !caseStudyRemovalGraph.includes("'case-dell-screen-kuwait-city': {")
+  && !caseStudyRemovalGraph.includes('/case-studies/')
+  && !caseStudyRemovalSEO.includes('"id": "page-case-studies"')
+  && !caseStudyRemovalSEO.includes('"entityType": "CaseStudy"'));
+
+add('Case-study cards and links are removed from location, brand, problem, service and guide pages',
+  !caseStudyRemovalArabicCommercial.includes('/case-studies/')
+  && !caseStudyRemovalBiosGuide.includes('/case-studies/')
+  && !caseStudyRemovalBlogTemplate.includes('/case-studies/')
+  && !caseStudyRemovalCoolingGuide.includes('/case-studies/')
+  && !caseStudyRemovalLocation.includes('/case-studies/')
+  && !caseStudyRemovalLocation.includes('relatedCaseStudies')
+  && !caseStudyRemovalLocationDeep.includes('/case-studies/')
+  && !caseStudyRemovalLocationDeep.includes('const caseStudy =')
+  && !caseStudyRemovalHawalli.includes('/case-studies/')
+  && !caseStudyRemovalHawalli.includes('const caseStudy =')
+  && !caseStudyRemovalBrand.includes('/case-studies/')
+  && !caseStudyRemovalBrand.includes('relatedCaseStudies')
+  && !caseStudyRemovalProblem.includes('/case-studies/')
+  && !caseStudyRemovalProblem.includes('relatedCaseStudies')
+  && !caseStudyRemovalService.includes('/case-studies/')
+  && !caseStudyRemovalService.includes('relatedCaseStudyPath')
+  && !caseStudyRemovalService.includes('relatedCaseStudyIds'));
+
+add('Legacy case-study URLs are excluded from the sitemap and prerender manifest',
+  !caseStudyRemovalSitemap.includes('/case-studies/')
+  && JSON.parse(caseStudyRemovalPrerender).length === 0
+  && caseStudyRemovalSitemapGenerator.includes("fs.writeFileSync(prerenderRoutesPath, '[]\\n')"));
 for (const check of checks) console.log(`${check.pass ? '✅' : '❌'} ${check.name}${!check.pass && check.detail ? ` — ${check.detail}` : ''}`);
 const failed = checks.filter((check) => !check.pass);
 if (failed.length) process.exit(1);
