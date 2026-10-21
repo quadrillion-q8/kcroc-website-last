@@ -3718,7 +3718,7 @@ export const rawGraphData: RawGraphData = {
     'loc-rumaithiya': { id: 'loc-rumaithiya', slug: 'rumaithiya', entityType: 'Location', isActive: true, isPhysicalLocation: false,
       title: 'Rumaithiya',
       description: 'Laptop, MacBook and gaming PC repair for Rumaithiya with free pickup and delivery to KCROC\'s central Hawalli workshop.',
-      localIntro: 'Rumaithiya is close to KCROC\'s Hawalli service area, so customers can use the same pickup-and-lab workflow without bringing a heavy desktop or laptop across Kuwait. Devices are diagnosed in the central workshop and returned after repair testing.',
+      localIntro: "KCROC serves Rumaithiya and nearby Salwa, Shaab and Jabriya through scheduled pickup and delivery. Devices are checked at our Hawalli lab for display, power, charging, thermal and board-level faults; we explain the findings and price before starting paid work. You do not need to visit a separate repair shop in Rumaithiya.",
       localHighlights: [
         { title: 'Close-in pickup service', description: 'Pickup is available throughout Rumaithiya and nearby Hawalli-side neighborhoods.' },
         { title: 'Gaming and thermal problems', description: 'Gaming laptops and PCs can be checked for overheating, cooling faults, shutdowns and performance issues.' },
@@ -3743,7 +3743,7 @@ export const rawGraphData: RawGraphData = {
     'loc-shaab': { id: 'loc-shaab', slug: 'shaab', entityType: 'Location', isActive: true, isPhysicalLocation: false,
       title: 'Shaab',
       description: 'Professional laptop, MacBook and computer repair for Shaab residents and businesses, with pickup to KCROC\'s Hawalli lab.',
-      localIntro: 'Shaab customers can arrange pickup without visiting a repair shop. KCROC handles diagnosis and repair at the Hawalli workshop, with service coverage suited to laptops, MacBooks, gaming machines and common power or display faults.',
+      localIntro: "Residents and offices in Shaab can arrange free device collection, with coverage extending toward Kuwait City, Salmiya and Rumaithiya. At the Hawalli lab, technicians diagnose laptop, MacBook and computer faults before deciding whether a screen, charging component or board-level repair is appropriate. The device is tested before it is returned.",
       localHighlights: [
         { title: 'Pickup for homes and offices', description: 'Collection is available for residents and small businesses in Shaab and nearby areas.' },
         { title: 'Display and no-power diagnostics', description: 'Black screens, no-power symptoms and charging faults are checked systematically before parts are replaced.' },
@@ -3768,7 +3768,7 @@ export const rawGraphData: RawGraphData = {
     'loc-surra': { id: 'loc-surra', slug: 'surra', entityType: 'Location', isActive: true, isPhysicalLocation: false,
       title: 'Surra',
       description: 'Laptop and computer repair for Surra residents with free pickup to KCROC\'s Hawalli lab, covering no-power, overheating, screen and charging problems.',
-      localIntro: 'For Surra homes and small offices, KCROC provides a pickup-first repair workflow. Devices are collected locally, repaired and tested at the Hawalli lab, then delivered back without requiring the customer to arrange transport.',
+      localIntro: "KCROC provides pickup-based computer and laptop repair for Surra and nearby Qadsiya, Jabriya and Hawalli. If a device has no power, overheats, shows a faulty display or will not charge, we inspect the hardware at the Hawalli lab and quote the repair before paid work. Surra is covered by collection and delivery, not a local storefront.",
       localHighlights: [
         { title: 'Residential pickup service', description: 'Free collection is available across Surra and nearby central neighborhoods.' },
         { title: 'Laptop fault diagnosis', description: 'No-power, charging, overheating and black-screen faults are diagnosed before a repair path is quoted.' },
@@ -3793,7 +3793,7 @@ export const rawGraphData: RawGraphData = {
     'loc-khaitan': { id: 'loc-khaitan', slug: 'khaitan', entityType: 'Location', isActive: true, isPhysicalLocation: false,
       title: 'Khaitan',
       description: 'Computer and laptop repair for Khaitan, with free pickup for screen, charging, battery, no-power and motherboard faults.',
-      localIntro: 'Khaitan customers can use KCROC\'s Farwaniya-side pickup service without needing to carry a damaged laptop across Kuwait. Devices are collected from Khaitan, diagnosed at the Hawalli workshop and returned after testing.',
+      localIntro: "For Khaitan, Farwaniya, Riggae and Ardiya, KCROC arranges free pickup and sends devices to the Hawalli workshop for diagnosis. We check screen, charging, battery and no-power faults rather than assuming the first suspected part is defective, then explain the repair options and price before proceeding. The repaired device is tested before delivery.",
       localHighlights: [
         { title: 'Khaitan pickup coverage', description: 'Free pickup is available from Khaitan and connects directly into KCROC\'s existing Farwaniya service network.' },
         { title: 'Power and charging faults', description: 'Dead laptops, intermittent charging and damaged charging ports are tested before component replacement.' },
@@ -3818,7 +3818,7 @@ export const rawGraphData: RawGraphData = {
     'loc-riggae': { id: 'loc-riggae', slug: 'riggae', entityType: 'Location', isActive: true, isPhysicalLocation: false,
       title: 'Riggae',
       description: 'Laptop, MacBook and computer repair for Riggae with free pickup to KCROC\'s Hawalli lab, covering common power, display and charging issues.',
-      localIntro: 'Riggae is part of KCROC\'s Farwaniya-area pickup network. Customers can arrange collection locally while the actual diagnosis, board work and testing happen at the main Hawalli workshop.',
+      localIntro: "KCROC covers Riggae and nearby Khaitan, Farwaniya and Ardiya with scheduled pickup and delivery. Laptops that will not power on, have a black display or fail to charge are diagnosed at the Hawalli lab, where technicians check the relevant power, display or charging path before quoting. Riggae is a service area, not a separate walk-in branch.",
       localHighlights: [
         { title: 'Pickup from Riggae', description: 'Free collection and return delivery are available for residents and home offices in Riggae.' },
         { title: 'No-power and charging diagnosis', description: 'Charging ports, power rails and related motherboard faults are checked systematically.' },
@@ -3843,7 +3843,7 @@ export const rawGraphData: RawGraphData = {
     'loc-ardiya': { id: 'loc-ardiya', slug: 'ardiya', entityType: 'Location', isActive: true, isPhysicalLocation: false,
       title: 'Ardiya',
       description: 'Laptop and computer repair for Ardiya with pickup to KCROC\'s Hawalli lab, including motherboard, screen, battery and gaming PC work.',
-      localIntro: 'Ardiya customers can book a pickup instead of searching for a local shop. KCROC diagnoses the device in the central workshop, performs the approved repair and returns it after functional testing.',
+      localIntro: "For Ardiya, Farwaniya, Riggae and Jleeb Al-Shuyoukh, KCROC provides free collection and return from home or office. We diagnose laptop and PC display, battery, power and motherboard symptoms at our Hawalli lab, then recommend a repair based on the actual fault. Every approved repair is checked before the device is returned.",
       localHighlights: [
         { title: 'Ardiya pickup service', description: 'Free device collection is available across Ardiya and nearby Farwaniya-area communities.' },
         { title: 'Laptop and gaming PC repair', description: 'Both everyday laptops and gaming systems are supported, including thermal and no-power issues.' },
@@ -3868,7 +3868,7 @@ export const rawGraphData: RawGraphData = {
     'loc-mahboula': { id: 'loc-mahboula', slug: 'mahboula', entityType: 'Location', isActive: true, isPhysicalLocation: false,
       title: 'Mahboula',
       description: 'Laptop, MacBook and gaming PC repair for Mahboula with free pickup and delivery to KCROC\'s Hawalli lab.',
-      localIntro: 'Mahboula customers can use KCROC\'s southern pickup route for laptops, MacBooks and gaming systems. Devices are repaired and tested centrally rather than at a separate local branch.',
+      localIntro: "KCROC serves Mahboula and nearby Mangaf, Abu Halifa and Fahaheel through free pickup and delivery. We inspect laptops, MacBooks and gaming PCs at the Hawalli lab, including battery, display, charging, thermal and motherboard faults. You receive a diagnosis and quote before paid work; Mahboula is covered as a service area rather than a walk-in shop.",
       localHighlights: [
         { title: 'Southern Kuwait pickup', description: 'Free pickup is available in Mahboula and nearby Ahmadi-area communities.' },
         { title: 'Gaming PC and laptop cooling', description: 'Overheating, thermal throttling, shutdowns and fan-related issues can be diagnosed and repaired.' },
@@ -3893,7 +3893,7 @@ export const rawGraphData: RawGraphData = {
     'loc-qurain': { id: 'loc-qurain', slug: 'qurain', entityType: 'Location', isActive: true, isPhysicalLocation: false,
       title: 'Qurain',
       description: 'Computer, laptop and MacBook repair for Qurain with free pickup and delivery to KCROC\'s Hawalli lab.',
-      localIntro: 'Qurain customers can arrange a pickup for laptops, MacBooks and gaming systems. KCROC performs the detailed diagnosis and repair at its central Hawalli workshop, then returns the tested device.',
+      localIntro: "For Qurain, Adan, Qusour and Mubarak Al-Kabeer, KCROC arranges collection and returns devices after repair and testing at the Hawalli workshop. Our technicians diagnose laptop, MacBook and PC faults before recommending a replacement, including SSD/RAM upgrades and component-level motherboard work when appropriate. There is no separate KCROC storefront in Qurain.",
       localHighlights: [
         { title: 'Pickup across Qurain', description: 'Free collection is available throughout Qurain and nearby Mubarak Al-Kabeer areas.' },
         { title: 'Motherboard and power diagnosis', description: 'No-power, intermittent power and charging problems are investigated at component level where possible.' },
@@ -3918,7 +3918,7 @@ export const rawGraphData: RawGraphData = {
     'loc-qortuba': { id: 'loc-qortuba', slug: 'qortuba', entityType: 'Location', isActive: true, isPhysicalLocation: false,
       title: 'Qortuba',
       description: 'Laptop, MacBook and computer repair for Qortuba with free pickup and delivery from KCROC\'s Hawalli workshop.',
-      localIntro: 'Qortuba customers can book pickup from home or office and have the device diagnosed at KCROC\'s central workshop. The service covers common laptop, MacBook and desktop faults without requiring a trip to the lab.',
+      localIntro: "KCROC offers pickup and delivery for Qortuba and nearby Adailiya, Rawda and Surra. Devices are diagnosed at the Hawalli lab for laptop, MacBook, screen, battery and charging problems, and the repair quote is shared before paid work begins. This keeps the service convenient without suggesting that KCROC operates a physical branch in Qortuba.",
       localHighlights: [
         { title: 'Central Kuwait pickup', description: 'Free pickup is available throughout Qortuba and nearby Capital Governorate neighborhoods.' },
         { title: 'Power, charging and display faults', description: 'No-power, charging and black-screen symptoms are diagnosed systematically before parts are replaced.' },
@@ -3943,7 +3943,7 @@ export const rawGraphData: RawGraphData = {
     'loc-rawda': { id: 'loc-rawda', slug: 'rawda', entityType: 'Location', isActive: true, isPhysicalLocation: false,
       title: 'Rawda',
       description: 'Computer, laptop and MacBook repair for Rawda with free pickup and delivery to KCROC\'s Hawalli lab.',
-      localIntro: 'Rawda residents can arrange pickup from home or office, with diagnosis and repair handled at KCROC\'s central Hawalli workshop. The pickup-first process avoids carrying a faulty device across Kuwait.',
+      localIntro: "Residents in Rawda and nearby Adailiya, Surra and Hawalli can book free pickup and delivery with KCROC. We inspect laptop, MacBook and computer faults at the Hawalli workshop, trace the cause before recommending a screen or board repair, and test the device before return. The local page describes collection coverage; the physical repair lab remains in Hawalli.",
       localHighlights: [
         { title: 'Pickup across Rawda', description: 'Free collection is available across Rawda and nearby central residential areas.' },
         { title: 'Laptop and MacBook support', description: 'Screen, battery, charging, overheating and motherboard faults are diagnosed before repair approval.' },
@@ -3968,7 +3968,7 @@ export const rawGraphData: RawGraphData = {
     'loc-messila': { id: 'loc-messila', slug: 'messila', entityType: 'Location', isActive: true, isPhysicalLocation: false,
       title: 'Messila',
       description: 'Laptop, MacBook and gaming PC repair for Messila with free pickup and delivery to KCROC\'s Hawalli workshop.',
-      localIntro: 'Messila customers can start the repair process from home using KCROC\'s free pickup and delivery service. Devices are diagnosed and repaired centrally, then returned after functional testing.',
+      localIntro: "For Messila and nearby Abu Ftaira, Fnaitees and Mubarak Al-Kabeer, KCROC provides scheduled pickup and delivery to its Hawalli lab. We diagnose laptops, MacBooks and gaming PCs for power, thermal, display, battery and motherboard faults, then explain the repair route and quote before paid work. There is no separate walk-in workshop in Messila.",
       localHighlights: [
         { title: 'Messila pickup service', description: 'Free collection is available across Messila and nearby Mubarak Al-Kabeer communities.' },
         { title: 'Laptop and MacBook repairs', description: 'Screen, battery, charging, liquid-damage and motherboard faults are supported after diagnosis.' },
@@ -3993,7 +3993,7 @@ export const rawGraphData: RawGraphData = {
     'loc-adailiya': { id: 'loc-adailiya', slug: 'adailiya', entityType: 'Location', isActive: true, isPhysicalLocation: false,
       title: 'Adailiya',
       description: 'Laptop, MacBook and computer repair for Adailiya with free pickup and delivery to KCROC\'s Hawalli workshop.',
-      localIntro: 'Adailiya customers can book a pickup from home or office and have the device assessed at KCROC\'s central Hawalli lab. This keeps diagnosis and repair in one controlled workshop while making collection and return convenient.',
+      localIntro: "KCROC serves Adailiya and nearby Qortuba, Rawda and Qadsiya through free pickup and delivery. At the Hawalli lab, technicians diagnose laptop, MacBook and PC faults, including screen, storage, memory and motherboard issues, before recommending the appropriate repair or upgrade. The device is tested before return, and Adailiya is not presented as a physical branch.",
       localHighlights: [
         { title: 'Adailiya pickup coverage', description: 'Free collection is available across Adailiya and nearby Capital Governorate neighborhoods.' },
         { title: 'Screen and battery replacement', description: 'Cracked displays, worn batteries and charging problems are diagnosed before compatible parts are fitted.' },
