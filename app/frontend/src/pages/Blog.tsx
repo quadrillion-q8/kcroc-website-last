@@ -50,8 +50,8 @@ const EXTRA_GUIDES: ExtraGuideCard[] = [
     image:
       '/images/blog/laptop-buying-guide-kuwait-arabic-2026.webp',
     category: 'دليل الشراء',
-    date: '2026-08-07',
-    readTime: 'قراءة 23 دقيقة',
+    date: '2026-10-21',
+    readTime: 'قراءة 26 دقيقة',
   },
 ];
 

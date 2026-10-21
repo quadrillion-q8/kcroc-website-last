@@ -25,6 +25,7 @@ const PAGE_URL = `${business.websiteUrl}/blog/ar/laptop-buying-guide-kuwait-2026
 const EN_PAGE_URL = `${business.websiteUrl}/blog/laptop-buying-guide-kuwait-2026`;
 const HERO_IMAGE_URL = `${business.websiteUrl}/images/blog/laptop-buying-guide-kuwait-arabic-2026.webp`;
 const PUBLISHED_DATE = '2026-08-07T09:00:00+03:00';
+const LAST_UPDATED_DATE = '2026-10-21T09:00:00+03:00';
 
 const WA_LINK = `https://wa.me/${business.telephone}?text=${encodeURIComponent(
   'مرحباً KCROC، قرأت دليل شراء اللابتوب وأحتاج استشارة قبل الشراء. ممكن مساعدة؟'
@@ -39,9 +40,16 @@ const PILLAR_SCHEMA = [
   {
     '@context': 'https://schema.org',
     '@type': 'Article',
-    headline: "دليل شراء اللابتوب في الكويت 2026: اللي ما يقوله لك البائع",
-    description: "محتار بين Intel وRyzen وRTX؟ مهندس صيانة في الكويت يشرح لك المواصفات اللي تفرق بالأداء والمواصفات اللي مجرد تسويق.",
-    image: [HERO_IMAGE_URL],
+    headline: "دليل شراء اللابتوب في الكويت 2026: شلون تختار حسب استخدامك؟",
+    description: "دليل شراء لابتوب في الكويت 2026: قارن المعالج والرام وSSD وكرت الشاشة والبطارية والتبريد والضمان المحلي حسب استخدامك، مع قائمة فحص قبل الدفع.",
+    image: [
+      HERO_IMAGE_URL,
+      `${business.websiteUrl}/images/blog/intel-core-ultra-vs-amd-ryzen-ai-comparison.webp`,
+      `${business.websiteUrl}/images/laptop-ram-sticks-comparison-upgrade.webp`,
+      `${business.websiteUrl}/images/m2-nvme-ssd-motherboard-installation.webp`,
+      `${business.websiteUrl}/images/msi-gaming-laptop-and-gpu-repair-workstation.webp`,
+      `${business.websiteUrl}/images/laptop-dual-copper-heatpipes-ram-sticks.webp`,
+    ],
     author: {
       '@type': 'Person',
       name: 'Imran Natiq',
@@ -55,12 +63,13 @@ const PILLAR_SCHEMA = [
       logo: { '@type': 'ImageObject', url: business.logoUrl },
     },
     datePublished: PUBLISHED_DATE,
-    dateModified: PUBLISHED_DATE,
+    dateModified: LAST_UPDATED_DATE,
     mainEntityOfPage: { '@type': 'WebPage', '@id': PAGE_URL },
     url: PAGE_URL,
-    articleSection: 'Laptop Hardware Guide',
+    articleSection: 'دليل شراء اللابتوب في الكويت',
     keywords: [
       'شراء لابتوب في الكويت', 'دليل شراء اللابتوب', 'أفضل لابتوب في الكويت', 'مواصفات اللابتوب',
+      'لابتوب للطلاب في الكويت', 'لابتوب مستعمل الكويت', 'ضمان اللابتوب في الكويت', 'مقارنة مواصفات اللابتوب',
       'اختيار اللابتوب', 'لابتوب للطلاب', 'لابتوب للبرمجة', 'لابتوب للهندسة',
       'لابتوب قيمنق الكويت', 'لابتوب للمونتاج', 'CPU', 'RAM', 'SSD', 'GPU', 'TGP'
     ],
@@ -74,13 +83,16 @@ const PILLAR_SCHEMA = [
       { '@type': 'Question', name: 'هل 16GB RAM تكفي؟', acceptedAnswer: { '@type': 'Answer', text: 'في معظم الاستخدامات اليومية، نعم. لكن إذا كنت مبرمج أو تستخدم برامج ثقيلة، 32GB يكون أفضل لك.' } },
       { '@type': 'Question', name: 'هل أحتاج 64GB؟', acceptedAnswer: { '@type': 'Answer', text: 'يعتمد على حجم النموذج ونوع الشغل. إذا شغلك 3D أو مونتاج ثقيل أو ذكاء اصطناعي محلي بنماذج كبيرة، ممكن فعلًا تحتاج 64GB أو أكثر، مع التركيز على سعة VRAM بقدر ما تركز على الرام.' } },
       { '@type': 'Question', name: 'هل TLC أفضل من QLC؟', acceptedAnswer: { '@type': 'Answer', text: 'عادةً نعم من ناحية الأداء والتحمل، لكن نوع الـNAND وحده ما يحدد كل شيء. قارن موديل الـSSD كامل (الكنترولر والـDRAM وسلوكه الحراري) مو بس TLC أو QLC.' } },
-      { '@type': 'Question', name: 'ليش RTX 4070 عندي مو مثل RTX 4070 في لابتوب ثاني؟', acceptedAnswer: { '@type': 'Answer', text: 'غالبًا بسبب اختلاف TGP (سحب الطاقة) وتصميم نظام التبريد في اللابتوب، حتى لو كان اسم الكرت نفسه.' } },
+      { '@type': 'Question', name: 'ليش أداء كرت الشاشة يختلف بين لابتوبين؟', acceptedAnswer: { '@type': 'Answer', text: 'لأن الأداء يتأثر بموديل GPU والجيل وحدود الطاقة TGP وسعة VRAM والتبريد وتصميم اللابتوب، وليس بالاسم المختصر وحده.' } },
       { '@type': 'Question', name: 'هل Gen5 SSD ضروري؟', acceptedAnswer: { '@type': 'Answer', text: 'مو لمعظم الناس. Gen4 ممتاز لمعظم الاستخدامات اليومية والعملية.' } },
       { '@type': 'Question', name: 'هل الرام الملحومة سيئة؟', acceptedAnswer: { '@type': 'Answer', text: 'مو بالضرورة إذا كانت المواصفات تغطي احتياجك المستقبلي. لكن قابلية الترقية ميزة مهمة إذا ناوي تحتفظ بالجهاز لفترة طويلة.' } },
       { '@type': 'Question', name: 'هل حرارة الكويت تأثر؟', acceptedAnswer: { '@type': 'Answer', text: 'إي، خصوصًا مع الاستخدام الثقيل. عشان جذي التبريد والتنظيف والتهوية مهمين جدًا للحفاظ على الأداء.' } },
       { '@type': 'Question', name: 'هل 512GB SSD تكفي؟', acceptedAnswer: { '@type': 'Answer', text: 'لأغلب الطلاب وموظفي الأوفيس، نعم. لكن إذا شغلك مونتاج أو ألعاب أو ملفات كبيرة، 1TB فما فوق يكون أنسب.' } },
       { '@type': 'Question', name: 'أشتري Intel أو Ryzen؟', acceptedAnswer: { '@type': 'Answer', text: 'ما فيه إجابة واحدة صح للكل. المهم تقارن حسب الجيل والموديل بالضبط والـSuffix (U, H, HX) والاستخدام مو اسم الشركة بروحها.' } },
-      { '@type': 'Question', name: 'هل أحتاج RTX إذا ما ألعب؟', acceptedAnswer: { '@type': 'Answer', text: 'للأوفيس والدراسة والتصفح، كرت الشاشة المدمج (Integrated) يكفي. RTX يستاهل بس إذا تلعب أو تسوي مونتاج/3D/AI.' } },
+      { '@type': 'Question', name: 'هل أحتاج RTX إذا ما ألعب؟', acceptedAnswer: { '@type': 'Answer', text: 'للأوفيس والدراسة والتصفح، كرت الشاشة المدمج (Integrated) يكفي. البطاقة المنفصلة تستاهل إذا برنامجك أو ألعابك تحتاجها، أو كنت تعمل على 3D ومونتاج وذكاء اصطناعي محلي.' } },
+      { '@type': 'Question', name: 'هل أشتري لابتوب مستعمل أو مجدد في الكويت؟', acceptedAnswer: { '@type': 'Answer', text: 'ممكن إذا كان السعر يعكس حالته وكانت سياسة الإرجاع والضمان واضحة. افحص البطارية والشاشة والكيبورد والمنافذ والكاميرا والصوت، واختبر SSD والحرارة تحت الضغط، وتأكد من إزالة قفل BIOS أو حسابات المالك السابق والحصول على فاتورة ورقم موديل كامل.' } },
+      { '@type': 'Question', name: 'شنو أشيك عليه قبل ما أدفع ثمن اللابتوب؟', acceptedAnswer: { '@type': 'Answer', text: 'طابق رقم الموديل والمواصفات المكتوبة في الفاتورة مع صفحة الشركة المصنعة، وتأكد من الكيبورد العربي/الإنجليزي، والشاحن المناسب، والضمان داخل الكويت أو بلد التغطية، وسياسة الإرجاع، وقابلية ترقية RAM وSSD.' } },
+      { '@type': 'Question', name: 'هل أحتاج AI PC أو NPU في 2026؟', acceptedAnswer: { '@type': 'Answer', text: 'مو كل مستخدم يحتاج NPU مخصصًا؛ أدوات AI السحابية تعمل على أجهزة كثيرة. إذا تبي تشغيل مهام محلية أو ميزات تتطلب مواصفات محددة، راجع متطلبات البرنامج أو فئة Copilot+ PC الرسمية وقارن NPU وRAM وGPU وVRAM بدل الاعتماد على كلمة AI في الإعلان.' } },
     ],
   },
   {
@@ -104,11 +116,13 @@ const faq = (PILLAR_SCHEMA.find((s) => s['@type'] === 'FAQPage') as any).mainEnt
 ───────────────────────────────────────────────────────────────────────────── */
 
 const toc = [
+  { id: 'quick-answer', label: 'الخلاصة السريعة قبل الشراء' },
   { id: 'quick-pick', label: 'شنو اللابتوب المناسب لك؟' },
   { id: 'understanding-hardware', label: 'مكونات اللابتوب الأساسية' },
   { id: 'buying-in-kuwait', label: 'شراء لابتوب في الكويت: شنو يفرق؟' },
   { id: 'brands-in-kuwait', label: 'ماركات اللابتوب في الكويت' },
   { id: 'where-to-buy', label: 'وين تشتري لابتوب بالكويت؟' },
+  { id: 'used-laptop-check', label: 'فحص اللابتوب المستعمل أو المجدد' },
   { id: 'cpu-guide', label: 'دليل المعالج (CPU)' },
   { id: 'ram-guide', label: 'دليل الرام (RAM)' },
   { id: 'storage-guide', label: 'دليل التخزين (SSD)' },
@@ -120,9 +134,11 @@ const toc = [
   { id: 'wireless', label: 'الشبكة والـ Wi-Fi' },
   { id: 'repairability', label: 'الصيانة وقابلية الترقية' },
   { id: 'spec-targets', label: 'المواصفات المناسبة حسب استخدامك' },
+  { id: 'comparison-scorecard', label: 'نموذج مقارنة بين جهازين' },
   { id: 'checklist', label: 'قائمة فحص قبل الشراء' },
   { id: 'mistakes', label: '10 أخطاء شائعة عند الشراء' },
   { id: 'faq', label: 'الأسئلة الشائعة' },
+  { id: 'official-specs', label: 'مراجع المواصفات الرسمية' },
   { id: 'when-it-fails', label: 'إذا اللابتوب خرب' },
 ];
 
@@ -147,9 +163,9 @@ const specTargetsTable = [
   { user: 'الطالب / استخدام يومي', cpu: 'Core Ultra 5 / Ryzen 5 (U-series)', ram: '16GB', storage: '512GB TLC SSD', gpu: 'مدمج (Integrated)', priority: 'البطارية، الوزن' },
   { user: 'أوفيس وأعمال', cpu: 'Core Ultra 5 U', ram: '16GB', storage: '512GB TLC SSD', gpu: 'مدمج (Integrated)', priority: 'البطارية، سهولة الحمل' },
   { user: 'المبرمج', cpu: 'Core Ultra 7 H / Ryzen 7 H', ram: '32GB', storage: '1TB SSD', gpu: 'مدمج أو منفصل ابتدائي', priority: 'RAM، أداء CPU المستمر' },
-  { user: 'قيمنق (Gaming)', cpu: 'Core i7/Ultra 7 H أو HX', ram: '32GB', storage: '1TB SSD', gpu: 'RTX 4060 أو أفضل، تأكد من TGP', priority: 'قوة TGP، التبريد، Refresh Rate' },
+  { user: 'قيمنق (Gaming)', cpu: 'Core i7/Ultra 7 H أو HX', ram: '32GB', storage: '1TB SSD', gpu: 'GPU منفصل يناسب ألعابك؛ قارن الجيل وTGP وVRAM', priority: 'قوة TGP، التبريد، Refresh Rate' },
   { user: 'هندسة / CAD / 3D', cpu: 'Ryzen 9 HX / Core Ultra 9 HX', ram: '64GB', storage: '2TB SSD', gpu: 'كرت منفصل بأداء رندر قوي (تأكد من شهادة Workstation إذا برنامجك يطلبها تحديدًا)', priority: 'أداء CPU المستمر، التبريد، RAM' },
-  { user: 'مونتاج وتصميم', cpu: 'Core Ultra 7-9 H/HX', ram: '32–64GB', storage: '1–2TB TLC SSD', gpu: 'كرت منفصل 12GB+ VRAM', priority: 'VRAM، سرعة التخزين، دقة الألوان' },
+  { user: 'مونتاج وتصميم', cpu: 'Core Ultra 7-9 H/HX', ram: '32–64GB', storage: '1–2TB TLC SSD', gpu: 'كرت يدعم برامجك؛ VRAM حسب المشروع', priority: 'VRAM، سرعة التخزين، دقة الألوان' },
   { user: 'AI محلي / استخدام ثقيل', cpu: 'معالجات فئة HX', ram: '64GB+', storage: '2TB SSD', gpu: 'حسب حجم النموذج — ركز على VRAM', priority: 'VRAM، التبريد المستمر، سعة RAM' },
 ];
 
@@ -165,7 +181,7 @@ const checklist = [
 const commonMistakes = [
   { title: '1. تشوف i7 وتشتري على طول', detail: 'الـSuffix (U, H, HX) والجيل والموديل بالضبط هي اللي تحدد الأداء الفعلي المستمر، مو بس اسم المعالج.' },
   { title: '2. تشتري 8GB عشان توفر', detail: 'التوفير اليوم ممكن يكلفك ترقية أو تغيير جهاز بعدين لأن المتصفح والنظام يستهلكها بسرعة.' },
-  { title: '3. تشوف RTX 4070 وتنسى TGP', detail: 'نفس الكرت ممكن يكون أداؤه أضعف من كرت "أقل" اسمًا إذا كانت طاقته (TGP) منخفضة.' },
+  { title: '3. تشوف اسم RTX وتنسى TGP وVRAM', detail: 'اسم البطاقة وحده ما يكفي؛ قارن الجيل الدقيق وTGP وVRAM والتبريد في نفس موديل اللابتوب.' },
   { title: '4. تختار شاشة 4K/OLED بدون باقي المواصفات', detail: 'الشاشة القوية تحتاج هاردوير قوي يقدر يشغلها بسلاسة بدون تقطيع.' },
   { title: '5. تتجاهل التبريد تماماً', detail: 'جهاز قوي بتبريد ضعيف راح يختنق من الحرارة وينزل أداؤه فجأة (Thermal Throttling).' },
   { title: '6. تشتري 2TB بدون ما تعرف نوع الـSSD', detail: 'مساحة 2TB من نوع QLC ممكن تكون أبطأ من 1TB من نوع TLC تحت الضغط.' },
@@ -250,10 +266,10 @@ export default function LaptopBuyingGuideAR() {
     <div className="min-h-screen bg-transparent text-white selection:bg-cyan-500/30" dir="rtl">
 
       <Head htmlAttributes={{ lang: 'ar-KW', dir: 'rtl' }}>
-        <title>دليل شراء اللابتوب في الكويت 2026: شلون تختار أفضل لابتوب؟ | KCROC</title>
+        <title>شراء لابتوب في الكويت 2026 | دليل المواصفات | KCROC</title>
         <meta
           name="description"
-          content="تبي تشتري لابتوب في الكويت؟ تعرّف على أفضل مواصفات المعالج والرام وSSD وRTX والتبريد والبطارية حسب استخدامك، مع قائمة فحص قبل الشراء."
+          content="دليل شراء لابتوب في الكويت 2026: قارن المعالج والرام وSSD وكرت الشاشة والبطارية والتبريد والضمان المحلي حسب استخدامك، مع قائمة فحص قبل الدفع."
         />
         <link rel="canonical" href={PAGE_URL} />
         <meta name="robots" content="index, follow, max-image-preview:large" />
@@ -264,23 +280,25 @@ export default function LaptopBuyingGuideAR() {
         {/* Open Graph */}
         <meta property="og:type" content="article" />
         <meta property="og:locale" content="ar_KW" />
-        <meta property="og:title" content="دليل شراء اللابتوب في الكويت 2026: شلون تختار أفضل لابتوب؟" />
+        <meta property="og:title" content="دليل شراء اللابتوب في الكويت 2026: شلون تختار حسب استخدامك؟" />
         <meta
           property="og:description"
-          content="دليل عملي لاختيار اللابتوب المناسب في الكويت حسب الاستخدام والميزانية والمواصفات."
+          content="قارن مواصفات اللابتوب حسب استخدامك في الكويت: RAM وSSD والمعالج وGPU والتبريد والبطارية والضمان، مع قائمة فحص قبل الدفع."
         />
         <meta property="og:url" content={PAGE_URL} />
         <meta property="og:image" content={HERO_IMAGE_URL} />
         <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="675" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="دليل شراء اللابتوب في الكويت 2026: مقارنة المواصفات والأداء والضمان" />
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="دليل شراء اللابتوب في الكويت 2026" />
+        <meta name="twitter:title" content="شراء لابتوب في الكويت 2026 | دليل المواصفات | KCROC" />
         <meta
           name="twitter:description"
-          content="شلون تختار اللابتوب الصح؟ دليل المعالج والرام والـSSD والـGPU والتبريد والبطارية."
+          content="دليل شراء اللابتوب في الكويت: قارن المعالج والرام والـSSD والـGPU والتبريد والبطارية والضمان قبل الدفع."
         />
         <meta name="twitter:image" content={HERO_IMAGE_URL} />
+        <meta name="twitter:image:alt" content="غلاف دليل شراء اللابتوب في الكويت 2026 لمقارنة المواصفات قبل الشراء" />
       </Head>
 
       <SchemaMarkup schema={{ '@graph': PILLAR_SCHEMA }} />
@@ -330,7 +348,7 @@ export default function LaptopBuyingGuideAR() {
               شلون تختار اللابتوب الصح؟ لا تشتري على اسم المعالج بس. محتار بين Intel وRyzen وRTX؟ خلنا نوضح لك شنو فعلاً يفرق. مهندس صيانة في الكويت يشرح لك المواصفات اللي تفرق بالأداء والمواصفات اللي مجرد تسويق.
             </p>
             <p className="text-xs sm:text-sm text-slate-500">
-              ~٢٣ دقيقة قراءة · بقلم: عمران، مهندس صيانة · نُشر في 7 أغسطس 2026 · آخر تحديث 7 أغسطس 2026
+              قراءة 26 دقيقة · بقلم: عمران ناطق، مهندس صيانة · نُشر في 7 أغسطس 2026 · آخر تحديث: 21 أكتوبر 2026
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center pt-4 sm:pt-6">
               <Button
@@ -359,7 +377,7 @@ export default function LaptopBuyingGuideAR() {
             <div className="pt-6 sm:pt-10 max-w-4xl mx-auto">
               <img
                 src={HERO_IMAGE_URL}
-                alt="دليل شراء اللابتوب في الكويت 2026"
+                alt="غلاف دليل شراء اللابتوب في الكويت 2026 لمقارنة المواصفات قبل الشراء"
                 width="1200"
                 height="630"
                 // 🚀 CWV FIX: this image renders after a tall centered hero
@@ -387,6 +405,23 @@ export default function LaptopBuyingGuideAR() {
           <p>
             عشان جذي، سوينا لك هذا الدليل. مو هدفنا نبيعك أغلى لابتوب. هدفنا نساعدك تشتري اللابتوب المناسب لاستخدامك. كثير من الناس يشوفون Core i7 و16GB رام ويفترضون أن الجهاز قوي تلقائيًا — لكن هذا مو صحيح دائمًا. نفس الـ Core i7 ممكن يكون سريع جداً بجهاز وأبطأ بكثير في جهاز ثاني بسبب حدود الطاقة والتبريد اللي يحددها تصميم اللابتوب.
           </p>
+        </div>
+      </section>
+
+      {/* Direct-answer summary for readers and answer engines */}
+      <section id="quick-answer" className="pb-8 sm:pb-12 px-4 sm:px-6">
+        <div className="container mx-auto max-w-4xl">
+          <Card className="border-cyan-500/30 bg-gradient-to-bl from-cyan-500/10 via-slate-900/70 to-emerald-500/10">
+            <CardHeader className="pb-2">
+              <CardTitle className="text-lg sm:text-2xl text-white flex items-center gap-2">
+                <CheckCircle2 className="w-5 h-5 text-cyan-400" /> الخلاصة السريعة قبل شراء اللابتوب
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="text-start text-sm sm:text-base leading-relaxed text-slate-300">
+              <p>للاستخدام اليومي والدراسة، ابدأ عادةً بـ16GB RAM و512GB SSD وشاشة مريحة وبطارية جيدة. للبرمجة والمشاريع الثقيلة، فكّر في 32GB RAM ومساحة أكبر إذا تحتاجها. للألعاب أو 3D والمونتاج، قارن موديل GPU الكامل وVRAM وTGP والتبريد، ولا تشتري على اسم المعالج أو البطاقة فقط.</p>
+              <p className="mt-3 text-slate-400">هذه نقطة بداية وليست وصفة ثابتة: البرنامج الذي تستخدمه، والميزانية، ووزن الجهاز، والضمان المحلي، وإمكانية ترقية القطع أهم من مطاردة أعلى رقم في المواصفات.</p>
+            </CardContent>
+          </Card>
         </div>
       </section>
 
@@ -510,9 +545,25 @@ export default function LaptopBuyingGuideAR() {
             items={[
               '<strong class="text-white">المحلات المحلية:</strong> ميزتها الأجهزة مضمونة محلياً والكيبورد مناسب للسوق الكويتي.',
               '<strong class="text-white">المتاجر الإلكترونية الإقليمية:</strong> خيارات أكثر، لكن تأكد من مدة التوصيل وشروط الضمان.',
-              '<strong class="text-white">الأجهزة المستوردة:</strong> أحياناً تكون أرخص أو توفر مواصفات غير موجودة محلياً، لكن انتبه للضمان والكيبورد ومحول الشاحن.',
+              '<strong class="text-white">الأجهزة المستوردة:</strong> أحياناً تكون أرخص أو توفر مواصفات غير موجودة محلياً، لكن انتبه لبلد الضمان والكيبورد العربي/الإنجليزي والشاحن المناسب.',
             ]}
           />
+          <div id="used-laptop-check" className="mt-8 rounded-2xl border border-slate-700 bg-slate-900/60 p-4 sm:p-6 scroll-mt-24">
+            <h3 className="text-white font-bold text-lg sm:text-xl mb-3">إذا بتشتري لابتوب مستعمل أو مجدد</h3>
+            <Prose><p>السعر المنخفض ما يكفي للحكم. اطلب تجربة الجهاز بنفسك، وافحصه وهو بارد ثم أثناء مهمة فعلية، ولا تكتفِ بصورة أو فيديو من البائع. إذا ما قدرت تفحص الجهاز، اعتبر ذلك مخاطرة في قرار الشراء.</p></Prose>
+            <BulletList items={[
+              '<strong class="text-white">الهوية والقفل:</strong> طابق رقم الموديل والرقم التسلسلي مع الفاتورة، وتأكد من إزالة قفل BIOS وحسابات المالك السابق.',
+              '<strong class="text-white">الشاشة والهيكل:</strong> افحص الخطوط والبقع والمفصلات والكسور، وجرب السطوع والكاميرا والمايك والسماعات.',
+              '<strong class="text-white">البطارية والشاحن:</strong> افحص تقرير صحة البطارية إن كان متاحًا، وتأكد من الشاحن الصحيح وقدرته وحالة الكابل.',
+              '<strong class="text-white">التخزين والحرارة:</strong> افحص صحة SSD بأداة موثوقة، وجرّب الجهاز تحت حمل قصير لملاحظة التهنيق أو الحرارة أو الضجيج غير الطبيعي.',
+              '<strong class="text-white">المنافذ والاتصال:</strong> جرّب USB وUSB-C والصوت والواي فاي والشحن، ولا تفترض أن كل منفذ USB-C يدعم الشاشة أو الشحن.',
+              '<strong class="text-white">الورق والضمان:</strong> خذ فاتورة توضّح الحالة والمواصفات وسياسة الإرجاع والتغطية المتبقية كتابةً.',
+            ]} color="text-amber-400" />
+          </div>
+          <div className="mt-6 rounded-xl border border-cyan-500/25 bg-cyan-500/5 p-4 sm:p-5 text-start">
+            <p className="font-bold text-white mb-2">قبل الدفع في الكويت</p>
+            <p className="text-slate-300 text-sm sm:text-base leading-relaxed">خَلّ رقم الموديل والمواصفات النهائية مكتوبة في الفاتورة، واسأل من الجهة اللي تستقبل طلب الضمان فعليًا، وهل التغطية محلية أو مرتبطة ببلد الاستيراد. جرّب تخطيط الكيبورد العربي/الإنجليزي، والشاحن وملحقاته، وراجع سياسة الإرجاع مكتوبة بدل الاعتماد على وعد شفهي.</p>
+          </div>
         </div>
       </section>
 
@@ -534,6 +585,10 @@ export default function LaptopBuyingGuideAR() {
             </p>
           </Prose>
 
+          <figure className="my-6 overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/50">
+            <img src="/images/blog/intel-core-ultra-vs-amd-ryzen-ai-comparison.webp" alt="مقارنة بصرية بين معالجات Intel Core Ultra وAMD Ryzen AI قبل اختيار موديل اللابتوب" width="1200" height="675" loading="lazy" decoding="async" className="w-full h-auto" />
+            <figcaption className="px-4 py-3 text-xs sm:text-sm text-slate-400 leading-relaxed">قارن اسم المعالج الكامل والجيل وحدود الطاقة واختبارات نفس الجهاز؛ اسم الفئة وحده ما يعطيك نتيجة أداء مضمونة.</figcaption>
+          </figure>
           <DataTable
             headers={['الـ Suffix', 'التوجيه العام', "الميزة الأساسية", 'الاستخدام الأنسب']}
             rows={cpuSuffixTable.map((r) => [r.suffix, r.power, r.builtFor, r.fits])}
@@ -542,7 +597,7 @@ export default function LaptopBuyingGuideAR() {
           <div className="mt-5">
             <Callout>
               <strong className="text-white">قارن حسب الـ Suffix والجيل مو الرقم فقط:</strong>
-              {' '}مقارنة تفصيلية بين Core Ultra و Ryzen AI متوفرة في مدونتنا. محتار بين موديلين بالضبط؟ راسلنا على الواتساب بأسماء الموديلين وبنعطيك التوجيه الصحيح للاختيار.
+              {' '}<Link to="/blog/intel-core-ultra-vs-amd-ryzen-ai" className="text-cyan-400 underline hover:text-cyan-300">مقارنة Intel Core Ultra وAMD Ryzen AI</Link> تساعدك في المقارنة الأولية؛ بعد ذلك طابق اسم المعالج الكامل مع موديل اللابتوب واختبارات الجهاز نفسه. محتار بين موديلين؟ أرسل لنا الاسمين والمواصفات المكتوبة ونساعدك تفهم الفروقات.
             </Callout>
           </div>
         </div>
@@ -567,7 +622,11 @@ export default function LaptopBuyingGuideAR() {
           />
 
           <Prose>
-            <h3 className="text-white font-semibold text-base sm:text-lg pt-4">مو كل DDR5 قابلة للترقية!</h3>
+            <figure className="my-6 overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/50">
+            <img src="/images/laptop-ram-sticks-comparison-upgrade.webp" alt="وحدات RAM للابتوب للمقارنة بين الذاكرة وترقية السعة قبل شراء الجهاز" width="800" height="600" loading="lazy" decoding="async" className="w-full h-auto" />
+            <figcaption className="px-4 py-3 text-xs sm:text-sm text-slate-400 leading-relaxed">قبل الشراء، تحقق من الحد الأقصى للرام وعدد المنافذ وهل الذاكرة ملحومة أو قابلة للاستبدال في رقم الموديل نفسه.</figcaption>
+          </figure>
+          <h3 className="text-white font-semibold text-base sm:text-lg pt-4">مو كل DDR5 قابلة للترقية!</h3>
             <p>
               هذي نقطة مهمة جداً. ممكن تشوف 16GB DDR5 وتفترض إنك تقدر تزيدها بعدين. مو شرط. بعض الأجهزة تكون الرام فيها ملحومة باللوحة الأم (خصوصاً LPDDR5X). إذا ناوي تستخدم الجهاز 4-6 سنوات، قابلية الترقية تستاهل تنتبه لها من البداية.
             </p>
@@ -584,9 +643,13 @@ export default function LaptopBuyingGuideAR() {
           <SectionHeading id="storage-guide" kicker="القطع بالتفصيل" title="التخزين (SSD): لا تشوف 1TB وتوقف" icon={HardDrive} />
           <Prose>
             <p>
-              وايد ناس يشترون حسب السعة: "هذا 2TB أكيد أحسن". مو شرط! نوع الـSSD وحده ما يحدد كل شيء — الأهم دائمًا مقارنة موديل الـSSD نفسه بالكامل (الكنترولر، الـDRAM، وسلوكه الحراري) مو بس نوع NAND.
+              وايد ناس يشترون حسب السعة: "هذا 2TB أكيد أحسن". مو شرط! نوع الـSSD وحده ما يحدد كل شيء — الأهم دائمًا مقارنة موديل الـSSD نفسه بالكامل (الكنترولر، الـDRAM، وسلوكه الحراري) مو بس نوع NAND. وتأكد من نوع المنفذ المدعوم في اللابتوب؛ وجود M.2 لا يعني تلقائيًا أن كل قرص NVMe أو SATA متوافق.
             </p>
           </Prose>
+          <figure className="my-6 overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/50">
+            <img src="/images/m2-nvme-ssd-motherboard-installation.webp" alt="تركيب قرص M.2 NVMe SSD في اللابتوب: افحص التوافق والمنفذ قبل شراء التخزين" width="800" height="600" loading="lazy" decoding="async" className="w-full h-auto" />
+            <figcaption className="px-4 py-3 text-xs sm:text-sm text-slate-400 leading-relaxed">السعة والسرعة وحدهما لا تكفيان؛ راجع طول القرص وواجهة التوصيل ودعم الموديل للترقية قبل الدفع.</figcaption>
+          </figure>
           <BulletList
             items={[
               '<strong class="text-white">TLC:</strong> عادةً أسرع وأكثر تحملًا، ويحافظ على الأداء بشكل أفضل حتى لو كان شبه ممتلئ.',
@@ -609,7 +672,7 @@ export default function LaptopBuyingGuideAR() {
           <SectionHeading id="gpu-guide" kicker="القطع بالتفصيل" title="كرت الشاشة (GPU): لا تشتري RTX على الاسم بس" icon={Gauge} />
           <Prose>
             <p>
-              إذا بتشتري Gaming Laptop، لا تسأل بس: "RTX 4060 ولا 4070؟" اسأل كمان: "كم TGP وشلون التبريد؟"
+              إذا بتشتري Gaming Laptop، لا تقارن اسم البطاقة وحده أو نتائج كرت مكتبي بكرت لابتوب. اكتب اسم GPU الكامل والجيل في مواصفات الجهاز، ثم قارن TGP وسعة VRAM وأداء التبريد في اختبارات نفس الموديل؛ اختلاف حدود الطاقة والهيكل ممكن يغيّر الأداء حتى بين جهازين يحملان الاسم نفسه.
             </p>
 
             <h3 className="text-white font-semibold text-base sm:text-lg pt-2">شنو الـ TGP؟</h3>
@@ -618,6 +681,10 @@ export default function LaptopBuyingGuideAR() {
             </p>
           </Prose>
 
+          <figure className="my-6 overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/50">
+            <img src="/images/msi-gaming-laptop-and-gpu-repair-workstation.webp" alt="لابتوب قيمنق على طاولة فحص هاردوير لتوضيح أهمية البطاقة الرسومية والتبريد في اختيار الجهاز" width="1200" height="800" loading="lazy" decoding="async" className="w-full h-auto" />
+            <figcaption className="px-4 py-3 text-xs sm:text-sm text-slate-400 leading-relaxed">لألعابك وبرامج 3D، اختبر أداء موديل اللابتوب نفسه ولا تعتمد على اسم GPU في إعلان المتجر فقط.</figcaption>
+          </figure>
           <div className="mt-5">
             <Callout>
               <strong className="text-white">ملاحظة للمصممين والمونتاج:</strong> تأكد من سعة الـ VRAM لأنها تلعب دور كبير في الرندر وتشغيل برامج الثري دي بسلاسة.
@@ -630,6 +697,10 @@ export default function LaptopBuyingGuideAR() {
       <section className="py-8 sm:py-16 px-4 sm:px-6 bg-slate-900/30 border-y border-slate-800">
         <div className="container mx-auto max-w-4xl">
           <SectionHeading id="cooling" kicker="القطع بالتفصيل" title="التبريد في الكويت مو شيء ثانوي" icon={Thermometer} />
+          <figure className="mb-6 overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/50">
+            <img src="/images/laptop-dual-copper-heatpipes-ram-sticks.webp" alt="أنابيب نحاسية للتبريد داخل اللابتوب بجوار وحدات الذاكرة لفهم تصميم التبريد الداخلي" width="800" height="600" loading="lazy" decoding="async" className="w-full h-auto" />
+            <figcaption className="px-4 py-3 text-xs sm:text-sm text-slate-400 leading-relaxed">افحص أداء الجهاز تحت حمل متواصل، لأن شكل المواصفات في المتجر لا يوضح وحده استقرار الأداء وحرارة الهيكل.</figcaption>
+          </figure>
           <Prose>
             <p>
               لابتوب بمواصفات قوية لكن بتبريد ضعيف قد يعطي أداءً ممتازًا في أول عشر دقائق فقط، ثم يبدأ بالتباطؤ بسبب ارتفاع الحرارة (Thermal Throttling) — وتبدأ الألعاب تتقطع وتنخفض الفريمات.
@@ -667,7 +738,7 @@ export default function LaptopBuyingGuideAR() {
           <BulletList
             items={[
               '<strong class="text-white">IPS:</strong> ممتازة للاستخدام اليومي ودقة الألوان، وما فيها خطر احتراق البكسلات (Burn-in) مثل بعض شاشات OLED.',
-              '<strong class="text-white">OLED:</strong> ألوان خرافية وتباين ممتاز (الأسود حقيقي)، رائعة للمحتوى لكن الشاشة غالباً تكون عاكسة للإضاءة (Glossy).',
+              '<strong class="text-white">OLED:</strong> تباين وألوان ممتازة، لكن افحص انعكاس السطح وشروط الضمان المتعلقة بالاحتفاظ بالصورة (Burn-in) حسب الموديل والاستخدام.',
               '<strong class="text-white">التردد (Hz):</strong> 60Hz كافي للاستخدام العادي. 120Hz فما فوق يعطيك سلاسة ممتازة في الألعاب والتصفح.',
               '<strong class="text-white">للمصممين:</strong> تأكد من تغطية الألوان (sRGB, DCI-P3) وسطوع الشاشة (Nits).',
             ]}
@@ -685,7 +756,7 @@ export default function LaptopBuyingGuideAR() {
             <p>مو كل USB-C نفس الشي. بعضها يدعم الشحن وتوصيل شاشات (Thunderbolt/USB4) وبعضها مجرد نقل بيانات بطيء. تأكد من مواصفات المنفذ إذا كنت تستخدم Dock أو شاشة خارجية.</p>
             
             <h3 className="text-white font-semibold text-base sm:text-lg mt-4">البطارية (Battery)</h3>
-            <p>لا تعتمد على إعلانات "يدوم ١٢ ساعة". شوف سعة البطارية برقم الـ Wh — لكن تذكر إن هذا الرقم مقياس السعة مو ضمان لعمر البطارية الفعلي. إذا كان الاستخدام المتنقل أولوية، فغالبًا تكون بطارية 70Wh أو أكثر نقطة بداية جيدة، لكن عمر البطارية الفعلي يعتمد أيضًا على المعالج والشاشة ونظام إدارة الطاقة — جهاز بسعة 60Wh بمعالج موفر للطاقة ممكن يدوم أطول من جهاز قيمنق بسعة 80Wh. البطاريات الأقل من 50Wh قد تحتاج شحنًا أكثر مع الاستخدام المتنقل، خصوصًا مع المعالجات والشاشات الأعلى استهلاكًا.</p>
+            <p>لا تعتمد على إعلان ساعات البطارية وحده. قارن سعة البطارية بالـWh مع اختبارات مستقلة لنفس موديل الجهاز وسطوع الشاشة ونوع الاستخدام؛ السعة تقيس الطاقة المخزنة ولا تضمن ساعات تشغيل محددة. معالج موفّر وشاشة أقل استهلاكًا قد يدومان أطول من جهاز بسعة أعلى لكنه مخصص للأداء العالي.</p>
 
             <h3 className="text-white font-semibold text-base sm:text-lg mt-4">Wi-Fi 7</h3>
             <p>إذا الجهاز يدعم Wi-Fi 7 فهذا ممتاز للمستقبل، لكن لا تدفع مبالغ إضافية كبيرة عشانه إذا الراوتر عندك ما يدعمه للحين — Wi-Fi 6E كافي جداً وممتاز لمعظم الاستخدامات.</p>
@@ -704,7 +775,7 @@ export default function LaptopBuyingGuideAR() {
           </Prose>
           <BulletList
             items={[
-              '<strong class="text-white">القطع الملحومة (Soldered):</strong> تخلي اللابتوب أنحف وأخف، لكن أي عطل فيها قد يعني تبديل اللوحة الأم بالكامل (Motherboard).',
+              '<strong class="text-white">القطع الملحومة (Soldered):</strong> تخلي الجهاز أنحف، لكنها لا تُرقّى مثل الوحدات القابلة للفك؛ وخيار الإصلاح عند العطل يعتمد على تصميم اللوحة وتوفر القطع ومهارة الإصلاح.',
               '<strong class="text-white">القطع القابلة للترقية:</strong> تطول من عمر الجهاز الافتراضي وقد توفر عليك تكلفة استبدال الجهاز بالكامل مستقبلاً.',
             ]}
             color="text-orange-400"
@@ -741,6 +812,24 @@ export default function LaptopBuyingGuideAR() {
             headers={['المستخدم', 'المعالج', 'الرام', 'التخزين', 'كرت الشاشة', 'أهم نقطة تركز عليها']}
             rows={specTargetsTable.map((r) => [r.user, r.cpu, r.ram, r.storage, r.gpu, r.priority])}
           />
+        </div>
+      </section>
+
+      {/* Practical buyer scorecard — not a lab benchmark */}
+      <section id="comparison-scorecard" className="scroll-mt-24 py-8 sm:py-16 px-4 sm:px-6">
+        <div className="container mx-auto max-w-5xl">
+          <SectionHeading id="comparison-scorecard-heading" kicker="قرار عملي" title="شلون تقارن بين جهازين قبل ما تشتري؟" icon={ListChecks} />
+          <Prose><p>إذا محتار بين جهازين، لا تقارن السعر والمعالج فقط. استخدم نموذج النقاط التالي لتنظيم القرار؛ الأوزان اقتراح عملي من KCROC وليست اختبار أداء رسمي. غيّر الأولويات حسب شغلك: اللاعب يعطي GPU والتبريد وزنًا أعلى، والمسافر يرفع وزن البطارية والوزن.</p></Prose>
+          <DataTable headers={['المعيار', 'الوزن المقترح', 'شلون تقيّمه؟']} rows={[
+            ['الأداء المناسب لشغلك', '25 نقطة', 'اختبارات نفس الموديل في البرامج والألعاب اللي تستخدمها، مو اسم CPU أو GPU وحده.'],
+            ['RAM وقابلية الترقية', '15 نقطة', 'السعة الحالية، الحد الأقصى، عدد المنافذ، وهل الذاكرة ملحومة.'],
+            ['SSD والسعة والتوافق', '10 نقاط', 'المساحة، واجهة القرص، الأداء المستمر، وإمكانية إضافة قرص آخر.'],
+            ['الشاشة والكيبورد والمنافذ', '15 نقطة', 'السطوع والانعكاس ودقة الألوان والتردد، تخطيط الكيبورد، والمنافذ المطلوبة.'],
+            ['البطارية والوزن والشاحن', '15 نقطة', 'اختبارات بطارية واقعية ووزن الجهاز مع الشاحن، لا الجهاز وحده.'],
+            ['التبريد والضجيج', '10 نقاط', 'ثبات الأداء بعد فترة حمل، حرارة الهيكل، وسلوك المراوح.'],
+            ['الضمان والقطع والصيانة بالكويت', '10 نقاط', 'تغطية مكتوبة، توفر قطع استهلاكية، وسهولة الإصلاح والترقية.'],
+          ]} />
+          <div className="mt-5"><Callout><strong className="text-white">طريقة الحساب:</strong> قيّم كل بند من 1 إلى 5، ثم احسب النقاط = التقييم ÷ 5 × وزن البند. لا تجعل مجموع النقاط يلغي شرطًا أساسيًا؛ إذا البرنامج يحتاج GPU محدد أو الجهاز ثقيل جدًا على تنقلك اليومي، استبعده حتى لو كان سعره جذابًا.</Callout></div>
         </div>
       </section>
 
@@ -823,6 +912,28 @@ export default function LaptopBuyingGuideAR() {
         </div>
       </section>
 
+      {/* Official sources and helpful internal reading */}
+      <section id="official-specs" className="scroll-mt-24 py-8 sm:py-16 px-4 sm:px-6 bg-slate-900/30 border-y border-slate-800">
+        <div className="container mx-auto max-w-4xl">
+          <SectionHeading id="official-specs-heading" kicker="تحقق بنفسك" title="مراجع رسمية للتحقق من المواصفات" icon={BookOpen} />
+          <Prose>
+            <p>قبل اتخاذ القرار، خذ رقم الموديل الكامل من صفحة المنتج أو الملصق، ثم قارنه بمصدر الشركة المصنعة. إعلانات المتاجر قد تستخدم اسم سلسلة واحدًا لأجهزة تختلف في الشاشة والرام والـGPU والبطارية والضمان.</p>
+            <ul className="list-disc space-y-3 pe-5">
+              <li><a href="https://www.intel.com/content/www/us/en/products/details/processors/core-ultra/view.html" target="_blank" rel="noopener noreferrer" className="text-cyan-400 underline hover:text-cyan-300">مواصفات معالجات Intel Core Ultra الرسمية</a> — راجع اسم المعالج الكامل والمواصفات المنشورة له.</li>
+              <li><a href="https://www.amd.com/en/products/specifications/processors.html" target="_blank" rel="noopener noreferrer" className="text-cyan-400 underline hover:text-cyan-300">قاعدة مواصفات معالجات AMD الرسمية</a> — تحقق من طراز Ryzen والذاكرة والمنصة المدعومة.</li>
+              <li><a href="https://www.nvidia.com/en-us/geforce/laptops/" target="_blank" rel="noopener noreferrer" className="text-cyan-400 underline hover:text-cyan-300">صفحة NVIDIA الرسمية لبطاقات GeForce Laptop</a> — قارن الجيل والبطاقة، ثم راجع TGP وVRAM في مواصفات اللابتوب نفسه.</li>
+              <li><a href="https://www.microsoft.com/en-us/windows/windows-11-specifications" target="_blank" rel="noopener noreferrer" className="text-cyan-400 underline hover:text-cyan-300">متطلبات ومواصفات Windows 11 الرسمية</a> — الحد الأدنى للنظام ليس بالضرورة مواصفات مريحة لاستخدام طويل أو متعدد المهام.</li>
+            </ul>
+            <p>والأهم في الكويت: تحقق من صفحة دعم الشركة لرقم الجهاز نفسه، ومن شروط الضمان وبلد التغطية وسياسة الإرجاع لدى البائع قبل الدفع.</p>
+            <div className="flex flex-wrap gap-3 pt-2">
+              <Link to="/blog/intel-core-ultra-vs-amd-ryzen-ai" className="text-cyan-400 underline hover:text-cyan-300">مقارنة Intel Core Ultra وAMD Ryzen AI</Link>
+              <Link to="/blog/ar/how-often-clean-laptop-replace-thermal-paste-kuwait" className="text-cyan-400 underline hover:text-cyan-300">تنظيف لابتوب القيمنق في الكويت</Link>
+              <Link to="/laptop-repair-kuwait" className="text-cyan-400 underline hover:text-cyan-300">صيانة اللابتوب في الكويت</Link>
+            </div>
+          </Prose>
+        </div>
+      </section>
+
       {/* When Your Laptop Starts Failing */}
       <section id="when-it-fails" className="scroll-mt-24 py-8 sm:py-16 px-4 sm:px-6 bg-slate-900/30 border-y border-slate-800">
         <div className="container mx-auto max-w-4xl">
@@ -888,7 +999,7 @@ export default function LaptopBuyingGuideAR() {
                   <MapPin className="w-3.5 h-3.5" /> مقره في حولي، الكويت
                 </p>
                 <p className="text-slate-600 text-[11px] sm:text-xs mt-3">
-                  المراجعة التقنية: فريق التشخيص في KCROC · آخر تحديث: أغسطس ٢٠٢٦
+                  معلومات المواصفات تختلف حسب رقم الموديل والسوق · آخر تحديث تحريري: ٢١ أكتوبر ٢٠٢٦
                 </p>
               </div>
             </CardContent>

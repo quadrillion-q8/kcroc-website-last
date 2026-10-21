@@ -693,17 +693,25 @@ export const rawGraphData: RawGraphData = {
       slug: 'blog/ar/laptop-buying-guide-kuwait-2026',
       entityType: 'WebPage',
       isActive: true,
-      title: 'دليل شراء اللابتوب في الكويت 2026: اللي ما يقوله لك البائع',
-      description: 'محتار بين Intel وRyzen وRTX؟ مهندس صيانة في الكويت يشرح لك المواصفات اللي تفرق بالأداء والمواصفات اللي مجرد تسويق.',
+      title: 'دليل شراء اللابتوب في الكويت 2026: شلون تختار حسب استخدامك؟',
+      description: 'دليل عملي لشراء لابتوب في الكويت 2026: قارن CPU وRAM وSSD وGPU والبطارية والتبريد والضمان المحلي، مع قائمة فحص للموديلات الجديدة والمستعملة.',
       seo: {
-        title: 'دليل شراء اللابتوب في الكويت 2026 | KCROC',
-        description: 'تبي تشتري لابتوب في الكويت؟ تعرّف على أفضل مواصفات المعالج والرام وSSD وRTX والتبريد والبطارية حسب استخدامك، مع قائمة فحص قبل الشراء.',
+        title: 'شراء لابتوب في الكويت 2026 | دليل المواصفات | KCROC',
+        description: 'دليل شراء لابتوب في الكويت 2026: قارن المعالج والرام وSSD وكرت الشاشة والبطارية والتبريد والضمان المحلي حسب استخدامك، مع قائمة فحص قبل الدفع.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/blog/ar/laptop-buying-guide-kuwait-2026',
+        ogImage: 'https://www.computerrepairkuwait.com/images/blog/laptop-buying-guide-kuwait-arabic-2026.webp',
         ogType: 'article',
         locale: 'ar_KW',
         alternates: { 'en-KW': '/blog/laptop-buying-guide-kuwait-2026', 'ar-KW': '/blog/ar/laptop-buying-guide-kuwait-2026', 'x-default': '/blog/laptop-buying-guide-kuwait-2026' },
-        schemaTypes: ['Article', 'FAQPage', 'BreadcrumbList']
-      }
+        schemaTypes: ['Article', 'FAQPage', 'BreadcrumbList', 'ImageObject'],
+        lastModified: '2026-10-21T09:00:00+03:00'
+      },
+      relatedServiceIds: ['srv-laptop'],
+      relatedResourcePaths: [
+        { label: 'مقارنة Intel Core Ultra وAMD Ryzen AI', path: '/blog/intel-core-ultra-vs-amd-ryzen-ai' },
+        { label: 'تنظيف لابتوب القيمنق في الكويت', path: '/blog/ar/how-often-clean-laptop-replace-thermal-paste-kuwait' },
+        { label: 'صيانة اللابتوب في الكويت', path: '/laptop-repair-kuwait' }
+      ]
     } as WebPageEntity,
     'blog-gaming-laptop-cleaning-ar': {
       id: 'blog-gaming-laptop-cleaning-ar',
