@@ -305,7 +305,7 @@ export const rawGraphData: RawGraphData = {
       id: 'page-ar-hawalli-computer-repair', slug: 'ar/computer-repair-hawalli', entityType: 'WebPage', isActive: true,
       title: 'تصليح كمبيوتر حولي | فني لابتوب وموقع المختبر',
       description: 'تصليح كمبيوتر ولابتوب في حولي من مختبر KCROC الفعلي في مجمع الملا. زيارة مباشرة أو استلام وتوصيل مجاني، مع تشخيص واضح وضمان 30 يومًا.',
-      seo: { title: "تصليح كمبيوتر حولي | فني لابتوب وموقع المختبر | KCROC", description: "تحتاج تصليح كمبيوتر أو لابتوب في حولي؟ مختبر KCROC في مجمع الملا، شارع ابن خلدون، محل 19. مفتوح يوميًا 10 صباحًا–10 مساءً، مع استلام وتوصيل مجاني وضمان 30 يومًا.",
+      seo: { title: "تصليح كمبيوتر حولي | فني لابتوب وموقع المختبر | KCROC", description: "تصليح كمبيوتر أو لابتوب في حولي؟ مختبر KCROC في مجمع الملا، شارع ابن خلدون، محل 19. مفتوح يوميًا 10 صباحًا–10 مساءً، مع استلام وتوصيل مجاني وضمان 30 يومًا.",
         canonicalUrl: 'https://www.computerrepairkuwait.com/ar/computer-repair-hawalli',
         locale: 'ar_KW', alternates: { 'ar-KW': 'https://www.computerrepairkuwait.com/ar/computer-repair-hawalli', 'en-KW': 'https://www.computerrepairkuwait.com/location/hawalli', 'x-default': 'https://www.computerrepairkuwait.com/location/hawalli' },
         ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList'], lastModified: '2026-10-16T00:00:00+03:00',
