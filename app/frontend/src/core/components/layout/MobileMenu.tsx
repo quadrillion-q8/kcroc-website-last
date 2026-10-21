@@ -55,7 +55,7 @@ const MENU_COPY: Record<string, { eyebrow: string; subtitle: string; allLabel: s
   blog_mega: { eyebrow: 'TECH BLOG', subtitle: 'Useful tech articles for everyday users.', allLabel: 'All articles', allHref: '/blog' },
   news_mega: { eyebrow: 'TECH NEWS', subtitle: 'Current computer, Windows, hardware, gaming, Apple, cybersecurity and AI news with technician context.', allLabel: 'All news', allHref: '/news' },
   guides_mega: { eyebrow: 'TROUBLESHOOTING GUIDES', subtitle: 'Safe, practical steps before you book repair.', allLabel: 'All guides', allHref: '/guides' },
-  locations_mega: { eyebrow: 'KUWAIT SERVICE AREAS', subtitle: 'Browse all 31 pickup and delivery service areas.', allLabel: 'All 31 areas', allHref: '/locations' },
+  locations_mega: { eyebrow: 'KUWAIT LOCATIONS & SERVICE AREAS', subtitle: 'Browse the Hawalli repair lab and pickup-and-delivery service areas across Kuwait.', allLabel: 'All areas', allHref: '/locations' },
   about_mega: { eyebrow: 'KCROC', subtitle: 'The lab, the team and the company behind KCROC.', allLabel: 'About KCROC', allHref: '/about' },
 };
 

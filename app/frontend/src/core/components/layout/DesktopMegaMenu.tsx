@@ -103,9 +103,9 @@ const MENU_META: Record<string, {
     featureLabel: 'Start with a popular guide',
   },
   locations_mega: {
-    eyebrow: 'KUWAIT SERVICE AREAS',
-    subtitle: 'Browse the 31 dedicated areas covered by KCROC pickup and delivery, with one canonical page for each location.',
-    allLabel: 'View all 31 areas',
+    eyebrow: 'KUWAIT LOCATIONS & SERVICE AREAS',
+    subtitle: 'Browse KCROC location pages across Kuwait, including the Hawalli repair lab and pickup-and-delivery service areas.',
+    allLabel: 'View all areas',
     allHref: '/locations',
     featureLabel: 'Popular service areas',
   },
