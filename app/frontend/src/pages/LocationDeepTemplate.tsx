@@ -7,8 +7,8 @@
 // single physical branch), but data-driven off a `:slug` route param so all
 // five service-area locations share one file instead of five near-duplicate
 // ones. Every fact on this page (opening hours, phone, warranty, services,
-// brands, problems, USPs, process steps, and — where they exist — a location-
-// location-specific review) is read from KCROC_GRAPH, so nothing here
+// brands, problems, USPs, process steps, and location-specific reviews
+// are read from KCROC_GRAPH, so nothing here
 // can drift out of sync with the rest of the site.
 //
 // Unlike Hawalli, service-area locations are NOT physical branches — KCROC's
