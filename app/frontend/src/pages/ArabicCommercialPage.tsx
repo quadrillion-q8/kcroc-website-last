@@ -2311,7 +2311,562 @@ export default function ArabicCommercialPage() {
               </figcaption>
             </figure>
           )}
-  
+          {slug === 'gaming-laptop-repair-kuwait' && (
+            <figure className="mt-8 overflow-hidden rounded-2xl border border-slate-800 bg-slate-950 sm:mt-10">
+              <img
+                src={IMAGES.gaming.msiWorkstation.src}
+                alt="لابتوب MSI للألعاب على طاولة فحص داخل ورشة KCROC"
+                width={IMAGES.gaming.msiWorkstation.width}
+                height={IMAGES.gaming.msiWorkstation.height}
+                loading="eager"
+                fetchPriority="high"
+                decoding="async"
+                className="aspect-[16/9] w-full object-cover"
+              />
+              <figcaption className="border-t border-slate-800 px-4 py-3 text-sm leading-6 text-slate-400 sm:px-5">
+                فحص أجهزة Gaming Laptop يتم على طاولة التشخيص في مختبر KCROC؛ نحدد العطل قبل اقتراح القطعة أو الإصلاح.
+              </figcaption>
+            </figure>
+          )}
+          {slug === 'laptop-screen-repair-kuwait' && (
+            <figure className="mt-8 overflow-hidden rounded-2xl border border-slate-800 bg-slate-950 sm:mt-10">
+              <img
+                src={IMAGES.laptopHardware.laptopScreenAssemblyDisassemblyRepair.src}
+                alt="فحص مجموعة شاشة اللابتوب لتمييز عطل الشاشة من الكابل أو الاتصال والإضاءة"
+                width={IMAGES.laptopHardware.laptopScreenAssemblyDisassemblyRepair.width}
+                height={IMAGES.laptopHardware.laptopScreenAssemblyDisassemblyRepair.height}
+                loading="eager"
+                fetchPriority="high"
+                decoding="async"
+                className="aspect-[16/9] w-full object-cover"
+              />
+              <figcaption className="border-t border-slate-800 px-4 py-3 text-sm leading-6 text-slate-400 sm:px-5">
+                الصورة من أعمال فك وفحص مجموعة شاشة اللابتوب. نفحص الشاشة والكابل وموصلات العرض حسب الموديل، ونؤكد القطعة والتكلفة والمدة قبل التركيب.
+              </figcaption>
+            </figure>
+          )}
+          {slug === 'macbook-screen-replacement-kuwait' && (
+            <div className="mt-8">
+              <h2 className="mb-4 text-lg font-black text-white">صور من فحص وإصلاح شاشة MacBook</h2>
+              <div className="grid gap-5 md:grid-cols-2">
+                <figure className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-950">
+                  <img
+                    src={IMAGES.macbook.diagnostics.src}
+                    alt="فحص جهاز MacBook قبل إصلاح الشاشة في الكويت"
+                    width={IMAGES.macbook.diagnostics.width}
+                    height={IMAGES.macbook.diagnostics.height}
+                    loading="eager"
+                    fetchPriority="high"
+                    decoding="async"
+                    className="aspect-[16/9] w-full object-cover"
+                  />
+                  <figcaption className="border-t border-slate-800 px-4 py-3 text-sm leading-6 text-slate-400">
+                    فحص MacBook ومطابقة الموديل قبل اختيار تجميعة الشاشة المناسبة.
+                  </figcaption>
+                </figure>
+                <figure className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-950">
+                  <img
+                    src={IMAGES.laptopHardware.laptopScreenAssemblyDisassemblyRepair.src}
+                    alt="فحص مجموعة شاشة اللابتوب أثناء الفك وإعادة التركيب"
+                    width={IMAGES.laptopHardware.laptopScreenAssemblyDisassemblyRepair.width}
+                    height={IMAGES.laptopHardware.laptopScreenAssemblyDisassemblyRepair.height}
+                    loading="lazy"
+                    decoding="async"
+                    className="aspect-[16/9] w-full object-cover"
+                  />
+                  <figcaption className="border-t border-slate-800 px-4 py-3 text-sm leading-6 text-slate-400">
+                    فحص مجموعة الشاشة وإعادة تركيبها ثم اختبار الصورة قبل تسليم الجهاز.
+                  </figcaption>
+                </figure>
+              </div>
+            </div>
+          )}
+        </section>
+
+        {slug === 'laptop-repair-kuwait' && (
+          <>
+            <section className="mt-10 rounded-3xl border border-slate-800 bg-slate-900/40 p-6 sm:p-8" aria-labelledby="laptop-repair-photos">
+              <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">من أعمال الفحص والصيانة</p>
+              <h2 id="laptop-repair-photos" className="mt-2 text-2xl font-black text-white sm:text-3xl">صور من فحص وإصلاح اللابتوب</h2>
+              <p className="mt-3 max-w-4xl leading-8 text-slate-400">توضح الصور أنواع الأعمال التي قد يحتاجها الجهاز: فحص عام، وتنظيف التبريد، وتشخيص المكونات الداخلية. الصورة وحدها لا تحدد العطل؛ نعتمد على موديل جهازك ونتائج الفحص قبل اقتراح الإصلاح.</p>
+              <div className="mt-6 grid gap-5 md:grid-cols-3">
+                <figure className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-950/60">
+                  <img src={IMAGES.services.laptopRepair.src} alt="فحص وإصلاح لابتوب في مختبر KCROC بالكويت" width={IMAGES.services.laptopRepair.width} height={IMAGES.services.laptopRepair.height} loading="lazy" decoding="async" className="aspect-[4/3] w-full object-cover" />
+                  <figcaption className="border-t border-slate-800 px-4 py-3 text-sm leading-6 text-slate-400">فحص الجهاز وتحديد مسار التشخيص المناسب قبل تحديد القطعة أو التكلفة.</figcaption>
+                </figure>
+                <figure className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-950/60">
+                  <img src={IMAGES.laptopHardware.laptopDustCleaningOverheatingKuwait.src} alt="فحص وتنظيف نظام تبريد اللابتوب عند ارتفاع الحرارة أو صوت المروحة" width={IMAGES.laptopHardware.laptopDustCleaningOverheatingKuwait.width} height={IMAGES.laptopHardware.laptopDustCleaningOverheatingKuwait.height} loading="lazy" decoding="async" className="aspect-[4/3] w-full object-cover" />
+                  <figcaption className="border-t border-slate-800 px-4 py-3 text-sm leading-6 text-slate-400">فحص المراوح ومجاري الهواء والمشتت الحراري بدل افتراض أن المعجون وحده هو السبب.</figcaption>
+                </figure>
+                <figure className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-950/60">
+                  <img src={IMAGES.laptopHardware.laptopMotherboardDiagnosticBenchRepair.src} alt="تشخيص اللوحة الأم ومكونات اللابتوب على طاولة فحص" width={IMAGES.laptopHardware.laptopMotherboardDiagnosticBenchRepair.width} height={IMAGES.laptopHardware.laptopMotherboardDiagnosticBenchRepair.height} loading="lazy" decoding="async" className="aspect-[4/3] w-full object-cover" />
+                  <figcaption className="border-t border-slate-800 px-4 py-3 text-sm leading-6 text-slate-400">فحص المكونات الداخلية ومسار الطاقة عند أعطال عدم التشغيل أو إعادة التشغيل.</figcaption>
+                </figure>
+              </div>
+            </section>
+
+            <section className="mt-10 rounded-3xl border border-slate-800 bg-slate-900/40 p-6 sm:p-8" aria-labelledby="laptop-diagnostic-guide">
+              <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">دليل الأعطال حسب الأعراض</p>
+              <h2 id="laptop-diagnostic-guide" className="mt-2 text-2xl font-black text-white sm:text-3xl">شنو ممكن يعني عطل اللابتوب؟</h2>
+              <p className="mt-3 max-w-4xl leading-8 text-slate-400">العرض نفسه قد ينتج من أكثر من سبب؛ هذه النقاط تساعدك على وصف المشكلة وتحديد الخطوة الآمنة التالية، لكنها لا تستبدل الفحص ولا تثبت أن قطعة معينة تالفة.</p>
+              <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {[
+                  { title: 'اللابتوب لا يعمل إطلاقًا', text: 'نراجع الشاحن ومصدر الطاقة ومؤشرات التشغيل والبطارية ومسار الطاقة على اللوحة بحسب الموديل. لا نفترض أن المذربورد تالفة من عدم التشغيل وحده.', href: '/ar/motherboard-repair-kuwait', link: 'متى نحتاج فحص اللوحة الأم؟' },
+                  { title: 'متصل بالشاحن لكنه لا يشحن', text: 'قد يكون السبب من الشاحن أو الكابل أو منفذ DC/USB-C أو البطارية أو دائرة الشحن. تجنب تحريك القابس بالقوة، وأرسل صورة المنفذ والموديل عند طلب الفحص.', href: '/ar/laptop-charging-port-repair-kuwait', link: 'تفاصيل إصلاح مدخل الشحن' },
+                  { title: 'الشاشة سوداء أو فيها خطوط', text: 'قد تكون المشكلة في الشاشة أو الكابل أو الإضاءة أو مسار العرض. اختبار شاشة خارجية متوافقة يساعد أحيانًا، لكنه لا يؤكد سبب العطل وحده.', href: '/ar/laptop-screen-repair-kuwait', link: 'فحص شاشة اللابتوب' },
+                  { title: 'حرارة عالية أو مروحة مزعجة', text: 'قد تتداخل الأتربة وتدفق الهواء والمروحة والمشتت والتحميل البرمجي. ضع الجهاز على سطح صلب، وأوقف الاستخدام إذا ظهرت رائحة احتراق أو إطفاءات متكررة.', href: '/blog/ar/how-often-clean-laptop-replace-thermal-paste-kuwait', link: 'متى ننظف اللابتوب ونغيّر المعجون؟' },
+                  { title: 'البطارية تفرغ بسرعة أو تنتفخ', text: 'نفحص صحة البطارية وسلوك الشحن قبل طلب بديل. إذا لاحظت انتفاخًا أو ارتفاعًا في الهيكل، أوقف الاستخدام والشحن ولا تضغط على البطارية أو تحاول إخراجها بالقوة.', href: '/ar/battery-replacement-kuwait', link: 'فحص وتبديل البطارية' },
+                  { title: 'انسكب ماء أو قهوة على الجهاز', text: 'أوقف التشغيل وافصل الشاحن إذا كان ذلك آمنًا، ولا تعاود تشغيل الجهاز أو شحنه. لا تستخدم مجففًا ولا تضعه في الأرز؛ اذكر نوع السائل ووقت الحادث.', href: '/ar/laptop-liquid-damage-repair-kuwait', link: 'تقييم أضرار السوائل' }
+                ].map((item) => (
+                  <article key={item.title} className="rounded-2xl border border-slate-800 bg-slate-950/55 p-5">
+                    <h3 className="font-bold text-white">{item.title}</h3>
+                    <p className="mt-2 text-sm leading-7 text-slate-400">{item.text}</p>
+                    <Link to={item.href} className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-cyan-300 hover:text-cyan-200">{item.link} <ArrowLeft className="h-4 w-4" aria-hidden="true" /></Link>
+                  </article>
+                ))}
+              </div>
+              <div className="mt-6 rounded-2xl border border-amber-500/25 bg-amber-500/5 p-5">
+                <h3 className="font-bold text-white">تنبيه للسلامة والبيانات</h3>
+                <p className="mt-2 text-sm leading-7 text-slate-300">عند وجود سائل أو بطارية منتفخة أو رائحة احتراق، لا تعاود توصيل الكهرباء ولا تحاول فتح البطارية أو مزوّد الطاقة. إن أمكن، احتفظ بنسخة احتياطية قبل الإصلاح، ولا ترسل كلمات المرور أو رموز الدخول في رسالة واتساب.</p>
+              </div>
+            </section>
+
+            <section className="mt-10 rounded-3xl border border-slate-800 bg-slate-900/40 p-6 sm:p-8" aria-labelledby="laptop-repair-process">
+              <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">خطوات الخدمة</p>
+              <h2 id="laptop-repair-process" className="mt-2 text-2xl font-black text-white sm:text-3xl">من رسالة واتساب إلى إعادة اللابتوب بعد الاختبار</h2>
+              <ol className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                {[
+                  { title: '١. أرسل الموديل والعطل', text: 'أرسل رقم الموديل والمنطقة ووصف المشكلة؛ صورة أو فيديو قصير قد يساعد إذا كانت الأعراض ظاهرة.' },
+                  { title: '٢. نرتب الاستلام', text: 'نرتب استلام الجهاز من المنزل أو المكتب داخل مناطق الخدمة؛ لا يلزم أن تنقله إلى حولي بنفسك.' },
+                  { title: '٣. نفحص ونوضح السعر', text: 'يتم الفحص في مختبر KCROC بحولي، ثم نوضح النتيجة وخيارات الإصلاح والتكلفة قبل بدء العمل المدفوع.' },
+                  { title: '٤. نصلح ونختبر', text: 'بعد موافقتك ننفذ الإصلاح المناسب ونختبر الوظائف المرتبطة بالعطل قبل إعادة الجهاز.' }
+                ].map((item) => (
+                  <li key={item.title} className="rounded-2xl border border-slate-800 bg-slate-950/55 p-5">
+                    <h3 className="font-bold text-white">{item.title}</h3>
+                    <p className="mt-2 text-sm leading-7 text-slate-400">{item.text}</p>
+                  </li>
+                ))}
+              </ol>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <Link to="/ar/pricing" className="inline-flex items-center gap-2 rounded-full border border-slate-700 px-5 py-3 text-sm font-bold text-cyan-300 hover:border-cyan-500/40">راجع الأسعار قبل الحجز <ArrowLeft className="h-4 w-4" aria-hidden="true" /></Link>
+                <Link to="/ar/near-me" className="inline-flex items-center gap-2 rounded-full border border-slate-700 px-5 py-3 text-sm font-bold text-cyan-300 hover:border-cyan-500/40">تفاصيل الاستلام من منطقتك <ArrowLeft className="h-4 w-4" aria-hidden="true" /></Link>
+              </div>
+            </section>
+          </>
+        )}
+
+        {slug === 'computer-repair-farwaniya' && (
+          <>
+            <section className="mt-10 rounded-3xl border border-slate-800 bg-slate-900/40 p-6 sm:p-8" aria-labelledby="farwaniya-repair-photos">
+              <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">من أعمال التشخيص</p>
+              <h2 id="farwaniya-repair-photos" className="mt-2 text-2xl font-black text-white sm:text-3xl">صور توضيحية لفحص الكمبيوتر واللابتوب</h2>
+              <p className="mt-3 max-w-3xl leading-8 text-slate-400">هذه الصور تشرح أنواع الفحص والإصلاح التي قد نحتاجها بحسب العطل. لا يمكن تحديد القطعة المطلوبة من الصورة وحدها؛ نطابق التشخيص مع موديل جهازك ثم نوضح التكلفة قبل الإصلاح.</p>
+              <div className="mt-6 grid gap-5 md:grid-cols-3">
+                <figure className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-950/60">
+                  <img src={IMAGES.services.laptopRepair.src} alt="فحص وتصليح لابتوب في مختبر صيانة كمبيوتر بالكويت" width={IMAGES.services.laptopRepair.width} height={IMAGES.services.laptopRepair.height} loading="eager" fetchPriority="high" decoding="async" className="aspect-[4/3] w-full object-cover" />
+                  <figcaption className="border-t border-slate-800 px-4 py-3 text-sm leading-6 text-slate-400">فحص عام للهاردوير لتحديد مسار التشخيص المناسب قبل اقتراح تبديل القطع.</figcaption>
+                </figure>
+                <figure className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-950/60">
+                  <img src={IMAGES.laptopHardware.laptopDcPowerJackConnectorReplacement.src} alt="فحص موصل طاقة اللابتوب ونقاط التثبيت عند وجود مشكلة في الشحن" width={IMAGES.laptopHardware.laptopDcPowerJackConnectorReplacement.width} height={IMAGES.laptopHardware.laptopDcPowerJackConnectorReplacement.height} loading="lazy" decoding="async" className="aspect-[4/3] w-full object-cover" />
+                  <figcaption className="border-t border-slate-800 px-4 py-3 text-sm leading-6 text-slate-400">أعراض الشحن قد تأتي من الشاحن أو المنفذ أو دائرة الطاقة؛ نفحص المسار قبل تحديد الإصلاح.</figcaption>
+                </figure>
+                <figure className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-950/60">
+                  <img src={IMAGES.laptopHardware.laptopScreenAssemblyDisassemblyRepair.src} alt="فحص مجموعة شاشة اللابتوب والكابل قبل طلب شاشة بديلة" width={IMAGES.laptopHardware.laptopScreenAssemblyDisassemblyRepair.width} height={IMAGES.laptopHardware.laptopScreenAssemblyDisassemblyRepair.height} loading="lazy" decoding="async" className="aspect-[4/3] w-full object-cover" />
+                  <figcaption className="border-t border-slate-800 px-4 py-3 text-sm leading-6 text-slate-400">نميّز بين عطل الشاشة والكابل والموصل قدر الإمكان قبل طلب قطعة بديلة متوافقة.</figcaption>
+                </figure>
+              </div>
+            </section>
+
+            <section className="mt-10 rounded-3xl border border-slate-800 bg-slate-900/40 p-6 sm:p-8" aria-labelledby="farwaniya-diagnostic-guide">
+              <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">دليل حسب الأعراض</p>
+              <h2 id="farwaniya-diagnostic-guide" className="mt-2 text-2xl font-black text-white sm:text-3xl">شنو ممكن يعني العطل قبل ما تبدّل أي قطعة؟</h2>
+              <p className="mt-3 max-w-3xl leading-8 text-slate-400">الأعراض المتشابهة قد يكون لها أكثر من سبب. هذه الفحوصات الأولية تساعدك على وصف المشكلة، لكنها لا تستبدل التشخيص الفني ولا تعني أن قطعة محددة هي السبب بشكل مؤكد.</p>
+              <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {[
+                  { title: 'الكمبيوتر لا يعمل إطلاقًا', text: 'لاحظ هل لمبة التشغيل تعمل وهل المروحة تتحرك. نفحص مصدر الطاقة والشاحن والتوصيلات ومسار الطاقة قبل الحكم على اللوحة الأم.' },
+                  { title: 'الشاحن متصل لكن البطارية لا تزيد', text: 'قد تكون المشكلة من قدرة الشاحن أو الكابل أو منفذ DC/USB-C أو البطارية أو دائرة الشحن. إذا كان الشحن متقطعًا، لا تواصل تحريك القابس بالقوة.' },
+                  { title: 'الشاشة سوداء أو بها خطوط', text: 'قد تكون الشاشة أو الكابل أو الإضاءة أو مسار العرض. جرّب شاشة خارجية متوافقة إن كانت متاحة، وتذكّر أن نتيجة التجربة وحدها لا تثبت سبب العطل.' },
+                  { title: 'اللابتوب يسخن أو يطفئ نفسه', text: 'تأكد من أن فتحات التهوية غير مسدودة وأن الجهاز على سطح صلب. ننظر إلى الغبار والمراوح ونظام التبريد واختبارات الاستقرار بدل افتراض أن المعجون الحراري هو السبب دائمًا.' },
+                  { title: 'البطارية تنفد بسرعة أو ينطفئ الجهاز', text: 'قد تكون البطارية متعبة أو توجد مشكلة في الشحن والطاقة. نفحص البطارية ومسار الشحن معًا قبل طلب بديل؛ إذا ظهر انتفاخ، أوقف الاستخدام.' },
+                  { title: 'حدث انسكاب سائل', text: 'أوقف التشغيل وافصل الشاحن إذا كان ذلك آمنًا. لا تعاود التشغيل أو الشحن للتجربة ولا تستخدم مجففًا أو أرزًا؛ اذكر نوع السائل ووقت الحادث عند ترتيب الاستلام.' }
+                ].map((item) => (
+                  <article key={item.title} className="rounded-2xl border border-slate-800 bg-slate-950/55 p-5">
+                    <h3 className="font-bold text-white">{item.title}</h3>
+                    <p className="mt-2 text-sm leading-7 text-slate-400">{item.text}</p>
+                  </article>
+                ))}
+              </div>
+              <div className="mt-6 rounded-2xl border border-amber-500/25 bg-amber-500/5 p-5">
+                <h3 className="font-bold text-white">تنبيه سلامة</h3>
+                <p className="mt-2 text-sm leading-7 text-slate-300">إذا لاحظت رائحة احتراق أو شررًا أو حرارة غير طبيعية أو انتفاخ البطارية، أوقف الاستخدام ولا تعاود توصيل الكهرباء. لا تضغط على بطارية منتفخة ولا تحاول فكها بنفسك، وأخبرنا بهذه العلامات قبل الاستلام.</p>
+              </div>
+            </section>
+
+            <section className="mt-10 rounded-3xl border border-slate-800 bg-slate-900/40 p-6 sm:p-8" aria-labelledby="farwaniya-pickup-process">
+              <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">خطوات الخدمة</p>
+              <h2 id="farwaniya-pickup-process" className="mt-2 text-2xl font-black text-white sm:text-3xl">من استلام الجهاز في الفروانية إلى إرجاعه بعد الاختبار</h2>
+              <ol className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {[
+                  { title: '١. أرسل التفاصيل', text: 'اذكر منطقتك والماركة والموديل والأعراض. صورة واضحة أو فيديو قصير للعطل قد يساعد، لكن لا ترسل كلمات المرور أو بيانات حساسة.' },
+                  { title: '٢. ننسق الاستلام', text: 'نرتب استلامًا وتوصيلًا مجانيًا من الفروانية وخيطان والرقعي والعارضية وجليب الشيوخ، بحسب الموعد المتاح.' },
+                  { title: '٣. نفحص في مختبر حولي', text: 'يتم التشخيص في مختبر KCROC في مجمع الملا، شارع ابن خلدون، حولي؛ الفروانية منطقة خدمة وليست فرعًا.' },
+                  { title: '٤. نوضح السعر والخيارات', text: 'نشرح العطل والإصلاح الممكن وتكلفة العمل والقطع والوقت المتوقع. لا يبدأ أي إصلاح مدفوع دون موافقتك.' },
+                  { title: '٥. نصلح ونختبر', text: 'بعد الموافقة ننفذ الإصلاح المناسب ونختبر الوظيفة التي عولجت حسب نوع الجهاز والعطل.' },
+                  { title: '٦. ننسق الإرجاع', text: 'نرجع الجهاز بعد الاختبار، ويشمل الإصلاح المكتمل ضمان 30 يومًا وفق شروط الخدمة.' }
+                ].map((step) => (
+                  <li key={step.title} className="rounded-2xl border border-slate-800 bg-slate-950/45 p-5">
+                    <h3 className="font-bold text-white">{step.title}</h3>
+                    <p className="mt-2 text-sm leading-7 text-slate-400">{step.text}</p>
+                  </li>
+                ))}
+              </ol>
+              <div className="mt-6 grid gap-4 md:grid-cols-2">
+                <div className="rounded-2xl border border-slate-800 bg-slate-950/50 p-5">
+                  <h3 className="font-bold text-white">شنو تجهز قبل الاستلام؟</h3>
+                  <ul className="mt-3 space-y-2 text-sm leading-7 text-slate-300">
+                    <li>• الماركة والموديل أو صورة ملصق الموديل إذا كان ظاهرًا.</li>
+                    <li>• وصف العطل ومتى بدأ، وهل سبق سقوط الجهاز أو انسكاب سائل.</li>
+                    <li>• الشاحن والكابل إذا كانت المشكلة في التشغيل أو الشحن، إذا كان نقلهما آمنًا.</li>
+                    <li>• منطقتك وموقع الاستلام ورقم تواصل مناسب لتنسيق الموعد.</li>
+                  </ul>
+                </div>
+                <div className="rounded-2xl border border-cyan-500/20 bg-cyan-500/5 p-5">
+                  <h3 className="font-bold text-white">بياناتك وموافقتك</h3>
+                  <p className="mt-3 text-sm leading-7 text-slate-300">لا ترسل كلمة مرور الجهاز عبر واتساب. أخبرنا إن كانت الملفات مهمة أو توجد ملاحظات خاصة قبل الاستلام. نوضح لك أي حاجة لاختبار النظام أو الوصول إليه قبل تنفيذها، وننصح بالنسخ الاحتياطي متى كان الجهاز قادرًا على العمل.</p>
+                </div>
+              </div>
+              <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                <a href={wa} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-500 px-6 py-3 font-black text-slate-950 transition hover:bg-cyan-400">
+                  <MessageCircle className="h-5 w-5" aria-hidden="true" /> رتب استلام مجاني من الفروانية
+                </a>
+                <Link to="/ar/pricing" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-slate-700 px-6 py-3 font-bold text-cyan-300 hover:border-cyan-500/40">
+                  تفاصيل أسعار التصليح <ArrowLeft className="h-4 w-4" aria-hidden="true" />
+                </Link>
+              </div>
+            </section>
+          </>
+        )}
+
+          {slug === 'macbook-repair-kuwait' && (
+            <figure className="mt-8 overflow-hidden rounded-2xl border border-slate-800 bg-slate-950 sm:mt-10">
+              <img
+                src={IMAGES.macbook.diagnostics.src}
+                alt="فني يفحص جهاز MacBook مفتوحًا لتشخيص أعطال الشاشة والبطارية واللوحة الأم في مختبر إصلاح بالكويت"
+                width={IMAGES.macbook.diagnostics.width}
+                height={IMAGES.macbook.diagnostics.height}
+                loading="eager"
+                fetchPriority="high"
+                decoding="async"
+                className="aspect-[16/9] w-full object-cover"
+              />
+              <figcaption className="border-t border-slate-800 px-4 py-3 text-sm leading-6 text-slate-400 sm:px-5">
+                فحص MacBook قبل اختيار الإصلاح: نحدد الموديل والجيل والعطل، ثم نوضح الخيارات والتكلفة قبل طلب القطعة أو بدء العمل.
+              </figcaption>
+            </figure>
+          )}
+
+
+        {slug === 'laptop-screen-repair-kuwait' && (
+          <>
+            <section className="mt-12 rounded-3xl border border-slate-800 bg-slate-900/40 p-6 sm:p-8" aria-labelledby="laptop-screen-symptom-guide">
+              <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">دليل الأعطال حسب الأعراض</p>
+              <h2 id="laptop-screen-symptom-guide" className="mt-2 text-2xl font-black text-white sm:text-3xl">شلون نعرف إذا العطل من الشاشة أو الكابل أو مسار العرض؟</h2>
+              <p className="mt-3 max-w-3xl leading-8 text-slate-400">الشاشة السوداء والخطوط والوميض قد تنتج من أكثر من سبب. هدف التشخيص هو تجنّب طلب شاشة جديدة إذا كانت المشكلة في كابل أو موصل أو مكوّن آخر، مع عدم افتراض أن كل عطل قابل للإصلاح قبل الفحص.</p>
+              <div className="mt-6 grid gap-5 md:grid-cols-3">
+                {[
+                  {
+                    image: IMAGES.laptopHardware.laptopLcdPanelReplacementPart,
+                    alt: 'لوحة LCD بديلة للابتوب للفحص ومطابقة رقم القطعة والمواصفات قبل التركيب',
+                    title: 'كسر أو بقع سوداء أو حبر منتشر',
+                    description: 'التشققات وآثار الضغط والبقع الداكنة التي تتوسع قد تشير إلى تلف لوحة العرض. نطابق رقم القطعة والمواصفات قبل تأكيد الاستبدال.',
+                  },
+                  {
+                    image: IMAGES.laptopHardware.laptopScreenAssemblyDisassemblyRepair,
+                    alt: 'مجموعة شاشة اللابتوب وكابل العرض أثناء الفحص الفني',
+                    title: 'خطوط أو وميض أو صورة متقطعة',
+                    description: 'السبب قد يكون لوحة الشاشة أو الكابل أو الموصل أو مسار العرض. إذا كان العطل يتغير مع زاوية الغطاء، لا تحركه بالقوة؛ قد يلزم فحص المفصلات والكابل.',
+                  },
+                  {
+                    image: IMAGES.laptopHardware.screenBezel,
+                    alt: 'إطار الشاشة ومفصلات اللابتوب أثناء فحص الهيكل والتوصيلات',
+                    title: 'الصورة تختفي عند فتح الغطاء',
+                    description: 'قد يكون هناك ضغط على كابل الشاشة أو تلف في المفصلة أو الإطار. نقيّم مجموعة الشاشة والهيكل معًا حتى لا يتكرر الضرر بعد التركيب.',
+                  },
+                ].map((item) => (
+                  <article key={item.title} className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-950/60">
+                    <img src={item.image.src} alt={item.alt} width={item.image.width} height={item.image.height} loading="lazy" decoding="async" className="aspect-[4/3] w-full object-cover" />
+                    <div className="p-5">
+                      <h3 className="text-lg font-black text-white">{item.title}</h3>
+                      <p className="mt-2 text-sm leading-7 text-slate-400">{item.description}</p>
+                    </div>
+                  </article>
+                ))}
+              </div>
+              <div className="mt-6 rounded-2xl border border-cyan-500/20 bg-cyan-500/5 p-5">
+                <h3 className="font-black text-white">فحص آمن أولي إذا كانت الشاشة سوداء</h3>
+                <p className="mt-2 text-sm leading-7 text-slate-300">لاحظ هل توجد لمبات تشغيل أو أصوات بدء تشغيل. إذا توفر لديك تلفزيون أو شاشة خارجية وكابل متوافق، يمكن تجربة العرض الخارجي دون فتح اللابتوب؛ بعض الأجهزة تحتاج إعدادات أو محولًا مناسبًا، وعدم ظهور الصورة الخارجية لا يحدد العطل وحده. أوقف التجارب إذا ظهر صوت غير طبيعي أو رائحة احتراق أو سبق انسكاب سائل.</p>
+              </div>
+            </section>
+
+            <section className="mt-10 rounded-3xl border border-slate-800 bg-slate-900/40 p-6 sm:p-8" aria-labelledby="laptop-screen-compatibility">
+              <div className="grid items-start gap-7 lg:grid-cols-[0.9fr_1.1fr]">
+                <div>
+                  <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">مطابقة القطعة قبل الطلب</p>
+                  <h2 id="laptop-screen-compatibility" className="mt-2 text-2xl font-black text-white sm:text-3xl">ليش ما يكفي نعرف مقاس الشاشة فقط؟</h2>
+                  <p className="mt-3 leading-8 text-slate-400">قد تتشابه شاشتان في المقاس لكن تختلفان في الموصل والدقة ومعدل التحديث واللمس ونقاط التثبيت. صورة ملصق الشاشة أو رقم الموديل تساعد على تقليل احتمال طلب قطعة غير متوافقة.</p>
+                  <figure className="mt-6 overflow-hidden rounded-2xl border border-slate-800 bg-slate-950">
+                    <img src={IMAGES.laptopHardware.dellLaptopScreenRepairCompleted.src} alt="لابتوب بعد تركيب الشاشة واختبار العرض" width={IMAGES.laptopHardware.dellLaptopScreenRepairCompleted.width} height={IMAGES.laptopHardware.dellLaptopScreenRepairCompleted.height} loading="lazy" decoding="async" className="aspect-[4/3] w-full object-cover" />
+                    <figcaption className="border-t border-slate-800 px-4 py-3 text-sm leading-6 text-slate-400">بعد التركيب نختبر عرض الصورة والإضاءة والوظائف المتعلقة بالإصلاح قبل التسليم.</figcaption>
+                  </figure>
+                </div>
+                <div className="grid gap-4 sm:grid-cols-2">
+                  {[
+                    { title: 'الموديل ورقم القطعة', text: 'نسجل الماركة والموديل الدقيق ورقم الشاشة الأصلي إن أمكن، بدل الاختيار من المقاس وحده.' },
+                    { title: 'الدقة ومعدل التحديث', text: 'HD وFHD وQHD و4K ومعدلات التحديث المختلفة ليست بدائل تلقائية لبعضها؛ نتأكد من دعم الجهاز والتوافق.' },
+                    { title: 'اللمس ونوع اللوحة', text: 'شاشة اللمس وتجميعة الشاشة العادية قد تختلفان في القطع وطريقة التركيب. نطابق النوع قبل طلبها.' },
+                    { title: 'الموصل ونقاط التثبيت', text: 'نوع الموصل ومكانه وإطار التثبيت مهم للتوافق. لا نعد بأن أي لوحة بالمقاس نفسه ستعمل.' }
+                  ].map((item) => (
+                    <article key={item.title} className="rounded-2xl border border-slate-800 bg-slate-950/50 p-5">
+                      <h3 className="font-bold text-white">{item.title}</h3>
+                      <p className="mt-2 text-sm leading-7 text-slate-400">{item.text}</p>
+                    </article>
+                  ))}
+                </div>
+              </div>
+            </section>
+
+            <section className="mt-10 rounded-3xl border border-slate-800 bg-slate-900/40 p-6 sm:p-8" aria-labelledby="laptop-screen-repair-process">
+              <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">خطوات واضحة</p>
+              <h2 id="laptop-screen-repair-process" className="mt-2 text-2xl font-black text-white sm:text-3xl">من فحص الشاشة إلى اختبار الصورة</h2>
+              <p className="mt-3 max-w-3xl leading-8 text-slate-400">نوضح سبب المشكلة وخيارات الإصلاح والتكلفة قبل العمل. أجرة الاستبدال تبدأ من 30 د.ك، أما الشاشة نفسها فتُحسب منفصلة حسب الموديل والمواصفات وتوفر القطعة.</p>
+              <ol className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {[
+                  { title: '١. تحديد الموديل والأعراض', text: 'نحتاج الماركة والموديل الدقيق، ونوع الأثر الظاهر ومتى بدأ، وهل حصل سقوط أو ضغط على الغطاء.' },
+                  { title: '٢. عزل احتمالات العطل', text: 'نراجع أعراض الشاشة والكابل والإضاءة والموصلات، ونستخدم اختبارات مناسبة حسب تصميم الجهاز.' },
+                  { title: '٣. مطابقة الشاشة', text: 'نتحقق من رقم القطعة والمقاس والدقة ومعدل التحديث واللمس والموصل ونقاط التثبيت.' },
+                  { title: '٤. عرض السعر والتوفر', text: 'نوضح أجرة العمل وسعر الشاشة وأي ملاحظة تخص القطعة والمدة قبل طلبها أو بدء الإصلاح.' },
+                  { title: '٥. التركيب الآمن', text: 'يتم تركيب القطعة المتوافقة وفق تصميم الجهاز؛ وقد تتطلب بعض الموديلات فكًا أكثر تعقيدًا من غيرها.' },
+                  { title: '٦. اختبار ما بعد الإصلاح', text: 'نختبر الصورة والإضاءة والتوصيل والوظائف المرتبطة بالإصلاح، ثم نعيد الجهاز بعد شرح الضمان.' }
+                ].map((item) => (
+                  <li key={item.title} className="rounded-2xl border border-slate-800 bg-slate-950/45 p-5">
+                    <h3 className="font-bold text-white">{item.title}</h3>
+                    <p className="mt-2 text-sm leading-7 text-slate-400">{item.text}</p>
+                  </li>
+                ))}
+              </ol>
+            </section>
+
+            <section className="mt-10 rounded-3xl border border-slate-800 bg-slate-900/40 p-6 sm:p-8" aria-labelledby="screen-quote-checklist">
+              <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">لتسريع عرض السعر</p>
+              <h2 id="screen-quote-checklist" className="mt-2 text-2xl font-black text-white sm:text-3xl">شنو ترسل لنا على واتساب؟</h2>
+              <div className="mt-5 grid gap-3 sm:grid-cols-2">
+                {[
+                  'الماركة والموديل الدقيق أو صورة ملصق Service Tag إذا كان متاحًا.',
+                  'صورة واضحة للشاشة وهي مطفأة وأخرى أثناء ظهور العطل إن أمكن.',
+                  'هل توجد كسور أو بقع سوداء أو خطوط أو وميض أو انطفاء عند تحريك الغطاء؟',
+                  'هل الجهاز بشاشة لمس أو تعرف الدقة ومعدل التحديث؟ لا بأس إن لم تكن تعرف.',
+                  'اذكر إن حصل سقوط أو ضغط أو انسكاب سائل، حتى نرتب التشخيص المناسب.',
+                  'اكتب منطقتك في الكويت لتنسيق الاستلام والتوصيل.'
+                ].map((item) => (
+                  <div key={item} className="flex gap-3 rounded-2xl border border-slate-800 bg-slate-950/50 p-4 text-sm leading-7 text-slate-300">
+                    <CheckCircle2 className="mt-1 h-5 w-5 shrink-0 text-cyan-400" aria-hidden="true" />
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
+              <p className="mt-5 text-sm leading-7 text-slate-400">لا ترسل كلمة مرور جهازك في رسالة عرض السعر. نحدد معك أي حاجة لفحص إضافي بعد الاستلام وبموافقتك.</p>
+              <a href={wa} target="_blank" rel="noreferrer" className="mt-5 inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-500 px-6 py-3 font-black text-slate-950 transition hover:bg-cyan-400">
+                <MessageCircle className="h-5 w-5" aria-hidden="true" /> أرسل موديل الجهاز وصورة الشاشة
+              </a>
+            </section>
+          </>
+        )}
+
+        {slug === 'macbook-repair-kuwait' && (
+          <>
+            <section className="mt-12 rounded-3xl border border-slate-800 bg-slate-900/40 p-6 sm:p-8" aria-labelledby="macbook-symptom-guide">
+              <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">دليل حسب الأعراض</p>
+              <h2 id="macbook-symptom-guide" className="mt-2 text-2xl font-black text-white sm:text-3xl">شلون نحدد سبب عطل MacBook؟</h2>
+              <p className="mt-3 max-w-3xl leading-8 text-slate-400">أعراض MacBook قد تتشابه رغم اختلاف السبب. نبدأ بالموديل والجيل والفحوصات المرتبطة بالعرض، بدل تبديل الشاشة أو البطارية أو اللوحة بناءً على التخمين.</p>
+              <div className="mt-6 grid gap-5 md:grid-cols-3">
+                {[
+                  {
+                    image: IMAGES.macbook.logicBoard,
+                    alt: 'لوحة MacBook الداخلية ونظام التبريد أثناء فحص اللوحة الأم',
+                    title: 'لا يعمل أو توجد مشكلة طاقة',
+                    description: 'قد يكون السبب في الشاحن أو البطارية أو منفذ USB-C أو دائرة الطاقة. نفحص مسار الطاقة قبل الحكم على اللوحة الأم.',
+                    href: '/ar/motherboard-repair-kuwait',
+                    link: 'خدمة إصلاح اللوحة الأم',
+                  },
+                  {
+                    image: IMAGES.macbook.swollenBattery1,
+                    alt: 'بطارية MacBook منتفخة تحتاج إلى تعامل آمن وفحص مختص',
+                    title: 'بطارية منتفخة أو ضعيفة',
+                    description: 'التورم أو ارتفاع الهيكل قد يشير إلى انتفاخ البطارية. أوقف الاستخدام ولا تضغط على الجهاز أو تحاول فك البطارية بنفسك.',
+                    href: '/ar/battery-replacement-kuwait',
+                    link: 'تفاصيل خدمة البطارية',
+                  },
+                  {
+                    image: IMAGES.macbook.service,
+                    alt: 'مكونات داخلية لجهاز MacBook أثناء خدمة استبدال البطارية',
+                    title: 'تبديل قطعة أو صيانة داخلية',
+                    description: 'تختلف القطع وطريقة الفك حسب الموديل والجيل. نطابق رقم الموديل والتوفر ونؤكد السعر والمدة قبل تنفيذ الإصلاح.',
+                    href: '/ar/pricing',
+                    link: 'راجع قائمة الأسعار',
+                  },
+                ].map((item) => (
+                  <article key={item.title} className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-950/60">
+                    <Link to={item.href} className="block overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400">
+                      <img src={item.image.src} alt={item.alt} width={item.image.width} height={item.image.height} loading="lazy" decoding="async" className="aspect-[4/3] w-full object-cover transition duration-300 hover:scale-[1.02]" />
+                    </Link>
+                    <div className="p-5">
+                      <h3 className="text-lg font-black text-white">{item.title}</h3>
+                      <p className="mt-2 text-sm leading-7 text-slate-400">{item.description}</p>
+                      <Link to={item.href} className="mt-4 inline-flex min-h-10 items-center font-bold text-cyan-300 hover:text-cyan-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400">{item.link} ←</Link>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </section>
+
+            <section className="mt-10 rounded-3xl border border-slate-800 bg-slate-900/40 p-6 sm:p-8" aria-labelledby="macbook-repair-process">
+              <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">طريقة العمل</p>
+              <h2 id="macbook-repair-process" className="mt-2 text-2xl font-black text-white sm:text-3xl">من الاستلام إلى اختبار MacBook</h2>
+              <p className="mt-3 max-w-3xl leading-8 text-slate-400">الموديل والجيل مهمان لاختيار القطع وإجراءات التشخيص. نوضح نتيجة الفحص والتكلفة المتوقعة قبل بدء أي عمل مدفوع.</p>
+              <ol className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {[
+                  { title: '١. تسجيل الموديل والأعراض', text: 'نحدد MacBook Air أو Pro ورقم الموديل والجيل، ونوثق الأعراض وأي سقوط أو انسكاب سوائل.' },
+                  { title: '٢. فحص الطاقة والشحن', text: 'نقيّم الشاحن والكابل والمنفذ والبطارية حسب الأعراض، ولا نفترض أن اللوحة هي السبب مباشرة.' },
+                  { title: '٣. فحص الشاشة والبطارية', text: 'نميز بين الشاشة نفسها ومشكلات الصورة أو التوصيل، ونقيّم حالة البطارية وتورمها عند الاشتباه.' },
+                  { title: '٤. تقييم اللوحة الأم', text: 'عند الحاجة نفحص دوائر الطاقة والمكونات. إمكانية إصلاح اللوحة تختلف حسب الضرر والموديل.' },
+                  { title: '٥. الموافقة على السعر', text: 'نشرح الخيار والتكلفة والقطعة والمدة المتوقعة. لا يبدأ الإصلاح المدفوع دون موافقتك.' },
+                  { title: '٦. التحقق قبل التسليم', text: 'نختبر الوظيفة التي تم إصلاحها، ونتحقق من الشحن والصورة والتشغيل حسب نطاق العمل المنفذ.' },
+                ].map((item) => (
+                  <li key={item.title} className="rounded-2xl border border-slate-800 bg-slate-950/45 p-5">
+                    <h3 className="font-bold text-white">{item.title}</h3>
+                    <p className="mt-2 text-sm leading-7 text-slate-400">{item.text}</p>
+                  </li>
+                ))}
+              </ol>
+              <div className="mt-6 flex flex-col gap-3 rounded-2xl border border-amber-500/25 bg-amber-500/5 p-5 sm:flex-row sm:items-start">
+                <ShieldCheck className="mt-1 h-5 w-5 shrink-0 text-amber-300" aria-hidden="true" />
+                <div>
+                  <h3 className="font-bold text-white">تنبيه سلامة البطارية المنتفخة أو انسكاب السوائل</h3>
+                  <p className="mt-2 text-sm leading-7 text-slate-300">أوقف استخدام الجهاز عند انتفاخ البطارية أو وجود حرارة أو رائحة غير طبيعية. لا تثقب البطارية ولا تضغط على الغطاء ولا تحاول فتحها بالقوة. بعد انسكاب سائل، أوقف التشغيل وافصل الكهرباء إذا كان ذلك آمنًا ولا تعاود التشغيل أو الشحن للتجربة. رتّب فحصًا متخصصًا بدل المخاطرة بضرر إضافي.</p>
+                </div>
+              </div>
+              <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                <Link to="/ar/macbook-screen-replacement-kuwait" className="inline-flex min-h-11 items-center justify-center rounded-full border border-slate-700 px-5 py-3 text-sm font-bold text-cyan-300 hover:border-cyan-500/40">تبديل شاشة MacBook</Link>
+                <Link to="/ar/laptop-liquid-damage-repair-kuwait" className="inline-flex min-h-11 items-center justify-center rounded-full border border-slate-700 px-5 py-3 text-sm font-bold text-cyan-300 hover:border-cyan-500/40">تصليح أضرار السوائل</Link>
+                <Link to="/ar/pricing" className="inline-flex min-h-11 items-center justify-center rounded-full border border-slate-700 px-5 py-3 text-sm font-bold text-cyan-300 hover:border-cyan-500/40">أسعار التصليح</Link>
+              </div>
+            </section>
+          </>
+        )}
+
+        {slug === 'laptop-charging-port-repair-kuwait' && (
+          <>
+            <section className="mt-12 rounded-3xl border border-slate-800 bg-slate-900/40 p-6 sm:p-8" aria-labelledby="charging-port-diagnosis">
+              <div className="grid items-start gap-7 lg:grid-cols-[0.9fr_1.1fr]">
+                <div>
+                  <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">تشخيص قبل تبديل القطع</p>
+                  <h2 id="charging-port-diagnosis" className="mt-2 text-2xl font-black text-white sm:text-3xl">شلون نحدد سبب مشكلة الشحن؟</h2>
+                  <p className="mt-3 leading-8 text-slate-400">نبدأ بالاحتمالات الأقل تكلفة والأوضح في الاختبار، ثم ننتقل إلى فحص اللوحة فقط إذا كانت العلامات تشير إلى عطل داخلي. هذه الطريقة تساعد على تجنّب تبديل بطارية أو منفذ سليم بسبب أعراض متشابهة.</p>
+                  <figure className="mt-6 overflow-hidden rounded-2xl border border-slate-800 bg-slate-950">
+                    <img
+                      src="/images/laptop-motherboard-usb-ports-cables.webp"
+                      alt="منافذ وتوصيلات لوحة لابتوب أثناء تشخيص عطل الشحن والطاقة"
+                      width={800}
+                      height={600}
+                      loading="lazy"
+                      decoding="async"
+                      className="aspect-[4/3] w-full object-cover"
+                    />
+                    <figcaption className="border-t border-slate-800 px-4 py-3 text-sm leading-6 text-slate-400">
+                      إذا كان المنفذ سليمًا، نتحقق من التوصيلات ودائرة الشحن ومسار الطاقة حسب تصميم اللوحة.
+                    </figcaption>
+                  </figure>
+                </div>
+                <div className="grid gap-4 sm:grid-cols-2">
+                  {[
+                    { title: 'يشحن عند تحريك السلك', text: 'قد يشير إلى تآكل الموصل أو ارتخائه أو تشقق اللحام. أوقف تحريك القابس لأن ذلك قد يوسّع الضرر.' },
+                    { title: 'USB-C لا يتعرف على الشاحن', text: 'قد يكون السبب في الكابل أو قدرة الشاحن أو توافق USB Power Delivery أو المنفذ أو دائرة الشحن؛ شكل المنفذ وحده لا يثبت توافق الشحن.' },
+                    { title: 'لا تظهر لمبة الشحن', text: 'نستبعد مشكلة المقبس والشاحن المتوافق أولًا، ثم نفحص مدخل الطاقة والحماية والدائرة الداخلية حسب الأعراض.' },
+                    { title: 'البطارية لا تزيد رغم توصيل الشاحن', text: 'قد يكون السبب من الشاحن أو البطارية أو دائرة الشحن. نختبر مسار الطاقة قبل التوصية بتبديل أي قطعة.' }
+                  ].map((item) => (
+                    <article key={item.title} className="rounded-2xl border border-slate-800 bg-slate-950/50 p-5">
+                      <h3 className="font-bold text-white">{item.title}</h3>
+                      <p className="mt-2 text-sm leading-7 text-slate-400">{item.text}</p>
+                    </article>
+                  ))}
+                </div>
+              </div>
+            </section>
+
+            <section className="mt-10 rounded-3xl border border-slate-800 bg-slate-900/40 p-6 sm:p-8" aria-labelledby="charging-port-repair-process">
+              <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">خطوات واضحة</p>
+              <h2 id="charging-port-repair-process" className="mt-2 text-2xl font-black text-white sm:text-3xl">من الاستلام إلى اختبار الشحن</h2>
+              <p className="mt-3 max-w-3xl leading-8 text-slate-400">تتغير خطوات الفحص حسب موديل اللابتوب ونوع المنفذ، لكن الإصلاح لا يبدأ قبل شرح النتيجة والسعر والحصول على موافقتك.</p>
+              <ol className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {[
+                  { title: '١. تحديد الموديل والأعراض', text: 'نحتاج الماركة والموديل الدقيق، نوع المنفذ إن كان معروفًا، ومتى بدأت المشكلة.' },
+                  { title: '٢. اختبار الشاحن والكابل', text: 'نتأكد من توافق مصدر الطاقة وقدرته قبل الحكم على اللابتوب نفسه.' },
+                  { title: '٣. فحص المنفذ والتوصيلات', text: 'نفحص التثبيت والتلامس ونقاط اللحام والضرر الظاهر دون افتراض أن المنفذ هو السبب دائمًا.' },
+                  { title: '٤. تشخيص دائرة الطاقة', text: 'عند الحاجة نفحص مكوّنات الحماية ومسار الشحن واللوحة لتحديد مكان الخلل.' },
+                  { title: '٥. موافقة قبل الإصلاح', text: 'نوضح العطل وخياراته والسعر قبل أي عمل مدفوع، ولا نبدّل المذربورد تلقائيًا.' },
+                  { title: '٦. اختبار بعد الإصلاح', text: 'نختبر استقرار الشحن والتعرّف على البطارية قبل إعادة الجهاز.' }
+                ].map((item) => (
+                  <li key={item.title} className="rounded-2xl border border-slate-800 bg-slate-950/45 p-5">
+                    <h3 className="font-bold text-white">{item.title}</h3>
+                    <p className="mt-2 text-sm leading-7 text-slate-400">{item.text}</p>
+                  </li>
+                ))}
+              </ol>
+            </section>
+
+            <section className="mt-10 rounded-3xl border border-amber-500/20 bg-amber-500/5 p-6 sm:p-8" aria-labelledby="charging-port-safe-checks">
+              <p className="text-sm font-bold uppercase tracking-[0.14em] text-amber-300">فحوصات آمنة قبل التواصل</p>
+              <h2 id="charging-port-safe-checks" className="mt-2 text-2xl font-black text-white sm:text-3xl">شنو تقدر تفحص بنفسك بدون مخاطرة؟</h2>
+              <ul className="mt-5 grid gap-3 sm:grid-cols-2">
+                {[
+                  'جرّب مقبس كهرباء آخر إذا كان ذلك آمنًا، وتأكد أن الشاحن متصل جيدًا من الطرفين.',
+                  'استخدم الشاحن الأصلي أو شاحنًا متوافقًا تمامًا مع مواصفات الموديل؛ لا تعتمد على شكل القابس وحده.',
+                  'افحص المنفذ من الخارج فقط. لا تدخل دبوسًا أو أداة معدنية ولا تستخدم سوائل للتنظيف.',
+                  'إذا وجدت حرارة غير طبيعية أو شررًا أو رائحة احتراق أو سبق انسكاب سائل، أوقف الاستخدام وافصل الطاقة إذا كان ذلك آمنًا.'
+                ].map((item) => (
+                  <li key={item} className="flex gap-3 rounded-2xl border border-slate-800 bg-slate-950/50 p-4 text-sm leading-7 text-slate-300">
+                    <CheckCircle2 className="mt-1 h-5 w-5 shrink-0 text-cyan-400" aria-hidden="true" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-5 text-sm leading-7 text-slate-400">لا تواصل تحريك الكابل بحثًا عن زاوية شحن، ولا تفتح الجهاز وهو متصل بالكهرباء. أرسل موديل اللابتوب وصورة واضحة للمنفذ والشاحن على واتساب لتسريع تحديد الخطوة التالية.</p>
+              <a href={wa} target="_blank" rel="noreferrer" className="mt-5 inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-500 px-6 py-3 font-black text-slate-950 transition hover:bg-cyan-400">
+                <MessageCircle className="h-5 w-5" aria-hidden="true" /> أرسل صورة المنفذ والشاحن
+              </a>
+            </section>
+          </>
+        )}
+        {slug === 'gaming-laptop-repair-kuwait' && (
+          <section className="mt-12 rounded-3xl border border-slate-800 bg-slate-900/40 p-6 sm:p-8" aria-labelledby="arabic-gaming-process">
+            <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">فحص قبل الإصلاح</p>
+            <h2 id="arabic-gaming-process" className="mt-2 text-2xl font-black text-white sm:text-3xl">شلون نشخّص عطل Gaming Laptop؟</h2>
+            <p className="mt-3 max-w-3xl leading-8 text-slate-400">الأعراض المتشابهة مو شرط يكون سببها واحد. نتبع خطوات واضحة عشان ما تطلب قطعة مو هي سبب المشكلة.</p>
+            <ol className="mt-6 grid gap-4 sm:grid-cols-2">
+              {[
+                { title: '١. تسجيل الموديل والأعراض', description: 'نسجل الماركة والموديل الدقيق ومتى تظهر المشكلة، خصوصًا إذا كانت تظهر بعد اللعب أو مع الحرارة.' },
+                { title: '٢. فحوصات حسب العطل', description: 'نفحص الحرارة والمراوح والطاقة والشحن والرام ومسار الشاشة والـBIOS حسب الأعراض، مو على التخمين.' },
+                { title: '٣. شرح التشخيص والسعر', description: 'نوضح لك النتيجة وخيارات الإصلاح والتكلفة المتوقعة قبل بدء أي عمل مدفوع.' },
+                { title: '٤. إصلاح واختبار تحت الضغط', description: 'بعد موافقتك، ننفذ الإصلاح المناسب ونختبر الجهاز حسب نوع العطل قبل إرجاعه.' }
+              ].map((step) => (
+                <li key={step.title} className="rounded-2xl border border-slate-800 bg-slate-950/45 p-5">
+                  <h3 className="font-bold text-white">{step.title}</h3>
+                  <p className="mt-2 text-sm leading-7 text-slate-400">{step.description}</p>
+                </li>
+              ))}
+            </ol>
+          </section>
+        )}
 
         {slug === 'laptop-keyboard-replacement-kuwait' && (
           <>
