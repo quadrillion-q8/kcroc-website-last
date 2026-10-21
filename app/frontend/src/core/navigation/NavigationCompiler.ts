@@ -355,15 +355,15 @@ export class NavigationCompiler {
       title: 'Service Areas',
       featured: locations.slice(0, 6),
       sections: [{
-        title: `All Service Areas (${locations.length})`,
+        title: `Locations & Service Areas (${locations.length})`,
         items: [
           {
             id: 'locations_index',
             slug: 'locations',
             entityType: 'Page' as any,
             primaryKeyword: 'computer repair locations Kuwait',
-            title: 'All 31 Service Areas',
-            description: 'Browse every KCROC pickup and delivery service area in Kuwait.',
+            title: 'Locations & Service Areas',
+            description: 'Browse KCROC location pages across Kuwait, including the Hawalli repair lab and pickup-and-delivery service areas.',
             iconKey: 'map-pin',
             weight: 100,
             commercialIntent: 'transactional',
