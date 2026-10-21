@@ -9,7 +9,7 @@
 // generic template used by five service-area (no-storefront) pages.
 //
 // Verifiable business facts on this page (address, hours, phone, warranty,
-// services, brands, problems, USPs, the case study, and the Hawalli review)
+// services, brands, problems, USPs and the Hawalli review)
 // are read directly from KCROC_GRAPH — the single source of truth — so
 // they can't drift out of sync with the rest of the site. The Hawalli-
 // specific FAQ copy below is page-scoped content written for this URL
