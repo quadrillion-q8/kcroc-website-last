@@ -2,7 +2,6 @@
 import React from 'react';
 import { useLocation, Navigate, Link } from 'react-router-dom';
 import { KCROC_GRAPH } from '../../data/graph';
-import { isCaseStudyPublishable } from '../../utils/publicationEligibility'; 
 import { SEOEngine } from '../../core/components/SEOEngine';
 import { getIntentWhatsAppLink } from '../../utils/whatsappIntent';
 import { AlertOctagon, CheckCircle2, ShieldAlert, ArrowRight, Search, Wrench, MapPin, HelpCircle, BookOpen, Clock3 } from 'lucide-react';
@@ -22,11 +21,6 @@ const ProblemTemplate: React.FC = () => {
   const relatedBrands = (problem.relatedBrandIds ?? [])
     .map((id) => KCROC_GRAPH.brands.find((brand) => brand.id === id))
     .filter((brand): brand is NonNullable<typeof brand> => Boolean(brand));
-
-  // Real repairs already tagged with this exact problem — proof, not promises.
-  const relatedCaseStudies = KCROC_GRAPH.caseStudies.filter((cs) =>
-    isCaseStudyPublishable(cs) && cs.problemIds?.includes(problem.id)
-  );
 
   const getContentImage = (placement: 'causes' | 'solution') =>
     problem.contentImages?.find((img) => img.placement === placement);
@@ -287,25 +281,6 @@ const ProblemTemplate: React.FC = () => {
             </section>
           )}
 
-          {relatedCaseStudies.length > 0 && (
-            <section aria-labelledby="real-repairs">
-              <div className="mb-6">
-                <p className="text-sm font-bold uppercase tracking-[0.18em] text-cyan-400">First-party proof</p>
-                <h2 id="real-repairs" className="mt-2 text-3xl font-black text-white">A real no-power repair from our Hawalli lab</h2>
-              </div>
-              <div className="grid gap-5 md:grid-cols-2">
-                {relatedCaseStudies.map((cs) => (
-                  <a key={cs.id} href={`/case-studies/${cs.slug}`} className="block rounded-2xl border border-slate-800 bg-slate-900/60 p-6 hover:border-cyan-500/40">
-                    <p className="text-xs font-black uppercase tracking-[0.16em] text-cyan-400">{cs.device} — {cs.location}</p>
-                    <h3 className="mt-3 text-xl font-black text-white">{cs.title}</h3>
-                    <p className="mt-3 text-sm leading-6 text-slate-400">{cs.outcome}</p>
-                    <p className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-cyan-300">Read the repair case <ArrowRight className="h-4 w-4" /></p>
-                  </a>
-                ))}
-              </div>
-            </section>
-          )}
-
           {problem.faqs && problem.faqs.length > 0 && (
             <section aria-labelledby="faq">
               <div className="mb-7">
@@ -326,14 +301,7 @@ const ProblemTemplate: React.FC = () => {
             </section>
           )}
 
-          {relatedCaseStudies.length > 0 && (
-            <div className="rounded-2xl border border-emerald-900/40 bg-emerald-950/15 p-6 text-sm text-slate-300">
-              <p className="font-bold text-emerald-300">Real repair evidence</p>
-              <p className="mt-2">This page links to a documented KCROC repair case rather than using a generic “success story” claim. The linked case study records the device, diagnosis, repair method and outcome.</p>
-            </div>
-          )}
-
-          <div className="border-t border-slate-800 pt-8">
+                    <div className="border-t border-slate-800 pt-8">
             <div className="flex flex-wrap items-center justify-between gap-4 text-sm text-slate-500">
               <span className="inline-flex items-center gap-2"><Clock3 className="h-4 w-4" /> Updated September 10, 2026</span>
               <span>Technical guidance by KCROC • Hawalli, Kuwait</span>
