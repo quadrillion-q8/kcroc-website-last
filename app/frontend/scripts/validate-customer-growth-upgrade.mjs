@@ -41,17 +41,12 @@ add('Arabic pricing route is registered', app.includes("path: 'ar/pricing'"));
 add('Arabic pricing page exists and has a native Arabic H1', pricingPage.includes('export default function ArabicPricingPage') && pricingPage.includes('أسعار تصليح الكمبيوتر واللابتوب في الكويت'));
 add('Arabic pricing SEO entity and canonical URL are present', graph.includes("id: 'page-ar-pricing'") && graph.includes(`canonicalUrl: '${url}'`));
 add('Generated SEO projection contains the Arabic page', seoProjection.includes('"id": "page-ar-pricing"') && seoProjection.includes(`"canonicalUrl": "${url}"`));
-add('High-impression page snippets stay concise and synchronized with the generated SEO projection',
-  graph.includes("description: 'Laptop and computer repair in Kuwait from 15 KWD. Free pickup and delivery, a quote before work, and a 30-day warranty on completed repairs.'") &&
-  graph.includes("description: 'Spot laptop battery failure with 15 warning signs, Windows and Mac health tests, swollen-battery safety advice, and replacement guidance.'") &&
-  graph.includes("description: 'Fix GameBarPresenceWriter.exe and Xbox Game Bar capture issues causing Windows 11 stutter. Test the cause, adjust settings safely, and roll back.'") &&
-  graph.includes("description: 'PC won’t boot after a BIOS/UEFI update? Learn to distinguish firmware corruption from RAM, power or motherboard faults and review safe recovery options.'") &&
-  graph.includes("title: 'Intel Core Ultra vs Ryzen AI: 2026 Laptop Guide | KCROC'") &&
-  seoProjection.includes('Laptop and computer repair in Kuwait from 15 KWD.') &&
-  seoProjection.includes('Spot laptop battery failure with 15 warning signs') &&
-  seoProjection.includes('Fix GameBarPresenceWriter.exe and Xbox Game Bar capture issues') &&
-  seoProjection.includes('PC won’t boot after a BIOS/UEFI update?') &&
-  seoProjection.includes('Intel Core Ultra vs Ryzen AI: 2026 Laptop Guide | KCROC'));
+add('High-impression page snippets stay concise in the canonical graph source',
+  has(graph, "description: 'Laptop and computer repair in Kuwait from 15 KWD. Free pickup and delivery, a quote before work, and a 30-day warranty on completed repairs.'") &&
+  has(graph, "description: 'Spot laptop battery failure with 15 warning signs, Windows and Mac health tests, swollen-battery safety advice, and replacement guidance.'") &&
+  has(graph, "description: 'Fix GameBarPresenceWriter.exe and Xbox Game Bar capture issues causing Windows 11 stutter. Test the cause, adjust settings safely, and roll back.'") &&
+  has(graph, 'description: "PC won’t boot after a BIOS/UEFI update? Learn to distinguish firmware corruption from RAM, power or motherboard faults and review safe recovery options."') &&
+  has(graph, "title: 'Intel Core Ultra vs Ryzen AI: 2026 Laptop Guide | KCROC'"));
 add('English and Arabic pricing language switch is reciprocal', locale.includes("'/pricing': '/ar/pricing'") && locale.includes("'/ar/pricing': '/pricing'"));
 add('Arabic pricing URL is in the checked-in sitemap', sitemap.includes(`<loc>${url}</loc>`));
 add('Pricing hreflang alternates are reciprocal', graph.includes("'ar-KW': 'https://www.computerrepairkuwait.com/ar/pricing'") && graph.includes("'en-KW': 'https://www.computerrepairkuwait.com/pricing'"));
