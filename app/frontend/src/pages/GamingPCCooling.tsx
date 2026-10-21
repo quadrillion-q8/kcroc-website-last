@@ -560,7 +560,6 @@ export default function GamingPCCooling() {
           { href: '/gaming-pc-repair-kuwait', label: 'Gaming PC & GPU Repair Kuwait', description: 'For overheating, crashes, artifacting, GPU, RAM, VRM, or power-delivery diagnosis.' },
           { href: '/gaming-laptop-cleaning-kuwait', label: 'Gaming Laptop Cleaning', description: 'For gaming laptops with dust-restricted airflow, fan noise, or thermal maintenance needs.' },
           { href: '/motherboard-repair-kuwait', label: 'Motherboard Repair Kuwait', description: 'For board-level thermal, power, or component faults that cleaning cannot solve.' },
-          { href: '/case-studies/asus-rog-dead-motherboard-hawalli', label: 'ASUS ROG Repair Case Study', description: 'See a real motherboard-level gaming repair example from KCROC.' },
         ]}
       />
 
