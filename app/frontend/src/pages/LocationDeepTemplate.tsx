@@ -33,7 +33,7 @@ import { KCROC_GRAPH } from '../data/graph';
 import { useAnalytics } from '../core/analytics/AnalyticsProvider';
 import { IMAGES } from '../constants/images';
 import CoreRepairPillars from '../components/content/CoreRepairPillars';
-import { canPublishCaseStudyPhotos, isCaseStudyPublishable, isReviewPublishable } from '../utils/publicationEligibility';
+import { isReviewPublishable } from '../utils/publicationEligibility';
 
 const BASE_URL = KCROC_GRAPH.business!.websiteUrl;
 
@@ -84,12 +84,6 @@ export default function LocationDeepTemplate() {
   const PAGE_URL = `${BASE_URL}/location/${location.slug}`;
 
   const process = KCROC_GRAPH.processes?.find((p) => p.id === 'proc-standard');
-  const caseStudy = (location.relatedCaseStudyIds ?? [])
-    .map((id) => KCROC_GRAPH.caseStudies.find((c) => c.id === id))
-    .find((candidate) => Boolean(candidate && isCaseStudyPublishable(candidate)))
-    ?? KCROC_GRAPH.caseStudies.find((c) =>
-      (c.locationId === location.id || c.location === location.title) && isCaseStudyPublishable(c)
-    );
   const reviews = KCROC_GRAPH.reviews;
   const localReview = reviews?.items.find((r) => r.location === location.title && isReviewPublishable(r));
   const trustBadges = KCROC_GRAPH.trustBadges;
@@ -491,43 +485,6 @@ export default function LocationDeepTemplate() {
           </Link>
         </div>
       </section>
-
-      {/* ─── LOCAL CASE STUDY (only if one exists for this location) ─── */}
-      {caseStudy && (
-        <section className="py-8 sm:py-14 px-4 sm:px-6 border-t border-slate-800/50">
-          <div className="container mx-auto max-w-4xl">
-            <h2 className="text-2xl sm:text-3xl font-black mb-6 sm:mb-10 text-white tracking-tight">
-              A Real Repair From Our {location.title} Service Area
-            </h2>
-            <Link
-              to={`/case-studies/${caseStudy.slug}`}
-              className="group grid sm:grid-cols-[1fr_1.3fr] gap-0 bg-slate-900/50 border border-slate-800 hover:border-cyan-500/40 rounded-2xl overflow-hidden transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
-            >
-              {canPublishCaseStudyPhotos(caseStudy) && caseStudy.featuredImage?.hero && (
-                <img
-                  src={caseStudy.featuredImage.hero.webp}
-                  alt={caseStudy.featuredImage.altText || caseStudy.title}
-                  width={caseStudy.featuredImage.hero.width}
-                  height={caseStudy.featuredImage.hero.height}
-                  loading="lazy"
-                  className="w-full h-48 sm:h-full object-cover"
-                />
-              )}
-              <div className="p-5 sm:p-7 flex flex-col justify-center">
-                <h3 className="text-lg sm:text-xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors">
-                  {caseStudy.title}
-                </h3>
-                <p className="text-sm text-slate-400 leading-relaxed mb-4">
-                  {caseStudy.description} {caseStudy.outcome}
-                </p>
-                <span className="text-xs font-bold text-cyan-500 flex items-center">
-                  Read the {location.title} Case Study <CheckCircle2 className="w-3 h-3 ml-1" aria-hidden="true" />
-                </span>
-              </div>
-            </Link>
-          </div>
-        </section>
-      )}
 
       {/* ─── HOW IT WORKS ─── */}
       {process && (
