@@ -102,12 +102,14 @@ add('Dedicated Arabic Hawalli location route is registered and localized', app.i
 add('Hawalli location metadata is synchronized between graph and SEO projection', graph.includes("title: 'Computer Repair Hawalli | Laptop, MacBook & PC | KCROC'") && graph.includes('Visit KCROC at Al Mullah Complex, Basement Shop 19, Hawalli. Laptop, MacBook, PC and motherboard repair daily 10 AM–10 PM. Free pickup across Kuwait.') && seoProjection.includes('Computer Repair Hawalli | Laptop, MacBook & PC | KCROC') && seoProjection.includes('Visit KCROC at Al Mullah Complex, Basement Shop 19, Hawalli. Laptop, MacBook, PC and motherboard repair daily 10 AM–10 PM. Free pickup across Kuwait.') && graph.includes("title: 'تصليح كمبيوتر حولي | فني لابتوب وموقع المختبر | KCROC'") && seoProjection.includes('تصليح كمبيوتر حولي | فني لابتوب وموقع المختبر | KCROC'));
 add('Hawalli hero retains workshop directions without case-study promotion', hawalli.includes("cta_name: 'hawalli_directions'") && !hawalli.includes('case-rog-motherboard-hawalli'));
 
-const [caseStudyRemovalApp, caseStudyRemovalNavigation, caseStudyRemovalDesktopMenu, caseStudyRemovalMobileMenu, caseStudyRemovalHome, caseStudyRemovalRootLayout, caseStudyRemovalGraph, caseStudyRemovalSEO, caseStudyRemovalSitemap, caseStudyRemovalPrerender, caseStudyRemovalSitemapGenerator, caseStudyRemovalArabicCommercial, caseStudyRemovalBiosGuide, caseStudyRemovalBlogTemplate, caseStudyRemovalCoolingGuide, caseStudyRemovalLocation, caseStudyRemovalLocationDeep, caseStudyRemovalHawalli, caseStudyRemovalBrand, caseStudyRemovalProblem, caseStudyRemovalService] = await Promise.all([
+const [caseStudyRemovalApp, caseStudyRemovalNavigation, caseStudyRemovalDesktopMenu, caseStudyRemovalMobileMenu, caseStudyRemovalHome, caseStudyRemovalHero, caseStudyRemovalBehindBench, caseStudyRemovalRootLayout, caseStudyRemovalGraph, caseStudyRemovalSEO, caseStudyRemovalSitemap, caseStudyRemovalPrerender, caseStudyRemovalSitemapGenerator, caseStudyRemovalArabicCommercial, caseStudyRemovalBiosGuide, caseStudyRemovalBlogTemplate, caseStudyRemovalCoolingGuide, caseStudyRemovalLocation, caseStudyRemovalLocationDeep, caseStudyRemovalHawalli, caseStudyRemovalBrand, caseStudyRemovalProblem, caseStudyRemovalService] = await Promise.all([
   read('App.tsx'),
   read('core/navigation/NavigationCompiler.ts'),
   read('core/components/layout/DesktopMegaMenu.tsx'),
   read('core/components/layout/MobileMenu.tsx'),
   read('pages/Home.tsx'),
+  read('components/home/Hero.tsx'),
+  read('components/home/BehindBench.tsx'),
   read('core/components/layout/RootLayout.tsx'),
   read('data/graph.ts'),
   read('data/seoGraph.generated.ts'),
@@ -172,6 +174,12 @@ add('Legacy case-study URLs are excluded from the sitemap and prerender manifest
   !caseStudyRemovalSitemap.includes('/case-studies/')
   && JSON.parse(caseStudyRemovalPrerender).length === 0
   && caseStudyRemovalSitemapGenerator.includes("fs.writeFileSync(prerenderRoutesPath, '[]\\n')"));
+
+add('Homepage and workbench no longer link to the retired case-study section',
+  !caseStudyRemovalHero.includes('/case-studies')
+  && !caseStudyRemovalHero.includes('See real repair case studies')
+  && !caseStudyRemovalBehindBench.includes('/case-studies')
+  && !caseStudyRemovalBehindBench.includes('View Case Studies'));
 for (const check of checks) console.log(`${check.pass ? '✅' : '❌'} ${check.name}${!check.pass && check.detail ? ` — ${check.detail}` : ''}`);
 const failed = checks.filter((check) => !check.pass);
 if (failed.length) process.exit(1);

@@ -83,10 +83,10 @@ export default function BehindBench() {
 
         <div className="flex flex-wrap items-center justify-center gap-3 mt-8 sm:mt-10">
           <Link
-            to="/case-studies"
+            to="/gallery"
             className="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-slate-700 text-slate-200 hover:border-cyan-500/40 hover:text-white transition-colors font-bold text-sm"
           >
-            View Case Studies
+            View Workshop Gallery
             <ArrowRight className="w-4 h-4" aria-hidden="true" />
           </Link>
           <Link

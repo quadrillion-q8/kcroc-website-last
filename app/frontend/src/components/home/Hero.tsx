@@ -225,8 +225,8 @@ export default function Hero() {
                   ))}
                 </div>
 
-                <Link to="/case-studies" className="mt-4 inline-flex items-center gap-2 text-sm font-extrabold text-[#efc19c] hover:text-white transition-colors">
-                  See real repair case studies <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                <Link to="/gallery" className="mt-4 inline-flex items-center gap-2 text-sm font-extrabold text-[#efc19c] hover:text-white transition-colors">
+                  Explore our repair gallery <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </Link>
               </div>
             </div>
