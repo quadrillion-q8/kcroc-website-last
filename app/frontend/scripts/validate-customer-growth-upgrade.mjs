@@ -170,14 +170,15 @@ add('Case-study cards and links are removed from location, brand, problem, servi
   && !caseStudyRemovalService.includes('relatedCaseStudyPath')
   && !caseStudyRemovalService.includes('relatedCaseStudyIds'));
 
+const locationIndex = await read('pages/Locations.tsx');
 add('Location navigation avoids stale counts and distinguishes the Hawalli lab from service areas',
   !caseStudyRemovalDesktopMenu.includes('31 dedicated areas')
   && !caseStudyRemovalDesktopMenu.includes('View all 31 areas')
   && !caseStudyRemovalMobileMenu.includes('31 pickup and delivery service areas')
   && !caseStudyRemovalNavigation.includes('All 31 Service Areas')
   && caseStudyRemovalNavigation.includes('Locations & Service Areas')
-  && locations.includes('pickup & delivery areas')
-  && locations.includes('location.isPhysicalLocation'));
+  && locationIndex.includes('pickup & delivery areas')
+  && locationIndex.includes('location.isPhysicalLocation'));
 
 add('Legacy case-study URLs are excluded from the sitemap and prerender manifest',
   !caseStudyRemovalSitemap.includes('/case-studies/')
