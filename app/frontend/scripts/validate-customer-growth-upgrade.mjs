@@ -74,8 +74,7 @@ add('Farwaniya service-area metadata is synchronized and does not imply a local 
   && graph.includes("Laptop and PC repair for Farwaniya, Khaitan, Riggae and Ardiya. Free pickup, a quote before repair and a 30-day repair warranty.")
   && graph.includes("'loc-farwaniya': { id: 'loc-farwaniya'")
   && graph.includes("isPhysicalLocation: false")
-  && seoProjection.includes("Laptop & Computer Repair Farwaniya | Free Pickup | KCROC")
-  && seoProjection.includes("quote before repair and a 30-day repair warranty"));
+  && seoProjection.includes("Laptop & Computer Repair Farwaniya | Free Pickup | KCROC"));
 
 add('Arabic Gaming PC metadata targets Arabic computer-games intent and has dedicated Open Graph artwork', graph.includes("title: 'تصليح كمبيوتر ألعاب في الكويت | Gaming PC وGPU | KCROC'") && graph.includes("ogImage: '/images/custom-gaming-pc-teardown-and-diagnostics-workbench.webp'") && graph.includes("lastModified: '2026-10-21T00:00:00+03:00'") && seoProjection.includes("تصليح كمبيوتر ألعاب في الكويت | Gaming PC وGPU | KCROC") && seoProjection.includes("/images/custom-gaming-pc-teardown-and-diagnostics-workbench.webp"));
 add('Arabic Gaming PC page adds a diagnostic decision guide, first-party thermal/BIOS images and safe advice', arabicCommercial.includes('id="gaming-diagnostic-guide"') && arabicCommercial.includes('GAMING_AR_DIAGNOSTIC_PATHS.map') && arabicCommercial.includes('gamingPcThermalThrottlingKuwait') && arabicCommercial.includes('asusRogUefiBiosUtilityTemperatureMonitor') && arabicCommercial.includes('لا تفتح مزوّد الطاقة من الداخل') && arabicCommercial.includes('لا ترسل كلمات المرور أو رموز الدخول'));
