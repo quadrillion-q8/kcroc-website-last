@@ -70,7 +70,7 @@ add('Arabic Farwaniya page has a shorter local search title, social image and fr
 add('Arabic Farwaniya page includes first-party repair photos, symptom guidance and pickup workflow', arabicCommercial.includes('laptopDcPowerJackConnectorReplacement') && arabicCommercial.includes('laptopScreenAssemblyDisassemblyRepair') && arabicCommercial.includes('رتب استلام مجاني من الفروانية') && arabicCommercial.includes('لا ترسل كلمة مرور أو بيانات حساسة'));
 add('Arabic Farwaniya service-area structured data points to the Hawalli workshop, not a fake branch', arabicCommercial.includes("const farwaniyaServiceSchema = slug === 'computer-repair-farwaniya'") && arabicCommercial.includes("name: 'KCROC repair workshop — Hawalli'") && arabicCommercial.includes("name: 'Al Farwaniyah Governorate, Kuwait'") && graph.includes('title: "تصليح كمبيوتر الفروانية | فحص مجاني واستلام | KCROC"'));
 add('Farwaniya service-area metadata is synchronized and does not imply a local walk-in branch',
-  graph.includes("title: 'Laptop & Computer Repair Farwaniya | Free Pickup | KCROC'")
+  has(graph, "title: 'Laptop & Computer Repair Farwaniya | Free Pickup | KCROC'")
   && graph.includes("Laptop and PC repair for Farwaniya, Khaitan, Riggae and Ardiya. Free pickup, a quote before repair and a 30-day repair warranty.")
   && graph.includes("'loc-farwaniya': { id: 'loc-farwaniya'")
   && graph.includes("isPhysicalLocation: false")
