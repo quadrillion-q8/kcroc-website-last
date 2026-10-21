@@ -61,24 +61,28 @@ const CONFIG: Record<string, {
     serviceIds: ['srv-laptop', 'srv-motherboard', 'srv-gaming', 'srv-macbook', 'srv-screen']
   },
   'laptop-repair-kuwait': {
-    h1: 'تصليح لابتوب في الكويت',
-    eyebrow: 'حل مشاكل اللابتوب من الشاشة إلى المذربورد',
-    intro: 'لابتوبك ما يشتغل؟ ما يشحن؟ حرارته عالية؟ الشاشة سوداء أو مكسورة؟ هنا تبدأ الخطوة الصحيحة: تحديد العطل الحقيقي، ثم اختيار الإصلاح المناسب للموديل بدل شراء جهاز جديد بدون حاجة.',
-    bullets: ['شاشات، بطاريات، شحن، مفصلات وتبريد', 'أعطال عدم التشغيل والشاشة السوداء', 'تصليح اللوحة الأم والدوائر عند إمكانية الإصلاح', 'Dell وHP وLenovo وASUS وAcer وMSI', 'استلام وتوصيل مجاني من منطقتك'],
+    h1: 'تصليح لابتوب في الكويت من الشاشة إلى المذربورد',
+    eyebrow: 'فحص أولي مجاني • استلام وتوصيل داخل الكويت • الإصلاح في مختبر حولي',
+    intro: 'لابتوبك ما يشتغل، ما يشحن، يسخن أو شاشته سوداء؟ في KCROC نبدأ من الأعراض ونفحص الجهاز لتحديد السبب بدل تخمين القطعة. نوضح لك خيارات الإصلاح والتكلفة قبل أي عمل مدفوع، ثم نختبر الجهاز بعد الإصلاح. يتم العمل في مختبرنا بحولي مع خدمة استلام وتوصيل داخل الكويت.',
+    bullets: ['فحص أولي مجاني وتحديد مسار العطل', 'الشاشة والبطارية والشحن والمفصلات والتبريد', 'أعطال عدم التشغيل واللوحة الأم عند إمكانية الإصلاح', 'عرض سعر واضح قبل الموافقة على العمل المدفوع', 'استلام وتوصيل مجاني وضمان 30 يومًا وNo Fix, No Fee وفق الشروط'],
     faq: [
-      { q: 'هل كل لابتوب قابل للتصليح؟', a: 'ليس كل جهاز اقتصاديًا أو فنيًا قابلًا للإصلاح، لكن كثيرًا من الأعطال يمكن تقييمها قبل اتخاذ قرار الشراء أو الاستبدال.' },
-      { q: 'كم يكلف تصليح اللابتوب؟', a: 'يعتمد السعر على العطل والموديل والقطعة المطلوبة. نبدأ بالتشخيص ثم نعطيك السعر قبل تنفيذ الإصلاح.' },
-      { q: 'هل تحافظون على بياناتي؟', a: 'التشخيص الهاردويري يتم بدون تصفح ملفاتك. وفي أعطال اللوحة الأم، يمكن مناقشة إزالة وحدة التخزين قبل تسليم الجهاز عند الحاجة.' }
+      { q: 'كم يكلف تصليح اللابتوب في الكويت؟', a: 'تبدأ بعض الإصلاحات الشائعة من 15 د.ك، لكن السعر يعتمد على الموديل والعطل والقطعة المطلوبة. الفحص الأولي مجاني ونوضح لك السعر النهائي قبل أي إصلاح مدفوع.' },
+      { q: 'هل تقدمون تصليح اللابتوب داخل المنزل؟', a: 'لا نقدم إصلاحًا داخل المنزل. نرتب استلام الجهاز من المنزل أو المكتب، ونفحصه ونصلحه في مختبر KCROC في حولي، ثم نعيده لك بعد الاختبار.' },
+      { q: 'هل يمكن إصلاح اللابتوب الذي لا يعمل أو لا يشحن؟', a: 'نعم، يمكننا فحص الشاحن والمنفذ والبطارية ومسار الطاقة واللوحة الأم بحسب الأعراض. لا نحكم على القطعة التالفة قبل التشخيص.' },
+      { q: 'هل تحافظون على ملفاتي وخصوصيتي؟', a: 'فحص الهاردوير المعتاد لا يتطلب تصفح ملفاتك الشخصية. ننصح بالنسخ الاحتياطي متى أمكن، ونوضح لك مسبقًا أي خطوة تستلزم التعامل مع وحدة التخزين أو قد تؤثر على البيانات.' },
+      { q: 'كم يستغرق الإصلاح؟', a: 'تختلف المدة حسب العطل وتوفر القطع ونتائج الفحص. قد تنتهي بعض الأعمال البسيطة في وقت أقصر، لكننا نحدد التوقيت الواقعي بعد معرفة الموديل والمشكلة.' },
+      { q: 'ماذا أفعل إذا انسكب ماء أو قهوة على اللابتوب؟', a: 'أوقف تشغيله وافصل الشاحن إذا كان ذلك آمنًا، ولا تحاول تشغيله أو شحنه للتجربة. لا تستخدم مجففًا ولا تضع الجهاز في الأرز؛ أخبرنا بنوع السائل ووقت الحادث عند ترتيب الاستلام.' },
+      { q: 'هل يوجد ضمان وإذا تعذر الإصلاح؟', a: 'الإصلاحات المكتملة مشمولة بضمان 30 يومًا وفق شروط الخدمة. وتُطبق سياسة No Fix, No Fee عند تعذر إتمام الإصلاح حسب شروط KCROC.' }
     ],
     englishPath: '/laptop-repair-kuwait',
     arabicLinks: [
-      { label: 'تصليح كمبيوتر', path: '/ar/computer-repair-kuwait' },
-      { label: 'تصليح مذربورد', path: '/ar/motherboard-repair-kuwait' },
-      { label: 'تصليح Gaming PC', path: '/ar/gaming-pc-repair-kuwait' },
-      { label: 'تبديل شاشة اللابتوب', path: '/ar/laptop-screen-repair-kuwait' },
-      { label: 'فني كمبيوتر بالقرب مني', path: '/ar/near-me' }
+      { label: 'تصليح كمبيوتر في الكويت', path: '/ar/computer-repair-kuwait' },
+      { label: 'ترقية SSD وRAM', path: '/ar/ssd-ram-upgrade-kuwait' },
+      { label: 'تصليح Gaming Laptop', path: '/ar/gaming-laptop-repair-kuwait' },
+      { label: 'أسعار التصليح في الكويت', path: '/ar/pricing' },
+      { label: 'فني كمبيوتر بالقرب منك', path: '/ar/near-me' }
     ],
-    serviceIds: ['srv-laptop', 'srv-motherboard', 'srv-screen', 'srv-battery', 'srv-charging-port', 'srv-keyboard', 'srv-liquid-damage']
+    serviceIds: ['srv-laptop', 'srv-screen', 'srv-battery', 'srv-charging-port', 'srv-keyboard', 'srv-liquid-damage', 'srv-motherboard', 'srv-ssd-ram', 'srv-gaming-laptop']
   },
   'motherboard-repair-kuwait': {
     h1: 'تصليح المذربورد واللوحة الأم في الكويت',
@@ -1833,6 +1837,14 @@ export default function ArabicCommercialPage() {
         { title: 'تصليح وتبديل شاشة اللابتوب', path: '/ar/laptop-screen-repair-kuwait' },
         { title: 'أسعار تصليح الكمبيوتر واللابتوب', path: '/ar/pricing' }
       ]
+    : slug === 'laptop-repair-kuwait'
+    ? [
+        { title: 'دليل ارتفاع حرارة اللابتوب (بالإنجليزية)', path: '/guides/why-is-my-laptop-so-hot' },
+        { title: 'علامات ضعف بطارية اللابتوب (بالإنجليزية)', path: '/guides/laptop-battery-warning-signs' },
+        { title: 'اللابتوب متصل بالشاحن لكنه لا يشحن (بالإنجليزية)', path: '/laptop-plugged-in-not-charging' },
+        { title: 'استعادة BIOS / UEFI عند فشل الإقلاع (بالإنجليزية)', path: '/guides/bios-uefi-recovery-kuwait' },
+        { title: 'أسعار تصليح اللابتوب والكمبيوتر في الكويت', path: '/ar/pricing' }
+      ]
     : slug === 'macbook-repair-kuwait'
     ? [
         { title: 'تبديل شاشة MacBook Air وMacBook Pro', path: '/ar/macbook-screen-replacement-kuwait' },
@@ -1881,6 +1893,63 @@ export default function ArabicCommercialPage() {
     'srv-keyboard': '/ar/laptop-keyboard-replacement-kuwait',
     'srv-liquid-damage': '/ar/laptop-liquid-damage-repair-kuwait',
   };
+  const laptopRepairServiceSchema = slug === 'laptop-repair-kuwait' ? {
+    '@graph': [
+      {
+        '@type': 'Service',
+        '@id': page.seo.canonicalUrl + '#service',
+        name: 'تصليح لابتوب في الكويت',
+        serviceType: 'تشخيص وإصلاح أعطال اللابتوب والشاشة والبطارية والشحن والتبريد واللوحة الأم',
+        description: cfg.intro,
+        url: page.seo.canonicalUrl,
+        image: [
+          business.websiteUrl + IMAGES.services.laptopRepair.src,
+          business.websiteUrl + IMAGES.laptopHardware.laptopOpenRepairBench.src,
+          business.websiteUrl + IMAGES.laptopHardware.laptopDustCleaningOverheatingKuwait.src
+        ],
+        provider: { '@id': business.websiteUrl + '/#business' },
+        areaServed: { '@type': 'Country', name: 'Kuwait' },
+        availableChannel: {
+          '@type': 'ServiceChannel',
+          serviceLocation: {
+            '@type': 'Place',
+            name: 'مختبر KCROC في حولي',
+            address: {
+              '@type': 'PostalAddress',
+              streetAddress: business.streetAddress,
+              addressLocality: business.addressLocality,
+              addressRegion: business.addressRegion,
+              addressCountry: business.addressCountry
+            }
+          },
+          servicePhone: '+' + business.telephone
+        },
+        offers: {
+          '@type': 'Offer',
+          name: 'بعض إصلاحات اللابتوب تبدأ من 15 د.ك',
+          description: 'السعر النهائي يعتمد على الموديل والعطل والقطعة المطلوبة؛ الفحص الأولي مجاني ويتم تأكيد التكلفة قبل بدء أي عمل مدفوع.',
+          priceCurrency: 'KWD',
+          priceSpecification: {
+            '@type': 'PriceSpecification',
+            priceCurrency: 'KWD',
+            minPrice: 15
+          }
+        }
+      },
+      {
+        '@type': 'ImageObject',
+        '@id': page.seo.canonicalUrl + '#primaryimage',
+        url: business.websiteUrl + IMAGES.services.laptopRepair.src,
+        contentUrl: business.websiteUrl + IMAGES.services.laptopRepair.src,
+        name: 'تصليح لابتوب في الكويت',
+        caption: 'صورة توضيحية لخدمة فحص وتصليح اللابتوب في مختبر KCROC؛ يتم ترتيب الاستلام من موقع العميل.',
+        width: IMAGES.services.laptopRepair.width,
+        height: IMAGES.services.laptopRepair.height,
+        inLanguage: 'ar-KW'
+      }
+    ]
+  } : null;
+
   const macbookServiceSchema = slug === 'macbook-repair-kuwait' ? {
     '@graph': [{
       '@type': 'Service',
@@ -2122,6 +2191,7 @@ export default function ArabicCommercialPage() {
   return (
     <div dir="rtl" lang="ar-KW" className="min-h-screen bg-transparent text-slate-100">
       <SEOEngine entityId={page.id} />
+      {laptopRepairServiceSchema && <SchemaMarkup schema={laptopRepairServiceSchema} />}
       {macbookServiceSchema && <SchemaMarkup schema={macbookServiceSchema} />}
       {screenServiceSchema && <SchemaMarkup schema={screenServiceSchema} />}
       {farwaniyaServiceSchema && <SchemaMarkup schema={farwaniyaServiceSchema} />}
@@ -2184,9 +2254,21 @@ export default function ArabicCommercialPage() {
               </Link>
             </div>
           )}
+          {slug === 'laptop-repair-kuwait' && (
+            <div className="mt-6 flex flex-col gap-3 rounded-2xl border border-cyan-500/25 bg-cyan-500/5 p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6">
+              <div>
+                <p className="text-xs font-black uppercase tracking-[0.12em] text-cyan-300">السعر والفحص</p>
+                <p className="mt-2 text-xl font-black text-white sm:text-2xl">بعض الإصلاحات الشائعة تبدأ من 15 د.ك</p>
+                <p className="mt-2 text-sm leading-7 text-slate-400">الفحص الأولي مجاني؛ السعر النهائي يعتمد على الموديل والعطل والقطعة، ونؤكده قبل أي عمل مدفوع.</p>
+              </div>
+              <Link to="/ar/pricing" className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full border border-slate-700 px-5 py-3 text-sm font-black text-cyan-300 transition hover:border-cyan-500/40 hover:text-cyan-200">
+                تفاصيل الأسعار <ArrowLeft className="h-4 w-4" aria-hidden="true" />
+              </Link>
+            </div>
+          )}
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <a href={wa} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-500 px-7 py-3.5 font-black text-slate-950 hover:bg-cyan-400">
-              <MessageCircle className="h-5 w-5" aria-hidden="true" /> {slug === 'laptop-screen-repair-kuwait' ? 'أرسل موديل اللابتوب واحصل على عرض سعر' : slug === 'gaming-laptop-repair-kuwait' ? 'أرسل الموديل والعطل على واتساب' : slug === 'laptop-keyboard-replacement-kuwait' ? 'أرسل موديل الجهاز وصورة الكيبورد على واتساب' : slug === 'laptop-charging-port-repair-kuwait' ? 'أرسل موديل الجهاز وصورة المنفذ على واتساب' : slug === 'computer-repair-farwaniya' ? 'رتب استلام مجاني من الفروانية' : 'واتساب KCROC'}
+              <MessageCircle className="h-5 w-5" aria-hidden="true" /> {slug === 'laptop-repair-kuwait' ? 'أرسل موديل اللابتوب والعطل على واتساب' : slug === 'laptop-screen-repair-kuwait' ? 'أرسل موديل اللابتوب واحصل على عرض سعر' : slug === 'gaming-laptop-repair-kuwait' ? 'أرسل الموديل والعطل على واتساب' : slug === 'laptop-keyboard-replacement-kuwait' ? 'أرسل موديل الجهاز وصورة الكيبورد على واتساب' : slug === 'laptop-charging-port-repair-kuwait' ? 'أرسل موديل الجهاز وصورة المنفذ على واتساب' : slug === 'computer-repair-farwaniya' ? 'رتب استلام مجاني من الفروانية' : 'واتساب KCROC'}
             </a>
             <Link to="/book" className="inline-flex items-center justify-center gap-2 rounded-full border border-slate-600 px-7 py-3.5 font-bold text-white hover:border-cyan-700 hover:text-cyan-300">
               <ShieldCheck className="h-5 w-5" aria-hidden="true" /> احجز استلام الجهاز
@@ -2300,6 +2382,78 @@ export default function ArabicCommercialPage() {
             </div>
           )}
         </section>
+
+        {slug === 'laptop-repair-kuwait' && (
+          <>
+            <section className="mt-10 rounded-3xl border border-slate-800 bg-slate-900/40 p-6 sm:p-8" aria-labelledby="laptop-repair-photos">
+              <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">من أعمال الفحص والصيانة</p>
+              <h2 id="laptop-repair-photos" className="mt-2 text-2xl font-black text-white sm:text-3xl">صور من فحص وإصلاح اللابتوب</h2>
+              <p className="mt-3 max-w-4xl leading-8 text-slate-400">توضح الصور أنواع الأعمال التي قد يحتاجها الجهاز: فحص عام، وتنظيف التبريد، وتشخيص المكونات الداخلية. الصورة وحدها لا تحدد العطل؛ نعتمد على موديل جهازك ونتائج الفحص قبل اقتراح الإصلاح.</p>
+              <div className="mt-6 grid gap-5 md:grid-cols-3">
+                <figure className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-950/60">
+                  <img src={IMAGES.services.laptopRepair.src} alt="فحص وإصلاح لابتوب في مختبر KCROC بالكويت" width={IMAGES.services.laptopRepair.width} height={IMAGES.services.laptopRepair.height} loading="lazy" decoding="async" className="aspect-[4/3] w-full object-cover" />
+                  <figcaption className="border-t border-slate-800 px-4 py-3 text-sm leading-6 text-slate-400">فحص الجهاز وتحديد مسار التشخيص المناسب قبل تحديد القطعة أو التكلفة.</figcaption>
+                </figure>
+                <figure className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-950/60">
+                  <img src={IMAGES.laptopHardware.laptopDustCleaningOverheatingKuwait.src} alt="فحص وتنظيف نظام تبريد اللابتوب عند ارتفاع الحرارة أو صوت المروحة" width={IMAGES.laptopHardware.laptopDustCleaningOverheatingKuwait.width} height={IMAGES.laptopHardware.laptopDustCleaningOverheatingKuwait.height} loading="lazy" decoding="async" className="aspect-[4/3] w-full object-cover" />
+                  <figcaption className="border-t border-slate-800 px-4 py-3 text-sm leading-6 text-slate-400">فحص المراوح ومجاري الهواء والمشتت الحراري بدل افتراض أن المعجون وحده هو السبب.</figcaption>
+                </figure>
+                <figure className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-950/60">
+                  <img src={IMAGES.laptopHardware.laptopMotherboardDiagnosticBenchRepair.src} alt="تشخيص اللوحة الأم ومكونات اللابتوب على طاولة فحص" width={IMAGES.laptopHardware.laptopMotherboardDiagnosticBenchRepair.width} height={IMAGES.laptopHardware.laptopMotherboardDiagnosticBenchRepair.height} loading="lazy" decoding="async" className="aspect-[4/3] w-full object-cover" />
+                  <figcaption className="border-t border-slate-800 px-4 py-3 text-sm leading-6 text-slate-400">فحص المكونات الداخلية ومسار الطاقة عند أعطال عدم التشغيل أو إعادة التشغيل.</figcaption>
+                </figure>
+              </div>
+            </section>
+
+            <section className="mt-10 rounded-3xl border border-slate-800 bg-slate-900/40 p-6 sm:p-8" aria-labelledby="laptop-diagnostic-guide">
+              <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">دليل الأعطال حسب الأعراض</p>
+              <h2 id="laptop-diagnostic-guide" className="mt-2 text-2xl font-black text-white sm:text-3xl">شنو ممكن يعني عطل اللابتوب؟</h2>
+              <p className="mt-3 max-w-4xl leading-8 text-slate-400">العرض نفسه قد ينتج من أكثر من سبب؛ هذه النقاط تساعدك على وصف المشكلة وتحديد الخطوة الآمنة التالية، لكنها لا تستبدل الفحص ولا تثبت أن قطعة معينة تالفة.</p>
+              <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {[
+                  { title: 'اللابتوب لا يعمل إطلاقًا', text: 'نراجع الشاحن ومصدر الطاقة ومؤشرات التشغيل والبطارية ومسار الطاقة على اللوحة بحسب الموديل. لا نفترض أن المذربورد تالفة من عدم التشغيل وحده.', href: '/ar/motherboard-repair-kuwait', link: 'متى نحتاج فحص اللوحة الأم؟' },
+                  { title: 'متصل بالشاحن لكنه لا يشحن', text: 'قد يكون السبب من الشاحن أو الكابل أو منفذ DC/USB-C أو البطارية أو دائرة الشحن. تجنب تحريك القابس بالقوة، وأرسل صورة المنفذ والموديل عند طلب الفحص.', href: '/ar/laptop-charging-port-repair-kuwait', link: 'تفاصيل إصلاح مدخل الشحن' },
+                  { title: 'الشاشة سوداء أو فيها خطوط', text: 'قد تكون المشكلة في الشاشة أو الكابل أو الإضاءة أو مسار العرض. اختبار شاشة خارجية متوافقة يساعد أحيانًا، لكنه لا يؤكد سبب العطل وحده.', href: '/ar/laptop-screen-repair-kuwait', link: 'فحص شاشة اللابتوب' },
+                  { title: 'حرارة عالية أو مروحة مزعجة', text: 'قد تتداخل الأتربة وتدفق الهواء والمروحة والمشتت والتحميل البرمجي. ضع الجهاز على سطح صلب، وأوقف الاستخدام إذا ظهرت رائحة احتراق أو إطفاءات متكررة.', href: '/blog/ar/how-often-clean-laptop-replace-thermal-paste-kuwait', link: 'متى ننظف اللابتوب ونغيّر المعجون؟' },
+                  { title: 'البطارية تفرغ بسرعة أو تنتفخ', text: 'نفحص صحة البطارية وسلوك الشحن قبل طلب بديل. إذا لاحظت انتفاخًا أو ارتفاعًا في الهيكل، أوقف الاستخدام والشحن ولا تضغط على البطارية أو تحاول إخراجها بالقوة.', href: '/ar/battery-replacement-kuwait', link: 'فحص وتبديل البطارية' },
+                  { title: 'انسكب ماء أو قهوة على الجهاز', text: 'أوقف التشغيل وافصل الشاحن إذا كان ذلك آمنًا، ولا تعاود تشغيل الجهاز أو شحنه. لا تستخدم مجففًا ولا تضعه في الأرز؛ اذكر نوع السائل ووقت الحادث.', href: '/ar/laptop-liquid-damage-repair-kuwait', link: 'تقييم أضرار السوائل' }
+                ].map((item) => (
+                  <article key={item.title} className="rounded-2xl border border-slate-800 bg-slate-950/55 p-5">
+                    <h3 className="font-bold text-white">{item.title}</h3>
+                    <p className="mt-2 text-sm leading-7 text-slate-400">{item.text}</p>
+                    <Link to={item.href} className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-cyan-300 hover:text-cyan-200">{item.link} <ArrowLeft className="h-4 w-4" aria-hidden="true" /></Link>
+                  </article>
+                ))}
+              </div>
+              <div className="mt-6 rounded-2xl border border-amber-500/25 bg-amber-500/5 p-5">
+                <h3 className="font-bold text-white">تنبيه للسلامة والبيانات</h3>
+                <p className="mt-2 text-sm leading-7 text-slate-300">عند وجود سائل أو بطارية منتفخة أو رائحة احتراق، لا تعاود توصيل الكهرباء ولا تحاول فتح البطارية أو مزوّد الطاقة. إن أمكن، احتفظ بنسخة احتياطية قبل الإصلاح، ولا ترسل كلمات المرور أو رموز الدخول في رسالة واتساب.</p>
+              </div>
+            </section>
+
+            <section className="mt-10 rounded-3xl border border-slate-800 bg-slate-900/40 p-6 sm:p-8" aria-labelledby="laptop-repair-process">
+              <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">خطوات الخدمة</p>
+              <h2 id="laptop-repair-process" className="mt-2 text-2xl font-black text-white sm:text-3xl">من رسالة واتساب إلى إعادة اللابتوب بعد الاختبار</h2>
+              <ol className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                {[
+                  { title: '١. أرسل الموديل والعطل', text: 'أرسل رقم الموديل والمنطقة ووصف المشكلة؛ صورة أو فيديو قصير قد يساعد إذا كانت الأعراض ظاهرة.' },
+                  { title: '٢. نرتب الاستلام', text: 'نرتب استلام الجهاز من المنزل أو المكتب داخل مناطق الخدمة؛ لا يلزم أن تنقله إلى حولي بنفسك.' },
+                  { title: '٣. نفحص ونوضح السعر', text: 'يتم الفحص في مختبر KCROC بحولي، ثم نوضح النتيجة وخيارات الإصلاح والتكلفة قبل بدء العمل المدفوع.' },
+                  { title: '٤. نصلح ونختبر', text: 'بعد موافقتك ننفذ الإصلاح المناسب ونختبر الوظائف المرتبطة بالعطل قبل إعادة الجهاز.' }
+                ].map((item) => (
+                  <li key={item.title} className="rounded-2xl border border-slate-800 bg-slate-950/55 p-5">
+                    <h3 className="font-bold text-white">{item.title}</h3>
+                    <p className="mt-2 text-sm leading-7 text-slate-400">{item.text}</p>
+                  </li>
+                ))}
+              </ol>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <Link to="/ar/pricing" className="inline-flex items-center gap-2 rounded-full border border-slate-700 px-5 py-3 text-sm font-bold text-cyan-300 hover:border-cyan-500/40">راجع الأسعار قبل الحجز <ArrowLeft className="h-4 w-4" aria-hidden="true" /></Link>
+                <Link to="/ar/near-me" className="inline-flex items-center gap-2 rounded-full border border-slate-700 px-5 py-3 text-sm font-bold text-cyan-300 hover:border-cyan-500/40">تفاصيل الاستلام من منطقتك <ArrowLeft className="h-4 w-4" aria-hidden="true" /></Link>
+              </div>
+            </section>
+          </>
+        )}
 
         {slug === 'computer-repair-farwaniya' && (
           <>
