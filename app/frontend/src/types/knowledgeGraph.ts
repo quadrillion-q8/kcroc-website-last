@@ -134,6 +134,8 @@ export const ReviewsSchema = CoreNodeSchema.extend({
 
 export const ServiceSchema = RoutableEntitySchema.extend({
   entityType: z.literal('Service'),
+  primaryKeyword: z.string().optional(),
+  secondaryKeywords: z.array(z.string()).optional(),
   iconKey: z.string(),
   repairLevel: z.string(),
   estimatedTurnaround: z.string(),
