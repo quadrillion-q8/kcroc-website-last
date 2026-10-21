@@ -193,8 +193,8 @@ export const rawGraphData: RawGraphData = {
       title: 'فني كمبيوتر في الكويت | تصليح كمبيوتر ولابتوب',
       description: 'خدمة فني كمبيوتر في الكويت للابتوب والكمبيوتر المكتبي وMacBook وGaming PC. نستلم الجهاز من المنزل أو المكتب ونفحصه ونصلحه في مختبر KCROC بحولي، ثم نوصله بعد الاختبار.',
       seo: {
-        title: 'فني كمبيوتر في الكويت | استلام وتوصيل مجاني | KCROC',
-        description: 'تحتاج فني كمبيوتر في الكويت؟ نستلم الكمبيوتر أو اللابتوب من المنزل أو المكتب ونفحصه ونصلحه في مختبرنا بحولي، ثم نوصله بعد الاختبار. تشخيص وسعر واضح قبل الإصلاح.',
+        title: 'تصليح كمبيوتر في الكويت | فني كمبيوتر | KCROC',
+        description: 'تصليح كمبيوتر ولابتوب في الكويت مع استلام وتوصيل مجاني من المنزل أو المكتب. نفحص الجهاز في مختبر حولي ونوضح التكلفة قبل الإصلاح، مع ضمان 30 يومًا.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/ar/computer-repair-kuwait',
         locale: 'ar_KW',
         alternates: {
@@ -203,7 +203,7 @@ export const rawGraphData: RawGraphData = {
           'x-default': 'https://www.computerrepairkuwait.com/'
         },
         ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList', 'FAQPage', 'Service'],
-        lastModified: '2026-10-15T00:00:00+03:00',
+        lastModified: '2026-10-21T00:00:00+03:00',
         breadcrumbs: [{ name: 'الرئيسية', url: '/' }, { name: 'تصليح كمبيوتر في الكويت', url: '/ar/computer-repair-kuwait' }]
       },
       relatedServiceIds: ['srv-laptop', 'srv-motherboard', 'srv-gaming', 'srv-macbook', 'srv-screen']
