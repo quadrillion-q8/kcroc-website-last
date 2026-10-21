@@ -905,30 +905,7 @@ export default function BiosUefiRecoveryGuide() {
         </div>
       </section>
 
-      {/* ─── EVIDENCE / RELATED CASE STUDY ─── */}
-      <section className="py-8 sm:py-16 px-4 sm:px-6 border-t border-slate-900">
-        <div className="container mx-auto max-w-4xl">
-          <div className="rounded-2xl border border-emerald-500/20 bg-emerald-500/[0.035] p-5 sm:p-7">
-            <div className="flex items-start gap-3">
-              <Microscope className="mt-1 h-5 w-5 shrink-0 text-emerald-300" aria-hidden="true" />
-              <div>
-                <Badge className="mb-3 border-emerald-500/30 bg-emerald-500/10 text-emerald-300">Repair Evidence</Badge>
-                <h2 className="text-xl sm:text-2xl font-bold text-white">Why Diagnosis Matters Before Chip-Level Work</h2>
-                <p className="mt-3 text-slate-400 text-xs sm:text-sm leading-relaxed">
-                  A dead or non-booting machine can have a motherboard fault that looks like firmware corruption. KCROC documents component-level board diagnosis separately so firmware recovery is not used as a guess.
-                </p>
-                <Link
-                  to="/case-studies/asus-rog-dead-motherboard-hawalli"
-                  className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-emerald-300 hover:text-emerald-200"
-                >
-                  View the ASUS ROG dead-motherboard recovery case study
-                  <ChevronRight className="h-4 w-4" aria-hidden="true" />
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+
 
 
       <div className="container mx-auto max-w-4xl px-4 sm:px-6">
