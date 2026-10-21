@@ -5062,9 +5062,7 @@ export const rawGraphData: RawGraphData = {
       navigationPriority: 45, popular: false
     } as ProblemEntity,
 
-    /* ═══════════════════════════════════════════════════════════════
-       CASE STUDY ENTITIES
-    ═══════════════════════════════════════════════════════════════ */
+    
 
 
 
@@ -5136,7 +5134,7 @@ export const rawGraphData: RawGraphData = {
 /* ═══════════════════════════════════════════════════════════════════
    KCROC_GRAPH SINGLETON — consumed by all UI components and SEO Engine
    Contains strict null-safe fallbacks (?? []) to ensure 100% build stability.
-   Phase 4 adds explicit location topology and case-study inbound edges here
+   Phase 4 adds explicit location topology and inbound edges here
    so the runtime graph matches the links already rendered by the UI.
 ═══════════════════════════════════════════════════════════════════ */
 const LOCATION_RELATIONSHIPS: Record<string, {
