@@ -171,8 +171,7 @@ add('Case-study cards and links are removed from location, brand, problem, servi
 add('Legacy case-study URLs are excluded from the sitemap and prerender manifest',
   !caseStudyRemovalSitemap.includes('/case-studies/')
   && JSON.parse(caseStudyRemovalPrerender).length === 0
-  && caseStudyRemovalSitemapGenerator.includes('prerender-routes.generated.json')
-  && !caseStudyRemovalSitemapGenerator.includes('entityType?: string'));
+  && caseStudyRemovalSitemapGenerator.includes("fs.writeFileSync(prerenderRoutesPath, '[]\\n')"));
 for (const check of checks) console.log(`${check.pass ? '✅' : '❌'} ${check.name}${!check.pass && check.detail ? ` — ${check.detail}` : ''}`);
 const failed = checks.filter((check) => !check.pass);
 if (failed.length) process.exit(1);
