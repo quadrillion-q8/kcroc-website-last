@@ -218,6 +218,47 @@ function checkBrokenRelationalLinks(
   return issues;
 }
 
+function checkLocationContentCoverage(locations: AnyEntity[]): ValidationError[] {
+  const issues: ValidationError[] = [];
+  for (const location of locations) {
+    if (location.isPhysicalLocation) continue;
+
+    if (!Array.isArray(location.relatedServiceIds) || location.relatedServiceIds.length < 3) {
+      issues.push({
+        entityId: location.id,
+        field: 'relatedServiceIds',
+        message: 'Service-area pages should link to at least three relevant repair service entities.',
+        severity: severityFor('LOCATION_SERVICE_LINKS', 'ERROR'),
+      });
+    }
+    if (!Array.isArray(location.relatedProblemIds) || location.relatedProblemIds.length < 3) {
+      issues.push({
+        entityId: location.id,
+        field: 'relatedProblemIds',
+        message: 'Service-area pages should link to at least three relevant repair problem entities.',
+        severity: severityFor('LOCATION_PROBLEM_LINKS', 'ERROR'),
+      });
+    }
+    if (typeof location.localIntro !== 'string' || location.localIntro.trim().length < 250) {
+      issues.push({
+        entityId: location.id,
+        field: 'localIntro',
+        message: 'Service-area pages should include a substantial location-specific introduction (250+ characters).',
+        severity: 'WARNING',
+      });
+    }
+    if (!Array.isArray(location.localFaqs) || location.localFaqs.length < 5) {
+      issues.push({
+        entityId: location.id,
+        field: 'localFaqs',
+        message: 'Service-area pages should include at least five location-specific FAQs.',
+        severity: 'WARNING',
+      });
+    }
+  }
+  return issues;
+}
+
 function checkMissingFaqs(services: AnyEntity[]): ValidationError[] {
   const issues: ValidationError[] = [];
   for (const service of services) {
@@ -304,6 +345,7 @@ export async function validateGraph(): Promise<GraphValidationResult> {
     ...checkDuplicateRelationalLinks(allEntities),
     ...checkMissingFaqs(KCROC_GRAPH.services as unknown as AnyEntity[]),
     ...checkCoordinates(KCROC_GRAPH.locations as unknown as AnyEntity[]),
+    ...checkLocationContentCoverage(KCROC_GRAPH.locations as unknown as AnyEntity[]),
     ...checkKeywordCoverage(KCROC_GRAPH.problems as unknown as AnyEntity[]),
   ];
 
