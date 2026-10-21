@@ -78,7 +78,7 @@ export const rawGraphData: RawGraphData = {
     'page-home': {
       id: 'page-home', slug: '', entityType: 'WebPage', isActive: true,
       title: 'Home', description: 'KCROC Homepage — Component-level computer repair in Kuwait',
-      seo: { title: 'Laptop & Computer Repair Kuwait | From 15 KWD | KCROC', description: 'Need laptop or computer repair in Kuwait? Repairs start at 15 KWD, with free pickup and delivery, a quote before work begins, and a 30-day warranty on completed repairs at KCROC.', canonicalUrl: 'https://www.computerrepairkuwait.com/', locale: 'en_KW', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/computer-repair-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/' }, ogType: 'website', schemaTypes: ['LocalBusiness', 'WebSite', 'WebPage'], lastModified: '2026-10-13T00:00:00+03:00' },
+      seo: { title: 'Laptop & Computer Repair Kuwait | From 15 KWD | KCROC', description: 'Laptop and computer repair in Kuwait from 15 KWD. Free pickup and delivery, a quote before work, and a 30-day warranty on completed repairs.', canonicalUrl: 'https://www.computerrepairkuwait.com/', locale: 'en_KW', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/computer-repair-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/' }, ogType: 'website', schemaTypes: ['LocalBusiness', 'WebSite', 'WebPage'], lastModified: '2026-10-13T00:00:00+03:00' },
       hero: { headline: 'Expert Laptop & Computer Repair in Kuwait.', subheadline: 'We Fix the Board. We Don\'t Just Swap It.', description: 'We diagnose and repair failed components at board level — restoring devices that most repair shops in Kuwait would simply declare beyond repair.', primaryCTA: { text: 'WhatsApp a Technician', route: 'https://wa.me/96555301913' }, secondaryCTA: { text: 'View All Services', route: '/services' } },
       featuredFAQIds: [
         'faq-pick-and-drop', 
@@ -584,7 +584,7 @@ export const rawGraphData: RawGraphData = {
     'page-privacy-policy': { id: 'page-privacy-policy', slug: 'privacy-policy', entityType: 'WebPage', isActive: true, title: 'Privacy Policy', description: 'KCROC Privacy Policy and Data Handling', seo: { title: 'Privacy Policy | KCROC Kuwait', description: 'Read the official Privacy Policy for Kuwait Computer Repair On Call. We are committed to protecting your data and personal information.', canonicalUrl: 'https://www.computerrepairkuwait.com/privacy-policy', ogType: 'website', schemaTypes: ['WebPage'] } } as WebPageEntity,
     'page-terms-of-service': { id: 'page-terms-of-service', slug: 'terms-of-service', entityType: 'WebPage', isActive: true, title: 'Terms of Service', description: 'KCROC Terms and Conditions of Service', seo: { title: 'Terms of Service | KCROC Kuwait', description: 'Read the official Terms of Service and conditions for computer repair, pick & drop, and warranties at Kuwait Computer Repair On Call.', canonicalUrl: 'https://www.computerrepairkuwait.com/terms-of-service', ogType: 'website', schemaTypes: ['WebPage'] } } as WebPageEntity,
     'page-author-imran': { id: 'page-author-imran', slug: 'author/imran', entityType: 'WebPage', isActive: true, title: 'Imran Natiq', description: 'Author bio page for Imran Natiq, Founder & Lead Technician at KCROC, referenced from the Person schema on blog articles he authored.', seo: { title: 'Imran Natiq — Hardware Repair Engineer at KCROC Kuwait', description: 'Imran Natiq is a hardware repair engineer and founder of KCROC in Hawalli, Kuwait, specializing in motherboard diagnostics and micro-soldering.', canonicalUrl: 'https://www.computerrepairkuwait.com/author/imran', ogType: 'profile', schemaTypes: ['ProfilePage', 'Person', 'BreadcrumbList'] } } as WebPageEntity,
-    'guide-battery': { id: 'guide-battery', slug: 'guides/laptop-battery-warning-signs', entityType: 'WebPage', isActive: true, title: 'Laptop Battery Warning Signs: 15+ Signs & Tests', description: 'A practical laptop battery authority guide covering 15+ warning signs, Windows 11 and Mac battery-health checks, swollen-battery safety, diagnosis, and replacement decisions.', seo: { title: 'Laptop Battery Problems: 15 Warning Signs & Tests | KCROC', description: 'How can you tell if a laptop battery is failing? Check 15 warning signs, Windows and Mac battery-health tests, swollen-battery safety, and when to consider replacement.', canonicalUrl: 'https://www.computerrepairkuwait.com/guides/laptop-battery-warning-signs', ogImage: 'https://www.computerrepairkuwait.com/images/discover/swollen-macbook-battery-replacement-2-1200x675.webp', ogType: 'article', schemaTypes: ['Article', 'FAQPage', 'BreadcrumbList'], lastModified: '2026-09-30T00:00:00+03:00' },
+    'guide-battery': { id: 'guide-battery', slug: 'guides/laptop-battery-warning-signs', entityType: 'WebPage', isActive: true, title: 'Laptop Battery Warning Signs: 15+ Signs & Tests', description: 'A practical laptop battery authority guide covering 15+ warning signs, Windows 11 and Mac battery-health checks, swollen-battery safety, diagnosis, and replacement decisions.', seo: { title: 'Laptop Battery Problems: 15 Warning Signs & Tests | KCROC', description: 'Spot laptop battery failure with 15 warning signs, Windows and Mac health tests, swollen-battery safety advice, and replacement guidance.', canonicalUrl: 'https://www.computerrepairkuwait.com/guides/laptop-battery-warning-signs', ogImage: 'https://www.computerrepairkuwait.com/images/discover/swollen-macbook-battery-replacement-2-1200x675.webp', ogType: 'article', schemaTypes: ['Article', 'FAQPage', 'BreadcrumbList'], lastModified: '2026-09-30T00:00:00+03:00' },
       featuredFAQIds: [
         'faq-battery-how-to-know',
         'faq-battery-check-windows',
@@ -608,7 +608,7 @@ export const rawGraphData: RawGraphData = {
       description: "A black screen after a BIOS update, a boot loop, or a system that won't POST can come from corrupted firmware \u2014 or from RAM, power, EC, or motherboard faults that only look like a BIOS problem. Covers warning signs, Secure Boot/BitLocker behavior, manufacturer recovery methods, and professional SPI/EEPROM reprogramming.",
       seo: {
         title: 'BIOS/UEFI Recovery After a Failed Update | KCROC',
-        description: "Laptop or PC won’t boot after a BIOS/UEFI update? Learn how to distinguish firmware corruption from RAM, power and motherboard faults, plus safe recovery options in Kuwait.",
+        description: "PC won’t boot after a BIOS/UEFI update? Learn to distinguish firmware corruption from RAM, power or motherboard faults and review safe recovery options.",
         canonicalUrl: 'https://www.computerrepairkuwait.com/guides/bios-uefi-recovery-kuwait',
         ogImage: 'https://www.computerrepairkuwait.com/images/discover/bios-hero-motherboard-1200x675.webp',
         ogType: 'article',
@@ -654,8 +654,8 @@ export const rawGraphData: RawGraphData = {
       title: 'Intel Core Ultra vs AMD Ryzen AI: Which Is Better?', 
       description: 'Intel Core Ultra vs AMD Ryzen AI: compare CPU performance, integrated graphics, NPU features, power limits, cooling and laptop configuration before you buy.', 
       seo: { 
-        title: 'Intel Core Ultra vs AMD Ryzen AI: 2026 Laptop Comparison | KCROC', 
-        description: 'Intel Core Ultra vs AMD Ryzen AI in 2026: compare CPU performance, integrated graphics, NPU features, power limits, cooling and laptop configurations.', 
+        title: 'Intel Core Ultra vs Ryzen AI: 2026 Laptop Guide | KCROC', 
+        description: 'Compare Intel Core Ultra and Ryzen AI laptops in 2026: CPU speed, graphics, NPU features, power limits, cooling and configurations.', 
         canonicalUrl: 'https://www.computerrepairkuwait.com/blog/intel-core-ultra-vs-amd-ryzen-ai', 
         ogImage: 'https://www.computerrepairkuwait.com/images/blog/intel-core-ultra-vs-amd-ryzen-ai-comparison.webp',
         ogType: 'article', 
@@ -794,7 +794,7 @@ export const rawGraphData: RawGraphData = {
       description: 'What is GameBarPresenceWriter.exe? A measured, evidence-first guide covering Game Bar stutter, background capture activity, the advanced Game DVR registry method, and safer rollback-first troubleshooting.',
       seo: {
         title: 'GameBarPresenceWriter.exe Fix for Windows 11 Stutter | KCROC',
-        description: 'Troubleshoot GameBarPresenceWriter.exe, Xbox Game Bar capture activity and Windows 11 gaming stutter. Test the cause, change settings safely, and learn how to roll back.',
+        description: 'Fix GameBarPresenceWriter.exe and Xbox Game Bar capture issues causing Windows 11 stutter. Test the cause, adjust settings safely, and roll back.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/guides/gamebar-presence-writer-fix',
         ogImage: 'https://www.computerrepairkuwait.com/images/discover/windows-11-laptop-multitasking-1200x675.webp',
         ogType: 'article',
