@@ -48,6 +48,35 @@ add('High-impression page snippets stay concise in the canonical graph source',
   has(graph, 'description: "PC won’t boot after a BIOS/UEFI update? Learn to distinguish firmware corruption from RAM, power or motherboard faults and review safe recovery options."') &&
   has(graph, "title: 'Intel Core Ultra vs Ryzen AI: 2026 Laptop Guide | KCROC'"));
 add('English and Arabic pricing language switch is reciprocal', locale.includes("'/pricing': '/ar/pricing'") && locale.includes("'/ar/pricing': '/pricing'"));
+
+// Every currently published Arabic route must have an exact English counterpart, and vice versa.
+const languagePairs = [
+  ['/', '/ar/computer-repair-kuwait'],
+  ['/near-me', '/ar/near-me'],
+  ['/pricing', '/ar/pricing'],
+  ['/laptop-repair-kuwait', '/ar/laptop-repair-kuwait'],
+  ['/motherboard-repair-kuwait', '/ar/motherboard-repair-kuwait'],
+  ['/gaming-pc-repair-kuwait', '/ar/gaming-pc-repair-kuwait'],
+  ['/laptop-screen-repair-kuwait', '/ar/laptop-screen-repair-kuwait'],
+  ['/macbook-repair-kuwait', '/ar/macbook-repair-kuwait'],
+  ['/macbook-screen-replacement-kuwait', '/ar/macbook-screen-replacement-kuwait'],
+  ['/battery-replacement-kuwait', '/ar/battery-replacement-kuwait'],
+  ['/ssd-ram-upgrade-kuwait', '/ar/ssd-ram-upgrade-kuwait'],
+  ['/gaming-laptop-repair-kuwait', '/ar/gaming-laptop-repair-kuwait'],
+  ['/laptop-charging-port-repair-kuwait', '/ar/laptop-charging-port-repair-kuwait'],
+  ['/laptop-keyboard-replacement-kuwait', '/ar/laptop-keyboard-replacement-kuwait'],
+  ['/laptop-liquid-damage-repair-kuwait', '/ar/laptop-liquid-damage-repair-kuwait'],
+  ['/location/hawalli', '/ar/computer-repair-hawalli'],
+  ['/location/salmiya', '/ar/computer-repair-salmiya'],
+  ['/location/jahra', '/ar/computer-repair-jahra'],
+  ['/location/farwaniya', '/ar/computer-repair-farwaniya'],
+  ['/location/kuwait-city', '/ar/computer-repair-kuwait-city'],
+  ['/blog/laptop-buying-guide-kuwait-2026', '/blog/ar/laptop-buying-guide-kuwait-2026'],
+  ['/blog/how-often-clean-laptop-replace-thermal-paste-kuwait', '/blog/ar/how-often-clean-laptop-replace-thermal-paste-kuwait'],
+];
+add('All 22 Arabic-English page pairs switch both ways without homepage fallbacks',
+  languagePairs.every(([en, ar]) => locale.includes("'" + en + "': '" + ar + "'") && locale.includes("'" + ar + "': '" + en + "'")) &&
+  locale.includes("normalized.startsWith('/blog/ar/')"));
 add('Arabic pricing URL is in the checked-in sitemap', sitemap.includes(`<loc>${url}</loc>`));
 add('Pricing hreflang alternates are reciprocal', graph.includes("'ar-KW': 'https://www.computerrepairkuwait.com/ar/pricing'") && graph.includes("'en-KW': 'https://www.computerrepairkuwait.com/pricing'"));
 add('Homepage no longer displays a hard-coded review count', !hero.includes('reviewCount') && !hero.includes('+ reviews'));
