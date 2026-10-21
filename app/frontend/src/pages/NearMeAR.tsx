@@ -17,6 +17,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { SEOEngine } from '../core/components/SEOEngine';
+import SchemaMarkup from '../components/seo/SchemaMarkup';
 import { KCROC_GRAPH } from '../data/graph';
 import { IMAGES } from '../constants/images';
 import { ArabicHeadTermLinks } from '@/components/content/ArabicHeadTermLinks';
@@ -34,16 +35,16 @@ const AR_LOCATION_PATHS: Record<string, string> = {
 // underlying service pages stay English for now, but Arabic visitors get
 // Arabic labels/descriptions pointing to them, same pattern already used in
 // NearMe.tsx's embedded Arabic section.
-const SERVICES_AR: { slug: string; icon: React.ElementType; title: string; description: string }[] = [
-  { slug: 'laptop-repair-kuwait', icon: Laptop, title: 'تصليح لابتوب', description: 'تشخيص وإصلاح أعطال اللابتوب، سواء كانت في الهاردوير أو السوفتوير، لمختلف الماركات.' },
-  { slug: 'macbook-repair-kuwait', icon: Apple, title: 'تصليح ماك بوك', description: 'إصلاح أعطال MacBook واللوحة المنطقية، بما في ذلك إصلاحات الميكروسولدرينج عند الحاجة.' },
-  { slug: 'gaming-pc-repair-kuwait', icon: Gamepad2, title: 'تصليح كمبيوتر قيمنق', description: 'تشخيص وإصلاح أجهزة الألعاب المكتبية، ومشاكل كروت الشاشة والتبريد والطاقة وغيرها.' },
-  { slug: 'motherboard-repair-kuwait', icon: Cpu, title: 'تصليح اللوحة الأم', description: 'إصلاح اللوحة الأم على مستوى القطعة الإلكترونية بدل استبدال اللوحة بالكامل، متى ما كان ذلك ممكنًا.' },
-  { slug: 'laptop-screen-repair-kuwait', icon: Monitor, title: 'تغيير شاشة اللابتوب', description: 'تغيير شاشات اللابتوب المكسورة أو المتضررة، وإصلاح مشاكل الخطوط أو الإضاءة حسب حالة الشاشة.' },
-  { slug: 'battery-replacement-kuwait', icon: ShieldCheck, title: 'تغيير بطارية اللابتوب', description: 'فحص صحة البطارية أولًا ثم استبدالها عند التأكد من أن البطارية هي سبب المشكلة.' },
-  { slug: 'laptop-keyboard-replacement-kuwait', icon: Laptop, title: 'تبديل كيبورد اللابتوب', description: 'تبديل الكيبورد أو تشخيص الأزرار التي لا تعمل والإضاءة ومشاكل السوائل حسب موديل الجهاز.' },
-  { slug: 'ssd-ram-upgrade-kuwait', icon: Cpu, title: 'ترقية SSD وRAM', description: 'ترقية التخزين والذاكرة بعد فحص التوافق ودعم الجهاز، مع نقل البيانات عند الإمكان.' },
-  { slug: 'laptop-charging-port-repair-kuwait', icon: Cpu, title: 'إصلاح مدخل الشحن', description: 'تشخيص منفذ الشحن ودوائر الطاقة، مع إصلاح المنفذ أو العطل على مستوى اللوحة عندما يكون ذلك ممكنًا.' },
+const SERVICES_AR: { path: string; icon: React.ElementType; title: string; description: string }[] = [
+  { path: '/ar/laptop-repair-kuwait', icon: Laptop, title: 'تصليح لابتوب', description: 'تشخيص وإصلاح أعطال اللابتوب، سواء كانت في الهاردوير أو السوفتوير، لمختلف الماركات.' },
+  { path: '/ar/macbook-repair-kuwait', icon: Apple, title: 'تصليح ماك بوك', description: 'إصلاح أعطال MacBook واللوحة المنطقية، بما في ذلك إصلاحات الميكروسولدرينج عند الحاجة.' },
+  { path: '/ar/gaming-pc-repair-kuwait', icon: Gamepad2, title: 'تصليح كمبيوتر قيمنق', description: 'تشخيص وإصلاح أجهزة الألعاب المكتبية، ومشاكل كروت الشاشة والتبريد والطاقة وغيرها.' },
+  { path: '/ar/motherboard-repair-kuwait', icon: Cpu, title: 'تصليح اللوحة الأم', description: 'إصلاح اللوحة الأم على مستوى القطعة الإلكترونية بدل استبدال اللوحة بالكامل، متى ما كان ذلك ممكنًا.' },
+  { path: '/ar/laptop-screen-repair-kuwait', icon: Monitor, title: 'تغيير شاشة اللابتوب', description: 'تغيير شاشات اللابتوب المكسورة أو المتضررة، وإصلاح مشاكل الخطوط أو الإضاءة حسب حالة الشاشة.' },
+  { path: '/ar/battery-replacement-kuwait', icon: ShieldCheck, title: 'تغيير بطارية اللابتوب', description: 'فحص صحة البطارية أولًا ثم استبدالها عند التأكد من أن البطارية هي سبب المشكلة.' },
+  { path: '/ar/laptop-keyboard-replacement-kuwait', icon: Laptop, title: 'تبديل كيبورد اللابتوب', description: 'تبديل الكيبورد أو تشخيص الأزرار التي لا تعمل والإضاءة ومشاكل السوائل حسب موديل الجهاز.' },
+  { path: '/ar/ssd-ram-upgrade-kuwait', icon: Cpu, title: 'ترقية SSD وRAM', description: 'ترقية التخزين والذاكرة بعد فحص التوافق ودعم الجهاز، مع نقل البيانات عند الإمكان.' },
+  { path: '/ar/laptop-charging-port-repair-kuwait', icon: Cpu, title: 'إصلاح مدخل الشحن', description: 'تشخيص منفذ الشحن ودوائر الطاقة، مع إصلاح المنفذ أو العطل على مستوى اللوحة عندما يكون ذلك ممكنًا.' },
 ];
 
 const AREAS_AR = [
@@ -71,14 +72,14 @@ const AR_COMMERCIAL_CLUSTER = [
 ];
 
 const HIGH_INTENT_AR = [
-  { href: '/laptop-repair-kuwait', title: 'تصليح لابتوب في الكويت', desc: 'خدمة شاملة للأعطال الشائعة، الشحن، البطارية، الشاشة، المفصلات واللوحة الأم.' },
-  { href: '/motherboard-repair-kuwait', title: 'تصليح اللوحة الأم', desc: 'تشخيص أعطال الطاقة والدوائر وإصلاح المكوّن المتضرر عندما يكون الإصلاح ممكنًا.' },
+  { href: '/ar/laptop-repair-kuwait', title: 'تصليح لابتوب في الكويت', desc: 'خدمة شاملة للأعطال الشائعة، الشحن، البطارية، الشاشة، المفصلات واللوحة الأم.' },
+  { href: '/ar/motherboard-repair-kuwait', title: 'تصليح اللوحة الأم', desc: 'تشخيص أعطال الطاقة والدوائر وإصلاح المكوّن المتضرر عندما يكون الإصلاح ممكنًا.' },
   { href: '/laptop-wont-turn-on', title: 'اللابتوب لا يعمل', desc: 'فرّق بين مشكلة الشاحن والبطارية ومدخل الشحن واللوحة الأم قبل تبديل القطع.' },
   { href: '/laptop-overheating-kuwait', title: 'اللابتوب يسخن', desc: 'تشخيص الحرارة المرتفعة والاختناق الحراري ومشاكل التبريد في أجواء الكويت.' },
-  { href: '/laptop-screen-repair-kuwait', title: 'تغيير شاشة اللابتوب', desc: 'شاشات مكسورة أو سوداء أو فيها خطوط ووميض، بعد تشخيص المشكلة.' },
-  { href: '/battery-replacement-kuwait', title: 'تغيير بطارية اللابتوب', desc: 'فحص البطارية أولًا ثم الاستبدال عند ثبوت التلف أو التدهور.' },
-  { href: '/laptop-keyboard-replacement-kuwait', title: 'تبديل كيبورد اللابتوب', desc: 'تشخيص الأزرار التي لا تعمل ثم تحديد ما إذا كان المطلوب إصلاحًا أو استبدالًا.' },
-  { href: '/ssd-ram-upgrade-kuwait', title: 'ترقية SSD وRAM', desc: 'تحسين سرعة الجهاز بعد فحص توافق التخزين والذاكرة مع موديل اللابتوب.' },
+  { href: '/ar/laptop-screen-repair-kuwait', title: 'تغيير شاشة اللابتوب', desc: 'شاشات مكسورة أو سوداء أو فيها خطوط ووميض، بعد تشخيص المشكلة.' },
+  { href: '/ar/battery-replacement-kuwait', title: 'تغيير بطارية اللابتوب', desc: 'فحص البطارية أولًا ثم الاستبدال عند ثبوت التلف أو التدهور.' },
+  { href: '/ar/laptop-keyboard-replacement-kuwait', title: 'تبديل كيبورد اللابتوب', desc: 'تشخيص الأزرار التي لا تعمل ثم تحديد ما إذا كان المطلوب إصلاحًا أو استبدالًا.' },
+  { href: '/ar/ssd-ram-upgrade-kuwait', title: 'ترقية SSD وRAM', desc: 'تحسين سرعة الجهاز بعد فحص توافق التخزين والذاكرة مع موديل اللابتوب.' },
   { href: '/blog/ar/how-often-clean-laptop-replace-thermal-paste-kuwait', title: 'تنظيف اللابتوب وتغيير المعجون الحراري', desc: 'متى يحتاج الجهاز إلى تنظيف داخلي وفحص المراوح والمعجون الحراري؟' },
 ];
 
@@ -95,9 +96,57 @@ export default function NearMeAR() {
     'مرحباً KCROC، أبحث عن خدمة تصليح كمبيوتر بالقرب مني في الكويت وأحتاج ترتيب استلام للجهاز.'
   )}`;
 
+  const nearMeServiceSchema = {
+    '@graph': [
+      {
+        '@type': 'Service',
+        '@id': page.seo.canonicalUrl + '#near-me-service',
+        name: 'خدمة استلام وتوصيل الكمبيوتر واللابتوب في الكويت',
+        serviceType: 'تشخيص وإصلاح الكمبيوتر واللابتوب مع استلام وتوصيل',
+        description: 'خدمة محلية لاستلام الكمبيوتر واللابتوب من المنزل أو المكتب في مناطق الكويت ونقله إلى مختبر KCROC الفعلي في حولي للتشخيص والإصلاح بعد موافقة العميل على السعر. لا نقدم زيارات إصلاح داخل المنزل.',
+        url: page.seo.canonicalUrl,
+        image: [
+          business.websiteUrl + IMAGES.brand.shopExteriorDay.src,
+          business.websiteUrl + IMAGES.brand.shopInterior.src,
+          business.websiteUrl + IMAGES.brand.technicians.src
+        ],
+        provider: { '@id': business.websiteUrl + '/#business' },
+        areaServed: { '@type': 'Country', name: 'Kuwait' },
+        availableChannel: {
+          '@type': 'ServiceChannel',
+          serviceUrl: page.seo.canonicalUrl,
+          servicePhone: '+' + business.telephone,
+          serviceLocation: {
+            '@type': 'Place',
+            name: 'مختبر KCROC في حولي',
+            address: {
+              '@type': 'PostalAddress',
+              streetAddress: business.streetAddress,
+              addressLocality: business.addressLocality,
+              addressRegion: business.addressRegion,
+              addressCountry: business.addressCountry
+            }
+          }
+        }
+      },
+      {
+        '@type': 'ImageObject',
+        '@id': page.seo.canonicalUrl + '#primaryimage',
+        url: business.websiteUrl + IMAGES.brand.shopExteriorDay.src,
+        contentUrl: business.websiteUrl + IMAGES.brand.shopExteriorDay.src,
+        name: 'موقع مختبر KCROC في حولي',
+        caption: 'واجهة موقع KCROC في مجمع المله، حولي. يتم إصلاح الأجهزة في المختبر بعد ترتيب الاستلام، وليس داخل منازل العملاء.',
+        width: IMAGES.brand.shopExteriorDay.width,
+        height: IMAGES.brand.shopExteriorDay.height,
+        inLanguage: 'ar-KW'
+      }
+    ]
+  };
+
   return (
-    <div className="w-full min-h-screen bg-transparent text-slate-200" dir="rtl" lang="ar">
+    <div className="w-full min-h-screen bg-transparent text-slate-200" dir="rtl" lang="ar-KW">
       <SEOEngine entityId="page-near-me-ar" />
+      <SchemaMarkup schema={nearMeServiceSchema} />
 
       {/* Hero */}
       <section className="relative overflow-hidden border-b border-slate-800 px-4 pb-14 pt-10 sm:px-6 sm:pb-24 sm:pt-16 lg:pt-24">
@@ -182,6 +231,47 @@ export default function NearMeAR() {
         </div>
       </section>
 
+      {/* Real workshop, address and directions */}
+      <section className="border-b border-slate-800/60 bg-brand-dark/35 px-4 py-12 sm:px-6 sm:py-20" aria-labelledby="near-me-workshop">
+        <div className="mx-auto max-w-6xl">
+          <div className="grid items-start gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:gap-12">
+            <div>
+              <p className="mb-2 text-xs font-bold uppercase tracking-widest text-cyan-400">الموقع الفعلي وطريقة الخدمة</p>
+              <h2 id="near-me-workshop" className="text-3xl font-black leading-tight text-white sm:text-4xl">ورشة حقيقية في حولي، مع استلام من منطقتك</h2>
+              <p className="mt-4 leading-loose text-slate-300">حتى لو كنت بعيدًا عن حولي، لا تحتاج إلى البحث عن محل قريب أو نقل الجهاز بنفسك. نرتب استلامه من المنزل أو المكتب ضمن مناطق الخدمة، ويجري التشخيص والإصلاح في مختبر KCROC بحولي، ثم ننسق إعادته بعد الاختبار.</p>
+              <div className="mt-5 rounded-2xl border border-slate-800 bg-slate-950/60 p-5">
+                <p className="text-xs font-bold uppercase tracking-wider text-cyan-300">عنوان المختبر</p>
+                <address className="mt-2 not-italic font-bold leading-7 text-white">{business.streetAddress}، {business.addressLocality}، الكويت</address>
+                <p className="mt-3 flex items-center gap-2 text-sm text-slate-400"><Clock className="h-4 w-4 shrink-0 text-cyan-400" aria-hidden="true" /> يوميًا من 10:00 صباحًا إلى 10:00 مساءً</p>
+                <div className="mt-4 flex flex-wrap gap-3">
+                  <a href={business.socialLinks.googleMaps} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-2 rounded-full bg-cyan-500 px-5 py-2.5 text-sm font-black text-slate-950 transition hover:bg-cyan-400">
+                    <MapPin className="h-4 w-4" aria-hidden="true" /> افتح الموقع في خرائط Google
+                  </a>
+                  <Link to="/ar/computer-repair-hawalli" className="inline-flex min-h-11 items-center rounded-full border border-slate-700 px-5 py-2.5 text-sm font-bold text-cyan-300 transition hover:border-cyan-500/40">
+                    تفاصيل خدمة حولي
+                  </Link>
+                </div>
+              </div>
+              <p className="mt-4 text-sm leading-7 text-slate-400">مهم: الاستلام من المنزل لا يعني وجود فني لإصلاح الجهاز داخل المنزل. تتم أعمال الصيانة داخل المختبر بعد الفحص وموافقتك على التكلفة.</p>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-2">
+              <figure className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-950 sm:col-span-2">
+                <img src={IMAGES.brand.shopExteriorDay.src} alt="واجهة موقع KCROC في مجمع المله بشارع ابن خلدون في حولي، الكويت" width={IMAGES.brand.shopExteriorDay.width} height={IMAGES.brand.shopExteriorDay.height} loading="lazy" decoding="async" className="aspect-[16/9] w-full object-cover" />
+                <figcaption className="border-t border-slate-800 px-4 py-3 text-sm leading-6 text-slate-400">واجهة موقع العمل الفعلي في حولي؛ افتح خرائط Google لمعرفة الاتجاهات قبل الزيارة.</figcaption>
+              </figure>
+              <figure className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-950">
+                <img src={IMAGES.brand.shopEntrance.src} alt="مدخل مختبر KCROC في مجمع المله بحولي" width={IMAGES.brand.shopEntrance.width} height={IMAGES.brand.shopEntrance.height} loading="lazy" decoding="async" className="aspect-[4/3] w-full object-cover" />
+                <figcaption className="border-t border-slate-800 px-4 py-3 text-sm leading-6 text-slate-400">مدخل موقع العمل في مجمع المله.</figcaption>
+              </figure>
+              <figure className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-950">
+                <img src={IMAGES.brand.shopInterior.src} alt="داخل مختبر وورشة إصلاح الكمبيوتر واللابتوب في KCROC" width={IMAGES.brand.shopInterior.width} height={IMAGES.brand.shopInterior.height} loading="lazy" decoding="async" className="aspect-[4/3] w-full object-cover" />
+                <figcaption className="border-t border-slate-800 px-4 py-3 text-sm leading-6 text-slate-400">داخل الورشة حيث يتم فحص الجهاز والعمل عليه.</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Areas */}
       <section className="border-b border-slate-800/60 bg-slate-900/30 px-4 py-12 sm:px-6 sm:py-20">
         <div className="mx-auto max-w-6xl">
@@ -218,7 +308,7 @@ export default function NearMeAR() {
           </div>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {SERVICES_AR.map((service) => (
-              <Link key={service.slug} to={`/${service.slug}`} className="group rounded-2xl border border-slate-800 bg-slate-900/40 p-5 transition hover:border-cyan-500/40 hover:bg-slate-900">
+              <Link key={service.path} to={service.path} className="group rounded-2xl border border-slate-800 bg-slate-900/40 p-5 transition hover:border-cyan-500/40 hover:bg-slate-900">
                 <div className="flex items-start gap-4">
                   <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-slate-700 bg-brand-dark text-cyan-400"><service.icon className="h-5 w-5" aria-hidden="true" /></div>
                   <div><h3 className="font-bold text-white group-hover:text-cyan-300">{service.title}</h3><p className="mt-1 text-sm leading-relaxed text-slate-400">{service.description}</p></div>

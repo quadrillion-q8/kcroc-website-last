@@ -134,10 +134,10 @@ export const rawGraphData: RawGraphData = {
     'page-near-me-ar': {
       id: 'page-near-me-ar', slug: 'ar/near-me', entityType: 'WebPage', isActive: true,
       title: 'تصليح كمبيوتر ولابتوب بالقرب منك في الكويت',
-      description: 'خدمة تصليح كمبيوتر ولابتوب بالقرب منك في الكويت مع استلام من المنزل أو المكتب ونقل الجهاز إلى مختبر KCROC في حولي للفحص والإصلاح ثم توصيله بعد الاختبار. لا نقدم إصلاحًا داخل المنزل.',
+      description: 'خدمة تصليح كمبيوتر ولابتوب بالقرب منك في الكويت مع استلام وتوصيل مجاني من المنزل أو المكتب، وفحص وإصلاح في مختبر KCROC الفعلي بحولي. نوضح التكلفة قبل الإصلاح؛ لا نقدم زيارات إصلاح داخل المنزل.',
       seo: {
-        title: 'تصليح كمبيوتر بالقرب منك في الكويت | استلام وتوصيل | KCROC',
-        description: 'تحتاج خدمة تصليح كمبيوتر قريبة منك؟ نرتب استلام اللابتوب أو الكمبيوتر من المنزل أو المكتب ثم ننقله إلى مختبرنا في حولي للفحص والإصلاح، مع توصيل مجاني وعرض سعر قبل بدء العمل. لا نقدم إصلاحًا داخل المنزل.',
+        title: 'تصليح كمبيوتر بالقرب منك في الكويت | استلام مجاني | KCROC',
+        description: 'تحتاج تصليح كمبيوتر أو لابتوب بالقرب منك؟ نرتب الاستلام من المنزل أو المكتب ونفحص الجهاز في مختبرنا بحولي، مع توصيل مجاني وعرض سعر قبل الإصلاح. لا نقدم إصلاحًا داخل المنزل.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/ar/near-me',
         locale: 'ar_KW',
         alternates: {
@@ -146,8 +146,12 @@ export const rawGraphData: RawGraphData = {
           'x-default': 'https://www.computerrepairkuwait.com/near-me'
         },
         ogType: 'website',
-        schemaTypes: ['WebPage', 'FAQPage', 'BreadcrumbList'],
-        lastModified: '2026-10-15T00:00:00+03:00',
+        ogImage: '/images/kcroc-al-mullah-complex-hawalli-exterior.webp',
+        ogImageAlt: 'واجهة موقع KCROC في مجمع المله بحولي، الكويت',
+        ogImageWidth: 1200,
+        ogImageHeight: 800,
+        schemaTypes: ['WebPage', 'FAQPage', 'BreadcrumbList', 'Service'],
+        lastModified: '2026-10-21T00:00:00+03:00',
         breadcrumbs: [{ name: 'الرئيسية', url: '/' }, { name: 'تصليح كمبيوتر بالقرب منك', url: '/ar/near-me' }]
       },
       featuredFAQIds: [
