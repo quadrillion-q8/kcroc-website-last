@@ -111,7 +111,7 @@ const MENU_META: Record<string, {
   },
   resources_mega: {
     eyebrow: 'KCROC RESOURCES',
-    subtitle: 'Repair guides, practical tech articles, current news and real repair case studies in one place.',
+    subtitle: 'Repair guides, practical tech articles and current news in one place.',
     allLabel: 'Start with guides',
     allHref: '/guides',
     featureLabel: 'Useful starting points',
