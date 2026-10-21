@@ -35,7 +35,7 @@ export default function Locations() {
           <header className="max-w-4xl mb-14">
             <div className="inline-flex items-center gap-2 rounded-full border border-[#dfa86f]/20 bg-[#dfa86f]/10 px-3 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-[#dfa86f] mb-5">
               <MapPin className="w-3.5 h-3.5" aria-hidden="true" />
-              {locations.length} dedicated service areas
+              {locations.filter((location) => !location.isPhysicalLocation).length} pickup & delivery areas · {locations.filter((location) => location.isPhysicalLocation).length} physical lab
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.05] mb-6">
               Computer &amp; Laptop Repair Service Areas Across Kuwait
