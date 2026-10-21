@@ -2440,16 +2440,7 @@ export default function ArabicCommercialPage() {
           </div>
         </section>
 
-        {slug === 'gaming-laptop-repair-kuwait' && (
-          <section className="mt-12 overflow-hidden rounded-3xl border border-cyan-900/60 bg-cyan-950/20 p-6 sm:p-8" aria-labelledby="arabic-gaming-case">
-            <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-300">مثال إصلاح موثق</p>
-            <h2 id="arabic-gaming-case" className="mt-2 text-2xl font-black text-white sm:text-3xl">حالة ASUS ROG Strix G15 ما كان يشتغل</h2>
-            <p className="mt-3 max-w-3xl leading-8 text-slate-300">في حالة موثقة داخل موقع KCROC، كان جهاز ASUS ROG Strix G15 لا يعمل ولا تظهر لمبات الشحن. كشف الفحص قصرًا في خط الطاقة الرئيسي 19V وتلف مكوّن قرب دائرة طاقة المعالج، ثم أُجري إصلاح على مستوى المكوّن واختبار استقرار قبل التسليم. هذه حالة محددة وليست وعدًا بأن كل عطل له نفس السبب أو الحل.</p>
-            <Link to="/case-studies/asus-rog-dead-motherboard-hawalli" className="mt-5 inline-flex items-center gap-2 rounded-full border border-cyan-500/40 px-5 py-3 font-bold text-cyan-200 transition hover:border-cyan-400 hover:text-white">
-              عرض تفاصيل حالة الإصلاح (الصفحة بالإنجليزية) <ArrowLeft className="h-4 w-4" aria-hidden="true" />
-            </Link>
-          </section>
-        )}
+
 
         <section className="mt-12" aria-labelledby="arabic-areas">
           <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">مناطق الخدمة</p>
