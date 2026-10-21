@@ -208,17 +208,23 @@ export const rawGraphData: RawGraphData = {
     'page-ar-laptop-repair': {
       id: 'page-ar-laptop-repair', slug: 'ar/laptop-repair-kuwait', entityType: 'WebPage', isActive: true,
       title: 'تصليح لابتوب في الكويت',
-      description: 'تصليح لابتوبات في الكويت لمشاكل الشاشة والبطارية والشحن والتبريد واللوحة الأم، مع استلام وتوصيل مجاني.',
+      description: 'تصليح لابتوب في الكويت لأعطال عدم التشغيل والشاشة السوداء والبطارية والشحن والحرارة والمفصلات واللوحة الأم. فحص أولي مجاني، عرض سعر قبل الإصلاح، استلام وتوصيل داخل الكويت وضمان 30 يومًا.',
       seo: {
-        title: 'تصليح لابتوب الكويت | فني لابتوب واستلام مجاني | KCROC',
-        description: 'تصليح لابتوب في الكويت لمشاكل الشاشة، البطارية، الشحن، الحرارة واللوحة الأم. تشخيص قبل الإصلاح واستلام وتوصيل مجاني.',
+        title: 'تصليح لابتوب في الكويت | شاشة وشحن وبطارية | KCROC',
+        description: 'تصليح لابتوب في الكويت لمشاكل الشاشة والبطارية والشحن والحرارة وعدم التشغيل. فحص أولي مجاني، عرض سعر قبل الإصلاح، استلام وتوصيل وضمان 30 يومًا.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/ar/laptop-repair-kuwait',
         locale: 'ar_KW',
         alternates: { 'ar-KW': 'https://www.computerrepairkuwait.com/ar/laptop-repair-kuwait', 'en-KW': 'https://www.computerrepairkuwait.com/laptop-repair-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/laptop-repair-kuwait' },
-        ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList'], lastModified: '2026-09-28T00:00:00+03:00',
+        ogType: 'website',
+        ogImage: '/images/laptop-repair-kuwait.webp',
+        ogImageAlt: 'تصليح وفحص اللابتوب في مختبر KCROC بالكويت',
+        ogImageWidth: 1200,
+        ogImageHeight: 630,
+        schemaTypes: ['WebPage', 'BreadcrumbList'],
+        lastModified: '2026-10-21T00:00:00+03:00',
         breadcrumbs: [{ name: 'الرئيسية', url: '/' }, { name: 'تصليح لابتوب في الكويت', url: '/ar/laptop-repair-kuwait' }]
       },
-      relatedServiceIds: ['srv-laptop', 'srv-motherboard', 'srv-screen', 'srv-battery', 'srv-charging-port']
+      relatedServiceIds: ['srv-laptop', 'srv-motherboard', 'srv-screen', 'srv-battery', 'srv-charging-port', 'srv-keyboard', 'srv-liquid-damage', 'srv-ssd-ram', 'srv-gaming-laptop']
     } as WebPageEntity,
 
     'page-ar-motherboard-repair': {
