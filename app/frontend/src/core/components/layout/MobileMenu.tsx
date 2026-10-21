@@ -51,7 +51,6 @@ const MENU_COPY: Record<string, { eyebrow: string; subtitle: string; allLabel: s
   services_mega: { eyebrow: 'REPAIR SERVICES', subtitle: 'Find the right repair by device or fault.', allLabel: 'All services', allHref: '/services' },
   brands_mega: { eyebrow: 'SUPPORTED BRANDS', subtitle: 'Browse brands supported by the KCROC lab.', allLabel: 'All brands', allHref: '/brands' },
   problems_mega: { eyebrow: 'COMMON PROBLEMS', subtitle: 'Start with the symptom and work toward the cause.', allLabel: 'All problems', allHref: '/problems' },
-  case_studies_mega: { eyebrow: 'REAL REPAIR STORIES', subtitle: 'See difficult faults that made it to the bench.', allLabel: 'All case studies', allHref: '/case-studies' },
   pricing_mega: { eyebrow: 'REPAIR PRICING', subtitle: 'See starting points before you book a diagnosis.', allLabel: 'Full pricing', allHref: '/pricing' },
   blog_mega: { eyebrow: 'TECH BLOG', subtitle: 'Useful tech articles for everyday users.', allLabel: 'All articles', allHref: '/blog' },
   news_mega: { eyebrow: 'TECH NEWS', subtitle: 'Current computer, Windows, hardware, gaming, Apple, cybersecurity and AI news with technician context.', allLabel: 'All news', allHref: '/news' },
@@ -62,7 +61,7 @@ const MENU_COPY: Record<string, { eyebrow: string; subtitle: string; allLabel: s
 
 const getMenuCopy = (id: string) => MENU_COPY[id] ?? { eyebrow: 'KCROC', subtitle: 'Component-level repair and practical technical guidance.', allLabel: 'Explore', allHref: '/' };
 
-const getIndexEntity = (config: MegaMenuConfig) => config.sections.flatMap(section => section.items).find((item) => item.entityType === 'Page' && /^(services|brands|problems|case-studies|pricing|blog|news|guides)$/.test(item.slug));
+const getIndexEntity = (config: MegaMenuConfig) => config.sections.flatMap(section => section.items).find((item) => item.entityType === 'Page' && /^(services|brands|problems|pricing|blog|news|guides)$/.test(item.slug));
 const getMoreItems = (config: MegaMenuConfig) => {
   const featured = new Set((config.featured ?? []).map(item => item.slug));
   return config.sections.flatMap(section => section.items).filter(item => !featured.has(item.slug));

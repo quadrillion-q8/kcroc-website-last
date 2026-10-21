@@ -627,7 +627,7 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
     [/windows|software|driver|update|boot|blue-screen|bsod/, '/images/discover/windows-os-software-repair-and-installation-kuwait-1200x675.webp'],
     [/motherboard|diagnostic|repair|laptop/, '/images/discover/laptop-repair-kuwait-1200x675.webp'],
   ];
-  const isArticleLike = /\/(blog|guides|news|case-studies)\//i.test(canonicalUrl)
+  const isArticleLike = /\/(blog|guides|news)\//i.test(canonicalUrl)
     || (ogType || '').toLowerCase() === 'article'
     || (schemaTypes || []).some((type: string) => ['Article', 'BlogPosting', 'TechArticle'].includes(type));
   const contextualFallback = isArticleLike

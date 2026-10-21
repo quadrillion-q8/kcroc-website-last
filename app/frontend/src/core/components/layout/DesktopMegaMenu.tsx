@@ -74,13 +74,6 @@ const MENU_META: Record<string, {
     allHref: '/problems',
     featureLabel: 'Most common issues',
   },
-  case_studies_mega: {
-    eyebrow: 'REAL REPAIR STORIES',
-    subtitle: 'See how difficult laptop and computer faults are diagnosed, repaired and verified in the lab.',
-    allLabel: 'View all case studies',
-    allHref: '/case-studies',
-    featureLabel: 'Featured repairs',
-  },
   pricing_mega: {
     eyebrow: 'REPAIR PRICING',
     subtitle: 'Transparent starting points with diagnosis first. Final pricing depends on the exact model and fault.',
@@ -155,7 +148,7 @@ const getMoreItems = (config: MegaMenuConfig) => {
 
 const getIndexItem = (config: MegaMenuConfig) => {
   const candidates = config.sections.flatMap(section => section.items);
-  return candidates.find(item => item.entityType === 'Page' && /^(services|brands|problems|case-studies|pricing|blog|news|guides)$/.test(item.slug)) ?? null;
+  return candidates.find(item => item.entityType === 'Page' && /^(services|brands|problems|pricing|blog|news|guides)$/.test(item.slug)) ?? null;
 };
 
 interface Props {

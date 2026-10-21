@@ -18,7 +18,7 @@ interface StandaloneRelatedLinksProps {
  * Curated internal-link block for standalone guides/blog posts that are not
  * rendered by the Knowledge Graph entity templates. Keep this intentional:
  * links should form a useful path from informational intent to the relevant
- * problem/service/brand/case-study destination without creating link noise.
+ * problem/service/brand/guide destination without creating link noise.
  */
 export const StandaloneRelatedLinks: React.FC<StandaloneRelatedLinksProps> = ({
   title = 'Related KCROC repair paths',

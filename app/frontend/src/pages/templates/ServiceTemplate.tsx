@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { Navigate, Link } from 'react-router-dom';
 import { Laptop, Apple, Gamepad2, Cpu, Wrench, ShieldCheck, Clock, MessageCircle, Users, Monitor, ChevronDown, AlertTriangle, MapPin, Gauge, ArrowRight, BookOpen, Tag } from 'lucide-react';
 import { KCROC_GRAPH } from '../../data/graph';
-import { isCaseStudyPublishable } from '../../utils/publicationEligibility';
 import { SEOEngine } from '../../core/components/SEOEngine';
 import { useAnalytics } from '../../core/analytics/AnalyticsProvider';
 import { buildWhatsAppLink } from '../../utils/whatsappIntent';
@@ -65,13 +64,6 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
 
   const relatedBrandIds = entity.relatedBrandIds ?? [];
   const relatedResourcePaths = entity.relatedResourcePaths ?? [];
-  const relatedCaseStudyIds = (entity.relatedCaseStudyIds ?? []).filter((id) => {
-    const study = KCROC_GRAPH.caseStudies.find((item) => item.id === id);
-    return Boolean(study && isCaseStudyPublishable(study));
-  });
-  const relatedCaseStudyPath = entity.relatedCaseStudyPath && KCROC_GRAPH.caseStudies.some((study) =>
-    `/case-studies/${study.slug}` === entity.relatedCaseStudyPath?.path && isCaseStudyPublishable(study)
-  ) ? entity.relatedCaseStudyPath : undefined;
   const arabicEquivalent = KCROC_GRAPH.pages.find((page) =>
     page.isActive &&
     page.seo.locale === 'ar_KW' &&
@@ -506,7 +498,7 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
           </section>
         )}
 
-        {(relatedServiceIds.length > 0 || relatedProblemIds.length > 0 || relatedBrandIds.length > 0 || relatedResourcePaths.length > 0 || relatedCaseStudyIds.length > 0 || relatedCaseStudyPath || arabicEquivalent) && (
+        {(relatedServiceIds.length > 0 || relatedProblemIds.length > 0 || relatedBrandIds.length > 0 || relatedResourcePaths.length > 0 || arabicEquivalent) && (
           <section className="max-w-7xl mx-auto px-6 py-12 border-t border-slate-800/50 relative z-10">
             <h2 className="text-2xl font-bold mb-3 text-white">Related Repair Resources</h2>
             <p className="text-sm text-slate-400 mb-8 max-w-3xl">Explore the closest repair services, troubleshooting pages, brand specialists and practical guides for this type of fault.</p>
@@ -575,28 +567,7 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
               )}
             </div>
 
-            {relatedCaseStudyPath && (
-              <Link to={relatedCaseStudyPath.path} className="mt-5 flex items-center justify-between gap-4 rounded-2xl border border-cyan-500/20 bg-cyan-900/10 px-5 py-4 hover:border-cyan-500/40 transition-colors">
-                <div>
-                  <span className="block text-[10px] uppercase tracking-wider font-black text-cyan-400 mb-1">First-party repair evidence</span>
-                  <span className="text-white font-semibold">{relatedCaseStudyPath.label}</span>
-                </div>
-                <ArrowRight className="w-5 h-5 text-cyan-400" />
-              </Link>
-            )}
-            {!entity.relatedCaseStudyPath && relatedCaseStudyIds.length > 0 && (
-              <div className="mt-5 grid gap-3 sm:grid-cols-2">
-                {relatedCaseStudyIds.slice(0, 3).map((id) => {
-                  const study = KCROC_GRAPH.caseStudies.find((item) => item.id === id);
-                  return study ? (
-                    <Link key={id} to={`/case-studies/${study.slug}`} className="flex items-center justify-between gap-3 rounded-xl border border-cyan-500/20 bg-cyan-900/10 px-4 py-3 hover:border-cyan-500/40 transition-colors">
-                      <span className="text-sm font-semibold text-white">{study.title}</span>
-                      <ArrowRight className="w-4 h-4 text-cyan-400 shrink-0" />
-                    </Link>
-                  ) : null;
-                })}
-              </div>
-            )}
+
           </section>
         )}
 

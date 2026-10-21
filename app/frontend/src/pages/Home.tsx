@@ -7,7 +7,6 @@ import { StatsRow } from '../components/home/StatsRow';
 import { BrandStrip } from '../components/home/BrandStrip';
 import ServicesGrid from '../components/home/ServicesGrid';
 import { PricingTable } from '../components/home/PricingTable';
-import { BeforeAfterShowcase } from '../components/home/BeforeAfterShowcase';
 import { Process } from '../components/home/Process';
 import Reviews from '../components/home/Reviews';
 import BehindBench from '../components/home/BehindBench';
@@ -39,9 +38,6 @@ export default function Home() {
 
       {/* 5. Hard numbers — compact trust reinforcement */}
       <div className="kcroc-cwv-defer"><StatsRow /></div>
-
-      {/* 6. Case-study proof of component-level repair (the core differentiator) */}
-      <div className="kcroc-cwv-defer"><BeforeAfterShowcase /></div>
 
       {/* 7. Transparent pricing, sourced from real service data — reduces booking friction */}
       <div className="kcroc-cwv-defer"><PricingTable /></div>

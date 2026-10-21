@@ -106,7 +106,7 @@ export const getPageWhatsAppLink = (pathname: string): string => {
     return canonicalPath === path;
   });
 
-  if (entity && (path.startsWith('/blog/') || path.startsWith('/guides/') || path.startsWith('/case-studies/'))) {
+  if (entity && (path.startsWith('/blog/') || path.startsWith('/guides/'))) {
     return getIntentWhatsAppLink('blog', entity.title);
   }
 

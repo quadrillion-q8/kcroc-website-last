@@ -587,7 +587,6 @@ export const rawGraphData: RawGraphData = {
     'page-privacy': { id: 'page-privacy', slug: 'privacy-security-kuwait', entityType: 'WebPage', isActive: true, title: 'Privacy & Security', description: 'Our data privacy guarantee.', seo: { title: 'Data Privacy & Security Guarantee | KCROC', description: 'Read about our strict hardware-only protocol that guarantees your personal data remains 100% private during repairs.', canonicalUrl: 'https://www.computerrepairkuwait.com/privacy-security-kuwait', ogType: 'website', schemaTypes: ['WebPage'] } } as WebPageEntity,
     'page-privacy-policy': { id: 'page-privacy-policy', slug: 'privacy-policy', entityType: 'WebPage', isActive: true, title: 'Privacy Policy', description: 'KCROC Privacy Policy and Data Handling', seo: { title: 'Privacy Policy | KCROC Kuwait', description: 'Read the official Privacy Policy for Kuwait Computer Repair On Call. We are committed to protecting your data and personal information.', canonicalUrl: 'https://www.computerrepairkuwait.com/privacy-policy', ogType: 'website', schemaTypes: ['WebPage'] } } as WebPageEntity,
     'page-terms-of-service': { id: 'page-terms-of-service', slug: 'terms-of-service', entityType: 'WebPage', isActive: true, title: 'Terms of Service', description: 'KCROC Terms and Conditions of Service', seo: { title: 'Terms of Service | KCROC Kuwait', description: 'Read the official Terms of Service and conditions for computer repair, pick & drop, and warranties at Kuwait Computer Repair On Call.', canonicalUrl: 'https://www.computerrepairkuwait.com/terms-of-service', ogType: 'website', schemaTypes: ['WebPage'] } } as WebPageEntity,
-    'page-case-studies': { id: 'page-case-studies', slug: 'case-studies', entityType: 'WebPage', isActive: true, title: 'Repair Case Studies & Diagnostic Methods', description: 'Repair methods and customer case studies, published only when supporting records and required permissions are verified.', seo: { title: 'Repair Case Studies & Diagnostic Methods | KCROC Kuwait', description: 'Understand KCROC’s diagnostic approach to motherboard faults, liquid damage and laptop displays. Customer-specific repair reports are published only after supporting records and permissions are verified.', canonicalUrl: 'https://www.computerrepairkuwait.com/case-studies', ogType: 'website', schemaTypes: ['CollectionPage'], lastModified: '2026-10-19T00:00:00+03:00' } } as WebPageEntity,
     'page-author-imran': { id: 'page-author-imran', slug: 'author/imran', entityType: 'WebPage', isActive: true, title: 'Imran Natiq', description: 'Author bio page for Imran Natiq, Founder & Lead Technician at KCROC, referenced from the Person schema on blog articles he authored.', seo: { title: 'Imran Natiq — Hardware Repair Engineer at KCROC Kuwait', description: 'Imran Natiq is a hardware repair engineer and founder of KCROC in Hawalli, Kuwait, specializing in motherboard diagnostics and micro-soldering.', canonicalUrl: 'https://www.computerrepairkuwait.com/author/imran', ogType: 'profile', schemaTypes: ['ProfilePage', 'Person', 'BreadcrumbList'] } } as WebPageEntity,
     'guide-battery': { id: 'guide-battery', slug: 'guides/laptop-battery-warning-signs', entityType: 'WebPage', isActive: true, title: 'Laptop Battery Warning Signs: 15+ Signs & Tests', description: 'A practical laptop battery authority guide covering 15+ warning signs, Windows 11 and Mac battery-health checks, swollen-battery safety, diagnosis, and replacement decisions.', seo: { title: 'Laptop Battery Problems: 15 Warning Signs & Tests | KCROC', description: 'How can you tell if a laptop battery is failing? Check 15 warning signs, Windows and Mac battery-health tests, swollen-battery safety, and when to consider replacement.', canonicalUrl: 'https://www.computerrepairkuwait.com/guides/laptop-battery-warning-signs', ogImage: 'https://www.computerrepairkuwait.com/images/discover/swollen-macbook-battery-replacement-2-1200x675.webp', ogType: 'article', schemaTypes: ['Article', 'FAQPage', 'BreadcrumbList'], lastModified: '2026-09-30T00:00:00+03:00' },
       featuredFAQIds: [
@@ -1445,7 +1444,6 @@ export const rawGraphData: RawGraphData = {
         { label: 'Laptop Repair Guide', path: '/laptop-repair-kuwait' },
         { label: 'MacBook Repair', path: '/macbook-repair-kuwait' },
       ],
-      relatedCaseStudyPath: { label: 'Real MacBook Liquid-Damage Case Study', path: '/case-studies/macbook-liquid-damage-salmiya' },
       technicalOverview: {
         heading: 'What Happens Inside a Liquid-Damaged Laptop',
         paragraphs: [
@@ -1500,7 +1498,6 @@ export const rawGraphData: RawGraphData = {
         { label: 'BIOS / UEFI Recovery Guide', path: '/guides/bios-uefi-recovery-kuwait' },
         { label: 'Laptop Battery Warning Signs', path: '/guides/laptop-battery-warning-signs' },
       ],
-      relatedCaseStudyPath: { label: 'MacBook Liquid-Damage Case Study — Salmiya', path: '/case-studies/macbook-liquid-damage-salmiya' },
       coreFeatures: [
         'Motherboard Micro-Soldering',
         'USB-C Power IC Replacement',
@@ -2252,7 +2249,6 @@ export const rawGraphData: RawGraphData = {
         { label: 'Failed Gaming PC BIOS Update Guide', path: '/guides/gaming-pc-bios-failed-update-kuwait' },
         { label: 'BIOS / UEFI Recovery Guide', path: '/guides/bios-uefi-recovery-kuwait' },
       ],
-      relatedCaseStudyPath: { label: 'ASUS ROG Dead Motherboard Case Study — Hawalli', path: '/case-studies/asus-rog-dead-motherboard-hawalli' },
       coreFeatures: [
         'GPU Chip-Level & VRAM Repair',
         'Liquid Metal & Phase-Change Thermal Overhauls',
@@ -2755,7 +2751,6 @@ export const rawGraphData: RawGraphData = {
         { label: 'BIOS / UEFI Recovery Guide', path: '/guides/bios-uefi-recovery-kuwait' },
         { label: "Laptop Won't Turn On? Complete Troubleshooting Guide", path: '/guides/laptop-wont-turn-on' },
       ],
-      relatedCaseStudyPath: { label: 'ASUS ROG Dead Motherboard Case Study — Hawalli', path: '/case-studies/asus-rog-dead-motherboard-hawalli' },
       coreFeatures: [
         'Power Rail Voltage Tracing',
         'MOSFET & Power IC Replacement',
@@ -3020,7 +3015,6 @@ export const rawGraphData: RawGraphData = {
       relatedResourcePaths: [
         { label: 'How to Protect Your Laptop Screen', path: '/blog/how-to-protect-laptop-screen' },
       ],
-      relatedCaseStudyPath: { label: 'Dell XPS Screen Replacement Case Study — Kuwait City', path: '/case-studies/dell-xps-screen-replacement-kuwait-city' },
       coreFeatures: [
         'LCD / IPS / OLED Panel Replacement',
         'MacBook Retina Display Replacement',
@@ -5071,171 +5065,8 @@ export const rawGraphData: RawGraphData = {
     /* ═══════════════════════════════════════════════════════════════
        CASE STUDY ENTITIES
     ═══════════════════════════════════════════════════════════════ */
-    'case-macbook-liquid-salmiya': {
-      id: 'case-macbook-liquid-salmiya', slug: 'macbook-liquid-damage-salmiya', entityType: 'CaseStudy', isActive: true,
-      title: 'MacBook Pro M2 Liquid Damage Repair — Salmiya',
-      description: 'Real repair case study of a coffee-damaged MacBook Pro M2 motherboard restoration.',
-      device: 'MacBook Pro 14" M2 Pro',
-      location: 'Salmiya',
-      symptom: 'Coffee spill. Device powered off immediately. Fan spins briefly on power button, no display.',
-      diagnosis: 'Ultrasonic cleaning revealed corrosion on the PPBUS_G3H main power rail and a shorted Q7510 MOSFET. Secondary damage to the backlight circuit.',
-      repair: 'Q7510 MOSFET replaced via micro-soldering. Backlight fuse replaced. Board cleaned and re-tested under full load for 4 hours.',
-      outcome: 'Device fully restored. The original onboard storage remained untouched. Customer data intact.',
-      timeToRepair: '36 hours',
-      costVsReplacement: 'Repair: 65 KWD. Apple Authorized Center quote: 280 KWD for board swap with data loss.',
-      publishDate: '2026-05-12',
-      deviceCategory: 'macbook',
-      deviceModel: 'MacBook Pro 14" M2 Pro',
-      brandId: undefined,
-      serviceIds: ['srv-macbook', 'srv-motherboard'],
-      problemIds: ['problem-liquid-spill'],
-      locationId: 'loc-salmiya',
-      authorId: 'https://www.computerrepairkuwait.com/author/imran#person',
-      repairCategory: 'Motherboard liquid-damage repair',
-      difficulty: 'component-level',
-      repairStatus: 'success',
-      diagnosticTools: ['Ultrasonic cleaner', 'Multimeter', 'Micro-soldering / hot-air rework'],
-      componentsTested: ['PPBUS_G3H main power rail', 'Q7510 MOSFET', 'Backlight circuit'],
-      partsReplaced: ['Q7510 MOSFET', 'Backlight fuse'],
-      testingPerformed: ['Full hardware diagnostics', '4-hour full-load stress test', 'Display verification'],
-      repairDuration: '36 hours',
-      warranty: { durationDays: 30, coverage: 'All parts and labor on the repair performed.' },
-      evidence: [],
-      customerConsent: { granted: false, scope: [] },
-      featuredImage: {
-        thumbnail: { raw: IMAGES.macbook.diagnostics.src, webp: IMAGES.macbook.diagnostics.src, avif: IMAGES.macbook.diagnostics.src, width: IMAGES.macbook.diagnostics.width, height: IMAGES.macbook.diagnostics.height },
-        hero: { raw: IMAGES.macbook.logicBoard.src, webp: IMAGES.macbook.logicBoard.src, avif: IMAGES.macbook.logicBoard.src, width: IMAGES.macbook.logicBoard.width, height: IMAGES.macbook.logicBoard.height },
-        altText: 'MacBook Pro M2 motherboard diagnostic and repair after coffee spill damage'
-      },
-      seo: { title: 'MacBook Pro M2 Liquid Damage Repair — Salmiya | KCROC', description: 'Coffee spill destroyed a MacBook Pro M2 in Salmiya. KCROC repaired the motherboard for 65 KWD, preserving all data. Apple wanted 280 KWD for a board swap.', canonicalUrl: 'https://www.computerrepairkuwait.com/case-studies/macbook-liquid-damage-salmiya', ogType: 'article', robots: 'noindex, follow', schemaTypes: ['Article', 'BreadcrumbList', 'ImageObject'] },
-      
-      // 🚀 NEW
-      narrative: {
-        clientContext: 'Graphic designer, Salmiya',
-        hook: 'The client accidentally spilled coffee across the keyboard of their MacBook Pro 14" M2 Pro. The device powered off immediately, and on restart the fan spun briefly but the screen stayed completely black. With months of unbacked-up project files on the drive, an Apple Authorized Center quote of 280 KWD for a full board swap — with total data loss — was not an option. The client reached out via WhatsApp for a second opinion, and we dispatched a free emergency pickup to Salmiya the same day.',
-        diagnosisSteps: [
-          'Main power rail short: corrosion found on the PPBUS_G3H rail, which distributes power throughout the board.',
-          'Blown MOSFET: the Q7510 MOSFET had shorted out, cutting power delivery entirely.',
-          'Display circuit: secondary liquid damage had tripped the backlight fuse, explaining the black screen despite the fan spinning.'
-        ],
-        repairSteps: [
-          'Ultrasonic cleaning: the board was stripped and run through an industrial ultrasonic cleaner to remove microscopic coffee residue and copper corrosion from beneath the chips.',
-          'Micro-soldering: the shorted Q7510 MOSFET was removed with precision hot-air rework and replaced with an OEM equivalent.',
-          'Fuse replacement: the blown backlight fuse was traced and replaced, restoring power to the display.',
-          'Stress testing: after reassembly with fresh thermal paste, the board ran a continuous 4-hour full-load test to confirm thermal and electrical stability.'
-        ],
-        closingOutcome: 'The MacBook powered on and passed full hardware diagnostics. Because the original motherboard was repaired rather than replaced, the onboard storage — soldered directly to that board and tied to its Secure Enclave — was never touched, so all client data was preserved. The device was back in Salmiya within 36 hours, at 65 KWD versus the 280 KWD board-swap quote: a 215 KWD saving, with data intact and a 30-day warranty included.',
-        urgentWarning: 'If you spill liquid on a MacBook: disconnect power immediately, do not attempt to turn it on to "check" it, and do not plug it into a charger. Both actions risk completing an electrical short that a simple clean-and-repair could otherwise avoid.'
-      }
-    } as CaseStudyEntity,
 
-    'case-rog-motherboard-hawalli': {
-      id: 'case-rog-motherboard-hawalli', slug: 'asus-rog-dead-motherboard-hawalli', entityType: 'CaseStudy', isActive: true,
-      title: 'ASUS ROG Strix Dead Motherboard Recovery — Hawalli',
-      description: 'Component-level restoration of a completely dead gaming laptop motherboard.',
-      device: 'ASUS ROG Strix G15',
-      location: 'Hawalli',
-      symptom: 'Laptop completely dead. No charging lights, no fan spin when power button pressed.',
-      diagnosis: 'Multimeter testing found a dead short on the main 19V power rail. Traced to a blown MOSFET near the CPU VRM.',
-      repair: 'Micro-soldering to remove the shorted MOSFET. Replaced with OEM equivalent. Re-pasted CPU/GPU with fresh liquid metal.',
-      outcome: 'System booted successfully under full load. Customer avoided replacing the entire 350 KWD motherboard.',
-      timeToRepair: '48 hours total (repair completed same-day, followed by a 24-hour stability stress test before return)',
-      costVsReplacement: 'Repair: 45 KWD. Replacement board: 350 KWD.',
-      publishDate: '2026-06-20',
-      deviceCategory: 'gaming-laptop',
-      deviceModel: 'ASUS ROG Strix G15',
-      brandId: 'brand-asus',
-      serviceIds: ['srv-gaming', 'srv-gaming-laptop', 'srv-motherboard'],
-      problemIds: ['problem-no-power'],
-      locationId: 'loc-hawalli',
-      authorId: 'https://www.computerrepairkuwait.com/author/imran#person',
-      repairCategory: 'Gaming laptop motherboard component-level repair',
-      difficulty: 'component-level',
-      repairStatus: 'success',
-      diagnosticTools: ['Bench power supply', 'Multimeter', 'Thermal camera', 'Hot-air rework station'],
-      componentsTested: ['19V main power rail', 'CPU VRM power stage', 'System power sequence'],
-      partsReplaced: ['Shorted MOSFET'],
-      testingPerformed: ['Power-on verification', '24-hour graphical stress test', 'Thermal verification'],
-      repairDuration: '48 hours total (same-day repair plus a 24-hour post-repair stress test)',
-      warranty: { durationDays: 30, coverage: 'All parts and labor on the repair performed.' },
-      evidence: [],
-      customerConsent: { granted: false, scope: [] },
-      featuredImage: {
-        thumbnail: { raw: IMAGES.gaming.diagnostics.src, webp: IMAGES.gaming.diagnostics.src, avif: IMAGES.gaming.diagnostics.src, width: IMAGES.gaming.diagnostics.width, height: IMAGES.gaming.diagnostics.height },
-        hero: { raw: IMAGES.gaming.asusRogCpuThermalPasteGpuBuild.src, webp: IMAGES.gaming.asusRogCpuThermalPasteGpuBuild.src, avif: IMAGES.gaming.asusRogCpuThermalPasteGpuBuild.src, width: IMAGES.gaming.asusRogCpuThermalPasteGpuBuild.width, height: IMAGES.gaming.asusRogCpuThermalPasteGpuBuild.height },
-        altText: 'ASUS ROG Strix gaming laptop motherboard teardown and MOSFET repair'
-      },
-      seo: { title: 'ASUS ROG Dead Motherboard Repair — Hawalli | KCROC', description: 'Dead ASUS ROG Strix gaming laptop restored via chip-level micro-soldering in Hawalli. Saved customer 300+ KWD on a replacement board.', canonicalUrl: 'https://www.computerrepairkuwait.com/case-studies/asus-rog-dead-motherboard-hawalli', ogType: 'article', robots: 'noindex, follow', schemaTypes: ['Article', 'BreadcrumbList', 'ImageObject'] },
-      narrative: {
-        clientContext: 'Hardcore Gamer, Hawalli',
-        hook: 'The client was in the middle of an intense gaming session when their ASUS ROG Strix G15 abruptly shut off with a quiet pop. The laptop was completely dead—no charging lights, no fan spin, and totally unresponsive to the power button. An official service center diagnosed a catastrophically failed motherboard and quoted an astronomical 350 KWD for a complete board replacement. Hoping for a more reasonable solution, the client brought the heavy machine to our Hawalli lab for a component-level diagnostic.',
-        diagnosisSteps: [
-          'Initial inspection: We disconnected the battery and connected a bench power supply, which immediately indicated a dead short circuit preventing power draw.',
-          'Multimeter testing: We traced the 19V main power rail and found the exact point of failure.',
-          'Thermal imaging: By injecting a safe, low voltage into the shorted line, our thermal camera pinpointed a blown MOSFET located directly next to the CPU Voltage Regulator Module (VRM).'
-        ],
-        repairSteps: [
-          'Micro-soldering: Using a hot-air rework station and flux, the damaged MOSFET was carefully removed from the motherboard and replaced with a high-quality OEM equivalent.',
-          'Thermal optimization: Because ASUS ROG laptops run exceptionally hot, we cleaned off the degraded factory paste and applied fresh liquid metal to the CPU and GPU to prevent future thermal stress on the surrounding power delivery components.',
-          'Stress testing: The laptop was reassembled and subjected to a grueling 24-hour graphical benchmark to guarantee absolute stability.'
-        ],
-        closingOutcome: 'The ASUS ROG Strix booted successfully, passing all stress tests with improved thermal performance thanks to the fresh liquid metal. By fixing the specific burned component instead of discarding the entire motherboard, we completed the repair for just 45 KWD. The client saved 305 KWD, retained all their installed games and data, and was back online within 48 hours — including a full 24-hour stress test to confirm the fix would hold under sustained gaming load.'
-      }
-    } as CaseStudyEntity,
 
-    'case-dell-screen-kuwait-city': {
-      id: 'case-dell-screen-kuwait-city', slug: 'dell-xps-screen-replacement-kuwait-city', entityType: 'CaseStudy', isActive: true,
-      title: 'Same-Day Dell XPS Screen Replacement — Kuwait City',
-      description: 'Rapid turnaround logistics and OEM display replacement for a corporate client.',
-      device: 'Dell XPS 15',
-      location: 'Kuwait City',
-      symptom: 'Cracked LCD panel from a drop. Customer needed the laptop urgently for a corporate presentation.',
-      diagnosis: 'Screen panel physically shattered, but chassis and hinges remained intact. External display worked perfectly.',
-      repair: 'Device collected from the client\'s office at 10 AM. OEM 4K display assembly fitted and calibrated in the lab.',
-      outcome: 'Flawless display restoration. Delivered back to the client\'s office by 3 PM the same day.',
-      timeToRepair: '5 hours (including transit)',
-      costVsReplacement: 'Repair: 85 KWD. New XPS 15: 600+ KWD.',
-      publishDate: '2026-07-05',
-      deviceCategory: 'laptop',
-      deviceModel: 'Dell XPS 15',
-      brandId: 'brand-dell',
-      serviceIds: ['srv-screen', 'srv-laptop'],
-      problemIds: ['problem-cracked-screen'],
-      locationId: 'loc-kuwait-city',
-      authorId: 'https://www.computerrepairkuwait.com/author/imran#person',
-      repairCategory: 'Laptop display replacement',
-      difficulty: 'routine',
-      repairStatus: 'success',
-      diagnosticTools: ['Display test monitor', 'Dead-pixel test'],
-      componentsTested: ['LCD panel', 'Display cable', 'Hinges', 'Aluminum chassis'],
-      partsReplaced: ['OEM 4K display assembly'],
-      testingPerformed: ['Dead-pixel inspection', 'Display brightness/color verification', 'External display verification'],
-      repairDuration: '5 hours (including transit)',
-      warranty: { durationDays: 30, coverage: 'All parts and labor on the repair performed.' },
-      evidence: [],
-      customerConsent: { granted: false, scope: [] },
-      featuredImage: {
-        thumbnail: { raw: IMAGES.laptopHardware.dellLaptopCorruptedScreenGpuFailure.src, webp: IMAGES.laptopHardware.dellLaptopCorruptedScreenGpuFailure.src, avif: IMAGES.laptopHardware.dellLaptopCorruptedScreenGpuFailure.src, width: IMAGES.laptopHardware.dellLaptopCorruptedScreenGpuFailure.width, height: IMAGES.laptopHardware.dellLaptopCorruptedScreenGpuFailure.height },
-        hero: { raw: IMAGES.laptopHardware.laptopLcdPanelReplacementPart.src, webp: IMAGES.laptopHardware.laptopLcdPanelReplacementPart.src, avif: IMAGES.laptopHardware.laptopLcdPanelReplacementPart.src, width: IMAGES.laptopHardware.laptopLcdPanelReplacementPart.width, height: IMAGES.laptopHardware.laptopLcdPanelReplacementPart.height },
-        altText: 'Dell XPS 15 cracked screen diagnosis and OEM 4K panel replacement'
-      },
-      seo: { title: 'Same-Day Dell XPS Screen Replacement Kuwait City | KCROC', description: 'Cracked Dell XPS 15 screen replaced with OEM panel in just 5 hours, including free pick and drop to Kuwait City.', canonicalUrl: 'https://www.computerrepairkuwait.com/case-studies/dell-xps-screen-replacement-kuwait-city', ogType: 'article', robots: 'noindex, follow', schemaTypes: ['Article'] },
-      narrative: {
-        clientContext: 'Corporate Executive, Kuwait City',
-        hook: 'A corporate executive in Kuwait City dropped their Dell XPS 15 right before a critical board presentation, completely shattering the premium 4K display. While the laptop still functioned when plugged into an external monitor, it was useless for travel or the upcoming meeting. Buying a brand-new XPS 15 would cost over 600 KWD, and waiting weeks for a warranty mail-in repair was out of the question. The client contacted us at 9:00 AM needing an emergency same-day turnaround.',
-        diagnosisSteps: [
-          'Damage assessment: The LCD panel was physically destroyed, showing spiderweb cracks and bleeding liquid crystals.',
-          'Chassis inspection: We thoroughly examined the aluminum lid, hinges, and display cables, confirming they had survived the drop intact.',
-          'Part verification: We immediately pulled a matching, brand-new OEM 4K Dell display assembly from our local Hawalli inventory.'
-        ],
-        repairSteps: [
-          'Rapid collection: Our driver collected the damaged XPS 15 directly from the client\'s corporate office in Kuwait City at 10:00 AM and brought it securely to our lab.',
-          'Screen replacement: We safely removed the shattered display assembly, meticulously routing the delicate Wi-Fi antennas and display cables into the new OEM 4K panel.',
-          'Calibration: The new screen was powered on, tested for dead pixels, and color-calibrated to match Dell\'s factory standards.'
-        ],
-        closingOutcome: 'The Dell XPS 15 looked and functioned flawlessly. We rushed the repaired laptop back to Kuwait City, handing it to the executive at 3:00 PM—just five hours after they initiated the pickup. For 85 KWD, the client avoided a 600+ KWD replacement cost, kept their highly sensitive corporate data in their own possession, and successfully presented at their meeting.'
-      }
-    } as CaseStudyEntity,
 
     /* ═══════════════════════════════════════════════════════════════
        FOOTER

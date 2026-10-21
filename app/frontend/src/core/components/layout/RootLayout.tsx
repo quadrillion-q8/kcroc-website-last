@@ -51,8 +51,6 @@ const shouldShowAnimatedBackground = (pathname: string): boolean => {
 
   // Transparent first-class content templates.
   if (
-    path === '/case-studies' ||
-    path.startsWith('/case-studies/') ||
     path.startsWith('/pillar/') ||
     path === '/location/hawalli' ||
     path.startsWith('/location/')

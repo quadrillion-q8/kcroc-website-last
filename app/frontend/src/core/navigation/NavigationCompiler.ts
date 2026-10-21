@@ -137,36 +137,6 @@ export class NavigationCompiler {
     };
   }
 
-  // 4. Case Studies Mega Menu
-  private static compileCaseStudiesMegaMenu(): MegaMenuConfig {
-    const allCaseStudies = (NAV_GRAPH.caseStudies || []).map(cs => {
-      const entity = this.compileNavEntity(
-        { ...cs, description: cs.description ?? '', iconKey: '', popular: false, noFixNoFee: false, hasManyFeatures: false, hasPricing: false },
-        'Page',
-        'laptop'
-      );
-      // 🚀 FIXED: Prepend the required routing prefix so DesktopMegaMenu doesn't 404
-      entity.slug = `case-studies/${cs.slug}`;
-      return entity;
-    });
-
-    return {
-      id: 'case_studies_mega',
-      title: 'Real Repair Stories',
-      // 🎨 CONSISTENCY FIX: same Guides-style card treatment — all 3 case
-      // studies as cards (grid just renders a single row when under 6),
-      // with only the index link below.
-      featured: allCaseStudies.slice(0, 6),
-      sections: [{
-        title: 'Browse All',
-        items: [
-          { id: 'cs_index', slug: 'case-studies', title: `All Case Studies (${allCaseStudies.length})`, description: '', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'cases', weight: 100, commercialIntent: 'info' },
-          ...allCaseStudies.slice(6)
-        ]
-      }]
-    };
-  }
-
   // 5. Pricing Mega Menu — pricing categories only; repair services stay
   // in the dedicated Services mega menu.
   private static compilePricingMegaMenu(): MegaMenuConfig {
@@ -427,21 +397,11 @@ export class NavigationCompiler {
       'blog/why-is-my-laptop-so-slow-2026',
       'blog/laptop-buying-guide-kuwait-2026',
     ].map(path => NAV_GRAPH.blogEntries.find(entry => entry.slug === path)).filter(Boolean).map(toContent);
-    const caseFeatured = (NAV_GRAPH.caseStudies || []).slice(0, 1).map(cs => toContent({
-      id: cs.id,
-      slug: `case-studies/${cs.slug}`,
-      title: cs.title,
-      description: cs.description || '',
-      iconKey: 'wrench',
-      primaryKeyword: cs.title.toLowerCase(),
-    }));
-
-    const featured = [...guideFeatured, ...blogFeatured, ...caseFeatured].slice(0, 6);
+    const featured = [...guideFeatured, ...blogFeatured].slice(0, 6);
     const links: NavEntity[] = [
       { id: 'resources-guides', slug: 'guides', title: 'Troubleshooting Guides', description: 'Problem-first repair and troubleshooting guides.', iconKey: 'shield', entityType: 'Page' as any, primaryKeyword: 'computer repair guides', weight: 80, commercialIntent: 'informational' },
       { id: 'resources-blog', slug: 'blog', title: 'Tech Blog', description: 'Practical explainers, buying guides and repair advice.', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'tech blog Kuwait', weight: 70, commercialIntent: 'informational' },
       { id: 'resources-news', slug: 'news', title: 'Tech News', description: 'Current Windows, hardware, Apple, gaming and AI news.', iconKey: 'monitor', entityType: 'Page' as any, primaryKeyword: 'tech news', weight: 60, commercialIntent: 'informational' },
-      { id: 'resources-cases', slug: 'case-studies', title: 'Repair Case Studies', description: 'Real-world repairs and diagnostic outcomes from the KCROC lab.', iconKey: 'wrench', entityType: 'Page' as any, primaryKeyword: 'computer repair case studies', weight: 50, commercialIntent: 'informational' },
     ];
 
     return {
@@ -478,7 +438,6 @@ export class NavigationCompiler {
         { id: 'nav_problems', label: 'Problems', href: '/problems', hasMega: true, megaMenuId: 'problems_mega' },
         { id: 'nav_locations', label: 'Locations', href: '/locations', hasMega: true, megaMenuId: 'locations_mega' },
         { id: 'nav_pricing', label: 'Pricing', href: '/pricing', hasMega: true, megaMenuId: 'pricing_mega' },
-        { id: 'nav_case_study', label: 'Case Study', href: '/case-studies', hasMega: true, megaMenuId: 'case_studies_mega' },
         { id: 'nav_blog', label: 'Blog', href: '/blog', hasMega: true, megaMenuId: 'blog_mega' },
         { id: 'nav_news', label: 'News', href: '/news', hasMega: true, megaMenuId: 'news_mega' },
         { id: 'nav_guides', label: 'Guides', href: '/guides', hasMega: true, megaMenuId: 'guides_mega' },
@@ -491,7 +450,6 @@ export class NavigationCompiler {
         problems_mega: this.compileProblemsMegaMenu(),
         locations_mega: this.compileLocationsMegaMenu(),
         pricing_mega: this.compilePricingMegaMenu(),
-        case_studies_mega: this.compileCaseStudiesMegaMenu(),
         blog_mega: this.compileBlogMegaMenu(),
         news_mega: this.compileNewsMegaMenu(),
         guides_mega: this.compileGuidesMegaMenu(),

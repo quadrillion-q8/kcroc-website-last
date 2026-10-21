@@ -121,7 +121,6 @@ const STANDALONE_REPAIR_PATHS: Record<string, { title: string; intro: string; li
       { href: '/gaming-pc-repair-kuwait', label: 'Gaming PC & GPU Repair Kuwait', description: 'For instability, crashes, artifacting, GPU, RAM, power, and component-level faults.' },
       { href: '/blog/gaming-pc-cooling', label: 'Gaming PC Cooling Guide', description: 'For heat, dust, fan, airflow, and thermal-interface problems.' },
       { href: '/motherboard-repair-kuwait', label: 'Motherboard Repair Kuwait', description: 'For board-level faults caused by power, thermal, or component problems.' },
-      { href: '/case-studies/asus-rog-dead-motherboard-hawalli', label: 'ASUS ROG Repair Case Study', description: 'See a real gaming-motherboard repair example from KCROC.' },
     ],
   },
   'microsoft-windows-surface-event-october-7-2026': {

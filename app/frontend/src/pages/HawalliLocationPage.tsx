@@ -32,7 +32,7 @@ import MapComponent from '../components/MapComponent';
 import { KCROC_GRAPH } from '../data/graph';
 import { useAnalytics } from '../core/analytics/AnalyticsProvider';
 import CoreRepairPillars from '../components/content/CoreRepairPillars';
-import { canPublishCaseStudyPhotos, isCaseStudyPublishable, isReviewPublishable } from '../utils/publicationEligibility';
+import { isReviewPublishable } from '../utils/publicationEligibility';
 // 🩹 FIX: real workshop/branch photos already exist in the codebase but
 // were never used anywhere on this page — the entire page relied on a
 // single hero image (location.contentImage). These power the new "Inside
@@ -82,8 +82,6 @@ export default function HawalliLocationPage() {
   const location = KCROC_GRAPH.locations.find((l) => l.id === 'loc-hawalli');
   const business = KCROC_GRAPH.business;
   const process = KCROC_GRAPH.processes?.find((p) => p.id === 'proc-standard');
-  // Do not promote a customer-specific story unless publication consent and first-party evidence are present.
-  const caseStudy = KCROC_GRAPH.caseStudies.find((c) => c.id === 'case-rog-motherboard-hawalli' && isCaseStudyPublishable(c));
   const reviews = KCROC_GRAPH.reviews;
   const hawalliReview = reviews?.items.find((r) => r.location === 'Hawalli' && isReviewPublishable(r));
   const trustBadges = KCROC_GRAPH.trustBadges;
@@ -490,43 +488,6 @@ export default function HawalliLocationPage() {
           </Link>
         </div>
       </section>
-
-      {/* ─── HAWALLI CASE STUDY ─── */}
-      {caseStudy && (
-        <section className="py-8 sm:py-14 px-4 sm:px-6 border-t border-slate-800/50">
-          <div className="container mx-auto max-w-4xl">
-            <h2 className="text-2xl sm:text-3xl font-black mb-6 sm:mb-10 text-white tracking-tight">
-              A Real Repair From Our Hawalli Service Area
-            </h2>
-            <Link
-              to={`/case-studies/${caseStudy.slug}`}
-              className="group grid sm:grid-cols-[1fr_1.3fr] gap-0 bg-slate-900/50 border border-slate-800 hover:border-cyan-500/40 rounded-2xl overflow-hidden transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
-            >
-              {canPublishCaseStudyPhotos(caseStudy) && caseStudy.featuredImage?.hero && (
-                <img
-                  src={caseStudy.featuredImage.hero.webp}
-                  alt={caseStudy.featuredImage.altText || caseStudy.title}
-                  width={caseStudy.featuredImage.hero.width}
-                  height={caseStudy.featuredImage.hero.height}
-                  loading="lazy"
-                  className="w-full h-48 sm:h-full object-cover"
-                />
-              )}
-              <div className="p-5 sm:p-7 flex flex-col justify-center">
-                <h3 className="text-lg sm:text-xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors">
-                  {caseStudy.title}
-                </h3>
-                <p className="text-sm text-slate-400 leading-relaxed mb-4">
-                  {caseStudy.description} {caseStudy.outcome}
-                </p>
-                <span className="text-xs font-bold text-cyan-500 flex items-center">
-                  Read the Hawalli Case Study <CheckCircle2 className="w-3 h-3 ml-1" aria-hidden="true" />
-                </span>
-              </div>
-            </Link>
-          </div>
-        </section>
-      )}
 
       {/* ─── HOW IT WORKS ─── */}
       {process && (
