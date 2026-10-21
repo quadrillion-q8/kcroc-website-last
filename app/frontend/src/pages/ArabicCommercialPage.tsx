@@ -607,6 +607,30 @@ const GAMING_AR_SYMPTOMS = [
   },
 ];
 
+
+const GAMING_AR_DIAGNOSTIC_PATHS = [
+  {
+    title: 'الـFPS يهبط بعد دقائق من اللعب',
+    check: 'نراجع حرارة CPU وGPU والـhotspot وتغيّر الترددات وسلوك المراوح وتدفق الهواء وقت ظهور المشكلة.',
+    note: 'هبوط الفريمات وحده لا يثبت أن كرت الشاشة تالف؛ قد يكون السبب حرارة أو طاقة أو RAM أو إعدادات اللعبة.'
+  },
+  {
+    title: 'الكمبيوتر يطفي أو يعيد التشغيل تحت الضغط',
+    check: 'نربط وقت الإطفاء بدرجات الحرارة وحمل الجهاز وتوصيلات الطاقة وسلوك PSU ودوائر الطاقة على المذربورد.',
+    note: 'إذا يتكرر الإطفاء، لا تواصل اختبارات الضغط في البيت؛ أوقف الاستخدام إذا ظهرت رائحة احتراق أو دخان.'
+  },
+  {
+    title: 'خطوط أو مربعات أو Artifacts في الصورة',
+    check: 'نحدد هل تظهر قبل تشغيل Windows أو داخل لعبة معيّنة، ثم نفحص مسار العرض وتعريفات النظام والكرت والطاقة وVRAM حسب الحالة.',
+    note: 'شكل الصورة وحده لا يؤكد تلف VRAM أو GPU، لذلك لا نوصي باستبدال الكرت قبل التشخيص.'
+  },
+  {
+    title: 'الجهاز يعمل لكن لا يعطي صورة أو لا يقلع',
+    check: 'نراجع مؤشرات POST وRAM وتغذية كرت الشاشة والتوصيلات ومسار العرض وإعدادات BIOS بحسب الأعراض.',
+    note: 'لا تعِد تفليش BIOS أو VBIOS عشوائيًا؛ الخطوة غير المناسبة قد تزيد المشكلة، خصوصًا إذا كان الجهاز غير مستقر.'
+  }
+];
+
 const GAMING_AR_BRANDS = [
   'ASUS ROG',
   'MSI',
@@ -660,6 +684,14 @@ const GAMING_AR_FAQ = [
     a: 'إي، بعض الحالات نقدر نستعيد فيها BIOS أو VBIOS، حسب المذربورد أو الكرت وحالة الـfirmware. أول شي نشوف الجهاز وبعدين نحدد الطريقة المناسبة.',
   },
   {
+    q: 'هل خطوط أو مربعات الشاشة تعني أن VRAM تالفة؟',
+    a: 'مو بالضرورة. الـArtifacts قد ترتبط بالكرت أو الذاكرة أو الطاقة أو تعريفات النظام أو مسار العرض. صوّرها بالجوال إذا قدرت، واذكر هل تظهر داخل لعبة واحدة أو في كل الاستخدامات؛ الفحص هو الذي يحدد السبب.',
+  },
+  {
+    q: 'هل أجرّب Stress Test أو أفلش BIOS/VBIOS قبل ما أرسل الجهاز؟',
+    a: 'إذا الجهاز يطفي أو حرارته ترتفع بشدة أو تظهر Artifacts، لا تكرر اختبار الضغط. ولا تفلش BIOS/VBIOS من دون سبب واضح وخطوات مناسبة للموديل. أرسل وصف العطل وأي تغيير حديث، ونحدد الاختبار المناسب.',
+  },
+  {
     q: 'كم سعر تصليح الـGaming PC في الكويت؟',
     a: 'تصليح Gaming PC وGPU يبدأ من 25 د.ك حسب نوع الشغلة والتشخيص. إذا المشكلة معقدة في GPU أو المذربورد أو التبريد، نحتاج نشيك الجهاز أول قبل نعطيك السعر النهائي.',
   },
@@ -701,9 +733,9 @@ function ArabicGamingPcRepairPage({
       {
         '@type': 'Service',
         '@id': `${canonicalUrl}#service`,
-        name: 'تصليح Gaming PC وبي سي قيمنق وتصليح كرت الشاشة في الكويت',
-        serviceType: 'Gaming PC & GPU Repair',
-        description: 'تشخيص وإصلاح مشاكل Gaming PC والـGPU والحرارة والطاقة والتبريد وVRAM وBIOS/VBIOS في الكويت، مع استلام وتوصيل.',
+        name: 'تصليح كمبيوتر ألعاب وGaming PC وكرت الشاشة في الكويت',
+        serviceType: 'تصليح كمبيوتر ألعاب وGaming PC وGPU',
+        description: 'تصليح كمبيوتر ألعاب وGaming PC في الكويت لمشاكل GPU وVRAM وFPS والحرارة والطاقة والشاشة السوداء. فحص قبل الإصلاح، استلام وتوصيل واختبار استقرار بعد الإصلاح.',
         url: canonicalUrl,
         areaServed: { '@type': 'Country', name: 'Kuwait' },
         provider: {
@@ -719,7 +751,7 @@ function ArabicGamingPcRepairPage({
             addressCountry: business.addressCountry,
           },
         },
-        image: `${business.websiteUrl}/images/custom-gaming-pc-teardown-and-diagnostics-workbench.webp`,
+        image: `${business.websiteUrl}${IMAGES.gaming.diagnostics.src}`,
         offers: {
           '@type': 'Offer',
           priceCurrency: 'KWD',
@@ -766,11 +798,11 @@ function ArabicGamingPcRepairPage({
               </div>
 
               <h1 className="mt-5 text-3xl font-black leading-[1.15] text-white sm:text-5xl lg:text-6xl">
-                تصليح بي سي قيمنق وGaming PC وكرت الشاشة بالكويت
+                تصليح كمبيوتر ألعاب وGaming PC وكرت الشاشة في الكويت
               </h1>
 
               <p className="mt-5 max-w-3xl text-base leading-8 text-slate-200 sm:text-xl">
-                بي سي القيمنق يهنّق؟ يطفي وقت اللعب؟ الـFPS نازل؟ فيه تقطيع؟ أو كرت الشاشة يطلع خطوط وArtifacts؟
+                تدور على تصليح كمبيوتر ألعاب بالكويت؟ بي سي القيمنق يهنّق؟ يطفي وقت اللعب؟ الـFPS نازل؟ فيه تقطيع أو كرت الشاشة يطلع خطوط وArtifacts؟
                 <span className="font-black text-white">قل لنا شنو صاير مع الجهاز، وإحنا نبدأ من العطل نفسه، مو من تبديل أغلى قطعة.</span>
               </p>
 
@@ -806,7 +838,7 @@ function ArabicGamingPcRepairPage({
             <figure className="overflow-hidden rounded-[1.75rem] border border-slate-800 bg-slate-950">
               <img
                 src={IMAGES.gaming.diagnostics.src}
-                alt="تشخيص بي سي قيمنق وكرت الشاشة داخل مختبر KCROC بالكويت"
+                alt="تشخيص كمبيوتر ألعاب وكرت الشاشة داخل مختبر KCROC في حولي، الكويت"
                 width={IMAGES.gaming.diagnostics.width}
                 height={IMAGES.gaming.diagnostics.height}
                 loading="eager"
@@ -878,6 +910,54 @@ function ArabicGamingPcRepairPage({
               فحص كرت الشاشة والمكونات المرتبطة به قبل اتخاذ قرار الإصلاح أو الاستبدال.
             </figcaption>
           </figure>
+        </section>
+
+
+        <section className="mt-10 rounded-[1.75rem] border border-slate-800 bg-slate-900/45 p-6 sm:p-8" aria-labelledby="gaming-diagnostic-guide">
+          <p className="text-sm font-black tracking-[0.08em] text-cyan-400">دليل تشخيص عملي</p>
+          <h2 id="gaming-diagnostic-guide" className="mt-2 text-3xl font-black text-white">كيف نحدد سبب عطل كمبيوتر الألعاب قبل تبديل القطع؟</h2>
+          <p className="mt-4 max-w-4xl leading-8 text-slate-300">
+            أكثر من عطل ممكن يعطيك نفس العرض. لذلك نربط توقيت المشكلة بسلوك الجهاز ونتائج الفحص، ونشرح لك الاحتمالات قبل تحديد الإصلاح. النقاط التالية توضح طريقة التفكير في التشخيص، وليست حكمًا نهائيًا من العرض وحده.
+          </p>
+          <div className="mt-6 grid gap-4 md:grid-cols-2">
+            {GAMING_AR_DIAGNOSTIC_PATHS.map((item) => (
+              <article key={item.title} className="rounded-2xl border border-slate-800 bg-slate-950/65 p-5 sm:p-6">
+                <h3 className="text-lg font-black leading-7 text-white">{item.title}</h3>
+                <p className="mt-3 text-sm leading-7 text-slate-300"><span className="font-black text-cyan-300">شنو نراجع؟ </span>{item.check}</p>
+                <p className="mt-3 rounded-xl border border-amber-500/15 bg-amber-500/5 p-3 text-sm leading-7 text-slate-300"><span className="font-black text-amber-300">مهم تعرف: </span>{item.note}</p>
+              </article>
+            ))}
+          </div>
+          <div className="mt-6 grid gap-4 sm:grid-cols-2">
+            <figure className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-950">
+              <img src={IMAGES.gaming.gamingPcThermalThrottlingKuwait.src} alt="فحص حرارة كمبيوتر ألعاب ومؤشرات الاختناق الحراري في الكويت" width={IMAGES.gaming.gamingPcThermalThrottlingKuwait.width} height={IMAGES.gaming.gamingPcThermalThrottlingKuwait.height} loading="lazy" className="aspect-[4/3] w-full object-cover" />
+              <figcaption className="border-t border-slate-800 px-4 py-3 text-sm leading-6 text-slate-400">نفصل بين ارتفاع الحرارة والاختناق الحراري ومشكلة الطاقة بدل افتراض أن البطء يعني تلف GPU.</figcaption>
+            </figure>
+            <figure className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-950">
+              <img src={IMAGES.gaming.asusRogUefiBiosUtilityTemperatureMonitor.src} alt="شاشة BIOS لمراقبة الحرارة في لوحة ASUS ROG ضمن تشخيص كمبيوتر الألعاب" width={IMAGES.gaming.asusRogUefiBiosUtilityTemperatureMonitor.width} height={IMAGES.gaming.asusRogUefiBiosUtilityTemperatureMonitor.height} loading="lazy" className="aspect-[4/3] w-full object-cover" />
+              <figcaption className="border-t border-slate-800 px-4 py-3 text-sm leading-6 text-slate-400">نفحص معلومات BIOS وحرارة النظام عندما تكون ذات صلة بالعطل، من دون تغيير إعدادات عشوائية.</figcaption>
+            </figure>
+          </div>
+          <div className="mt-6 rounded-2xl border border-amber-500/20 bg-amber-500/5 p-5">
+            <h3 className="font-black text-white">قبل ما تجرّب إصلاح بنفسك أو ترسل الجهاز</h3>
+            <ul className="mt-3 list-disc space-y-2 ps-5 text-sm leading-7 text-slate-300">
+              <li>إذا الجهاز يطفي باستمرار أو ظهرت رائحة احتراق أو دخان، أوقف الاستخدام ولا تكرر اختبار الضغط؛ افصل الكهرباء إذا كان ذلك آمنًا.</li>
+              <li>لا تفتح مزوّد الطاقة من الداخل، ولا تعِد تفليش BIOS/VBIOS فقط بسبب الشاشة السوداء أو عدم الاستقرار.</li>
+              <li>إذا النظام يشتغل، احفظ ملفاتك المهمة. صوّر العطل بالجوال واذكر اللعبة أو البرنامج ووقت ظهور المشكلة وآخر ترقية أُجريت.</li>
+              <li>أرسل الموديل ونوع GPU ومنطقتك ووصف العطل؛ لا ترسل كلمات المرور أو رموز الدخول.</li>
+            </ul>
+          </div>
+          <div className="mt-6">
+            <h3 className="font-black text-white">خدمات وأدلة مرتبطة</h3>
+            <div className="mt-3 flex flex-wrap gap-2">
+              <Link to="/desktop-pc-repair-kuwait" className="rounded-full border border-slate-700 px-4 py-2 text-sm font-bold text-slate-200 hover:border-cyan-500/40 hover:text-cyan-300">تصليح الكمبيوتر المكتبي والبرج</Link>
+              <Link to="/ar/motherboard-repair-kuwait" className="rounded-full border border-slate-700 px-4 py-2 text-sm font-bold text-slate-200 hover:border-cyan-500/40 hover:text-cyan-300">تصليح المذربورد والدوائر الإلكترونية</Link>
+              <Link to="/ar/gaming-laptop-repair-kuwait" className="rounded-full border border-slate-700 px-4 py-2 text-sm font-bold text-slate-200 hover:border-cyan-500/40 hover:text-cyan-300">تصليح اللابتوب القيمنق</Link>
+              <Link to="/guides/gaming-pc-not-turning-on-kuwait" className="rounded-full border border-slate-700 px-4 py-2 text-sm font-bold text-slate-200 hover:border-cyan-500/40 hover:text-cyan-300">دليل الكمبيوتر الذي لا يعمل (بالإنجليزية)</Link>
+              <Link to="/blog/gaming-pc-cooling" className="rounded-full border border-slate-700 px-4 py-2 text-sm font-bold text-slate-200 hover:border-cyan-500/40 hover:text-cyan-300">دليل تبريد Gaming PC (بالإنجليزية)</Link>
+              <Link to="/guides/bios-uefi-recovery-kuwait" className="rounded-full border border-slate-700 px-4 py-2 text-sm font-bold text-slate-200 hover:border-cyan-500/40 hover:text-cyan-300">دليل BIOS / UEFI (بالإنجليزية)</Link>
+            </div>
+          </div>
         </section>
 
         <section className="mt-10" aria-labelledby="gaming-services">

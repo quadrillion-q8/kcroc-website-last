@@ -239,18 +239,24 @@ export const rawGraphData: RawGraphData = {
 
     'page-ar-gaming-pc-repair': {
       id: 'page-ar-gaming-pc-repair', slug: 'ar/gaming-pc-repair-kuwait', entityType: 'WebPage', isActive: true,
-      title: 'تصليح بي سي قيمنق وGaming PC في الكويت',
-      description: 'تصليح Gaming PC وبي سي قيمنق وكرت الشاشة في الكويت: FPS، حرارة، تقطيع، إطفاء مفاجئ، GPU، VRAM، طاقة وتبريد، مع استلام وتوصيل داخل الكويت.',
+      title: 'تصليح كمبيوتر ألعاب في الكويت | Gaming PC وكرت الشاشة',
+      description: 'تصليح كمبيوتر ألعاب وGaming PC في الكويت لمشاكل GPU وFPS والحرارة والشاشة السوداء والإطفاء المفاجئ. استلام وتوصيل من مناطق الكويت مع فحص أولي وعرض سعر قبل الإصلاح وضمان 30 يومًا.',
       seo: {
-        title: 'تصليح بي سي قيمنق وGaming PC الكويت | GPU وFPS | KCROC',
-        description: 'بي سي قيمنق يهنّق أو يطفي؟ FPS نازل أو GPU يطلع خطوط؟ تشخيص وإصلاح Gaming PC وكرت الشاشة والحرارة والطاقة في الكويت. من 25 د.ك، واستلام وتوصيل.',
+        title: 'تصليح كمبيوتر ألعاب في الكويت | Gaming PC وGPU | KCROC',
+        description: 'تصليح كمبيوتر ألعاب وGaming PC في الكويت لمشاكل GPU وFPS والحرارة والشاشة السوداء والإطفاء المفاجئ. فحص أولي مجاني، استلام وتوصيل وضمان 30 يومًا.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/ar/gaming-pc-repair-kuwait',
         locale: 'ar_KW',
         alternates: { 'ar-KW': 'https://www.computerrepairkuwait.com/ar/gaming-pc-repair-kuwait', 'en-KW': 'https://www.computerrepairkuwait.com/gaming-pc-repair-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/gaming-pc-repair-kuwait' },
-        ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList', 'Service'], lastModified: '2026-10-03T00:00:00+03:00',
-        breadcrumbs: [{ name: 'الرئيسية', url: '/' }, { name: 'تصليح Gaming PC وبي سي قيمنق', url: '/ar/gaming-pc-repair-kuwait' }]
+        ogType: 'website',
+        ogImage: '/images/custom-gaming-pc-teardown-and-diagnostics-workbench.webp',
+        ogImageAlt: 'تشخيص كمبيوتر ألعاب وكرت الشاشة على طاولة فحص KCROC في الكويت',
+        ogImageWidth: 1200,
+        ogImageHeight: 630,
+        schemaTypes: ['WebPage', 'BreadcrumbList', 'Service'],
+        lastModified: '2026-10-21T00:00:00+03:00',
+        breadcrumbs: [{ name: 'الرئيسية', url: '/' }, { name: 'تصليح كمبيوتر ألعاب في الكويت', url: '/ar/gaming-pc-repair-kuwait' }]
       },
-      relatedServiceIds: ['srv-gaming', 'srv-gaming-laptop-cleaning', 'srv-motherboard', 'srv-laptop']
+      relatedServiceIds: ['srv-gaming', 'srv-gaming-laptop-cleaning', 'srv-motherboard', 'srv-laptop', 'srv-ssd-ram']
     } as WebPageEntity,
 
     'page-ar-laptop-screen-repair': {
