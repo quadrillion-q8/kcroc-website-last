@@ -305,9 +305,7 @@ export const rawGraphData: RawGraphData = {
       id: 'page-ar-hawalli-computer-repair', slug: 'ar/computer-repair-hawalli', entityType: 'WebPage', isActive: true,
       title: 'تصليح كمبيوتر حولي | فني لابتوب وموقع المختبر',
       description: 'تصليح كمبيوتر ولابتوب في حولي من مختبر KCROC الفعلي في مجمع الملا. زيارة مباشرة أو استلام وتوصيل مجاني، مع تشخيص واضح وضمان 30 يومًا.',
-      seo: {
-        title: 'تصليح كمبيوتر حولي | فني لابتوب وموقع المختبر | KCROC',
-        description: 'تحتاج تصليح كمبيوتر أو لابتوب في حولي؟ زور مختبر KCROC في مجمع الملا، شارع ابن خلدون، محل 19. ساعات العمل يوميًا 10 صباحًا إلى 10 مساءً، مع تشخيص واضح واستلام وتوصيل مجاني وضمان 30 يومًا.',
+      seo: { title: "تصليح كمبيوتر حولي | فني لابتوب وموقع المختبر | KCROC", description: "تحتاج تصليح كمبيوتر أو لابتوب في حولي؟ مختبر KCROC في مجمع الملا، شارع ابن خلدون، محل 19. مفتوح يوميًا 10 صباحًا–10 مساءً، مع استلام وتوصيل مجاني وضمان 30 يومًا.",
         canonicalUrl: 'https://www.computerrepairkuwait.com/ar/computer-repair-hawalli',
         locale: 'ar_KW', alternates: { 'ar-KW': 'https://www.computerrepairkuwait.com/ar/computer-repair-hawalli', 'en-KW': 'https://www.computerrepairkuwait.com/location/hawalli', 'x-default': 'https://www.computerrepairkuwait.com/location/hawalli' },
         ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList'], lastModified: '2026-10-16T00:00:00+03:00',
@@ -366,9 +364,7 @@ export const rawGraphData: RawGraphData = {
       id: 'page-ar-kuwait-city-computer-repair', slug: 'ar/computer-repair-kuwait-city', entityType: 'WebPage', isActive: true,
       title: "تصليح كمبيوتر مدينة الكويت وفني لابتوب",
       description: "تصليح كمبيوتر ولابتوب في مدينة الكويت مع استلام وتوصيل مجاني من شرق ودسمان والمرقاب والقبلة، والإصلاح في مختبر KCROC بحولي.",
-      seo: {
-        title: "تصليح كمبيوتر مدينة الكويت | فني لابتوب واستلام مجاني | KCROC",
-        description: "تصليح كمبيوتر ولابتوب في مدينة الكويت وشرق ودسمان والمرقاب والقبلة. شاشات وأعطال الطاقة والشحن، استلام وتوصيل مجاني من البيت أو المكتب، وضمان 30 يومًا.",
+      seo: { title: "تصليح كمبيوتر مدينة الكويت | استلام مجاني | KCROC", description: "تصليح كمبيوتر ولابتوب في مدينة الكويت وشرق ودسمان والمرقاب والقبلة. استلام وتوصيل مجاني من البيت أو المكتب، مع التشخيص والإصلاح في مختبر KCROC بحولي.",
         canonicalUrl: 'https://www.computerrepairkuwait.com/ar/computer-repair-kuwait-city',
         locale: 'ar_KW', alternates: { 'ar-KW': 'https://www.computerrepairkuwait.com/ar/computer-repair-kuwait-city', 'en-KW': 'https://www.computerrepairkuwait.com/location/kuwait-city', 'x-default': 'https://www.computerrepairkuwait.com/location/kuwait-city' },
         ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList'], lastModified: '2026-10-04T00:00:00+03:00',
