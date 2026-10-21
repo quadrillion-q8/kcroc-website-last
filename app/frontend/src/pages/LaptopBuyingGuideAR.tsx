@@ -25,7 +25,7 @@ const PAGE_URL = `${business.websiteUrl}/blog/ar/laptop-buying-guide-kuwait-2026
 const EN_PAGE_URL = `${business.websiteUrl}/blog/laptop-buying-guide-kuwait-2026`;
 const HERO_IMAGE_URL = `${business.websiteUrl}/images/blog/laptop-buying-guide-kuwait-arabic-2026.webp`;
 const PUBLISHED_DATE = '2026-08-07T09:00:00+03:00';
-const LAST_UPDATED_DATE = '2026-10-21T09:00:00+03:00';
+const LAST_UPDATED_DATE = '2026-10-21T00:00:00+03:00';
 
 const WA_LINK = `https://wa.me/${business.telephone}?text=${encodeURIComponent(
   'مرحباً KCROC، قرأت دليل شراء اللابتوب وأحتاج استشارة قبل الشراء. ممكن مساعدة؟'

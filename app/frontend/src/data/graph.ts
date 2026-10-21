@@ -704,7 +704,7 @@ export const rawGraphData: RawGraphData = {
         locale: 'ar_KW',
         alternates: { 'en-KW': '/blog/laptop-buying-guide-kuwait-2026', 'ar-KW': '/blog/ar/laptop-buying-guide-kuwait-2026', 'x-default': '/blog/laptop-buying-guide-kuwait-2026' },
         schemaTypes: ['Article', 'FAQPage', 'BreadcrumbList', 'ImageObject'],
-        lastModified: '2026-10-21T09:00:00+03:00'
+        lastModified: '2026-10-21T00:00:00+03:00'
       },
       relatedServiceIds: ['srv-laptop'],
       relatedResourcePaths: [
