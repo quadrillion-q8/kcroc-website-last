@@ -64,7 +64,7 @@ const CONFIG: Record<string, {
     h1: 'تصليح لابتوب في الكويت من الشاشة إلى المذربورد',
     eyebrow: 'فحص أولي مجاني • استلام وتوصيل داخل الكويت • الإصلاح في مختبر حولي',
     intro: 'لابتوبك ما يشتغل، ما يشحن، يسخن أو شاشته سوداء؟ في KCROC نبدأ من الأعراض ونفحص الجهاز لتحديد السبب بدل تخمين القطعة. نوضح لك خيارات الإصلاح والتكلفة قبل أي عمل مدفوع، ثم نختبر الجهاز بعد الإصلاح. يتم العمل في مختبرنا بحولي مع خدمة استلام وتوصيل داخل الكويت.',
-    bullets: ['فحص أولي مجاني وتحديد مسار العطل', 'الشاشة والبطارية والشحن والمفصلات والتبريد', 'أعطال عدم التشغيل واللوحة الأم عند إمكانية الإصلاح', 'عرض سعر واضح قبل الموافقة على العمل المدفوع', 'استلام وتوصيل مجاني وضمان 30 يومًا على الإصلاح المكتمل'],
+    bullets: ['فحص أولي مجاني وتحديد مسار العطل', 'الشاشة والبطارية والشحن والمفصلات والتبريد', 'أعطال عدم التشغيل واللوحة الأم عند إمكانية الإصلاح', 'عرض سعر واضح قبل الموافقة على العمل المدفوع', 'استلام وتوصيل مجاني وضمان 30 يومًا وNo Fix, No Fee وفق الشروط'],
     faq: [
       { q: 'كم يكلف تصليح اللابتوب في الكويت؟', a: 'تبدأ بعض الإصلاحات الشائعة من 15 د.ك، لكن السعر يعتمد على الموديل والعطل والقطعة المطلوبة. الفحص الأولي مجاني ونوضح لك السعر النهائي قبل أي إصلاح مدفوع.' },
       { q: 'هل تقدمون تصليح اللابتوب داخل المنزل؟', a: 'لا نقدم إصلاحًا داخل المنزل. نرتب استلام الجهاز من المنزل أو المكتب، ونفحصه ونصلحه في مختبر KCROC في حولي، ثم نعيده لك بعد الاختبار.' },
@@ -2254,9 +2254,21 @@ export default function ArabicCommercialPage() {
               </Link>
             </div>
           )}
+          {slug === 'laptop-repair-kuwait' && (
+            <div className="mt-6 flex flex-col gap-3 rounded-2xl border border-cyan-500/25 bg-cyan-500/5 p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6">
+              <div>
+                <p className="text-xs font-black uppercase tracking-[0.12em] text-cyan-300">السعر والفحص</p>
+                <p className="mt-2 text-xl font-black text-white sm:text-2xl">بعض الإصلاحات الشائعة تبدأ من 15 د.ك</p>
+                <p className="mt-2 text-sm leading-7 text-slate-400">الفحص الأولي مجاني؛ السعر النهائي يعتمد على الموديل والعطل والقطعة، ونؤكده قبل أي عمل مدفوع.</p>
+              </div>
+              <Link to="/ar/pricing" className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full border border-slate-700 px-5 py-3 text-sm font-black text-cyan-300 transition hover:border-cyan-500/40 hover:text-cyan-200">
+                تفاصيل الأسعار <ArrowLeft className="h-4 w-4" aria-hidden="true" />
+              </Link>
+            </div>
+          )}
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <a href={wa} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-500 px-7 py-3.5 font-black text-slate-950 hover:bg-cyan-400">
-              <MessageCircle className="h-5 w-5" aria-hidden="true" /> {slug === 'laptop-screen-repair-kuwait' ? 'أرسل موديل اللابتوب واحصل على عرض سعر' : slug === 'gaming-laptop-repair-kuwait' ? 'أرسل الموديل والعطل على واتساب' : slug === 'laptop-keyboard-replacement-kuwait' ? 'أرسل موديل الجهاز وصورة الكيبورد على واتساب' : slug === 'laptop-charging-port-repair-kuwait' ? 'أرسل موديل الجهاز وصورة المنفذ على واتساب' : slug === 'computer-repair-farwaniya' ? 'رتب استلام مجاني من الفروانية' : 'واتساب KCROC'}
+              <MessageCircle className="h-5 w-5" aria-hidden="true" /> {slug === 'laptop-repair-kuwait' ? 'أرسل موديل اللابتوب والعطل على واتساب' : slug === 'laptop-screen-repair-kuwait' ? 'أرسل موديل اللابتوب واحصل على عرض سعر' : slug === 'gaming-laptop-repair-kuwait' ? 'أرسل الموديل والعطل على واتساب' : slug === 'laptop-keyboard-replacement-kuwait' ? 'أرسل موديل الجهاز وصورة الكيبورد على واتساب' : slug === 'laptop-charging-port-repair-kuwait' ? 'أرسل موديل الجهاز وصورة المنفذ على واتساب' : slug === 'computer-repair-farwaniya' ? 'رتب استلام مجاني من الفروانية' : 'واتساب KCROC'}
             </a>
             <Link to="/book" className="inline-flex items-center justify-center gap-2 rounded-full border border-slate-600 px-7 py-3.5 font-bold text-white hover:border-cyan-700 hover:text-cyan-300">
               <ShieldCheck className="h-5 w-5" aria-hidden="true" /> احجز استلام الجهاز
