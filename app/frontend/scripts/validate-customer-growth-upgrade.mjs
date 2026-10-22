@@ -97,7 +97,7 @@ add('Arabic and English homepage, services, and computer-repair hreflang alterna
   graph.includes("'en-KW': 'https://www.computerrepairkuwait.com/computer-repair-kuwait'"));
 add('Arabic localized homepage and services hub have dedicated content and localized direction',
   arabicHomeSource.includes('export function ArabicHomePage') &&
-  arabicHomeSource.includes('خدمات الكمبيوتر واللابتوب في الكويت') &&
+  arabicHomeSource.includes('تصليح الكمبيوتر واللابتوب في الكويت') &&
   arabicHomeSource.includes('dir="rtl" lang="ar-KW"') &&
   arabicHomeSource.includes('export function ArabicServicesPage') &&
   arabicHomeSource.includes('خدمات تصليح الكمبيوتر واللابتوب في الكويت') &&
