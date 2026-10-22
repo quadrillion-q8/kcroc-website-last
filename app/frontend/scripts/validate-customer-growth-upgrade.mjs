@@ -114,6 +114,30 @@ add('Homepage no longer displays a hard-coded review count', !hero.includes('rev
 add('Homepage review widget no longer prints a fixed count', !reviews.includes('reviewCount') && !reviews.includes('+ reviews'));
 add('Homepage statistic strip uses service promises instead of unverified counters', graph.includes("label: 'Initial diagnosis', value: 'FREE'") && !graph.includes("value: '500+'"));
 add('Commercial, footer, and local pages avoid printed fixed review counts', !footer.includes('reviewCount') && !nearMe.includes('reviewCount') && !nearMeAr.includes('reviewCount') && !locations.includes('reviewCount') && !hawalli.includes('reviewCount') && !computerRepair.includes('158+ reviews') && !computerRepair.includes('158+ customer reviews') && !arabicCommercial.includes('158+ مراجعة'));
+
+add('Computer Repair Kuwait hub has relevant workshop imagery and descriptive alt text',
+  computerRepair.includes('const heroImage = IMAGES.brand.heroBanner') &&
+  computerRepair.includes('alt={heroImage.alt}') &&
+  computerRepair.includes('loading="eager"') &&
+  computerRepair.includes('image: IMAGES.services.laptopRepair') &&
+  computerRepair.includes('image: IMAGES.gaming.diagnostics'));
+add('Computer Repair Kuwait page avoids stale rating and product-stock claims in its service schema',
+  !computerRepair.includes('4.9★') &&
+  !computerRepair.includes('Current reviews') &&
+  !computerRepair.includes('https://schema.org/InStock') &&
+  computerRepair.includes('Starting price for select common repair work'));
+add('Computer Repair Kuwait hub includes symptom-led links, accurate workshop location and quote approval guidance',
+  computerRepair.includes('What is your computer doing?') &&
+  computerRepair.includes('not separate walk-in branches') &&
+  computerRepair.includes('How long will the repair take?') &&
+  computerRepair.includes('before paid work begins') &&
+  computerRepair.includes("path: '/desktop-pc-repair-kuwait'"));
+add('Computer Repair Kuwait title, description, image and update date stay in the canonical SEO graph',
+  graph.includes("title: 'Computer Repair Kuwait | PC, Laptop & MacBook | KCROC'") &&
+  graph.includes("description: 'Computer repair in Kuwait for desktops, laptops, gaming PCs and MacBooks. Diagnosis first, free pickup and delivery, a clear quote before repair and 30-day warranty.'") &&
+  graph.includes("ogImage: IMAGES.services.laptopRepair.src") &&
+  graph.includes("lastModified: '2026-10-22T00:00:00+03:00'"));
+
 add('Unverified customer/repair totals removed from sales copy', !about.includes("number: '500+'") && !booking.includes('500+ professionals') && !arabicCommercial.includes("['500+', 'جهاز تم إصلاحه']"));
 
 // Arabic technician head term: split into three checks so a failure names the exact missing string.

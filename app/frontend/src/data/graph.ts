@@ -211,11 +211,11 @@ export const rawGraphData: RawGraphData = {
       slug: 'computer-repair-kuwait',
       entityType: 'WebPage',
       isActive: true,
-      title: 'Computer Repair Kuwait',
-      description: 'Computer and laptop repair in Kuwait with diagnosis before repair, free pickup and delivery, starting prices from 15 KWD, and a 30-day warranty on completed repairs.',
+      title: 'Computer & Laptop Repair Kuwait',
+      description: 'Computer repair in Kuwait for desktops, laptops, gaming PCs and MacBooks. Diagnosis first, free pickup and delivery, a clear quote before repair and 30-day warranty.',
       seo: {
-        title: 'Computer Repair Kuwait | PC & Laptop Repair | KCROC',
-        description: 'Need computer repair or a computer technician in Kuwait? KCROC diagnoses PC, laptop, MacBook and motherboard faults at our Hawalli workshop. Free pickup and delivery, a clear quote before repair, and a 30-day warranty.',
+        title: 'Computer Repair Kuwait | PC, Laptop & MacBook | KCROC',
+        description: 'Computer repair in Kuwait for desktops, laptops, gaming PCs and MacBooks. Diagnosis first, free pickup and delivery, a clear quote before repair and 30-day warranty.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/computer-repair-kuwait',
         locale: 'en_KW',
         alternates: {
@@ -225,13 +225,17 @@ export const rawGraphData: RawGraphData = {
         },
         ogType: 'website',
         schemaTypes: ['WebPage', 'BreadcrumbList', 'FAQPage'],
-        lastModified: '2026-10-15T00:00:00+03:00',
+        lastModified: '2026-10-22T00:00:00+03:00',
         breadcrumbs: [
           { name: 'Home', url: '/' },
           { name: 'Computer Repair Kuwait', url: '/computer-repair-kuwait' }
         ]
       },
-      featuredFAQIds: []
+      featuredImage: {
+        ogImage: IMAGES.services.laptopRepair.src,
+        altText: 'Computer and laptop repair diagnosis at KCROC in Hawalli, Kuwait'
+      },
+      featuredFAQIds: ['faq-cost', 'faq-pick-and-drop', 'faq-warranty']
     } as WebPageEntity,
 
     'page-ar-computer-repair': {
