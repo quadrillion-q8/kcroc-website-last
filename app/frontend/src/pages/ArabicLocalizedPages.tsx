@@ -36,7 +36,7 @@ export function ArabicHomePage() {
   return (
     <>
       <SEOEngine entityId="page-ar-home" />
-      <main dir="rtl" lang="ar-KW" className="min-h-screen bg-transparent pb-20 text-slate-100">
+      <div dir="rtl" lang="ar-KW" className="min-h-screen bg-transparent pb-20 text-slate-100">
         <section className="relative overflow-hidden border-b border-white/10">
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(201,128,77,0.18),transparent_50%),radial-gradient(ellipse_at_bottom_left,rgba(16,185,129,0.10),transparent_45%)]" aria-hidden="true" />
           <div className="relative mx-auto grid max-w-7xl gap-10 px-4 pb-16 pt-32 sm:px-6 sm:pb-20 lg:grid-cols-[1.15fr_0.85fr] lg:items-center lg:px-8">
@@ -157,7 +157,7 @@ export function ArabicHomePage() {
             </div>
           </div>
         </section>
-      </main>
+      </div>
     </>
   );
 }
@@ -195,7 +195,7 @@ export function ArabicServicesPage() {
   return (
     <>
       <SEOEngine entityId="page-ar-services" />
-      <main dir="rtl" lang="ar-KW" className="min-h-screen bg-transparent pb-20 pt-28 text-slate-100 sm:pt-32">
+      <div dir="rtl" lang="ar-KW" className="min-h-screen bg-transparent pb-20 pt-28 text-slate-100 sm:pt-32">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <nav aria-label="مسار التنقل" className="mb-7 text-sm text-slate-500">
             <Link to="/ar" className="transition hover:text-[#efc19c]">الرئيسية</Link>
@@ -275,7 +275,7 @@ export function ArabicServicesPage() {
             </Link>
           </section>
         </div>
-      </main>
+      </div>
     </>
   );
 }
