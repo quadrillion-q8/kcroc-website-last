@@ -489,8 +489,8 @@ export default function ComputerRepairKuwait() {
               <Link to="/book" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-slate-700 bg-slate-950/60 px-6 py-3 font-black text-white transition hover:border-cyan-300/50 hover:text-cyan-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400">
                 <Truck className="h-5 w-5" aria-hidden="true" /> Book a pickup
               </Link>
-              <a href="tel:+96555301913" className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl px-6 py-2 font-bold text-slate-300 transition hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400">
-                Call +965 5530 1913
+              <a href={"tel:" + business.telephone} className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl px-6 py-2 font-bold text-slate-300 transition hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400">
+                Call {business.telephone}
               </a>
             </div>
           </div>
