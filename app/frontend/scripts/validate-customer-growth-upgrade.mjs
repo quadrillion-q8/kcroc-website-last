@@ -37,6 +37,7 @@ const [app, graph, seoProjection, locale, pricingPage, sitemap, hero, reviews, f
 ]);
 
 const url = 'https://www.computerrepairkuwait.com/ar/pricing';
+const arabicHomeSource = await read('pages/ArabicLocalizedPages.tsx');
 add('Arabic pricing route is registered', app.includes("path: 'ar/pricing'"));
 add('Arabic pricing page exists and has a native Arabic H1', pricingPage.includes('export default function ArabicPricingPage') && pricingPage.includes('أسعار تصليح الكمبيوتر واللابتوب في الكويت'));
 add('Arabic pricing SEO entity and canonical URL are present', graph.includes("id: 'page-ar-pricing'") && graph.includes(`canonicalUrl: '${url}'`));
@@ -51,7 +52,9 @@ add('English and Arabic pricing language switch is reciprocal', locale.includes(
 
 // Every currently published Arabic route must have an exact English counterpart, and vice versa.
 const languagePairs = [
-  ['/', '/ar/computer-repair-kuwait'],
+  ['/', '/ar'],
+  ['/services', '/ar/services'],
+  ['/computer-repair-kuwait', '/ar/computer-repair-kuwait'],
   ['/near-me', '/ar/near-me'],
   ['/pricing', '/ar/pricing'],
   ['/laptop-repair-kuwait', '/ar/laptop-repair-kuwait'],
@@ -74,9 +77,36 @@ const languagePairs = [
   ['/blog/laptop-buying-guide-kuwait-2026', '/blog/ar/laptop-buying-guide-kuwait-2026'],
   ['/blog/how-often-clean-laptop-replace-thermal-paste-kuwait', '/blog/ar/how-often-clean-laptop-replace-thermal-paste-kuwait'],
 ];
-add('All 22 Arabic-English page pairs switch both ways without homepage fallbacks',
+add('All 24 Arabic-English page pairs switch both ways without homepage fallbacks',
   languagePairs.every(([en, ar]) => locale.includes("'" + en + "': '" + ar + "'") && locale.includes("'" + ar + "': '" + en + "'")) &&
   locale.includes("normalized.startsWith('/blog/ar/')"));
+
+add('Arabic home, services hub, and dedicated computer-repair routes are explicitly registered',
+  app.includes("path: 'ar'") && app.includes("path: 'ar/services'") &&
+  locale.includes("'/': '/ar'") && locale.includes("'/services': '/ar/services'") &&
+  locale.includes("'/computer-repair-kuwait': '/ar/computer-repair-kuwait'") &&
+  locale.includes("'/ar': '/'") && locale.includes("'/ar/services': '/services'") &&
+  locale.includes("'/ar/computer-repair-kuwait': '/computer-repair-kuwait'"));
+add('Arabic and English homepage, services, and computer-repair hreflang alternates are reciprocal',
+  graph.includes("'ar-KW': 'https://www.computerrepairkuwait.com/ar'") &&
+  graph.includes("'en-KW': 'https://www.computerrepairkuwait.com/'") &&
+  graph.includes("'ar-KW': 'https://www.computerrepairkuwait.com/ar/services'") &&
+  graph.includes("'en-KW': 'https://www.computerrepairkuwait.com/services'") &&
+  graph.includes("'ar-KW': 'https://www.computerrepairkuwait.com/ar/computer-repair-kuwait'") &&
+  graph.includes("'en-KW': 'https://www.computerrepairkuwait.com/computer-repair-kuwait'"));
+add('Arabic localized homepage and services hub have dedicated content and localized direction',
+  arabicHomeSource.includes('export function ArabicHomePage') &&
+  arabicHomeSource.includes('خدمات الكمبيوتر واللابتوب في الكويت') &&
+  arabicHomeSource.includes('dir="rtl" lang="ar-KW"') &&
+  arabicHomeSource.includes('export function ArabicServicesPage') &&
+  arabicHomeSource.includes('خدمات تصليح الكمبيوتر واللابتوب في الكويت') &&
+  arabicHomeSource.includes('12') === false);
+add('Arabic homepage and services hub are included in generated SEO and sitemap output',
+  seoProjection.includes('"id": "page-ar-home"') &&
+  seoProjection.includes('"id": "page-ar-services"') &&
+  sitemap.includes('<loc>https://www.computerrepairkuwait.com/ar</loc>') &&
+  sitemap.includes('<loc>https://www.computerrepairkuwait.com/ar/services</loc>'));
+
 add('Arabic pricing URL is in the checked-in sitemap', sitemap.includes(`<loc>${url}</loc>`));
 add('Pricing hreflang alternates are reciprocal', graph.includes("'ar-KW': 'https://www.computerrepairkuwait.com/ar/pricing'") && graph.includes("'en-KW': 'https://www.computerrepairkuwait.com/pricing'"));
 add('Homepage no longer displays a hard-coded review count', !hero.includes('reviewCount') && !hero.includes('+ reviews'));
