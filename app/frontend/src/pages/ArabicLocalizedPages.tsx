@@ -1,0 +1,281 @@
+// File: app/frontend/src/pages/ArabicLocalizedPages.tsx
+import React from 'react';
+import { Link } from 'react-router-dom';
+import {
+  Apple, ArrowLeft, BadgeCheck, BatteryCharging, CheckCircle2, ChevronLeft,
+  Cpu, Gamepad2, HardDrive, Laptop, MapPin, MessageCircle, Monitor,
+  ShieldCheck, Truck, Wrench,
+} from 'lucide-react';
+import { KCROC_GRAPH } from '../data/graph';
+import { SEOEngine } from '../core/components/SEOEngine';
+
+const HOME_SERVICES = [
+  { title: 'تصليح اللابتوب', description: 'أعطال التشغيل والشحن والحرارة والشاشة والمفصلات.', path: '/ar/laptop-repair-kuwait', icon: Laptop },
+  { title: 'تصليح الكمبيوتر للألعاب', description: 'تشخيص مشاكل الطاقة والرسوميات والحرارة والاستقرار.', path: '/ar/gaming-pc-repair-kuwait', icon: Gamepad2 },
+  { title: 'إصلاح اللوحة الأم', description: 'فحص دوائر الطاقة والأعطال الإلكترونية عندما يكون الإصلاح مناسبًا.', path: '/ar/motherboard-repair-kuwait', icon: Cpu },
+  { title: 'تصليح MacBook', description: 'فحص أعطال MacBook والشحن واللوحة والقطع المتوافقة.', path: '/ar/macbook-repair-kuwait', icon: Apple },
+  { title: 'تصليح شاشة اللابتوب', description: 'فحص الشاشة والكابل قبل تحديد القطعة والحل المناسب.', path: '/ar/laptop-screen-repair-kuwait', icon: Monitor },
+  { title: 'ترقية SSD وRAM', description: 'تحسين التخزين أو الذاكرة بعد التحقق من توافق الجهاز.', path: '/ar/ssd-ram-upgrade-kuwait', icon: HardDrive },
+];
+
+const ARABIC_AREAS = [
+  { label: 'حولي', path: '/ar/computer-repair-hawalli' },
+  { label: 'السالمية', path: '/ar/computer-repair-salmiya' },
+  { label: 'الفروانية', path: '/ar/computer-repair-farwaniya' },
+  { label: 'الجهراء', path: '/ar/computer-repair-jahra' },
+  { label: 'مدينة الكويت', path: '/ar/computer-repair-kuwait-city' },
+];
+
+const HOME_PROMISES = [
+  { title: 'فحص أولي مجاني', text: 'نشرح المشكلة والخطوة التالية قبل الموافقة على أي عمل مدفوع.', icon: CheckCircle2 },
+  { title: 'استلام وتوصيل مجاني', text: 'نرتب استلام الجهاز من المنزل أو المكتب وإعادته بعد الاختبار.', icon: Truck },
+  { title: 'ضمان 30 يومًا', text: 'على الإصلاحات المكتملة وفق شروط الخدمة.', icon: ShieldCheck },
+];
+
+export function ArabicHomePage() {
+  return (
+    <>
+      <SEOEngine entityId="page-ar-home" />
+      <main dir="rtl" lang="ar-KW" className="min-h-screen bg-transparent pb-20 text-slate-100">
+        <section className="relative overflow-hidden border-b border-white/10">
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(201,128,77,0.18),transparent_50%),radial-gradient(ellipse_at_bottom_left,rgba(16,185,129,0.10),transparent_45%)]" aria-hidden="true" />
+          <div className="relative mx-auto grid max-w-7xl gap-10 px-4 pb-16 pt-32 sm:px-6 sm:pb-20 lg:grid-cols-[1.15fr_0.85fr] lg:items-center lg:px-8">
+            <div>
+              <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-[#c9804d]/30 bg-[#c9804d]/10 px-4 py-2 text-sm font-bold text-[#efc19c]">
+                <BadgeCheck className="h-4 w-4" aria-hidden="true" />
+                مختبر إصلاح متخصص في حولي • خدمة لكل الكويت
+              </p>
+              <h1 className="max-w-4xl text-4xl font-black leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">
+                تصليح الكمبيوتر واللابتوب في الكويت، بخدمة تصل إليك
+              </h1>
+              <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-300 sm:text-xl">
+                نشخّص أعطال الكمبيوتر واللابتوب وMacBook وGaming PC في مختبر KCROC بحولي. نرتب استلام الجهاز من المنزل أو المكتب، ونوضح التكلفة قبل الإصلاح، ثم نعيده إليك بعد الفحص والاختبار.
+              </p>
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                <Link to="/ar/near-me" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#c9804d] px-6 py-3 font-extrabold text-[#101114] transition hover:bg-[#dfa06f] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#efc19c]">
+                  <Truck className="h-5 w-5" aria-hidden="true" />
+                  احجز استلام الجهاز
+                </Link>
+                <Link to="/ar/services" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/[0.03] px-6 py-3 font-bold text-white transition hover:border-[#c9804d]/60 hover:bg-white/[0.06] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#efc19c]">
+                  استعرض خدمات الإصلاح <ArrowLeft className="h-4 w-4" aria-hidden="true" />
+                </Link>
+              </div>
+              <p className="mt-4 text-sm leading-6 text-slate-400">يتم الإصلاح في مختبرنا بحولي؛ لا نقدم زيارات إصلاح داخل المنزل.</p>
+            </div>
+            <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
+              {HOME_PROMISES.map(({ title, text, icon: Icon }) => (
+                <div key={title} className="flex items-start gap-4 rounded-2xl border border-white/10 bg-slate-950/65 p-5 shadow-lg shadow-black/10">
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[#c9804d]/25 bg-[#c9804d]/10 text-[#efc19c]">
+                    <Icon className="h-5 w-5" aria-hidden="true" />
+                  </span>
+                  <div>
+                    <h2 className="font-extrabold text-white">{title}</h2>
+                    <p className="mt-1 text-sm leading-6 text-slate-400">{text}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section aria-labelledby="ar-home-services" className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+          <div className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="text-sm font-bold text-[#efc19c]">الخدمات الرئيسية</p>
+              <h2 id="ar-home-services" className="mt-2 text-3xl font-black text-white sm:text-4xl">اختر الخدمة المناسبة لجهازك</h2>
+              <p className="mt-3 max-w-3xl leading-7 text-slate-400">ابدأ من نوع الجهاز أو العطل. نفحص السبب أولًا ونشرح لك خيارات الإصلاح قبل بدء العمل.</p>
+            </div>
+            <Link to="/ar/services" className="inline-flex min-h-11 items-center gap-2 font-bold text-[#efc19c] hover:text-white">
+              كل الخدمات <ArrowLeft className="h-4 w-4" aria-hidden="true" />
+            </Link>
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {HOME_SERVICES.map(({ title, description, path, icon: Icon }) => (
+              <Link key={path} to={path} className="group flex h-full items-start gap-4 rounded-2xl border border-white/10 bg-slate-900/60 p-5 transition hover:-translate-y-0.5 hover:border-[#c9804d]/45 hover:bg-slate-900/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#efc19c]">
+                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white/[0.04] text-[#efc19c] group-hover:bg-[#c9804d]/10">
+                  <Icon className="h-6 w-6" aria-hidden="true" />
+                </span>
+                <span>
+                  <span className="block font-extrabold text-white">{title}</span>
+                  <span className="mt-2 block text-sm leading-6 text-slate-400">{description}</span>
+                  <span className="mt-3 inline-flex items-center gap-1 text-sm font-bold text-[#efc19c]">تفاصيل الخدمة <ArrowLeft className="h-3.5 w-3.5" aria-hidden="true" /></span>
+                </span>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        <section className="border-y border-white/10 bg-slate-950/35">
+          <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 lg:grid-cols-[0.8fr_1.2fr] lg:px-8">
+            <div>
+              <p className="text-sm font-bold text-[#efc19c]">كيف تتم الخدمة؟</p>
+              <h2 className="mt-2 text-3xl font-black text-white">خطوات واضحة قبل الإصلاح وبعده</h2>
+              <p className="mt-4 leading-7 text-slate-400">لا نبدأ عملًا مدفوعًا دون شرح التشخيص والسعر والحصول على موافقتك.</p>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-3">
+              {[
+                ['١', 'استلام الجهاز', 'نرتب الاستلام من منزلك أو مكتبك داخل الكويت.'],
+                ['٢', 'تشخيص وعرض سعر', 'نفحص الجهاز في مختبر حولي ونشرح الخيارات والتكلفة.'],
+                ['٣', 'إصلاح واختبار', 'بعد الموافقة نصلح العطل ونختبر الجهاز قبل إعادته.'],
+              ].map(([number, title, text]) => (
+                <div key={number} className="rounded-2xl border border-white/10 bg-slate-900/70 p-5">
+                  <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#c9804d]/15 font-black text-[#efc19c]">{number}</span>
+                  <h3 className="mt-4 font-extrabold text-white">{title}</h3>
+                  <p className="mt-2 text-sm leading-6 text-slate-400">{text}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section aria-labelledby="ar-home-areas" className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
+          <div className="flex items-start gap-4">
+            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-[#c9804d]/20 bg-[#c9804d]/10 text-[#efc19c]">
+              <MapPin className="h-6 w-6" aria-hidden="true" />
+            </span>
+            <div>
+              <h2 id="ar-home-areas" className="text-2xl font-black text-white sm:text-3xl">استلام وتوصيل في مناطق الكويت</h2>
+              <p className="mt-3 max-w-3xl leading-7 text-slate-400">المختبر الفعلي في حولي، مع ترتيب الاستلام والتوصيل من مناطق الخدمة المختلفة. اختر منطقتك لمعرفة التفاصيل.</p>
+              <div className="mt-5 flex flex-wrap gap-2">
+                {ARABIC_AREAS.map((area) => <Link key={area.path} to={area.path} className="inline-flex min-h-10 items-center rounded-full border border-white/10 px-4 py-2 text-sm font-bold text-slate-200 transition hover:border-[#c9804d]/50 hover:text-[#efc19c]">{area.label}</Link>)}
+                <Link to="/ar/near-me" className="inline-flex min-h-10 items-center rounded-full border border-[#c9804d]/30 bg-[#c9804d]/10 px-4 py-2 text-sm font-bold text-[#efc19c]">اعرف طريقة الاستلام</Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="mx-auto max-w-7xl px-4 pb-4 sm:px-6 lg:px-8">
+          <div className="rounded-3xl border border-[#c9804d]/25 bg-gradient-to-l from-[#c9804d]/10 via-slate-900/70 to-slate-900/70 p-7 sm:p-10">
+            <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
+              <div>
+                <h2 className="text-2xl font-black text-white sm:text-3xl">هل تحتاج مساعدة في تحديد العطل؟</h2>
+                <p className="mt-3 max-w-2xl leading-7 text-slate-300">أخبرنا بنوع جهازك والأعراض ومنطقتك، وسنوضح لك الخطوة المناسبة لترتيب الفحص والاستلام.</p>
+              </div>
+              <Link to="/ar/near-me" className="inline-flex min-h-12 shrink-0 items-center justify-center gap-2 rounded-xl bg-[#c9804d] px-6 py-3 font-extrabold text-[#101114] transition hover:bg-[#dfa06f] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#efc19c]">
+                <MessageCircle className="h-5 w-5" aria-hidden="true" /> تواصل لترتيب الاستلام
+              </Link>
+            </div>
+          </div>
+        </section>
+      </main>
+    </>
+  );
+}
+
+const ARABIC_SERVICE_COPY: Record<string, { title: string; description: string; href: string }> = {
+  'laptop-repair-kuwait': { title: 'تصليح اللابتوب في الكويت', description: 'تشخيص أعطال التشغيل والشحن والحرارة والشاشة والبطارية ومكونات الجهاز.', href: '/ar/laptop-repair-kuwait' },
+  'motherboard-repair-kuwait': { title: 'إصلاح اللوحة الأم والمذربورد', description: 'فحص أعطال الطاقة والشحن والمكونات الإلكترونية عندما يكون الإصلاح مناسبًا.', href: '/ar/motherboard-repair-kuwait' },
+  'gaming-pc-repair-kuwait': { title: 'تصليح Gaming PC', description: 'تشخيص مشاكل الطاقة والرسوميات والحرارة والاستقرار في الكمبيوتر المخصص للألعاب.', href: '/ar/gaming-pc-repair-kuwait' },
+  'laptop-screen-repair-kuwait': { title: 'تصليح شاشة اللابتوب', description: 'فحص الشاشة السوداء أو المكسورة أو الوامضة والكابل قبل تحديد الحل.', href: '/ar/laptop-screen-repair-kuwait' },
+  'macbook-repair-kuwait': { title: 'تصليح MacBook', description: 'فحص أعطال الطاقة والشحن واللوحة والشاشة والبطارية حسب الموديل.', href: '/ar/macbook-repair-kuwait' },
+  'macbook-screen-replacement-kuwait': { title: 'تبديل شاشة MacBook', description: 'تحديد موديل الجهاز ومواصفات الشاشة والتكلفة قبل الموافقة على العمل.', href: '/ar/macbook-screen-replacement-kuwait' },
+  'battery-replacement-kuwait': { title: 'تبديل بطارية اللابتوب', description: 'فحص أعراض ضعف البطارية والتحقق من توافق القطعة مع موديل الجهاز.', href: '/ar/battery-replacement-kuwait' },
+  'ssd-ram-upgrade-kuwait': { title: 'ترقية SSD وRAM', description: 'ترقية التخزين أو الذاكرة عند توافقها مع الجهاز، مع توضيح تكلفة القطع والعمل.', href: '/ar/ssd-ram-upgrade-kuwait' },
+  'gaming-laptop-repair-kuwait': { title: 'تصليح Gaming Laptop', description: 'تشخيص مشاكل الحرارة والطاقة والأداء والشاشة في أجهزة الألعاب المحمولة.', href: '/ar/gaming-laptop-repair-kuwait' },
+  'laptop-charging-port-repair-kuwait': { title: 'إصلاح منفذ شحن اللابتوب', description: 'فحص الشاحن والمنفذ ومسار الطاقة لتحديد سبب عدم الشحن.', href: '/ar/laptop-charging-port-repair-kuwait' },
+  'laptop-keyboard-replacement-kuwait': { title: 'تبديل كيبورد اللابتوب', description: 'تحديد العطل وموديل الكيبورد والتكلفة قبل تنفيذ الاستبدال.', href: '/ar/laptop-keyboard-replacement-kuwait' },
+  'laptop-liquid-damage-repair-kuwait': { title: 'إصلاح أضرار السوائل', description: 'فحص التآكل والدوائر المتأثرة وتقييم الجهاز قبل محاولة تشغيله مجددًا.', href: '/ar/laptop-liquid-damage-repair-kuwait' },
+};
+
+const SERVICE_ICON_MAP: Record<string, React.ElementType> = {
+  apple: Apple,
+  laptop: Laptop,
+  gaming: Gamepad2,
+  cpu: Cpu,
+  monitor: Monitor,
+  battery: BatteryCharging,
+};
+
+export function ArabicServicesPage() {
+  const services = KCROC_GRAPH.services.flatMap((service) => {
+    const copy = ARABIC_SERVICE_COPY[service.slug];
+    return copy ? [{ service, copy }] : [];
+  });
+
+  return (
+    <>
+      <SEOEngine entityId="page-ar-services" />
+      <main dir="rtl" lang="ar-KW" className="min-h-screen bg-transparent pb-20 pt-28 text-slate-100 sm:pt-32">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <nav aria-label="مسار التنقل" className="mb-7 text-sm text-slate-500">
+            <Link to="/ar" className="transition hover:text-[#efc19c]">الرئيسية</Link>
+            <span className="mx-2" aria-hidden="true">/</span>
+            <span className="text-slate-300">الخدمات</span>
+          </nav>
+
+          <header className="max-w-4xl">
+            <p className="inline-flex items-center gap-2 rounded-full border border-[#c9804d]/25 bg-[#c9804d]/10 px-4 py-2 text-sm font-bold text-[#efc19c]">
+              <Wrench className="h-4 w-4" aria-hidden="true" />
+              خدمات تصليح متخصصة في الكويت
+            </p>
+            <h1 className="mt-5 text-4xl font-black leading-tight text-white sm:text-5xl">خدمات تصليح الكمبيوتر واللابتوب في الكويت</h1>
+            <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-300">
+              اختر الخدمة الأقرب لمشكلة جهازك. نفحص الأعراض في مختبر KCROC بحولي، ونوضح خيارات الإصلاح والتكلفة قبل بدء أي عمل مدفوع. يتوفر استلام وتوصيل مجاني من المنزل أو المكتب داخل الكويت.
+            </p>
+            <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+              <Link to="/ar/near-me" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#c9804d] px-6 py-3 font-extrabold text-[#101114] transition hover:bg-[#dfa06f] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#efc19c]">
+                <Truck className="h-5 w-5" aria-hidden="true" /> ترتيب الاستلام والتوصيل
+              </Link>
+              <Link to="/ar/pricing" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-white/15 px-6 py-3 font-bold text-white transition hover:border-[#c9804d]/50 hover:bg-white/[0.04] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#efc19c]">
+                مراجعة الأسعار الإرشادية
+              </Link>
+            </div>
+          </header>
+
+          <section aria-labelledby="ar-services-grid" className="mt-12">
+            <div className="mb-6 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <h2 id="ar-services-grid" className="text-2xl font-black text-white sm:text-3xl">تصفح خدمات الإصلاح</h2>
+                <p className="mt-2 text-sm leading-6 text-slate-400">تفتح كل بطاقة صفحة عربية مخصصة للخدمة نفسها.</p>
+              </div>
+              <span className="text-sm text-slate-500">{services.length} خدمة بصفحة عربية مخصصة</span>
+            </div>
+            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {services.map(({ service, copy }) => {
+                const Icon = SERVICE_ICON_MAP[service.iconKey] || Wrench;
+                return (
+                  <Link key={service.id} to={copy.href} className="group flex h-full flex-col rounded-2xl border border-white/10 bg-slate-900/65 p-6 transition hover:-translate-y-0.5 hover:border-[#c9804d]/45 hover:bg-slate-900/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#efc19c]">
+                    <span className="flex h-12 w-12 items-center justify-center rounded-xl border border-[#c9804d]/20 bg-[#c9804d]/10 text-[#efc19c]">
+                      <Icon className="h-6 w-6" aria-hidden="true" />
+                    </span>
+                    <h3 className="mt-5 text-xl font-extrabold text-white transition-colors group-hover:text-[#efc19c]">{copy.title}</h3>
+                    <p className="mt-3 flex-1 leading-7 text-slate-400">{copy.description}</p>
+                    <span className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-[#efc19c]">تفاصيل الخدمة <ChevronLeft className="h-4 w-4" aria-hidden="true" /></span>
+                  </Link>
+                );
+              })}
+            </div>
+          </section>
+
+          <section className="mt-14 grid gap-5 border-t border-white/10 pt-10 md:grid-cols-3" aria-label="خطوات الخدمة">
+            <div className="rounded-2xl border border-white/10 bg-slate-900/45 p-6">
+              <CheckCircle2 className="h-6 w-6 text-emerald-400" aria-hidden="true" />
+              <h2 className="mt-4 font-extrabold text-white">فحص أولي مجاني</h2>
+              <p className="mt-2 text-sm leading-6 text-slate-400">نحدد مسار المشكلة ونشرح الخطوة التالية بدون التزام بالموافقة على الإصلاح.</p>
+            </div>
+            <div className="rounded-2xl border border-white/10 bg-slate-900/45 p-6">
+              <Truck className="h-6 w-6 text-emerald-400" aria-hidden="true" />
+              <h2 className="mt-4 font-extrabold text-white">استلام من منطقتك</h2>
+              <p className="mt-2 text-sm leading-6 text-slate-400">الإصلاح في مختبر حولي، مع ترتيب الاستلام والتوصيل عبر مناطق الكويت.</p>
+            </div>
+            <div className="rounded-2xl border border-white/10 bg-slate-900/45 p-6">
+              <MapPin className="h-6 w-6 text-emerald-400" aria-hidden="true" />
+              <h2 className="mt-4 font-extrabold text-white">السعر بعد التشخيص</h2>
+              <p className="mt-2 text-sm leading-6 text-slate-400">نوضح تكلفة العمل والقطع المطلوبة قبل التنفيذ، وتُطبق شروط ضمان 30 يومًا على الإصلاحات المكتملة.</p>
+            </div>
+          </section>
+
+          <section className="mt-10 flex flex-col gap-4 rounded-3xl border border-[#c9804d]/25 bg-[#c9804d]/[0.07] p-7 sm:flex-row sm:items-center sm:justify-between sm:p-9">
+            <div>
+              <h2 className="text-2xl font-black text-white">غير متأكد من الخدمة المناسبة؟</h2>
+              <p className="mt-3 max-w-2xl leading-7 text-slate-300">صف المشكلة ونوع الجهاز ومنطقتك، وسنساعدك في تحديد الخطوة المناسبة للفحص والاستلام.</p>
+            </div>
+            <Link to="/ar/computer-repair-kuwait" className="inline-flex min-h-12 shrink-0 items-center justify-center gap-2 rounded-xl bg-[#c9804d] px-6 py-3 font-extrabold text-[#101114] transition hover:bg-[#dfa06f] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#efc19c]">
+              استعراض خدمات الكمبيوتر <ChevronLeft className="h-4 w-4" aria-hidden="true" />
+            </Link>
+          </section>
+        </div>
+      </main>
+    </>
+  );
+}
