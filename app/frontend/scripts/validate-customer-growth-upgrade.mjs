@@ -74,12 +74,13 @@ const languagePairs = [
   ['/location/jahra', '/ar/computer-repair-jahra'],
   ['/location/farwaniya', '/ar/computer-repair-farwaniya'],
   ['/location/kuwait-city', '/ar/computer-repair-kuwait-city'],
+  ['/guides/bios-uefi-recovery-kuwait', '/guides/ar/bios-uefi-recovery-kuwait'],
   ['/blog/laptop-buying-guide-kuwait-2026', '/blog/ar/laptop-buying-guide-kuwait-2026'],
   ['/blog/how-often-clean-laptop-replace-thermal-paste-kuwait', '/blog/ar/how-often-clean-laptop-replace-thermal-paste-kuwait'],
 ];
-add('All 24 Arabic-English page pairs switch both ways without homepage fallbacks',
+add('All 25 Arabic-English page pairs switch both ways without homepage fallbacks',
   languagePairs.every(([en, ar]) => locale.includes("'" + en + "': '" + ar + "'") && locale.includes("'" + ar + "': '" + en + "'")) &&
-  locale.includes("normalized.startsWith('/blog/ar/')"));
+  locale.includes("normalized.startsWith('/blog/ar/')") && locale.includes("normalized.startsWith('/guides/ar/')"));
 
 add('Arabic home, services hub, and dedicated computer-repair routes are explicitly registered',
   app.includes("path: 'ar'") && app.includes("path: 'ar/services'") &&
@@ -100,7 +101,7 @@ add('Arabic localized homepage and services hub have dedicated content and local
   arabicHomeSource.includes('dir="rtl" lang="ar-KW"') &&
   arabicHomeSource.includes('export function ArabicServicesPage') &&
   arabicHomeSource.includes('خدمات تصليح الكمبيوتر واللابتوب في الكويت') &&
-  arabicHomeSource.includes('12') === false);
+  arabicHomeSource.includes("'laptop-liquid-damage-repair-kuwait':") && arabicHomeSource.includes("'/ar/laptop-liquid-damage-repair-kuwait'"));
 add('Arabic homepage and services hub are included in generated SEO and sitemap output',
   seoProjection.includes('"id": "page-ar-home"') &&
   seoProjection.includes('"id": "page-ar-services"') &&
