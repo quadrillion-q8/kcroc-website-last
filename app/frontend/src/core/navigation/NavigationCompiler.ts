@@ -485,7 +485,7 @@ export const COMPILED_NAVIGATION: CompiledNavigationModel = NavigationCompiler.c
 const BLOG_ARABIC_VARIANTS: Record<string, Pick<NavEntity, 'slug' | 'title' | 'description' | 'primaryKeyword'>> = {};
 
 export function getLocalizedNavigation(pathname: string): CompiledNavigationModel {
-  const isArabicRoute = pathname === '/ar' || pathname.startsWith('/ar/') || pathname.startsWith('/blog/ar/');
+  const isArabicRoute = pathname === '/ar' || pathname.startsWith('/ar/') || pathname.startsWith('/blog/ar/') || pathname.startsWith('/guides/ar/');
 
   if (!isArabicRoute) return COMPILED_NAVIGATION;
 
