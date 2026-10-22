@@ -78,7 +78,7 @@ export const rawGraphData: RawGraphData = {
     'page-home': {
       id: 'page-home', slug: '', entityType: 'WebPage', isActive: true,
       title: 'Home', description: 'KCROC Homepage — Component-level computer repair in Kuwait',
-      seo: { title: 'Laptop & Computer Repair Kuwait | From 15 KWD | KCROC', description: 'Laptop and computer repair in Kuwait from 15 KWD. Free pickup and delivery, a quote before work, and a 30-day warranty on completed repairs.', canonicalUrl: 'https://www.computerrepairkuwait.com/', locale: 'en_KW', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/computer-repair-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/' }, ogType: 'website', schemaTypes: ['LocalBusiness', 'WebSite', 'WebPage'], lastModified: '2026-10-13T00:00:00+03:00' },
+      seo: { title: 'Laptop & Computer Repair Kuwait | From 15 KWD | KCROC', description: 'Laptop and computer repair in Kuwait from 15 KWD. Free pickup and delivery, a quote before work, and a 30-day warranty on completed repairs.', canonicalUrl: 'https://www.computerrepairkuwait.com/', locale: 'en_KW', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/', 'ar-KW': 'https://www.computerrepairkuwait.com/ar', 'x-default': 'https://www.computerrepairkuwait.com/' }, ogType: 'website', schemaTypes: ['LocalBusiness', 'WebSite', 'WebPage'], lastModified: '2026-10-13T00:00:00+03:00' },
       hero: { headline: 'Expert Laptop & Computer Repair in Kuwait.', subheadline: 'We Fix the Board. We Don\'t Just Swap It.', description: 'We diagnose and repair failed components at board level — restoring devices that most repair shops in Kuwait would simply declare beyond repair.', primaryCTA: { text: 'WhatsApp a Technician', route: 'https://wa.me/96555301913' }, secondaryCTA: { text: 'View All Services', route: '/services' } },
       featuredFAQIds: [
         'faq-pick-and-drop', 
@@ -91,7 +91,54 @@ export const rawGraphData: RawGraphData = {
       ], 
       featuredUSPIds: ['usp-component', 'usp-nofix', 'usp-logistics', 'usp-privacy']
     } as WebPageEntity,
-    'page-services': { id: 'page-services', slug: 'services', entityType: 'WebPage', isActive: true, title: 'Services', description: 'All KCROC repair services', seo: { title: 'Laptop, MacBook & PC Repair Services Kuwait | KCROC', description: 'Specialist computer repair services in Kuwait including laptop, MacBook, gaming PC and gaming laptop repair, screens, batteries, charging ports, upgrades and board-level faults. Free pickup and 30-day warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/services', ogType: 'website', schemaTypes: ['CollectionPage', 'WebPage', 'BreadcrumbList', 'LocalBusiness'], breadcrumbs: [{ name: 'Home', url: '/' }, { name: 'Services', url: '/services' }] } } as WebPageEntity,
+    'page-services': { id: 'page-services', slug: 'services', entityType: 'WebPage', isActive: true, title: 'Services', description: 'All KCROC repair services', seo: { title: 'Laptop, MacBook & PC Repair Services Kuwait | KCROC', description: 'Specialist computer repair services in Kuwait including laptop, MacBook, gaming PC and gaming laptop repair, screens, batteries, charging ports, upgrades and board-level faults. Free pickup and 30-day warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/services', locale: 'en_KW', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/services', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/services', 'x-default': 'https://www.computerrepairkuwait.com/services' }, ogType: 'website', schemaTypes: ['CollectionPage', 'WebPage', 'BreadcrumbList', 'LocalBusiness'], breadcrumbs: [{ name: 'Home', url: '/' }, { name: 'Services', url: '/services' }] } } as WebPageEntity,
+    'page-ar-home': {
+      id: 'page-ar-home', slug: 'ar', entityType: 'WebPage', isActive: true,
+      title: 'الرئيسية العربية — خدمات تصليح الكمبيوتر واللابتوب في الكويت',
+      description: 'خدمات تصليح الكمبيوتر واللابتوب وMacBook وGaming PC في الكويت. استلام وتوصيل مجاني، فحص أولي مجاني، وسعر واضح قبل الإصلاح من مختبر KCROC في حولي.',
+      seo: {
+        title: 'خدمات الكمبيوتر واللابتوب في الكويت | KCROC',
+        description: 'خدمات تصليح الكمبيوتر واللابتوب وMacBook وGaming PC في الكويت. استلام وتوصيل مجاني، فحص أولي مجاني، وسعر واضح قبل الإصلاح من مختبر KCROC في حولي.',
+        canonicalUrl: 'https://www.computerrepairkuwait.com/ar',
+        locale: 'ar_KW',
+        alternates: {
+          'ar-KW': 'https://www.computerrepairkuwait.com/ar',
+          'en-KW': 'https://www.computerrepairkuwait.com/',
+          'x-default': 'https://www.computerrepairkuwait.com/'
+        },
+        ogType: 'website',
+        schemaTypes: ['LocalBusiness', 'WebPage', 'BreadcrumbList'],
+        lastModified: '2026-10-22T00:00:00+03:00',
+        breadcrumbs: [{ name: 'الرئيسية', url: '/ar' }]
+      },
+      featuredFAQIds: ['faq-arabic-computer-technician', 'faq-ar-pricing', 'faq-ar-hours']
+    } as WebPageEntity,
+
+    'page-ar-services': {
+      id: 'page-ar-services', slug: 'ar/services', entityType: 'WebPage', isActive: true,
+      title: 'خدمات تصليح الكمبيوتر واللابتوب في الكويت',
+      description: 'تصفح خدمات KCROC باللغة العربية: تصليح اللابتوب وMacBook وGaming PC والشاشة والبطارية واللوحة الأم ومنافذ الشحن وترقيات SSD وRAM، مع استلام وتوصيل داخل الكويت.',
+      seo: {
+        title: 'خدمات تصليح الكمبيوتر واللابتوب في الكويت | KCROC',
+        description: 'تصفح خدمات KCROC باللغة العربية: تصليح اللابتوب وMacBook وGaming PC والشاشة والبطارية واللوحة الأم ومنافذ الشحن وترقيات SSD وRAM، مع استلام وتوصيل داخل الكويت.',
+        canonicalUrl: 'https://www.computerrepairkuwait.com/ar/services',
+        locale: 'ar_KW',
+        alternates: {
+          'ar-KW': 'https://www.computerrepairkuwait.com/ar/services',
+          'en-KW': 'https://www.computerrepairkuwait.com/services',
+          'x-default': 'https://www.computerrepairkuwait.com/services'
+        },
+        ogType: 'website',
+        schemaTypes: ['CollectionPage', 'WebPage', 'BreadcrumbList'],
+        lastModified: '2026-10-22T00:00:00+03:00',
+        breadcrumbs: [
+          { name: 'الرئيسية', url: '/ar' },
+          { name: 'الخدمات', url: '/ar/services' }
+        ]
+      },
+      relatedServiceIds: ['srv-laptop', 'srv-motherboard', 'srv-gaming', 'srv-macbook', 'srv-screen', 'srv-battery', 'srv-charging-port', 'srv-keyboard', 'srv-macbook-screen', 'srv-ssd-ram', 'srv-gaming-laptop', 'srv-liquid-damage']
+    } as WebPageEntity,
+
     'page-locations': { id: 'page-locations', slug: 'locations', entityType: 'WebPage', isActive: true, title: 'Service Areas', description: 'KCROC service areas across Kuwait.', seo: { title: 'Computer Repair Service Areas Across Kuwait | KCROC', description: 'Explore KCROC\'s dedicated computer and laptop repair service areas across Kuwait. Free pickup and delivery from our central Hawalli repair lab.', canonicalUrl: 'https://www.computerrepairkuwait.com/locations', ogType: 'website', schemaTypes: ['CollectionPage', 'WebPage', 'BreadcrumbList'], lastModified: '2026-10-03T00:00:00+03:00', breadcrumbs: [{ name: 'Home', url: '/' }, { name: 'Service Areas', url: '/locations' }] } } as WebPageEntity,
     'page-near-me': {
       id: 'page-near-me', slug: 'near-me', entityType: 'WebPage', isActive: true,
@@ -172,9 +219,8 @@ export const rawGraphData: RawGraphData = {
         canonicalUrl: 'https://www.computerrepairkuwait.com/computer-repair-kuwait',
         locale: 'en_KW',
         alternates: {
-          // No ar-KW alternate: /ar/computer-repair-kuwait is the Arabic counterpart of '/'
-          // (it declares en-KW -> '/'), so claiming it here would be a non-reciprocal hreflang.
           'en-KW': 'https://www.computerrepairkuwait.com/computer-repair-kuwait',
+          'ar-KW': 'https://www.computerrepairkuwait.com/ar/computer-repair-kuwait',
           'x-default': 'https://www.computerrepairkuwait.com/computer-repair-kuwait'
         },
         ogType: 'website',
@@ -199,8 +245,8 @@ export const rawGraphData: RawGraphData = {
         locale: 'ar_KW',
         alternates: {
           'ar-KW': 'https://www.computerrepairkuwait.com/ar/computer-repair-kuwait',
-          'en-KW': 'https://www.computerrepairkuwait.com/',
-          'x-default': 'https://www.computerrepairkuwait.com/'
+          'en-KW': 'https://www.computerrepairkuwait.com/computer-repair-kuwait',
+          'x-default': 'https://www.computerrepairkuwait.com/computer-repair-kuwait'
         },
         ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList', 'FAQPage', 'Service'],
         lastModified: '2026-10-21T00:00:00+03:00',
