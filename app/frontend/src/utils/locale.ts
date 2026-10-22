@@ -30,6 +30,7 @@ const ENGLISH_TO_ARABIC: Record<string, string> = {
   '/location/farwaniya': '/ar/computer-repair-farwaniya',
   '/location/kuwait-city': '/ar/computer-repair-kuwait-city',
 
+  '/guides/bios-uefi-recovery-kuwait': '/guides/ar/bios-uefi-recovery-kuwait',
   '/blog/laptop-buying-guide-kuwait-2026': '/blog/ar/laptop-buying-guide-kuwait-2026',
   '/blog/how-often-clean-laptop-replace-thermal-paste-kuwait': '/blog/ar/how-often-clean-laptop-replace-thermal-paste-kuwait',
 };
@@ -60,13 +61,14 @@ const ARABIC_TO_ENGLISH: Record<string, string> = {
   '/ar/computer-repair-farwaniya': '/location/farwaniya',
   '/ar/computer-repair-kuwait-city': '/location/kuwait-city',
 
+  '/guides/ar/bios-uefi-recovery-kuwait': '/guides/bios-uefi-recovery-kuwait',
   '/blog/ar/laptop-buying-guide-kuwait-2026': '/blog/laptop-buying-guide-kuwait-2026',
   '/blog/ar/how-often-clean-laptop-replace-thermal-paste-kuwait': '/blog/how-often-clean-laptop-replace-thermal-paste-kuwait',
 };
 
 export function getLanguageSwitchPath(pathname: string): { href: string; targetLanguage: 'ar' | 'en' } {
   const normalized = pathname.replace(/\/+$/, '') || '/';
-  const isArabicRoute = normalized === '/ar' || normalized.startsWith('/ar/') || normalized.startsWith('/blog/ar/');
+  const isArabicRoute = normalized === '/ar' || normalized.startsWith('/ar/') || normalized.startsWith('/blog/ar/') || normalized.startsWith('/guides/ar/');
 
   if (isArabicRoute) {
     return {
