@@ -5,8 +5,9 @@
 // the English /services hub has no dedicated /ar/services page yet.
 
 const ENGLISH_TO_ARABIC: Record<string, string> = {
-  '/': '/ar/computer-repair-kuwait',
-  '/services': '/ar/computer-repair-kuwait',
+  '/': '/ar',
+  '/services': '/ar/services',
+  '/computer-repair-kuwait': '/ar/computer-repair-kuwait',
   '/near-me': '/ar/near-me',
   '/pricing': '/ar/pricing',
 
@@ -34,7 +35,9 @@ const ENGLISH_TO_ARABIC: Record<string, string> = {
 };
 
 const ARABIC_TO_ENGLISH: Record<string, string> = {
-  '/ar/computer-repair-kuwait': '/',
+  '/ar': '/',
+  '/ar/services': '/services',
+  '/ar/computer-repair-kuwait': '/computer-repair-kuwait',
   '/ar/near-me': '/near-me',
   '/ar/pricing': '/pricing',
 
@@ -63,7 +66,7 @@ const ARABIC_TO_ENGLISH: Record<string, string> = {
 
 export function getLanguageSwitchPath(pathname: string): { href: string; targetLanguage: 'ar' | 'en' } {
   const normalized = pathname.replace(/\/+$/, '') || '/';
-  const isArabicRoute = normalized.startsWith('/ar/') || normalized.startsWith('/blog/ar/');
+  const isArabicRoute = normalized === '/ar' || normalized.startsWith('/ar/') || normalized.startsWith('/blog/ar/');
 
   if (isArabicRoute) {
     return {
