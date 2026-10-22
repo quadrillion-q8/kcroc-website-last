@@ -875,3 +875,89 @@ select {
     scroll-behavior: auto !important;
   }
 }
+
+
+/* ==========================================================================
+   KCROC HOMEPAGE QUALITY PASS — 2026-10-22
+   Improve real small-screen legibility, align card surfaces and make the
+   four-item trust strip responsive without changing any inner service pages.
+   ========================================================================== */
+
+#main-content[data-page-type="home"] {
+  --kcroc-home-card-border: rgba(255, 255, 255, 0.105);
+  --kcroc-home-card-surface: rgba(17, 23, 27, 0.76);
+}
+
+/* Muted copy must remain comfortably readable on graphite surfaces. */
+#main-content[data-page-type="home"] .text-slate-400 {
+  color: #b7c1c2 !important;
+}
+
+#main-content[data-page-type="home"] .text-slate-500 {
+  color: #a4afb1 !important;
+}
+
+#main-content[data-page-type="home"] .text-slate-600 {
+  color: #8f9b9e !important;
+}
+
+/* Give the homepage cards a consistent, visible edge without heavy shadows. */
+#main-content[data-page-type="home"] [class*="rounded-"][class*="border-slate-800"] {
+  border-color: var(--kcroc-home-card-border) !important;
+}
+
+#main-content[data-page-type="home"] article[class*="rounded-"][class*="border"] {
+  border-color: var(--kcroc-home-card-border) !important;
+  background-color: rgba(17, 23, 27, 0.86);
+}
+
+#main-content[data-page-type="home"] [class*="rounded-"][class*="border"][class*="bg-slate-900/30"] {
+  background-color: var(--kcroc-home-card-surface);
+}
+
+/* Service cards retain their photography, with a cleaner and more even frame. */
+#main-content[data-page-type="home"] a.group.block.relative.bg-kcroc-card {
+  border-color: var(--kcroc-home-card-border);
+  background: linear-gradient(180deg, rgba(23, 29, 31, 0.94), rgba(17, 23, 27, 0.90));
+  border-radius: 1rem;
+}
+
+#main-content[data-page-type="home"] a.group.block.relative.bg-kcroc-card:hover,
+#main-content[data-page-type="home"] article[class*="rounded-"]:hover,
+#main-content[data-page-type="home"] a[class*="border-slate-800"]:hover {
+  border-color: rgba(201, 128, 77, 0.42) !important;
+}
+
+/* Keep the KPI strip balanced: two readable columns on phones, four on desktop. */
+#main-content[data-page-type="home"] .kcroc-home-stats-grid > div {
+  min-width: 0;
+  border-color: rgba(255, 255, 255, 0.095);
+}
+
+#main-content[data-page-type="home"] .kcroc-home-stats-grid > div:nth-child(odd) {
+  border-right: 1px solid rgba(255, 255, 255, 0.095);
+}
+
+#main-content[data-page-type="home"] .kcroc-home-stats-grid > div:nth-child(-n + 2) {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.095);
+}
+
+@media (min-width: 640px) {
+  #main-content[data-page-type="home"] .kcroc-home-stats-grid > div:nth-child(odd) {
+    border-right: 0;
+  }
+
+  #main-content[data-page-type="home"] .kcroc-home-stats-grid > div:nth-child(-n + 2) {
+    border-bottom: 0;
+  }
+
+  #main-content[data-page-type="home"] .kcroc-home-stats-grid > div:not(:last-child) {
+    border-right: 1px solid rgba(255, 255, 255, 0.095);
+  }
+}
+
+@media (max-width: 639px) {
+  #main-content[data-page-type="home"] .kcroc-home-stats-grid > div {
+    padding: 0.875rem 0.625rem;
+  }
+}
