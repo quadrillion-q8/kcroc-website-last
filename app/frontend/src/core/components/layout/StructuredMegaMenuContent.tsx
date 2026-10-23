@@ -207,7 +207,7 @@ const getEntities = (config: MegaMenuConfig, rootSlug: string): NavEntity[] => {
   return [...(config.featured ?? []), ...config.sections.flatMap((section) => section.items)]
     .filter((entity) => {
       // The top-right View All action already provides the index-page path.
-      if (entity.slug.replace(/^\/+|\/+$/g, '') === rootSlug) return false;
+      if (entity.slug === rootSlug) return false;
       if (seen.has(entity.id)) return false;
       seen.add(entity.id);
       return true;
