@@ -44,8 +44,8 @@ export default function Hero() {
 
           <div className="mt-4 flex flex-wrap justify-center gap-2">
             {['Free pick-up & drop across all Kuwait governorates', '30-day warranty', 'No fix, no fee'].map((label) => (
-              <span key={label} className="inline-flex items-center gap-1.5 rounded-full border border-cyan-500/25 bg-cyan-500/10 px-3 py-1.5 text-[11px] font-bold text-cyan-200">
-                <Check className="h-3.5 w-3.5 text-cyan-400" aria-hidden="true" />
+              <span key={label} className="inline-flex min-h-10 items-center gap-1.5 rounded-lg border border-white/[0.12] bg-white/[0.04] px-3 py-1.5 text-[11px] font-bold text-[#D4DBDE]">
+                <Check className="h-3.5 w-3.5 text-[#AAB5B9]" aria-hidden="true" />
                 {label}
               </span>
             ))}
@@ -58,7 +58,7 @@ export default function Hero() {
                 Get Free Quote
               </Link>
             </Button>
-            <Button asChild size="lg" className="h-14 min-w-0 w-full rounded-xl px-2 sm:px-5 text-[13px] sm:text-base font-extrabold text-slate-950 hover:brightness-95">
+            <Button asChild size="lg" className="h-14 min-w-0 w-full rounded-xl bg-[#25D366] px-2 text-[13px] font-extrabold text-[#062B15] hover:bg-[#4AE487] sm:px-5 sm:text-base">
               <a href={heroWhatsAppLink} target="_blank" rel="noopener noreferrer" onClick={() => trackConversion('whatsapp_click', { cta_name: 'hero_mobile_quote', button_position: 'hero_mobile' })}>
                 <MessageCircle className="h-5 w-5" aria-hidden="true" />
                 Book Pickup
@@ -72,7 +72,7 @@ export default function Hero() {
               lang="ar"
               dir="rtl"
               onClick={() => trackConversion('cta_click', { cta_name: 'hero_arabic_computer_repair', button_position: 'hero_mobile' })}
-              className="inline-flex min-h-11 items-center justify-center rounded-lg px-3 py-2 text-sm font-bold text-cyan-200 underline decoration-cyan-500/50 underline-offset-4 transition-colors hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+              className="inline-flex min-h-12 items-center justify-center rounded-lg px-3 py-2 text-sm font-bold text-[#D4DBDE] underline decoration-white/35 underline-offset-4 transition-colors hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f]"
             >
               فني كمبيوتر في الكويت · تصليح كمبيوتر ولابتوب
             </Link>
@@ -81,7 +81,7 @@ export default function Hero() {
           <div className="mt-4 flex items-center justify-center gap-2 text-xs font-semibold text-slate-300">
             <div className="flex" aria-hidden="true">{[...Array(5)].map((_, i) => <Star key={i} className="h-3.5 w-3.5 fill-current text-cyan-400" />)}</div>
             {rating && googleProfileUrl ? (
-              <a href={googleProfileUrl} target="_blank" rel="noopener noreferrer" className="underline-offset-4 hover:text-cyan-200 hover:underline">
+              <a href={googleProfileUrl} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-12 items-center underline-offset-4 hover:text-cyan-200 hover:underline">
                 {rating} Google rating · Read current reviews
               </a>
             ) : <span>Customer reviews on Google</span>}
@@ -132,8 +132,8 @@ export default function Hero() {
 
               <div className="mt-6 flex flex-wrap gap-2.5">
                 {['Free pick-up & drop across all Kuwait governorates', '30-day parts + labour warranty', 'No fix, no fee'].map((label) => (
-                  <span key={label} className="inline-flex items-center gap-2 rounded-full border border-white/[0.10] bg-white/[0.035] px-3.5 py-2 text-xs font-bold text-slate-200">
-                    <Check className="h-4 w-4 text-cyan-400" aria-hidden="true" />
+                  <span key={label} className="inline-flex min-h-10 items-center gap-2 rounded-lg border border-white/[0.12] bg-white/[0.04] px-3.5 py-2 text-xs font-bold text-[#D4DBDE]">
+                    <Check className="h-4 w-4 text-[#AAB5B9]" aria-hidden="true" />
                     {label}
                   </span>
                 ))}
@@ -160,7 +160,7 @@ export default function Hero() {
                   lang="ar"
                   dir="rtl"
                   onClick={() => trackConversion('cta_click', { cta_name: 'hero_arabic_computer_repair', button_position: 'hero_desktop' })}
-                  className="inline-flex min-h-11 items-center rounded-lg px-2 py-2 text-sm font-bold text-cyan-200 underline decoration-cyan-500/50 underline-offset-4 transition-colors hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+                  className="inline-flex min-h-12 items-center rounded-lg px-2 py-2 text-sm font-bold text-[#D4DBDE] underline decoration-white/35 underline-offset-4 transition-colors hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f]"
                 >
                   فني كمبيوتر في الكويت · تصليح كمبيوتر ولابتوب
                 </Link>
@@ -205,7 +205,7 @@ export default function Hero() {
                       <div className="hidden shrink-0 text-right sm:block">
                         <div className="flex justify-end" aria-hidden="true">{[...Array(5)].map((_, i) => <Star key={i} className="h-4 w-4 fill-current text-cyan-400" />)}</div>
                         {rating && googleProfileUrl ? (
-                          <a href={googleProfileUrl} target="_blank" rel="noopener noreferrer" className="mt-1 block text-[11px] font-semibold text-slate-400 hover:text-cyan-300">{rating} Google rating · View reviews</a>
+                          <a href={googleProfileUrl} target="_blank" rel="noopener noreferrer" className="mt-1 flex min-h-12 items-center justify-end text-xs font-semibold text-[#C4CDD1] hover:text-white">{rating} Google rating · View reviews</a>
                         ) : <p className="mt-1 text-[11px] font-semibold text-slate-400">Customer reviews</p>}
                       </div>
                     </div>
@@ -225,7 +225,7 @@ export default function Hero() {
                   ))}
                 </div>
 
-                <Link to="/gallery" className="mt-4 inline-flex items-center gap-2 text-sm font-extrabold text-[#efc19c] hover:text-white transition-colors">
+                <Link to="/gallery" className="mt-4 inline-flex min-h-12 items-center gap-2 text-sm font-extrabold text-[#D4DBDE] hover:text-white transition-colors">
                   Explore our repair gallery <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </Link>
               </div>
