@@ -1534,7 +1534,7 @@ export const rawGraphData: RawGraphData = {
       iconKey: 'apple', 
       shortDescription: 'MacBook Air and Pro repair in Kuwait for power, USB-C charging, screen, battery, keyboard and liquid-damage faults, with component-level board diagnostics where repair is viable.',
       description: 'Need MacBook repair in Kuwait? KCROC diagnoses MacBook Air and MacBook Pro faults including no power, USB-C charging problems, liquid damage, black or flickering screens, battery swelling, keyboard and trackpad faults, overheating and boot failures. We check the model, symptom and affected circuit before recommending a component-level repair or a compatible part replacement. Where technically viable, board-level micro-soldering can repair the original logic board rather than automatically replacing the whole board. Diagnostics are free, the quote is approved before paid work, and free pickup and delivery can be arranged across Kuwait. Repairs are completed at our Hawalli lab with a 30-day warranty on covered work; data preservation is a priority but cannot be guaranteed for every damaged device.', 
-      idealCustomer: 'Creative professionals, developers, students, and business professionals who\'ve been quoted an expensive board-swap by Apple or a reseller and need the original motherboard — and the data on it — recovered rather than replaced.',
+      idealCustomer: 'MacBook Air and MacBook Pro owners who need a clear diagnosis and repair options for power, charging, display, battery, keyboard, liquid-damage or logic-board faults.',
       deviceTypes: [
         'MacBook Air (Apple Silicon and Intel generations; confirm exact model)',
         'MacBook Pro 13-inch (Intel and M-series)',
@@ -1558,7 +1558,7 @@ export const rawGraphData: RawGraphData = {
         'Motherboard Micro-Soldering',
         'USB-C Power IC Replacement',
         'Liquid Damage Ultrasonic Cleaning',
-        'Data-Safe Board-Level Repair (Apple Silicon & Intel)',
+        'Data-Conscious Board-Level Diagnostics (Apple Silicon & Intel)',
         'MacBook Screen Replacement',
         'MacBook Battery Replacement',
         'Keyboard Replacement (Butterfly & Magic Keyboard)',
@@ -1572,8 +1572,8 @@ export const rawGraphData: RawGraphData = {
 
       whyChooseUs: [
         { title: 'Chip-Level Motherboard Repair', description: 'We trace the fault to the specific failed component — a MOSFET, a power IC, a corroded trace — and repair it directly, instead of defaulting to a full board swap.' },
-        { title: 'Data-Conscious Board Repair', description: 'When technically feasible, repairing the original logic board can avoid a board swap. We focus on the requested hardware fault and do not browse personal files as part of normal diagnostics, but no repair shop can guarantee data survival on every damaged device.' },
-        { title: 'USB-C Power IC Specialists', description: 'Charging and port failures are among the most common MacBook faults we see, and are frequently a single failed IC rather than a reason to replace the board.' },
+        { title: 'Data-Conscious Board Repair', description: 'When technically feasible, repairing the original logic board may avoid replacing it. We focus on the reported hardware fault, recommend backups where possible, and cannot guarantee data preservation or recovery.' },
+        { title: 'USB-C Charging Diagnostics', description: 'Charging faults can involve the adapter, cable, port, power-negotiation circuitry or other board-level components. We test the relevant path before recommending a repair.' },
         { title: 'Liquid Damage Ultrasonic Cleaning', description: 'The board is fully stripped and run through an industrial ultrasonic cleaner to remove corrosion at a microscopic level before we assess what, if anything, needs replacing.' },
         { title: 'Free Diagnostic Before Any Quote', description: 'Thermal imaging and multimeter tracing happen before you\'re quoted anything — you know the actual fault, not a guess based on symptoms alone.' },
         { title: 'ESD-Safe Laboratory', description: 'All micro-soldering and board work is performed on grounded, static-controlled workstations in our Hawalli lab.' },
@@ -1586,37 +1586,37 @@ export const rawGraphData: RawGraphData = {
           id: 'no-power', 
           title: 'No Power / Completely Dead Device', 
           severity: 'critical', 
-          description: 'No charging light, no fan spin, no response to the power button. Usually a shorted input MOSFET or a blown main power rail (PPBUS_G3H and similar) rather than a dead motherboard outright — we trace it with a multimeter before assuming the worst.' 
+          description: 'No response to the power button can have several causes, including the adapter, charging path, battery, power circuitry or logic board. We test the device and trace the fault before deciding whether component-level repair is viable.' 
         },
         { 
           id: 'liquid-damage', 
           title: 'Liquid Spill / Water Damage', 
           severity: 'critical', 
-          description: 'Coffee, water, or juice spilled on the keyboard creates conductive bridges across the board and can short components within hours as sugars and acids corrode copper traces. Power off immediately and don\'t try to turn it on to "check" it — that\'s what actually completes the short in most cases we see.' 
+          description: 'Liquid can cause electrical shorts and corrosion, and the extent of damage depends on the liquid, affected area and device condition. Disconnect power, do not try to turn the MacBook back on, and arrange inspection promptly.' 
         },
         { 
           id: 'usb-c-not-charging', 
           title: 'USB-C Port Not Charging or Not Recognized', 
           severity: 'high', 
-          description: 'Neither Thunderbolt port charges the machine or recognizes accessories. Most commonly a failed power negotiation IC on the board — the physical port itself is rarely the actual fault, which is why replacing just the port connector often doesn\'t fix it.' 
+          description: 'If USB-C ports do not charge the MacBook or recognize accessories, possible causes include the charger, cable, port, power-negotiation circuitry or another board fault. Testing helps identify the cause before parts are replaced.' 
         },
         { 
           id: 'screen-flicker', 
           title: 'Screen Flickering or Backlight Failure', 
           severity: 'medium', 
-          description: 'Can be a damaged display cable (common near the hinge on frequently opened/closed lids), a failing backlight driver, or — less often — a GPU-related fault on Intel models. We isolate which before quoting a screen replacement.' 
+          description: 'Flickering, lines or a black display can involve the display assembly, connector, backlight path or other hardware, depending on the model. We check the symptom before recommending a screen replacement.' 
         },
         { 
           id: 'keyboard-not-responding', 
           title: 'Keyboard Keys Not Responding or Sticking', 
           severity: 'medium', 
-          description: 'On 2016-2019 butterfly-mechanism keyboards, dust ingress under individual keys is a well-known failure point. On Magic Keyboard models (2020+), it\'s more often a ribbon cable or controller issue. We diagnose which mechanism is involved before replacing anything.' 
+          description: 'Unresponsive or sticking keys can result from contamination, liquid exposure, the keyboard mechanism, a cable or another fault. The model and symptom determine whether cleaning, a targeted repair or assembly replacement is appropriate.' 
         },
         { 
           id: 'trackpad-unresponsive', 
           title: 'Trackpad Unresponsive or Not Clicking', 
           severity: 'medium', 
-          description: 'Force Touch trackpads use a Taptic Engine to simulate a click rather than a physical switch — when that fails, the trackpad can still move the cursor but stop registering clicks entirely, which is a Taptic Engine fault, not a full trackpad replacement in most cases.' 
+          description: 'Trackpad problems may involve settings, the trackpad assembly, its connection, battery swelling or another hardware issue. We check the model and symptoms before recommending repair or replacement.' 
         },
         { 
           id: 'stuck-apple-logo', 
@@ -1628,13 +1628,13 @@ export const rawGraphData: RawGraphData = {
           id: 'random-restarts', 
           title: 'Random Restarts / Kernel Panics', 
           severity: 'high', 
-          description: 'Intermittent, unpredictable restarts under normal use point toward a power delivery instability or a marginal RAM/storage connection rather than a software bug, especially if they happen regardless of which apps are running.' 
+          description: 'Unexpected restarts can be caused by software, power, thermal or hardware faults. We check the reported pattern and available diagnostics before deciding whether hardware repair is needed.' 
         },
         { 
           id: 'no-sound', 
           title: 'No Sound or Distorted Audio', 
           severity: 'low', 
-          description: 'Usually a failed audio IC or a damaged speaker driver rather than a software setting — worth a diagnostic if a system reset hasn\'t resolved it.' 
+          description: 'Sound problems can be caused by settings, software, speakers, connectors or audio circuitry. A hardware diagnosis can help separate these possibilities when basic checks do not resolve the issue.' 
         },
         { 
           id: 'wifi-bluetooth-fail', 
@@ -1646,19 +1646,19 @@ export const rawGraphData: RawGraphData = {
           id: 'macbook-battery-swelling', 
           title: 'Swollen Battery Lifting the Trackpad', 
           severity: 'critical', 
-          description: 'A visibly raised or uneven trackpad is frequently a swollen battery underneath it — a genuine safety issue, not cosmetic. Stop using the device and see our dedicated battery replacement service for safe removal.' 
+          description: 'A raised trackpad, bulging case or separating seam can indicate a swollen battery. Stop using and charging the device, do not press or puncture it, and arrange safe professional handling.' 
         },
         { 
           id: 'overheating-fan-noise', 
           title: 'Overheating or Constant Fan Noise', 
           severity: 'medium', 
-          description: 'More common on Intel MacBook Pro models under sustained loads (video export, compiling) than on Apple Silicon, but dust-clogged fans and degraded thermal paste affect both — we check airflow and thermal material condition as part of every diagnostic.' 
+          description: 'Heat or fan noise can relate to workload, airflow, dust, thermal materials, software or hardware. Fan-equipped models can be inspected for cooling issues; fanless models require a different diagnostic approach.' 
         },
         { 
           id: 'dead-macbook-data-recovery', 
           title: 'Dead MacBook With Important Data Still On It', 
           severity: 'critical', 
-          description: 'Because storage is soldered and encrypted to the board on most modern MacBooks, a completely dead machine with unsaved data is precisely the scenario where board-swap (Apple\'s standard fix) permanently loses access to your files, while board-level component repair is often the only path that keeps them recoverable.' 
+          description: 'If a MacBook with important data will not start, avoid repeated power attempts after liquid exposure and explain the data priority before repair. Storage architecture varies by model, and a board replacement or severe board damage may affect data access; recovery cannot be guaranteed.' 
         }
       ], 
 
@@ -1668,48 +1668,8 @@ export const rawGraphData: RawGraphData = {
         { step: 3, title: 'Confirm the Fault & Quote', description: 'You get a written explanation of what\'s actually wrong and an itemized quote before any work starts.' },
         { step: 4, title: 'Micro-Soldering Repair in an ESD-Safe Lab', description: 'The failed component is replaced or the board is ultrasonically cleaned for liquid damage, on grounded, static-controlled workstations.' },
         { step: 5, title: 'Full-Load Stress Testing', description: 'The board is stress-tested under sustained load to confirm the repair holds before reassembly.' },
-        { step: 6, title: 'Return with 30-Day Warranty', description: 'Your MacBook is delivered back with your original SSD, Secure Enclave, and data untouched.' }
+        { step: 6, title: 'Return with 30-Day Warranty', description: 'Your MacBook is returned after the agreed checks, with a 30-day warranty on covered repair work. We explain any limitations or unresolved symptoms before return.' }
       ],
-
-      performanceOutcomes: {
-        disclaimer: 'The outcomes below describe typical results for these repair categories, not a guarantee for any specific device — every repair is quoted after its own diagnostic.',
-        items: [
-          { metric: 'Board Recovery Rate', outcome: 'The majority of motherboards referred to us as "needs full replacement" are repairable at component level once the fault is traced to its actual source.' },
-          { metric: 'Data Preservation', outcome: 'Because the original board is repaired rather than swapped, the original SSD and Secure Enclave remain untouched in the large majority of repairs — data stays accessible without a separate recovery step.' },
-          { metric: 'Liquid Damage Cases', outcome: 'Boards brought in within 24-48 hours of a spill, without being powered on again after the incident, have meaningfully better recovery outcomes than those that were repeatedly tested first.' },
-          { metric: 'Cost vs. Board-Swap Quotes', outcome: 'Component-level repair typically costs a fraction of an out-of-warranty full motherboard replacement quote.' }
-        ]
-      },
-
-      repairExamples: {
-        disclaimer: 'These are representative repair scenarios illustrating common fault categories we service, not records of a specific named customer.',
-        items: [
-          {
-            id: 'usb-c-power-ic',
-            title: 'MacBook Pro: Neither Thunderbolt Port Would Charge',
-            symptoms: 'The laptop wouldn\'t charge from either USB-C port, tested across three different chargers and cables.',
-            diagnosis: 'Multimeter testing under load isolated the fault to the board\'s power negotiation IC, not the physical ports or the chargers.',
-            repair: 'The failed power IC was replaced via micro-soldering.',
-            outcome: 'Both ports charged normally and were verified across multiple chargers before return.'
-          },
-          {
-            id: 'fast-response-liquid',
-            title: 'MacBook Air: Spill Recovered With No Data Loss',
-            symptoms: 'Liquid was spilled on the keyboard; the device was powered off immediately and brought in the same day without being tested again.',
-            diagnosis: 'Because power was cut immediately and the device wasn\'t powered back on, ultrasonic cleaning found minimal corrosion and no shorted components.',
-            repair: 'Full ultrasonic cleaning of the board; no component replacement was needed.',
-            outcome: 'The MacBook returned to full function with no data loss and no chip-level repair required — illustrating why immediate power-off matters more than any repair technique afterward.'
-          },
-          {
-            id: 'apple-said-unfixable',
-            title: 'MacBook Pro: Data Recovered From a Board Apple Called Unfixable',
-            symptoms: 'The MacBook was completely dead with no display; Apple quoted a full motherboard replacement with total data loss, since the Apple Silicon storage encryption is tied to the original board\'s Secure Enclave.',
-            diagnosis: 'Thermal imaging under a safe test voltage located a single shorted component on the main power rail.',
-            repair: 'The shorted component was replaced via micro-soldering rather than swapping the board.',
-            outcome: 'The original SSD and Secure Enclave were never touched — all data remained accessible once the board powered on again.'
-          }
-        ]
-      },
 
       inspectionChecklist: [
         'Power rail voltage tracing',
@@ -1726,18 +1686,18 @@ export const rawGraphData: RawGraphData = {
       faqs: [
         {
           id: 'faq-apple-said-unfixable',
-          title: 'Can you repair a MacBook Apple said needs a full motherboard replacement?',
-          answer: 'Often, yes. Apple Authorized Service Providers are generally set up to replace the whole board rather than repair the individual failed component — "needs a new board" from Apple usually means beyond their repair model, not beyond repair entirely. We diagnose the specific fault before agreeing either way.'
+          title: 'Can you repair a MacBook that has been quoted for a motherboard replacement?',
+          answer: 'Sometimes. A component-level repair may be possible if the fault can be isolated and the board is repairable, but this depends on the exact model, damage and parts. We diagnose first and explain the available options; we cannot promise that every board can be repaired.'
         },
         {
           id: 'faq-data-loss-board-repair',
           title: 'Will I lose my data if my MacBook needs board-level repair?',
-          answer: 'Not with component-level repair — we work on your original board, so your SSD and (on Apple Silicon) Secure Enclave never change. Data loss risk comes specifically from board-swap, where the new board\'s encryption no longer matches your original storage.'
+          answer: 'Repairing the original logic board can help retain the original hardware, but it does not guarantee that data will survive or remain accessible. Back up important files if possible, explain data concerns before work begins, and understand that severe board damage or board replacement can affect access.'
         },
         {
           id: 'faq-apple-silicon-harder-repair',
           title: 'Is it true that Apple Silicon (M1/M2/M3) MacBooks are harder to repair than older Intel models?',
-          answer: 'In some ways, yes — storage and memory are soldered directly to the board rather than removable, and storage encryption is tied to that specific board\'s Secure Enclave. That actually makes board-level component repair more important on Apple Silicon, not less, since board-swap is a bigger data-loss event than it was on older Intel models with removable SSDs.'
+          answer: 'Repairability differs by model and fault. Many Apple Silicon models integrate memory and storage-related components more closely with the logic board, while older Intel models vary in their storage design. The exact model matters, and neither component-level repair nor data recovery is guaranteed.'
         },
         {
           id: 'faq-intel-macbooks',
@@ -1747,22 +1707,22 @@ export const rawGraphData: RawGraphData = {
         {
           id: 'faq-liquid-spill-immediate-steps',
           title: 'What should I do immediately after spilling liquid on my MacBook?',
-          answer: 'Power it off immediately by holding the power button, don\'t plug it into a charger, and don\'t try to turn it on to "check" if it still works — that\'s what completes the electrical short in most cases we see. Bring it in as soon as possible; faster response meaningfully improves the outcome.'
+          answer: 'Disconnect the charger and other accessories, shut the device down if you can do so safely, and do not try to restart or charge it. Arrange prompt professional inspection. The outcome depends on the liquid, the affected components and whether electrical damage has occurred.'
         },
         {
           id: 'faq-usb-c-without-board-swap',
           title: 'Can a MacBook with USB-C charging problems be fixed without a full board replacement?',
-          answer: 'Usually. Charging failures are most often a single failed power IC rather than a reason to replace the entire board, and we test for that specifically before quoting anything more extensive.'
+          answer: 'Sometimes. The cause may be the adapter, cable, port, power-negotiation circuitry or another board fault. We test the charging path and explain whether a targeted repair is practical before quoting.'
         },
         {
           id: 'faq-macbook-repair-cost-vs-apple',
           title: 'How much does MacBook motherboard repair cost compared to Apple?',
-          answer: 'Diagnostics are free, and component-level repairs start from 25 KWD, typically a fraction of an out-of-warranty full board-swap quote from Apple — the exact price depends on which component failed.'
+          answer: 'Initial diagnostics are free. The service page lists a starting price of 25 KWD, but the final quote depends on the exact fault, model, parts and repair method. We provide the quote before paid work begins; comparisons with another provider depend on its specific quote.'
         },
         {
           id: 'faq-genuine-parts-macbook',
           title: 'Do you use genuine Apple parts?',
-          answer: 'For screens and batteries we use OEM and high-grade compatible options and explain the difference before you choose. For chip-level board repair, we source matched-spec components for the specific failed part rather than full genuine Apple sub-assemblies, which is what makes component-level repair possible at all.'
+          answer: 'Part options depend on the model and the repair. We confirm the proposed part type, compatibility, availability and price before you approve the work. We do not claim Apple authorization or promise genuine Apple parts unless explicitly confirmed for that specific repair.'
         },
         {
           id: 'faq-keyboard-without-top-case',
@@ -1772,7 +1732,7 @@ export const rawGraphData: RawGraphData = {
         {
           id: 'faq-macbook-thermal-after-repair',
           title: 'Will my MacBook run hot after repair?',
-          answer: 'It shouldn\'t — thermal paste condition and fan/vent cleanliness are checked as part of every diagnostic, and we address them if they\'re contributing to heat issues, not just the specific fault you came in for.'
+          answer: 'That depends on the cause of the original heat issue and the repair performed. Where relevant, we test cooling behaviour and explain any remaining thermal concern; no specific temperature outcome can be promised before diagnosis.'
         },
         {
           id: 'faq-macbook-warranty',
@@ -1864,7 +1824,7 @@ export const rawGraphData: RawGraphData = {
       ],
       seo: { 
         title: 'MacBook Repair Kuwait | Air, Pro, Charging & Board | KCROC', 
-        description: 'MacBook Air and Pro repair in Kuwait for no power, USB-C charging, liquid damage, black screens, batteries and board faults. Free diagnosis, Kuwait-wide pickup and a 30-day warranty on covered repairs.', 
+        description: 'MacBook Air and Pro repair in Kuwait for power, USB-C charging, liquid damage, screen, battery and logic-board faults. Free diagnosis, pickup across Kuwait and a 30-day warranty on covered repairs.', 
         canonicalUrl: 'https://www.computerrepairkuwait.com/macbook-repair-kuwait', locale: 'en_KW', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/macbook-repair-kuwait', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/macbook-repair-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/macbook-repair-kuwait' }, 
         ogType: 'article', 
         schemaTypes: ['Service', 'FAQPage'] 
