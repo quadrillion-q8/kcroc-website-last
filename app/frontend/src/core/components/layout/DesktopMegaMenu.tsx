@@ -168,7 +168,7 @@ interface Props {
 export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnter, onMouseLeave, onClose }: Props) {
   const panelRef = useRef<HTMLDivElement>(null);
   const { trackConversion } = useAnalytics();
-  const phoneDigits = NAV_GRAPH.business!.telephone.replace(/\\D/g, '');
+  const phoneDigits = NAV_GRAPH.business!.telephone.replace(/\D/g, '');
   const phoneDisplay = phoneDigits.startsWith('965') ? `+965 ${phoneDigits.slice(3)}` : `+${phoneDigits}`;
   const meta = getMeta(config.id);
   const moreItems = getMoreItems(config);
