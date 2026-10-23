@@ -96,7 +96,7 @@ export const ServiceAreas = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 gap-2 min-[400px]:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-2 min-[400px]:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {areas.map((area: string) => (
             <span key={area} className="flex min-h-12 min-w-0 items-center rounded-xl border border-white/[0.10] bg-white/[0.035] px-3 py-2 text-sm leading-snug text-[#D4DBDE] whitespace-normal break-words">
               {area}
