@@ -60,7 +60,7 @@ export default function Hero() {
       <div className="container relative z-10 mx-auto w-full max-w-xl px-4 lg:max-w-none lg:px-8">
         <div className="grid items-center gap-6 lg:gap-12 xl:grid-cols-[0.98fr_1.02fr] 2xl:gap-16">
           {/* ── Copy column ───────────────────────────────────────────── */}
-          <div className="min-w-0 text-center lg:max-w-2xl lg:text-left">
+          <div className="min-w-0 text-center lg:max-w-2xl lg:text-start">
             <div className="mb-4 flex items-center justify-center lg:mb-6 lg:justify-start">
               <span className="kcroc-kicker">
                 <span className="lg:hidden">Precision repair laboratory</span>
@@ -141,9 +141,9 @@ export default function Hero() {
             </div>
 
             {/* Desktop-only fact strip */}
-            <dl className="mt-8 hidden max-w-xl grid-cols-3 divide-x divide-white/10 border-y border-white/[0.10] py-5 text-left lg:grid">
+            <dl className="mt-8 hidden max-w-xl grid-cols-3 divide-x divide-white/10 border-y border-white/[0.10] py-5 text-start lg:grid">
               {DESKTOP_FACTS.map((item) => (
-                <div key={item.label} className="flex flex-col-reverse px-4 first:pl-0 last:pr-0">
+                <div key={item.label} className="flex flex-col-reverse px-4 first:ps-0 last:pe-0">
                   <dt className="mt-1 text-[10px] font-bold uppercase leading-tight tracking-[0.12em] text-slate-400">{item.label}</dt>
                   <dd className="text-lg font-black tracking-tight text-white xl:text-2xl">{item.value}</dd>
                 </div>
