@@ -94,7 +94,7 @@ export default function FAQSection() {
             cta_name: 'faq_view_all',
             button_position: 'faq_section',
           })}
-          className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold text-cyan-400 underline decoration-cyan-400/50 underline-offset-4 transition-colors hover:text-cyan-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+          className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold text-cyan-400 underline decoration-cyan-400/50 underline-offset-4 transition-colors hover:text-cyan-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
         >
           View all FAQs
           <ArrowRight aria-hidden="true" className="h-4 w-4" />
