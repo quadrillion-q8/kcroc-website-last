@@ -222,7 +222,7 @@ export function Footer() {
                 </li>
               ))}
               <li className="pt-1">
-                <Link to="/services" className="inline-flex items-center gap-1.5 text-[#dfa86f] hover:text-white transition-colors text-sm font-bold">
+                <Link to="/services" className="inline-flex min-h-12 items-center gap-1.5 text-[#dfa86f] hover:text-white transition-colors text-sm font-bold">
                   View all services <ArrowRight className="w-4 h-4" aria-hidden="true" />
                 </Link>
               </li>
