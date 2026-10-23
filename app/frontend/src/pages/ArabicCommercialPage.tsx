@@ -320,26 +320,39 @@ const CONFIG: Record<string, {
     serviceIds: ['srv-macbook', 'srv-macbook-screen', 'srv-battery', 'srv-motherboard', 'srv-liquid-damage']
   },
   'macbook-screen-replacement-kuwait': {
-    h1: 'تبديل شاشة MacBook في الكويت',
-    eyebrow: 'MacBook Air وMacBook Pro • فحص الشاشة والكابل والإضاءة قبل التبديل',
-    intro: 'شاشة الـMacBook مكسورة أو فيها خطوط أو وميض أو صارت سوداء؟ مو كل عطل يحتاج تبديل الشاشة كاملة. نفحص الشاشة والكابل والموصل والإضاءة ومسار الصورة، ونتأكد من موديل الـMacBook والجيل وتجميعة الشاشة المتوافقة. أجرة العمل تبدأ من 30 د.ك ويُحسب سعر الشاشة بشكل منفصل حسب الموديل والتوفر. نوضح لك السعر النهائي والمدة قبل بدء الإصلاح.',
-    bullets: ['خدمة MacBook Air وMacBook Pro مع مطابقة الموديل والجيل', 'فحص الشاشة والكابل والموصل والإضاءة قبل طلب القطعة', 'أجرة العمل تبدأ من 30 د.ك + سعر الشاشة', 'تأكيد التوفر والسعر النهائي والمدة قبل التركيب', 'استلام وتوصيل مجاني داخل الكويت'],
+    h1: 'تبديل شاشة MacBook Air وMacBook Pro في الكويت',
+    eyebrow: 'شاشة مكسورة أو سوداء أو فيها خطوط ووميض؟ نفحص السبب ونطابق الموديل قبل طلب القطعة',
+    intro: 'إذا شاشة الـMacBook مكسورة، سوداء، فيها خطوط أو تومض، لا تفترض أن الحل هو تبديل الشاشة كاملة قبل الفحص. نفحص الشاشة والكابل والموصل والإضاءة ومسار الصورة، ونتأكد من موديل الجهاز والجيل وتجميعة الشاشة المتوافقة. أجرة العمل تبدأ من 30 د.ك ويُحسب سعر الشاشة بشكل منفصل حسب الموديل وتوفر القطعة. نوضح لك التكلفة النهائية والمدة المتوقعة قبل أي إصلاح مدفوع.',
+    bullets: [
+      'خدمة MacBook Air وMacBook Pro بعد تأكيد الموديل والجيل والتوافق',
+      'فحص الشاشة والكابل والموصل والإضاءة قبل اقتراح التبديل',
+      'أجرة العمل تبدأ من 30 د.ك + سعر تجميعة الشاشة',
+      'تأكيد توفر القطعة والسعر النهائي والمدة قبل التركيب',
+      'استلام وتوصيل مجاني داخل الكويت والإصلاح في مختبر حولي',
+      'اختبار الصورة والسطوع والخطوط والوظائف المدعومة بعد الإصلاح'
+    ],
     faq: [
-      { q: 'كم يكلف تبديل شاشة MacBook في الكويت؟', a: 'أجرة العمل تبدأ من 30 د.ك، وسعر الشاشة يُحسب بشكل منفصل حسب موديل الـMacBook والجيل وتجميعة الشاشة المطلوبة. نؤكد لك السعر النهائي قبل التركيب.' },
-      { q: 'كل شاشة سوداء أو فيها خطوط معناها لازم تتبدل؟', a: 'لا. ممكن يكون السبب الشاشة أو الكابل أو الموصل أو الإضاءة أو مسار الصورة. نفحص العطل أولًا قبل اقتراح تبديل الشاشة كاملة.' },
-      { q: 'هل تبدلون شاشات MacBook Air وMacBook Pro؟', a: 'نعم، للأجهزة المدعومة بعد التأكد من الموديل والجيل وتجميعة الشاشة المتوافقة؛ لأن القطع تختلف بين الإصدارات.' },
-      { q: 'ممكن تبديل الشاشة بنفس اليوم؟', a: 'ممكن إذا الشاشة المتوافقة متوفرة وكان وقت التشخيص والتركيب يسمح. نؤكد توفر القطعة والمدة المتوقعة بعد معرفة موديل جهازك.' },
-      { q: 'هل تحتاجون الدخول إلى ملفاتي أثناء تبديل الشاشة؟', a: 'تبديل الشاشة إصلاح هاردوير ولا يتطلب عادة فتح ملفاتك الشخصية، ولا نتصفح الملفات ضمن هذه الخدمة. إذا احتجنا أي خطوة إضافية قد تؤثر على البيانات، نوضحها لك قبل المتابعة.' },
-      { q: 'هل يوجد ضمان على تبديل شاشة MacBook؟', a: 'نعم، يشمل الإصلاح المكتمل ضمان 30 يومًا على تجميعة الشاشة وأجرة العمل وفق شروط الخدمة. نوضح لك نطاق التغطية قبل الإصلاح.' },
-      { q: 'هل الاستلام والتوصيل مجاني في الكويت؟', a: 'نعم، نرتب الاستلام والتوصيل من مناطق الكويت، ويتم الفحص والإصلاح في مختبر KCROC بحولي ثم نرجع الجهاز لك بعد الاختبار.' }
+      { q: 'كم سعر تبديل شاشة MacBook في الكويت؟', a: 'أجرة العمل تبدأ من 30 د.ك، وسعر تجميعة الشاشة منفصل ويعتمد على موديل MacBook Air أو Pro والجيل والقطعة المتوافقة وتوفرها. نؤكد السعر النهائي شامل العمل والقطعة قبل طلبها أو تركيبها.' },
+      { q: 'هل أجرة 30 د.ك تشمل شاشة MacBook؟', a: 'لا، هذا سعر بداية أجرة العمل فقط. سعر الشاشة يضاف حسب الموديل والجيل وتجميعة العرض المطلوبة، ونوضح لك التكلفة كاملة قبل أي عمل مدفوع.' },
+      { q: 'شاشة MacBook سوداء لكن الجهاز يشتغل؛ هل لازم تتبدل؟', a: 'مو بالضرورة. قد يكون السبب من الشاشة أو الكابل أو الموصل أو الإضاءة أو مسار العرض. نفحص الأعراض ونحدد السبب قبل اقتراح تبديل التجميعة.' },
+      { q: 'هل تبدلون شاشة MacBook Air وMacBook Pro؟', a: 'نستقبل أجهزة MacBook Air وMacBook Pro، لكن توافق الشاشة يختلف حسب المقاس والجيل ورقم الموديل. نتحقق من القطعة المناسبة وتوفرها قبل تأكيد الإصلاح.' },
+      { q: 'هل تختلف الشاشة بين موديلات Intel وApple Silicon؟', a: 'نعم، لا يكفي معرفة أنها شاشة MacBook فقط. نستخدم رقم الموديل والجيل ومواصفات التجميعة لتحديد التوافق؛ لا نؤكد توفر قطعة قبل التحقق من الجهاز.' },
+      { q: 'هل يمكن تبديل الشاشة في نفس اليوم؟', a: 'قد يكون ذلك ممكنًا إذا كانت تجميعة الشاشة الصحيحة متوفرة وكان وقت الاستلام والفحص والتركيب يسمح. نحدد المدة الواقعية بعد معرفة الموديل وتأكيد توفر القطعة.' },
+      { q: 'هل يتأثر ملفاتي أو بياناتي عند تبديل الشاشة؟', a: 'تبديل الشاشة عادةً إصلاح هاردوير ولا يتطلب تصفح ملفاتك الشخصية، لكن لا توجد خدمة إصلاح يمكنها ضمان انعدام كل المخاطر. احتفظ بنسخة احتياطية إذا كان الجهاز يعمل، ولا ترسل كلمات المرور أو رموز الدخول عبر واتساب.' },
+      { q: 'هل يوجد ضمان على تبديل شاشة MacBook؟', a: 'الإصلاحات المكتملة مشمولة بضمان 30 يومًا وفق شروط الخدمة. نوضح لك نطاق التغطية على القطعة والعمل قبل الموافقة.' },
+      { q: 'هل توفرون استلامًا من البيت أو المكتب في مناطق الكويت؟', a: 'نرتب استلام وتوصيل مجانيًا من مناطق الكويت حسب التنسيق. يتم الفحص والإصلاح في مختبر KCROC بحولي، ثم نعيد الجهاز بعد الاختبار؛ مناطق الخدمة الأخرى ليست فروعًا مستقلة.' }
     ],
     englishPath: '/macbook-screen-replacement-kuwait',
     arabicLinks: [
-      { label: 'تبديل البطارية', path: '/ar/battery-replacement-kuwait' },
-      { label: 'تصليح لابتوب', path: '/ar/laptop-repair-kuwait' },
-      { label: 'تصليح كمبيوتر حولي', path: '/ar/computer-repair-hawalli' }
+      { label: 'تصليح MacBook في الكويت', path: '/ar/macbook-repair-kuwait' },
+      { label: 'تبديل شاشة اللابتوب', path: '/ar/laptop-screen-repair-kuwait' },
+      { label: 'تبديل بطارية اللابتوب وMacBook', path: '/ar/battery-replacement-kuwait' },
+      { label: 'تصليح MacBook بعد أضرار السوائل', path: '/ar/laptop-liquid-damage-repair-kuwait' },
+      { label: 'تصليح المذربورد واللوحة الأم', path: '/ar/motherboard-repair-kuwait' },
+      { label: 'أسعار التصليح في الكويت', path: '/ar/pricing' },
+      { label: 'فني كمبيوتر بالقرب منك', path: '/ar/near-me' }
     ],
-    serviceIds: ['srv-macbook', 'srv-screen', 'srv-motherboard']
+    serviceIds: ['srv-macbook-screen', 'srv-macbook', 'srv-screen', 'srv-battery', 'srv-motherboard', 'srv-liquid-damage']
   },
   'battery-replacement-kuwait': {
     h1: 'تبديل بطارية اللابتوب وMacBook في الكويت',
@@ -1878,7 +1891,12 @@ export default function ArabicCommercialPage() {
         { title: 'تصليح المذربورد ومسار الطاقة في الكويت', path: '/ar/motherboard-repair-kuwait' }
       ]
     : slug === 'macbook-screen-replacement-kuwait'
-    ? [{ title: 'دليل حماية شاشة اللابتوب من الكسر (بالإنجليزية)', path: '/blog/how-to-protect-laptop-screen' }]
+    ? [
+        { title: 'تصليح MacBook في الكويت: الشحن والبطارية واللوحة الأم', path: '/ar/macbook-repair-kuwait' },
+        { title: 'تبديل شاشة اللابتوب ومطابقة القطعة', path: '/ar/laptop-screen-repair-kuwait' },
+        { title: 'أسعار تصليح الكمبيوتر واللابتوب في الكويت', path: '/ar/pricing' },
+        { title: 'دليل حماية شاشة اللابتوب من الكسر (بالإنجليزية)', path: '/blog/how-to-protect-laptop-screen' }
+      ]
     : slug === 'laptop-screen-repair-kuwait'
       ? [
           { title: 'تبديل شاشة MacBook Air وMacBook Pro', path: '/ar/macbook-screen-replacement-kuwait' },
@@ -2267,7 +2285,112 @@ export default function ArabicCommercialPage() {
               </Link>
             </div>
           )}
-          {slug === 'laptop-repair-kuwait' && (
+          {slug === 'macbook-screen-replacement-kuwait' && (
+          <section className="mt-10 space-y-10" aria-label="دليل تبديل شاشة MacBook">
+            <section className="rounded-3xl border border-cyan-500/20 bg-gradient-to-br from-cyan-500/10 via-slate-950/90 to-slate-950 p-6 sm:p-8" aria-labelledby="macbook-screen-symptoms">
+              <p className="text-sm font-bold tracking-wide text-cyan-300">تشخيص قبل تبديل القطعة</p>
+              <h2 id="macbook-screen-symptoms" className="mt-2 text-2xl font-black leading-snug text-white sm:text-3xl">مو كل عطل في شاشة MacBook يعني أن الشاشة نفسها خربانة</h2>
+              <p className="mt-4 max-w-4xl leading-8 text-slate-300">الخطوط والوميض والشاشة السوداء قد تنتج من أكثر من سبب. نربط الأعراض بموديل الجهاز ونتائج الفحص قبل طلب تجميعة شاشة غالية، ونشرح لك الخيارات والتكلفة قبل التنفيذ.</p>
+              <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {[
+                  { title: 'زجاج مكسور أو بقع سوداء', text: 'نقيّم الضرر الظاهر ونحدد تجميعة العرض المناسبة للموديل والجيل.' },
+                  { title: 'شاشة سوداء مع وجود صوت أو تشغيل', text: 'نفحص الشاشة والاتصال والإضاءة ومسار الصورة بدل افتراض أن اللوحة تالفة.' },
+                  { title: 'خطوط أو وميض متقطع', text: 'نراجع الأعراض والتوصيلات ونختبر الصورة لتحديد ما إذا كانت المشكلة من الشاشة أو مسارها.' },
+                  { title: 'سطوع ضعيف أو صورة غير مستقرة', text: 'نقيّم السطوع وثبات الصورة والاتصال قبل اقتراح تبديل التجميعة.' },
+                  { title: 'الصورة تتغير عند تحريك الغطاء', text: 'أخبرنا بهذه الملاحظة ولا تحرّك الغطاء بالقوة؛ نفحص منطقة المفصلات والتوصيلات بحذر.' },
+                  { title: 'ضرر بعد سقوط أو ضغط', text: 'نفحص الشاشة والإطار ومناطق التثبيت الظاهرة حتى لا تتكرر المشكلة بسبب ضرر إضافي.' }
+                ].map((item) => (
+                  <article key={item.title} className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
+                    <h3 className="font-bold text-white">{item.title}</h3>
+                    <p className="mt-2 text-sm leading-7 text-slate-300">{item.text}</p>
+                  </article>
+                ))}
+              </div>
+            </section>
+
+            <section aria-labelledby="macbook-screen-model-match">
+              <div className="grid items-start gap-7 lg:grid-cols-[0.9fr_1.1fr]">
+                <div>
+                  <p className="text-sm font-bold tracking-wide text-cyan-300">مطابقة الموديل</p>
+                  <h2 id="macbook-screen-model-match" className="mt-2 text-2xl font-black leading-snug text-white sm:text-3xl">كيف نختار شاشة MacBook المتوافقة؟</h2>
+                  <p className="mt-4 leading-8 text-slate-300">اسم MacBook Air أو Pro وحده ما يكفي لطلب القطعة. نحتاج رقم الموديل أو معلومات الجهاز، ثم نتحقق من الجيل وحجم الشاشة وتجميعة العرض والتوافق والتوفر قبل اعتماد السعر.</p>
+                  <ul className="mt-5 space-y-3">
+                    {[
+                      'MacBook Air وMacBook Pro حسب الموديل والجيل',
+                      'مقاس الشاشة وتجميعة العرض المتوافقة',
+                      'فحص الكابل والموصل والإضاءة ومسار الصورة',
+                      'توضيح سعر العمل والقطعة والمدة قبل الموافقة'
+                    ].map((item) => (
+                      <li key={item} className="flex gap-3 rounded-xl border border-slate-800 bg-slate-900/50 p-4 text-sm leading-6 text-slate-200">
+                        <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-cyan-400" aria-hidden="true" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <figure className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-950">
+                  <img src={IMAGES.macbook.diagnostics.src} alt="فني يفحص جهاز MacBook مفتوحًا قبل تحديد موديل الشاشة والعطل في مختبر KCROC بالكويت" width={IMAGES.macbook.diagnostics.width} height={IMAGES.macbook.diagnostics.height} loading="lazy" decoding="async" className="aspect-[16/9] w-full object-cover" />
+                  <figcaption className="border-t border-slate-800 px-4 py-3 text-sm leading-6 text-slate-400">فحص الجهاز ومطابقة الموديل أولًا؛ لا نؤكد توفر الشاشة أو موعد التركيب قبل التحقق من القطعة الصحيحة.</figcaption>
+                </figure>
+              </div>
+            </section>
+
+            <section className="rounded-3xl border border-slate-800 bg-slate-900/45 p-6 sm:p-8" aria-labelledby="macbook-screen-price">
+              <p className="text-sm font-bold tracking-wide text-cyan-300">سعر واضح قبل الإصلاح</p>
+              <h2 id="macbook-screen-price" className="mt-2 text-2xl font-black text-white sm:text-3xl">كم تكلف شاشة MacBook في الكويت؟</h2>
+              <div className="mt-5 grid gap-4 sm:grid-cols-3">
+                {[
+                  { value: 'من 30 د.ك', label: 'أجرة العمل المبدئية' },
+                  { value: '+ سعر الشاشة', label: 'حسب الموديل والجيل والتوفر' },
+                  { value: '30 يومًا', label: 'ضمان على الإصلاحات المشمولة' }
+                ].map((item) => (
+                  <div key={item.label} className="rounded-2xl border border-slate-700 bg-slate-950/70 p-5">
+                    <p className="text-xl font-black text-white">{item.value}</p>
+                    <p className="mt-2 text-sm leading-6 text-slate-300">{item.label}</p>
+                  </div>
+                ))}
+              </div>
+              <p className="mt-5 leading-8 text-slate-300">السعر النهائي يعتمد على تجميعة الشاشة المطلوبة وتوفر القطعة. أجرة العمل من 30 د.ك لا تشمل الشاشة نفسها. نرسل لك عرضًا واضحًا يشمل العمل والقطعة والمدة، ولا نبدأ الإصلاح المدفوع قبل موافقتك.</p>
+            </section>
+
+            <section aria-labelledby="macbook-screen-process">
+              <h2 id="macbook-screen-process" className="text-2xl font-black text-white sm:text-3xl">من الاستلام إلى اختبار الشاشة بعد الإصلاح</h2>
+              <ol className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                {[
+                  { n: '١', title: 'استلام الجهاز', text: 'ننسق الاستلام من منطقتك في الكويت ونؤكد نوع الجهاز والأعراض.' },
+                  { n: '٢', title: 'فحص ومطابقة', text: 'نتحقق من الموديل والجيل والشاشة والكابل والموصل ومسار الصورة.' },
+                  { n: '٣', title: 'عرض السعر', text: 'نوضح توفر القطعة والتكلفة النهائية والمدة المتوقعة قبل العمل.' },
+                  { n: '٤', title: 'تركيب واختبار', text: 'بعد موافقتك، نركب القطعة المتوافقة ونختبر الصورة والسطوع والثبات والوظائف المدعومة حسب الموديل.' }
+                ].map((item) => (
+                  <li key={item.n} className="rounded-2xl border border-slate-800 bg-slate-900/50 p-5">
+                    <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-cyan-400/10 font-black text-cyan-300">{item.n}</span>
+                    <h3 className="mt-4 font-bold text-white">{item.title}</h3>
+                    <p className="mt-2 text-sm leading-7 text-slate-300">{item.text}</p>
+                  </li>
+                ))}
+              </ol>
+            </section>
+
+            <section className="rounded-3xl border border-amber-500/20 bg-amber-500/5 p-6 sm:p-8" aria-labelledby="macbook-screen-data">
+              <h2 id="macbook-screen-data" className="text-xl font-black text-white sm:text-2xl">ماذا تفعل قبل إرسال MacBook؟</h2>
+              <ul className="mt-4 grid gap-3 sm:grid-cols-2">
+                {[
+                  'إذا كان الجهاز يعمل، احتفظ بنسخة احتياطية لملفاتك المهمة إن أمكن.',
+                  'لا تضغط على الزجاج المكسور ولا تحاول فك الشاشة بنفسك.',
+                  'أرسل رقم الموديل ووصف العطل فقط؛ لا ترسل كلمة المرور أو رموز الدخول.',
+                  'إذا حصل سقوط أو انسكاب سائل، اذكر ذلك عند الحجز ولا تعاود شحن جهاز متضرر من السوائل.'
+                ].map((item) => (
+                  <li key={item} className="rounded-2xl border border-amber-500/15 bg-slate-950/50 p-4 text-sm leading-7 text-slate-200">{item}</li>
+                ))}
+              </ul>
+              <a href={wa} target="_blank" rel="noreferrer" className="mt-6 inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-400 px-6 py-3 font-black text-slate-950 transition hover:bg-cyan-300">
+                <MessageCircle className="h-5 w-5" aria-hidden="true" /> أرسل موديل MacBook ومشكلة الشاشة
+              </a>
+            </section>
+          </section>
+        )}
+
+        {slug === 'laptop-repair-kuwait' && (
             <div className="mt-6 flex flex-col gap-3 rounded-2xl border border-cyan-500/25 bg-cyan-500/5 p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6">
               <div>
                 <p className="text-xs font-black uppercase tracking-[0.12em] text-cyan-300">السعر والفحص</p>
