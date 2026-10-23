@@ -258,7 +258,7 @@ export default function Header() {
                 ref={searchToggleRef}
                 // 🚀 TOUCH TARGET FIX: p-2 + a 20px icon was a ~36px hit area,
                 // under the 48×48px touch target. min-h/min-w-12 now provides a
-                // centered icon keeps the visible icon size while enlarging the hit area.
+                // centered icon and enlarged hit area without changing the visible icon size.
                 className="min-h-12 min-w-12 flex items-center justify-center rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f]"
                 onClick={() => {
                   setActiveMegaId(null);
