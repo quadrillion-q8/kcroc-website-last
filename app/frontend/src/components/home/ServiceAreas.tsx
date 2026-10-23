@@ -106,13 +106,18 @@ export const ServiceAreas = () => {
 
         {/* Existing Arabic commercial URLs are surfaced from the homepage for bilingual local discovery.
             This strengthens internal paths without generating thin service-by-area URL combinations. */}
-        <div dir="rtl" lang="ar" className="mt-10 rounded-2xl border border-white/[0.10] bg-slate-950/40 p-5 sm:p-6">
-          <p className="text-sm font-bold text-[#C4CDD1]">خدمة الكمبيوتر واللابتوب في الكويت</p>
-          <h3 className="mt-2 text-xl font-black text-white sm:text-2xl">تبحث عن فني كمبيوتر أو تصليح لابتوب؟</h3>
-          <p className="mt-3 max-w-3xl text-sm leading-7 text-[#C4CDD1]">
+        <section
+          dir="rtl"
+          lang="ar"
+          aria-labelledby="ar-local-heading"
+          className="mt-10 w-full min-w-0 max-w-full rounded-2xl border border-white/[0.10] bg-slate-950/40 p-4 text-start sm:p-6"
+        >
+          <p className="text-sm font-bold text-[#D4DBDE]">خدمة الكمبيوتر واللابتوب في الكويت</p>
+          <h3 id="ar-local-heading" className="mt-2 break-words text-xl font-black leading-snug text-white sm:text-2xl">تبحث عن فني كمبيوتر أو تصليح لابتوب؟</h3>
+          <p className="mt-3 max-w-3xl break-words text-sm leading-7 text-[#D4DBDE]">
             نشخص أعطال الكمبيوتر واللابتوب قبل الإصلاح، ونرتب استلام الجهاز من المنزل أو المكتب وتوصيله من مختبرنا في حولي. اختر الخدمة المناسبة أو افتح صفحة المنطقة لمعرفة تفاصيل التغطية.
           </p>
-          <div className="mt-4 flex flex-wrap gap-2">
+          <ul className="mt-4 flex min-w-0 list-none flex-wrap gap-2 p-0">
             {[
               { label: 'فني كمبيوتر في الكويت', path: '/ar/computer-repair-kuwait' },
               { label: 'تصليح كمبيوتر بالقرب مني', path: '/ar/near-me' },
@@ -123,12 +128,14 @@ export const ServiceAreas = () => {
               { label: 'تبديل كيبورد', path: '/ar/laptop-keyboard-replacement-kuwait' },
               { label: 'ترقية SSD وRAM', path: '/ar/ssd-ram-upgrade-kuwait' },
             ].map((item) => (
-              <Link key={item.path} to={item.path} className="inline-flex min-h-12 max-w-full items-center justify-center rounded-xl border border-white/[0.12] bg-white/[0.035] px-3.5 py-2.5 text-center text-sm font-semibold leading-snug text-[#D4DBDE] transition hover:border-white/25 hover:bg-white/[0.06] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f]">
-                {item.label}
-              </Link>
+              <li key={item.path} className="max-w-full min-w-0">
+                <Link to={item.path} className="inline-flex min-h-12 max-w-full items-center justify-center rounded-xl border border-white/[0.12] bg-white/[0.035] px-3.5 py-2.5 text-center text-sm font-semibold leading-snug text-[#D4DBDE] transition hover:border-white/25 hover:bg-white/[0.06] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f]">
+                  {item.label}
+                </Link>
+              </li>
             ))}
-          </div>
-        </div>
+          </ul>
+        </section>
       </div>
     </section>
   );
