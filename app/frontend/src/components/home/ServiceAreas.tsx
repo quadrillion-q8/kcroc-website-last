@@ -22,7 +22,7 @@ export const ServiceAreas = () => {
       <div className="max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 items-center mb-10 sm:mb-14">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-cyan-500/10 border border-cyan-500/20 rounded-full text-cyan-400 text-xs font-bold uppercase tracking-wider mb-4">
+            <div className="mb-4 inline-flex min-h-10 items-center gap-2 rounded-lg border border-white/[0.12] bg-white/[0.04] px-3 py-1 text-xs font-bold uppercase tracking-wider text-[#D4DBDE]">
               <MapPin className="w-3.5 h-3.5" aria-hidden="true" /> Kuwait-Wide Pickup
             </div>
             <h2 className="text-white text-3xl sm:text-4xl font-black mb-4">Free Pickup &amp; Delivery Across Kuwait</h2>
