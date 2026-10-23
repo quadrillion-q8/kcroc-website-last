@@ -412,28 +412,28 @@ export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnte
         top: '78px',
         left: getClampedLeft(),
         transform: 'translateX(-50%)',
-        width: `min(${panelWidth}px, calc(100vw - 40px))`,
+        width: `min(${panelWidth}px, calc(100vw - 32px))`,
         maxHeight: 'calc(100vh - 90px)',
         zIndex: 9999,
       }}
       className={`kcroc-mega-menu-scroll max-h-full overflow-x-hidden overflow-y-auto overscroll-contain transition-all duration-200 motion-reduce:transition-none origin-top ${isOpen ? 'opacity-100 scale-100 pointer-events-auto' : 'opacity-0 scale-[0.985] pointer-events-none'}`}
     >
-      <div className="relative overflow-hidden rounded-[20px] border border-white/[0.11] bg-[#0d1317]/[0.985] shadow-[0_28px_80px_rgba(0,0,0,0.50)] backdrop-blur-2xl">
-        <div className="pointer-events-none absolute -top-24 -right-16 h-64 w-64 rounded-full bg-[#c9804d]/10 blur-3xl" />
-        <div className="pointer-events-none absolute -bottom-28 -left-16 h-72 w-72 rounded-full bg-[#dfaa62]/[0.035] blur-3xl" />
+      <div className="relative overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_24px_70px_rgba(15,23,42,0.18)]">
+        <div className="pointer-events-none absolute -top-24 -right-16 h-64 w-64 rounded-full bg-blue-100/70 blur-3xl" />
+        <div className="pointer-events-none absolute -bottom-28 -left-16 h-72 w-72 rounded-full bg-slate-100/70 blur-3xl" />
 
-        <div className="relative border-b border-white/[0.08] px-5 py-4 lg:px-6 lg:py-5">
+        <div className="relative border-b border-slate-200 px-5 py-4 lg:px-6 lg:py-5">
           <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
             <div className="min-w-0 max-w-3xl">
               <div className="mb-2 flex flex-wrap items-center gap-2">
-                <span className="kcroc-kicker">{meta.eyebrow}</span>
-                <span className="inline-flex items-center gap-1.5 rounded-full border border-[#c9804d]/20 bg-[#c9804d]/[0.07] px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-[0.14em] text-[#efc19c]">
+                <span className="text-[11px] font-extrabold uppercase tracking-[0.16em] text-blue-700">{meta.eyebrow}</span>
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-blue-100 bg-blue-50 px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-[0.14em] text-blue-700">
                   <Sparkles className="h-3 w-3" aria-hidden="true" />
                   Precision repair
                 </span>
               </div>
               <div className="flex items-baseline gap-3">
-                <h2 className="!m-0 !text-2xl font-black tracking-[-0.035em] text-white lg:!text-[28px]">{config.title}</h2>
+                <h2 className="!m-0 !text-2xl font-black tracking-[-0.035em] text-slate-900 lg:!text-[28px]">{config.title}</h2>
               </div>
               <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-400">{meta.subtitle}</p>
             </div>
@@ -445,7 +445,7 @@ export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnte
                 trackConversion('cta_click', { cta_name: 'mega_menu_view_all', button_position: 'header' });
                 onClose();
               }}
-              className="group inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-xl border border-[#c9804d]/35 bg-[#c9804d]/10 px-4 py-2.5 text-sm font-extrabold text-[#efc19c] transition-all hover:border-[#c9804d]/55 hover:bg-[#c9804d]/16 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f]"
+              className="group inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-extrabold text-slate-800 transition-all hover:border-blue-300 hover:bg-blue-50 hover:text-blue-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
             >
               {allLabel}
               <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
@@ -455,11 +455,11 @@ export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnte
 
         {isServiceAreaMenu ? (
           <div className="relative grid min-h-0 grid-cols-1 lg:grid-cols-[1.55fr_1fr]">
-            <section className="border-b border-white/[0.07] p-5 lg:border-b-0 lg:border-r lg:p-6" aria-labelledby={`${config.id}-featured`}>
+            <section className="border-b border-slate-200 p-5 lg:border-b-0 lg:border-r lg:p-6" aria-labelledby={`${config.id}-featured`}>
               <div className="mb-3 flex items-center justify-between gap-3 px-1">
                 <div>
-                  <p id={`${config.id}-featured`} className="text-xs font-black uppercase tracking-[0.16em] text-slate-500">{meta.featureLabel}</p>
-                  <p className="mt-1 text-xs text-slate-500">{config.id === 'locations_mega' ? 'Popular areas first, then every service area in one clean index.' : 'Quick paths to understand KCROC and the service model.'}</p>
+                  <p id={`${config.id}-featured`} className="text-xs font-black uppercase tracking-[0.16em] text-slate-400">{meta.featureLabel}</p>
+                  <p className="mt-1 text-xs text-slate-400">{config.id === 'locations_mega' ? 'Popular areas first, then every service area in one clean index.' : 'Quick paths to understand KCROC and the service model.'}</p>
                 </div>
               </div>
               <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
@@ -476,17 +476,17 @@ export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnte
                         trackConversion('cta_click', { cta_name: 'mega_menu_card', button_position: 'header' });
                         onClose();
                       }}
-                      className="group flex min-h-[100px] items-start gap-3 rounded-[16px] border border-white/[0.075] bg-white/[0.023] p-3.5 transition-[transform,border-color,background-color] hover:-translate-y-px hover:border-[#c9804d]/30 hover:bg-[#c9804d]/[0.055] motion-reduce:transition-none motion-reduce:hover:translate-y-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f]"
+                      className="group flex min-h-[100px] items-start gap-3 rounded-xl border border-slate-200 bg-white p-3.5 shadow-sm transition-[transform,border-color,background-color] hover:-translate-y-px hover:border-blue-200 hover:bg-blue-50/60 motion-reduce:transition-none motion-reduce:hover:translate-y-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
                     >
-                      <div className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[#c9804d]/25 bg-[#c9804d]/10 text-[#dfa86f] transition-colors group-hover:border-[#c9804d]/45 group-hover:bg-[#c9804d]/15">
+                      <div className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-700 transition-colors group-hover:bg-blue-100">
                         <Icon className="h-[18px] w-[18px]" aria-hidden="true" />
                       </div>
                       <div className="min-w-0 flex-1">
                         <div className="flex items-start justify-between gap-2">
-                          <p className="pr-2 text-sm font-bold leading-5 text-white transition-colors group-hover:text-[#efc19c]">{entity.title}</p>
-                          <ChevronRight className="mt-0.5 h-4 w-4 shrink-0 text-slate-600 transition-transform group-hover:translate-x-0.5 group-hover:text-[#dfa86f]" aria-hidden="true" />
+                          <p className="pr-2 text-sm font-bold leading-5 text-slate-800 transition-colors group-hover:text-blue-700">{entity.title}</p>
+                          <ChevronRight className="mt-0.5 h-4 w-4 shrink-0 text-slate-400 transition-transform group-hover:translate-x-0.5 group-hover:text-blue-700" aria-hidden="true" />
                         </div>
-                        <p className="mt-1 text-xs leading-5 text-slate-500">{truncate(entity.description, 94)}</p>
+                        <p className="mt-1 text-xs leading-5 text-slate-400">{truncate(entity.description, 94)}</p>
                       </div>
                     </Link>
                   );
@@ -494,13 +494,13 @@ export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnte
               </div>
             </section>
 
-            <section className="min-h-0 bg-white/[0.012] p-5 lg:p-6" aria-labelledby={`${config.id}-areas`}>
+            <section className="min-h-0 bg-slate-50/70 p-5 lg:p-6" aria-labelledby={`${config.id}-areas`}>
               <div className="mb-3 flex items-end justify-between gap-3">
                 <div>
-                  <p id={`${config.id}-areas`} className="text-xs font-black uppercase tracking-[0.16em] text-slate-500">{config.sections[0]?.title ?? 'Service areas'}</p>
-                  <p className="mt-1 text-xs text-slate-500">Pickup and delivery coverage across Kuwait.</p>
+                  <p id={`${config.id}-areas`} className="text-xs font-black uppercase tracking-[0.16em] text-slate-400">{config.sections[0]?.title ?? 'Service areas'}</p>
+                  <p className="mt-1 text-xs text-slate-400">Pickup and delivery coverage across Kuwait.</p>
                 </div>
-                <MapPin className="h-4 w-4 text-[#dfa86f]" aria-hidden="true" />
+                <MapPin className="h-4 w-4 text-blue-700" aria-hidden="true" />
               </div>
               <div className="grid max-h-[350px] grid-cols-2 gap-2 overflow-y-auto pr-1">
                 {(config.sections[0]?.items ?? []).map((entity) => (
@@ -514,10 +514,10 @@ export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnte
                       trackConversion('cta_click', { cta_name: 'mega_menu_area', button_position: 'header' });
                       onClose();
                     }}
-                    className="group flex min-h-11 items-center justify-between gap-2 rounded-xl border border-transparent px-3 py-2.5 text-xs font-semibold text-slate-400 transition-colors hover:border-white/[0.07] hover:bg-white/[0.035] hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f]"
+                    className="group flex min-h-11 items-center justify-between gap-2 rounded-xl border border-transparent px-3 py-2.5 text-xs font-semibold text-slate-400 transition-colors hover:border-white/[0.07] hover:bg-white/[0.035] hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
                   >
                     <span className="truncate">{entity.title}</span>
-                    <ChevronRight className="h-3.5 w-3.5 shrink-0 text-slate-700 transition-transform group-hover:translate-x-0.5 group-hover:text-[#dfa86f]" aria-hidden="true" />
+                    <ChevronRight className="h-3.5 w-3.5 shrink-0 text-slate-700 transition-transform group-hover:translate-x-0.5 group-hover:text-blue-700" aria-hidden="true" />
                   </Link>
                 ))}
               </div>
@@ -529,10 +529,10 @@ export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnte
               <section aria-labelledby={`${config.id}-featured`}>
                 <div className="mb-3 flex items-end justify-between gap-3 px-1">
                   <div>
-                    <p id={`${config.id}-featured`} className="text-xs font-black uppercase tracking-[0.16em] text-slate-500">{meta.featureLabel}</p>
-                    <p className="mt-1 text-xs text-slate-500">Quick paths for visitors who already know what they need.</p>
+                    <p id={`${config.id}-featured`} className="text-xs font-black uppercase tracking-[0.16em] text-slate-400">{meta.featureLabel}</p>
+                    <p className="mt-1 text-xs text-slate-400">Quick paths for visitors who already know what they need.</p>
                   </div>
-                  <span className="hidden text-[10px] font-bold uppercase tracking-[0.12em] text-slate-600 md:block">{config.featured.length} highlighted</span>
+                  <span className="hidden text-[10px] font-bold uppercase tracking-[0.12em] text-slate-400 md:block">{config.featured.length} highlighted</span>
                 </div>
 
                 <div className="grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-3">
@@ -549,17 +549,17 @@ export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnte
                           trackConversion('cta_click', { cta_name: 'mega_menu_featured', button_position: 'header' });
                           onClose();
                         }}
-                        className="group flex min-h-[104px] items-start gap-3 rounded-[16px] border border-white/[0.075] bg-white/[0.023] p-3.5 transition-[transform,border-color,background-color] hover:-translate-y-px hover:border-[#c9804d]/30 hover:bg-[#c9804d]/[0.055] motion-reduce:transition-none motion-reduce:hover:translate-y-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f]"
+                        className="group flex min-h-[104px] items-start gap-3 rounded-xl border border-slate-200 bg-white p-3.5 shadow-sm transition-[transform,border-color,background-color] hover:-translate-y-px hover:border-blue-200 hover:bg-blue-50/60 motion-reduce:transition-none motion-reduce:hover:translate-y-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
                       >
-                        <div className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[#c9804d]/25 bg-[#c9804d]/10 text-[#dfa86f] transition-colors group-hover:border-[#c9804d]/45 group-hover:bg-[#c9804d]/15">
+                        <div className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-700 transition-colors group-hover:bg-blue-100">
                           <Icon className="h-[18px] w-[18px]" aria-hidden="true" />
                         </div>
                         <div className="min-w-0 flex-1">
                           <div className="flex items-start justify-between gap-2">
-                            <p className="pr-2 text-sm font-bold leading-5 text-white transition-colors group-hover:text-[#efc19c]">{entity.title}</p>
-                            <ChevronRight className="mt-0.5 h-4 w-4 shrink-0 text-slate-600 transition-transform group-hover:translate-x-0.5 group-hover:text-[#dfa86f]" aria-hidden="true" />
+                            <p className="pr-2 text-sm font-bold leading-5 text-slate-800 transition-colors group-hover:text-blue-700">{entity.title}</p>
+                            <ChevronRight className="mt-0.5 h-4 w-4 shrink-0 text-slate-400 transition-transform group-hover:translate-x-0.5 group-hover:text-blue-700" aria-hidden="true" />
                           </div>
-                          <p className="mt-1.5 line-clamp-2 text-xs leading-5 text-slate-500">{truncate(entity.description, 110)}</p>
+                          <p className="mt-1.5 line-clamp-2 text-xs leading-5 text-slate-400">{truncate(entity.description, 110)}</p>
                         </div>
                       </Link>
                     );
@@ -569,13 +569,13 @@ export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnte
             ) : null}
 
             {moreItems.length ? (
-              <section className="mt-6 border-t border-white/[0.07] pt-5" aria-labelledby={`${config.id}-more`}>
+              <section className="mt-6 border-t border-slate-200 pt-5" aria-labelledby={`${config.id}-more`}>
                 <div className="mb-3 flex items-center justify-between gap-3 px-1">
                   <div>
-                    <p id={`${config.id}-more`} className="text-xs font-black uppercase tracking-[0.16em] text-slate-500">Explore more</p>
-                    <p className="mt-1 text-xs text-slate-500">All the other pages in this section, in one compact index.</p>
+                    <p id={`${config.id}-more`} className="text-xs font-black uppercase tracking-[0.16em] text-slate-400">Explore more</p>
+                    <p className="mt-1 text-xs text-slate-400">All the other pages in this section, in one compact index.</p>
                   </div>
-                  <span className="text-[10px] font-bold uppercase tracking-[0.12em] text-slate-600">{moreItems.length} links</span>
+                  <span className="text-[10px] font-bold uppercase tracking-[0.12em] text-slate-400">{moreItems.length} links</span>
                 </div>
                 <div className="grid grid-cols-1 gap-1.5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                   {moreItems.map((entity) => {
@@ -591,11 +591,11 @@ export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnte
                           trackConversion('cta_click', { cta_name: isIndex ? 'mega_menu_index' : 'mega_menu_link', button_position: 'header' });
                           onClose();
                         }}
-                        className={`group flex min-h-11 items-center gap-2.5 rounded-xl px-3 py-2.5 text-xs font-semibold transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f] ${isIndex ? 'border border-[#c9804d]/20 bg-[#c9804d]/[0.05] text-[#efc19c] hover:border-[#c9804d]/35 hover:bg-[#c9804d]/10' : 'border border-transparent text-slate-400 hover:border-white/[0.07] hover:bg-white/[0.035] hover:text-white'}`}
+                        className={`group flex min-h-11 items-center gap-2.5 rounded-xl px-3 py-2.5 text-xs font-semibold transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 ${isIndex ? 'border border-blue-100 bg-blue-50 text-blue-800 hover:border-blue-200 hover:bg-blue-100' : 'border border-transparent text-slate-700 hover:border-slate-200 hover:bg-slate-50 hover:text-blue-700'}`}
                       >
-                        <Icon className={`h-3.5 w-3.5 shrink-0 ${isIndex ? 'text-[#dfa86f]' : 'text-slate-600 group-hover:text-[#dfa86f]'}`} aria-hidden="true" />
+                        <Icon className={`h-3.5 w-3.5 shrink-0 ${isIndex ? 'text-blue-700' : 'text-slate-400 group-hover:text-blue-700'}`} aria-hidden="true" />
                         <span className="min-w-0 flex-1 truncate">{entity.title}</span>
-                        <ChevronRight className="h-3.5 w-3.5 shrink-0 text-slate-700 transition-transform group-hover:translate-x-0.5 group-hover:text-[#dfa86f]" aria-hidden="true" />
+                        <ChevronRight className="h-3.5 w-3.5 shrink-0 text-slate-700 transition-transform group-hover:translate-x-0.5 group-hover:text-blue-700" aria-hidden="true" />
                       </Link>
                     );
                   })}
@@ -605,14 +605,14 @@ export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnte
           </div>
         )}
 
-        <div className="relative flex flex-col gap-2.5 border-t border-white/[0.08] bg-black/10 px-4 py-3.5 sm:flex-row sm:items-center sm:justify-between lg:px-5">
+        <div className="relative flex flex-col gap-2.5 border-t border-slate-200 bg-slate-50 px-4 py-3.5 sm:flex-row sm:items-center sm:justify-between lg:px-5">
           <div className="flex items-start gap-3">
-            <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#c9804d]/25 bg-[#c9804d]/10 text-[#dfa86f]">
+            <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#c9804d]/25 bg-[#c9804d]/10 text-blue-700">
               <MessageCircle className="h-4 w-4" aria-hidden="true" />
             </div>
             <div>
-              <p className="text-sm font-bold text-white">Not sure which option fits?</p>
-              <p className="mt-0.5 text-xs leading-5 text-slate-500">Send the model + symptom and a technician can point you to the right page.</p>
+              <p className="text-sm font-bold text-slate-900">Not sure which option fits?</p>
+              <p className="mt-0.5 text-xs leading-5 text-slate-400">Send the model + symptom and a technician can point you to the right page.</p>
             </div>
           </div>
           <a
