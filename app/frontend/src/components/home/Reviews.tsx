@@ -22,7 +22,7 @@ export default function Reviews() {
             href={googleProfileUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-6 inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-cyan-500/40 px-6 py-3 text-sm font-bold text-cyan-300 transition-colors hover:border-cyan-400 hover:bg-cyan-500/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+            className="mt-6 inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-cyan-500/40 px-6 py-3 text-sm font-bold text-cyan-300 transition-colors hover:border-cyan-400 hover:bg-cyan-500/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
           >
             <Star className="h-4 w-4 fill-current" aria-hidden="true" />
             <span>Read current Google reviews</span>

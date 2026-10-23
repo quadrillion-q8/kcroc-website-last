@@ -34,7 +34,7 @@ export const StickyMobileCTA = () => {
       <a
         href={`tel:+${phone}`}
         onClick={() => trackConversion('phone_call_click', { cta_name: 'sticky_mobile_call', button_position: 'bottom_bar' })}
-        className="min-w-0 flex-1 text-center rounded-xl border border-slate-700 text-slate-200 font-semibold leading-tight py-2.5 px-1 min-h-12 touch-manipulation transition-colors active:scale-[0.99] focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+        className="min-w-0 flex-1 text-center rounded-xl border border-slate-700 text-slate-200 font-semibold leading-tight py-2.5 px-1 min-h-[48px] touch-manipulation transition-colors active:scale-[0.99] focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
         aria-label="Call KCROC"
       >
         Call

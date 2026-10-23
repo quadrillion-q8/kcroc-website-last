@@ -69,7 +69,7 @@ export const CookieConsentBanner: React.FC = () => {
             <button
               type="button"
               onClick={handleDecline}
-              className="flex-1 md:flex-none flex min-h-[44px] items-center justify-center px-4 py-2.5 sm:px-6 sm:py-3 rounded-xl border border-slate-700 bg-transparent text-slate-300 hover:bg-slate-800 hover:text-white font-bold text-sm touch-manipulation transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
+              className="flex-1 md:flex-none flex min-h-[48px] items-center justify-center px-4 py-2.5 sm:px-6 sm:py-3 rounded-xl border border-slate-700 bg-transparent text-slate-300 hover:bg-slate-800 hover:text-white font-bold text-sm touch-manipulation transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
             >
               <X className="w-4 h-4 shrink-0 mr-1.5 sm:mr-2" aria-hidden="true" />
               <span className="sm:hidden">Reject</span>
@@ -78,7 +78,7 @@ export const CookieConsentBanner: React.FC = () => {
             <button
               type="button"
               onClick={handleAccept}
-              className="flex-1 md:flex-none flex min-h-[44px] items-center justify-center px-4 py-2.5 sm:px-6 sm:py-3 rounded-xl border border-transparent bg-cyan-500 text-slate-950 hover:bg-cyan-400 font-black text-sm shadow-[0_0_15px_rgba(6,182,212,0.2)] touch-manipulation transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
+              className="flex-1 md:flex-none flex min-h-[48px] items-center justify-center px-4 py-2.5 sm:px-6 sm:py-3 rounded-xl border border-transparent bg-cyan-500 text-slate-950 hover:bg-cyan-400 font-black text-sm shadow-[0_0_15px_rgba(6,182,212,0.2)] touch-manipulation transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
             >
               <Check className="w-4 h-4 shrink-0 mr-1.5 sm:mr-2" aria-hidden="true" />
               <span className="sm:hidden">Accept</span>
