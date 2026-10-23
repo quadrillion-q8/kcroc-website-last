@@ -38,7 +38,7 @@ export default function BehindBench() {
     >
       <div className="max-w-7xl mx-auto">
         <div className="max-w-3xl mx-auto text-center mb-8 sm:mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-cyan-500/10 border border-cyan-500/20 rounded-full text-cyan-400 text-xs font-bold uppercase tracking-wider mb-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg border border-white/[0.12] bg-white/[0.04] text-[#D4DBDE] text-xs font-bold uppercase tracking-wider mb-4">
             Behind the Bench
           </div>
           <h2 id="behind-bench-title" className="text-white text-3xl sm:text-4xl font-black tracking-tight">
