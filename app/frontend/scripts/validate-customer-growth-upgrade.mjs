@@ -202,6 +202,27 @@ add('English MacBook repair page includes model-number examples and qualified co
 add('English MacBook repair page adds symptom-specific diagnostics, privacy guidance and local pickup FAQ', graph.includes('How we choose the right MacBook repair path') && graph.includes('MacBook has a black, flickering or lined display.') && graph.includes('Do you have a MacBook repair shop in Salmiya or Kuwait City?') && graph.includes('data preservation is a priority but cannot be guaranteed'));
 add('English MacBook repair page avoids universal data-preservation and True Tone promises', graph.includes('no repair shop can guarantee data survival on every damaged device') && graph.includes('do not promise every feature before inspection'));
 
+const englishMacbook = graph.slice(graph.indexOf("    'srv-macbook': {"), graph.indexOf("    'srv-laptop': {"));
+add('English MacBook page removes unsupported data-preservation, repair-rate and unverified case-study claims',
+  !englishMacbook.includes('Your SSD, your Secure Enclave, and your data stay exactly where they were')
+  && !englishMacbook.includes('Not with component-level repair')
+  && !englishMacbook.includes('The majority of motherboards')
+  && !englishMacbook.includes('no data loss')
+  && !englishMacbook.includes('Data Recovered From a Board Apple Called Unfixable')
+  && !englishMacbook.includes('performanceOutcomes:')
+  && !englishMacbook.includes('repairExamples:'));
+add('English MacBook fault descriptions distinguish symptoms from diagnosis and avoid categorical USB-C claims',
+  englishMacbook.includes('possible causes include the charger, cable, port, power-negotiation circuitry')
+  && englishMacbook.includes('Unexpected restarts can be caused by software, power, thermal or hardware faults')
+  && !englishMacbook.includes('the physical port itself is rarely the actual fault')
+  && !englishMacbook.includes('Most commonly a failed power negotiation IC'));
+add('English MacBook FAQs qualify board repair, data recovery, parts and pricing',
+  englishMacbook.includes('we cannot promise that every board can be repaired')
+  && englishMacbook.includes('cannot guarantee that data will survive or remain accessible')
+  && englishMacbook.includes('We provide the quote before paid work begins')
+  && !englishMacbook.includes('typically a fraction of an out-of-warranty full board-swap quote from Apple'));
+
+
 const arabicHawalli = await read('pages/ArabicHawalliLocationPage.tsx');
 add('English and Arabic Hawalli language switch is reciprocal', locale.includes("'/location/hawalli': '/ar/computer-repair-hawalli'") && locale.includes("'/ar/computer-repair-hawalli': '/location/hawalli'"));
 add('Dedicated Arabic Hawalli location route is registered and localized', app.includes("path: 'ar/computer-repair-hawalli'") && app.indexOf("path: 'ar/computer-repair-hawalli'") < app.indexOf("path: 'ar/:slug'") && arabicHawalli.includes('dir="rtl" lang="ar-KW"') && arabicHawalli.includes('DIRECTIONS_URL') && arabicHawalli.includes('FAQPage'));
