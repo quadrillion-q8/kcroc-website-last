@@ -168,6 +168,8 @@ interface Props {
 export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnter, onMouseLeave, onClose }: Props) {
   const panelRef = useRef<HTMLDivElement>(null);
   const { trackConversion } = useAnalytics();
+  const phoneDigits = NAV_GRAPH.business!.telephone.replace(/\\D/g, '');
+  const phoneDisplay = phoneDigits.startsWith('965') ? `+965 ${phoneDigits.slice(3)}` : `+${phoneDigits}`;
   const meta = getMeta(config.id);
   const moreItems = getMoreItems(config);
   const indexItem = getIndexItem(config);
@@ -381,8 +383,8 @@ export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnte
             <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-700"><ShieldCheck className="h-4 w-4 text-emerald-600" aria-hidden="true" />30-Day Complete Warranty</span>
             <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-700"><CheckCircle2 className="h-4 w-4 text-emerald-600" aria-hidden="true" />No Fix, No Fee Policy</span>
             <div className="ml-auto flex flex-wrap items-center gap-2">
-              <a href={`tel:+${NAV_GRAPH.business!.telephone}`} className="inline-flex min-h-10 items-center justify-center gap-1.5 rounded-lg px-2.5 text-xs font-bold text-slate-700 hover:bg-white hover:text-blue-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600">
-                <Phone className="h-3.5 w-3.5 text-blue-600" aria-hidden="true" />+965 55301913
+              <a href={`tel:+${NAV_GRAPH.business!.telephone}`} onClick={() => trackConversion('phone_call_click', { cta_name: 'mega_menu_phone', button_position: 'header' })} className="inline-flex min-h-10 items-center justify-center gap-1.5 rounded-lg px-2.5 text-xs font-bold text-slate-700 hover:bg-white hover:text-blue-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600">
+                <Phone className="h-3.5 w-3.5 text-blue-600" aria-hidden="true" />{phoneDisplay}
               </a>
               <Link to="/book" onClick={() => { trackConversion('cta_click', { cta_name: 'header_book', button_position: 'header' }); onClose(); }} className="inline-flex min-h-10 items-center justify-center gap-2 rounded-lg bg-blue-600 px-3.5 py-2 text-xs font-extrabold text-white transition-colors hover:bg-blue-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600">
                 Book Free Pickup <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />

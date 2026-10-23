@@ -242,7 +242,7 @@ export default function Header() {
                   <CalendarCheck size={15} aria-hidden="true" />
                   <span className="flex min-w-0 flex-col items-start leading-tight">
                     <span>Book Free Pickup</span>
-                    <span className="mt-0.5 text-[10px] font-semibold text-white">+965 55301913</span>
+                    <span className="mt-0.5 text-[10px] font-semibold text-white">{phoneDisplay}</span>
                   </span>
                 </Link>
               </Button>
