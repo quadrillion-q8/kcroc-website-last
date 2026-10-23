@@ -28,10 +28,10 @@ const ServiceCard = React.memo(({ service, idx }: { service: ServiceEntity, idx:
     >
       <Link
         to={`/${service.slug}`}
-        className="group block relative bg-kcroc-card rounded-[16px] border border-white/[0.08] hover:border-kcroc-cyan transition-[border-color,background-color,transform] duration-300 hover:-translate-y-px h-full overflow-hidden"
+        className="group relative flex h-full min-h-[15rem] flex-col overflow-hidden rounded-2xl border border-white/[0.10] bg-kcroc-card transition-[border-color,background-color,transform] duration-300 hover:-translate-y-px hover:border-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f] focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
       >
         {cardImage && (
-          <div className="relative h-28 sm:h-40 overflow-hidden">
+          <div className="relative h-28 shrink-0 overflow-hidden sm:h-36">
             <img
               src={cardImage.src}
               srcSet={`${cardImage.src.replace(/\.webp$/, '.w480.webp')} 480w, ${cardImage.src} ${cardImage.width || 1000}w`}
@@ -47,20 +47,20 @@ const ServiceCard = React.memo(({ service, idx }: { service: ServiceEntity, idx:
             <div className="absolute inset-0 bg-gradient-to-t from-kcroc-card via-kcroc-card/10 to-transparent" />
           </div>
         )}
-        <div className="flex flex-col h-full gap-1.5 sm:gap-3 p-3.5 sm:p-6">
-          <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-[10px] bg-kcroc-cyan/10 border border-kcroc-cyan/25 flex items-center justify-center mb-1 sm:mb-2">
-            <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-kcroc-cyan" />
+        <div className="flex flex-1 flex-col gap-2 p-3.5 sm:gap-3 sm:p-6">
+          <div className="mb-1 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-white/[0.10] bg-white/[0.045] sm:mb-2 sm:h-10 sm:w-10">
+            <Icon className="h-4 w-4 text-[#C4CDD1] sm:h-5 sm:w-5" aria-hidden="true" />
           </div>
 
-          <h3 className="text-sm sm:text-[15px] font-semibold text-white leading-tight">
+          <h3 className="min-h-[2.3rem] text-sm font-semibold leading-snug text-white line-clamp-2 sm:min-h-[2.5rem] sm:text-base">
             {service.title}
           </h3>
 
-          <p className="text-kcroc-muted text-xs sm:text-[13px] leading-relaxed line-clamp-2">
+          <p className="min-h-[3.75rem] text-xs leading-5 text-[#C4CDD1] line-clamp-3 sm:min-h-[4rem] sm:text-sm">
             {cardText}
           </p>
 
-          <div className="text-[#dfa86f] text-[11px] sm:text-xs font-bold flex items-center gap-1 mt-1 sm:mt-2">
+          <div className="mt-auto flex min-h-12 items-center gap-2 pt-2 text-xs font-bold text-[#E8BA90] sm:text-sm">
             <i className="ti ti-clock" aria-hidden="true" />
             Learn more
           </div>
@@ -93,23 +93,23 @@ export default function ServicesGrid() {
         />
 
         {/* Mobile-first two-column service grid; desktop expands to three columns. */}
-        <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-2 lg:grid-cols-3 sm:gap-4">
+        <div className="grid grid-cols-1 gap-3 min-[400px]:grid-cols-2 sm:gap-4 lg:grid-cols-3">
           {services.map((s, idx) => (
             <ServiceCard key={s.id} service={s} idx={idx} />
           ))}
         </div>
 
         <div className="mt-4 flex flex-col gap-3 rounded-2xl border border-[#c9804d]/25 bg-[#c9804d]/[0.06] p-4 sm:mt-6 sm:flex-row sm:items-center sm:gap-4 sm:px-5">
-          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[#c9804d]/25 bg-[#c9804d]/[0.10] text-[#dfa86f]">
+          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-white/[0.10] bg-white/[0.045] text-[#C4CDD1]">
             <Truck className="h-5 w-5" aria-hidden="true" />
           </div>
           <div className="min-w-0 flex-1">
             <h3 className="text-sm font-extrabold text-white sm:text-base">Free pick-up &amp; drop across all Kuwait governorates</h3>
-            <p className="mt-1 text-xs leading-relaxed text-slate-300 sm:text-sm">We collect from your home or office. Diagnosis first, quote second, repair only with your approval.</p>
+            <p className="mt-1 text-xs leading-relaxed text-[#C4CDD1] sm:text-sm">We collect from your home or office. Diagnosis first, quote second, repair only with your approval.</p>
           </div>
           <Link
             to="/book"
-            className="inline-flex min-h-11 w-full shrink-0 items-center justify-center gap-2 rounded-xl bg-[#dfa86f] px-4 py-2.5 text-sm font-extrabold text-[#17110c] transition-colors hover:bg-[#efc697] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#efc697] focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark sm:w-auto"
+            className="inline-flex min-h-12 w-full shrink-0 items-center justify-center gap-2 rounded-xl bg-[#dfa86f] px-4 py-2.5 text-sm font-extrabold text-[#17110c] transition-colors hover:bg-[#efc697] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#efc697] focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark sm:w-auto"
           >
             Arrange free pickup <ArrowRight className="h-4 w-4" aria-hidden="true" />
           </Link>
@@ -117,7 +117,7 @@ export default function ServicesGrid() {
 
         {featuredServices.length > 0 && (
           <div className="mt-5 rounded-2xl border border-white/[0.08] bg-slate-900/35 px-4 py-4 sm:mt-7 sm:px-6">
-            <p className="text-xs leading-relaxed text-kcroc-muted sm:text-sm">
+            <p className="text-xs leading-relaxed text-[#C4CDD1] sm:text-sm">
               Need a specific repair? Go directly to our main laptop repair service, dedicated screen repair, or laptop battery replacement page.
             </p>
             <div className="mt-3 flex flex-wrap gap-2">
@@ -125,7 +125,7 @@ export default function ServicesGrid() {
                 <Link
                   key={service.id}
                   to={`/${service.slug}`}
-                  className="inline-flex items-center rounded-full border border-kcroc-cyan/25 bg-kcroc-cyan/5 px-3 py-2 text-xs font-semibold text-kcroc-cyan transition-colors hover:border-kcroc-cyan/50 hover:bg-kcroc-cyan/10 sm:text-sm"
+                  className="inline-flex min-h-12 items-center rounded-xl border border-white/[0.12] bg-white/[0.035] px-3 py-2 text-xs font-semibold text-[#D4DBDE] transition-colors hover:border-white/25 hover:bg-white/[0.06] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f] sm:text-sm"
                 >
                   {service.title}
                 </Link>
