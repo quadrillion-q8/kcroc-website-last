@@ -129,6 +129,13 @@ const MENU_META: Record<string, {
     allHref: '/about',
     featureLabel: 'About the company',
   },
+  gallery_mega: {
+    eyebrow: 'KCROC REPAIR GALLERY',
+    subtitle: 'Explore the workshop, repair capabilities and practical next steps for your device.',
+    allLabel: 'View repair gallery',
+    allHref: '/gallery',
+    featureLabel: 'Repair work & next steps',
+  },
 };
 
 const getMeta = (id: string) => MENU_META[id] ?? {
