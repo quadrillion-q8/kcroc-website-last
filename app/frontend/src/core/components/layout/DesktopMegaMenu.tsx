@@ -12,6 +12,7 @@ import {
   ShieldCheck,
   Wrench,
   MapPin,
+  Phone,
   ArrowUpRight,
   ChevronRight,
   MessageCircle,
