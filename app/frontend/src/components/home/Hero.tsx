@@ -133,7 +133,7 @@ export default function Hero() {
               <div className="mt-6 flex flex-wrap gap-2.5">
                 {['Free pick-up & drop across all Kuwait governorates', '30-day parts + labour warranty', 'No fix, no fee'].map((label) => (
                   <span key={label} className="inline-flex min-h-10 items-center gap-2 rounded-lg border border-white/[0.12] bg-white/[0.04] px-3.5 py-2 text-xs font-bold text-[#D4DBDE]">
-                    <Check className="h-4 w-4 text-cyan-400" aria-hidden="true" />
+                    <Check className="h-4 w-4 text-[#AAB5B9]" aria-hidden="true" />
                     {label}
                   </span>
                 ))}
