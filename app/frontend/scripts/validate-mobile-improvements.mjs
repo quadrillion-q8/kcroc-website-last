@@ -36,13 +36,13 @@ requireText('hero', 'Get Free Quote', 'the mobile hero quote CTA is missing.');
 requireText('hero', 'Book Pickup', 'the mobile hero pickup CTA is missing.');
 
 requireText('sticky', 'kcroc-mobile-sticky-cta', 'the persistent contact bar must remain identifiable for mobile layout styling.');
-requireText('sticky', 'min-h-[44px]', 'sticky actions must meet the minimum touch target height.');
+requireText('sticky', 'min-h-[48px]', 'sticky actions must meet the 48px minimum touch target height.');
 requireText('sticky', "env(safe-area-inset-bottom)", 'the sticky bar must respect device safe areas.');
 requireText('rootLayout', 'kcroc-mobile-cta-spacer', 'page content needs a matching spacer below the fixed CTA.');
 requireText('rootLayout', 'calc(5.25rem + env(safe-area-inset-bottom))', 'the CTA spacer must account for the device safe area.');
 
 requireText('cookie', 'kcroc-cookie-banner', 'the consent panel must use the responsive mobile layout class.');
-requireText('cookie', 'min-h-[44px]', 'cookie choice actions must meet minimum touch target height.');
+requireText('cookie', 'min-h-[48px]', 'cookie choice actions must meet the 48px minimum touch target height.');
 requireText('cookie', '<span className="sm:hidden">Reject</span>', 'the cookie reject action must use a compact mobile label.');
 requireText('css', '15rem', 'the cookie panel must stay compact on short mobile screens.');
 requireText('css', 'max-height: calc(100dvh - 7rem - env(safe-area-inset-bottom))', 'the consent panel must be constrained to the dynamic mobile viewport.');
