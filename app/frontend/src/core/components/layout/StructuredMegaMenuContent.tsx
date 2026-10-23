@@ -245,7 +245,7 @@ const makeStructuredConfig = (
     assigned[targetIndex].push(entity);
   });
 
-  const columns: [MenuColumn, MenuColumn, MenuColumn] = definitions.map((definition, index) => ({
+  const makeColumn = (definition: ColumnDefinition, index: number): MenuColumn => ({
     header: {
       icon: definition.icon,
       title: definition.title,
@@ -258,7 +258,12 @@ const makeStructuredConfig = (
       href: entity.slug.startsWith('/') ? entity.slug : '/' + entity.slug,
     })),
     bottomBannerText: definition.bottomBannerText,
-  })) as [MenuColumn, MenuColumn, MenuColumn];
+  });
+  const columns: [MenuColumn, MenuColumn, MenuColumn] = [
+    makeColumn(definitions[0], 0),
+    makeColumn(definitions[1], 1),
+    makeColumn(definitions[2], 2),
+  ];
 
   return {
     kicker: meta.eyebrow,
