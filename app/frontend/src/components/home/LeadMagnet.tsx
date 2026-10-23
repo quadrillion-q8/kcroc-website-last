@@ -80,7 +80,7 @@ export const LeadMagnet = () => {
         : 'Chat with a technician now';
 
   const selectClass = (active: boolean) =>
-    `group relative rounded-2xl border p-3.5 sm:p-4 text-left transition-all min-h-[92px] sm:min-h-[104px] ${
+    `group relative min-h-[92px] min-w-12 rounded-2xl border p-3.5 text-start transition-all sm:min-h-[104px] sm:p-4 ${
       active
         ? 'border-cyan-400/70 bg-cyan-500/10 shadow-[0_0_0_1px_rgba(34,211,238,0.15)]'
         : 'border-slate-800 bg-slate-950/30 hover:border-slate-600 hover:bg-slate-900/60'
@@ -106,7 +106,7 @@ export const LeadMagnet = () => {
               Choose your device and symptom. We will prepare a WhatsApp message with the details, and show the lowest applicable starting rate from KCROC's current service pricing.
             </p>
 
-            <div className="space-y-6">
+            <div className="space-y-4 sm:space-y-6">
               <div>
                 <div className="flex items-center justify-between mb-3">
                   <h3 className="text-sm font-bold text-slate-200">1. Select device</h3>
@@ -123,7 +123,7 @@ export const LeadMagnet = () => {
                     >
                       <Icon className={`w-5 h-5 mb-3 ${device === id ? 'text-cyan-300' : 'text-slate-400 group-hover:text-cyan-400'}`} aria-hidden="true" />
                       <span className="block text-xs sm:text-sm font-bold text-white leading-snug">{label}</span>
-                      {device === id && <CheckCircle2 className="absolute top-3 right-3 w-4 h-4 text-emerald-400" aria-hidden="true" />}
+                      {device === id && <CheckCircle2 className="absolute top-3 end-3 w-4 h-4 text-emerald-400" aria-hidden="true" />}
                     </button>
                   ))}
                 </div>
@@ -168,7 +168,7 @@ export const LeadMagnet = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={() => trackConversion('whatsapp_click', { cta_name: 'lead_magnet_visual_selector', button_position: 'lead_magnet', device: device || 'unspecified', issue: issue || 'unspecified' })}
-                      className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#25D366] px-5 py-3.5 text-sm font-black text-slate-950 hover:brightness-95 transition-all min-h-[48px] sm:min-w-[250px]"
+                      className="inline-flex min-h-12 min-w-12 items-center justify-center gap-2 rounded-xl bg-[#25D366] px-5 py-3.5 text-sm font-black text-slate-950 transition-all hover:brightness-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900 motion-reduce:transition-none sm:min-w-[250px]"
                     >
                       <MessageCircle className="w-5 h-5" aria-hidden="true" />
                       {actionLabel}
@@ -200,7 +200,7 @@ export const LeadMagnet = () => {
             </picture>
             <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-slate-900/20 to-transparent lg:block hidden" />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-transparent to-transparent lg:hidden" />
-            <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 flex justify-end">
+            <div className="absolute bottom-4 inset-x-4 sm:bottom-6 sm:inset-x-6 flex justify-end">
               <div className="inline-flex items-center gap-2 text-xs font-bold text-emerald-400 bg-brand-dark/80 backdrop-blur-md px-3 py-2 rounded-xl border border-emerald-500/30 shadow-lg">
                 <CheckCircle2 className="w-4 h-4" aria-hidden="true" />
                 Free pickup · Diagnosis first
