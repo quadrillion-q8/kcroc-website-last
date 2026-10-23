@@ -169,14 +169,14 @@ export default function MobileMenu({ isOpen, onClose, mobileRef, navModel, clean
                 to={languageSwitch.href}
                 lang={languageSwitch.targetLanguage === 'ar' ? 'ar' : 'en'}
                 onClick={onClose}
-                className="min-h-11 min-w-11 rounded-xl border border-white/[0.09] px-3 text-xs font-black text-slate-200 transition-colors hover:border-[#c9804d]/40 hover:text-[#efc19c] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f]"
+                className="min-h-12 min-w-12 rounded-xl border border-white/[0.09] px-3 text-xs font-black text-slate-200 transition-colors hover:border-[#c9804d]/40 hover:text-[#efc19c] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f]"
               >
                 {languageSwitch.targetLanguage === 'ar' ? 'عربي' : 'EN'}
               </Link>
               <button
                 ref={closeButtonRef}
                 onClick={onClose}
-                className="min-h-11 min-w-11 flex items-center justify-center rounded-xl border border-white/[0.06] text-slate-400 transition-colors hover:bg-white/[0.04] hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f]"
+                className="min-h-12 min-w-12 flex items-center justify-center rounded-xl border border-white/[0.06] text-slate-400 transition-colors hover:bg-white/[0.04] hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f]"
                 aria-label="Close menu"
                 tabIndex={isOpen ? 0 : -1}
               >
@@ -190,7 +190,7 @@ export default function MobileMenu({ isOpen, onClose, mobileRef, navModel, clean
               href={`tel:+${cleanTel}`}
               onClick={() => trackConversion('phone_call_click', { cta_name: 'mobile_menu_quick_call', button_position: 'mobile_menu' })}
               tabIndex={isOpen ? 0 : -1}
-              className="min-h-11 rounded-xl border border-white/[0.07] bg-white/[0.025] px-2.5 py-2 text-center text-xs font-bold text-slate-200 transition-colors hover:border-[#c9804d]/25 hover:bg-[#c9804d]/[0.05] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f]"
+              className="min-h-12 rounded-xl border border-white/[0.07] bg-white/[0.025] px-2.5 py-2 text-center text-xs font-bold text-slate-200 transition-colors hover:border-[#c9804d]/25 hover:bg-[#c9804d]/[0.05] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f]"
             >
               <span className="flex items-center justify-center gap-1.5"><Phone className="h-3.5 w-3.5 text-[#dfa86f]" aria-hidden="true" /> Call</span>
             </a>
@@ -200,7 +200,7 @@ export default function MobileMenu({ isOpen, onClose, mobileRef, navModel, clean
               rel="noreferrer"
               onClick={() => trackConversion('whatsapp_click', { cta_name: 'mobile_menu_quick_whatsapp', button_position: 'mobile_menu' })}
               tabIndex={isOpen ? 0 : -1}
-              className="min-h-11 rounded-xl border border-[#25D366]/15 bg-[#25D366]/[0.06] px-2.5 py-2 text-center text-xs font-bold text-[#7cf0ab] transition-colors hover:border-[#25D366]/30 hover:bg-[#25D366]/[0.10] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366]"
+              className="min-h-12 rounded-xl border border-[#25D366]/15 bg-[#25D366]/[0.06] px-2.5 py-2 text-center text-xs font-bold text-[#7cf0ab] transition-colors hover:border-[#25D366]/30 hover:bg-[#25D366]/[0.10] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366]"
             >
               <span className="flex items-center justify-center gap-1.5"><MessageCircle className="h-3.5 w-3.5" aria-hidden="true" /> WhatsApp</span>
             </a>
@@ -208,7 +208,7 @@ export default function MobileMenu({ isOpen, onClose, mobileRef, navModel, clean
               to="/book"
               onClick={() => trackConversion('cta_click', { cta_name: 'mobile_menu_quick_book', button_position: 'mobile_menu' })}
               tabIndex={isOpen ? 0 : -1}
-              className="min-h-11 rounded-xl bg-[#c9804d] px-2.5 py-2 text-center text-xs font-black text-[#100d0a] transition-colors hover:bg-[#dfa86f] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f]"
+              className="min-h-12 rounded-xl bg-[#c9804d] px-2.5 py-2 text-center text-xs font-black text-[#100d0a] transition-colors hover:bg-[#dfa86f] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f]"
             >
               <span className="flex items-center justify-center gap-1.5"><CalendarCheck className="h-3.5 w-3.5" aria-hidden="true" /> Book</span>
             </Link>
@@ -265,7 +265,7 @@ export default function MobileMenu({ isOpen, onClose, mobileRef, navModel, clean
                               to={allHref}
                               onClick={() => onClose()}
                               tabIndex={isOpen && isExpanded ? 0 : -1}
-                              className="inline-flex min-h-10 shrink-0 items-center gap-1 rounded-lg border border-white/[0.08] bg-black/10 px-3 text-xs font-extrabold text-white hover:border-[#c9804d]/30 hover:text-[#efc19c] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f]"
+                              className="inline-flex min-h-12 shrink-0 items-center gap-1 rounded-lg border border-white/[0.08] bg-black/10 px-3 text-xs font-extrabold text-white hover:border-[#c9804d]/30 hover:text-[#efc19c] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f]"
                             >
                               {copy.allLabel}
                               <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
@@ -316,7 +316,7 @@ export default function MobileMenu({ isOpen, onClose, mobileRef, navModel, clean
                                       to={`/${entity.slug}`}
                                       onClick={() => trackConversion('cta_click', { cta_name: 'mobile_mega_link', button_position: 'mobile_menu' })}
                                       tabIndex={isOpen && isExpanded ? 0 : -1}
-                                      className="group flex min-h-11 items-center gap-2.5 rounded-xl border border-transparent px-3 py-2.5 text-xs font-semibold text-slate-400 transition-colors hover:border-white/[0.06] hover:bg-white/[0.035] hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f]"
+                                      className="group flex min-h-12 items-center gap-2.5 rounded-xl border border-transparent px-3 py-2.5 text-xs font-semibold text-slate-400 transition-colors hover:border-white/[0.06] hover:bg-white/[0.035] hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f]"
                                     >
                                       <Icon className="h-3.5 w-3.5 shrink-0 text-slate-600 group-hover:text-[#dfa86f]" aria-hidden="true" />
                                       <span className="min-w-0 flex-1 truncate">{entity.title}</span>
