@@ -138,7 +138,7 @@ export const RootLayout: React.FC = () => {
           <main
             id="main-content"
             data-page-type={pathname === '/' ? 'home' : 'inner'}
-            className="relative z-10 flex-grow flex flex-col bg-transparent pt-[84px] xl:pt-28"
+            className="relative z-10 flex-grow flex flex-col bg-transparent pt-0"
           >
             {/* 🚀 Protects the entire routing tree from white-screen crashes */}
             <ErrorBoundary>

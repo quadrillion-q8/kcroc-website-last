@@ -21,6 +21,11 @@ import {
   Search,
   Thermometer,
   CircleDollarSign,
+  Droplets,
+  Keyboard,
+  Power,
+  Gauge,
+  CheckCircle2,
 } from 'lucide-react';
 import { MegaMenuConfig, NavEntity } from '../../navigation/types';
 import { useAnalytics } from '../../analytics/AnalyticsProvider';
@@ -168,8 +173,9 @@ export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnte
   const indexItem = getIndexItem(config);
   const allHref = indexItem ? getEntityHref(indexItem) : meta.allHref;
   const allLabel = indexItem ? meta.allLabel : meta.allLabel;
+  const isServiceMenu = config.id === 'services_mega';
   const isServiceAreaMenu = config.id === 'locations_mega';
-  const panelWidth = isServiceAreaMenu ? 1100 : 1040;
+  const panelWidth = isServiceMenu ? 940 : isServiceAreaMenu ? 1100 : 1040;
 
   const getClampedLeft = () => {
     if (typeof window === 'undefined') return '50%';
@@ -248,6 +254,145 @@ export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnte
     document.addEventListener('pointerdown', onPointerDown);
     return () => document.removeEventListener('pointerdown', onPointerDown);
   }, [config.id, isOpen, onClose]);
+
+
+  if (isServiceMenu) {
+    type MatrixItem = { slug: string; label: string; icon: React.ElementType };
+    type MatrixGroup = { id: string; title: string; intro: string; icon: React.ElementType; items: MatrixItem[]; callout: string };
+    const repairs: MatrixItem[] = [
+      { slug: 'macbook-repair-kuwait', label: 'MacBook Repair', icon: Apple },
+      { slug: 'laptop-repair-kuwait', label: 'Laptop Repair', icon: Laptop },
+      { slug: 'gaming-pc-repair-kuwait', label: 'Gaming PC Repair', icon: Gamepad2 },
+      { slug: 'motherboard-repair-kuwait', label: 'Motherboard Micro-soldering', icon: Cpu },
+      { slug: 'laptop-screen-repair-kuwait', label: 'Screen Replacement', icon: Monitor },
+    ];
+    const symptoms: MatrixItem[] = [
+      { slug: 'laptop-wont-turn-on', label: 'No Power', icon: Power },
+      { slug: 'laptop-overheating-kuwait', label: 'Overheating', icon: Thermometer },
+      { slug: 'spilled-water-on-laptop', label: 'Liquid Damage', icon: Droplets },
+      { slug: 'laptop-hinge-broken', label: 'Broken Hinge', icon: Wrench },
+      { slug: 'laptop-keyboard-not-working', label: 'Keyboard Failure', icon: Keyboard },
+    ];
+    const upgradesAndCare: MatrixItem[] = [
+      { slug: 'ssd-ram-upgrade-kuwait', label: 'SSD & RAM Upgrades', icon: HardDrive },
+      { slug: 'gaming-laptop-cleaning-kuwait', label: 'Thermal Clean & Repaste', icon: Gauge },
+      { slug: 'battery-replacement-kuwait', label: 'Laptop Battery Replacement', icon: BatteryWarning },
+    ];
+    const groups: MatrixGroup[] = [
+      { id: 'repairs', title: 'Repairs', intro: 'Choose a device or hardware repair.', icon: Wrench, items: repairs, callout: 'Component-level lab restoration from 15 KWD.' },
+      { id: 'symptoms', title: 'Symptoms', intro: 'Start with what your computer is doing.', icon: Search, items: symptoms, callout: 'Quote confirmed before any tool touches the board.' },
+      { id: 'upgrades-care', title: 'Upgrades & Care', intro: 'Improve speed, battery life and cooling.', icon: Gauge, items: upgradesAndCare, callout: 'Practical upgrades and cooling care for Kuwait’s climate.' },
+    ];
+    const getItemDescription = (slug: string) => {
+      const entity =
+        (NAV_GRAPH.services || []).find(item => item.slug === slug) ??
+        (NAV_GRAPH.problems || []).find(item => item.slug === slug);
+      return truncate(entity?.description || 'Explore this repair option with KCROC.', 58);
+    };
+
+    return (
+      <div
+        ref={panelRef}
+        id={`mega-menu-${config.id}`}
+        role="region"
+        aria-label="Repairs, symptoms, upgrades and care"
+        aria-hidden={!isOpen}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
+        style={{
+          position: 'fixed',
+          top: '78px',
+          left: getClampedLeft(),
+          transform: 'translateX(-50%)',
+          width: `min(${panelWidth}px, calc(100vw - 32px))`,
+          maxHeight: 'calc(100vh - 90px)',
+          zIndex: 9999,
+        }}
+        className={`kcroc-mega-menu-scroll max-h-full overflow-x-hidden overflow-y-auto overscroll-contain transition-all duration-200 motion-reduce:transition-none origin-top ${isOpen ? 'opacity-100 scale-100 pointer-events-auto' : 'opacity-0 scale-[0.985] pointer-events-none'}`}
+      >
+        <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_24px_70px_rgba(15,23,42,0.18)]">
+          <div className="flex flex-col gap-4 border-b border-slate-200 px-5 py-4 sm:flex-row sm:items-center sm:justify-between lg:px-6">
+            <div className="min-w-0">
+              <p className="mb-1 text-[11px] font-extrabold uppercase tracking-[0.16em] text-blue-700">KCROC SERVICE FINDER · KUWAIT</p>
+              <h2 className="m-0 text-xl font-extrabold tracking-tight text-slate-900 lg:text-2xl">Repair by service or symptom</h2>
+              <p className="mt-1.5 max-w-2xl text-sm leading-5 text-slate-600">Choose the problem you recognize or the repair you need. We confirm the quote before repair work begins.</p>
+            </div>
+            <Link
+              to="/services"
+              onMouseEnter={() => prefetchRoute('services')}
+              onClick={() => {
+                trackConversion('cta_click', { cta_name: 'mega_menu_view_all', button_position: 'header' });
+                onClose();
+              }}
+              className="inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-bold text-slate-800 transition-colors hover:border-blue-300 hover:bg-blue-50 hover:text-blue-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
+            >
+              View all services <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 gap-3 p-3 sm:grid-cols-2 lg:grid-cols-3 lg:gap-4 lg:p-4">
+            {groups.map((group) => {
+              const GroupIcon = group.icon;
+              return (
+                <section key={group.id} aria-labelledby={`service-menu-${group.id}`} className="min-w-0 rounded-xl border border-slate-200 bg-white p-3.5 shadow-sm sm:p-4">
+                  <div className="mb-3 border-b border-slate-100 pb-3">
+                    <div className="flex items-center gap-2.5">
+                      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-blue-50 text-blue-700">
+                        <GroupIcon className="h-4 w-4" aria-hidden="true" />
+                      </span>
+                      <div className="min-w-0">
+                        <h3 id={`service-menu-${group.id}`} className="m-0 text-sm font-extrabold text-slate-900">{group.title}</h3>
+                        <p className="mt-0.5 text-xs leading-4 text-slate-600">{group.intro}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="space-y-1">
+                    {group.items.map(({ slug, label, icon: ItemIcon }) => (
+                      <Link
+                        key={slug}
+                        to={`/${slug}`}
+                        tabIndex={isOpen ? 0 : -1}
+                        onMouseEnter={() => prefetchRoute(slug)}
+                        onClick={() => {
+                          trackConversion('cta_click', { cta_name: 'service_matrix_link', button_position: 'header' });
+                          onClose();
+                        }}
+                        className="group flex min-h-12 items-center gap-2 rounded-lg px-2 py-2 transition-colors hover:bg-blue-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
+                      >
+                        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-slate-100 text-slate-600 transition-colors group-hover:bg-blue-100 group-hover:text-blue-700">
+                          <ItemIcon className="h-4 w-4" aria-hidden="true" />
+                        </span>
+                        <span className="min-w-0 flex-1">
+                          <span className="block text-xs font-bold leading-4 text-slate-800 group-hover:text-blue-700">{label}</span>
+                          <span className="mt-0.5 block text-[10px] leading-4 text-slate-600">{getItemDescription(slug)}</span>
+                        </span>
+                        <ChevronRight className="h-3.5 w-3.5 shrink-0 text-slate-400 transition-transform group-hover:translate-x-0.5 group-hover:text-blue-700" aria-hidden="true" />
+                      </Link>
+                    ))}
+                  </div>
+                  <p className="mt-3 rounded-lg border border-blue-100 bg-blue-50 px-3 py-2.5 text-xs font-semibold leading-5 text-blue-800">{group.callout}</p>
+                </section>
+              );
+            })}
+          </div>
+
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2 border-t border-slate-200 bg-slate-50 px-4 py-3.5 lg:px-5">
+            <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-700"><CheckCircle2 className="h-4 w-4 text-emerald-600" aria-hidden="true" />Free Pickup & Return</span>
+            <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-700"><ShieldCheck className="h-4 w-4 text-emerald-600" aria-hidden="true" />30-Day Complete Warranty</span>
+            <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-700"><CheckCircle2 className="h-4 w-4 text-emerald-600" aria-hidden="true" />No Fix, No Fee Policy</span>
+            <div className="ml-auto flex flex-wrap items-center gap-2">
+              <a href={`tel:+${NAV_GRAPH.business!.telephone}`} className="inline-flex min-h-10 items-center justify-center gap-1.5 rounded-lg px-2.5 text-xs font-bold text-slate-700 hover:bg-white hover:text-blue-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600">
+                <Phone className="h-3.5 w-3.5 text-blue-600" aria-hidden="true" />+965 55301913
+              </a>
+              <Link to="/book" onClick={() => { trackConversion('cta_click', { cta_name: 'header_book', button_position: 'header' }); onClose(); }} className="inline-flex min-h-10 items-center justify-center gap-2 rounded-lg bg-blue-600 px-3.5 py-2 text-xs font-extrabold text-white transition-colors hover:bg-blue-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600">
+                Book Free Pickup <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   if (!config) return null;
 

@@ -433,7 +433,7 @@ export class NavigationCompiler {
   public static compileNavigation(): CompiledNavigationModel {
     return {
       header: [
-        { id: 'nav_services', label: 'Services', href: '/services', hasMega: true, megaMenuId: 'services_mega' },
+        { id: 'nav_services', label: 'Repairs', href: '/services', hasMega: true, megaMenuId: 'services_mega' },
         { id: 'nav_brands', label: 'Brands', href: '/brands', hasMega: true, megaMenuId: 'brands_mega' },
         { id: 'nav_problems', label: 'Problems', href: '/problems', hasMega: true, megaMenuId: 'problems_mega' },
         { id: 'nav_locations', label: 'Locations', href: '/locations', hasMega: true, megaMenuId: 'locations_mega' },
