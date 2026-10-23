@@ -35,7 +35,7 @@ export const PricingTable = () => {
           className="mb-6 sm:mb-10"
         />
 
-        <div className="grid grid-cols-1 gap-3 min-[420px]:grid-cols-2 xl:grid-cols-3 sm:gap-4">
+        <div className="grid grid-cols-1 gap-4 min-[420px]:grid-cols-2 sm:gap-6 xl:grid-cols-3">
           {services.map((service) => {
             const thumb = service.contentImages?.[0];
             const whatsappLink = buildWhatsAppLink(
@@ -52,7 +52,7 @@ export const PricingTable = () => {
                 key={service.id}
                 className="flex h-full min-h-[25rem] min-w-0 flex-col overflow-hidden rounded-2xl border border-white/[0.10] bg-white/[0.035] transition-colors hover:border-white/20"
               >
-                <div className="flex h-28 shrink-0 items-center justify-center overflow-hidden border-b border-white/[0.08] bg-white/[0.025]">
+                <div className="flex aspect-[16/9] w-full shrink-0 items-center justify-center overflow-hidden border-b border-white/[0.08] bg-white/[0.025]">
                   {thumb ? (
                     <img
                       src={thumb.src}
@@ -68,7 +68,7 @@ export const PricingTable = () => {
                   )}
                 </div>
 
-                <div className="flex flex-1 flex-col p-4 sm:p-5">
+                <div className="flex flex-1 flex-col p-4 sm:p-6 lg:p-8">
                   <h3 className="min-h-12 text-base font-bold leading-snug text-white sm:text-lg">
                     <Link
                       to={`/${service.slug}`}
