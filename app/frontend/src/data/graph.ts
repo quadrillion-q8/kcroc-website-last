@@ -1530,17 +1530,19 @@ export const rawGraphData: RawGraphData = {
       slug: 'macbook-repair-kuwait', 
       entityType: 'Service', 
       isActive: true, 
-      title: 'MacBook Repair Kuwait', primaryKeyword: "MacBook repair Kuwait", secondaryKeywords: ["MacBook motherboard repair Kuwait","MacBook battery repair Kuwait","MacBook USB-C charging repair"], 
+      title: 'MacBook Repair Kuwait', primaryKeyword: "MacBook repair Kuwait", secondaryKeywords: ["MacBook Air repair Kuwait","MacBook Pro repair Kuwait","MacBook motherboard repair Kuwait","MacBook not charging Kuwait","MacBook liquid damage repair Kuwait","MacBook black screen repair Kuwait","MacBook screen repair Kuwait","MacBook battery replacement Kuwait","MacBook USB-C charging repair","MacBook M1 M2 M3 M4 repair Kuwait"], 
       iconKey: 'apple', 
-      shortDescription: 'Chip-level motherboard repair, USB-C power IC replacement, and liquid damage recovery — without Apple\'s full board-swap and data-loss policy.',
-      description: 'Your MacBook won\'t turn on, a spilled drink has just hit the keyboard, or neither Thunderbolt port will charge it anymore — and an Apple Authorized Service Provider has quoted a full motherboard replacement that costs hundreds of KWD and, on most Apple Silicon models, means starting over with zero access to your original files. That last part isn\'t a scare tactic — it\'s how the hardware works: on M1/M2/M3 MacBooks, storage is soldered directly to the board and encrypted against that specific board\'s Secure Enclave, so a swapped board is a genuinely different machine as far as your data is concerned. We take the other path. Using thermal imaging and a multimeter, we trace the fault to the exact failed component — a shorted MOSFET, a blown power IC, a corroded trace — and repair that one point via micro-soldering, on your original board. Your SSD, your Secure Enclave, and your data stay exactly where they were.', 
+      shortDescription: 'MacBook Air and Pro repair in Kuwait for power, USB-C charging, screen, battery, keyboard and liquid-damage faults, with component-level board diagnostics where repair is viable.',
+      description: 'Need MacBook repair in Kuwait? KCROC diagnoses MacBook Air and MacBook Pro faults including no power, USB-C charging problems, liquid damage, black or flickering screens, battery swelling, keyboard and trackpad faults, overheating and boot failures. We check the model, symptom and affected circuit before recommending a component-level repair or a compatible part replacement. Where technically viable, board-level micro-soldering can repair the original logic board rather than automatically replacing the whole board. Diagnostics are free, the quote is approved before paid work, and free pickup and delivery can be arranged across Kuwait. Repairs are completed at our Hawalli lab with a 30-day warranty on covered work; data preservation is a priority but cannot be guaranteed for every damaged device.', 
       idealCustomer: 'Creative professionals, developers, students, and business professionals who\'ve been quoted an expensive board-swap by Apple or a reseller and need the original motherboard — and the data on it — recovered rather than replaced.',
       deviceTypes: [
-        'MacBook Air (M1, M2, M3)',
-        'MacBook Pro 13" (Intel & M-series)',
-        'MacBook Pro 14" (M1 Pro/Max, M2 Pro/Max, M3 Pro/Max)',
-        'MacBook Pro 16" (Intel & M-series)',
-        'Intel MacBooks (2015 and later)'
+        'MacBook Air (Apple Silicon and Intel generations; confirm exact model)',
+        'MacBook Pro 13-inch (Intel and M-series)',
+        'MacBook Pro 14-inch and 16-inch (Apple Silicon generations; confirm exact model)',
+        'Intel MacBooks from 2015 onward, subject to fault and parts availability',
+        'Example model identifiers: MacBook Air A2337 (M1), A2681 (M2 13-inch), A2941 (M2 15-inch), A3113 / A3114 (Air M3 generations)',
+        'Example MacBook Pro identifiers: A2338 (13-inch M1), A2442 / A2779 / A2992 (14-inch generations), A2485 / A2780 / A2991 (16-inch generations)',
+        'Model numbers are examples, not a complete supported-parts list; confirm the exact A-number, screen size and year before quoting'
       ],
       repairLevel: 'chip-level', 
       estimatedTurnaround: '24-48 Hours', 
@@ -1570,7 +1572,7 @@ export const rawGraphData: RawGraphData = {
 
       whyChooseUs: [
         { title: 'Chip-Level Motherboard Repair', description: 'We trace the fault to the specific failed component — a MOSFET, a power IC, a corroded trace — and repair it directly, instead of defaulting to a full board swap.' },
-        { title: 'Data Preserved By Design', description: 'Because we repair your original board rather than replacing it, your SSD and Secure Enclave never change — a real distinction on Apple Silicon models, where a swapped board means the storage encryption no longer matches.' },
+        { title: 'Data-Conscious Board Repair', description: 'When technically feasible, repairing the original logic board can avoid a board swap. We focus on the requested hardware fault and do not browse personal files as part of normal diagnostics, but no repair shop can guarantee data survival on every damaged device.' },
         { title: 'USB-C Power IC Specialists', description: 'Charging and port failures are among the most common MacBook faults we see, and are frequently a single failed IC rather than a reason to replace the board.' },
         { title: 'Liquid Damage Ultrasonic Cleaning', description: 'The board is fully stripped and run through an industrial ultrasonic cleaner to remove corrosion at a microscopic level before we assess what, if anything, needs replacing.' },
         { title: 'Free Diagnostic Before Any Quote', description: 'Thermal imaging and multimeter tracing happen before you\'re quoted anything — you know the actual fault, not a guess based on symptoms alone.' },
@@ -1780,26 +1782,57 @@ export const rawGraphData: RawGraphData = {
         {
           id: 'faq-macbook-turn-around-time',
           title: 'How long does MacBook repair take?',
-          answer: 'Most component-level repairs complete in 24-48 hours, including full-load stress testing before the device is returned to you.'
+          answer: 'Many routine repairs take around 24–48 hours after diagnosis, but board-level faults, liquid damage and parts orders can take longer. We confirm a realistic estimate after inspecting the device and checking part availability.'
+        },
+        {
+          id: 'faq-macbook-model-number',
+          title: 'How do I identify my MacBook model before requesting a repair quote?',
+          answer: 'Open Apple menu > About This Mac if the MacBook starts, or check the small A-number printed on the underside (for example A2337 or A2442). Send the model name and A-number through WhatsApp so we can check the likely repair path. Do not post the serial number publicly.'
+        },
+        {
+          id: 'faq-macbook-black-screen-diagnosis',
+          title: 'My MacBook screen is black but the computer seems to be running. Is the display always broken?',
+          answer: 'No. Possible causes include the display assembly, cable or connector, backlight circuit, power or graphics-related faults depending on the model. We test the symptom and related circuits before recommending a screen replacement; the symptom alone is not a confirmed diagnosis.'
+        },
+        {
+          id: 'faq-macbook-flex-cable',
+          title: 'Can you diagnose MacBook display cable or backlight faults?',
+          answer: 'Yes, we can inspect the display connection and relevant backlight path where the model design allows. Terms such as Flexgate or Dustgate describe particular model-related issues and do not explain every black or flickering screen; we confirm the fault before quoting.'
+        },
+        {
+          id: 'faq-macbook-true-tone',
+          title: 'Will True Tone and other display features work after a screen repair?',
+          answer: 'We test display functions supported by the specific model and replacement part. Calibration and feature behaviour vary by generation and component, so we confirm compatibility and do not promise every feature before inspection.'
+        },
+        {
+          id: 'faq-macbook-privacy',
+          title: 'Will you access my personal files during a MacBook repair?',
+          answer: 'Normal hardware diagnostics focus on the reported fault rather than browsing personal files. Back up important data if possible, tell us about any data concerns before pickup, and never share your account password in a public message. Severe board or liquid damage can still put data at risk.'
+        },
+        {
+          id: 'faq-macbook-pickup-lab',
+          title: 'Do you have a MacBook repair shop in Salmiya or Kuwait City?',
+          answer: 'KCROC has its physical repair lab in Hawalli at Ibn Khaldoun Street, Al Mullah Complex, Basement Shop 19. Salmiya, Kuwait City, Farwaniya, Ahmadi, Jahra and other areas are pickup-and-delivery service areas, not separate walk-in branches.'
         }
       ],
 
       technicalOverview: {
-        heading: 'Can your laptop be repaired, how much will it cost, and what happens first?',
+        heading: 'MacBook repair in Kuwait: diagnosis, model matching and repair options',
         paragraphs: [
-          'Most laptop faults are not a simple buy-or-replace decision. The repair path depends on the symptom, model, failed component, parts availability and whether the chassis, board or display is physically damaged. KCROC diagnoses the hardware first, then explains the practical repair options before work is approved.',
-          'For power, charging, overheating, display, storage or motherboard problems, the technician starts by separating the symptom from the likely cause. A laptop that powers on with a black display is not the same problem as a machine with no charging response at all, so the diagnostic path and quote can be different.',
-          'Pricing starts with diagnosis rather than a blanket promise. Common work has starting rates on the pricing page, while board-level, liquid-damage and model-specific repairs require a fault-based quotation. Pickup and delivery are handled through KCROC\'s Kuwait-wide service model, and data-sensitive board repairs can be performed without browsing personal files.'
+          'MacBook Air and MacBook Pro symptoms can overlap even when the underlying fault is different. A MacBook that will not power on, a machine that runs but shows a black display, and a laptop that will not negotiate USB-C charging need different diagnostic paths. We identify the exact model and reported symptom before choosing the next tests.',
+          'For charging and no-power faults, we inspect the charger and port behaviour and test relevant power circuits. For liquid exposure, the safest first step is to disconnect power and stop trying to turn the device on; repeated testing can worsen electrical damage. For black or flickering screens, we check the display assembly, connection and related circuitry where appropriate before recommending a replacement.',
+          'Model identifiers and chip generations help narrow compatible parts, but do not guarantee that a component is in stock or that a specific repair is possible. Free diagnostics and an itemized quote come before paid work. Many routine repairs take around 24–48 hours after diagnosis; complex board faults and parts orders can take longer.'
         ]
       },
       repairDecision: {
-        heading: 'When is laptop repair worth doing?',
+        heading: 'How we choose the right MacBook repair path',
         items: [
-          { condition: 'Screen, hinge, battery, charging port, fan or keyboard has failed but the rest of the laptop is healthy.', action: 'A targeted part or structural repair is usually the first path to evaluate.' },
-          { condition: 'Laptop is completely dead, not charging, or shuts down under load.', action: 'Test the power and thermal path before assuming the motherboard must be replaced.' },
-          { condition: 'Motherboard has a component-level fault or liquid damage.', action: 'Trace the affected circuit and compare board-level repair with replacement cost before deciding.' },
-          { condition: 'Older laptop is slow because of storage or memory limitations.', action: 'Check SSD/RAM upgrade compatibility and data-migration needs before replacing the machine.' },
-          { condition: 'The chassis or board is severely burned or the repair is economically unreasonable.', action: 'KCROC will explain the limitation and, under the No Fix, No Fee policy, you are not charged for an unsuccessful repair diagnosis.' }
+          { condition: 'MacBook will not power on or charge.', action: 'Check the charger, USB-C port behaviour and relevant power circuits before assuming the logic board needs replacement.' },
+          { condition: 'MacBook has a black, flickering or lined display.', action: 'Separate possible screen, cable, backlight and board faults before quoting a display assembly.' },
+          { condition: 'Liquid has spilled onto the keyboard or ports.', action: 'Power off, unplug it, do not try to restart it, and arrange prompt inspection for corrosion and shorts.' },
+          { condition: 'Battery is swollen or pushing up the trackpad or case.', action: 'Stop using and charging the device; avoid pressing or puncturing the battery and arrange safe handling.' },
+          { condition: 'Keyboard, trackpad, audio, Wi-Fi or thermal symptoms persist.', action: 'Test the affected subsystem and its connectors; replace only the part supported by diagnosis.' },
+          { condition: 'Board-level repair or replacement is being considered.', action: 'Compare technical feasibility, cost, part availability and data risk before you approve a repair. Original-board repair can help preserve data access, but cannot guarantee recovery.' }
         ]
       },
       warranty: { duration: '30 Days', coverage: 'All parts and labor.', noFixNoFee: true }, 
@@ -1810,7 +1843,7 @@ export const rawGraphData: RawGraphData = {
           width: IMAGES.macbook.diagnostics.width,
           height: IMAGES.macbook.diagnostics.height,
           placement: 'commonIssues',
-          caption: 'A technician running board-level diagnostics on an opened MacBook to isolate the failed component.'
+          caption: 'MacBook Air and Pro diagnosis in Kuwait: isolate the power, charging or logic-board fault before choosing a repair.'
         },
         {
           src: IMAGES.macbook.logicBoard.src,
@@ -1818,7 +1851,7 @@ export const rawGraphData: RawGraphData = {
           width: IMAGES.macbook.logicBoard.width,
           height: IMAGES.macbook.logicBoard.height,
           placement: 'coreFeatures',
-          caption: 'Component-level motherboard and fan repair — replacing the exact failed chip rather than the whole board.'
+          caption: 'Component-level MacBook logic-board inspection and micro-soldering where the original board is technically repairable.'
         },
         {
           src: IMAGES.macbook.swollenBattery1.src,
@@ -1826,12 +1859,12 @@ export const rawGraphData: RawGraphData = {
           width: IMAGES.macbook.swollenBattery1.width,
           height: IMAGES.macbook.swollenBattery1.height,
           placement: 'process',
-          caption: 'A swollen MacBook battery safely removed during teardown before board-level repair begins.'
+          caption: 'MacBook battery safety inspection: a swollen battery requires careful handling and should not be pressed or charged.'
         }
       ],
       seo: { 
-        title: 'MacBook Repair Kuwait | Screen & Board Repair | KCROC', 
-        description: 'MacBook repair in Kuwait for charging, liquid and board-level faults. Original-board micro-soldering where practical, free pickup and 30-day warranty.', 
+        title: 'MacBook Repair Kuwait | Air, Pro, Charging & Board | KCROC', 
+        description: 'MacBook Air and Pro repair in Kuwait for no power, USB-C charging, liquid damage, black screens, batteries and board faults. Free diagnosis, Kuwait-wide pickup and a 30-day warranty on covered repairs.', 
         canonicalUrl: 'https://www.computerrepairkuwait.com/macbook-repair-kuwait', locale: 'en_KW', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/macbook-repair-kuwait', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/macbook-repair-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/macbook-repair-kuwait' }, 
         ogType: 'article', 
         schemaTypes: ['Service', 'FAQPage'] 
