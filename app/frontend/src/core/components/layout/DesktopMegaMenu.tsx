@@ -435,7 +435,7 @@ export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnte
               <div className="flex items-baseline gap-3">
                 <h2 className="!m-0 !text-2xl font-black tracking-[-0.035em] text-slate-900 lg:!text-[28px]">{config.title}</h2>
               </div>
-              <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-400">{meta.subtitle}</p>
+              <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-600">{meta.subtitle}</p>
             </div>
 
             <Link
@@ -486,7 +486,7 @@ export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnte
                           <p className="pr-2 text-sm font-bold leading-5 text-slate-800 transition-colors group-hover:text-blue-700">{entity.title}</p>
                           <ChevronRight className="mt-0.5 h-4 w-4 shrink-0 text-slate-400 transition-transform group-hover:translate-x-0.5 group-hover:text-blue-700" aria-hidden="true" />
                         </div>
-                        <p className="mt-1 text-xs leading-5 text-slate-400">{truncate(entity.description, 94)}</p>
+                        <p className="mt-1 text-xs leading-5 text-slate-600">{truncate(entity.description, 94)}</p>
                       </div>
                     </Link>
                   );
@@ -498,7 +498,7 @@ export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnte
               <div className="mb-3 flex items-end justify-between gap-3">
                 <div>
                   <p id={`${config.id}-areas`} className="text-xs font-black uppercase tracking-[0.16em] text-slate-400">{config.sections[0]?.title ?? 'Service areas'}</p>
-                  <p className="mt-1 text-xs text-slate-400">Pickup and delivery coverage across Kuwait.</p>
+                  <p className="mt-1 text-xs text-slate-600">Pickup and delivery coverage across Kuwait.</p>
                 </div>
                 <MapPin className="h-4 w-4 text-blue-700" aria-hidden="true" />
               </div>
@@ -514,7 +514,7 @@ export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnte
                       trackConversion('cta_click', { cta_name: 'mega_menu_area', button_position: 'header' });
                       onClose();
                     }}
-                    className="group flex min-h-11 items-center justify-between gap-2 rounded-xl border border-transparent px-3 py-2.5 text-xs font-semibold text-slate-400 transition-colors hover:border-white/[0.07] hover:bg-white/[0.035] hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
+                    className="group flex min-h-11 items-center justify-between gap-2 rounded-xl border border-transparent px-3 py-2.5 text-xs font-semibold text-slate-700 transition-colors hover:border-slate-200 hover:bg-white hover:text-blue-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
                   >
                     <span className="truncate">{entity.title}</span>
                     <ChevronRight className="h-3.5 w-3.5 shrink-0 text-slate-700 transition-transform group-hover:translate-x-0.5 group-hover:text-blue-700" aria-hidden="true" />
@@ -530,7 +530,7 @@ export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnte
                 <div className="mb-3 flex items-end justify-between gap-3 px-1">
                   <div>
                     <p id={`${config.id}-featured`} className="text-xs font-black uppercase tracking-[0.16em] text-slate-400">{meta.featureLabel}</p>
-                    <p className="mt-1 text-xs text-slate-400">Quick paths for visitors who already know what they need.</p>
+                    <p className="mt-1 text-xs text-slate-600">Quick paths for visitors who already know what they need.</p>
                   </div>
                   <span className="hidden text-[10px] font-bold uppercase tracking-[0.12em] text-slate-400 md:block">{config.featured.length} highlighted</span>
                 </div>
@@ -559,7 +559,7 @@ export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnte
                             <p className="pr-2 text-sm font-bold leading-5 text-slate-800 transition-colors group-hover:text-blue-700">{entity.title}</p>
                             <ChevronRight className="mt-0.5 h-4 w-4 shrink-0 text-slate-400 transition-transform group-hover:translate-x-0.5 group-hover:text-blue-700" aria-hidden="true" />
                           </div>
-                          <p className="mt-1.5 line-clamp-2 text-xs leading-5 text-slate-400">{truncate(entity.description, 110)}</p>
+                          <p className="mt-1.5 line-clamp-2 text-xs leading-5 text-slate-600">{truncate(entity.description, 110)}</p>
                         </div>
                       </Link>
                     );
@@ -573,7 +573,7 @@ export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnte
                 <div className="mb-3 flex items-center justify-between gap-3 px-1">
                   <div>
                     <p id={`${config.id}-more`} className="text-xs font-black uppercase tracking-[0.16em] text-slate-400">Explore more</p>
-                    <p className="mt-1 text-xs text-slate-400">All the other pages in this section, in one compact index.</p>
+                    <p className="mt-1 text-xs text-slate-600">All the other pages in this section, in one compact index.</p>
                   </div>
                   <span className="text-[10px] font-bold uppercase tracking-[0.12em] text-slate-400">{moreItems.length} links</span>
                 </div>
@@ -607,12 +607,12 @@ export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnte
 
         <div className="relative flex flex-col gap-2.5 border-t border-slate-200 bg-slate-50 px-4 py-3.5 sm:flex-row sm:items-center sm:justify-between lg:px-5">
           <div className="flex items-start gap-3">
-            <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#c9804d]/25 bg-[#c9804d]/10 text-blue-700">
+            <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-blue-100 bg-blue-50 text-blue-700">
               <MessageCircle className="h-4 w-4" aria-hidden="true" />
             </div>
             <div>
               <p className="text-sm font-bold text-slate-900">Not sure which option fits?</p>
-              <p className="mt-0.5 text-xs leading-5 text-slate-400">Send the model + symptom and a technician can point you to the right page.</p>
+              <p className="mt-0.5 text-xs leading-5 text-slate-600">Send the model + symptom and a technician can point you to the right page.</p>
             </div>
           </div>
           <a
