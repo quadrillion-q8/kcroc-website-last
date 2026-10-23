@@ -31,6 +31,7 @@ import {
 import { MegaMenuConfig, NavEntity } from '../../navigation/types';
 import { useAnalytics } from '../../analytics/AnalyticsProvider';
 import { NAV_GRAPH } from '../../../data/navGraph.generated';
+import StructuredMegaMenuContent from './StructuredMegaMenuContent';
 
 const ICON_REGISTRY: Record<string, React.ElementType> = {
   apple: Apple,
@@ -185,7 +186,8 @@ export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnte
   const allLabel = indexItem ? meta.allLabel : meta.allLabel;
   const isServiceMenu = config.id === 'services_mega';
   const isServiceAreaMenu = config.id === 'locations_mega';
-  const panelWidth = isServiceMenu ? 940 : isServiceAreaMenu ? 1100 : 1040;
+  const isStructuredMenu = ['problems_mega', 'pricing_mega', 'blog_mega', 'guides_mega'].includes(config.id);
+  const panelWidth = isServiceMenu ? 940 : isServiceAreaMenu ? 1100 : isStructuredMenu ? 1120 : 1040;
 
   const getClampedLeft = () => {
     if (typeof window === 'undefined') return '50%';
@@ -265,6 +267,32 @@ export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnte
     return () => document.removeEventListener('pointerdown', onPointerDown);
   }, [config.id, isOpen, onClose]);
 
+
+  if (isStructuredMenu) {
+    return (
+      <div
+        ref={panelRef}
+        id={`mega-menu-${config.id}`}
+        role="region"
+        aria-label={config.title}
+        aria-hidden={!isOpen}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
+        style={{
+          position: 'fixed',
+          top: '78px',
+          left: getClampedLeft(),
+          transform: 'translateX(-50%)',
+          width: `min(${panelWidth}px, calc(100vw - 32px))`,
+          maxHeight: 'calc(100vh - 90px)',
+          zIndex: 9999,
+        }}
+        className={`kcroc-mega-menu-scroll max-h-full overflow-x-hidden overflow-y-auto overscroll-contain transition-all duration-200 motion-reduce:transition-none origin-top ${isOpen ? 'opacity-100 scale-100 pointer-events-auto' : 'opacity-0 scale-[0.985] pointer-events-none'}`}
+      >
+        <StructuredMegaMenuContent config={config} meta={meta} isOpen={isOpen} onClose={onClose} />
+      </div>
+    );
+  }
 
   if (isServiceMenu) {
     type MatrixItem = { slug: string; label: string; icon: React.ElementType };
