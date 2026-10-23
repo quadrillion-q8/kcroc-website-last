@@ -19,8 +19,8 @@ export const TrustBar = () => {
       {badges.map((badge) => {
         const Icon = ICON_MAP[badge.iconKey];
         return (
-          <div key={badge.id} className="flex items-center justify-center gap-2 px-3 py-3.5 sm:px-0 sm:py-5 text-[10px] sm:text-xs font-semibold text-slate-400 uppercase tracking-wide">
-            {Icon && <Icon className="w-4 h-4 text-[#dfa86f]" />}
+          <div key={badge.id} className="flex min-h-12 min-w-0 items-center justify-center gap-2 px-3 py-3.5 text-center text-xs font-semibold uppercase tracking-wide text-[#C4CDD1] sm:px-0 sm:py-5 sm:text-sm">
+            {Icon && <Icon className="h-4 w-4 shrink-0 text-[#AAB5B9]" aria-hidden="true" />}
             {badge.title}
           </div>
         );
