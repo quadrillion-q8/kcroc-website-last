@@ -84,14 +84,14 @@ export default function BehindBench() {
         <div className="flex flex-wrap items-center justify-center gap-3 mt-8 sm:mt-10">
           <Link
             to="/gallery"
-            className="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-slate-700 text-slate-200 hover:border-cyan-500/40 hover:text-white transition-colors font-bold text-sm"
+            className="inline-flex min-h-12 items-center justify-center gap-2 px-5 py-3 rounded-xl border border-slate-700 text-slate-200 hover:border-cyan-500/40 hover:text-white transition-colors font-bold text-sm"
           >
             View Workshop Gallery
             <ArrowRight className="w-4 h-4" aria-hidden="true" />
           </Link>
           <Link
             to="/book"
-            className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-cyan-400 text-slate-950 hover:bg-cyan-300 transition-colors font-bold text-sm"
+            className="inline-flex min-h-12 items-center justify-center gap-2 px-5 py-3 rounded-xl bg-cyan-400 text-slate-950 hover:bg-cyan-300 transition-colors font-bold text-sm"
           >
             Book Free Pickup
             <ArrowRight className="w-4 h-4" aria-hidden="true" />
