@@ -41,12 +41,12 @@ export const Process = () => {
             </picture>
             <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/40 to-transparent"></div>
             <div className="absolute bottom-3 left-3 right-3 sm:bottom-4 sm:left-6 sm:right-6 flex flex-wrap items-center justify-between gap-2 sm:gap-4">
-              <div className="flex items-center gap-1.5 text-[10px] sm:text-xs font-bold text-cyan-400 bg-brand-dark/80 backdrop-blur-md px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-xl border border-cyan-500/30">
-                <Cpu className="w-4 h-4 text-cyan-400 animate-pulse" />
+              <div className="flex items-center gap-1.5 text-[10px] sm:text-xs font-bold text-[#D4DBDE] bg-white/[0.04] backdrop-blur-md px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-xl border border-white/[0.12]">
+                <Cpu className="w-4 h-4 text-[#AAB5B9]" aria-hidden="true" />
                 <span>Thermal Imaging &amp; Motherboard Tracing</span>
               </div>
-              <div className="flex items-center gap-1.5 text-[10px] sm:text-xs font-bold text-emerald-400 bg-brand-dark/80 backdrop-blur-md px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-xl border border-emerald-500/30">
-                <ShieldCheck className="w-4 h-4 text-emerald-400" />
+              <div className="flex items-center gap-1.5 text-[10px] sm:text-xs font-bold text-[#D4DBDE] bg-white/[0.04] backdrop-blur-md px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-xl border border-white/[0.12]">
+                <ShieldCheck className="w-4 h-4 text-[#AAB5B9]" aria-hidden="true" />
                 <span>Data Privacy Guaranteed</span>
               </div>
             </div>
