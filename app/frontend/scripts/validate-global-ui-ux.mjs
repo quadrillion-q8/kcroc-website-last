@@ -15,7 +15,7 @@ async function walk(directory) {
 
 await walk(root);
 const read = (relativePath) => readFile(path.join(root, relativePath), 'utf8');
-const [button, header, footer, contact, cookie, hero, globalCss, legacyCss, schema, servicesGrid, booking, repairProof, stickyCta] = await Promise.all([
+const [button, header, footer, contact, cookie, hero, globalCss, legacyCss, schema, servicesGrid, booking, repairProof, stickyCta, leadMagnet, pricingTable] = await Promise.all([
   read('components/ui/button.tsx'),
   read('core/components/layout/Header.tsx'),
   read('core/components/layout/Footer.tsx'),
@@ -29,6 +29,8 @@ const [button, header, footer, contact, cookie, hero, globalCss, legacyCss, sche
   read('pages/BookingPage.tsx'),
   read('components/home/RepairProofCTA.tsx'),
   read('components/home/StickyMobileCTA.tsx'),
+  read('components/home/LeadMagnet.tsx'),
+  read('components/home/PricingTable.tsx'),
 ]);
 
 const issues = [];
@@ -57,6 +59,14 @@ requireContains(hero, 'fetchPriority="high"', 'components/home/Hero.tsx', 'the h
 requireContains(hero, 'Free pick-up & drop across all Kuwait governorates', 'components/home/Hero.tsx', 'hero trust signals must state the full governorate-wide pickup promise.');
 requireContains(servicesGrid, 'Free pick-up &amp; drop across all Kuwait governorates', 'components/home/ServicesGrid.tsx', 'the service grid must expose the Kuwait-wide free pickup promise.');
 requireContains(servicesGrid, 'Arrange free pickup', 'components/home/ServicesGrid.tsx', 'the service-grid logistics banner must have a next step.');
+requireContains(servicesGrid, 'services.slice(0, 6)', 'components/home/ServicesGrid.tsx', 'the homepage must initially show six services.');
+requireContains(servicesGrid, 'aria-expanded={showAllServices}', 'components/home/ServicesGrid.tsx', 'the show-all-services control must expose its expanded state.');
+requireContains(servicesGrid, 'aria-controls="homepage-services-grid"', 'components/home/ServicesGrid.tsx', 'the show-all-services control must identify the service grid it controls.');
+requireContains(servicesGrid, 'aspect-[16/9]', 'components/home/ServicesGrid.tsx', 'service thumbnails must reserve a consistent 16:9 aspect ratio.');
+requireContains(pricingTable, 'aspect-[16/9]', 'components/home/PricingTable.tsx', 'pricing thumbnails must reserve a consistent 16:9 aspect ratio.');
+requireContains(leadMagnet, 'min-h-[92px] min-w-12', 'components/home/LeadMagnet.tsx', 'Quick Repair Check option controls must have at least 48px minimum dimensions.');
+requireContains(leadMagnet, 'text-start', 'components/home/LeadMagnet.tsx', 'Quick Repair Check option labels must use logical text alignment.');
+requireContains(leadMagnet, 'end-3', 'components/home/LeadMagnet.tsx', 'selection indicators must use logical positioning for RTL layouts.');
 requireContains(booking, 'Free pick-up and delivery across all Kuwait governorates.', 'pages/BookingPage.tsx', 'the booking page must restate the accurate governorate-wide pickup guarantee.');
 requireContains(repairProof, 'WhatsApp a Technician', 'components/home/RepairProofCTA.tsx', 'the repair proof CTA must use its visible label as its accessible name.');
 if (repairProof.includes('aria-label="Message KCROC on WhatsApp"')) issues.push('components/home/RepairProofCTA.tsx: accessible name must contain the visible “WhatsApp a Technician” text.');
