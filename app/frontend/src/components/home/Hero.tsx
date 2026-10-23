@@ -44,8 +44,8 @@ export default function Hero() {
 
           <div className="mt-4 flex flex-wrap justify-center gap-2">
             {['Free pick-up & drop across all Kuwait governorates', '30-day warranty', 'No fix, no fee'].map((label) => (
-              <span key={label} className="inline-flex items-center gap-1.5 rounded-full border border-cyan-500/25 bg-cyan-500/10 px-3 py-1.5 text-[11px] font-bold text-cyan-200">
-                <Check className="h-3.5 w-3.5 text-cyan-400" aria-hidden="true" />
+              <span key={label} className="inline-flex min-h-10 items-center gap-1.5 rounded-lg border border-white/[0.12] bg-white/[0.04] px-3 py-1.5 text-[11px] font-bold text-[#D4DBDE]">
+                <Check className="h-3.5 w-3.5 text-[#AAB5B9]" aria-hidden="true" />
                 {label}
               </span>
             ))}
@@ -132,7 +132,7 @@ export default function Hero() {
 
               <div className="mt-6 flex flex-wrap gap-2.5">
                 {['Free pick-up & drop across all Kuwait governorates', '30-day parts + labour warranty', 'No fix, no fee'].map((label) => (
-                  <span key={label} className="inline-flex items-center gap-2 rounded-full border border-white/[0.10] bg-white/[0.035] px-3.5 py-2 text-xs font-bold text-slate-200">
+                  <span key={label} className="inline-flex min-h-10 items-center gap-2 rounded-lg border border-white/[0.12] bg-white/[0.04] px-3.5 py-2 text-xs font-bold text-[#D4DBDE]">
                     <Check className="h-4 w-4 text-cyan-400" aria-hidden="true" />
                     {label}
                   </span>
