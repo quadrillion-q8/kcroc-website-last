@@ -31,7 +31,7 @@ export const BrandStrip = () => {
               to={`/${brand.slug}`}
               aria-label={brand.title}
               onClick={() => trackConversion('cta_click', { cta_name: 'brand_strip_click', button_position: 'brand_strip', brand: brand.brandName })}
-              className="scroll-row-item text-xs sm:text-sm font-semibold text-slate-400 hover:text-cyan-400 border border-slate-800 hover:border-cyan-500/30 rounded-full px-3 sm:px-4 py-1.5 sm:py-2 transition-all whitespace-nowrap"
+              className="scroll-row-item inline-flex min-h-12 items-center text-xs sm:text-sm font-semibold text-slate-400 hover:text-cyan-400 border border-slate-800 hover:border-cyan-500/30 rounded-full px-3 sm:px-4 py-1.5 sm:py-2 transition-all whitespace-nowrap"
             >
               {brand.title}
             </Link>
