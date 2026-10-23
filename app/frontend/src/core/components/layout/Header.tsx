@@ -146,7 +146,7 @@ export default function Header() {
     <>
       <header ref={headerRef} className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-[#090c0f]/[0.97] backdrop-blur-xl border-b border-white/[0.10] shadow-[0_12px_36px_rgba(0,0,0,.22)]' : 'bg-[#090c0f]/[0.88] backdrop-blur-md border-b border-white/[0.08]'}`}>
         <div className="kcroc-header-inner max-w-[1360px] mx-auto px-4 sm:px-6 xl:px-8 2xl:px-12">
-          <div className="flex items-center justify-between h-[78px]">
+          <div className="flex min-h-[78px] flex-wrap items-center justify-between gap-x-3 gap-y-1 py-1">
             
             <Link to="/" className="flex items-center shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f] rounded-lg" aria-label="KCROC Home">
               {!logoError ? (
@@ -170,7 +170,7 @@ export default function Header() {
               )}
             </Link>
 
-            <nav aria-label="Main navigation" className="hidden xl:flex items-center gap-1">
+            <nav aria-label="Main navigation" className="hidden min-w-0 flex-wrap items-center gap-0.5 xl:flex 2xl:gap-1">
               {navModel.header.map(link => {
                 const isGraphMatch = !!matchPath({ path: link.href, end: false }, location.pathname);
 
@@ -190,7 +190,7 @@ export default function Header() {
                           setActiveMegaId(prev => prev === link.megaMenuId ? null : link.megaMenuId!);
                         }}
                         onKeyDown={e => handleMegaTriggerKeyDown(e, link.megaMenuId!)}
-                        className={`flex min-h-11 items-center gap-1.5 px-2.5 py-2 rounded-md whitespace-nowrap text-[13px] font-medium transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f] ${isOpen || isGraphMatch ? 'text-[#efc19c] border-b border-[#c9804d]/70' : 'text-slate-300 hover:text-white'}`}
+                        className={`flex min-h-12 min-w-12 items-center justify-center gap-1.5 px-2.5 py-2 rounded-md whitespace-nowrap text-[13px] font-medium transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f] ${isOpen || isGraphMatch ? 'text-[#efc19c] border-b border-[#c9804d]/70' : 'text-slate-300 hover:text-white'}`}
                       >
                         {link.label}
                         <ChevronDown size={15} className={`transition-transform duration-200 ${isOpen ? 'rotate-180 text-[#dfa86f]' : ''}`} aria-hidden="true" />
@@ -200,19 +200,19 @@ export default function Header() {
                 }
 
                 return (
-                  <Link key={link.id} to={link.href} aria-current={matchPath({ path: link.href, end: true }, location.pathname) ? 'page' : undefined} className={`inline-flex min-h-11 items-center px-2.5 py-2 rounded-md text-[13px] font-medium whitespace-nowrap transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f] ${isGraphMatch ? 'text-[#efc19c] border-b border-[#c9804d]/70' : 'text-slate-300 hover:text-white'}`}>
+                  <Link key={link.id} to={link.href} aria-current={matchPath({ path: link.href, end: true }, location.pathname) ? 'page' : undefined} className={`inline-flex min-h-12 min-w-12 items-center justify-center px-2.5 py-2 rounded-md text-[13px] font-medium whitespace-nowrap transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f] ${isGraphMatch ? 'text-[#efc19c] border-b border-[#c9804d]/70' : 'text-slate-300 hover:text-white'}`}>
                     {link.label}
                   </Link>
                 );
               })}
             </nav>
 
-            <div className="hidden xl:flex items-center gap-2.5">
+            <div className="hidden min-w-0 flex-wrap items-center justify-end gap-1.5 xl:flex 2xl:gap-2.5">
               <Link
                 to={languageSwitch.href}
                 lang={languageSwitch.targetLanguage === 'ar' ? 'ar' : 'en'}
                 aria-label={languageSwitch.targetLanguage === 'ar' ? 'Switch to Arabic' : 'Switch to English'}
-                className="inline-flex min-h-11 items-center justify-center rounded-md border border-white/[0.08] bg-transparent px-2.5 py-1.5 text-xs font-black text-slate-200 transition-all hover:border-[#c9804d]/[0.45] hover:text-[#efc19c] hover:bg-white/[0.05] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f]"
+                className="inline-flex min-h-12 min-w-12 items-center justify-center rounded-md border border-white/[0.08] bg-transparent px-2.5 py-1.5 text-xs font-black text-slate-200 transition-all hover:border-[#c9804d]/[0.45] hover:text-[#efc19c] hover:bg-white/[0.05] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f]"
               >
                 {languageSwitch.targetLanguage === 'ar' ? 'عربي' : 'EN'}
               </Link>
@@ -225,18 +225,18 @@ export default function Header() {
                 aria-expanded={searchOpen}
                 aria-controls="header-search-panel"
                 aria-label={searchOpen ? 'Close search' : 'Search'}
-                className={`min-h-11 min-w-11 flex items-center justify-center rounded-md transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f] ${searchOpen ? 'text-[#dfa86f] bg-[#c9804d]/10' : 'text-slate-300 hover:text-white hover:bg-white/5'}`}
+                className={`min-h-12 min-w-12 flex items-center justify-center rounded-md transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f] ${searchOpen ? 'text-[#dfa86f] bg-[#c9804d]/10' : 'text-slate-300 hover:text-white hover:bg-white/5'}`}
               >
                 {searchOpen ? <X size={18} aria-hidden="true" /> : <Search size={18} aria-hidden="true" />}
               </button>
-              <a href={`tel:+${cleanTel}`} onClick={() => trackConversion('phone_call_click', { cta_name: 'header_phone', button_position: 'header' })} className="flex min-h-11 items-center gap-2 text-sm font-medium text-slate-300 hover:text-white transition-colors">
+              <a href={`tel:+${cleanTel}`} onClick={() => trackConversion('phone_call_click', { cta_name: 'header_phone', button_position: 'header' })} className="flex min-h-12 min-w-12 items-center justify-center gap-2 text-sm font-medium text-slate-300 transition-colors hover:text-white">
                 <Phone size={15} className="text-[#dfa86f]" aria-hidden="true" />
                 <span className="hidden kcroc-header-phone-number 2xl:block">{phoneDisplay}</span>
               </a>
               <Button
                 asChild
                 variant="ctaPrimary"
-                className="h-auto gap-2 rounded-md px-4 py-2 text-sm transition-all hover:shadow-[0_12px_28px_rgba(201,128,77,0.15)]"
+                className="min-h-12 max-w-full gap-2 rounded-md px-3 py-2 text-center text-sm leading-tight transition-all hover:shadow-[0_12px_28px_rgba(201,128,77,0.15)]"
               >
                 <Link to="/book" onClick={() => trackConversion('cta_click', { cta_name: 'header_book', button_position: 'header' })}>
                   <CalendarCheck size={15} aria-hidden="true" />
@@ -245,21 +245,21 @@ export default function Header() {
               </Button>
             </div>
 
-            <div className="xl:hidden flex items-center gap-1">
+            <div className="flex shrink-0 items-center gap-1 xl:hidden">
               <Link
                 to={languageSwitch.href}
                 lang={languageSwitch.targetLanguage === 'ar' ? 'ar' : 'en'}
                 aria-label={languageSwitch.targetLanguage === 'ar' ? 'Switch to Arabic' : 'Switch to English'}
-                className="min-h-11 min-w-11 flex items-center justify-center rounded-lg border border-white/[0.10] text-xs font-black text-slate-200 transition-colors hover:border-cyan-500/50 hover:text-[#efc19c] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f]"
+                className="min-h-12 min-w-12 flex items-center justify-center rounded-lg border border-white/[0.10] text-xs font-black text-slate-200 transition-colors hover:border-cyan-500/50 hover:text-[#efc19c] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f]"
               >
                 {languageSwitch.targetLanguage === 'ar' ? 'عربي' : 'EN'}
               </Link>
               <button
                 ref={searchToggleRef}
                 // 🚀 TOUCH TARGET FIX: p-2 + a 20px icon was a ~36px hit area,
-                // under the 44×44px minimum. min-h/min-w-11 (44px) with a
-                // centered icon fixes this without changing the visual icon size.
-                className="min-h-11 min-w-11 flex items-center justify-center rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f]"
+                // under the 48×48px touch target. min-h/min-w-12 now provides a
+                // centered icon keeps the visible icon size while enlarging the hit area.
+                className="min-h-12 min-w-12 flex items-center justify-center rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f]"
                 onClick={() => {
                   setActiveMegaId(null);
                   setMobileOpen(false);
@@ -273,7 +273,7 @@ export default function Header() {
               </button>
               <button
                 ref={mobileToggleRef}
-                className="min-h-11 min-w-11 flex items-center justify-center rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f]"
+                className="min-h-12 min-w-12 flex items-center justify-center rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f]"
                 onClick={() => {
                   setActiveMegaId(null);
                   setSearchOpen(false);
