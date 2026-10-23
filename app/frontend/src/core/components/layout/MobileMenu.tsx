@@ -48,7 +48,8 @@ const ICON_REGISTRY: Record<string, React.ElementType> = {
 const getIcon = (key: string) => ICON_REGISTRY[key] ?? Wrench;
 
 const MENU_COPY: Record<string, { eyebrow: string; subtitle: string; allLabel: string; allHref: string }> = {
-  services_mega: { eyebrow: 'REPAIR SERVICES', subtitle: 'Find the right repair by device or fault.', allLabel: 'All services', allHref: '/services' },
+  services_mega: { eyebrow: 'ALL SERVICES', subtitle: 'Browse the complete service catalogue by device and repair type.', allLabel: 'All services', allHref: '/services' },
+  repairs_mega: { eyebrow: 'REPAIR HELP', subtitle: 'Start with a common symptom, then find the right repair path, pricing or pickup option.', allLabel: 'Explore services', allHref: '/services' },
   brands_mega: { eyebrow: 'SUPPORTED BRANDS', subtitle: 'Browse brands supported by the KCROC lab.', allLabel: 'All brands', allHref: '/brands' },
   problems_mega: { eyebrow: 'COMMON PROBLEMS', subtitle: 'Start with the symptom and work toward the cause.', allLabel: 'All problems', allHref: '/problems' },
   pricing_mega: { eyebrow: 'REPAIR PRICING', subtitle: 'See starting points before you book a diagnosis.', allLabel: 'Full pricing', allHref: '/pricing' },

@@ -61,11 +61,18 @@ const MENU_META: Record<string, {
   featureLabel: string;
 }> = {
   services_mega: {
-    eyebrow: 'REPAIR SERVICES',
-    subtitle: 'Laptop, MacBook, gaming PC and board-level repair — organized around the fault, not the brand.',
+    eyebrow: 'ALL SERVICES',
+    subtitle: 'Browse the complete KCROC service catalogue by device and repair type.',
     allLabel: 'View all services',
     allHref: '/services',
     featureLabel: 'Popular repair services',
+  },
+  repairs_mega: {
+    eyebrow: 'REPAIR HELP',
+    subtitle: 'Start with a common symptom, then find the right repair path, pricing or pickup option.',
+    allLabel: 'Explore repair services',
+    allHref: '/services',
+    featureLabel: 'Common repair issues',
   },
   brands_mega: {
     eyebrow: 'SUPPORTED BRANDS',

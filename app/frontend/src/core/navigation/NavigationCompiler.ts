@@ -77,6 +77,28 @@ export class NavigationCompiler {
     };
   }
 
+  // Dedicated Repairs menu: problem-first navigation and practical next steps.
+  // The Services menu remains the complete service catalogue; this menu helps
+  // visitors who know the symptom or need a quick route to booking information.
+  private static compileRepairsMegaMenu(): MegaMenuConfig {
+    const problems = (NAV_GRAPH.problems || []).map(p => this.compileNavEntity(p, 'Problem', 'shield'));
+    const featured = [...problems].sort((a, b) => b.weight - a.weight).slice(0, 6);
+    const quickLinks: NavEntity[] = [
+      { id: 'repairs_services', slug: 'services', entityType: 'Page' as any, primaryKeyword: 'computer repair services Kuwait', title: 'All Repair Services', description: 'Browse the complete KCROC service catalogue.', iconKey: 'wrench', weight: 100, commercialIntent: 'high' },
+      { id: 'repairs_problems', slug: 'problems', entityType: 'Page' as any, primaryKeyword: 'computer problems', title: 'All Problems', description: 'Explore common symptoms and repair paths.', iconKey: 'shield', weight: 90, commercialIntent: 'info' },
+      { id: 'repairs_pricing', slug: 'pricing', entityType: 'Page' as any, primaryKeyword: 'computer repair prices Kuwait', title: 'Repair Pricing', description: 'Review starting prices before arranging a diagnosis.', iconKey: 'circle-dollar-sign', weight: 80, commercialIntent: 'high' },
+      { id: 'repairs_brands', slug: 'brands', entityType: 'Page' as any, primaryKeyword: 'laptop brands repaired Kuwait', title: 'Supported Brands', description: 'Find support for your laptop or computer brand.', iconKey: 'cpu', weight: 70, commercialIntent: 'info' },
+      { id: 'repairs_locations', slug: 'locations', entityType: 'Page' as any, primaryKeyword: 'computer repair pickup Kuwait', title: 'Service Areas', description: 'Check the Hawalli lab and pickup-and-delivery areas.', iconKey: 'map-pin', weight: 60, commercialIntent: 'high' },
+      { id: 'repairs_contact', slug: 'contact', entityType: 'Page' as any, primaryKeyword: 'book computer repair Kuwait', title: 'Contact & Book Pickup', description: 'Contact KCROC to discuss your device and arrange pickup.', iconKey: 'wrench', weight: 50, commercialIntent: 'high' },
+    ];
+    return {
+      id: 'repairs_mega',
+      title: 'Repair Help',
+      featured,
+      sections: [{ title: 'Quick repair links', items: quickLinks }],
+    };
+  }
+
   // 2. Brands Mega Menu
   private static compileBrandsMegaMenu(): MegaMenuConfig {
     const allBrands = (NAV_GRAPH.brands || []).map(b => this.compileNavEntity(b, 'Brand', 'cpu'));
@@ -452,7 +474,8 @@ export class NavigationCompiler {
   public static compileNavigation(): CompiledNavigationModel {
     return {
       header: [
-        { id: 'nav_services', label: 'Repairs', href: '/services', hasMega: true, megaMenuId: 'services_mega' },
+        { id: 'nav_services', label: 'Services', href: '/services', hasMega: true, megaMenuId: 'services_mega' },
+        { id: 'nav_repairs', label: 'Repairs', href: '/problems', hasMega: true, megaMenuId: 'repairs_mega' },
         { id: 'nav_brands', label: 'Brands', href: '/brands', hasMega: true, megaMenuId: 'brands_mega' },
         { id: 'nav_problems', label: 'Problems', href: '/problems', hasMega: true, megaMenuId: 'problems_mega' },
         { id: 'nav_locations', label: 'Locations', href: '/locations', hasMega: true, megaMenuId: 'locations_mega' },
@@ -465,6 +488,7 @@ export class NavigationCompiler {
       ],
       megaMenus: {
         services_mega: this.compileServicesMegaMenu(),
+        repairs_mega: this.compileRepairsMegaMenu(),
         brands_mega: this.compileBrandsMegaMenu(),
         problems_mega: this.compileProblemsMegaMenu(),
         locations_mega: this.compileLocationsMegaMenu(),
