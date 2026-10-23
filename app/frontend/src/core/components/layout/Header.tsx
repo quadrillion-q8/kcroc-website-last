@@ -190,7 +190,7 @@ export default function Header() {
                           setActiveMegaId(prev => prev === link.megaMenuId ? null : link.megaMenuId!);
                         }}
                         onKeyDown={e => handleMegaTriggerKeyDown(e, link.megaMenuId!)}
-                        className={`flex min-h-12 items-center gap-1.5 px-2.5 py-2 rounded-md whitespace-nowrap text-[13px] font-medium transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f] ${isOpen || isGraphMatch ? 'text-[#efc19c] border-b border-[#c9804d]/70' : 'text-slate-300 hover:text-white'}`}
+                        className={`flex min-h-12 min-w-12 items-center justify-center gap-1.5 px-2.5 py-2 rounded-md whitespace-nowrap text-[13px] font-medium transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f] ${isOpen || isGraphMatch ? 'text-[#efc19c] border-b border-[#c9804d]/70' : 'text-slate-300 hover:text-white'}`}
                       >
                         {link.label}
                         <ChevronDown size={15} className={`transition-transform duration-200 ${isOpen ? 'rotate-180 text-[#dfa86f]' : ''}`} aria-hidden="true" />
@@ -200,7 +200,7 @@ export default function Header() {
                 }
 
                 return (
-                  <Link key={link.id} to={link.href} aria-current={matchPath({ path: link.href, end: true }, location.pathname) ? 'page' : undefined} className={`inline-flex min-h-12 items-center px-2.5 py-2 rounded-md text-[13px] font-medium whitespace-nowrap transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f] ${isGraphMatch ? 'text-[#efc19c] border-b border-[#c9804d]/70' : 'text-slate-300 hover:text-white'}`}>
+                  <Link key={link.id} to={link.href} aria-current={matchPath({ path: link.href, end: true }, location.pathname) ? 'page' : undefined} className={`inline-flex min-h-12 min-w-12 items-center justify-center px-2.5 py-2 rounded-md text-[13px] font-medium whitespace-nowrap transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f] ${isGraphMatch ? 'text-[#efc19c] border-b border-[#c9804d]/70' : 'text-slate-300 hover:text-white'}`}>
                     {link.label}
                   </Link>
                 );
@@ -212,7 +212,7 @@ export default function Header() {
                 to={languageSwitch.href}
                 lang={languageSwitch.targetLanguage === 'ar' ? 'ar' : 'en'}
                 aria-label={languageSwitch.targetLanguage === 'ar' ? 'Switch to Arabic' : 'Switch to English'}
-                className="inline-flex min-h-12 items-center justify-center rounded-md border border-white/[0.08] bg-transparent px-2.5 py-1.5 text-xs font-black text-slate-200 transition-all hover:border-[#c9804d]/[0.45] hover:text-[#efc19c] hover:bg-white/[0.05] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f]"
+                className="inline-flex min-h-12 min-w-12 items-center justify-center rounded-md border border-white/[0.08] bg-transparent px-2.5 py-1.5 text-xs font-black text-slate-200 transition-all hover:border-[#c9804d]/[0.45] hover:text-[#efc19c] hover:bg-white/[0.05] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f]"
               >
                 {languageSwitch.targetLanguage === 'ar' ? 'عربي' : 'EN'}
               </Link>
@@ -229,7 +229,7 @@ export default function Header() {
               >
                 {searchOpen ? <X size={18} aria-hidden="true" /> : <Search size={18} aria-hidden="true" />}
               </button>
-              <a href={`tel:+${cleanTel}`} onClick={() => trackConversion('phone_call_click', { cta_name: 'header_phone', button_position: 'header' })} className="flex min-h-12 items-center gap-2 text-sm font-medium text-slate-300 hover:text-white transition-colors">
+              <a href={`tel:+${cleanTel}`} onClick={() => trackConversion('phone_call_click', { cta_name: 'header_phone', button_position: 'header' })} className="flex min-h-12 min-w-12 items-center justify-center gap-2 text-sm font-medium text-slate-300 transition-colors hover:text-white">
                 <Phone size={15} className="text-[#dfa86f]" aria-hidden="true" />
                 <span className="hidden kcroc-header-phone-number 2xl:block">{phoneDisplay}</span>
               </a>
