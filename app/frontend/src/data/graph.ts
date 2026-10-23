@@ -456,15 +456,23 @@ export const rawGraphData: RawGraphData = {
     } as WebPageEntity,
     'page-ar-macbook-screen-replacement': {
       id: 'page-ar-macbook-screen-replacement', slug: 'ar/macbook-screen-replacement-kuwait', entityType: 'WebPage', isActive: true,
-      title: 'تبديل شاشة MacBook في الكويت', description: 'تبديل شاشة MacBook Air وMacBook Pro في الكويت للشاشة المكسورة أو السوداء أو التي فيها خطوط أو وميض. فحص قبل التبديل، أجرة العمل من 30 د.ك + سعر الشاشة، واستلام وتوصيل مجاني.',
+      title: 'تبديل شاشة MacBook Air وPro في الكويت',
+      description: 'تبديل شاشة MacBook Air وMacBook Pro في الكويت للشاشة المكسورة أو السوداء أو الخطوط والوميض. أجرة العمل من 30 د.ك + الشاشة؛ استلام مجاني وضمان 30 يومًا.',
       seo: {
-        title: 'تبديل شاشة ماك بوك في الكويت | MacBook Air وPro – KCROC',
-        description: 'شاشة MacBook مكسورة أو سوداء؟ نفحص الشاشة والكابل والإضاءة قبل التبديل. أسعار تبدأ من 30 د.ك + القطعة، مع استلام وتوصيل مجاني في الكويت وضمان 30 يومًا على الإصلاحات المشمولة.',
+        title: 'تبديل شاشة MacBook في الكويت | Air وPro | KCROC',
+        description: 'شاشة MacBook مكسورة أو سوداء أو تومض؟ نفحص الشاشة والكابل والإضاءة ونطابق الموديل قبل التبديل. أجرة العمل من 30 د.ك + الشاشة، مع استلام مجاني وضمان 30 يومًا على الإصلاحات المشمولة.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/ar/macbook-screen-replacement-kuwait', locale: 'ar_KW',
         alternates: { 'ar-KW': 'https://www.computerrepairkuwait.com/ar/macbook-screen-replacement-kuwait', 'en-KW': 'https://www.computerrepairkuwait.com/macbook-screen-replacement-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/macbook-screen-replacement-kuwait' },
-        ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList'], lastModified: '2026-10-20T00:00:00+03:00', breadcrumbs: [{ name: 'الرئيسية', url: '/' }, { name: 'تبديل شاشة MacBook', url: '/ar/macbook-screen-replacement-kuwait' }]
+        ogType: 'website',
+        ogImage: '/images/technician-holding-opened-macbook-for-repair.webp',
+        ogImageAlt: 'فحص جهاز MacBook مفتوح قبل تحديد عطل الشاشة ومطابقة القطعة في مختبر KCROC بالكويت',
+        ogImageWidth: 1200,
+        ogImageHeight: 630,
+        schemaTypes: ['WebPage', 'BreadcrumbList', 'Service', 'FAQPage', 'ImageObject'],
+        lastModified: '2026-10-24T00:00:00+03:00',
+        breadcrumbs: [{ name: 'الرئيسية', url: '/ar' }, { name: 'تبديل شاشة MacBook في الكويت', url: '/ar/macbook-screen-replacement-kuwait' }]
       },
-      relatedServiceIds: ['srv-macbook-screen', 'srv-macbook', 'srv-screen']
+      relatedServiceIds: ['srv-macbook-screen', 'srv-macbook', 'srv-screen', 'srv-battery', 'srv-motherboard', 'srv-liquid-damage']
     } as WebPageEntity,
 
     'page-ar-battery-replacement': {
