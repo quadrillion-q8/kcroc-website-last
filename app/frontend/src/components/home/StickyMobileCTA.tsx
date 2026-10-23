@@ -34,7 +34,7 @@ export const StickyMobileCTA = () => {
       <a
         href={`tel:+${phone}`}
         onClick={() => trackConversion('phone_call_click', { cta_name: 'sticky_mobile_call', button_position: 'bottom_bar' })}
-        className="min-w-0 flex-1 text-center rounded-xl border border-slate-700 text-slate-200 font-semibold leading-tight py-2.5 px-1 min-h-[44px] touch-manipulation transition-colors active:scale-[0.99] focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+        className="min-w-0 flex-1 text-center rounded-xl border border-slate-700 text-slate-200 font-semibold leading-tight py-2.5 px-1 min-h-12 touch-manipulation transition-colors active:scale-[0.99] focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
         aria-label="Call KCROC"
       >
         Call
@@ -45,7 +45,7 @@ export const StickyMobileCTA = () => {
         rel="noopener noreferrer"
         aria-label={`${ctaLabel} via WhatsApp`}
         onClick={() => trackConversion('whatsapp_click', { cta_name: 'sticky_mobile_wa', button_position: 'bottom_bar' })}
-        className="min-w-0 flex-[2] text-center rounded-lg bg-[#25D366] text-slate-950 font-bold text-sm sm:text-base leading-tight py-2.5 px-1 min-h-[44px] whitespace-normal touch-manipulation transition-transform active:scale-[0.99] focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300"
+        className="min-w-0 flex-[2] text-center rounded-lg bg-[#25D366] text-slate-950 font-bold text-sm sm:text-base leading-tight py-2.5 px-1 min-h-12 whitespace-normal touch-manipulation transition-transform active:scale-[0.99] focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300"
       >
         {ctaLabel}
       </a>
