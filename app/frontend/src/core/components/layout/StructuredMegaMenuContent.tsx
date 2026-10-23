@@ -207,7 +207,7 @@ const getEntities = (config: MegaMenuConfig, rootSlug: string): NavEntity[] => {
   return [...(config.featured ?? []), ...config.sections.flatMap((section) => section.items)]
     .filter((entity) => {
       // The top-right View All action already provides the index-page path.
-      if (entity.slug.replace(/^\\/+|\\/+$/g, '') === rootSlug) return false;
+      if (entity.slug.replace(/^\/+|\/+$/g, '') === rootSlug) return false;
       if (seen.has(entity.id)) return false;
       seen.add(entity.id);
       return true;
@@ -279,7 +279,7 @@ interface Props {
 
 export default function StructuredMegaMenuContent({ config, meta, isOpen, onClose }: Props) {
   const { trackConversion } = useAnalytics();
-  const phoneDigits = NAV_GRAPH.business!.telephone.replace(/\\D/g, '');
+  const phoneDigits = NAV_GRAPH.business!.telephone.replace(/\D/g, '');
   const phoneDisplay = phoneDigits.startsWith('965') ? '+965 ' + phoneDigits.slice(3) : '+' + phoneDigits;
   const structuredConfig = useMemo(
     () => makeStructuredConfig(config, meta),
