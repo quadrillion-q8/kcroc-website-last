@@ -97,7 +97,7 @@ export const LeadMagnet = () => {
               <p className="text-xs font-bold text-emerald-400 uppercase tracking-wider flex items-center gap-2">
                 <MessageCircle className="w-4 h-4" aria-hidden="true" /> Quick Repair Check
               </p>
-              <span className="text-[11px] text-slate-500 font-semibold">Optional — start with WhatsApp</span>
+              <span className="text-[11px] text-slate-400 font-semibold">Optional — start with WhatsApp</span>
             </div>
             <h2 className="text-2xl sm:text-4xl font-black text-white mb-3 leading-tight">
               Tell us what is wrong with your device
@@ -121,7 +121,7 @@ export const LeadMagnet = () => {
                       onClick={() => setDevice(id)}
                       className={selectClass(device === id)}
                     >
-                      <Icon className={`w-5 h-5 mb-3 ${device === id ? 'text-cyan-300' : 'text-slate-500 group-hover:text-cyan-400'}`} aria-hidden="true" />
+                      <Icon className={`w-5 h-5 mb-3 ${device === id ? 'text-cyan-300' : 'text-slate-400 group-hover:text-cyan-400'}`} aria-hidden="true" />
                       <span className="block text-xs sm:text-sm font-bold text-white leading-snug">{label}</span>
                       {device === id && <CheckCircle2 className="absolute top-3 right-3 w-4 h-4 text-emerald-400" aria-hidden="true" />}
                     </button>
@@ -143,7 +143,7 @@ export const LeadMagnet = () => {
                       onClick={() => setIssue(id)}
                       className={selectClass(issue === id)}
                     >
-                      <Icon className={`w-5 h-5 mb-2.5 ${issue === id ? 'text-cyan-300' : 'text-slate-500 group-hover:text-cyan-400'}`} aria-hidden="true" />
+                      <Icon className={`w-5 h-5 mb-2.5 ${issue === id ? 'text-cyan-300' : 'text-slate-400 group-hover:text-cyan-400'}`} aria-hidden="true" />
                       <span className="block text-xs font-bold text-white leading-snug">{label}</span>
                       {issue === id && <CheckCircle2 className="absolute top-3 right-3 w-4 h-4 text-emerald-400" aria-hidden="true" />}
                     </button>
@@ -177,11 +177,11 @@ export const LeadMagnet = () => {
                 </div>
               )}
 
-              <div className="flex items-start gap-2 text-xs text-slate-500">
+              <div className="flex items-start gap-2 text-xs text-slate-400">
                 <ArrowRight className="w-4 h-4 text-cyan-500 mt-0.5 shrink-0" aria-hidden="true" />
                 <span>You can message us immediately. Your selections only make the WhatsApp message more specific.</span>
               </div>
-              <p className="text-[11px] leading-5 text-slate-500">🔒 We keep repair handling privacy-conscious and do not browse personal files as part of normal hardware diagnostics.</p>
+              <p className="text-[11px] leading-5 text-slate-400">🔒 We keep repair handling privacy-conscious and do not browse personal files as part of normal hardware diagnostics.</p>
             </div>
           </div>
 
