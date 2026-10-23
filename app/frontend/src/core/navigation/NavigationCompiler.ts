@@ -430,6 +430,25 @@ export class NavigationCompiler {
     };
   }
 
+  // Gallery Mega Menu — visual proof of real KCROC work plus clear next steps.
+  private static compileGalleryMegaMenu(): MegaMenuConfig {
+    const items: NavEntity[] = [
+      { id: 'gallery_index', slug: 'gallery', title: 'Repair Gallery', description: 'Browse real repair-work photos and workshop highlights.', iconKey: 'monitor', entityType: 'Page' as any, primaryKeyword: 'computer repair gallery Kuwait', weight: 100, commercialIntent: 'informational' },
+      { id: 'gallery_board', slug: 'motherboard-repair-kuwait', title: 'Motherboard Micro-soldering', description: 'See how component-level board repair addresses faults beyond simple part swaps.', iconKey: 'cpu', entityType: 'Page' as any, primaryKeyword: 'motherboard repair Kuwait', weight: 90, commercialIntent: 'transactional' },
+      { id: 'gallery_laptop', slug: 'laptop-repair-kuwait', title: 'Laptop Repair', description: 'Explore laptop diagnostics and repair options from the KCROC team.', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'laptop repair Kuwait', weight: 80, commercialIntent: 'transactional' },
+      { id: 'gallery_contact', slug: 'contact', title: 'Contact KCROC', description: 'Ask a technician about your device or arrange a pickup.', iconKey: 'map-pin', entityType: 'Page' as any, primaryKeyword: 'contact KCROC', weight: 70, commercialIntent: 'transactional' },
+    ];
+    return {
+      id: 'gallery_mega',
+      title: 'Repair Gallery',
+      featured: items,
+      sections: [{ title: 'Explore KCROC', items: [
+        { id: 'gallery_about', slug: 'about', title: 'About KCROC', description: 'Meet the team and learn about our repair approach.', iconKey: 'shield', entityType: 'Page' as any, primaryKeyword: 'about KCROC', weight: 60, commercialIntent: 'informational' },
+        { id: 'gallery_services', slug: 'services', title: 'All Repair Services', description: 'Find the right service for your device or symptom.', iconKey: 'wrench', entityType: 'Page' as any, primaryKeyword: 'computer repair services Kuwait', weight: 50, commercialIntent: 'transactional' },
+      ] }],
+    };
+  }
+
   public static compileNavigation(): CompiledNavigationModel {
     return {
       header: [
@@ -442,7 +461,7 @@ export class NavigationCompiler {
         { id: 'nav_news', label: 'News', href: '/news', hasMega: true, megaMenuId: 'news_mega' },
         { id: 'nav_guides', label: 'Guides', href: '/guides', hasMega: true, megaMenuId: 'guides_mega' },
         { id: 'nav_about', label: 'About', href: '/about', hasMega: true, megaMenuId: 'about_mega' },
-        { id: 'nav_gallery', label: 'Gallery', href: '/gallery', hasMega: false },
+        { id: 'nav_gallery', label: 'Gallery', href: '/gallery', hasMega: true, megaMenuId: 'gallery_mega' },
       ],
       megaMenus: {
         services_mega: this.compileServicesMegaMenu(),
@@ -454,6 +473,7 @@ export class NavigationCompiler {
         news_mega: this.compileNewsMegaMenu(),
         guides_mega: this.compileGuidesMegaMenu(),
         about_mega: this.compileAboutMegaMenu(),
+        gallery_mega: this.compileGalleryMegaMenu(),
       },
       footer: {
         sections: [
