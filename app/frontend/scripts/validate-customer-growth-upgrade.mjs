@@ -200,7 +200,7 @@ add('Arabic MacBook screen page includes model-specific diagnostic guidance, pri
 add('English MacBook repair page targets Air, Pro, charging, board and model-specific Kuwait search intent', graph.includes("title: 'MacBook Repair Kuwait | Air, Pro, Charging & Board | KCROC'") && graph.includes('MacBook Air repair Kuwait') && graph.includes('MacBook M1 M2 M3 M4 repair Kuwait') && graph.includes("canonicalUrl: 'https://www.computerrepairkuwait.com/macbook-repair-kuwait'") && graph.includes("'ar-KW': 'https://www.computerrepairkuwait.com/ar/macbook-repair-kuwait'"));
 add('English MacBook repair page includes model-number examples and qualified compatibility language', graph.includes('A2337 (M1)') && graph.includes('A2681 (M2 13-inch)') && graph.includes('A2442 / A2779 / A2992') && graph.includes('not a complete supported-parts list'));
 add('English MacBook repair page adds symptom-specific diagnostics, privacy guidance and local pickup FAQ', graph.includes('How we choose the right MacBook repair path') && graph.includes('MacBook has a black, flickering or lined display.') && graph.includes('Do you have a MacBook repair shop in Salmiya or Kuwait City?') && graph.includes('data preservation is a priority but cannot be guaranteed'));
-add('English MacBook repair page avoids universal data-preservation and True Tone promises', graph.includes('no repair shop can guarantee data survival on every damaged device') && graph.includes('do not promise every feature before inspection'));
+add('English MacBook repair page avoids universal data-preservation and True Tone promises', graph.includes('cannot guarantee data preservation or recovery') && graph.includes('do not promise every feature before inspection'));
 
 const englishMacbook = graph.slice(graph.indexOf("    'srv-macbook': {"), graph.indexOf("    'srv-laptop': {"));
 add('English MacBook page removes unsupported data-preservation, repair-rate and unverified case-study claims',
@@ -218,7 +218,7 @@ add('English MacBook fault descriptions distinguish symptoms from diagnosis and 
   && !englishMacbook.includes('Most commonly a failed power negotiation IC'));
 add('English MacBook FAQs qualify board repair, data recovery, parts and pricing',
   englishMacbook.includes('we cannot promise that every board can be repaired')
-  && englishMacbook.includes('cannot guarantee that data will survive or remain accessible')
+  && englishMacbook.includes('does not guarantee that data will survive or remain accessible')
   && englishMacbook.includes('We provide the quote before paid work begins')
   && !englishMacbook.includes('typically a fraction of an out-of-warranty full board-swap quote from Apple'));
 
