@@ -1840,7 +1840,7 @@ export const rawGraphData: RawGraphData = {
       isActive: true, 
       title: 'Laptop Repair Kuwait', primaryKeyword: "laptop repair Kuwait", secondaryKeywords: ["laptop repair Hawalli","laptop screen repair Kuwait","laptop battery replacement Kuwait"], 
       iconKey: 'laptop', 
-      shortDescription: 'Laptop repair in Kuwait for power, charging, screen, battery, hinge, keyboard, cooling, storage and motherboard faults.', 
+      shortDescription: 'Laptop repair in Kuwait — component-level diagnostics and hardware restoration, with free pickup, a clear quote before paid work, and a 30-day warranty.', 
       description: 'A stiff hinge, intermittent charging, cracked screen or laptop that will not power on does not automatically mean the entire assembly or motherboard needs replacing. At KCROC’s Hawalli repair lab, we diagnose Dell, HP, Lenovo, ASUS, Acer, MSI and Microsoft Surface laptops, then recommend the repair supported by bench findings. Where technically practical, that may include board-level component repair, DC or USB-C connector work, chassis repair, compatible display replacement, cooling service or SSD/RAM upgrades. Free pickup and delivery are available across Kuwait. Laptop repair starts from 15 KWD; you receive the repair quote before paid work begins, and completed repairs carry a 30-day warranty. MacBook repairs have a dedicated service page.',
       idealCustomer: 'Students, professionals, families and businesses in Kuwait who need a clear fault diagnosis, a quote before paid work, and careful handling of their laptop and data.',
       deviceTypes: [
