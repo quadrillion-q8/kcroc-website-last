@@ -70,7 +70,7 @@ requireContains(leadMagnet, 'end-3', 'components/home/LeadMagnet.tsx', 'selectio
 requireContains(booking, 'Free pick-up and delivery across all Kuwait governorates.', 'pages/BookingPage.tsx', 'the booking page must restate the accurate governorate-wide pickup guarantee.');
 requireContains(repairProof, 'WhatsApp a Technician', 'components/home/RepairProofCTA.tsx', 'the repair proof CTA must use its visible label as its accessible name.');
 if (repairProof.includes('aria-label="Message KCROC on WhatsApp"')) issues.push('components/home/RepairProofCTA.tsx: accessible name must contain the visible “WhatsApp a Technician” text.');
-requireContains(stickyCta, 'aria-label={`${ctaLabel} via WhatsApp`}', 'components/home/StickyMobileCTA.tsx', 'dynamic sticky CTA accessible name must include its visible label.');
+requireContains(stickyCta, "aria-label={isArabicRoute ? `${ctaLabel} عبر واتساب` : `${ctaLabel} via WhatsApp`}", 'components/home/StickyMobileCTA.tsx', 'dynamic sticky CTA accessible name must include its visible label in the active language.');
 requireContains(globalCss, 'outline: 3px solid #efc697', 'index.css', 'global focus visibility must use a prominent outline.');
 requireContains(globalCss, '@media (prefers-reduced-motion: reduce)', 'index.css', 'global UI motion must respect reduced-motion preferences.');
 requireContains(legacyCss, "'Plus Jakarta Sans'", 'styles/kcroc.css', 'legacy CSS must not override the site-wide typography.');
