@@ -426,6 +426,7 @@ const CONFIG: Record<string, {
       { label: 'تصليح لابتوب', path: '/ar/laptop-repair-kuwait' },
       { label: 'تصليح مذربورد ومسار الطاقة', path: '/ar/motherboard-repair-kuwait' },
       { label: 'تبديل بطارية اللابتوب', path: '/ar/battery-replacement-kuwait' },
+      { label: 'اللابتوب متصل بالشاحن ولا يشحن — الدليل العربي', path: '/ar/laptop-plugged-in-not-charging' },
       { label: 'اللابتوب متصل بالشاحن ولا يشحن (بالإنجليزية)', path: '/laptop-plugged-in-not-charging' },
       { label: 'فني كمبيوتر بالقرب مني', path: '/ar/near-me' }
     ],
@@ -2127,6 +2128,7 @@ export default function ArabicCommercialPage() {
       '@id': `${page.seo.canonicalUrl}#service`,
       name: 'تصليح مدخل شحن اللابتوب في الكويت',
       serviceType: 'تصليح مدخل DC Jack وUSB-C وتشخيص دائرة الشحن والطاقة',
+      inLanguage: 'ar-KW',
       description: cfg.intro,
       url: page.seo.canonicalUrl,
       image: `${business.websiteUrl}/images/laptop-dc-power-jack-connector-replacement-kuwait-1000.webp`,
@@ -2146,6 +2148,7 @@ export default function ArabicCommercialPage() {
       },
       offers: {
         '@type': 'Offer',
+        inLanguage: 'ar-KW',
         name: 'سعر بداية إصلاح مدخل الشحن من 20 د.ك',
         description: 'السعر بداية تقديرية حسب العطل والموديل؛ يتم تأكيد السعر النهائي بعد التشخيص وقبل بدء أي عمل مدفوع.',
         priceCurrency: 'KWD',
@@ -2214,6 +2217,7 @@ export default function ArabicCommercialPage() {
     '@graph': [{
       '@type': 'FAQPage',
       '@id': `${page.seo.canonicalUrl}#faq`,
+      inLanguage: 'ar-KW',
       mainEntity: cfg.faq.map((item) => ({
         '@type': 'Question',
         name: item.q,
@@ -2992,7 +2996,9 @@ export default function ArabicCommercialPage() {
                     { title: 'يشحن عند تحريك السلك', text: 'قد يشير إلى تآكل الموصل أو ارتخائه أو تشقق اللحام. أوقف تحريك القابس لأن ذلك قد يوسّع الضرر.' },
                     { title: 'USB-C لا يتعرف على الشاحن', text: 'قد يكون السبب في الكابل أو قدرة الشاحن أو توافق USB Power Delivery أو المنفذ أو دائرة الشحن؛ شكل المنفذ وحده لا يثبت توافق الشحن.' },
                     { title: 'لا تظهر لمبة الشحن', text: 'نستبعد مشكلة المقبس والشاحن المتوافق أولًا، ثم نفحص مدخل الطاقة والحماية والدائرة الداخلية حسب الأعراض.' },
-                    { title: 'البطارية لا تزيد رغم توصيل الشاحن', text: 'قد يكون السبب من الشاحن أو البطارية أو دائرة الشحن. نختبر مسار الطاقة قبل التوصية بتبديل أي قطعة.' }
+                    { title: 'البطارية لا تزيد رغم توصيل الشاحن', text: 'قد يكون السبب من الشاحن أو البطارية أو دائرة الشحن. نختبر مسار الطاقة قبل التوصية بتبديل أي قطعة.' },
+                    { title: 'إبرة التعرف في بعض شواحن Dell وHP', text: 'إذا ظهرت رسالة أن قدرة الشاحن أو نوعه غير معروف، فقد تكون المشكلة من الشاحن أو سنّ التعريف في بعض مقابس DC أو دائرة التعرف. الرسالة لا تثبت أن المنفذ تالف؛ نتحقق من الشاحن والموديل ومسار التعريف قبل الحكم.', href: '/ar/laptop-repair-kuwait', link: 'فحص أعطال الطاقة في اللابتوب' },
+                    { title: 'شحن USB-C في بعض أجهزة MacBook', text: 'قد يتطلب العطل فحص تفاوض USB Power Delivery ومتحكمات الشحن على اللوحة. تستخدم بعض اللوحات شرائح مثل CD3215 أو CD3217، لكن تحديد الشريحة يعتمد على رقم اللوحة والجيل والقياسات، وليس على نظافة المنفذ ظاهريًا.', href: '/ar/macbook-repair-kuwait', link: 'تشخيص شحن MacBook' }
                   ].map((item) => (
                     <article key={item.title} className="rounded-2xl border border-slate-800 bg-slate-950/50 p-5">
                       <h3 className="font-bold text-white">{item.title}</h3>
@@ -3007,7 +3013,7 @@ export default function ArabicCommercialPage() {
               <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">خطوات واضحة</p>
               <h2 id="charging-port-repair-process" className="mt-2 text-2xl font-black text-white sm:text-3xl">من الاستلام إلى اختبار الشحن</h2>
               <p className="mt-3 max-w-3xl leading-8 text-slate-400">تتغير خطوات الفحص حسب موديل اللابتوب ونوع المنفذ، لكن الإصلاح لا يبدأ قبل شرح النتيجة والسعر والحصول على موافقتك.</p>
-              <ol className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <ol className="mt-6 grid list-none gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {[
                   { title: '١. تحديد الموديل والأعراض', text: 'نحتاج الماركة والموديل الدقيق، نوع المنفذ إن كان معروفًا، ومتى بدأت المشكلة.' },
                   { title: '٢. اختبار الشاحن والكابل', text: 'نتأكد من توافق مصدر الطاقة وقدرته قبل الحكم على اللابتوب نفسه.' },
