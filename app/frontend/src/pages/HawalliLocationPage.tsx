@@ -398,6 +398,39 @@ export default function HawalliLocationPage() {
         </div>
       </section>
 
+      {/* ─── REPAIR PRICING PATH ─── */}
+      <section
+        id="hawalli-pricing-cta"
+        aria-labelledby="hawalli-pricing-heading"
+        className="px-4 py-6 sm:px-6 sm:py-8 border-t border-slate-800/50"
+      >
+        <div className="container mx-auto max-w-6xl">
+          <div className="flex flex-col gap-4 rounded-2xl border border-cyan-500/20 bg-cyan-950/20 p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6">
+            <div className="flex items-start gap-3">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-cyan-500/20 bg-cyan-500/10">
+                <CheckCircle2 className="h-5 w-5 text-cyan-400" aria-hidden="true" />
+              </div>
+              <div>
+                <h2 id="hawalli-pricing-heading" className="text-lg font-black text-white sm:text-xl">
+                  Want to understand repair costs before booking?
+                </h2>
+                <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-400">
+                  Review starting labor rates for common repairs and see where parts are priced separately by device model. We diagnose first and confirm your quote before paid repair work begins.
+                </p>
+              </div>
+            </div>
+            <Link
+              to="/pricing"
+              aria-label="View KCROC computer and laptop repair prices in Kuwait"
+              className="inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-xl bg-cyan-500 px-5 py-3 text-sm font-black text-slate-950 transition-colors hover:bg-cyan-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300"
+            >
+              View Repair Prices
+              <CheckCircle2 className="h-4 w-4" aria-hidden="true" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* ─── PROBLEMS WE FIX ─── */}
       <section className="py-8 sm:py-14 px-4 sm:px-6 border-t border-slate-800/50">
         <div className="container mx-auto max-w-6xl">
