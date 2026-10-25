@@ -1032,68 +1032,11 @@ export const rawGraphData: RawGraphData = {
         { title: 'No Guesswork Quotes', description: 'Diagnosis comes first and the repair quote is based on the confirmed failure, not the symptom alone.' }
       ],
       commonIssues: [
-        {
-          id: 'hinge-separation',
-          title: 'Hinge Separation & Chassis Cracking',
-          severity: 'high',
-          description: 'A stiff or misaligned hinge can place stress on the bezel and chassis mounts. We inspect hinge resistance, mount damage and nearby display cables before recommending reinforcement, a compatible part or a larger assembly replacement.'
-        },
-        {
-          id: 'broken-dc-jack',
-          title: 'Loose or Damaged Charging Connector',
-          severity: 'high',
-          description: 'Charging only at a certain cable angle can point to a worn connector, damaged cable or adapter, or a fault in the board-level power path. We test the relevant components before deciding whether connector repair or another repair is appropriate.'
-        },
-        {
-          id: 'cracked-screen',
-          title: 'Cracked, Black or Flickering Screen',
-          severity: 'high',
-          description: 'A damaged panel, display cable, backlight circuit or related board fault can cause lines, flicker or a black display. We identify the likely fault and verify panel compatibility before quoting a screen replacement.'
-        },
-        {
-          id: 'overheating-loud-fans',
-          title: 'Overheating & Loud Fans',
-          severity: 'medium',
-          description: 'Blocked heatsinks can restrict airflow, while fan wear, thermal-contact problems, workload and ambient temperature can also affect cooling. We inspect the cooling system and recommend cleaning, fan replacement or other action based on the findings.'
-        },
-        {
-          id: 'running-slow',
-          title: 'Slow Startup, Freezing or High Disk Usage',
-          severity: 'medium',
-          description: 'Slow startup or freezing can involve drive health, limited memory, background software, thermal throttling or an operating-system problem. We check the likely cause before recommending an SSD upgrade or software service.'
-        },
-        {
-          id: 'liquid-spills-laptop',
-          title: 'Liquid Spilled on the Laptop',
-          severity: 'critical',
-          description: 'Liquid can leave residue and cause corrosion or short circuits. Power the laptop off, disconnect its charger and do not keep trying to start or charge it. Prompt inspection can assess the damage, but cleaning cannot guarantee that every component or file will be recoverable.'
-        },
-        {
-          id: 'laptop-dead-no-power',
-          title: 'Dead / Won\\'t Turn On',
-          severity: 'high',
-          description: 'No lights or fan response can involve the adapter, charging connector, input protection, a shorted component or another board-level fault. Bench testing identifies the likely cause before a repair is proposed.'
-        },
-        {
-          id: 'keyboard-failure',
-          title: 'Keyboard Keys Sticking or Not Working',
-          severity: 'medium',
-          description: 'Sticking or unresponsive keys can result from wear, debris, liquid exposure or a keyboard-circuit fault. We inspect the model and damage to determine whether cleaning, keyboard replacement or a related repair is suitable.'
-        },
-        {
-          id: 'battery-drain-laptop',
-          title: 'Battery Draining Fast or Swelling',
-          severity: 'high',
-          description: 'Short runtime can indicate battery wear, high system load or a charging issue. A swollen battery is a safety concern: stop using or charging the laptop and arrange professional handling. Replacement compatibility depends on the exact model.'
-        },
-        {
-          id: 'wifi-dropping',
-          title: 'Wi-Fi Dropping or Missing',
-          severity: 'low',
-          description: 'Wi-Fi problems can come from drivers, signal conditions, antenna connections, power settings or a faulty wireless card. We separate software and network causes from hardware faults before recommending a compatible repair or replacement.'
-        }
+        { id: 'charging-port-loose', title: 'Charging Port Feels Loose', severity: 'high', description: 'A loose DC jack or USB-C connector can create intermittent contact and may damage the connector pads if continued use flexes it.' },
+        { id: 'charges-angle', title: 'Laptop Charges Only at an Angle', severity: 'high', description: 'Often points to worn connector contacts, a cracked solder joint, or damaged port mounting rather than a bad battery.' },
+        { id: 'usb-c-no-charge', title: 'USB-C Charger Not Recognized', severity: 'high', description: 'The connector, cable, PD negotiation, charging IC, or motherboard power path may be involved; each is tested separately.' },
+        { id: 'no-charge-known-good', title: 'Known-Good Charger Still Does Not Charge', severity: 'critical', description: 'A verified adapter with no charging response warrants inspection of the port, input protection, charging circuit, and main power rails.' }
       ],
-
       process: [
         { step: 1, title: 'Free Pickup', description: 'We collect the laptop from your home or office anywhere in Kuwait.' },
         { step: 2, title: 'Power & Port Diagnosis', description: 'We test the adapter, connector, charging negotiation, and board-level power path.' },
@@ -1103,48 +1046,46 @@ export const rawGraphData: RawGraphData = {
         { step: 6, title: 'Return with Warranty', description: 'The repaired laptop is returned with KCROC\'s 30-day parts and labour warranty.' }
       ],
       faqs: [
-        {
-          id: 'faq-fix-broken-hinge',
-          title: 'Can you fix a broken hinge without replacing the whole screen?',
-          answer: 'Sometimes. We inspect the hinge, chassis mounts, bezel and display cables, then quote a suitable repair or replacement based on the damage. A screen assembly does not always need replacing, but not every broken mount or chassis is economically repairable.'
-        },
-        {
-          id: 'faq-dc-jack-repair',
-          title: 'My laptop only works when plugged in at a specific angle. Can this be fixed?',
-          answer: 'It may be repairable, but the angle symptom does not prove the port is the only fault. We check the adapter, connector and relevant power path before quoting connector repair, board-level work or another solution.'
-        },
-        {
-          id: 'faq-ssd-upgrade-data',
-          title: 'Will an SSD upgrade delete my files?',
-          answer: 'An SSD upgrade does not automatically require erasing the old drive, but cloning and migration are not risk-free. Back up important files first. If the source drive is healthy and readable, we can discuss migration options; a failing or encrypted drive may limit what can be transferred. We cannot guarantee that every file, application, session or password will transfer unchanged.'
-        },
-        {
-          id: 'faq-screen-replacement-time',
-          title: 'How long does a screen replacement take?',
-          answer: 'Timing depends on the exact laptop model, the correct compatible panel and parts availability. Same-day repair may be possible when the required panel is in stock, but we confirm the expected timing after checking the model and fault.'
-        },
-        {
-          id: 'faq-overheating-fan-replace',
-          title: 'My laptop is overheating and shutting down. Do I need a new fan?',
-          answer: 'Not always. Possible causes include blocked airflow, a worn fan, poor thermal contact, demanding workloads or another hardware fault. We inspect the cooling system before recommending cleaning, fan replacement or further diagnosis.'
-        },
-        {
-          id: 'faq-surface-repair',
-          title: 'Do you repair Microsoft Surface laptops?',
-          answer: 'We assess selected Surface models for faults such as battery, display and Windows recovery problems. These devices can require model-specific opening tools and compatible parts, so the exact model and issue need to be checked before we confirm the available repair.'
-        },
-        {
-          id: 'faq-ram-upgrade',
-          title: 'Can you upgrade the RAM in my laptop?',
-          answer: 'It depends on the exact model. Some laptops have replaceable memory modules, while others use soldered RAM that cannot be upgraded conventionally. Send us the model number and we can check compatibility before recommending a service.'
-        },
-        {
-          id: 'faq-no-fix-no-fee',
-          title: 'What happens if you cannot fix my laptop?',
-          answer: 'We explain the diagnosis and available options before paid repair work begins. Under KCROC’s stated No Fix, No Fee policy, if the device is not repairable or repair is uneconomical under that policy, you do not pay the diagnostic or repair labour fee.'
-        }
+        { id: 'charging-port-faq-1', title: 'Can you repair a broken laptop charging port?', answer: 'Yes. We inspect the connector and the board behind it. If the damage is repairable, we can replace the port or micro-solder the affected connection rather than automatically replacing the motherboard.' },
+        { id: 'charging-port-faq-2', title: 'Why does my laptop charge only when the cable is moved?', answer: 'A loose or worn connector, cracked solder joint, or damaged port mounting can cause intermittent contact. We test the port mechanically and electrically before quoting a repair.' },
+        { id: 'charging-port-faq-3', title: 'Do you repair USB-C charging ports?', answer: 'Yes. USB-C charging faults are diagnosed at the connector, power-delivery, and charging-circuit levels where appropriate.' },
+        { id: 'charging-port-faq-4', title: 'Is the charging port or motherboard damaged?', answer: 'It can be either. We test the charger, port, connector joints, input protection, charging circuit and relevant power rails so the quote reflects the confirmed fault.' },
+        { id: 'charging-port-faq-5', title: 'Can you repair USB-C charging on a laptop?', answer: 'Yes. We can diagnose the USB-C connector and charging path, including power-delivery and board-level faults where the model supports repair.' },
+        { id: 'charging-port-faq-6', title: 'Will charging-port repair affect my files?', answer: 'A connector-level repair does not normally affect your stored data. When board work is required, we work on the original board where practical rather than replacing it unnecessarily.' },
       ],
-
+      relatedServiceIds: ['srv-battery', 'srv-motherboard', 'srv-laptop'],
+      relatedProblemIds: ['problem-not-charging', 'problem-no-power'],
+      relatedBrandIds: ['brand-dell', 'brand-hp', 'brand-lenovo', 'brand-asus'],
+      relatedResourcePaths: [
+        { label: 'Laptop Plugged In but Not Charging', path: '/laptop-plugged-in-not-charging' },
+        { label: 'Laptop Repair Guide', path: '/laptop-repair-kuwait' },
+      ],
+      technicalOverview: {
+        heading: 'What We Diagnose Behind a Charging Port',
+        paragraphs: [
+          'A laptop that will not charge is not automatically a battery problem. The fault can sit in the DC jack or USB-C connector, solder joints, input protection, charging controller, cable negotiation, or the motherboard power path.',
+          'We start with a known-good compatible adapter and inspect the connector mechanically and electrically. Where board damage is present, relevant input and charging rails are measured before deciding whether a connector repair, component repair, or a larger repair is appropriate.'
+        ]
+      },
+      repairDecision: {
+        heading: 'Charging Port Repair vs Motherboard Repair',
+        items: [
+          { condition: 'Loose or physically damaged connector', action: 'Inspect and replace or rework the charging port where the board allows it.' },
+          { condition: 'Cracked solder joints or lifted connector pads', action: 'Repair the connection and reinforce the affected mounting area where practical.' },
+          { condition: 'Port is healthy but the laptop still will not charge', action: 'Trace the charging circuit, input protection and relevant power rails before replacing parts.' },
+          { condition: 'Battery is the actual failed component', action: 'Redirect the repair to the battery service rather than replacing a healthy charging port.' }
+        ]
+      },
+      inspectionChecklist: ['Test charger and cable', 'Inspect port mechanically', 'Check connector solder joints', 'Measure input and charging rails', 'Test USB-C power delivery where applicable', 'Confirm battery charging after repair'],
+      performanceOutcomes: { disclaimer: 'Outcomes depend on the confirmed fault and the exact laptop model.', items: [
+        { metric: 'Charging stability', outcome: 'Verified under repeated plug/unplug and load conditions.' },
+        { metric: 'Power-path confidence', outcome: 'Connector and charging circuit tested before the device is returned.' }
+      ] },
+      contentImages: [
+        { src: IMAGES.laptopHardware.laptopDcPowerJackConnectorReplacement.src, alt: IMAGES.laptopHardware.laptopDcPowerJackConnectorReplacement.alt, width: IMAGES.laptopHardware.laptopDcPowerJackConnectorReplacement.width, height: IMAGES.laptopHardware.laptopDcPowerJackConnectorReplacement.height, placement: 'commonIssues', caption: 'Laptop DC power jack and connector replacement during charging-port diagnosis.' },
+        { src: IMAGES.laptopHardware.laptopOpenRepairBench.src, alt: IMAGES.laptopHardware.laptopOpenRepairBench.alt, width: IMAGES.laptopHardware.laptopOpenRepairBench.width, height: IMAGES.laptopHardware.laptopOpenRepairBench.height, placement: 'coreFeatures', caption: 'An opened laptop on the repair bench for connector, charging-circuit and motherboard inspection.' },
+        { src: IMAGES.laptopHardware.laptopDcPowerJackConnectorReplacement.src, alt: IMAGES.laptopHardware.laptopDcPowerJackConnectorReplacement.alt, width: IMAGES.laptopHardware.laptopDcPowerJackConnectorReplacement.width, height: IMAGES.laptopHardware.laptopDcPowerJackConnectorReplacement.height, placement: 'process', caption: 'DC power jack replacement as part of a targeted laptop charging-port repair.' }
+      ],
       warranty: { duration: '30 Days', coverage: 'Parts and labour for the completed charging-port repair', noFixNoFee: true },
       seo: { title: 'Laptop Charging Port Repair Kuwait | KCROC', description: 'Laptop DC jack and USB-C charging port repair in Kuwait. Board-level charging diagnostics, micro-soldering, free pickup and 30-day warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-charging-port-repair-kuwait', locale: 'en_KW', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/laptop-charging-port-repair-kuwait', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/laptop-charging-port-repair-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/laptop-charging-port-repair-kuwait' }, ogType: 'article', schemaTypes: ['Service', 'FAQPage'] },
       navigationPriority: 55,
@@ -1967,41 +1908,41 @@ export const rawGraphData: RawGraphData = {
           id: 'hinge-separation',
           title: 'Hinge Separation & Chassis Cracking',
           severity: 'high',
-          description: 'The screen hinge becomes stiff and snaps the plastic casing or bezel (very common on HP Envy and Dell Inspiron). We adjust tension and reconstruct the mounts using structural resin.'
+          description: 'A stiff or misaligned hinge can place stress on the bezel and chassis mounts. We inspect hinge resistance, mount damage and nearby display cables before recommending reinforcement, a compatible part or a larger assembly replacement.'
         },
         {
           id: 'broken-dc-jack',
-          title: 'Broken DC Charging Jack',
+          title: 'Loose or Damaged Charging Connector',
           severity: 'high',
-          description: 'The charger pin is loose, bent, or pushed inside the laptop, meaning it only charges at a specific angle. We micro-solder a new DC jack directly to the board.'
+          description: 'Charging only at a certain cable angle can point to a worn connector, damaged cable or adapter, or a fault in the board-level power path. We test the relevant components before deciding whether connector repair or another repair is appropriate.'
         },
         {
           id: 'cracked-screen',
-          title: 'Cracked or Flickering Screen',
+          title: 'Cracked, Black or Flickering Screen',
           severity: 'high',
-          description: 'Physical impact or display cable wear near the hinge causes lines, flickering, or a shattered display. We replace the LCD/IPS/OLED panel with an OEM-grade match.'
+          description: 'A damaged panel, display cable, backlight circuit or related board fault can cause lines, flicker or a black display. We identify the likely fault and verify panel compatibility before quoting a screen replacement.'
         },
         {
           id: 'overheating-loud-fans',
           title: 'Overheating & Loud Fans',
           severity: 'medium',
-          description: 'Dust-clogged heatsinks cause thermal throttling and fan grinding. We perform deep ultrasonic cleaning, lubricate the fan bearings, and re-paste the CPU/GPU.'
+          description: 'Blocked heatsinks can restrict airflow, while fan wear, thermal-contact problems, workload and ambient temperature can also affect cooling. We inspect the cooling system and recommend cleaning, fan replacement or other action based on the findings.'
         },
         {
           id: 'running-slow',
-          title: 'Running Extremely Slow (100% Disk Usage)',
+          title: 'Slow Startup, Freezing or High Disk Usage',
           severity: 'medium',
           description: 'Slow startup or freezing can involve drive health, limited memory, background software, thermal throttling or an operating-system problem. We check the likely cause before recommending an SSD upgrade or software service.'
         },
         {
           id: 'liquid-spills-laptop',
-          title: 'Liquid Spills on Keyboard',
+          title: 'Liquid Spilled on the Laptop',
           severity: 'critical',
-          description: 'Coffee or water on the keyboard. We fully strip the board and ultrasonic clean it to prevent corrosion before short circuits kill the motherboard.'
+          description: 'Liquid can leave residue and cause corrosion or short circuits. Power the laptop off, disconnect its charger and do not keep trying to start or charge it. Prompt inspection can assess the damage, but cleaning cannot guarantee that every component or file will be recoverable.'
         },
         {
           id: 'laptop-dead-no-power',
-          title: 'Dead / Won\'t Turn On',
+          title: 'Dead / Won\\'t Turn On',
           severity: 'high',
           description: 'No lights or fan response can involve the adapter, charging connector, input protection, a shorted component or another board-level fault. Bench testing identifies the likely cause before a repair is proposed.'
         },
@@ -2009,19 +1950,19 @@ export const rawGraphData: RawGraphData = {
           id: 'keyboard-failure',
           title: 'Keyboard Keys Sticking or Not Working',
           severity: 'medium',
-          description: 'Specific keys sticking from debris or failing from liquid exposure. We replace the entire keyboard assembly (top case or riveted layout depending on model).'
+          description: 'Sticking or unresponsive keys can result from wear, debris, liquid exposure or a keyboard-circuit fault. We inspect the model and damage to determine whether cleaning, keyboard replacement or a related repair is suitable.'
         },
         {
           id: 'battery-drain-laptop',
           title: 'Battery Draining Fast or Swelling',
           severity: 'high',
-          description: 'Aging lithium cells cause short runtimes or dangerous physical chassis swelling. We safely remove swollen batteries and install certified replacements.'
+          description: 'Short runtime can indicate battery wear, high system load or a charging issue. A swollen battery is a safety concern: stop using or charging the laptop and arrange professional handling. Replacement compatibility depends on the exact model.'
         },
         {
           id: 'wifi-dropping',
-          title: 'WiFi Dropping or Missing',
+          title: 'Wi-Fi Dropping or Missing',
           severity: 'low',
-          description: 'The WiFi card fails due to heat or driver conflicts (common with Realtek/MediaTek chips). We upgrade faulty cards to stable Intel Wi-Fi 6 modules.'
+          description: 'Wi-Fi problems can come from drivers, signal conditions, antenna connections, power settings or a faulty wireless card. We separate software and network causes from hardware faults before recommending a compatible repair or replacement.'
         }
       ],
 
@@ -2089,42 +2030,42 @@ export const rawGraphData: RawGraphData = {
         {
           id: 'faq-fix-broken-hinge',
           title: 'Can you fix a broken hinge without replacing the whole screen?',
-          answer: 'Yes. Most shops will quote a full "display assembly replacement" when a hinge breaks. We actually reconstruct the broken plastic mounts inside the chassis using industrial resin and loosen the over-tightened hinge to prevent it from happening again, saving you a massive amount of money.'
+          answer: 'Sometimes. We inspect the hinge, chassis mounts, bezel and display cables, then quote a suitable repair or replacement based on the damage. A screen assembly does not always need replacing, but not every broken mount or chassis is economically repairable.'
         },
         {
           id: 'faq-dc-jack-repair',
           title: 'My laptop only works when plugged in at a specific angle. Can this be fixed?',
-          answer: 'Yes. This is a classic broken DC jack. Rather than replacing the motherboard, we micro-solder a new charging port directly to the board.'
+          answer: 'It may be repairable, but the angle symptom does not prove the port is the only fault. We check the adapter, connector and relevant power path before quoting connector repair, board-level work or another solution.'
         },
         {
           id: 'faq-ssd-upgrade-data',
           title: 'Will an SSD upgrade delete my files?',
-          answer: 'No. We perform a 1-to-1 byte clone of your existing hard drive to the new SSD. Your laptop will look exactly the same—same desktop, same files, same passwords—it will just run up to 10x faster.'
+          answer: 'An SSD upgrade does not automatically require erasing the old drive, but cloning and migration are not risk-free. Back up important files first. If the source drive is healthy and readable, we can discuss migration options; a failing or encrypted drive may limit what can be transferred. We cannot guarantee that every file, application, session or password will transfer unchanged.'
         },
         {
           id: 'faq-screen-replacement-time',
           title: 'How long does a screen replacement take?',
-          answer: 'Usually same-day if the panel is in stock. We carry standard 15.6" and 14" panels (FHD, IPS, OLED) for Dell, HP, Lenovo, Acer, and ASUS.'
+          answer: 'Timing depends on the exact laptop model, the correct compatible panel and parts availability. Same-day repair may be possible when the required panel is in stock, but we confirm the expected timing after checking the model and fault.'
         },
         {
           id: 'faq-overheating-fan-replace',
           title: 'My laptop is overheating and shutting down. Do I need a new fan?',
-          answer: 'Not always. Often it just needs a deep ultrasonic clean of the heatsink fins and fresh thermal paste on the CPU. If the fan bearing is actually grinding or seized, we will replace the fan assembly.'
+          answer: 'Not always. Possible causes include blocked airflow, a worn fan, poor thermal contact, demanding workloads or another hardware fault. We inspect the cooling system before recommending cleaning, fan replacement or further diagnosis.'
         },
         {
           id: 'faq-surface-repair',
           title: 'Do you repair Microsoft Surface laptops?',
-          answer: 'Yes. Surface devices require specialized heat-separation tools to open without cracking the screen. We handle Surface Pro battery replacements, screen replacements, and Windows recovery.'
+          answer: 'We assess selected Surface models for faults such as battery, display and Windows recovery problems. These devices can require model-specific opening tools and compatible parts, so the exact model and issue need to be checked before we confirm the available repair.'
         },
         {
           id: 'faq-ram-upgrade',
           title: 'Can you upgrade the RAM in my laptop?',
-          answer: 'It depends on the model. Most business and gaming laptops have upgradeable SO-DIMM slots, but many modern ultrabooks (like Dell XPS or HP Spectre) have RAM soldered directly to the board. Contact us with your model number and we can check instantly.'
+          answer: 'It depends on the exact model. Some laptops have replaceable memory modules, while others use soldered RAM that cannot be upgraded conventionally. Send us the model number and we can check compatibility before recommending a service.'
         },
         {
           id: 'faq-no-fix-no-fee',
-          title: 'What happens if you can\'t fix my laptop?',
-          answer: 'Under our No Fix, No Fee policy, if the laptop is catastrophically damaged (like a severely burned motherboard) and uneconomical to repair, we return it to you and you pay absolutely nothing for the diagnostic time.'
+          title: 'What happens if you cannot fix my laptop?',
+          answer: 'We explain the diagnosis and available options before paid repair work begins. Under KCROC’s stated No Fix, No Fee policy, if the device is not repairable or repair is uneconomical under that policy, you do not pay the diagnostic or repair labour fee.'
         }
       ],
 
