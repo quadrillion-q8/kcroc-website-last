@@ -1,6 +1,6 @@
 // File: app/frontend/src/core/components/layout/Footer.tsx
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import {
   MapPin,
   Phone,
@@ -24,6 +24,69 @@ import {
 import { NAV_GRAPH } from '../../../data/navGraph.generated';
 import { openConsentPreferences } from '../../privacy/consent';
 
+const ARABIC_PATHS: Record<string, string> = {
+  '/services': '/ar/services',
+  '/laptop-repair-kuwait': '/ar/laptop-repair-kuwait',
+  '/macbook-repair-kuwait': '/ar/macbook-repair-kuwait',
+  '/macbook-screen-replacement-kuwait': '/ar/macbook-screen-replacement-kuwait',
+  '/motherboard-repair-kuwait': '/ar/motherboard-repair-kuwait',
+  '/laptop-screen-repair-kuwait': '/ar/laptop-screen-repair-kuwait',
+  '/battery-replacement-kuwait': '/ar/battery-replacement-kuwait',
+  '/laptop-charging-port-repair-kuwait': '/ar/laptop-charging-port-repair-kuwait',
+  '/laptop-keyboard-replacement-kuwait': '/ar/laptop-keyboard-replacement-kuwait',
+  '/ssd-ram-upgrade-kuwait': '/ar/ssd-ram-upgrade-kuwait',
+  '/laptop-liquid-damage-repair-kuwait': '/ar/laptop-liquid-damage-repair-kuwait',
+  '/computer-repair-kuwait': '/ar/computer-repair-kuwait',
+  '/near-me': '/ar/near-me',
+  '/locations': '/ar/near-me',
+  '/pricing': '/ar/pricing',
+  '/location/hawalli': '/ar/computer-repair-hawalli',
+  '/location/salmiya': '/ar/computer-repair-salmiya',
+  '/location/kuwait-city': '/ar/computer-repair-kuwait-city',
+  '/location/farwaniya': '/ar/computer-repair-farwaniya',
+  '/location/jahra': '/ar/computer-repair-jahra',
+};
+
+const ARABIC_SERVICE_LABELS: Record<string, string> = {
+  '/laptop-repair-kuwait': 'تصليح اللابتوب',
+  '/macbook-repair-kuwait': 'تصليح MacBook',
+  '/gaming-pc-repair-kuwait': 'تصليح كمبيوتر الألعاب',
+  '/gaming-laptop-cleaning-kuwait': 'تنظيف لابتوب الألعاب',
+  '/motherboard-repair-kuwait': 'تصليح المذربورد واللوحة الأم',
+  '/laptop-screen-repair-kuwait': 'تبديل شاشة اللابتوب',
+  '/macbook-screen-replacement-kuwait': 'تبديل شاشة ماك بوك',
+  '/battery-replacement-kuwait': 'تبديل بطارية اللابتوب وMacBook',
+  '/laptop-charging-port-repair-kuwait': 'تصليح مدخل شحن اللابتوب',
+  '/laptop-hinge-repair-kuwait': 'تصليح مفصلات وهيكل اللابتوب',
+  '/laptop-keyboard-replacement-kuwait': 'تبديل كيبورد اللابتوب',
+  '/ssd-ram-upgrade-kuwait': 'ترقية SSD وRAM',
+  '/laptop-liquid-damage-repair-kuwait': 'تصليح أضرار السوائل',
+};
+
+const ARABIC_COMPANY_LABELS: Record<string, string> = {
+  '/about': 'عن KCROC',
+  '/contact': 'اتصل بنا',
+  '/news': 'أخبار التقنية',
+  '/blog': 'المدونة التقنية',
+  '/guides/laptop-battery-warning-signs': 'دليل علامات تلف البطارية',
+  '/faq': 'الأسئلة الشائعة',
+  '/pricing': 'الأسعار',
+  '/computer-repair-kuwait': 'تصليح الكمبيوتر في الكويت',
+  '/near-me': 'فني كمبيوتر بالقرب منك',
+  '/locations': 'مناطق الخدمة',
+};
+
+const ARABIC_AREA_LABELS: Record<string, string> = {
+  '/location/hawalli': 'حولي',
+  '/location/salmiya': 'السالمية',
+  '/location/kuwait-city': 'مدينة الكويت',
+  '/location/farwaniya': 'الفروانية',
+  '/location/jahra': 'الجهراء',
+  '/location/ahmadi': 'الأحمدي',
+  '/location/fahaheel': 'الفحيحيل',
+  '/location/mangaf': 'المنقف',
+};
+
 const TRUST_ICON_MAP: Record<string, React.ElementType> = {
   ShieldCheck,
   Truck,
@@ -32,6 +95,12 @@ const TRUST_ICON_MAP: Record<string, React.ElementType> = {
 };
 
 export function Footer() {
+  const location = useLocation();
+  const isArabicRoute = location.pathname === '/ar' || location.pathname.startsWith('/ar/') || location.pathname.startsWith('/blog/ar/') || location.pathname.startsWith('/guides/ar/');
+  const localizedPath = (path: string) => isArabicRoute ? (ARABIC_PATHS[path] ?? path) : path;
+  const serviceLabel = (path: string, label: string) => isArabicRoute ? (ARABIC_SERVICE_LABELS[path] ?? label.replace(' Kuwait', '')) : label.replace(' Kuwait', '');
+  const companyLabel = (path: string, label: string) => isArabicRoute ? (ARABIC_COMPANY_LABELS[path] ?? label) : label;
+  const areaLabel = (path: string, label: string) => isArabicRoute ? (ARABIC_AREA_LABELS[path] ?? label.replace('Computer Repair ', '')) : label.replace('Computer Repair ', '');
   const [logoError, setLogoError] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const [mobileCompanyOpen, setMobileCompanyOpen] = useState(false);
@@ -43,7 +112,7 @@ export function Footer() {
 
   if (!business || !footerData) return null;
 
-  const waMessage = 'Hi KCROC, I need computer repair assistance in Kuwait.';
+  const waMessage = isArabicRoute ? 'السلام عليكم KCROC، أحتاج مساعدة في تصليح جهاز كمبيوتر أو لابتوب في الكويت. فضلاً نسّقوا استلامًا مجانيًا.' : 'Hi KCROC, I need computer repair assistance in Kuwait.';
   const WA_LINK = 'https://wa.me/' + business.telephone + '?text=' + encodeURIComponent(waMessage);
 
   const brandLabel = business.alternateName || business.title;
@@ -84,8 +153,10 @@ export function Footer() {
 
   return (
     <footer
+      dir={isArabicRoute ? 'rtl' : undefined}
+      lang={isArabicRoute ? 'ar-KW' : undefined}
       className="relative bg-[#0c1214]/[0.98] backdrop-blur-md border-t border-white/[0.10] pt-14 pb-28 md:pb-8 z-10"
-      aria-label="Site Footer"
+      aria-label={isArabicRoute ? "تذييل الموقع" : "Site Footer"}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {trustBadges.length > 0 && (
@@ -138,16 +209,16 @@ export function Footer() {
                   ))}
                 </div>
                 <span className="text-slate-400 text-xs font-medium">
-                  {business.aggregateRating.ratingValue} Google rating · view current reviews
+                  {isArabicRoute ? `تقييم Google ${business.aggregateRating.ratingValue} · عرض المراجعات الحالية` : `${business.aggregateRating.ratingValue} Google rating · view current reviews`}
                 </span>
               </div>
             )}
 
             <h2 className="text-white text-lg sm:text-xl font-bold leading-tight mb-2">
-              Trusted Computer &amp; Laptop Repair in Kuwait
+              {isArabicRoute ? 'تصليح الكمبيوتر واللابتوب في الكويت' : 'Trusted Computer &amp; Laptop Repair in Kuwait'}
             </h2>
             <p className="text-slate-400 text-sm leading-relaxed mb-4 max-w-sm">
-              Professional repair for laptops, MacBooks, gaming PCs and computers. Free pick-up and delivery across all Kuwait governorates. No Fix, No Fee.
+              {isArabicRoute ? 'تصليح اللابتوبات وأجهزة MacBook وكمبيوتر الألعاب في الكويت، مع استلام وتوصيل مجانيين وضمان 30 يومًا على الإصلاحات المشمولة.' : 'Professional repair for laptops, MacBooks, gaming PCs and computers. Free pick-up and delivery across all Kuwait governorates. No Fix, No Fee.'}
             </p>
 
             {business.openingHours && (
@@ -164,7 +235,7 @@ export function Footer() {
               className="inline-flex min-h-12 items-center gap-2 text-[#dfa86f] hover:text-white font-bold transition-colors"
             >
               <MessageCircle size={19} aria-hidden="true" />
-              <span>Chat with us on WhatsApp</span>
+              <span>{isArabicRoute ? 'راسلنا عبر واتساب' : 'Chat with us on WhatsApp'}</span>
             </a>
 
             {(business.socialLinks?.facebook || business.socialLinks?.instagram || business.socialLinks?.googleMaps) && (
@@ -207,40 +278,40 @@ export function Footer() {
           </div>
 
           {/* Services */}
-          <nav aria-label="Expert Services Navigation">
+          <nav aria-label={isArabicRoute ? "روابط خدمات الإصلاح" : "Expert Services Navigation"}>
             <CollapsibleHeading
-              title="Services"
+              title={isArabicRoute ? "الخدمات" : "Services"}
               open={mobileServicesOpen}
               onToggle={() => setMobileServicesOpen((value) => !value)}
             />
             <ul className={`${mobileServicesOpen ? 'block' : 'hidden'} md:block space-y-3`}>
               {visibleServices.map((link) => (
                 <li key={link.path}>
-                  <Link to={link.path} className="inline-flex min-h-12 items-center text-slate-400 hover:text-[#dfa86f] transition-colors text-sm">
-                    {link.label.replace(' Kuwait', '')}
+                  <Link to={localizedPath(link.path)} className="inline-flex min-h-12 items-center text-slate-400 hover:text-[#dfa86f] transition-colors text-sm">
+                    {serviceLabel(link.path, link.label)}
                   </Link>
                 </li>
               ))}
               <li className="pt-1">
-                <Link to="/services" className="inline-flex min-h-12 items-center gap-1.5 text-[#dfa86f] hover:text-white transition-colors text-sm font-bold">
-                  View all services <ArrowRight className="w-4 h-4" aria-hidden="true" />
+                <Link to={localizedPath("/services")} className="inline-flex min-h-12 items-center gap-1.5 text-[#dfa86f] hover:text-white transition-colors text-sm font-bold">
+                  {isArabicRoute ? "عرض جميع الخدمات" : "View all services"} <ArrowRight className="w-4 h-4" aria-hidden="true" />
                 </Link>
               </li>
             </ul>
           </nav>
 
           {/* Quick Links */}
-          <nav aria-label="Company Navigation">
+          <nav aria-label={isArabicRoute ? "روابط معلومات الشركة" : "Company Navigation"}>
             <CollapsibleHeading
-              title="Quick Links"
+              title={isArabicRoute ? "روابط مهمة" : "Quick Links"}
               open={mobileCompanyOpen}
               onToggle={() => setMobileCompanyOpen((value) => !value)}
             />
             <ul className={`${mobileCompanyOpen ? 'block' : 'hidden'} md:block space-y-3`}>
               {footerData.links.company.map((link) => (
                 <li key={link.path}>
-                  <Link to={link.path} className="inline-flex min-h-12 items-center text-slate-400 hover:text-[#dfa86f] transition-colors text-sm">
-                    {link.label}
+                  <Link to={localizedPath(link.path)} className="inline-flex min-h-12 items-center text-slate-400 hover:text-[#dfa86f] transition-colors text-sm">
+                    {companyLabel(link.path, link.label)}
                   </Link>
                 </li>
               ))}
@@ -249,11 +320,11 @@ export function Footer() {
 
           {/* Contact + Service Areas */}
           <div>
-            <h3 className="text-white font-bold mb-5 uppercase tracking-[0.16em] text-xs">Contact</h3>
+            <h3 className="text-white font-bold mb-5 uppercase tracking-[0.16em] text-xs">{isArabicRoute ? "تواصل معنا" : "Contact"}</h3>
             <ul className="space-y-4">
               <li className="flex items-start gap-3 text-slate-400 text-sm">
                 <MapPin className="w-5 h-5 text-[#dfa86f] flex-shrink-0 mt-0.5" aria-hidden="true" />
-                <address className="not-italic leading-relaxed">{business.streetAddress}, {business.addressLocality}, Kuwait</address>
+                <address className="not-italic leading-relaxed">{isArabicRoute ? "شارع ابن خلدون، مجمع الملا، السرداب، محل 19، حولي، الكويت" : `${business.streetAddress}, ${business.addressLocality}, Kuwait`}</address>
               </li>
               <li className="flex items-center gap-3 text-slate-400 text-sm">
                 <Phone className="w-5 h-5 text-[#dfa86f] flex-shrink-0" aria-hidden="true" />
@@ -269,16 +340,16 @@ export function Footer() {
                   className="inline-flex min-h-12 items-center gap-2 rounded-lg bg-[#dfa86f] px-4 py-2.5 text-sm font-black text-[#101416] hover:bg-[#efc19c] transition-colors"
                 >
                   <CalendarClock className="w-4 h-4" aria-hidden="true" />
-                  BOOK FREE PICKUP
+                  {isArabicRoute ? "احجز استلام مجاني" : "BOOK FREE PICKUP"}
                 </a>
-                <span className="block text-slate-500 text-xs mt-2 ml-1">Pick-up &amp; drop across all Kuwait governorates</span>
+                <span className="block text-slate-500 text-xs mt-2 ml-1">{isArabicRoute ? "استلام وتوصيل مجاني في مناطق الكويت" : "Pick-up &amp; drop across all Kuwait governorates"}</span>
               </li>
             </ul>
 
             <div className="mt-8 pt-6 border-t border-white/[0.08]">
               <CollapsibleHeading
-                title={`Service Areas (${totalAreas})`}
-                desktopLabel="Popular Service Areas"
+                title={isArabicRoute ? `مناطق الخدمة (${totalAreas})` : `Service Areas (${totalAreas})`}
+                desktopLabel={isArabicRoute ? "مناطق الاستلام الشائعة" : "Popular Service Areas"}
                 open={mobileAreasOpen}
                 onToggle={() => setMobileAreasOpen((value) => !value)}
               />
@@ -287,15 +358,15 @@ export function Footer() {
                   {visibleAreas.map((area) => (
                     <Link
                       key={area.path}
-                      to={area.path}
+                      to={localizedPath(area.path)}
                       className="inline-flex min-h-12 items-center text-xs text-slate-400 hover:text-[#dfa86f] transition-colors bg-white/[0.03] px-2.5 py-2 rounded border border-white/[0.10]"
                     >
-                      {area.label.replace('Computer Repair ', '')}
+                      {areaLabel(area.path, area.label)}
                     </Link>
                   ))}
                 </div>
-                <Link to="/locations" className="inline-flex min-h-12 items-center gap-1.5 mt-4 text-[#dfa86f] hover:text-white transition-colors text-sm font-bold">
-                  View all {totalAreas} service areas <ArrowRight className="w-4 h-4" aria-hidden="true" />
+                <Link to={localizedPath("/locations")} className="inline-flex min-h-12 items-center gap-1.5 mt-4 text-[#dfa86f] hover:text-white transition-colors text-sm font-bold">
+                  {isArabicRoute ? `عرض كل ${totalAreas} منطقة خدمة` : `View all ${totalAreas} service areas`} <ArrowRight className="w-4 h-4" aria-hidden="true" />
                 </Link>
               </div>
             </div>
@@ -305,12 +376,12 @@ export function Footer() {
         {/* Legal */}
         <div className="border-t border-white/[0.10] pt-7 mt-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-slate-500 text-xs sm:text-sm text-center md:text-left">
-            {'© ' + new Date().getFullYear() + ' ' + business.legalName + '. All rights reserved.'}
+            {isArabicRoute ? `© ${new Date().getFullYear()} ${business.legalName}. جميع الحقوق محفوظة.` : `© ${new Date().getFullYear()} ${business.legalName}. All rights reserved.`}
           </p>
           <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
-            <Link to="/privacy-policy" className="min-h-12 inline-flex items-center text-slate-400 hover:text-white text-xs sm:text-sm transition-colors">Privacy Policy</Link>
-            <Link to="/terms-of-service" className="min-h-12 inline-flex items-center text-slate-400 hover:text-white text-xs sm:text-sm transition-colors">Terms of Service</Link>
-            <button type="button" onClick={openConsentPreferences} className="min-h-12 inline-flex items-center text-slate-400 hover:text-white text-xs sm:text-sm transition-colors">Cookie Settings</button>
+            <Link to="/privacy-policy" className="min-h-12 inline-flex items-center text-slate-400 hover:text-white text-xs sm:text-sm transition-colors">{isArabicRoute ? "سياسة الخصوصية" : "Privacy Policy"}</Link>
+            <Link to="/terms-of-service" className="min-h-12 inline-flex items-center text-slate-400 hover:text-white text-xs sm:text-sm transition-colors">{isArabicRoute ? "شروط الخدمة" : "Terms of Service"}</Link>
+            <button type="button" onClick={openConsentPreferences} className="min-h-12 inline-flex items-center text-slate-400 hover:text-white text-xs sm:text-sm transition-colors">{isArabicRoute ? "إعدادات ملفات الارتباط" : "Cookie Settings"}</button>
           </div>
         </div>
       </div>
