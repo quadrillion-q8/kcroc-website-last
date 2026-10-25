@@ -469,7 +469,7 @@ export const rawGraphData: RawGraphData = {
         ogImageWidth: 1200,
         ogImageHeight: 630,
         schemaTypes: ['WebPage', 'BreadcrumbList', 'Service', 'FAQPage', 'ImageObject'],
-        lastModified: '2026-10-24T00:00:00+03:00',
+        lastModified: '2026-10-25T00:00:00+03:00',
         breadcrumbs: [{ name: 'الرئيسية', url: '/ar' }, { name: 'تبديل شاشة MacBook في الكويت', url: '/ar/macbook-screen-replacement-kuwait' }]
       },
       relatedServiceIds: ['srv-macbook-screen', 'srv-macbook', 'srv-screen', 'srv-battery', 'srv-motherboard', 'srv-liquid-damage']
