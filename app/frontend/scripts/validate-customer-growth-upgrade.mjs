@@ -470,6 +470,23 @@ add('Arabic diagnostic guide is registered with reciprocal English/Arabic langua
   && locale.includes("'/laptop-charging-port-repair-kuwait': '/ar/laptop-charging-port-repair-kuwait'")
   && locale.includes("'/laptop-plugged-in-not-charging': '/ar/laptop-plugged-in-not-charging'")
   && locale.includes("'/ar/laptop-plugged-in-not-charging': '/laptop-plugged-in-not-charging'"));
+const chargingSafeStart = arabicCommercial.indexOf('aria-labelledby="charging-port-safe-checks"');
+const chargingSafeEnd = arabicCommercial.indexOf("{slug === 'gaming-laptop-repair-kuwait' && (", chargingSafeStart + 1);
+const chargingSafeChecks = chargingSafeStart >= 0 && chargingSafeEnd > chargingSafeStart
+  ? arabicCommercial.slice(chargingSafeStart, chargingSafeEnd)
+  : '';
+add('Arabic charging safety checklist renders each icon and instruction inside a real list item',
+  chargingSafeChecks.includes('<ul className="mt-5 grid gap-3 sm:grid-cols-2">')
+  && chargingSafeChecks.includes('<li key={item} className="flex gap-3')
+  && chargingSafeChecks.includes('<CheckCircle2')
+  && chargingSafeChecks.includes('<span>{item}</span>'));
+add('Arabic and English footer policy controls remain separate, named and visually separated',
+  footer.includes('role="group" aria-label={isArabicRoute ? "سياسات وإعدادات الموقع" : "Site policies and settings"}')
+  && (footer.match(/<span aria-hidden="true" className="text-slate-700">·<\\/span>/g) || []).length === 2
+  && footer.includes('aria-label={isArabicRoute ? "سياسة الخصوصية" : "Privacy Policy"}')
+  && footer.includes('aria-label={isArabicRoute ? "شروط الخدمة" : "Terms of Service"}'));
+add('Arabic charging service English language link has explicit charging-specific text',
+  arabicCommercial.includes("slug === 'laptop-charging-port-repair-kuwait' ? 'صفحة إصلاح منفذ الشحن باللغة الإنجليزية'"));
 add('Arabic charging troubleshooting page has static FAQ answers, safe checks and links to service and English counterparts',
   arabicChargingGuide.includes("SEOEngine entityId=\"page-ar-laptop-plugged-in-not-charging\"")
   && arabicChargingGuide.includes("FAQ.map((item)")
