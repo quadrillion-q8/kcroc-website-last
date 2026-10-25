@@ -28,6 +28,7 @@ const ARABIC_PATHS: Record<string, string> = {
   '/services': '/ar/services',
   '/laptop-repair-kuwait': '/ar/laptop-repair-kuwait',
   '/macbook-repair-kuwait': '/ar/macbook-repair-kuwait',
+  '/gaming-pc-repair-kuwait': '/ar/gaming-pc-repair-kuwait',
   '/macbook-screen-replacement-kuwait': '/ar/macbook-screen-replacement-kuwait',
   '/motherboard-repair-kuwait': '/ar/motherboard-repair-kuwait',
   '/laptop-screen-repair-kuwait': '/ar/laptop-screen-repair-kuwait',
