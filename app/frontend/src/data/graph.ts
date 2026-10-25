@@ -4275,7 +4275,7 @@ export const rawGraphData: RawGraphData = {
         { id: 'hp-authorized', title: 'Is KCROC an official HP service center?', answer: 'No. KCROC is an independent computer-repair provider in Kuwait, not an official HP-authorized service center. We diagnose the actual hardware fault and quote the repair path before work begins.' }
       ],
       pricing: { startingFrom: 15, currency: 'KWD', quoteRequired: true, displayLabel: 'From 15 KWD — free diagnostic first' },
-      seo: { title: 'HP Laptop Repair Kuwait | Pavilion, EliteBook & OMEN | KCROC', description: 'HP laptop repair in Kuwait for Pavilion, EliteBook, ProBook, Envy, OMEN and Victus. Diagnose charging, no-power, screen, hinge and cooling faults; free pickup, quote before repair and 30-day warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/hp-laptop-repair-kuwait', ogType: 'article', schemaTypes: ['Brand', 'Service', 'FAQPage', 'BreadcrumbList'], lastModified: '2026-10-25T00:00:00+03:00' },
+      seo: { title: 'HP Laptop Repair Kuwait | Pavilion, EliteBook & OMEN | KCROC', description: 'Independent HP laptop repair in Kuwait for Pavilion, EliteBook, ProBook, Envy, OMEN and Victus. Free pickup, diagnosis first, quote before repair and 30-day warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/hp-laptop-repair-kuwait', ogType: 'article', schemaTypes: ['Brand', 'Service', 'FAQPage', 'BreadcrumbList'], lastModified: '2026-10-25T00:00:00+03:00' },
       navigationPriority: 80, popular: true 
     } as BrandEntity,
 
