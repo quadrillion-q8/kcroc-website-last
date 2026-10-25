@@ -1876,7 +1876,7 @@ export const rawGraphData: RawGraphData = {
       relatedBrandIds: ['brand-dell', 'brand-hp', 'brand-lenovo', 'brand-asus', 'brand-acer', 'brand-msi'],
       relatedLocationIds: ['loc-hawalli', 'loc-salmiya', 'loc-kuwait-city', 'loc-farwaniya', 'loc-jahra', 'loc-ahmadi', 'loc-fahaheel'],
       relatedResourcePaths: [
-        { label: "Laptop Won't Turn On? Complete Troubleshooting Guide", path: '/laptop-wont-turn-on' },
+        { label: "Laptop Won't Turn On: Troubleshooting Guide", path: '/guides/laptop-wont-turn-on' },
         { label: 'Laptop Battery Warning Signs', path: '/guides/laptop-battery-warning-signs' },
         { label: 'Laptop Overheating Diagnostic Path', path: '/laptop-overheating-kuwait' },
         { label: 'BIOS / UEFI Recovery Guide', path: '/guides/bios-uefi-recovery-kuwait' },
