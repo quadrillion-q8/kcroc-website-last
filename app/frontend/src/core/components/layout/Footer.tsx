@@ -389,7 +389,7 @@ export function Footer() {
           <p className="text-slate-500 text-xs sm:text-sm text-center md:text-left">
             {isArabicRoute ? `© ${new Date().getFullYear()} ${business.legalName}. جميع الحقوق محفوظة.` : `© ${new Date().getFullYear()} ${business.legalName}. All rights reserved.`}
           </p>
-          <div aria-label={isArabicRoute ? "سياسات وإعدادات الموقع" : "Site policies and settings"} className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2">
+          <div role="group" aria-label={isArabicRoute ? "سياسات وإعدادات الموقع" : "Site policies and settings"} className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2">
             <span className="inline-flex items-center gap-3">
               <Link to="/privacy-policy" className="min-h-12 inline-flex items-center text-slate-400 hover:text-white text-xs sm:text-sm transition-colors" aria-label={isArabicRoute ? "سياسة الخصوصية" : "Privacy Policy"}>{isArabicRoute ? "سياسة الخصوصية" : "Privacy Policy"}</Link>
               <span aria-hidden="true" className="text-slate-700">·</span>
