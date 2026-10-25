@@ -10,7 +10,7 @@ import { IMAGES } from '../constants/images.js';
 export const rawGraphData: RawGraphData = {
   metadata: {
     version: '3.8.5',
-    lastUpdated: '2026-10-24T00:00:00+03:00',
+    lastUpdated: '2026-10-25T00:00:00+03:00',
     environment: 'production'
   },
 
@@ -1860,6 +1860,14 @@ export const rawGraphData: RawGraphData = {
         { question: 'Which laptop brands do you repair?', answer: 'KCROC handles Dell, HP, Lenovo, ASUS, Acer, MSI and Microsoft Surface laptops, plus MacBook repair through a separate service page.' },
         { question: 'Do I have to visit the Hawalli workshop?', answer: 'No. Most customers use the pickup-and-delivery route. Devices are diagnosed and repaired at the Hawalli lab, then returned after testing.' },
       ],
+      symptomLinks: [
+        { label: "Laptop won't turn on", path: '/laptop-wont-turn-on', description: 'Separate a no-power fault from a laptop that powers on but will not boot.' },
+        { label: 'Plugged in but not charging', path: '/laptop-plugged-in-not-charging', description: 'Explore possible charger, connector, battery and charging-circuit causes.' },
+        { label: 'Overheating or a loud fan', path: '/guides/why-is-my-laptop-so-hot', description: 'Review safe checks for airflow, fan behavior, workload and thermal issues.' },
+        { label: 'Cracked, black or flickering screen', path: '/laptop-screen-repair-kuwait', description: 'See the repair path for panel, display-cable and related hardware faults.' },
+        { label: 'Fast-draining or swollen battery', path: '/battery-replacement-kuwait', description: 'Understand battery symptoms and the safety steps for a visibly swollen battery.' },
+        { label: 'Liquid spilled on the laptop', path: '/laptop-liquid-damage-repair-kuwait', description: 'Find the next steps after a spill; avoid repeatedly trying to power the device on.' },
+      ],
       repairLevel: 'advanced', 
       estimatedTurnaround: 'Same Day / 24 Hours', 
       pricing: { startingFrom: 15, currency: 'KWD', quoteRequired: true, displayLabel: 'From 15 KWD' }, 
@@ -1887,12 +1895,12 @@ export const rawGraphData: RawGraphData = {
       brands: ['Dell', 'HP', 'Lenovo', 'ASUS', 'Acer', 'MSI', 'Microsoft Surface'], 
 
       whyChooseUs: [
-        { title: 'Repair Over Replacement', description: 'We reconstruct broken hinges and micro-solder broken charging ports instead of replacing the entire screen assembly or motherboard, saving you up to 70%.' },
-        { title: 'Kuwait Climate Specialists', description: 'We don\'t just blow compressed air; we fully strip cooling assemblies, clean out fine desert dust, and apply phase-change thermal materials suited for 45°C+ ambient temperatures.' },
-        { title: 'Privacy Protected', description: 'We work on the hardware, not your files. You can even remove your SSD before handing us the laptop for board-level repairs.' },
-        { title: 'Broad Brand Expertise', description: 'Dell, HP, Lenovo, ASUS, Acer—we know the specific structural weaknesses (like Dell Inspiron hinges or HP Pavilion power ICs) of each brand.' },
-        { title: 'Free Pickup & Delivery', description: 'We collect from Hawalli, Salmiya, Kuwait City, Farwaniya, Jahra, and Ahmadi at no extra cost.' },
-        { title: 'No Fix, No Fee', description: 'If your laptop is catastrophically damaged and uneconomical to repair, you pay absolutely nothing for the diagnostic.' }
+        { title: 'Repair Before Replacement', description: 'Where technically and economically sensible, we check whether a hinge mount, charging connector or board-level component can be repaired before recommending a full assembly. If replacement is the better option, the quote explains why.' },
+        { title: 'Cooling Diagnosis for Kuwait Conditions', description: 'Heat, dust, workload and fan condition can all affect temperatures. We inspect airflow, fans, heatsinks and thermal-interface condition before recommending cleaning or component service.' },
+        { title: 'Privacy-Conscious Service', description: 'We focus on the agreed diagnosis and repair. Back up important files before service, and ask us whether storage can be removed safely for your specific model if you prefer.' },
+        { title: 'Model-Specific Repair Planning', description: 'We work with Dell, HP, Lenovo, ASUS, Acer, MSI and Microsoft Surface laptops. Parts compatibility and the available repair path are confirmed for the exact model.' },
+        { title: 'Free Pickup & Delivery', description: 'Pickup and return delivery are available across Kuwait, including Hawalli, Salmiya, Kuwait City, Farwaniya, Jahra and Ahmadi.' },
+        { title: 'No Fix, No Fee', description: 'Where the stated No Fix, No Fee conditions apply and a device is confirmed beyond economical repair, the applicable labour and diagnostic charges are waived.' }
       ],
 
       commonIssues: [
@@ -1924,7 +1932,7 @@ export const rawGraphData: RawGraphData = {
           id: 'running-slow',
           title: 'Running Extremely Slow (100% Disk Usage)',
           severity: 'medium',
-          description: 'Taking minutes to boot or freezing on basic tasks is usually a failing mechanical hard drive (HDD). An SSD upgrade and clean Windows install permanently revives aging laptops.'
+          description: 'Slow startup or freezing can involve drive health, limited memory, background software, thermal throttling or an operating-system problem. We check the likely cause before recommending an SSD upgrade or software service.'
         },
         {
           id: 'liquid-spills-laptop',
@@ -1936,7 +1944,7 @@ export const rawGraphData: RawGraphData = {
           id: 'laptop-dead-no-power',
           title: 'Dead / Won\'t Turn On',
           severity: 'high',
-          description: 'No power lights, no fan spin. Usually a shorted input MOSFET or a blown fuse, which we trace with a multimeter and replace via micro-soldering.'
+          description: 'No lights or fan response can involve the adapter, charging connector, input protection, a shorted component or another board-level fault. Bench testing identifies the likely cause before a repair is proposed.'
         },
         {
           id: 'keyboard-failure',
@@ -1968,12 +1976,12 @@ export const rawGraphData: RawGraphData = {
       ],
 
       performanceOutcomes: {
-        disclaimer: 'The figures below are representative outcomes based on typical before/after results for these common upgrades and repairs.',
+        disclaimer: 'These are diagnostic and post-repair checks, not guaranteed before/after results. Outcomes depend on the exact model, confirmed fault, approved repair, component availability and operating conditions.',
         items: [
-          { metric: 'Boot Times', outcome: 'Reduced from 2+ minutes on aging mechanical drives to under 15 seconds after an NVMe SSD upgrade.' },
-          { metric: 'Thermal Reduction', outcome: '15-25°C drop in CPU temperatures under load after our deep-clean and phase-change thermal re-paste service.' },
-          { metric: 'Chassis Integrity', outcome: 'Reconstructed hinges using structural resin are often mechanically stronger than the original factory plastic mounts.' },
-          { metric: 'Component Lifespan', outcome: 'Micro-soldering a new DC jack saves the remaining 95% of the motherboard, extending the laptop\'s life by years instead of creating e-waste.' }
+          { metric: 'Boot and storage behavior', outcome: 'When storage or software is implicated, we assess drive health and startup behavior and compare results after the agreed service.' },
+          { metric: 'Cooling behavior', outcome: 'Where overheating is reported, we inspect airflow and fan operation and compare thermal behavior under a repeatable workload when practical.' },
+          { metric: 'Hinge and chassis movement', outcome: 'We check hinge resistance, alignment and mount integrity. Extensive cracks or damaged mounts can limit the available repair options.' },
+          { metric: 'Charging and power stability', outcome: 'For charging faults, we test the connector and relevant power path, then check stable charging after the approved repair when the scope allows.' }
         ]
       },
 
@@ -4246,7 +4254,7 @@ export const rawGraphData: RawGraphData = {
       commonIssues: [
         { id: 'hp-power', title: 'HP laptop no-power or power-management fault', severity: 'high', description: 'A no-power symptom can involve the adapter, input circuit, charging path, power-management IC or another board fault. Testing identifies the cause before a component or board replacement is recommended.' },
         { id: 'hp-hinge', title: 'Hinge separation', severity: 'high', description: 'Envy and Pavilion hinge mounts breaking from chassis.' },
-        { id: 'hp-fan',   title: 'Fan error on boot', severity: 'medium', description: 'HP system fan (90b) error due to dust accumulation.' }
+        { id: 'hp-fan', title: 'Fan error or overheating at startup', severity: 'medium', description: 'A fan warning such as HP 90b can involve a failing fan, blocked airflow, a connector issue or sensor feedback. We inspect the cooling assembly before recommending a replacement.' }
       ],
       relatedServiceIds: ['srv-gaming', 'srv-laptop', 'srv-motherboard', 'srv-hinge', 'srv-gaming-laptop-cleaning'],
       relatedProblemIds: ['problem-no-power', 'problem-hinge-break', 'problem-overheating'],
@@ -4409,7 +4417,7 @@ export const rawGraphData: RawGraphData = {
       description: 'ASUS Republic of Gamers (ROG) and TUF laptops are powerhouses, but Kuwait\'s heat pushes their liquid metal and thermal paste to the limit. We specialize in ASUS thermal recovery, ROG motherboard component-level repair, and TUF series screen and battery replacements.',
       commonModels: ['ROG Strix G15', 'ROG Zephyrus G14', 'TUF Gaming A15', 'ZenBook 14', 'VivoBook 15'],
       commonIssues: [
-        { id: 'asus-liquid-metal', title: 'Liquid metal dry-out', severity: 'high', description: 'ROG models hitting 95°C+ due to liquid metal pump-out effect.' },
+        { id: 'asus-liquid-metal', title: 'High temperatures or fan noise under load', severity: 'high', description: 'ROG and other gaming laptops can run hot due to workload, restricted airflow, fan faults, power settings or thermal-interface condition. We check temperatures and inspect the cooling path before recommending liquid-metal or thermal-paste service.' },
         { id: 'asus-power', title: 'Dead motherboard (No power)', severity: 'high', description: 'TUF series input MOSFET or charging IC failure.' },
         { id: 'asus-wifi', title: 'MediaTek WiFi dropping', severity: 'medium', description: 'Frequent WiFi drops requiring card upgrade to Intel AX series.' },
         { id: 'asus-screen', title: 'Screen flickering', severity: 'medium', description: 'Display cable wear from Zephyrus "ErgoLift" hinge design.' }
@@ -4439,7 +4447,7 @@ export const rawGraphData: RawGraphData = {
         { id: 'asus-motherboard', title: 'Can you repair a dead ASUS motherboard?', answer: 'A dead board can be diagnosed at component level when practical, rather than automatically assuming a full motherboard replacement is required.' }
       ],
       pricing: { startingFrom: 15, currency: 'KWD', quoteRequired: true, displayLabel: 'From 15 KWD — free diagnostic first' },
-      seo: { title: 'ASUS Laptop Repair Kuwait | ROG, TUF & ZenBook | KCROC', description: 'Independent ASUS laptop repair in Kuwait for ROG, TUF, ZenBook and VivoBook. Thermal, charging, motherboard and screen repair; free pickup and 30-day warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/asus-laptop-repair-kuwait', ogType: 'article', schemaTypes: ['Brand', 'Service', 'FAQPage', 'BreadcrumbList'], lastModified: '2026-10-24T00:00:00+03:00' },
+      seo: { title: 'ASUS Laptop Repair Kuwait | ROG, TUF & ZenBook | KCROC', description: 'Independent ASUS laptop repair in Kuwait for ROG, TUF, ZenBook and VivoBook. Thermal, charging, motherboard and screen repair; free pickup and 30-day warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/asus-laptop-repair-kuwait', ogType: 'article', schemaTypes: ['Brand', 'Service', 'FAQPage', 'BreadcrumbList'], lastModified: '2026-10-25T00:00:00+03:00' },
       navigationPriority: 60, popular: false
     } as BrandEntity,
 

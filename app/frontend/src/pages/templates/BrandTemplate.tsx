@@ -142,6 +142,13 @@ const BrandTemplate: React.FC = () => {
                 >
                   Book a Repair
                 </Link>
+                <Link
+                  to="/pricing"
+                  className="inline-flex items-center justify-center gap-2 rounded-full border border-cyan-500/25 bg-cyan-950/25 px-7 py-3.5 font-bold text-cyan-200 hover:border-cyan-400/60 hover:bg-cyan-900/30"
+                >
+                  View Repair Prices
+                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </Link>
               </div>
             </div>
 

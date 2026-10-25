@@ -64,6 +64,12 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
 
   const relatedBrandIds = entity.relatedBrandIds ?? [];
   const relatedResourcePaths = entity.relatedResourcePaths ?? [];
+  const symptomFinderHeading =
+    entity.id === 'srv-laptop'
+      ? 'What is wrong with your laptop?'
+      : entity.id === 'srv-gaming'
+        ? 'What is your gaming PC doing?'
+        : 'Choose the symptom that best matches your device';
   const arabicEquivalent = KCROC_GRAPH.pages.find((page) =>
     page.isActive &&
     page.seo.locale === 'ar_KW' &&
@@ -239,9 +245,9 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
           <section className="max-w-7xl mx-auto px-6 py-12 border-t border-slate-800/50 relative z-10" aria-labelledby="symptom-finder">
             <div className="max-w-3xl mb-8">
               <p className="text-xs font-black uppercase tracking-[0.18em] text-cyan-400 mb-2">Start with your symptom</p>
-              <h2 id="symptom-finder" className="text-2xl sm:text-3xl font-black text-white">What is your gaming PC doing?</h2>
+              <h2 id="symptom-finder" className="text-2xl sm:text-3xl font-black text-white">{symptomFinderHeading}</h2>
               <p className="mt-3 text-sm leading-6 text-slate-400">
-                Choose the closest symptom. Each path explains the common causes, safe checks and the point at which a repair diagnosis makes more sense than another part swap.
+                Choose the closest symptom. Each path explains likely causes, safe checks and when a proper diagnosis is more useful than guessing or replacing parts.
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
