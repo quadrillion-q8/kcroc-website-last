@@ -362,17 +362,20 @@ export function Footer() {
                 onToggle={() => setMobileAreasOpen((value) => !value)}
               />
               <div className={`${mobileAreasOpen ? 'block' : 'hidden'} md:block`}>
-                <div className="flex flex-wrap gap-2">
-                  {visibleAreas.map((area) => (
-                    <Link
-                      key={area.path}
-                      to={localizedPath(area.path)}
-                      className="inline-flex min-h-12 items-center text-xs text-slate-400 hover:text-[#dfa86f] transition-colors bg-white/[0.03] px-2.5 py-2 rounded border border-white/[0.10]"
-                    >
-                      {areaLabel(area.path, area.label)}
-                    </Link>
-                  ))}
-                </div>
+                <nav aria-label={isArabicRoute ? "روابط مناطق الخدمة" : "Footer service areas"}>
+                  <ul role="list" className="flex flex-wrap gap-2">
+                    {visibleAreas.map((area) => (
+                      <li key={area.path}>
+                        <Link
+                          to={localizedPath(area.path)}
+                          className="inline-flex min-h-12 items-center text-xs text-slate-400 hover:text-[#dfa86f] transition-colors bg-white/[0.03] px-2.5 py-2 rounded border border-white/[0.10]"
+                        >
+                          {areaLabel(area.path, area.label)}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </nav>
                 <Link to={localizedPath("/locations")} className="inline-flex min-h-12 items-center gap-1.5 mt-4 text-[#dfa86f] hover:text-white transition-colors text-sm font-bold">
                   {isArabicRoute ? `عرض كل ${totalAreas} منطقة خدمة` : `View all ${totalAreas} service areas`} <ArrowRight className="w-4 h-4" aria-hidden="true" />
                 </Link>
