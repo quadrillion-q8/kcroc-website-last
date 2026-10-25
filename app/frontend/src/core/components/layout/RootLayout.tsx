@@ -78,6 +78,7 @@ const shouldShowAnimatedBackground = (pathname: string): boolean => {
 
 export const RootLayout: React.FC = () => {
   const { pathname } = useLocation();
+  const isArabicRoute = pathname === '/ar' || pathname.startsWith('/ar/') || pathname.startsWith('/blog/ar/') || pathname.startsWith('/guides/ar/');
   const showAnimatedBackground = shouldShowAnimatedBackground(pathname);
   const [decorativeBackgroundReady, setDecorativeBackgroundReady] = useState(false);
 
@@ -119,9 +120,10 @@ export const RootLayout: React.FC = () => {
           {/* 🚀 WCAG 2.2 AA Compliance: Global Skip Link for keyboard navigation */}
           <a 
             href="#main-content" 
+            lang={isArabicRoute ? 'ar-KW' : undefined}
             className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-cyan-500 focus:text-slate-950 focus:font-bold rounded-br-xl shadow-lg"
           >
-            Skip to main content
+            {isArabicRoute ? 'تخطي إلى المحتوى الرئيسي' : 'Skip to main content'}
           </a>
 
           {/* Page-scoped technical background. It is deliberately NOT mounted
