@@ -45,6 +45,7 @@ const business = KCROC_GRAPH.business!;
 const pricingCategories = [
   {
     title: 'Diagnostics & System Setup',
+    anchor: 'diagnostics',
     eyebrow: 'Start here',
     icon: Search,
     items: [
@@ -73,6 +74,7 @@ const pricingCategories = [
   },
   {
     title: 'Thermal & Performance Tuning',
+    anchor: 'thermal',
     eyebrow: 'Cooling & performance',
     icon: Thermometer,
     items: [
@@ -100,6 +102,7 @@ const pricingCategories = [
   },
   {
     title: 'Hardware Replacements',
+    anchor: 'hardware',
     eyebrow: 'Parts & physical repair',
     icon: Laptop,
     items: [
@@ -127,6 +130,7 @@ const pricingCategories = [
   },
   {
     title: 'Advanced Motherboard Repair',
+    anchor: 'motherboard',
     eyebrow: 'Component-level repair',
     icon: Cpu,
     featured: true,
@@ -653,6 +657,16 @@ export default function Pricing() {
             </p>
           </div>
 
+          <nav aria-label="Jump to repair price category" className="mb-7 rounded-2xl border border-slate-800 bg-slate-900/35 p-3 sm:p-4">
+            <p className="mb-3 px-1 text-xs font-bold uppercase tracking-[0.14em] text-slate-500">Jump to a price category</p>
+            <div className="flex flex-wrap gap-2">
+              <a href="#pricing-diagnostics" className="inline-flex min-h-10 items-center gap-2 rounded-xl border border-slate-700 bg-slate-950/70 px-3.5 py-2 text-xs font-bold text-slate-200 transition-colors hover:border-cyan-400/50 hover:bg-cyan-950/30 hover:text-cyan-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 sm:text-sm"><Search className="h-4 w-4 text-cyan-400" aria-hidden="true" /> Diagnostics &amp; setup <ArrowRight className="h-3.5 w-3.5 text-slate-500" aria-hidden="true" /></a>
+              <a href="#pricing-thermal" className="inline-flex min-h-10 items-center gap-2 rounded-xl border border-slate-700 bg-slate-950/70 px-3.5 py-2 text-xs font-bold text-slate-200 transition-colors hover:border-cyan-400/50 hover:bg-cyan-950/30 hover:text-cyan-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 sm:text-sm"><Thermometer className="h-4 w-4 text-cyan-400" aria-hidden="true" /> Cooling &amp; performance <ArrowRight className="h-3.5 w-3.5 text-slate-500" aria-hidden="true" /></a>
+              <a href="#pricing-hardware" className="inline-flex min-h-10 items-center gap-2 rounded-xl border border-slate-700 bg-slate-950/70 px-3.5 py-2 text-xs font-bold text-slate-200 transition-colors hover:border-cyan-400/50 hover:bg-cyan-950/30 hover:text-cyan-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 sm:text-sm"><Laptop className="h-4 w-4 text-cyan-400" aria-hidden="true" /> Hardware replacements <ArrowRight className="h-3.5 w-3.5 text-slate-500" aria-hidden="true" /></a>
+              <a href="#pricing-motherboard" className="inline-flex min-h-10 items-center gap-2 rounded-xl border border-slate-700 bg-slate-950/70 px-3.5 py-2 text-xs font-bold text-slate-200 transition-colors hover:border-cyan-400/50 hover:bg-cyan-950/30 hover:text-cyan-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 sm:text-sm"><Cpu className="h-4 w-4 text-cyan-400" aria-hidden="true" /> Motherboard repair <ArrowRight className="h-3.5 w-3.5 text-slate-500" aria-hidden="true" /></a>
+            </div>
+          </nav>
+
           <div className="grid gap-5 md:grid-cols-2">
             {pricingCategories.map((category) => {
               const Icon = category.icon;
@@ -660,7 +674,8 @@ export default function Pricing() {
               return (
                 <Card
                   key={category.title}
-                  className={`overflow-hidden border bg-slate-900/45 shadow-2xl backdrop-blur-xl ${
+                  id={`pricing-${category.anchor}`}
+                  className={`scroll-mt-6 overflow-hidden border bg-slate-900/45 shadow-2xl backdrop-blur-xl ${
                     category.featured
                       ? 'border-cyan-500/30 shadow-cyan-950/10'
                       : 'border-slate-800'
