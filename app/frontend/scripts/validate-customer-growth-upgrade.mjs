@@ -427,6 +427,75 @@ add('Homepage and workbench no longer link to the retired case-study section',
   && !caseStudyRemovalHero.includes('See real repair case studies')
   && !caseStudyRemovalBehindBench.includes('/case-studies')
   && !caseStudyRemovalBehindBench.includes('View Case Studies'));
+
+const arabicChargingGuide = await read('pages/ArabicChargingTroubleshootingPage.tsx');
+const chargingConfigStart = arabicCommercial.indexOf("'laptop-charging-port-repair-kuwait': {");
+const chargingConfigEnd = arabicCommercial.indexOf("'laptop-keyboard-replacement-kuwait': {", chargingConfigStart + 1);
+const chargingConfig = chargingConfigStart >= 0 && chargingConfigEnd > chargingConfigStart
+  ? arabicCommercial.slice(chargingConfigStart, chargingConfigEnd)
+  : '';
+const chargingFaqStart = chargingConfig.indexOf('    faq: [');
+const chargingFaqEnd = chargingConfig.indexOf('    englishPath:', chargingFaqStart + 1);
+const chargingFaqSource = chargingFaqStart >= 0 && chargingFaqEnd > chargingFaqStart
+  ? chargingConfig.slice(chargingFaqStart, chargingFaqEnd)
+  : '';
+const chargingProcessStart = arabicCommercial.indexOf('id="charging-port-repair-process"');
+const chargingProcessEnd = arabicCommercial.indexOf('</ol>', chargingProcessStart + 1);
+const chargingProcess = chargingProcessStart >= 0 && chargingProcessEnd > chargingProcessStart
+  ? arabicCommercial.slice(chargingProcessStart, chargingProcessEnd)
+  : '';
+const chargingFaqCount = chargingFaqSource.split("{ q: '").length - 1;
+add('Arabic charging-port FAQ keeps all eight question-answer pairs in source and in Arabic FAQ schema',
+  chargingFaqCount === 8
+  && arabicCommercial.includes("inLanguage: 'ar-KW'")
+  && arabicCommercial.includes("mainEntity: cfg.faq.map")
+  && arabicCommercial.includes('<div className="px-6 pb-6 text-sm leading-8 text-slate-400">{item.a}</div>'));
+add('Arabic charging-port repair process renders six single list items without duplicate native numbering',
+  chargingProcess.includes('<ol className="mt-6 grid list-none gap-4 sm:grid-cols-2 lg:grid-cols-3">')
+  && ['١.', '٢.', '٣.', '٤.', '٥.', '٦.'].every((number) => chargingProcess.includes("{ title: '" + number))
+  && chargingProcess.includes('<li key={item.title}'));
+add('Charging-port schema is localized and retains the 20 KWD starting price',
+  arabicCommercial.includes("serviceType: 'تصليح مدخل DC Jack وUSB-C وتشخيص دائرة الشحن والطاقة'")
+  && arabicCommercial.includes("inLanguage: 'ar-KW'")
+  && arabicCommercial.includes("priceCurrency: 'KWD'")
+  && arabicCommercial.includes('minPrice: 20'));
+add('Arabic diagnostic guide is registered with reciprocal English/Arabic language alternates',
+  app.includes("path: 'ar/laptop-plugged-in-not-charging'")
+  && graph.includes("id: 'page-ar-laptop-plugged-in-not-charging'")
+  && graph.includes("canonicalUrl: 'https://www.computerrepairkuwait.com/ar/laptop-plugged-in-not-charging'")
+  && graph.includes("'ar-KW': 'https://www.computerrepairkuwait.com/ar/laptop-plugged-in-not-charging'")
+  && graph.includes("'en-KW': 'https://www.computerrepairkuwait.com/laptop-plugged-in-not-charging'")
+  && seoProjection.includes('"id": "page-ar-laptop-plugged-in-not-charging"')
+  && sitemap.includes('<loc>https://www.computerrepairkuwait.com/ar/laptop-plugged-in-not-charging</loc>')
+  && locale.includes("'/laptop-charging-port-repair-kuwait': '/ar/laptop-charging-port-repair-kuwait'")
+  && locale.includes("'/laptop-plugged-in-not-charging': '/ar/laptop-plugged-in-not-charging'")
+  && locale.includes("'/ar/laptop-plugged-in-not-charging': '/laptop-plugged-in-not-charging'"));
+const chargingSafeStart = arabicCommercial.indexOf('aria-labelledby="charging-port-safe-checks"');
+const chargingSafeEnd = arabicCommercial.indexOf("{slug === 'gaming-laptop-repair-kuwait' && (", chargingSafeStart + 1);
+const chargingSafeChecks = chargingSafeStart >= 0 && chargingSafeEnd > chargingSafeStart
+  ? arabicCommercial.slice(chargingSafeStart, chargingSafeEnd)
+  : '';
+add('Arabic charging safety checklist renders each icon and instruction inside a real list item',
+  chargingSafeChecks.includes('<ul className="mt-5 grid gap-3 sm:grid-cols-2">')
+  && chargingSafeChecks.includes('<li key={item} className="flex gap-3')
+  && chargingSafeChecks.includes('<CheckCircle2')
+  && chargingSafeChecks.includes('<span>{item}</span>'));
+add('Arabic and English footer policy controls remain separate, named and visually separated',
+  footer.includes('role="group" aria-label={isArabicRoute ? "سياسات وإعدادات الموقع" : "Site policies and settings"}')
+  && (footer.match(/<span aria-hidden="true" className="text-slate-700">·<\\/span>/g) || []).length === 2
+  && footer.includes('aria-label={isArabicRoute ? "سياسة الخصوصية" : "Privacy Policy"}')
+  && footer.includes('aria-label={isArabicRoute ? "شروط الخدمة" : "Terms of Service"}'));
+add('Arabic charging service English language link has explicit charging-specific text',
+  arabicCommercial.includes("slug === 'laptop-charging-port-repair-kuwait' ? 'صفحة إصلاح منفذ الشحن باللغة الإنجليزية'"));
+add('Arabic charging troubleshooting page has static FAQ answers, safe checks and links to service and English counterparts',
+  arabicChargingGuide.includes("SEOEngine entityId=\"page-ar-laptop-plugged-in-not-charging\"")
+  && arabicChargingGuide.includes("FAQ.map((item)")
+  && arabicChargingGuide.includes('<details key={item.q}')
+  && arabicChargingGuide.includes('acceptedAnswer: { \'@type\': \'Answer\', text: item.a }')
+  && arabicChargingGuide.includes("href=\"/laptop-plugged-in-not-charging\"")
+  && arabicChargingGuide.includes("href=\"/ar/laptop-charging-port-repair-kuwait\"")
+  && arabicChargingGuide.includes("لا تدخل أداة معدنية"));
+
 for (const check of checks) console.log(`${check.pass ? '✅' : '❌'} ${check.name}${!check.pass && check.detail ? ` — ${check.detail}` : ''}`);
 const failed = checks.filter((check) => !check.pass);
 if (failed.length) process.exit(1);

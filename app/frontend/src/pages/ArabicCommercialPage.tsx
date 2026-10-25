@@ -2479,7 +2479,7 @@ export default function ArabicCommercialPage() {
               <ShieldCheck className="h-5 w-5" aria-hidden="true" /> احجز استلام الجهاز
             </Link>
             <Link to={cfg.englishPath} className="inline-flex items-center justify-center gap-2 rounded-full border border-slate-800 px-7 py-3.5 font-semibold text-slate-300 hover:text-white">
-              {slug === 'laptop-screen-repair-kuwait' ? 'الصفحة باللغة الإنجليزية' : 'English service page'} <ArrowLeft className="h-4 w-4" aria-hidden="true" />
+              {slug === 'laptop-screen-repair-kuwait' ? 'الصفحة باللغة الإنجليزية' : slug === 'laptop-charging-port-repair-kuwait' ? 'صفحة إصلاح منفذ الشحن باللغة الإنجليزية' : 'English service page'} <ArrowLeft className="h-4 w-4" aria-hidden="true" />
             </Link>
           </div>
           {slug === 'laptop-keyboard-replacement-kuwait' && (

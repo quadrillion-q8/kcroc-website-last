@@ -2,7 +2,7 @@
 //
 // Keep the language-switch routes reciprocal with each page's SEO alternate
 // configuration. The homepage is the English counterpart of /ar/computer-repair-kuwait;
-// the English /services hub has no dedicated /ar/services page yet.
+// Services and troubleshooting guides use explicit reciprocal pairs where a localized version exists.
 
 const ENGLISH_TO_ARABIC: Record<string, string> = {
   '/': '/ar',
@@ -21,6 +21,7 @@ const ENGLISH_TO_ARABIC: Record<string, string> = {
   '/ssd-ram-upgrade-kuwait': '/ar/ssd-ram-upgrade-kuwait',
   '/gaming-laptop-repair-kuwait': '/ar/gaming-laptop-repair-kuwait',
   '/laptop-charging-port-repair-kuwait': '/ar/laptop-charging-port-repair-kuwait',
+  '/laptop-plugged-in-not-charging': '/ar/laptop-plugged-in-not-charging',
   '/laptop-keyboard-replacement-kuwait': '/ar/laptop-keyboard-replacement-kuwait',
   '/laptop-liquid-damage-repair-kuwait': '/ar/laptop-liquid-damage-repair-kuwait',
 
@@ -52,6 +53,7 @@ const ARABIC_TO_ENGLISH: Record<string, string> = {
   '/ar/ssd-ram-upgrade-kuwait': '/ssd-ram-upgrade-kuwait',
   '/ar/gaming-laptop-repair-kuwait': '/gaming-laptop-repair-kuwait',
   '/ar/laptop-charging-port-repair-kuwait': '/laptop-charging-port-repair-kuwait',
+  '/ar/laptop-plugged-in-not-charging': '/laptop-plugged-in-not-charging',
   '/ar/laptop-keyboard-replacement-kuwait': '/laptop-keyboard-replacement-kuwait',
   '/ar/laptop-liquid-damage-repair-kuwait': '/laptop-liquid-damage-repair-kuwait',
 
