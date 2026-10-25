@@ -148,6 +148,8 @@ export default function MobileMenu({ isOpen, onClose, mobileRef, navModel, clean
       <div
         ref={mobileRef}
         id="mobile-nav-panel"
+        dir={isArabicRoute ? "rtl" : undefined}
+        lang={isArabicRoute ? "ar-KW" : undefined}
         role="dialog"
         aria-modal="true"
         aria-label={isArabicRoute ? "التنقل عبر الهاتف" : "Mobile navigation"}
