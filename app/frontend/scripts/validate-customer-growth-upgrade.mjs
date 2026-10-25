@@ -94,7 +94,7 @@ add('Laptop hub consolidates repeated faults into structured Problem / Lab appro
   laptopServiceEntityForChecks.includes('problem:') &&
   laptopServiceEntityForChecks.includes('labFix:') &&
   laptopServiceEntityForChecks.includes('service:') &&
-  laptopServiceEntityForChecks.includes("title: 'Dead / Won\\'t Turn On'") &&
+  laptopServiceEntityForChecks.includes("id: 'laptop-dead-no-power'") &&
   laptopServiceEntityForChecks.includes('Where the board and fault are technically repairable') &&
   serviceTemplate.includes('<strong className="font-bold text-cyan-300">Problem:</strong> {issue.problem}') &&
   serviceTemplate.includes('<strong className="font-bold text-cyan-300">Lab approach:</strong> {issue.labFix}'));
@@ -122,6 +122,24 @@ add('Laptop service page uses semantic section headings and service-area list na
   serviceTemplate.includes('aria-labelledby="why-choose-us-heading"') &&
   serviceTemplate.includes('<nav aria-labelledby="repair-service-areas-heading">') &&
   serviceTemplate.includes('<ul role="list" className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">'));
+
+add('Laptop symptom triage retains the six existing intent-specific paths',
+  ((laptopServiceEntityForChecks.match(/label: /g) || []).length >= 6) &&
+  laptopServiceEntityForChecks.includes("path: '/laptop-wont-turn-on'") &&
+  laptopServiceEntityForChecks.includes("path: '/laptop-liquid-damage-repair-kuwait'") &&
+  laptopServiceEntityForChecks.includes("path: '/battery-replacement-kuwait'"));
+
+add('Footer service-area links are separated into an accessible labelled list',
+  footer.includes('Footer service areas') &&
+  footer.includes('<ul role="list" className="flex flex-wrap gap-2">') &&
+  footer.includes('<li key={area.path}>'));
+
+add('Service headings, repair cards and device chips preserve readable text boundaries',
+  serviceTemplate.includes("{' '}") &&
+  serviceTemplate.includes('<article key={issue.id}') &&
+  serviceTemplate.includes('<ul role="list" aria-label="Supported device types"') &&
+  serviceTemplate.includes('<ul role="list" aria-label="Brands serviced"') &&
+  serviceTemplate.includes('aria-labelledby="service-faqs-heading"'));
 
 add('Laptop repair copy avoids unsupported repair prices and absolute performance or data-transfer guarantees',
   !laptopServiceEntityForChecks.includes('150+ KWD motherboard replacement') &&
