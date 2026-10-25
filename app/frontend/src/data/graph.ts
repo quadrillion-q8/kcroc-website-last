@@ -3119,7 +3119,9 @@ export const rawGraphData: RawGraphData = {
             diagnosis: 'Testing an external monitor confirmed the graphics hardware was fine; reseating the display cable temporarily resolved the flicker, confirming a worn cable near the hinge.',
             repair: 'The display cable was replaced rather than the panel.',
             outcome: 'The display returned to normal after the cable was replaced. This illustrates why the fault should be confirmed before pricing a replacement panel.'
-          },,
+          }
+        ]
+      },
     
       inspectionChecklist: [
         'Panel damage vs. display cable fault isolation',
