@@ -631,11 +631,11 @@ export const SEO_GRAPH = {
       "id": "page-ar-macbook-screen-replacement",
       "entityType": "WebPage",
       "isActive": true,
-      "title": "تبديل شاشة MacBook في الكويت",
+      "title": "تبديل شاشة ماك بوك في الكويت | MacBook Air وPro",
       "slug": "ar/macbook-screen-replacement-kuwait",
       "seo": {
-        "title": "تبديل شاشة MacBook الكويت | Air وPro | KCROC",
-        "description": "تبديل شاشة MacBook Air وPro في الكويت للشاشات المكسورة أو السوداء أو التي تومض. مطابقة الموديل، استلام مجاني وضمان 30 يومًا.",
+        "title": "تبديل شاشة ماك بوك في الكويت | Air وPro | فحص مجاني | KCROC",
+        "description": "شاشة ماك بوك (MacBook Air وPro) مكسورة أو سوداء أو تومض؟ فحص أولي مجاني ومطابقة للموديل. أجرة العمل من 30 د.ك + الشاشة، مع استلام مجاني وضمان 30 يومًا على الإصلاحات المشمولة.",
         "canonicalUrl": "https://www.computerrepairkuwait.com/ar/macbook-screen-replacement-kuwait",
         "locale": "ar_KW",
         "alternates": {
@@ -644,23 +644,30 @@ export const SEO_GRAPH = {
           "x-default": "https://www.computerrepairkuwait.com/macbook-screen-replacement-kuwait"
         },
         "ogType": "website",
+        "ogImage": "/images/technician-holding-opened-macbook-for-repair.webp",
+        "ogImageAlt": "فحص وتبديل شاشة ماك بوك وMacBook في مختبر KCROC بحولي الكويت قبل مطابقة الموديل والقطعة",
+        "ogImageWidth": 1200,
+        "ogImageHeight": 630,
         "schemaTypes": [
           "WebPage",
-          "BreadcrumbList"
+          "BreadcrumbList",
+          "Service",
+          "FAQPage",
+          "ImageObject"
         ],
-        "lastModified": "2026-10-02T00:00:00+03:00",
+        "lastModified": "2026-10-25T00:00:00+03:00",
         "breadcrumbs": [
           {
             "name": "الرئيسية",
-            "url": "/"
+            "url": "/ar"
           },
           {
-            "name": "تبديل شاشة MacBook",
+            "name": "تبديل شاشة MacBook في الكويت",
             "url": "/ar/macbook-screen-replacement-kuwait"
           }
         ]
       },
-      "description": "تبديل شاشة MacBook Air وMacBook Pro في الكويت للشاشة المكسورة أو السوداء أو التي فيها خطوط أو وميض، مع مطابقة الموديل.",
+      "description": "تبديل وتصليح شاشة ماك بوك (MacBook Air وPro) في الكويت. فحص أولي مجاني ومطابقة رقم الموديل قبل التبديل؛ أجرة العمل تبدأ من 30 د.ك + الشاشة، مع استلام وتوصيل مجاني وضمان 30 يومًا على الإصلاحات المشمولة.",
       "featuredFAQIds": []
     },
     {

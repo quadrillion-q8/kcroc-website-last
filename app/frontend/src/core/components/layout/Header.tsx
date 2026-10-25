@@ -41,6 +41,7 @@ export default function Header() {
   const mobileToggleRef = useRef<HTMLButtonElement>(null);
   
   const location = useLocation();
+  const isArabicRoute = location.pathname === '/ar' || location.pathname.startsWith('/ar/') || location.pathname.startsWith('/blog/ar/') || location.pathname.startsWith('/guides/ar/');
   const { trackConversion } = useAnalytics();
   
   const navModel = getLocalizedNavigation(location.pathname);
@@ -144,11 +145,11 @@ export default function Header() {
 
   return (
     <>
-<header ref={headerRef} className={`sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-100 transition-shadow duration-200 ${scrolled ? 'shadow-sm' : ''}`}>
+<header ref={headerRef} dir={isArabicRoute ? "rtl" : undefined} lang={isArabicRoute ? "ar-KW" : undefined} className={`sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-100 transition-shadow duration-200 ${scrolled ? 'shadow-sm' : ''}`}>
         <div className="kcroc-header-inner max-w-[1360px] mx-auto px-4 sm:px-6 xl:px-8 2xl:px-12">
           <div className="flex min-h-[78px] flex-wrap items-center justify-between gap-x-3 gap-y-1 py-1">
             
-            <Link to="/" className="flex items-center shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 rounded-lg" aria-label="KCROC Home">
+            <Link to="/" className="flex items-center shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 rounded-lg" aria-label={isArabicRoute ? "الصفحة الرئيسية لـ KCROC" : "KCROC Home"}>
               {!logoError ? (
                 <img
                   src="/logo-128.webp"
@@ -170,7 +171,7 @@ export default function Header() {
               )}
             </Link>
 
-            <nav aria-label="Main navigation" className="hidden min-w-0 flex-wrap items-center gap-0.5 xl:flex 2xl:gap-1">
+            <nav aria-label={isArabicRoute ? "التنقل الرئيسي" : "Main navigation"} className="hidden min-w-0 flex-wrap items-center gap-0.5 xl:flex 2xl:gap-1">
               {navModel.header.map(link => {
                 const isGraphMatch = !!matchPath({ path: link.href, end: false }, location.pathname);
 
@@ -211,7 +212,7 @@ export default function Header() {
               <Link
                 to={languageSwitch.href}
                 lang={languageSwitch.targetLanguage === 'ar' ? 'ar' : 'en'}
-                aria-label={languageSwitch.targetLanguage === 'ar' ? 'Switch to Arabic' : 'Switch to English'}
+                aria-label={isArabicRoute ? 'التبديل إلى الإنجليزية' : 'Switch to Arabic'}
                 className="inline-flex min-h-12 min-w-12 items-center justify-center rounded-md border border-slate-200 bg-white px-2.5 py-1.5 text-xs font-black text-slate-700 transition-colors hover:border-blue-300 hover:text-blue-700 hover:bg-blue-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
               >
                 {languageSwitch.targetLanguage === 'ar' ? 'عربي' : 'EN'}
@@ -224,7 +225,7 @@ export default function Header() {
                 }}
                 aria-expanded={searchOpen}
                 aria-controls="header-search-panel"
-                aria-label={searchOpen ? 'Close search' : 'Search'}
+                aria-label={searchOpen ? (isArabicRoute ? 'إغلاق البحث' : 'Close search') : (isArabicRoute ? 'بحث' : 'Search')}
                 className={`min-h-12 min-w-12 flex items-center justify-center rounded-md transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 ${searchOpen ? 'text-blue-700 bg-blue-50' : 'text-slate-700 hover:text-blue-700 hover:bg-slate-100'}`}
               >
                 {searchOpen ? <X size={18} aria-hidden="true" /> : <Search size={18} aria-hidden="true" />}
@@ -241,7 +242,7 @@ export default function Header() {
                 <Link to="/book" onClick={() => trackConversion('cta_click', { cta_name: 'header_book', button_position: 'header' })}>
                   <CalendarCheck size={15} aria-hidden="true" />
                   <span className="flex min-w-0 flex-col items-start leading-tight">
-                    <span>Book Free Pickup</span>
+                    <span>{isArabicRoute ? 'احجز استلام مجاني' : 'Book Free Pickup'}</span>
                     <span className="mt-0.5 text-[10px] font-semibold text-white">{phoneDisplay}</span>
                   </span>
                 </Link>
@@ -252,7 +253,7 @@ export default function Header() {
               <Link
                 to={languageSwitch.href}
                 lang={languageSwitch.targetLanguage === 'ar' ? 'ar' : 'en'}
-                aria-label={languageSwitch.targetLanguage === 'ar' ? 'Switch to Arabic' : 'Switch to English'}
+                aria-label={isArabicRoute ? 'التبديل إلى الإنجليزية' : 'Switch to Arabic'}
                 className="min-h-12 min-w-12 flex items-center justify-center rounded-lg border border-slate-200 bg-white text-xs font-black text-slate-700 transition-colors hover:border-blue-300 hover:text-blue-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
               >
                 {languageSwitch.targetLanguage === 'ar' ? 'عربي' : 'EN'}
@@ -270,7 +271,7 @@ export default function Header() {
                 }}
                 aria-expanded={searchOpen}
                 aria-controls="header-search-panel"
-                aria-label={searchOpen ? 'Close search' : 'Search'}
+                aria-label={searchOpen ? (isArabicRoute ? 'إغلاق البحث' : 'Close search') : (isArabicRoute ? 'بحث' : 'Search')}
               >
                 {searchOpen ? <X size={20} aria-hidden="true" /> : <Search size={20} aria-hidden="true" />}
               </button>
@@ -284,7 +285,7 @@ export default function Header() {
                 }}
                 aria-expanded={mobileOpen}
                 aria-controls="mobile-nav-panel"
-                aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+                aria-label={mobileOpen ? (isArabicRoute ? 'إغلاق القائمة' : 'Close menu') : (isArabicRoute ? 'فتح القائمة' : 'Open menu')}
               >
                 {mobileOpen ? <X size={22} aria-hidden="true" /> : <Menu size={22} aria-hidden="true" />}
               </button>

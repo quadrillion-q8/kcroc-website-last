@@ -528,14 +528,26 @@ export const COMPILED_NAVIGATION: CompiledNavigationModel = NavigationCompiler.c
 // This map is reserved for future presentation-only locale swaps.
 const BLOG_ARABIC_VARIANTS: Record<string, Pick<NavEntity, 'slug' | 'title' | 'description' | 'primaryKeyword'>> = {};
 
+const ARABIC_HEADER_VARIANTS: Record<string, { label: string; href?: string }> = {
+  nav_services: { label: 'الخدمات', href: '/ar/services' },
+  nav_repairs: { label: 'الإصلاحات', href: '/ar/services' },
+  nav_brands: { label: 'الماركات' },
+  nav_problems: { label: 'الأعطال' },
+  nav_locations: { label: 'مناطق الخدمة', href: '/ar/near-me' },
+  nav_pricing: { label: 'الأسعار', href: '/ar/pricing' },
+  nav_blog: { label: 'المدونة' },
+  nav_news: { label: 'الأخبار' },
+  nav_guides: { label: 'الأدلة' },
+  nav_about: { label: 'عن KCROC' },
+  nav_gallery: { label: 'معرض الصور' },
+};
+
 export function getLocalizedNavigation(pathname: string): CompiledNavigationModel {
   const isArabicRoute = pathname === '/ar' || pathname.startsWith('/ar/') || pathname.startsWith('/blog/ar/') || pathname.startsWith('/guides/ar/');
 
   if (!isArabicRoute) return COMPILED_NAVIGATION;
 
   const blogMenu = COMPILED_NAVIGATION.megaMenus.blog_mega;
-  if (!blogMenu) return COMPILED_NAVIGATION;
-
   const localize = (item: NavEntity): NavEntity => {
     const variant = BLOG_ARABIC_VARIANTS[item.id];
     return variant ? { ...item, ...variant } : item;
@@ -543,7 +555,11 @@ export function getLocalizedNavigation(pathname: string): CompiledNavigationMode
 
   return {
     ...COMPILED_NAVIGATION,
-    megaMenus: {
+    header: COMPILED_NAVIGATION.header.map((link) => {
+      const variant = ARABIC_HEADER_VARIANTS[link.id];
+      return variant ? { ...link, label: variant.label, ...(variant.href ? { href: variant.href } : {}) } : link;
+    }),
+    megaMenus: blogMenu ? {
       ...COMPILED_NAVIGATION.megaMenus,
       blog_mega: {
         ...blogMenu,
@@ -553,6 +569,6 @@ export function getLocalizedNavigation(pathname: string): CompiledNavigationMode
           items: section.items.map(localize),
         })),
       },
-    },
+    } : COMPILED_NAVIGATION.megaMenus,
   };
 }

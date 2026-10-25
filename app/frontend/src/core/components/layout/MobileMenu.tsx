@@ -81,6 +81,7 @@ interface MobileMenuProps {
 export default function MobileMenu({ isOpen, onClose, mobileRef, navModel, cleanTel, phoneDisplay, triggerRef }: MobileMenuProps) {
   const [openAccordion, setOpenAccordion] = useState<string | null>(null);
   const location = useLocation();
+  const isArabicRoute = location.pathname === '/ar' || location.pathname.startsWith('/ar/') || location.pathname.startsWith('/blog/ar/') || location.pathname.startsWith('/guides/ar/');
   const languageSwitch = getLanguageSwitchPath(location.pathname);
   const { trackConversion } = useAnalytics();
   const mobileMenuWhatsAppLink = buildWhatsAppLink(
@@ -147,9 +148,11 @@ export default function MobileMenu({ isOpen, onClose, mobileRef, navModel, clean
       <div
         ref={mobileRef}
         id="mobile-nav-panel"
+        dir={isArabicRoute ? "rtl" : undefined}
+        lang={isArabicRoute ? "ar-KW" : undefined}
         role="dialog"
         aria-modal="true"
-        aria-label="Mobile navigation"
+        aria-label={isArabicRoute ? "التنقل عبر الهاتف" : "Mobile navigation"}
         aria-hidden={!isOpen}
         className={`fixed inset-y-0 right-0 z-[110] w-full max-w-lg border-l border-white/[0.08] bg-[#0b1012] shadow-[0_30px_90px_rgba(0,0,0,0.6)] transform transition-transform duration-300 ease-out motion-reduce:transition-none xl:hidden flex flex-col ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}
       >
@@ -157,13 +160,13 @@ export default function MobileMenu({ isOpen, onClose, mobileRef, navModel, clean
           <div className="flex items-center justify-between gap-3">
             <div className="min-w-0">
               <div className="flex flex-wrap items-center gap-2">
-                <span className="kcroc-kicker">NAVIGATION</span>
+                <span className="kcroc-kicker">{isArabicRoute ? "التنقل" : "NAVIGATION"}</span>
                 <span className="inline-flex items-center gap-1.5 rounded-full border border-[#c9804d]/20 bg-[#c9804d]/[0.07] px-2 py-1 text-[10px] font-extrabold uppercase tracking-[0.12em] text-[#efc19c]">
                   <Sparkles className="h-3 w-3" aria-hidden="true" />
                   KCROC
                 </span>
               </div>
-              <p className="mt-1 text-sm font-semibold text-slate-400">Repair, guides and service areas in one place.</p>
+              <p className="mt-1 text-sm font-semibold text-slate-400">{isArabicRoute ? "خدمات الإصلاح والأدلة ومناطق الاستلام في مكان واحد." : "Repair, guides and service areas in one place."}</p>
             </div>
             <div className="flex items-center gap-1">
               <Link
@@ -178,7 +181,7 @@ export default function MobileMenu({ isOpen, onClose, mobileRef, navModel, clean
                 ref={closeButtonRef}
                 onClick={onClose}
                 className="min-h-12 min-w-12 flex items-center justify-center rounded-xl border border-white/[0.06] text-slate-400 transition-colors hover:bg-white/[0.04] hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f]"
-                aria-label="Close menu"
+                aria-label={isArabicRoute ? "إغلاق القائمة" : "Close menu"}
                 tabIndex={isOpen ? 0 : -1}
               >
                 <X size={22} aria-hidden="true" />
@@ -193,7 +196,7 @@ export default function MobileMenu({ isOpen, onClose, mobileRef, navModel, clean
               tabIndex={isOpen ? 0 : -1}
               className="min-h-12 rounded-xl border border-white/[0.07] bg-white/[0.025] px-2.5 py-2 text-center text-xs font-bold text-slate-200 transition-colors hover:border-[#c9804d]/25 hover:bg-[#c9804d]/[0.05] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f]"
             >
-              <span className="flex items-center justify-center gap-1.5"><Phone className="h-3.5 w-3.5 text-[#dfa86f]" aria-hidden="true" /> Call</span>
+              <span className="flex items-center justify-center gap-1.5"><Phone className="h-3.5 w-3.5 text-[#dfa86f]" aria-hidden="true" /> {isArabicRoute ? "اتصال" : "Call"}</span>
             </a>
             <a
               href={mobileMenuWhatsAppLink}
@@ -203,7 +206,7 @@ export default function MobileMenu({ isOpen, onClose, mobileRef, navModel, clean
               tabIndex={isOpen ? 0 : -1}
               className="min-h-12 rounded-xl border border-[#25D366]/15 bg-[#25D366]/[0.06] px-2.5 py-2 text-center text-xs font-bold text-[#7cf0ab] transition-colors hover:border-[#25D366]/30 hover:bg-[#25D366]/[0.10] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366]"
             >
-              <span className="flex items-center justify-center gap-1.5"><MessageCircle className="h-3.5 w-3.5" aria-hidden="true" /> WhatsApp</span>
+              <span className="flex items-center justify-center gap-1.5"><MessageCircle className="h-3.5 w-3.5" aria-hidden="true" /> {isArabicRoute ? "واتساب" : "WhatsApp"}</span>
             </a>
             <Link
               to="/book"
@@ -211,7 +214,7 @@ export default function MobileMenu({ isOpen, onClose, mobileRef, navModel, clean
               tabIndex={isOpen ? 0 : -1}
               className="min-h-12 rounded-xl bg-[#c9804d] px-2.5 py-2 text-center text-xs font-black text-[#100d0a] transition-colors hover:bg-[#dfa86f] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f]"
             >
-              <span className="flex items-center justify-center gap-1.5"><CalendarCheck className="h-3.5 w-3.5" aria-hidden="true" /> Book</span>
+              <span className="flex items-center justify-center gap-1.5"><CalendarCheck className="h-3.5 w-3.5" aria-hidden="true" /> {isArabicRoute ? "احجز" : "Book"}</span>
             </Link>
           </div>
         </div>
@@ -360,10 +363,10 @@ export default function MobileMenu({ isOpen, onClose, mobileRef, navModel, clean
             className="flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#25D366] px-4 py-3 text-sm font-black text-[#062b16] transition-all hover:brightness-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366]"
           >
             <MessageCircle className="h-4 w-4" aria-hidden="true" />
-            WhatsApp a technician
+            {isArabicRoute ? "راسل فنيًا عبر واتساب" : "WhatsApp a technician"}
             <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
           </a>
-          <p className="mt-2 text-center text-[10px] font-medium text-slate-600">{phoneDisplay} · Free pickup & delivery across Kuwait</p>
+          <p className="mt-2 text-center text-[10px] font-medium text-slate-600" dir={isArabicRoute ? "rtl" : undefined}>{phoneDisplay} · {isArabicRoute ? "استلام وتوصيل مجاني في الكويت" : "Free pickup & delivery across Kuwait"}</p>
         </div>
       </div>
     </>
