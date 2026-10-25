@@ -482,7 +482,7 @@ add('Arabic charging safety checklist renders each icon and instruction inside a
   && chargingSafeChecks.includes('<span>{item}</span>'));
 add('Arabic and English footer policy controls remain separate, named and visually separated',
   footer.includes('role="group" aria-label={isArabicRoute ? "سياسات وإعدادات الموقع" : "Site policies and settings"}')
-  && (footer.match(/<span aria-hidden="true" className="text-slate-700">·<\\/span>/g) || []).length === 2
+  && (footer.split('<span aria-hidden="true" className="text-slate-700">·</span>').length - 1) === 2
   && footer.includes('aria-label={isArabicRoute ? "سياسة الخصوصية" : "Privacy Policy"}')
   && footer.includes('aria-label={isArabicRoute ? "شروط الخدمة" : "Terms of Service"}'));
 add('Arabic charging service English language link has explicit charging-specific text',
