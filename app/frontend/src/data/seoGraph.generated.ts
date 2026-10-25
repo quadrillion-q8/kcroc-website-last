@@ -635,7 +635,7 @@ export const SEO_GRAPH = {
       "slug": "ar/macbook-screen-replacement-kuwait",
       "seo": {
         "title": "تبديل شاشة ماك بوك في الكويت | Air وPro | فحص مجاني | KCROC",
-        "description": "شاشة ماك بوك (MacBook Air وPro) مكسورة أو سوداء أو تومض؟ فحص أولي مجاني ومطابقة للموديل. أجرة العمل من 30 د.ك + الشاشة، مع استلام مجاني وضمان 30 يومًا على الإصلاحات المشمولة.",
+        "description": "شاشة ماك بوك (MacBook Air وPro) مكسورة أو سوداء أو تومض؟ فحص أولي مجاني ومطابقة للموديل في مختبرنا بحولي. أجرة العمل من 30 د.ك + الشاشة، مع استلام مجاني وضمان 30 يومًا.",
         "canonicalUrl": "https://www.computerrepairkuwait.com/ar/macbook-screen-replacement-kuwait",
         "locale": "ar_KW",
         "alternates": {
