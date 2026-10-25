@@ -3095,7 +3095,7 @@ export const rawGraphData: RawGraphData = {
         { step: 1, title: 'Free Pickup', description: 'We collect your laptop from your home or office anywhere in Kuwait.' },
         { step: 2, title: 'Panel & Cable Diagnostic', description: 'We confirm whether the fault is the panel, the display cable, or the backlight circuit before quoting anything.' },
         { step: 3, title: 'Confirm the Fault & Quote', description: 'You get a clear, itemized quote before any work starts — no surprise charges for parts that turned out not to be needed.' },
-        { step: 4, title: 'Panel or Cable Replacement', description: 'The confirmed panel or cable fault is repaired in our ESD-safe lab, with careful handling of ribbon connectors and model-dependent sensors or display features where applicable.' },
+        { step: 4, title: 'Panel or Cable Replacement', description: 'The confirmed panel or cable fault is repaired in our ESD-safe lab, with careful handling of ribbon connectors and model-dependent sensors or display features where the exact laptop model supports them.' },
         { step: 5, title: 'Calibration & Dead-Pixel Check', description: 'The new display is checked for dead pixels, backlight uniformity, and colour accuracy before reassembly.' },
         { step: 6, title: 'Return with 30-Day Warranty', description: 'We return the device after the agreed repair and final checks, with a 30-day warranty on the panel and labour. The expected turnaround is confirmed with your quote.' }
       ],
