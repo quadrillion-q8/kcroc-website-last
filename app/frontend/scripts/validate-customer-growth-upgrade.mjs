@@ -14,7 +14,7 @@ const norm = (s) =>
     .replace(/\s+/g, ' ');
 const has = (source, needle) => norm(source).includes(norm(needle));
 
-const [app, graph, seoProjection, locale, pricingPage, sitemap, hero, reviews, footer, header, mobileMenu, stickyMobileCTA, navigationCompiler, rootLayout, nearMe, nearMeAr, locations, hawalli, computerRepair, about, booking, arabicCommercial, serviceAreas, englishPricing, serviceTemplate, brandTemplate] = await Promise.all([
+const [app, graph, seoProjection, locale, pricingPage, sitemap, hero, reviews, footer, header, mobileMenu, stickyMobileCTA, navigationCompiler, rootLayout, nearMe, nearMeAr, locations, hawalli, computerRepair, about, booking, arabicCommercial, serviceAreas, englishPricing, serviceTemplate, brandTemplate, coreRepairPillars] = await Promise.all([
   read('App.tsx'),
   read('data/graph.ts'),
   read('data/seoGraph.generated.ts'),
@@ -41,6 +41,7 @@ const [app, graph, seoProjection, locale, pricingPage, sitemap, hero, reviews, f
   read('pages/Pricing.tsx'),
   read('pages/templates/ServiceTemplate.tsx'),
   read('pages/templates/BrandTemplate.tsx'),
+  read('components/content/CoreRepairPillars.tsx'),
 ]);
 
 const laptopGraphStart = graph.indexOf("'srv-laptop': {");
@@ -89,28 +90,47 @@ add('Pricing page has responsive quick-jump navigation to all four price categor
   englishPricing.includes('id={`pricing-${category.anchor}`}'));
 
 
-add('Laptop outcome copy uses diagnostic checks rather than guaranteed numeric performance claims',
-  graph.includes('These are diagnostic and post-repair checks, not guaranteed before/after results.') &&
-  !graph.includes('saving you up to 70%.') &&
-  !graph.includes('saves the remaining 95% of the motherboard'));
+add('Laptop hub consolidates repeated faults into structured Problem / Lab approach / Service cards',
+  laptopServiceEntityForChecks.includes('problem:') &&
+  laptopServiceEntityForChecks.includes('labFix:') &&
+  laptopServiceEntityForChecks.includes('service:') &&
+  laptopServiceEntityForChecks.includes("title: 'Dead / Won\\'t Turn On'") &&
+  laptopServiceEntityForChecks.includes('Where the board and fault are technically repairable') &&
+  serviceTemplate.includes('<strong className="font-bold text-cyan-300">Problem:</strong> {issue.problem}') &&
+  serviceTemplate.includes('<strong className="font-bold text-cyan-300">Lab approach:</strong> {issue.labFix}'));
 
-add('Laptop repair scenarios and FAQs avoid unsupported prices, fixed performance outcomes and universal data-transfer promises',
-  laptopServiceEntityForChecks.includes('These are illustrative diagnostic scenarios, not verified customer case studies or guaranteed outcomes.') &&
-  laptopServiceEntityForChecks.includes('We cannot guarantee that every file, application, session or password will transfer unchanged.') &&
-  laptopServiceEntityForChecks.includes('Boot time cannot be guaranteed') &&
+add('Laptop service hub has one unified 10-question FAQ and removes the duplicated mid-page sections',
+  !laptopServiceEntityForChecks.includes('commercialAnswers: [') &&
+  !laptopServiceEntityForChecks.includes('performanceOutcomes: {') &&
+  !laptopServiceEntityForChecks.includes('repairExamples: {') &&
+  ((laptopServiceEntityForChecks.match(/id: 'faq-/g) || []).length === 10) &&
+  serviceTemplate.includes('entity.id !== \'srv-laptop\' && entity.inspectionChecklist'));
+
+add('Laptop inspection checklist is nested under diagnostic step and no standalone copy is rendered',
+  laptopServiceEntityForChecks.includes("step: 2, title: 'Hardware & Thermal Diagnosis'") &&
+  serviceTemplate.includes("entity.id === 'srv-laptop' && step.step === 2 && entity.inspectionChecklist") &&
+  serviceTemplate.includes("entity.id !== 'srv-laptop' && entity.inspectionChecklist"));
+
+add('Laptop hub links laterally to motherboard repair instead of linking to itself',
+  serviceTemplate.includes('excludeLaptopService={entity.id === \'srv-laptop\'}') &&
+  coreRepairPillars.includes('excludeLaptopService ? "/motherboard-repair-kuwait" : "/laptop-repair-kuwait"') &&
+  coreRepairPillars.includes('excludeLaptopService ? "Motherboard Repair Kuwait" : "Laptop Repair Kuwait"'));
+
+add('Laptop service page uses semantic section headings and service-area list navigation',
+  serviceTemplate.includes('aria-labelledby="common-problems-heading"') &&
+  serviceTemplate.includes('aria-labelledby="repair-process-heading"') &&
+  serviceTemplate.includes('aria-labelledby="why-choose-us-heading"') &&
+  serviceTemplate.includes('<nav aria-labelledby="repair-service-areas-heading">') &&
+  serviceTemplate.includes('<ul role="list" className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">'));
+
+add('Laptop repair copy avoids unsupported repair prices and absolute performance or data-transfer guarantees',
   !laptopServiceEntityForChecks.includes('150+ KWD motherboard replacement') &&
   !laptopServiceEntityForChecks.includes('Total repair cost: 25 KWD.') &&
   !laptopServiceEntityForChecks.includes('ran 10x faster') &&
   !laptopServiceEntityForChecks.includes('same desktop, same files, same passwords') &&
-  !laptopServiceEntityForChecks.includes('Most shops will quote a full'));
-
-add('Laptop hinge, charging, screen, cooling and liquid-damage content uses diagnosis-first language',
-  laptopServiceEntityForChecks.includes('inspect hinge resistance, mount damage and nearby display cables') &&
-  laptopServiceEntityForChecks.includes('fault in the board-level power path') &&
-  laptopServiceEntityForChecks.includes('verify panel compatibility before quoting a screen replacement') &&
-  laptopServiceEntityForChecks.includes('cleaning cannot guarantee that every component or file will be recoverable') &&
-  !laptopServiceEntityForChecks.includes('before short circuits kill the motherboard') &&
-  !laptopServiceEntityForChecks.includes('OEM-grade match'));
+  !laptopServiceEntityForChecks.includes('all 100% of files') &&
+  !laptopServiceEntityForChecks.includes('saving you up to 70%.') &&
+  !laptopServiceEntityForChecks.includes('saves the remaining 95% of the motherboard'));
 
 // Every currently published Arabic route must have an exact English counterpart, and vice versa.
 const languagePairs = [
