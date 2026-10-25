@@ -215,7 +215,7 @@ export function Footer() {
             )}
 
             <h2 className="text-white text-lg sm:text-xl font-bold leading-tight mb-2">
-              {isArabicRoute ? 'تصليح الكمبيوتر واللابتوب في الكويت' : 'Trusted Computer &amp; Laptop Repair in Kuwait'}
+              {isArabicRoute ? 'تصليح الكمبيوتر واللابتوب في الكويت' : 'Trusted Computer & Laptop Repair in Kuwait'}
             </h2>
             <p className="text-slate-400 text-sm leading-relaxed mb-4 max-w-sm">
               {isArabicRoute ? 'تصليح اللابتوبات وأجهزة MacBook وكمبيوتر الألعاب في الكويت، مع استلام وتوصيل مجانيين وضمان 30 يومًا على الإصلاحات المشمولة.' : 'Professional repair for laptops, MacBooks, gaming PCs and computers. Free pick-up and delivery across all Kuwait governorates. No Fix, No Fee.'}
@@ -342,7 +342,7 @@ export function Footer() {
                   <CalendarClock className="w-4 h-4" aria-hidden="true" />
                   {isArabicRoute ? "احجز استلام مجاني" : "BOOK FREE PICKUP"}
                 </a>
-                <span className="block text-slate-500 text-xs mt-2 ml-1">{isArabicRoute ? "استلام وتوصيل مجاني في مناطق الكويت" : "Pick-up &amp; drop across all Kuwait governorates"}</span>
+                <span className="block text-slate-500 text-xs mt-2 ml-1">{isArabicRoute ? "استلام وتوصيل مجاني في مناطق الكويت" : "Pick-up & drop across all Kuwait governorates"}</span>
               </li>
             </ul>
 
