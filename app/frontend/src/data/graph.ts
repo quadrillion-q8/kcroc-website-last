@@ -1942,7 +1942,7 @@ export const rawGraphData: RawGraphData = {
         },
         {
           id: 'laptop-dead-no-power',
-          title: 'Dead / Won\\'t Turn On',
+          title: 'Dead / Won\'t Turn On',
           severity: 'high',
           description: 'No lights or fan response can involve the adapter, charging connector, input protection, a shorted component or another board-level fault. Bench testing identifies the likely cause before a repair is proposed.'
         },
