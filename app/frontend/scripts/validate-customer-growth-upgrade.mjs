@@ -427,6 +427,56 @@ add('Homepage and workbench no longer link to the retired case-study section',
   && !caseStudyRemovalHero.includes('See real repair case studies')
   && !caseStudyRemovalBehindBench.includes('/case-studies')
   && !caseStudyRemovalBehindBench.includes('View Case Studies'));
+
+const arabicChargingGuide = await read('pages/ArabicChargingTroubleshootingPage.tsx');
+const chargingConfigStart = arabicCommercial.indexOf("'laptop-charging-port-repair-kuwait': {");
+const chargingConfigEnd = arabicCommercial.indexOf("'laptop-keyboard-replacement-kuwait': {", chargingConfigStart + 1);
+const chargingConfig = chargingConfigStart >= 0 && chargingConfigEnd > chargingConfigStart
+  ? arabicCommercial.slice(chargingConfigStart, chargingConfigEnd)
+  : '';
+const chargingFaqStart = chargingConfig.indexOf('    faq: [');
+const chargingFaqEnd = chargingConfig.indexOf('    englishPath:', chargingFaqStart + 1);
+const chargingFaqSource = chargingFaqStart >= 0 && chargingFaqEnd > chargingFaqStart
+  ? chargingConfig.slice(chargingFaqStart, chargingFaqEnd)
+  : '';
+const chargingProcessStart = arabicCommercial.indexOf('id="charging-port-repair-process"');
+const chargingProcessEnd = arabicCommercial.indexOf('</ol>', chargingProcessStart + 1);
+const chargingProcess = chargingProcessStart >= 0 && chargingProcessEnd > chargingProcessStart
+  ? arabicCommercial.slice(chargingProcessStart, chargingProcessEnd)
+  : '';
+const chargingFaqCount = (chargingFaqSource.match(/\\{ q:/g) || []).length;
+add('Arabic charging-port FAQ keeps all eight question-answer pairs in source and in Arabic FAQ schema',
+  chargingFaqCount === 8
+  && arabicCommercial.includes("inLanguage: 'ar-KW'")
+  && arabicCommercial.includes("mainEntity: cfg.faq.map")
+  && arabicCommercial.includes('<div className="px-6 pb-6 text-sm leading-8 text-slate-400">{item.a}</div>'));
+add('Arabic charging-port repair process renders six single list items without duplicate native numbering',
+  chargingProcess.includes('<ol className="mt-6 grid list-none gap-4 sm:grid-cols-2 lg:grid-cols-3">')
+  && (chargingProcess.match(/\\{ title: '[١٢٣٤٥٦]\\./g) || []).length === 6
+  && chargingProcess.includes('<li key={item.title}'));
+add('Charging-port schema is localized and retains the 20 KWD starting price',
+  arabicCommercial.includes("serviceType: 'تصليح مدخل DC Jack وUSB-C وتشخيص دائرة الشحن والطاقة'")
+  && arabicCommercial.includes("inLanguage: 'ar-KW'")
+  && arabicCommercial.includes("priceCurrency: 'KWD'")
+  && arabicCommercial.includes('minPrice: 20'));
+add('Arabic diagnostic guide is registered with reciprocal English/Arabic language alternates',
+  app.includes("path: 'ar/laptop-plugged-in-not-charging'")
+  && graph.includes("id: 'page-ar-laptop-plugged-in-not-charging'")
+  && graph.includes("canonicalUrl: 'https://www.computerrepairkuwait.com/ar/laptop-plugged-in-not-charging'")
+  && graph.includes("'ar-KW': 'https://www.computerrepairkuwait.com/ar/laptop-plugged-in-not-charging'")
+  && graph.includes("'en-KW': 'https://www.computerrepairkuwait.com/laptop-plugged-in-not-charging'")
+  && seoProjection.includes('"id": "page-ar-laptop-plugged-in-not-charging"')
+  && sitemap.includes('<loc>https://www.computerrepairkuwait.com/ar/laptop-plugged-in-not-charging</loc>')
+  && locale.includes("'/laptop-charging-port-repair-kuwait': '/ar/laptop-charging-port-repair-kuwait'"));
+add('Arabic charging troubleshooting page has static FAQ answers, safe checks and links to service and English counterparts',
+  arabicChargingGuide.includes("SEOEngine entityId=\"page-ar-laptop-plugged-in-not-charging\"")
+  && arabicChargingGuide.includes("FAQ.map((item)")
+  && arabicChargingGuide.includes('<details key={item.q}')
+  && arabicChargingGuide.includes('acceptedAnswer: { \'@type\': \'Answer\', text: item.a }')
+  && arabicChargingGuide.includes("href=\"/laptop-plugged-in-not-charging\"")
+  && arabicChargingGuide.includes("href=\"/ar/laptop-charging-port-repair-kuwait\"")
+  && arabicChargingGuide.includes("لا تدخل أداة معدنية"));
+
 for (const check of checks) console.log(`${check.pass ? '✅' : '❌'} ${check.name}${!check.pass && check.detail ? ` — ${check.detail}` : ''}`);
 const failed = checks.filter((check) => !check.pass);
 if (failed.length) process.exit(1);
