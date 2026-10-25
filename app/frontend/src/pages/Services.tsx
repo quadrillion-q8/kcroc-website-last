@@ -6,6 +6,31 @@ import { KCROC_GRAPH } from '../data/graph';
 import { SEOEngine } from '../core/components/SEOEngine';
 
 // Keep service cards connected to the knowledge graph so titles and URLs stay consistent.
+const CORE_SERVICE_ORDER = [
+  'srv-laptop',
+  'srv-desktop-pc',
+  'srv-macbook',
+  'srv-gaming',
+  'srv-gaming-laptop',
+  'srv-motherboard',
+  'srv-screen',
+  'srv-battery',
+  'srv-charging-port',
+  'srv-ssd-ram',
+  'srv-gaming-laptop-cleaning',
+];
+
+const SERVICE_FAQ_IDS = ['faq-cost', 'faq-pick-and-drop', 'faq-warranty', 'faq-no-fix'] as const;
+
+const getServiceSummary = (service: (typeof KCROC_GRAPH.services)[number]) => {
+  const source = (service.shortDescription || service.description || '').trim();
+  const sentences = source.split(/(?<=[.!?])\\s+/).filter(Boolean);
+  const summary = sentences.slice(0, 2).join(' ').trim();
+  if (summary.length <= 260) return summary;
+  const shortened = summary.slice(0, 257).replace(/\\s+\\S*$/, '').trimEnd();
+  return shortened + '…';
+};
+
 const ICON_MAP: Record<string, React.ElementType> = {
   apple: Apple,
   laptop: Laptop,
@@ -15,7 +40,16 @@ const ICON_MAP: Record<string, React.ElementType> = {
 };
 
 export default function Services() {
-  const services = KCROC_GRAPH.services.filter((service) => service.isActive);
+  const services = [...KCROC_GRAPH.services.filter((service) => service.isActive)].sort((a, b) => {
+    const rank = (id: string) => {
+      const index = CORE_SERVICE_ORDER.indexOf(id);
+      return index < 0 ? CORE_SERVICE_ORDER.length : index;
+    };
+    return rank(a.id) - rank(b.id);
+  });
+  const serviceFaqs = SERVICE_FAQ_IDS
+    .map((id) => KCROC_GRAPH.faqs?.find((faq) => faq.id === id))
+    .filter((faq) => faq !== undefined);
 
   return (
     <>
@@ -42,6 +76,24 @@ export default function Services() {
               </Link>
             </div>
           </header>
+
+          <section aria-label="Core repair hubs" className="mb-12 grid gap-4 sm:grid-cols-3">
+            <Link to="/computer-repair-kuwait" className="group rounded-2xl border border-slate-800 bg-slate-900/55 p-5 transition hover:border-emerald-500/50 hover:bg-slate-900">
+              <h2 className="text-lg font-bold text-white group-hover:text-emerald-300">Computer Repair Kuwait</h2>
+              <p className="mt-2 text-sm leading-relaxed text-slate-400">Start here for broader desktop, PC, gaming and component-level computer faults.</p>
+              <span className="mt-4 inline-flex items-center text-sm font-bold text-emerald-400">Open computer repair hub <ChevronRight className="ml-1 h-4 w-4" aria-hidden="true" /></span>
+            </Link>
+            <Link to="/laptop-repair-kuwait" className="group rounded-2xl border border-slate-800 bg-slate-900/55 p-5 transition hover:border-emerald-500/50 hover:bg-slate-900">
+              <h2 className="text-lg font-bold text-white group-hover:text-emerald-300">Laptop Repair Kuwait</h2>
+              <p className="mt-2 text-sm leading-relaxed text-slate-400">Choose the laptop hub for power, charging, screen, battery, cooling and keyboard symptoms.</p>
+              <span className="mt-4 inline-flex items-center text-sm font-bold text-emerald-400">Open laptop repair hub <ChevronRight className="ml-1 h-4 w-4" aria-hidden="true" /></span>
+            </Link>
+            <Link to="/pricing" className="group rounded-2xl border border-slate-800 bg-slate-900/55 p-5 transition hover:border-emerald-500/50 hover:bg-slate-900">
+              <h2 className="text-lg font-bold text-white group-hover:text-emerald-300">Repair Pricing</h2>
+              <p className="mt-2 text-sm leading-relaxed text-slate-400">Review current starting labour prices and how part costs are confirmed before work.</p>
+              <span className="mt-4 inline-flex items-center text-sm font-bold text-emerald-400">View starting prices <ChevronRight className="ml-1 h-4 w-4" aria-hidden="true" /></span>
+            </Link>
+          </section>
 
           <section aria-labelledby="service-list-heading">
             <div className="mb-6 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
@@ -72,13 +124,33 @@ export default function Services() {
                       )}
                     </div>
                     <h3 className="mb-3 text-xl font-bold text-white transition-colors group-hover:text-emerald-400">{service.title}</h3>
-                    <p className="mb-6 flex-1 leading-relaxed text-slate-400">{service.description}</p>
+                    <p className="mb-6 flex-1 leading-relaxed text-slate-400">{getServiceSummary(service)}</p>
                     <span className="inline-flex items-center text-sm font-bold text-emerald-400">
                       View repair details <ChevronRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
                     </span>
                   </Link>
                 );
               })}
+            </div>
+          </section>
+
+          <section aria-labelledby="service-faq-heading" className="mt-16 border-t border-slate-800 pt-10">
+            <div className="mb-7 max-w-3xl">
+              <h2 id="service-faq-heading" className="text-2xl font-black text-white md:text-3xl">Questions about computer repair services in Kuwait</h2>
+              <p className="mt-3 leading-relaxed text-slate-400">Understand starting prices, pickup, warranty and the repair approval process before choosing a service.</p>
+            </div>
+            <div className="grid gap-3 md:grid-cols-2">
+              {serviceFaqs.map((faq) => (
+                <details key={faq.id} className="group rounded-xl border border-slate-800 bg-slate-900/45 p-5">
+                  <summary className="cursor-pointer list-none pr-1 font-bold text-white marker:hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400">
+                    <span className="inline-flex w-full items-center justify-between gap-4">
+                      {faq.title}
+                      <ChevronRight className="h-4 w-4 flex-shrink-0 text-emerald-400 transition-transform group-open:rotate-90" aria-hidden="true" />
+                    </span>
+                  </summary>
+                  <p className="mt-4 border-t border-slate-800 pt-4 text-sm leading-7 text-slate-300">{faq.answer}</p>
+                </details>
+              ))}
             </div>
           </section>
 
