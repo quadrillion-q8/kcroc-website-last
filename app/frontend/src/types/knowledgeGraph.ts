@@ -146,7 +146,10 @@ export const ServiceSchema = RoutableEntitySchema.extend({
     id: z.string(),
     title: z.string(),
     severity: z.string(),
-    description: z.string()
+    description: z.string(),
+    problem: z.string().optional(),
+    labFix: z.string().optional(),
+    service: z.string().optional()
   })).optional(),
   warranty: z.object({ duration: z.string(), coverage: z.string(), noFixNoFee: z.boolean() }).optional(),
   // 🚀 NEW: Rich service-page content — who the service is for, the device
