@@ -492,8 +492,8 @@ add('Arabic charging troubleshooting page has static FAQ answers, safe checks an
   && arabicChargingGuide.includes("FAQ.map((item)")
   && arabicChargingGuide.includes('<details key={item.q}')
   && arabicChargingGuide.includes('acceptedAnswer: { \'@type\': \'Answer\', text: item.a }')
-  && arabicChargingGuide.includes("href=\"/laptop-plugged-in-not-charging\"")
-  && arabicChargingGuide.includes("href=\"/ar/laptop-charging-port-repair-kuwait\"")
+  && arabicChargingGuide.includes('to="/laptop-plugged-in-not-charging"')
+  && arabicChargingGuide.includes('to="/ar/laptop-charging-port-repair-kuwait"')
   && arabicChargingGuide.includes("لا تدخل أداة معدنية"));
 
 for (const check of checks) console.log(`${check.pass ? '✅' : '❌'} ${check.name}${!check.pass && check.detail ? ` — ${check.detail}` : ''}`);
