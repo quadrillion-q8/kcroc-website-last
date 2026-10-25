@@ -14,7 +14,7 @@ const norm = (s) =>
     .replace(/\s+/g, ' ');
 const has = (source, needle) => norm(source).includes(norm(needle));
 
-const [app, graph, seoProjection, locale, pricingPage, sitemap, hero, reviews, footer, header, mobileMenu, stickyMobileCTA, navigationCompiler, rootLayout, nearMe, nearMeAr, locations, hawalli, computerRepair, about, booking, arabicCommercial, serviceAreas, englishPricing] = await Promise.all([
+const [app, graph, seoProjection, locale, pricingPage, sitemap, hero, reviews, footer, header, mobileMenu, stickyMobileCTA, navigationCompiler, rootLayout, nearMe, nearMeAr, locations, hawalli, computerRepair, about, booking, arabicCommercial, serviceAreas, englishPricing, serviceTemplate, brandTemplate] = await Promise.all([
   read('App.tsx'),
   read('data/graph.ts'),
   read('data/seoGraph.generated.ts'),
@@ -39,6 +39,8 @@ const [app, graph, seoProjection, locale, pricingPage, sitemap, hero, reviews, f
   read('pages/ArabicCommercialPage.tsx'),
   read('components/home/ServiceAreas.tsx'),
   read('pages/Pricing.tsx'),
+  read('pages/templates/ServiceTemplate.tsx'),
+  read('pages/templates/BrandTemplate.tsx'),
 ]);
 
 const url = 'https://www.computerrepairkuwait.com/ar/pricing';
@@ -54,6 +56,21 @@ add('High-impression page snippets stay concise in the canonical graph source',
   has(graph, 'description: "PC won’t boot after a BIOS/UEFI update? Learn to distinguish firmware corruption from RAM, power or motherboard faults and review safe recovery options."') &&
   has(graph, "title: 'Intel Core Ultra vs Ryzen AI: 2026 Laptop Guide | KCROC'"));
 add('English and Arabic pricing language switch is reciprocal', locale.includes("'/pricing': '/ar/pricing'") && locale.includes("'/ar/pricing': '/pricing'"));
+
+add('Laptop repair page has intent-matched symptom links to existing guides and services',
+  graph.includes("symptomLinks: [") &&
+  graph.includes("label: \"Laptop won't turn on\", path: '/laptop-wont-turn-on'") &&
+  graph.includes("path: '/laptop-plugged-in-not-charging'") &&
+  graph.includes("path: '/guides/why-is-my-laptop-so-hot'") &&
+  serviceTemplate.includes("What is wrong with your laptop?"));
+
+add('Brand repair pages expose a direct link to transparent pricing',
+  brandTemplate.includes('to="/pricing"') && brandTemplate.includes('View Repair Prices'));
+
+add('Laptop outcome copy uses diagnostic checks rather than guaranteed numeric performance claims',
+  graph.includes('These are diagnostic and post-repair checks, not guaranteed before/after results.') &&
+  !graph.includes('saving you up to 70%.') &&
+  !graph.includes('saves the remaining 95% of the motherboard'));
 
 // Every currently published Arabic route must have an exact English counterpart, and vice versa.
 const languagePairs = [
