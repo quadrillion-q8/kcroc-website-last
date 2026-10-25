@@ -145,7 +145,7 @@ export default function Header() {
 
   return (
     <>
-<header ref={headerRef} className={`sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-100 transition-shadow duration-200 ${scrolled ? 'shadow-sm' : ''}`}>
+<header ref={headerRef} dir={isArabicRoute ? "rtl" : undefined} lang={isArabicRoute ? "ar-KW" : undefined} className={`sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-100 transition-shadow duration-200 ${scrolled ? 'shadow-sm' : ''}`}>
         <div className="kcroc-header-inner max-w-[1360px] mx-auto px-4 sm:px-6 xl:px-8 2xl:px-12">
           <div className="flex min-h-[78px] flex-wrap items-center justify-between gap-x-3 gap-y-1 py-1">
             
