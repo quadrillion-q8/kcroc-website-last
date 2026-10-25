@@ -444,7 +444,7 @@ const chargingProcessEnd = arabicCommercial.indexOf('</ol>', chargingProcessStar
 const chargingProcess = chargingProcessStart >= 0 && chargingProcessEnd > chargingProcessStart
   ? arabicCommercial.slice(chargingProcessStart, chargingProcessEnd)
   : '';
-const chargingFaqCount = (chargingFaqSource.match(/\\{ q:/g) || []).length;
+const chargingFaqCount = chargingFaqSource.split("{ q: '").length - 1;
 add('Arabic charging-port FAQ keeps all eight question-answer pairs in source and in Arabic FAQ schema',
   chargingFaqCount === 8
   && arabicCommercial.includes("inLanguage: 'ar-KW'")
@@ -452,7 +452,7 @@ add('Arabic charging-port FAQ keeps all eight question-answer pairs in source an
   && arabicCommercial.includes('<div className="px-6 pb-6 text-sm leading-8 text-slate-400">{item.a}</div>'));
 add('Arabic charging-port repair process renders six single list items without duplicate native numbering',
   chargingProcess.includes('<ol className="mt-6 grid list-none gap-4 sm:grid-cols-2 lg:grid-cols-3">')
-  && (chargingProcess.match(/\\{ title: '[١٢٣٤٥٦]\\./g) || []).length === 6
+  && ['١.', '٢.', '٣.', '٤.', '٥.', '٦.'].every((number) => chargingProcess.includes("{ title: '" + number))
   && chargingProcess.includes('<li key={item.title}'));
 add('Charging-port schema is localized and retains the 20 KWD starting price',
   arabicCommercial.includes("serviceType: 'تصليح مدخل DC Jack وUSB-C وتشخيص دائرة الشحن والطاقة'")
@@ -467,7 +467,9 @@ add('Arabic diagnostic guide is registered with reciprocal English/Arabic langua
   && graph.includes("'en-KW': 'https://www.computerrepairkuwait.com/laptop-plugged-in-not-charging'")
   && seoProjection.includes('"id": "page-ar-laptop-plugged-in-not-charging"')
   && sitemap.includes('<loc>https://www.computerrepairkuwait.com/ar/laptop-plugged-in-not-charging</loc>')
-  && locale.includes("'/laptop-charging-port-repair-kuwait': '/ar/laptop-charging-port-repair-kuwait'"));
+  && locale.includes("'/laptop-charging-port-repair-kuwait': '/ar/laptop-charging-port-repair-kuwait'")
+  && locale.includes("'/laptop-plugged-in-not-charging': '/ar/laptop-plugged-in-not-charging'")
+  && locale.includes("'/ar/laptop-plugged-in-not-charging': '/laptop-plugged-in-not-charging'"));
 add('Arabic charging troubleshooting page has static FAQ answers, safe checks and links to service and English counterparts',
   arabicChargingGuide.includes("SEOEngine entityId=\"page-ar-laptop-plugged-in-not-charging\"")
   && arabicChargingGuide.includes("FAQ.map((item)")
