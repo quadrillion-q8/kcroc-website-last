@@ -979,7 +979,7 @@ export const rawGraphData: RawGraphData = {
         },
         ogType: 'website',
         schemaTypes: ['WebPage', 'BreadcrumbList', 'FAQPage', 'Service'],
-        lastModified: '2026-10-21T00:00:00+03:00',
+        lastModified: '2026-10-26T00:00:00+03:00',
         breadcrumbs: [{ name: 'الرئيسية', url: '/' }, { name: 'تصليح مدخل شحن اللابتوب', url: '/ar/laptop-charging-port-repair-kuwait' }]
       },
       featuredImage: {
