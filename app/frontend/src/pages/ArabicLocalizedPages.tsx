@@ -9,6 +9,26 @@ import {
 import { KCROC_GRAPH } from '../data/graph';
 import { SEOEngine } from '../core/components/SEOEngine';
 
+const ARABIC_SERVICES_CORE_ORDER = [
+  'srv-laptop',
+  'srv-desktop-pc',
+  'srv-macbook',
+  'srv-gaming',
+  'srv-gaming-laptop',
+  'srv-motherboard',
+  'srv-screen',
+  'srv-battery',
+  'srv-charging-port',
+  'srv-ssd-ram',
+];
+
+const ARABIC_SERVICES_FAQ_IDS = [
+  'faq-ar-pricing',
+  'faq-arabic-computer-technician',
+  'faq-ar-hours',
+  'faq-ar-laptop-repair-process',
+] as const;
+
 const HOME_SERVICES = [
   { title: 'تصليح اللابتوب', description: 'أعطال التشغيل والشحن والحرارة والشاشة والمفصلات.', path: '/ar/laptop-repair-kuwait', icon: Laptop },
   { title: 'تصليح الكمبيوتر للألعاب', description: 'تشخيص مشاكل الطاقة والرسوميات والحرارة والاستقرار.', path: '/ar/gaming-pc-repair-kuwait', icon: Gamepad2 },
@@ -190,7 +210,16 @@ export function ArabicServicesPage() {
   const services = KCROC_GRAPH.services.flatMap((service) => {
     const copy = ARABIC_SERVICE_COPY[service.slug];
     return copy ? [{ service, copy }] : [];
+  }).sort((a, b) => {
+    const rank = (id: string) => {
+      const index = ARABIC_SERVICES_CORE_ORDER.indexOf(id);
+      return index < 0 ? ARABIC_SERVICES_CORE_ORDER.length : index;
+    };
+    return rank(a.service.id) - rank(b.service.id);
   });
+  const serviceFaqs = ARABIC_SERVICES_FAQ_IDS
+    .map((id) => KCROC_GRAPH.faqs?.find((faq) => faq.id === id))
+    .filter((faq) => faq !== undefined);
 
   return (
     <>
@@ -222,6 +251,24 @@ export function ArabicServicesPage() {
             </div>
           </header>
 
+          <section aria-label="الخدمات الأساسية" className="mt-10 grid gap-4 sm:grid-cols-3">
+            <Link to="/ar/computer-repair-kuwait" className="group rounded-2xl border border-white/10 bg-slate-900/55 p-5 transition hover:border-[#c9804d]/45 hover:bg-slate-900/90">
+              <h2 className="text-lg font-extrabold text-white group-hover:text-[#efc19c]">تصليح الكمبيوتر في الكويت</h2>
+              <p className="mt-2 text-sm leading-7 text-slate-400">ابدأ من صفحة الكمبيوتر العامة لأعطال أجهزة المكتب والكمبيوتر والألعاب واللوحة الأم.</p>
+              <span className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-[#efc19c]">عرض خدمة الكمبيوتر <ChevronLeft className="h-4 w-4" aria-hidden="true" /></span>
+            </Link>
+            <Link to="/ar/laptop-repair-kuwait" className="group rounded-2xl border border-white/10 bg-slate-900/55 p-5 transition hover:border-[#c9804d]/45 hover:bg-slate-900/90">
+              <h2 className="text-lg font-extrabold text-white group-hover:text-[#efc19c]">تصليح اللابتوب في الكويت</h2>
+              <p className="mt-2 text-sm leading-7 text-slate-400">اختر صفحة اللابتوب لأعطال التشغيل والشحن والشاشة والبطارية والحرارة ولوحة المفاتيح.</p>
+              <span className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-[#efc19c]">عرض خدمة اللابتوب <ChevronLeft className="h-4 w-4" aria-hidden="true" /></span>
+            </Link>
+            <Link to="/ar/pricing" className="group rounded-2xl border border-white/10 bg-slate-900/55 p-5 transition hover:border-[#c9804d]/45 hover:bg-slate-900/90">
+              <h2 className="text-lg font-extrabold text-white group-hover:text-[#efc19c]">أسعار التصليح</h2>
+              <p className="mt-2 text-sm leading-7 text-slate-400">راجع أجور العمل الإرشادية وكيف يتم تأكيد تكلفة القطع قبل الإصلاح.</p>
+              <span className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-[#efc19c]">عرض الأسعار <ChevronLeft className="h-4 w-4" aria-hidden="true" /></span>
+            </Link>
+          </section>
+
           <section aria-labelledby="ar-services-grid" className="mt-12">
             <div className="mb-6 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
               <div>
@@ -244,6 +291,26 @@ export function ArabicServicesPage() {
                   </Link>
                 );
               })}
+            </div>
+          </section>
+
+          <section aria-labelledby="ar-services-faq-heading" className="mt-14 border-t border-white/10 pt-10">
+            <div className="mb-7 max-w-3xl">
+              <h2 id="ar-services-faq-heading" className="text-2xl font-black text-white sm:text-3xl">أسئلة شائعة عن خدمات تصليح الكمبيوتر في الكويت</h2>
+              <p className="mt-3 leading-7 text-slate-400">إجابات حول الأسعار والاستلام والتوصيل وخطوات الإصلاح قبل اختيار الخدمة المناسبة.</p>
+            </div>
+            <div className="grid gap-3 md:grid-cols-2">
+              {serviceFaqs.map((faq) => (
+                <details key={faq.id} className="group rounded-xl border border-white/10 bg-slate-900/45 p-5">
+                  <summary className="cursor-pointer list-none font-extrabold text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#efc19c]">
+                    <span className="inline-flex w-full items-center justify-between gap-4">
+                      {faq.title}
+                      <ChevronLeft className="h-4 w-4 flex-shrink-0 text-[#efc19c] transition-transform group-open:-rotate-90" aria-hidden="true" />
+                    </span>
+                  </summary>
+                  <p className="mt-4 border-t border-white/10 pt-4 text-sm leading-7 text-slate-300">{faq.answer}</p>
+                </details>
+              ))}
             </div>
           </section>
 
