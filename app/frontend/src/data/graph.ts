@@ -457,10 +457,10 @@ export const rawGraphData: RawGraphData = {
     'page-ar-macbook-screen-replacement': {
       id: 'page-ar-macbook-screen-replacement', slug: 'ar/macbook-screen-replacement-kuwait', entityType: 'WebPage', isActive: true,
       title: 'تبديل شاشة ماك بوك في الكويت | MacBook Air وPro',
-      description: 'تبديل وتصليح شاشة ماك بوك في الكويت. نفحص الشاشة والكيبل والإضاءة ونطابق رقم الموديل قبل الإصلاح. أجرة العمل من 30 د.ك + سعر الشاشة، مع استلام مجاني وضمان 30 يومًا على الإصلاحات المشمولة.',
+      description: 'تبديل شاشة ماك بوك (MacBook Air وPro) في الكويت. فحص أولي مجاني ومطابقة رقم الموديل قبل التبديل؛ أجرة العمل تبدأ من 30 د.ك + الشاشة، مع استلام وتوصيل مجاني وضمان 30 يومًا على الإصلاحات المشمولة.',
       seo: {
-        title: 'تبديل شاشة ماك بوك في الكويت | MacBook Air وPro | KCROC',
-        description: 'شاشة ماك بوك أو MacBook Air أو Pro مكسورة أو سوداء أو تومض؟ نفحص الشاشة والكيبل والإضاءة ونطابق الموديل قبل التبديل. أجرة العمل من 30 د.ك + الشاشة، مع استلام مجاني وضمان 30 يومًا على الإصلاحات المشمولة.',
+        title: 'تبديل شاشة ماك بوك في الكويت | Air وPro | فحص مجاني | KCROC',
+        description: 'شاشة ماك بوك (MacBook Air وPro) مكسورة أو سوداء أو تومض؟ فحص أولي مجاني ومطابقة للموديل. أجرة العمل من 30 د.ك + الشاشة، مع استلام مجاني وضمان 30 يومًا على الإصلاحات المشمولة.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/ar/macbook-screen-replacement-kuwait', locale: 'ar_KW',
         alternates: { 'ar-KW': 'https://www.computerrepairkuwait.com/ar/macbook-screen-replacement-kuwait', 'en-KW': 'https://www.computerrepairkuwait.com/macbook-screen-replacement-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/macbook-screen-replacement-kuwait' },
         ogType: 'website',
