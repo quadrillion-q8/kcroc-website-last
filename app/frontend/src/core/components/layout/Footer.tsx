@@ -87,6 +87,13 @@ const ARABIC_AREA_LABELS: Record<string, string> = {
   '/location/mangaf': 'المنقف',
 };
 
+const ARABIC_TRUST_LABELS: Record<string, string> = {
+  'Privacy Protected': 'حماية الخصوصية',
+  'Free Pickup & Delivery': 'استلام وتوصيل مجاني',
+  '30-Day Repair Warranty': 'ضمان 30 يومًا على الإصلاح',
+  'ESD-Safe Lab': 'مختبر آمن ضد الكهرباء الساكنة',
+};
+
 const TRUST_ICON_MAP: Record<string, React.ElementType> = {
   ShieldCheck,
   Truck,
@@ -169,7 +176,7 @@ export function Footer() {
                   className="flex items-center justify-center gap-2 text-[11px] sm:text-xs font-semibold text-slate-400 uppercase tracking-[0.12em] text-center"
                 >
                   {Icon && <Icon className="w-4 h-4 text-[#dfa86f] shrink-0" aria-hidden="true" />}
-                  <span>{badge.title}</span>
+                  <span>{isArabicRoute ? (ARABIC_TRUST_LABELS[badge.title] ?? badge.title) : badge.title}</span>
                 </div>
               );
             })}
@@ -224,7 +231,7 @@ export function Footer() {
             {business.openingHours && (
               <p className="flex items-center gap-2 text-slate-500 text-xs mb-5">
                 <Clock className="w-4 h-4 text-[#dfa86f] flex-shrink-0" aria-hidden="true" />
-                {business.openingHours}
+                {isArabicRoute && business.openingHours === 'Open daily 10:00 AM – 10:00 PM' ? 'يوميًا من 10 صباحًا إلى 10 مساءً' : business.openingHours}
               </p>
             )}
 
