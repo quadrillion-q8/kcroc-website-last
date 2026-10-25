@@ -14,7 +14,7 @@ const norm = (s) =>
     .replace(/\s+/g, ' ');
 const has = (source, needle) => norm(source).includes(norm(needle));
 
-const [app, graph, seoProjection, locale, pricingPage, sitemap, hero, reviews, footer, nearMe, nearMeAr, locations, hawalli, computerRepair, about, booking, arabicCommercial, serviceAreas, englishPricing] = await Promise.all([
+const [app, graph, seoProjection, locale, pricingPage, sitemap, hero, reviews, footer, header, mobileMenu, stickyMobileCTA, navigationCompiler, rootLayout, nearMe, nearMeAr, locations, hawalli, computerRepair, about, booking, arabicCommercial, serviceAreas, englishPricing] = await Promise.all([
   read('App.tsx'),
   read('data/graph.ts'),
   read('data/seoGraph.generated.ts'),
@@ -24,6 +24,11 @@ const [app, graph, seoProjection, locale, pricingPage, sitemap, hero, reviews, f
   read('components/home/Hero.tsx'),
   read('components/home/Reviews.tsx'),
   read('core/components/layout/Footer.tsx'),
+  read('core/components/layout/Header.tsx'),
+  read('core/components/layout/MobileMenu.tsx'),
+  read('components/home/StickyMobileCTA.tsx'),
+  read('core/navigation/NavigationCompiler.ts'),
+  read('core/components/layout/RootLayout.tsx'),
   read('pages/NearMe.tsx'),
   read('pages/NearMeAR.tsx'),
   read('pages/LocationDeepTemplate.tsx'),
@@ -162,6 +167,13 @@ add('Arabic MacBook screen page targets Arabic-script and bilingual search inten
 add('Arabic MacBook screen page contains symptom diagnostics, example model numbers, and assembly-versus-panel guidance', arabicCommercial.includes('macbook-screen-model-numbers') && arabicCommercial.includes('A2337') && arabicCommercial.includes('A2681') && arabicCommercial.includes('A3113 / A3114') && arabicCommercial.includes('macbook-screen-assembly-options') && arabicCommercial.includes('هذه أسباب محتملة وليست تشخيصًا نهائيًا'));
 add('Arabic MacBook screen page avoids universal True Tone calibration promises', arabicCommercial.includes('لا نعد بأن كل ميزة أو معايرة ستعمل في كل جهاز') && arabicCommercial.includes('ولا نعد بأنه أرخص أو ممكن لكل جهاز'));
 add('Arabic MacBook screen page clarifies labor-only pricing, Hawalli lab and Kuwait-wide pickup', arabicCommercial.includes('أجرة العمل من 30 د.ك لا تشمل الشاشة نفسها') && arabicCommercial.includes('مجمع الملا — السرداب، محل 19') && arabicCommercial.includes('هذه مناطق خدمة وليست فروعًا منفصلة'));
+add('Arabic MacBook screen diagnostics explain qualified Flexgate/Dustgate and backlight-board possibilities', arabicCommercial.includes('Flexgate') && arabicCommercial.includes('Dustgate') && arabicCommercial.includes('Backlight IC') && arabicCommercial.includes('Lid Angle Sensor') && arabicCommercial.includes('هذه أسباب محتملة وليست تشخيصًا نهائيًا'));
+add('Arabic MacBook model table includes Air, Apple Silicon Pro and legacy Intel A-numbers with display-family notes', arabicCommercial.includes('A2337') && arabicCommercial.includes('A2681') && arabicCommercial.includes('A2941') && arabicCommercial.includes('A3113 / A3114') && arabicCommercial.includes('A1706 / A1708 / A1989 / A2159 / A2251 / A2289') && arabicCommercial.includes('A1707 / A1990') && arabicCommercial.includes('A2141') && arabicCommercial.includes('Liquid Retina XDR'));
+add('Arabic MacBook service schema uses canonical business entity and labor-only AggregateOffer/catalog', arabicCommercial.includes("name: 'تبديل وتصليح شاشة ماك بوك (MacBook) في الكويت'") && arabicCommercial.includes("'@type': 'AggregateOffer'") && arabicCommercial.includes('lowPrice: 30') && arabicCommercial.includes('hasOfferCatalog') && arabicCommercial.includes("provider: { '@id': `${business.websiteUrl}/#business` }") && arabicCommercial.includes('تبديل شاشة MacBook Air') && arabicCommercial.includes('تبديل شاشة MacBook Pro') && arabicCommercial.includes('دائرة الإضاءة الخلفية'));
+add('Arabic MacBook page image captions distinguish the MacBook diagnostic photo from generic laptop screen work', arabicCommercial.includes('فني يفحص جهاز MacBook مفتوحًا في مختبر KCROC بحولي') && arabicCommercial.includes('صورة توضيحية لفك وفحص تجميعة شاشة لابتوب') && arabicCommercial.includes('loading="lazy"'));
+add('Arabic routes localize the visible desktop header, pickup CTA, and skip link with RTL language context', header.includes("isArabicRoute ? 'احجز استلام مجاني' : 'Book Free Pickup'") && header.includes('dir={isArabicRoute ? "rtl" : undefined}') && navigationCompiler.includes("nav_pricing: { label: 'الأسعار'") && navigationCompiler.includes("nav_locations: { label: 'مناطق الخدمة'") && rootLayout.includes('تخطي إلى المحتوى الرئيسي'));
+add('Arabic routes localize mobile navigation, sticky contact CTA and footer links/address', mobileMenu.includes('راسل فنيًا عبر واتساب') && mobileMenu.includes('dir={isArabicRoute ? "rtl" : undefined}') && stickyMobileCTA.includes('سعر تبديل شاشة ماك بوك') && stickyMobileCTA.includes('اتصل بـ KCROC') && footer.includes('تبديل شاشة ماك بوك') && footer.includes('شارع ابن خلدون، مجمع الملا، السرداب، محل 19، حولي، الكويت') && footer.includes('عرض جميع الخدمات'));
+
 add('Arabic Farwaniya service-area structured data points to the Hawalli workshop, not a fake branch', arabicCommercial.includes("const farwaniyaServiceSchema = slug === 'computer-repair-farwaniya'") && arabicCommercial.includes("name: 'KCROC repair workshop — Hawalli'") && arabicCommercial.includes("name: 'Al Farwaniyah Governorate, Kuwait'") && graph.includes('title: "تصليح كمبيوتر الفروانية | فحص مجاني واستلام | KCROC"'));
 add('Farwaniya service-area metadata is synchronized and does not imply a local walk-in branch',
   has(graph, "title: 'Laptop & Computer Repair Farwaniya | Free Pickup | KCROC'")
