@@ -1908,37 +1908,37 @@ export const rawGraphData: RawGraphData = {
           id: 'hinge-separation',
           title: 'Hinge Separation & Chassis Cracking',
           severity: 'high',
-          description: 'The screen hinge becomes stiff and snaps the plastic casing or bezel (very common on HP Envy and Dell Inspiron). We adjust tension and reconstruct the mounts using structural resin.'
+          description: 'A stiff or misaligned hinge can place stress on the bezel and chassis mounts. We inspect hinge resistance, mount damage and nearby display cables before recommending reinforcement, a compatible part or a larger assembly replacement.'
         },
         {
           id: 'broken-dc-jack',
-          title: 'Broken DC Charging Jack',
+          title: 'Loose or Damaged Charging Connector',
           severity: 'high',
-          description: 'The charger pin is loose, bent, or pushed inside the laptop, meaning it only charges at a specific angle. We micro-solder a new DC jack directly to the board.'
+          description: 'Charging only at a certain cable angle can point to a worn connector, damaged cable or adapter, or a fault in the board-level power path. We test the relevant components before deciding whether connector repair or another repair is appropriate.'
         },
         {
           id: 'cracked-screen',
-          title: 'Cracked or Flickering Screen',
+          title: 'Cracked, Black or Flickering Screen',
           severity: 'high',
-          description: 'Physical impact or display cable wear near the hinge causes lines, flickering, or a shattered display. We replace the LCD/IPS/OLED panel with an OEM-grade match.'
+          description: 'A damaged panel, display cable, backlight circuit or related board fault can cause lines, flicker or a black display. We identify the likely fault and verify panel compatibility before quoting a screen replacement.'
         },
         {
           id: 'overheating-loud-fans',
           title: 'Overheating & Loud Fans',
           severity: 'medium',
-          description: 'Dust-clogged heatsinks cause thermal throttling and fan grinding. We perform deep ultrasonic cleaning, lubricate the fan bearings, and re-paste the CPU/GPU.'
+          description: 'Blocked heatsinks can restrict airflow, while fan wear, thermal-contact problems, workload and ambient temperature can also affect cooling. We inspect the cooling system and recommend cleaning, fan replacement or other action based on the findings.'
         },
         {
           id: 'running-slow',
-          title: 'Running Extremely Slow (100% Disk Usage)',
+          title: 'Slow Startup, Freezing or High Disk Usage',
           severity: 'medium',
           description: 'Slow startup or freezing can involve drive health, limited memory, background software, thermal throttling or an operating-system problem. We check the likely cause before recommending an SSD upgrade or software service.'
         },
         {
           id: 'liquid-spills-laptop',
-          title: 'Liquid Spills on Keyboard',
+          title: 'Liquid Spilled on the Laptop',
           severity: 'critical',
-          description: 'Coffee or water on the keyboard. We fully strip the board and ultrasonic clean it to prevent corrosion before short circuits kill the motherboard.'
+          description: 'Liquid can leave residue and cause corrosion or short circuits. Power the laptop off, disconnect its charger and do not keep trying to start or charge it. Prompt inspection can assess the damage, but cleaning cannot guarantee that every component or file will be recoverable.'
         },
         {
           id: 'laptop-dead-no-power',
@@ -1950,19 +1950,19 @@ export const rawGraphData: RawGraphData = {
           id: 'keyboard-failure',
           title: 'Keyboard Keys Sticking or Not Working',
           severity: 'medium',
-          description: 'Specific keys sticking from debris or failing from liquid exposure. We replace the entire keyboard assembly (top case or riveted layout depending on model).'
+          description: 'Sticking or unresponsive keys can result from wear, debris, liquid exposure or a keyboard-circuit fault. We inspect the model and damage to determine whether cleaning, keyboard replacement or a related repair is suitable.'
         },
         {
           id: 'battery-drain-laptop',
           title: 'Battery Draining Fast or Swelling',
           severity: 'high',
-          description: 'Aging lithium cells cause short runtimes or dangerous physical chassis swelling. We safely remove swollen batteries and install certified replacements.'
+          description: 'Short runtime can indicate battery wear, high system load or a charging issue. A swollen battery is a safety concern: stop using or charging the laptop and arrange professional handling. Replacement compatibility depends on the exact model.'
         },
         {
           id: 'wifi-dropping',
-          title: 'WiFi Dropping or Missing',
+          title: 'Wi-Fi Dropping or Missing',
           severity: 'low',
-          description: 'The WiFi card fails due to heat or driver conflicts (common with Realtek/MediaTek chips). We upgrade faulty cards to stable Intel Wi-Fi 6 modules.'
+          description: 'Wi-Fi problems can come from drivers, signal conditions, antenna connections, power settings or a faulty wireless card. We separate software and network causes from hardware faults before recommending a compatible repair or replacement.'
         }
       ],
 
@@ -1986,31 +1986,31 @@ export const rawGraphData: RawGraphData = {
       },
 
       repairExamples: {
-        disclaimer: 'These are representative scenarios illustrating common fault categories for Windows laptops.',
+        disclaimer: 'These are illustrative diagnostic scenarios, not verified customer case studies or guaranteed outcomes. The appropriate repair depends on the inspected model, damage, parts availability and quote approval.',
         items: [
           {
             id: 'hp-envy-hinge',
-            title: 'HP Envy: Hinge Snapped and Screen Bezel Popped Open',
-            symptoms: 'The screen was incredibly stiff to open, and eventually the lower left corner of the screen bezel popped open, exposing the internal display cables.',
-            diagnosis: 'The factory hinge nut was over-tightened, causing the metal hinge to rip the threaded brass inserts completely out of the plastic chassis.',
-            repair: 'We loosened the hinge tension to the correct spec and rebuilt the stripped brass inserts into the chassis using industrial structural resin.',
-            outcome: 'The laptop opened and closed smoothly with one hand, saving the customer from buying an expensive complete display assembly.'
+            title: 'Hinge Is Stiff and the Chassis Is Separating',
+            symptoms: 'Opening the lid takes unusual force, or the bezel and lower chassis begin to separate near a hinge.',
+            diagnosis: 'Possible causes include a binding hinge, cracked mounting points, damaged inserts, a stressed display cable or broader lid/chassis damage. Inspection is needed to distinguish them.',
+            repair: 'Check hinge resistance, mounting points, bezel and nearby cables. Depending on the damage, the quote may cover reinforcement, a compatible replacement part or a larger assembly.',
+            outcome: 'A targeted mount repair may be possible when the surrounding chassis is sound. Extensive cracking or damaged parts can make a replacement the more suitable option.'
           },
           {
             id: 'dell-inspiron-dc-jack',
-            title: 'Dell Inspiron: Wouldn\'t Charge Unless Cable Was Held at an Angle',
-            symptoms: 'The laptop would only charge if the user applied upward pressure to the charging cable. Eventually, it stopped charging entirely.',
-            diagnosis: 'The internal DC charging jack had broken off its solder pads on the motherboard due to repeated physical stress.',
-            repair: 'We desoldered the broken port, cleaned the traces, and micro-soldered a brand-new, reinforced DC jack directly to the board.',
-            outcome: 'The laptop charged perfectly without needing a 150+ KWD motherboard replacement. Total repair cost: 25 KWD.'
+            title: 'Laptop Charges Only When the Cable Is Held at an Angle',
+            symptoms: 'Charging is intermittent when the cable moves, or the device stops charging even though the adapter appears connected.',
+            diagnosis: 'Potential causes include the adapter or cable, a worn DC jack or USB-C port, damaged connector pads, or a fault in the board-level input and charging circuitry.',
+            repair: 'Test the adapter and connector, then inspect the relevant power path. Connector replacement or board-level repair is recommended only when supported by the diagnosis.',
+            outcome: 'Charging is retested after the approved work when practical. The final repair and cost depend on the confirmed fault, model and extent of board damage.'
           },
           {
             id: 'lenovo-ideapad-slow',
-            title: 'Lenovo IdeaPad: Taking 5 Minutes to Boot Up',
-            symptoms: 'The laptop was unusable. Task Manager showed 100% Disk Usage constantly, and opening Chrome froze the system for a full minute.',
-            diagnosis: 'The 1TB mechanical hard drive was failing mechanically, and 4GB of RAM was insufficient for modern Windows 11.',
-            repair: 'We cloned the failing HDD byte-for-byte to a fast 1TB NVMe SSD and upgraded the RAM to 16GB.',
-            outcome: 'The laptop booted in 12 seconds. All the customer\'s original files, programs, and passwords were right where they left them, but the machine ran 10x faster.'
+            title: 'Laptop Takes Several Minutes to Start',
+            symptoms: 'Startup takes a long time, applications freeze, or the system spends extended periods under heavy disk activity.',
+            diagnosis: 'Check storage health, memory pressure, startup applications, temperature and operating-system condition before concluding that a drive is failing.',
+            repair: 'If storage failure or a performance bottleneck is confirmed, discuss compatible upgrades and data-migration options. Any migration plan should account for drive health, encryption and a current backup.',
+            outcome: 'The improvement depends on the actual bottleneck and system condition. Boot time cannot be guaranteed, and data migration or recovery from a failing drive may be incomplete.'
           }
         ]
       },
@@ -2030,42 +2030,42 @@ export const rawGraphData: RawGraphData = {
         {
           id: 'faq-fix-broken-hinge',
           title: 'Can you fix a broken hinge without replacing the whole screen?',
-          answer: 'Yes. Most shops will quote a full "display assembly replacement" when a hinge breaks. We actually reconstruct the broken plastic mounts inside the chassis using industrial resin and loosen the over-tightened hinge to prevent it from happening again, saving you a massive amount of money.'
+          answer: 'Sometimes. We inspect the hinge, chassis mounts, bezel and display cables, then quote a suitable repair or replacement based on the damage. A screen assembly does not always need replacing, but not every broken mount or chassis is economically repairable.'
         },
         {
           id: 'faq-dc-jack-repair',
           title: 'My laptop only works when plugged in at a specific angle. Can this be fixed?',
-          answer: 'Yes. This is a classic broken DC jack. Rather than replacing the motherboard, we micro-solder a new charging port directly to the board.'
+          answer: 'It may be repairable, but the angle symptom does not prove the port is the only fault. We check the adapter, connector and relevant power path before quoting connector repair, board-level work or another solution.'
         },
         {
           id: 'faq-ssd-upgrade-data',
           title: 'Will an SSD upgrade delete my files?',
-          answer: 'No. We perform a 1-to-1 byte clone of your existing hard drive to the new SSD. Your laptop will look exactly the same—same desktop, same files, same passwords—it will just run up to 10x faster.'
+          answer: 'An SSD upgrade does not automatically require erasing the old drive, but cloning and migration are not risk-free. Back up important files first. If the source drive is healthy and readable, we can discuss migration options; a failing or encrypted drive may limit what can be transferred. We cannot guarantee that every file, application, session or password will transfer unchanged.'
         },
         {
           id: 'faq-screen-replacement-time',
           title: 'How long does a screen replacement take?',
-          answer: 'Usually same-day if the panel is in stock. We carry standard 15.6" and 14" panels (FHD, IPS, OLED) for Dell, HP, Lenovo, Acer, and ASUS.'
+          answer: 'Timing depends on the exact laptop model, the correct compatible panel and parts availability. Same-day repair may be possible when the required panel is in stock, but we confirm the expected timing after checking the model and fault.'
         },
         {
           id: 'faq-overheating-fan-replace',
           title: 'My laptop is overheating and shutting down. Do I need a new fan?',
-          answer: 'Not always. Often it just needs a deep ultrasonic clean of the heatsink fins and fresh thermal paste on the CPU. If the fan bearing is actually grinding or seized, we will replace the fan assembly.'
+          answer: 'Not always. Possible causes include blocked airflow, a worn fan, poor thermal contact, demanding workloads or another hardware fault. We inspect the cooling system before recommending cleaning, fan replacement or further diagnosis.'
         },
         {
           id: 'faq-surface-repair',
           title: 'Do you repair Microsoft Surface laptops?',
-          answer: 'Yes. Surface devices require specialized heat-separation tools to open without cracking the screen. We handle Surface Pro battery replacements, screen replacements, and Windows recovery.'
+          answer: 'We assess selected Surface models for faults such as battery, display and Windows recovery problems. These devices can require model-specific opening tools and compatible parts, so the exact model and issue need to be checked before we confirm the available repair.'
         },
         {
           id: 'faq-ram-upgrade',
           title: 'Can you upgrade the RAM in my laptop?',
-          answer: 'It depends on the model. Most business and gaming laptops have upgradeable SO-DIMM slots, but many modern ultrabooks (like Dell XPS or HP Spectre) have RAM soldered directly to the board. Contact us with your model number and we can check instantly.'
+          answer: 'It depends on the exact model. Some laptops have replaceable memory modules, while others use soldered RAM that cannot be upgraded conventionally. Send us the model number and we can check compatibility before recommending a service.'
         },
         {
           id: 'faq-no-fix-no-fee',
-          title: 'What happens if you can\'t fix my laptop?',
-          answer: 'Under our No Fix, No Fee policy, if the laptop is catastrophically damaged (like a severely burned motherboard) and uneconomical to repair, we return it to you and you pay absolutely nothing for the diagnostic time.'
+          title: 'What happens if you cannot fix my laptop?',
+          answer: 'We explain the diagnosis and available options before paid repair work begins. Under KCROC’s stated No Fix, No Fee policy, if the device is not repairable or repair is uneconomical under that policy, you do not pay the diagnostic or repair labour fee.'
         }
       ],
 
