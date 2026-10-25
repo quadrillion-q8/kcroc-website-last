@@ -24,11 +24,12 @@ const SERVICE_FAQ_IDS = ['faq-cost', 'faq-pick-and-drop', 'faq-warranty', 'faq-n
 
 const getServiceSummary = (service: (typeof KCROC_GRAPH.services)[number]) => {
   const source = (service.shortDescription || service.description || '').trim();
-  const sentences = source.split(/(?<=[.!?])\\s+/).filter(Boolean);
-  const summary = sentences.slice(0, 2).join(' ').trim();
+  const sentences = source.match(/[^.!?]+[.!?]?/g) || [source];
+  const summary = sentences.slice(0, 2).join('').trim();
   if (summary.length <= 260) return summary;
-  const shortened = summary.slice(0, 257).replace(/\\s+\\S*$/, '').trimEnd();
-  return shortened + '…';
+  const shortened = summary.slice(0, 257).trimEnd();
+  const lastSpace = shortened.lastIndexOf(' ');
+  return (lastSpace > 0 ? shortened.slice(0, lastSpace) : shortened) + '…';
 };
 
 const ICON_MAP: Record<string, React.ElementType> = {
