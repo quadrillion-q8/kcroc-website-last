@@ -332,7 +332,7 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
         )}
 
         {((entity.deviceTypes && entity.deviceTypes.length > 0) || (entity.brands && entity.brands.length > 0)) && (
-          <section className="max-w-7xl mx-auto px-6 py-12 border-t border-slate-800/50 relative z-10" aria-label="Supported laptop types and brands">
+          <section className="max-w-7xl mx-auto px-6 py-12 border-t border-slate-800/50 relative z-10" aria-label="Supported device types and brands">
             {entity.deviceTypes && entity.deviceTypes.length > 0 && (
               <div className="mb-8">
                 <h2 id="devices-we-cover-heading" className="text-2xl font-bold mb-6 text-white flex items-center gap-3">
