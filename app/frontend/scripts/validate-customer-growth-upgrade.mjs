@@ -136,7 +136,8 @@ add('Footer service-area links are separated into an accessible labelled list',
 
 add('Service headings, repair cards and device chips preserve readable text boundaries',
   serviceTemplate.includes("{' '}") &&
-  serviceTemplate.includes('<article key={issue.id}') &&
+  serviceTemplate.includes('key={issue.id}') &&
+  serviceTemplate.includes('aria-labelledby={`common-issue-${entity.id}-${issue.id}`}') &&
   serviceTemplate.includes('<ul role="list" aria-label="Supported device types"') &&
   serviceTemplate.includes('<ul role="list" aria-label="Brands serviced"') &&
   serviceTemplate.includes('aria-labelledby="service-faqs-heading"'));
