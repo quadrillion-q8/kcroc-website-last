@@ -67,6 +67,15 @@ add('Laptop repair page has intent-matched symptom links to existing guides and 
 add('Brand repair pages expose a direct link to transparent pricing',
   brandTemplate.includes('to="/pricing"') && brandTemplate.includes('View Repair Prices'));
 
+add('Pricing page has responsive quick-jump navigation to all four price categories',
+  englishPricing.includes('Jump to a price category') &&
+  englishPricing.includes('href="#pricing-diagnostics"') &&
+  englishPricing.includes('href="#pricing-thermal"') &&
+  englishPricing.includes('href="#pricing-hardware"') &&
+  englishPricing.includes('href="#pricing-motherboard"') &&
+  englishPricing.includes('id={`pricing-${category.anchor}`}'));
+
+
 add('Laptop outcome copy uses diagnostic checks rather than guaranteed numeric performance claims',
   graph.includes('These are diagnostic and post-repair checks, not guaranteed before/after results.') &&
   !graph.includes('saving you up to 70%.') &&
