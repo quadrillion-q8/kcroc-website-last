@@ -271,9 +271,9 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
         )}
 
         {entity.whyChooseUs && entity.whyChooseUs.length > 0 && (
-          <section className="max-w-7xl mx-auto px-6 py-12 border-t border-slate-800/50 relative z-10">
-            <h2 className="text-2xl font-bold mb-8 text-white flex items-center gap-3">
-              <ShieldCheck className="w-6 h-6 text-cyan-400" /> Why Choose Us
+          <section className="max-w-7xl mx-auto px-6 py-12 border-t border-slate-800/50 relative z-10" aria-labelledby="why-choose-us-heading">
+            <h2 id="why-choose-us-heading" className="text-2xl font-bold mb-8 text-white flex items-center gap-3">
+              <ShieldCheck className="w-6 h-6 text-cyan-400" aria-hidden="true" /> Why Choose Us
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
               {entity.whyChooseUs.map((point, idx) => (
@@ -314,8 +314,10 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
         )}
 
         {entity.coreFeatures && entity.coreFeatures.length > 0 && (
-          <section className="max-w-7xl mx-auto px-6 py-12 border-t border-slate-800/50 relative z-10">
-            <h2 className="text-2xl font-bold mb-8 text-white">Service Capabilities</h2>
+          <section className="max-w-7xl mx-auto px-6 py-12 border-t border-slate-800/50 relative z-10" aria-labelledby="service-capabilities-heading">
+            <h2 id="service-capabilities-heading" className="text-2xl font-bold mb-8 text-white">
+              {entity.id === 'srv-laptop' ? 'Repair Capabilities' : 'Service Capabilities'}
+            </h2>
             {getContentImage('coreFeatures') && <ContentImage image={getContentImage('coreFeatures')!} />}
             <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
               {entity.coreFeatures.map((feature, idx) => (
@@ -329,11 +331,11 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
         )}
 
         {((entity.deviceTypes && entity.deviceTypes.length > 0) || (entity.brands && entity.brands.length > 0)) && (
-          <section className="max-w-7xl mx-auto px-6 py-12 border-t border-slate-800/50 relative z-10">
+          <section className="max-w-7xl mx-auto px-6 py-12 border-t border-slate-800/50 relative z-10" aria-label="Supported laptop types and brands">
             {entity.deviceTypes && entity.deviceTypes.length > 0 && (
               <div className="mb-8">
-                <h2 className="text-2xl font-bold mb-6 text-white flex items-center gap-3">
-                  <Monitor className="w-6 h-6 text-cyan-400" /> Devices We Cover
+                <h2 id="devices-we-cover-heading" className="text-2xl font-bold mb-6 text-white flex items-center gap-3">
+                  <Monitor className="w-6 h-6 text-cyan-400" aria-hidden="true" /> Devices We Cover
                 </h2>
                 <div className="flex flex-wrap gap-3">
                   {entity.deviceTypes.map((device, idx) => (
@@ -376,27 +378,48 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
         )}
 
         {entity.commonIssues && entity.commonIssues.length > 0 && (
-          <section className="max-w-7xl mx-auto px-6 py-12 border-t border-slate-800/50 relative z-10">
-            <h2 className="text-2xl font-bold mb-8 text-white flex items-center gap-3">
-              <AlertTriangle className="w-6 h-6 text-cyan-400" /> Common Problems We Fix
+          <section
+            className="max-w-7xl mx-auto px-6 py-12 border-t border-slate-800/50 relative z-10"
+            aria-labelledby="common-problems-heading"
+          >
+            <h2 id="common-problems-heading" className="text-2xl font-bold mb-8 text-white flex items-center gap-3">
+              <AlertTriangle className="w-6 h-6 text-cyan-400" aria-hidden="true" />
+              Common Problems We Fix
             </h2>
             {getContentImage('commonIssues') && <ContentImage image={getContentImage('commonIssues')!} />}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
               {entity.commonIssues.map((issue) => (
-                <div
+                <article
                   key={issue.id}
+                  aria-labelledby={`common-issue-${entity.id}-${issue.id}`}
                   className={`p-6 rounded-2xl border backdrop-blur-sm ${severityStyles[issue.severity] || severityStyles.low}`}
                 >
-                  <div className="flex items-center justify-between gap-3 mb-3">
-                    <h3 className="text-lg font-bold text-white">{issue.title}</h3>
+                  <div className="flex items-start justify-between gap-3 mb-4">
+                    <h3 id={`common-issue-${entity.id}-${issue.id}`} className="text-lg font-bold text-white">
+                      {issue.title}
+                    </h3>
                     {!isScreenService && (
                       <span className="text-[10px] uppercase tracking-wider font-black px-2.5 py-1 rounded-full bg-black/30 flex-shrink-0">
                         {issue.severity}
                       </span>
                     )}
                   </div>
-                  <p className="text-sm leading-relaxed opacity-90">{issue.description}</p>
-                </div>
+                  {entity.id === 'srv-laptop' && issue.problem && issue.labFix && issue.service ? (
+                    <div className="space-y-3 text-sm leading-relaxed">
+                      <p className="text-slate-300">
+                        <strong className="font-bold text-cyan-300">Problem:</strong> {issue.problem}
+                      </p>
+                      <p className="text-slate-300">
+                        <strong className="font-bold text-cyan-300">Lab approach:</strong> {issue.labFix}
+                      </p>
+                      <p className="text-slate-400">
+                        <strong className="font-bold text-slate-200">Service:</strong> {issue.service}
+                      </p>
+                    </div>
+                  ) : (
+                    <p className="text-sm leading-relaxed opacity-90">{issue.description}</p>
+                  )}
+                </article>
               ))}
             </div>
           </section>
@@ -446,24 +469,40 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
         )}
 
         {entity.process && entity.process.length > 0 && (
-          <section className="max-w-7xl mx-auto px-6 py-12 border-t border-slate-800/50 relative z-10">
-            <h2 className="text-2xl font-bold mb-8 text-white">Our Repair Process</h2>
+          <section
+            className="max-w-7xl mx-auto px-6 py-12 border-t border-slate-800/50 relative z-10"
+            aria-labelledby="repair-process-heading"
+          >
+            <h2 id="repair-process-heading" className="text-2xl font-bold mb-8 text-white">Our Repair Process</h2>
             {getContentImage('process') && <ContentImage image={getContentImage('process')!} />}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {entity.process.map((step) => (
-                <div key={step.step} className="relative bg-slate-900/50 backdrop-blur-sm p-6 rounded-2xl border border-slate-800">
+                <article key={step.step} className="relative bg-slate-900/50 backdrop-blur-sm p-6 rounded-2xl border border-slate-800">
                   <span className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-cyan-500 text-slate-950 font-black text-sm mb-4">
                     {step.step}
                   </span>
                   <h3 className="text-white font-bold mb-2">{step.title}</h3>
                   <p className="text-sm text-slate-400 leading-relaxed">{step.description}</p>
-                </div>
+                  {entity.id === 'srv-laptop' && step.step === 2 && entity.inspectionChecklist && entity.inspectionChecklist.length > 0 && (
+                    <div className="mt-5 border-t border-slate-700 pt-4">
+                      <h4 className="text-sm font-bold text-cyan-300 mb-3">What We Check</h4>
+                      <ul role="list" className="space-y-2">
+                        {entity.inspectionChecklist.map((item, idx) => (
+                          <li key={idx} className="flex items-start gap-2 text-xs text-slate-300 leading-relaxed">
+                            <ShieldCheck className="w-4 h-4 text-cyan-400 flex-shrink-0 mt-0.5" aria-hidden="true" />
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </article>
               ))}
             </div>
           </section>
         )}
 
-        {entity.inspectionChecklist && entity.inspectionChecklist.length > 0 && (
+        {entity.id !== 'srv-laptop' && entity.inspectionChecklist && entity.inspectionChecklist.length > 0 && (
           <section className="max-w-7xl mx-auto px-6 py-12 border-t border-slate-800/50 relative z-10">
             <h2 className="text-2xl font-bold mb-8 text-white flex items-center gap-3">
               <ShieldCheck className="w-6 h-6 text-cyan-400" /> What We Check
@@ -595,30 +634,38 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
           </section>
         )}
 
-        <CoreRepairPillars context="Use the main computer repair hub for broader PC and device faults, or the focused laptop repair hub when the device is a laptop." />
+        <CoreRepairPillars
+          context={entity.id === 'srv-laptop'
+            ? 'Start with the broader computer-repair hub or explore motherboard-level repair for a focused board-fault diagnosis.'
+            : 'Use the main computer repair hub for broader PC and device faults, or the focused laptop repair hub when the device is a laptop.'}
+          excludeLaptopService={entity.id === 'srv-laptop'}
+        />
 
         {relatedLocationIds.length > 0 && (
-          <section className="max-w-7xl mx-auto px-6 py-12 border-t border-slate-800/50 relative z-10">
-            <h2 className="text-2xl font-bold mb-3 text-white flex items-center gap-3">
-              <MapPin className="w-6 h-6 text-cyan-400" /> Where We Handle This Repair
+          <section className="max-w-7xl mx-auto px-6 py-12 border-t border-slate-800/50 relative z-10" aria-labelledby="repair-service-areas-heading">
+            <h2 id="repair-service-areas-heading" className="text-2xl font-bold mb-3 text-white flex items-center gap-3">
+              <MapPin className="w-6 h-6 text-cyan-400" aria-hidden="true" /> Where We Handle This Repair
             </h2>
             <p className="text-sm text-slate-400 mb-7 max-w-3xl">
               These are the Kuwait service areas most directly connected to this repair type. Pickup is arranged through KCROC rather than requiring a walk-in visit.
             </p>
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
-              {relatedLocationIds.map((id) => {
-                const location = KCROC_GRAPH.locations.find((item) => item.id === id);
-                return location ? (
-                  <Link
-                    key={id}
-                    to={`/location/${location.slug}`}
-                    className="rounded-xl border border-slate-800 bg-slate-900/50 px-4 py-4 text-sm font-bold text-slate-200 transition-colors hover:border-cyan-500/40 hover:text-cyan-300"
-                  >
-                    {location.title}
-                  </Link>
-                ) : null;
-              })}
-            </div>
+            <nav aria-labelledby="repair-service-areas-heading">
+              <ul role="list" className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+                {relatedLocationIds.map((id) => {
+                  const location = KCROC_GRAPH.locations.find((item) => item.id === id);
+                  return location ? (
+                    <li key={id}>
+                      <Link
+                        to={`/location/${location.slug}`}
+                        className="block h-full rounded-xl border border-slate-800 bg-slate-900/50 px-4 py-4 text-sm font-bold text-slate-200 transition-colors hover:border-cyan-500/40 hover:text-cyan-300"
+                      >
+                        {location.title}
+                      </Link>
+                    </li>
+                  ) : null;
+                })}
+              </ul>
+            </nav>
           </section>
         )}
 
