@@ -14,17 +14,24 @@ export const StickyMobileCTA = () => {
   // Keep the visible promise identical to the action behind it. The sticky
   // bar always opens WhatsApp, so location pages explicitly say "via WhatsApp"
   // rather than implying a direct booking-form submission.
-  const ctaLabel =
-    pathname === '/pricing' ? 'Get Exact Price' :
-    pathname.includes('battery') ? 'Battery Help' :
-    (pathname.startsWith('/ar/') && pathname.includes('screen')) ? 'سعر تبديل الشاشة' :
-    pathname.includes('screen') ? 'Get Screen Quote' :
-    pathname.includes('gaming') ? 'Gaming Help' :
-    pathname.includes('motherboard') ? 'Board Repair' :
-    pathname.includes('macbook') ? 'MacBook Help' :
-    pathname.startsWith('/location/') ? 'Book via WhatsApp' :
-    pathname.startsWith('/guides/') || pathname.startsWith('/blog/') ? 'Ask a Technician' :
-    'WhatsApp a Technician';
+  const isArabicRoute = pathname === '/ar' || pathname.startsWith('/ar/') || pathname.startsWith('/blog/ar/') || pathname.startsWith('/guides/ar/');
+  const ctaLabel = isArabicRoute
+    ? pathname.includes('macbook') && pathname.includes('screen') ? 'سعر تبديل شاشة ماك بوك' :
+      pathname.includes('battery') ? 'مساعدة في البطارية' :
+      pathname.includes('screen') ? 'سعر تبديل الشاشة' :
+      pathname.includes('gaming') ? 'مساعدة في كمبيوتر الألعاب' :
+      pathname.includes('motherboard') ? 'تصليح المذربورد' :
+      pathname.startsWith('/guides/') || pathname.startsWith('/blog/') ? 'اسأل فنيًا' :
+      'راسل فنيًا عبر واتساب'
+    : pathname === '/pricing' ? 'Get Exact Price' :
+      pathname.includes('battery') ? 'Battery Help' :
+      pathname.includes('screen') ? 'Get Screen Quote' :
+      pathname.includes('gaming') ? 'Gaming Help' :
+      pathname.includes('motherboard') ? 'Board Repair' :
+      pathname.includes('macbook') ? 'MacBook Help' :
+      pathname.startsWith('/location/') ? 'Book via WhatsApp' :
+      pathname.startsWith('/guides/') || pathname.startsWith('/blog/') ? 'Ask a Technician' :
+      'WhatsApp a Technician';
 
   return (
     <div
@@ -35,15 +42,15 @@ export const StickyMobileCTA = () => {
         href={`tel:+${phone}`}
         onClick={() => trackConversion('phone_call_click', { cta_name: 'sticky_mobile_call', button_position: 'bottom_bar' })}
         className="min-w-0 flex-1 text-center rounded-xl border border-slate-700 text-slate-200 font-semibold leading-tight py-2.5 px-1 min-h-[48px] touch-manipulation transition-colors active:scale-[0.99] focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
-        aria-label="Call KCROC"
+        aria-label={isArabicRoute ? "اتصل بـ KCROC" : "Call KCROC"}
       >
-        Call
+        {isArabicRoute ? "اتصال" : "Call"}
       </a>
       <a
         href={whatsappLink}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label={`${ctaLabel} via WhatsApp`}
+        aria-label={isArabicRoute ? `${ctaLabel} عبر واتساب` : `${ctaLabel} via WhatsApp`}
         onClick={() => trackConversion('whatsapp_click', { cta_name: 'sticky_mobile_wa', button_position: 'bottom_bar' })}
         className="min-w-0 flex-[2] text-center rounded-lg bg-[#25D366] text-slate-950 font-bold text-sm sm:text-base leading-tight py-2.5 px-1 min-h-12 whitespace-normal touch-manipulation transition-transform active:scale-[0.99] focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300"
       >
