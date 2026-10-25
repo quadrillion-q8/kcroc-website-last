@@ -64,6 +64,12 @@ add('Laptop repair page has intent-matched symptom links to existing guides and 
   graph.includes("path: '/guides/why-is-my-laptop-so-hot'") &&
   serviceTemplate.includes("What is wrong with your laptop?"));
 
+const laptopGuidesIndex = await read('pages/GuidesIndex.tsx');
+add('Laptop repair resources distinguish the no-power repair page from the troubleshooting guide',
+  has(graph, `label: "Laptop Won't Turn On: Troubleshooting Guide", path: '/guides/laptop-wont-turn-on'`) &&
+  !has(graph, `label: "Laptop Won't Turn On? Complete Troubleshooting Guide", path: '/laptop-wont-turn-on'`) &&
+  laptopGuidesIndex.includes("'guides/laptop-wont-turn-on'"));
+
 add('Brand repair pages expose a direct link to transparent pricing',
   brandTemplate.includes('to="/pricing"') && brandTemplate.includes('View Repair Prices'));
 
