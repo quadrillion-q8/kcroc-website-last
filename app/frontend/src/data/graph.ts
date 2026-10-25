@@ -91,7 +91,27 @@ export const rawGraphData: RawGraphData = {
       ], 
       featuredUSPIds: ['usp-component', 'usp-nofix', 'usp-logistics', 'usp-privacy']
     } as WebPageEntity,
-    'page-services': { id: 'page-services', slug: 'services', entityType: 'WebPage', isActive: true, title: 'Services', description: 'All KCROC repair services', seo: { title: 'Laptop, MacBook & PC Repair Services Kuwait | KCROC', description: 'Specialist computer repair services in Kuwait including laptop, MacBook, gaming PC and gaming laptop repair, screens, batteries, charging ports, upgrades and board-level faults. Free pickup and 30-day warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/services', locale: 'en_KW', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/services', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/services', 'x-default': 'https://www.computerrepairkuwait.com/services' }, ogType: 'website', schemaTypes: ['CollectionPage', 'WebPage', 'BreadcrumbList', 'LocalBusiness'], breadcrumbs: [{ name: 'Home', url: '/' }, { name: 'Services', url: '/services' }] } } as WebPageEntity,
+    'page-services': {
+      id: 'page-services', slug: 'services', entityType: 'WebPage', isActive: true,
+      title: 'Services',
+      description: 'Browse KCROC repair services by device or fault, including laptops, desktop PCs, MacBooks, gaming systems and component-level repairs in Kuwait.',
+      seo: {
+        title: 'Laptop, MacBook & PC Repair Services Kuwait | KCROC',
+        description: 'Browse laptop, desktop PC, MacBook, gaming, screen, battery, charging and motherboard repair in Kuwait. Free diagnosis, quote before work and free pickup.',
+        canonicalUrl: 'https://www.computerrepairkuwait.com/services',
+        locale: 'en_KW',
+        alternates: {
+          'en-KW': 'https://www.computerrepairkuwait.com/services',
+          'ar-KW': 'https://www.computerrepairkuwait.com/ar/services',
+          'x-default': 'https://www.computerrepairkuwait.com/services'
+        },
+        ogType: 'website',
+        schemaTypes: ['CollectionPage', 'WebPage', 'FAQPage', 'BreadcrumbList', 'LocalBusiness'],
+        lastModified: '2026-10-26T00:00:00+03:00',
+        breadcrumbs: [{ name: 'Home', url: '/' }, { name: 'Services', url: '/services' }]
+      },
+      featuredFAQIds: ['faq-cost', 'faq-pick-and-drop', 'faq-warranty', 'faq-no-fix']
+    } as WebPageEntity,
     'page-ar-home': {
       id: 'page-ar-home', slug: 'ar', entityType: 'WebPage', isActive: true,
       title: 'الرئيسية العربية — خدمات تصليح الكمبيوتر واللابتوب في الكويت',
@@ -117,10 +137,10 @@ export const rawGraphData: RawGraphData = {
     'page-ar-services': {
       id: 'page-ar-services', slug: 'ar/services', entityType: 'WebPage', isActive: true,
       title: 'خدمات تصليح الكمبيوتر واللابتوب في الكويت',
-      description: 'تصفح خدمات KCROC باللغة العربية: تصليح اللابتوب وMacBook وGaming PC والشاشة والبطارية واللوحة الأم ومنافذ الشحن وترقيات SSD وRAM، مع استلام وتوصيل داخل الكويت.',
+      description: 'تصفح خدمات تصليح اللابتوب والكمبيوتر المكتبي وMacBook وGaming PC والشاشة والبطارية والشحن واللوحة الأم في الكويت. فحص مجاني وسعر قبل الإصلاح واستلام مجاني.',
       seo: {
         title: 'خدمات تصليح الكمبيوتر واللابتوب في الكويت | KCROC',
-        description: 'تصفح خدمات KCROC باللغة العربية: تصليح اللابتوب وMacBook وGaming PC والشاشة والبطارية واللوحة الأم ومنافذ الشحن وترقيات SSD وRAM، مع استلام وتوصيل داخل الكويت.',
+        description: 'تصفح خدمات تصليح اللابتوب والكمبيوتر المكتبي وMacBook وGaming PC والشاشة والبطارية والشحن واللوحة الأم في الكويت. فحص مجاني وسعر قبل الإصلاح واستلام مجاني.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/ar/services',
         locale: 'ar_KW',
         alternates: {
@@ -129,13 +149,14 @@ export const rawGraphData: RawGraphData = {
           'x-default': 'https://www.computerrepairkuwait.com/services'
         },
         ogType: 'website',
-        schemaTypes: ['CollectionPage', 'WebPage', 'BreadcrumbList'],
-        lastModified: '2026-10-22T00:00:00+03:00',
+        schemaTypes: ['CollectionPage', 'WebPage', 'FAQPage', 'BreadcrumbList'],
+        lastModified: '2026-10-26T00:00:00+03:00',
         breadcrumbs: [
           { name: 'الرئيسية', url: '/ar' },
           { name: 'الخدمات', url: '/ar/services' }
         ]
       },
+      featuredFAQIds: ['faq-ar-pricing', 'faq-arabic-computer-technician', 'faq-ar-hours', 'faq-ar-laptop-repair-process'],
       relatedServiceIds: ['srv-laptop', 'srv-motherboard', 'srv-gaming', 'srv-macbook', 'srv-screen', 'srv-battery', 'srv-charging-port', 'srv-keyboard', 'srv-macbook-screen', 'srv-ssd-ram', 'srv-gaming-laptop', 'srv-liquid-damage']
     } as WebPageEntity,
 
