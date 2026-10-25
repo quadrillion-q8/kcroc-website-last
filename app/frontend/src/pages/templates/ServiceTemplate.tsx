@@ -275,12 +275,13 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
             <h2 id="why-choose-us-heading" className="text-2xl font-bold mb-8 text-white flex items-center gap-3">
               <ShieldCheck className="w-6 h-6 text-cyan-400" aria-hidden="true" /> Why Choose Us
             </h2>
+            {' '}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
               {entity.whyChooseUs.map((point, idx) => (
-                <div key={idx} className="bg-slate-900/50 backdrop-blur-sm p-6 rounded-2xl border border-slate-800 hover:border-cyan-500/30 transition-colors">
-                  <h3 className="text-white font-bold mb-2">{point.title}</h3>
+                <article key={idx} aria-labelledby={`why-choose-${entity.id}-${idx}`} className="bg-slate-900/50 backdrop-blur-sm p-6 rounded-2xl border border-slate-800 hover:border-cyan-500/30 transition-colors">
+                  <h3 id={`why-choose-${entity.id}-${idx}`} className="text-white font-bold mb-2">{point.title}</h3>
                   <p className="text-sm text-slate-400 leading-relaxed">{point.description}</p>
-                </div>
+                </article>
               ))}
             </div>
           </section>
@@ -337,26 +338,32 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
                 <h2 id="devices-we-cover-heading" className="text-2xl font-bold mb-6 text-white flex items-center gap-3">
                   <Monitor className="w-6 h-6 text-cyan-400" aria-hidden="true" /> Devices We Cover
                 </h2>
-                <div className="flex flex-wrap gap-3">
+                {' '}
+                <ul role="list" aria-label="Supported device types" className="flex flex-wrap gap-3">
                   {entity.deviceTypes.map((device, idx) => (
-                    <span key={idx} className="px-4 py-2 rounded-full bg-slate-900/60 border border-slate-800 text-slate-200 text-sm font-medium">
-                      {device}
-                    </span>
+                    <li key={idx}>
+                      <span className="inline-flex px-4 py-2 rounded-full bg-slate-900/60 border border-slate-800 text-slate-200 text-sm font-medium">
+                        {device}
+                      </span>
+                    </li>
                   ))}
-                </div>
+                </ul>
               </div>
             )}
 
             {entity.id !== 'srv-gaming-laptop' && entity.brands && entity.brands.length > 0 && (
               <div>
                 <h3 className="text-sm uppercase tracking-wider font-bold text-slate-400 mb-4">Brands We Service</h3>
-                <div className="flex flex-wrap gap-2">
+                {' '}
+                <ul role="list" aria-label="Brands serviced" className="flex flex-wrap gap-2">
                   {entity.brands.map((brand, idx) => (
-                    <span key={idx} className="px-3 py-1.5 rounded-lg bg-cyan-900/10 border border-cyan-500/20 text-cyan-300 text-xs font-semibold">
-                      {brand}
-                    </span>
+                    <li key={idx}>
+                      <span className="inline-flex px-3 py-1.5 rounded-lg bg-cyan-900/10 border border-cyan-500/20 text-cyan-300 text-xs font-semibold">
+                        {brand}
+                      </span>
+                    </li>
                   ))}
-                </div>
+                </ul>
               </div>
             )}
           </section>
@@ -474,6 +481,7 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
             aria-labelledby="repair-process-heading"
           >
             <h2 id="repair-process-heading" className="text-2xl font-bold mb-8 text-white">Our Repair Process</h2>
+            {' '}
             {getContentImage('process') && <ContentImage image={getContentImage('process')!} />}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {entity.process.map((step) => (
@@ -519,8 +527,9 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
         )}
 
         {entity.faqs && entity.faqs.length > 0 && (
-          <section className="max-w-4xl mx-auto px-6 py-12 border-t border-slate-800/50 relative z-10">
-            <h2 className="text-2xl font-bold mb-8 text-white text-center">Frequently Asked Questions</h2>
+          <section className="max-w-4xl mx-auto px-6 py-12 border-t border-slate-800/50 relative z-10" aria-labelledby="service-faqs-heading">
+            <h2 id="service-faqs-heading" className="text-2xl font-bold mb-8 text-white text-center">Frequently Asked Questions</h2>
+            {' '}
             <div className="space-y-3">
               {entity.faqs.map((faq) => {
                 const isOpen = openFaqId === faq.id;
