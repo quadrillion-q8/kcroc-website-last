@@ -2328,7 +2328,7 @@ export const rawGraphData: RawGraphData = {
           id: 'gpu-artifacting', 
           title: 'Screen Artifacting or Black Screens Under Load', 
           severity: 'critical', 
-          description: 'Colored blocks, flickering textures, or a black screen show up specifically during demanding games, then clear up when you stop. Often misdiagnosed as a "dead GPU." Artifacting under heavy load — including on RTX and RX cards — is typically caused by failing VRAM modules or degraded solder balls beneath the GPU chip. We use thermal imaging and BGA rework to restore the card rather than replacing it.' 
+          description: 'Colored blocks, flickering textures, or a black screen show up specifically during demanding games, then clear up when you stop. Often misdiagnosed as a "dead GPU." Artifacting under heavy load — including on RTX and RX cards — is can have several causes, including GPU or VRAM faults, thermal instability, power delivery or board-level connection problems. We test the card and system before recommending component repair or replacement.' 
         },
         { 
           id: 'aio-pump-failure', 
@@ -2561,10 +2561,10 @@ export const rawGraphData: RawGraphData = {
       }, 
       seo: { 
         title: 'Gaming PC Repair Kuwait | GPU, FPS & Overheating Fix | KCROC', 
-        description: 'Gaming PC and gaming computer repair in Kuwait for no power, black screen, GPU artifacts, FPS drops, overheating, crashes, PSU and cooling faults. Free pickup.', 
+        description: 'Gaming PC repair in Kuwait for GPU artifacts, no display, FPS drops, overheating, crashes and power faults. Diagnostic-first GPU, PSU and motherboard testing, free Kuwait-wide pickup, quote before repair and 30-day warranty.', 
         canonicalUrl: 'https://www.computerrepairkuwait.com/gaming-pc-repair-kuwait', locale: 'en_KW', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/gaming-pc-repair-kuwait', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/gaming-pc-repair-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/gaming-pc-repair-kuwait' }, 
         ogType: 'website', 
-        schemaTypes: ['Service', 'FAQPage'], lastModified: '2026-10-01T00:00:00+03:00' 
+        schemaTypes: ['Service', 'FAQPage'], lastModified: '2026-10-25T00:00:00+03:00' 
       },
       navigationPriority: 80, 
       isFeatured: true, 
@@ -4200,7 +4200,7 @@ export const rawGraphData: RawGraphData = {
     'brand-dell': {
       id: 'brand-dell', slug: 'dell-laptop-repair-kuwait', entityType: 'Brand', isActive: true,
       title: 'Dell Laptop Repair Kuwait', brandName: 'Dell', officialWebsite: 'https://www.dell.com',
-      description: 'Dell laptops — Inspiron, Latitude, XPS, and Alienware — have specific failure patterns in Kuwait\'s climate. The cooling systems on Dell Inspiron and Latitude models are particularly vulnerable to dust ingress from Kuwait\'s particulate-heavy air. XPS models use soldered RAM and storage, making component-level repair the only cost-effective path when hardware fails.',
+      description: 'Dell laptops—including Inspiron, Latitude, XPS, G Series and Alienware—can develop charging, hinge, display, battery, cooling and motherboard faults. KCROC confirms the exact model, tests the reported symptom and explains repair versus part replacement before work. Memory and storage upgrade options vary by model, so compatibility is checked rather than assumed.',
       commonModels: ['Inspiron 15', 'Inspiron 14', 'Latitude 5420', 'XPS 13', 'XPS 15', 'G15 Gaming', 'Alienware m16'],
       commonIssues: [
         { id: 'dell-hinge',    title: 'Hinge cracking the bezel',      severity: 'high',   description: 'Dell Inspiron hinges frequently crack the plastic chassis.' },
@@ -4234,7 +4234,7 @@ export const rawGraphData: RawGraphData = {
         { id: 'dell-authorized', title: 'Is KCROC an official Dell service center?', answer: 'No. KCROC is an independent computer-repair provider in Kuwait, not an official Dell-authorized service center. We diagnose and repair Dell hardware independently and explain the repair path before work begins.' }
       ],
       pricing: { startingFrom: 15, currency: 'KWD', quoteRequired: true, displayLabel: 'From 15 KWD — free diagnostic first' },
-      seo: { title: 'Dell Laptop Service Center Kuwait (Independent) | KCROC', description: 'Independent Dell laptop service in Kuwait, not Dell-authorized. Inspiron, Latitude, XPS, G-series and Alienware: screen, battery, hinge and motherboard repair with free pickup.', canonicalUrl: 'https://www.computerrepairkuwait.com/dell-laptop-repair-kuwait', ogType: 'article', schemaTypes: ['Brand', 'Service', 'FAQPage', 'BreadcrumbList'] },
+      seo: { title: 'Dell Laptop Service Center Kuwait (Independent) | KCROC', description: 'Independent Dell laptop repair in Kuwait—not Dell-authorized. Inspiron, Latitude, XPS, G Series and Alienware: screen, charging, hinge, battery and cooling diagnosis. Free pickup, quote first and 30-day warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/dell-laptop-repair-kuwait', ogType: 'article', schemaTypes: ['Brand', 'Service', 'FAQPage', 'BreadcrumbList'], lastModified: '2026-10-25T00:00:00+03:00' },
       navigationPriority: 90, popular: true 
     } as BrandEntity,
 
@@ -4244,7 +4244,7 @@ export const rawGraphData: RawGraphData = {
       description: 'HP laptops—from Pavilion and Envy to EliteBook, ProBook, OMEN and Victus—can develop charging, power, hinge, cooling, battery and display faults. KCROC checks the exact model and symptoms at the Hawalli workshop before recommending a repair.',
       commonModels: ['Pavilion', 'EliteBook', 'ProBook', 'Spectre x360', 'Envy', 'OMEN', 'Victus'],
       commonIssues: [
-        { id: 'hp-power', title: 'Power IC Failure', severity: 'high', description: 'Voltage fluctuation damages power management chips.' },
+        { id: 'hp-power', title: 'HP laptop no-power or power-management fault', severity: 'high', description: 'A no-power symptom can involve the adapter, input circuit, charging path, power-management IC or another board fault. Testing identifies the cause before a component or board replacement is recommended.' },
         { id: 'hp-hinge', title: 'Hinge separation', severity: 'high', description: 'Envy and Pavilion hinge mounts breaking from chassis.' },
         { id: 'hp-fan',   title: 'Fan error on boot', severity: 'medium', description: 'HP system fan (90b) error due to dust accumulation.' }
       ],
@@ -4275,7 +4275,7 @@ export const rawGraphData: RawGraphData = {
         { id: 'hp-authorized', title: 'Is KCROC an official HP service center?', answer: 'No. KCROC is an independent computer-repair provider in Kuwait, not an official HP-authorized service center. We diagnose the actual hardware fault and quote the repair path before work begins.' }
       ],
       pricing: { startingFrom: 15, currency: 'KWD', quoteRequired: true, displayLabel: 'From 15 KWD — free diagnostic first' },
-      seo: { title: 'HP Laptop Repair Kuwait | Pavilion, EliteBook & OMEN | KCROC', description: 'Independent HP laptop repair in Kuwait for Pavilion, EliteBook, ProBook, Envy, OMEN and Victus. Free pickup, diagnosis first, quote before repair and 30-day warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/hp-laptop-repair-kuwait', ogType: 'article', schemaTypes: ['Brand', 'Service', 'FAQPage', 'BreadcrumbList'], lastModified: '2026-10-16T00:00:00+03:00' },
+      seo: { title: 'HP Laptop Repair Kuwait | Pavilion, EliteBook & OMEN | KCROC', description: 'Independent HP laptop repair in Kuwait for Pavilion, EliteBook, ProBook, Envy, OMEN and Victus. Free pickup, diagnosis first, quote before repair and 30-day warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/hp-laptop-repair-kuwait', ogType: 'article', schemaTypes: ['Brand', 'Service', 'FAQPage', 'BreadcrumbList'], lastModified: '2026-10-25T00:00:00+03:00' },
       navigationPriority: 80, popular: true 
     } as BrandEntity,
 
@@ -4482,10 +4482,10 @@ export const rawGraphData: RawGraphData = {
     'brand-msi': {
       id: 'brand-msi', slug: 'msi-laptop-repair-kuwait', entityType: 'Brand', isActive: true,
       title: 'MSI Laptop Repair Kuwait', brandName: 'MSI', officialWebsite: 'https://www.msi.com',
-      description: 'MSI laptops are premium gaming machines that require specialized care. In Kuwait, MSI hinges (particularly on GE and GF series) are notorious for breaking. We repair MSI chassis damage, resolve complex motherboard power faults, and provide advanced thermal repasting.',
+      description: 'KCROC provides independent MSI laptop repair in Kuwait for Katana, Raider, Stealth, Thin and Cyborg systems. Depending on the confirmed fault, service may include hinge and chassis repair, charging and power diagnosis, cooling and fan service, battery replacement, display repair or motherboard fault tracing. We verify the exact model and quote before paid work.',
       commonModels: ['Katana GF66', 'Raider GE76', 'Stealth GS66', 'Thin GF63', 'Cyborg 15'],
       commonIssues: [
-        { id: 'msi-hinge', title: 'Hinge breaking the screen cover', severity: 'high', description: 'GF and GE series severe hinge failure.' },
+        { id: 'msi-hinge', title: 'Hinge or screen-cover separation', severity: 'high', description: 'Stiff hinges, loose mounts or bezel separation can damage the display housing. We inspect hinge alignment and mounting points before deciding whether structural repair or part replacement is appropriate.' },
         { id: 'msi-motherboard', title: 'Short circuit on power', severity: 'high', description: 'Blown capacitors on the main power rail preventing boot.' },
         { id: 'msi-battery', title: 'Battery expanding', severity: 'medium', description: 'Swollen battery pushing up on the trackpad.' }
       ],
@@ -4511,7 +4511,7 @@ export const rawGraphData: RawGraphData = {
         { id: 'msi-overheating', title: 'Can you service an overheating MSI gaming laptop?', answer: 'Yes. Cooling condition, fan operation and thermal interface are checked, and the repair path is based on the actual cause.' }
       ],
       pricing: { startingFrom: 20, currency: 'KWD', quoteRequired: true, displayLabel: 'From 20 KWD — free diagnostic first' },
-      seo: { title: 'MSI Laptop Repair Kuwait | Hinge & Motherboard | KCROC', description: 'Professional MSI laptop repair in Kuwait. Specialist in MSI hinge repair, motherboard short circuits, and thermal repasting. Free pick & drop.', canonicalUrl: 'https://www.computerrepairkuwait.com/msi-laptop-repair-kuwait', ogType: 'article', schemaTypes: ['Brand', 'Service', 'FAQPage', 'BreadcrumbList'] },
+      seo: { title: 'MSI Laptop Repair Kuwait | Hinge & Motherboard | KCROC', description: 'MSI laptop repair in Kuwait for Katana, Raider, Stealth, Thin and Cyborg models. Diagnose hinge, charging, overheating, battery, display and motherboard faults. Free pickup and quote before repair.', canonicalUrl: 'https://www.computerrepairkuwait.com/msi-laptop-repair-kuwait', ogType: 'article', schemaTypes: ['Brand', 'Service', 'FAQPage', 'BreadcrumbList'], lastModified: '2026-10-25T00:00:00+03:00' },
       navigationPriority: 40, popular: false
     } as BrandEntity,
 
