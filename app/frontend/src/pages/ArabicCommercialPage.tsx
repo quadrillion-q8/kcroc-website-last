@@ -345,7 +345,8 @@ const CONFIG: Record<string, {
       { q: 'كيف أعرف رقم موديل شاشة MacBook المطلوب؟', a: 'اقلب الجهاز وابحث عن رقم الطراز الذي يبدأ بحرف A وأربعة أرقام، أو افتح قائمة Apple ثم About This Mac إذا كان الجهاز يعمل. يمكنك إرسال صورة واضحة لرقم الطراز أو اسم الجهاز عبر واتساب، ولا ترسل الرقم التسلسلي علنًا.' },
       { q: 'هل يمكن إصلاح الكيبل أو إضاءة الشاشة بدل تبديل الشاشة كاملة؟', a: 'أحيانًا تكون المشكلة من التوصيلات أو دائرة الإضاءة أو مسار العرض، وأحيانًا تكون الشاشة نفسها تالفة. لا نحدد السبب من العرض وحده؛ نفحص الجهاز ونشرح الخيارات الواقعية قبل اعتماد القطعة.' },
       { q: 'هل يمكن تبديل طبقة LCD فقط بدل تجميعة الشاشة كاملة؟', a: 'يعتمد ذلك على تصميم موديل MacBook ونوع الضرر وإمكانية الإصلاح بأمان. بعض الحالات تتطلب تجميعة كاملة، ولا نعد بخيار LCD فقط قبل فحص الموديل وحالة الشاشة.' },
-      { q: 'هل تضمنون عمل True Tone بعد تبديل الشاشة؟', a: 'نختبر وظائف العرض المدعومة حسب الموديل والإصلاح المنفذ، لكن لا نعد بأن كل ميزة أو معايرة ستعمل في كل جهاز قبل التحقق من الموديل والقطعة والتوافق.' }
+      { q: 'هل تضمنون عمل True Tone بعد تبديل الشاشة؟', a: 'نختبر وظائف العرض المدعومة حسب الموديل والإصلاح المنفذ، لكن لا نعد بأن كل ميزة أو معايرة ستعمل في كل جهاز قبل التحقق من الموديل والقطعة والتوافق.' },
+      { q: 'ما المقصود بمصطلحات Flexgate وDustgate؟', a: 'تُستخدم هذه الأسماء أحيانًا لوصف أنماط من مشكلات كابل الشاشة أو المنطقة القريبة من المفصلات في بعض أجهزة MacBook، لكنها لا تحدد سبب العطل في جهازك. قد تكون المشكلة من الكابل أو الشاشة أو الموصل أو دائرة الإضاءة؛ نفحص رقم الطراز ومسار العرض أولًا ونوضح الإصلاح الممكن قبل طلب أي قطعة.' }
     ],
     englishPath: '/macbook-screen-replacement-kuwait',
     arabicLinks: [
@@ -2061,31 +2062,28 @@ export default function ArabicCommercialPage() {
     '@graph': [{
       '@type': 'Service',
       '@id': `${page.seo.canonicalUrl}#service`,
-      name: 'تبديل شاشة MacBook في الكويت',
-      serviceType: 'تبديل شاشة MacBook',
+      name: 'تبديل وتصليح شاشة ماك بوك (MacBook) في الكويت',
+      serviceType: 'تبديل شاشة MacBook Air وMacBook Pro وفحص أعطال الكابل والإضاءة',
       description: cfg.intro,
       url: page.seo.canonicalUrl,
       image: `${business.websiteUrl}${IMAGES.macbook.diagnostics.src}`,
       areaServed: { '@type': 'Country', name: 'Kuwait' },
-      provider: {
-        '@type': 'LocalBusiness',
-        name: business.title,
-        url: business.websiteUrl,
-        telephone: `+${business.telephone}`,
-        address: {
-          '@type': 'PostalAddress',
-          streetAddress: business.streetAddress,
-          addressLocality: business.addressLocality,
-          addressRegion: business.addressRegion,
-          addressCountry: business.addressCountry,
-        },
-      },
+      provider: { '@id': `${business.websiteUrl}/#business` },
       offers: {
-        '@type': 'Offer',
+        '@type': 'AggregateOffer',
         name: 'أجرة العمل من 30 د.ك + سعر شاشة MacBook',
-        description: 'أجرة العمل تبدأ من 30 د.ك، وسعر تجميعة شاشة MacBook يُحسب بشكل منفصل حسب الموديل والجيل وتوفر القطعة. نؤكد السعر النهائي قبل أي عمل مدفوع.',
+        description: 'هذا سعر بداية أجرة العمل فقط، ولا يشمل تجميعة الشاشة. تختلف تكلفة القطعة حسب الموديل والجيل والتوفر، ونؤكد السعر النهائي قبل أي عمل مدفوع.',
         priceCurrency: 'KWD',
-        price: 30,
+        lowPrice: 30,
+      },
+      hasOfferCatalog: {
+        '@type': 'OfferCatalog',
+        name: 'خيارات خدمة شاشة MacBook',
+        itemListElement: [
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'تبديل شاشة MacBook Air', description: 'تحديد الموديل وتجميعة الشاشة؛ أجرة العمل تبدأ من 30 د.ك وتُحسب الشاشة بشكل منفصل.' } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'تبديل شاشة MacBook Pro', description: 'مطابقة التجميعة حسب رقم الطراز والجيل؛ السعر النهائي يحدد قبل الطلب والتركيب.' } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'فحص وإصلاح كابل الشاشة أو دائرة الإضاءة الخلفية عند الإمكان', description: 'يُحدد الخيار بعد الفحص والقياسات؛ لا يُفترض أن كل عطل قابل للإصلاح على مستوى اللوحة.' } },
+        ],
       },
     }]
   } : slug === 'laptop-keyboard-replacement-kuwait' ? {
@@ -2320,13 +2318,14 @@ export default function ArabicCommercialPage() {
                   <tbody className="divide-y divide-slate-800 text-slate-300">
                     <tr><th scope="row" className="p-3 font-semibold text-white">كسر أو بقع سوداء وخطوط</th><td className="p-3">ضرر في لوحة العرض أو تجميعة الشاشة بعد ضغط أو سقوط</td><td className="p-3">حالة اللوحة والإطار وإمكانية إصلاحها أو الحاجة إلى تجميعة متوافقة</td></tr>
                     <tr><th scope="row" className="p-3 font-semibold text-white">شاشة سوداء والجهاز يعمل</th><td className="p-3">الشاشة أو الاتصال أو الإضاءة أو مسار العرض</td><td className="p-3">الصورة الخارجية عند الإمكان، التوصيلات، والإضاءة قبل اقتراح الاستبدال</td></tr>
-                    <tr><th scope="row" className="p-3 font-semibold text-white">صورة باهتة جدًا</th><td className="p-3">خلل محتمل في الإضاءة الخلفية أو الدائرة المرتبطة بها</td><td className="p-3">السطوع ومسار الإضاءة واللوحة حسب تصميم الموديل</td></tr>
-                    <tr><th scope="row" className="p-3 font-semibold text-white">خطوط أو وميض يتغير مع حركة الغطاء</th><td className="p-3">الشاشة أو الكيبل أو التوصيلات أو منطقة المفصلات</td><td className="p-3">العلاقة بين حركة الغطاء وثبات الصورة دون تحريك الجهاز بالقوة</td></tr>
+                    <tr><th scope="row" className="p-3 font-semibold text-white">صورة باهتة جدًا</th><td className="p-3">عطل محتمل في الإضاءة الخلفية أو الفيوز أو دائرة Backlight IC، بحسب تصميم الجهاز</td><td className="p-3">فحص مسار الإضاءة والفيوز والجهد؛ نقيّم إصلاح اللوحة على مستوى المكونات عندما يكون مناسبًا</td></tr>
+                    <tr><th scope="row" className="p-3 font-semibold text-white">خطوط أو وميض يتغير مع حركة الغطاء</th><td className="p-3">كابل الشاشة أو الموصلات أو مسار الكابل عند المفصلات؛ تُستخدم تسميات مثل Flexgate وDustgate لبعض الحالات، لكنها لا تنطبق على كل موديل ولا تثبت السبب وحدها</td><td className="p-3">فحص الكابل والموصلات والمفصلات بحسب الموديل، دون تحريك الغطاء بالقوة</td></tr>
                     <tr><th scope="row" className="p-3 font-semibold text-white">ألوان غير طبيعية أو صورة متقطعة</th><td className="p-3">الشاشة أو الاتصال أو مسار نقل الصورة</td><td className="p-3">تكرار العطل وفحص الشاشة والتوصيلات قبل تحديد القطعة</td></tr>
                   </tbody>
                 </table>
               </div>
               <p className="mt-3 text-xs leading-6 text-slate-400">هذه أسباب محتملة وليست تشخيصًا نهائيًا؛ قد تتشابه الأعراض بين أعطال مختلفة، لذلك لا نوصي بقطعة قبل الفحص.</p>
+              <p className="mt-3 text-sm leading-7 text-slate-300">عند ظهور عطل في الإضاءة الخلفية، نفحص المسار والفيوز ودائرة Backlight IC بحسب تصميم الجهاز، ونقيّم الإصلاح على مستوى اللوحة فقط إذا أظهرت القياسات أنه خيار مناسب. وبعد العمل نختبر استجابة إغلاق الغطاء ووضع السكون والاستيقاظ، بما يشمل حساس زاوية الغطاء (Lid Angle Sensor) عندما يكون ذلك ذا صلة بالموديل، ونتحقق من True Tone والوظائف المدعومة دون ضمان معايرة غير متاحة لكل جهاز.</p>
             </section>
 
             <section aria-labelledby="macbook-screen-model-match">
@@ -2364,13 +2363,18 @@ export default function ArabicCommercialPage() {
                 <table className="w-full min-w-[680px] border-collapse text-right text-sm">
                   <thead className="bg-slate-950 text-cyan-300"><tr><th scope="col" className="p-3">الفئة</th><th scope="col" className="p-3">أمثلة على رقم الطراز</th><th scope="col" className="p-3">ملاحظة التوافق</th></tr></thead>
                   <tbody className="divide-y divide-slate-800 text-slate-300">
-                    <tr><th scope="row" className="p-3 font-semibold text-white">MacBook Air M1 (13 بوصة)</th><td className="p-3" dir="ltr">A2337</td><td className="p-3">تأكد من رقم الطراز وحالة تجميعة الشاشة.</td></tr>
-                    <tr><th scope="row" className="p-3 font-semibold text-white">MacBook Air M2 (13 بوصة)</th><td className="p-3" dir="ltr">A2681</td><td className="p-3">لا تخلطه مع مقاس 15 بوصة أو أجيال أخرى.</td></tr>
-                    <tr><th scope="row" className="p-3 font-semibold text-white">MacBook Air M2 (15 بوصة)</th><td className="p-3" dir="ltr">A2941</td><td className="p-3">يحتاج مطابقة خاصة بالمقاس والجيل.</td></tr>
-                    <tr><th scope="row" className="p-3 font-semibold text-white">MacBook Air M3 (13 و15 بوصة)</th><td className="p-3" dir="ltr">A3113 / A3114</td><td className="p-3">نؤكد المقاس ورقم الطراز قبل طلب القطعة.</td></tr>
+                    <tr><th scope="row" className="p-3 font-semibold text-white">MacBook Air M1 (13 بوصة)</th><td className="p-3" dir="ltr">A2337</td><td className="p-3">شاشة Retina؛ نطابق رقم الطراز والتجميعة قبل التسعير.</td></tr>
+                    <tr><th scope="row" className="p-3 font-semibold text-white">MacBook Air M2 (13 بوصة)</th><td className="p-3" dir="ltr">A2681</td><td className="p-3">شاشة Liquid Retina؛ لا تخلطه مع مقاس 15 بوصة أو أجيال أخرى.</td></tr>
+                    <tr><th scope="row" className="p-3 font-semibold text-white">MacBook Air M2 (15 بوصة)</th><td className="p-3" dir="ltr">A2941</td><td className="p-3">شاشة Liquid Retina؛ يحتاج مطابقة خاصة بالمقاس والجيل.</td></tr>
+                    <tr><th scope="row" className="p-3 font-semibold text-white">MacBook Air M3 (13 و15 بوصة)</th><td className="p-3" dir="ltr">A3113 / A3114</td><td className="p-3">شاشة Liquid Retina؛ نؤكد المقاس ورقم الطراز قبل طلب القطعة.</td></tr>
                     <tr><th scope="row" className="p-3 font-semibold text-white">MacBook Pro 13 بوصة M1</th><td className="p-3" dir="ltr">A2338</td><td className="p-3">قد تختلف القطع عن موديلات Pro الأخرى.</td></tr>
-                    <tr><th scope="row" className="p-3 font-semibold text-white">MacBook Pro 14 بوصة (2021–2023)</th><td className="p-3" dir="ltr">A2442 / A2779 / A2992</td><td className="p-3">تحقق من السنة والجيل والمواصفات قبل التسعير.</td></tr>
-                    <tr><th scope="row" className="p-3 font-semibold text-white">MacBook Pro 16 بوصة (Apple Silicon)</th><td className="p-3" dir="ltr">A2485 / A2780 / A2991</td><td className="p-3">رقم الطراز وحده لا يثبت توفر القطعة.</td></tr>
+                    <tr><th scope="row" className="p-3 font-semibold text-white">MacBook Pro 14 بوصة (2021–2023)</th><td className="p-3" dir="ltr">A2442 / A2779 / A2992</td><td className="p-3">شاشة Liquid Retina XDR مع ProMotion في الموديلات ذات الصلة؛ تحقق من السنة والجيل قبل التسعير.</td></tr>
+                    <tr><th scope="row" className="p-3 font-semibold text-white">MacBook Pro 16 بوصة (Apple Silicon)</th><td className="p-3" dir="ltr">A2485 / A2780 / A2991</td><td className="p-3">شاشة Liquid Retina XDR مع ProMotion في الموديلات ذات الصلة؛ رقم الطراز وحده لا يثبت توفر القطعة.</td></tr>
+                    <tr><th scope="row" className="p-3 font-semibold text-white">MacBook Pro 13 بوصة Intel (2016–2020)</th><td className="p-3" dir="ltr">A1706 / A1708 / A1989 / A2159 / A2251 / A2289</td><td className="p-3">شاشات Retina؛ تختلف التجميعة حسب الموديل والسنة، لذلك نتحقق من الجهاز قبل الطلب.</td></tr>
+                    <tr><th scope="row" className="p-3 font-semibold text-white">MacBook Pro 15 بوصة Intel (2016–2019)</th><td className="p-3" dir="ltr">A1707 / A1990</td><td className="p-3">شاشة Retina؛ لا نفترض توافق القطع بين الأجيال.</td></tr>
+                    <tr><th scope="row" className="p-3 font-semibold text-white">MacBook Pro 16 بوصة Intel (2019)</th><td className="p-3" dir="ltr">A2141</td><td className="p-3">نطابق رقم الطراز والتجميعة المطلوبة قبل تحديد التكلفة.</td></tr>
+                    <tr><th scope="row" className="p-3 font-semibold text-white">MacBook Air Retina Intel (2018–2020)</th><td className="p-3" dir="ltr">A1932 / A2179</td><td className="p-3">شاشة Retina؛ نتحقق من المقاس والجيل والقطعة.</td></tr>
+                    <tr><th scope="row" className="p-3 font-semibold text-white">MacBook Air Intel أقدم (2015–2017)</th><td className="p-3" dir="ltr">A1466</td><td className="p-3">أجهزة أقدم؛ التوافق وتوفر القطعة يحتاجان تأكيدًا قبل الحجز.</td></tr>
                     <tr><th scope="row" className="p-3 font-semibold text-white">إصدارات M4 وM5 والإصدارات الأحدث</th><td className="p-3">تحقق حسب الجهاز</td><td className="p-3">أرسل اسم الموديل ورقم الطراز؛ نتحقق من الإصدار قبل تأكيد التوافق.</td></tr>
                   </tbody>
                 </table>
@@ -2549,22 +2553,21 @@ export default function ArabicCommercialPage() {
                 <figure className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-950">
                   <img
                     src={IMAGES.macbook.diagnostics.src}
-                    alt="فحص جهاز MacBook قبل إصلاح الشاشة في الكويت"
+                    alt="فني يفحص جهاز MacBook مفتوحًا في مختبر KCROC بحولي لتحديد الموديل قبل إصلاح الشاشة"
                     width={IMAGES.macbook.diagnostics.width}
                     height={IMAGES.macbook.diagnostics.height}
-                    loading="eager"
-                    fetchPriority="high"
+                    loading="lazy"
                     decoding="async"
                     className="aspect-[16/9] w-full object-cover"
                   />
                   <figcaption className="border-t border-slate-800 px-4 py-3 text-sm leading-6 text-slate-400">
-                    فحص MacBook ومطابقة الموديل قبل اختيار تجميعة الشاشة المناسبة.
+                    فحص جهاز MacBook ومطابقة الموديل في مختبر KCROC بحولي قبل اختيار تجميعة الشاشة المناسبة.
                   </figcaption>
                 </figure>
                 <figure className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-950">
                   <img
                     src={IMAGES.laptopHardware.laptopScreenAssemblyDisassemblyRepair.src}
-                    alt="فحص مجموعة شاشة اللابتوب أثناء الفك وإعادة التركيب"
+                    alt="فك وفحص تجميعة شاشة لابتوب وكابل العرض قبل تركيب شاشة متوافقة"
                     width={IMAGES.laptopHardware.laptopScreenAssemblyDisassemblyRepair.width}
                     height={IMAGES.laptopHardware.laptopScreenAssemblyDisassemblyRepair.height}
                     loading="lazy"
@@ -2572,7 +2575,7 @@ export default function ArabicCommercialPage() {
                     className="aspect-[16/9] w-full object-cover"
                   />
                   <figcaption className="border-t border-slate-800 px-4 py-3 text-sm leading-6 text-slate-400">
-                    فحص مجموعة الشاشة وإعادة تركيبها ثم اختبار الصورة قبل تسليم الجهاز.
+                    صورة توضيحية لفك وفحص تجميعة شاشة لابتوب؛ تختلف خطوات إصلاح MacBook حسب الموديل، وتُختبر الصورة قبل التسليم.
                   </figcaption>
                 </figure>
               </div>
