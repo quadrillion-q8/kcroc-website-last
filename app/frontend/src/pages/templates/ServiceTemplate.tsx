@@ -158,7 +158,7 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
                   <Gauge className="w-5 h-5 text-cyan-400 flex-shrink-0" />
                   <div>
                     <span className="block text-[10px] text-slate-500 uppercase font-black tracking-wider">Repair level</span>
-                    <span className="font-semibold text-white capitalize">{entity.repairLevel.replace(/-/g, ' ')}</span>
+                    <span className="font-semibold text-white">{isScreenService ? 'Panel, Cable & Backlight Diagnostics' : entity.repairLevel.replace(/-/g, ' ')}</span>
                   </div>
                 </div>
 
@@ -354,6 +354,21 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
           </section>
         )}
 
+        {isScreenService && (
+          <section className="max-w-7xl mx-auto px-6 py-10 border-t border-slate-800/50 relative z-10" aria-labelledby="laptop-display-compatibility">
+            <div className="rounded-2xl border border-cyan-500/20 bg-slate-900/60 p-6 sm:p-8">
+              <p className="text-xs font-black uppercase tracking-[0.18em] text-cyan-400 mb-2">Model-specific compatibility</p>
+              <h2 id="laptop-display-compatibility" className="text-2xl sm:text-3xl font-black text-white">Laptop display specifications we check</h2>
+              <p className="mt-3 max-w-4xl text-sm sm:text-base leading-7 text-slate-300">
+                For standard and gaming laptops, we can check compatible Full HD and QHD panels, 16:10 displays, and high-refresh options such as 144Hz, 165Hz or 240Hz where the exact model supports them. Laptop displays may use different 30-pin or 40-pin eDP connectors, resolutions, refresh rates, mounting points and cable layouts.
+              </p>
+              <p className="mt-3 max-w-4xl text-sm leading-6 text-slate-400">
+                These specifications are examples, not a promise that every option fits every laptop. We verify the full laptop model, original panel label and connector/cable configuration before confirming compatibility, availability or the final quote.
+              </p>
+            </div>
+          </section>
+        )}
+
         {entity.commonIssues && entity.commonIssues.length > 0 && (
           <section className="max-w-7xl mx-auto px-6 py-12 border-t border-slate-800/50 relative z-10">
             <h2 className="text-2xl font-bold mb-8 text-white flex items-center gap-3">
@@ -479,6 +494,7 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
                         }
                       }}
                       aria-expanded={isOpen}
+                      aria-controls={`faq-answer-${entity.id}-${faq.id}`}
                       className="w-full flex items-center justify-between gap-3 text-left px-6 py-4"
                     >
                       <span className="text-white font-semibold">{faq.title}</span>
@@ -486,11 +502,13 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
                         className={`w-4 h-4 text-slate-500 shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
                       />
                     </button>
-                    {isOpen && (
-                      <p className="text-slate-400 text-sm leading-relaxed px-6 pb-4">
-                        {faq.answer}
-                      </p>
-                    )}
+                    <p
+                      id={`faq-answer-${entity.id}-${faq.id}`}
+                      hidden={!isOpen}
+                      className="text-slate-400 text-sm leading-relaxed px-6 pb-4"
+                    >
+                      {faq.answer}
+                    </p>
                   </div>
                 );
               })}
