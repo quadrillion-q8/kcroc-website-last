@@ -146,8 +146,7 @@ export const rawGraphData: RawGraphData = {
       description: 'Find computer and laptop repair near you in Kuwait. Free pickup from your home or office, with all diagnosis and repairs performed at KCROC’s Hawalli workshop.',
       seo: {
         title: 'Computer Repair Near Me | Free Pickup & Delivery | KCROC',
-        description: 'Free computer repair pickup in Kuwait. Devices are diagnosed and repaired at KCROC’s Hawalli workshop, then returned after testing. No home visits.',
-        canonicalUrl: 'https://www.computerrepairkuwait.com/near-me',
+        description: 'Computer repair near you in Kuwait with free home or office pickup, diagnosis at our Hawalli lab, a quote before paid work and a 30-day repair warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/near-me',
         locale: 'en_KW',
         alternates: {
           'en-KW': 'https://www.computerrepairkuwait.com/near-me',
@@ -156,7 +155,7 @@ export const rawGraphData: RawGraphData = {
         },
         ogType: 'website',
         schemaTypes: ['WebPage', 'FAQPage', 'BreadcrumbList'],
-        lastModified: '2026-10-15T00:00:00+03:00',
+        lastModified: '2026-10-25T00:00:00+03:00',
         breadcrumbs: [{ name: 'Home', url: '/' }, { name: 'Computer Repair Near Me', url: '/near-me' }]
       },
       hero: {
@@ -1841,9 +1840,9 @@ export const rawGraphData: RawGraphData = {
       isActive: true, 
       title: 'Laptop Repair Kuwait', primaryKeyword: "laptop repair Kuwait", secondaryKeywords: ["laptop repair Hawalli","laptop screen repair Kuwait","laptop battery replacement Kuwait"], 
       iconKey: 'laptop', 
-      shortDescription: 'Screen, hinge, battery, charging port, and motherboard repair for all major Windows laptop brands.', 
-      description: 'Everyday Windows laptops—from budget student IdeaPads to high-end XPS workstations—face a tough life. Between daily transport, dropped bags, and Kuwait\'s extreme summer heat combined with fine desert dust, mechanical and thermal failures are inevitable. We see it every day: hinges separating from plastic chassis, DC charging jacks pushed inward, cooling fans grinding or seizing, and systems slowing to a crawl. Instead of telling you to buy a new laptop, we fix the actual broken part. We repair snapped hinges with structural resin, micro-solder broken charging ports directly to the motherboard, ultrasonic-clean dust-choked cooling systems, and revive slow systems with SSD and RAM upgrades. We stock OEM and high-grade compatible parts for Dell, HP, Lenovo, ASUS, Acer, and MSI.', 
-      idealCustomer: 'Students, business professionals, remote workers, and everyday users who rely on their Windows laptops daily and need fast, reliable hardware restoration without losing their personal files or paying for a completely new machine.', 
+      shortDescription: 'Laptop repair in Kuwait for power, charging, screen, battery, hinge, keyboard, cooling, storage and motherboard faults.', 
+      description: 'KCROC provides laptop repair in Kuwait for Dell, HP, Lenovo, ASUS, Acer, MSI and Microsoft Surface laptops. We diagnose the reported fault before recommending work, including no-power or no-boot problems, charging failures, cracked or black screens, broken hinges, keyboard faults, overheating, slow performance and motherboard issues. Depending on the diagnosis, the right solution may be a component repair, compatible part replacement, cooling service or SSD/RAM upgrade. Repairs are handled at our Hawalli lab, with free pickup and delivery across Kuwait. Initial diagnosis is free, you approve the quotation before paid work, and completed repairs carry a 30-day warranty. Apple MacBook repairs have a separate dedicated service page.',
+      idealCustomer: 'Students, professionals, families and businesses in Kuwait who need a clear fault diagnosis, a quote before paid work, and careful handling of their laptop and data.',
       deviceTypes: [
         'Business Ultrabooks (XPS, ThinkPad, EliteBook)',
         'Everyday Laptops (Inspiron, Pavilion, IdeaPad)',
@@ -2107,11 +2106,10 @@ export const rawGraphData: RawGraphData = {
       ],
       seo: { 
         title: 'Laptop Repair Kuwait | From 15 KWD + Free Pickup | KCROC', 
-        description: 'Laptop repair in Kuwait for screen, battery, charging, overheating and motherboard faults. From 15 KWD; free pickup, a quote before repair and 30-day warranty.', 
-        canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-repair-kuwait', locale: 'en_KW', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/laptop-repair-kuwait', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/laptop-repair-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/laptop-repair-kuwait' }, 
+        description: 'Laptop repair in Kuwait for power, charging, screen, battery, hinge, cooling and motherboard faults. Free pickup across Kuwait, a quote before repair and 30-day warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-repair-kuwait', locale: 'en_KW', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/laptop-repair-kuwait', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/laptop-repair-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/laptop-repair-kuwait' }, 
         ogType: 'article', 
         schemaTypes: ['Service', 'FAQPage'],
-        lastModified: '2026-10-10T00:00:00+03:00'
+        lastModified: '2026-10-25T00:00:00+03:00'
       },
       navigationPriority: 90, 
       isFeatured: true, 
