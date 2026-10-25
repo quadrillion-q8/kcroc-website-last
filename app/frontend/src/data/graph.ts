@@ -3046,17 +3046,17 @@ export const rawGraphData: RawGraphData = {
       iconKey: 'monitor',
       shortDescription: 'Repair for cracked, black, flickering or lined laptop screens in Kuwait. We check the panel, display cable and backlight before recommending replacement.',
       description: 'A cracked panel, vertical lines, a black display or flicker does not always mean the panel itself has failed. We check the display panel, cable, connector and backlight path, then confirm compatible options, total price and turnaround before any paid work. Repairs are completed in our Hawalli lab, with free pickup and delivery across Kuwait.',
-      idealCustomer: 'Anyone in Kuwait with a cracked, flickering, lined or blank laptop/MacBook display who wants the fault checked and a model-matched repair quote before authorizing work.',
+      idealCustomer: 'Laptop owners in Kuwait with a cracked, flickering, lined or blank display who want the fault checked and a model-matched repair quote before authorizing work.',
       deviceTypes: [
-        'Windows Laptops (14" & 15.6" FHD/IPS)',
-        'MacBook Air & MacBook Pro (Retina)',
-        'Gaming Laptops (high-refresh panels)',
-        '2-in-1 / Convertible Touchscreens'
+        'Windows laptops with Full HD and IPS displays',
+        'Gaming laptops with model-supported high-refresh displays',
+        'QHD and 16:10 laptop display panels',
+        '2-in-1 / convertible touchscreen laptops'
       ],
-      repairLevel: 'basic',
+      repairLevel: 'panel-cable-backlight-diagnostics',
       estimatedTurnaround: 'Same day when the correct panel is available',
       pricing: { startingFrom: 30, currency: 'KWD', quoteRequired: true, displayLabel: 'Labor from 30 KWD + panel' },
-      relatedServiceIds: ['srv-laptop', 'srv-hinge', 'srv-macbook-screen'],
+      relatedServiceIds: ['srv-laptop', 'srv-hinge'],
       relatedProblemIds: ['problem-cracked-screen', 'problem-black-screen'],
       relatedBrandIds: ['brand-dell', 'brand-hp', 'brand-lenovo', 'brand-asus', 'brand-msi'],
       relatedResourcePaths: [
@@ -3064,20 +3064,18 @@ export const rawGraphData: RawGraphData = {
       ],
       coreFeatures: [
         'LCD / IPS / OLED Panel Replacement',
-        'MacBook Retina Display Replacement',
         'Display Cable Repair & Replacement',
         'Touchscreen Digitizer Replacement',
         'Backlight & Backlight Fuse Repair',
         'Free Pick & Drop',
         '30-Day Warranty'
       ],
-      brands: ['Dell', 'HP', 'Lenovo', 'ASUS', 'Acer', 'MacBook'],
+      brands: ['Dell XPS', 'HP Spectre', 'HP Envy', 'Lenovo ThinkPad', 'Lenovo Legion', 'ASUS ROG', 'MSI', 'Alienware', 'Acer'],
     
       whyChooseUs: [
         { title: 'Display Fault Diagnosed Before Replacement', description: 'Flicker, lines or a black display can come from the panel, cable, connector or backlight circuit. We test the likely cause before recommending a part.' },
         { title: 'Model-Matched Panel Options', description: 'We confirm the exact laptop model and required panel specifications before quoting. Part availability and turnaround are checked for your device rather than assumed.' },
-        { title: 'MacBook Display Care', description: 'We identify the MacBook model and display assembly before work, then check supported display functions after installation.' },
-        { title: 'Display Checks Before Return', description: 'After fitting, we check image stability, brightness and visible display defects appropriate to the replacement and device.' },
+          { title: 'Display Checks Before Return', description: 'After fitting, we check image stability, brightness and visible display defects appropriate to the replacement and device.' },
         { title: 'Free Pickup & Delivery, Kuwait-Wide', description: 'Collected from and returned to your home or office anywhere in Kuwait at no extra cost.' },
         { title: 'Quote Before Paid Repair', description: 'You receive a quote for the confirmed fault, parts and labour before paid work begins. No replacement part is fitted without your approval.' }
       ],
@@ -3094,7 +3092,7 @@ export const rawGraphData: RawGraphData = {
       ],
     
       process: [
-        { step: 1, title: 'Free Pickup', description: 'We collect your laptop or MacBook from your home or office anywhere in Kuwait.' },
+        { step: 1, title: 'Free Pickup', description: 'We collect your laptop from your home or office anywhere in Kuwait.' },
         { step: 2, title: 'Panel & Cable Diagnostic', description: 'We confirm whether the fault is the panel, the display cable, or the backlight circuit before quoting anything.' },
         { step: 3, title: 'Confirm the Fault & Quote', description: 'You get a clear, itemized quote before any work starts — no surprise charges for parts that turned out not to be needed.' },
         { step: 4, title: 'Panel or Cable Replacement', description: 'The confirmed panel or cable fault is repaired in our ESD-safe lab, with careful handling of ribbon connectors and model-dependent sensors or display features where applicable.' },
@@ -3121,14 +3119,6 @@ export const rawGraphData: RawGraphData = {
             diagnosis: 'Testing an external monitor confirmed the graphics hardware was fine; reseating the display cable temporarily resolved the flicker, confirming a worn cable near the hinge.',
             repair: 'The display cable was replaced rather than the panel.',
             outcome: 'The display returned to normal after the cable was replaced. This illustrates why the fault should be confirmed before pricing a replacement panel.'
-          },
-          {
-            id: 'macbook-retina-crack',
-            title: 'MacBook Air: Cracked Retina Display After a Drop',
-            symptoms: 'The lid was dropped onto a hard surface, cracking the display in the upper corner with bleeding pixels spreading across part of the screen.',
-            diagnosis: 'Physical inspection confirmed panel damage only, with the True Tone sensor and hinge undamaged.',
-            repair: 'The Retina display assembly was replaced, with the True Tone sensor carefully transferred and recalibrated.',
-            outcome: 'The MacBook returned to full brightness and colour accuracy with True Tone functioning correctly.'
           }
         ]
       },
@@ -3138,7 +3128,7 @@ export const rawGraphData: RawGraphData = {
         'Backlight and backlight fuse test',
         'Dead pixel and uniformity check',
         'Touch digitizer response test (2-in-1 models)',
-        'Colour accuracy and True Tone calibration (MacBook)',
+        'Colour and brightness checks appropriate to the installed laptop panel',
         'Hinge and bezel condition check'
       ],
     
@@ -3146,12 +3136,13 @@ export const rawGraphData: RawGraphData = {
         { id: 'faq-screen-same-day', title: 'Can screen replacement be done the same day?', answer: 'It may be possible if the correct panel is available and collection, diagnosis and fitting timing allow. We confirm part availability and the expected turnaround for your exact model before you approve the quote.' },
         { id: 'faq-flicker-not-crack', title: 'My screen is flickering but not cracked — is that still a screen problem?', answer: 'Often, yes, but not always the panel itself. Flickering that worsens when opening or closing the lid usually points to a worn display cable near the hinge, which we test for before quoting a full panel replacement.' },
         { id: 'faq-external-monitor-works', title: 'The screen is black but an external monitor works fine — what does that mean?', answer: 'It points to the internal display or its cable rather than the graphics hardware, since the system is clearly still producing a valid display signal.' },
-        { id: 'faq-macbook-retina-screen', title: 'Do you replace MacBook Retina displays?', answer: 'We handle supported MacBook Retina display assemblies. Post-repair checks, including True Tone where the model supports it, depend on the exact MacBook generation and replacement assembly.' },
         { id: 'faq-touchscreen-replace', title: 'Can you replace a touchscreen on a 2-in-1 laptop?', answer: 'Yes. The touch digitizer can fail independently of the display panel beneath it, and we diagnose and replace whichever layer is actually at fault.' },
         { id: 'faq-screen-cost', title: 'How much does laptop screen replacement cost?', answer: 'Screen-replacement labor starts from 30 KWD, with the panel priced separately. The complete price depends on the panel size, resolution, display type and exact laptop model.' },
+        { id: 'faq-high-refresh-panels', title: 'Can you replace a 144Hz, 165Hz or 240Hz gaming laptop screen?', answer: 'Potentially, if a compatible panel is available for the exact laptop model. We verify the original panel label, resolution, refresh rate, connector and cable layout before confirming compatibility and price.' },
         { id: 'faq-screen-oem', title: 'Do you offer original-manufacturer or compatible screens?', answer: 'Available options depend on the exact laptop model. We explain the quoted part type and price, including the difference between an original-manufacturer part and a compatible replacement, before you approve the work.' },
         { id: 'faq-screen-data-safety', title: 'Is my data safe during a screen replacement?', answer: 'A screen replacement normally does not require accessing the storage drive. We focus on the display repair; let us know before collection if you have specific data-handling preferences.' },
         { id: 'faq-screen-warranty', title: 'Is there a warranty on screen replacements?', answer: 'Yes, 30 days covering the panel and labor.' },
+        { id: 'faq-edp-connector', title: 'Do 30-pin and 40-pin display connectors fit every laptop?', answer: 'No. Connector pin count alone does not establish compatibility. We verify the exact laptop model, panel part number, cable and supported specifications before confirming a replacement.' },
         { id: 'faq-backlight-vs-panel', title: 'My screen is very dim — do I need a new panel?', answer: 'Not necessarily. A faint image can involve the backlight, fuse, driver or panel. We test the display path before quoting the part or repair that is actually needed.' }
       ],
     
