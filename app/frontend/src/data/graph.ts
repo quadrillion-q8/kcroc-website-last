@@ -1841,7 +1841,7 @@ export const rawGraphData: RawGraphData = {
       title: 'Laptop Repair Kuwait', primaryKeyword: "laptop repair Kuwait", secondaryKeywords: ["laptop repair Hawalli","laptop screen repair Kuwait","laptop battery replacement Kuwait"], 
       iconKey: 'laptop', 
       shortDescription: 'Laptop repair in Kuwait for power, charging, screen, battery, hinge, keyboard, cooling, storage and motherboard faults.', 
-      description: 'KCROC provides laptop repair in Kuwait for Dell, HP, Lenovo, ASUS, Acer, MSI and Microsoft Surface laptops. We diagnose the reported fault before recommending work, including no-power or no-boot problems, charging failures, cracked or black screens, broken hinges, keyboard faults, overheating, slow performance and motherboard issues. Depending on the diagnosis, the right solution may be a component repair, compatible part replacement, cooling service or SSD/RAM upgrade. Repairs are handled at our Hawalli lab, with free pickup and delivery across Kuwait. Initial diagnosis is free, you approve the quotation before paid work, and completed repairs carry a 30-day warranty. Apple MacBook repairs have a separate dedicated service page.',
+      description: 'A stiff hinge, intermittent charging, cracked screen or laptop that will not power on does not automatically mean the entire assembly or motherboard needs replacing. At KCROC’s Hawalli repair lab, we diagnose Dell, HP, Lenovo, ASUS, Acer, MSI and Microsoft Surface laptops, then recommend the repair supported by bench findings. Where technically practical, that may include board-level component repair, DC or USB-C connector work, chassis repair, compatible display replacement, cooling service or SSD/RAM upgrades. Free pickup and delivery are available across Kuwait. Laptop repair starts from 15 KWD; you receive the repair quote before paid work begins, and completed repairs carry a 30-day warranty. MacBook repairs have a dedicated service page.',
       idealCustomer: 'Students, professionals, families and businesses in Kuwait who need a clear fault diagnosis, a quote before paid work, and careful handling of their laptop and data.',
       deviceTypes: [
         'Business Ultrabooks (XPS, ThinkPad, EliteBook)',
@@ -1849,16 +1849,6 @@ export const rawGraphData: RawGraphData = {
         'Creator Laptops (ZenBook, Envy)',
         '2-in-1 / Convertibles (Yoga, Spectre)',
         'Microsoft Surface Devices'
-      ],
-      commercialAnswers: [
-        { question: 'Can my laptop actually be repaired?', answer: 'Usually the first step is diagnosis rather than replacement. KCROC checks the actual fault and explains whether a component repair, part replacement or a full replacement makes more sense.' },
-        { question: 'How much does laptop repair cost in Kuwait?', answer: 'Common laptop repair services start from 15 KWD, while the final price depends on the device, fault and parts required. You receive the repair quote before paid work begins.' },
-        { question: 'How long does laptop repair take?', answer: 'Many routine repairs are completed the same day or within 24 hours when the required part is available. Board-level faults and parts orders can take longer.' },
-        { question: 'Do you pick up laptops from my area?', answer: 'Yes. Free pickup and delivery are available across Kuwait, including Farwaniya, Hawalli, Salmiya, Kuwait City, Jahra and Ahmadi.' },
-        { question: 'Do you repair laptop motherboard faults?', answer: 'Yes. Power rails, charging circuits, MOSFETs, ICs and other board-level faults can be tested and repaired where the board is technically repairable.' },
-        { question: 'Will my files stay safe during repair?', answer: 'The repair process focuses on the requested hardware fault. For board-level work, you can remove the SSD before handing over the laptop, and important files should always be backed up beforehand.' },
-        { question: 'Which laptop brands do you repair?', answer: 'KCROC handles Dell, HP, Lenovo, ASUS, Acer, MSI and Microsoft Surface laptops, plus MacBook repair through a separate service page.' },
-        { question: 'Do I have to visit the Hawalli workshop?', answer: 'No. Most customers use the pickup-and-delivery route. Devices are diagnosed and repaired at the Hawalli lab, then returned after testing.' },
       ],
       symptomLinks: [
         { label: "Laptop won't turn on", path: '/laptop-wont-turn-on', description: 'Separate a no-power fault from a laptop that powers on but will not boot.' },
@@ -1882,25 +1872,23 @@ export const rawGraphData: RawGraphData = {
         { label: 'BIOS / UEFI Recovery Guide', path: '/guides/bios-uefi-recovery-kuwait' },
       ],
       coreFeatures: [
-        'Hinge & Chassis Reconstruction',
-        'DC Jack / Charging Port Micro-Soldering',
-        'Screen Replacement (LCD/IPS/OLED)',
-        'Thermal Paste & Fan Servicing',
-        'SSD & RAM Upgrades',
-        'Battery & Keyboard Replacement',
-        'Liquid Damage Recovery',
-        'Free Pick & Drop',
-        '30-Day Warranty'
-      ], 
+        'Board-Level Power & Charging Diagnostics',
+        'Component Repair Where Technically Practical',
+        'Compatible Display & Keyboard Replacement',
+        'Hinge & Chassis Repair',
+        'Cooling-System Service',
+        'SSD/RAM Upgrades After Compatibility Checks',
+        'Free Pick & Drop Across Kuwait',
+        '30-Day Warranty on Completed Repairs'
+      ],
       brands: ['Dell', 'HP', 'Lenovo', 'ASUS', 'Acer', 'MSI', 'Microsoft Surface'], 
 
       whyChooseUs: [
-        { title: 'Repair Before Replacement', description: 'Where technically and economically sensible, we check whether a hinge mount, charging connector or board-level component can be repaired before recommending a full assembly. If replacement is the better option, the quote explains why.' },
-        { title: 'Cooling Diagnosis for Kuwait Conditions', description: 'Heat, dust, workload and fan condition can all affect temperatures. We inspect airflow, fans, heatsinks and thermal-interface condition before recommending cleaning or component service.' },
-        { title: 'Privacy-Conscious Service', description: 'We focus on the agreed diagnosis and repair. Back up important files before service, and ask us whether storage can be removed safely for your specific model if you prefer.' },
-        { title: 'Model-Specific Repair Planning', description: 'We work with Dell, HP, Lenovo, ASUS, Acer, MSI and Microsoft Surface laptops. Parts compatibility and the available repair path are confirmed for the exact model.' },
-        { title: 'Free Pickup & Delivery', description: 'Pickup and return delivery are available across Kuwait, including Hawalli, Salmiya, Kuwait City, Farwaniya, Jahra and Ahmadi.' },
-        { title: 'No Fix, No Fee', description: 'Where the stated No Fix, No Fee conditions apply and a device is confirmed beyond economical repair, the applicable labour and diagnostic charges are waived.' }
+        { title: 'Diagnosis Before Replacement', description: 'We test the reported symptom and explain the fault found before recommending a component repair or replacement.' },
+        { title: 'Board-Level Options', description: 'Where the board and fault are technically repairable, we assess targeted component repair before quoting a complete board replacement.' },
+        { title: 'Clear Quote & Approval', description: 'You receive the repair scope and price before paid work begins, so you can decide with the diagnosis in hand.' },
+        { title: 'Kuwait-Wide Pickup', description: 'Free pickup and delivery connect your home or office to the Hawalli repair lab. Completed repairs carry a 30-day warranty.' },
+        { title: 'No Fix, No Fee', description: 'KCROC’s stated No Fix, No Fee policy applies under its published conditions when a device cannot be repaired economically.' }
       ],
 
       commonIssues: [
@@ -1908,125 +1896,113 @@ export const rawGraphData: RawGraphData = {
           id: 'hinge-separation',
           title: 'Hinge Separation & Chassis Cracking',
           severity: 'high',
-          description: 'A stiff or misaligned hinge can place stress on the bezel and chassis mounts. We inspect hinge resistance, mount damage and nearby display cables before recommending reinforcement, a compatible part or a larger assembly replacement.'
+          description: 'A stiff or misaligned hinge may damage the bezel, chassis mounts or nearby display cables.',
+          problem: 'Lid resistance or chassis separation can result from a binding hinge, broken mounting points or related physical damage.',
+          labFix: 'We inspect hinge movement, mounting points and nearby cables; when the chassis is suitable, we quote reinforcement or a compatible replacement part before considering a larger assembly.',
+          service: 'After approved work, we check fit, alignment and hinge movement. Repairability depends on the extent of the damage.'
         },
         {
           id: 'broken-dc-jack',
-          title: 'Loose or Damaged Charging Connector',
+          title: 'Intermittent Charging & Loose DC / USB-C Port',
           severity: 'high',
-          description: 'Charging only at a certain cable angle can point to a worn connector, damaged cable or adapter, or a fault in the board-level power path. We test the relevant components before deciding whether connector repair or another repair is appropriate.'
+          description: 'Charging that cuts in and out may involve the adapter, port, solder joints or board-level power path.',
+          problem: 'Needing to hold a cable at an angle is a symptom, not proof that the port alone has failed.',
+          labFix: 'We test the adapter, connector and relevant input/charging circuit. Port or board-level repair is recommended when measurements support it.',
+          service: 'We quote before paid work and re-check charging behavior after the approved repair when practical.'
+        },
+        {
+          id: 'laptop-dead-no-power',
+          title: 'Dead Laptop & Motherboard Power Faults',
+          severity: 'critical',
+          description: 'No lights or fan response can come from the adapter, input protection, a shorted component or another power-path fault.',
+          problem: 'A no-power symptom can originate in several parts of the power path; replacing the entire motherboard without testing can be unnecessary.',
+          labFix: 'We trace the relevant power path and test the board to identify whether a connector, protection component or board-level fault can be repaired.',
+          service: 'The quote explains the proposed scope first. No Fix, No Fee applies under KCROC’s stated policy and conditions; data preservation is never assumed without checking the storage and fault.'
         },
         {
           id: 'cracked-screen',
           title: 'Cracked, Black or Flickering Screen',
           severity: 'high',
-          description: 'A damaged panel, display cable, backlight circuit or related board fault can cause lines, flicker or a black display. We identify the likely fault and verify panel compatibility before quoting a screen replacement.'
+          description: 'A damaged panel, display cable, backlight circuit or related board fault can cause lines, flicker or a black display.',
+          problem: 'Similar screen symptoms can have different causes, so a panel should not be ordered based on appearance alone.',
+          labFix: 'We identify the likely fault and verify the exact model and panel compatibility before quoting a replacement.',
+          service: 'Parts availability determines timing; the completed repair is checked for display operation before return.'
         },
         {
           id: 'overheating-loud-fans',
-          title: 'Overheating & Loud Fans',
+          title: 'Overheating, Throttling & Loud Fans',
           severity: 'medium',
-          description: 'Blocked heatsinks can restrict airflow, while fan wear, thermal-contact problems, workload and ambient temperature can also affect cooling. We inspect the cooling system and recommend cleaning, fan replacement or other action based on the findings.'
+          description: 'Blocked airflow, fan wear, poor thermal contact, workload and ambient temperature can all affect cooling.',
+          problem: 'High temperatures or shutdowns do not automatically mean the fan must be replaced.',
+          labFix: 'We inspect airflow, fan operation, heatsinks and thermal contact, then recommend cleaning, a compatible fan or further diagnosis based on findings.',
+          service: 'After the agreed work, we re-check fan behavior and relevant thermal readings under a suitable workload when practical.'
         },
         {
           id: 'running-slow',
-          title: 'Slow Startup, Freezing or High Disk Usage',
+          title: 'Slow Startup, Freezing & Storage Problems',
           severity: 'medium',
-          description: 'Slow startup or freezing can involve drive health, limited memory, background software, thermal throttling or an operating-system problem. We check the likely cause before recommending an SSD upgrade or software service.'
+          description: 'Drive health, memory pressure, startup software, heat or operating-system problems can make a laptop slow or unstable.',
+          problem: 'A slow boot is not enough by itself to prove the drive has failed or that an SSD upgrade is the correct fix.',
+          labFix: 'We check storage health, memory, startup behavior and thermals before discussing a compatible upgrade or software repair.',
+          service: 'Any data-migration plan depends on drive condition, encryption and a current backup. Boot-time improvements are assessed after the confirmed fault is addressed.'
         },
         {
-          id: 'liquid-spills-laptop',
-          title: 'Liquid Spilled on the Laptop',
+          id: 'liquid-or-battery-safety',
+          title: 'Liquid Exposure & Swollen Battery',
           severity: 'critical',
-          description: 'Liquid can leave residue and cause corrosion or short circuits. Power the laptop off, disconnect its charger and do not keep trying to start or charge it. Prompt inspection can assess the damage, but cleaning cannot guarantee that every component or file will be recoverable.'
-        },
-        {
-          id: 'laptop-dead-no-power',
-          title: 'Dead / Won\'t Turn On',
-          severity: 'high',
-          description: 'No lights or fan response can involve the adapter, charging connector, input protection, a shorted component or another board-level fault. Bench testing identifies the likely cause before a repair is proposed.'
-        },
-        {
-          id: 'keyboard-failure',
-          title: 'Keyboard Keys Sticking or Not Working',
-          severity: 'medium',
-          description: 'Sticking or unresponsive keys can result from wear, debris, liquid exposure or a keyboard-circuit fault. We inspect the model and damage to determine whether cleaning, keyboard replacement or a related repair is suitable.'
-        },
-        {
-          id: 'battery-drain-laptop',
-          title: 'Battery Draining Fast or Swelling',
-          severity: 'high',
-          description: 'Short runtime can indicate battery wear, high system load or a charging issue. A swollen battery is a safety concern: stop using or charging the laptop and arrange professional handling. Replacement compatibility depends on the exact model.'
-        },
-        {
-          id: 'wifi-dropping',
-          title: 'Wi-Fi Dropping or Missing',
-          severity: 'low',
-          description: 'Wi-Fi problems can come from drivers, signal conditions, antenna connections, power settings or a faulty wireless card. We separate software and network causes from hardware faults before recommending a compatible repair or replacement.'
+          description: 'Liquid residue can cause corrosion; a swollen battery can create a physical and fire risk.',
+          problem: 'Repeatedly powering or charging a liquid-damaged laptop can worsen damage. A swollen battery should not be pressed, punctured or used.',
+          labFix: 'For liquid exposure, power off, unplug and arrange inspection. For swelling, stop use and charging and arrange professional handling; model-specific compatibility is checked before replacement.',
+          service: 'Inspection determines what can be repaired. Cleaning cannot guarantee every component or file is recoverable.'
         }
       ],
 
       process: [
-        { step: 1, title: 'Free Secure Pickup', description: 'We collect the laptop directly from your home or office anywhere in Kuwait.' },
-        { step: 2, title: 'Hardware & Thermal Diagnostic', description: 'We test the charging circuit, assess chassis damage, check storage health, and measure thermal throttling under load.' },
-        { step: 3, title: 'Quote & Approval', description: 'You receive a clear, itemized quote detailing the exact fix (e.g., "hinge repair + DC jack replacement") with zero hidden fees.' },
-        { step: 4, title: 'Precision Repair', description: 'We reconstruct the chassis, solder the ports, replace the screen, or upgrade the drive in our ESD-safe lab.' },
-        { step: 5, title: 'Burn-In Testing', description: 'The system is stress-tested to ensure hinges are smooth, temperatures are low, and power delivery is stable.' },
-        { step: 6, title: 'Delivery with Warranty', description: 'We return the laptop to you with a 30-day warranty. You only pay after verifying the repair is successful.' }
+        { step: 1, title: 'Free Pickup', description: 'We arrange collection from your home or office anywhere in Kuwait and route the laptop to the Hawalli repair lab.' },
+        { step: 2, title: 'Hardware & Thermal Diagnosis', description: 'We inspect the symptom, test relevant power and charging behavior, review storage health and assess chassis or cooling faults before making a recommendation.' },
+        { step: 3, title: 'Quote & Approval', description: 'You receive the diagnosis and repair price. Paid repair work begins only after you approve the proposed scope.' },
+        { step: 4, title: 'Targeted Repair', description: 'We carry out the approved component repair, compatible part replacement, chassis work or upgrade based on the confirmed fault.' },
+        { step: 5, title: 'Function Testing', description: 'We test the functions related to the repair and check relevant charging, stability, thermal or mechanical behavior when practical.' },
+        { step: 6, title: 'Return with Warranty', description: 'Your laptop is returned after the agreed work is completed, with a 30-day warranty on the completed repair.' }
       ],
 
-      performanceOutcomes: {
-        disclaimer: 'These are diagnostic and post-repair checks, not guaranteed before/after results. Outcomes depend on the exact model, confirmed fault, approved repair, component availability and operating conditions.',
-        items: [
-          { metric: 'Boot and storage behavior', outcome: 'When storage or software is implicated, we assess drive health and startup behavior and compare results after the agreed service.' },
-          { metric: 'Cooling behavior', outcome: 'Where overheating is reported, we inspect airflow and fan operation and compare thermal behavior under a repeatable workload when practical.' },
-          { metric: 'Hinge and chassis movement', outcome: 'We check hinge resistance, alignment and mount integrity. Extensive cracks or damaged mounts can limit the available repair options.' },
-          { metric: 'Charging and power stability', outcome: 'For charging faults, we test the connector and relevant power path, then check stable charging after the approved repair when the scope allows.' }
-        ]
-      },
-
-      repairExamples: {
-        disclaimer: 'These are illustrative diagnostic scenarios, not verified customer case studies or guaranteed outcomes. The appropriate repair depends on the inspected model, damage, parts availability and quote approval.',
-        items: [
-          {
-            id: 'hp-envy-hinge',
-            title: 'Hinge Is Stiff and the Chassis Is Separating',
-            symptoms: 'Opening the lid takes unusual force, or the bezel and lower chassis begin to separate near a hinge.',
-            diagnosis: 'Possible causes include a binding hinge, cracked mounting points, damaged inserts, a stressed display cable or broader lid/chassis damage. Inspection is needed to distinguish them.',
-            repair: 'Check hinge resistance, mounting points, bezel and nearby cables. Depending on the damage, the quote may cover reinforcement, a compatible replacement part or a larger assembly.',
-            outcome: 'A targeted mount repair may be possible when the surrounding chassis is sound. Extensive cracking or damaged parts can make a replacement the more suitable option.'
-          },
-          {
-            id: 'dell-inspiron-dc-jack',
-            title: 'Laptop Charges Only When the Cable Is Held at an Angle',
-            symptoms: 'Charging is intermittent when the cable moves, or the device stops charging even though the adapter appears connected.',
-            diagnosis: 'Potential causes include the adapter or cable, a worn DC jack or USB-C port, damaged connector pads, or a fault in the board-level input and charging circuitry.',
-            repair: 'Test the adapter and connector, then inspect the relevant power path. Connector replacement or board-level repair is recommended only when supported by the diagnosis.',
-            outcome: 'Charging is retested after the approved work when practical. The final repair and cost depend on the confirmed fault, model and extent of board damage.'
-          },
-          {
-            id: 'lenovo-ideapad-slow',
-            title: 'Laptop Takes Several Minutes to Start',
-            symptoms: 'Startup takes a long time, applications freeze, or the system spends extended periods under heavy disk activity.',
-            diagnosis: 'Check storage health, memory pressure, startup applications, temperature and operating-system condition before concluding that a drive is failing.',
-            repair: 'If storage failure or a performance bottleneck is confirmed, discuss compatible upgrades and data-migration options. Any migration plan should account for drive health, encryption and a current backup.',
-            outcome: 'The improvement depends on the actual bottleneck and system condition. Boot time cannot be guaranteed, and data migration or recovery from a failing drive may be incomplete.'
-          }
-        ]
-      },
-
       inspectionChecklist: [
-        'Hinge tension and plastic mount integrity',
-        'DC jack stability and voltage intake',
-        'Battery health and swelling check',
-        'CPU/GPU temperatures under synthetic load',
-        'Storage drive health (SMART data)',
-        'RAM stability test',
-        'Keyboard and trackpad responsiveness',
-        'Display cable and backlight circuit integrity'
+        'Hinge resistance, mount condition and display-cable routing',
+        'Adapter, DC/USB-C connector and relevant charging input',
+        'Battery condition, including swelling signs',
+        'Cooling airflow, fan operation and relevant temperatures',
+        'Storage health and startup behavior',
+        'Memory stability where indicated by the symptom',
+        'Display, backlight and cable behavior',
+        'Relevant post-repair function and stability checks'
       ],
 
       faqs: [
+        {
+          id: 'faq-laptop-price',
+          title: 'How much does laptop repair cost in Kuwait?',
+          answer: 'Laptop repair starts from 15 KWD. The final price depends on the exact model, confirmed fault and parts required. You receive the repair quote before paid work begins.'
+        },
+        {
+          id: 'faq-laptop-turnaround',
+          title: 'How long does a laptop repair take?',
+          answer: 'Many routine repairs can be completed the same day or within 24 hours when the required part is available. Board-level faults, deeper diagnosis and parts orders can take longer; we confirm timing after checking the device.'
+        },
+        {
+          id: 'faq-laptop-pickup',
+          title: 'Do you collect laptops across Kuwait, or must I visit Hawalli?',
+          answer: 'Free pickup and delivery are available across Kuwait. Repairs are handled at the Hawalli lab, so most customers can arrange collection from home or office instead of visiting in person.'
+        },
+        {
+          id: 'faq-laptop-brands',
+          title: 'Which laptop brands do you repair?',
+          answer: 'We service Dell, HP, Lenovo, ASUS, Acer, MSI and selected Microsoft Surface models. MacBook repairs have a dedicated service page. Model and parts compatibility are checked before confirming the repair.'
+        },
+        {
+          id: 'faq-laptop-board-repair',
+          title: 'Can you repair a laptop motherboard instead of replacing it?',
+          answer: 'Where the board and fault are technically repairable, we test the relevant power, charging or component-level circuit before recommending a full board replacement. Some board damage is not economical or safe to repair, and the diagnosis will explain the available options.'
+        },
         {
           id: 'faq-fix-broken-hinge',
           title: 'Can you fix a broken hinge without replacing the whole screen?',
@@ -2034,41 +2010,25 @@ export const rawGraphData: RawGraphData = {
         },
         {
           id: 'faq-dc-jack-repair',
-          title: 'My laptop only works when plugged in at a specific angle. Can this be fixed?',
+          title: 'My laptop only charges when the cable is held at an angle. Can this be fixed?',
           answer: 'It may be repairable, but the angle symptom does not prove the port is the only fault. We check the adapter, connector and relevant power path before quoting connector repair, board-level work or another solution.'
         },
         {
-          id: 'faq-ssd-upgrade-data',
-          title: 'Will an SSD upgrade delete my files?',
-          answer: 'An SSD upgrade does not automatically require erasing the old drive, but cloning and migration are not risk-free. Back up important files first. If the source drive is healthy and readable, we can discuss migration options; a failing or encrypted drive may limit what can be transferred. We cannot guarantee that every file, application, session or password will transfer unchanged.'
+          id: 'faq-ssd-ram-data',
+          title: 'Can you upgrade SSD/RAM, and what happens to my files?',
+          answer: 'Compatibility depends on the exact model; some laptops have soldered RAM or limited storage options. Back up important files before service. If migration is required, the available options depend on source-drive health, encryption and data condition, so a complete transfer cannot be guaranteed.'
         },
         {
           id: 'faq-screen-replacement-time',
-          title: 'How long does a screen replacement take?',
-          answer: 'Timing depends on the exact laptop model, the correct compatible panel and parts availability. Same-day repair may be possible when the required panel is in stock, but we confirm the expected timing after checking the model and fault.'
-        },
-        {
-          id: 'faq-overheating-fan-replace',
-          title: 'My laptop is overheating and shutting down. Do I need a new fan?',
-          answer: 'Not always. Possible causes include blocked airflow, a worn fan, poor thermal contact, demanding workloads or another hardware fault. We inspect the cooling system before recommending cleaning, fan replacement or further diagnosis.'
-        },
-        {
-          id: 'faq-surface-repair',
-          title: 'Do you repair Microsoft Surface laptops?',
-          answer: 'We assess selected Surface models for faults such as battery, display and Windows recovery problems. These devices can require model-specific opening tools and compatible parts, so the exact model and issue need to be checked before we confirm the available repair.'
-        },
-        {
-          id: 'faq-ram-upgrade',
-          title: 'Can you upgrade the RAM in my laptop?',
-          answer: 'It depends on the exact model. Some laptops have replaceable memory modules, while others use soldered RAM that cannot be upgraded conventionally. Send us the model number and we can check compatibility before recommending a service.'
+          title: 'How soon can a laptop screen be replaced?',
+          answer: 'Timing depends on the exact model and whether a compatible panel is in stock. Same-day service may be possible, but we confirm availability and expected timing after checking the model and fault.'
         },
         {
           id: 'faq-no-fix-no-fee',
           title: 'What happens if you cannot fix my laptop?',
-          answer: 'We explain the diagnosis and available options before paid repair work begins. Under KCROC’s stated No Fix, No Fee policy, if the device is not repairable or repair is uneconomical under that policy, you do not pay the diagnostic or repair labour fee.'
+          answer: 'We explain the diagnosis and available options before paid repair work begins. KCROC’s No Fix, No Fee policy applies under its stated conditions when a device cannot be repaired economically.'
         }
       ],
-
       warranty: { duration: '30 Days', coverage: 'All parts and labor.', noFixNoFee: true }, 
       contentImages: [
         {

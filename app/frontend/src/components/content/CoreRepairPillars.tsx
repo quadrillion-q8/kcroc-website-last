@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Laptop, MonitorCog } from 'lucide-react';
+import { ArrowRight, Cpu, Laptop, MonitorCog } from 'lucide-react';
 
 type Props = {
   context?: string;
+  excludeLaptopService?: boolean;
 };
 
-export function CoreRepairPillars({ context = 'Choose the right starting point for a Kuwait repair job.' }: Props) {
+export function CoreRepairPillars({ context = 'Choose the right starting point for a Kuwait repair job.', excludeLaptopService = false }: Props) {
   return (
     <section
       aria-labelledby="core-repair-pillars"
@@ -41,19 +42,23 @@ export function CoreRepairPillars({ context = 'Choose the right starting point f
         </Link>
 
         <Link
-          to="/laptop-repair-kuwait"
+          to={excludeLaptopService ? "/motherboard-repair-kuwait" : "/laptop-repair-kuwait"}
           className="group rounded-2xl border border-slate-800 bg-slate-900/50 p-6 transition hover:border-cyan-500/40 hover:bg-slate-900/75"
         >
-          <Laptop className="h-6 w-6 text-cyan-400" aria-hidden="true" />
+          {excludeLaptopService
+            ? <Cpu className="h-6 w-6 text-cyan-400" aria-hidden="true" />
+            : <Laptop className="h-6 w-6 text-cyan-400" aria-hidden="true" />}
           <h3 className="mt-4 text-xl font-black text-white group-hover:text-cyan-300">
-            Laptop Repair Kuwait
+            {excludeLaptopService ? "Motherboard Repair Kuwait" : "Laptop Repair Kuwait"}
           </h3>
           <p className="mt-2 text-sm leading-6 text-slate-400">
-            The focused laptop repair hub for screens, batteries, charging, hinges, overheating, upgrades and
-            motherboard-level faults.
+            {excludeLaptopService
+              ? "Explore focused board-level diagnosis for supported power, charging and motherboard faults when component repair may be practical."
+              : "The focused laptop repair hub for screens, batteries, charging, hinges, overheating, upgrades and motherboard-level faults."}
           </p>
           <span className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-cyan-300">
-            View laptop repair service <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            {excludeLaptopService ? "View motherboard repair service" : "View laptop repair service"}
+            <ArrowRight className="h-4 w-4" aria-hidden="true" />
           </span>
         </Link>
       </div>
