@@ -10,7 +10,7 @@ import { IMAGES } from '../constants/images.js';
 export const rawGraphData: RawGraphData = {
   metadata: {
     version: '3.8.5',
-    lastUpdated: '2026-10-25T00:00:00+03:00',
+    lastUpdated: '2026-10-26T00:00:00+03:00',
     environment: 'production'
   },
 
@@ -987,6 +987,46 @@ export const rawGraphData: RawGraphData = {
         altText: 'فحص واستبدال منفذ طاقة DC Jack في لوحة لابتوب'
       },
       relatedServiceIds: ['srv-charging-port', 'srv-motherboard', 'srv-battery', 'srv-laptop']
+    } as WebPageEntity,
+    'page-ar-laptop-plugged-in-not-charging': {
+      id: 'page-ar-laptop-plugged-in-not-charging',
+      slug: 'ar/laptop-plugged-in-not-charging',
+      entityType: 'WebPage',
+      isActive: true,
+      title: 'اللابتوب متصل بالشاحن ولا يشحن؟ دليل فحص آمن',
+      description: 'دليل عربي لمشكلة اللابتوب المتصل بالشاحن ولا يشحن: فحص آمن للشاحن والمنفذ والبطارية ودائرة الطاقة، ومتى تحتاج إلى تشخيص مختص.',
+      seo: {
+        title: 'اللابتوب متصل بالشاحن ولا يشحن؟ دليل تشخيص | KCROC',
+        description: 'اللابتوب متصل بالشاحن ولا يشحن؟ تعرّف على فحوصات آمنة للشاحن والبطارية وDC Jack وUSB-C، ومتى تحتاج إلى تشخيص دائرة الطاقة في الكويت.',
+        canonicalUrl: 'https://www.computerrepairkuwait.com/ar/laptop-plugged-in-not-charging',
+        ogImage: '/images/laptop-dc-power-jack-connector-replacement-kuwait-1000.webp',
+        ogImageAlt: 'فحص منفذ طاقة اللابتوب أثناء تشخيص مشكلة عدم الشحن',
+        ogImageWidth: 1000,
+        ogImageHeight: 1000,
+        locale: 'ar_KW',
+        alternates: {
+          'ar-KW': 'https://www.computerrepairkuwait.com/ar/laptop-plugged-in-not-charging',
+          'en-KW': 'https://www.computerrepairkuwait.com/laptop-plugged-in-not-charging',
+          'x-default': 'https://www.computerrepairkuwait.com/laptop-plugged-in-not-charging'
+        },
+        ogType: 'article',
+        schemaTypes: ['WebPage', 'BreadcrumbList'],
+        lastModified: '2026-10-26T00:00:00+03:00',
+        breadcrumbs: [
+          { name: 'الرئيسية', url: '/ar' },
+          { name: 'تصليح مدخل شحن اللابتوب', url: '/ar/laptop-charging-port-repair-kuwait' },
+          { name: 'اللابتوب متصل بالشاحن ولا يشحن', url: '/ar/laptop-plugged-in-not-charging' }
+        ]
+      },
+      featuredImage: {
+        ogImage: '/images/laptop-dc-power-jack-connector-replacement-kuwait-1000.webp',
+        altText: 'فحص منفذ طاقة اللابتوب أثناء تشخيص مشكلة عدم الشحن'
+      },
+      relatedServiceIds: ['srv-charging-port', 'srv-battery', 'srv-motherboard', 'srv-laptop'],
+      authorName: 'KCROC Engineering Team',
+      datePublished: '2026-10-26',
+      dateModified: '2026-10-26',
+      articleSection: 'تشخيص أعطال اللابتوب والشحن'
     } as WebPageEntity,
     'page-ar-keyboard-replacement': {
       id: 'page-ar-keyboard-replacement', slug: 'ar/laptop-keyboard-replacement-kuwait', entityType: 'WebPage', isActive: true,
@@ -4807,7 +4847,20 @@ export const rawGraphData: RawGraphData = {
         { src: IMAGES.laptopHardware.laptopDcPowerJackConnectorReplacement.src, alt: IMAGES.laptopHardware.laptopDcPowerJackConnectorReplacement.alt, width: IMAGES.laptopHardware.laptopDcPowerJackConnectorReplacement.width, height: IMAGES.laptopHardware.laptopDcPowerJackConnectorReplacement.height, placement: 'solution', caption: 'Inspecting and repairing the DC charging jack when the laptop is plugged in but not charging.' },
         { src: IMAGES.laptopHardware.dellAdapter.src, alt: IMAGES.laptopHardware.dellAdapter.alt, width: IMAGES.laptopHardware.dellAdapter.width, height: IMAGES.laptopHardware.dellAdapter.height, placement: 'solution', caption: 'Verifying the correct-wattage adapter as part of confirming the actual cause of the charging fault.' },
       ],
-      seo: { title: 'Laptop Plugged In But Not Charging — Repair Kuwait | KCROC', description: 'Laptop battery not charging? We diagnose dead batteries, broken charging ports, and failed motherboard power chips. Same-day service available.', canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-plugged-in-not-charging', ogType: 'article', schemaTypes: ['TechArticle', 'FAQPage'], lastModified: '2026-09-10T00:00:00+03:00' },
+      seo: {
+        title: 'Laptop Plugged In But Not Charging | Diagnosis Kuwait | KCROC',
+        description: 'Laptop says plugged in but not charging? Check charger compatibility, battery, DC jack, USB-C and charging-circuit symptoms before replacing parts. Kuwait-wide pickup.',
+        canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-plugged-in-not-charging',
+        locale: 'en_KW',
+        alternates: {
+          'en-KW': 'https://www.computerrepairkuwait.com/laptop-plugged-in-not-charging',
+          'ar-KW': 'https://www.computerrepairkuwait.com/ar/laptop-plugged-in-not-charging',
+          'x-default': 'https://www.computerrepairkuwait.com/laptop-plugged-in-not-charging'
+        },
+        ogType: 'article',
+        schemaTypes: ['TechArticle', 'FAQPage'],
+        lastModified: '2026-10-26T00:00:00+03:00'
+      },
       navigationPriority: 60, popular: false
     } as ProblemEntity,
 
