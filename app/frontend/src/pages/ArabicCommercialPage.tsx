@@ -322,11 +322,11 @@ const CONFIG: Record<string, {
   'macbook-screen-replacement-kuwait': {
     h1: 'تبديل وتصليح شاشة ماك بوك (MacBook) في الكويت',
     eyebrow: 'شاشة ماك بوك إير أو ماك بوك برو مكسورة أو سوداء أو فيها خطوط؟ نفحص السبب ونطابق الموديل قبل طلب القطعة',
-    intro: 'إذا شاشة ماك بوك (MacBook) أو MacBook Air أو MacBook Pro مكسورة أو سوداء أو تومض، لا تفترض أن الحل تبديل الشاشة كاملة قبل الفحص. نفحص الشاشة والكيبل والموصل والإضاءة ومسار الصورة، ونراجع رقم الموديل والجيل لتحديد الخيار المناسب. أجرة العمل تبدأ من 30 د.ك ويُحسب سعر الشاشة بشكل منفصل حسب الموديل وتوفر القطعة. نوضح التكلفة النهائية والمدة المتوقعة قبل أي إصلاح مدفوع.',
+    intro: 'إذا شاشة ماك بوك (MacBook) أو MacBook Air أو MacBook Pro مكسورة أو سوداء أو تومض، ابدأ بفحص أولي مجاني. نفحص الشاشة والكيبل والموصل والإضاءة ومسار الصورة، ونراجع رقم الموديل والجيل لتحديد الخيار المناسب. أجرة العمل تبدأ من 30 د.ك ويُحسب سعر الشاشة بشكل منفصل حسب الموديل وتوفر القطعة. نوضح التكلفة النهائية والمدة المتوقعة قبل أي إصلاح مدفوع.',
     bullets: [
       'تبديل شاشة ماك بوك إير وMacBook Air حسب الموديل والجيل والتوافق',
       'تبديل شاشة ماك بوك برو وMacBook Pro بعد تأكيد القطعة المناسبة',
-      'فحص الشاشة والكيبل والموصل والإضاءة قبل اقتراح التبديل',
+      'فحص أولي مجاني للشاشة والكيبل والموصل والإضاءة قبل اقتراح التبديل',
       'أجرة العمل تبدأ من 30 د.ك + سعر تجميعة الشاشة',
       'تأكيد توفر القطعة والسعر النهائي والمدة قبل التركيب',
       'استلام وتوصيل مجاني داخل الكويت والإصلاح في مختبر حولي'
@@ -2367,7 +2367,7 @@ export default function ArabicCommercialPage() {
                     <tr><th scope="row" className="p-3 font-semibold text-white">MacBook Air M2 (13 بوصة)</th><td className="p-3" dir="ltr">A2681</td><td className="p-3">شاشة Liquid Retina؛ لا تخلطه مع مقاس 15 بوصة أو أجيال أخرى.</td></tr>
                     <tr><th scope="row" className="p-3 font-semibold text-white">MacBook Air M2 (15 بوصة)</th><td className="p-3" dir="ltr">A2941</td><td className="p-3">شاشة Liquid Retina؛ يحتاج مطابقة خاصة بالمقاس والجيل.</td></tr>
                     <tr><th scope="row" className="p-3 font-semibold text-white">MacBook Air M3 (13 و15 بوصة)</th><td className="p-3" dir="ltr">A3113 / A3114</td><td className="p-3">شاشة Liquid Retina؛ نؤكد المقاس ورقم الطراز قبل طلب القطعة.</td></tr>
-                    <tr><th scope="row" className="p-3 font-semibold text-white">MacBook Pro 13 بوصة M1</th><td className="p-3" dir="ltr">A2338</td><td className="p-3">قد تختلف القطع عن موديلات Pro الأخرى.</td></tr>
+                    <tr><th scope="row" className="p-3 font-semibold text-white">MacBook Pro 13 بوصة M1 / M2</th><td className="p-3" dir="ltr">A2338</td><td className="p-3">قد تختلف القطع عن موديلات Pro الأخرى؛ نتحقق من الجيل قبل الطلب.</td></tr>
                     <tr><th scope="row" className="p-3 font-semibold text-white">MacBook Pro 14 بوصة (2021–2023)</th><td className="p-3" dir="ltr">A2442 / A2779 / A2992</td><td className="p-3">شاشة Liquid Retina XDR مع ProMotion في الموديلات ذات الصلة؛ تحقق من السنة والجيل قبل التسعير.</td></tr>
                     <tr><th scope="row" className="p-3 font-semibold text-white">MacBook Pro 16 بوصة (Apple Silicon)</th><td className="p-3" dir="ltr">A2485 / A2780 / A2991</td><td className="p-3">شاشة Liquid Retina XDR مع ProMotion في الموديلات ذات الصلة؛ رقم الطراز وحده لا يثبت توفر القطعة.</td></tr>
                     <tr><th scope="row" className="p-3 font-semibold text-white">MacBook Pro 13 بوصة Intel (2016–2020)</th><td className="p-3" dir="ltr">A1706 / A1708 / A1989 / A2159 / A2251 / A2289</td><td className="p-3">شاشات Retina؛ تختلف التجميعة حسب الموديل والسنة، لذلك نتحقق من الجهاز قبل الطلب.</td></tr>
