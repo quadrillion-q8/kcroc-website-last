@@ -43,6 +43,13 @@ const [app, graph, seoProjection, locale, pricingPage, sitemap, hero, reviews, f
   read('pages/templates/BrandTemplate.tsx'),
 ]);
 
+const laptopGraphStart = graph.indexOf("'srv-laptop': {");
+const laptopGraphEnd = graph.indexOf("'srv-desktop-pc': {", laptopGraphStart + 1);
+const laptopServiceEntityForChecks =
+  laptopGraphStart >= 0 && laptopGraphEnd > laptopGraphStart
+    ? graph.slice(laptopGraphStart, laptopGraphEnd)
+    : '';
+
 const url = 'https://www.computerrepairkuwait.com/ar/pricing';
 const arabicHomeSource = await read('pages/ArabicLocalizedPages.tsx');
 add('Arabic pricing route is registered', app.includes("path: 'ar/pricing'"));
@@ -86,6 +93,24 @@ add('Laptop outcome copy uses diagnostic checks rather than guaranteed numeric p
   graph.includes('These are diagnostic and post-repair checks, not guaranteed before/after results.') &&
   !graph.includes('saving you up to 70%.') &&
   !graph.includes('saves the remaining 95% of the motherboard'));
+
+add('Laptop repair scenarios and FAQs avoid unsupported prices, fixed performance outcomes and universal data-transfer promises',
+  laptopServiceEntityForChecks.includes('These are illustrative diagnostic scenarios, not verified customer case studies or guaranteed outcomes.') &&
+  laptopServiceEntityForChecks.includes('We cannot guarantee that every file, application, session or password will transfer unchanged.') &&
+  laptopServiceEntityForChecks.includes('Boot time cannot be guaranteed') &&
+  !laptopServiceEntityForChecks.includes('150+ KWD motherboard replacement') &&
+  !laptopServiceEntityForChecks.includes('Total repair cost: 25 KWD.') &&
+  !laptopServiceEntityForChecks.includes('ran 10x faster') &&
+  !laptopServiceEntityForChecks.includes('same desktop, same files, same passwords') &&
+  !laptopServiceEntityForChecks.includes('Most shops will quote a full'));
+
+add('Laptop hinge, charging, screen, cooling and liquid-damage content uses diagnosis-first language',
+  laptopServiceEntityForChecks.includes('inspect hinge resistance, mount damage and nearby display cables') &&
+  laptopServiceEntityForChecks.includes('fault in the board-level power path') &&
+  laptopServiceEntityForChecks.includes('verify panel compatibility before quoting a screen replacement') &&
+  laptopServiceEntityForChecks.includes('cleaning cannot guarantee that every component or file will be recoverable') &&
+  !laptopServiceEntityForChecks.includes('before short circuits kill the motherboard') &&
+  !laptopServiceEntityForChecks.includes('OEM-grade match'));
 
 // Every currently published Arabic route must have an exact English counterpart, and vice versa.
 const languagePairs = [
