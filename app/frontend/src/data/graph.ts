@@ -263,8 +263,8 @@ export const rawGraphData: RawGraphData = {
       title: 'فني كمبيوتر في الكويت | تصليح كمبيوتر ولابتوب',
       description: 'خدمة فني كمبيوتر في الكويت للابتوب والكمبيوتر المكتبي وMacBook وGaming PC. نستلم الجهاز من المنزل أو المكتب ونفحصه ونصلحه في مختبر KCROC بحولي، ثم نوصله بعد الاختبار.',
       seo: {
-        title: 'تصليح كمبيوتر في الكويت | فني كمبيوتر | KCROC',
-        description: 'تصليح كمبيوتر ولابتوب في الكويت مع استلام وتوصيل مجاني من المنزل أو المكتب. نفحص الجهاز في مختبر حولي ونوضح التكلفة قبل الإصلاح، مع ضمان 30 يومًا.',
+        title: 'فني كمبيوتر في الكويت | تصليح كمبيوتر ولابتوب | KCROC',
+        description: 'تحتاج فني كمبيوتر في الكويت؟ استلام وتوصيل مجاني من المنزل أو المكتب. نفحص الجهاز في مختبر حولي ونوضح التكلفة قبل الإصلاح، مع ضمان 30 يومًا.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/ar/computer-repair-kuwait',
         locale: 'ar_KW',
         alternates: {
@@ -273,7 +273,7 @@ export const rawGraphData: RawGraphData = {
           'x-default': 'https://www.computerrepairkuwait.com/computer-repair-kuwait'
         },
         ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList', 'FAQPage', 'Service'],
-        lastModified: '2026-10-21T00:00:00+03:00',
+        lastModified: '2026-10-27T00:00:00+03:00',
         breadcrumbs: [{ name: 'الرئيسية', url: '/' }, { name: 'تصليح كمبيوتر في الكويت', url: '/ar/computer-repair-kuwait' }]
       },
       relatedServiceIds: ['srv-laptop', 'srv-motherboard', 'srv-gaming', 'srv-macbook', 'srv-screen']
@@ -375,10 +375,10 @@ export const rawGraphData: RawGraphData = {
       id: 'page-ar-hawalli-computer-repair', slug: 'ar/computer-repair-hawalli', entityType: 'WebPage', isActive: true,
       title: 'تصليح كمبيوتر حولي | فني لابتوب وموقع المختبر',
       description: 'تصليح كمبيوتر ولابتوب في حولي من مختبر KCROC الفعلي في مجمع الملا. زيارة مباشرة أو استلام وتوصيل مجاني، مع تشخيص واضح وضمان 30 يومًا.',
-      seo: { title: "تصليح كمبيوتر حولي | فني لابتوب وموقع المختبر | KCROC", description: "تصليح كمبيوتر أو لابتوب في حولي؟ مختبر KCROC في مجمع الملا، شارع ابن خلدون، محل 19. مفتوح يوميًا 10 صباحًا–10 مساءً، مع استلام وتوصيل مجاني وضمان 30 يومًا.",
+      seo: { title: "تصليح كمبيوتر حولي | فني كمبيوتر ولابتوب | KCROC", description: "تحتاج فني كمبيوتر في حولي؟ زر مختبر KCROC في مجمع الملا، شارع ابن خلدون، محل 19، أو اطلب الاستلام والتوصيل مجانًا. تشخيص واضح وضمان 30 يومًا.",
         canonicalUrl: 'https://www.computerrepairkuwait.com/ar/computer-repair-hawalli',
         locale: 'ar_KW', alternates: { 'ar-KW': 'https://www.computerrepairkuwait.com/ar/computer-repair-hawalli', 'en-KW': 'https://www.computerrepairkuwait.com/location/hawalli', 'x-default': 'https://www.computerrepairkuwait.com/location/hawalli' },
-        ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList'], lastModified: '2026-10-16T00:00:00+03:00',
+        ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList'], lastModified: '2026-10-27T00:00:00+03:00',
         breadcrumbs: [{ name: 'الرئيسية', url: '/' }, { name: 'تصليح كمبيوتر حولي', url: '/ar/computer-repair-hawalli' }]
       },
       relatedServiceIds: ['srv-laptop', 'srv-motherboard', 'srv-screen', 'srv-battery', 'srv-macbook', 'srv-gaming', 'srv-gaming-laptop']
@@ -4356,7 +4356,7 @@ export const rawGraphData: RawGraphData = {
         { id: 'hp-authorized', title: 'Is KCROC an official HP service center?', answer: 'No. KCROC is an independent computer-repair provider in Kuwait, not an official HP-authorized service center. We diagnose the actual hardware fault and quote the repair path before work begins.' }
       ],
       pricing: { startingFrom: 15, currency: 'KWD', quoteRequired: true, displayLabel: 'From 15 KWD — free diagnostic first' },
-      seo: { title: 'HP Laptop Repair Kuwait | Pavilion, EliteBook & OMEN | KCROC', description: 'Independent HP laptop repair in Kuwait for Pavilion, EliteBook, ProBook, Envy, OMEN and Victus. Free pickup, diagnosis first, quote before repair and 30-day warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/hp-laptop-repair-kuwait', ogType: 'article', schemaTypes: ['Brand', 'Service', 'FAQPage', 'BreadcrumbList'], lastModified: '2026-10-25T00:00:00+03:00' },
+      seo: { title: 'HP Laptop Service Center Kuwait (Independent) | KCROC', description: 'Independent HP laptop repair in Kuwait for Pavilion, EliteBook, ProBook, Envy, OMEN and Victus. Free pickup, diagnosis first, quote before repair and 30-day warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/hp-laptop-repair-kuwait', ogType: 'article', schemaTypes: ['Brand', 'Service', 'FAQPage', 'BreadcrumbList'], lastModified: '2026-10-27T00:00:00+03:00' },
       navigationPriority: 80, popular: true 
     } as BrandEntity,
 
