@@ -410,7 +410,7 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
             ...(problemEntity.diagnosticSteps ?? []).map(step => `${step.title}: ${step.description}`),
             ...(problemEntity.decisionTree ?? []).map(step => `Diagnostic path: ${step.symptom}. ${step.direction}`),
             ...(problemEntity.technicianMethod ?? []).map(step => `${step.title}: ${step.description}`),
-            `Solution: ${problemEntity.solution}`,
+            ...(problemEntity.solution ? [`Solution: ${problemEntity.solution}`] : []),
             ...(problemEntity.safetyNotes ?? []).map(note => `Safety: ${note}`),
             ...(problemEntity.kuwaitContext ?? []),
             ...(problemEntity.expertNotes ?? []).map(note => `${note.title}: ${note.description}`),
