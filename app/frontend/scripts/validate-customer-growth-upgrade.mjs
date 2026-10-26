@@ -58,6 +58,19 @@ const salmiyaEntity =
     ? graph.slice(salmiyaGraphStart, salmiyaGraphEnd)
     : '';
 
+const relationshipsStart = graph.indexOf('const LOCATION_RELATIONSHIPS:');
+const relationshipsEnd = graph.indexOf('const rawEntities = Object.values(rawGraphData.entities);', relationshipsStart + 1);
+const locationRelationships =
+  relationshipsStart >= 0 && relationshipsEnd > relationshipsStart
+    ? graph.slice(relationshipsStart, relationshipsEnd)
+    : '';
+const salmiyaRelationshipStart = locationRelationships.indexOf('  salmiya: {');
+const salmiyaRelationshipEnd = locationRelationships.indexOf("  'kuwait-city': {", salmiyaRelationshipStart + 1);
+const salmiyaRelationship =
+  salmiyaRelationshipStart >= 0 && salmiyaRelationshipEnd > salmiyaRelationshipStart
+    ? locationRelationships.slice(salmiyaRelationshipStart, salmiyaRelationshipEnd)
+    : '';
+
 const url = 'https://www.computerrepairkuwait.com/ar/pricing';
 const arabicHomeSource = await read('pages/ArabicLocalizedPages.tsx');
 add('Arabic pricing route is registered', app.includes("path: 'ar/pricing'"));
@@ -149,9 +162,11 @@ add('Salmiya page prioritises board-level repair, local pickup landmarks and nea
   salmiyaEntity.includes("serviceAreas: ['Salmiya', 'Bidaa']") &&
   !salmiyaEntity.includes('The Salmiya service area also covers Rumaithiya, Salwa'));
 add('Salmiya connects existing gaming services and a high-intent overheating problem card',
-  salmiyaEntity.includes("'srv-gaming'") &&
-  salmiyaEntity.includes("'srv-gaming-laptop-cleaning'") &&
-  salmiyaEntity.includes("'problem-overheating'") &&
+  salmiyaRelationship.includes("'srv-gaming'") &&
+  salmiyaRelationship.includes("'srv-gaming-laptop-cleaning'") &&
+  salmiyaRelationship.includes("'problem-overheating'") &&
+  salmiyaRelationship.includes("'loc-rumaithiya'") &&
+  salmiyaRelationship.includes("'loc-salwa'") &&
   locations.includes('Gaming Laptop Overheating, Loud Fans, or GPU Black Screen'));
 add('Service-area FAQs remain in prerendered DOM and match their FAQPage schema answers',
   locations.includes('hidden={!isOpen}') &&
