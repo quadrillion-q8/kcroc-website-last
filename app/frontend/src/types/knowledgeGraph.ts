@@ -417,6 +417,15 @@ export const ProblemSchema = RoutableEntitySchema.extend({
   })).optional(),
   safetyNotes: z.array(z.string()).optional(),
   kuwaitContext: z.array(z.string()).optional(),
+  expertNotes: z.array(z.object({
+    title: z.string(),
+    description: z.string(),
+  })).optional(),
+  technicalReferences: z.array(z.object({
+    label: z.string(),
+    url: z.string().url(),
+    description: z.string(),
+  })).optional(),
   coveredBrands: z.array(z.string()).optional(),
   // Explicit brand/resource relationships let problem pages participate in the
   // same topical graph as service and brand hubs instead of leaving covered

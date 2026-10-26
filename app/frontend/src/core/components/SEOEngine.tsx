@@ -411,6 +411,8 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
             ...(problemEntity.technicianMethod ?? []).map(step => `${step.title}: ${step.description}`),
             `Solution: ${problemEntity.solution}`,
             ...(problemEntity.kuwaitContext ?? []),
+            ...(problemEntity.expertNotes ?? []).map(note => `${note.title}: ${note.description}`),
+            ...(problemEntity.technicalReferences ?? []).map(reference => `Technical reference: ${reference.label}. ${reference.description}`),
             ...(problemEntity.faqs ?? []).map(faq => `FAQ: ${faq.question} ${faq.answer}`)
           ].filter(Boolean).join(' ');
           schemaGraph.push({
