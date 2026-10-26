@@ -383,7 +383,10 @@ const ProblemTemplate: React.FC = () => {
               {updatedLabel && (
                 <span className="inline-flex items-center gap-2"><Clock3 className="h-4 w-4" /> Updated {updatedLabel}</span>
               )}
-              <span>Technical guidance by <Link to="/about" className="text-slate-300 underline decoration-slate-600 underline-offset-4 hover:text-cyan-300">KCROC</Link> • Hawalli, Kuwait</span>
+              <span>Technical guidance by KCROC • Hawalli, Kuwait</span>
+              <Link to="/author/imran" className="text-slate-300 underline decoration-slate-600 underline-offset-4 hover:text-cyan-300">
+                Technical background: Imran Natiq, Hardware Repair Engineer
+              </Link>
             </div>
           </div>
 
