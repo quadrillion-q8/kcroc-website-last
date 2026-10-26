@@ -4,7 +4,7 @@ import { useLocation, Navigate, Link } from 'react-router-dom';
 import { KCROC_GRAPH } from '../../data/graph';
 import { SEOEngine } from '../../core/components/SEOEngine';
 import { getIntentWhatsAppLink } from '../../utils/whatsappIntent';
-import { AlertOctagon, CheckCircle2, ShieldAlert, ArrowRight, Search, Wrench, MapPin, HelpCircle, BookOpen, Clock3 } from 'lucide-react';
+import { AlertOctagon, CheckCircle2, ShieldAlert, ArrowRight, Wrench, MapPin, HelpCircle, BookOpen, Clock3, ExternalLink } from 'lucide-react';
 
 const ProblemTemplate: React.FC = () => {
   const location = useLocation();
@@ -13,6 +13,20 @@ const ProblemTemplate: React.FC = () => {
   const problem = KCROC_GRAPH.problems.find(p => p.slug === slug);
 
   if (!problem) return <Navigate to="/404" replace />;
+
+  const isOverheating = problem.id === 'problem-overheating';
+  const problemLabel = problem.title
+    .replace(/\s+in Kuwait$/i, '')
+    .replace(/\s+Kuwait$/i, '')
+    .trim();
+  const updatedLabel = problem.seo?.lastModified
+    ? new Date(problem.seo.lastModified).toLocaleDateString('en-KW', {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric',
+        timeZone: 'Asia/Kuwait',
+      })
+    : null;
 
   const relatedServices = (problem.relatedServiceIds ?? [])
     .map((id) => KCROC_GRAPH.services.find((service) => service.id === id))
@@ -91,9 +105,13 @@ const ProblemTemplate: React.FC = () => {
             <section aria-labelledby="diagnostic-path">
               <div className="mb-6">
                 <p className="text-sm font-bold uppercase tracking-[0.18em] text-cyan-400">Start here</p>
-                <h2 id="diagnostic-path" className="text-3xl font-black text-white mt-2">First, identify what “won’t turn on” means</h2>
+                <h2 id="diagnostic-path" className="text-3xl font-black text-white mt-2">
+                  {isOverheating ? 'Identify the overheating pattern' : 'Start by identifying the symptom'}
+                </h2>
                 <p className="mt-3 text-slate-400 max-w-3xl">
-                  People often use the same phrase for a dead laptop, a black screen and a Windows boot failure. Choosing the correct path prevents unnecessary parts replacement.
+                  {isOverheating
+                    ? 'Heat, fan noise and slowdown are clues, not proof of a failed part. Match the pattern below to the safest next step before assuming the laptop needs new thermal paste or a full cleaning.'
+                    : 'Match the symptoms below to a likely next step. Different faults can look alike, so do not choose a replacement part based on one symptom alone.'}
                 </p>
               </div>
               <div className="grid gap-4 md:grid-cols-2">
@@ -115,7 +133,9 @@ const ProblemTemplate: React.FC = () => {
           <section aria-labelledby="safe-checks">
             <div className="mb-6">
               <p className="text-sm font-bold uppercase tracking-[0.18em] text-cyan-400">Safe troubleshooting</p>
-              <h2 id="safe-checks" className="text-3xl font-black text-white mt-2">What to check before opening the laptop</h2>
+              <h2 id="safe-checks" className="text-3xl font-black text-white mt-2">
+                {isOverheating ? 'Safe checks before opening your laptop' : 'Safe checks before opening the device'}
+              </h2>
             </div>
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
               {(problem.diagnosticSteps ?? []).map((step) => (
@@ -133,7 +153,9 @@ const ProblemTemplate: React.FC = () => {
           <section aria-labelledby="common-causes">
             <div className="mb-6">
               <p className="text-sm font-bold uppercase tracking-[0.18em] text-cyan-400">Root causes</p>
-              <h2 id="common-causes" className="text-3xl font-black text-white mt-2">Common reasons a laptop has no power</h2>
+              <h2 id="common-causes" className="text-3xl font-black text-white mt-2">
+                {isOverheating ? 'Common causes of laptop overheating' : 'Possible underlying causes'}
+              </h2>
             </div>
             <div className="grid gap-4 md:grid-cols-2">
               {getContentImage('causes') && <ContentImage image={getContentImage('causes')!} />}
@@ -185,13 +207,37 @@ const ProblemTemplate: React.FC = () => {
             </section>
           )}
 
+          {problem.expertNotes && problem.expertNotes.length > 0 && (
+            <section aria-labelledby="expert-notes">
+              <div className="mb-6">
+                <p className="text-sm font-bold uppercase tracking-[0.18em] text-cyan-400">Technical context</p>
+                <h2 id="expert-notes" className="mt-2 text-3xl font-black text-white">What a reliable diagnosis should account for</h2>
+                <p className="mt-3 max-w-3xl text-slate-400">
+                  These distinctions help prevent unnecessary part replacement. The correct procedure and limits depend on the exact laptop model.
+                </p>
+              </div>
+              <div className="grid gap-4 md:grid-cols-2">
+                {problem.expertNotes.map((note) => (
+                  <article key={note.title} className="rounded-2xl border border-slate-800 bg-slate-900/50 p-5">
+                    <h3 className="font-bold text-white">{note.title}</h3>
+                    <p className="mt-3 text-sm leading-7 text-slate-400">{note.description}</p>
+                  </article>
+                ))}
+              </div>
+            </section>
+          )}
+
           {problem.technicianMethod && problem.technicianMethod.length > 0 && (
             <section id="technician-diagnosis" aria-labelledby="technician-diagnosis-title">
               <div className="mb-7">
                 <p className="text-sm font-bold uppercase tracking-[0.18em] text-cyan-400">Inside the lab</p>
-                <h2 id="technician-diagnosis-title" className="mt-2 text-3xl font-black text-white">How KCROC diagnoses a genuinely dead laptop</h2>
+                <h2 id="technician-diagnosis-title" className="mt-2 text-3xl font-black text-white">
+                  {isOverheating ? 'How KCROC diagnoses a laptop cooling fault' : 'How KCROC investigates the fault'}
+                </h2>
                 <p className="mt-3 max-w-3xl text-slate-400">
-                  When the external power path checks out but the laptop remains dead, the useful question is where power stops progressing through the board—not which expensive part to replace first.
+                  {isOverheating
+                    ? 'The goal is to confirm whether heat is caused by restricted airflow, fan hardware, thermal contact, software load or another model-specific issue. Cleaning and re-pasting are not assumed to be the answer before inspection.'
+                    : 'The goal is to identify where the fault occurs and verify the evidence before recommending a repair, rather than replacing an expensive part based on symptoms alone.'}
                 </p>
               </div>
               <div className="space-y-3">
@@ -281,11 +327,42 @@ const ProblemTemplate: React.FC = () => {
             </section>
           )}
 
+          {problem.technicalReferences && problem.technicalReferences.length > 0 && (
+            <section aria-labelledby="technical-references">
+              <div className="mb-5">
+                <p className="text-sm font-bold uppercase tracking-[0.18em] text-cyan-400">Evidence & further reading</p>
+                <h2 id="technical-references" className="mt-2 text-2xl font-black text-white">Manufacturer guidance and technical references</h2>
+                <p className="mt-2 max-w-3xl text-slate-400">
+                  These manufacturer resources support the general guidance above. Exact operating limits, diagnostics and service procedures vary by model; follow the documentation for your device.
+                </p>
+              </div>
+              <div className="grid gap-4 md:grid-cols-2">
+                {problem.technicalReferences.map((reference) => (
+                  <a
+                    key={reference.url}
+                    href={reference.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group rounded-2xl border border-slate-800 bg-slate-900/50 p-5 transition-colors hover:border-cyan-500/40"
+                  >
+                    <span className="flex items-start justify-between gap-4 font-bold text-white group-hover:text-cyan-300">
+                      <span>{reference.label}</span>
+                      <ExternalLink aria-hidden="true" className="h-4 w-4 flex-shrink-0 text-cyan-400" />
+                    </span>
+                    <p className="mt-3 text-sm leading-6 text-slate-400">{reference.description}</p>
+                  </a>
+                ))}
+              </div>
+            </section>
+          )}
+
           {problem.faqs && problem.faqs.length > 0 && (
             <section aria-labelledby="faq">
               <div className="mb-7">
                 <p className="text-sm font-bold uppercase tracking-[0.18em] text-cyan-400">Questions customers ask</p>
-                <h2 id="faq" className="mt-2 text-3xl font-black text-white">Laptop won't turn on: FAQ</h2>
+                <h2 id="faq" className="mt-2 text-3xl font-black text-white">
+                  {isOverheating ? 'Laptop overheating in Kuwait: frequently asked questions' : `${problemLabel}: frequently asked questions`}
+                </h2>
               </div>
               <div className="divide-y divide-slate-800 overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/50">
                 {problem.faqs.map((faq, idx) => (
@@ -303,8 +380,10 @@ const ProblemTemplate: React.FC = () => {
 
                     <div className="border-t border-slate-800 pt-8">
             <div className="flex flex-wrap items-center justify-between gap-4 text-sm text-slate-500">
-              <span className="inline-flex items-center gap-2"><Clock3 className="h-4 w-4" /> Updated September 10, 2026</span>
-              <span>Technical guidance by KCROC • Hawalli, Kuwait</span>
+              {updatedLabel && (
+                <span className="inline-flex items-center gap-2"><Clock3 className="h-4 w-4" /> Updated {updatedLabel}</span>
+              )}
+              <span>Technical guidance by <Link to="/about" className="text-slate-300 underline decoration-slate-600 underline-offset-4 hover:text-cyan-300">KCROC</Link> • Hawalli, Kuwait</span>
             </div>
           </div>
 
