@@ -165,17 +165,15 @@ const ProblemTemplate: React.FC = () => {
                       type="button"
                       aria-pressed={active}
                       onClick={() => setThermalPattern(option.id)}
-                      className={\`rounded-2xl border p-4 text-left transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 \${
-                        active
-                          ? option.urgent
-                            ? 'border-rose-500/70 bg-rose-950/40'
-                            : 'border-cyan-400/60 bg-cyan-950/40'
-                          : 'border-slate-700 bg-slate-950/50 hover:border-slate-500'
-                      }\`}
+                      className={active
+                        ? option.urgent
+                          ? 'rounded-2xl border border-rose-500/70 bg-rose-950/40 p-4 text-left transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400'
+                          : 'rounded-2xl border border-cyan-400/60 bg-cyan-950/40 p-4 text-left transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400'
+                        : 'rounded-2xl border border-slate-700 bg-slate-950/50 p-4 text-left transition-colors hover:border-slate-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400'}
                     >
                       <span className="flex items-start justify-between gap-3">
                         <span className="font-bold text-white">{option.label}</span>
-                        {active && <span className={\`text-xs font-bold uppercase tracking-wide \${option.urgent ? 'text-rose-300' : 'text-cyan-300'}\`}>Selected</span>}
+                        {active && <span className={option.urgent ? 'text-xs font-bold uppercase tracking-wide text-rose-300' : 'text-xs font-bold uppercase tracking-wide text-cyan-300'}>Selected</span>}
                       </span>
                     </button>
                   );
@@ -184,13 +182,11 @@ const ProblemTemplate: React.FC = () => {
               <div
                 role="status"
                 aria-live="polite"
-                className={\`mt-5 rounded-2xl border p-5 md:p-6 \${
-                  selectedThermalGuidance.urgent
-                    ? 'border-rose-800/60 bg-rose-950/30'
-                    : 'border-cyan-900/60 bg-cyan-950/20'
-                }\`}
+                className={selectedThermalGuidance.urgent
+                  ? 'mt-5 rounded-2xl border border-rose-800/60 bg-rose-950/30 p-5 md:p-6'
+                  : 'mt-5 rounded-2xl border border-cyan-900/60 bg-cyan-950/20 p-5 md:p-6'}
               >
-                <h3 className={\`text-lg font-black \${selectedThermalGuidance.urgent ? 'text-rose-200' : 'text-white'}\`}>{selectedThermalGuidance.title}</h3>
+                <h3 className={selectedThermalGuidance.urgent ? 'text-lg font-black text-rose-200' : 'text-lg font-black text-white'}>{selectedThermalGuidance.title}</h3>
                 <p className="mt-2 leading-7 text-slate-300">{selectedThermalGuidance.guidance}</p>
               </div>
             </section>
