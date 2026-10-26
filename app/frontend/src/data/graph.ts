@@ -3252,12 +3252,12 @@ export const rawGraphData: RawGraphData = {
         }
       ],
       seo: {
-        title: 'Laptop Screen Repair Kuwait | Labor from 30 KWD | KCROC',
-        description: 'Laptop screen repair for cracked, flickering, black or lined displays in Kuwait. Replacement labor from 30 KWD plus panel cost; free pickup, quote before repair and 30-day warranty.',
+        title: 'Laptop Screen Repair Cost Kuwait | Labor from 30 KWD | KCROC',
+        description: 'Windows laptop screen repair cost in Kuwait: labor starts from 30 KWD plus the panel. Free pickup, a 30-day warranty and a confirmed quote before paid work.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-screen-repair-kuwait', locale: 'en_KW', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/laptop-screen-repair-kuwait', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/laptop-screen-repair-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/laptop-screen-repair-kuwait' },
         ogType: 'article',
         schemaTypes: ['Service', 'FAQPage'],
-        lastModified: '2026-10-17T00:00:00+03:00'
+        lastModified: '2026-10-27T00:00:00+03:00'
       },
       navigationPriority: 60,
       isFeatured: false,
