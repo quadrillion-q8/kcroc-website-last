@@ -408,11 +408,14 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
             `Symptom: ${problemEntity.symptom}.`,
             `Common causes: ${problemEntity.causes.join('; ')}.`,
             ...(problemEntity.diagnosticSteps ?? []).map(step => `${step.title}: ${step.description}`),
+            ...(problemEntity.decisionTree ?? []).map(step => `Diagnostic path: ${step.symptom}. ${step.direction}`),
             ...(problemEntity.technicianMethod ?? []).map(step => `${step.title}: ${step.description}`),
             `Solution: ${problemEntity.solution}`,
+            ...(problemEntity.safetyNotes ?? []).map(note => `Safety: ${note}`),
             ...(problemEntity.kuwaitContext ?? []),
             ...(problemEntity.expertNotes ?? []).map(note => `${note.title}: ${note.description}`),
             ...(problemEntity.technicalReferences ?? []).map(reference => `Technical reference: ${reference.label}. ${reference.description}`),
+            ...(problemEntity.relatedResourcePaths ?? []).map(resource => `Related resource: ${resource.label}`),
             ...(problemEntity.faqs ?? []).map(faq => `FAQ: ${faq.question} ${faq.answer}`)
           ].filter(Boolean).join(' ');
           schemaGraph.push({
