@@ -330,7 +330,7 @@ export function Footer() {
           {/* Contact + Service Areas */}
           <div>
             <h3 className="text-white font-bold mb-5 uppercase tracking-[0.16em] text-xs">{isArabicRoute ? "تواصل معنا" : "Contact"}</h3>
-            <ul className="space-y-4">
+            <ul role="list" aria-label="KCROC contact details" className="m-0 list-none space-y-4 p-0">
               <li className="flex items-start gap-3 text-slate-400 text-sm">
                 <MapPin className="w-5 h-5 text-[#dfa86f] flex-shrink-0 mt-0.5" aria-hidden="true" />
                 <address className="not-italic leading-relaxed">{isArabicRoute ? "شارع ابن خلدون، مجمع الملا، السرداب، محل 19، حولي، الكويت" : `${business.streetAddress}, ${business.addressLocality}, Kuwait`}</address>

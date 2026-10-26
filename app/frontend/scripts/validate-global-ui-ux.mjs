@@ -46,13 +46,26 @@ requireContains(header, 'aria-current={matchPath', 'core/components/layout/Heade
 requireContains(header, "phoneDigits.startsWith('965')", 'core/components/layout/Header.tsx', 'display phone numbers in the Kuwait international format.');
 requireContains(footer, 'w-12 h-12 flex items-center justify-center rounded-full', 'core/components/layout/Footer.tsx', 'footer social controls must use 48px square targets.');
 requireContains(footer, '<address className="not-italic', 'core/components/layout/Footer.tsx', 'the NAP address must use semantic address markup.');
-for (const id of ['contact-name', 'contact-phone', 'contact-email', 'contact-subject', 'contact-message']) {
+for (const id of ['contact-name', 'contact-device', 'contact-area', 'contact-symptoms']) {
   requireContains(contact, `htmlFor="${id}"`, 'pages/Contact.tsx', `field ${id} must have an associated label.`);
   requireContains(contact, `id="${id}"`, 'pages/Contact.tsx', `field ${id} must have a stable input ID.`);
 }
-requireContains(contact, 'inputMode="tel"', 'pages/Contact.tsx', 'the phone field must present a telephone-friendly mobile keyboard.');
-if (contact.includes('placeholder="+965 55301913"')) issues.push('pages/Contact.tsx: do not hardcode KCROC\'s own phone number as an example customer phone; it trips constant-drift validation.');
+requireContains(contact, 'Device type / model', 'pages/Contact.tsx', 'the form must collect device identity for technician triage.');
+requireContains(contact, 'Pickup area / governorate', 'pages/Contact.tsx', 'the form must collect courier dispatch area.');
+requireContains(contact, 'Fault / symptoms', 'pages/Contact.tsx', 'the form must collect diagnostic symptoms.');
+requireContains(contact, '*Device type / model:* ${formData.device}', 'pages/Contact.tsx', 'WhatsApp prefill must include device context.');
+requireContains(contact, '*Pickup area / governorate:* ${formData.pickupArea}', 'pages/Contact.tsx', 'WhatsApp prefill must include dispatch area.');
+requireContains(contact, '*Fault / symptoms:*', 'pages/Contact.tsx', 'WhatsApp prefill must include symptoms.');
+if (['name="phone"', 'name="email"', 'contact-phone', 'contact-email', 'contact-subject'].some((field) => contact.includes(field))) issues.push('pages/Contact.tsx: the WhatsApp form must not require low-value phone/email/subject fields.');
 requireContains(contact, 'aria-live="polite"', 'pages/Contact.tsx', 'submit feedback must be announced accessibly.');
+requireContains(contact, 'Dropping off in person?', 'pages/Contact.tsx', 'contact page must include crawlable walk-in guidance.');
+requireContains(contact, 'Basement Shop 19, Hawalli', 'pages/Contact.tsx', 'contact directions must retain the precise Hawalli workshop location.');
+requireContains(footer, 'role="list" aria-label="KCROC contact details" className="m-0 list-none space-y-4 p-0"', 'core/components/layout/Footer.tsx', 'contact information must use a named, marker-free semantic list.');
+requireContains(footer, 'MapPin className="w-5 h-5 text-[#dfa86f] flex-shrink-0 mt-0.5" aria-hidden="true"', 'core/components/layout/Footer.tsx', 'decorative footer icons must be hidden from assistive technology.');
+const seoEngine = await read('core/components/SEOEngine.tsx');
+requireContains(seoEngine, '"email": business.email', 'core/components/SEOEngine.tsx', 'the primary business schema must expose its contact email.');
+requireContains(seoEngine, '"availableLanguage": ["en", "ar"]', 'core/components/SEOEngine.tsx', 'the primary business contact point must declare English and Arabic.');
+requireContains(seoEngine, '"mainEntity": { "@id": `${business.websiteUrl}/#business` }', 'core/components/SEOEngine.tsx', 'the dedicated ContactPage schema must resolve to the canonical business entity.');
 requireContains(cookie, 'role="region"', 'core/components/CookieConsentBanner.tsx', 'the non-modal consent banner must not claim modal dialog semantics.');
 requireContains(cookie, 'aria-labelledby="cookie-consent-title"', 'core/components/CookieConsentBanner.tsx', 'the consent region must have an accessible name.');
 requireContains(hero, 'fetchPriority="high"', 'components/home/Hero.tsx', 'the hero image must retain high fetch priority.');

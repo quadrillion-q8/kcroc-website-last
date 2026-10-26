@@ -30,11 +30,17 @@ const PHONE_CLEAN = business.telephone.replace(/\D/g, '');
 const PHONE_DISPLAY = `+965 ${PHONE_CLEAN.replace(/^965/, '')}`;
 
 type FormData = {
-  name: string; email: string; phone: string; subject: string; message: string;
+  name: string;
+  device: string;
+  pickupArea: string;
+  symptoms: string;
 };
 
 const initialFormData: FormData = {
-  name: '', email: '', phone: '', subject: '', message: ''
+  name: '',
+  device: '',
+  pickupArea: '',
+  symptoms: '',
 };
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -46,7 +52,16 @@ export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const whatsappMessage = useMemo(
-    () => `*New Contact Enquiry*\n\n*Name:* ${formData.name}\n*Phone:* ${formData.phone}\n*Email:* ${formData.email}\n*Subject:* ${formData.subject}\n\n*Message:*\n${formData.message}`,
+    () => [
+      '*New Repair Enquiry*',
+      '',
+      `*Name:* ${formData.name}`,
+      `*Device type / model:* ${formData.device}`,
+      `*Pickup area / governorate:* ${formData.pickupArea}`,
+      '',
+      '*Fault / symptoms:*',
+      formData.symptoms,
+    ].join('\n'),
     [formData]
   );
 
@@ -60,7 +75,12 @@ export default function Contact() {
     // Guard explicitly here now that native browser validation is restored
     // (see the <form> tag) as defense in depth, in case this handler is ever
     // reached with an incomplete formData some other way.
-    if (!formData.name.trim() || !formData.phone.trim() || !formData.subject.trim() || !formData.message.trim()) {
+    if (
+      !formData.name.trim() ||
+      !formData.device.trim() ||
+      !formData.pickupArea.trim() ||
+      !formData.symptoms.trim()
+    ) {
       return;
     }
     setIsSubmitting(true);
@@ -73,7 +93,7 @@ export default function Contact() {
     }
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
@@ -98,8 +118,8 @@ export default function Contact() {
         <h1 className="text-4xl md:text-6xl font-black mb-6 tracking-tight text-white">
           Contact <span className="text-cyan-400">KCROC</span>
         </h1>
-        <p className="text-slate-400 max-w-md mx-auto text-lg">
-          Expert component-level hardware repair, with free pick-up and delivery across all Kuwait governorates.
+        <p className="text-slate-300 max-w-3xl mx-auto text-base md:text-lg leading-8">
+          We fix the board—we don&apos;t just swap it. Speak directly with a component-level technician for micro-soldering, MacBook, and gaming PC repair. Free initial diagnosis, a privacy-conscious hardware-first workflow, and free pick-up and delivery across all Kuwait governorates.
         </p>
       </section>
 
@@ -110,22 +130,43 @@ export default function Contact() {
           {/* Glassmorphism Form Container */}
           <div className="bg-slate-900/40 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 lg:p-10 transition-all duration-500 ease-out hover:border-cyan-500/50 hover:shadow-[0_0_40px_-10px_rgba(6,182,212,0.3)] hover:-translate-y-1">
             <h2 className="text-2xl font-black mb-6">Send us a Message</h2>
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-6">
-                <label className="sr-only" htmlFor="contact-name">Full name</label><input id="contact-name" autoComplete="name" name="name" value={formData.name} onChange={handleInputChange} required placeholder="Full Name" className="w-full bg-brand-dark/50 border border-slate-700 px-4 py-3 rounded-xl focus:outline-none focus:border-cyan-500 transition-colors" />
-                <label className="sr-only" htmlFor="contact-phone">Phone number</label><input id="contact-phone" type="tel" inputMode="tel" autoComplete="tel" name="phone" value={formData.phone} onChange={handleInputChange} required placeholder="Your number, including country code (+965)" className="w-full bg-brand-dark/50 border border-slate-700 px-4 py-3 rounded-xl focus:outline-none focus:border-cyan-500 transition-colors" />
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <div>
+                <label className="sr-only" htmlFor="contact-name">Full name</label>
+                <input id="contact-name" autoComplete="name" name="name" value={formData.name} onChange={handleInputChange} required placeholder="Full name" className="w-full bg-brand-dark/50 border border-slate-700 px-4 py-3 rounded-xl text-white focus:outline-none focus:border-cyan-500 transition-colors" />
               </div>
-              <label className="sr-only" htmlFor="contact-email">Email address</label><input id="contact-email" name="email" type="email" autoComplete="email" value={formData.email} onChange={handleInputChange} placeholder="Email" className="w-full bg-brand-dark/50 border border-slate-700 px-4 py-3 rounded-xl focus:outline-none focus:border-cyan-500 transition-colors" />
-              <label className="sr-only" htmlFor="contact-subject">Subject</label><input id="contact-subject" name="subject" value={formData.subject} onChange={handleInputChange} required placeholder="Subject" className="w-full bg-brand-dark/50 border border-slate-700 px-4 py-3 rounded-xl focus:outline-none focus:border-cyan-500 transition-colors" />
-              <label className="sr-only" htmlFor="contact-message">Message</label><textarea id="contact-message" name="message" value={formData.message} onChange={handleInputChange} required rows={5} placeholder="Message" className="w-full bg-brand-dark/50 border border-slate-700 px-4 py-3 rounded-xl focus:outline-none focus:border-cyan-500 transition-colors resize-none" />
+              <div>
+                <label className="sr-only" htmlFor="contact-device">Device type / model</label>
+                <input id="contact-device" name="device" value={formData.device} onChange={handleInputChange} required placeholder="Device type / model (e.g., MacBook Pro 14-inch)" className="w-full bg-brand-dark/50 border border-slate-700 px-4 py-3 rounded-xl text-white focus:outline-none focus:border-cyan-500 transition-colors" />
+              </div>
+              <div>
+                <label className="sr-only" htmlFor="contact-area">Pickup area / governorate</label>
+                <select id="contact-area" name="pickupArea" value={formData.pickupArea} onChange={handleInputChange} required className="w-full bg-brand-dark/50 border border-slate-700 px-4 py-3 rounded-xl text-white focus:outline-none focus:border-cyan-500 transition-colors [color-scheme:dark]">
+                  <option value="" disabled>Select your pickup area / governorate</option>
+                  <option value="Hawalli">Hawalli</option>
+                  <option value="Salmiya">Salmiya</option>
+                  <option value="Kuwait City">Kuwait City</option>
+                  <option value="Farwaniya">Farwaniya</option>
+                  <option value="Ahmadi">Ahmadi</option>
+                  <option value="Jahra">Jahra</option>
+                  <option value="Fahaheel">Fahaheel</option>
+                  <option value="Mangaf">Mangaf</option>
+                  <option value="Other Kuwait area">Other Kuwait area</option>
+                </select>
+                <p className="mt-2 text-xs leading-relaxed text-slate-400">Free pickup and delivery are available across Kuwait. Your area helps us coordinate collection.</p>
+              </div>
+              <div>
+                <label className="sr-only" htmlFor="contact-symptoms">Fault / symptoms</label>
+                <textarea id="contact-symptoms" name="symptoms" value={formData.symptoms} onChange={handleInputChange} required rows={4} placeholder="Fault / symptoms (e.g., no power, liquid damage, overheating, broken screen, charging issue)" className="w-full bg-brand-dark/50 border border-slate-700 px-4 py-3 rounded-xl text-white focus:outline-none focus:border-cyan-500 transition-colors resize-y" />
+              </div>
               <button type="submit" disabled={isSubmitting} aria-busy={isSubmitting} className="w-full min-h-11 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black py-4 rounded-xl flex items-center justify-center gap-2 transition-colors disabled:opacity-70 disabled:cursor-not-allowed">
                 {isSubmitting ? (
-                  <><Loader2 className="animate-spin" size={20} /> Sending...</>
+                  <><Loader2 className="animate-spin" size={20} aria-hidden="true" /> Preparing WhatsApp...</>
                 ) : (
-                  <><Send size={20} /> Send Message via WhatsApp</>
+                  <><Send size={20} aria-hidden="true" /> Send Repair Details via WhatsApp</>
                 )}
               </button>
-              <p className="sr-only" aria-live="polite">{isSubmitting ? 'Preparing your WhatsApp message.' : ''}</p>
+              <p className="sr-only" aria-live="polite">{isSubmitting ? 'Preparing your WhatsApp repair enquiry.' : ''}</p>
             </form>
           </div>
 
@@ -196,7 +237,13 @@ export default function Contact() {
       {/* Map */}
       <section className="py-20 px-6 border-t border-slate-800/50">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-2xl font-black mb-8 text-center">Find Us in Hawalli</h2>
+          <h2 className="text-2xl font-black mb-4 text-center">Find Us in Hawalli</h2>
+          <p className="max-w-3xl mx-auto mb-3 text-center text-slate-300 leading-7">
+            <strong className="text-white">Dropping off in person?</strong> Visit our ESD-safe repair lab at Ibn Khaldoun Street, Al Mullah Complex, Basement Shop 19, Hawalli. We&apos;re open daily from 10:00 AM to 10:00 PM, and no appointment is needed.
+          </p>
+          <p className="max-w-3xl mx-auto mb-8 text-center text-slate-400 leading-7">
+            Prefer not to drive? Arrange free door-to-door pickup and delivery from any of our Kuwait service areas.
+          </p>
           <div className="rounded-3xl overflow-hidden border border-slate-800 shadow-2xl">
             <MapComponent />
           </div>

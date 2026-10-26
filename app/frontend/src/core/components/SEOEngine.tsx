@@ -175,9 +175,10 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
     "contactPoint": [{
       "@type": "ContactPoint",
       "telephone": `+${business.telephone}`,
+      "email": business.email,
       "contactType": "customer service",
       "areaServed": "KW",
-      "availableLanguage": ["en-KW", "ar-KW"]
+      "availableLanguage": ["en", "ar"]
     }]
   };
 
@@ -525,7 +526,8 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
           "name": webPage.title,
           "description": webPage.description,
           "url": fullCanonicalUrl,
-          "about": { "@id": `${business.websiteUrl}/#business` }
+          "about": { "@id": `${business.websiteUrl}/#business` },
+          "mainEntity": { "@id": `${business.websiteUrl}/#business` }
         });
       }
 
