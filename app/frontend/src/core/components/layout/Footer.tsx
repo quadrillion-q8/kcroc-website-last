@@ -105,6 +105,7 @@ const TRUST_ICON_MAP: Record<string, React.ElementType> = {
 export function Footer() {
   const location = useLocation();
   const isArabicRoute = location.pathname === '/ar' || location.pathname.startsWith('/ar/') || location.pathname.startsWith('/blog/ar/') || location.pathname.startsWith('/guides/ar/');
+  const isHawalliLandingPage = location.pathname.replace(/\/+$/, '') === '/location/hawalli';
   const localizedPath = (path: string) => isArabicRoute ? (ARABIC_PATHS[path] ?? path) : path;
   const serviceLabel = (path: string, label: string) => isArabicRoute ? (ARABIC_SERVICE_LABELS[path] ?? label.replace(' Kuwait', '')) : label.replace(' Kuwait', '');
   const companyLabel = (path: string, label: string) => isArabicRoute ? (ARABIC_COMPANY_LABELS[path] ?? label) : label;
@@ -167,7 +168,7 @@ export function Footer() {
       aria-label={isArabicRoute ? "تذييل الموقع" : "Site Footer"}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {trustBadges.length > 0 && (
+        {trustBadges.length > 0 && !isHawalliLandingPage && (
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 pb-10 mb-12 border-b border-white/[0.10]">
             {trustBadges.map((badge) => {
               const Icon = TRUST_ICON_MAP[badge.iconKey];

@@ -386,6 +386,41 @@ add('Hawalli location metadata is synchronized between graph and SEO projection'
 add('Hawalli hero retains workshop directions without case-study promotion', hawalli.includes("cta_name: 'hawalli_directions'") && !hawalli.includes('case-rog-motherboard-hawalli'));
 add('Hawalli workshop page links directly to published repair prices with quote-before-work guidance', hawalli.includes('id="hawalli-pricing-cta"') && hawalli.includes('to="/pricing"') && hawalli.includes('View Repair Prices') && hawalli.includes('confirm your quote before paid repair work begins'));
 
+const hawalliTierServiceIds = [
+  'srv-motherboard', 'srv-liquid-damage', 'srv-charging-port', 'srv-desktop-pc',
+  'srv-macbook', 'srv-macbook-screen', 'srv-gaming', 'srv-gaming-laptop', 'srv-gaming-laptop-cleaning',
+  'srv-laptop', 'srv-screen', 'srv-battery', 'srv-ssd-ram', 'srv-keyboard', 'srv-hinge',
+];
+add('Hawalli service tiers contain all 15 existing services exactly once and retain canonical slug links',
+  hawalliTierServiceIds.length === 15 &&
+  new Set(hawalliTierServiceIds).size === 15 &&
+  hawalliTierServiceIds.every((id) => hawalli.includes(`'${id}'`) && graph.includes(`'${id}': {`)) &&
+  hawalli.includes('to={`/${service.slug}`}') &&
+  hawalli.includes('HAWALLI_SERVICE_GROUPS.map'));
+add('Hawalli hero, phone display, and walk-in access copy remain consistent',
+  graph.includes("We fix the board. We don't just swap it.") &&
+  hawalli.includes("phone.startsWith('965') ? `+965 ${phone.slice(3)}`") &&
+  hawalli.includes('Finding the lab:') &&
+  hawalli.includes('basement entrance from Ibn Khaldoun Street') &&
+  hawalli.includes('Explore component-level motherboard repair') &&
+  header.includes('phoneDigits.slice(3)') &&
+  footer.includes("business.telephone.replace(/^965/, '')"));
+add('Hawalli problem labels improve readability without changing problem URL targets',
+  hawalli.includes("'problem-overheating': 'Laptop Overheating & Loud Fan'") &&
+  hawalli.includes('to={`/${problem.slug}`}'));
+add('Hawalli FAQ answers stay in initial static HTML and FAQPage schema alongside the LocalBusiness entity',
+  ((hawalli.match(/id: 'faq-hawalli-/g) || []).length === 12) &&
+  hawalli.includes('hidden={!isOpen}') &&
+  hawalli.includes('{faq.answer}') &&
+  hawalli.includes("acceptedAnswer: { '@type': 'Answer', text: faq.answer }") &&
+  hawalli.includes('<SEOEngine entityId={location.id} />') &&
+  hawalli.includes('<SchemaMarkup schema={FAQ_SCHEMA} />'));
+add('Hawalli moves the repeated trust strip into the final CTA without hiding footer badges sitewide',
+  hawalli.includes('aria-label="KCROC repair assurances"') &&
+  hawalli.includes('Free Pickup &amp; Delivery') &&
+  footer.includes("location.pathname.replace(/\\/+$/, '') === '/location/hawalli'") &&
+  footer.includes('trustBadges.length > 0 && !isHawalliLandingPage'));
+
 const [caseStudyRemovalApp, caseStudyRemovalNavigation, caseStudyRemovalDesktopMenu, caseStudyRemovalMobileMenu, caseStudyRemovalHome, caseStudyRemovalHero, caseStudyRemovalBehindBench, caseStudyRemovalRootLayout, caseStudyRemovalGraph, caseStudyRemovalSEO, caseStudyRemovalSitemap, caseStudyRemovalPrerender, caseStudyRemovalSitemapGenerator, caseStudyRemovalArabicCommercial, caseStudyRemovalBiosGuide, caseStudyRemovalBlogTemplate, caseStudyRemovalCoolingGuide, caseStudyRemovalLocation, caseStudyRemovalLocationDeep, caseStudyRemovalHawalli, caseStudyRemovalBrand, caseStudyRemovalProblem, caseStudyRemovalService] = await Promise.all([
   read('App.tsx'),
   read('core/navigation/NavigationCompiler.ts'),

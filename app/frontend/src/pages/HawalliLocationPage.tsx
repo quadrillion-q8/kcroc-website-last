@@ -57,6 +57,33 @@ const SERVICE_ICON_MAP: Record<string, React.ElementType> = {
   battery: BatteryCharging,
 };
 
+// Visual groups improve scanning without creating duplicate service entities or URLs.
+// Every card still links through the canonical service slug from KCROC_GRAPH.
+const HAWALLI_SERVICE_GROUPS = [
+  {
+    id: 'board-level',
+    title: 'Board-Level & Micro-Soldering',
+    description: 'Component-level diagnosis for power, charging, corrosion and motherboard faults, with repair recommendations based on bench findings.',
+    serviceIds: ['srv-motherboard', 'srv-liquid-damage', 'srv-charging-port', 'srv-desktop-pc'],
+  },
+  {
+    id: 'macbook-gaming',
+    title: 'MacBook & Gaming Systems',
+    description: 'Dedicated repair paths for MacBooks, gaming PCs, gaming laptops, display faults and demanding thermal workloads.',
+    serviceIds: ['srv-macbook', 'srv-macbook-screen', 'srv-gaming', 'srv-gaming-laptop', 'srv-gaming-laptop-cleaning'],
+  },
+  {
+    id: 'screens-upgrades',
+    title: 'Screens, Batteries & Upgrades',
+    description: 'Everyday laptop repair, display and battery replacement, keyboard and hinge repairs, and SSD/RAM upgrades.',
+    serviceIds: ['srv-laptop', 'srv-screen', 'srv-battery', 'srv-ssd-ram', 'srv-keyboard', 'srv-hinge'],
+  },
+] as const;
+
+const HAWALLI_PROBLEM_LABEL_OVERRIDES: Record<string, string> = {
+  'problem-overheating': 'Laptop Overheating & Loud Fan',
+};
+
 // Hawalli-specific FAQ content. Written for this page — not pulled from the
 // generic sitewide FAQ list — because the questions and answers here are
 // deliberately scoped to the Hawalli location itself (item 51 of the brief:
@@ -101,8 +128,15 @@ export default function HawalliLocationPage() {
     return null;
   }
 
+  const serviceGroups = HAWALLI_SERVICE_GROUPS.map((group) => ({
+    ...group,
+    services: group.serviceIds
+      .map((serviceId) => services.find((service) => service.id === serviceId))
+      .filter((service): service is (typeof services)[number] => Boolean(service)),
+  }));
+
   const phone = business.telephone; // read from KCROC_GRAPH, e.g. Kuwait mobile in international format
-  const phoneDisplay = `+965 ${phone.slice(3, 7)} ${phone.slice(7)}`;
+  const phoneDisplay = phone.startsWith('965') ? `+965 ${phone.slice(3)}` : `+${phone}`;
   const WA_LINK = `https://wa.me/${phone}?text=${encodeURIComponent(
     'Hi KCROC, I am in Hawalli and need a device repaired. Can we arrange a pickup?'
   )}`;
@@ -245,6 +279,13 @@ export default function HawalliLocationPage() {
               <p className="text-sm sm:text-lg text-slate-300 leading-relaxed">
                 {location.description}
               </p>
+              <p className="text-sm text-slate-400 leading-relaxed">
+                Need chip-level diagnostics?{' '}
+                <Link to="/motherboard-repair-kuwait" className="font-semibold text-cyan-300 underline decoration-cyan-500/40 underline-offset-4 hover:text-cyan-200">
+                  Explore component-level motherboard repair
+                </Link>
+                .
+              </p>
 
               <div className="flex flex-col sm:flex-row gap-3 pt-2">
                 <Button size="lg" className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black px-8 w-full sm:w-auto shadow-[0_0_20px_rgba(6,182,212,0.3)]" asChild>
@@ -369,31 +410,45 @@ export default function HawalliLocationPage() {
           <h2 className="text-2xl sm:text-3xl font-black mb-6 sm:mb-10 text-white tracking-tight">
             Computer Repair Services in Hawalli
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {services.map((service) => {
-              const ServiceIcon = SERVICE_ICON_MAP[service.iconKey] || Wrench;
-              return (
-                <Link
-                  key={service.id}
-                  to={`/${service.slug}`}
-                  className="group bg-slate-900/50 p-5 sm:p-6 rounded-2xl border border-slate-800 hover:border-cyan-500 transition-all flex flex-col focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
-                  aria-label={`Learn more about ${service.title}`}
-                >
-                  <div className="bg-brand-dark border border-slate-800 w-11 h-11 rounded-xl flex items-center justify-center mb-4 shrink-0">
-                    <ServiceIcon className="w-5 h-5 text-cyan-500" aria-hidden="true" />
-                  </div>
-                  <h3 className="text-base font-bold text-white mb-1.5 group-hover:text-cyan-400 transition-colors">
-                    {service.title.replace(' Kuwait', '')}
+          <div className="space-y-9 sm:space-y-12">
+            {serviceGroups.map((group) => (
+              <section key={group.id} aria-labelledby={`hawalli-service-group-${group.id}`}>
+                <div className="mb-4 sm:mb-5">
+                  <h3 id={`hawalli-service-group-${group.id}`} className="text-lg sm:text-xl font-black text-white tracking-tight">
+                    {group.title}
                   </h3>
-                  <p className="text-sm text-slate-400 leading-relaxed mb-3 flex-grow">
-                    {service.shortDescription}
+                  <p className="mt-1.5 max-w-3xl text-sm leading-relaxed text-slate-400">
+                    {group.description}
                   </p>
-                  <span className="text-xs font-bold text-cyan-500 flex items-center">
-                    Learn more <CheckCircle2 className="w-3 h-3 ml-1" aria-hidden="true" />
-                  </span>
-                </Link>
-              );
-            })}
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {group.services.map((service) => {
+                    const ServiceIcon = SERVICE_ICON_MAP[service.iconKey] || Wrench;
+                    return (
+                      <Link
+                        key={service.id}
+                        to={`/${service.slug}`}
+                        className="group bg-slate-900/50 p-5 sm:p-6 rounded-2xl border border-slate-800 hover:border-cyan-500 transition-all flex flex-col focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+                        aria-label={`Learn more about ${service.title}`}
+                      >
+                        <div className="bg-brand-dark border border-slate-800 w-11 h-11 rounded-xl flex items-center justify-center mb-4 shrink-0">
+                          <ServiceIcon className="w-5 h-5 text-cyan-500" aria-hidden="true" />
+                        </div>
+                        <h4 className="text-base font-bold text-white mb-1.5 group-hover:text-cyan-400 transition-colors">
+                          {service.title.replace(' Kuwait', '')}
+                        </h4>
+                        <p className="text-sm text-slate-400 leading-relaxed mb-3 flex-grow">
+                          {service.shortDescription}
+                        </p>
+                        <span className="text-xs font-bold text-cyan-500 flex items-center">
+                          Learn more <CheckCircle2 className="w-3 h-3 ml-1" aria-hidden="true" />
+                        </span>
+                      </Link>
+                    );
+                  })}
+                </div>
+              </section>
+            ))}
           </div>
         </div>
       </section>
@@ -445,7 +500,7 @@ export default function HawalliLocationPage() {
                 className="scroll-row-item w-[80%] sm:w-auto flex items-center gap-3 bg-slate-900/40 hover:bg-slate-900/70 border border-slate-800 hover:border-cyan-500/40 rounded-xl px-4 py-3.5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
               >
                 <Wrench className="w-4 h-4 text-cyan-500 shrink-0" aria-hidden="true" />
-                <span className="text-sm text-slate-200 font-medium">{problem.title}</span>
+                <span className="text-sm text-slate-200 font-medium">{HAWALLI_PROBLEM_LABEL_OVERRIDES[problem.id] ?? problem.title}</span>
               </Link>
             ))}
           </div>
@@ -560,6 +615,18 @@ export default function HawalliLocationPage() {
                   <h3 className="font-bold text-white mb-1">Address</h3>
                   <p className="text-slate-400 text-sm">
                     {location.landmark}<br />Hawalli, Kuwait
+                  </p>
+                  <p className="mt-2 max-w-md text-sm leading-relaxed text-slate-400">
+                    <span className="font-semibold text-slate-300">Finding the lab:</span>{' '}
+                    We're inside Al Mullah Complex at basement level, Shop 19—not a street-level storefront.
+                    If you need help locating the basement entrance from Ibn Khaldoun Street,{' '}
+                    <a
+                      href={`tel:+${phone}`}
+                      onClick={() => handleCallClick('location_access_note')}
+                      className="font-semibold text-cyan-300 underline decoration-cyan-500/40 underline-offset-4 hover:text-cyan-200"
+                    >
+                      call {phoneDisplay}
+                    </a>.
                   </p>
                 </div>
               </div>
@@ -797,6 +864,20 @@ export default function HawalliLocationPage() {
                   <MessageCircle className="mr-2 h-5 w-5" aria-hidden="true" /> WhatsApp KCROC
                 </a>
               </Button>
+            </div>
+            <div role="list" aria-label="KCROC repair assurances" className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 border-t border-slate-800 pt-6 text-xs sm:text-sm font-semibold text-slate-300">
+              <div role="listitem" className="inline-flex items-center gap-2">
+                <Truck className="h-4 w-4 text-cyan-400" aria-hidden="true" />
+                <span>Free Pickup &amp; Delivery</span>
+              </div>
+              <div role="listitem" className="inline-flex items-center gap-2">
+                <ShieldCheck className="h-4 w-4 text-cyan-400" aria-hidden="true" />
+                <span>30-Day Repair Warranty</span>
+              </div>
+              <div role="listitem" className="inline-flex items-center gap-2">
+                <Zap className="h-4 w-4 text-cyan-400" aria-hidden="true" />
+                <span>ESD-Safe Lab</span>
+              </div>
             </div>
           </div>
         </div>
