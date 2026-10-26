@@ -115,7 +115,7 @@ add('Laptop hub consolidates repeated faults into structured Problem / Lab appro
   laptopServiceEntityForChecks.includes('labFix:') &&
   laptopServiceEntityForChecks.includes('service:') &&
   laptopServiceEntityForChecks.includes("id: 'laptop-dead-no-power'") &&
-  laptopServiceEntityForChecks.includes('Where the board and fault are technically repairable') &&
+  laptopServiceEntityForChecks.includes('Board measurements establish whether a targeted connector, capacitor, MOSFET or charging-IC repair is a sound option before a complete board replacement is quoted.') &&
   serviceTemplate.includes('<strong className="font-bold text-cyan-300">Problem:</strong> {issue.problem}') &&
   serviceTemplate.includes('<strong className="font-bold text-cyan-300">Lab approach:</strong> {issue.labFix}'));
 
