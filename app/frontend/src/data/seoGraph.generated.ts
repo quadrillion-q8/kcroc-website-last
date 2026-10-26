@@ -2705,8 +2705,8 @@ export const SEO_GRAPH = {
       "title": "Screen Replacement Kuwait",
       "slug": "laptop-screen-repair-kuwait",
       "seo": {
-        "title": "Laptop Screen Repair Kuwait | Labor from 30 KWD | KCROC",
-        "description": "Laptop screen repair for cracked, flickering, black or lined displays in Kuwait. Replacement labor from 30 KWD plus panel cost; free pickup, quote before repair and 30-day warranty.",
+        "title": "Laptop Screen Repair Cost Kuwait | Labor from 30 KWD | KCROC",
+        "description": "Windows laptop screen repair cost in Kuwait: labor starts from 30 KWD plus the panel. Free pickup, a 30-day warranty and a confirmed quote before paid work.",
         "canonicalUrl": "https://www.computerrepairkuwait.com/laptop-screen-repair-kuwait",
         "locale": "en_KW",
         "alternates": {
@@ -2719,7 +2719,7 @@ export const SEO_GRAPH = {
           "Service",
           "FAQPage"
         ],
-        "lastModified": "2026-10-16T00:00:00+03:00"
+        "lastModified": "2026-10-27T00:00:00+03:00"
       },
       "description": "A cracked panel, a screen full of vertical lines, or a display that flickers whenever the lid moves doesn't mean the laptop is done — in almost every case it's a screen or cable fault, not a motherboard problem, and it's fixable the same day if the panel is in stock. We stock standard 14\" and 15.6\" FHD, IPS, and OLED panels for Dell, HP, Lenovo, ASUS, and Acer, plus Retina panels for MacBook Air and Pro. Kuwait's heat and dust also take a toll here specifically: display cables routed near the hinge flex thousands of times a year and wear through faster in high-temperature environments, which is why a \"cracked screen\" call often turns out to be a cable fault once we open the lid — a cheaper fix than a full panel.",
       "pricing": {
