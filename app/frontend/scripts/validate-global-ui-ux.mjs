@@ -33,6 +33,12 @@ const [button, header, footer, contact, cookie, hero, globalCss, legacyCss, sche
   read('components/home/PricingTable.tsx'),
 ]);
 
+const [serviceTemplate, graph, graphSchema] = await Promise.all([
+  read('pages/templates/ServiceTemplate.tsx'),
+  read('data/graph.ts'),
+  read('types/knowledgeGraph.ts'),
+]);
+
 const issues = [];
 const requireContains = (content, text, file, description) => {
   if (!content.includes(text)) issues.push(`${file}: ${description}`);
@@ -89,6 +95,15 @@ requireContains(globalCss, '@media (prefers-reduced-motion: reduce)', 'index.css
 requireContains(legacyCss, "'Plus Jakarta Sans'", 'styles/kcroc.css', 'legacy CSS must not override the site-wide typography.');
 requireContains(legacyCss, '@media (prefers-reduced-motion: reduce)', 'styles/kcroc.css', 'legacy animations and smooth scrolling must respect reduced motion.');
 requireContains(schema, '.replace(/</g,', 'components/seo/SchemaMarkup.tsx', 'JSON-LD must escape less-than characters before inline script rendering.');
+requireContains(graph, "title: 'Laptop Repair Kuwait | Board-Level Lab & Free Pickup | KCROC'", 'data/graph.ts', 'laptop repair SEO title must emphasise board-level capability and free pickup.');
+requireContains(graph, "description: 'Expert laptop repair in Kuwait from 15 KWD.", 'data/graph.ts', 'laptop repair meta description must state the starting price and warranty.');
+requireContains(graph, 'pricingGuide: {', 'data/graph.ts', 'laptop pricing rows must remain in the canonical knowledge graph.');
+requireContains(graphSchema, 'pricingGuide: z.object({', 'types/knowledgeGraph.ts', 'graph schema must validate service pricing-guide data.');
+requireContains(serviceTemplate, 'entity.pricingGuide.rows.map', 'pages/templates/ServiceTemplate.tsx', 'pricing rows must render as a semantic table from graph data.');
+requireContains(serviceTemplate, '<details', 'pages/templates/ServiceTemplate.tsx', 'service FAQ answers must remain in initial HTML DOM in native disclosure elements.');
+requireContains(serviceTemplate, 'onToggle={(event) => {', 'pages/templates/ServiceTemplate.tsx', 'opening a service FAQ must retain the analytics event.');
+requireContains(serviceTemplate, '.filter((feature) => feature.trim().length > 0)', 'pages/templates/ServiceTemplate.tsx', 'blank capability entries must not create empty list items.');
+requireContains(serviceTemplate, '.filter((item) => item.trim().length > 0)', 'pages/templates/ServiceTemplate.tsx', 'blank inspection entries must not create empty list items.');
 
 if (issues.length) {
   console.error('❌ Global UI/UX regression checks failed:');

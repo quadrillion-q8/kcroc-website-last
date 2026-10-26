@@ -140,6 +140,17 @@ export const ServiceSchema = RoutableEntitySchema.extend({
   repairLevel: z.string(),
   estimatedTurnaround: z.string(),
   pricing: z.object({ startingFrom: z.number(), currency: z.string(), quoteRequired: z.boolean(), displayLabel: z.string() }).optional(),
+  pricingGuide: z.object({
+    heading: z.string(),
+    intro: z.string(),
+    note: z.string(),
+    rows: z.array(z.object({
+      category: z.string(),
+      symptoms: z.string(),
+      startingPrice: z.string(),
+      typicalTurnaround: z.string(),
+    })),
+  }).optional(),
   coreFeatures: z.array(z.string()).optional(),
   brands: z.array(z.string()).optional(),
   commonIssues: z.array(z.object({

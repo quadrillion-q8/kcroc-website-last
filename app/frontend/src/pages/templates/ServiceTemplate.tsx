@@ -1,5 +1,5 @@
 // File: app/frontend/src/pages/templates/ServiceTemplate.tsx
-import React, { useState } from 'react';
+import React from 'react';
 import { Navigate, Link } from 'react-router-dom';
 import { Laptop, Apple, Gamepad2, Cpu, Wrench, ShieldCheck, Clock, MessageCircle, Users, Monitor, ChevronDown, AlertTriangle, MapPin, Gauge, ArrowRight, BookOpen, Tag } from 'lucide-react';
 import { KCROC_GRAPH } from '../../data/graph';
@@ -22,7 +22,6 @@ interface ServiceTemplateProps {
 
 export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
   const { trackConversion } = useAnalytics();
-  const [openFaqId, setOpenFaqId] = useState<string | null>(null);
 
   const entity = KCROC_GRAPH.services.find((e) => e.id === entityId);
 
@@ -103,6 +102,7 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
     </Link>
   );
 
+  const isLaptopService = entity.id === 'srv-laptop';
   const isScreenService = entity.id === 'srv-screen';
   const isMacbookScreenService = entity.id === 'srv-macbook-screen';
   const whatsappLink = buildWhatsAppLink(isScreenService
@@ -133,7 +133,7 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
                 <div className="w-16 h-16 bg-brand-dark border border-slate-800 rounded-2xl flex items-center justify-center shadow-inner">
                   <ServiceIcon className="w-8 h-8 text-cyan-400" />
                 </div>
-                <h1 className="text-3xl sm:text-4xl md:text-5xl leading-tight font-black text-white">{isScreenService ? 'Laptop Screen Repair & Replacement in Kuwait' : entity.title}</h1>
+                <h1 className="text-3xl sm:text-4xl md:text-5xl leading-tight font-black text-white">{isScreenService ? 'Laptop Screen Repair & Replacement in Kuwait' : isLaptopService ? 'Laptop Repair Kuwait — Component-Level Diagnostics & Hardware Restoration' : entity.title}</h1>
               </div>
 
               <div className="max-w-3xl mb-8 space-y-3">
@@ -320,8 +320,8 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
               {entity.id === 'srv-laptop' ? 'Repair Capabilities' : 'Service Capabilities'}
             </h2>
             {getContentImage('coreFeatures') && <ContentImage image={getContentImage('coreFeatures')!} />}
-            <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-              {entity.coreFeatures.map((feature, idx) => (
+            <ul role="list" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 list-none p-0 m-0">
+              {entity.coreFeatures.filter((feature) => feature.trim().length > 0).map((feature, idx) => (
                 <li key={idx} className="flex items-center space-x-3 bg-slate-900/50 backdrop-blur-sm p-5 rounded-xl border border-slate-800 hover:border-cyan-500/30 transition-colors">
                   <ShieldCheck className="w-5 h-5 text-cyan-400 flex-shrink-0" />
                   <span className="text-slate-200 font-medium">{feature}</span>
@@ -494,8 +494,8 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
                   {entity.id === 'srv-laptop' && step.step === 2 && entity.inspectionChecklist && entity.inspectionChecklist.length > 0 && (
                     <div className="mt-5 border-t border-slate-700 pt-4">
                       <h4 className="text-sm font-bold text-cyan-300 mb-3">What We Check</h4>
-                      <ul role="list" className="space-y-2">
-                        {entity.inspectionChecklist.map((item, idx) => (
+                      <ul role="list" className="space-y-2 list-none p-0 m-0">
+                        {entity.inspectionChecklist.filter((item) => item.trim().length > 0).map((item, idx) => (
                           <li key={idx} className="flex items-start gap-2 text-xs text-slate-300 leading-relaxed">
                             <ShieldCheck className="w-4 h-4 text-cyan-400 flex-shrink-0 mt-0.5" aria-hidden="true" />
                             <span>{item}</span>
@@ -515,8 +515,8 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
             <h2 className="text-2xl font-bold mb-8 text-white flex items-center gap-3">
               <ShieldCheck className="w-6 h-6 text-cyan-400" /> What We Check
             </h2>
-            <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-              {entity.inspectionChecklist.map((item, idx) => (
+            <ul role="list" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 list-none p-0 m-0">
+              {entity.inspectionChecklist.filter((item) => item.trim().length > 0).map((item, idx) => (
                 <li key={idx} className="flex items-center gap-3 bg-slate-900/40 px-4 py-3 rounded-xl border border-slate-800">
                   <ShieldCheck className="w-4 h-4 text-cyan-400 flex-shrink-0" />
                   <span className="text-slate-300 text-sm">{item}</span>
@@ -526,46 +526,66 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
           </section>
         )}
 
+        {entity.pricingGuide && entity.pricingGuide.rows.length > 0 && (
+          <section className="max-w-7xl mx-auto px-6 py-12 border-t border-slate-800/50 relative z-10" aria-labelledby="laptop-repair-pricing-heading">
+            <div className="mb-7 max-w-4xl">
+              <p className="mb-2 text-xs font-black uppercase tracking-[0.18em] text-cyan-400">Transparent guide prices</p>
+              <h2 id="laptop-repair-pricing-heading" className="text-2xl font-black text-white sm:text-3xl">{entity.pricingGuide.heading}</h2>
+              <p className="mt-3 text-sm leading-6 text-slate-300">{entity.pricingGuide.intro}</p>
+            </div>
+            <div className="overflow-x-auto rounded-2xl border border-slate-700/80 bg-slate-900/50">
+              <table className="w-full min-w-[760px] border-collapse text-left text-sm">
+                <caption className="sr-only">Laptop repair category, common symptoms, published starting price and typical turnaround in Kuwait.</caption>
+                <thead className="bg-slate-800/90 text-slate-100">
+                  <tr>
+                    <th scope="col" className="px-4 py-4 font-bold">Repair category</th>
+                    <th scope="col" className="px-4 py-4 font-bold">Symptoms covered</th>
+                    <th scope="col" className="px-4 py-4 font-bold">Guide price (KWD)</th>
+                    <th scope="col" className="px-4 py-4 font-bold">Typical timing</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-700/70">
+                  {entity.pricingGuide.rows.map((row) => (
+                    <tr key={row.category} className="align-top even:bg-slate-950/30">
+                      <th scope="row" className="px-4 py-4 font-semibold text-white">{row.category}</th>
+                      <td className="px-4 py-4 leading-6 text-slate-300">{row.symptoms}</td>
+                      <td className="px-4 py-4 font-bold text-cyan-200">{row.startingPrice}</td>
+                      <td className="px-4 py-4 leading-6 text-slate-300">{row.typicalTurnaround}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="mt-4 max-w-5xl text-xs leading-6 text-slate-400">{entity.pricingGuide.note}</p>
+          </section>
+        )}
+
         {entity.faqs && entity.faqs.length > 0 && (
           <section className="max-w-4xl mx-auto px-6 py-12 border-t border-slate-800/50 relative z-10" aria-labelledby="service-faqs-heading">
             <h2 id="service-faqs-heading" className="text-2xl font-bold mb-8 text-white text-center">Frequently Asked Questions</h2>
-            {' '}
             <div className="space-y-3">
-              {entity.faqs.map((faq) => {
-                const isOpen = openFaqId === faq.id;
-                return (
-                  <div key={faq.id} className="bg-slate-900/50 border border-slate-800 rounded-2xl overflow-hidden">
-                    <button
-                      type="button"
-                      onClick={() => {
-                        const nextOpen = isOpen ? null : faq.id;
-                        setOpenFaqId(nextOpen);
-                        if (nextOpen) {
-                          trackConversion(
-                            'faq_expand',
-                            { cta_name: 'service_page_faq', button_position: 'faq_section', entity_id: entity.id, entity_type: 'Service', entity_slug: entity.slug }
-                          );
-                        }
-                      }}
-                      aria-expanded={isOpen}
-                      aria-controls={`faq-answer-${entity.id}-${faq.id}`}
-                      className="w-full flex items-center justify-between gap-3 text-left px-6 py-4"
-                    >
-                      <span className="text-white font-semibold">{faq.title}</span>
-                      <ChevronDown
-                        className={`w-4 h-4 text-slate-500 shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
-                      />
-                    </button>
-                    <p
-                      id={`faq-answer-${entity.id}-${faq.id}`}
-                      hidden={!isOpen}
-                      className="text-slate-400 text-sm leading-relaxed px-6 pb-4"
-                    >
-                      {faq.answer}
-                    </p>
-                  </div>
-                );
-              })}
+              {entity.faqs.map((faq) => (
+                <details
+                  key={faq.id}
+                  className="group bg-slate-900/50 border border-slate-800 rounded-2xl overflow-hidden"
+                  onToggle={(event) => {
+                    if (event.currentTarget.open) {
+                      trackConversion(
+                        'faq_expand',
+                        { cta_name: 'service_page_faq', button_position: 'faq_section', entity_id: entity.id, entity_type: 'Service', entity_slug: entity.slug }
+                      );
+                    }
+                  }}
+                >
+                  <summary className="flex w-full cursor-pointer list-none items-center justify-between gap-3 px-6 py-4 text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-3px] focus-visible:outline-cyan-300 [&::-webkit-details-marker]:hidden">
+                    <span className="text-white font-semibold">{faq.title}</span>
+                    <ChevronDown className="h-4 w-4 shrink-0 text-slate-500 transition-transform duration-200 group-open:rotate-180" aria-hidden="true" />
+                  </summary>
+                  <p id={`faq-answer-${entity.id}-${faq.id}`} className="px-6 pb-4 text-sm leading-relaxed text-slate-300">
+                    {faq.answer}
+                  </p>
+                </details>
+              ))}
             </div>
           </section>
         )}
