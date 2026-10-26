@@ -243,7 +243,7 @@ export default function Header() {
                   <CalendarCheck size={15} aria-hidden="true" />
                   <span className="flex min-w-0 flex-col items-start leading-tight">
                     <span>{isArabicRoute ? 'احجز استلام مجاني' : 'Book Free Pickup'}</span>
-                    <span className="mt-0.5 text-[10px] font-semibold text-white">{phoneDisplay}</span>
+                    <span className="mt-0.5 text-[10px] font-semibold text-white">{isArabicRoute ? 'استلام مجاني في جميع مناطق الكويت' : 'Free pickup across Kuwait'}</span>
                   </span>
                 </Link>
               </Button>

@@ -54,6 +54,14 @@ const SERVICE_ICON_MAP: Record<string, React.ElementType> = {
   battery: BatteryCharging,
 };
 
+// Keep the Salmiya problem card specific to local gaming intent while linking to
+// the existing overheating problem entity (no duplicate problem URL is created).
+const LOCATION_PROBLEM_LABEL_OVERRIDES: Record<string, Record<string, string>> = {
+  salmiya: {
+    'problem-overheating': 'Gaming Laptop Overheating, Loud Fans, or GPU Black Screen',
+  },
+};
+
 interface LocalFAQ { id: string; question: string; answer: string; }
 
 // Real photos of KCROC's central Hawalli workshop — this is where every
@@ -403,7 +411,7 @@ export default function LocationDeepTemplate() {
                 className="scroll-row-item w-[80%] sm:w-auto flex items-center gap-3 bg-slate-900/40 hover:bg-slate-900/70 border border-slate-800 hover:border-cyan-500/40 rounded-xl px-4 py-3.5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
               >
                 <Wrench className="w-4 h-4 text-cyan-500 shrink-0" aria-hidden="true" />
-                <span className="text-sm text-slate-200 font-medium">{problem.title}</span>
+                <span className="text-sm text-slate-200 font-medium">{LOCATION_PROBLEM_LABEL_OVERRIDES[location.slug]?.[problem.id] ?? problem.title}</span>
               </Link>
             ))}
           </div>
@@ -727,6 +735,8 @@ export default function LocationDeepTemplate() {
                       className={`w-4 h-4 text-slate-500 shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
                     />
                   </button>
+                  {/* Keep answers in the prerendered DOM; `hidden` controls only visual expansion.
+                      FAQPage JSON-LD above is generated from the same localFaqs array. */}
                   <div
                     id={`${faq.id}-panel`}
                     role="region"

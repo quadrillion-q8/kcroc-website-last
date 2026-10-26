@@ -51,6 +51,13 @@ const laptopServiceEntityForChecks =
     ? graph.slice(laptopGraphStart, laptopGraphEnd)
     : '';
 
+const salmiyaGraphStart = graph.indexOf("'loc-salmiya': {");
+const salmiyaGraphEnd = graph.indexOf("'loc-farwaniya': {", salmiyaGraphStart + 1);
+const salmiyaEntity =
+  salmiyaGraphStart >= 0 && salmiyaGraphEnd > salmiyaGraphStart
+    ? graph.slice(salmiyaGraphStart, salmiyaGraphEnd)
+    : '';
+
 const url = 'https://www.computerrepairkuwait.com/ar/pricing';
 const arabicHomeSource = await read('pages/ArabicLocalizedPages.tsx');
 add('Arabic pricing route is registered', app.includes("path: 'ar/pricing'"));
@@ -133,6 +140,31 @@ add('Footer service-area links are separated into an accessible labelled list',
   footer.includes('Footer service areas') &&
   footer.includes('<ul role="list" className="flex flex-wrap gap-2">') &&
   footer.includes('<li key={area.path}>'));
+
+add('Salmiya page prioritises board-level repair, local pickup landmarks and nearby area links',
+  salmiyaEntity.includes('Dead MacBook, liquid spill') &&
+  salmiyaEntity.includes('Salem Al-Mubarak Street') &&
+  salmiyaEntity.includes('Marina Mall area') &&
+  salmiyaEntity.includes("relatedLocationIds: ['loc-rumaithiya', 'loc-salwa']") &&
+  salmiyaEntity.includes("serviceAreas: ['Salmiya', 'Bidaa']") &&
+  !salmiyaEntity.includes('The Salmiya service area also covers Rumaithiya, Salwa'));
+add('Salmiya connects existing gaming services and a high-intent overheating problem card',
+  salmiyaEntity.includes("'srv-gaming'") &&
+  salmiyaEntity.includes("'srv-gaming-laptop-cleaning'") &&
+  salmiyaEntity.includes("'problem-overheating'") &&
+  locations.includes('Gaming Laptop Overheating, Loud Fans, or GPU Black Screen'));
+add('Service-area FAQs remain in prerendered DOM and match their FAQPage schema answers',
+  locations.includes('hidden={!isOpen}') &&
+  locations.includes('{faq.answer}') &&
+  locations.includes("acceptedAnswer: { '@type': 'Answer', text: faq.answer }") &&
+  locations.includes('Common laptop repairs start from 15 KWD') &&
+  locations.includes('screen-replacement labor from 30 KWD') &&
+  locations.includes('motherboard repair from 25 KWD') &&
+  locations.includes('typically takes 24-72 hours'));
+add('Header CTA removes duplicate business phone text while preserving the direct call link',
+  header.includes('Free pickup across Kuwait') &&
+  header.includes('href={`tel:+${cleanTel}`}') &&
+  !header.includes('<span className="mt-0.5 text-[10px] font-semibold text-white">{phoneDisplay}</span>'));
 
 add('Service headings, repair cards and device chips preserve readable text boundaries',
   serviceTemplate.includes("{' '}") &&
