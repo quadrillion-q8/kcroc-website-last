@@ -6,8 +6,56 @@ import { SEOEngine } from '../../core/components/SEOEngine';
 import { getIntentWhatsAppLink } from '../../utils/whatsappIntent';
 import { AlertOctagon, CheckCircle2, ShieldAlert, ArrowRight, Wrench, MapPin, HelpCircle, BookOpen, Clock3, ExternalLink } from 'lucide-react';
 
+
+const THERMAL_TRIAGE_OPTIONS = [
+  {
+    id: 'warm-under-load',
+    label: 'Warm only under load',
+    title: 'Warm but stable during heavy work',
+    urgent: false,
+    guidance: 'Higher fan speed and warmth can be normal during gaming, rendering or updates. Use a hard, ventilated surface, check the exact model guidance, and watch for a repeatable loss of performance, abnormal sounds or shutdowns.'
+  },
+  {
+    id: 'hot-at-idle',
+    label: 'Hot while idle',
+    title: 'Find out whether the laptop is actually idle',
+    urgent: false,
+    guidance: 'If the laptop is otherwise stable, check Task Manager (Windows) or Activity Monitor (macOS) for a recognised process using CPU resources. If utilisation stays low but heat and fan activity remain abnormal, airflow, fan control, firmware or sensors may need inspection.'
+  },
+  {
+    id: 'slowdown',
+    label: 'Slowdown or FPS drops',
+    title: 'Correlate temperature with performance',
+    urgent: false,
+    guidance: 'A thermal limit is one possibility, not a diagnosis. Compare the same workload and power mode while observing temperature, clocks, utilisation and fan response. Power limits, drivers, background work or the application can also cause slowdown.'
+  },
+  {
+    id: 'charging',
+    label: 'Mainly while charging',
+    title: 'Check power mode and charging context',
+    urgent: false,
+    guidance: 'Charging and performance modes can change power use and fan behaviour. If there are no battery or electrical safety warning signs, note the correct charger and compare like-for-like workloads. Unusual localised battery heat, swelling, smell or deformation means stop using and charging the device.'
+  },
+  {
+    id: 'fan-shutdown',
+    label: 'Grinding fan or shutdown',
+    title: 'Stop heavy workloads and arrange diagnosis',
+    urgent: true,
+    guidance: 'A grinding fan, weak or absent airflow while very hot, thermal warning or repeated shutdown is not a reason to keep stress-testing. Power the laptop down if safe and arrange assessment of the fan, airflow, power and cooling path.'
+  },
+  {
+    id: 'battery-safety',
+    label: 'Swelling, smoke or burning smell',
+    title: 'Treat this as a safety issue',
+    urgent: true,
+    guidance: 'Stop using and charging the laptop immediately. Disconnect power only if it is safe to do so. Do not press, open, bend, puncture or try to remove a swollen battery; keep the device out of routine testing and arrange professional safety handling.'
+  }
+] as const;
+
 const ProblemTemplate: React.FC = () => {
   const location = useLocation();
+  const [thermalPattern, setThermalPattern] = React.useState('warm-under-load');
+  const selectedThermalGuidance = THERMAL_TRIAGE_OPTIONS.find((option) => option.id === thermalPattern) ?? THERMAL_TRIAGE_OPTIONS[0];
   const slug = location.pathname.replace(/^\/+/, ''); 
   
   const problem = KCROC_GRAPH.problems.find(p => p.slug === slug);
@@ -99,6 +147,53 @@ const ProblemTemplate: React.FC = () => {
                 </span>
               </div>
             </div>
+          )}
+
+          {isOverheating && (
+            <section aria-labelledby="thermal-triage-title" className="rounded-3xl border border-slate-800 bg-slate-900/60 p-6 md:p-8">
+              <div className="max-w-3xl">
+                <p className="text-sm font-bold uppercase tracking-[0.18em] text-cyan-400">Quick symptom triage</p>
+                <h2 id="thermal-triage-title" className="mt-2 text-2xl font-black text-white md:text-3xl">Choose the pattern that best matches your laptop</h2>
+                <p className="mt-3 leading-7 text-slate-400">This selects a safer next step—not a remote diagnosis or a promise that one repair will fix the cause. Skip testing if you see a battery or electrical warning.</p>
+              </div>
+              <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                {THERMAL_TRIAGE_OPTIONS.map((option) => {
+                  const active = thermalPattern === option.id;
+                  return (
+                    <button
+                      key={option.id}
+                      type="button"
+                      aria-pressed={active}
+                      onClick={() => setThermalPattern(option.id)}
+                      className={\`rounded-2xl border p-4 text-left transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 \${
+                        active
+                          ? option.urgent
+                            ? 'border-rose-500/70 bg-rose-950/40'
+                            : 'border-cyan-400/60 bg-cyan-950/40'
+                          : 'border-slate-700 bg-slate-950/50 hover:border-slate-500'
+                      }\`}
+                    >
+                      <span className="flex items-start justify-between gap-3">
+                        <span className="font-bold text-white">{option.label}</span>
+                        {active && <span className={\`text-xs font-bold uppercase tracking-wide \${option.urgent ? 'text-rose-300' : 'text-cyan-300'}\`}>Selected</span>}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+              <div
+                role="status"
+                aria-live="polite"
+                className={\`mt-5 rounded-2xl border p-5 md:p-6 \${
+                  selectedThermalGuidance.urgent
+                    ? 'border-rose-800/60 bg-rose-950/30'
+                    : 'border-cyan-900/60 bg-cyan-950/20'
+                }\`}
+              >
+                <h3 className={\`text-lg font-black \${selectedThermalGuidance.urgent ? 'text-rose-200' : 'text-white'}\`}>{selectedThermalGuidance.title}</h3>
+                <p className="mt-2 leading-7 text-slate-300">{selectedThermalGuidance.guidance}</p>
+              </div>
+            </section>
           )}
 
           {problem.decisionTree && problem.decisionTree.length > 0 && (
