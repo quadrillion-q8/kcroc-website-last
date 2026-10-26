@@ -4688,71 +4688,102 @@ export const rawGraphData: RawGraphData = {
 
     'problem-overheating': {
       id: 'problem-overheating', slug: 'laptop-overheating-kuwait', entityType: 'Problem', isActive: true,
-      title: 'Laptop Overheating Kuwait',
+      title: 'Laptop Overheating in Kuwait',
       primaryKeyword: 'laptop overheating kuwait',
-      secondaryKeywords: ['laptop overheating', 'laptop shutting down from heat', 'laptop thermal throttling', 'laptop fan loud and hot'],
-      synonyms: ['laptop running hot', 'laptop gets too hot', 'laptop overheats and shuts down'],
-      description: 'Diagnostic guide for laptops thermal throttling and shutting down from extreme heat.',
-      shortDescription: 'Separate normal fan noise from a real thermal fault before deciding the laptop needs a full cleaning and re-paste.',
-      intro: 'An overheating laptop is rarely a single-part failure — it is usually a chain of small problems (dust, dried thermal paste, a tired fan) that compound each other, and Kuwait\'s climate accelerates every link in that chain. This page walks through how to tell normal warm-running from a genuine thermal fault, what to check before booking a cleaning, and what KCROC actually does once the laptop is on the bench.',
-      symptom: 'Laptop extremely hot to touch, fans running at maximum speed, performance dropping under load.',
-      causes: ['Dust-blocked cooling fins — most common in Kuwait\'s particulate environment', 'Dried thermal paste — accelerates in 45°C+ summer temperatures', 'Failed or worn fan bearing'],
-      doNotDo: 'Do not use a laptop that is thermal throttling on intensive tasks — sustained overheating degrades the CPU and eventually kills the motherboard.',
-      solution: 'Ultrasonic cleaning of the cooling system, fresh phase-change thermal material application, and fan inspection. We also check BIOS thermal limits.',
+      secondaryKeywords: [
+        'laptop overheating',
+        'laptop shutting down from heat',
+        'laptop thermal throttling',
+        'laptop fan loud and hot',
+        'laptop gets hot while gaming',
+        'laptop overheating while idle',
+        'laptop fan not cooling',
+        'laptop thermal paste replacement Kuwait'
+      ],
+      synonyms: ['laptop running hot', 'laptop gets too hot', 'laptop overheats and shuts down', 'laptop fan running loudly'],
+      description: 'Diagnostic guide for laptop overheating, loud fans, thermal throttling and heat-related shutdowns in Kuwait.',
+      shortDescription: 'Use symptoms, safe checks and model-specific diagnostics to distinguish normal heat from a cooling fault before paying for cleaning or parts.',
+      intro: 'A hot chassis, loud fans or sudden performance drops do not automatically mean the thermal paste has failed. Dust packed into the heatsink fins, a blocked intake, a worn fan, a background process, a firmware power profile or poor thermal contact can produce similar symptoms. Kuwait’s high ambient temperatures can reduce a laptop’s available cooling headroom. This guide helps you separate normal heat under load from warning signs, try low-risk checks, and understand what a technician should verify before recommending cleaning, thermal-interface service or parts.',
+      symptom: 'The laptop becomes unusually hot, the fans stay loud, performance drops during sustained work, or the system warns about heat or shuts down unexpectedly.',
+      causes: [
+        'Dust and lint packed into the fan or heatsink fin stack, restricting the airflow the fan needs to remove heat.',
+        'Blocked intake or exhaust vents caused by bedding, cushions, a cramped stand, dust or poor placement.',
+        'A worn, obstructed or failed fan, damaged fan cable, or fan-control problem.',
+        'A degraded or incorrectly fitted thermal interface, poor heatsink contact, damaged heat pipe or model-specific cooling hardware fault.',
+        'High CPU or GPU load from a demanding application, stuck background process, update, browser workload or unwanted software.',
+        'A firmware, power-profile, driver or temperature-sensor issue that changes fan behavior or performance.',
+        'High room temperature or direct sunlight that leaves less cooling headroom, especially during long gaming, rendering or compiling sessions.'
+      ],
+      doNotDo: 'Do not keep stress-testing a laptop that repeatedly shuts down, reports a thermal warning, smells burnt, emits smoke, or has a swollen or deformed battery. Power it down and disconnect power if this is safe. Do not charge, press, puncture or open a swollen battery; arrange professional safety assessment.',
+      solution: 'KCROC starts by identifying the exact model and confirming the reported pattern. We inspect airflow, fan condition, heatsink contact and thermal interfaces, while also checking software load and model-specific thermal settings. Cleaning, fan replacement or thermal-material service is recommended only when the findings support it. Where the laptop can be tested safely, we compare its thermal behavior, fan response and performance before and after service, then explain any remaining limitation before return.',
       urgency: 'medium',
-      relatedServiceIds: ['srv-laptop', 'srv-gaming', 'srv-gaming-laptop-cleaning'],
+      relatedServiceIds: ['srv-laptop', 'srv-gaming-laptop', 'srv-gaming-laptop-cleaning'],
       relatedResourcePaths: [
         { label: 'Gaming Laptop Cleaning & Thermal Repaste Kuwait', path: '/gaming-laptop-cleaning-kuwait' },
-        { label: 'How Often to Clean a Gaming Laptop & Replace Thermal Paste', path: '/blog/how-often-clean-laptop-replace-thermal-paste-kuwait' },
-        { label: 'Laptop Temperatures in Kuwait', path: '/blog/laptop-temperatures-kuwait-safe-cpu-gpu-temperatures' },
+        { label: 'Laptop Temperature Guide: CPU & GPU Readings', path: '/blog/laptop-temperatures-kuwait-safe-cpu-gpu-temperatures' },
+        { label: 'Cleaning Intervals & Thermal Paste: What Actually Matters', path: '/blog/how-often-clean-laptop-replace-thermal-paste-kuwait' },
+        { label: 'Why Is My Laptop Running Hot?', path: '/guides/why-is-my-laptop-so-hot' },
+        { label: 'Laptop Repair Kuwait', path: '/laptop-repair-kuwait' },
+        { label: 'Gaming Laptop Repair Kuwait', path: '/gaming-laptop-repair-kuwait' }
       ],
-      coveredBrands: ['Dell', 'HP', 'Lenovo', 'ASUS', 'Acer', 'MSI', 'Apple MacBook'],
+      coveredBrands: ['Dell', 'HP', 'Lenovo', 'ASUS', 'Acer', 'MSI', 'Apple MacBook', 'Microsoft Surface'],
       diagnosticSteps: [
-        { step: 1, title: 'Check where the heat actually is', description: 'Feel the underside near the vents and the keyboard area above the CPU/GPU. Heat concentrated in one spot near the fan exhaust points to a cooling blockage; even heat across the whole chassis is more often a design characteristic than a fault.' },
-        { step: 2, title: 'Listen to the fan behavior', description: 'A fan that spins at maximum speed constantly, or that changes pitch/grinds, suggests dust resistance or a worn bearing. A fan that never seems to speed up under load can point to a blocked airflow path instead.' },
-        { step: 3, title: 'Check the vents and intake', description: 'Look at the visible vents and intake grille for dust or lint. Elevate the laptop off soft surfaces like beds and cushions, which block the intake and can look like a hardware fault by themselves.' },
-        { step: 4, title: 'Watch for throttling patterns', description: 'Note whether performance only drops during sustained load (gaming, exports, compiling) or even during light use — sustained-only throttling points toward thermal paste and dust; constant slowness can indicate a separate issue.' },
-        { step: 5, title: 'Rule out software causes', description: 'Background updates, malware, or a stuck process pinning the CPU can look identical to a thermal fault. Check Task Manager for a process using continuous high CPU before assuming it is hardware.' },
-        { step: 6, title: 'Decide if it is time for a professional cleaning', description: 'If the laptop is 12+ months old, has never been cleaned, or shows the pattern above, an internal cleaning and re-paste is the appropriate next step rather than continuing to run it hot.' }
+        { step: 1, title: 'Move it to a cool, hard surface', description: 'Place the laptop on a stable desk with the intake and exhaust unobstructed. Avoid beds, cushions, direct sunlight and hot vehicles. If it has already shut down from heat, allow it to cool and do not repeatedly restart it to reproduce the fault.' },
+        { step: 2, title: 'Record when the heat begins', description: 'Note whether the fan ramps up during gaming, video calls, Windows or macOS updates, exports or charging—or whether the laptop is hot while idle. Record the application, approximate time until the slowdown, and whether performance returns after the system cools.' },
+        { step: 3, title: 'Look at the visible vents without inserting anything', description: 'Check for visible lint or blocked openings and listen for grinding, rattling or scraping. Do not push tools into vents or spray liquid cleaner into the chassis. Exterior dusting cannot confirm whether a hidden fin stack is clogged.' },
+        { step: 4, title: 'Check for an unusually busy application', description: 'On Windows, use Task Manager; on macOS, use Activity Monitor. Look for a process persistently using substantial CPU while the machine is supposed to be idle. Close only applications you recognise, then restart and see whether the idle fan behavior improves.' },
+        { step: 5, title: 'Use the manufacturer’s own diagnostics', description: 'Where available, run the model’s built-in hardware or fan diagnostic and review the manufacturer’s power or thermal profile guidance. Install firmware or BIOS updates only from the device maker and only when the machine is stable enough to complete the update safely.' },
+        { step: 6, title: 'Treat repeated shutdowns or abnormal fan behavior as a warning', description: 'A fan that grinds, a fan that fails to run while the laptop becomes very hot, a thermal warning, or repeated shutdowns needs professional assessment. Do not run long stress tests to prove the problem.' },
+        { step: 7, title: 'Share the exact model and symptom history', description: 'Before arranging service, note the brand and model number, operating system, workload that triggers the issue, any diagnostic code, recent repair or spill, and whether the fan noise or shutdown started suddenly. This is more useful than guessing that the laptop only needs new paste.' }
       ],
       decisionTree: [
-        { symptom: 'Hot only under heavy load, fan loud but performance still fine', direction: 'Likely early-stage dust buildup or aging thermal paste. Cleaning now can prevent throttling from developing.' },
-        { symptom: 'Hot and throttling (visible slowdown) during gaming or heavy tasks', direction: 'Thermal paste has likely dried out or the cooling fins are blocked. A cleaning and re-paste service is the direct fix.', href: '#technician-diagnosis', linkLabel: 'See how KCROC diagnoses this' },
-        { symptom: 'Hot even during light browsing, or shuts down unexpectedly', direction: 'This is more advanced — check for a runaway background process first, then treat as an urgent cooling-system fault if the laptop shuts itself off.' },
-        { symptom: 'Laptop is hot but the screen is also flickering or has display corruption', direction: 'Extreme heat can affect the GPU or the display cable. Also check the black-screen problem path if the display is affected.', href: '/laptop-black-screen-kuwait', linkLabel: 'Laptop black-screen problem' }
+        { symptom: 'Warm and louder fan during gaming or other heavy work, with stable performance', direction: 'This can be normal cooling behavior. Use a hard, ventilated surface and check the model’s operating guidance. Investigate further if the behavior changes, becomes unusually loud, or is joined by slowdown or shutdown.' },
+        { symptom: 'Performance drops after several minutes of heavy use, then improves after cooling', direction: 'Thermal throttling is one possibility, but power limits, software load and GPU/CPU behavior can look similar. Record the workload and check reliable, model-appropriate readings rather than assuming the thermal paste has failed.', href: '#technician-diagnosis', linkLabel: 'See the diagnostic process' },
+        { symptom: 'The laptop is hot and the fans stay loud even while idle', direction: 'Check Task Manager or Activity Monitor for persistent load and restart once if there are no safety warning signs. If high fan activity or heat continues during light use, the cause may be airflow, fan hardware, firmware or a sensor—not necessarily paste.' },
+        { symptom: 'Grinding fan, very weak airflow, thermal warning or repeated shutdown', direction: 'Stop demanding work and power the laptop down if it is safe to do so. Do not keep restarting or stress-testing it; arrange a cooling-system diagnosis.' },
+        { symptom: 'Swollen chassis or battery, burning smell, smoke or visible heat damage', direction: 'Treat this as a safety issue, not a routine cleaning. Stop using and charging the device, disconnect power if safe, do not press or open it, and arrange professional handling.' },
+        { symptom: 'Heat during gaming is accompanied by flickering, artifacts or a display loss', direction: 'Do not assume the screen itself is faulty. Heat-linked graphics symptoms can involve software, GPU, memory, power or display hardware; stop the workload and have the cause isolated.', href: '/laptop-black-screen-kuwait', linkLabel: 'Read the laptop display troubleshooting path' }
       ],
-      technicianMethod: [
-        { step: 1, title: 'Baseline temperature test', description: 'We run the laptop under controlled load and log CPU/GPU temperatures before opening the chassis, so the improvement after service can be verified rather than assumed.' },
-        { step: 2, title: 'Full disassembly and inspection', description: 'The chassis is opened and the heatsink, fan assembly and vents are inspected directly for dust density, worn fan grease and paste condition.' },
-        { step: 3, title: 'Ultrasonic and compressed cleaning', description: 'The heatsink and fan are cleaned to remove dust and debris that surface cleaning through vents cannot reach.' },
-        { step: 4, title: 'Fresh thermal material application', description: 'Dried factory paste is removed and replaced with a phase-change or high-grade thermal compound rated for sustained performance in high-heat environments.' },
-        { step: 5, title: 'BIOS thermal-limit and fan-curve check', description: 'We confirm the fan curve and thermal limits in BIOS are behaving as designed, since an incorrect fan curve can mimic a hardware cooling fault.' },
-        { step: 6, title: 'Post-service verification', description: 'The same load test is repeated after service and compared against the baseline reading before the laptop is returned.' }
+      expertNotes: [
+        { title: 'There is no single safe temperature for every laptop', description: 'CPU and GPU limits vary by model, chip, firmware, power mode and workload. A monitoring app’s internal sensor reading is not the same as the temperature of the palm rest or case. Compare readings with the device maker’s guidance and look at repeatable symptoms together—not one number in isolation.' },
+        { title: 'Thermal throttling is a protective response, not a part diagnosis', description: 'A processor can reduce clocks or power to stay within its configured limits. A performance drop is a useful clue, but background load, power limits, drivers and application behavior can also cause slowdowns. A technician should correlate temperature, fan behavior, clocks and workload before choosing a repair.' },
+        { title: 'Cleaning and re-pasting are not automatic fixes', description: 'A blocked fin stack may need cleaning, while a failing fan, damaged heat pipe, loose heatsink, firmware issue or persistent background process needs a different fix. Thermal paste should be replaced only when the model-specific inspection and symptoms justify opening the cooling assembly.' },
+        { title: 'Thermal pads and liquid metal are model-specific', description: 'Pads have precise thickness and placement requirements; substituting paste or the wrong pad can worsen contact and cooling. Liquid metal has different handling and electrical risks from conventional compound. Do not apply generic thermal material or copy a procedure from another laptop model.' },
+        { title: 'Use symptoms and the manufacturer’s maintenance guidance—not a calendar myth', description: 'There is no universal rule that every laptop needs cleaning or fresh paste every 8–12 months. Dust exposure, workload, device design and the maker’s maintenance instructions all matter. A repeatable symptom or visible airflow problem is a better reason to investigate than age alone.' }
       ],
       safetyNotes: [
-        'Stop running intensive workloads (gaming, exports, compiling) on a laptop that is visibly throttling — sustained heat stress shortens CPU and motherboard life.',
-        'Do not block the intake vents by using the laptop on a bed, sofa or other soft surface for extended periods.',
-        'Do not attempt to open the chassis and apply thermal paste yourself unless you are comfortable with laptop disassembly — incorrect paste application or reassembly can cause more damage than the original heat issue.'
+        'Do not run long gaming, rendering or stress-test sessions while the laptop repeatedly throttles, displays a thermal warning or shuts itself off. A single shutdown does not prove permanent damage, but repeated events should be investigated.',
+        'Do not use the laptop on bedding or soft furniture where vents can be blocked. Do not put objects into ventilation openings or spray liquids into the chassis.',
+        'If the case is bulging, the trackpad or keyboard is lifting, a battery looks swollen, or there is a burning smell or smoke, stop using and charging the device. Do not press, puncture or open a swollen battery.',
+        'Do not open the chassis or replace thermal pads, fans or thermal paste unless you have the correct model-specific procedure and are equipped to handle the parts safely.'
       ],
       kuwaitContext: [
-        'Kuwait\'s ambient summer temperatures regularly exceed 45°C, which accelerates the drying and cracking of factory thermal paste well ahead of the timelines seen in cooler climates.',
-        'Fine airborne dust and sand are more prevalent locally, which clogs cooling fins faster than in most other regions — a laptop that would need cleaning every 18-24 months elsewhere may need it every 8-12 months here.',
-        'KCROC sees overheating as one of the most common Kuwait-specific repair categories and offers free pickup and delivery across all governorates so the laptop does not need to be carried in during peak heat.'
+        'Ambient heat matters: a laptop has less room to shed heat when the surrounding air is already hot. For sustained gaming or work, use it indoors in a cooled, ventilated room and within the manufacturer’s specified operating range. Do not leave it in a parked car or direct sunlight; check the exact model’s guidance rather than applying one temperature limit to every device.',
+        'Dust and lint build-up depend on the room, usage, airflow and device design. The visible grille may look clear even when dust has accumulated deeper in the fin stack. Kuwait’s dusty conditions make it sensible to pay attention to fan noise, airflow and repeatable performance changes—but they do not create a universal annual cleaning or re-pasting schedule.',
+        'KCROC’s workshop is in Hawalli, and free pickup and delivery are offered across Kuwait’s governorates. A laptop can be assessed without carrying it through peak outdoor heat; share the exact model and symptoms so the team can route it to the appropriate diagnostic path.'
       ],
       faqs: [
-        { question: 'Is it normal for a laptop to feel hot in Kuwait?', answer: 'Some warmth under load is normal, especially with high ambient room temperatures. It becomes a problem when the fan runs at maximum constantly, performance visibly drops under load, or the laptop shuts down unexpectedly.' },
-        { question: 'How often should a laptop be cleaned in Kuwait\'s climate?', answer: 'As a general guide, every 8-12 months for regular use, sooner for gaming laptops or laptops used in dusty environments. A laptop that has never been cleaned and is 12+ months old is a reasonable candidate regardless of symptoms.' },
-        { question: 'Can overheating actually damage my laptop permanently?', answer: 'Yes. Sustained high temperatures accelerate wear on the CPU, GPU, battery and solder joints, and can eventually cause motherboard-level failures that are far more expensive than a routine cleaning.' },
-        { question: 'Will cleaning fix my laptop if it is already shutting down from heat?', answer: 'In most cases a cleaning and re-paste resolves shutdown-from-heat issues caused by dust and dried paste. If the fan bearing has failed or the shutdown persists after cleaning, further diagnosis of the fan or thermal sensor may be needed.' },
-        { question: 'Does using a cooling pad actually help?', answer: 'A cooling pad can modestly reduce ambient temperature around the chassis, but it cannot remove internal dust or restore dried thermal paste — it is a supplement to cleaning, not a replacement for it.' },
-        { question: 'How long does a laptop cleaning and re-paste take at KCROC?', answer: 'Most laptops are completed within a few hours for standard cleaning and re-pasting, same-day in most cases when the laptop is dropped off or picked up in the morning.' }
+        { question: 'Is it normal for a laptop to feel hot in Kuwait?', answer: 'Some warmth and a faster fan during gaming, video calls, updates or other demanding work can be normal. Hot air from the exhaust can also mean the cooling system is moving heat out of the device. It is more concerning when heat appears at idle, airflow becomes abnormal, performance repeatedly falls, a thermal warning appears or the laptop shuts down unexpectedly.' },
+        { question: 'What CPU or GPU temperature is too high?', answer: 'There is no universal pass/fail number for every laptop. Limits and sensor reporting vary by processor, graphics chip, model and power mode. Compare readings with the laptop maker’s documentation and look for a repeatable combination of high readings, throttling, unusual fan behavior or shutdowns. Do not use the outside case temperature as a substitute for an internal sensor reading.' },
+        { question: 'Does Kuwait’s summer heat dry out thermal paste?', answer: 'High ambient temperature reduces cooling headroom and can make sustained heavy workloads more difficult to cool. However, heat alone does not prove that thermal paste has failed or that it needs immediate replacement. Dust blockage, fan condition, heatsink contact, firmware and software load should also be checked before choosing a repair.' },
+        { question: 'How often should I clean my laptop in Kuwait?', answer: 'There is no interval that fits every model and household. Follow the manufacturer’s care instructions and consider how much dust the laptop encounters, how heavily it is used, whether vents are obstructed, and whether fan or performance behavior has changed. A calendar-based re-paste is not a substitute for diagnosis.' },
+        { question: 'Will cleaning and new thermal paste fix the overheating?', answer: 'It can help when dust restriction or a degraded thermal interface is confirmed, but it will not repair a failed fan, damaged heat pipe, sensor fault, firmware problem or a process keeping the CPU busy. The technician should inspect and test first, explain the cause and recommended work, and verify the outcome where safe testing is possible.' },
+        { question: 'Will a cooling pad solve laptop overheating?', answer: 'A compatible cooling pad may improve airflow on some designs, especially when it does not obstruct the laptop’s intake. It cannot remove dust trapped in the fin stack, repair a failing fan or correct a poor heatsink contact. Start with placement and the model’s cooling requirements; treat a pad as an accessory, not a hardware repair.' },
+        { question: 'Can I keep using a laptop that shuts down because of heat?', answer: 'Do not repeatedly restart it or run another stress test to reproduce the shutdown. Save work only if the laptop is operating normally and there are no safety warning signs; otherwise power it down if safe. Repeated thermal warnings or shutdowns need assessment. A swollen battery, burning smell or smoke requires immediate stop-use precautions.' },
+        { question: 'Can I replace the thermal paste myself?', answer: 'Only attempt it if you have the correct service information for the exact model and the skills and tools to disassemble it safely. Thin laptops may use different thermal pads, phase-change materials or liquid metal in specific locations; incorrect thickness, placement, pressure or reassembly can worsen cooling or damage components. Warranty and manufacturer repair guidance also matter.' },
+        { question: 'How long does laptop overheating repair take at KCROC?', answer: 'The time depends on the model, access to the cooling assembly, the cause found, whether a fan or other part is required, and how long verification takes. A routine clean may be simpler than a failed fan or board-level problem. KCROC should confirm the expected turnaround after assessment rather than promise the same timing for every laptop.' },
+        { question: 'Does KCROC offer pickup for overheating laptops across Kuwait?', answer: 'Yes. KCROC states that free pickup and delivery are available across Kuwait’s governorates, with the workshop based in Hawalli. Share the brand, model and the exact symptoms when arranging pickup, especially if the laptop has been shutting down or showing a safety warning.' }
+      ],
+      technicalReferences: [
+        { label: 'Dell Support: overheating, thermal throttling and shutdown troubleshooting', url: 'https://www.dell.com/support/kbdoc/en-us/000130867/how-to-troubleshoot-a-overheating-shutdown-or-thermal-issue-on-a-dell-pc', description: 'Manufacturer guidance on normal warmth and fan behavior, blocked vents, dust, heavy CPU usage, reduced performance and unexpected shutdowns.' },
+        { label: 'Apple Support: acceptable Mac laptop operating temperatures', url: 'https://support.apple.com/en-la/102336', description: 'Manufacturer guidance on operating environment, ventilation, checking unusually high background activity and avoiding hot parked vehicles.' }
       ],
       contentImages: [
-        { src: IMAGES.laptopHardware.laptopDustCleaningOverheatingKuwait.src, alt: IMAGES.laptopHardware.laptopDustCleaningOverheatingKuwait.alt, width: IMAGES.laptopHardware.laptopDustCleaningOverheatingKuwait.width, height: IMAGES.laptopHardware.laptopDustCleaningOverheatingKuwait.height, placement: 'causes', caption: 'Dust buildup inside the cooling system — the leading cause of overheating in Kuwait\'s climate.' },
-        { src: IMAGES.laptopHardware.copperHeatsink2.src, alt: IMAGES.laptopHardware.copperHeatsink2.alt, width: IMAGES.laptopHardware.copperHeatsink2.width, height: IMAGES.laptopHardware.copperHeatsink2.height, placement: 'solution', caption: 'Cleaning the copper heatsink and applying fresh thermal material during the repair.' },
+        { src: IMAGES.laptopHardware.laptopDustCleaningOverheatingKuwait.src, alt: IMAGES.laptopHardware.laptopDustCleaningOverheatingKuwait.alt, width: IMAGES.laptopHardware.laptopDustCleaningOverheatingKuwait.width, height: IMAGES.laptopHardware.laptopDustCleaningOverheatingKuwait.height, placement: 'causes', caption: 'Dust accumulation can restrict the hidden heatsink fin stack even when the outside grille appears clear.' },
+        { src: IMAGES.laptopHardware.copperHeatsink2.src, alt: IMAGES.laptopHardware.copperHeatsink2.alt, width: IMAGES.laptopHardware.copperHeatsink2.width, height: IMAGES.laptopHardware.copperHeatsink2.height, placement: 'solution', caption: 'Cooling assembly inspection and model-appropriate thermal service during a repair.' }
       ],
-      seo: { title: 'Laptop Overheating Kuwait — Fix & Thermal Service | KCROC', description: 'Laptop overheating in Kuwait? Kuwait\'s summer heat destroys thermal paste and clogs cooling fins. We deep-clean and re-paste. Free pick & drop. Same-day service.', canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-overheating-kuwait', ogType: 'article', schemaTypes: ['TechArticle', 'FAQPage'], lastModified: '2026-09-10T00:00:00+03:00' },
-      navigationPriority: 90, popular: true 
+      seo: { title: 'Laptop Overheating in Kuwait: Diagnosis & Cooling Repair | KCROC', description: 'Laptop overheating in Kuwait? Learn safe checks, warning signs, cooling faults and how KCROC diagnoses airflow, fans and thermal throttling. Free pickup and delivery.', canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-overheating-kuwait', ogType: 'article', schemaTypes: ['TechArticle', 'FAQPage'], lastModified: '2026-10-27T00:00:00+03:00' },
+      navigationPriority: 90, popular: true
     } as ProblemEntity,
 
     'problem-black-screen': {
