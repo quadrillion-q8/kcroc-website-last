@@ -1,5 +1,6 @@
 // Build-time guard for the highest-intent Kuwait laptop overheating problem page.
 import { KCROC_GRAPH } from '../src/data/graph';
+import { SEO_GRAPH } from '../src/data/seoGraph.generated';
 
 const problem = KCROC_GRAPH.problems.find((item) => item.id === 'problem-overheating');
 const errors: string[] = [];
@@ -12,6 +13,10 @@ if (!problem) {
   process.exit(1);
 }
 
+const projectedProblem = SEO_GRAPH.routableEntities.find((item) => item.id === 'problem-overheating') as { solution?: string; technicalReferences?: Array<{ url: string }> } | undefined;
+check(Boolean(problem.solution.trim()), 'The source problem must include a non-empty technician solution narrative.');
+check(Boolean(projectedProblem?.solution?.trim()), 'The generated SEO projection must preserve the solution narrative; do not let TechArticle schema emit "Solution: undefined".');
+check((projectedProblem?.technicalReferences?.length ?? 0) >= 5, 'The generated SEO projection must retain the manufacturer references.');
 const references = problem.technicalReferences ?? [];
 const referenceHosts = references.map((reference) => {
   try {
