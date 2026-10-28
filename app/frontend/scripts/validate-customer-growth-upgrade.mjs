@@ -589,7 +589,7 @@ add('Motherboard service snippet targets laptop, desktop and MacBook logic-board
 
 add('Motherboard page uses a focused visible H1 without changing other service headings',
   serviceTemplate.includes("isMotherboardService ? 'Laptop & Desktop Motherboard Repair in Kuwait' : entity.title") &&
-  serviceTemplate.includes("const isMotherboardService = entity.id === 'srv-motherboard';'));
+  serviceTemplate.includes("const isMotherboardService = entity.id === 'srv-motherboard';"));
 
 add('Motherboard devices section names laptops, desktop PCs and MacBook logic boards',
   graph.includes("'MacBook Logic Boards (Intel & Apple Silicon)'") &&
