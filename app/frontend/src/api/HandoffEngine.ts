@@ -5,6 +5,17 @@ export interface HandoffResult {
   reason?: string;
 }
 
+// Short keywords such as "sue" or "person" must match whole words only, otherwise
+// "issue", "tissue" and "personal" trigger a human handoff. Longer keywords keep
+// prefix matching so "complain" still catches "complaining" and "spill" catches "spilled".
+const WHOLE_WORD_ONLY = new Set(['human', 'agent', 'person', 'sue', 'sparks']);
+
+function matchesKeyword(message: string, keyword: string): boolean {
+  const escaped = keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const pattern = WHOLE_WORD_ONLY.has(keyword) ? `\\b${escaped}\\b` : `\\b${escaped}`;
+  return new RegExp(pattern).test(message);
+}
+
 /**
  * Evaluates if a conversation needs human escalation based on user intent.
  * Uses fast regex heuristics to prevent blocking the main LLM response time
@@ -24,7 +35,7 @@ export async function evaluateHandoff(message: string, history?: any[]): Promise
   ];
 
   for (const keyword of escalationKeywords) {
-    if (normalizedMessage.includes(keyword)) {
+    if (matchesKeyword(normalizedMessage, keyword)) {
       return {
         shouldHandoff: true,
         reason: `User requested human/escalation (Trigger: "${keyword}")`
@@ -43,7 +54,7 @@ export async function evaluateHandoff(message: string, history?: any[]): Promise
   ];
 
   for (const keyword of physicalDamageKeywords) {
-    if (normalizedMessage.includes(keyword)) {
+    if (matchesKeyword(normalizedMessage, keyword)) {
       return {
         shouldHandoff: true,
         reason: `Physical damage described, needs technician inspection (Trigger: "${keyword}")`
