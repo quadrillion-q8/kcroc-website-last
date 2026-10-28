@@ -57,8 +57,7 @@ const MENU_COPY: Record<string, { eyebrow: string; subtitle: string; allLabel: s
   news_mega: { eyebrow: 'TECH NEWS', subtitle: 'Current computer, Windows, hardware, gaming, Apple, cybersecurity and AI news with technician context.', allLabel: 'All news', allHref: '/news' },
   guides_mega: { eyebrow: 'TROUBLESHOOTING GUIDES', subtitle: 'Safe, practical steps before you book repair.', allLabel: 'All guides', allHref: '/guides' },
   locations_mega: { eyebrow: 'KUWAIT LOCATIONS & SERVICE AREAS', subtitle: 'Browse the Hawalli repair lab and pickup-and-delivery service areas across Kuwait.', allLabel: 'All areas', allHref: '/locations' },
-  resources_mega: { eyebrow: 'RESOURCES', subtitle: 'Repair guides, tech articles and news in one place.', allLabel: 'Start with guides', allHref: '/guides' },
-  about_mega: { eyebrow: 'KCROC', subtitle: 'The lab, the team, our repair gallery and how to book.', allLabel: 'About KCROC', allHref: '/about' },
+  about_mega: { eyebrow: 'KCROC', subtitle: 'The lab, the team and the company behind KCROC.', allLabel: 'About KCROC', allHref: '/about' },
 };
 
 const getMenuCopy = (id: string) => MENU_COPY[id] ?? { eyebrow: 'KCROC', subtitle: 'Component-level repair and practical technical guidance.', allLabel: 'Explore', allHref: '/' };
