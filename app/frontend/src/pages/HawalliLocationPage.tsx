@@ -280,9 +280,9 @@ export default function HawalliLocationPage() {
                 {location.description}
               </p>
               <p className="text-sm text-slate-400 leading-relaxed">
-                Need chip-level diagnostics?{' '}
+                Need chip-level diagnostics for a laptop or MacBook?{' '}
                 <Link to="/motherboard-repair-kuwait" className="font-semibold text-cyan-300 underline decoration-cyan-500/40 underline-offset-4 hover:text-cyan-200">
-                  Explore component-level motherboard repair
+                  Laptop motherboard & MacBook logic board repair
                 </Link>
                 .
               </p>
