@@ -168,7 +168,7 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
                   <Gauge className="w-5 h-5 text-cyan-400 flex-shrink-0" />
                   <div>
                     <span className="block text-[10px] text-slate-500 uppercase font-black tracking-wider">Repair level</span>
-                    <span className="font-semibold text-white">{isScreenService ? 'Panel, Cable & Backlight Diagnostics' : entity.repairLevel.replace(/-/g, ' ')}</span>
+                    <span className="font-semibold text-white capitalize">{isScreenService ? 'Panel, Cable & Backlight Diagnostics' : entity.repairLevel.replace(/-/g, ' ')}</span>
                   </div>
                 </div>
 
