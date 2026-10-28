@@ -5229,17 +5229,13 @@ export const rawGraphData: RawGraphData = {
           { label: 'Computer Repair Sabah Al-Salem', path: '/location/sabah-al-salem' },
           { label: 'Computer Repair Salwa',         path: '/location/salwa' },
           { label: 'Computer Repair Rumaithiya',    path: '/location/rumaithiya' },
-          { label: 'Computer Repair Shaab',         path: '/location/shaab' },
           { label: 'Computer Repair Surra',         path: '/location/surra' },
           { label: 'Computer Repair Khaitan',       path: '/location/khaitan' },
           { label: 'Computer Repair Riggae',        path: '/location/riggae' },
           { label: 'Computer Repair Ardiya',        path: '/location/ardiya' },
           { label: 'Computer Repair Mahboula',      path: '/location/mahboula' },
-          { label: 'Computer Repair Qurain',        path: '/location/qurain' },
-          { label: 'Computer Repair Qortuba',       path: '/location/qortuba' },
           { label: 'Computer Repair Rawda',         path: '/location/rawda' },
           { label: 'Computer Repair Messila',       path: '/location/messila' },
-          { label: 'Computer Repair Adailiya',      path: '/location/adailiya' },
         ]
       }
     } as FooterEntity,
