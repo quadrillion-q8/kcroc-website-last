@@ -68,7 +68,9 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
       ? 'What is wrong with your laptop?'
       : entity.id === 'srv-gaming'
         ? 'What is your gaming PC doing?'
-        : 'Choose the symptom that best matches your device';
+        : entity.id === 'srv-gaming-laptop'
+          ? 'What is your gaming laptop doing?'
+          : 'Choose the symptom that best matches your device';
   const arabicEquivalent = KCROC_GRAPH.pages.find((page) =>
     page.isActive &&
     page.seo.locale === 'ar_KW' &&
