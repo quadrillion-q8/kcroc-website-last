@@ -456,9 +456,6 @@ export class NavigationCompiler {
   private static compileGalleryMegaMenu(): MegaMenuConfig {
     const items: NavEntity[] = [
       { id: 'gallery_index', slug: 'gallery', title: 'Repair Gallery', description: 'Browse real repair-work photos and workshop highlights.', iconKey: 'monitor', entityType: 'Page' as any, primaryKeyword: 'computer repair gallery Kuwait', weight: 100, commercialIntent: 'informational' },
-      { id: 'gallery_board', slug: 'motherboard-repair-kuwait', title: 'Motherboard Micro-soldering', description: 'See how component-level board repair addresses faults beyond simple part swaps.', iconKey: 'cpu', entityType: 'Page' as any, primaryKeyword: 'motherboard repair Kuwait', weight: 90, commercialIntent: 'transactional' },
-      { id: 'gallery_laptop', slug: 'laptop-repair-kuwait', title: 'Laptop Repair', description: 'Explore laptop diagnostics and repair options from the KCROC team.', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'laptop repair Kuwait', weight: 80, commercialIntent: 'transactional' },
-      { id: 'gallery_contact', slug: 'contact', title: 'Contact KCROC', description: 'Ask a technician about your device or arrange a pickup.', iconKey: 'map-pin', entityType: 'Page' as any, primaryKeyword: 'contact KCROC', weight: 70, commercialIntent: 'transactional' },
     ];
     return {
       id: 'gallery_mega',
