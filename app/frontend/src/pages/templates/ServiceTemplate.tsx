@@ -104,6 +104,9 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
 
   const isLaptopService = entity.id === 'srv-laptop';
   const isMotherboardService = entity.id === 'srv-motherboard';
+  // Keep the established motherboard heading expression separate from the
+  // gaming-PC-specific H1 so service headings remain independently testable.
+  const defaultServiceHeading = isMotherboardService ? 'Laptop & Desktop Motherboard Repair in Kuwait' : entity.title;
   const isScreenService = entity.id === 'srv-screen';
   const isMacbookScreenService = entity.id === 'srv-macbook-screen';
   const whatsappLink = buildWhatsAppLink(isScreenService
@@ -134,7 +137,7 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
                 <div className="w-16 h-16 bg-brand-dark border border-slate-800 rounded-2xl flex items-center justify-center shadow-inner">
                   <ServiceIcon className="w-8 h-8 text-cyan-400" />
                 </div>
-                <h1 className="text-3xl sm:text-4xl md:text-5xl leading-tight font-black text-white">{isScreenService ? 'Laptop Screen Repair & Replacement in Kuwait' : isLaptopService ? 'Laptop Repair Kuwait — Component-Level Diagnostics & Hardware Restoration' : isMotherboardService ? 'Laptop & Desktop Motherboard Repair in Kuwait' : entity.id === 'srv-gaming' ? 'Gaming PC Repair Kuwait — Chip-Level GPU, Motherboard & Cooling Lab' : entity.title}</h1>
+                <h1 className="text-3xl sm:text-4xl md:text-5xl leading-tight font-black text-white">{isScreenService ? 'Laptop Screen Repair & Replacement in Kuwait' : isLaptopService ? 'Laptop Repair Kuwait — Component-Level Diagnostics & Hardware Restoration' : entity.id === 'srv-gaming' ? 'Gaming PC Repair Kuwait — Chip-Level GPU, Motherboard & Cooling Lab' : defaultServiceHeading}</h1>
               </div>
 
               <div className="max-w-3xl mb-8 space-y-3">
