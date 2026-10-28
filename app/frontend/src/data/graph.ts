@@ -1418,7 +1418,7 @@ export const rawGraphData: RawGraphData = {
       relatedServiceIds: ['srv-gaming', 'srv-gaming-laptop-cleaning', 'srv-laptop', 'srv-screen', 'srv-battery', 'srv-motherboard'],
       relatedProblemIds: ['problem-overheating', 'problem-black-screen', 'problem-no-power', 'problem-not-charging', 'problem-freezing-crashing'],
       relatedBrandIds: ['brand-asus', 'brand-lenovo', 'brand-msi', 'brand-hp', 'brand-dell', 'brand-acer'],
-      relatedLocationIds: ['loc-hawalli','loc-salmiya','loc-kuwait-city','loc-farwaniya','loc-jahra','loc-ahmadi','loc-fahaheel'],
+      relatedLocationIds: ['loc-hawalli', 'loc-salmiya', 'loc-kuwait-city', 'loc-farwaniya', 'loc-jahra', 'loc-ahmadi', 'loc-fahaheel'],
       relatedResourcePaths: [
         { label: 'Why Is My Laptop Running Hot?', path: '/guides/why-is-my-laptop-so-hot' },
         { label: 'BIOS & UEFI Recovery Guide', path: '/guides/bios-uefi-recovery-kuwait' }
@@ -1968,7 +1968,7 @@ export const rawGraphData: RawGraphData = {
       relatedServiceIds: ['srv-gaming', 'srv-macbook', 'srv-motherboard', 'srv-screen', 'srv-battery', 'srv-charging-port', 'srv-gaming-laptop-cleaning'],
       relatedProblemIds: ['problem-no-power', 'problem-overheating', 'problem-black-screen', 'problem-not-charging', 'problem-slow', 'problem-freezing-crashing', 'problem-hinge-break', 'problem-cracked-screen', 'problem-windows-wont-boot'],
       relatedBrandIds: ['brand-dell', 'brand-hp', 'brand-lenovo', 'brand-asus', 'brand-acer', 'brand-msi'],
-      relatedLocationIds: ['loc-hawalli','loc-salmiya','loc-kuwait-city','loc-farwaniya','loc-jahra','loc-ahmadi','loc-fahaheel'],
+      relatedLocationIds: ['loc-hawalli', 'loc-salmiya', 'loc-kuwait-city', 'loc-farwaniya', 'loc-jahra', 'loc-ahmadi', 'loc-fahaheel'],
       relatedResourcePaths: [
         { label: "Laptop Won't Turn On: Troubleshooting Guide", path: '/guides/laptop-wont-turn-on' },
         { label: 'Laptop Battery Warning Signs', path: '/guides/laptop-battery-warning-signs' },
@@ -2261,7 +2261,7 @@ export const rawGraphData: RawGraphData = {
         { label: 'SSD & RAM Upgrade Kuwait', path: '/ssd-ram-upgrade-kuwait' },
         { label: 'Gaming PC No-Power Guide', path: '/guides/gaming-pc-not-turning-on-kuwait' }
       ],
-      relatedLocationIds: ['loc-hawalli','loc-salmiya','loc-kuwait-city','loc-farwaniya','loc-jahra'],
+      relatedLocationIds: ['loc-hawalli', 'loc-salmiya', 'loc-kuwait-city', 'loc-farwaniya', 'loc-jahra'],
       technicalOverview: {
         heading: 'Desktop PC repair in Kuwait: test the system layer by layer',
         paragraphs: [
@@ -2362,7 +2362,7 @@ export const rawGraphData: RawGraphData = {
       relatedServiceIds: ['srv-gaming', 'srv-gaming-laptop', 'srv-gaming-laptop-cleaning', 'srv-motherboard', 'srv-laptop'],
       relatedProblemIds: ['problem-overheating', 'problem-freezing-crashing', 'problem-no-power', 'problem-black-screen'],
       relatedBrandIds: ['brand-asus', 'brand-msi', 'brand-lenovo', 'brand-dell', 'brand-hp', 'brand-acer'],
-      relatedLocationIds: ['loc-hawalli','loc-salmiya','loc-kuwait-city','loc-farwaniya','loc-jahra','loc-ahmadi','loc-fahaheel','loc-mangaf','loc-abu-halifa','loc-jabriya','loc-mubarak-al-kabeer','loc-fintas','loc-sabah-al-salem'],
+      relatedLocationIds: ['loc-hawalli', 'loc-salmiya', 'loc-kuwait-city', 'loc-farwaniya', 'loc-jahra', 'loc-ahmadi', 'loc-fahaheel', 'loc-mangaf', 'loc-abu-halifa', 'loc-jabriya', 'loc-mubarak-al-kabeer', 'loc-fintas', 'loc-sabah-al-salem'],
       relatedResourcePaths: [
         { label: 'Gaming PC Cooling Guide', path: '/blog/gaming-pc-cooling' },
         { label: 'Gaming PC Won’t Turn On? Diagnosis Guide', path: '/guides/gaming-pc-not-turning-on-kuwait' },
@@ -3602,7 +3602,7 @@ export const rawGraphData: RawGraphData = {
         { id: "faq-salmiya-local-4", question: "Will my files be safe if the board is repaired?", answer: "A component-level repair works on the board itself, so your storage is not wiped as part of it. We cannot promise data survival after liquid damage, because it depends on the condition of the board and the storage. If the laptop still works, back up what you can before the repair." },
         { id: "faq-salmiya-local-5", question: "Can I get a quote before approving the repair?", answer: "Yes. Diagnostics are free, and you receive the confirmed quote before any paid work begins. Under our No Fix, No Fee policy you pay nothing if we cannot fix it, and pickup and delivery from Salmiya are free." },
         { id: "faq-salmiya-local-6", question: "Where is my device actually repaired?", answer: "There is no storefront in Salmiya. Your device is repaired at our Hawalli lab (Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19), tested before return, and covered by a 30-day warranty." },
-      ], title: 'Salmiya', description: "Dead MacBook, liquid spill, or a motherboard another shop called 'beyond repair'? We trace faults to the component and repair the original board where technically feasible, while prioritising data preservation. Free pickup from Salmiya; diagnosis and repair take place at our ESD-safe Hawalli lab.", landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)', coords: { lat: 29.3400, lng: 48.0800 }, serviceRadiusKm: 15, serviceAreas: ['Salmiya', 'Bidaa'], relatedServiceIds: ['srv-laptop', 'srv-liquid-damage', 'srv-macbook', 'srv-motherboard', 'srv-gaming', 'srv-gaming-laptop-cleaning'], relatedProblemIds: ['problem-liquid-spill', 'problem-not-charging', 'problem-no-power', 'problem-black-screen', 'problem-overheating'], relatedLocationIds: ['loc-rumaithiya','loc-salwa'], contentImage: { src: IMAGES.services.laptopRepair.src, alt: IMAGES.services.laptopRepair.alt, width: IMAGES.services.laptopRepair.width, height: IMAGES.services.laptopRepair.height, caption: 'Professional laptop repair for residents and businesses across Salmiya.' }, seo: { title: "Computer Repair Salmiya | Free Pickup | KCROC", description: "Component-level laptop, MacBook and motherboard repair in Salmiya, plus gaming PC and thermal/GPU diagnostics. Free pickup; all repairs are completed at our Hawalli lab.", canonicalUrl: 'https://www.computerrepairkuwait.com/location/salmiya', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/location/salmiya', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/computer-repair-salmiya', 'x-default': 'https://www.computerrepairkuwait.com/location/salmiya' }, ogType: 'website', schemaTypes: ['LocalBusiness'], lastModified: '2026-10-26T00:00:00+03:00' }, navigationPriority: 90 } as LocationEntity,
+      ], title: 'Salmiya', description: "Dead MacBook, liquid spill, or a motherboard another shop called 'beyond repair'? We trace faults to the component and repair the original board where technically feasible, while prioritising data preservation. Free pickup from Salmiya; diagnosis and repair take place at our ESD-safe Hawalli lab.", landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)', coords: { lat: 29.3400, lng: 48.0800 }, serviceRadiusKm: 15, serviceAreas: ['Salmiya', 'Bidaa'], relatedServiceIds: ['srv-laptop', 'srv-liquid-damage', 'srv-macbook', 'srv-motherboard', 'srv-gaming', 'srv-gaming-laptop-cleaning'], relatedProblemIds: ['problem-liquid-spill', 'problem-not-charging', 'problem-no-power', 'problem-black-screen', 'problem-overheating'], relatedLocationIds: ['loc-rumaithiya', 'loc-salwa'], contentImage: { src: IMAGES.services.laptopRepair.src, alt: IMAGES.services.laptopRepair.alt, width: IMAGES.services.laptopRepair.width, height: IMAGES.services.laptopRepair.height, caption: 'Professional laptop repair for residents and businesses across Salmiya.' }, seo: { title: "Computer Repair Salmiya | Free Pickup | KCROC", description: "Component-level laptop, MacBook and motherboard repair in Salmiya, plus gaming PC and thermal/GPU diagnostics. Free pickup; all repairs are completed at our Hawalli lab.", canonicalUrl: 'https://www.computerrepairkuwait.com/location/salmiya', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/location/salmiya', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/computer-repair-salmiya', 'x-default': 'https://www.computerrepairkuwait.com/location/salmiya' }, ogType: 'website', schemaTypes: ['LocalBusiness'], lastModified: '2026-10-26T00:00:00+03:00' }, navigationPriority: 90 } as LocationEntity,
 
     'loc-farwaniya': { id: 'loc-farwaniya', slug: 'farwaniya', entityType: 'Location', isActive: true, isPhysicalLocation: false, title: 'Farwaniya', description: 'Computer and laptop repair for Farwaniya, with a practical focus on power, charging, display, battery and motherboard faults and free pickup to KCROC\'s Hawalli workshop.', localIntro: 'For Farwaniya customers, the easiest path is usually pickup rather than driving to a shop. KCROC collects the device, performs the diagnosis in the Hawalli lab, explains the repair path and returns the device after testing. The Farwaniya service area includes Khaitan, Riggae, Ardiya and Jleeb Al-Shuyoukh.', localHighlights: [
         { title: 'Pickup from Farwaniya, Khaitan and Riggae', description: 'Tell us your area and device symptom and we can arrange the collection through the Kuwait-wide pickup service.' },
@@ -4197,7 +4197,7 @@ export const rawGraphData: RawGraphData = {
       ],
       relatedServiceIds: ['srv-gaming', 'srv-laptop', 'srv-motherboard', 'srv-screen', 'srv-battery', 'srv-charging-port', 'srv-hinge', 'srv-gaming-laptop-cleaning'],
       relatedProblemIds: ['problem-hinge-break', 'problem-overheating', 'problem-not-charging', 'problem-black-screen'],
-      relatedLocationIds: ['loc-hawalli','loc-salmiya','loc-kuwait-city','loc-farwaniya','loc-jahra','loc-ahmadi'],
+      relatedLocationIds: ['loc-hawalli', 'loc-salmiya', 'loc-kuwait-city', 'loc-farwaniya', 'loc-jahra', 'loc-ahmadi'],
       relatedResourcePaths: [{ label: 'Dell laptop overheating guide', path: '/guides/dell-laptop-overheating' }],
       contentImages: [{ src: IMAGES.laptopHardware.dellTeardown.src, alt: IMAGES.laptopHardware.dellTeardown.alt, width: IMAGES.laptopHardware.dellTeardown.width, height: IMAGES.laptopHardware.dellTeardown.height, caption: 'Dell laptop internal hardware opened for repair and diagnosis.' }],
       familyGroups: [
@@ -4236,7 +4236,7 @@ export const rawGraphData: RawGraphData = {
       ],
       relatedServiceIds: ['srv-gaming', 'srv-laptop', 'srv-motherboard', 'srv-hinge', 'srv-gaming-laptop-cleaning'],
       relatedProblemIds: ['problem-no-power', 'problem-hinge-break', 'problem-overheating'],
-      relatedLocationIds: ['loc-hawalli','loc-salmiya','loc-kuwait-city','loc-farwaniya','loc-jahra','loc-ahmadi'],
+      relatedLocationIds: ['loc-hawalli', 'loc-salmiya', 'loc-kuwait-city', 'loc-farwaniya', 'loc-jahra', 'loc-ahmadi'],
       contentImages: [
         { src: IMAGES.laptopHardware.hpLaptopMotherboardRepairOpen.src, alt: IMAGES.laptopHardware.hpLaptopMotherboardRepairOpen.alt, width: IMAGES.laptopHardware.hpLaptopMotherboardRepairOpen.width, height: IMAGES.laptopHardware.hpLaptopMotherboardRepairOpen.height, caption: 'HP laptop opened for motherboard and internal hardware diagnosis.' },
         { src: IMAGES.laptopHardware.hpLaptopMotherboardThermalPasteCleanup.src, alt: IMAGES.laptopHardware.hpLaptopMotherboardThermalPasteCleanup.alt, width: IMAGES.laptopHardware.hpLaptopMotherboardThermalPasteCleanup.width, height: IMAGES.laptopHardware.hpLaptopMotherboardThermalPasteCleanup.height, caption: 'HP cooling and thermal hardware inspected as part of repair.' }
@@ -4334,7 +4334,7 @@ export const rawGraphData: RawGraphData = {
         'problem-hinge-break', 'problem-keyboard-fail', 'problem-wifi-fail', 'problem-slow',
         'problem-windows-wont-boot', 'problem-liquid-spill', 'problem-cracked-screen'
       ],
-      relatedLocationIds: ['loc-hawalli','loc-salmiya','loc-kuwait-city','loc-farwaniya','loc-jahra','loc-ahmadi','loc-fahaheel'],
+      relatedLocationIds: ['loc-hawalli', 'loc-salmiya', 'loc-kuwait-city', 'loc-farwaniya', 'loc-jahra', 'loc-ahmadi', 'loc-fahaheel'],
       relatedResourcePaths: [
         { label: 'Laptop Overheating Problem', path: '/laptop-overheating-kuwait' },
         { label: 'Laptop battery warning signs', path: '/guides/laptop-battery-warning-signs' },
@@ -4402,7 +4402,7 @@ export const rawGraphData: RawGraphData = {
       ],
       relatedServiceIds: ['srv-laptop', 'srv-gaming', 'srv-gaming-laptop-cleaning', 'srv-motherboard', 'srv-screen'],
       relatedProblemIds: ['problem-overheating', 'problem-no-power', 'problem-wifi-fail', 'problem-black-screen'],
-      relatedLocationIds: ['loc-hawalli','loc-salmiya','loc-kuwait-city','loc-farwaniya','loc-ahmadi','loc-fahaheel'],
+      relatedLocationIds: ['loc-hawalli', 'loc-salmiya', 'loc-kuwait-city', 'loc-farwaniya', 'loc-ahmadi', 'loc-fahaheel'],
       contentImages: [
         { src: IMAGES.laptopHardware.laptopDisassemblyInternalRepair.src, alt: 'ASUS laptop opened for internal repair and diagnosis', width: IMAGES.laptopHardware.laptopDisassemblyInternalRepair.width, height: IMAGES.laptopHardware.laptopDisassemblyInternalRepair.height, caption: 'ASUS laptop opened for internal hardware diagnosis and repair.' },
         { src: IMAGES.motherboard.asusMotherboardChipsetHeatsinkRepair.src, alt: IMAGES.motherboard.asusMotherboardChipsetHeatsinkRepair.alt, width: IMAGES.motherboard.asusMotherboardChipsetHeatsinkRepair.width, height: IMAGES.motherboard.asusMotherboardChipsetHeatsinkRepair.height, caption: 'ASUS motherboard and heatsink area during component-level diagnosis and repair.' }
@@ -4441,7 +4441,7 @@ export const rawGraphData: RawGraphData = {
       ],
       relatedServiceIds: ['srv-gaming', 'srv-laptop', 'srv-gaming-laptop-cleaning', 'srv-charging-port', 'srv-hinge', 'srv-motherboard'],
       relatedProblemIds: ['problem-not-charging', 'problem-overheating', 'problem-hinge-break'],
-      relatedLocationIds: ['loc-hawalli','loc-salmiya','loc-kuwait-city','loc-farwaniya','loc-jahra','loc-ahmadi'],
+      relatedLocationIds: ['loc-hawalli', 'loc-salmiya', 'loc-kuwait-city', 'loc-farwaniya', 'loc-jahra', 'loc-ahmadi'],
       contentImages: [{ src: IMAGES.upgrades.acerLaptopMotherboardRamHeatsink.src, alt: IMAGES.upgrades.acerLaptopMotherboardRamHeatsink.alt, width: IMAGES.upgrades.acerLaptopMotherboardRamHeatsink.width, height: IMAGES.upgrades.acerLaptopMotherboardRamHeatsink.height, caption: 'Acer laptop internal motherboard, RAM and cooling hardware inspected for repair.' }],
       familyGroups: [
         { name: 'Aspire & Swift', description: 'Everyday Acer systems where charging, hinge, battery, display and cooling issues are common repair paths.', models: ['Aspire 3', 'Aspire 5', 'Swift 3'], repairFocus: ['Charging', 'Hinge', 'Battery', 'Display'] },
@@ -4477,7 +4477,7 @@ export const rawGraphData: RawGraphData = {
       ],
       relatedServiceIds: ['srv-laptop', 'srv-gaming', 'srv-gaming-laptop-cleaning', 'srv-motherboard', 'srv-hinge', 'srv-battery'],
       relatedProblemIds: ['problem-hinge-break', 'problem-no-power', 'problem-not-charging', 'problem-overheating'],
-      relatedLocationIds: ['loc-hawalli','loc-salmiya','loc-kuwait-city','loc-farwaniya','loc-ahmadi','loc-fahaheel'],
+      relatedLocationIds: ['loc-hawalli', 'loc-salmiya', 'loc-kuwait-city', 'loc-farwaniya', 'loc-ahmadi', 'loc-fahaheel'],
       contentImages: [{ src: IMAGES.gaming.msiWorkstation.src, alt: IMAGES.gaming.msiWorkstation.alt, width: IMAGES.gaming.msiWorkstation.width, height: IMAGES.gaming.msiWorkstation.height, caption: 'MSI gaming laptop and GPU repair workstation for high-performance hardware diagnosis.' }],
       familyGroups: [
         { name: 'Katana & Thin', description: 'Gaming MSI laptops where thermals, hinges, charging and power circuits need practical diagnosis.', models: ['Katana GF66', 'Thin GF63'], repairFocus: ['Thermals', 'Hinge', 'Charging', 'Power'] },
@@ -5262,43 +5262,43 @@ const LOCATION_RELATIONSHIPS: Record<string, {
     relatedServiceIds: ['srv-laptop', 'srv-motherboard', 'srv-gaming', 'srv-macbook', 'srv-screen'],
     relatedProblemIds: ['problem-no-power', 'problem-overheating', 'problem-black-screen', 'problem-not-charging', 'problem-liquid-spill'],
     relatedBrandIds: ['brand-dell', 'brand-lenovo', 'brand-asus', 'brand-hp'],
-    relatedLocationIds: ['loc-salmiya','loc-kuwait-city','loc-farwaniya','loc-jahra','loc-ahmadi'],
+    relatedLocationIds: ['loc-salmiya', 'loc-kuwait-city', 'loc-farwaniya', 'loc-jahra', 'loc-ahmadi'],
   },
   salmiya: {
     relatedServiceIds: ['srv-laptop', 'srv-macbook', 'srv-liquid-damage', 'srv-motherboard', 'srv-screen', 'srv-gaming', 'srv-gaming-laptop-cleaning'],
     relatedProblemIds: ['problem-liquid-spill', 'problem-no-power', 'problem-black-screen', 'problem-not-charging', 'problem-overheating'],
     relatedBrandIds: ['brand-dell', 'brand-lenovo', 'brand-hp', 'brand-asus'],
-    relatedLocationIds: ['loc-hawalli','loc-rumaithiya','loc-salwa','loc-kuwait-city','loc-jabriya'],
+    relatedLocationIds: ['loc-hawalli', 'loc-rumaithiya', 'loc-salwa', 'loc-kuwait-city', 'loc-jabriya'],
   },
   'kuwait-city': {
     relatedServiceIds: ['srv-laptop', 'srv-screen', 'srv-motherboard', 'srv-macbook'],
     relatedProblemIds: ['problem-black-screen', 'problem-cracked-screen', 'problem-no-power', 'problem-not-charging'],
     relatedBrandIds: ['brand-dell', 'brand-lenovo', 'brand-hp', 'brand-asus'],
-    relatedLocationIds: ['loc-hawalli','loc-salmiya','loc-jabriya'],
+    relatedLocationIds: ['loc-hawalli', 'loc-salmiya', 'loc-jabriya'],
   },
   farwaniya: {
     relatedServiceIds: ['srv-laptop', 'srv-motherboard', 'srv-screen', 'srv-battery', 'srv-charging-port', 'srv-gaming'],
     relatedProblemIds: ['problem-no-power', 'problem-cracked-screen', 'problem-not-charging', 'problem-black-screen', 'problem-overheating'],
     relatedBrandIds: ['brand-dell', 'brand-hp', 'brand-lenovo', 'brand-asus', 'brand-msi'],
-    relatedLocationIds: ['loc-hawalli','loc-kuwait-city','loc-salmiya','loc-jahra'],
+    relatedLocationIds: ['loc-hawalli', 'loc-kuwait-city', 'loc-salmiya', 'loc-jahra'],
   },
   jahra: {
     relatedServiceIds: ['srv-gaming', 'srv-laptop', 'srv-motherboard', 'srv-gaming-laptop-cleaning', 'srv-battery', 'srv-screen'],
     relatedProblemIds: ['problem-overheating', 'problem-no-power', 'problem-not-charging', 'problem-black-screen'],
     relatedBrandIds: ['brand-dell', 'brand-lenovo', 'brand-hp', 'brand-asus'],
-    relatedLocationIds: ['loc-saad-al-abdullah','loc-hawalli','loc-kuwait-city','loc-farwaniya'],
+    relatedLocationIds: ['loc-saad-al-abdullah', 'loc-hawalli', 'loc-kuwait-city', 'loc-farwaniya'],
   },
   'saad-al-abdullah': {
     relatedServiceIds: ['srv-laptop', 'srv-screen', 'srv-battery', 'srv-charging-port', 'srv-motherboard', 'srv-ssd-ram', 'srv-gaming-laptop-cleaning'],
     relatedProblemIds: ['problem-no-power', 'problem-not-charging', 'problem-black-screen', 'problem-cracked-screen', 'problem-overheating', 'problem-slow'],
     relatedBrandIds: ['brand-dell', 'brand-hp', 'brand-lenovo', 'brand-asus', 'brand-acer', 'brand-msi'],
-    relatedLocationIds: ['loc-jahra','loc-hawalli'],
+    relatedLocationIds: ['loc-jahra', 'loc-hawalli'],
   },
   ahmadi: {
     relatedServiceIds: ['srv-gaming', 'srv-macbook', 'srv-laptop', 'srv-motherboard', 'srv-gaming-laptop-cleaning'],
     relatedProblemIds: ['problem-overheating', 'problem-no-power', 'problem-freezing-crashing', 'problem-liquid-spill'],
     relatedBrandIds: ['brand-asus', 'brand-msi', 'brand-dell', 'brand-lenovo'],
-    relatedLocationIds: ['loc-fahaheel','loc-mangaf','loc-abu-halifa'],
+    relatedLocationIds: ['loc-fahaheel', 'loc-mangaf', 'loc-abu-halifa'],
   },
   fahaheel: { relatedServiceIds: ['srv-laptop','srv-motherboard','srv-charging-port','srv-liquid-damage','srv-gaming-laptop-cleaning'], relatedProblemIds: ['problem-no-power','problem-overheating','problem-not-charging','problem-liquid-spill'], relatedBrandIds: ['brand-dell','brand-lenovo','brand-asus','brand-hp'], relatedLocationIds: ['loc-ahmadi','loc-mangaf','loc-abu-halifa'] },
   mangaf: { relatedServiceIds: ['srv-laptop','srv-motherboard','srv-macbook','srv-liquid-damage','srv-gaming-laptop'], relatedProblemIds: ['problem-no-power','problem-overheating','problem-liquid-spill'], relatedBrandIds: ['brand-dell','brand-lenovo','brand-asus','brand-msi'], relatedLocationIds: ['loc-ahmadi','loc-fahaheel','loc-abu-halifa'] },
