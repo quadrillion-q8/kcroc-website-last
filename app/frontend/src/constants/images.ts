@@ -82,7 +82,7 @@ export const IMAGES = {
   // --- GAMING & CUSTOM PCs ---
   gaming: {
     rgbLighting: { src: "/images/custom-gaming-pc-build-rgb-lighting-kuwait.webp", alt: "Custom Gaming PC RGB Lighting", width: 1200, height: 800 },
-    waterCooled: { src: "/images/custom-water-cooled-gaming-pc-build-kuwait.webp", alt: "Water cooled gaming PC build", width: 1200, height: 800 },
+    waterCooled: { src: "/images/custom-water-cooled-gaming-pc-build-kuwait.webp", alt: "Water cooled gaming PC build", width: 1000, height: 1000 },
     msiGpuBuild: { src: "/images/custom-gaming-pc-msi-gpu-intel-cooler-build.webp", alt: "MSI GPU Intel Cooler Build", width: 1200, height: 800 },
     darkflashCooler: { src: "/images/custom-desktop-pc-msi-gpu-darkflash-cooler.webp", alt: "Darkflash Cooler Build", width: 1200, height: 800 },
     asusRogCase: { src: "/images/asus-rog-gaming-pc-rgb-case-build.webp", alt: "ASUS ROG RGB Case Build", width: 1200, height: 800 },
