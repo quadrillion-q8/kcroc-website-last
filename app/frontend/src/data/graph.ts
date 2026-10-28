@@ -2298,11 +2298,11 @@ export const rawGraphData: RawGraphData = {
       slug: 'gaming-pc-repair-kuwait', 
       entityType: 'Service', 
       isActive: true, 
-      title: 'Gaming PC Repair Kuwait', primaryKeyword: "gaming PC repair Kuwait", secondaryKeywords: ["gaming computer repair Kuwait","gaming PC motherboard repair","gaming PC overheating repair"], 
+      title: 'Gaming PC Repair Kuwait', primaryKeyword: "gaming PC repair Kuwait", secondaryKeywords: ["gaming computer repair Kuwait", "gaming GPU repair Kuwait", "gaming PC no display repair", "gaming PC overheating repair Kuwait", "gaming PC FPS drop diagnosis"], 
       iconKey: 'gaming', 
-      shortDescription: 'Gaming computer, GPU and performance repair in Kuwait for no power, black screen, GPU artifacts, FPS drops, overheating, crashes, shutdowns and cooling faults.', 
-      description: 'Gaming PC repair in Kuwait for FPS drops, overheating, crashes, black screen, GPU artifacts and no-power faults. KCROC diagnoses the failure before recommending an expensive part swap. We use thermal imaging, controlled load testing and component-level diagnostics for custom desktops, pre-built gaming PCs, standalone GPUs, liquid-cooled systems and high-performance rigs. We service NVIDIA GeForce RTX and AMD Radeon systems, Ryzen and Intel builds, and major gaming-PC families. Where technically repairable, we repair the failed stage instead of defaulting to a full motherboard or GPU replacement. Free pickup and delivery are available across Kuwait, with a 30-day repair warranty.', 
-      idealCustomer: 'Gaming PC owners, esports players, streamers, content creators, PC builders and professionals who need a real hardware diagnosis for power, display, GPU, FPS, cooling or stability problems.',
+      shortDescription: 'Gaming desktop PC repair in Kuwait for GPU faults, black screens, FPS drops, overheating, crashes, power faults and cooling problems.', 
+      description: 'KCROC repairs custom-built and pre-built gaming desktop PCs in Kuwait, including systems with no power or display, GPU artifacts, FPS drops, overheating, crashes, unstable power and cooling faults. Our Hawalli lab assesses the relevant GPU/VRAM, PSU, motherboard power delivery, memory, cooling and firmware systems, then explains the findings before recommending repair or replacement. We service NVIDIA GeForce RTX and AMD Radeon hardware and liquid-cooled desktops where the fault is repairable. Free pickup and delivery are available across Kuwait, and completed repairs carry a 30-day warranty under the stated terms.', 
+      idealCustomer: 'Owners of custom-built or pre-built gaming desktop towers, streamers and high-performance PC users who need a fault-based diagnosis for graphics, power, cooling, display or stability problems. Gaming laptops have a separate KCROC repair service.',
       symptomLinks: [
         { label: 'Gaming PC won’t turn on', path: '/guides/gaming-pc-not-turning-on-kuwait', description: 'No power, intermittent startup, dead tower or a PC that clicks on then shuts back off.' },
         { label: 'Gaming PC has no display', path: '/guides/gaming-pc-black-screen-no-display-kuwait', description: 'Fans and RGB work but the monitor stays black or reports no signal.' },
@@ -2312,26 +2312,19 @@ export const rawGraphData: RawGraphData = {
       deviceTypes: [
         'Custom Desktop Builds', 
         'Pre-Built Gaming PCs (Alienware, OMEN)', 
-        'High-End Gaming Laptops', 
         'Standalone GPUs (RTX / Radeon RX series)',
         'Streaming & Content Creation Workstations',
         'Liquid-Cooled Custom Loop Systems'
       ],
       commercialAnswers: [
-        { question: 'Do you repair gaming computers and desktop towers in Kuwait?', answer: 'Yes. The service covers custom-built gaming PCs, pre-built towers, standalone GPUs and high-performance systems. Kuwait-wide pickup and delivery are available, including full-size desktop towers.' },
-        { question: 'Can you fix a gaming PC with no display or a black screen?', answer: 'Yes. We separate monitor/cable issues from GPU, VRAM, motherboard, BIOS and power faults, then test the actual failure before quoting repair.' },
-        { question: 'Can you repair GPU artifacting instead of replacing the graphics card?', answer: 'When the card is technically repairable, the diagnosis can include VRAM, GPU power delivery, board-level faults and solder-related failures before a replacement card is recommended.' },
-        { question: 'Can you fix a gaming PC that keeps shutting down while gaming?', answer: 'Yes. We test thermal protection, PSU output, motherboard power stages, cooling and sustained-load stability so the cause is not guessed from the symptom alone.' },
-        { question: 'Do you repair gaming PCs in Salmiya, Hawalli, Farwaniya and other Kuwait areas?', answer: 'Yes. KCROC collects and returns gaming PCs and other computers across Kuwait, so customers do not need to transport a large tower to the Hawalli laboratory themselves.' },
-
-        { question: 'Can you repair a gaming PC instead of replacing the GPU or motherboard?', answer: 'That depends on the fault. KCROC diagnoses the GPU, power delivery, cooling and board-level circuits first, then explains whether component repair or replacement is appropriate.' },
-        { question: 'How much does gaming PC repair cost in Kuwait?', answer: 'Gaming PC repair starts from 25 KWD for the service-level diagnosis/repair path shown on this page; complex GPU, motherboard and cooling work is quoted after diagnosis.' },
-        { question: 'How long does gaming PC repair take?', answer: 'Typical specialist work is around 24–48 hours when the required parts are available. Complex board-level faults or parts orders may require more time.' },
-        { question: 'Do you collect gaming PCs and towers from my area?', answer: 'Yes. Pickup and delivery are available Kuwait-wide, including large desktop systems, so you do not need to transport the tower to the Hawalli lab yourself.' },
-        { question: 'Do you repair GPU, VRAM, VRM and BIOS/VBIOS faults?', answer: 'Yes. The service covers GPU and VRAM diagnosis, motherboard power-stage faults, and BIOS/VBIOS recovery where the hardware is technically repairable.' },
-        { question: 'Can you diagnose FPS drops and overheating?', answer: 'Yes. The diagnostic path can include GPU/CPU temperatures, hotspot behaviour, fan or pump response, power delivery, memory stability and controlled load testing.' },
-        { question: 'Which gaming brands do you work on?', answer: 'The service covers custom builds and major gaming hardware families including ASUS ROG, Alienware, MSI, Lenovo Legion, Razer, Gigabyte Aorus and NZXT systems.' },
-        { question: 'Is my data touched during gaming PC repair?', answer: 'For GPU, motherboard and cooling work, the storage drive is normally not the repair target. Backups are still recommended before any hardware service.' },
+        { question: 'Do you repair custom-built and pre-built gaming desktop PCs in Kuwait?', answer: 'Yes. KCROC assesses custom towers, pre-built gaming desktops, and supported standalone graphics cards. The recommended work depends on the fault, hardware condition and parts availability.' },
+        { question: 'Can you fix a gaming PC with no display, GPU artifacts or a black screen?', answer: 'We first separate monitor and cable issues from possible GPU, memory, power, motherboard or firmware faults. Testing determines the next step; a specific component is not blamed from the symptom alone.' },
+        { question: 'Why does my gaming PC lose FPS, overheat or shut down during a game?', answer: 'Possible causes include restricted airflow, fan or pump faults, thermal limits, unstable memory, drivers, PSU behaviour or motherboard power delivery. We reproduce the symptom where practical and check the readings before recommending work.' },
+        { question: 'How much does gaming PC repair cost in Kuwait?', answer: 'The listed starting service price is 25 KWD. KCROC offers an initial free diagnostic, then confirms the repair quote and any required parts before paid work begins. Complex GPU, motherboard or cooling faults may cost more.' },
+        { question: 'Do you collect gaming desktops from Salmiya, Hawalli, Farwaniya and other areas?', answer: 'Yes. Free pickup and return delivery are available across Kuwait, including full-size desktop towers. Specialist repair work is carried out at the KCROC lab in Hawalli; service-area names do not imply separate storefronts.' },
+        { question: 'How long does a gaming PC repair take?', answer: 'A typical repair may take around 24–48 hours when the fault is clear and parts are available. Complex board-level work, additional testing or parts orders can take longer; we confirm the estimate after assessment.' },
+        { question: 'Will you replace my GPU or motherboard without checking whether it can be repaired?', answer: 'No. We assess the fault and whether component-level repair is technically sensible. Some damaged GPUs or boards cannot be repaired economically, and replacement may be the better option; we explain the findings and quote first.' },
+        { question: 'Is there a warranty, and what happens to my data?', answer: 'Completed repairs carry a 30-day warranty under KCROC’s stated terms. GPU, motherboard and cooling work normally does not target the storage drive, but we recommend backing up important files before service whenever possible.' }
       ],
       repairLevel: 'chip-level', 
       estimatedTurnaround: '24-48 Hours', 
@@ -2359,7 +2352,7 @@ export const rawGraphData: RawGraphData = {
           { condition: 'The motherboard has a localized power or VRM fault.', action: 'Assess component-level repair before defaulting to a full motherboard replacement.' }
         ]
       },
-      relatedServiceIds: ['srv-gaming', 'srv-gaming-laptop', 'srv-gaming-laptop-cleaning', 'srv-motherboard', 'srv-laptop'],
+      relatedServiceIds: ['srv-gaming-laptop', 'srv-gaming-laptop-cleaning', 'srv-motherboard', 'srv-laptop'],
       relatedProblemIds: ['problem-overheating', 'problem-freezing-crashing', 'problem-no-power', 'problem-black-screen'],
       relatedBrandIds: ['brand-asus', 'brand-msi', 'brand-lenovo', 'brand-dell', 'brand-hp', 'brand-acer'],
       relatedLocationIds: ['loc-hawalli', 'loc-salmiya', 'loc-kuwait-city', 'loc-farwaniya', 'loc-jahra', 'loc-ahmadi', 'loc-fahaheel', 'loc-mangaf', 'loc-abu-halifa', 'loc-jabriya', 'loc-mubarak-al-kabeer', 'loc-fintas', 'loc-sabah-al-salem'],
@@ -2383,11 +2376,11 @@ export const rawGraphData: RawGraphData = {
 
       whyChooseUs: [
         { title: 'Chip-Level Motherboard Repair', description: 'We trace and replace individual failed components — a MOSFET, a capacitor, a power stage — instead of writing off the whole board.' },
-        { title: 'GPU VRAM & Chip-Level Repair', description: 'Failing VRAM modules and degraded solder joints beneath the GPU die are diagnosed and repaired directly whenever possible, rather than defaulting to a full card replacement.' },
-        { title: 'BGA Micro-Soldering', description: 'We perform ball-grid-array rework on GPU and CPU packages under magnification with controlled reflow temperatures.' },
-        { title: 'Thermal Imaging Diagnostics', description: 'We use thermal cameras during stress testing to identify exactly which component is overheating, instead of guessing from symptoms alone.' },
+        { title: 'GPU, VRAM & Board-Level Assessment', description: 'We check whether symptoms point to VRAM, GPU power delivery or another board-level fault. Component repair is recommended only when the diagnosis and card condition make it technically appropriate.' },
+        { title: 'Specialist Micro-Soldering', description: 'When diagnosis supports board-level rework, we assess whether specialist micro-soldering is appropriate. Not every GPU, solder-joint or package fault is repairable.' },
+        { title: 'Thermal and Load Testing', description: 'When useful for the reported fault, thermal imaging and controlled load tests help compare component temperatures and behaviour under repeatable conditions.' },
         { title: 'ESD-Safe Laboratory', description: 'All work is completed on grounded, static-controlled workstations in our Hawalli lab to protect sensitive GPU and motherboard components.' },
-        { title: 'Premium Thermal Materials', description: 'We use branded liquid metal and phase-change thermal materials designed for sustained high-temperature performance, not generic paste.' },
+        { title: 'Hardware-Appropriate Cooling Service', description: 'Thermal materials are selected for the device and cooler design. Liquid metal is not a default upgrade and is considered only for compatible hardware with suitable precautions.' },
         { title: 'Advanced BIOS & VBIOS Recovery', description: 'Corrupted BIOS or VBIOS firmware from a failed update or power interruption can often be reflashed directly, avoiding a full board or card replacement.' },
         { title: 'Free Pickup & Delivery, Kuwait-Wide', description: 'We collect and return full towers, gaming desktops, and other large systems anywhere in Kuwait at no extra cost.' },
         { title: 'No Fix, No Fee', description: 'If we cannot repair it after diagnosis, you do not pay — not even for the diagnostic.' },
@@ -2395,156 +2388,109 @@ export const rawGraphData: RawGraphData = {
       ],
 
       commonIssues: [
-        { 
-          id: 'vrm-thermal-throttling', 
-          title: 'Severe FPS Drops & Thermal Throttling', 
-          severity: 'high', 
-          description: 'Your frame rate tanks mid-session even though nothing in your setup changed — the system is protecting itself from heat by cutting clock speeds. Kuwait\'s ambient heat causes factory thermal paste to "pump out" or dry entirely, trapping heat on the CPU/GPU die and forcing the system to aggressively drop clock speeds. We perform deep chemical extraction and liquid metal upgrades to restore sustained boost clocks.' 
-        },
-        { 
-          id: 'gpu-artifacting', 
-          title: 'Screen Artifacting or Black Screens Under Load', 
-          severity: 'critical', 
-          description: 'Colored blocks, flickering textures, or a black screen show up specifically during demanding games, then clear up when you stop. Often misdiagnosed as a "dead GPU." Artifacting under heavy load — including on RTX and RX cards — is can have several causes, including GPU or VRAM faults, thermal instability, power delivery or board-level connection problems. We test the card and system before recommending component repair or replacement.' 
-        },
-        { 
-          id: 'aio-pump-failure', 
-          title: 'AIO Water Cooler Pump Failure & Micro-Leaks', 
-          severity: 'high', 
-          description: 'Your CPU temperature spikes to dangerous levels the moment you boot, or you notice a rattling or gurgling sound from the cooler. Caused by coolant degradation, micro-blockages in the copper cold plate, or pump motor burnout. We service custom loops, clear blockages, and replace failing AIO units.' 
-        },
-        { 
-          id: 'power-stage-short', 
-          title: 'Motherboard VRM / Power Stage Failure', 
-          severity: 'critical', 
-          description: 'The PC shuts off suddenly mid-game and won\'t reboot for a while, sometimes with a faint burning smell. High-draw components like RTX 4090/5090-class cards or Ryzen/i9 processors can blow motherboard power stages. We micro-solder replacement MOSFETs to save the board.' 
-        },
         {
-          id: 'cpu-overheating',
-          title: 'CPU Overheating Independent of GPU Load',
+          id: 'fps-thermal-throttling',
+          title: 'FPS Drops After a Gaming Session Starts',
           severity: 'high',
-          description: 'CPU temperatures climb well above normal even in light games. The likely causes are degraded thermal paste, a failing cooler pump, or poor case airflow starving the CPU cooler specifically — we identify the exact bottleneck and restore the cooling path.'
+          description: 'Frame rate falls after sustained play or the fans become unusually loud. Dust, restricted airflow, fan response, thermal-interface condition, driver behaviour and power limits can all contribute. Kuwait’s ambient heat can increase cooling demand, but it does not by itself prove that thermal paste has failed. We check temperatures, clocks and airflow before recommending service.'
         },
         {
-          id: 'random-shutdown-psu',
-          title: 'Random Shutdowns Under Load (PSU Instability)',
+          id: 'gpu-artifacting',
+          title: 'GPU Artifacts, Flicker or Black Screens Under Load',
           severity: 'critical',
-          description: 'Instant power-off during demanding scenes, never at idle. Often a power supply that can no longer deliver clean, stable power at Kuwait\'s higher ambient temperatures — we load-test the PSU under real gaming conditions, not just at idle.'
+          description: 'Colored blocks, flickering textures, driver resets or a black screen can involve the GPU, VRAM, power delivery, thermals, drivers or a display connection. We assess the card and the wider system before deciding whether component-level repair or replacement is appropriate.'
+        },
+        {
+          id: 'random-shutdown',
+          title: 'Gaming PC Shuts Down or Restarts During a Game',
+          severity: 'critical',
+          description: 'A sudden shutdown can come from thermal protection, PSU overload or instability, a cable or connector issue, or motherboard power delivery. If there is a burning smell, switch off and disconnect power safely and do not keep retrying. We check the power path before recommending board work.'
         },
         {
           id: 'no-display-boot',
-          title: 'No Display / Black Screen After Boot',
-          severity: 'critical',
-          description: 'Fans spin and lights come on, but nothing reaches the monitor. Common causes include a dislodged GPU, failed VRAM, a blown motherboard fuse, or a corrupted BIOS — we isolate which with boardview diagnostics before quoting.'
+          title: 'Fans Run but the Monitor Shows No Display',
+          severity: 'high',
+          description: 'A no-display startup can be caused by the monitor or cable, GPU seating, memory, firmware, power delivery or a failed component. Basic external checks come first; deeper testing is chosen from the system’s symptoms and diagnostic indicators.'
+        },
+        {
+          id: 'cpu-gpu-overheating',
+          title: 'CPU or GPU Temperatures Rise Too Quickly',
+          severity: 'high',
+          description: 'High temperatures may relate to dust, airflow, fan or pump response, cooler mounting, thermal-interface condition or workload. We compare readings against the specific hardware and workload instead of promising a universal temperature result or applying liquid metal by default.'
+        },
+        {
+          id: 'aio-custom-loop',
+          title: 'AIO or Custom Water-Cooling Problems',
+          severity: 'high',
+          description: 'Unexpected temperature spikes, pump noise or signs of leakage need careful inspection. The cause may be a pump, airflow, mounting, blockage or another cooling fault. If a leak is suspected, stop using the PC and disconnect power safely; the appropriate repair or replacement is decided after inspection.'
         },
         {
           id: 'driver-crash-tdr',
-          title: 'Driver Crashes & TDR (Timeout Detection Recovery) Errors',
+          title: 'Game Crashes or Display Driver Resets',
           severity: 'medium',
-          description: 'The screen goes black and recovers with a "display driver stopped responding" message. It can look like a software issue, but recurring TDR under load specifically often points to a genuine hardware fault we can isolate with sustained stress testing.'
+          description: 'A driver timeout or crash can be software-related or reflect unstable memory, temperatures or power delivery. We consider logs, reproducibility and hardware measurements before concluding that a GPU component has failed.'
         },
         {
-          id: 'coil-whine',
-          title: 'Coil Whine Diagnosis',
-          severity: 'low',
-          description: 'A high-pitched whine that changes with FPS can be a normal (if annoying) characteristic of power delivery, or a sign of failing VRM components. We load-test to tell the difference before recommending any repair.'
-        },
-        {
-          id: 'rgb-fan-controller',
-          title: 'RGB & Fan Controller Failures',
-          severity: 'low',
-          description: 'Lighting or fan curves stop responding to software control, sometimes with fans stuck at full speed. Usually a failed controller hub or a firmware fault we can reset, reflash, or replace.'
-        },
-        {
-          id: 'custom-loop-maintenance',
-          title: 'Custom Loop & Water Cooler Maintenance',
+          id: 'bios-overclock',
+          title: 'Failed BIOS Update or Unstable Overclock',
           severity: 'medium',
-          description: 'Temperatures slowly rise over time even though usage hasn\'t changed, usually from mineral buildup or biological growth restricting coolant flow. We flush, clean, and refill loops with distilled, biocide-treated coolant.'
-        },
-        {
-          id: 'bios-corruption',
-          title: 'BIOS Corruption / Failed Firmware Update',
-          severity: 'critical',
-          description: 'The system fails to POST after a bad BIOS update or power interruption, with no display and no diagnostic beep pattern. A simple CMOS reset may not be enough — we reflash the BIOS chip directly using an external programmer.'
-        },
-        {
-          id: 'overclock-instability',
-          title: 'Overclock Instability',
-          severity: 'medium',
-          description: 'Crashes or blue screens happen only after enabling an overclock or XMP/EXPO profile. The issue may be unstable settings, insufficient cooling, or weak silicon — we validate stability under real load and identify the actual cause.'
-        },
-        {
-          id: 'ssd-thermal-throttle',
-          title: 'SSD/NVMe Overheating & Throttling',
-          severity: 'low',
-          description: 'Load times drop or games stutter during texture streaming, which can trace back to an NVMe drive throttling from heat — especially common in cramped custom builds without a heatsink over the drive.'
+          description: 'A failed firmware update may prevent startup, while unstable overclock or memory settings can cause crashes. Where appropriate, we check board recovery options, firmware compatibility and stable-default settings before considering direct BIOS-chip programming.'
         }
-      ], 
-
+      ],
       process: [
         { step: 1, title: 'Free Secure Pickup', description: 'We collect your gaming rig from your home or office anywhere in Kuwait, then tag and log it for secure, full chain-of-custody handling.' },
         { step: 2, title: 'Stress Test & Thermal Imaging', description: 'Your system is tested under real gaming benchmarks and synthetic load tests while we monitor CPU, GPU, VRM, and memory temperatures with thermal cameras to isolate the exact bottleneck.' },
         { step: 3, title: 'Precision Laboratory Repair', description: 'Repairs are completed in our ESD-compliant Hawalli lab using BGA micro-soldering, thermal service, firmware recovery, and other precision methods with genuine thermal compounds and controlled reflow.' },
-        { step: 4, title: 'Extended Verification & Return', description: 'We re-run FPS consistency checks, thermal equilibrium testing, and power delivery validation — commonly a 6-hour gaming stability test for thermal-related repairs — before returning the system to you.' }
+        { step: 4, title: 'Extended Verification & Return', description: 'After the approved work, we repeat the relevant startup, temperature, load or gaming tests for an appropriate period and check whether the original symptom recurs before arranging return.' }
       ],
 
       performanceOutcomes: {
-        disclaimer: 'The figures below are representative outcomes for these repair categories based on typical before/after results, not a specific customer\'s guaranteed result — every repair is quoted after its own diagnostic.',
+        disclaimer: 'These are the checks used to evaluate a repair, not published customer results or guaranteed temperature, FPS or runtime improvements. Actual findings depend on the model, fault, workload, room temperature and parts condition.',
         items: [
-          { metric: 'CPU Temperatures', outcome: 'Often drop from 95-98°C under sustained load to around 70-75°C after a full re-paste and cooler service.' },
-          { metric: 'GPU Hotspot Temperature', outcome: 'Hotspot-to-edge temperature delta can often be reduced by 15-25°C after a liquid metal replacement on supported models.' },
-          { metric: 'Sustained Gaming Sessions', outcome: 'Systems that previously throttled or shut down within 20-30 minutes often remain stable through 6+ hour sessions after repair.' },
-          { metric: 'Thermal Throttling', outcome: 'Eliminated in most cases where the root cause is degraded thermal material or blocked airflow rather than a failing component.' },
-          { metric: 'Fan & Pump Noise', outcome: 'Noticeably reduced once dust-clogged fans are cleaned and worn AIO pumps or bearings are replaced.' }
+          { metric: 'CPU and GPU Temperatures', outcome: 'Record readings under a comparable workload and check them against the hardware manufacturer’s guidance before and after cooling work where applicable.' },
+          { metric: 'GPU Hotspot and Core Readings', outcome: 'Compare hotspot behaviour with the specific graphics card and workload to decide whether cooler contact, airflow or another fault needs attention.' },
+          { metric: 'Gaming Stability', outcome: 'Repeat the workload that triggers the issue and check whether crashes, shutdowns, artifacts or stutter recur during the test period.' },
+          { metric: 'Clock Speeds and Throttling', outcome: 'Review temperatures, clocks, fan response and system logs together before concluding that a thermal or power-related limit has been resolved.' },
+          { metric: 'Fan and Pump Operation', outcome: 'Check fan and pump response and isolate abnormal noise before recommending cleaning, adjustment or replacement.' }
         ]
       },
-
       repairExamples: {
-        disclaimer: 'These are representative repair scenarios illustrating common fault categories we service, not records of a specific named customer.',
+        disclaimer: 'These are illustrative diagnostic scenarios, not records of named customers or guaranteed outcomes. The actual diagnosis, repairability and test result must be confirmed for each device.',
         items: [
           {
             id: 'gpu-vram-repair',
-            title: 'GPU: Failed VRAM Modules Under Load',
-            symptoms: 'Game crashes and driver TDR resets happen under heavy VRAM load — high-resolution textures or ray tracing — while lighter workloads seem fine.',
-            diagnosis: 'Load testing isolates the fault to memory modules that fail under sustained thermal stress, supported by thermal imaging showing a localized hotspot.',
-            repair: 'The affected VRAM modules were reworked via BGA micro-soldering and replaced with matched-spec components.',
-            outcome: 'The card passes extended stress testing with no artifacting or driver resets across multiple sessions.'
-          },
-          {
-            id: 'laptop-liquid-metal',
-            title: 'Gaming Laptop: Liquid Metal Degradation',
-            symptoms: 'CPU and GPU temperatures climb 15-20°C above the laptop\'s original benchmarks within a year, with loud fan ramp-up even under light use.',
-            diagnosis: 'The factory liquid metal interface has partially migrated away from the die ("pump-out"), a known failure mode in high-wattage laptop chips under repeated heat cycling.',
-            repair: 'Full disassembly, careful cleaning of the old liquid metal with proper containment, and reapplication with a conformal barrier to prevent recurrence.',
-            outcome: 'Temperatures return close to factory benchmark levels under sustained load.'
+            title: 'GPU Artifacts or Driver Resets Under Load',
+            symptoms: 'Artifacts, a black screen or repeated driver resets appear during demanding games but may not occur at idle.',
+            diagnosis: 'Check display connections, drivers, temperatures, power delivery and repeatability; inspect GPU and VRAM behaviour if evidence points to the card.',
+            repair: 'If a board-level fault is confirmed and repair is technically viable, quote the required component work. If the GPU die or board damage makes repair impractical, explain replacement options.',
+            outcome: 'Repeat the original workload after the approved work and record whether artifacts or resets recur; do not promise a result before testing.'
           },
           {
             id: 'motherboard-vrm-rebuild',
-            title: 'Custom Build: Motherboard VRM Failure',
-            symptoms: 'The system powers off abruptly under load and may not reboot for several minutes.',
-            diagnosis: 'Thermal imaging identifies an overheating VRM phase, and multimeter testing confirms a degraded MOSFET no longer regulating power cleanly to the CPU.',
-            repair: 'The failed MOSFET was replaced via micro-soldering and VRM heatsink contact was restored with fresh thermal pads.',
-            outcome: 'The system holds stable under multi-hour stress testing with normal VRM temperatures.'
-          },
-          {
-            id: 'custom-loop-blockage',
-            title: 'Custom Loop: Blocked Coolant Pathway',
-            symptoms: 'CPU temperatures rise gradually over months despite no change in usage, eventually reaching thermal throttling under load.',
-            diagnosis: 'Inspection reveals mineral buildup and biological growth restricting flow through the radiator and CPU block, common with non-distilled coolant over time.',
-            repair: 'Full loop flush, radiator and block cleaning, coolant replacement with a distilled, biocide-treated fluid, and a leak test before refill.',
-            outcome: 'Flow rate and CPU temperatures return to expected levels after service.'
+            title: 'Sudden Shutdown Under Gaming Load',
+            symptoms: 'The desktop powers off or restarts when the CPU and GPU are under sustained load.',
+            diagnosis: 'Check PSU capacity and behaviour, power cables, temperatures and motherboard power delivery to identify the likely failing layer.',
+            repair: 'Carry out the approved PSU, cooling or component-level motherboard work that the diagnosis supports; not every damaged board is economical to repair.',
+            outcome: 'Repeat suitable load and stability tests, then document any remaining fault and the test conditions before return.'
           },
           {
             id: 'bios-recovery',
-            title: 'Motherboard: Corrupted BIOS After Failed Update',
-            symptoms: 'The system fails to POST after an interrupted BIOS update and shows no display output or diagnostic beep pattern.',
-            diagnosis: 'The BIOS chip is confirmed corrupted through direct programmer readout rather than a simple CMOS reset issue.',
-            repair: 'The BIOS chip was reflashed directly using an external programmer with the correct firmware version for the board revision.',
-            outcome: 'The system POSTs normally again and retains BIOS settings without further instability.'
+            title: 'No POST After a Failed BIOS Update',
+            symptoms: 'The system no longer completes startup after an interrupted firmware update.',
+            diagnosis: 'Check power and board indicators first, then determine whether settings recovery, supported recovery features or firmware-chip programming is appropriate.',
+            repair: 'If chip programming is required and supported, use firmware matching the exact motherboard model and revision.',
+            outcome: 'Verify startup and basic system stability after recovery; firmware recovery is not possible for every type of board damage.'
+          },
+          {
+            id: 'custom-loop-blockage',
+            title: 'Unusual Temperatures or Noise From Liquid Cooling',
+            symptoms: 'Temperatures change unexpectedly, a pump makes unusual noise or the system shows signs of a cooling fault.',
+            diagnosis: 'Inspect fans, pump operation, mounting, radiator airflow and visible signs of leakage or blockage.',
+            repair: 'Recommend a safe cleaning, service or replacement path based on the cooler type and actual condition; do not power on a system with suspected liquid leakage.',
+            outcome: 'Check cooling behaviour and inspect for leaks after any approved service, then repeat a suitable load test.'
           }
         ]
       },
-
       inspectionChecklist: [
         'CPU core & package temperatures under load',
         'GPU core and hotspot temperatures',
@@ -2566,66 +2512,45 @@ export const rawGraphData: RawGraphData = {
       faqs: [
         {
           id: 'faq-gpu-repair',
-          title: 'Can you repair a GPU that another shop or the manufacturer declared beyond repair?',
-          answer: 'In many cases, yes. "Beyond repair" from a shop that only knows how to swap whole cards usually means beyond THEIR repair — our Hawalli lab repairs individual components, including blown fuses, shorted capacitors, damaged VRMs, and failing VRAM, at a fraction of replacement cost. We only turn a card away after our own diagnostic confirms the damage is genuinely uneconomical to fix.'
+          title: 'Can you repair a GPU instead of replacing the whole card?',
+          answer: 'Sometimes. We assess the fault, board condition, GPU die, parts availability and likely repair cost. If repair is technically unsuitable or uneconomical, we explain that rather than promising a component-level fix.'
         },
         {
           id: 'faq-vram-replace',
-          title: 'Can VRAM actually be replaced, or does the whole GPU need to go?',
-          answer: 'VRAM can often be replaced via BGA micro-soldering when the board and GPU die itself are still undamaged. We confirm this with thermal imaging and load testing before quoting, so you know whether a VRAM-level repair is realistic for your specific card.'
+          title: 'Can damaged VRAM be replaced?',
+          answer: 'Selected VRAM faults can be repairable when the board and GPU are otherwise suitable. Testing is needed to distinguish memory faults from power, thermal, driver or other causes before a quote is provided.'
         },
         {
           id: 'faq-repair-vs-replace',
-          title: 'Should I repair my graphics card or just replace it?',
-          answer: 'It depends on the fault, the card\'s age and value, and repair cost. For most VRM, VRAM, and thermal-related faults on mid-to-high-end cards, component-level repair costs a fraction of a replacement and restores original performance. We diagnose first and give you both the repair quote and an honest opinion on whether replacement makes more financial sense.'
-        },
-        {
-          id: 'faq-liquid-metal',
-          title: 'Is Liquid Metal safe for my gaming laptop?',
-          answer: 'When applied by experienced technicians on supported hardware, yes. We use conformal barriers to isolate the liquid metal strictly to the CPU/GPU die, preventing electrical shorts while typically dropping peak temperatures by 15°C or more compared to standard paste.'
-        },
-        {
-          id: 'faq-liquid-metal-motherboard',
-          title: 'Can liquid metal damage a motherboard if it leaks or migrates?',
-          answer: 'It can, if applied incorrectly or on a device not suited for it — liquid metal is electrically conductive and will short exposed components if it spreads beyond the die. This is exactly why controlled application, conformal coating, and proper inspection matter, and why we don\'t recommend DIY liquid metal application on tightly packed laptop boards.'
+          title: 'How do I decide whether to repair or replace my graphics card?',
+          answer: 'The decision depends on the specific fault, card age and value, parts availability, warranty status and the full quote. KCROC explains the diagnostic findings and cost before you approve work.'
         },
         {
           id: 'faq-custom-loop',
-          title: 'Do you repair custom water cooling loops?',
-          answer: 'Yes. We service and maintain custom loops and AIO systems — flushing blocked radiators and blocks, replacing worn pump motors, fixing leaks, and refilling with distilled, biocide-treated coolant to prevent the mineral and biological buildup that causes gradual temperature creep.'
+          title: 'Do you inspect AIO and custom liquid-cooling systems?',
+          answer: 'Yes. We can inspect pump and fan behaviour, mounting, radiator airflow and visible signs of leakage or blockage. The next step may be maintenance or replacement depending on the cooler’s condition; suspected leaks should not be powered on.'
         },
         {
           id: 'faq-overheat-damage',
-          title: 'Can sustained overheating cause permanent GPU damage?',
-          answer: 'Yes, over time. Prolonged overheating accelerates solder joint fatigue and can degrade VRAM and VRM components permanently, which is why we recommend addressing thermal throttling early rather than treating it as a background annoyance — the earlier a system is inspected, the better the chance of a successful repair.'
-        },
-        {
-          id: 'faq-gaming-laptops-repair',
-          title: 'Do you repair gaming laptops, or only desktop PCs?',
-          answer: 'Both. Gaming laptop repair — including ASUS ROG, MSI, Alienware, Legion, and Razer models — is one of our core services, alongside custom desktop builds, pre-built towers, and standalone GPU repair.'
+          title: 'Does overheating always mean the thermal paste has failed?',
+          answer: 'No. Dust, restricted airflow, a fan or pump issue, cooler mounting, workload and power settings can also affect temperatures. We check the relevant readings and hardware before recommending a thermal-interface service.'
         },
         {
           id: 'faq-service-frequency',
-          title: 'How often should a gaming PC be serviced in Kuwait\'s climate?',
-          answer: 'It depends on how dusty the environment is and how hard the system runs, but as a general guideline, a thermal service (dust removal, fresh thermal paste or liquid metal, fan/pump inspection) every 12-18 months is reasonable in Kuwait\'s heat and dust — noticeably more often than the 2-3 years typically recommended in cooler climates.'
+          title: 'How often should I clean a gaming PC in Kuwait?',
+          answer: 'There is no single interval for every home or PC. Check case filters and airflow regularly, and let dust levels, operating environment and symptoms guide deeper maintenance. Persistent high temperatures, new fan noise or shutdowns warrant diagnosis rather than a fixed calendar-based repaste.'
         },
         {
           id: 'faq-bios-corruption',
-          title: 'Do you fix BIOS corruption or a failed firmware update?',
-          answer: 'Yes. Where a simple CMOS reset doesn\'t recover the board, we reflash the BIOS chip directly using an external programmer, which resolves the large majority of failed-update and corruption cases without replacing the motherboard.'
+          title: 'Can you recover a PC after a failed BIOS update?',
+          answer: 'Recovery depends on the motherboard model, available recovery features and the nature of the failure. We check the supported options first; direct programming is considered only when the board and firmware make it appropriate.'
         },
         {
           id: 'faq-overclock-recovery',
-          title: 'Can you recover a system that\'s unstable after overclocking?',
-          answer: 'Yes. We test whether the instability is caused by unstable settings, insufficient cooling, memory tuning, or hardware weakness, then reset to stable defaults and run stability testing under real load to confirm the fix.'
-        },
-        {
-          id: 'faq-data-safety-gaming',
-          title: 'Will my saved games, settings, and files stay safe during repair?',
-          answer: 'For GPU, motherboard, and cooling repairs, your storage drive is untouched — we work on the hardware, not your data. We still recommend backing up important files whenever possible before any repair, and for laptop repairs specifically, you\'re welcome to remove your drive before handing the device over for extra peace of mind.'
+          title: 'What should I do if a PC crashes after overclocking?',
+          answer: 'Return settings to a known stable default if you can do so safely, and stop using settings that cause repeated crashes. Memory tuning, power limits, temperatures or hardware faults may be involved, so diagnosis should be based on reproducible tests.'
         }
       ],
-
       contentImages: [
         { src: IMAGES.gaming.rgbLighting.src, alt: IMAGES.gaming.rgbLighting.alt, width: IMAGES.gaming.rgbLighting.width, height: IMAGES.gaming.rgbLighting.height, placement: 'commonIssues', caption: 'A high-performance custom gaming PC representative of the systems we diagnose and repair.' },
         { src: IMAGES.gaming.diagnostics.src, alt: IMAGES.gaming.diagnostics.alt, width: IMAGES.gaming.diagnostics.width, height: IMAGES.gaming.diagnostics.height, placement: 'coreFeatures', caption: 'Gaming PC teardown and diagnostics at the workbench to isolate hardware faults.' },
@@ -2637,11 +2562,11 @@ export const rawGraphData: RawGraphData = {
         noFixNoFee: true 
       }, 
       seo: { 
-        title: 'Gaming PC Repair Kuwait | GPU, FPS & Overheating Fix | KCROC', 
-        description: 'Gaming PC repair in Kuwait for GPU artifacts, no display, FPS drops, overheating, crashes and power faults. Diagnostic-first GPU, PSU and motherboard testing, free Kuwait-wide pickup, quote before repair and 30-day warranty.', 
+        title: 'Gaming PC Repair Kuwait | GPU & FPS Fix | KCROC', 
+        description: 'Gaming PC repair in Kuwait for GPU faults, black screens, FPS drops and overheating. Diagnosis before repair, free Kuwait-wide pickup and 30-day warranty.', 
         canonicalUrl: 'https://www.computerrepairkuwait.com/gaming-pc-repair-kuwait', locale: 'en_KW', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/gaming-pc-repair-kuwait', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/gaming-pc-repair-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/gaming-pc-repair-kuwait' }, 
         ogType: 'website', 
-        schemaTypes: ['Service', 'FAQPage'], lastModified: '2026-10-25T00:00:00+03:00' 
+        schemaTypes: ['Service', 'FAQPage'], lastModified: '2026-10-28T00:00:00+03:00' 
       },
       navigationPriority: 80, 
       isFeatured: true, 
