@@ -1380,7 +1380,15 @@ export const rawGraphData: RawGraphData = {
       shortDescription: 'Gaming laptop repair in Kuwait for overheating, FPS drops, black screens, power and charging faults.',
       description: 'KCROC diagnoses and repairs gaming laptops in Kuwait. We start with a free diagnosis at our Hawalli workshop, trace the fault across cooling, power delivery, display, memory, firmware and the motherboard, and send you a written quote before any paid work. We work on ASUS ROG/TUF, Lenovo Legion, MSI, Acer Predator, HP OMEN, Dell G Series/Alienware and Razer Blade models. Free pickup and delivery across Kuwait, and every repair is tested under load before it comes back to you.',
       idealCustomer: 'Gamers, streamers, students and professionals whose gaming laptop runs hot, loses FPS, shuts down, shows no display, fails to charge or crashes.',
-      deviceTypes: ['ASUS ROG / TUF', 'Lenovo Legion', 'MSI Gaming', 'Acer Predator / Nitro', 'HP OMEN / Victus', 'Dell G Series / Alienware', 'Razer Blade'],
+      deviceTypes: [
+        'ASUS ROG (Strix, Zephyrus, Flow) and TUF Gaming laptops',
+        'Lenovo Legion and LOQ laptops',
+        'MSI Raider, Stealth, Vector, Katana and Thin laptops',
+        'Acer Predator (Helios, Triton) and Nitro laptops',
+        'HP OMEN and Victus laptops',
+        'Dell G Series and Alienware laptops',
+        'Razer Blade laptops'
+      ],
       repairLevel: 'advanced', estimatedTurnaround: 'Usually 24–48 hours',
       coreFeatures: [
         'No-power and no-display diagnosis',
@@ -1427,7 +1435,10 @@ export const rawGraphData: RawGraphData = {
         { id: 'gaming-laptop-faq-7', title: 'Should I just clean and repaste my gaming laptop?', answer: 'If the diagnosis points to dust or a dried thermal interface, cleaning and thermal service may be all that is needed, and we offer that as a separate gaming laptop cleaning service. If temperatures stay high or the laptop shuts down, we check for fan, power or board faults first.' },
         { id: 'gaming-laptop-faq-8', title: 'Do you repair gaming-laptop screens, hinges and keyboards?', answer: 'Yes. We assess hinge, keyboard and display faults and check for related cable or board damage before quoting. Parts availability depends on the exact model.' },
         { id: 'gaming-laptop-faq-9', title: 'What if my gaming laptop cannot be repaired?', answer: 'We explain the findings and the alternatives before paid work begins. If we cannot repair it, you do not pay, under KCROC’s stated service terms.' },
-        { id: 'gaming-laptop-faq-10', title: 'Is there a warranty, and what happens to my data?', answer: 'Completed repairs are covered for 30 days on parts and labour under KCROC’s stated terms. Hardware repairs do not normally involve your storage drive, but we recommend backing up important files before any service.' }
+        { id: 'gaming-laptop-faq-10', title: 'Is there a warranty, and what happens to my data?', answer: 'Completed repairs are covered for 30 days on parts and labour under KCROC’s stated terms. Hardware repairs do not normally involve your storage drive, but we recommend backing up important files before any service.' },
+        { id: 'gaming-laptop-faq-11', title: 'Do you repair ASUS ROG, Lenovo Legion, MSI and Acer Predator laptops?', answer: 'Yes. We repair ASUS ROG and TUF, Lenovo Legion and LOQ, MSI, Acer Predator and Nitro, HP OMEN and Victus, Dell G Series and Alienware, and Razer Blade laptops. Send the exact model with your symptom on WhatsApp and we will tell you what we can assess before you book pickup.' },
+        { id: 'gaming-laptop-faq-12', title: 'Why does my gaming laptop get so hot in Kuwait?', answer: 'A gaming laptop already runs near its thermal limit under load, and Kuwait’s ambient heat leaves less margin for the cooling system. Dust, a worn fan or a dried thermal interface make it worse. We measure temperatures and clocks under load to find out whether cleaning is enough or a fault needs repair.' },
+        { id: 'gaming-laptop-faq-13', title: 'Do you repair gaming laptops for customers in Salmiya, Farwaniya, Jahra and other areas?', answer: 'Yes. Free pickup and delivery cover all Kuwait governorates. Every repair is done at our Hawalli workshop, so you do not need to travel; the service-area pages are pickup areas, not separate shops.' }
       ],
       symptomLinks: [
         { label: 'Gaming laptop overheating', path: '/laptop-overheating-kuwait', description: 'Loud fans, high temperatures or performance that drops after a few minutes of play.' },
@@ -1470,6 +1481,7 @@ export const rawGraphData: RawGraphData = {
       relatedLocationIds: ['loc-hawalli', 'loc-salmiya', 'loc-kuwait-city', 'loc-farwaniya', 'loc-jahra', 'loc-ahmadi', 'loc-fahaheel'],
       relatedResourcePaths: [
         { label: 'Why Is My Laptop Running Hot?', path: '/guides/why-is-my-laptop-so-hot' },
+        { label: 'Safe CPU and GPU Temperatures in Kuwait', path: '/blog/laptop-temperatures-kuwait-safe-cpu-gpu-temperatures' },
         { label: 'BIOS & UEFI Recovery Guide', path: '/guides/bios-uefi-recovery-kuwait' }
       ],
       contentImages: [
@@ -2549,7 +2561,9 @@ export const rawGraphData: RawGraphData = {
           id: 'faq-gaming-warranty-data',
           title: 'Is there a warranty, and what happens to my data?',
           answer: 'Completed repairs carry a 30-day warranty under KCROC’s stated terms. GPU, motherboard and cooling work does not normally involve your storage drive, but we recommend backing up important files before any service.'
-        }
+        },
+        { id: 'faq-gaming-rtx-repair', title: 'Do you repair RTX and Radeon graphics cards in Kuwait?', answer: 'We diagnose RTX 30-, 40- and 50-series and Radeon RX cards for artifacts, black screens, no display, overheating and power faults. Where the fault is confined to a power stage, connector or similar component and the card is otherwise sound, we quote component-level repair. Some cards are not repairable, and we tell you plainly before any paid work.' },
+        { id: 'faq-gaming-burnt-connector', title: 'My RTX 4090 or 5090 power connector is burnt or melted. What should I do?', answer: 'Stop using the card, switch the PC off and disconnect power; do not keep retrying. A damaged 12VHPWR or 12V-2x6 connector can involve the cable, the PSU side and the card’s own power input, so we inspect all three. Whether repair makes sense depends on how far the damage extends, and we explain that before any paid work.' }
       ],
             contentImages: [
         { src: IMAGES.gaming.rgbLighting.src, alt: IMAGES.gaming.rgbLighting.alt, width: IMAGES.gaming.rgbLighting.width, height: IMAGES.gaming.rgbLighting.height, placement: 'commonIssues', caption: 'A high-performance custom gaming PC representative of the systems we diagnose and repair.' },
