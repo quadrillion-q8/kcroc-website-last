@@ -582,6 +582,33 @@ add('Arabic charging troubleshooting page has static FAQ answers, safe checks an
   && arabicChargingGuide.includes('to="/ar/laptop-charging-port-repair-kuwait"')
   && arabicChargingGuide.includes("لا تدخل أدوات معدنية"));
 
+add('Motherboard service snippet targets laptop, desktop and MacBook logic-board intent',
+  graph.includes("title: 'Laptop Motherboard Repair Kuwait | MacBook Logic Board | KCROC'") &&
+  graph.includes("Laptop, desktop and MacBook logic board repair in Kuwait. Selected component repairs start from 25 KWD") &&
+  graph.includes('MacBook logic board repair Kuwait'));
+
+add('Motherboard page uses a focused visible H1 without changing other service headings',
+  serviceTemplate.includes("isMotherboardService ? 'Laptop & Desktop Motherboard Repair in Kuwait' : entity.title") &&
+  serviceTemplate.includes("const isMotherboardService = entity.id === 'srv-motherboard';'));
+
+add('Motherboard devices section names laptops, desktop PCs and MacBook logic boards',
+  graph.includes("'MacBook Logic Boards (Intel & Apple Silicon)'") &&
+  serviceTemplate.includes("Devices We Cover: Laptop, Desktop PC & MacBook Logic Boards"));
+
+add('Motherboard service makes the real Hawalli workshop address visible',
+  graph.includes('Ibn Khaldoun Street, Al Mullah Complex, Basement Shop 19') &&
+  graph.includes('Free pickup and delivery are available across Kuwait.'));
+
+add('Motherboard internal links use descriptive laptop and MacBook logic-board anchor text',
+  computerRepair.includes("label: 'Laptop & Computer Motherboard Repair Kuwait'") &&
+  hawalli.includes('Laptop motherboard & MacBook logic board repair') &&
+  serviceTemplate.includes("item.id === 'srv-motherboard' ? 'Laptop Motherboard & MacBook Logic Board Repair' : item.title"));
+
+add('Motherboard FAQs remain in native disclosure elements and continue to render answers',
+  serviceTemplate.includes('<details') &&
+  serviceTemplate.includes('{faq.answer}') &&
+  graph.includes("schemaTypes: ['Service', 'FAQPage']"));
+
 for (const check of checks) console.log(`${check.pass ? '✅' : '❌'} ${check.name}${!check.pass && check.detail ? ` — ${check.detail}` : ''}`);
 const failed = checks.filter((check) => !check.pass);
 if (failed.length) process.exit(1);

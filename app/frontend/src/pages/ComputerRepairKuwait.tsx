@@ -47,11 +47,11 @@ const SERVICES = [
     description: 'Troubleshooting for GPU, temperature, crashes, no-display faults and unstable gaming performance.',
   },
   {
-    label: 'Motherboard Repair Kuwait',
+    label: 'Laptop & Computer Motherboard Repair Kuwait',
     path: '/motherboard-repair-kuwait',
     icon: Wrench,
     image: IMAGES.services.motherboardRepair,
-    description: 'Component-level diagnosis of power, charging and board faults when repair is suitable.',
+    description: 'Component-level laptop, desktop PC and MacBook logic-board diagnosis for power, charging and board faults when repair is suitable.',
   },
   {
     label: 'MacBook Repair Kuwait',
