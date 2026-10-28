@@ -2855,14 +2855,14 @@ export const rawGraphData: RawGraphData = {
       slug: 'motherboard-repair-kuwait', 
       entityType: 'Service', 
       isActive: true, 
-      title: 'Motherboard Repair Kuwait', primaryKeyword: "motherboard repair Kuwait", secondaryKeywords: ["laptop motherboard repair Kuwait","component-level motherboard repair","motherboard chip-level repair Kuwait"], 
+      title: 'Motherboard Repair Kuwait', primaryKeyword: "motherboard repair Kuwait", secondaryKeywords: ["laptop motherboard repair Kuwait","computer motherboard repair Kuwait","desktop motherboard repair Kuwait","MacBook logic board repair Kuwait","component-level motherboard repair","motherboard chip-level repair Kuwait"], 
       iconKey: 'cpu', 
-      shortDescription: 'Chip-level power rail tracing, MOSFET replacement, and BGA rework — for boards other shops call "beyond repair."',
+      shortDescription: 'Laptop, desktop and MacBook logic board repair: power-rail tracing, MOSFET replacement and BGA rework for boards other shops call "beyond repair."',
       description: 'A laptop that\'s completely dead, one that shuts off randomly during normal use, or one a retail shop already quoted a "full motherboard replacement" for — these are the cases where component-level repair actually matters most, because a motherboard replacement usually costs more than the laptop is worth once you\'re past the second or third year of ownership. Most repair counters carry one tool for a dead board: swap the whole thing. We carry a multimeter, a thermal camera, and boardview schematics, and use them to trace the fault to the single component that actually failed — a shorted MOSFET, a blown fuse, a degraded capacitor, a corroded trace from an old spill — and repair that one point instead. The rest of the board, and anything soldered to it, stays exactly as it was.',
       idealCustomer: 'Users with completely dead or liquid-damaged devices who have been told by standard retail shops that their laptop is "unfixable" and want to save up to 80% versus a full board replacement.',
       deviceTypes: [
         'Windows Laptop Motherboards (Dell, HP, Lenovo, ASUS, Acer, MSI)',
-        'MacBook Motherboards (Intel & Apple Silicon)',
+        'MacBook Logic Boards (Intel & Apple Silicon)',
         'Gaming Laptop Motherboards (high-draw VRM designs)',
         'Desktop Motherboards (ATX / Micro-ATX)'
       ],
@@ -2895,7 +2895,7 @@ export const rawGraphData: RawGraphData = {
         { title: 'Component-Level Repair, Not Board Swap', description: 'A shorted MOSFET or a blown fuse is a single-component fix. Most shops treat it as a reason to replace the entire board — we treat it as what it is.' },
         { title: 'BGA Rework Capability', description: 'Chip-level faults — including GPU, chipset, and memory controller issues — are reworked directly under magnification with controlled reflow, rather than declared unfixable.' },
         { title: 'Data Stays on the Original Board', description: 'Because we repair rather than replace, anything soldered to the board — storage, in particular on Apple Silicon and many modern ultrabooks — is never disturbed.' },
-        { title: 'ESD-Safe Laboratory', description: 'All board-level work happens on grounded, static-controlled workstations in our Hawalli lab, where a single uncontrolled static discharge can be the difference between a repairable board and a dead one.' },
+        { title: 'ESD-Safe Laboratory', description: 'All board-level work happens on grounded, static-controlled workstations at our Hawalli lab: Ibn Khaldoun Street, Al Mullah Complex, Basement Shop 19. Free pickup and delivery are available across Kuwait.' },
         { title: 'Kuwait Climate Expertise', description: 'Sustained heat accelerates capacitor degradation and solder joint fatigue well beyond what manufacturer specs assume — we see the resulting failure patterns daily and know what to check for.' },
         { title: 'Free Pickup & Delivery, Kuwait-Wide', description: 'Full laptops or desktop towers collected from and returned to your home or office anywhere in Kuwait, at no extra cost.' },
         { title: 'No Fix, No Fee', description: 'If the board is genuinely beyond economical repair after diagnosis, you pay nothing — not even for the diagnostic.' }
@@ -3104,8 +3104,8 @@ export const rawGraphData: RawGraphData = {
         }
       ],
       seo: { 
-        title: 'Motherboard Repair Kuwait | Chip-Level MOSFET Fix | KCROC', 
-        description: 'Chip-level motherboard repair in Kuwait for no-power, charging and short-circuit faults. Power-rail tracing, MOSFET replacement and board repair with free pickup and 30-day warranty.', 
+        title: 'Laptop Motherboard Repair Kuwait | MacBook Logic Board | KCROC', 
+        description: 'Laptop, desktop and MacBook logic board repair in Kuwait. Selected component repairs start from 25 KWD, with free diagnosis, pickup and delivery, and a 30-day warranty.', 
         canonicalUrl: 'https://www.computerrepairkuwait.com/motherboard-repair-kuwait', locale: 'en_KW', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/motherboard-repair-kuwait', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/motherboard-repair-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/motherboard-repair-kuwait' }, 
         ogType: 'article', 
         schemaTypes: ['Service', 'FAQPage'] 
