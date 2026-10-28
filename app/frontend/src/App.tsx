@@ -103,8 +103,6 @@ export const routes: RouteObject[] = [
           // Keep explicit client fallbacks alongside the server-side 301s in vercel.json.
           { path: 'computer-repair-in-farwaniya', element: <Navigate to="/location/farwaniya" replace /> },
           { path: 'laptop-repair-in-hawalli', element: <Navigate to="/location/hawalli" replace /> },
-          { path: 'computer-repair-:slug', lazy: async () => ({ Component: (await import('./pages/LocationTemplate')).default }) },
-          { path: 'laptop-repair-:slug', lazy: async () => ({ Component: (await import('./pages/LocationTemplate')).default }) },
           { path: 'location/hawalli', lazy: async () => ({ Component: (await import('./pages/HawalliLocationPage')).default }) },
           { path: 'location/:slug', lazy: async () => ({ Component: (await import('./pages/LocationDeepTemplate')).default }) },
           { path: 'pillar/:slug', lazy: async () => ({ Component: (await import('./pages/PillarTemplate')).default }) },
