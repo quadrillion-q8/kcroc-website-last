@@ -140,7 +140,6 @@ const STANDALONE_REPAIR_PATHS: Record<string, { title: string; intro: string; li
       { href: '/gaming-pc-repair-kuwait', label: 'Gaming PC Repair Kuwait', description: 'Main repair service for power, motherboard, GPU, cooling and stability faults.' },
       { href: '/guides/gaming-pc-black-screen-no-display-kuwait', label: 'Gaming PC Black Screen / No Display', description: 'Use this when the PC powers on but the monitor remains blank.' },
       { href: '/guides/gaming-pc-random-shutdown-kuwait', label: 'Gaming PC Random Shutdown', description: 'For instant power loss during gaming or sustained load.' },
-      { href: '/guides/gaming-pc-bios-failed-update-kuwait', label: 'Gaming PC BIOS Recovery', description: 'For systems that stopped reaching POST after a firmware update.' },
     ],
   },
   'gaming-pc-black-screen-no-display-kuwait': {
@@ -149,7 +148,6 @@ const STANDALONE_REPAIR_PATHS: Record<string, { title: string; intro: string; li
     links: [
       { href: '/gaming-pc-repair-kuwait', label: 'Gaming PC Repair Kuwait', description: 'For GPU, VRAM, BIOS/VBIOS, motherboard and stability diagnosis.' },
       { href: '/guides/gaming-gpu-artifacts-repair-kuwait', label: 'GPU Artifacting & Black Screen', description: 'For visual corruption, flickering or black screens that appear under GPU load.' },
-      { href: '/guides/gaming-pc-bios-failed-update-kuwait', label: 'Gaming PC BIOS Recovery', description: 'For no-POST or no-display symptoms that started after a firmware update.' },
     ],
   },
   'gaming-gpu-artifacts-repair-kuwait': {
@@ -170,15 +168,7 @@ const STANDALONE_REPAIR_PATHS: Record<string, { title: string; intro: string; li
       { href: '/guides/gaming-pc-not-turning-on-kuwait', label: 'Gaming PC Won’t Turn On', description: 'For systems that became completely dead or intermittently refuse to start.' },
     ],
   },
-  'gaming-pc-bios-failed-update-kuwait': {
-    title: 'Gaming PC BIOS failure: related repair paths',
-    intro: 'Firmware failures can look like GPU or no-display faults. Use the sequence of events and POST behavior to separate the branches.',
-    links: [
-      { href: '/gaming-pc-repair-kuwait', label: 'Gaming PC Repair Kuwait', description: 'For BIOS/VBIOS recovery and board-level gaming hardware diagnosis.' },
-      { href: '/guides/bios-uefi-recovery-kuwait', label: 'BIOS & UEFI Recovery Guide', description: 'Broader firmware troubleshooting before specialist repair.' },
-      { href: '/guides/gaming-pc-black-screen-no-display-kuwait', label: 'Gaming PC Black Screen / No Display', description: 'For systems that power on but never produce a usable video signal.' },
-    ],
-  },
+
   'windows-11-wifi-keeps-disconnecting': {
     title: 'Windows 11 Wi-Fi disconnects: related troubleshooting and repair paths',
     intro: 'Use the network guides together to separate Wi-Fi-link failures from internet-access failures, then move to hardware diagnosis when the symptom follows the laptop.',
@@ -325,8 +315,6 @@ const INTERNAL_LINK_LABELS: Record<string, string> = {
     'Windows 11 100% Disk Usage: Causes & Solutions',
   'https://www.computerrepairkuwait.com/guides/bios-uefi-recovery-kuwait':
     'BIOS & UEFI Recovery Guide',
-  'https://www.computerrepairkuwait.com/guides/gaming-pc-bios-failed-update-kuwait':
-    'Gaming PC BIOS Failed Update Guide',
   'https://www.computerrepairkuwait.com/guides/bitlocker-recovery-key-after-bios-update':
     'BitLocker Recovery Key After a BIOS Update',
   'https://www.computerrepairkuwait.com/guides/windows-gaming-frame-time-stutter':
