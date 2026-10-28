@@ -406,7 +406,7 @@ add('Hawalli hero, phone display, and walk-in access copy remain consistent',
   hawalli.includes("phone.startsWith('965') ? `+965 ${phone.slice(3)}`") &&
   hawalli.includes('Finding the lab:') &&
   hawalli.includes('basement entrance from Ibn Khaldoun Street') &&
-  hawalli.includes('Explore component-level motherboard repair') &&
+  hawalli.includes('Laptop motherboard & MacBook logic board repair') &&
   header.includes('phoneDigits.slice(3)') &&
   footer.includes("business.telephone.replace(/^965/, '')"));
 add('Hawalli problem labels improve readability without changing problem URL targets',
