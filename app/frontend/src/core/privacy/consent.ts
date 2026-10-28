@@ -24,7 +24,12 @@ const isBrowser = (): boolean => typeof window !== 'undefined';
 export const getConsentState = (): ConsentState => {
   if (!isBrowser()) return 'unknown';
 
-  const stored = window.localStorage.getItem(CONSENT_STORAGE_KEY);
+  let stored: string | null = null;
+  try {
+    stored = window.localStorage.getItem(CONSENT_STORAGE_KEY);
+  } catch {
+    // Storage blocked (privacy settings): behave as "no choice stored yet".
+  }
   if (stored === 'granted' || stored === 'denied') return stored;
   return 'unknown';
 };
@@ -74,7 +79,11 @@ export const initializeGoogleConsent = (): void => {
 export const setConsentState = (state: 'granted' | 'denied'): void => {
   if (!isBrowser()) return;
 
-  window.localStorage.setItem(CONSENT_STORAGE_KEY, state);
+  try {
+    window.localStorage.setItem(CONSENT_STORAGE_KEY, state);
+  } catch {
+    // Still apply the choice for this page view even if it cannot be persisted.
+  }
   applyGoogleConsent(state);
   window.dispatchEvent(
     new CustomEvent<ConsentEventDetail>(CONSENT_EVENT, { detail: { state } })
