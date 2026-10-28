@@ -134,9 +134,10 @@ const generateSitemap = () => {
   const sitemapPath = path.join(publicDir, 'sitemap.xml');
   fs.writeFileSync(sitemapPath, sitemapXml);
 
-  // Case-study routes are no longer published; keep legacy URLs out of static prerendering.
+  // Case-study routes are no longer published; keep them out of static prerendering.
+  // /404 is prerendered (noindex) so the host can serve a branded 404.html with a 404 status.
   const prerenderRoutesPath = path.resolve(__dirname, '../prerender-routes.generated.json');
-  fs.writeFileSync(prerenderRoutesPath, '[]\n');
+  fs.writeFileSync(prerenderRoutesPath, '["/404"]\n');
 
   
   // ✅ FIX: Log the actual count of routes for build accuracy

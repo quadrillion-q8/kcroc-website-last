@@ -505,8 +505,8 @@ add('Location navigation avoids stale counts and distinguishes the Hawalli lab f
 
 add('Legacy case-study URLs are excluded from the sitemap and prerender manifest',
   !caseStudyRemovalSitemap.includes('/case-studies/')
-  && JSON.parse(caseStudyRemovalPrerender).length === 0
-  && caseStudyRemovalSitemapGenerator.includes("fs.writeFileSync(prerenderRoutesPath, '[]\\n')"));
+  && JSON.parse(caseStudyRemovalPrerender).every((route) => !String(route).startsWith('/case-studies'))
+  && caseStudyRemovalSitemapGenerator.includes("fs.writeFileSync(prerenderRoutesPath, '[\"/404\"]\\n')"));
 
 add('Homepage and workbench no longer link to the retired case-study section',
   !caseStudyRemovalHero.includes('/case-studies')

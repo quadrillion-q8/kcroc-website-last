@@ -18,13 +18,45 @@
 // service, and aggregate by `violated-directive` / `blocked-uri`.
 import { VercelRequest, VercelResponse } from '@vercel/node';
 
+// Browsers can send CSP reports with media types Vercel's body parser does not
+// automatically decode. Read those raw bodies with a strict byte limit.
+const MAX_REPORT_BYTES = 64 * 1024;
+
+async function readReportBody(req: VercelRequest): Promise<unknown> {
+  const existing = req.body as unknown;
+  if (existing && typeof existing === 'object' && !Buffer.isBuffer(existing)) return existing;
+
+  let raw = '';
+  if (typeof existing === 'string') raw = existing;
+  else if (Buffer.isBuffer(existing)) raw = existing.toString('utf8');
+  else {
+    const chunks: Buffer[] = [];
+    let size = 0;
+    let oversized = false;
+    for await (const chunk of req as AsyncIterable<Buffer | string>) {
+      const buf = Buffer.isBuffer(chunk) ? chunk : Buffer.from(chunk);
+      size += buf.length;
+      if (size > MAX_REPORT_BYTES) {
+        oversized = true;
+        continue;
+      }
+      chunks.push(buf);
+    }
+    if (oversized) return undefined;
+    raw = Buffer.concat(chunks).toString('utf8');
+  }
+
+  if (!raw || Buffer.byteLength(raw, 'utf8') > MAX_REPORT_BYTES) return undefined;
+  return JSON.parse(raw);
+}
+
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== 'POST') {
     return res.status(405).end();
   }
 
   try {
-    const body = req.body;
+    const body = await readReportBody(req);
     const reports = Array.isArray(body) ? body : [body];
 
     for (const entry of reports) {

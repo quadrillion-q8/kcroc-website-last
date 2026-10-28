@@ -24,6 +24,14 @@ export const DynamicRouteHandler = () => {
   const problem = KCROC_GRAPH.problems.find(p => p.slug === slug);
   if (problem) return <ProblemTemplate entityId={problem.id} />;
 
+  // Legacy "/computer-repair-<area>" and "/laptop-repair-<area>" URLs. Production
+  // is covered by server-side 301s; this covers client-side navigation and local
+  // dev. React Router v6 cannot match partial segments, so resolve them here.
+  const legacy = slug.match(/^(?:computer|laptop)-repair-(?:in-)?(.+)$/);
+  if (legacy && KCROC_GRAPH.locations.some(l => l.slug === legacy[1])) {
+    return <Navigate to={`/location/${legacy[1]}`} replace />;
+  }
+
   // Fallback if no slug matches in the graph
   return <NotFound />;
 };
