@@ -1564,6 +1564,7 @@ export const rawGraphData: RawGraphData = {
         { metric: 'Multitasking', outcome: 'Additional compatible RAM can reduce paging when memory pressure is the actual bottleneck.' }
       ] },
       contentImages: [
+        { src: '/images/gallery/laptop-ram-ssd-wifi-card-spare-parts-inventory-kuwait.webp', alt: 'Spare RAM modules, SSDs and Wi-Fi cards in stock at the KCROC repair shop in Kuwait for laptop upgrades', width: 1200, height: 1200, placement: 'hero', caption: 'RAM, SSD and Wi-Fi card stock on the KCROC bench for laptop upgrades in Kuwait.' },
         { src: IMAGES.upgrades.ssdM2Install.src, alt: IMAGES.upgrades.ssdM2Install.alt, width: IMAGES.upgrades.ssdM2Install.width, height: IMAGES.upgrades.ssdM2Install.height, placement: 'commonIssues', caption: 'Installing an M.2 NVMe SSD as part of a laptop performance upgrade.' },
         { src: IMAGES.upgrades.acerLaptopMotherboardRamHeatsink.src, alt: IMAGES.upgrades.acerLaptopMotherboardRamHeatsink.alt, width: IMAGES.upgrades.acerLaptopMotherboardRamHeatsink.width, height: IMAGES.upgrades.acerLaptopMotherboardRamHeatsink.height, placement: 'coreFeatures', caption: 'Laptop motherboard with accessible RAM and storage components inspected for upgrade compatibility.' },
         { src: IMAGES.upgrades.ssdMicron.src, alt: IMAGES.upgrades.ssdMicron.alt, width: IMAGES.upgrades.ssdMicron.width, height: IMAGES.upgrades.ssdMicron.height, placement: 'process', caption: 'M.2 NVMe storage selected and installed after compatibility checks.' }
