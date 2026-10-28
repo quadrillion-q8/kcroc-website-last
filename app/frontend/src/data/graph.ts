@@ -2301,7 +2301,7 @@ export const rawGraphData: RawGraphData = {
       title: 'Gaming PC Repair Kuwait', primaryKeyword: "gaming PC repair Kuwait", secondaryKeywords: ["gaming computer repair Kuwait", "gaming GPU repair Kuwait", "gaming PC no display repair", "gaming PC overheating repair Kuwait", "gaming PC FPS drop diagnosis"], 
       iconKey: 'gaming', 
       shortDescription: 'Gaming desktop PC repair in Kuwait for GPU faults, black screens, FPS drops, overheating, crashes, power faults and cooling problems.', 
-      description: 'KCROC repairs custom-built and pre-built gaming desktop PCs in Kuwait, including systems with no power or display, GPU artifacts, FPS drops, overheating, crashes, unstable power and cooling faults. Our Hawalli lab assesses the relevant GPU/VRAM, PSU, motherboard power delivery, memory, cooling and firmware systems, then explains the findings before recommending repair or replacement. We service NVIDIA GeForce RTX and AMD Radeon hardware and liquid-cooled desktops where the fault is repairable. Free pickup and delivery are available across Kuwait, and completed repairs carry a 30-day warranty under the stated terms.', 
+      description: 'KCROC diagnoses custom-built and pre-built gaming desktop PCs in Kuwait, from black screens under load, GPU artifacts and FPS drops to sudden shutdowns, power faults and liquid-cooling problems. At our ESD-controlled Hawalli lab on Ibn Khaldoun Street (Al Mullah Complex, Basement Shop 19), we assess NVIDIA GeForce RTX 30-, 40- and 50-series systems—including RTX 4090, RTX 4080 SUPER, RTX 5090 and RTX 5080-class cards—and AMD Radeon RX GPUs, Ryzen and Intel Core/i9 platforms, DDR4/DDR5 memory, VRAM, VRM/DrMOS/SPS MOSFET power stages, and AIO/custom-loop cooling. Where relevant, diagnosis may include 12VHPWR or 12V-2x6 connector damage, PCIe 5.0 12V power-path faults, and board-level component testing. We explain findings and quote before paid work; repairability depends on the exact card or board revision, damage and parts availability. Free secure pickup and delivery are available across Kuwait, with a free initial diagnostic and a 30-day warranty on completed repairs under the stated terms.', 
       idealCustomer: 'Owners of custom-built or pre-built gaming desktop towers, streamers and high-performance PC users who need a fault-based diagnosis for graphics, power, cooling, display or stability problems. Gaming laptops have a separate KCROC repair service.',
       symptomLinks: [
         { label: 'Gaming PC won’t turn on', path: '/guides/gaming-pc-not-turning-on-kuwait', description: 'No power, intermittent startup, dead tower or a PC that clicks on then shuts back off.' },
@@ -2352,9 +2352,9 @@ export const rawGraphData: RawGraphData = {
           { condition: 'The motherboard has a localized power or VRM fault.', action: 'Assess component-level repair before defaulting to a full motherboard replacement.' }
         ]
       },
-      relatedServiceIds: ['srv-gaming-laptop', 'srv-gaming-laptop-cleaning', 'srv-motherboard', 'srv-laptop'],
-      relatedProblemIds: ['problem-overheating', 'problem-freezing-crashing', 'problem-no-power', 'problem-black-screen'],
-      relatedBrandIds: ['brand-asus', 'brand-msi', 'brand-lenovo', 'brand-dell', 'brand-hp', 'brand-acer'],
+      relatedServiceIds: ['srv-gaming-laptop', 'srv-desktop-pc', 'srv-motherboard'],
+      relatedProblemIds: [],
+      relatedBrandIds: [],
       relatedLocationIds: ['loc-hawalli', 'loc-salmiya', 'loc-kuwait-city', 'loc-farwaniya', 'loc-jahra', 'loc-ahmadi', 'loc-fahaheel', 'loc-mangaf', 'loc-abu-halifa', 'loc-jabriya', 'loc-mubarak-al-kabeer', 'loc-fintas', 'loc-sabah-al-salem'],
       relatedResourcePaths: [
         { label: 'Gaming PC Cooling Guide', path: '/blog/gaming-pc-cooling' },
@@ -2364,24 +2364,26 @@ export const rawGraphData: RawGraphData = {
         { label: 'Gaming PC Random Shutdown Guide', path: '/guides/gaming-pc-random-shutdown-kuwait' },
         { label: 'BIOS / UEFI Recovery Guide', path: '/guides/bios-uefi-recovery-kuwait' },
       ],
-      coreFeatures: [
-        'GPU Chip-Level & VRAM Repair',
-        'Liquid Metal & Phase-Change Thermal Overhauls',
-        'Custom Loop & AIO Cooler Diagnostics',
-        'Motherboard Power Stage & VRM Restoration',
-        'BIOS, VBIOS & Fan Curve Tuning',
-        'Multi-Hour FPS & Stability Benchmarking'
-      ], 
-      brands: ['ASUS ROG', 'Alienware', 'MSI', 'Corsair', 'Lenovo Legion', 'Razer', 'Gigabyte Aorus', 'NZXT'], 
+            coreFeatures: [
+        'GPU Chip-Level & VRAM Diagnostics — GDDR6X / GDDR7 where fitted',
+        'RTX 4090 / 4080 SUPER / 5090 / 5080-Class Power & Connector Fault Assessment',
+        '12VHPWR / 12V-2x6 Connector and PCIe 5.0 12V Rail Checks',
+        'VRM, DrMOS & SPS MOSFET Power-Stage Diagnostics',
+        'AM5 / LGA1700 / LGA1851 Socket and DDR4 / DDR5 Memory-Channel Assessment',
+        'BIOS / VBIOS Recovery, DDR5 EXPO/XMP Training and Platform-Stability Checks',
+        'Hardware-Appropriate Cooling Service — Phase-Change Materials and VRAM Putty Where Compatible',
+        'Repeatable Load, Temperature and Stability Verification'
+      ],
+            brands: ['ASUS ROG', 'Alienware', 'MSI', 'Corsair', 'Lenovo Legion', 'Razer', 'Gigabyte Aorus', 'NZXT'], 
 
       whyChooseUs: [
         { title: 'Chip-Level Motherboard Repair', description: 'We trace and replace individual failed components — a MOSFET, a capacitor, a power stage — instead of writing off the whole board.' },
-        { title: 'GPU, VRAM & Board-Level Assessment', description: 'We check whether symptoms point to VRAM, GPU power delivery or another board-level fault. Component repair is recommended only when the diagnosis and card condition make it technically appropriate.' },
+        { title: 'GPU, VRAM & Board-Level Assessment', description: 'We assess artifacts and black screens on RTX and Radeon cards, including 12VHPWR / 12V-2x6 connector faults, VRAM such as GDDR6X or GDDR7 where fitted, and GPU power delivery. Supported memory-channel diagnostics and diode-mode checks on relevant PCIe and 12V rails may help separate a VRAM fault from a power-stage or core issue; tool access varies by platform.' },
         { title: 'Specialist Micro-Soldering', description: 'When diagnosis supports board-level rework, we assess whether specialist micro-soldering is appropriate. Not every GPU, solder-joint or package fault is repairable.' },
         { title: 'Thermal and Load Testing', description: 'When useful for the reported fault, thermal imaging and controlled load tests help compare component temperatures and behaviour under repeatable conditions.' },
         { title: 'ESD-Safe Laboratory', description: 'All work is completed on grounded, static-controlled workstations in our Hawalli lab to protect sensitive GPU and motherboard components.' },
-        { title: 'Hardware-Appropriate Cooling Service', description: 'Thermal materials are selected for the device and cooler design. Liquid metal is not a default upgrade and is considered only for compatible hardware with suitable precautions.' },
-        { title: 'Advanced BIOS & VBIOS Recovery', description: 'Corrupted BIOS or VBIOS firmware from a failed update or power interruption can often be reflashed directly, avoiding a full board or card replacement.' },
+        { title: 'Hardware-Appropriate Cooling Service', description: 'We select thermal materials for the actual cooler and device. PTM7950 phase-change material or high-viscosity VRAM thermal putty may be appropriate on supported designs; neither is treated as a universal upgrade, and liquid metal is used only where the hardware and precautions support it.' },
+        { title: 'Advanced BIOS & VBIOS Recovery', description: 'We first check the board or card’s supported recovery path. If external SPI programming is appropriate, a compatible programmer (such as a CH341A on supported chips) and correctly matched firmware may be used; direct SOIC-8 access is model- and board-dependent, and recovery is not possible for every failure.' },
         { title: 'Free Pickup & Delivery, Kuwait-Wide', description: 'We collect and return full towers, gaming desktops, and other large systems anywhere in Kuwait at no extra cost.' },
         { title: 'No Fix, No Fee', description: 'If we cannot repair it after diagnosis, you do not pay — not even for the diagnostic.' },
         { title: 'Transparent Diagnostics', description: 'You receive a written explanation of the fault and an itemized quote before any repair work begins.' }
@@ -2392,166 +2394,171 @@ export const rawGraphData: RawGraphData = {
           id: 'fps-thermal-throttling',
           title: 'FPS Drops After a Gaming Session Starts',
           severity: 'high',
-          description: 'Frame rate falls after sustained play or the fans become unusually loud. Dust, restricted airflow, fan response, thermal-interface condition, driver behaviour and power limits can all contribute. Kuwait’s ambient heat can increase cooling demand, but it does not by itself prove that thermal paste has failed. We check temperatures, clocks and airflow before recommending service.'
+          description: 'Frame rate falls after sustained play, clocks fluctuate or fans become unusually loud. Check airflow, fan response, thermal-interface condition, driver behaviour and power limits together. A large GPU core-to-hotspot delta—including readings above 25°C on some setups—can justify closer inspection, but it is not a universal failure threshold. Compare readings with the card design and workload before recommending service.'
         },
         {
           id: 'gpu-artifacting',
-          title: 'GPU Artifacts, Flicker or Black Screens Under Load',
+          title: 'RTX / Radeon GPU Artifacts, VRAM Errors or Black Screens',
           severity: 'critical',
-          description: 'Colored blocks, flickering textures, driver resets or a black screen can involve the GPU, VRAM, power delivery, thermals, drivers or a display connection. We assess the card and the wider system before deciding whether component-level repair or replacement is appropriate.'
+          description: 'Colored blocks, flickering textures, driver resets or a black screen can involve the GPU core, VRAM, thermals, drivers, display path or power delivery. On RTX 4090 / 4080 SUPER and RTX 5090 / 5080-class hardware, the investigation may include 12VHPWR or 12V-2x6 connector inspection and PCIe 5.0 12V rail checks. GDDR6X or GDDR7 memory faults, including Micron chips where fitted, require platform-appropriate diagnostics before BGA work is considered; MATS/MODS are model/tool-specific, not a universal test.'
         },
         {
           id: 'random-shutdown',
           title: 'Gaming PC Shuts Down or Restarts During a Game',
           severity: 'critical',
-          description: 'A sudden shutdown can come from thermal protection, PSU overload or instability, a cable or connector issue, or motherboard power delivery. If there is a burning smell, switch off and disconnect power safely and do not keep retrying. We check the power path before recommending board work.'
+          description: 'A sudden shutdown can come from PSU protection or OCP trips, cable or connector damage, temperatures, or motherboard power delivery. We assess the 12V path and, where indicated, DrMOS/SPS MOSFET power stages; thermal imaging can help localize abnormal heating but does not prove a cause on its own. If there is a burning smell or visible connector damage, switch off and disconnect power safely and do not keep retrying.'
         },
         {
           id: 'no-display-boot',
           title: 'Fans Run but the Monitor Shows No Display',
           severity: 'high',
-          description: 'A no-display startup can be caused by the monitor or cable, GPU seating, memory, firmware, power delivery or a failed component. Basic external checks come first; deeper testing is chosen from the system’s symptoms and diagnostic indicators.'
+          description: 'A no-display startup can be caused by the monitor or cable, GPU seating, memory training, firmware, power delivery or a failed component. External display checks come first; deeper testing follows the board’s diagnostic indicators and symptoms, rather than assuming the GPU is dead.'
         },
         {
           id: 'cpu-gpu-overheating',
           title: 'CPU or GPU Temperatures Rise Too Quickly',
           severity: 'high',
-          description: 'High temperatures may relate to dust, airflow, fan or pump response, cooler mounting, thermal-interface condition or workload. We compare readings against the specific hardware and workload instead of promising a universal temperature result or applying liquid metal by default.'
+          description: 'High readings may relate to dust, airflow, fan or pump response, cooler mounting, thermal-interface condition or workload. Core-to-hotspot delta-T is interpreted in the context of the exact card and load. We select thermal paste, phase-change material such as PTM7950, or high-viscosity VRAM putty only where that material is suitable for the hardware.'
         },
         {
           id: 'aio-custom-loop',
           title: 'AIO or Custom Water-Cooling Problems',
           severity: 'high',
-          description: 'Unexpected temperature spikes, pump noise or signs of leakage need careful inspection. The cause may be a pump, airflow, mounting, blockage or another cooling fault. If a leak is suspected, stop using the PC and disconnect power safely; the appropriate repair or replacement is decided after inspection.'
+          description: 'Unexpected temperature spikes, pump noise, poor flow or signs of leakage need careful inspection. The check may include pump and fan response, cold-plate or micro-fin blockage, oxidation or possible galvanic corrosion in a mixed-metal loop. A flush or repair is recommended only when safe and appropriate; do not power on a system with suspected liquid leakage.'
         },
         {
           id: 'driver-crash-tdr',
           title: 'Game Crashes or Display Driver Resets',
           severity: 'medium',
-          description: 'A driver timeout or crash can be software-related or reflect unstable memory, temperatures or power delivery. We consider logs, reproducibility and hardware measurements before concluding that a GPU component has failed.'
+          description: 'A driver timeout can be software-related or reflect unstable VRAM, thermal limits, connector or power delivery issues. Logs, repeatability and hardware readings are reviewed together before concluding that a GPU component has failed.'
         },
         {
           id: 'bios-overclock',
-          title: 'Failed BIOS Update or Unstable Overclock',
+          title: 'Failed BIOS Update, BIOS FlashBack Failure or Unstable Overclock',
           severity: 'medium',
-          description: 'A failed firmware update may prevent startup, while unstable overclock or memory settings can cause crashes. Where appropriate, we check board recovery options, firmware compatibility and stable-default settings before considering direct BIOS-chip programming.'
+          description: 'A failed firmware update may prevent startup. We check model-specific recovery features first; compatible external SPI programming, including direct SOIC-8 access on supported boards, is considered only when the firmware and hardware make it appropriate. A correct board revision and firmware image are essential.'
+        },
+        {
+          id: 'cpu-socket-memory-training',
+          title: 'AM5 / LGA Socket, DDR5 EXPO/XMP or CPU Instability',
+          severity: 'high',
+          description: 'A system that fails POST or crashes after a CPU, memory or BIOS change may involve bent AM5, LGA1700 or LGA1851 socket pins, DDR5 EXPO/XMP memory-training failure, BIOS compatibility or the CPU itself. On applicable Intel 13th/14th Gen desktop platforms, we check the motherboard vendor’s latest BIOS and Intel-recommended default settings for Vmin-instability concerns instead of treating every crash as a damaged board. Socket pin restoration depends on the actual pin and pad condition.'
         }
       ],
-      process: [
+            process: [
         { step: 1, title: 'Free Secure Pickup', description: 'We collect your gaming rig from your home or office anywhere in Kuwait, then tag and log it for secure, full chain-of-custody handling.' },
-        { step: 2, title: 'Stress Test & Thermal Imaging', description: 'Your system is tested under real gaming benchmarks and synthetic load tests while we monitor CPU, GPU, VRM, and memory temperatures with thermal cameras to isolate the exact bottleneck.' },
-        { step: 3, title: 'Precision Laboratory Repair', description: 'Repairs are completed in our ESD-compliant Hawalli lab using BGA micro-soldering, thermal service, firmware recovery, and other precision methods with genuine thermal compounds and controlled reflow.' },
+        { step: 2, title: 'Fault-Led Load & Thermal Checks', description: 'We reproduce the reported symptom where practical and use suitable gaming or synthetic workloads—such as 3DMark Time Spy or FurMark only when appropriate for the hardware and fault—alongside available temperature, clock, fan and power-delivery readings. Thermal imaging helps localize abnormal heating; it is interpreted with other evidence.' },
+        { step: 3, title: 'Component-Level Repair', description: 'After the quote is approved, work may include suitable board-level component replacement, VRAM BGA rework, connector repair, firmware recovery or cooling service. Thermal materials are selected for the actual device; rework and programming are performed only where the hardware and damage make them appropriate.' },
         { step: 4, title: 'Extended Verification & Return', description: 'After the approved work, we repeat the relevant startup, temperature, load or gaming tests for an appropriate period and check whether the original symptom recurs before arranging return.' }
       ],
 
       performanceOutcomes: {
-        disclaimer: 'These are the checks used to evaluate a repair, not published customer results or guaranteed temperature, FPS or runtime improvements. Actual findings depend on the model, fault, workload, room temperature and parts condition.',
+        disclaimer: 'For each completed gaming desktop repair, verification is selected around the original fault and the exact hardware. Where comparable readings are available, we record conditions and compare pre- and post-service behaviour; measurements and outcomes are confirmed per device, not assumed from a generic target.',
         items: [
-          { metric: 'CPU and GPU Temperatures', outcome: 'Record readings under a comparable workload and check them against the hardware manufacturer’s guidance before and after cooling work where applicable.' },
-          { metric: 'GPU Hotspot and Core Readings', outcome: 'Compare hotspot behaviour with the specific graphics card and workload to decide whether cooler contact, airflow or another fault needs attention.' },
-          { metric: 'Gaming Stability', outcome: 'Repeat the workload that triggers the issue and check whether crashes, shutdowns, artifacts or stutter recur during the test period.' },
-          { metric: 'Clock Speeds and Throttling', outcome: 'Review temperatures, clocks, fan response and system logs together before concluding that a thermal or power-related limit has been resolved.' },
-          { metric: 'Fan and Pump Operation', outcome: 'Check fan and pump response and isolate abnormal noise before recommending cleaning, adjustment or replacement.' }
+          { metric: 'GPU Core-to-Hotspot Delta-T', outcome: 'Compare core and hotspot readings under a repeatable workload and interpret the delta against card design, mounting and ambient conditions. A reading over 25°C may merit investigation on some cards but is not a universal pass/fail rule.' },
+          { metric: '12VHPWR / 12V-2x6 Power Path', outcome: 'Where indicated, inspect connector seating, cable condition, relevant 12V rails and voltage-drop behaviour under suitable conditions. Report actual findings only when measured.' },
+          { metric: 'VRAM and Graphics Stability', outcome: 'Use platform-appropriate memory diagnostics where available and repeat the workload that produced artifacts or driver resets; tooling differs by architecture.' },
+          { metric: 'CPU, RAM and Firmware Stability', outcome: 'Check memory training, DDR5 EXPO/XMP settings and BIOS defaults. On applicable Intel 13th/14th Gen desktop platforms, use current motherboard-vendor BIOS and Intel-recommended settings as part of the assessment.' },
+          { metric: 'Cooling and Sustained Load', outcome: 'Check fan/pump response, temperature trends and repeatability under a workload appropriate to the original fault before return.' }
         ]
       },
-      repairExamples: {
-        disclaimer: 'These are illustrative diagnostic scenarios, not records of named customers or guaranteed outcomes. The actual diagnosis, repairability and test result must be confirmed for each device.',
+            repairExamples: {
+        disclaimer: 'The workflow below explains how a fault is isolated. The tests selected, measurements, repairability and final outcome are confirmed for each individual system and documented before return.',
         items: [
           {
             id: 'gpu-vram-repair',
             title: 'GPU Artifacts or Driver Resets Under Load',
             symptoms: 'Artifacts, a black screen or repeated driver resets appear during demanding games but may not occur at idle.',
-            diagnosis: 'Check display connections, drivers, temperatures, power delivery and repeatability; inspect GPU and VRAM behaviour if evidence points to the card.',
-            repair: 'If a board-level fault is confirmed and repair is technically viable, quote the required component work. If the GPU die or board damage makes repair impractical, explain replacement options.',
-            outcome: 'Repeat the original workload after the approved work and record whether artifacts or resets recur; do not promise a result before testing.'
+            diagnosis: 'Separate display and driver causes, review temperatures and connector condition, then assess VRAM channels and relevant PCIe / 12V rails where indicated. Supported memory diagnostics—including MATS/MODS on applicable platforms—and diode-mode multimeter checks may help isolate a chip or power-path fault.',
+            repair: 'If a board-level fault is confirmed and technically repairable, quote the specific component work. VRAM BGA rework is considered only when the GPU die, board and available replacement chips make it viable.',
+            outcome: 'Repeat a suitable version of the original workload and document whether artifacts or resets recur; no repair outcome is promised before testing.'
           },
           {
             id: 'motherboard-vrm-rebuild',
             title: 'Sudden Shutdown Under Gaming Load',
-            symptoms: 'The desktop powers off or restarts when the CPU and GPU are under sustained load.',
-            diagnosis: 'Check PSU capacity and behaviour, power cables, temperatures and motherboard power delivery to identify the likely failing layer.',
-            repair: 'Carry out the approved PSU, cooling or component-level motherboard work that the diagnosis supports; not every damaged board is economical to repair.',
-            outcome: 'Repeat suitable load and stability tests, then document any remaining fault and the test conditions before return.'
+            symptoms: 'The desktop powers off or restarts when CPU and GPU demand rise together.',
+            diagnosis: 'Check the PSU, power cables, connector condition and relevant rails; where indicated, investigate OCP behaviour and DrMOS/SPS MOSFET stages. Thermal imaging can help locate a hot component, but electrical and system evidence is also required.',
+            repair: 'Carry out the approved PSU, connector, cooling or component-level motherboard work supported by the diagnosis. Not every damaged board is economical or safe to repair.',
+            outcome: 'Repeat suitable load and stability checks, recording the workload and any remaining symptom before return.'
           },
           {
             id: 'bios-recovery',
             title: 'No POST After a Failed BIOS Update',
-            symptoms: 'The system no longer completes startup after an interrupted firmware update.',
-            diagnosis: 'Check power and board indicators first, then determine whether settings recovery, supported recovery features or firmware-chip programming is appropriate.',
-            repair: 'If chip programming is required and supported, use firmware matching the exact motherboard model and revision.',
-            outcome: 'Verify startup and basic system stability after recovery; firmware recovery is not possible for every type of board damage.'
+            symptoms: 'The system no longer completes startup after an interrupted firmware update or a failed recovery feature.',
+            diagnosis: 'Identify the exact motherboard model and revision, check documented BIOS FlashBack or recovery features, and determine whether external SPI programming is supported.',
+            repair: 'Where appropriate, use a compatible programmer—for example, a CH341A on supported SPI flash chips—and the correctly matched firmware image; direct SOIC-8 access depends on the board layout and chip.',
+            outcome: 'Verify startup and basic stability after recovery; firmware programming cannot resolve every board fault.'
           },
           {
             id: 'custom-loop-blockage',
             title: 'Unusual Temperatures or Noise From Liquid Cooling',
-            symptoms: 'Temperatures change unexpectedly, a pump makes unusual noise or the system shows signs of a cooling fault.',
-            diagnosis: 'Inspect fans, pump operation, mounting, radiator airflow and visible signs of leakage or blockage.',
-            repair: 'Recommend a safe cleaning, service or replacement path based on the cooler type and actual condition; do not power on a system with suspected liquid leakage.',
-            outcome: 'Check cooling behaviour and inspect for leaks after any approved service, then repeat a suitable load test.'
+            symptoms: 'Temperatures change unexpectedly, a pump makes unusual noise, flow appears restricted or there are signs of leakage.',
+            diagnosis: 'Inspect fan and pump operation, mounting, radiator airflow, cold-plate micro-fin condition and signs of blockage, oxidation or galvanic corrosion where accessible.',
+            repair: 'Recommend a safe service, flush or component replacement only if the loop and affected parts are suitable; a suspected leak must be addressed before the PC is powered again.',
+            outcome: 'Check cooling behaviour and inspect for leakage after approved work, then repeat a suitable workload.'
           }
         ]
       },
-      inspectionChecklist: [
-        'CPU core & package temperatures under load',
-        'GPU core and hotspot temperatures',
-        'VRAM temperature and stability under load',
-        'Storage (SSD/NVMe) thermal behavior',
-        'Memory (RAM) stability testing',
-        'Motherboard voltage rails',
-        'VRM temperatures under sustained load',
-        'Power supply output stability',
-        'Cooling system airflow and efficiency',
-        'Fan and pump operation',
-        'BIOS configuration and firmware version',
-        'Multi-hour stress testing and gaming benchmarks',
-        'Thermal imaging scan of the full board',
-        'Dust and particulate contamination',
-        'Internal cable and connector integrity'
+            inspectionChecklist: [
+        'CPU core and package temperatures under a relevant workload',
+        'GPU core, hotspot and core-to-hotspot delta-T in hardware context',
+        'VRAM behaviour and supported memory-channel diagnostics',
+        '12VHPWR / 12V-2x6 connector condition, seating and cable damage',
+        'PCIe 5.0 12V path, relevant voltage rails and power-stage behaviour',
+        'VRM / DrMOS / SPS MOSFET temperatures where applicable',
+        'Power-supply stability and possible OCP trips',
+        'DDR4 / DDR5 memory stability and EXPO/XMP training',
+        'AM5 / LGA1700 / LGA1851 socket condition when symptoms indicate',
+        'BIOS version, firmware recovery options and platform defaults',
+        'Storage and system-log indicators relevant to the reported fault',
+        'AIO/custom-loop pump, fan, radiator and cold-plate condition',
+        'Thermal-interface material and cooler mounting suitability',
+        'Internal power cables, PCIe connectors and motherboard headers',
+        'Repeatable startup, load and stability checks after approved work'
       ],
-
-      faqs: [
+            faqs: [
         {
           id: 'faq-gpu-repair',
           title: 'Can you repair a GPU instead of replacing the whole card?',
-          answer: 'Sometimes. We assess the fault, board condition, GPU die, parts availability and likely repair cost. If repair is technically unsuitable or uneconomical, we explain that rather than promising a component-level fix.'
+          answer: 'Sometimes. The assessment may cover blown fuses, shorted capacitors, VRM / DrMOS power stages, connector damage or VRAM faults. The GPU core, board condition, parts availability and repair cost determine whether component-level work is sensible; replacement may still be the better option.'
         },
         {
           id: 'faq-vram-replace',
           title: 'Can damaged VRAM be replaced?',
-          answer: 'Selected VRAM faults can be repairable when the board and GPU are otherwise suitable. Testing is needed to distinguish memory faults from power, thermal, driver or other causes before a quote is provided.'
+          answer: 'Selected VRAM faults can be repairable when the board and GPU core remain suitable. GDDR6X or GDDR7 BGA replacement depends on the exact card, compatible chips, available diagnostics and the surrounding board damage. Testing must distinguish memory faults from power, thermal, driver or other causes first.'
         },
         {
           id: 'faq-repair-vs-replace',
           title: 'How do I decide whether to repair or replace my graphics card?',
-          answer: 'The decision depends on the specific fault, card age and value, parts availability, warranty status and the full quote. KCROC explains the diagnostic findings and cost before you approve work.'
+          answer: 'Compare the confirmed fault, card generation and value, parts availability, warranty status and full repair quote with the cost of a replacement. KCROC explains the diagnostic findings and quote before paid work, rather than assuming every GPU is repairable.'
         },
         {
           id: 'faq-custom-loop',
           title: 'Do you inspect AIO and custom liquid-cooling systems?',
-          answer: 'Yes. We can inspect pump and fan behaviour, mounting, radiator airflow and visible signs of leakage or blockage. The next step may be maintenance or replacement depending on the cooler’s condition; suspected leaks should not be powered on.'
+          answer: 'Yes. Diagnosis can include pump and fan behaviour, radiator airflow, cold-plate condition and signs of blockage, corrosion or leakage. The appropriate path may be maintenance or replacement depending on the cooler’s condition; do not power on a system with a suspected leak.'
         },
         {
           id: 'faq-overheat-damage',
           title: 'Does overheating always mean the thermal paste has failed?',
-          answer: 'No. Dust, restricted airflow, a fan or pump issue, cooler mounting, workload and power settings can also affect temperatures. We check the relevant readings and hardware before recommending a thermal-interface service.'
+          answer: 'No. Dust, restricted airflow, a fan or pump issue, cooler mounting, workload, thermal putty or power settings can also affect temperatures. We compare readings in the context of the particular hardware before recommending paste, PTM7950 phase-change material or VRAM putty.'
         },
         {
           id: 'faq-service-frequency',
           title: 'How often should I clean a gaming PC in Kuwait?',
-          answer: 'There is no single interval for every home or PC. Check case filters and airflow regularly, and let dust levels, operating environment and symptoms guide deeper maintenance. Persistent high temperatures, new fan noise or shutdowns warrant diagnosis rather than a fixed calendar-based repaste.'
+          answer: 'There is no single interval for every room and PC. Check filters and airflow regularly, and let dust levels, environment and symptoms guide deeper maintenance. Persistent high temperatures, new fan noise or shutdowns deserve diagnosis rather than an automatic repaste on a fixed calendar.'
         },
         {
           id: 'faq-bios-corruption',
           title: 'Can you recover a PC after a failed BIOS update?',
-          answer: 'Recovery depends on the motherboard model, available recovery features and the nature of the failure. We check the supported options first; direct programming is considered only when the board and firmware make it appropriate.'
+          answer: 'Recovery depends on the motherboard revision, supported BIOS FlashBack or recovery features, firmware integrity and the type of failure. External SPI programming may be considered on supported boards when a compatible programmer and correct image are available; it cannot repair every failed board.'
         },
         {
           id: 'faq-overclock-recovery',
-          title: 'What should I do if a PC crashes after overclocking?',
-          answer: 'Return settings to a known stable default if you can do so safely, and stop using settings that cause repeated crashes. Memory tuning, power limits, temperatures or hardware faults may be involved, so diagnosis should be based on reproducible tests.'
+          title: 'What should I check if a PC crashes after overclocking or EXPO/XMP changes?',
+          answer: 'Return to a known-stable BIOS default if safe, then test memory training, CPU settings, temperatures and power limits. On applicable Intel 13th/14th Gen desktop processors, confirm the current board-vendor BIOS and Intel-recommended default settings for Vmin-instability concerns; a crash alone does not prove motherboard damage.'
         }
       ],
-      contentImages: [
+            contentImages: [
         { src: IMAGES.gaming.rgbLighting.src, alt: IMAGES.gaming.rgbLighting.alt, width: IMAGES.gaming.rgbLighting.width, height: IMAGES.gaming.rgbLighting.height, placement: 'commonIssues', caption: 'A high-performance custom gaming PC representative of the systems we diagnose and repair.' },
         { src: IMAGES.gaming.diagnostics.src, alt: IMAGES.gaming.diagnostics.alt, width: IMAGES.gaming.diagnostics.width, height: IMAGES.gaming.diagnostics.height, placement: 'coreFeatures', caption: 'Gaming PC teardown and diagnostics at the workbench to isolate hardware faults.' },
         { src: IMAGES.gaming.zotacCard.src, alt: IMAGES.gaming.zotacCard.alt, width: IMAGES.gaming.zotacCard.width, height: IMAGES.gaming.zotacCard.height, placement: 'process', caption: 'GPU handling and component inspection during gaming PC diagnosis and repair.' }
@@ -2562,8 +2569,8 @@ export const rawGraphData: RawGraphData = {
         noFixNoFee: true 
       }, 
       seo: { 
-        title: 'Gaming PC Repair Kuwait | GPU & FPS Fix | KCROC', 
-        description: 'Gaming PC repair in Kuwait for GPU faults, black screens, FPS drops and overheating. Diagnosis before repair, free Kuwait-wide pickup and 30-day warranty.', 
+        title: 'Gaming PC Repair Kuwait | GPU & Motherboard Repair | KCROC', 
+        description: 'Gaming PC repair in Kuwait for RTX/Radeon artifacts, black screens, FPS drops, 12VHPWR/12V-2x6, VRM and cooling faults. Free diagnosis, pickup and 30-day warranty.', 
         canonicalUrl: 'https://www.computerrepairkuwait.com/gaming-pc-repair-kuwait', locale: 'en_KW', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/gaming-pc-repair-kuwait', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/gaming-pc-repair-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/gaming-pc-repair-kuwait' }, 
         ogType: 'website', 
         schemaTypes: ['Service', 'FAQPage'], lastModified: '2026-10-28T00:00:00+03:00' 
