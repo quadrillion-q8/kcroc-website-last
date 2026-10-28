@@ -132,7 +132,7 @@ add('Laptop inspection checklist is nested under diagnostic step and no standalo
   serviceTemplate.includes("entity.id !== 'srv-laptop' && entity.inspectionChecklist"));
 
 add('Laptop hub links laterally to motherboard repair instead of linking to itself',
-  serviceTemplate.includes('excludeLaptopService={entity.id === \'srv-laptop\'}') &&
+  serviceTemplate.includes('excludeLaptopService={entity.id === \'srv-laptop\' || entity.id === \'srv-gaming\'}') &&
   coreRepairPillars.includes('excludeLaptopService ? "/motherboard-repair-kuwait" : "/laptop-repair-kuwait"') &&
   coreRepairPillars.includes('excludeLaptopService ? "Motherboard Repair Kuwait" : "Laptop Repair Kuwait"'));
 
