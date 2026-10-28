@@ -1497,71 +1497,139 @@ export const rawGraphData: RawGraphData = {
 
     'srv-ssd-ram': {
       id: 'srv-ssd-ram', slug: 'ssd-ram-upgrade-kuwait', entityType: 'Service', isActive: true,
-      title: 'SSD & RAM Upgrade Kuwait', primaryKeyword: "SSD RAM upgrade Kuwait", secondaryKeywords: ["laptop SSD upgrade Kuwait","laptop RAM upgrade Kuwait","computer speed upgrade Kuwait"], iconKey: 'cpu',
-      shortDescription: 'Practical SSD and memory upgrades for slower laptops and PCs, with compatibility checks, cloning options and post-upgrade testing.',
-      description: 'If a laptop takes minutes to boot, browsers stutter under normal workloads, or Windows constantly runs short of usable memory, an SSD or RAM upgrade can produce a much larger real-world improvement than random software tweaks. KCROC checks the existing storage interface, memory type and upgrade limits first. Where practical, we can clone the existing system to the new SSD, verify the boot environment, and test the upgraded machine under normal workloads.',
-      idealCustomer: 'Users with slow boot times, limited memory, an aging hard drive, frequent paging, or a laptop that is otherwise worth keeping.',
-      deviceTypes: ['Windows Laptops', 'Business Laptops', 'Everyday Laptops', 'Gaming Laptops', 'Desktop PCs'],
+      title: 'SSD & RAM Upgrade Kuwait', primaryKeyword: "SSD RAM upgrade Kuwait", secondaryKeywords: ["laptop SSD upgrade Kuwait","laptop RAM upgrade Kuwait","NVMe SSD installation Kuwait","upgrade laptop HDD to SSD Kuwait","clone Windows to SSD Kuwait","speed up slow laptop Kuwait","computer speed upgrade Kuwait"], iconKey: 'cpu',
+      shortDescription: 'Laptop and PC SSD, NVMe and RAM upgrades in Kuwait, with compatibility checks, Windows cloning, post-upgrade testing, free pickup and delivery.',
+      description: 'A slow laptop is very often a storage or memory problem, not a software problem. If your laptop takes minutes to boot, shows 100% disk usage, freezes with a few browser tabs open or constantly runs short of memory, a compatible SSD or RAM upgrade usually makes a bigger difference than any software tweak. KCROC checks which part is actually the bottleneck, confirms exactly what your model supports (SATA or NVMe, M.2 length, DDR4 or DDR5, soldered or upgradeable memory), installs the upgrade and, where the drive is healthy, clones your existing Windows so you keep your apps, settings and files. Free pickup and delivery across Kuwait.',
+      idealCustomer: 'Laptop and PC owners with slow boot times, 100% disk usage, an ageing mechanical hard drive, a full drive, frequent paging or too little RAM, on a machine that is otherwise worth keeping.',
+      deviceTypes: ['Windows Laptops', 'Business Laptops', 'Everyday Laptops', 'Gaming Laptops', 'Desktop PCs', 'Microsoft Surface'],
       repairLevel: 'advanced', estimatedTurnaround: 'Same Day / 24 Hours',
             pricing: { startingFrom: 5, currency: 'KWD', quoteRequired: true, displayLabel: 'From 5 KWD + part' },
+      pricingGuide: {
+        heading: 'SSD & RAM Upgrade Pricing in Kuwait',
+        intro: 'Installation labour for SSD and RAM upgrades starts from 5 KWD, with the SSD or memory module charged separately. The part depends on capacity, SATA or NVMe, and DDR generation, so we confirm compatible options and the full price on WhatsApp before any paid work.',
+        note: 'Prices are guide figures, not a final quote. Installation labour is typically 5–10 KWD; the SSD or RAM module and any data migration are charged separately where needed. Eligible upgrades booked before 11:00 AM are often returned the same day, subject to part availability, drive size and workload.',
+        rows: [
+          {
+            category: 'RAM upgrade',
+            symptoms: 'Slow multitasking, heavy paging, browser lag or Windows running out of memory, on a laptop or PC with an upgradeable memory slot',
+            startingPrice: 'From 5 KWD + RAM module',
+            typicalTurnaround: 'Often same day when a compatible module is available.'
+          },
+          {
+            category: 'SSD installation (SATA or NVMe)',
+            symptoms: 'Slow boot, 100% disk usage on a hard drive, slow app loading, or a full or ageing drive',
+            startingPrice: '5–10 KWD labour + SSD',
+            typicalTurnaround: 'Often same day for a straightforward installation.'
+          },
+          {
+            category: 'SSD upgrade with Windows cloning',
+            symptoms: 'You want to keep Windows, programs, settings and files on the new, faster drive',
+            startingPrice: 'Labour from 5 KWD; data migration quoted separately where needed',
+            typicalTurnaround: 'Same day to 24 hours, depending on how much data is on the drive.'
+          },
+          {
+            category: 'RAM and SSD together',
+            symptoms: 'An older laptop that needs both more memory and a faster drive to feel usable again',
+            startingPrice: 'Labour confirmed in your quote + parts',
+            typicalTurnaround: 'Same day to 24 hours depending on parts and data size.'
+          }
+        ]
+      },
+      commercialAnswers: [
+        { question: 'How much does an SSD or RAM upgrade cost in Kuwait?', answer: 'Installation labour starts from 5 KWD and is typically 5–10 KWD, with the SSD or RAM module charged separately. Send us your laptop model on WhatsApp and we confirm compatible options and the full price before any paid work.' },
+        { question: 'Will an SSD or RAM upgrade actually fix my slow laptop?', answer: 'It depends on the bottleneck. A laptop that still has a mechanical hard drive almost always benefits from an SSD, while a laptop that runs out of memory benefits from RAM. If the real cause is heat, malware or a failing part, we tell you before you buy anything.' },
+        { question: 'Can you upgrade my laptop on the same day?', answer: 'Often yes. Eligible upgrades booked before 11:00 AM are frequently returned the same day when a compatible part is available. Large data migrations can take until the next day.' },
+        { question: 'Will I lose my files, programs or Windows?', answer: 'When your current drive is healthy we clone your existing Windows to the new SSD, so your programs, settings and files carry over. We still recommend backing up anything irreplaceable before any drive change.' },
+        { question: 'What if my laptop cannot be upgraded?', answer: 'Some thin laptops and most recent MacBooks use soldered memory or storage. We check your exact model before you buy a part and tell you plainly if an upgrade is not possible.' },
+        { question: 'Do you offer free pickup and delivery?', answer: 'Yes. Free pickup and delivery are available across Kuwait, and the upgrade is completed at our Hawalli workshop.' },
+        { question: 'Is the upgrade covered by a warranty?', answer: 'The completed work is covered by our service warranty, and new SSDs and memory modules normally carry the manufacturer’s own warranty. We confirm the applicable cover before work starts.' }
+      ],
+      symptomLinks: [
+        { label: 'Laptop running very slow', path: '/laptop-running-very-slow', description: 'Slow boot, lag and long load times, and how to tell a storage or memory bottleneck from other causes.' },
+        { label: 'Freezing or random crashes', path: '/computer-freezing-crashing-kuwait', description: 'Freezes and crashes that can come from memory pressure, a failing drive or overheating.' },
+        { label: 'Windows 11 100% disk usage', path: '/blog/windows-11-100-disk-usage-causes-solutions', description: 'Why the disk sits at 100%, safe checks to try, and when an SSD is the real fix.' },
+        { label: 'Is 8GB of RAM still enough?', path: '/blog/why-8gb-ram-is-no-longer-enough-for-windows-11', description: 'How much memory Windows 11 needs for browsing, video calls and Office.' },
+        { label: 'SSD not detected in Windows', path: '/guides/ssd-not-detected-windows-11', description: 'What to check when a new or existing SSD does not appear in Windows setup or File Explorer.' }
+      ],
       coreFeatures: ['NVMe SSD Upgrade', 'SATA SSD Upgrade', 'RAM Upgrade', 'Memory Compatibility Check', 'Storage Health Check', 'System Cloning Where Suitable', 'Boot Verification', 'Performance Testing', 'Free Pick & Drop', '30-Day Warranty'],
       brands: ['Dell', 'HP', 'Lenovo', 'ASUS', 'Acer', 'MSI', 'Microsoft Surface'],
       whyChooseUs: [
-        { title: 'Compatibility First', description: 'We verify interface, physical format, supported memory type, capacity limits, and model-specific constraints before recommending hardware.' },
-        { title: 'Keep the Existing System Where Practical', description: 'Suitable systems can be cloned to the new SSD so applications and settings do not need to be rebuilt from scratch.' },
+        { title: 'Compatibility First', description: 'We verify interface (SATA or NVMe), M.2 length, memory generation, slot count, capacity limits and model-specific constraints before recommending hardware, so you never buy the wrong part.' },
+        { title: 'We Tell You When an Upgrade Will Not Help', description: 'If the slowdown comes from heat, malware, a failing battery or a soldered-memory limit, we say so instead of selling you a part you do not need.' },
+        { title: 'Keep Your Existing Windows', description: 'Healthy systems are cloned to the new SSD so applications, settings and files do not need to be rebuilt from scratch. The boot is verified before return.' },
+        { title: 'Encryption and Data Safety', description: 'Many Windows 11 laptops encrypt the drive automatically. We secure the recovery key before changing drives so you are never locked out of your own data.' },
         { title: 'Measure the Bottleneck', description: 'We check storage health and memory pressure so you upgrade the part that is actually limiting the system.' },
-        { title: 'Post-Upgrade Testing', description: 'The machine is boot-tested and checked for storage health, memory recognition, and stability before return.' }
+        { title: 'Post-Upgrade Testing', description: 'The machine is boot-tested and checked for storage health, memory recognition and stability under load before return.' }
       ],
       commonIssues: [
         { id: 'slow-hard-drive', title: 'Laptop Still Uses a Mechanical Hard Drive', severity: 'medium', description: 'An SSD upgrade can dramatically reduce boot and application load times when the existing HDD is the main storage bottleneck.' },
-        { id: 'low-ram', title: 'Windows Runs Out of Memory', severity: 'medium', description: 'Heavy paging, browser workloads, and multitasking can expose a RAM limitation even when the laptop is otherwise healthy.' },
+        { id: 'disk-100-percent', title: 'Windows Shows 100% Disk Usage', severity: 'medium', description: 'A hard drive pinned at 100% makes the whole laptop feel frozen. On older laptops an SSD is often the lasting fix, once software causes have been ruled out.' },
+        { id: 'low-ram', title: 'Windows Runs Out of Memory', severity: 'medium', description: 'Heavy paging, browser workloads and multitasking can expose a RAM limitation even when the laptop is otherwise healthy.' },
+        { id: 'storage-full', title: 'Storage Is Almost Full', severity: 'low', description: 'A nearly full drive slows updates and everyday use. A larger SSD, with your system cloned across, gives you room without starting again.' },
         { id: 'storage-health', title: 'Storage Health Is Declining', severity: 'high', description: 'A failing drive should be assessed before an upgrade so the replacement plan protects the system and existing data as far as possible.' },
         { id: 'slow-laptop', title: 'Laptop Is Slow Despite Being Clean', severity: 'medium', description: 'We separate storage, memory, thermal, startup and software bottlenecks before recommending an upgrade.' }
       ],
       process: [
-        { step: 1, title: 'Free Pickup', description: 'We collect the laptop or PC across Kuwait.' },
-        { step: 2, title: 'Hardware Assessment', description: 'We check storage health, RAM configuration, interfaces and supported upgrade limits.' },
-        { step: 3, title: 'Upgrade Plan', description: 'You receive compatible SSD/RAM options and a clear quote before installation.' },
-        { step: 4, title: 'Install or Clone', description: 'The selected hardware is installed and the existing system is cloned where the configuration supports it.' },
+        { step: 1, title: 'Free Pickup', description: 'We collect the laptop or PC across Kuwait, or you can send the model on WhatsApp for a first estimate.' },
+        { step: 2, title: 'Hardware Assessment', description: 'We check storage health, RAM configuration, SSD interface, memory slots and supported upgrade limits for your exact model.' },
+        { step: 3, title: 'Upgrade Plan', description: 'You receive compatible SSD or RAM options and a clear quote before installation.' },
+        { step: 4, title: 'Install or Clone', description: 'The selected hardware is installed, the BitLocker or device-encryption key is secured where it applies, and the existing system is cloned where the configuration supports it.' },
         { step: 5, title: 'Boot & Stability Test', description: 'Windows, storage health, memory recognition and basic workload stability are verified.' },
         { step: 6, title: 'Return with Warranty', description: 'The upgraded device is returned with a 30-day parts and labour warranty on the completed work.' }
       ],
       faqs: [
-        { id: 'upgrade-faq-1', title: 'Will an SSD make my laptop faster?', answer: 'If the current drive is the main bottleneck, yes. We check the system first so you do not buy an SSD when another component is responsible for the slowdown.' },
-        { id: 'upgrade-faq-2', title: 'Can you upgrade laptop RAM?', answer: 'Yes, when the laptop has upgradeable memory. We verify the exact model and supported capacity before recommending a module.' },
-        { id: 'upgrade-faq-3', title: 'Can you clone my existing Windows installation?', answer: 'Often yes, when the existing storage is healthy and the hardware configuration supports a clean clone. We verify booting and storage health afterward.' },
-        { id: 'upgrade-faq-4', title: 'Can every laptop have its RAM upgraded?', answer: 'No. Some laptops use soldered memory, while others have one or more SO-DIMM slots. We check the exact model before recommending an upgrade.' },
-        { id: 'upgrade-faq-5', title: 'What is the difference between SATA and NVMe SSDs?', answer: 'They use different interfaces and can have different performance and physical formats. We identify the laptop’s supported interface before selecting the replacement drive.' },
-        { id: 'upgrade-faq-6', title: 'Can you move my existing Windows installation to the new SSD?', answer: 'Often yes when the source drive is healthy and the configuration supports cloning. We verify the cloned system boots correctly and check the new drive after migration.' },
+        { id: 'upgrade-faq-1', title: 'Will an SSD make my laptop faster?', answer: 'If the current drive is the main bottleneck, yes. A laptop that still uses a mechanical hard drive usually sees the biggest improvement in boot time and app loading. We check the system first so you do not buy an SSD when another component is responsible for the slowdown.' },
+        { id: 'upgrade-faq-2', title: 'How much does an SSD or RAM upgrade cost in Kuwait?', answer: 'Installation labour starts from 5 KWD and is typically 5–10 KWD, with the SSD or RAM module charged separately. The part price depends on capacity, SATA or NVMe, and DDR generation, so we confirm the full price on WhatsApp once we know your laptop model.' },
+        { id: 'upgrade-faq-3', title: 'Can you upgrade laptop RAM?', answer: 'Yes, when the laptop has upgradeable memory. We verify the exact model, memory generation (DDR3, DDR4 or DDR5), slot count and supported capacity before recommending a module.' },
+        { id: 'upgrade-faq-4', title: 'Can every laptop have its RAM upgraded?', answer: 'No. Some laptops use soldered memory, some have one slot plus soldered memory, and others have one or two SO-DIMM slots. Most recent MacBooks have soldered memory. We check the exact model before recommending an upgrade.' },
+        { id: 'upgrade-faq-5', title: 'Is 8GB of RAM enough for Windows 11?', answer: 'For light use such as documents and a few browser tabs, 8GB can work. For many tabs, video calls and Office apps together, 16GB is a more comfortable minimum, and 32GB suits editing, development and heavy multitasking.' },
+        { id: 'upgrade-faq-6', title: 'What is the difference between SATA and NVMe SSDs?', answer: 'SATA SSDs use the older SATA interface and top out at roughly 550 MB/s, while NVMe SSDs connect over PCIe and are several times faster. They can also have different physical formats. We identify which your laptop supports before selecting the replacement drive.' },
+        { id: 'upgrade-faq-7', title: 'Can you clone my existing Windows to the new SSD?', answer: 'Often yes, when the existing drive is healthy and the hardware supports cloning. Your programs, settings and files carry over, and we verify that the cloned system boots correctly and check the new drive afterward.' },
+        { id: 'upgrade-faq-8', title: 'Will I lose my files when upgrading to an SSD?', answer: 'Not when we clone a healthy drive, because your files move across with Windows. We still recommend a backup of anything irreplaceable before any drive change, and a failing source drive may need a different migration approach.' },
+        { id: 'upgrade-faq-9', title: 'What if my laptop uses BitLocker or device encryption?', answer: 'Many Windows 11 laptops encrypt the drive automatically. We secure the recovery key before changing drives so the new SSD boots without locking you out of your data.' },
+        { id: 'upgrade-faq-10', title: 'Can I mix different RAM sizes or brands?', answer: 'Often yes, but the modules run at the speed of the slowest one and dual-channel mode may not be possible. Two matched modules usually perform better than one, especially on laptops with integrated graphics, so we match modules where we can.' },
+        { id: 'upgrade-faq-11', title: 'Can you upgrade gaming laptops and desktop PCs?', answer: 'Yes. Many gaming laptops and desktops have a second M.2 slot or extra memory slots, so you can add fast storage or more RAM without removing your existing drive.' },
+        { id: 'upgrade-faq-12', title: 'Can you upgrade a MacBook SSD or RAM?', answer: 'Only some older MacBook models allow storage or memory upgrades, and most recent models use soldered components that cannot be changed. Send us the exact model and we tell you what is possible.' },
+        { id: 'upgrade-faq-13', title: 'How long does an SSD or RAM upgrade take?', answer: 'A straightforward RAM or SSD installation is often completed the same day when booked before 11:00 AM and a compatible part is available. An SSD upgrade with a large Windows clone can take until the next day.' }
       ],
-      relatedServiceIds: ['srv-laptop', 'srv-gaming', 'srv-gaming-laptop-cleaning', 'srv-gaming-laptop'],
+      relatedServiceIds: ['srv-laptop', 'srv-gaming-laptop', 'srv-gaming', 'srv-desktop-pc', 'srv-gaming-laptop-cleaning'],
       relatedProblemIds: ['problem-slow', 'problem-freezing-crashing'],
-      relatedBrandIds: ['brand-dell', 'brand-hp', 'brand-lenovo', 'brand-asus'],
+      relatedBrandIds: ['brand-dell', 'brand-hp', 'brand-lenovo', 'brand-asus', 'brand-acer', 'brand-msi'],
       relatedResourcePaths: [
         { label: 'Windows 11 100% Disk Usage: Causes & Solutions', path: '/blog/windows-11-100-disk-usage-causes-solutions' },
         { label: 'Why 8GB RAM Is No Longer Enough', path: '/blog/why-8gb-ram-is-no-longer-enough-for-windows-11' },
+        { label: 'Why Is My Laptop So Slow in 2026?', path: '/blog/why-is-my-laptop-so-slow-2026' },
+        { label: 'SSD Not Detected in Windows 11', path: '/guides/ssd-not-detected-windows-11' },
         { label: 'Laptop Buying Guide 2026', path: '/blog/laptop-buying-guide-kuwait-2026' },
+        { label: 'KCROC Repair Pricing', path: '/pricing' },
       ],
       technicalOverview: {
         heading: 'SSD and RAM Upgrades Start With Compatibility',
         paragraphs: [
-          'An upgrade only helps when it matches the machine and the actual bottleneck. We identify whether the laptop uses SATA or NVMe storage, check the physical format and supported capacity, and determine whether RAM is replaceable, partially soldered, or fully soldered.',
-          'For storage migrations, we assess the health of the existing drive before cloning. A failing source drive may need a different migration strategy, while a healthy system can often be moved to the new SSD with its Windows installation and applications intact.'
+          'An upgrade only helps when it matches the machine and the actual bottleneck. We identify whether the laptop uses SATA or NVMe storage, check the physical format and supported capacity, and determine whether RAM is replaceable, partially soldered or fully soldered. Buying the wrong drive or memory is the most common upgrade mistake, which is why we check before you buy.',
+          'Storage: SATA SSDs (2.5-inch or M.2 SATA) are the right choice for older laptops with a 2.5-inch bay. NVMe SSDs use the M.2 PCIe slot and are several times faster. M.2 2280 is the most common length, while slim laptops, Microsoft Surface models and handheld PCs often use the shorter 2230 or 2242. A faster PCIe Gen4 or Gen5 drive still works in an older slot but runs at the slot’s speed, so we do not charge you extra for speed your laptop cannot use.',
+          'Memory: laptops use SO-DIMM modules, and the generation (DDR3/DDR3L, DDR4 or DDR5) is physically keyed, so modules cannot be mixed between generations. We confirm the number of slots, the maximum supported capacity and whether some or all of the memory is soldered to the motherboard. Two matched modules usually run in dual-channel mode, which helps performance, particularly on integrated graphics.',
+          'For storage migrations, we assess the health of the existing drive before cloning. A failing source drive may need a different migration strategy, while a healthy system can often be moved to the new SSD with its Windows installation and applications intact. On Windows 11 laptops that use BitLocker or device encryption, we secure the recovery key before any drive change.',
+          'Kuwait’s heat and dust put extra stress on laptops. A hard drive under thermal stress is slower and more likely to fail, and a laptop running at the limit of its memory runs hotter. When a laptop is already open for an upgrade we can also check the fans and thermal paste, and our cleaning and thermal service covers both.'
         ]
       },
       repairDecision: {
         heading: 'Which Upgrade Makes More Sense?',
         items: [
-          { condition: 'Mechanical HDD is the main bottleneck', action: 'Prioritize a compatible SSD to improve storage responsiveness and boot times.' },
-          { condition: 'Memory pressure causes heavy paging', action: 'Add compatible RAM when the laptop supports a memory upgrade.' },
-          { condition: 'RAM is soldered or storage is restricted', action: 'Confirm the platform limits before spending money on incompatible upgrade hardware.' },
+          { condition: 'Mechanical HDD is the main bottleneck', action: 'Prioritize a compatible SSD. It is usually the single biggest improvement to boot time and responsiveness on an older laptop.' },
+          { condition: 'Windows shows 100% disk usage on an HDD', action: 'Rule out software causes first, then move to an SSD, which removes the slow-drive bottleneck rather than hiding it.' },
+          { condition: 'Memory pressure causes heavy paging', action: 'Add compatible RAM when the laptop supports a memory upgrade. 16GB is a comfortable level for most Windows 11 users.' },
+          { condition: 'Laptop already has an SSD and still feels slow', action: 'Check RAM, heat, startup load and battery health before spending money on storage.' },
+          { condition: 'RAM is soldered or storage is restricted', action: 'Confirm the platform limits before spending money on incompatible upgrade hardware. We check your exact model for free.' },
           { condition: 'Existing drive is unhealthy', action: 'Prioritize a safe migration plan rather than blindly cloning a failing disk.' }
         ]
       },
-      inspectionChecklist: ['Check storage health', 'Identify SSD interface', 'Check RAM type and slots', 'Confirm maximum supported capacity', 'Assess cloning suitability', 'Verify boot and stability after upgrade'],
+      inspectionChecklist: ['Check storage health', 'Identify SSD interface (SATA or NVMe)', 'Confirm M.2 length and slot type', 'Check RAM type and generation', 'Count memory slots and check for soldered RAM', 'Confirm maximum supported capacity', 'Check BitLocker or device encryption', 'Assess cloning suitability', 'Verify boot and stability after upgrade', 'Confirm memory is recognised at the right speed'],
       performanceOutcomes: { disclaimer: 'Actual gains depend on the original hardware and the bottleneck identified during diagnosis.', items: [
-        { metric: 'Boot responsiveness', outcome: 'SSD upgrades can substantially reduce storage-related boot and application loading delays.' },
-        { metric: 'Multitasking', outcome: 'Additional compatible RAM can reduce paging when memory pressure is the actual bottleneck.' }
+        { metric: 'Boot and app loading', outcome: 'Replacing a mechanical hard drive with an SSD can substantially reduce storage-related boot and application loading delays, because even a SATA SSD is several times faster than a laptop hard drive in everyday use.' },
+        { metric: 'Storage speed', outcome: 'A compatible NVMe SSD can be several times faster again than a SATA SSD, within the limits of your laptop’s M.2 slot.' },
+        { metric: 'Multitasking', outcome: 'Additional compatible RAM can reduce paging when memory pressure is the actual bottleneck, so browsers, video calls and Office apps stay responsive together.' },
+        { metric: 'Storage space', outcome: 'A larger SSD, with your Windows cloned across, gives you room for files and updates without a fresh install.' }
       ] },
       contentImages: [
         { src: '/images/gallery/laptop-ram-ssd-wifi-card-spare-parts-inventory-kuwait.webp', alt: 'Spare RAM modules, SSDs and Wi-Fi cards in stock at the KCROC repair shop in Kuwait for laptop upgrades', width: 1200, height: 1200, placement: 'hero', caption: 'RAM, SSD and Wi-Fi card stock on the KCROC bench for laptop upgrades in Kuwait.' },
@@ -1570,7 +1638,7 @@ export const rawGraphData: RawGraphData = {
         { src: IMAGES.upgrades.ssdMicron.src, alt: IMAGES.upgrades.ssdMicron.alt, width: IMAGES.upgrades.ssdMicron.width, height: IMAGES.upgrades.ssdMicron.height, placement: 'process', caption: 'M.2 NVMe storage selected and installed after compatibility checks.' }
       ],
       warranty: { duration: '30 Days', coverage: 'Parts and labour for the completed SSD/RAM installation', noFixNoFee: true },
-      seo: { title: 'Laptop SSD & RAM Upgrade Kuwait | Speed Up Slow Laptop | KCROC', description: 'Speed up a slow laptop with a compatible SSD or RAM upgrade in Kuwait. We check the real bottleneck, test compatibility and offer cloning where suitable.', canonicalUrl: 'https://www.computerrepairkuwait.com/ssd-ram-upgrade-kuwait', locale: 'en_KW', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/ssd-ram-upgrade-kuwait', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/ssd-ram-upgrade-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/ssd-ram-upgrade-kuwait' }, ogType: 'article', schemaTypes: ['Service', 'FAQPage'], lastModified: '2026-10-02T00:00:00+03:00' },
+      seo: { title: 'Laptop SSD & RAM Upgrade Kuwait | Free Pickup | KCROC', description: 'Laptop SSD, NVMe and RAM upgrades in Kuwait. We check compatibility, clone Windows and test the result. Labour from 5 KWD + part. Free pickup and delivery.', canonicalUrl: 'https://www.computerrepairkuwait.com/ssd-ram-upgrade-kuwait', locale: 'en_KW', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/ssd-ram-upgrade-kuwait', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/ssd-ram-upgrade-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/ssd-ram-upgrade-kuwait' }, ogType: 'article', schemaTypes: ['Service', 'FAQPage'], lastModified: '2026-10-29T00:00:00+03:00' },
       navigationPriority: 52, isFeatured: false, popular: false
     } as ServiceEntity,
 
