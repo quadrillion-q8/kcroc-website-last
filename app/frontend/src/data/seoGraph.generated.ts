@@ -3313,33 +3313,6 @@ export const SEO_GRAPH = {
       ]
     },
     {
-      "id": "loc-shaab",
-      "entityType": "Location",
-      "isActive": true,
-      "title": "Shaab",
-      "slug": "shaab",
-      "seo": {
-        "title": "Computer Repair Shaab Kuwait | Free Pickup | KCROC",
-        "description": "Laptop, MacBook and computer repair in Shaab with free pickup, component-level diagnostics and delivery from KCROC's Hawalli workshop.",
-        "canonicalUrl": "https://www.computerrepairkuwait.com/location/shaab",
-        "ogType": "website",
-        "schemaTypes": [
-          "LocalBusiness"
-        ],
-        "lastModified": "2026-10-02T00:00:00+03:00"
-      },
-      "coords": {
-        "lat": 29.35,
-        "lng": 48.035
-      },
-      "serviceAreas": [
-        "Shaab",
-        "Kuwait City",
-        "Salmiya",
-        "Rumaithiya"
-      ]
-    },
-    {
       "id": "loc-surra",
       "entityType": "Location",
       "isActive": true,
@@ -3475,60 +3448,6 @@ export const SEO_GRAPH = {
       ]
     },
     {
-      "id": "loc-qurain",
-      "entityType": "Location",
-      "isActive": true,
-      "title": "Qurain",
-      "slug": "qurain",
-      "seo": {
-        "title": "Computer Repair Qurain Kuwait | Free Pickup | KCROC",
-        "description": "Computer, laptop and MacBook repair in Qurain with free pickup and delivery, including screen, charging and motherboard repair.",
-        "canonicalUrl": "https://www.computerrepairkuwait.com/location/qurain",
-        "ogType": "website",
-        "schemaTypes": [
-          "LocalBusiness"
-        ],
-        "lastModified": "2026-10-02T00:00:00+03:00"
-      },
-      "coords": {
-        "lat": 29.232,
-        "lng": 48.065
-      },
-      "serviceAreas": [
-        "Qurain",
-        "Adan",
-        "Qusour",
-        "Mubarak Al-Kabeer"
-      ]
-    },
-    {
-      "id": "loc-qortuba",
-      "entityType": "Location",
-      "isActive": true,
-      "title": "Qortuba",
-      "slug": "qortuba",
-      "seo": {
-        "title": "Computer Repair Qortuba Kuwait | Free Pickup | KCROC",
-        "description": "Laptop, MacBook and computer repair in Qortuba with free pickup and delivery, including screen, charging, power and motherboard diagnosis.",
-        "canonicalUrl": "https://www.computerrepairkuwait.com/location/qortuba",
-        "ogType": "website",
-        "schemaTypes": [
-          "LocalBusiness"
-        ],
-        "lastModified": "2026-10-02T00:00:00+03:00"
-      },
-      "coords": {
-        "lat": 29.31194,
-        "lng": 47.98727
-      },
-      "serviceAreas": [
-        "Qortuba",
-        "Adailiya",
-        "Rawda",
-        "Surra"
-      ]
-    },
-    {
       "id": "loc-rawda",
       "entityType": "Location",
       "isActive": true,
@@ -3580,33 +3499,6 @@ export const SEO_GRAPH = {
         "Abu Ftaira",
         "Fnaitees",
         "Mubarak Al-Kabeer"
-      ]
-    },
-    {
-      "id": "loc-adailiya",
-      "entityType": "Location",
-      "isActive": true,
-      "title": "Adailiya",
-      "slug": "adailiya",
-      "seo": {
-        "title": "Computer Repair Adailiya Kuwait | Free Pickup | KCROC",
-        "description": "Laptop, MacBook and computer repair in Adailiya with free pickup and delivery, including screen, battery, charging and motherboard diagnosis.",
-        "canonicalUrl": "https://www.computerrepairkuwait.com/location/adailiya",
-        "ogType": "website",
-        "schemaTypes": [
-          "LocalBusiness"
-        ],
-        "lastModified": "2026-10-02T00:00:00+03:00"
-      },
-      "coords": {
-        "lat": 29.32655,
-        "lng": 47.98141
-      },
-      "serviceAreas": [
-        "Adailiya",
-        "Qortuba",
-        "Rawda",
-        "Qadsiya"
       ]
     },
     {
@@ -5992,20 +5884,6 @@ export const SEO_GRAPH = {
         ]
       },
       {
-        "id": "loc-shaab",
-        "title": "Shaab",
-        "coords": {
-          "lat": 29.35,
-          "lng": 48.035
-        },
-        "serviceAreas": [
-          "Shaab",
-          "Kuwait City",
-          "Salmiya",
-          "Rumaithiya"
-        ]
-      },
-      {
         "id": "loc-surra",
         "title": "Surra",
         "coords": {
@@ -6076,34 +5954,6 @@ export const SEO_GRAPH = {
         ]
       },
       {
-        "id": "loc-qurain",
-        "title": "Qurain",
-        "coords": {
-          "lat": 29.232,
-          "lng": 48.065
-        },
-        "serviceAreas": [
-          "Qurain",
-          "Adan",
-          "Qusour",
-          "Mubarak Al-Kabeer"
-        ]
-      },
-      {
-        "id": "loc-qortuba",
-        "title": "Qortuba",
-        "coords": {
-          "lat": 29.31194,
-          "lng": 47.98727
-        },
-        "serviceAreas": [
-          "Qortuba",
-          "Adailiya",
-          "Rawda",
-          "Surra"
-        ]
-      },
-      {
         "id": "loc-rawda",
         "title": "Rawda",
         "coords": {
@@ -6129,20 +5979,6 @@ export const SEO_GRAPH = {
           "Abu Ftaira",
           "Fnaitees",
           "Mubarak Al-Kabeer"
-        ]
-      },
-      {
-        "id": "loc-adailiya",
-        "title": "Adailiya",
-        "coords": {
-          "lat": 29.32655,
-          "lng": 47.98141
-        },
-        "serviceAreas": [
-          "Adailiya",
-          "Qortuba",
-          "Rawda",
-          "Qadsiya"
         ]
       }
     ]

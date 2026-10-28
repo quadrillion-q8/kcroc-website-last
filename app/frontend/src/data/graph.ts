@@ -2224,7 +2224,6 @@ export const rawGraphData: RawGraphData = {
         { label: 'PC won’t turn on', path: '/guides/gaming-pc-not-turning-on-kuwait', description: 'Use the power and no-start troubleshooting path before replacing the PSU or motherboard.' },
         { label: 'PC has no display', path: '/guides/gaming-pc-black-screen-no-display-kuwait', description: 'Separate monitor, cable, RAM, GPU, BIOS and motherboard causes.' },
         { label: 'PC shuts down under load', path: '/guides/gaming-pc-random-shutdown-kuwait', description: 'Check thermal protection, PSU output and motherboard power delivery.' },
-        { label: 'PC BIOS update failed', path: '/guides/gaming-pc-bios-failed-update-kuwait', description: 'Understand recovery options before clearing firmware or replacing the board.' }
       ],
       process: [
         { step: 1, title: 'Free Pickup', description: 'We collect the desktop or tower from your home or office anywhere in Kuwait.' },
@@ -2309,7 +2308,6 @@ export const rawGraphData: RawGraphData = {
         { label: 'Gaming PC has no display', path: '/guides/gaming-pc-black-screen-no-display-kuwait', description: 'Fans and RGB work but the monitor stays black or reports no signal.' },
         { label: 'GPU artifacting / black screen', path: '/guides/gaming-gpu-artifacts-repair-kuwait', description: 'Colored blocks, flickering textures, driver resets or black screens under GPU load.' },
         { label: 'Gaming PC shuts down while gaming', path: '/guides/gaming-pc-random-shutdown-kuwait', description: 'Instant power loss or restarts during demanding games and stress tests.' },
-        { label: 'BIOS update failed / no POST', path: '/guides/gaming-pc-bios-failed-update-kuwait', description: 'The system stopped booting or displaying after a BIOS/UEFI update.' },
       ],
       deviceTypes: [
         'Custom Desktop Builds', 
@@ -2371,7 +2369,6 @@ export const rawGraphData: RawGraphData = {
         { label: 'Gaming PC Black Screen / No Display Guide', path: '/guides/gaming-pc-black-screen-no-display-kuwait' },
         { label: 'GPU Artifacting & Black Screen Guide', path: '/guides/gaming-gpu-artifacts-repair-kuwait' },
         { label: 'Gaming PC Random Shutdown Guide', path: '/guides/gaming-pc-random-shutdown-kuwait' },
-        { label: 'Failed Gaming PC BIOS Update Guide', path: '/guides/gaming-pc-bios-failed-update-kuwait' },
         { label: 'BIOS / UEFI Recovery Guide', path: '/guides/bios-uefi-recovery-kuwait' },
       ],
       coreFeatures: [
@@ -3855,30 +3852,7 @@ export const rawGraphData: RawGraphData = {
       navigationPriority: 78
     } as LocationEntity,
 
-    'loc-shaab': { id: 'loc-shaab', slug: 'shaab', entityType: 'Location', isActive: true, isPhysicalLocation: false,
-      title: 'Shaab',
-      description: 'Professional laptop, MacBook and computer repair for Shaab residents and businesses, with pickup to KCROC\'s Hawalli lab.',
-      localIntro: "Residents and offices in Shaab can arrange free device collection, with coverage extending toward Kuwait City, Salmiya and Rumaithiya. At the Hawalli lab, technicians diagnose laptop, MacBook and computer faults before deciding whether a screen, charging component or board-level repair is appropriate. The device is tested before it is returned.",
-      localHighlights: [
-        { title: 'Pickup for homes and offices', description: 'Collection is available for residents and small businesses in Shaab and nearby areas.' },
-        { title: 'Display and no-power diagnostics', description: 'Black screens, no-power symptoms and charging faults are checked systematically before parts are replaced.' },
-        { title: 'MacBook and component repair', description: 'MacBook board faults and component-level laptop repairs are available through the central lab.' },
-        { title: 'Return after testing', description: 'Devices are tested after repair before they are delivered back to the customer.' }
-      ],
-            localFaqs: [
-        { id: "faq-shaab-local-1", question: "Do you collect from Shaab, Kuwait City, Salmiya and Rumaithiya?", answer: "Yes. Shaab, Kuwait City, Salmiya and Rumaithiya are covered by free pickup and delivery. Send your area and the device symptoms on WhatsApp and we will arrange collection." },
-        { id: "faq-shaab-local-2", question: "My laptop gets stuck on the logo or restarts again and again. What does that mean?", answer: "A boot loop can come from a failing drive, corrupted system files, faulty memory or a hardware fault on the board. Avoid repeated forced shutdowns, because they can make file corruption worse. Tell us what you see on screen and we will test the drive and memory before looking at the board." },
-        { id: "faq-shaab-local-3", question: "The charging port on my laptop is loose. Can it be fixed without changing the board?", answer: "In many cases yes. A loose charging port can be resoldered or replaced as a component, without replacing the whole motherboard. We inspect the port and the surrounding board and confirm the repair path and quote before any paid work." },
-        { id: "faq-shaab-local-4", question: "My MacBook gets wet and the keyboard no longer responds. What now?", answer: "Turn it off straight away, do not charge it and do not keep trying the keys. Liquid under the keyboard can reach the board and corrode it over time. Bring it in quickly so we can open it, check for corrosion and repair at component level." },
-        { id: "faq-shaab-local-5", question: "My laptop screen shows coloured stripes. Is it the panel?", answer: "Coloured stripes can come from the panel, the display cable or the graphics hardware. Plug in an external monitor. If the stripes appear there too, the graphics hardware is more likely at fault. If the external screen is clean, the panel or cable is more likely. We confirm the cause before quoting." },
-        { id: "faq-shaab-local-6", question: "Is there a branch in Shaab, and where is the repair done?", answer: "There is no walk-in branch in Shaab. Devices are repaired at our Hawalli lab (Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19), open daily from 10:00 AM to 10:00 PM. You can bring a device in yourself or have it collected for free, and repairs carry a 30-day warranty." },
-      ],
-      landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)',
-      coords: { lat: 29.3500, lng: 48.0350 }, serviceRadiusKm: 12, serviceAreas: ['Shaab', 'Kuwait City', 'Salmiya', 'Rumaithiya'],
-      relatedServiceIds: ['srv-laptop', 'srv-screen', 'srv-charging-port', 'srv-macbook'], relatedProblemIds: ['problem-cracked-screen', 'problem-no-power', 'problem-not-charging', 'problem-black-screen'], contentImage: { src: IMAGES.macbook.logicBoard.src, alt: IMAGES.macbook.logicBoard.alt, width: IMAGES.macbook.logicBoard.width, height: IMAGES.macbook.logicBoard.height, caption: 'Component-level MacBook and laptop diagnostics for Shaab customers.' },
-      seo: { title: "Computer Repair Shaab | Free Pickup | KCROC", description: "Laptop, MacBook and computer repair for Shaab with free pickup and delivery. Diagnosis and approved repairs are carried out in Hawalli.", canonicalUrl: 'https://www.computerrepairkuwait.com/location/shaab', ogType: 'website', schemaTypes: ['LocalBusiness'], lastModified: '2026-10-02T00:00:00+03:00' },
-      navigationPriority: 76
-    } as LocationEntity,
+    
 
     'loc-surra': { id: 'loc-surra', slug: 'surra', entityType: 'Location', isActive: true, isPhysicalLocation: false,
       title: 'Surra',
@@ -4005,55 +3979,9 @@ export const rawGraphData: RawGraphData = {
       navigationPriority: 64
     } as LocationEntity,
 
-    'loc-qurain': { id: 'loc-qurain', slug: 'qurain', entityType: 'Location', isActive: true, isPhysicalLocation: false,
-      title: 'Qurain',
-      description: 'Computer, laptop and MacBook repair for Qurain with free pickup and delivery to KCROC\'s Hawalli lab.',
-      localIntro: "For Qurain, Adan, Qusour and Mubarak Al-Kabeer, KCROC arranges collection and returns devices after repair and testing at the Hawalli workshop. Our technicians diagnose laptop, MacBook and PC faults before recommending a replacement, including SSD/RAM upgrades and component-level motherboard work when appropriate. There is no separate KCROC storefront in Qurain.",
-      localHighlights: [
-        { title: 'Pickup across Qurain', description: 'Free collection is available throughout Qurain and nearby Mubarak Al-Kabeer areas.' },
-        { title: 'Motherboard and power diagnosis', description: 'No-power, intermittent power and charging problems are investigated at component level where possible.' },
-        { title: 'MacBook and screen repair', description: 'MacBook board faults and laptop display problems are supported through the central repair lab.' },
-        { title: 'No need to travel', description: 'The pickup-and-delivery workflow means customers can start the repair from home.' }
-      ],
-            localFaqs: [
-        { id: "faq-qurain-local-1", question: "Do you collect from Qurain, Adan and Qusour?", answer: "Yes. Qurain, Adan and Qusour are covered by free pickup and delivery. Send your area and the device symptoms on WhatsApp and we will arrange collection." },
-        { id: "faq-qurain-local-2", question: "My MacBook shows it is plugged in but the battery percentage keeps falling. What should I check?", answer: "Try a different USB-C cable and a different port first, and look inside the port for lint or debris. If the charger light or the MacBook still shows no charging, the fault may be in the charging circuit on the board rather than the adapter. We test the charger and the power path on the bench and explain what we find before any paid repair." },
-        { id: "faq-qurain-local-3", question: "I spilled a drink on my laptop. What should I do before you collect it?", answer: "Switch it off straight away, unplug the charger and do not try to turn it on again to see if it still works. Do not charge it. Liquid residue keeps corroding the board after the spill, so it is better to hand it over quickly. We open it, inspect for corrosion and clean and repair at component level where possible." },
-        { id: "faq-qurain-local-4", question: "My laptop has power but nothing appears on screen. Is the motherboard dead?", answer: "Not necessarily. Connect an external monitor or TV if you can. If that works, the panel or its cable is the likely cause. If there is still no image, we check the power rails and the board components on the bench. A dead-looking laptop is often a failed component rather than a failed motherboard." },
-        { id: "faq-qurain-local-5", question: "My laptop screen has lines or a cracked corner. Can the screen be replaced, or is it the board?", answer: "Vertical or horizontal lines can come from the panel, the display cable or, less often, the board. A physical crack means the panel needs replacing. Tell us the exact model when you message us so we can check that a matching panel is available, and we confirm the quote before paid work begins." },
-        { id: "faq-qurain-local-6", question: "Is there a branch in Qurain, and where is the repair done?", answer: "There is no walk-in branch in Qurain. Devices are repaired at our Hawalli lab (Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19), open daily from 10:00 AM to 10:00 PM. You can bring a device in yourself or have it collected for free, and repairs carry a 30-day warranty." },
-      ],
-      landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)',
-      coords: { lat: 29.2320, lng: 48.0650 }, serviceRadiusKm: 20, serviceAreas: ['Qurain', 'Adan', 'Qusour', 'Mubarak Al-Kabeer'],
-      relatedServiceIds: ['srv-laptop', 'srv-macbook', 'srv-motherboard', 'srv-ssd-ram'], relatedProblemIds: ['problem-slow', 'problem-no-power', 'problem-windows-wont-boot', 'problem-not-charging'], contentImage: { src: IMAGES.macbook.macbookProOpenMacosScreen.src, alt: IMAGES.macbook.macbookProOpenMacosScreen.alt, width: IMAGES.macbook.macbookProOpenMacosScreen.width, height: IMAGES.macbook.macbookProOpenMacosScreen.height, caption: 'MacBook and laptop repair serving Qurain and nearby Mubarak Al-Kabeer areas.' },
-      seo: { title: "Computer Repair Qurain | Free Pickup | KCROC", description: "Laptop and computer repair for Qurain, Adan and Qusour, with free pickup and delivery after diagnosis and testing at our Hawalli lab.", canonicalUrl: 'https://www.computerrepairkuwait.com/location/qurain', ogType: 'website', schemaTypes: ['LocalBusiness'], lastModified: '2026-10-02T00:00:00+03:00' },
-      navigationPriority: 60
-    } as LocationEntity,
+    
 
-    'loc-qortuba': { id: 'loc-qortuba', slug: 'qortuba', entityType: 'Location', isActive: true, isPhysicalLocation: false,
-      title: 'Qortuba',
-      description: 'Laptop, MacBook and computer repair for Qortuba with free pickup and delivery from KCROC\'s Hawalli workshop.',
-      localIntro: "KCROC offers pickup and delivery for Qortuba and nearby Adailiya, Rawda and Surra. Devices are diagnosed at the Hawalli lab for laptop, MacBook, screen, battery and charging problems, and the repair quote is shared before paid work begins. This keeps the service convenient without suggesting that KCROC operates a physical branch in Qortuba.",
-      localHighlights: [
-        { title: 'Central Kuwait pickup', description: 'Free pickup is available throughout Qortuba and nearby Capital Governorate neighborhoods.' },
-        { title: 'Power, charging and display faults', description: 'No-power, charging and black-screen symptoms are diagnosed systematically before parts are replaced.' },
-        { title: 'MacBook and motherboard repair', description: 'MacBook logic-board and component-level laptop faults are supported through the specialist repair lab.' },
-        { title: 'Tested before return', description: 'Repairs are function-tested at the workshop before the device is delivered back to the customer.' }
-      ],
-            localFaqs: [
-        { id: "faq-qortuba-local-1", question: "Do you collect from Qortuba, Adailiya, Rawda and Surra?", answer: "Yes. Qortuba, Adailiya, Rawda and Surra are covered by free pickup and delivery. Send your area and the device symptoms on WhatsApp and we will arrange collection." },
-        { id: "faq-qortuba-local-2", question: "My laptop will not connect to Wi-Fi but my phone does. What is wrong?", answer: "First check airplane mode and restart the laptop and router. If other devices connect normally, the problem is on the laptop: a driver issue, a disabled adapter, a loose antenna cable or a failed wireless card. We check each of these on the bench and only replace a part when it has actually failed." },
-        { id: "faq-qortuba-local-3", question: "My laptop restarts into a blue screen or boot loop. Should I reinstall Windows?", answer: "Please do not reinstall before checking the cause, because a reinstall can erase the files you want to keep. Blue screens can come from failing storage, faulty memory, overheating or a bad update. Tell us what error appeared and what happened just before it started, and we will diagnose the hardware first." },
-        { id: "faq-qortuba-local-4", question: "The battery on my MacBook drains very fast. Is it only the battery?", answer: "A worn battery is the most common cause, but heavy background processes and charging faults can look similar. Check Battery Health in System Settings if you can and note the cycle count. If the battery needs replacing, we explain the options and the quote before you decide." },
-        { id: "faq-qortuba-local-5", question: "My laptop screen cracked but the picture still shows. Is it safe to keep using it?", answer: "It is better not to. A cracked panel can spread, spill dark patches and in some cases cut the fingers. If the display still works, back up your files as soon as you can. We replace the panel with one matched to your model and confirm the quote first." },
-        { id: "faq-qortuba-local-6", question: "Is there a branch in Qortuba, and where is the repair done?", answer: "There is no walk-in branch in Qortuba. Devices are repaired at our Hawalli lab (Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19), open daily from 10:00 AM to 10:00 PM. You can bring a device in yourself or have it collected for free, and repairs carry a 30-day warranty." },
-      ],
-      landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)',
-      coords: { lat: 29.31194, lng: 47.98727 }, serviceRadiusKm: 12, serviceAreas: ['Qortuba', 'Adailiya', 'Rawda', 'Surra'],
-      relatedServiceIds: ['srv-laptop', 'srv-macbook', 'srv-screen', 'srv-battery'], relatedProblemIds: ['problem-cracked-screen', 'problem-black-screen', 'problem-not-charging', 'problem-slow'], contentImage: { src: IMAGES.macbook.logicBoard.src, alt: IMAGES.macbook.logicBoard.alt, width: IMAGES.macbook.logicBoard.width, height: IMAGES.macbook.logicBoard.height, caption: 'Component-level MacBook and laptop diagnostics serving Qortuba and nearby Capital areas.' },
-      seo: { title: "Computer Repair Qortuba | Free Pickup | KCROC", description: "Laptop and computer repair for Qortuba, Adailiya and Rawda. Arrange free pickup; repairs and testing are completed at our Hawalli lab.", canonicalUrl: 'https://www.computerrepairkuwait.com/location/qortuba', ogType: 'website', schemaTypes: ['LocalBusiness'], lastModified: '2026-10-02T00:00:00+03:00' },
-      navigationPriority: 54
-    } as LocationEntity,
+    
 
     'loc-rawda': { id: 'loc-rawda', slug: 'rawda', entityType: 'Location', isActive: true, isPhysicalLocation: false,
       title: 'Rawda',
@@ -4105,30 +4033,7 @@ export const rawGraphData: RawGraphData = {
       navigationPriority: 50
     } as LocationEntity,
 
-    'loc-adailiya': { id: 'loc-adailiya', slug: 'adailiya', entityType: 'Location', isActive: true, isPhysicalLocation: false,
-      title: 'Adailiya',
-      description: 'Laptop, MacBook and computer repair for Adailiya with free pickup and delivery to KCROC\'s Hawalli workshop.',
-      localIntro: "KCROC serves Adailiya and nearby Qortuba, Rawda and Qadsiya through free pickup and delivery. At the Hawalli lab, technicians diagnose laptop, MacBook and PC faults, including screen, storage, memory and motherboard issues, before recommending the appropriate repair or upgrade. The device is tested before return, and Adailiya is not presented as a physical branch.",
-      localHighlights: [
-        { title: 'Adailiya pickup coverage', description: 'Free collection is available across Adailiya and nearby Capital Governorate neighborhoods.' },
-        { title: 'Screen and battery replacement', description: 'Cracked displays, worn batteries and charging problems are diagnosed before compatible parts are fitted.' },
-        { title: 'Motherboard and power diagnosis', description: 'No-power and board faults are traced at component level where technically feasible.' },
-        { title: 'Central Hawalli repair lab', description: 'Adailiya is a service area rather than a separate walk-in branch; completed devices are tested before return.' }
-      ],
-            localFaqs: [
-        { id: "faq-adailiya-local-1", question: "Do you collect from Adailiya, Qortuba, Rawda and Qadsiya?", answer: "Yes. Adailiya, Qortuba, Rawda and Qadsiya are covered by free pickup and delivery. Send your area and the device symptoms on WhatsApp and we will arrange collection." },
-        { id: "faq-adailiya-local-2", question: "My laptop takes several minutes to start and everything is slow. What can I do?", answer: "A very slow laptop is often caused by a nearly full or failing drive, a hard disk that would benefit from an SSD, malware or overheating. Check how much storage is free and whether the fan is working hard. We can test the drive health and temperatures and tell you whether an SSD upgrade or a cleanup is the right fix." },
-        { id: "faq-adailiya-local-3", question: "My MacBook is not charging when I plug it in. Where should I start?", answer: "Try another cable and charger, check the port for debris and test a different power outlet. If it still does not charge, the fault could be the charging port, the battery or the charging circuit. We test the charger and the power path to find the cause before suggesting a repair." },
-        { id: "faq-adailiya-local-4", question: "My laptop does nothing when I press the power button. Is it the charger or the board?", answer: "Check the charger light, try another outlet and unplug all USB devices. Hold the power button for around 30 seconds and try again. If there is still no sign of life, the fault may be in the adapter, the battery or the power circuit on the board. We test each of these on the bench." },
-        { id: "faq-adailiya-local-5", question: "There are vertical lines across my laptop screen. Does that mean a new screen?", answer: "Lines can come from the panel, the display cable or the graphics circuit. If the lines also show on an external monitor, the board or graphics hardware is more likely at fault. If the external monitor looks perfect, the panel or cable is the probable cause. We confirm the fault before quoting." },
-        { id: "faq-adailiya-local-6", question: "Is there a branch in Adailiya, and where is the repair done?", answer: "There is no walk-in branch in Adailiya. Devices are repaired at our Hawalli lab (Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19), open daily from 10:00 AM to 10:00 PM. You can bring a device in yourself or have it collected for free, and repairs carry a 30-day warranty." },
-      ],
-      landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)',
-      coords: { lat: 29.32655, lng: 47.98141 }, serviceRadiusKm: 12, serviceAreas: ['Adailiya', 'Qortuba', 'Rawda', 'Qadsiya'],
-      relatedServiceIds: ['srv-laptop', 'srv-macbook', 'srv-ssd-ram', 'srv-screen'], relatedProblemIds: ['problem-slow', 'problem-no-power', 'problem-black-screen', 'problem-not-charging'], contentImage: { src: IMAGES.macbook.logicBoard.src, alt: IMAGES.macbook.logicBoard.alt, width: IMAGES.macbook.logicBoard.width, height: IMAGES.macbook.logicBoard.height, caption: 'MacBook and component-level laptop diagnostics serving Adailiya and nearby Capital areas.' },
-      seo: { title: "Computer Repair Adailiya | Free Pickup | KCROC", description: "Laptop and computer repair for Adailiya, Qortuba and Rawda. Free pickup and delivery; repairs are completed at our Hawalli workshop.", canonicalUrl: 'https://www.computerrepairkuwait.com/location/adailiya', ogType: 'website', schemaTypes: ['LocalBusiness'], lastModified: '2026-10-02T00:00:00+03:00' },
-      navigationPriority: 46
-    } as LocationEntity,
+    
 
     /* ═══════════════════════════════════════════════════════════════
        REVIEWS
@@ -5403,8 +5308,8 @@ const LOCATION_RELATIONSHIPS: Record<string, {
   fintas: { relatedServiceIds: ['srv-laptop','srv-gaming','srv-gaming-laptop-cleaning','srv-liquid-damage','srv-desktop-pc'], relatedProblemIds: ['problem-overheating','problem-no-power','problem-liquid-spill'], relatedBrandIds: ['brand-asus','brand-msi','brand-dell','brand-lenovo'], relatedLocationIds: ['loc-abu-halifa','loc-fahaheel','loc-mangaf'] },
   'sabah-al-salem': { relatedServiceIds: ['srv-laptop','srv-macbook','srv-screen','srv-motherboard','srv-charging-port'], relatedProblemIds: ['problem-no-power','problem-black-screen','problem-cracked-screen','problem-not-charging'], relatedBrandIds: ['brand-dell','brand-lenovo','brand-hp','brand-asus'], relatedLocationIds: ['loc-mubarak-al-kabeer','loc-fintas','loc-hawalli'] },
 
-  salwa: { relatedServiceIds: ['srv-laptop','srv-macbook','srv-screen','srv-battery'], relatedProblemIds: ['problem-cracked-screen','problem-black-screen','problem-not-charging','problem-liquid-spill'], relatedBrandIds: ['brand-dell','brand-lenovo','brand-hp','brand-asus'], relatedLocationIds: ['loc-salmiya','loc-rumaithiya','loc-shaab','loc-jabriya'] },
-  rumaithiya: { relatedServiceIds: ['srv-laptop','srv-gaming-laptop-cleaning','srv-macbook','srv-motherboard'], relatedProblemIds: ['problem-overheating','problem-no-power','problem-black-screen','problem-not-charging'], relatedBrandIds: ['brand-asus','brand-dell','brand-lenovo','brand-hp'], relatedLocationIds: ['loc-salwa','loc-shaab','loc-jabriya','loc-hawalli'] },
+  salwa: { relatedServiceIds: ['srv-laptop','srv-macbook','srv-screen','srv-battery'], relatedProblemIds: ['problem-cracked-screen','problem-black-screen','problem-not-charging','problem-liquid-spill'], relatedBrandIds: ['brand-dell','brand-lenovo','brand-hp','brand-asus'], relatedLocationIds: ['loc-salmiya','loc-rumaithiya','loc-jabriya'] },
+  rumaithiya: { relatedServiceIds: ['srv-laptop','srv-gaming-laptop-cleaning','srv-macbook','srv-motherboard'], relatedProblemIds: ['problem-overheating','problem-no-power','problem-black-screen','problem-not-charging'], relatedBrandIds: ['brand-asus','brand-dell','brand-lenovo','brand-hp'], relatedLocationIds: ['loc-salwa','loc-jabriya','loc-hawalli'] },
   shaab: { relatedServiceIds: ['srv-laptop','srv-macbook','srv-motherboard','srv-screen'], relatedProblemIds: ['problem-black-screen','problem-no-power','problem-cracked-screen','problem-liquid-spill'], relatedBrandIds: ['brand-dell','brand-lenovo','brand-hp','brand-asus'], relatedLocationIds: ['loc-kuwait-city','loc-salwa','loc-rumaithiya','loc-jabriya'] },
   surra: { relatedServiceIds: ['srv-laptop','srv-screen','srv-battery','srv-motherboard'], relatedProblemIds: ['problem-no-power','problem-not-charging','problem-overheating','problem-black-screen'], relatedBrandIds: ['brand-dell','brand-hp','brand-lenovo','brand-asus'], relatedLocationIds: ['loc-jabriya','loc-salwa','loc-hawalli'] },
   khaitan: { relatedServiceIds: ['srv-laptop','srv-charging-port','srv-screen','srv-motherboard'], relatedProblemIds: ['problem-no-power','problem-not-charging','problem-cracked-screen','problem-overheating'], relatedBrandIds: ['brand-dell','brand-hp','brand-lenovo','brand-asus'], relatedLocationIds: ['loc-farwaniya','loc-riggae','loc-ardiya'] },
@@ -5412,10 +5317,10 @@ const LOCATION_RELATIONSHIPS: Record<string, {
   ardiya: { relatedServiceIds: ['srv-laptop','srv-gaming','srv-motherboard','srv-screen'], relatedProblemIds: ['problem-overheating','problem-no-power','problem-black-screen','problem-not-charging'], relatedBrandIds: ['brand-asus','brand-msi','brand-dell','brand-lenovo'], relatedLocationIds: ['loc-farwaniya','loc-riggae'] },
   mahboula: { relatedServiceIds: ['srv-laptop','srv-macbook','srv-gaming','srv-gaming-laptop-cleaning'], relatedProblemIds: ['problem-overheating','problem-freezing-crashing','problem-no-power','problem-liquid-spill'], relatedBrandIds: ['brand-asus','brand-msi','brand-dell','brand-lenovo'], relatedLocationIds: ['loc-mangaf','loc-abu-halifa','loc-fahaheel','loc-ahmadi'] },
   qurain: { relatedServiceIds: ['srv-laptop','srv-macbook','srv-motherboard','srv-screen'], relatedProblemIds: ['problem-no-power','problem-not-charging','problem-black-screen','problem-liquid-spill'], relatedBrandIds: ['brand-dell','brand-lenovo','brand-hp','brand-asus'], relatedLocationIds: ['loc-mubarak-al-kabeer','loc-sabah-al-salem'] },
-  qortuba: { relatedServiceIds: ['srv-laptop','srv-macbook','srv-motherboard','srv-screen'], relatedProblemIds: ['problem-no-power','problem-black-screen','problem-not-charging','problem-overheating'], relatedBrandIds: ['brand-dell','brand-lenovo','brand-hp','brand-asus'], relatedLocationIds: ['loc-adailiya','loc-rawda','loc-surra','loc-jabriya'] },
-  rawda: { relatedServiceIds: ['srv-laptop','srv-macbook','srv-screen','srv-battery'], relatedProblemIds: ['problem-black-screen','problem-no-power','problem-not-charging','problem-liquid-spill'], relatedBrandIds: ['brand-dell','brand-hp','brand-lenovo','brand-asus'], relatedLocationIds: ['loc-adailiya','loc-qortuba','loc-surra','loc-hawalli'] },
+  qortuba: { relatedServiceIds: ['srv-laptop','srv-macbook','srv-motherboard','srv-screen'], relatedProblemIds: ['problem-no-power','problem-black-screen','problem-not-charging','problem-overheating'], relatedBrandIds: ['brand-dell','brand-lenovo','brand-hp','brand-asus'], relatedLocationIds: ['loc-rawda','loc-surra','loc-jabriya'] },
+  rawda: { relatedServiceIds: ['srv-laptop','srv-macbook','srv-screen','srv-battery'], relatedProblemIds: ['problem-black-screen','problem-no-power','problem-not-charging','problem-liquid-spill'], relatedBrandIds: ['brand-dell','brand-hp','brand-lenovo','brand-asus'], relatedLocationIds: ['loc-surra','loc-hawalli'] },
   messila: { relatedServiceIds: ['srv-laptop','srv-macbook','srv-gaming','srv-motherboard'], relatedProblemIds: ['problem-overheating','problem-no-power','problem-not-charging','problem-liquid-spill'], relatedBrandIds: ['brand-asus','brand-msi','brand-dell','brand-lenovo'], relatedLocationIds: ['loc-fintas','loc-mubarak-al-kabeer'] },
-  adailiya: { relatedServiceIds: ['srv-laptop','srv-macbook','srv-screen','srv-motherboard'], relatedProblemIds: ['problem-no-power','problem-black-screen','problem-not-charging','problem-cracked-screen'], relatedBrandIds: ['brand-dell','brand-hp','brand-lenovo','brand-asus'], relatedLocationIds: ['loc-qortuba','loc-rawda','loc-surra','loc-jabriya'] },
+  adailiya: { relatedServiceIds: ['srv-laptop','srv-macbook','srv-screen','srv-motherboard'], relatedProblemIds: ['problem-no-power','problem-black-screen','problem-not-charging','problem-cracked-screen'], relatedBrandIds: ['brand-dell','brand-hp','brand-lenovo','brand-asus'], relatedLocationIds: ['loc-rawda','loc-surra','loc-jabriya'] },
 };
 
 const rawEntities = Object.values(rawGraphData.entities);

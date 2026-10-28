@@ -387,26 +387,6 @@
       "permanent": true
     },
     {
-      "source": "/computer-repair-in-adailiya",
-      "destination": "/location/adailiya",
-      "permanent": true
-    },
-    {
-      "source": "/laptop-repair-in-adailiya",
-      "destination": "/location/adailiya",
-      "permanent": true
-    },
-    {
-      "source": "/computer-repair-adailiya",
-      "destination": "/location/adailiya",
-      "permanent": true
-    },
-    {
-      "source": "/laptop-repair-adailiya",
-      "destination": "/location/adailiya",
-      "permanent": true
-    },
-    {
       "source": "/computer-repair-in-ahmadi",
       "destination": "/location/ahmadi",
       "permanent": true
@@ -642,46 +622,6 @@
       "permanent": true
     },
     {
-      "source": "/computer-repair-in-qortuba",
-      "destination": "/location/qortuba",
-      "permanent": true
-    },
-    {
-      "source": "/laptop-repair-in-qortuba",
-      "destination": "/location/qortuba",
-      "permanent": true
-    },
-    {
-      "source": "/computer-repair-qortuba",
-      "destination": "/location/qortuba",
-      "permanent": true
-    },
-    {
-      "source": "/laptop-repair-qortuba",
-      "destination": "/location/qortuba",
-      "permanent": true
-    },
-    {
-      "source": "/computer-repair-in-qurain",
-      "destination": "/location/qurain",
-      "permanent": true
-    },
-    {
-      "source": "/laptop-repair-in-qurain",
-      "destination": "/location/qurain",
-      "permanent": true
-    },
-    {
-      "source": "/computer-repair-qurain",
-      "destination": "/location/qurain",
-      "permanent": true
-    },
-    {
-      "source": "/laptop-repair-qurain",
-      "destination": "/location/qurain",
-      "permanent": true
-    },
-    {
       "source": "/computer-repair-in-rawda",
       "destination": "/location/rawda",
       "permanent": true
@@ -799,26 +739,6 @@
     {
       "source": "/laptop-repair-salwa",
       "destination": "/location/salwa",
-      "permanent": true
-    },
-    {
-      "source": "/computer-repair-in-shaab",
-      "destination": "/location/shaab",
-      "permanent": true
-    },
-    {
-      "source": "/laptop-repair-in-shaab",
-      "destination": "/location/shaab",
-      "permanent": true
-    },
-    {
-      "source": "/computer-repair-shaab",
-      "destination": "/location/shaab",
-      "permanent": true
-    },
-    {
-      "source": "/laptop-repair-shaab",
-      "destination": "/location/shaab",
       "permanent": true
     },
     {

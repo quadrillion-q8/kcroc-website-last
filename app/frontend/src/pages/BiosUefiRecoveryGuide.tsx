@@ -921,7 +921,6 @@ export default function BiosUefiRecoveryGuide() {
           { href: '/laptop-wont-turn-on', label: "Laptop Won't Turn On", description: 'Separate a true no-power condition from a firmware or POST failure.' },
           { href: '/motherboard-repair-kuwait', label: 'Motherboard Repair Kuwait', description: 'For board-level diagnosis when recovery attempts do not explain the failure.' },
           { href: '/guides/bitlocker-recovery-key-after-bios-update', label: 'BitLocker Recovery Key After a BIOS Update', description: 'Why the blue recovery screen appears after a firmware update, where to find the key and how to avoid it.' },
-          { href: '/guides/gaming-pc-bios-failed-update-kuwait', label: 'Gaming PC Won’t Boot After a BIOS Update', description: 'The desktop and gaming-PC angle: board-level recovery features, no-display symptoms and GPU confusion.' },
         ]}
       />
 

@@ -207,10 +207,6 @@ export const NAV_GRAPH = {
         "path": "/location/rumaithiya"
       },
       {
-        "label": "Computer Repair Shaab",
-        "path": "/location/shaab"
-      },
-      {
         "label": "Computer Repair Surra",
         "path": "/location/surra"
       },
@@ -231,24 +227,12 @@ export const NAV_GRAPH = {
         "path": "/location/mahboula"
       },
       {
-        "label": "Computer Repair Qurain",
-        "path": "/location/qurain"
-      },
-      {
-        "label": "Computer Repair Qortuba",
-        "path": "/location/qortuba"
-      },
-      {
         "label": "Computer Repair Rawda",
         "path": "/location/rawda"
       },
       {
         "label": "Computer Repair Messila",
         "path": "/location/messila"
-      },
-      {
-        "label": "Computer Repair Adailiya",
-        "path": "/location/adailiya"
       }
     ]
   },
@@ -777,12 +761,6 @@ export const NAV_GRAPH = {
       "navigationPriority": 78
     },
     {
-      "id": "loc-shaab",
-      "slug": "shaab",
-      "title": "Shaab",
-      "navigationPriority": 76
-    },
-    {
       "id": "loc-surra",
       "slug": "surra",
       "title": "Surra",
@@ -813,18 +791,6 @@ export const NAV_GRAPH = {
       "navigationPriority": 64
     },
     {
-      "id": "loc-qurain",
-      "slug": "qurain",
-      "title": "Qurain",
-      "navigationPriority": 60
-    },
-    {
-      "id": "loc-qortuba",
-      "slug": "qortuba",
-      "title": "Qortuba",
-      "navigationPriority": 54
-    },
-    {
       "id": "loc-rawda",
       "slug": "rawda",
       "title": "Rawda",
@@ -835,12 +801,6 @@ export const NAV_GRAPH = {
       "slug": "messila",
       "title": "Messila",
       "navigationPriority": 50
-    },
-    {
-      "id": "loc-adailiya",
-      "slug": "adailiya",
-      "title": "Adailiya",
-      "navigationPriority": 46
     }
   ],
   "blogEntries": [
@@ -1025,15 +985,6 @@ export const NAV_GRAPH = {
       "iconKey": "gaming",
       "date": "2026-10-01",
       "primaryKeyword": "GPU Artifacting"
-    },
-    {
-      "id": "guide-gaming-pc-bios-failed-update-kuwait",
-      "slug": "guides/gaming-pc-bios-failed-update-kuwait",
-      "title": "Gaming PC Won’t Boot After a BIOS Update: Kuwait Recovery Guide",
-      "description": "Gaming PC won't boot after a BIOS update? Learn how to distinguish CMOS reset, firmware recovery and motherboard repair, with a Kuwait gaming-PC repair path.",
-      "iconKey": "gaming",
-      "date": "2026-10-01",
-      "primaryKeyword": "Gaming PC BIOS Update"
     },
     {
       "id": "guide-gaming-pc-black-screen-no-display-kuwait",
