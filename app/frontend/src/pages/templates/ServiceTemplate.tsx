@@ -46,7 +46,7 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
   const reverseProblemIds = KCROC_GRAPH.problems
     .filter((problem) => (problem.relatedServiceIds ?? []).includes(entity.id))
     .map((problem) => problem.id);
-  const relatedProblemIds = [...new Set([...(entity.relatedProblemIds ?? []), ...reverseProblemIds])].slice(0, 8);
+  const relatedProblemIds = entity.id === 'srv-gaming' ? [] : [...new Set([...(entity.relatedProblemIds ?? []), ...reverseProblemIds])].slice(0, 8);
 
   const reverseLocationIds = KCROC_GRAPH.locations
     .filter((location) => (location.relatedServiceIds ?? []).includes(entity.id))
@@ -134,7 +134,7 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
                 <div className="w-16 h-16 bg-brand-dark border border-slate-800 rounded-2xl flex items-center justify-center shadow-inner">
                   <ServiceIcon className="w-8 h-8 text-cyan-400" />
                 </div>
-                <h1 className="text-3xl sm:text-4xl md:text-5xl leading-tight font-black text-white">{isScreenService ? 'Laptop Screen Repair & Replacement in Kuwait' : isLaptopService ? 'Laptop Repair Kuwait — Component-Level Diagnostics & Hardware Restoration' : isMotherboardService ? 'Laptop & Desktop Motherboard Repair in Kuwait' : entity.title}</h1>
+                <h1 className="text-3xl sm:text-4xl md:text-5xl leading-tight font-black text-white">{isScreenService ? 'Laptop Screen Repair & Replacement in Kuwait' : isLaptopService ? 'Laptop Repair Kuwait — Component-Level Diagnostics & Hardware Restoration' : isMotherboardService ? 'Laptop & Desktop Motherboard Repair in Kuwait' : entity.id === 'srv-gaming' ? 'Gaming PC Repair Kuwait — Chip-Level GPU, Motherboard & Cooling Lab' : entity.title}</h1>
               </div>
 
               <div className="max-w-3xl mb-8 space-y-3">
@@ -435,7 +435,7 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
 
         {entity.performanceOutcomes && entity.performanceOutcomes.items.length > 0 && (
           <section className="max-w-7xl mx-auto px-6 py-12 border-t border-slate-800/50 relative z-10">
-            <h2 className="text-2xl font-bold mb-4 text-white">Typical Results</h2>
+            <h2 className="text-2xl font-bold mb-4 text-white">{entity.id === 'srv-gaming' ? 'KCROC Lab Verification Protocol' : 'Typical Results'}</h2>
             <p className="text-xs text-slate-500 mb-8 max-w-2xl">{entity.performanceOutcomes.disclaimer}</p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               {entity.performanceOutcomes.items.map((item, idx) => (
@@ -450,7 +450,7 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
 
         {entity.repairExamples && entity.repairExamples.items.length > 0 && (
           <section className="max-w-7xl mx-auto px-6 py-12 border-t border-slate-800/50 relative z-10">
-            <h2 className="text-2xl font-bold mb-4 text-white">Representative Repair Scenarios</h2>
+            <h2 className="text-2xl font-bold mb-4 text-white">{entity.id === 'srv-gaming' ? 'How Our Hawalli Lab Traces Complex Gaming PC Faults' : 'Representative Repair Scenarios'}</h2>
             <p className="text-xs text-slate-500 mb-8 max-w-2xl">{entity.repairExamples.disclaimer}</p>
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
               {entity.repairExamples.items.map((example) => (
@@ -667,8 +667,10 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
         <CoreRepairPillars
           context={entity.id === 'srv-laptop'
             ? 'Start with the broader computer-repair hub or explore motherboard-level repair for a focused board-fault diagnosis.'
-            : 'Use the main computer repair hub for broader PC and device faults, or the focused laptop repair hub when the device is a laptop.'}
-          excludeLaptopService={entity.id === 'srv-laptop'}
+            : entity.id === 'srv-gaming'
+              ? 'For gaming desktops, start with GPU, power-delivery, cooling and motherboard diagnosis; use the gaming-laptop repair path only when the device is a laptop.'
+              : 'Use the main computer repair hub for broader PC and device faults, or the focused laptop repair hub when the device is a laptop.'}
+          excludeLaptopService={entity.id === 'srv-laptop' || entity.id === 'srv-gaming'}
         />
 
         {relatedLocationIds.length > 0 && (
