@@ -447,8 +447,6 @@ export class NavigationCompiler {
         { id: 'a6', slug: 'contact', title: 'Contact', description: 'Get in touch or find our lab', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'contact', weight: 0, commercialIntent: 'info' },
         { id: 'a3', slug: 'faq', title: 'FAQ', description: 'Answers to common repair questions', iconKey: 'laptop', entityType: 'Page' as any, primaryKeyword: 'faq', weight: 0, commercialIntent: 'info' },
         { id: 'a4', slug: 'privacy-security-kuwait', title: 'Privacy & Security', description: 'How we protect your data and devices', iconKey: 'shield', entityType: 'Page' as any, primaryKeyword: 'privacy', weight: 0, commercialIntent: 'info' },
-        { id: 'a7', slug: 'gallery', title: 'Repair Gallery', description: 'Real repair photos from our Hawalli lab', iconKey: 'monitor', entityType: 'Page' as any, primaryKeyword: 'computer repair gallery Kuwait', weight: 0, commercialIntent: 'info' },
-        { id: 'a8', slug: 'book', title: 'Book a Free Pickup', description: 'Arrange pickup or drop-off for your device', iconKey: 'map-pin', entityType: 'Page' as any, primaryKeyword: 'book computer repair Kuwait', weight: 0, commercialIntent: 'transactional' },
       ],
       sections: [],
     };
@@ -481,8 +479,11 @@ export class NavigationCompiler {
         { id: 'nav_brands', label: 'Brands', href: '/brands', hasMega: true, megaMenuId: 'brands_mega' },
         { id: 'nav_pricing', label: 'Pricing', href: '/pricing', hasMega: true, megaMenuId: 'pricing_mega' },
         { id: 'nav_locations', label: 'Service Areas', href: '/locations', hasMega: true, megaMenuId: 'locations_mega' },
-        { id: 'nav_resources', label: 'Resources', href: '/guides', hasMega: true, megaMenuId: 'resources_mega' },
+        { id: 'nav_blog', label: 'Blog', href: '/blog', hasMega: true, megaMenuId: 'blog_mega' },
+        { id: 'nav_news', label: 'News', href: '/news', hasMega: true, megaMenuId: 'news_mega' },
+        { id: 'nav_guides', label: 'Guides', href: '/guides', hasMega: true, megaMenuId: 'guides_mega' },
         { id: 'nav_about', label: 'About', href: '/about', hasMega: true, megaMenuId: 'about_mega' },
+        { id: 'nav_gallery', label: 'Gallery', href: '/gallery', hasMega: true, megaMenuId: 'gallery_mega' },
       ],
       megaMenus: {
         services_mega: this.compileServicesMegaMenu(),
@@ -494,7 +495,6 @@ export class NavigationCompiler {
         blog_mega: this.compileBlogMegaMenu(),
         news_mega: this.compileNewsMegaMenu(),
         guides_mega: this.compileGuidesMegaMenu(),
-        resources_mega: this.compileResourcesMegaMenu(),
         about_mega: this.compileAboutMegaMenu(),
         gallery_mega: this.compileGalleryMegaMenu(),
       },
@@ -533,8 +533,11 @@ const ARABIC_HEADER_VARIANTS: Record<string, { label: string; href?: string }> =
   nav_brands: { label: 'الماركات' },
   nav_pricing: { label: 'الأسعار', href: '/ar/pricing' },
   nav_locations: { label: 'مناطق الخدمة', href: '/ar/near-me' },
-  nav_resources: { label: 'المصادر' },
+  nav_blog: { label: 'المدونة' },
+  nav_news: { label: 'الأخبار' },
+  nav_guides: { label: 'الأدلة' },
   nav_about: { label: 'عن KCROC' },
+  nav_gallery: { label: 'معرض الصور' },
 };
 
 export function getLocalizedNavigation(pathname: string): CompiledNavigationModel {
