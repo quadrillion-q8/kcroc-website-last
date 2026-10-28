@@ -103,6 +103,7 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
   );
 
   const isLaptopService = entity.id === 'srv-laptop';
+  const isMotherboardService = entity.id === 'srv-motherboard';
   const isScreenService = entity.id === 'srv-screen';
   const isMacbookScreenService = entity.id === 'srv-macbook-screen';
   const whatsappLink = buildWhatsAppLink(isScreenService
@@ -133,7 +134,7 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
                 <div className="w-16 h-16 bg-brand-dark border border-slate-800 rounded-2xl flex items-center justify-center shadow-inner">
                   <ServiceIcon className="w-8 h-8 text-cyan-400" />
                 </div>
-                <h1 className="text-3xl sm:text-4xl md:text-5xl leading-tight font-black text-white">{isScreenService ? 'Laptop Screen Repair & Replacement in Kuwait' : isLaptopService ? 'Laptop Repair Kuwait — Component-Level Diagnostics & Hardware Restoration' : entity.title}</h1>
+                <h1 className="text-3xl sm:text-4xl md:text-5xl leading-tight font-black text-white">{isScreenService ? 'Laptop Screen Repair & Replacement in Kuwait' : isLaptopService ? 'Laptop Repair Kuwait — Component-Level Diagnostics & Hardware Restoration' : isMotherboardService ? 'Laptop & Desktop Motherboard Repair in Kuwait' : entity.title}</h1>
               </div>
 
               <div className="max-w-3xl mb-8 space-y-3">
@@ -336,7 +337,7 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
             {entity.deviceTypes && entity.deviceTypes.length > 0 && (
               <div className="mb-8">
                 <h2 id="devices-we-cover-heading" className="text-2xl font-bold mb-6 text-white flex items-center gap-3">
-                  <Monitor className="w-6 h-6 text-cyan-400" aria-hidden="true" /> Devices We Cover
+                  <Monitor className="w-6 h-6 text-cyan-400" aria-hidden="true" /> {isMotherboardService ? 'Devices We Cover: Laptop, Desktop PC & MacBook Logic Boards' : 'Devices We Cover'}
                 </h2>
                 {' '}
                 <ul role="list" aria-label="Supported device types" className="flex flex-wrap gap-3">
@@ -602,7 +603,7 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
                   <div className="space-y-2">
                     {relatedServiceIds.map((id) => {
                       const item = KCROC_GRAPH.services.find((service) => service.id === id);
-                      return item ? <Link key={id} to={`/${item.slug}`} className="flex items-center justify-between gap-2 text-sm text-slate-300 hover:text-white transition-colors"><span>{item.title}</span><ArrowRight className="w-4 h-4 text-slate-600" /></Link> : null;
+                      return item ? <Link key={id} to={`/${item.slug}`} className="flex items-center justify-between gap-2 text-sm text-slate-300 hover:text-white transition-colors"><span>{item.id === 'srv-motherboard' ? 'Laptop Motherboard & MacBook Logic Board Repair' : item.title}</span><ArrowRight className="w-4 h-4 text-slate-600" /></Link> : null;
                     })}
                   </div>
                 </div>
