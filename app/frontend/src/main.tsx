@@ -65,21 +65,30 @@ if (typeof window !== 'undefined') {
     return mentionsManifest || looksLikeInvalidManifestJson;
   };
 
+  // sessionStorage can throw when storage is blocked. If the guard cannot be
+  // persisted we cannot prove a reload will not loop, so we do not reload.
+  const hasGuard = (key: string): boolean => {
+    try { return !!sessionStorage.getItem(key); } catch { return true; }
+  };
+
   const reloadOnce = (guardKey: string): boolean => {
-    if (sessionStorage.getItem(guardKey)) return false;
-    sessionStorage.setItem(guardKey, '1');
+    try {
+      if (sessionStorage.getItem(guardKey)) return false;
+      sessionStorage.setItem(guardKey, '1');
+    } catch {
+      return false;
+    }
     window.location.reload();
     return true;
   };
 
   window.addEventListener('vite:preloadError', (event) => {
-    if (sessionStorage.getItem(CHUNK_RELOAD_GUARD_KEY)) {
-      // Already tried once this session — a hard reload didn't fix it, so
-      // let the error surface normally (ErrorBoundary) rather than loop.
+    if (hasGuard(CHUNK_RELOAD_GUARD_KEY)) {
+      // Already tried once this session, or storage is unavailable — let the
+      // error surface normally rather than risking a reload loop.
       return;
     }
-    event.preventDefault();
-    reloadOnce(CHUNK_RELOAD_GUARD_KEY);
+    if (reloadOnce(CHUNK_RELOAD_GUARD_KEY)) event.preventDefault();
   });
 
   // vite-react-ssg can fetch build-time loader data from a generated manifest
@@ -92,8 +101,7 @@ if (typeof window !== 'undefined') {
     const value = event instanceof PromiseRejectionEvent ? event.reason : event.error ?? event.message;
     if (!isStaleSsgManifestError(value)) return;
 
-    event.preventDefault?.();
-    reloadOnce(SSG_MANIFEST_RELOAD_GUARD_KEY);
+    if (reloadOnce(SSG_MANIFEST_RELOAD_GUARD_KEY)) event.preventDefault?.();
   };
 
   window.addEventListener('unhandledrejection', (event) => handleStaleSsgManifestError(event));
@@ -101,9 +109,15 @@ if (typeof window !== 'undefined') {
 
   // Clear the guards once a page has loaded cleanly, so a later, unrelated
   // stale-build event is not blocked by a guard left behind from an old load.
+  // Clearing on `load` itself would defeat the loop protection (a still-missing
+  // chunk can fail right after load), so wait until the page has stayed healthy.
   window.addEventListener('load', () => {
-    sessionStorage.removeItem(CHUNK_RELOAD_GUARD_KEY);
-    sessionStorage.removeItem(SSG_MANIFEST_RELOAD_GUARD_KEY);
+    window.setTimeout(() => {
+      try {
+        sessionStorage.removeItem(CHUNK_RELOAD_GUARD_KEY);
+        sessionStorage.removeItem(SSG_MANIFEST_RELOAD_GUARD_KEY);
+      } catch { /* storage unavailable */ }
+    }, 15000);
   });
 }
 
