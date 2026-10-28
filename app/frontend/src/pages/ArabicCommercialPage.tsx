@@ -1368,7 +1368,7 @@ function ArabicComputerRepairPage({
 
               <p className="mt-7 text-sm font-black tracking-[0.08em] text-cyan-400">فني كمبيوتر وخدمة استلام من الباب</p>
               <h1 className="mt-3 max-w-4xl text-4xl font-black leading-[1.15] tracking-tight text-white sm:text-5xl lg:text-6xl">
-                تصليح كمبيوتر ولابتوب في الكويت
+                فني كمبيوتر في الكويت لتصليح الكمبيوتر واللابتوب
               </h1>
               <p className="mt-6 max-w-2xl text-base leading-8 text-slate-300 sm:text-lg">
                 جهازك خربان؟ يعلّق؟ يطفي؟ ما يشحن؟ أو حرارته ارتفعت؟ في KCROC نبدأ من <strong className="text-white">سبب المشكلة</strong>، مو من أول قطعة نقدر نبدلها.
@@ -1607,7 +1607,7 @@ function ArabicComputerRepairPage({
             <div className="rounded-3xl border border-slate-800 bg-slate-900/45 p-7 sm:p-9">
               <p className="text-sm font-black tracking-[0.08em] text-cyan-400">خدمة الكويت</p>
               <h2 id="local-service" className="mt-2 text-3xl font-black text-white sm:text-4xl">ما تحتاج تودي الجهاز بنفسك إلى حولي</h2>
-              <p className="mt-4 max-w-3xl leading-8 text-slate-400">مختبر KCROC في حولي، لكن خدمة الاستلام والتوصيل مصممة لتسهيل الموضوع على العميل في مناطق الكويت. أرسل منطقتك، ونرتب لك الخطوة التالية.</p>
+              <p className="mt-4 max-w-3xl leading-8 text-slate-400">مختبر KCROC موجود في حولي، في شارع ابن خلدون، مجمع الملا، محل 19 في البدروم. وإذا ما يناسبك تروح للمختبر، نرتب استلام جهازك من البيت أو المكتب في مناطق الكويت، ونرجعه لك بعد الإصلاح والاختبار. دز لنا منطقتك على واتساب ونوضح لك طريقة الاستلام.</p>
               <div className="mt-6 flex flex-wrap gap-2">
                 {LOCAL_LINKS.map((item) => (
                   <Link key={item.path} to={item.path} className="rounded-full border border-slate-800 bg-black/10 px-4 py-2 text-sm font-bold text-slate-300 transition hover:border-cyan-500/40 hover:text-cyan-300">{item.label}</Link>
