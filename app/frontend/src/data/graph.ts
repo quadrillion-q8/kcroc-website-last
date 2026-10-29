@@ -1327,7 +1327,7 @@ export const rawGraphData: RawGraphData = {
     'srv-macbook-screen': {
       id: 'srv-macbook-screen', slug: 'macbook-screen-replacement-kuwait', entityType: 'Service', isActive: true,
       title: 'MacBook Screen Replacement Kuwait', primaryKeyword: "MacBook screen replacement Kuwait", secondaryKeywords: ["MacBook display repair Kuwait","MacBook cracked screen repair","MacBook LCD replacement"], iconKey: 'monitor',
-      shortDescription: 'MacBook Air and Pro screen replacement in Kuwait for cracked, black, flickering or lined displays, with exact-model checks and a clear quote before fitting.',
+      shortDescription: 'MacBook Air and Pro screen replacement in Kuwait for cracked, black, flickering or lined displays, with exact-model checks and a clear quote before fitting. Supported Intel and Apple Silicon generations include M1–M5 where a compatible display assembly is available.',
       description: 'KCROC checks the exact MacBook model and generation before sourcing a compatible display assembly. For cracked glass, lines, flicker or a black screen, we inspect the display, cable, connector and backlight path first; these symptoms do not always mean the full assembly has failed. Replacement labour starts from 30 KWD plus the display assembly. We confirm part compatibility, availability, final price and expected turnaround before installation, then test image stability, brightness and supported display functions before return. Free pickup and delivery are available across Kuwait; repairs are completed at our Hawalli workshop.',
       idealCustomer: 'MacBook Air and MacBook Pro owners in Kuwait with cracked glass, dead pixels, black display, flickering, lines, backlight problems or display damage after a drop.',
       deviceTypes: ['MacBook Air', 'MacBook Pro 13-inch', 'MacBook Pro 14-inch', 'MacBook Pro 16-inch', 'Intel and Apple Silicon MacBooks'],
@@ -1337,6 +1337,69 @@ export const rawGraphData: RawGraphData = {
         'MacBook Air Display Replacement', 'MacBook Pro Retina Display Replacement', 'Model and Connector Matching',
         'Display Cable & Backlight Diagnosis', 'Dead Pixel and Uniformity Testing', 'True Tone / Display Function Checks Where Applicable',
         'Post-Repair Brightness and Colour Testing', 'Free Pick & Drop', '30-Day Warranty'
+      ],
+      advancedTechnicalSection: {
+        heading: 'MacBook Display Assembly, True Tone & Flex-Cable Checks',
+        intro: 'At our ESD-safe Hawalli workshop (Al Mullah Complex, Basement Shop 19), we verify the exact MacBook model number, generation, screen size and compatible assembly before quoting. These examples describe diagnostic paths, not a claim that every model has a known defect or supports every display function.',
+        items: [
+          {
+            title: 'Exact A-number and generation matching (Intel & Apple Silicon M1–M5)',
+            description: 'MacBook display assemblies vary by model year, screen size, connector and configuration. Representative A-numbers include MacBook Air A2337, A2681, A2941, A3113, A3114, A3240 and A3241, and MacBook Pro A2442, A2485, A2779, A2780, A2991, A2992, A3112, A3185, A3186, A3401, A3403, A3434, A3426, A3427, A3428 and A3429. We cross-check the A-number with the model identifier and part specification before sourcing; a serial number alone is not treated as a display-part specification.'
+          },
+          {
+            title: 'Flex-cable, hinge-angle and backlight diagnosis',
+            description: 'Selected 2016–2017 MacBook Pro models have been associated with uneven lower-edge backlighting (sometimes called the “stage light” effect) or image loss as the lid angle changes. Flex-cable wear is one possible cause, not an automatic diagnosis. We inspect the cable path, connectors, hinge movement and backlight circuit before recommending a panel or complete display assembly.'
+          },
+          {
+            title: 'True Tone and ambient-light function checks',
+            description: 'After fitting, we test True Tone and ambient-light response where the specific MacBook model and compatible assembly support those functions. Results can depend on generation, part compatibility and model-specific configuration, so we verify actual behavior instead of promising universal calibration or transfer.'
+          },
+          {
+            title: 'Hinge alignment and lid-angle checks',
+            description: 'A stiff, loose or misaligned hinge can strain the display assembly and flex cable. We inspect hinge and chassis alignment, look for abnormal cable tension and check image stability through a safe range of lid movement; any adjustment is based on the findings.'
+          },
+          {
+            title: 'Retina and Liquid Retina XDR display testing',
+            description: 'Where applicable, post-repair checks cover image stability, brightness, dead pixels and visible colour or uniformity issues. On compatible Liquid Retina XDR models we confirm the installed assembly against the exact model and test supported display functions before arranging return.'
+          }
+        ]
+      },
+      modelFaultMatrix: [
+        {
+          family: 'MacBook Air 13-inch (Intel and M1–M5)',
+          models: 'Intel: A1932, A2179 · M1: A2337 · M2: A2681 · M3: A3113 · M4: A3240 · M5: A3449',
+          diagnostics: 'Check the compatible Retina/Liquid Retina assembly for cracks, pressure damage, black display, flicker or lines. Confirm the exact year, model identifier, connector and part before quoting.'
+        },
+        {
+          family: 'MacBook Air 15-inch (M2–M5)',
+          models: 'M2: A2941 · M3: A3114 · M4: A3241 · M5: A3448',
+          diagnostics: 'Match the 15-inch assembly to the generation and configuration. Check panel damage, image stability, brightness, display connector and any related chassis or hinge damage.'
+        },
+        {
+          family: 'MacBook Pro 13-inch (Intel, M1 and M2)',
+          models: 'Intel: A1706, A1708, A1989, A2159, A2251, A2289 · M1/M2: A2338',
+          diagnostics: 'Inspect cracked panels, lines/flicker, connector or cable faults and the backlight path. Older Retina models can also show coating wear; the symptom and actual model determine the test path.'
+        },
+        {
+          family: 'Selected Intel MacBook Pro models associated with Flexgate symptoms',
+          models: 'Examples: 13-inch A1706 and 15-inch A1707 (selected 2016–2017 configurations)',
+          diagnostics: 'Uneven lower-edge backlighting or image changes at certain lid angles can point to display-flex or backlight trouble, but other faults can look similar. We inspect the cable, hinge path and backlight before recommending a full assembly.'
+        },
+        {
+          family: 'MacBook Pro 14-inch (M1–M5)',
+          models: 'M1: A2442 · M2: A2779 · M3: A2918/A2992 · M4: A3112/A3185/A3401 · M5: A3434/A3426/A3427',
+          diagnostics: 'Verify the exact chip, year and panel configuration before ordering. Checks can include cracked Liquid Retina XDR glass/panel, black display, lines, connector or camera-area ribbon inspection, brightness and pixel/uniformity testing where applicable.'
+        },
+        {
+          family: 'MacBook Pro 16-inch (M1–M5 Pro/Max)',
+          models: 'M1: A2485 · M2: A2780 · M3: A2991 · M4: A3186/A3403 · M5 Pro/Max: A3428/A3429',
+          diagnostics: 'Confirm size, generation and compatible Liquid Retina XDR assembly. Inspect impact damage, image dropouts, display cable/connector and supported brightness, pixel and uniformity behavior after installation.'
+        },
+        {
+          family: 'Older Retina MacBook Pro 13-inch and 15-inch',
+          models: 'Examples: A1502 (13-inch) and A1398 (15-inch), with year/configuration verification',
+          diagnostics: 'Check pressure cracks, coating wear on affected displays, cable/connectors and backlight symptoms before choosing repair or assembly replacement. These are possible faults, not defects assumed for every unit.'
+        }
       ],
       brands: ['MacBook Air', 'MacBook Pro'],
       whyChooseUs: [
@@ -1352,13 +1415,13 @@ export const rawGraphData: RawGraphData = {
         { id: 'macbook-dim-display', title: 'Dim or Uneven Backlight', severity: 'medium', description: 'A dim panel is checked for display and backlight faults rather than automatically replacing the full display.' }
       ],
       commercialAnswers: [
-        { question: 'How much does MacBook screen replacement cost in Kuwait?', answer: 'Display-replacement labour starts from 30 KWD, with the compatible display assembly charged separately. The exact model, generation and assembly availability determine the final quote, which we confirm before installation.' },
-        { question: 'Do you replace MacBook Air and MacBook Pro screens?', answer: 'Yes. We service supported MacBook Air and MacBook Pro models after verifying the exact model identifier and compatible display assembly.' },
-        { question: 'Can a black or flickering MacBook screen be a cable problem?', answer: 'Yes. A black screen, flicker or lines can come from the panel, connection, cable, backlight path or another hardware fault. We inspect likely causes before quoting a full display replacement.' },
-        { question: 'Can you replace a MacBook screen the same day?', answer: 'Same-day completion may be possible when a compatible display is in stock and the diagnosis and workload allow it. We confirm expected timing after checking availability.' },
-        { question: 'Will you access my files during screen replacement?', answer: 'Screen replacement is a hardware repair and does not normally require opening personal files. We do not browse stored files as part of this service; any additional step that could affect data is explained before proceeding.' },
-        { question: 'Do you offer free pickup and delivery across Kuwait?', answer: 'Yes. Free pickup and delivery are available across Kuwait, and the repair is completed at our Hawalli workshop.' },
-        { question: 'What warranty applies to MacBook screen replacement?', answer: 'A 30-day warranty covers the completed repair, including the replacement display assembly and labour, according to the service terms. We confirm applicable coverage before repair.' }
+        { question: 'How much does MacBook screen replacement cost in Kuwait?', answer: 'Display-replacement labour starts from 30 KWD, with the compatible display assembly charged separately. The exact model, generation and assembly availability determine the final quote, which we confirm before installation. Prices for 13-, 14-, 15- and 16-inch models depend on the compatible panel and current availability; we confirm the total before ordering or fitting.' },
+        { question: 'Do you replace MacBook Air and MacBook Pro screens?', answer: 'Yes. We service supported MacBook Air and MacBook Pro models after verifying the exact model identifier and compatible display assembly. Coverage includes supported Intel models and Apple Silicon generations from M1 through M5; we confirm the exact A-number, model identifier, size and part compatibility before sourcing.' },
+        { question: 'Can a black or flickering MacBook screen be a cable problem?', answer: 'Yes. A black screen, flicker or lines can come from the panel, connection, cable, backlight path or another hardware fault. We inspect likely causes before quoting a full display replacement. On selected Intel-era MacBook Pro models, flex-cable wear is sometimes called Flexgate; uneven lower-edge lighting or image changes with lid angle are clues rather than a diagnosis.' },
+        { question: 'Can you replace a MacBook screen the same day?', answer: 'Same-day completion may be possible when a compatible display is in stock and the diagnosis and workload allow it. We confirm expected timing after checking availability. It is not guaranteed before the exact model, compatible part stock, diagnosis and current workshop workload have been checked.' },
+        { question: 'Will you access my files during screen replacement?', answer: 'Screen replacement is a hardware repair and does not normally require opening personal files. We do not browse stored files as part of this service; any additional step that could affect data is explained before proceeding. A routine display replacement does not require a system login or browsing documents; if an additional test needs system access, we discuss it first. Back up important data when the MacBook is usable, because no repair process can promise zero data risk.' },
+        { question: 'Do you offer free pickup and delivery across Kuwait?', answer: 'Yes. Free pickup and delivery are available across Kuwait, and the repair is completed at our Hawalli workshop. Coverage includes all six Kuwait governorates, with pickup timing confirmed during booking for your specific area. Places such as Salmiya, Kuwait City and Fahaheel are service areas within governorates, not additional governorates.' },
+        { question: 'What warranty applies to MacBook screen replacement?', answer: 'A 30-day warranty covers the completed repair, including the replacement display assembly and labour, according to the service terms. We confirm applicable coverage before repair. Your quote will identify the agreed work and applicable warranty conditions before installation begins.' }
       ],
       process: [
         { step: 1, title: 'Confirm Model', description: 'Identify the exact MacBook generation and display configuration.' },
@@ -1386,7 +1449,7 @@ export const rawGraphData: RawGraphData = {
         { src: IMAGES.laptopHardware.laptopScreenAssemblyDisassemblyRepair.src, alt: 'Laptop display assembly service and screen repair', width: IMAGES.laptopHardware.laptopScreenAssemblyDisassemblyRepair.width, height: IMAGES.laptopHardware.laptopScreenAssemblyDisassemblyRepair.height, placement: 'process', caption: 'Display assembly inspection and reassembly during screen service.' }
       ],
       warranty: { duration: '30 Days', coverage: 'Replacement display assembly and labour for the completed repair', noFixNoFee: true },
-      seo: { title: 'MacBook Screen Replacement Kuwait | From 30 KWD + Part | KCROC', description: 'MacBook Air & Pro screen replacement in Kuwait. Labour from 30 KWD plus the display assembly. Model, cable and backlight checks, free pickup and a 30-day warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/macbook-screen-replacement-kuwait', locale: 'en_KW', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/macbook-screen-replacement-kuwait', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/macbook-screen-replacement-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/macbook-screen-replacement-kuwait' }, ogType: 'article', schemaTypes: ['Service', 'FAQPage'], lastModified: '2026-10-20T00:00:00+03:00' },
+      seo: { title: 'MacBook Screen Replacement Kuwait | From 30 KWD + Part | KCROC', description: 'MacBook Air/Pro screen replacement Kuwait: M1–M5 & Intel, cracked Retina, black screen, lines and True Tone checks. From 30 KWD + panel. Free pickup: 55301913.', canonicalUrl: 'https://www.computerrepairkuwait.com/macbook-screen-replacement-kuwait', locale: 'en_KW', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/macbook-screen-replacement-kuwait', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/macbook-screen-replacement-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/macbook-screen-replacement-kuwait' }, ogType: 'article', schemaTypes: ['Service', 'FAQPage'], lastModified: '2026-10-30T00:00:00+03:00' },
       navigationPriority: 68, isFeatured: true,
       popular: true
     } as ServiceEntity,

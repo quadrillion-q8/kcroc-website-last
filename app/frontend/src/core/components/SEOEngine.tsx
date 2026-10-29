@@ -254,7 +254,7 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
             "name": service.title,
             "description": service.description,
             "provider": { "@id": `${business.websiteUrl}/#business` },
-            "areaServed": service.id === 'srv-gaming-laptop'
+            "areaServed": service.id === 'srv-gaming-laptop' || service.id === 'srv-macbook-screen'
               ? [
                   { "@type": "Country", "name": "Kuwait" },
                   ...(primaryLocation?.serviceAreas ?? []).map(area => ({ "@type": "City", "name": area }))
@@ -294,15 +294,48 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
                 ]
               }
             } : {}),
+            ...(service.id === 'srv-macbook-screen' ? {
+              "alternateName": "تبديل شاشة ماك بوك في الكويت (MacBook Air وMacBook Pro)",
+              "serviceType": "MacBook Air and Pro display assembly replacement, Retina/Liquid Retina XDR display checks, cable, connector, backlight and supported True Tone function testing",
+              "inLanguage": "en-KW",
+              "availableChannel": {
+                "@type": "ServiceChannel",
+                "servicePhone": "+" + business.telephone,
+                "serviceLocation": {
+                  "@type": "Place",
+                  "name": "KCROC repair workshop — Hawalli",
+                  "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": business.streetAddress,
+                    "addressLocality": business.addressLocality,
+                    "addressRegion": business.addressRegion,
+                    "addressCountry": business.addressCountry
+                  }
+                }
+              },
+              "hasOfferCatalog": {
+                "@type": "OfferCatalog",
+                "name": "MacBook Display Repair and Replacement Services",
+                "itemListElement": [
+                  { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "MacBook Air Retina and Liquid Retina display assembly replacement", "description": "Model, screen size and compatible assembly are confirmed before ordering or fitting." } },
+                  { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "MacBook Pro Retina and Liquid Retina XDR display replacement", "description": "Exact Intel or Apple Silicon generation and assembly compatibility are checked before quoting." } },
+                  { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "MacBook display cable, connector and backlight diagnosis", "description": "Black-screen, flicker, lines and uneven-backlight symptoms are tested before assuming full panel failure." } },
+                  { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "True Tone and supported display function checks", "description": "Supported display functions are checked after fitting; behavior depends on the specific model and compatible part." } },
+                  { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Free Kuwait-wide MacBook pickup and delivery", "description": "Collection and return are arranged for the customer's home or office; repairs are completed at the Hawalli workshop." } }
+                ]
+              }
+            } : {}),
             "offers": service.pricing ? {
               "@type": "Offer",
               "name": service.pricing.displayLabel ?? `From ${service.pricing.startingFrom} ${service.pricing.currency}`,
               "description": service.slug === 'laptop-screen-repair-kuwait'
                 ? "The 30 KWD starting figure is labour only; the replacement panel is priced separately. Final pricing depends on the exact laptop model and compatible part, and is confirmed before paid work begins."
-                : undefined,
+                : service.slug === 'macbook-screen-replacement-kuwait'
+                  ? "The 30 KWD starting figure is replacement labour only; the compatible MacBook display assembly is priced separately. Final pricing depends on exact model, size and part availability and is confirmed before paid work begins."
+                  : undefined,
               "priceCurrency": service.pricing.currency,
               "price": service.pricing.startingFrom,
-              "availability": service.slug === 'laptop-screen-repair-kuwait' ? undefined : "https://schema.org/InStock",
+              "availability": ['laptop-screen-repair-kuwait', 'macbook-screen-replacement-kuwait'].includes(service.slug) ? undefined : "https://schema.org/InStock",
               "priceValidUntil": new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toISOString().split('T')[0]
             } : undefined
           });

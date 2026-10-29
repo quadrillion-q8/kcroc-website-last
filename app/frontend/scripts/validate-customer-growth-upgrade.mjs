@@ -655,6 +655,40 @@ add('Farwaniya FAQ answers remain visible and the FAQPage schema is derived from
   arabicCommercial.includes('<details key={item.q} className="p-6">') &&
   arabicCommercial.includes("acceptedAnswer: { '@type': 'Answer', text: item.a }"));
 
+
+const macbookScreenSourceStart = graph.indexOf("id: 'srv-macbook-screen'");
+const macbookScreenSourceEnd = graph.indexOf("id: 'srv-gaming-laptop'", macbookScreenSourceStart + 1);
+const macbookScreenServiceBlock = macbookScreenSourceStart >= 0 && macbookScreenSourceEnd > macbookScreenSourceStart
+  ? graph.slice(macbookScreenSourceStart, macbookScreenSourceEnd)
+  : '';
+const macbookScreenTemplateSource = await read('pages/templates/ServiceTemplate.tsx');
+const macbookScreenSeoSchemaSource = await read('core/components/SEOEngine.tsx');
+add('MacBook screen replacement has model-specific Intel/M1-M5 A-number coverage and qualified display diagnostics',
+  macbookScreenServiceBlock.includes('A2337') &&
+  macbookScreenServiceBlock.includes('A3113') &&
+  macbookScreenServiceBlock.includes('A3240') &&
+  macbookScreenServiceBlock.includes('A3449') &&
+  macbookScreenServiceBlock.includes('A3434') &&
+  macbookScreenServiceBlock.includes('Flexgate') &&
+  macbookScreenServiceBlock.includes('True Tone') &&
+  macbookScreenServiceBlock.includes('modelFaultMatrix') &&
+  macbookScreenServiceBlock.includes('advancedTechnicalSection'));
+add('MacBook screen FAQ questions remain unchanged, are rendered inline, and use the same expanded answers for FAQPage schema',
+  ['How much does MacBook screen replacement cost in Kuwait?', 'Do you replace MacBook Air and MacBook Pro screens?', 'Can a black or flickering MacBook screen be a cable problem?', 'Can you replace a MacBook screen the same day?', 'Will you access my files during screen replacement?', 'Do you offer free pickup and delivery across Kuwait?', 'What warranty applies to MacBook screen replacement?'].every((question) => macbookScreenServiceBlock.includes(`title: '${question}'`)) &&
+  macbookScreenTemplateSource.includes('isMacbookScreenService ? (') &&
+  macbookScreenTemplateSource.includes('<h3 className="text-white font-semibold">{faq.title}</h3>') &&
+  macbookScreenSeoSchemaSource.includes("if (type === 'FAQPage')") &&
+  macbookScreenServiceBlock.includes("schemaTypes: ['Service', 'FAQPage']"));
+add('MacBook screen JSON-LD extends one Service entity with a linked OfferCatalog and does not imply display stock',
+  macbookScreenSeoSchemaSource.includes("service.id === 'srv-macbook-screen'") &&
+  macbookScreenSeoSchemaSource.includes('"hasOfferCatalog"') &&
+  macbookScreenSeoSchemaSource.includes('MacBook Display Repair and Replacement Services') &&
+  macbookScreenSeoSchemaSource.includes("['laptop-screen-repair-kuwait', 'macbook-screen-replacement-kuwait'].includes(service.slug)"));
+add('MacBook screen page adds the Arabic service summary below its existing Arabic counterpart card',
+  macbookScreenTemplateSource.includes("entity.id === 'srv-macbook-screen' && (") &&
+  macbookScreenTemplateSource.includes('ملخص الخدمة بالعربي: مختبر KCROC في حولي') &&
+  macbookScreenTemplateSource.includes('الخدمة بالعربية'));
+
 for (const check of checks) console.log(`${check.pass ? '✅' : '❌'} ${check.name}${!check.pass && check.detail ? ` — ${check.detail}` : ''}`);
 const failed = checks.filter((check) => !check.pass);
 if (failed.length) process.exit(1);
