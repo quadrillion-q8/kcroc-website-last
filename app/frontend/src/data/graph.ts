@@ -114,11 +114,11 @@ export const rawGraphData: RawGraphData = {
     } as WebPageEntity,
     'page-ar-home': {
       id: 'page-ar-home', slug: 'ar', entityType: 'WebPage', isActive: true,
-      title: 'الرئيسية العربية — خدمات تصليح الكمبيوتر واللابتوب في الكويت',
-      description: 'خدمات تصليح الكمبيوتر واللابتوب وMacBook وGaming PC في الكويت. استلام وتوصيل مجاني، فحص أولي مجاني، وسعر واضح قبل الإصلاح من مختبر KCROC في حولي.',
+      title: 'تصليح كمبيوتر ولابتوب في الكويت | مختبر KCROC حولي',
+      description: 'تصليح كمبيوتر ولابتوب وماك بوك (MacBook) وبي سي قيمنق في الكويت. نصلح المذربورد على مستوى القطعة الإلكترونية، مع فحص أولي واستلام وتوصيل مجاني من مختبر حولي.',
       seo: {
-        title: 'خدمات الكمبيوتر واللابتوب في الكويت | KCROC',
-        description: 'خدمات تصليح الكمبيوتر واللابتوب وMacBook وGaming PC في الكويت. استلام وتوصيل مجاني، فحص أولي مجاني، وسعر واضح قبل الإصلاح من مختبر KCROC في حولي.',
+        title: 'تصليح كمبيوتر ولابتوب الكويت | مختبر KCROC حولي',
+        description: 'تصليح كمبيوتر ولابتوب وماك بوك (MacBook) وبي سي قيمنق في الكويت. نصلح المذربورد على مستوى القطعة الإلكترونية، مع فحص أولي واستلام وتوصيل مجاني من مختبر حولي.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/ar',
         locale: 'ar_KW',
         alternates: {
@@ -127,11 +127,17 @@ export const rawGraphData: RawGraphData = {
           'x-default': 'https://www.computerrepairkuwait.com/'
         },
         ogType: 'website',
-        schemaTypes: ['LocalBusiness', 'WebPage', 'BreadcrumbList'],
-        lastModified: '2026-10-22T00:00:00+03:00',
+        schemaTypes: ['LocalBusiness', 'WebPage', 'FAQPage', 'BreadcrumbList'],
+        lastModified: '2026-10-30T00:00:00+03:00',
         breadcrumbs: [{ name: 'الرئيسية', url: '/ar' }]
       },
-      featuredFAQIds: ['faq-arabic-computer-technician', 'faq-ar-pricing', 'faq-ar-hours']
+      featuredFAQIds: [
+        'faq-arabic-computer-technician',
+        'faq-ar-pricing',
+        'faq-ar-maintenance',
+        'faq-ar-laptop-repair-process',
+        'faq-ar-hours'
+      ]
     } as WebPageEntity,
 
     'page-ar-services': {

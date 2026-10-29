@@ -30,12 +30,12 @@ const ARABIC_SERVICES_FAQ_IDS = [
 ] as const;
 
 const HOME_SERVICES = [
-  { title: 'تصليح اللابتوب', description: 'أعطال التشغيل والشحن والحرارة والشاشة والمفصلات.', path: '/ar/laptop-repair-kuwait', icon: Laptop },
-  { title: 'تصليح الكمبيوتر للألعاب', description: 'تشخيص مشاكل الطاقة والرسوميات والحرارة والاستقرار.', path: '/ar/gaming-pc-repair-kuwait', icon: Gamepad2 },
-  { title: 'إصلاح اللوحة الأم', description: 'فحص دوائر الطاقة والأعطال الإلكترونية عندما يكون الإصلاح مناسبًا.', path: '/ar/motherboard-repair-kuwait', icon: Cpu },
-  { title: 'تصليح MacBook', description: 'فحص أعطال MacBook والشحن واللوحة والقطع المتوافقة.', path: '/ar/macbook-repair-kuwait', icon: Apple },
-  { title: 'تصليح شاشة اللابتوب', description: 'فحص الشاشة والكابل قبل تحديد القطعة والحل المناسب.', path: '/ar/laptop-screen-repair-kuwait', icon: Monitor },
-  { title: 'ترقية SSD وRAM', description: 'تحسين التخزين أو الذاكرة بعد التحقق من توافق الجهاز.', path: '/ar/ssd-ram-upgrade-kuwait', icon: HardDrive },
+  { title: 'تصليح اللابتوب في الكويت', description: 'تشخيص أعطال التشغيل والشحن والحرارة والشاشة والبطارية والمفصلات.', path: '/ar/laptop-repair-kuwait', icon: Laptop },
+  { title: 'تصليح كمبيوتر ألعاب وبي سي قيمنق (Gaming PC)', description: 'تشخيص مشاكل الحرارة والطاقة وكروت الشاشة والاستقرار في أجهزة الألعاب المكتبية.', path: '/ar/gaming-pc-repair-kuwait', icon: Gamepad2 },
+  { title: 'تصليح المذربورد واللوحة الأم (Micro-Soldering)', description: 'فحص دوائر الشحن والطاقة وإصلاح المكوّن التالف على مستوى القطعة عندما يكون ذلك ممكنًا.', path: '/ar/motherboard-repair-kuwait', icon: Cpu },
+  { title: 'تصليح ماك بوك (MacBook Air وPro)', description: 'تشخيص أعطال التشغيل والشحن والشاشة والبطارية والدوائر الإلكترونية حسب الموديل.', path: '/ar/macbook-repair-kuwait', icon: Apple },
+  { title: 'تصليح شاشة اللابتوب', description: 'فحص الشاشة والكابل ودائرة الإضاءة قبل تحديد القطعة والحل المناسب.', path: '/ar/laptop-screen-repair-kuwait', icon: Monitor },
+  { title: 'ترقية وتطوير هاردسك SSD ورامات RAM', description: 'تحسين التخزين والذاكرة بعد التحقق من توافق القطع مع الجهاز.', path: '/ar/ssd-ram-upgrade-kuwait', icon: HardDrive },
 ];
 
 const ARABIC_AREAS = [
@@ -53,6 +53,11 @@ const HOME_PROMISES = [
 ];
 
 export function ArabicHomePage() {
+  const homepage = KCROC_GRAPH.pages?.find((page) => page.id === 'page-ar-home');
+  const homepageFaqs = (homepage?.featuredFAQIds ?? [])
+    .map((id) => KCROC_GRAPH.faqs.find((faq) => faq.id === id))
+    .filter((faq): faq is NonNullable<typeof faq> => Boolean(faq));
+
   return (
     <>
       <SEOEngine entityId="page-ar-home" />
@@ -63,24 +68,27 @@ export function ArabicHomePage() {
             <div>
               <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-[#c9804d]/30 bg-[#c9804d]/10 px-4 py-2 text-sm font-bold text-[#efc19c]">
                 <BadgeCheck className="h-4 w-4" aria-hidden="true" />
-                مختبر إصلاح متخصص في حولي • خدمة لكل الكويت
+                مختبر تصليح متخصص في حولي • استلام وتوصيل مجاني لجميع مناطق الكويت
               </p>
               <h1 className="max-w-4xl text-4xl font-black leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">
-                تصليح الكمبيوتر واللابتوب في الكويت، بخدمة تصل إليك
+                تصليح الكمبيوتر واللابتوب في الكويت — نصلح المذربورد ولا نكتفي بتبديلها
               </h1>
               <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-300 sm:text-xl">
-                نشخّص أعطال الكمبيوتر واللابتوب وMacBook وGaming PC في مختبر KCROC بحولي. نرتب استلام الجهاز من المنزل أو المكتب، ونوضح التكلفة قبل الإصلاح، ثم نعيده إليك بعد الفحص والاختبار.
+                هل توقف الكمبيوتر فجأة أو صار اللابتوب ما يشحن؟ في مختبر KCROC بحولي نقدم تصليح كمبيوتر ولابتوب وماك بوك (MacBook) وكمبيوتر ألعاب وبي سي قيمنق (Gaming PC). نتخصص في تشخيص أعطال المذربورد ودوائر الشحن والطاقة وإصلاح المكونات الدقيقة (Micro-Soldering) عندما يكون الإصلاح ممكنًا. نوضح العطل والتكلفة قبل البدء، ونرتب استلامًا وتوصيلًا مجانيًا من المنزل أو المكتب، مع الحرص على سلامة بياناتك وتوضيح أي مخاطر مرتبطة بالعطل قبل الإصلاح.
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <Link to="/ar/near-me" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#c9804d] px-6 py-3 font-extrabold text-[#101114] transition hover:bg-[#dfa06f] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#efc19c]">
                   <Truck className="h-5 w-5" aria-hidden="true" />
-                  احجز استلام الجهاز
+                  احجز استلام مجاني الآن
                 </Link>
                 <Link to="/ar/services" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/[0.03] px-6 py-3 font-bold text-white transition hover:border-[#c9804d]/60 hover:bg-white/[0.06] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#efc19c]">
                   استعرض خدمات الإصلاح <ArrowLeft className="h-4 w-4" aria-hidden="true" />
                 </Link>
               </div>
-              <p className="mt-4 text-sm leading-6 text-slate-400">يتم الإصلاح في مختبرنا بحولي؛ لا نقدم زيارات إصلاح داخل المنزل.</p>
+              <div className="mt-5 max-w-3xl rounded-2xl border border-[#c9804d]/20 bg-white/[0.025] p-4 sm:p-5">
+                <h2 className="text-sm font-extrabold text-white">تبحث عن تصليح كمبيوتر منازل الكويت؟</h2>
+                <p className="mt-2 text-sm leading-7 text-slate-300">رتّب الاستلام والتوصيل مجانًا من باب المنزل أو المكتب؛ يتم الإصلاح داخل مختبرنا في حولي، في بيئة عمل آمنة ضد الكهرباء الساكنة (ESD) مناسبة للتشخيص وإصلاح المكونات الإلكترونية الدقيقة. نعيد الجهاز بعد الاختبار، ولا نبدأ العمل قبل توضيح التكلفة والحصول على موافقتك.</p>
+              </div>
             </div>
             <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
               {HOME_PROMISES.map(({ title, text, icon: Icon }) => (
@@ -148,6 +156,25 @@ export function ArabicHomePage() {
           </div>
         </section>
 
+        <section aria-labelledby="ar-home-faq" className="mx-auto max-w-5xl px-4 py-14 sm:px-6 lg:px-8" lang="ar-KW" dir="rtl">
+          <div className="mb-6">
+            <p className="text-sm font-bold text-[#efc19c]">إجابات واضحة قبل الحجز</p>
+            <h2 id="ar-home-faq" className="mt-2 text-2xl font-black text-white sm:text-3xl">أسئلة شائعة عن تصليح الكمبيوتر واللابتوب في الكويت</h2>
+            <p className="mt-3 max-w-3xl leading-7 text-slate-400">معلومات عن الاستلام، والتكلفة، وطريقة الإصلاح في مختبر KCROC بحولي.</p>
+          </div>
+          <div className="space-y-3">
+            {homepageFaqs.map((faq) => (
+              <details key={faq.id} className="group rounded-2xl border border-white/10 bg-slate-900/60 p-4 sm:p-5">
+                <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-4 font-bold leading-7 text-white marker:hidden">
+                  <span>{faq.title}</span>
+                  <span aria-hidden="true" className="shrink-0 text-[#efc19c] transition-transform group-open:rotate-180">⌄</span>
+                </summary>
+                <p className="mt-3 border-t border-white/10 pt-3 text-sm leading-7 text-slate-300 sm:text-base">{faq.answer}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+
         <section aria-labelledby="ar-home-areas" className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
           <div className="flex items-start gap-4">
             <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-[#c9804d]/20 bg-[#c9804d]/10 text-[#efc19c]">
@@ -156,10 +183,16 @@ export function ArabicHomePage() {
             <div>
               <h2 id="ar-home-areas" className="text-2xl font-black text-white sm:text-3xl">استلام وتوصيل في مناطق الكويت</h2>
               <p className="mt-3 max-w-3xl leading-7 text-slate-400">المختبر الفعلي في حولي، مع ترتيب الاستلام والتوصيل من مناطق الخدمة المختلفة. اختر منطقتك لمعرفة التفاصيل.</p>
-              <div className="mt-5 flex flex-wrap gap-2">
-                {ARABIC_AREAS.map((area) => <Link key={area.path} to={area.path} className="inline-flex min-h-10 items-center rounded-full border border-white/10 px-4 py-2 text-sm font-bold text-slate-200 transition hover:border-[#c9804d]/50 hover:text-[#efc19c]">{area.label}</Link>)}
-                <Link to="/ar/near-me" className="inline-flex min-h-10 items-center rounded-full border border-[#c9804d]/30 bg-[#c9804d]/10 px-4 py-2 text-sm font-bold text-[#efc19c]">اعرف طريقة الاستلام</Link>
-              </div>
+              <ul aria-label="مناطق خدمة الاستلام والتوصيل" className="mt-5 flex list-none flex-wrap gap-2 p-0">
+                {ARABIC_AREAS.map((area) => (
+                  <li key={area.path}>
+                    <Link to={area.path} className="inline-flex min-h-10 items-center rounded-full border border-white/10 px-4 py-2 text-sm font-bold text-slate-200 transition hover:border-[#c9804d]/50 hover:text-[#efc19c]">{area.label}</Link>
+                  </li>
+                ))}
+                <li>
+                  <Link to="/ar/near-me" className="inline-flex min-h-10 items-center rounded-full border border-[#c9804d]/30 bg-[#c9804d]/10 px-4 py-2 text-sm font-bold text-[#efc19c]">اعرف طريقة الاستلام</Link>
+                </li>
+              </ul>
             </div>
           </div>
         </section>

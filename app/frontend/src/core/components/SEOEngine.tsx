@@ -133,6 +133,8 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
   const fullCanonicalUrl = canonicalUrl.startsWith('http')
     ? canonicalUrl
     : `${business.websiteUrl}${canonicalUrl}`;
+  const isArabicLocale = Boolean(locale && String(locale).toLowerCase().startsWith('ar'));
+
 
   // 3. Build Universal LocalBusiness Schema.
   // IMPORTANT: the business rating remains available to the UI and the
@@ -143,6 +145,8 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
     "@type": ["LocalBusiness", "ComputerStore"],
     "@id": `${business.websiteUrl}/#business`,
     "name": business.legalName,
+    ...(isArabicLocale ? { "alternateName": "كي سي آر أو سي (KCROC)" } : {}),
+    ...(isArabicLocale ? { "description": description } : {}),
     "url": business.websiteUrl,
     "image": business.logoUrl,
     "telephone": `+${business.telephone}`,
@@ -150,9 +154,9 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
     "priceRange": business.priceRange,
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": primaryLocation?.landmark,
-      "addressLocality": "Hawalli",
-      "addressRegion": business.addressRegion,
+      "streetAddress": isArabicLocale ? "شارع ابن خلدون، مجمع الملا، السرداب، محل 19" : primaryLocation?.landmark,
+      "addressLocality": isArabicLocale ? "حولي" : "Hawalli",
+      "addressRegion": isArabicLocale ? "محافظة حولي" : business.addressRegion,
       "addressCountry": "KW"
     },
     "geo": primaryLocation?.coords ? {
@@ -160,10 +164,21 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
       "latitude": primaryLocation.coords.lat,
       "longitude": primaryLocation.coords.lng
     } : undefined,
-    "areaServed": primaryLocation?.serviceAreas.map(area => ({
-      "@type": "City",
-      "name": area
-    })),
+    "areaServed": [
+      ...(primaryLocation?.serviceAreas ?? []).map(area => ({
+        "@type": "City",
+        "name": area
+      })),
+      ...(isArabicLocale ? [
+        { "@type": "Country", "name": "الكويت" },
+        { "@type": "AdministrativeArea", "name": "محافظة حولي" },
+        { "@type": "AdministrativeArea", "name": "محافظة العاصمة" },
+        { "@type": "AdministrativeArea", "name": "محافظة الفروانية" },
+        { "@type": "AdministrativeArea", "name": "محافظة الأحمدي" },
+        { "@type": "AdministrativeArea", "name": "محافظة مبارك الكبير" },
+        { "@type": "AdministrativeArea", "name": "محافظة الجهراء" }
+      ] : [])
+    ],
     "openingHoursSpecification": business.schemaOpeningHours ? {
       "@type": "OpeningHoursSpecification",
       "dayOfWeek": business.schemaOpeningHours.dayOfWeek,
