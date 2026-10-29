@@ -132,11 +132,11 @@ export const rawGraphData: RawGraphData = {
         breadcrumbs: [{ name: 'الرئيسية', url: '/ar' }]
       },
       featuredFAQIds: [
-        'faq-arabic-computer-technician',
-        'faq-ar-pricing',
-        'faq-ar-maintenance',
-        'faq-ar-laptop-repair-process',
-        'faq-ar-hours'
+        'faq-ar-home-motherboard',
+        'faq-ar-home-pickup',
+        'faq-ar-home-data',
+        'faq-ar-home-pricing',
+        'faq-ar-home-turnaround'
       ]
     } as WebPageEntity,
 
@@ -4308,6 +4308,46 @@ export const rawGraphData: RawGraphData = {
     /* ═══════════════════════════════════════════════════════════════
        FAQS
     ═══════════════════════════════════════════════════════════════ */
+    'faq-ar-home-motherboard': {
+      id: 'faq-ar-home-motherboard', slug: 'ar-home-motherboard-repair', entityType: 'FAQ', isActive: true,
+      title: 'هل تصلحون المذربورد أم تستبدلونها بالكامل؟',
+      description: 'كيف يصلح مختبر KCROC أعطال اللوحة الأم على مستوى المكوّن الإلكتروني.',
+      answer: 'نصلح أعطال المذربورد على مستوى المكوّن الإلكتروني، بما في ذلك دوائر الطاقة والشحن. بعد فحص الجهاز نوضح لك الحل والتكلفة قبل بدء العمل، وقد يكون الإصلاح الدقيق بديلًا عن استبدال اللوحة بالكامل.',
+      seo: { title: 'إصلاح المذربورد في الكويت | KCROC', description: 'تعرف على إصلاح اللوحة الأم ودوائر الطاقة والشحن على مستوى المكوّن الإلكتروني.', canonicalUrl: 'https://www.computerrepairkuwait.com/ar#faq-motherboard-repair', schemaTypes: ['FAQPage'] }
+    } as FAQEntity,
+
+    'faq-ar-home-pickup': {
+      id: 'faq-ar-home-pickup', slug: 'ar-home-free-pickup-delivery', entityType: 'FAQ', isActive: true,
+      title: 'كيف تعمل خدمة الاستلام والتوصيل المجاني في الكويت؟',
+      description: 'معلومات عن استلام أجهزة الكمبيوتر واللابتوب من مناطق الخدمة في الكويت.',
+      answer: 'نرتب استلام الجهاز من منزلك أو مكتبك في مناطق الخدمة بالكويت وننقله إلى مختبرنا في حولي، ثم ننسق إعادته بعد انتهاء الإصلاح والاختبار. تواصل معنا عبر واتساب لتأكيد منطقتك وموعد الاستلام.',
+      seo: { title: 'استلام وتوصيل مجاني لتصليح الكمبيوتر في الكويت', description: 'رتب استلام الكمبيوتر أو اللابتوب من المنزل أو المكتب إلى مختبر KCROC في حولي.', canonicalUrl: 'https://www.computerrepairkuwait.com/ar#faq-free-pickup', schemaTypes: ['FAQPage'] }
+    } as FAQEntity,
+
+    'faq-ar-home-data': {
+      id: 'faq-ar-home-data', slug: 'ar-home-data-safety', entityType: 'FAQ', isActive: true,
+      title: 'هل يتطلب تصليح اللابتوب أو الماك بوك حذف البيانات؟',
+      description: 'ما يجب معرفته عن البيانات أثناء إصلاح أعطال الكمبيوتر واللابتوب.',
+      answer: 'إصلاح العتاد لا يتطلب عادةً تهيئة الجهاز أو حذف الملفات. نركز على العطل المادي، ولا نبدأ أي إجراء يمس التخزين أو نظام التشغيل دون موافقتك. وقد تؤثر بعض الأعطال نفسها على البيانات، لذلك أخبرنا إذا كانت ملفاتك مهمة قبل الاستلام.',
+      seo: { title: 'البيانات أثناء تصليح اللابتوب | KCROC الكويت', description: 'تعرف على التعامل مع البيانات أثناء إصلاح أعطال الكمبيوتر واللابتوب.', canonicalUrl: 'https://www.computerrepairkuwait.com/ar#faq-data-safety', schemaTypes: ['FAQPage'] }
+    } as FAQEntity,
+
+    'faq-ar-home-pricing': {
+      id: 'faq-ar-home-pricing', slug: 'ar-home-repair-pricing', entityType: 'FAQ', isActive: true,
+      title: 'هل الفحص مجاني ومتى أعرف تكلفة التصليح؟',
+      description: 'معلومات عن الفحص الأولي وتسعير إصلاح الكمبيوتر واللابتوب.',
+      answer: 'الفحص الأولي مجاني. بعد تحديد سبب العطل، نوضح لك تكلفة الإصلاح والقطع المطلوبة قبل أن نبدأ؛ وبعد معرفة السعر يكون القرار لك.',
+      seo: { title: 'تكلفة تصليح الكمبيوتر واللابتوب في الكويت | KCROC', description: 'الفحص الأولي مجاني، وتُوضح تكلفة الإصلاح قبل بدء العمل.', canonicalUrl: 'https://www.computerrepairkuwait.com/ar#faq-repair-pricing', schemaTypes: ['FAQPage'] }
+    } as FAQEntity,
+
+    'faq-ar-home-turnaround': {
+      id: 'faq-ar-home-turnaround', slug: 'ar-home-repair-time', entityType: 'FAQ', isActive: true,
+      title: 'كم يستغرق تصليح الكمبيوتر أو اللابتوب؟',
+      description: 'ما الذي يحدد مدة إصلاح الكمبيوتر واللابتوب في مختبر KCROC.',
+      answer: 'تعتمد المدة على نوع العطل وتوفر القطع ونتيجة الفحص. بعد تشخيص الجهاز نعطيك تقديرًا مبدئيًا للمدة، ونطلعك على أي تغيير إذا احتاج الإصلاح وقتًا إضافيًا.',
+      seo: { title: 'مدة تصليح الكمبيوتر واللابتوب في الكويت | KCROC', description: 'تعرف على العوامل التي تحدد مدة الإصلاح ومتى تحصل على تقدير زمني.', canonicalUrl: 'https://www.computerrepairkuwait.com/ar#faq-repair-time', schemaTypes: ['FAQPage'] }
+    } as FAQEntity,
+
     'faq-pick-and-drop': { id: 'faq-pick-and-drop', slug: 'pick-and-drop', entityType: 'FAQ', isActive: true, title: 'Do you offer a pick and drop service across Kuwait?', description: 'Free pickup and delivery across all Kuwait governorates.', answer: 'Yes. Kuwait Computer Repair On Call provides completely free pickup and delivery across all Kuwait governorates — including Hawalli, Salmiya, Kuwait City, Farwaniya, Ahmadi, Jahra, Fahaheel, Mangaf, and Mahboula. Message us on WhatsApp to arrange collection. There are no hidden transport charges.', seo: { title: 'FAQ: Free Pick & Drop Service', description: 'Free pickup and delivery across all Kuwait.', canonicalUrl: 'https://www.computerrepairkuwait.com/faq#pick-and-drop', schemaTypes: ['FAQPage'] } } as FAQEntity,
     'faq-liquid-damage': { id: 'faq-liquid-damage', slug: 'liquid-damage', entityType: 'FAQ', isActive: true, title: 'Do you repair liquid-damaged laptops and MacBooks?', description: 'Details about our ultrasonic liquid damage repair process.', answer: 'Yes. We fully disassemble the device, run the motherboard through an industrial ultrasonic cleaner to strip corrosion, then trace and replace the specific shorted components using micro-soldering.', seo: { title: 'FAQ: Liquid Damage Repair', description: 'Liquid damage repair process details.', canonicalUrl: 'https://www.computerrepairkuwait.com/faq#liquid-damage', schemaTypes: ['FAQPage'] } } as FAQEntity,
     'faq-no-fix': { id: 'faq-no-fix', slug: 'no-fix', entityType: 'FAQ', isActive: true, title: 'What does No Fix, No Fee mean exactly?', description: 'Our transparent pricing guarantee.', answer: 'If we cannot successfully repair your device after a full diagnostic, you pay absolutely nothing — not for the diagnostic, labor, or parts tested. You only pay if you approve the quote and the repair is successful.', seo: { title: 'FAQ: No Fix No Fee Policy', description: 'How our no fix no fee guarantee works.', canonicalUrl: 'https://www.computerrepairkuwait.com/faq#no-fix', schemaTypes: ['FAQPage'] } } as FAQEntity,

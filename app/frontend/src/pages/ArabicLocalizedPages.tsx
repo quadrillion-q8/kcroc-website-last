@@ -30,12 +30,12 @@ const ARABIC_SERVICES_FAQ_IDS = [
 ] as const;
 
 const HOME_SERVICES = [
-  { title: 'تصليح اللابتوب في الكويت', description: 'تشخيص أعطال التشغيل والشحن والحرارة والشاشة والبطارية والمفصلات.', path: '/ar/laptop-repair-kuwait', icon: Laptop },
-  { title: 'تصليح كمبيوتر ألعاب وبي سي قيمنق (Gaming PC)', description: 'تشخيص مشاكل الحرارة والطاقة وكروت الشاشة والاستقرار في أجهزة الألعاب المكتبية.', path: '/ar/gaming-pc-repair-kuwait', icon: Gamepad2 },
-  { title: 'تصليح المذربورد واللوحة الأم (Micro-Soldering)', description: 'فحص دوائر الشحن والطاقة وإصلاح المكوّن التالف على مستوى القطعة عندما يكون ذلك ممكنًا.', path: '/ar/motherboard-repair-kuwait', icon: Cpu },
-  { title: 'تصليح ماك بوك (MacBook Air وPro)', description: 'تشخيص أعطال التشغيل والشحن والشاشة والبطارية والدوائر الإلكترونية حسب الموديل.', path: '/ar/macbook-repair-kuwait', icon: Apple },
-  { title: 'تصليح شاشة اللابتوب', description: 'فحص الشاشة والكابل ودائرة الإضاءة قبل تحديد القطعة والحل المناسب.', path: '/ar/laptop-screen-repair-kuwait', icon: Monitor },
-  { title: 'ترقية وتطوير هاردسك SSD ورامات RAM', description: 'تحسين التخزين والذاكرة بعد التحقق من توافق القطع مع الجهاز.', path: '/ar/ssd-ram-upgrade-kuwait', icon: HardDrive },
+  { title: 'تصليح اللابتوب في الكويت', description: 'إصلاح أعطال عدم التشغيل والشحن والحرارة والشاشات والمفصلات لمختلف الماركات.', path: '/ar/laptop-repair-kuwait', icon: Laptop },
+  { title: 'تصليح كمبيوتر ألعاب وبي سي قيمنق (Gaming PC)', description: 'حل مشاكل الحرارة والطاقة والأداء وصيانة مكونات الكمبيوتر المخصص للألعاب.', path: '/ar/gaming-pc-repair-kuwait', icon: Gamepad2 },
+  { title: 'إصلاح المذربورد واللوحة الأم (Micro-Soldering)', description: 'إصلاح دوائر الطاقة والشحن وتبديل المكونات الإلكترونية التالفة على مستوى القطعة.', path: '/ar/motherboard-repair-kuwait', icon: Cpu },
+  { title: 'تصليح ماك بوك (MacBook Air وPro)', description: 'إصلاح أعطال اللوحة الأم والشحن والطاقة والشاشات والبطاريات لموديلات MacBook Air وPro.', path: '/ar/macbook-repair-kuwait', icon: Apple },
+  { title: 'تبديل وتصليح شاشة اللابتوب', description: 'استبدال الشاشة المتضررة وإصلاح أعطال الإضاءة والكابلات بعد تحديد القطعة المناسبة.', path: '/ar/laptop-screen-repair-kuwait', icon: Monitor },
+  { title: 'ترقية SSD وRAM', description: 'ترقية التخزين إلى SSD والذاكرة RAM لتحسين سرعة الإقلاع والاستجابة بعد التأكد من التوافق.', path: '/ar/ssd-ram-upgrade-kuwait', icon: HardDrive },
 ];
 
 const ARABIC_AREAS = [
@@ -47,9 +47,9 @@ const ARABIC_AREAS = [
 ];
 
 const HOME_PROMISES = [
-  { title: 'فحص أولي مجاني', text: 'نشرح المشكلة والخطوة التالية قبل الموافقة على أي عمل مدفوع.', icon: CheckCircle2 },
-  { title: 'استلام وتوصيل مجاني', text: 'نرتب استلام الجهاز من المنزل أو المكتب وإعادته بعد الاختبار.', icon: Truck },
-  { title: 'ضمان 30 يومًا', text: 'على الإصلاحات المكتملة وفق شروط الخدمة.', icon: ShieldCheck },
+  { title: 'تشخيص مجاني', text: 'اعرف العطل والتكلفة قبل الموافقة.', icon: CheckCircle2 },
+  { title: 'استلام وتوصيل مجاني', text: 'من منزلك أو مكتبك إلى مختبر حولي.', icon: Truck },
+  { title: 'ضمان 30 يومًا', text: 'على الإصلاحات المكتملة.', icon: ShieldCheck },
 ];
 
 export function ArabicHomePage() {
@@ -68,26 +68,22 @@ export function ArabicHomePage() {
             <div>
               <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-[#c9804d]/30 bg-[#c9804d]/10 px-4 py-2 text-sm font-bold text-[#efc19c]">
                 <BadgeCheck className="h-4 w-4" aria-hidden="true" />
-                مختبر تصليح متخصص في حولي • استلام وتوصيل مجاني لجميع مناطق الكويت
+                مختبر متخصص في إصلاح المذربورد والمايكرو سولدرينج • استلام وتوصيل مجاني في الكويت
               </p>
               <h1 className="max-w-4xl text-4xl font-black leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">
-                تصليح الكمبيوتر واللابتوب في الكويت — نصلح المذربورد ولا نكتفي بتبديلها
+                تصليح الكمبيوتر واللابتوب في الكويت — نصلح المذربورد على مستوى القطعة
               </h1>
               <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-300 sm:text-xl">
-                هل توقف الكمبيوتر فجأة أو صار اللابتوب ما يشحن؟ في مختبر KCROC بحولي نقدم تصليح كمبيوتر ولابتوب وماك بوك (MacBook) وكمبيوتر ألعاب وبي سي قيمنق (Gaming PC). نتخصص في تشخيص أعطال المذربورد ودوائر الشحن والطاقة وإصلاح المكونات الدقيقة (Micro-Soldering) عندما يكون الإصلاح ممكنًا. نوضح العطل والتكلفة قبل البدء، ونرتب استلامًا وتوصيلًا مجانيًا من المنزل أو المكتب، مع الحرص على سلامة بياناتك وتوضيح أي مخاطر مرتبطة بالعطل قبل الإصلاح.
+                إصلاح احترافي لأجهزة اللابتوب وماك بوك (MacBook) وكمبيوترات الألعاب (Gaming PC) داخل مختبر KCROC في حولي. نصلح دوائر المذربورد والشحن والطاقة بتقنيات المايكرو سولدرينج (Micro-Soldering)، مع استلام وتوصيل مجاني من منزلك أو مكتبك.
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <Link to="/ar/near-me" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#c9804d] px-6 py-3 font-extrabold text-[#101114] transition hover:bg-[#dfa06f] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#efc19c]">
-                  <Truck className="h-5 w-5" aria-hidden="true" />
-                  احجز استلام مجاني الآن
+                <a href="https://wa.me/96555301913" target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#c9804d] px-6 py-3 font-extrabold text-[#101114] transition hover:bg-[#dfa06f] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#efc19c]">
+                  <MessageCircle className="h-5 w-5" aria-hidden="true" />
+                  راسلنا عبر واتساب
+                </a>
+                <Link to="/ar/near-me" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/[0.03] px-6 py-3 font-bold text-white transition hover:border-[#c9804d]/60 hover:bg-white/[0.06] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#efc19c]">
+                  <Truck className="h-4 w-4" aria-hidden="true" /> احجز استلام مجاني
                 </Link>
-                <Link to="/ar/services" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/[0.03] px-6 py-3 font-bold text-white transition hover:border-[#c9804d]/60 hover:bg-white/[0.06] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#efc19c]">
-                  استعرض خدمات الإصلاح <ArrowLeft className="h-4 w-4" aria-hidden="true" />
-                </Link>
-              </div>
-              <div className="mt-5 max-w-3xl rounded-2xl border border-[#c9804d]/20 bg-white/[0.025] p-4 sm:p-5">
-                <h2 className="text-sm font-extrabold text-white">تبحث عن تصليح كمبيوتر منازل الكويت؟</h2>
-                <p className="mt-2 text-sm leading-7 text-slate-300">رتّب الاستلام والتوصيل مجانًا من باب المنزل أو المكتب؛ يتم الإصلاح داخل مختبرنا في حولي، في بيئة عمل آمنة ضد الكهرباء الساكنة (ESD) مناسبة للتشخيص وإصلاح المكونات الإلكترونية الدقيقة. نعيد الجهاز بعد الاختبار، ولا نبدأ العمل قبل توضيح التكلفة والحصول على موافقتك.</p>
               </div>
             </div>
             <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
@@ -111,7 +107,7 @@ export function ArabicHomePage() {
             <div>
               <p className="text-sm font-bold text-[#efc19c]">الخدمات الرئيسية</p>
               <h2 id="ar-home-services" className="mt-2 text-3xl font-black text-white sm:text-4xl">اختر الخدمة المناسبة لجهازك</h2>
-              <p className="mt-3 max-w-3xl leading-7 text-slate-400">ابدأ من نوع الجهاز أو العطل. نفحص السبب أولًا ونشرح لك خيارات الإصلاح قبل بدء العمل.</p>
+              <p className="mt-3 max-w-3xl leading-7 text-slate-400">إصلاحات مركّزة حسب نوع الجهاز والعطل، من المذربورد إلى الشاشات والترقيات.</p>
             </div>
             <Link to="/ar/services" className="inline-flex min-h-11 items-center gap-2 font-bold text-[#efc19c] hover:text-white">
               كل الخدمات <ArrowLeft className="h-4 w-4" aria-hidden="true" />
@@ -137,14 +133,14 @@ export function ArabicHomePage() {
           <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 lg:grid-cols-[0.8fr_1.2fr] lg:px-8">
             <div>
               <p className="text-sm font-bold text-[#efc19c]">كيف تتم الخدمة؟</p>
-              <h2 className="mt-2 text-3xl font-black text-white">خطوات واضحة قبل الإصلاح وبعده</h2>
-              <p className="mt-4 leading-7 text-slate-400">لا نبدأ عملًا مدفوعًا دون شرح التشخيص والسعر والحصول على موافقتك.</p>
+              <h2 className="mt-2 text-3xl font-black text-white">من الاستلام إلى الاختبار</h2>
+              <p className="mt-4 leading-7 text-slate-400">ثلاث خطوات واضحة من استلام الجهاز إلى إعادته بعد الاختبار.</p>
             </div>
             <div className="grid gap-4 sm:grid-cols-3">
               {[
-                ['١', 'استلام الجهاز', 'نرتب الاستلام من منزلك أو مكتبك داخل الكويت.'],
-                ['٢', 'تشخيص وعرض سعر', 'نفحص الجهاز في مختبر حولي ونشرح الخيارات والتكلفة.'],
-                ['٣', 'إصلاح واختبار', 'بعد الموافقة نصلح العطل ونختبر الجهاز قبل إعادته.'],
+                ['١', 'استلام الجهاز', 'نستلمه من منزلك أو مكتبك في مناطق الخدمة.'],
+                ['٢', 'تحديد العطل والتكلفة', 'نوضح سبب المشكلة وتكلفة الإصلاح.'],
+                ['٣', 'إصلاح واختبار', 'ننّفذ الإصلاح المتفق عليه ونختبر الجهاز قبل إعادته.'],
               ].map(([number, title, text]) => (
                 <div key={number} className="rounded-2xl border border-white/10 bg-slate-900/70 p-5">
                   <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#c9804d]/15 font-black text-[#efc19c]">{number}</span>
@@ -158,9 +154,9 @@ export function ArabicHomePage() {
 
         <section aria-labelledby="ar-home-faq" className="mx-auto max-w-5xl px-4 py-14 sm:px-6 lg:px-8" lang="ar-KW" dir="rtl">
           <div className="mb-6">
-            <p className="text-sm font-bold text-[#efc19c]">إجابات واضحة قبل الحجز</p>
-            <h2 id="ar-home-faq" className="mt-2 text-2xl font-black text-white sm:text-3xl">أسئلة شائعة عن تصليح الكمبيوتر واللابتوب في الكويت</h2>
-            <p className="mt-3 max-w-3xl leading-7 text-slate-400">معلومات عن الاستلام، والتكلفة، وطريقة الإصلاح في مختبر KCROC بحولي.</p>
+            <p className="text-sm font-bold text-[#efc19c]">قبل أن تحجز</p>
+            <h2 id="ar-home-faq" className="mt-2 text-2xl font-black text-white sm:text-3xl">أسئلة تهمك عن إصلاح المذربورد والاستلام والبيانات والتكلفة</h2>
+            <p className="mt-3 max-w-3xl leading-7 text-slate-400">إجابات مباشرة تساعدك على اتخاذ قرار الإصلاح.</p>
           </div>
           <div className="space-y-3">
             {homepageFaqs.map((faq) => (
@@ -201,12 +197,12 @@ export function ArabicHomePage() {
           <div className="rounded-3xl border border-[#c9804d]/25 bg-gradient-to-l from-[#c9804d]/10 via-slate-900/70 to-slate-900/70 p-7 sm:p-10">
             <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
               <div>
-                <h2 className="text-2xl font-black text-white sm:text-3xl">هل تحتاج مساعدة في تحديد العطل؟</h2>
-                <p className="mt-3 max-w-2xl leading-7 text-slate-300">أخبرنا بنوع جهازك والأعراض ومنطقتك، وسنوضح لك الخطوة المناسبة لترتيب الفحص والاستلام.</p>
+                <h2 className="text-2xl font-black text-white sm:text-3xl">جهازك متوقف؟ ابدأ بمراسلتنا</h2>
+                <p className="mt-3 max-w-2xl leading-7 text-slate-300">أرسل نوع الجهاز والعطل ومنطقتك، وسنساعدك في تحديد الخطوة التالية.</p>
               </div>
-              <Link to="/ar/near-me" className="inline-flex min-h-12 shrink-0 items-center justify-center gap-2 rounded-xl bg-[#c9804d] px-6 py-3 font-extrabold text-[#101114] transition hover:bg-[#dfa06f] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#efc19c]">
-                <MessageCircle className="h-5 w-5" aria-hidden="true" /> تواصل لترتيب الاستلام
-              </Link>
+              <a href="https://wa.me/96555301913" target="_blank" rel="noreferrer" className="inline-flex min-h-12 shrink-0 items-center justify-center gap-2 rounded-xl bg-[#c9804d] px-6 py-3 font-extrabold text-[#101114] transition hover:bg-[#dfa06f] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#efc19c]">
+                <MessageCircle className="h-5 w-5" aria-hidden="true" /> راسلنا عبر واتساب
+              </a>
             </div>
           </div>
         </section>
