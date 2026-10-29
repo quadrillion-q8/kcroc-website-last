@@ -649,7 +649,10 @@ add('Farwaniya FAQ answers remain visible and the FAQPage schema is derived from
   arabicCommercial.includes('هل عندكم فرع فعلي في الفروانية؟') &&
   arabicCommercial.includes('من أي مناطق حول الفروانية تستلمون؟') &&
   arabicCommercial.includes('شنو أسوي إذا انسكب سائل أو انتفخت البطارية؟') &&
-  arabicCommercial.includes('<details key={item.q}') &&
+  arabicCommercial.includes("slug === 'computer-repair-farwaniya' ? (") &&
+  arabicCommercial.includes('<div key={item.q} className="p-6">') &&
+  arabicCommercial.includes('<h3 className="font-bold text-white">{item.q}</h3>') &&
+  arabicCommercial.includes('<details key={item.q} className="p-6">') &&
   arabicCommercial.includes("acceptedAnswer: { '@type': 'Answer', text: item.a }"));
 
 for (const check of checks) console.log(`${check.pass ? '✅' : '❌'} ${check.name}${!check.pass && check.detail ? ` — ${check.detail}` : ''}`);

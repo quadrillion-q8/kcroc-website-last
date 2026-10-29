@@ -3720,10 +3720,17 @@ export default function ArabicCommercialPage() {
           <h2 id="arabic-faq" className="mt-2 text-2xl font-black text-white sm:text-3xl">قبل لا ترسل جهازك</h2>
           <div className="mt-6 divide-y divide-slate-800 overflow-hidden rounded-3xl border border-slate-800 bg-slate-900/45">
             {cfg.faq.map((item) => (
-              <details key={item.q} className="p-6">
-                <summary className="cursor-pointer font-bold text-white">{item.q}</summary>
-                <p className="mt-3 leading-7 text-slate-400">{item.a}</p>
-              </details>
+              slug === 'computer-repair-farwaniya' ? (
+                <div key={item.q} className="p-6">
+                  <h3 className="font-bold text-white">{item.q}</h3>
+                  <p className="mt-3 leading-7 text-slate-400">{item.a}</p>
+                </div>
+              ) : (
+                <details key={item.q} className="p-6">
+                  <summary className="cursor-pointer font-bold text-white">{item.q}</summary>
+                  <p className="mt-3 leading-7 text-slate-400">{item.a}</p>
+                </details>
+              )
             ))}
           </div>
         </section>
