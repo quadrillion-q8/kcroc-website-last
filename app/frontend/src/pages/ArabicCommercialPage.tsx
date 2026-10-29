@@ -3354,7 +3354,6 @@ export default function ArabicCommercialPage() {
                     <p className="mt-2 text-sm leading-7 text-slate-300">{item.text}</p>
                   </article>
                 ))}
-              </div>
                 </div>
               </div>
               <p className="mt-4 text-sm leading-7 text-slate-400">إذا كان عندك موديل أو رقم قطعة مثل A-number في أجهزة ماك بوك أو رقم بطارية HP، أرسله لنا على واتساب. الأمثلة تساعد في المطابقة لكنها ليست قائمة شاملة بالتوافق أو دليلًا على توفر القطعة مباشرة.</p>
