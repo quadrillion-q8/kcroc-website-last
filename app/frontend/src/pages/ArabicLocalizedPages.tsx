@@ -8,6 +8,7 @@ import {
 } from 'lucide-react';
 import { KCROC_GRAPH } from '../data/graph';
 import { SEOEngine } from '../core/components/SEOEngine';
+import { KCROC_POLICY } from '../constants/businessPolicy';
 
 const ARABIC_SERVICES_CORE_ORDER = [
   'srv-laptop',
@@ -49,7 +50,7 @@ const ARABIC_AREAS = [
 const HOME_PROMISES = [
   { title: 'تشخيص مجاني', text: 'اعرف العطل والتكلفة قبل الموافقة.', icon: CheckCircle2 },
   { title: 'استلام وتوصيل مجاني', text: 'من منزلك أو مكتبك إلى مختبر حولي.', icon: Truck },
-  { title: 'ضمان 30 يومًا', text: 'على الإصلاحات المكتملة.', icon: ShieldCheck },
+  { title: `ضمان ${KCROC_POLICY.warranty.durationDays} يومًا`, text: 'على الإصلاحات المكتملة.', icon: ShieldCheck },
 ];
 
 export function ArabicHomePage() {
@@ -77,7 +78,7 @@ export function ArabicHomePage() {
                 إصلاح احترافي لأجهزة اللابتوب وماك بوك (MacBook) وكمبيوترات الألعاب (Gaming PC) داخل مختبر KCROC في حولي. نصلح دوائر المذربورد والشحن والطاقة بتقنيات المايكرو سولدرينج (Micro-Soldering)، مع استلام وتوصيل مجاني من منزلك أو مكتبك.
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <a href="https://wa.me/96555301913" target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#c9804d] px-6 py-3 font-extrabold text-[#101114] transition hover:bg-[#dfa06f] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#efc19c]">
+                <a href={`https://wa.me/${KCROC_GRAPH.business?.telephone}`} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#c9804d] px-6 py-3 font-extrabold text-[#101114] transition hover:bg-[#dfa06f] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#efc19c]">
                   <MessageCircle className="h-5 w-5" aria-hidden="true" />
                   راسلنا عبر واتساب
                 </a>
@@ -140,7 +141,7 @@ export function ArabicHomePage() {
               {[
                 ['١', 'استلام الجهاز', 'نستلمه من منزلك أو مكتبك في مناطق الخدمة.'],
                 ['٢', 'تحديد العطل والتكلفة', 'نوضح سبب المشكلة وتكلفة الإصلاح.'],
-                ['٣', 'إصلاح واختبار', 'ننّفذ الإصلاح المتفق عليه ونختبر الجهاز قبل إعادته.'],
+                ['٣', 'إصلاح واختبار', 'ننفذ الإصلاح المتفق عليه ونختبر الجهاز قبل إعادته.'],
               ].map(([number, title, text]) => (
                 <div key={number} className="rounded-2xl border border-white/10 bg-slate-900/70 p-5">
                   <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#c9804d]/15 font-black text-[#efc19c]">{number}</span>
@@ -200,7 +201,7 @@ export function ArabicHomePage() {
                 <h2 className="text-2xl font-black text-white sm:text-3xl">جهازك متوقف؟ ابدأ بمراسلتنا</h2>
                 <p className="mt-3 max-w-2xl leading-7 text-slate-300">أرسل نوع الجهاز والعطل ومنطقتك، وسنساعدك في تحديد الخطوة التالية.</p>
               </div>
-              <a href="https://wa.me/96555301913" target="_blank" rel="noreferrer" className="inline-flex min-h-12 shrink-0 items-center justify-center gap-2 rounded-xl bg-[#c9804d] px-6 py-3 font-extrabold text-[#101114] transition hover:bg-[#dfa06f] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#efc19c]">
+              <a href={`https://wa.me/${KCROC_GRAPH.business?.telephone}`} target="_blank" rel="noreferrer" className="inline-flex min-h-12 shrink-0 items-center justify-center gap-2 rounded-xl bg-[#c9804d] px-6 py-3 font-extrabold text-[#101114] transition hover:bg-[#dfa06f] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#efc19c]">
                 <MessageCircle className="h-5 w-5" aria-hidden="true" /> راسلنا عبر واتساب
               </a>
             </div>
