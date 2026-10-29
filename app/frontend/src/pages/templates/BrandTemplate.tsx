@@ -111,10 +111,7 @@ const BrandTemplate: React.FC = () => {
                 {brand.title}
               </h1>
               <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-300 md:text-xl">
-                Component-level diagnosis and targeted repair for {brand.commonModels?.length
-                  ? brand.commonModels.slice(0, 5).join(', ')
-                  : `${brand.brandName} laptops`} — with the fault identified before repair
-                is approved.
+                {brand.description}
               </p>
 
               <div className="mt-8 flex flex-wrap gap-3 text-sm font-semibold">

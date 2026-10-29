@@ -278,11 +278,53 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
             "name": brandEntity.title,
             "description": brandEntity.description,
             "provider": { "@id": `${business.websiteUrl}/#business` },
+            "serviceType": brandEntity.brandName + " laptop repair",
+            "areaServed": { "@type": "Country", "name": "Kuwait" },
             "brand": {
               "@type": "Brand",
               "name": brandEntity.brandName,
               "url": brandEntity.officialWebsite
             },
+            ...(brandEntity.slug === 'msi-laptop-repair-kuwait' && {
+              "hasOfferCatalog": {
+                "@type": "OfferCatalog",
+                "name": "MSI Laptop Repair Services",
+                "itemListElement": [
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
+                      "name": "MSI hinge and chassis reconstruction",
+                      "description": "Model-specific inspection and repair of hinge mounts, threaded inserts and chassis damage where a durable reconstruction is appropriate."
+                    }
+                  },
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
+                      "name": "MSI motherboard power and charging diagnosis",
+                      "description": "Diagnosis of model-specific no-power and charging faults, with component-level repair where technically supported."
+                    }
+                  },
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
+                      "name": "MSI gaming laptop thermal and fan service",
+                      "description": "Fan and heatsink cleaning, airflow checks and model-compatible CPU/GPU and VRAM/VRM thermal-interface service."
+                    }
+                  },
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
+                      "name": "MSI charging-port micro-soldering",
+                      "description": "USB-C Power Delivery or barrel DC-jack diagnostics and repair on compatible models after inspection."
+                    }
+                  }
+                ]
+              }
+            }),
             ...(brandEntity.pricing && {
               "offers": {
                 "@type": "AggregateOffer",
