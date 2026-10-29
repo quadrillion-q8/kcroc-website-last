@@ -17,9 +17,8 @@ import { buildWhatsAppLink } from '../utils/whatsappIntent';
 const business = KCROC_GRAPH.business!;
 const BASE_URL = business.websiteUrl;
 
-// NOTE: WebPage + BreadcrumbList nodes are intentionally omitted here — SEOEngine
-// (driven by the 'page-booking' graph entity) is the single authority for those on
-// this page. This object only carries schema types SEOEngine doesn't generate.
+// SEOEngine owns the page metadata and WebPage graph. This block adds only the
+// Service node; the visible questions below intentionally do not emit FAQPage markup.
 const STRUCTURED_DATA = {
   "@context": "https://schema.org",
   "@graph": [
