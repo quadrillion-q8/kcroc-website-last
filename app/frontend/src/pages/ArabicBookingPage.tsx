@@ -61,11 +61,11 @@ export default function ArabicBookingPage() {
     });
 
     const message =
-      '*طلب تصليح جديد من موقع KCROC*\\n\\n' +
-      '*الجهاز:* ' + deviceType + (deviceModel.trim() ? ' (' + deviceModel.trim() + ')' : '') + '\\n' +
-      '*المنطقة:* ' + (location.trim() || 'لم يتم تحديد المنطقة') + '\\n' +
-      '*الوقت المفضل للاستلام:* ' + (preferredPickup || 'مرن / يتم التنسيق عبر واتساب') + '\\n' +
-      '*العطل:* ' + (issue.trim() || 'أحتاج إلى فحص وتشخيص') + '\\n\\n' +
+      '*طلب تصليح جديد من موقع KCROC*\n\n' +
+      '*الجهاز:* ' + deviceType + (deviceModel.trim() ? ' (' + deviceModel.trim() + ')' : '') + '\n' +
+      '*المنطقة:* ' + (location.trim() || 'لم يتم تحديد المنطقة') + '\n' +
+      '*الوقت المفضل للاستلام:* ' + (preferredPickup || 'مرن / يتم التنسيق عبر واتساب') + '\n' +
+      '*العطل:* ' + (issue.trim() || 'أحتاج إلى فحص وتشخيص') + '\n\n' +
       'مرحبًا KCROC، أريد طلب استلام مجاني للجهاز وفحصه مبدئيًا. يرجى التواصل معي لتأكيد تفاصيل الاستلام.';
     window.open(buildWhatsAppLink(message), '_blank', 'noopener,noreferrer');
   };
