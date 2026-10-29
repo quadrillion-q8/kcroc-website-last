@@ -196,13 +196,16 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
                   <Tag className="w-5 h-5 text-cyan-400 flex-shrink-0" />
                   <div>
                     <span className="block text-[10px] text-cyan-300/70 uppercase font-black tracking-wider">Pricing</span>
-                    <span className="font-semibold text-cyan-300">{entity.pricing?.displayLabel || 'Quote after diagnosis'}</span>
+                    <span className="font-semibold text-cyan-300">{entity.id === 'srv-gaming-laptop' ? 'Thermal 15–20 KWD • board repair 25–60 KWD' : entity.pricing?.displayLabel || 'Quote after diagnosis'}</span>
                   </div>
                 </div>
               </div>
               <Link to="/pricing" className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-cyan-400 hover:text-cyan-300">
                 See KCROC repair pricing and starting prices <ArrowRight className="w-4 h-4" aria-hidden="true" />
               </Link>
+              {entity.id === 'srv-gaming-laptop' && (
+                <p className="mt-2 max-w-3xl text-xs leading-5 text-slate-400">Free diagnosis. Charging-port repair: 20–35 KWD. Screen replacement labour: from 30 KWD plus the panel. Final pricing depends on model, confirmed fault and compatible parts; we provide a written quote before paid work.</p>
+              )}
             </div>
 
             {heroImage && (
@@ -334,6 +337,22 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
                 </li>
               ))}
             </ul>
+            {entity.advancedTechnicalSection && (
+              <div className="mt-10 border-t border-slate-800 pt-8" aria-labelledby="advanced-gaming-repair-heading">
+                <div className="max-w-4xl mb-6">
+                  <h3 id="advanced-gaming-repair-heading" className="text-xl sm:text-2xl font-black text-white">{entity.advancedTechnicalSection.heading}</h3>
+                  <p className="mt-3 text-sm sm:text-base leading-7 text-slate-300">{entity.advancedTechnicalSection.intro}</p>
+                </div>
+                <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+                  {entity.advancedTechnicalSection.items.map((item) => (
+                    <article key={item.title} className="rounded-2xl border border-slate-800 bg-slate-900/55 p-5">
+                      <h4 className="font-bold leading-6 text-white">{item.title}</h4>
+                      <p className="mt-3 text-sm leading-7 text-slate-400">{item.description}</p>
+                    </article>
+                  ))}
+                </div>
+              </div>
+            )}
           </section>
         )}
 
@@ -354,6 +373,34 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
                     </li>
                   ))}
                 </ul>
+              </div>
+            )}
+
+            {entity.modelFaultMatrix && entity.modelFaultMatrix.length > 0 && (
+              <div className="mt-8" aria-labelledby="gaming-model-faults-heading">
+                <h3 id="gaming-model-faults-heading" className="text-xl sm:text-2xl font-black text-white mb-3">Model-Specific Gaming Laptop Faults We Assess</h3>
+                <p className="mb-5 max-w-5xl text-sm leading-7 text-slate-400">These are examples of diagnostic paths—not claims that every model has a known defect. Hardware revisions vary within each family, so we verify the exact model and symptoms before identifying a fault or ordering parts.</p>
+                <div className="overflow-x-auto rounded-2xl border border-slate-700/80 bg-slate-900/45">
+                  <table className="w-full min-w-[820px] border-collapse text-left text-sm">
+                    <caption className="sr-only">Gaming laptop families, representative models, and model-dependent diagnostic checks.</caption>
+                    <thead className="bg-slate-800/90 text-slate-100">
+                      <tr>
+                        <th scope="col" className="px-4 py-4 font-bold">Gaming laptop family</th>
+                        <th scope="col" className="px-4 py-4 font-bold">Example models</th>
+                        <th scope="col" className="px-4 py-4 font-bold">Fault paths we assess</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-700/70">
+                      {entity.modelFaultMatrix.map((row) => (
+                        <tr key={row.family} className="align-top even:bg-slate-950/30">
+                          <th scope="row" className="px-4 py-4 font-semibold text-white">{row.family}</th>
+                          <td className="px-4 py-4 leading-6 text-slate-300">{row.models}</td>
+                          <td className="px-4 py-4 leading-7 text-slate-300">{row.diagnostics}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
               </div>
             )}
 
@@ -661,6 +708,9 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
                     <ArrowRight className="w-4 h-4 text-amber-300 shrink-0 rotate-180" />
                   </Link>
                   <p className="mt-3 text-xs leading-5 text-slate-500">صفحة عربية مخصصة لنفس خدمة الإصلاح في الكويت.</p>
+                   {entity.id === 'srv-gaming-laptop' && (
+                     <p className="mt-4 text-sm leading-7 text-slate-300">مختبر KCROC في حولي (شارع ابن خلدون) متخصص في تصليح لابتوبات الألعاب (Gaming Laptops) في الكويت — ASUS ROG/TUF، Lenovo Legion/LOQ، MSI، Acer Predator/Nitro، HP OMEN/Victus، Dell G/Alienware وRazer Blade. نفحص الحرارة وهبوط FPS ومشاكل GPU/VRAM والمذربورد والشحن، ونقدم خدمة PTM7950 أو صيانة المعدن السائل عندما يناسب تصميم الجهاز، مع فحص مجاني واستلام وتوصيل مجاني في الكويت (+965 55301913).</p>
+                   )}
                 </div>
               )}
             </div>

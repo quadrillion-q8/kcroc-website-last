@@ -217,6 +217,16 @@ export const ServiceSchema = RoutableEntitySchema.extend({
     }))
   }).optional(),
   inspectionChecklist: z.array(z.string()).optional(),
+  advancedTechnicalSection: z.object({
+    heading: z.string(),
+    intro: z.string(),
+    items: z.array(z.object({ title: z.string(), description: z.string() }))
+  }).optional(),
+  modelFaultMatrix: z.array(z.object({
+    family: z.string(),
+    models: z.string(),
+    diagnostics: z.string()
+  })).optional(),
   // 🚀 NEW: Contextual in-page photos (sourced from the /gallery image set)
   // tied to a specific section via `placement`, so they render inline next
   // to the content they illustrate rather than in a generic gallery block.

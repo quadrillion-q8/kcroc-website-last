@@ -254,10 +254,46 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
             "name": service.title,
             "description": service.description,
             "provider": { "@id": `${business.websiteUrl}/#business` },
-            "areaServed": primaryLocation?.serviceAreas.map(area => ({
-              "@type": "City",
-              "name": area
-            })),
+            "areaServed": service.id === 'srv-gaming-laptop'
+              ? [
+                  { "@type": "Country", "name": "Kuwait" },
+                  ...(primaryLocation?.serviceAreas ?? []).map(area => ({ "@type": "City", "name": area }))
+                ]
+              : primaryLocation?.serviceAreas.map(area => ({
+                  "@type": "City",
+                  "name": area
+                })),
+            ...(service.id === 'srv-gaming-laptop' ? {
+              "alternateName": "تصليح لابتوب قيمنق والألعاب في الكويت",
+              "serviceType": "Gaming-laptop cooling, thermal interface, GPU/VRAM, VRM, motherboard, charging, display and hinge diagnosis and repair",
+              "inLanguage": "en-KW",
+              "availableChannel": {
+                "@type": "ServiceChannel",
+                "servicePhone": "+" + business.telephone,
+                "serviceLocation": {
+                  "@type": "Place",
+                  "name": "KCROC repair workshop — Hawalli",
+                  "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": business.streetAddress,
+                    "addressLocality": business.addressLocality,
+                    "addressRegion": business.addressRegion,
+                    "addressCountry": business.addressCountry
+                  }
+                }
+              },
+              "hasOfferCatalog": {
+                "@type": "OfferCatalog",
+                "name": "Gaming Laptop Diagnostic & Repair Services",
+                "itemListElement": [
+                  { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Gaming laptop thermal service: PTM7950, compatible liquid-metal maintenance and VRAM/VRM thermal interfaces", "description": "Model-dependent thermal inspection and compatible cleaning or thermal-interface service after temperature and cooling checks." } },
+                  { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Gaming laptop motherboard, VRM and power-rail diagnosis", "description": "Model-specific power and charging diagnostics with component-level repair when technically viable." } },
+                  { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Discrete GPU, VRAM, MUX and Error Code 43 diagnostics", "description": "Diagnosis of black screens, artifacting, stability faults and graphics errors without assuming the GPU chip is the cause." } },
+                  { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "High-wattage gaming laptop charging port and DC-in repair", "description": "Adapter, DC jack, Slim-Tip and model-supported USB-C Power Delivery checks before quoting a repair." } },
+                  { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Gaming laptop high-refresh display, hinge and keyboard repair", "description": "Panel and chassis compatibility is confirmed against the exact model and part availability." } }
+                ]
+              }
+            } : {}),
             "offers": service.pricing ? {
               "@type": "Offer",
               "name": service.pricing.displayLabel ?? `From ${service.pricing.startingFrom} ${service.pricing.currency}`,
