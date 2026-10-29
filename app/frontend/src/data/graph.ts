@@ -10,7 +10,7 @@ import { IMAGES } from '../constants/images.js';
 export const rawGraphData: RawGraphData = {
   metadata: {
     version: '3.8.5',
-    lastUpdated: '2026-10-26T00:00:00+03:00',
+    lastUpdated: '2026-10-30T00:00:00+03:00',
     environment: 'production'
   },
 
@@ -638,7 +638,44 @@ export const rawGraphData: RawGraphData = {
       relatedServiceIds: ['srv-laptop', 'srv-motherboard', 'srv-screen', 'srv-battery', 'srv-charging-port']
     } as WebPageEntity,
     'page-about': { id: 'page-about', slug: 'about', entityType: 'WebPage', isActive: true, title: 'About Us', description: 'Learn about KCROC.', seo: { title: 'About KCROC | Computer Repair Experts Kuwait', description: 'Learn about Kuwait Computer Repair On Call, our Hawalli lab, and our commitment to component-level repair.', canonicalUrl: 'https://www.computerrepairkuwait.com/about', ogType: 'website', schemaTypes: ['AboutPage'] } } as WebPageEntity,
-    'page-contact': { id: 'page-contact', slug: 'contact', entityType: 'WebPage', isActive: true, title: 'Contact Us', description: 'Contact KCROC in Kuwait for component-level laptop, MacBook, gaming PC and motherboard repair. Free initial diagnosis and pickup across all governorates.', seo: { title: 'Contact KCROC | Computer Repair Kuwait', description: 'Contact KCROC in Kuwait for component-level laptop, MacBook, gaming PC and motherboard repair. Free initial diagnosis, daily Hawalli lab hours and free pickup.', canonicalUrl: 'https://www.computerrepairkuwait.com/contact', locale: 'en_KW', ogType: 'website', schemaTypes: ['ContactPage'], lastModified: '2026-10-26T00:00:00+03:00' } } as WebPageEntity,
+    'page-contact': {
+      id: 'page-contact', slug: 'contact', entityType: 'WebPage', isActive: true,
+      title: 'Contact KCROC – Computer Repair in Hawalli, Kuwait',
+      description: 'Contact KCROC in Hawalli, Kuwait. Visit the Al Mullah Complex repair lab at Basement Shop 19, call or WhatsApp our team, or arrange free pickup across Kuwait.',
+      seo: {
+        title: 'Contact KCROC | Computer Repair in Hawalli, Kuwait',
+        description: 'Contact KCROC in Hawalli, Kuwait for laptop, MacBook and computer repair. Call +965 55301913, WhatsApp our team, visit our Al Mullah Complex lab at Basement Shop 19, or arrange free pickup across Kuwait.',
+        canonicalUrl: 'https://www.computerrepairkuwait.com/contact',
+        locale: 'en_KW',
+        alternates: {
+          'en-KW': 'https://www.computerrepairkuwait.com/contact',
+          'ar-KW': 'https://www.computerrepairkuwait.com/ar/contact',
+          'x-default': 'https://www.computerrepairkuwait.com/contact'
+        },
+        ogType: 'website',
+        schemaTypes: ['ContactPage'],
+        lastModified: '2026-10-30T00:00:00+03:00'
+      }
+    } as WebPageEntity,
+    'page-ar-contact': {
+      id: 'page-ar-contact', slug: 'ar/contact', entityType: 'WebPage', isActive: true,
+      title: 'اتصل بنا – تصليح الكمبيوتر واللابتوب في حولي، الكويت',
+      description: 'تواصل مع KCROC لتصليح الكمبيوتر واللابتوب في حولي. زر مختبرنا في مجمع الملا، اتصل أو راسلنا واتساب، أو اطلب استلامًا مجانيًا من مناطق الكويت.',
+      seo: {
+        title: 'اتصل بـ KCROC | تصليح الكمبيوتر واللابتوب في حولي، الكويت',
+        description: 'تواصل مع KCROC لتصليح الكمبيوتر واللابتوب في حولي، الكويت. اتصل على +965 55301913 أو راسلنا واتساب أو زر مختبرنا في مجمع الملا، مع استلام مجاني من مناطق الكويت.',
+        canonicalUrl: 'https://www.computerrepairkuwait.com/ar/contact',
+        locale: 'ar_KW',
+        alternates: {
+          'ar-KW': 'https://www.computerrepairkuwait.com/ar/contact',
+          'en-KW': 'https://www.computerrepairkuwait.com/contact',
+          'x-default': 'https://www.computerrepairkuwait.com/contact'
+        },
+        ogType: 'website',
+        schemaTypes: ['ContactPage'],
+        lastModified: '2026-10-30T00:00:00+03:00'
+      }
+    } as WebPageEntity,
     'page-faq': { id: 'page-faq', slug: 'faq', entityType: 'WebPage', isActive: true, title: 'FAQ', description: 'Frequently asked questions.', seo: { title: 'Frequently Asked Questions | KCROC Kuwait', description: 'Answers to common questions about our laptop repair services, pricing, warranty, and data privacy.', canonicalUrl: 'https://www.computerrepairkuwait.com/faq', ogType: 'website', schemaTypes: ['FAQPage'] } } as WebPageEntity,
     'page-gallery': { id: 'page-gallery', slug: 'gallery', entityType: 'WebPage', isActive: true, title: 'Gallery', description: 'Lab and repair gallery.', seo: { title: 'Repair Gallery | KCROC Hawalli Lab', description: 'View our ESD-safe repair lab in Hawalli and real examples of our component-level micro-soldering.', canonicalUrl: 'https://www.computerrepairkuwait.com/gallery', ogType: 'website', schemaTypes: ['CollectionPage'] } } as WebPageEntity,
     'page-pricing': { id: 'page-pricing', slug: 'pricing', entityType: 'WebPage', isActive: true, title: 'Pricing', description: 'Transparent repair pricing for common computer and laptop repairs in Kuwait.', seo: { title: 'Computer Repair Prices Kuwait | Screen & Battery Labor | KCROC', description: 'Laptop screen labor from 30 KWD + panel; battery labor from 8 KWD + battery. Keyboard labor starts from 10 KWD; part cost varies by model. Free initial diagnosis and a quote before repair in Kuwait.', canonicalUrl: 'https://www.computerrepairkuwait.com/pricing', locale: 'en_KW', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/pricing', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/pricing', 'x-default': 'https://www.computerrepairkuwait.com/pricing' }, ogType: 'website', schemaTypes: ['WebPage'], lastModified: '2026-10-24T00:00:00+03:00', breadcrumbs: [{ name: 'Home', url: '/' }, { name: 'Pricing', url: '/pricing' }] } } as WebPageEntity,

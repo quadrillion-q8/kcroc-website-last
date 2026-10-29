@@ -2,7 +2,7 @@
 import React, { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
-  Phone, Mail, MapPin, Clock, MessageCircle, Send, Loader2
+  Phone, Mail, MapPin, Clock, MessageCircle, Send, Loader2, Navigation, ArrowUpRight
 } from 'lucide-react';
 import { ROUTES } from '../constants/routes';
 import MapComponent from '../components/MapComponent';
@@ -17,17 +17,41 @@ import { SEOEngine } from '../core/components/SEOEngine';
 
 const business = KCROC_GRAPH.business!;
 
-// Presentation-only line breaks for the address block — the underlying
-// address facts still come from KCROC_GRAPH via `business.streetAddress`.
-const ADDRESS_LINES = [
-  'Ibn Khaldoun St, Al Mullah Complex',
-  'Basement Shop 19',
-  'Hawalli, Kuwait',
-];
-
 const EMAIL = business.email;
 const PHONE_CLEAN = business.telephone.replace(/\D/g, '');
-const PHONE_DISPLAY = `+965 ${PHONE_CLEAN.replace(/^965/, '')}`;
+const PHONE_DISPLAY = '+965 ' + PHONE_CLEAN.replace(/^965/, '');
+const MAPS_URL = business.socialLinks.googleMaps;
+const WHATSAPP_URL = 'https://wa.me/' + PHONE_CLEAN + '?text=' + encodeURIComponent(
+  'Hi KCROC, I would like to ask about computer or laptop repair in Kuwait. Please help me arrange a visit or free pickup.'
+);
+
+const LOCATION_PHOTOS = [
+  {
+    src: '/images/kcroc-al-mullah-complex-hawalli-exterior.webp',
+    alt: 'Exterior of Al Mullah Complex in Hawalli, where the KCROC repair laboratory is located.',
+    caption: 'Al Mullah Complex — Hawalli',
+  },
+  {
+    src: '/images/kcroc-commercial-complex-view-dusk.webp',
+    alt: 'Al Mullah commercial complex viewed at dusk in Hawalli, Kuwait.',
+    caption: 'The commercial complex at dusk',
+  },
+  {
+    src: '/images/kcroc-al-mullah-complex-hawalli-night-view.webp',
+    alt: 'Night view of Al Mullah Complex in Hawalli, Kuwait.',
+    caption: 'Al Mullah Complex at night',
+  },
+  {
+    src: '/images/kcroc-al-mullah-complex-basement-shop-entrance.webp',
+    alt: 'Basement entrance to KCROC repair laboratory at Shop 19, Al Mullah Complex, Hawalli.',
+    caption: 'Basement entrance — Shop 19',
+  },
+  {
+    src: '/images/gallery/computer-repair-shop-glass-entrance-used-monitors-kuwait.webp',
+    alt: 'Genuine KCROC repair laboratory entrance with computer monitors visible inside.',
+    caption: 'The KCROC repair laboratory',
+  },
+];
 
 type FormData = {
   name: string;
@@ -116,10 +140,26 @@ export default function Contact() {
       {/* Hero */}
       <section className="relative pb-16 px-6 flex flex-col items-center text-center z-10">
         <h1 className="text-4xl md:text-6xl font-black mb-6 tracking-tight text-white">
-          Contact <span className="text-cyan-400">KCROC</span>
+          Contact <span className="text-cyan-400">KCROC</span> – Computer Repair in Hawalli, Kuwait
         </h1>
         <p className="text-slate-300 max-w-3xl mx-auto text-base md:text-lg leading-8">
-          We fix the board—we don&apos;t just swap it. Speak directly with a component-level technician for micro-soldering, MacBook, and gaming PC repair. Free initial diagnosis, a privacy-conscious hardware-first workflow, and free pick-up and delivery across all Kuwait governorates.
+          Speak with the KCROC computer repair team in Hawalli, Kuwait. Visit our component-level repair laboratory at Al Mullah Complex, Basement Shop 19, or arrange free laptop and computer pickup from your home or office anywhere across Kuwait. Our technicians handle laptops, MacBooks, gaming PCs and motherboard faults, with a free initial diagnosis and a clear quote before paid repair work begins.
+        </p>
+        <div className="mt-8 flex w-full max-w-4xl flex-col justify-center gap-3 sm:flex-row">
+          <a href={'tel:+' + PHONE_CLEAN} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-cyan-500 px-6 py-3 font-black text-slate-950 transition-colors hover:bg-cyan-400">
+            <Phone size={19} aria-hidden="true" /> Call {PHONE_DISPLAY}
+          </a>
+          <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-emerald-500/40 bg-emerald-500/10 px-6 py-3 font-bold text-emerald-300 transition-colors hover:bg-emerald-500/20">
+            <MessageCircle size={19} aria-hidden="true" /> WhatsApp KCROC
+            <ArrowUpRight size={16} aria-hidden="true" />
+          </a>
+          <a href={MAPS_URL} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-slate-700 bg-slate-900/60 px-6 py-3 font-bold text-white transition-colors hover:border-cyan-500/50 hover:text-cyan-300">
+            <Navigation size={19} aria-hidden="true" /> Get Directions
+            <ArrowUpRight size={16} aria-hidden="true" />
+          </a>
+        </div>
+        <p className="mt-4 text-sm text-slate-400">
+          KCROC has one physical repair laboratory in Hawalli. Free pickup and delivery are available across Kuwait.
         </p>
       </section>
 
@@ -209,11 +249,10 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="font-bold text-white mb-1">Visit Lab</h3>
-                    <p className="text-slate-400">
-                      {ADDRESS_LINES[0]}<br />
-                      {ADDRESS_LINES[1]}<br />
-                      {ADDRESS_LINES[2]}
-                    </p>
+                    <address className="not-italic text-slate-400">
+                      {business.streetAddress}<br />
+                      {business.addressLocality}, Kuwait
+                    </address>
                   </div>
                 </div>
 
@@ -224,12 +263,40 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="font-bold text-white mb-1">Business Hours</h3>
-                    <p className="text-slate-400">10:00 AM – 10:00 PM Daily</p>
+                    <p className="text-slate-400">{business.openingHours}</p>
                   </div>
                 </div>
 
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Real photos help visitors identify the actual complex, basement entrance and lab. */}
+      <section className="border-t border-slate-800/50 px-6 py-14 md:py-20" aria-labelledby="contact-location-photos">
+        <div className="mx-auto max-w-6xl">
+          <div className="mb-8 text-center">
+            <h2 id="contact-location-photos" className="text-2xl font-black text-white md:text-3xl">Find the KCROC Lab at Al Mullah Complex</h2>
+            <p className="mx-auto mt-3 max-w-3xl leading-7 text-slate-300">
+              These are real photos of the Hawalli commercial complex, the basement entrance at Shop 19 and the KCROC repair laboratory. Use them to recognise the building when visiting.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {LOCATION_PHOTOS.map((photo) => (
+              <figure key={photo.src} className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/50">
+                <img
+                  src={photo.src}
+                  alt={photo.alt}
+                  width={640}
+                  height={480}
+                  loading="lazy"
+                  decoding="async"
+                  className="aspect-[4/3] w-full object-cover"
+                />
+                <figcaption className="px-4 py-3 text-sm font-medium text-slate-300">{photo.caption}</figcaption>
+              </figure>
+            ))}
           </div>
         </div>
       </section>
@@ -246,6 +313,44 @@ export default function Contact() {
           </p>
           <div className="rounded-3xl overflow-hidden border border-slate-800 shadow-2xl">
             <MapComponent />
+          </div>
+        </div>
+      </section>
+
+      {/* Short, contact-specific answers; FAQPage markup is intentionally not added. */}
+      <section className="border-t border-slate-800/50 px-6 py-14" aria-labelledby="contact-questions">
+        <div className="mx-auto max-w-5xl">
+          <h2 id="contact-questions" className="mb-6 text-center text-2xl font-black text-white">Visiting and Contact Questions</h2>
+          <div className="grid gap-4 md:grid-cols-2">
+            <details className="rounded-2xl border border-slate-800 bg-slate-900/40 p-5">
+              <summary className="cursor-pointer font-bold text-white">Can I visit KCROC in person?</summary>
+              <p className="mt-3 leading-7 text-slate-300">Yes. Dropping off in person? Visit our ESD-safe repair lab at Ibn Khaldoun Street, Al Mullah Complex, Basement Shop 19, Hawalli. We are open daily from 10:00 AM to 10:00 PM.</p>
+            </details>
+            <details className="rounded-2xl border border-slate-800 bg-slate-900/40 p-5">
+              <summary className="cursor-pointer font-bold text-white">Do you have repair branches outside Hawalli?</summary>
+              <p className="mt-3 leading-7 text-slate-300">Hawalli is KCROC&apos;s physical repair laboratory. For other areas, we arrange free pickup and delivery across Kuwait rather than presenting service areas as additional storefronts.</p>
+            </details>
+            <details className="rounded-2xl border border-slate-800 bg-slate-900/40 p-5">
+              <summary className="cursor-pointer font-bold text-white">Can I arrange pickup without visiting the lab?</summary>
+              <p className="mt-3 leading-7 text-slate-300">Yes. Use the WhatsApp button or booking page to share your device model, fault and area so the team can coordinate free pickup.</p>
+            </details>
+            <details className="rounded-2xl border border-slate-800 bg-slate-900/40 p-5">
+              <summary className="cursor-pointer font-bold text-white">What should I send before contacting a technician?</summary>
+              <p className="mt-3 leading-7 text-slate-300">Share the device brand and model, a short description of the fault, and your area. You can use the form above to prepare those details in WhatsApp.</p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-t border-slate-800/50 px-6 py-12" aria-labelledby="contact-helpful-pages">
+        <div className="mx-auto max-w-6xl">
+          <h2 id="contact-helpful-pages" className="mb-5 text-2xl font-black text-white">Explore KCROC Repair Services</h2>
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            <Link to="/location/hawalli" className="rounded-xl border border-slate-800 bg-slate-900/40 p-4 font-semibold text-cyan-300 transition-colors hover:border-cyan-500/50 hover:text-cyan-200">Hawalli repair lab and local services <ArrowUpRight className="ml-1 inline h-4 w-4" aria-hidden="true" /></Link>
+            <Link to="/computer-repair-kuwait" className="rounded-xl border border-slate-800 bg-slate-900/40 p-4 font-semibold text-cyan-300 transition-colors hover:border-cyan-500/50 hover:text-cyan-200">Computer repair in Kuwait <ArrowUpRight className="ml-1 inline h-4 w-4" aria-hidden="true" /></Link>
+            <Link to="/laptop-repair-kuwait" className="rounded-xl border border-slate-800 bg-slate-900/40 p-4 font-semibold text-cyan-300 transition-colors hover:border-cyan-500/50 hover:text-cyan-200">Laptop repair in Kuwait <ArrowUpRight className="ml-1 inline h-4 w-4" aria-hidden="true" /></Link>
+            <Link to="/pricing" className="rounded-xl border border-slate-800 bg-slate-900/40 p-4 font-semibold text-cyan-300 transition-colors hover:border-cyan-500/50 hover:text-cyan-200">Computer and laptop repair prices <ArrowUpRight className="ml-1 inline h-4 w-4" aria-hidden="true" /></Link>
+            <Link to="/book" className="rounded-xl border border-slate-800 bg-slate-900/40 p-4 font-semibold text-cyan-300 transition-colors hover:border-cyan-500/50 hover:text-cyan-200">Book free pickup across Kuwait <ArrowUpRight className="ml-1 inline h-4 w-4" aria-hidden="true" /></Link>
           </div>
         </div>
       </section>

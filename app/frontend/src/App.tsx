@@ -34,6 +34,7 @@ export const routes: RouteObject[] = [
           { path: 'ar/near-me', lazy: async () => ({ Component: (await import('./pages/NearMeAR')).default }) },
           { path: 'ar/pricing', lazy: async () => ({ Component: (await import('./pages/ArabicPricingPage')).default }) },
           { path: 'ar/book', lazy: async () => ({ Component: (await import('./pages/ArabicBookingPage')).default }) },
+          { path: 'ar/contact', lazy: async () => ({ Component: (await import('./pages/ArabicContactPage')).default }) },
           { path: 'ar/computer-repair-hawalli', lazy: async () => ({ Component: (await import('./pages/ArabicHawalliLocationPage')).default }) },
           { path: 'ar/laptop-plugged-in-not-charging', lazy: async () => ({ Component: (await import('./pages/ArabicChargingTroubleshootingPage')).default }) },
           { path: 'ar/:slug', lazy: async () => ({ Component: (await import('./pages/ArabicCommercialPage')).default }) },
