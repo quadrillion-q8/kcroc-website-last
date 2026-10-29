@@ -174,7 +174,7 @@ export default function NearMeAR() {
               </p>
               <div className="mt-7 flex flex-col gap-3 sm:flex-row">
                 <Button size="lg" className="w-full bg-cyan-500 font-black text-slate-950 hover:bg-cyan-400 sm:w-auto" asChild>
-                  <Link to="/book"><Truck className="ml-2 h-5 w-5" aria-hidden="true" /> احجز استلام مجاني</Link>
+                  <Link to="/ar/book"><Truck className="ml-2 h-5 w-5" aria-hidden="true" /> احجز استلام مجاني</Link>
                 </Button>
                 <Button size="lg" variant="outline" className="w-full border-slate-700 text-white hover:bg-slate-800 sm:w-auto" asChild>
                   <a href={waLink} target="_blank" rel="noopener noreferrer"><MessageCircle className="ml-2 h-5 w-5" aria-hidden="true" /> تواصل عبر واتساب</a>
@@ -424,7 +424,7 @@ export default function NearMeAR() {
           <h2 className="mt-4 text-3xl font-black text-white sm:text-4xl">تحتاج فني كمبيوتر قريب منك؟</h2>
           <p className="mx-auto mt-4 max-w-2xl leading-loose text-slate-400">أخبرنا بمنطقتك ونوع جهازك والمشكلة التي تواجهها، وسنساعدك في تحديد الخطوة المناسبة. وإذا احتاج الجهاز إلى فحص، سنرتب لك الاستلام من المنزل أو المكتب.</p>
           <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
-            <Button size="lg" className="bg-cyan-500 font-black text-slate-950 hover:bg-cyan-400" asChild><Link to="/book">احجز استلام مجاني</Link></Button>
+            <Button size="lg" className="bg-cyan-500 font-black text-slate-950 hover:bg-cyan-400" asChild><Link to="/ar/book">احجز استلام مجاني</Link></Button>
             <Button size="lg" variant="outline" className="border-slate-700 text-white hover:bg-slate-800" asChild><a href={waLink} target="_blank" rel="noopener noreferrer">تواصل عبر واتساب</a></Button>
           </div>
           <p className="mt-5 text-xs text-slate-500">مختبر الإصلاح المركزي: {business.streetAddress}، {business.addressLocality}، الكويت</p>
