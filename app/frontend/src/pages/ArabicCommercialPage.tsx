@@ -123,17 +123,17 @@ const CONFIG: Record<string, {
     serviceIds: ['srv-gaming', 'srv-gaming-laptop-cleaning', 'srv-motherboard', 'srv-laptop']
   },
   'laptop-screen-repair-kuwait': {
-    h1: 'تصليح شاشة اللابتوب في الكويت – فحص وتبديل حسب الموديل',
-    eyebrow: 'شاشة مكسورة أو سوداء أو فيها خطوط ووميض • نشخّص السبب قبل طلب القطعة',
-    intro: 'شاشة اللابتوب مكسورة أو فيها بقع سوداء أو خطوط؟ الصورة تومض، تختفي عند تحريك الغطاء، أو الشاشة سوداء والجهاز يبدو أنه يعمل؟ لا تفترض أن اللوحة نفسها تالفة؛ قد يكون السبب في لوحة LCD، أو كابل الشاشة ومفصلاتها، أو الإضاءة أو مسار العرض. في KCROC نفحص الأعراض وموديل الجهاز، ونطابق الشاشة حسب رقم القطعة والمواصفات، ثم نوضح أجرة العمل وسعر الشاشة والمدة المتوقعة قبل أي إصلاح مدفوع.',
-    bullets: ['تشخيص الشاشة والكابل والإضاءة قبل طلب قطعة بديلة', 'أجرة العمل تبدأ من 30 د.ك + سعر الشاشة', 'مطابقة الموديل والدقة ومعدل التحديث واللمس والمنفذ حسب الجهاز', 'تأكيد السعر النهائي وتوفر القطعة والمدة قبل الموافقة', 'استلام وتوصيل مجاني من مناطق الكويت والإصلاح في مختبر حولي'],
+    h1: 'تبديل وتصليح شاشة اللابتوب في الكويت — مطابقة دقيقة للموديل وفحص مسار العرض أولًا',
+    eyebrow: 'تبديل شاشة مكسورة • فحص الشاشة السوداء والخطوط والإضاءة • استلام وتوصيل مجاني',
+    intro: 'شاشة اللابتوب مكسورة أو فيها بقع سوداء أو خطوط؟ الصورة تومض أو تختفي عند تحريك الغطاء، أو الجهاز يعمل والشاشة سوداء؟ في مختبر KCROC بحولي نفحص لوحة العرض وكابل eDP والموصلات ومسار الإضاءة قبل اقتراح التبديل. إذا احتاج الجهاز شاشة جديدة، نطابق رقم القطعة والمقاس والدقة ونوع اللوحة ومعدل التحديث واللمس والموصل بحسب الموديل، ونوضح التكلفة الإجمالية قبل أي عمل مدفوع. نوفر الاستلام والتوصيل المجاني في مناطق الكويت.',
+    bullets: ['فحص أولي مجاني للشاشة والكابل والإضاءة', 'تبديل شاشات HP وDell وLenovo وASUS وAcer وMSI وHuawei حسب الموديل والتوفر', 'مطابقة الشاشات العادية واللمس وOLED ومعدلات التحديث العالية', 'توضيح أجرة العمل وسعر الشاشة والتكلفة الإجمالية قبل الموافقة', 'استلام وتوصيل مجاني في الكويت والإصلاح في مختبر حولي'],
     faq: [
       { q: 'الشاشة سوداء لكن اللابتوب يشتغل، هل لازم أبدّل الشاشة؟', a: 'مو بالضرورة. قد يكون السبب من الشاشة أو الكابل أو الإضاءة أو مسار العرض. إذا كان لديك شاشة خارجية وكابل متوافق، يمكن اختبار العرض الخارجي للمساعدة على عزل الاحتمالات، لكن النتيجة وحدها لا تؤكد القطعة التالفة. نفحص الجهاز قبل اقتراح التبديل.' },
-      { q: 'كم سعر تبديل شاشة اللابتوب؟ هل سعر 30 د.ك يشمل الشاشة؟', a: 'أجرة العمل تبدأ من 30 د.ك، وسعر الشاشة منفصل ويتحدد حسب الماركة والموديل ورقم القطعة والدقة ومعدل التحديث واللمس وتوفر القطعة. نوضح السعر النهائي شامل أجرة العمل والقطعة قبل أي إصلاح مدفوع.' },
+      { q: 'كم سعر تبديل شاشة اللابتوب وهل السعر يشمل الشاشة؟', a: 'يعتمد السعر على الماركة والموديل ونوع اللوحة وتوفر القطعة. نوضح أجرة العمل وثمن الشاشة كلًّا على حدة، مع التكلفة الإجمالية والمدة المتوقعة قبل التنفيذ. لا يبدأ أي عمل مدفوع قبل موافقتك.' },
       { q: 'كيف تتأكدون أن الشاشة الجديدة متوافقة مع جهازي؟', a: 'ما نعتمد على المقاس وحده. نراجع الموديل الدقيق ورقم الشاشة الأصلي عندما يكون متاحًا، والدقة ومعدل التحديث ونوع الموصل واللمس ونقاط التثبيت حسب تصميم الجهاز. نتحقق من التوفر والتكلفة قبل طلب القطعة.' },
       { q: 'الخطوط أو الوميض يظهران إذا حرّكت غطاء اللابتوب، شنو السبب؟', a: 'قد يشير ذلك إلى كابل شاشة متضرر أو مشكلة في الموصل أو المفصلات، لكنه لا يثبت السبب وحده. تجنب تحريك الغطاء بالقوة؛ نفحص مجموعة الشاشة والتوصيلات قبل تحديد الإصلاح.' },
       { q: 'هل تبدلون الشاشة في نفس اليوم؟', a: 'قد يكون ذلك ممكنًا إذا كانت القطعة الصحيحة متوفرة وأتاح وقت الاستلام والتشخيص والتركيب ذلك. لا نؤكد إصلاحًا في نفس اليوم قبل التحقق من موديل جهازك وتوفر الشاشة والمدة.' },
-      { q: 'هل تقدرون تبدّلون شاشة لمس أو شاشة بمعدل تحديث عالٍ؟', a: 'نحدد النوع من موديل الجهاز ورقم القطعة والمواصفات. شاشات اللمس والدقة العالية ومعدلات التحديث المختلفة ليست بدائل متطابقة حتى لو كان المقاس واحدًا؛ نتحقق من التوافق قبل طلب القطعة.' },
+      { q: 'هل تبدّلون شاشة لمس أو OLED أو شاشة قيمنق عالية التردد؟', a: 'نفحص رقم الموديل والقطعة والمواصفات، بما فيها اللمس ونوع اللوحة ومعدل التحديث والموصل. نتأكد من التوافق وتوفر الشاشة قبل طلبها؛ فالمقاس وحده لا يكفي.' },
       { q: 'هل يوجد ضمان على تبديل الشاشة؟', a: 'توجد تغطية ضمان لمدة 30 يومًا على الإصلاحات المشمولة وفق شروط الخدمة التي نوضحها قبل التنفيذ. نبيّن لك نطاق التغطية على الشاشة والعمل قبل الموافقة.' },
       { q: 'هل شاشة MacBook لها صفحة وسعر خاصان؟', a: 'نعم، لتبديل شاشة MacBook Air أو MacBook Pro صفحة مخصصة لأن موديل الجهاز والجيل وتجميعة الشاشة تختلف. يمكنك مراجعة صفحة خدمة شاشة MacBook لمعرفة التفاصيل.' },
       { q: 'هل تستلمون اللابتوب من منطقتي في الكويت؟', a: 'نعم، نرتب الاستلام والتوصيل من مناطق الكويت حسب الموعد والتوفر. الفحص والإصلاح يتمان في مختبر KCROC بحولي؛ بقية المناطق مناطق خدمة وليست فروعًا مستقلة.' }
@@ -2094,12 +2094,16 @@ export default function ArabicCommercialPage() {
           addressCountry: business.addressCountry,
         },
       },
-      offers: {
-        '@type': 'Offer',
-        name: 'أجرة العمل من 30 د.ك + سعر الشاشة',
-        description: 'أجرة العمل تبدأ من 30 د.ك، وسعر الشاشة يُحسب بشكل منفصل حسب الموديل والمواصفات وتوفر القطعة. نؤكد السعر النهائي قبل أي عمل مدفوع.',
-        priceCurrency: 'KWD',
-        price: 30,
+      alternateName: 'Laptop Screen Replacement & Backlight Diagnostics Kuwait',
+      hasOfferCatalog: {
+        '@type': 'OfferCatalog',
+        name: 'خدمات تبديل شاشة اللابتوب وفحص مسار العرض في الكويت',
+        itemListElement: [
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'تبديل شاشة HP وDell وLenovo وASUS وAcer وMSI وHuawei', description: 'تأكيد توافق رقم القطعة وتوفر الشاشة حسب الموديل قبل اعتماد السعر.' } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'تبديل شاشات اللمس و2-in-1', description: 'فحص تجميعة الشاشة واللمس والتأكد من توافقها مع الموديل.' } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'تبديل شاشات الألعاب عالية التردد', description: 'التحقق من دعم 120Hz و144Hz و165Hz و240Hz ونوع الموصل حسب الجهاز.' } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'تشخيص كابل الشاشة والإضاءة الخلفية', description: 'فحص الكابل والموصل والفيوز ودائرة الإضاءة بحسب تصميم اللوحة ونتائج القياس.' } }
+        ]
       },
     }]
   } : slug === 'macbook-screen-replacement-kuwait' ? {
@@ -2343,6 +2347,16 @@ export default function ArabicCommercialPage() {
             <div className="max-w-4xl">
               <h1 className="text-3xl font-black leading-tight text-white sm:text-5xl">{cfg.h1}</h1>
               <p className="mt-6 text-base leading-8 text-slate-300 sm:text-lg">{cfg.intro}</p>
+              {slug === 'laptop-screen-repair-kuwait' && (
+                <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                  <a href={wa} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-400 px-6 py-3 font-black text-slate-950 transition hover:bg-cyan-300">
+                    <MessageCircle className="h-5 w-5" aria-hidden="true" /> أرسل صورة الشاشة والموديل عبر واتساب
+                  </a>
+                  <Link to="/book" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-slate-700 bg-slate-950/60 px-6 py-3 font-black text-white transition hover:border-cyan-500/40 hover:text-cyan-300">
+                    <Truck className="h-5 w-5" aria-hidden="true" /> احجز استلام مجاني من منطقتك
+                  </Link>
+                </div>
+              )}
             </div>
             {slug === 'battery-replacement-kuwait' && (
               <figure className="min-w-0 overflow-hidden rounded-2xl border border-slate-700 bg-slate-950 shadow-xl">
@@ -2374,9 +2388,9 @@ export default function ArabicCommercialPage() {
           {slug === 'laptop-screen-repair-kuwait' && (
             <div className="mt-6 flex flex-col gap-3 rounded-2xl border border-cyan-500/25 bg-cyan-500/5 p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6">
               <div>
-                <p className="text-xs font-black uppercase tracking-[0.12em] text-cyan-300">سعر البداية</p>
-                <p className="mt-2 text-xl font-black text-white sm:text-2xl">أجرة العمل تبدأ من 30 د.ك + سعر الشاشة</p>
-                <p className="mt-2 text-sm leading-7 text-slate-400">سعر الشاشة منفصل ويتحدد حسب موديل الجهاز والمواصفات وتوفر القطعة. نؤكد السعر النهائي قبل أي إصلاح مدفوع.</p>
+                <p className="text-xs font-black uppercase tracking-[0.12em] text-cyan-300">التكلفة بوضوح قبل الإصلاح</p>
+                <p className="mt-2 text-xl font-black text-white sm:text-2xl">فحص أولي مجاني • عرض سعر واضح حسب الموديل</p>
+                <p className="mt-2 text-sm leading-7 text-slate-400">نوضح لك أجرة العمل وثمن الشاشة والتكلفة الإجمالية والمدة المتوقعة قبل طلب القطعة أو بدء أي عمل مدفوع.</p>
               </div>
               <Link to="/ar/pricing" className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full border border-slate-700 px-5 py-3 text-sm font-black text-cyan-300 transition hover:border-cyan-500/40 hover:text-cyan-200">
                 تفاصيل الأسعار <ArrowLeft className="h-4 w-4" aria-hidden="true" />
@@ -2890,7 +2904,7 @@ export default function ArabicCommercialPage() {
             <section className="mt-12 rounded-3xl border border-slate-800 bg-slate-900/40 p-6 sm:p-8" aria-labelledby="laptop-screen-symptom-guide">
               <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">دليل الأعطال حسب الأعراض</p>
               <h2 id="laptop-screen-symptom-guide" className="mt-2 text-2xl font-black text-white sm:text-3xl">شلون نعرف إذا العطل من الشاشة أو الكابل أو مسار العرض؟</h2>
-              <p className="mt-3 max-w-3xl leading-8 text-slate-400">الشاشة السوداء والخطوط والوميض قد تنتج من أكثر من سبب. هدف التشخيص هو تجنّب طلب شاشة جديدة إذا كانت المشكلة في كابل أو موصل أو مكوّن آخر، مع عدم افتراض أن كل عطل قابل للإصلاح قبل الفحص.</p>
+              <p className="mt-3 max-w-3xl leading-8 text-slate-400">الشاشة السوداء أو الخطوط والوميض لا تعني تلقائيًا تلف لوحة الشاشة. نتحقق من لوحة العرض وكابل eDP والموصل والإضاءة ومسار الصورة وفق الأعراض، ثم نحدد هل الأنسب تبديل الشاشة أو إصلاح التوصيل أو فحص اللوحة الأم.</p>
               <div className="mt-6 grid gap-5 md:grid-cols-3">
                 {[
                   {
@@ -2927,6 +2941,32 @@ export default function ArabicCommercialPage() {
               </div>
             </section>
 
+            {slug === 'laptop-screen-repair-kuwait' && (
+              <section className="mt-10 rounded-3xl border border-cyan-500/20 bg-gradient-to-br from-cyan-500/5 via-slate-950/90 to-slate-950 p-6 sm:p-8" aria-labelledby="laptop-screen-brand-coverage">
+                <p className="text-sm font-bold tracking-wide text-cyan-300">تغطية الماركات وأنواع الشاشات</p>
+                <h2 id="laptop-screen-brand-coverage" className="mt-2 text-2xl font-black text-white sm:text-3xl">تبديل شاشة لابتوب HP وDell وLenovo وبقية الماركات في الكويت</h2>
+                <p className="mt-3 max-w-4xl leading-8 text-slate-300">نحدد الشاشة من رقم الموديل ورقم القطعة ونراجع توفرها قبل اعتماد السعر. ذكر الماركة أو السلسلة لا يعني أن كل المقاسات أو القطع متوفرة فورًا؛ نؤكد التوافق والتوفر معك قبل الطلب.</p>
+                <div className="mt-6 grid gap-4 md:grid-cols-2">
+                  <article className="rounded-2xl border border-slate-800 bg-slate-950/60 p-5">
+                    <h3 className="text-lg font-black text-white">شاشات اللابتوبات العادية والأعمال</h3>
+                    <p className="mt-2 text-sm leading-7 text-slate-300">HP Pavilion وEnvy وProBook وEliteBook؛ Dell Inspiron وLatitude وVostro وXPS؛ Lenovo IdeaPad وThinkPad؛ ASUS VivoBook وZenbook؛ Acer Aspire وSwift؛ وHuawei MateBook. نطابق اللوحة مع الموديل الدقيق بدل الاعتماد على اسم العائلة وحده.</p>
+                  </article>
+                  <article className="rounded-2xl border border-slate-800 bg-slate-950/60 p-5">
+                    <h3 className="text-lg font-black text-white">شاشات اللمس وأجهزة 360° و2-in-1</h3>
+                    <p className="mt-2 text-sm leading-7 text-slate-300">HP Pavilion x360 وEnvy x360 وSpectre x360؛ Lenovo Yoga وFlex؛ Dell Inspiron 2-in-1؛ وMicrosoft Surface حسب الموديل. نتحقق هل المطلوب لوحة فقط أو تجميعة شاشة مع طبقة اللمس (LCD + Digitizer)، ونراجع توافق القلم واللمس والمفصلات بحسب التصميم.</p>
+                  </article>
+                  <article className="rounded-2xl border border-slate-800 bg-slate-950/60 p-5">
+                    <h3 className="text-lg font-black text-white">شاشات قيمنق 144Hz و165Hz و240Hz</h3>
+                    <p className="mt-2 text-sm leading-7 text-slate-300">MSI Katana وRaider وThin؛ ASUS ROG Strix وZephyrus وTUF؛ Acer Nitro وPredator؛ وHP Victus وOMEN. نراجع معدل التحديث الأصلي ونوع اللوحة والمنفذ ودعم G-Sync أو FreeSync عند ارتباطه بالموديل، ولا نفترض أن الشاشة ذات المقاس نفسه ستحافظ على هذه الميزات.</p>
+                  </article>
+                  <article className="rounded-2xl border border-slate-800 bg-slate-950/60 p-5">
+                    <h3 className="text-lg font-black text-white">الشاشة السوداء والإضاءة الخلفية على اللوحة الأم</h3>
+                    <p className="mt-2 text-sm leading-7 text-slate-300">إذا كانت الصورة خافتة تحت ضوء خارجي أو اختفت الإضاءة بينما الجهاز يعمل، نفحص لوحة العرض والكابل وموصل eDP ومسار الإضاءة. وبحسب تصميم اللوحة والقياسات، قد يشمل التشخيص فيوز الإضاءة الخلفية أو دائرة قيادة الإضاءة (Backlight Driver IC) أو حساس إغلاق الغطاء عند ارتباطه بالأعراض؛ نقيّم الإصلاح على مستوى المكونات عندما تثبت النتائج ملاءمته.</p>
+                  </article>
+                </div>
+              </section>
+            )}
+
             <section className="mt-10 rounded-3xl border border-slate-800 bg-slate-900/40 p-6 sm:p-8" aria-labelledby="laptop-screen-compatibility">
               <div className="grid items-start gap-7 lg:grid-cols-[0.9fr_1.1fr]">
                 <div>
@@ -2940,10 +2980,10 @@ export default function ArabicCommercialPage() {
                 </div>
                 <div className="grid gap-4 sm:grid-cols-2">
                   {[
-                    { title: 'الموديل ورقم القطعة', text: 'نسجل الماركة والموديل الدقيق ورقم الشاشة الأصلي إن أمكن، بدل الاختيار من المقاس وحده.' },
-                    { title: 'الدقة ومعدل التحديث', text: 'HD وFHD وQHD و4K ومعدلات التحديث المختلفة ليست بدائل تلقائية لبعضها؛ نتأكد من دعم الجهاز والتوافق.' },
-                    { title: 'اللمس ونوع اللوحة', text: 'شاشة اللمس وتجميعة الشاشة العادية قد تختلفان في القطع وطريقة التركيب. نطابق النوع قبل طلبها.' },
-                    { title: 'الموصل ونقاط التثبيت', text: 'نوع الموصل ومكانه وإطار التثبيت مهم للتوافق. لا نعد بأن أي لوحة بالمقاس نفسه ستعمل.' }
+                    { title: 'المقاس ورقم القطعة', text: 'نراجع الموديل الدقيق ورقم الشاشة الأصلي إن أمكن. من المقاسات الشائعة 13.3 و14 و15.6 و16 و17.3 بوصة، لكن المقاس وحده لا يثبت التوافق.' },
+                    { title: 'الدقة ونوع اللوحة والتردد', text: 'نتحقق من HD وFHD وQHD و4K، ومن IPS أو OLED أو Mini-LED ومعدل 60 أو 120 أو 144 أو 165 أو 240Hz وفق مواصفات الجهاز الأصلية.' },
+                    { title: 'اللمس وتجميعة الشاشة', text: 'قد تتطلب أجهزة اللمس و2-in-1 تجميعة LCD مع طبقة اللمس (Digitizer) متوافقة مع الموديل؛ لا يكفي شكل الزجاج وحده.' },
+                    { title: 'موصل eDP والبنات', text: 'نتحقق من نوع موصل eDP وعدد البنات، مثل 30-pin أو 40-pin، ومكانه ونقاط التثبيت مع رقم القطعة ومتطلبات الجهاز.' }
                   ].map((item) => (
                     <article key={item.title} className="rounded-2xl border border-slate-800 bg-slate-950/50 p-5">
                       <h3 className="font-bold text-white">{item.title}</h3>
@@ -2954,22 +2994,35 @@ export default function ArabicCommercialPage() {
               </div>
             </section>
 
+            {slug === 'laptop-screen-repair-kuwait' && (
+              <section data-nosnippet className="mt-10 rounded-3xl border border-slate-800 bg-slate-900/50 p-6 sm:p-8" aria-labelledby="laptop-screen-price-transparency">
+                <p className="text-sm font-bold tracking-wide text-cyan-300">تفاصيل التكلفة</p>
+                <h2 id="laptop-screen-price-transparency" className="mt-2 text-2xl font-black text-white sm:text-3xl">أجرة العمل وسعر الشاشة قبل الموافقة</h2>
+                <p className="mt-3 leading-8 text-slate-300">أجرة العمل تبدأ من 30 د.ك، ويُحسب سعر الشاشة بشكل منفصل وفق الماركة والموديل ورقم القطعة والدقة ونوع اللوحة واللمس ومعدل التحديث وتوفرها. نوضح أجرة العمل وسعر القطعة والتكلفة الإجمالية والمدة المتوقعة قبل طلب الشاشة أو بدء أي عمل مدفوع.</p>
+              </section>
+            )}
+
             <section className="mt-10 rounded-3xl border border-slate-800 bg-slate-900/40 p-6 sm:p-8" aria-labelledby="laptop-screen-repair-process">
               <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">خطوات واضحة</p>
               <h2 id="laptop-screen-repair-process" className="mt-2 text-2xl font-black text-white sm:text-3xl">من فحص الشاشة إلى اختبار الصورة</h2>
-              <p className="mt-3 max-w-3xl leading-8 text-slate-400">نوضح سبب المشكلة وخيارات الإصلاح والتكلفة قبل العمل. أجرة الاستبدال تبدأ من 30 د.ك، أما الشاشة نفسها فتُحسب منفصلة حسب الموديل والمواصفات وتوفر القطعة.</p>
-              <ol className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <p className="mt-3 max-w-3xl leading-8 text-slate-400">نوضح سبب المشكلة وخيارات الإصلاح وأجرة العمل وسعر الشاشة والتكلفة الإجمالية قبل طلب القطعة أو بدء أي عمل مدفوع.</p>
+              <ol className="mt-6 grid list-none gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {[
-                  { title: '١. تحديد الموديل والأعراض', text: 'نحتاج الماركة والموديل الدقيق، ونوع الأثر الظاهر ومتى بدأ، وهل حصل سقوط أو ضغط على الغطاء.' },
-                  { title: '٢. عزل احتمالات العطل', text: 'نراجع أعراض الشاشة والكابل والإضاءة والموصلات، ونستخدم اختبارات مناسبة حسب تصميم الجهاز.' },
-                  { title: '٣. مطابقة الشاشة', text: 'نتحقق من رقم القطعة والمقاس والدقة ومعدل التحديث واللمس والموصل ونقاط التثبيت.' },
-                  { title: '٤. عرض السعر والتوفر', text: 'نوضح أجرة العمل وسعر الشاشة وأي ملاحظة تخص القطعة والمدة قبل طلبها أو بدء الإصلاح.' },
-                  { title: '٥. التركيب الآمن', text: 'يتم تركيب القطعة المتوافقة وفق تصميم الجهاز؛ وقد تتطلب بعض الموديلات فكًا أكثر تعقيدًا من غيرها.' },
-                  { title: '٦. اختبار ما بعد الإصلاح', text: 'نختبر الصورة والإضاءة والتوصيل والوظائف المرتبطة بالإصلاح، ثم نعيد الجهاز بعد شرح الضمان.' }
+                  { n: '١', title: 'تحديد الموديل والأعراض', text: 'نحتاج الماركة والموديل الدقيق، ونوع الأثر الظاهر ومتى بدأ، وهل حصل سقوط أو ضغط على الغطاء.' },
+                  { n: '٢', title: 'عزل احتمالات العطل', text: 'نراجع أعراض الشاشة والكابل والإضاءة والموصلات، ونستخدم اختبارات مناسبة حسب تصميم الجهاز.' },
+                  { n: '٣', title: 'مطابقة الشاشة', text: 'نتحقق من رقم القطعة والمقاس والدقة ونوع اللوحة ومعدل التحديث واللمس والموصل ونقاط التثبيت.' },
+                  { n: '٤', title: 'عرض السعر والتوفر', text: 'نوضح أجرة العمل وسعر الشاشة والتكلفة الإجمالية والمدة قبل طلب القطعة أو بدء الإصلاح.' },
+                  { n: '٥', title: 'التركيب الآمن', text: 'يتم تركيب القطعة المتوافقة وفق تصميم الجهاز، مع مراعاة اختلاف طريقة الفك والتركيب بين الموديلات.' },
+                  { n: '٦', title: 'اختبار ما بعد الإصلاح', text: 'نختبر الصورة والإضاءة والتوصيل والوظائف المرتبطة بالإصلاح، ثم نعيد الجهاز بعد شرح الضمان.' }
                 ].map((item) => (
-                  <li key={item.title} className="rounded-2xl border border-slate-800 bg-slate-950/45 p-5">
-                    <h3 className="font-bold text-white">{item.title}</h3>
-                    <p className="mt-2 text-sm leading-7 text-slate-400">{item.text}</p>
+                  <li key={item.n} className="rounded-2xl border border-slate-800 bg-slate-950/45 p-5">
+                    <div className="flex items-start gap-3">
+                      <span aria-hidden="true" className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-cyan-400/10 font-black text-cyan-300">{item.n}</span>
+                      <div>
+                        <h3 className="font-bold text-white">{item.title}</h3>
+                        <p className="mt-2 text-sm leading-7 text-slate-400">{item.text}</p>
+                      </div>
+                    </div>
                   </li>
                 ))}
               </ol>
@@ -3440,7 +3493,7 @@ export default function ArabicCommercialPage() {
           <h2 className="text-2xl font-black text-white sm:text-3xl">قول لنا المشكلة مثل ما هي</h2>
           <p className="mx-auto mt-4 max-w-2xl leading-8 text-slate-300">ارسل موديل الجهاز، منطقتك، ووصف بسيط للعطل على واتساب. نبدأ من التشخيص ونوضح لك الخطوة التالية قبل الإصلاح.</p>
           <a href={wa} target="_blank" rel="noreferrer" className="mt-7 inline-flex items-center justify-center gap-2 rounded-full bg-cyan-500 px-8 py-3.5 font-black text-slate-950 hover:bg-cyan-400">
-            <MessageCircle className="h-5 w-5" aria-hidden="true" /> {slug === 'gaming-laptop-repair-kuwait' ? 'أرسل الموديل والعطل على واتساب' : slug === 'computer-repair-farwaniya' ? 'رتب استلام الجهاز من الفروانية' : 'تواصل مع فني KCROC'}
+            <MessageCircle className="h-5 w-5" aria-hidden="true" /> {slug === 'laptop-screen-repair-kuwait' ? 'أرسل صورة الشاشة والموديل عبر واتساب' : slug === 'gaming-laptop-repair-kuwait' ? 'أرسل الموديل والعطل على واتساب' : slug === 'computer-repair-farwaniya' ? 'رتب استلام الجهاز من الفروانية' : 'تواصل مع فني KCROC'}
           </a>
         </section>
       </div>
