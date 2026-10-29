@@ -417,13 +417,13 @@ export const rawGraphData: RawGraphData = {
     'page-ar-farwaniya-computer-repair': {
       id: 'page-ar-farwaniya-computer-repair', slug: 'ar/computer-repair-farwaniya', entityType: 'WebPage', isActive: true,
       title: "تصليح كمبيوتر ولابتوب في الفروانية | استلام مجاني",
-      description: "خدمة تصليح كمبيوتر ولابتوب في الفروانية وخيطان والرقعي والعارضية وجليب الشيوخ؛ فحص مجاني واستلام وتوصيل إلى مختبر KCROC بحولي مع عرض سعر قبل الإصلاح.",
+      description: "خدمة تصليح كمبيوتر ولابتوب وماك بوك (MacBook) وكمبيوتر قيمنق في الفروانية وخيطان والرقعي والعارضية وجليب الشيوخ وعبدالله المبارك وصباح الناصر، مع استلام مجاني من المنزل أو المكتب وفحص في مختبر KCROC بحولي وعرض سعر قبل الإصلاح.",
       seo: {
         title: "تصليح كمبيوتر الفروانية | فحص مجاني واستلام | KCROC",
-        description: "تصليح كمبيوتر ولابتوب في الفروانية وخيطان والرقعي والعارضية وجليب الشيوخ. فحص أولي مجاني، استلام وتوصيل إلى مختبر حولي، عرض سعر قبل الإصلاح وضمان 30 يومًا.",
+        description: "تصليح كمبيوتر ولابتوب وماك بوك (MacBook) وكمبيوتر قيمنق في الفروانية وخيطان والرقعي والعارضية وعبدالله المبارك وصباح الناصر. استلام مجاني وفحص في مختبر حولي.",
         canonicalUrl: 'https://www.computerrepairkuwait.com/ar/computer-repair-farwaniya',
         locale: 'ar_KW', alternates: { 'ar-KW': 'https://www.computerrepairkuwait.com/ar/computer-repair-farwaniya', 'en-KW': 'https://www.computerrepairkuwait.com/location/farwaniya', 'x-default': 'https://www.computerrepairkuwait.com/location/farwaniya' },
-        ogType: 'website', ogImage: 'https://www.computerrepairkuwait.com/images/laptop-repair-kuwait.webp', ogImageAlt: 'تصليح كمبيوتر ولابتوب في الفروانية مع استلام مجاني', ogImageWidth: 1200, ogImageHeight: 630, schemaTypes: ['WebPage', 'BreadcrumbList'], lastModified: '2026-10-21T00:00:00+03:00',
+        ogType: 'website', ogImage: 'https://www.computerrepairkuwait.com/images/laptop-repair-kuwait.webp', ogImageAlt: 'تصليح كمبيوتر ولابتوب في الفروانية مع استلام مجاني', ogImageWidth: 1200, ogImageHeight: 630, schemaTypes: ['WebPage', 'BreadcrumbList'], lastModified: '2026-10-29T00:00:00+03:00',
         breadcrumbs: [{ name: 'الرئيسية', url: '/' }, { name: "تصليح كمبيوتر ولابتوب في الفروانية", url: '/ar/computer-repair-farwaniya' }]
       },
       featuredImage: { ogImage: 'https://www.computerrepairkuwait.com/images/laptop-repair-kuwait.webp', altText: 'صورة توضيحية لفحص وتصليح اللابتوب لدى KCROC' },

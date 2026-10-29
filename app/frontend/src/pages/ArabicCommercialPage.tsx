@@ -205,15 +205,15 @@ const CONFIG: Record<string, {
     intro: "تحتاج تصليح كمبيوتر أو لابتوب في الفروانية؟ إذا الجهاز ما يشتغل، ما يشحن، شاشته سوداء أو حرارته عالية، ما تحتاج تروح بنفسك إلى حولي. نرتب استلام الجهاز من الفروانية وخيطان والرقعي والعارضية وجليب الشيوخ، نفحصه في مختبر KCROC بحولي، ونوضح سبب العطل وخيارات الإصلاح والسعر قبل أي عمل مدفوع. بعد الإصلاح نختبر الوظيفة التي تم العمل عليها ثم ننسق توصيل الجهاز لك.",
     bullets: ["استلام وتوصيل مجاني من الفروانية وخيطان والرقعي والعارضية وجليب الشيوخ", "فحص أولي مجاني وتأكيد السعر قبل أي إصلاح مدفوع", "تشخيص مشاكل التشغيل والشحن ومسار الطاقة قبل اقتراح تبديل اللوحة", "تصليح الشاشة والبطارية ومنفذ الشحن واللوحة حسب الموديل", "ضمان 30 يومًا على الإصلاح المكتمل وفق شروط الخدمة"],
     faq: [
-      { q: "هل عندكم فرع فعلي في الفروانية؟", a: "لا، الفروانية منطقة خدمة وليست فرعًا. المختبر الفعلي في مجمع الملا، شارع ابن خلدون، حولي، بدروم محل 19. نرتب الاستلام والتوصيل بدل ما تحتاج توصل الجهاز بنفسك." },
-      { q: "من أي مناطق حول الفروانية تستلمون؟", a: "نرتب الاستلام من الفروانية وخيطان والرقعي والعارضية وجليب الشيوخ. أرسل اسم المنطقة والموقع على واتساب لننسق وقت الاستلام والتوصيل." },
-      { q: "اللابتوب ما يشحن؛ هل لازم أبدّل المذربورد؟", a: "مو بالضرورة. قد تكون المشكلة من الشاحن أو منفذ DC/USB-C أو البطارية أو دائرة الشحن. نفحص مسار الطاقة قبل اقتراح تبديل اللوحة، وإذا كانت المشكلة مرتبطة بالشاحن فمن المفيد إرساله مع الجهاز." },
-      { q: "الشاشة سوداء لكن لمبة التشغيل شغالة، شنو السبب؟", a: "قد يكون السبب الشاشة أو كابلها أو الإضاءة أو مسار العرض، وأحيانًا سببًا آخر داخل الجهاز. فحص شاشة خارجية متوافقة قد يساعد مبدئيًا، لكنه لا يحدد العطل وحده؛ التشخيص يتم حسب موديل الجهاز والأعراض." },
-      { q: "كم سعر تصليح الكمبيوتر أو اللابتوب في الفروانية؟", a: "الفحص الأولي مجاني. تبدأ بعض إصلاحات اللابتوب الشائعة من 15 د.ك، وأجرة تبديل الشاشة من 30 د.ك بالإضافة إلى سعر الشاشة، وإصلاح اللوحة الأم على مستوى المكونات يبدأ من 25 د.ك حسب العطل. التكلفة النهائية تعتمد على الموديل والقطعة، ونؤكدها قبل أي عمل مدفوع." },
-      { q: "كم يستغرق الإصلاح بعد الاستلام؟", a: "كثير من الإصلاحات الشائعة قد تستغرق 24–48 ساعة من الاستلام، وفحص أو إصلاح اللوحة قد يحتاج 24–72 ساعة. لا نضمن وقتًا ثابتًا قبل التشخيص؛ توفر القطع ونوع العطل يحددان المدة، ونوضح لك التقدير بعد الفحص." },
-      { q: "هل أرسل الشاحن مع اللابتوب؟", a: "إذا كانت المشكلة في الشحن أو التشغيل، أرسل الشاحن والكابل الذي تستخدمه إذا كان ذلك آمنًا، واذكر هل لمبة الشحن تعمل أو هل يتغير الشحن عند تحريك السلك. لا تحاول ثني المنفذ أو تحريك القابس بشكل متكرر." },
-      { q: "هل تحتاجون كلمة مرور الجهاز أو ملفاتي على واتساب؟", a: "لا ترسل كلمة مرور أو بيانات حساسة في رسالة الحجز. أرسل الموديل والأعراض فقط. إذا احتاج الاختبار أي وصول للنظام، يتم توضيح ذلك معك قبل الإجراء، ومن الأفضل الاحتفاظ بنسخة احتياطية عندما يكون الجهاز قادرًا على العمل." },
-      { q: "شنو أسوي إذا انسكب سائل أو انتفخت البطارية؟", a: "بعد انسكاب سائل، أوقف التشغيل وافصل الشاحن إذا كان ذلك آمنًا ولا تعاود الشحن أو التشغيل للتجربة. إذا انتفخت البطارية أو ارتفعت حرارة الجهاز، أوقف الاستخدام ولا تضغط على الهيكل أو تحاول فتح البطارية؛ أخبرنا بهذه العلامات قبل ترتيب الاستلام." }
+      { q: "هل عندكم فرع فعلي في الفروانية؟", a: "لا، الفروانية منطقة خدمة وليست فرعًا. المختبر الفعلي في مجمع الملا، شارع ابن خلدون، حولي، بدروم محل 19. نرتب الاستلام والتوصيل بدل ما تحتاج توصل الجهاز بنفسك. كما أن تشخيص اللوحة يحتاج عند انطباق الحالة إلى مجهر وأدوات قياس وبيئة محمية من الكهرباء الساكنة (ESD)، لذلك يتم الإصلاح في المختبر بدل فتح المذربورد على طاولة المنزل." },
+      { q: "من أي مناطق حول الفروانية تستلمون؟", a: "نرتب الاستلام من الفروانية وخيطان والرقعي والعارضية وجليب الشيوخ. أرسل اسم المنطقة والموقع على واتساب لننسق وقت الاستلام والتوصيل. ويمكن طلب الاستلام حسب الموعد من عبدالله المبارك وغربها وجنوبها، وصباح الناصر، والفردوس، والأندلس، وإشبيلية، والرابية، والرحاب، والعمرية، والضجيج، ومدينة صباح السالم الجامعية بالشدادية ومعاهد التطبيقي. أرسل منطقتك لتأكيد الموعد." },
+      { q: "اللابتوب ما يشحن؛ هل لازم أبدّل المذربورد؟", a: "مو بالضرورة. قد تكون المشكلة من الشاحن أو منفذ DC/USB-C أو البطارية أو دائرة الشحن. نفحص مسار الطاقة قبل اقتراح تبديل اللوحة، وإذا كانت المشكلة مرتبطة بالشاحن فمن المفيد إرساله مع الجهاز. وقد يشمل التشخيص آيسي الشحن (Charging IC) ومكونات مسار الطاقة مثل MOSFETs؛ لا نفترض أن كل عطل قابل للإصلاح على مستوى المكونات قبل القياس." },
+      { q: "الشاشة سوداء لكن لمبة التشغيل شغالة، شنو السبب؟", a: "قد يكون السبب الشاشة أو كابلها أو الإضاءة أو مسار العرض، وأحيانًا سببًا آخر داخل الجهاز. فحص شاشة خارجية متوافقة قد يساعد مبدئيًا، لكنه لا يحدد العطل وحده؛ التشخيص يتم حسب موديل الجهاز والأعراض. وقد نفحص كابل الشاشة (eDP) ودائرة الإضاءة الخلفية والرام (RAM) والـBIOS ومسار العرض؛ هذه احتمالات للتشخيص وليست حكمًا على القطعة التالفة قبل الفحص." },
+      { q: "كم سعر تصليح الكمبيوتر أو اللابتوب في الفروانية؟", a: "الفحص الأولي مجاني. تبدأ بعض إصلاحات اللابتوب الشائعة من 15 د.ك، وأجرة تبديل الشاشة من 30 د.ك بالإضافة إلى سعر الشاشة، وإصلاح اللوحة الأم على مستوى المكونات يبدأ من 25 د.ك حسب العطل. التكلفة النهائية تعتمد على الموديل والقطعة، ونؤكدها قبل أي عمل مدفوع. كما تبدأ أجرة عمل تبديل البطارية من 8 د.ك بالإضافة إلى سعر البطارية؛ السعر النهائي يعتمد على الموديل وتوفر القطعة." },
+      { q: "كم يستغرق الإصلاح بعد الاستلام؟", a: "كثير من الإصلاحات الشائعة قد تستغرق 24–48 ساعة من الاستلام، وفحص أو إصلاح اللوحة قد يحتاج 24–72 ساعة. لا نضمن وقتًا ثابتًا قبل التشخيص؛ توفر القطع ونوع العطل يحددان المدة، ونوضح لك التقدير بعد الفحص. ويظل التوقيت تقديريًا حتى تتضح نتيجة التشخيص وتوفر القطع، مع اختبار الجهاز بعد الإصلاح عند الحاجة." },
+      { q: "هل أرسل الشاحن مع اللابتوب؟", a: "إذا كانت المشكلة في الشحن أو التشغيل، أرسل الشاحن والكابل الذي تستخدمه إذا كان ذلك آمنًا، واذكر هل لمبة الشحن تعمل أو هل يتغير الشحن عند تحريك السلك. لا تحاول ثني المنفذ أو تحريك القابس بشكل متكرر. لا ترسل شاحنًا تالفًا أو ساخنًا أو يصدر رائحة احتراق؛ أخبرنا عن أي ضرر ظاهر قبل تنسيق الاستلام." },
+      { q: "هل تحتاجون كلمة مرور الجهاز أو ملفاتي على واتساب؟", a: "لا ترسل كلمة مرور أو بيانات حساسة في رسالة الحجز. أرسل الموديل والأعراض فقط. إذا احتاج الاختبار أي وصول للنظام، يتم توضيح ذلك معك قبل الإجراء، ومن الأفضل الاحتفاظ بنسخة احتياطية عندما يكون الجهاز قادرًا على العمل. لا نطلب كلمة المرور عبر واتساب، ولا يمكن لأي ورشة ضمان سلامة البيانات بنسبة 100%؛ ننصح بالنسخ الاحتياطي متى أمكن." },
+      { q: "شنو أسوي إذا انسكب سائل أو انتفخت البطارية؟", a: "بعد انسكاب سائل، أوقف التشغيل وافصل الشاحن إذا كان ذلك آمنًا ولا تعاود الشحن أو التشغيل للتجربة. إذا انتفخت البطارية أو ارتفعت حرارة الجهاز، أوقف الاستخدام ولا تضغط على الهيكل أو تحاول فتح البطارية؛ أخبرنا بهذه العلامات قبل ترتيب الاستلام. تنطبق الاحتياطات نفسها على أجهزة MacBook وكمبيوتر الألعاب؛ لا تعاود توصيل الجهاز ولا تحاول فك البطارية المنتفخة، واذكر هذه العلامات قبل ترتيب الاستلام." }
     ],
     englishPath: '/location/farwaniya',
     arabicLinks: [
@@ -2269,7 +2269,7 @@ export default function ArabicCommercialPage() {
         provider: { '@id': `${business.websiteUrl}/#business` },
         areaServed: [
           { '@type': 'AdministrativeArea', name: 'Al Farwaniyah Governorate, Kuwait' },
-          ...['Al Farwaniyah', 'Khaitan', 'Riggae', 'Ardiya', 'Jleeb Al-Shuyoukh'].map((name) => ({
+          ...['Al Farwaniyah', 'Khaitan', 'Riggae', 'Ardiya', 'Jleeb Al-Shuyoukh', 'ضاحية عبدالله المبارك (Abdullah Al-Mubarak)', 'غرب عبدالله المبارك (West Abdullah Al-Mubarak)', 'جنوب عبدالله المبارك (South Abdullah Al-Mubarak)', 'صباح الناصر (Sabah Al-Nasser)', 'الفردوس (Al-Firdous)', 'الأندلس (Al-Andalus)', 'إشبيلية (Ishbiliya)', 'الرابية (Al-Rabia)', 'الرحاب (Al-Rehab)', 'العمرية (Al-Omariya)', 'الضجيج (Al-Dajeej business district)', 'مدينة صباح السالم الجامعية بالشدادية (Sabah Al-Salem University City)', 'جامعة الكويت (Kuwait University)', 'الهيئة العامة للتعليم التطبيقي والتدريب (PAAET)'].map((name) => ({
             '@type': 'Place',
             name
           }))
@@ -2288,6 +2288,18 @@ export default function ArabicCommercialPage() {
             }
           },
           servicePhone: `+${business.telephone}`
+        },
+        hasOfferCatalog: {
+          '@type': 'OfferCatalog',
+          name: 'خدمات تصليح الكمبيوتر واللابتوب في محافظة الفروانية',
+          itemListElement: [
+            { '@type': 'Offer', name: 'استلام وتوصيل مجاني وفحص أولي', itemOffered: { '@type': 'Service', name: 'استلام كمبيوتر أو لابتوب من المنزل أو المكتب في محافظة الفروانية' } },
+            { '@type': 'Offer', name: 'بعض الإصلاحات الشائعة من 15 د.ك', priceCurrency: 'KWD', priceSpecification: { '@type': 'PriceSpecification', priceCurrency: 'KWD', minPrice: 15 }, itemOffered: { '@type': 'Service', name: 'تصليح الكمبيوتر واللابتوب حسب العطل والموديل' } },
+            { '@type': 'Offer', name: 'إصلاح اللوحة الأم على مستوى المكونات من 25 د.ك', priceCurrency: 'KWD', priceSpecification: { '@type': 'PriceSpecification', priceCurrency: 'KWD', minPrice: 25 }, itemOffered: { '@type': 'Service', name: 'تشخيص وإصلاح مكونات اللوحة الأم عند إمكانية الإصلاح' } },
+            { '@type': 'Offer', name: 'أجرة تبديل شاشة اللابتوب من 30 د.ك بالإضافة إلى الشاشة', priceCurrency: 'KWD', priceSpecification: { '@type': 'PriceSpecification', priceCurrency: 'KWD', minPrice: 30 }, itemOffered: { '@type': 'Service', name: 'تبديل شاشة لابتوب متوافقة مع الموديل' } },
+            { '@type': 'Offer', name: 'أجرة تبديل البطارية من 8 د.ك بالإضافة إلى البطارية', priceCurrency: 'KWD', priceSpecification: { '@type': 'PriceSpecification', priceCurrency: 'KWD', minPrice: 8 }, itemOffered: { '@type': 'Service', name: 'فحص وتبديل بطارية اللابتوب حسب الموديل' } },
+            { '@type': 'Offer', name: 'تصليح مدخل الشحن من 20 د.ك', priceCurrency: 'KWD', priceSpecification: { '@type': 'PriceSpecification', priceCurrency: 'KWD', minPrice: 20 }, itemOffered: { '@type': 'Service', name: 'فحص وإصلاح مدخل الشحن ودائرة الطاقة حسب الجهاز' } }
+          ]
         }
       },
       {
@@ -3524,6 +3536,21 @@ export default function ArabicCommercialPage() {
           </section>
         )}
 
+        {slug === 'computer-repair-farwaniya' && (
+          <section className="mt-10 rounded-3xl border border-cyan-900/50 bg-slate-900/40 p-6 sm:p-8" aria-labelledby="farwaniya-governorate-coverage">
+            <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">تغطية المحافظة</p>
+            <h2 id="farwaniya-governorate-coverage" className="mt-2 text-2xl font-black text-white sm:text-3xl">تغطية موسعة داخل محافظة الفروانية</h2>
+            <p className="mt-4 max-w-4xl leading-8 text-slate-300">إضافة إلى المناطق المذكورة أعلاه، نرتب الاستلام والتوصيل حسب الموعد لمناطق سكنية وتجارية وتعليمية أخرى داخل محافظة الفروانية.</p>
+            <div className="mt-6 grid gap-4 md:grid-cols-2">
+              <article className="rounded-2xl border border-slate-800 bg-slate-950/40 p-5"><h3 className="font-bold text-white">المناطق السكنية</h3><p className="mt-2 text-sm leading-7 text-slate-400">ضاحية عبدالله المبارك، غرب عبدالله المبارك وجنوبها، صباح الناصر، الفردوس، الأندلس، إشبيلية، الرابية، الرحاب، العمرية، والعارضية السكنية والصناعية.</p></article>
+              <article className="rounded-2xl border border-slate-800 bg-slate-950/40 p-5"><h3 className="font-bold text-white">المكاتب والشركات في الضجيج</h3><p className="mt-2 text-sm leading-7 text-slate-400">يمكن تنسيق استلام اللابتوبات وأجهزة الكمبيوتر المكتبي وماك بوك (MacBook) من المكاتب والشركات والمعارض في الضجيج والعارضية الحرفية، ثم إعادتها بعد الفحص والإصلاح والاختبار.</p></article>
+              <article className="rounded-2xl border border-slate-800 bg-slate-950/40 p-5"><h3 className="font-bold text-white">جامعة الكويت والشدادية</h3><p className="mt-2 text-sm leading-7 text-slate-400">يمكن ترتيب استلام أجهزة الطلبة وأعضاء هيئة التدريس من مدينة صباح السالم الجامعية بالشدادية ومعاهد الهيئة العامة للتعليم التطبيقي والتدريب حسب الموعد المتاح. أخبرنا بالموديل والأعراض؛ لا نعد بإنجاز قبل التشخيص وتوفر القطع.</p></article>
+              <article className="rounded-2xl border border-slate-800 bg-slate-950/40 p-5"><h3 className="font-bold text-white">لماذا مختبر حولي بدل الإصلاح على طاولة المنزل؟</h3><p className="mt-2 text-sm leading-7 text-slate-400">أعطال المذربورد ودوائر الشحن الدقيقة قد تحتاج مجهرًا إلكترونيًا وأدوات قياس وتصويرًا حراريًا وطاولة محمية من الكهرباء الساكنة (ESD-Safe Lab). نوفر راحة الخدمة المنزلية عبر الاستلام والتوصيل، لكن الفحص والإصلاح يتمان في مختبر KCROC بحولي وليس كزيارة فني يفتح اللوحة داخل المنزل.</p></article>
+            </div>
+            <div className="mt-5 rounded-2xl border border-slate-800 bg-slate-950/40 p-5"><h3 className="font-bold text-white">فني كمبيوتر الفروانية خدمة منازل — استلام من الباب وإصلاح في المختبر</h3><p className="mt-2 text-sm leading-7 text-slate-400">إذا كنت تبحث عن «فني كمبيوتر الفروانية خدمة منازل» أو «تصليح كمبيوتر خدمة منازل الفروانية»، فخدمتنا هي استلام الجهاز من منزلك أو مكتبك وتوصيله مجانًا إلى مختبر KCROC في حولي. لا نقدم إصلاحًا داخل المنزل؛ نوفر فحصًا في بيئة مجهزة ونعرض التكلفة قبل موافقتك على أي عمل مدفوع.</p></div>
+          </section>
+        )}
+
         {slug === 'computer-repair-kuwait-city' && (
           <section className="mt-12" aria-labelledby="capital-repair-options">
             <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">خدمات المختبر لعملاء العاصمة</p>
@@ -3636,6 +3663,21 @@ export default function ArabicCommercialPage() {
             ))}
           </div>
         </section>
+
+        {slug === 'computer-repair-farwaniya' && (
+          <section className="mt-10 rounded-3xl border border-slate-800 bg-slate-900/40 p-6 sm:p-8" aria-labelledby="farwaniya-brands-technical">
+            <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">خدمات المختبر والماركات</p>
+            <h2 id="farwaniya-brands-technical" className="mt-2 text-2xl font-black text-white sm:text-3xl">تفاصيل خدمات مختبر KCROC والماركات المشمولة لعملاء الفروانية</h2>
+            <p className="mt-4 max-w-4xl leading-8 text-slate-300">نستقبل اللابتوبات والكمبيوتر المكتبي وكمبيوتر الألعاب (Gaming PC) وماك بوك (MacBook)، ونبدأ من الأعراض والقياسات بدل افتراض أن قطعة بعينها تالفة. يتم شرح خيارات الإصلاح والتكلفة قبل أي عمل مدفوع.</p>
+            <div className="mt-6 grid gap-4 sm:grid-cols-2">
+              <article className="rounded-2xl border border-slate-800 bg-slate-950/40 p-5"><h3 className="font-bold text-white">تصليح لابتوبات HP وDell وLenovo وASUS وMSI وAcer وHuawei</h3><p className="mt-2 text-sm leading-7 text-slate-400">نستقبل موديلات HP (اتش بي: Pavilion وEnvy وVictus وProBook)، وDell (ديل: Inspiron وXPS وLatitude وG Series)، وLenovo (لينوفو: IdeaPad وThinkPad وYoga وLegion)، وASUS (أسوس: ZenBook وVivoBook وROG وTUF)، إضافة إلى MSI وAcer (أيسر) وHuawei MateBook. توافق القطع وخيارات الإصلاح تعتمد على رقم الموديل وحالة الجهاز.</p></article>
+              <article className="rounded-2xl border border-slate-800 bg-slate-950/40 p-5"><h3 className="font-bold text-white">تصليح ماك بوك إير وماك بوك برو (Apple MacBook Air &amp; Pro)</h3><p className="mt-2 text-sm leading-7 text-slate-400">نفحص أجهزة MacBook بمعالجات Intel أو Apple silicon بحسب الجيل، لأعراض عدم التشغيل وعدم الشحن عبر USB-C أو MagSafe ومشاكل البطارية والشاشة وأعطال اللوحة. وحسب تصميم اللوحة، قد يتضمن التشخيص مسار PPBUS_G3H أو متحكمات شحن USB-C مثل CD3217. نوضح خيارات الإصلاح ومخاطر البيانات قبل العمل، ولا نضمن بقاء البيانات في جميع الحالات.</p><Link to="/ar/macbook-repair-kuwait" className="mt-4 inline-flex font-bold text-cyan-300 hover:text-cyan-200">تفاصيل تصليح ماك بوك في الكويت <ArrowLeft className="mr-2 h-4 w-4" aria-hidden="true" /></Link></article>
+              <article className="rounded-2xl border border-slate-800 bg-slate-950/40 p-5"><h3 className="font-bold text-white">تصليح مدخل الشحن ودوائر الطاقة (DC Jack / USB-C PD)</h3><p className="mt-2 text-sm leading-7 text-slate-400">نفحص الشاحن والمنفذ وآيسي الشحن ومسار الطاقة، وقد يشمل الفحص MOSFETs ونقاط اللحام حسب تصميم اللوحة. لا يعني عطل الشحن بالضرورة تبديل المذربورد كاملة؛ يحدد الفحص خيار الإصلاح الممكن.</p><Link to="/ar/laptop-charging-port-repair-kuwait" className="mt-4 inline-flex font-bold text-cyan-300 hover:text-cyan-200">تفاصيل تصليح مدخل الشحن <ArrowLeft className="mr-2 h-4 w-4" aria-hidden="true" /></Link></article>
+              <article className="rounded-2xl border border-slate-800 bg-slate-950/40 p-5"><h3 className="font-bold text-white">تبديل شاشة اللابتوب والمفصلات</h3><p className="mt-2 text-sm leading-7 text-slate-400">نطابق الشاشة حسب الموديل ورقم القطعة، بما في ذلك FHD وQHD و4K OLED وشاشات اللمس x360 وYoga ومعدلات التحديث 144Hz و165Hz و240Hz عند التوافق والتوفر. كما نفحص قواعد المفصلات والغطاء وكابل الشاشة قبل تحديد الإصلاح.</p><Link to="/ar/laptop-screen-repair-kuwait" className="mt-4 inline-flex font-bold text-cyan-300 hover:text-cyan-200">تفاصيل تبديل شاشة اللابتوب <ArrowLeft className="mr-2 h-4 w-4" aria-hidden="true" /></Link></article>
+              <article className="rounded-2xl border border-slate-800 bg-slate-950/40 p-5 sm:col-span-2"><h3 className="font-bold text-white">تصليح كمبيوتر الألعاب (Gaming PC) ولابتوب الألعاب</h3><p className="mt-2 text-sm leading-7 text-slate-400">نفحص ارتفاع الحرارة وهبوط الإطارات (FPS Drops) والشاشة السوداء وأعطال GPU وVRAM والطاقة والمراوح. يمكن استخدام مواد واجهة حرارية مثل Honeywell PTM7950 أو liquid metal فقط عندما تتوافق مع تصميم الجهاز؛ لا نعد بدرجات حرارة أو زيادة أداء ثابتة قبل القياس والاختبار.</p><div className="mt-4 flex flex-wrap gap-4"><Link to="/ar/gaming-pc-repair-kuwait" className="inline-flex font-bold text-cyan-300 hover:text-cyan-200">تصليح بي سي قيمنق <ArrowLeft className="mr-2 h-4 w-4" aria-hidden="true" /></Link><Link to="/ar/gaming-laptop-repair-kuwait" className="inline-flex font-bold text-cyan-300 hover:text-cyan-200">تصليح لابتوب قيمنق <ArrowLeft className="mr-2 h-4 w-4" aria-hidden="true" /></Link></div></article>
+            </div>
+          </section>
+        )}
 
         <section className="mt-12 rounded-3xl border border-slate-800 bg-slate-900/40 p-6 sm:p-8" aria-labelledby="arabic-local">
           <div className="flex items-start gap-4">
