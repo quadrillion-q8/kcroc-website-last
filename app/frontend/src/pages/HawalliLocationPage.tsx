@@ -320,6 +320,10 @@ export default function HawalliLocationPage() {
               <p className="text-xs sm:text-sm text-slate-400 font-medium">
                 Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19 · Open daily 10 AM to 10 PM · No Fix, No Fee · 30-day warranty
               </p>
+              <p className="mt-3 text-sm text-slate-400">
+                Have a general question about contacting the team or arranging a visit?
+                <Link to="/contact" className="ml-1 font-bold text-cyan-300 transition-colors hover:text-cyan-200">Contact KCROC</Link>.
+              </p>
             </div>
 
             {location.contentImage && (
