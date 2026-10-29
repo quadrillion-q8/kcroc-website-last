@@ -33,7 +33,9 @@ const CONFIG: Record<string, {
   // Optional location-page fields: when present, the page renders an area
   // chip list and a highlights grid so it reads as a real local page.
   areas?: string[];
+  areaGroups?: { title: string; areas: string[] }[];
   highlights?: { title: string; description: string }[];
+  serviceCardCopy?: Record<string, { title: string; description: string }>;
 }> = {
   'computer-repair-kuwait': {
     h1: 'فني كمبيوتر في الكويت لتصليح الكمبيوتر واللابتوب',
@@ -264,32 +266,61 @@ const CONFIG: Record<string, {
     ]
   },
   'computer-repair-kuwait-city': {
-    h1: "تصليح كمبيوتر ولابتوب في مدينة الكويت",
-    eyebrow: "استلام وتوصيل مجاني من مدينة الكويت • الإصلاح في مختبر KCROC بحولي",
-    intro: "تحتاج فني لابتوب أو كمبيوتر في مدينة الكويت؟ نستلم الجهاز من شرق أو دسمان أو المرقاب أو القبلة، من البيت أو المكتب، ونصلحه في مختبرنا بحولي القريب من المدينة، وبعد الاختبار نرجعه لك. نركز في هذه الصفحة على الشاشات السوداء أو المكسورة، واللابتوب اللي ما يشتغل، ومشاكل الشحن.",
-    bullets: ["استلام وتوصيل مجاني من شرق ودسمان والمرقاب والقبلة", "تشخيص الشاشات السوداء والمكسورة", "فحص الأجهزة التي لا تعمل أو لا تشحن", "تصليح لابتوب وMacBook واللوحة الأم", "ضمان 30 يومًا على الإصلاح المكتمل"],
+    h1: 'تصليح كمبيوتر ولابتوب وماك بوك في مدينة الكويت ومحافظة العاصمة',
+    eyebrow: 'استلام وتوصيل مجاني من المكتب أو المنزل • الفحص والإصلاح في مختبر KCROC بحولي',
+    intro: 'هل تحتاج تصليح كمبيوتر مكتبي أو لابتوب أو ماك بوك (MacBook) أو كمبيوتر قيمنق (Gaming PC) أثناء الدوام في أبراج شرق أو المرقاب أو القبلة، أو من منزلك في ضواحي محافظة العاصمة؟ لا تحتاج تترك مكتبك أو تدور موقف؛ ننسق استلام الجهاز من مكتبك أو الاستقبال أو باب المنزل وتوصيله مجانًا إلى مختبر KCROC في حولي، شارع ابن خلدون، مجمع الملا، ثم نعيده لك بعد الإصلاح والاختبار. نفحص الشاشات والبطاريات والمفصلات ومشاكل التبريد وارتفاع الحرارة وأعطال عدم التشغيل والشحن وأضرار السوائل ودوائر المذربورد على مستوى المكونات عندما يكون ذلك ممكنًا فنيًا. نوضح نتيجة التشخيص والتكلفة قبل أي عمل مدفوع، مع ضمان 30 يومًا على الإصلاحات المكتملة وفق شروط الخدمة. يتم الإصلاح داخل المختبر، وليس داخل المنزل؛ وموعد الاستلام حسب التنسيق والتوفر.',
+    bullets: [
+      'استلام وتوصيل مجاني من المكاتب والأبراج والمنازل في مدينة الكويت ومحافظة العاصمة، حسب التنسيق',
+      'تصليح الكمبيوتر المكتبي وكمبيوتر القيمنق (Gaming PC) واللابتوبات',
+      'فحص الشاشات السوداء والمكسورة والبطاريات المنتفخة والمفصلات وارتفاع الحرارة',
+      'تشخيص المذربورد ودوائر الطاقة والشحن وأضرار السوائل عندما تسمح الحالة',
+      'عرض سعر قبل الإصلاح وضمان 30 يومًا على الإصلاحات المكتملة'
+    ],
     faq: [
-      { q: "هل عندكم فرع في مدينة الكويت؟", a: "لا، ما عندنا فرع في مدينة الكويت. مختبرنا في مجمع الملا، شارع ابن خلدون، حولي (بدروم، محل 19)، ونستلم الجهاز من مدينة الكويت مجانًا ونرجعه لك بعد الإصلاح والاختبار." },
-      { q: "هل تستلمون الجهاز من مكتب في مدينة الكويت؟", a: "نعم. الاستلام والتوصيل مجاني من المكاتب والبيوت في شرق ودسمان والمرقاب والقبلة. أرسل المنطقة والعطل على واتساب ونرتب وقت الاستلام." },
-      { q: "شاشة اللابتوب سوداء بس الجهاز شغال، شنو العطل؟", a: "ممكن يكون من الشاشة أو الكيبل أو الإضاءة الخلفية أو اللوحة الأم. نشخصه في المختبر ونقول لك السبب قبل أي إصلاح." },
-      { q: "كم سعر تصليح اللابتوب لعملاء مدينة الكويت؟", a: "الفحص مجاني. الإصلاحات الشائعة للابتوب تبدأ من 15 د.ك، وتبديل الشاشة من 30 د.ك، وإصلاح اللوحة الأم على مستوى المكونات من 25 د.ك، والسعر النهائي يعتمد على الجهاز والعطل والقطعة المطلوبة. تعرف السعر قبل أي عمل مدفوع، وإذا ما قدرنا نصلح الجهاز ما تدفع شيء." },
-      { q: "كم تاخذ مدة الإصلاح؟", a: "كثير من الإصلاحات تخلص خلال 24-48 ساعة من استلام الجهاز، وإصلاح اللوحة الأم عادة 24-72 ساعة، وبعض الشاشات والبطاريات ممكن في نفس اليوم إذا القطعة متوفرة. نعطيك تقديرًا واقعيًا بعد الفحص لأن نوع العطل وتوفر القطع يحددان الوقت." }
+      { q: 'هل عندكم فرع أو محل تصليح في مدينة الكويت؟', a: 'مختبرنا الفني في مجمع الملا، شارع ابن خلدون، حولي (السرداب، محل 19). مدينة الكويت ومحافظة العاصمة مناطق خدمة؛ ننسق استلام الجهاز من مكتبك أو منزلك وإعادته بعد الفحص والإصلاح والاختبار، حتى لا تحتاج تترك مكتبك أو تذهب إلى حولي.' },
+      { q: 'هل تستلمون الأجهزة من أبراج شرق والمرقاب والقبلة ومجمع الوزارات؟', a: 'نعم، ننسق استلامًا وتوصيلًا مجانيًا من المكاتب والشركات والمباني والوزارات في شرق والمرقاب والقبلة والصالحية ودسمان وبنيد القار ومجمع الوزارات، حسب الموعد المتاح. أرسل اسم المبنى أو المنطقة ونوع الجهاز على واتساب لتحديد وقت الاستلام.' },
+      { q: 'شنو مناطق محافظة العاصمة اللي تغطونها؟', a: 'ننسق الاستلام والتوصيل من ضاحية عبدالله السالم والشامية وكيفان والخالدية والعديلية والروضة والسرة وقرطبة واليرموك والدسمة والدعية والفيحاء والنزهة والقادسية والمنصورية وغرناطة وجابر الأحمد، إلى جانب مناطق مدينة الكويت. الموعد يحدد بالتنسيق، ولا يعني ذلك وجود فرع مستقل في كل منطقة.' },
+      { q: 'هل تصلحون ماك بوك وكمبيوتر قيمنق بعد؟', a: 'نعم، يمكنك ترتيب فحص ماك بوك (MacBook) وكمبيوتر الألعاب (Gaming PC) والكمبيوتر المكتبي واللابتوب. نراجع العطل والموديل أولًا؛ خدمات مثل إصلاح المذربورد على مستوى المكونات أو إصلاح التبريد تُنفذ عندما تكون مناسبة فنيًا، ولا نفترض أن كل قطعة قابلة للإصلاح.' },
+      { q: 'اللابتوب ما يشتغل أو انسكب عليه ماء؛ هل أرسله؟', a: 'إذا انسكب سائل، أوقف التشغيل وافصل الشاحن إذا كان ذلك آمنًا ولا تعاود تشغيل الجهاز أو شحنه للتجربة. ننسق الاستلام ونفحص اللوحة والتوصيلات ومناطق التآكل. لا نضمن بقاء كل البيانات أو نجاح الإصلاح؛ إذا كانت الملفات مهمة، أخبرنا بذلك قبل الفحص.' },
+      { q: 'كم سعر تصليح الكمبيوتر أو اللابتوب لعملاء مدينة الكويت؟', a: 'الفحص الأولي مجاني. بعض إصلاحات اللابتوب تبدأ من 15 د.ك، وتبديل الشاشة من 30 د.ك، وإصلاح اللوحة الأم على مستوى المكونات من 25 د.ك. السعر النهائي يعتمد على الموديل والعطل والقطعة، ونوضحه قبل أي عمل مدفوع. تطبق سياسة No Fix, No Fee وفق شروط الخدمة عند تعذر إتمام الإصلاح.' },
+      { q: 'كم تستغرق مدة الإصلاح؟', a: 'تعتمد المدة على نتيجة التشخيص وتوفر القطع. قد تستغرق بعض الإصلاحات الشائعة 24–48 ساعة، بينما قد يحتاج إصلاح اللوحة الأم 24–72 ساعة أو أكثر في الحالات المعقدة. نؤكد المدة المتوقعة بعد الفحص ولا نعد بإصلاح في نفس اليوم قبل التأكد.' },
+      { q: 'هل تصلحون الكمبيوتر داخل المنزل أو المكتب؟', a: 'نقدم الاستلام والتوصيل من المنزل أو المكتب، أما الفحص والإصلاح الفني فيتم داخل مختبر KCROC في حولي. لا نقدم إصلاحًا داخل المنزل أو في برج المكتب.' }
     ],
     englishPath: '/location/kuwait-city',
     arabicLinks: [
-      { label: 'تصليح كمبيوتر الكويت', path: '/ar/computer-repair-kuwait' },
-      { label: 'تصليح لابتوب', path: '/ar/laptop-repair-kuwait' },
-      { label: 'تصليح مذربورد', path: '/ar/motherboard-repair-kuwait' },
-      { label: 'فني كمبيوتر بالقرب مني', path: '/ar/near-me' }
+      { label: 'تصليح لابتوب في الكويت', path: '/ar/laptop-repair-kuwait' },
+      { label: 'تصليح ماك بوك (MacBook)', path: '/ar/macbook-repair-kuwait' },
+      { label: 'تصليح كمبيوتر قيمنق', path: '/ar/gaming-pc-repair-kuwait' },
+      { label: 'تصليح المذربورد واللوحة الأم', path: '/ar/motherboard-repair-kuwait' },
+      { label: 'تبديل شاشة اللابتوب', path: '/ar/laptop-screen-repair-kuwait' },
+      { label: 'تبديل بطارية اللابتوب وماك بوك', path: '/ar/battery-replacement-kuwait' },
+      { label: 'فني كمبيوتر بالقرب مني', path: '/ar/near-me' },
+      { label: 'أسعار التصليح بالدينار الكويتي', path: '/ar/pricing' }
     ],
     serviceIds: ['srv-laptop', 'srv-screen', 'srv-motherboard', 'srv-macbook', 'srv-battery'],
-    areas: ["مدينة الكويت", "شرق", "دسمان", "المرقاب", "القبلة"],
+    areaGroups: [
+      {
+        title: 'الأبراج والمكاتب والمناطق التجارية في مدينة الكويت',
+        areas: ['شرق', 'المرقاب', 'القبلة', 'الصالحية', 'دسمان', 'بنيد القار', 'مجمع الوزارات']
+      },
+      {
+        title: 'المناطق السكنية في محافظة العاصمة',
+        areas: ['ضاحية عبدالله السالم', 'الشامية', 'كيفان', 'الخالدية', 'العديلية', 'الروضة', 'السرة', 'قرطبة', 'اليرموك', 'الدسمة', 'الدعية', 'الفيحاء', 'النزهة', 'القادسية', 'المنصورية', 'غرناطة', 'جابر الأحمد']
+      }
+    ],
     highlights: [
-      { title: "استلام من البيت أو المكتب", description: "أرسل المنطقة والعطل على واتساب ونرتب الاستلام من مدينة الكويت بدون رسوم." },
-      { title: "شاشة سوداء أو مكسورة", description: "العطل ممكن يكون من الشاشة نفسها أو الكيبل أو الإضاءة الخلفية أو اللوحة الأم. نفحص ونحدد السبب قبل ما نعطيك السعر." },
-      { title: "لابتوب ما يشتغل أو ما يشحن", description: "نتتبع العطل في الشاحن ومسار الطاقة والمكونات بدل التخمين وتبديل القطع." },
-      { title: "الإصلاح في مختبر حولي", description: "مدينة الكويت منطقة خدمة وليست فرعًا، والإصلاح كله في مختبرنا بحولي مع ضمان 30 يومًا." }
-    ]
+      { title: 'استلام من الأبراج والمكاتب والوزارات', description: 'ننسق الاستلام من الاستقبال أو المكتب في شرق والمرقاب والقبلة والصالحية ودسمان وبنيد القار ومجمع الوزارات، ثم نعيد الجهاز بعد الإصلاح والاختبار.' },
+      { title: 'استلام من منازل محافظة العاصمة', description: 'استلام وتوصيل بحسب التنسيق في ضاحية عبدالله السالم والشامية وكيفان والخالدية والعديلية والروضة والسرة وقرطبة واليرموك والدسمة والدعية والفيحاء والنزهة والقادسية والمنصورية وغرناطة وجابر الأحمد.' },
+      { title: 'تصليح أجهزة ومشاكل متنوعة', description: 'من الكمبيوتر المكتبي وكمبيوتر الألعاب إلى اللابتوب وماك بوك (MacBook)، نفحص مشاكل الشاشة والبطارية والمفصلات والتبريد والشحن وأعطال المذربورد وأضرار السوائل.' },
+      { title: 'مختبر حولي وخدمة من موقعك', description: 'بدل مشوار الطريق أو ترك الدوام، رتب الاستلام من المكتب أو المنزل؛ الإصلاح يتم في مختبر KCROC بحولي، مع تشخيص واضح وسعر قبل العمل وضمان 30 يومًا على الإصلاحات المكتملة.' }
+    ],
+    serviceCardCopy: {
+      'srv-laptop': { title: 'تصليح اللابتوب', description: 'تشخيص مشاكل التشغيل والشحن والبطارية والحرارة والمفصلات واللوحة الأم قبل اقتراح تبديل القطع.' },
+      'srv-screen': { title: 'تبديل شاشة اللابتوب', description: 'فحص الشاشة السوداء أو المكسورة أو التي تومض أو تظهر خطوطًا، ومطابقة القطعة مع الموديل قبل طلبها.' },
+      'srv-motherboard': { title: 'تصليح المذربورد واللوحة الأم', description: 'فحص دوائر الطاقة والشحن ومكونات اللوحة، وتقييم الإصلاح على مستوى المكونات عندما تسمح الحالة الفنية.' },
+      'srv-macbook': { title: 'تصليح ماك بوك (MacBook)', description: 'فحص أعطال ماك بوك إير وماك بوك برو في التشغيل والشحن والشاشة والبطارية وأضرار السوائل حسب الموديل.' },
+      'srv-battery': { title: 'تبديل بطارية اللابتوب وماك بوك', description: 'فحص البطارية ومسار الشحن أولًا ثم مطابقة البطارية مع الموديل والتأكد من توفرها قبل الاستبدال.' }
+    }
   },
   'macbook-repair-kuwait': {
     h1: 'تصليح ماك بوك إير وماك بوك برو (MacBook Air & Pro) في الكويت',
@@ -1755,7 +1786,9 @@ export default function ArabicCommercialPage() {
       ? 'السلام عليكم KCROC، أحتاج فحص مدخل شحن اللابتوب. الماركة والموديل الدقيق: ____. نوع المنفذ: DC Jack / USB-C / غير متأكد. الأعراض: ____. هل يشحن عند تحريك السلك؟ ____. منطقتي بالكويت: ____. أستطيع إرسال صورة للمنفذ والشاحن. فضلاً وضحوا التشخيص والسعر النهائي والمدة قبل الإصلاح.'
       : slug === 'computer-repair-farwaniya'
         ? 'السلام عليكم KCROC، أحتاج تصليح كمبيوتر أو لابتوب من الفروانية أو منطقة قريبة. منطقتي: الفروانية / خيطان / الرقعي / العارضية / جليب الشيوخ / أخرى: ____. نوع الجهاز والماركة والموديل: ____. الأعراض: لا يعمل / لا يشحن / شاشة سوداء أو مكسورة / بطارية / حرارة / مشكلة أخرى: ____. إذا المشكلة في الشحن سأجهز الشاحن مع الجهاز إذا كان ذلك آمنًا. فضلاً نسقوا الاستلام والتوصيل المجاني، وأكدوا نتيجة التشخيص والسعر النهائي قبل أي إصلاح مدفوع.'
-        : `السلام عليكم KCROC، أحتاج ${cfg.h1}. أريد أعرف طريقة الاستلام والتشخيص.`;
+        : slug === 'computer-repair-kuwait-city'
+            ? 'السلام عليكم KCROC، أحتاج تصليح كمبيوتر أو لابتوب أو ماك بوك (MacBook) أو كمبيوتر قيمنق من مدينة الكويت أو محافظة العاصمة. نوع الجهاز والموديل: ____. المشكلة: ____. منطقة الاستلام: ____. الاستلام من: مكتب / منزل. فضلاً نسقوا الاستلام والتوصيل المجاني، وأكدوا نتيجة التشخيص والسعر قبل الإصلاح.'
+            : `السلام عليكم KCROC، أحتاج ${cfg.h1}. أريد أعرف طريقة الاستلام والتشخيص.`;
   const macbookWhatsappMessage = 'السلام عليكم KCROC، أحتاج فحص وتصليح ماك بوك (MacBook) في الكويت. النوع: ماك بوك اير / ماك بوك برو (MacBook Air / Pro). الشريحة إن عُرفت: M1 / M2 / M3 / M4 / M5 / Intel: ____. رقم الموديل Axxxx أو رقم الموديل الظاهر في النظام: ____. الأعراض: لا يشتغل / لا يشحن USB‑C تايب سي أو MagSafe / شاشة سوداء / بطارية / كيبورد أو تراك باد / انسكاب سائل / ملفات مهمة. هل حصل سقوط أو انسكاب؟ ____. منطقتي بالكويت: ____. أستطيع إرسال صورة للموديل والعطل. إذا كانت البيانات مهمة سأوضح ذلك قبل الفحص. فضلاً أكدوا خيارات التشخيص والسعر النهائي والمدة المتوقعة قبل أي عمل مدفوع.';
   const wa = `https://wa.me/${business.telephone}?text=${encodeURIComponent(slug === 'macbook-repair-kuwait' ? macbookWhatsappMessage : whatsappMessage)}`;
 
@@ -2271,6 +2304,78 @@ export default function ArabicCommercialPage() {
     ]
   } : null;
 
+  const kuwaitCityServiceSchema = slug === 'computer-repair-kuwait-city' ? {
+    '@graph': [{
+      '@type': 'Service',
+      '@id': page.seo.canonicalUrl + '#service',
+      name: 'تصليح كمبيوتر ولابتوب وماك بوك في مدينة الكويت ومحافظة العاصمة',
+      alternateName: 'Computer, Laptop, MacBook and Gaming PC Repair in Kuwait City',
+      inLanguage: 'ar-KW',
+      serviceType: 'تصليح الكمبيوتر المكتبي واللابتوب وماك بوك وكمبيوتر الألعاب، وفحص الشاشات والبطاريات والمفصلات والتبريد والشحن واللوحة الأم',
+      description: cfg.intro,
+      url: page.seo.canonicalUrl,
+      provider: { '@id': business.websiteUrl + '/#business' },
+      areaServed: [
+        { '@type': 'City', name: 'مدينة الكويت (Kuwait City), Kuwait' },
+        { '@type': 'AdministrativeArea', name: 'محافظة العاصمة (Al Asimah Governorate), Kuwait' },
+        ...[
+          'شرق (Sharq)', 'المرقاب (Mirqab)', 'القبلة (Qibla)', 'الصالحية (Salhiya)',
+          'دسمان (Dasman)', 'بنيد القار (Bneid Al-Gar)', 'مجمع الوزارات (Ministries Complex)',
+          'ضاحية عبدالله السالم (Abdullah Al-Salem)', 'الشامية (Shamiya)', 'كيفان (Kaifan)',
+          'الخالدية (Khaldiya)', 'العديلية (Adailiya)', 'الروضة (Rawda)', 'السرة (Surra)',
+          'قرطبة (Qortuba)', 'اليرموك (Yarmouk)', 'الدسمة (Dasma)', 'الدعية (Daiya)',
+          'الفيحاء (Faiha)', 'النزهة (Nuzha)', 'القادسية (Qadsiya)', 'المنصورية (Mansouriya)',
+          'غرناطة (Granada)', 'جابر الأحمد (Jaber Al-Ahmad)'
+        ].map((name) => ({ '@type': 'Place', name }))
+      ],
+      availableChannel: {
+        '@type': 'ServiceChannel',
+        servicePhone: '+' + business.telephone,
+        serviceLocation: {
+          '@type': 'Place',
+          name: 'مختبر KCROC في حولي',
+          address: {
+            '@type': 'PostalAddress',
+            streetAddress: business.streetAddress,
+            addressLocality: business.addressLocality,
+            addressRegion: business.addressRegion,
+            addressCountry: business.addressCountry
+          }
+        }
+      },
+      hasOfferCatalog: {
+        '@type': 'OfferCatalog',
+        name: 'خدمات تصليح اللابتوب والكمبيوتر في مدينة الكويت ومحافظة العاصمة',
+        itemListElement: [
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: 'استلام وتوصيل مجاني لتصليح اللابتوب والكمبيوتر من المكاتب والمنازل في مدينة الكويت',
+              description: 'استلام وإعادة الجهاز بعد الفحص والإصلاح والاختبار، وفق موعد يتم تنسيقه مع العميل.'
+            }
+          },
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: 'تصليح ماك بوك (MacBook) والمذربورد ودوائر الطاقة والشحن',
+              description: 'تشخيص أعطال الطاقة والشحن واللوحة الأم وتقييم إصلاح المكونات عندما تسمح الحالة الفنية.'
+            }
+          },
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: 'تصليح وصيانة كمبيوتر الألعاب (Gaming PC) والكمبيوتر المكتبي في العاصمة',
+              description: 'فحص مشاكل الطاقة والحرارة والتبريد وكرت الشاشة وفق أعراض الجهاز ونتيجة التشخيص.'
+            }
+          }
+        ]
+      }
+    }]
+  } : null;
+
   const batteryServiceSchema = slug === 'battery-replacement-kuwait' ? {
     '@graph': [{
       '@type': 'Service',
@@ -2343,6 +2448,7 @@ export default function ArabicCommercialPage() {
       {screenServiceSchema && <SchemaMarkup schema={screenServiceSchema} />}
       {batteryServiceSchema && <SchemaMarkup schema={batteryServiceSchema} />}
       {farwaniyaServiceSchema && <SchemaMarkup schema={farwaniyaServiceSchema} />}
+      {kuwaitCityServiceSchema && <SchemaMarkup schema={kuwaitCityServiceSchema} />}
       <SchemaMarkup schema={faqSchema} />
 
       <div className="mx-auto max-w-6xl px-4 pb-16 pt-8 sm:px-6 sm:pt-12">
@@ -2365,6 +2471,16 @@ export default function ArabicCommercialPage() {
                   </a>
                   <Link to="/book" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-slate-700 bg-slate-950/60 px-6 py-3 font-black text-white transition hover:border-cyan-500/40 hover:text-cyan-300">
                     <Truck className="h-5 w-5" aria-hidden="true" /> احجز استلام مجاني من منطقتك
+                  </Link>
+                </div>
+              )}
+              {slug === 'computer-repair-kuwait-city' && (
+                <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                  <a href={wa} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-400 px-6 py-3 font-black text-slate-950 transition hover:bg-cyan-300">
+                    <MessageCircle className="h-5 w-5" aria-hidden="true" /> اطلب استلام جهازك من المكتب أو المنزل عبر واتساب
+                  </a>
+                  <Link to="/book" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-slate-700 bg-slate-950/60 px-6 py-3 font-black text-white transition hover:border-cyan-500/40 hover:text-cyan-300">
+                    <Truck className="h-5 w-5" aria-hidden="true" /> احجز استلامًا مجانيًا من مدينة الكويت والعاصمة
                   </Link>
                 </div>
               )}
@@ -3377,13 +3493,26 @@ export default function ArabicCommercialPage() {
           <section className="mt-12" aria-labelledby="arabic-local-highlights">
             <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">خدمة محلية</p>
             <h2 id="arabic-local-highlights" className="mt-2 text-2xl font-black text-white sm:text-3xl">كيف نخدمك من منطقتك</h2>
-            {cfg.areas && cfg.areas.length > 0 && (
+            {cfg.areaGroups && cfg.areaGroups.length > 0 ? (
+              <div className="mt-5 grid gap-4 lg:grid-cols-2">
+                {cfg.areaGroups.map((group) => (
+                  <div key={group.title} className="rounded-2xl border border-slate-800 bg-slate-900/35 p-5">
+                    <h3 className="font-bold text-white">{group.title}</h3>
+                    <ul className="mt-3 flex flex-wrap gap-2" aria-label={group.title}>
+                      {group.areas.map((area) => (
+                        <li key={area} className="rounded-full border border-slate-700 bg-slate-900/60 px-3 py-1.5 text-sm font-semibold text-slate-200">{area}</li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            ) : cfg.areas && cfg.areas.length > 0 ? (
               <ul className="mt-4 flex flex-wrap gap-2" aria-label="المناطق التي نستلم منها">
                 {cfg.areas.map((area) => (
                   <li key={area} className="rounded-full border border-slate-700 bg-slate-900/60 px-4 py-1.5 text-sm font-semibold text-slate-200">{area}</li>
                 ))}
               </ul>
-            )}
+            ) : null}
             <div className="mt-6 grid gap-4 sm:grid-cols-2">
               {cfg.highlights.map((item) => (
                 <article key={item.title} className="rounded-2xl border border-slate-800 bg-slate-900/45 p-6">
@@ -3391,6 +3520,28 @@ export default function ArabicCommercialPage() {
                   <p className="mt-2 text-sm leading-7 text-slate-400">{item.description}</p>
                 </article>
               ))}
+            </div>
+          </section>
+        )}
+
+        {slug === 'computer-repair-kuwait-city' && (
+          <section className="mt-12" aria-labelledby="capital-repair-options">
+            <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">خدمات المختبر لعملاء العاصمة</p>
+            <h2 id="capital-repair-options" className="mt-2 text-2xl font-black text-white sm:text-3xl">من الشاشة والبطارية إلى دوائر الطاقة والتبريد</h2>
+            <p className="mt-4 max-w-4xl leading-8 text-slate-300">نحدد مسار الفحص وفق نوع الجهاز والأعراض، ولا نفترض أن كل عطل يحتاج إلى تبديل قطعة كاملة. يتم تأكيد الإصلاح الممكن والسعر بعد التشخيص، وقبل أي عمل مدفوع.</p>
+            <div className="mt-6 grid gap-4 md:grid-cols-3">
+              <article className="rounded-2xl border border-slate-800 bg-slate-900/45 p-6">
+                <h3 className="font-bold text-white">المذربورد والطاقة والشحن</h3>
+                <p className="mt-2 text-sm leading-7 text-slate-400">فحص الأجهزة التي لا تعمل أو لا تشحن، ومداخل USB-C وDC Jack، ودوائر الطاقة وآثار السوائل. نقيّم إصلاح المكونات عندما تسمح حالة اللوحة بذلك.</p>
+              </article>
+              <article className="rounded-2xl border border-slate-800 bg-slate-900/45 p-6">
+                <h3 className="font-bold text-white">الشاشات والبطاريات والمفصلات</h3>
+                <p className="mt-2 text-sm leading-7 text-slate-400">تشخيص الشاشة السوداء أو المكسورة والخطوط والوميض، وفحص البطارية المنتفخة أو الضعيفة والمفصلات والهيكل والكيبورد قبل تأكيد القطعة المتوافقة.</p>
+              </article>
+              <article className="rounded-2xl border border-slate-800 bg-slate-900/45 p-6">
+                <h3 className="font-bold text-white">ماك بوك وكمبيوتر الألعاب</h3>
+                <p className="mt-2 text-sm leading-7 text-slate-400">فحص ماك بوك (MacBook) وأجهزة Gaming PC والكمبيوتر المكتبي، بما فيها ارتفاع الحرارة والتبريد ومشاكل الطاقة وكرت الشاشة حسب الموديل ونتيجة التشخيص.</p>
+              </article>
             </div>
           </section>
         )}
@@ -3479,8 +3630,8 @@ export default function ArabicCommercialPage() {
             {services.map((service) => service && (
               <Link key={service.id} to={arabicServicePathById[service.id] ?? `/${service.slug}`} className="group rounded-2xl border border-slate-800 bg-slate-900/45 p-6 hover:border-cyan-500/40">
                 <Wrench className="h-6 w-6 text-cyan-400" aria-hidden="true" />
-                <h3 className="mt-4 text-lg font-bold text-white group-hover:text-cyan-300">{(slug === 'macbook-repair-kuwait' ? arabicMacbookServiceCopy[service.id]?.title : slug === 'laptop-screen-repair-kuwait' ? arabicScreenServiceCopy[service.id]?.title : slug === 'gaming-laptop-repair-kuwait' ? arabicGamingServiceCopy[service.id]?.title : slug === 'macbook-screen-replacement-kuwait' ? arabicMacbookScreenServiceCopy[service.id]?.title : slug === 'laptop-keyboard-replacement-kuwait' ? arabicKeyboardServiceCopy[service.id]?.title : slug === 'laptop-charging-port-repair-kuwait' ? arabicChargingServiceCopy[service.id]?.title : slug === 'battery-replacement-kuwait' ? arabicBatteryServiceCopy[service.id]?.title : undefined) ?? service.title.replace(' Kuwait', '')}</h3>
-                <p className="mt-2 text-sm leading-6 text-slate-400">{(slug === 'macbook-repair-kuwait' ? arabicMacbookServiceCopy[service.id]?.description : slug === 'laptop-screen-repair-kuwait' ? arabicScreenServiceCopy[service.id]?.description : slug === 'gaming-laptop-repair-kuwait' ? arabicGamingServiceCopy[service.id]?.description : slug === 'macbook-screen-replacement-kuwait' ? arabicMacbookScreenServiceCopy[service.id]?.description : slug === 'laptop-keyboard-replacement-kuwait' ? arabicKeyboardServiceCopy[service.id]?.description : slug === 'laptop-charging-port-repair-kuwait' ? arabicChargingServiceCopy[service.id]?.description : slug === 'battery-replacement-kuwait' ? arabicBatteryServiceCopy[service.id]?.description : undefined) ?? service.shortDescription}</p>
+                <h3 className="mt-4 text-lg font-bold text-white group-hover:text-cyan-300">{(slug === 'computer-repair-kuwait-city' ? cfg.serviceCardCopy?.[service.id]?.title : slug === 'macbook-repair-kuwait' ? arabicMacbookServiceCopy[service.id]?.title : slug === 'laptop-screen-repair-kuwait' ? arabicScreenServiceCopy[service.id]?.title : slug === 'gaming-laptop-repair-kuwait' ? arabicGamingServiceCopy[service.id]?.title : slug === 'macbook-screen-replacement-kuwait' ? arabicMacbookScreenServiceCopy[service.id]?.title : slug === 'laptop-keyboard-replacement-kuwait' ? arabicKeyboardServiceCopy[service.id]?.title : slug === 'laptop-charging-port-repair-kuwait' ? arabicChargingServiceCopy[service.id]?.title : slug === 'battery-replacement-kuwait' ? arabicBatteryServiceCopy[service.id]?.title : undefined) ?? service.title.replace(' Kuwait', '')}</h3>
+                <p className="mt-2 text-sm leading-6 text-slate-400">{(slug === 'computer-repair-kuwait-city' ? cfg.serviceCardCopy?.[service.id]?.description : slug === 'macbook-repair-kuwait' ? arabicMacbookServiceCopy[service.id]?.description : slug === 'laptop-screen-repair-kuwait' ? arabicScreenServiceCopy[service.id]?.description : slug === 'gaming-laptop-repair-kuwait' ? arabicGamingServiceCopy[service.id]?.description : slug === 'macbook-screen-replacement-kuwait' ? arabicMacbookScreenServiceCopy[service.id]?.description : slug === 'laptop-keyboard-replacement-kuwait' ? arabicKeyboardServiceCopy[service.id]?.description : slug === 'laptop-charging-port-repair-kuwait' ? arabicChargingServiceCopy[service.id]?.description : slug === 'battery-replacement-kuwait' ? arabicBatteryServiceCopy[service.id]?.description : undefined) ?? service.shortDescription}</p>
               </Link>
             ))}
           </div>

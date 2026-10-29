@@ -431,16 +431,31 @@ export const rawGraphData: RawGraphData = {
     } as WebPageEntity,
 
     'page-ar-kuwait-city-computer-repair': {
-      id: 'page-ar-kuwait-city-computer-repair', slug: 'ar/computer-repair-kuwait-city', entityType: 'WebPage', isActive: true,
-      title: "تصليح كمبيوتر مدينة الكويت وفني لابتوب",
-      description: "تصليح كمبيوتر ولابتوب في مدينة الكويت مع استلام وتوصيل مجاني من شرق ودسمان والمرقاب والقبلة، والإصلاح في مختبر KCROC بحولي.",
-      seo: { title: "تصليح كمبيوتر مدينة الكويت | استلام مجاني | KCROC", description: "تصليح كمبيوتر ولابتوب في مدينة الكويت وشرق ودسمان والمرقاب والقبلة. استلام وتوصيل مجاني من البيت أو المكتب، مع التشخيص والإصلاح في مختبر KCROC بحولي.",
+      id: 'page-ar-kuwait-city-computer-repair',
+      slug: 'ar/computer-repair-kuwait-city',
+      entityType: 'WebPage',
+      isActive: true,
+      title: 'تصليح كمبيوتر ولابتوب وماك بوك في مدينة الكويت ومحافظة العاصمة',
+      description: 'تصليح كمبيوتر ولابتوب وماك بوك (MacBook) وكمبيوتر قيمنق في مدينة الكويت ومحافظة العاصمة، مع استلام وتوصيل مجاني من المكتب أو المنزل إلى مختبر KCROC في حولي.',
+      seo: {
+        title: 'تصليح كمبيوتر وماك بوك في مدينة الكويت والعاصمة | KCROC',
+        description: 'تصليح كمبيوتر ولابتوب وماك بوك وكمبيوتر قيمنق في مدينة الكويت والعاصمة. استلام وتوصيل مجاني من المكتب أو المنزل في شرق والمرقاب والقبلة ومناطق العاصمة، مع الإصلاح في مختبر حولي وعرض سعر واضح وضمان 30 يومًا.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/ar/computer-repair-kuwait-city',
-        locale: 'ar_KW', alternates: { 'ar-KW': 'https://www.computerrepairkuwait.com/ar/computer-repair-kuwait-city', 'en-KW': 'https://www.computerrepairkuwait.com/location/kuwait-city', 'x-default': 'https://www.computerrepairkuwait.com/location/kuwait-city' },
-        ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList'], lastModified: '2026-10-04T00:00:00+03:00',
-        breadcrumbs: [{ name: 'الرئيسية', url: '/' }, { name: "تصليح كمبيوتر ولابتوب في مدينة الكويت", url: '/ar/computer-repair-kuwait-city' }]
+        locale: 'ar_KW',
+        alternates: {
+          'ar-KW': 'https://www.computerrepairkuwait.com/ar/computer-repair-kuwait-city',
+          'en-KW': 'https://www.computerrepairkuwait.com/location/kuwait-city',
+          'x-default': 'https://www.computerrepairkuwait.com/location/kuwait-city'
+        },
+        ogType: 'website',
+        schemaTypes: ['WebPage', 'BreadcrumbList'],
+        lastModified: '2026-10-29T00:00:00+03:00',
+        breadcrumbs: [
+          { name: 'الرئيسية', url: '/' },
+          { name: 'تصليح كمبيوتر ولابتوب وماك بوك في مدينة الكويت ومحافظة العاصمة', url: '/ar/computer-repair-kuwait-city' }
+        ]
       },
-      relatedServiceIds: ['srv-laptop', 'srv-screen', 'srv-motherboard', 'srv-macbook', 'srv-battery']
+      relatedServiceIds: ['srv-laptop', 'srv-screen', 'srv-motherboard', 'srv-macbook', 'srv-battery', 'srv-gaming', 'srv-desktop-pc', 'srv-hinge', 'srv-liquid-damage', 'srv-charging-port']
     } as WebPageEntity,
 
     'page-ar-macbook-repair': {
