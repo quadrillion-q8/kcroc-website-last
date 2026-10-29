@@ -503,6 +503,7 @@ export const rawGraphData: RawGraphData = {
         title: 'تبديل بطارية اللابتوب وماك بوك في الكويت | KCROC',
         description: 'تبديل بطارية اللابتوب وماك بوك في الكويت. نفحص صحة البطارية ودائرة الشحن أولًا، مع استلام وتوصيل مجاني وضمان 30 يومًا. حولي: +965 55301913.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/ar/battery-replacement-kuwait', locale: 'ar_KW',
+        ogImage: 'https://www.computerrepairkuwait.com/images/macbook-internal-battery-replacement-service.webp', ogImageAlt: 'فحص وتبديل بطارية داخلية لجهاز ماك بوك في مختبر الصيانة', ogImageWidth: 800, ogImageHeight: 600,
         alternates: { 'ar-KW': 'https://www.computerrepairkuwait.com/ar/battery-replacement-kuwait', 'en-KW': 'https://www.computerrepairkuwait.com/battery-replacement-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/battery-replacement-kuwait' },
         ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList'], lastModified: '2026-10-29T00:00:00+03:00', breadcrumbs: [{ name: 'الرئيسية', url: '/' }, { name: 'تبديل بطارية اللابتوب وماك بوك', url: '/ar/battery-replacement-kuwait' }]
       },

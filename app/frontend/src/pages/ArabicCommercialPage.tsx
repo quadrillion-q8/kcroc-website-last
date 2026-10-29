@@ -2339,9 +2339,29 @@ export default function ArabicCommercialPage() {
 
         <section className="rounded-3xl border border-cyan-900/50 bg-slate-900/45 p-6 shadow-2xl backdrop-blur-md sm:p-10">
           <p className="mb-3 text-sm font-black uppercase tracking-[0.14em] text-cyan-400">{cfg.eyebrow}</p>
-          <div className="max-w-4xl">
-            <h1 className="text-3xl font-black leading-tight text-white sm:text-5xl">{cfg.h1}</h1>
-            <p className="mt-6 text-base leading-8 text-slate-300 sm:text-lg">{cfg.intro}</p>
+          <div className={slug === 'battery-replacement-kuwait' ? "grid items-center gap-8 lg:grid-cols-[minmax(0,1.08fr)_minmax(280px,0.92fr)]" : ""}>
+            <div className="max-w-4xl">
+              <h1 className="text-3xl font-black leading-tight text-white sm:text-5xl">{cfg.h1}</h1>
+              <p className="mt-6 text-base leading-8 text-slate-300 sm:text-lg">{cfg.intro}</p>
+            </div>
+            {slug === 'battery-replacement-kuwait' && (
+              <figure className="min-w-0 overflow-hidden rounded-2xl border border-slate-700 bg-slate-950 shadow-xl">
+                <img
+                  src={IMAGES.macbook.service.src}
+                  alt="فحص وتبديل بطارية داخلية لجهاز ماك بوك على طاولة الصيانة"
+                  width={IMAGES.macbook.service.width}
+                  height={IMAGES.macbook.service.height}
+                  sizes="(min-width: 1024px) 42vw, 100vw"
+                  loading="eager"
+                  fetchPriority="high"
+                  decoding="async"
+                  className="aspect-[4/3] w-full object-cover"
+                />
+                <figcaption className="border-t border-slate-800 px-4 py-3 text-sm leading-6 text-slate-300">
+                  صورة توضيحية لخدمة فحص البطارية الداخلية واستبدالها بعد مطابقة الموديل والقطعة.
+                </figcaption>
+              </figure>
+            )}
           </div>
           <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
             {cfg.bullets.map((bullet) => (
@@ -3272,25 +3292,58 @@ export default function ArabicCommercialPage() {
               <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">فحص قبل التبديل</p>
               <h2 id="battery-diagnosis" className="mt-2 text-2xl font-black leading-snug text-white sm:text-3xl">مو كل مشكلة شحن معناها أن البطارية تحتاج تبديل</h2>
               <p className="mt-4 max-w-4xl leading-8 text-slate-300">تشابه الأعراض ما يعني أن السبب واحد. نفصل بين تآكل خلايا البطارية، ومشكلة الشاحن أو المنفذ، وعطل دائرة الشحن على المذربورد. حسب تصميم الجهاز قد نحتاج فحص آيسي الشحن وخط بيانات البطارية (SMBus) أو مسار الطاقة؛ أسماء المكونات وطرق اختبارها تختلف بين الموديلات، لذلك ما نحكم على قطعة قبل الفحص.</p>
-              <div className="mt-6 grid gap-4 md:grid-cols-2">
-                {[
-                  { title: 'انتفاخ البطارية أو التراك باد ما يضغط', text: 'قد تدفع البطارية المنتفخة التراك باد أو الكيبورد أو الغطاء إلى الخارج. أوقف الاستخدام والشحن، ولا تضغط على الهيكل ولا تحاول ثقب البطارية أو نزعها بنفسك. رتب فحصًا آمنًا قبل مواصلة استخدام الجهاز.' },
-                  { title: 'متصل بالكهرباء ولا يشحن أو واقف على 0%', text: 'نفحص توافق الشاحن والكابل وقدرة الشحن والمنفذ والبطارية. إذا كانت هذه الأجزاء سليمة، قد يكون السبب في دائرة الشحن أو خط بيانات البطارية؛ الرسالة وحدها لا تحدد الجزء التالف.' },
-                  { title: 'البطارية تفضى بسرعة أو الجهاز يطفي فجأة', text: 'نراجع صحة البطارية وعدد دورات الشحن وسلوك النسبة تحت الاستخدام. إذا كانت صحة البطارية جيدة، نبحث عن أسباب أخرى مثل استهلاك البرامج أو الحرارة بدل اقتراح تبديل غير ضروري.' },
-                  { title: 'Service Recommended أو HP Battery Alert 601', text: 'تنبيهات النظام مفيدة لكنها لا تعوض الفحص. نراجع نتيجة اختبار البطارية والموديل والأعراض، ثم نوضح إن كان المطلوب تبديل البطارية أو فحص مسار الشحن.' }
-                ].map((item) => (
-                  <article key={item.title} className="rounded-2xl border border-slate-800 bg-slate-950/50 p-5">
-                    <h3 className="font-bold text-white">{item.title}</h3>
-                    <p className="mt-2 text-sm leading-7 text-slate-300">{item.text}</p>
-                  </article>
-                ))}
+              <div className="mt-6 grid items-start gap-6 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)]">
+                <figure className="min-w-0 overflow-hidden rounded-2xl border border-slate-800 bg-slate-950">
+                  <img
+                    src={IMAGES.macbook.swollenBattery1.src}
+                    alt="بطارية ليثيوم منتفخة داخل جهاز ماك بوك وتحتاج إلى فحص آمن"
+                    width={IMAGES.macbook.swollenBattery1.width}
+                    height={IMAGES.macbook.swollenBattery1.height}
+                    sizes="(min-width: 1024px) 34vw, 100vw"
+                    loading="lazy"
+                    decoding="async"
+                    className="aspect-[4/3] w-full object-cover"
+                  />
+                  <figcaption className="border-t border-slate-800 px-4 py-3 text-sm leading-6 text-slate-300">
+                    الانتفاخ علامة تحذير للسلامة؛ أوقف الاستخدام والشحن ولا تحاول الضغط على البطارية أو نزعها بنفسك.
+                  </figcaption>
+                </figure>
+                <div className="grid gap-4 sm:grid-cols-2">
+                  {[
+                    { title: 'انتفاخ البطارية أو التراك باد ما يضغط', text: 'قد تدفع البطارية المنتفخة التراك باد أو الكيبورد أو الغطاء إلى الخارج. أوقف الاستخدام والشحن، ولا تضغط على الهيكل ولا تحاول ثقب البطارية أو نزعها بنفسك. رتب فحصًا آمنًا قبل مواصلة استخدام الجهاز.' },
+                    { title: 'متصل بالكهرباء ولا يشحن أو واقف على 0%', text: 'نفحص توافق الشاحن والكابل وقدرة الشحن والمنفذ والبطارية. إذا كانت هذه الأجزاء سليمة، قد يكون السبب في دائرة الشحن أو خط بيانات البطارية؛ الرسالة وحدها لا تحدد الجزء التالف.' },
+                    { title: 'البطارية تفضى بسرعة أو الجهاز يطفي فجأة', text: 'نراجع صحة البطارية وعدد دورات الشحن وسلوك النسبة تحت الاستخدام. إذا كانت صحة البطارية جيدة، نبحث عن أسباب أخرى مثل استهلاك البرامج أو الحرارة بدل اقتراح تبديل غير ضروري.' },
+                    { title: 'Service Recommended أو HP Battery Alert 601', text: 'تنبيهات النظام مفيدة لكنها لا تعوض الفحص. نراجع نتيجة اختبار البطارية والموديل والأعراض، ثم نوضح إن كان المطلوب تبديل البطارية أو فحص مسار الشحن.' }
+                  ].map((item) => (
+                    <article key={item.title} className="rounded-2xl border border-slate-800 bg-slate-950/50 p-5">
+                      <h3 className="font-bold text-white">{item.title}</h3>
+                      <p className="mt-2 text-sm leading-7 text-slate-300">{item.text}</p>
+                    </article>
+                  ))}
+                </div>
               </div>
             </div>
 
             <div aria-labelledby="battery-models">
               <h2 id="battery-models" className="text-2xl font-black text-white sm:text-3xl">بطاريات اللابتوب وماك بوك حسب الموديل</h2>
               <p className="mt-3 max-w-4xl leading-8 text-slate-300">نستقبل طلبات فحص وتبديل بطاريات أجهزة ماك بوك إير وماك بوك برو، ولابتوبات HP وDell وLenovo وASUS وAcer وMSI، بما فيها بعض أجهزة الألعاب. تختلف البطارية وطريقة تركيبها حتى داخل الماركة الواحدة؛ نطابق رقم الموديل والقطعة والتوصيل والسعة المطلوبة، ثم نتحقق من التوفر قبل تأكيد السعر.</p>
-              <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="mt-6 grid items-start gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(280px,0.82fr)]">
+                <figure className="min-w-0 overflow-hidden rounded-2xl border border-slate-800 bg-slate-950">
+                  <img
+                    src={IMAGES.laptopHardware.laptopBottomChassisBatteryRamOpen.src}
+                    alt="الجزء الداخلي للابتوب بعد إزالة الغطاء السفلي لفحص البطارية والتوصيلات"
+                    width={IMAGES.laptopHardware.laptopBottomChassisBatteryRamOpen.width}
+                    height={IMAGES.laptopHardware.laptopBottomChassisBatteryRamOpen.height}
+                    sizes="(min-width: 1024px) 34vw, 100vw"
+                    loading="lazy"
+                    decoding="async"
+                    className="aspect-[4/3] w-full object-cover"
+                  />
+                  <figcaption className="border-t border-slate-800 px-4 py-3 text-sm leading-6 text-slate-300">
+                    نحدد رقم البطارية وتوصيلاتها ومكان تثبيتها قبل طلب بديل متوافق.
+                  </figcaption>
+                </figure>
+                <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
                 {[
                   { title: 'أبل ماك بوك', text: 'ماك بوك إير وماك بوك برو — نطابق الجيل ورقم الطراز قبل تحديد البطارية المناسبة.' },
                   { title: 'لابتوبات الاستخدام اليومي والعمل', text: 'HP وDell وLenovo — نتحقق من رقم القطعة وشكل الموصل وسعة البطارية حسب الجهاز.' },
@@ -3301,6 +3354,8 @@ export default function ArabicCommercialPage() {
                     <p className="mt-2 text-sm leading-7 text-slate-300">{item.text}</p>
                   </article>
                 ))}
+              </div>
+                </div>
               </div>
               <p className="mt-4 text-sm leading-7 text-slate-400">إذا كان عندك موديل أو رقم قطعة مثل A-number في أجهزة ماك بوك أو رقم بطارية HP، أرسله لنا على واتساب. الأمثلة تساعد في المطابقة لكنها ليست قائمة شاملة بالتوافق أو دليلًا على توفر القطعة مباشرة.</p>
             </div>
