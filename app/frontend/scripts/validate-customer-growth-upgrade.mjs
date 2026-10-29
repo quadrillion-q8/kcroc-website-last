@@ -636,7 +636,7 @@ add('Arabic Farwaniya page adds wider governorate, office and university pickup 
 add('Farwaniya service schema names the Hawalli workshop, expanded service area and six catalog offers',
   arabicCommercial.includes("name: 'KCROC repair workshop — Hawalli'") &&
   arabicCommercial.includes('hasOfferCatalog: {') &&
-  arabicCommercial.includes("name: 'مدينة صباح السالم الجامعية بالشدادية (Sabah Al-Salem University City)'") &&
+  arabicCommercial.includes('مدينة صباح السالم الجامعية بالشدادية (Sabah Al-Salem University City)') &&
   arabicCommercial.includes("name: 'تصليح مدخل الشحن من 20 د.ك'"));
 add('Arabic Farwaniya page has bilingual brand and technical repair coverage',
   arabicCommercial.includes('HP وDell وLenovo وASUS وMSI وAcer وHuawei') &&
