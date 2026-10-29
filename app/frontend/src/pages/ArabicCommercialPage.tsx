@@ -3330,10 +3330,10 @@ export default function ArabicCommercialPage() {
               <div className="mt-6 grid items-start gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(280px,0.82fr)]">
                 <figure className="min-w-0 overflow-hidden rounded-2xl border border-slate-800 bg-slate-950">
                   <img
-                    src={IMAGES.laptopHardware.laptopBottomChassisBatteryRamOpen.src}
+                    src={IMAGES.upgrades.laptopBottomChassisBatteryRamOpen.src}
                     alt="الجزء الداخلي للابتوب بعد إزالة الغطاء السفلي لفحص البطارية والتوصيلات"
-                    width={IMAGES.laptopHardware.laptopBottomChassisBatteryRamOpen.width}
-                    height={IMAGES.laptopHardware.laptopBottomChassisBatteryRamOpen.height}
+                    width={IMAGES.upgrades.laptopBottomChassisBatteryRamOpen.width}
+                    height={IMAGES.upgrades.laptopBottomChassisBatteryRamOpen.height}
                     sizes="(min-width: 1024px) 34vw, 100vw"
                     loading="lazy"
                     decoding="async"
