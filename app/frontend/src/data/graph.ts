@@ -344,11 +344,11 @@ export const rawGraphData: RawGraphData = {
       slug: 'ar/laptop-screen-repair-kuwait',
       entityType: 'WebPage',
       isActive: true,
-      title: 'تصليح شاشة اللابتوب في الكويت – تشخيص وتبديل حسب الموديل',
-      description: 'تصليح وتبديل شاشة اللابتوب في الكويت للشاشة المكسورة أو السوداء أو ذات الخطوط والوميض. تشخيص الشاشة والكابل والإضاءة ومطابقة رقم القطعة والمواصفات؛ أجرة العمل من 30 د.ك + سعر الشاشة، مع استلام مجاني وسعر نهائي قبل الإصلاح.',
+      title: 'تبديل وتصليح شاشة اللابتوب في الكويت',
+      description: 'تبديل شاشة اللابتوب في الكويت لأجهزة HP وDell وLenovo وASUS وAcer وMSI وHuawei. فحص الكابل والإضاءة ومطابقة رقم القطعة واللمس ومعدل التحديث، مع فحص أولي مجاني واستلام وتوصيل مجاني.',
       seo: {
-        title: 'تصليح شاشة اللابتوب الكويت | أجرة من 30 د.ك | KCROC',
-        description: 'شاشة اللابتوب مكسورة أو سوداء أو فيها خطوط ووميض؟ نفحص الشاشة والكابل والإضاءة ونطابق رقم القطعة والمواصفات. أجرة العمل من 30 د.ك + الشاشة، مع استلام وتوصيل مجاني بالكويت وتكلفة مؤكدة قبل الإصلاح.',
+        title: 'تبديل شاشة اللابتوب الكويت | HP وDell وLenovo | KCROC',
+        description: 'تبديل شاشة اللابتوب في الكويت لأجهزة HP وDell وLenovo وASUS وAcer وMSI وHuawei. نفحص الكابل والإضاءة ونطابق رقم القطعة واللمس ومعدل التحديث. فحص أولي مجاني واستلام وتوصيل مجاني.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/ar/laptop-screen-repair-kuwait',
         locale: 'ar_KW',
         alternates: {
@@ -357,8 +357,8 @@ export const rawGraphData: RawGraphData = {
           'x-default': 'https://www.computerrepairkuwait.com/laptop-screen-repair-kuwait'
         },
         ogType: 'website',
-        schemaTypes: ['WebPage', 'BreadcrumbList', 'FAQPage', 'Service', 'ImageObject'],
-        lastModified: '2026-10-21T00:00:00+03:00',
+        schemaTypes: ['WebPage', 'BreadcrumbList', 'FAQPage', 'Service', 'OfferCatalog', 'ImageObject'],
+        lastModified: '2026-10-29T00:00:00+03:00',
         breadcrumbs: [
           { name: 'الرئيسية', url: '/' },
           { name: 'تصليح شاشة اللابتوب', url: '/ar/laptop-screen-repair-kuwait' }
