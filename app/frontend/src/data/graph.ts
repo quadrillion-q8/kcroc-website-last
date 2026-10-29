@@ -448,11 +448,11 @@ export const rawGraphData: RawGraphData = {
       slug: 'ar/macbook-repair-kuwait',
       entityType: 'WebPage',
       isActive: true,
-      title: 'تصليح MacBook Air وMacBook Pro في الكويت',
-      description: 'تصليح MacBook في الكويت لأعطال عدم التشغيل والشحن وUSB-C والشاشة والبطارية واللوحة الأم وأضرار السوائل. تشخيص حسب الموديل والجيل، عرض سعر قبل الإصلاح، وضمان 30 يومًا على الإصلاحات المكتملة.',
+      title: 'تصليح ماك بوك إير وبرو (MacBook Air & Pro) في الكويت',
+      description: 'تصليح ماك بوك في الكويت لأعطال المذربورد والطاقة وUSB-C وMagSafe والشاشة والبطارية وأضرار السوائل والكيبورد والتراك باد، حسب رقم الموديل والجيل.',
       seo: {
-        title: 'تصليح MacBook في الكويت | Air وPro والشحن واللوحة – KCROC',
-        description: 'MacBook ما يشتغل أو ما يشحن؟ نفحص MacBook Air وPro للشاشة والبطارية وUSB-C واللوحة وأضرار السوائل. تشخيص قبل الإصلاح، استلام مجاني من مناطق الكويت، ومختبر في حولي.',
+        title: 'تصليح ماك بوك بالكويت | Air وPro ومذربورد | KCROC',
+        description: 'تصليح ماك بوك إير وبرو (MacBook Air/Pro) في الكويت: M1 إلى M5 وIntel. فحص المذربورد والشحن والشاشة والبطارية وأضرار السوائل؛ نناقش حماية البيانات حسب الحالة، مع استلام مجاني من مناطق الكويت.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/ar/macbook-repair-kuwait',
         locale: 'ar_KW',
         alternates: {
@@ -461,16 +461,16 @@ export const rawGraphData: RawGraphData = {
           'x-default': 'https://www.computerrepairkuwait.com/macbook-repair-kuwait'
         },
         ogType: 'website',
-        schemaTypes: ['WebPage', 'BreadcrumbList', 'FAQPage', 'Service', 'ImageObject'],
-        lastModified: '2026-10-21T00:00:00+03:00',
+        schemaTypes: ['WebPage', 'BreadcrumbList', 'FAQPage', 'Service', 'OfferCatalog', 'ImageObject'],
+        lastModified: '2026-10-29T00:00:00+03:00',
         breadcrumbs: [
-          { name: 'الرئيسية', url: '/' },
-          { name: 'تصليح MacBook', url: '/ar/macbook-repair-kuwait' }
+          { name: 'الرئيسية', url: '/ar' },
+          { name: 'تصليح ماك بوك (MacBook)', url: '/ar/macbook-repair-kuwait' }
         ]
       },
       featuredImage: {
         ogImage: IMAGES.macbook.diagnostics.src,
-        altText: 'فني يفحص جهاز MacBook مفتوحًا لتشخيص أعطال الشاشة والبطارية واللوحة الأم في مختبر إصلاح بالكويت'
+        altText: 'فني يفحص ماك بوك (MacBook) مفتوحًا لتشخيص أعطال الشاشة والبطارية والمذربورد في مختبر KCROC بحولي الكويت'
       },
       relatedServiceIds: ['srv-macbook', 'srv-macbook-screen', 'srv-battery', 'srv-motherboard', 'srv-liquid-damage']
     } as WebPageEntity,

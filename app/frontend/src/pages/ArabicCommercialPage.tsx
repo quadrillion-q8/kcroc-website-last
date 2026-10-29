@@ -292,32 +292,31 @@ const CONFIG: Record<string, {
     ]
   },
   'macbook-repair-kuwait': {
-    h1: 'تصليح MacBook Air وMacBook Pro في الكويت',
-    eyebrow: 'تشخيص MacBook قبل تبديل الشاشة أو البطارية أو اللوحة الأم',
-    intro: 'الـMacBook ما يشتغل أو ما يشحن؟ الشاشة سوداء، البطارية تنتفخ أو تخلص بسرعة، الجهاز يسخن أو انسكب عليه سائل؟ في KCROC نفحص MacBook Air وMacBook Pro حسب رقم الموديل والجيل، ونميز بين عطل الشاحن أو البطارية أو الشاشة أو منفذ USB‑C أو اللوحة الأم. نشرح خيارات الإصلاح والتكلفة قبل أي عمل مدفوع؛ ما نفترض أن تبديل اللوحة كاملة هو الحل في كل حالة.',
-    bullets: ['MacBook Air وMacBook Pro من أجيال Intel وApple Silicon حسب حالة الجهاز', 'تشخيص عدم التشغيل والشحن المتقطع والشاشة السوداء', 'فحص البطارية المنتفخة أو سريعة النفاد بأولوية السلامة', 'إصلاح اللوحة الأم على مستوى المكونات عندما يكون ذلك مناسبًا فنيًا', 'استلام وتوصيل مجاني من مناطق الكويت والإصلاح في مختبر حولي'],
+    h1: 'تصليح ماك بوك إير وماك بوك برو (MacBook Air & Pro) في الكويت',
+    eyebrow: 'فني تصليح أبل ماك في حولي • إصلاح اللوحة الأم والشحن والشاشة والبطارية • استلام مجاني',
+    intro: 'هل توقف الماك بوك (MacBook) عن العمل فجأة؟ ماك بوك اير أو ماك بوك برو ما يشحن، شاشته سوداء والجهاز شغال، البطارية منتفخة، أو انسكبت عليه قهوة أو ماء؟ في مختبر KCROC بحولي نفحص الجهاز حسب رقم الموديل والجيل، ونراجع الشاحن ومنفذ USB‑C تايب سي أو MagSafe والبطارية والشاشة ومسار الطاقة على اللوحة الأم قبل اقتراح تبديل أي قطعة. نقيّم إصلاح اللوحة الأصلية على مستوى المكونات متى كانت الحالة تسمح، ونناقش حماية البيانات وخيارات الإصلاح والتكلفة قبل أي عمل مدفوع. نوفر استلامًا وتوصيلًا مجانيًا من مناطق الكويت.',
+    bullets: ['تصليح وصيانة ماك بوك إير وماك بوك برو (MacBook Air / Pro) وإصدارات Intel وM1 إلى M5 حسب الموديل', 'فحص أعطال عدم التشغيل والشحن المتقطع ومنفذ USB‑C تايب سي وMagSafe', 'تشخيص المذربورد ودوائر الطاقة والشحن بدل افتراض ضرورة تبديل اللوحة كاملة', 'فحص أضرار السوائل والكيبورد والتراك باد والبطارية والشاشة', 'استلام وتوصيل مجاني من مناطق الكويت والإصلاح في مختبر حولي'],
     faq: [
-      { q: 'تصلحون MacBook Air وMacBook Pro؟', a: 'نعم، نفحص موديلات MacBook Air وMacBook Pro بحسب الجيل ورقم الموديل. قبل طلب الشاشة أو البطارية أو أي قطعة، نتحقق من التوافق والتوفر ونوضح لك التكلفة المتوقعة.' },
-      { q: 'MacBook ما يشتغل ولا تظهر لمبة أو استجابة، شنو السبب؟', a: 'عدم التشغيل قد ينتج من الشاحن أو منفذ USB‑C أو البطارية أو دائرة الطاقة أو اللوحة الأم. لا يمكن تحديد السبب من العرض وحده؛ نسجل الأعراض ونفحص مصدر الطاقة ومسار الشحن قبل اقتراح الإصلاح.' },
-      { q: 'MacBook يشحن بشكل متقطع أو ما يتعرف على الشاحن؟', a: 'قد تكون المشكلة من الكابل أو قدرة الشاحن وتوافقه، أو المنفذ، أو البطارية، أو دائرة الشحن. لا تحرك القابس باستمرار ولا تستخدم أدوات معدنية داخل المنفذ. أرسل رقم الموديل وصورة للمنفذ والشاحن إن أمكن.' },
-      { q: 'الشاشة سوداء لكن الجهاز يصدر صوتًا أو يعمل؟', a: 'الشاشة السوداء لا تثبت أن الشاشة نفسها تالفة. نفحص الصورة والإضاءة والتوصيلات والعلامات الأخرى حسب تصميم الجهاز، ثم نوضح إن كان المطلوب إصلاحًا أو تبديلًا.' },
-      { q: 'هل تفحصون اللوحة الأم قبل اقتراح تبديلها؟', a: 'نعم. نفحص مسار الطاقة والشحن والمكونات المتأثرة، وعندما يكون العطل قابلًا للإصلاح فنيًا واقتصاديًا نوضح هذا الخيار بدل افتراض الحاجة إلى لوحة كاملة. بعض الأعطال لا تكون قابلة للإصلاح أو قد لا يكون إصلاحها مجديًا.' },
-      { q: 'بطارية MacBook منتفخة، هل أقدر أواصل استخدامه؟', a: 'لا. أوقف استخدام الجهاز ولا تضغط على الغطاء أو لوحة التتبع ولا تحاول ثقب البطارية أو فكها بنفسك. افصل الشاحن إذا كان ذلك آمنًا، وأبعد الجهاز عن الحرارة والمواد القابلة للاشتعال، وتواصل لترتيب فحص آمن.' },
-      { q: 'انسكب ماء أو قهوة على MacBook، شنو أسوي؟', a: 'أوقف التشغيل فورًا إذا كان ذلك آمنًا وافصل الشاحن. لا تعاود تشغيل الجهاز للتجربة، ولا تستخدم مجفف شعر أو أرز أو منظفات. اذكر نوع السائل ووقت الانسكاب؛ قد يلزم فحص التآكل واللوحة والتوصيلات حتى لو عاد الجهاز للعمل.' },
-      { q: 'كم سعر تصليح MacBook في الكويت؟', a: 'السعر يعتمد على الموديل والجيل والعطل والقطعة المطلوبة. أجرة تبديل شاشة MacBook تبدأ من 30 د.ك بالإضافة إلى سعر الشاشة وفق صفحة خدمة الشاشة؛ أما البطارية وأعطال اللوحة فتحتاج إلى مطابقة وتشخيص. راجع قائمة الأسعار أو أرسل الموديل للحصول على تقدير قبل الإصلاح.' },
-      { q: 'كم يستغرق الإصلاح وهل تعطون ضمانًا؟', a: 'المدة تتأثر بنوع العطل وتوفر القطعة ونتيجة التشخيص، لذلك نوضح تقديرًا بعد الفحص ولا نضمن إصلاحًا في نفس اليوم قبل التأكد. الإصلاحات المكتملة مشمولة بضمان 30 يومًا على العمل المنفذ وفق شروط الإصلاح التي نوضحها عند التسليم.' },
-      { q: 'هل تستلمون MacBook من جميع مناطق الكويت؟', a: 'نوفر استلامًا وتوصيلًا مجانيين من مناطق الكويت حسب موعد الاستلام والتوفر. المختبر الفعلي في حولي؛ بقية المناطق مناطق خدمة وليست فروعًا مستقلة.' }
+      { q: 'هل تصلحون ماك بوك اير وماك بوك برو (MacBook Air وMacBook Pro)؟', a: 'نعم، نفحص موديلات ماك بوك إير وبرو بحسب الجيل ورقم الموديل، بما في ذلك إصدارات Intel وشرائح M1 وM2 وM3 وM4 وM5 عند انطباقها. نتحقق من العطل والقطعة المطلوبة وتوفرها قبل تأكيد خيار الإصلاح والتكلفة.' },
+      { q: 'ماك بوك ما يشتغل أو يعلق على 5V عند الشحن، شنو السبب؟', a: 'قد يكون السبب في الشاحن أو منفذ USB‑C أو دائرة الشحن أو أحد مسارات الطاقة مثل PPBUS_G3H بحسب تصميم اللوحة. نفحص القياسات ومخطط الموديل قبل تحديد السبب؛ قراءة واحدة لا تكفي لتشخيص القطعة التالفة.' },
+      { q: 'هل تصلحون مذربورد ماك بوك بدون مسح البيانات؟', a: 'نفحص اللوحة الأصلية ومكونات الطاقة والشحن، ونقيّم الإصلاح على مستوى المكونات عندما تثبت نتائج الفحص أنه خيار فني مناسب. قد يساعد إصلاح اللوحة الأصلية على استعادة الوصول للبيانات في بعض الحالات، لكن لا يمكن ضمان بقاء كل الملفات أو استعادتها. بعض الأعطال قد تكون غير قابلة للإصلاح أو غير مجدية اقتصاديًا، ونوضح الخيارات قبل البدء.' },
+      { q: 'انسكبت قهوة أو ماء على ماك بوك، شنو أسوي؟', a: 'أوقف التشغيل وافصل الشاحن إذا كان ذلك آمنًا، ولا تعاود تشغيل الجهاز أو شحنه للتجربة. لا تستخدم مجفف شعر ولا تضع الجهاز في الأرز. اذكر نوع السائل ووقت الانسكاب، فقد نحتاج إلى فحص التآكل واللوحة والكيبورد والتراك باد والتوصيلات.' },
+      { q: 'هل تبدّلون كيبورد ماك بوك أو تصلحون التراك باد؟', a: 'نفحص الكيبورد والتراك باد والتوصيلات وآثار السوائل أولًا. خيار الإصلاح أو الاستبدال يعتمد على رقم الموديل ونوع القطعة والضرر وتوفر القطعة، ونوضح التكلفة قبل طلبها.' },
+      { q: 'ماك بوك ما يشحن تايب سي أو MagSafe 3، هل المشكلة من المنفذ؟', a: 'ليس دائمًا. نفحص الشاحن والكابل والمنفذ والبطارية ودائرة الشحن على اللوحة وفق الموديل. بعض اللوحات تستخدم متحكمات مثل CD3215 أو CD3217 أو دوائر شحن مثل ISL9240؛ تنطبق أرقام مختلفة على لوحات مختلفة، لذلك نطابق الموديل قبل الحكم.' },
+      { q: 'شاشة ماك بوك سوداء والجهاز شغال، هل يلزم تبديل الشاشة؟', a: 'ليس بالضرورة. نفحص الشاشة والكابل والموصل والإضاءة ومسار الصورة أولًا. قد ترتبط بعض أعطال الإضاءة أو الكابل بموديلات معينة؛ مصطلحات مثل Flexgate أو Dustgate ليست تشخيصًا عامًا لكل جهاز.' },
+      { q: 'كم سعر تصليح ماك بوك في الكويت؟', a: 'السعر يعتمد على الموديل والجيل والعطل والقطعة. أجرة تبديل الشاشة لها صفحة أسعار منفصلة، أما عطل الشحن أو اللوحة أو أضرار السوائل فيحتاج إلى تشخيص. نوضح عرض السعر والتكلفة المتوقعة قبل بدء أي عمل مدفوع.' },
+      { q: 'هل تستلمون ماك بوك من جميع مناطق الكويت؟', a: 'نرتب استلامًا وتوصيلًا مجانيًا من مناطق الكويت بحسب الموعد والتوفر. مختبر الإصلاح الفعلي في حولي؛ بقية المناطق مناطق خدمة وليست فروعًا مستقلة.' }
     ],
     englishPath: '/macbook-repair-kuwait',
     arabicLinks: [
-      { label: 'تبديل شاشة MacBook Air وMacBook Pro', path: '/ar/macbook-screen-replacement-kuwait' },
+      { label: 'تبديل شاشة ماك بوك إير وبرو (MacBook Air / Pro)', path: '/ar/macbook-screen-replacement-kuwait' },
       { label: 'تبديل بطارية اللابتوب', path: '/ar/battery-replacement-kuwait' },
-      { label: 'تصليح اللوحة الأم ودوائر الطاقة', path: '/ar/motherboard-repair-kuwait' },
+      { label: 'تصليح مذربورد ماك بوك واللوحة الأم', path: '/ar/motherboard-repair-kuwait' },
       { label: 'تصليح أضرار السوائل', path: '/ar/laptop-liquid-damage-repair-kuwait' },
-      { label: 'أسعار التصليح بالدينار الكويتي', path: '/ar/pricing' },
-      { label: 'تصليح اللابتوب في الكويت', path: '/ar/laptop-repair-kuwait' }
+      { label: 'تبديل كيبورد اللابتوب', path: '/ar/laptop-keyboard-replacement-kuwait' },
+      { label: 'أسعار التصليح بالدينار الكويتي', path: '/ar/pricing' }
     ],
-    serviceIds: ['srv-macbook', 'srv-macbook-screen', 'srv-battery', 'srv-motherboard', 'srv-liquid-damage']
+    serviceIds: ['srv-macbook', 'srv-macbook-screen', 'srv-battery', 'srv-motherboard', 'srv-liquid-damage', 'srv-keyboard']
   },
   'macbook-screen-replacement-kuwait': {
     h1: 'تبديل وتصليح شاشة ماك بوك (MacBook) في الكويت',
@@ -1757,7 +1756,7 @@ export default function ArabicCommercialPage() {
       : slug === 'computer-repair-farwaniya'
         ? 'السلام عليكم KCROC، أحتاج تصليح كمبيوتر أو لابتوب من الفروانية أو منطقة قريبة. منطقتي: الفروانية / خيطان / الرقعي / العارضية / جليب الشيوخ / أخرى: ____. نوع الجهاز والماركة والموديل: ____. الأعراض: لا يعمل / لا يشحن / شاشة سوداء أو مكسورة / بطارية / حرارة / مشكلة أخرى: ____. إذا المشكلة في الشحن سأجهز الشاحن مع الجهاز إذا كان ذلك آمنًا. فضلاً نسقوا الاستلام والتوصيل المجاني، وأكدوا نتيجة التشخيص والسعر النهائي قبل أي إصلاح مدفوع.'
         : `السلام عليكم KCROC، أحتاج ${cfg.h1}. أريد أعرف طريقة الاستلام والتشخيص.`;
-  const macbookWhatsappMessage = 'السلام عليكم KCROC، أحتاج فحص MacBook في الكويت. النوع: MacBook Air / MacBook Pro. رقم الموديل أو الجيل: ____. الأعراض: لا يشتغل / لا يشحن / شاشة سوداء / بطارية / حرارة / سائل / مشكلة أخرى. هل انسكب سائل أو انتفخت البطارية؟ ____. منطقتي بالكويت: ____. أرسل صورة للموديل والعطل إذا لزم. فضلاً وضحوا التشخيص وخيارات الإصلاح والسعر النهائي والمدة المتوقعة قبل أي عمل مدفوع.';
+  const macbookWhatsappMessage = 'السلام عليكم KCROC، أحتاج فحص وتصليح ماك بوك (MacBook) في الكويت. النوع: ماك بوك اير / ماك بوك برو (MacBook Air / Pro). الشريحة إن عُرفت: M1 / M2 / M3 / M4 / M5 / Intel: ____. رقم الموديل Axxxx أو رقم الموديل الظاهر في النظام: ____. الأعراض: لا يشتغل / لا يشحن USB‑C تايب سي أو MagSafe / شاشة سوداء / بطارية / كيبورد أو تراك باد / انسكاب سائل / ملفات مهمة. هل حصل سقوط أو انسكاب؟ ____. منطقتي بالكويت: ____. أستطيع إرسال صورة للموديل والعطل. إذا كانت البيانات مهمة سأوضح ذلك قبل الفحص. فضلاً أكدوا خيارات التشخيص والسعر النهائي والمدة المتوقعة قبل أي عمل مدفوع.';
   const wa = `https://wa.me/${business.telephone}?text=${encodeURIComponent(slug === 'macbook-repair-kuwait' ? macbookWhatsappMessage : whatsappMessage)}`;
 
   if (slug === 'computer-repair-kuwait') {
@@ -1835,8 +1834,8 @@ export default function ArabicCommercialPage() {
   };
   const arabicMacbookServiceCopy: Record<string, { title: string; description: string }> = {
     'srv-macbook': {
-      title: 'تشخيص وإصلاح MacBook Air وMacBook Pro',
-      description: 'نفحص أعراض عدم التشغيل والشحن والحرارة واللوحة الأم بحسب الموديل والجيل، ونوضح خيارات الإصلاح قبل الموافقة.'
+      title: 'تصليح وصيانة ماك بوك إير وبرو (MacBook Air / Pro)',
+      description: 'تشخيص ماك بوك إير وبرو للشحن والطاقة والشاشة والبطارية والمذربورد بحسب رقم الموديل والجيل، مع توضيح الخيارات قبل الموافقة.'
     },
     'srv-macbook-screen': {
       title: 'تبديل شاشة MacBook',
@@ -2035,14 +2034,16 @@ export default function ArabicCommercialPage() {
     '@graph': [{
       '@type': 'Service',
       '@id': `${page.seo.canonicalUrl}#service`,
-      name: 'تصليح MacBook Air وMacBook Pro في الكويت',
-      serviceType: 'تشخيص وإصلاح أجهزة Apple MacBook، بما في ذلك الشاشة والبطارية والشحن واللوحة الأم',
+      name: 'تصليح ماك بوك إير وماك بوك برو في الكويت',
+      alternateName: 'MacBook Air & MacBook Pro Repair Kuwait; Apple MacBook Repair',
+      serviceType: 'تصليح مذربورد ماك بوك ودوائر الطاقة والشحن والشاشة والبطارية وأضرار السوائل والكيبورد والتراك باد',
       description: cfg.intro,
       url: page.seo.canonicalUrl,
       image: `${business.websiteUrl}${IMAGES.macbook.diagnostics.src}`,
       areaServed: { '@type': 'Country', name: 'Kuwait' },
       provider: {
         '@type': 'LocalBusiness',
+        '@id': `${business.websiteUrl}/#business`,
         name: business.title,
         url: business.websiteUrl,
         telephone: `+${business.telephone}`,
@@ -2058,7 +2059,7 @@ export default function ArabicCommercialPage() {
         '@type': 'ServiceChannel',
         serviceLocation: {
           '@type': 'Place',
-          name: 'KCROC MacBook repair lab',
+          name: 'مختبر KCROC لتصليح ماك بوك في حولي',
           address: {
             '@type': 'PostalAddress',
             streetAddress: business.streetAddress,
@@ -2069,6 +2070,16 @@ export default function ArabicCommercialPage() {
         },
         servicePhone: `+${business.telephone}`,
       },
+      hasOfferCatalog: {
+        '@type': 'OfferCatalog',
+        name: 'خدمات تصليح وصيانة أبل ماك بوك في الكويت',
+        itemListElement: [
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'تصليح مذربورد ماك بوك ودوائر الطاقة (M1 إلى M5 وIntel حسب اللوحة)', description: 'تشخيص إصلاح اللوحة الأصلية على مستوى المكونات عندما تسمح حالة الجهاز؛ الحفاظ على البيانات أو استعادتها غير مضمون ويعتمد على التشخيص.' } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'فحص أضرار السوائل والقهوة والكيبورد والتراك باد في ماك بوك', description: 'فحص التآكل والتوصيلات وآثار السوائل وتقييم خيارات إصلاح أو استبدال الأجزاء المتضررة.' } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'تبديل شاشة وبطارية ماك بوك إير وماك بوك برو', description: 'مطابقة القطعة حسب رقم الموديل والجيل والتحقق من التوفر والتكلفة قبل الطلب.' } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'فحص شحن ماك بوك USB-C وMagSafe', description: 'فحص الشاحن والكابل والمنفذ ومتحكمات الشحن ومسارات الطاقة بحسب مخطط اللوحة.' } }
+        ]
+      }
     }]
   } : null;
   const screenServiceSchema = slug === 'laptop-screen-repair-kuwait' ? {
@@ -2347,6 +2358,16 @@ export default function ArabicCommercialPage() {
             <div className="max-w-4xl">
               <h1 className="text-3xl font-black leading-tight text-white sm:text-5xl">{cfg.h1}</h1>
               <p className="mt-6 text-base leading-8 text-slate-300 sm:text-lg">{cfg.intro}</p>
+              {slug === 'macbook-repair-kuwait' && (
+                <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                  <a href={wa} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-400 px-6 py-3 font-black text-slate-950 transition hover:bg-cyan-300">
+                    <MessageCircle className="h-5 w-5" aria-hidden="true" /> تواصل مع فني ماك بوك عبر واتساب
+                  </a>
+                  <Link to="/book" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-slate-700 bg-slate-950/60 px-6 py-3 font-black text-white transition hover:border-cyan-500/40 hover:text-cyan-300">
+                    <Truck className="h-5 w-5" aria-hidden="true" /> احجز استلام مجاني من منطقتك
+                  </Link>
+                </div>
+              )}
               {slug === 'laptop-screen-repair-kuwait' && (
                 <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                   <a href={wa} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-400 px-6 py-3 font-black text-slate-950 transition hover:bg-cyan-300">
@@ -2884,7 +2905,7 @@ export default function ArabicCommercialPage() {
             <figure className="mt-8 overflow-hidden rounded-2xl border border-slate-800 bg-slate-950 sm:mt-10">
               <img
                 src={IMAGES.macbook.diagnostics.src}
-                alt="فني يفحص جهاز MacBook مفتوحًا لتشخيص أعطال الشاشة والبطارية واللوحة الأم في مختبر إصلاح بالكويت"
+                alt="فني يفحص ماك بوك (MacBook) مفتوحًا لتشخيص أعطال الشاشة والبطارية والمذربورد في مختبر KCROC بحولي الكويت"
                 width={IMAGES.macbook.diagnostics.width}
                 height={IMAGES.macbook.diagnostics.height}
                 loading="eager"
@@ -2893,7 +2914,7 @@ export default function ArabicCommercialPage() {
                 className="aspect-[16/9] w-full object-cover"
               />
               <figcaption className="border-t border-slate-800 px-4 py-3 text-sm leading-6 text-slate-400 sm:px-5">
-                فحص MacBook قبل اختيار الإصلاح: نحدد الموديل والجيل والعطل، ثم نوضح الخيارات والتكلفة قبل طلب القطعة أو بدء العمل.
+                فحص ماك بوك (MacBook) قبل اختيار الإصلاح: نحدد رقم الموديل والجيل والعطل، ثم نوضح الخيارات والتكلفة قبل طلب القطعة أو بدء العمل.
               </figcaption>
             </figure>
           )}
@@ -3101,22 +3122,56 @@ export default function ArabicCommercialPage() {
               </div>
             </section>
 
+            <section className="mt-10 rounded-3xl border border-cyan-500/20 bg-gradient-to-br from-cyan-500/5 via-slate-950/90 to-slate-950 p-6 sm:p-8" aria-labelledby="macbook-technical-coverage">
+              <p className="text-sm font-bold tracking-wide text-cyan-300">تشخيص فني حسب الموديل والعطل</p>
+              <h2 id="macbook-technical-coverage" className="mt-2 text-2xl font-black text-white sm:text-3xl">تصليح مذربورد ماك بوك والشحن والشاشة وأضرار السوائل</h2>
+              <p className="mt-3 max-w-4xl leading-8 text-slate-300">نبدأ برقم الموديل والأعراض ونتائج القياس، لا باسم الشريحة وحده. المكوّنات وأرقام الدوائر تختلف بين لوحات MacBook، لذلك نطابق مخطط الموديل قبل اقتراح إصلاح على مستوى المكونات أو طلب قطعة بديلة.</p>
+              <div className="mt-6 grid gap-4 md:grid-cols-2">
+                <article className="rounded-2xl border border-slate-800 bg-slate-950/60 p-5">
+                  <h3 className="text-lg font-black text-white">مذربورد ماك بوك ودوائر الطاقة والشحن</h3>
+                  <p className="mt-2 text-sm leading-7 text-slate-300">للماك بوك الطافي أو الذي لا يقلع أو يتوقف شحنه عند 5V، نفحص مدخل الطاقة والمسارات مثل PPBUS_G3H بحسب تصميم اللوحة. قد يتضمن التشخيص متحكمات USB‑C مثل CD3215 أو CD3217 ودائرة شحن مثل ISL9240 عندما توجد في الموديل المعني؛ لا يعني ذكر رقم الشريحة أنه ينطبق على كل جهاز أو أن استبدالها هو الحل دائمًا.</p>
+                </article>
+                <article className="rounded-2xl border border-slate-800 bg-slate-950/60 p-5">
+                  <h3 className="text-lg font-black text-white">تبديل كيبورد ماك بوك والتراك باد بعد انسكاب السوائل</h3>
+                  <p className="mt-2 text-sm leading-7 text-slate-300">نفحص آثار السوائل والأكسدة والتوصيلات، ونقيّم الكيبورد (عربي/إنجليزي) والتراك باد واللوحة الأم. الإصلاح أو تبديل الجزء يعتمد على نطاق الضرر وتصميم الجهاز؛ لا تعاود تشغيل ماك بوك بعد الانسكاب للتجربة، ولا ترسل كلمات المرور أو رموز الدخول.</p>
+                </article>
+                <article className="rounded-2xl border border-slate-800 bg-slate-950/60 p-5">
+                  <h3 className="text-lg font-black text-white">شاشة Retina وLiquid Retina XDR والإضاءة</h3>
+                  <p className="mt-2 text-sm leading-7 text-slate-300">الشاشة السوداء أو السطوع المنخفض لا تثبت تلف تجميعة الشاشة. نفحص الكابل والموصل ومسار الإضاءة، ونقيّم تبديل تجميعة العرض أو إصلاحًا محددًا بحسب الموديل. تُستخدم أسماء Flexgate وDustgate لبعض أعطال الأجيال المحددة فقط، وليست تشخيصًا عامًا لكل ماك بوك.</p>
+                  <Link to="/ar/macbook-screen-replacement-kuwait" className="mt-4 inline-flex min-h-10 items-center font-bold text-cyan-300 hover:text-cyan-200">تفاصيل تبديل شاشة ماك بوك ←</Link>
+                </article>
+                <article className="rounded-2xl border border-slate-800 bg-slate-950/60 p-5">
+                  <h3 className="text-lg font-black text-white">ماك بوك طافي وفيه ملفات مهمة؟</h3>
+                  <p className="mt-2 text-sm leading-7 text-slate-300">في كثير من موديلات Apple Silicon تكون شرائح التخزين ملحومة باللوحة، وقد يساعد إصلاح اللوحة الأصلية على استعادة الوصول إلى الملفات عندما يكون ذلك ممكنًا. لا نعد بالحفاظ على كل البيانات أو استرجاعها في جميع الحالات؛ أخبرنا إذا كانت الملفات مهمة قبل الفحص أو أي إجراء قد يؤثر عليها.</p>
+                </article>
+              </div>
+              <section className="mt-6 rounded-2xl border border-slate-800 bg-slate-950/60 p-5" aria-labelledby="macbook-model-number-list">
+                <h3 id="macbook-model-number-list" className="text-lg font-black text-white">موديلات وأرقام شائعة للمطابقة</h3>
+                <p className="mt-2 text-sm leading-7 text-slate-300">ماك بوك إير (MacBook Air): M1 ‏A2337؛ M2 ‏A2681 وA2941؛ M3 ‏A3113 وA3114؛ M4 ‏A3240 وA3241؛ M5 ‏A3449 وA3448؛ وإصدارات Intel مثل A2179 وA1932 وA1466. ماك بوك برو (MacBook Pro): موديلات M1 وM2 وM3 وM4 وM5 وفق الجيل، ومن الأرقام الشائعة A2338 وA2442 وA2485 وA2779 وA2780 وA2991، وإصدارات Intel مثل A2141 وA2251 وA2289 وA1989 وA1708. هذه أمثلة وليست قائمة كاملة؛ أرسل رقم Axxxx أو رقم الموديل الظاهر في About This Mac لتأكيد التطابق. بعض أرقام الطراز لا تكفي وحدها لتحديد التجميعة أو القطعة.</p>
+              </section>
+            </section>
+
             <section className="mt-10 rounded-3xl border border-slate-800 bg-slate-900/40 p-6 sm:p-8" aria-labelledby="macbook-repair-process">
               <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">طريقة العمل</p>
               <h2 id="macbook-repair-process" className="mt-2 text-2xl font-black text-white sm:text-3xl">من الاستلام إلى اختبار MacBook</h2>
               <p className="mt-3 max-w-3xl leading-8 text-slate-400">الموديل والجيل مهمان لاختيار القطع وإجراءات التشخيص. نوضح نتيجة الفحص والتكلفة المتوقعة قبل بدء أي عمل مدفوع.</p>
-              <ol className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <ol className="mt-6 grid list-none gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {[
-                  { title: '١. تسجيل الموديل والأعراض', text: 'نحدد MacBook Air أو Pro ورقم الموديل والجيل، ونوثق الأعراض وأي سقوط أو انسكاب سوائل.' },
-                  { title: '٢. فحص الطاقة والشحن', text: 'نقيّم الشاحن والكابل والمنفذ والبطارية حسب الأعراض، ولا نفترض أن اللوحة هي السبب مباشرة.' },
-                  { title: '٣. فحص الشاشة والبطارية', text: 'نميز بين الشاشة نفسها ومشكلات الصورة أو التوصيل، ونقيّم حالة البطارية وتورمها عند الاشتباه.' },
-                  { title: '٤. تقييم اللوحة الأم', text: 'عند الحاجة نفحص دوائر الطاقة والمكونات. إمكانية إصلاح اللوحة تختلف حسب الضرر والموديل.' },
-                  { title: '٥. الموافقة على السعر', text: 'نشرح الخيار والتكلفة والقطعة والمدة المتوقعة. لا يبدأ الإصلاح المدفوع دون موافقتك.' },
-                  { title: '٦. التحقق قبل التسليم', text: 'نختبر الوظيفة التي تم إصلاحها، ونتحقق من الشحن والصورة والتشغيل حسب نطاق العمل المنفذ.' },
+                  { n: '١', title: 'تسجيل الموديل والأعراض', text: 'نحدد ماك بوك إير أو برو ورقم الموديل والجيل، ونوثق الأعراض وأي سقوط أو انسكاب سوائل.' },
+                  { n: '٢', title: 'فحص الطاقة والشحن', text: 'نقيّم الشاحن والكابل والمنفذ والبطارية بحسب الأعراض ومخطط الموديل.' },
+                  { n: '٣', title: 'فحص الشاشة والبطارية', text: 'نميز بين عطل الشاشة أو التوصيل ونقيّم حالة البطارية وانتفاخها عند الاشتباه.' },
+                  { n: '٤', title: 'تقييم اللوحة والبيانات', text: 'نفحص دوائر الطاقة والمكونات ونناقش أي مخاطر أو متطلبات تخص البيانات قبل العمل.' },
+                  { n: '٥', title: 'الموافقة على السعر', text: 'نشرح خيار الإصلاح والتكلفة والقطعة والمدة المتوقعة؛ لا يبدأ العمل المدفوع دون موافقتك.' },
+                  { n: '٦', title: 'الاختبار قبل التسليم', text: 'نختبر الوظيفة التي تم إصلاحها، ونتحقق من الشحن والصورة والتشغيل ضمن نطاق العمل.' }
                 ].map((item) => (
-                  <li key={item.title} className="rounded-2xl border border-slate-800 bg-slate-950/45 p-5">
-                    <h3 className="font-bold text-white">{item.title}</h3>
-                    <p className="mt-2 text-sm leading-7 text-slate-400">{item.text}</p>
+                  <li key={item.n} className="rounded-2xl border border-slate-800 bg-slate-950/45 p-5">
+                    <div className="flex items-start gap-3">
+                      <span aria-hidden="true" className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-cyan-400/10 font-black text-cyan-300">{item.n}</span>
+                      <div>
+                        <h3 className="font-bold text-white">{item.title}</h3>
+                        <p className="mt-2 text-sm leading-7 text-slate-400">{item.text}</p>
+                      </div>
+                    </div>
                   </li>
                 ))}
               </ol>
@@ -3128,8 +3183,9 @@ export default function ArabicCommercialPage() {
                 </div>
               </div>
               <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                <Link to="/ar/macbook-screen-replacement-kuwait" className="inline-flex min-h-11 items-center justify-center rounded-full border border-slate-700 px-5 py-3 text-sm font-bold text-cyan-300 hover:border-cyan-500/40">تبديل شاشة MacBook</Link>
-                <Link to="/ar/laptop-liquid-damage-repair-kuwait" className="inline-flex min-h-11 items-center justify-center rounded-full border border-slate-700 px-5 py-3 text-sm font-bold text-cyan-300 hover:border-cyan-500/40">تصليح أضرار السوائل</Link>
+                <Link to="/ar/macbook-screen-replacement-kuwait" className="inline-flex min-h-11 items-center justify-center rounded-full border border-slate-700 px-5 py-3 text-sm font-bold text-cyan-300 hover:border-cyan-500/40">تبديل شاشة ماك بوك (MacBook)</Link>
+                <Link to="/ar/laptop-liquid-damage-repair-kuwait" className="inline-flex min-h-11 items-center justify-center rounded-full border border-slate-700 px-5 py-3 text-sm font-bold text-cyan-300 hover:border-cyan-500/40">تصليح أضرار السوائل في ماك بوك</Link>
+                <Link to="/ar/laptop-keyboard-replacement-kuwait" className="inline-flex min-h-11 items-center justify-center rounded-full border border-slate-700 px-5 py-3 text-sm font-bold text-cyan-300 hover:border-cyan-500/40">تبديل كيبورد اللابتوب</Link>
                 <Link to="/ar/pricing" className="inline-flex min-h-11 items-center justify-center rounded-full border border-slate-700 px-5 py-3 text-sm font-bold text-cyan-300 hover:border-cyan-500/40">أسعار التصليح</Link>
               </div>
             </section>
