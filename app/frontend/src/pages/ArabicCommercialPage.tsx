@@ -361,24 +361,38 @@ const CONFIG: Record<string, {
     serviceIds: ['srv-macbook-screen', 'srv-macbook', 'srv-screen', 'srv-battery', 'srv-motherboard', 'srv-liquid-damage']
   },
   'battery-replacement-kuwait': {
-    h1: 'تبديل بطارية اللابتوب وMacBook في الكويت',
-    eyebrow: 'نفحص البطارية والشحن قبل لا نقرر التبديل',
-    intro: 'البطارية تخلص بسرعة؟ الجهاز يطفي فجأة؟ أو ما يشحن عدل؟ نفحص البطارية ودائرة الشحن والطاقة أول، ونحدد إذا البطارية هي سبب المشكلة أو في سبب ثاني، وبعدها نركب البطارية المناسبة للموديل إذا كانت تحتاج تبديل.',
-    bullets: ['تبديل بطاريات اللابتوب وMacBook', 'فحص صحة البطارية ودورات الشحن', 'فحص دائرة الشحن والطاقة', 'من 8 د.ك + القطعة حسب الحالة', 'استلام وتوصيل مجاني وضمان 30 يومًا'],
+    h1: 'تبديل بطارية اللابتوب وماك بوك في الكويت',
+    eyebrow: 'نفحص البطارية ودائرة الشحن قبل ما نقرر التبديل',
+    intro: 'تدور على تبديل بطارية اللابتوب أو ماك بوك في الكويت؟ إذا البطارية تفضى بسرعة، الجهاز يطفي عند فصل الشاحن، أو يظل الشحن على 0% رغم ظهور علامة التوصيل، فمو كل مرة تكون البطارية هي السبب. في KCROC نفحص صحة البطارية وعدد دورات الشحن، ونراجع الشاحن والمنفذ ومسار الطاقة ودائرة الشحن حسب موديل الجهاز قبل طلب قطعة جديدة. إذا احتاج الجهاز بطارية، نطابق رقم الموديل والقطعة المناسبة ونوضح خيارات القطع المتاحة والسعر النهائي قبل أي عمل مدفوع. الإصلاح يتم في مختبرنا بحولي، شارع ابن خلدون، مع استلام وتوصيل مجاني داخل الكويت.',
+    bullets: [
+      'فحص صحة البطارية وعدد دورات الشحن (Cycle Count)',
+      'فحص الشاحن والمنفذ ودائرة الشحن قبل التبديل',
+      'تبديل بطارية ماك بوك إير وماك بوك برو بعد مطابقة الموديل',
+      'فحص بطاريات HP وDell وLenovo وASUS وMSI حسب رقم الموديل والتوفر',
+      'أجرة العمل تبدأ من 8 د.ك + سعر البطارية',
+      'استلام وتوصيل مجاني وضمان 30 يومًا على الإصلاحات المشمولة'
+    ],
     faq: [
-      { q: 'من جم يبدأ سعر تبديل بطارية اللابتوب؟', a: 'الخدمة تبدأ من 8 د.ك + القطعة، والسعر النهائي يعتمد على موديل الجهاز ونوع البطارية المتوافقة.' },
-      { q: 'إذا البطارية فيها مشكلة، لازم أبدلها؟', a: 'مو بالضرورة. أحيانًا المشكلة تكون من الشحن أو دائرة الطاقة، عشان جذي نفحص السبب أول قبل التبديل.' },
-      { q: 'تبدلون بطارية MacBook؟', a: 'إي نعم، حسب موديل الـMacBook والبطارية المتوافقة وحالة الجهاز.' }
+      { q: 'كم سعر تبديل بطارية اللابتوب أو ماك بوك في الكويت؟', a: 'أجرة العمل تبدأ من 8 د.ك، ويُحسب سعر البطارية بشكل منفصل حسب الموديل ورقم القطعة والتوفر. نوضح لك خيارات القطع المتوافقة والسعر النهائي عبر واتساب قبل بدء أي عمل مدفوع؛ لا نعتبر سعر البداية سعرًا شاملًا للبطارية.' },
+      { q: 'التراك باد أو الماوس ما يضغط، هل السبب من انتفاخ البطارية؟', a: 'ممكن. انتفاخ البطارية قد يضغط من أسفل على التراك باد أو يرفع لوحة المفاتيح أو الغطاء، لكنه ليس السبب الوحيد لكل مشكلة ضغط. إذا لاحظت انتفاخًا أو انفصالًا في الهيكل، أوقف استخدام الجهاز وشحنه ولا تضغط على المنطقة؛ نحتاج فحصًا آمنًا قبل تحديد القطعة المتضررة.' },
+      { q: 'شنو أسوي إذا بطارية اللابتوب منتفخة؟', a: 'أوقف تشغيل الجهاز وافصل الشاحن إذا كان ذلك آمنًا، ولا تضغط على البطارية أو تثقبها أو تحاول نزعها بأداة حادة. لا تواصل الشحن أو الاستخدام. تواصل معنا لترتيب الاستلام والتعامل معها في بيئة مناسبة.' },
+      { q: 'اللابتوب متصل بالكهرباء ولا يشحن أو النسبة واقفة على 0%، هل أبدل البطارية؟', a: 'مو بالضرورة. قد يكون السبب من الشاحن أو الكابل أو منفذ الشحن أو البطارية أو دائرة الطاقة في المذربورد. نفحص مسار الشحن وآيسي الشحن وخط بيانات البطارية (SMBus) عندما يدعم تصميم الجهاز هذه الفحوصات، ثم نحدد إذا كان التبديل هو الحل.' },
+      { q: 'هل تبدلون بطارية ماك بوك إير وماك بوك برو؟', a: 'نعم، نستقبل أجهزة ماك بوك إير وماك بوك برو للفحص. نحتاج موديل الجهاز أو رقم الطراز وسنة الإصدار لمطابقة البطارية المناسبة؛ تختلف القطع وطريقة التركيب بين الأجيال، والتوفر يتأكد قبل طلب القطعة.' },
+      { q: 'هل رسالة Service Recommended أو HP Battery Alert 601 تعني أن البطارية تالفة؟', a: 'هذه التنبيهات قد تشير إلى تراجع صحة البطارية أو فشل اختبارها، لكنها لا تغني عن التأكد من الموديل ونتيجة الفحص. نراجع حالة البطارية وأعراض الشحن قبل التوصية بالتبديل.' },
+      { q: 'هل تتوفر بطاريات أصلية OEM أو بدائل متوافقة؟', a: 'تعتمد الخيارات على موديل الجهاز وتوفر القطعة. نوضح لك فئة البطارية المتاحة والتوافق والسعر وشروط الضمان قبل موافقتك، ولا نعتبر أي قطعة متوافقة مع الجهاز لمجرد تشابه شكلها أو مقاسها.' },
+      { q: 'هل توفرون استلام وتوصيل لتبديل البطارية في جميع مناطق الكويت؟', a: 'نعم، الاستلام والتوصيل مجانيان في مناطق الكويت، ومنها حولي والسالمية ومدينة الكويت والفروانية والجهراء والأحمدي والفحيحيل. الفحص والإصلاح يتمان في مختبر KCROC في حولي، مجمع الملا، السرداب، محل 19، شارع ابن خلدون.' }
     ],
     englishPath: '/battery-replacement-kuwait',
     arabicLinks: [
-      { label: 'تبديل شاشة MacBook', path: '/ar/macbook-screen-replacement-kuwait' },
-      { label: 'تصليح MacBook', path: '/ar/macbook-repair-kuwait' },
-      { label: 'تصليح لابتوب', path: '/ar/laptop-repair-kuwait' },
+      { label: 'تبديل شاشة ماك بوك', path: '/ar/macbook-screen-replacement-kuwait' },
+      { label: 'تصليح ماك بوك', path: '/ar/macbook-repair-kuwait' },
+      { label: 'تصليح اللابتوب', path: '/ar/laptop-repair-kuwait' },
+      { label: 'إصلاح منفذ الشحن ودائرة الطاقة', path: '/ar/laptop-charging-port-repair-kuwait' },
       { label: 'ترقية SSD وRAM', path: '/ar/ssd-ram-upgrade-kuwait' },
+      { label: 'أسعار التصليح في الكويت', path: '/ar/pricing' },
       { label: 'تصليح كمبيوتر حولي', path: '/ar/computer-repair-hawalli' }
     ],
-    serviceIds: ['srv-battery', 'srv-laptop', 'srv-macbook', 'srv-charging-port']
+    serviceIds: ['srv-battery', 'srv-laptop', 'srv-macbook', 'srv-charging-port', 'srv-motherboard']
   },
   'ssd-ram-upgrade-kuwait': {
     h1: 'ترقية SSD وRAM لتسريع اللابتوب في الكويت',
@@ -1797,6 +1811,28 @@ export default function ArabicCommercialPage() {
       description: 'تشخيص أعطال التشغيل والشحن والطاقة قبل اقتراح القطع.'
     }
   };
+  const arabicBatteryServiceCopy: Record<string, { title: string; description: string }> = {
+    'srv-battery': {
+      title: 'تبديل بطارية اللابتوب وماك بوك',
+      description: 'فحص صحة البطارية وعدد دورات الشحن ومطابقة رقم القطعة قبل الاستبدال.'
+    },
+    'srv-laptop': {
+      title: 'تشخيص وتصليح اللابتوب',
+      description: 'فحص مشاكل التشغيل والبطارية والشحن والحرارة قبل اقتراح تبديل أي قطعة.'
+    },
+    'srv-macbook': {
+      title: 'تصليح ماك بوك إير وماك بوك برو',
+      description: 'تشخيص أعطال البطارية والشحن والطاقة حسب موديل الجهاز وجيله.'
+    },
+    'srv-charging-port': {
+      title: 'إصلاح منفذ الشحن ودائرة الطاقة',
+      description: 'فحص الشاحن والكابل والمنفذ ومسار الشحن قبل تحديد سبب عدم الشحن.'
+    },
+    'srv-motherboard': {
+      title: 'فحص المذربورد وآيسي الشحن',
+      description: 'نختبر دائرة الشحن وخط بيانات البطارية عندما يناسب ذلك تصميم اللوحة، قبل الحكم أن البطارية هي السبب.'
+    }
+  };
   const arabicMacbookServiceCopy: Record<string, { title: string; description: string }> = {
     'srv-macbook': {
       title: 'تشخيص وإصلاح MacBook Air وMacBook Pro',
@@ -1869,6 +1905,13 @@ export default function ArabicCommercialPage() {
         { title: 'تصليح مدخل شحن اللابتوب', path: '/ar/laptop-charging-port-repair-kuwait' },
         { title: 'تصليح وتبديل شاشة اللابتوب', path: '/ar/laptop-screen-repair-kuwait' },
         { title: 'أسعار تصليح الكمبيوتر واللابتوب', path: '/ar/pricing' }
+      ]
+    : slug === 'battery-replacement-kuwait'
+    ? [
+        { title: 'تشخيص اللابتوب المتصل بالشاحن لكنه لا يشحن', path: '/ar/laptop-plugged-in-not-charging' },
+        { title: 'إصلاح منفذ شحن اللابتوب ودائرة الطاقة', path: '/ar/laptop-charging-port-repair-kuwait' },
+        { title: 'تصليح ماك بوك ومشاكل البطارية والطاقة', path: '/ar/macbook-repair-kuwait' },
+        { title: 'أسعار تبديل بطارية اللابتوب والقطع', path: '/ar/pricing' }
       ]
     : slug === 'laptop-repair-kuwait'
     ? [
@@ -2213,6 +2256,57 @@ export default function ArabicCommercialPage() {
     ]
   } : null;
 
+  const batteryServiceSchema = slug === 'battery-replacement-kuwait' ? {
+    '@graph': [{
+      '@type': 'Service',
+      '@id': `${page.seo.canonicalUrl}#service`,
+      name: 'تبديل بطارية اللابتوب وماك بوك في الكويت',
+      alternateName: 'Laptop & MacBook Battery Replacement Kuwait',
+      inLanguage: 'ar-KW',
+      serviceType: 'فحص صحة البطارية واستبدال البطارية وتشخيص دائرة الشحن',
+      description: cfg.intro,
+      url: page.seo.canonicalUrl,
+      areaServed: { '@type': 'Country', name: 'Kuwait' },
+      provider: { '@id': `${business.websiteUrl}/#business` },
+      availableChannel: {
+        '@type': 'ServiceChannel',
+        servicePhone: `+${business.telephone}`,
+        serviceLocation: {
+          '@type': 'Place',
+          name: 'مختبر KCROC في حولي',
+          address: {
+            '@type': 'PostalAddress',
+            streetAddress: business.streetAddress,
+            addressLocality: business.addressLocality,
+            addressRegion: business.addressRegion,
+            addressCountry: business.addressCountry
+          }
+        }
+      },
+      offers: {
+        '@type': 'Offer',
+        name: 'أجرة العمل تبدأ من 8 د.ك + سعر البطارية',
+        description: 'أجرة العمل تبدأ من 8 د.ك، وسعر البطارية منفصل حسب الموديل ورقم القطعة والتوفر. يتم تأكيد السعر النهائي قبل العمل.',
+        priceCurrency: 'KWD',
+        priceSpecification: {
+          '@type': 'PriceSpecification',
+          priceCurrency: 'KWD',
+          minPrice: 8,
+          description: 'أجرة التركيب فقط؛ لا تشمل سعر البطارية.'
+        }
+      },
+      hasOfferCatalog: {
+        '@type': 'OfferCatalog',
+        name: 'خدمات بطاريات اللابتوب وماك بوك',
+        itemListElement: [
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'تبديل بطارية ماك بوك إير وماك بوك برو', description: 'مطابقة البطارية مع الموديل والجيل والتأكد من توفر القطعة قبل الطلب.' } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'تبديل بطارية اللابتوب', description: 'تبديل بطارية الأجهزة المتوافقة بعد التأكد من رقم الموديل والقطعة المطلوبة.' } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'فحص انتفاخ البطارية وتشخيص دائرة الشحن', description: 'فحص آمن للبطارية والشاحن والمنفذ ومسار الطاقة لتحديد سبب المشكلة قبل التبديل.' } }
+        ]
+      }
+    }]
+  } : null;
+
   const faqSchema = {
     '@graph': [{
       '@type': 'FAQPage',
@@ -2232,6 +2326,7 @@ export default function ArabicCommercialPage() {
       {laptopRepairServiceSchema && <SchemaMarkup schema={laptopRepairServiceSchema} />}
       {macbookServiceSchema && <SchemaMarkup schema={macbookServiceSchema} />}
       {screenServiceSchema && <SchemaMarkup schema={screenServiceSchema} />}
+      {batteryServiceSchema && <SchemaMarkup schema={batteryServiceSchema} />}
       {farwaniyaServiceSchema && <SchemaMarkup schema={farwaniyaServiceSchema} />}
       <SchemaMarkup schema={faqSchema} />
 
@@ -3171,6 +3266,47 @@ export default function ArabicCommercialPage() {
           </section>
         )}
 
+        {slug === 'battery-replacement-kuwait' && (
+          <section className="mt-12 space-y-10 rounded-3xl border border-cyan-900/50 bg-slate-900/35 p-6 sm:p-8" aria-labelledby="battery-diagnosis">
+            <div>
+              <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">فحص قبل التبديل</p>
+              <h2 id="battery-diagnosis" className="mt-2 text-2xl font-black leading-snug text-white sm:text-3xl">مو كل مشكلة شحن معناها أن البطارية تحتاج تبديل</h2>
+              <p className="mt-4 max-w-4xl leading-8 text-slate-300">تشابه الأعراض ما يعني أن السبب واحد. نفصل بين تآكل خلايا البطارية، ومشكلة الشاحن أو المنفذ، وعطل دائرة الشحن على المذربورد. حسب تصميم الجهاز قد نحتاج فحص آيسي الشحن وخط بيانات البطارية (SMBus) أو مسار الطاقة؛ أسماء المكونات وطرق اختبارها تختلف بين الموديلات، لذلك ما نحكم على قطعة قبل الفحص.</p>
+              <div className="mt-6 grid gap-4 md:grid-cols-2">
+                {[
+                  { title: 'انتفاخ البطارية أو التراك باد ما يضغط', text: 'قد تدفع البطارية المنتفخة التراك باد أو الكيبورد أو الغطاء إلى الخارج. أوقف الاستخدام والشحن، ولا تضغط على الهيكل ولا تحاول ثقب البطارية أو نزعها بنفسك. رتب فحصًا آمنًا قبل مواصلة استخدام الجهاز.' },
+                  { title: 'متصل بالكهرباء ولا يشحن أو واقف على 0%', text: 'نفحص توافق الشاحن والكابل وقدرة الشحن والمنفذ والبطارية. إذا كانت هذه الأجزاء سليمة، قد يكون السبب في دائرة الشحن أو خط بيانات البطارية؛ الرسالة وحدها لا تحدد الجزء التالف.' },
+                  { title: 'البطارية تفضى بسرعة أو الجهاز يطفي فجأة', text: 'نراجع صحة البطارية وعدد دورات الشحن وسلوك النسبة تحت الاستخدام. إذا كانت صحة البطارية جيدة، نبحث عن أسباب أخرى مثل استهلاك البرامج أو الحرارة بدل اقتراح تبديل غير ضروري.' },
+                  { title: 'Service Recommended أو HP Battery Alert 601', text: 'تنبيهات النظام مفيدة لكنها لا تعوض الفحص. نراجع نتيجة اختبار البطارية والموديل والأعراض، ثم نوضح إن كان المطلوب تبديل البطارية أو فحص مسار الشحن.' }
+                ].map((item) => (
+                  <article key={item.title} className="rounded-2xl border border-slate-800 bg-slate-950/50 p-5">
+                    <h3 className="font-bold text-white">{item.title}</h3>
+                    <p className="mt-2 text-sm leading-7 text-slate-300">{item.text}</p>
+                  </article>
+                ))}
+              </div>
+            </div>
+
+            <div aria-labelledby="battery-models">
+              <h2 id="battery-models" className="text-2xl font-black text-white sm:text-3xl">بطاريات اللابتوب وماك بوك حسب الموديل</h2>
+              <p className="mt-3 max-w-4xl leading-8 text-slate-300">نستقبل طلبات فحص وتبديل بطاريات أجهزة ماك بوك إير وماك بوك برو، ولابتوبات HP وDell وLenovo وASUS وAcer وMSI، بما فيها بعض أجهزة الألعاب. تختلف البطارية وطريقة تركيبها حتى داخل الماركة الواحدة؛ نطابق رقم الموديل والقطعة والتوصيل والسعة المطلوبة، ثم نتحقق من التوفر قبل تأكيد السعر.</p>
+              <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                {[
+                  { title: 'أبل ماك بوك', text: 'ماك بوك إير وماك بوك برو — نطابق الجيل ورقم الطراز قبل تحديد البطارية المناسبة.' },
+                  { title: 'لابتوبات الاستخدام اليومي والعمل', text: 'HP وDell وLenovo — نتحقق من رقم القطعة وشكل الموصل وسعة البطارية حسب الجهاز.' },
+                  { title: 'لابتوبات الألعاب', text: 'MSI وASUS ROG/TUF وAcer وغيرها — نراجع الموديل ورقم البطارية والتوافق قبل طلب القطعة.' }
+                ].map((item) => (
+                  <article key={item.title} className="rounded-2xl border border-slate-800 bg-slate-950/50 p-5">
+                    <h3 className="font-bold text-white">{item.title}</h3>
+                    <p className="mt-2 text-sm leading-7 text-slate-300">{item.text}</p>
+                  </article>
+                ))}
+              </div>
+              <p className="mt-4 text-sm leading-7 text-slate-400">إذا كان عندك موديل أو رقم قطعة مثل A-number في أجهزة ماك بوك أو رقم بطارية HP، أرسله لنا على واتساب. الأمثلة تساعد في المطابقة لكنها ليست قائمة شاملة بالتوافق أو دليلًا على توفر القطعة مباشرة.</p>
+            </div>
+          </section>
+        )}
+
         <section className="mt-12" aria-labelledby="arabic-services">
           <div className="mb-7">
             <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">الخدمات المرتبطة</p>
@@ -3180,8 +3316,8 @@ export default function ArabicCommercialPage() {
             {services.map((service) => service && (
               <Link key={service.id} to={arabicServicePathById[service.id] ?? `/${service.slug}`} className="group rounded-2xl border border-slate-800 bg-slate-900/45 p-6 hover:border-cyan-500/40">
                 <Wrench className="h-6 w-6 text-cyan-400" aria-hidden="true" />
-                <h3 className="mt-4 text-lg font-bold text-white group-hover:text-cyan-300">{(slug === 'macbook-repair-kuwait' ? arabicMacbookServiceCopy[service.id]?.title : slug === 'laptop-screen-repair-kuwait' ? arabicScreenServiceCopy[service.id]?.title : slug === 'gaming-laptop-repair-kuwait' ? arabicGamingServiceCopy[service.id]?.title : slug === 'macbook-screen-replacement-kuwait' ? arabicMacbookScreenServiceCopy[service.id]?.title : slug === 'laptop-keyboard-replacement-kuwait' ? arabicKeyboardServiceCopy[service.id]?.title : slug === 'laptop-charging-port-repair-kuwait' ? arabicChargingServiceCopy[service.id]?.title : undefined) ?? service.title.replace(' Kuwait', '')}</h3>
-                <p className="mt-2 text-sm leading-6 text-slate-400">{(slug === 'macbook-repair-kuwait' ? arabicMacbookServiceCopy[service.id]?.description : slug === 'laptop-screen-repair-kuwait' ? arabicScreenServiceCopy[service.id]?.description : slug === 'gaming-laptop-repair-kuwait' ? arabicGamingServiceCopy[service.id]?.description : slug === 'macbook-screen-replacement-kuwait' ? arabicMacbookScreenServiceCopy[service.id]?.description : slug === 'laptop-keyboard-replacement-kuwait' ? arabicKeyboardServiceCopy[service.id]?.description : slug === 'laptop-charging-port-repair-kuwait' ? arabicChargingServiceCopy[service.id]?.description : undefined) ?? service.shortDescription}</p>
+                <h3 className="mt-4 text-lg font-bold text-white group-hover:text-cyan-300">{(slug === 'macbook-repair-kuwait' ? arabicMacbookServiceCopy[service.id]?.title : slug === 'laptop-screen-repair-kuwait' ? arabicScreenServiceCopy[service.id]?.title : slug === 'gaming-laptop-repair-kuwait' ? arabicGamingServiceCopy[service.id]?.title : slug === 'macbook-screen-replacement-kuwait' ? arabicMacbookScreenServiceCopy[service.id]?.title : slug === 'laptop-keyboard-replacement-kuwait' ? arabicKeyboardServiceCopy[service.id]?.title : slug === 'laptop-charging-port-repair-kuwait' ? arabicChargingServiceCopy[service.id]?.title : slug === 'battery-replacement-kuwait' ? arabicBatteryServiceCopy[service.id]?.title : undefined) ?? service.title.replace(' Kuwait', '')}</h3>
+                <p className="mt-2 text-sm leading-6 text-slate-400">{(slug === 'macbook-repair-kuwait' ? arabicMacbookServiceCopy[service.id]?.description : slug === 'laptop-screen-repair-kuwait' ? arabicScreenServiceCopy[service.id]?.description : slug === 'gaming-laptop-repair-kuwait' ? arabicGamingServiceCopy[service.id]?.description : slug === 'macbook-screen-replacement-kuwait' ? arabicMacbookScreenServiceCopy[service.id]?.description : slug === 'laptop-keyboard-replacement-kuwait' ? arabicKeyboardServiceCopy[service.id]?.description : slug === 'laptop-charging-port-repair-kuwait' ? arabicChargingServiceCopy[service.id]?.description : slug === 'battery-replacement-kuwait' ? arabicBatteryServiceCopy[service.id]?.description : undefined) ?? service.shortDescription}</p>
               </Link>
             ))}
           </div>

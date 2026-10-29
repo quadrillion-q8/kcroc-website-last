@@ -497,15 +497,16 @@ export const rawGraphData: RawGraphData = {
 
     'page-ar-battery-replacement': {
       id: 'page-ar-battery-replacement', slug: 'ar/battery-replacement-kuwait', entityType: 'WebPage', isActive: true,
-      title: 'تبديل بطارية اللابتوب وMacBook في الكويت', description: 'تبديل بطارية اللابتوب وMacBook في الكويت مع فحص صحة البطارية ودائرة الشحن قبل الاستبدال، واستلام وتوصيل مجاني.',
+      title: 'تبديل بطارية اللابتوب وماك بوك في الكويت',
+      description: 'تبديل بطارية اللابتوب وماك بوك في الكويت مع فحص صحة البطارية ودائرة الشحن قبل الاستبدال، ومطابقة القطعة حسب الموديل، واستلام وتوصيل مجاني.',
       seo: {
-        title: 'تبديل بطارية اللابتوب الكويت | من 8 د.ك | KCROC',
-        description: 'تبديل بطارية اللابتوب وMacBook في الكويت من 8 د.ك + القطعة. نفحص البطارية والشحن أولًا، مع استلام مجاني وضمان 30 يومًا.',
+        title: 'تبديل بطارية اللابتوب وماك بوك في الكويت | KCROC',
+        description: 'تبديل بطارية اللابتوب وماك بوك في الكويت. نفحص صحة البطارية ودائرة الشحن أولًا، مع استلام وتوصيل مجاني وضمان 30 يومًا. حولي: +965 55301913.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/ar/battery-replacement-kuwait', locale: 'ar_KW',
         alternates: { 'ar-KW': 'https://www.computerrepairkuwait.com/ar/battery-replacement-kuwait', 'en-KW': 'https://www.computerrepairkuwait.com/battery-replacement-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/battery-replacement-kuwait' },
-        ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList'], lastModified: '2026-10-02T00:00:00+03:00', breadcrumbs: [{ name: 'الرئيسية', url: '/' }, { name: 'تبديل بطارية اللابتوب', url: '/ar/battery-replacement-kuwait' }]
+        ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList'], lastModified: '2026-10-29T00:00:00+03:00', breadcrumbs: [{ name: 'الرئيسية', url: '/' }, { name: 'تبديل بطارية اللابتوب وماك بوك', url: '/ar/battery-replacement-kuwait' }]
       },
-      relatedServiceIds: ['srv-battery', 'srv-laptop', 'srv-macbook', 'srv-charging-port']
+      relatedServiceIds: ['srv-battery', 'srv-laptop', 'srv-macbook', 'srv-charging-port', 'srv-motherboard']
     } as WebPageEntity,
 
     'page-ar-ssd-ram-upgrade': {
