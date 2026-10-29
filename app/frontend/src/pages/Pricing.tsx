@@ -1386,6 +1386,13 @@ export default function Pricing() {
                 Call +{business.telephone}
               </a>
             </Button>
+
+            <Button
+              asChild
+              className="h-12 rounded-xl bg-emerald-500 px-7 font-black text-slate-950 hover:bg-emerald-400"
+            >
+              <a href="/book">Request Free Pickup</a>
+            </Button>
           </div>
 
           <div className="mt-7 flex flex-wrap justify-center gap-x-5 gap-y-2 text-[11px] text-slate-500">

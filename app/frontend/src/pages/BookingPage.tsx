@@ -17,37 +17,17 @@ import { buildWhatsAppLink } from '../utils/whatsappIntent';
 const business = KCROC_GRAPH.business!;
 const BASE_URL = business.websiteUrl;
 
-// NOTE: WebPage + BreadcrumbList nodes are intentionally omitted here — SEOEngine
-// (driven by the 'page-booking' graph entity) is the single authority for those on
-// this page. This object only carries schema types SEOEngine doesn't generate.
+// SEOEngine owns the page metadata and WebPage graph. This block adds only the
+// Service node; the visible questions below intentionally do not emit FAQPage markup.
 const STRUCTURED_DATA = {
   "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "Service",
-      "name": "Computer Repair Booking",
-      "provider": { "@id": `${BASE_URL}/#business` }
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Is the pickup and delivery truly free in Kuwait?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes, KCROC offers completely free pickup and delivery across all Kuwait governorates including Kuwait City, Hawalli, Salmiya, Farwaniya, and Jahra. There are no hidden charges for collection or return."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How long will my computer repair take?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "We provide same-day hardware testing for all devices. Repair times vary based on the issue and parts availability, but most standard repairs are completed within 24 to 48 hours."
-          }
-        }
-      ]
+      "name": "Computer Repair Pickup Booking",
+      "description": "Request free computer and laptop repair pickup across Kuwait, with diagnosis and a quote before paid repair work.",
+      "provider": { "@id": BASE_URL + "/#business" },
+      "areaServed": { "@type": "Country", "name": "Kuwait" }
     }
   ]
 };
@@ -62,6 +42,8 @@ export default function BookingPage() {
   const [deviceType, setDeviceType] = useState('MacBook / Apple');
   const [issue, setIssue] = useState('');
   const [location, setLocation] = useState('');
+  const [deviceModel, setDeviceModel] = useState('');
+  const [preferredPickup, setPreferredPickup] = useState('');
   const bookingStarted = useRef(false);
 
   // Count a booking start only once per visit to this form. A WhatsApp handoff
@@ -83,7 +65,7 @@ export default function BookingPage() {
     trackBookingStart();
     trackConversion('whatsapp_click', { cta_name: 'booking_form_submit', button_position: 'booking_page' });
     
-    const text = `*New Repair Inquiry*\n\n*Device:* ${deviceType}\n*Location:* ${location || 'Not provided'}\n*Issue:* ${issue || 'Needs diagnostic'}\n\n_Hi KCROC, I would like to claim my free diagnostic and pickup._`;
+    const text = `*New Repair Inquiry*\n\n*Device:* ${deviceType}${deviceModel.trim() ? ` (${deviceModel.trim()})` : ''}\n*Location:* ${location.trim() || 'Not provided'}\n*Preferred pickup:* ${preferredPickup || 'Flexible / discuss on WhatsApp'}\n*Issue:* ${issue.trim() || 'Needs diagnostic'}\n\n_Hi KCROC, I would like to request free pickup and an initial diagnostic. Please confirm the pickup details with me._`;
     const url = buildWhatsAppLink(text);
     window.open(url, '_blank', 'noopener,noreferrer');
   };
@@ -102,10 +84,10 @@ export default function BookingPage() {
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-12">
           <h1 className="text-3xl sm:text-5xl font-black mb-4 tracking-tight text-white">
-            Claim Your <span className="text-cyan-400">Free Diagnostic</span>
+            Book Laptop &amp; Computer Repair <span className="text-cyan-400">Pickup in Kuwait</span>
           </h1>
           <p className="text-slate-300 text-lg leading-relaxed">
-            Share your device, symptoms and area. This form prepares a message to our team on WhatsApp so we can discuss pickup, assess the next diagnostic step and explain the quote before repair work begins.
+            Request free laptop or computer pickup from your home or office anywhere in Kuwait. Tell us your device model, symptoms and area. Our Hawalli lab will assess the device and explain the repair quote before any paid work begins.
           </p>
           <p className="mt-4 text-sm leading-relaxed text-slate-500">
             Sending this form starts a repair enquiry; it does not confirm a booking or commit you to a repair.
@@ -143,6 +125,23 @@ export default function BookingPage() {
                       </button>
                     ))}
                   </div>
+                </div>
+
+                {/* Optional device model */}
+                <div className="space-y-3">
+                  <label htmlFor="booking-model" className="text-sm font-bold text-white uppercase tracking-wider">
+                    Device brand and model <span className="font-normal normal-case text-slate-500">(optional)</span>
+                  </label>
+                  <input
+                    id="booking-model"
+                    name="deviceModel"
+                    type="text"
+                    autoComplete="off"
+                    className="w-full min-h-[52px] bg-brand-dark border border-slate-800 rounded-xl px-4 py-4 text-base text-slate-200 placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 transition-shadow"
+                    placeholder="e.g., Dell XPS 15, HP Pavilion, MacBook Pro M2"
+                    value={deviceModel}
+                    onChange={(e) => setDeviceModel(e.target.value)}
+                  />
                 </div>
 
                 {/* Step 2: The Issue */}
@@ -183,6 +182,26 @@ export default function BookingPage() {
                   </div>
                 </div>
 
+                {/* Optional pickup preference */}
+                <div className="space-y-3">
+                  <label htmlFor="booking-pickup-time" className="text-sm font-bold text-white uppercase tracking-wider">
+                    Preferred pickup time <span className="font-normal normal-case text-slate-500">(optional)</span>
+                  </label>
+                  <select
+                    id="booking-pickup-time"
+                    name="preferredPickup"
+                    className="w-full min-h-[52px] bg-brand-dark border border-slate-800 rounded-xl px-4 py-4 text-base text-slate-200 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 transition-shadow"
+                    value={preferredPickup}
+                    onChange={(e) => setPreferredPickup(e.target.value)}
+                  >
+                    <option value="">Flexible / discuss on WhatsApp</option>
+                    <option value="Morning (10 AM–1 PM)">Morning (10 AM–1 PM)</option>
+                    <option value="Afternoon (1 PM–5 PM)">Afternoon (1 PM–5 PM)</option>
+                    <option value="Evening (5 PM–10 PM)">Evening (5 PM–10 PM)</option>
+                  </select>
+                  <p className="text-xs text-slate-500">This is a preference, not a confirmed pickup appointment. Our team will confirm availability with you.</p>
+                </div>
+
                 {/* Submit to WhatsApp */}
                 <div className="pt-4">
                   <Button
@@ -191,7 +210,7 @@ export default function BookingPage() {
                     className="w-full min-h-[56px] h-auto whitespace-normal px-4 sm:px-6 py-4 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-base sm:text-lg rounded-2xl shadow-[0_0_20px_rgba(16,185,129,0.3)] transition-colors"
                   >
                     <MessageCircle className="w-6 h-6 mr-2" />
-                    Send to WhatsApp & Book
+                    Request Free Pickup on WhatsApp
                     <ChevronRight className="w-5 h-5 ml-2 opacity-50" />
                   </Button>
                   <p className="text-center text-xs text-slate-500 mt-4 flex items-center justify-center gap-1">
@@ -247,6 +266,36 @@ export default function BookingPage() {
           </div>
 
         </div>
+
+        <section className="mt-12 grid gap-6 lg:grid-cols-2" aria-label="Booking details and pricing">
+          <div className="rounded-3xl border border-cyan-500/20 bg-slate-900/50 p-6 sm:p-8">
+            <h2 className="text-2xl font-black text-white">Clear pricing before repair</h2>
+            <p className="mt-3 leading-relaxed text-slate-400">The initial diagnostic and pickup are free. We explain the recommended repair and quote before any paid work begins.</p>
+            <ul className="mt-5 space-y-2 text-sm text-slate-300">
+              <li>Screen replacement labor from <strong className="text-white">30 KWD</strong>, plus the panel.</li>
+              <li>Battery replacement labor from <strong className="text-white">8 KWD</strong>, plus the battery.</li>
+              <li>Keyboard replacement labor from <strong className="text-white">10 KWD</strong>, plus the part.</li>
+            </ul>
+            <a href="/pricing" className="mt-5 inline-flex min-h-11 items-center font-bold text-cyan-300 underline-offset-4 hover:text-cyan-200 hover:underline">View full repair pricing and parts notes <span className="ml-2" aria-hidden="true">→</span></a>
+          </div>
+          <div className="rounded-3xl border border-slate-800 bg-slate-900/30 p-6 sm:p-8">
+            <h2 className="text-2xl font-black text-white">Booking questions</h2>
+            <div className="mt-4 divide-y divide-slate-800">
+              <details className="py-3">
+                <summary className="cursor-pointer font-semibold text-slate-200">Is the initial diagnostic free?</summary>
+                <p className="mt-2 text-sm leading-relaxed text-slate-400">Yes. The initial diagnostic is free. We share the recommended work and quote before any paid repair begins.</p>
+              </details>
+              <details className="py-3">
+                <summary className="cursor-pointer font-semibold text-slate-200">Is pickup and delivery free across Kuwait?</summary>
+                <p className="mt-2 text-sm leading-relaxed text-slate-400">KCROC arranges free pickup and return across Kuwait governorates. Our team confirms collection details with you on WhatsApp.</p>
+              </details>
+              <details className="py-3">
+                <summary className="cursor-pointer font-semibold text-slate-200">How long will a repair take?</summary>
+                <p className="mt-2 text-sm leading-relaxed text-slate-400">Timing depends on the fault, device model and parts availability. Many standard hardware repairs take around 24–48 hours; complex repairs may take longer.</p>
+              </details>
+            </div>
+          </div>
+        </section>
 
         <section className="mt-12 border-t border-slate-800 pt-10" aria-labelledby="booking-next-steps">
           <div className="mb-6 max-w-3xl">

@@ -673,7 +673,44 @@ export const rawGraphData: RawGraphData = {
       },
       relatedServiceIds: ['srv-laptop', 'srv-screen', 'srv-battery', 'srv-charging-port', 'srv-motherboard', 'srv-ssd-ram']
     } as WebPageEntity,
-    'page-booking': { id: 'page-booking', slug: 'book', entityType: 'WebPage', isActive: true, title: 'Book a Repair', description: 'Book free laptop and computer repair pickup anywhere in Kuwait. Same-day hardware assessment. 30-day warranty.', seo: { title: 'Book Laptop & Computer Repair Pickup in Kuwait | KCROC', description: 'Book free laptop and computer repair pickup anywhere in Kuwait. Same-day hardware assessment. 30-day warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/book', ogType: 'website', schemaTypes: ['WebPage'] } } as WebPageEntity,
+    'page-booking': {
+      id: 'page-booking', slug: 'book', entityType: 'WebPage', isActive: true,
+      title: 'Book Laptop & Computer Repair Pickup in Kuwait',
+      description: 'Request free laptop and computer repair pickup anywhere in Kuwait. Free initial diagnosis, a clear quote before repair, and a 30-day repair warranty.',
+      seo: {
+        title: 'Book Laptop & Computer Repair Pickup in Kuwait | KCROC',
+        description: 'Request free laptop and computer repair pickup anywhere in Kuwait. Get a free initial diagnosis, a repair quote before paid work, and a 30-day repair warranty.',
+        canonicalUrl: 'https://www.computerrepairkuwait.com/book',
+        locale: 'en_KW',
+        alternates: {
+          'en-KW': 'https://www.computerrepairkuwait.com/book',
+          'ar-KW': 'https://www.computerrepairkuwait.com/ar/book',
+          'x-default': 'https://www.computerrepairkuwait.com/book'
+        },
+        ogType: 'website',
+        schemaTypes: ['WebPage'],
+        lastModified: '2026-10-30T00:00:00+03:00'
+      }
+    } as WebPageEntity,
+    'page-ar-booking': {
+      id: 'page-ar-booking', slug: 'ar/book', entityType: 'WebPage', isActive: true,
+      title: 'حجز استلام اللابتوب والكمبيوتر للتصليح في الكويت',
+      description: 'احجز استلام اللابتوب أو الكمبيوتر مجانًا من المنزل أو المكتب في الكويت. فحص أولي مجاني، وتوضيح التكلفة قبل بدء الإصلاح، وضمان إصلاح لمدة 30 يومًا.',
+      seo: {
+        title: 'احجز استلام اللابتوب والكمبيوتر للتصليح في الكويت | KCROC',
+        description: 'اطلب استلام اللابتوب أو الكمبيوتر للتصليح مجانًا في جميع مناطق الكويت. فحص أولي مجاني، وعرض سعر قبل الإصلاح، وضمان لمدة 30 يومًا.',
+        canonicalUrl: 'https://www.computerrepairkuwait.com/ar/book',
+        locale: 'ar_KW',
+        alternates: {
+          'ar-KW': 'https://www.computerrepairkuwait.com/ar/book',
+          'en-KW': 'https://www.computerrepairkuwait.com/book',
+          'x-default': 'https://www.computerrepairkuwait.com/book'
+        },
+        ogType: 'website',
+        schemaTypes: ['WebPage'],
+        lastModified: '2026-10-30T00:00:00+03:00'
+      }
+    } as WebPageEntity,
     
     'page-privacy': { id: 'page-privacy', slug: 'privacy-security-kuwait', entityType: 'WebPage', isActive: true, title: 'Privacy & Security', description: 'Our data privacy guarantee.', seo: { title: 'Data Privacy & Security Guarantee | KCROC', description: 'Read about our strict hardware-only protocol that guarantees your personal data remains 100% private during repairs.', canonicalUrl: 'https://www.computerrepairkuwait.com/privacy-security-kuwait', ogType: 'website', schemaTypes: ['WebPage'] } } as WebPageEntity,
     'page-privacy-policy': { id: 'page-privacy-policy', slug: 'privacy-policy', entityType: 'WebPage', isActive: true, title: 'Privacy Policy', description: 'KCROC Privacy Policy and Data Handling', seo: { title: 'Privacy Policy | KCROC Kuwait', description: 'Read the official Privacy Policy for Kuwait Computer Repair On Call. We are committed to protecting your data and personal information.', canonicalUrl: 'https://www.computerrepairkuwait.com/privacy-policy', ogType: 'website', schemaTypes: ['WebPage'] } } as WebPageEntity,
