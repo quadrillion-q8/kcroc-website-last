@@ -709,7 +709,7 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
                   </Link>
                   <p className="mt-3 text-xs leading-5 text-slate-500">صفحة عربية مخصصة لنفس خدمة الإصلاح في الكويت.</p>
                    {entity.id === 'srv-gaming-laptop' && (
-                     <p className="mt-4 text-sm leading-7 text-slate-300">مختبر KCROC في حولي (شارع ابن خلدون) متخصص في تصليح لابتوبات الألعاب (Gaming Laptops) في الكويت — ASUS ROG/TUF، Lenovo Legion/LOQ، MSI، Acer Predator/Nitro، HP OMEN/Victus، Dell G/Alienware وRazer Blade. نفحص الحرارة وهبوط FPS ومشاكل GPU/VRAM والمذربورد والشحن، ونقدم خدمة PTM7950 أو صيانة المعدن السائل عندما يناسب تصميم الجهاز، مع فحص مجاني واستلام وتوصيل مجاني في الكويت (+965 55301913).</p>
+                     <p className="mt-4 text-sm leading-7 text-slate-300">مختبر KCROC في حولي (شارع ابن خلدون) متخصص في تصليح لابتوبات الألعاب (Gaming Laptops) في الكويت — ASUS ROG/TUF، Lenovo Legion/LOQ، MSI، Acer Predator/Nitro، HP OMEN/Victus، Dell G/Alienware وRazer Blade. نفحص الحرارة وهبوط FPS ومشاكل GPU/VRAM والمذربورد والشحن، ونقدم خدمة PTM7950 أو صيانة المعدن السائل عندما يناسب تصميم الجهاز، مع فحص مجاني واستلام وتوصيل مجاني في الكويت (<span dir="ltr">+{business?.telephone}</span>).</p>
                    )}
                 </div>
               )}
