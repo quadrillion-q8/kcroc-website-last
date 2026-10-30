@@ -351,32 +351,26 @@ const CONFIG: Record<string, {
   },
   'macbook-screen-replacement-kuwait': {
     h1: 'تبديل وتصليح شاشة ماك بوك (MacBook) في الكويت',
-    eyebrow: 'شاشة ماك بوك إير أو ماك بوك برو مكسورة أو سوداء أو فيها خطوط؟ نفحص السبب ونطابق الموديل قبل طلب القطعة',
-    intro: 'إذا شاشة ماك بوك (MacBook) أو MacBook Air أو MacBook Pro مكسورة أو سوداء أو تومض، ابدأ بفحص أولي مجاني. نفحص الشاشة والكيبل والموصل والإضاءة ومسار الصورة، ونراجع رقم الموديل والجيل لتحديد الخيار المناسب. أجرة العمل تبدأ من 30 د.ك ويُحسب سعر الشاشة بشكل منفصل حسب الموديل وتوفر القطعة. نوضح التكلفة النهائية والمدة المتوقعة قبل أي إصلاح مدفوع.',
+    eyebrow: 'شاشة MacBook مكسورة أو سوداء؟ أرسل صورة الجهاز، وسنساعدك في تحديد الخطوة المناسبة',
+    intro: 'في مختبر KCROC بحولي نفحص شاشة MacBook Air وMacBook Pro ونحدد هل المشكلة من الشاشة نفسها أو الكابل أو الموصل أو دائرة الإضاءة. إذا كان إصلاح الكابل أو مسار الإضاءة مناسبًا، نعرضه بدلاً من تبديل الشاشة كاملة؛ وإذا احتاج الجهاز إلى شاشة جديدة، نطابق التجميعة مع الموديل ونرسل لك السعر النهائي شاملاً القطعة والتركيب قبل البدء. الفحص الأولي مجاني، والاستلام والتوصيل مجانيان من مناطق الكويت.',
     bullets: [
-      'تبديل شاشة ماك بوك إير وMacBook Air حسب الموديل والجيل والتوافق',
-      'تبديل شاشة ماك بوك برو وMacBook Pro بعد تأكيد القطعة المناسبة',
-      'فحص أولي مجاني للشاشة والكيبل والموصل والإضاءة قبل اقتراح التبديل',
-      'أجرة العمل تبدأ من 30 د.ك + سعر تجميعة الشاشة',
-      'تأكيد توفر القطعة والسعر النهائي والمدة قبل التركيب',
-      'استلام وتوصيل مجاني داخل الكويت والإصلاح في مختبر حولي'
+      'فحص الشاشة والكابل والموصل ومسار الإضاءة لتحديد سبب السواد أو الوميض',
+      'إصلاح الكابل أو دائرة الإضاءة عندما يثبت الفحص أن ذلك مناسب',
+      'تبديل تجميعة الشاشة عند ثبوت تلفها ومطابقة القطعة مع الجيل والمقاس',
+      'سعر نهائي واضح للقطعة والعمل قبل موافقتك',
+      'ضمان 30 يومًا على الإصلاحات المشمولة واستلام مجاني داخل الكويت'
     ],
     faq: [
-      { q: 'كم سعر تبديل شاشة MacBook في الكويت؟', a: 'أجرة العمل تبدأ من 30 د.ك، وسعر تجميعة الشاشة منفصل ويعتمد على موديل MacBook Air أو Pro والجيل والقطعة المتوافقة وتوفرها. نؤكد السعر النهائي شامل العمل والقطعة قبل طلبها أو تركيبها.' },
-      { q: 'هل أجرة 30 د.ك تشمل شاشة MacBook؟', a: 'لا، هذا سعر بداية أجرة العمل فقط. سعر الشاشة يضاف حسب الموديل والجيل وتجميعة العرض المطلوبة، ونوضح لك التكلفة كاملة قبل أي عمل مدفوع.' },
-      { q: 'شاشة MacBook سوداء لكن الجهاز يشتغل؛ هل لازم تتبدل؟', a: 'مو بالضرورة. قد يكون السبب من الشاشة أو الكابل أو الموصل أو الإضاءة أو مسار العرض. نفحص الأعراض ونحدد السبب قبل اقتراح تبديل التجميعة.' },
-      { q: 'هل تبدلون شاشة MacBook Air وMacBook Pro؟', a: 'نستقبل أجهزة MacBook Air وMacBook Pro، لكن توافق الشاشة يختلف حسب المقاس والجيل ورقم الموديل. نتحقق من القطعة المناسبة وتوفرها قبل تأكيد الإصلاح.' },
-      { q: 'هل تختلف الشاشة بين موديلات Intel وApple Silicon؟', a: 'نعم، لا يكفي معرفة أنها شاشة MacBook فقط. نستخدم رقم الموديل والجيل ومواصفات التجميعة لتحديد التوافق؛ لا نؤكد توفر قطعة قبل التحقق من الجهاز.' },
-      { q: 'هل يمكن تبديل الشاشة في نفس اليوم؟', a: 'قد يكون ذلك ممكنًا إذا كانت تجميعة الشاشة الصحيحة متوفرة وكان وقت الاستلام والفحص والتركيب يسمح. نحدد المدة الواقعية بعد معرفة الموديل وتأكيد توفر القطعة.' },
-      { q: 'هل يتأثر ملفاتي أو بياناتي عند تبديل الشاشة؟', a: 'تبديل الشاشة عادةً إصلاح هاردوير ولا يتطلب تصفح ملفاتك الشخصية، لكن لا توجد خدمة إصلاح يمكنها ضمان انعدام كل المخاطر. احتفظ بنسخة احتياطية إذا كان الجهاز يعمل، ولا ترسل كلمات المرور أو رموز الدخول عبر واتساب.' },
-      { q: 'هل يوجد ضمان على تبديل شاشة MacBook؟', a: 'الإصلاحات المكتملة مشمولة بضمان 30 يومًا وفق شروط الخدمة. نوضح لك نطاق التغطية على القطعة والعمل قبل الموافقة.' },
-      { q: 'هل توفرون استلامًا من البيت أو المكتب في مناطق الكويت؟', a: 'نرتب استلام وتوصيل مجانيًا من مناطق الكويت حسب التنسيق. يتم الفحص والإصلاح في مختبر KCROC بحولي، ثم نعيد الجهاز بعد الاختبار؛ مناطق الخدمة الأخرى ليست فروعًا مستقلة.' },
-      { q: 'هل أبحث عن تبديل شاشة ماك بوك أو ماكبوك؟', a: 'نعم، قد يكتب العملاء الاسم بأكثر من طريقة مثل ماك بوك، ماكبوك، ماك بوك إير أو ماك بوك برو. أرسل نوع الجهاز ورقم الموديل حتى نتحقق من الشاشة المتوافقة.' },
-      { q: 'كيف أعرف رقم موديل شاشة MacBook المطلوب؟', a: 'اقلب الجهاز وابحث عن رقم الطراز الذي يبدأ بحرف A وأربعة أرقام، أو افتح قائمة Apple ثم About This Mac إذا كان الجهاز يعمل. يمكنك إرسال صورة واضحة لرقم الطراز أو اسم الجهاز عبر واتساب، ولا ترسل الرقم التسلسلي علنًا.' },
-      { q: 'هل يمكن إصلاح الكيبل أو إضاءة الشاشة بدل تبديل الشاشة كاملة؟', a: 'أحيانًا تكون المشكلة من التوصيلات أو دائرة الإضاءة أو مسار العرض، وأحيانًا تكون الشاشة نفسها تالفة. لا نحدد السبب من العرض وحده؛ نفحص الجهاز ونشرح الخيارات الواقعية قبل اعتماد القطعة.' },
-      { q: 'هل يمكن تبديل طبقة LCD فقط بدل تجميعة الشاشة كاملة؟', a: 'يعتمد ذلك على تصميم موديل MacBook ونوع الضرر وإمكانية الإصلاح بأمان. بعض الحالات تتطلب تجميعة كاملة، ولا نعد بخيار LCD فقط قبل فحص الموديل وحالة الشاشة.' },
-      { q: 'هل تضمنون عمل True Tone بعد تبديل الشاشة؟', a: 'نختبر وظائف العرض المدعومة حسب الموديل والإصلاح المنفذ، لكن لا نعد بأن كل ميزة أو معايرة ستعمل في كل جهاز قبل التحقق من الموديل والقطعة والتوافق.' },
-      { q: 'ما المقصود بمصطلحات Flexgate وDustgate؟', a: 'تُستخدم هذه الأسماء أحيانًا لوصف أنماط من مشكلات كابل الشاشة أو المنطقة القريبة من المفصلات في بعض أجهزة MacBook، لكنها لا تحدد سبب العطل في جهازك. قد تكون المشكلة من الكابل أو الشاشة أو الموصل أو دائرة الإضاءة؛ نفحص رقم الطراز ومسار العرض أولًا ونوضح الإصلاح الممكن قبل طلب أي قطعة.' }
+      { q: 'كيف أعرف السعر النهائي لتبديل شاشة MacBook؟', a: 'أرسل صورة الشاشة والجهاز عبر واتساب. نراجع الأعراض والموديل ونوضح خيارات الإصلاح أو التبديل، ثم نرسل السعر النهائي شاملاً الشاشة وأجرة التركيب قبل أي عمل مدفوع.' },
+      { q: 'شاشة MacBook سوداء؛ هل يلزم تبديلها كاملة؟', a: 'ليس بالضرورة. قد يكون السبب من الكابل أو الموصل أو دائرة الإضاءة أو الشاشة نفسها. نفحص مسار العرض ونشرح الخيار المناسب، بما في ذلك إصلاح على مستوى المكونات عندما تدعمه نتائج الفحص.' },
+      { q: 'هل تصلحون إضاءة الشاشة أو الكابل بدل تبديل التجميعة؟', a: 'نعم، نفحص الكابل والموصل ومسار الإضاءة ومكوناته. إذا أظهرت القياسات أن إصلاح الجزء المتضرر مناسب، نعرضه كخيار قبل اقتراح تجميعة شاشة جديدة.' },
+      { q: 'كيف أحدد موديل الجهاز إذا كانت الشاشة سوداء؟', a: 'لا تحتاج إلى تشغيل الجهاز أو فتح About This Mac. أرسل صورة للجهاز والشاشة، وصورة للكتابة أسفل الجهاز إذا كانت واضحة. رقم Axxxx مفيد إن كان مقروءًا، لكنه ليس شرطًا لبدء التواصل.' },
+      { q: 'هل تبدّلون شاشات MacBook Air وMacBook Pro؟', a: 'نستقبل أجهزة Air وPro بمختلف الأجيال، ونطابق الشاشة حسب الموديل والمقاس والجيل. نوضح لك التوافق والسعر والمدة قبل الموافقة.' },
+      { q: 'هل يمكن إنهاء تبديل الشاشة في نفس اليوم؟', a: 'قد يكون ذلك ممكنًا لبعض الموديلات عندما تكون القطعة المناسبة متاحة ويسمح وقت الاستلام والفحص والتركيب. نخبرك بالمدة المتوقعة بعد مراجعة الجهاز والقطعة.' },
+      { q: 'هل يوجد ضمان على إصلاح شاشة MacBook؟', a: 'الإصلاحات المكتملة مشمولة بضمان 30 يومًا وفق شروط الخدمة، ونوضح نطاق التغطية على القطعة والعمل قبل موافقتك.' },
+      { q: 'هل توفرون استلامًا مجانيًا من البيت أو المكتب؟', a: 'نرتب استلامًا وتوصيلًا مجانيًا من مناطق الكويت. يتم الفحص والإصلاح في مختبر KCROC بحولي، ثم نعيد الجهاز بعد الاختبار؛ مناطق الخدمة الأخرى ليست فروعًا مستقلة.' },
+      { q: 'هل تعمل ميزة True Tone بعد تبديل الشاشة؟', a: 'نختبر وظائف العرض التي يدعمها موديلك والقطعة المركبة. تختلف النتائج حسب الجيل والتوافق، لذلك نوضح ما أمكن اختباره على جهازك بعد الإصلاح.' },
+      { q: 'ما المقصود بمصطلح Flexgate؟', a: 'يُستخدم المصطلح لوصف نمط من أعطال كابل الشاشة في بعض أجيال MacBook Pro، وليس تشخيصًا لكل شاشة سوداء. نفحص الكابل والمفصلات ومسار الإضاءة لتحديد السبب الفعلي.' }
     ],
     englishPath: '/macbook-screen-replacement-kuwait',
     arabicLinks: [
@@ -1775,7 +1769,7 @@ export default function ArabicCommercialPage() {
   if (!cfg || !page || !business) return <Navigate to="/404" replace />;
 
   const whatsappMessage = slug === 'macbook-screen-replacement-kuwait'
-    ? 'السلام عليكم KCROC، أحتاج تبديل شاشة MacBook في الكويت. موديل الجهاز والجيل: ____. أعراض الشاشة: ____. منطقتي بالكويت: ____. فضلاً أكدوا توفر الشاشة المناسبة والسعر النهائي شامل أجرة العمل والشاشة والمدة المتوقعة قبل الإصلاح.'
+    ? 'السلام عليكم KCROC، عندي مشكلة في شاشة MacBook Air أو Pro. سأرسل صورة للشاشة والجهاز، وإذا لم أعرف رقم الموديل أرجو مساعدتي في تحديده. أريد معرفة هل يمكن إصلاح الكابل أو الإضاءة أم تحتاج الشاشة إلى تبديل، مع السعر النهائي شامل الشاشة والتركيب والمدة المتوقعة قبل البدء. منطقتي: ____.'
     : slug === 'laptop-screen-repair-kuwait'
       ? 'السلام عليكم KCROC، أحتاج تصليح أو تبديل شاشة اللابتوب في الكويت. الماركة والموديل: ____. المشكلة: ____. منطقتي بالكويت: ____. رقم الموديل الدقيق أو Service Tag إن توفر: ____. الأعراض: كسر / بقع سوداء / خطوط / وميض / شاشة سوداء / يتغير العرض مع حركة الغطاء / أخرى. هل الشاشة لمس أو ذات معدل تحديث عالٍ إذا كنت تعرف؟ ____. أستطيع إرسال صور للشاشة والجهاز. فضلاً أكدوا توافق ورقم القطعة وتوفرها والسعر النهائي شامل أجرة العمل والقطعة والمدة المتوقعة قبل الإصلاح.'
       : slug === 'gaming-laptop-repair-kuwait'
@@ -1903,6 +1897,14 @@ export default function ArabicCommercialPage() {
     'srv-motherboard': {
       title: 'تصليح المذربورد واللوحة الأم',
       description: 'نفحص دوائر الطاقة والمكونات ونحدد إذا كان إصلاح اللوحة ممكنًا فنيًا قبل اقتراح الاستبدال.'
+    },
+    'srv-battery': {
+      title: 'فحص وتبديل بطارية MacBook',
+      description: 'نفحص صحة البطارية ودائرة الشحن، ثم نطابق البطارية مع موديل الجهاز ونوضح سعر القطعة والعمل.'
+    },
+    'srv-liquid-damage': {
+      title: 'فحص MacBook بعد انسكاب السوائل',
+      description: 'نفحص آثار السائل والتآكل والتوصيلات واللوحة، ونشرح خيارات الإصلاح بعد التشخيص.'
     }
   };
   const arabicGamingServiceCopy: Record<string, { title: string; description: string }> = {
@@ -1977,14 +1979,14 @@ export default function ArabicCommercialPage() {
         { title: 'تصليح MacBook في الكويت: الشحن والبطارية واللوحة الأم', path: '/ar/macbook-repair-kuwait' },
         { title: 'تبديل شاشة اللابتوب ومطابقة القطعة', path: '/ar/laptop-screen-repair-kuwait' },
         { title: 'أسعار تصليح الكمبيوتر واللابتوب في الكويت', path: '/ar/pricing' },
-        { title: 'دليل حماية شاشة اللابتوب من الكسر (بالإنجليزية)', path: '/blog/how-to-protect-laptop-screen' }
+        { title: 'دليل باللغة الإنجليزية: حماية شاشة اللابتوب من الكسر', path: '/blog/how-to-protect-laptop-screen' }
       ]
     : slug === 'laptop-screen-repair-kuwait'
       ? [
           { title: 'تبديل شاشة MacBook Air وMacBook Pro', path: '/ar/macbook-screen-replacement-kuwait' },
           { title: 'تصليح اللابتوب في الكويت', path: '/ar/laptop-repair-kuwait' },
           { title: 'أسعار تصليح الشاشة والقطع في الكويت', path: '/ar/pricing' },
-          { title: 'دليل حماية شاشة اللابتوب من الكسر (بالإنجليزية)', path: '/blog/how-to-protect-laptop-screen' }
+          { title: 'دليل باللغة الإنجليزية: حماية شاشة اللابتوب من الكسر', path: '/blog/how-to-protect-laptop-screen' }
         ]
     : slug === 'gaming-laptop-repair-kuwait'
       ? [
@@ -2484,6 +2486,22 @@ export default function ArabicCommercialPage() {
                   <Link to="/book" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-slate-700 bg-slate-950/60 px-6 py-3 font-black text-white transition hover:border-cyan-500/40 hover:text-cyan-300">
                     <Truck className="h-5 w-5" aria-hidden="true" /> احجز استلام مجاني من منطقتك
                   </Link>
+                  <Link to="/ar/macbook-screen-replacement-kuwait" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-cyan-500/30 px-6 py-3 font-bold text-cyan-300 transition hover:bg-cyan-500/10">
+                    <MonitorCog className="h-5 w-5" aria-hidden="true" /> تبديل شاشة MacBook
+                  </Link>
+                </div>
+              )}
+              {slug === 'macbook-screen-replacement-kuwait' && (
+                <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                  <a href={wa} target="_blank" rel="noreferrer" aria-label="أرسل صورة شاشة MacBook عبر واتساب" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-400 px-6 py-3 font-black text-slate-950 transition hover:bg-cyan-300">
+                    <MessageCircle className="h-5 w-5" aria-hidden="true" /> أرسل صورة الشاشة والجهاز عبر واتساب
+                  </a>
+                  <Link to="/book" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-slate-700 bg-slate-950/60 px-6 py-3 font-black text-white transition hover:border-cyan-500/40 hover:text-cyan-300">
+                    <Truck className="h-5 w-5" aria-hidden="true" /> اطلب استلامًا مجانيًا
+                  </Link>
+                  <Link to="/ar/macbook-repair-kuwait" className="inline-flex min-h-12 items-center justify-center px-3 py-3 text-sm font-bold text-cyan-300 hover:text-cyan-200">
+                    جميع خدمات تصليح MacBook
+                  </Link>
                 </div>
               )}
               {slug === 'computer-repair-kuwait-city' && (
@@ -2615,7 +2633,7 @@ export default function ArabicCommercialPage() {
                 <div>
                   <p className="text-sm font-bold tracking-wide text-cyan-300">مطابقة الموديل</p>
                   <h2 id="macbook-screen-model-match" className="mt-2 text-2xl font-black leading-snug text-white sm:text-3xl">كيف نختار شاشة MacBook المتوافقة؟</h2>
-                  <p className="mt-4 leading-8 text-slate-300">اسم MacBook Air أو Pro وحده ما يكفي لطلب القطعة. نحتاج رقم الموديل أو معلومات الجهاز، ثم نتحقق من الجيل وحجم الشاشة وتجميعة العرض والتوافق والتوفر قبل اعتماد السعر.</p>
+                  <p className="mt-4 leading-8 text-slate-300">أرسل صورة للجهاز والشاشة. إذا كانت الشاشة سوداء أو الجهاز لا يعمل، لا تحتاج إلى فتح النظام؛ صورة واضحة للجهاز والكتابة أسفله إن أمكن تساعدنا في تحديد الموديل. رقم Axxxx مفيد عندما يكون مقروءًا، لكنه ليس شرطًا لبدء التواصل.</p>
                   <ul className="mt-5 space-y-3">
                     {[
                       'MacBook Air وMacBook Pro حسب الموديل والجيل',
@@ -2632,7 +2650,7 @@ export default function ArabicCommercialPage() {
                 </div>
                 <figure className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-950">
                   <img src={IMAGES.macbook.diagnostics.src} alt="فني يفحص جهاز MacBook مفتوحًا قبل تحديد موديل الشاشة والعطل في مختبر KCROC بالكويت" width={IMAGES.macbook.diagnostics.width} height={IMAGES.macbook.diagnostics.height} loading="lazy" decoding="async" className="aspect-[16/9] w-full object-cover" />
-                  <figcaption className="border-t border-slate-800 px-4 py-3 text-sm leading-6 text-slate-400">فحص الجهاز ومطابقة الموديل أولًا؛ لا نؤكد توفر الشاشة أو موعد التركيب قبل التحقق من القطعة الصحيحة.</figcaption>
+                  <figcaption className="border-t border-slate-800 px-4 py-3 text-sm leading-6 text-slate-400">نفحص الشاشة والكابل ومسار الإضاءة لتحديد ما إذا كان الإصلاح أو التبديل هو الخيار المناسب.</figcaption>
                 </figure>
               </div>
             </section>
@@ -2640,7 +2658,7 @@ export default function ArabicCommercialPage() {
             <section className="rounded-3xl border border-slate-800 bg-slate-900/45 p-6 sm:p-8" aria-labelledby="macbook-screen-model-numbers">
               <p className="text-sm font-bold tracking-wide text-cyan-300">أرقام الطراز والتوافق</p>
               <h2 id="macbook-screen-model-numbers" className="mt-2 text-2xl font-black text-white sm:text-3xl">أمثلة على موديلات ماك بوك وأرقام A</h2>
-              <p className="mt-3 leading-8 text-slate-300">هذه أمثلة شائعة للمساعدة في التعرف على الجهاز، وليست قائمة كاملة بكل الإصدارات. نتحقق من رقم الطراز الفعلي والجيل ومقاس الشاشة قبل تأكيد توافق القطعة أو توفرها؛ لا يكفي اسم M1 أو M2 أو M3 وحده.</p>
+              <p className="mt-3 leading-8 text-slate-300">هذه أمثلة شائعة وليست قائمة كاملة. إذا كان رقم Axxxx ظاهرًا أسفل الجهاز، أرسله لنا؛ وإن لم يكن واضحًا، أرسل صورة للجهاز وسنساعدك في تحديد الموديل والجيل والمقاس.</p>
               <div className="mt-5 overflow-x-auto rounded-2xl border border-slate-800">
                 <table className="w-full min-w-[680px] border-collapse text-right text-sm">
                   <thead className="bg-slate-950 text-cyan-300"><tr><th scope="col" className="p-3">الفئة</th><th scope="col" className="p-3">أمثلة على رقم الطراز</th><th scope="col" className="p-3">ملاحظة التوافق</th></tr></thead>
@@ -2661,8 +2679,8 @@ export default function ArabicCommercialPage() {
                   </tbody>
                 </table>
               </div>
-              <p className="mt-4 text-sm leading-7 text-slate-400">للعثور على الموديل: من قائمة Apple اختر About This Mac إذا كان الجهاز يعمل، أو صوّر الكتابة الصغيرة أسفل الجهاز. لا تنشر الرقم التسلسلي؛ يكفينا رقم الطراز أو اسم الموديل عند الاستفسار.</p>
-              <a href={wa} target="_blank" rel="noreferrer" className="mt-5 inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-cyan-500/30 px-5 py-3 font-bold text-cyan-300 hover:bg-cyan-500/10"><MessageCircle className="h-5 w-5" aria-hidden="true" /> أرسل رقم الطراز لتأكيد التوافق</a>
+              <p className="mt-4 text-sm leading-7 text-slate-400">إذا كانت الشاشة سوداء، لا تحتاج إلى تشغيل MacBook أو فتح قائمة About This Mac. أرسل صورة للشاشة والجهاز، وصورة للرقم أسفل الجهاز إذا كان واضحًا فقط. لا ترسل الرقم التسلسلي أو أي بيانات دخول.</p>
+              <a href={wa} target="_blank" rel="noreferrer" className="mt-5 inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-cyan-500/30 px-5 py-3 font-bold text-cyan-300 hover:bg-cyan-500/10"><MessageCircle className="h-5 w-5" aria-hidden="true" /> أرسل صورة الجهاز لتحديد الموديل</a>
             </section>
 
             <section className="rounded-3xl border border-slate-800 bg-slate-900/45 p-6 sm:p-8" aria-labelledby="macbook-screen-assembly-options">
@@ -2731,7 +2749,7 @@ export default function ArabicCommercialPage() {
                 ))}
               </ul>
               <a href={wa} target="_blank" rel="noreferrer" className="mt-6 inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-400 px-6 py-3 font-black text-slate-950 transition hover:bg-cyan-300">
-                <MessageCircle className="h-5 w-5" aria-hidden="true" /> أرسل موديل MacBook ومشكلة الشاشة
+                <MessageCircle className="h-5 w-5" aria-hidden="true" /> أرسل صورة الشاشة والجهاز عبر واتساب
               </a>
             </section>
           </section>
