@@ -501,7 +501,7 @@ export const rawGraphData: RawGraphData = {
       description: 'تصليح أعطال شاشة ماك بوك في الكويت: فحص الكابل والموصل ودائرة الإضاءة، وإمكانية الإصلاح على مستوى المكونات أو تبديل تجميعة الشاشة حسب الموديل. فحص أولي مجاني واستلام وتوصيل مجاني.',
       seo: {
         title: 'تصليح وتبديل شاشة ماك بوك في الكويت | Air وPro | KCROC',
-        description: 'شاشة MacBook مكسورة أو سوداء؟ فحص أولي مجاني في مختبر KCROC بحولي. أجرة العمل من 30 د.ك + الشاشة. أرسل صورة الجهاز لمعرفة خيارات الإصلاح والسعر النهائي، مع استلام مجاني بالكويت.',
+        description: 'شاشة MacBook مكسورة أو سوداء؟ فحص أولي مجاني في مختبر KCROC بحولي. أجرة العمل من 30 د.ك + الشاشة. أرسل صورة الجهاز للسعر النهائي. استلام مجاني بالكويت.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/ar/macbook-screen-replacement-kuwait', locale: 'ar_KW',
         alternates: { 'ar-KW': 'https://www.computerrepairkuwait.com/ar/macbook-screen-replacement-kuwait', 'en-KW': 'https://www.computerrepairkuwait.com/macbook-screen-replacement-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/macbook-screen-replacement-kuwait' },
         ogType: 'website',
