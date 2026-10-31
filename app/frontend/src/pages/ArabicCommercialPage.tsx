@@ -931,7 +931,7 @@ function ArabicGamingPcRepairPage({
               <div className="flex flex-wrap items-center gap-2 text-xs font-black text-cyan-300">
                 <span className="rounded-full border border-cyan-500/20 bg-cyan-500/10 px-3 py-1.5">Gaming PC Repair Kuwait</span>
                 <span className="rounded-full border border-slate-700 bg-slate-900/70 px-3 py-1.5">بي سي قيمنق</span>
-                <span className="rounded-full border border-slate-700 bg-slate-900/70 px-3 py-1.5">GPU • FPS • حرارة</span>
+                <span className="rounded-full border border-slate-700 bg-slate-900/70 px-3 py-1.5">GPU داخل الكمبيوتر • FPS • حرارة</span>
               </div>
 
               <h1 className="mt-5 text-3xl font-black leading-[1.15] text-white sm:text-5xl lg:text-6xl">
@@ -975,14 +975,14 @@ function ArabicGamingPcRepairPage({
             <figure className="overflow-hidden rounded-[1.75rem] border border-slate-800 bg-slate-950">
               <img
                 src={IMAGES.gaming.diagnostics.src}
-                alt="تشخيص كمبيوتر ألعاب وكرت الشاشة داخل مختبر KCROC في حولي، الكويت"
+                alt="تشخيص كمبيوتر ألعاب كامل وفحص كرت الشاشة المركب داخله في مختبر KCROC بحولي، الكويت"
                 width={IMAGES.gaming.diagnostics.width}
                 height={IMAGES.gaming.diagnostics.height}
                 loading="eager"
                 className="aspect-[4/3] w-full object-cover"
               />
               <figcaption className="border-t border-slate-800 px-5 py-4 text-sm leading-6 text-slate-400">
-                نشّيك على الـGaming PC وكرت الشاشة على طاولة العمل عشان نحدد مصدر المشكلة قبل لا نصلّح.
+                نفحص الكمبيوتر المكتبي الكامل، بما فيه كرت الشاشة المركب داخله، لتحديد مصدر المشكلة قبل الإصلاح.
               </figcaption>
             </figure>
           </div>
@@ -1037,14 +1037,14 @@ function ArabicGamingPcRepairPage({
           <figure className="overflow-hidden rounded-[1.75rem] border border-slate-800 bg-slate-950">
             <img
               src={IMAGES.gaming.zotacCard.src}
-              alt="فحص كرت شاشة بي سي قيمنق في مختبر KCROC"
+              alt="فحص كرت شاشة مركب داخل كمبيوتر ألعاب كامل في مختبر KCROC"
               width={IMAGES.gaming.zotacCard.width}
               height={IMAGES.gaming.zotacCard.height}
               loading="lazy"
               className="h-full min-h-[360px] w-full object-cover"
             />
             <figcaption className="border-t border-slate-800 px-5 py-4 text-sm leading-6 text-slate-400">
-              فحص كرت الشاشة والمكونات المرتبطة به قبل اتخاذ قرار الإصلاح أو الاستبدال.
+              نفحص كرت الشاشة وهو مركب داخل الكمبيوتر الكامل، مع مسار الطاقة والتوصيلات، قبل تحديد الإصلاح أو الاستبدال.
             </figcaption>
           </figure>
         </section>
