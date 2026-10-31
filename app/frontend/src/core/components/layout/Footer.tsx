@@ -26,6 +26,9 @@ import { openConsentPreferences } from '../../privacy/consent';
 
 const ARABIC_PATHS: Record<string, string> = {
   '/services': '/ar/services',
+  '/desktop-pc-repair-kuwait': '/ar/desktop-pc-repair-kuwait',
+  '/laptop-hinge-repair-kuwait': '/ar/laptop-hinge-repair-kuwait',
+  '/gaming-laptop-cleaning-kuwait': '/ar/gaming-laptop-cleaning-kuwait',
   '/laptop-repair-kuwait': '/ar/laptop-repair-kuwait',
   '/macbook-repair-kuwait': '/ar/macbook-repair-kuwait',
   '/gaming-pc-repair-kuwait': '/ar/gaming-pc-repair-kuwait',
@@ -49,6 +52,7 @@ const ARABIC_PATHS: Record<string, string> = {
 };
 
 const ARABIC_SERVICE_LABELS: Record<string, string> = {
+  '/desktop-pc-repair-kuwait': 'تصليح الكمبيوتر المكتبي',
   '/laptop-repair-kuwait': 'تصليح اللابتوب',
   '/macbook-repair-kuwait': 'تصليح MacBook',
   '/gaming-pc-repair-kuwait': 'تصليح كمبيوتر الألعاب',
