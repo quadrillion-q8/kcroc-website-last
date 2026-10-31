@@ -497,11 +497,11 @@ export const rawGraphData: RawGraphData = {
     } as WebPageEntity,
     'page-ar-macbook-screen-replacement': {
       id: 'page-ar-macbook-screen-replacement', slug: 'ar/macbook-screen-replacement-kuwait', entityType: 'WebPage', isActive: true,
-      title: 'تبديل شاشة ماك بوك في الكويت | MacBook Air وPro',
-      description: 'تبديل شاشة ماك بوك (MacBook Air وPro) في الكويت. فحص أولي مجاني ومطابقة رقم الموديل قبل التبديل؛ أجرة العمل تبدأ من 30 د.ك + الشاشة، مع استلام وتوصيل مجاني وضمان 30 يومًا على الإصلاحات المشمولة.',
+      title: 'تصليح وتبديل شاشة ماك بوك في الكويت | MacBook Air وPro',
+      description: 'تصليح أعطال شاشة ماك بوك في الكويت: فحص الكابل والموصل ودائرة الإضاءة، وإمكانية الإصلاح على مستوى المكونات أو تبديل تجميعة الشاشة حسب الموديل. فحص أولي مجاني واستلام وتوصيل مجاني.',
       seo: {
-        title: 'تبديل شاشة ماك بوك في الكويت | Air وPro | فحص مجاني | KCROC',
-        description: 'شاشة ماك بوك (MacBook Air وPro) مكسورة أو سوداء أو تومض؟ فحص أولي مجاني ومطابقة للموديل في مختبرنا بحولي. أجرة العمل من 30 د.ك + الشاشة، مع استلام مجاني وضمان 30 يومًا.',
+        title: 'تصليح وتبديل شاشة ماك بوك في الكويت | Air وPro | KCROC',
+        description: 'شاشة MacBook مكسورة أو سوداء؟ فحص أولي مجاني في مختبر KCROC بحولي. أجرة العمل من 30 د.ك + الشاشة. أرسل صورة الجهاز للسعر النهائي. استلام مجاني بالكويت.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/ar/macbook-screen-replacement-kuwait', locale: 'ar_KW',
         alternates: { 'ar-KW': 'https://www.computerrepairkuwait.com/ar/macbook-screen-replacement-kuwait', 'en-KW': 'https://www.computerrepairkuwait.com/macbook-screen-replacement-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/macbook-screen-replacement-kuwait' },
         ogType: 'website',
@@ -510,7 +510,7 @@ export const rawGraphData: RawGraphData = {
         ogImageWidth: 1200,
         ogImageHeight: 630,
         schemaTypes: ['WebPage', 'BreadcrumbList', 'Service', 'FAQPage', 'ImageObject'],
-        lastModified: '2026-10-25T00:00:00+03:00',
+        lastModified: '2026-10-31T00:00:00+03:00',
         breadcrumbs: [{ name: 'الرئيسية', url: '/ar' }, { name: 'تبديل شاشة MacBook في الكويت', url: '/ar/macbook-screen-replacement-kuwait' }]
       },
       relatedServiceIds: ['srv-macbook-screen', 'srv-macbook', 'srv-screen', 'srv-battery', 'srv-motherboard', 'srv-liquid-damage']
@@ -1408,7 +1408,7 @@ export const rawGraphData: RawGraphData = {
       id: 'srv-macbook-screen', slug: 'macbook-screen-replacement-kuwait', entityType: 'Service', isActive: true,
       title: 'MacBook Screen Replacement Kuwait', primaryKeyword: "MacBook screen replacement Kuwait", secondaryKeywords: ["MacBook display repair Kuwait","MacBook cracked screen repair","MacBook LCD replacement"], iconKey: 'monitor',
       shortDescription: 'MacBook Air and Pro screen replacement in Kuwait for cracked, black, flickering or lined displays, with exact-model checks and a clear quote before fitting. Supported Intel and Apple Silicon generations include M1–M5 where a compatible display assembly is available.',
-      description: 'KCROC checks the exact MacBook model and generation before sourcing a compatible display assembly. For cracked glass, lines, flicker or a black screen, we inspect the display, cable, connector and backlight path first; these symptoms do not always mean the full assembly has failed. Replacement labour starts from 30 KWD plus the display assembly. We confirm part compatibility, availability, final price and expected turnaround before installation, then test image stability, brightness and supported display functions before return. Free pickup and delivery are available across Kuwait; repairs are completed at our Hawalli workshop.',
+      description: 'KCROC diagnoses MacBook Air and MacBook Pro display faults in Kuwait. For cracked glass, lines, flicker or a black screen, technicians inspect the panel, cable, connector and backlight path first; a complete display assembly is recommended only when the findings support it. When replacement is needed, we match a compatible assembly to the exact generation and provide an itemised final quote before work begins. Labour starts from 30 KWD; the display assembly is additional and varies by model. Initial diagnostics and pickup/delivery across Kuwait are free; repairs are completed at our Hawalli workshop with a 30-day warranty on covered work.',
       idealCustomer: 'MacBook Air and MacBook Pro owners in Kuwait with cracked glass, dead pixels, black display, flickering, lines, backlight problems or display damage after a drop.',
       deviceTypes: ['MacBook Air', 'MacBook Pro 13-inch', 'MacBook Pro 14-inch', 'MacBook Pro 16-inch', 'Intel and Apple Silicon MacBooks'],
       repairLevel: 'basic', estimatedTurnaround: 'Same day when a compatible display is in stock; otherwise timing depends on model and part availability',
