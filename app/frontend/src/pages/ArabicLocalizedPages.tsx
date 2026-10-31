@@ -13,6 +13,7 @@ import { KCROC_POLICY } from '../constants/businessPolicy';
 const ARABIC_SERVICES_CORE_ORDER = [
   'srv-laptop',
   'srv-desktop-pc',
+  'srv-hinge',
   'srv-macbook',
   'srv-gaming',
   'srv-gaming-laptop',
@@ -20,6 +21,7 @@ const ARABIC_SERVICES_CORE_ORDER = [
   'srv-screen',
   'srv-battery',
   'srv-charging-port',
+  'srv-gaming-laptop-cleaning',
   'srv-ssd-ram',
 ];
 
@@ -214,6 +216,9 @@ export function ArabicHomePage() {
 
 const ARABIC_SERVICE_COPY: Record<string, { title: string; description: string; href: string }> = {
   'laptop-repair-kuwait': { title: 'تصليح اللابتوب في الكويت', description: 'تشخيص أعطال التشغيل والشحن والحرارة والشاشة والبطارية ومكونات الجهاز.', href: '/ar/laptop-repair-kuwait' },
+  'desktop-pc-repair-kuwait': { title: 'تصليح الكمبيوتر المكتبي وPC', description: 'تشخيص أعطال الطاقة والشاشة والحرارة والرام والتخزين والمذربورد في الكمبيوتر المكتبي الكامل.', href: '/ar/desktop-pc-repair-kuwait' },
+  'laptop-hinge-repair-kuwait': { title: 'تصليح مفصلات وهيكل اللابتوب', description: 'فحص المفصلات وقواعد التثبيت والغطاء والإطار وكابل الشاشة قبل تحديد طريقة الإصلاح.', href: '/ar/laptop-hinge-repair-kuwait' },
+  'gaming-laptop-cleaning-kuwait': { title: 'تنظيف لابتوب الألعاب وصيانة التبريد', description: 'تنظيف المراوح والمشتت وفحص المواد الحرارية ثم اختبار الحرارة حسب الموديل.', href: '/ar/gaming-laptop-cleaning-kuwait' },
   'motherboard-repair-kuwait': { title: 'إصلاح اللوحة الأم والمذربورد', description: 'فحص أعطال الطاقة والشحن والمكونات الإلكترونية عندما يكون الإصلاح مناسبًا.', href: '/ar/motherboard-repair-kuwait' },
   'gaming-pc-repair-kuwait': { title: 'تصليح Gaming PC', description: 'تشخيص مشاكل الطاقة والرسوميات والحرارة والاستقرار في الكمبيوتر المخصص للألعاب.', href: '/ar/gaming-pc-repair-kuwait' },
   'laptop-screen-repair-kuwait': { title: 'تصليح شاشة اللابتوب', description: 'فحص الشاشة السوداء أو المكسورة أو الوامضة والكابل قبل تحديد الحل.', href: '/ar/laptop-screen-repair-kuwait' },
