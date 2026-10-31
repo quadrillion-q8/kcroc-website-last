@@ -931,9 +931,9 @@ export default function BiosUefiRecoveryGuide() {
           <div className="rounded-2xl border border-slate-800 bg-brand-dark/50 p-5 sm:p-6 flex gap-4">
             <Clock className="mt-1 h-5 w-5 shrink-0 text-cyan-400" aria-hidden="true" />
             <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
-              A straightforward firmware reprogramming job can often be completed the same day. Cases involving board-level diagnosis, multiple firmware devices, EC firmware, or a genuine hardware fault take longer. See{' '}
-              <Link to="/pricing" className="text-cyan-300 underline hover:text-cyan-200">Pricing</Link>{' '}
-              for current figures.
+              KCROC's published BIOS / Firmware Recovery price range is <strong className="text-white">20–40 KWD</strong>. The final quote depends on the exact model, board revision, firmware devices involved and diagnostic findings; the initial assessment is free, and no paid work begins before you approve the quote. A straightforward reprogramming job may be completed the same day, while cases involving board-level diagnosis, multiple firmware devices, EC firmware or an underlying hardware fault can take 24–48 hours or longer. See{' '}
+              <Link to="/pricing#pricing-diagnostics" className="text-cyan-300 underline hover:text-cyan-200">published pricing</Link>{' '}
+              for the full service list.
             </p>
           </div>
         </div>

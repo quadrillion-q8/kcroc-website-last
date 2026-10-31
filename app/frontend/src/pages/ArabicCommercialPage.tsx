@@ -106,13 +106,14 @@ const CONFIG: Record<string, {
     serviceIds: ['srv-motherboard', 'srv-laptop', 'srv-charging-port', 'srv-liquid-damage']
   },
   'gaming-pc-repair-kuwait': {
-    h1: 'تصليح Gaming PC وبي سي قيمنق وكرت الشاشة بالكويت',
+    h1: 'تصليح Gaming PC وبي سي الألعاب وفحص كرت الشاشة بالكويت',
     eyebrow: 'حرارة، تهنيق، FPS Drops، GPU ومشاكل الطاقة',
-    intro: 'إذا الـGaming PC عندك يطفي وقت اللعب، يهنّق، الـFPS ينزل، أو الحرارة تصير عالية، لا تستعيل وتبدّل كرت أو قطعة غالية. خلنا نشيك على السبب أول، ونحدد هل المشكلة من الحرارة، التبريد، GPU، VRAM، الطاقة، الرام أو المذربورد.',
-    bullets: ['تصليح كرت الشاشة وGPU وVRAM', 'تغيير المعجون الحراري وخدمة التبريد', 'فحص الهاردوير تحت الضغط واختبار الاستقرار', 'Power/VRM ومشاكل المذربورد', 'BIOS/VBIOS والفحص بعد الإصلاح'],
+    intro: 'إذا الـGaming PC عندك يطفي وقت اللعب، يهنّق، الـFPS ينزل، أو الحرارة تصير عالية، لا تستعيل وتبدّل كرت أو قطعة غالية. نفحص الجهاز المكتبي الكامل ونحدد هل المشكلة من الحرارة أو التبريد أو الـGPU المركب داخل الكمبيوتر أو الـVRAM أو الطاقة أو الرام أو المذربورد. فحص كرت الشاشة يكون ضمن جهاز Gaming PC كامل؛ لا نستقبل كروت الشاشة المنفصلة كطلبات إصلاح مستقلة.',
+    bullets: ['فحص GPU وVRAM ومسار الطاقة عندما تكون البطاقة مركبة داخل Gaming PC كامل', 'تشخيص الحرارة والتبريد والمراوح والـAIO', 'فحص الهاردوير تحت الضغط واختبار الاستقرار', 'Power/VRM ومشاكل المذربورد والرام', 'فحص BIOS/VBIOS عند الحاجة؛ لا نستقبل كرت شاشة منفصلًا للإصلاح'],
     faq: [
       { q: 'بي سي القيمنق حرارته عالية، شتسوون؟', a: 'نشيك على الغبار، المراوح، الـAIO، المعجون أو الـthermal interface، وتدفق الهوا وحرارة CPU/GPU تحت الضغط عشان نعرف السبب الحقيقي.' },
-      { q: 'كرت الشاشة خربان أو يطلع خطوط، تقدرون تصلحونه؟', a: 'نفحص الـGPU والـVRAM والطاقة والاتصال والاستقرار أول. إذا فيه إصلاح فني ممكن، نشرح لك الخيار قبل ما تفكر تبدّل الكرت كامل.' },
+      { q: 'كرت الشاشة في كمبيوتر الألعاب يطلع خطوط أو يسبب شاشة سوداء، تقدرون تفحصونه؟', a: 'نعم، نفحص الـGPU والـVRAM والطاقة والتبريد عندما تكون البطاقة مركبة داخل جهاز Gaming PC كامل. نوضح نتيجة التشخيص وخيارات الإصلاح قبل أي عمل مدفوع. لا نستقبل بطاقة الرسوميات المنفصلة من دون الكمبيوتر الكامل.' },
+      { q: 'هل تستقبلون كرت شاشة منفصلًا للإصلاح؟', a: 'لا. خدمة KCROC هنا مخصصة لتشخيص كمبيوتر الألعاب المكتبي الكامل، ويكون فحص كرت الشاشة ضمن الجهاز نفسه مع الكيابل ومزود الطاقة ومسار التوصيل.' },
       { q: 'تستلمون بي سي قيمنق من البيت؟', a: 'إي نعم. نرتب الاستلام والتوصيل داخل الكويت، وما يحتاج تشيل البرج وتوديه حولي بنفسك.' }
     ],
     englishPath: '/gaming-pc-repair-kuwait',
@@ -150,6 +151,80 @@ const CONFIG: Record<string, {
       { label: 'فني كمبيوتر بالقرب مني', path: '/ar/near-me' }
     ],
     serviceIds: ['srv-screen', 'srv-laptop', 'srv-battery', 'srv-hinge']
+  },
+  'desktop-pc-repair-kuwait': {
+    h1: 'تصليح الكمبيوتر المكتبي (Desktop & PC) في الكويت',
+    eyebrow: 'استلام مجاني لصندوق الكمبيوتر • التشخيص والإصلاح في مختبر حولي',
+    intro: 'إذا الكمبيوتر المكتبي ما يشتغل، أو المراوح تدور من دون صورة، أو تظهر شاشة زرقاء أو يطفئ الجهاز تحت الضغط، نبدأ بتشخيص منظم بدل تبديل القطع بالتخمين. في مختبر KCROC بحولي نفحص أجهزة الكمبيوتر المكتبية الكاملة، بما فيها الأبراج (Tower) وأجهزة المكاتب ومحطات العمل والتجميعات. يشمل الفحص مزود الطاقة (PSU)، والرام، والتخزين، والتبريد، والمذربورد ومسار العرض، بما في ذلك كرت الشاشة عندما يكون مركبًا داخل الجهاز الكامل. لا نستقبل كروت الشاشة المنفصلة كأجهزة إصلاح مستقلة. نوضح نتيجة الفحص والسعر قبل أي عمل مدفوع، ونرتب استلام الكمبيوتر المكتبي وإرجاعه مجانًا داخل الكويت.',
+    bullets: ['تشخيص عدم التشغيل ومشاكل الطاقة والـPSU قبل اقتراح التبديل', 'فحص الشاشة السوداء والـPOST والرام وكرت الشاشة المركب داخل الكمبيوتر', 'تشخيص الحرارة والمراوح والإغلاق المفاجئ وثبات الجهاز تحت الحمل', 'فحص المذربورد والتخزين ومشاكل إقلاع Windows والترقيات المناسبة', 'السعر يبدأ من 15 د.ك حسب العطل، مع فحص أولي مجاني وضمان 30 يومًا'],
+    faq: [
+      { q: 'هل تستلمون كمبيوتر مكتبي كامل من البيت أو المكتب؟', a: 'نعم. نرتب استلام صندوق الكمبيوتر الكامل (Tower) من المنزل أو المكتب في مناطق الكويت، ويتم الفحص والإصلاح في مختبرنا بحولي.' },
+      { q: 'هل تصلحون كرت الشاشة إذا كان داخل جهاز Gaming PC؟', a: 'نفحص كرت الشاشة ومسار الطاقة والتبريد عندما يكون الكرت مركبًا ضمن كمبيوتر مكتبي كامل. لا نستقبل كرت شاشة منفصلًا كطلب إصلاح مستقل.' },
+      { q: 'كم سعر تصليح الكمبيوتر المكتبي؟', a: 'تبدأ بعض أعمال تصليح الكمبيوتر المكتبي من 15 د.ك. السعر النهائي يعتمد على العطل والقطع المطلوبة، ونوضحه لك بعد الفحص وقبل أي عمل مدفوع.' },
+      { q: 'كم تستغرق عملية الإصلاح؟', a: 'المدة المعتادة لكثير من الأعطال 24–48 ساعة، وقد تختلف حسب تعقيد العطل وتوفر القطع ونتيجة الاختبار.' }
+    ],
+    englishPath: '/desktop-pc-repair-kuwait',
+    arabicLinks: [
+      { label: 'تصليح Gaming PC', path: '/ar/gaming-pc-repair-kuwait' },
+      { label: 'تصليح المذربورد واللوحة الأم', path: '/ar/motherboard-repair-kuwait' },
+      { label: 'ترقية SSD وRAM', path: '/ar/ssd-ram-upgrade-kuwait' },
+      { label: 'أسعار تصليح الكمبيوتر', path: '/ar/pricing' }
+    ],
+    serviceIds: ['srv-desktop-pc', 'srv-motherboard', 'srv-gaming', 'srv-ssd-ram'],
+    serviceCardCopy: {
+      'srv-desktop-pc': { title: 'تصليح الكمبيوتر المكتبي وPC', description: 'تشخيص أعطال الطاقة والشاشة والحرارة والرام والتخزين والمذربورد في الكمبيوتر الكامل.' },
+      'srv-motherboard': { title: 'إصلاح المذربورد واللوحة الأم', description: 'تشخيص وإصلاح مكونات اللوحة عندما يكون الإصلاح مناسبًا فنيًا.' },
+      'srv-gaming': { title: 'تصليح Gaming PC', description: 'فحص مشاكل GPU والطاقة والتبريد والأداء ضمن جهاز ألعاب مكتبي كامل.' },
+      'srv-ssd-ram': { title: 'ترقية SSD وRAM', description: 'فحص التوافق وتركيب وحدة التخزين أو الذاكرة المناسبة للجهاز.' }
+    }
+  },
+  'laptop-hinge-repair-kuwait': {
+    h1: 'تصليح مفصلات وهيكل اللابتوب في الكويت',
+    eyebrow: 'إصلاح المفصلات المكسورة أو القاسية • فحص الهيكل وكابل الشاشة',
+    intro: 'صوت طقطقة عند فتح اللابتوب، أو غطاء صار ثقيلًا، أو إطار الشاشة بدأ ينفصل عن الهيكل؟ قد تكون المفصلة مشدودة أكثر من اللازم أو أن قواعد تثبيتها داخل الغطاء أو قاعدة الجهاز تكسرت. الاستمرار في فتح وإغلاق الجهاز بالقوة قد يزيد الضرر على الإطار أو الشاشة أو كابل العرض. في مختبر KCROC بحولي نفحص المفصلات ونقاط التثبيت والـBezel ومحاذاة الغطاء ومسار الكابلات، ثم نحدد هل يمكن ترميم الهيكل أو أن القطعة تحتاج إلى تبديل. نوضح التكلفة قبل أي إصلاح مدفوع، مع استلام وتوصيل مجاني داخل الكويت.',
+    bullets: ['فحص المفصلة القاسية أو المكسورة ونقاط التثبيت داخل الهيكل', 'فحص إطار الشاشة (Bezel) والغطاء ومحاذاة المفصلتين', 'فحص كابل الشاشة والكيابل القريبة قبل إعادة تركيب الهيكل', 'ترميم قواعد التثبيت عندما يكون ذلك متينًا أو اقتراح القطعة البديلة المناسبة', 'السعر يبدأ من 15 د.ك، والنطاق المنشور 15–30 د.ك حسب الضرر، مع ضمان 30 يومًا'],
+    faq: [
+      { q: 'هل أستمر في فتح اللابتوب إذا المفصلة صارت قاسية؟', a: 'الأفضل عدم إجبار الغطاء على الفتح أو الإغلاق. الضغط المتكرر قد يكسر قواعد التثبيت أو يضر إطار الشاشة أو كابل العرض. أوقف الحركة قدر الإمكان ورتب فحصًا.' },
+      { q: 'هل يمكن ترميم الهيكل بدل تبديل الغطاء كاملًا؟', a: 'في بعض الموديلات يمكن إعادة بناء قواعد التثبيت إذا كانت حالة البلاستيك والهيكل تسمح بإصلاح قوي. إذا كان الكسر واسعًا أو القطعة غير قابلة للترميم، نوضح خيار الاستبدال قبل العمل.' },
+      { q: 'كم سعر تصليح مفصلات اللابتوب؟', a: 'يبدأ السعر من 15 د.ك، والنطاق الإرشادي المنشور 15–30 د.ك. يتحدد السعر النهائي بعد فحص الموديل ومكان الكسر والقطعة المطلوبة.' },
+      { q: 'كم يستغرق إصلاح المفصلة؟', a: 'بعض أعمال الترميم يمكن إنجازها في نفس اليوم أو خلال 24 ساعة إذا لم تتطلب قطعة خارجية. الحالات التي تحتاج قطعة بديلة تعتمد على التوفر.' }
+    ],
+    englishPath: '/laptop-hinge-repair-kuwait',
+    arabicLinks: [
+      { label: 'تصليح اللابتوب في الكويت', path: '/ar/laptop-repair-kuwait' },
+      { label: 'تصليح شاشة اللابتوب', path: '/ar/laptop-screen-repair-kuwait' },
+      { label: 'أسعار الإصلاح', path: '/ar/pricing' }
+    ],
+    serviceIds: ['srv-hinge', 'srv-laptop', 'srv-screen'],
+    serviceCardCopy: {
+      'srv-hinge': { title: 'تصليح مفصلات وهيكل اللابتوب', description: 'فحص المفصلات وقواعد التثبيت والغطاء والإطار وكابل الشاشة قبل تحديد طريقة الإصلاح.' },
+      'srv-laptop': { title: 'تصليح اللابتوب', description: 'تشخيص أعطال اللابتوب والقطع المتأثرة قبل اقتراح الاستبدال.' },
+      'srv-screen': { title: 'تصليح وتبديل شاشة اللابتوب', description: 'فحص الشاشة والكابل ومسار العرض عند ظهور خطوط أو وميض أو شاشة سوداء.' }
+    }
+  },
+  'gaming-laptop-cleaning-kuwait': {
+    h1: 'تنظيف لابتوب الألعاب وصيانة التبريد في الكويت',
+    eyebrow: 'تنظيف داخلي • فحص المراوح والمشتت • اختبار الحرارة بعد الخدمة',
+    intro: 'إذا لابتوب الألعاب صار يسخن بسرعة، أو المراوح صوتها مرتفع، أو الأداء وFPS ينخفضان بعد فترة من اللعب، فقد يكون مسار الهواء مسدودًا بالغبار أو أن نظام التبريد يحتاج إلى صيانة. في مختبر KCROC بحولي نفحص تصميم التبريد الخاص بالموديل، والمراوح والمشتت والـHeat Pipes أو الـVapor Chamber، وننظف مجاري الهواء ونفحص المعجون والوسائد الحرارية (Thermal Pads) قبل تغيير ما يحتاج منها فقط. بعد إعادة التركيب نختبر درجات الحرارة وسلوك الجهاز تحت حمل مناسب. لا نغيّر مادة حرارية أو وسائد من دون مراعاة متطلبات الموديل.',
+    bullets: ['تنظيف داخلي للمراوح وزعانف المشتت ومجاري الهواء', 'فحص صوت المروحة وسرعتها وتدفق الهواء حسب تصميم الجهاز', 'فحص المعجون الحراري والـThermal Pads وتغيير المطلوب فقط', 'اختبار الحرارة والأداء بعد إعادة التركيب عندما يكون ذلك مناسبًا', 'السعر الإرشادي 15–20 د.ك حسب الموديل والحالة، مع استلام مجاني وضمان 30 يومًا'],
+    faq: [
+      { q: 'هل تغيير المعجون الحراري وحده يكفي دائمًا؟', a: 'لا. نبدأ بفحص المراوح وتراكم الغبار وتلامس المشتت والمواد الحرارية المناسبة للموديل. أحيانًا يحتاج الجهاز إلى تنظيف مسار الهواء أو فحص مروحة، وليس مجرد تغيير المعجون.' },
+      { q: 'هل تغيّرون Thermal Pads في كل عملية تنظيف؟', a: 'لا. نفحص حالتها وسماكتها ومواصفات الجهاز أولًا. يتم تغييرها فقط عند الحاجة وبمقاس ومادة متوافقة مع تصميم التبريد.' },
+      { q: 'كم سعر تنظيف لابتوب الألعاب؟', a: 'السعر الإرشادي لخدمة التبريد والتنظيف 15–20 د.ك، لكن السعر النهائي يعتمد على موديل الجهاز وتصميم التبريد والأعراض بعد التقييم.' },
+      { q: 'كم يستغرق التنظيف والصيانة؟', a: 'المدة المعتادة 24–48 ساعة، وتشمل وقت الفحص والتنظيف وإعادة التركيب واختبار الحرارة.' }
+    ],
+    englishPath: '/gaming-laptop-cleaning-kuwait',
+    arabicLinks: [
+      { label: 'تصليح Gaming Laptop', path: '/ar/gaming-laptop-repair-kuwait' },
+      { label: 'دليل تنظيف لابتوب الألعاب والمعجون الحراري', path: '/blog/ar/how-often-clean-laptop-replace-thermal-paste-kuwait' },
+      { label: 'أسعار خدمات التبريد', path: '/ar/pricing' }
+    ],
+    serviceIds: ['srv-gaming-laptop-cleaning', 'srv-gaming-laptop', 'srv-laptop'],
+    serviceCardCopy: {
+      'srv-gaming-laptop-cleaning': { title: 'تنظيف لابتوب الألعاب وصيانة التبريد', description: 'تنظيف المراوح والمشتت وفحص المواد الحرارية ثم اختبار الحرارة حسب الموديل.' },
+      'srv-gaming-laptop': { title: 'تصليح Gaming Laptop', description: 'تشخيص أعطال الطاقة والشاشة واللوحة والأداء في أجهزة الألعاب المحمولة.' },
+      'srv-laptop': { title: 'تصليح اللابتوب', description: 'فحص أعطال الجهاز والتبريد والطاقة قبل اقتراح الإصلاح المناسب.' }
+    }
   },
   'computer-repair-hawalli': {
     h1: 'تصليح كمبيوتر حولي',
@@ -648,8 +723,8 @@ const GAMING_AR_SYMPTOMS = [
     icon: Gauge,
   },
   {
-    title: 'GPU يطلع خطوط أو تشويش',
-    text: 'نشيك الكرت والـVRAM والطاقة والاتصال والاستقرار قبل لا نقول لك إن الكرت خلاص انتهى.',
+    title: 'GPU الكمبيوتر المكتبي يطلع خطوط أو تشويش',
+    text: 'نفحص GPU والـVRAM والطاقة والاستقرار عندما تكون البطاقة مركبة داخل Gaming PC كامل. لا نستقبل كروت شاشة منفصلة كطلبات إصلاح.',
     icon: MonitorCog,
   },
   {
@@ -723,15 +798,15 @@ const GAMING_AR_AREAS = [
 const GAMING_AR_FAQ = [
   {
     q: 'تصلحون بي سي قيمنق وGaming PC المكتبي؟',
-    a: 'إي نعم. نخدم الـGaming Desktop والتجميعات الـCustom PC والأجهزة الجاهزة، ونشيك كروت الشاشة والتبريد والطاقة والمذربورد والـBIOS/VBIOS حسب حالة الجهاز.',
+    a: 'إي نعم. نخدم الكمبيوتر المكتبي الكامل، سواء Gaming Desktop أو Custom PC أو جهاز جاهز. نفحص كرت الشاشة عندما يكون مركبًا داخل الكمبيوتر، إلى جانب التبريد والطاقة والمذربورد والـBIOS/VBIOS. لا نستقبل كروت الشاشة المنفصلة كأجهزة إصلاح مستقلة.',
   },
   {
     q: 'شنو تصلحون إذا الـGaming PC يهنّق أو يطفي وقت اللعب؟',
     a: 'نبدأ من اللي قاعد يصير: حرارة CPU/GPU، الـhotspot، المراوح أو مضخة الـAIO، الرام، الباور، الـVRM والمذربورد. نبي نعرف السبب قبل لا تبدّل قطعة غالية.',
   },
   {
-    q: 'كرت الشاشة يطلع خطوط أو Artifacts، تصلحونه؟',
-    a: 'نشيك الـGPU والـVRAM والطاقة والاتصالات اللي تخص الكرت. إذا فيه إصلاح ممكن، نقول لك شنو ينفع قبل قرار تبديل الكرت كامل.',
+    q: 'كرت الشاشة المركب داخل Gaming PC يطلع خطوط أو Artifacts، تقدرون تفحصونه؟',
+    a: 'نعم، نفحص الـGPU والـVRAM والطاقة والاتصالات كجزء من تشخيص الكمبيوتر المكتبي الكامل. نوضح نتيجة الفحص وخيارات الإصلاح قبل أي عمل مدفوع. لا نستقبل كرت شاشة منفصلًا من دون الكمبيوتر الكامل.',
   },
   {
     q: 'عندي FPS Drops وتقطيع، هل المشكلة أكيد من كرت الشاشة؟',
@@ -742,8 +817,8 @@ const GAMING_AR_FAQ = [
     a: 'نشيك الغبار وتدفق الهوا والمراوح والـAIO والـthermal interface وحرارة CPU/GPU تحت الضغط. الحرارة بروحها ما تقول لنا أي قطعة هي السبب.',
   },
   {
-    q: 'هل تصلحون BIOS أو VBIOS إذا صار فشل بالتحديث؟',
-    a: 'إي، بعض الحالات نقدر نستعيد فيها BIOS أو VBIOS، حسب المذربورد أو الكرت وحالة الـfirmware. أول شي نشوف الجهاز وبعدين نحدد الطريقة المناسبة.',
+    q: 'هل تفحصون BIOS أو VBIOS إذا فشل التحديث؟',
+    a: 'نفحص BIOS للمذربورد أو VBIOS لكرت الشاشة المركب داخل Gaming PC كامل، إذا كانت الأعراض تشير إلى مشكلة firmware. نحدد الطريقة المناسبة بعد تشخيص الجهاز، ولا نستقبل بطاقة منفصلة لهذا النوع من الإصلاح.',
   },
   {
     q: 'هل خطوط أو مربعات الشاشة تعني أن VRAM تالفة؟',
@@ -755,7 +830,7 @@ const GAMING_AR_FAQ = [
   },
   {
     q: 'كم سعر تصليح الـGaming PC في الكويت؟',
-    a: 'تصليح Gaming PC وGPU يبدأ من 25 د.ك حسب نوع الشغلة والتشخيص. إذا المشكلة معقدة في GPU أو المذربورد أو التبريد، نحتاج نشيك الجهاز أول قبل نعطيك السعر النهائي.',
+    a: 'تبدأ بعض أعمال تصليح Gaming PC الكامل من 25 د.ك حسب نوع العطل والتشخيص. يشمل الفحص كرت الشاشة عندما يكون مركبًا داخل الكمبيوتر؛ السعر النهائي لأي إصلاح يتحدد بعد فحص الجهاز وموافقتك.',
   },
   {
     q: 'كم يستغرق تصليح بي سي قيمنق؟',
@@ -795,9 +870,9 @@ function ArabicGamingPcRepairPage({
       {
         '@type': 'Service',
         '@id': `${canonicalUrl}#service`,
-        name: 'تصليح كمبيوتر ألعاب وGaming PC وكرت الشاشة في الكويت',
-        serviceType: 'تصليح كمبيوتر ألعاب وGaming PC وGPU',
-        description: 'تصليح كمبيوتر ألعاب وGaming PC في الكويت لمشاكل GPU وVRAM وFPS والحرارة والطاقة والشاشة السوداء. فحص قبل الإصلاح، استلام وتوصيل واختبار استقرار بعد الإصلاح.',
+        name: 'تصليح كمبيوتر ألعاب وGaming PC وفحص GPU ضمن الكمبيوتر الكامل في الكويت',
+        serviceType: 'تصليح كمبيوتر ألعاب مكتبي كامل وتشخيص مكونات GPU المركبة فيه',
+        description: 'تشخيص كمبيوتر ألعاب مكتبي كامل في الكويت، بما في ذلك GPU وVRAM عندما تكون البطاقة مركبة داخل النظام، ومشاكل الحرارة والطاقة والشاشة السوداء. لا تشمل الخدمة استقبال كروت شاشة منفصلة كطلبات إصلاح مستقلة.',
         url: canonicalUrl,
         areaServed: { '@type': 'Country', name: 'Kuwait' },
         provider: {
@@ -856,16 +931,16 @@ function ArabicGamingPcRepairPage({
               <div className="flex flex-wrap items-center gap-2 text-xs font-black text-cyan-300">
                 <span className="rounded-full border border-cyan-500/20 bg-cyan-500/10 px-3 py-1.5">Gaming PC Repair Kuwait</span>
                 <span className="rounded-full border border-slate-700 bg-slate-900/70 px-3 py-1.5">بي سي قيمنق</span>
-                <span className="rounded-full border border-slate-700 bg-slate-900/70 px-3 py-1.5">GPU • FPS • حرارة</span>
+                <span className="rounded-full border border-slate-700 bg-slate-900/70 px-3 py-1.5">GPU داخل الكمبيوتر • FPS • حرارة</span>
               </div>
 
               <h1 className="mt-5 text-3xl font-black leading-[1.15] text-white sm:text-5xl lg:text-6xl">
-                تصليح كمبيوتر ألعاب وGaming PC وكرت الشاشة في الكويت
+                تصليح كمبيوتر ألعاب وGaming PC وفحص كرت الشاشة ضمن الجهاز الكامل في الكويت
               </h1>
 
               <p className="mt-5 max-w-3xl text-base leading-8 text-slate-200 sm:text-xl">
-                تدور على تصليح كمبيوتر ألعاب بالكويت؟ بي سي القيمنق يهنّق؟ يطفي وقت اللعب؟ الـFPS نازل؟ فيه تقطيع أو كرت الشاشة يطلع خطوط وArtifacts؟
-                <span className="font-black text-white">قل لنا شنو صاير مع الجهاز، وإحنا نبدأ من العطل نفسه، مو من تبديل أغلى قطعة.</span>
+                تدور على تصليح كمبيوتر ألعاب بالكويت؟ بي سي القيمنق يهنّق؟ يطفي وقت اللعب؟ الـFPS نازل؟ فيه تقطيع أو كرت الشاشة المركب داخل الجهاز يطلع خطوط وArtifacts؟
+                <span className="font-black text-white">نفحص الكمبيوتر المكتبي الكامل ونبدأ من العطل نفسه، مو من تبديل أغلى قطعة. لا نستقبل بطاقات رسومية منفصلة كطلبات إصلاح مستقلة.</span>
               </p>
 
               <div className="mt-6 grid gap-3 sm:grid-cols-3">
@@ -893,21 +968,21 @@ function ArabicGamingPcRepairPage({
               </div>
 
               <p className="mt-4 text-sm leading-7 text-slate-400">
-                مو لازم تعرف اسم العطل. أرسل لنا <span className="font-bold text-slate-200">موديل الجهاز + كرت الشاشة + منطقتك + شنو قاعد يصير</span>، وإذا عندك فيديو قصير للعطل دزّه لنا.
+                مو لازم تعرف اسم العطل. أرسل لنا <span className="font-bold text-slate-200">موديل الكمبيوتر المكتبي الكامل + كرت الشاشة المركب داخله + منطقتك + شنو قاعد يصير</span>، وإذا عندك فيديو قصير للعطل دزّه لنا. نستقبل جهاز الكمبيوتر الكامل وليس كرت الشاشة منفصلًا.
               </p>
             </div>
 
             <figure className="overflow-hidden rounded-[1.75rem] border border-slate-800 bg-slate-950">
               <img
                 src={IMAGES.gaming.diagnostics.src}
-                alt="تشخيص كمبيوتر ألعاب وكرت الشاشة داخل مختبر KCROC في حولي، الكويت"
+                alt="تشخيص كمبيوتر ألعاب كامل وفحص كرت الشاشة المركب داخله في مختبر KCROC بحولي، الكويت"
                 width={IMAGES.gaming.diagnostics.width}
                 height={IMAGES.gaming.diagnostics.height}
                 loading="eager"
                 className="aspect-[4/3] w-full object-cover"
               />
               <figcaption className="border-t border-slate-800 px-5 py-4 text-sm leading-6 text-slate-400">
-                نشّيك على الـGaming PC وكرت الشاشة على طاولة العمل عشان نحدد مصدر المشكلة قبل لا نصلّح.
+                نفحص الكمبيوتر المكتبي الكامل، بما فيه كرت الشاشة المركب داخله، لتحديد مصدر المشكلة قبل الإصلاح.
               </figcaption>
             </figure>
           </div>
@@ -947,7 +1022,7 @@ function ArabicGamingPcRepairPage({
               {[
                 'نشّيك على حرارة CPU/GPU والـhotspot وسلوك الجهاز تحت الضغط.',
                 'نشّيك على المراوح أو مضخة الـAIO وتدفق الهوا والـthermal interface.',
-                'نشّيك على الـGPU والـVRAM والطاقة ومشاكل الـblack screen والـartifacts.',
+                'نفحص الـGPU والـVRAM والطاقة ومشاكل الشاشة السوداء والـArtifacts عندما تكون البطاقة مركبة ضمن الكمبيوتر المكتبي الكامل.',
                 'نشّيك على الـRAM والاستقرار وBIOS/VBIOS والإعدادات اللي ممكن تكون مرتبطة بالعطل.',
                 'وبعد الإصلاح: نختبر استقرار الجهاز قبل لا نسلّمه لك.',
               ].map((item) => (
@@ -962,14 +1037,14 @@ function ArabicGamingPcRepairPage({
           <figure className="overflow-hidden rounded-[1.75rem] border border-slate-800 bg-slate-950">
             <img
               src={IMAGES.gaming.zotacCard.src}
-              alt="فحص كرت شاشة بي سي قيمنق في مختبر KCROC"
+              alt="فحص كرت شاشة مركب داخل كمبيوتر ألعاب كامل في مختبر KCROC"
               width={IMAGES.gaming.zotacCard.width}
               height={IMAGES.gaming.zotacCard.height}
               loading="lazy"
               className="h-full min-h-[360px] w-full object-cover"
             />
             <figcaption className="border-t border-slate-800 px-5 py-4 text-sm leading-6 text-slate-400">
-              فحص كرت الشاشة والمكونات المرتبطة به قبل اتخاذ قرار الإصلاح أو الاستبدال.
+              نفحص كرت الشاشة وهو مركب داخل الكمبيوتر الكامل، مع مسار الطاقة والتوصيلات، قبل تحديد الإصلاح أو الاستبدال.
             </figcaption>
           </figure>
         </section>
@@ -1778,8 +1853,14 @@ export default function ArabicCommercialPage() {
       ? 'السلام عليكم KCROC، أحتاج تصليح أو تبديل كيبورد اللابتوب. الماركة والموديل الدقيق: ____. الأعراض: أزرار لا تعمل / كتابة مكررة / تخطيط لغة / إضاءة خلفية / سائل. التخطيط المطلوب: عربي وإنجليزي / إنجليزي / آخر. هل انسكب سائل؟ ____. منطقتي بالكويت: ____. أقدر أرسل صورة للكيبورد. فضلاً أكدوا توافق القطعة والسعر النهائي والمدة قبل الإصلاح.'
       : slug === 'laptop-charging-port-repair-kuwait'
       ? 'السلام عليكم KCROC، أحتاج فحص مدخل شحن اللابتوب. الماركة والموديل الدقيق: ____. نوع المنفذ: DC Jack / USB-C / غير متأكد. الأعراض: ____. هل يشحن عند تحريك السلك؟ ____. منطقتي بالكويت: ____. أستطيع إرسال صورة للمنفذ والشاحن. فضلاً وضحوا التشخيص والسعر النهائي والمدة قبل الإصلاح.'
-      : slug === 'computer-repair-farwaniya'
-        ? 'السلام عليكم KCROC، أحتاج تصليح كمبيوتر أو لابتوب من الفروانية أو منطقة قريبة. منطقتي: الفروانية / خيطان / الرقعي / العارضية / جليب الشيوخ / أخرى: ____. نوع الجهاز والماركة والموديل: ____. الأعراض: لا يعمل / لا يشحن / شاشة سوداء أو مكسورة / بطارية / حرارة / مشكلة أخرى: ____. إذا المشكلة في الشحن سأجهز الشاحن مع الجهاز إذا كان ذلك آمنًا. فضلاً نسقوا الاستلام والتوصيل المجاني، وأكدوا نتيجة التشخيص والسعر النهائي قبل أي إصلاح مدفوع.'
+      : slug === 'desktop-pc-repair-kuwait'
+        ? 'السلام عليكم KCROC، أحتاج فحص وتصليح كمبيوتر مكتبي كامل (Tower) في الكويت. الماركة والموديل أو مواصفات التجميعة: ____. المشكلة: لا يعمل / يعمل من دون صورة / إغلاق أو إعادة تشغيل / حرارة / شاشة زرقاء / مشكلة تخزين أو RAM / أخرى: ____. هل كرت الشاشة مركب داخل الكمبيوتر الكامل؟ نعم / لا. منطقتي: ____. فضلاً نسقوا استلام الكمبيوتر الكامل، وأكدوا التشخيص والسعر والمدة قبل أي إصلاح مدفوع.'
+        : slug === 'laptop-hinge-repair-kuwait'
+          ? 'السلام عليكم KCROC، أحتاج فحص مفصلات وهيكل اللابتوب. الماركة والموديل: ____. الأعراض: مفصلة قاسية / صوت طقطقة / الغطاء لا يغلق / إطار الشاشة منفصل / قواعد التثبيت مكسورة. هل الشاشة أو الكابل تضرر؟ ____. منطقتي: ____. أستطيع إرسال صور للمفصلة والغطاء. فضلاً وضحوا خيار الترميم أو الاستبدال والسعر والمدة قبل الإصلاح.'
+          : slug === 'gaming-laptop-cleaning-kuwait'
+            ? 'السلام عليكم KCROC، أحتاج تنظيف وصيانة تبريد لابتوب ألعاب. الماركة والموديل الدقيق: ____. الأعراض: حرارة عالية / صوت مروحة / هبوط FPS بعد اللعب / إطفاء مفاجئ / أخرى: ____. منطقتي: ____. أرجو تأكيد نطاق التنظيف والتبريد والسعر الإرشادي والمدة بعد التقييم، قبل أي عمل مدفوع.'
+        : slug === 'computer-repair-farwaniya'
+          ? 'السلام عليكم KCROC، أحتاج تصليح كمبيوتر أو لابتوب من الفروانية أو منطقة قريبة. منطقتي: الفروانية / خيطان / الرقعي / العارضية / جليب الشيوخ / أخرى: ____. نوع الجهاز والماركة والموديل: ____. الأعراض: لا يعمل / لا يشحن / شاشة سوداء أو مكسورة / بطارية / حرارة / مشكلة أخرى: ____. إذا المشكلة في الشحن سأجهز الشاحن مع الجهاز إذا كان ذلك آمنًا. فضلاً نسقوا الاستلام والتوصيل المجاني، وأكدوا نتيجة التشخيص والسعر النهائي قبل أي إصلاح مدفوع.'
         : slug === 'computer-repair-kuwait-city'
             ? 'السلام عليكم KCROC، أحتاج تصليح كمبيوتر أو لابتوب أو ماك بوك (MacBook) أو كمبيوتر قيمنق من مدينة الكويت أو محافظة العاصمة. نوع الجهاز والموديل: ____. المشكلة: ____. منطقة الاستلام: ____. الاستلام من: مكتب / منزل. فضلاً نسقوا الاستلام والتوصيل المجاني، وأكدوا نتيجة التشخيص والسعر قبل الإصلاح.'
             : `السلام عليكم KCROC، أحتاج ${cfg.h1}. أريد أعرف طريقة الاستلام والتشخيص.`;
@@ -1933,7 +2014,28 @@ export default function ArabicCommercialPage() {
       description: 'فحص البطارية ومسار الشحن والتأكد من التوافق قبل طلب القطعة.'
     }
   };
-  const relatedGuides = slug === 'computer-repair-farwaniya'
+  const relatedGuides = slug === 'desktop-pc-repair-kuwait'
+    ? [
+        { title: 'الكمبيوتر المكتبي لا يعمل أو لا يعرض صورة', path: '/guides/gaming-pc-not-turning-on-kuwait' },
+        { title: 'تشخيص الشاشة السوداء في الكمبيوتر', path: '/guides/gaming-pc-black-screen-no-display-kuwait' },
+        { title: 'تصليح المذربورد واللوحة الأم', path: '/ar/motherboard-repair-kuwait' },
+        { title: 'أسعار تصليح الكمبيوتر المكتبي', path: '/ar/pricing' }
+      ]
+    : slug === 'laptop-hinge-repair-kuwait'
+    ? [
+        { title: 'حماية شاشة اللابتوب من الكسر والضغط', path: '/blog/how-to-protect-laptop-screen' },
+        { title: 'تصليح وتبديل شاشة اللابتوب', path: '/ar/laptop-screen-repair-kuwait' },
+        { title: 'تصليح اللابتوب في الكويت', path: '/ar/laptop-repair-kuwait' },
+        { title: 'أسعار تصليح مفصلات اللابتوب', path: '/ar/pricing' }
+      ]
+    : slug === 'gaming-laptop-cleaning-kuwait'
+    ? [
+        { title: 'متى تنظف لابتوب الألعاب وتغيّر المعجون الحراري؟', path: '/blog/ar/how-often-clean-laptop-replace-thermal-paste-kuwait' },
+        { title: 'درجات حرارة اللابتوب: الطبيعي والمرتفع', path: '/blog/laptop-temperatures-kuwait-safe-cpu-gpu-temperatures' },
+        { title: 'تصليح Gaming Laptop', path: '/ar/gaming-laptop-repair-kuwait' },
+        { title: 'أسعار التنظيف وخدمات التبريد', path: '/ar/pricing' }
+      ]
+    : slug === 'computer-repair-farwaniya'
     ? [
         { title: 'تصليح اللابتوب في الكويت: الخدمات والتشخيص', path: '/ar/laptop-repair-kuwait' },
         { title: 'تصليح مدخل شحن اللابتوب', path: '/ar/laptop-charging-port-repair-kuwait' },
@@ -1995,6 +2097,9 @@ export default function ArabicCommercialPage() {
         ]
       : AR_GUIDES;
   const arabicServicePathById: Record<string, string> = {
+    'srv-desktop-pc': '/ar/desktop-pc-repair-kuwait',
+    'srv-hinge': '/ar/laptop-hinge-repair-kuwait',
+    'srv-gaming-laptop-cleaning': '/ar/gaming-laptop-cleaning-kuwait',
     'srv-laptop': '/ar/laptop-repair-kuwait',
     'srv-motherboard': '/ar/motherboard-repair-kuwait',
     'srv-gaming': '/ar/gaming-pc-repair-kuwait',
@@ -3675,8 +3780,8 @@ export default function ArabicCommercialPage() {
             {services.map((service) => service && (
               <Link key={service.id} to={arabicServicePathById[service.id] ?? `/${service.slug}`} className="group rounded-2xl border border-slate-800 bg-slate-900/45 p-6 hover:border-cyan-500/40">
                 <Wrench className="h-6 w-6 text-cyan-400" aria-hidden="true" />
-                <h3 className="mt-4 text-lg font-bold text-white group-hover:text-cyan-300">{(slug === 'computer-repair-kuwait-city' ? cfg.serviceCardCopy?.[service.id]?.title : slug === 'macbook-repair-kuwait' ? arabicMacbookServiceCopy[service.id]?.title : slug === 'laptop-screen-repair-kuwait' ? arabicScreenServiceCopy[service.id]?.title : slug === 'gaming-laptop-repair-kuwait' ? arabicGamingServiceCopy[service.id]?.title : slug === 'macbook-screen-replacement-kuwait' ? arabicMacbookScreenServiceCopy[service.id]?.title : slug === 'laptop-keyboard-replacement-kuwait' ? arabicKeyboardServiceCopy[service.id]?.title : slug === 'laptop-charging-port-repair-kuwait' ? arabicChargingServiceCopy[service.id]?.title : slug === 'battery-replacement-kuwait' ? arabicBatteryServiceCopy[service.id]?.title : undefined) ?? service.title.replace(' Kuwait', '')}</h3>
-                <p className="mt-2 text-sm leading-6 text-slate-400">{(slug === 'computer-repair-kuwait-city' ? cfg.serviceCardCopy?.[service.id]?.description : slug === 'macbook-repair-kuwait' ? arabicMacbookServiceCopy[service.id]?.description : slug === 'laptop-screen-repair-kuwait' ? arabicScreenServiceCopy[service.id]?.description : slug === 'gaming-laptop-repair-kuwait' ? arabicGamingServiceCopy[service.id]?.description : slug === 'macbook-screen-replacement-kuwait' ? arabicMacbookScreenServiceCopy[service.id]?.description : slug === 'laptop-keyboard-replacement-kuwait' ? arabicKeyboardServiceCopy[service.id]?.description : slug === 'laptop-charging-port-repair-kuwait' ? arabicChargingServiceCopy[service.id]?.description : slug === 'battery-replacement-kuwait' ? arabicBatteryServiceCopy[service.id]?.description : undefined) ?? service.shortDescription}</p>
+                <h3 className="mt-4 text-lg font-bold text-white group-hover:text-cyan-300">{(cfg.serviceCardCopy?.[service.id]?.title ?? ( slug === 'macbook-repair-kuwait' ? arabicMacbookServiceCopy[service.id]?.title : slug === 'laptop-screen-repair-kuwait' ? arabicScreenServiceCopy[service.id]?.title : slug === 'gaming-laptop-repair-kuwait' ? arabicGamingServiceCopy[service.id]?.title : slug === 'macbook-screen-replacement-kuwait' ? arabicMacbookScreenServiceCopy[service.id]?.title : slug === 'laptop-keyboard-replacement-kuwait' ? arabicKeyboardServiceCopy[service.id]?.title : slug === 'laptop-charging-port-repair-kuwait' ? arabicChargingServiceCopy[service.id]?.title : slug === 'battery-replacement-kuwait' ? arabicBatteryServiceCopy[service.id]?.title : undefined)) ?? service.title.replace(' Kuwait', '')}</h3>
+                <p className="mt-2 text-sm leading-6 text-slate-400">{(cfg.serviceCardCopy?.[service.id]?.description ?? ( slug === 'macbook-repair-kuwait' ? arabicMacbookServiceCopy[service.id]?.description : slug === 'laptop-screen-repair-kuwait' ? arabicScreenServiceCopy[service.id]?.description : slug === 'gaming-laptop-repair-kuwait' ? arabicGamingServiceCopy[service.id]?.description : slug === 'macbook-screen-replacement-kuwait' ? arabicMacbookScreenServiceCopy[service.id]?.description : slug === 'laptop-keyboard-replacement-kuwait' ? arabicKeyboardServiceCopy[service.id]?.description : slug === 'laptop-charging-port-repair-kuwait' ? arabicChargingServiceCopy[service.id]?.description : slug === 'battery-replacement-kuwait' ? arabicBatteryServiceCopy[service.id]?.description : undefined)) ?? service.shortDescription}</p>
               </Link>
             ))}
           </div>
