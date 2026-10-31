@@ -5,18 +5,18 @@
  * links, metadata, structured data and canonical graph content remain untouched.
  */
 
-[data-service-layout="laptop-repair"] {
-  --laptop-border: rgba(148, 163, 184, 0.17);
-  --laptop-border-strong: rgba(103, 232, 249, 0.27);
-  --laptop-surface: rgba(10, 20, 35, 0.74);
-  --laptop-surface-raised: rgba(15, 29, 48, 0.84);
-  --laptop-muted: #9aa9bb;
+[data-service-layout] {
+  --service-border: rgba(148, 163, 184, 0.17);
+  --service-border-strong: rgba(103, 232, 249, 0.27);
+  --service-surface: rgba(10, 20, 35, 0.74);
+  --service-surface-raised: rgba(15, 29, 48, 0.84);
+  --service-muted: #9aa9bb;
   position: relative;
   isolation: isolate;
   overflow-x: clip;
 }
 
-[data-service-layout="laptop-repair"]::before {
+[data-service-layout]::before {
   position: absolute;
   inset: 0 0 auto;
   z-index: -1;
@@ -28,14 +28,14 @@
     radial-gradient(ellipse at 8% 18%, rgba(30, 64, 175, 0.12), transparent 36%);
 }
 
-[data-service-layout="laptop-repair"] > header {
+[data-service-layout] > header {
   box-sizing: border-box;
   width: min(calc(100% - 2.5rem), 80rem);
   max-width: none;
   margin: 0 auto clamp(2.5rem, 5vw, 4.25rem);
   padding: clamp(1.25rem, 3vw, 2.75rem);
   overflow: hidden;
-  border: 1px solid var(--laptop-border-strong);
+  border: 1px solid var(--service-border-strong);
   border-radius: 1.75rem;
   background:
     radial-gradient(ellipse at 92% 8%, rgba(8, 145, 178, 0.17), transparent 40%),
@@ -43,11 +43,11 @@
   box-shadow: 0 28px 80px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.035);
 }
 
-[data-service-layout="laptop-repair"] > header > div:first-child {
+[data-service-layout] > header > div:first-child {
   gap: clamp(1.75rem, 3.2vw, 3.25rem);
 }
 
-[data-service-layout="laptop-repair"] > header h1 {
+[data-service-layout] > header h1 {
   max-width: 17ch;
   font-size: clamp(2rem, 4.2vw, 3.55rem);
   line-height: 1.08;
@@ -55,20 +55,20 @@
   text-wrap: balance;
 }
 
-[data-service-layout="laptop-repair"] > header h1 + div {
+[data-service-layout] > header h1 + div {
   max-width: 48rem;
 }
 
-[data-service-layout="laptop-repair"] > header h1 + div p {
+[data-service-layout] > header h1 + div p {
   line-height: 1.78;
 }
 
-[data-service-layout="laptop-repair"] > header > div:first-child > div:first-child > div:first-child {
+[data-service-layout] > header > div:first-child > div:first-child > div:first-child {
   align-items: flex-start;
   gap: 1.15rem;
 }
 
-[data-service-layout="laptop-repair"] > header > div:first-child > div:first-child > div:first-child > div:first-child {
+[data-service-layout] > header > div:first-child > div:first-child > div:first-child > div:first-child {
   width: 3.75rem;
   height: 3.75rem;
   flex: 0 0 3.75rem;
@@ -78,27 +78,27 @@
   box-shadow: 0 10px 28px rgba(8, 145, 178, 0.12);
 }
 
-[data-service-layout="laptop-repair"] > header > div:first-child > div:first-child > div:first-child > div:first-child svg {
+[data-service-layout] > header > div:first-child > div:first-child > div:first-child > div:first-child svg {
   width: 1.8rem;
   height: 1.8rem;
 }
 
-[data-service-layout="laptop-repair"] > header > div:first-child > div:first-child > div:nth-child(3) {
+[data-service-layout] > header > div:first-child > div:first-child > div:nth-child(3) {
   max-width: 46rem;
   padding: 0.95rem 1rem;
-  border: 1px solid var(--laptop-border);
+  border: 1px solid var(--service-border);
   border-radius: 1rem;
   background: rgba(2, 10, 20, 0.38);
   line-height: 1.7;
 }
 
-[data-service-layout="laptop-repair"] > header > div:first-child > div:first-child > div:nth-child(4) {
+[data-service-layout] > header > div:first-child > div:first-child > div:nth-child(4) {
   margin-top: 0.75rem;
   margin-bottom: 1.25rem;
   gap: 0.75rem;
 }
 
-[data-service-layout="laptop-repair"] > header > div:first-child > div:first-child > div:nth-child(4) a {
+[data-service-layout] > header > div:first-child > div:first-child > div:nth-child(4) a {
   min-height: 3.15rem;
   padding-inline: 1.25rem;
   border-radius: 0.9rem;
@@ -106,48 +106,48 @@
   transition: transform 180ms ease, filter 180ms ease, background-color 180ms ease;
 }
 
-[data-service-layout="laptop-repair"] > header > div:first-child > div:first-child > div:nth-child(4) a:hover {
+[data-service-layout] > header > div:first-child > div:first-child > div:nth-child(4) a:hover {
   transform: translateY(-2px);
 }
 
-[data-service-layout="laptop-repair"] > header > div:first-child > div:first-child > div.grid {
+[data-service-layout] > header > div:first-child > div:first-child > div.grid {
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 0.7rem;
   max-width: none;
 }
 
-[data-service-layout="laptop-repair"] > header > div:first-child > div:first-child > div.grid > div {
+[data-service-layout] > header > div:first-child > div:first-child > div.grid > div {
   min-height: 5.35rem;
   align-items: flex-start;
   padding: 0.9rem;
-  border-color: var(--laptop-border);
+  border-color: var(--service-border);
   border-radius: 0.95rem;
   background: rgba(2, 10, 20, 0.55);
 }
 
-[data-service-layout="laptop-repair"] > header > div:first-child > div:first-child > div.grid > div svg {
+[data-service-layout] > header > div:first-child > div:first-child > div.grid > div svg {
   margin-top: 0.15rem;
 }
 
-[data-service-layout="laptop-repair"] > header > div:first-child > div:first-child > div.grid > div span:last-child {
+[data-service-layout] > header > div:first-child > div:first-child > div.grid > div span:last-child {
   display: block;
   font-size: 0.82rem;
   line-height: 1.45;
 }
 
-[data-service-layout="laptop-repair"] > header > div:first-child > div:first-child > a {
+[data-service-layout] > header > div:first-child > div:first-child > a {
   margin-top: 0.9rem;
 }
 
-[data-service-layout="laptop-repair"] > header > div:first-child > .relative {
+[data-service-layout] > header > div:first-child > .relative {
   min-height: 25rem;
-  border: 1px solid var(--laptop-border-strong);
+  border: 1px solid var(--service-border-strong);
   border-radius: 1.35rem;
   background: rgba(2, 10, 20, 0.7);
   box-shadow: 0 22px 55px rgba(0, 0, 0, 0.3);
 }
 
-[data-service-layout="laptop-repair"] > header > div:first-child > .relative img {
+[data-service-layout] > header > div:first-child > .relative img {
   width: 100%;
   height: 100%;
   min-height: 25rem;
@@ -156,13 +156,13 @@
   object-position: center;
 }
 
-[data-service-layout="laptop-repair"] > header > div:first-child > .relative p {
+[data-service-layout] > header > div:first-child > .relative p {
   padding: 1.25rem;
   font-size: 0.75rem;
   line-height: 1.5;
 }
 
-[data-service-layout="laptop-repair"] > section {
+[data-service-layout] > section {
   box-sizing: border-box;
   width: min(calc(100% - 2.5rem), 80rem);
   max-width: none;
@@ -172,130 +172,130 @@
   scroll-margin-top: 7rem;
 }
 
-[data-service-layout="laptop-repair"] > section > h2,
-[data-service-layout="laptop-repair"] > section > div > h2 {
+[data-service-layout] > section > h2,
+[data-service-layout] > section > div > h2 {
   letter-spacing: -0.025em;
   line-height: 1.2;
   text-wrap: balance;
 }
 
-[data-service-layout="laptop-repair"] > section > div > p {
+[data-service-layout] > section > div > p {
   line-height: 1.75;
 }
 
-[data-service-layout="laptop-repair"] > section[aria-labelledby="symptom-finder"] a {
+[data-service-layout] > section[aria-labelledby="symptom-finder"] a {
   min-height: 8.1rem;
   padding: 1.3rem;
-  border-color: var(--laptop-border);
+  border-color: var(--service-border);
   border-radius: 1.15rem;
   background: linear-gradient(145deg, rgba(15, 29, 48, 0.82), rgba(5, 13, 25, 0.84));
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.025);
 }
 
-[data-service-layout="laptop-repair"] > section[aria-labelledby="symptom-finder"] a:hover {
+[data-service-layout] > section[aria-labelledby="symptom-finder"] a:hover {
   border-color: rgba(103, 232, 249, 0.4);
   background: linear-gradient(145deg, rgba(13, 40, 58, 0.9), rgba(5, 18, 32, 0.94));
   box-shadow: 0 16px 35px rgba(0, 0, 0, 0.18);
 }
 
-[data-service-layout="laptop-repair"] > section[aria-labelledby="why-choose-us-heading"] > div.grid {
+[data-service-layout] > section[aria-labelledby="why-choose-us-heading"] > div.grid {
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 0.85rem;
 }
 
-[data-service-layout="laptop-repair"] > section[aria-labelledby="why-choose-us-heading"] article,
-[data-service-layout="laptop-repair"] > section:has(> div.grid > article) article {
-  border-color: var(--laptop-border);
+[data-service-layout] > section[aria-labelledby="why-choose-us-heading"] article,
+[data-service-layout] > section:has(> div.grid > article) article {
+  border-color: var(--service-border);
   border-radius: 1.1rem;
   background: linear-gradient(150deg, rgba(15, 29, 48, 0.72), rgba(5, 13, 25, 0.82));
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.025);
 }
 
-[data-service-layout="laptop-repair"] > section[aria-labelledby="why-choose-us-heading"] article {
+[data-service-layout] > section[aria-labelledby="why-choose-us-heading"] article {
   min-height: 100%;
   padding: 1.35rem;
 }
 
-[data-service-layout="laptop-repair"] > section[aria-labelledby="service-capabilities-heading"] > ul {
+[data-service-layout] > section[aria-labelledby="service-capabilities-heading"] > ul {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0.85rem;
 }
 
-[data-service-layout="laptop-repair"] > section[aria-labelledby="service-capabilities-heading"] > ul > li {
+[data-service-layout] > section[aria-labelledby="service-capabilities-heading"] > ul > li {
   min-height: 5.2rem;
   align-items: flex-start;
   padding: 1.1rem;
-  border-color: var(--laptop-border);
+  border-color: var(--service-border);
   border-radius: 1rem;
   background: rgba(10, 20, 35, 0.72);
   line-height: 1.55;
 }
 
-[data-service-layout="laptop-repair"] > section[aria-label="Supported device types and brands"] > div:first-child {
+[data-service-layout] > section[aria-label="Supported device types and brands"] > div:first-child {
   padding: 1.35rem;
-  border: 1px solid var(--laptop-border);
+  border: 1px solid var(--service-border);
   border-radius: 1.2rem;
   background: rgba(10, 20, 35, 0.5);
 }
 
-[data-service-layout="laptop-repair"] > section[aria-label="Supported device types and brands"] > div:first-child ul {
+[data-service-layout] > section[aria-label="Supported device types and brands"] > div:first-child ul {
   gap: 0.65rem;
 }
 
-[data-service-layout="laptop-repair"] > section[aria-label="Supported device types and brands"] > div:first-child li span {
+[data-service-layout] > section[aria-label="Supported device types and brands"] > div:first-child li span {
   min-height: 2.5rem;
   align-items: center;
   padding: 0.55rem 0.9rem;
-  border-color: var(--laptop-border);
+  border-color: var(--service-border);
   border-radius: 0.8rem;
   background: rgba(2, 10, 20, 0.55);
   line-height: 1.4;
 }
 
-[data-service-layout="laptop-repair"] > section[aria-label="Supported device types and brands"] > div:not(:first-child) li span {
+[data-service-layout] > section[aria-label="Supported device types and brands"] > div:not(:first-child) li span {
   min-height: 2.25rem;
   align-items: center;
   border-radius: 0.7rem;
   background: rgba(8, 145, 178, 0.08);
 }
 
-[data-service-layout="laptop-repair"] > section[aria-labelledby="common-problems-heading"] > div.grid {
+[data-service-layout] > section[aria-labelledby="common-problems-heading"] > div.grid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1rem;
 }
 
-[data-service-layout="laptop-repair"] > section[aria-labelledby="common-problems-heading"] article {
+[data-service-layout] > section[aria-labelledby="common-problems-heading"] article {
   min-height: 100%;
   padding: clamp(1.2rem, 2vw, 1.65rem);
-  border-color: var(--laptop-border);
+  border-color: var(--service-border);
   border-radius: 1.2rem;
   background: linear-gradient(150deg, rgba(15, 29, 48, 0.84), rgba(5, 13, 25, 0.9));
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.13);
 }
 
-[data-service-layout="laptop-repair"] > section[aria-labelledby="common-problems-heading"] article h3 {
+[data-service-layout] > section[aria-labelledby="common-problems-heading"] article h3 {
   line-height: 1.3;
   text-wrap: balance;
 }
 
-[data-service-layout="laptop-repair"] > section[aria-labelledby="common-problems-heading"] article p {
+[data-service-layout] > section[aria-labelledby="common-problems-heading"] article p {
   line-height: 1.72;
 }
 
-[data-service-layout="laptop-repair"] > section[aria-labelledby="repair-process-heading"] > div.grid {
+[data-service-layout] > section[aria-labelledby="repair-process-heading"] > div.grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
 }
 
-[data-service-layout="laptop-repair"] > section[aria-labelledby="repair-process-heading"] article {
+[data-service-layout] > section[aria-labelledby="repair-process-heading"] article {
   height: 100%;
   padding: 1.35rem;
-  border-color: var(--laptop-border);
+  border-color: var(--service-border);
   border-radius: 1.2rem;
   background: linear-gradient(150deg, rgba(15, 29, 48, 0.82), rgba(5, 13, 25, 0.9));
 }
 
-[data-service-layout="laptop-repair"] > section[aria-labelledby="repair-process-heading"] article > span {
+[data-service-layout] > section[aria-labelledby="repair-process-heading"] article > span {
   width: 2.55rem;
   height: 2.55rem;
   border: 1px solid rgba(103, 232, 249, 0.28);
@@ -304,19 +304,19 @@
   box-shadow: 0 8px 22px rgba(6, 182, 212, 0.18);
 }
 
-[data-service-layout="laptop-repair"] > section[aria-labelledby="repair-process-heading"] article p {
+[data-service-layout] > section[aria-labelledby="repair-process-heading"] article p {
   line-height: 1.7;
 }
 
-[data-service-layout="laptop-repair"] > section[aria-labelledby="repair-process-heading"] article > div {
-  border-color: var(--laptop-border);
+[data-service-layout] > section[aria-labelledby="repair-process-heading"] article > div {
+  border-color: var(--service-border);
 }
 
-[data-service-layout="laptop-repair"] > section[aria-labelledby="laptop-repair-pricing-heading"] {
+[data-service-layout] > section[aria-labelledby="laptop-repair-pricing-heading"] {
   width: min(calc(100% - 2.5rem), 80rem);
 }
 
-[data-service-layout="laptop-repair"] > section[aria-labelledby="laptop-repair-pricing-heading"] > div.overflow-x-auto {
+[data-service-layout] > section[aria-labelledby="laptop-repair-pricing-heading"] > div.overflow-x-auto {
   border-color: rgba(103, 232, 249, 0.22);
   border-radius: 1.2rem;
   background: rgba(5, 13, 25, 0.78);
@@ -324,25 +324,25 @@
   scrollbar-color: rgba(103, 232, 249, 0.35) rgba(15, 23, 42, 0.7);
 }
 
-[data-service-layout="laptop-repair"] > section[aria-labelledby="laptop-repair-pricing-heading"] table {
+[data-service-layout] > section[aria-labelledby="laptop-repair-pricing-heading"] table {
   min-width: 760px;
   border-collapse: separate;
   border-spacing: 0;
 }
 
-[data-service-layout="laptop-repair"] > section[aria-labelledby="laptop-repair-pricing-heading"] thead {
+[data-service-layout] > section[aria-labelledby="laptop-repair-pricing-heading"] thead {
   background: rgba(17, 38, 58, 0.98);
 }
 
-[data-service-layout="laptop-repair"] > section[aria-labelledby="laptop-repair-pricing-heading"] th,
-[data-service-layout="laptop-repair"] > section[aria-labelledby="laptop-repair-pricing-heading"] td {
+[data-service-layout] > section[aria-labelledby="laptop-repair-pricing-heading"] th,
+[data-service-layout] > section[aria-labelledby="laptop-repair-pricing-heading"] td {
   padding: 1rem 1.1rem;
   border-bottom: 1px solid rgba(148, 163, 184, 0.1);
   vertical-align: top;
   line-height: 1.6;
 }
 
-[data-service-layout="laptop-repair"] > section[aria-labelledby="laptop-repair-pricing-heading"] thead th {
+[data-service-layout] > section[aria-labelledby="laptop-repair-pricing-heading"] thead th {
   position: sticky;
   top: 0;
   z-index: 1;
@@ -351,67 +351,67 @@
   letter-spacing: 0.04em;
 }
 
-[data-service-layout="laptop-repair"] > section[aria-labelledby="laptop-repair-pricing-heading"] tbody tr {
+[data-service-layout] > section[aria-labelledby="laptop-repair-pricing-heading"] tbody tr {
   background: transparent;
   transition: background-color 160ms ease;
 }
 
-[data-service-layout="laptop-repair"] > section[aria-labelledby="laptop-repair-pricing-heading"] tbody tr:hover {
+[data-service-layout] > section[aria-labelledby="laptop-repair-pricing-heading"] tbody tr:hover {
   background: rgba(8, 145, 178, 0.08);
 }
 
-[data-service-layout="laptop-repair"] > section[aria-labelledby="service-faqs-heading"] {
+[data-service-layout] > section[aria-labelledby="service-faqs-heading"] {
   width: min(calc(100% - 2.5rem), 62rem);
 }
 
-[data-service-layout="laptop-repair"] > section[aria-labelledby="service-faqs-heading"] h2 {
+[data-service-layout] > section[aria-labelledby="service-faqs-heading"] h2 {
   margin-bottom: 2rem;
 }
 
-[data-service-layout="laptop-repair"] > section[aria-labelledby="service-faqs-heading"] details {
-  border-color: var(--laptop-border);
+[data-service-layout] > section[aria-labelledby="service-faqs-heading"] details {
+  border-color: var(--service-border);
   border-radius: 1rem;
   background: rgba(10, 20, 35, 0.72);
   transition: border-color 160ms ease, background-color 160ms ease;
 }
 
-[data-service-layout="laptop-repair"] > section[aria-labelledby="service-faqs-heading"] details[open] {
+[data-service-layout] > section[aria-labelledby="service-faqs-heading"] details[open] {
   border-color: rgba(103, 232, 249, 0.3);
   background: rgba(13, 29, 46, 0.88);
 }
 
-[data-service-layout="laptop-repair"] > section[aria-labelledby="service-faqs-heading"] summary {
+[data-service-layout] > section[aria-labelledby="service-faqs-heading"] summary {
   min-height: 3.5rem;
   padding: 1.05rem 1.25rem;
   line-height: 1.5;
 }
 
-[data-service-layout="laptop-repair"] > section[aria-labelledby="service-faqs-heading"] details > p {
+[data-service-layout] > section[aria-labelledby="service-faqs-heading"] details > p {
   padding: 0 1.25rem 1.25rem;
   line-height: 1.75;
 }
 
-[data-service-layout="laptop-repair"] > section:has(> div.grid > div > h3) > div.grid > div {
-  border-color: var(--laptop-border);
+[data-service-layout] > section:has(> div.grid > div > h3) > div.grid > div {
+  border-color: var(--service-border);
   border-radius: 1.1rem;
   background: rgba(10, 20, 35, 0.72);
 }
 
-[data-service-layout="laptop-repair"] > section[aria-labelledby="repair-service-areas-heading"] nav a {
+[data-service-layout] > section[aria-labelledby="repair-service-areas-heading"] nav a {
   min-height: 3.25rem;
   display: flex;
   align-items: center;
-  border-color: var(--laptop-border);
+  border-color: var(--service-border);
   border-radius: 0.9rem;
   background: rgba(10, 20, 35, 0.68);
 }
 
-[data-service-layout="laptop-repair"] > section[aria-labelledby="repair-service-areas-heading"] nav a:hover {
+[data-service-layout] > section[aria-labelledby="repair-service-areas-heading"] nav a:hover {
   border-color: rgba(103, 232, 249, 0.35);
   background: rgba(8, 145, 178, 0.09);
 }
 
-[data-service-layout="laptop-repair"] > section.text-center > div {
+[data-service-layout] > section.text-center > div {
   padding: clamp(1.5rem, 4vw, 3.25rem);
   border-color: rgba(103, 232, 249, 0.24);
   border-radius: 1.6rem;
@@ -421,153 +421,153 @@
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.22);
 }
 
-[data-service-layout="laptop-repair"] a:focus-visible,
-[data-service-layout="laptop-repair"] summary:focus-visible {
+[data-service-layout] a:focus-visible,
+[data-service-layout] summary:focus-visible {
   outline: 2px solid #67e8f9;
   outline-offset: 3px;
 }
 
 @media (max-width: 1023px) {
-  [data-service-layout="laptop-repair"] > header > div:first-child > div:first-child > div.grid {
+  [data-service-layout] > header > div:first-child > div:first-child > div.grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  [data-service-layout="laptop-repair"] > section[aria-labelledby="why-choose-us-heading"] > div.grid {
+  [data-service-layout] > section[aria-labelledby="why-choose-us-heading"] > div.grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 767px) {
-  [data-service-layout="laptop-repair"] > header {
+  [data-service-layout] > header {
     width: calc(100% - 1.25rem);
     margin-bottom: 1.75rem;
     padding: 1.15rem;
     border-radius: 1.25rem;
   }
 
-  [data-service-layout="laptop-repair"] > header h1 {
+  [data-service-layout] > header h1 {
     max-width: 100%;
     font-size: clamp(1.8rem, 8vw, 2.45rem);
     line-height: 1.12;
   }
 
-  [data-service-layout="laptop-repair"] > header > div:first-child > div:first-child > div:first-child {
+  [data-service-layout] > header > div:first-child > div:first-child > div:first-child {
     gap: 0.8rem;
   }
 
-  [data-service-layout="laptop-repair"] > header > div:first-child > div:first-child > div:first-child > div:first-child {
+  [data-service-layout] > header > div:first-child > div:first-child > div:first-child > div:first-child {
     width: 3rem;
     height: 3rem;
     flex-basis: 3rem;
     border-radius: 0.85rem;
   }
 
-  [data-service-layout="laptop-repair"] > header > div:first-child > div:first-child > div:first-child > div:first-child svg {
+  [data-service-layout] > header > div:first-child > div:first-child > div:first-child > div:first-child svg {
     width: 1.45rem;
     height: 1.45rem;
   }
 
-  [data-service-layout="laptop-repair"] > header > div:first-child > div:first-child > div:nth-child(4) {
+  [data-service-layout] > header > div:first-child > div:first-child > div:nth-child(4) {
     display: grid;
     grid-template-columns: 1fr;
   }
 
-  [data-service-layout="laptop-repair"] > header > div:first-child > div:first-child > div:nth-child(4) a {
+  [data-service-layout] > header > div:first-child > div:first-child > div:nth-child(4) a {
     width: 100%;
   }
 
-  [data-service-layout="laptop-repair"] > header > div:first-child > div:first-child > div.grid {
+  [data-service-layout] > header > div:first-child > div:first-child > div.grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  [data-service-layout="laptop-repair"] > header > div:first-child > div:first-child > div.grid > div {
+  [data-service-layout] > header > div:first-child > div:first-child > div.grid > div {
     min-height: 5.1rem;
     gap: 0.55rem;
     padding: 0.7rem;
   }
 
-  [data-service-layout="laptop-repair"] > header > div:first-child > div:first-child > div.grid > div span:last-child {
+  [data-service-layout] > header > div:first-child > div:first-child > div.grid > div span:last-child {
     font-size: 0.76rem;
   }
 
-  [data-service-layout="laptop-repair"] > header > div:first-child > .relative {
+  [data-service-layout] > header > div:first-child > .relative {
     min-height: 16rem;
   }
 
-  [data-service-layout="laptop-repair"] > header > div:first-child > .relative img {
+  [data-service-layout] > header > div:first-child > .relative img {
     min-height: 16rem;
     max-height: 21rem;
   }
 
-  [data-service-layout="laptop-repair"] > section {
+  [data-service-layout] > section {
     width: calc(100% - 1.25rem);
     padding-block: 2.25rem;
     padding-inline: 0;
   }
 
-  [data-service-layout="laptop-repair"] > section > h2,
-  [data-service-layout="laptop-repair"] > section > div > h2 {
+  [data-service-layout] > section > h2,
+  [data-service-layout] > section > div > h2 {
     font-size: clamp(1.45rem, 6vw, 1.85rem);
   }
 
-  [data-service-layout="laptop-repair"] > section[aria-labelledby="why-choose-us-heading"] > div.grid,
-  [data-service-layout="laptop-repair"] > section[aria-labelledby="service-capabilities-heading"] > ul,
-  [data-service-layout="laptop-repair"] > section[aria-labelledby="common-problems-heading"] > div.grid,
-  [data-service-layout="laptop-repair"] > section[aria-labelledby="repair-process-heading"] > div.grid {
+  [data-service-layout] > section[aria-labelledby="why-choose-us-heading"] > div.grid,
+  [data-service-layout] > section[aria-labelledby="service-capabilities-heading"] > ul,
+  [data-service-layout] > section[aria-labelledby="common-problems-heading"] > div.grid,
+  [data-service-layout] > section[aria-labelledby="repair-process-heading"] > div.grid {
     grid-template-columns: 1fr;
   }
 
-  [data-service-layout="laptop-repair"] > section[aria-labelledby="symptom-finder"] a {
+  [data-service-layout] > section[aria-labelledby="symptom-finder"] a {
     min-height: 0;
     padding: 1.1rem;
   }
 
-  [data-service-layout="laptop-repair"] > section[aria-labelledby="why-choose-us-heading"] article,
-  [data-service-layout="laptop-repair"] > section[aria-labelledby="common-problems-heading"] article,
-  [data-service-layout="laptop-repair"] > section[aria-labelledby="repair-process-heading"] article {
+  [data-service-layout] > section[aria-labelledby="why-choose-us-heading"] article,
+  [data-service-layout] > section[aria-labelledby="common-problems-heading"] article,
+  [data-service-layout] > section[aria-labelledby="repair-process-heading"] article {
     padding: 1.15rem;
   }
 
-  [data-service-layout="laptop-repair"] > section[aria-label="Supported device types and brands"] > div:first-child {
+  [data-service-layout] > section[aria-label="Supported device types and brands"] > div:first-child {
     padding: 1rem;
   }
 
-  [data-service-layout="laptop-repair"] > section[aria-labelledby="laptop-repair-pricing-heading"] > div.overflow-x-auto {
+  [data-service-layout] > section[aria-labelledby="laptop-repair-pricing-heading"] > div.overflow-x-auto {
     border-radius: 0.95rem;
   }
 
-  [data-service-layout="laptop-repair"] > section[aria-labelledby="laptop-repair-pricing-heading"] table {
+  [data-service-layout] > section[aria-labelledby="laptop-repair-pricing-heading"] table {
     min-width: 720px;
     font-size: 0.8rem;
   }
 
-  [data-service-layout="laptop-repair"] > section[aria-labelledby="laptop-repair-pricing-heading"] th,
-  [data-service-layout="laptop-repair"] > section[aria-labelledby="laptop-repair-pricing-heading"] td {
+  [data-service-layout] > section[aria-labelledby="laptop-repair-pricing-heading"] th,
+  [data-service-layout] > section[aria-labelledby="laptop-repair-pricing-heading"] td {
     padding: 0.8rem;
   }
 
-  [data-service-layout="laptop-repair"] > section[aria-labelledby="service-faqs-heading"] {
+  [data-service-layout] > section[aria-labelledby="service-faqs-heading"] {
     width: calc(100% - 1.25rem);
   }
 
-  [data-service-layout="laptop-repair"] > section[aria-labelledby="service-faqs-heading"] summary {
+  [data-service-layout] > section[aria-labelledby="service-faqs-heading"] summary {
     padding: 0.9rem 1rem;
   }
 
-  [data-service-layout="laptop-repair"] > section[aria-labelledby="service-faqs-heading"] details > p {
+  [data-service-layout] > section[aria-labelledby="service-faqs-heading"] details > p {
     padding-inline: 1rem;
   }
 
-  [data-service-layout="laptop-repair"] > section.text-center > div {
+  [data-service-layout] > section.text-center > div {
     padding: 1.35rem 1rem;
     border-radius: 1.25rem;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  [data-service-layout="laptop-repair"] *,
-  [data-service-layout="laptop-repair"] *::before,
-  [data-service-layout="laptop-repair"] *::after {
+  [data-service-layout] *,
+  [data-service-layout] *::before,
+  [data-service-layout] *::after {
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
