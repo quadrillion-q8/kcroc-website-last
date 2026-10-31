@@ -45,7 +45,7 @@ const faq = [
   },
   {
     q: 'Will I lose my data during the repair?',
-    a: 'Data privacy is our priority. We do not wipe your hard drive unless it is a software/OS issue and we have your explicit permission. For hardware repairs, your data remains untouched.'
+    a: 'Data privacy is our priority. We do not access or erase personal files unless the approved work requires an operating-system change and you have explicitly agreed to it. Routine hardware repair normally focuses on the reported component, but no repair can guarantee that stored data will remain accessible. Back up important files where possible. KCROC does not provide standalone data recovery.'
   }
 ];
 
