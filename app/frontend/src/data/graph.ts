@@ -2076,7 +2076,7 @@ export const rawGraphData: RawGraphData = {
           id: 'dead-macbook-data-recovery', 
           title: 'Dead MacBook — Hardware Power & Logic Board Diagnosis', 
           severity: 'critical', 
-          description: 'If a MacBook with important data will not start, avoid repeated power attempts after liquid exposure and explain the data priority before repair. Storage architecture varies by model, and a board replacement or severe board damage may affect data access; recovery cannot be guaranteed.' 
+          description: 'If a MacBook with important data will not start, avoid repeated power attempts after liquid exposure and explain the data priority before repair. Storage architecture varies by model, and a board replacement or severe board damage may affect data access; recovery cannot be guaranteed. KCROC repairs hardware faults and does not provide standalone data recovery.' 
         }
       ], 
 
@@ -5260,6 +5260,10 @@ export const rawGraphData: RawGraphData = {
       solution: 'We diagnose the M.2/PCIe WiFi card. Usually, upgrading a failed budget card to a high-quality Intel AX (Wi-Fi 6) card permanently resolves dropouts and significantly boosts speeds.',
       urgency: 'low',
       relatedServiceIds: ['srv-laptop', 'srv-gaming'],
+      relatedResourcePaths: [
+        { path: '/pricing#pricing-diagnostics', label: 'Windows OS Restoration — published range 10–15 KWD' },
+        { path: '/guides/windows-troubleshooting-complete-guide', label: 'Windows troubleshooting guide' }
+      ],
       contentImages: [
         { src: IMAGES.laptopHardware.wifiLaptop1.src, alt: IMAGES.laptopHardware.wifiLaptop1.alt, width: IMAGES.laptopHardware.wifiLaptop1.width, height: IMAGES.laptopHardware.wifiLaptop1.height, placement: 'causes', caption: 'Checking the internal Wi-Fi card and antenna connections when the network icon disappears.' },
         { src: IMAGES.laptopHardware.wifiIntel2.src, alt: IMAGES.laptopHardware.wifiIntel2.alt, width: IMAGES.laptopHardware.wifiIntel2.width, height: IMAGES.laptopHardware.wifiIntel2.height, placement: 'solution', caption: 'Installing a high-quality Intel Wi-Fi 6 card to permanently resolve dropouts from a failed budget card.' },
@@ -5462,7 +5466,7 @@ export const rawGraphData: RawGraphData = {
 
     'problem-malware': {
       id: 'problem-malware', slug: 'virus-malware-removal-kuwait', entityType: 'Problem', isActive: true,
-      title: 'Virus, Malware or Ransomware Infection', primaryKeyword: "virus and malware removal Kuwait", secondaryKeywords: ["laptop malware removal Kuwait","browser hijacker removal","ransomware recovery help Kuwait"],
+      title: 'Virus, Malware or Ransomware Infection', primaryKeyword: "virus and malware removal Kuwait", secondaryKeywords: ["laptop malware removal Kuwait","browser hijacker removal","ransomware infection assessment Kuwait"],
       description: 'Removal service for laptops and PCs showing signs of viruses, adware, browser hijackers, or ransomware.',
       symptom: 'Constant pop-up ads even outside the browser, a homepage or search engine that changed itself, unfamiliar toolbars, the antivirus getting disabled on its own, or — in serious cases — files that suddenly cannot be opened with a ransom message demanding payment.',
       causes: ['Downloaded software bundled with adware or a browser hijacker', 'Opening an infected email attachment or fake software update', 'Outdated Windows or browser software with unpatched security holes', 'Pirated software or "cracked" program installers'],
