@@ -1,5 +1,6 @@
 // File: app/frontend/src/pages/templates/ServiceTemplate.tsx
 import React from 'react';
+import './ServiceTemplateLaptopLayout.css';
 import { Navigate, Link } from 'react-router-dom';
 import { Laptop, Apple, Gamepad2, Cpu, Wrench, ShieldCheck, Clock, MessageCircle, Users, Monitor, ChevronDown, AlertTriangle, MapPin, Gauge, ArrowRight, BookOpen, Tag } from 'lucide-react';
 import { KCROC_GRAPH } from '../../data/graph';
@@ -77,10 +78,19 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
     page.seo.alternates?.['en-KW'] === entity.seo.canonicalUrl
   );
 
-  const getContentImage = (placement: 'hero' | 'commonIssues' | 'coreFeatures' | 'process') =>
-    entity.contentImages?.find((img) => img.placement === placement);
+  // For the laptop-repair page, promote an existing genuine repair photo into
+  // the hero and use the next existing workshop photo in the capabilities block.
+  // This changes image placement only; image copy, page copy and SEO data stay intact.
+  const getContentImage = (placement: 'hero' | 'commonIssues' | 'coreFeatures' | 'process') => {
+    const images = entity.contentImages ?? [];
+    if (entity.id === 'srv-laptop' && placement === 'coreFeatures' && !images.some((img) => img.placement === 'hero')) {
+      return images.filter((img) => img.placement === 'coreFeatures')[1];
+    }
+    return images.find((img) => img.placement === placement);
+  };
 
-  const heroImage = getContentImage('hero');
+  const heroImage = getContentImage('hero') ??
+    (entity.id === 'srv-laptop' ? entity.contentImages?.find((img) => img.placement === 'coreFeatures') : undefined);
 
   const ContentImage = ({ image }: { image: NonNullable<typeof entity.contentImages>[number] }) => (
     <Link
@@ -130,7 +140,7 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
     <>
       <SEOEngine entityId={entity.id} />
 
-      <div className="min-h-screen bg-transparent text-white pt-8 sm:pt-16 lg:pt-32 pb-8 sm:pb-16">
+      <div data-service-layout={isLaptopService ? 'laptop-repair' : undefined} className="min-h-screen bg-transparent text-white pt-8 sm:pt-16 lg:pt-32 pb-8 sm:pb-16">
         
         <header className="max-w-7xl mx-auto px-6 bg-slate-900/30 backdrop-blur-md border border-slate-800/50 rounded-3xl p-8 mb-12 shadow-2xl">
           <div className={`grid gap-10 items-center ${heroImage ? 'lg:grid-cols-[1.15fr_1fr]' : ''}`}>
