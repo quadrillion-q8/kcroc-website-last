@@ -58,17 +58,23 @@ const pricingCategories = [
       {
         name: 'Windows OS Restoration',
         price: '10–15 KWD',
-        desc: 'Clean install with drivers & updates',
+        desc: 'Clean Windows installation with drivers and essential updates',
+        note: 'A clean install can remove existing files and apps. Back up accessible files yourself before approving it.',
       },
       {
         name: 'Virus & Malware Removal',
         price: '10–20 KWD',
-        desc: 'Deep system clean & security hardening',
+        desc: 'Malware assessment, removal and security hardening',
+        note: 'Malware remediation only; this is not standalone data recovery or ransomware decryption.',
+        linkHref: '/virus-malware-removal-kuwait',
+        linkLabel: 'View malware symptoms and service scope',
       },
       {
         name: 'BIOS / Firmware Recovery',
         price: '20–40 KWD',
-        desc: 'Direct IC reflashing & programmer recovery',
+        desc: 'Firmware diagnosis and SPI/EEPROM programmer recovery where appropriate',
+        linkHref: '/guides/bios-uefi-recovery-kuwait',
+        linkLabel: 'Read the BIOS/UEFI recovery guide',
       },
     ],
   },
@@ -734,9 +740,14 @@ export default function Pricing() {
                                 </div>
 
                                 {item.note && (
-                                  <div className="mt-2 text-[10px] font-semibold uppercase tracking-wide text-cyan-500">
+                                  <div className="mt-2 text-[10px] font-semibold normal-case leading-5 text-slate-400">
                                     {item.note}
                                   </div>
+                                )}
+                                {'linkHref' in item && item.linkHref && (
+                                  <Link to={item.linkHref} className="mt-2 inline-flex min-h-8 items-center text-xs font-bold text-cyan-300 underline-offset-4 hover:text-cyan-200 hover:underline">
+                                    {'linkLabel' in item ? item.linkLabel : 'View service details'} <ArrowRight className="ml-1 h-3.5 w-3.5" aria-hidden="true" />
+                                  </Link>
                                 )}
                               </div>
                             </div>
