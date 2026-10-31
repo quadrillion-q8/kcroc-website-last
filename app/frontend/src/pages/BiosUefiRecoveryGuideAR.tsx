@@ -489,7 +489,7 @@ export default function BiosUefiRecoveryGuideAR() {
         <section aria-labelledby="cta" className="mt-14 rounded-3xl border border-cyan-500/30 bg-cyan-500/5 p-6 sm:p-8">
           <h2 id="cta" className="text-2xl md:text-3xl font-black text-white mb-3">الجهاز لا يقلع بعد تحديث BIOS؟</h2>
           <p className="text-slate-300 leading-relaxed mb-5">
-            لا تجرّب ملفات فيرموير عشوائية. فنيو KCROC يفحصون هل السبب في الفيرموير أم في عطل مادي في اللوحة الأم، ثم يحددون هل البرمجة المهنية مناسبة. استلام وتوصيل مجاني داخل الكويت، وفحص تشخيصي مجاني، وسياسة "لا إصلاح لا رسوم"، وضمان 30 يوماً.
+            لا تجرّب ملفات فيرموير عشوائية. يفحص فنيو KCROC هل السبب في الفيرموير أم في عطل مادي في اللوحة الأم، ثم يحددون هل البرمجة المهنية مناسبة. السعر المنشور لخدمة استعادة BIOS / Firmware هو <strong className="text-white">20–40 د.ك</strong>، ويُحدد السعر النهائي بعد معرفة الموديل ومراجعة اللوحة ونتيجة التشخيص. الفحص الأولي مجاني، ولا نبدأ أي عمل مدفوع قبل موافقتك على السعر. استلام وتوصيل مجاني داخل الكويت وضمان 30 يومًا وفق شروط الخدمة. <Link to="/ar/pricing" className="text-cyan-300 underline hover:text-cyan-200">راجع قائمة الأسعار</Link>.
           </p>
           <div className="flex flex-wrap gap-3">
             <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-xl bg-emerald-500 px-5 py-3 font-bold text-slate-950 hover:bg-emerald-400">
