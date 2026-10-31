@@ -224,7 +224,7 @@ export const rawGraphData: RawGraphData = {
         ogImageWidth: 1200,
         ogImageHeight: 800,
         schemaTypes: ['WebPage', 'FAQPage', 'BreadcrumbList', 'Service'],
-        lastModified: '2026-10-21T00:00:00+03:00',
+        lastModified: '2026-11-01T00:00:00+03:00',
         breadcrumbs: [{ name: 'الرئيسية', url: '/' }, { name: 'تصليح كمبيوتر بالقرب منك', url: '/ar/near-me' }]
       },
       featuredFAQIds: [
@@ -325,17 +325,17 @@ export const rawGraphData: RawGraphData = {
 
     'page-ar-gaming-pc-repair': {
       id: 'page-ar-gaming-pc-repair', slug: 'ar/gaming-pc-repair-kuwait', entityType: 'WebPage', isActive: true,
-      title: 'تصليح كمبيوتر ألعاب في الكويت | Gaming PC وكرت الشاشة',
-      description: 'تصليح كمبيوتر ألعاب وGaming PC في الكويت لمشاكل GPU وFPS والحرارة والشاشة السوداء والإطفاء المفاجئ. استلام وتوصيل من مناطق الكويت مع فحص أولي وعرض سعر قبل الإصلاح وضمان 30 يومًا.',
+      title: 'تصليح كمبيوتر ألعاب كامل في الكويت | Gaming PC وفحص GPU',
+      description: 'تشخيص وإصلاح كمبيوتر ألعاب مكتبي كامل في الكويت، بما في ذلك GPU وVRAM عندما تكون البطاقة مركبة داخل الجهاز، مع فحص الحرارة والطاقة والشاشة السوداء واستلام البرج كاملًا. لا تشمل الخدمة استقبال كروت شاشة منفصلة.',
       seo: {
-        title: 'تصليح كمبيوتر ألعاب في الكويت | Gaming PC وGPU | KCROC',
-        description: 'تصليح كمبيوتر ألعاب وGaming PC في الكويت لمشاكل GPU وFPS والحرارة والشاشة السوداء والإطفاء المفاجئ. فحص أولي مجاني، استلام وتوصيل وضمان 30 يومًا.',
+        title: 'تصليح Gaming PC في الكويت | فحص GPU ضمن الكمبيوتر الكامل | KCROC',
+        description: 'تصليح Gaming PC مكتبي كامل في الكويت لمشاكل GPU المركب وFPS والحرارة والطاقة والشاشة السوداء. لا نستقبل كروت شاشة منفصلة؛ فحص أولي مجاني واستلام البرج وضمان 30 يومًا.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/ar/gaming-pc-repair-kuwait',
         locale: 'ar_KW',
         alternates: { 'ar-KW': 'https://www.computerrepairkuwait.com/ar/gaming-pc-repair-kuwait', 'en-KW': 'https://www.computerrepairkuwait.com/gaming-pc-repair-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/gaming-pc-repair-kuwait' },
         ogType: 'website',
         ogImage: '/images/custom-gaming-pc-teardown-and-diagnostics-workbench.webp',
-        ogImageAlt: 'تشخيص كمبيوتر ألعاب وكرت الشاشة على طاولة فحص KCROC في الكويت',
+        ogImageAlt: 'تشخيص كمبيوتر ألعاب كامل وفحص كرت الشاشة المركب داخل الجهاز في مختبر KCROC بالكويت',
         ogImageWidth: 1200,
         ogImageHeight: 630,
         schemaTypes: ['WebPage', 'BreadcrumbList', 'Service'],
