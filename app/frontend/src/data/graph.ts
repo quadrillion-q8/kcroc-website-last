@@ -54,7 +54,7 @@ export const rawGraphData: RawGraphData = {
     /* ═══════════════════════════════════════════════════════════════
        USPs
     ═══════════════════════════════════════════════════════════════ */
-    'usp-component': { id: 'usp-component', entityType: 'USP', isActive: true, iconKey: 'Cpu', title: 'Component-Level Repair', description: 'We diagnose the board itself using micro-soldering and trace repair — not just replace it. This saves you from paying for an entirely new motherboard and keeps your original data intact.', differentiator: 'Most shops in Kuwait replace the whole board. We fix the one failed chip.' } as USPEntity,
+    'usp-component': { id: 'usp-component', entityType: 'USP', isActive: true, iconKey: 'Cpu', title: 'Component-Level Repair', description: 'We diagnose the board itself using micro-soldering and trace repair — not just replace it. This can avoid an unnecessary full-board replacement, but data access depends on the device and fault and cannot be guaranteed.', differentiator: 'Most shops in Kuwait replace the whole board. We fix the one failed chip.' } as USPEntity,
     'usp-nofix': { id: 'usp-nofix', entityType: 'USP', isActive: true, iconKey: 'ShieldCheck', title: 'No Fix, No Fee', description: 'Our diagnostics are precise and risk-free. If your device is catastrophically damaged or not economically repairable, you pay absolutely nothing — not even for the diagnostic.', differentiator: 'You only pay when your device is fully repaired and working.' } as USPEntity,
     'usp-logistics': { id: 'usp-logistics', entityType: 'USP', isActive: true, iconKey: 'Truck', title: 'Free Pick & Drop — All Kuwait', description: 'We cover Hawalli, Salmiya, Kuwait City, Farwaniya, Ahmadi, Jahra, and beyond. Our courier collects from your home or office and returns the repaired device directly to you.', differentiator: 'No need to leave your home or office. We handle the traffic.' } as USPEntity,
     'usp-privacy': { id: 'usp-privacy', entityType: 'USP', isActive: true, iconKey: 'Lock', title: 'Strict Data Privacy', description: 'We operate under strict hardware-only protocols. Our technicians use diagnostic tools — not your files. For board-level repairs, you can remove your drive before handing over the device.', differentiator: 'Your personal files are never opened, accessed, or browsed during repair.' } as USPEntity,
@@ -559,6 +559,54 @@ export const rawGraphData: RawGraphData = {
         ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList'], lastModified: '2026-10-17T00:00:00+03:00', breadcrumbs: [{ name: 'الرئيسية', url: '/' }, { name: 'تصليح Gaming Laptop', url: '/ar/gaming-laptop-repair-kuwait' }]
       },
       relatedServiceIds: ['srv-gaming-laptop', 'srv-gaming-laptop-cleaning', 'srv-gaming', 'srv-laptop', 'srv-screen', 'srv-battery']
+    } as WebPageEntity,
+
+    'page-ar-desktop-pc-repair': {
+      id: 'page-ar-desktop-pc-repair', slug: 'ar/desktop-pc-repair-kuwait', entityType: 'WebPage', isActive: true,
+      title: 'تصليح الكمبيوتر المكتبي في الكويت',
+      description: 'تصليح كمبيوتر مكتبي وPC في الكويت لأعطال عدم التشغيل والشاشة السوداء والحرارة والتوقف المفاجئ والرام والتخزين والمذربورد، مع استلام وتوصيل مجاني وضمان 30 يومًا.',
+      seo: {
+        title: 'تصليح كمبيوتر مكتبي في الكويت | PC وDesktop | KCROC',
+        description: 'تصليح الكمبيوتر المكتبي والـPC في الكويت. تشخيص أعطال الطاقة والشاشة والحرارة والرام والمذربورد، مع فحص أولي مجاني واستلام وتوصيل وضمان 30 يومًا.',
+        canonicalUrl: 'https://www.computerrepairkuwait.com/ar/desktop-pc-repair-kuwait',
+        locale: 'ar_KW',
+        alternates: { 'ar-KW': 'https://www.computerrepairkuwait.com/ar/desktop-pc-repair-kuwait', 'en-KW': 'https://www.computerrepairkuwait.com/desktop-pc-repair-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/desktop-pc-repair-kuwait' },
+        ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList'], lastModified: '2026-11-01T00:00:00+03:00',
+        breadcrumbs: [{ name: 'الرئيسية', url: '/' }, { name: 'تصليح كمبيوتر مكتبي', url: '/ar/desktop-pc-repair-kuwait' }]
+      },
+      relatedServiceIds: ['srv-desktop-pc', 'srv-motherboard', 'srv-gaming', 'srv-ssd-ram']
+    } as WebPageEntity,
+
+    'page-ar-laptop-hinge-repair': {
+      id: 'page-ar-laptop-hinge-repair', slug: 'ar/laptop-hinge-repair-kuwait', entityType: 'WebPage', isActive: true,
+      title: 'تصليح مفصلات وهيكل اللابتوب في الكويت',
+      description: 'إصلاح مفصلات اللابتوب القاسية أو المكسورة وترميم نقاط التثبيت والهيكل وفحص كابل الشاشة، مع استلام وتوصيل مجاني وضمان 30 يومًا.',
+      seo: {
+        title: 'تصليح مفصلات اللابتوب والهيكل في الكويت | KCROC',
+        description: 'تصليح مفصلات اللابتوب المكسورة أو القاسية وترميم الهيكل وفحص كابل الشاشة في الكويت. السعر يبدأ من 15 د.ك، مع استلام مجاني وضمان 30 يومًا.',
+        canonicalUrl: 'https://www.computerrepairkuwait.com/ar/laptop-hinge-repair-kuwait',
+        locale: 'ar_KW',
+        alternates: { 'ar-KW': 'https://www.computerrepairkuwait.com/ar/laptop-hinge-repair-kuwait', 'en-KW': 'https://www.computerrepairkuwait.com/laptop-hinge-repair-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/laptop-hinge-repair-kuwait' },
+        ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList'], lastModified: '2026-11-01T00:00:00+03:00',
+        breadcrumbs: [{ name: 'الرئيسية', url: '/' }, { name: 'تصليح مفصلات اللابتوب', url: '/ar/laptop-hinge-repair-kuwait' }]
+      },
+      relatedServiceIds: ['srv-hinge', 'srv-laptop', 'srv-screen']
+    } as WebPageEntity,
+
+    'page-ar-gaming-laptop-cleaning': {
+      id: 'page-ar-gaming-laptop-cleaning', slug: 'ar/gaming-laptop-cleaning-kuwait', entityType: 'WebPage', isActive: true,
+      title: 'تنظيف لابتوب الألعاب وصيانة التبريد في الكويت',
+      description: 'تنظيف داخلي للابتوبات المخصصة للألعاب وفحص المراوح والمشتت والمعجون والوسائد الحرارية عند الحاجة، مع اختبار الحرارة بعد الخدمة.',
+      seo: {
+        title: 'تنظيف لابتوب الألعاب وتغيير المعجون بالكويت | KCROC',
+        description: 'تنظيف لابتوب القيمنق وصيانة التبريد وفحص الحرارة والمراوح والمعجون الحراري في الكويت. السعر الإرشادي 15–20 د.ك حسب الموديل والحالة، مع استلام مجاني وضمان 30 يومًا.',
+        canonicalUrl: 'https://www.computerrepairkuwait.com/ar/gaming-laptop-cleaning-kuwait',
+        locale: 'ar_KW',
+        alternates: { 'ar-KW': 'https://www.computerrepairkuwait.com/ar/gaming-laptop-cleaning-kuwait', 'en-KW': 'https://www.computerrepairkuwait.com/gaming-laptop-cleaning-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/gaming-laptop-cleaning-kuwait' },
+        ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList'], lastModified: '2026-11-01T00:00:00+03:00',
+        breadcrumbs: [{ name: 'الرئيسية', url: '/' }, { name: 'تنظيف لابتوب الألعاب', url: '/ar/gaming-laptop-cleaning-kuwait' }]
+      },
+      relatedServiceIds: ['srv-gaming-laptop-cleaning', 'srv-gaming-laptop', 'srv-laptop']
     } as WebPageEntity,
 
     'page-brands': { id: 'page-brands', slug: 'brands', entityType: 'WebPage', isActive: true, title: 'Supported Laptop Brands', description: 'Laptop and computer brands repaired by KCROC in Kuwait.', seo: { title: 'Laptop Brands We Repair: Dell, HP, Lenovo & More | KCROC', description: 'Component-level laptop repair for Dell, HP, Lenovo, ASUS, Acer, MSI and other major brands across Kuwait.', canonicalUrl: 'https://www.computerrepairkuwait.com/brands', ogType: 'website', schemaTypes: ['CollectionPage', 'WebPage', 'BreadcrumbList'], breadcrumbs: [{ name: 'Home', url: '/' }, { name: 'Brands', url: '/brands' }] } } as WebPageEntity,
@@ -1325,7 +1373,7 @@ export const rawGraphData: RawGraphData = {
         { src: IMAGES.services.laptopRepair.src, alt: IMAGES.services.laptopRepair.alt, width: IMAGES.services.laptopRepair.width, height: IMAGES.services.laptopRepair.height, placement: 'process', caption: 'Laptop opened for inspection of the chassis, display cable routing and surrounding hardware.' }
       ],
       warranty: { duration: '30 Days', coverage: 'Parts and labour for the completed hinge/chassis repair', noFixNoFee: true },
-      seo: { title: 'Laptop Hinge Repair Kuwait | Chassis Fix | KCROC', description: 'Broken or stiff laptop hinge repair in Kuwait. Chassis reinforcement, hinge replacement and display-cable inspection with free pickup and 30-day warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-hinge-repair-kuwait', ogType: 'article', schemaTypes: ['Service', 'FAQPage'] },
+      seo: { title: 'Laptop Hinge Repair Kuwait | Chassis Fix | KCROC', description: 'Broken or stiff laptop hinge repair in Kuwait. Chassis reinforcement, hinge replacement and display-cable inspection with free pickup and 30-day warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-hinge-repair-kuwait', locale: 'en_KW', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/laptop-hinge-repair-kuwait', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/laptop-hinge-repair-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/laptop-hinge-repair-kuwait' }, ogType: 'article', schemaTypes: ['Service', 'FAQPage'], lastModified: '2026-11-01T00:00:00+03:00' },
       navigationPriority: 54,
       isFeatured: false,
       popular: false
@@ -2026,7 +2074,7 @@ export const rawGraphData: RawGraphData = {
         },
         { 
           id: 'dead-macbook-data-recovery', 
-          title: 'Dead MacBook With Important Data Still On It', 
+          title: 'Dead MacBook — Hardware Power & Logic Board Diagnosis', 
           severity: 'critical', 
           description: 'If a MacBook with important data will not start, avoid repeated power attempts after liquid exposure and explain the data priority before repair. Storage architecture varies by model, and a board replacement or severe board damage may affect data access; recovery cannot be guaranteed.' 
         }
@@ -2597,7 +2645,7 @@ export const rawGraphData: RawGraphData = {
       ] },
       contentImages: [{ src: IMAGES.laptopHardware.desktopPcTowerRepairKuwait.src, alt: 'Lenovo desktop PC on the repair bench for desktop and PC repair in Kuwait', width: IMAGES.laptopHardware.desktopPcTowerRepairKuwait.width, height: IMAGES.laptopHardware.desktopPcTowerRepairKuwait.height, placement: 'hero', caption: 'Desktop PC on the KCROC repair bench for hardware diagnosis and repair.' }],
       warranty: { duration: '30 Days', coverage: 'Parts and labour for the completed desktop PC repair', noFixNoFee: true },
-      seo: { title: 'Desktop & PC Repair Kuwait | Free Pickup | KCROC', description: 'Desktop and PC repair in Kuwait for no power, no display, crashes, overheating, PSU, motherboard, storage and upgrades. Free pickup, diagnosis first and 30-day warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/desktop-pc-repair-kuwait', locale: 'en_KW', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/desktop-pc-repair-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/desktop-pc-repair-kuwait' }, ogType: 'article', schemaTypes: ['Service', 'FAQPage'], lastModified: '2026-10-05T00:00:00+03:00' },
+      seo: { title: 'Desktop & PC Repair Kuwait | Free Pickup | KCROC', description: 'Desktop and PC repair in Kuwait for no power, no display, crashes, overheating, PSU, motherboard, storage and upgrades. Free pickup, diagnosis first and 30-day warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/desktop-pc-repair-kuwait', locale: 'en_KW', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/desktop-pc-repair-kuwait', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/desktop-pc-repair-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/desktop-pc-repair-kuwait' }, ogType: 'article', schemaTypes: ['Service', 'FAQPage'], lastModified: '2026-11-01T00:00:00+03:00' },
       navigationPriority: 78,
       isFeatured: true,
       popular: false
@@ -2611,7 +2659,7 @@ export const rawGraphData: RawGraphData = {
       title: 'Gaming PC Repair Kuwait', primaryKeyword: "gaming PC repair Kuwait", secondaryKeywords: ["gaming computer repair Kuwait", "gaming GPU repair Kuwait", "gaming PC no display repair", "gaming PC overheating repair Kuwait", "gaming PC FPS drop diagnosis"], 
       iconKey: 'gaming', 
       shortDescription: 'Gaming desktop PC repair in Kuwait for GPU faults, black screens, FPS drops, overheating, crashes, power faults and cooling problems.', 
-      description: 'KCROC diagnoses and repairs gaming desktops and standalone graphics cards in Kuwait. Every job starts with a free diagnosis at our ESD-controlled Hawalli lab (Ibn Khaldoun Street, Al Mullah Complex, Basement Shop 19), where we find the failed layer — GPU, VRAM, power delivery, motherboard, memory or cooling — and send a written quote before any paid work. We assess NVIDIA GeForce RTX 30-, 40- and 50-series and AMD Radeon RX cards, AM5, LGA1700 and LGA1851 platforms, and AIO or custom-loop cooling. Board-level repair is offered only where the fault and the hardware make it viable. Free pickup and delivery across Kuwait, and a 30-day warranty on completed repairs under our stated terms.',
+      description: 'KCROC diagnoses complete gaming desktop systems in Kuwait, including faults involving the GPU installed in the PC, VRAM, power delivery, motherboard, memory and cooling. Every job starts with a free initial assessment at our ESD-controlled Hawalli lab (Ibn Khaldoun Street, Al Mullah Complex, Basement Shop 19), followed by a written quote before paid work. We assess NVIDIA GeForce RTX and AMD Radeon systems, AM5, LGA1700 and LGA1851 platforms, and AIO or custom-loop cooling as part of the complete desktop. We do not accept individual graphics cards as standalone repair jobs. Free pickup and delivery are available for complete desktop towers across Kuwait, with a 30-day warranty on completed repairs under our stated terms.',
       idealCustomer: 'Owners of custom-built or pre-built gaming desktops, streamers and high-performance PC users who need a fault-based diagnosis for graphics, power, cooling, display or stability problems. Gaming laptops are covered by our separate gaming laptop repair service.',
       symptomLinks: [
         { label: 'Gaming PC won’t turn on', path: '/guides/gaming-pc-not-turning-on-kuwait', description: 'No power, intermittent startup, dead tower or a PC that clicks on then shuts back off.' },
@@ -2622,7 +2670,7 @@ export const rawGraphData: RawGraphData = {
       deviceTypes: [
         'Custom Desktop Builds', 
         'Pre-Built Gaming PCs (Alienware, OMEN)', 
-        'Standalone GPUs (RTX / Radeon RX series)',
+
         'Streaming & Content Creation Workstations',
         'Liquid-Cooled Custom Loop Systems'
       ],
@@ -2681,7 +2729,7 @@ export const rawGraphData: RawGraphData = {
         { title: 'Board-level repair where it makes sense', description: 'When a fault is confined to a power stage, connector, VRAM chip or similar component and the board is otherwise sound, we quote component-level repair instead of a full replacement. Not every card or board is repairable, and we tell you plainly when it is not.' },
         { title: 'Tested under load', description: 'We verify the repair with the workload that caused the fault, using monitoring and thermal imaging where useful, before the system is returned.' },
         { title: 'ESD-safe laboratory', description: 'All work is done on grounded, static-controlled workstations in our Hawalli lab to protect sensitive GPU and motherboard components.' },
-        { title: 'Free pickup and delivery, Kuwait-wide', description: 'We collect and return full towers and standalone graphics cards anywhere in Kuwait at no extra cost.' },
+        { title: 'Free pickup and delivery, Kuwait-wide', description: 'We collect and return complete gaming desktop towers anywhere in Kuwait at no extra cost. We do not accept individual graphics cards as standalone repair jobs.' },
         { title: 'Clear quote, No Fix, No Fee', description: 'You receive a written explanation of the fault and an itemised quote before any paid work. If we cannot repair it, you do not pay, under our service terms.' }
       ],
 
@@ -2812,7 +2860,7 @@ export const rawGraphData: RawGraphData = {
           answer: 'Completed repairs carry a 30-day warranty under KCROC’s stated terms. GPU, motherboard and cooling work does not normally involve your storage drive, but we recommend backing up important files before any service.'
         },
         { id: 'faq-gaming-rtx-repair', title: 'Do you repair RTX and Radeon graphics cards in Kuwait?', answer: 'We diagnose RTX 30-, 40- and 50-series and Radeon RX cards for artifacts, black screens, no display, overheating and power faults. Where the fault is confined to a power stage, connector or similar component and the card is otherwise sound, we quote component-level repair. Some cards are not repairable, and we tell you plainly before any paid work.' },
-        { id: 'faq-gaming-burnt-connector', title: 'My RTX 4090 or 5090 power connector is burnt or melted. What should I do?', answer: 'Stop using the card, switch the PC off and disconnect power; do not keep retrying. A damaged 12VHPWR or 12V-2x6 connector can involve the cable, the PSU side and the card’s own power input, so we inspect all three. Whether repair makes sense depends on how far the damage extends, and we explain that before any paid work.' }
+        { id: 'faq-gaming-burnt-connector', title: 'The GPU power connector in my gaming desktop is burnt or melted. What should I do?', answer: 'Switch the complete PC off, disconnect it from power if safe, and do not keep retrying. A damaged 12VHPWR or 12V-2x6 connection can involve the GPU installed in the system, its cable and the PSU side. KCROC can inspect these parts as part of a complete gaming desktop assessment. We do not accept an individual graphics card as a standalone repair job.' }
       ],
             contentImages: [
         { src: IMAGES.gaming.waterCooled.src, alt: 'Custom water-cooled gaming PC with liquid-cooling loop and RGB fans on the KCROC bench in Kuwait', width: IMAGES.gaming.waterCooled.width, height: IMAGES.gaming.waterCooled.height, placement: 'hero', caption: 'Custom water-cooled gaming PC build — liquid-cooled loops are part of the gaming PC repair and diagnosis we handle in Kuwait.' },
@@ -2826,8 +2874,8 @@ export const rawGraphData: RawGraphData = {
         noFixNoFee: true 
       }, 
       seo: { 
-        title: 'Gaming PC Repair Kuwait | GPU & Motherboard Repair | KCROC', 
-        description: 'Gaming PC repair in Kuwait for RTX/Radeon artifacts, black screens, FPS drops, 12VHPWR/12V-2x6, VRM and cooling faults. Free diagnosis, pickup and 30-day warranty.', 
+        title: 'Gaming PC Repair Kuwait | GPU Fault Diagnosis | KCROC', 
+        description: 'Gaming desktop repair in Kuwait for installed GPU faults, black screens, FPS drops, power, VRM and cooling issues. Complete PC pickup, free initial assessment and 30-day warranty.', 
         canonicalUrl: 'https://www.computerrepairkuwait.com/gaming-pc-repair-kuwait', locale: 'en_KW', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/gaming-pc-repair-kuwait', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/gaming-pc-repair-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/gaming-pc-repair-kuwait' }, 
         ogType: 'website', 
         schemaTypes: ['Service', 'FAQPage'], lastModified: '2026-10-28T00:00:00+03:00' 
@@ -3028,6 +3076,9 @@ export const rawGraphData: RawGraphData = {
         title: 'Gaming Laptop Cleaning & Thermal Repaste Kuwait | KCROC',
         description: 'Professional gaming laptop cleaning, thermal repaste and cooling-system testing in Kuwait. ASUS ROG, Legion, MSI, Predator & more. Free pickup & delivery.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/gaming-laptop-cleaning-kuwait',
+        locale: 'en_KW',
+        alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/gaming-laptop-cleaning-kuwait', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/gaming-laptop-cleaning-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/gaming-laptop-cleaning-kuwait' },
+        lastModified: '2026-11-01T00:00:00+03:00',
         ogType: 'article',
         schemaTypes: ['Service', 'FAQPage']
       },
@@ -3080,7 +3131,7 @@ export const rawGraphData: RawGraphData = {
         { title: 'We Trace the Fault Before We Quote Anything', description: 'Multimeter testing and thermal imaging identify the actual failed component before any repair or replacement is discussed — not a guess based on symptoms.' },
         { title: 'Component-Level Repair, Not Board Swap', description: 'A shorted MOSFET or a blown fuse is a single-component fix. Most shops treat it as a reason to replace the entire board — we treat it as what it is.' },
         { title: 'BGA Rework Capability', description: 'Chip-level faults — including GPU, chipset, and memory controller issues — are reworked directly under magnification with controlled reflow, rather than declared unfixable.' },
-        { title: 'Data Stays on the Original Board', description: 'Because we repair rather than replace, anything soldered to the board — storage, in particular on Apple Silicon and many modern ultrabooks — is never disturbed.' },
+        { title: 'Original-Board Repair Where Feasible', description: 'Repairing the original board can avoid an unnecessary board swap and may help retain access to stored data. Data access still depends on the device design, storage condition and fault, so it cannot be guaranteed.' },
         { title: 'ESD-Safe Laboratory', description: 'All board-level work happens on grounded, static-controlled workstations at our Hawalli lab: Ibn Khaldoun Street, Al Mullah Complex, Basement Shop 19. Free pickup and delivery are available across Kuwait.' },
         { title: 'Kuwait Climate Expertise', description: 'Sustained heat accelerates capacitor degradation and solder joint fatigue well beyond what manufacturer specs assume — we see the resulting failure patterns daily and know what to check for.' },
         { title: 'Free Pickup & Delivery, Kuwait-Wide', description: 'Full laptops or desktop towers collected from and returned to your home or office anywhere in Kuwait, at no extra cost.' },
@@ -3158,7 +3209,7 @@ export const rawGraphData: RawGraphData = {
         items: [
           { metric: 'Board Recovery Rate', outcome: 'The majority of boards referred to us as "needs full replacement" are repairable at component level once the fault is traced to its actual source.' },
           { metric: 'Cost vs. Full Replacement', outcome: 'Component-level motherboard repair typically costs a fraction of a full board replacement quote — often up to 80% less.' },
-          { metric: 'Data Preservation', outcome: 'Because the original board is repaired rather than swapped, anything soldered to it — including storage on many modern ultrabooks and MacBooks — remains untouched.' },
+          { metric: 'Data Preservation', outcome: 'Repairing the original board can help avoid an unnecessary board swap. Whether stored data remains accessible depends on the device design and fault; no data-preservation or recovery outcome is guaranteed.' },
           { metric: 'Liquid Damage Cases', outcome: 'Boards brought in promptly after a spill, without being powered back on, have meaningfully better recovery outcomes than those tested repeatedly first.' }
         ]
       },
@@ -3180,7 +3231,7 @@ export const rawGraphData: RawGraphData = {
             symptoms: 'Coffee was spilled on the keyboard; the laptop was powered off right away and brought in the same day.',
             diagnosis: 'Ultrasonic cleaning revealed light corrosion with no shorted components, since power was cut before a short could develop.',
             repair: 'Full ultrasonic cleaning of the board; no component replacement was required.',
-            outcome: 'The laptop returned to full function with no data loss, illustrating why an immediate power-off matters more than any repair technique afterward.'
+            outcome: 'In this representative scenario, the laptop returned to function and stored data remained accessible. This individual outcome is not a guarantee; data access depends on the condition of the device and storage.'
           },
           {
             id: 'capacitor-instability',
@@ -3213,7 +3264,7 @@ export const rawGraphData: RawGraphData = {
         {
           id: 'faq-motherboard-data-loss',
           title: 'Will I lose my data during motherboard repair?',
-          answer: 'No — we repair your original board rather than swapping it, so anything soldered to it, including storage on many modern ultrabooks and MacBooks, is never disturbed.'
+          answer: 'Not necessarily, but we cannot guarantee that files will remain accessible. Repairing the original board where technically possible may avoid an unnecessary board replacement, yet the result depends on the device design, the extent of the damage and the storage condition. Back up important files whenever possible. KCROC does not provide standalone data recovery.'
         },
         {
           id: 'faq-motherboard-cost-vs-new',
@@ -4357,7 +4408,7 @@ export const rawGraphData: RawGraphData = {
     'faq-cost': { id: 'faq-cost', slug: 'repair-cost', entityType: 'FAQ', isActive: true, title: 'How much does computer repair cost in Kuwait?', description: 'Base pricing for common repair services.', answer: 'Diagnostics are free. Laptop screen-replacement labor starts from 30 KWD, plus the panel; battery-replacement labor starts from 8 KWD (typically 8–15 KWD), plus the battery; and keyboard-replacement labor starts from 10 KWD, with the part cost confirmed for the exact model. Common laptop repairs start from 15 KWD, MacBook repair from 25 KWD, and component-level motherboard repair from 25 KWD. The complete price depends on the model, fault and parts, and is confirmed before paid work begins.', seo: { title: 'FAQ: Repair Costs Kuwait', description: 'Computer repair pricing in Kuwait.', canonicalUrl: 'https://www.computerrepairkuwait.com/faq#cost', schemaTypes: ['FAQPage'] } } as FAQEntity,
     
     'faq-macbook-brands': { id: 'faq-macbook-brands', slug: 'macbook-models', entityType: 'FAQ', isActive: true, title: 'Which MacBook models do you repair?', description: 'List of supported Apple MacBook models for repair.', answer: 'We repair all MacBook models including MacBook Air (M1, M2, M3), MacBook Pro 13", 14", and 16" (M1, M2, M3, M3 Pro, M3 Max), and all Intel MacBook models from 2015 onward. This includes motherboard micro-soldering, USB-C power IC replacement, screen replacement, battery replacement, and liquid damage recovery for all these models.', seo: { title: 'Which MacBook models do you repair?', description: 'We repair all MacBook Air and Pro models including M1, M2, M3, and Intel variations.', canonicalUrl: 'https://www.computerrepairkuwait.com/faq#macbook-models', schemaTypes: ['FAQPage'] } } as FAQEntity,
-    'faq-data-loss': { id: 'faq-data-loss', slug: 'data-loss', entityType: 'FAQ', isActive: true, title: 'Will I lose my data during repair?', description: 'Information regarding data preservation during component repairs.', answer: 'Most hardware repairs — including screen replacement, battery replacement, keyboard repair, and charging port repair — do not affect your data at all. For motherboard and motherboard repairs, we repair your original board rather than replacing it, which preserves your data entirely.', seo: { title: 'Will I lose my data during repair?', description: 'Our component-level repair preserves your data completely.', canonicalUrl: 'https://www.computerrepairkuwait.com/faq#data-loss', schemaTypes: ['FAQPage'] } } as FAQEntity,
+    'faq-data-loss': { id: 'faq-data-loss', slug: 'data-loss', entityType: 'FAQ', isActive: true, title: 'Will I lose my data during repair?', description: 'Information regarding data preservation during component repairs.', answer: 'Routine hardware repairs such as screen, battery, keyboard and charging-port work do not normally require access to personal files. For motherboard work, repairing the original board where technically possible may help retain data access, but data survival or recovery cannot be guaranteed. Back up important files when possible. KCROC does not provide standalone data recovery.', seo: { title: 'Will I lose my data during repair?', description: 'Our component-level repair preserves your data completely.', canonicalUrl: 'https://www.computerrepairkuwait.com/faq#data-loss', schemaTypes: ['FAQPage'] } } as FAQEntity,
     'faq-same-day-booking': { id: 'faq-same-day-booking', slug: 'same-day-booking', entityType: 'FAQ', isActive: true, title: 'How do I book a same-day repair?', description: 'Instructions for booking a same-day repair service.', answer: 'Message us on WhatsApp before 11:00 AM for same-day collection and repair eligibility. Share your device model, the fault description, and your area in Kuwait. We confirm availability and send our driver to collect within a few hours.', seo: { title: 'How do I book a same-day repair?', description: 'Message us on WhatsApp before 11:00 AM for same-day computer repair in Kuwait.', canonicalUrl: 'https://www.computerrepairkuwait.com/faq#same-day-booking', schemaTypes: ['FAQPage'] } } as FAQEntity,
     'faq-payment': { id: 'faq-payment', slug: 'payment', entityType: 'FAQ', isActive: true, title: 'What payment methods do you accept?', description: 'Available payment methods for repair services.', answer: 'We accept cash on delivery when we return your repaired device. Payment is only due after the repair is completed, tested, and you are satisfied. We never take payment upfront.', seo: { title: 'What payment methods do you accept?', description: 'Cash on delivery accepted after successful computer repair.', canonicalUrl: 'https://www.computerrepairkuwait.com/faq#payment', schemaTypes: ['FAQPage'] } } as FAQEntity,
     'faq-ssd-upgrade': { id: 'faq-ssd-upgrade', slug: 'ssd-upgrade', entityType: 'FAQ', isActive: true, title: 'Can you upgrade my laptop to an SSD?', description: 'Information on NVMe and SATA SSD upgrade services.', answer: 'Yes. SSD upgrades are one of the most cost-effective performance improvements for older laptops. We install NVMe or SATA SSDs compatible with your model, migrate your existing Windows installation to the new drive, and verify performance after installation.', seo: { title: 'Can you upgrade my laptop to an SSD?', description: 'We provide NVMe and SATA SSD upgrades to drastically improve laptop speed.', canonicalUrl: 'https://www.computerrepairkuwait.com/faq#ssd-upgrade', schemaTypes: ['FAQPage'] } } as FAQEntity,
@@ -4407,7 +4458,7 @@ export const rawGraphData: RawGraphData = {
     'faq-bios-mac-firmware-flash': { id: 'faq-bios-mac-firmware-flash', slug: 'bios-mac-firmware-flash', entityType: 'FAQ', isActive: true, title: "Can a Mac's firmware be \"flashed\" like a PC's BIOS?", description: 'How Mac firmware recovery differs from PC BIOS flashing.', answer: "Not in the same way. Mac firmware recovery uses Apple's DFU mode with a second Mac and Apple's own tools \u2014 not third-party SPI programming of the main system firmware.", seo: { title: "Can a Mac's firmware be flashed like a PC's BIOS?", description: 'How Mac firmware recovery differs from PC BIOS flashing.', canonicalUrl: 'https://www.computerrepairkuwait.com/guides/bios-uefi-recovery-kuwait#faq', schemaTypes: ['FAQPage'] } } as FAQEntity,
     'faq-bios-security-risk': { id: 'faq-bios-security-risk', slug: 'bios-security-risk', entityType: 'FAQ', isActive: true, title: 'Is BIOS/UEFI firmware a security risk?', description: 'Why firmware-update authentication and secure recovery matter.', answer: 'Yes, in principle. It\u2019s part of why the industry treats firmware-update authentication, signature verification and secure recovery as standard protections, and why manufacturers restrict which firmware files a board will accept.', seo: { title: 'Is BIOS/UEFI firmware a security risk?', description: 'Why firmware-update authentication and secure recovery matter.', canonicalUrl: 'https://www.computerrepairkuwait.com/guides/bios-uefi-recovery-kuwait#faq', schemaTypes: ['FAQPage'] } } as FAQEntity,
     'faq-virus': { id: 'faq-virus', slug: 'virus-removal', entityType: 'FAQ', isActive: true, title: 'Can you remove viruses and malware from my laptop?', description: 'Information on professional virus, malware, and ransomware removal.', answer: 'Yes. We perform complete malware and virus removal, including ransomware, adware, browser hijackers, and rootkits. For severe infections, we back up your personal files and perform a clean Windows installation.', seo: { title: 'Can you remove viruses and malware?', description: 'Professional malware, virus, and adware removal services in Kuwait.', canonicalUrl: 'https://www.computerrepairkuwait.com/faq#virus-removal', schemaTypes: ['FAQPage'] } } as FAQEntity,
-    'faq-windows': { id: 'faq-windows', slug: 'windows-install', entityType: 'FAQ', isActive: true, title: 'Can you reinstall Windows on my laptop?', description: 'Details on clean Windows 10 and 11 installation services.', answer: 'Yes. We perform clean Windows 10 and Windows 11 installations with driver installation, Windows Update, and system optimization included. If you have data to preserve, we back up your files before reinstalling.', seo: { title: 'Can you reinstall Windows on my laptop?', description: 'Clean Windows 10 and 11 installations with full data backup and driver setup.', canonicalUrl: 'https://www.computerrepairkuwait.com/faq#windows-install', schemaTypes: ['FAQPage'] } } as FAQEntity,
+    'faq-windows': { id: 'faq-windows', slug: 'windows-install', entityType: 'FAQ', isActive: true, title: 'Can you reinstall Windows on my laptop?', description: 'Details on clean Windows 10 and 11 installation services.', answer: 'Yes. We perform clean Windows 10 and Windows 11 installations with driver installation and essential updates. A clean installation can remove existing files and applications, so customers should back up accessible files themselves before approving the work. KCROC does not provide standalone data recovery or guarantee recovery of inaccessible files.', seo: { title: 'Can you reinstall Windows on my laptop?', description: 'Clean Windows 10 and 11 installations with full data backup and driver setup.', canonicalUrl: 'https://www.computerrepairkuwait.com/faq#windows-install', schemaTypes: ['FAQPage'] } } as FAQEntity,
 
     /* ═══════════════════════════════════════════════════════════════
        BRANDS
@@ -5416,14 +5467,15 @@ export const rawGraphData: RawGraphData = {
       symptom: 'Constant pop-up ads even outside the browser, a homepage or search engine that changed itself, unfamiliar toolbars, the antivirus getting disabled on its own, or — in serious cases — files that suddenly cannot be opened with a ransom message demanding payment.',
       causes: ['Downloaded software bundled with adware or a browser hijacker', 'Opening an infected email attachment or fake software update', 'Outdated Windows or browser software with unpatched security holes', 'Pirated software or "cracked" program installers'],
       doNotDo: 'Do not pay a ransomware demand, and do not install multiple "PC cleaner" or antivirus tools on top of each other trying to fix it yourself — conflicting security tools often make removal harder and some free "cleaner" downloads are malware themselves.',
-      solution: 'We fully scan and remove the infection using professional-grade tools run outside the compromised operating system, so the malware cannot hide from or disable the scanner. For severe or ransomware infections, we back up any recoverable personal files first, then perform a clean Windows installation to guarantee nothing survives.',
+      solution: 'We assess the reported infection and use appropriate malware-removal tools to scan and clean the affected Windows system. Before any clean Windows installation, customers should back up accessible personal files themselves. A clean install can remove existing files and applications and is only performed after the scope and data implications are explained and approved. This is malware remediation, not standalone data recovery, deleted-file recovery or ransomware decryption.',
       urgency: 'medium',
       relatedServiceIds: ['srv-laptop', 'srv-gaming'],
       contentImages: [
         { src: IMAGES.laptopHardware.fujitsuLaptopWindowsErrorScreenRepair.src, alt: IMAGES.laptopHardware.fujitsuLaptopWindowsErrorScreenRepair.alt, width: IMAGES.laptopHardware.fujitsuLaptopWindowsErrorScreenRepair.width, height: IMAGES.laptopHardware.fujitsuLaptopWindowsErrorScreenRepair.height, placement: 'causes', caption: 'Windows software-repair diagnostics before malware cleanup or system recovery.' },
-        { src: IMAGES.services.windowsInstall.src, alt: IMAGES.services.windowsInstall.alt, width: IMAGES.services.windowsInstall.width, height: IMAGES.services.windowsInstall.height, placement: 'solution', caption: 'A clean Windows installation guarantees a severe or ransomware infection cannot survive, once your files are safely backed up.' },
+        { src: IMAGES.services.windowsInstall.src, alt: IMAGES.services.windowsInstall.alt, width: IMAGES.services.windowsInstall.width, height: IMAGES.services.windowsInstall.height, placement: 'solution', caption: 'A clean Windows installation may be considered after infection assessment and customer approval; existing files and applications can be removed.' },
       ],
-      seo: { title: 'Virus & Malware Removal Kuwait — Same-Day Service | KCROC', description: 'Pop-ups, hijacked browser, or ransomware on your laptop? Professional virus and malware removal, with safe file backup first. Free pick & drop in Kuwait.', canonicalUrl: 'https://www.computerrepairkuwait.com/virus-malware-removal-kuwait', ogType: 'article', schemaTypes: ['Article', 'FAQPage'] },
+      seo: { title: 'Virus & Malware Removal Kuwait — Same-Day Service | KCROC', description: 'Pop-ups, browser hijackers or malware on your laptop or PC? KCROC assesses and removes malware, explains clean-install risks and quotes before paid work. Free pickup in Kuwait.', canonicalUrl: 'https://www.computerrepairkuwait.com/virus-malware-removal-kuwait', ogType: 'article', schemaTypes: ['Article', 'FAQPage'] },
+      relatedResourcePaths: [{ path: '/pricing#pricing-diagnostics', label: 'Virus & Malware Removal — published price 10–20 KWD' }],
       navigationPriority: 45, popular: false
     } as ProblemEntity,
 
