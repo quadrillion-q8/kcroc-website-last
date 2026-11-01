@@ -561,22 +561,21 @@ export const rawGraphData: RawGraphData = {
       relatedServiceIds: ['srv-gaming-laptop', 'srv-gaming-laptop-cleaning', 'srv-gaming', 'srv-laptop', 'srv-screen', 'srv-battery']
     } as WebPageEntity,
 
-    'page-ar-desktop-pc-repair': {
+        'page-ar-desktop-pc-repair': {
       id: 'page-ar-desktop-pc-repair', slug: 'ar/desktop-pc-repair-kuwait', entityType: 'WebPage', isActive: true,
-      title: 'تصليح الكمبيوتر المكتبي في الكويت',
-      description: 'تصليح كمبيوتر مكتبي وPC في الكويت لأعطال عدم التشغيل والشاشة السوداء والحرارة والتوقف المفاجئ والرام والتخزين والمذربورد، مع استلام وتوصيل مجاني وضمان 30 يومًا.',
+      title: 'تصليح الكمبيوتر المكتبي (Desktop & PC) في الكويت',
+      description: 'تصليح الكمبيوتر المكتبي في الكويت لأعطال الطاقة والشاشة السوداء والحرارة والتوقف المفاجئ والتخزين والرام والمذربورد. بعض الإصلاحات تبدأ من 15 د.ك مع فحص أولي مجاني واستلام وتوصيل وضمان 30 يومًا.',
       seo: {
-        title: 'تصليح كمبيوتر مكتبي في الكويت | PC وDesktop | KCROC',
-        description: 'تصليح الكمبيوتر المكتبي والـPC في الكويت. تشخيص أعطال الطاقة والشاشة والحرارة والرام والمذربورد، مع فحص أولي مجاني واستلام وتوصيل وضمان 30 يومًا.',
+        title: 'تصليح الكمبيوتر المكتبي في الكويت | Desktop & PC | KCROC',
+        description: 'تصليح الكمبيوتر المكتبي وPC في الكويت لأعطال الطاقة والشاشة والحرارة والمذربورد. بعض الإصلاحات تبدأ من 15 د.ك، مع فحص أولي مجاني واستلام وتوصيل وضمان 30 يومًا.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/ar/desktop-pc-repair-kuwait',
         locale: 'ar_KW',
         alternates: { 'ar-KW': 'https://www.computerrepairkuwait.com/ar/desktop-pc-repair-kuwait', 'en-KW': 'https://www.computerrepairkuwait.com/desktop-pc-repair-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/desktop-pc-repair-kuwait' },
-        ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList'], lastModified: '2026-11-01T00:00:00+03:00',
-        breadcrumbs: [{ name: 'الرئيسية', url: '/' }, { name: 'تصليح كمبيوتر مكتبي', url: '/ar/desktop-pc-repair-kuwait' }]
+        ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList', 'Service'], lastModified: '2026-11-01T00:00:00+03:00',
+        breadcrumbs: [{ name: 'الرئيسية', url: '/' }, { name: 'تصليح الكمبيوتر المكتبي', url: '/ar/desktop-pc-repair-kuwait' }]
       },
-      relatedServiceIds: ['srv-desktop-pc', 'srv-motherboard', 'srv-gaming', 'srv-ssd-ram']
+      relatedServiceIds: ['srv-motherboard', 'srv-gaming', 'srv-ssd-ram']
     } as WebPageEntity,
-
     'page-ar-laptop-hinge-repair': {
       id: 'page-ar-laptop-hinge-repair', slug: 'ar/laptop-hinge-repair-kuwait', entityType: 'WebPage', isActive: true,
       title: 'تصليح مفصلات وهيكل اللابتوب في الكويت',
@@ -5495,6 +5494,7 @@ export const rawGraphData: RawGraphData = {
       id: 'footer-data', entityType: 'Footer', isActive: true, title: 'Footer Links',
       links: {
         services: [
+          { label: 'Desktop & PC Repair Kuwait', path: '/desktop-pc-repair-kuwait' },
           { label: 'Laptop Repair Kuwait',     path: '/laptop-repair-kuwait' },
           { label: 'MacBook Repair Kuwait',     path: '/macbook-repair-kuwait' },
           { label: 'Gaming PC Repair Kuwait',   path: '/gaming-pc-repair-kuwait' },
