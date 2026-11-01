@@ -1013,13 +1013,14 @@ export const rawGraphData: RawGraphData = {
       slug: 'guides/gamebar-presence-writer-fix',
       entityType: 'WebPage',
       isActive: true,
-      title: 'GameBarPresenceWriter.exe: What It Does, How to Fix Performance Issues, and How to Disable It',
-      description: 'What is GameBarPresenceWriter.exe? A measured, evidence-first guide covering Game Bar stutter, background capture activity, the advanced Game DVR registry method, and safer rollback-first troubleshooting.',
+      title: 'High FPS but Gaming Stutter? How to Test GameBarPresenceWriter.exe',
+      description: 'High FPS but uneven gameplay? Test whether GameBarPresenceWriter.exe is related, review Xbox Game Bar capture settings, and understand safe registry rollback.',
       seo: {
-        title: 'GameBarPresenceWriter.exe Fix for Windows 11 Stutter | KCROC',
-        description: 'Fix GameBarPresenceWriter.exe and Xbox Game Bar capture issues causing Windows 11 stutter. Test the cause, adjust settings safely, and roll back.',
+        title: 'High FPS but Stuttering? GameBarPresenceWriter.exe Fix | KCROC',
+        description: 'Test whether GameBarPresenceWriter.exe is linked to gaming stutter. Run a quick isolation test, adjust Game Bar settings, and review registry risks.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/guides/gamebar-presence-writer-fix',
         ogImage: 'https://www.computerrepairkuwait.com/images/discover/windows-11-laptop-multitasking-1200x675.webp',
+        lastModified: '2026-11-01T00:00:00+03:00',
         ogType: 'article',
         // Deliberately just 'WebPage' — this page hand-rolls its own
         // TechArticle/Person/HowTo/FAQPage/BreadcrumbList via SchemaMarkup

@@ -80,7 +80,7 @@ add('Generated SEO projection contains the Arabic page', seoProjection.includes(
 add('High-impression page snippets stay concise in the canonical graph source',
   has(graph, "description: 'Laptop and computer repair in Kuwait from 15 KWD. Free pickup and delivery, a quote before work, and a 30-day warranty on completed repairs.'") &&
   has(graph, "description: 'Spot laptop battery failure with 15 warning signs, Windows and Mac health tests, swollen-battery safety advice, and replacement guidance.'") &&
-  has(graph, "description: 'Fix GameBarPresenceWriter.exe and Xbox Game Bar capture issues causing Windows 11 stutter. Test the cause, adjust settings safely, and roll back.'") &&
+  has(graph, "description: 'High FPS but uneven gameplay? Test whether GameBarPresenceWriter.exe is related, review Xbox Game Bar capture settings, and understand safe registry rollback.'") &&
   has(graph, 'description: "PC won’t boot after a BIOS/UEFI update? Learn to distinguish firmware corruption from RAM, power or motherboard faults and review safe recovery options."') &&
   has(graph, "title: 'Intel Core Ultra vs Ryzen AI: 2026 Laptop Guide | KCROC'"));
 add('English and Arabic pricing language switch is reciprocal', locale.includes("'/pricing': '/ar/pricing'") && locale.includes("'/ar/pricing': '/pricing'"));

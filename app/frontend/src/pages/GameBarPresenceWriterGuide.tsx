@@ -18,7 +18,7 @@ import SchemaMarkup from '../components/seo/SchemaMarkup';
 import { KuwaitLocalCTA } from '@/components/content/KuwaitLocalCTA';
 
 const business = KCROC_GRAPH.business!;
-const WA_LINK = `https://wa.me/${business.telephone}?text=${encodeURIComponent('I need gaming PC performance diagnostics in Kuwait')}`;
+const WA_LINK = `https://wa.me/${business.telephone}?text=${encodeURIComponent('I need gaming PC or laptop performance diagnostics in Kuwait. Please arrange free pickup and delivery.')}`;
 const PAGE_URL = `${business.websiteUrl}/guides/gamebar-presence-writer-fix`;
 const GUIDE_IMAGE_URL = '/images/blog/windows-11-laptop-multitasking.webp';
 const GUIDE_IMAGE_ALT = 'Windows 11 laptop multitasking and performance troubleshooting';
@@ -35,19 +35,18 @@ const registryPath = 'HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\WindowsRuntime\\A
 const MS_DOCS_URL = 'https://learn.microsoft.com/en-us/windows/win32/devnotes/gamebar-presencewriter';
 const MS_GAMEDVR_POLICY_URL = 'https://learn.microsoft.com/en-us/windows/client-management/mdm/policy-csp-applicationmanagement';
 
-const LAST_REVIEWED = 'September 9, 2026';
+const LAST_REVIEWED = 'November 1, 2026';
 
 const toc = [
+  { id: 'taskkill', label: '10-Second Test' },
   { id: 'what-it-is', label: 'What It Is' },
-  { id: 'diagnose', label: 'Diagnose First' },
-  { id: 'safe-method', label: 'Low-Risk Method' },
+  { id: 'diagnose', label: 'Symptom Triage' },
+  { id: 'safe-method', label: 'Game Bar Settings' },
   { id: 'game-dvr-registry', label: 'Game DVR Registry' },
-  { id: 'registry', label: 'Presence Writer Registry' },
-  { id: 'command-line', label: 'Command Line' },
-  { id: 'taskkill', label: 'Task Isolation' },
+  { id: 'registry', label: 'Advanced Override' },
   { id: 'other-causes', label: 'Other Stutter Causes' },
-  { id: 'cluster', label: 'Windows Gaming Guides' },
-  { id: 'kuwait', label: 'Kuwait Heat' },
+  { id: 'cluster', label: 'Related Gaming Guides' },
+  { id: 'kuwait', label: 'KCROC Repair in Kuwait' },
   { id: 'faq', label: 'FAQ' },
 ];
 
@@ -60,17 +59,17 @@ const symptoms = [
 ];
 
 const faqs = [
-  { q: 'What is GameBarPresenceWriter.exe?', a: 'It is associated with Windows Game Bar presence functionality. Microsoft documents Presence Writer as a component notified when a game gains focus, loses focus, or closes, and describes its role in updating Xbox Live game presence when the relevant Xbox features are enabled.' },
-  { q: 'Does GameBarPresenceWriter.exe definitely cause gaming stutter?', a: 'No. Its presence alone does not prove a performance problem. Stutter has many possible causes, including GPU/CPU limits, thermal throttling, drivers, overlays, shader compilation, storage, and background software. Treat this process as a testable variable rather than the default culprit.' },
-  { q: 'Should I change the registry before testing anything else?', a: 'No. Start with the least invasive Game Bar and capture settings, reproduce the problem, and measure frame-time. Registry ownership changes should be a last-resort experiment for an experienced Windows user.' },
-  { q: 'Will disabling Game Bar remove Steam or Discord overlays?', a: 'No. Xbox Game Bar is separate from Steam Overlay, Discord Overlay, and third-party capture applications such as OBS. Those applications have their own settings and processes.' },
-  { q: 'Can I just use taskkill?', a: 'You can terminate a currently running process, but that is not a guaranteed permanent disable mechanism. Windows or the application stack can start a component again when its activation conditions are met.' },
-  { q: 'What should I check if disabling Game Bar does not fix stutter?', a: 'Check frame-time consistency, CPU/GPU utilization, temperatures, clock speeds, RAM pressure, storage activity, graphics-driver behavior, overlays, shader compilation, and DPC/ISR latency. Hardware instability should also be considered.' },
-  { q: 'Is this especially relevant to gaming laptops and handhelds?', a: 'It can be worth testing on constrained systems such as gaming laptops and Windows handhelds because background activity competes within a tighter thermal and power budget. But thermal and power-limit behavior should be investigated first when symptoms appear after sustained gaming.' },
-  { q: 'What does AllowGameDVR do?', a: 'The AllowGameDVR policy controls Windows Game Recording and Broadcasting. A value of 0 means the policy does not allow Game Recording and Broadcasting; a value of 1 allows it. This guide uses the policy as an advanced troubleshooting control rather than presenting it as a guaranteed FPS optimization.' },
-  { q: 'Will disabling Game DVR increase FPS?', a: 'It may reduce background capture-related activity on a system where Game DVR is contributing to the workload, but the result is configuration-dependent. Do not treat the source PDF\'s 10–20% or “up to 20%” claim as a guaranteed result. Measure the same game scene, frame-time behavior, CPU/GPU load, and temperatures before and after.' },
-  { q: 'Do I need the registry method if I already disabled background recording in Settings?', a: 'Usually start with the Settings method. The registry method is a deeper troubleshooting step for power users when you specifically want to test the Game DVR policy and current-user configuration. Avoid changing the registry simply because a process exists in Task Manager.' },
-  { q: 'Can I undo the registry change?', a: 'Yes. Before editing, export the affected keys and record the original values. For the Game DVR method, restore the original GameDVR_Enabled value and remove or restore the GameDVR policy key only if you created it for this test. Do not assume a hard-coded rollback value matches every Windows installation.' },
+  { q: 'What is GameBarPresenceWriter.exe?', a: 'It is a Windows component associated with Xbox Game Bar presence. Microsoft documents it as receiving events when a game gains focus, loses focus, or closes. When the relevant Xbox features are enabled, the default implementation can update Xbox Live presence for the game.' },
+  { q: 'Does GameBarPresenceWriter.exe definitely cause gaming stutter?', a: 'No. Its presence in Task Manager does not prove that it causes stutter. Use the process-isolation test below and compare the same scene more than once. Frame-time spikes can also come from drivers, overlays, shader compilation, CPU/GPU limits, thermal throttling, storage, or other background activity.' },
+  { q: 'How do I test GameBarPresenceWriter.exe quickly?', a: 'Reproduce the hitch in a repeatable game scene, note the frame-time behavior, and run taskkill /f /im GameBarPresenceWriter.exe from Command Prompt. Compare the same scene again. A repeatable improvement suggests the process or related Game Bar activity may contribute; one test alone is not proof.' },
+  { q: 'Does taskkill permanently disable GameBarPresenceWriter.exe?', a: 'No. The command ends the currently running process instance. Windows may start it again when the relevant activation conditions occur. Use the Settings method or a carefully backed-up advanced configuration test if you need to investigate persistent behavior.' },
+  { q: 'Will disabling Xbox Game Bar remove Steam or Discord overlays?', a: 'No. Steam Overlay, Discord Overlay, OBS, and GPU-vendor capture tools have their own components and settings. Disabling Xbox Game Bar does not automatically disable those separate tools.' },
+  { q: 'What does the AllowGameDVR policy change?', a: 'The AllowGameDVR policy controls Windows Game Recording and Broadcasting. A value of 0 disallows that policy-controlled recording and broadcasting; a value of 1 allows it. It is a configuration control, not a guaranteed FPS switch.' },
+  { q: 'Will disabling Game DVR increase FPS?', a: 'Only a system where background recording is contributing to the workload may show a measurable improvement. Results vary by Windows build, game, hardware, and capture configuration. Compare the same scene and do not expect a fixed percentage increase.' },
+  { q: 'Should I change the Presence Writer registry key?', a: 'Treat the ActivatableClassId ActivationType change as an optional community workaround, not an official Microsoft gaming optimization. It involves a protected system registry area and should be attempted only by an experienced user after creating a restore point and exporting the key.' },
+  { q: 'What should I check if the test does not improve stutter?', a: 'Check frame-time consistency, CPU/GPU utilization, temperatures, clock speeds, RAM pressure, storage activity, drivers, overlays, shader compilation, and DPC/ISR latency. If performance worsens after the system heats up, investigate cooling and power limits.' },
+  { q: 'Is this guide relevant to gaming laptops and handhelds?', a: 'The same isolation test can be used, but a hitch that appears only after sustained gaming points more strongly toward checking temperatures, clocks, and power limits. Do not assume Presence Writer is the cause based only on the device type.' },
+  { q: 'How do I undo the registry changes?', a: 'Before editing, export each affected key and record its original values. Roll back by importing the saved key or restoring the exact values you recorded. Do not assume that a hard-coded default is correct for every Windows installation.' },
 ];
 
 // 🚀 Self-contained TechArticle + Person + HowTo + FAQPage + BreadcrumbList
@@ -80,7 +79,7 @@ const faqs = [
 //
 // 1. FAQPage: SEOEngine's WebPage->FAQPage branch falls back to
 //    `KCROC_GRAPH.faqs` (every FAQ on the entire site) whenever the entity
-//    has no `featuredFAQIds` — this page's 8 FAQs aren't registered as
+//    has no `featuredFAQIds` — this page's 11 FAQs aren't registered as
 //    global FAQ entities, so enabling that schemaType on the graph entity
 //    would have silently attached every site-wide FAQ to this page instead
 //    of just these 8. Same pattern used by the page-specific schema components
@@ -113,8 +112,8 @@ const STRUCTURED_DATA = {
     {
       "@type": "TechArticle",
       "@id": `${PAGE_URL}#article`,
-      "headline": "GameBarPresenceWriter.exe: What It Does, How to Fix Performance Issues, and How to Disable It",
-      "description": "What is GameBarPresenceWriter.exe? A measured, evidence-first guide to what the Windows Game Bar component does, whether it's causing high CPU use or stutter, and how to disable related Game Bar activity.",
+      "headline": "High FPS but Gaming Stutter? Test GameBarPresenceWriter.exe | KCROC",
+      "description": "A practical guide to testing whether GameBarPresenceWriter.exe is related to gaming stutter, changing Xbox Game Bar settings, and understanding advanced registry risks.",
       "url": PAGE_URL,
       "isPartOf": { "@id": `${business.websiteUrl}/#website` },
       "mainEntityOfPage": { "@id": `${PAGE_URL}#webpage` },
@@ -123,20 +122,18 @@ const STRUCTURED_DATA = {
       "publisher": { "@id": `${business.websiteUrl}/#business` },
       "image": GUIDE_IMAGE_URL,
       "articleSection": "Guides",
-      "dateModified": "2026-09-09"
+      "dateModified": "2026-11-01"
     },
     {
       "@type": "HowTo",
       "@id": `${PAGE_URL}#howto`,
-      "name": "How to test and fix GameBarPresenceWriter.exe-related stutter",
-      "description": "A measure-first sequence for isolating whether Game Bar Presence Writer is contributing to gaming stutter, from least to most invasive.",
+      "name": "How to test GameBarPresenceWriter.exe and troubleshoot gaming stutter",
+      "description": "A cautious four-tier sequence that starts with a reversible process test and escalates only when measurements justify it.",
       "step": [
-        { "@type": "HowToStep", "position": 1, "name": "Diagnose before you modify anything", "text": "Reproduce the stutter in a repeatable scene and log frame-time, temperatures, and background load to identify what's actually correlated with the symptom.", "url": `${PAGE_URL}#diagnose` },
-        { "@type": "HowToStep", "position": 2, "name": "Disable Xbox Game Bar and capture settings", "text": "Turn off Game Bar and background captures in Settings, reboot, and compare frame-time in the same scene. This is the lowest-risk step and doesn't touch the registry.", "url": `${PAGE_URL}#safe-method` },
-        { "@type": "HowToStep", "position": 3, "name": "Disable Game DVR with the registry", "text": "Back up the registry, set GameDVR_Enabled to 0 under HKEY_CURRENT_USER\\System\\GameConfigStore, create the GameDVR policy key under HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows, set AllowGameDVR to 0, reboot, and retest the same game scene.", "url": `${PAGE_URL}#game-dvr-registry` },
-        { "@type": "HowToStep", "position": 4, "name": "Back up before the Presence Writer registry override", "text": "If the Game DVR method does not resolve the issue, create a restore point and export the ActivatableClassId registry key before changing any permissions or values.", "url": `${PAGE_URL}#registry` },
-        { "@type": "HowToStep", "position": 5, "name": "Test the ActivationType value", "text": "Change the ActivationType DWORD from an elevated terminal only after documenting its original state, then retest.", "url": `${PAGE_URL}#command-line` },
-        { "@type": "HowToStep", "position": 6, "name": "Confirm with a targeted taskkill test", "text": "Terminate the running process for a quick before/after comparison — this confirms correlation for the current session but isn't a permanent disable.", "url": `${PAGE_URL}#taskkill` }
+        { "@type": "HowToStep", "position": 1, "name": "Run a targeted process-isolation test", "text": "Reproduce the hitch in a repeatable game scene, terminate the current GameBarPresenceWriter.exe process, and compare frame-time behavior in the same scene. Repeat the comparison before drawing a conclusion.", "url": `${PAGE_URL}#taskkill` },
+        { "@type": "HowToStep", "position": 2, "name": "Review Xbox Game Bar and capture settings", "text": "Turn off Game Bar or background capture features you do not use, restart Windows, and compare the same workload again.", "url": `${PAGE_URL}#safe-method` },
+        { "@type": "HowToStep", "position": 3, "name": "Test the Game DVR policy only if needed", "text": "Back up the relevant registry areas, record original values, and test the Game DVR configuration as an advanced troubleshooting step rather than a guaranteed FPS optimization.", "url": `${PAGE_URL}#game-dvr-registry` },
+        { "@type": "HowToStep", "position": 4, "name": "Consider the protected Presence Writer override only as a last resort", "text": "Create a restore point, export the ActivatableClassId key, record the existing ActivationType value, and proceed only if you understand how to restore the original state.", "url": `${PAGE_URL}#registry` }
       ]
     },
     {
@@ -202,31 +199,24 @@ export default function GameBarPresenceWriterGuide() {
             <div>
               <Badge className="mb-4 border-cyan-500/30 bg-cyan-500/10 px-3 py-1.5 text-cyan-300">
                 <Gamepad2 className="mr-2 h-4 w-4" />
-                Windows Gaming Performance Guide
+                Windows Gaming Performance & Frame-Time Diagnostics
               </Badge>
               <h1 className="max-w-4xl text-3xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">
-                GameBarPresenceWriter.exe:
+                High FPS but Gaming Stutter?
                 <span className="block bg-gradient-to-r from-cyan-400 to-violet-400 bg-clip-text text-transparent">
-                  What It Does, How to Fix Performance Issues, and How to Disable It
+                  Test GameBarPresenceWriter.exe
                 </span>
               </h1>
               <p className="mt-5 max-w-2xl text-sm leading-7 text-slate-300 sm:text-lg">
-                GameBarPresenceWriter.exe is a Windows gaming component tied to Xbox Game Bar's game-presence functionality. Seeing it in Task Manager does not by itself mean it is causing stutter or high CPU use — the safest approach is to check whether Game Bar activity actually correlates with the problem, test the least invasive settings first, and treat the registry override as a last resort.
+                Your FPS counter can stay above 160 while the game still hitches when you flick the mouse, enter a fight, or switch windows. If GameBarPresenceWriter.exe is running at the same time, test it before changing Windows settings or touching protected registry permissions. The process is part of Windows Game Bar presence functionality; the quick test below helps you check whether it is actually related to your frame-time problem.
               </p>
               <div className="mt-6 flex flex-col gap-3 sm:flex-row">
                 <Button size="lg" asChild className="w-full bg-cyan-500 px-6 py-6 font-bold text-slate-950 hover:bg-cyan-400 sm:w-auto">
-                  <a href={`tel:+${business.telephone}`}>Book a Gaming Diagnostic</a>
+                  <a href={WA_LINK} target="_blank" rel="noopener noreferrer">Book Free Gaming PC Pickup</a>
                 </Button>
                 <Button size="lg" variant="outline" asChild className="w-full border-slate-700 px-6 py-6 text-slate-200 hover:bg-slate-800 sm:w-auto">
-                  <a href={WA_LINK} target="_blank" rel="noopener noreferrer">WhatsApp a Technician</a>
+                  <a href={`tel:+${business.telephone}`}>Call KCROC: {business.telephone.slice(3)}</a>
                 </Button>
-              </div>
-              <div className="mt-6 flex flex-wrap gap-2">
-                {toc.map((item) => (
-                  <a key={item.id} href={`#${item.id}`} className="rounded-full border border-slate-800 bg-brand-dark/40 px-3 py-1.5 text-[11px] text-slate-400 transition hover:border-cyan-500/50 hover:text-cyan-300">
-                    {item.label}
-                  </a>
-                ))}
               </div>
             </div>
 
@@ -241,7 +231,7 @@ export default function GameBarPresenceWriterGuide() {
               <p className="mt-4 text-sm leading-6 text-slate-300">
                 A process appearing in Task Manager while a game runs does not prove it is causing latency. Compare frame-time and system behavior before and after each change so you know which change actually helped.
               </p>
-              <a href="#diagnose" className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-amber-300 hover:text-amber-200">Start with diagnosis <ChevronRight className="h-4 w-4" /></a>
+              <a href="#taskkill" className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-amber-300 hover:text-amber-200">Run the quick test first <ChevronRight className="h-4 w-4" /></a>
             </div>
           </div>
         </div>
@@ -257,6 +247,30 @@ export default function GameBarPresenceWriterGuide() {
           </div>
         </div>
       </section>
+
+      <section id="taskkill" className={`${sectionClass} bg-slate-900/40`}>
+        <div className="container mx-auto max-w-5xl">
+          <Badge className="mb-3 border-sky-500/30 bg-sky-500/10 text-sky-300">Step 1 — 10-second live isolation test</Badge>
+          <h2 className="text-2xl font-bold sm:text-4xl">Test GameBarPresenceWriter.exe before touching the Registry</h2>
+          <p className={`mt-4 max-w-3xl ${proseClass}`}>
+            Save your game, reproduce the hitch in a repeatable scene, and note the frame-time behavior. Open Command Prompt or Windows Terminal and run the command below. Then repeat the same action and compare. If Windows denies access, reopen the terminal as Administrator.
+          </p>
+          <div className="mt-6 max-w-3xl">
+            <h3 className="mb-2 flex items-center gap-2 font-bold"><Terminal className="h-5 w-5 text-sky-400" /> End the current process instance</h3>
+            <CodeBlock>{'taskkill /f /im GameBarPresenceWriter.exe'}</CodeBlock>
+          </div>
+          <div className="mt-6 grid gap-4 sm:grid-cols-3">
+            {[
+              ['Repeatable improvement', 'If the same scene becomes consistently smoother, Presence Writer or related Game Bar activity may be contributing. Continue to Tier 2 and verify after a restart.', CheckCircle2],
+              ['No measurable change', 'The process is less likely to be the main cause. Do not continue into registry changes just because the executable appears in Task Manager.', CircleHelp],
+              ['The process returns', 'Taskkill ends only the current instance. Windows may start it again when activation conditions occur; this command is a test, not a permanent disable.', RotateCcw],
+            ].map(([title, text, Icon]) => { const I = Icon as React.ElementType; return <div key={title as string} className="rounded-2xl border border-slate-800 bg-brand-dark p-5"><I className="h-5 w-5 text-cyan-400" /><h3 className="mt-3 font-bold text-white">{title as string}</h3><p className="mt-2 text-sm leading-6 text-slate-400">{text as string}</p></div>; })}
+          </div>
+          <p className="mt-5 max-w-3xl text-xs leading-6 text-slate-500">For a useful A/B comparison, use the same game, scene, settings, and background applications. A single before/after run is only a clue; repeat it before concluding that this process is involved.</p>
+        </div>
+      </section>
+
+
 
       <section className="px-4 sm:px-6">
         <div className="container mx-auto max-w-5xl">
@@ -280,7 +294,7 @@ export default function GameBarPresenceWriterGuide() {
               <Badge className="mb-3 border-cyan-500/30 bg-cyan-500/10 text-cyan-300">What it actually does</Badge>
               <h2 className="text-2xl font-bold sm:text-4xl">The “ghost” is real — the bottleneck is not automatically proven.</h2>
               <p className={`mt-4 ${proseClass}`}>
-                <a href={MS_DOCS_URL} target="_blank" rel="noopener noreferrer" className="font-semibold text-cyan-300 underline decoration-cyan-500/40 underline-offset-4 hover:text-cyan-200">Microsoft's own developer documentation</a> describes Game Bar Presence Writer as a Windows component that receives game presence events such as focus gained, focus lost, and game close. When the relevant Xbox functionality is enabled, the default implementation can update Xbox Live presence for the running game. That is a much narrower and more defensible description than saying the executable is inherently a telemetry process that steals gaming network bandwidth.
+                <a href={MS_DOCS_URL} target="_blank" rel="noopener noreferrer" className="font-semibold text-cyan-300 underline decoration-cyan-500/40 underline-offset-4 hover:text-cyan-200">Microsoft's developer documentation</a> describes Presence Writer as a component that receives game focus, focus-loss, and close events. When the relevant Xbox functionality is enabled, its default implementation can update Xbox Live presence for the running game. Microsoft documents that role; it does not establish that the executable itself is a universal cause of gaming stutter.
               </p>
               <p className={`mt-4 ${proseClass}`}>
                 That distinction matters. If your frame-time graph shows a reproducible improvement after Game Bar activity is removed, the tweak may be worthwhile on your particular system. If nothing changes, restore the defaults and investigate the actual source instead.
@@ -296,8 +310,8 @@ export default function GameBarPresenceWriterGuide() {
       <section id="diagnose" className={`${sectionClass} bg-slate-900/40`}>
         <div className="container mx-auto max-w-5xl">
           <div className="mb-8 max-w-3xl">
-            <Badge className="mb-3 border-cyan-500/30 bg-cyan-500/10 text-cyan-300">Step 1</Badge>
-            <h2 className="text-2xl font-bold sm:text-4xl">Diagnose the stutter before touching the registry</h2>
+            <Badge className="mb-3 border-cyan-500/30 bg-cyan-500/10 text-cyan-300">30-second symptom triage</Badge>
+            <h2 className="text-2xl font-bold sm:text-4xl">Match the stutter pattern before changing Windows settings</h2>
             <p className={`mt-3 ${proseClass}`}>Use a repeatable scene, record frame-time, and change one variable at a time. The goal is to identify causation rather than collect “gaming tweaks.”</p>
           </div>
           <div className="grid gap-4 md:grid-cols-2">
@@ -334,10 +348,10 @@ export default function GameBarPresenceWriterGuide() {
           <div className="mt-6 grid gap-6 lg:grid-cols-2">
             <div className="rounded-2xl border border-slate-800 bg-slate-900 p-6">
               <div className="flex items-center gap-3"><Power className="h-5 w-5 text-emerald-400" /><h3 className="font-bold">Disable what you do not use</h3></div>
-              <ol className="mt-5 space-y-4 text-sm leading-6 text-slate-300">
-                <li><span className="font-bold text-white">1.</span> Open <strong>Settings → Gaming → Xbox Game Bar</strong> and turn off Game Bar if you do not use it.</li>
-                <li><span className="font-bold text-white">2.</span> Review <strong>Settings → Gaming → Captures</strong> and disable background recording if you do not need it.</li>
-                <li><span className="font-bold text-white">3.</span> Reboot, reproduce the same stutter, and compare frame-time.</li>
+              <ol className="mt-5 list-inside list-decimal space-y-4 text-sm leading-6 text-slate-300">
+                <li>Open <strong>Settings → Gaming → Xbox Game Bar</strong> (called <strong>Game Bar</strong> on some Windows builds) and turn it off if you do not use it.</li>
+                <li>Open <strong>Settings → Gaming → Captures</strong> and turn off background recording or <strong>Record what happened</strong> if you do not need it.</li>
+                <li>Restart Windows, reproduce the same stutter, and compare frame-time again.</li>
               </ol>
             </div>
             <Callout title="What you give up">
@@ -354,8 +368,8 @@ export default function GameBarPresenceWriterGuide() {
 
       <section id="game-dvr-registry" className={`${sectionClass} bg-slate-900/40`}>
         <div className="container mx-auto max-w-5xl">
-          <Badge className="mb-3 border-amber-500/30 bg-amber-500/10 text-amber-300">Advanced Game DVR method</Badge>
-          <h2 className="text-2xl font-bold sm:text-4xl">Disable Game DVR with the Windows Registry</h2>
+          <Badge className="mb-3 border-amber-500/30 bg-amber-500/10 text-amber-300">Step 3 — advanced Game DVR test</Badge>
+          <h2 className="text-2xl font-bold sm:text-4xl">Test the Game DVR policy through the Registry</h2>
           <p className={`mt-4 max-w-3xl ${proseClass}`}>
             If turning off Game Bar and background recording in Settings does not settle the question, power users can test the Game DVR configuration directly. This is more invasive than the Settings method, so back up first and measure the same game scene before and after.
           </p>
@@ -381,11 +395,11 @@ export default function GameBarPresenceWriterGuide() {
               </div>
             </div>
             <div className="min-w-0 space-y-5">
-              <Callout title="What the supplied KCROC PDF says — and what we can safely promise">
-                The supplied KCROC Game DVR guide presents this registry procedure and claims a 10–20% or “up to 20%” performance uplift on some systems. That figure is not a universal benchmark established by the document, so this website guide treats it as a claim to test rather than a promised result. Your actual change may be negligible, especially on a modern system that is not capture- or CPU-limited.
+              <Callout title="What this setting can — and cannot — tell you">
+                The Game DVR policy controls Windows Game Recording and Broadcasting. It is not a guaranteed FPS switch. Test it only when you have reason to suspect capture activity, then compare the same game scene and restore the original settings if there is no repeatable benefit.
               </Callout>
               <Callout title="Microsoft policy note">
-                Microsoft documents <code className="text-cyan-300">AllowGameDVR</code> as a policy controlling Windows Game Recording and Broadcasting, with <code className="text-cyan-300">0</code> meaning not allowed and <code className="text-cyan-300">1</code> meaning allowed. See <a href={MS_GAMEDVR_POLICY_URL} target="_blank" rel="noopener noreferrer" className="text-cyan-300 underline hover:text-cyan-200">Microsoft's ApplicationManagement Policy CSP</a>. The current-user <code className="text-cyan-300">GameDVR_Enabled</code> value is included here as an advanced troubleshooting step from the supplied KCROC technical material; it should not be presented as a Microsoft-certified performance optimization.
+                Microsoft documents <code className="text-cyan-300">AllowGameDVR</code> as a policy for Windows Game Recording and Broadcasting: <code className="text-cyan-300">0</code> disallows it and <code className="text-cyan-300">1</code> allows it. See <a href={MS_GAMEDVR_POLICY_URL} target="_blank" rel="noopener noreferrer" className="text-cyan-300 underline hover:text-cyan-200">Microsoft's ApplicationManagement Policy CSP</a>. The current-user <code className="text-cyan-300">GameDVR_Enabled</code> value is a separate troubleshooting setting. Record its original value before testing and do not treat either setting as a certified FPS optimization.
               </Callout>
               <Callout title="Rollback">
                 If the test causes an unwanted change, restore the exported registry keys and original values. If you created the <code className="text-cyan-300">GameDVR</code> policy key specifically for this experiment, remove it only after confirming that no existing policy depends on it.
@@ -402,69 +416,38 @@ export default function GameBarPresenceWriterGuide() {
 
       <section id="registry" className={`${sectionClass} bg-slate-900/40`}>
         <div className="container mx-auto max-w-5xl">
-          <Badge className="mb-3 border-amber-500/30 bg-amber-500/10 text-amber-300">Step 4 — advanced</Badge>
-          <h2 className="text-2xl font-bold sm:text-4xl">Registry override: use only when you understand the trade-off</h2>
+          <Badge className="mb-3 border-amber-500/30 bg-amber-500/10 text-amber-300">Step 4 — optional advanced override</Badge>
+          <h2 className="text-2xl font-bold sm:text-4xl">Advanced Presence Writer Registry Override</h2>
           <p className={`mt-4 max-w-3xl ${proseClass}`}>
-            The commonly circulated tweak targets the Windows Runtime ActivatableClassId registration for Presence Writer. Because this is a protected system area, changing ownership or permissions is materially more invasive than turning off Game Bar.
+            This community workaround targets the Windows Runtime ActivatableClassId registration for Presence Writer. It is substantially more invasive than changing Game Bar settings or testing Game DVR. Most users should stop at the earlier tiers.
           </p>
           <div className="mt-6 grid gap-6 lg:grid-cols-[1.05fr_.95fr]">
             <div className="min-w-0 space-y-5">
               <div className="rounded-2xl border border-slate-800 bg-brand-dark p-5">
-                <h3 className="font-bold text-white">1. Back up the key first</h3>
-                <p className="mt-2 text-sm leading-6 text-slate-400">Create a restore point and export the registry key before changing permissions or values.</p>
+                <h3 className="font-bold text-white">1. Create a restore point and export the key</h3>
+                <p className="mt-2 text-sm leading-6 text-slate-400">Back up the registry key before changing permissions or values. Keep the exported .reg file somewhere you can access if Windows behaves differently after the test.</p>
               </div>
               <div className="rounded-2xl border border-slate-800 bg-brand-dark p-5">
-                <h3 className="font-bold text-white">2. Navigate to the ActivatableClassId</h3>
+                <h3 className="font-bold text-white">2. Open the ActivatableClassId key</h3>
                 <CodeBlock>{registryPath}</CodeBlock>
               </div>
               <div className="rounded-2xl border border-slate-800 bg-brand-dark p-5">
-                <h3 className="font-bold text-white">3. Change permissions only if necessary</h3>
-                <p className="mt-2 text-sm leading-6 text-slate-400">If the key is owned by TrustedInstaller and your build blocks modification, do not blindly replace ownership. Export the key first, understand the recovery path, and change only the minimum permission required.</p>
+                <h3 className="font-bold text-white">3. Do not take ownership casually</h3>
+                <p className="mt-2 text-sm leading-6 text-slate-400">If TrustedInstaller protects the key, do not proceed unless you understand how to restore the original owner and permissions. Avoid changing ownership recursively; skip this tier if you are unsure.</p>
               </div>
               <div className="rounded-2xl border border-slate-800 bg-brand-dark p-5">
-                <h3 className="font-bold text-white">4. Test the ActivationType value</h3>
-                <p className="mt-2 text-sm leading-6 text-slate-400">If your Windows build exposes the documented DWORD as <code className="text-cyan-300">ActivationType</code>, record its original value before testing an alternative. Do not assume a value of 0 or 1 is universal across every Windows release.</p>
+                <h3 className="font-bold text-white">4. Record and test the ActivationType value</h3>
+                <p className="mt-2 text-sm leading-6 text-slate-400">Only consider the change if the key contains an <code className="text-cyan-300">ActivationType</code> DWORD. Record the exact original value before testing. The value and behavior may differ across Windows releases.</p>
+              </div>
+              <div className="min-w-0">
+                <h3 className="mb-2 flex items-center gap-2 font-bold"><Terminal className="h-5 w-5 text-violet-400" /> Optional elevated-terminal test command</h3>
+                <CodeBlock>{`reg add "${registryPath}" /v ActivationType /t REG_DWORD /d 0 /f`}</CodeBlock>
+                <p className="mt-3 text-xs leading-5 text-slate-500">Use only after exporting the key and confirming the value exists. Restore the exact value you recorded, or import your backup; do not assume that setting it to 1 is correct for every system.</p>
               </div>
             </div>
-            <Callout title="Important: this is not an official Microsoft gaming optimization" danger>
-              Microsoft documents what Presence Writer does and how a developer registers a <em>replacement</em> implementation — a different registry path than the ActivatableClassId override shown here. This override is a community-discovered workaround, not something Microsoft documents or recommends as a disable method. Treat it as an advanced troubleshooting experiment and keep a clean rollback path.
+            <Callout title="Unofficial and last-resort only" danger>
+              Microsoft's developer documentation describes Presence Writer's purpose and the registration path for a custom implementation. It does not document or recommend this ActivatableClassId override as a gaming optimization or supported disable procedure. Because it changes protected system configuration, it should not be the first response to a process appearing in Task Manager.
             </Callout>
-          </div>
-        </div>
-      </section>
-
-      <section id="command-line" className={sectionClass}>
-        <div className="container mx-auto max-w-5xl">
-          <Badge className="mb-3 border-violet-500/30 bg-violet-500/10 text-violet-300">Step 5 — command line</Badge>
-          <h2 className="text-2xl font-bold sm:text-4xl">Automate the registry test from an elevated terminal</h2>
-          <p className={`mt-4 max-w-3xl ${proseClass}`}>If you have already backed up the key and verified that the value exists on your Windows build, an elevated Command Prompt can change the DWORD without navigating the GUI.</p>
-          <div className="mt-6 grid gap-5 lg:grid-cols-2">
-            <div className="min-w-0">
-              <h3 className="mb-2 flex items-center gap-2 font-bold"><Terminal className="h-5 w-5 text-violet-400" /> Test command</h3>
-              <CodeBlock>{`reg add "${registryPath}" /v ActivationType /t REG_DWORD /d 0 /f`}</CodeBlock>
-              <p className="mt-3 text-xs leading-5 text-slate-500">Only use this if the value is present and you have documented the original state.</p>
-            </div>
-            <div className="min-w-0">
-              <h3 className="mb-2 flex items-center gap-2 font-bold"><RotateCcw className="h-5 w-5 text-emerald-400" /> Example rollback</h3>
-              <CodeBlock>{`reg add "${registryPath}" /v ActivationType /t REG_DWORD /d 1 /f`}</CodeBlock>
-              <p className="mt-3 text-xs leading-5 text-slate-500">Do not use a hard-coded rollback value if your original configuration was different; restore your exported key when possible.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="taskkill" className={`${sectionClass} bg-slate-900/40`}>
-        <div className="container mx-auto max-w-5xl">
-          <Badge className="mb-3 border-sky-500/30 bg-sky-500/10 text-sky-300">Step 6 — targeted test</Badge>
-          <h2 className="text-2xl font-bold sm:text-4xl">Terminate the current process — but don't confuse that with a permanent disable</h2>
-          <p className={`mt-4 max-w-3xl ${proseClass}`}>For a quick A/B test, you can terminate the currently running executable from an elevated terminal. This tells you whether the current process instance correlates with the symptom, but it does not guarantee that Windows will not start it again.</p>
-          <div className="mt-6 max-w-3xl"><CodeBlock>{'taskkill /f /im gamebarpresencewriter.exe'}</CodeBlock></div>
-          <div className="mt-6 grid gap-4 sm:grid-cols-3">
-            {[
-              ['Useful for', 'A quick before/after experiment.', CheckCircle2],
-              ['Not proof of', 'A permanent Windows configuration change.', CircleHelp],
-              ['If it returns', 'Investigate its activation path instead of repeatedly killing it.', RotateCcw],
-            ].map(([title, text, Icon]) => { const I = Icon as React.ElementType; return <div key={title as string} className="rounded-2xl border border-slate-800 bg-brand-dark p-5"><I className="h-5 w-5 text-cyan-400" /><h3 className="mt-3 font-bold text-white">{title as string}</h3><p className="mt-2 text-sm leading-6 text-slate-400">{text as string}</p></div>; })}
           </div>
         </div>
       </section>
@@ -567,7 +550,12 @@ export default function GameBarPresenceWriterGuide() {
           <Badge className="mb-3 border-cyan-500/30 bg-cyan-500/10 text-cyan-300">FAQ</Badge>
           <h2 className="text-2xl font-bold sm:text-4xl">GameBarPresenceWriter questions answered</h2>
           <div className="mt-7 grid gap-4 md:grid-cols-2">
-            {faqs.map((faq) => <details key={faq.q} className="group rounded-2xl border border-slate-800 bg-slate-900/70 p-5"><summary className="cursor-pointer list-none pr-6 font-bold text-white marker:hidden"><span className="flex items-start justify-between gap-4">{faq.q}<ChevronRight className="mt-0.5 h-5 w-5 shrink-0 text-cyan-400 transition-transform group-open:rotate-90" /></span></summary><p className="mt-4 text-sm leading-7 text-slate-400">{faq.a}</p></details>)}
+            {faqs.map((faq) => (
+              <article key={faq.q} className="rounded-2xl border border-slate-800 bg-slate-900/70 p-5">
+                <h3 className="font-bold leading-6 text-white">{faq.q}</h3>
+                <p className="mt-3 text-sm leading-7 text-slate-400">{faq.a}</p>
+              </article>
+            ))}
           </div>
         </div>
       </section>
