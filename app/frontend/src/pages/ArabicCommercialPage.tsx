@@ -152,30 +152,36 @@ const CONFIG: Record<string, {
     ],
     serviceIds: ['srv-screen', 'srv-laptop', 'srv-battery', 'srv-hinge']
   },
-  'desktop-pc-repair-kuwait': {
+    'desktop-pc-repair-kuwait': {
     h1: 'تصليح الكمبيوتر المكتبي (Desktop & PC) في الكويت',
-    eyebrow: 'استلام مجاني لصندوق الكمبيوتر • التشخيص والإصلاح في مختبر حولي',
-    intro: 'إذا الكمبيوتر المكتبي ما يشتغل، أو المراوح تدور من دون صورة، أو تظهر شاشة زرقاء أو يطفئ الجهاز تحت الضغط، نبدأ بتشخيص منظم بدل تبديل القطع بالتخمين. في مختبر KCROC بحولي نفحص أجهزة الكمبيوتر المكتبية الكاملة، بما فيها الأبراج (Tower) وأجهزة المكاتب ومحطات العمل والتجميعات. يشمل الفحص مزود الطاقة (PSU)، والرام، والتخزين، والتبريد، والمذربورد ومسار العرض، بما في ذلك كرت الشاشة عندما يكون مركبًا داخل الجهاز الكامل. لا نستقبل كروت الشاشة المنفصلة كأجهزة إصلاح مستقلة. نوضح نتيجة الفحص والسعر قبل أي عمل مدفوع، ونرتب استلام الكمبيوتر المكتبي وإرجاعه مجانًا داخل الكويت.',
-    bullets: ['تشخيص عدم التشغيل ومشاكل الطاقة والـPSU قبل اقتراح التبديل', 'فحص الشاشة السوداء والـPOST والرام وكرت الشاشة المركب داخل الكمبيوتر', 'تشخيص الحرارة والمراوح والإغلاق المفاجئ وثبات الجهاز تحت الحمل', 'فحص المذربورد والتخزين ومشاكل إقلاع Windows والترقيات المناسبة', 'السعر يبدأ من 15 د.ك حسب العطل، مع فحص أولي مجاني وضمان 30 يومًا'],
+    eyebrow: 'استلام وتوصيل مجاني لصندوق الكمبيوتر في مناطق الكويت • الفحص والإصلاح في مختبر حولي',
+    intro: 'إذا كان الكمبيوتر المكتبي لا يعمل، أو تدور المراوح من دون ظهور صورة، أو تظهر شاشة زرقاء أو ينطفئ الجهاز تحت الضغط، فلا تبدأ بتبديل القطع بالتخمين. في مختبر KCROC بحولي نفحص الكمبيوتر المكتبي الكامل ونحدد ما إذا كان السبب من مزود الطاقة (PSU)، أو مسار الطاقة في المذربورد، أو الذاكرة RAM، أو التخزين، أو التبريد، أو مسار العرض. يشمل نطاق الفحص أبراج الكمبيوتر (Tower)، وأجهزة المكاتب، ومحطات العمل، والتجميعات المكتبية، وأجهزة All-in-One. نوضح نتيجة الفحص والتكلفة قبل أي عمل مدفوع، ثم نرتب الاستلام والتوصيل مجانًا داخل الكويت.',
+    bullets: [
+      'فحص عدم التشغيل ومصدر الطاقة (PSU) ومسارات الطاقة قبل اقتراح تبديل القطع',
+      'تشخيص المراوح التي تعمل مع شاشة سوداء ومشاكل الإقلاع (POST) والرام ومسار العرض',
+      'فحص الحرارة والمراوح والإغلاق المفاجئ وثبات الجهاز تحت الحمل',
+      'فحص المذربورد والتخزين ومشاكل إقلاع Windows وخيارات ترقية SSD وRAM',
+      'بعض الإصلاحات تبدأ من 15 د.ك • فحص أولي مجاني • استلام وتوصيل مجاني • ضمان 30 يومًا'
+    ],
     faq: [
-      { q: 'هل تستلمون كمبيوتر مكتبي كامل من البيت أو المكتب؟', a: 'نعم. نرتب استلام صندوق الكمبيوتر الكامل (Tower) من المنزل أو المكتب في مناطق الكويت، ويتم الفحص والإصلاح في مختبرنا بحولي.' },
-      { q: 'هل تصلحون كرت الشاشة إذا كان داخل جهاز Gaming PC؟', a: 'نفحص كرت الشاشة ومسار الطاقة والتبريد عندما يكون الكرت مركبًا ضمن كمبيوتر مكتبي كامل. لا نستقبل كرت شاشة منفصلًا كطلب إصلاح مستقل.' },
-      { q: 'كم سعر تصليح الكمبيوتر المكتبي؟', a: 'تبدأ بعض أعمال تصليح الكمبيوتر المكتبي من 15 د.ك. السعر النهائي يعتمد على العطل والقطع المطلوبة، ونوضحه لك بعد الفحص وقبل أي عمل مدفوع.' },
-      { q: 'كم تستغرق عملية الإصلاح؟', a: 'المدة المعتادة لكثير من الأعطال 24–48 ساعة، وقد تختلف حسب تعقيد العطل وتوفر القطع ونتيجة الاختبار.' }
+      { q: 'هل تستلمون كمبيوتر مكتبي كامل من البيت أو المكتب؟', a: 'نعم. نرتب استلامًا وتوصيلًا مجانيين للكمبيوتر المكتبي الكامل من مناطق الكويت. نستلم صندوق Tower كجهاز واحد، أما أجهزة All-in-One فتُنقل كوحدة كاملة. يتم الفحص والإصلاح في مختبر KCROC بحولي.' },
+      { q: 'هل تفحصون كرت الشاشة إذا كان داخل Gaming PC؟', a: 'نعم، نفحص كرت الشاشة ومسار العرض والطاقة والتبريد عندما يكون الكرت مركبًا داخل الكمبيوتر المكتبي الكامل. لا نستقبل كروت الشاشة المفكوكة كطلبات إصلاح مستقلة.' },
+      { q: 'كم سعر تصليح الكمبيوتر المكتبي في الكويت؟', a: 'تبدأ بعض أعمال تصليح الكمبيوتر المكتبي من 15 د.ك. السعر النهائي يعتمد على العطل والقطع المطلوبة، ونوضح التكلفة بعد الفحص وقبل أي عمل مدفوع. الفحص الأولي مجاني.' },
+      { q: 'كم تستغرق عملية الفحص والإصلاح؟', a: 'تُنجز كثير من الإصلاحات خلال 24 إلى 48 ساعة، وقد تختلف المدة حسب تعقيد العطل وتوفر القطع ونتائج الاختبار.' },
+      { q: 'هل تصلحون المذربورد بدل استبدالها بالكامل؟', a: 'عندما تسمح حالة اللوحة بذلك، نفحص المكونات ومسارات الطاقة ونقيّم إمكانية الإصلاح على مستوى المكونات قبل اقتراح استبدال المذربورد بالكامل. القرار النهائي يعتمد على نتيجة القياس وحالة اللوحة.' }
     ],
     englishPath: '/desktop-pc-repair-kuwait',
     arabicLinks: [
-      { label: 'تصليح Gaming PC', path: '/ar/gaming-pc-repair-kuwait' },
-      { label: 'تصليح المذربورد واللوحة الأم', path: '/ar/motherboard-repair-kuwait' },
+      { label: 'تصليح Gaming PC وصيانة التبريد', path: '/ar/gaming-pc-repair-kuwait' },
+      { label: 'إصلاح المذربورد واللوحة الأم', path: '/ar/motherboard-repair-kuwait' },
       { label: 'ترقية SSD وRAM', path: '/ar/ssd-ram-upgrade-kuwait' },
       { label: 'أسعار تصليح الكمبيوتر', path: '/ar/pricing' }
     ],
-    serviceIds: ['srv-desktop-pc', 'srv-motherboard', 'srv-gaming', 'srv-ssd-ram'],
+    serviceIds: ['srv-gaming', 'srv-motherboard', 'srv-ssd-ram'],
     serviceCardCopy: {
-      'srv-desktop-pc': { title: 'تصليح الكمبيوتر المكتبي وPC', description: 'تشخيص أعطال الطاقة والشاشة والحرارة والرام والتخزين والمذربورد في الكمبيوتر الكامل.' },
-      'srv-motherboard': { title: 'إصلاح المذربورد واللوحة الأم', description: 'تشخيص وإصلاح مكونات اللوحة عندما يكون الإصلاح مناسبًا فنيًا.' },
-      'srv-gaming': { title: 'تصليح Gaming PC', description: 'فحص مشاكل GPU والطاقة والتبريد والأداء ضمن جهاز ألعاب مكتبي كامل.' },
-      'srv-ssd-ram': { title: 'ترقية SSD وRAM', description: 'فحص التوافق وتركيب وحدة التخزين أو الذاكرة المناسبة للجهاز.' }
+      'srv-gaming': { title: 'تصليح Gaming PC وصيانة التبريد', description: 'فحص كرت الشاشة والطاقة والتبريد والاستقرار ضمن الكمبيوتر المكتبي الكامل.' },
+      'srv-motherboard': { title: 'إصلاح المذربورد على مستوى المكونات', description: 'تشخيص دوائر الطاقة والمكونات وإصلاح اللوحة عندما تسمح حالتها الفنية بذلك، بدل استبدالها تلقائيًا.' },
+      'srv-ssd-ram': { title: 'ترقية SSD وRAM', description: 'فحص توافق التخزين والذاكرة مع اللوحة والجهاز قبل تحديد القطع المناسبة.' }
     }
   },
   'laptop-hinge-repair-kuwait': {
@@ -2546,6 +2552,42 @@ export default function ArabicCommercialPage() {
     }]
   } : null;
 
+  const desktopPcServiceSchema = slug === 'desktop-pc-repair-kuwait' ? {
+    '@graph': [{
+      '@type': 'Service',
+      '@id': `${page.seo.canonicalUrl}#service`,
+      name: 'تصليح الكمبيوتر المكتبي (Desktop & PC) في الكويت',
+      alternateName: 'Desktop & PC Repair Kuwait',
+      serviceType: 'تشخيص وإصلاح الكمبيوتر المكتبي وأعطال الطاقة والشاشة والحرارة والتخزين والذاكرة والمذربورد',
+      description: cfg.intro,
+      url: page.seo.canonicalUrl,
+      provider: { '@id': `${business.websiteUrl}/#business` },
+      areaServed: { '@type': 'Country', name: 'Kuwait' },
+      availableChannel: {
+        '@type': 'ServiceChannel',
+        serviceLocation: {
+          '@type': 'Place',
+          name: 'مختبر KCROC في حولي',
+          address: {
+            '@type': 'PostalAddress',
+            streetAddress: business.streetAddress,
+            addressLocality: business.addressLocality,
+            addressRegion: business.addressRegion,
+            addressCountry: business.addressCountry
+          }
+        },
+        servicePhone: `+${business.telephone}`
+      },
+      offers: {
+        '@type': 'Offer',
+        name: 'بعض أعمال تصليح الكمبيوتر المكتبي تبدأ من 15 د.ك',
+        description: 'السعر المبدئي لبعض أعمال الإصلاح فقط؛ السعر النهائي يعتمد على العطل والقطع المطلوبة ويُحدد بعد الفحص وقبل بدء أي عمل مدفوع.',
+        priceCurrency: 'KWD',
+        priceSpecification: { '@type': 'PriceSpecification', priceCurrency: 'KWD', minPrice: 15 }
+      }
+    }]
+  } : null;
+
   const faqSchema = {
     '@graph': [{
       '@type': 'FAQPage',
@@ -2568,6 +2610,7 @@ export default function ArabicCommercialPage() {
       {batteryServiceSchema && <SchemaMarkup schema={batteryServiceSchema} />}
       {farwaniyaServiceSchema && <SchemaMarkup schema={farwaniyaServiceSchema} />}
       {kuwaitCityServiceSchema && <SchemaMarkup schema={kuwaitCityServiceSchema} />}
+      {desktopPcServiceSchema && <SchemaMarkup schema={desktopPcServiceSchema} />}
       <SchemaMarkup schema={faqSchema} />
 
       <div className="mx-auto max-w-6xl px-4 pb-16 pt-8 sm:px-6 sm:pt-12">
@@ -2583,6 +2626,14 @@ export default function ArabicCommercialPage() {
             <div className="max-w-4xl">
               <h1 className="text-3xl font-black leading-tight text-white sm:text-5xl">{cfg.h1}</h1>
               <p className="mt-6 text-base leading-8 text-slate-300 sm:text-lg">{cfg.intro}</p>
+              {slug === 'desktop-pc-repair-kuwait' && (
+                <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                  <a href={wa} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-400 px-6 py-3 font-black text-slate-950 transition hover:bg-cyan-300">
+                    <MessageCircle className="h-5 w-5" aria-hidden="true" /> واتساب KCROC — احجز استلام مجاني
+                  </a>
+                  <Link to="/ar/pricing" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-slate-700 px-6 py-3 font-bold text-white transition hover:border-cyan-500/40 hover:text-cyan-300">مراجعة أسعار الإصلاح</Link>
+                </div>
+              )}
               {slug === 'macbook-repair-kuwait' && (
                 <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                   <a href={wa} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-400 px-6 py-3 font-black text-slate-950 transition hover:bg-cyan-300">
@@ -2657,6 +2708,52 @@ export default function ArabicCommercialPage() {
               </div>
             ))}
           </div>
+          {slug === 'desktop-pc-repair-kuwait' && (
+            <>
+              <section className="mt-12 rounded-3xl border border-slate-800 bg-slate-900/40 p-6 sm:p-8" aria-labelledby="desktop-diagnostic-matrix">
+                <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">من العَرَض إلى التشخيص</p>
+                <h2 id="desktop-diagnostic-matrix" className="mt-2 text-2xl font-black text-white sm:text-3xl">تشخيص أعطال الكمبيوتر المكتبي في مختبر حولي</h2>
+                <p className="mt-4 max-w-4xl leading-8 text-slate-300">العَرَض الواحد قد ينتج عن أكثر من سبب. نفحص أجزاء المنظومة ذات الصلة قبل تحديد القطعة المسؤولة أو اقتراح الإصلاح.</p>
+                <div className="mt-6 overflow-hidden rounded-2xl border border-slate-800"><div className="overflow-x-auto">
+                  <table className="w-full min-w-[760px] border-collapse text-right text-sm">
+                    <caption className="sr-only">أعراض أعطال الكمبيوتر المكتبي وأسبابها المحتملة وطريقة فحص KCROC</caption>
+                    <thead className="bg-slate-950/80 text-slate-200"><tr><th scope="col" className="p-4 font-bold">العَرَض</th><th scope="col" className="p-4 font-bold">أسباب محتملة</th><th scope="col" className="p-4 font-bold">ما الذي نفحصه؟</th></tr></thead>
+                    <tbody className="divide-y divide-slate-800 text-slate-300">
+                      <tr><th scope="row" className="p-4 align-top font-bold text-white">الكمبيوتر لا يعمل نهائيًا</th><td className="p-4 align-top">مزود الطاقة (PSU)، مسار الطاقة في المذربورد، زر التشغيل أو وجود تماس كهربائي.</td><td className="p-4 align-top">نفحص مصدر الطاقة ومسارات التشغيل والدوائر المرتبطة بالعَرَض قبل اقتراح تبديل أي قطعة.</td></tr>
+                      <tr><th scope="row" className="p-4 align-top font-bold text-white">المراوح تعمل ولا تظهر صورة</th><td className="p-4 align-top">مشكلة شاشة أو كابل، أو RAM، أو مرحلة POST، أو BIOS، أو مسار العرض وكرت الشاشة.</td><td className="p-4 align-top">نميّز بين مشكلة العرض الخارجية ومكونات الكمبيوتر، ثم نفحص الذاكرة ومسار العرض والطاقة حسب نتيجة الفحص.</td></tr>
+                      <tr><th scope="row" className="p-4 align-top font-bold text-white">إغلاق مفاجئ أو شاشة زرقاء تحت الضغط</th><td className="p-4 align-top">ارتفاع الحرارة، خلل التبريد، عدم استقرار الطاقة، أخطاء RAM أو التخزين.</td><td className="p-4 align-top">نفحص التبريد والطاقة والذاكرة والتخزين ونختبر الاستقرار بحسب طبيعة المشكلة.</td></tr>
+                      <tr><th scope="row" className="p-4 align-top font-bold text-white">بطء شديد أو تعثر إقلاع Windows</th><td className="p-4 align-top">مشاكل SSD أو HDD، ملفات الإقلاع، الذاكرة أو تعريفات النظام.</td><td className="p-4 align-top">نفحص صحة التخزين والذاكرة ومسار إقلاع Windows، ثم نوضح خيارات الإصلاح أو الترقية المناسبة.</td></tr>
+                    </tbody>
+                  </table>
+                </div></div>
+                <p className="mt-5 rounded-xl border border-cyan-500/20 bg-cyan-500/5 p-4 text-sm leading-7 text-slate-300"><strong className="text-white">ملاحظة فنية حول كرت الشاشة (GPU):</strong> نفحص الكرت ومسار العرض والطاقة والتبريد عندما يكون مركبًا داخل الكمبيوتر المكتبي الكامل؛ ولا نستقبل كروت الشاشة المفكوكة كطلبات إصلاح مستقلة.</p>
+                <div className="mt-5 flex flex-col gap-3 rounded-2xl border border-slate-800 bg-slate-950/40 p-5 sm:flex-row sm:items-center sm:justify-between">
+                  <div><p className="font-black text-white">بعض أعمال تصليح الكمبيوتر المكتبي تبدأ من 15 د.ك</p><p className="mt-1 text-sm leading-6 text-slate-400">السعر المبدئي لا ينطبق على كل الأعطال؛ نحدد التكلفة النهائية بعد الفحص وقبل بدء أي عمل مدفوع.</p></div>
+                  <Link to="/ar/pricing" className="inline-flex min-h-11 shrink-0 items-center justify-center rounded-full border border-cyan-500/30 px-5 py-2.5 text-sm font-bold text-cyan-300 transition hover:bg-cyan-500/10">تفاصيل الأسعار</Link>
+                </div>
+              </section>
+
+              <section className="mt-12" aria-labelledby="desktop-device-types">
+                <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">أنواع الأجهزة</p><h2 id="desktop-device-types" className="mt-2 text-2xl font-black text-white sm:text-3xl">نفحص فئات الكمبيوتر المكتبي في الكويت</h2>
+                <div className="mt-6 grid gap-4 md:grid-cols-3">
+                  <article className="rounded-2xl border border-slate-800 bg-slate-900/45 p-5"><h3 className="font-bold text-white">أبراج الكمبيوتر والتجميعات المكتبية</h3><p className="mt-2 text-sm leading-7 text-slate-400">أجهزة Tower الجاهزة والتجميعات المخصصة وأجهزة Gaming PC، مع فحص الطاقة والحرارة والاستقرار ومسار العرض.</p></article>
+                  <article className="rounded-2xl border border-slate-800 bg-slate-900/45 p-5"><h3 className="font-bold text-white">محطات العمل والتصميم</h3><p className="mt-2 text-sm leading-7 text-slate-400">محطات العمل المكتبية المستخدمة في التصميم والمونتاج والمهام الثقيلة، مع تشخيص الأعطال التي تؤثر في الثبات والأداء.</p></article>
+                  <article className="rounded-2xl border border-slate-800 bg-slate-900/45 p-5"><h3 className="font-bold text-white">أجهزة المكاتب وAll-in-One</h3><p className="mt-2 text-sm leading-7 text-slate-400">أجهزة مكتبية من Dell وHP وLenovo وASUS وAcer وMSI، بما فيها أجهزة All-in-One، بحسب الموديل وحالة الجهاز.</p></article>
+                </div>
+              </section>
+
+              <section className="mt-12 rounded-3xl border border-cyan-900/50 bg-slate-900/40 p-6 sm:p-8" aria-labelledby="desktop-pickup-process">
+                <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">استلام صندوق الكمبيوتر</p><h2 id="desktop-pickup-process" className="mt-2 text-2xl font-black text-white sm:text-3xl">استلام وتوصيل مجاني من البيت أو المكتب في الكويت</h2>
+                <p className="mt-4 leading-8 text-slate-300">لا تحتاج إلى نقل صندوق الكمبيوتر بنفسك إلى حولي. نسق الاستلام معنا، وسنوضح لك ما يلزم تسليمه بحسب نوع الجهاز.</p>
+                <ol className="mt-6 grid gap-4 md:grid-cols-3">
+                  <li className="rounded-2xl border border-slate-800 bg-slate-950/45 p-5"><span className="flex h-9 w-9 items-center justify-center rounded-full bg-cyan-500/15 font-black text-cyan-300">١</span><h3 className="mt-4 font-bold text-white">أرسل تفاصيل الجهاز والعطل</h3><p className="mt-2 text-sm leading-7 text-slate-400">أرسل نوع الكمبيوتر ومواصفاته إن توفرت، ووصف المشكلة ومنطقتك على واتساب KCROC.</p></li>
+                  <li className="rounded-2xl border border-slate-800 bg-slate-950/45 p-5"><span className="flex h-9 w-9 items-center justify-center rounded-full bg-cyan-500/15 font-black text-cyan-300">٢</span><h3 className="mt-4 font-bold text-white">جهّز الجهاز للاستلام</h3><p className="mt-2 text-sm leading-7 text-slate-400">في أجهزة Tower افصل الكابلات الخارجية واترك الشاشة والكيبورد والملحقات في مكانها؛ نستلم الصندوق الرئيسي فقط. أما All-in-One فيُستلم كجهاز كامل.</p></li>
+                  <li className="rounded-2xl border border-slate-800 bg-slate-950/45 p-5"><span className="flex h-9 w-9 items-center justify-center rounded-full bg-cyan-500/15 font-black text-cyan-300">٣</span><h3 className="mt-4 font-bold text-white">الفحص والموافقة ثم الإرجاع</h3><p className="mt-2 text-sm leading-7 text-slate-400">نفحص الجهاز في مختبر حولي ونبلغك بالتكلفة قبل العمل المدفوع. بعد موافقتك والإصلاح والاختبار، نعيد الجهاز إليك مع ضمان 30 يومًا على الإصلاحات المشمولة.</p></li>
+                </ol>
+                <div className="mt-6 flex flex-col gap-3 sm:flex-row"><a href={wa} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-400 px-6 py-3 font-black text-slate-950 transition hover:bg-cyan-300"><MessageCircle className="h-5 w-5" aria-hidden="true" /> اطلب استلام الكمبيوتر المكتبي</a><Link to="/ar/pricing" className="inline-flex min-h-12 items-center justify-center rounded-full border border-slate-700 px-6 py-3 font-bold text-white hover:border-cyan-500/40">راجع أسعار الإصلاح</Link></div>
+              </section>
+            </>
+          )}
           {slug === 'laptop-screen-repair-kuwait' && (
             <div className="mt-6 flex flex-col gap-3 rounded-2xl border border-cyan-500/25 bg-cyan-500/5 p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6">
               <div>
@@ -3858,21 +3955,23 @@ export default function ArabicCommercialPage() {
           </div>
         </section>
 
-        <section className="mt-12" aria-labelledby="arabic-cluster">
-          <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">مجموعة خدمات KCROC بالعربي</p>
-          <h2 id="arabic-cluster" className="mt-2 text-2xl font-black text-white sm:text-3xl">تكمل من الصفحة المناسبة لك</h2>
-          <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {cfg.arabicLinks.map((item) => (
-              <Link key={item.path} to={item.path} className="rounded-xl border border-slate-800 bg-slate-900/45 px-5 py-4 font-semibold text-slate-200 hover:border-cyan-500/40 hover:text-cyan-300">{item.label}</Link>
-            ))}
-          </div>
-        </section>
+        {slug !== 'desktop-pc-repair-kuwait' && (
+          <section className="mt-12" aria-labelledby="arabic-cluster">
+            <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">مجموعة خدمات KCROC بالعربي</p>
+            <h2 id="arabic-cluster" className="mt-2 text-2xl font-black text-white sm:text-3xl">تكمل من الصفحة المناسبة لك</h2>
+            <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {cfg.arabicLinks.map((item) => (
+                <Link key={item.path} to={item.path} className="rounded-xl border border-slate-800 bg-slate-900/45 px-5 py-4 font-semibold text-slate-200 hover:border-cyan-500/40 hover:text-cyan-300">{item.label}</Link>
+              ))}
+            </div>
+          </section>
+        )}
 
         <section className="mt-12 rounded-3xl border border-cyan-900/60 bg-cyan-950/25 p-8 text-center sm:p-10">
           <h2 className="text-2xl font-black text-white sm:text-3xl">قول لنا المشكلة مثل ما هي</h2>
           <p className="mx-auto mt-4 max-w-2xl leading-8 text-slate-300">ارسل موديل الجهاز، منطقتك، ووصف بسيط للعطل على واتساب. نبدأ من التشخيص ونوضح لك الخطوة التالية قبل الإصلاح.</p>
           <a href={wa} target="_blank" rel="noreferrer" className="mt-7 inline-flex items-center justify-center gap-2 rounded-full bg-cyan-500 px-8 py-3.5 font-black text-slate-950 hover:bg-cyan-400">
-            <MessageCircle className="h-5 w-5" aria-hidden="true" /> {slug === 'laptop-screen-repair-kuwait' ? 'أرسل صورة الشاشة والموديل عبر واتساب' : slug === 'gaming-laptop-repair-kuwait' ? 'أرسل الموديل والعطل على واتساب' : slug === 'computer-repair-farwaniya' ? 'رتب استلام الجهاز من الفروانية' : 'تواصل مع فني KCROC'}
+            <MessageCircle className="h-5 w-5" aria-hidden="true" /> {slug === 'laptop-screen-repair-kuwait' ? 'أرسل صورة الشاشة والموديل عبر واتساب' : slug === 'gaming-laptop-repair-kuwait' ? 'أرسل الموديل والعطل على واتساب' : slug === 'computer-repair-farwaniya' ? 'رتب استلام الجهاز من الفروانية' : slug === 'desktop-pc-repair-kuwait' ? 'احجز استلام الكمبيوتر المكتبي عبر واتساب' : 'تواصل مع فني KCROC'}
           </a>
         </section>
       </div>
