@@ -129,7 +129,7 @@ const SCHEMA = {
       '@type': 'Article',
       '@id': `${PAGE_URL}#article`,
       headline: 'الجهاز لا يعمل بعد تحديث BIOS؟ دليل استرداد BIOS وUEFI',
-      description: 'دليل لتمييز تلف فيرموير BIOS/UEFI عن أعطال الرام والطاقة واللوحة الأم، مع طرق الاسترداد الآمنة وبرمجة شريحة SPI في الكويت.',
+      description: 'دليل لتمييز تلف فيرموير BIOS/UEFI عن أعطال الرام والطاقة واللوحة الأم، مع طرق الاسترداد الآمنة وبرمجة شريحة SPI.',
       image: [OG_IMAGE_URL],
       author: {
         '@type': 'Person',
@@ -148,7 +148,7 @@ const SCHEMA = {
       dateModified: PUBLISHED_DATE,
       mainEntityOfPage: { '@id': `${PAGE_URL}#webpage` },
       url: PAGE_URL,
-      inLanguage: 'ar-KW',
+      inLanguage: 'ar',
       articleSection: 'دليل إصلاح اللابتوبات واللوحات الأم',
       keywords: ['استرداد BIOS', 'فشل تحديث BIOS', 'تلف فيرموير', 'UEFI', 'برمجة شريحة BIOS', 'لابتوب لا يقلع بعد تحديث BIOS', 'BitLocker بعد تحديث BIOS']
     },
@@ -157,8 +157,8 @@ const SCHEMA = {
       '@id': `${PAGE_URL}#webpage`,
       url: PAGE_URL,
       name: 'الجهاز لا يعمل بعد تحديث BIOS؟ دليل استرداد BIOS وUEFI',
-      description: 'دليل لتمييز تلف فيرموير BIOS/UEFI عن أعطال الرام والطاقة واللوحة الأم، مع طرق الاسترداد الآمنة وبرمجة شريحة SPI في الكويت.',
-      inLanguage: 'ar-KW',
+      description: 'دليل لتمييز تلف فيرموير BIOS/UEFI عن أعطال الرام والطاقة واللوحة الأم، مع طرق الاسترداد الآمنة وبرمجة شريحة SPI.',
+      inLanguage: 'ar',
       isPartOf: { '@id': `${business.websiteUrl}/#website` }
     },
     {
@@ -211,7 +211,7 @@ export default function BiosUefiRecoveryGuideAR() {
     const html = document.documentElement;
     const oldLang = html.getAttribute('lang');
     const oldDir = html.getAttribute('dir');
-    html.setAttribute('lang', 'ar-KW');
+    html.setAttribute('lang', 'ar');
     html.setAttribute('dir', 'rtl');
     return () => {
       if (oldLang) html.setAttribute('lang', oldLang); else html.removeAttribute('lang');
@@ -220,24 +220,24 @@ export default function BiosUefiRecoveryGuideAR() {
   }, []);
 
   return (
-    <div dir="rtl" lang="ar-KW" className="w-full min-h-screen bg-transparent text-slate-200 pt-8 sm:pt-16 lg:pt-32 pb-8 sm:pb-16 lg:pb-24">
-      <Head htmlAttributes={{ lang: 'ar-KW', dir: 'rtl' }}>
+    <div dir="rtl" lang="ar" className="w-full min-h-screen bg-transparent text-slate-200 pt-8 sm:pt-16 lg:pt-32 pb-8 sm:pb-16 lg:pb-24">
+      <Head htmlAttributes={{ lang: 'ar', dir: 'rtl' }}>
         <title>استرداد BIOS بعد فشل التحديث: دليل UEFI والأعطال | KCROC</title>
-        <meta name="description" content="لابتوب أو كمبيوتر لا يقلع بعد تحديث BIOS أو UEFI؟ تعرّف كيف تفرّق بين تلف الفيرموير وأعطال الرام والطاقة واللوحة الأم، وخيارات الاسترداد الآمنة في الكويت." />
+        <meta name="description" content="هل توقف اللابتوب أو الكمبيوتر عن الإقلاع بعد تحديث BIOS أو UEFI؟ تعرّف على علامات تلف الفيرموير، وكيف تميّزه عن أعطال الرام والطاقة واللوحة الأم، وخيارات الاسترداد الآمنة." />
         <link rel="canonical" href={PAGE_URL} />
         <meta name="robots" content="index, follow, max-image-preview:large" />
-        <link rel="alternate" hrefLang="en-KW" href={EN_PAGE_URL} />
-        <link rel="alternate" hrefLang="ar-KW" href={PAGE_URL} />
+        <link rel="alternate" hrefLang="en" href={EN_PAGE_URL} />
+        <link rel="alternate" hrefLang="ar" href={PAGE_URL} />
         <link rel="alternate" hrefLang="x-default" href={EN_PAGE_URL} />
         <meta property="og:type" content="article" />
-        <meta property="og:locale" content="ar_KW" />
+        <meta property="og:locale" content="ar" />
         <meta property="og:title" content="الجهاز لا يعمل بعد تحديث BIOS؟ دليل استرداد BIOS وUEFI" />
-        <meta property="og:description" content="كيف تفرّق بين تلف الفيرموير وأعطال الرام والطاقة واللوحة الأم، وما الخطوات الآمنة قبل أي استرداد." />
+        <meta property="og:description" content="دليل عملي لتمييز تلف الفيرموير عن أعطال الرام والطاقة واللوحة الأم، وفهم خطوات الاسترداد الآمنة بعد فشل تحديث BIOS أو UEFI." />
         <meta property="og:url" content={PAGE_URL} />
         <meta property="og:image" content={OG_IMAGE_URL} />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="675" />
-        <meta property="og:image:alt" content="لوحة أم لابتوب أثناء فحص وإصلاح BIOS في الكويت" />
+        <meta property="og:image:alt" content="لوحة أم أثناء فحص شريحة BIOS واستعادة الفيرموير" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:image" content={OG_IMAGE_URL} />
       </Head>
