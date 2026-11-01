@@ -89,9 +89,10 @@ const [biosGuideEnSource, biosGuideArSource] = await Promise.all([
   read('pages/BiosUefiRecoveryGuideAR.tsx'),
 ]);
 const biosGuideEnEntityStart = graph.indexOf("    'guide-bios-uefi': {");
+const biosGuideEnEntityEnd = graph.indexOf("    'guide-intel-vs-amd': {", biosGuideEnEntityStart + 1);
 const biosGuideArEntityStart = graph.indexOf("    'guide-bios-uefi-ar': {");
 const biosGuideArEntityEnd = graph.indexOf("    'guide-laptop-buying-ar': {", biosGuideArEntityStart + 1);
-const biosGuideEnEntity = graph.slice(biosGuideEnEntityStart, biosGuideArEntityStart);
+const biosGuideEnEntity = graph.slice(biosGuideEnEntityStart, biosGuideEnEntityEnd);
 const biosGuideArEntity = graph.slice(biosGuideArEntityStart, biosGuideArEntityEnd);
 add('BIOS/UEFI guides use global English and Arabic language targeting while keeping Kuwait-only repair conversion details',
   biosGuideEnEntity.includes("locale: 'en'") &&
