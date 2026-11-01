@@ -57,7 +57,8 @@ export interface ComparisonRow {
 export interface ComparisonTableBlock {
   type: 'comparisonTable';
   title?: string;
-  columns: string[]; // e.g. ['8GB RAM', '16GB RAM', '32GB RAM']
+  featureLabel?: string;
+  columns: string[];
   rows: ComparisonRow[];
 }
 
