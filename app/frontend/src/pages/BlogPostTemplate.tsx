@@ -325,6 +325,10 @@ const INTERNAL_LINK_LABELS: Record<string, string> = {
     'DPC Latency & Gaming Stutter',
   'https://www.computerrepairkuwait.com/gaming-pc-repair-kuwait':
     'Gaming PC & GPU Repair Kuwait',
+  'https://www.computerrepairkuwait.com/guides/ssd-not-detected-windows-11':
+    'SSD Not Detected Diagnostic Guide',
+  'https://www.computerrepairkuwait.com/guides/why-is-my-laptop-so-hot':
+    'Laptop Overheating & Thermal Troubleshooting Guide',
 };
 
 const TECHNICAL_SOURCE_LABELS: Record<string, string> = {
@@ -386,6 +390,20 @@ const TECHNICAL_SOURCE_LABELS: Record<string, string> = {
     'Microsoft Support — Find your BitLocker recovery key',
   'https://learn.microsoft.com/en-us/troubleshoot/windows-client/windows-security/suspend-bitlocker-protection-non-microsoft-updates':
     'Microsoft Learn — Suspend BitLocker protection for non-Microsoft updates',
+  'https://www.microsoft.com/en-us/software-download/windows11': 'Download the official Windows 11 26H2 ISO from Microsoft',
+  'https://www.microsoft.com/en-us/software-download/windows11arm64': 'Download official Windows 11 Arm64 installation media',
+  'https://www.microsoft.com/en-us/windows/get-windows-11': 'Check Microsoft’s Windows 11 hardware requirements',
+  'https://learn.microsoft.com/en-us/windows/release-health/windows11-release-information': 'Check Microsoft’s Windows 11 release information',
+  'https://blogs.windows.com/windowsexperience/2026/09/29/how-to-get-windows-11-2026-update/': 'Read Microsoft’s Windows 11 2026 Update announcement',
+  'https://support.microsoft.com/en-au/servicing/os/windows-11/2026/09/windows-11-version-26h2-update-history': 'View the Windows 11 version 26H2 update history',
+  'https://learn.microsoft.com/en-us/windows/compatibility/windows-11/': 'Review Microsoft’s Windows 11 compatibility requirements',
+  'https://support.microsoft.com/en-us/windows/experience/performance-optimization/tips-to-improve-pc-performance-in-windows': 'Microsoft’s guide to improving PC performance',
+  'https://support.microsoft.com/en-us/windows/experience/storage-filemanagement/storage-settings-in-windows': 'Microsoft’s Windows storage settings guide',
+  'https://support.microsoft.com/en-us/windows/experience/storage-filemanagement/free-up-drive-space-in-windows': 'Microsoft’s guide to freeing up drive space',
+  'https://support.microsoft.com/en-us/windows/experience/storage-filemanagement/defragment-optimize-your-data-drives-in-windows': 'Microsoft’s guide to optimizing drives',
+  'https://www.intel.com/content/www/us/en/support/processors/_https_/www.intel.la/content/www/us/en/support/articles/000005597/processors.html': 'Intel’s supported processor list',
+  'https://www.intel.com/content/www/us/en/support/articles/000088048/processors.html': 'Intel processor support and compatibility information',
+  'https://www.amd.com/en/products/processors/laptop/ryzen/200-series/amd-ryzen-7-260.html': 'AMD Ryzen 200 Series processor specifications',
 };
 
 const getTechnicalSourceLabel = (url: string) => TECHNICAL_SOURCE_LABELS[url] ?? 'External source';
@@ -542,7 +560,7 @@ const RichBlock: React.FC<{ block: ContentBlock; headingRef?: (el: HTMLElement |
             <caption className="sr-only">{block.title || 'Comparison table'}</caption>
             <thead>
               <tr className="bg-slate-900/80">
-                <th scope="col" className="text-left p-4 text-slate-400 font-bold uppercase text-xs tracking-wide">Feature</th>
+                <th scope="col" className="text-left p-4 text-slate-400 font-bold uppercase text-xs tracking-wide">{block.featureLabel || 'Feature'}</th>
                 {block.columns.map((col, i) => (
                   <th key={i} scope="col" className={`p-4 text-center font-black uppercase text-xs tracking-wide ${i === 1 ? 'text-cyan-400 bg-cyan-500/5' : 'text-slate-300'}`}>
                     {col}
@@ -572,7 +590,11 @@ const RichBlock: React.FC<{ block: ContentBlock; headingRef?: (el: HTMLElement |
           <ol className="relative border-l border-slate-800 pl-6 space-y-6">
             {block.steps.map((step, i) => (
               <li key={i} className="relative">
-                <span className="absolute -left-[31px] top-1 w-3.5 h-3.5 rounded-full bg-cyan-500 ring-4 ring-brand-dark" aria-hidden="true" />
+                {block.numbered ? (
+              <span className="absolute -left-[36px] top-0 flex h-6 w-6 items-center justify-center rounded-full bg-cyan-500 text-[11px] font-black text-slate-950 ring-4 ring-brand-dark" aria-hidden="true">{i + 1}</span>
+            ) : (
+              <span className="absolute -left-[31px] top-1 h-3.5 w-3.5 rounded-full bg-cyan-500 ring-4 ring-brand-dark" aria-hidden="true" />
+            )}
                 <p className="font-bold text-white">{step.label}</p>
                 {step.note && <p className="text-sm text-slate-400 mt-0.5">{step.note}</p>}
               </li>
@@ -739,8 +761,31 @@ export default function BlogPostTemplate() {
   );
 
   const categories = useMemo(() => {
+    const categoryGroups: Record<string, string> = {
+      'Windows & Microsoft': 'Windows & OS',
+      'Windows & Performance': 'Windows & OS',
+      'Windows & Software': 'Windows & OS',
+      'Windows & Drivers': 'Windows & OS',
+      'Windows Troubleshooting': 'Windows & OS',
+      'Gaming': 'Gaming & GPU Performance',
+      'Gaming & Windows': 'Gaming & GPU Performance',
+      'Gaming Performance': 'Gaming & GPU Performance',
+      'Gaming Graphics': 'Gaming & GPU Performance',
+      'Gaming PC Repair': 'Gaming & GPU Performance',
+      'GPU Repair': 'Gaming & GPU Performance',
+      'Gaming Laptop Maintenance': 'Laptop & Hardware Maintenance',
+      'Laptop Troubleshooting': 'Laptop & Hardware Maintenance',
+      'Hardware': 'Laptop & Hardware Maintenance',
+      'Maintenance': 'Laptop & Hardware Maintenance',
+      'Laptop Performance': 'Laptop & Hardware Maintenance',
+      'Storage & Upgrades': 'Storage & Upgrades',
+      'BIOS & Firmware': 'Motherboard & BIOS',
+    };
     const map = new Map<string, number>();
-    BLOG_POSTS.forEach(p => map.set(p.category, (map.get(p.category) || 0) + 1));
+    BLOG_POSTS.forEach((p) => {
+      const group = categoryGroups[p.category] || 'Other';
+      map.set(group, (map.get(group) || 0) + 1);
+    });
     return Array.from(map.entries());
   }, []);
 
@@ -835,6 +880,7 @@ export default function BlogPostTemplate() {
     'windows-11-update-problems',
     'windows-troubleshooting-complete-guide',
   ].includes(post.slug);
+  const isWindows26H2Guide = post.slug === 'windows-11-26h2-iso-released';
   const isMicrosoftSurfaceEventNews = post.slug === 'microsoft-windows-surface-event-october-7-2026';
   const socialImage = toAbsoluteAssetUrl(post.discoverImage || post.image);
   const discoverReady = Boolean(post.discoverImage);
@@ -882,12 +928,10 @@ export default function BlogPostTemplate() {
       </div>
 
       <nav aria-label="Breadcrumb" className="max-w-6xl mx-auto px-6 mb-8">
-        <ol className="flex items-center gap-2 text-sm text-slate-400 overflow-x-auto pb-2 scrollbar-hide">
-          <li><Link to={ROUTES.HOME} className="hover:text-cyan-400">Home</Link></li>
-          <ChevronRight size={14} aria-hidden="true" />
-          <li><Link to={isNews ? ROUTES.NEWS : isGuide ? ROUTES.GUIDES : ROUTES.BLOG} className="hover:text-cyan-400">{isNews ? "News" : isGuide ? "Guides" : "Blog"}</Link></li>
-          <ChevronRight size={14} aria-hidden="true" />
-          <li className="text-cyan-400 truncate" aria-current="page">{post.title}</li>
+        <ol className="m-0 flex list-none items-center gap-2 p-0 text-sm text-slate-400 overflow-x-auto pb-2 scrollbar-hide">
+          <li className="inline-flex shrink-0 items-center whitespace-nowrap after:ml-2 after:text-slate-600 after:content-['/']"><Link to={ROUTES.HOME} className="hover:text-cyan-400">Home</Link></li>
+          <li className="inline-flex shrink-0 items-center whitespace-nowrap after:ml-2 after:text-slate-600 after:content-['/']"><Link to={isNews ? ROUTES.NEWS : isGuide ? ROUTES.GUIDES : ROUTES.BLOG} className="hover:text-cyan-400">{isNews ? "News" : isGuide ? "Guides" : "Blog"}</Link></li>
+          <li className="min-w-0 truncate text-cyan-400" aria-current="page">{post.title}</li>
         </ol>
       </nav>
 
@@ -1045,6 +1089,7 @@ export default function BlogPostTemplate() {
                 <p className="text-slate-400 italic">Content is currently being updated by our technicians. Please check back shortly.</p>
               )}
 
+              {!isWindows26H2Guide && (
               <div className="bg-slate-900/50 backdrop-blur-md border border-slate-700/50 p-8 rounded-2xl my-12 text-center">
                 <h3 className="text-2xl text-white font-black mb-4 flex items-center justify-center gap-2">
                   <Share2 size={24} className="text-cyan-400" aria-hidden="true" /> {isGamingPerformanceGuide ? 'Gaming PC or Laptop Stuttering?' : isWindowsTroubleshootingGuide ? 'Windows, Network or Storage Problem?' : 'Is Your Laptop Running Slow?'}
@@ -1088,6 +1133,7 @@ export default function BlogPostTemplate() {
                   <span>Certified Technicians</span>
                 </div>
               </div>
+              )}
             </section>
           </article>
 
@@ -1107,7 +1153,11 @@ export default function BlogPostTemplate() {
                 <div>
                   <p className="text-xs font-black uppercase tracking-[0.18em] text-cyan-400">KCROC repair paths</p>
                   <h3 id="graph-related-services" className="mt-2 text-2xl font-black text-white">Where this problem or guide leads</h3>
-                  <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-400">These links come from the same knowledge graph that drives KCROC services and are intended to connect research intent with the relevant repair destination.</p>
+                  <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-400">
+                    {isWindows26H2Guide
+                      ? 'If the 26H2 update exposed a deeper hardware fault on your machine, select the matching repair service below. Free pickup and delivery are available across Kuwait.'
+                      : 'Choose the repair destination that matches the symptoms or hardware fault you identified.'}
+                  </p>
                 </div>
                 {graphArabicEquivalent && (
                   <Link
@@ -1121,6 +1171,12 @@ export default function BlogPostTemplate() {
                   </Link>
                 )}
               </div>
+              {isWindows26H2Guide && (
+                <div className="mt-5 flex flex-wrap gap-3">
+                  <Link to={ROUTES.BOOKING} onClick={() => trackLead('Blog_26H2_BookPickup')} className="inline-flex items-center justify-center rounded-xl bg-cyan-500 px-5 py-3 font-black text-slate-950 transition-colors hover:bg-cyan-400">Book Free Pickup</Link>
+                  <a href={waLink} onClick={() => trackLead('Blog_26H2_WhatsApp')} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center rounded-xl border border-slate-700 bg-slate-900 px-5 py-3 font-bold text-white transition-colors hover:border-cyan-500/40">WhatsApp KCROC</a>
+                </div>
+              )}
               {graphRelatedServices.length > 0 && (
                 <div className="mt-6 grid gap-4 sm:grid-cols-2">
                   {graphRelatedServices.map((service) => (
@@ -1215,6 +1271,7 @@ export default function BlogPostTemplate() {
               </ul>
             </div>
 
+            {!isWindows26H2Guide && (
             <div className="bg-cyan-500/10 border border-cyan-500/30 rounded-2xl p-5 text-center">
               <p className="font-black text-white mb-1">Free Diagnosis</p>
               <p className="text-xs text-slate-400 mb-4">Not sure what's wrong? We'll check for free.</p>
@@ -1238,6 +1295,7 @@ export default function BlogPostTemplate() {
                 </a>
               )}
             </div>
+            )}
           </div>
         </aside>
       </div>
