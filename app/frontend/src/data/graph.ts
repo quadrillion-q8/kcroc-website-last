@@ -835,10 +835,10 @@ export const rawGraphData: RawGraphData = {
         canonicalUrl: 'https://www.computerrepairkuwait.com/guides/bios-uefi-recovery-kuwait',
         ogImage: 'https://www.computerrepairkuwait.com/images/discover/bios-hero-motherboard-1200x675.webp',
         ogType: 'article',
-        locale: 'en_KW',
+        locale: 'en',
         alternates: {
-          'en-KW': 'https://www.computerrepairkuwait.com/guides/bios-uefi-recovery-kuwait',
-          'ar-KW': 'https://www.computerrepairkuwait.com/guides/ar/bios-uefi-recovery-kuwait',
+          'en': 'https://www.computerrepairkuwait.com/guides/bios-uefi-recovery-kuwait',
+          'ar': 'https://www.computerrepairkuwait.com/guides/ar/bios-uefi-recovery-kuwait',
           'x-default': 'https://www.computerrepairkuwait.com/guides/bios-uefi-recovery-kuwait'
         },
         lastModified: '2026-10-05',
@@ -907,16 +907,16 @@ export const rawGraphData: RawGraphData = {
       entityType: 'WebPage',
       isActive: true,
       title: 'استرداد BIOS بعد فشل التحديث: دليل UEFI والأعطال',
-      description: 'دليل لتمييز تلف فيرموير BIOS/UEFI عن أعطال الرام والطاقة واللوحة الأم، مع طرق الاسترداد الآمنة وبرمجة شريحة SPI في الكويت.',
+      description: 'دليل لتمييز تلف فيرموير BIOS/UEFI عن أعطال الرام والطاقة واللوحة الأم، مع طرق الاسترداد الآمنة وبرمجة شريحة SPI.',
       seo: {
         title: 'استرداد BIOS بعد فشل التحديث: دليل UEFI والأعطال | KCROC',
-        description: 'لابتوب أو كمبيوتر لا يقلع بعد تحديث BIOS أو UEFI؟ تعرّف كيف تفرّق بين تلف الفيرموير وأعطال الرام والطاقة واللوحة الأم، وخيارات الاسترداد الآمنة في الكويت.',
+        description: 'لابتوب أو كمبيوتر لا يقلع بعد تحديث BIOS أو UEFI؟ تعرّف كيف تفرّق بين تلف الفيرموير وأعطال الرام والطاقة واللوحة الأم، وخيارات الاسترداد الآمنة.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/guides/ar/bios-uefi-recovery-kuwait',
         ogType: 'article',
-        locale: 'ar_KW',
+        locale: 'ar',
         alternates: {
-          'en-KW': 'https://www.computerrepairkuwait.com/guides/bios-uefi-recovery-kuwait',
-          'ar-KW': 'https://www.computerrepairkuwait.com/guides/ar/bios-uefi-recovery-kuwait',
+          'en': 'https://www.computerrepairkuwait.com/guides/bios-uefi-recovery-kuwait',
+          'ar': 'https://www.computerrepairkuwait.com/guides/ar/bios-uefi-recovery-kuwait',
           'x-default': 'https://www.computerrepairkuwait.com/guides/bios-uefi-recovery-kuwait'
         },
         lastModified: '2026-10-05',
