@@ -84,6 +84,30 @@ add('High-impression page snippets stay concise in the canonical graph source',
   has(graph, 'description: "PC won’t boot after a BIOS/UEFI update? Learn to distinguish firmware corruption from RAM, power or motherboard faults and review safe recovery options."') &&
   has(graph, "title: 'Intel Core Ultra vs Ryzen AI: 2026 Laptop Guide | KCROC'"));
 add('English and Arabic pricing language switch is reciprocal', locale.includes("'/pricing': '/ar/pricing'") && locale.includes("'/ar/pricing': '/pricing'"));
+const [biosGuideEnSource, biosGuideArSource] = await Promise.all([
+  read('pages/BiosUefiRecoveryGuide.tsx'),
+  read('pages/BiosUefiRecoveryGuideAR.tsx'),
+]);
+const biosGuideEnEntityStart = graph.indexOf("    'guide-bios-uefi': {");
+const biosGuideArEntityStart = graph.indexOf("    'guide-bios-uefi-ar': {");
+const biosGuideArEntityEnd = graph.indexOf("    'guide-laptop-buying-ar': {", biosGuideArEntityStart + 1);
+const biosGuideEnEntity = graph.slice(biosGuideEnEntityStart, biosGuideArEntityStart);
+const biosGuideArEntity = graph.slice(biosGuideArEntityStart, biosGuideArEntityEnd);
+add('BIOS/UEFI guides use global English and Arabic language targeting while keeping Kuwait-only repair conversion details',
+  biosGuideEnEntity.includes("locale: 'en'") &&
+  biosGuideEnEntity.includes("'en': 'https://www.computerrepairkuwait.com/guides/bios-uefi-recovery-kuwait'") &&
+  biosGuideEnEntity.includes("'ar': 'https://www.computerrepairkuwait.com/guides/ar/bios-uefi-recovery-kuwait'") &&
+  !biosGuideEnEntity.includes('en-KW') && !biosGuideEnEntity.includes('ar-KW') &&
+  biosGuideArEntity.includes("locale: 'ar'") &&
+  biosGuideArEntity.includes("'en': 'https://www.computerrepairkuwait.com/guides/bios-uefi-recovery-kuwait'") &&
+  biosGuideArEntity.includes("'ar': 'https://www.computerrepairkuwait.com/guides/ar/bios-uefi-recovery-kuwait'") &&
+  !biosGuideArEntity.includes('في الكويت') &&
+  biosGuideEnSource.includes('hrefLang="ar"') && !biosGuideEnSource.includes('hrefLang="ar-KW"') &&
+  biosGuideArSource.includes("htmlAttributes={{ lang: 'ar', dir: 'rtl' }}") &&
+  biosGuideArSource.includes('hrefLang="en"') && biosGuideArSource.includes('hrefLang="ar"') &&
+  biosGuideArSource.includes("inLanguage: 'ar'") && !biosGuideArSource.includes("inLanguage: 'ar-KW'") &&
+  biosGuideArSource.includes('20–40 د.ك') &&
+  biosGuideArSource.includes('استلام وتوصيل مجاني داخل الكويت'));
 
 add('Laptop repair page has intent-matched symptom links to existing guides and services',
   graph.includes("symptomLinks: [") &&
