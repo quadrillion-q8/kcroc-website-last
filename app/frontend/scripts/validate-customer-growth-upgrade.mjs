@@ -798,13 +798,16 @@ add('Arabic gaming-laptop FAQ schema is generated from the same six answers that
   arabicCommercial.includes("mainEntity: cfg.faq.map((item)") &&
   arabicCommercial.includes('<summary className="cursor-pointer font-bold text-white">{item.q}</summary>') &&
   arabicCommercial.includes('<p className="mt-3 leading-7 text-slate-400">{item.a}</p>'));
-add('Arabic gaming-laptop cooling service area strip links to all six Kuwait governorates using existing destinations',
-  arabicCommercial.includes("{ label: 'حولي', path: '/ar/computer-repair-hawalli' }") &&
-  arabicCommercial.includes("{ label: 'العاصمة', path: '/ar/computer-repair-kuwait-city' }") &&
-  arabicCommercial.includes("{ label: 'الفروانية', path: '/ar/computer-repair-farwaniya' }") &&
-  arabicCommercial.includes("{ label: 'الجهراء', path: '/ar/computer-repair-jahra' }") &&
-  arabicCommercial.includes("{ label: 'الأحمدي', path: '/location/ahmadi' }") &&
-  arabicCommercial.includes("{ label: 'مبارك الكبير', path: '/location/mubarak-al-kabeer' }"));
+const arabicGovernorateStart = arabicCommercial.indexOf('const KUWAIT_GOVERNORATE_LINKS = [');
+const arabicGovernorateEnd = arabicCommercial.indexOf('];', arabicGovernorateStart + 1);
+const arabicGovernorateLinks = arabicGovernorateStart >= 0 && arabicGovernorateEnd > arabicGovernorateStart
+  ? arabicCommercial.slice(arabicGovernorateStart, arabicGovernorateEnd)
+  : '';
+add('Arabic gaming-laptop cooling page uses six existing governorate destinations without changing other pages’ local-area links',
+  ['حولي', 'العاصمة', 'الفروانية', 'الجهراء', 'الأحمدي', 'مبارك الكبير'].every((name) => arabicGovernorateLinks.includes(name)) &&
+  ['/ar/computer-repair-hawalli', '/ar/computer-repair-kuwait-city', '/ar/computer-repair-farwaniya', '/ar/computer-repair-jahra', '/location/ahmadi', '/location/mubarak-al-kabeer'].every((path) => arabicGovernorateLinks.includes(path)) &&
+  arabicCommercial.includes("slug === 'gaming-laptop-cleaning-kuwait' ? KUWAIT_GOVERNORATE_LINKS : LOCAL_LINKS") &&
+  arabicCommercial.includes("{ label: 'السالمية', path: '/ar/computer-repair-salmiya' }"));
 
 for (const check of checks) console.log(`${check.pass ? '✅' : '❌'} ${check.name}${!check.pass && check.detail ? ` — ${check.detail}` : ''}`);
 const failed = checks.filter((check) => !check.pass);
