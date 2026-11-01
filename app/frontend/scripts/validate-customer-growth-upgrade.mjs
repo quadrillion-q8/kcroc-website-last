@@ -754,14 +754,14 @@ add('Arabic hinge Service JSON-LD uses the canonical URL, shared business entity
 
 
 const arabicGamingCoolingStart = arabicCommercial.indexOf("  'gaming-laptop-cleaning-kuwait': {");
-const arabicGamingCoolingEnd = arabicCommercial.indexOf("\\n  'computer-repair-hawalli': {", arabicGamingCoolingStart + 1);
+const arabicGamingCoolingEnd = arabicCommercial.indexOf("\n  'computer-repair-hawalli': {", arabicGamingCoolingStart + 1);
 const arabicGamingCoolingConfig = arabicGamingCoolingStart >= 0 && arabicGamingCoolingEnd > arabicGamingCoolingStart
   ? arabicCommercial.slice(arabicGamingCoolingStart, arabicGamingCoolingEnd)
   : '';
 add('Arabic gaming-laptop cooling service has visible model-specific copy, complete FAQ answers and the published 15–20 KWD guide range',
   arabicGamingCoolingConfig.includes('تنظيف لابتوب الألعاب وصيانة التبريد في الكويت') &&
   arabicGamingCoolingConfig.includes('15–20 د.ك') &&
-  (arabicGamingCoolingConfig.match(/\\{ q: '/g) || []).length === 6 &&
+  (arabicGamingCoolingConfig.match(/\{ q: '/g) || []).length === 6 &&
   arabicGamingCoolingConfig.includes('Liquid Metal') &&
   arabicGamingCoolingConfig.includes('Thermal Pads') &&
   arabicGamingCoolingConfig.includes('24–48 ساعة'));
