@@ -717,6 +717,41 @@ add('MacBook screen page adds the Arabic service summary below its existing Arab
   macbookScreenTemplateSource.includes('ملخص الخدمة بالعربي: مختبر KCROC في حولي') &&
   macbookScreenTemplateSource.includes('الخدمة بالعربية'));
 
+const hingeArabicGraphStart = graph.indexOf("'page-ar-laptop-hinge-repair': {");
+const hingeArabicGraphEnd = graph.indexOf("'page-ar-gaming-laptop-cleaning': {", hingeArabicGraphStart + 1);
+const hingeArabicGraph = hingeArabicGraphStart >= 0 && hingeArabicGraphEnd > hingeArabicGraphStart ? graph.slice(hingeArabicGraphStart, hingeArabicGraphEnd) : '';
+const hingeServiceGraphStart = graph.indexOf("'srv-hinge': {");
+const hingeServiceGraphEnd = graph.indexOf("'srv-keyboard': {", hingeServiceGraphStart + 1);
+const hingeServiceGraph = hingeServiceGraphStart >= 0 && hingeServiceGraphEnd > hingeServiceGraphStart ? graph.slice(hingeServiceGraphStart, hingeServiceGraphEnd) : '';
+const lenovoGraphStart = graph.indexOf("'brand-lenovo': {");
+const lenovoGraphEnd = graph.indexOf("'brand-asus': {", lenovoGraphStart + 1);
+const lenovoGraph = lenovoGraphStart >= 0 && lenovoGraphEnd > lenovoGraphStart ? graph.slice(lenovoGraphStart, lenovoGraphEnd) : '';
+const asusGraphStart = graph.indexOf("'brand-asus': {");
+const asusGraphEnd = graph.indexOf("'brand-acer': {", asusGraphStart + 1);
+const asusGraph = asusGraphStart >= 0 && asusGraphEnd > asusGraphStart ? graph.slice(asusGraphStart, asusGraphEnd) : '';
+add('Arabic hinge page has no self-referencing related-service card',
+  hingeArabicGraph.includes("relatedServiceIds: ['srv-laptop', 'srv-screen', 'srv-charging-port']") &&
+  arabicCommercial.includes("serviceIds: ['srv-laptop', 'srv-screen', 'srv-charging-port']") &&
+  !arabicCommercial.includes("'srv-hinge': { title: 'تصليح مفصلات وهيكل اللابتوب'"));
+add('Hinge repair is visible in the footer directly below screen replacement',
+  footer.includes('services.slice(0, 10)') &&
+  has(graph, "{ label: 'Screen Replacement Kuwait', path: '/laptop-screen-repair-kuwait' }, { label: 'Laptop Hinge & Chassis Repair', path: '/laptop-hinge-repair-kuwait' }"));
+add('All six supported laptop-brand hubs link to the hinge service',
+  hingeServiceGraph.includes("relatedBrandIds: ['brand-dell', 'brand-hp', 'brand-lenovo', 'brand-msi', 'brand-asus', 'brand-acer']") &&
+  lenovoGraph.includes("'srv-hinge'") && asusGraph.includes("'srv-hinge'") &&
+  graph.slice(graph.indexOf("'brand-dell': {"), graph.indexOf("'brand-hp': {")).includes("'srv-hinge'") &&
+  graph.slice(graph.indexOf("'brand-hp': {"), graph.indexOf("'brand-lenovo': {")).includes("'srv-hinge'") &&
+  graph.slice(graph.indexOf("'brand-acer': {"), graph.indexOf("'brand-msi': {")).includes("'srv-hinge'") &&
+  graph.slice(graph.indexOf("'brand-msi': {"), graph.indexOf("'brand-apple': {")).includes("'srv-hinge'"));
+add('Arabic hinge WhatsApp CTA and prefilled message request a device model and photos',
+  arabicCommercial.includes('أرسل صورة المفصلة والهيكل عبر واتساب') &&
+  arabicCommercial.includes('سأرفق صورة واضحة للمفصلة وإطار الشاشة أو الغطاء من الخارج'));
+add('Arabic hinge Service JSON-LD uses the canonical URL, shared business entity and published price range',
+  arabicCommercial.includes("'@type': 'AggregateOffer'") &&
+  arabicCommercial.includes('lowPrice: 15') && arabicCommercial.includes('highPrice: 30') &&
+  arabicCommercial.includes("provider: { '@id': `${business.websiteUrl}/#business` }") &&
+  arabicCommercial.includes("hingeServiceSchema && <SchemaMarkup schema={hingeServiceSchema} />"));
+
 for (const check of checks) console.log(`${check.pass ? '✅' : '❌'} ${check.name}${!check.pass && check.detail ? ` — ${check.detail}` : ''}`);
 const failed = checks.filter((check) => !check.pass);
 if (failed.length) process.exit(1);

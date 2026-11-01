@@ -586,10 +586,10 @@ export const rawGraphData: RawGraphData = {
         canonicalUrl: 'https://www.computerrepairkuwait.com/ar/laptop-hinge-repair-kuwait',
         locale: 'ar_KW',
         alternates: { 'ar-KW': 'https://www.computerrepairkuwait.com/ar/laptop-hinge-repair-kuwait', 'en-KW': 'https://www.computerrepairkuwait.com/laptop-hinge-repair-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/laptop-hinge-repair-kuwait' },
-        ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList'], lastModified: '2026-11-01T00:00:00+03:00',
+        ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList'], lastModified: '2026-11-02T00:00:00+03:00',
         breadcrumbs: [{ name: 'الرئيسية', url: '/' }, { name: 'تصليح مفصلات اللابتوب', url: '/ar/laptop-hinge-repair-kuwait' }]
       },
-      relatedServiceIds: ['srv-hinge', 'srv-laptop', 'srv-screen']
+      relatedServiceIds: ['srv-laptop', 'srv-screen', 'srv-charging-port']
     } as WebPageEntity,
 
     'page-ar-gaming-laptop-cleaning': {
@@ -1345,7 +1345,7 @@ export const rawGraphData: RawGraphData = {
       ],
       relatedServiceIds: ['srv-screen', 'srv-laptop'],
       relatedProblemIds: ['problem-hinge-break', 'problem-cracked-screen'],
-      relatedBrandIds: ['brand-dell', 'brand-hp', 'brand-lenovo', 'brand-msi'],
+      relatedBrandIds: ['brand-dell', 'brand-hp', 'brand-lenovo', 'brand-msi', 'brand-asus', 'brand-acer'],
       relatedResourcePaths: [
         { label: 'How to Protect Your Laptop Screen', path: '/blog/how-to-protect-laptop-screen' },
         { label: 'Laptop Repair Guide', path: '/laptop-repair-kuwait' },
@@ -1373,7 +1373,7 @@ export const rawGraphData: RawGraphData = {
         { src: IMAGES.services.laptopRepair.src, alt: IMAGES.services.laptopRepair.alt, width: IMAGES.services.laptopRepair.width, height: IMAGES.services.laptopRepair.height, placement: 'process', caption: 'Laptop opened for inspection of the chassis, display cable routing and surrounding hardware.' }
       ],
       warranty: { duration: '30 Days', coverage: 'Parts and labour for the completed hinge/chassis repair', noFixNoFee: true },
-      seo: { title: 'Laptop Hinge Repair Kuwait | Chassis Fix | KCROC', description: 'Broken or stiff laptop hinge repair in Kuwait. Chassis reinforcement, hinge replacement and display-cable inspection with free pickup and 30-day warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-hinge-repair-kuwait', locale: 'en_KW', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/laptop-hinge-repair-kuwait', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/laptop-hinge-repair-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/laptop-hinge-repair-kuwait' }, ogType: 'article', schemaTypes: ['Service', 'FAQPage'], lastModified: '2026-11-01T00:00:00+03:00' },
+      seo: { title: 'Laptop Hinge Repair Kuwait | Chassis Fix | KCROC', description: 'Broken or stiff laptop hinge repair in Kuwait. Chassis reinforcement, hinge replacement and display-cable inspection with free pickup and 30-day warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-hinge-repair-kuwait', locale: 'en_KW', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/laptop-hinge-repair-kuwait', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/laptop-hinge-repair-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/laptop-hinge-repair-kuwait' }, ogType: 'article', schemaTypes: ['Service', 'FAQPage'], lastModified: '2026-11-02T00:00:00+03:00' },
       navigationPriority: 54,
       isFeatured: false,
       popular: false
@@ -4608,7 +4608,7 @@ export const rawGraphData: RawGraphData = {
           repairFocus: ['USB-C', 'Charging', 'Display', 'Keyboard', 'Battery', 'Motherboard']
         }
       ],
-      relatedServiceIds: ['srv-gaming', 'srv-laptop', 'srv-motherboard', 'srv-screen', 'srv-battery', 'srv-gaming-laptop-cleaning'],
+      relatedServiceIds: ['srv-gaming', 'srv-laptop', 'srv-motherboard', 'srv-screen', 'srv-battery', 'srv-gaming-laptop-cleaning', 'srv-hinge'],
       relatedProblemIds: [
         'problem-no-power', 'problem-not-charging', 'problem-overheating', 'problem-black-screen',
         'problem-hinge-break', 'problem-keyboard-fail', 'problem-wifi-fail', 'problem-slow',
@@ -4680,7 +4680,7 @@ export const rawGraphData: RawGraphData = {
         { id: 'asus-wifi', title: 'MediaTek WiFi dropping', severity: 'medium', description: 'Frequent WiFi drops requiring card upgrade to Intel AX series.' },
         { id: 'asus-screen', title: 'Screen flickering', severity: 'medium', description: 'Display cable wear from Zephyrus "ErgoLift" hinge design.' }
       ],
-      relatedServiceIds: ['srv-laptop', 'srv-gaming', 'srv-gaming-laptop-cleaning', 'srv-motherboard', 'srv-screen'],
+      relatedServiceIds: ['srv-laptop', 'srv-gaming', 'srv-gaming-laptop-cleaning', 'srv-motherboard', 'srv-screen', 'srv-hinge'],
       relatedProblemIds: ['problem-overheating', 'problem-no-power', 'problem-wifi-fail', 'problem-black-screen'],
       relatedLocationIds: ['loc-hawalli', 'loc-salmiya', 'loc-kuwait-city', 'loc-farwaniya', 'loc-ahmadi', 'loc-fahaheel'],
       contentImages: [
@@ -5501,9 +5501,9 @@ export const rawGraphData: RawGraphData = {
           { label: 'Gaming Laptop Cleaning Kuwait', path: '/gaming-laptop-cleaning-kuwait' },
           { label: 'Motherboard Repair Kuwait', path: '/motherboard-repair-kuwait' },
           { label: 'Screen Replacement Kuwait', path: '/laptop-screen-repair-kuwait' },
+          { label: 'Laptop Hinge & Chassis Repair', path: '/laptop-hinge-repair-kuwait' },
           { label: 'Battery Replacement Kuwait', path: '/battery-replacement-kuwait' },
           { label: 'Laptop Charging Port Repair', path: '/laptop-charging-port-repair-kuwait' },
-          { label: 'Laptop Hinge & Chassis Repair', path: '/laptop-hinge-repair-kuwait' },
           { label: 'Laptop Keyboard Replacement', path: '/laptop-keyboard-replacement-kuwait' },
           { label: 'SSD & RAM Upgrade Kuwait', path: '/ssd-ram-upgrade-kuwait' },
           { label: 'Laptop Liquid Damage Repair', path: '/laptop-liquid-damage-repair-kuwait' }

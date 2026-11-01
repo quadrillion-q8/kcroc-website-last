@@ -188,12 +188,14 @@ const CONFIG: Record<string, {
     h1: 'تصليح مفصلات وهيكل اللابتوب في الكويت',
     eyebrow: 'إصلاح المفصلات المكسورة أو القاسية • فحص الهيكل وكابل الشاشة',
     intro: 'صوت طقطقة عند فتح اللابتوب، أو غطاء صار ثقيلًا، أو إطار الشاشة بدأ ينفصل عن الهيكل؟ قد تكون المفصلة مشدودة أكثر من اللازم أو أن قواعد تثبيتها داخل الغطاء أو قاعدة الجهاز تكسرت. الاستمرار في فتح وإغلاق الجهاز بالقوة قد يزيد الضرر على الإطار أو الشاشة أو كابل العرض. في مختبر KCROC بحولي نفحص المفصلات ونقاط التثبيت والـBezel ومحاذاة الغطاء ومسار الكابلات، ثم نحدد هل يمكن ترميم الهيكل أو أن القطعة تحتاج إلى تبديل. نوضح التكلفة قبل أي إصلاح مدفوع، مع استلام وتوصيل مجاني داخل الكويت.',
-    bullets: ['فحص المفصلة القاسية أو المكسورة ونقاط التثبيت داخل الهيكل', 'فحص إطار الشاشة (Bezel) والغطاء ومحاذاة المفصلتين', 'فحص كابل الشاشة والكيابل القريبة قبل إعادة تركيب الهيكل', 'ترميم قواعد التثبيت عندما يكون ذلك متينًا أو اقتراح القطعة البديلة المناسبة', 'السعر يبدأ من 15 د.ك، والنطاق المنشور 15–30 د.ك حسب الضرر، مع ضمان 30 يومًا'],
+    bullets: ['فحص المفصلة القاسية أو المكسورة ونقاط التثبيت داخل الهيكل', 'فحص إطار الشاشة (Bezel) والغطاء ومحاذاة المفصلتين', 'فحص كابل الشاشة والكيابل القريبة قبل إعادة تركيب الهيكل', 'ترميم قواعد التثبيت عندما يكون ذلك متينًا أو اقتراح القطعة البديلة المناسبة', 'نفحص موديلات HP Pavilion وEnvy وEliteBook، وDell Inspiron وLatitude وXPS، وLenovo ThinkPad وIdeaPad وYoga، وASUS ROG وTUF وZenBook وVivoBook، وAcer Aspire وNitro وPredator، وMSI GF وKatana وRaider؛ ويعتمد الإجراء على الموديل والتصميم.', 'السعر يبدأ من 15 د.ك، والنطاق المنشور 15–30 د.ك حسب الضرر، مع ضمان 30 يومًا'],
     faq: [
       { q: 'هل أستمر في فتح اللابتوب إذا المفصلة صارت قاسية؟', a: 'الأفضل عدم إجبار الغطاء على الفتح أو الإغلاق. الضغط المتكرر قد يكسر قواعد التثبيت أو يضر إطار الشاشة أو كابل العرض. أوقف الحركة قدر الإمكان ورتب فحصًا.' },
       { q: 'هل يمكن ترميم الهيكل بدل تبديل الغطاء كاملًا؟', a: 'في بعض الموديلات يمكن إعادة بناء قواعد التثبيت إذا كانت حالة البلاستيك والهيكل تسمح بإصلاح قوي. إذا كان الكسر واسعًا أو القطعة غير قابلة للترميم، نوضح خيار الاستبدال قبل العمل.' },
       { q: 'كم سعر تصليح مفصلات اللابتوب؟', a: 'يبدأ السعر من 15 د.ك، والنطاق الإرشادي المنشور 15–30 د.ك. يتحدد السعر النهائي بعد فحص الموديل ومكان الكسر والقطعة المطلوبة.' },
-      { q: 'كم يستغرق إصلاح المفصلة؟', a: 'بعض أعمال الترميم يمكن إنجازها في نفس اليوم أو خلال 24 ساعة إذا لم تتطلب قطعة خارجية. الحالات التي تحتاج قطعة بديلة تعتمد على التوفر.' }
+      { q: 'كم يستغرق إصلاح المفصلة؟', a: 'بعض أعمال الترميم يمكن إنجازها في نفس اليوم أو خلال 24 ساعة إذا لم تتطلب قطعة خارجية. الحالات التي تحتاج قطعة بديلة تعتمد على التوفر.' },
+      { q: 'هل تصلحون مفصلات أجهزة HP وDell وLenovo وASUS وAcer وMSI؟', a: 'نستقبل أجهزة هذه الماركات للفحص، لكن تصميم المفصلة وقواعد التثبيت يختلف من موديل لآخر. أرسل رقم الموديل وصورة واضحة للضرر حتى نحدد هل الترميم مناسب أو يلزم تبديل القطعة.' },
+      { q: 'هل تفحصون مفصلات اللابتوب القابل للطي 360 درجة؟', a: 'نفحص أجهزة 2-in-1 القابلة للتحول مثل بعض موديلات Lenovo Yoga وغيرها حسب التصميم. نراجع المفصلة والهيكل والشاشة والكابلات قبل اقتراح الترميم أو الاستبدال.' }
     ],
     englishPath: '/laptop-hinge-repair-kuwait',
     arabicLinks: [
@@ -201,11 +203,11 @@ const CONFIG: Record<string, {
       { label: 'تصليح شاشة اللابتوب', path: '/ar/laptop-screen-repair-kuwait' },
       { label: 'أسعار الإصلاح', path: '/ar/pricing' }
     ],
-    serviceIds: ['srv-hinge', 'srv-laptop', 'srv-screen'],
+    serviceIds: ['srv-laptop', 'srv-screen', 'srv-charging-port'],
     serviceCardCopy: {
-      'srv-hinge': { title: 'تصليح مفصلات وهيكل اللابتوب', description: 'فحص المفصلات وقواعد التثبيت والغطاء والإطار وكابل الشاشة قبل تحديد طريقة الإصلاح.' },
       'srv-laptop': { title: 'تصليح اللابتوب', description: 'تشخيص أعطال اللابتوب والقطع المتأثرة قبل اقتراح الاستبدال.' },
-      'srv-screen': { title: 'تصليح وتبديل شاشة اللابتوب', description: 'فحص الشاشة والكابل ومسار العرض عند ظهور خطوط أو وميض أو شاشة سوداء.' }
+      'srv-screen': { title: 'تصليح وتبديل شاشة اللابتوب', description: 'فحص الشاشة والكابل ومسار العرض عند ظهور خطوط أو وميض أو شاشة سوداء.' },
+      'srv-charging-port': { title: 'تصليح مدخل شحن اللابتوب', description: 'فحص منفذ الشحن ومسار الطاقة لتحديد ما إذا كان العطل من الموصل أو دائرة الشحن قبل اقتراح الإصلاح.' }
     }
   },
   'gaming-laptop-cleaning-kuwait': {
@@ -1862,7 +1864,7 @@ export default function ArabicCommercialPage() {
       : slug === 'desktop-pc-repair-kuwait'
         ? 'السلام عليكم KCROC، أحتاج فحص وتصليح كمبيوتر مكتبي كامل (Tower) في الكويت. الماركة والموديل أو مواصفات التجميعة: ____. المشكلة: لا يعمل / يعمل من دون صورة / إغلاق أو إعادة تشغيل / حرارة / شاشة زرقاء / مشكلة تخزين أو RAM / أخرى: ____. هل كرت الشاشة مركب داخل الكمبيوتر الكامل؟ نعم / لا. منطقتي: ____. فضلاً نسقوا استلام الكمبيوتر الكامل، وأكدوا التشخيص والسعر والمدة قبل أي إصلاح مدفوع.'
         : slug === 'laptop-hinge-repair-kuwait'
-          ? 'السلام عليكم KCROC، أحتاج فحص مفصلات وهيكل اللابتوب. الماركة والموديل: ____. الأعراض: مفصلة قاسية / صوت طقطقة / الغطاء لا يغلق / إطار الشاشة منفصل / قواعد التثبيت مكسورة. هل الشاشة أو الكابل تضرر؟ ____. منطقتي: ____. أستطيع إرسال صور للمفصلة والغطاء. فضلاً وضحوا خيار الترميم أو الاستبدال والسعر والمدة قبل الإصلاح.'
+          ? 'السلام عليكم KCROC، أحتاج فحص مفصلات وهيكل اللابتوب. الماركة والموديل الدقيق: ____. الأعراض: مفصلة قاسية / صوت طقطقة / الغطاء لا يغلق / إطار الشاشة منفصل / قواعد التثبيت مكسورة. هل الشاشة أو كابل العرض متضرر؟ ____. منطقتي: ____. سأرفق صورة واضحة للمفصلة وإطار الشاشة أو الغطاء من الخارج. فضلاً راجعوا الصور وحددوا هل يلزم ترميم أو تبديل، مع توضيح السعر والمدة بعد الفحص.'
           : slug === 'gaming-laptop-cleaning-kuwait'
             ? 'السلام عليكم KCROC، أحتاج تنظيف وصيانة تبريد لابتوب ألعاب. الماركة والموديل الدقيق: ____. الأعراض: حرارة عالية / صوت مروحة / هبوط FPS بعد اللعب / إطفاء مفاجئ / أخرى: ____. منطقتي: ____. أرجو تأكيد نطاق التنظيف والتبريد والسعر الإرشادي والمدة بعد التقييم، قبل أي عمل مدفوع.'
         : slug === 'computer-repair-farwaniya'
@@ -2588,6 +2590,29 @@ export default function ArabicCommercialPage() {
     }]
   } : null;
 
+  const hingeServiceSchema = slug === 'laptop-hinge-repair-kuwait' ? {
+    '@graph': [{
+      '@type': 'Service',
+      '@id': `${page.seo.canonicalUrl}#service`,
+      name: 'تصليح مفصلات وهيكل اللابتوب في الكويت',
+      alternateName: 'Laptop Hinge & Chassis Repair Kuwait',
+      inLanguage: 'ar-KW',
+      serviceType: 'فحص وإصلاح مفصلات اللابتوب وترميم نقاط تثبيت الهيكل وفحص إطار الشاشة وكابل العرض',
+      description: cfg.intro,
+      url: page.seo.canonicalUrl,
+      provider: { '@id': `${business.websiteUrl}/#business` },
+      areaServed: { '@type': 'Country', name: 'Kuwait' },
+      offers: {
+        '@type': 'AggregateOffer',
+        name: 'النطاق الإرشادي لسعر تصليح مفصلات وهيكل اللابتوب',
+        priceCurrency: 'KWD',
+        lowPrice: 15,
+        highPrice: 30,
+        description: 'نطاق سعري إرشادي بحسب الموديل ومكان الكسر وطريقة الإصلاح أو القطع المطلوبة. يتم تأكيد السعر النهائي بعد الفحص وقبل بدء أي عمل مدفوع.'
+      }
+    }]
+  } : null;
+
   const faqSchema = {
     '@graph': [{
       '@type': 'FAQPage',
@@ -2611,6 +2636,7 @@ export default function ArabicCommercialPage() {
       {farwaniyaServiceSchema && <SchemaMarkup schema={farwaniyaServiceSchema} />}
       {kuwaitCityServiceSchema && <SchemaMarkup schema={kuwaitCityServiceSchema} />}
       {desktopPcServiceSchema && <SchemaMarkup schema={desktopPcServiceSchema} />}
+      {hingeServiceSchema && <SchemaMarkup schema={hingeServiceSchema} />}
       <SchemaMarkup schema={faqSchema} />
 
       <div className="mx-auto max-w-6xl px-4 pb-16 pt-8 sm:px-6 sm:pt-12">
@@ -2668,6 +2694,15 @@ export default function ArabicCommercialPage() {
                   <Link to="/book" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-slate-700 bg-slate-950/60 px-6 py-3 font-black text-white transition hover:border-cyan-500/40 hover:text-cyan-300">
                     <Truck className="h-5 w-5" aria-hidden="true" /> احجز استلامًا مجانيًا من مدينة الكويت والعاصمة
                   </Link>
+                </div>
+              )}
+              {slug === 'laptop-hinge-repair-kuwait' && (
+                <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                  <a href={wa} target="_blank" rel="noreferrer" aria-label="أرسل صورة مفصلة اللابتوب والهيكل عبر واتساب" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-400 px-6 py-3 font-black text-slate-950 transition hover:bg-cyan-300">
+                    <MessageCircle className="h-5 w-5" aria-hidden="true" /> أرسل صورة المفصلة والهيكل عبر واتساب
+                  </a>
+                  <Link to="/ar/pricing" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-slate-700 px-6 py-3 font-bold text-white transition hover:border-cyan-500/40 hover:text-cyan-300">مراجعة أسعار الإصلاح</Link>
+                  <Link to="/ar/book" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-slate-700 px-6 py-3 font-bold text-white transition hover:border-cyan-500/40 hover:text-cyan-300"><Truck className="h-5 w-5" aria-hidden="true" /> اطلب استلامًا مجانيًا</Link>
                 </div>
               )}
               {slug === 'laptop-screen-repair-kuwait' && (
@@ -3969,9 +4004,9 @@ export default function ArabicCommercialPage() {
 
         <section className="mt-12 rounded-3xl border border-cyan-900/60 bg-cyan-950/25 p-8 text-center sm:p-10">
           <h2 className="text-2xl font-black text-white sm:text-3xl">قول لنا المشكلة مثل ما هي</h2>
-          <p className="mx-auto mt-4 max-w-2xl leading-8 text-slate-300">ارسل موديل الجهاز، منطقتك، ووصف بسيط للعطل على واتساب. نبدأ من التشخيص ونوضح لك الخطوة التالية قبل الإصلاح.</p>
+          <p className="mx-auto mt-4 max-w-2xl leading-8 text-slate-300">{slug === 'laptop-hinge-repair-kuwait' ? 'أرسل الماركة والموديل وصورة واضحة للمفصلة وإطار الشاشة أو الغطاء، مع منطقتك ووصف مختصر للضرر. نراجع التفاصيل ونوضح لك الخطوة التالية قبل الإصلاح.' : 'ارسل موديل الجهاز، منطقتك، ووصف بسيط للعطل على واتساب. نبدأ من التشخيص ونوضح لك الخطوة التالية قبل الإصلاح.'}</p>
           <a href={wa} target="_blank" rel="noreferrer" className="mt-7 inline-flex items-center justify-center gap-2 rounded-full bg-cyan-500 px-8 py-3.5 font-black text-slate-950 hover:bg-cyan-400">
-            <MessageCircle className="h-5 w-5" aria-hidden="true" /> {slug === 'laptop-screen-repair-kuwait' ? 'أرسل صورة الشاشة والموديل عبر واتساب' : slug === 'gaming-laptop-repair-kuwait' ? 'أرسل الموديل والعطل على واتساب' : slug === 'computer-repair-farwaniya' ? 'رتب استلام الجهاز من الفروانية' : slug === 'desktop-pc-repair-kuwait' ? 'احجز استلام الكمبيوتر المكتبي عبر واتساب' : 'تواصل مع فني KCROC'}
+            <MessageCircle className="h-5 w-5" aria-hidden="true" /> {slug === 'laptop-hinge-repair-kuwait' ? 'أرسل صورة المفصلة والهيكل عبر واتساب' : slug === 'laptop-screen-repair-kuwait' ? 'أرسل صورة الشاشة والموديل عبر واتساب' : slug === 'gaming-laptop-repair-kuwait' ? 'أرسل الموديل والعطل على واتساب' : slug === 'computer-repair-farwaniya' ? 'رتب استلام الجهاز من الفروانية' : slug === 'desktop-pc-repair-kuwait' ? 'احجز استلام الكمبيوتر المكتبي عبر واتساب' : 'تواصل مع فني KCROC'}
           </a>
         </section>
       </div>

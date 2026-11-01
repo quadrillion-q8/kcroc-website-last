@@ -133,7 +133,7 @@ export function Footer() {
   const instagramAriaLabel = brandLabel + ' on Instagram';
   const googleAriaLabel = brandLabel + ' on Google';
 
-  const visibleServices = footerData.links.services.slice(0, 9);
+  const visibleServices = footerData.links.services.slice(0, 10);
   const visibleAreas = footerData.links.areas.slice(0, 8);
   const totalAreas = footerData.links.areas.length;
 
