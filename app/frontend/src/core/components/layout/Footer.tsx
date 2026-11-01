@@ -133,7 +133,7 @@ export function Footer() {
   const instagramAriaLabel = brandLabel + ' on Instagram';
   const googleAriaLabel = brandLabel + ' on Google';
 
-  const visibleServices = footerData.links.services.slice(0, 8);
+  const visibleServices = footerData.links.services.slice(0, 9);
   const visibleAreas = footerData.links.areas.slice(0, 8);
   const totalAreas = footerData.links.areas.length;
 
@@ -231,7 +231,7 @@ export function Footer() {
               {isArabicRoute ? 'تصليح الكمبيوتر واللابتوب في الكويت' : 'Trusted Computer & Laptop Repair in Kuwait'}
             </h2>
             <p className="text-slate-400 text-sm leading-relaxed mb-4 max-w-sm">
-              {isArabicRoute ? 'تصليح اللابتوبات وأجهزة MacBook وكمبيوتر الألعاب في الكويت، مع استلام وتوصيل مجانيين وضمان 30 يومًا على الإصلاحات المشمولة.' : 'Professional repair for laptops, MacBooks, gaming PCs and computers. Free pick-up and delivery across all Kuwait governorates. No Fix, No Fee.'}
+              {isArabicRoute ? 'تصليح الكمبيوتر المكتبي واللابتوبات وأجهزة MacBook وكمبيوتر الألعاب في الكويت، مع استلام وتوصيل مجانيين وضمان 30 يومًا على الإصلاحات المشمولة.' : 'Professional repair for desktop PCs, laptops, MacBooks and gaming PCs. Free pickup and delivery across all Kuwait governorates. No Fix, No Fee.'}
             </p>
 
             {business.openingHours && (
