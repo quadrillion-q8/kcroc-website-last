@@ -9,6 +9,15 @@ import { ArabicHeadTermLinks } from '@/components/content/ArabicHeadTermLinks';
 
 const LOCAL_LINKS = [
   { label: 'حولي', path: '/ar/computer-repair-hawalli' },
+  { label: 'الفروانية', path: '/ar/computer-repair-farwaniya' },
+  { label: 'السالمية', path: '/ar/computer-repair-salmiya' },
+  { label: 'الجهراء', path: '/ar/computer-repair-jahra' },
+  { label: 'الأحمدي', path: '/location/ahmadi' },
+  { label: 'مدينة الكويت', path: '/ar/computer-repair-kuwait-city' }
+];
+
+const KUWAIT_GOVERNORATE_LINKS = [
+  { label: 'حولي', path: '/ar/computer-repair-hawalli' },
   { label: 'العاصمة', path: '/ar/computer-repair-kuwait-city' },
   { label: 'الفروانية', path: '/ar/computer-repair-farwaniya' },
   { label: 'الجهراء', path: '/ar/computer-repair-jahra' },
@@ -4049,7 +4058,7 @@ export default function ArabicCommercialPage() {
           <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">مناطق الخدمة</p>
           <h2 id="arabic-areas" className="mt-2 text-2xl font-black text-white sm:text-3xl">خدمة الاستلام والتوصيل في مناطق الكويت</h2>
           <div className={slug === 'gaming-laptop-cleaning-kuwait' ? "mt-6 flex flex-wrap gap-2" : "mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3"}>
-            {LOCAL_LINKS.map((item) => (
+            {(slug === 'gaming-laptop-cleaning-kuwait' ? KUWAIT_GOVERNORATE_LINKS : LOCAL_LINKS).map((item) => (
               <Link key={item.path} to={item.path} className={slug === 'gaming-laptop-cleaning-kuwait' ? "rounded-full border border-slate-700 bg-slate-900/65 px-4 py-2 text-sm font-semibold text-slate-300 transition hover:border-cyan-500/40 hover:text-cyan-300" : "rounded-xl border border-slate-800 bg-slate-900/45 px-5 py-4 font-semibold text-slate-200 hover:border-cyan-500/40 hover:text-cyan-300"}>{item.label}</Link>
             ))}
           </div>
