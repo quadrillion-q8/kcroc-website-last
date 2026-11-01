@@ -3095,7 +3095,7 @@ export const rawGraphData: RawGraphData = {
       isActive: true, 
       title: 'Motherboard Repair Kuwait', primaryKeyword: "motherboard repair Kuwait", secondaryKeywords: ["laptop motherboard repair Kuwait","computer motherboard repair Kuwait","desktop motherboard repair Kuwait","MacBook logic board repair Kuwait","component-level motherboard repair","motherboard chip-level repair Kuwait"], 
       iconKey: 'cpu', 
-      shortDescription: 'Laptop, desktop and MacBook logic board repair: power-rail tracing, MOSFET replacement and BGA rework for boards other shops call "beyond repair."',
+      shortDescription: 'Laptop, desktop, and MacBook motherboard repair for power, charging, and component-level board faults where repair is suitable.',
       description: 'A laptop that\'s completely dead, one that shuts off randomly during normal use, or one a retail shop already quoted a "full motherboard replacement" for — these are the cases where component-level repair can be useful. We use a multimeter, thermal camera and boardview schematics to trace the fault to a component such as a shorted MOSFET, blown fuse, degraded capacitor or corroded trace, and repair the original board when technically practical. Repairing the original board can avoid an unnecessary board swap, but it does not guarantee that stored data will remain accessible; the result depends on the device design, storage condition and extent of damage.',
       idealCustomer: 'Users with completely dead or liquid-damaged devices who have been told by standard retail shops that their laptop is "unfixable" and want to save up to 80% versus a full board replacement.',
       deviceTypes: [
