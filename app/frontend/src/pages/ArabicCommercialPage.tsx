@@ -16,6 +16,15 @@ const LOCAL_LINKS = [
   { label: 'مدينة الكويت', path: '/ar/computer-repair-kuwait-city' }
 ];
 
+const KUWAIT_GOVERNORATE_LINKS = [
+  { label: 'حولي', path: '/ar/computer-repair-hawalli' },
+  { label: 'العاصمة', path: '/ar/computer-repair-kuwait-city' },
+  { label: 'الفروانية', path: '/ar/computer-repair-farwaniya' },
+  { label: 'الجهراء', path: '/ar/computer-repair-jahra' },
+  { label: 'الأحمدي', path: '/location/ahmadi' },
+  { label: 'مبارك الكبير', path: '/location/mubarak-al-kabeer' }
+];
+
 const AR_GUIDES = [
   { title: 'دليل شراء اللابتوب في الكويت 2026', path: '/blog/ar/laptop-buying-guide-kuwait-2026' },
   { title: 'متى تنظف اللابتوب وتغير المعجون الحراري؟', path: '/blog/ar/how-often-clean-laptop-replace-thermal-paste-kuwait' }
@@ -212,26 +221,33 @@ const CONFIG: Record<string, {
   },
   'gaming-laptop-cleaning-kuwait': {
     h1: 'تنظيف لابتوب الألعاب وصيانة التبريد في الكويت',
-    eyebrow: 'تنظيف داخلي • فحص المراوح والمشتت • اختبار الحرارة بعد الخدمة',
-    intro: 'إذا لابتوب الألعاب صار يسخن بسرعة، أو المراوح صوتها مرتفع، أو الأداء وFPS ينخفضان بعد فترة من اللعب، فقد يكون مسار الهواء مسدودًا بالغبار أو أن نظام التبريد يحتاج إلى صيانة. في مختبر KCROC بحولي نفحص تصميم التبريد الخاص بالموديل، والمراوح والمشتت والـHeat Pipes أو الـVapor Chamber، وننظف مجاري الهواء ونفحص المعجون والوسائد الحرارية (Thermal Pads) قبل تغيير ما يحتاج منها فقط. بعد إعادة التركيب نختبر درجات الحرارة وسلوك الجهاز تحت حمل مناسب. لا نغيّر مادة حرارية أو وسائد من دون مراعاة متطلبات الموديل.',
-    bullets: ['تنظيف داخلي للمراوح وزعانف المشتت ومجاري الهواء', 'فحص صوت المروحة وسرعتها وتدفق الهواء حسب تصميم الجهاز', 'فحص المعجون الحراري والـThermal Pads وتغيير المطلوب فقط', 'اختبار الحرارة والأداء بعد إعادة التركيب عندما يكون ذلك مناسبًا', 'السعر الإرشادي 15–20 د.ك حسب الموديل والحالة، مع استلام مجاني وضمان 30 يومًا'],
+    eyebrow: 'تنظيف داخلي حسب الموديل • فحص المواد الحرارية • اختبار تحت الضغط',
+    intro: 'هل ترتفع حرارة لابتوب الألعاب بعد فترة من اللعب، أو يبقى صوت المراوح مرتفعًا، أو ينخفض FPS مع الوقت؟ لا نبدأ بتغيير المعجون بشكل عشوائي. في مختبر KCROC بحولي نفحص موديل الجهاز وتصميم التبريد، ثم ننظف المراوح وزعانف المشتت ومسارات الهواء، ونراجع حالة المعجون والوسائد الحرارية (Thermal Pads / Putty) قبل تحديد ما يحتاج إلى خدمة. نختار المادة الحرارية وطريقة التعامل مع المعدن السائل (Liquid Metal) فقط عندما يتوافق ذلك مع تصميم الجهاز ورقم الموديل. بعد إعادة التركيب نختبر سلوك الحرارة والمراوح والأداء تحت حمل مناسب ونقارن القراءات في ظروف متقاربة. وإذا ظهرت مؤشرات على عطل في المروحة أو دائرة التحكم أو اللوحة الأم، نشرح مسار الفحص الإضافي وتكلفته قبل أي إصلاح آخر.',
+    bullets: [
+      'فك وتنظيف داخلي وفق تصميم الموديل مع مراعاة الكيابل والموصلات والبطارية.',
+      'تنظيف المراوح وزعانف المشتت النحاسية ومجاري سحب وطرد الهواء.',
+      'فحص المعجون والـThermal Pads أو Thermal Putty واختيار المادة والسماكة المتوافقة مع الجهاز.',
+      'اختبار حرارة CPU وGPU وسلوك المراوح ومؤشرات Thermal Throttling بعد إعادة التركيب.',
+      'السعر الإرشادي 15–20 د.ك حسب الموديل والحالة، مع استلام وتوصيل مجاني وضمان 30 يومًا على الإصلاحات المشمولة.'
+    ],
     faq: [
-      { q: 'هل تغيير المعجون الحراري وحده يكفي دائمًا؟', a: 'لا. نبدأ بفحص المراوح وتراكم الغبار وتلامس المشتت والمواد الحرارية المناسبة للموديل. أحيانًا يحتاج الجهاز إلى تنظيف مسار الهواء أو فحص مروحة، وليس مجرد تغيير المعجون.' },
-      { q: 'هل تغيّرون Thermal Pads في كل عملية تنظيف؟', a: 'لا. نفحص حالتها وسماكتها ومواصفات الجهاز أولًا. يتم تغييرها فقط عند الحاجة وبمقاس ومادة متوافقة مع تصميم التبريد.' },
-      { q: 'كم سعر تنظيف لابتوب الألعاب؟', a: 'السعر الإرشادي لخدمة التبريد والتنظيف 15–20 د.ك، لكن السعر النهائي يعتمد على موديل الجهاز وتصميم التبريد والأعراض بعد التقييم.' },
-      { q: 'كم يستغرق التنظيف والصيانة؟', a: 'المدة المعتادة 24–48 ساعة، وتشمل وقت الفحص والتنظيف وإعادة التركيب واختبار الحرارة.' }
+      { q: 'هل تغيير المعجون الحراري وحده يكفي لحل ارتفاع الحرارة؟', a: 'ليس دائمًا. إذا كانت زعانف المشتت مسدودة بالغبار، أو كانت المروحة ضعيفة، أو كان هناك خلل في تماس المشتت أو في جزء من منظومة التبريد، فلن يحل تغيير المعجون المشكلة وحده. لذلك نفحص تدفق الهواء والمراوح والمشتت والمواد الحرارية قبل تحديد العمل المطلوب.' },
+      { q: 'هل تغيّرون Thermal Pads في كل عملية تنظيف؟', a: 'لا. نفحص حالة الوسائد ومادتها وسماكتها حسب تصميم الموديل. نحتفظ بالوسائد السليمة عندما تكون مطابقة للمواصفات، ونستبدل المتضرر أو غير المناسب فقط؛ لأن السماكة غير الصحيحة قد تؤثر في ضغط المشتت وتلامسه مع المعالج أو كرت الشاشة.' },
+      { q: 'هل تستخدمون Liquid Metal أو PTM7950 لكل لابتوبات الألعاب؟', a: 'لا. تختلف المواد الحرارية بين الموديلات والأجيال. المعدن السائل موصل للكهرباء ويحتاج إلى تصميم متوافق واحتواء مناسب، وبعض الأجهزة تستخدمه من المصنع بينما لا يناسب أجهزة أخرى. نتحقق من الموديل أولًا، ونختار المعجون أو مادة تغيير الطور مثل PTM7950 أو المعدن السائل فقط عند ملاءمتها وتوفرها.' },
+      { q: 'كم سعر تنظيف لابتوب الألعاب وصيانة التبريد في الكويت؟', a: 'السعر الإرشادي لخدمة التنظيف والصيانة الحرارية هو 15–20 د.ك حسب الموديل وتصميم التبريد وحالة الجهاز. أي مروحة أو قطعة أو إصلاح إضافي يُسعّر بشكل منفصل بعد الفحص، ولا يبدأ أي عمل مدفوع قبل موافقتك.' },
+      { q: 'كم تستغرق الصيانة الحرارية؟', a: 'المدة المعتادة 24–48 ساعة، وتشمل الاستلام والفحص والتنظيف وإعادة التركيب والاختبار. قد تختلف المدة بحسب تصميم الجهاز ونتيجة الفحص وتوفر أي مادة أو قطعة لازمة.' },
+      { q: 'ماذا لو استمرت الحرارة أو كان العطل من المروحة أو اللوحة الأم؟', a: 'لن نفترض أن التنظيف سيحل كل الأعطال. إذا أشارت النتائج إلى مشكلة في المروحة أو حساس الحرارة أو دائرة التحكم أو الطاقة على اللوحة الأم، نشرح لك التشخيص الإضافي وخيارات الإصلاح والتكلفة أولًا. لا ننفذ إصلاحًا إضافيًا دون موافقتك.' }
     ],
     englishPath: '/gaming-laptop-cleaning-kuwait',
     arabicLinks: [
       { label: 'تصليح Gaming Laptop', path: '/ar/gaming-laptop-repair-kuwait' },
-      { label: 'دليل تنظيف لابتوب الألعاب والمعجون الحراري', path: '/blog/ar/how-often-clean-laptop-replace-thermal-paste-kuwait' },
-      { label: 'أسعار خدمات التبريد', path: '/ar/pricing' }
+      { label: 'تصليح المذربورد واللوحة الأم', path: '/ar/motherboard-repair-kuwait' },
+      { label: 'أسعار تصليح الكمبيوتر واللابتوب', path: '/ar/pricing' }
     ],
-    serviceIds: ['srv-gaming-laptop-cleaning', 'srv-gaming-laptop', 'srv-laptop'],
+    serviceIds: ['srv-gaming-laptop', 'srv-motherboard'],
     serviceCardCopy: {
-      'srv-gaming-laptop-cleaning': { title: 'تنظيف لابتوب الألعاب وصيانة التبريد', description: 'تنظيف المراوح والمشتت وفحص المواد الحرارية ثم اختبار الحرارة حسب الموديل.' },
-      'srv-gaming-laptop': { title: 'تصليح Gaming Laptop', description: 'تشخيص أعطال الطاقة والشاشة واللوحة والأداء في أجهزة الألعاب المحمولة.' },
-      'srv-laptop': { title: 'تصليح اللابتوب', description: 'فحص أعطال الجهاز والتبريد والطاقة قبل اقتراح الإصلاح المناسب.' }
+      'srv-gaming-laptop': { title: 'تصليح لابتوب الألعاب (Gaming Laptop)', description: 'تشخيص أعطال الطاقة والشاشة واللوحة والأداء في أجهزة الألعاب المحمولة.' },
+      'srv-motherboard': { title: 'تصليح المذربورد واللوحة الأم', description: 'فحص أعطال الطاقة والمكونات وإصلاح اللوحة على مستوى القطعة عندما يكون ذلك مناسبًا.' }
     }
   },
   'computer-repair-hawalli': {
@@ -1866,7 +1882,7 @@ export default function ArabicCommercialPage() {
         : slug === 'laptop-hinge-repair-kuwait'
           ? 'السلام عليكم KCROC، أحتاج فحص مفصلات وهيكل اللابتوب. الماركة والموديل الدقيق: ____. الأعراض: مفصلة قاسية / صوت طقطقة / الغطاء لا يغلق / إطار الشاشة منفصل / قواعد التثبيت مكسورة. هل الشاشة أو كابل العرض متضرر؟ ____. منطقتي: ____. سأرفق صورة واضحة للمفصلة وإطار الشاشة أو الغطاء من الخارج. فضلاً راجعوا الصور وحددوا هل يلزم ترميم أو تبديل، مع توضيح السعر والمدة بعد الفحص.'
           : slug === 'gaming-laptop-cleaning-kuwait'
-            ? 'السلام عليكم KCROC، أحتاج تنظيف وصيانة تبريد لابتوب ألعاب. الماركة والموديل الدقيق: ____. الأعراض: حرارة عالية / صوت مروحة / هبوط FPS بعد اللعب / إطفاء مفاجئ / أخرى: ____. منطقتي: ____. أرجو تأكيد نطاق التنظيف والتبريد والسعر الإرشادي والمدة بعد التقييم، قبل أي عمل مدفوع.'
+            ? 'السلام عليكم KCROC، أريد حجز فحص وتنظيف وصيانة تبريد لابتوب ألعاب. الماركة والموديل الكامل: ____. الأعراض: حرارة مرتفعة / صوت المراوح / ضعف تدفق الهواء / هبوط FPS بعد اللعب / إطفاء مفاجئ / أخرى: ____. قراءة حرارة CPU أو GPU إن توفرت: ____. المنطقة: ____. أستطيع إرسال صورة للموديل أو فيديو للصوت. فضلاً أكدوا السعر الإرشادي والمدة ونطاق العمل قبل أي إصلاح مدفوع.'
         : slug === 'computer-repair-farwaniya'
           ? 'السلام عليكم KCROC، أحتاج تصليح كمبيوتر أو لابتوب من الفروانية أو منطقة قريبة. منطقتي: الفروانية / خيطان / الرقعي / العارضية / جليب الشيوخ / أخرى: ____. نوع الجهاز والماركة والموديل: ____. الأعراض: لا يعمل / لا يشحن / شاشة سوداء أو مكسورة / بطارية / حرارة / مشكلة أخرى: ____. إذا المشكلة في الشحن سأجهز الشاحن مع الجهاز إذا كان ذلك آمنًا. فضلاً نسقوا الاستلام والتوصيل المجاني، وأكدوا نتيجة التشخيص والسعر النهائي قبل أي إصلاح مدفوع.'
         : slug === 'computer-repair-kuwait-city'
@@ -2038,10 +2054,7 @@ export default function ArabicCommercialPage() {
       ]
     : slug === 'gaming-laptop-cleaning-kuwait'
     ? [
-        { title: 'متى تنظف لابتوب الألعاب وتغيّر المعجون الحراري؟', path: '/blog/ar/how-often-clean-laptop-replace-thermal-paste-kuwait' },
-        { title: 'درجات حرارة اللابتوب: الطبيعي والمرتفع', path: '/blog/laptop-temperatures-kuwait-safe-cpu-gpu-temperatures' },
-        { title: 'تصليح Gaming Laptop', path: '/ar/gaming-laptop-repair-kuwait' },
-        { title: 'أسعار التنظيف وخدمات التبريد', path: '/ar/pricing' }
+        { title: 'متى تنظف لابتوب الألعاب وتغيّر المعجون الحراري؟', path: '/blog/ar/how-often-clean-laptop-replace-thermal-paste-kuwait' }
       ]
     : slug === 'computer-repair-farwaniya'
     ? [
@@ -2613,6 +2626,29 @@ export default function ArabicCommercialPage() {
     }]
   } : null;
 
+  const gamingLaptopThermalSchema = slug === 'gaming-laptop-cleaning-kuwait' ? {
+    '@graph': [{
+      '@type': 'Service',
+      '@id': `${page.seo.canonicalUrl}#service`,
+      name: 'تنظيف لابتوب الألعاب وصيانة نظام التبريد في الكويت',
+      alternateName: 'Gaming Laptop Cleaning & Thermal Maintenance Kuwait',
+      inLanguage: 'ar-KW',
+      serviceType: 'Gaming laptop internal cleaning, cooling-system inspection, thermal-interface service and post-service testing',
+      description: cfg.intro,
+      url: page.seo.canonicalUrl,
+      provider: { '@id': `${business.websiteUrl}/#business` },
+      areaServed: { '@type': 'Country', name: 'Kuwait' },
+      offers: {
+        '@type': 'AggregateOffer',
+        name: 'النطاق الإرشادي لتنظيف وصيانة تبريد لابتوب الألعاب',
+        priceCurrency: 'KWD',
+        lowPrice: 15,
+        highPrice: 20,
+        description: 'سعر إرشادي بحسب موديل الجهاز وحالة منظومة التبريد. يتم تأكيد التكلفة النهائية قبل بدء أي عمل مدفوع، وأي قطعة أو إصلاح إضافي يُسعّر بشكل منفصل.'
+      }
+    }]
+  } : null;
+
   const faqSchema = {
     '@graph': [{
       '@type': 'FAQPage',
@@ -2637,6 +2673,7 @@ export default function ArabicCommercialPage() {
       {kuwaitCityServiceSchema && <SchemaMarkup schema={kuwaitCityServiceSchema} />}
       {desktopPcServiceSchema && <SchemaMarkup schema={desktopPcServiceSchema} />}
       {hingeServiceSchema && <SchemaMarkup schema={hingeServiceSchema} />}
+      {gamingLaptopThermalSchema && <SchemaMarkup schema={gamingLaptopThermalSchema} />}
       <SchemaMarkup schema={faqSchema} />
 
       <div className="mx-auto max-w-6xl px-4 pb-16 pt-8 sm:px-6 sm:pt-12">
@@ -2652,6 +2689,14 @@ export default function ArabicCommercialPage() {
             <div className="max-w-4xl">
               <h1 className="text-3xl font-black leading-tight text-white sm:text-5xl">{cfg.h1}</h1>
               <p className="mt-6 text-base leading-8 text-slate-300 sm:text-lg">{cfg.intro}</p>
+              {slug === 'gaming-laptop-cleaning-kuwait' && (
+                <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                  <a href={wa} target="_blank" rel="noreferrer" aria-label="احجز فحص وتنظيف لابتوب الألعاب عبر واتساب" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-400 px-6 py-3 font-black text-slate-950 transition hover:bg-cyan-300">
+                    <MessageCircle className="h-5 w-5" aria-hidden="true" /> احجز فحص لابتوب الألعاب عبر واتساب
+                  </a>
+                  <Link to="/ar/pricing" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-slate-700 px-6 py-3 font-bold text-white transition hover:border-cyan-500/40 hover:text-cyan-300">مراجعة الأسعار</Link>
+                </div>
+              )}
               {slug === 'desktop-pc-repair-kuwait' && (
                 <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                   <a href={wa} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-400 px-6 py-3 font-black text-slate-950 transition hover:bg-cyan-300">
@@ -2743,6 +2788,65 @@ export default function ArabicCommercialPage() {
               </div>
             ))}
           </div>
+          {slug === 'gaming-laptop-cleaning-kuwait' && (
+            <>
+              <section className="mt-8 rounded-3xl border border-cyan-500/20 bg-slate-950/85 p-6 sm:p-8" aria-labelledby="gaming-thermal-report">
+                <div className="grid gap-6 md:grid-cols-[minmax(0,1fr)_minmax(260px,0.85fr)] md:items-center">
+                  <div>
+                    <p className="text-xs font-black uppercase tracking-[0.16em] text-cyan-400">Thermal telemetry</p>
+                    <h2 id="gaming-thermal-report" className="mt-2 text-2xl font-black text-white">تقرير حراري قبل الصيانة وبعدها</h2>
+                    <p className="mt-3 leading-7 text-slate-300">نقارن سلوك الجهاز قبل الخدمة وبعد إعادة التركيب تحت حمل مناسب وظروف اختبار متقاربة. تختلف النتائج حسب الموديل والجو وحالة التبريد؛ لذلك لا نعرض درجات حرارة أو زيادة FPS ثابتة على أنها نتيجة مضمونة.</p>
+                  </div>
+                  <div className="rounded-2xl border border-slate-800 bg-slate-900/80 p-5">
+                    <p className="mb-4 text-sm font-bold text-cyan-300">بنود الفحص والتقرير</p>
+                    <dl className="space-y-3 text-sm">
+                      <div className="flex items-start justify-between gap-4 border-b border-slate-800 pb-3"><dt className="text-slate-400">حرارة CPU وGPU</dt><dd className="text-left font-semibold text-white">قبل / بعد</dd></div>
+                      <div className="flex items-start justify-between gap-4 border-b border-slate-800 pb-3"><dt className="text-slate-400">سرعة المراوح وتدفق الهواء</dt><dd className="text-left font-semibold text-white">مراجعة السلوك</dd></div>
+                      <div className="flex items-start justify-between gap-4 border-b border-slate-800 pb-3"><dt className="text-slate-400">Thermal Throttling والتردد</dt><dd className="text-left font-semibold text-white">تحت الحمل</dd></div>
+                      <div className="flex items-start justify-between gap-4"><dt className="text-slate-400">ثبات الجهاز بعد التركيب</dt><dd className="text-left font-semibold text-white">اختبار ضغط</dd></div>
+                    </dl>
+                  </div>
+                </div>
+              </section>
+              <section className="mt-8 rounded-3xl border border-slate-800 bg-slate-900/45 p-6 sm:p-8" aria-labelledby="gaming-cleaning-risks">
+                <p className="text-xs font-black uppercase tracking-[0.16em] text-cyan-400">Model-specific thermal care</p>
+                <h2 id="gaming-cleaning-risks" className="mt-2 text-2xl font-black text-white">ليش أجهزة الألعاب تحتاج صيانة تبريد حسب الموديل؟</h2>
+                <p className="mt-3 max-w-4xl leading-7 text-slate-300">مو كل لابتوب ألعاب يستخدم نفس المعجون أو الوسائد أو طريقة تثبيت المشتت. اختيار مادة أو سماكة غير مناسبة قد يضعف التلامس الحراري؛ لذلك نراجع التصميم والقطعة قبل فك المشتت أو استبدال أي مادة.</p>
+                <div className="mt-6 grid gap-4 md:grid-cols-3">
+                  <article className="rounded-2xl border border-slate-800 bg-slate-950/65 p-5">
+                    <h3 className="font-bold text-white">المعدن السائل (Liquid Metal)</h3>
+                    <p className="mt-2 text-sm leading-7 text-slate-400">تستخدمه بعض الموديلات في المصنع، لكنه مو مناسب لكل الأجهزة لأنه موصل للكهرباء. نتحقق من توافق الموديل والحواجز والعزل وطريقة الاحتواء قبل أي تعامل معه.</p>
+                  </article>
+                  <article className="rounded-2xl border border-slate-800 bg-slate-950/65 p-5">
+                    <h3 className="font-bold text-white">Thermal Pads وThermal Putty</h3>
+                    <p className="mt-2 text-sm leading-7 text-slate-400">تختلف السماكة والمادة ومواقع الاستخدام بين الموديلات. السماكة الخاطئة قد تغيّر ضغط المشتت أو تمنع التلامس الصحيح، لذلك لا نستبدل الوسائد عشوائيًا.</p>
+                  </article>
+                  <article className="rounded-2xl border border-slate-800 bg-slate-950/65 p-5">
+                    <h3 className="font-bold text-white">أعطال تتجاوز التنظيف</h3>
+                    <p className="mt-2 text-sm leading-7 text-slate-400">إذا كانت المروحة أو حساس الحرارة أو دائرة التحكم أو مسار الطاقة على اللوحة الأم هو السبب، فقد يلزم تشخيص منفصل. نوضح ذلك والتكلفة قبل أي إصلاح إضافي.</p>
+                  </article>
+                </div>
+              </section>
+              <section className="mt-8 rounded-3xl border border-slate-800 bg-slate-900/45 p-6 sm:p-8" aria-labelledby="gaming-model-matrix">
+                <p className="text-xs font-black uppercase tracking-[0.16em] text-cyan-400">Supported gaming laptop families</p>
+                <h2 id="gaming-model-matrix" className="mt-2 text-2xl font-black text-white">موديلات الألعاب التي نفحص منظومات التبريد فيها</h2>
+                <p className="mt-3 leading-7 text-slate-400">هذه عائلات أمثلة وليست ضمانًا بأن كل جيل يستخدم تصميمًا واحدًا. نحتاج رقم الموديل الكامل أو SKU لتحديد المادة الحرارية وخطوات الفك والتوافق بدقة.</p>
+                <div className="mt-6 overflow-x-auto rounded-2xl border border-slate-800">
+                  <table className="w-full min-w-[720px] border-collapse text-right text-sm">
+                    <caption className="sr-only">عائلات لابتوبات الألعاب وما يتم التحقق منه في نظام التبريد حسب الموديل</caption>
+                    <thead className="bg-slate-950 text-slate-200"><tr><th scope="col" className="p-4 font-bold">عائلة الجهاز</th><th scope="col" className="p-4 font-bold">اختلافات تصميم التبريد</th><th scope="col" className="p-4 font-bold">ما نتحقق منه</th></tr></thead>
+                    <tbody className="divide-y divide-slate-800 text-slate-300">
+                      <tr><th scope="row" className="p-4 align-top font-bold text-white">ASUS ROG Strix / Scar / Zephyrus وTUF</th><td className="p-4 align-top">بعض الموديلات تستخدم Liquid Metal أو حلولًا حرارية مختلفة حسب الجيل.</td><td className="p-4 align-top">توافق المادة، حالة العزل والاحتواء، المراوح وتلامس المشتت.</td></tr>
+                      <tr><th scope="row" className="p-4 align-top font-bold text-white">Lenovo Legion 5 / 7 / Pro / Slim</th><td className="p-4 align-top">تختلف أنابيب الحرارة وغرف التبخير ومواد الواجهة بين الأجيال.</td><td className="p-4 align-top">ممرات الهواء، المراوح، حالة المعجون والوسائد وسماكتها.</td></tr>
+                      <tr><th scope="row" className="p-4 align-top font-bold text-white">MSI Raider / Vector / Katana / Stealth</th><td className="p-4 align-top">تتغير مجموعات Heat Pipes وVapor Chamber وتوزيعات الوسائد حسب الموديل.</td><td className="p-4 align-top">نظافة المشتت، سلامة المراوح ومواد تبريد VRAM ودوائر الطاقة.</td></tr>
+                      <tr><th scope="row" className="p-4 align-top font-bold text-white">Alienware m / x وRazer Blade</th><td className="p-4 align-top">قد تكون التجميعة الداخلية مدمجة أو ذات ترتيب خاص في بعض الإصدارات.</td><td className="p-4 align-top">خطوات الفك، الكيابل والموصلات، المروحة وتلامس مجموعة التبريد.</td></tr>
+                      <tr><th scope="row" className="p-4 align-top font-bold text-white">HP OMEN / Victus وAcer Predator / Nitro وDell G وAORUS</th><td className="p-4 align-top">تختلف كثافة زعانف المشتت، عدد المراوح والمواد الحرارية حسب الجيل.</td><td className="p-4 align-top">تدفق الهواء، حالة المراوح، المشتت ومادة الواجهة الحرارية المناسبة.</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+            </>
+          )}
           {slug === 'desktop-pc-repair-kuwait' && (
             <>
               <section className="mt-12 rounded-3xl border border-slate-800 bg-slate-900/40 p-6 sm:p-8" aria-labelledby="desktop-diagnostic-matrix">
@@ -3953,9 +4057,9 @@ export default function ArabicCommercialPage() {
         <section className="mt-12" aria-labelledby="arabic-areas">
           <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">مناطق الخدمة</p>
           <h2 id="arabic-areas" className="mt-2 text-2xl font-black text-white sm:text-3xl">خدمة الاستلام والتوصيل في مناطق الكويت</h2>
-          <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {LOCAL_LINKS.map((item) => (
-              <Link key={item.path} to={item.path} className="rounded-xl border border-slate-800 bg-slate-900/45 px-5 py-4 font-semibold text-slate-200 hover:border-cyan-500/40 hover:text-cyan-300">{item.label}</Link>
+          <div className={slug === 'gaming-laptop-cleaning-kuwait' ? "mt-6 flex flex-wrap gap-2" : "mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3"}>
+            {(slug === 'gaming-laptop-cleaning-kuwait' ? KUWAIT_GOVERNORATE_LINKS : LOCAL_LINKS).map((item) => (
+              <Link key={item.path} to={item.path} className={slug === 'gaming-laptop-cleaning-kuwait' ? "rounded-full border border-slate-700 bg-slate-900/65 px-4 py-2 text-sm font-semibold text-slate-300 transition hover:border-cyan-500/40 hover:text-cyan-300" : "rounded-xl border border-slate-800 bg-slate-900/45 px-5 py-4 font-semibold text-slate-200 hover:border-cyan-500/40 hover:text-cyan-300"}>{item.label}</Link>
             ))}
           </div>
         </section>
