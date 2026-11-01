@@ -6,7 +6,7 @@ import { HeadTermCallout } from '@/components/content/HeadTermCallout';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import {
-  AlertTriangle, CheckCircle2, ChevronRight, CircleHelp, Cpu, Gamepad2,
+  AlertTriangle, Check, CheckCircle2, ChevronRight, CircleHelp, Copy, Cpu, Gamepad2,
   Gauge, HardDrive, MonitorCog, Network, Power, RotateCcw, ShieldAlert,
   Terminal, Thermometer, Wrench, XCircle
 } from 'lucide-react';
@@ -22,6 +22,7 @@ const WA_LINK = `https://wa.me/${business.telephone}?text=${encodeURIComponent('
 const PAGE_URL = `${business.websiteUrl}/guides/gamebar-presence-writer-fix`;
 const GUIDE_IMAGE_URL = '/images/blog/windows-11-laptop-multitasking.webp';
 const GUIDE_IMAGE_ALT = 'Windows 11 laptop multitasking and performance troubleshooting';
+const ISOLATION_TEST_COMMAND = 'taskkill /f /im GameBarPresenceWriter.exe';
 
 const registryPath = 'HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\WindowsRuntime\\ActivatableClassId\\Windows.Gaming.GameBar.PresenceServer.Internal.PresenceWriter';
 
@@ -185,6 +186,18 @@ function Callout({ title, children, danger = false }: { title: string; children:
 }
 
 export default function GameBarPresenceWriterGuide() {
+  const [copyState, setCopyState] = React.useState<'idle' | 'copied' | 'error'>('idle');
+
+  const handleCopyTestCommand = async () => {
+    try {
+      if (!navigator.clipboard?.writeText) throw new Error('Clipboard API unavailable');
+      await navigator.clipboard.writeText(ISOLATION_TEST_COMMAND);
+      setCopyState('copied');
+    } catch {
+      setCopyState('error');
+    }
+  };
+
   return (
     <div className="min-h-screen bg-transparent text-white selection:bg-cyan-500/30">
       <SEOEngine entityId="guide-gamebar-presence-writer" />
@@ -202,13 +215,13 @@ export default function GameBarPresenceWriterGuide() {
                 Windows Gaming Performance & Frame-Time Diagnostics
               </Badge>
               <h1 className="max-w-4xl text-3xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">
-                High FPS but Gaming Stutter?{" "}
-                <span className="block bg-gradient-to-r from-cyan-400 to-violet-400 bg-clip-text text-transparent">
-                  Test GameBarPresenceWriter.exe
+                High FPS, But Your Game Still{' '}
+                <span className="bg-gradient-to-r from-cyan-400 to-violet-400 bg-clip-text text-transparent">
+                  Stutters?
                 </span>
               </h1>
               <p className="mt-5 max-w-2xl text-sm leading-7 text-slate-300 sm:text-lg">
-                Your FPS counter can stay above 160 while the game still hitches when you flick the mouse, enter a fight, or switch windows. If GameBarPresenceWriter.exe is running at the same time, test it before changing Windows settings or touching protected registry permissions. The process is part of Windows Game Bar presence functionality; the quick test below helps you check whether it is actually related to your frame-time problem.
+                High FPS does not rule out frame-time spikes. If brief freezes interrupt gameplay, GameBarPresenceWriter.exe is one component you can isolate without editing the registry. Run the quick process test and compare the same game scene before and after.
               </p>
               <div className="mt-6 flex flex-col gap-3 sm:flex-row">
                 <Button size="lg" asChild className="w-full bg-cyan-500 px-6 py-6 font-bold text-slate-950 hover:bg-cyan-400 sm:w-auto">
@@ -220,18 +233,38 @@ export default function GameBarPresenceWriterGuide() {
               </div>
             </div>
 
-            <div className="rounded-2xl border border-amber-500/30 bg-amber-500/5 p-5 shadow-2xl shadow-amber-950/20 sm:p-6">
-              <div className="flex items-start gap-3">
-                <div className="rounded-xl bg-amber-500/10 p-3"><Gauge className="h-6 w-6 text-amber-400" /></div>
-                <div>
-                  <p className="text-xs font-bold uppercase tracking-widest text-amber-300">Performance rule</p>
-                  <h2 className="mt-1 text-xl font-bold text-white">Measure before you modify</h2>
-                </div>
+            <div className="rounded-2xl border border-sky-500/30 bg-slate-950/90 p-5 shadow-2xl shadow-sky-950/30 sm:p-6">
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                <p className="text-xs font-bold uppercase tracking-widest text-sky-300">Quick process-isolation test</p>
+                <span className="rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-1 text-[11px] font-semibold text-emerald-300">No registry edits</span>
               </div>
-              <p className="mt-4 text-sm leading-6 text-slate-300">
-                A process appearing in Task Manager while a game runs does not prove it is causing latency. Compare frame-time and system behavior before and after each change so you know which change actually helped.
+              <h2 className="mt-3 text-xl font-bold text-white">Test GameBarPresenceWriter.exe</h2>
+              <p className="mt-3 text-sm leading-6 text-slate-300">
+                Save your game. Run this command, return to the same scene, and compare whether the stutter changes.
               </p>
-              <a href="#10-second-test" className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-amber-300 hover:text-amber-200">Run the quick test first <ChevronRight className="h-4 w-4" /></a>
+              <div className="mt-4 flex min-w-0 items-stretch overflow-hidden rounded-xl border border-slate-700 bg-slate-950">
+                <code className="min-w-0 flex-1 overflow-x-auto whitespace-nowrap px-3 py-4 text-xs leading-5 text-sky-300 sm:text-sm">{ISOLATION_TEST_COMMAND}</code>
+                <button
+                  type="button"
+                  onClick={handleCopyTestCommand}
+                  aria-label={copyState === 'copied' ? 'Command copied' : 'Copy isolation test command'}
+                  className="inline-flex shrink-0 items-center gap-2 border-l border-slate-700 bg-slate-800 px-3 text-sm font-semibold text-white transition hover:bg-slate-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-sky-400"
+                >
+                  {copyState === 'copied' ? <Check className="h-4 w-4 text-emerald-400" /> : <Copy className="h-4 w-4" />}
+                  {copyState === 'copied' ? 'Copied' : 'Copy'}
+                </button>
+              </div>
+              <p aria-live="polite" className="mt-2 min-h-5 text-xs leading-5 text-slate-400">
+                {copyState === 'copied'
+                  ? 'Command copied. Paste it into Command Prompt or Windows Terminal.'
+                  : copyState === 'error'
+                    ? 'Clipboard access was blocked. Select the command and copy it manually.'
+                    : 'Copy the command or select it manually.'}
+              </p>
+              <p className="mt-2 text-xs leading-5 text-slate-500">
+                This ends only the current process instance. Windows may start it again; this is not a permanent disable.
+              </p>
+              <a href="#10-second-test" className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-sky-300 hover:text-sky-200">See the comparison steps <ChevronRight className="h-4 w-4" /></a>
             </div>
           </div>
         </div>
