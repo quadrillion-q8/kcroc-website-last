@@ -531,8 +531,8 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         "type": "comparisonTable",
         "title": "Choose the installation path from the PC's condition",
+        "featureLabel": "PC condition",
         "columns": [
-          "PC condition",
           "Usually investigate first",
           "Likely path"
         ],
@@ -649,8 +649,8 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         "type": "comparisonTable",
         "title": "Windows 11 minimum requirements to check",
+        "featureLabel": "Component",
         "columns": [
-          "Component",
           "Microsoft minimum",
           "What KCROC would check before installation"
         ],
@@ -823,8 +823,8 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         "type": "comparisonTable",
         "title": "Start with the symptom, then test the likely layer",
+        "featureLabel": "Problem",
         "columns": [
-          "Problem",
           "Likely direction",
           "What to check first"
         ],
@@ -1017,8 +1017,8 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         "type": "comparisonTable",
         "title": "Laptop symptoms after a Windows feature update",
+        "featureLabel": "Symptom",
         "columns": [
-          "Symptom",
           "Software checks",
           "Hardware direction if persistent"
         ],
@@ -1161,33 +1161,34 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         "type": "timeline",
         "title": "A practical 26H2 workflow",
+        "numbered": true,
         "steps": [
           {
-            "label": "1. Check eligibility",
+            "label": "Check eligibility",
             "note": "Confirm Windows version, CPU architecture, TPM 2.0, UEFI/Secure Boot capability and other requirements."
           },
           {
-            "label": "2. Check the machine's health",
+            "label": "Check the machine's health",
             "note": "Look for storage errors, unstable memory, overheating, battery/power faults and existing boot problems."
           },
           {
-            "label": "3. Back up",
+            "label": "Back up",
             "note": "Protect files, recovery keys and license information before making major changes."
           },
           {
-            "label": "4. Choose the least disruptive path",
+            "label": "Choose the least disruptive path",
             "note": "Use Windows Update for an eligible healthy system; choose official installation media when a clean install is actually required."
           },
           {
-            "label": "5. Install without interrupting it",
+            "label": "Install without interrupting it",
             "note": "Keep reliable power connected and do not force a shutdown during active installation/restart stages."
           },
           {
-            "label": "6. Validate the whole machine",
+            "label": "Validate the whole machine",
             "note": "Check Windows Update, drivers, storage, thermals, networking, audio, input devices, activation and recovery."
           },
           {
-            "label": "7. Diagnose symptoms instead of blaming the version",
+            "label": "Diagnose symptoms instead of blaming the version",
             "note": "If a problem persists, branch into software, driver, firmware, thermal or hardware testing based on evidence."
           }
         ]
@@ -1288,7 +1289,7 @@ export const BLOG_POSTS: BlogPost[] = [
     "technicalReviewDate": "September 30, 2026",
     "author": "Imran Natiq",
     "category": "Windows & Microsoft",
-    "readTime": "24-30 min read",
+    "readTime": "18–22 min read",
     "tags": [
       "Windows 11 26H2",
       "Windows 11 2026 Update",
