@@ -752,6 +752,60 @@ add('Arabic hinge Service JSON-LD uses the canonical URL, shared business entity
   arabicCommercial.includes("provider: { '@id': `${business.websiteUrl}/#business` }") &&
   arabicCommercial.includes("hingeServiceSchema && <SchemaMarkup schema={hingeServiceSchema} />"));
 
+
+const arabicGamingCoolingStart = arabicCommercial.indexOf("  'gaming-laptop-cleaning-kuwait': {");
+const arabicGamingCoolingEnd = arabicCommercial.indexOf("\\n  'computer-repair-hawalli': {", arabicGamingCoolingStart + 1);
+const arabicGamingCoolingConfig = arabicGamingCoolingStart >= 0 && arabicGamingCoolingEnd > arabicGamingCoolingStart
+  ? arabicCommercial.slice(arabicGamingCoolingStart, arabicGamingCoolingEnd)
+  : '';
+add('Arabic gaming-laptop cooling service has visible model-specific copy, complete FAQ answers and the published 15–20 KWD guide range',
+  arabicGamingCoolingConfig.includes('تنظيف لابتوب الألعاب وصيانة التبريد في الكويت') &&
+  arabicGamingCoolingConfig.includes('15–20 د.ك') &&
+  (arabicGamingCoolingConfig.match(/\\{ q: '/g) || []).length === 6 &&
+  arabicGamingCoolingConfig.includes('Liquid Metal') &&
+  arabicGamingCoolingConfig.includes('Thermal Pads') &&
+  arabicGamingCoolingConfig.includes('24–48 ساعة'));
+add('Arabic gaming-laptop cooling page links to gaming-laptop repair and motherboard repair without linking to itself',
+  arabicGamingCoolingConfig.includes("serviceIds: ['srv-gaming-laptop', 'srv-motherboard']") &&
+  !arabicGamingCoolingConfig.includes("'srv-gaming-laptop-cleaning'") &&
+  arabicGamingCoolingConfig.includes("path: '/ar/gaming-laptop-repair-kuwait'") &&
+  arabicGamingCoolingConfig.includes("path: '/ar/motherboard-repair-kuwait'") &&
+  arabicGamingCoolingConfig.includes("path: '/ar/pricing'"));
+add('Arabic gaming-laptop cooling page uses a prefilled WhatsApp intake message for model, symptoms, temperatures and area',
+  arabicCommercial.includes('أريد حجز فحص وتنظيف وصيانة تبريد لابتوب ألعاب') &&
+  arabicCommercial.includes('الموديل الكامل') &&
+  arabicCommercial.includes('قراءة حرارة CPU أو GPU') &&
+  arabicCommercial.includes('المنطقة:'));
+add('Arabic gaming-laptop cooling page includes a truthful before/after test protocol without fabricated benchmark readings',
+  arabicCommercial.includes('تقرير حراري قبل الصيانة وبعدها') &&
+  arabicCommercial.includes('ظروف اختبار متقاربة') &&
+  arabicCommercial.includes('لا نعرض درجات حرارة أو زيادة FPS ثابتة') &&
+  !arabicCommercial.includes('97°C') &&
+  !arabicCommercial.includes('74°C'));
+add('Arabic gaming-laptop cooling page explains Liquid Metal, thermal-pad thickness and model-family variation without universal hardware claims',
+  arabicCommercial.includes('المعدن السائل موصل للكهرباء') &&
+  arabicCommercial.includes('السماكة الخاطئة قد تغيّر ضغط المشتت') &&
+  arabicCommercial.includes('هذه عائلات أمثلة وليست ضمانًا') &&
+  ['ASUS ROG Strix', 'Lenovo Legion', 'MSI Raider', 'Alienware', 'HP OMEN'].every((name) => arabicCommercial.includes(name)));
+add('Arabic gaming-laptop cooling page declares one linked Service entity and its quoted AggregateOffer range',
+  arabicCommercial.includes("const gamingLaptopThermalSchema = slug === 'gaming-laptop-cleaning-kuwait'") &&
+  arabicCommercial.includes("name: 'تنظيف لابتوب الألعاب وصيانة نظام التبريد في الكويت'") &&
+  arabicCommercial.includes("provider: { '@id': `${business.websiteUrl}/#business` }") &&
+  arabicCommercial.includes('lowPrice: 15') &&
+  arabicCommercial.includes('highPrice: 20') &&
+  arabicCommercial.includes('gamingLaptopThermalSchema && <SchemaMarkup schema={gamingLaptopThermalSchema} />'));
+add('Arabic gaming-laptop FAQ schema is generated from the same six answers that are rendered visibly',
+  arabicCommercial.includes("mainEntity: cfg.faq.map((item)") &&
+  arabicCommercial.includes('<summary className="cursor-pointer font-bold text-white">{item.q}</summary>') &&
+  arabicCommercial.includes('<p className="mt-3 leading-7 text-slate-400">{item.a}</p>'));
+add('Arabic gaming-laptop cooling service area strip links to all six Kuwait governorates using existing destinations',
+  arabicCommercial.includes("{ label: 'حولي', path: '/ar/computer-repair-hawalli' }") &&
+  arabicCommercial.includes("{ label: 'العاصمة', path: '/ar/computer-repair-kuwait-city' }") &&
+  arabicCommercial.includes("{ label: 'الفروانية', path: '/ar/computer-repair-farwaniya' }") &&
+  arabicCommercial.includes("{ label: 'الجهراء', path: '/ar/computer-repair-jahra' }") &&
+  arabicCommercial.includes("{ label: 'الأحمدي', path: '/location/ahmadi' }") &&
+  arabicCommercial.includes("{ label: 'مبارك الكبير', path: '/location/mubarak-al-kabeer' }"));
+
 for (const check of checks) console.log(`${check.pass ? '✅' : '❌'} ${check.name}${!check.pass && check.detail ? ` — ${check.detail}` : ''}`);
 const failed = checks.filter((check) => !check.pass);
 if (failed.length) process.exit(1);
