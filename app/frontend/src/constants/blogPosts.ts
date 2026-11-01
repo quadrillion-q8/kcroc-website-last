@@ -70,6 +70,7 @@ export interface TimelineStep {
 export interface TimelineBlock {
   type: 'timeline';
   title?: string;
+  numbered?: boolean;
   steps: TimelineStep[];
 }
 
