@@ -10,7 +10,7 @@ import { IMAGES } from '../constants/images.js';
 export const rawGraphData: RawGraphData = {
   metadata: {
     version: '3.8.5',
-    lastUpdated: '2026-10-30T00:00:00+03:00',
+    lastUpdated: '2026-11-02T00:00:00+03:00',
     environment: 'production'
   },
 
@@ -519,14 +519,14 @@ export const rawGraphData: RawGraphData = {
     'page-ar-battery-replacement': {
       id: 'page-ar-battery-replacement', slug: 'ar/battery-replacement-kuwait', entityType: 'WebPage', isActive: true,
       title: 'تبديل بطارية اللابتوب وماك بوك في الكويت',
-      description: 'تبديل بطارية اللابتوب وماك بوك في الكويت مع فحص صحة البطارية ودائرة الشحن قبل الاستبدال، ومطابقة القطعة حسب الموديل، واستلام وتوصيل مجاني.',
+      description: 'تبديل بطارية اللابتوب وMacBook في الكويت بعد فحص صحة البطارية ودائرة الشحن ومطابقة رقم القطعة. أجرة العمل من 8 د.ك + سعر البطارية حسب الموديل، مع استلام وتوصيل مجاني وضمان 30 يومًا.',
       seo: {
-        title: 'تبديل بطارية اللابتوب وماك بوك في الكويت | KCROC',
-        description: 'تبديل بطارية اللابتوب وماك بوك في الكويت. نفحص صحة البطارية ودائرة الشحن أولًا، مع استلام وتوصيل مجاني وضمان 30 يومًا. حولي: +965 55301913.',
+        title: 'تبديل بطارية اللابتوب في الكويت من 8 د.ك + القطعة | KCROC',
+        description: 'تبديل بطارية اللابتوب وMacBook في الكويت بعد فحص صحة البطارية ودائرة الشحن. أجرة العمل من 8 د.ك + سعر البطارية حسب الموديل. استلام وتوصيل مجاني وضمان 30 يومًا.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/ar/battery-replacement-kuwait', locale: 'ar_KW',
-        ogImage: 'https://www.computerrepairkuwait.com/images/macbook-internal-battery-replacement-service.webp', ogImageAlt: 'فحص وتبديل بطارية داخلية لجهاز ماك بوك في مختبر الصيانة', ogImageWidth: 800, ogImageHeight: 600,
+        ogImage: 'https://www.computerrepairkuwait.com/images/macbook-internal-battery-replacement-service.webp', ogImageAlt: 'فحص وتبديل بطارية اللابتوب وماك بوك في مختبر KCROC بحولي بعد مطابقة رقم القطعة', ogImageWidth: 800, ogImageHeight: 600,
         alternates: { 'ar-KW': 'https://www.computerrepairkuwait.com/ar/battery-replacement-kuwait', 'en-KW': 'https://www.computerrepairkuwait.com/battery-replacement-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/battery-replacement-kuwait' },
-        ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList'], lastModified: '2026-10-29T00:00:00+03:00', breadcrumbs: [{ name: 'الرئيسية', url: '/' }, { name: 'تبديل بطارية اللابتوب وماك بوك', url: '/ar/battery-replacement-kuwait' }]
+        ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList', 'Service', 'FAQPage'], lastModified: '2026-11-02T00:00:00+03:00', breadcrumbs: [{ name: 'الرئيسية', url: '/ar' }, { name: 'تبديل بطارية اللابتوب وماك بوك', url: '/ar/battery-replacement-kuwait' }]
       },
       relatedServiceIds: ['srv-battery', 'srv-laptop', 'srv-macbook', 'srv-charging-port', 'srv-motherboard']
     } as WebPageEntity,
