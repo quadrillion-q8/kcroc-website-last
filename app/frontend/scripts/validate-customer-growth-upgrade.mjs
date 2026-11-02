@@ -893,9 +893,10 @@ add('English and Arabic general battery page copy excludes MacBook while retaini
   englishBatteryRelatedResources.includes("{ label: 'MacBook Battery Replacement Kuwait', path: '/macbook-battery-replacement-kuwait' }") &&
   arabicBatteryConfig.includes("{ label: 'تبديل بطارية MacBook', path: '/ar/macbook-battery-replacement-kuwait' }"));
 
-const arabicBatteryRelatedGuidesStart = arabicCommercial.indexOf(": slug === 'battery-replacement-kuwait'");
+const arabicRelatedGuidesStart = arabicCommercial.indexOf("const relatedGuides =");
+const arabicBatteryRelatedGuidesStart = arabicCommercial.indexOf(": slug === 'battery-replacement-kuwait'", arabicRelatedGuidesStart + 1);
 const arabicBatteryRelatedGuidesEnd = arabicCommercial.indexOf(": slug === 'laptop-repair-kuwait'", arabicBatteryRelatedGuidesStart + 1);
-const arabicBatteryRelatedGuides = arabicBatteryRelatedGuidesStart >= 0 && arabicBatteryRelatedGuidesEnd > arabicBatteryRelatedGuidesStart
+const arabicBatteryRelatedGuides = arabicRelatedGuidesStart >= 0 && arabicBatteryRelatedGuidesStart > arabicRelatedGuidesStart && arabicBatteryRelatedGuidesEnd > arabicBatteryRelatedGuidesStart
   ? arabicCommercial.slice(arabicBatteryRelatedGuidesStart, arabicBatteryRelatedGuidesEnd)
   : '';
 
