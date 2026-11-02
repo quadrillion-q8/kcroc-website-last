@@ -1865,6 +1865,57 @@ export default function ArabicCommercialPage() {
   const page = slug ? KCROC_GRAPH.pages.find((item) => item.slug === `ar/${slug}`) : undefined;
   const business = KCROC_GRAPH.business;
 
+  // Reuse the corresponding English service's existing KCROC photography.
+  // These are real first-party assets already assigned in the service graph.
+  const servicePageImages = slug === 'desktop-pc-repair-kuwait'
+    ? [
+        {
+          image: IMAGES.laptopHardware.desktopPcTowerRepairKuwait,
+          alt: 'كمبيوتر مكتبي من نوع Lenovo على طاولة الفحص والإصلاح في مختبر KCROC بالكويت',
+          caption: 'صورة لكمبيوتر مكتبي على طاولة KCROC أثناء فحص أعطال الجهاز قبل تحديد الإصلاح المناسب.'
+        }
+      ]
+    : slug === 'laptop-hinge-repair-kuwait'
+      ? [
+          {
+            image: IMAGES.laptopHardware.brokenHinge,
+            alt: 'تلف مفصلة اللابتوب وتكسر نقاط تثبيت الهيكل البلاستيكي',
+            caption: 'مثال على تلف المفصلة وقواعد تثبيتها داخل الهيكل قبل الترميم أو الاستبدال.'
+          },
+          {
+            image: IMAGES.laptopHardware.screenBezel,
+            alt: 'إطار شاشة اللابتوب ومجموعة المفصلة أثناء أعمال إصلاح الهيكل',
+            caption: 'فحص إطار الشاشة والمفصلة ومحاذاة الغطاء قبل إعادة التجميع.'
+          },
+          {
+            image: IMAGES.services.laptopRepair,
+            alt: 'لابتوب مفتوح على طاولة فحص لفحص الهيكل ومسار كابل الشاشة',
+            caption: 'فحص الجهاز من الداخل ومسار كابل الشاشة والمكونات المحيطة بمنطقة المفصلة.'
+          }
+        ]
+      : slug === 'gaming-laptop-cleaning-kuwait'
+        ? [
+            {
+              image: IMAGES.laptopHardware.dustyMotherboard,
+              alt: 'غبار متراكم حول مروحة وتوصيلات اللوحة الداخلية للابتوب',
+              caption: 'تراكم الغبار داخل مسار التبريد قد يقيّد تدفق الهواء ويستدعي تنظيفًا داخليًا مناسبًا للموديل.'
+            },
+            {
+              image: IMAGES.gaming.gamingOverheating,
+              alt: 'لابتوب ألعاب يعاني من ارتفاع الحرارة ويحتاج إلى فحص نظام التبريد',
+              caption: 'من علامات الحاجة إلى فحص التبريد ارتفاع حرارة لابتوب الألعاب أو استمرار صوت المراوح تحت الحمل.'
+            },
+            {
+              image: IMAGES.laptopHardware.copperHeatsink3,
+              alt: 'مشتت حراري نحاسي عليه معجون حراري جاف ومتدهور',
+              caption: 'نفحص حالة المشتت والمواد الحرارية، ونختار المعجون أو الوسائد المناسبة حسب تصميم الجهاز.'
+            }
+          ]
+        : [];
+
+  const heroPageImage = servicePageImages[0];
+  const supportingPageImages = servicePageImages.slice(1);
+
   if (!cfg || !page || !business) return <Navigate to="/404" replace />;
 
   const whatsappMessage = slug === 'macbook-screen-replacement-kuwait'
@@ -2685,8 +2736,8 @@ export default function ArabicCommercialPage() {
 
         <section className="rounded-3xl border border-cyan-900/50 bg-slate-900/45 p-6 shadow-2xl backdrop-blur-md sm:p-10">
           <p className="mb-3 text-sm font-black uppercase tracking-[0.14em] text-cyan-400">{cfg.eyebrow}</p>
-          <div className={slug === 'battery-replacement-kuwait' ? "grid items-center gap-8 lg:grid-cols-[minmax(0,1.08fr)_minmax(280px,0.92fr)]" : ""}>
-            <div className="max-w-4xl">
+          <div className={slug === 'battery-replacement-kuwait' || heroPageImage ? "grid items-center gap-8 lg:grid-cols-[minmax(0,1.08fr)_minmax(280px,0.92fr)]" : ""}>
+            <div className={heroPageImage ? "max-w-none" : "max-w-4xl"}>
               <h1 className="text-3xl font-black leading-tight text-white sm:text-5xl">{cfg.h1}</h1>
               <p className="mt-6 text-base leading-8 text-slate-300 sm:text-lg">{cfg.intro}</p>
               {slug === 'gaming-laptop-cleaning-kuwait' && (
@@ -2761,6 +2812,24 @@ export default function ArabicCommercialPage() {
                 </div>
               )}
             </div>
+            {heroPageImage && (
+              <figure className="min-w-0 overflow-hidden rounded-2xl border border-slate-700 bg-slate-950 shadow-xl">
+                <img
+                  src={heroPageImage.image.src}
+                  alt={heroPageImage.alt}
+                  width={heroPageImage.image.width}
+                  height={heroPageImage.image.height}
+                  sizes="(min-width: 1024px) 42vw, 100vw"
+                  loading="eager"
+                  fetchPriority="high"
+                  decoding="async"
+                  className="aspect-[4/3] w-full object-cover"
+                />
+                <figcaption className="border-t border-slate-800 px-4 py-3 text-sm leading-6 text-slate-300">
+                  {heroPageImage.caption}
+                </figcaption>
+              </figure>
+            )}
             {slug === 'battery-replacement-kuwait' && (
               <figure className="min-w-0 overflow-hidden rounded-2xl border border-slate-700 bg-slate-950 shadow-xl">
                 <img
@@ -2788,6 +2857,26 @@ export default function ArabicCommercialPage() {
               </div>
             ))}
           </div>
+          {supportingPageImages.length > 0 && (
+            <section className="mt-8 grid gap-5 sm:grid-cols-2" aria-label={`صور إضافية لخدمة ${cfg.h1}`}>
+              {supportingPageImages.map((item) => (
+                <figure key={item.alt} className="min-w-0 overflow-hidden rounded-2xl border border-slate-800 bg-slate-950/70">
+                  <img
+                    src={item.image.src}
+                    alt={item.alt}
+                    width={item.image.width}
+                    height={item.image.height}
+                    loading="lazy"
+                    decoding="async"
+                    className="aspect-[4/3] w-full object-cover"
+                  />
+                  <figcaption className="border-t border-slate-800 px-4 py-3 text-sm leading-6 text-slate-400">
+                    {item.caption}
+                  </figcaption>
+                </figure>
+              ))}
+            </section>
+          )}
           {slug === 'gaming-laptop-cleaning-kuwait' && (
             <>
               <section className="mt-8 rounded-3xl border border-cyan-500/20 bg-slate-950/85 p-6 sm:p-8" aria-labelledby="gaming-thermal-report">
