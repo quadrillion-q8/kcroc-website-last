@@ -597,12 +597,12 @@ export const rawGraphData: RawGraphData = {
       title: 'تنظيف لابتوب الألعاب وصيانة التبريد في الكويت',
       description: 'تنظيف داخلي للابتوبات المخصصة للألعاب وفحص المراوح والمشتت والمعجون والوسائد الحرارية عند الحاجة، مع اختبار الحرارة بعد الخدمة.',
       seo: {
-        title: 'تنظيف لابتوب الألعاب وتغيير المعجون بالكويت | KCROC',
-        description: 'تنظيف لابتوب القيمنق وصيانة التبريد وفحص الحرارة والمراوح والمعجون الحراري في الكويت. السعر الإرشادي 15–20 د.ك حسب الموديل والحالة، مع استلام مجاني وضمان 30 يومًا.',
+        title: 'تنظيف وصيانة تبريد لابتوب الألعاب في الكويت | KCROC',
+        description: 'تنظيف لابتوب الألعاب وصيانة نظام التبريد في الكويت، مع فحص المراوح والمواد الحرارية واختبار الحرارة. السعر الإرشادي 15–20 د.ك واستلام مجاني.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/ar/gaming-laptop-cleaning-kuwait',
         locale: 'ar_KW',
         alternates: { 'ar-KW': 'https://www.computerrepairkuwait.com/ar/gaming-laptop-cleaning-kuwait', 'en-KW': 'https://www.computerrepairkuwait.com/gaming-laptop-cleaning-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/gaming-laptop-cleaning-kuwait' },
-        ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList'], lastModified: '2026-11-01T00:00:00+03:00',
+        ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList'], lastModified: '2026-11-02T00:00:00+03:00',
         breadcrumbs: [{ name: 'الرئيسية', url: '/' }, { name: 'تنظيف لابتوب الألعاب', url: '/ar/gaming-laptop-cleaning-kuwait' }]
       },
       relatedServiceIds: ['srv-gaming-laptop-cleaning', 'srv-gaming-laptop', 'srv-laptop']
