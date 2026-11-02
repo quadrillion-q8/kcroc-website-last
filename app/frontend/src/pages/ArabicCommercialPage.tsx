@@ -228,7 +228,7 @@ const CONFIG: Record<string, {
       'تنظيف المراوح وزعانف المشتت النحاسية ومجاري سحب وطرد الهواء.',
       'فحص المعجون والـThermal Pads أو Thermal Putty واختيار المادة والسماكة المتوافقة مع الجهاز.',
       'اختبار حرارة CPU وGPU وسلوك المراوح ومؤشرات Thermal Throttling بعد إعادة التركيب.',
-      'السعر الإرشادي 15–20 د.ك حسب الموديل والحالة، مع استلام وتوصيل مجاني وضمان 30 يومًا على الإصلاحات المشمولة.'
+      'السعر الإرشادي 15–20 د.ك حسب الموديل والحالة؛ نوضح نطاق العمل وما يشمله السعر قبل البدء، وأي قطعة أو إصلاح إضافي يُسعّر منفصلًا بعد موافقتك. الاستلام والتوصيل مجانيان، والضمان 30 يومًا على الإصلاحات المشمولة.'
     ],
     faq: [
       { q: 'هل تغيير المعجون الحراري وحده يكفي لحل ارتفاع الحرارة؟', a: 'ليس دائمًا. إذا كانت زعانف المشتت مسدودة بالغبار، أو كانت المروحة ضعيفة، أو كان هناك خلل في تماس المشتت أو في جزء من منظومة التبريد، فلن يحل تغيير المعجون المشكلة وحده. لذلك نفحص تدفق الهواء والمراوح والمشتت والمواد الحرارية قبل تحديد العمل المطلوب.' },
@@ -2742,8 +2742,8 @@ export default function ArabicCommercialPage() {
               <p className="mt-6 text-base leading-8 text-slate-300 sm:text-lg">{cfg.intro}</p>
               {slug === 'gaming-laptop-cleaning-kuwait' && (
                 <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                  <a href={wa} target="_blank" rel="noreferrer" aria-label="احجز فحص وتنظيف لابتوب الألعاب عبر واتساب" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-400 px-6 py-3 font-black text-slate-950 transition hover:bg-cyan-300">
-                    <MessageCircle className="h-5 w-5" aria-hidden="true" /> احجز فحص لابتوب الألعاب عبر واتساب
+                  <a href={wa} target="_blank" rel="noreferrer" aria-label="احجز تنظيف وصيانة تبريد لابتوب الألعاب عبر واتساب" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-400 px-6 py-3 font-black text-slate-950 transition hover:bg-cyan-300">
+                    <MessageCircle className="h-5 w-5" aria-hidden="true" /> احجز تنظيف وصيانة تبريد لابتوب الألعاب عبر واتساب
                   </a>
                   <Link to="/ar/pricing" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-slate-700 px-6 py-3 font-bold text-white transition hover:border-cyan-500/40 hover:text-cyan-300">مراجعة الأسعار</Link>
                 </div>
