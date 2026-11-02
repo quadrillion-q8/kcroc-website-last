@@ -226,7 +226,7 @@ export default function MacBookBatteryReplacementPage() {
                   <Truck className="h-5 w-5" aria-hidden="true" /> Arrange Free Kuwait Pickup
                 </Link>
               </div>
-              <div className="mt-7 grid gap-3 sm:grid-cols-3">
+              <div className="mt-7 grid gap-3 sm:grid-cols-4">
                 <div className="rounded-xl border border-slate-800 bg-slate-950/50 p-4">
                   <strong className="block text-lg text-cyan-300">Free</strong>
                   <span className="text-xs leading-5 text-slate-400">Initial battery and charging diagnosis</span>
@@ -238,6 +238,10 @@ export default function MacBookBatteryReplacementPage() {
                 <div className="rounded-xl border border-slate-800 bg-slate-950/50 p-4">
                   <strong className="block text-lg text-cyan-300">30 days</strong>
                   <span className="text-xs leading-5 text-slate-400">Warranty on covered completed repairs</span>
+                </div>
+                <div className="rounded-xl border border-slate-800 bg-slate-950/50 p-4">
+                  <strong className="block text-lg text-cyan-300">No Fix, No Fee</strong>
+                  <span className="text-xs leading-5 text-slate-400">KCROC published policy, subject to its terms</span>
                 </div>
               </div>
             </div>
