@@ -518,11 +518,11 @@ export const rawGraphData: RawGraphData = {
 
     'page-ar-battery-replacement': {
       id: 'page-ar-battery-replacement', slug: 'ar/battery-replacement-kuwait', entityType: 'WebPage', isActive: true,
-      title: 'تبديل بطارية اللابتوب في الكويت',
-      description: 'تبديل بطارية اللابتوب في الكويت بعد فحص صحة البطارية ودائرة الشحن ومطابقة رقم القطعة. أجرة العمل من 8 د.ك + سعر البطارية حسب الموديل، مع استلام وتوصيل مجاني وضمان 30 يومًا.',
+      title: 'تبديل بطارية لابتوبات Windows في الكويت — HP وDell وLenovo',
+      description: 'فحص وتبديل بطارية لابتوبات Windows في الكويت لموديلات HP وDell وLenovo وASUS وAcer وغيرها، مع فحص دائرة الشحن ومطابقة رقم القطعة. أجرة العمل من 8 د.ك + البطارية، واستلام مجاني وضمان 30 يومًا.',
       seo: {
-        title: 'تبديل بطارية اللابتوب في الكويت من 8 د.ك + القطعة | KCROC',
-        description: 'تبديل بطارية اللابتوب في الكويت بعد فحص صحة البطارية ودائرة الشحن. أجرة العمل من 8 د.ك + سعر البطارية حسب الموديل. استلام وتوصيل مجاني وضمان 30 يومًا.',
+        title: 'تبديل بطارية لابتوب Windows في الكويت | HP وDell وLenovo | KCROC',
+        description: 'تبديل بطارية لابتوبات Windows من HP وDell وLenovo وASUS وAcer وغيرها في الكويت. نفحص صحة البطارية ودائرة الشحن ونطابق رقم القطعة؛ أجرة العمل من 8 د.ك + سعر البطارية، مع استلام مجاني وضمان 30 يومًا.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/ar/battery-replacement-kuwait', locale: 'ar_KW',
         ogImage: 'https://www.computerrepairkuwait.com/images/laptop-bottom-chassis-battery-ram-open.webp', ogImageAlt: 'فحص داخلي لبطارية لابتوب Windows ومطابقة رقم القطعة في مختبر KCROC بحولي', ogImageWidth: 800, ogImageHeight: 600,
         alternates: { 'ar-KW': 'https://www.computerrepairkuwait.com/ar/battery-replacement-kuwait', 'en-KW': 'https://www.computerrepairkuwait.com/battery-replacement-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/battery-replacement-kuwait' },
@@ -549,15 +549,15 @@ export const rawGraphData: RawGraphData = {
 
     'page-ar-macbook-battery-replacement': {
       id: 'page-ar-macbook-battery-replacement', slug: 'ar/macbook-battery-replacement-kuwait', entityType: 'WebPage', isActive: true,
-      title: 'تبديل بطارية MacBook في الكويت — ماك بوك إير وبرو',
-      description: 'فحص وتبديل بطارية MacBook Air وMacBook Pro في الكويت بعد مراجعة صحة البطارية وعدد دورات الشحن ومسار USB-C أو MagSafe، ومطابقة رقم الموديل وتوفر القطعة قبل تحديد السعر والمدة. أجرة العمل تبدأ من 8 د.ك + سعر البطارية.',
+      title: 'تبديل بطارية MacBook في الكويت — السعر والتركيب وموديلات Air وPro',
+      description: 'تبديل بطارية MacBook Air وMacBook Pro في الكويت مع دليل أرقام A-number، وفحص صحة البطارية ودائرة الشحن وUSB-C أو MagSafe وخط بيانات البطارية. السعر الشامل بعد مطابقة القطعة؛ أجرة التركيب من 8 د.ك + البطارية.',
       seo: {
-        title: 'تبديل بطارية MacBook في الكويت | Air وPro | KCROC',
-        description: 'تبديل بطارية ماك بوك إير وبرو في الكويت. نفحص صحة البطارية وعدد دورات الشحن والشحن عبر USB-C أو MagSafe، ونطابق رقم الموديل وتوفر القطعة قبل تأكيد السعر. أجرة العمل من 8 د.ك + البطارية، مع استلام مجاني وضمان 30 يومًا على الإصلاحات المشمولة.',
+        title: 'تبديل بطارية MacBook في الكويت | السعر مع التركيب وموديلات A | KCROC',
+        description: 'تبديل بطارية ماك بوك في الكويت (MacBook Air وPro) مع موديلات A-number وفحص آيسي الشحن وUSB-C أو MagSafe وخط بيانات البطارية حسب الموديل. عرض سعر شامل قبل الإصلاح، استلام مجاني وضمان 30 يومًا على الإصلاحات المشمولة.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/ar/macbook-battery-replacement-kuwait', locale: 'ar_KW',
         ogImage: 'https://www.computerrepairkuwait.com/images/macbook-internal-battery-replacement-service.webp', ogImageAlt: 'فحص وتبديل بطارية MacBook Air وPro داخل مختبر KCROC بحولي', ogImageWidth: 800, ogImageHeight: 600,
         alternates: { 'ar-KW': 'https://www.computerrepairkuwait.com/ar/macbook-battery-replacement-kuwait', 'en-KW': 'https://www.computerrepairkuwait.com/macbook-battery-replacement-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/macbook-battery-replacement-kuwait' },
-        ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList'], lastModified: '2026-11-02T00:00:00+03:00',
+        ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList', 'Service', 'FAQPage'], lastModified: '2026-11-03T00:00:00+03:00',
         breadcrumbs: [{ name: 'الرئيسية', url: '/ar' }, { name: 'تصليح MacBook', url: '/ar/macbook-repair-kuwait' }, { name: 'تبديل بطارية MacBook', url: '/ar/macbook-battery-replacement-kuwait' }]
       },
       relatedServiceIds: ['srv-macbook', 'srv-macbook-screen', 'srv-charging-port', 'srv-motherboard']
