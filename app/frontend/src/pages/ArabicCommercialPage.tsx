@@ -503,6 +503,8 @@ const CONFIG: Record<string, {
       { q: 'هل تبدلون بطارية ماك بوك إير وماك بوك برو؟', a: 'نعم، نستقبل أجهزة ماك بوك إير وماك بوك برو للفحص. نحتاج موديل الجهاز أو رقم الطراز وسنة الإصدار لمطابقة البطارية المناسبة؛ تختلف القطع وطريقة التركيب بين الأجيال، والتوفر يتأكد قبل طلب القطعة.' },
       { q: 'هل رسالة Service Recommended أو HP Battery Alert 601 تعني أن البطارية تالفة؟', a: 'هذه التنبيهات قد تشير إلى تراجع صحة البطارية أو فشل اختبارها، لكنها لا تغني عن التأكد من الموديل ونتيجة الفحص. نراجع حالة البطارية وأعراض الشحن قبل التوصية بالتبديل.' },
       { q: 'هل تتوفر بطاريات أصلية OEM أو بدائل متوافقة؟', a: 'تعتمد الخيارات على موديل الجهاز وتوفر القطعة. نوضح لك فئة البطارية المتاحة والتوافق والسعر وشروط الضمان قبل موافقتك، ولا نعتبر أي قطعة متوافقة مع الجهاز لمجرد تشابه شكلها أو مقاسها.' },
+      { q: 'كم يستغرق تبديل بطارية اللابتوب؟', a: 'تختلف المدة حسب موديل الجهاز وطريقة تركيب البطارية وتوفر رقم القطعة ونتيجة الفحص. نؤكد الوقت المتوقع بعد مطابقة القطعة، ولا نعد بموعد قبل التأكد من التوافق والتوفر.' },
+      { q: 'هل يشمل الضمان البطارية بعد التبديل؟', a: 'الإصلاح المكتمل مشمول بضمان 30 يومًا على القطعة وأجرة العمل ضمن نطاق الإصلاح المنفذ ووفق شروط الخدمة. نوضح نطاق التغطية قبل موافقتك على العمل.' },
       { q: 'هل توفرون استلام وتوصيل لتبديل البطارية في جميع مناطق الكويت؟', a: 'نعم، الاستلام والتوصيل مجانيان في مناطق الكويت، ومنها حولي والسالمية ومدينة الكويت والفروانية والجهراء والأحمدي والفحيحيل. الفحص والإصلاح يتمان في مختبر KCROC في حولي، مجمع الملا، السرداب، محل 19، شارع ابن خلدون.' }
     ],
     englishPath: '/battery-replacement-kuwait',
@@ -515,7 +517,7 @@ const CONFIG: Record<string, {
       { label: 'أسعار التصليح في الكويت', path: '/ar/pricing' },
       { label: 'تصليح كمبيوتر حولي', path: '/ar/computer-repair-hawalli' }
     ],
-    serviceIds: ['srv-battery', 'srv-laptop', 'srv-macbook', 'srv-charging-port', 'srv-motherboard']
+    serviceIds: ['srv-laptop', 'srv-macbook', 'srv-charging-port', 'srv-motherboard']
   },
   'ssd-ram-upgrade-kuwait': {
     h1: 'ترقية SSD وRAM لتسريع اللابتوب في الكويت',
@@ -1920,7 +1922,9 @@ export default function ArabicCommercialPage() {
 
   const whatsappMessage = slug === 'macbook-screen-replacement-kuwait'
     ? 'السلام عليكم KCROC، عندي مشكلة في شاشة MacBook Air أو Pro. سأرسل صورة للشاشة والجهاز، وإذا لم أعرف رقم الموديل أرجو مساعدتي في تحديده. أريد معرفة هل يمكن إصلاح الكابل أو الإضاءة أم تحتاج الشاشة إلى تبديل، مع السعر النهائي شامل الشاشة والتركيب والمدة المتوقعة قبل البدء. منطقتي: ____.'
-    : slug === 'laptop-screen-repair-kuwait'
+    : slug === 'battery-replacement-kuwait'
+      ? 'السلام عليكم KCROC، أحتاج فحص أو تبديل بطارية اللابتوب أو MacBook في الكويت. الماركة: ____. الموديل الكامل أو Service Tag / رقم Axxxx: ____. الأعراض: تفريغ سريع / ينطفئ عند فصل الشاحن / لا يشحن أو 0% / تحذير بطارية / انتفاخ أو ارتفاع التراك باد / أخرى: ____. هل توجد علامة انتفاخ أو تشوه في الهيكل؟ ____. المنطقة: ____. سأرسل صورة خارجية للموديل أو رسالة التحذير إذا كان ذلك آمنًا، من دون فتح الجهاز أو الضغط على البطارية. فضلاً أكدوا نتيجة الفحص، وتوافق البطارية وتوفرها، وخيار القطعة، وأجرة العمل والسعر النهائي والمدة قبل أي عمل مدفوع.'
+      : slug === 'laptop-screen-repair-kuwait'
       ? 'السلام عليكم KCROC، أحتاج تصليح أو تبديل شاشة اللابتوب في الكويت. الماركة والموديل: ____. المشكلة: ____. منطقتي بالكويت: ____. رقم الموديل الدقيق أو Service Tag إن توفر: ____. الأعراض: كسر / بقع سوداء / خطوط / وميض / شاشة سوداء / يتغير العرض مع حركة الغطاء / أخرى. هل الشاشة لمس أو ذات معدل تحديث عالٍ إذا كنت تعرف؟ ____. أستطيع إرسال صور للشاشة والجهاز. فضلاً أكدوا توافق ورقم القطعة وتوفرها والسعر النهائي شامل أجرة العمل والقطعة والمدة المتوقعة قبل الإصلاح.'
       : slug === 'gaming-laptop-repair-kuwait'
       ? 'السلام عليكم KCROC، أحتاج تصليح Gaming Laptop في الكويت. الماركة والموديل الدقيق: ____. المشكلة والأعراض: ____. منطقتي بالكويت: ____. أقدر أرسل صورة أو فيديو للعطل إذا يفيد. فضلاً وضحوا التشخيص والمدة المتوقعة والسعر النهائي قبل أي إصلاح مدفوع.'
@@ -2577,6 +2581,11 @@ export default function ArabicCommercialPage() {
       serviceType: 'فحص صحة البطارية واستبدال البطارية وتشخيص دائرة الشحن',
       description: cfg.intro,
       url: page.seo.canonicalUrl,
+      image: [
+        `${business.websiteUrl}${IMAGES.macbook.service.src}`,
+        `${business.websiteUrl}${IMAGES.macbook.swollenBattery1.src}`,
+        `${business.websiteUrl}${IMAGES.upgrades.laptopBottomChassisBatteryRamOpen.src}`
+      ],
       areaServed: { '@type': 'Country', name: 'Kuwait' },
       provider: { '@id': `${business.websiteUrl}/#business` },
       availableChannel: {
@@ -2591,6 +2600,11 @@ export default function ArabicCommercialPage() {
             addressLocality: business.addressLocality,
             addressRegion: business.addressRegion,
             addressCountry: business.addressCountry
+          },
+          geo: {
+            '@type': 'GeoCoordinates',
+            latitude: business.coords?.lat,
+            longitude: business.coords?.lng
           }
         }
       },
@@ -2740,6 +2754,16 @@ export default function ArabicCommercialPage() {
             <div className={heroPageImage ? "max-w-none" : "max-w-4xl"}>
               <h1 className="text-3xl font-black leading-tight text-white sm:text-5xl">{cfg.h1}</h1>
               <p className="mt-6 text-base leading-8 text-slate-300 sm:text-lg">{cfg.intro}</p>
+              {slug === 'battery-replacement-kuwait' && (
+                <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                  <a href={wa} target="_blank" rel="noreferrer" aria-label="أرسل موديل الجهاز وأعراض البطارية إلى KCROC عبر واتساب" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-400 px-6 py-3 font-black text-slate-950 transition hover:bg-cyan-300">
+                    <MessageCircle className="h-5 w-5" aria-hidden="true" /> أرسل موديل الجهاز وأعراض البطارية عبر واتساب
+                  </a>
+                  <Link to="/ar/book" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-slate-700 bg-slate-950/60 px-6 py-3 font-bold text-white transition hover:border-cyan-500/40 hover:text-cyan-300">
+                    <Truck className="h-5 w-5" aria-hidden="true" /> احجز استلامًا مجانيًا من منطقتك
+                  </Link>
+                </div>
+              )}
               {slug === 'gaming-laptop-cleaning-kuwait' && (
                 <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                   <a href={wa} target="_blank" rel="noreferrer" aria-label="احجز تنظيف وصيانة تبريد لابتوب الألعاب عبر واتساب" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-400 px-6 py-3 font-black text-slate-950 transition hover:bg-cyan-300">
