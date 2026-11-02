@@ -958,6 +958,11 @@ add('MacBook battery hub links point to the dedicated battery pages in both lang
   graph.includes("{ label: 'MacBook Battery Replacement Kuwait', path: '/macbook-battery-replacement-kuwait' }") &&
   arabicCommercial.includes("{ label: 'تبديل بطارية MacBook', path: '/ar/macbook-battery-replacement-kuwait' }"));
 
+add('Dedicated English MacBook battery replacement page is discoverable in the main Services dropdown',
+  caseStudyRemovalNavigation.includes("slug: 'macbook-battery-replacement-kuwait'") &&
+  caseStudyRemovalNavigation.includes("title: 'MacBook Battery Replacement'") &&
+  caseStudyRemovalNavigation.includes("id: 'macbook_battery_replacement'"));
+
 add('Battery intent split does not create a 16th Services catalogue item',
   !graph.includes("id: 'srv-macbook-battery'"));
 
