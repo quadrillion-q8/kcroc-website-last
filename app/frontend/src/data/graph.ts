@@ -541,7 +541,7 @@ export const rawGraphData: RawGraphData = {
         canonicalUrl: 'https://www.computerrepairkuwait.com/macbook-battery-replacement-kuwait', locale: 'en_KW',
         ogImage: 'https://www.computerrepairkuwait.com/images/macbook-internal-battery-replacement-service.webp', ogImageAlt: 'MacBook internal battery service and model-matched replacement at KCROC in Hawalli, Kuwait', ogImageWidth: 800, ogImageHeight: 600,
         alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/macbook-battery-replacement-kuwait', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/macbook-battery-replacement-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/macbook-battery-replacement-kuwait' },
-        ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList'], lastModified: '2026-11-02T00:00:00+03:00',
+        ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList'], lastModified: '2026-11-03T00:00:00+03:00',
         breadcrumbs: [{ name: 'Home', url: '/' }, { name: 'MacBook Repair Kuwait', url: '/macbook-repair-kuwait' }, { name: 'MacBook Battery Replacement', url: '/macbook-battery-replacement-kuwait' }]
       },
       relatedServiceIds: ['srv-macbook', 'srv-charging-port', 'srv-motherboard', 'srv-macbook-screen']
