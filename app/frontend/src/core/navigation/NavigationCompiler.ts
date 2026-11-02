@@ -73,7 +73,24 @@ export class NavigationCompiler {
       // full 2-row card grid (top 6 by weight) instead of only 3 cards
       // plus a crowded row of leftover pill-links.
       featured: sorted.slice(0, 6),
-      sections: [{ title: `More Services (${Math.max(0, sorted.length - 6)})`, items: [servicesIndex, ...sorted.slice(6)] }]
+      sections: [{
+        title: `More Services & MacBook Repair (${Math.max(0, sorted.length - 6) + 1})`,
+        items: [
+          servicesIndex,
+          {
+            id: 'macbook_battery_replacement',
+            slug: 'macbook-battery-replacement-kuwait',
+            entityType: 'Page' as any,
+            primaryKeyword: 'MacBook battery replacement Kuwait',
+            title: 'MacBook Battery Replacement',
+            description: 'Model-matched MacBook Air and Pro battery diagnosis and replacement in Kuwait.',
+            iconKey: 'battery',
+            weight: 85,
+            commercialIntent: 'high',
+          },
+          ...sorted.slice(6),
+        ],
+      }]
     };
   }
 
