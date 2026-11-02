@@ -816,6 +816,58 @@ add('Arabic gaming-laptop cooling page uses six existing governorate destination
   arabicCommercial.includes("slug === 'gaming-laptop-cleaning-kuwait' ? KUWAIT_GOVERNORATE_LINKS : LOCAL_LINKS") &&
   arabicCommercial.includes("{ label: 'السالمية', path: '/ar/computer-repair-salmiya' }"));
 
+
+const arabicBatteryPageStart = graph.indexOf("    'page-ar-battery-replacement': {");
+const arabicBatteryPageEnd = graph.indexOf("    'page-ar-ssd-ram-upgrade': {", arabicBatteryPageStart + 1);
+const arabicBatteryPageEntity = arabicBatteryPageStart >= 0 && arabicBatteryPageEnd > arabicBatteryPageStart
+  ? graph.slice(arabicBatteryPageStart, arabicBatteryPageEnd)
+  : '';
+const arabicBatteryConfigStart = arabicCommercial.indexOf("  'battery-replacement-kuwait': {");
+const arabicBatteryConfigEnd = arabicCommercial.indexOf("\\n  'ssd-ram-upgrade-kuwait': {", arabicBatteryConfigStart + 1);
+const arabicBatteryConfig = arabicBatteryConfigStart >= 0 && arabicBatteryConfigEnd > arabicBatteryConfigStart
+  ? arabicCommercial.slice(arabicBatteryConfigStart, arabicBatteryConfigEnd)
+  : '';
+
+add('Arabic battery page targets core laptop-battery intent with a transparent labour-only starting price',
+  arabicBatteryPageEntity.includes("title: 'تبديل بطارية اللابتوب في الكويت من 8 د.ك + القطعة | KCROC'") &&
+  arabicBatteryPageEntity.includes('أجرة العمل من 8 د.ك + سعر البطارية حسب الموديل') &&
+  seoProjection.includes('"id": "page-ar-battery-replacement"') &&
+  seoProjection.includes('"title": "تبديل بطارية اللابتوب في الكويت من 8 د.ك + القطعة | KCROC"'));
+
+add('Arabic battery related-service cards do not link back to the current page',
+  arabicBatteryConfig.includes("serviceIds: ['srv-laptop', 'srv-macbook', 'srv-charging-port', 'srv-motherboard']") &&
+  !arabicBatteryConfig.includes("serviceIds: ['srv-battery'"));
+
+add('Arabic battery WhatsApp intake requests the exact model, symptoms, location, safe photo, and stock confirmation',
+  arabicCommercial.includes('أحتاج فحص أو تبديل بطارية اللابتوب أو MacBook في الكويت') &&
+  arabicCommercial.includes('الموديل الكامل أو Service Tag / رقم Axxxx') &&
+  arabicCommercial.includes('صورة خارجية للموديل أو رسالة التحذير إذا كان ذلك آمنًا') &&
+  arabicCommercial.includes('من دون فتح الجهاز أو الضغط على البطارية') &&
+  arabicCommercial.includes('توافق البطارية وتوفرها'));
+
+add('Arabic battery page presents dedicated WhatsApp and free-pickup actions in the hero',
+  arabicCommercial.includes('أرسل موديل الجهاز وأعراض البطارية عبر واتساب') &&
+  arabicCommercial.includes('احجز استلامًا مجانيًا من منطقتك'));
+
+add('Arabic battery Service schema uses its first-party photos and the Hawalli workshop coordinates',
+  arabicCommercial.includes('IMAGES.macbook.service.src') &&
+  arabicCommercial.includes('IMAGES.macbook.swollenBattery1.src') &&
+  arabicCommercial.includes('IMAGES.upgrades.laptopBottomChassisBatteryRamOpen.src') &&
+  arabicCommercial.includes('latitude: business.coords?.lat') &&
+  arabicCommercial.includes('longitude: business.coords?.lng'));
+
+add('Arabic battery metadata declares Service and FAQPage schema with an Arabic breadcrumb and current date',
+  arabicBatteryPageEntity.includes("schemaTypes: ['WebPage', 'BreadcrumbList', 'Service', 'FAQPage']") &&
+  arabicBatteryPageEntity.includes("lastModified: '2026-11-02T00:00:00+03:00'") &&
+  arabicBatteryPageEntity.includes("breadcrumbs: [{ name: 'الرئيسية', url: '/ar' }"));
+
+add('Arabic battery FAQs remain generated from visible copy and qualify timing and warranty',
+  (arabicBatteryConfig.match(/\\{ q: '/g) || []).length === 10 &&
+  arabicCommercial.includes('كم يستغرق تبديل بطارية اللابتوب؟') &&
+  arabicCommercial.includes('لا نعد بموعد قبل التأكد من التوافق والتوفر') &&
+  arabicCommercial.includes('الإصلاح المكتمل مشمول بضمان 30 يومًا') &&
+  arabicCommercial.includes('mainEntity: cfg.faq.map((item)'));
+
 for (const check of checks) console.log(`${check.pass ? '✅' : '❌'} ${check.name}${!check.pass && check.detail ? ` — ${check.detail}` : ''}`);
 const failed = checks.filter((check) => !check.pass);
 if (failed.length) process.exit(1);
