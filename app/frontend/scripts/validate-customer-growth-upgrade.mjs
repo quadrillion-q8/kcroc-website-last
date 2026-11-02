@@ -645,10 +645,10 @@ add('Motherboard service makes the real Hawalli workshop address visible',
   graph.includes('Ibn Khaldoun Street, Al Mullah Complex, Basement Shop 19') &&
   graph.includes('Free pickup and delivery are available across Kuwait.'));
 
-add('Motherboard internal links use descriptive laptop and MacBook logic-board anchor text',
+add('Motherboard internal links use descriptive laptop and MacBook logic-board anchor text outside the Windows battery page',
   computerRepair.includes("label: 'Laptop & Computer Motherboard Repair Kuwait'") &&
   hawalli.includes('Laptop motherboard & MacBook logic board repair') &&
-  serviceTemplate.includes("item.id === 'srv-motherboard' ? 'Laptop Motherboard & MacBook Logic Board Repair' : item.title"));
+  serviceTemplate.includes("entity.id === 'srv-battery' ? 'Laptop Motherboard Repair' : 'Laptop Motherboard & MacBook Logic Board Repair'"));
 
 add('Motherboard FAQs remain in native disclosure elements and continue to render answers',
   serviceTemplate.includes('<details') &&
