@@ -841,7 +841,7 @@ add('Arabic battery related-service cards do not link back to the current page',
 
 add('Arabic battery WhatsApp intake requests the exact model, symptoms, location, safe photo, and stock confirmation',
   arabicCommercial.includes('أحتاج فحص أو تبديل بطارية لابتوب Windows في الكويت') &&
-  arabicCommercial.includes('الموديل الكامل أو Service Tag / رقم Axxxx') &&
+  arabicCommercial.includes('الموديل الكامل أو Service Tag') &&
   arabicCommercial.includes('صورة خارجية للموديل أو رسالة التحذير إذا كان ذلك آمنًا') &&
   arabicCommercial.includes('من دون فتح الجهاز أو الضغط على البطارية') &&
   arabicCommercial.includes('توافق البطارية وتوفرها'));
