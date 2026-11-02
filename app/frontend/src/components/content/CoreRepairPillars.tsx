@@ -5,9 +5,9 @@ import { ArrowRight, Cpu, Laptop, MonitorCog } from 'lucide-react';
 type Props = {
   context?: string;
   excludeLaptopService?: boolean;
-};
+  windowsLaptopContext?: boolean;
 
-export function CoreRepairPillars({ context = 'Choose the right starting point for a Kuwait repair job.', excludeLaptopService = false }: Props) {
+export function CoreRepairPillars({ context = 'Choose the right starting point for a Kuwait repair job.', excludeLaptopService = false, windowsLaptopContext = false }: Props) {
   return (
     <section
       aria-labelledby="core-repair-pillars"
@@ -33,8 +33,9 @@ export function CoreRepairPillars({ context = 'Choose the right starting point f
             Computer Repair Kuwait
           </h3>
           <p className="mt-2 text-sm leading-6 text-slate-400">
-            The main commercial repair hub for desktops, laptops, gaming PCs, MacBooks and motherboard faults.
-            Free pickup and delivery are available across Kuwait.
+            {windowsLaptopContext
+              ? "The main commercial repair hub for desktop PCs, Windows laptops, gaming PCs and motherboard faults. Free pickup and delivery are available across Kuwait."
+              : "The main commercial repair hub for desktops, laptops, gaming PCs, MacBooks and motherboard faults. Free pickup and delivery are available across Kuwait."}
           </p>
           <span className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-cyan-300">
             View computer repair service <ArrowRight className="h-4 w-4" aria-hidden="true" />
