@@ -905,6 +905,13 @@ add('Arabic general laptop-battery page shows laptop-related guides and keeps Ma
   !/(MacBook|ماك بوك|ماكبوك)/i.test(arabicBatteryRelatedGuides) &&
   arabicBatteryConfig.includes("{ label: 'تبديل بطارية MacBook', path: '/ar/macbook-battery-replacement-kuwait' }"));
 
+add('English Windows battery page keeps related motherboard and repair-hub copy MacBook-free without changing shared copy on other services',
+  serviceTemplate.includes("entity.id === 'srv-battery' ? 'Laptop Motherboard Repair' : 'Laptop Motherboard & MacBook Logic Board Repair'") &&
+  serviceTemplate.includes("windowsLaptopContext={entity.id === 'srv-battery'}") &&
+  coreRepairPillars.includes("windowsLaptopContext = false") &&
+  coreRepairPillars.includes("The main commercial repair hub for desktop PCs, Windows laptops, gaming PCs and motherboard faults.") &&
+  coreRepairPillars.includes("The main commercial repair hub for desktops, laptops, gaming PCs, MacBooks and motherboard faults."));
+
 add('Windows battery landing pages use laptop-only footer labels and route-specific footer descriptions',
   footer.includes("'/battery-replacement-kuwait': 'تبديل بطارية اللابتوب'") &&
   footer.includes("const isWindowsBatteryPage = location.pathname === '/battery-replacement-kuwait' || location.pathname === '/ar/battery-replacement-kuwait';") &&
