@@ -224,7 +224,7 @@ export const rawGraphData: RawGraphData = {
         ogImageWidth: 1200,
         ogImageHeight: 800,
         schemaTypes: ['WebPage', 'FAQPage', 'BreadcrumbList', 'Service'],
-        lastModified: '2026-11-02T00:00:00+03:00',
+        lastModified: '2026-11-01T00:00:00+03:00',
         breadcrumbs: [{ name: 'الرئيسية', url: '/' }, { name: 'تصليح كمبيوتر بالقرب منك', url: '/ar/near-me' }]
       },
       featuredFAQIds: [
@@ -602,7 +602,7 @@ export const rawGraphData: RawGraphData = {
         canonicalUrl: 'https://www.computerrepairkuwait.com/ar/gaming-laptop-cleaning-kuwait',
         locale: 'ar_KW',
         alternates: { 'ar-KW': 'https://www.computerrepairkuwait.com/ar/gaming-laptop-cleaning-kuwait', 'en-KW': 'https://www.computerrepairkuwait.com/gaming-laptop-cleaning-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/gaming-laptop-cleaning-kuwait' },
-        ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList'], lastModified: '2026-11-01T00:00:00+03:00',
+        ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList'], lastModified: '2026-11-02T00:00:00+03:00',
         breadcrumbs: [{ name: 'الرئيسية', url: '/' }, { name: 'تنظيف لابتوب الألعاب', url: '/ar/gaming-laptop-cleaning-kuwait' }]
       },
       relatedServiceIds: ['srv-gaming-laptop-cleaning', 'srv-gaming-laptop', 'srv-laptop']
