@@ -952,7 +952,9 @@ add('English MacBook battery page includes a crawlable common A-number matrix an
   ['A1466', 'A1932', 'A2179', 'A2337', 'A2681', 'A2941', 'A3113', 'A3114', 'A1398', 'A1502', 'A1706', 'A1707', 'A1708', 'A1989', 'A1990', 'A2141', 'A2159', 'A2251', 'A2289', 'A2338', 'A2442', 'A2485', 'A2779', 'A2780', 'A2918', 'A2991', 'A2992'].every((model) => macbookBatteryPage.includes(model)) &&
   macbookBatteryPage.includes('Complete KWD quote after part and stock check') &&
   macbookBatteryPage.includes('Labour from 8 KWD') &&
-  macbookBatteryPage.includes('not the installed total'));
+  macbookBatteryPage.includes('not the installed total') &&
+  macbookBatteryPage.includes('minPrice: 8') &&
+  macbookBatteryPage.includes('Starting labour only; battery not included.'));
 
 add('English MacBook battery quote builder pre-fills WhatsApp with selected model, symptom and pickup area',
   macbookBatteryPage.includes('useState<string>') &&
@@ -978,8 +980,8 @@ add('English MacBook battery page explains model-specific charging-circuit diagn
   macbookBatteryPage.includes('not a universal parts list'));
 
 add('English MacBook battery page limits thermal service to compatible models and avoids unsupported fixed upsell claims',
-  macbookBatteryPage.includes('not required for every battery replacement') &&
-  macbookBatteryPage.includes('quoted separately before work') &&
+  macbookBatteryPage.includes('not a standard battery-replacement requirement') &&
+  macbookBatteryPage.includes('separately quoted before work') &&
   macbookBatteryPage.includes('temperature behaviour during appropriate normal-load charging verification'));
 
 add('English MacBook swollen-battery CTA prioritises safe handling over ordinary courier or same-day promises',
