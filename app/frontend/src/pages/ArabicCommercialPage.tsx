@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, Navigate, useParams } from 'react-router-dom';
-import { ArrowLeft, BadgeCheck, CheckCircle2, CircleCheck, ClipboardCheck, Cpu, Gauge, MapPin, MessageCircle, Microscope, MonitorCog, Phone, Power, ShieldCheck, Star, Thermometer, Truck, Wrench } from 'lucide-react';
+import { ArrowLeft, BadgeCheck, BatteryCharging, CheckCircle2, CircleCheck, ClipboardCheck, Cpu, Gauge, MapPin, MessageCircle, Microscope, MonitorCog, Phone, Power, ShieldCheck, Star, Thermometer, Truck, Wrench } from 'lucide-react';
 import { KCROC_GRAPH } from '../data/graph';
 import { SEOEngine } from '../core/components/SEOEngine';
 import SchemaMarkup from '../components/seo/SchemaMarkup';
