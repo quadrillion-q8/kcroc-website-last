@@ -873,6 +873,29 @@ add('Arabic battery FAQs remain generated from visible copy and qualify timing a
   arabicCommercial.includes('mainEntity: cfg.faq.map((item)'));
 
 
+
+const englishBatteryServiceStart = graph.indexOf("    'srv-battery': {");
+const englishBatteryServiceEnd = graph.indexOf("\n    'srv-charging-port': {", englishBatteryServiceStart + 1);
+const englishBatteryService = englishBatteryServiceStart >= 0 && englishBatteryServiceEnd > englishBatteryServiceStart
+  ? graph.slice(englishBatteryServiceStart, englishBatteryServiceEnd)
+  : '';
+const englishBatteryPrimaryCopy = englishBatteryService.split('relatedResourcePaths:')[0];
+const arabicBatteryPrimaryCopy = arabicBatteryConfig.split('    englishPath:')[0];
+
+add('English and Arabic general battery page copy excludes MacBook while retaining a separate dedicated-page link',
+  englishBatteryPrimaryCopy.length > 0 &&
+  !/MacBook/i.test(englishBatteryPrimaryCopy) &&
+  arabicBatteryPrimaryCopy.length > 0 &&
+  !/(MacBook|ماك بوك|ماكبوك)/i.test(arabicBatteryPrimaryCopy) &&
+  englishBatteryService.includes("{ label: 'MacBook Battery Replacement Kuwait', path: '/macbook-battery-replacement-kuwait' }") &&
+  arabicBatteryConfig.includes("{ label: 'تبديل بطارية MacBook', path: '/ar/macbook-battery-replacement-kuwait' }"));
+
+add('Windows battery landing pages use laptop-only footer labels and route-specific footer descriptions',
+  footer.includes("'/battery-replacement-kuwait': 'تبديل بطارية اللابتوب'") &&
+  footer.includes("const isWindowsBatteryPage = location.pathname === '/battery-replacement-kuwait' || location.pathname === '/ar/battery-replacement-kuwait';") &&
+  footer.includes('Professional repair for desktop PCs, Windows laptops and gaming PCs.') &&
+  footer.includes('تصليح الكمبيوتر المكتبي ولابتوبات Windows وكمبيوتر الألعاب'));
+
 const macbookBatteryEnglishStart = graph.indexOf("    'page-macbook-battery-replacement': {");
 const macbookBatteryArabicStart = graph.indexOf("    'page-ar-macbook-battery-replacement': {");
 const macbookBatteryEnglishEnd = graph.indexOf("} as WebPageEntity", macbookBatteryEnglishStart);
