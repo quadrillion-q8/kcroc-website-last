@@ -823,7 +823,7 @@ const arabicBatteryPageEntity = arabicBatteryPageStart >= 0 && arabicBatteryPage
   ? graph.slice(arabicBatteryPageStart, arabicBatteryPageEnd)
   : '';
 const arabicBatteryConfigStart = arabicCommercial.indexOf("  'battery-replacement-kuwait': {");
-const arabicBatteryConfigEnd = arabicCommercial.indexOf("\\n  'ssd-ram-upgrade-kuwait': {", arabicBatteryConfigStart + 1);
+const arabicBatteryConfigEnd = arabicCommercial.indexOf("\n  'ssd-ram-upgrade-kuwait': {", arabicBatteryConfigStart + 1);
 const arabicBatteryConfig = arabicBatteryConfigStart >= 0 && arabicBatteryConfigEnd > arabicBatteryConfigStart
   ? arabicCommercial.slice(arabicBatteryConfigStart, arabicBatteryConfigEnd)
   : '';
@@ -862,7 +862,7 @@ add('Arabic battery metadata declares Service and FAQPage schema with an Arabic 
   arabicBatteryPageEntity.includes("breadcrumbs: [{ name: 'الرئيسية', url: '/ar' }"));
 
 add('Arabic battery FAQs remain generated from visible copy and qualify timing and warranty',
-  (arabicBatteryConfig.match(/\\{ q: '/g) || []).length === 10 &&
+  (arabicBatteryConfig.match(/\{ q: '/g) || []).length === 10 &&
   arabicCommercial.includes('كم يستغرق تبديل بطارية اللابتوب؟') &&
   arabicCommercial.includes('لا نعد بموعد قبل التأكد من التوافق والتوفر') &&
   arabicCommercial.includes('الإصلاح المكتمل مشمول بضمان 30 يومًا') &&
