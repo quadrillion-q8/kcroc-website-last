@@ -685,7 +685,7 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
                   <div className="space-y-2">
                     {relatedServiceIds.map((id) => {
                       const item = KCROC_GRAPH.services.find((service) => service.id === id);
-                      return item ? <Link key={id} to={`/${item.slug}`} className="flex items-center justify-between gap-2 text-sm text-slate-300 hover:text-white transition-colors"><span>{item.id === 'srv-motherboard' ? 'Laptop Motherboard & MacBook Logic Board Repair' : item.title}</span><ArrowRight className="w-4 h-4 text-slate-600" /></Link> : null;
+                      return item ? <Link key={id} to={`/${item.slug}`} className="flex items-center justify-between gap-2 text-sm text-slate-300 hover:text-white transition-colors"><span>{item.id === 'srv-motherboard' ? (entity.id === 'srv-battery' ? 'Laptop Motherboard Repair' : 'Laptop Motherboard & MacBook Logic Board Repair') : item.title}</span><ArrowRight className="w-4 h-4 text-slate-600" /></Link> : null;
                     })}
                   </div>
                 </div>
@@ -759,6 +759,7 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
               ? 'For gaming desktops, start with GPU, power-delivery, cooling and motherboard diagnosis; use the gaming-laptop repair path only when the device is a laptop.'
               : 'Use the main computer repair hub for broader PC and device faults, or the focused laptop repair hub when the device is a laptop.'}
           excludeLaptopService={entity.id === 'srv-laptop' || entity.id === 'srv-gaming'}
+          windowsLaptopContext={entity.id === 'srv-battery'}
         />
 
         {relatedLocationIds.length > 0 && (
