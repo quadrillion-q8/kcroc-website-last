@@ -526,18 +526,18 @@ export const rawGraphData: RawGraphData = {
         canonicalUrl: 'https://www.computerrepairkuwait.com/ar/battery-replacement-kuwait', locale: 'ar_KW',
         ogImage: 'https://www.computerrepairkuwait.com/images/laptop-bottom-chassis-battery-ram-open.webp', ogImageAlt: 'فحص داخلي لبطارية لابتوب Windows ومطابقة رقم القطعة في مختبر KCROC بحولي', ogImageWidth: 800, ogImageHeight: 600,
         alternates: { 'ar-KW': 'https://www.computerrepairkuwait.com/ar/battery-replacement-kuwait', 'en-KW': 'https://www.computerrepairkuwait.com/battery-replacement-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/battery-replacement-kuwait' },
-        ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList', 'Service', 'FAQPage'], lastModified: '2026-11-02T00:00:00+03:00', breadcrumbs: [{ name: 'الرئيسية', url: '/ar' }, { name: 'تبديل بطارية اللابتوب', url: '/ar/battery-replacement-kuwait' }]
+        ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList', 'Service', 'FAQPage'], lastModified: '2026-11-03T00:00:00+03:00', breadcrumbs: [{ name: 'الرئيسية', url: '/ar' }, { name: 'تبديل بطارية اللابتوب', url: '/ar/battery-replacement-kuwait' }]
       },
       relatedServiceIds: ['srv-battery', 'srv-laptop', 'srv-charging-port', 'srv-motherboard']
     } as WebPageEntity,
 
     'page-macbook-battery-replacement': {
       id: 'page-macbook-battery-replacement', slug: 'macbook-battery-replacement-kuwait', entityType: 'WebPage', isActive: true,
-      title: 'MacBook Battery Replacement Kuwait — MacBook Air & Pro',
-      description: 'MacBook Air and MacBook Pro battery diagnosis and model-matched replacement in Kuwait. We check battery condition, cycle count and charging behaviour, confirm exact model compatibility and part availability, then quote labour from 8 KWD plus the battery price. Free pickup and a 30-day warranty on covered work.',
+      title: 'MacBook Battery Replacement Kuwait — Installed Price & Diagnostics',
+      description: 'MacBook Air and Pro battery replacement in Kuwait with free battery and charging diagnosis, A-number matching, transparent installed quotes, charging-circuit checks and free pickup. Labour starts from 8 KWD plus the battery; the complete installed price is confirmed before work.',
       seo: {
-        title: 'MacBook Battery Replacement Kuwait | Air & Pro | KCROC',
-        description: 'MacBook Air & Pro battery replacement in Kuwait. We check battery health, cycle count and USB-C or MagSafe charging, confirm exact model and part availability, and quote labour from 8 KWD + battery. Free pickup; 30-day covered-work warranty.',
+        title: 'MacBook Battery Replacement Kuwait | Installed Quote | KCROC',
+        description: 'MacBook battery replacement in Kuwait with free battery and charging diagnosis, A-number matching and transparent installed quotes. Free pickup; 30-day warranty on covered repairs.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/macbook-battery-replacement-kuwait', locale: 'en_KW',
         ogImage: 'https://www.computerrepairkuwait.com/images/macbook-internal-battery-replacement-service.webp', ogImageAlt: 'MacBook internal battery service and model-matched replacement at KCROC in Hawalli, Kuwait', ogImageWidth: 800, ogImageHeight: 600,
         alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/macbook-battery-replacement-kuwait', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/macbook-battery-replacement-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/macbook-battery-replacement-kuwait' },
