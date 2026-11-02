@@ -6,6 +6,7 @@ type Props = {
   context?: string;
   excludeLaptopService?: boolean;
   windowsLaptopContext?: boolean;
+};
 
 export function CoreRepairPillars({ context = 'Choose the right starting point for a Kuwait repair job.', excludeLaptopService = false, windowsLaptopContext = false }: Props) {
   return (
