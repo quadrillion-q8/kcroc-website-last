@@ -2196,7 +2196,6 @@ export default function ArabicCommercialPage() {
     ? [
         { title: 'تشخيص اللابتوب المتصل بالشاحن لكنه لا يشحن', path: '/ar/laptop-plugged-in-not-charging' },
         { title: 'إصلاح منفذ شحن اللابتوب ودائرة الطاقة', path: '/ar/laptop-charging-port-repair-kuwait' },
-        { title: 'تصليح ماك بوك ومشاكل البطارية والطاقة', path: '/ar/macbook-repair-kuwait' },
         { title: 'أسعار تبديل بطارية اللابتوب والقطع', path: '/ar/pricing' }
       ]
     : slug === 'laptop-repair-kuwait'
