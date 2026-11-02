@@ -518,17 +518,49 @@ export const rawGraphData: RawGraphData = {
 
     'page-ar-battery-replacement': {
       id: 'page-ar-battery-replacement', slug: 'ar/battery-replacement-kuwait', entityType: 'WebPage', isActive: true,
-      title: 'تبديل بطارية اللابتوب وماك بوك في الكويت',
-      description: 'تبديل بطارية اللابتوب وMacBook في الكويت بعد فحص صحة البطارية ودائرة الشحن ومطابقة رقم القطعة. أجرة العمل من 8 د.ك + سعر البطارية حسب الموديل، مع استلام وتوصيل مجاني وضمان 30 يومًا.',
+      title: 'تبديل بطارية اللابتوب في الكويت',
+      description: 'تبديل بطارية اللابتوب في الكويت بعد فحص صحة البطارية ودائرة الشحن ومطابقة رقم القطعة. أجرة العمل من 8 د.ك + سعر البطارية حسب الموديل، مع استلام وتوصيل مجاني وضمان 30 يومًا.',
       seo: {
         title: 'تبديل بطارية اللابتوب في الكويت من 8 د.ك + القطعة | KCROC',
-        description: 'تبديل بطارية اللابتوب وMacBook في الكويت بعد فحص صحة البطارية ودائرة الشحن. أجرة العمل من 8 د.ك + سعر البطارية حسب الموديل. استلام وتوصيل مجاني وضمان 30 يومًا.',
+        description: 'تبديل بطارية اللابتوب في الكويت بعد فحص صحة البطارية ودائرة الشحن. أجرة العمل من 8 د.ك + سعر البطارية حسب الموديل. استلام وتوصيل مجاني وضمان 30 يومًا.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/ar/battery-replacement-kuwait', locale: 'ar_KW',
-        ogImage: 'https://www.computerrepairkuwait.com/images/macbook-internal-battery-replacement-service.webp', ogImageAlt: 'فحص وتبديل بطارية اللابتوب وماك بوك في مختبر KCROC بحولي بعد مطابقة رقم القطعة', ogImageWidth: 800, ogImageHeight: 600,
+        ogImage: 'https://www.computerrepairkuwait.com/images/laptop-bottom-chassis-battery-ram-open.webp', ogImageAlt: 'فحص داخلي لبطارية لابتوب Windows ومطابقة رقم القطعة في مختبر KCROC بحولي', ogImageWidth: 800, ogImageHeight: 600,
         alternates: { 'ar-KW': 'https://www.computerrepairkuwait.com/ar/battery-replacement-kuwait', 'en-KW': 'https://www.computerrepairkuwait.com/battery-replacement-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/battery-replacement-kuwait' },
-        ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList', 'Service', 'FAQPage'], lastModified: '2026-11-02T00:00:00+03:00', breadcrumbs: [{ name: 'الرئيسية', url: '/ar' }, { name: 'تبديل بطارية اللابتوب وماك بوك', url: '/ar/battery-replacement-kuwait' }]
+        ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList', 'Service', 'FAQPage'], lastModified: '2026-11-02T00:00:00+03:00', breadcrumbs: [{ name: 'الرئيسية', url: '/ar' }, { name: 'تبديل بطارية اللابتوب', url: '/ar/battery-replacement-kuwait' }]
       },
-      relatedServiceIds: ['srv-battery', 'srv-laptop', 'srv-macbook', 'srv-charging-port', 'srv-motherboard']
+      relatedServiceIds: ['srv-battery', 'srv-laptop', 'srv-charging-port', 'srv-motherboard']
+    } as WebPageEntity,
+
+    'page-macbook-battery-replacement': {
+      id: 'page-macbook-battery-replacement', slug: 'macbook-battery-replacement-kuwait', entityType: 'WebPage', isActive: true,
+      title: 'MacBook Battery Replacement Kuwait — MacBook Air & Pro',
+      description: 'MacBook Air and MacBook Pro battery diagnosis and model-matched replacement in Kuwait. We check battery condition, cycle count and charging behaviour, confirm exact model compatibility and part availability, then quote labour from 8 KWD plus the battery price. Free pickup and a 30-day warranty on covered work.',
+      seo: {
+        title: 'MacBook Battery Replacement Kuwait | Air & Pro | KCROC',
+        description: 'MacBook Air & Pro battery replacement in Kuwait. We check battery health, cycle count and USB-C or MagSafe charging, confirm exact model and part availability, and quote labour from 8 KWD + battery. Free pickup; 30-day covered-work warranty.',
+        canonicalUrl: 'https://www.computerrepairkuwait.com/macbook-battery-replacement-kuwait', locale: 'en_KW',
+        ogImage: 'https://www.computerrepairkuwait.com/images/macbook-internal-battery-replacement-service.webp', ogImageAlt: 'MacBook internal battery service and model-matched replacement at KCROC in Hawalli, Kuwait', ogImageWidth: 800, ogImageHeight: 600,
+        alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/macbook-battery-replacement-kuwait', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/macbook-battery-replacement-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/macbook-battery-replacement-kuwait' },
+        ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList'], lastModified: '2026-11-02T00:00:00+03:00',
+        breadcrumbs: [{ name: 'Home', url: '/' }, { name: 'MacBook Repair Kuwait', url: '/macbook-repair-kuwait' }, { name: 'MacBook Battery Replacement', url: '/macbook-battery-replacement-kuwait' }]
+      },
+      relatedServiceIds: ['srv-macbook', 'srv-charging-port', 'srv-motherboard', 'srv-macbook-screen']
+    } as WebPageEntity,
+
+    'page-ar-macbook-battery-replacement': {
+      id: 'page-ar-macbook-battery-replacement', slug: 'ar/macbook-battery-replacement-kuwait', entityType: 'WebPage', isActive: true,
+      title: 'تبديل بطارية MacBook في الكويت — ماك بوك إير وبرو',
+      description: 'فحص وتبديل بطارية MacBook Air وMacBook Pro في الكويت بعد مراجعة صحة البطارية وعدد دورات الشحن ومسار USB-C أو MagSafe، ومطابقة رقم الموديل وتوفر القطعة قبل تحديد السعر والمدة. أجرة العمل تبدأ من 8 د.ك + سعر البطارية.',
+      seo: {
+        title: 'تبديل بطارية MacBook في الكويت | Air وPro | KCROC',
+        description: 'تبديل بطارية ماك بوك إير وبرو في الكويت. نفحص صحة البطارية وعدد دورات الشحن والشحن عبر USB-C أو MagSafe، ونطابق رقم الموديل وتوفر القطعة قبل تأكيد السعر. أجرة العمل من 8 د.ك + البطارية، مع استلام مجاني وضمان 30 يومًا على الإصلاحات المشمولة.',
+        canonicalUrl: 'https://www.computerrepairkuwait.com/ar/macbook-battery-replacement-kuwait', locale: 'ar_KW',
+        ogImage: 'https://www.computerrepairkuwait.com/images/macbook-internal-battery-replacement-service.webp', ogImageAlt: 'فحص وتبديل بطارية MacBook Air وPro داخل مختبر KCROC بحولي', ogImageWidth: 800, ogImageHeight: 600,
+        alternates: { 'ar-KW': 'https://www.computerrepairkuwait.com/ar/macbook-battery-replacement-kuwait', 'en-KW': 'https://www.computerrepairkuwait.com/macbook-battery-replacement-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/macbook-battery-replacement-kuwait' },
+        ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList'], lastModified: '2026-11-02T00:00:00+03:00',
+        breadcrumbs: [{ name: 'الرئيسية', url: '/ar' }, { name: 'تصليح MacBook', url: '/ar/macbook-repair-kuwait' }, { name: 'تبديل بطارية MacBook', url: '/ar/macbook-battery-replacement-kuwait' }]
+      },
+      relatedServiceIds: ['srv-macbook', 'srv-macbook-screen', 'srv-charging-port', 'srv-motherboard']
     } as WebPageEntity,
 
     'page-ar-ssd-ram-upgrade': {
@@ -1948,7 +1980,7 @@ export const rawGraphData: RawGraphData = {
       slug: 'macbook-repair-kuwait', 
       entityType: 'Service', 
       isActive: true, 
-      title: 'MacBook Repair Kuwait', primaryKeyword: "MacBook repair Kuwait", secondaryKeywords: ["MacBook Air repair Kuwait","MacBook Pro repair Kuwait","MacBook motherboard repair Kuwait","MacBook not charging Kuwait","MacBook liquid damage repair Kuwait","MacBook black screen repair Kuwait","MacBook screen repair Kuwait","MacBook battery replacement Kuwait","MacBook USB-C charging repair","MacBook M1 M2 M3 M4 repair Kuwait"], 
+      title: 'MacBook Repair Kuwait', primaryKeyword: "MacBook repair Kuwait", secondaryKeywords: ["MacBook Air repair Kuwait","MacBook Pro repair Kuwait","MacBook motherboard repair Kuwait","MacBook not charging Kuwait","MacBook liquid damage repair Kuwait","MacBook black screen repair Kuwait","MacBook screen repair Kuwait","MacBook USB-C charging repair","MacBook M1 M2 M3 M4 repair Kuwait"], 
       iconKey: 'apple', 
       shortDescription: 'MacBook Air and Pro repair in Kuwait for power, USB-C charging, screen, battery, keyboard and liquid-damage faults, with component-level board diagnostics where repair is viable.',
       description: 'Need MacBook repair in Kuwait? KCROC diagnoses MacBook Air and MacBook Pro faults including no power, USB-C charging problems, liquid damage, black or flickering screens, battery swelling, keyboard and trackpad faults, overheating and boot failures. We check the model, symptom and affected circuit before recommending a component-level repair or a compatible part replacement. Where technically viable, board-level micro-soldering can repair the original logic board rather than automatically replacing the whole board. Diagnostics are free, the quote is approved before paid work, and free pickup and delivery can be arranged across Kuwait. Repairs are completed at our Hawalli lab with a 30-day warranty on covered work; data preservation is a priority but cannot be guaranteed for every damaged device.', 
@@ -1965,11 +1997,12 @@ export const rawGraphData: RawGraphData = {
       repairLevel: 'chip-level', 
       estimatedTurnaround: '24-48 Hours', 
       pricing: { startingFrom: 25, currency: 'KWD', quoteRequired: true, displayLabel: 'From 25 KWD — free diagnostic first' }, 
-      relatedServiceIds: ['srv-motherboard', 'srv-charging-port', 'srv-battery', 'srv-liquid-damage', 'srv-macbook-screen'],
+      relatedServiceIds: ['srv-motherboard', 'srv-charging-port', 'srv-liquid-damage', 'srv-macbook-screen'],
       relatedProblemIds: ['problem-liquid-spill', 'problem-not-charging', 'problem-no-power', 'problem-black-screen'],
       relatedBrandIds: [],
       relatedResourcePaths: [
         { label: 'BIOS / UEFI Recovery Guide', path: '/guides/bios-uefi-recovery-kuwait' },
+        { label: 'MacBook Battery Replacement Kuwait', path: '/macbook-battery-replacement-kuwait' },
         { label: 'Laptop Battery Warning Signs', path: '/guides/laptop-battery-warning-signs' },
       ],
       coreFeatures: [
@@ -3506,26 +3539,26 @@ export const rawGraphData: RawGraphData = {
       slug: 'battery-replacement-kuwait', 
       entityType: 'Service', 
       isActive: true, 
-      title: 'Laptop & MacBook Battery Replacement Kuwait', primaryKeyword: "laptop battery replacement Kuwait", secondaryKeywords: ["MacBook battery replacement Kuwait","laptop battery not charging repair","laptop battery health diagnosis"], 
+      title: 'Laptop Battery Replacement Kuwait', primaryKeyword: "laptop battery replacement Kuwait", secondaryKeywords: ["Windows laptop battery replacement Kuwait","laptop battery not charging repair","laptop battery health diagnosis","HP laptop battery replacement Kuwait"], 
       iconKey: 'battery', 
-      shortDescription: 'Battery health diagnostics, charging circuit testing, and OEM battery replacement — we confirm the battery is the actual fault before replacing it.',
-      description: 'A battery that drains in under an hour, a laptop that shuts down at "30% remaining," a charge percentage that jumps from 60% to 20% with no warning, or a trackpad that\'s started lifting on one side — these are five different symptoms, and not all of them mean the battery itself is the problem. A battery that reports 0% and won\'t charge at all is sometimes a dead cell, and sometimes a failed charging IC on the motherboard that would leave a brand-new battery just as unresponsive. That\'s why we test the charging circuit and power delivery path before we quote a replacement — we replace batteries only after confirming the battery, not the charging system, is the actual cause. In Kuwait, batteries also fail faster than the manufacturer\'s spec sheet assumes: lithium-ion cells degrade measurably faster at sustained temperatures above 40°C, and a laptop left in a parked car or by a sunlit window for part of the day pushes internal temperatures well past that.',
-      idealCustomer: 'University students, business professionals, remote workers, developers, designers, and gamers — anyone on a Windows laptop or MacBook noticing rapid battery drain, unexpected shutdowns, a battery that only holds charge while plugged in, or visible swelling.',
+      shortDescription: 'Windows laptop battery testing and replacement in Kuwait. We check battery health and the charging path, then confirm exact model compatibility and part availability before quoting.',
+      description: 'A Windows laptop battery that drains quickly, shuts the computer down before reaching 0%, or only works reliably while plugged in can point to battery wear — but a charging adapter, DC jack, USB-C input, internal connector, or motherboard charging circuit can produce similar symptoms. KCROC checks battery condition and charging behaviour before recommending a replacement. We identify the laptop family and exact model or Service Tag, check the battery part number and physical fit, and confirm part availability and the total quote before paid work. For swollen lithium-ion batteries, stop using and charging the device, do not press or puncture the battery, and arrange safe inspection. Repairs are performed at our Hawalli lab, with free pickup and delivery across Kuwait.',
+      idealCustomer: 'Students, business professionals, remote workers, developers, designers, and gamers using Windows laptops who notice rapid battery drain, unexpected shutdowns, unreliable charging, or visible battery swelling.',
       deviceTypes: [
-        'Windows Laptops (all major brands)',
-        'MacBook Air & MacBook Pro (all generations)',
-        '2-in-1 / Convertible Laptops',
-        'Gaming Laptops (high-drain battery systems)'
+        'Windows laptops from Dell, HP, Lenovo, ASUS, Acer, MSI and Microsoft Surface (exact model and part check required)',
+        'Business and convertible Windows laptops',
+        'Gaming laptops with model-specific internal battery assemblies'
       ],
       repairLevel: 'basic', 
-      estimatedTurnaround: 'Same Day', 
+      estimatedTurnaround: 'After model and battery availability confirmation', 
       pricing: { startingFrom: 8, currency: 'KWD', quoteRequired: true, displayLabel: 'Labor from 8 KWD + battery' }, 
-      relatedServiceIds: ['srv-laptop', 'srv-macbook', 'srv-charging-port'],
+      relatedServiceIds: ['srv-laptop', 'srv-charging-port', 'srv-motherboard'],
       relatedProblemIds: ['problem-not-charging', 'problem-no-power', 'problem-slow'],
       relatedBrandIds: ['brand-dell', 'brand-hp', 'brand-lenovo', 'brand-asus', 'brand-acer', 'brand-msi'],
       relatedResourcePaths: [
         { label: 'Laptop Battery Warning Signs', path: '/guides/laptop-battery-warning-signs' },
-        { label: 'Laptop Repair Guide', path: '/laptop-repair-kuwait' },
+        { label: 'Laptop Repair Kuwait', path: '/laptop-repair-kuwait' },
+        { label: 'MacBook Battery Replacement Kuwait', path: '/macbook-battery-replacement-kuwait' },
       ],
       coreFeatures: [
         'Battery Health & Wear Analysis',
@@ -3534,7 +3567,7 @@ export const rawGraphData: RawGraphData = {
         'USB-C Power Verification',
         'OEM Battery Replacement',
         'Premium Compatible Battery Installation',
-        'MacBook, Dell, HP, Lenovo, ASUS, Acer & MSI Battery Replacement',
+        'Dell, HP, Lenovo, ASUS, Acer, MSI & Microsoft Surface Battery Replacement',
         'Swollen Battery Safe Removal & Disposal',
         'BIOS Battery Verification',
         'Battery Calibration',
@@ -3542,7 +3575,7 @@ export const rawGraphData: RawGraphData = {
         'Post-Replacement Stress Testing',
         'Free Pick & Drop'
       ], 
-      brands: ['MacBook', 'Dell', 'HP', 'Lenovo', 'ASUS', 'Acer', 'MSI', 'Microsoft Surface'], 
+      brands: ['Dell', 'HP', 'Lenovo', 'ASUS', 'Acer', 'MSI', 'Microsoft Surface'], 
 
       whyChooseUs: [
         { title: 'Charging Circuit Diagnosis First', description: 'Before replacing anything, we test whether the fault is actually the battery cell or the charging IC/power delivery circuit — replacing a battery doesn\'t fix a bad charging chip, and we\'d rather tell you that upfront than sell you a battery you don\'t need.' },
@@ -3616,10 +3649,10 @@ export const rawGraphData: RawGraphData = {
           description: 'Frequently a thermal-protection cutoff triggering intermittently, or a loose internal connector losing contact under vibration. Both are diagnosable without assuming a battery swap is needed.' 
         },
         {
-          id: 'macbook-battery-service-recommended',
-          title: '"Service Recommended" / "Replace Now" macOS Battery Warning',
+          id: 'windows-battery-health-warning',
+          title: 'Windows Battery Health Warning or Failed Battery Test',
           severity: 'medium',
-          description: 'macOS\'s own battery health indicator flags degraded cells before they cause visible symptoms — we replace the internal battery without affecting the rest of the motherboard.'
+          description: 'A Windows battery report or manufacturer diagnostic may show reduced full-charge capacity or a failed health test. We compare the reading with the laptop model and charging behaviour before recommending a matched battery.'
         },
         {
           id: 'short-runtime-full-charge',
@@ -3636,7 +3669,7 @@ export const rawGraphData: RawGraphData = {
       ], 
 
       process: [
-        { step: 1, title: 'Free Pickup', description: 'We collect your laptop or MacBook from your home or office anywhere in Kuwait, same day where scheduling allows.' },
+        { step: 1, title: 'Free Pickup', description: 'We collect your Windows laptop from your home or office anywhere in Kuwait, subject to pickup scheduling.' },
         { step: 2, title: 'Battery, Circuit & Thermal Diagnostic', description: 'We measure actual battery capacity and cycle count against factory spec, test the charging IC and power delivery circuit, and check thermal behavior under load — to confirm the battery, not the circuit, is the actual fault.' },
         { step: 3, title: 'Confirm the Fault & Quote', description: 'You get a written explanation of what\'s actually wrong and an itemized quote before any work starts — including whether an OEM or premium compatible battery is the right fit for your situation.' },
         { step: 4, title: 'Safe Removal & Replacement', description: 'For swollen cells, removal follows a controlled safety protocol. Connectors, dust, and internal cleanliness are checked while the device is open, then the new battery is fitted.' },
@@ -3658,12 +3691,12 @@ export const rawGraphData: RawGraphData = {
         disclaimer: 'These are representative repair scenarios illustrating common fault categories we service, not records of a specific named customer.',
         items: [
           {
-            id: 'swollen-battery-emergency',
-            title: 'MacBook Air: Swollen Battery Lifting the Trackpad',
-            symptoms: 'The trackpad had become slightly raised on one side and no longer clicked evenly.',
-            diagnosis: 'Visual and physical inspection confirmed battery swelling consistent with age-related cell degradation.',
-            repair: 'The swollen cell was safely removed under controlled conditions and replaced with a new battery matched to the model.',
-            outcome: 'The trackpad returned to its correct, flush position and the device passed a full charge-cycle test.'
+            id: 'swollen-battery-laptop-chassis',
+            title: 'Windows Laptop: Swollen Battery Pressing Against the Chassis',
+            symptoms: 'The laptop base or touchpad area appeared raised or no longer sat flush.',
+            diagnosis: 'The device was treated as a possible swollen-cell case and inspected without pressing or puncturing the battery.',
+            repair: 'The compatible battery was identified by exact model and part number, then replacement was quoted after availability confirmation.',
+            outcome: 'The device was only returned after the agreed safety and charging checks were completed.'
           },
           {
             id: 'charging-ic-vs-battery',
@@ -3725,7 +3758,7 @@ export const rawGraphData: RawGraphData = {
         {
           id: 'faq-how-to-know-battery-failing',
           title: 'How do I know if my battery is actually failing?',
-          answer: 'Watch for runtime noticeably shorter than when the laptop was new, sudden shutdowns at a non-zero percentage, a battery health warning from macOS or Windows, or any visible swelling. Any of these is worth a free diagnostic rather than guessing.'
+          answer: 'Watch for runtime noticeably shorter than when the laptop was new, sudden shutdowns at a non-zero percentage, a battery health warning or battery-capacity report in Windows, or any visible swelling. Any of these is worth a free diagnostic rather than guessing.'
         },
         {
           id: 'faq-diagnose-before-replace',
@@ -3733,9 +3766,9 @@ export const rawGraphData: RawGraphData = {
           answer: 'Always. We measure actual capacity and cycle count against factory spec and test the charging circuit separately, because a battery that tests healthy but still causes symptoms usually means the fault is elsewhere in the power delivery path.'
         },
         {
-          id: 'faq-macbook-battery',
-          title: 'Can you replace MacBook batteries?',
-          answer: 'Yes — MacBook Air and MacBook Pro across all generations, as an internal battery replacement that doesn\'t affect the rest of the motherboard or your data.'
+          id: 'faq-windows-battery-model',
+          title: 'Which details do you need to identify my laptop battery?',
+          answer: 'Send the laptop brand and exact model name or Service Tag. The model family alone is not enough for safe fitment: battery part numbers, connector positions and capacity can vary within the same product family.'
         },
         {
           id: 'faq-charging-not-battery',
@@ -3775,12 +3808,12 @@ export const rawGraphData: RawGraphData = {
           caption: 'A mainstream laptop battery replacement example used during battery-health and power diagnosis.'
         },
         {
-          src: IMAGES.macbook.expandedBattery.src,
-          alt: IMAGES.macbook.expandedBattery.alt,
-          width: IMAGES.macbook.expandedBattery.width,
-          height: IMAGES.macbook.expandedBattery.height,
+          src: IMAGES.upgrades.laptopBottomChassisBatteryRamOpen.src,
+          alt: 'Windows laptop base opened for model-specific battery inspection and replacement',
+          width: IMAGES.upgrades.laptopBottomChassisBatteryRamOpen.width,
+          height: IMAGES.upgrades.laptopBottomChassisBatteryRamOpen.height,
           placement: 'coreFeatures',
-          caption: 'A swollen battery safely removed — swollen cells are handled and disposed of with proper safety precautions.'
+          caption: 'A laptop opened for internal battery and connector inspection before a model-matched replacement.'
         },
         {
           src: IMAGES.laptopHardware.hpBattery2.src,
@@ -3792,8 +3825,8 @@ export const rawGraphData: RawGraphData = {
         }
       ],
       seo: { 
-        title: 'Laptop Battery Replacement Kuwait | Labor from 8 KWD | KCROC', 
-        description: 'Laptop battery-replacement labor from 8 KWD, plus the battery cost. We test battery health and charging faults first, with same-day service, free pickup and a 30-day warranty.', 
+        title: 'Laptop Battery Replacement Kuwait | Labour from 8 KWD + Battery | KCROC', 
+        description: 'Windows laptop battery checks and replacement in Kuwait. Labour starts from 8 KWD plus the model-matched battery price. We test the charging path first, with free Kuwait-wide pickup and a 30-day warranty on covered work.', 
         canonicalUrl: 'https://www.computerrepairkuwait.com/battery-replacement-kuwait', 
         locale: 'en_KW',
         alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/battery-replacement-kuwait', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/battery-replacement-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/battery-replacement-kuwait' },

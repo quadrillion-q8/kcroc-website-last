@@ -14,7 +14,7 @@ const norm = (s) =>
     .replace(/\s+/g, ' ');
 const has = (source, needle) => norm(source).includes(norm(needle));
 
-const [app, graph, seoProjection, locale, pricingPage, sitemap, hero, reviews, footer, header, mobileMenu, stickyMobileCTA, navigationCompiler, rootLayout, nearMe, nearMeAr, locations, hawalli, computerRepair, about, booking, arabicCommercial, serviceAreas, englishPricing, serviceTemplate, brandTemplate, coreRepairPillars] = await Promise.all([
+const [app, graph, seoProjection, locale, pricingPage, sitemap, hero, reviews, footer, header, mobileMenu, stickyMobileCTA, navigationCompiler, rootLayout, nearMe, nearMeAr, locations, hawalli, computerRepair, about, booking, arabicCommercial, serviceAreas, englishPricing, serviceTemplate, brandTemplate, coreRepairPillars, macbookBatteryPage] = await Promise.all([
   read('App.tsx'),
   read('data/graph.ts'),
   read('data/seoGraph.generated.ts'),
@@ -42,6 +42,7 @@ const [app, graph, seoProjection, locale, pricingPage, sitemap, hero, reviews, f
   read('pages/templates/ServiceTemplate.tsx'),
   read('pages/templates/BrandTemplate.tsx'),
   read('components/content/CoreRepairPillars.tsx'),
+  read('pages/MacBookBatteryReplacementPage.tsx'),
 ]);
 
 const laptopGraphStart = graph.indexOf("'srv-laptop': {");
@@ -823,7 +824,7 @@ const arabicBatteryPageEntity = arabicBatteryPageStart >= 0 && arabicBatteryPage
   ? graph.slice(arabicBatteryPageStart, arabicBatteryPageEnd)
   : '';
 const arabicBatteryConfigStart = arabicCommercial.indexOf("  'battery-replacement-kuwait': {");
-const arabicBatteryConfigEnd = arabicCommercial.indexOf("\n  'ssd-ram-upgrade-kuwait': {", arabicBatteryConfigStart + 1);
+const arabicBatteryConfigEnd = arabicCommercial.indexOf("\n  'macbook-battery-replacement-kuwait': {", arabicBatteryConfigStart + 1);
 const arabicBatteryConfig = arabicBatteryConfigStart >= 0 && arabicBatteryConfigEnd > arabicBatteryConfigStart
   ? arabicCommercial.slice(arabicBatteryConfigStart, arabicBatteryConfigEnd)
   : '';
@@ -835,24 +836,27 @@ add('Arabic battery page targets core laptop-battery intent with a transparent l
   seoProjection.includes('"title": "تبديل بطارية اللابتوب في الكويت من 8 د.ك + القطعة | KCROC"'));
 
 add('Arabic battery related-service cards do not link back to the current page',
-  arabicBatteryConfig.includes("serviceIds: ['srv-laptop', 'srv-macbook', 'srv-charging-port', 'srv-motherboard']") &&
+  arabicBatteryConfig.includes("serviceIds: ['srv-laptop', 'srv-charging-port', 'srv-motherboard']") &&
   !arabicBatteryConfig.includes("serviceIds: ['srv-battery'"));
 
 add('Arabic battery WhatsApp intake requests the exact model, symptoms, location, safe photo, and stock confirmation',
-  arabicCommercial.includes('أحتاج فحص أو تبديل بطارية اللابتوب أو MacBook في الكويت') &&
+  arabicCommercial.includes('أحتاج فحص أو تبديل بطارية لابتوب Windows في الكويت') &&
   arabicCommercial.includes('الموديل الكامل أو Service Tag / رقم Axxxx') &&
   arabicCommercial.includes('صورة خارجية للموديل أو رسالة التحذير إذا كان ذلك آمنًا') &&
   arabicCommercial.includes('من دون فتح الجهاز أو الضغط على البطارية') &&
   arabicCommercial.includes('توافق البطارية وتوفرها'));
 
 add('Arabic battery page presents dedicated WhatsApp and free-pickup actions in the hero',
-  arabicCommercial.includes('أرسل موديل الجهاز وأعراض البطارية عبر واتساب') &&
+  arabicCommercial.includes('أرسل موديل اللابتوب وأعراض البطارية عبر واتساب') &&
+  arabicCommercial.includes('أرسل موديل MacBook وأعراض البطارية عبر واتساب') &&
   arabicCommercial.includes('احجز استلامًا مجانيًا من منطقتك'));
 
 add('Arabic battery Service schema uses its first-party photos and the Hawalli workshop coordinates',
+  arabicCommercial.includes('IMAGES.upgrades.laptopBottomChassisBatteryRamOpen.src') &&
+  arabicCommercial.includes('IMAGES.laptopHardware.hpBattery2.src') &&
   arabicCommercial.includes('IMAGES.macbook.service.src') &&
   arabicCommercial.includes('IMAGES.macbook.swollenBattery1.src') &&
-  arabicCommercial.includes('IMAGES.upgrades.laptopBottomChassisBatteryRamOpen.src') &&
+  arabicCommercial.includes('IMAGES.macbook.macbookProBatteryRemovalRepair.src') &&
   arabicCommercial.includes('latitude: business.coords?.lat') &&
   arabicCommercial.includes('longitude: business.coords?.lng'));
 
@@ -867,6 +871,50 @@ add('Arabic battery FAQs remain generated from visible copy and qualify timing a
   arabicCommercial.includes('لا نعد بموعد قبل التأكد من التوافق والتوفر') &&
   arabicCommercial.includes('الإصلاح المكتمل مشمول بضمان 30 يومًا') &&
   arabicCommercial.includes('mainEntity: cfg.faq.map((item)'));
+
+
+const macbookBatteryEnglishStart = graph.indexOf("    'page-macbook-battery-replacement': {");
+const macbookBatteryArabicStart = graph.indexOf("    'page-ar-macbook-battery-replacement': {");
+const macbookBatteryEnglishEnd = graph.indexOf("} as WebPageEntity", macbookBatteryEnglishStart);
+const macbookBatteryArabicEnd = graph.indexOf("} as WebPageEntity", macbookBatteryArabicStart);
+const macbookBatteryEnglishEntity = macbookBatteryEnglishStart >= 0 && macbookBatteryEnglishEnd > macbookBatteryEnglishStart
+  ? graph.slice(macbookBatteryEnglishStart, macbookBatteryEnglishEnd)
+  : '';
+const macbookBatteryArabicEntity = macbookBatteryArabicStart >= 0 && macbookBatteryArabicEnd > macbookBatteryArabicStart
+  ? graph.slice(macbookBatteryArabicStart, macbookBatteryArabicEnd)
+  : '';
+const macbookBatteryArabicConfigStart = arabicCommercial.indexOf("  'macbook-battery-replacement-kuwait': {");
+const macbookBatteryArabicConfigEnd = arabicCommercial.indexOf("\n  'ssd-ram-upgrade-kuwait': {", macbookBatteryArabicConfigStart + 1);
+const macbookBatteryArabicConfig = macbookBatteryArabicConfigStart >= 0 && macbookBatteryArabicConfigEnd > macbookBatteryArabicConfigStart
+  ? arabicCommercial.slice(macbookBatteryArabicConfigStart, macbookBatteryArabicConfigEnd)
+  : '';
+
+add('English and Arabic MacBook battery pages have distinct canonical URLs and reciprocal language alternates',
+  macbookBatteryEnglishEntity.includes("canonicalUrl: 'https://www.computerrepairkuwait.com/macbook-battery-replacement-kuwait'") &&
+  macbookBatteryEnglishEntity.includes("'ar-KW': 'https://www.computerrepairkuwait.com/ar/macbook-battery-replacement-kuwait'") &&
+  macbookBatteryArabicEntity.includes("canonicalUrl: 'https://www.computerrepairkuwait.com/ar/macbook-battery-replacement-kuwait'") &&
+  macbookBatteryArabicEntity.includes("'en-KW': 'https://www.computerrepairkuwait.com/macbook-battery-replacement-kuwait'"));
+
+add('English MacBook battery route uses a dedicated, schema-enabled landing page',
+  app.includes("path: 'macbook-battery-replacement-kuwait'") &&
+  macbookBatteryPage.includes("page-macbook-battery-replacement") &&
+  macbookBatteryPage.includes("'@type': 'Service'") &&
+  macbookBatteryPage.includes("'@type': 'FAQPage'") &&
+  macbookBatteryPage.includes('A-number') &&
+  macbookBatteryPage.includes('USB-C or MagSafe'));
+
+add('Arabic MacBook battery page has ten FAQs, its own intake prompt and a model-specific Service schema',
+  (macbookBatteryArabicConfig.match(/\{ q: '/g) || []).length === 10 &&
+  macbookBatteryArabicConfig.includes('تبديل بطارية MacBook في الكويت') &&
+  arabicCommercial.includes('macbookBatteryWhatsappMessage') &&
+  arabicCommercial.includes('const macbookBatteryServiceSchema'));
+
+add('MacBook battery hub links point to the dedicated battery pages in both languages',
+  graph.includes("{ label: 'MacBook Battery Replacement Kuwait', path: '/macbook-battery-replacement-kuwait' }") &&
+  arabicCommercial.includes("{ label: 'تبديل بطارية MacBook', path: '/ar/macbook-battery-replacement-kuwait' }"));
+
+add('Battery intent split does not create a 16th Services catalogue item',
+  !graph.includes("id: 'srv-macbook-battery'"));
 
 for (const check of checks) console.log(`${check.pass ? '✅' : '❌'} ${check.name}${!check.pass && check.detail ? ` — ${check.detail}` : ''}`);
 const failed = checks.filter((check) => !check.pass);
