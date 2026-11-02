@@ -990,10 +990,60 @@ add('English MacBook swollen-battery CTA prioritises safe handling over ordinary
   macbookBatteryPage.includes('without prior instructions'));
 
 add('Arabic MacBook battery page has ten FAQs, its own intake prompt and a model-specific Service schema',
-  (macbookBatteryArabicConfig.match(/\{ q: '/g) || []).length === 10 &&
+  (macbookBatteryArabicConfig.match(/\{ q: '/g) || []).length === 12 &&
   macbookBatteryArabicConfig.includes('تبديل بطارية MacBook في الكويت') &&
   arabicCommercial.includes('macbookBatteryWhatsappMessage') &&
   arabicCommercial.includes('const macbookBatteryServiceSchema'));
+
+add('Arabic MacBook battery page includes a crawlable A-number model guide and transparent installed-price framing',
+  ['A1466', 'A1502', 'A1989', 'A2141', 'A2337', 'A2338', 'A2442', 'A2485', 'A2681', 'A2941', 'A3113', 'A3114'].every((model) => arabicCommercial.includes(model)) &&
+  arabicCommercial.includes('macbook-battery-model-guide') &&
+  arabicCommercial.includes('السعر الشامل للبطارية والتركيب') &&
+  arabicCommercial.includes('أجرة التركيب تبدأ من 8 د.ك') &&
+  arabicCommercial.includes('ليست السعر النهائي'));
+
+add('Arabic MacBook battery page includes six diagnostic steps and model-dependent board-level charging terms',
+  ['تحديد الموديل والبطارية', 'قراءة حالة البطارية', 'فحص الشاحن والمنفذ', 'قياس دائرة الشحن والمذربورد', 'فك آمن وتركيب مطابق', 'فحص بعد التركيب'].every((step) => arabicCommercial.includes(step)) &&
+  ['آيسي الشحن', 'SMBus', 'CD3215', 'CD3217', 'ISL9239', 'ISL9240', 'PPBUS_G3H'].every((term) => arabicCommercial.includes(term)) &&
+  arabicCommercial.includes('ليست قائمة تنطبق على كل MacBook'));
+
+add('Arabic MacBook battery page has four model and symptom specific prefilled WhatsApp quote chips',
+  arabicCommercial.includes('const macbookBatteryQuickQuotes = [') &&
+  arabicCommercial.includes('بطارية MacBook Air · M1 / M2 / M3') &&
+  arabicCommercial.includes('بطارية MacBook Pro · 13 / 14 / 16 إنش') &&
+  arabicCommercial.includes('بطارية منتفخة · التراك باد مرتفع') &&
+  arabicCommercial.includes('متصل بالشاحن ولا يشحن · فحص المذربورد') &&
+  arabicCommercial.includes('href: \\'https://wa.me/\\' + business.telephone') &&
+  arabicCommercial.includes('macbookBatteryQuickQuotes.map((item)'));
+
+add('Arabic MacBook swollen-battery section prioritises safety and does not promise emergency courier collection',
+  arabicCommercial.includes('macbook-swollen-battery') &&
+  arabicCommercial.includes('أوقف الاستخدام والشحن') &&
+  arabicCommercial.includes('تعليمات التعامل والترتيب الآمن للاستلام') &&
+  arabicCommercial.includes('لا تضع جهازًا ببطارية منتفخة في ناقل أو شحنة عادية'));
+
+add('Arabic MacBook battery page offers optional model-compatible cooling inspection without unverified pricing or health claims',
+  arabicCommercial.includes('فحص التبريد أثناء فتح الجهاز') &&
+  arabicCommercial.includes('موديلات MacBook المزودة بمراوح') &&
+  arabicCommercial.includes('ليست مطلوبة لكل تبديل بطارية') &&
+  arabicCommercial.includes('تُسعّر منفصلًا'));
+
+add('Arabic MacBook FAQ answers are included in visible details markup and FAQPage schema',
+  (macbookBatteryArabicConfig.match(/\\{ q: '/g) || []).length === 12 &&
+  arabicCommercial.includes('mainEntity: cfg.faq.map((item)') &&
+  arabicCommercial.includes('<details key={item.q}') &&
+  arabicCommercial.includes('{item.a}'));
+
+add('Arabic general battery page targets Windows and multi-brand laptop intent with a prominent dedicated MacBook link',
+  graph.includes("title: 'تبديل بطارية لابتوب Windows في الكويت | HP وDell وLenovo | KCROC'") &&
+  arabicCommercial.includes("h1: 'تبديل بطارية اللابتوب في الكويت'") &&
+  arabicCommercial.includes('تبديل بطارية MacBook Air وMacBook Pro في الكويت — السعر مع التركيب') &&
+  arabicCommercial.includes("to=\"/ar/macbook-battery-replacement-kuwait\""));
+
+add('Arabic MacBook battery metadata targets installed pricing and A-number intent with Service and FAQ schemas',
+  macbookBatteryArabicEntity.includes("title: 'تبديل بطارية MacBook في الكويت | السعر مع التركيب وموديلات A | KCROC'") &&
+  macbookBatteryArabicEntity.includes("schemaTypes: ['WebPage', 'BreadcrumbList', 'Service', 'FAQPage']") &&
+  macbookBatteryArabicEntity.includes("lastModified: '2026-11-03T00:00:00+03:00'"));
 
 add('MacBook battery hub links point to the dedicated battery pages in both languages',
   graph.includes("{ label: 'MacBook Battery Replacement Kuwait', path: '/macbook-battery-replacement-kuwait' }") &&

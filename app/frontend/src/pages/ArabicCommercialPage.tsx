@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, Navigate, useParams } from 'react-router-dom';
-import { ArrowLeft, BadgeCheck, CheckCircle2, CircleCheck, ClipboardCheck, Cpu, Gauge, MapPin, MessageCircle, Microscope, MonitorCog, Phone, Power, ShieldCheck, Star, Thermometer, Truck, Wrench } from 'lucide-react';
+import { ArrowLeft, BadgeCheck, BatteryCharging, CheckCircle2, CircleCheck, ClipboardCheck, Cpu, Gauge, MapPin, MessageCircle, Microscope, MonitorCog, Phone, Power, ShieldCheck, Star, Thermometer, Truck, Wrench } from 'lucide-react';
 import { KCROC_GRAPH } from '../data/graph';
 import { SEOEngine } from '../core/components/SEOEngine';
 import SchemaMarkup from '../components/seo/SchemaMarkup';
@@ -521,43 +521,46 @@ const CONFIG: Record<string, {
     serviceIds: ['srv-laptop', 'srv-charging-port', 'srv-motherboard']
   },
   'macbook-battery-replacement-kuwait': {
-    h1: 'تبديل بطارية MacBook في الكويت — ماك بوك إير وبرو',
-    eyebrow: 'نفحص صحة البطارية والشحن ونطابق القطعة مع موديل MacBook قبل طلبها',
-    intro: 'بطارية MacBook Air أو MacBook Pro تفضى بسرعة؟ تظهر رسالة Service Recommended أو تنطفئ البطارية قبل نهاية الشحن؟ في KCROC نفحص حالة البطارية وعدد دورات الشحن ونراجع الشحن عبر USB-C أو MagSafe حسب الجيل. نحتاج اسم الموديل وسنة الإصدار أو رقم Axxxx حتى نطابق البطارية المناسبة؛ اسم MacBook Air أو Pro وحده لا يكفي لتحديد القطعة. نؤكد التوافق والتوفر وخيارات القطع والسعر النهائي والوقت المتوقع قبل أي عمل مدفوع. الإصلاح في مختبرنا بحولي مع استلام وتوصيل مجاني من مناطق الكويت.',
+    h1: 'تبديل بطارية MacBook في الكويت — السعر مع التركيب وفحص الشحن',
+    eyebrow: 'MacBook Air وMacBook Pro • فحص في مختبر حولي • استلام مجاني من مناطق الكويت',
+    intro: 'بطارية MacBook Air أو MacBook Pro تخلص بسرعة؟ تظهر رسالة Service Recommended، أو الجهاز يطفي فجأة، أو يظل متصلًا بالشاحن ولا ترتفع النسبة؟ في KCROC نفحص صحة البطارية وعدد دورات الشحن ونراجع مسار USB-C أو MagSafe ودائرة الشحن حسب تصميم الموديل قبل طلب أي بطارية. نطابق رقم A-number ورقم القطعة، ونوضح فئة البطارية المتاحة وأجرة التركيب والسعر الإجمالي والضمان قبل موافقتك. الفحص والإصلاح في مختبرنا بحولي، مع ترتيب استلام وتوصيل مجاني من مناطق الكويت.',
     bullets: [
       'فحص Battery Health وعدد دورات الشحن ورسالة Service Recommended في macOS',
-      'مطابقة موديل MacBook Air أو MacBook Pro ورقم Axxxx والجيل قبل طلب البطارية',
-      'فحص مسار USB-C أو MagSafe والشاحن قبل الحكم أن البطارية هي السبب',
-      'التعامل الآمن مع انتفاخ البطارية أو ارتفاع التراك باد أو الهيكل',
-      'أجرة العمل تبدأ من 8 د.ك + سعر البطارية حسب الموديل والتوفر',
-      'استلام وتوصيل مجاني وضمان 30 يومًا على الإصلاحات المشمولة'
+      'مطابقة MacBook Air أو MacBook Pro ورقم A-number والجيل ورقم القطعة',
+      'فحص الشاحن والكابل وUSB-C أو MagSafe ودائرة الشحن قبل الحكم أن البطارية تالفة',
+      'توضيح فئة البطارية المتاحة والضمان والسعر الإجمالي شامل القطعة والتركيب قبل العمل',
+      'أجرة التركيب تبدأ من 8 د.ك + سعر البطارية؛ أجرة العمل ليست السعر الشامل',
+      'استلام وتوصيل مجاني وضمان 30 يومًا على الإصلاحات المشمولة وفق شروط الخدمة'
     ],
     faq: [
-      { q: 'كم سعر تبديل بطارية MacBook في الكويت؟', a: 'أجرة العمل تبدأ من 8 د.ك، ويُحسب سعر البطارية منفصلًا حسب موديل MacBook ورقم القطعة وتوفرها. نؤكد السعر النهائي بعد التحقق من التوافق وخيار القطعة وقبل بدء أي عمل مدفوع.' },
-      { q: 'هل تبدلون بطارية MacBook Air وMacBook Pro بمعالجات Intel وApple Silicon؟', a: 'نستقبل أجهزة MacBook Air وPro للفحص من أجيال Intel وApple Silicon. لا نفترض توافق بطارية واحدة مع كل الأجيال؛ نحتاج رقم الموديل أو A-number وسنة الإصدار لتأكيد القطعة والتوفر.' },
-      { q: 'ماذا تعني رسالة Service Recommended أو انخفاض Battery Health؟', a: 'تشير الرسالة أو قراءة صحة البطارية إلى تراجع قد يؤثر في مدة التشغيل، لكنها لا تحدد وحدها سبب كل مشكلة شحن. نراجع حالة البطارية وعدد الدورات وأعراض الجهاز قبل اعتماد التبديل.' },
-      { q: 'كيف أعرف رقم موديل MacBook المطلوب؟', a: 'أرسل اسم الجهاز وسنة الإصدار إن عرفتها، أو رقم الطراز الذي يبدأ بحرف A مثل Axxxx. يمكنك كذلك إرسال لقطة من About This Mac بعد إخفاء الرقم التسلسلي وأي معلومات شخصية؛ لا ترسل كلمة مرور الجهاز.' },
-      { q: 'هل مشكلة عدم الشحن دائمًا من البطارية؟', a: 'لا. قد تكون من محول الطاقة أو الكابل أو منفذ USB-C أو MagSafe أو دائرة الشحن على اللوحة. نفحص مسار الشحن وفق تصميم الموديل قبل اقتراح تبديل البطارية.' },
-      { q: 'شنو أسوي إذا بطارية MacBook منتفخة أو التراك باد ارتفع؟', a: 'أوقف استخدام الجهاز وشحنه، وافصل المحول إذا كان ذلك آمنًا. لا تضغط على منطقة الانتفاخ أو تحاول فتح الجهاز أو نزع البطارية بنفسك. رتب فحصًا آمنًا في المختبر.' },
-      { q: 'هل يؤثر تبديل البطارية على ملفاتي؟', a: 'تبديل البطارية لا يستهدف وحدة التخزين أو الملفات، لكن ننصح بوجود نسخة احتياطية متى أمكن قبل أي صيانة. لا نعد بضمان مطلق لحفظ البيانات في كل حالة، خصوصًا إذا وُجد عطل آخر في اللوحة.' },
-      { q: 'كم يستغرق تبديل بطارية MacBook؟', a: 'يعتمد الوقت على الجيل ورقم الموديل وطريقة التركيب وتوفر القطعة. نؤكد المدة بعد مطابقة البطارية وتوفرها، ولا نعد بموعد قبل ذلك.' },
-      { q: 'هل يوجد ضمان بعد تبديل بطارية MacBook؟', a: 'الإصلاح المكتمل مشمول بضمان 30 يومًا ضمن نطاق القطعة والعمل المنفذ ووفق شروط الخدمة. نوضح حدود التغطية قبل الموافقة على الإصلاح.' },
-      { q: 'هل يمكنكم استلام MacBook من جميع مناطق الكويت؟', a: 'نعم، نرتب استلامًا وتوصيلًا مجانيًا من مناطق الكويت بحسب الموعد. يتم الفحص والإصلاح في مختبر KCROC بحولي، مجمع الملا، السرداب، محل 19، شارع ابن خلدون.' }
+      { q: 'كم سعر تبديل بطارية MacBook في الكويت شامل التركيب؟', a: 'نرسل لك السعر الإجمالي شامل البطارية وأجرة التركيب بعد مطابقة موديل MacBook ورقم القطعة والتحقق من توفرها وفئة البطارية. أجرة التركيب تبدأ من 8 د.ك، لكنها لا تشمل سعر البطارية وليست السعر النهائي. نوضح المبلغ الكامل والضمان قبل أي عمل مدفوع.' },
+      { q: 'ما موديلات MacBook وأرقام A-number التي تفحصونها؟', a: 'تشمل الأمثلة MacBook Air A1466 وA1932 وA2179 وA2337 وA2681 وA2941 وA3113 وA3114، وMacBook Pro A1502 وA1989 وA1990 وA2141 وA2159 وA2251 وA2289 وA2338 وA2442 وA2485 وA2779 وA2780 وA2918 وA2991. القائمة ليست حصرًا؛ نتحقق من سنة الجهاز ورقم الموديل ورقم البطارية قبل تأكيد التوافق.' },
+      { q: 'هل تبدلون بطارية MacBook Air M1 أو M2 أو M3 وMacBook Pro؟', a: 'نعم، نفحص أجيال MacBook Air وMacBook Pro بمعالجات Intel وApple silicon بحسب الموديل وتوفر البطارية المناسبة. اسم Air أو Pro وحده لا يكفي؛ أرسل رقم A-number أو اختر أنك غير متأكد لنساعدك في تحديده.' },
+      { q: 'ماذا تعني رسالة Service Recommended أو انخفاض Battery Health؟', a: 'تعني أن macOS رصد أن البطارية لم تعد تعمل بمستواها السابق أو تحتاج إلى مراجعة. نقرأ حالة البطارية وعدد الدورات حيث تتوفر، ونقارنها بمدة التشغيل وسلوك الشحن قبل اعتماد التبديل.' },
+      { q: 'الماك بوك متصل بالشاحن ولا يشحن أو واقف على 0%، هل المشكلة من البطارية؟', a: 'ليس بالضرورة. قد يكون السبب من الشاحن أو الكابل أو منفذ USB-C أو MagSafe أو دائرة الشحن أو اتصال بيانات البطارية (SMBus) في الموديلات التي تستخدم هذا المسار. نفحص المسار المناسب للوحة قبل اقتراح شراء بطارية جديدة.' },
+      { q: 'هل تفحصون آيسي الشحن والمذربورد قبل تبديل البطارية؟', a: 'نعم، عندما تشير الأعراض والقياسات إلى عطل في اللوحة، نفحص مراحل الشحن والطاقة حسب تصميمها. قد تشمل الأمثلة متحكمات USB-C PD مثل CD3215 أو CD3217، ومتحكمات شحن مثل ISL9239 أو ISL9240، وخطوط الطاقة أو بيانات البطارية. هذه أمثلة تختلف حسب رقم اللوحة وليست قائمة تنطبق على كل MacBook.' },
+      { q: 'هل تتوفر بطارية Standard أو Premium؟ وهل هي أصلية؟', a: 'نوضح فئة القطعة المتاحة ومعلومات المورد والتوافق وشروط الضمان قبل الطلب. قد تتوفر خيارات مختلفة حسب الموديل والمخزون. لا نصف البطارية بأنها Apple Genuine أو Zero-Cycle إلا إذا كانت مستندات القطعة تثبت ذلك؛ ولا نعد بضمان أطول من الشروط المعتمدة.' },
+      { q: 'هل تتم معايرة البطارية بعد التركيب؟', a: 'بعد التركيب نراجع ظهور البطارية في macOS وسلوك النسبة والاستجابة للشحن حيث يدعم الموديل ذلك. نستخدم إجراء الفحص المناسب للبطارية والجهاز، ولا نفرض تفريغًا كاملًا إلى 0% كخطوة روتينية غير لازمة.' },
+      { q: 'هل يمكن تنظيف المراوح أو فحص التبريد أثناء تبديل البطارية؟', a: 'يمكن فحص نظام التبريد أثناء وجود الجهاز في المختبر. تنظيف المراوح والمشتت أو خدمة المادة الحرارية قد تكون مناسبة لبعض موديلات MacBook المزودة بمراوح، لكنها ليست ضرورية لكل تبديل بطارية ولا تنطبق على كل تصميم. نوضح السبب والسعر بشكل منفصل قبل أي عمل إضافي.' },
+      { q: 'شنو أسوي إذا بطارية MacBook منتفخة أو التراك باد مرتفع؟', a: 'أوقف استخدام الجهاز وشحنه، وافصل الشاحن إذا كان ذلك آمنًا. لا تضغط على التراك باد أو الهيكل، ولا تحاول فتح الجهاز أو نزع البطارية. تواصل معنا أولًا لتعليمات التعامل والترتيب الآمن للاستلام؛ لا ترسل الجهاز مع ناقل عادي قبل الاتفاق على طريقة آمنة.' },
+      { q: 'كم يستغرق تبديل بطارية MacBook؟', a: 'تعتمد المدة على رقم الموديل وطريقة تثبيت البطارية وتوفر القطعة وحالة الجهاز. نؤكد الوقت المتوقع بعد التحقق من التوافق والمخزون؛ لا نعد بإنجاز في نفس اليوم قبل هذه الخطوات.' },
+      { q: 'هل يوجد ضمان واستلام مجاني بعد تبديل بطارية MacBook؟', a: 'الإصلاحات المكتملة مشمولة بضمان 30 يومًا ضمن نطاق القطعة والعمل المنفذ ووفق شروط الخدمة. يمكن ترتيب استلام وتوصيل مجاني من مناطق الكويت، ويتم الفحص والإصلاح في مختبر KCROC بحولي. نوضح تفاصيل الضمان وموعد الاستلام قبل الموافقة.' }
     ],
     englishPath: '/macbook-battery-replacement-kuwait',
     arabicLinks: [
-      { label: 'تصليح MacBook Air وPro', path: '/ar/macbook-repair-kuwait' },
+      { label: 'تصليح MacBook Air وMacBook Pro', path: '/ar/macbook-repair-kuwait' },
       { label: 'تبديل شاشة MacBook', path: '/ar/macbook-screen-replacement-kuwait' },
-      { label: 'تبديل بطارية اللابتوب', path: '/ar/battery-replacement-kuwait' },
-      { label: 'إصلاح منفذ الشحن ودائرة الطاقة', path: '/ar/laptop-charging-port-repair-kuwait' },
+      { label: 'تبديل بطارية اللابتوب Windows', path: '/ar/battery-replacement-kuwait' },
+      { label: 'فحص منفذ الشحن ودائرة الطاقة', path: '/ar/laptop-charging-port-repair-kuwait' },
+      { label: 'تصليح مذربورد MacBook', path: '/ar/motherboard-repair-kuwait' },
       { label: 'أسعار التصليح في الكويت', path: '/ar/pricing' }
     ],
     serviceIds: ['srv-macbook', 'srv-macbook-screen', 'srv-charging-port', 'srv-motherboard'],
     serviceCardCopy: {
-      'srv-macbook': { title: 'تصليح MacBook Air وPro', description: 'تشخيص أعطال الطاقة والشحن واللوحة والشاشة حسب موديل MacBook والجيل.' },
+      'srv-macbook': { title: 'تصليح MacBook Air وPro', description: 'تشخيص أعطال الطاقة والشحن والبطارية والشاشة حسب الموديل والجيل.' },
       'srv-macbook-screen': { title: 'تبديل شاشة MacBook', description: 'فحص الشاشة والكابل ومطابقة التجميعة مع الموديل قبل طلب القطعة.' },
       'srv-charging-port': { title: 'فحص منفذ الشحن', description: 'فحص USB-C أو MagSafe ومسار الشحن قبل تحديد سبب عدم الشحن.' },
-      'srv-motherboard': { title: 'فحص لوحة MacBook ودوائر الطاقة', description: 'تشخيص دائرة الطاقة على اللوحة عندما تشير القياسات إلى عطل فيها.' }
+      'srv-motherboard': { title: 'فحص مذربورد MacBook ودوائر الطاقة', description: 'تشخيص دوائر الشحن والطاقة على مذربورد MacBook عندما تشير القياسات إلى عطل فيها.' }
     }
   },
 
@@ -2016,9 +2019,30 @@ export default function ArabicCommercialPage() {
         : slug === 'computer-repair-kuwait-city'
             ? 'السلام عليكم KCROC، أحتاج تصليح كمبيوتر أو لابتوب أو ماك بوك (MacBook) أو كمبيوتر قيمنق من مدينة الكويت أو محافظة العاصمة. نوع الجهاز والموديل: ____. المشكلة: ____. منطقة الاستلام: ____. الاستلام من: مكتب / منزل. فضلاً نسقوا الاستلام والتوصيل المجاني، وأكدوا نتيجة التشخيص والسعر قبل الإصلاح.'
             : `السلام عليكم KCROC، أحتاج ${cfg.h1}. أريد أعرف طريقة الاستلام والتشخيص.`;
-  const macbookBatteryWhatsappMessage = 'السلام عليكم KCROC، أحتاج فحص أو تبديل بطارية MacBook في الكويت. النوع: MacBook Air / MacBook Pro: ____. سنة الإصدار أو الشريحة Intel / M1 / M2 / M3 / M4 / M5: ____. رقم الموديل Axxxx إن توفر: ____. الأعراض: تفريغ سريع / Service Recommended / لا يشحن عبر USB-C أو MagSafe / انتفاخ أو ارتفاع التراك باد / أخرى: ____. المنطقة: ____. أستطيع إرسال صورة خارجية أو لقطة من About This Mac بعد إخفاء الرقم التسلسلي والمعلومات الشخصية. لن أفتح الجهاز أو أضغط على البطارية المنتفخة. فضلاً أكدوا توافق القطعة وتوفرها وخيار البطارية وأجرة العمل والسعر النهائي والمدة قبل أي عمل مدفوع.';
+  const macbookBatteryWhatsappMessage = 'السلام عليكم KCROC، أحتاج عرض سعر شامل لتشخيص أو تبديل بطارية MacBook. النوع: Air / Pro: ____. السنة أو الشريحة: Intel / M1 / M2 / M3 / M4 / غير متأكد: ____. رقم A-number إن توفر: ____. الأعراض: Service Recommended / البطارية تفضى بسرعة / متصل بالشاحن ولا يشحن أو واقف على 0% / انتفاخ أو ارتفاع التراك باد / أخرى: ____. المنطقة: ____. لا أحتاج إلى إرسال لقطة شاشة أو رقم تسلسلي لبدء التواصل. فضلاً ساعدوني في تحديد الموديل، وأكدوا فحص البطارية ودائرة الشحن وفئة القطعة والضمان والسعر الكامل شامل البطارية والتركيب والمدة قبل أي عمل مدفوع. إذا كان هناك انتفاخ، أرجو إرسال تعليمات التعامل والاستلام الآمن أولاً.';
   const macbookWhatsappMessage = 'السلام عليكم KCROC، أحتاج فحص وتصليح ماك بوك (MacBook) في الكويت. النوع: ماك بوك اير / ماك بوك برو (MacBook Air / Pro). الشريحة إن عُرفت: M1 / M2 / M3 / M4 / M5 / Intel: ____. رقم الموديل Axxxx أو رقم الموديل الظاهر في النظام: ____. الأعراض: لا يشتغل / لا يشحن USB‑C تايب سي أو MagSafe / شاشة سوداء / بطارية / كيبورد أو تراك باد / انسكاب سائل / ملفات مهمة. هل حصل سقوط أو انسكاب؟ ____. منطقتي بالكويت: ____. أستطيع إرسال صورة للموديل والعطل. إذا كانت البيانات مهمة سأوضح ذلك قبل الفحص. فضلاً أكدوا خيارات التشخيص والسعر النهائي والمدة المتوقعة قبل أي عمل مدفوع.';
-  const wa = `https://wa.me/${business.telephone}?text=${encodeURIComponent(slug === 'macbook-battery-replacement-kuwait' ? macbookBatteryWhatsappMessage : slug === 'macbook-repair-kuwait' ? macbookWhatsappMessage : whatsappMessage)}`;
+  const macbookBatteryQuickQuotes = [
+    {
+      label: 'بطارية MacBook Air · M1 / M2 / M3',
+      message: 'مرحباً KCROC، أرغب بمعرفة السعر الإجمالي لتبديل بطارية MacBook Air M1 / M2 / M3 شامل القطعة والتركيب. رقم الموديل إن توفر: ____. منطقتي: ____. أرجو تأكيد التوافق وفئة البطارية والضمان قبل الطلب.'
+    },
+    {
+      label: 'بطارية MacBook Pro · 13 / 14 / 16 إنش',
+      message: 'مرحباً KCROC، أرغب بمعرفة السعر الإجمالي لتبديل بطارية MacBook Pro 13 / 14 / 16 إنش شامل القطعة والتركيب. السنة أو رقم A-number إن توفر: ____. منطقتي: ____. أرجو تأكيد التوافق وفئة البطارية والضمان قبل الطلب.'
+    },
+    {
+      label: 'بطارية منتفخة · التراك باد مرتفع',
+      message: 'مرحباً KCROC، بطارية MacBook عندي منتفخة أو التراك باد مرتفع. أوقفت الاستخدام والشحن ولن أضغط على الجهاز أو أفتحه. منطقتي: ____. أرجو إرسال تعليمات التعامل والترتيب الآمن للاستلام قبل نقل الجهاز.'
+    },
+    {
+      label: 'متصل بالشاحن ولا يشحن · فحص المذربورد',
+      message: 'مرحباً KCROC، جهاز MacBook متصل بالشاحن لكنه لا يشحن أو النسبة واقفة على 0%. الموديل أو A-number إن توفر: ____. أحتاج فحص البطارية والشاحن وUSB-C / MagSafe ودائرة الشحن وخط بيانات البطارية حسب الموديل. منطقتي: ____. أرجو توضيح التشخيص والسعر قبل الإصلاح.'
+    }
+  ].map((item) => ({
+    ...item,
+    href: 'https://wa.me/' + business.telephone + '?text=' + encodeURIComponent(item.message)
+  }));
+  const wa = 'https://wa.me/' + business.telephone + '?text=' + encodeURIComponent(slug === 'macbook-battery-replacement-kuwait' ? macbookBatteryWhatsappMessage : slug === 'macbook-repair-kuwait' ? macbookWhatsappMessage : whatsappMessage);
 
   if (slug === 'computer-repair-kuwait') {
     return <ArabicComputerRepairPage page={page as ArabicComputerPage} business={business} wa={wa} />;
@@ -2868,6 +2892,24 @@ export default function ArabicCommercialPage() {
                     <Truck className="h-5 w-5" aria-hidden="true" /> احجز استلامًا مجانيًا من منطقتك
                   </Link>
                 </div>
+              )}
+              {slug === 'macbook-battery-replacement-kuwait' && (
+                <div className="mt-5">
+                  <p className="mb-3 text-sm font-bold text-slate-300">اختر نوع الاستفسار لإرسال رسالة عربية جاهزة عبر واتساب:</p>
+                  <div className="flex flex-wrap gap-2">
+                    {macbookBatteryQuickQuotes.map((item) => (
+                      <a key={item.label} href={item.href} target="_blank" rel="noreferrer" className="rounded-full border border-cyan-500/30 bg-slate-950/60 px-4 py-2.5 text-sm font-semibold text-cyan-200 transition hover:border-cyan-300 hover:bg-cyan-500/10">
+                        {item.label}
+                      </a>
+                    ))}
+                  </div>
+                  <p className="mt-3 text-xs leading-6 text-slate-500">تفتح الرسالة وفيها تفاصيل الموديل أو العَرَض؛ يمكنك إضافة منطقتك وإرسالها بعد مراجعتها. لا تحتاج إلى لقطة شاشة أو الرقم التسلسلي لبدء التواصل.</p>
+                </div>
+              )}
+              {slug === 'battery-replacement-kuwait' && (
+                <Link to="/ar/macbook-battery-replacement-kuwait" className="mt-5 inline-flex items-center rounded-xl border border-cyan-500/25 bg-cyan-500/5 px-4 py-3 text-sm font-bold text-cyan-200 hover:border-cyan-300/50">
+                  تبديل بطارية MacBook Air وMacBook Pro في الكويت — السعر مع التركيب
+                </Link>
               )}
               {slug === 'gaming-laptop-cleaning-kuwait' && (
                 <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
@@ -4183,6 +4225,137 @@ export default function ArabicCommercialPage() {
               <p className="mt-4 text-sm leading-7 text-slate-400">أرسل رقم الموديل أو Service Tag إن توفر. لا تفتح الجهاز للبحث عن رقم البطارية، ولا تلمس بطارية منتفخة.</p>
             </div>
           </section>
+        )}
+
+        {slug === 'macbook-battery-replacement-kuwait' && (
+          <>
+            <section id="macbook-battery-model-guide" className="mt-12 rounded-3xl border border-slate-800 bg-slate-900/45 p-6 sm:p-8" aria-labelledby="macbook-models-heading">
+              <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">دليل الموديلات والأسعار</p>
+              <h2 id="macbook-models-heading" className="mt-2 text-2xl font-black text-white sm:text-3xl">أرقام موديلات MacBook الشائعة لتحديد سعر البطارية</h2>
+              <p className="mt-4 max-w-4xl leading-8 text-slate-300">ابحث عن رقم A-number في الجدول أو أرسله لنا عبر واتساب. الرقم يساعدنا في تحديد الجيل، لكنه لا يكفي وحده لتأكيد البطارية؛ نطابق كذلك سنة الجهاز ورقم القطعة والتوصيل وتوفر المخزون قبل إعطائك السعر النهائي.</p>
+              <div className="mt-6 overflow-x-auto rounded-2xl border border-slate-800">
+                <table className="w-full min-w-[780px] border-collapse text-right text-sm">
+                  <caption className="sr-only">موديلات MacBook Air وMacBook Pro وأرقام A-number وأجرة العمل وطريقة تأكيد السعر الشامل في الكويت</caption>
+                  <thead className="bg-slate-950 text-slate-200">
+                    <tr>
+                      <th scope="col" className="p-4 font-bold">فئة MacBook والجيل</th>
+                      <th scope="col" className="p-4 font-bold">أرقام الموديلات الشائعة</th>
+                      <th scope="col" className="p-4 font-bold">أجرة التركيب</th>
+                      <th scope="col" className="p-4 font-bold">السعر الإجمالي والمدة</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-800 text-slate-300">
+                    <tr>
+                      <th scope="row" className="p-4 align-top font-bold text-white">MacBook Air · Apple silicon M1 / M2 / M3</th>
+                      <td className="p-4 align-top">A2337 · A2681 · A2941 · A3113 · A3114</td>
+                      <td className="p-4 align-top">تبدأ من 8 د.ك</td>
+                      <td className="p-4 align-top">السعر الشامل للبطارية والتركيب يُحدد بعد مطابقة القطعة والتوفر. المدة تؤكد بعد التحقق من المخزون.</td>
+                    </tr>
+                    <tr>
+                      <th scope="row" className="p-4 align-top font-bold text-white">MacBook Pro · Apple silicon M1 / M2 / M3</th>
+                      <td className="p-4 align-top">A2338 · A2442 · A2485 · A2779 · A2780 · A2918 · A2991</td>
+                      <td className="p-4 align-top">تبدأ من 8 د.ك</td>
+                      <td className="p-4 align-top">السعر الشامل للبطارية والتركيب يُحدد حسب المقاس ورقم القطعة والتوفر. المدة تؤكد بعد التحقق من المخزون.</td>
+                    </tr>
+                    <tr>
+                      <th scope="row" className="p-4 align-top font-bold text-white">MacBook Air · Intel Retina والأجيال السابقة</th>
+                      <td className="p-4 align-top">A1466 · A1932 · A2179</td>
+                      <td className="p-4 align-top">تبدأ من 8 د.ك</td>
+                      <td className="p-4 align-top">السعر الشامل يُحدد بعد مطابقة رقم البطارية وحالة التثبيت. لا نعد بمدة قبل تأكيد التوفر.</td>
+                    </tr>
+                    <tr>
+                      <th scope="row" className="p-4 align-top font-bold text-white">MacBook Pro · Intel Retina وTouch Bar</th>
+                      <td className="p-4 align-top">A1398 · A1502 · A1706 · A1707 · A1708 · A1989 · A1990 · A2141 · A2159 · A2251 · A2289</td>
+                      <td className="p-4 align-top">تبدأ من 8 د.ك</td>
+                      <td className="p-4 align-top">السعر الشامل يعتمد على البطارية وطريقة فك اللواصق وحالة الهيكل. نوضح التكلفة والوقت قبل العمل.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div className="mt-5 grid gap-4 md:grid-cols-2">
+                <article className="rounded-2xl border border-cyan-900/50 bg-cyan-950/20 p-5">
+                  <h3 className="text-lg font-black text-white">سعر شامل بدون مفاجآت</h3>
+                  <p className="mt-2 text-sm leading-7 text-slate-300">أجرة التركيب تبدأ من 8 د.ك + سعر البطارية. رقم 8 د.ك هو أجرة عمل فقط، وليس سعر بطارية MacBook مركبة. نرسل لك إجمالي القطعة والتركيب والضمان قبل موافقتك.</p>
+                </article>
+                <article className="rounded-2xl border border-slate-700 bg-slate-950/50 p-5">
+                  <h3 className="text-lg font-black text-white">فئة القطعة والضمان</h3>
+                  <p className="mt-2 text-sm leading-7 text-slate-300">إذا توفرت أكثر من فئة متوافقة، نوضح معلومات كل خيار والضمان المعتمد له. لا نعد ببطارية أصلية أو 0 دورة شحن أو ضمان ممتد إلا بمستندات وشروط مثبتة.</p>
+                </article>
+              </div>
+            </section>
+
+            <section className="mt-12 rounded-3xl border border-slate-800 bg-slate-900/45 p-6 sm:p-8" aria-labelledby="macbook-battery-diagnostics">
+              <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">تشخيص قبل تركيب القطعة</p>
+              <h2 id="macbook-battery-diagnostics" className="mt-2 text-2xl font-black text-white sm:text-3xl">كيف نفحص بطارية MacBook ودائرة الشحن؟</h2>
+              <p className="mt-4 max-w-4xl leading-8 text-slate-300">العَرَض نفسه قد ينتج عن البطارية أو الشاحن أو منفذ الشحن أو مذربورد MacBook. لذلك لا نطلب بطارية جديدة لمجرد أن الجهاز لا يشحن؛ نبدأ بالقياسات المرتبطة بالموديل ثم نوضح الخيار المناسب.</p>
+              <ol className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                <li className="rounded-2xl border border-slate-800 bg-slate-950/55 p-5">
+                  <span className="flex h-9 w-9 items-center justify-center rounded-full bg-cyan-500/15 font-black text-cyan-300">١</span>
+                  <h3 className="mt-4 font-bold text-white">تحديد الموديل والبطارية</h3>
+                  <p className="mt-2 text-sm leading-7 text-slate-400">نراجع A-number والسنة والمقاس ورقم القطعة لتحديد مجموعة البطارية وطريقة الفك والتوافق.</p>
+                </li>
+                <li className="rounded-2xl border border-slate-800 bg-slate-950/55 p-5">
+                  <span className="flex h-9 w-9 items-center justify-center rounded-full bg-cyan-500/15 font-black text-cyan-300">٢</span>
+                  <h3 className="mt-4 font-bold text-white">قراءة حالة البطارية</h3>
+                  <p className="mt-2 text-sm leading-7 text-slate-400">نراجع Battery Health وعدد دورات الشحن وService Recommended وسلوك النسبة ومدة التشغيل حيث تتوفر هذه القراءات.</p>
+                </li>
+                <li className="rounded-2xl border border-slate-800 bg-slate-950/55 p-5">
+                  <span className="flex h-9 w-9 items-center justify-center rounded-full bg-cyan-500/15 font-black text-cyan-300">٣</span>
+                  <h3 className="mt-4 font-bold text-white">فحص الشاحن والمنفذ</h3>
+                  <p className="mt-2 text-sm leading-7 text-slate-400">نفحص المحول والكابل ومدخل USB-C أو MagSafe وسلوك الشحن قبل نسبة المشكلة إلى البطارية.</p>
+                </li>
+                <li className="rounded-2xl border border-slate-800 bg-slate-950/55 p-5">
+                  <span className="flex h-9 w-9 items-center justify-center rounded-full bg-cyan-500/15 font-black text-cyan-300">٤</span>
+                  <h3 className="mt-4 font-bold text-white">قياس دائرة الشحن والمذربورد</h3>
+                  <p className="mt-2 text-sm leading-7 text-slate-400">عند الحاجة نفحص مراحل USB-C Power Delivery وآيسي الشحن وخط بيانات البطارية (SMBus) وخطوط الطاقة وفق تصميم اللوحة. قد تظهر أسماء مثل CD3215 أو CD3217 أو ISL9239 أو ISL9240 أو PPBUS_G3H في بعض الأجيال فقط؛ وليست قائمة تنطبق على كل موديل.</p>
+                </li>
+                <li className="rounded-2xl border border-slate-800 bg-slate-950/55 p-5">
+                  <span className="flex h-9 w-9 items-center justify-center rounded-full bg-cyan-500/15 font-black text-cyan-300">٥</span>
+                  <h3 className="mt-4 font-bold text-white">فك آمن وتركيب مطابق</h3>
+                  <p className="mt-2 text-sm leading-7 text-slate-400">نراعي اللواصق والكابلات القريبة من البطارية والتراك باد، ونستخدم طريقة فك تناسب تصميم الجهاز بدل سحب الخلايا بالقوة.</p>
+                </li>
+                <li className="rounded-2xl border border-slate-800 bg-slate-950/55 p-5">
+                  <span className="flex h-9 w-9 items-center justify-center rounded-full bg-cyan-500/15 font-black text-cyan-300">٦</span>
+                  <h3 className="mt-4 font-bold text-white">فحص بعد التركيب</h3>
+                  <p className="mt-2 text-sm leading-7 text-slate-400">نراجع تعرف macOS على البطارية وسلوك النسبة والاستجابة للشحن ودرجة الحرارة ضمن فحص مناسب للموديل، دون فرض تفريغ كامل غير لازم.</p>
+                </li>
+              </ol>
+
+              <div className="mt-7 grid gap-4 lg:grid-cols-3">
+                <article className="rounded-2xl border border-slate-800 bg-slate-950/55 p-5">
+                  <Cpu className="h-6 w-6 text-cyan-300" aria-hidden="true" />
+                  <h3 className="mt-4 font-bold text-white">فحص مذربورد MacBook قبل شراء بطارية</h3>
+                  <p className="mt-2 text-sm leading-7 text-slate-400">إذا كان الجهاز متصلًا ولا يشحن أو يثبت على 0% أو 1%، نتحقق من مسار الشحن والبيانات بدل افتراض أن الخلايا تالفة. قد يكون الحل إصلاح دائرة الشحن، وليس تركيب بطارية جديدة.</p>
+                </article>
+                <article className="rounded-2xl border border-slate-800 bg-slate-950/55 p-5">
+                  <BatteryCharging className="h-6 w-6 text-cyan-300" aria-hidden="true" />
+                  <h3 className="mt-4 font-bold text-white">تركيب البطارية وفحص قراءة الشحن</h3>
+                  <p className="mt-2 text-sm leading-7 text-slate-400">نطابق رقم البطارية ونتعامل بحذر مع لواصق البطارية الداخلية وأسلاك التراك باد. بعد التركيب نراجع تقرير البطارية والشحن في macOS حسب ما يدعمه الموديل.</p>
+                </article>
+                <article className="rounded-2xl border border-slate-800 bg-slate-950/55 p-5">
+                  <Thermometer className="h-6 w-6 text-cyan-300" aria-hidden="true" />
+                  <h3 className="mt-4 font-bold text-white">فحص التبريد أثناء فتح الجهاز</h3>
+                  <p className="mt-2 text-sm leading-7 text-slate-400">في موديلات MacBook المزودة بمراوح، يمكن فحص الغبار والمراوح والمشتت وتقييم الحاجة إلى تنظيف أو خدمة مادة حرارية مناسبة. هذه خدمة اختيارية وليست مطلوبة لكل تبديل، وتُسعّر منفصلًا بعد الفحص والموافقة.</p>
+                </article>
+              </div>
+            </section>
+
+            <section className="mt-12 grid gap-6 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]" aria-labelledby="macbook-swollen-battery">
+              <figure className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-950">
+                <img src={IMAGES.macbook.swollenBattery1.src} alt="بطارية MacBook منتفخة وتحتاج إلى فحص وتعامل آمن في المختبر" width={IMAGES.macbook.swollenBattery1.width} height={IMAGES.macbook.swollenBattery1.height} loading="lazy" decoding="async" className="aspect-[4/3] w-full object-cover" />
+                <figcaption className="border-t border-slate-800 px-4 py-3 text-sm leading-6 text-slate-300">لا تضغط على البطارية المنتفخة أو تحاول فكها بنفسك.</figcaption>
+              </figure>
+              <div className="rounded-2xl border border-amber-700/40 bg-amber-950/20 p-6 sm:p-8">
+                <p className="text-xs font-black uppercase tracking-[0.14em] text-amber-300">تحذير سلامة مهم</p>
+                <h2 id="macbook-swollen-battery" className="mt-2 text-2xl font-black text-amber-100">بطارية MacBook منتفخة أو التراك باد مرتفع؟ أوقف الاستخدام والشحن.</h2>
+                <p className="mt-4 leading-8 text-amber-50/90">انتفاخ بطارية الليثيوم قد يضغط على التراك باد والهيكل والكابلات الداخلية. أوقف تشغيل الجهاز والشحن، وافصل المحول إذا كان ذلك آمنًا. لا تضغط على التراك باد ولا تحاول إغلاق الغطاء بالقوة أو ثقب البطارية أو فتح الجهاز بنفسك.</p>
+                <p className="mt-3 leading-8 text-amber-50/90">تواصل معنا أولًا للحصول على تعليمات التعامل والترتيب الآمن للاستلام من منطقتك. لا تضع جهازًا ببطارية منتفخة في ناقل أو شحنة عادية قبل الاتفاق على طريقة نقل مناسبة.</p>
+                <a href={macbookBatteryQuickQuotes[2].href} target="_blank" rel="noreferrer" className="mt-6 inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-amber-300 px-5 py-3 font-extrabold text-amber-950 hover:brightness-95">
+                  <MessageCircle className="h-5 w-5" aria-hidden="true" /> اطلب تعليمات الاستلام الآمن لبطارية منتفخة
+                </a>
+              </div>
+            </section>
+          </>
         )}
 
         <section className="mt-12" aria-labelledby="arabic-services">
