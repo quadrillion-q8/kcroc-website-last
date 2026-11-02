@@ -875,11 +875,14 @@ add('Arabic battery FAQs remain generated from visible copy and qualify timing a
 
 
 const englishBatteryServiceStart = graph.indexOf("    'srv-battery': {");
-const englishBatteryServiceEnd = graph.indexOf("\n    'srv-charging-port': {", englishBatteryServiceStart + 1);
-const englishBatteryService = englishBatteryServiceStart >= 0 && englishBatteryServiceEnd > englishBatteryServiceStart
-  ? graph.slice(englishBatteryServiceStart, englishBatteryServiceEnd)
+const englishBatteryRelatedResourcesStart = graph.indexOf("      relatedResourcePaths: [", englishBatteryServiceStart + 1);
+const englishBatteryRelatedResourcesEnd = graph.indexOf("\n      ],", englishBatteryRelatedResourcesStart + 1);
+const englishBatteryPrimaryCopy = englishBatteryServiceStart >= 0 && englishBatteryRelatedResourcesStart > englishBatteryServiceStart
+  ? graph.slice(englishBatteryServiceStart, englishBatteryRelatedResourcesStart)
   : '';
-const englishBatteryPrimaryCopy = englishBatteryService.split('relatedResourcePaths:')[0];
+const englishBatteryRelatedResources = englishBatteryRelatedResourcesStart >= 0 && englishBatteryRelatedResourcesEnd > englishBatteryRelatedResourcesStart
+  ? graph.slice(englishBatteryRelatedResourcesStart, englishBatteryRelatedResourcesEnd)
+  : '';
 const arabicBatteryPrimaryCopy = arabicBatteryConfig.split('    englishPath:')[0];
 
 add('English and Arabic general battery page copy excludes MacBook while retaining a separate dedicated-page link',
@@ -887,7 +890,7 @@ add('English and Arabic general battery page copy excludes MacBook while retaini
   !/MacBook/i.test(englishBatteryPrimaryCopy) &&
   arabicBatteryPrimaryCopy.length > 0 &&
   !/(MacBook|ماك بوك|ماكبوك)/i.test(arabicBatteryPrimaryCopy) &&
-  englishBatteryService.includes("{ label: 'MacBook Battery Replacement Kuwait', path: '/macbook-battery-replacement-kuwait' }") &&
+  englishBatteryRelatedResources.includes("{ label: 'MacBook Battery Replacement Kuwait', path: '/macbook-battery-replacement-kuwait' }") &&
   arabicBatteryConfig.includes("{ label: 'تبديل بطارية MacBook', path: '/ar/macbook-battery-replacement-kuwait' }"));
 
 add('Windows battery landing pages use laptop-only footer labels and route-specific footer descriptions',
