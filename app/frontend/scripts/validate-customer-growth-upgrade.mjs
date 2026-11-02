@@ -830,10 +830,10 @@ const arabicBatteryConfig = arabicBatteryConfigStart >= 0 && arabicBatteryConfig
   : '';
 
 add('Arabic battery page targets core laptop-battery intent with a transparent labour-only starting price',
-  arabicBatteryPageEntity.includes("title: 'تبديل بطارية اللابتوب في الكويت من 8 د.ك + القطعة | KCROC'") &&
-  arabicBatteryPageEntity.includes('أجرة العمل من 8 د.ك + سعر البطارية حسب الموديل') &&
+  arabicBatteryPageEntity.includes("title: 'تبديل بطارية لابتوب Windows في الكويت | HP وDell وLenovo | KCROC'") &&
+  arabicBatteryPageEntity.includes('أجرة العمل من 8 د.ك + البطارية') &&
   seoProjection.includes('"id": "page-ar-battery-replacement"') &&
-  seoProjection.includes('"title": "تبديل بطارية اللابتوب في الكويت من 8 د.ك + القطعة | KCROC"'));
+  seoProjection.includes('"title": "تبديل بطارية لابتوب Windows في الكويت | HP وDell وLenovo | KCROC"'));
 
 add('Arabic battery related-service cards do not link back to the current page',
   arabicBatteryConfig.includes("serviceIds: ['srv-laptop', 'srv-charging-port', 'srv-motherboard']") &&
@@ -862,7 +862,7 @@ add('Arabic battery Service schema uses its first-party photos and the Hawalli w
 
 add('Arabic battery metadata declares Service and FAQPage schema with an Arabic breadcrumb and current date',
   arabicBatteryPageEntity.includes("schemaTypes: ['WebPage', 'BreadcrumbList', 'Service', 'FAQPage']") &&
-  arabicBatteryPageEntity.includes("lastModified: '2026-11-02T00:00:00+03:00'") &&
+  arabicBatteryPageEntity.includes("lastModified: '2026-11-03T00:00:00+03:00'") &&
   arabicBatteryPageEntity.includes("breadcrumbs: [{ name: 'الرئيسية', url: '/ar' }"));
 
 add('Arabic battery FAQs remain generated from visible copy and qualify timing and warranty',
@@ -1025,11 +1025,11 @@ add('Arabic MacBook swollen-battery section prioritises safety and does not prom
 add('Arabic MacBook battery page offers optional model-compatible cooling inspection without unverified pricing or health claims',
   arabicCommercial.includes('فحص التبريد أثناء فتح الجهاز') &&
   arabicCommercial.includes('موديلات MacBook المزودة بمراوح') &&
-  arabicCommercial.includes('ليست مطلوبة لكل تبديل بطارية') &&
+  arabicCommercial.includes('ليست مطلوبة لكل تبديل') &&
   arabicCommercial.includes('تُسعّر منفصلًا'));
 
 add('Arabic MacBook FAQ answers are included in visible details markup and FAQPage schema',
-  (macbookBatteryArabicConfig.match(/\\{ q: '/g) || []).length === 12 &&
+  (macbookBatteryArabicConfig.match(/\{ q: '/g) || []).length === 12 &&
   arabicCommercial.includes('mainEntity: cfg.faq.map((item)') &&
   arabicCommercial.includes('<details key={item.q}') &&
   arabicCommercial.includes('{item.a}'));
