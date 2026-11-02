@@ -60,7 +60,7 @@ const ARABIC_SERVICE_LABELS: Record<string, string> = {
   '/motherboard-repair-kuwait': 'تصليح المذربورد واللوحة الأم',
   '/laptop-screen-repair-kuwait': 'تبديل شاشة اللابتوب',
   '/macbook-screen-replacement-kuwait': 'تبديل شاشة ماك بوك',
-  '/battery-replacement-kuwait': 'تبديل بطارية اللابتوب وMacBook',
+  '/battery-replacement-kuwait': 'تبديل بطارية اللابتوب',
   '/laptop-charging-port-repair-kuwait': 'تصليح مدخل شحن اللابتوب',
   '/laptop-hinge-repair-kuwait': 'تصليح مفصلات وهيكل اللابتوب',
   '/laptop-keyboard-replacement-kuwait': 'تبديل كيبورد اللابتوب',
@@ -110,6 +110,7 @@ export function Footer() {
   const location = useLocation();
   const isArabicRoute = location.pathname === '/ar' || location.pathname.startsWith('/ar/') || location.pathname.startsWith('/blog/ar/') || location.pathname.startsWith('/guides/ar/');
   const isHawalliLandingPage = location.pathname.replace(/\/+$/, '') === '/location/hawalli';
+  const isWindowsBatteryPage = location.pathname === '/battery-replacement-kuwait' || location.pathname === '/ar/battery-replacement-kuwait';
   const localizedPath = (path: string) => isArabicRoute ? (ARABIC_PATHS[path] ?? path) : path;
   const serviceLabel = (path: string, label: string) => isArabicRoute ? (ARABIC_SERVICE_LABELS[path] ?? label.replace(' Kuwait', '')) : label.replace(' Kuwait', '');
   const companyLabel = (path: string, label: string) => isArabicRoute ? (ARABIC_COMPANY_LABELS[path] ?? label) : label;
@@ -231,7 +232,13 @@ export function Footer() {
               {isArabicRoute ? 'تصليح الكمبيوتر واللابتوب في الكويت' : 'Trusted Computer & Laptop Repair in Kuwait'}
             </h2>
             <p className="text-slate-400 text-sm leading-relaxed mb-4 max-w-sm">
-              {isArabicRoute ? 'تصليح الكمبيوتر المكتبي واللابتوبات وأجهزة MacBook وكمبيوتر الألعاب في الكويت، مع استلام وتوصيل مجانيين وضمان 30 يومًا على الإصلاحات المشمولة.' : 'Professional repair for desktop PCs, laptops, MacBooks and gaming PCs. Free pickup and delivery across all Kuwait governorates. No Fix, No Fee.'}
+              {isWindowsBatteryPage
+                ? isArabicRoute
+                  ? 'تصليح الكمبيوتر المكتبي ولابتوبات Windows وكمبيوتر الألعاب في الكويت، مع استلام وتوصيل مجانيين وضمان 30 يومًا على الإصلاحات المشمولة.'
+                  : 'Professional repair for desktop PCs, Windows laptops and gaming PCs. Free pickup and delivery across all Kuwait governorates. No Fix, No Fee.'
+                : isArabicRoute
+                  ? 'تصليح الكمبيوتر المكتبي واللابتوبات وأجهزة MacBook وكمبيوتر الألعاب في الكويت، مع استلام وتوصيل مجانيين وضمان 30 يومًا على الإصلاحات المشمولة.'
+                  : 'Professional repair for desktop PCs, laptops, MacBooks and gaming PCs. Free pickup and delivery across all Kuwait governorates. No Fix, No Fee.'}
             </p>
 
             {business.openingHours && (
