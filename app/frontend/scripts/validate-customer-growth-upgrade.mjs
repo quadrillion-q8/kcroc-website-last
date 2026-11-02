@@ -893,6 +893,17 @@ add('English and Arabic general battery page copy excludes MacBook while retaini
   englishBatteryRelatedResources.includes("{ label: 'MacBook Battery Replacement Kuwait', path: '/macbook-battery-replacement-kuwait' }") &&
   arabicBatteryConfig.includes("{ label: 'تبديل بطارية MacBook', path: '/ar/macbook-battery-replacement-kuwait' }"));
 
+const arabicBatteryRelatedGuidesStart = arabicCommercial.indexOf(": slug === 'battery-replacement-kuwait'");
+const arabicBatteryRelatedGuidesEnd = arabicCommercial.indexOf(": slug === 'laptop-repair-kuwait'", arabicBatteryRelatedGuidesStart + 1);
+const arabicBatteryRelatedGuides = arabicBatteryRelatedGuidesStart >= 0 && arabicBatteryRelatedGuidesEnd > arabicBatteryRelatedGuidesStart
+  ? arabicCommercial.slice(arabicBatteryRelatedGuidesStart, arabicBatteryRelatedGuidesEnd)
+  : '';
+
+add('Arabic general laptop-battery page shows laptop-related guides and keeps MacBook battery as a separate service link',
+  arabicBatteryRelatedGuides.length > 0 &&
+  !/(MacBook|ماك بوك|ماكبوك)/i.test(arabicBatteryRelatedGuides) &&
+  arabicBatteryConfig.includes("{ label: 'تبديل بطارية MacBook', path: '/ar/macbook-battery-replacement-kuwait' }"));
+
 add('Windows battery landing pages use laptop-only footer labels and route-specific footer descriptions',
   footer.includes("'/battery-replacement-kuwait': 'تبديل بطارية اللابتوب'") &&
   footer.includes("const isWindowsBatteryPage = location.pathname === '/battery-replacement-kuwait' || location.pathname === '/ar/battery-replacement-kuwait';") &&
