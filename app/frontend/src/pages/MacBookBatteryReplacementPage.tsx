@@ -372,7 +372,7 @@ export default function MacBookBatteryReplacementPage() {
                   ['Identify the exact MacBook', 'Confirm the model family, screen size, year and A-number or model identifier. Similar-looking models can use different battery assemblies.'],
                   ['Review battery condition', 'Read macOS battery health and cycle information where available, then compare it with runtime, shutdown and percentage symptoms.'],
                   ['Separate battery from charging fault', 'Check the adapter, cable, USB-C or MagSafe input and relevant battery/charging behaviour before blaming the battery.'],
-                  ['Inspect the board when indicated', 'If measurements point beyond the battery, investigate the model-specific power-delivery and charging path rather than swapping parts by guesswork.'],
+                  ['Inspect the board when indicated', 'If measurements point beyond the battery, investigate the model-specific power-delivery and charging path rather than swapping parts by guesswork. On applicable boards, examples can include CD3215 or CD3217 USB-C PD controllers, ISL9239 or ISL9240 charging controllers, and rails such as PPBUS_G3H. These are model-dependent examples, not a universal parts list.'],
                   ['Match the replacement', 'Confirm compatible part number, supplier availability and documented grade. We explain the options and total before approval.'],
                   ['Verify after installation', 'Review battery reporting and charging response, and check temperature behaviour during appropriate normal-load charging verification.']
                 ].map(([title, body]) => (

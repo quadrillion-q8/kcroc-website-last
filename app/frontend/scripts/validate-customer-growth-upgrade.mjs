@@ -948,6 +948,47 @@ add('English MacBook battery route uses a dedicated, schema-enabled landing page
   macbookBatteryPage.includes('A-number') &&
   macbookBatteryPage.includes('USB-C or MagSafe'));
 
+add('English MacBook battery page includes a crawlable common A-number matrix and installed-price quote path',
+  ['A1466', 'A1932', 'A2179', 'A2337', 'A2681', 'A2941', 'A3113', 'A3114', 'A1398', 'A1502', 'A1706', 'A1707', 'A1708', 'A1989', 'A1990', 'A2141', 'A2159', 'A2251', 'A2289', 'A2338', 'A2442', 'A2485', 'A2779', 'A2780', 'A2918', 'A2991', 'A2992'].every((model) => macbookBatteryPage.includes(model)) &&
+  macbookBatteryPage.includes('Complete KWD quote after part and stock check') &&
+  macbookBatteryPage.includes('Labour from 8 KWD') &&
+  macbookBatteryPage.includes('not the installed total') &&
+  macbookBatteryPage.includes('minPrice: 8') &&
+  macbookBatteryPage.includes('Starting labour only; battery not included.'));
+
+add('English MacBook battery quote builder pre-fills WhatsApp with selected model, symptom and pickup area',
+  macbookBatteryPage.includes('useState<string>') &&
+  macbookBatteryPage.includes('setSelectedModel(model)') &&
+  macbookBatteryPage.includes('setSelectedSymptom(symptom)') &&
+  macbookBatteryPage.includes('pickupArea.trim()') &&
+  macbookBatteryPage.includes('encodeURIComponent(message)') &&
+  macbookBatteryPage.includes('aria-pressed={selectedModel === model}') &&
+  macbookBatteryPage.includes('No screenshot or serial number is required to start'));
+
+add('English MacBook battery page keeps complete FAQ answers in initial details markup and FAQPage schema',
+  macbookBatteryPage.includes('<details key={faq.question}') &&
+  macbookBatteryPage.includes('{faq.answer}') &&
+  macbookBatteryPage.includes("'@type': 'FAQPage'") &&
+  macbookBatteryPage.includes('mainEntity: FAQS.map'));
+
+add('English MacBook battery page explains model-specific charging-circuit diagnosis without claiming one chip fits every board',
+  macbookBatteryPage.includes('CD3215') &&
+  macbookBatteryPage.includes('CD3217') &&
+  macbookBatteryPage.includes('ISL9239') &&
+  macbookBatteryPage.includes('ISL9240') &&
+  macbookBatteryPage.includes('PPBUS_G3H') &&
+  macbookBatteryPage.includes('not a universal parts list'));
+
+add('English MacBook battery page limits thermal service to compatible models and avoids unsupported fixed upsell claims',
+  macbookBatteryPage.includes('not a standard battery-replacement requirement') &&
+  macbookBatteryPage.includes('separately quoted before work') &&
+  macbookBatteryPage.includes('temperature behaviour during appropriate normal-load charging verification'));
+
+add('English MacBook swollen-battery CTA prioritises safe handling over ordinary courier or same-day promises',
+  macbookBatteryPage.includes('do not press, bend, puncture, open or try to remove the battery') &&
+  macbookBatteryPage.includes('Request Swollen-Battery Safety Advice') &&
+  macbookBatteryPage.includes('without prior instructions'));
+
 add('Arabic MacBook battery page has ten FAQs, its own intake prompt and a model-specific Service schema',
   (macbookBatteryArabicConfig.match(/\{ q: '/g) || []).length === 10 &&
   macbookBatteryArabicConfig.includes('تبديل بطارية MacBook في الكويت') &&
