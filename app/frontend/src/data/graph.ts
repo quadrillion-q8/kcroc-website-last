@@ -1598,10 +1598,11 @@ export const rawGraphData: RawGraphData = {
         { id: 'mac-screen-faq-6', title: 'Do you offer free pickup and delivery across Kuwait?', answer: 'Yes. Free pickup and delivery are available across Kuwait, and the repair is completed at our Hawalli workshop.' },
         { id: 'mac-screen-faq-7', title: 'What warranty applies to MacBook screen replacement?', answer: 'A 30-day warranty covers the completed repair, including the replacement display assembly and labour, according to the service terms. We confirm applicable coverage before repair.' }
       ],
-      relatedServiceIds: ['srv-macbook', 'srv-screen', 'srv-laptop', 'srv-battery'],
+      relatedServiceIds: ['srv-macbook', 'srv-screen', 'srv-laptop'],
       relatedProblemIds: ['problem-cracked-screen', 'problem-black-screen'],
       relatedBrandIds: [],
       relatedResourcePaths: [
+        { label: 'MacBook Battery Replacement Kuwait', path: '/macbook-battery-replacement-kuwait' },
         { label: 'How to Protect Your Laptop Screen', path: '/blog/how-to-protect-laptop-screen' }
       ],
       contentImages: [
