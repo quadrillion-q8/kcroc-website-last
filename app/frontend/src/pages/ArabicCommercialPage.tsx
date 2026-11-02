@@ -476,13 +476,14 @@ const CONFIG: Record<string, {
     arabicLinks: [
       { label: 'تصليح MacBook في الكويت', path: '/ar/macbook-repair-kuwait' },
       { label: 'تبديل شاشة اللابتوب', path: '/ar/laptop-screen-repair-kuwait' },
-      { label: 'تبديل بطارية اللابتوب وMacBook', path: '/ar/battery-replacement-kuwait' },
+      { label: 'تبديل بطارية MacBook', path: '/ar/macbook-battery-replacement-kuwait' },
+      { label: 'تبديل بطارية اللابتوب', path: '/ar/battery-replacement-kuwait' },
       { label: 'تصليح MacBook بعد أضرار السوائل', path: '/ar/laptop-liquid-damage-repair-kuwait' },
       { label: 'تصليح المذربورد واللوحة الأم', path: '/ar/motherboard-repair-kuwait' },
       { label: 'أسعار التصليح في الكويت', path: '/ar/pricing' },
       { label: 'فني كمبيوتر بالقرب منك', path: '/ar/near-me' }
     ],
-    serviceIds: ['srv-macbook-screen', 'srv-macbook', 'srv-screen', 'srv-battery', 'srv-motherboard', 'srv-liquid-damage']
+    serviceIds: ['srv-macbook-screen', 'srv-macbook', 'srv-screen', 'srv-motherboard', 'srv-liquid-damage']
   },
   'battery-replacement-kuwait': {
     h1: 'تبديل بطارية اللابتوب في الكويت',
