@@ -771,6 +771,13 @@ add('Arabic gaming-laptop cooling page links to gaming-laptop repair and motherb
   arabicGamingCoolingConfig.includes("path: '/ar/gaming-laptop-repair-kuwait'") &&
   arabicGamingCoolingConfig.includes("path: '/ar/motherboard-repair-kuwait'") &&
   arabicGamingCoolingConfig.includes("path: '/ar/pricing'"));
+add('Arabic gaming-laptop cooling CTA names the service clearly',
+  arabicCommercial.includes('احجز تنظيف وصيانة تبريد لابتوب الألعاب عبر واتساب'));
+add('Arabic gaming-laptop cooling price copy clarifies scope and separates additional parts or repairs',
+  arabicCommercial.includes('نوضح نطاق العمل وما يشمله السعر قبل البدء') &&
+  arabicCommercial.includes('أي قطعة أو إصلاح إضافي يُسعّر منفصلًا بعد موافقتك'));
+add('Arabic gaming-laptop cooling SEO title prioritizes service intent',
+  graph.includes("title: 'تنظيف وصيانة تبريد لابتوب الألعاب في الكويت | KCROC'"));
 add('Arabic gaming-laptop cooling page uses a prefilled WhatsApp intake message for model, symptoms, temperatures and area',
   arabicCommercial.includes('أريد حجز فحص وتنظيف وصيانة تبريد لابتوب ألعاب') &&
   arabicCommercial.includes('الموديل الكامل') &&
