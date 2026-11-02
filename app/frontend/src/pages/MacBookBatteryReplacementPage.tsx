@@ -129,7 +129,7 @@ export default function MacBookBatteryReplacementPage() {
       <SchemaMarkup schema={serviceSchema} />
       <SchemaMarkup schema={faqSchema} />
 
-      <main className="min-h-screen bg-transparent pb-20 pt-8 text-white sm:pt-16 lg:pt-24">
+      <div className="min-h-screen bg-transparent pb-20 pt-8 text-white sm:pt-16 lg:pt-24">
         <div className="mx-auto max-w-7xl px-6">
           <nav aria-label="Breadcrumb" className="mb-7 text-sm text-slate-500">
             <Link to="/" className="hover:text-cyan-300">Home</Link>
@@ -268,7 +268,7 @@ export default function MacBookBatteryReplacementPage() {
             </div>
           </section>
         </div>
-      </main>
+      </div>
     </>
   );
 }
