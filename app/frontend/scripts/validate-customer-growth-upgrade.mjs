@@ -46,6 +46,7 @@ const [app, graph, seoProjection, locale, pricingPage, sitemap, hero, reviews, f
 ]);
 
 const vercelConfig = await readFile(path.resolve('vercel.json'), 'utf8');
+const arabicContact = await read('pages/ArabicContactPage.tsx');
 
 const laptopGraphStart = graph.indexOf("'srv-laptop': {");
 const laptopGraphEnd = graph.indexOf("'srv-desktop-pc': {", laptopGraphStart + 1);
@@ -331,6 +332,11 @@ add('Arabic nearby page targets proximity intent and links to the main service p
 add('Arabic Hawalli snippet reflects technician queries, workshop location and free pickup', has(graph, "title: 'تصليح كمبيوتر حولي | فني كمبيوتر ولابتوب | KCROC") && has(graph, "تحتاج فني كمبيوتر في حولي؟ زر مختبر KCROC في مجمع الملا، شارع ابن خلدون، محل 19، أو اطلب الاستلام والتوصيل مجانًا. تشخيص واضح وضمان 30 يومًا.") && has(seoProjection, 'تصليح كمبيوتر حولي | فني كمبيوتر ولابتوب | KCROC') && has(seoProjection, 'تحتاج فني كمبيوتر في حولي؟ زر مختبر KCROC في مجمع الملا، شارع ابن خلدون، محل 19، أو اطلب الاستلام والتوصيل مجانًا. تشخيص واضح وضمان 30 يومًا.'));
 add('HP service-center snippet includes independent status and a qualified from-price', graph.includes("title: 'HP Laptop Service Center Kuwait (Independent) | From 15 KWD | KCROC'") && seoProjection.includes('HP Laptop Service Center Kuwait (Independent) | From 15 KWD | KCROC') && graph.includes('not an official HP-authorized service center') && graph.includes('Selected repairs from 15 KWD where applicable'));
 
+add('Arabic contact card displays the Hawalli lab address and opening hours fully in Arabic',
+  arabicContact.includes('شارع ابن خلدون، مجمع الملا، السرداب، محل 19، حولي، الكويت') &&
+  arabicContact.includes('يوميًا من 10 صباحًا إلى 10 مساءً') &&
+  !arabicContact.includes('{business.streetAddress}، {business.addressLocality}، الكويت') &&
+  !arabicContact.includes('{business.openingHours}'));
 add('Arabic homepage metadata and hero now include native تصليح وصيانة intent without English category labels',
   has(graph, "title: 'تصليح وصيانة الكمبيوتر واللابتوب في الكويت | مختبر KCROC حولي'") &&
   seoProjection.includes('تصليح وصيانة الكمبيوتر واللابتوب في الكويت | KCROC') &&
