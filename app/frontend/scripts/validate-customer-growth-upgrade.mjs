@@ -45,6 +45,8 @@ const [app, graph, seoProjection, locale, pricingPage, sitemap, hero, reviews, f
   read('pages/MacBookBatteryReplacementPage.tsx'),
 ]);
 
+const vercelConfig = await readFile(path.resolve('vercel.json'), 'utf8');
+
 const laptopGraphStart = graph.indexOf("'srv-laptop': {");
 const laptopGraphEnd = graph.indexOf("'srv-desktop-pc': {", laptopGraphStart + 1);
 const laptopServiceEntityForChecks =
@@ -1056,6 +1058,18 @@ add('Dedicated English MacBook battery replacement page is discoverable in the m
 
 add('Battery intent split does not create a 16th Services catalogue item',
   !graph.includes("id: 'srv-macbook-battery'"));
+
+
+const vercelRedirects = JSON.parse(vercelConfig).redirects ?? [];
+const findPermanentRedirect = (source) => vercelRedirects.find((item) => item.source === source && item.permanent === true);
+add('Arabic related-service cards have Arabic fallback labels and descriptions',
+  ['srv-laptop', 'srv-desktop-pc', 'srv-hinge', 'srv-macbook', 'srv-macbook-screen', 'srv-gaming', 'srv-gaming-laptop', 'srv-gaming-laptop-cleaning', 'srv-motherboard', 'srv-screen', 'srv-battery', 'srv-charging-port', 'srv-ssd-ram', 'srv-keyboard', 'srv-liquid-damage'].every((id) => arabicCommercial.includes(`'${id}': {`)) &&
+  arabicCommercial.includes('arabicDefaultServiceCopy[service.id]?.title') &&
+  arabicCommercial.includes('arabicDefaultServiceCopy[service.id]?.description'));
+add('Legacy Khaitan laptop URL permanently redirects to the Khaitan service-area page',
+  findPermanentRedirect('/laptop-repair-in-khaitan')?.destination === '/location/khaitan');
+add('Legacy Hawalli laptop URL permanently redirects to the Hawalli service-area page',
+  findPermanentRedirect('/laptop-repair-hawalli-kuwait')?.destination === '/location/hawalli');
 
 for (const check of checks) console.log(`${check.pass ? '✅' : '❌'} ${check.name}${!check.pass && check.detail ? ` — ${check.detail}` : ''}`);
 const failed = checks.filter((check) => !check.pass);

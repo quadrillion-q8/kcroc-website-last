@@ -2053,6 +2053,25 @@ export default function ArabicCommercialPage() {
   const services = cfg.serviceIds
     .map((id) => KCROC_GRAPH.services.find((service) => service.id === id))
     .filter(Boolean);
+  // Arabic fallback copy for related-service cards on area pages and other Arabic commercial pages.
+  // Page-specific translations below take precedence wherever a page has tailored wording.
+  const arabicDefaultServiceCopy: Record<string, { title: string; description: string }> = {
+    'srv-laptop': { title: 'تصليح اللابتوب', description: 'تشخيص أعطال التشغيل والشحن والحرارة والشاشة والبطارية واللوحة الأم حسب موديل الجهاز.' },
+    'srv-desktop-pc': { title: 'تصليح الكمبيوتر المكتبي', description: 'تشخيص أعطال التشغيل والطاقة والعرض ومكونات الكمبيوتر المكتبي حسب حالة الجهاز.' },
+    'srv-hinge': { title: 'تصليح مفصلات وهيكل اللابتوب', description: 'فحص المفصلات وقواعد التثبيت والهيكل لتحديد إمكانية الإصلاح دون زيادة الضغط على الشاشة.' },
+    'srv-macbook': { title: 'تصليح MacBook', description: 'فحص أجهزة MacBook للطاقة والشحن والبطارية والشاشة واللوحة الأم بحسب رقم الموديل.' },
+    'srv-macbook-screen': { title: 'تبديل شاشة MacBook', description: 'مطابقة الشاشة والكابل وتجميعة العرض مع موديل MacBook قبل تأكيد القطعة والسعر.' },
+    'srv-gaming': { title: 'تصليح Gaming PC', description: 'تشخيص مشاكل الحرارة والطاقة وكرت الشاشة (GPU) والاستقرار في أجهزة الكمبيوتر المخصصة للألعاب.' },
+    'srv-gaming-laptop': { title: 'تصليح لابتوب الألعاب', description: 'تشخيص أعطال الطاقة والحرارة والشاشة والأداء في لابتوبات الألعاب حسب الموديل.' },
+    'srv-gaming-laptop-cleaning': { title: 'تنظيف وتبريد لابتوب الألعاب', description: 'فحص المراوح والمشتت وتدفق الهواء وتنظيف الغبار وفحص المعجون الحراري عند الحاجة.' },
+    'srv-motherboard': { title: 'تصليح المذربورد واللوحة الأم', description: 'تتبع أعطال الطاقة والشحن والمكونات، مع إصلاح على مستوى القطعة عندما يكون مناسبًا فنيًا.' },
+    'srv-screen': { title: 'تصليح وتبديل شاشة اللابتوب', description: 'فحص الشاشة والكابل والموصل والإضاءة قبل مطابقة قطعة بديلة مع موديل الجهاز.' },
+    'srv-battery': { title: 'فحص وتبديل بطارية اللابتوب', description: 'فحص صحة البطارية ومسار الشحن والتحقق من توافق القطعة وتوفرها قبل عرض السعر.' },
+    'srv-charging-port': { title: 'تصليح مدخل شحن اللابتوب', description: 'فحص الشاحن والكابل والمنفذ ومسار الطاقة قبل تحديد الجزء الذي يحتاج إلى إصلاح.' },
+    'srv-ssd-ram': { title: 'ترقية SSD وRAM', description: 'فحص توافق وحدة SSD أو NVMe والذاكرة العشوائية وسعتها قبل تنفيذ الترقية.' },
+    'srv-keyboard': { title: 'تصليح وتبديل كيبورد اللابتوب', description: 'فحص الأزرار والتوصيلات وتوافق لوحة المفاتيح مع موديل الجهاز قبل طلب القطعة.' },
+    'srv-liquid-damage': { title: 'فحص وتصليح أضرار السوائل', description: 'فحص آثار السوائل والتآكل والتوصيلات واللوحة الأم بعد فصل الطاقة واتباع احتياطات السلامة.' },
+  };
   const arabicScreenServiceCopy: Record<string, { title: string; description: string }> = {
     'srv-screen': {
       title: 'تصليح وتبديل شاشة اللابتوب',
@@ -4367,8 +4386,8 @@ export default function ArabicCommercialPage() {
             {services.map((service) => service && (
               <Link key={service.id} to={arabicServicePathById[service.id] ?? `/${service.slug}`} className="group rounded-2xl border border-slate-800 bg-slate-900/45 p-6 hover:border-cyan-500/40">
                 <Wrench className="h-6 w-6 text-cyan-400" aria-hidden="true" />
-                <h3 className="mt-4 text-lg font-bold text-white group-hover:text-cyan-300">{(cfg.serviceCardCopy?.[service.id]?.title ?? ( slug === 'macbook-repair-kuwait' ? arabicMacbookServiceCopy[service.id]?.title : slug === 'laptop-screen-repair-kuwait' ? arabicScreenServiceCopy[service.id]?.title : slug === 'gaming-laptop-repair-kuwait' ? arabicGamingServiceCopy[service.id]?.title : slug === 'macbook-screen-replacement-kuwait' ? arabicMacbookScreenServiceCopy[service.id]?.title : slug === 'laptop-keyboard-replacement-kuwait' ? arabicKeyboardServiceCopy[service.id]?.title : slug === 'laptop-charging-port-repair-kuwait' ? arabicChargingServiceCopy[service.id]?.title : slug === 'battery-replacement-kuwait' ? arabicBatteryServiceCopy[service.id]?.title : undefined)) ?? service.title.replace(' Kuwait', '')}</h3>
-                <p className="mt-2 text-sm leading-6 text-slate-400">{(cfg.serviceCardCopy?.[service.id]?.description ?? ( slug === 'macbook-repair-kuwait' ? arabicMacbookServiceCopy[service.id]?.description : slug === 'laptop-screen-repair-kuwait' ? arabicScreenServiceCopy[service.id]?.description : slug === 'gaming-laptop-repair-kuwait' ? arabicGamingServiceCopy[service.id]?.description : slug === 'macbook-screen-replacement-kuwait' ? arabicMacbookScreenServiceCopy[service.id]?.description : slug === 'laptop-keyboard-replacement-kuwait' ? arabicKeyboardServiceCopy[service.id]?.description : slug === 'laptop-charging-port-repair-kuwait' ? arabicChargingServiceCopy[service.id]?.description : slug === 'battery-replacement-kuwait' ? arabicBatteryServiceCopy[service.id]?.description : undefined)) ?? service.shortDescription}</p>
+                <h3 className="mt-4 text-lg font-bold text-white group-hover:text-cyan-300">{(cfg.serviceCardCopy?.[service.id]?.title ?? ( slug === 'macbook-repair-kuwait' ? arabicMacbookServiceCopy[service.id]?.title : slug === 'laptop-screen-repair-kuwait' ? arabicScreenServiceCopy[service.id]?.title : slug === 'gaming-laptop-repair-kuwait' ? arabicGamingServiceCopy[service.id]?.title : slug === 'macbook-screen-replacement-kuwait' ? arabicMacbookScreenServiceCopy[service.id]?.title : slug === 'laptop-keyboard-replacement-kuwait' ? arabicKeyboardServiceCopy[service.id]?.title : slug === 'laptop-charging-port-repair-kuwait' ? arabicChargingServiceCopy[service.id]?.title : slug === 'battery-replacement-kuwait' ? arabicBatteryServiceCopy[service.id]?.title : undefined)) ?? arabicDefaultServiceCopy[service.id]?.title ?? service.title.replace(' Kuwait', '')}</h3>
+                <p className="mt-2 text-sm leading-6 text-slate-400">{(cfg.serviceCardCopy?.[service.id]?.description ?? ( slug === 'macbook-repair-kuwait' ? arabicMacbookServiceCopy[service.id]?.description : slug === 'laptop-screen-repair-kuwait' ? arabicScreenServiceCopy[service.id]?.description : slug === 'gaming-laptop-repair-kuwait' ? arabicGamingServiceCopy[service.id]?.description : slug === 'macbook-screen-replacement-kuwait' ? arabicMacbookScreenServiceCopy[service.id]?.description : slug === 'laptop-keyboard-replacement-kuwait' ? arabicKeyboardServiceCopy[service.id]?.description : slug === 'laptop-charging-port-repair-kuwait' ? arabicChargingServiceCopy[service.id]?.description : slug === 'battery-replacement-kuwait' ? arabicBatteryServiceCopy[service.id]?.description : undefined)) ?? arabicDefaultServiceCopy[service.id]?.description ?? service.shortDescription}</p>
               </Link>
             ))}
           </div>
