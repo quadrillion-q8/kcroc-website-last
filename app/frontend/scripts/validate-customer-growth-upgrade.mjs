@@ -723,6 +723,9 @@ add('MacBook screen page adds the Arabic service summary below its existing Arab
 const hingeArabicGraphStart = graph.indexOf("'page-ar-laptop-hinge-repair': {");
 const hingeArabicGraphEnd = graph.indexOf("'page-ar-gaming-laptop-cleaning': {", hingeArabicGraphStart + 1);
 const hingeArabicGraph = hingeArabicGraphStart >= 0 && hingeArabicGraphEnd > hingeArabicGraphStart ? graph.slice(hingeArabicGraphStart, hingeArabicGraphEnd) : '';
+const hingeArabicConfigStart = arabicCommercial.indexOf("'laptop-hinge-repair-kuwait': {");
+const hingeArabicConfigEnd = arabicCommercial.indexOf("'gaming-laptop-cleaning-kuwait': {", hingeArabicConfigStart + 1);
+const hingeArabicConfig = hingeArabicConfigStart >= 0 && hingeArabicConfigEnd > hingeArabicConfigStart ? arabicCommercial.slice(hingeArabicConfigStart, hingeArabicConfigEnd) : '';
 const hingeServiceGraphStart = graph.indexOf("'srv-hinge': {");
 const hingeServiceGraphEnd = graph.indexOf("'srv-keyboard': {", hingeServiceGraphStart + 1);
 const hingeServiceGraph = hingeServiceGraphStart >= 0 && hingeServiceGraphEnd > hingeServiceGraphStart ? graph.slice(hingeServiceGraphStart, hingeServiceGraphEnd) : '';
@@ -734,8 +737,8 @@ const asusGraphEnd = graph.indexOf("'brand-acer': {", asusGraphStart + 1);
 const asusGraph = asusGraphStart >= 0 && asusGraphEnd > asusGraphStart ? graph.slice(asusGraphStart, asusGraphEnd) : '';
 add('Arabic hinge page has no self-referencing related-service card',
   hingeArabicGraph.includes("relatedServiceIds: ['srv-laptop', 'srv-screen', 'srv-charging-port']") &&
-  arabicCommercial.includes("serviceIds: ['srv-laptop', 'srv-screen', 'srv-charging-port']") &&
-  !arabicCommercial.includes("'srv-hinge': { title: 'تصليح مفصلات وهيكل اللابتوب'"));
+  hingeArabicConfig.includes("serviceIds: ['srv-laptop', 'srv-screen', 'srv-charging-port']") &&
+  !hingeArabicConfig.includes("'srv-hinge': {"));
 add('Hinge repair is visible in the footer directly below screen replacement',
   footer.includes('services.slice(0, 10)') &&
   has(graph, "{ label: 'Screen Replacement Kuwait', path: '/laptop-screen-repair-kuwait' }, { label: 'Laptop Hinge & Chassis Repair', path: '/laptop-hinge-repair-kuwait' }"));
