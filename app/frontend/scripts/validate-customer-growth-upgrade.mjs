@@ -320,7 +320,7 @@ add('Unverified customer/repair totals removed from sales copy', !about.includes
 const arTitle = 'فني كمبيوتر في الكويت | تصليح كمبيوتر ولابتوب';
 const arH1 = 'فني كمبيوتر في الكويت لتصليح الكمبيوتر واللابتوب';
 add('Arabic technician head term: page title in graph', has(graph, `title: '${arTitle}'`), `expected in src/data/graph.ts: title: '${arTitle}'`);
-add('Arabic commercial page targets the observed computer-repair query and explains pickup, workshop diagnosis, price and warranty', has(graph, `title: 'فني كمبيوتر في الكويت | تصليح كمبيوتر ولابتوب | KCROC'`) && has(graph, `description: 'تحتاج فني كمبيوتر في الكويت؟ استلام وتوصيل مجاني من المنزل أو المكتب. نفحص الجهاز في مختبر حولي ونوضح التكلفة قبل الإصلاح، مع ضمان 30 يومًا.'`) && seoProjection.includes('فني كمبيوتر في الكويت | تصليح كمبيوتر ولابتوب | KCROC') && seoProjection.includes('تحتاج فني كمبيوتر في الكويت؟ استلام وتوصيل مجاني من المنزل أو المكتب. نفحص الجهاز في مختبر حولي ونوضح التكلفة قبل الإصلاح، مع ضمان 30 يومًا.'));
+add('Arabic commercial page targets the technician query with free intake and qualified starting-price information', has(graph, `title: 'فني كمبيوتر في الكويت | فحص واستلام مجاني | KCROC'`) && has(graph, `تبدأ بعض الإصلاحات الشائعة من 15 د.ك`) && seoProjection.includes('فني كمبيوتر في الكويت | فحص واستلام مجاني | KCROC') && seoProjection.includes('تبدأ بعض الإصلاحات الشائعة من 15 د.ك'));
 add('Arabic technician head term: H1 on main Arabic commercial page', has(arabicCommercial, `h1: '${arH1}'`), `expected in src/pages/ArabicCommercialPage.tsx: h1: '${arH1}'`);
 add('Arabic computer repair: visible H1 matches the technician search intent', arabicCommercial.includes(`                ${arH1}\n              </h1>`));
 add('Arabic computer repair: full Hawalli workshop address is visible in local-service content', arabicCommercial.includes('شارع ابن خلدون، مجمع الملا، محل 19 في البدروم'));
@@ -1059,6 +1059,18 @@ add('Dedicated English MacBook battery replacement page is discoverable in the m
 add('Battery intent split does not create a 16th Services catalogue item',
   !graph.includes("id: 'srv-macbook-battery'"));
 
+
+
+add('Arabic homepage metadata includes تصليح وصيانة and remains distinct from technician-page intent',
+  has(graph, "title: 'تصليح وصيانة كمبيوتر ولابتوب في الكويت | KCROC'") &&
+  has(graph, 'تصليح وصيانة الكمبيوتر واللابتوب وMacBook وGaming PC في الكويت') &&
+  seoProjection.includes('تصليح وصيانة كمبيوتر ولابتوب في الكويت | KCROC'));
+add('Dell, HP and Lenovo snippets include qualified from-15-KWD pricing and independent-provider wording',
+  graph.includes('Selected repairs start from 15 KWD') &&
+  graph.includes('Selected repairs from 15 KWD where applicable') &&
+  graph.includes('not Dell-authorized') &&
+  graph.includes('not HP-authorized') &&
+  graph.includes('not Lenovo-authorized'));
 
 const vercelRedirects = JSON.parse(vercelConfig).redirects ?? [];
 const findPermanentRedirect = (source) => vercelRedirects.find((item) => item.source === source && item.permanent === true);
