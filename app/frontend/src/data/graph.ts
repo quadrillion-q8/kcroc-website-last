@@ -114,11 +114,11 @@ export const rawGraphData: RawGraphData = {
     } as WebPageEntity,
     'page-ar-home': {
       id: 'page-ar-home', slug: 'ar', entityType: 'WebPage', isActive: true,
-      title: 'تصليح كمبيوتر ولابتوب في الكويت | مختبر KCROC حولي',
-      description: 'تصليح كمبيوتر ولابتوب وماك بوك (MacBook) وبي سي قيمنق في الكويت. نصلح المذربورد على مستوى القطعة الإلكترونية، مع فحص أولي واستلام وتوصيل مجاني من مختبر حولي.',
+      title: 'تصليح وصيانة الكمبيوتر واللابتوب في الكويت | مختبر KCROC حولي',
+      description: 'تصليح وصيانة الكمبيوتر واللابتوب في الكويت، مع فحص أولي مجاني واستلام وتوصيل مجاني من المنزل أو المكتب. نصلح الأعطال في مختبر KCROC بحولي ونوضح التكلفة قبل بدء العمل.',
       seo: {
-        title: 'تصليح كمبيوتر ولابتوب الكويت | مختبر KCROC حولي',
-        description: 'تصليح كمبيوتر ولابتوب وماك بوك (MacBook) وبي سي قيمنق في الكويت. نصلح المذربورد على مستوى القطعة الإلكترونية، مع فحص أولي واستلام وتوصيل مجاني من مختبر حولي.',
+        title: 'تصليح وصيانة الكمبيوتر واللابتوب في الكويت | KCROC',
+        description: 'تصليح وصيانة الكمبيوتر واللابتوب في الكويت، مع فحص أولي مجاني واستلام وتوصيل مجاني من المنزل أو المكتب. نصلح الأعطال في مختبر KCROC بحولي ونوضح التكلفة قبل بدء العمل.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/ar',
         locale: 'ar_KW',
         alternates: {
@@ -128,7 +128,7 @@ export const rawGraphData: RawGraphData = {
         },
         ogType: 'website',
         schemaTypes: ['LocalBusiness', 'WebPage', 'FAQPage', 'BreadcrumbList'],
-        lastModified: '2026-10-30T00:00:00+03:00',
+        lastModified: '2026-11-03T00:00:00+03:00',
         breadcrumbs: [{ name: 'الرئيسية', url: '/ar' }]
       },
       featuredFAQIds: [
@@ -267,10 +267,10 @@ export const rawGraphData: RawGraphData = {
     'page-ar-computer-repair': {
       id: 'page-ar-computer-repair', slug: 'ar/computer-repair-kuwait', entityType: 'WebPage', isActive: true,
       title: 'فني كمبيوتر في الكويت | تصليح كمبيوتر ولابتوب',
-      description: 'خدمة فني كمبيوتر في الكويت للابتوب والكمبيوتر المكتبي وMacBook وGaming PC. نستلم الجهاز من المنزل أو المكتب ونفحصه ونصلحه في مختبر KCROC بحولي، ثم نوصله بعد الاختبار.',
+      description: 'خدمة فني كمبيوتر في الكويت للابتوب والكمبيوتر المكتبي وأجهزة ماك بوك وأجهزة الألعاب، مع فحص أولي مجاني واستلام وتوصيل من المنزل أو المكتب وإصلاح في مختبر KCROC بحولي.',
       seo: {
-        title: 'فني كمبيوتر في الكويت | تصليح كمبيوتر ولابتوب | KCROC',
-        description: 'تحتاج فني كمبيوتر في الكويت؟ استلام وتوصيل مجاني من المنزل أو المكتب. نفحص الجهاز في مختبر حولي ونوضح التكلفة قبل الإصلاح، مع ضمان 30 يومًا.',
+        title: 'فني كمبيوتر في الكويت | فحص واستلام مجاني | KCROC',
+        description: 'تحتاج فني كمبيوتر في الكويت؟ ننسق استلام الجهاز مجانًا من المنزل أو المكتب، ونفحصه في مختبر حولي ونوضح التكلفة قبل العمل. يشمل ذلك فحصًا أوليًا مجانيًا وضمان 30 يومًا على الإصلاح المكتمل.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/ar/computer-repair-kuwait',
         locale: 'ar_KW',
         alternates: {
@@ -279,7 +279,7 @@ export const rawGraphData: RawGraphData = {
           'x-default': 'https://www.computerrepairkuwait.com/computer-repair-kuwait'
         },
         ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList', 'FAQPage', 'Service'],
-        lastModified: '2026-10-27T00:00:00+03:00',
+        lastModified: '2026-11-03T00:00:00+03:00',
         breadcrumbs: [{ name: 'الرئيسية', url: '/' }, { name: 'تصليح كمبيوتر في الكويت', url: '/ar/computer-repair-kuwait' }]
       },
       relatedServiceIds: ['srv-laptop', 'srv-motherboard', 'srv-gaming', 'srv-macbook', 'srv-screen']
@@ -4534,7 +4534,7 @@ export const rawGraphData: RawGraphData = {
         { id: 'dell-authorized', title: 'Is KCROC an official Dell service center?', answer: 'No. KCROC is an independent computer-repair provider in Kuwait, not an official Dell-authorized service center. We diagnose and repair Dell hardware independently and explain the repair path before work begins.' }
       ],
       pricing: { startingFrom: 15, currency: 'KWD', quoteRequired: true, displayLabel: 'From 15 KWD — free diagnostic first' },
-      seo: { title: 'Dell Laptop Service Center Kuwait (Independent) | KCROC', description: 'Independent Dell laptop repair in Kuwait—not Dell-authorized. Inspiron, Latitude, XPS, G Series and Alienware: screen, charging, hinge, battery and cooling diagnosis. Free pickup, quote first and 30-day warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/dell-laptop-repair-kuwait', ogType: 'article', schemaTypes: ['Brand', 'Service', 'FAQPage', 'BreadcrumbList'], lastModified: '2026-10-25T00:00:00+03:00' },
+      seo: { title: 'Dell Laptop Service Center Kuwait (Independent) | From 15 KWD | KCROC', description: 'Independent Dell laptop repair in Kuwait—not Dell-authorized. Inspiron, Latitude, XPS and Alienware diagnosis. Selected repairs from 15 KWD where applicable, free pickup and a quote before work.', canonicalUrl: 'https://www.computerrepairkuwait.com/dell-laptop-repair-kuwait', ogType: 'article', schemaTypes: ['Brand', 'Service', 'FAQPage', 'BreadcrumbList'], lastModified: '2026-11-03T00:00:00+03:00' },
       navigationPriority: 90, popular: true 
     } as BrandEntity,
 
@@ -4575,7 +4575,7 @@ export const rawGraphData: RawGraphData = {
         { id: 'hp-authorized', title: 'Is KCROC an official HP service center?', answer: 'No. KCROC is an independent computer-repair provider in Kuwait, not an official HP-authorized service center. We diagnose the actual hardware fault and quote the repair path before work begins.' }
       ],
       pricing: { startingFrom: 15, currency: 'KWD', quoteRequired: true, displayLabel: 'From 15 KWD — free diagnostic first' },
-      seo: { title: 'HP Laptop Service Center Kuwait (Independent) | KCROC', description: 'Independent HP laptop repair in Kuwait for Pavilion, EliteBook, ProBook, Envy, OMEN and Victus. Free pickup, diagnosis first, quote before repair and 30-day warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/hp-laptop-repair-kuwait', ogType: 'article', schemaTypes: ['Brand', 'Service', 'FAQPage', 'BreadcrumbList'], lastModified: '2026-10-27T00:00:00+03:00' },
+      seo: { title: 'HP Laptop Service Center Kuwait (Independent) | From 15 KWD | KCROC', description: 'Independent HP laptop repair in Kuwait—not HP-authorized. Pavilion, EliteBook, ProBook, Envy, OMEN and Victus diagnosis. Selected repairs from 15 KWD where applicable, free pickup and a quote before work.', canonicalUrl: 'https://www.computerrepairkuwait.com/hp-laptop-repair-kuwait', ogType: 'article', schemaTypes: ['Brand', 'Service', 'FAQPage', 'BreadcrumbList'], lastModified: '2026-11-03T00:00:00+03:00' },
       navigationPriority: 80, popular: true 
     } as BrandEntity,
 
@@ -4689,11 +4689,12 @@ export const rawGraphData: RawGraphData = {
       ],
       pricing: { startingFrom: 15, currency: 'KWD', quoteRequired: true, displayLabel: 'From 15 KWD — free diagnostic first' },
       seo: {
-        title: 'Lenovo Laptop Service Center Kuwait (Independent) | KCROC',
-        description: 'Independent Lenovo laptop service in Kuwait, not Lenovo-authorized. ThinkPad, IdeaPad, Yoga, Legion, LOQ and ThinkBook repair, quote before repair, component-level where practical.',
+        title: 'Lenovo Laptop Service Center Kuwait (Independent) | From 15 KWD | KCROC',
+        description: 'Independent Lenovo laptop repair in Kuwait—not Lenovo-authorized. ThinkPad, Legion, IdeaPad, Yoga and LOQ diagnosis. Selected repairs from 15 KWD where applicable, free diagnosis, pickup and a quote before work.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/lenovo-laptop-repair-kuwait',
         ogType: 'website',
         schemaTypes: ['Brand', 'Service', 'FAQPage', 'BreadcrumbList'],
+        lastModified: '2026-11-03T00:00:00+03:00',
         breadcrumbs: [
           { name: 'Home', url: '/' },
           { name: 'Brands', url: '/brands' },
@@ -5429,18 +5430,18 @@ export const rawGraphData: RawGraphData = {
     'problem-cracked-screen': {
       id: 'problem-cracked-screen', slug: 'laptop-screen-cracked-kuwait', entityType: 'Problem', isActive: true,
       title: 'Laptop Screen Cracked or Shattered', primaryKeyword: "cracked laptop screen repair Kuwait", secondaryKeywords: ["laptop screen replacement Kuwait","laptop display lines repair","laptop screen black after drop"],
-      description: 'Repair guide for laptops with a physically cracked, shattered, or spider-webbed display panel after a drop or impact.',
+      description: 'Diagnostic guide for laptops with a cracked, shattered, or spider-webbed display after a drop or impact.',
       symptom: 'The screen shows spiderweb cracks, dark ink-like bleeding, discoloured patches, or areas with no picture at all after a drop, knock, or something pressing on the closed lid. An external monitor usually displays a perfect picture.',
       causes: ['Dropping the laptop or closing it on an object left on the keyboard', 'Impact or pressure on the closed lid while packed in a bag', 'Pre-existing hinge damage allowing the lid to close unevenly onto the bezel'],
       doNotDo: 'Do not keep using the laptop with a cracked panel — flexing or pressing on a shattered screen can push liquid crystal further into the bezel and, on some models, damage the display cable connector underneath.',
-      solution: 'We confirm the fault is the panel and not the board by testing output on an external monitor, then fit and calibrate an OEM-spec replacement LCD/IPS/OLED panel matched to your exact model, checking hinges and the display cable at the same time.',
+      solution: 'We check whether the fault is limited to the display panel by testing an external monitor when appropriate. We verify the laptop model, panel specifications, hinge condition and display cable, then explain compatible repair or replacement options, part availability and the total quote before work.',
       urgency: 'high',
       relatedServiceIds: ['srv-screen', 'srv-laptop'],
       contentImages: [
         { src: IMAGES.laptopHardware.dellLaptopCorruptedScreenGpuFailure.src, alt: IMAGES.laptopHardware.dellLaptopCorruptedScreenGpuFailure.alt, width: IMAGES.laptopHardware.dellLaptopCorruptedScreenGpuFailure.width, height: IMAGES.laptopHardware.dellLaptopCorruptedScreenGpuFailure.height, placement: 'causes', caption: 'A cracked panel showing display bleed — we confirm on an external monitor that the board itself is unaffected.' },
-        { src: IMAGES.laptopHardware.laptopLcdPanelReplacementPart.src, alt: IMAGES.laptopHardware.laptopLcdPanelReplacementPart.alt, width: IMAGES.laptopHardware.laptopLcdPanelReplacementPart.width, height: IMAGES.laptopHardware.laptopLcdPanelReplacementPart.height, placement: 'solution', caption: 'Fitting an OEM-spec replacement panel matched to the exact model before calibration.' },
+        { src: IMAGES.laptopHardware.laptopLcdPanelReplacementPart.src, alt: IMAGES.laptopHardware.laptopLcdPanelReplacementPart.alt, width: IMAGES.laptopHardware.laptopLcdPanelReplacementPart.width, height: IMAGES.laptopHardware.laptopLcdPanelReplacementPart.height, placement: 'solution', caption: 'A replacement panel example; the compatible specification and availability are checked against the exact laptop model before quoting.' },
       ],
-      seo: { title: 'Laptop Screen Cracked in Kuwait? Same-Day Fix | KCROC', description: 'Cracked, shattered, or bleeding laptop screen? We fit OEM-spec panels matched to your model, often same-day. Free pick & drop across Kuwait.', canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-screen-cracked-kuwait', ogType: 'article', schemaTypes: ['Article', 'FAQPage'] },
+      seo: { title: 'Cracked Laptop Screen in Kuwait? Diagnosis & Repair | KCROC', description: 'Cracked or shattered laptop screen after a drop? Learn what to avoid and how we check the panel, cable and hinge before confirming model-compatible repair options. Free pickup in Kuwait.', canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-screen-cracked-kuwait', ogType: 'article', schemaTypes: ['Article', 'FAQPage'], lastModified: '2026-11-03T00:00:00+03:00' },
       navigationPriority: 75, popular: true
     } as ProblemEntity,
 
