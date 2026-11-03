@@ -115,10 +115,10 @@ export const rawGraphData: RawGraphData = {
     'page-ar-home': {
       id: 'page-ar-home', slug: 'ar', entityType: 'WebPage', isActive: true,
       title: 'تصليح وصيانة الكمبيوتر واللابتوب في الكويت | مختبر KCROC حولي',
-      description: 'تصليح وصيانة الكمبيوتر واللابتوب وMacBook وGaming PC في الكويت. فحص أولي مجاني واستلام وتوصيل مجاني من المنزل أو المكتب، مع إصلاح في مختبر KCROC بحولي وعرض سعر قبل أي عمل مدفوع.'
+      description: 'تصليح وصيانة الكمبيوتر واللابتوب وMacBook وGaming PC في الكويت. فحص أولي مجاني واستلام وتوصيل مجاني من المنزل أو المكتب، مع إصلاح في مختبر KCROC بحولي وعرض سعر قبل أي عمل مدفوع.',
       seo: {
         title: 'تصليح وصيانة كمبيوتر ولابتوب في الكويت | KCROC',
-        description: 'تصليح وصيانة الكمبيوتر واللابتوب وMacBook وGaming PC في الكويت. فحص أولي مجاني واستلام وتوصيل مجاني من المنزل أو المكتب، مع إصلاح في مختبر KCROC بحولي وعرض سعر قبل أي عمل مدفوع.'
+        description: 'تصليح وصيانة الكمبيوتر واللابتوب وMacBook وGaming PC في الكويت. فحص أولي مجاني واستلام وتوصيل مجاني من المنزل أو المكتب، مع إصلاح في مختبر KCROC بحولي وعرض سعر قبل أي عمل مدفوع.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/ar',
         locale: 'ar_KW',
         alternates: {
