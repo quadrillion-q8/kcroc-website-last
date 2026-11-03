@@ -46,6 +46,7 @@ const [app, graph, seoProjection, locale, pricingPage, sitemap, hero, reviews, f
 ]);
 
 const vercelConfig = await readFile(path.resolve('vercel.json'), 'utf8');
+const arabicContact = await read('pages/ArabicContactPage.tsx');
 
 const laptopGraphStart = graph.indexOf("'srv-laptop': {");
 const laptopGraphEnd = graph.indexOf("'srv-desktop-pc': {", laptopGraphStart + 1);
@@ -273,7 +274,7 @@ add('Arabic and English homepage, services, and computer-repair hreflang alterna
   graph.includes("'en-KW': 'https://www.computerrepairkuwait.com/computer-repair-kuwait'"));
 add('Arabic localized homepage and services hub have dedicated content and localized direction',
   arabicHomeSource.includes('export function ArabicHomePage') &&
-  arabicHomeSource.includes('تصليح الكمبيوتر واللابتوب في الكويت') &&
+  arabicHomeSource.includes('تصليح وصيانة الكمبيوتر واللابتوب في الكويت') &&
   arabicHomeSource.includes('dir="rtl" lang="ar-KW"') &&
   arabicHomeSource.includes('export function ArabicServicesPage') &&
   arabicHomeSource.includes('خدمات تصليح الكمبيوتر واللابتوب في الكويت') &&
@@ -320,7 +321,7 @@ add('Unverified customer/repair totals removed from sales copy', !about.includes
 const arTitle = 'فني كمبيوتر في الكويت | تصليح كمبيوتر ولابتوب';
 const arH1 = 'فني كمبيوتر في الكويت لتصليح الكمبيوتر واللابتوب';
 add('Arabic technician head term: page title in graph', has(graph, `title: '${arTitle}'`), `expected in src/data/graph.ts: title: '${arTitle}'`);
-add('Arabic commercial page targets the observed computer-repair query and explains pickup, workshop diagnosis, price and warranty', has(graph, `title: 'فني كمبيوتر في الكويت | تصليح كمبيوتر ولابتوب | KCROC'`) && has(graph, `description: 'تحتاج فني كمبيوتر في الكويت؟ استلام وتوصيل مجاني من المنزل أو المكتب. نفحص الجهاز في مختبر حولي ونوضح التكلفة قبل الإصلاح، مع ضمان 30 يومًا.'`) && seoProjection.includes('فني كمبيوتر في الكويت | تصليح كمبيوتر ولابتوب | KCROC') && seoProjection.includes('تحتاج فني كمبيوتر في الكويت؟ استلام وتوصيل مجاني من المنزل أو المكتب. نفحص الجهاز في مختبر حولي ونوضح التكلفة قبل الإصلاح، مع ضمان 30 يومًا.'));
+add('Arabic commercial page targets the technician query with free intake, free diagnosis and a quote before repair', has(graph, `title: 'فني كمبيوتر في الكويت | فحص واستلام مجاني | KCROC'`) && has(graph, `ننسق استلام الجهاز مجانًا من المنزل أو المكتب`) && has(graph, `فحصًا أوليًا مجانيًا وضمان 30 يومًا على الإصلاح المكتمل`) && seoProjection.includes('فني كمبيوتر في الكويت | فحص واستلام مجاني | KCROC') && seoProjection.includes('ننسق استلام الجهاز مجانًا من المنزل أو المكتب'));
 add('Arabic technician head term: H1 on main Arabic commercial page', has(arabicCommercial, `h1: '${arH1}'`), `expected in src/pages/ArabicCommercialPage.tsx: h1: '${arH1}'`);
 add('Arabic computer repair: visible H1 matches the technician search intent', arabicCommercial.includes(`                ${arH1}\n              </h1>`));
 add('Arabic computer repair: full Hawalli workshop address is visible in local-service content', arabicCommercial.includes('شارع ابن خلدون، مجمع الملا، محل 19 في البدروم'));
@@ -329,7 +330,36 @@ add('Arabic commercial phone CTA displays a Kuwait country code, not a stray cur
 
 add('Arabic nearby page targets proximity intent and links to the main service page', graph.includes("title: 'تصليح كمبيوتر بالقرب منك في الكويت | استلام مجاني | KCROC'") && nearMeAr.includes('تصليح كمبيوتر ولابتوب') && nearMeAr.includes('to="/ar/computer-repair-kuwait"'));
 add('Arabic Hawalli snippet reflects technician queries, workshop location and free pickup', has(graph, "title: 'تصليح كمبيوتر حولي | فني كمبيوتر ولابتوب | KCROC") && has(graph, "تحتاج فني كمبيوتر في حولي؟ زر مختبر KCROC في مجمع الملا، شارع ابن خلدون، محل 19، أو اطلب الاستلام والتوصيل مجانًا. تشخيص واضح وضمان 30 يومًا.") && has(seoProjection, 'تصليح كمبيوتر حولي | فني كمبيوتر ولابتوب | KCROC') && has(seoProjection, 'تحتاج فني كمبيوتر في حولي؟ زر مختبر KCROC في مجمع الملا، شارع ابن خلدون، محل 19، أو اطلب الاستلام والتوصيل مجانًا. تشخيص واضح وضمان 30 يومًا.'));
-add('HP service-center query metadata explicitly identifies the independent provider', graph.includes("title: 'HP Laptop Service Center Kuwait (Independent) | KCROC'") && seoProjection.includes('HP Laptop Service Center Kuwait (Independent) | KCROC') && graph.includes('not an official HP-authorized service center'));
+add('HP service-center snippet includes independent status and a qualified from-price', graph.includes("title: 'HP Laptop Service Center Kuwait (Independent) | From 15 KWD | KCROC'") && seoProjection.includes('HP Laptop Service Center Kuwait (Independent) | From 15 KWD | KCROC') && graph.includes('not an official HP-authorized service center') && graph.includes('Selected repairs from 15 KWD where applicable'));
+
+add('Arabic contact card displays the Hawalli lab address and opening hours fully in Arabic',
+  arabicContact.includes('شارع ابن خلدون، مجمع الملا، السرداب، محل 19، حولي، الكويت') &&
+  arabicContact.includes('يوميًا من 10 صباحًا إلى 10 مساءً') &&
+  !arabicContact.includes('{business.streetAddress}، {business.addressLocality}، الكويت') &&
+  !arabicContact.includes('{business.openingHours}'));
+add('Arabic homepage metadata and hero now include native تصليح وصيانة intent without English category labels',
+  has(graph, "title: 'تصليح وصيانة الكمبيوتر واللابتوب في الكويت | مختبر KCROC حولي'") &&
+  seoProjection.includes('تصليح وصيانة الكمبيوتر واللابتوب في الكويت | KCROC') &&
+  arabicHomeSource.includes('تصليح وصيانة الكمبيوتر واللابتوب في الكويت — نصلح المذربورد على مستوى القطعة') &&
+  arabicHomeSource.includes('إصلاح المكونات الدقيقة عند ملاءمة ذلك'));
+add('Dell and Lenovo service-center snippets use independent status and qualified selected-repair starting prices',
+  graph.includes("title: 'Dell Laptop Service Center Kuwait (Independent) | From 15 KWD | KCROC'") &&
+  seoProjection.includes('Dell Laptop Service Center Kuwait (Independent) | From 15 KWD | KCROC') &&
+  graph.includes("title: 'Lenovo Laptop Service Center Kuwait (Independent) | From 15 KWD | KCROC'") &&
+  seoProjection.includes('Lenovo Laptop Service Center Kuwait (Independent) | From 15 KWD | KCROC') &&
+  graph.includes('not Dell-authorized') &&
+  graph.includes('not Lenovo-authorized') &&
+  graph.includes('Selected repairs from 15 KWD where applicable'));
+const crackedScreenProblemStart = graph.indexOf("'problem-cracked-screen': {");
+const crackedScreenProblemEnd = graph.indexOf("'problem-windows-wont-boot': {", crackedScreenProblemStart + 1);
+const crackedScreenProblem = crackedScreenProblemStart >= 0 && crackedScreenProblemEnd > crackedScreenProblemStart ? graph.slice(crackedScreenProblemStart, crackedScreenProblemEnd) : '';
+add('Cracked-screen page remains a symptom guide and avoids unsupported OEM or same-day promises',
+  crackedScreenProblem.includes("title: 'Cracked Laptop Screen in Kuwait? Diagnosis & Repair | KCROC'") &&
+  crackedScreenProblem.includes('model-compatible repair options') &&
+  !crackedScreenProblem.includes('Same-Day') &&
+  !crackedScreenProblem.includes('OEM-spec') &&
+  !crackedScreenProblem.includes('often same-day'));
+
 add('Arabic hreflang projection matches homepage alternate', graph.includes("'en-KW': 'https://www.computerrepairkuwait.com/'") && seoProjection.includes('\"en-KW\": \"https://www.computerrepairkuwait.com/\"'));
 add('Homepage hero exposes one tracked Arabic commercial link shared by mobile and desktop', (hero.match(/hero_arabic_computer_repair/g) || []).length === 1 && (hero.match(/to="\/ar\/computer-repair-kuwait"/g) || []).length === 1);
 add('Homepage Arabic links distinguish technician and near-me intent', serviceAreas.includes("{ label: 'فني كمبيوتر في الكويت', path: '/ar/computer-repair-kuwait' }") && serviceAreas.includes("{ label: 'تصليح كمبيوتر بالقرب مني', path: '/ar/near-me' }"));
@@ -399,8 +429,8 @@ add('Arabic laptop screen SEO targets replacement intent and common brands witho
 add('Arabic laptop screen hero, brand coverage, panel specifications, FAQs and related guide are present', arabicScreenTemplate.includes('تبديل وتصليح شاشة اللابتوب في الكويت') && arabicScreenTemplate.includes('كم سعر تبديل شاشة اللابتوب وهل السعر يشمل الشاشة؟') && arabicScreenTemplate.includes('HP وDell وLenovo وASUS وAcer وMSI وHuawei') && arabicCommercial.includes('laptop-screen-brand-coverage') && arabicCommercial.includes('13.3 و14 و15.6 و16 و17.3') && arabicCommercial.includes('Backlight Driver IC') && arabicCommercial.includes('دليل باللغة الإنجليزية: حماية شاشة اللابتوب من الكسر') && arabicCommercial.includes('تصليح وتبديل شاشة اللابتوب'));
 add('Arabic laptop screen WhatsApp CTAs request model, symptom, area and part-inclusive price confirmation', arabicCommercial.includes('الماركة والموديل: ____. المشكلة: ____. منطقتي بالكويت: ____') && whatsappIntent.includes('السعر النهائي شامل أجرة العمل والقطعة والمدة المتوقعة قبل الإصلاح.'));
 add('Arabic laptop screen Service schema covers brand, touch, gaming and backlight diagnostics without a labour-only offer price', arabicCommercial.includes("alternateName: 'Laptop Screen Replacement & Backlight Diagnostics Kuwait'") && arabicCommercial.includes("name: 'تبديل شاشة HP وDell وLenovo وASUS وAcer وMSI وHuawei'") && arabicCommercial.includes("name: 'تشخيص كابل الشاشة والإضاءة الخلفية'") && !arabicCommercial.includes("name: 'أجرة العمل من 30 د.ك + سعر الشاشة'") && !arabicCommercial.slice(arabicCommercial.indexOf('const screenServiceSchema'), arabicCommercial.indexOf('const faqSchema')).includes("availability: 'https://schema.org/InStock'"));
-add('HP metadata identifies common product families and body copy avoids unsupported regional failure comparisons', graph.includes("title: 'HP Laptop Service Center Kuwait (Independent) | KCROC'") && graph.includes("Independent HP laptop repair in Kuwait for Pavilion, EliteBook, ProBook, Envy, OMEN and Victus. Free pickup, diagnosis first, quote before repair and 30-day warranty.") && graph.includes("HP laptops—from Pavilion and Envy to EliteBook, ProBook, OMEN and Victus—can develop charging, power, hinge, cooling, battery and display faults. KCROC checks the exact model and symptoms at the Hawalli workshop before recommending a repair.") && !graph.includes("more commonly than in other markets") && seoProjection.includes("HP Laptop Service Center Kuwait (Independent) | KCROC"));
-add('HP title and description clarify independent service in graph and generated SEO projection', graph.includes("title: 'HP Laptop Service Center Kuwait (Independent) | KCROC'") && graph.includes("Independent HP laptop repair in Kuwait for Pavilion, EliteBook, ProBook, Envy, OMEN and Victus. Free pickup, diagnosis first, quote before repair and 30-day warranty.") && seoProjection.includes("HP Laptop Service Center Kuwait (Independent) | KCROC") && seoProjection.includes("Independent HP laptop repair in Kuwait for Pavilion, EliteBook, ProBook, Envy, OMEN and Victus. Free pickup, diagnosis first, quote before repair and 30-day warranty."));
+add('HP metadata identifies common product families, independent status and qualified selected-repair pricing', graph.includes("title: 'HP Laptop Service Center Kuwait (Independent) | From 15 KWD | KCROC'") && graph.includes("Independent HP laptop repair in Kuwait—not HP-authorized. Pavilion, EliteBook, ProBook, Envy, OMEN and Victus diagnosis. Selected repairs from 15 KWD where applicable, free pickup and a quote before work.") && graph.includes("HP laptops—from Pavilion and Envy to EliteBook, ProBook, OMEN and Victus—can develop charging, power, hinge, cooling, battery and display faults. KCROC checks the exact model and symptoms at the Hawalli workshop before recommending a repair.") && !graph.includes("more commonly than in other markets") && seoProjection.includes("HP Laptop Service Center Kuwait (Independent) | From 15 KWD | KCROC"));
+add('HP title and description clarify independent service and selected-repair pricing in graph and generated SEO projection', graph.includes("title: 'HP Laptop Service Center Kuwait (Independent) | From 15 KWD | KCROC'") && graph.includes("Independent HP laptop repair in Kuwait—not HP-authorized. Pavilion, EliteBook, ProBook, Envy, OMEN and Victus diagnosis. Selected repairs from 15 KWD where applicable, free pickup and a quote before work.") && seoProjection.includes("HP Laptop Service Center Kuwait (Independent) | From 15 KWD | KCROC") && seoProjection.includes("Independent HP laptop repair in Kuwait—not HP-authorized. Pavilion, EliteBook, ProBook, Envy, OMEN and Victus diagnosis. Selected repairs from 15 KWD where applicable, free pickup and a quote before work."));
 add('Local SEO metadata dates reflect the refreshed Arabic Hawalli, Farwaniya and near-me pages', graph.includes("lastModified: '2026-10-27T00:00:00+03:00'") && graph.includes("lastModified: '2026-10-29T00:00:00+03:00'") && graph.includes("lastModified: '2026-10-25T00:00:00+03:00'") && seoProjection.includes('"lastModified": "2026-10-27T00:00:00+03:00"') && seoProjection.includes('"lastModified": "2026-10-29T00:00:00+03:00"') && seoProjection.includes('"lastModified": "2026-10-25T00:00:00+03:00"'));
 
 add('Arabic MacBook screen page has buyer-focused Kuwait metadata and keeps its English language pair', graph.includes("title: 'تصليح وتبديل شاشة ماك بوك في الكويت | MacBook Air وPro'") && graph.includes("title: 'تصليح وتبديل شاشة ماك بوك في الكويت | Air وPro | KCROC'") && graph.includes('أجرة العمل من 30 د.ك + الشاشة. أرسل صورة الجهاز للسعر النهائي') && seoProjection.includes('أجرة العمل من 30 د.ك + الشاشة. أرسل صورة الجهاز للسعر النهائي') && graph.includes("canonicalUrl: 'https://www.computerrepairkuwait.com/ar/macbook-screen-replacement-kuwait'") && graph.includes("'en-KW': 'https://www.computerrepairkuwait.com/macbook-screen-replacement-kuwait'") && graph.includes("schemaTypes: ['WebPage', 'BreadcrumbList', 'Service', 'FAQPage', 'ImageObject']") && seoProjection.includes('تصليح وتبديل شاشة ماك بوك في الكويت | Air وPro | KCROC'));

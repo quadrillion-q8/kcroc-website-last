@@ -71,13 +71,13 @@ export function ArabicHomePage() {
             <div>
               <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-[#c9804d]/30 bg-[#c9804d]/10 px-4 py-2 text-sm font-bold text-[#efc19c]">
                 <BadgeCheck className="h-4 w-4" aria-hidden="true" />
-                مختبر متخصص في إصلاح المذربورد والمايكرو سولدرينج • استلام وتوصيل مجاني في الكويت
+                مختبر متخصص في إصلاح المذربورد واللحام الدقيق • استلام وتوصيل مجاني في الكويت
               </p>
               <h1 className="max-w-4xl text-4xl font-black leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">
-                تصليح الكمبيوتر واللابتوب في الكويت — نصلح المذربورد على مستوى القطعة
+                تصليح وصيانة الكمبيوتر واللابتوب في الكويت — نصلح المذربورد على مستوى القطعة
               </h1>
               <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-300 sm:text-xl">
-                إصلاح احترافي لأجهزة اللابتوب وماك بوك (MacBook) وكمبيوترات الألعاب (Gaming PC) داخل مختبر KCROC في حولي. نصلح دوائر المذربورد والشحن والطاقة بتقنيات المايكرو سولدرينج (Micro-Soldering)، مع استلام وتوصيل مجاني من منزلك أو مكتبك.
+                نصلح أجهزة اللابتوب وماك بوك والكمبيوترات المخصصة للألعاب داخل مختبر KCROC في حولي. يشمل العمل تشخيص دوائر المذربورد والشحن والطاقة وإصلاح المكونات الدقيقة عند ملاءمة ذلك، مع استلام وتوصيل مجاني من المنزل أو المكتب.
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <a href={`https://wa.me/${KCROC_GRAPH.business?.telephone}`} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#c9804d] px-6 py-3 font-extrabold text-[#101114] transition hover:bg-[#dfa06f] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#efc19c]">

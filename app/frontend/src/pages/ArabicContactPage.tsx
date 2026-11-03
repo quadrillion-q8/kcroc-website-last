@@ -166,11 +166,11 @@ export default function ArabicContactPage() {
               </div>
               <div className="flex items-start gap-4">
                 <MapPin className="mt-1 h-6 w-6 shrink-0 text-cyan-400" aria-hidden="true" />
-                <div><h3 className="font-bold text-white">عنوان المختبر</h3><address className="not-italic leading-7 text-slate-300">{business.streetAddress}، {business.addressLocality}، الكويت</address></div>
+                <div><h3 className="font-bold text-white">عنوان المختبر</h3><address className="not-italic leading-7 text-slate-300">شارع ابن خلدون، مجمع الملا، السرداب، محل 19، حولي، الكويت</address></div>
               </div>
               <div className="flex items-start gap-4">
                 <Clock className="mt-1 h-6 w-6 shrink-0 text-cyan-400" aria-hidden="true" />
-                <div><h3 className="font-bold text-white">ساعات العمل</h3><p className="text-slate-300">{business.openingHours}</p></div>
+                <div><h3 className="font-bold text-white">ساعات العمل</h3><p className="text-slate-300">يوميًا من 10 صباحًا إلى 10 مساءً</p></div>
               </div>
               <div className="rounded-2xl border border-cyan-500/20 bg-cyan-950/20 p-4 text-sm leading-7 text-slate-300">
                 <Truck className="ml-2 inline h-4 w-4 text-cyan-400" aria-hidden="true" />
