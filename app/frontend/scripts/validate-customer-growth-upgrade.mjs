@@ -246,6 +246,41 @@ add('Generated SEO projection retains Shuwaikh B service types, description and 
   seoProjection.includes('"MacBook logic-board diagnostics and micro-soldering"') &&
   seoProjection.includes('Component-level MacBook, laptop and gaming PC repair for Shuwaikh Residential'));
 
+const abdullahStart = graph.indexOf("'loc-abdullah-al-salem': {");
+const abdullahEnd = graph.indexOf("} as LocationEntity", abdullahStart);
+const abdullahEntity = abdullahStart >= 0 && abdullahEnd > abdullahStart
+  ? graph.slice(abdullahStart, abdullahEnd)
+  : '';
+
+add('Abdullah Al-Salem page has distinct Al-Dahiya charging, crash, privacy and four-block content',
+  abdullahEntity.includes("areaPostalCode: '72100'") &&
+  abdullahEntity.includes('72101–72104') &&
+  abdullahEntity.includes('Power Delivery controller') &&
+  abdullahEntity.includes('freezing, blue screens, kernel panics') &&
+  abdullahEntity.includes('localServiceCards:') &&
+  abdullahEntity.includes('SSD-retention option') &&
+  abdullahEntity.includes('Dhahiyat Abdullah Al-Salem') &&
+  !abdullahEntity.includes('This is a service-area page, not a local branch listing.') &&
+  !abdullahEntity.includes('15 minutes'));
+
+add('Abdullah Al-Salem generated SEO projection retains 72100 postal code and its power/stability service taxonomy',
+  seoProjection.includes('"areaPostalCode": "72100"') &&
+  seoProjection.includes('"USB-C Power Delivery and DC charging-port diagnostics"') &&
+  seoProjection.includes('"Computer Repair Abdullah Al-Salem (Al-Dahiya) | KCROC"') &&
+  seoProjection.includes('USB-C charging, MacBook logic-board and random-crash diagnostics'));
+
+add('Requested Abdullah Al-Salem URL redirects to the existing canonical location page',
+  JSON.parse(vercelConfig).redirects.some((r) =>
+    r.source === '/computer-repair-abdullah-al-salem' &&
+    r.destination === '/location/abdullah-al-salem' &&
+    r.permanent === true
+  ));
+
+add('Abdullah Al-Salem page replaces generic location FAQs with its six area-specific questions',
+  locations.includes("location.slug === 'abdullah-al-salem' ? [] : sharedLocationFaqs") &&
+  abdullahEntity.includes('faq-abdullah-al-salem-6') &&
+  abdullahEntity.includes('Can you diagnose random freezing'));
+
 add('Service-area FAQs remain in prerendered DOM and match their FAQPage schema answers',
   locations.includes('hidden={!isOpen}') &&
   locations.includes('{faq.answer}') &&

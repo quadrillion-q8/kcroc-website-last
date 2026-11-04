@@ -4455,23 +4455,130 @@ export const rawGraphData: RawGraphData = {
       navigationPriority: 92
     } as LocationEntity,
 
- 'loc-abdullah-al-salem': {id:'loc-abdullah-al-salem',slug:'abdullah-al-salem',entityType:'Location',isActive:true,isPhysicalLocation:false,
-  title:'Abdullah Al-Salem',description:'Computer and laptop repair for Abdullah Al-Salem, also known as Al-Dahiya, with free pickup to KCROC’s Hawalli lab.',
-  localIntro:"For Abdullah Al-Salem, also known as Al-Dahiya, KCROC offers free device collection and return delivery. Laptops, MacBooks and desktop computers are diagnosed at the Hawalli workshop for power, charging, display, battery and motherboard faults. Component-level board work is considered where technically suitable, and the full quote is shared before paid work. This is a service-area page, not a local branch listing.",
-  localHighlights:[{title:'Pickup from Abdullah Al-Salem and Al-Dahiya',description:'Send the block or location pin so we can arrange collection from your home or office.'},{title:'MacBook and Windows laptop repair',description:'We diagnose no-power, charging, battery, screen and startup problems.'},{title:'Component-level board diagnosis',description:'The lab traces motherboard faults to individual circuits and components where repair is feasible.'},{title:'Central Hawalli workshop',description:'Devices are repaired and tested at the KCROC lab before free return delivery.'}],
-  localFaqs:[
-   {id:"faq-abdullah-al-salem-1",question:"Do you provide pickup in Abdullah Al-Salem and Al-Dahiya?",answer:"Yes. Free pickup and delivery can be arranged in Abdullah Al-Salem, also known as Al-Dahiya. Send us your block and preferred collection time."},
-   {id:"faq-abdullah-al-salem-2",question:"Can you repair a MacBook that will not charge?",answer:"Yes. We test the charger, USB-C or MagSafe charging path, battery and logic board before deciding whether a port or component-level repair is possible."},
-   {id:"faq-abdullah-al-salem-3",question:"Do you replace a whole motherboard whenever it fails?",answer:"Not automatically. We diagnose the fault and attempt component-level repair when the damaged circuit can be repaired reliably. If replacement is better, we explain why."},
-   {id:"faq-abdullah-al-salem-4",question:"Where is the device actually repaired?",answer:"Devices collected from Abdullah Al-Salem are repaired at our Hawalli lab, Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19. There is no separate branch in Al-Dahiya."},
-   {id:"faq-abdullah-al-salem-5",question:"When will I know the repair cost?",answer:"After diagnosis, we explain the fault and provide the quote before paid work begins. No Fix, No Fee means no repair charge if we cannot fix the device."}
-  ],
-  landmark:'Mobile Dispatch Area (Devices collected in Abdullah Al-Salem / Al-Dahiya and repaired at the Hawalli lab)',serviceRadiusKm:12,
-  serviceAreas:['Abdullah Al-Salem','Al-Dahiya','Nuzha','Shamiya'],relatedServiceIds:['srv-laptop','srv-macbook','srv-motherboard','srv-charging-port'],
-  relatedProblemIds:['problem-no-power','problem-not-charging','problem-black-screen','problem-freezing-crashing'],relatedLocationIds:['loc-nuzha','loc-shamiya','loc-kaifan'],
-  contentImage:{src:IMAGES.motherboard.thermalGrizzly1.src,alt:IMAGES.motherboard.thermalGrizzly1.alt,width:IMAGES.motherboard.thermalGrizzly1.width,height:IMAGES.motherboard.thermalGrizzly1.height,caption:'A real motherboard service image from KCROC’s Hawalli repair lab.'},
-  seo:{title:"Computer Repair Abdullah Al-Salem | Free Pickup | KCROC",description:"Laptop, MacBook and motherboard repair for Abdullah Al-Salem (Al-Dahiya). Free pickup and delivery to KCROC’s Hawalli workshop.",canonicalUrl:'https://www.computerrepairkuwait.com/location/abdullah-al-salem',ogType:'website',schemaTypes:['LocalBusiness'],lastModified:'2026-11-05T00:00:00+03:00'},navigationPriority:91
- } as LocationEntity,
+ 'loc-abdullah-al-salem': {
+      id: 'loc-abdullah-al-salem',
+      slug: 'abdullah-al-salem',
+      entityType: 'Location',
+      isActive: true,
+      isPhysicalLocation: false,
+      title: 'Abdullah Al-Salem',
+      description: 'USB-C charging and power-circuit diagnostics, MacBook logic-board repair, and random-freezing or crash diagnostics for Abdullah Al-Salem (Al-Dahiya), with free doorstep collection to KCROC’s Hawalli lab.',
+      heroBadge: 'Al-Dahiya doorstep collection · Blocks 1–4 · Area code 72100',
+      heroHeadline: 'Computer & MacBook Repair in Abdullah Al-Salem (Al-Dahiya)',
+      localValueHeading: 'Charging Faults, Board-Level Repair & System Stability for Al-Dahiya',
+      localServicesHeading: 'Specialist Power, MacBook & Stability Diagnostics for Abdullah Al-Salem',
+      areaPostalCode: '72100',
+      serviceTypes: [
+        'USB-C Power Delivery and DC charging-port diagnostics',
+        'Laptop charging-circuit and power-rail micro-soldering',
+        'MacBook logic-board diagnostics and component-level repair',
+        'Motherboard power-fault and stability diagnostics',
+        'Computer freezing, random restart and crash diagnostics'
+      ],
+      localIntro: 'A laptop that only charges when the cable is held at an angle, a MacBook that stops accepting USB-C or MagSafe power, and a computer that freezes without warning are different symptoms—but none proves that an entire motherboard must be replaced. In Abdullah Al-Salem (Al-Dahiya), KCROC focuses this service on the power path and system stability: we distinguish a worn connector or cracked solder joint from a board-side USB-C Power Delivery controller, charging IC, protection MOSFET or input-rail fault where the device design uses those components. For freezes, blue screens, kernel panics or sudden restarts, the lab checks the relevant storage, memory, thermal, firmware and power-delivery evidence instead of guessing from the symptom alone. Free doorstep collection covers Blocks 1–4, with area/office code 72100 and block postal codes 72101–72104. Your device is logged for intake and taken to the ESD-safe KCROC laboratory at Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19, Hawalli. You receive the diagnosis and a clear quote before paid repair work begins. Use the First-to-Second Ring Road corridor, Dhahiyat Abdullah Al-Salem & Al-Mansouriya Co-op in Block 2, Hammoud Yousef Al-Nisf Street, Ahmad Al-Ghanem Street or Sana’a Road / Souq Dhahiya Street as nearby references when sharing your location pin. If several household or home-office devices need attention, include each model and symptom in the same message so collection arrangements can be coordinated.',
+      localHighlights: [
+        {
+          title: 'USB-C charging is a circuit diagnosis—not just a port swap',
+          description: 'An intermittent connection can come from the adapter, receptacle, cracked connector joints or lifted pads. A laptop that detects the charger but will not negotiate or sustain charging can also have a board-side Power Delivery controller, charging IC, protection MOSFET or input-rail fault. We test the relevant path for the exact board before recommending connector or component work.'
+        },
+        {
+          title: 'Freezing and random crashes need evidence-led isolation',
+          description: 'A freeze, BSOD, kernel panic or sudden restart can involve SSD health, RAM instability, thermal shutdown, unstable power delivery, firmware or software. We separate the likely causes with appropriate storage, memory, thermal and board checks; a symptom alone is not a reason to replace the motherboard or wipe the operating system.'
+        },
+        {
+          title: 'Hardware-first handling and an SSD-retention option',
+          description: 'Supported hardware diagnostics do not require your Windows or Mac account password and are focused on the device rather than browsing personal files. For compatible Windows laptops and desktops with a removable NVMe or SATA drive, ask before collection about safely removing and keeping the SSD. Storage and boot tests will be limited while that drive is out. Modern MacBooks generally use soldered storage, which is not a removable M.2 drive.'
+        },
+        {
+          title: 'Four-block Al-Dahiya collection coverage',
+          description: 'The page covers Abdullah Al-Salem Blocks 1–4: area/office code 72100, with Block 1 (72101), Block 2 (72102), Block 3 (72103) and Block 4 (72104). Share your block and pin, using the Dhahiyat Abdullah Al-Salem & Al-Mansouriya Co-op, Hammoud Yousef Al-Nisf Street, Ahmad Al-Ghanem Street or Sana’a Road as nearby references.'
+        }
+      ],
+      localServiceCards: [
+        {
+          title: 'Laptop USB-C, Thunderbolt & DC Charging-Port Repair',
+          problem: 'The laptop says “plugged in, not charging”, charges only at a certain cable angle, disconnects under movement, or has a damaged USB-C or barrel-jack connector.',
+          expertise: 'We inspect the adapter and receptacle, connector solder joints and pads, then test the relevant charging path. Depending on the board design, this can include the USB-C Power Delivery controller, charging IC, protection MOSFETs and input rails.',
+          solution: 'We identify whether the fault is at the connector or further into the power circuit, then quote a targeted repair before paid work. Charging stability is checked after the approved work.',
+          serviceIds: ['srv-charging-port', 'srv-motherboard']
+        },
+        {
+          title: 'MacBook Air & MacBook Pro Logic-Board Restoration',
+          problem: 'A MacBook will not power on, will not charge over USB-C or MagSafe, repeatedly disconnects from its adapter, or starts but shows an unstable display or startup behavior.',
+          expertise: 'Model-specific checks trace the charging and power path, affected controllers, protection components and logic-board rails. Where the fault and board condition permit, we assess micro-soldering on the original board rather than assuming a complete board replacement.',
+          solution: 'The Hawalli lab shares the findings and a repair quote before work. Keeping the original logic board may preserve access to soldered storage, but data preservation depends on storage and controller condition and is never guaranteed.',
+          serviceIds: ['srv-macbook', 'srv-motherboard']
+        },
+        {
+          title: 'Motherboard Power & Random-Crash Diagnostics',
+          problem: 'Unexpected freezing, blue screens, kernel panics, sudden restarts or shutdowns—especially when the computer is under load or has recently developed charging or power symptoms.',
+          expertise: 'We separate storage-health and memory issues from thermal behavior, firmware symptoms and board-level power instability. Checks are chosen for the device and can include SSD health, memory testing, thermal review, firmware checks and relevant power-rail measurements.',
+          solution: 'You receive the likely cause and repair options before paid work. After an approved repair, we verify the functions related to the fault and run suitable stability checks before return.',
+          serviceIds: ['srv-motherboard', 'srv-laptop']
+        },
+        {
+          title: 'Executive Laptop & Home-Office Hardware Repair',
+          problem: 'A work laptop has a no-power fault, unreliable charging, a damaged screen or hinge, battery trouble, or several household devices need attention.',
+          expertise: 'We diagnose supported Dell, HP, Lenovo, ASUS, Acer and MSI laptop hardware at the component or assembly level, matching any required part to the exact model.',
+          solution: 'Send the model and symptom for each device with your Al-Dahiya block. KCROC confirms collection arrangements, diagnoses at the Hawalli lab and shares the quote before paid work.',
+          serviceIds: ['srv-laptop', 'srv-charging-port']
+        }
+      ],
+      localFaqs: [
+        {
+          id: 'faq-abdullah-al-salem-1',
+          question: 'Can KCROC collect from Abdullah Al-Salem Blocks 1–4?',
+          answer: 'Yes. Free doorstep pickup and return delivery can be arranged across Abdullah Al-Salem (Al-Dahiya) Blocks 1, 2, 3 and 4. Send your block, street or nearby landmark, device model and fault on WhatsApp so the team can confirm the collection arrangement. Your device is repaired and tested at the Hawalli lab.'
+        },
+        {
+          id: 'faq-abdullah-al-salem-2',
+          question: 'My USB-C laptop is plugged in but not charging. Is the port or motherboard faulty?',
+          answer: 'Either is possible. The cause can be the adapter, a worn or damaged USB-C receptacle, cracked solder joints, a lifted pad, a Power Delivery controller, charging IC, protection MOSFET or another input-rail fault. KCROC checks the charging path for your exact model before recommending a port repair or board-level work.'
+        },
+        {
+          id: 'faq-abdullah-al-salem-3',
+          question: 'Can you diagnose random freezing, blue screens, kernel panics or sudden restarts?',
+          answer: 'Yes. These symptoms can have several causes, including SSD or memory problems, overheating, firmware behavior, software faults or unstable power delivery. We use symptom history and suitable hardware checks to separate the likely cause before quoting; we do not assume that a motherboard replacement or operating-system wipe is the right first step.'
+        },
+        {
+          id: 'faq-abdullah-al-salem-4',
+          question: 'Can you repair the original MacBook logic board without replacing it?',
+          answer: 'Where the damaged circuit and board condition make it technically viable, we assess component-level repair of the original logic board before recommending a complete replacement. Keeping the original board may preserve access to soldered storage, but it is not a data-recovery guarantee: storage chips, controllers or related power circuits may also be damaged.'
+        },
+        {
+          id: 'faq-abdullah-al-salem-5',
+          question: 'Can I keep my NVMe or SATA SSD, and do you need my account password?',
+          answer: 'For compatible Windows laptops and desktops with a removable NVMe or SATA drive, ask before collection about safely removing and retaining the SSD. Boot, operating-system and storage tests will be limited until it is reinstalled. A password is not needed for hardware-only power, charging or board diagnostics; any separate software test that needs account access is explained and agreed first. Do not send your password by WhatsApp. Modern MacBooks generally have soldered storage rather than a removable M.2 drive.'
+        },
+        {
+          id: 'faq-abdullah-al-salem-6',
+          question: 'When will I receive the repair price, and what if the fault cannot be fixed?',
+          answer: 'The team diagnoses the device at the Hawalli lab and sends you the repair scope and quote before paid work begins. If you decline, no paid repair work proceeds. Under KCROC’s No Fix, No Fee policy, there is no repair charge when the device cannot be fixed under the policy.'
+        }
+      ],
+      landmark: 'Service-area collection — Abdullah Al-Salem (Al-Dahiya); all workshop diagnosis and repair take place at KCROC’s Hawalli lab',
+      serviceRadiusKm: 12,
+      serviceAreas: ['Abdullah Al-Salem', 'Al-Dahiya', 'Nuzha', 'Shamiya'],
+      relatedServiceIds: ['srv-laptop', 'srv-macbook', 'srv-motherboard', 'srv-charging-port'],
+      relatedProblemIds: ['problem-not-charging', 'problem-no-power', 'problem-freezing-crashing', 'problem-black-screen'],
+      relatedLocationIds: ['loc-shamiya', 'loc-nuzha', 'loc-kaifan'],
+      contentImage: {
+        src: IMAGES.motherboard.thermalGrizzly1.src,
+        alt: IMAGES.motherboard.thermalGrizzly1.alt,
+        width: IMAGES.motherboard.thermalGrizzly1.width,
+        height: IMAGES.motherboard.thermalGrizzly1.height,
+        caption: 'Board-level power and component diagnostics at KCROC’s Hawalli repair lab.'
+      },
+      seo: {
+        title: 'Computer Repair Abdullah Al-Salem (Al-Dahiya) | KCROC',
+        description: 'USB-C charging, MacBook logic-board and random-crash diagnostics for Abdullah Al-Salem (Al-Dahiya). Free doorstep pickup to KCROC’s Hawalli lab.',
+        canonicalUrl: 'https://www.computerrepairkuwait.com/location/abdullah-al-salem',
+        ogType: 'website',
+        schemaTypes: ['LocalBusiness'],
+        lastModified: '2026-11-05T00:00:00+03:00'
+      },
+      navigationPriority: 93
+    } as LocationEntity,
 
  'loc-shamiya': {id:'loc-shamiya',slug:'shamiya',entityType:'Location',isActive:true,isPhysicalLocation:false,
   title:'Shamiya',description:'Laptop, MacBook and desktop PC repair for Shamiya, with free pickup to KCROC’s Hawalli workshop.',
