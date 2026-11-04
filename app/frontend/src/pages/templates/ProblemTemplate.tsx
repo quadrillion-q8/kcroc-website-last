@@ -3,7 +3,7 @@ import React from 'react';
 import { useLocation, Navigate, Link } from 'react-router-dom';
 import { KCROC_GRAPH } from '../../data/graph';
 import { SEOEngine } from '../../core/components/SEOEngine';
-import { getIntentWhatsAppLink } from '../../utils/whatsappIntent';
+import { buildWhatsAppLink, getIntentWhatsAppLink } from '../../utils/whatsappIntent';
 import { AlertOctagon, CheckCircle2, ShieldAlert, ArrowRight, Wrench, MapPin, HelpCircle, BookOpen, Clock3, ExternalLink } from 'lucide-react';
 
 
@@ -52,9 +52,24 @@ const THERMAL_TRIAGE_OPTIONS = [
   }
 ] as const;
 
+const LIQUID_TYPES = [
+  { id: 'water', label: 'Plain water', message: 'plain water' },
+  { id: 'coffee-tea', label: 'Coffee / tea', message: 'coffee or tea' },
+  { id: 'sweet-drink', label: 'Sweet drink / soda', message: 'a sweet drink or soda' },
+  { id: 'milk-latte', label: 'Milk / latte', message: 'milk or a latte' },
+] as const;
+
+const LIQUID_DEVICE_TYPES = [
+  { id: 'windows', label: 'Windows laptop' },
+  { id: 'macbook', label: 'MacBook' },
+  { id: 'gaming', label: 'Gaming laptop' },
+] as const;
+
 const ProblemTemplate: React.FC = () => {
   const location = useLocation();
   const [thermalPattern, setThermalPattern] = React.useState('warm-under-load');
+  const [selectedLiquid, setSelectedLiquid] = React.useState<(typeof LIQUID_TYPES)[number]['id']>('water');
+  const [selectedLiquidDevice, setSelectedLiquidDevice] = React.useState<(typeof LIQUID_DEVICE_TYPES)[number]['id']>('windows');
   const selectedThermalGuidance = THERMAL_TRIAGE_OPTIONS.find((option) => option.id === thermalPattern) ?? THERMAL_TRIAGE_OPTIONS[0];
   const slug = location.pathname.replace(/^\/+/, ''); 
   
@@ -63,6 +78,12 @@ const ProblemTemplate: React.FC = () => {
   if (!problem) return <Navigate to="/404" replace />;
 
   const isOverheating = problem.id === 'problem-overheating';
+  const isLiquidSpill = problem.id === 'problem-liquid-spill';
+  const selectedLiquidOption = LIQUID_TYPES.find((option) => option.id === selectedLiquid) ?? LIQUID_TYPES[0];
+  const selectedLiquidDeviceOption = LIQUID_DEVICE_TYPES.find((option) => option.id === selectedLiquidDevice) ?? LIQUID_DEVICE_TYPES[0];
+  const liquidTriageWhatsAppHref = buildWhatsAppLink(
+    `Hi KCROC, I spilled ${selectedLiquidOption.message} on my ${selectedLiquidDeviceOption.label}. Please advise the safest next step and whether free pickup can be arranged.`
+  );
   const problemLabel = problem.title
     .replace(/\s+in Kuwait$/i, '')
     .replace(/\s+Kuwait$/i, '')
@@ -123,6 +144,40 @@ const ProblemTemplate: React.FC = () => {
           <h1 className="text-4xl md:text-5xl font-black text-white mb-6">
             {problem.title}
           </h1>
+          {problem.emergencySteps && problem.emergencySteps.length > 0 && (
+            <div role="alert" aria-labelledby="liquid-emergency-title" className="mb-7 rounded-2xl border-2 border-rose-500/80 bg-rose-950/80 p-5 text-left shadow-2xl md:p-7">
+              <div className="flex items-start gap-3">
+                <ShieldAlert aria-hidden="true" className="mt-1 h-7 w-7 flex-shrink-0 text-rose-300" />
+                <div>
+                  <p className="text-xs font-black uppercase tracking-[0.18em] text-rose-300">Emergency — act before trying to restart</p>
+                  <h2 id="liquid-emergency-title" className="mt-1 text-xl font-black text-white md:text-2xl">Switch off and isolate power now</h2>
+                  <p className="mt-2 text-sm leading-6 text-rose-100/90">Do not plug the laptop in or press the power button again to test it, even if it appears to work.</p>
+                </div>
+              </div>
+              <ol className="mt-5 grid gap-3 md:grid-cols-2">
+                {problem.emergencySteps.map((step, index) => (
+                  <li key={step.title} className="flex items-start gap-3 rounded-xl border border-rose-800/70 bg-black/20 p-4">
+                    <span className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full border border-rose-400/40 bg-rose-500/15 text-sm font-black text-rose-200">{index + 1}</span>
+                    <div>
+                      <h3 className="font-bold text-white">{step.title}</h3>
+                      <p className="mt-1 text-sm leading-6 text-rose-100/85">{step.description}</p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+              {problem.emergencyCaution && (
+                <p className="mt-4 rounded-xl border border-rose-400/40 bg-rose-900/35 p-4 text-sm font-semibold leading-6 text-rose-100">{problem.emergencyCaution}</p>
+              )}
+              <div className="mt-5 flex flex-wrap gap-3">
+                <a href={buildWhatsAppLink('Hi KCROC, liquid has spilled on my laptop. I have kept it off and need advice on safe pickup.')} target="_blank" rel="noreferrer" className="inline-flex items-center justify-center rounded-full bg-rose-300 px-5 py-3 font-black text-rose-950 transition-colors hover:bg-rose-200">
+                  WhatsApp KCROC now
+                </a>
+                <Link to="/book" className="inline-flex items-center justify-center rounded-full border border-rose-300/50 px-5 py-3 font-bold text-white transition-colors hover:bg-rose-900/40">
+                  Arrange free pickup
+                </Link>
+              </div>
+            </div>
+          )}
           <div className="p-4 bg-brand-dark/60 backdrop-blur-md rounded-xl border border-slate-700 text-left inline-block shadow-inner">
             <span className="text-sm font-bold text-rose-400 uppercase tracking-wider block mb-1">Symptom</span>
             <p className="text-slate-300">{problem.symptom}</p>
@@ -147,6 +202,52 @@ const ProblemTemplate: React.FC = () => {
                 </span>
               </div>
             </div>
+          )}
+
+          {isLiquidSpill && (
+            <section aria-labelledby="liquid-triage-title" className="rounded-3xl border border-slate-800 bg-slate-900/60 p-6 md:p-8">
+              <div className="max-w-3xl">
+                <p className="text-sm font-bold uppercase tracking-[0.18em] text-cyan-400">Quick contact helper</p>
+                <h2 id="liquid-triage-title" className="mt-2 text-2xl font-black text-white md:text-3xl">What did you spill, and what device is affected?</h2>
+                <p className="mt-3 leading-7 text-slate-400">Choose the closest options to prepare a useful WhatsApp message. This is not a damage assessment; keep the laptop switched off and disconnected.</p>
+              </div>
+              <div className="mt-6">
+                <h3 className="text-sm font-bold text-white">Liquid type</h3>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {LIQUID_TYPES.map((option) => {
+                    const active = selectedLiquid === option.id;
+                    return (
+                      <button key={option.id} type="button" aria-pressed={active} onClick={() => setSelectedLiquid(option.id)} className={active
+                        ? 'rounded-full border border-cyan-300 bg-cyan-400 px-4 py-2.5 text-sm font-black text-slate-950'
+                        : 'rounded-full border border-slate-700 bg-slate-950/60 px-4 py-2.5 text-sm font-bold text-slate-300 hover:border-cyan-500/60'}>
+                        {option.label}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+              <div className="mt-5">
+                <h3 className="text-sm font-bold text-white">Device type</h3>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {LIQUID_DEVICE_TYPES.map((option) => {
+                    const active = selectedLiquidDevice === option.id;
+                    return (
+                      <button key={option.id} type="button" aria-pressed={active} onClick={() => setSelectedLiquidDevice(option.id)} className={active
+                        ? 'rounded-full border border-cyan-300 bg-cyan-400 px-4 py-2.5 text-sm font-black text-slate-950'
+                        : 'rounded-full border border-slate-700 bg-slate-950/60 px-4 py-2.5 text-sm font-bold text-slate-300 hover:border-cyan-500/60'}>
+                        {option.label}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+              <div className="mt-5 flex flex-col gap-3 rounded-2xl border border-slate-800 bg-slate-950/60 p-4 sm:flex-row sm:items-center sm:justify-between">
+                <p className="text-sm leading-6 text-slate-300">Message: “I spilled {selectedLiquidOption.message} on my {selectedLiquidDeviceOption.label}.”</p>
+                <a href={liquidTriageWhatsAppHref} target="_blank" rel="noreferrer" className="inline-flex flex-shrink-0 items-center justify-center rounded-full bg-cyan-400 px-5 py-3 text-sm font-black text-slate-950 hover:bg-cyan-300">
+                  Send details on WhatsApp <ArrowRight aria-hidden="true" className="ml-2 h-4 w-4" />
+                </a>
+              </div>
+            </section>
           )}
 
           {isOverheating && (
@@ -225,7 +326,7 @@ const ProblemTemplate: React.FC = () => {
             <div className="mb-6">
               <p className="text-sm font-bold uppercase tracking-[0.18em] text-cyan-400">Safe troubleshooting</p>
               <h2 id="safe-checks" className="text-3xl font-black text-white mt-2">
-                {isOverheating ? 'Safe checks before opening your laptop' : 'Safe checks before opening the device'}
+                {isLiquidSpill ? 'Safe checks while keeping the laptop closed' : isOverheating ? 'Safe checks before opening your laptop' : 'Safe checks before opening the device'}
               </h2>
             </div>
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -240,6 +341,38 @@ const ProblemTemplate: React.FC = () => {
               ))}
             </div>
           </section>
+
+          {problem.liquidRiskMatrix && problem.liquidRiskMatrix.length > 0 && (
+            <section aria-labelledby="liquid-risk-matrix">
+              <div className="mb-6">
+                <p className="text-sm font-bold uppercase tracking-[0.18em] text-cyan-400">Liquid comparison</p>
+                <h2 id="liquid-risk-matrix" className="mt-2 text-3xl font-black text-white">Different drinks leave different residues</h2>
+                <p className="mt-3 max-w-3xl text-slate-400">The table compares common contamination patterns, not fixed corrosion times or survival rates. The actual outcome depends on the amount spilled, where it travelled, whether power was present and the laptop's design.</p>
+              </div>
+              <div className="overflow-x-auto rounded-2xl border border-slate-800">
+                <table className="min-w-[760px] w-full border-collapse text-left text-sm">
+                  <thead className="bg-slate-950 text-slate-200">
+                    <tr>
+                      <th scope="col" className="p-4 font-black">Liquid</th>
+                      <th scope="col" className="p-4 font-black">Possible residue</th>
+                      <th scope="col" className="p-4 font-black">Main concern</th>
+                      <th scope="col" className="p-4 font-black">What to do</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-800 bg-slate-900/50">
+                    {problem.liquidRiskMatrix.map((item) => (
+                      <tr key={item.liquid}>
+                        <th scope="row" className="p-4 align-top font-bold text-white">{item.liquid}</th>
+                        <td className="p-4 align-top leading-6 text-slate-400">{item.residue}</td>
+                        <td className="p-4 align-top leading-6 text-slate-400">{item.risk}</td>
+                        <td className="p-4 align-top leading-6 text-slate-300">{item.action}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </section>
+          )}
 
           <section aria-labelledby="common-causes">
             <div className="mb-6">
@@ -349,7 +482,7 @@ const ProblemTemplate: React.FC = () => {
                 <CheckCircle2 className="mt-1 h-8 w-8 flex-shrink-0 text-cyan-400" />
                 <div>
                   <p className="text-sm font-bold uppercase tracking-[0.18em] text-cyan-400">The KCROC approach</p>
-                  <h2 id="kcroc-solution" className="mt-2 text-3xl font-black text-white">Diagnose first. Repair the failed stage.</h2>
+                  <h2 id="kcroc-solution" className="mt-2 text-3xl font-black text-white">{isLiquidSpill ? 'We fix the board where repair is viable — not just default to a swap.' : 'Diagnose first. Repair the failed stage.'}</h2>
                 </div>
               </div>
               {getContentImage('solution') && <div className="mt-7"><ContentImage image={getContentImage('solution')!} /></div>}
