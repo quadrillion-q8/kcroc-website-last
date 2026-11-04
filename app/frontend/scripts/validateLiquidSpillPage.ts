@@ -30,11 +30,11 @@ const referenceHosts = (problem.technicalReferences ?? []).map((reference) => {
 const knownPaths = new Set((KCROC_GRAPH.routableEntities ?? []).map((entity) => `/${entity.slug}`));
 const missingResources = (problem.relatedResourcePaths ?? []).filter((resource) => !knownPaths.has(resource.path));
 const unsafeClaims = [
-  /(?:within|in)\\s+\\d+\\s*(?:minutes?|hours?)/i,
-  /(?:guarantee|guaranteed)\\s+(?:100%|all)\\s+(?:of )?(?:your )?(?:files|data)/i,
-  /100%\\s+(?:data|files)\\s+(?:preserved|safe|intact)/i,
-  /(?:save|preserve)\\s+all\\s+(?:your )?(?:data|files)/i,
-  /(?:60|70|80)%\\s+(?:of )?(?:the )?laptop(?:'s)?\\s+value/i,
+  /(?:within|in)[ ]+[0-9]+[ ]*(?:minutes?|hours?)/i,
+  /(?:guarantee|guaranteed)[ ]+(?:100%|all)[ ]+(?:of )?(?:your )?(?:files|data)/i,
+  /100%[ ]+(?:data|files)[ ]+(?:preserved|safe|intact)/i,
+  /(?:save|preserve)[ ]+all[ ]+(?:your )?(?:data|files)/i,
+  /(?:60|70|80)%[ ]+(?:of )?(?:the )?laptop(?:'s)?[ ]+value/i,
 ];
 
 check(problem.seo.title.length <= 65, 'SEO title should remain concise (65 characters or fewer).');
