@@ -5143,21 +5143,282 @@ export const rawGraphData: RawGraphData = {
     } as ProblemEntity,
 
     'problem-liquid-spill': {
-      id: 'problem-liquid-spill', slug: 'spilled-water-on-laptop', entityType: 'Problem', isActive: true,
-      title: 'Spilled Water or Coffee on Laptop', primaryKeyword: "spilled water on laptop Kuwait", secondaryKeywords: ["water damaged laptop repair Kuwait","coffee spilled on laptop","MacBook liquid damage repair"],
-      description: 'Emergency guide for liquid damage on laptops and MacBooks.',
-      symptom: 'Liquid (water, coffee, juice) has been spilled on the keyboard. The device may have shut off instantly, or the keyboard may be acting erratically.',
-      causes: ['Liquid creates conductive bridges across motherboard components, causing immediate electrical shorts.', 'Sugars and acids in coffee/juice accelerate copper corrosion within hours.'],
-      doNotDo: 'DO NOT put it in rice (rice dust makes it worse). DO NOT use a hairdryer (pushes liquid deeper). DO NOT TRY TO TURN IT ON to "see if it works" — this causes the electrical shorts that kill the board.',
-      solution: 'Immediate power disconnection. We fully disassemble the device, remove the motherboard, and run it through an industrial ultrasonic cleaner to strip all liquid and corrosion. We then replace any shorted chips via micro-soldering.',
-      urgency: 'critical',
-      relatedServiceIds: ['srv-motherboard', 'srv-macbook', 'srv-liquid-damage'],
-      contentImages: [
-        { src: IMAGES.laptopHardware.dellLaptopCorruptedScreenGpuFailure.src, alt: IMAGES.laptopHardware.dellLaptopCorruptedScreenGpuFailure.alt, width: IMAGES.laptopHardware.dellLaptopCorruptedScreenGpuFailure.width, height: IMAGES.laptopHardware.dellLaptopCorruptedScreenGpuFailure.height, placement: 'causes', caption: 'Display corruption after a liquid spill — a sign the short has reached the graphics circuit.' },
-        { src: IMAGES.laptopHardware.laptopBatteryMotherboardOpenRepair.src, alt: IMAGES.laptopHardware.laptopBatteryMotherboardOpenRepair.alt, width: IMAGES.laptopHardware.laptopBatteryMotherboardOpenRepair.width, height: IMAGES.laptopHardware.laptopBatteryMotherboardOpenRepair.height, placement: 'solution', caption: 'The motherboard removed for ultrasonic cleaning and corrosion inspection before any chip is replaced.' },
+      id: 'problem-liquid-spill',
+      slug: 'spilled-water-on-laptop',
+      entityType: 'Problem',
+      isActive: true,
+      title: 'Spilled Water, Coffee or Liquid on Laptop',
+      primaryKeyword: 'spilled water on laptop',
+      secondaryKeywords: [
+        'coffee spilled on laptop',
+        'spilled coffee on laptop keyboard',
+        'laptop water damage repair Kuwait',
+        'laptop liquid damage repair Kuwait',
+        'sweet tea spilled on laptop',
+        'MacBook liquid damage repair Kuwait',
+        'milk spilled on laptop',
+        'soda spilled on laptop'
       ],
-      seo: { title: 'Spilled Water on Laptop in Kuwait? Emergency Repair | KCROC', description: 'Spilled coffee or water on your laptop? Do not turn it on! We offer ultrasonic motherboard cleaning and chip-level repair to save your device and data.', canonicalUrl: 'https://www.computerrepairkuwait.com/spilled-water-on-laptop', ogType: 'article', schemaTypes: ['Article', 'FAQPage'] },
-      navigationPriority: 70, popular: false
+      synonyms: ['laptop got wet', 'liquid on laptop keyboard', 'spilled drink on laptop'],
+      description: 'What to do after water, coffee, tea, soda or milk spills on a laptop in Kuwait. Safe power-off steps, liquid-specific risks and component-level repair guidance.',
+      shortDescription: 'Spilled a drink on your laptop? Keep it off and unplugged. Learn the safest next steps and how KCROC checks liquid contamination, corrosion and board-level damage.',
+      intro: 'A laptop can look dry on the outside while liquid remains beneath the keyboard, around connectors or on the motherboard. The first priority is to stop current flowing through affected electronics: power the device off, disconnect external power when it is safe, and do not switch it back on just because it still appears to work. The checks on this page are deliberately external and low-risk. Internal battery isolation, board cleaning and electrical diagnosis should be handled by a technician using the exact model and board information.',
+      symptom: 'Water, coffee, tea, karak, milk, soda or another drink has reached the keyboard, touchpad, ports or laptop chassis. The device may shut down, keep running, show a black screen, stop charging, develop sticky keys or appear normal at first.',
+      causes: [
+        'Liquid can bridge nearby electrical contacts while power is present, creating short circuits in keyboard, charging, display or motherboard circuits.',
+        'Dissolved minerals, salts, sugars, milk proteins and other drink residues can remain after visible moisture has evaporated. Surface dryness does not prove that connectors or components are clean.',
+        'Liquid can travel beyond the visible spill area through keyboard layers, ribbon cables, ports, seams and shielding, so the affected area may be larger than the stain suggests.',
+        'Corrosion and residue-related faults can develop or become noticeable later. A laptop that boots after a spill is not necessarily safe to keep using.'
+      ],
+      doNotDo: 'Do not turn the laptop back on, connect the charger, or press keys to test it after a spill. Do not put it in rice, use a hairdryer or heater, spray household cleaner into the keyboard, or pour alcohol into the device. These actions do not remove contamination from beneath chips and connectors and can make inspection or repair harder. Do not open a sealed laptop or attempt to disconnect an internal battery unless you are trained and following the correct service procedure.',
+      solution: 'KCROC first records the spill details and isolates the power sources safely. The laptop is then inspected and, where appropriate, disassembled so the affected board, connectors and keyboard path can be assessed. Contamination is cleaned using a method suited to the board and components; ultrasonic cleaning is used only where the bare-board condition and preparation make it appropriate. Any damaged connector, trace, fuse, MOSFET or power-management component is tested and repaired at component level when technically viable. The original board is retained where practical, followed by checks of the functions affected by the spill. Repairability and data access depend on the exact device and damage; neither is guaranteed before inspection.',
+      urgency: 'critical',
+      emergencySteps: [
+        {
+          title: 'Turn the laptop off immediately',
+          description: 'If it is still running and there is no heat, smoke, swelling or other battery warning, press and hold the power button until it switches off (often around 5–10 seconds). Do not wait for a normal Windows or macOS shutdown.'
+        },
+        {
+          title: 'Disconnect the charger and accessories — only if safe',
+          description: 'Unplug the charger and attached USB devices only when your hands, the floor and the power outlet are dry and safe to touch. Do not reach through liquid or touch a wet outlet, exposed wire or sparking adapter.'
+        },
+        {
+          title: 'Remove only an externally removable battery',
+          description: 'If the laptop has a user-removable battery and the device is cool and safe to handle, remove it according to the manufacturer instructions. Do not open the chassis to reach an internal battery; leave that isolation to a trained technician.'
+        },
+        {
+          title: 'Blot and let visible liquid drain',
+          description: 'Blot the outside with an absorbent lint-free cloth. If the laptop is cool and safe to handle, gently angle it so liquid can drain onto a towel; do not shake it, force the hinge or press the keyboard.'
+        },
+        {
+          title: 'Keep it off and arrange an inspection',
+          description: 'Do not reconnect power to see whether it works, even after the outside looks dry. Tell the repairer what liquid was spilled, approximately how much, where it entered and whether the laptop was powered on.'
+        }
+      ],
+      emergencyCaution: 'If the laptop is unusually hot, swollen, smoking, hissing, sparking or giving off a strong burning or chemical smell, do not handle, open, charge or carry it. Keep clear and isolate mains power only from a safe location if that can be done without touching the device or wet equipment.',
+      diagnosticSteps: [
+        {
+          step: 1,
+          title: 'Keep it switched off',
+          description: 'Confirm that the laptop is off and the charger is disconnected. Do not press the power button again or reconnect a USB-C charger to check for a charging light.'
+        },
+        {
+          step: 2,
+          title: 'Identify the liquid',
+          description: 'Note whether it was plain water, black coffee or tea, sweetened coffee/karak, milk or latte, juice, soda or another drink. Ingredients such as sugar and milk affect the residue left behind.'
+        },
+        {
+          step: 3,
+          title: 'Record where it entered',
+          description: 'Without pressing keys or opening the case, note whether the spill was over the keyboard, touchpad, hinge, air vent, side port or charging connector. The visible entry point may not show the full internal path.'
+        },
+        {
+          step: 4,
+          title: 'Write down what happened',
+          description: 'Record the approximate time and amount, whether the laptop was plugged in, and any symptoms already noticed — for example, an immediate shutdown, black screen, fan activity, sticky keys or charging changes. Do not reproduce the symptom.'
+        },
+        {
+          step: 5,
+          title: 'Find the exact model information',
+          description: 'Use the product label, purchase record or model shown on the underside only if it can be read without turning on or dismantling the laptop. Share the make and model with the technician; do not send account passwords or recovery keys.'
+        }
+      ],
+      decisionTree: [
+        {
+          symptom: 'The laptop is still on after the spill',
+          direction: 'Shut it down immediately if it is safe to touch, disconnect external power safely and do not continue working. A successful boot does not establish that the inside is dry or uncontaminated.'
+        },
+        {
+          symptom: 'It switched off or now shows a black screen',
+          direction: 'Keep it off and unplugged. Do not repeatedly try to start it; a technician should inspect the power, display and motherboard circuits before any further power is applied.'
+        },
+        {
+          symptom: 'Keys, touchpad or charging behave strangely',
+          direction: 'Do not test every key or repeatedly reconnect the charger. Liquid may have reached the keyboard membrane, ribbon connectors or charging path; note the symptoms for inspection.'
+        },
+        {
+          symptom: 'The case or battery area is hot, swollen or smoking',
+          direction: 'Treat this as a battery-safety issue. Do not handle or open the laptop. Keep clear and seek appropriate emergency assistance if there is smoke or fire.'
+        }
+      ],
+      technicianMethod: [
+        {
+          step: 1,
+          title: 'Intake, model identification and safety check',
+          description: 'Record the liquid type, entry area, power state and symptoms. Identify the exact laptop model and board revision before choosing a teardown or diagnostic procedure.'
+        },
+        {
+          step: 2,
+          title: 'Power isolation and controlled teardown',
+          description: 'Disconnect external power and isolate the internal battery using the model-specific service procedure. Inspect the keyboard, connectors, shields and motherboard for liquid paths and residue before energizing the board.'
+        },
+        {
+          step: 3,
+          title: 'Corrosion assessment, cleaning and board repair',
+          description: 'Document the affected areas under magnification, inspect relevant power and signal paths, and clean contamination with a method appropriate to the components. Where board condition permits, targeted ultrasonic cleaning may be used on a properly prepared bare board. Shorted or corroded components and traces are addressed individually where repair is viable.'
+        },
+        {
+          step: 4,
+          title: 'Functional verification before return',
+          description: 'After the repair and reassembly, verify the affected power, charging, display, keyboard, touchpad and other relevant functions. The test plan depends on the original symptoms and the model; unresolved faults are explained before return.'
+        }
+      ],
+      safetyNotes: [
+        'Do not assume a laptop is safe because the screen is still on or because it starts once after the spill. Stop using it and keep it disconnected.',
+        'Do not remove an internal battery, shields or motherboard as a first-time DIY task. Internal batteries can be hazardous if damaged, and model-specific disassembly is required.',
+        'If there is swelling, unusual heat, smoke, hissing or sparks, do not handle or transport the device. Personal safety comes before data or repair.'
+      ],
+      kuwaitContext: [
+        'KCROC receives liquid-damage devices at its Hawalli laboratory: Al Mullah Complex, Ibn Khaldoun Street, Basement Shop 19. Other Kuwait areas are served through courier pickup and delivery, not separate walk-in branches.',
+        'Free pickup and delivery are available across Kuwait. Contact KCROC to confirm the next safe collection slot for your area; keep the laptop powered off while collection is arranged.',
+        'A liquid-damage repair may need board-level inspection and parts testing, so turnaround depends on the extent of contamination, the exact model and component availability. No same-day repair is promised before diagnosis.'
+      ],
+      expertNotes: [
+        {
+          title: 'Why a laptop can work after a spill — then fail later',
+          description: 'A laptop may continue running if the first spill did not immediately bridge a critical circuit. Moisture and dissolved residue can remain beneath the keyboard, connectors or shields; while electrical power is present, that contamination can contribute to leakage paths, corrosion and intermittent faults. There is no reliable universal 48- or 72-hour countdown. Switch it off, disconnect external power safely and do not use a temporary successful boot as a reason to keep testing.'
+        },
+        {
+          title: 'MacBook logic-board diagnosis is generation-specific',
+          description: 'MacBook Air and Pro boards differ across Intel and Apple Silicon generations. Depending on the exact board, a technician may investigate main power rails such as PPBUS_G3H and USB-C power-delivery or charging-controller circuitry; CD3217 is an example only on board revisions where that controller is fitted. These labels are diagnostic examples, not a parts list that applies to every MacBook.'
+        },
+        {
+          title: 'Soldered storage and data access need an honest assessment',
+          description: 'Some MacBook and other laptop designs use soldered storage or model-specific hardware encryption. A component-level repair of the original board may preserve the existing storage path when the relevant components remain healthy, but liquid can also damage storage, the processor or security circuitry. No technician should promise 100% data preservation before inspecting the exact device.'
+        },
+        {
+          title: 'Gaming-laptop power stages vary by model',
+          description: 'Many gaming laptops use an adapter input around 19–20V, but the downstream CPU and GPU power rails, protection circuits and VRM layouts vary by board. Liquid near the DC-in path, battery connector or high-current stages requires measurements against the correct board design; an adapter voltage alone does not identify the failed component.'
+        },
+        {
+          title: 'Component repair versus full-board replacement',
+          description: 'When damage is localized to a repairable component, trace or connector, component-level work may avoid replacing the complete motherboard and can keep the original board in place. Extensive corrosion, damaged multilayer traces, processor or storage damage may make that uneconomical or impossible. A replacement board can also change data access depending on the storage and encryption design. Compare the written diagnosis, quoted parts and labour, data implications and warranty; there is no reliable universal percentage saving.'
+        },
+        {
+          title: 'What determines the repair quote',
+          description: 'The quote depends on the liquid and amount, how far it travelled, the affected keyboard or board areas, the number and type of damaged components, parts availability and the required post-repair testing. KCROC provides the assessment and quote before paid repair work begins.'
+        }
+      ],
+      technicalReferences: [
+        {
+          label: 'Dell Support — What to do after a laptop liquid spill',
+          url: 'https://www.dell.com/support/kbdoc/en-pa/000137973/safety-precautions-when-working-with-electrical-equipment',
+          description: 'Manufacturer safety guidance: power off the laptop, unplug the AC adapter, disconnect a removable battery only where possible and safe, and do not attempt to power the device on after a spill. Follow the service instructions for the exact model.'
+        },
+        {
+          label: 'iFixit — Laptop is Liquid Damaged',
+          url: 'https://www.ifixit.com/Wiki/Laptop_is_Liquid_Damaged',
+          description: 'Repair reference covering power isolation, liquid residue and why drying alone or rice does not remove contamination. Internal teardown and board cleaning are technician-level procedures, not a first-time DIY recommendation.'
+        }
+      ],
+      liquidRiskMatrix: [
+        {
+          liquid: 'Plain / drinking water',
+          residue: 'Usually less sticky residue than sweet drinks, but tap-water minerals and other dissolved contaminants may remain.',
+          risk: 'Water can bridge powered contacts, and residue may remain around connectors, keyboard layers or beneath shields after the surface looks dry.',
+          action: 'Keep the laptop off and arrange an inspection. Do not assume that visible drying means the inside is clean.'
+        },
+        {
+          liquid: 'Black coffee / unsweetened tea',
+          residue: 'Dissolved coffee or tea compounds can leave deposits; acidity and additives vary with the drink.',
+          risk: 'Residue can affect keyboard membranes, connector contacts and board areas the liquid reaches.',
+          action: 'Do not power-test it. Tell the technician whether the drink contained sugar, milk or flavouring.'
+        },
+        {
+          liquid: 'Sweet coffee, karak or sweet tea',
+          residue: 'Sugar, milk and flavouring can leave sticky films and solids as the liquid dries.',
+          risk: 'Sticky deposits may remain beneath keys and around small components, even when the keyboard surface appears dry.',
+          action: 'Keep it disconnected and request prompt inspection and cleaning assessment.'
+        },
+        {
+          liquid: 'Soda, juice or energy drinks',
+          residue: 'These drinks can contain sugar, acids, salts, dyes and other dissolved ingredients.',
+          risk: 'The combination can leave conductive or corrosive residue and may affect multiple internal areas.',
+          action: 'Do not wait for the laptop to fail or try to rinse it yourself. Keep it off and arrange professional inspection.'
+        },
+        {
+          liquid: 'Milk or latte',
+          residue: 'Milk proteins and fats, often combined with sugar or coffee solids, can leave a persistent film.',
+          risk: 'Residue may affect the keyboard, connectors and board surfaces along the liquid path.',
+          action: 'Keep the laptop off and tell the technician the drink ingredients as accurately as possible.'
+        }
+      ],
+      faqs: [
+        {
+          question: 'What should I do immediately after spilling water or coffee on my laptop?',
+          answer: 'Turn it off immediately if it is safe to touch, disconnect the charger and accessories safely, remove only an externally removable battery, blot visible liquid and keep the laptop off. Do not charge or test it. If it is hot, swollen, smoking or sparking, do not handle it.'
+        },
+        {
+          question: 'My laptop still turns on after the spill. Can I keep using it?',
+          answer: 'No. A successful start does not prove that moisture or residue is gone. Switch it off, disconnect external power safely and arrange an inspection before using or charging it again.'
+        },
+        {
+          question: 'Is coffee or karak tea worse than plain water?',
+          answer: 'The risk depends on the amount and where the liquid travelled. Coffee, sweet tea, karak, milk, juice and soda can leave sticky or chemically active residue that plain water may not. None should be treated as safe to power-test.'
+        },
+        {
+          question: 'Will rice or a hairdryer dry a liquid-damaged laptop?',
+          answer: 'Rice does not remove dissolved salts, sugars or corrosion from connectors and circuit boards. A hairdryer or heater can expose parts to damaging heat or push liquid further into the device. Keep it off and seek an inspection instead.'
+        },
+        {
+          question: 'Can KCROC repair a liquid-damaged MacBook?',
+          answer: 'KCROC can inspect MacBook logic boards and affected USB-C, power and display circuits where the exact model supports component-level repair. Board layouts differ by generation, and repairability is confirmed only after inspection.'
+        },
+        {
+          question: 'Will I lose my files if the motherboard was affected?',
+          answer: 'Not necessarily, but data access cannot be guaranteed. It depends on the storage design and whether the storage, processor, security circuitry and original board remain functional. Tell KCROC when data preservation is important before authorizing a board replacement.'
+        },
+        {
+          question: 'Does liquid damage always require a new motherboard?',
+          answer: 'No. Some faults are limited to repairable connectors, traces, fuses or components; other boards have widespread or uneconomical damage. The technician must inspect and test the affected board before recommending repair or replacement.'
+        },
+        {
+          question: 'How much does liquid-damage repair cost in Kuwait?',
+          answer: 'The final quote depends on the amount and type of liquid, the areas affected, damaged components and any required replacement parts. KCROC provides a diagnostic assessment and explains the quote before paid repair work begins. See the liquid-damage service page for current service details.'
+        },
+        {
+          question: 'Can I arrange pickup from Salmiya, Kuwait City or another area?',
+          answer: 'KCROC offers free pickup and delivery across Kuwait. Contact the team to confirm the next collection slot for your area. The Hawalli laboratory is the repair location; service areas are not separate walk-in branches.'
+        }
+      ],
+      relatedServiceIds: ['srv-liquid-damage', 'srv-motherboard', 'srv-macbook', 'srv-keyboard'],
+      relatedBrandIds: ['brand-dell', 'brand-hp', 'brand-lenovo', 'brand-asus', 'brand-acer', 'brand-msi'],
+      coveredBrands: ['Dell', 'HP', 'Lenovo', 'ASUS', 'Acer', 'MSI', 'Apple MacBook'],
+      relatedResourcePaths: [
+        { label: 'Laptop Liquid Damage Repair Kuwait', path: '/laptop-liquid-damage-repair-kuwait' },
+        { label: 'Component-Level Motherboard Repair', path: '/motherboard-repair-kuwait' },
+        { label: 'MacBook Repair Kuwait', path: '/macbook-repair-kuwait' },
+        { label: 'Laptop Keyboard Replacement', path: '/laptop-keyboard-replacement-kuwait' },
+        { label: 'Laptop Not Charging', path: '/laptop-plugged-in-not-charging' }
+      ],
+      contentImages: [
+        {
+          src: IMAGES.laptopHardware.laptopMotherboardDiagnosticBenchRepair.src,
+          alt: IMAGES.laptopHardware.laptopMotherboardDiagnosticBenchRepair.alt,
+          width: IMAGES.laptopHardware.laptopMotherboardDiagnosticBenchRepair.width,
+          height: IMAGES.laptopHardware.laptopMotherboardDiagnosticBenchRepair.height,
+          placement: 'causes',
+          caption: 'A laptop motherboard on the diagnostic bench. This illustrates board-level inspection; it is not presented as a photograph of liquid corrosion.'
+        },
+        {
+          src: IMAGES.laptopHardware.laptopBatteryMotherboardOpenRepair.src,
+          alt: IMAGES.laptopHardware.laptopBatteryMotherboardOpenRepair.alt,
+          width: IMAGES.laptopHardware.laptopBatteryMotherboardOpenRepair.width,
+          height: IMAGES.laptopHardware.laptopBatteryMotherboardOpenRepair.height,
+          placement: 'solution',
+          caption: 'Laptop internals opened for motherboard access and inspection. Cleaning and component work are selected only after the actual board is assessed.'
+        }
+      ],
+      seo: {
+        title: 'Spilled Water or Coffee on Laptop in Kuwait? | KCROC',
+        description: 'Spilled water, coffee, karak or soda on your laptop? Learn safe power-off steps, liquid risks and component-level liquid-damage repair in Kuwait.',
+        canonicalUrl: 'https://www.computerrepairkuwait.com/spilled-water-on-laptop',
+        ogType: 'article',
+        schemaTypes: ['Article', 'FAQPage'],
+        lastModified: '2026-11-04T00:00:00+03:00'
+      },
+      navigationPriority: 70,
+      popular: false
     } as ProblemEntity,
 
     'problem-not-charging': {
