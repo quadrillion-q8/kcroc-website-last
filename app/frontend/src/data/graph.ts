@@ -4328,23 +4328,132 @@ export const rawGraphData: RawGraphData = {
     
 
  
- 'loc-shuwaikh-residential': { id:'loc-shuwaikh-residential', slug:'shuwaikh-residential', entityType:'Location', isActive:true, isPhysicalLocation:false,
-  title:'Shuwaikh Residential', description:'Laptop, MacBook and computer repair for Shuwaikh Residential and Shuwaikh B, with free pickup to KCROC’s Hawalli lab.',
-  localIntro:"KCROC provides pickup-based laptop and computer repair for Shuwaikh Residential, commonly called Shuwaikh B, and nearby Shuwaikh addresses. We collect the device from your home or office, diagnose it at our Hawalli workshop and explain repair options before paid work begins. Our focus is hardware support: no-power faults, charging problems, damaged screens, overheating and component-level motherboard diagnosis. There is no separate KCROC storefront in Shuwaikh.",
-  localHighlights:[{title:'Pickup from Shuwaikh Residential and Shuwaikh B',description:'Share your block, street or map pin and we will confirm a free collection time.'},{title:'Laptop and MacBook repairs',description:'Screen, battery, charging and startup faults are diagnosed at the Hawalli lab.'},{title:'Motherboard-level diagnostics',description:'Where technically possible, we trace board faults to the failed component before recommending a full-board replacement.'},{title:'Repair at the Hawalli lab',description:'All diagnosis and repair work is completed at the central KCROC workshop.'}],
-  localFaqs:[
-   {id:"faq-shuwaikh-residential-1",question:"Do you collect laptops from Shuwaikh Residential or Shuwaikh B?",answer:"Yes. Free pickup and return delivery can be arranged for Shuwaikh Residential, also known as Shuwaikh B. Send your block or location pin on WhatsApp."},
-   {id:"faq-shuwaikh-residential-2",question:"Can you repair a laptop that does not power on?",answer:"Yes. We check the adapter, battery, charging path and motherboard to identify the cause. You receive the diagnosis and quote before paid repair begins."},
-   {id:"faq-shuwaikh-residential-3",question:"Do you repair MacBook charging and logic-board problems?",answer:"We diagnose MacBook charging and logic-board faults and attempt component-level repair where the board condition makes it technically viable."},
-   {id:"faq-shuwaikh-residential-4",question:"Is there a KCROC workshop in Shuwaikh Residential?",answer:"No. Shuwaikh Residential is served by pickup and delivery. Devices are repaired at our Hawalli lab at Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19."},
-   {id:"faq-shuwaikh-residential-5",question:"Do I get a price before you start repairing the computer?",answer:"Yes. We diagnose the fault and share the repair quote before paid work begins. Under No Fix, No Fee, there is no repair charge if we cannot fix the device."}
-  ],
-  landmark:'Mobile Dispatch Area (Devices collected in Shuwaikh Residential and repaired at the Hawalli lab)', serviceRadiusKm:12,
-  serviceAreas:['Shuwaikh Residential','Shuwaikh B','Shuwaikh'], relatedServiceIds:['srv-laptop','srv-macbook','srv-motherboard','srv-screen'],
-  relatedProblemIds:['problem-no-power','problem-black-screen','problem-not-charging','problem-overheating'], relatedLocationIds:['loc-shamiya','loc-abdullah-al-salem','loc-kaifan'],
-  contentImage:{src:IMAGES.brand.technicians.src,alt:IMAGES.brand.technicians.alt,width:IMAGES.brand.technicians.width,height:IMAGES.brand.technicians.height,caption:'KCROC technicians at the Hawalli workshop, where Shuwaikh Residential pickup devices are diagnosed and repaired.'},
-  seo:{title:"Computer Repair Shuwaikh Residential | Free Pickup | KCROC",description:"Laptop, MacBook and PC repair for Shuwaikh Residential and Shuwaikh B. Free pickup and delivery; repairs are completed at KCROC’s Hawalli lab.",canonicalUrl:'https://www.computerrepairkuwait.com/location/shuwaikh-residential',ogType:'website',schemaTypes:['LocalBusiness'],lastModified:'2026-11-05T00:00:00+03:00'}, navigationPriority:92
- } as LocationEntity,
+ 'loc-shuwaikh-residential': {
+      id: 'loc-shuwaikh-residential', slug: 'shuwaikh-residential',
+      entityType: 'Location', isActive: true, isPhysicalLocation: false,
+      title: 'Shuwaikh Residential',
+      description: 'Component-level MacBook, laptop and gaming PC repair for Shuwaikh Residential (Shuwaikh B), with free doorstep collection and return to KCROC’s ESD-safe Hawalli lab.',
+      heroBadge: 'Private doorstep collection · Shuwaikh B · Area code 70000',
+      heroHeadline: 'Computer & MacBook Repair for Shuwaikh B — Collected at Your Door',
+      localValueHeading: 'Private Doorstep Collection. Lab-Direct Component Repair.',
+      localServicesHeading: 'Specialist Hardware Services for Shuwaikh B',
+      areaPostalCode: '70000',
+      serviceTypes: [
+        'Component-level motherboard diagnostics and repair',
+        'MacBook logic-board diagnostics and micro-soldering',
+        'Windows laptop and business-ultrabook hardware repair',
+        'Complete gaming desktop and workstation diagnostics',
+        'Laptop display and battery diagnostics and replacement'
+      ],
+      localIntro: 'A failed MacBook, premium Windows laptop or custom gaming PC should not mean carrying it across Kuwait just to get a reliable diagnosis. KCROC arranges free doorstep collection for Shuwaikh Residential (Shuwaikh B), then takes supported devices to its ESD-safe repair lab at Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19, Hawalli. There, the team checks the relevant power, charging, display, motherboard or cooling systems and explains the repair options before paid work begins. Where the fault and board condition allow, component-level repair can preserve the original logic board instead of defaulting to a full-board replacement; data access still depends on the health of the storage and related circuitry. For a removable Windows NVMe or SATA drive, ask about keeping the drive with you before collection. Use Shuwaikh B Co-op in Block 2, Shuwaikh Beach Park or Jamal Abdul Nasser Street as nearby map references when sending your pin. Share your block, street, device model, fault and map pin on WhatsApp so the team can confirm collection arrangements.',
+      localHighlights: [
+        {
+          title: 'Hardware-only diagnostics and privacy',
+          description: 'For supported power, charging, motherboard, display and cooling checks, the diagnostic stays focused on hardware rather than browsing personal files. An operating-system password is not needed for those hardware checks; any separate software test that needs access is explained and agreed first.'
+        },
+        {
+          title: 'Keep a removable NVMe or SATA drive with you',
+          description: 'For compatible Windows laptops and desktops, ask about removing a modular NVMe or SATA SSD before handover and keeping it with you. With the drive removed, operating-system, boot and storage tests cannot be completed until it is reinstalled.'
+        },
+        {
+          title: 'Repair the original board where viable',
+          description: 'The lab checks the affected power, charging and board circuits and assesses component-level repair before recommending a full motherboard replacement. Repairing the original board may preserve access to existing data, but no repair can guarantee data preservation when storage or controller hardware is damaged.'
+        },
+        {
+          title: 'Shuwaikh B coverage, clearly identified',
+          description: 'This page focuses on Shuwaikh Residential (Shuwaikh B), Blocks 1–6. The area-level postal code is 70000 and the block codes are 70001–70006. Shuwaikh Educational/Administrative (70030) and Shuwaikh Industrial (70050 area code; blocks 70051–70060) are separate districts.'
+        }
+      ],
+      localServiceCards: [
+        {
+          title: 'MacBook Pro & MacBook Air Logic-Board Repair',
+          problem: 'No-power faults, USB-C charging failures, liquid-related board damage, startup trouble or a black display on supported Intel and Apple silicon MacBooks.',
+          expertise: 'We inspect the model-specific power, charging, display and logic-board circuits, then assess whether the original board can be repaired at component level.',
+          solution: 'Free doorstep collection from Shuwaikh B and a clear quote before paid work. Data preservation depends on the condition of the storage and related circuitry.',
+          serviceIds: ['srv-macbook', 'srv-motherboard']
+        },
+        {
+          title: 'Executive Windows Laptop & Ultrabook Repair',
+          problem: 'A laptop that will not power on, unreliable USB-C charging, BIOS/startup faults, damaged ports, hinge or chassis damage, or display problems.',
+          expertise: 'Model-specific diagnostics for Dell XPS, Lenovo ThinkPad, HP, ASUS, Acer, MSI and Microsoft Surface systems, with board and connector repair considered where suitable.',
+          solution: 'We confirm the model, fault and parts path at the Hawalli lab, then share the repair quote before any paid work begins.',
+          serviceIds: ['srv-laptop', 'srv-charging-port']
+        },
+        {
+          title: 'Gaming Desktop & Workstation Diagnostics',
+          problem: 'No display, GPU-related instability, overheating, loud fans, shutdowns, crashes or performance drops on a complete gaming desktop or workstation.',
+          expertise: 'We assess the complete system, including GPU, VRAM, motherboard, power delivery, memory and cooling. AIO and custom-loop cooling are assessed as part of the desktop system.',
+          solution: 'Complete desktop towers can be collected for lab diagnosis. We confirm the fault and repair scope before proceeding; individual graphics cards are not accepted as standalone repair jobs.',
+          serviceIds: ['srv-gaming']
+        },
+        {
+          title: 'Laptop Display & Battery Service',
+          problem: 'Cracked, flickering, lined or black displays, weak battery life, unexpected shutdowns or visible battery swelling.',
+          expertise: 'We check the panel, display cable and backlight path, and assess battery health and charging behaviour before recommending a part replacement.',
+          solution: 'The compatible panel or battery, part availability and total price are confirmed before paid work. A swollen battery should not be pressed, punctured, charged or kept in use.',
+          serviceIds: ['srv-screen', 'srv-battery']
+        }
+      ],
+      localFaqs: [
+        {
+          id: 'faq-shuwaikh-residential-1',
+          question: 'Can KCROC collect my computer from Shuwaikh B so I do not need to visit Hawalli?',
+          answer: 'Yes. Free doorstep pickup and return delivery can be arranged for supported repair jobs in Shuwaikh Residential. Your device is brought to the Hawalli lab for diagnosis and repair, then returned after the approved work and testing. Send your block and map pin on WhatsApp to confirm a collection time.'
+        },
+        {
+          id: 'faq-shuwaikh-residential-2',
+          question: 'Can I keep my removable NVMe or SATA SSD before collection?',
+          answer: 'For compatible Windows laptops and desktops with a removable NVMe or SATA drive, contact us before collection to confirm the safest way to keep the drive with you. The computer can still be assessed for many hardware faults, but boot, operating-system and storage tests will be limited until the drive is reinstalled. Modern MacBooks with soldered storage do not have a removable M.2 SSD option.'
+        },
+        {
+          id: 'faq-shuwaikh-residential-3',
+          question: 'Do you need my Windows or Mac account password for hardware repair?',
+          answer: 'A password is not needed for hardware-only power, charging, board, display or cooling diagnostics. The work focuses on the hardware rather than opening personal files. If a separate software test later requires account access, the reason is explained and your permission is requested first. Do not send your password in a WhatsApp message.'
+        },
+        {
+          id: 'faq-shuwaikh-residential-4',
+          question: 'Can you repair a MacBook logic board without replacing it or losing my data?',
+          answer: 'Where the fault is repairable, KCROC assesses component-level repair of the original logic board before recommending a complete board replacement. Keeping the original board may preserve access to data on supported models, but it is not a data-recovery guarantee: storage chips, controllers or related power circuits may also be damaged.'
+        },
+        {
+          id: 'faq-shuwaikh-residential-5',
+          question: 'What happens if the motherboard cannot be repaired?',
+          answer: 'KCROC’s No Fix, No Fee policy means there is no repair or diagnostic charge when the device cannot be fixed under the policy. The device is returned to you. The team explains the diagnostic result and any practical next step before closing the job.'
+        },
+        {
+          id: 'faq-shuwaikh-residential-6',
+          question: 'Is this page for Shuwaikh B, Shuwaikh Industrial or the Educational District?',
+          answer: 'This page is specifically for Shuwaikh Residential (Shuwaikh B), with area code 70000 and block codes 70001–70006 for Blocks 1–6. Shuwaikh Educational and Administrative addresses use the 70030 area code, while Shuwaikh Industrial uses the 70050 area code and block codes 70051–70060. KCROC serves customers across Kuwait, but please send your exact location pin so the correct collection area can be confirmed.'
+        }
+      ],
+      landmark: 'Mobile collection area — Shuwaikh Residential (Shuwaikh B); repairs are completed at the Hawalli lab',
+      serviceRadiusKm: 12,
+      serviceAreas: ['Shuwaikh B'],
+      relatedServiceIds: [
+        'srv-macbook', 'srv-motherboard', 'srv-laptop', 'srv-charging-port',
+        'srv-gaming', 'srv-screen', 'srv-battery'
+      ],
+      relatedProblemIds: [
+        'problem-no-power', 'problem-not-charging', 'problem-black-screen', 'problem-overheating'
+      ],
+      relatedLocationIds: ['loc-shamiya', 'loc-abdullah-al-salem', 'loc-kaifan', 'loc-nuzha'],
+      contentImage: {
+        src: IMAGES.brand.leadTechnician.src,
+        alt: IMAGES.brand.leadTechnician.alt,
+        width: IMAGES.brand.leadTechnician.width,
+        height: IMAGES.brand.leadTechnician.height,
+        caption: 'Component-level board diagnostics at KCROC’s Hawalli repair lab.'
+      },
+      seo: {
+        title: 'MacBook & Computer Repair Shuwaikh B | Free Pickup | KCROC',
+        description: 'Component-level MacBook, laptop and gaming PC repair for Shuwaikh Residential (Shuwaikh B). Free doorstep pickup to KCROC’s ESD-safe Hawalli lab, with a quote before paid work.',
+        canonicalUrl: 'https://www.computerrepairkuwait.com/location/shuwaikh-residential',
+        ogType: 'website',
+        schemaTypes: ['LocalBusiness'],
+        lastModified: '2026-11-05T00:00:00+03:00'
+      },
+      navigationPriority: 92
+    } as LocationEntity,
 
  'loc-abdullah-al-salem': {id:'loc-abdullah-al-salem',slug:'abdullah-al-salem',entityType:'Location',isActive:true,isPhysicalLocation:false,
   title:'Abdullah Al-Salem',description:'Computer and laptop repair for Abdullah Al-Salem, also known as Al-Dahiya, with free pickup to KCROC’s Hawalli lab.',

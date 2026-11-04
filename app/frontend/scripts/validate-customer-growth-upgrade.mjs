@@ -221,6 +221,25 @@ add('Priority neighbourhood pages are active in the graph and directory',
   locationDirectory.includes('location.isActive !== false') &&
   locations.includes('l.isActive !== false'));
 
+const shuwaikhStart = graph.indexOf("'loc-shuwaikh-residential': {");
+const shuwaikhEnd = graph.indexOf("} as LocationEntity", shuwaikhStart);
+const shuwaikhEntity = shuwaikhStart >= 0 && shuwaikhEnd > shuwaikhStart
+  ? graph.slice(shuwaikhStart, shuwaikhEnd)
+  : '';
+
+add('Shuwaikh B page uses the concierge hero, privacy/SSD content, four linked service cards and block-aware coverage',
+  shuwaikhEntity.includes('heroBadge:') &&
+  shuwaikhEntity.includes("areaPostalCode: '70000'") &&
+  shuwaikhEntity.includes('localServiceCards:') &&
+  shuwaikhEntity.includes('70001–70006') &&
+  shuwaikhEntity.includes('70051–70060') &&
+  shuwaikhEntity.includes('NVMe') &&
+  shuwaikhEntity.includes('No Fix, No Fee') &&
+  locations.includes('location.localServiceCards?.length') &&
+  locations.includes('location.heroHeadline ||') &&
+  !shuwaikhEntity.includes('15 to 20 minutes') &&
+  !shuwaikhEntity.includes('1 to 3 hours'));
+
 add('Service-area FAQs remain in prerendered DOM and match their FAQPage schema answers',
   locations.includes('hidden={!isOpen}') &&
   locations.includes('{faq.answer}') &&

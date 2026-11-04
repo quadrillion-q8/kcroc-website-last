@@ -735,10 +735,26 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
             "name": `Computer Repair Pickup & Delivery — ${location.title}`,
             "description": location.description,
             "provider": { "@id": `${business.websiteUrl}/#business` },
+            ...(location.serviceTypes?.length ? { "serviceType": location.serviceTypes } : {}),
+            "availableChannel": {
+              "@type": "ServiceChannel",
+              "serviceUrl": `${business.websiteUrl}/book`,
+              "servicePhone": `+${business.telephone}`,
+              "availableLanguage": ["en", "ar"]
+            },
             "areaServed": [
               {
                 "@type": "Place",
                 "name": location.title,
+                ...(location.areaPostalCode && {
+                  "address": {
+                    "@type": "PostalAddress",
+                    "postalCode": location.areaPostalCode,
+                    "addressLocality": location.title.replace(' Residential', ''),
+                    "addressRegion": "Al Asimah Governorate",
+                    "addressCountry": "KW"
+                  }
+                }),
                 ...(location.coords && {
                   "geo": {
                     "@type": "GeoCoordinates",

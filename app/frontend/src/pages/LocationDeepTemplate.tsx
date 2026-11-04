@@ -135,9 +135,13 @@ export default function LocationDeepTemplate() {
   // so the 31 URLs do not repeat the same block of text.
   const localFaqs: LocalFAQ[] = [
     {
-      id: `faq-${location.slug}-shop`,
-      question: `Do you have a repair shop in ${location.title}?`,
-      answer: `We don't operate a walk-in branch in ${location.title} itself. Our repair lab is based in Hawalli, and we bring the service to you: free pickup from ${location.title}, repair at our lab, and free delivery back.`,
+      id: location.slug === 'shuwaikh-residential' ? `faq-${location.slug}-collection` : `faq-${location.slug}-shop`,
+      question: location.slug === 'shuwaikh-residential'
+        ? `How does KCROC serve customers in ${location.title}?`
+        : `Do you have a repair shop in ${location.title}?`,
+      answer: location.slug === 'shuwaikh-residential'
+        ? `Book free doorstep collection from ${location.title}. We log the device for workshop intake, complete diagnosis and approved repair at our Hawalli lab, then arrange free return delivery. You do not need to travel to Hawalli for drop-off.`
+        : `We don't operate a walk-in branch in ${location.title} itself. Our repair lab is based in Hawalli, and we bring the service to you: free pickup from ${location.title}, repair at our lab, and free delivery back.`,
     },
     {
       id: `faq-${location.slug}-pickup`,
@@ -234,11 +238,11 @@ export default function LocationDeepTemplate() {
             <div className="max-w-2xl space-y-5">
               <Badge className="bg-cyan-500/10 text-cyan-400 border-cyan-500/30 px-3 py-1.5 text-xs font-bold uppercase tracking-widest">
                 <MapPin className="w-3 h-3 mr-2 inline" aria-hidden="true" />
-                Now Serving {location.title}
+                {location.heroBadge || `Now Serving ${location.title}`}
               </Badge>
 
               <h1 className="text-3xl sm:text-5xl font-black text-white leading-[1.1] tracking-tight">
-                Computer Repair in <span className="text-cyan-400">{location.title}, Kuwait</span>
+                {location.heroHeadline || <>Computer Repair in <span className="text-cyan-400">{location.title}, Kuwait</span></>}
               </h1>
 
               <p className="text-sm sm:text-lg text-slate-300 leading-relaxed">
@@ -307,7 +311,7 @@ export default function LocationDeepTemplate() {
                 </div>
               )}
             </div>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-sm">
+            <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 text-sm">
               <div className="flex items-center gap-2 text-slate-300">
                 <Clock className="w-4 h-4 text-cyan-400 shrink-0" aria-hidden="true" />
                 <span>{business.openingHours}</span>
@@ -316,6 +320,12 @@ export default function LocationDeepTemplate() {
                 <Truck className="w-4 h-4 text-cyan-400 shrink-0" aria-hidden="true" />
                 <span>Free pickup &amp; delivery</span>
               </div>
+              {privacyUsp && (
+                <div className="flex items-center gap-2 text-slate-300">
+                  <Lock className="w-4 h-4 text-cyan-400 shrink-0" aria-hidden="true" />
+                  <span>Hardware-only privacy</span>
+                </div>
+              )}
               {trustBadges?.find((b) => b.id === 'badge-warranty') && (
                 <div className="flex items-center gap-2 text-slate-300">
                   <ShieldCheck className="w-4 h-4 text-cyan-400 shrink-0" aria-hidden="true" />
@@ -337,7 +347,7 @@ export default function LocationDeepTemplate() {
       <section className="py-8 sm:py-14 px-4 sm:px-6 border-t border-slate-800/50">
         <div className="container mx-auto max-w-4xl">
           <h2 className="text-2xl sm:text-3xl font-black text-white mb-4 tracking-tight">
-            Computer &amp; Laptop Repair for {location.title}
+            {location.localValueHeading || `Computer & Laptop Repair for ${location.title}`}
           </h2>
           <p className="text-slate-300 leading-relaxed">
             {location.localIntro || <>
@@ -367,8 +377,53 @@ export default function LocationDeepTemplate() {
       <section className="py-8 sm:py-14 px-4 sm:px-6 bg-slate-900/20 border-t border-slate-800/50">
         <div className="container mx-auto max-w-6xl">
           <h2 className="text-2xl sm:text-3xl font-black mb-6 sm:mb-10 text-white tracking-tight">
-            Computer Repair Services in {location.title}
+            {location.localServicesHeading || `Computer Repair Services in ${location.title}`}
           </h2>
+          {location.localServiceCards?.length ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {location.localServiceCards.map((card) => {
+                const linkedServices = card.serviceIds.flatMap((serviceId) => {
+                  const linked = KCROC_GRAPH.services.find(
+                    (service) => service.id === serviceId && service.isActive
+                  );
+                  return linked ? [linked] : [];
+                });
+                return (
+                  <article
+                    key={card.title}
+                    className="rounded-2xl border border-slate-800 bg-slate-900/50 p-5 sm:p-6 flex flex-col"
+                  >
+                    <h3 className="text-lg font-bold text-white mb-4">{card.title}</h3>
+                    <div className="space-y-3 text-sm leading-6">
+                      <p className="text-slate-300">
+                        <span className="font-bold text-cyan-400">Problem: </span>{card.problem}
+                      </p>
+                      <p className="text-slate-300">
+                        <span className="font-bold text-cyan-400">Diagnostic expertise: </span>{card.expertise}
+                      </p>
+                      <p className="text-slate-300">
+                        <span className="font-bold text-cyan-400">What to expect: </span>{card.solution}
+                      </p>
+                    </div>
+                    {linkedServices.length > 0 && (
+                      <div className="mt-5 pt-4 border-t border-slate-800 flex flex-wrap gap-2">
+                        {linkedServices.map((service) => (
+                          <Link
+                            key={service.id}
+                            to={'/' + service.slug}
+                            className="inline-flex items-center gap-1.5 text-xs font-bold text-cyan-400 hover:text-cyan-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 rounded"
+                          >
+                            {service.title.replace(' Kuwait', '')}
+                            <CheckCircle2 className="w-3 h-3" aria-hidden="true" />
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </article>
+                );
+              })}
+            </div>
+          ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {services.map((service) => {
               const ServiceIcon = SERVICE_ICON_MAP[service.iconKey] || Wrench;
@@ -395,6 +450,7 @@ export default function LocationDeepTemplate() {
               );
             })}
           </div>
+          )}
         </div>
       </section>
 
