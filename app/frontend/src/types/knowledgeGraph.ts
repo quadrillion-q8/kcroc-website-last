@@ -276,6 +276,21 @@ export const LocationSchema = RoutableEntitySchema.extend({
   // 🚀 NEW: Distinguishes physical branch from service-area page.
   // Defaults to false to ensure safety for new locations.
   isPhysicalLocation: z.boolean().optional().default(false),
+  // Optional page-specific hero and section labels for priority service areas.
+  heroBadge: z.string().optional(),
+  heroHeadline: z.string().optional(),
+  localValueHeading: z.string().optional(),
+  localServicesHeading: z.string().optional(),
+  // Postal code describes the served area, never a KCROC storefront.
+  areaPostalCode: z.string().optional(),
+  serviceTypes: z.array(z.string()).optional(),
+  localServiceCards: z.array(z.object({
+    title: z.string(),
+    problem: z.string(),
+    expertise: z.string(),
+    solution: z.string(),
+    serviceIds: z.array(z.string()).min(1),
+  })).optional(),
   // 🚀 NEW: Hero/context photo for the location page — physical branches
   // use a shop photo, service-area pages use a relevant repair photo.
   contentImage: z.object({
