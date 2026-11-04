@@ -212,8 +212,12 @@ add('Consolidated location pages are inactive, hidden from the hub and routed to
   JSON.parse(vercelConfig).redirects.some((r) => r.source === '/location/rawda' && r.destination === '/location/adailiya' && r.permanent === true));
 
 add('Priority neighbourhood pages are active in the graph and directory',
-  ['shuwaikh-residential', 'abdullah-al-salem', 'shamiya', 'nuzha', 'adailiya', 'kaifan', 'yarmouk', 'qortuba', 'mishref'].every((slug) =>
-    new RegExp("'loc-" + slug + "':\\s*\\{[^\\n]*slug:\\s*['\\"]" + slug + "['\\"][^\\n]*isActive:\\s*true").test(graph)) &&
+  ['shuwaikh-residential', 'abdullah-al-salem', 'shamiya', 'nuzha', 'adailiya', 'kaifan', 'yarmouk', 'qortuba', 'mishref'].every((slug) => {
+    const start = graph.indexOf("'loc-" + slug + "': {");
+    const entry = start >= 0 ? graph.slice(start, start + 220) : '';
+    return (entry.includes("slug:'" + slug + "'") || entry.includes("slug: '" + slug + "'")) &&
+      /isActive:\s*true/.test(entry);
+  }) &&
   locationDirectory.includes('location.isActive !== false') &&
   locations.includes('l.isActive !== false'));
 

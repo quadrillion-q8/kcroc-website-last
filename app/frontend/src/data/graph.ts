@@ -4161,7 +4161,7 @@ export const rawGraphData: RawGraphData = {
   { id: "faq-surra-local-5", question: "Where is the device repaired, and do you have a branch in Surra?", answer: "Surra is a pickup area, not a walk-in branch. Repairs are completed at our Hawalli lab at Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19, open daily 10 AM to 10 PM. Approved repairs carry a 30-day warranty." }
  ],
  landmark: 'Mobile Dispatch Area (Devices collected locally and repaired at KCROC’s central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)',
- coords: { lat: 29.3145, lng: 48.0070 }, serviceRadiusKm: 12,
+ coords: { lat: 29.3050, lng: 48.0400 }, serviceRadiusKm: 12,
  serviceAreas: ['Surra', 'Qadsiya', 'Jabriya', 'Shaab', 'Qortuba', 'Hawalli'],
  relatedServiceIds: ['srv-laptop', 'srv-macbook', 'srv-motherboard', 'srv-screen', 'srv-charging-port'],
  relatedProblemIds: ['problem-no-power', 'problem-overheating', 'problem-black-screen', 'problem-not-charging', 'problem-cracked-screen'],
@@ -4339,7 +4339,7 @@ export const rawGraphData: RawGraphData = {
    {id:"faq-shuwaikh-residential-4",question:"Is there a KCROC workshop in Shuwaikh Residential?",answer:"No. Shuwaikh Residential is served by pickup and delivery. Devices are repaired at our Hawalli lab at Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19."},
    {id:"faq-shuwaikh-residential-5",question:"Do I get a price before you start repairing the computer?",answer:"Yes. We diagnose the fault and share the repair quote before paid work begins. Under No Fix, No Fee, there is no repair charge if we cannot fix the device."}
   ],
-  landmark:'Mobile Dispatch Area (Devices collected in Shuwaikh Residential and repaired at the Hawalli lab)', coords:{lat:29.35441,lng:47.95638}, serviceRadiusKm:12,
+  landmark:'Mobile Dispatch Area (Devices collected in Shuwaikh Residential and repaired at the Hawalli lab)', serviceRadiusKm:12,
   serviceAreas:['Shuwaikh Residential','Shuwaikh B','Shuwaikh'], relatedServiceIds:['srv-laptop','srv-macbook','srv-motherboard','srv-screen'],
   relatedProblemIds:['problem-no-power','problem-black-screen','problem-not-charging','problem-overheating'], relatedLocationIds:['loc-shamiya','loc-abdullah-al-salem','loc-kaifan'],
   contentImage:{src:IMAGES.brand.technicians.src,alt:IMAGES.brand.technicians.alt,width:IMAGES.brand.technicians.width,height:IMAGES.brand.technicians.height,caption:'KCROC technicians at the Hawalli workshop, where Shuwaikh Residential pickup devices are diagnosed and repaired.'},
@@ -4357,7 +4357,7 @@ export const rawGraphData: RawGraphData = {
    {id:"faq-abdullah-al-salem-4",question:"Where is the device actually repaired?",answer:"Devices collected from Abdullah Al-Salem are repaired at our Hawalli lab, Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19. There is no separate branch in Al-Dahiya."},
    {id:"faq-abdullah-al-salem-5",question:"When will I know the repair cost?",answer:"After diagnosis, we explain the fault and provide the quote before paid work begins. No Fix, No Fee means no repair charge if we cannot fix the device."}
   ],
-  landmark:'Mobile Dispatch Area (Devices collected in Abdullah Al-Salem / Al-Dahiya and repaired at the Hawalli lab)',coords:{lat:29.3525,lng:47.9822},serviceRadiusKm:12,
+  landmark:'Mobile Dispatch Area (Devices collected in Abdullah Al-Salem / Al-Dahiya and repaired at the Hawalli lab)',serviceRadiusKm:12,
   serviceAreas:['Abdullah Al-Salem','Al-Dahiya','Nuzha','Shamiya'],relatedServiceIds:['srv-laptop','srv-macbook','srv-motherboard','srv-charging-port'],
   relatedProblemIds:['problem-no-power','problem-not-charging','problem-black-screen','problem-freezing-crashing'],relatedLocationIds:['loc-nuzha','loc-shamiya','loc-kaifan'],
   contentImage:{src:IMAGES.motherboard.thermalGrizzly1.src,alt:IMAGES.motherboard.thermalGrizzly1.alt,width:IMAGES.motherboard.thermalGrizzly1.width,height:IMAGES.motherboard.thermalGrizzly1.height,caption:'A real motherboard service image from KCROC’s Hawalli repair lab.'},
@@ -4375,7 +4375,7 @@ export const rawGraphData: RawGraphData = {
    {id:"faq-shamiya-4",question:"Does KCROC have a physical repair shop in Shamiya?",answer:"No. Shamiya is a pickup service area. Devices are repaired at our central Hawalli lab at Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19."},
    {id:"faq-shamiya-5",question:"Are repairs covered by a warranty?",answer:"Completed repairs carry a 30-day warranty. The technician explains the repair and quote before paid work begins."}
   ],
-  landmark:'Mobile Dispatch Area (Devices collected in Shamiya and repaired at the Hawalli lab)',coords:{lat:29.35416,lng:47.96835},serviceRadiusKm:12,
+  landmark:'Mobile Dispatch Area (Devices collected in Shamiya and repaired at the Hawalli lab)',serviceRadiusKm:12,
   serviceAreas:['Shamiya','Shuwaikh Residential','Abdullah Al-Salem','Kaifan'],relatedServiceIds:['srv-laptop','srv-screen','srv-battery','srv-motherboard'],
   relatedProblemIds:['problem-cracked-screen','problem-black-screen','problem-no-power','problem-overheating'],relatedLocationIds:['loc-shuwaikh-residential','loc-abdullah-al-salem','loc-kaifan'],
   contentImage:{src:IMAGES.laptopHardware.dellLaptopScreenRepairCompleted.src,alt:IMAGES.laptopHardware.dellLaptopScreenRepairCompleted.alt,width:IMAGES.laptopHardware.dellLaptopScreenRepairCompleted.width,height:IMAGES.laptopHardware.dellLaptopScreenRepairCompleted.height,caption:'Laptop screen repair carried out at KCROC’s Hawalli workshop.'},
@@ -4393,7 +4393,7 @@ export const rawGraphData: RawGraphData = {
    {id:"faq-nuzha-4",question:"Where do you repair devices collected from Nuzha?",answer:"Devices are repaired at KCROC’s Hawalli lab at Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19. Nuzha is not a separate workshop."},
    {id:"faq-nuzha-5",question:"Will you start the repair before I approve the quote?",answer:"No. We share the diagnosis and repair price first. Paid work begins only after you approve the quote."}
   ],
-  landmark:'Mobile Dispatch Area (Devices collected in Nuzha and repaired at the Hawalli lab)',coords:{lat:29.34163,lng:47.99151},serviceRadiusKm:12,
+  landmark:'Mobile Dispatch Area (Devices collected in Nuzha and repaired at the Hawalli lab)',serviceRadiusKm:12,
   serviceAreas:['Nuzha','Abdullah Al-Salem','Faiha','Rawda'],relatedServiceIds:['srv-laptop','srv-macbook','srv-battery','srv-charging-port'],
   relatedProblemIds:['problem-overheating','problem-not-charging','problem-no-power','problem-black-screen'],relatedLocationIds:['loc-abdullah-al-salem','loc-adailiya','loc-shamiya'],
   contentImage:{src:IMAGES.services.laptopRepair.src,alt:IMAGES.services.laptopRepair.alt,width:IMAGES.services.laptopRepair.width,height:IMAGES.services.laptopRepair.height,caption:'KCROC laptop repair service performed at the Hawalli workshop.'},
@@ -4411,7 +4411,7 @@ export const rawGraphData: RawGraphData = {
    {id:"faq-adailiya-4",question:"Is there a KCROC branch in Adailiya?",answer:"No. Adailiya and Rawda are pickup areas. Devices are repaired at the central Hawalli lab at Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19."},
    {id:"faq-adailiya-5",question:"Do I have to pay if the laptop cannot be repaired?",answer:"No. Under KCROC’s No Fix, No Fee policy, there is no repair charge if we cannot fix the device. We also share the quote before paid work starts."}
   ],
-  landmark:'Mobile Dispatch Area (Devices collected in Adailiya and Rawda and repaired at the Hawalli lab)',coords:{lat:29.32634,lng:47.98148},serviceRadiusKm:12,
+  landmark:'Mobile Dispatch Area (Devices collected in Adailiya and Rawda and repaired at the Hawalli lab)',serviceRadiusKm:12,
   serviceAreas:['Adailiya','Rawda','Khaldiya','Qortuba'],relatedServiceIds:['srv-laptop','srv-macbook','srv-motherboard','srv-screen','srv-battery'],
   relatedProblemIds:['problem-no-power','problem-black-screen','problem-not-charging','problem-cracked-screen'],relatedLocationIds:['loc-nuzha','loc-qortuba','loc-yarmouk','loc-surra'],
   contentImage:{src:IMAGES.services.motherboardRepair.src,alt:IMAGES.services.motherboardRepair.alt,width:IMAGES.services.motherboardRepair.width,height:IMAGES.services.motherboardRepair.height,caption:'A real KCROC motherboard repair image from the central Hawalli lab.'},
@@ -4429,7 +4429,7 @@ export const rawGraphData: RawGraphData = {
    {id:"faq-kaifan-4",question:"Where is the repair performed?",answer:"Devices collected in Kaifan are repaired at our Hawalli lab at Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19. We do not operate a separate Kaifan branch."},
    {id:"faq-kaifan-5",question:"What happens if the motherboard cannot be repaired?",answer:"We explain the diagnosis and available options. Under No Fix, No Fee, there is no repair charge when KCROC cannot fix the device."}
   ],
-  landmark:'Mobile Dispatch Area (Devices collected in Kaifan and repaired at the Hawalli lab)',coords:{lat:29.33857,lng:47.96182},serviceRadiusKm:12,
+  landmark:'Mobile Dispatch Area (Devices collected in Kaifan and repaired at the Hawalli lab)',serviceRadiusKm:12,
   serviceAreas:['Kaifan','Shamiya','Khaldiya','Faiha'],relatedServiceIds:['srv-laptop','srv-screen','srv-battery','srv-motherboard'],
   relatedProblemIds:['problem-overheating','problem-cracked-screen','problem-not-charging','problem-no-power'],relatedLocationIds:['loc-shamiya','loc-shuwaikh-residential','loc-abdullah-al-salem'],
   contentImage:{src:IMAGES.laptopHardware.hpLaptopMotherboardRepairOpen.src,alt:IMAGES.laptopHardware.hpLaptopMotherboardRepairOpen.alt,width:IMAGES.laptopHardware.hpLaptopMotherboardRepairOpen.width,height:IMAGES.laptopHardware.hpLaptopMotherboardRepairOpen.height,caption:'Laptop motherboard diagnostics at KCROC’s Hawalli repair workshop.'},
@@ -4447,7 +4447,7 @@ export const rawGraphData: RawGraphData = {
    {id:"faq-yarmouk-4",question:"Is there a repair workshop in Yarmouk?",answer:"No. Yarmouk is covered by pickup and delivery; devices are repaired at the Hawalli lab at Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19."},
    {id:"faq-yarmouk-5",question:"Will I receive a quote before work starts?",answer:"Yes. We share the diagnosis and price before paid work begins. Completed repairs carry a 30-day warranty."}
   ],
-  landmark:'Mobile Dispatch Area (Devices collected in Yarmouk and repaired at the Hawalli lab)',coords:{lat:29.3112,lng:47.96949},serviceRadiusKm:13,
+  landmark:'Mobile Dispatch Area (Devices collected in Yarmouk and repaired at the Hawalli lab)',serviceRadiusKm:13,
   serviceAreas:['Yarmouk','Qortuba','Adailiya','Surra'],relatedServiceIds:['srv-laptop','srv-gaming','srv-gaming-laptop-cleaning','srv-macbook','srv-motherboard'],
   relatedProblemIds:['problem-overheating','problem-no-power','problem-black-screen','problem-freezing-crashing'],relatedLocationIds:['loc-qortuba','loc-adailiya','loc-surra','loc-mishref'],
   contentImage:{src:IMAGES.gaming.gamingLaptopFan.src,alt:IMAGES.gaming.gamingLaptopFan.alt,width:IMAGES.gaming.gamingLaptopFan.width,height:IMAGES.gaming.gamingLaptopFan.height,caption:'Gaming laptop cooling inspection performed at KCROC’s Hawalli lab.'},
@@ -4465,7 +4465,7 @@ export const rawGraphData: RawGraphData = {
    {id:"faq-qortuba-4",question:"Does KCROC have a shop in Qortuba?",answer:"No. Qortuba is a pickup area. Devices are diagnosed and repaired at our Hawalli lab at Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19."},
    {id:"faq-qortuba-5",question:"How will I know the price?",answer:"We share the diagnosis and quote before any paid work begins. If KCROC cannot fix the device, No Fix, No Fee means there is no repair charge."}
   ],
-  landmark:'Mobile Dispatch Area (Devices collected in Qortuba and repaired at the Hawalli lab)',coords:{lat:29.31194,lng:47.98727},serviceRadiusKm:12,
+  landmark:'Mobile Dispatch Area (Devices collected in Qortuba and repaired at the Hawalli lab)',serviceRadiusKm:12,
   serviceAreas:['Qortuba','Adailiya','Yarmouk','Surra'],relatedServiceIds:['srv-laptop','srv-macbook','srv-gaming','srv-motherboard','srv-screen'],
   relatedProblemIds:['problem-no-power','problem-overheating','problem-black-screen','problem-not-charging','problem-freezing-crashing'],relatedLocationIds:['loc-adailiya','loc-yarmouk','loc-surra','loc-mishref'],
   contentImage:{src:IMAGES.gaming.gamingOverheating.src,alt:IMAGES.gaming.gamingOverheating.alt,width:IMAGES.gaming.gamingOverheating.width,height:IMAGES.gaming.gamingOverheating.height,caption:'PC cooling and hardware diagnosis carried out at KCROC’s Hawalli workshop.'},
@@ -4483,7 +4483,7 @@ export const rawGraphData: RawGraphData = {
    {id:"faq-mishref-4",question:"Is KCROC located in Mishref?",answer:"No. Mishref is covered through pickup and delivery. The repair lab is in Hawalli at Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19."},
    {id:"faq-mishref-5",question:"Are repairs covered by a warranty?",answer:"Completed repairs carry a 30-day warranty. We provide the diagnosis and quote before paid work begins."}
   ],
-  landmark:'Mobile Dispatch Area (Devices collected in Mishref, West Mishref and Mubarak Al-Abdullah and repaired at the Hawalli lab)',coords:{lat:29.27931,lng:48.06984},serviceRadiusKm:15,
+  landmark:'Mobile Dispatch Area (Devices collected in Mishref, West Mishref and Mubarak Al-Abdullah and repaired at the Hawalli lab)',serviceRadiusKm:15,
   serviceAreas:['Mishref','West Mishref','Mubarak Al-Abdullah'],relatedServiceIds:['srv-laptop','srv-macbook','srv-motherboard','srv-gaming','srv-gaming-laptop-cleaning'],
   relatedProblemIds:['problem-overheating','problem-no-power','problem-not-charging','problem-black-screen','problem-freezing-crashing'],relatedLocationIds:['loc-yarmouk','loc-qortuba','loc-surra'],
   contentImage:{src:IMAGES.laptopHardware.laptopDustCleaningOverheatingKuwait.src,alt:IMAGES.laptopHardware.laptopDustCleaningOverheatingKuwait.alt,width:IMAGES.laptopHardware.laptopDustCleaningOverheatingKuwait.width,height:IMAGES.laptopHardware.laptopDustCleaningOverheatingKuwait.height,caption:'A real laptop cooling service image from KCROC’s Hawalli workshop.'},
