@@ -138,9 +138,9 @@ const ProblemTemplate: React.FC = () => {
       <SEOEngine entityId={problem.id} />
       
       {/* Hero Section - Added glass effect */}
-      <section className="pt-24 pb-16 px-6 bg-slate-900/40 backdrop-blur-md border-b border-slate-800">
+      <section className={problem.emergencySteps?.length ? "pt-10 pb-12 px-6 bg-slate-900/40 backdrop-blur-md border-b border-slate-800" : "pt-24 pb-16 px-6 bg-slate-900/40 backdrop-blur-md border-b border-slate-800"}>
         <div className="max-w-3xl mx-auto text-center">
-          <AlertOctagon className="w-16 h-16 text-rose-500 mx-auto mb-6" />
+          {!problem.emergencySteps?.length && <AlertOctagon className="w-16 h-16 text-rose-500 mx-auto mb-6" />}
           <h1 className="text-4xl md:text-5xl font-black text-white mb-6">
             {problem.title}
           </h1>
@@ -218,8 +218,8 @@ const ProblemTemplate: React.FC = () => {
                     const active = selectedLiquid === option.id;
                     return (
                       <button key={option.id} type="button" aria-pressed={active} onClick={() => setSelectedLiquid(option.id)} className={active
-                        ? 'rounded-full border border-cyan-300 bg-cyan-400 px-4 py-2.5 text-sm font-black text-slate-950'
-                        : 'rounded-full border border-slate-700 bg-slate-950/60 px-4 py-2.5 text-sm font-bold text-slate-300 hover:border-cyan-500/60'}>
+                        ? 'rounded-full border border-cyan-300 bg-cyan-400 px-4 py-2.5 text-sm font-black text-slate-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400'
+                        : 'rounded-full border border-slate-700 bg-slate-950/60 px-4 py-2.5 text-sm font-bold text-slate-300 hover:border-cyan-500/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400'}>
                         {option.label}
                       </button>
                     );
@@ -233,8 +233,8 @@ const ProblemTemplate: React.FC = () => {
                     const active = selectedLiquidDevice === option.id;
                     return (
                       <button key={option.id} type="button" aria-pressed={active} onClick={() => setSelectedLiquidDevice(option.id)} className={active
-                        ? 'rounded-full border border-cyan-300 bg-cyan-400 px-4 py-2.5 text-sm font-black text-slate-950'
-                        : 'rounded-full border border-slate-700 bg-slate-950/60 px-4 py-2.5 text-sm font-bold text-slate-300 hover:border-cyan-500/60'}>
+                        ? 'rounded-full border border-cyan-300 bg-cyan-400 px-4 py-2.5 text-sm font-black text-slate-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400'
+                        : 'rounded-full border border-slate-700 bg-slate-950/60 px-4 py-2.5 text-sm font-bold text-slate-300 hover:border-cyan-500/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400'}>
                         {option.label}
                       </button>
                     );
