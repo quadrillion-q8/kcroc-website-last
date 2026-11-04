@@ -1974,6 +1974,14 @@ export const rawGraphData: RawGraphData = {
       },
       inspectionChecklist: ['Confirm liquid type and affected area', 'Isolate battery and external power', 'Inspect board and connectors', 'Map corrosion and contamination', 'Test affected power rails', 'Verify all repaired functions under load'],
       contentImages: [
+        {
+          src: '/images/gallery/macbook-logic-board-cleaning-crc-contact-cleaner.webp',
+          alt: 'MacBook logic board cleaning with CRC contact cleaner',
+          width: 1400,
+          height: 1400,
+          placement: 'hero',
+          caption: 'KCROC gallery photo of a MacBook logic board being cleaned. The method used on a liquid-damaged board is selected after inspection.'
+        },
         { src: IMAGES.laptopHardware.laptopOpenRepairBench.src, alt: IMAGES.laptopHardware.laptopOpenRepairBench.alt, width: IMAGES.laptopHardware.laptopOpenRepairBench.width, height: IMAGES.laptopHardware.laptopOpenRepairBench.height, placement: 'commonIssues', caption: 'An opened laptop prepared for internal hardware inspection.' },
         { src: IMAGES.laptopHardware.dellTeardown.src, alt: IMAGES.laptopHardware.dellTeardown.alt, width: IMAGES.laptopHardware.dellTeardown.width, height: IMAGES.laptopHardware.dellTeardown.height, placement: 'coreFeatures', caption: 'Internal laptop hardware exposed for motherboard and connector inspection.' },
         { src: IMAGES.laptopHardware.dellRepair.src, alt: IMAGES.laptopHardware.dellRepair.alt, width: IMAGES.laptopHardware.dellRepair.width, height: IMAGES.laptopHardware.dellRepair.height, placement: 'process', caption: 'Component-level board repair following fault isolation.' }
