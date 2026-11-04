@@ -7,6 +7,8 @@ interface HeadTermCalloutProps {
   lead?: string;
   /** Short label for analytics/debugging; not rendered. */
   placement?: string;
+  /** Use a desktop-specific repair path and avoid laptop-only price/turnaround claims. */
+  variant?: 'general' | 'gamingPc';
 }
 
 /**
@@ -20,26 +22,41 @@ interface HeadTermCalloutProps {
 export const HeadTermCallout: React.FC<HeadTermCalloutProps> = ({
   lead = 'If these steps do not solve it,',
   placement,
-}) => (
-  <aside
-    aria-label="Laptop and computer repair in Kuwait"
-    data-placement={placement}
-    className="my-10 rounded-2xl border border-cyan-500/25 bg-slate-900/50 p-5 sm:p-6"
-  >
-    <p className="text-base leading-7 text-slate-300">
-      {lead} KCROC offers{' '}
-      <Link to="/laptop-repair-kuwait" className="font-semibold text-cyan-400 underline underline-offset-2 hover:text-cyan-300">
-        laptop repair in Kuwait
-      </Link>{' '}
-      and{' '}
-      <Link to="/computer-repair-kuwait" className="font-semibold text-cyan-400 underline underline-offset-2 hover:text-cyan-300">
-        computer repair in Kuwait
-      </Link>{' '}
-      from our Hawalli lab. Repairs start from 15 KWD, you get a quote before any work begins, and many common
-      repairs are finished within 24&ndash;48 hours after diagnosis. {KCROC_POLICY.pickupAndDelivery.label},
-      No Fix No Fee, and a {getWarrantyLabel()} on completed repairs.
-    </p>
-  </aside>
-);
+  variant = 'general',
+}) => {
+  const isGamingPc = variant === 'gamingPc';
+
+  return (
+    <aside
+      aria-label={isGamingPc ? 'Gaming PC and GPU repair in Kuwait' : 'Laptop and computer repair in Kuwait'}
+      data-placement={placement}
+      className="my-10 rounded-2xl border border-cyan-500/25 bg-slate-900/50 p-5 sm:p-6"
+    >
+      {isGamingPc ? (
+        <p className="text-base leading-7 text-slate-300">
+          If your gaming PC still has no display after safe checks, continue to{' '}
+          <Link to="/gaming-pc-repair-kuwait" className="font-semibold text-cyan-400 underline underline-offset-2 hover:text-cyan-300">
+            Gaming PC and GPU repair in Kuwait
+          </Link>
+          {' '}for GPU, power-delivery, BIOS/VBIOS and motherboard diagnosis at KCROC's Hawalli lab. The initial diagnostic and inspection is listed as free; you receive a quote before paid repair work. {KCROC_POLICY.pickupAndDelivery.label}, No Fix No Fee, and a {getWarrantyLabel()} on completed repairs.
+        </p>
+      ) : (
+        <p className="text-base leading-7 text-slate-300">
+          {lead} KCROC offers{' '}
+          <Link to="/laptop-repair-kuwait" className="font-semibold text-cyan-400 underline underline-offset-2 hover:text-cyan-300">
+            laptop repair in Kuwait
+          </Link>{' '}
+          and{' '}
+          <Link to="/computer-repair-kuwait" className="font-semibold text-cyan-400 underline underline-offset-2 hover:text-cyan-300">
+            computer repair in Kuwait
+          </Link>{' '}
+          from our Hawalli lab. Repairs start from 15 KWD, you get a quote before any work begins, and many common
+          repairs are finished within 24&ndash;48 hours after diagnosis. {KCROC_POLICY.pickupAndDelivery.label},
+          No Fix No Fee, and a {getWarrantyLabel()} on completed repairs.
+        </p>
+      )}
+    </aside>
+  );
+};
 
 export default HeadTermCallout;
