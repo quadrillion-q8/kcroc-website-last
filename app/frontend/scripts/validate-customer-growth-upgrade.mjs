@@ -212,7 +212,7 @@ add('Consolidated location pages are inactive, hidden from the hub and routed to
 
 add('Priority neighbourhood pages are active in the graph and directory',
   ['shuwaikh-residential', 'abdullah-al-salem', 'shamiya', 'nuzha', 'adailiya', 'kaifan', 'yarmouk', 'qortuba', 'mishref'].every((slug) =>
-    (graph.includes("slug:'" + slug + "'") || graph.includes("slug: '" + slug + "'")) && locations.includes("KCROC_GRAPH.locations.filter((location) => location.isActive !== false)")));
+    (graph.includes("slug:'" + slug + "'") || graph.includes("slug: '" + slug + "'")) && locations.includes("location.isActive === false")));
 
 add('Service-area FAQs remain in prerendered DOM and match their FAQPage schema answers',
   locations.includes('hidden={!isOpen}') &&
@@ -589,6 +589,7 @@ add('Case-study cards and links are removed from location, brand, problem, servi
   && !caseStudyRemovalService.includes('relatedCaseStudyIds'));
 
 const locationIndex = await read('pages/Locations.tsx');
+add('Service-area directory hides inactive consolidated pages', locationIndex.includes("KCROC_GRAPH.locations.filter((location) => location.isActive !== false)"));
 add('Location navigation avoids stale counts and distinguishes the Hawalli lab from service areas',
   !caseStudyRemovalDesktopMenu.includes('31 dedicated areas')
   && !caseStudyRemovalDesktopMenu.includes('View all 31 areas')
