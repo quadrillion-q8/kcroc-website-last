@@ -403,6 +403,19 @@ export const ProblemSchema = RoutableEntitySchema.extend({
   doNotDo: z.string().optional(),
   solution: z.string(),
   urgency: z.string(),
+  // Optional liquid-spill emergency guidance. Kept in the source graph so the
+  // live page and generated SEO projection share one content source.
+  emergencySteps: z.array(z.object({
+    title: z.string(),
+    description: z.string(),
+  })).optional(),
+  emergencyCaution: z.string().optional(),
+  liquidRiskMatrix: z.array(z.object({
+    liquid: z.string(),
+    residue: z.string(),
+    risk: z.string(),
+    action: z.string(),
+  })).optional(),
   relatedServiceIds: z.array(z.string()),
 
   // Premium problem-page content. These fields let high-intent Problem pages
