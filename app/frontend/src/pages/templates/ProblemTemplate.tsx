@@ -138,9 +138,9 @@ const ProblemTemplate: React.FC = () => {
       <SEOEngine entityId={problem.id} />
       
       {/* Hero Section - Added glass effect */}
-      <section className="pt-24 pb-16 px-6 bg-slate-900/40 backdrop-blur-md border-b border-slate-800">
+      <section className={problem.emergencySteps?.length ? "pt-10 pb-12 px-6 bg-slate-900/40 backdrop-blur-md border-b border-slate-800" : "pt-24 pb-16 px-6 bg-slate-900/40 backdrop-blur-md border-b border-slate-800"}>
         <div className="max-w-3xl mx-auto text-center">
-          <AlertOctagon className="w-16 h-16 text-rose-500 mx-auto mb-6" />
+          {!problem.emergencySteps?.length && <AlertOctagon className="w-16 h-16 text-rose-500 mx-auto mb-6" />}
           <h1 className="text-4xl md:text-5xl font-black text-white mb-6">
             {problem.title}
           </h1>
