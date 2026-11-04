@@ -204,11 +204,11 @@ add('Consolidated location pages are inactive, hidden from the hub and routed to
   !locations.includes('/location/salwa') &&
   !locations.includes('/location/ardiya') &&
   !locations.includes('/location/rawda') &&
-  findPermanentRedirect('/location/fintas')?.destination === '/location/fahaheel' &&
-  findPermanentRedirect('/location/jabriya')?.destination === '/location/surra' &&
-  findPermanentRedirect('/location/salwa')?.destination === '/location/salmiya' &&
-  findPermanentRedirect('/location/ardiya')?.destination === '/location/farwaniya' &&
-  findPermanentRedirect('/location/rawda')?.destination === '/location/adailiya');
+  JSON.parse(vercelConfig).redirects.some((r) => r.source === '/location/fintas' && r.destination === '/location/fahaheel' && r.permanent === true) &&
+  JSON.parse(vercelConfig).redirects.some((r) => r.source === '/location/jabriya' && r.destination === '/location/surra' && r.permanent === true) &&
+  JSON.parse(vercelConfig).redirects.some((r) => r.source === '/location/salwa' && r.destination === '/location/salmiya' && r.permanent === true) &&
+  JSON.parse(vercelConfig).redirects.some((r) => r.source === '/location/ardiya' && r.destination === '/location/farwaniya' && r.permanent === true) &&
+  JSON.parse(vercelConfig).redirects.some((r) => r.source === '/location/rawda' && r.destination === '/location/adailiya' && r.permanent === true));
 
 add('Priority neighbourhood pages are active in the graph and directory',
   ['shuwaikh-residential', 'abdullah-al-salem', 'shamiya', 'nuzha', 'adailiya', 'kaifan', 'yarmouk', 'qortuba', 'mishref'].every((slug) =>
