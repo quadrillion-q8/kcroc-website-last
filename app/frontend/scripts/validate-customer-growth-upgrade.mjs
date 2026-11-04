@@ -14,7 +14,7 @@ const norm = (s) =>
     .replace(/\s+/g, ' ');
 const has = (source, needle) => norm(source).includes(norm(needle));
 
-const [app, graph, seoProjection, locale, pricingPage, sitemap, hero, reviews, footer, header, mobileMenu, stickyMobileCTA, navigationCompiler, rootLayout, nearMe, nearMeAr, locations, hawalli, computerRepair, about, booking, arabicCommercial, serviceAreas, englishPricing, serviceTemplate, brandTemplate, coreRepairPillars, macbookBatteryPage] = await Promise.all([
+const [app, graph, seoProjection, locale, pricingPage, sitemap, hero, reviews, footer, header, mobileMenu, stickyMobileCTA, navigationCompiler, rootLayout, nearMe, nearMeAr, locations, locationDirectory, hawalli, computerRepair, about, booking, arabicCommercial, serviceAreas, englishPricing, serviceTemplate, brandTemplate, coreRepairPillars, macbookBatteryPage] = await Promise.all([
   read('App.tsx'),
   read('data/graph.ts'),
   read('data/seoGraph.generated.ts'),
@@ -32,6 +32,7 @@ const [app, graph, seoProjection, locale, pricingPage, sitemap, hero, reviews, f
   read('pages/NearMe.tsx'),
   read('pages/NearMeAR.tsx'),
   read('pages/LocationDeepTemplate.tsx'),
+  read('pages/Locations.tsx'),
   read('pages/HawalliLocationPage.tsx'),
   read('pages/ComputerRepairKuwait.tsx'),
   read('pages/About.tsx'),
@@ -212,7 +213,9 @@ add('Consolidated location pages are inactive, hidden from the hub and routed to
 
 add('Priority neighbourhood pages are active in the graph and directory',
   ['shuwaikh-residential', 'abdullah-al-salem', 'shamiya', 'nuzha', 'adailiya', 'kaifan', 'yarmouk', 'qortuba', 'mishref'].every((slug) =>
-    (graph.includes("slug:'" + slug + "'") || graph.includes("slug: '" + slug + "'")) && locations.includes("location.isActive === false")));
+    new RegExp("'loc-" + slug + "':\\s*\\{[^\\n]*slug:\\s*['\\"]" + slug + "['\\"][^\\n]*isActive:\\s*true").test(graph)) &&
+  locationDirectory.includes('location.isActive !== false') &&
+  locations.includes('l.isActive !== false'));
 
 add('Service-area FAQs remain in prerendered DOM and match their FAQPage schema answers',
   locations.includes('hidden={!isOpen}') &&

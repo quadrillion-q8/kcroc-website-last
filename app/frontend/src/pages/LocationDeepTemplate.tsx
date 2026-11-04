@@ -80,7 +80,7 @@ export default function LocationDeepTemplate() {
   const { trackConversion } = useAnalytics();
   const [openFaqId, setOpenFaqId] = useState<string | null>(null);
 
-  const location = KCROC_GRAPH.locations.find((l) => l.slug === slug);
+  const location = KCROC_GRAPH.locations.find((l) => l.slug === slug && l.isActive !== false);
   const business = KCROC_GRAPH.business;
 
   // Not a known location, or someone hits this route for the physical
