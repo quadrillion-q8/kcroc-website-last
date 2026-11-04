@@ -5147,7 +5147,7 @@ export const rawGraphData: RawGraphData = {
       slug: 'spilled-water-on-laptop',
       entityType: 'Problem',
       isActive: true,
-      title: 'Spilled Water, Coffee or Liquid on Laptop',
+      title: 'Spilled Water, Coffee or Another Liquid on Your Laptop?',
       primaryKeyword: 'spilled water on laptop',
       secondaryKeywords: [
         'coffee spilled on laptop',
@@ -5176,7 +5176,7 @@ export const rawGraphData: RawGraphData = {
       emergencySteps: [
         {
           title: 'Turn the laptop off immediately',
-          description: 'If it is still running and there is no heat, smoke, swelling or other battery warning, press and hold the power button until it switches off (often around 5–10 seconds). Do not wait for a normal Windows or macOS shutdown.'
+          description: 'If it is still running and there is no heat, smoke, swelling or other battery warning, press and hold the power button until it switches off. Do not wait for a normal Windows or macOS shutdown.'
         },
         {
           title: 'Disconnect the charger and accessories — only if safe',
