@@ -7,7 +7,7 @@ import { KCROC_GRAPH } from '../data/graph';
 import { SEOEngine } from '../core/components/SEOEngine';
 
 export default function Locations() {
-  const locations = [...KCROC_GRAPH.locations].sort((a, b) => {
+  const locations = KCROC_GRAPH.locations.filter((location) => location.isActive !== false).sort((a, b) => {
     const aName = a.title.replace(/ Repair Center$/i, '');
     const bName = b.title.replace(/ Repair Center$/i, '');
     return aName.localeCompare(bName);

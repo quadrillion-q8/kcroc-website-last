@@ -85,7 +85,7 @@ export default function LocationDeepTemplate() {
 
   // Not a known location, or someone hits this route for the physical
   // Hawalli branch (which has its own dedicated page) — bounce safely.
-  if (!location || !business || location.isPhysicalLocation) {
+  if (!location || !business || location.isPhysicalLocation || location.isActive === false) {
     return <Navigate to="/404" replace />;
   }
 
