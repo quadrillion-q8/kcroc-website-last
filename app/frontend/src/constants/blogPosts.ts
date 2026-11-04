@@ -6100,135 +6100,324 @@ export const BLOG_POSTS: BlogPost[] = [
     "contentType": "guide"
   },
 
-  {
-    "id": "guide-gaming-pc-black-screen-no-display-kuwait",
-    "slug": "gaming-pc-black-screen-no-display-kuwait",
-    "title": "Gaming PC Black Screen / No Display After Boot: Kuwait Repair Guide",
-    "excerpt": "Fans spin, RGB lights up, but the monitor stays black? Follow this diagnostic path for GPU, RAM, display, BIOS and motherboard causes before buying another graphics card.",
-    "description": "Gaming PC turns on but has no display? Diagnose GPU, RAM, monitor signal, BIOS, PCIe power and motherboard faults before replacing the graphics card. Kuwait repair guide.",
-    "content": [
-      "A gaming PC that powers on but produces no image is not necessarily a dead graphics card.",
-      "This distinction matters because no-display systems are often exposed to unnecessary part replacement. A controlled diagnostic path identifies which stage is actually failing."
-    ],
-    "richContent": [
-      {
-        "type": "callout",
-        "variant": "expert",
-        "title": "No display is not the same as no power",
-        "text": "If fans, RGB or the pump are running, the PC has reached at least part of its startup sequence. Change the diagnostic question from “why is it dead?” to “where does POST or video output stop?”"
-      },
-      {
-        "type": "h2",
-        "text": "Check the simple display path first",
-        "id": "display-basics"
-      },
-      {
-        "type": "list",
-        "ordered": true,
-        "items": [
-          "Confirm the monitor is powered and on the correct input.",
-          "Try a known-good display cable where practical.",
-          "Check that the cable is connected to the intended output. With a discrete GPU installed, the motherboard video output may not be the active display path.",
-          "Remove unnecessary display adapters or docks while diagnosing.",
-          "Observe whether the PC produces normal POST indicators, debug LEDs or beep patterns."
-        ]
-      },
-      {
-        "type": "h2",
-        "text": "Could the GPU be the problem?",
-        "id": "gpu"
-      },
-      {
-        "type": "paragraph",
-        "text": "Yes, but the evidence matters. A GPU that is not receiving expected PCIe power, is not seated correctly, has a board-level fault, or is failing during initialization can all produce a black screen. The same symptom can also come from the motherboard or memory subsystem."
-      },
-      {
-        "type": "h2",
-        "text": "Could RAM cause a black screen?",
-        "id": "ram"
-      },
-      {
-        "type": "paragraph",
-        "text": "Yes. Memory training can prevent the system from reaching a usable POST state. If you recently changed RAM, enabled an XMP or EXPO profile, or moved modules, that change is useful diagnostic information."
-      },
-      {
-        "type": "h2",
-        "text": "BIOS and motherboard branches",
-        "id": "bios"
-      },
-      {
-        "type": "paragraph",
-        "text": "A failed firmware update, incorrect configuration, or motherboard fault can stop initialization before a display signal appears. This is where a technician should separate a recoverable firmware problem from a board-level electrical failure."
-      },
-      {
-        "type": "h2",
-        "text": "What not to do",
-        "id": "avoid"
-      },
-      {
-        "type": "list",
-        "items": [
-          "Do not keep forcing firmware updates with the wrong BIOS file.",
-          "Do not use random modular PSU cables from another power supply.",
-          "Do not repeatedly power-cycle a system with visible electrical damage or a burning smell.",
-          "Do not conclude that a black screen proves the GPU is dead."
-        ]
-      },
-      {
-        "type": "h2",
-        "text": "Gaming PC no-display repair in Kuwait",
-        "id": "kuwait-repair"
-      },
-      {
-        "type": "paragraph",
-        "text": "KCROC's gaming-PC repair service covers GPU diagnostics, VRAM and power-delivery checks, BIOS/VBIOS recovery, motherboard diagnosis and sustained stability testing. The published service also includes Kuwait-wide pickup and delivery and a 30-day repair warranty."
-      },
-      {
-        "type": "h2",
-        "text": "Frequently asked questions",
-        "id": "faq"
-      },
-      {
-        "type": "faq",
-        "items": [
-          {
-            "question": "Why does my gaming PC turn on but show no signal?",
-            "answer": "Possible causes include the display path, GPU power or seating, RAM training, BIOS/firmware and motherboard faults. The correct branch depends on the exact startup behavior."
-          },
-          {
-            "question": "Does a black screen mean my GPU is dead?",
-            "answer": "No. A black screen is a symptom, not a diagnosis. The display path and the rest of the POST sequence need to be checked first."
-          },
-          {
-            "question": "Can a failed BIOS update cause no display?",
-            "answer": "Yes. A failed firmware update can stop the system before normal video output or POST."
-          },
-          {
-            "question": "Can you collect a gaming PC with no display in Kuwait?",
-            "answer": "Yes. KCROC states that it provides pickup and delivery for gaming PCs across Kuwait."
-          }
-        ]
-      }
-    ],
-    "image": "/images/technician-holding-zotac-gaming-graphics-card.webp",
-    "discoverImage": "/images/discover/custom-gaming-pc-teardown-and-diagnostics-workbench-1200x675.webp",
-    "date": "2026-10-01",
-    "technicalReviewDate": "October 1, 2026",
-    "author": "Imran Natiq",
-    "category": "Gaming PC Repair",
-    "readTime": "8-10 min read",
-    "clusterParent": "gaming-pc-repair-kuwait",
-    "tags": [
-      "Gaming PC No Display",
-      "Gaming PC Black Screen",
-      "GPU No Signal",
-      "Gaming PC Repair Kuwait",
-      "GPU Repair Kuwait"
-    ],
-    "seoTitle": "Gaming PC Black Screen / No Display | Kuwait Repair Guide | KCROC",
-    "seoDescription": "Gaming PC has power but no display? Check monitor signal, GPU power, RAM training, BIOS and motherboard causes before replacing the GPU. Kuwait gaming PC repair guide.",
-    "contentType": "guide"
-  },
+{
+  "id": "guide-gaming-pc-black-screen-no-display-kuwait",
+  "slug": "gaming-pc-black-screen-no-display-kuwait",
+  "title": "Gaming PC Black Screen / No Display After Boot: Kuwait Repair Guide",
+  "excerpt": "Fans and RGB turn on, but the monitor stays black? Learn how to read motherboard POST LEDs, check DDR5 memory training and GPU power safely, and identify when a gaming PC needs bench diagnosis in Kuwait.",
+  "description": "A gaming PC powers on but shows no display? Interpret CPU, DRAM, VGA and BOOT indicators, check GPU power, DDR5 training and BIOS safely before replacing parts. Kuwait guide.",
+  "content": [
+    "A gaming PC that powers on but shows no image does not automatically have a failed graphics card. The fault may be in the monitor and cable path, POST, memory training, GPU power, firmware, storage boot or motherboard.",
+    "Use the motherboard's own diagnostic indicators and the exact model manual. These checks are designed to identify useful clues without asking you to work on live electrical parts or buy replacement hardware by guesswork."
+  ],
+  "richContent": [
+    {
+      "type": "callout",
+      "variant": "expert",
+      "title": "Start with the symptom, not the most expensive part",
+      "text": "Fans, RGB lighting or an AIO pump running only show that some parts of the system are receiving power. They do not prove that the PSU rails are stable, that POST completed, or that the GPU is healthy. A black screen is a symptom—not a GPU diagnosis."
+    },
+    {
+      "type": "h2",
+      "text": "What kind of black screen are you seeing?",
+      "id": "classify-symptom"
+    },
+    {
+      "type": "paragraph",
+      "text": "A monitor that says No Signal is different from a monitor with a backlight but a completely black image. A system that displays the motherboard logo and then goes black has progressed further than one that never produces a POST screen. Note exactly when the image disappears, whether the monitor reports a signal, and whether the PC restarts or remains running."
+    },
+    {
+      "type": "list",
+      "items": [
+        "No Signal from the moment the PC is powered on: begin with monitor input, cable, GPU output and POST indicators.",
+        "Motherboard logo appears, then the screen goes black: investigate firmware settings, the boot drive, operating-system startup and graphics drivers as well as hardware.",
+        "Image appears only after several minutes following a BIOS reset or memory change: memory training may be taking place; check the board's documented behavior before interrupting it.",
+        "Screen works until a game or heavy workload starts: consider GPU power, temperature, driver and load-related stability checks rather than treating it as a simple cold-boot fault."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": "Step 1: Check the monitor and display cable before opening the case",
+      "id": "display-path"
+    },
+    {
+      "type": "paragraph",
+      "text": "Start outside the computer. A wrong monitor input, damaged cable, adapter, dock or display handshake can imitate a major hardware failure. Test one display at a time so that a second monitor or adapter does not complicate the result."
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "Confirm that the monitor is powered on and manually select the input used by the cable, such as HDMI or DisplayPort. Do not rely only on automatic input detection.",
+        "Reconnect both ends of the cable and try a known-good cable and monitor input. When practical, test HDMI as a second path if DisplayPort gives No Signal, or vice versa.",
+        "With a discrete graphics card installed, connect the monitor to an output on the graphics card—not automatically to the motherboard ports. Motherboard video output works only when the installed CPU and board support an active integrated-graphics path.",
+        "Disconnect secondary monitors, capture cards, docks, KVM switches and passive adapters. Test with one direct cable from the monitor to the graphics card.",
+        "If the monitor has a deep-sleep or link-state problem, fully power-cycle the monitor according to its manual, then reconnect it and test again."
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "tip",
+      "title": "A motherboard HDMI port is not a universal backup",
+      "text": "Some Intel desktop processors with an F suffix, including KF models, have no processor graphics. AMD integrated graphics also depend on the exact CPU model and platform. Check the processor specification before expecting the motherboard HDMI or DisplayPort socket to produce an image."
+    },
+    {
+      "type": "h2",
+      "text": "Step 2: Read the motherboard CPU, DRAM, VGA and BOOT indicators",
+      "id": "debug-leds"
+    },
+    {
+      "type": "paragraph",
+      "text": "Many gaming motherboards provide four status LEDs, a two-digit POST-code display, or a brand-specific diagnostic system. Watch the indicators during startup and record which one remains lit after the normal startup sequence. The names are useful clues, but the exact behavior and colors must be checked against the manual for your board model and revision."
+    },
+    {
+      "type": "comparisonTable",
+      "title": "Common meanings of four motherboard status LEDs",
+      "featureLabel": "Indicator",
+      "columns": [
+        "What it commonly indicates",
+        "Safe first checks"
+      ],
+      "rows": [
+        {
+          "feature": "CPU",
+          "values": [
+            "CPU initialization or detection did not complete.",
+            "Check the board manual and recent CPU/BIOS changes. With AC disconnected, verify the EPS/CPU power connection. Persistent faults need CPU, socket, BIOS and board diagnosis."
+          ]
+        },
+        {
+          "feature": "DRAM",
+          "values": [
+            "Memory detection or training did not complete.",
+            "Allow memory training to finish after a first boot, BIOS update or memory-setting change. Then use the board's recommended single-DIMM test and CMOS procedure."
+          ]
+        },
+        {
+          "feature": "VGA",
+          "values": [
+            "Graphics initialization or detection did not complete.",
+            "Check the graphics-card seating and required GPU power connectors with the PC shut down and unplugged. Verify the display is connected to the intended GPU output."
+          ]
+        },
+        {
+          "feature": "BOOT",
+          "values": [
+            "The board did not detect or complete the expected boot-device/OS stage; exact meaning varies by model.",
+            "Check whether the BIOS can see the SSD and whether the boot entry is correct. A BOOT indicator does not prove that the display path is fault-free."
+          ]
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "warning",
+      "title": "Do not diagnose by LED color alone",
+      "text": "Red, yellow, white and green are common on some boards, but colors and sequences are not universal. On many ASUS and MSI boards a persistent BOOT indicator points to a boot-device stage, not a guarantee that Windows has loaded or that the screen should be visible. Use the exact motherboard manual."
+    },
+    {
+      "type": "debugLedSelector"
+    },
+    {
+      "type": "h2",
+      "text": "Step 3: Check for DDR5 memory training before assuming RAM has failed",
+      "id": "memory-training"
+    },
+    {
+      "type": "paragraph",
+      "text": "After the first boot, a BIOS update, CMOS reset, memory replacement or XMP/EXPO change, some systems perform memory training before they can show video. During that interval the DRAM indicator may remain lit and the screen can stay blank. The time varies by platform, firmware, memory capacity and configuration; some manufacturer guidance describes waits of several minutes."
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "If the no-display symptom began immediately after a BIOS reset, BIOS update or RAM/EXPO/XMP change, leave the system powered and allow the motherboard's documented training process to complete. Avoid repeatedly switching it off and on during that process.",
+        "If the DRAM light remains stuck beyond the expected training period, shut the PC down, switch off and disconnect AC power before touching internal components.",
+        "When you are comfortable handling PC parts, test one compatible memory module in the slot recommended by the exact motherboard manual. A2 is often the preferred single-module slot on four-slot consumer boards, but the manual takes precedence.",
+        "If a memory profile was recently enabled, use the board's documented Clear CMOS procedure to return memory settings to defaults. Do not short random pins or remove the battery while the board is powered.",
+        "If one module or slot behaves differently from another, record the combination. A memory fault, socket contact issue, CPU memory-controller problem and motherboard channel fault can produce similar symptoms."
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "info",
+      "title": "Do not scrub RAM contacts as a first-line fix",
+      "text": "Avoid household abrasives, erasers or solvents on memory contacts. Reseating and controlled single-module testing provide better diagnostic information. If contacts look damaged or contaminated, have the module and slot inspected."
+    },
+    {
+      "type": "h2",
+      "text": "Step 4: Check GPU seating and high-power PCIe connectors safely",
+      "id": "gpu-power"
+    },
+    {
+      "type": "paragraph",
+      "text": "A solid VGA indicator, no image from the graphics card, or a black screen after a GPU upgrade makes the graphics path worth checking—but it still does not prove that the GPU core is dead. The card, slot, power cable, PSU, BIOS configuration and monitor connection can all be involved."
+    },
+    {
+      "type": "list",
+      "items": [
+        "Power the PC down, switch off the PSU and unplug the mains cable before inspecting the card. Never reseat a graphics card or power connector while the system is energized.",
+        "Check that the card is fully seated and that its bracket is not pulling it out of the PCIe slot. A heavy triple-fan card can sag; use a suitable support bracket and inspect for movement after transport. Sag or a transport jolt is not proof of cracked GPU solder joints.",
+        "For 8-pin PCIe power, use the PSU's intended GPU cables and follow the PSU/GPU manufacturer's connection guidance. Do not substitute a modular cable from another PSU, even when the brand is the same.",
+        "For a 16-pin 12VHPWR or 12V-2x6 connector, confirm that the plug is fully inserted and latched, with no visible gap, trapped debris, sharp bend or side-panel pressure at the connector. Follow the exact card and PSU instructions for cable clearance.",
+        "If the connector or plug is discoloured, melted, smells burnt or feels unusually hot, stop using the PC. Do not reconnect or reuse a visibly heat-damaged cable or socket; arrange inspection.",
+        "If the CPU has integrated graphics, a qualified person can test the system without the discrete card and use the motherboard output. This test is only meaningful when the exact CPU supports integrated graphics."
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "warning",
+      "title": "Do not open the PSU or attempt a GPU reflow",
+      "text": "Power supplies can retain dangerous stored energy. Never open one for a DIY test. Heating a graphics card with an oven or heat gun is not a reliable repair and can make a recoverable board fault worse."
+    },
+    {
+      "type": "h2",
+      "text": "Step 5: Separate PSU, BIOS and motherboard faults",
+      "id": "psu-bios-board"
+    },
+    {
+      "type": "paragraph",
+      "text": "Fans and RGB lighting can run even when the PSU cannot maintain stable output under CPU or GPU load. A PSU fault, damaged cable, motherboard power stage, firmware problem or shorted component can prevent initialization while some lights remain on. A visual check alone cannot confirm PSU health."
+    },
+    {
+      "type": "list",
+      "items": [
+        "If the problem began after a new GPU, PSU or modular cable was installed, record the exact PSU and GPU models and which cables or adapters were changed. Use only cables confirmed compatible with that PSU model.",
+        "If the fault began after a BIOS update, identify the exact motherboard model and hardware revision. Use BIOS FlashBack only if the manufacturer says that exact board supports it, and follow the manual's file and USB-port requirements.",
+        "Do not flash firmware from a different board revision or force an update while power is unstable. A failed update can require recovery, but a black screen after an update does not by itself prove that the BIOS chip is damaged.",
+        "Some graphics cards have a dual-BIOS switch, but this is not present on every model. Do not move a switch while the PC is on; check the card manual first and change it only with the system fully powered down.",
+        "If the PC still fails after safe external checks and model-approved memory/CMOS steps, component-level testing is needed to separate GPU, PSU, slot, VRM, firmware and motherboard faults."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": "Kuwait-specific handling: dust, heat and transporting a heavy gaming tower",
+      "id": "kuwait-handling"
+    },
+    {
+      "type": "paragraph",
+      "text": "Kuwait's high ambient temperatures and fine dust can add stress to cooling systems, especially when a tower is kept in a poorly ventilated space. They are maintenance considerations, not proof that dust or heat caused a particular no-display fault. A PC that fails to show video still needs its POST, power and display paths tested."
+    },
+    {
+      "type": "paragraph",
+      "text": "A large tower with tempered glass, a heavy graphics card or a liquid cooler also needs sensible handling when it is moved for service. Do not lift a case by its glass panel, leave a running PC in a hot parked vehicle, or transport a heavy tower loose in a car. Tell the booking team the approximate case size, glass-panel and cooling-loop details so collection can be arranged appropriately."
+    },
+    {
+      "type": "callout",
+      "variant": "info",
+      "title": "Free pickup and delivery across Kuwait",
+      "text": "KCROC's published service policy includes free pickup and delivery across Kuwait. A heavy gaming tower can be collected for diagnosis at the Hawalli lab; mention the GPU size, tempered glass and any custom liquid-cooling loop when arranging collection."
+    },
+    {
+      "type": "h2",
+      "text": "When to stop troubleshooting and request a bench diagnosis",
+      "id": "stop-and-escalate"
+    },
+    {
+      "type": "list",
+      "items": [
+        "There is a burning smell, visible melting, smoke, sparks, liquid leakage or a PSU that trips power. Switch the system off and unplug it when safe; do not try another boot.",
+        "A 16-pin GPU connector is heat-damaged, or the cable/adapter does not seat normally.",
+        "The same CPU, DRAM or VGA status indicator remains on after the manufacturer's documented checks.",
+        "The PC was moved, upgraded or repaired immediately before the failure and a component may no longer be seated correctly.",
+        "You have already tested a known-good monitor and cable, but the system still cannot complete POST or produce video."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": "Gaming PC black-screen and GPU diagnosis at KCROC Kuwait",
+      "id": "kcroc-diagnosis"
+    },
+    {
+      "type": "paragraph",
+      "text": "KCROC's gaming-PC repair service covers GPU diagnostics, VRAM and power-delivery checks, BIOS/VBIOS recovery, motherboard diagnosis and stability testing. The aim is to identify the failed stage or component before recommending a replacement—not to assume that every no-display PC needs a new graphics card."
+    },
+    {
+      "type": "list",
+      "items": [
+        "The initial diagnostic and inspection is listed as FREE in KCROC's published pricing, with findings assessed before any paid repair is approved.",
+        "A repair quote is provided after diagnosis; the actual cost depends on the confirmed fault, parts and repair scope.",
+        "Free pickup and delivery are available across Kuwait, with the repair performed at the Hawalli lab.",
+        "Completed repairs carry the published 30-day repair warranty and No Fix, No Fee policy."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": "Frequently asked questions about gaming PC black screens",
+      "id": "faq"
+    },
+    {
+      "type": "faq",
+      "items": [
+        {
+          "question": "Why do my gaming PC fans and RGB turn on when the screen stays black?",
+          "answer": "Fans and lighting can receive power even when the system has not completed POST or the PSU cannot maintain stable output under load. The symptom can come from the monitor path, RAM training, GPU power or seating, PSU, BIOS or motherboard. It does not prove that the graphics card is dead."
+        },
+        {
+          "question": "What does a solid white VGA or red CPU debug LED mean?",
+          "answer": "It usually identifies the hardware stage that the motherboard could not initialize, but the exact label, color and troubleshooting sequence depend on the board model. A VGA light points toward graphics initialization; it does not identify the GPU core as the only possible cause. Check the board manual and record which light remains on."
+        },
+        {
+          "question": "Does a yellow or orange DRAM light always mean my RAM is faulty?",
+          "answer": "No. It can indicate memory detection, compatibility or training trouble. After a BIOS update, CMOS reset or XMP/EXPO change, some systems can remain without video while memory training runs. Allow the time specified by the manufacturer before interrupting the boot."
+        },
+        {
+          "question": "How long should I wait for DDR5 memory training?",
+          "answer": "There is no universal three-minute rule. Training time varies by platform, firmware, memory capacity and configuration; manufacturer guidance for some systems describes several minutes. If the PC recently had a BIOS or memory-setting change, follow the board or system maker's guidance and avoid repeated power cycling."
+        },
+        {
+          "question": "Does a stuck BOOT LED mean my gaming PC has successfully booted?",
+          "answer": "Not necessarily. On many boards BOOT indicates that the expected boot device or operating-system stage has not completed. It is not proof that Windows loaded, and it does not guarantee that the monitor and GPU output are working. Check the exact model manual and whether the SSD appears in BIOS."
+        },
+        {
+          "question": "Can a loose 12VHPWR or 12V-2x6 connector cause a black screen?",
+          "answer": "A poorly seated or damaged high-power GPU connector can prevent correct operation and may overheat. With the PC shut down and unplugged, check visually that the plug is fully seated and latched. Stop using any connector showing melting, discolouration or heat damage."
+        },
+        {
+          "question": "Can I test the motherboard HDMI port instead of the graphics card?",
+          "answer": "Only when the installed CPU supports integrated graphics and the motherboard provides the required output. Some Intel desktop CPUs with an F suffix have no integrated graphics; other processor families also vary by exact model. Confirm the CPU specification before relying on motherboard video."
+        },
+        {
+          "question": "Can KCROC collect a full-size gaming PC anywhere in Kuwait?",
+          "answer": "KCROC's published policy includes free pickup and delivery across Kuwait. When booking, mention the tower's size and weight, tempered-glass panels, heavy GPU and whether it has a custom liquid-cooling loop so collection can be arranged appropriately."
+        },
+        {
+          "question": "How much does it cost to fix a gaming PC with no display?",
+          "answer": "The published price list shows the initial diagnostic and inspection as FREE. A repair price cannot be given responsibly until the fault is isolated; KCROC provides a quote for approval before paid repair work proceeds."
+        }
+      ]
+    },
+    {
+      "type": "h2",
+      "text": "Manufacturer references for model-specific troubleshooting",
+      "id": "manufacturer-references"
+    },
+    {
+      "type": "paragraph",
+      "text": "Use these manufacturer references for the correct LED meanings, boot/no-display checks, memory training behavior, CPU graphics support and high-power GPU cable guidance. The manual for your exact board and hardware revision always takes priority. ASUS Q-LED troubleshooting: https://www.asus.com/support/faq/1042678/ . MSI boot/no-display and EZ Debug LED guidance: https://www.msi.com/support/technical_details/MB_Boot_No_Display . ASUS black-screen and memory-training guidance: https://www.asus.com/us/support/faq/1014276/ . Intel processor graphics guidance: https://www.intel.com/content/www/us/en/support/articles/000058487/processors.html . NVIDIA 12V-2x6 connector guidance: https://build.nvidia.com/playbooks/multi-gpu/overview ."
+    }
+  ],
+  "image": "/images/technician-holding-zotac-gaming-graphics-card.webp",
+  "discoverImage": "/images/discover/custom-gaming-pc-teardown-and-diagnostics-workbench-1200x675.webp",
+  "date": "2026-10-01",
+  "technicalReviewDate": "November 4, 2026",
+  "author": "Imran Natiq",
+  "category": "Gaming PC Repair",
+  "readTime": "8–10 min read",
+  "clusterParent": "gaming-pc-repair-kuwait",
+  "tags": [
+    "Gaming PC No Display",
+    "Gaming PC Black Screen",
+    "Motherboard Debug LED",
+    "VGA Light No Display",
+    "DRAM LED Black Screen",
+    "GPU No Signal",
+    "Gaming PC Repair Kuwait"
+  ],
+  "seoTitle": "Gaming PC Black Screen / No Display in Kuwait | Repair Guide | KCROC",
+  "seoDescription": "Gaming PC powers on but shows no display? Read CPU, DRAM, VGA and BOOT LEDs, check DDR5 training, GPU power and BIOS safely before replacing parts.",
+  "contentType": "guide"
+},
 
   {
     "id": "guide-gaming-gpu-artifacts-repair-kuwait",
