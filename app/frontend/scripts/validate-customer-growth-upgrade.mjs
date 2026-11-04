@@ -240,6 +240,12 @@ add('Shuwaikh B page uses the concierge hero, privacy/SSD content, four linked s
   !shuwaikhEntity.includes('15 to 20 minutes') &&
   !shuwaikhEntity.includes('1 to 3 hours'));
 
+add('Generated SEO projection retains Shuwaikh B service types, description and area postal code',
+  seoProjection.includes('"areaPostalCode": "70000"') &&
+  seoProjection.includes('"serviceTypes": [') &&
+  seoProjection.includes('"MacBook logic-board diagnostics and micro-soldering"') &&
+  seoProjection.includes('Component-level MacBook, laptop and gaming PC repair for Shuwaikh Residential'));
+
 add('Service-area FAQs remain in prerendered DOM and match their FAQPage schema answers',
   locations.includes('hidden={!isOpen}') &&
   locations.includes('{faq.answer}') &&
