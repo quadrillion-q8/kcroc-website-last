@@ -135,9 +135,13 @@ export default function LocationDeepTemplate() {
   // so the 31 URLs do not repeat the same block of text.
   const localFaqs: LocalFAQ[] = [
     {
-      id: `faq-${location.slug}-collection`,
-      question: `How does KCROC serve customers in ${location.title}?`,
-      answer: `Book free doorstep collection from ${location.title}. We log the device for workshop intake, complete diagnosis and approved repair at our Hawalli lab, then arrange free return delivery. You do not need to travel to Hawalli for drop-off.`,
+      id: location.slug === 'shuwaikh-residential' ? `faq-${location.slug}-collection` : `faq-${location.slug}-shop`,
+      question: location.slug === 'shuwaikh-residential'
+        ? `How does KCROC serve customers in ${location.title}?`
+        : `Do you have a repair shop in ${location.title}?`,
+      answer: location.slug === 'shuwaikh-residential'
+        ? `Book free doorstep collection from ${location.title}. We log the device for workshop intake, complete diagnosis and approved repair at our Hawalli lab, then arrange free return delivery. You do not need to travel to Hawalli for drop-off.`
+        : `We don't operate a walk-in branch in ${location.title} itself. Our repair lab is based in Hawalli, and we bring the service to you: free pickup from ${location.title}, repair at our lab, and free delivery back.`,
     },
     {
       id: `faq-${location.slug}-pickup`,
@@ -406,7 +410,7 @@ export default function LocationDeepTemplate() {
                         {linkedServices.map((service) => (
                           <Link
                             key={service.id}
-                            to={\`/\${service.slug}\`}
+                            to={'/' + service.slug}
                             className="inline-flex items-center gap-1.5 text-xs font-bold text-cyan-400 hover:text-cyan-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 rounded"
                           >
                             {service.title.replace(' Kuwait', '')}
