@@ -175,6 +175,11 @@ const ProblemTemplate: React.FC = () => {
                 <Link to="/book" className="inline-flex items-center justify-center rounded-full border border-rose-300/50 px-5 py-3 font-bold text-white transition-colors hover:bg-rose-900/40">
                   Arrange free pickup
                 </Link>
+                {isLiquidSpill && (
+                  <Link to="/laptop-liquid-damage-repair-kuwait" className="inline-flex items-center justify-center rounded-full border border-slate-500/70 px-5 py-3 text-sm font-bold text-slate-100 transition-colors hover:border-cyan-300 hover:text-cyan-200">
+                    View liquid-damage repair pricing and lab process (from 35 KWD)
+                  </Link>
+                )}
               </div>
             </div>
           )}
