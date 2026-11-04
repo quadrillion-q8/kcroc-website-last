@@ -130,16 +130,17 @@ export default function LocationDeepTemplate() {
     `Hi KCROC, I am in ${location.title} and need a device repaired. Can we arrange a pickup?`
   )}`;
 
-  // Only four universal questions stay shared across every service-area page.
-  // Everything else is area-specific and lives in each location's `localFaqs` in KCROC_GRAPH,
-  // so the 31 URLs do not repeat the same block of text.
-  const localFaqs: LocalFAQ[] = [
+  // Most locations use four shared commercial/logistics FAQs. Abdullah Al-Salem
+  // uses its own charging, crash-diagnostics and privacy questions instead, so
+  // its high-intent FAQ block does not repeat the generic location template.
+  const isConciergeCollectionArea = ['shuwaikh-residential', 'abdullah-al-salem'].includes(location.slug);
+  const sharedLocationFaqs: LocalFAQ[] = [
     {
-      id: location.slug === 'shuwaikh-residential' ? `faq-${location.slug}-collection` : `faq-${location.slug}-shop`,
-      question: location.slug === 'shuwaikh-residential'
+      id: isConciergeCollectionArea ? `faq-${location.slug}-collection` : `faq-${location.slug}-shop`,
+      question: isConciergeCollectionArea
         ? `How does KCROC serve customers in ${location.title}?`
         : `Do you have a repair shop in ${location.title}?`,
-      answer: location.slug === 'shuwaikh-residential'
+      answer: isConciergeCollectionArea
         ? `Book free doorstep collection from ${location.title}. We log the device for workshop intake, complete diagnosis and approved repair at our Hawalli lab, then arrange free return delivery. You do not need to travel to Hawalli for drop-off.`
         : `We don't operate a walk-in branch in ${location.title} itself. Our repair lab is based in Hawalli, and we bring the service to you: free pickup from ${location.title}, repair at our lab, and free delivery back.`,
     },
@@ -158,8 +159,9 @@ export default function LocationDeepTemplate() {
       question: `How long does a repair take for ${location.title} customers?`,
       answer: `Many repairs are completed within 24-48 hours of us receiving the device, same-day service is possible for some screen and battery jobs when the part is in stock, and component-level motherboard work typically takes 24-72 hours. We confirm a realistic estimate after diagnosis, because parts availability and the exact fault decide the timing.`,
     },
-    // Area-specific questions defined per location in KCROC_GRAPH, so each
-    // page carries questions that are genuinely different from its siblings.
+  ];
+  const localFaqs: LocalFAQ[] = [
+    ...(location.slug === 'abdullah-al-salem' ? [] : sharedLocationFaqs),
     ...(location.localFaqs ?? []),
   ];
 

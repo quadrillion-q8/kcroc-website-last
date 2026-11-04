@@ -65,6 +65,11 @@
   ],
   "redirects": [
     {
+      "source": "/computer-repair-abdullah-al-salem",
+      "destination": "/location/abdullah-al-salem",
+      "permanent": true
+    },
+    {
       "source": "/:path*",
       "has": [
         {
