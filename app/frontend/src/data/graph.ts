@@ -5414,7 +5414,7 @@ export const rawGraphData: RawGraphData = {
         description: 'Spilled water, coffee, karak or soda on your laptop? Learn safe power-off steps, liquid risks and component-level liquid-damage repair in Kuwait.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/spilled-water-on-laptop',
         ogType: 'article',
-        schemaTypes: ['Article', 'FAQPage'],
+        schemaTypes: ['Article', 'FAQPage', 'HowTo'],
         lastModified: '2026-11-04T00:00:00+03:00'
       },
       navigationPriority: 70,
