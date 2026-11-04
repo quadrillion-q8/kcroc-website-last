@@ -6131,7 +6131,7 @@ const LOCATION_RELATIONSHIPS: Record<string, {
     relatedProblemIds: ['problem-no-power', 'problem-overheating', 'problem-black-screen', 'problem-not-charging', 'problem-cracked-screen'],
     relatedBrandIds: ['brand-dell', 'brand-hp', 'brand-lenovo', 'brand-asus'],
     relatedLocationIds: ['loc-adailiya', 'loc-qortuba', 'loc-yarmouk', 'loc-mishref'],
-  },,
+  },
   khaitan: { relatedServiceIds: ['srv-laptop','srv-charging-port','srv-screen','srv-motherboard'], relatedProblemIds: ['problem-no-power','problem-not-charging','problem-cracked-screen','problem-overheating'], relatedBrandIds: ['brand-dell','brand-hp','brand-lenovo','brand-asus'], relatedLocationIds: ['loc-farwaniya','loc-riggae','loc-hawalli'] },
   riggae: { relatedServiceIds: ['srv-laptop','srv-macbook','srv-screen','srv-motherboard'], relatedProblemIds: ['problem-no-power','problem-not-charging','problem-black-screen','problem-liquid-spill'], relatedBrandIds: ['brand-dell','brand-hp','brand-lenovo','brand-asus'], relatedLocationIds: ['loc-khaitan','loc-farwaniya','loc-hawalli'] },
   ardiya: { relatedServiceIds: ['srv-laptop','srv-gaming','srv-motherboard','srv-screen'], relatedProblemIds: ['problem-overheating','problem-no-power','problem-black-screen','problem-not-charging'], relatedBrandIds: ['brand-asus','brand-msi','brand-dell','brand-lenovo'], relatedLocationIds: ['loc-farwaniya','loc-riggae'] },
@@ -6142,7 +6142,7 @@ const LOCATION_RELATIONSHIPS: Record<string, {
     relatedProblemIds: ['problem-no-power', 'problem-overheating', 'problem-black-screen', 'problem-not-charging', 'problem-freezing-crashing'],
     relatedBrandIds: ['brand-dell', 'brand-lenovo', 'brand-hp', 'brand-asus'],
     relatedLocationIds: ['loc-adailiya', 'loc-yarmouk', 'loc-surra', 'loc-mishref'],
-  },,
+  },
   rawda: { relatedServiceIds: ['srv-laptop','srv-macbook','srv-screen','srv-battery'], relatedProblemIds: ['problem-black-screen','problem-no-power','problem-not-charging','problem-liquid-spill'], relatedBrandIds: ['brand-dell','brand-hp','brand-lenovo','brand-asus'], relatedLocationIds: ['loc-surra','loc-hawalli'] },
   messila: { relatedServiceIds: ['srv-laptop','srv-macbook','srv-gaming','srv-motherboard'], relatedProblemIds: ['problem-overheating','problem-no-power','problem-not-charging','problem-liquid-spill'], relatedBrandIds: ['brand-asus','brand-msi','brand-dell','brand-lenovo'], relatedLocationIds: ['loc-fahaheel','loc-mubarak-al-kabeer'] },
   adailiya: {
@@ -6150,7 +6150,7 @@ const LOCATION_RELATIONSHIPS: Record<string, {
     relatedProblemIds: ['problem-no-power', 'problem-black-screen', 'problem-not-charging', 'problem-cracked-screen'],
     relatedBrandIds: ['brand-dell', 'brand-hp', 'brand-lenovo', 'brand-asus'],
     relatedLocationIds: ['loc-nuzha', 'loc-qortuba', 'loc-yarmouk', 'loc-surra'],
-  },,
+  },
   'shuwaikh-residential': {
     relatedServiceIds: ['srv-laptop', 'srv-macbook', 'srv-motherboard', 'srv-screen'],
     relatedProblemIds: ['problem-no-power', 'problem-black-screen', 'problem-not-charging', 'problem-overheating'],
