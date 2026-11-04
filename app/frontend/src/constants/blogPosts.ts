@@ -84,6 +84,10 @@ export interface FAQBlock {
   items: FAQItem[];
 }
 
+export interface DebugLedSelectorBlock {
+  type: 'debugLedSelector';
+}
+
 export interface ImageBlock {
   type: 'image';
   src: string;
@@ -101,7 +105,8 @@ export type ContentBlock =
   | ComparisonTableBlock
   | TimelineBlock
   | FAQBlock
-  | ImageBlock;
+  | ImageBlock
+  | DebugLedSelectorBlock;
 
 /* ═══════════════════════════════════════════════════════════════════
    BLOG POST
