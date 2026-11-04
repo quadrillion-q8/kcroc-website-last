@@ -59,6 +59,7 @@ check((projectedProblem?.emergencySteps?.length ?? 0) >= 4, 'The generated SEO p
 check((projectedProblem?.liquidRiskMatrix?.length ?? 0) >= 5, 'The generated SEO projection must preserve the liquid matrix.');
 check((projectedProblem?.faqs?.length ?? 0) >= 8, 'The generated SEO projection must preserve the visible FAQ content.');
 check((problem.seo.schemaTypes ?? []).includes('FAQPage'), 'Keep the existing FAQPage schema aligned with the visible FAQ section.');
+check((problem.seo.schemaTypes ?? []).includes('HowTo'), 'Declare HowTo schema for the emergency checklist.');
 check(!unsafeClaims.some((pattern) => pattern.test(JSON.stringify(problem))), 'Remove fixed corrosion timelines, universal data guarantees and unsupported board-swap savings claims.');
 
 if (errors.length > 0) {
