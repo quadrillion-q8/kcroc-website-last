@@ -218,8 +218,8 @@ const ProblemTemplate: React.FC = () => {
                     const active = selectedLiquid === option.id;
                     return (
                       <button key={option.id} type="button" aria-pressed={active} onClick={() => setSelectedLiquid(option.id)} className={active
-                        ? 'rounded-full border border-cyan-300 bg-cyan-400 px-4 py-2.5 text-sm font-black text-slate-950'
-                        : 'rounded-full border border-slate-700 bg-slate-950/60 px-4 py-2.5 text-sm font-bold text-slate-300 hover:border-cyan-500/60'}>
+                        ? 'rounded-full border border-cyan-300 bg-cyan-400 px-4 py-2.5 text-sm font-black text-slate-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400'
+                        : 'rounded-full border border-slate-700 bg-slate-950/60 px-4 py-2.5 text-sm font-bold text-slate-300 hover:border-cyan-500/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400'}>
                         {option.label}
                       </button>
                     );
@@ -233,8 +233,8 @@ const ProblemTemplate: React.FC = () => {
                     const active = selectedLiquidDevice === option.id;
                     return (
                       <button key={option.id} type="button" aria-pressed={active} onClick={() => setSelectedLiquidDevice(option.id)} className={active
-                        ? 'rounded-full border border-cyan-300 bg-cyan-400 px-4 py-2.5 text-sm font-black text-slate-950'
-                        : 'rounded-full border border-slate-700 bg-slate-950/60 px-4 py-2.5 text-sm font-bold text-slate-300 hover:border-cyan-500/60'}>
+                        ? 'rounded-full border border-cyan-300 bg-cyan-400 px-4 py-2.5 text-sm font-black text-slate-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400'
+                        : 'rounded-full border border-slate-700 bg-slate-950/60 px-4 py-2.5 text-sm font-bold text-slate-300 hover:border-cyan-500/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400'}>
                         {option.label}
                       </button>
                     );
