@@ -322,7 +322,16 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
 
         {entity.repairDecision && entity.repairDecision.items.length > 0 && (
           <section className="max-w-7xl mx-auto px-6 py-12 border-t border-slate-800/50 relative z-10">
-            <h2 className="text-2xl font-bold mb-8 text-white">{entity.repairDecision.heading}</h2>
+            <h2 className="text-2xl font-bold mb-4 text-white">{entity.repairDecision.heading}</h2>
+            {entity.id === 'srv-liquid-damage' && (
+              <p className="mb-6 max-w-3xl text-sm leading-6 text-slate-400">
+                Just spilled liquid? Keep the laptop switched off and unplugged. Follow the{' '}
+                <Link to="/spilled-water-on-laptop" className="font-semibold text-cyan-300 underline decoration-cyan-500/50 underline-offset-4 hover:text-cyan-200">
+                  60-second emergency laptop spill guide
+                </Link>{' '}
+                while arranging pickup.
+              </p>
+            )}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {entity.repairDecision.items.map((item, idx) => (
                 <div key={idx} className="bg-slate-900/50 backdrop-blur-sm p-6 rounded-2xl border border-slate-800">
