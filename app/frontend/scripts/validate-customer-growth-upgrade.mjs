@@ -187,16 +187,33 @@ add('Salmiya page prioritises board-level repair, local pickup landmarks and nea
   salmiyaEntity.includes('Dead MacBook, liquid spill') &&
   salmiyaEntity.includes('Salem Al-Mubarak Street') &&
   salmiyaEntity.includes('Marina Mall area') &&
-  salmiyaEntity.includes("relatedLocationIds: ['loc-rumaithiya', 'loc-salwa']") &&
-  salmiyaEntity.includes("serviceAreas: ['Salmiya', 'Bidaa']") &&
+  salmiyaEntity.includes("relatedLocationIds: ['loc-rumaithiya', 'loc-surra']") &&
+  salmiyaEntity.includes("serviceAreas: ['Salmiya', 'Bidaa', 'Salwa']") &&
   !salmiyaEntity.includes('The Salmiya service area also covers Rumaithiya, Salwa'));
 add('Salmiya connects existing gaming services and a high-intent overheating problem card',
   salmiyaRelationship.includes("'srv-gaming'") &&
   salmiyaRelationship.includes("'srv-gaming-laptop-cleaning'") &&
   salmiyaRelationship.includes("'problem-overheating'") &&
   salmiyaRelationship.includes("'loc-rumaithiya'") &&
-  salmiyaRelationship.includes("'loc-salwa'") &&
+  salmiyaRelationship.includes("'loc-surra'") &&
   locations.includes('Gaming Laptop Overheating, Loud Fans, or GPU Black Screen'));
+add('Consolidated location pages are inactive, hidden from the hub and routed to surviving pickup areas',
+  ['loc-saad-al-abdullah', 'loc-fintas', 'loc-jabriya', 'loc-salwa', 'loc-ardiya', 'loc-rawda'].every((id) => new RegExp("'" + id + "': \\{[^}]*isActive: false").test(graph)) &&
+  !locations.includes('/location/fintas') &&
+  !locations.includes('/location/jabriya') &&
+  !locations.includes('/location/salwa') &&
+  !locations.includes('/location/ardiya') &&
+  !locations.includes('/location/rawda') &&
+  findPermanentRedirect('/location/fintas')?.destination === '/location/fahaheel' &&
+  findPermanentRedirect('/location/jabriya')?.destination === '/location/surra' &&
+  findPermanentRedirect('/location/salwa')?.destination === '/location/salmiya' &&
+  findPermanentRedirect('/location/ardiya')?.destination === '/location/farwaniya' &&
+  findPermanentRedirect('/location/rawda')?.destination === '/location/adailiya');
+
+add('Priority neighbourhood pages are active in the graph and directory',
+  ['shuwaikh-residential', 'abdullah-al-salem', 'shamiya', 'nuzha', 'adailiya', 'kaifan', 'yarmouk', 'qortuba', 'mishref'].every((slug) =>
+    graph.includes("slug: '" + slug + "'") && locations.includes("Computer Repair ")));
+
 add('Service-area FAQs remain in prerendered DOM and match their FAQPage schema answers',
   locations.includes('hidden={!isOpen}') &&
   locations.includes('{faq.answer}') &&
