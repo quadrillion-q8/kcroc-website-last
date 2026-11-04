@@ -212,7 +212,7 @@ add('Consolidated location pages are inactive, hidden from the hub and routed to
 
 add('Priority neighbourhood pages are active in the graph and directory',
   ['shuwaikh-residential', 'abdullah-al-salem', 'shamiya', 'nuzha', 'adailiya', 'kaifan', 'yarmouk', 'qortuba', 'mishref'].every((slug) =>
-    new RegExp("slug:\\s*['\\"]" + slug + "['\\"]").test(graph) && locations.includes("KCROC_GRAPH.locations.filter((location) => location.isActive !== false)")));
+    (graph.includes("slug:'" + slug + "'") || graph.includes("slug: '" + slug + "'")) && locations.includes("KCROC_GRAPH.locations.filter((location) => location.isActive !== false)")));
 
 add('Service-area FAQs remain in prerendered DOM and match their FAQPage schema answers',
   locations.includes('hidden={!isOpen}') &&
