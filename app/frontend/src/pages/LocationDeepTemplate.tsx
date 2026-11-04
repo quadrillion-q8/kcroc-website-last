@@ -99,7 +99,7 @@ export default function LocationDeepTemplate() {
   const componentRepairUsp = KCROC_GRAPH.usps?.find((u) => u.id === 'usp-component');
   const privacyUsp = KCROC_GRAPH.usps?.find((u) => u.id === 'usp-privacy');
   const logisticsUsp = KCROC_GRAPH.usps?.find((u) => u.id === 'usp-logistics');
-  const otherLocations = KCROC_GRAPH.locations.filter((l) => l.id !== location.id);
+  const otherLocations = KCROC_GRAPH.locations.filter((l) => l.id !== location.id && l.isActive !== false);
   const nearbyAreas = location.serviceAreas.filter((a) => a !== location.title);
 
   // Phase 4: location topology now lives in KCROC_GRAPH so the UI and graph
@@ -113,9 +113,10 @@ export default function LocationDeepTemplate() {
   const brands = (location.relatedBrandIds ?? [])
     .map((id) => KCROC_GRAPH.brands.find((brand) => brand.id === id))
     .filter(Boolean);
-  const graphRelatedLocations = (location.relatedLocationIds ?? [])
-    .map((id) => KCROC_GRAPH.locations.find((loc) => loc.id === id))
-    .filter(Boolean);
+  const graphRelatedLocations = (location.relatedLocationIds ?? []).flatMap((id) => {
+    const related = KCROC_GRAPH.locations.find((loc) => loc.id === id);
+    return related && related.isActive !== false ? [related] : [];
+  });
   const prioritizedOtherLocations = (graphRelatedLocations.length > 0 ? graphRelatedLocations : otherLocations
     .filter((loc) => nearbyAreas.includes(loc.title) || location.serviceAreas.includes(loc.title)))
     .slice(0, 5);

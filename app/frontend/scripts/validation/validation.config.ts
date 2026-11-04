@@ -5,7 +5,7 @@ export const validationConfig: ValidationConfig = {
   allowedRelationshipTypes: ['AVAILABLE_AT', 'HAS_FAQ', 'SUPPORTED_BY', 'FIXES', 'USES', 'BELONGS_TO'],
   requiredFieldsByType: {
     Service: ['id', 'slug', 'name', 'primaryKeyword', 'seo', 'schemaTypes'],
-    Location: ['id', 'slug', 'name', 'lat', 'lng', 'seo'],
+    Location: ['id', 'slug', 'name', 'seo'],
     Blog: ['id', 'slug', 'name', 'build']
   },
   severityOverrides: {
