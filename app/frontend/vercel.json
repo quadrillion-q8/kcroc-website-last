@@ -253,47 +253,47 @@
     },
     {
       "source": "/computer-repair-in-saad-al-abdullah",
-      "destination": "/location/saad-al-abdullah",
+      "destination": "/location/jahra",
       "permanent": true
     },
     {
       "source": "/laptop-repair-in-saad-al-abdullah",
-      "destination": "/location/saad-al-abdullah",
+      "destination": "/location/jahra",
       "permanent": true
     },
     {
       "source": "/computer-repair-saad-al-abdullah",
-      "destination": "/location/saad-al-abdullah",
+      "destination": "/location/jahra",
       "permanent": true
     },
     {
       "source": "/laptop-repair-saad-al-abdullah",
-      "destination": "/location/saad-al-abdullah",
+      "destination": "/location/jahra",
       "permanent": true
     },
     {
       "source": "/location/mishrif",
-      "destination": "/location/hawalli",
+      "destination": "/location/mishref",
       "permanent": true
     },
     {
       "source": "/computer-repair-in-mishrif",
-      "destination": "/location/hawalli",
+      "destination": "/location/mishref",
       "permanent": true
     },
     {
       "source": "/laptop-repair-in-mishrif",
-      "destination": "/location/hawalli",
+      "destination": "/location/mishref",
       "permanent": true
     },
     {
       "source": "/computer-repair-mishrif",
-      "destination": "/location/hawalli",
+      "destination": "/location/mishref",
       "permanent": true
     },
     {
       "source": "/laptop-repair-mishrif",
-      "destination": "/location/hawalli",
+      "destination": "/location/mishref",
       "permanent": true
     },
     {
@@ -348,7 +348,7 @@
     },
     {
       "source": "/location/abu-ftaira",
-      "destination": "/location/fintas",
+      "destination": "/location/fahaheel",
       "permanent": true
     },
     {
@@ -408,22 +408,22 @@
     },
     {
       "source": "/computer-repair-in-ardiya",
-      "destination": "/location/ardiya",
+      "destination": "/location/farwaniya",
       "permanent": true
     },
     {
       "source": "/laptop-repair-in-ardiya",
-      "destination": "/location/ardiya",
+      "destination": "/location/farwaniya",
       "permanent": true
     },
     {
       "source": "/computer-repair-ardiya",
-      "destination": "/location/ardiya",
+      "destination": "/location/farwaniya",
       "permanent": true
     },
     {
       "source": "/laptop-repair-ardiya",
-      "destination": "/location/ardiya",
+      "destination": "/location/farwaniya",
       "permanent": true
     },
     {
@@ -453,22 +453,22 @@
     },
     {
       "source": "/computer-repair-in-fintas",
-      "destination": "/location/fintas",
+      "destination": "/location/fahaheel",
       "permanent": true
     },
     {
       "source": "/laptop-repair-in-fintas",
-      "destination": "/location/fintas",
+      "destination": "/location/fahaheel",
       "permanent": true
     },
     {
       "source": "/computer-repair-fintas",
-      "destination": "/location/fintas",
+      "destination": "/location/fahaheel",
       "permanent": true
     },
     {
       "source": "/laptop-repair-fintas",
-      "destination": "/location/fintas",
+      "destination": "/location/fahaheel",
       "permanent": true
     },
     {
@@ -478,22 +478,22 @@
     },
     {
       "source": "/computer-repair-in-jabriya",
-      "destination": "/location/jabriya",
+      "destination": "/location/surra",
       "permanent": true
     },
     {
       "source": "/laptop-repair-in-jabriya",
-      "destination": "/location/jabriya",
+      "destination": "/location/surra",
       "permanent": true
     },
     {
       "source": "/computer-repair-jabriya",
-      "destination": "/location/jabriya",
+      "destination": "/location/surra",
       "permanent": true
     },
     {
       "source": "/laptop-repair-jabriya",
-      "destination": "/location/jabriya",
+      "destination": "/location/surra",
       "permanent": true
     },
     {
@@ -623,22 +623,22 @@
     },
     {
       "source": "/computer-repair-in-rawda",
-      "destination": "/location/rawda",
+      "destination": "/location/adailiya",
       "permanent": true
     },
     {
       "source": "/laptop-repair-in-rawda",
-      "destination": "/location/rawda",
+      "destination": "/location/adailiya",
       "permanent": true
     },
     {
       "source": "/computer-repair-rawda",
-      "destination": "/location/rawda",
+      "destination": "/location/adailiya",
       "permanent": true
     },
     {
       "source": "/laptop-repair-rawda",
-      "destination": "/location/rawda",
+      "destination": "/location/adailiya",
       "permanent": true
     },
     {
@@ -723,22 +723,22 @@
     },
     {
       "source": "/computer-repair-in-salwa",
-      "destination": "/location/salwa",
+      "destination": "/location/salmiya",
       "permanent": true
     },
     {
       "source": "/laptop-repair-in-salwa",
-      "destination": "/location/salwa",
+      "destination": "/location/salmiya",
       "permanent": true
     },
     {
       "source": "/computer-repair-salwa",
-      "destination": "/location/salwa",
+      "destination": "/location/salmiya",
       "permanent": true
     },
     {
       "source": "/laptop-repair-salwa",
-      "destination": "/location/salwa",
+      "destination": "/location/salmiya",
       "permanent": true
     },
     {
@@ -758,6 +758,46 @@
     },
     {
       "source": "/laptop-repair-surra",
+      "destination": "/location/surra",
+      "permanent": true
+    },
+    {
+      "source": "/location/saad-al-abdullah",
+      "destination": "/location/jahra",
+      "permanent": true
+    },
+    {
+      "source": "/location/fintas",
+      "destination": "/location/fahaheel",
+      "permanent": true
+    },
+    {
+      "source": "/location/jabriya",
+      "destination": "/location/surra",
+      "permanent": true
+    },
+    {
+      "source": "/location/salwa",
+      "destination": "/location/salmiya",
+      "permanent": true
+    },
+    {
+      "source": "/location/ardiya",
+      "destination": "/location/farwaniya",
+      "permanent": true
+    },
+    {
+      "source": "/location/rawda",
+      "destination": "/location/adailiya",
+      "permanent": true
+    },
+    {
+      "source": "/location/qurain",
+      "destination": "/location/mubarak-al-kabeer",
+      "permanent": true
+    },
+    {
+      "source": "/location/shaab",
       "destination": "/location/surra",
       "permanent": true
     }
