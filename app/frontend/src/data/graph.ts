@@ -10,7 +10,7 @@ import { IMAGES } from '../constants/images.js';
 export const rawGraphData: RawGraphData = {
   metadata: {
     version: '3.8.5',
-    lastUpdated: '2026-11-04T00:00:00+03:00',
+    lastUpdated: '2026-11-05T00:00:00+03:00',
     environment: 'production'
   },
 
@@ -28,7 +28,7 @@ export const rawGraphData: RawGraphData = {
       logoUrl: 'https://www.computerrepairkuwait.com/logo.webp', email: 'info@computerrepairkuwait.com',
       priceRange: '$$', openingHours: 'Open daily 10:00 AM – 10:00 PM',
       schemaOpeningHours: { dayOfWeek: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'], opens: '10:00', closes: '22:00' },
-      aggregateRating: { ratingValue: '4.9', reviewCount: 157, bestRating: 5 },
+      aggregateRating: { ratingValue: '4.9', reviewCount: 161, bestRating: 5 },
       socialLinks: { facebook: 'https://www.facebook.com/computerrepairkuwait', instagram: 'https://www.instagram.com/computerrepairkuwait', googleMaps: 'https://www.google.com/maps/place/?q=place_id:ChIJzapykEqbzz8RZsrwoaORhjY' },
       aiSummary: 'Kuwait Computer Repair On Call (KCROC) is a Hawalli-based component-level computer repair specialist. Services include laptop and MacBook repair, gaming PC repair, motherboard chip-level diagnostics, screen replacement, battery replacement, charging-port repair, hinge and chassis repair, keyboard replacement, SSD and RAM upgrades, liquid-damage repair, gaming laptop thermal servicing, and virus removal. Free pickup and delivery across all Kuwait governorates. 30-day warranty on completed repairs. No Fix, No Fee policy.',
     } as BusinessEntity,
@@ -3857,7 +3857,7 @@ export const rawGraphData: RawGraphData = {
     /* ═══════════════════════════════════════════════════════════════
        LOCATION
     ═══════════════════════════════════════════════════════════════ */
-    'loc-hawalli': { id: 'loc-hawalli', slug: 'hawalli', entityType: 'Location', isActive: true, isPhysicalLocation: true, title: 'Hawalli Repair Center', description: "Precision micro-soldering, logic-board recovery and hardware repair for MacBooks, gaming PCs and laptops at our Hawalli lab. We fix the board. We don't just swap it. Walk in on Ibn Khaldoun St or book free pickup and delivery across Kuwait.", landmark: 'Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19', coords: { lat: 29.3416921515256, lng: 48.00761257498341 }, serviceRadiusKm: 40, serviceAreas: ['Hawalli', 'Salmiya', 'Kuwait City', 'Farwaniya', 'Ahmadi', 'Jahra', 'Fahaheel', 'Mishrif'], contentImage: { src: IMAGES.brand.shopExteriorDay.src, alt: IMAGES.brand.shopExteriorDay.alt, width: IMAGES.brand.shopExteriorDay.width, height: IMAGES.brand.shopExteriorDay.height, caption: 'Our repair center at Al Mullah Complex, Ibn Khaldoun St, Hawalli.' }, seo: { title: 'Computer Repair Hawalli | Laptop, MacBook & PC | KCROC', description: 'Visit KCROC at Al Mullah Complex, Basement Shop 19, Hawalli. Laptop, MacBook, PC and motherboard repair daily 10 AM–10 PM. Free pickup across Kuwait.', canonicalUrl: 'https://www.computerrepairkuwait.com/location/hawalli', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/location/hawalli', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/computer-repair-hawalli', 'x-default': 'https://www.computerrepairkuwait.com/location/hawalli' }, ogType: 'website', schemaTypes: ['LocalBusiness'], lastModified: '2026-10-26T00:00:00+03:00' }, relatedServiceIds: ['srv-gaming', 'srv-laptop', 'srv-motherboard', 'srv-gaming-laptop-cleaning'], navigationPriority: 100 } as LocationEntity,
+    'loc-hawalli': { id: 'loc-hawalli', slug: 'hawalli', entityType: 'Location', isActive: true, isPhysicalLocation: true, title: 'Hawalli Repair Center', description: "Precision micro-soldering, logic-board recovery and hardware repair for MacBooks, gaming PCs and laptops at our Hawalli lab. We fix the board. We don't just swap it. Walk in on Ibn Khaldoun St or book free pickup and delivery across Kuwait.", landmark: 'Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19', coords: { lat: 29.3416921515256, lng: 48.00761257498341 }, serviceRadiusKm: 40, serviceAreas: ['Hawalli', 'Salmiya', 'Kuwait City', 'Farwaniya', 'Ahmadi', 'Jahra', 'Fahaheel', 'Mishrif'], contentImage: { src: IMAGES.brand.shopExteriorDay.src, alt: IMAGES.brand.shopExteriorDay.alt, width: IMAGES.brand.shopExteriorDay.width, height: IMAGES.brand.shopExteriorDay.height, caption: 'Our repair center at Al Mullah Complex, Ibn Khaldoun St, Hawalli.' }, seo: { title: 'Computer Repair Hawalli | Walk-In + Free Pickup | KCROC', description: 'Walk-in laptop, MacBook and PC repair at Al Mullah Complex, Basement Shop 19, Ibn Khaldoun St, Hawalli. Open daily 10 AM–10 PM; free pickup across Kuwait.', canonicalUrl: 'https://www.computerrepairkuwait.com/location/hawalli', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/location/hawalli', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/computer-repair-hawalli', 'x-default': 'https://www.computerrepairkuwait.com/location/hawalli' }, ogType: 'website', schemaTypes: ['LocalBusiness'], lastModified: '2026-11-05T00:00:00+03:00' }, relatedServiceIds: ['srv-gaming', 'srv-laptop', 'srv-motherboard', 'srv-gaming-laptop-cleaning'], navigationPriority: 100 } as LocationEntity,
 
     'loc-kuwait-city': { 
       id: 'loc-kuwait-city', slug: 'kuwait-city', entityType: 'Location', isActive: true, isPhysicalLocation: false, localIntro: "Kuwait City is close to our Hawalli lab, so collection and return for Sharq, Dasman, Mirqab and Qibla is simple to arrange: you message us, we collect the device, diagnose it on the bench and bring it back once it has been tested. This page focuses on the faults people most often need sorted quickly in the city: black or cracked screens, laptops that will not power on, and charging problems.", localHighlights: [
@@ -3920,7 +3920,7 @@ export const rawGraphData: RawGraphData = {
         { id: "faq-jahra-local-4", question: "My laptop switches itself off under load. Is it overheating or a motherboard fault?", answer: "It can be either. Overheating shutdowns are a protective cut-off, while a failing power circuit can look the same. We check temperatures under load first, then test the power path on the bench before suggesting board work." },
         { id: "faq-jahra-local-5", question: "Can you collect a laptop from Jahra if it will not turn on at all?", answer: "Yes. Tell us what happened before it stopped and what lights, if any, come on. Collection is free, and the motherboard is diagnosed at the lab. You pay nothing if we cannot fix it." },
         { id: "faq-jahra-local-6", question: "Where is my laptop repaired, and do I have to travel?", answer: "You do not need to travel. Jahra is a service area, not a branch, and devices are repaired at our Hawalli lab (Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19). Repairs carry a 30-day warranty." },
-      ], title: 'Jahra', description: 'Comprehensive computer repair, thermal repasting, and motherboard diagnostics delivered directly to Jahra.', landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)', coords: { lat: 29.3370, lng: 47.6580 }, serviceRadiusKm: 40, serviceAreas: ['Jahra', 'Saad Al Abdullah', 'Naeem', 'Qasr', 'Taima'], relatedServiceIds: ['srv-laptop', 'srv-gaming-laptop-cleaning', 'srv-motherboard', 'srv-gaming'], relatedProblemIds: ['problem-overheating', 'problem-no-power', 'problem-freezing-crashing', 'problem-bsod', 'problem-slow'], contentImage: { src: IMAGES.motherboard.thermalGrizzly1.src, alt: IMAGES.motherboard.thermalGrizzly1.alt, width: IMAGES.motherboard.thermalGrizzly1.width, height: IMAGES.motherboard.thermalGrizzly1.height, caption: 'Thermal repasting and motherboard diagnostics delivered directly to Jahra.' }, seo: { title: "Computer Repair Jahra | Free Pickup | KCROC", description: "Laptop and computer repair for Jahra and nearby areas, with free pickup and delivery to KCROC's Hawalli workshop.", canonicalUrl: 'https://www.computerrepairkuwait.com/location/jahra', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/location/jahra', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/computer-repair-jahra', 'x-default': 'https://www.computerrepairkuwait.com/location/jahra' }, ogType: 'website', schemaTypes: ['LocalBusiness'], lastModified: '2026-09-27T00:00:00+03:00' }, navigationPriority: 70 } as LocationEntity,
+      ], title: 'Jahra', description: 'Comprehensive computer repair, thermal repasting, and motherboard diagnostics delivered directly to Jahra.', landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)', coords: { lat: 29.3370, lng: 47.6580 }, serviceRadiusKm: 40, serviceAreas: ['Jahra', 'Saad Al Abdullah', 'Naeem', 'Qasr', 'Taima'], relatedServiceIds: ['srv-laptop', 'srv-gaming-laptop-cleaning', 'srv-motherboard', 'srv-gaming'], relatedProblemIds: ['problem-overheating', 'problem-no-power', 'problem-freezing-crashing', 'problem-bsod', 'problem-slow'], contentImage: { src: IMAGES.motherboard.thermalGrizzly1.src, alt: IMAGES.motherboard.thermalGrizzly1.alt, width: IMAGES.motherboard.thermalGrizzly1.width, height: IMAGES.motherboard.thermalGrizzly1.height, caption: 'Thermal repasting and motherboard diagnostics delivered directly to Jahra.' }, seo: { title: "Laptop & Computer Repair Jahra | Free Pickup | KCROC", description: "Laptop and computer repair for Jahra, Saad Al Abdullah, Naeem, Qasr and Taima. Free pickup to our Hawalli lab, with diagnosis and a quote before repair.", canonicalUrl: 'https://www.computerrepairkuwait.com/location/jahra', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/location/jahra', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/computer-repair-jahra', 'x-default': 'https://www.computerrepairkuwait.com/location/jahra' }, ogType: 'website', schemaTypes: ['LocalBusiness'], lastModified: '2026-11-05T00:00:00+03:00' }, navigationPriority: 70 } as LocationEntity,
 
     'loc-saad-al-abdullah': {
       id: 'loc-saad-al-abdullah',
@@ -4328,10 +4328,40 @@ export const rawGraphData: RawGraphData = {
        REVIEWS
     ═══════════════════════════════════════════════════════════════ */
     'reviews-row': { 
-      id: 'reviews-row', entityType: 'Reviews', isActive: true, title: 'Google Business Profile reviews', aggregateRating: { ratingValue: '4.9', reviewCount: 157 }, 
+      id: 'reviews-row', entityType: 'Reviews', isActive: true, title: 'Google Business Profile reviews', aggregateRating: { ratingValue: '4.9', reviewCount: 161 }, 
       items: [
-        // No individual quote is published until its source and publication permission are verified.
-      
+        // Source and wording checked against the public Google Business Profile on 5 November 2026.
+        // Only reviews whose own text explicitly names Hawalli/Hawally are assigned to the Hawalli page.
+        {
+          name: 'Yasmine Al Refaie',
+          location: 'Hawalli',
+          time: '3 March 2026',
+          rating: 5,
+          device: 'Laptop camera repair',
+          text: 'best computer repair service in hawalli, they solve my laptop camera issue perfectly…',
+          sourceUrl: 'https://maps.google.com/?cid=3928987856909945446',
+          publicationVerified: true,
+        },
+        {
+          name: 'Riyadh Bawazir',
+          location: 'Hawalli',
+          time: '29 December 2025',
+          rating: 5,
+          device: 'Dell laptop repair',
+          text: 'The best laptop repair service here in hawalli, Kuwait.',
+          sourceUrl: 'https://maps.google.com/?cid=3928987856909945446',
+          publicationVerified: true,
+        },
+        {
+          name: 'Ryan | AAB World',
+          location: 'Hawalli',
+          time: '15 November 2025',
+          rating: 5,
+          device: 'Gaming PC repair',
+          text: 'I highly recommend this PC service center along Bin Khaldoun St. in Hawally.',
+          sourceUrl: 'https://maps.google.com/?cid=3928987856909945446',
+          publicationVerified: true,
+        },
       ] 
     } as ReviewsEntity,
 
@@ -6007,6 +6037,6 @@ export const KCROC_GRAPH = {
 
 export const KCROC_AGGREGATE_RATING = {
   ratingValue: '4.9',
-  reviewCount:  157,
+  reviewCount: 161,
   bestRating:   5,
 };

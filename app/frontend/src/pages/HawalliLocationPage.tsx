@@ -110,7 +110,7 @@ export default function HawalliLocationPage() {
   const business = KCROC_GRAPH.business;
   const process = KCROC_GRAPH.processes?.find((p) => p.id === 'proc-standard');
   const reviews = KCROC_GRAPH.reviews;
-  const hawalliReview = reviews?.items.find((r) => r.location === 'Hawalli' && isReviewPublishable(r));
+  const hawalliReviews = reviews?.items.filter((r) => r.location === 'Hawalli' && isReviewPublishable(r)).slice(0, 3) ?? [];
   const trustBadges = KCROC_GRAPH.trustBadges;
   const noFixNoFee = KCROC_GRAPH.usps?.find((u) => u.id === 'usp-nofix');
   const componentRepairUsp = KCROC_GRAPH.usps?.find((u) => u.id === 'usp-component');
@@ -759,25 +759,49 @@ export default function HawalliLocationPage() {
         </div>
       </section>
 
-      {/* ─── REVIEWS / SOCIAL PROOF ─── */}
-      {hawalliReview && reviews && (
+      {/* ─── LOCATION-VERIFIED GOOGLE REVIEWS ─── */}
+      {hawalliReviews.length > 0 && reviews && (
         <section className="py-8 sm:py-14 px-4 sm:px-6 bg-slate-900/20 border-t border-slate-800/50">
-          <div className="container mx-auto max-w-3xl text-center">
-            <div className="flex items-center justify-center gap-2 mb-6">
-              <Star className="w-5 h-5 text-cyan-400 fill-cyan-400" aria-hidden="true" />
-              <span className="text-xl font-black text-white">{reviews.aggregateRating.ratingValue}</span>
-              <span className="text-slate-500 text-sm">
-                · Google rating · view current reviews
-              </span>
+          <div className="container mx-auto max-w-5xl">
+            <div className="text-center mb-7">
+              <div className="flex items-center justify-center gap-2 mb-2">
+                <Star className="w-5 h-5 text-cyan-400 fill-cyan-400" aria-hidden="true" />
+                <span className="text-xl font-black text-white">{reviews.aggregateRating.ratingValue}</span>
+                <span className="text-slate-500 text-sm">Google rating</span>
+              </div>
+              <h2 className="text-2xl sm:text-3xl font-black text-white">Google Reviews from Hawalli Customers</h2>
+              <a
+                href={HAWALLI_MAPS_PLACE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex min-h-10 items-center text-sm font-semibold text-cyan-300 hover:text-cyan-200 underline underline-offset-4"
+              >
+                View all Google reviews
+              </a>
             </div>
-            <blockquote className="bg-slate-900/50 border border-slate-800 rounded-2xl p-6 sm:p-8">
-              <p className="text-slate-200 text-base sm:text-lg leading-relaxed mb-4">
-                &ldquo;{hawalliReview.text}&rdquo;
-              </p>
-              <footer className="text-sm text-slate-500">
-                — {hawalliReview.name}, {hawalliReview.location} · {hawalliReview.device}
-              </footer>
-            </blockquote>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {hawalliReviews.map((review) => (
+                <blockquote key={review.name + review.time} className="flex flex-col rounded-2xl bg-slate-900/50 border border-slate-800 p-5">
+                  <p className="flex-1 text-slate-200 text-sm sm:text-base leading-relaxed mb-5">
+                    “{review.text}”
+                  </p>
+                  <footer className="text-sm text-slate-400">
+                    <span className="font-semibold text-white">{review.name}</span>
+                    <span className="block mt-1">{review.location} · {review.device} · {review.time}</span>
+                    {review.sourceUrl && (
+                      <a
+                        href={review.sourceUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex min-h-10 items-center mt-2 text-cyan-300 hover:text-cyan-200 underline underline-offset-4"
+                      >
+                        Read on Google
+                      </a>
+                    )}
+                  </footer>
+                </blockquote>
+              ))}
+            </div>
           </div>
         </section>
       )}

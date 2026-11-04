@@ -54,6 +54,15 @@ export const ServiceAreas = () => {
               ))}
             </div>
 
+            <div className="mt-4">
+              <Link
+                to="/locations"
+                className="inline-flex min-h-11 items-center gap-2 text-sm font-bold text-[#dfa86f] underline decoration-[#dfa86f]/40 underline-offset-4 transition hover:text-white"
+              >
+                Browse all service areas <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+              </Link>
+            </div>
+
             <div className="mt-5 flex flex-col sm:flex-row gap-2.5">
               <Link to="/near-me" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-white/[0.12] bg-white/[0.035] px-4 py-3 text-sm font-bold text-[#D4DBDE] transition hover:border-white/20 hover:bg-white/[0.06] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f]">
                 <MapPin className="h-4 w-4" aria-hidden="true" /> Find computer repair near you
