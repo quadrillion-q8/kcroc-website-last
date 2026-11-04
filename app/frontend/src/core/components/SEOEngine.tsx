@@ -246,6 +246,29 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
   if (Array.isArray(schemaTypes)) {
     schemaTypes.forEach(type => {
 
+      // Emergency HowTo markup stays synchronized with the visible, safe
+      // power-off checklist on the liquid-spill problem page.
+      if (type === 'HowTo' && entity.entityType === 'Problem') {
+        const problemEntity = entity as ProblemEntity;
+        const emergencySteps = problemEntity.emergencySteps ?? [];
+        if (emergencySteps.length > 0) {
+          schemaGraph.push({
+            "@type": "HowTo",
+            "@id": `${fullCanonicalUrl}#emergency-howto`,
+            "name": `What to do after ${problemEntity.title.toLowerCase()}`,
+            "description": "Immediate safety actions after a laptop liquid spill. Keep the device powered off and disconnected; do not attempt to test or charge it.",
+            "inLanguage": locale || 'en-KW',
+            "mainEntityOfPage": { "@id": `${fullCanonicalUrl}#webpage` },
+            "step": emergencySteps.map((step, index) => ({
+              "@type": "HowToStep",
+              "position": index + 1,
+              "name": step.title,
+              "text": step.description
+            }))
+          });
+        }
+      }
+
       // Brand entity schema. Brand pages also expose their commercial
       // repair Service schema below, so Google can understand both the
       // manufacturer entity and KCROC's service for that brand.
