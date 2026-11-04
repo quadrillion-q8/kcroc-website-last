@@ -2752,7 +2752,7 @@ export const rawGraphData: RawGraphData = {
       relatedServiceIds: ['srv-gaming-laptop', 'srv-desktop-pc', 'srv-motherboard'],
       relatedProblemIds: [],
       relatedBrandIds: [],
-      relatedLocationIds: ['loc-hawalli', 'loc-salmiya', 'loc-kuwait-city', 'loc-farwaniya', 'loc-jahra', 'loc-ahmadi', 'loc-fahaheel', 'loc-mangaf', 'loc-abu-halifa', 'loc-surra', 'loc-mubarak-al-kabeer', 'loc-fahaheel', 'loc-sabah-al-salem'],
+      relatedLocationIds: ['loc-hawalli', 'loc-salmiya', 'loc-kuwait-city', 'loc-farwaniya', 'loc-jahra', 'loc-ahmadi', 'loc-fahaheel', 'loc-mangaf', 'loc-abu-halifa', 'loc-surra', 'loc-mubarak-al-kabeer', 'loc-mishref', 'loc-sabah-al-salem'],
       relatedResourcePaths: [
         { label: 'Gaming PC Cooling Guide', path: '/blog/gaming-pc-cooling' },
         { label: 'Gaming PC Won’t Turn On? Diagnosis Guide', path: '/guides/gaming-pc-not-turning-on-kuwait' },
