@@ -18,6 +18,7 @@ import SchemaMarkup from '../components/seo/SchemaMarkup';
 import { StandaloneRelatedLinks, RelatedLinkItem } from '@/components/content/StandaloneRelatedLinks';
 import { KuwaitLocalCTA } from '@/components/content/KuwaitLocalCTA';
 import { HeadTermCallout } from '@/components/content/HeadTermCallout';
+import GamingPcDebugLedSelector from '@/components/content/GamingPcDebugLedSelector';
 
 // Single source of truth for business identity — see graph.ts 'biz-kcroc'.
 // (Previously duplicated via constants/data.ts's BUSINESS_INFO.)
@@ -598,6 +599,8 @@ const RichBlock: React.FC<{ block: ContentBlock; headingRef?: (el: HTMLElement |
           </ol>
         </div>
       );
+    case 'debugLedSelector':
+      return <GamingPcDebugLedSelector />;
     case 'faq':
       return (
         <div className="my-10 space-y-3" aria-label="Frequently asked questions">
@@ -824,7 +827,7 @@ export default function BlogPostTemplate() {
           "isPartOf": { "@id": `${business.websiteUrl}/#website` }
         },
         {
-          "@type": isNews ? "NewsArticle" : isGuide ? "Article" : ["BlogPosting", "Article"],
+          "@type": isNews ? "NewsArticle" : post.slug === "gaming-pc-black-screen-no-display-kuwait" ? "TechArticle" : isGuide ? "Article" : ["BlogPosting", "Article"],
           "@id": `${pageUrl}#article`,
           "headline": post.title,
           "description": post.excerpt,
@@ -839,6 +842,19 @@ export default function BlogPostTemplate() {
           },
           "mainEntityOfPage": { "@id": `${pageUrl}#webpage` }
         },
+        ...(post.slug === "gaming-pc-black-screen-no-display-kuwait" ? [{
+          "@type": "HowTo",
+          "@id": `${pageUrl}#howto`,
+          "name": "Troubleshoot a gaming PC that powers on but shows no display",
+          "description": "A safe sequence for checking the monitor path, motherboard POST indicators, memory training, GPU power and firmware before replacing components.",
+          "step": [
+            { "@type": "HowToStep", "position": 1, "name": "Confirm the display path", "text": "Check monitor power and input, use one known-good cable and connect directly to the intended graphics-card output." },
+            { "@type": "HowToStep", "position": 2, "name": "Read the motherboard status indicator", "text": "Record the CPU, DRAM, VGA or BOOT indicator that remains lit and interpret it using the manual for the exact motherboard model and revision." },
+            { "@type": "HowToStep", "position": 3, "name": "Allow memory training to complete", "text": "After a BIOS update, CMOS reset or memory-profile change, allow the manufacturer's documented memory-training process to finish before interrupting startup." },
+            { "@type": "HowToStep", "position": 4, "name": "Inspect GPU seating and power safely", "text": "Shut down and disconnect AC power before checking GPU seating and power connectors. Stop using any visibly melted or heat-damaged connector." },
+            { "@type": "HowToStep", "position": 5, "name": "Check firmware and boot-device status", "text": "Use only model-specific BIOS recovery instructions and check SSD detection and boot entries without formatting or reinstalling before considering data needs." }
+          ]
+        }] : []),
         {
           "@type": "BreadcrumbList",
           "@id": `${pageUrl}#breadcrumb`,
@@ -876,6 +892,7 @@ export default function BlogPostTemplate() {
     'windows-11-update-problems',
     'windows-troubleshooting-complete-guide',
   ].includes(post.slug);
+  const isGamingNoDisplayGuide = post.slug === 'gaming-pc-black-screen-no-display-kuwait';
   const isWindows26H2Guide = post.slug === 'windows-11-26h2-iso-released';
   const isMicrosoftSurfaceEventNews = post.slug === 'microsoft-windows-surface-event-october-7-2026';
   const socialImage = toAbsoluteAssetUrl(post.discoverImage || post.image);
@@ -1088,18 +1105,20 @@ export default function BlogPostTemplate() {
               {!isWindows26H2Guide && (
               <div className="bg-slate-900/50 backdrop-blur-md border border-slate-700/50 p-8 rounded-2xl my-12 text-center">
                 <h3 className="text-2xl text-white font-black mb-4 flex items-center justify-center gap-2">
-                  <Share2 size={24} className="text-cyan-400" aria-hidden="true" /> {isGamingPerformanceGuide ? 'Gaming PC or Laptop Stuttering?' : isWindowsTroubleshootingGuide ? 'Windows, Network or Storage Problem?' : 'Is Your Laptop Running Slow?'}
+                  <Share2 size={24} className="text-cyan-400" aria-hidden="true" /> {isGamingNoDisplayGuide ? 'Gaming PC powers on but shows No Signal?' : isGamingPerformanceGuide ? 'Gaming PC or Laptop Stuttering?' : isWindowsTroubleshootingGuide ? 'Windows, Network or Storage Problem?' : 'Is Your Laptop Running Slow?'}
                 </h3>
                 <p className="text-slate-400 mb-8 text-base max-w-lg mx-auto">
-                  {isGamingPerformanceGuide
-                    ? 'Persistent stutter, overheating, crashes, frame-time spikes or performance drops can come from software, drivers, cooling or hardware. KCROC can diagnose the actual cause before repair.'
-                    : isWindowsTroubleshootingGuide
+                  {isGamingNoDisplayGuide
+                    ? 'A black screen does not prove the graphics card is dead. KCROC can assess the monitor path, POST indicators, GPU power, memory, firmware and motherboard, then explain the findings before any paid repair. Initial diagnostic assessment is listed as free.'
+                    : isGamingPerformanceGuide
+                      ? 'Persistent stutter, overheating, crashes, frame-time spikes or performance drops can come from software, drivers, cooling or hardware. KCROC can diagnose the actual cause before repair.'
+                      : isWindowsTroubleshootingGuide
                       ? 'Persistent Windows, Wi-Fi, SSD or update problems can come from software, drivers, configuration or hardware. KCROC can diagnose the actual cause before repair.'
                       : "If your laptop freezes, slows down during multitasking, or struggles with everyday apps, our technicians can diagnose whether it's RAM, storage, overheating, or a hardware fault — for free."}
                 </p>
                 <div className="flex flex-wrap items-center justify-center gap-3 mb-6">
                   <Link to={ROUTES.BOOKING} onClick={() => trackLead('Blog_CTA_BookRepair')} className="inline-flex items-center gap-2 bg-cyan-500 hover:bg-cyan-400 transition-colors text-black px-6 py-3 rounded-xl font-black shadow-[0_0_15px_rgba(34,211,238,0.2)]">
-                    Book Repair
+                    {isGamingNoDisplayGuide ? 'Book Free Gaming PC Pickup' : 'Book Repair'}
                   </Link>
                   <a
                     href={waLink}
@@ -1108,7 +1127,7 @@ export default function BlogPostTemplate() {
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 transition-colors text-white px-6 py-3 rounded-xl font-black border border-slate-700"
                   >
-                    <MessageCircle size={18} aria-hidden="true" /> Free Diagnosis
+                    <MessageCircle size={18} aria-hidden="true" /> {isGamingNoDisplayGuide ? 'WhatsApp Gaming PC Diagnosis' : 'Free Diagnosis'}
                   </a>
                   
                   {/* Fixed syntax error & missing a-tag */}
@@ -1134,7 +1153,9 @@ export default function BlogPostTemplate() {
           </article>
 
           {!isNews && (
-            <HeadTermCallout placement={isGuide ? 'guide_post_headterm' : 'blog_post_headterm'} />
+            isGamingNoDisplayGuide
+              ? <HeadTermCallout variant="gamingPc" placement="gaming_pc_no_display_guide" />
+              : <HeadTermCallout placement={isGuide ? 'guide_post_headterm' : 'blog_post_headterm'} />
           )}
 
           {STANDALONE_REPAIR_PATHS[post.slug] && (
