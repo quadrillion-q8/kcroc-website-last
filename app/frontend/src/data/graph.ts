@@ -4633,7 +4633,7 @@ export const rawGraphData: RawGraphData = {
       localPickupHeading: 'Four-district collection. Repairs at our Hawalli workshop.',
       localIntro: "KCROC connects Surra, Jabriya, Qadsiya and Shaab to one dedicated repair workshop in Hawalli. We arrange free doorstep collection and return delivery by block and location pin, then log each device for diagnosis at our ESD-safe lab in Al Mullah Complex, Basement Shop 19, Ibn Khaldoun Street. The same workshop team handles the inspection and approved repair; you do not need to drive across town or look for a local storefront. You can also visit the Hawalli workshop in person. We diagnose the charger, connector, display path and motherboard before recommending a repair, and provide the quote before paid work begins.",
       localHighlights: [
-        { title: 'Surra — Blocks 1–6 · 45400', description: 'Collection across all six Surra blocks. The area code is 45400, with block references 45401–45406. Send your block and a location pin near Surra Cooperative Society or your street so the courier can confirm the collection route.' },
+        { title: 'Surra — Blocks 1–6 · 45400', description: 'Collection across all six Surra blocks. Published block-code references include 45401 (Block 1), 45402 (Block 2), 45404 (Block 4), 45405 (Block 5) and 45406 (Block 6). For Block 3, use the general area code 45400 or confirm the current block entry with the Ministry of Communications. Send your block and a location pin near Surra Cooperative Society or your street so the courier can confirm the collection route.' },
         { title: 'Jabriya — Blocks 1–12 · 46300', description: 'Coverage across Jabriya Blocks 1–12, with block postal references 46301–46312. We arrange collection from homes, offices and clinic buildings, including locations around Jabriya Co-op and Mubarak Al-Kabeer Hospital.' },
         { title: 'Qadsiya — Blocks 1–9 · 35700', description: 'Pickup can be arranged throughout Qadsiya Blocks 1–9, with block postal references 35701–35709. Share the nearest street or pin around Qadsiya Co-op or Qadsiya Sporting Club.' },
         { title: 'Shaab — Blocks 1–9 · 35900', description: 'Coverage includes Shaab Blocks 1–9, with block postal references 35901–35909, including residential and coastal-side addresses. Share your block and pin near Shaab Co-op or your building entrance.' }
@@ -4702,7 +4702,6 @@ export const rawGraphData: RawGraphData = {
       additionalAreaPostalCodes: [
         { name: 'Surra Block 1', postalCode: '45401', addressRegion: 'Capital Governorate' },
         { name: 'Surra Block 2', postalCode: '45402', addressRegion: 'Capital Governorate' },
-        { name: 'Surra Block 3', postalCode: '45403', addressRegion: 'Capital Governorate' },
         { name: 'Surra Block 4', postalCode: '45404', addressRegion: 'Capital Governorate' },
         { name: 'Surra Block 5', postalCode: '45405', addressRegion: 'Capital Governorate' },
         { name: 'Surra Block 6', postalCode: '45406', addressRegion: 'Capital Governorate' },
