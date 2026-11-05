@@ -130,11 +130,11 @@ export default function LocationDeepTemplate() {
     `Hi KCROC, I am in ${location.title} and need a device repaired. Can we arrange a pickup?`
   )}`;
 
-  // Most locations use four shared commercial/logistics FAQs. Shamiya and
-  // Abdullah Al-Salem use dedicated local questions so their specialist service
-  // mix and collection details do not repeat the generic location template.
-  const usesDedicatedLocationFaqs = ['abdullah-al-salem', 'shamiya'].includes(location.slug);
-  const isConciergeCollectionArea = ['shuwaikh-residential', 'abdullah-al-salem', 'shamiya'].includes(location.slug);
+  // Most locations use four shared commercial/logistics FAQs. Shamiya,
+  // Abdullah Al-Salem and Nuzha use dedicated local questions so their specialist
+  // service mix and collection details do not repeat the generic location template.
+  const usesDedicatedLocationFaqs = ['abdullah-al-salem', 'shamiya', 'nuzha'].includes(location.slug);
+  const isConciergeCollectionArea = ['shuwaikh-residential', 'abdullah-al-salem', 'shamiya', 'nuzha'].includes(location.slug);
   const sharedLocationFaqs: LocalFAQ[] = [
     {
       id: isConciergeCollectionArea ? `faq-${location.slug}-collection` : `faq-${location.slug}-shop`,
