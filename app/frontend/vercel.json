@@ -65,6 +65,11 @@
   ],
   "redirects": [
     {
+      "source": "/computer-repair-nuzha",
+      "destination": "/location/nuzha",
+      "permanent": true
+    },
+    {
       "source": "/computer-repair-shamiya",
       "destination": "/location/shamiya",
       "permanent": true

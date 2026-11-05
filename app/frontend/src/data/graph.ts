@@ -4715,23 +4715,140 @@ export const rawGraphData: RawGraphData = {
       navigationPriority: 90
     } as LocationEntity,
 
- 'loc-nuzha': {id:'loc-nuzha',slug:'nuzha',entityType:'Location',isActive:true,isPhysicalLocation:false,
-  title:'Nuzha',description:'Computer and laptop repair for Nuzha, with free pickup and delivery to KCROC’s Hawalli lab.',
-  localIntro:"For Nuzha residents, KCROC provides a pickup-to-workshop repair process: we collect the device, inspect it at the Hawalli lab and share repair options before paid work starts. Technicians handle laptop and MacBook screen, charging, battery, overheating and motherboard faults, along with supported desktop PC problems. The service page covers Nuzha and nearby Abdullah Al-Salem and Faiha pickup requests; the physical workshop remains in Hawalli.",
-  localHighlights:[{title:'Pickup from Nuzha and nearby blocks',description:'Send the Nuzha block or a map pin and we will confirm a collection time.'},{title:'Laptop and MacBook repair',description:'Display, charging, battery and startup symptoms are checked before quoting.'},{title:'Board-level troubleshooting',description:'We investigate motherboard power and charging faults at component level where suitable.'},{title:'Tested return delivery',description:'After approved work, the device is tested and returned to the pickup address.'}],
-  localFaqs:[
-   {id:"faq-nuzha-1",question:"Is free laptop pickup available in Nuzha?",answer:"Yes. Free pickup and return delivery can be arranged in Nuzha. Send us your block, device model and a short description of the fault."},
-   {id:"faq-nuzha-2",question:"Can you fix a laptop that gets hot and shuts down?",answer:"We inspect the cooling system, fan operation and temperatures, then check for other hardware causes before recommending cleaning or repair."},
-   {id:"faq-nuzha-3",question:"Do you replace batteries and charging ports?",answer:"Yes. We test the battery, adapter and charging path, then confirm whether the battery, port or board needs repair or replacement."},
-   {id:"faq-nuzha-4",question:"Where do you repair devices collected from Nuzha?",answer:"Devices are repaired at KCROC’s Hawalli lab at Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19. Nuzha is not a separate workshop."},
-   {id:"faq-nuzha-5",question:"Will you start the repair before I approve the quote?",answer:"No. We share the diagnosis and repair price first. Paid work begins only after you approve the quote."}
-  ],
-  landmark:'Mobile Dispatch Area (Devices collected in Nuzha and repaired at the Hawalli lab)',serviceRadiusKm:12,
-  serviceAreas:['Nuzha','Abdullah Al-Salem','Faiha','Rawda'],relatedServiceIds:['srv-laptop','srv-macbook','srv-battery','srv-charging-port'],
-  relatedProblemIds:['problem-overheating','problem-not-charging','problem-no-power','problem-black-screen'],relatedLocationIds:['loc-abdullah-al-salem','loc-adailiya','loc-shamiya'],
-  contentImage:{src:IMAGES.services.laptopRepair.src,alt:IMAGES.services.laptopRepair.alt,width:IMAGES.services.laptopRepair.width,height:IMAGES.services.laptopRepair.height,caption:'KCROC laptop repair service performed at the Hawalli workshop.'},
-  seo:{title:"Computer Repair Nuzha | Free Laptop Pickup | KCROC",description:"Laptop, MacBook and computer repair for Nuzha and nearby areas. Free pickup and delivery to KCROC’s Hawalli lab.",canonicalUrl:'https://www.computerrepairkuwait.com/location/nuzha',ogType:'website',schemaTypes:['LocalBusiness'],lastModified:'2026-11-05T00:00:00+03:00'},navigationPriority:87
- } as LocationEntity,
+ 'loc-nuzha': {
+      id: 'loc-nuzha',
+      slug: 'nuzha',
+      entityType: 'Location',
+      isActive: true,
+      isPhysicalLocation: false,
+      title: 'Nuzha',
+      description: 'Laptop overheating, thermal shutdown, battery and charging-path diagnostics, plus MacBook and motherboard repair for Nuzha Blocks 1–3. Free doorstep collection to KCROC’s nearby Hawalli lab.',
+      heroBadge: 'Neighbour-district collection · Nuzha Blocks 1–3 · Area code 72900',
+      heroHeadline: 'Laptop, MacBook & Computer Repair in Nuzha, Kuwait',
+      localValueHeading: 'Thermal Engineering & Full Charging-Path Diagnostics for Nuzha',
+      localServicesHeading: 'Specialist Overheating, MacBook, Charging-Port & Battery Services in Nuzha',
+      areaPostalCode: '72900',
+      serviceTypes: [
+        'Laptop overheating, thermal throttling and heat-related shutdown diagnostics',
+        'Laptop cooling-system cleaning and model-matched thermal-interface service',
+        'Laptop USB-C, Thunderbolt and DC charging-port diagnostics and repair',
+        'Charging-controller, power-rail and battery-path testing',
+        'MacBook logic-board and component-level motherboard diagnostics'
+      ],
+      localIntro: 'A laptop that becomes hot and shuts down under load needs more than a quick blast of air or an automatic thermal-paste replacement. In Nuzha, KCROC focuses on the cooling system and the power-delivery chain that can also cause unexpected shutdowns: we inspect fan operation, heatsink contact, blocked fins, thermal-interface condition and measured CPU/GPU behaviour under a suitable workload. For charging and battery complaints, we trace the device-specific path from adapter and USB-C/DC port through its charging controller and input-power circuitry to battery health, rather than replacing whichever part the symptom seems to suggest. Nuzha is close to our Hawalli lab through the Third Ring Road and Damascus Street (Route 45) corridor. You can skip the extra drive, Ibn Khaldoun Street parking and basement drop-off: we arrange free doorstep collection from Nuzha Blocks 1, 2 and 3, log the device at intake, and carry out diagnostics and approved repairs at Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19, Hawalli. The Nuzha area/post-office code is 72900; the block codes are 72901, 72902 and 72903. For a precise pickup pin, use your block and street, or nearby references such as Nuzha Cooperative Society in Block 2 on Abdulrahman Al-Faris Street, the Block 1 co-op area on Mohammed Saleh Al-Humaidi Street, or the community park beside the Block 3 co-op near Mohammed Bin La’aboun Street. The Second Ring Road and King Fahd Road (Route 40) are additional nearby route references; send your exact pin rather than relying on a broad road name. You receive the diagnosis and repair quote before any paid work begins.',
+      localHighlights: [
+        {
+          title: 'Thermal shutdowns need measured cooling diagnostics',
+          description: 'We check fan response, airflow, heatsink condition and CPU/GPU temperatures under a suitable sustained workload to distinguish dust restriction, poor heatsink contact, a degraded thermal interface and other hardware causes. We do not promise a fixed temperature or FPS improvement; we verify the result against the original symptom.'
+        },
+        {
+          title: 'Thermal materials are selected for the device design',
+          description: 'Where the cooling design calls for it, thermal service may use Honeywell PTM7950 phase-change material or Arctic MX-6 thermal compound. Thermal pads and putty are matched to the required component and thickness. Suitable detached heatsink parts can receive deeper cleaning, including ultrasonic cleaning when the material and assembly permit it.'
+        },
+        {
+          title: 'Port → charging controller → battery: test the complete power path',
+          description: 'A laptop that will not charge may have a worn USB-C/Thunderbolt or DC port, an adapter issue, a model-specific charging-controller fault, damaged input-power components or a weak battery. We check the relevant stages together before deciding whether a port, board component or battery needs attention.'
+        },
+        {
+          title: 'Hardware-first privacy and removable-SSD option',
+          description: 'Cooling, battery, charging and board-level hardware checks do not require your Windows or Mac account password and focus on the device rather than browsing personal files. For compatible laptops and desktops with a removable NVMe or SATA drive, ask before collection about safely removing and keeping it. Boot and storage tests are limited until the drive is reinstalled; many newer MacBooks have soldered storage.'
+        },
+        {
+          title: 'Coverage across all three Nuzha blocks',
+          description: 'Nuzha area/post-office code: 72900. Block 1: 72901; Block 2: 72902; Block 3: 72903. Send the block, street and map pin. Nuzha Co-op in Block 2 and the Block 3 community park near Mohammed Bin La’aboun Street are useful local references.'
+        }
+      ],
+      localServiceCards: [
+        {
+          title: 'Laptop Repair & Thermal Overhaul for Overheating and Shutdowns',
+          problem: 'A laptop becomes unusually hot, fans run loudly, performance drops under load, or the system switches off during work or gaming.',
+          expertise: 'We inspect the fan, intake and exhaust paths, heatsink contact, dust restriction and model-specific CPU/GPU thermal behaviour. Where appropriate, the thermal interface is renewed with a design-compatible material such as Honeywell PTM7950 or Arctic MX-6; thermal pads/putty are matched to the required thickness. Suitable detached metal heatsink parts can be deep-cleaned, including by ultrasonic method when appropriate.',
+          solution: 'The cooling work is selected from the diagnosis, not applied as a universal paste swap. We test the laptop under a suitable sustained workload at the Hawalli lab and share the repair scope and quote before paid work.',
+          serviceIds: ['srv-laptop', 'srv-gaming-laptop-cleaning']
+        },
+        {
+          title: 'MacBook Air & MacBook Pro Logic-Board and Power Repair',
+          problem: 'A MacBook will not power on, has unstable charging, shuts down unexpectedly, shows liquid-related symptoms or has a battery fault.',
+          expertise: 'We check the model-specific charging, power and logic-board circuits, then assess component-level repair of the original board where the fault and board condition make it viable.',
+          solution: 'You receive the diagnostic result and quote before paid work. Keeping the original logic board may preserve access to existing storage on some models, but board repair is not a data-recovery guarantee.',
+          serviceIds: ['srv-macbook', 'srv-motherboard']
+        },
+        {
+          title: 'Laptop USB-C, Thunderbolt & DC Charging-Port Repair',
+          problem: 'A loose charging connector, intermittent charging, “plugged in, not charging” status, a damaged port or a laptop that only charges when the cable is held at an angle.',
+          expertise: 'We assess the adapter, receptacle, connector joints and the relevant board-side charging controller and input-power components for that model. A port fault is separated from a charging-IC or power-rail fault before recommending repair.',
+          solution: 'Where technically suitable, we repair the connector or failed board component rather than defaulting to full motherboard replacement. The scope and price are confirmed before paid work.',
+          serviceIds: ['srv-charging-port', 'srv-motherboard']
+        },
+        {
+          title: 'Laptop Battery Health Testing & Compatible Replacement',
+          problem: 'Rapid battery drain, sudden shutdowns at a remaining charge percentage, battery-health warnings, failure to run away from AC power or visible battery swelling.',
+          expertise: 'We assess battery condition together with adapter output, port behaviour and the relevant charging path so a board-side fault is not mistaken for a failed battery. Swelling is treated as a safety concern.',
+          solution: 'The compatible battery, availability and total price are confirmed before replacement. If the battery is swollen, stop using or charging the laptop and contact us for safe collection guidance; do not press or puncture it.',
+          serviceIds: ['srv-battery', 'srv-charging-port']
+        }
+      ],
+      localFaqs: [
+        {
+          id: 'faq-nuzha-1',
+          question: 'Can KCROC collect a laptop from my home in Nuzha Blocks 1, 2 or 3?',
+          answer: 'Yes. Free doorstep pickup and return delivery can be arranged across Nuzha Blocks 1–3. Send the block, street, device model and a map pin on WhatsApp so the team can confirm collection arrangements. The device is taken to the Hawalli lab for diagnosis and approved repair.'
+        },
+        {
+          id: 'faq-nuzha-2',
+          question: 'Can you fix a laptop that gets hot, runs loud fans and shuts down?',
+          answer: 'Yes. We inspect fan operation, airflow, dust restriction, heatsink contact and thermal-interface condition, then check CPU/GPU behaviour under a suitable workload. If the evidence points to a cooling fault, we recommend the appropriate cleaning and thermal service; other causes of shutdown are investigated rather than assuming paste is always the problem.'
+        },
+        {
+          id: 'faq-nuzha-3',
+          question: 'Do you use Honeywell PTM7950 or Arctic MX-6 for laptop thermal service?',
+          answer: 'The material depends on the laptop and its cooling design. Where compatible, thermal service may use Honeywell PTM7950 phase-change material or Arctic MX-6 thermal compound; pads or putty are matched to the required thickness. Ultrasonic cleaning is used only for suitable detached components, not indiscriminately on a complete laptop or electronic assembly.'
+        },
+        {
+          id: 'faq-nuzha-4',
+          question: 'Do you replace laptop batteries and charging ports, and how do you find the real fault?',
+          answer: 'We test the relevant path together: adapter, USB-C/Thunderbolt or DC port, model-specific charging controller and input-power circuitry, then battery condition. A worn battery, damaged connector and board-side charging fault can produce similar symptoms, so we diagnose the cause before quoting a part.'
+        },
+        {
+          id: 'faq-nuzha-5',
+          question: 'Do you need my password, and can I keep my SSD before pickup?',
+          answer: 'A password is not needed for hardware-only cooling, battery, charging or motherboard diagnostics. For compatible laptops and desktops with a removable NVMe or SATA drive, ask before collection about safely removing and keeping it. Boot and storage testing is limited until it is reinstalled. Many newer MacBooks use soldered storage. Do not send your password by WhatsApp.'
+        },
+        {
+          id: 'faq-nuzha-6',
+          question: 'How do I receive the price, and what happens if the laptop cannot be repaired?',
+          answer: 'The device is diagnosed at KCROC’s Hawalli lab and the team sends you the repair scope and quote before paid work begins. If you approve, the repair is completed and tested; completed repairs carry a 30-day warranty. Under the No Fix, No Fee policy, there is no repair charge when the device cannot be fixed under the policy.'
+        }
+      ],
+      landmark: 'Doorstep collection area — Nuzha Blocks 1–3; workshop diagnostics and repairs at KCROC’s Hawalli lab',
+      serviceRadiusKm: 12,
+      serviceAreas: ['Nuzha Blocks 1–3'],
+      relatedServiceIds: [
+        'srv-laptop', 'srv-gaming-laptop-cleaning', 'srv-macbook',
+        'srv-motherboard', 'srv-charging-port', 'srv-battery'
+      ],
+      relatedProblemIds: [
+        'problem-overheating', 'problem-not-charging',
+        'problem-no-power', 'problem-black-screen'
+      ],
+      relatedLocationIds: ['loc-abdullah-al-salem', 'loc-adailiya', 'loc-shamiya'],
+      contentImage: {
+        src: IMAGES.gaming.gamingLaptopFan.src,
+        alt: IMAGES.gaming.gamingLaptopFan.alt,
+        width: IMAGES.gaming.gamingLaptopFan.width,
+        height: IMAGES.gaming.gamingLaptopFan.height,
+        caption: 'Laptop cooling and thermal diagnostics at KCROC’s Hawalli workshop.'
+      },
+      seo: {
+        title: 'Laptop Overheating & MacBook Repair Nuzha | Free Pickup | KCROC',
+        description: 'Laptop overheating, thermal shutdown, battery and USB-C/DC charging repair for Nuzha Blocks 1–3 (72901–72903). Free doorstep pickup to KCROC’s Hawalli lab.',
+        canonicalUrl: 'https://www.computerrepairkuwait.com/location/nuzha',
+        ogType: 'website',
+        schemaTypes: ['LocalBusiness'],
+        lastModified: '2026-11-05T00:00:00+03:00'
+      },
+      navigationPriority: 91
+    } as LocationEntity,
 
  'loc-adailiya': {id:'loc-adailiya',slug:'adailiya',entityType:'Location',isActive:true,isPhysicalLocation:false,
   title:'Adailiya',description:'Laptop, MacBook and computer repair for Adailiya and nearby Rawda, with free pickup to KCROC’s Hawalli workshop.',
