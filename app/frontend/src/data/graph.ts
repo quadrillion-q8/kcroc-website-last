@@ -4863,6 +4863,7 @@ export const rawGraphData: RawGraphData = {
       localValueHeading: 'Board-First Diagnostics for Adailiya & Rawda — Before Any Part Is Replaced',
       localServicesHeading: 'Five Specialist Repair Services for Adailiya & Rawda Homes and Offices',
       areaPostalCode: '73100',
+      additionalAreaPostalCodes: [{ name: 'Rawda', postalCode: '73300' }],
       serviceTypes: [
         'Laptop no-power and motherboard power-rail diagnostics',
         'MacBook logic-board and USB-C charging diagnostics',
@@ -4870,7 +4871,7 @@ export const rawGraphData: RawGraphData = {
         'Cracked and damaged high-resolution laptop display replacement',
         'Laptop battery health and complete charging-path testing'
       ],
-      localIntro: 'A laptop that appears dead and one that powers on with a black screen are different faults. The first calls for checks of the adapter, input-power path, standby rails and board-level shorts; the second may involve the display panel, eDP cable or connector, panel power, a motherboard backlight circuit or a model-specific lid/sleep sensor. Replacing a motherboard or screen before separating those symptoms can mean an unnecessary part cost. KCROC serves homes and offices across Adailiya and neighbouring Rawda with free doorstep collection and board-first diagnosis at our ESD-safe Hawalli lab: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19. You can skip the drive, parking search and basement drop-off on Ibn Khaldoun Street: send your block, street, device model and location pin, and the collection team will confirm the arrangements. The Adailiya area/post-office code is 73100, with Blocks 1–5 using 73101–73105. Rawda area/post-office code is 73300, with Blocks 1–5 using 73301–73305. Useful local references include Adailiya Co-op, Kazma Sporting Club and Al-Sadaqua Walsalam Stadium on Sami Ahmad Al-Munayes Street, and the Adailiya Water Towers / Abraj Park. In Rawda, the Rawda & Hawally Co-op and Jamal Abdul Nasser Park are practical map references. The shared inner-city road network includes the Third and Fourth Ring Roads, Damascus Street (Route 45), and wider connections via King Fahd Road (Route 40) and Airport Road (Route 50); share your exact pin so the courier can confirm the best approach. Every device is logged at intake, diagnosed before paid work and quoted for approval first.',
+      localIntro: 'A laptop that appears dead and one that powers on with a black screen are different faults. The first calls for checks of the adapter, input-power path, standby rails and board-level shorts; the second may involve the display panel, eDP cable or connector, panel power, a motherboard backlight circuit or a model-specific lid/sleep sensor. Replacing a motherboard or screen before separating those symptoms can mean an unnecessary part cost. KCROC serves homes and offices across Adailiya and neighbouring Rawda with free doorstep collection and board-first diagnosis at our ESD-safe Hawalli lab: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19. You can skip the drive, parking search and basement drop-off on Ibn Khaldoun Street: send your block, street, device model and location pin, and the collection team will confirm the arrangements. The Adailiya area/post-office code is 73100 (Block 1: 73101, Block 2: 73102, Block 3: 73103, Block 4: 73104, Block 5: 73105). Rawda area/post-office code is 73300 (Block 1: 73301, Block 2: 73302, Block 3: 73303, Block 4: 73304, Block 5: 73305). Useful local references include Adailiya Co-op, Kazma Sporting Club and Al-Sadaqua Walsalam Stadium on Sami Ahmad Al-Munayes Street, and the Adailiya Water Towers / Abraj Park. In Rawda, the Rawda & Hawally Co-op and Jamal Abdul Nasser Park are practical map references. The shared inner-city road network includes the Third and Fourth Ring Roads, Damascus Street (Route 45), and wider connections via King Fahd Road (Route 40) and Airport Road (Route 50); share your exact pin so the courier can confirm the best approach. Every device is logged at intake, diagnosed before paid work and quoted for approval first.',
       localHighlights: [
         {
           title: 'Dead board or black screen? Diagnose the difference first',
@@ -4939,7 +4940,7 @@ export const rawGraphData: RawGraphData = {
         {
           id: 'faq-adailiya-2',
           question: 'Which blocks of Adailiya and Rawda are covered?',
-          answer: 'The pickup area includes Adailiya Blocks 1–5 and Rawda Blocks 1–5. Adailiya area/office code is 73100, with block codes 73101–73105; Rawda area/office code is 73300, with block codes 73301–73305. Share your exact block and street when booking.'
+          answer: 'The pickup area includes Adailiya Blocks 1–5 and Rawda Blocks 1–5. Adailiya area/office code is 73100: Block 1 is 73101, Block 2 is 73102, Block 3 is 73103, Block 4 is 73104 and Block 5 is 73105. Rawda area/office code is 73300: Block 1 is 73301, Block 2 is 73302, Block 3 is 73303, Block 4 is 73304 and Block 5 is 73305. Share your exact block and street when booking.'
         },
         {
           id: 'faq-adailiya-3',
