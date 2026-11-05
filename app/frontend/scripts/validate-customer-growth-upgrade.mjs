@@ -277,9 +277,51 @@ add('Requested Abdullah Al-Salem URL redirects to the existing canonical locatio
   ));
 
 add('Abdullah Al-Salem page replaces generic location FAQs with its six area-specific questions',
-  locations.includes("location.slug === 'abdullah-al-salem' ? [] : sharedLocationFaqs") &&
+  locations.includes("['abdullah-al-salem', 'shamiya'].includes(location.slug)") &&
+  locations.includes('usesDedicatedLocationFaqs ? [] : sharedLocationFaqs') &&
   abdullahEntity.includes('faq-abdullah-al-salem-6') &&
   abdullahEntity.includes('Can you diagnose random freezing'));
+
+const shamiyaStart = graph.indexOf("'loc-shamiya': {");
+const shamiyaEnd = graph.indexOf("} as LocationEntity", shamiyaStart);
+const shamiyaEntity = shamiyaStart >= 0 && shamiyaEnd > shamiyaStart
+  ? graph.slice(shamiyaStart, shamiyaEnd)
+  : '';
+
+add('Shamiya page has its own screen/backlight, battery, desktop tower and block-level collection positioning',
+  shamiyaEntity.includes("areaPostalCode: '71500'") &&
+  shamiyaEntity.includes('71501–71509') &&
+  shamiyaEntity.includes('Shamiya Blocks 1–9') &&
+  shamiyaEntity.includes('backlight circuit') &&
+  shamiyaEntity.includes('Full-Tower Desktop PC & Workstation Diagnostics') &&
+  shamiyaEntity.includes('SSD-retention option') &&
+  shamiyaEntity.includes('Shamiya & Shuwaikh Cooperative Society') &&
+  shamiyaEntity.includes('First and Second Ring Roads') &&
+  !shamiyaEntity.includes('not a KCROC branch location') &&
+  !shamiyaEntity.includes('not at a Shamiya storefront') &&
+  !shamiyaEntity.includes('10 to 15 minutes') &&
+  !shamiyaEntity.includes('Shamiya Gate') &&
+  !shamiyaEntity.includes('Airport Road (Route 50)'));
+
+add('Generated SEO projection retains Shamiya postal code, screen/battery/desktop service types and title',
+  seoProjection.includes('"areaPostalCode": "71500"') &&
+  seoProjection.includes('"Laptop and MacBook screen, display-cable and backlight diagnostics"') &&
+  seoProjection.includes('"Desktop PC and workstation hardware diagnostics"') &&
+  seoProjection.includes('Computer, MacBook & PC Repair Shamiya | Free Pickup | KCROC'));
+
+add('Requested Shamiya URL redirects to the existing canonical location page',
+  JSON.parse(vercelConfig).redirects.some((r) =>
+    r.source === '/computer-repair-shamiya' &&
+    r.destination === '/location/shamiya' &&
+    r.permanent === true
+  ));
+
+add('Shamiya page uses six dedicated local FAQs without the shared shop/pickup/cost/turnaround block',
+  locations.includes("['abdullah-al-salem', 'shamiya'].includes(location.slug)") &&
+  locations.includes('usesDedicatedLocationFaqs ? [] : sharedLocationFaqs') &&
+  shamiyaEntity.includes('faq-shamiya-6') &&
+  shamiyaEntity.includes('black screen') &&
+  shamiyaEntity.includes('full-tower desktop PC'));
 
 add('Service-area FAQs remain in prerendered DOM and match their FAQPage schema answers',
   locations.includes('hidden={!isOpen}') &&
