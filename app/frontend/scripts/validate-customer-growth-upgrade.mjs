@@ -323,6 +323,48 @@ add('Shamiya page uses six dedicated local FAQs without the shared shop/pickup/c
   shamiyaEntity.includes('black screen') &&
   shamiyaEntity.includes('full-tower desktop PC'));
 
+const nuzhaStart = graph.indexOf("'loc-nuzha': {");
+const nuzhaEnd = graph.indexOf("} as LocationEntity", nuzhaStart);
+const nuzhaEntity = nuzhaStart >= 0 && nuzhaEnd > nuzhaStart
+  ? graph.slice(nuzhaStart, nuzhaEnd)
+  : '';
+
+add('Nuzha page focuses on thermal shutdown, complete charging path, three blocks and local collection',
+  nuzhaEntity.includes("areaPostalCode: '72900'") &&
+  nuzhaEntity.includes('72901, 72902 and 72903') &&
+  nuzhaEntity.includes('Nuzha Blocks 1–3') &&
+  nuzhaEntity.includes('Honeywell PTM7950') &&
+  nuzhaEntity.includes('Arctic MX-6') &&
+  nuzhaEntity.includes('adapter and USB-C/DC port through its charging controller') &&
+  nuzhaEntity.includes('removable NVMe or SATA drive') &&
+  nuzhaEntity.includes('Nuzha Cooperative Society') &&
+  nuzhaEntity.includes('Mohammed Bin La’aboun Street') &&
+  !nuzhaEntity.includes('73000') &&
+  !nuzhaEntity.includes('Marzouq Al-Badr') &&
+  !nuzhaEntity.includes('5 to 10 minutes') &&
+  !nuzhaEntity.includes('60 to 120 minutes') &&
+  !nuzhaEntity.includes('10 minutes'));
+
+add('Nuzha generated SEO projection retains corrected postal code, thermal/power service types and title',
+  seoProjection.includes('"areaPostalCode": "72900"') &&
+  seoProjection.includes('"Laptop overheating, thermal throttling and heat-related shutdown diagnostics"') &&
+  seoProjection.includes('"Charging-controller, power-rail and battery-path testing"') &&
+  seoProjection.includes('Laptop Overheating & MacBook Repair Nuzha | Free Pickup | KCROC'));
+
+add('Requested Nuzha URL redirects to the existing canonical location page',
+  JSON.parse(vercelConfig).redirects.some((r) =>
+    r.source === '/computer-repair-nuzha' &&
+    r.destination === '/location/nuzha' &&
+    r.permanent === true
+  ));
+
+add('Nuzha page uses six dedicated thermal/power/privacy FAQs instead of the shared location FAQ block',
+  locations.includes("['abdullah-al-salem', 'shamiya', 'nuzha'].includes(location.slug)") &&
+  locations.includes('usesDedicatedLocationFaqs ? [] : sharedLocationFaqs') &&
+  nuzhaEntity.includes('faq-nuzha-6') &&
+  nuzhaEntity.includes('gets hot, runs loud fans and shuts down') &&
+  nuzhaEntity.includes('charging controller and input-power circuitry'));
+
 add('Service-area FAQs remain in prerendered DOM and match their FAQPage schema answers',
   locations.includes('hidden={!isOpen}') &&
   locations.includes('{faq.answer}') &&
