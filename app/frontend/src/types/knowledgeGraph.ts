@@ -281,6 +281,7 @@ export const LocationSchema = RoutableEntitySchema.extend({
   heroHeadline: z.string().optional(),
   localValueHeading: z.string().optional(),
   localServicesHeading: z.string().optional(),
+  localPickupHeading: z.string().optional(),
   // Postal code describes the primary served area, never a KCROC storefront.
   areaPostalCode: z.string().optional(),
   // Governorate for the served postal area; SEOEngine retains a legacy fallback.
@@ -290,6 +291,7 @@ export const LocationSchema = RoutableEntitySchema.extend({
   additionalAreaPostalCodes: z.array(z.object({
     name: z.string(),
     postalCode: z.string(),
+    addressRegion: z.string().optional(),
   })).optional(),
   serviceTypes: z.array(z.string()).optional(),
   localEmergencyProtocol: z.object({
