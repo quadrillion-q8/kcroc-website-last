@@ -272,6 +272,15 @@ add('Surra internal links point to the Hawalli lab and active nearby locations, 
   !surraRelationship.includes("'loc-jabriya'") &&
   locations.includes('related.id !== location.id'));
 
+add('Surra pickup copy uses district-specific road corridors, landmarks and hardware-first privacy',
+  ['Fourth Ring Road', 'King Fahd Road (Route 40)', 'Third Ring Road', 'Cairo Street', 'Gulf Road']
+    .every((route) => surraEntity.includes(route)) &&
+  surraEntity.includes('diplomatic residences') &&
+  surraEntity.includes('removable NVMe or SATA drive'));
+add('Salmiya graph declares each area postal field once',
+  (salmiyaEntity.match(/areaPostalCode:/g) || []).length === 1 &&
+  (salmiyaEntity.match(/areaPostalRegion:/g) || []).length === 1);
+
 add('Consolidated location pages are inactive, hidden from the hub and routed to surviving pickup areas',
   ['loc-saad-al-abdullah', 'loc-fintas', 'loc-jabriya', 'loc-salwa', 'loc-ardiya', 'loc-rawda'].every((id) => new RegExp("'" + id + "': \\{[^}]*isActive: false").test(graph)) &&
   !locations.includes('/location/fintas') &&
