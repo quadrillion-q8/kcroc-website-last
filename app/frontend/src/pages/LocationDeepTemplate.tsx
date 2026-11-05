@@ -131,10 +131,10 @@ export default function LocationDeepTemplate() {
   )}`;
 
   // Most locations use four shared commercial/logistics FAQs. Shamiya,
-  // Abdullah Al-Salem and Nuzha use dedicated local questions so their specialist
-  // service mix and collection details do not repeat the generic location template.
-  const usesDedicatedLocationFaqs = ['abdullah-al-salem', 'shamiya', 'nuzha'].includes(location.slug);
-  const isConciergeCollectionArea = ['shuwaikh-residential', 'abdullah-al-salem', 'shamiya', 'nuzha'].includes(location.slug);
+  // Abdullah Al-Salem, Nuzha and Adailiya use dedicated local questions so their
+  // specialist service mix and collection details do not repeat generic copy.
+  const usesDedicatedLocationFaqs = ['abdullah-al-salem', 'shamiya', 'nuzha', 'adailiya'].includes(location.slug);
+  const isConciergeCollectionArea = ['shuwaikh-residential', 'abdullah-al-salem', 'shamiya', 'nuzha', 'adailiya'].includes(location.slug);
   const sharedLocationFaqs: LocalFAQ[] = [
     {
       id: isConciergeCollectionArea ? `faq-${location.slug}-collection` : `faq-${location.slug}-shop`,
