@@ -654,9 +654,11 @@ export default function LocationDeepTemplate() {
                     {location.slug === 'mahboula' ? 'Doorstep Collection Along the Southern Coastal Corridor' : 'No Shop Visit Needed'}
                   </h3>
                   <p className="text-slate-400 text-sm">
-                    {location.slug === 'mahboula'
-                      ? `Book free collection from Mahboula and nearby coastal districts, then receive the repaired and tested device back at your door. Your device is processed at our Hawalli laboratory: ${location.landmark.replace('Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: ', '').replace(')', '')}.`
-                      : `We don't have a walk-in branch in ${location.title}. Devices are collected free of charge and repaired at our lab: ${location.landmark.replace(/^Mobile Dispatch Area\\s*\\([^:]*:\\s*/, '').replace(/\\)\\s*$/, '')}.`}
+                    {location.slug === 'mahboula' ? (
+                      <>Book free collection from Mahboula and nearby coastal districts, then receive the repaired and tested device back at your door. Your device is processed at our Hawalli laboratory: {location.landmark.replace(/^Mobile Dispatch Area\s*\([^:]*:\s*/, '').replace(/\)\s*$/, '')}.</>
+                    ) : (
+                      <>We don't have a walk-in branch in {location.title}. Devices are collected free of charge and repaired at our lab: {location.landmark.replace(/^Mobile Dispatch Area\s*\([^:]*:\s*/, '').replace(/\)\s*$/, '')}.</>
+                    )}
                   </p>
                 </div>
               </div>
