@@ -261,10 +261,10 @@ add('Surra postal Place data covers all four districts with governorate-specific
   locationTypeSchema.includes('addressRegion: z.string().optional()') &&
   seoEngine.includes('area.addressRegion || location.areaPostalRegion'));
 add('Surra uses the shared location template for dedicated FAQ schema and a clean four-district pickup heading',
-  locationTemplate.includes("'salmiya', 'surra'") &&
-  locationTemplate.includes('location.localPickupHeading ||') &&
-  locationTemplate.includes('replace(/^Mobile Dispatch Area\\s*\\(') &&
-  locationTemplate.includes('location.localFaqs ?? []'));
+  locations.includes("'salmiya', 'surra'") &&
+  locations.includes('location.localPickupHeading ||') &&
+  locations.includes('replace(/^Mobile Dispatch Area\\s*\\(') &&
+  locations.includes('location.localFaqs ?? []'));
 add('Surra internal links point to the Hawalli lab and active nearby locations, not redirected Jabriya URLs',
   surraRelationship.includes("'loc-hawalli'") &&
   surraRelationship.includes("'loc-qortuba'") &&
