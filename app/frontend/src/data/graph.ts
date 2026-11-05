@@ -4850,23 +4850,161 @@ export const rawGraphData: RawGraphData = {
       navigationPriority: 91
     } as LocationEntity,
 
- 'loc-adailiya': {id:'loc-adailiya',slug:'adailiya',entityType:'Location',isActive:true,isPhysicalLocation:false,
-  title:'Adailiya',description:'Laptop, MacBook and computer repair for Adailiya and nearby Rawda, with free pickup to KCROC’s Hawalli workshop.',
-  localIntro:"KCROC serves Adailiya and nearby Rawda through free pickup and return delivery. We diagnose laptops, MacBooks and desktop PCs at the Hawalli lab, with attention to no-power faults, black screens, charging issues, damaged displays and motherboard problems. Technicians explain the fault and available repair route before paid work begins. This page describes a mobile pickup service, not a separate Adailiya shop.",
-  localHighlights:[{title:'Pickup from Adailiya and Rawda',description:'Send your block or location pin on WhatsApp and we will arrange collection.'},{title:'MacBook and laptop hardware repair',description:'Screen, battery, charging and startup faults are inspected before replacement parts are recommended.'},{title:'Component-level motherboard work',description:'When technically viable, the lab repairs the affected board component instead of defaulting to a complete board swap.'},{title:'Central workshop and tested return',description:'All bench work takes place at the Hawalli lab; devices are tested before delivery back to you.'}],
-  localFaqs:[
-   {id:"faq-adailiya-1",question:"Do you offer free computer pickup in Adailiya and Rawda?",answer:"Yes. Free pickup and return delivery can be arranged in Adailiya and Rawda. Share your block or location pin and device symptoms on WhatsApp."},
-   {id:"faq-adailiya-2",question:"Can you repair a laptop with a black screen?",answer:"Yes. We check the display panel, cable, backlight and motherboard to identify the cause before quoting a repair."},
-   {id:"faq-adailiya-3",question:"Can you repair MacBook charging and motherboard faults?",answer:"Yes. We diagnose the charging path and logic board, and attempt component-level repair when the board condition makes it technically feasible."},
-   {id:"faq-adailiya-4",question:"Is there a KCROC branch in Adailiya?",answer:"No. Adailiya and Rawda are pickup areas. Devices are repaired at the central Hawalli lab at Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19."},
-   {id:"faq-adailiya-5",question:"Do I have to pay if the laptop cannot be repaired?",answer:"No. Under KCROC’s No Fix, No Fee policy, there is no repair charge if we cannot fix the device. We also share the quote before paid work starts."}
-  ],
-  landmark:'Mobile Dispatch Area (Devices collected in Adailiya and Rawda and repaired at the Hawalli lab)',serviceRadiusKm:12,
-  serviceAreas:['Adailiya','Rawda','Khaldiya','Qortuba'],relatedServiceIds:['srv-laptop','srv-macbook','srv-motherboard','srv-screen','srv-battery'],
-  relatedProblemIds:['problem-no-power','problem-black-screen','problem-not-charging','problem-cracked-screen'],relatedLocationIds:['loc-nuzha','loc-qortuba','loc-yarmouk','loc-surra'],
-  contentImage:{src:IMAGES.services.motherboardRepair.src,alt:IMAGES.services.motherboardRepair.alt,width:IMAGES.services.motherboardRepair.width,height:IMAGES.services.motherboardRepair.height,caption:'A real KCROC motherboard repair image from the central Hawalli lab.'},
-  seo:{title:"Computer Repair Adailiya | Free Pickup | KCROC",description:"Laptop, MacBook and motherboard repair for Adailiya and Rawda. Free pickup and delivery; diagnosis and repairs at KCROC’s Hawalli lab.",canonicalUrl:'https://www.computerrepairkuwait.com/location/adailiya',ogType:'website',schemaTypes:['LocalBusiness'],lastModified:'2026-11-05T00:00:00+03:00'},navigationPriority:89
- } as LocationEntity,
+ 'loc-adailiya': {
+      id: 'loc-adailiya',
+      slug: 'adailiya',
+      entityType: 'Location',
+      isActive: true,
+      isPhysicalLocation: false,
+      title: 'Adailiya',
+      description: 'Component-level laptop, MacBook, motherboard, screen and battery repair for Adailiya and nearby Rawda. Free doorstep collection from both suburbs to KCROC’s Hawalli lab.',
+      heroBadge: 'Dual-suburb doorstep collection · Adailiya 73100 · Rawda 73300',
+      heroHeadline: 'Computer & MacBook Repair in Adailiya and Rawda',
+      localValueHeading: 'Board-First Diagnostics for Adailiya & Rawda — Before Any Part Is Replaced',
+      localServicesHeading: 'Five Specialist Repair Services for Adailiya & Rawda Homes and Offices',
+      areaPostalCode: '73100',
+      serviceTypes: [
+        'Laptop no-power and motherboard power-rail diagnostics',
+        'MacBook logic-board and USB-C charging diagnostics',
+        'Laptop black-screen, display-cable and backlight diagnostics',
+        'Cracked and damaged high-resolution laptop display replacement',
+        'Laptop battery health and complete charging-path testing'
+      ],
+      localIntro: 'A laptop that appears dead and one that powers on with a black screen are different faults. The first calls for checks of the adapter, input-power path, standby rails and board-level shorts; the second may involve the display panel, eDP cable or connector, panel power, a motherboard backlight circuit or a model-specific lid/sleep sensor. Replacing a motherboard or screen before separating those symptoms can mean an unnecessary part cost. KCROC serves homes and offices across Adailiya and neighbouring Rawda with free doorstep collection and board-first diagnosis at our ESD-safe Hawalli lab: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19. You can skip the drive, parking search and basement drop-off on Ibn Khaldoun Street: send your block, street, device model and location pin, and the collection team will confirm the arrangements. The Adailiya area/post-office code is 73100, with Blocks 1–5 using 73101–73105. Rawda area/post-office code is 73300, with Blocks 1–5 using 73301–73305. Useful local references include Adailiya Co-op, Kazma Sporting Club and Al-Sadaqua Walsalam Stadium on Sami Ahmad Al-Munayes Street, and the Adailiya Water Towers / Abraj Park. In Rawda, the Rawda & Hawally Co-op and Jamal Abdul Nasser Park are practical map references. The shared inner-city road network includes the Third and Fourth Ring Roads, Damascus Street (Route 45), and wider connections via King Fahd Road (Route 40) and Airport Road (Route 50); share your exact pin so the courier can confirm the best approach. Every device is logged at intake, diagnosed before paid work and quoted for approval first.',
+      localHighlights: [
+        {
+          title: 'Dead board or black screen? Diagnose the difference first',
+          description: 'For a no-power system, we investigate the adapter and input path, standby/power rails and possible board-level shorts. If the power light or fans run but the display is black, we separately assess the panel, eDP cable and connector, panel power and motherboard backlight path, including a lid/sleep sensor where the model uses one. The symptom alone is not treated as proof that the motherboard or screen must be replaced.'
+        },
+        {
+          title: 'MacBook and engineering-laptop board diagnostics',
+          description: 'We assess MacBook Air/Pro and supported business or engineering laptops such as ThinkPad and XPS families against the exact model and fault. Charging, no-power and display faults are traced through their model-specific logic-board or motherboard circuits; component repair is offered only when the board condition makes it technically viable.'
+        },
+        {
+          title: 'Hardware-only privacy with an optional removable-SSD handover',
+          description: 'Hardware diagnostics for power, charging, display and motherboard faults do not require your account password and are focused on the hardware rather than browsing personal files. For compatible Windows laptops with a removable NVMe or SATA SSD, ask before collection about keeping the drive. Boot and storage tests are limited while it is removed. Many newer MacBooks have soldered storage, so an M.2 removal option does not apply to them.'
+        },
+        {
+          title: 'Battery, port and charging-controller checks together',
+          description: 'A battery that drains or a laptop that only charges at an angle may have a worn cell, damaged USB-C/DC port, adapter issue or board-side charging fault. We test the relevant power-delivery path from adapter and port through the charging controller/input circuitry to battery health before recommending a replacement.'
+        },
+        {
+          title: 'One collection service for two neighbouring suburbs',
+          description: 'Pickup can be arranged across Adailiya Blocks 1–5 (73101–73105) and Rawda Blocks 1–5 (73301–73305). Use Adailiya Co-op, Kazma Sporting Club / Al-Sadaqua Walsalam Stadium, Adailiya Water Towers / Abraj Park, Rawda & Hawally Co-op or Jamal Abdul Nasser Park as nearby pin references, then confirm the exact block and street.'
+        }
+      ],
+      localServiceCards: [
+        {
+          title: 'Laptop Repair — No-Power, Startup and Board-Level Faults',
+          problem: 'A ThinkPad, XPS, business laptop or engineering workstation will not start, repeatedly powers off, or shows abnormal power behaviour.',
+          expertise: 'We check the adapter, input connector, standby and main power rails, current draw and model-specific motherboard faults before deciding whether the fault is board-level, firmware-related or elsewhere in the system.',
+          solution: 'You receive the diagnostic finding and a repair quote before any paid work. Where the original board is technically repairable, we explain the component-level option rather than assuming a complete board swap.',
+          serviceIds: ['srv-laptop', 'srv-motherboard']
+        },
+        {
+          title: 'MacBook Air & MacBook Pro Logic-Board Repair',
+          problem: 'A MacBook will not power on, has unstable USB-C charging, shows liquid-related symptoms or has a display/power fault.',
+          expertise: 'We assess the exact model’s USB-C power-delivery, charging, input-power and logic-board circuits, then inspect whether component-level repair of the original board is viable. Chip selection and test points vary by generation and board number.',
+          solution: 'The lab explains the fault, repair scope and quote before work starts. Repairing the original board may avoid an unnecessary board swap, but it is not a guarantee of data recovery or preservation if the onboard storage itself is damaged.',
+          serviceIds: ['srv-macbook', 'srv-motherboard']
+        },
+        {
+          title: 'Motherboard Diagnostics & Component-Level Micro-Soldering',
+          problem: 'A laptop has no power, a shorted input rail, liquid-related corrosion, intermittent shutdowns or a motherboard already labelled unrepairable elsewhere.',
+          expertise: 'We trace the affected power and signal path with suitable board-level diagnostic equipment, inspect for shorts and component damage, and assess the feasibility of SMD/component repair on the original PCB.',
+          solution: 'You receive a clear diagnosis and fixed quote before paid work. Full motherboard replacement is considered only when the original board is not a viable repair candidate or when you approve that option.',
+          serviceIds: ['srv-motherboard', 'srv-laptop']
+        },
+        {
+          title: 'Laptop Screen Repair — Cracked Panel vs. Black-Screen Diagnosis',
+          problem: 'A cracked or shattered high-resolution panel, lines or flicker, a dim display, or a laptop that powers on while the screen stays black.',
+          expertise: 'We separate physical panel damage from an eDP cable/connector fault, panel-power issue or motherboard backlight circuit fault, and check the model-specific lid/sleep sensor where fitted. Display specifications are matched to the exact laptop model.',
+          solution: 'If the panel is physically damaged, we confirm the compatible replacement before quoting. If the fault is in the display path or on the motherboard, we explain that repair option rather than automatically selling a complete screen assembly.',
+          serviceIds: ['srv-screen', 'srv-motherboard']
+        },
+        {
+          title: 'Laptop Battery Replacement & Charging-Path Verification',
+          problem: 'Fast battery drain, sudden shutdowns when unplugged, battery-health warnings, failure to charge or a connector that works only at a certain angle.',
+          expertise: 'We assess battery condition alongside the adapter, USB-C/DC port, relevant charging controller and input-power circuitry so a port or board-side fault is not mistaken for a worn battery.',
+          solution: 'The compatible battery, availability and total price are confirmed before installation. Swollen batteries are treated as a safety issue; stop using or charging the device and contact us for safe collection guidance.',
+          serviceIds: ['srv-battery', 'srv-charging-port']
+        }
+      ],
+      localFaqs: [
+        {
+          id: 'faq-adailiya-1',
+          question: 'Can KCROC collect laptops and MacBooks from both Adailiya and Rawda?',
+          answer: 'Yes. Free doorstep pickup and return delivery can be arranged in both suburbs. Send your suburb, block, street, device model and location pin on WhatsApp so the team can confirm the collection details.'
+        },
+        {
+          id: 'faq-adailiya-2',
+          question: 'Which blocks of Adailiya and Rawda are covered?',
+          answer: 'The pickup area includes Adailiya Blocks 1–5 and Rawda Blocks 1–5. Adailiya area/office code is 73100, with block codes 73101–73105; Rawda area/office code is 73300, with block codes 73301–73305. Share your exact block and street when booking.'
+        },
+        {
+          id: 'faq-adailiya-3',
+          question: 'What is the difference between a dead motherboard and a laptop that turns on with a black screen?',
+          answer: 'A no-power fault is investigated through the adapter, input path, standby/power rails, current draw and possible board shorts. If the laptop powers on but shows no image, we separately check the panel, display cable/connector, panel power and motherboard backlight circuit, plus a model-specific lid/sleep sensor where fitted. We diagnose the cause before recommending a board or screen replacement.'
+        },
+        {
+          id: 'faq-adailiya-4',
+          question: 'Can you repair MacBook USB-C charging and logic-board faults?',
+          answer: 'We diagnose the model-specific USB-C power-delivery, charging and logic-board circuits and assess component-level repair where technically viable. The exact controller and repair method depend on the MacBook generation and board number; not every board fault can be repaired or guarantees that onboard data remains accessible.'
+        },
+        {
+          id: 'faq-adailiya-5',
+          question: 'If my laptop screen is cracked or black, do I always need a new display?',
+          answer: 'No. A physically cracked panel may need a compatible replacement, but a black or dim screen can also be caused by the display cable or connector, panel power, motherboard backlight circuitry or a lid/sleep sensor where fitted. We check the display path before confirming which part is responsible.'
+        },
+        {
+          id: 'faq-adailiya-6',
+          question: 'Do you test the battery and charging port together before replacing either?',
+          answer: 'Yes. We check the adapter and charging port, the relevant board-side charging controller/input-power circuitry and the battery condition. This helps distinguish a worn cell from a loose or damaged port or a motherboard charging fault before a part is quoted.'
+        },
+        {
+          id: 'faq-adailiya-7',
+          question: 'Do hardware repairs require my password, and can I keep my NVMe SSD?',
+          answer: 'A password is not needed for hardware-only power, display, charging or motherboard diagnostics. For compatible Windows laptops with a removable NVMe or SATA SSD, ask before collection about keeping the drive. Boot and storage tests are limited while it is removed. Many newer MacBooks use soldered storage. Do not send your password over WhatsApp.'
+        },
+        {
+          id: 'faq-adailiya-8',
+          question: 'Will you start the repair before I approve the quote, and what if it cannot be fixed?',
+          answer: 'No paid repair starts before you receive and approve the diagnosis and quote. If the device cannot be fixed under KCROC’s No Fix, No Fee policy, there is no repair charge. Completed repairs carry the stated 30-day warranty.'
+        },
+        {
+          id: 'faq-adailiya-9',
+          question: 'Where are Adailiya and Rawda devices repaired?',
+          answer: 'Collection is arranged at your Adailiya or Rawda home or office. Diagnostics and approved repairs are completed at KCROC’s Hawalli lab: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19. Useful local references include Adailiya Co-op, Kazma Sporting Club / Al-Sadaqua Walsalam Stadium, Adailiya Water Towers / Abraj Park, Rawda & Hawally Co-op and Jamal Abdul Nasser Park.'
+        }
+      ],
+      landmark: 'Doorstep collection area — Adailiya and Rawda Blocks 1–5; workshop diagnostics and repairs at KCROC’s Hawalli lab',
+      serviceRadiusKm: 12,
+      serviceAreas: ['Adailiya', 'Rawda'],
+      relatedServiceIds: [
+        'srv-laptop', 'srv-macbook', 'srv-motherboard', 'srv-screen', 'srv-battery'
+      ],
+      relatedProblemIds: [
+        'problem-no-power', 'problem-black-screen',
+        'problem-not-charging', 'problem-cracked-screen'
+      ],
+      relatedLocationIds: ['loc-nuzha', 'loc-qortuba', 'loc-yarmouk', 'loc-surra'],
+      contentImage: {
+        src: IMAGES.services.motherboardRepair.src,
+        alt: IMAGES.services.motherboardRepair.alt,
+        width: IMAGES.services.motherboardRepair.width,
+        height: IMAGES.services.motherboardRepair.height,
+        caption: 'Component-level motherboard diagnostics and repair at KCROC’s Hawalli workshop.'
+      },
+      seo: {
+        title: 'Computer & MacBook Repair Adailiya & Rawda | KCROC',
+        description: 'Laptop and MacBook board repair, no-power and black-screen diagnosis, displays and batteries for Adailiya (73101–73105) and Rawda (73301–73305). Free pickup to Hawalli.',
+        canonicalUrl: 'https://www.computerrepairkuwait.com/location/adailiya',
+        ogType: 'website',
+        schemaTypes: ['LocalBusiness'],
+        lastModified: '2026-11-05T00:00:00+03:00'
+      },
+      navigationPriority: 92
+    } as LocationEntity,
 
  'loc-kaifan': {id:'loc-kaifan',slug:'kaifan',entityType:'Location',isActive:true,isPhysicalLocation:false,
   title:'Kaifan',description:'Laptop and computer repair for Kaifan, with free pickup and delivery to KCROC’s Hawalli workshop.',
