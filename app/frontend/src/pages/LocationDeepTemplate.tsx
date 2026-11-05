@@ -60,6 +60,9 @@ const LOCATION_PROBLEM_LABEL_OVERRIDES: Record<string, Record<string, string>> =
   salmiya: {
     'problem-overheating': 'Gaming Laptop Overheating, Loud Fans, or GPU Black Screen',
   },
+  kaifan: {
+    'problem-overheating': 'Laptop Overheating, Thermal Throttling & Shutdowns',
+  },
 };
 
 interface LocalFAQ { id: string; question: string; answer: string; }
@@ -130,11 +133,11 @@ export default function LocationDeepTemplate() {
     `Hi KCROC, I am in ${location.title} and need a device repaired. Can we arrange a pickup?`
   )}`;
 
-  // Most locations use four shared commercial/logistics FAQs. Shamiya,
-  // Abdullah Al-Salem, Nuzha and Adailiya use dedicated local questions so their
-  // specialist service mix and collection details do not repeat generic copy.
-  const usesDedicatedLocationFaqs = ['abdullah-al-salem', 'shamiya', 'nuzha', 'adailiya'].includes(location.slug);
-  const isConciergeCollectionArea = ['shuwaikh-residential', 'abdullah-al-salem', 'shamiya', 'nuzha', 'adailiya'].includes(location.slug);
+  // Most locations use shared commercial/logistics FAQs. Priority pages with
+  // distinct service mixes use dedicated questions so local intent and booking
+  // details are not diluted by generic copy.
+  const usesDedicatedLocationFaqs = ['abdullah-al-salem', 'kaifan', 'shamiya', 'nuzha', 'adailiya'].includes(location.slug);
+  const isConciergeCollectionArea = ['shuwaikh-residential', 'abdullah-al-salem', 'kaifan', 'shamiya', 'nuzha', 'adailiya'].includes(location.slug);
   const sharedLocationFaqs: LocalFAQ[] = [
     {
       id: isConciergeCollectionArea ? `faq-${location.slug}-collection` : `faq-${location.slug}-shop`,
