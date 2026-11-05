@@ -48,6 +48,7 @@ const [app, graph, seoProjection, locale, pricingPage, sitemap, hero, reviews, f
 
 const vercelConfig = await readFile(path.resolve('vercel.json'), 'utf8');
 const seoEngine = await read('core/components/SEOEngine.tsx');
+const locationTypeSchema = await read('types/knowledgeGraph.ts');
 const seoGenerator = await readFile(path.resolve('scripts/generate-seo-data.ts'), 'utf8');
 const arabicContact = await read('pages/ArabicContactPage.tsx');
 
@@ -208,8 +209,8 @@ add('Salmiya has a three-step liquid-spill protocol and four published pricing a
   salmiyaEntity.includes('localEmergencyProtocol: {') &&
   ['Disconnect power and shut down', 'Keep it off—no rice, heat or testing', 'Tell us what spilled and arrange pickup'].every((step) => salmiyaEntity.includes(step)) &&
   ['FREE', '15–20 KWD', 'From 25 KWD', '35–90+ KWD'].every((price) => salmiyaEntity.includes(price)) &&
-  types.includes('localEmergencyProtocol: z.object({') &&
-  types.includes('localPricingAnchors: z.array(z.object({') &&
+  locationTypeSchema.includes('localEmergencyProtocol: z.object({') &&
+  locationTypeSchema.includes('localPricingAnchors: z.array(z.object({') &&
   locations.includes('location.localEmergencyProtocol.steps.map') &&
   locations.includes('location.localPricingAnchors.map'));
 add('Salmiya keeps all seven existing canonical service cards and adds verified block-level coastal postal references',
