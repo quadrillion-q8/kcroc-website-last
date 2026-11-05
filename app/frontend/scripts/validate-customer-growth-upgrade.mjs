@@ -48,6 +48,7 @@ const [app, graph, seoProjection, locale, pricingPage, sitemap, hero, reviews, f
 
 const vercelConfig = await readFile(path.resolve('vercel.json'), 'utf8');
 const seoEngine = await read('core/components/SEOEngine.tsx');
+const locationTypeSchema = await read('types/knowledgeGraph.ts');
 const seoGenerator = await readFile(path.resolve('scripts/generate-seo-data.ts'), 'utf8');
 const arabicContact = await read('pages/ArabicContactPage.tsx');
 
@@ -190,7 +191,7 @@ add('Salmiya page prioritises board-level repair, local pickup landmarks and nea
   salmiyaEntity.includes('Dead MacBook, liquid spill') &&
   salmiyaEntity.includes('Salem Al-Mubarak Street') &&
   salmiyaEntity.includes('Marina Mall area') &&
-  salmiyaEntity.includes("relatedLocationIds: ['loc-rumaithiya', 'loc-surra']") &&
+  salmiyaEntity.includes("relatedLocationIds: ['loc-hawalli', 'loc-rumaithiya', 'loc-nuzha', 'loc-kuwait-city', 'loc-surra']") &&
   salmiyaEntity.includes("serviceAreas: ['Salmiya', 'Bidaa', 'Salwa']") &&
   !salmiyaEntity.includes('The Salmiya service area also covers Rumaithiya, Salwa'));
 add('Salmiya connects existing gaming services and a high-intent overheating problem card',
@@ -198,8 +199,33 @@ add('Salmiya connects existing gaming services and a high-intent overheating pro
   salmiyaRelationship.includes("'srv-gaming-laptop-cleaning'") &&
   salmiyaRelationship.includes("'problem-overheating'") &&
   salmiyaRelationship.includes("'loc-rumaithiya'") &&
+  salmiyaRelationship.includes("'loc-nuzha'") &&
   salmiyaRelationship.includes("'loc-surra'") &&
+  !salmiyaRelationship.includes("'loc-salmiya'") &&
   locations.includes('Gaming Laptop Overheating, Loud Fans, or GPU Black Screen'));
+
+add('Salmiya has a three-step liquid-spill protocol and four published pricing anchors rendered by the shared template',
+  (salmiyaEntity.match(/id: 'faq-salmiya-local-/g) || []).length === 10 &&
+  salmiyaEntity.includes('localEmergencyProtocol: {') &&
+  ['Disconnect power and shut down', 'Keep it off—no rice, heat or testing', 'Tell us what spilled and arrange pickup'].every((step) => salmiyaEntity.includes(step)) &&
+  ['FREE', '15–20 KWD', 'From 25 KWD', '35–90+ KWD'].every((price) => salmiyaEntity.includes(price)) &&
+  locationTypeSchema.includes('localEmergencyProtocol: z.object({') &&
+  locationTypeSchema.includes('localPricingAnchors: z.array(z.object({') &&
+  locations.includes('location.localEmergencyProtocol.steps.map') &&
+  locations.includes('location.localPricingAnchors.map'));
+add('Salmiya keeps all seven existing canonical service cards and adds verified block-level coastal postal references',
+  ['srv-laptop', 'srv-macbook', 'srv-liquid-damage', 'srv-motherboard', 'srv-screen', 'srv-gaming', 'srv-gaming-laptop-cleaning'].every((id) => salmiyaEntity.includes(id)) &&
+  ['20000', '20001', '20012', '25000', '25001', '25010', '25600', '25601', '25612'].every((code) => salmiyaEntity.includes(code)) &&
+  salmiyaEntity.includes("areaPostalRegion: 'Hawalli Governorate'") &&
+  seoEngine.includes('location.additionalAreaPostalCodes') &&
+  seoEngine.includes('"postalCode": area.postalCode') &&
+  !salmiyaEntity.includes('10 minutes') &&
+  !salmiyaEntity.includes('1 to 2 hours'));
+add('Salmiya nearby-location cards exclude the current page and replace its former self-link with Nuzha',
+  locations.includes('related.id !== location.id') &&
+  salmiyaRelationship.includes("'loc-nuzha'") &&
+  !salmiyaRelationship.includes("'loc-salmiya'"));
+
 add('Consolidated location pages are inactive, hidden from the hub and routed to surviving pickup areas',
   ['loc-saad-al-abdullah', 'loc-fintas', 'loc-jabriya', 'loc-salwa', 'loc-ardiya', 'loc-rawda'].every((id) => new RegExp("'" + id + "': \\{[^}]*isActive: false").test(graph)) &&
   !locations.includes('/location/fintas') &&

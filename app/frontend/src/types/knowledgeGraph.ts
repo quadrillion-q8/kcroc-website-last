@@ -292,6 +292,19 @@ export const LocationSchema = RoutableEntitySchema.extend({
     postalCode: z.string(),
   })).optional(),
   serviceTypes: z.array(z.string()).optional(),
+  localEmergencyProtocol: z.object({
+    heading: z.string(),
+    intro: z.string(),
+    steps: z.array(z.object({
+      title: z.string(),
+      description: z.string(),
+    })).length(3),
+  }).optional(),
+  localPricingAnchors: z.array(z.object({
+    label: z.string(),
+    price: z.string(),
+    note: z.string(),
+  })).optional(),
   localServiceCards: z.array(z.object({
     title: z.string(),
     problem: z.string(),

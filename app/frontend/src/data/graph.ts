@@ -4020,20 +4020,267 @@ export const rawGraphData: RawGraphData = {
       navigationPriority: 95
     } as LocationEntity,
     
-    'loc-salmiya': { id: 'loc-salmiya', slug: 'salmiya', entityType: 'Location', isActive: true, isPhysicalLocation: false, localIntro: "Salmiya customers can skip the drive: we collect the device and repair it at our central Hawalli lab before returning it after testing. This page focuses on liquid damage, MacBook logic-board work and gaming hardware, where component-level diagnosis may save original parts versus an unnecessary full-board swap. Bidaa and Salwa are covered through the Salmiya pickup route; Rumaithiya remains available on its own area page.", localHighlights: [
-        { title: "Pickup from Salmiya, Bidaa and Salwa", description: "Tell us your block or landmark—such as Salem Al-Mubarak Street, the Marina Mall area, Salmiya Blocks 1–12, Bidaa or Salwa—and we will arrange free collection." },
-        { title: "Liquid damage recovery", description: "Spills are assessed promptly: the board is cleaned and tested at component level so the original board may be saved rather than replaced, when technically viable." },
-        { title: "MacBook and laptop motherboard work", description: "We trace faults to the failed chip or circuit and assess component-level repair before recommending a full board replacement." },
-        { title: "Gaming PC, GPU and thermal repair", description: "For overheating, loud fans, thermal throttling, black screens or GPU instability, we service cooling systems and diagnose power and board faults before recommending parts." },
-        { title: "One lab, one point of accountability", description: "Salmiya is a service area, not a walk-in branch. All repairs are completed at our Hawalli lab and covered by our 30-day warranty." },
-      ], localFaqs: [
-        { id: "faq-salmiya-local-1", question: "I spilled water on my laptop in Salmiya. What should I do before you collect it?", answer: "Switch it off, unplug the charger and do not try to power it on again. Message us on WhatsApp and we will arrange pickup so the board can be cleaned and tested as soon as possible." },
-        { id: "faq-salmiya-local-2", question: "Do you offer pickup from nearby areas around Salmiya?", answer: "Yes. Free pickup and delivery is available in Salmiya and Bidaa. For other nearby service zones, use the linked area pages below to check local coverage and contact options." },
-        { id: "faq-salmiya-local-3", question: "Can a MacBook with liquid damage be repaired without replacing the whole logic board?", answer: "Often, yes. We clean the board and trace the damage to the specific failed components, then repair those at component level where that is technically possible. Whether it can be saved depends on how far the damage has spread, which we confirm after diagnosis." },
-        { id: "faq-salmiya-local-4", question: "Will my files be safe if the board is repaired?", answer: "A component-level repair works on the board itself, so your storage is not wiped as part of it. We cannot promise data survival after liquid damage, because it depends on the condition of the board and the storage. If the laptop still works, back up what you can before the repair." },
-        { id: "faq-salmiya-local-5", question: "Can I get a quote before approving the repair?", answer: "Yes. Diagnostics are free, and you receive the confirmed quote before any paid work begins. Under our No Fix, No Fee policy you pay nothing if we cannot fix it, and pickup and delivery from Salmiya are free." },
-        { id: "faq-salmiya-local-6", question: "Where is my device actually repaired?", answer: "There is no storefront in Salmiya. Your device is repaired at our Hawalli lab (Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19), tested before return, and covered by a 30-day warranty." },
-      ], title: 'Salmiya', description: "Dead MacBook, liquid spill, or a motherboard another shop called 'beyond repair'? We trace faults to the component and repair the original board where technically feasible, while prioritising data preservation. Free pickup from Salmiya; diagnosis and repair take place at our ESD-safe Hawalli lab.", landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)', coords: { lat: 29.3400, lng: 48.0800 }, serviceRadiusKm: 15, serviceAreas: ['Salmiya', 'Bidaa', 'Salwa'], relatedServiceIds: ['srv-laptop', 'srv-liquid-damage', 'srv-macbook', 'srv-motherboard', 'srv-gaming', 'srv-gaming-laptop-cleaning'], relatedProblemIds: ['problem-liquid-spill', 'problem-not-charging', 'problem-no-power', 'problem-black-screen', 'problem-overheating'], relatedLocationIds: ['loc-rumaithiya', 'loc-surra'], contentImage: { src: IMAGES.services.laptopRepair.src, alt: IMAGES.services.laptopRepair.alt, width: IMAGES.services.laptopRepair.width, height: IMAGES.services.laptopRepair.height, caption: 'Professional laptop repair for residents and businesses across Salmiya.' }, seo: { title: "Computer Repair Salmiya | Free Pickup | KCROC", description: "Component-level laptop, MacBook and motherboard repair in Salmiya, plus gaming PC and thermal/GPU diagnostics. Free pickup; all repairs are completed at our Hawalli lab.", canonicalUrl: 'https://www.computerrepairkuwait.com/location/salmiya', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/location/salmiya', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/computer-repair-salmiya', 'x-default': 'https://www.computerrepairkuwait.com/location/salmiya' }, ogType: 'website', schemaTypes: ['LocalBusiness'], lastModified: '2026-10-26T00:00:00+03:00' }, navigationPriority: 90 } as LocationEntity,
+    'loc-salmiya': {
+      id: 'loc-salmiya',
+      slug: 'salmiya',
+      entityType: 'Location',
+      isActive: true,
+      isPhysicalLocation: false,
+      heroBadge: 'Salmiya · Bidaa · Salwa Free Pickup',
+      heroHeadline: 'Computer, MacBook & Gaming PC Repair in Salmiya',
+      localValueHeading: 'From Salmiya Doorstep to KCROC’s Own Hawalli Repair Lab',
+      localServicesHeading: 'Seven Specialist Repair Services for Salmiya, Bidaa & Salwa',
+      areaPostalCode: '20000',
+      areaPostalRegion: 'Hawalli Governorate',
+      localIntro: "A liquid spill, dead MacBook or gaming PC black screen needs a diagnosis—not a guess. KCROC arranges free collection from Salmiya, Al-Bidaa and Salwa, then carries out the inspection and approved repair at our own ESD-safe workshop in Hawalli (Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19). A retail drop-off counter is not the same as the bench where component-level work is performed: with KCROC, your device is collected for direct intake at the lab that diagnoses and repairs it. We inspect the original board and cooling system first, explain what we find, and provide the quote before paid work begins. The coastal pickup area includes Salmiya Blocks 1–12, Al-Bidaa Blocks 1–10 and Salwa Blocks 1–12. We do not operate a separate Salmiya branch or provide on-site repairs.",
+      localEmergencyProtocol: {
+        heading: 'Liquid spill? Take these three steps before collection',
+        intro: 'Liquid can reach the keyboard, connectors and motherboard even when the laptop still appears to work. Repeated power-on tests can make the damage worse.',
+        steps: [
+          {
+            title: 'Disconnect power and shut down',
+            description: 'Unplug the charger and connected accessories. If the laptop is still on and it is safe to do so, shut it down immediately. Do not keep pressing the power button or reconnect the charger.'
+          },
+          {
+            title: 'Keep it off—no rice, heat or testing',
+            description: 'Do not try to boot or charge it, and do not use a hairdryer, heater, rice or compressed air. Do not open the case to reach an internal battery; leave internal handling to the technician.'
+          },
+          {
+            title: 'Tell us what spilled and arrange pickup',
+            description: 'Send the device model, liquid type, approximate spill time and current symptoms on WhatsApp. Keep the laptop powered off while waiting for collection.'
+          }
+        ]
+      },
+      localPricingAnchors: [
+        {
+          label: 'Initial hardware diagnostic',
+          price: 'FREE',
+          note: 'No charge for the initial diagnosis; approve the quote before paid work.'
+        },
+        {
+          label: 'Laptop thermal service',
+          price: '15–20 KWD',
+          note: 'Cleaning and thermal-interface service; model and scope are confirmed first.'
+        },
+        {
+          label: 'Motherboard component repair',
+          price: 'From 25 KWD',
+          note: 'Published range 25–60 KWD; the exact quote depends on the board fault.'
+        },
+        {
+          label: 'Liquid-damage repair',
+          price: '35–90+ KWD',
+          note: 'Depends on affected areas, corrosion and the repair required.'
+        }
+      ],
+      localHighlights: [
+        {
+          title: 'Direct collection to the lab that does the repair',
+          description: 'Arrange pickup from your apartment, villa, campus or office. KCROC records the device for workshop intake, then performs diagnosis and approved repair at the Hawalli laboratory—not at a Salmiya storefront or as an on-site visit.'
+        },
+        {
+          title: 'Coastal block coverage with address-level detail',
+          description: 'Salmiya general area 20000, Blocks 1–12: 20001–20012; Al-Bidaa general area 25000, Blocks 1–10: 25001–25010; Salwa general area 25600, Blocks 1–12: 25601–25612. Share your block, street and map pin to confirm the handover point.'
+        },
+        {
+          title: 'Local collection landmarks across the coastal strip',
+          description: 'Pickup can be arranged around Salem Al-Mubarak Street, Hamad Al-Mubarak Street, Baghdad Street, Amman Street and Gulf Road, including the Marina Mall, Boulevard and American University of Kuwait areas. Tell us the exact block and building rather than relying on a broad landmark alone.'
+        },
+        {
+          title: 'Liquid-damage and original-board assessment',
+          description: 'We isolate power, inspect for residue and corrosion, and select a board-cleaning method suited to the device. Where the fault is repairable, microscope inspection and component-level work can avoid an unnecessary full-board swap; neither repairability nor data recovery can be promised before inspection.'
+        },
+        {
+          title: 'Gaming cooling and GPU diagnostics',
+          description: 'For gaming laptops, we inspect fans, heatsinks, airflow and thermal-interface condition; materials such as Honeywell PTM7950 or Arctic MX-6 may be selected where the device design calls for them. For complete gaming desktops, we diagnose GPU/VRAM behaviour, power delivery, cooling and stability under suitable testing.'
+        },
+        {
+          title: 'Hardware-first privacy and removable-storage option',
+          description: 'Normal hardware diagnostics focus on the device rather than browsing personal files. For supported Windows laptops and desktops with removable NVMe or SATA storage, ask before collection about retaining the drive. Many MacBooks use onboard storage, and hardware work cannot guarantee that damaged data will remain accessible.'
+        }
+      ],
+      localServiceCards: [
+        {
+          title: 'Laptop Liquid-Damage & Corrosion Recovery',
+          problem: 'Water, coffee, tea or karak is spilled on the keyboard, followed by sticky keys, charging trouble, a black screen or sudden loss of power.',
+          expertise: 'We isolate power, inspect the keyboard and board for residue or corrosion, and choose a cleaning method appropriate to the affected assembly. Microscope inspection, trace repair and component-level micro-soldering are considered where the board condition makes them viable.',
+          solution: 'Free initial diagnosis and a quote before paid work. Published liquid-damage repair is 35–90+ KWD depending on the spread of damage; keeping the device powered off gives the board the best chance of assessment before further electrical damage.',
+          serviceIds: ['srv-liquid-damage']
+        },
+        {
+          title: 'MacBook Air & MacBook Pro Repair',
+          problem: 'A MacBook will not turn on, has USB-C or MagSafe charging problems, shows a black display, or has suffered a liquid spill.',
+          expertise: 'We assess the Intel or Apple Silicon model, charging path, display symptoms and logic-board condition, then consider component-level repair where technically suitable rather than automatically recommending a complete board swap.',
+          solution: 'MacBook board-level repair is listed at 45–100+ KWD. The final quote depends on the model and fault; data access or preservation is not guaranteed, especially after liquid damage.',
+          serviceIds: ['srv-macbook']
+        },
+        {
+          title: 'Component-Level Motherboard Repair',
+          problem: 'A laptop or desktop has no power, shuts down under load, has a shorted power rail, or has already been described as beyond repair.',
+          expertise: 'We diagnose the original board using circuit-level testing and microscope inspection, checking the affected power path and components before deciding whether micro-soldering or another repair is viable.',
+          solution: 'Motherboard component repair starts from 25 KWD, with a published 25–60 KWD range for common component-level work. You receive the diagnosis and quote before approval; No Fix, No Fee applies under KCROC’s service terms.',
+          serviceIds: ['srv-motherboard']
+        },
+        {
+          title: 'Gaming PC & GPU Hardware Diagnostics',
+          problem: 'A complete gaming desktop black-screens under load, restarts, overheats, loses performance or fails to POST.',
+          expertise: 'We assess the complete tower, including GPU and VRAM behaviour, power delivery, memory, motherboard, PSU and cooling. We reproduce the symptom under a suitable workload rather than assuming the graphics card is the cause.',
+          solution: 'Free initial assessment and a quote before paid work. Free pickup and return delivery can be arranged for complete desktop towers; individual graphics cards are not accepted as standalone repair jobs.',
+          serviceIds: ['srv-gaming']
+        },
+        {
+          title: 'Gaming Laptop Cleaning & Thermal Repaste',
+          problem: 'ASUS ROG/TUF, Lenovo Legion, MSI, Acer Predator, Alienware or another gaming laptop runs hot, has loud fans, throttles or shuts down during gaming.',
+          expertise: 'We inspect fans, heatsinks, dust restriction, mounting and thermal-pad condition. Thermal materials such as Honeywell PTM7950 or Arctic MX-6 are selected only where they suit the model; pads and putty are matched to the required thickness.',
+          solution: 'Laptop thermal service is published at 15–20 KWD. We confirm the scope first and test the cooling system under load after reassembly; we do not promise a fixed temperature or FPS increase.',
+          serviceIds: ['srv-gaming-laptop-cleaning']
+        },
+        {
+          title: 'Laptop Repair for Power, Charging & Everyday Faults',
+          problem: 'A laptop will not start, charges intermittently, has a loose port, hinge damage or another fault that interrupts work or study.',
+          expertise: 'We test the adapter, connector, charging path, battery and relevant board circuits before recommending a port, part or component-level repair. The linked charging-port service covers DC-jack and USB-C faults.',
+          solution: 'Free pickup from Salmiya, Bidaa and Salwa, free initial diagnosis and a clear quote before paid work. Charging-port repair is listed at 20–35 KWD, depending on the model and fault.',
+          serviceIds: ['srv-laptop', 'srv-charging-port']
+        },
+        {
+          title: 'Laptop Screen Repair & Black-Display Diagnosis',
+          problem: 'A laptop has a cracked display, vertical lines, flicker, or a black screen while the power light or fans still operate.',
+          expertise: 'We check the panel, display cable, connector and backlight path before recommending a replacement, so a board or cable fault is not mistaken for a damaged panel.',
+          solution: 'Screen replacement labour starts from 30 KWD plus the model-matched panel. We confirm compatibility, total price and expected timing before any paid work begins.',
+          serviceIds: ['srv-screen']
+        }
+      ],
+      localFaqs: [
+        {
+          id: 'faq-salmiya-local-1',
+          question: 'I spilled water or coffee on my laptop in Salmiya. What should I do right now?',
+          answer: 'Unplug the charger and connected accessories, and shut the laptop down immediately if it is still on. Keep it powered off—do not test it, reconnect the charger, use rice, apply heat or blow compressed air into it. Do not open the case to reach the internal battery. Message KCROC with the device model, liquid type and approximate spill time so we can arrange free collection and inspect it at the Hawalli lab.'
+        },
+        {
+          id: 'faq-salmiya-local-2',
+          question: 'Can a MacBook with liquid damage be repaired without replacing the whole logic board?',
+          answer: 'Sometimes. We inspect the original logic board for contamination, corrosion, damaged traces and failed components, then assess whether cleaning and component-level repair are technically viable. The result depends on how far the liquid travelled and what was damaged. We do not promise that every board can be saved or that data will remain accessible; keep the MacBook powered off and let us inspect it before trying to start it again.'
+        },
+        {
+          id: 'faq-salmiya-local-3',
+          question: 'How much does laptop, MacBook or motherboard repair cost for Salmiya customers?',
+          answer: 'Initial hardware diagnostics and pickup and return delivery are free. Published prices include laptop thermal service at 15–20 KWD, motherboard component repair from 25 KWD (published range 25–60 KWD), liquid-damage repair at 35–90+ KWD, MacBook board-level repair at 45–100+ KWD, charging-port repair at 20–35 KWD, and screen-replacement labour from 30 KWD plus the panel. The final quote depends on the model, fault, part and repair complexity; paid work starts only after you approve it.'
+        },
+        {
+          id: 'faq-salmiya-local-4',
+          question: 'Do you offer free pickup from Salmiya, Al-Bidaa and Salwa?',
+          answer: 'Yes. Free pickup and return delivery can be arranged across Salmiya Blocks 1–12, Al-Bidaa Blocks 1–10 and Salwa Blocks 1–12. General area postal references are Salmiya 20000, Al-Bidaa 25000 and Salwa 25600; block-specific street codes are 20001–20012, 25001–25010 and 25601–25612 respectively. Send your block, building and map pin so we can confirm the collection point.'
+        },
+        {
+          id: 'faq-salmiya-local-5',
+          question: 'Will my files be safe if you repair the motherboard?',
+          answer: 'Our normal hardware diagnostics focus on the hardware and do not require browsing personal documents. Repairing the original board can avoid an unnecessary board swap, but liquid damage or a failed storage circuit can still affect data, so we cannot guarantee file access or recovery. For a compatible Windows laptop or desktop with a removable NVMe or SATA drive, ask before collection about removing and keeping it. Many MacBooks have onboard storage that is not a removable NVMe module.'
+        },
+        {
+          id: 'faq-salmiya-local-6',
+          question: 'Can you fix a gaming laptop or gaming PC that overheats, runs loud fans or black-screens?',
+          answer: 'Yes. For gaming laptops we inspect airflow, fans, heatsinks, thermal-interface condition and thermal-pad fit, then test under load after service. Honeywell PTM7950 or Arctic MX-6 may be used where appropriate for the device design. For complete gaming desktop towers, we diagnose GPU/VRAM behaviour, power delivery, cooling and stability. We confirm the repair path after assessment rather than assuming every black screen is a failed GPU.'
+        },
+        {
+          id: 'faq-salmiya-local-7',
+          question: 'How long does a repair take for Salmiya customers?',
+          answer: 'Timing depends on the fault, the work approved and parts availability. The published typical turnaround for liquid-damage repair is 24–72 hours; other repairs may be shorter or longer depending on diagnosis and testing. We provide a realistic estimate after the device reaches the lab and has been inspected. We do not promise a fixed collection window or same-day completion for every device.'
+        },
+        {
+          id: 'faq-salmiya-local-8',
+          question: 'Can I get a fixed quote, and what happens if the device cannot be repaired?',
+          answer: 'Yes. Initial diagnostics are free, and we explain the findings and quote before any paid repair work begins. You can decline the quote. Under KCROC’s No Fix, No Fee policy, if the repair cannot be completed under the applicable service terms, you do not pay a repair charge and free return delivery is arranged.'
+        },
+        {
+          id: 'faq-salmiya-local-9',
+          question: 'Do you have a walk-in laptop repair shop in Salmiya?',
+          answer: 'KCROC does not operate a separate walk-in branch in Salmiya. We arrange free collection from your home, office or agreed building handover point and carry out the diagnosis and approved repair at our own Hawalli workshop. You can also visit the physical workshop at Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19, Hawalli.'
+        },
+        {
+          id: 'faq-salmiya-local-10',
+          question: 'Where is my device actually repaired, and can I drop it off myself?',
+          answer: 'All physical diagnostics and repairs are completed at KCROC’s Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19. The workshop is open daily from 10:00 AM to 10:00 PM. Salmiya, Bidaa and Salwa are pickup and delivery service areas, not separate KCROC branches; you are welcome to bring a device directly to the Hawalli workshop.'
+        }
+      ],
+      title: 'Salmiya',
+      description: 'Component-level computer, MacBook and gaming repair for Salmiya, Al-Bidaa and Salwa, with free collection and all approved repairs completed at KCROC’s Hawalli lab.',
+      landmark: 'Salmiya, Al-Bidaa and Salwa pickup and delivery service area; all physical repairs are completed at KCROC’s Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19',
+      coords: { lat: 29.3400, lng: 48.0800 },
+      serviceRadiusKm: 15,
+      serviceAreas: ['Salmiya', 'Bidaa', 'Salwa'],
+      areaPostalCode: '20000',
+      areaPostalRegion: 'Hawalli Governorate',
+      additionalAreaPostalCodes: [
+        { name: 'Al-Bidaa', postalCode: '25000' },
+        { name: 'Salwa', postalCode: '25600' },
+        { name: 'Salmiya Block 1', postalCode: '20001' },
+        { name: 'Salmiya Block 2', postalCode: '20002' },
+        { name: 'Salmiya Block 3', postalCode: '20003' },
+        { name: 'Salmiya Block 4', postalCode: '20004' },
+        { name: 'Salmiya Block 5', postalCode: '20005' },
+        { name: 'Salmiya Block 6', postalCode: '20006' },
+        { name: 'Salmiya Block 7', postalCode: '20007' },
+        { name: 'Salmiya Block 8', postalCode: '20008' },
+        { name: 'Salmiya Block 9', postalCode: '20009' },
+        { name: 'Salmiya Block 10', postalCode: '20010' },
+        { name: 'Salmiya Block 11', postalCode: '20011' },
+        { name: 'Salmiya Block 12', postalCode: '20012' },
+        { name: 'Al-Bidaa Block 1', postalCode: '25001' },
+        { name: 'Al-Bidaa Block 2', postalCode: '25002' },
+        { name: 'Al-Bidaa Block 3', postalCode: '25003' },
+        { name: 'Al-Bidaa Block 4', postalCode: '25004' },
+        { name: 'Al-Bidaa Block 5', postalCode: '25005' },
+        { name: 'Al-Bidaa Block 6', postalCode: '25006' },
+        { name: 'Al-Bidaa Block 7', postalCode: '25007' },
+        { name: 'Al-Bidaa Block 8', postalCode: '25008' },
+        { name: 'Al-Bidaa Block 9', postalCode: '25009' },
+        { name: 'Al-Bidaa Block 10', postalCode: '25010' },
+        { name: 'Salwa Block 1', postalCode: '25601' },
+        { name: 'Salwa Block 2', postalCode: '25602' },
+        { name: 'Salwa Block 3', postalCode: '25603' },
+        { name: 'Salwa Block 4', postalCode: '25604' },
+        { name: 'Salwa Block 5', postalCode: '25605' },
+        { name: 'Salwa Block 6', postalCode: '25606' },
+        { name: 'Salwa Block 7', postalCode: '25607' },
+        { name: 'Salwa Block 8', postalCode: '25608' },
+        { name: 'Salwa Block 9', postalCode: '25609' },
+        { name: 'Salwa Block 10', postalCode: '25610' },
+        { name: 'Salwa Block 11', postalCode: '25611' },
+        { name: 'Salwa Block 12', postalCode: '25612' }
+      ],
+      serviceTypes: [
+        'Laptop and MacBook liquid-damage assessment and component-level repair',
+        'MacBook logic-board and charging diagnostics',
+        'Laptop and desktop motherboard repair',
+        'Gaming PC GPU, power and stability diagnostics',
+        'Gaming laptop cooling-system cleaning and thermal service',
+        'Laptop screen, power and charging repair'
+      ],
+      relatedServiceIds: ['srv-laptop', 'srv-liquid-damage', 'srv-macbook', 'srv-motherboard', 'srv-gaming', 'srv-gaming-laptop-cleaning', 'srv-screen'],
+      relatedProblemIds: ['problem-liquid-spill', 'problem-not-charging', 'problem-no-power', 'problem-black-screen', 'problem-overheating'],
+      relatedLocationIds: ['loc-hawalli', 'loc-rumaithiya', 'loc-nuzha', 'loc-kuwait-city', 'loc-surra'],
+      contentImage: {
+        src: IMAGES.services.laptopRepair.src,
+        alt: IMAGES.services.laptopRepair.alt,
+        width: IMAGES.services.laptopRepair.width,
+        height: IMAGES.services.laptopRepair.height,
+        caption: 'Component-level laptop, MacBook and gaming hardware assessment for Salmiya customers.'
+      },
+      seo: {
+        title: 'Computer, MacBook & Gaming PC Repair Salmiya | KCROC',
+        description: 'Liquid-damage, MacBook logic-board and gaming PC/laptop repair in Salmiya, Bidaa and Salwa. Free pickup and diagnostics; repairs at our Hawalli lab.',
+        canonicalUrl: 'https://www.computerrepairkuwait.com/location/salmiya',
+        alternates: {
+          'en-KW': 'https://www.computerrepairkuwait.com/location/salmiya',
+          'ar-KW': 'https://www.computerrepairkuwait.com/ar/computer-repair-salmiya',
+          'x-default': 'https://www.computerrepairkuwait.com/location/salmiya'
+        },
+        ogType: 'website',
+        schemaTypes: ['LocalBusiness'],
+        lastModified: '2026-11-05T00:00:00+03:00'
+      },
+      navigationPriority: 90
+    } as LocationEntity,
 
     'loc-farwaniya': { id: 'loc-farwaniya', slug: 'farwaniya', entityType: 'Location', isActive: true, isPhysicalLocation: false, title: 'Farwaniya', description: 'Computer and laptop repair for Farwaniya, with a practical focus on power, charging, display, battery and motherboard faults and free pickup to KCROC\'s Hawalli workshop.', localIntro: 'For Farwaniya customers, the easiest path is usually pickup rather than driving to a shop. KCROC collects the device, performs the diagnosis in the Hawalli lab, explains the repair path and returns the device after testing. The Farwaniya service area includes Khaitan, Riggae, Ardiya and Jleeb Al-Shuyoukh.', localHighlights: [
         { title: 'Pickup from Farwaniya, Khaitan and Riggae', description: 'Tell us your area and device symptom and we can arrange the collection through the Kuwait-wide pickup service.' },
@@ -7036,7 +7283,7 @@ const LOCATION_RELATIONSHIPS: Record<string, {
     relatedServiceIds: ['srv-laptop', 'srv-macbook', 'srv-liquid-damage', 'srv-motherboard', 'srv-screen', 'srv-gaming', 'srv-gaming-laptop-cleaning'],
     relatedProblemIds: ['problem-liquid-spill', 'problem-no-power', 'problem-black-screen', 'problem-not-charging', 'problem-overheating'],
     relatedBrandIds: ['brand-dell', 'brand-lenovo', 'brand-hp', 'brand-asus'],
-    relatedLocationIds: ['loc-hawalli', 'loc-rumaithiya', 'loc-salmiya', 'loc-kuwait-city', 'loc-surra'],
+    relatedLocationIds: ['loc-hawalli', 'loc-rumaithiya', 'loc-nuzha', 'loc-kuwait-city', 'loc-surra'],
   },
   'kuwait-city': {
     relatedServiceIds: ['srv-laptop', 'srv-screen', 'srv-motherboard', 'srv-macbook'],
