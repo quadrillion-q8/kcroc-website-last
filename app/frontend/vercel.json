@@ -85,6 +85,11 @@
       "permanent": true
     },
     {
+      "source": "/computer-repair-kaifan",
+      "destination": "/location/kaifan",
+      "permanent": true
+    },
+    {
       "source": "/:path*",
       "has": [
         {

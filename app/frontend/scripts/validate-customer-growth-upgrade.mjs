@@ -1329,6 +1329,8 @@ add('Legacy Khaitan laptop URL permanently redirects to the Khaitan service-area
   findPermanentRedirect('/laptop-repair-in-khaitan')?.destination === '/location/khaitan');
 add('Legacy Hawalli laptop URL permanently redirects to the Hawalli service-area page',
   findPermanentRedirect('/laptop-repair-hawalli-kuwait')?.destination === '/location/hawalli');
+add('Legacy Kaifan computer-repair URL permanently redirects to the canonical Kaifan service-area page',
+  findPermanentRedirect('/computer-repair-kaifan')?.destination === '/location/kaifan');
 
 const kaifanStart = graph.indexOf("'loc-kaifan': {");
 const kaifanEnd = graph.indexOf("} as LocationEntity", kaifanStart);
