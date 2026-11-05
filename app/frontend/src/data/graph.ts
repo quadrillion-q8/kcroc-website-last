@@ -4834,28 +4834,175 @@ export const rawGraphData: RawGraphData = {
       navigationPriority: 68
     } as LocationEntity,
 
-    'loc-mahboula': { id: 'loc-mahboula', slug: 'mahboula', entityType: 'Location', isActive: true, isPhysicalLocation: false,
+    'loc-mahboula': {
+      id: 'loc-mahboula',
+      slug: 'mahboula',
+      entityType: 'Location',
+      isActive: true,
+      isPhysicalLocation: false,
+      heroBadge: 'Mahboula (54000) · Blocks 1–4 · Southern coastal pickup',
+      heroHeadline: 'Computer, Gaming PC & MacBook Repair in Mahboula',
+      localValueHeading: 'Skip the Cross-City Drop-Off. Book Free Doorstep Pickup in Mahboula.',
+      localServicesHeading: 'Laptop, MacBook & Gaming Hardware Services for Mahboula',
+      localPickupHeading: 'Southern Coastal Pickup via Route 30 — Repairs at Our Hawalli Lab',
       title: 'Mahboula',
-      description: 'Laptop, MacBook and gaming PC repair for Mahboula with free pickup and delivery to KCROC\'s Hawalli lab.',
-      localIntro: "KCROC serves Mahboula and nearby Mangaf, Abu Halifa and Fahaheel through free pickup and delivery. We inspect laptops, MacBooks and gaming PCs at the Hawalli lab, including battery, display, charging, thermal and motherboard faults. You receive a diagnosis and quote before paid work; Mahboula is covered as a service area rather than a walk-in shop.",
+      description: 'Laptop, MacBook, gaming PC and thermal-service pickup in Mahboula, with repairs and testing at KCROC’s Hawalli laboratory.',
+      localIntro: "When a gaming laptop starts thermal-throttling, a desktop powers on with no display, or a MacBook stops charging, you should not need to carry it across Kuwait and make a second trip to collect it. KCROC arranges free doorstep collection in Mahboula and the surrounding southern coastal corridor, then takes the device to our central ESD-safe laboratory in Hawalli: Ibn Khaldoun Street, Al Mullah Complex, Basement Shop 19. The Fahaheel Expressway (Route 30) and Coastal Road connect this pickup area to the rest of Kuwait, but you can start the repair from home. We diagnose the actual fault, explain the options and provide a quote before paid work begins; after an approved repair, the device is tested before return delivery. For Mahboula addresses, share your block, street, building and a WhatsApp location pin. Blocks 1–4 use postal references 54001–54004; the general Mahboula area code is 54000.",
       localHighlights: [
-        { title: 'Southern Kuwait pickup', description: 'Free pickup is available in Mahboula and nearby Ahmadi-area communities.' },
-        { title: 'Gaming PC and laptop cooling', description: 'Overheating, thermal throttling, shutdowns and fan-related issues can be diagnosed and repaired.' },
-        { title: 'MacBook and board repair', description: 'MacBook liquid damage and motherboard faults are handled at component level where feasible.' },
-        { title: 'Convenient return delivery', description: 'After testing, the repaired device is delivered back without requiring a second shop visit.' }
+        {
+          title: 'Free collection across the southern coastal corridor',
+          description: 'Pickup and return delivery can be arranged for Mahboula, Abu Halifa, Mangaf, Fahaheel, Fintas, Egaila and Ahmadi. Send the exact block, street, building and location pin so the handover point can be confirmed.'
+        },
+        {
+          title: 'Clear local references for Mahboula addresses',
+          description: 'Mahboula general postal code 54000; Blocks 1–4 use 54001, 54002, 54003 and 54004. Spoons Complex is a useful reference on Mahboula Block 2 along Coastal Road. Use your building and map pin as the final pickup reference.'
+        },
+        {
+          title: 'Gaming laptop thermal service, not just an outside dust blow',
+          description: 'We inspect fan operation, heatsink fins, heat-pipe contact and CPU/GPU temperatures. Where the model supports it, the thermal interface may use Honeywell PTM7950 or Arctic MX-6; VRM/VRAM pad condition and thickness are checked against the laptop design.'
+        },
+        {
+          title: 'One repair workflow at the Hawalli laboratory',
+          description: 'The team that diagnoses the device at KCROC’s Hawalli lab carries out the approved repair and testing there. You receive the findings and a quote before paid work; completed hardware repairs carry the 30-day warranty.'
+        }
       ],
-            localFaqs: [
-        { id: "faq-mahboula-local-1", question: "Do you collect from Mahboula, Mangaf, Abu Halifa and Fahaheel?", answer: "Yes. Mahboula, Mangaf, Abu Halifa and Fahaheel are covered by free pickup and delivery. Send your area and the device symptoms on WhatsApp and we will arrange collection." },
-        { id: "faq-mahboula-local-2", question: "My gaming laptop thermal throttles and the fans are very loud. What can be done?", answer: "Heavy gaming loads heat up the cooling system quickly. Dust in the vents and old thermal paste on the processor and graphics chip are the usual causes, and cleaning plus fresh paste often brings temperatures down. We check the fans and heatpipes and test under load before returning the laptop." },
-        { id: "faq-mahboula-local-3", question: "My gaming PC turns on but there is no picture. Where should I look first?", answer: "Check that the monitor cable is plugged into the graphics card rather than the motherboard, try another cable or port and reseat the memory. If the fans spin but there is still no display, the graphics card, memory or board may be at fault, and we test them on the bench." },
-        { id: "faq-mahboula-local-4", question: "How often should a gaming laptop be cleaned and re-pasted?", answer: "There is no single interval because it depends on how much you play and how dusty the environment is. A sensible sign is rising temperatures or louder fans than before. When that happens, a cleaning and fresh thermal paste usually helps. We can check the temperatures and tell you if it is time." },
-        { id: "faq-mahboula-local-5", question: "My laptop screen has dead pixels or a bright patch. Can it be repaired?", answer: "Individual dead pixels are a panel defect and cannot normally be repaired, though the panel can be replaced if they bother you. A bright patch or pressure mark can also point to a damaged panel. We check the screen and confirm whether replacement is worthwhile before you spend anything." },
-        { id: "faq-mahboula-local-6", question: "Is there a branch in Mahboula, and where is the repair done?", answer: "There is no walk-in branch in Mahboula. Devices are repaired at our Hawalli lab (Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19), open daily from 10:00 AM to 10:00 PM. You can bring a device in yourself or have it collected for free, and repairs carry a 30-day warranty." },
+      localServiceCards: [
+        {
+          title: 'Laptop Repair & Component-Level Motherboard Diagnosis',
+          problem: 'A laptop will not power on, charges intermittently, overheats, freezes, shows a black screen, or has a liquid-damage or display fault.',
+          expertise: 'We check the model-specific power, charging, display and motherboard paths first. Where the original board is repairable, microscope-assisted diagnostics and component-level micro-soldering are considered before recommending a full-board replacement.',
+          solution: 'Book free Mahboula pickup and return delivery. The device is assessed at our Hawalli lab, and you receive the diagnosis and a clear quote before any paid repair begins.',
+          serviceIds: ['srv-laptop', 'srv-motherboard']
+        },
+        {
+          title: 'MacBook Air & MacBook Pro Repair',
+          problem: 'A MacBook will not start, no longer charges through USB-C or MagSafe, has a black display, or has suffered a liquid spill.',
+          expertise: 'We assess the exact Intel or Apple Silicon model, charging path, display and logic-board condition, then consider component-level repair where technically suitable. A board repair is not a data-recovery guarantee.',
+          solution: 'Arrange free collection from Mahboula. We explain the repair options and quote before work; completed repairs are tested and covered by KCROC’s 30-day warranty.',
+          serviceIds: ['srv-macbook']
+        },
+        {
+          title: 'Complete Gaming PC Repair & GPU No-Display Diagnostics',
+          problem: 'A full gaming desktop powers on but shows no picture, crashes under load, restarts during games, overheats, or loses performance.',
+          expertise: 'We assess the complete system: monitor path, installed GPU, memory, PSU, PCIe power connectors, motherboard and relevant VRM/VRAM symptoms. A black screen is diagnosed systematically rather than treated as proof that the graphics card has failed.',
+          solution: 'Collection of a complete tower can be arranged from Mahboula. Share the case size, cooling setup and symptoms when booking; individual graphics cards are not accepted as standalone repair jobs.',
+          serviceIds: ['srv-gaming']
+        },
+        {
+          title: 'Gaming Laptop Cleaning & Thermal Repaste',
+          problem: 'ASUS ROG/TUF, MSI, Lenovo Legion and other gaming laptops run hot, make persistent fan noise, throttle during games or shut down under load.',
+          expertise: 'We inspect the fan and heatsink assembly, clear dust from the cooling fins, check heat-pipe contact and assess the CPU/GPU thermal interface. PTM7950, Arctic MX-6 or compatible thermal materials are selected only where appropriate for the model; VRM/VRAM pad thickness is not guessed.',
+          solution: 'Gaming-laptop thermal service is listed at 15–20 KWD. We reassemble and test temperatures and stability under a suitable workload before arranging free return delivery.',
+          serviceIds: ['srv-gaming-laptop-cleaning']
+        }
+      ],
+      localPricingAnchors: [
+        { label: 'Pickup, return delivery & initial diagnostic', price: 'FREE', note: 'No charge for the initial hardware diagnosis; paid work starts only after you approve the quote.' },
+        { label: 'Gaming laptop thermal service', price: '15–20 KWD', note: 'Internal cleaning and model-appropriate thermal-interface service.' },
+        { label: 'Charging-port repair', price: '20–35 KWD', note: 'DC jack, USB-C connector and related board work are confirmed after inspection.' },
+        { label: 'Motherboard component repair', price: '25–60 KWD', note: 'The final quote depends on the failed component, board condition and repair scope.' },
+        { label: 'Liquid-damage repair', price: '35–90+ KWD', note: 'Depends on corrosion, affected assemblies and the work required.' },
+        { label: 'MacBook board-level repair', price: '45–100+ KWD', note: 'Model and fault dependent; complex work and parts are quoted after diagnosis.' },
+        { label: 'Laptop screen replacement labour', price: 'From 30 KWD + panel', note: 'The compatible display panel is priced separately after exact-model verification.' },
+        { label: 'Battery replacement labour', price: '8–15 KWD + battery', note: 'Labour only; the compatible battery is priced separately.' },
+        { label: 'Keyboard replacement labour', price: '10–20 KWD + keyboard', note: 'Labour only; the compatible keyboard or top-case assembly is priced separately.' }
+      ],
+      localFaqs: [
+        {
+          id: 'faq-mahboula-local-1',
+          question: 'Do you have a walk-in computer repair shop in Mahboula?',
+          answer: 'Mahboula is a pickup-and-delivery service area, not a separate KCROC branch. We arrange free collection from your address and complete diagnosis and repair at our central Hawalli laboratory: Ibn Khaldoun Street, Al Mullah Complex, Basement Shop 19. You can start the process from home without making a drop-off trip.'
+        },
+        {
+          id: 'faq-mahboula-local-2',
+          question: 'Do you collect from Abu Halifa, Mangaf, Fahaheel and Fintas as well as Mahboula?',
+          answer: 'Yes. Free pickup and return delivery can be arranged in Mahboula, Abu Halifa, Mangaf, Fahaheel, Fintas, Egaila and Ahmadi. Send your exact block, street, building and location pin on WhatsApp so the collection point and time can be confirmed.'
+        },
+        {
+          id: 'faq-mahboula-local-3',
+          question: 'Can you collect a full-tower gaming PC from Mahboula?',
+          answer: 'Yes. We can arrange collection for a complete gaming desktop tower. When booking, share the case size, approximate weight, cooling setup (air, AIO or custom loop) and the fault symptoms so transport can be planned. We diagnose the installed graphics card as part of the complete system; individual graphics cards are not accepted as standalone repair jobs.'
+        },
+        {
+          id: 'faq-mahboula-local-4',
+          question: 'My gaming laptop is very hot and the fans are loud. What can you do?',
+          answer: 'Dust packed into the heatsink fins, fan problems, poor cooler contact or a degraded thermal interface can cause high temperatures, loud fans and reduced clock speeds. At the lab we inspect and clean the cooling assembly, check heat-pipe contact and model-specific VRM/VRAM pads, then select a suitable thermal material. Honeywell PTM7950 or Arctic MX-6 may be used where compatible with the laptop design. We test temperatures and stability after reassembly rather than promising a fixed temperature drop.'
+        },
+        {
+          id: 'faq-mahboula-local-5',
+          question: 'My gaming PC powers on but there is no picture. What should I check?',
+          answer: 'First confirm the monitor is on the correct input and the HDMI or DisplayPort cable is connected to the graphics card outputs, not the motherboard ports. Note any motherboard CPU, DRAM, VGA or BOOT diagnostic light. If there is still no display, the cause could be memory, GPU, PSU, firmware, motherboard or the display path; bench testing identifies the fault before a repair quote.'
+        },
+        {
+          id: 'faq-mahboula-local-6',
+          question: 'How often should a gaming laptop be cleaned and have its thermal material serviced in Kuwait?',
+          answer: 'There is no fixed interval that suits every model or user. For a heavily used gaming laptop in a dusty environment, an inspection around every 8–12 months is a practical guide, but service should be based on its condition. Persistent loud fans, rising temperatures, FPS drops or thermal shutdowns are reasons to have the cooling system checked sooner.'
+        },
+        {
+          id: 'faq-mahboula-local-7',
+          question: 'Can dead pixels or bright white patches on my laptop screen be repaired?',
+          answer: 'A dead pixel or a bright pressure patch is usually a panel-layer fault and cannot be corrected with motherboard soldering or software. We inspect the panel and eDP display connection, verify the exact resolution and refresh-rate specification, and quote a model-matched panel replacement if the panel itself is damaged.'
+        },
+        {
+          id: 'faq-mahboula-local-8',
+          question: 'How much does laptop, gaming PC or MacBook repair cost for Mahboula customers?',
+          answer: 'Pickup, return delivery and the initial hardware diagnostic are free. Published guide prices include gaming-laptop thermal service at 15–20 KWD, charging-port repair at 20–35 KWD, motherboard component repair at 25–60 KWD, liquid-damage repair at 35–90+ KWD, MacBook board-level repair at 45–100+ KWD, and screen-replacement labour from 30 KWD plus the panel. Battery labour is 8–15 KWD plus the battery; keyboard labour is 10–20 KWD plus the keyboard. The exact total depends on the model, fault and parts, and is confirmed before paid work.'
+        },
+        {
+          id: 'faq-mahboula-local-9',
+          question: 'How long does a repair take for Mahboula customers?',
+          answer: 'The diagnosis and estimated completion time are confirmed after the device reaches our Hawalli lab. Many standard repairs take around 24–48 hours when the required parts are available; component-level motherboard work can take around 24–72 hours after diagnosis and approval. Complex faults, parts sourcing and workload can change the estimate, which we explain before proceeding.'
+        },
+        {
+          id: 'faq-mahboula-local-10',
+          question: 'Where is my device repaired, how is my data handled, and what if it cannot be fixed?',
+          answer: 'All repairs take place at KCROC’s Hawalli laboratory: Ibn Khaldoun Street, Al Mullah Complex, Basement Shop 19. Our process is hardware-focused; technicians do not browse personal files. For supported Windows laptops and desktops with removable NVMe or SATA storage, you may retain the drive before collection. Many MacBooks use onboard storage, and no data-recovery or data-preservation result is guaranteed. Under the No Fix, No Fee policy, if we cannot complete a viable repair under the service terms, there is no repair charge and return delivery is free.'
+        }
       ],
       landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)',
-      coords: { lat: 29.1470, lng: 48.1300 }, serviceRadiusKm: 20, serviceAreas: ['Mahboula', 'Mangaf', 'Abu Halifa', 'Fahaheel'],
-      relatedServiceIds: ['srv-laptop', 'srv-macbook', 'srv-gaming', 'srv-battery'], relatedProblemIds: ['problem-overheating', 'problem-no-power', 'problem-cracked-screen', 'problem-not-charging'], contentImage: { src: IMAGES.gaming.waterCooled.src, alt: IMAGES.gaming.waterCooled.alt, width: IMAGES.gaming.waterCooled.width, height: IMAGES.gaming.waterCooled.height, caption: 'Gaming PC and hardware servicing for Mahboula and nearby southern Kuwait.' },
-      seo: { title: "Computer Repair Mahboula | Free Pickup | KCROC", description: "Laptop, MacBook and gaming PC repair for Mahboula, Mangaf and Fahaheel. Free pickup and delivery to our Hawalli workshop.", canonicalUrl: 'https://www.computerrepairkuwait.com/location/mahboula', ogType: 'website', schemaTypes: ['LocalBusiness'], lastModified: '2026-10-02T00:00:00+03:00' },
+      coords: { lat: 29.1470, lng: 48.1300 },
+      serviceRadiusKm: 20,
+      serviceAreas: ['Mahboula', 'Abu Halifa', 'Mangaf', 'Fahaheel', 'Fintas', 'Egaila', 'Ahmadi'],
+      areaPostalCode: '54000',
+      areaPostalRegion: 'Ahmadi Governorate',
+      additionalAreaPostalCodes: [
+        { name: 'Mahboula Block 1', postalCode: '54001', addressRegion: 'Ahmadi Governorate' },
+        { name: 'Mahboula Block 2', postalCode: '54002', addressRegion: 'Ahmadi Governorate' },
+        { name: 'Mahboula Block 3', postalCode: '54003', addressRegion: 'Ahmadi Governorate' },
+        { name: 'Mahboula Block 4', postalCode: '54004', addressRegion: 'Ahmadi Governorate' },
+        { name: 'Abu Halifa', postalCode: '54600', addressRegion: 'Ahmadi Governorate' },
+        { name: 'Mangaf', postalCode: '53700', addressRegion: 'Ahmadi Governorate' },
+        { name: 'Fahaheel', postalCode: '63000', addressRegion: 'Ahmadi Governorate' },
+        { name: 'Fintas', postalCode: '50000', addressRegion: 'Ahmadi Governorate' },
+        { name: 'Egaila', postalCode: '54200', addressRegion: 'Ahmadi Governorate' },
+        { name: 'Ahmadi', postalCode: '60000', addressRegion: 'Ahmadi Governorate' }
+      ],
+      serviceTypes: [
+        'Laptop and computer hardware repair',
+        'MacBook repair and logic-board diagnostics',
+        'Complete gaming PC and installed GPU diagnostics',
+        'Gaming laptop cleaning and thermal-interface service',
+        'Component-level motherboard repair'
+      ],
+      relatedServiceIds: ['srv-laptop', 'srv-macbook', 'srv-gaming', 'srv-gaming-laptop-cleaning'],
+      relatedProblemIds: ['problem-overheating', 'problem-black-screen', 'problem-freezing-crashing', 'problem-no-power', 'problem-liquid-spill', 'problem-cracked-screen', 'problem-not-charging'],
+      relatedBrandIds: ['brand-asus', 'brand-msi', 'brand-dell', 'brand-lenovo'],
+      relatedLocationIds: ['loc-mangaf', 'loc-abu-halifa', 'loc-fahaheel', 'loc-ahmadi'],
+      contentImage: {
+        src: IMAGES.gaming.waterCooled.src,
+        alt: IMAGES.gaming.waterCooled.alt,
+        width: IMAGES.gaming.waterCooled.width,
+        height: IMAGES.gaming.waterCooled.height,
+        caption: 'Gaming desktop cooling and repair work for Mahboula and southern Kuwait, handled at KCROC’s Hawalli lab.'
+      },
+      seo: {
+        title: 'Computer, Gaming PC & MacBook Repair Mahboula | KCROC',
+        description: 'Laptop, MacBook, gaming PC and thermal repair in Mahboula (54000), Abu Halifa, Mangaf and Fahaheel. Free pickup and return delivery to KCROC’s Hawalli lab.',
+        canonicalUrl: 'https://www.computerrepairkuwait.com/location/mahboula',
+        ogType: 'website',
+        schemaTypes: ['LocalBusiness'],
+        lastModified: '2026-11-06T00:00:00+03:00'
+      },
       navigationPriority: 64
     } as LocationEntity,
 
@@ -7448,7 +7595,7 @@ const LOCATION_RELATIONSHIPS: Record<string, {
   khaitan: { relatedServiceIds: ['srv-laptop','srv-charging-port','srv-screen','srv-motherboard'], relatedProblemIds: ['problem-no-power','problem-not-charging','problem-cracked-screen','problem-overheating'], relatedBrandIds: ['brand-dell','brand-hp','brand-lenovo','brand-asus'], relatedLocationIds: ['loc-farwaniya','loc-riggae','loc-hawalli'] },
   riggae: { relatedServiceIds: ['srv-laptop','srv-macbook','srv-screen','srv-motherboard'], relatedProblemIds: ['problem-no-power','problem-not-charging','problem-black-screen','problem-liquid-spill'], relatedBrandIds: ['brand-dell','brand-hp','brand-lenovo','brand-asus'], relatedLocationIds: ['loc-khaitan','loc-farwaniya','loc-hawalli'] },
   ardiya: { relatedServiceIds: ['srv-laptop','srv-gaming','srv-motherboard','srv-screen'], relatedProblemIds: ['problem-overheating','problem-no-power','problem-black-screen','problem-not-charging'], relatedBrandIds: ['brand-asus','brand-msi','brand-dell','brand-lenovo'], relatedLocationIds: ['loc-farwaniya','loc-riggae'] },
-  mahboula: { relatedServiceIds: ['srv-laptop','srv-macbook','srv-gaming','srv-gaming-laptop-cleaning'], relatedProblemIds: ['problem-overheating','problem-freezing-crashing','problem-no-power','problem-liquid-spill'], relatedBrandIds: ['brand-asus','brand-msi','brand-dell','brand-lenovo'], relatedLocationIds: ['loc-mangaf','loc-abu-halifa','loc-fahaheel','loc-ahmadi'] },
+  mahboula: { relatedServiceIds: ['srv-laptop', 'srv-macbook', 'srv-gaming', 'srv-gaming-laptop-cleaning'], relatedProblemIds: ['problem-overheating', 'problem-black-screen', 'problem-freezing-crashing', 'problem-no-power', 'problem-liquid-spill', 'problem-cracked-screen', 'problem-not-charging'], relatedBrandIds: ['brand-asus', 'brand-msi', 'brand-dell', 'brand-lenovo'], relatedLocationIds: ['loc-mangaf', 'loc-abu-halifa', 'loc-fahaheel', 'loc-ahmadi'] },
   qurain: { relatedServiceIds: ['srv-laptop','srv-macbook','srv-motherboard','srv-screen'], relatedProblemIds: ['problem-no-power','problem-not-charging','problem-black-screen','problem-liquid-spill'], relatedBrandIds: ['brand-dell','brand-lenovo','brand-hp','brand-asus'], relatedLocationIds: ['loc-mubarak-al-kabeer','loc-sabah-al-salem'] },
   qortuba: {
     relatedServiceIds: ['srv-laptop', 'srv-macbook', 'srv-gaming', 'srv-motherboard', 'srv-screen'],
