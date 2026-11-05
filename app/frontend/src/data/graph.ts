@@ -5145,9 +5145,9 @@ export const rawGraphData: RawGraphData = {
     relatedLocationIds: ['loc-shamiya', 'loc-shuwaikh-residential', 'loc-abdullah-al-salem'],
     contentImage: {
       src: IMAGES.gaming.gamingOverheating.src,
-      alt: IMAGES.laptopHardware.gamingOverheating.alt,
-      width: IMAGES.laptopHardware.gamingOverheating.width,
-      height: IMAGES.laptopHardware.gamingOverheating.height,
+      alt: IMAGES.gaming.gamingOverheating.alt,
+      width: IMAGES.gaming.gamingOverheating.width,
+      height: IMAGES.gaming.gamingOverheating.height,
       caption: 'Laptop cooling inspection and thermal service at KCROC’s Hawalli workshop.',
     },
     seo: {
