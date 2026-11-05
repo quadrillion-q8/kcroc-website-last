@@ -751,7 +751,7 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
                     "@type": "PostalAddress",
                     "postalCode": location.areaPostalCode,
                     "addressLocality": location.title.replace(' Residential', ''),
-                    "addressRegion": "Al Asimah Governorate",
+                    "addressRegion": location.areaPostalRegion || "Al Asimah Governorate",
                     "addressCountry": "KW"
                   }
                 }),
@@ -770,7 +770,7 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
                   "@type": "PostalAddress",
                   "postalCode": area.postalCode,
                   "addressLocality": area.name,
-                  "addressRegion": "Al Asimah Governorate",
+                  "addressRegion": location.areaPostalRegion || "Al Asimah Governorate",
                   "addressCountry": "KW"
                 }
               })),
