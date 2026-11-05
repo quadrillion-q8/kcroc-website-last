@@ -59,6 +59,13 @@ const laptopServiceEntityForChecks =
     ? graph.slice(laptopGraphStart, laptopGraphEnd)
     : '';
 
+const surraGraphStart = graph.indexOf("'loc-surra': {");
+const surraGraphEnd = graph.indexOf("'loc-khaitan': {", surraGraphStart + 1);
+const surraEntity =
+  surraGraphStart >= 0 && surraGraphEnd > surraGraphStart
+    ? graph.slice(surraGraphStart, surraGraphEnd)
+    : '';
+
 const salmiyaGraphStart = graph.indexOf("'loc-salmiya': {");
 const salmiyaGraphEnd = graph.indexOf("'loc-farwaniya': {", salmiyaGraphStart + 1);
 const salmiyaEntity =
@@ -72,6 +79,13 @@ const locationRelationships =
   relationshipsStart >= 0 && relationshipsEnd > relationshipsStart
     ? graph.slice(relationshipsStart, relationshipsEnd)
     : '';
+const surraRelationshipStart = locationRelationships.indexOf('  surra: {');
+const surraRelationshipEnd = locationRelationships.indexOf('  khaitan: {', surraRelationshipStart + 1);
+const surraRelationship =
+  surraRelationshipStart >= 0 && surraRelationshipEnd > surraRelationshipStart
+    ? locationRelationships.slice(surraRelationshipStart, surraRelationshipEnd)
+    : '';
+
 const salmiyaRelationshipStart = locationRelationships.indexOf('  salmiya: {');
 const salmiyaRelationshipEnd = locationRelationships.indexOf("  'kuwait-city': {", salmiyaRelationshipStart + 1);
 const salmiyaRelationship =
@@ -225,6 +239,37 @@ add('Salmiya nearby-location cards exclude the current page and replace its form
   locations.includes('related.id !== location.id') &&
   salmiyaRelationship.includes("'loc-nuzha'") &&
   !salmiyaRelationship.includes("'loc-salmiya'"));
+
+add('Surra is a dedicated four-district collection hub with nine local FAQs and the existing canonical URL',
+  surraEntity.includes("heroHeadline: 'Computer & MacBook Repair in Surra, Jabriya, Qadsiya & Shaab'") &&
+  surraEntity.includes("canonicalUrl: 'https://www.computerrepairkuwait.com/location/surra'") &&
+  surraEntity.includes("localPickupHeading: 'Four-district collection. Repairs at our Hawalli workshop.'") &&
+  (surraEntity.match(/id: 'faq-surra-local-/g) || []).length === 9 &&
+  surraEntity.includes('Surra, Jabriya, Qadsiya and Shaab') &&
+  !surraEntity.includes('within 5–10 minutes') &&
+  !surraEntity.includes('within 1 to 2 hours'));
+add('Surra retains five canonical repair-service cards with current pricing anchors',
+  ['srv-laptop', 'srv-macbook', 'srv-motherboard', 'srv-screen', 'srv-charging-port'].every((id) => surraEntity.includes(id)) &&
+  surraEntity.includes('localServiceCards:') &&
+  surraEntity.includes('localPricingAnchors:') &&
+  ['15–20 KWD', 'From 20 KWD', 'From 25 KWD', 'From 30 KWD + panel'].every((price) => surraEntity.includes(price)));
+add('Surra postal Place data covers all four districts with governorate-specific schema regions',
+  ['45400', '45401', '45402', '45403', '45404', '45405', '45406',
+    '46300', '46301', '46312', '35700', '35701', '35709', '35900', '35901', '35909']
+    .every((code) => surraEntity.includes(code)) &&
+  surraEntity.includes("areaPostalRegion: 'Capital Governorate'") &&
+  locationTypeSchema.includes('addressRegion: z.string().optional()') &&
+  seoEngine.includes('area.addressRegion || location.areaPostalRegion'));
+add('Surra uses the shared location template for dedicated FAQ schema and a clean four-district pickup heading',
+  locationTemplate.includes("'salmiya', 'surra'") &&
+  locationTemplate.includes('location.localPickupHeading ||') &&
+  locationTemplate.includes('replace(/^Mobile Dispatch Area\\s*\\(') &&
+  locationTemplate.includes('location.localFaqs ?? []'));
+add('Surra internal links point to the Hawalli lab and active nearby locations, not redirected Jabriya URLs',
+  surraRelationship.includes("'loc-hawalli'") &&
+  surraRelationship.includes("'loc-qortuba'") &&
+  !surraRelationship.includes("'loc-jabriya'") &&
+  locations.includes('related.id !== location.id'));
 
 add('Consolidated location pages are inactive, hidden from the hub and routed to surviving pickup areas',
   ['loc-saad-al-abdullah', 'loc-fintas', 'loc-jabriya', 'loc-salwa', 'loc-ardiya', 'loc-rawda'].every((id) => new RegExp("'" + id + "': \\{[^}]*isActive: false").test(graph)) &&

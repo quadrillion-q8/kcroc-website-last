@@ -770,7 +770,7 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
                   "@type": "PostalAddress",
                   "postalCode": area.postalCode,
                   "addressLocality": area.name,
-                  "addressRegion": location.areaPostalRegion || "Al Asimah Governorate",
+                  "addressRegion": area.addressRegion || location.areaPostalRegion || "Al Asimah Governorate",
                   "addressCountry": "KW"
                 }
               })),
