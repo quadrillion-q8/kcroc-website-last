@@ -47,6 +47,8 @@ const [app, graph, seoProjection, locale, pricingPage, sitemap, hero, reviews, f
 ]);
 
 const vercelConfig = await readFile(path.resolve('vercel.json'), 'utf8');
+const seoEngine = await read('core/components/SEOEngine.tsx');
+const seoGenerator = await readFile(path.resolve('scripts/generate-seo-data.ts'), 'utf8');
 const arabicContact = await read('pages/ArabicContactPage.tsx');
 
 const laptopGraphStart = graph.indexOf("'srv-laptop': {");
@@ -387,6 +389,14 @@ add('Adailiya and Rawda page uses verified postal blocks, board-first diagnosis,
   (adailiyaEntity.match(/serviceIds: \[/g) || []).length === 5 &&
   adailiyaEntity.includes('Dead board or black screen? Diagnose the difference first') &&
   adailiyaEntity.includes('removable NVMe or SATA SSD') &&
+  adailiyaEntity.includes("additionalAreaPostalCodes: [{ name: 'Rawda', postalCode: '73300' }]") &&
+  adailiyaEntity.includes('Block 5: 73105') &&
+  adailiyaEntity.includes('Block 5 is 73305') &&
+  seoProjection.includes('"additionalAreaPostalCodes": [') &&
+  seoProjection.includes('"postalCode": "73300"') &&
+  seoEngine.includes('location.additionalAreaPostalCodes') &&
+  seoEngine.includes('"addressLocality": area.name') &&
+  seoGenerator.includes('additionalAreaPostalCodes: e.additionalAreaPostalCodes ?? []') &&
   !adailiyaEntity.includes('This page describes a mobile pickup service') &&
   !adailiyaEntity.includes('8 to 12 minutes') &&
   !adailiyaEntity.includes('10-Minute'));

@@ -763,6 +763,17 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
                   }
                 })
               },
+              ...(location.additionalAreaPostalCodes ?? []).map(area => ({
+                "@type": "Place",
+                "name": area.name,
+                "address": {
+                  "@type": "PostalAddress",
+                  "postalCode": area.postalCode,
+                  "addressLocality": area.name,
+                  "addressRegion": "Al Asimah Governorate",
+                  "addressCountry": "KW"
+                }
+              })),
               ...location.serviceAreas.map(area => ({
                 "@type": "City",
                 "name": area
