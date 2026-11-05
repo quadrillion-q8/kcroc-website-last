@@ -4580,23 +4580,140 @@ export const rawGraphData: RawGraphData = {
       navigationPriority: 93
     } as LocationEntity,
 
- 'loc-shamiya': {id:'loc-shamiya',slug:'shamiya',entityType:'Location',isActive:true,isPhysicalLocation:false,
-  title:'Shamiya',description:'Laptop, MacBook and desktop PC repair for Shamiya, with free pickup to KCROC’s Hawalli workshop.',
-  localIntro:"KCROC serves Shamiya through home and office pickup, with diagnosis and repair carried out at the Hawalli lab. We support laptop, MacBook and desktop faults including cracked or black screens, batteries that no longer hold charge, charging-port problems, overheating and no-power symptoms. Motherboard faults are traced before we recommend a repair or replacement. Shamiya is not a KCROC branch location; devices are returned after testing.",
-  localHighlights:[{title:'Shamiya home and office pickup',description:'Share your block or street on WhatsApp and we will arrange collection and return delivery.'},{title:'Screen and battery repair',description:'Display and battery faults are confirmed against the device model before parts are recommended.'},{title:'Desktop PC diagnostics',description:'We check startup, overheating and hardware stability issues on supported desktop systems.'},{title:'Repair at the Hawalli lab',description:'All bench diagnostics and repair work take place at the central workshop, not at a Shamiya storefront.'}],
-  localFaqs:[
-   {id:"faq-shamiya-1",question:"Can I arrange computer repair pickup from Shamiya?",answer:"Yes. KCROC can arrange free pickup and return delivery from Shamiya. Send your block or a map pin and tell us what the computer is doing."},
-   {id:"faq-shamiya-2",question:"Do you repair desktop computers as well as laptops?",answer:"Yes. We diagnose supported desktop PCs and laptops, including power, display, cooling and motherboard problems."},
-   {id:"faq-shamiya-3",question:"My laptop screen is cracked. Can you replace it?",answer:"Yes. We identify the exact panel and compatible part for your laptop model, then provide the quote before replacing the screen."},
-   {id:"faq-shamiya-4",question:"Does KCROC have a physical repair shop in Shamiya?",answer:"No. Shamiya is a pickup service area. Devices are repaired at our central Hawalli lab at Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19."},
-   {id:"faq-shamiya-5",question:"Are repairs covered by a warranty?",answer:"Completed repairs carry a 30-day warranty. The technician explains the repair and quote before paid work begins."}
-  ],
-  landmark:'Mobile Dispatch Area (Devices collected in Shamiya and repaired at the Hawalli lab)',serviceRadiusKm:12,
-  serviceAreas:['Shamiya','Shuwaikh Residential','Abdullah Al-Salem','Kaifan'],relatedServiceIds:['srv-laptop','srv-screen','srv-battery','srv-motherboard'],
-  relatedProblemIds:['problem-cracked-screen','problem-black-screen','problem-no-power','problem-overheating'],relatedLocationIds:['loc-shuwaikh-residential','loc-abdullah-al-salem','loc-kaifan'],
-  contentImage:{src:IMAGES.laptopHardware.dellLaptopScreenRepairCompleted.src,alt:IMAGES.laptopHardware.dellLaptopScreenRepairCompleted.alt,width:IMAGES.laptopHardware.dellLaptopScreenRepairCompleted.width,height:IMAGES.laptopHardware.dellLaptopScreenRepairCompleted.height,caption:'Laptop screen repair carried out at KCROC’s Hawalli workshop.'},
-  seo:{title:"Computer Repair Shamiya | Laptop & MacBook Pickup | KCROC",description:"Computer, laptop and MacBook repair for Shamiya. Free collection and return delivery; repairs take place at KCROC’s Hawalli lab.",canonicalUrl:'https://www.computerrepairkuwait.com/location/shamiya',ogType:'website',schemaTypes:['LocalBusiness'],lastModified:'2026-11-05T00:00:00+03:00'},navigationPriority:88
- } as LocationEntity,
+ 'loc-shamiya': {
+      id: 'loc-shamiya',
+      slug: 'shamiya',
+      entityType: 'Location',
+      isActive: true,
+      isPhysicalLocation: false,
+      title: 'Shamiya',
+      description: 'Laptop and MacBook screen, battery and motherboard diagnostics, plus desktop PC and workstation repair for Shamiya. Free doorstep collection and return to KCROC’s Hawalli lab.',
+      heroBadge: 'Direct doorstep collection · Shamiya Blocks 1–9 · Area code 71500',
+      heroHeadline: 'Computer, MacBook & Desktop PC Repair in Shamiya',
+      localValueHeading: 'Screen, Battery & Desktop Diagnostics — Collected from Your Shamiya Doorstep',
+      localServicesHeading: 'Specialist Screen, Battery, Motherboard & Desktop PC Repair for Shamiya',
+      areaPostalCode: '71500',
+      serviceTypes: [
+        'Laptop and MacBook screen, display-cable and backlight diagnostics',
+        'Laptop battery replacement and charging-path testing',
+        'Desktop PC and workstation hardware diagnostics',
+        'Component-level motherboard and MacBook logic-board repair',
+        'Cracked laptop display and compatible screen replacement'
+      ],
+      localIntro: 'A laptop with cracked glass and a laptop that powers on but shows a black screen do not automatically need the same repair. Physical panel damage may call for a model-matched display assembly, while a dark or dim image can also come from the display cable or connector, panel power, a motherboard backlight circuit or a lid/sleep sensor where the model uses one. KCROC’s Shamiya service focuses on checking the relevant display path before recommending a screen or board repair. We arrange free doorstep collection from homes and offices across Shamiya Blocks 1–9, then diagnose and repair supported laptops, MacBooks and complete desktop towers at our ESD-safe Hawalli lab: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19. You do not need to unplug a multi-monitor workstation and carry it through Hawalli traffic; send your block, street, device model and a location pin so the collection team can confirm the arrangements. Shamiya’s area/post-office code is 71500, while Blocks 1–9 use the block postal codes 71501–71509. For a familiar map reference, you can mention Shamiya & Shuwaikh Cooperative Society (Shamiya Mall) or the neighbourhood park in Block 3. Shamiya sits between the First and Second Ring Roads, so include your exact block and street rather than relying on a broad road name. The device is logged for workshop intake, diagnosed first and quoted before any paid repair work begins.',
+      localHighlights: [
+        {
+          title: 'A black screen is not automatically a broken panel',
+          description: 'When a laptop powers on but the display stays black or dim, we distinguish a failed panel from a loose or damaged display cable/connector, panel-power fault or motherboard backlight-circuit issue. A lid or sleep sensor is checked where the model uses one. This helps avoid quoting a full display assembly when the evidence points to a repairable board-side fault.'
+        },
+        {
+          title: 'Battery and charging-path checks before part replacement',
+          description: 'We assess the battery, adapter, charging port and relevant motherboard charging path before recommending a battery or board repair. A swollen battery needs careful handling: stop using or charging the device and contact us for collection guidance rather than pressing or puncturing the cell.'
+        },
+        {
+          title: 'Full-tower desktops and workstations can be collected',
+          description: 'Shamiya pickup can be arranged for supported desktop towers and workstations as well as laptops and MacBooks. Tell us the case size, approximate weight and whether it has a glass side panel or custom liquid cooling so the team can confirm collection details and whether any monitor or accessory is needed for the reported fault.'
+        },
+        {
+          title: 'Hardware-first diagnostics with an SSD-retention option',
+          description: 'Hardware-only display, battery, charging and board checks do not require your Windows or Mac account password and are focused on the device rather than browsing personal files. For compatible laptops and desktops with a removable NVMe or SATA drive, ask before collection about removing and keeping the drive. Boot and storage tests are limited until it is reinstalled; many newer MacBooks have soldered storage.'
+        },
+        {
+          title: 'Coverage across Shamiya Blocks 1–9',
+          description: 'The Shamiya area/post-office code is 71500; block postal codes 71501–71509 identify Blocks 1–9. Share your block and street, or use Shamiya & Shuwaikh Co-op / Shamiya Mall and the Block 3 neighbourhood park as nearby map references. Shamiya is between the First and Second Ring Roads.'
+        }
+      ],
+      localServiceCards: [
+        {
+          title: 'Laptop & MacBook Screen and Black-Display Diagnostics',
+          problem: 'Cracked or shattered panels, vertical lines, flicker, a dim backlight, or a laptop that powers on while the display remains black.',
+          expertise: 'We assess the panel, display cable and connector, panel power and the model-specific motherboard backlight path. A lid/sleep sensor is considered where fitted, so a black-screen symptom is not treated as proof that the panel itself has failed.',
+          solution: 'If the panel is damaged, we confirm the model and compatible replacement before quoting. If the fault is on the board or display path, we explain that repair option separately before paid work.',
+          serviceIds: ['srv-screen', 'srv-macbook']
+        },
+        {
+          title: 'Laptop Battery Replacement & Charging-Path Testing',
+          problem: 'Short battery runtime, sudden percentage drops, unexpected shutdowns, battery warnings, swelling or a laptop that only runs while connected to its charger.',
+          expertise: 'We check battery condition and charging behaviour alongside the adapter, port and relevant charging circuitry before deciding whether the battery or a board-side fault is responsible.',
+          solution: 'The compatible battery, part availability and full price are confirmed before installation. Swollen batteries are handled as a safety issue, not forced back into the chassis.',
+          serviceIds: ['srv-battery', 'srv-charging-port']
+        },
+        {
+          title: 'Full-Tower Desktop PC & Workstation Diagnostics',
+          problem: 'No display or no-POST startup, unexpected restarts, GPU or memory instability, overheating, loud fans or shutdowns under load.',
+          expertise: 'We diagnose the complete supported system, considering the power supply, motherboard, GPU, memory, storage and cooling rather than assuming the graphics card or motherboard is the failed part.',
+          solution: 'Free collection from Shamiya can be arranged for complete desktop towers. Share the case size and any glass-panel or custom-cooling details so collection requirements can be confirmed before dispatch.',
+          serviceIds: ['srv-desktop-pc', 'srv-gaming']
+        },
+        {
+          title: 'Component-Level Motherboard & MacBook Logic-Board Repair',
+          problem: 'No-power faults, charging failures, liquid-related board damage, short circuits or instability that persists after basic adapter and peripheral checks.',
+          expertise: 'The Hawalli lab traces the affected power and board circuits and assesses component-level repair of the original board where the fault and board condition make it viable.',
+          solution: 'You receive the diagnostic result and repair quote before paid work starts. Keeping the original board may preserve access to existing storage on some devices, but it is not a data-recovery guarantee.',
+          serviceIds: ['srv-motherboard', 'srv-macbook', 'srv-laptop']
+        }
+      ],
+      localFaqs: [
+        {
+          id: 'faq-shamiya-1',
+          question: 'Can KCROC collect a laptop or computer directly from my Shamiya home?',
+          answer: 'Yes. Free doorstep pickup and return delivery can be arranged across Shamiya Blocks 1–9. Send your block, street, device model and location pin on WhatsApp; the team will confirm a collection time and bring the device to the Hawalli lab for diagnosis.'
+        },
+        {
+          id: 'faq-shamiya-2',
+          question: 'Can you collect a full-tower desktop PC or workstation from a Shamiya villa?',
+          answer: 'Yes, collection can be arranged for supported complete desktop towers and workstations as well as laptops and MacBooks. Tell us the case size, approximate weight, whether the side panel is glass or the system has custom liquid cooling, and what the PC is doing. We will confirm the collection details and whether a monitor or other accessory is needed to reproduce the fault.'
+        },
+        {
+          id: 'faq-shamiya-3',
+          question: 'My laptop turns on but the screen is black. Do I need a new screen?',
+          answer: 'Not necessarily. A black or dim display can be caused by the panel, display cable or connector, panel power, a motherboard backlight circuit or a lid/sleep sensor where fitted. We check the relevant parts of the display path before quoting a panel replacement. A physically cracked panel is assessed separately against the exact model.'
+        },
+        {
+          id: 'faq-shamiya-4',
+          question: 'Do you test the battery and charging circuit before replacing a laptop battery?',
+          answer: 'Yes. We assess battery condition and charging behaviour, and check the adapter, charging port and relevant motherboard charging path for the device. This helps separate a worn battery from a port or board-side issue before the replacement price is confirmed.'
+        },
+        {
+          id: 'faq-shamiya-5',
+          question: 'Do I need to share my password, and can I keep my SSD before collection?',
+          answer: 'A password is not needed for hardware-only screen, battery, charging or motherboard diagnostics. For compatible laptops and desktops with a removable NVMe or SATA drive, ask us before collection about removing and keeping it. Boot and storage tests cannot be completed with the drive removed. Many newer MacBooks use soldered storage rather than a removable M.2 SSD.'
+        },
+        {
+          id: 'faq-shamiya-6',
+          question: 'Where are Shamiya devices repaired, and do completed repairs have a warranty?',
+          answer: 'Collection is from your Shamiya home or office; diagnosis and repair take place at KCROC’s Hawalli lab at Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19. You receive the repair scope and price before paid work begins. Completed repairs carry a 30-day warranty, and the No Fix, No Fee policy applies when a device cannot be fixed under the policy.'
+        }
+      ],
+      landmark: 'Doorstep collection area — Shamiya Blocks 1–9; workshop diagnostics and repairs at KCROC’s Hawalli lab',
+      serviceRadiusKm: 12,
+      serviceAreas: ['Shamiya Blocks 1–9'],
+      relatedServiceIds: [
+        'srv-laptop', 'srv-screen', 'srv-battery', 'srv-motherboard',
+        'srv-macbook', 'srv-charging-port', 'srv-desktop-pc', 'srv-gaming'
+      ],
+      relatedProblemIds: [
+        'problem-cracked-screen', 'problem-black-screen', 'problem-not-charging',
+        'problem-no-power', 'problem-overheating'
+      ],
+      relatedLocationIds: ['loc-shuwaikh-residential', 'loc-abdullah-al-salem', 'loc-kaifan'],
+      contentImage: {
+        src: IMAGES.laptopHardware.dellLaptopScreenRepairCompleted.src,
+        alt: IMAGES.laptopHardware.dellLaptopScreenRepairCompleted.alt,
+        width: IMAGES.laptopHardware.dellLaptopScreenRepairCompleted.width,
+        height: IMAGES.laptopHardware.dellLaptopScreenRepairCompleted.height,
+        caption: 'Laptop display repair carried out at KCROC’s Hawalli workshop.'
+      },
+      seo: {
+        title: 'Computer, MacBook & PC Repair Shamiya | Free Pickup | KCROC',
+        description: 'Laptop screen, backlight, battery and desktop PC diagnostics for Shamiya Blocks 1–9 (71501–71509). Free doorstep pickup to KCROC’s Hawalli lab.',
+        canonicalUrl: 'https://www.computerrepairkuwait.com/location/shamiya',
+        ogType: 'website',
+        schemaTypes: ['LocalBusiness'],
+        lastModified: '2026-11-05T00:00:00+03:00'
+      },
+      navigationPriority: 90
+    } as LocationEntity,
 
  'loc-nuzha': {id:'loc-nuzha',slug:'nuzha',entityType:'Location',isActive:true,isPhysicalLocation:false,
   title:'Nuzha',description:'Computer and laptop repair for Nuzha, with free pickup and delivery to KCROC’s Hawalli lab.',
