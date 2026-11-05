@@ -510,7 +510,7 @@ export default function HawalliLocationPage() {
                 aria-label="View KCROC computer and laptop repair prices in Kuwait"
                 className="inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-xl bg-cyan-500 px-5 py-3 text-sm font-black text-slate-950 transition-colors hover:bg-cyan-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300"
               >
-                View Full Repair Pricing
+                View Repair Prices &amp; Parts Guide
                 <CheckCircle2 className="h-4 w-4" aria-hidden="true" />
               </Link>
             </div>
@@ -676,7 +676,7 @@ export default function HawalliLocationPage() {
                     {location.landmark}<br />Hawalli, Kuwait
                   </p>
                   <p className="mt-2 max-w-md text-sm leading-relaxed text-slate-400">
-                    <span className="font-semibold text-slate-300">Walk-in lab drop-off and directions:</span>{' '}
+                    <span className="font-semibold text-slate-300">Finding the lab — walk-in drop-off and directions:</span>{' '}
                     Our repair lab is inside Al Mullah Complex at basement level, Shop 19. This is the workshop where devices are assessed and repaired.
                     If you need help locating the basement entrance from Ibn Khaldoun Street,{' '}
                     <a
