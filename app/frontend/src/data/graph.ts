@@ -4084,7 +4084,7 @@ export const rawGraphData: RawGraphData = {
       isActive: true,
       isPhysicalLocation: false,
       title: 'Sabah Al-Salem',
-      heroBadge: 'Sabah Al-Salem A · Blocks 1–13 · Area code 44000',
+      heroBadge: 'Sabah Al-Salem A · Blocks 1–13 · Postal area 44000',
       heroHeadline: 'Computer, Laptop & MacBook Repair in Sabah Al-Salem',
       localValueHeading: 'Doorstep Pickup in Sabah Al-Salem. Precision Repairs in Hawalli.',
       localServicesHeading: 'Specialist Computer & MacBook Repairs for Sabah Al-Salem',
@@ -4098,7 +4098,7 @@ export const rawGraphData: RawGraphData = {
         'Laptop charging port and power-delivery repair',
       ],
       description: 'Laptop, MacBook and computer repair for Sabah Al-Salem A, including Blocks 1–13. Free doorstep pickup and return delivery to KCROC’s Hawalli repair lab.',
-      localIntro: 'When a student MacBook stops charging, a family laptop screen cracks, or a home-office computer will not power on, the repair should start with a proper diagnosis—not an unnecessary trip across town. KCROC arranges free doorstep collection across Sabah Al-Salem A (Blocks 1–13) and takes the device to our central Hawalli repair lab. There, our technicians assess display, charging, power and motherboard faults, explain the repair options and provide a quote before any paid work begins. Once you approve the work, we complete the repair, test the device and arrange return delivery. Send your block, street and location pin on WhatsApp; a nearby Sabah Al-Salem Co-operative Society branch can also help identify your pickup area. For neighbouring Adan and Qurain, see our wider Mubarak Al-Kabeer service-area page.',
+      localIntro: 'When a student MacBook stops charging, a family laptop screen cracks, or a home-office computer will not power on, the repair should start with a proper diagnosis—not an unnecessary trip across town. KCROC arranges free doorstep collection across Sabah Al-Salem A (Blocks 1–13) and takes the device to our central Hawalli repair lab. Sabah Al-Salem connects to the Sixth Ring Road and the Fahaheel Expressway (Road 30), but you do not need to drive your device to Hawalli to begin a repair. There, our technicians assess display, charging, power and motherboard faults, explain the repair options and provide a quote before any paid work begins. Once you approve the work, we complete the repair, test the device and arrange return delivery. Send your block, street and location pin on WhatsApp; a nearby Sabah Al-Salem Co-operative Society branch is a familiar landmark you can include when confirming the pickup point. For neighbouring Adan and Qurain, see our wider Mubarak Al-Kabeer service-area page; Messila has its own dedicated service-area page.',
       localHighlights: [
         { title: 'Doorstep pickup across Blocks 1–13', description: 'Free pickup and return delivery are available for Sabah Al-Salem A. Share your exact block, street and location pin so collection can be coordinated.' },
         { title: 'MacBook, USB-C and charging faults', description: 'We check the adapter, connector, charging path and relevant board circuitry before recommending a repair. The correct route depends on the exact model and fault.' },
@@ -4143,7 +4143,7 @@ export const rawGraphData: RawGraphData = {
         },
       ],
       localFaqs: [
-        { id: 'faq-sabah-al-salem-local-1', question: 'Do you collect from Sabah Al-Salem A, Blocks 1 through 13?', answer: 'Yes. Free pickup and return delivery are available across Sabah Al-Salem A Blocks 1–13. The general area code is 44000; block-specific postal codes run from 44001 to 44013. Send your block, street and location pin on WhatsApp so the collection point can be confirmed.' },
+        { id: 'faq-sabah-al-salem-local-1', question: 'Do you collect from Sabah Al-Salem A, Blocks 1 through 13?', answer: 'Yes. Free pickup and return delivery are available across Sabah Al-Salem A Blocks 1–13. The general postal code is 44000; individual block postal codes run from 44001 to 44013. Send your block, street and location pin on WhatsApp so the collection point can be confirmed.' },
         { id: 'faq-sabah-al-salem-local-2', question: 'Do you collect from Adan and Qurain as well?', answer: 'Yes. Sabah Al-Salem, Adan and Qurain are connected through KCROC’s Mubarak Al-Kabeer pickup coverage. For details about the wider governorate service area, see the Mubarak Al-Kabeer page or send your location on WhatsApp.' },
         { id: 'faq-sabah-al-salem-local-3', question: 'My laptop will not turn on. What can I check before arranging pickup?', answer: 'Try a different wall outlet, check that the charger is firmly connected, disconnect USB accessories and hold the power button for about 15 seconds. If it remains unresponsive, send us the model and what happened before it stopped. We will diagnose the power path before recommending a repair.' },
         { id: 'faq-sabah-al-salem-local-4', question: 'The laptop was dropped and now shows nothing. Is it the screen or motherboard?', answer: 'Either is possible. If the laptop powers on but the display stays black, the panel, cable, connector or backlight path may be involved. If the laptop has no power at all, the power input or motherboard may be responsible. We test the relevant paths and explain the findings before quoting.' },
