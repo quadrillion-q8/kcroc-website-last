@@ -277,7 +277,7 @@ add('Requested Abdullah Al-Salem URL redirects to the existing canonical locatio
   ));
 
 add('Abdullah Al-Salem page replaces generic location FAQs with its six area-specific questions',
-  locations.includes("['abdullah-al-salem', 'shamiya', 'nuzha'].includes(location.slug)") &&
+  locations.includes("['abdullah-al-salem', 'shamiya', 'nuzha', 'adailiya'].includes(location.slug)") &&
   locations.includes('usesDedicatedLocationFaqs ? [] : sharedLocationFaqs') &&
   abdullahEntity.includes('faq-abdullah-al-salem-6') &&
   abdullahEntity.includes('Can you diagnose random freezing'));
@@ -317,7 +317,7 @@ add('Requested Shamiya URL redirects to the existing canonical location page',
   ));
 
 add('Shamiya page uses six dedicated local FAQs without the shared shop/pickup/cost/turnaround block',
-  locations.includes("['abdullah-al-salem', 'shamiya', 'nuzha'].includes(location.slug)") &&
+  locations.includes("['abdullah-al-salem', 'shamiya', 'nuzha', 'adailiya'].includes(location.slug)") &&
   locations.includes('usesDedicatedLocationFaqs ? [] : sharedLocationFaqs') &&
   shamiyaEntity.includes('faq-shamiya-6') &&
   shamiyaEntity.includes('black screen') &&
@@ -359,11 +359,58 @@ add('Requested Nuzha URL redirects to the existing canonical location page',
   ));
 
 add('Nuzha page uses six dedicated thermal/power/privacy FAQs instead of the shared location FAQ block',
-  locations.includes("['abdullah-al-salem', 'shamiya', 'nuzha'].includes(location.slug)") &&
+  locations.includes("['abdullah-al-salem', 'shamiya', 'nuzha', 'adailiya'].includes(location.slug)") &&
   locations.includes('usesDedicatedLocationFaqs ? [] : sharedLocationFaqs') &&
   nuzhaEntity.includes('faq-nuzha-6') &&
   nuzhaEntity.includes('gets hot, runs loud fans and shuts down') &&
   nuzhaEntity.includes('charging controller and input-power circuitry'));
+
+const adailiyaStart = graph.indexOf("'loc-adailiya': {");
+const adailiyaEnd = graph.indexOf("} as LocationEntity", adailiyaStart);
+const adailiyaEntity = adailiyaStart >= 0 && adailiyaEnd > adailiyaStart
+  ? graph.slice(adailiyaStart, adailiyaEnd)
+  : '';
+
+add('Adailiya and Rawda page uses verified postal blocks, board-first diagnosis, five services and local anchors',
+  adailiyaEntity.includes("areaPostalCode: '73100'") &&
+  adailiyaEntity.includes('73101–73105') &&
+  adailiyaEntity.includes('73300') &&
+  adailiyaEntity.includes('73301–73305') &&
+  adailiyaEntity.includes('serviceAreas: [') &&
+  adailiyaEntity.includes("'Adailiya', 'Rawda'") &&
+  adailiyaEntity.includes('Kazma Sporting Club') &&
+  adailiyaEntity.includes('Sami Ahmad Al-Munayes Street') &&
+  adailiyaEntity.includes('Adailiya Water Towers') &&
+  adailiyaEntity.includes('Jamal Abdul Nasser Park') &&
+  adailiyaEntity.includes('Third and Fourth Ring Roads') &&
+  adailiyaEntity.includes('localServiceCards: [') &&
+  (adailiyaEntity.match(/serviceIds: \[/g) || []).length === 5 &&
+  adailiyaEntity.includes('Dead board or black screen? Diagnose the difference first') &&
+  adailiyaEntity.includes('removable NVMe or SATA SSD') &&
+  !adailiyaEntity.includes('This page describes a mobile pickup service') &&
+  !adailiyaEntity.includes('8 to 12 minutes') &&
+  !adailiyaEntity.includes('10-Minute'));
+
+add('Adailiya and Rawda generated SEO projection retains area code, dual-district taxonomy and metadata',
+  seoProjection.includes('"areaPostalCode": "73100"') &&
+  seoProjection.includes('"Laptop no-power and motherboard power-rail diagnostics"') &&
+  seoProjection.includes('"MacBook logic-board and USB-C charging diagnostics"') &&
+  seoProjection.includes('Computer & MacBook Repair Adailiya & Rawda | KCROC'));
+
+add('Requested Adailiya URL redirects to the existing canonical dual-suburb page',
+  JSON.parse(vercelConfig).redirects.some((r) =>
+    r.source === '/computer-repair-adailiya' &&
+    r.destination === '/location/adailiya' &&
+    r.permanent === true
+  ));
+
+add('Adailiya page uses nine dedicated dual-suburb hardware and privacy FAQs',
+  locations.includes("['abdullah-al-salem', 'shamiya', 'nuzha', 'adailiya'].includes(location.slug)") &&
+  locations.includes('usesDedicatedLocationFaqs ? [] : sharedLocationFaqs') &&
+  adailiyaEntity.includes('faq-adailiya-9') &&
+  adailiyaEntity.includes('dead motherboard and a laptop that turns on with a black screen') &&
+  adailiyaEntity.includes('both Adailiya and Rawda') &&
+  adailiyaEntity.includes('No Fix, No Fee'));
 
 add('Service-area FAQs remain in prerendered DOM and match their FAQPage schema answers',
   locations.includes('hidden={!isOpen}') &&
