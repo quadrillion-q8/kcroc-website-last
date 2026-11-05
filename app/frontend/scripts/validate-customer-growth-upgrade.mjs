@@ -277,7 +277,7 @@ add('Requested Abdullah Al-Salem URL redirects to the existing canonical locatio
   ));
 
 add('Abdullah Al-Salem page replaces generic location FAQs with its six area-specific questions',
-  locations.includes("['abdullah-al-salem', 'shamiya'].includes(location.slug)") &&
+  locations.includes("['abdullah-al-salem', 'shamiya', 'nuzha'].includes(location.slug)") &&
   locations.includes('usesDedicatedLocationFaqs ? [] : sharedLocationFaqs') &&
   abdullahEntity.includes('faq-abdullah-al-salem-6') &&
   abdullahEntity.includes('Can you diagnose random freezing'));
@@ -317,7 +317,7 @@ add('Requested Shamiya URL redirects to the existing canonical location page',
   ));
 
 add('Shamiya page uses six dedicated local FAQs without the shared shop/pickup/cost/turnaround block',
-  locations.includes("['abdullah-al-salem', 'shamiya'].includes(location.slug)") &&
+  locations.includes("['abdullah-al-salem', 'shamiya', 'nuzha'].includes(location.slug)") &&
   locations.includes('usesDedicatedLocationFaqs ? [] : sharedLocationFaqs') &&
   shamiyaEntity.includes('faq-shamiya-6') &&
   shamiyaEntity.includes('black screen') &&
