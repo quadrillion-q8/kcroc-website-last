@@ -4084,7 +4084,7 @@ export const rawGraphData: RawGraphData = {
         },
         {
           title: 'Local collection landmarks across the coastal strip',
-          description: 'Pickup can be arranged around Salem Al-Mubarak Street, Hamad Al-Mubarak Street, Baghdad Street, Amman Street and Gulf Road, including the Marina Mall, Boulevard and American University of Kuwait areas. Tell us the exact block and building rather than relying on a broad landmark alone.'
+          description: 'Pickup can be arranged around Salem Al-Mubarak Street, Hamad Al-Mubarak Street, Baghdad Street, Amman Street and Gulf Road, including the Marina Mall area, Boulevard and American University of Kuwait (AUK) areas. Tell us the exact block and building rather than relying on a broad landmark alone.'
         },
         {
           title: 'Liquid-damage and original-board assessment',
