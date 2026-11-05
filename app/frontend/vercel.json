@@ -65,6 +65,11 @@
   ],
   "redirects": [
     {
+      "source": "/computer-repair-adailiya",
+      "destination": "/location/adailiya",
+      "permanent": true
+    },
+    {
       "source": "/computer-repair-nuzha",
       "destination": "/location/nuzha",
       "permanent": true
