@@ -136,7 +136,7 @@ export default function LocationDeepTemplate() {
   // Most locations use shared commercial/logistics FAQs. Priority pages with
   // distinct service mixes use dedicated questions so local intent and booking
   // details are not diluted by generic copy.
-  const usesDedicatedLocationFaqs = ['abdullah-al-salem', 'shamiya', 'nuzha', 'adailiya', 'kuwait-city', 'salmiya'].includes(location.slug) || location.slug === 'kaifan';
+  const usesDedicatedLocationFaqs = ['abdullah-al-salem', 'shamiya', 'nuzha', 'adailiya', 'kuwait-city', 'salmiya', 'surra'].includes(location.slug) || location.slug === 'kaifan';
   const isConciergeCollectionArea = ['shuwaikh-residential', 'abdullah-al-salem', 'kaifan', 'shamiya', 'nuzha', 'adailiya'].includes(location.slug);
   const sharedLocationFaqs: LocalFAQ[] = [
     {
@@ -641,7 +641,7 @@ export default function LocationDeepTemplate() {
       <section className="py-8 sm:py-14 px-4 sm:px-6 border-t border-slate-800/50">
         <div className="container mx-auto max-w-6xl">
           <h2 className="text-2xl sm:text-3xl font-black mb-6 sm:mb-10 text-white tracking-tight">
-            Free Pickup From {location.title} — Repaired in Hawalli
+            {location.localPickupHeading || `Free Pickup From ${location.title} — Repaired in Hawalli`}
           </h2>
           <div className="grid lg:grid-cols-2 gap-8 items-start">
             <div className="space-y-5">
@@ -653,7 +653,7 @@ export default function LocationDeepTemplate() {
                   <h3 className="font-bold text-white mb-1">No Shop Visit Needed</h3>
                   <p className="text-slate-400 text-sm">
                     We don't have a walk-in branch in {location.title}. Devices are collected free
-                    of charge and repaired at our lab: {location.landmark.replace('Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: ', '').replace(')', '')}.
+                    of charge and repaired at our lab: {location.landmark.replace(/^Mobile Dispatch Area\s*\([^:]*:\s*/, '').replace(/\)\s*$/, '')}.
                   </p>
                 </div>
               </div>
