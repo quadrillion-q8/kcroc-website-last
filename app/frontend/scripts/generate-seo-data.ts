@@ -32,6 +32,7 @@ const routableEntities = (KCROC_GRAPH.routableEntities ?? []).map((e: any) => {
         coords: e.coords,
         serviceAreas: e.serviceAreas ?? [],
         areaPostalCode: e.areaPostalCode,
+        areaPostalRegion: e.areaPostalRegion,
         additionalAreaPostalCodes: e.additionalAreaPostalCodes ?? [],
         serviceTypes: e.serviceTypes ?? []
       };
