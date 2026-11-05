@@ -254,10 +254,11 @@ add('Surra retains five canonical repair-service cards with current pricing anch
   surraEntity.includes('localPricingAnchors:') &&
   ['15–20 KWD', 'From 20 KWD', 'From 25 KWD', 'From 30 KWD + panel'].every((price) => surraEntity.includes(price)));
 add('Surra postal Place data covers all four districts with governorate-specific schema regions',
-  ['45400', '45401', '45402', '45403', '45404', '45405', '45406',
+  ['45400', '45401', '45402', '45404', '45405', '45406',
     '46300', '46301', '46312', '35700', '35701', '35709', '35900', '35901', '35909']
     .every((code) => surraEntity.includes(code)) &&
   surraEntity.includes("areaPostalRegion: 'Capital Governorate'") &&
+  !surraEntity.includes("postalCode: '45403'") &&
   locationTypeSchema.includes('addressRegion: z.string().optional()') &&
   seoEngine.includes('area.addressRegion || location.areaPostalRegion'));
 add('Surra uses the shared location template for dedicated FAQ schema and a clean four-district pickup heading',
