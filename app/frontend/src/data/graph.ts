@@ -4618,33 +4618,149 @@ export const rawGraphData: RawGraphData = {
 
     
 
-    'loc-surra': { id: 'loc-surra', slug: 'surra', entityType: 'Location', isActive: true, isPhysicalLocation: false,
- title: 'Surra',
- description: 'Laptop and computer repair for Surra, Qadsiya, Jabriya and Shaab, with free pickup to KCROC’s Hawalli repair lab.',
- localIntro: "KCROC serves Surra and nearby Qadsiya, Jabriya, Shaab and Qortuba through pickup and return delivery. We diagnose laptops, MacBooks and desktop computers at the Hawalli workshop, tracing no-power, charging, display, battery and motherboard faults before recommending a repair. This is a pickup service area, not a separate shop or repair branch.",
- localHighlights: [
-  { title: 'Pickup across Surra and nearby districts', description: 'Free collection and return delivery can be arranged in Surra, Qadsiya, Jabriya, Shaab and nearby Qortuba.' },
-  { title: 'Laptop and MacBook diagnostics', description: 'We check no-power, charging, black-screen, battery and display problems before quoting.' },
-  { title: 'Component-level motherboard repair', description: 'Where technically viable, faults are traced to the failed component instead of automatically recommending a full-board replacement.' },
-  { title: 'One central repair workshop', description: 'Devices collected in Surra are diagnosed and repaired at the Hawalli lab, then returned after testing.' }
- ],
- localFaqs: [
-  { id: "faq-surra-local-1", question: "Do you collect from Surra, Qadsiya, Jabriya and Shaab?", answer: "Yes. Free pickup and delivery can be arranged from Surra, Qadsiya, Jabriya and Shaab. Send your block or location pin and device symptoms on WhatsApp." },
-  { id: "faq-surra-local-2", question: "Can you repair a laptop that turns on but shows a black screen?", answer: "Yes. The display panel, cable, backlight and motherboard can produce similar symptoms. We test the display path and board at the Hawalli lab, then quote before paid work begins." },
-  { id: "faq-surra-local-3", question: "My laptop only charges when I move the cable. What should I do?", answer: "Avoid repeatedly moving the plug because a loose port can damage its solder joints. We check the charger, charging socket and motherboard power path." },
-  { id: "faq-surra-local-4", question: "Can you repair a MacBook motherboard without replacing the whole board?", answer: "Where the damage and board design allow it, we trace the fault to the component and attempt component-level repair. Feasibility and price are confirmed after inspection." },
-  { id: "faq-surra-local-5", question: "Where is the device repaired, and do you have a branch in Surra?", answer: "Surra is a pickup area, not a walk-in branch. Repairs are completed at our Hawalli lab at Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19, open daily 10 AM to 10 PM. Approved repairs carry a 30-day warranty." }
- ],
- landmark: 'Mobile Dispatch Area (Devices collected locally and repaired at KCROC’s central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)',
- coords: { lat: 29.3050, lng: 48.0400 }, serviceRadiusKm: 12,
- serviceAreas: ['Surra', 'Qadsiya', 'Jabriya', 'Shaab', 'Qortuba', 'Hawalli'],
- relatedServiceIds: ['srv-laptop', 'srv-macbook', 'srv-motherboard', 'srv-screen', 'srv-charging-port'],
- relatedProblemIds: ['problem-no-power', 'problem-overheating', 'problem-black-screen', 'problem-not-charging', 'problem-cracked-screen'],
- relatedLocationIds: ['loc-adailiya', 'loc-qortuba', 'loc-yarmouk', 'loc-mishref'],
- contentImage: { src: IMAGES.laptopHardware.dellLaptopScreenRepairCompleted.src, alt: IMAGES.laptopHardware.dellLaptopScreenRepairCompleted.alt, width: IMAGES.laptopHardware.dellLaptopScreenRepairCompleted.width, height: IMAGES.laptopHardware.dellLaptopScreenRepairCompleted.height, caption: 'A real KCROC laptop repair photo from the Hawalli workshop serving Surra and nearby districts.' },
- seo: { title: "Computer Repair Surra | Jabriya & Qadsiya Pickup | KCROC", description: "Laptop, MacBook and computer repair for Surra, Qadsiya, Jabriya and Shaab. Free pickup; diagnosis and repairs at KCROC’s Hawalli lab.", canonicalUrl: 'https://www.computerrepairkuwait.com/location/surra', ogType: 'website', schemaTypes: ['LocalBusiness'], lastModified: '2026-11-05T00:00:00+03:00' },
- navigationPriority: 86
-} as LocationEntity,
+    'loc-surra': {
+      id: 'loc-surra',
+      slug: 'surra',
+      entityType: 'Location',
+      isActive: true,
+      isPhysicalLocation: false,
+      title: 'Surra',
+      description: 'Component-level laptop, MacBook and computer repair for Surra (45400), Jabriya (46300), Qadsiya (35700) and Shaab (35900). Free doorstep pickup to KCROC’s Hawalli repair lab.',
+      heroBadge: 'Surra · Jabriya · Qadsiya · Shaab — Free Pickup',
+      heroHeadline: 'Computer & MacBook Repair in Surra, Jabriya, Qadsiya & Shaab',
+      localValueHeading: 'One nearby pickup hub. One dedicated repair lab.',
+      localServicesHeading: 'Five Specialist Computer Repair Services for Surra and Nearby Districts',
+      localPickupHeading: 'Four-district collection. Repairs at our Hawalli workshop.',
+      localIntro: "KCROC connects Surra, Jabriya, Qadsiya and Shaab to one dedicated repair workshop in Hawalli. We arrange free doorstep collection and return delivery by block and location pin, then log each device for diagnosis at our ESD-safe lab in Al Mullah Complex, Basement Shop 19, Ibn Khaldoun Street. The same workshop team handles the inspection and approved repair; you do not need to drive across town or look for a local storefront. You can also visit the Hawalli workshop in person. We diagnose the charger, connector, display path and motherboard before recommending a repair, and provide the quote before paid work begins.",
+      localHighlights: [
+        { title: 'Surra — Blocks 1–6 · 45400', description: 'Collection across all six Surra blocks. The area code is 45400, with block references 45401–45406. Send your block and a location pin near Surra Cooperative Society or your street so the courier can confirm the collection route.' },
+        { title: 'Jabriya — Blocks 1–12 · 46300', description: 'Coverage across Jabriya Blocks 1–12, with block postal references 46301–46312. We arrange collection from homes, offices and clinic buildings, including locations around Jabriya Co-op and Mubarak Al-Kabeer Hospital.' },
+        { title: 'Qadsiya — Blocks 1–9 · 35700', description: 'Pickup can be arranged throughout Qadsiya Blocks 1–9, with block postal references 35701–35709. Share the nearest street or pin around Qadsiya Co-op or Qadsiya Sporting Club.' },
+        { title: 'Shaab — Blocks 1–9 · 35900', description: 'Coverage includes Shaab Blocks 1–9, with block postal references 35901–35909, including residential and coastal-side addresses. Share your block and pin near Shaab Co-op or your building entrance.' }
+      ],
+      localServiceCards: [
+        {
+          title: 'Laptop Repair & Thermal Service',
+          problem: 'No-power faults, random shutdowns, overheating, loud fans, damaged charging connectors or everyday hardware problems on supported Dell, HP, Lenovo, ASUS, Acer and MSI laptops.',
+          expertise: 'We inspect the device and use microscope checks, bench power-supply current profiling, multimeter testing, schematic and boardview tracing, and thermal imaging when the fault calls for it.',
+          solution: 'Free initial diagnosis, a clear quote before paid work and a 30-day warranty on completed repairs. Published thermal-service rates are 15–20 KWD.',
+          serviceIds: ['srv-laptop']
+        },
+        {
+          title: 'MacBook Air & MacBook Pro Repair',
+          problem: 'MacBooks with no power, USB-C charging faults, liquid exposure, a black or flickering display, battery problems or logic-board symptoms.',
+          expertise: 'We check the model and affected circuit first. Where the board design and damage allow it, technicians trace and repair the failed component on the original logic board rather than defaulting to a full-board replacement.',
+          solution: 'MacBook service starts from 25 KWD. The exact repair and parts quote is confirmed after inspection; data preservation is a priority but cannot be guaranteed for every fault.',
+          serviceIds: ['srv-macbook']
+        },
+        {
+          title: 'Laptop, MacBook & Desktop Motherboard Repair',
+          problem: 'A dead computer, unstable power, a charging fault, a shorted power rail or liquid-related corrosion that may originate on the motherboard.',
+          expertise: 'We trace the power path with boardview references, multimeter measurements and thermal diagnosis, then assess whether the failed connector, fuse, MOSFET, capacitor or other component can be repaired.',
+          solution: 'Component-level motherboard work starts from 25 KWD. We quote first and follow KCROC’s No Fix, No Fee policy.',
+          serviceIds: ['srv-motherboard']
+        },
+        {
+          title: 'Laptop Screen & Backlight Diagnosis',
+          problem: 'Cracked displays, vertical lines, flicker, dim screens, or a laptop that powers on while the display remains black.',
+          expertise: 'We distinguish a failed panel from an eDP cable, connector, backlight or related board fault before recommending a replacement.',
+          solution: 'Screen-replacement labour starts from 30 KWD plus the verified panel cost. The exact compatible part is checked against your laptop model.',
+          serviceIds: ['srv-screen']
+        },
+        {
+          title: 'Laptop DC Jack & USB-C Charging Port Repair',
+          problem: 'The laptop charges only when the cable is held at an angle, the port feels loose, or a compatible USB-C/DC charger is not recognized.',
+          expertise: 'We check the adapter, connector pins, port solder joints, mounting pads and charging circuit. A damaged connector or lifted pad is assessed for microscope-guided repair where technically viable.',
+          solution: 'Charging-port service starts from 20 KWD. Stop forcing or wiggling a loose plug; we confirm the cause and quote before repair.',
+          serviceIds: ['srv-charging-port']
+        }
+      ],
+      localPricingAnchors: [
+        { label: 'Initial bench diagnosis', price: 'FREE', note: 'No-obligation initial assessment before a paid repair is approved.' },
+        { label: 'Laptop thermal service', price: '15–20 KWD', note: 'Published service rate; exact work depends on the cooling condition and model.' },
+        { label: 'Charging-port repair', price: 'From 20 KWD', note: 'DC jack, USB-C connector and board-level scope are confirmed after inspection.' },
+        { label: 'Motherboard component repair', price: 'From 25 KWD', note: 'Final quote depends on the failed component, board condition and parts.' },
+        { label: 'Screen replacement labour', price: 'From 30 KWD + panel', note: 'The compatible display panel is quoted separately after model verification.' }
+      ],
+      localFaqs: [
+        { id: 'faq-surra-local-1', question: 'Do you have a walk-in repair shop in Surra?', answer: 'KCROC does not operate a walk-in branch in Surra. We arrange free doorstep pickup and return delivery, while all diagnostics and repairs are completed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19. You can also visit the Hawalli workshop directly.' },
+        { id: 'faq-surra-local-2', question: 'Do you collect from Jabriya, Qadsiya and Shaab as well as Surra?', answer: 'Yes. Free pickup and return delivery can be arranged across Surra, Jabriya, Qadsiya and Shaab, as well as nearby Qortuba. Send your district, block, building or house details and a location pin on WhatsApp so the collection time can be confirmed.' },
+        { id: 'faq-surra-local-3', question: 'My laptop only charges when I move or hold the cable at an angle. What should I do?', answer: 'Stop moving or forcing the plug and disconnect the charger. An intermittent connection can point to a worn DC jack or USB-C receptacle, fractured solder joints, damaged connector pads, or a fault elsewhere in the charging path. Repeated flexing can worsen the connection and create heat; unplug immediately if the port becomes hot, sparks or smells burnt. KCROC tests the adapter, port and charging circuit before quoting a repair.' },
+        { id: 'faq-surra-local-4', question: 'Can you repair a laptop that turns on but shows a black screen?', answer: 'Yes. A black display can be caused by the panel, display cable or connector, backlight path, memory or motherboard initialization. We check the likely causes at the Hawalli lab before recommending a panel or board repair, then quote before paid work.' },
+        { id: 'faq-surra-local-5', question: 'Can you repair a MacBook motherboard without replacing the whole logic board?', answer: 'Where the MacBook model, board design and fault make it technically viable, we trace the affected circuit and can replace a failed component on the original logic board. Some boards are not economically or technically repairable, and data access or preservation cannot be guaranteed.' },
+        { id: 'faq-surra-local-6', question: 'How much does computer and laptop repair cost for these four districts?', answer: 'Pickup, return delivery and the initial diagnostic are free. Published anchors include laptop thermal service at 15–20 KWD, charging-port service from 20 KWD, motherboard component repair from 25 KWD, and screen-replacement labour from 30 KWD plus the panel. MacBook service starts from 25 KWD. We confirm the exact price before paid work begins; under No Fix, No Fee, there is no repair charge if we cannot complete the agreed repair.' },
+        { id: 'faq-surra-local-7', question: 'How long does pickup and repair take?', answer: 'Collection is arranged for an agreed time based on your block, the courier route and driver availability; we do not promise a fixed 5–10 minute dispatch or a guaranteed one-to-two-hour pickup. After the device reaches our Hawalli lab, the diagnostic and repair estimate depend on the fault, workload and parts availability. We confirm a realistic turnaround after inspection.' },
+        { id: 'faq-surra-local-8', question: 'How do you protect personal, clinic or office data during repair?', answer: 'Our diagnostics are hardware-focused and technicians do not browse personal files as part of normal fault testing. For supported Windows laptops and desktops with removable NVMe or SATA storage, you may remove and keep the drive before collection. This is not possible on every device; many MacBooks have onboard or soldered storage. Data preservation is a priority, but cannot be guaranteed for every damaged device.' },
+        { id: 'faq-surra-local-9', question: 'Where is the device repaired, and can I visit in person?', answer: 'All diagnostics and repairs take place at KCROC’s Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19, Hawalli. The lab is open daily from 10:00 AM to 10:00 PM. You can walk in at this Hawalli address or book free collection from Surra, Jabriya, Qadsiya or Shaab.' }
+      ],
+      landmark: 'Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19, Hawalli',
+      coords: { lat: 29.3050, lng: 48.0400 },
+      serviceRadiusKm: 12,
+      serviceAreas: ['Surra', 'Jabriya', 'Qadsiya', 'Shaab', 'Qortuba'],
+      areaPostalCode: '45400',
+      areaPostalRegion: 'Capital Governorate',
+      additionalAreaPostalCodes: [
+        { name: 'Surra Block 1', postalCode: '45401', addressRegion: 'Capital Governorate' },
+        { name: 'Surra Block 2', postalCode: '45402', addressRegion: 'Capital Governorate' },
+        { name: 'Surra Block 3', postalCode: '45403', addressRegion: 'Capital Governorate' },
+        { name: 'Surra Block 4', postalCode: '45404', addressRegion: 'Capital Governorate' },
+        { name: 'Surra Block 5', postalCode: '45405', addressRegion: 'Capital Governorate' },
+        { name: 'Surra Block 6', postalCode: '45406', addressRegion: 'Capital Governorate' },
+        { name: 'Jabriya (general area)', postalCode: '46300', addressRegion: 'Hawalli Governorate' },
+        { name: 'Jabriya Block 1', postalCode: '46301', addressRegion: 'Hawalli Governorate' },
+        { name: 'Jabriya Block 2', postalCode: '46302', addressRegion: 'Hawalli Governorate' },
+        { name: 'Jabriya Block 3', postalCode: '46303', addressRegion: 'Hawalli Governorate' },
+        { name: 'Jabriya Block 4', postalCode: '46304', addressRegion: 'Hawalli Governorate' },
+        { name: 'Jabriya Block 5', postalCode: '46305', addressRegion: 'Hawalli Governorate' },
+        { name: 'Jabriya Block 6', postalCode: '46306', addressRegion: 'Hawalli Governorate' },
+        { name: 'Jabriya Block 7', postalCode: '46307', addressRegion: 'Hawalli Governorate' },
+        { name: 'Jabriya Block 8', postalCode: '46308', addressRegion: 'Hawalli Governorate' },
+        { name: 'Jabriya Block 9', postalCode: '46309', addressRegion: 'Hawalli Governorate' },
+        { name: 'Jabriya Block 10', postalCode: '46310', addressRegion: 'Hawalli Governorate' },
+        { name: 'Jabriya Block 11', postalCode: '46311', addressRegion: 'Hawalli Governorate' },
+        { name: 'Jabriya Block 12', postalCode: '46312', addressRegion: 'Hawalli Governorate' },
+        { name: 'Qadsiya (general area)', postalCode: '35700', addressRegion: 'Capital Governorate' },
+        { name: 'Qadsiya Block 1', postalCode: '35701', addressRegion: 'Capital Governorate' },
+        { name: 'Qadsiya Block 2', postalCode: '35702', addressRegion: 'Capital Governorate' },
+        { name: 'Qadsiya Block 3', postalCode: '35703', addressRegion: 'Capital Governorate' },
+        { name: 'Qadsiya Block 4', postalCode: '35704', addressRegion: 'Capital Governorate' },
+        { name: 'Qadsiya Block 5', postalCode: '35705', addressRegion: 'Capital Governorate' },
+        { name: 'Qadsiya Block 6', postalCode: '35706', addressRegion: 'Capital Governorate' },
+        { name: 'Qadsiya Block 7', postalCode: '35707', addressRegion: 'Capital Governorate' },
+        { name: 'Qadsiya Block 8', postalCode: '35708', addressRegion: 'Capital Governorate' },
+        { name: 'Qadsiya Block 9', postalCode: '35709', addressRegion: 'Capital Governorate' },
+        { name: 'Shaab (general area)', postalCode: '35900', addressRegion: 'Hawalli Governorate' },
+        { name: 'Shaab Block 1', postalCode: '35901', addressRegion: 'Hawalli Governorate' },
+        { name: 'Shaab Block 2', postalCode: '35902', addressRegion: 'Hawalli Governorate' },
+        { name: 'Shaab Block 3', postalCode: '35903', addressRegion: 'Hawalli Governorate' },
+        { name: 'Shaab Block 4', postalCode: '35904', addressRegion: 'Hawalli Governorate' },
+        { name: 'Shaab Block 5', postalCode: '35905', addressRegion: 'Hawalli Governorate' },
+        { name: 'Shaab Block 6', postalCode: '35906', addressRegion: 'Hawalli Governorate' },
+        { name: 'Shaab Block 7', postalCode: '35907', addressRegion: 'Hawalli Governorate' },
+        { name: 'Shaab Block 8', postalCode: '35908', addressRegion: 'Hawalli Governorate' },
+        { name: 'Shaab Block 9', postalCode: '35909', addressRegion: 'Hawalli Governorate' },
+      ],
+      serviceTypes: [
+        'Component-level laptop and desktop computer repair',
+        'MacBook Air and MacBook Pro diagnostics and logic-board repair',
+        'Laptop charging-port, USB-C and DC-jack repair',
+        'Motherboard micro-soldering and power-rail diagnostics',
+        'Laptop screen, display-cable and backlight fault diagnosis'
+      ],
+      relatedServiceIds: ['srv-laptop', 'srv-macbook', 'srv-motherboard', 'srv-screen', 'srv-charging-port'],
+      relatedProblemIds: ['problem-no-power', 'problem-overheating', 'problem-black-screen', 'problem-not-charging', 'problem-cracked-screen'],
+      relatedLocationIds: ['loc-hawalli', 'loc-adailiya', 'loc-qortuba', 'loc-yarmouk', 'loc-mishref'],
+      contentImage: { src: IMAGES.laptopHardware.dellLaptopScreenRepairCompleted.src, alt: IMAGES.laptopHardware.dellLaptopScreenRepairCompleted.alt, width: IMAGES.laptopHardware.dellLaptopScreenRepairCompleted.width, height: IMAGES.laptopHardware.dellLaptopScreenRepairCompleted.height, caption: 'Laptop and motherboard diagnostics for customers in Surra, Jabriya, Qadsiya and Shaab, completed at the KCROC Hawalli workshop.' },
+      seo: {
+        title: 'Computer Repair Surra, Jabriya, Qadsiya & Shaab | KCROC',
+        description: 'Laptop, MacBook, charging-port and motherboard repair for Surra (45400), Jabriya (46300), Qadsiya (35700) and Shaab (35900). Free pickup to our Hawalli lab.',
+        canonicalUrl: 'https://www.computerrepairkuwait.com/location/surra',
+        ogType: 'website',
+        schemaTypes: ['LocalBusiness'],
+        lastModified: '2026-11-05T00:00:00+03:00'
+      },
+      navigationPriority: 86
+    } as LocationEntity,
 
     'loc-khaitan': { id: 'loc-khaitan', slug: 'khaitan', entityType: 'Location', isActive: true, isPhysicalLocation: false,
       title: 'Khaitan',
