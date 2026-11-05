@@ -1367,6 +1367,33 @@ add('Kaifan uses the existing service-area schema pipeline and its local FAQ/pro
   kaifanEntity.includes('ultrasonic cleaning when the material and assembly permit') &&
   (kaifanEntity.match(/title: '(?:Laptop Repair & Thermal Shutdown Overhaul|Laptop Screen, Display Cable & Backlight Repair|Laptop Battery Testing & Compatible Replacement|No-Power Motherboard & Component-Level Repair)'/g) || []).length === 4);
 
+
+const kuwaitCityStart = graph.indexOf("'loc-kuwait-city': {");
+const kuwaitCityEnd = graph.indexOf("} as LocationEntity", kuwaitCityStart);
+const kuwaitCityEntity = kuwaitCityStart >= 0 && kuwaitCityEnd > kuwaitCityStart
+  ? graph.slice(kuwaitCityStart, kuwaitCityEnd)
+  : '';
+add('Kuwait City is a distinct corporate office-collection page with four canonical service links and verified area-code references',
+  kuwaitCityEntity.includes("heroBadge: 'Kuwait City Office & Home Collection'") &&
+  kuwaitCityEntity.includes("heroHeadline: 'Corporate Laptop & Computer Repair in Kuwait City'") &&
+  ['srv-laptop', 'srv-screen', 'srv-motherboard', 'srv-macbook'].every((id) => kuwaitCityEntity.includes(id)) &&
+  ['15300', '14000', '10002', '15000', '15400', '35020'].every((code) => kuwaitCityEntity.includes(code)) &&
+  !kuwaitCityEntity.includes('36200') &&
+  kuwaitCityEntity.includes('Office-tower and reception collection by arrangement') &&
+  kuwaitCityEntity.includes('Hardware-only diagnostics and storage choices') &&
+  kuwaitCityEntity.includes('areaPostalRegion:'));
+add('Kuwait City has ten dedicated FAQs shared by the visible page and FAQPage schema, without unsupported dispatch promises',
+  (kuwaitCityEntity.match(/id: 'faq-kuwait-city-local-/g) || []).length === 10 &&
+  locations.includes("'adailiya', 'kuwait-city'") &&
+  locations.includes('mainEntity: localFaqs.map') &&
+  !kuwaitCityEntity.includes('1 to 3 hours') &&
+  !kuwaitCityEntity.includes('10 to 15 minutes') &&
+  !kuwaitCityEntity.includes('serialized chain-of-custody tag'));
+add('Kuwait City service-area postal codes flow through the shared SEO schema generator',
+  seoEngine.includes('location.additionalAreaPostalCodes') &&
+  seoEngine.includes('"postalCode": area.postalCode') &&
+  kuwaitCityEntity.includes("schemaTypes: ['LocalBusiness']"));
+ 
 for (const check of checks) console.log(`${check.pass ? '✅' : '❌'} ${check.name}${!check.pass && check.detail ? ` — ${check.detail}` : ''}`);
 const failed = checks.filter((check) => !check.pass);
 if (failed.length) process.exit(1);

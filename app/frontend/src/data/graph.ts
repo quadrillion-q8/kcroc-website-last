@@ -3859,23 +3859,165 @@ export const rawGraphData: RawGraphData = {
     ═══════════════════════════════════════════════════════════════ */
     'loc-hawalli': { id: 'loc-hawalli', slug: 'hawalli', entityType: 'Location', isActive: true, isPhysicalLocation: true, title: 'Hawalli Repair Center', description: "Precision micro-soldering, logic-board recovery and hardware repair for MacBooks, gaming PCs and laptops at our Hawalli lab. We fix the board. We don't just swap it. Walk in on Ibn Khaldoun St or book free pickup and delivery across Kuwait.", landmark: 'Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19', coords: { lat: 29.3416921515256, lng: 48.00761257498341 }, serviceRadiusKm: 40, serviceAreas: ['Hawalli', 'Salmiya', 'Kuwait City', 'Farwaniya', 'Ahmadi', 'Jahra', 'Fahaheel', 'Mishref', 'Shuwaikh Residential', 'Abdullah Al-Salem', 'Shamiya', 'Nuzha', 'Adailiya', 'Kaifan', 'Yarmouk', 'Qortuba'], contentImage: { src: IMAGES.brand.shopExteriorDay.src, alt: IMAGES.brand.shopExteriorDay.alt, width: IMAGES.brand.shopExteriorDay.width, height: IMAGES.brand.shopExteriorDay.height, caption: 'Our repair center at Al Mullah Complex, Ibn Khaldoun St, Hawalli.' }, seo: { title: 'Computer Repair Hawalli | Walk-In + Free Pickup | KCROC', description: 'Walk-in laptop, MacBook and PC repair at Al Mullah Complex, Basement Shop 19, Ibn Khaldoun St, Hawalli. Open daily 10 AM–10 PM; free pickup across Kuwait.', canonicalUrl: 'https://www.computerrepairkuwait.com/location/hawalli', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/location/hawalli', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/computer-repair-hawalli', 'x-default': 'https://www.computerrepairkuwait.com/location/hawalli' }, ogType: 'website', schemaTypes: ['LocalBusiness'], lastModified: '2026-11-05T00:00:00+03:00' }, relatedServiceIds: ['srv-gaming', 'srv-laptop', 'srv-motherboard', 'srv-gaming-laptop-cleaning'], navigationPriority: 100 } as LocationEntity,
 
-    'loc-kuwait-city': { 
-      id: 'loc-kuwait-city', slug: 'kuwait-city', entityType: 'Location', isActive: true, isPhysicalLocation: false, localIntro: "Kuwait City is close to our Hawalli lab, so collection and return for Sharq, Dasman, Mirqab and Qibla is simple to arrange: you message us, we collect the device, diagnose it on the bench and bring it back once it has been tested. This page focuses on the faults people most often need sorted quickly in the city: black or cracked screens, laptops that will not power on, and charging problems.", localHighlights: [
-        { title: "Pickup from Sharq, Dasman, Mirqab and Qibla", description: "Send your area and the fault on WhatsApp and we will arrange free collection from your home or office." },
-        { title: "Screen faults handled properly", description: "Cracked or black displays are checked to separate a failed panel from a cable, backlight or board fault before you are quoted." },
-        { title: "Dead laptops traced to the component", description: "If a laptop will not power on, we test the power path first and repair the failed component where possible instead of defaulting to a new board." },
-        { title: "Repaired in Hawalli, returned to you", description: "Kuwait City is a service area, not a walk-in branch. Every device is repaired at our Hawalli lab and delivered back free." },
-      ], localFaqs: [
-        { id: "faq-kuwait-city-local-1", question: "Can you collect a laptop from an office in Kuwait City?", answer: "Yes. Free pickup is available from offices and homes in Kuwait City, including Sharq, Dasman, Mirqab and Qibla. Message us the area and the fault and we will arrange a collection time." },
-        { id: "faq-kuwait-city-local-2", question: "My laptop screen is black but the laptop seems to be on. Can you check it from Kuwait City?", answer: "Yes. A black screen can come from the panel, the display cable, the backlight circuit or the motherboard. We diagnose it at the lab and tell you which one it is before you approve any repair." },
-        { id: "faq-kuwait-city-local-3", question: "I need my laptop back urgently. Can you do it quickly?", answer: "Same-day service is possible for some screen and battery jobs when the part is in stock, and many repairs take 24-48 hours after we receive the device. Component-level motherboard work usually takes longer. Tell us your deadline when you message us and we will say what is realistic." },
-        { id: "faq-kuwait-city-local-4", question: "I dropped my laptop and the screen is cracked. Is it only the screen?", answer: "Often it is, but a drop can also damage the display cable or the board. If you can connect the laptop to an external monitor or TV and the picture is fine, the panel is the likely cause. We confirm before quoting; screen-replacement labor starts from 30 KWD, plus the panel." },
-        { id: "faq-kuwait-city-local-5", question: "My laptop will not turn on before an important meeting. What can I check quickly?", answer: "Try a different outlet, check the charger light and hold the power button for about 15 seconds. If it is still dead, message us the model and what happened just before it stopped. We trace dead laptops to the failed component instead of guessing." },
-        { id: "faq-kuwait-city-local-6", question: "Is there a branch in Kuwait City, and what if you cannot fix it?", answer: "There is no branch in Kuwait City. Devices are repaired at our Hawalli lab (Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19) and delivered back for free. Under our No Fix, No Fee policy you pay nothing if we cannot fix it, and repairs carry a 30-day warranty." },
-      ], title: 'Kuwait City', description: 'Fast, professional corporate IT support and component-level laptop repair for businesses and residents in Kuwait City.', landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)', coords: { lat: 29.3759, lng: 47.9774 }, serviceRadiusKm: 15, serviceAreas: ['Kuwait City', 'Sharq', 'Dasman', 'Mirqab', 'Qibla'], 
-      relatedProblemIds: ['problem-no-power', 'problem-black-screen', 'problem-not-charging', 'problem-cracked-screen', 'problem-freezing-crashing'], contentImage: { src: IMAGES.brand.technicians.src, alt: IMAGES.brand.technicians.alt, width: IMAGES.brand.technicians.width, height: IMAGES.brand.technicians.height, caption: 'Our technicians handling component-level laptop repair for businesses and residents across Kuwait City.' },
-      seo: { title: "Laptop & Computer Repair Kuwait City | Free Pickup | KCROC", description: "Laptop and computer repair for Kuwait City, including Sharq, Dasman, Mirqab and Qibla. Free pickup to our Hawalli lab, quote before repair and 30-day warranty.", canonicalUrl: 'https://www.computerrepairkuwait.com/location/kuwait-city', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/location/kuwait-city', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/computer-repair-kuwait-city', 'x-default': 'https://www.computerrepairkuwait.com/location/kuwait-city' }, ogType: 'website', schemaTypes: ['LocalBusiness'], lastModified: '2026-10-24T00:00:00+03:00' }, 
-      relatedServiceIds: ['srv-laptop', 'srv-screen', 'srv-charging-port', 'srv-motherboard'], navigationPriority: 95 
+    'loc-kuwait-city': {
+      id: 'loc-kuwait-city',
+      slug: 'kuwait-city',
+      entityType: 'Location',
+      isActive: true,
+      isPhysicalLocation: false,
+      heroBadge: 'Kuwait City Office & Home Collection',
+      heroHeadline: 'Corporate Laptop & Computer Repair in Kuwait City',
+      localServicesHeading: 'Laptop, Screen, Motherboard & MacBook Repair in Kuwait City',
+      localIntro: "When a laptop fails in the middle of a workday, leaving a tower office or arranging a trip across downtown is not always practical. KCROC arranges free collection from offices, residences and agreed reception or lobby handover points across Sharq, Qibla, Mirqab, Dasman, Al-Sawaber and Bneid Al-Gar. We record the device at collection, carry out hardware diagnosis and approved repair at our ESD-safe Hawalli workshop, then arrange free return delivery. Share the building name, street, block, floor or suite, contact person and location pin so the collection point and time can be confirmed. Kuwait City is a pickup and delivery service area, not a separate walk-in branch or on-site repair service.",
+      localHighlights: [
+        {
+          title: 'Office-tower and reception collection by arrangement',
+          description: 'For offices in Sharq, Qibla and the central business district, send the tower or building name, street, floor or suite and a reception or IT contact. We agree the handover point and collection window with you; building access and reception release must be confirmed before dispatch. Each device is recorded for workshop intake.'
+        },
+        {
+          title: 'Urgent work-device diagnosis, with realistic timing',
+          description: 'Tell us when a laptop is needed for a meeting, filing or business deadline. We check the collection and bench schedule, diagnose the actual fault after intake and explain the realistic repair window before paid work begins. Timing depends on the fault, approval and compatible-part availability.'
+        },
+        {
+          title: 'Hardware-only diagnostics and storage choices',
+          description: 'Our repair process is hardware-focused; technicians do not browse client documents or personal files as part of normal diagnostics. For supported Windows laptops with a removable NVMe or SATA drive, the owner or IT team can ask about retaining the drive before collection. Confirm the exact model first, and keep a separate backup: board or liquid damage can affect data, and preservation cannot be guaranteed.'
+        },
+        {
+          title: 'Capital district coverage and postal references',
+          description: 'Collection covers Sharq (15300), Al-Sawaber (15300), Qibla / Jibla (14000), Safat (10002), Mirqab (15000), Dasman (15400) and Bneid Al-Gar (35020). Pickup can be coordinated around Ahmad Al-Jaber Street, Fahad Al-Salem Street, Soor Street, Gulf Road and Istiqlal Street. Share your block and exact pin because block-level postal references can differ.'
+        },
+        {
+          title: 'One repair lab, clear accountability',
+          description: 'All physical diagnostics and repairs are completed at KCROC’s Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19. The service-area page does not imply a downtown counter. Pickup and return delivery are free, initial diagnostics are free, and completed repairs carry a 30-day warranty.'
+        }
+      ],
+      localServiceCards: [
+        {
+          title: 'Business & Executive Laptop Repair',
+          problem: 'A ThinkPad, Dell Latitude or XPS, HP EliteBook or other work laptop will not start, loses USB-C charging, overheats or develops a loose hinge during a busy workday.',
+          expertise: 'We inspect the power and charging path, connectors, display and board symptoms to identify whether the fault is a replaceable part, a damaged connector or a component-level motherboard issue.',
+          solution: 'Arrange free office or home collection in Kuwait City. We diagnose at the Hawalli lab, provide a clear quote before paid work and return the tested device with a 30-day warranty on completed repairs.',
+          serviceIds: ['srv-laptop']
+        },
+        {
+          title: 'Laptop Screen Repair & Black-Display Diagnosis',
+          problem: 'A cracked panel, flickering display, vertical lines or a black screen can interrupt a presentation or leave a workstation unusable.',
+          expertise: 'We check the panel, display cable, connector and backlight path before recommending a screen replacement, so a board or cable fault is not mistaken for a broken panel.',
+          solution: 'Screen-replacement labour starts from 30 KWD plus the model-matched panel. We confirm compatibility, total price and expected timing before work begins.',
+          serviceIds: ['srv-screen']
+        },
+        {
+          title: 'Component-Level Motherboard Repair',
+          problem: 'A laptop or desktop has no power, shuts down unexpectedly, has a charging fault or has suffered liquid exposure.',
+          expertise: 'Bench diagnosis traces the affected power and board circuits. Where the board is technically repairable, we assess component-level repair before recommending a complete board replacement.',
+          solution: 'Motherboard component repair starts from 25 KWD, with the final quote based on the fault and board condition. No Fix, No Fee applies when a viable repair cannot be completed under the service terms.',
+          serviceIds: ['srv-motherboard']
+        },
+        {
+          title: 'MacBook Air & MacBook Pro Repair',
+          problem: 'A MacBook will not power on, will not charge over USB-C or MagSafe, has a black or damaged display, or has suffered liquid damage.',
+          expertise: 'We assess the model and logic-board fault first, then consider component-level repair where technically suitable. A board repair is not a data-recovery guarantee, particularly after liquid or storage-related damage.',
+          solution: 'MacBook board-level repair is listed from 45 KWD, with complex work and parts quoted after diagnosis. Free Kuwait City collection and return delivery can be arranged.',
+          serviceIds: ['srv-macbook']
+        }
+      ],
+      localFaqs: [
+        {
+          id: 'faq-kuwait-city-local-1',
+          question: 'Can you collect a laptop directly from my Kuwait City office, tower or reception?',
+          answer: 'Yes. Free pickup and return delivery can be arranged from offices and residences in Kuwait City. Send the tower or building name, street, block, floor or suite, a contact person and your location pin on WhatsApp. We will confirm the collection window and an agreed handover point, such as your office, IT desk or reception where building access permits. The device is recorded for workshop intake and repaired at our Hawalli lab; we do not carry out repairs inside the office.'
+        },
+        {
+          id: 'faq-kuwait-city-local-2',
+          question: 'Do you have a walk-in computer repair shop in Kuwait City?',
+          answer: 'No. KCROC’s physical repair workshop is in Hawalli at Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19. Kuwait City is a free pickup and delivery service area, not a separate downtown branch. We collect your device from an agreed office or residential handover point, diagnose and repair it at the Hawalli lab, then arrange its return.'
+        },
+        {
+          id: 'faq-kuwait-city-local-3',
+          question: 'My laptop will not turn on before an important meeting. What should I check?',
+          answer: 'Check that the wall outlet works and, if available, test with a known-good compatible charger. Disconnect the docking station, USB devices and external displays, then hold the power button for about 15 seconds before trying once more. If liquid was spilled, you notice unusual heat or a burning smell, stop and do not keep trying to power it on. Message KCROC with the model and symptoms so we can arrange collection.'
+        },
+        {
+          id: 'faq-kuwait-city-local-4',
+          question: 'I need the laptop back urgently for work. How quickly can you diagnose and repair it?',
+          answer: 'Tell us the business deadline when arranging pickup so we can check the collection and bench schedule. Many routine repairs are completed within 24–48 hours after the device reaches the lab. Some screen or battery jobs may be completed the same day when the compatible part is in stock; component-level motherboard work can take 24–72 hours or longer depending on the fault. We confirm a realistic estimate after diagnosis rather than promising the same turnaround for every device.'
+        },
+        {
+          id: 'faq-kuwait-city-local-5',
+          question: 'My laptop powers on but the screen stays black. Can you diagnose it?',
+          answer: 'Yes. A black display can be caused by the panel, display cable or connector, backlight circuit, or another board-level fault. We test the relevant display and hardware paths at the Hawalli lab before recommending a panel replacement or board repair. You receive the findings and quote before paid work begins.'
+        },
+        {
+          id: 'faq-kuwait-city-local-6',
+          question: 'I dropped my laptop and cracked the screen. Could anything else be damaged?',
+          answer: 'Yes. A drop can also affect the hinge mounts, display bezel or frame, display cable and internal connectors. We inspect the screen assembly and related hardware before quoting, so the proposed repair reflects the damage found rather than assuming the panel is the only affected part.'
+        },
+        {
+          id: 'faq-kuwait-city-local-7',
+          question: 'How much does laptop or MacBook repair cost for Kuwait City customers?',
+          answer: 'Initial diagnostics and pickup and return delivery are free. Selected common laptop repairs start from 15 KWD; charging-port repair is listed at 20–35 KWD; screen-replacement labour starts from 30 KWD plus the panel; motherboard component repair starts from 25 KWD; and MacBook board-level repair starts from 45 KWD. The exact total depends on the model, fault, parts and repair complexity. We provide a quote before paid work begins.'
+        },
+        {
+          id: 'faq-kuwait-city-local-8',
+          question: 'How do you protect confidential business files, and can our IT team remove the SSD?',
+          answer: 'Our normal diagnostics are hardware-focused and technicians do not browse customer documents or personal files. For a supported Windows laptop with an accessible removable NVMe or SATA SSD, the owner or IT administrator can ask us about retaining the drive before collection; confirm the exact model with us first. Some devices, including many MacBooks, use onboard storage that is not a removable NVMe module. Hardware repair is not a backup or data-recovery guarantee, so keep a separate backup whenever possible.'
+        },
+        {
+          id: 'faq-kuwait-city-local-9',
+          question: 'Which Kuwait City districts and business areas do you collect from?',
+          answer: 'Free pickup and return delivery can be arranged across Kuwait City, including Sharq, Al-Sawaber, Qibla / Jibla, Safat, Mirqab, Dasman and Bneid Al-Gar. General area postal references include Sharq and Al-Sawaber 15300, Qibla 14000, Safat 10002, Mirqab 15000, Dasman 15400 and Bneid Al-Gar 35020. Please share your block, building and location pin so we can confirm the precise handover point.'
+        },
+        {
+          id: 'faq-kuwait-city-local-10',
+          question: 'What happens if the laptop motherboard cannot be repaired?',
+          answer: 'If our diagnosis finds that a repair is not technically viable or is not economical, KCROC’s No Fix, No Fee policy means you do not pay a repair charge, and we arrange free return delivery. We explain the diagnosis and available options before any paid work begins.'
+        }
+      ],
+      title: 'Kuwait City',
+      description: 'Corporate laptop, computer and MacBook repair for Kuwait City offices and residents, with free office and home pickup and component-level diagnostics at KCROC’s Hawalli lab.',
+      landmark: 'Kuwait City pickup and delivery service area; all physical repairs are completed at KCROC’s Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19',
+      coords: { lat: 29.3759, lng: 47.9774 },
+      serviceRadiusKm: 15,
+      serviceAreas: ['Kuwait City', 'Sharq', 'Al-Sawaber', 'Qibla', 'Safat', 'Mirqab', 'Dasman', 'Bneid Al-Gar'],
+      areaPostalRegion: 'Al Asimah Governorate',
+      additionalAreaPostalCodes: [
+        { name: 'Sharq', postalCode: '15300' },
+        { name: 'Al-Sawaber', postalCode: '15300' },
+        { name: 'Qibla / Jibla', postalCode: '14000' },
+        { name: 'Safat', postalCode: '10002' },
+        { name: 'Mirqab', postalCode: '15000' },
+        { name: 'Dasman', postalCode: '15400' },
+        { name: 'Bneid Al-Gar', postalCode: '35020' }
+      ],
+      serviceTypes: [
+        'Corporate laptop repair',
+        'Laptop and MacBook repair',
+        'Laptop screen and charging repair',
+        'Component-level motherboard repair'
+      ],
+      relatedProblemIds: ['problem-no-power', 'problem-black-screen', 'problem-not-charging', 'problem-cracked-screen', 'problem-freezing-crashing'],
+      contentImage: {
+        src: IMAGES.brand.technicians.src,
+        alt: IMAGES.brand.technicians.alt,
+        width: IMAGES.brand.technicians.width,
+        height: IMAGES.brand.technicians.height,
+        caption: 'KCROC technicians performing component-level laptop repair for Kuwait City customers.'
+      },
+      seo: {
+        title: 'Computer Repair Kuwait City | Laptop & MacBook | KCROC',
+        description: 'Laptop, MacBook and motherboard repair for Kuwait City offices and homes. Free pickup in Sharq, Qibla, Mirqab, Dasman and Bneid Al-Gar; repaired at our Hawalli lab.',
+        canonicalUrl: 'https://www.computerrepairkuwait.com/location/kuwait-city',
+        alternates: {
+          'en-KW': 'https://www.computerrepairkuwait.com/location/kuwait-city',
+          'ar-KW': 'https://www.computerrepairkuwait.com/ar/computer-repair-kuwait-city',
+          'x-default': 'https://www.computerrepairkuwait.com/location/kuwait-city'
+        },
+        ogType: 'website',
+        schemaTypes: ['LocalBusiness'],
+        lastModified: '2026-11-05T00:00:00+03:00'
+      },
+      relatedServiceIds: ['srv-laptop', 'srv-screen', 'srv-motherboard', 'srv-macbook'],
+      navigationPriority: 95
     } as LocationEntity,
     
     'loc-salmiya': { id: 'loc-salmiya', slug: 'salmiya', entityType: 'Location', isActive: true, isPhysicalLocation: false, localIntro: "Salmiya customers can skip the drive: we collect the device and repair it at our central Hawalli lab before returning it after testing. This page focuses on liquid damage, MacBook logic-board work and gaming hardware, where component-level diagnosis may save original parts versus an unnecessary full-board swap. Bidaa and Salwa are covered through the Salmiya pickup route; Rumaithiya remains available on its own area page.", localHighlights: [
