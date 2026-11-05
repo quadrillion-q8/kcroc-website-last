@@ -4084,7 +4084,7 @@ export const rawGraphData: RawGraphData = {
         },
         {
           title: 'Local collection landmarks across the coastal strip',
-          description: 'Pickup can be arranged around Salem Al-Mubarak Street, Hamad Al-Mubarak Street, Baghdad Street, Amman Street and Gulf Road, including the Marina Mall, Boulevard and American University of Kuwait areas. Tell us the exact block and building rather than relying on a broad landmark alone.'
+          description: 'Pickup can be arranged around Salem Al-Mubarak Street, Hamad Al-Mubarak Street, Baghdad Street, Amman Street and Gulf Road, including the Marina Mall area, Boulevard and American University of Kuwait (AUK) areas. Tell us the exact block and building rather than relying on a broad landmark alone.'
         },
         {
           title: 'Liquid-damage and original-board assessment',
@@ -4103,7 +4103,7 @@ export const rawGraphData: RawGraphData = {
         {
           title: 'Laptop Liquid-Damage & Corrosion Recovery',
           problem: 'Water, coffee, tea or karak is spilled on the keyboard, followed by sticky keys, charging trouble, a black screen or sudden loss of power.',
-          expertise: 'We isolate power, inspect the keyboard and board for residue or corrosion, and choose a cleaning method appropriate to the affected assembly. Microscope inspection, trace repair and component-level micro-soldering are considered where the board condition makes them viable.',
+          expertise: 'We isolate power, inspect the keyboard and board for residue or corrosion, and choose a cleaning method appropriate to the affected assembly, including ultrasonic PCB cleaning where the board and materials permit it. Microscope inspection, trace repair and component-level micro-soldering are considered where the board condition makes them viable.',
           solution: 'Free initial diagnosis and a quote before paid work. Published liquid-damage repair is 35–90+ KWD depending on the spread of damage; keeping the device powered off gives the board the best chance of assessment before further electrical damage.',
           serviceIds: ['srv-liquid-damage']
         },
@@ -4203,7 +4203,7 @@ export const rawGraphData: RawGraphData = {
         }
       ],
       title: 'Salmiya',
-      description: 'Component-level computer, MacBook and gaming repair for Salmiya, Al-Bidaa and Salwa, with free collection and all approved repairs completed at KCROC’s Hawalli lab.',
+      description: 'Dead MacBook, liquid spill, or a motherboard another shop called beyond repair? KCROC assesses the original board at component level, with free pickup from Salmiya, Bidaa and Salwa and approved repairs completed at our Hawalli lab. We fix the board where repair is technically viable; we do not promise every device can be saved.',
       landmark: 'Salmiya, Al-Bidaa and Salwa pickup and delivery service area; all physical repairs are completed at KCROC’s Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19',
       coords: { lat: 29.3400, lng: 48.0800 },
       serviceRadiusKm: 15,
