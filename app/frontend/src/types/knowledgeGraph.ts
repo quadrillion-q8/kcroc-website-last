@@ -281,8 +281,14 @@ export const LocationSchema = RoutableEntitySchema.extend({
   heroHeadline: z.string().optional(),
   localValueHeading: z.string().optional(),
   localServicesHeading: z.string().optional(),
-  // Postal code describes the served area, never a KCROC storefront.
+  // Postal code describes the primary served area, never a KCROC storefront.
   areaPostalCode: z.string().optional(),
+  // Additional serviced suburbs can declare their own postal Place nodes
+  // without creating a second page or duplicating the Service entity.
+  additionalAreaPostalCodes: z.array(z.object({
+    name: z.string(),
+    postalCode: z.string(),
+  })).optional(),
   serviceTypes: z.array(z.string()).optional(),
   localServiceCards: z.array(z.object({
     title: z.string(),
