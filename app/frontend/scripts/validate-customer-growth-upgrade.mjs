@@ -1360,6 +1360,9 @@ add('Kaifan uses the existing service-area schema pipeline and its local FAQ/pro
   locations.includes('Laptop Overheating, Thermal Throttling & Shutdowns') &&
   kaifanEntity.includes('faq-kaifan-9') &&
   kaifanEntity.includes('Second Ring Road') &&
+  ['src', 'alt', 'width', 'height'].every((field) => kaifanEntity.includes('IMAGES.gaming.gamingOverheating.' + field)) &&
+  !kaifanEntity.includes('IMAGES.laptopHardware.gamingOverheating') &&
+  kaifanEntity.includes('ultrasonic cleaning when the material and assembly permit') &&
   (kaifanEntity.match(/title: '(?:Laptop Repair & Thermal Shutdown Overhaul|Laptop Screen, Display Cable & Backlight Repair|Laptop Battery Testing & Compatible Replacement|No-Power Motherboard & Component-Level Repair)'/g) || []).length === 4);
 
 for (const check of checks) console.log(`${check.pass ? '✅' : '❌'} ${check.name}${!check.pass && check.detail ? ` — ${check.detail}` : ''}`);

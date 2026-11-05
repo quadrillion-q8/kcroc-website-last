@@ -5064,7 +5064,7 @@ export const rawGraphData: RawGraphData = {
       {
         title: 'Laptop Repair & Thermal Shutdown Overhaul',
         problem: 'The laptop runs hot, its fan becomes unusually loud, CPU/GPU performance drops during work or gaming, or it shuts down under sustained load.',
-        expertise: 'We inspect fan operation, intake and exhaust paths, heatsink fins and contact, and the model-specific thermal interface. Where the design permits, we may use Honeywell PTM7950 or Arctic MX-6; thermal pads and putty are selected by the required material and thickness.',
+        expertise: 'We inspect fan operation, intake and exhaust paths, heatsink fins and contact, and the model-specific thermal interface. Where the design permits, we may use Honeywell PTM7950 or Arctic MX-6; thermal pads and putty are selected by the required material and thickness. Suitable detached heatsink components may receive deeper cleaning, including ultrasonic cleaning when the material and assembly permit; complete laptops and electronic boards are not placed in an ultrasonic bath.',
         solution: 'After the approved service, we check cooling behaviour under a suitable workload and verify that the reported symptom has improved. Results depend on the device condition and workload; no fixed temperature or FPS gain is guaranteed.',
         serviceIds: ['srv-laptop'],
       },
@@ -5144,10 +5144,10 @@ export const rawGraphData: RawGraphData = {
     relatedProblemIds: ['problem-overheating', 'problem-no-power', 'problem-cracked-screen', 'problem-not-charging'],
     relatedLocationIds: ['loc-shamiya', 'loc-shuwaikh-residential', 'loc-abdullah-al-salem'],
     contentImage: {
-      src: IMAGES.laptopHardware.gamingOverheating.src,
-      alt: IMAGES.laptopHardware.gamingOverheating.alt,
-      width: IMAGES.laptopHardware.gamingOverheating.width,
-      height: IMAGES.laptopHardware.gamingOverheating.height,
+      src: IMAGES.gaming.gamingOverheating.src,
+      alt: IMAGES.gaming.gamingOverheating.alt,
+      width: IMAGES.gaming.gamingOverheating.width,
+      height: IMAGES.gaming.gamingOverheating.height,
       caption: 'Laptop cooling inspection and thermal service at KCROC’s Hawalli workshop.',
     },
     seo: {
