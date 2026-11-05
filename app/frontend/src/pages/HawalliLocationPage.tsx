@@ -676,7 +676,7 @@ export default function HawalliLocationPage() {
                     {location.landmark}<br />Hawalli, Kuwait
                   </p>
                   <p className="mt-2 max-w-md text-sm leading-relaxed text-slate-400">
-                    <span className="font-semibold text-slate-300">Finding the lab — walk-in drop-off and directions:</span>{' '}
+                    <span className="font-semibold text-slate-300">Finding the lab: walk-in drop-off and directions.</span>{' '}
                     Our repair lab is inside Al Mullah Complex at basement level, Shop 19. This is the workshop where devices are assessed and repaired.
                     If you need help locating the basement entrance from Ibn Khaldoun Street,{' '}
                     <a
