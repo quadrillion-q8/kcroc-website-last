@@ -7446,7 +7446,7 @@ const LOCATION_RELATIONSHIPS: Record<string, {
     relatedServiceIds: ['srv-laptop', 'srv-macbook', 'srv-motherboard', 'srv-screen', 'srv-charging-port'],
     relatedProblemIds: ['problem-no-power', 'problem-overheating', 'problem-black-screen', 'problem-not-charging', 'problem-cracked-screen'],
     relatedBrandIds: ['brand-dell', 'brand-hp', 'brand-lenovo', 'brand-asus'],
-    relatedLocationIds: ['loc-adailiya', 'loc-qortuba', 'loc-yarmouk', 'loc-mishref'],
+    relatedLocationIds: ['loc-hawalli', 'loc-adailiya', 'loc-qortuba', 'loc-yarmouk', 'loc-mishref'],
   },
   khaitan: { relatedServiceIds: ['srv-laptop','srv-charging-port','srv-screen','srv-motherboard'], relatedProblemIds: ['problem-no-power','problem-not-charging','problem-cracked-screen','problem-overheating'], relatedBrandIds: ['brand-dell','brand-hp','brand-lenovo','brand-asus'], relatedLocationIds: ['loc-farwaniya','loc-riggae','loc-hawalli'] },
   riggae: { relatedServiceIds: ['srv-laptop','srv-macbook','srv-screen','srv-motherboard'], relatedProblemIds: ['problem-no-power','problem-not-charging','problem-black-screen','problem-liquid-spill'], relatedBrandIds: ['brand-dell','brand-hp','brand-lenovo','brand-asus'], relatedLocationIds: ['loc-khaitan','loc-farwaniya','loc-hawalli'] },
