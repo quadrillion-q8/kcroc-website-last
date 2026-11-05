@@ -102,13 +102,32 @@ const HAWALLI_GALLERY_IMAGES = [
   { ...IMAGES.brand.shopExteriorNight, caption: 'The lab after hours' },
 ];
 
+// This workflow is intentionally Hawalli-specific: service-area pages remain
+// collection-led and continue using the shared process from KCROC_GRAPH.
+const HAWALLI_WORKFLOW_STEPS = [
+  {
+    step: 1,
+    title: 'Walk in at Basement Shop 19 or arrange free pickup',
+    description: 'Bring your laptop, MacBook or PC to our physical lab at Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19, during opening hours. Prefer not to travel? Arrange free collection from your home or office in Hawalli or elsewhere in Kuwait. Call or WhatsApp if you need help finding the basement entrance.',
+  },
+  {
+    step: 2,
+    title: 'Free diagnostic and a clear quote before repair',
+    description: 'Your device is assessed on our ESD-safe benches. For relevant board, power, charging and thermal faults, our technicians use diagnostic equipment including thermal imaging, digital multimeters and boardview references to identify the likely cause. The initial diagnostic is free, and paid work begins only after you approve the quote.',
+  },
+  {
+    step: 3,
+    title: 'Approved repair, testing and handover',
+    description: 'We complete the agreed component-level repair or hardware replacement, then test the relevant functions and system stability. Collect the device from the Hawalli lab or arrange free return delivery. Completed repairs are covered by the 30-day repair warranty, and our No Fix, No Fee policy applies under its stated conditions.',
+  },
+] as const;
+
 export default function HawalliLocationPage() {
   const { trackConversion } = useAnalytics();
   const [openFaqId, setOpenFaqId] = useState<string | null>(null);
 
   const location = KCROC_GRAPH.locations.find((l) => l.id === 'loc-hawalli');
   const business = KCROC_GRAPH.business;
-  const process = KCROC_GRAPH.processes?.find((p) => p.id === 'proc-standard');
   const reviews = KCROC_GRAPH.reviews;
   const hawalliReviews = reviews?.items.filter((r) => r.location === 'Hawalli' && isReviewPublishable(r)).slice(0, 3) ?? [];
   const trustBadges = KCROC_GRAPH.trustBadges;
@@ -144,23 +163,23 @@ export default function HawalliLocationPage() {
   const localFaqs: LocalFAQ[] = [
     {
       id: 'faq-hawalli-service',
-      question: 'Do you provide computer repair in Hawalli?',
-      answer: `Yes. Hawalli is home to KCROC's physical repair lab, where we perform component-level diagnostics and repair for laptops, MacBooks, gaming PCs, and motherboards. It's also our base for free pickup and delivery across Kuwait.`,
+      question: 'Do you provide walk-in and pickup computer repair in Hawalli?',
+      answer: `Yes. Hawalli is home to KCROC's physical repair lab at Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19. You can visit during our daily opening hours of 10:00 AM to 10:00 PM, or arrange free pickup from your home or office in Hawalli. Free pickup and delivery is also available across Kuwait.`,
     },
     {
       id: 'faq-hawalli-address',
       question: 'Where is KCROC located in Hawalli?',
-      answer: `Our lab is at ${location.landmark}, Hawalli, Kuwait. ${business.openingHours}.`,
+      answer: `Our physical repair lab is at ${location.landmark}, Hawalli, Kuwait. We are inside Al Mullah Complex at basement level, Shop 19. ${business.openingHours}. Call or WhatsApp if you need help finding the entrance.`,
     },
     {
       id: 'faq-hawalli-visit',
-      question: 'Can I bring my laptop to the Hawalli repair location?',
-      answer: `Yes, you're welcome to bring your device directly to our Hawalli lab during opening hours. If it's easier, you can also arrange a free pickup instead and skip the trip entirely.`,
+      question: 'Can I bring my laptop or gaming PC directly to the Hawalli lab?',
+      answer: `Yes. You can bring a laptop, MacBook or desktop PC directly to Basement Shop 19 during opening hours. For hardware-only diagnostics, you may remove a compatible, removable NVMe or SATA SSD before handover and keep it with you. If you are unsure whether your device's storage is removable, contact us before opening the device. Free pickup is also available if you prefer not to visit.`,
     },
     {
       id: 'faq-hawalli-pickup',
       question: 'Do you offer laptop pickup from Hawalli?',
-      answer: `Yes. Free pickup and delivery is available from Hawalli and across all Kuwait governorates. Message us on WhatsApp with your area and device symptoms to arrange a collection time.`,
+      answer: `Yes. Free pickup and delivery is available from Hawalli and across all six Kuwait governorates. Message us on WhatsApp with your area, device model and symptoms so the team can confirm the collection arrangements.`,
     },
     {
       id: 'faq-hawalli-brands',
@@ -184,13 +203,13 @@ export default function HawalliLocationPage() {
     },
     {
       id: 'faq-hawalli-parts',
-      question: 'Do you replace laptop screens and batteries?',
-      answer: `Yes, screen replacement and battery replacement are both available. See the linked service pages for details on each.`,
+      question: 'Do you replace laptop screens, batteries, keyboards and hinges?',
+      answer: `Yes. KCROC offers screen and battery replacement, keyboard replacement, and hinge or chassis reconstruction. We check the device and confirm the compatible part and full quote before paid work begins.`,
     },
     {
       id: 'faq-hawalli-cost',
       question: 'How much does laptop repair cost in Hawalli?',
-      answer: `Diagnostics are free, and pricing depends on the specific fault and part required. Visit our pricing page for starting rates on common repairs.`,
+      answer: `The initial diagnostic is free. Published starting labor rates include battery replacement from 8 KWD, keyboard replacement from 10 KWD, and laptop screen replacement labor from 30 KWD. The battery, keyboard or screen panel is charged separately where applicable, and the final total depends on the model and fault. We confirm the quote before paid work begins. See /pricing for current ranges.`,
     },
     {
       id: 'faq-hawalli-turnaround',
@@ -390,20 +409,32 @@ export default function HawalliLocationPage() {
         </div>
       </section>
 
-      {/* ─── LOCAL VALUE PROPOSITION ─── */}
+      {/* ─── FLAGSHIP HAWALLI LAB INTRODUCTION ─── */}
       <section className="py-8 sm:py-14 px-4 sm:px-6 border-t border-slate-800/50">
         <div className="container mx-auto max-w-4xl">
           <h2 className="text-2xl sm:text-3xl font-black text-white mb-4 tracking-tight">
-            Computer &amp; Laptop Repair for Hawalli
+            Computer &amp; Laptop Repair at Our Hawalli Micro-Soldering Lab
           </h2>
           <p className="text-slate-300 leading-relaxed">
-            KCROC's repair lab sits right in Hawalli, at {location.landmark}. That means genuine
-            component-level diagnosis and repair — not just part-swapping — happens close to
-            home, whether you drop your device off yourself or send it with our free pickup and
-            delivery service. Our technicians work on laptops, MacBooks, gaming PCs, and
-            motherboards, tracing faults down to the individual component wherever that's
-            possible, and we do it with a privacy-conscious, hardware-only diagnostic process so
-            your files stay untouched.
+            KCROC's physical repair laboratory is located at <strong className="text-white">{location.landmark}</strong>.
+            Bring your device directly to the team carrying out the diagnosis and repair: our Hawalli
+            workshop handles laptops, MacBooks, gaming systems and desktop PCs, including component-level
+            motherboard work where the fault is technically repairable. Rather than assuming that a
+            failed board needs a complete replacement, we investigate the affected circuit and explain
+            whether a component-level repair or a replacement is the appropriate option.
+          </p>
+          <p className="mt-4 text-slate-300 leading-relaxed">
+            The lab uses ESD-safe workstations and hardware-focused diagnostic methods. We provide a
+            free initial diagnostic and explain the findings and total quote before paid work begins.
+            You can visit Basement Shop 19 in person or arrange free pickup and delivery from your
+            home or office in Hawalli and across Kuwait. Hardware checks are designed to focus on the
+            reported fault, not browse your personal files; for supported Windows devices, you can
+            also ask about keeping a removable NVMe or SATA drive with you before handover.
+          </p>
+          <p className="mt-4 text-sm leading-relaxed text-slate-400">
+            <strong className="text-slate-200">Need help finding us?</strong> We are inside Al Mullah
+            Complex on Ibn Khaldoun Street, at basement level, Shop 19. Call or WhatsApp KCROC before
+            your visit for directions or to arrange collection.
           </p>
         </div>
       </section>
@@ -464,28 +495,50 @@ export default function HawalliLocationPage() {
         className="px-4 py-6 sm:px-6 sm:py-8 border-t border-slate-800/50"
       >
         <div className="container mx-auto max-w-6xl">
-          <div className="flex flex-col gap-4 rounded-2xl border border-cyan-500/20 bg-cyan-950/20 p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6">
-            <div className="flex items-start gap-3">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-cyan-500/20 bg-cyan-500/10">
-                <CheckCircle2 className="h-5 w-5 text-cyan-400" aria-hidden="true" />
-              </div>
+          <div className="rounded-2xl border border-cyan-500/20 bg-cyan-950/20 p-5 sm:p-6">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <div>
                 <h2 id="hawalli-pricing-heading" className="text-lg font-black text-white sm:text-xl">
-                  Want to understand repair costs before booking?
+                  Transparent Hawalli Lab Pricing
                 </h2>
-                <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-400">
-                  Review starting labor rates for common repairs and see where parts are priced separately by device model. We diagnose first and confirm your quote before paid repair work begins.
+                <p className="mt-1 max-w-3xl text-sm leading-6 text-slate-400">
+                  Every device starts with a free initial diagnostic. We identify the fault and confirm your quote before paid repair work begins.
                 </p>
               </div>
+              <Link
+                to="/pricing"
+                aria-label="View KCROC computer and laptop repair prices in Kuwait"
+                className="inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-xl bg-cyan-500 px-5 py-3 text-sm font-black text-slate-950 transition-colors hover:bg-cyan-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300"
+              >
+                View Repair Prices &amp; Parts Guide
+                <CheckCircle2 className="h-4 w-4" aria-hidden="true" />
+              </Link>
             </div>
-            <Link
-              to="/pricing"
-              aria-label="View KCROC computer and laptop repair prices in Kuwait"
-              className="inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-xl bg-cyan-500 px-5 py-3 text-sm font-black text-slate-950 transition-colors hover:bg-cyan-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300"
-            >
-              View Repair Prices
-              <CheckCircle2 className="h-4 w-4" aria-hidden="true" />
-            </Link>
+            <div className="mt-5 grid grid-cols-2 gap-3 lg:grid-cols-4">
+              <div className="rounded-xl border border-slate-700/70 bg-slate-950/40 p-4">
+                <p className="text-xs font-semibold text-slate-400">Initial diagnostic</p>
+                <p className="mt-1 text-xl font-black text-white">FREE</p>
+                <p className="mt-1 text-xs leading-relaxed text-slate-500">No-obligation assessment</p>
+              </div>
+              <div className="rounded-xl border border-slate-700/70 bg-slate-950/40 p-4">
+                <p className="text-xs font-semibold text-slate-400">Battery labor</p>
+                <p className="mt-1 text-xl font-black text-white">From 8 KWD</p>
+                <p className="mt-1 text-xs leading-relaxed text-slate-500">Battery cost is separate</p>
+              </div>
+              <div className="rounded-xl border border-slate-700/70 bg-slate-950/40 p-4">
+                <p className="text-xs font-semibold text-slate-400">Keyboard labor</p>
+                <p className="mt-1 text-xl font-black text-white">From 10 KWD</p>
+                <p className="mt-1 text-xs leading-relaxed text-slate-500">Keyboard/assembly cost is separate</p>
+              </div>
+              <div className="rounded-xl border border-slate-700/70 bg-slate-950/40 p-4">
+                <p className="text-xs font-semibold text-slate-400">Screen labor</p>
+                <p className="mt-1 text-xl font-black text-white">From 30 KWD</p>
+                <p className="mt-1 text-xs leading-relaxed text-slate-500">Display panel cost is separate</p>
+              </div>
+            </div>
+            <p className="mt-4 text-xs leading-relaxed text-slate-500">
+              These are starting labor rates, not guaranteed totals. Device model, part grade and fault complexity affect the final price. See the pricing page for published ranges and the complete repair list.
+            </p>
           </div>
         </div>
       </section>
@@ -581,27 +634,29 @@ export default function HawalliLocationPage() {
         </div>
       </section>
 
-      {/* ─── HOW IT WORKS ─── */}
-      {process && (
-        <section className="py-8 sm:py-14 px-4 sm:px-6 bg-slate-900/20 border-t border-slate-800/50">
-          <div className="container mx-auto max-w-6xl">
-            <h2 className="text-2xl sm:text-3xl font-black mb-6 sm:mb-10 text-white tracking-tight">
-              How Computer Repair Works in Hawalli
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
-              {process.steps.map((step) => (
-                <div key={step.step} className="bg-slate-900/50 backdrop-blur-sm p-6 rounded-2xl border border-slate-800">
-                  <span className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-cyan-500 text-slate-950 font-black text-sm mb-4">
-                    {step.step}
-                  </span>
-                  <h3 className="text-white font-bold mb-2">{step.title}</h3>
-                  <p className="text-sm text-slate-400 leading-relaxed">{step.description}</p>
-                </div>
-              ))}
-            </div>
+      {/* ─── HAWALLI WALK-IN + PICKUP WORKFLOW ─── */}
+      <section className="py-8 sm:py-14 px-4 sm:px-6 bg-slate-900/20 border-t border-slate-800/50">
+        <div className="container mx-auto max-w-6xl">
+          <h2 className="text-2xl sm:text-3xl font-black mb-3 text-white tracking-tight">
+            How Computer Repair Works at Our Hawalli Lab
+          </h2>
+          <p className="mb-6 sm:mb-10 max-w-3xl text-sm leading-relaxed text-slate-400">
+            Choose the handover method that suits you: visit the physical workshop at Al Mullah Complex
+            or arrange free collection from your home or office.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+            {HAWALLI_WORKFLOW_STEPS.map((step) => (
+              <div key={step.step} className="bg-slate-900/50 backdrop-blur-sm p-6 rounded-2xl border border-slate-800">
+                <span className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-cyan-500 text-slate-950 font-black text-sm mb-4">
+                  {step.step}
+                </span>
+                <h3 className="text-white font-bold mb-2">{step.title}</h3>
+                <p className="text-sm text-slate-400 leading-relaxed">{step.description}</p>
+              </div>
+            ))}
           </div>
-        </section>
-      )}
+        </div>
+      </section>
 
       {/* ─── PHYSICAL LOCATION ─── */}
       <section className="py-8 sm:py-14 px-4 sm:px-6 border-t border-slate-800/50">
@@ -621,8 +676,8 @@ export default function HawalliLocationPage() {
                     {location.landmark}<br />Hawalli, Kuwait
                   </p>
                   <p className="mt-2 max-w-md text-sm leading-relaxed text-slate-400">
-                    <span className="font-semibold text-slate-300">Finding the lab:</span>{' '}
-                    We're inside Al Mullah Complex at basement level, Shop 19—not a street-level storefront.
+                    <span className="font-semibold text-slate-300">Finding the lab — walk-in drop-off and directions:</span>{' '}
+                    Our repair lab is inside Al Mullah Complex at basement level, Shop 19. This is the workshop where devices are assessed and repaired.
                     If you need help locating the basement entrance from Ibn Khaldoun Street,{' '}
                     <a
                       href={`tel:+${phone}`}
@@ -651,6 +706,7 @@ export default function HawalliLocationPage() {
                   <h3 className="font-bold text-white mb-1">Pickup &amp; Delivery</h3>
                   <p className="text-slate-400 text-sm">
                     {logisticsUsp?.description || 'Free pickup and delivery across Hawalli and all Kuwait governorates.'}
+                    {' '}Prefer not to visit the lab? Contact us with your area and location pin so the team can confirm a free home or office collection.
                   </p>
                 </div>
               </div>
@@ -684,7 +740,7 @@ export default function HawalliLocationPage() {
               Hawalli-Based Repair With Kuwait-Wide Pickup & Delivery
             </h2>
             <p className="text-slate-400 text-sm mb-6 max-w-2xl">
-              Our Hawalli lab is the base for free pickup and delivery across Kuwait, including:
+              Our Hawalli lab is the physical repair hub. The other links below are pickup and delivery service areas, not additional walk-in branches:
             </p>
             <div className="flex flex-wrap gap-3">
               {otherLocations.map((loc) => (
