@@ -1330,6 +1330,36 @@ add('Legacy Khaitan laptop URL permanently redirects to the Khaitan service-area
 add('Legacy Hawalli laptop URL permanently redirects to the Hawalli service-area page',
   findPermanentRedirect('/laptop-repair-hawalli-kuwait')?.destination === '/location/hawalli');
 
+const kaifanStart = graph.indexOf("'loc-kaifan': {");
+const kaifanEnd = graph.indexOf("} as LocationEntity", kaifanStart);
+const kaifanEntity = kaifanStart >= 0 && kaifanEnd > kaifanStart
+  ? graph.slice(kaifanStart, kaifanEnd)
+  : '';
+add('Kaifan page has a distinct thermal-first service mix, dedicated cards and accurate block postal codes',
+  kaifanEntity.includes("heroHeadline: 'Laptop Overheating & Computer Repair in Kaifan'") &&
+  kaifanEntity.includes("areaPostalCode: '71800'") &&
+  ['71801', '71802', '71803', '71804', '71805', '71806', '71807'].every((code) => kaifanEntity.includes(code)) &&
+  kaifanEntity.includes('localHighlights:') &&
+  kaifanEntity.includes('localServiceCards:') &&
+  kaifanEntity.includes('localFaqs:') &&
+  kaifanEntity.includes('Honeywell PTM7950') &&
+  kaifanEntity.includes('Arctic MX-6') &&
+  kaifanEntity.includes('Kaifan Co-op') &&
+  kaifanEntity.includes('Kaifan Park') &&
+  kaifanEntity.includes('removable NVMe or SATA') &&
+  !kaifanEntity.includes('71900') &&
+  !kaifanEntity.includes('60 to 120 minutes') &&
+  !kaifanEntity.includes('10-minute courier'));
+add('Kaifan uses the existing service-area schema pipeline and its local FAQ/problem-label overrides',
+  kaifanEntity.includes("schemaTypes: ['LocalBusiness']") &&
+  seoEngine.includes("if (type === 'LocalBusiness' && entity.entityType === 'Location')") &&
+  seoEngine.includes('"@type": "Service"') &&
+  seoProjection.includes('"areaPostalCode": "71800"') &&
+  seoProjection.includes('71807') &&
+  locations.includes("'kaifan'") &&
+  locations.includes('Laptop Overheating, Thermal Throttling & Shutdowns') &&
+  locations.includes('faq-kaifan-9'));
+
 for (const check of checks) console.log(`${check.pass ? '✅' : '❌'} ${check.name}${!check.pass && check.detail ? ` — ${check.detail}` : ''}`);
 const failed = checks.filter((check) => !check.pass);
 if (failed.length) process.exit(1);
