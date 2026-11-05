@@ -118,7 +118,7 @@ export default function LocationDeepTemplate() {
     .filter(Boolean);
   const graphRelatedLocations = (location.relatedLocationIds ?? []).flatMap((id) => {
     const related = KCROC_GRAPH.locations.find((loc) => loc.id === id);
-    return related && related.isActive !== false ? [related] : [];
+    return related && related.id !== location.id && related.isActive !== false ? [related] : [];
   });
   const prioritizedOtherLocations = (graphRelatedLocations.length > 0 ? graphRelatedLocations : otherLocations
     .filter((loc) => nearbyAreas.includes(loc.title) || location.serviceAreas.includes(loc.title)))
@@ -136,7 +136,7 @@ export default function LocationDeepTemplate() {
   // Most locations use shared commercial/logistics FAQs. Priority pages with
   // distinct service mixes use dedicated questions so local intent and booking
   // details are not diluted by generic copy.
-  const usesDedicatedLocationFaqs = ['abdullah-al-salem', 'shamiya', 'nuzha', 'adailiya', 'kuwait-city'].includes(location.slug) || location.slug === 'kaifan';
+  const usesDedicatedLocationFaqs = ['abdullah-al-salem', 'shamiya', 'nuzha', 'adailiya', 'kuwait-city', 'salmiya'].includes(location.slug) || location.slug === 'kaifan';
   const isConciergeCollectionArea = ['shuwaikh-residential', 'abdullah-al-salem', 'kaifan', 'shamiya', 'nuzha', 'adailiya'].includes(location.slug);
   const sharedLocationFaqs: LocalFAQ[] = [
     {
@@ -366,6 +366,64 @@ export default function LocationDeepTemplate() {
               untouched.
             </>}
           </p>
+          {location.localEmergencyProtocol && (
+            <section
+              aria-labelledby="local-emergency-protocol"
+              className="mt-7 rounded-2xl border border-amber-500/30 bg-amber-500/[0.06] p-5 sm:p-6"
+            >
+              <h3 id="local-emergency-protocol" className="text-lg font-black text-amber-200">
+                {location.localEmergencyProtocol.heading}
+              </h3>
+              <p className="mt-2 text-sm leading-6 text-slate-300">
+                {location.localEmergencyProtocol.intro}
+              </p>
+              <ol className="mt-5 grid gap-4 sm:grid-cols-3">
+                {location.localEmergencyProtocol.steps.map((step, index) => (
+                  <li key={step.title} className="rounded-xl border border-amber-500/20 bg-slate-950/40 p-4">
+                    <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-amber-400 text-sm font-black text-slate-950">
+                      {index + 1}
+                    </span>
+                    <h4 className="mt-3 font-bold text-white">{step.title}</h4>
+                    <p className="mt-2 text-sm leading-6 text-slate-400">{step.description}</p>
+                  </li>
+                ))}
+              </ol>
+              <a
+                href={WA_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => handleWhatsAppClick('local_emergency_protocol')}
+                className="mt-5 inline-flex min-h-11 items-center rounded-xl bg-amber-300 px-4 py-2.5 text-sm font-black text-slate-950 transition hover:bg-amber-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300"
+              >
+                Send spill details on WhatsApp
+              </a>
+            </section>
+          )}
+          {(location.localPricingAnchors ?? []).length > 0 && (
+            <section aria-labelledby="local-pricing-anchors" className="mt-7">
+              <h3 id="local-pricing-anchors" className="text-lg font-black text-white">
+                Published repair price anchors
+              </h3>
+              <p className="mt-1 text-sm text-slate-400">
+                Starting rates and ranges are indicative; the final quote depends on the device and diagnosis.
+              </p>
+              <div className="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+                {location.localPricingAnchors.map((item) => (
+                  <article key={item.label} className="rounded-xl border border-slate-800 bg-slate-900/50 p-4">
+                    <h4 className="text-sm font-semibold text-slate-300">{item.label}</h4>
+                    <p className="mt-1 text-xl font-black text-cyan-300">{item.price}</p>
+                    <p className="mt-2 text-xs leading-5 text-slate-400">{item.note}</p>
+                  </article>
+                ))}
+              </div>
+              <Link
+                to="/pricing"
+                className="mt-3 inline-flex min-h-10 items-center text-sm font-bold text-cyan-300 underline underline-offset-4 hover:text-cyan-200"
+              >
+                View full KCROC pricing
+              </Link>
+            </section>
+          )}
           {(location.localHighlights ?? []).length > 0 && (
             <div className="mt-8 grid gap-4 sm:grid-cols-2">
               {(location.localHighlights ?? []).map((item) => (
