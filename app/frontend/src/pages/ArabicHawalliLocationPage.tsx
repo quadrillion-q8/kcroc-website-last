@@ -56,8 +56,8 @@ const ARABIC_SERVICES: Record<string, { title: string; description: string; path
     path: '/ar/macbook-repair-kuwait',
   },
   'srv-gaming': {
-    title: 'تصليح Gaming PC وكرت الشاشة',
-    description: 'فحص مشاكل الحرارة والطاقة وكرت الشاشة والاستقرار قبل تبديل القطع.',
+    title: 'تصليح Gaming PC',
+    description: 'فحص مشاكل الحرارة والطاقة واستقرار الكمبيوتر، مع التحقق من أداء كرت الشاشة ضمن تشخيص الجهاز الكامل. لا نقدم إصلاح كرت الشاشة كخدمة مستقلة.',
     path: '/ar/gaming-pc-repair-kuwait',
   },
   'srv-gaming-laptop': {
@@ -418,7 +418,7 @@ export default function ArabicHawalliLocationPage() {
             <article className="rounded-2xl border border-slate-800 bg-slate-900/70 p-5">
               <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-300"><Gamepad2 className="h-6 w-6" aria-hidden="true" /></div>
               <h3 className="mt-4 text-lg font-black text-white">Gaming PC وGaming Laptop</h3>
-              <p className="mt-2 text-sm leading-7 text-slate-400">نفحص الحرارة والتبريد والمراوح والطاقة واستقرار الجهاز وكرت الشاشة. تُحدد الصيانة أو المعالجة المناسبة بعد فحص الجهاز ومكوناته.</p>
+              <p className="mt-2 text-sm leading-7 text-slate-400">نفحص الحرارة والتبريد والمراوح والطاقة واستقرار جهاز الألعاب، ونتحقق من أداء كرت الشاشة ضمن تشخيص الكمبيوتر الكامل. لا نقدم إصلاح كرت الشاشة كخدمة مستقلة؛ وتُحدد الصيانة المناسبة بعد فحص الجهاز ومكوناته.</p>
               <div className="mt-4 flex flex-wrap gap-x-4 gap-y-2">
                 <Link to="/ar/gaming-pc-repair-kuwait" className="inline-flex min-h-11 items-center gap-2 text-sm font-black text-cyan-300 hover:text-cyan-200">تصليح Gaming PC <ArrowUpRight className="h-4 w-4" aria-hidden="true" /></Link>
                 <Link to="/ar/gaming-laptop-repair-kuwait" className="inline-flex min-h-11 items-center gap-2 text-sm font-black text-cyan-300 hover:text-cyan-200">تصليح Gaming Laptop <ArrowUpRight className="h-4 w-4" aria-hidden="true" /></Link>
@@ -556,7 +556,7 @@ export default function ArabicHawalliLocationPage() {
         <div className="container mx-auto max-w-6xl">
           <div className="mb-7 max-w-3xl">
             <p className="text-sm font-black text-cyan-300">الوصول إلى مختبر حولي</p>
-            <h2 className="mt-2 text-2xl font-black text-white sm:text-3xl">تفضل الزيارة أم نرتب الاستلام من عندك؟</h2>
+            <h2 className="mt-2 text-2xl font-black text-white sm:text-3xl">خيارات تسليم الجهاز: زيارة المختبر أو الاستلام من موقعك</h2>
             <p className="mt-3 text-sm leading-8 text-slate-300">المختبر الفعلي في مجمع الملا بحولي. وإذا لم تكن الزيارة مناسبة، يمكنك طلب الاستلام المجاني من منزلك أو مكتبك في مناطق الخدمة، ثم نعيد الجهاز بعد الإصلاح والفحص.</p>
           </div>
           <div className="grid gap-4 lg:grid-cols-2">
@@ -579,10 +579,6 @@ export default function ArabicHawalliLocationPage() {
               </div>
               <p className="mt-3 text-sm leading-7 text-slate-300">أرسل منطقتك وموديل الجهاز ووصف العطل عبر واتساب لنتأكد من تغطية منطقتك ونرتب وقت الاستلام المناسب.</p>
               <p className="mt-2 text-xs leading-6 text-slate-500">يتم فحص الأجهزة وإصلاحها في مختبر KCROC بحولي؛ لا توجد فروع فعلية أخرى.</p>
-              <div className="mt-4 flex flex-wrap gap-3">
-                <Link to="/book" onClick={() => track('book_pickup_click', 'hawalli_ar_access_book', 'access')} className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-cyan-500 px-4 py-2 text-sm font-black text-slate-950 hover:bg-cyan-400">احجز استلام مجاني <Truck className="h-4 w-4" aria-hidden="true" /></Link>
-                <a href={waLink} target="_blank" rel="noopener noreferrer" onClick={() => track('whatsapp_click', 'hawalli_ar_access_whatsapp', 'access')} className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-slate-700 px-4 py-2 text-sm font-black text-slate-200 hover:border-cyan-500/40">واتساب <MessageCircle className="h-4 w-4" aria-hidden="true" /></a>
-              </div>
             </div>
           </div>
         </div>
