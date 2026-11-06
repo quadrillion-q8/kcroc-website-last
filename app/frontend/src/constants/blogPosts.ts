@@ -2237,23 +2237,39 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     id: "blog-gaming-cooling",
     slug: "gaming-pc-cooling",
-    title: "Why Your Gaming PC is Overheating in Kuwait",
-    excerpt: "Experiencing severe FPS drops in Warzone or Valorant? Cooling, drivers, power delivery and other bottlenecks can all contribute. Here is how to investigate overheating without assuming one cause.",
+    title: "Gaming PC Cooling Guide: Causes, Fixes & Thermal Throttling",
+    excerpt: "Why do gaming PCs overheat? Learn how to interpret CPU and GPU temperatures, diagnose thermal throttling, improve case airflow, tune fan curves and choose the right cooler.",
+    description: "A practical, evidence-led desktop PC cooling guide covering gaming PC overheating, CPU and GPU temperature interpretation, thermal throttling, case airflow, fan curves, air cooling, AIO liquid cooling and safe maintenance.",
     content: [
-      "Gaming PCs can generate substantial heat under sustained load. Kuwait's warm ambient conditions reduce cooling headroom, but a healthy factory cooling system does not automatically fail or require replacement; airflow, dust, fan condition, cooler capacity and workload all matter.",
-      "Thermal-interface degradation is one possible contributor to rising temperatures, but it should not be treated as the default diagnosis. Dust-packed fins, restricted airflow, failing fans, cooler mounting, high ambient temperature, software load and power settings can produce similar symptoms.",
-      "Modern CPUs and GPUs use temperature and power-management controls that may reduce clocks when operating limits are reached. The exact limits vary by processor, firmware and workload, so a single 95°C reading is not proof of failure; compare sustained temperatures, clock behavior, utilization and frame-time changes.",
-      "The appropriate fix depends on the measured cause. It may involve cleaning filters and heatsinks, correcting airflow, checking fan operation, reviewing fan curves, verifying cooler mounting, or replacing thermal interface material when inspection supports it. Positive case pressure can help manage dust when the case has properly filtered intakes, but it does not replace regular inspection and cleaning."
+      "A gaming PC running hot is not automatically faulty. Modern CPUs and GPUs adjust their clocks and power dynamically, and the meaning of a temperature reading depends on the exact component, sensor, workload and cooling design.",
+      "This guide shows how to identify real thermal throttling, log the right sensors, trace common cooling problems and improve case airflow without replacing parts by guesswork.",
+      "Cooling performance depends on the complete heat path: chip-to-cooler contact, heatsink or radiator capacity, fan and pump operation, and the movement of air through the case.",
+      "Thermal paste and GPU thermal pads should be serviced only when inspection and measurements support it. There is no universal annual repaste interval, and pad thickness must match the exact graphics-card design."
     ],
-    image: "/images/blog/gaming-pc-thermal-throttling-kuwait.webp",
-    discoverImage: "/images/discover/gaming-pc-thermal-throttling-kuwait-1200x675.webp",
+    image: "/images/custom-gaming-pc-case-build-interior.webp",
+    discoverImage: "/images/discover/custom-gaming-pc-teardown-and-diagnostics-workbench-1200x675.webp",
     date: "2026-06-22",
-    author: "KCROC Gaming Specialists",
-    category: "Gaming",
-    readTime: "4 min read",
-    clusterParent: "laptop-repair-kuwait-2026"
-  },
-  {
+    technicalReviewDate: "November 6, 2026",
+    author: "KCROC Technical Editorial Team",
+    category: "Gaming Hardware",
+    readTime: "10–12 min read",
+    isPillar: true,
+    tags: [
+      "Gaming PC Cooling",
+      "Gaming PC Overheating",
+      "CPU Temperature",
+      "GPU Temperature",
+      "Thermal Throttling",
+      "PC Case Airflow",
+      "Fan Curves",
+      "Air Cooling",
+      "AIO Liquid Cooling",
+      "Thermal Paste",
+      "GPU Hotspot"
+    ],
+    seoTitle: "Gaming PC Cooling Guide: Overheating & Throttling | KCROC",
+    seoDescription: "Why is your gaming PC overheating? Learn how to read CPU and GPU temperatures, diagnose thermal throttling, improve airflow, tune fan curves and choose air or liquid cooling."
+  },  {
     id: "blog-screen-protect",
     slug: "how-to-protect-laptop-screen",
     title: "How to Protect Your Laptop Screen from Breaking",
