@@ -337,6 +337,20 @@ const INTERNAL_LINK_LABELS: Record<string, string> = {
 };
 
 const TECHNICAL_SOURCE_LABELS: Record<string, string> = {
+  'https://support.microsoft.com/en-us/windows/experience/compatibility/windows-11-system-requirements':
+    'Microsoft Support — Windows 11 system requirements',
+  'https://support.microsoft.com/en-us/windows/experience/compatibility/all-about-computer-memory':
+    'Microsoft Support — All about computer memory',
+  'https://learn.microsoft.com/en-us/troubleshoot/windows-client/performance/introduction-to-the-page-file':
+    'Microsoft Learn — Introduction to the page file',
+  'https://learn.microsoft.com/en-us/troubleshoot/windows-client/performance/how-to-determine-the-appropriate-page-file-size-for-64-bit-versions-of-windows':
+    'Microsoft Learn — Page-file sizing guidance',
+  'https://support.google.com/chrome/answer/12929150?hl=en':
+    'Google Chrome Help — Memory Saver and performance settings',
+  'https://www.computerrepairkuwait.com/guides/windows-11-100-cpu-usage':
+    'Windows 11 100% CPU Usage: Causes, Diagnosis & Safe Fixes',
+  'https://www.computerrepairkuwait.com/guides/windows-troubleshooting-complete-guide':
+    'Windows Troubleshooting: Complete Guide',
   'https://blogs.windows.com/windows-insider/2026/10/02/announcing-new-builds-for-2-october-2026/':
     'Microsoft official source — Windows Insider event announcement',
   'https://www.microsoft.com/en-us/surface/devices/surface-laptop-ultra':
@@ -748,6 +762,12 @@ export default function BlogPostTemplate() {
 
   const relatedPosts = useMemo(() => {
     if (!post) return [];
+    if (post.relatedPostSlugs?.length) {
+      const postsBySlug = new Map(BLOG_POSTS.map((item) => [item.slug, item]));
+      return post.relatedPostSlugs
+        .map((relatedSlug) => postsBySlug.get(relatedSlug))
+        .filter((item): item is BlogPost => Boolean(item && !item.redirectTo));
+    }
     if (post.isPillar) {
       return BLOG_POSTS.filter(p => p.clusterParent === post.slug).slice(0, 5);
     } else if (post.clusterParent) {
@@ -828,13 +848,20 @@ export default function BlogPostTemplate() {
           "url": pageUrl,
           "name": post.title,
           "description": post.description || post.excerpt,
+          ...(post.slug === "why-8gb-ram-is-no-longer-enough-for-windows-11" ? { "inLanguage": "en" } : {}),
           "isPartOf": { "@id": `${business.websiteUrl}/#website` }
         },
         {
-          "@type": isNews ? "NewsArticle" : post.slug === "gaming-pc-black-screen-no-display-kuwait" ? "TechArticle" : isGuide ? "Article" : ["BlogPosting", "Article"],
+          "@type": isNews ? "NewsArticle" : (post.slug === "gaming-pc-black-screen-no-display-kuwait" || post.slug === "why-8gb-ram-is-no-longer-enough-for-windows-11") ? "TechArticle" : isGuide ? "Article" : ["BlogPosting", "Article"],
           "@id": `${pageUrl}#article`,
           "headline": post.title,
           "description": post.excerpt,
+          ...(post.slug === "why-8gb-ram-is-no-longer-enough-for-windows-11" ? {
+            "inLanguage": "en",
+            "articleSection": post.category,
+            "keywords": post.tags ?? [],
+            "isAccessibleForFree": true
+          } : {}),
           "image": toAbsoluteAssetUrl(post.discoverImage || post.image),
           "datePublished": post.date,
           "dateModified": getModifiedDate(post),
@@ -884,6 +911,11 @@ export default function BlogPostTemplate() {
   // All hooks have now run unconditionally on every render — safe to bail out.
   if (!post) return <Navigate to={isNews ? ROUTES.NEWS : isGuide ? ROUTES.GUIDES : ROUTES.BLOG} replace />;
 
+  // This editorial post targets an international Windows audience. Keep the
+  // shared site shell, but suppress Kuwait-specific conversion modules and
+  // locally targeted repair-path blocks inside this article.
+  const isGlobalEditorialArticle = post.slug === 'why-8gb-ram-is-no-longer-enough-for-windows-11';
+
   const isGamingPerformanceGuide = [
     'gaming-pc-optimization-2026',
     'windows-gaming-performance-stutter-fix',
@@ -918,7 +950,7 @@ export default function BlogPostTemplate() {
       <meta property="og:description" content={post.description || post.excerpt} />
       <meta property="og:url" content={pageUrl} />
       <meta property="og:site_name" content={business.legalName} />
-      <meta property="og:locale" content="en_KW" />
+      {!isGlobalEditorialArticle && <meta property="og:locale" content="en_KW" />}
       <meta property="og:image" content={socialImage} />
       {discoverReady && <meta property="og:image:width" content="1200" />}
       {discoverReady && <meta property="og:image:height" content="675" />}
@@ -1011,7 +1043,7 @@ export default function BlogPostTemplate() {
             </header>
 
             {/* Shown only to visitors browsing from Kuwait; see KuwaitLocalCTA. */}
-            <KuwaitLocalCTA topic={post.title} placement={isNews ? 'news_post' : isGuide ? 'guide_post' : 'blog_post'} />
+            {!isGlobalEditorialArticle && <KuwaitLocalCTA topic={post.title} placement={isNews ? 'news_post' : isGuide ? 'guide_post' : 'blog_post'} />}
 
             <section className="prose prose-invert prose-lg max-w-none prose-p:text-slate-300 prose-headings:text-white prose-a:text-cyan-400 mb-16">
               <p className="text-xl md:text-2xl text-slate-300 font-medium leading-relaxed border-l-4 border-cyan-500 pl-6 mb-10">
@@ -1106,7 +1138,7 @@ export default function BlogPostTemplate() {
                 <p className="text-slate-400 italic">Content is currently being updated by our technicians. Please check back shortly.</p>
               )}
 
-              {!isWindows26H2Guide && (
+              {!isWindows26H2Guide && !isGlobalEditorialArticle && (
               <div className="bg-slate-900/50 backdrop-blur-md border border-slate-700/50 p-8 rounded-2xl my-12 text-center">
                 <h3 className="text-2xl text-white font-black mb-4 flex items-center justify-center gap-2">
                   <Share2 size={24} className="text-cyan-400" aria-hidden="true" /> {isGamingNoDisplayGuide ? 'Gaming PC powers on but shows No Signal?' : isGamingPerformanceGuide ? 'Gaming PC or Laptop Stuttering?' : isWindowsTroubleshootingGuide ? 'Windows, Network or Storage Problem?' : 'Is Your Laptop Running Slow?'}
@@ -1156,19 +1188,19 @@ export default function BlogPostTemplate() {
             </section>
           </article>
 
-          {!isNews && (
+          {!isNews && !isGlobalEditorialArticle && (
             isGamingNoDisplayGuide
               ? <HeadTermCallout variant="gamingPc" placement="gaming_pc_no_display_guide" />
               : <HeadTermCallout placement={isGuide ? 'guide_post_headterm' : 'blog_post_headterm'} />
           )}
 
-          {STANDALONE_REPAIR_PATHS[post.slug] && (
+          {!isGlobalEditorialArticle && STANDALONE_REPAIR_PATHS[post.slug] && (
             <StandaloneRelatedLinks
               {...STANDALONE_REPAIR_PATHS[post.slug]}
             />
           )}
 
-          {(graphRelatedServices.length > 0 || graphArabicEquivalent) && (
+          {!isGlobalEditorialArticle && (graphRelatedServices.length > 0 || graphArabicEquivalent) && (
             <section className="max-w-4xl mt-10 border-t border-slate-800/50 pt-10" aria-labelledby="graph-related-services">
               <div className="flex flex-wrap items-end justify-between gap-4">
                 <div>
@@ -1263,14 +1295,14 @@ export default function BlogPostTemplate() {
             <div className="bg-slate-900/40 border border-slate-800 rounded-2xl p-5">
               <p className="text-xs font-black uppercase tracking-wider text-slate-400 mb-3">Author</p>
               <p className="font-bold text-white">{post.author}</p>
-              <p className="text-xs text-slate-500 mt-1">Kuwait Computer Repair On Call</p>
+              <p className="text-xs text-slate-500 mt-1">{isGlobalEditorialArticle ? 'KCROC Technical Editorial' : 'Kuwait Computer Repair On Call'}</p>
             </div>
 
-            {recentPosts.length > 0 && (
+            {(isGlobalEditorialArticle ? relatedPosts : recentPosts).length > 0 && (
               <div className="bg-slate-900/40 border border-slate-800 rounded-2xl p-5">
-                <p className="text-xs font-black uppercase tracking-wider text-slate-400 mb-4">Recent Articles</p>
+                <p className="text-xs font-black uppercase tracking-wider text-slate-400 mb-4">{isGlobalEditorialArticle ? 'Related Guides' : 'Recent Articles'}</p>
                 <ul className="space-y-3">
-                  {recentPosts.map(r => (
+                  {(isGlobalEditorialArticle ? relatedPosts : recentPosts).map(r => (
                     <li key={r.slug}>
                       <Link to={contentRoute(r)} className="text-sm text-slate-300 hover:text-cyan-400 leading-snug line-clamp-2">
                         {r.title}
@@ -1292,7 +1324,7 @@ export default function BlogPostTemplate() {
               </ul>
             </div>
 
-            {!isWindows26H2Guide && (
+            {!isWindows26H2Guide && !isGlobalEditorialArticle && (
             <div className="bg-cyan-500/10 border border-cyan-500/30 rounded-2xl p-5 text-center">
               <p className="font-black text-white mb-1">Free Diagnosis</p>
               <p className="text-xs text-slate-400 mb-4">Not sure what's wrong? We'll check for free.</p>
