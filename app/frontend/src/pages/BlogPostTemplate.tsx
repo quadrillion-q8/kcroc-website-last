@@ -763,7 +763,7 @@ export default function BlogPostTemplate() {
   const relatedPosts = useMemo(() => {
     if (!post) return [];
     if (post.relatedPostSlugs?.length) {
-      const postsBySlug = new Map(BLOG_POSTS.map((item) => [item.slug, item]));
+      const postsBySlug = new Map(BLOG_POSTS.map((item) => [item.slug, item] as const));
       return post.relatedPostSlugs
         .map((relatedSlug) => postsBySlug.get(relatedSlug))
         .filter((item): item is BlogPost => Boolean(item && !item.redirectTo));
