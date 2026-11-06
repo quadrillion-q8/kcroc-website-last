@@ -317,6 +317,64 @@ export default function ArabicHawalliLocationPage() {
         </div>
       </section>
 
+      <section className="border-y border-cyan-500/20 bg-slate-950 px-4 py-10 sm:px-6 sm:py-14">
+        <div className="container mx-auto max-w-6xl">
+          <div className="mb-7 max-w-3xl">
+            <p className="text-sm font-black text-cyan-300">منهج الإصلاح على مستوى المكونات</p>
+            <h2 className="mt-2 text-2xl font-black leading-tight text-white sm:text-3xl">نصلح البورد.. ما نبدله بالكامل</h2>
+            <p className="mt-3 text-sm leading-8 text-slate-300 sm:text-base">
+              ليس كل عطل في اللوحة الأم يعني ضرورة تبديلها بالكامل. يبدأ العمل بفحص الدوائر والمكونات لتحديد سبب المشكلة؛ وإذا كان الإصلاح ممكنًا، ندرس إصلاح الجزء المتضرر باللحام المجهري بدل استبدال اللوحة دون تشخيص.
+            </p>
+          </div>
+          <div className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/60">
+            <div className="overflow-x-auto">
+              <table className="w-full min-w-[680px] border-collapse text-right text-sm">
+                <thead>
+                  <tr className="bg-slate-900 text-slate-300">
+                    <th scope="col" className="px-5 py-4 font-bold">نقطة المقارنة</th>
+                    <th scope="col" className="px-5 py-4 font-bold">قرار الإصلاح العام</th>
+                    <th scope="col" className="border-x border-cyan-400/30 bg-cyan-950/30 px-5 py-4 font-black text-cyan-200">منهج مختبر KCROC</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-800 text-slate-300">
+                  <tr>
+                    <th scope="row" className="px-5 py-4 font-bold text-white">تشخيص اللوحة الأم</th>
+                    <td className="px-5 py-4 leading-7">تحديد ما إذا كان الخلل في مكوّن أو دائرة أو في اللوحة نفسها.</td>
+                    <td className="border-x border-cyan-400/20 bg-slate-900/70 px-5 py-4 leading-7">فحص دوائر الطاقة والشحن والمكونات قبل اختيار الإجراء.</td>
+                  </tr>
+                  <tr>
+                    <th scope="row" className="px-5 py-4 font-bold text-white">طريقة الإصلاح</th>
+                    <td className="px-5 py-4 leading-7">اختيار الإصلاح أو الاستبدال بناءً على حالة القطعة.</td>
+                    <td className="border-x border-cyan-400/20 bg-slate-900/70 px-5 py-4 leading-7">إصلاح المكوّن باللحام المجهري عندما تسمح حالة اللوحة بذلك.</td>
+                  </tr>
+                  <tr>
+                    <th scope="row" className="px-5 py-4 font-bold text-white">تبديل المذربورد</th>
+                    <td className="px-5 py-4 leading-7">قد يكون الاستبدال مناسبًا إذا تعذر الإصلاح فنيًا.</td>
+                    <td className="border-x border-cyan-400/20 bg-slate-900/70 px-5 py-4 leading-7">لا نقترح تبديل اللوحة قبل شرح نتيجة الفحص والخيارات المتاحة.</td>
+                  </tr>
+                  <tr>
+                    <th scope="row" className="px-5 py-4 font-bold text-white">الملفات والبيانات</th>
+                    <td className="px-5 py-4 leading-7">تحديد أي خطوة قد تؤثر على وحدة التخزين قبل تنفيذها.</td>
+                    <td className="border-x border-cyan-400/20 bg-slate-900/70 px-5 py-4 leading-7">يركز التشخيص على الهاردوير، ولا نطلب الفورمات كخطوة تلقائية.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className="mt-4 text-xs leading-6 text-slate-400">
+            يعتمد اختيار الإصلاح أو الاستبدال على نتيجة الفحص وحالة الجهاز؛ لا يمكن ضمان إصلاح كل لوحة أم أو الحفاظ على البيانات في جميع حالات التلف.
+          </p>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <Link to="/ar/motherboard-repair-kuwait" className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-cyan-500/40 bg-cyan-500/10 px-5 py-3 text-sm font-black text-cyan-200 transition-colors hover:bg-cyan-500/20">
+              تفاصيل تصليح المذربورد <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+            </Link>
+            <Link to="/book" onClick={() => track('book_pickup_click', 'hawalli_ar_board_module', 'comparison')} className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-cyan-500 px-5 py-3 text-sm font-black text-slate-950 transition-colors hover:bg-cyan-400">
+              اطلب فحص جهازك <Truck className="h-4 w-4" aria-hidden="true" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
       <section className="border-t border-slate-800/70 px-4 py-10 sm:px-6 sm:py-14">
         <div className="container mx-auto max-w-6xl">
           <div className="mb-7 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
@@ -339,6 +397,45 @@ export default function ArabicHawalliLocationPage() {
                 </Link>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      <section className="border-y border-slate-800/70 bg-slate-950/70 px-4 py-10 sm:px-6 sm:py-14">
+        <div className="container mx-auto max-w-6xl">
+          <div className="mb-7 max-w-3xl">
+            <p className="text-sm font-black text-cyan-300">حلول للأجهزة المتخصصة</p>
+            <h2 className="mt-2 text-2xl font-black text-white sm:text-3xl">تشخيص دقيق للأجهزة الاحترافية وأجهزة الألعاب</h2>
+            <p className="mt-3 text-sm leading-8 text-slate-400">نحدد نوع العطل أولًا، ثم نشرح لك الإجراء المناسب حسب موديل الجهاز ونتيجة الفحص داخل مختبر حولي.</p>
+          </div>
+          <div className="grid gap-4 lg:grid-cols-3">
+            <article className="rounded-2xl border border-slate-800 bg-slate-900/70 p-5">
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-300"><Apple className="h-6 w-6" aria-hidden="true" /></div>
+              <h3 className="mt-4 text-lg font-black text-white">MacBook واللابتوبات الاحترافية</h3>
+              <p className="mt-2 text-sm leading-7 text-slate-400">فحص أعطال التشغيل والشحن والطاقة وآثار السوائل ومكونات اللوحة الأم. نحدد ما إذا كان الإصلاح على مستوى المكونات مناسبًا قبل اقتراح تبديل اللوحة.</p>
+              <Link to="/ar/macbook-repair-kuwait" className="mt-4 inline-flex min-h-11 items-center gap-2 text-sm font-black text-cyan-300 hover:text-cyan-200">تفاصيل تصليح MacBook <ArrowUpRight className="h-4 w-4" aria-hidden="true" /></Link>
+            </article>
+            <article className="rounded-2xl border border-slate-800 bg-slate-900/70 p-5">
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-300"><Gamepad2 className="h-6 w-6" aria-hidden="true" /></div>
+              <h3 className="mt-4 text-lg font-black text-white">Gaming PC وGaming Laptop</h3>
+              <p className="mt-2 text-sm leading-7 text-slate-400">نفحص الحرارة والتبريد والمراوح والطاقة واستقرار الجهاز وكرت الشاشة. تُحدد الصيانة أو المعالجة المناسبة بعد فحص الجهاز ومكوناته.</p>
+              <div className="mt-4 flex flex-wrap gap-x-4 gap-y-2">
+                <Link to="/ar/gaming-pc-repair-kuwait" className="inline-flex min-h-11 items-center gap-2 text-sm font-black text-cyan-300 hover:text-cyan-200">تصليح Gaming PC <ArrowUpRight className="h-4 w-4" aria-hidden="true" /></Link>
+                <Link to="/ar/gaming-laptop-repair-kuwait" className="inline-flex min-h-11 items-center gap-2 text-sm font-black text-cyan-300 hover:text-cyan-200">تصليح Gaming Laptop <ArrowUpRight className="h-4 w-4" aria-hidden="true" /></Link>
+              </div>
+            </article>
+            <article className="rounded-2xl border border-slate-800 bg-slate-900/70 p-5">
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-300"><Cpu className="h-6 w-6" aria-hidden="true" /></div>
+              <h3 className="mt-4 text-lg font-black text-white">خصوصية الملفات والبيانات</h3>
+              <p className="mt-2 text-sm leading-7 text-slate-400">يركز التشخيص المعتاد على الهاردوير ولا يتطلب تصفح ملفاتك. وإذا استدعت الحالة خطوة قد تؤثر على وحدة التخزين، نوضحها لك ونناقشها قبل التنفيذ.</p>
+              <p className="mt-3 text-xs leading-6 text-slate-500">يمكنك إبلاغنا مسبقًا إذا كانت في الجهاز ملفات عمل أو بيانات مهمة حتى نراعي ذلك عند تحديد خطوات الفحص.</p>
+            </article>
+          </div>
+          <div className="mt-6 rounded-xl border border-cyan-500/20 bg-cyan-950/20 p-4 sm:flex sm:items-center sm:justify-between">
+            <p className="text-sm leading-7 text-slate-200">اذكر موديل الجهاز والعَرَض الذي تلاحظه، وسنساعدك في معرفة الخطوة التالية قبل ترتيب الزيارة أو الاستلام.</p>
+            <a href={waLink} target="_blank" rel="noopener noreferrer" onClick={() => track('whatsapp_click', 'hawalli_ar_specialist_whatsapp', 'specialist')} className="mt-3 inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-xl bg-cyan-500 px-4 py-2 text-sm font-black text-slate-950 hover:bg-cyan-400 sm:mr-5 sm:mt-0">
+              تحدث مع فني المختبر <MessageCircle className="h-4 w-4" aria-hidden="true" />
+            </a>
           </div>
         </div>
       </section>
@@ -377,6 +474,55 @@ export default function ArabicHawalliLocationPage() {
         </div>
       </section>
 
+      <section className="border-y border-cyan-500/20 bg-slate-950 px-4 py-10 sm:px-6 sm:py-14">
+        <div className="container mx-auto max-w-6xl">
+          <div className="mb-7 max-w-3xl">
+            <p className="text-sm font-black text-cyan-300">وضوح التكلفة قبل الإصلاح</p>
+            <h2 className="mt-2 text-2xl font-black text-white sm:text-3xl">تعرف على نطاق الفحص قبل اتخاذ القرار</h2>
+            <p className="mt-3 text-sm leading-8 text-slate-300">لا نبدأ أي إصلاح مدفوع قبل توضيح سبب العطل والخيار المقترح والتكلفة لك. السعر النهائي يعتمد على موديل الجهاز والقطعة وحالة المكونات بعد الفحص.</p>
+          </div>
+          <div className="overflow-hidden rounded-2xl border border-slate-800">
+            <div className="overflow-x-auto">
+              <table className="w-full min-w-[680px] border-collapse text-right text-sm">
+                <thead className="bg-slate-900 text-slate-200">
+                  <tr>
+                    <th scope="col" className="px-5 py-4 font-black">فئة الخدمة</th>
+                    <th scope="col" className="px-5 py-4 font-black">ما الذي نراجعه؟</th>
+                    <th scope="col" className="px-5 py-4 font-black">متى تتحدد التكلفة؟</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-800 bg-slate-900/50 text-slate-300">
+                  <tr>
+                    <th scope="row" className="px-5 py-4 font-bold text-white">المذربورد واللحام المجهري</th>
+                    <td className="px-5 py-4 leading-7">دوائر الطاقة والشحن والمكونات التي قد تسبب توقف الجهاز.</td>
+                    <td className="px-5 py-4 leading-7">بعد تحديد سبب العطل وإمكانية إصلاح المكوّن.</td>
+                  </tr>
+                  <tr>
+                    <th scope="row" className="px-5 py-4 font-bold text-white">Gaming والتبريد</th>
+                    <td className="px-5 py-4 leading-7">الحرارة والمراوح والتبريد والطاقة واستقرار التشغيل.</td>
+                    <td className="px-5 py-4 leading-7">بعد فحص الجهاز وتحديد الإجراء المطلوب حسب الموديل.</td>
+                  </tr>
+                  <tr>
+                    <th scope="row" className="px-5 py-4 font-bold text-white">الشاشة والبطارية ومنفذ الشحن</th>
+                    <td className="px-5 py-4 leading-7">حالة القطعة والتوصيلات ودائرة الشحن وتوافق البديل.</td>
+                    <td className="px-5 py-4 leading-7">بعد مطابقة القطعة وتأكيد نطاق العمل.</td>
+                  </tr>
+                  <tr>
+                    <th scope="row" className="px-5 py-4 font-bold text-white">ترقية SSD وRAM</th>
+                    <td className="px-5 py-4 leading-7">توافق اللوحة والجهاز وسعة التخزين والذاكرة المناسبة.</td>
+                    <td className="px-5 py-4 leading-7">بعد تأكيد القطعة المتوافقة وخيار الترقية.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div className="mt-5 flex flex-col gap-3 rounded-xl border border-slate-800 bg-slate-900/70 p-4 sm:flex-row sm:items-center sm:justify-between">
+            <p className="text-sm leading-7 text-slate-300">بعد الفحص نوضح لك التكلفة قبل البدء. وتُطبق مدة ضمان 30 يومًا على الإصلاحات المكتملة وفق شروط الخدمة.</p>
+            <Link to="/ar/pricing" className="inline-flex min-h-11 shrink-0 items-center gap-2 font-black text-cyan-300 hover:text-cyan-200">راجع الأسعار <ArrowUpRight className="h-4 w-4" aria-hidden="true" /></Link>
+          </div>
+        </div>
+      </section>
+
       <section className="border-t border-slate-800/70 bg-slate-900/20 px-4 py-10 sm:px-6 sm:py-14">
         <div className="container mx-auto max-w-6xl">
           <div className="mb-7"><p className="text-sm font-black text-cyan-300">إجابات محلية</p><h2 className="mt-2 text-2xl font-black text-white sm:text-3xl">أسئلة شائعة عن تصليح الكمبيوتر في حولي</h2></div>
@@ -402,6 +548,42 @@ export default function ArabicHawalliLocationPage() {
               { title: 'فني كمبيوتر بالقرب مني', path: '/ar/near-me' },
               { title: 'تصليح كمبيوتر في الكويت', path: '/ar/computer-repair-kuwait' },
             ].map((item) => <Link key={item.path} to={item.path} className="rounded-full border border-slate-800 bg-slate-900/50 px-4 py-2 text-sm font-bold text-slate-200 transition-colors hover:border-cyan-500/40 hover:text-cyan-300">{item.title}</Link>)}
+          </div>
+        </div>
+      </section>
+
+      <section className="border-y border-cyan-500/20 bg-slate-950 px-4 py-10 sm:px-6 sm:py-14">
+        <div className="container mx-auto max-w-6xl">
+          <div className="mb-7 max-w-3xl">
+            <p className="text-sm font-black text-cyan-300">الوصول إلى مختبر حولي</p>
+            <h2 className="mt-2 text-2xl font-black text-white sm:text-3xl">تفضل الزيارة أم نرتب الاستلام من عندك؟</h2>
+            <p className="mt-3 text-sm leading-8 text-slate-300">المختبر الفعلي في مجمع الملا بحولي. وإذا لم تكن الزيارة مناسبة، يمكنك طلب الاستلام المجاني من منزلك أو مكتبك في مناطق الخدمة، ثم نعيد الجهاز بعد الإصلاح والفحص.</p>
+          </div>
+          <div className="grid gap-4 lg:grid-cols-2">
+            <div className="rounded-2xl border border-cyan-400/40 bg-slate-900/80 p-5 shadow-[0_0_28px_rgba(34,211,238,0.08)]">
+              <div className="flex items-center gap-3">
+                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-300"><MapPin className="h-5 w-5" aria-hidden="true" /></div>
+                <h3 className="text-lg font-black text-white">زيارة المختبر في حولي</h3>
+              </div>
+              <p className="mt-3 text-sm leading-7 text-slate-300">شارع ابن خلدون، مجمع الملا، البدروم، محل 19. ساعات العمل: {openingHoursAr}.</p>
+              <p className="mt-2 text-xs leading-6 text-slate-500">للمساعدة في الوصول أو ترتيب تسليم الجهاز، اتصل بنا قبل الزيارة أو عند وصولك إلى المجمع.</p>
+              <div className="mt-4 flex flex-wrap gap-3">
+                <a href={DIRECTIONS_URL} target="_blank" rel="noopener noreferrer" onClick={() => track('cta_click', 'hawalli_ar_access_directions', 'access')} className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-cyan-500/40 px-4 py-2 text-sm font-black text-cyan-200 hover:bg-cyan-500/10">الاتجاهات إلى المختبر <ArrowUpRight className="h-4 w-4" aria-hidden="true" /></a>
+                <a href={'tel:+' + phone} onClick={() => track('phone_call_click', 'hawalli_ar_access_call', 'access')} className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-slate-700 px-4 py-2 text-sm font-black text-slate-200 hover:border-cyan-500/40">اتصل بنا <Phone className="h-4 w-4" aria-hidden="true" /></a>
+              </div>
+            </div>
+            <div className="rounded-2xl border border-slate-800 bg-slate-900/70 p-5">
+              <div className="flex items-center gap-3">
+                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-300"><Truck className="h-5 w-5" aria-hidden="true" /></div>
+                <h3 className="text-lg font-black text-white">استلام وتوصيل مجاني</h3>
+              </div>
+              <p className="mt-3 text-sm leading-7 text-slate-300">أرسل منطقتك وموديل الجهاز ووصف العطل عبر واتساب لنتأكد من تغطية منطقتك ونرتب وقت الاستلام المناسب.</p>
+              <p className="mt-2 text-xs leading-6 text-slate-500">يتم فحص الأجهزة وإصلاحها في مختبر KCROC بحولي؛ لا توجد فروع فعلية أخرى.</p>
+              <div className="mt-4 flex flex-wrap gap-3">
+                <Link to="/book" onClick={() => track('book_pickup_click', 'hawalli_ar_access_book', 'access')} className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-cyan-500 px-4 py-2 text-sm font-black text-slate-950 hover:bg-cyan-400">احجز استلام مجاني <Truck className="h-4 w-4" aria-hidden="true" /></Link>
+                <a href={waLink} target="_blank" rel="noopener noreferrer" onClick={() => track('whatsapp_click', 'hawalli_ar_access_whatsapp', 'access')} className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-slate-700 px-4 py-2 text-sm font-black text-slate-200 hover:border-cyan-500/40">واتساب <MessageCircle className="h-4 w-4" aria-hidden="true" /></a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
