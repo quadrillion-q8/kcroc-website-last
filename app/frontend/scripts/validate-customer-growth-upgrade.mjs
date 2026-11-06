@@ -51,6 +51,17 @@ const seoEngine = await read('core/components/SEOEngine.tsx');
 const locationTypeSchema = await read('types/knowledgeGraph.ts');
 const seoGenerator = await readFile(path.resolve('scripts/generate-seo-data.ts'), 'utf8');
 const arabicContact = await read('pages/ArabicContactPage.tsx');
+const [blogPosts, blogPostTemplate, whatsappIntent, brandsIndex] = await Promise.all([
+  read('constants/blogPosts.ts'),
+  read('pages/BlogPostTemplate.tsx'),
+  read('utils/whatsappIntent.ts'),
+  read('pages/BrandsIndex.tsx'),
+]);
+const salmiyaConfigStart = arabicCommercial.indexOf("'computer-repair-salmiya': {");
+const salmiyaConfigEnd = arabicCommercial.indexOf("'computer-repair-farwaniya': {", salmiyaConfigStart + 1);
+const salmiyaConfig = salmiyaConfigStart >= 0 && salmiyaConfigEnd > salmiyaConfigStart
+  ? arabicCommercial.slice(salmiyaConfigStart, salmiyaConfigEnd)
+  : '';
 
 const laptopGraphStart = graph.indexOf("'srv-laptop': {");
 const laptopGraphEnd = graph.indexOf("'srv-desktop-pc': {", laptopGraphStart + 1);
@@ -147,6 +158,45 @@ add('Laptop repair resources distinguish the no-power repair page from the troub
 
 add('Brand repair pages expose a direct link to transparent pricing',
   brandTemplate.includes('to="/pricing"') && brandTemplate.includes('View Repair Prices'));
+
+add('Arabic Salmiya location cards have explicit Arabic titles and descriptions for all five service types',
+  salmiyaConfig.includes('serviceCardCopy: {') &&
+  ['srv-laptop', 'srv-macbook', 'srv-motherboard', 'srv-screen', 'srv-battery'].every((id) => salmiyaConfig.includes(id)) &&
+  !salmiyaConfig.includes('Laptop Repair') &&
+  !salmiyaConfig.includes('MacBook Repair'));
+
+add('MacBook service separates selected-work starting price, board-level range, screen labour and replacement-board quotation',
+  has(serviceTemplate, 'Selected MacBook work from 25 KWD') &&
+  has(serviceTemplate, '45–100+ KWD') &&
+  has(serviceTemplate, 'Labour from 30 KWD + display assembly') &&
+  has(serviceTemplate, 'Quote after model and parts check') &&
+  has(serviceTemplate, 'data remains associated with the original board') &&
+  has(serviceTemplate, 'A2337, A2681, A2941, A3113 and A3114'));
+
+add('English and Arabic MacBook repair WhatsApp paths request exact model, symptoms, data priority and collection area',
+  has(serviceTemplate, 'A-number if known') &&
+  has(serviceTemplate, 'Is existing data especially important?') &&
+  has(whatsappIntent, "if (slug === 'macbook-repair-kuwait')") &&
+  has(whatsappIntent, "if (path === '/macbook-repair-kuwait')") &&
+  has(whatsappIntent, 'هل توجد بيانات مهمة'));
+
+add('Brand hub surfaces graph-backed models, symptom examples and configured starting prices',
+  brandsIndex.includes('brand.commonModels') &&
+  brandsIndex.includes('brand.commonIssues') &&
+  brandsIndex.includes('brand.pricing?.displayLabel') &&
+  brandsIndex.includes('to="/pricing"'));
+
+add('Wi-Fi guides identify KCROC hardware-only service scope and exclude router, ISP and external-network support',
+  blogPosts.includes('KCROC service scope') &&
+  blogPosts.includes('does not configure routers, modems, VPNs or external networks') &&
+  blogPosts.includes('does not repair or configure routers, modems, ISP connections'));
+
+add('DPC and thermal articles link to symptom-matched existing repair pages and published pricing',
+  blogPostTemplate.includes("'dpc-latency-gaming-stutter': {") &&
+  blogPostTemplate.includes("'/gaming-laptop-cleaning-kuwait'") &&
+  blogPostTemplate.includes("'/gaming-pc-repair-kuwait'") &&
+  blogPostTemplate.includes("'/pricing'"));
+
 
 add('Pricing page has responsive quick-jump navigation to all four price categories',
   englishPricing.includes('Jump to a price category') &&

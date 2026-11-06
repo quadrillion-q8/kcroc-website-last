@@ -81,6 +81,9 @@ export const getPageWhatsAppLink = (pathname: string): string => {
       'gaming-laptop-repair-kuwait': 'تصليح Gaming Laptop في الكويت',
       'computer-repair-hawalli': 'تصليح كمبيوتر حولي',
     };
+    if (slug === 'macbook-repair-kuwait') {
+      return buildWhatsAppLink('السلام عليكم KCROC، أحتاج فحص وتصليح MacBook في الكويت. النوع: MacBook Air / Pro. الشريحة إن عُرفت: M1 / M2 / M3 / M4 / M5 / Intel: ____. رقم الموديل A-number: ____. الأعراض: ____. هل حصل سقوط أو انسكاب سائل؟ ____. هل توجد بيانات مهمة أحتاج الحفاظ على إمكانية الوصول إليها؟ ____. منطقتي بالكويت: ____. فضلاً وضحوا خيار التشخيص والسعر والمدة قبل أي عمل مدفوع.');
+    }
     if (slug === 'macbook-screen-replacement-kuwait') {
       return buildWhatsAppLink('السلام عليكم KCROC، أحتاج تبديل شاشة MacBook في الكويت. موديل الجهاز والجيل: ____. أعراض الشاشة: ____. منطقتي بالكويت: ____. فضلاً أكدوا توفر الشاشة المناسبة والسعر النهائي شامل أجرة العمل والشاشة والمدة المتوقعة قبل الإصلاح.');
     }
@@ -89,6 +92,10 @@ export const getPageWhatsAppLink = (pathname: string): string => {
     }
     const name = arabicNames[slug] ?? 'تصليح كمبيوتر ولابتوب في الكويت';
     return buildWhatsAppLink(`السلام عليكم KCROC، أحتاج ${name}. أريد أعرف طريقة الاستلام والتشخيص.`);
+  }
+
+  if (path === '/macbook-repair-kuwait') {
+    return buildWhatsAppLink('Hi KCROC, I need MacBook repair in Kuwait. Model and year: ____. A-number if known: ____. Chip: Apple silicon M1/M2/M3/M4/M5 or Intel: ____. Symptoms: ____. Liquid/drop/impact history: ____. Is existing data especially important? ____. Kuwait pickup area: ____. Please confirm the diagnostic path, total quote and expected timing before paid work.');
   }
 
   if (path === '/macbook-screen-replacement-kuwait') {
