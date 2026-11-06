@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom';
 import {
   AlertTriangle,
   ArrowLeft,
-  BatteryCharging,
   CheckCircle2,
   MessageCircle,
   PlugZap,
