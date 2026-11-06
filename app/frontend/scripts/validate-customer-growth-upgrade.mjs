@@ -51,7 +51,7 @@ const seoEngine = await read('core/components/SEOEngine.tsx');
 const locationTypeSchema = await read('types/knowledgeGraph.ts');
 const seoGenerator = await readFile(path.resolve('scripts/generate-seo-data.ts'), 'utf8');
 const arabicContact = await read('pages/ArabicContactPage.tsx');
-const [blogPosts, blogPostTemplate, whatsappIntent, brandsIndex] = await Promise.all([
+const [blogPosts, blogPostTemplate, macbookWhatsappIntent, brandsIndex] = await Promise.all([
   read('constants/blogPosts.ts'),
   read('pages/BlogPostTemplate.tsx'),
   read('utils/whatsappIntent.ts'),
@@ -176,9 +176,9 @@ add('MacBook service separates selected-work starting price, board-level range, 
 add('English and Arabic MacBook repair WhatsApp paths request exact model, symptoms, data priority and collection area',
   has(serviceTemplate, 'A-number if known') &&
   has(serviceTemplate, 'Is existing data especially important?') &&
-  has(whatsappIntent, "if (slug === 'macbook-repair-kuwait')") &&
-  has(whatsappIntent, "if (path === '/macbook-repair-kuwait')") &&
-  has(whatsappIntent, 'هل توجد بيانات مهمة'));
+  has(macbookWhatsappIntent, "if (slug === 'macbook-repair-kuwait')") &&
+  has(macbookWhatsappIntent, "if (path === '/macbook-repair-kuwait')") &&
+  has(macbookWhatsappIntent, 'هل توجد بيانات مهمة'));
 
 add('Brand hub surfaces graph-backed models, symptom examples and configured starting prices',
   brandsIndex.includes('brand.commonModels') &&
