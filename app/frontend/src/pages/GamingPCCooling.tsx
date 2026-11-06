@@ -201,7 +201,7 @@ const faqs = [
 const sources = [
   {
     label: 'Intel — Processor temperature and Tjunction guidance',
-    url: 'https://www.intel.com/content/www/us/en/support/articles/000005597/memory-and-storage.html',
+    url: 'https://www.intel.com/content/www/us/en/support/articles/000005597/processors.html',
     note: 'Explains Tjunction max, thermal control and how to look up the specification for an exact Intel processor.',
   },
   {
