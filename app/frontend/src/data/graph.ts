@@ -1170,14 +1170,14 @@ export const rawGraphData: RawGraphData = {
       slug: 'ar/laptop-plugged-in-not-charging',
       entityType: 'WebPage',
       isActive: true,
-      title: 'اللابتوب متصل بالشاحن ولا يشحن؟ دليل فحص آمن',
-      description: 'دليل عربي لمشكلة اللابتوب المتصل بالشاحن ولا يشحن: فحص آمن للشاحن والمنفذ والبطارية ودائرة الطاقة، ومتى تحتاج إلى تشخيص مختص.',
+      title: 'اللابتوب متصل بالشاحن ولا يشحن؟ التشخيص والحل في الكويت',
+      description: 'هل يظهر اللابتوب أو MacBook متصلاً بالشاحن ولا يشحن أو ثابتاً على 0%؟ دليل تشخيص آمن للتفريق بين إعدادات الشحن والشاحن والبطارية والمنفذ ودائرة المذربورد، مع فحص مبدئي مجاني واستلام بالكويت.',
       seo: {
-        title: 'اللابتوب متصل بالشاحن ولا يشحن؟ دليل تشخيص | KCROC',
-        description: 'اللابتوب متصل بالشاحن ولا يشحن؟ تعرّف على فحوصات آمنة للشاحن والبطارية وDC Jack وUSB-C، ومتى تحتاج إلى تشخيص دائرة الطاقة في الكويت.',
+        title: 'اللابتوب متصل بالشاحن ولا يشحن؟ التشخيص والحل في الكويت | KCROC',
+        description: 'هل يظهر اللابتوب أو MacBook متصل بالشاحن ولا يشحن أو ثابت على 0%؟ دليل تشخيص آمن للتفريق بين عطل الشاحن، البطارية، المنفذ ودائرة الشحن مع فحص مجاني واستلام بالكويت.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/ar/laptop-plugged-in-not-charging',
         ogImage: '/images/laptop-dc-power-jack-connector-replacement-kuwait-1000.webp',
-        ogImageAlt: 'فحص منفذ طاقة اللابتوب أثناء تشخيص مشكلة عدم الشحن',
+        ogImageAlt: 'فحص مسار طاقة اللابتوب ومنفذ الشحن لتحديد سبب عدم زيادة نسبة البطارية',
         ogImageWidth: 1000,
         ogImageHeight: 1000,
         locale: 'ar_KW',
@@ -1187,22 +1187,22 @@ export const rawGraphData: RawGraphData = {
           'x-default': 'https://www.computerrepairkuwait.com/laptop-plugged-in-not-charging'
         },
         ogType: 'article',
+        // The custom page emits TechArticle and FAQPage; SEOEngine supplies WebPage and BreadcrumbList.
         schemaTypes: ['WebPage', 'BreadcrumbList'],
-        lastModified: '2026-10-26T00:00:00+03:00',
+        lastModified: '2026-11-07T00:00:00+03:00',
         breadcrumbs: [
           { name: 'الرئيسية', url: '/ar' },
-          { name: 'تصليح مدخل شحن اللابتوب', url: '/ar/laptop-charging-port-repair-kuwait' },
           { name: 'اللابتوب متصل بالشاحن ولا يشحن', url: '/ar/laptop-plugged-in-not-charging' }
         ]
       },
       featuredImage: {
         ogImage: '/images/laptop-dc-power-jack-connector-replacement-kuwait-1000.webp',
-        altText: 'فحص منفذ طاقة اللابتوب أثناء تشخيص مشكلة عدم الشحن'
+        altText: 'فحص مسار طاقة اللابتوب ومنفذ الشحن لتحديد سبب عدم زيادة نسبة البطارية'
       },
-      relatedServiceIds: ['srv-charging-port', 'srv-battery', 'srv-motherboard', 'srv-laptop'],
+      relatedServiceIds: ['srv-battery', 'srv-charging-port', 'srv-motherboard', 'srv-laptop'],
       authorName: 'KCROC Engineering Team',
       datePublished: '2026-10-26',
-      dateModified: '2026-10-26',
+      dateModified: '2026-11-07',
       articleSection: 'تشخيص أعطال اللابتوب والشحن'
     } as WebPageEntity,
     'page-ar-keyboard-replacement': {
