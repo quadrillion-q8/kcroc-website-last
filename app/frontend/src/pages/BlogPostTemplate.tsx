@@ -293,7 +293,6 @@ const STANDALONE_REPAIR_PATHS: Record<string, { title: string; intro: string; li
       { href: '/guides/shader-compilation-stutter-windows', label: 'Shader Compilation Stutter', description: 'Check first-use shader and pipeline compilation before blaming drivers.' },
       { href: '/gaming-pc-repair-kuwait', label: 'Gaming PC & GPU Repair Kuwait', description: 'For persistent instability, crashes, artifacts, thermal faults or hardware problems.' },
       { href: '/gaming-laptop-cleaning-kuwait', label: 'Gaming Laptop Cleaning', description: 'For dust-restricted airflow, fan noise and temperature-linked throttling on gaming laptops.' },
-      { href: '/gaming-pc-repair-kuwait', label: 'Gaming PC Repair Kuwait', description: 'For desktop gaming systems with persistent thermal, power or GPU instability.' },
       { href: '/pricing', label: 'KCROC repair pricing', description: 'Review published starting ranges before requesting a model-specific quote.' },
     ],
   },
