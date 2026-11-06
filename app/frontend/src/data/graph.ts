@@ -1176,10 +1176,10 @@ export const rawGraphData: RawGraphData = {
         title: 'اللابتوب متصل بالشاحن ولا يشحن؟ التشخيص والحل في الكويت | KCROC',
         description: 'هل يظهر اللابتوب أو MacBook متصل بالشاحن ولا يشحن أو ثابت على 0%؟ دليل تشخيص آمن للتفريق بين عطل الشاحن، البطارية، المنفذ ودائرة الشحن مع فحص مجاني واستلام بالكويت.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/ar/laptop-plugged-in-not-charging',
-        ogImage: '/images/laptop-dc-power-jack-connector-replacement-kuwait-1000.webp',
-        ogImageAlt: 'فحص مسار طاقة اللابتوب ومنفذ الشحن لتحديد سبب عدم زيادة نسبة البطارية',
-        ogImageWidth: 1000,
-        ogImageHeight: 1000,
+        ogImage: '/images/gallery/dell-vostro-laptop-motherboard-removed-fan-heatsink-chip-level-repair.webp',
+        ogImageAlt: 'لوحة أم للابتوب Dell Vostro بعد فكها على طاولة الفحص في مختبر صيانة KCROC',
+        ogImageWidth: 1400,
+        ogImageHeight: 1400,
         locale: 'ar_KW',
         alternates: {
           'ar-KW': 'https://www.computerrepairkuwait.com/ar/laptop-plugged-in-not-charging',
@@ -1196,8 +1196,8 @@ export const rawGraphData: RawGraphData = {
         ]
       },
       featuredImage: {
-        ogImage: '/images/laptop-dc-power-jack-connector-replacement-kuwait-1000.webp',
-        altText: 'فحص مسار طاقة اللابتوب ومنفذ الشحن لتحديد سبب عدم زيادة نسبة البطارية'
+        ogImage: '/images/gallery/dell-vostro-laptop-motherboard-removed-fan-heatsink-chip-level-repair.webp',
+        altText: 'لوحة أم للابتوب Dell Vostro بعد فكها على طاولة الفحص في مختبر صيانة KCROC'
       },
       relatedServiceIds: ['srv-battery', 'srv-charging-port', 'srv-motherboard', 'srv-laptop'],
       authorName: 'KCROC Engineering Team',
