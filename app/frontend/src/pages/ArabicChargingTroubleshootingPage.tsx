@@ -51,7 +51,7 @@ const FAQ = [
   },
   {
     q: 'كم يكلف فحص أو إصلاح مشكلة الشحن في الكويت؟',
-    a: 'الفحص والتشخيص المبدئي في KCROC مجاني قبل الموافقة على الإصلاح. يبدأ إصلاح مدخل الشحن من 20 د.ك، وتبدأ بطارية اللابتوب مع القطعة والتركيب من 22 د.ك، وبطارية MacBook من 38 د.ك، بينما يبدأ إصلاح دائرة الشحن على المذربورد من 35 د.ك. هذه أسعار بداية لمسارات محددة؛ يتغير السعر حسب الموديل والقطعة ونتيجة القياس، ونؤكد التكلفة النهائية قبل أي عمل مدفوع.',
+    a: 'الفحص والتشخيص المبدئي في KCROC مجاني قبل الموافقة على الإصلاح. يبدأ إصلاح مدخل الشحن من 20 د.ك، وتبدأ أجرة تبديل بطارية اللابتوب من 8 د.ك بالإضافة إلى سعر البطارية، وكذلك أجرة تركيب بطارية MacBook من 8 د.ك بالإضافة إلى سعر البطارية، بينما يبدأ إصلاح دائرة الشحن على المذربورد من 35 د.ك. هذه أسعار بداية لمسارات محددة؛ يتغير السعر حسب الموديل والقطعة ونتيجة القياس، ونؤكد التكلفة النهائية قبل أي عمل مدفوع.',
   },
 ];
 
@@ -162,8 +162,8 @@ const labChecks = [
 const priceRows = [
   { route: 'فحص وتشخيص مبدئي', scope: 'تحديد ما إذا كان السبب من الشاحن أو المنفذ أو البطارية أو دائرة الطاقة.', price: 'مجاناً (0 د.ك)', href: '/ar/contact', label: 'التواصل مع KCROC' },
   { route: 'إصلاح أو تبديل مدخل الشحن', scope: 'عند ثبوت تلف DC Jack أو USB-C أو نقاط تثبيته ولحامه.', price: 'يبدأ من 20 د.ك', href: '/ar/laptop-charging-port-repair-kuwait', label: 'خدمة مدخل الشحن' },
-  { route: 'بطارية اللابتوب', scope: 'عند ثبوت تدهور البطارية وسلامة دائرة الشحن؛ يشمل سعر البداية القطعة والتركيب حسب الموديل والتوفر.', price: 'يبدأ من 22 د.ك', href: '/ar/battery-replacement-kuwait', label: 'تبديل بطارية اللابتوب' },
-  { route: 'بطارية MacBook', scope: 'لأجهزة MacBook Air وPro بعد التحقق من رقم الموديل وتوفر البطارية المناسبة.', price: 'يبدأ من 38 د.ك', href: '/ar/macbook-battery-replacement-kuwait', label: 'تبديل بطارية MacBook' },
+  { route: 'بطارية اللابتوب', scope: 'عند ثبوت تدهور البطارية وسلامة دائرة الشحن؛ أجرة العمل منفصلة عن سعر البطارية حسب الموديل والتوفر.', price: 'أجرة من 8 د.ك + البطارية', href: '/ar/battery-replacement-kuwait', label: 'تبديل بطارية اللابتوب' },
+  { route: 'بطارية MacBook', scope: 'لأجهزة MacBook Air وPro بعد التحقق من رقم الموديل وتوفر البطارية المناسبة.', price: 'أجرة من 8 د.ك + البطارية', href: '/ar/macbook-battery-replacement-kuwait', label: 'تبديل بطارية MacBook' },
   { route: 'إصلاح دائرة الشحن بالمذربورد', scope: 'عند تعطل متحكم PD أو آيسي الشحن أو بوابات MOSFET أو مسار اتصال البطارية.', price: 'يبدأ من 35 د.ك', href: '/ar/motherboard-repair-kuwait', label: 'تصليح المذربورد' },
 ];
 
@@ -259,9 +259,9 @@ export default function ArabicChargingTroubleshootingPage() {
               <p className="mt-2 text-sm leading-6 text-slate-400">سعر بداية إصلاح أو تبديل DC Jack أو USB-C حسب الموديل والتصميم.</p>
             </article>
             <article className="rounded-2xl border border-slate-800 bg-black/20 p-4">
-              <div className="text-2xl font-black text-white">من 22 د.ك</div>
-              <h2 className="mt-1 font-bold text-white">بطارية اللابتوب</h2>
-              <p className="mt-2 text-sm leading-6 text-slate-400">سعر بداية يشمل البطارية والتركيب للموديلات المتاحة بعد تأكيد التوافق.</p>
+              <div className="text-2xl font-black text-white">من 8 د.ك</div>
+              <h2 className="mt-1 font-bold text-white">أجرة تبديل البطارية</h2>
+              <p className="mt-2 text-sm leading-6 text-slate-400">أجرة العمل فقط؛ سعر البطارية منفصل ويُحدد حسب الموديل والتوفر.</p>
             </article>
             <article className="rounded-2xl border border-slate-800 bg-black/20 p-4">
               <div className="text-2xl font-black text-white">من 35 د.ك</div>
