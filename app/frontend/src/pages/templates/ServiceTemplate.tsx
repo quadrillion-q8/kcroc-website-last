@@ -128,7 +128,9 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
       ? 'Hi KCROC, I need MacBook screen replacement in Kuwait. Exact MacBook model and generation: ____. Screen symptoms: ____. Area in Kuwait: ____. Please confirm compatible display availability, the total price including labour and display assembly, and the expected turnaround before repair.'
       : entity.id === 'srv-gaming-laptop'
         ? 'Hi KCROC, I need gaming-laptop repair in Kuwait. Brand and exact model: ____. Main symptom: ____. Kuwait area: ____. I can share photos or a short video if useful. Please advise on diagnosis, the expected turnaround and the quote before repair.'
-        : `Hi KCROC, I'd like a free estimate for ${entity.title}.`);
+        : entity.id === 'srv-macbook'
+          ? 'Hi KCROC, I need MacBook repair in Kuwait. Model and year: ____. A-number if known: ____. Chip: Apple silicon M1/M2/M3/M4/M5 or Intel: ____. Symptoms: ____. Liquid/drop/impact history: ____. Is existing data especially important? ____. Kuwait pickup area: ____. Please confirm the diagnostic path, total quote and expected timing before paid work.'
+          : `Hi KCROC, I'd like a free estimate for ${entity.title}.`);
 
   const severityStyles: Record<string, string> = {
     critical: 'border-red-500/40 bg-red-950/20 text-red-300',
@@ -207,7 +209,7 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
                   <Tag className="w-5 h-5 text-cyan-400 flex-shrink-0" />
                   <div>
                     <span className="block text-[10px] text-cyan-300/70 uppercase font-black tracking-wider">Pricing</span>
-                    <span className="font-semibold text-cyan-300">{entity.id === 'srv-gaming-laptop' ? 'Thermal 15–20 KWD • board repair 25–60 KWD' : entity.pricing?.displayLabel || 'Quote after diagnosis'}</span>
+                    <span className="font-semibold text-cyan-300">{entity.id === 'srv-gaming-laptop' ? 'Thermal 15–20 KWD • board repair 25–60 KWD' : entity.id === 'srv-macbook' ? 'Selected MacBook work from 25 KWD • board-level repair 45–100+ KWD' : entity.pricing?.displayLabel || 'Quote after diagnosis'}</span>
                   </div>
                 </div>
               </div>
@@ -240,6 +242,86 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
             )}
           </div>
         </header>
+
+        {entity.id === 'srv-macbook' && (
+          <section className="max-w-7xl mx-auto px-6 py-12 border-t border-slate-800/50 relative z-10" aria-labelledby="macbook-repair-options">
+            <div className="max-w-4xl mb-8">
+              <p className="text-xs font-black uppercase tracking-[0.18em] text-cyan-400 mb-2">MacBook repair pricing and choices</p>
+              <h2 id="macbook-repair-options" className="text-2xl sm:text-3xl font-black text-white">Component-level logic-board repair vs. full board replacement</h2>
+              <p className="mt-3 text-sm leading-7 text-slate-400">
+                The right route depends on the exact MacBook model and the fault confirmed during diagnosis. These are KCROC's published starting references, not a substitute for a model-specific quote.
+              </p>
+            </div>
+
+            <div className="overflow-x-auto rounded-2xl border border-slate-800">
+              <table className="min-w-full border-collapse text-left text-sm">
+                <thead className="bg-slate-900 text-slate-200">
+                  <tr>
+                    <th scope="col" className="px-4 py-3 font-bold">Repair route</th>
+                    <th scope="col" className="px-4 py-3 font-bold">Published price reference</th>
+                    <th scope="col" className="px-4 py-3 font-bold">What it means</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-800 bg-slate-950/45 text-slate-300">
+                  <tr>
+                    <th scope="row" className="px-4 py-4 font-semibold text-white">Initial diagnostic</th>
+                    <td className="px-4 py-4 whitespace-nowrap">Free</td>
+                    <td className="px-4 py-4">The fault is assessed before a paid repair is approved.</td>
+                  </tr>
+                  <tr>
+                    <th scope="row" className="px-4 py-4 font-semibold text-white">MacBook board-level component repair</th>
+                    <td className="px-4 py-4 whitespace-nowrap">45–100+ KWD</td>
+                    <td className="px-4 py-4">Published range for repair of the original logic board where the measured fault is technically repairable.</td>
+                  </tr>
+                  <tr>
+                    <th scope="row" className="px-4 py-4 font-semibold text-white">MacBook screen replacement</th>
+                    <td className="px-4 py-4 whitespace-nowrap">Labour from 30 KWD + display assembly</td>
+                    <td className="px-4 py-4">The compatible display assembly is priced separately and matched to the exact model.</td>
+                  </tr>
+                  <tr>
+                    <th scope="row" className="px-4 py-4 font-semibold text-white">Full logic-board replacement</th>
+                    <td className="px-4 py-4 whitespace-nowrap">Quote after model and parts check</td>
+                    <td className="px-4 py-4">KCROC does not publish one fixed replacement-board price for every MacBook generation; availability and compatibility must be confirmed.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p className="mt-4 text-xs leading-6 text-slate-400">
+              The “From 25 KWD” label above is a general starting reference for selected MacBook work; it is not the published board-level repair range. Screen labour excludes the display assembly. The final quote is confirmed after diagnosis and parts compatibility checks.
+            </p>
+
+            <div className="mt-6 grid gap-4 md:grid-cols-2">
+              <article className="rounded-2xl border border-cyan-900/50 bg-cyan-950/15 p-5">
+                <h3 className="font-bold text-white">When repairing the original board may make sense</h3>
+                <p className="mt-2 text-sm leading-7 text-slate-300">
+                  If testing identifies a repairable charging, power, connector or corrosion fault, component-level work may retain the original logic board instead of replacing the whole assembly. On Apple silicon MacBooks with onboard storage, keeping the original board can matter for potential access to existing data. Access and data preservation are never guaranteed.
+                </p>
+              </article>
+              <article className="rounded-2xl border border-slate-800 bg-slate-900/55 p-5">
+                <h3 className="font-bold text-white">When a replacement board may be considered</h3>
+                <p className="mt-2 text-sm leading-7 text-slate-300">
+                  A replacement may be discussed if the original board is not technically repairable or the repair is not economically sensible. A replacement assembly does not copy files from the original board. On Apple silicon models with soldered onboard storage, data remains associated with the original board; do not assume a board swap transfers or recovers it.
+                </p>
+              </article>
+            </div>
+
+            <div className="mt-8 rounded-2xl border border-slate-800 bg-slate-900/40 p-5">
+              <h3 className="font-bold text-white">MacBook model identifiers we use as examples</h3>
+              <p className="mt-2 text-sm leading-7 text-slate-400">
+                MacBook Air examples: A2337, A2681, A2941, A3113 and A3114. MacBook Pro examples: A2338, A2442, A2779, A2992, A2485, A2780 and A2991. KCROC checks the exact A-number, year, screen size and board or display compatibility before confirming a repair or part. This is an example list, not a promise that every part is stocked.
+              </p>
+              <div className="mt-4 flex flex-wrap gap-4">
+                <Link to="/macbook-screen-replacement-kuwait" className="inline-flex items-center gap-2 text-sm font-bold text-cyan-300 hover:text-cyan-200">
+                  MacBook screen model and compatibility guide <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </Link>
+                <Link to="/pricing" className="inline-flex items-center gap-2 text-sm font-bold text-cyan-300 hover:text-cyan-200">
+                  Full KCROC repair pricing <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </Link>
+              </div>
+            </div>
+          </section>
+        )}
 
         {entity.commercialAnswers && entity.commercialAnswers.length > 0 && (
           <section className="max-w-7xl mx-auto px-6 py-12 border-t border-slate-800/50 relative z-10" aria-labelledby="commercial-answers">

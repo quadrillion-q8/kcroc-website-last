@@ -5217,14 +5217,15 @@ export const BLOG_POSTS: BlogPost[] = [
     id: "guide-windows-11-wifi-keeps-disconnecting",
     slug: "windows-11-wifi-keeps-disconnecting",
     title: "Windows 11 Wi-Fi Keeps Disconnecting: Complete Fix Guide for 2026",
-    excerpt: "Windows 11 Wi-Fi that drops every few minutes can be caused by the adapter, driver, power management, router, band selection, interference, VPN software or Windows itself. Diagnose the exact layer before resetting everything.",
-    description: "Windows 11 Wi-Fi keeps disconnecting? Diagnose adapter, driver, power management, router, interference, VPN and Windows causes step by step.",
+    excerpt: "Windows 11 Wi-Fi that drops every few minutes can involve Windows, a driver, the router or the laptop's internal adapter and antenna. Use controlled tests to identify the layer before considering hardware diagnosis.",
+    description: "Separate Windows and router-side Wi-Fi problems from internal laptop adapter, antenna and board-side faults; KCROC service is limited to laptop hardware diagnosis.",
     content: [
       "Wi-Fi disconnecting every few minutes is a symptom, not a diagnosis. The fastest route to a fix is to determine whether the laptop is losing the wireless link itself, losing access to the router, or staying connected to Wi-Fi while the internet path fails.",
       "Microsoft's current Windows 11 guidance starts with the built-in Network and Internet troubleshooter, checking for Windows updates, and using network reset only after less disruptive checks have failed."
     ],
     richContent: [
       { type: "paragraph", text: "If Windows 11 connects to Wi-Fi normally and then drops the connection repeatedly, do not start by reinstalling Windows or changing ten network settings at once. A repeatable disconnect pattern can come from the wireless adapter, its driver, power-management behavior, the access point or router, radio interference, VPN or security software, a damaged antenna path, or a broader Windows networking fault. The goal is to isolate the layer that is actually failing." },
+      { type: "callout", variant: "expert", title: "KCROC service scope", text: "This is an educational troubleshooting guide, not a router, ISP or home/office network service. KCROC does not configure routers, modems, VPNs or external networks. Our relevant repair scope is limited to diagnosing internal laptop hardware such as a wireless adapter, antenna, connector or board-side fault when the evidence shows the problem follows the laptop." },
       { type: "callout", variant: "expert", title: "KCROC diagnostic principle", text: "Before changing anything, answer one question: does the laptop lose Wi-Fi completely, or does the Wi-Fi icon remain connected while only internet access disappears? Those are different fault paths." },
       { type: "image", src: "/images/laptop-wireless-network-card-replacement.webp", alt: "Laptop wireless network card and Wi-Fi hardware during repair", caption: "A wireless problem can be software, driver, radio, antenna or hardware related. Test the connection layer before replacing parts." },
       { type: "h2", text: "First: Identify What Is Actually Disconnecting", id: "identify-what-is-disconnecting" },
@@ -5297,14 +5298,15 @@ export const BLOG_POSTS: BlogPost[] = [
     id: "guide-windows-11-connected-to-wifi-no-internet",
     slug: "windows-11-connected-to-wifi-but-no-internet",
     title: "Connected to Wi-Fi but No Internet in Windows 11: Complete Fix Guide",
-    excerpt: "Windows 11 can show a Wi-Fi connection while websites and apps still cannot reach the internet. Learn how to separate router, DNS, VPN, proxy, DHCP and Windows problems without resetting the wrong layer.",
-    description: "Connected to Wi-Fi but no internet in Windows 11? Diagnose router, DNS, DHCP, VPN, proxy, Windows and adapter problems step by step.",
+    excerpt: "Windows 11 can show Wi-Fi connected while websites and apps have no internet. Compare devices and networks to distinguish an upstream router or ISP fault from a laptop-side adapter or antenna issue.",
+    description: "Troubleshoot connected-but-no-internet symptoms by separating router, ISP and Windows causes from internal laptop Wi-Fi hardware faults.",
     content: [
       "A Wi-Fi connection and an internet connection are not the same thing. Windows can successfully associate with the wireless router while the router, DNS, VPN, proxy or upstream internet connection is failing.",
       "The fastest way to troubleshoot this symptom is to compare another device on the same network, test the laptop on another network, and then move down the Windows networking stack one layer at a time."
     ],
     richContent: [
       { type: "paragraph", text: "If Windows 11 says Connected to Wi-Fi but Edge, Chrome, apps or games cannot reach the internet, avoid treating the Wi-Fi icon as proof that the whole connection is healthy. The wireless link can be working while DNS, DHCP, routing, the gateway, a VPN, a proxy, or the ISP path is broken. Microsoft separates Wi-Fi connectivity troubleshooting from broader internet access issues for exactly this reason." },
+      { type: "callout", variant: "expert", title: "KCROC service scope", text: "This guide helps identify which layer is failing; it does not describe a KCROC networking service. KCROC does not repair or configure routers, modems, ISP connections, VPNs or home/office networks. We only consider internal laptop hardware diagnosis when controlled tests show the fault follows the laptop and points to its wireless adapter, antenna, connector or board." },
       { type: "image", src: "/images/laptop-wifi-network-card.webp", alt: "Laptop Wi-Fi network card used during connectivity troubleshooting", caption: "The wireless adapter is only one layer of the connection. Test the router and internet path before blaming the adapter." },
       { type: "h2", text: "Start With the Two-Device Test", id: "two-device-test" },
       { type: "paragraph", text: "Connect another phone or computer to the same Wi-Fi network. If both devices have no internet, the problem is probably above the individual Windows laptop: router, modem, access point or ISP. If other devices work normally and only this Windows PC is affected, focus on the laptop's DNS, DHCP, VPN, proxy, adapter, driver and Windows configuration." },

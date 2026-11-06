@@ -93,6 +93,8 @@ const STANDALONE_REPAIR_PATHS: Record<string, { title: string; intro: string; li
       { href: '/gaming-laptop-cleaning-kuwait', label: 'Gaming Laptop Cleaning', description: 'For dust-restricted airflow, fan noise, and thermal maintenance on gaming laptops.' },
       { href: '/laptop-repair-kuwait', label: 'Laptop Repair Kuwait', description: 'For broader diagnosis when cooling symptoms overlap with other hardware faults.' },
       { href: '/motherboard-repair-kuwait', label: 'Motherboard Repair Kuwait', description: 'For board-level power or component faults that remain after cooling checks.' },
+      { href: '/gaming-pc-repair-kuwait', label: 'Gaming PC Repair', description: 'For desktop gaming systems with persistent thermal, power or GPU instability.' },
+      { href: '/pricing', label: 'KCROC repair pricing', description: 'See current starting references; the final price depends on diagnosis and compatible parts.' },
     ],
   },
   'why-8gb-ram-is-no-longer-enough-for-windows-11': {
@@ -290,6 +292,9 @@ const STANDALONE_REPAIR_PATHS: Record<string, { title: string; intro: string; li
       { href: '/guides/gamebar-presence-writer-fix', label: 'GameBarPresenceWriter.exe Fix', description: 'Test Game Bar and capture activity separately from driver latency.' },
       { href: '/guides/shader-compilation-stutter-windows', label: 'Shader Compilation Stutter', description: 'Check first-use shader and pipeline compilation before blaming drivers.' },
       { href: '/gaming-pc-repair-kuwait', label: 'Gaming PC & GPU Repair Kuwait', description: 'For persistent instability, crashes, artifacts, thermal faults or hardware problems.' },
+      { href: '/gaming-laptop-cleaning-kuwait', label: 'Gaming Laptop Cleaning', description: 'For dust-restricted airflow, fan noise and temperature-linked throttling on gaming laptops.' },
+      { href: '/gaming-pc-repair-kuwait', label: 'Gaming PC Repair Kuwait', description: 'For desktop gaming systems with persistent thermal, power or GPU instability.' },
+      { href: '/pricing', label: 'KCROC repair pricing', description: 'Review published starting ranges before requesting a model-specific quote.' },
     ],
   },
   'why-is-my-laptop-so-slow-2026': {
