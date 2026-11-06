@@ -40,12 +40,13 @@ const quickSigns = [
   'Trackpad or keyboard is being pushed upward',
   'Unusual heat is concentrated around the battery area',
   'Battery health/wear report shows substantial capacity loss',
-  'Windows or macOS shows a battery health/service warning',
+  'Windows, macOS, BIOS, or manufacturer diagnostics shows a battery or adapter warning',
   'Laptop works normally on AC but becomes unstable on battery',
   'Laptop only works when the charger is connected',
   'Battery drains unusually while sleeping or closed',
   'Charging pauses or behaves differently because of a charge-limit feature',
-  'Battery condition has worsened noticeably over time'
+  'The BIOS reports an unknown power adapter, or performance drops while plugged in',
+  'Battery cycle count or reported capacity has worsened alongside shorter runtime'
 ];
 
 // SYMPTOM → MEANING → ACTION TABLE
@@ -218,6 +219,84 @@ const warningSigns = [
       'Can also point to a power-delivery fault rather than the battery itself',
       'Worth a proper diagnosis rather than replacing the battery on a guess'
     ]
+  },
+  {
+    title: 'Laptop Only Works While Connected to the Charger',
+    description: 'If the laptop shuts off as soon as the adapter is removed, the battery may be unable to deliver power — but the fault can also lie in the pack-protection path, connector, fuse, or motherboard discharge circuit.',
+    icon: PowerOff,
+    color: 'text-red-400',
+    bgColor: 'bg-red-500/10',
+    points: [
+      'Distinguish an instant power-off from general instability while on battery',
+      'A deeply degraded or protected battery pack can cause this behavior',
+      'A disconnected battery connector or fault in the motherboard battery path can look similar',
+      'Have the battery and power path tested before ordering a replacement'
+    ]
+  },
+  {
+    title: 'Unusual Battery Drain While the Laptop Is Closed',
+    description: 'A laptop that loses a large amount of charge during sleep may be remaining active in Modern Standby, waking for timers or devices, or using background tasks.',
+    icon: Moon,
+    color: 'text-indigo-400',
+    bgColor: 'bg-indigo-500/10',
+    points: [
+      'Use Windows SleepStudy on supported Modern Standby systems to review sessions and top active components',
+      'Check wake timers, power requests, and connected USB or network devices',
+      'Compare sleep drain with a fully shut-down laptop; the two conditions are not equivalent',
+      'If drain continues after a full shutdown, have battery self-discharge and hardware checked'
+    ]
+  },
+  {
+    title: 'Charging Pauses at a Fixed Percentage',
+    description: 'A laptop that stops at 60%, 80%, or another chosen limit may be following a battery-protection setting rather than showing a fault.',
+    icon: Battery,
+    color: 'text-cyan-400',
+    bgColor: 'bg-cyan-500/10',
+    points: [
+      'Check Lenovo Vantage, MyASUS, Dell Power Manager, HP tools, or macOS charging settings',
+      'Optimized charging may temporarily hold charge below 100%',
+      'If it stops at random values, heats abnormally, or reports a battery fault, investigate the charger, battery, and charging circuit',
+      'Do not disable a charge limit just to force a full charge every day'
+    ]
+  },
+  {
+    title: 'BIOS, Pre-Boot, or Battery Diagnostics Shows a Warning',
+    description: 'A BIOS message, manufacturer test result, or model-specific LED pattern can identify a battery or adapter problem before Windows starts.',
+    icon: AlertTriangle,
+    color: 'text-yellow-400',
+    bgColor: 'bg-yellow-500/10',
+    points: [
+      'Record the exact message or blink sequence and laptop model',
+      'Use the manufacturer\'s own diagnostic guidance; LED and POST codes differ by model',
+      'A battery alert is useful evidence, but an adapter or charging-path alert does not automatically mean the battery is bad',
+      'Check the manufacturer\'s pre-boot test before buying parts'
+    ]
+  },
+  {
+    title: 'The Charger Is Not Recognized or the Laptop Becomes Unusually Slow',
+    description: 'Some laptops reduce performance or stop charging when the adapter\'s identity or available power is not recognized. This can be an adapter, cable, DC-in port, USB-C power-delivery, or motherboard fault — not a battery diagnosis by itself.',
+    icon: Zap,
+    color: 'text-orange-400',
+    bgColor: 'bg-orange-500/10',
+    points: [
+      'Check the BIOS or manufacturer utility for adapter status or reported wattage',
+      'Use a known-good, correctly rated adapter and cable for the exact model',
+      'On some Dell systems, an Unknown adapter status can be associated with CPU throttling and charging failure',
+      'Do not assume a fixed CPU clock speed or replace the battery before checking the input-power path'
+    ]
+  },
+  {
+    title: 'Cycle Count and Capacity Wear Have Increased Together',
+    description: 'A high cycle count is more meaningful when it appears alongside lower full-charge capacity, shorter runtime, or service warnings. Battery cycle limits vary by model; age alone is not a failure test.',
+    icon: TrendingDown,
+    color: 'text-cyan-400',
+    bgColor: 'bg-cyan-500/10',
+    points: [
+      'Check the model-specific design cycle count from the manufacturer',
+      'Compare Full Charge Capacity with Design Capacity where the report exposes both',
+      'Watch for short runtime, percentage jumps, or shutdown under load',
+      'Treat cycle count as context, not a standalone replacement order'
+    ]
   }
 ];
 
@@ -376,7 +455,7 @@ const faq = [
   },
   {
     q: 'How long does laptop battery replacement take?',
-    a: 'For most laptops in Kuwait, 1–2 hours if the correct battery is in stock. Some MacBook models take 1–2 days due to adhesive removal and calibration.'
+    a: 'Timing depends on the laptop model, the exact battery part, stock availability, and whether inspection finds additional damage. KCROC confirms a realistic estimate after checking the model and repair requirements; pickup and delivery are arranged after the agreed work and testing.'
   }
 ];
 
@@ -522,6 +601,26 @@ export default function BatteryHealthGuide() {
               </article>
             ))}
           </div>
+          <div className="mt-6 grid gap-4 lg:grid-cols-3">
+            <article className="rounded-xl border border-slate-800 bg-slate-900/50 p-4">
+              <h3 className="text-sm font-bold text-white">Voltage Sag Under Load</h3>
+              <p className="mt-2 text-xs leading-6 text-slate-400 sm:text-sm">
+                As a lithium-ion cell ages, its effective internal resistance can rise. A sudden CPU/GPU load can then create a larger voltage drop, and the battery controller may shut the system down before the displayed percentage reaches zero. This is one possible explanation for shutdowns at 20–40%, not proof that the battery is the only faulty part.
+              </p>
+            </article>
+            <article className="rounded-xl border border-slate-800 bg-slate-900/50 p-4">
+              <h3 className="text-sm font-bold text-white">Battery-Pack Protection</h3>
+              <p className="mt-2 text-xs leading-6 text-slate-400 sm:text-sm">
+                Many smart battery packs monitor cell voltage, current, and temperature and can use protection switches or, in some designs, a fuse to interrupt charge or discharge when a safety limit is crossed. The protection design is model-specific: a reading of 0% while plugged in does not by itself prove that a permanent internal fuse has blown.
+              </p>
+            </article>
+            <article className="rounded-xl border border-slate-800 bg-slate-900/50 p-4">
+              <h3 className="text-sm font-bold text-white">Adapter Identification and USB-C Power</h3>
+              <p className="mt-2 text-xs leading-6 text-slate-400 sm:text-sm">
+                Some laptops reduce performance or stop charging when the adapter is not identified or the available wattage is insufficient. On certain Dell systems, an "Unknown" adapter status can be associated with CPU throttling and charging failure. USB-C systems can also be affected by the adapter, cable, port, or power-delivery negotiation. Check the BIOS/diagnostics and input-power path before blaming the battery.
+              </p>
+            </article>
+          </div>
         </div>
       </section>
 
@@ -662,6 +761,49 @@ export default function BatteryHealthGuide() {
               <p className="text-slate-400 text-xs sm:text-sm leading-relaxed">
                 Cycle-count reporting varies by device and isn’t always included. As a rough frame: capacity close to design is <strong className="text-emerald-300">healthy</strong>, a noticeable gap is <strong className="text-yellow-300">worth monitoring</strong>, and a large, consistent gap combined with real-world symptoms is <strong className="text-red-300">worth acting on</strong> — there’s no single threshold every manufacturer agrees on.
               </p>
+              <div className="mt-5 rounded-xl border border-slate-800 bg-slate-900/50 p-4 sm:p-5">
+                <h4 className="text-sm font-bold text-white">Estimate Remaining Capacity</h4>
+                <p className="mt-2 text-xs leading-6 text-slate-300 sm:text-sm">
+                  <strong className="text-cyan-300">Battery capacity ratio = (Full Charge Capacity ÷ Design Capacity) × 100.</strong>
+                  Use values in the same unit (usually mWh). This is a capacity estimate, not a complete electrical-health test.
+                </p>
+                <div className="mt-4 overflow-x-auto">
+                  <table className="w-full min-w-[560px] text-right text-xs sm:text-sm">
+                    <thead>
+                      <tr className="border-b border-slate-700 text-slate-300">
+                        <th className="px-3 py-2 font-bold">Capacity ratio</th>
+                        <th className="px-3 py-2 font-bold">What it suggests</th>
+                        <th className="px-3 py-2 font-bold">Sensible next step</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-800 text-slate-400">
+                      <tr>
+                        <td className="px-3 py-3 font-semibold text-emerald-300">90–100%</td>
+                        <td className="px-3 py-3">Capacity is still close to its design figure.</td>
+                        <td className="px-3 py-3">If runtime is poor, investigate workload, standby, and background power use before replacing the battery.</td>
+                      </tr>
+                      <tr>
+                        <td className="px-3 py-3 font-semibold text-cyan-300">80–89%</td>
+                        <td className="px-3 py-3">Some capacity loss is present; the number alone does not prove a fault.</td>
+                        <td className="px-3 py-3">Compare with actual runtime, shutdowns, and the manufacturer’s own diagnostic result.</td>
+                      </tr>
+                      <tr>
+                        <td className="px-3 py-3 font-semibold text-yellow-300">Below 80%</td>
+                        <td className="px-3 py-3">A useful prompt to investigate more substantial wear, but not a universal replacement threshold.</td>
+                        <td className="px-3 py-3">Check model-specific service guidance and consider service when reduced runtime, warnings, or instability affect use.</td>
+                      </tr>
+                      <tr>
+                        <td className="px-3 py-3 font-semibold text-red-300">Any swelling or deformation</td>
+                        <td className="px-3 py-3">A physical safety concern regardless of the reported capacity ratio.</td>
+                        <td className="px-3 py-3">Stop using the laptop and follow the battery-safety instructions below.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p className="mt-3 text-xs leading-6 text-slate-500">
+                  Cycle-count limits are model-specific. Do not apply one generic 300–500 or 1,000-cycle replacement rule to every Windows laptop or MacBook.
+                </p>
+              </div>
             </div>
 
             {/* MacBook */}
@@ -686,8 +828,22 @@ export default function BatteryHealthGuide() {
                 <li className="flex items-start gap-1.5 text-slate-400 text-xs sm:text-sm"><CheckCircle2 className="w-3 h-3 text-slate-300 flex-shrink-0 mt-0.5" aria-hidden="true" /><span><strong className="text-slate-300">Condition</strong> — Normal, Service Recommended, or Replace Soon.</span></li>
               </ul>
               <p className="text-slate-400 text-xs sm:text-sm leading-relaxed">
-                Exact wording and available detail can differ between macOS versions and Mac models. A "Service Recommended" or "Replace Soon" status is Apple’s own signal that capacity has dropped enough to matter — treat it as reliable.
+                Exact wording and available detail can differ between macOS versions and Mac models. A "Service Recommended" status means the battery may hold less charge than when new or may not be functioning normally; follow Apple’s service guidance for the exact model.
               </p>
+              <div className="mt-5 grid gap-4 md:grid-cols-2">
+                <div className="rounded-xl border border-slate-800 bg-brand-dark/60 p-4">
+                  <h4 className="text-sm font-bold text-white">Optional macOS Terminal Check</h4>
+                  <pre className="mt-3 overflow-x-auto rounded-lg bg-slate-950 p-3 text-xs leading-6 text-cyan-200"><code>pmset -g batt
+system_profiler SPPowerDataType</code></pre>
+                  <p className="mt-2 text-xs leading-5 text-slate-500">These commands show the current power source and the system’s reported power/battery information. Available fields vary by Mac model and macOS version; use Battery Health in System Settings as the primary user-facing check.</p>
+                </div>
+                <div className="rounded-xl border border-slate-800 bg-brand-dark/60 p-4">
+                  <h4 className="text-sm font-bold text-white">Linux with UPower</h4>
+                  <pre className="mt-3 overflow-x-auto rounded-lg bg-slate-950 p-3 text-xs leading-6 text-cyan-200"><code>upower -e
+upower -i /org/freedesktop/UPower/devices/battery_BAT0</code></pre>
+                  <p className="mt-2 text-xs leading-5 text-slate-500">First list devices with <code>upower -e</code>, then pass the battery object path shown on your own system to <code>upower -i</code>. The example path may differ, and UPower must be installed.</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -787,6 +943,14 @@ export default function BatteryHealthGuide() {
               </div>
             ))}
           </div>
+          <div className="mt-5 flex flex-wrap gap-3">
+            <Link to="/macbook-repair-kuwait" className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-slate-700 px-4 py-2 text-sm font-semibold text-cyan-300 hover:border-cyan-500/40 hover:text-cyan-200">
+              MacBook repair in Kuwait <ChevronRight className="h-4 w-4" aria-hidden="true" />
+            </Link>
+            <Link to="/macbook-battery-replacement-kuwait" className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-slate-700 px-4 py-2 text-sm font-semibold text-cyan-300 hover:border-cyan-500/40 hover:text-cyan-200">
+              MacBook battery replacement <ChevronRight className="h-4 w-4" aria-hidden="true" />
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -857,13 +1021,23 @@ export default function BatteryHealthGuide() {
                 </ol>
               </div>
               <div className="bg-brand-dark/60 p-4 rounded-xl border border-slate-800/60">
-                <span className="block text-[10px] sm:text-xs text-orange-400 font-bold uppercase tracking-wider mb-2">Disable Wi-Fi wake-on-LAN:</span>
+                <span className="block text-[10px] sm:text-xs text-orange-400 font-bold uppercase tracking-wider mb-2">Review Wi-Fi wake settings (where supported):</span>
                 <ol className="list-decimal list-inside text-xs sm:text-sm text-slate-300 space-y-2">
                   <li>Open Start, type <strong>"Device Manager"</strong>.</li>
                   <li>Expand <strong>"Network adapters"</strong>, select your Wi-Fi device.</li>
-                  <li>Open the <strong>Power Management</strong> tab.</li>
-                  <li>Uncheck <strong>"Allow this device to wake the computer"</strong>.</li>
+                  <li>Review the <strong>Power Management</strong> or wake settings if the driver exposes them.</li>
+                  <li>Available controls vary by adapter, driver, and Modern Standby implementation.</li>
                 </ol>
+              </div>
+              <div className="mt-4 rounded-xl border border-indigo-500/20 bg-indigo-500/5 p-4">
+                <h4 className="text-sm font-bold text-white">Windows 11: Check Modern Standby</h4>
+                <p className="mt-2 text-xs leading-6 text-slate-300 sm:text-sm">Open Windows Terminal or PowerShell as Administrator. These read-only checks show supported sleep states and whether timers or power requests may be keeping the system active:</p>
+                <pre className="mt-3 overflow-x-auto rounded-lg bg-slate-950 p-3 text-xs leading-6 text-cyan-200"><code>powercfg /a
+powercfg /sleepstudy /output "$env:USERPROFILE\Desktop\sleepstudy.html"
+powercfg /waketimers
+powercfg /requests</code></pre>
+                <p className="mt-2 text-xs leading-6 text-slate-400">SleepStudy is available on Modern Standby-capable systems. Its HTML report summarizes recent sessions, power use, blockers, and the most active components (including a device path when available); it does not identify an exact culprit on every PC. Microsoft’s report covers the last three days by default.</p>
+                <p className="mt-2 text-xs leading-6 text-slate-400">If Hibernate is supported but disabled, <code>powercfg /hibernate on</code> enables the Windows hibernation feature. Then choose Hibernate as the lid-close action if that option is available. This does not add sleep states that the hardware or firmware does not support.</p>
               </div>
             </div>
           </div>
@@ -1013,21 +1187,45 @@ export default function BatteryHealthGuide() {
             <Badge className={`mb-3 border-slate-700 bg-slate-900 text-slate-300 ${sectionBadge}`}>Technical references</Badge>
             <h2 className="text-2xl font-bold text-white sm:text-3xl">Primary Sources & Manufacturer Guidance</h2>
             <p className="mt-3 text-sm leading-6 text-slate-400">
-              Battery behavior varies by model. These primary sources are the references used for the Windows, Mac, and swollen-battery safety guidance in this article.
+              Battery behavior varies by model. These manufacturer documents and technical references support the Windows, macOS, Linux, power-adapter, battery-protection, and swollen-battery guidance in this article.
             </p>
           </div>
-          <div className="grid gap-3 sm:grid-cols-3">
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             <a href="https://support.microsoft.com/en-US/Windows/Experience/Power-Battery/caring-for-your-battery-in-windows" target="_blank" rel="noopener noreferrer" className="rounded-xl border border-slate-800 bg-brand-dark/40 p-4 transition hover:border-cyan-500/40">
               <span className="text-sm font-bold text-white">Microsoft Support</span>
-              <span className="mt-1 block text-xs leading-5 text-slate-400">Windows 11 battery care and battery-report guidance.</span>
+              <span className="mt-1 block text-xs leading-5 text-slate-400">Windows battery care and battery-report guidance.</span>
             </a>
-            <a href="https://support.apple.com/en-au/102589" target="_blank" rel="noopener noreferrer" className="rounded-xl border border-slate-800 bg-brand-dark/40 p-4 transition hover:border-cyan-500/40">
+            <a href="https://learn.microsoft.com/en-us/windows-hardware/design/device-experiences/powercfg-command-line-options" target="_blank" rel="noopener noreferrer" className="rounded-xl border border-slate-800 bg-brand-dark/40 p-4 transition hover:border-cyan-500/40">
+              <span className="text-sm font-bold text-white">Microsoft Learn: PowerCfg</span>
+              <span className="mt-1 block text-xs leading-5 text-slate-400">Official syntax for batteryreport, SleepStudy, wake timers, and hibernation.</span>
+            </a>
+            <a href="https://learn.microsoft.com/en-us/windows-hardware/design/device-experiences/modern-standby-sleepstudy" target="_blank" rel="noopener noreferrer" className="rounded-xl border border-slate-800 bg-brand-dark/40 p-4 transition hover:border-cyan-500/40">
+              <span className="text-sm font-bold text-white">Microsoft Learn: SleepStudy</span>
+              <span className="mt-1 block text-xs leading-5 text-slate-400">How to read Modern Standby sessions, blockers, and top active components.</span>
+            </a>
+            <a href="https://support.apple.com/en-kw/108376" target="_blank" rel="noopener noreferrer" className="rounded-xl border border-slate-800 bg-brand-dark/40 p-4 transition hover:border-cyan-500/40">
               <span className="text-sm font-bold text-white">Apple Support</span>
-              <span className="mt-1 block text-xs leading-5 text-slate-400">Mac battery health, maximum capacity, and battery-health management.</span>
+              <span className="mt-1 block text-xs leading-5 text-slate-400">What Normal and Service Recommended mean for Mac battery health.</span>
             </a>
-            <a href="https://www.dell.com/support/kbdoc/en-us/000143524/the-battery-drains-quicker-than-expected-on-a-dell-notebook-with-modern-standby-mode-enabled" target="_blank" rel="noopener noreferrer" className="rounded-xl border border-slate-800 bg-brand-dark/40 p-4 transition hover:border-cyan-500/40">
-              <span className="text-sm font-bold text-white">Dell Support</span>
-              <span className="mt-1 block text-xs leading-5 text-slate-400">Swollen/deformed battery identification and safety guidance.</span>
+            <a href="https://www.dell.com/support/kbdoc/en-us/000128491/swollen-battery-information-and-guidance" target="_blank" rel="noopener noreferrer" className="rounded-xl border border-slate-800 bg-brand-dark/40 p-4 transition hover:border-cyan-500/40">
+              <span className="text-sm font-bold text-white">Dell Support: Swollen Batteries</span>
+              <span className="mt-1 block text-xs leading-5 text-slate-400">Swelling signs, handling cautions, and professional replacement guidance.</span>
+            </a>
+            <a href="https://www.dell.com/support/kbdoc/en-us/000125337/identify-ac-adapter-damage-on-dell-systems" target="_blank" rel="noopener noreferrer" className="rounded-xl border border-slate-800 bg-brand-dark/40 p-4 transition hover:border-cyan-500/40">
+              <span className="text-sm font-bold text-white">Dell Support: Unknown Adapter</span>
+              <span className="mt-1 block text-xs leading-5 text-slate-400">How an unrecognized adapter can lead to reduced performance and charging failure on Dell systems.</span>
+            </a>
+            <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3247723/" target="_blank" rel="noopener noreferrer" className="rounded-xl border border-slate-800 bg-brand-dark/40 p-4 transition hover:border-cyan-500/40">
+              <span className="text-sm font-bold text-white">Peer-Reviewed Battery Research</span>
+              <span className="mt-1 block text-xs leading-5 text-slate-400">Technical background on internal resistance and voltage drop under load.</span>
+            </a>
+            <a href="https://www.ti.com/product-category/battery-management-ics/battery-protectors/overview.html" target="_blank" rel="noopener noreferrer" className="rounded-xl border border-slate-800 bg-brand-dark/40 p-4 transition hover:border-cyan-500/40">
+              <span className="text-sm font-bold text-white">Texas Instruments</span>
+              <span className="mt-1 block text-xs leading-5 text-slate-400">Battery-pack protection options, including FET and fuse-based designs.</span>
+            </a>
+            <a href="https://upower.freedesktop.org/docs/upower.1.html" target="_blank" rel="noopener noreferrer" className="rounded-xl border border-slate-800 bg-brand-dark/40 p-4 transition hover:border-cyan-500/40">
+              <span className="text-sm font-bold text-white">UPower Documentation</span>
+              <span className="mt-1 block text-xs leading-5 text-slate-400">Linux commands for listing and inspecting battery devices.</span>
             </a>
           </div>
         </div>
