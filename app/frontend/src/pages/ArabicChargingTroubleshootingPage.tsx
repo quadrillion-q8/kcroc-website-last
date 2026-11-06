@@ -182,8 +182,8 @@ const schema = {
       inLanguage: 'ar-KW',
       datePublished: '2026-10-26',
       dateModified: '2026-11-07',
-      author: { '@type': 'Organization', '@id': business.websiteUrl + '/#organization', name: business.title, url: business.websiteUrl },
-      publisher: { '@type': 'Organization', '@id': business.websiteUrl + '/#organization', name: business.title, url: business.websiteUrl },
+      author: { '@type': 'Organization', name: business.title, url: business.websiteUrl },
+      publisher: { '@id': business.websiteUrl + '/#business' },
       articleSection: 'تشخيص أعطال اللابتوب والشحن',
       keywords: [
         'اللابتوب متصل بالشاحن ولا يشحن',
