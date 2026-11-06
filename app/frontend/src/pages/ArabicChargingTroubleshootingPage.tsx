@@ -167,7 +167,50 @@ const priceRows = [
 ];
 
 const pageUrl = business.websiteUrl + '/ar/laptop-plugged-in-not-charging';
-const pageImage = business.websiteUrl + '/images/laptop-dc-power-jack-connector-replacement-kuwait-1000.webp';
+const pageImage = business.websiteUrl + '/images/gallery/dell-vostro-laptop-motherboard-removed-fan-heatsink-chip-level-repair.webp';
+
+const chargingPhotos = {
+  hero: {
+    src: '/images/gallery/dell-vostro-laptop-motherboard-removed-fan-heatsink-chip-level-repair.webp',
+    mobileSrc: '/images/gallery/dell-vostro-laptop-motherboard-removed-fan-heatsink-chip-level-repair.w640.webp',
+    alt: 'لوحة أم للابتوب Dell Vostro بعد فكها على طاولة الفحص في مختبر صيانة KCROC',
+    caption: 'صورة فعلية للوحة أم لابتوب بعد الفك على طاولة الفحص؛ نتحقق من مسار الطاقة وفق تصميم الجهاز ورقم اللوحة.',
+    width: 1400,
+    height: 1400,
+  },
+  dcHarness: {
+    src: '/images/gallery/laptop-dc-jack-cable-harness-charging-port-replacement-kuwait.webp',
+    mobileSrc: '/images/gallery/laptop-dc-jack-cable-harness-charging-port-replacement-kuwait.w640.webp',
+    alt: 'كابل ووحدة مدخل طاقة DC Jack للابتوب مع موصل التوصيل',
+    caption: 'مثال حقيقي لوحدة DC Jack وكابلها؛ يختلف شكل الوحدة وطريقة توصيلها حسب موديل اللابتوب.',
+    width: 1400,
+    height: 1400,
+  },
+  dcConnector: {
+    src: '/images/gallery/laptop-dc-power-jack-connector-replacement-part-kuwait.webp',
+    mobileSrc: '/images/gallery/laptop-dc-power-jack-connector-replacement-part-kuwait.w640.webp',
+    alt: 'قطعة موصل طاقة DC Jack بديلة للابتوب مع فتحة القابس الداخلية',
+    caption: 'موصل DC Jack بديل كمثال على القطعة التي قد تُفحص أو تُستبدل عند ثبوت تلف المدخل.',
+    width: 1328,
+    height: 1328,
+  },
+  usbController: {
+    src: '/images/gallery/macbook-pro-logic-board-power-section-usb-c-controller-chips.webp',
+    mobileSrc: '/images/gallery/macbook-pro-logic-board-power-section-usb-c-controller-chips.w640.webp',
+    alt: 'لقطة قريبة لمنطقة الطاقة ومتحكمات USB-C على لوحة MacBook Pro',
+    caption: 'صورة فعلية لمنطقة الطاقة ومتحكمات USB-C على لوحة MacBook Pro؛ أسماء الشرائح ومساراتها تختلف حسب رقم اللوحة.',
+    width: 1400,
+    height: 1400,
+  },
+  usbPort: {
+    src: '/images/gallery/macbook-pro-thunderbolt-usb-c-port-replacement-board-repair.webp',
+    mobileSrc: '/images/gallery/macbook-pro-thunderbolt-usb-c-port-replacement-board-repair.w640.webp',
+    alt: 'منفذ Thunderbolt USB-C مثبت على لوحة MacBook Pro أثناء فحص أو إصلاح اللوحة',
+    caption: 'مثال قريب لمنفذ USB-C على لوحة MacBook Pro؛ سلامة المنفذ لا تثبت وحدها سلامة تفاوض USB Power Delivery.',
+    width: 1400,
+    height: 1400,
+  },
+};
 
 const schema = {
   '@graph': [
@@ -239,12 +282,35 @@ export default function ArabicChargingTroubleshootingPage() {
             <span className="rounded-full border border-cyan-500/20 bg-cyan-500/10 px-3 py-1.5">دليل تشخيص عملي وخدمة مختبر</span>
             <span className="rounded-full border border-slate-700 bg-slate-900/70 px-3 py-1.5">Laptop Plugged In, Not Charging</span>
           </div>
-          <h1 className="mt-5 max-w-4xl text-3xl font-black leading-tight text-white sm:text-5xl">
-            اللابتوب متصل بالشاحن ولا يشحن؟ شلون نحدد السبب الحقيقي بأمان قبل تبديل أي قطعة
-          </h1>
-          <p className="mt-5 max-w-4xl text-base leading-8 text-slate-300 sm:text-lg">
-            ظهور رسالة «متصل بالشاحن ولا يشحن» (Plugged in, not charging)، أو توقف النسبة عند 0% أو 80%، لا يعني بالضرورة أن البطارية تالفة أو أن المذربورد تحتاج استبدالاً كاملاً. قد يكون السبب إعداد حماية البطارية، أو شاحناً ضعيفاً أو لا يتعرّف عليه الجهاز، أو منفذ DC Jack أو USB-C، أو خلايا البطارية، أو دائرة الشحن على اللوحة الأم. يوضح لك هذا الدليل الفحوصات الآمنة، وكيف نفرّق في مختبر KCROC بحولي بين الأسباب قبل اقتراح قطعة أو إصلاح مدفوع.
-          </p>
+          <div className="mt-5 grid gap-6 lg:grid-cols-[minmax(0,1.08fr)_minmax(280px,0.92fr)] lg:items-center">
+            <div>
+              <h1 className="text-3xl font-black leading-tight text-white sm:text-5xl">
+                اللابتوب متصل بالشاحن ولا يشحن؟ شلون نحدد السبب الحقيقي بأمان قبل تبديل أي قطعة
+              </h1>
+              <p className="mt-5 text-base leading-8 text-slate-300 sm:text-lg">
+                ظهور رسالة «متصل بالشاحن ولا يشحن» (Plugged in, not charging)، أو توقف النسبة عند 0% أو 80%، لا يعني بالضرورة أن البطارية تالفة أو أن المذربورد تحتاج استبدالاً كاملاً. قد يكون السبب إعداد حماية البطارية، أو شاحناً ضعيفاً أو لا يتعرّف عليه الجهاز، أو منفذ DC Jack أو USB-C، أو خلايا البطارية، أو دائرة الشحن على اللوحة الأم. يوضح لك هذا الدليل الفحوصات الآمنة، وكيف نفرّق في مختبر KCROC بحولي بين الأسباب قبل اقتراح قطعة أو إصلاح مدفوع.
+              </p>
+            </div>
+            <figure className="overflow-hidden rounded-2xl border border-slate-700 bg-slate-950/70 shadow-xl">
+              <div className="aspect-[4/3] overflow-hidden">
+                <picture>
+                  <source media="(max-width: 640px)" srcSet={chargingPhotos.hero.mobileSrc} />
+                  <img
+                    src={chargingPhotos.hero.src}
+                    alt={chargingPhotos.hero.alt}
+                    width={chargingPhotos.hero.width}
+                    height={chargingPhotos.hero.height}
+                    sizes="(max-width: 1024px) 100vw, 42vw"
+                    loading="eager"
+                    fetchPriority="high"
+                    decoding="async"
+                    className="h-full w-full object-cover"
+                  />
+                </picture>
+              </div>
+              <figcaption className="px-4 py-3 text-xs leading-6 text-slate-400">{chargingPhotos.hero.caption}</figcaption>
+            </figure>
+          </div>
 
           <div className="mt-7 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
             <article className="rounded-2xl border border-cyan-500/25 bg-cyan-500/5 p-4">
@@ -319,6 +385,45 @@ export default function ArabicChargingTroubleshootingPage() {
             </table>
           </div>
           <p className="mt-3 text-xs leading-6 text-slate-500">هذه احتمالات إرشادية وليست تشخيصاً عن بُعد. نوع الدائرة والمتحكمات يختلف بحسب الماركة والموديل ورقم اللوحة.</p>
+          <div className="mt-7">
+            <h3 className="mb-4 text-lg font-black text-white">أمثلة مصوّرة لوحدات مدخل الشحن</h3>
+            <div className="grid gap-4 sm:grid-cols-2">
+              <figure className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-950/70">
+                <div className="aspect-[16/10] overflow-hidden">
+                  <picture>
+                    <source media="(max-width: 640px)" srcSet={chargingPhotos.dcHarness.mobileSrc} />
+                    <img
+                      src={chargingPhotos.dcHarness.src}
+                      alt={chargingPhotos.dcHarness.alt}
+                      width={chargingPhotos.dcHarness.width}
+                      height={chargingPhotos.dcHarness.height}
+                      loading="lazy"
+                      decoding="async"
+                      className="h-full w-full object-cover"
+                    />
+                  </picture>
+                </div>
+                <figcaption className="px-4 py-3 text-sm leading-7 text-slate-400">{chargingPhotos.dcHarness.caption}</figcaption>
+              </figure>
+              <figure className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-950/70">
+                <div className="aspect-[16/10] overflow-hidden">
+                  <picture>
+                    <source media="(max-width: 640px)" srcSet={chargingPhotos.dcConnector.mobileSrc} />
+                    <img
+                      src={chargingPhotos.dcConnector.src}
+                      alt={chargingPhotos.dcConnector.alt}
+                      width={chargingPhotos.dcConnector.width}
+                      height={chargingPhotos.dcConnector.height}
+                      loading="lazy"
+                      decoding="async"
+                      className="h-full w-full object-cover"
+                    />
+                  </picture>
+                </div>
+                <figcaption className="px-4 py-3 text-sm leading-7 text-slate-400">{chargingPhotos.dcConnector.caption}</figcaption>
+              </figure>
+            </div>
+          </div>
         </section>
 
         <section className="mt-10 rounded-3xl border border-slate-800 bg-slate-900/45 p-6 sm:p-8" aria-labelledby="charging-safe-checks-heading">
@@ -358,6 +463,42 @@ export default function ArabicChargingTroubleshootingPage() {
           <p className="text-sm font-black tracking-wide text-cyan-400">Component-Level Diagnosis</p>
           <h2 id="charging-lab-heading" className="mt-2 text-2xl font-black text-white sm:text-3xl">شلون نعزل سبب عطل الشحن داخل مختبر KCROC في حولي؟</h2>
           <p className="mt-3 max-w-4xl leading-8 text-slate-300">شعارنا: «نصلح اللوحة، ولا نكتفي بتبديلها» (We fix the board. We don’t just swap it). بعد التأكد من الشاحن والموديل، نتتبع مسار الطاقة ونتائج القياس على مستوى المكوّن. لا توجد شريحة واحدة أو مخطط واحد ينطبق على جميع اللابتوبات.</p>
+          <div className="mt-6 grid gap-4 md:grid-cols-2">
+            <figure className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-950/70">
+              <div className="aspect-[16/10] overflow-hidden">
+                <picture>
+                  <source media="(max-width: 640px)" srcSet={chargingPhotos.usbController.mobileSrc} />
+                  <img
+                    src={chargingPhotos.usbController.src}
+                    alt={chargingPhotos.usbController.alt}
+                    width={chargingPhotos.usbController.width}
+                    height={chargingPhotos.usbController.height}
+                    loading="lazy"
+                    decoding="async"
+                    className="h-full w-full object-cover"
+                  />
+                </picture>
+              </div>
+              <figcaption className="px-4 py-3 text-sm leading-7 text-slate-400">{chargingPhotos.usbController.caption}</figcaption>
+            </figure>
+            <figure className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-950/70">
+              <div className="aspect-[16/10] overflow-hidden">
+                <picture>
+                  <source media="(max-width: 640px)" srcSet={chargingPhotos.usbPort.mobileSrc} />
+                  <img
+                    src={chargingPhotos.usbPort.src}
+                    alt={chargingPhotos.usbPort.alt}
+                    width={chargingPhotos.usbPort.width}
+                    height={chargingPhotos.usbPort.height}
+                    loading="lazy"
+                    decoding="async"
+                    className="h-full w-full object-cover"
+                  />
+                </picture>
+              </div>
+              <figcaption className="px-4 py-3 text-sm leading-7 text-slate-400">{chargingPhotos.usbPort.caption}</figcaption>
+            </figure>
+          </div>
           <div className="mt-6 grid gap-4 md:grid-cols-2">
             {labChecks.map((check, index) => (
               <article key={check.title} className="rounded-2xl border border-slate-800 bg-slate-950/60 p-5">
