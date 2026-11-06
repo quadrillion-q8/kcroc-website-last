@@ -255,8 +255,6 @@ export default function Header() {
               )}
             </div>
 
-            <div className="flex shrink-0 items-center gap-1 xl:hidden">            </div>
-
             <div className="flex shrink-0 items-center gap-1 xl:hidden">
               <Link
                 to={languageSwitch.href}
