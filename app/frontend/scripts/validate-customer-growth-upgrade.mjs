@@ -1006,7 +1006,7 @@ add('Arabic charging troubleshooting page has static FAQ answers, safe checks an
   && arabicChargingGuide.includes('acceptedAnswer: { \'@type\': \'Answer\', text: item.a }')
   && arabicChargingGuide.includes('to="/laptop-plugged-in-not-charging"')
   && arabicChargingGuide.includes('to="/ar/laptop-charging-port-repair-kuwait"')
-  && arabicChargingGuide.includes("لا تدخل أدوات معدنية"));
+  && arabicChargingGuide.includes("لا تدخل دبوساً أو عوداً أو أداة معدنية"));
 
 add('Motherboard service snippet targets laptop, desktop and MacBook logic-board intent',
   graph.includes("title: 'Laptop Motherboard Repair Kuwait | MacBook Logic Board | KCROC'") &&
