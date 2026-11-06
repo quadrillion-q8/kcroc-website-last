@@ -2269,7 +2269,8 @@ export const BLOG_POSTS: BlogPost[] = [
     ],
     seoTitle: "Gaming PC Cooling Guide: Overheating & Throttling | KCROC",
     seoDescription: "Why is your gaming PC overheating? Learn how to read CPU and GPU temperatures, diagnose thermal throttling, improve airflow, tune fan curves and choose air or liquid cooling."
-  },  {
+  },
+  {
     id: "blog-screen-protect",
     slug: "how-to-protect-laptop-screen",
     title: "How to Protect Your Laptop Screen from Breaking",
