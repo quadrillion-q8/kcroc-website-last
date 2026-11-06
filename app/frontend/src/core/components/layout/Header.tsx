@@ -41,6 +41,7 @@ export default function Header() {
   const mobileToggleRef = useRef<HTMLButtonElement>(null);
   
   const location = useLocation();
+  const isGlobalEditorialArticle = location.pathname === '/blog/why-8gb-ram-is-no-longer-enough-for-windows-11';
   const isArabicRoute = location.pathname === '/ar' || location.pathname.startsWith('/ar/') || location.pathname.startsWith('/blog/ar/') || location.pathname.startsWith('/guides/ar/');
   const { trackConversion } = useAnalytics();
   
@@ -230,24 +231,31 @@ export default function Header() {
               >
                 {searchOpen ? <X size={18} aria-hidden="true" /> : <Search size={18} aria-hidden="true" />}
               </button>
-              <a href={`tel:+${cleanTel}`} onClick={() => trackConversion('phone_call_click', { cta_name: 'header_phone', button_position: 'header' })} className="flex min-h-12 min-w-12 items-center justify-center gap-2 rounded-md text-sm font-medium text-slate-700 transition-colors hover:text-blue-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600">
-                <Phone size={15} className="text-blue-600" aria-hidden="true" />
-                <span className="hidden kcroc-header-phone-number 2xl:block">{phoneDisplay}</span>
-              </a>
-              <Button
-                asChild
-                variant="ctaPrimary"
-                className="min-h-12 max-w-full gap-2 rounded-lg bg-blue-600 px-3 py-2 text-center text-sm leading-tight text-white transition-colors hover:bg-blue-700 focus-visible:ring-2 focus-visible:ring-blue-600"
-              >
-                <Link to="/book" onClick={() => trackConversion('cta_click', { cta_name: 'header_book', button_position: 'header' })}>
-                  <CalendarCheck size={15} aria-hidden="true" />
-                  <span className="flex min-w-0 flex-col items-start leading-tight">
-                    <span>{isArabicRoute ? 'احجز استلام مجاني' : 'Book Free Pickup'}</span>
-                    <span className="mt-0.5 text-[10px] font-semibold text-white">{isArabicRoute ? 'استلام مجاني في جميع مناطق الكويت' : 'Free pickup across Kuwait'}</span>
-                  </span>
-                </Link>
-              </Button>
+              {!isGlobalEditorialArticle && (
+                <>
+                <a href={`tel:+${cleanTel}`} onClick={() => trackConversion('phone_call_click', { cta_name: 'header_phone', button_position: 'header' })} className="flex min-h-12 min-w-12 items-center justify-center gap-2 rounded-md text-sm font-medium text-slate-700 transition-colors hover:text-blue-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600">
+                  <Phone size={15} className="text-blue-600" aria-hidden="true" />
+                  <span className="hidden kcroc-header-phone-number 2xl:block">{phoneDisplay}</span>
+                </a>
+                <Button
+                  asChild
+                  variant="ctaPrimary"
+                  className="min-h-12 max-w-full gap-2 rounded-lg bg-blue-600 px-3 py-2 text-center text-sm leading-tight text-white transition-colors hover:bg-blue-700 focus-visible:ring-2 focus-visible:ring-blue-600"
+                >
+                  <Link to="/book" onClick={() => trackConversion('cta_click', { cta_name: 'header_book', button_position: 'header' })}>
+                    <CalendarCheck size={15} aria-hidden="true" />
+                    <span className="flex min-w-0 flex-col items-start leading-tight">
+                      <span>{isArabicRoute ? 'احجز استلام مجاني' : 'Book Free Pickup'}</span>
+                      <span className="mt-0.5 text-[10px] font-semibold text-white">{isArabicRoute ? 'استلام مجاني في جميع مناطق الكويت' : 'Free pickup across Kuwait'}</span>
+                    </span>
+                  </Link>
+                </Button>
+  
+                </>
+              )}
             </div>
+
+            <div className="flex shrink-0 items-center gap-1 xl:hidden">            </div>
 
             <div className="flex shrink-0 items-center gap-1 xl:hidden">
               <Link
