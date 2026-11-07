@@ -7,19 +7,13 @@ import { Link } from 'react-router-dom';
 import {
   AlertTriangle,
   ArrowLeft,
-  BatteryCharging,
   CheckCircle2,
-  Cpu,
-  Droplets,
-  FlaskConical,
   MapPin,
   MessageCircle,
-  Microscope,
   ShieldAlert,
   ShieldCheck,
   Truck,
   Wrench,
-  Zap,
 } from 'lucide-react';
 import { KCROC_GRAPH } from '../data/graph';
 import { SEOEngine } from '../core/components/SEOEngine';
@@ -27,7 +21,6 @@ import SchemaMarkup from '../components/seo/SchemaMarkup';
 import { buildWhatsAppLink } from '../utils/whatsappIntent';
 
 const business = KCROC_GRAPH.business!;
-const SERVICE = KCROC_GRAPH.services.find((item) => item.id === 'srv-liquid-damage');
 const BASE_URL = business.websiteUrl.replace(/\/$/, '');
 const PAGE_URL = `${BASE_URL}/ar/laptop-liquid-damage-repair-kuwait`;
 
