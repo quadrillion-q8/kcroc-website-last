@@ -229,7 +229,6 @@ export default function Header() {
                 {languageSwitch.targetLanguage === 'ar' ? 'عربي' : 'EN'}
               </Link>
               )}
-              )}
               <button
                 onClick={() => {
                   setActiveMegaId(null);
