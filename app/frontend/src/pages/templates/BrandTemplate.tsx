@@ -3,7 +3,7 @@ import React from 'react';
 import { useLocation, Navigate, Link } from 'react-router-dom';
 import { KCROC_GRAPH } from '../../data/graph';
 import { SEOEngine } from '../../core/components/SEOEngine';
-import { getIntentWhatsAppLink } from '../../utils/whatsappIntent';
+import { buildWhatsAppLink, getIntentWhatsAppLink } from '../../utils/whatsappIntent';
 import CoreRepairPillars from '../../components/content/CoreRepairPillars';
 import {
   Wrench,
@@ -15,6 +15,7 @@ import {
   Thermometer,
   CircuitBoard,
   MapPin,
+  MessageCircle,
 } from 'lucide-react';
 
 const BrandTemplate: React.FC = () => {
@@ -42,6 +43,10 @@ const BrandTemplate: React.FC = () => {
   const technicalCapabilities = brand.technicalCapabilities ?? [];
   const faqs = brand.faqs ?? [];
   const familyGroups = brand.familyGroups ?? [];
+  const symptomTriage = brand.symptomTriage ?? [];
+  const repairMatrix = brand.repairMatrix ?? [];
+  const diagnosticCodeGuide = brand.diagnosticCodeGuide ?? [];
+  const priceGuide = brand.priceGuide ?? [];
   const relatedServices = relatedServiceIds
     .map((id) => KCROC_GRAPH.services.find((service) => service.id === id))
     .filter(Boolean);
@@ -168,6 +173,38 @@ const BrandTemplate: React.FC = () => {
         </div>
       </section>
 
+      {symptomTriage.length > 0 && (
+        <section aria-labelledby="brand-symptom-triage" className="border-b border-slate-800 bg-slate-950/70 px-6 py-10">
+          <div className="mx-auto max-w-6xl">
+            <div className="mb-6 max-w-3xl">
+              <p className="mb-2 text-sm font-bold uppercase tracking-[0.18em] text-cyan-400">{brand.brandName} symptom support</p>
+              <h2 id="brand-symptom-triage" className="text-2xl font-black text-white md:text-3xl">What is happening with your HP laptop?</h2>
+              <p className="mt-3 text-sm leading-7 text-slate-400">Choose the closest symptom to open WhatsApp with a message that includes the model details our Hawalli technician needs. The cause is confirmed only after diagnosis.</p>
+            </div>
+            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+              {symptomTriage.map((item) => (
+                <a
+                  key={item.id}
+                  href={buildWhatsAppLink(item.message)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex min-h-44 flex-col rounded-2xl border border-slate-800 bg-slate-900/70 p-5 transition-colors hover:border-cyan-500/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+                >
+                  <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-300 transition-colors group-hover:bg-cyan-500/20">
+                    <MessageCircle className="h-5 w-5" aria-hidden="true" />
+                  </span>
+                  <span className="mt-4 font-bold leading-6 text-white">{item.title}</span>
+                  <span className="mt-2 text-xs leading-6 text-slate-400">{item.description}</span>
+                  <span className="mt-auto inline-flex items-center gap-2 pt-4 text-xs font-black text-cyan-300">
+                    WhatsApp a technician <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+                  </span>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       <div className="mx-auto max-w-6xl px-6 py-16">
         {/* Brand families */}
         {familyGroups.length > 0 && (
@@ -202,6 +239,40 @@ const BrandTemplate: React.FC = () => {
                   </div>
                 </article>
               ))}
+            </div>
+          </section>
+        )}
+
+        {repairMatrix.length > 0 && (
+          <section aria-labelledby="brand-repair-matrix" className="mb-20">
+            <div className="mb-8 max-w-3xl">
+              <p className="mb-2 text-sm font-bold uppercase tracking-[0.18em] text-cyan-400">{brand.brandName} engineering &amp; fault matrix</p>
+              <h2 id="brand-repair-matrix" className="text-3xl font-black text-white md:text-4xl">Common HP faults by laptop family</h2>
+              <p className="mt-4 leading-7 text-slate-400">These are diagnostic pathways, not assumptions that every model has the same fault. The exact product number and physical inspection determine which repair is suitable.</p>
+            </div>
+            <div className="overflow-hidden rounded-2xl border border-slate-800">
+              <div className="overflow-x-auto">
+                <table className="w-full min-w-[880px] border-collapse text-left text-sm">
+                  <thead className="bg-slate-900 text-slate-200">
+                    <tr>
+                      <th scope="col" className="px-5 py-4 font-black">HP series</th>
+                      <th scope="col" className="px-5 py-4 font-black">Common symptoms to investigate</th>
+                      <th scope="col" className="px-5 py-4 font-black">What the lab checks</th>
+                      <th scope="col" className="px-5 py-4 font-black">Possible repair path</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-800 bg-slate-900/45 text-slate-300">
+                    {repairMatrix.map((row) => (
+                      <tr key={row.series}>
+                        <th scope="row" className="px-5 py-4 align-top font-bold text-white">{row.series}</th>
+                        <td className="px-5 py-4 align-top leading-7">{row.commonFaults}</td>
+                        <td className="px-5 py-4 align-top leading-7">{row.diagnosticPath}</td>
+                        <td className="px-5 py-4 align-top leading-7">{row.repairOptions}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
           </section>
         )}
@@ -248,7 +319,29 @@ const BrandTemplate: React.FC = () => {
         </section>
         )}
 
-        {/* Technical expertise */}
+        {diagnosticCodeGuide.length > 0 && (
+          <section aria-labelledby="brand-diagnostic-codes" className="mb-20 rounded-3xl border border-slate-800 bg-slate-900/45 p-7 md:p-9">
+            <div className="mb-7 max-w-3xl">
+              <p className="mb-2 text-sm font-bold uppercase tracking-[0.18em] text-cyan-400">HP startup alerts &amp; blink-code guidance</p>
+              <h2 id="brand-diagnostic-codes" className="text-3xl font-black text-white md:text-4xl">What an HP warning can—and cannot—tell you</h2>
+              <p className="mt-4 leading-7 text-slate-400">Error messages are useful clues, but they do not identify a failed part on their own. HP blink-code meanings can vary by model and generation; send the exact product number and a short video of the full sequence rather than relying on a generic blink-count chart.</p>
+            </div>
+            <div className="grid gap-4 md:grid-cols-3">
+              {diagnosticCodeGuide.map((item) => (
+                <article key={item.code} className="rounded-2xl border border-slate-800 bg-brand-dark/50 p-5">
+                  <h3 className="font-black text-white">{item.code}</h3>
+                  <p className="mt-3 text-sm leading-7 text-slate-300">{item.possibleMeaning}</p>
+                  <div className="mt-4 border-t border-slate-800 pt-4">
+                    <p className="mb-2 text-xs font-bold uppercase tracking-wider text-cyan-300">KCROC diagnostic approach</p>
+                    <p className="text-sm leading-7 text-slate-400">{item.diagnosticAction}</p>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* Technical expertise */
         <section aria-labelledby="component-repair" className="mb-20 rounded-3xl border border-cyan-900/50 bg-cyan-950/20 p-7 md:p-10">
           <div className="grid gap-10 lg:grid-cols-[1fr_.8fr]">
             <div>
@@ -329,7 +422,45 @@ const BrandTemplate: React.FC = () => {
         </section>
         )}
 
-        {/* Guides + evidence */}
+        {priceGuide.length > 0 && (
+          <section aria-labelledby="brand-price-guide" className="mb-20 rounded-3xl border border-cyan-900/40 bg-cyan-950/10 p-7 md:p-9">
+            <div className="mb-7 max-w-3xl">
+              <p className="mb-2 text-sm font-bold uppercase tracking-[0.18em] text-cyan-400">Transparent repair pricing · KWD</p>
+              <h2 id="brand-price-guide" className="text-3xl font-black text-white md:text-4xl">HP laptop repair prices in Kuwait</h2>
+              <p className="mt-4 leading-7 text-slate-300">KCROC provides a free initial hardware diagnosis and a fixed quotation before paid work begins. These are the published rates for the corresponding service categories—not a guaranteed price for every HP model or fault.</p>
+            </div>
+            <div className="overflow-hidden rounded-2xl border border-slate-800">
+              <div className="overflow-x-auto">
+                <table className="w-full min-w-[680px] border-collapse text-left text-sm">
+                  <thead className="bg-slate-900 text-slate-200">
+                    <tr>
+                      <th scope="col" className="px-5 py-4 font-black">Repair category</th>
+                      <th scope="col" className="px-5 py-4 font-black">Published rate</th>
+                      <th scope="col" className="px-5 py-4 font-black">What to know</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-800 bg-slate-900/50 text-slate-300">
+                    {priceGuide.map((item) => (
+                      <tr key={item.service}>
+                        <th scope="row" className="px-5 py-4 align-top font-bold text-white">{item.service}</th>
+                        <td className="px-5 py-4 align-top whitespace-nowrap font-black text-cyan-300">{item.price}</td>
+                        <td className="px-5 py-4 align-top leading-7">{item.note}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <p className="text-xs leading-6 text-slate-400">Part costs are additional wherever the rate says labour plus a part or panel. Final availability and total cost are confirmed for the exact product number before approval.</p>
+              <Link to="/pricing" className="inline-flex min-h-11 shrink-0 items-center gap-2 font-bold text-cyan-300 hover:text-cyan-200">
+                View the full repair price list <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </Link>
+            </div>
+          </section>
+        )}
+
+        {/* Guides + evidence */
         <section aria-labelledby="lenovo-resources" className="mb-20 grid gap-6 lg:grid-cols-2">
           {relatedResourcePaths.length > 0 && (
           <div className="rounded-3xl border border-slate-800 bg-slate-900/50 p-7">
