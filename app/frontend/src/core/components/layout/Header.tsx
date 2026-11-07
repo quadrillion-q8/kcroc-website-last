@@ -42,6 +42,7 @@ export default function Header() {
   
   const location = useLocation();
   const isGlobalEditorialArticle = location.pathname === '/blog/why-8gb-ram-is-no-longer-enough-for-windows-11' || location.pathname === '/blog/why-is-my-laptop-so-slow';
+  const isGlobalSlowLaptopGuide = location.pathname === '/blog/why-is-my-laptop-so-slow';
   const isArabicRoute = location.pathname === '/ar' || location.pathname.startsWith('/ar/') || location.pathname.startsWith('/blog/ar/') || location.pathname.startsWith('/guides/ar/');
   const { trackConversion } = useAnalytics();
   
@@ -164,7 +165,7 @@ export default function Header() {
                   src="/logo-128.webp"
                   srcSet="/logo-128.webp 128w, /logo-256.webp 256w"
                   sizes="72px"
-                  alt="KCROC — Kuwait Computer Repair On Call"
+                  alt={isGlobalSlowLaptopGuide ? "KCROC Hardware Engineering Lab" : "KCROC — Kuwait Computer Repair On Call"}
                   width="72"
                   height="72"
                   decoding="async"
@@ -218,6 +219,8 @@ export default function Header() {
             </nav>
 
             <div className="hidden min-w-0 flex-wrap items-center justify-end gap-1.5 xl:flex 2xl:gap-2.5">
+              {!isGlobalSlowLaptopGuide && (
+              {!isGlobalSlowLaptopGuide && (
               <Link
                 to={languageSwitch.href}
                 lang={languageSwitch.targetLanguage === 'ar' ? 'ar' : 'en'}
@@ -226,6 +229,8 @@ export default function Header() {
               >
                 {languageSwitch.targetLanguage === 'ar' ? 'عربي' : 'EN'}
               </Link>
+              )}
+              )}
               <button
                 onClick={() => {
                   setActiveMegaId(null);
