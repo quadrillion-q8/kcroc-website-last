@@ -132,7 +132,7 @@ export const ServiceAreas = () => {
               { label: 'تصليح كمبيوتر بالقرب مني', path: '/ar/near-me' },
               { label: 'تصليح كمبيوتر حولي', path: '/ar/computer-repair-hawalli' },
               { label: 'تصليح لابتوب', path: '/ar/laptop-repair-kuwait' },
-              { label: 'تبديل بطارية', path: '/ar/battery-replacement-kuwait' },
+              { label: 'تبديل بطارية', path: '/ar/laptop-battery-replacement-kuwait' },
               { label: 'تبديل شاشة', path: '/ar/laptop-screen-repair-kuwait' },
               { label: 'تبديل كيبورد', path: '/ar/laptop-keyboard-replacement-kuwait' },
               { label: 'ترقية SSD وRAM', path: '/ar/ssd-ram-upgrade-kuwait' },
