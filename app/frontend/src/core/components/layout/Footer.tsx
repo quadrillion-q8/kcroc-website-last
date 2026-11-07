@@ -111,6 +111,7 @@ export function Footer() {
   const isArabicRoute = location.pathname === '/ar' || location.pathname.startsWith('/ar/') || location.pathname.startsWith('/blog/ar/') || location.pathname.startsWith('/guides/ar/');
   const isHawalliLandingPage = location.pathname.replace(/\/+$/, '') === '/location/hawalli';
   const isWindowsBatteryPage = location.pathname === '/battery-replacement-kuwait' || location.pathname === '/ar/battery-replacement-kuwait';
+  const isGlobalEditorialArticle = location.pathname === '/blog/why-is-my-laptop-so-slow';
   const localizedPath = (path: string) => isArabicRoute ? (ARABIC_PATHS[path] ?? path) : path;
   const serviceLabel = (path: string, label: string) => isArabicRoute ? (ARABIC_SERVICE_LABELS[path] ?? label.replace(' Kuwait', '')) : label.replace(' Kuwait', '');
   const companyLabel = (path: string, label: string) => isArabicRoute ? (ARABIC_COMPANY_LABELS[path] ?? label) : label;
@@ -125,6 +126,26 @@ export function Footer() {
   const trustBadges = NAV_GRAPH.trustBadges;
 
   if (!business || !footerData) return null;
+
+  if (isGlobalEditorialArticle) {
+    return (
+      <footer className="relative z-10 border-t border-white/10 bg-[#0c1214] py-9" aria-label="Editorial footer">
+        <div className="mx-auto flex max-w-7xl flex-col gap-5 px-4 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
+          <div>
+            <p className="text-sm font-black tracking-wide text-white">KCROC Hardware Engineering Lab</p>
+            <p className="mt-1 max-w-xl text-xs leading-6 text-slate-500">Independent technical guidance on laptop hardware, storage, performance and diagnostics.</p>
+          </div>
+          <nav aria-label="Editorial links" className="flex flex-wrap gap-x-5 gap-y-3 text-sm text-slate-400">
+            <Link to="/blog" className="hover:text-white">Articles</Link>
+            <Link to="/guides" className="hover:text-white">Technical Guides</Link>
+            <Link to="/about" className="hover:text-white">About the Lab</Link>
+            <Link to="/privacy-policy" className="hover:text-white">Privacy</Link>
+            <Link to="/terms-of-service" className="hover:text-white">Terms</Link>
+          </nav>
+        </div>
+      </footer>
+    );
+  }
 
   const waMessage = isArabicRoute ? 'السلام عليكم KCROC، أحتاج مساعدة في تصليح جهاز كمبيوتر أو لابتوب في الكويت. فضلاً نسّقوا استلامًا مجانيًا.' : 'Hi KCROC, I need computer repair assistance in Kuwait.';
   const WA_LINK = 'https://wa.me/' + business.telephone + '?text=' + encodeURIComponent(waMessage);
