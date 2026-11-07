@@ -121,6 +121,10 @@ export interface BlogPost {
   content: string[];          // legacy simple format — always kept for back-compat
   richContent?: ContentBlock[]; // optional rich format — used when present
   image: string;
+  /** Optional descriptive alternative text for the article's lead image. */
+  imageAlt?: string;
+  /** Optional visible image credit/caption for the article's lead image. */
+  imageCaption?: string;
   /** 16:9, 1200px-wide representative image used for Discover/social previews. */
   discoverImage?: string;
   date: string;
@@ -148,6 +152,271 @@ export interface BlogPost {
 }
 
 export const BLOG_POSTS: BlogPost[] = [
+  {
+    "id": "news-ibm-quantum-system-two-nighthawk-r2-chicago-2026",
+    "slug": "ibm-quantum-system-two-nighthawk-r2-chicago",
+    "title": "IBM Unveils Its Most Advanced Quantum Computer in Chicago: What System Two and Nighthawk r2 Mean",
+    "excerpt": "IBM's most advanced quantum system is now operating at the University of Chicago. Here is what the Quantum System Two deployment, Nighthawk r2 processor and 120-qubit architecture actually mean — and what they do not mean for everyday computers.",
+    "description": "IBM has unveiled a Quantum System Two in Chicago powered by Nighthawk r2. Explore its 120-qubit design, 218 couplers, research applications and real-world limits.",
+    "content": [
+      "IBM unveiled an IBM Quantum System Two at the University of Chicago's Hyde Park Labs on November 6, 2026. The system is now operational and is powered by IBM Quantum Nighthawk r2, the company's most advanced quantum processor platform currently deployed.",
+      "The important story is not simply the qubit count. Nighthawk r2 combines 120 programmable qubits with a denser connectivity layout and independent reset hardware, while the Chicago installation gives researchers and industry partners a working system inside a growing quantum-research ecosystem.",
+      "This KCROC analysis separates IBM's published specifications from what the announcement proves, explains the potential research uses, and clarifies why this does not mean ordinary PCs or laptops are about to be replaced."
+    ],
+    "richContent": [
+      {
+        "type": "paragraph",
+        "text": "On November 6, 2026, IBM, the University of Chicago, the State of Illinois and the Illinois Quantum and Microelectronics Park (IQMP) unveiled an IBM Quantum System Two at Hyde Park Labs in Chicago. IBM says the system is now operational, is its first quantum computer in Illinois, and is powered by its Nighthawk r2 processor. IBM describes the installation as its most advanced quantum system currently available. https://newsroom.ibm.com/2026-11-06-ibm-unveils-its-most-advanced-quantum-computer-in-chicago,-marking-a-milestone-for-illinoiss-quantum-future"
+      },
+      {
+        "type": "paragraph",
+        "text": "The distinction matters: System Two is the larger modular quantum-computing system; Nighthawk r2 is the processor inside it. The announcement is a real deployment milestone, but it is not a consumer-PC launch, a new desktop CPU, or proof that quantum machines can outperform classical computers at every task."
+      },
+      {
+        "type": "h2",
+        "text": "What IBM actually unveiled in Chicago",
+        "id": "what-ibm-unveiled"
+      },
+      {
+        "type": "paragraph",
+        "text": "The system is installed at Hyde Park Labs and hosted by the University of Chicago. It supports the National Quantum Algorithm Center (NQAC), where IBM researchers work with university teams, national laboratories, startups and companies on quantum algorithms and potential applications. The computer is expected to move to a permanent home at the Illinois Quantum and Microelectronics Park after that campus is completed. https://www.ibm.com/quantum/blog/chicago-quantum-computer"
+      },
+      {
+        "type": "paragraph",
+        "text": "This makes the Chicago announcement about more than putting a machine in a building. It gives researchers a physical system connected to an established network of academic, industrial and government partners. The location is also unusually visible: the installation sits at street level behind large windows, giving students and the public a view of the technology."
+      },
+      {
+        "type": "h2",
+        "text": "Nighthawk r2: the numbers behind the headline",
+        "id": "nighthawk-r2-specifications"
+      },
+      {
+        "type": "statCards",
+        "items": [
+          {
+            "value": "120",
+            "label": "programmable qubits"
+          },
+          {
+            "value": "218",
+            "label": "tunable couplers"
+          },
+          {
+            "value": "120",
+            "label": "independent reset elements"
+          },
+          {
+            "value": "100,000+",
+            "label": "circuits per second — IBM-reported"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "The Nighthawk design connects 120 qubits through 218 tunable couplers in a square-lattice layout. IBM and the University of Chicago explain that each qubit can connect to its four nearest neighbours. That denser connectivity can help algorithms build more complex quantum circuits without requiring as many extra operations to connect distant parts of a calculation. https://news.uchicago.edu/story/ibms-most-advanced-quantum-computer-unveiled-uchicagos-hyde-park-labs"
+      },
+      {
+        "type": "paragraph",
+        "text": "Nighthawk r2 also adds 120 independent reset elements, one for each programmable qubit. IBM says this design can execute more than 100,000 circuits per second, up to 25 times the circuit throughput of its Heron processor generation, while reducing initialization error by around 25 times. These are IBM-reported hardware figures, not independent KCROC benchmark results or a promise that every application will run 25 times faster. https://www.ibm.com/quantum/blog/nighthawk-r2"
+      },
+      {
+        "type": "callout",
+        "variant": "expert",
+        "title": "Do not confuse physical elements with qubits",
+        "text": "Nighthawk r2 has 120 programmable qubits. Its 218 couplers and 120 reset elements are additional hardware components; they do not turn the processor into a 458-qubit machine. Qubit count alone is also not a complete measure of useful quantum performance."
+      },
+      {
+        "type": "h2",
+        "text": "Why couplers and reset hardware matter",
+        "id": "why-couplers-and-reset-matter"
+      },
+      {
+        "type": "paragraph",
+        "text": "A quantum calculation is built from carefully controlled operations on qubits. The connections between qubits determine which interactions the processor can perform directly. More useful connectivity can reduce the extra routing operations needed for some circuits, while reliable qubit reset gives an algorithm a cleaner starting state for repeated operations."
+      },
+      {
+        "type": "paragraph",
+        "text": "That is why the processor's architecture matters more than a headline number. Quantum hardware is judged by several interacting factors: usable qubits, connectivity, gate accuracy, reset behaviour, error rates, circuit depth and how well the processor works with classical software and high-performance computing systems."
+      },
+      {
+        "type": "paragraph",
+        "text": "IBM's Nighthawk r2 announcement focuses on circuit throughput and reset quality. Those measures are relevant to researchers who need to run many circuits, compare results and develop algorithms that may eventually scale to harder problems. They should still be read as processor-level engineering claims, not as a general benchmark against a desktop CPU or GPU. https://www.ibm.com/quantum/blog/nighthawk-r2"
+      },
+      {
+        "type": "h2",
+        "text": "What researchers hope to use the system for",
+        "id": "research-applications"
+      },
+      {
+        "type": "paragraph",
+        "text": "The NQAC brings researchers and industry partners together around problems where quantum algorithms may eventually offer value alongside classical computing. The Chicago programme includes several areas of investigation:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "Molecular simulation and drug discovery: IBM, Northwestern University, Deloitte and AbbVie are exploring quantum approaches to model molecular behaviour that can be difficult to calculate accurately with conventional methods.",
+          "Energy and power-grid optimisation: EPRI and the University of Illinois Urbana-Champaign are studying whether quantum optimisation methods could help with complex grid-planning problems.",
+          "High-energy physics and distributed quantum computing: institutions including Fermilab are working with IBM on research that connects quantum processors with broader scientific-computing systems.",
+          "Quantum-centric supercomputing: quantum processors are combined with classical CPUs, GPUs and high-performance computers so each system handles the parts of a workload it is best suited to solve."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "These are research programmes and algorithm-development efforts, not proof that a quantum computer is already delivering a finished commercial drug, a cheaper electricity bill or a faster answer to every scientific problem. The value will depend on repeatable results, error control, useful algorithms and a clear advantage over the best classical approach. https://newsroom.ibm.com/2026-11-06-ibm-unveils-its-most-advanced-quantum-computer-in-chicago,-marking-a-milestone-for-illinoiss-quantum-future"
+      },
+      {
+        "type": "h2",
+        "text": "Does this mean quantum computers are fault-tolerant now?",
+        "id": "fault-tolerance-and-limits"
+      },
+      {
+        "type": "paragraph",
+        "text": "No. The Chicago deployment is an important hardware and research-access milestone, but the announcement does not establish that this is a large-scale, fully fault-tolerant quantum computer. Physical qubits are susceptible to errors. Building reliable logical qubits requires quantum error correction, repeated measurements and additional hardware overhead."
+      },
+      {
+        "type": "paragraph",
+        "text": "IBM's public quantum roadmap continues to describe error correction and fault-tolerant systems as development milestones. A roadmap is a statement of current goals and engineering direction, not a guarantee that a specific capability will arrive on a fixed date. https://www.ibm.com/roadmaps/quantum/"
+      },
+      {
+        "type": "callout",
+        "variant": "warning",
+        "title": "A quantum advantage claim is not universal superiority",
+        "text": "Even when a quantum processor demonstrates an advantage on a particular, carefully defined problem, that does not mean it is faster for spreadsheets, Windows, gaming, web browsing or every scientific calculation. Each claimed advantage needs a suitable problem, a fair classical comparison and a method for checking the result."
+      },
+      {
+        "type": "h2",
+        "text": "Why Chicago matters to the quantum-computing industry",
+        "id": "why-chicago-matters"
+      },
+      {
+        "type": "paragraph",
+        "text": "The system anchors the National Quantum Algorithm Center while the Illinois Quantum and Microelectronics Park is being developed as a longer-term home for quantum research and industry. The centre's model is collaborative: universities, national laboratories, startups and companies can work with IBM researchers to turn hardware progress into testable algorithms."
+      },
+      {
+        "type": "paragraph",
+        "text": "That ecosystem is important because quantum computing is not only a chip-design challenge. Progress also depends on software, algorithm research, classical supercomputing, specialised engineering skills, error-correction methods, fabrication and access to researchers who understand the problems being tested. https://www.ibm.com/quantum/blog/chicago-quantum-computer"
+      },
+      {
+        "type": "h2",
+        "text": "What this means for PC users in Kuwait",
+        "id": "what-it-means-for-kuwait"
+      },
+      {
+        "type": "paragraph",
+        "text": "For people buying, upgrading or repairing computers in Kuwait, this is not a reason to delay a laptop purchase or replace a desktop. IBM Quantum System Two is a specialist research system hosted in a laboratory environment; it is not a motherboard, graphics card or processor that can be installed in a normal PC."
+      },
+      {
+        "type": "paragraph",
+        "text": "The nearer-term relevance is indirect. Research in molecular modelling, materials, energy optimisation and scientific computing could eventually influence industries and services worldwide. Any practical effect will depend on validated applications and access to suitable systems. No consumer launch, retail price or Kuwait availability was announced with this deployment."
+      },
+      {
+        "type": "h2",
+        "text": "What to watch next",
+        "id": "what-to-watch-next"
+      },
+      {
+        "type": "list",
+        "ordered": true,
+        "items": [
+          "Independent and reproducible research results that show where the processor offers a measurable advantage over strong classical methods.",
+          "Progress in quantum error correction, including the quality and scaling of logical qubits rather than physical-qubit totals alone.",
+          "Evidence that Nighthawk r2's connectivity and reset design make useful algorithms more accurate or practical at larger circuit sizes.",
+          "Research outcomes from the National Quantum Algorithm Center, especially in chemistry, energy and scientific computing.",
+          "The eventual move of the Chicago system to the Illinois Quantum and Microelectronics Park when the permanent campus is ready."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Frequently asked questions",
+        "id": "frequently-asked-questions"
+      },
+      {
+        "type": "faq",
+        "items": [
+          {
+            "question": "What quantum computer did IBM unveil on November 6, 2026?",
+            "answer": "IBM unveiled an IBM Quantum System Two at the University of Chicago's Hyde Park Labs in Chicago. It is powered by the IBM Quantum Nighthawk r2 processor and supports the National Quantum Algorithm Center."
+          },
+          {
+            "question": "How many qubits does IBM Nighthawk r2 have?",
+            "answer": "Nighthawk r2 has 120 programmable qubits connected by 218 tunable couplers. IBM also describes 120 independent reset elements as part of the processor architecture."
+          },
+          {
+            "question": "Is IBM Quantum System Two a fully fault-tolerant quantum computer?",
+            "answer": "The November 2026 announcement does not establish that the system is a large-scale, fully fault-tolerant quantum computer. Physical-qubit count and fault-tolerant logical-qubit performance are different measures."
+          },
+          {
+            "question": "Will this IBM quantum computer replace normal PCs or gaming computers?",
+            "answer": "No. Quantum systems are designed for specialised algorithms and hybrid scientific workloads. Conventional computers remain essential for everyday software, gaming, business applications and the classical parts of quantum-centric workflows."
+          },
+          {
+            "question": "Does IBM's Chicago quantum computer mean quantum computing is now available in Kuwait?",
+            "answer": "No Kuwait-based deployment, consumer product, retail price or local availability was announced. The system is currently hosted at Hyde Park Labs in Chicago."
+          },
+          {
+            "question": "Are the performance numbers independently tested by KCROC?",
+            "answer": "No. The processor specifications and throughput figures in this article are identified as IBM-reported claims and linked to IBM's published technical material. KCROC has not independently benchmarked the machine."
+          }
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Official sources and editorial method",
+        "id": "official-sources"
+      },
+      {
+        "type": "paragraph",
+        "text": "IBM Newsroom — November 6, 2026 deployment announcement: https://newsroom.ibm.com/2026-11-06-ibm-unveils-its-most-advanced-quantum-computer-in-chicago,-marking-a-milestone-for-illinoiss-quantum-future"
+      },
+      {
+        "type": "paragraph",
+        "text": "IBM Quantum Blog — Chicago's bid to lead the country in quantum computing: https://www.ibm.com/quantum/blog/chicago-quantum-computer"
+      },
+      {
+        "type": "paragraph",
+        "text": "IBM Quantum Blog — Nighthawk r2 processor architecture and throughput: https://www.ibm.com/quantum/blog/nighthawk-r2"
+      },
+      {
+        "type": "paragraph",
+        "text": "University of Chicago — IBM's most advanced quantum computer unveiled at Hyde Park Labs: https://news.uchicago.edu/story/ibms-most-advanced-quantum-computer-unveiled-uchicagos-hyde-park-labs"
+      },
+      {
+        "type": "paragraph",
+        "text": "IBM Quantum roadmap: https://www.ibm.com/roadmaps/quantum/"
+      },
+      {
+        "type": "callout",
+        "variant": "info",
+        "title": "KCROC editorial note",
+        "text": "This article was published on November 7, 2026 and is based on the official IBM and University of Chicago material linked above. IBM performance figures are attributed to IBM. KCROC has not inspected or independently benchmarked the installation."
+      }
+    ],
+    "image": "https://www.ibm.com/quantum/_next/image?q=75&url=https%3A%2F%2Fresearch-website-prod-cms-uploads.s3.us.cloud-object-storage.appdomain.cloud%2FChicago_blog_5d3b95a9b0.png&w=3840",
+    "discoverImage": "https://www.ibm.com/quantum/_next/image?q=75&url=https%3A%2F%2Fresearch-website-prod-cms-uploads.s3.us.cloud-object-storage.appdomain.cloud%2FChicago_blog_5d3b95a9b0.png&w=3840",
+    "imageAlt": "IBM Quantum System Two installed at the University of Chicago's Hyde Park Labs in Chicago",
+    "imageCaption": "IBM Quantum System Two at Hyde Park Labs, the Chicago installation unveiled on November 6, 2026. Image via IBM Quantum Blog.",
+    "date": "2026-11-07",
+    "technicalReviewDate": "November 7, 2026",
+    "author": "Imran Natiq",
+    "category": "Hardware",
+    "readTime": "8–10 min read",
+    "isGlobalGuide": true,
+    "tags": [
+      "IBM quantum computer",
+      "IBM Quantum System Two",
+      "IBM Nighthawk r2",
+      "quantum computing 2026",
+      "120-qubit processor",
+      "quantum hardware",
+      "quantum error correction",
+      "quantum-centric supercomputing",
+      "Chicago quantum computing",
+      "Kuwait technology news"
+    ],
+    "seoTitle": "IBM Quantum System Two: Nighthawk r2 Explained | KCROC",
+    "seoDescription": "IBM has unveiled a Quantum System Two in Chicago powered by Nighthawk r2. Explore its 120-qubit design, 218 couplers, research applications and real-world limits.",
+    "contentType": "news"
+  },
   {
     "id": "news-microsoft-windows-surface-event-october-7-2026",
     "slug": "microsoft-windows-surface-event-october-7-2026",
