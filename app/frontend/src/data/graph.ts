@@ -1720,12 +1720,23 @@ export const rawGraphData: RawGraphData = {
       id: 'srv-keyboard', slug: 'laptop-keyboard-replacement-kuwait', entityType: 'Service', isActive: true,
       title: 'Laptop Keyboard Replacement Kuwait', primaryKeyword: "laptop keyboard replacement Kuwait", secondaryKeywords: ["laptop keyboard repair Kuwait","laptop keyboard not working repair","Arabic English laptop keyboard","laptop keyboard price Kuwait"], iconKey: 'laptop',
       shortDescription: 'Keyboard replacement and key-input fault diagnosis for Dell, HP, Lenovo, ASUS, Acer, MSI and MacBook systems.',
-      description: 'Dead keys, repeated characters, liquid-damaged keyboards, stuck keys, and keyboards that stop responding can come from the keyboard assembly, ribbon connection, liquid contamination, or the motherboard input circuit. KCROC tests the failure first, then replaces the keyboard or repairs the related connection where appropriate. For MacBooks, we also distinguish between butterfly and Magic Keyboard generations before ordering parts.',
+      description: 'Dead keys, repeated characters, liquid-damaged keyboards, stuck keys, and keyboards that stop responding can come from the keyboard assembly, ribbon connection, liquid contamination, or the motherboard input circuit. KCROC tests the failure first, then replaces the keyboard or repairs the related connection where appropriate. For MacBooks, we distinguish between Butterfly and Magic Keyboard generations before ordering parts. Layout, backlight connection and mounting design are checked against the exact model before approving a part.',
       idealCustomer: 'Students, office users, developers, gamers, and anyone with missing, stuck, liquid-damaged, or intermittently responding laptop keys.',
       deviceTypes: ['Windows Laptops', 'Gaming Laptops', 'Business Laptops', '2-in-1 Laptops', 'MacBook Air & MacBook Pro'],
-      repairLevel: 'advanced', estimatedTurnaround: 'Same Day / 24 Hours',
-            pricing: { startingFrom: 10, currency: 'KWD', quoteRequired: true, displayLabel: 'From 10 KWD + part' },
-      coreFeatures: ['Keyboard Assembly Replacement', 'Individual Key Fault Diagnosis', 'Ribbon Connector Inspection', 'Liquid Contamination Inspection', 'Backlit Keyboard Testing', 'MacBook Keyboard Service', 'Post-Repair Input Testing', 'Free Pick & Drop', '30-Day Warranty'],
+      repairLevel: 'advanced', estimatedTurnaround: 'Same day to 24 hours when the compatible part is available; timing is confirmed after model and part checks',
+      pricing: { startingFrom: 10, currency: 'KWD', quoteRequired: true, displayLabel: '10–20 KWD labour + keyboard / assembly' },
+      pricingGuide: {
+        heading: 'Laptop Keyboard Replacement Prices in Kuwait',
+        intro: 'KCROC publishes a labour guide of 10–20 KWD for keyboard replacement. The keyboard, palmrest or top-case assembly is priced separately because part cost and fitting complexity vary by exact model, language layout and backlight specification.',
+        rows: [
+          { category: 'Initial keyboard and input diagnosis', symptoms: 'Dead keys, repeated characters, full keyboard failure, layout or backlight symptoms.', startingPrice: 'Free initial diagnosis', typicalTurnaround: 'Confirmed after model and fault review.' },
+          { category: 'Standard laptop keyboard replacement', symptoms: 'Compatible standalone keyboard with matching model, connector and Arabic / English layout.', startingPrice: '10–20 KWD labour + keyboard', typicalTurnaround: 'Depends on compatible part availability and fitting design.' },
+          { category: 'Integrated keyboard, RGB or MacBook assembly', symptoms: 'Plastic-riveted palmrest, multi-cable backlit keyboard or MacBook top-case design.', startingPrice: 'Quote after exact model and assembly check', typicalTurnaround: 'Confirmed after mounting design and part are verified.' },
+          { category: 'Optional laptop thermal service', symptoms: 'Separate cooling inspection, internal dust cleaning and thermal service when the laptop also needs it.', startingPrice: '15–20 KWD published service price', typicalTurnaround: 'Only performed after a separate quote and your approval.' }
+        ],
+        note: 'The 10–20 KWD keyboard figure is labour only; the compatible keyboard or larger assembly is additional. Optional thermal service is not automatically bundled with keyboard repair. We confirm the total, part choice and timing before ordering or starting paid work.'
+      },
+      coreFeatures: ['Keyboard Assembly Replacement', 'Individual Key Fault Diagnosis', 'Ribbon Connector Inspection', 'Liquid Contamination Inspection', 'Backlit Keyboard Testing', 'MacBook Keyboard Service', 'Post-Repair Input Testing', 'Exact Layout & Mounting Match', 'Free Pick & Drop', '30-Day Warranty'],
       brands: ['Dell', 'HP', 'Lenovo', 'ASUS', 'Acer', 'MSI', 'MacBook'],
       whyChooseUs: [
         { title: 'Diagnose Before Replacing', description: 'A dead key can be caused by the keyboard, connector, liquid damage, or input circuitry. We identify which one first.' },
@@ -1754,6 +1765,9 @@ export const rawGraphData: RawGraphData = {
         { id: 'keyboard-faq-4', title: 'Can you repair the keyboard instead of replacing it?', answer: 'Sometimes. If the fault is a connector, contamination issue or related circuit problem, that can be addressed without replacing a healthy keyboard. A failed keyboard matrix usually requires the correct replacement assembly.' },
         { id: 'keyboard-faq-5', title: 'Do you install Arabic and English laptop keyboards?', answer: 'Where a compatible Arabic/English or other required layout is available for the exact model, we can source and install the appropriate assembly after confirmation.' },
         { id: 'keyboard-faq-6', title: 'Will a keyboard replacement erase my data?', answer: 'No. A normal keyboard replacement does not erase the operating system or personal files. We still test the device before and after the repair.' },
+        { id: 'keyboard-faq-7', title: 'Why do some keys still fail after a replacement keyboard is fitted?', answer: 'The replacement part may not be the cause. A damaged ribbon socket, connector latch, board-side trace or model-specific input circuit can produce similar symptoms. We check the connection and input path before recommending another assembly.' },
+        { id: 'keyboard-faq-8', title: 'Can you replace a backlit or RGB laptop keyboard?', answer: 'We assess compatible backlit and RGB assemblies where the correct part is available. The exact model, layout, connector and lighting specification must match; not every configuration supports the same keyboard.' },
+        { id: 'keyboard-faq-9', title: 'Why do you need my exact laptop model or Service Tag?', answer: 'Keyboard parts can differ by chassis revision, language, backlight, connector and mounting method within one product family. The exact model number or Service Tag helps verify the correct part before quoting.' },
       ],
       relatedServiceIds: ['srv-laptop', 'srv-liquid-damage', 'srv-battery'],
       relatedProblemIds: ['problem-keyboard-fail', 'problem-liquid-spill'],
@@ -1766,7 +1780,29 @@ export const rawGraphData: RawGraphData = {
         heading: 'How We Diagnose a Laptop Keyboard Fault',
         paragraphs: [
           'A keyboard can fail because of the keyboard matrix, a loose ribbon connector, liquid contamination, damaged switches or membranes, or a fault in the input circuitry. Replacing the assembly without testing can therefore solve the wrong problem.',
-          'We test representative keys and failure patterns, inspect the ribbon and connector, check for liquid contamination, and verify backlighting where fitted. The exact keyboard layout and assembly are matched to the laptop configuration before installation.'
+          'We test representative keys and failure patterns, inspect the ribbon and connector, check for liquid contamination, and verify backlighting where fitted. The exact keyboard layout and assembly are matched to the laptop configuration before installation.',
+          'We distinguish a wrong operating-system input layout from a physical key fault. A pattern of missing keys can point toward a keyboard matrix or connection, but it is not proof by itself: the exact model, connector design and test results determine the next check.'
+        ]
+      },
+      keyboardDiagnosticMatrix: {
+        heading: 'Keyboard Assembly or Motherboard Input Fault? Diagnose Before Replacing',
+        intro: 'The same symptom can have more than one cause. This matrix shows possible fault paths, not a diagnosis from the symptom alone. Input layout, model-specific wiring and connector condition are checked before a replacement is approved.',
+        rows: [
+          { symptom: 'A group or row of keys stops working', keyboardCause: 'A damaged keyboard-matrix trace, membrane layer or internal connection may interrupt a group of keys.', motherboardCause: 'A loose or damaged ribbon socket, connector latch, board-side trace or input component may interrupt the signal path.', labAction: 'Check the affected key pattern, model pinout and ribbon condition; inspect the board-side socket before choosing a repair.' },
+          { symptom: 'The whole keyboard is unresponsive but the power button works', keyboardCause: 'The keyboard flex may be torn, unseated or damaged by liquid; the assembly itself may have failed.', motherboardCause: 'The connector or model-specific embedded-controller input path may not be reading the keyboard.', labAction: 'Check input in firmware or another suitable environment where supported, inspect the flex and socket, then test the board-side input path.' },
+          { symptom: 'Keys repeat, type by themselves or feel stuck', keyboardCause: 'Liquid residue, a damaged membrane, a stuck switch or a scissor mechanism can create unintended input.', motherboardCause: 'Contamination around the connector or related input circuitry can also affect signals.', labAction: 'Power down after a spill, inspect for contamination and test the key matrix. Do not assume a software reinstall or a new keyboard will fix every case.' },
+          { symptom: 'Keys work but the backlight or RGB does not', keyboardCause: 'The backlight layer, separate flex, LED section or keyboard configuration may be damaged or incompatible.', motherboardCause: 'The connector, control path or a model-specific backlight supply component may be at fault.', labAction: 'Check supported lighting modes and settings, then verify the part and connector before testing the board-side lighting path.' },
+          { symptom: 'Letters appear in the wrong language or layout', keyboardCause: 'The physical keyboard may have a different printed layout from the active input language.', motherboardCause: 'A motherboard fault is not the first assumption when keys register consistently but produce a different layout.', labAction: 'Check the operating-system input language and keyboard layout first; inspect hardware only if key registration or physical response is abnormal.' }
+        ]
+      },
+      keyboardMountingMatrix: {
+        heading: 'Keyboard Mounting, Backlight & Assembly Compatibility',
+        intro: 'Laptop keyboard replacement is not one universal procedure. Mounting style, cable arrangement and nearby components vary by model and generation; these are representative design groups, not a promise that every model in a family is identical.',
+        rows: [
+          { architecture: 'Standalone screw-mounted or drop-in keyboard', families: 'Selected business and older Windows laptop designs, depending on generation.', compatibilityChecks: 'Verify part number, screw or retaining frame, flex direction, key layout and backlight variant.' },
+          { architecture: 'Keyboard integrated into a plastic-riveted palmrest', families: 'Selected HP Pavilion / Envy, Dell Inspiron / Vostro, Lenovo IdeaPad, ASUS VivoBook and Acer Aspire models.', compatibilityChecks: 'Confirm whether the keyboard is serviceable separately or requires a palmrest assembly; protect the board, touchpad flex and chassis clips.' },
+          { architecture: 'Backlit, multi-zone RGB or per-key gaming keyboard', families: 'Selected ASUS ROG / TUF, MSI, Lenovo Legion, HP OMEN / Victus and Acer Nitro / Predator models.', compatibilityChecks: 'Match layout, connector count, backlight or RGB specification and controller support; test supported lighting and key response after fitting.' },
+          { architecture: 'MacBook integrated keyboard or top-case assembly', families: 'MacBook Air and MacBook Pro across Butterfly and Magic Keyboard generations.', compatibilityChecks: 'Confirm A-number, generation, layout and compatible top-case. Protect nearby battery, trackpad and Touch ID-related connections as applicable.' }
         ]
       },
       repairDecision: {
@@ -1775,17 +1811,19 @@ export const rawGraphData: RawGraphData = {
           { condition: 'Ribbon or connector issue', action: 'Repair, reseat or replace the affected connection when appropriate.' },
           { condition: 'Keyboard matrix has failed', action: 'Fit the correct keyboard assembly for the exact model and layout.' },
           { condition: 'Liquid reached the keyboard', action: 'Inspect the keyboard and underlying electronics before installing a replacement.' },
-          { condition: 'MacBook top-case or model-specific assembly', action: 'Confirm the exact generation and compatible assembly before parts are ordered.' }
+          { condition: 'MacBook top-case or model-specific assembly', action: 'Confirm the exact generation and compatible assembly before parts are ordered.' },
+          { condition: 'Keys work but backlight or RGB does not', action: 'Check settings, supported configuration, backlight flex and model-specific board-side control path before replacing the keyboard.' }
         ]
       },
-      inspectionChecklist: ['Test every key', 'Check ribbon connector', 'Inspect for liquid contamination', 'Verify backlight where fitted', 'Confirm exact replacement part', 'Run post-repair input test'],
+      inspectionChecklist: ['Test every key and affected key pattern', 'Check ribbon connector and latch', 'Inspect for liquid contamination', 'Check input language and layout', 'Verify backlight where fitted', 'Confirm exact replacement part and mounting design', 'Run post-repair input test'],
       contentImages: [
-        { src: IMAGES.laptopHardware.laptopKeyboardTopCaseAssemblyRemoval.src, alt: IMAGES.laptopHardware.laptopKeyboardTopCaseAssemblyRemoval.alt, width: IMAGES.laptopHardware.laptopKeyboardTopCaseAssemblyRemoval.width, height: IMAGES.laptopHardware.laptopKeyboardTopCaseAssemblyRemoval.height, placement: 'commonIssues', caption: 'Removing the keyboard top-case assembly to inspect the keyboard and connector path.' },
-        { src: IMAGES.laptopHardware.laptopKeyboardHeatsinkAssemblyRemoval.src, alt: IMAGES.laptopHardware.laptopKeyboardHeatsinkAssemblyRemoval.alt, width: IMAGES.laptopHardware.laptopKeyboardHeatsinkAssemblyRemoval.width, height: IMAGES.laptopHardware.laptopKeyboardHeatsinkAssemblyRemoval.height, placement: 'coreFeatures', caption: 'Internal assembly removal during keyboard replacement and related hardware diagnosis.' },
+        { src: IMAGES.laptopHardware.laptopKeyboardTopCaseAssemblyRemoval.src, alt: IMAGES.laptopHardware.laptopKeyboardTopCaseAssemblyRemoval.alt, width: IMAGES.laptopHardware.laptopKeyboardTopCaseAssemblyRemoval.width, height: IMAGES.laptopHardware.laptopKeyboardTopCaseAssemblyRemoval.height, placement: 'hero', caption: 'Removing the keyboard top-case assembly to inspect the keyboard and connector path.' },
+        { src: '/images/gallery/hp-stream-blue-laptop-keyboard-touchpad-closeup.webp', alt: 'HP Stream laptop keyboard and touchpad close-up from KCROC repair gallery', width: 800, height: 600, placement: 'commonIssues', caption: 'A close view of a laptop keyboard and touchpad before deciding whether the fault is limited to the keyboard or a wider input assembly.' },
+        { src: '/images/gallery/replacement-laptop-keyboards-new-stock-kuwait.webp', alt: 'Replacement laptop keyboards photographed in KCROC gallery', width: 800, height: 600, placement: 'coreFeatures', caption: 'Replacement keyboard stock examples; the exact layout and part number are checked against the device before ordering.' },
         { src: IMAGES.laptopHardware.laptopOpenRepairBench.src, alt: IMAGES.laptopHardware.laptopOpenRepairBench.alt, width: IMAGES.laptopHardware.laptopOpenRepairBench.width, height: IMAGES.laptopHardware.laptopOpenRepairBench.height, placement: 'process', caption: 'Laptop opened on the repair bench for connector checks and post-replacement testing.' }
       ],
       warranty: { duration: '30 Days', coverage: 'Parts and labour for the completed keyboard replacement', noFixNoFee: true },
-      seo: { title: 'Laptop Keyboard Replacement Kuwait | KCROC', description: 'Laptop and MacBook keyboard replacement in Kuwait for Dell, HP, Lenovo, ASUS, Acer, MSI and Apple. Free pickup and 30-day warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-keyboard-replacement-kuwait', locale: 'en_KW', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/laptop-keyboard-replacement-kuwait', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/laptop-keyboard-replacement-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/laptop-keyboard-replacement-kuwait' }, ogType: 'article', schemaTypes: ['Service', 'FAQPage'] },
+      seo: { title: 'Laptop Keyboard Replacement Kuwait | Repair & Price | KCROC', description: 'Laptop keyboard repair and replacement in Kuwait for dead or repeating keys, liquid damage, Arabic / English layouts and backlit models. Labour guide 10–20 KWD + keyboard, free pickup and 30-day warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-keyboard-replacement-kuwait', locale: 'en_KW', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/laptop-keyboard-replacement-kuwait', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/laptop-keyboard-replacement-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/laptop-keyboard-replacement-kuwait' }, ogType: 'article', schemaTypes: ['Service', 'FAQPage'], lastModified: '2026-11-07T00:00:00+03:00' },
       navigationPriority: 53, isFeatured: false, popular: false
     } as ServiceEntity,
 
