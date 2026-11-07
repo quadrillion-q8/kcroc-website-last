@@ -61,6 +61,10 @@ export const getIntentWhatsAppLink = (context: IntentContext, entityName?: strin
 export const getPageWhatsAppLink = (pathname: string): string => {
   const path = `/${pathname.replace(/^\/+|\/+$/g, '')}`;
 
+  if (path === '/hp-laptop-repair-kuwait') {
+    return buildWhatsAppLink('Hi KCROC, I need HP laptop diagnosis in Kuwait. Exact HP model / product number: ____. Symptoms or warning shown: ____. Charger type if relevant: ____. Kuwait area: ____. Please advise on the diagnosis and confirm the total quote before paid work.');
+  }
+
   if (path === '/computer-repair-kuwait') {
     return buildWhatsAppLink('Hi KCROC, I need computer repair in Kuwait. I would like to arrange diagnosis and free pickup.');
   }
