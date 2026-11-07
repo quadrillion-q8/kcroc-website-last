@@ -227,6 +227,16 @@ export const ServiceSchema = RoutableEntitySchema.extend({
     models: z.string(),
     diagnostics: z.string()
   })).optional(),
+  keyboardDiagnosticMatrix: z.object({
+    heading: z.string(),
+    intro: z.string(),
+    rows: z.array(z.object({ symptom: z.string(), keyboardCause: z.string(), motherboardCause: z.string(), labAction: z.string() }))
+  }).optional(),
+  keyboardMountingMatrix: z.object({
+    heading: z.string(),
+    intro: z.string(),
+    rows: z.array(z.object({ architecture: z.string(), families: z.string(), compatibilityChecks: z.string() }))
+  }).optional(),
   // 🚀 NEW: Contextual in-page photos (sourced from the /gallery image set)
   // tied to a specific section via `placement`, so they render inline next
   // to the content they illustrate rather than in a generic gallery block.
