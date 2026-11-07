@@ -155,9 +155,9 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     "id": "news-ibm-quantum-system-two-nighthawk-r2-chicago-2026",
     "slug": "ibm-quantum-system-two-nighthawk-r2-chicago",
-    "title": "IBM Unveils Its Most Advanced Quantum Computer in Chicago: What System Two and Nighthawk r2 Mean",
-    "excerpt": "IBM's most advanced quantum system is now operating at the University of Chicago. Here is what the Quantum System Two deployment, Nighthawk r2 processor and 120-qubit architecture actually mean — and what they do not mean for everyday computers.",
-    "description": "IBM has unveiled a Quantum System Two in Chicago powered by Nighthawk r2. Explore its 120-qubit design, 218 couplers, research applications and real-world limits.",
+    "title": "IBM Quantum System Two in Chicago: Nighthawk r2 Explained",
+    "excerpt": "IBM's Quantum System Two is now operating at the University of Chicago's Hyde Park Labs. We separate the System Two installation from IBM's Nighthawk r2 processor specifications, explain the 458 physical elements, and distinguish verified research milestones from roadmap targets.",
+    "description": "A hardware engineer explains IBM's Chicago Quantum System Two, Nighthawk r2's 120 qubits and 458 elements, reset timing, throughput and research limits.",
     "content": [
       "IBM unveiled an IBM Quantum System Two at the University of Chicago's Hyde Park Labs on November 6, 2026. The system is now operational and is powered by IBM Quantum Nighthawk r2, the company's most advanced quantum processor platform currently deployed.",
       "The important story is not simply the qubit count. Nighthawk r2 combines 120 programmable qubits with a denser connectivity layout and independent reset hardware, while the Chicago installation gives researchers and industry partners a working system inside a growing quantum-research ecosystem.",
@@ -166,11 +166,11 @@ export const BLOG_POSTS: BlogPost[] = [
     "richContent": [
       {
         "type": "paragraph",
-        "text": "On November 6, 2026, IBM, the University of Chicago, the State of Illinois and the Illinois Quantum and Microelectronics Park (IQMP) unveiled an IBM Quantum System Two at Hyde Park Labs in Chicago. IBM says the system is now operational, is its first quantum computer in Illinois, and is powered by its Nighthawk r2 processor. IBM describes the installation as its most advanced quantum system currently available. https://newsroom.ibm.com/2026-11-06-ibm-unveils-its-most-advanced-quantum-computer-in-chicago,-marking-a-milestone-for-illinoiss-quantum-future"
+        "text": "On November 6, 2026, IBM, the University of Chicago and the State of Illinois unveiled an operational IBM Quantum System Two at Hyde Park Labs in Chicago. The University of Chicago and IBM describe the installed processor as IBM Quantum Nighthawk. Separately, IBM Quantum documentation identifies `ibm_phoenix` as the first Nighthawk r2 QPU available through its platform. IBM's public Chicago announcement does not name the installed system's backend identifier, so this article distinguishes the Chicago deployment from the published Nighthawk r2 platform record. https://newsroom.ibm.com/2026-11-06-ibm-unveils-its-most-advanced-quantum-computer-in-chicago,-marking-a-milestone-for-illinoiss-quantum-future https://quantum.cloud.ibm.com/docs/en/guides/changelog-quantum-compute-service"
       },
       {
         "type": "paragraph",
-        "text": "The distinction matters: System Two is the larger modular quantum-computing system; Nighthawk r2 is the processor inside it. The announcement is a real deployment milestone, but it is not a consumer-PC launch, a new desktop CPU, or proof that quantum machines can outperform classical computers at every task."
+        "text": "The distinction matters: IBM Quantum System Two is the full modular installation, including the cryogenic and control infrastructure needed to operate a quantum processor. Nighthawk is the quantum processor hosted inside that system. The installation is a research platform, not a consumer PC component, desktop CPU or general-purpose replacement for classical computers."
       },
       {
         "type": "h2",
@@ -212,12 +212,76 @@ export const BLOG_POSTS: BlogPost[] = [
         ]
       },
       {
-        "type": "paragraph",
-        "text": "The Nighthawk design connects 120 qubits through 218 tunable couplers in a square-lattice layout. IBM and the University of Chicago explain that each qubit can connect to its four nearest neighbours. That denser connectivity can help algorithms build more complex quantum circuits without requiring as many extra operations to connect distant parts of a calculation. https://news.uchicago.edu/story/ibms-most-advanced-quantum-computer-unveiled-uchicagos-hyde-park-labs"
+        "type": "comparisonTable",
+        "title": "IBM Nighthawk r2 vs Heron: processor specifications",
+        "featureLabel": "Specification",
+        "columns": [
+          "Nighthawk r2 (ibm_phoenix)",
+          "Heron r2 / r3"
+        ],
+        "rows": [
+          {
+            "feature": "Programmable qubits",
+            "values": [
+              "120",
+              "156 (Heron r2/r3); 133 (Heron r1)"
+            ]
+          },
+          {
+            "feature": "Couplers and topology",
+            "values": [
+              "218 tunable couplers; square lattice; four nearest neighbours",
+              "176 couplers; heavy-hex topology"
+            ]
+          },
+          {
+            "feature": "Reset architecture",
+            "values": [
+              "120 dedicated active reset elements; 458 total physical quantum elements",
+              "Conditional reset; no equivalent Nighthawk reset-element count"
+            ]
+          },
+          {
+            "feature": "Default repetition delay",
+            "values": [
+              "1 microsecond",
+              "250 microseconds in IBM's prior-generation comparison"
+            ]
+          },
+          {
+            "feature": "Circuit throughput",
+            "values": [
+              "100,000+ circuits per second",
+              "About 4,000 circuits per second"
+            ]
+          },
+          {
+            "feature": "IBM-reported performance context",
+            "values": [
+              "Up to 25x the circuit throughput of Heron; around 25x lower initialization error",
+              "Reference generation used in IBM's published comparison"
+            ]
+          },
+          {
+            "feature": "Gate quality",
+            "values": [
+              "IBM reports Heron-class gate fidelity",
+              "Baseline family for the comparison"
+            ]
+          }
+        ]
       },
       {
         "type": "paragraph",
-        "text": "Nighthawk r2 also adds 120 independent reset elements, one for each programmable qubit. IBM says this design can execute more than 100,000 circuits per second, up to 25 times the circuit throughput of its Heron processor generation, while reducing initialization error by around 25 times. These are IBM-reported hardware figures, not independent KCROC benchmark results or a promise that every application will run 25 times faster. https://www.ibm.com/quantum/blog/nighthawk-r2"
+        "text": "The Nighthawk design connects 120 qubits through 218 tunable couplers in a square-lattice layout. IBM and the University of Chicago explain that each qubit can connect to its four nearest neighbours. IBM previously said this Nighthawk topology could run circuits with about 30% more complexity than its preceding processor; that is a circuit-complexity claim, not a promise that every program runs 30% faster. https://news.uchicago.edu/story/ibms-most-advanced-quantum-computer-unveiled-uchicagos-hyde-park-labs https://newsroom.ibm.com/2025-11-12-ibm-delivers-new-quantum-processors,-software,-and-algorithm-breakthroughs-on-path-to-advantage-and-fault-tolerance"
+      },
+      {
+        "type": "paragraph",
+        "text": "Nighthawk r2 adds 120 independent reset elements, one for each programmable qubit. IBM's engineering explanation is precise: when the dissipative reset gadget is activated, the qubit's effective T1 falls from a median of about 200 microseconds to roughly 25 nanoseconds. That 25-nanosecond figure is not a 25-microsecond reset latency. IBM's platform documentation separately reports that the default repetition delay falls from 250 microseconds to 1 microsecond. Together, the reset architecture supports more than 100,000 circuits per second—up to 25 times Heron's roughly 4,000 circuits per second—and IBM reports around 25 times lower initialization error while maintaining Heron-class gate fidelity. These are IBM-published processor metrics, not independent KCROC benchmarks or a promise that every algorithm runs 25 times faster. https://www.ibm.com/quantum/blog/nighthawk-r2 https://quantum.cloud.ibm.com/docs/en/guides/changelog-quantum-compute-service"
+      },
+      {
+        "type": "paragraph",
+        "text": "There is also a manufacturing milestone behind IBM's quantum roadmap. In November 2025, IBM said its move to a 300mm wafer-fabrication facility would double the development speed of its quantum chips. That is an IBM statement about chip-development capability; it should not be rewritten as a measured claim that every Nighthawk r2 processor takes exactly half as long to manufacture. https://newsroom.ibm.com/2025-11-12-ibm-delivers-new-quantum-processors,-software,-and-algorithm-breakthroughs-on-path-to-advantage-and-fault-tolerance"
       },
       {
         "type": "callout",
@@ -262,6 +326,14 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         "type": "paragraph",
+        "text": "A separate July 2026 IBM–University of Chicago result gives a more concrete example of the research frontier. The team encoded and executed 70 logical qubits, including 2,415 logical two-qubit operations and 468 logical T gates. IBM reported that the verified computation took about 15 minutes while leading classical simulation approaches faced prohibitive runtimes. This was a separate research demonstration announced on July 30—not a benchmark of the Chicago System Two unveiled in November, and not evidence that Nighthawk r2 alone completed that task. https://newsroom.ibm.com/2026-07-30-ibm-and-the-university-of-chicago-demonstrate-quantum-advantage,-establishing-trusted-quantum-computation-on-logical-circuits"
+      },
+      {
+        "type": "paragraph",
+        "text": "A second, forward-looking example is scheduled for SC26 on November 17–19, 2026. The University of Illinois Urbana-Champaign, NCSA and IBM plan to demonstrate a hybrid workflow linking IBM Quantum System Two with the DeltaAI GPU supercomputer. NCSA says the workflow will use quantum sampling and GPU-accelerated diagonalization to study Cu₃C₆O₆, a quantum material with triangular-lattice geometry and potential kagome metallicity. This is a scheduled demonstration, not a completed SC26 result as of November 7. https://www.ncsa.illinois.edu/quantum-centric-supercomputing-at-sc26/"
+      },
+      {
+        "type": "paragraph",
         "text": "These are research programmes and algorithm-development efforts, not proof that a quantum computer is already delivering a finished commercial drug, a cheaper electricity bill or a faster answer to every scientific problem. The value will depend on repeatable results, error control, useful algorithms and a clear advantage over the best classical approach. https://newsroom.ibm.com/2026-11-06-ibm-unveils-its-most-advanced-quantum-computer-in-chicago,-marking-a-milestone-for-illinoiss-quantum-future"
       },
       {
@@ -275,7 +347,7 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         "type": "paragraph",
-        "text": "IBM's public quantum roadmap continues to describe error correction and fault-tolerant systems as development milestones. A roadmap is a statement of current goals and engineering direction, not a guarantee that a specific capability will arrive on a fixed date. https://www.ibm.com/roadmaps/quantum/"
+        "text": "IBM's current published plan targets IBM Quantum Starling for 2029, with 200 logical qubits and the ability to run 100 million quantum gates. IBM labels this as a roadmap target: it is a future goal, not a currently delivered capability of the Chicago System Two or the Nighthawk r2 processor. https://www.ibm.com/quantum/hardware"
       },
       {
         "type": "callout",
@@ -294,7 +366,7 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         "type": "paragraph",
-        "text": "That ecosystem is important because quantum computing is not only a chip-design challenge. Progress also depends on software, algorithm research, classical supercomputing, specialised engineering skills, error-correction methods, fabrication and access to researchers who understand the problems being tested. https://www.ibm.com/quantum/blog/chicago-quantum-computer"
+        "text": "That ecosystem is important because quantum computing is not only a chip-design challenge. Progress also depends on software, algorithm research, classical supercomputing, specialist engineering, error-correction methods, fabrication and access to researchers who understand the problems being tested. The State of Illinois describes IQMP as a project backed by a $500 million state investment, and state environmental records identify the campus site as the former U.S. Steel South Works property on Chicago's South Side. The Chicago System Two is expected to move there after the campus is complete. https://www.ibm.com/quantum/blog/chicago-quantum-computer https://gov.illinois.gov/news/press-release.32731.html https://epa.illinois.gov/topics/community-relations/sites/iqmp.html"
       },
       {
         "type": "h2",
@@ -307,7 +379,7 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         "type": "paragraph",
-        "text": "The nearer-term relevance is indirect. Research in molecular modelling, materials, energy optimisation and scientific computing could eventually influence industries and services worldwide. Any practical effect will depend on validated applications and access to suitable systems. No consumer launch, retail price or Kuwait availability was announced with this deployment."
+        "text": "The nearer-term relevance for PC owners in Kuwait is still practical rather than quantum: conventional laptops and desktops remain dependent on stable power delivery, cooling and reliable motherboard components. For a board-level fault, see KCROC's component-level motherboard repair service: https://www.computerrepairkuwait.com/motherboard-repair-kuwait. For instability or component faults in a gaming desktop, see our gaming PC and GPU repair service: https://www.computerrepairkuwait.com/gaming-pc-repair-kuwait. For dust-restricted airflow and heat-related performance loss in a gaming laptop, see gaming laptop cleaning and thermal service: https://www.computerrepairkuwait.com/gaming-laptop-cleaning-kuwait. KCROC's physical repair lab is in Hawalli, with free pickup and delivery across Kuwait. None of these local services are quantum-computing services; they address the very different thermal, power and component issues found in everyday PCs."
       },
       {
         "type": "h2",
@@ -334,28 +406,28 @@ export const BLOG_POSTS: BlogPost[] = [
         "type": "faq",
         "items": [
           {
-            "question": "What quantum computer did IBM unveil on November 6, 2026?",
-            "answer": "IBM unveiled an IBM Quantum System Two at the University of Chicago's Hyde Park Labs in Chicago. It is powered by the IBM Quantum Nighthawk r2 processor and supports the National Quantum Algorithm Center."
+            "question": "What is the difference between IBM Quantum System Two and Nighthawk r2?",
+            "answer": "System Two is the full modular quantum-computing installation, including cryogenic cooling and control infrastructure. Nighthawk is the quantum processor hosted inside it. IBM's platform documentation identifies ibm_phoenix as its first Nighthawk r2 QPU; IBM's Chicago announcement itself does not publish the installed system's backend identifier."
           },
           {
-            "question": "How many qubits does IBM Nighthawk r2 have?",
-            "answer": "Nighthawk r2 has 120 programmable qubits connected by 218 tunable couplers. IBM also describes 120 independent reset elements as part of the processor architecture."
+            "question": "Does Nighthawk r2 have 120 qubits or 458 physical elements?",
+            "answer": "It has 120 programmable computational qubits. The 458 total counts 120 programmable qubits, 218 tunable couplers and 120 dedicated reset elements. Couplers and reset elements do not add to the programmable-qubit count."
           },
           {
-            "question": "Is IBM Quantum System Two a fully fault-tolerant quantum computer?",
-            "answer": "The November 2026 announcement does not establish that the system is a large-scale, fully fault-tolerant quantum computer. Physical-qubit count and fault-tolerant logical-qubit performance are different measures."
+            "question": "What does IBM mean by a 25-nanosecond reset?",
+            "answer": "IBM says activating the dissipative reset gadget reduces the qubit's effective T1 from a median of about 200 microseconds to roughly 25 nanoseconds. Separately, the default repetition delay drops from 250 microseconds to 1 microsecond. IBM also reports around 25 times lower initialization error. These are three different measures, not a 25-microsecond reset latency."
           },
           {
-            "question": "Will this IBM quantum computer replace normal PCs or gaming computers?",
-            "answer": "No. Quantum systems are designed for specialised algorithms and hybrid scientific workloads. Conventional computers remain essential for everyday software, gaming, business applications and the classical parts of quantum-centric workflows."
+            "question": "How is Nighthawk r2 different from IBM Heron?",
+            "answer": "Nighthawk r2 has 120 programmable qubits in a square lattice with 218 couplers and dedicated reset hardware. Heron r2/r3 has 156 qubits in a heavy-hex layout. IBM reports more than 100,000 circuits per second for Nighthawk r2 versus roughly 4,000 for Heron; this is circuit throughput, not a promise that every application runs 25 times faster."
           },
           {
-            "question": "Does IBM's Chicago quantum computer mean quantum computing is now available in Kuwait?",
-            "answer": "No Kuwait-based deployment, consumer product, retail price or local availability was announced. The system is currently hosted at Hyde Park Labs in Chicago."
+            "question": "Is the Chicago Quantum System Two a fault-tolerant quantum computer?",
+            "answer": "The November 2026 deployment is not described as IBM's large-scale fault-tolerant Starling system. IBM and the University of Chicago reported a separate 70-logical-qubit verified computation in July 2026. IBM's current roadmap targets Starling, with 200 logical qubits and 100 million gates, for 2029; that remains a future target."
           },
           {
-            "question": "Are the performance numbers independently tested by KCROC?",
-            "answer": "No. The processor specifications and throughput figures in this article are identified as IBM-reported claims and linked to IBM's published technical material. KCROC has not independently benchmarked the machine."
+            "question": "Will IBM quantum processors replace CPUs, GPUs or gaming PCs?",
+            "answer": "No. Quantum processors are designed for specialised algorithms and hybrid scientific workloads. Everyday operating systems, games, office software and the classical parts of quantum-centric computing continue to rely on conventional CPUs and GPUs."
           }
         ]
       },
@@ -370,11 +442,11 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         "type": "paragraph",
-        "text": "IBM Quantum Blog — Chicago's bid to lead the country in quantum computing: https://www.ibm.com/quantum/blog/chicago-quantum-computer"
+        "text": "IBM Quantum Blog — Chicago's quantum-computing ecosystem and National Quantum Algorithm Center: https://www.ibm.com/quantum/blog/chicago-quantum-computer"
       },
       {
         "type": "paragraph",
-        "text": "IBM Quantum Blog — Nighthawk r2 processor architecture and throughput: https://www.ibm.com/quantum/blog/nighthawk-r2"
+        "text": "IBM Quantum Blog — Nighthawk r2 architecture, active reset, 25x throughput and 458-element breakdown: https://www.ibm.com/quantum/blog/nighthawk-r2"
       },
       {
         "type": "paragraph",
@@ -382,13 +454,13 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         "type": "paragraph",
-        "text": "IBM Quantum roadmap: https://www.ibm.com/roadmaps/quantum/"
+        "text": "IBM Quantum hardware roadmap — Starling target for 2029: https://www.ibm.com/quantum/hardware"
       },
       {
         "type": "callout",
         "variant": "info",
         "title": "KCROC editorial note",
-        "text": "This article was published on November 7, 2026 and is based on the official IBM and University of Chicago material linked above. IBM performance figures are attributed to IBM. KCROC has not inspected or independently benchmarked the installation."
+        "text": "Written and technically reviewed by Imran Natiq, Hardware Repair Engineer at KCROC. This article separates the Chicago System Two deployment, IBM's published Nighthawk r2 platform specifications, the separate July 2026 logical-qubit research result, and the SC26 demonstration scheduled for November 17–19. IBM performance figures are attributed to IBM and its documentation. KCROC has not operated or independently benchmarked the quantum system."
       }
     ],
     "image": "https://www.ibm.com/quantum/_next/image?q=75&url=https%3A%2F%2Fresearch-website-prod-cms-uploads.s3.us.cloud-object-storage.appdomain.cloud%2FChicago_blog_5d3b95a9b0.png&w=3840",
@@ -413,8 +485,8 @@ export const BLOG_POSTS: BlogPost[] = [
       "Chicago quantum computing",
       "Kuwait technology news"
     ],
-    "seoTitle": "IBM Quantum System Two: Nighthawk r2 Explained | KCROC",
-    "seoDescription": "IBM has unveiled a Quantum System Two in Chicago powered by Nighthawk r2. Explore its 120-qubit design, 218 couplers, research applications and real-world limits.",
+    "seoTitle": "IBM Quantum System Two & Nighthawk r2 in Chicago Explained",
+    "seoDescription": "IBM unveiled Quantum System Two in Chicago. Explore Nighthawk r2's 120 qubits, 458 physical elements, 1 µs repetition delay and 100,000+ circuits per second.",
     "contentType": "news"
   },
   {
