@@ -324,6 +324,12 @@ const INTERNAL_LINK_LABELS: Record<string, string> = {
     'SSD Not Detected Diagnostic Guide',
   'https://www.computerrepairkuwait.com/guides/why-is-my-laptop-so-hot':
     'Laptop Overheating & Thermal Troubleshooting Guide',
+  'https://www.computerrepairkuwait.com/motherboard-repair-kuwait':
+    'Component-Level Motherboard Repair in Kuwait',
+  'https://www.computerrepairkuwait.com/gaming-pc-repair-kuwait':
+    'Gaming PC & GPU Repair Kuwait',
+  'https://www.computerrepairkuwait.com/gaming-laptop-cleaning-kuwait':
+    'Gaming Laptop Cleaning & Thermal Service',
 };
 
 const TECHNICAL_SOURCE_LABELS: Record<string, string> = {
@@ -409,6 +415,30 @@ const TECHNICAL_SOURCE_LABELS: Record<string, string> = {
   'https://www.intel.com/content/www/us/en/support/processors/_https_/www.intel.la/content/www/us/en/support/articles/000005597/processors.html': 'Intel’s supported processor list',
   'https://www.intel.com/content/www/us/en/support/articles/000088048/processors.html': 'Intel processor support and compatibility information',
   'https://www.amd.com/en/products/processors/laptop/ryzen/200-series/amd-ryzen-7-260.html': 'AMD Ryzen 200 Series processor specifications',
+  'https://newsroom.ibm.com/2026-11-06-ibm-unveils-its-most-advanced-quantum-computer-in-chicago,-marking-a-milestone-for-illinoiss-quantum-future':
+    'IBM Newsroom — Quantum System Two deployment in Chicago (November 6, 2026)',
+  'https://www.ibm.com/quantum/blog/chicago-quantum-computer':
+    'IBM Quantum — Chicago research ecosystem and National Quantum Algorithm Center',
+  'https://www.ibm.com/quantum/blog/nighthawk-r2':
+    'IBM Quantum — Nighthawk r2 processor architecture and reset performance',
+  'https://news.uchicago.edu/story/ibms-most-advanced-quantum-computer-unveiled-uchicagos-hyde-park-labs':
+    'University of Chicago News — Quantum System Two at Hyde Park Labs',
+  'https://www.ibm.com/quantum/hardware':
+    'IBM Quantum — Hardware and Starling roadmap',
+  'https://quantum.cloud.ibm.com/docs/en/guides/changelog-quantum-compute-service':
+    'IBM Quantum Documentation — ibm_phoenix backend and Nighthawk r2 repetition delay',
+  'https://quantum.cloud.ibm.com/docs/en/guides/processor-types':
+    'IBM Quantum Documentation — Nighthawk and Heron processor types',
+  'https://newsroom.ibm.com/2026-07-30-ibm-and-the-university-of-chicago-demonstrate-quantum-advantage,-establishing-trusted-quantum-computation-on-logical-circuits':
+    'IBM Newsroom — 70-logical-qubit verified computation with the University of Chicago (July 30, 2026)',
+  'https://www.ncsa.illinois.edu/quantum-centric-supercomputing-at-sc26/':
+    'NCSA — IBM Quantum and DeltaAI hybrid demonstration scheduled for SC26',
+  'https://newsroom.ibm.com/2025-11-12-ibm-delivers-new-quantum-processors,-software,-and-algorithm-breakthroughs-on-path-to-advantage-and-fault-tolerance':
+    'IBM Newsroom — Nighthawk connectivity and 300mm quantum-chip fabrication announcement',
+  'https://gov.illinois.gov/news/press-release.32731.html':
+    'State of Illinois — $500 million investment in the Illinois Quantum and Microelectronics Park',
+  'https://epa.illinois.gov/topics/community-relations/sites/iqmp.html':
+    'Illinois EPA — Illinois Quantum and Microelectronics Park site information',
 };
 
 const getTechnicalSourceLabel = (url: string) => TECHNICAL_SOURCE_LABELS[url] ?? 'External source';
@@ -972,6 +1002,21 @@ export default function BlogPostTemplate() {
             "articleSection": post.category,
             "keywords": post.tags ?? [],
             "isAccessibleForFree": true
+          } : {}),
+          ...(post.slug === "ibm-quantum-system-two-nighthawk-r2-chicago" ? {
+            "about": [
+              { "@type": "Thing", "name": "IBM Quantum System Two" },
+              { "@type": "Thing", "name": "IBM Quantum Nighthawk r2" },
+              { "@type": "Thing", "name": "ibm_phoenix QPU backend" },
+              { "@type": "Organization", "name": "University of Chicago" },
+              { "@type": "Organization", "name": "Illinois Quantum and Microelectronics Park" }
+            ],
+            "reviewedBy": {
+              "@type": "Person",
+              "@id": `${AUTHOR_URL}#person`,
+              "name": "Imran Natiq",
+              "jobTitle": "Hardware Repair Engineer"
+            }
           } : {}),
           ...(["why-8gb-ram-is-no-longer-enough-for-windows-11", "why-is-my-laptop-so-slow"].includes(post.slug) ? {
             "inLanguage": "en",
