@@ -48,6 +48,7 @@ const [app, graph, seoProjection, locale, pricingPage, sitemap, hero, reviews, f
 
 const vercelConfig = await readFile(path.resolve('vercel.json'), 'utf8');
 const seoEngine = await read('core/components/SEOEngine.tsx');
+const brandTemplate = await read('pages/templates/BrandTemplate.tsx');
 const locationTypeSchema = await read('types/knowledgeGraph.ts');
 const seoGenerator = await readFile(path.resolve('scripts/generate-seo-data.ts'), 'utf8');
 const arabicContact = await read('pages/ArabicContactPage.tsx');
@@ -1530,6 +1531,46 @@ add('Kuwait City service-area postal codes flow through the shared SEO schema ge
   seoEngine.includes('"postalCode": area.postalCode') &&
   kuwaitCityEntity.includes("schemaTypes: ['LocalBusiness']"));
  
+const hpStart = graph.indexOf("'brand-hp': {");
+const hpEnd = graph.indexOf("'brand-lenovo': {", hpStart + 1);
+const hpBrand = hpStart >= 0 && hpEnd > hpStart ? graph.slice(hpStart, hpEnd) : '';
+add('HP brand page keeps the existing copy while adding four symptom-specific WhatsApp entry points', 
+  hpBrand.includes("id: 'hp-no-power'") &&
+  hpBrand.includes("id: 'hp-hinge'") &&
+  hpBrand.includes("id: 'hp-thermal'") &&
+  hpBrand.includes("id: 'hp-battery-charging'") &&
+  brandTemplate.includes('symptomTriage.map') &&
+  brandTemplate.includes('buildWhatsAppLink(item.message)'));
+add('HP series matrix and startup-alert guidance are graph-driven and avoid universal blink-code claims',
+  hpBrand.includes('repairMatrix: [') &&
+  hpBrand.includes('diagnosticCodeGuide: [') &&
+  hpBrand.includes('blink patterns vary by model') &&
+  brandTemplate.includes('repairMatrix.map') &&
+  brandTemplate.includes('diagnosticCodeGuide.map') &&
+  !hpBrand.includes('3 Blinks') &&
+  !hpBrand.includes('5 Blinks'));
+add('HP published price table matches existing pricing categories and keeps part-inclusive totals conditional',
+  hpBrand.includes("price: '15–20 KWD'") &&
+  hpBrand.includes("price: '15–30 KWD'") &&
+  hpBrand.includes("price: '20–35 KWD'") &&
+  hpBrand.includes("price: '25–60 KWD'") &&
+  hpBrand.includes("price: '8–15 KWD labour + battery'") &&
+  hpBrand.includes("price: 'Labour from 30 KWD + panel'") &&
+  brandTemplate.includes('priceGuide.map') &&
+  pricingPage.includes("price: '15–20 KWD'") &&
+  pricingPage.includes("price: '15–30 KWD'") &&
+  pricingPage.includes("price: '20–35 KWD'") &&
+  pricingPage.includes("price: '25–60 KWD'"));
+add('HP FAQs remain visible and are shared with the existing FAQPage schema generator',
+  (hpBrand.match(/\{ id: 'hp-/g) || []).length === 10 &&
+  hpBrand.includes("title: 'Is KCROC an official HP service center?'") &&
+  seoEngine.includes('brandFaqs.map(faq => ({ title: faq.title, answer: faq.answer }))') &&
+  hpBrand.includes("schemaTypes: ['Brand', 'Service', 'FAQPage', 'BreadcrumbList']"));
+add('HP global mobile WhatsApp CTA requests the model, symptoms and collection area',
+  macbookWhatsappIntent.includes("path === '/hp-laptop-repair-kuwait'") &&
+  macbookWhatsappIntent.includes('Exact HP model / product number') &&
+  macbookWhatsappIntent.includes('Please advise on the diagnosis and confirm the total quote'));
+
 for (const check of checks) console.log(`${check.pass ? '✅' : '❌'} ${check.name}${!check.pass && check.detail ? ` — ${check.detail}` : ''}`);
 const failed = checks.filter((check) => !check.pass);
 if (failed.length) process.exit(1);
