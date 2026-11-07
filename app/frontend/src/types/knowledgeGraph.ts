@@ -409,6 +409,28 @@ export const BrandSchema = RoutableEntitySchema.extend({
     models: z.array(z.string()),
     repairFocus: z.array(z.string()),
   })).optional(),
+  symptomTriage: z.array(z.object({
+    id: z.string(),
+    title: z.string(),
+    description: z.string(),
+    message: z.string(),
+  })).optional(),
+  repairMatrix: z.array(z.object({
+    series: z.string(),
+    commonFaults: z.string(),
+    diagnosticPath: z.string(),
+    repairOptions: z.string(),
+  })).optional(),
+  diagnosticCodeGuide: z.array(z.object({
+    code: z.string(),
+    possibleMeaning: z.string(),
+    diagnosticAction: z.string(),
+  })).optional(),
+  priceGuide: z.array(z.object({
+    service: z.string(),
+    price: z.string(),
+    note: z.string(),
+  })).optional(),
   relatedServiceIds: z.array(z.string()).default([]),
   relatedProblemIds: z.array(z.string()).default([]),
   relatedResourcePaths: z.array(z.object({
