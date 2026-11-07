@@ -523,10 +523,10 @@ export const rawGraphData: RawGraphData = {
       seo: {
         title: 'تبديل بطارية لابتوب Windows في الكويت | HP وDell وLenovo | KCROC',
         description: 'تبديل بطارية لابتوبات Windows من HP وDell وLenovo وASUS وAcer وغيرها في الكويت. نفحص صحة البطارية ودائرة الشحن ونطابق رقم القطعة؛ أجرة العمل من 8 د.ك + سعر البطارية، مع استلام مجاني وضمان 30 يومًا.',
-        canonicalUrl: 'https://www.computerrepairkuwait.com/ar/battery-replacement-kuwait', locale: 'ar_KW',
+        canonicalUrl: 'https://www.computerrepairkuwait.com/ar/laptop-battery-replacement-kuwait', locale: 'ar_KW',
         ogImage: 'https://www.computerrepairkuwait.com/images/laptop-bottom-chassis-battery-ram-open.webp', ogImageAlt: 'فحص داخلي لبطارية لابتوب Windows ومطابقة رقم القطعة في مختبر KCROC بحولي', ogImageWidth: 800, ogImageHeight: 600,
-        alternates: { 'ar-KW': 'https://www.computerrepairkuwait.com/ar/battery-replacement-kuwait', 'en-KW': 'https://www.computerrepairkuwait.com/battery-replacement-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/battery-replacement-kuwait' },
-        ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList', 'Service', 'FAQPage'], lastModified: '2026-11-03T00:00:00+03:00', breadcrumbs: [{ name: 'الرئيسية', url: '/ar' }, { name: 'تبديل بطارية اللابتوب', url: '/ar/battery-replacement-kuwait' }]
+        alternates: { 'ar-KW': 'https://www.computerrepairkuwait.com/ar/laptop-battery-replacement-kuwait', 'en-KW': 'https://www.computerrepairkuwait.com/battery-replacement-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/battery-replacement-kuwait' },
+        ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList', 'Service', 'FAQPage'], lastModified: '2026-11-07T00:00:00+03:00', breadcrumbs: [{ name: 'الرئيسية', url: '/ar' }, { name: 'تبديل بطارية اللابتوب', url: '/ar/laptop-battery-replacement-kuwait' }]
       },
       relatedServiceIds: ['srv-battery', 'srv-laptop', 'srv-charging-port', 'srv-motherboard']
     } as WebPageEntity,
@@ -4150,7 +4150,7 @@ export const rawGraphData: RawGraphData = {
         description: 'Windows laptop battery checks and replacement in Kuwait. Labour starts from 8 KWD plus the model-matched battery price. We test the charging path first, with free Kuwait-wide pickup and a 30-day warranty on covered work.', 
         canonicalUrl: 'https://www.computerrepairkuwait.com/battery-replacement-kuwait', 
         locale: 'en_KW',
-        alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/battery-replacement-kuwait', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/battery-replacement-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/battery-replacement-kuwait' },
+        alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/battery-replacement-kuwait', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/laptop-battery-replacement-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/battery-replacement-kuwait' },
         ogType: 'article', 
         schemaTypes: ['Service', 'FAQPage'] 
       },
