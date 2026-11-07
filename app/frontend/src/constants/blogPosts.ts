@@ -130,6 +130,8 @@ export interface BlogPost {
   category: string;
   readTime: string;
   isPillar?: boolean;
+  /** Editorial content intended for a non-local, informational audience. */
+  isGlobalGuide?: boolean;
   clusterParent?: string;
   /** Explicit, editorially selected related content in display order. */
   relatedPostSlugs?: string[];
@@ -4780,6 +4782,7 @@ export const BLOG_POSTS: BlogPost[] = [
     date: "2026-09-26",
     technicalReviewDate: "November 7, 2026",
     author: "Imran Natiq",
+    isGlobalGuide: true,
     category: "Laptop Performance & Diagnostics",
     readTime: "18 min read",
     relatedPostSlugs: [
