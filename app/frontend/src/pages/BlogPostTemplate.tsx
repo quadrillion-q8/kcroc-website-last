@@ -296,17 +296,7 @@ const STANDALONE_REPAIR_PATHS: Record<string, { title: string; intro: string; li
       { href: '/pricing', label: 'KCROC repair pricing', description: 'Review published starting ranges before requesting a model-specific quote.' },
     ],
   },
-  'why-is-my-laptop-so-slow-2026': {
-    title: 'Slow laptop: related KCROC repair paths',
-    intro: 'Match the measured bottleneck to the relevant KCROC service instead of replacing parts at random.',
-    links: [
-      { href: '/laptop-running-very-slow', label: 'Laptop Running Extremely Slow', description: 'For persistent slowdowns where the cause is not yet clear or several symptoms overlap.' },
-      { href: '/ssd-ram-upgrade-kuwait', label: 'SSD & RAM Upgrade Kuwait', description: 'For confirmed memory pressure, an old HDD, or a storage upgrade that fits the laptop.' },
-      { href: '/laptop-overheating-kuwait', label: 'Laptop Overheating', description: 'For slowdowns caused or accompanied by high temperature and thermal throttling.' },
-      { href: '/laptop-repair-kuwait', label: 'Laptop Repair Kuwait', description: 'For deeper hardware/software diagnosis when performance symptoms remain unexplained.' },
-      { href: '/motherboard-repair-kuwait', label: 'Motherboard Repair Kuwait', description: 'For measured board-level faults affecting power, storage, charging or system stability.' },
-    ],
-  },
+
 };
 
 const AUTHOR_URL = `${business.websiteUrl}/author/imran`;
