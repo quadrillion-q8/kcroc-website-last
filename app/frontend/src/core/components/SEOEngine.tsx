@@ -292,7 +292,7 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
             "name": service.title,
             "description": service.description,
             "provider": { "@id": `${business.websiteUrl}/#business` },
-            "areaServed": service.id === 'srv-gaming-laptop' || service.id === 'srv-macbook-screen'
+            "areaServed": service.id === 'srv-gaming-laptop' || service.id === 'srv-macbook-screen' || service.id === 'srv-charging-port'
               ? [
                   { "@type": "Country", "name": "Kuwait" },
                   ...(primaryLocation?.serviceAreas ?? []).map(area => ({ "@type": "City", "name": area }))
@@ -360,6 +360,66 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
                   { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "MacBook display cable, connector and backlight diagnosis", "description": "Black-screen, flicker, lines and uneven-backlight symptoms are tested before assuming full panel failure." } },
                   { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "True Tone and supported display function checks", "description": "Supported display functions are checked after fitting; behavior depends on the specific model and compatible part." } },
                   { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Free Kuwait-wide MacBook pickup and delivery", "description": "Collection and return are arranged for the customer's home or office; repairs are completed at the Hawalli workshop." } }
+                ]
+              }
+            } : {}),
+            ...(service.id === 'srv-charging-port' ? {
+              "alternateName": "تصليح مدخل شحن اللابتوب في الكويت",
+              "serviceType": [
+                "Laptop DC jack and cable-harness replacement",
+                "Rectangular Slim-Tip charging connector repair",
+                "USB-C charging-port replacement and Power Delivery diagnostics",
+                "Gaming laptop DC-in connector repair",
+                "Motherboard input and charging-circuit diagnosis"
+              ],
+              "inLanguage": "en-KW",
+              "availableChannel": {
+                "@type": "ServiceChannel",
+                "servicePhone": "+" + business.telephone,
+                "serviceLocation": {
+                  "@type": "Place",
+                  "name": "KCROC repair laboratory — Hawalli",
+                  "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": business.streetAddress,
+                    "addressLocality": business.addressLocality,
+                    "addressRegion": business.addressRegion,
+                    "addressCountry": business.addressCountry
+                  }
+                }
+              },
+              "hasOfferCatalog": {
+                "@type": "OfferCatalog",
+                "name": "Laptop Charging Port Repair Guide Prices",
+                "itemListElement": [
+                  {
+                    "@type": "Offer",
+                    "name": "Initial adapter, connector and power-path diagnosis",
+                    "price": "0.00",
+                    "priceCurrency": "KWD",
+                    "description": "Free initial diagnosis before any paid repair is approved."
+                  },
+                  {
+                    "@type": "Offer",
+                    "name": "Cable-harness or standard DC jack replacement",
+                    "price": "20.00",
+                    "priceCurrency": "KWD",
+                    "description": "Starting price; many standard connector repairs are quoted in the 20–25 KWD range after model and part confirmation."
+                  },
+                  {
+                    "@type": "Offer",
+                    "name": "Soldered USB-C port, gaming DC jack or pad repair",
+                    "price": "25.00",
+                    "priceCurrency": "KWD",
+                    "description": "Starting price; many connector micro-soldering or repairable pad jobs are quoted in the 25–35 KWD range after inspection."
+                  },
+                  {
+                    "@type": "Offer",
+                    "name": "Charging circuit or USB-C Power Delivery controller repair",
+                    "price": "35.00",
+                    "priceCurrency": "KWD",
+                    "description": "Starting price for separate board-level charging-circuit work; final cost depends on the failed component, board condition and parts."
+                  }
                 ]
               }
             } : {}),
