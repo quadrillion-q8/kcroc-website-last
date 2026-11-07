@@ -133,7 +133,7 @@ export function Footer() {
         <div className="mx-auto flex max-w-7xl flex-col gap-5 px-4 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
           <div>
             <p className="text-sm font-black tracking-wide text-white">KCROC Hardware Engineering Lab</p>
-            <p className="mt-1 max-w-xl text-xs leading-6 text-slate-500">Independent technical guidance on laptop hardware, storage, performance and diagnostics.</p>
+            <p className="mt-1 max-w-xl text-xs leading-6 text-slate-500">Technical guidance on laptop hardware, storage, performance and diagnostics.</p>
           </div>
           <nav aria-label="Editorial links" className="flex flex-wrap gap-x-5 gap-y-3 text-sm text-slate-400">
             <Link to="/blog" className="hover:text-white">Articles</Link>
