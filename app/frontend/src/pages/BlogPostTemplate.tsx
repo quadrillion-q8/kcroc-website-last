@@ -607,6 +607,14 @@ const GlobalLaptopDiagnosticScorecard: React.FC = () => {
           <strong className="text-slate-200">{selectedEvidence.label}:</strong> {selectedEvidence.meaning}
         </p>
       </div>
+      <nav className="mt-5 border-t border-slate-800 pt-5" aria-label="Related technical guides">
+        <p className="mb-3 text-xs font-black uppercase tracking-[0.14em] text-slate-400">Continue the diagnostic trail</p>
+        <ul className="grid gap-2 text-sm sm:grid-cols-3">
+          <li><Link to="/blog/windows-11-100-disk-usage-causes-solutions" className="font-semibold text-cyan-300 hover:text-cyan-200">Windows 11 100% Disk Usage</Link></li>
+          <li><Link to="/blog/why-8gb-ram-is-no-longer-enough-for-windows-11" className="font-semibold text-cyan-300 hover:text-cyan-200">Is 8GB RAM Enough for Windows 11?</Link></li>
+          <li><Link to="/guides/windows-11-background-services-audit" className="font-semibold text-cyan-300 hover:text-cyan-200">Windows 11 Background Services Audit</Link></li>
+        </ul>
+      </nav>
       <p className="mt-4 text-xs leading-6 text-slate-500">
         Safety note: stop using the laptop and disconnect its charger if you notice a burning smell, smoke, sparking, a swollen battery or unusual connector heat. Back up important data before extended testing if storage may be failing.
       </p>
