@@ -967,6 +967,12 @@ export default function BlogPostTemplate() {
           "@id": `${pageUrl}#article`,
           "headline": post.title,
           "description": post.excerpt,
+          ...(isNews ? {
+            "inLanguage": "en-KW",
+            "articleSection": post.category,
+            "keywords": post.tags ?? [],
+            "isAccessibleForFree": true
+          } : {}),
           ...(["why-8gb-ram-is-no-longer-enough-for-windows-11", "why-is-my-laptop-so-slow"].includes(post.slug) ? {
             "inLanguage": "en",
             "articleSection": post.category,
@@ -1153,9 +1159,16 @@ export default function BlogPostTemplate() {
               <h1 className="text-3xl md:text-5xl font-black text-white leading-tight mb-8">{post.title}</h1>
 
               {post.image && (
-                <div className="aspect-[21/9] rounded-3xl overflow-hidden bg-slate-900 border border-slate-800 shadow-2xl mb-6">
-                  <img src={post.image} alt={post.title} className="w-full h-full object-cover opacity-90" loading="eager" />
-                </div>
+                <figure className="mb-6">
+                  <div className="aspect-[21/9] rounded-3xl overflow-hidden bg-slate-900 border border-slate-800 shadow-2xl">
+                    <img src={post.image} alt={post.imageAlt || post.title} className="w-full h-full object-cover opacity-90" loading="eager" decoding="async" />
+                  </div>
+                  {post.imageCaption && (
+                    <figcaption className="mt-2 text-center text-xs leading-5 text-slate-500">
+                      {post.imageCaption}
+                    </figcaption>
+                  )}
+                </figure>
               )}
 
               {/* Share / copy link row */}
