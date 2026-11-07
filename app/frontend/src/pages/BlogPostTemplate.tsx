@@ -984,7 +984,14 @@ export default function BlogPostTemplate() {
             "isAccessibleForFree": true,
             ...(post.slug === "why-is-my-laptop-so-slow" ? {
               "proficiencyLevel": "Beginner to Advanced",
-              "reviewedBy": { "@type": "Person", "@id": `${AUTHOR_URL}#person` }
+              "reviewedBy": { "@type": "Person", "@id": `${AUTHOR_URL}#person` },
+              "about": [
+                { "@type": "Thing", "name": "Laptop performance diagnostics" },
+                { "@type": "Thing", "name": "Random-access memory and virtual memory" },
+                { "@type": "Thing", "name": "NVMe solid-state drive" },
+                { "@type": "Thing", "name": "CPU thermal throttling and PROCHOT" },
+                { "@type": "Thing", "name": "Windows 11 troubleshooting" }
+              ]
             } : {})
           } : {}),
           "image": toAbsoluteAssetUrl(post.discoverImage || post.image),
