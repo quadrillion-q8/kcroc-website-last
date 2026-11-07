@@ -5,6 +5,7 @@ import { KCROC_GRAPH } from '../data/graph';
 import { SEOEngine } from '../core/components/SEOEngine';
 import SchemaMarkup from '../components/seo/SchemaMarkup';
 import { IMAGES } from '../constants/images';
+import { buildWhatsAppLink } from '../utils/whatsappIntent';
 import { ArabicHeadTermLinks } from '@/components/content/ArabicHeadTermLinks';
 
 const LOCAL_LINKS = [
@@ -63,7 +64,7 @@ const CONFIG: Record<string, {
       { label: 'تصليح Gaming PC', path: '/ar/gaming-pc-repair-kuwait' },
       { label: 'تصليح شاشة لابتوب', path: '/ar/laptop-screen-repair-kuwait' },
       { label: 'تصليح MacBook', path: '/ar/macbook-repair-kuwait' },
-      { label: 'تبديل بطارية اللابتوب', path: '/ar/battery-replacement-kuwait' },
+      { label: 'تبديل بطارية اللابتوب', path: '/ar/laptop-battery-replacement-kuwait' },
       { label: 'ترقية SSD وRAM', path: '/ar/ssd-ram-upgrade-kuwait' },
       { label: 'تصليح Gaming Laptop', path: '/ar/gaming-laptop-repair-kuwait' },
       { label: 'تصليح كمبيوتر حولي', path: '/ar/computer-repair-hawalli' },
@@ -329,7 +330,7 @@ const CONFIG: Record<string, {
       { label: 'تصليح شاشة اللابتوب', path: '/ar/laptop-screen-repair-kuwait' },
       { label: 'تصليح مدخل الشحن', path: '/ar/laptop-charging-port-repair-kuwait' },
       { label: 'تصليح المذربورد', path: '/ar/motherboard-repair-kuwait' },
-      { label: 'تبديل بطارية اللابتوب', path: '/ar/battery-replacement-kuwait' },
+      { label: 'تبديل بطارية اللابتوب', path: '/ar/laptop-battery-replacement-kuwait' },
       { label: 'أسعار تصليح الكمبيوتر واللابتوب', path: '/ar/pricing' },
       { label: 'فني كمبيوتر بالقرب مني', path: '/ar/near-me' }
     ],
@@ -400,7 +401,7 @@ const CONFIG: Record<string, {
       { label: 'تصليح كمبيوتر قيمنق', path: '/ar/gaming-pc-repair-kuwait' },
       { label: 'تصليح المذربورد واللوحة الأم', path: '/ar/motherboard-repair-kuwait' },
       { label: 'تبديل شاشة اللابتوب', path: '/ar/laptop-screen-repair-kuwait' },
-      { label: 'تبديل بطارية اللابتوب وماك بوك', path: '/ar/battery-replacement-kuwait' },
+      { label: 'تبديل بطارية اللابتوب وماك بوك', path: '/ar/laptop-battery-replacement-kuwait' },
       { label: 'فني كمبيوتر بالقرب مني', path: '/ar/near-me' },
       { label: 'أسعار التصليح بالدينار الكويتي', path: '/ar/pricing' }
     ],
@@ -449,7 +450,7 @@ const CONFIG: Record<string, {
     arabicLinks: [
       { label: 'تبديل شاشة ماك بوك إير وبرو (MacBook Air / Pro)', path: '/ar/macbook-screen-replacement-kuwait' },
       { label: 'تبديل بطارية MacBook', path: '/ar/macbook-battery-replacement-kuwait' },
-      { label: 'تبديل بطارية اللابتوب', path: '/ar/battery-replacement-kuwait' },
+      { label: 'تبديل بطارية اللابتوب', path: '/ar/laptop-battery-replacement-kuwait' },
       { label: 'تصليح مذربورد ماك بوك واللوحة الأم', path: '/ar/motherboard-repair-kuwait' },
       { label: 'تصليح أضرار السوائل', path: '/ar/laptop-liquid-damage-repair-kuwait' },
       { label: 'تبديل كيبورد اللابتوب', path: '/ar/laptop-keyboard-replacement-kuwait' },
@@ -485,7 +486,7 @@ const CONFIG: Record<string, {
       { label: 'تصليح MacBook في الكويت', path: '/ar/macbook-repair-kuwait' },
       { label: 'تبديل شاشة اللابتوب', path: '/ar/laptop-screen-repair-kuwait' },
       { label: 'تبديل بطارية MacBook', path: '/ar/macbook-battery-replacement-kuwait' },
-      { label: 'تبديل بطارية اللابتوب', path: '/ar/battery-replacement-kuwait' },
+      { label: 'تبديل بطارية اللابتوب', path: '/ar/laptop-battery-replacement-kuwait' },
       { label: 'تصليح MacBook بعد أضرار السوائل', path: '/ar/laptop-liquid-damage-repair-kuwait' },
       { label: 'تصليح المذربورد واللوحة الأم', path: '/ar/motherboard-repair-kuwait' },
       { label: 'أسعار التصليح في الكويت', path: '/ar/pricing' },
@@ -493,7 +494,7 @@ const CONFIG: Record<string, {
     ],
     serviceIds: ['srv-macbook-screen', 'srv-macbook', 'srv-screen', 'srv-motherboard', 'srv-liquid-damage']
   },
-  'battery-replacement-kuwait': {
+  'laptop-battery-replacement-kuwait': {
     h1: 'تبديل بطارية اللابتوب في الكويت',
     eyebrow: 'نفحص البطارية ودائرة الشحن قبل ما نقرر التبديل',
     intro: 'تدور على تبديل بطارية لابتوب Windows في الكويت؟ إذا البطارية تفضى بسرعة، الجهاز يطفي قبل وصول النسبة إلى صفر، أو يظل الشحن على 0% رغم ظهور علامة التوصيل، فمو كل مرة تكون البطارية هي السبب. في KCROC نفحص صحة البطارية وعدد دورات الشحن، ونراجع الشاحن والمنفذ ومسار الطاقة ودائرة الشحن حسب موديل الجهاز قبل طلب قطعة جديدة. نطابق رقم الموديل أو Service Tag مع رقم البطارية، ونوضح خيارات القطع المتاحة والسعر النهائي قبل أي عمل مدفوع. الإصلاح يتم في مختبرنا بحولي، مع استلام وتوصيل مجاني داخل الكويت.',
@@ -558,7 +559,7 @@ const CONFIG: Record<string, {
     arabicLinks: [
       { label: 'تصليح MacBook Air وMacBook Pro', path: '/ar/macbook-repair-kuwait' },
       { label: 'تبديل شاشة MacBook', path: '/ar/macbook-screen-replacement-kuwait' },
-      { label: 'تبديل بطارية اللابتوب Windows', path: '/ar/battery-replacement-kuwait' },
+      { label: 'تبديل بطارية اللابتوب Windows', path: '/ar/laptop-battery-replacement-kuwait' },
       { label: 'فحص منفذ الشحن ودائرة الطاقة', path: '/ar/laptop-charging-port-repair-kuwait' },
       { label: 'تصليح مذربورد MacBook', path: '/ar/motherboard-repair-kuwait' },
       { label: 'أسعار التصليح في الكويت', path: '/ar/pricing' }
@@ -585,7 +586,7 @@ const CONFIG: Record<string, {
     englishPath: '/ssd-ram-upgrade-kuwait',
     arabicLinks: [
       { label: 'تصليح لابتوب', path: '/ar/laptop-repair-kuwait' },
-      { label: 'تبديل البطارية', path: '/ar/battery-replacement-kuwait' },
+      { label: 'تبديل البطارية', path: '/ar/laptop-battery-replacement-kuwait' },
       { label: 'تصليح Gaming Laptop', path: '/ar/gaming-laptop-repair-kuwait' },
       { label: 'دليل اللابتوب البطيء', path: '/blog/why-is-my-laptop-so-slow-2026' },
       { label: 'تصليح كمبيوتر حولي', path: '/ar/computer-repair-hawalli' }
@@ -617,7 +618,7 @@ const CONFIG: Record<string, {
     arabicLinks: [
       { label: 'تصليح لابتوب', path: '/ar/laptop-repair-kuwait' },
       { label: 'تصليح مذربورد ومسار الطاقة', path: '/ar/motherboard-repair-kuwait' },
-      { label: 'تبديل بطارية اللابتوب', path: '/ar/battery-replacement-kuwait' },
+      { label: 'تبديل بطارية اللابتوب', path: '/ar/laptop-battery-replacement-kuwait' },
       { label: 'اللابتوب متصل بالشاحن ولا يشحن — الدليل العربي', path: '/ar/laptop-plugged-in-not-charging' },
       { label: 'اللابتوب متصل بالشاحن ولا يشحن (بالإنجليزية)', path: '/laptop-plugged-in-not-charging' },
       { label: 'فني كمبيوتر بالقرب مني', path: '/ar/near-me' }
@@ -1966,7 +1967,7 @@ export default function ArabicCommercialPage() {
               caption: 'نفحص حالة المشتت والمواد الحرارية، ونختار المعجون أو الوسائد المناسبة حسب تصميم الجهاز.'
             }
           ]
-        : slug === 'battery-replacement-kuwait'
+        : slug === 'laptop-battery-replacement-kuwait'
           ? [
               {
                 image: IMAGES.upgrades.laptopBottomChassisBatteryRamOpen,
@@ -2004,9 +2005,28 @@ export default function ArabicCommercialPage() {
 
   if (!cfg || !page || !business) return <Navigate to="/404" replace />;
 
+  const laptopBatterySymptomLinks = [
+    {
+      label: 'البطارية منتفخة أو الهيكل / التاتش باد مرتفع',
+      message: 'السلام عليكم KCROC، بطارية لابتوب Windows عندي منتفخة أو الهيكل أو التاتش باد مرتفع. أوقفت الاستخدام والشحن ولن أضغط على الجهاز أو أفتحه. منطقتي: ____. أرجو إرسال تعليمات التعامل والترتيب الآمن للاستلام قبل نقل الجهاز.'
+    },
+    {
+      label: 'متصل بالكهرباء ولا يشحن أو واقف على 0%',
+      message: 'السلام عليكم KCROC، اللابتوب متصل بالشاحن لكنه لا يشحن أو النسبة واقفة على 0%. الماركة والموديل الكامل أو Service Tag: ____. نوع الشاحن والمنفذ إن عُرف: ____. منطقتي: ____. أحتاج فحص الشاحن والمنفذ والبطارية ودائرة الشحن قبل طلب بطارية جديدة، مع توضيح السعر قبل أي عمل مدفوع.'
+    },
+    {
+      label: 'البطارية تفضى بسرعة أو الجهاز يطفي فجأة',
+      message: 'السلام عليكم KCROC، بطارية لابتوب Windows تفضى بسرعة أو الجهاز يطفي قبل وصول النسبة إلى 0%. الماركة والموديل الكامل: ____. متى يطفي تقريبًا؟ ____. منطقتي: ____. أرجو فحص صحة البطارية وسلوك الشحن ومسار الطاقة ومطابقة البديل قبل تحديد السعر.'
+    },
+    {
+      label: 'HP Battery Alert 601 أو تحذير بطارية',
+      message: 'السلام عليكم KCROC، يظهر عندي HP Battery Alert 601 أو تحذير بطارية في Windows. الماركة والموديل أو Service Tag: ____. نص التحذير: ____. منطقتي: ____. أستطيع إرسال صورة خارجية للتحذير أو ملصق الموديل إذا كان ذلك آمنًا. أرجو تأكيد التشخيص وتوفر القطعة والسعر الشامل قبل أي عمل مدفوع.'
+    }
+  ].map((item) => ({ ...item, href: buildWhatsAppLink(item.message) }));
+
   const whatsappMessage = slug === 'macbook-screen-replacement-kuwait'
     ? 'السلام عليكم KCROC، عندي مشكلة في شاشة MacBook Air أو Pro. سأرسل صورة للشاشة والجهاز، وإذا لم أعرف رقم الموديل أرجو مساعدتي في تحديده. أريد معرفة هل يمكن إصلاح الكابل أو الإضاءة أم تحتاج الشاشة إلى تبديل، مع السعر النهائي شامل الشاشة والتركيب والمدة المتوقعة قبل البدء. منطقتي: ____.'
-    : slug === 'battery-replacement-kuwait'
+    : slug === 'laptop-battery-replacement-kuwait'
       ? 'السلام عليكم KCROC، أحتاج فحص أو تبديل بطارية لابتوب Windows في الكويت. الماركة: ____. الموديل الكامل أو Service Tag: ____. الأعراض: تفريغ سريع / ينطفئ قبل انتهاء الشحن / لا يشحن أو 0% / تحذير بطارية / انتفاخ أو ارتفاع الهيكل / أخرى: ____. هل توجد علامة انتفاخ أو تشوه؟ ____. المنطقة: ____. سأرسل صورة خارجية للموديل أو رسالة التحذير إذا كان ذلك آمنًا، من دون فتح الجهاز أو الضغط على البطارية. فضلاً أكدوا نتيجة الفحص وتوافق البطارية وتوفرها وخيار القطعة وأجرة العمل والسعر النهائي والمدة قبل أي عمل مدفوع.'
       : slug === 'laptop-screen-repair-kuwait'
       ? 'السلام عليكم KCROC، أحتاج تصليح أو تبديل شاشة اللابتوب في الكويت. الماركة والموديل: ____. المشكلة: ____. منطقتي بالكويت: ____. رقم الموديل الدقيق أو Service Tag إن توفر: ____. الأعراض: كسر / بقع سوداء / خطوط / وميض / شاشة سوداء / يتغير العرض مع حركة الغطاء / أخرى. هل الشاشة لمس أو ذات معدل تحديث عالٍ إذا كنت تعرف؟ ____. أستطيع إرسال صور للشاشة والجهاز. فضلاً أكدوا توافق ورقم القطعة وتوفرها والسعر النهائي شامل أجرة العمل والقطعة والمدة المتوقعة قبل الإصلاح.'
@@ -2243,7 +2263,7 @@ export default function ArabicCommercialPage() {
         { title: 'تصليح وتبديل شاشة اللابتوب', path: '/ar/laptop-screen-repair-kuwait' },
         { title: 'أسعار تصليح الكمبيوتر واللابتوب', path: '/ar/pricing' }
       ]
-    : slug === 'battery-replacement-kuwait'
+    : slug === 'laptop-battery-replacement-kuwait'
     ? [
         { title: 'تشخيص اللابتوب المتصل بالشاحن لكنه لا يشحن', path: '/ar/laptop-plugged-in-not-charging' },
         { title: 'إصلاح منفذ شحن اللابتوب ودائرة الطاقة', path: '/ar/laptop-charging-port-repair-kuwait' },
@@ -2306,7 +2326,7 @@ export default function ArabicCommercialPage() {
     'srv-screen': '/ar/laptop-screen-repair-kuwait',
     'srv-macbook': '/ar/macbook-repair-kuwait',
     'srv-macbook-screen': '/ar/macbook-screen-replacement-kuwait',
-    'srv-battery': '/ar/battery-replacement-kuwait',
+    'srv-battery': '/ar/laptop-battery-replacement-kuwait',
     'srv-ssd-ram': '/ar/ssd-ram-upgrade-kuwait',
     'srv-gaming-laptop': '/ar/gaming-laptop-repair-kuwait',
     'srv-charging-port': '/ar/laptop-charging-port-repair-kuwait',
@@ -2758,7 +2778,7 @@ export default function ArabicCommercialPage() {
     }]
   });
 
-  const batteryServiceSchema = slug === 'battery-replacement-kuwait'
+  const batteryServiceSchema = slug === 'laptop-battery-replacement-kuwait'
     ? createBatteryServiceSchema(
         'تبديل بطارية اللابتوب في الكويت',
         'Windows Laptop Battery Replacement Kuwait',
@@ -2906,11 +2926,11 @@ export default function ArabicCommercialPage() {
 
         <section className="rounded-3xl border border-cyan-900/50 bg-slate-900/45 p-6 shadow-2xl backdrop-blur-md sm:p-10">
           <p className="mb-3 text-sm font-black uppercase tracking-[0.14em] text-cyan-400">{cfg.eyebrow}</p>
-          <div className={slug === 'battery-replacement-kuwait' || heroPageImage ? "grid items-center gap-8 lg:grid-cols-[minmax(0,1.08fr)_minmax(280px,0.92fr)]" : ""}>
+          <div className={slug === 'laptop-battery-replacement-kuwait' || heroPageImage ? "grid items-center gap-8 lg:grid-cols-[minmax(0,1.08fr)_minmax(280px,0.92fr)]" : ""}>
             <div className={heroPageImage ? "max-w-none" : "max-w-4xl"}>
               <h1 className="text-3xl font-black leading-tight text-white sm:text-5xl">{cfg.h1}</h1>
               <p className="mt-6 text-base leading-8 text-slate-300 sm:text-lg">{cfg.intro}</p>
-              {(slug === 'battery-replacement-kuwait' || slug === 'macbook-battery-replacement-kuwait') && (
+              {(slug === 'laptop-battery-replacement-kuwait' || slug === 'macbook-battery-replacement-kuwait') && (
                 <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                   <a href={wa} target="_blank" rel="noreferrer" aria-label={slug === 'macbook-battery-replacement-kuwait' ? 'أرسل موديل MacBook وأعراض البطارية إلى KCROC عبر واتساب' : 'أرسل موديل اللابتوب وأعراض البطارية إلى KCROC عبر واتساب'} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-400 px-6 py-3 font-black text-slate-950 transition hover:bg-cyan-300">
                     <MessageCircle className="h-5 w-5" aria-hidden="true" /> {slug === 'macbook-battery-replacement-kuwait' ? 'أرسل موديل MacBook وأعراض البطارية عبر واتساب' : 'أرسل موديل اللابتوب وأعراض البطارية عبر واتساب'}
@@ -2918,6 +2938,29 @@ export default function ArabicCommercialPage() {
                   <Link to="/ar/book" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-slate-700 bg-slate-950/60 px-6 py-3 font-bold text-white transition hover:border-cyan-500/40 hover:text-cyan-300">
                     <Truck className="h-5 w-5" aria-hidden="true" /> احجز استلامًا مجانيًا من منطقتك
                   </Link>
+                </div>
+              )}
+              {slug === 'laptop-battery-replacement-kuwait' && (
+                <div id="battery-symptom-triage" className="mt-6 rounded-2xl border border-cyan-900/60 bg-slate-950/70 p-4 sm:p-5" role="group" aria-labelledby="battery-symptom-triage-heading">
+                  <p className="text-xs font-black uppercase tracking-[0.14em] text-cyan-300">تحديد العَرَض وطلب المساعدة</p>
+                  <h2 id="battery-symptom-triage-heading" className="mt-2 text-lg font-black text-white">شنو مشكلة البطارية عندك الحين؟</h2>
+                  <p className="mt-2 text-sm leading-6 text-slate-400">اختَر أقرب وصف، وتفتح لك رسالة واتساب فيها تفاصيل أولية تساعدنا نبدأ من التشخيص.</p>
+                  <div className="mt-4 grid gap-2 sm:grid-cols-2">
+                    {laptopBatterySymptomLinks.map((item, index) => (
+                      <a
+                        key={item.label}
+                        href={item.href}
+                        target="_blank"
+                        rel="noreferrer"
+                        className={index === 0
+                          ? "flex min-h-14 items-center rounded-xl border border-amber-600/50 bg-amber-950/25 px-4 py-3 text-sm font-bold leading-6 text-amber-100 transition hover:border-amber-400/70"
+                          : "flex min-h-14 items-center rounded-xl border border-slate-700 bg-slate-900/70 px-4 py-3 text-sm font-bold leading-6 text-slate-200 transition hover:border-cyan-500/60 hover:text-cyan-200"}
+                      >
+                        {item.label}
+                      </a>
+                    ))}
+                  </div>
+                  <p className="mt-3 text-xs leading-5 text-slate-500">لا تفتح الجهاز للبحث عن رقم البطارية. إذا كان هناك انتفاخ، أوقف الاستخدام والشحن واتصل بنا أولًا قبل ترتيب النقل.</p>
                 </div>
               )}
               {slug === 'macbook-battery-replacement-kuwait' && (
@@ -2933,7 +2976,7 @@ export default function ArabicCommercialPage() {
                   <p className="mt-3 text-xs leading-6 text-slate-500">تفتح الرسالة وفيها تفاصيل الموديل أو العَرَض؛ يمكنك إضافة منطقتك وإرسالها بعد مراجعتها. لا تحتاج إلى لقطة شاشة أو الرقم التسلسلي لبدء التواصل.</p>
                 </div>
               )}
-              {slug === 'battery-replacement-kuwait' && (
+              {slug === 'laptop-battery-replacement-kuwait' && (
                 <Link to="/ar/macbook-battery-replacement-kuwait" className="mt-5 inline-flex items-center rounded-xl border border-cyan-500/25 bg-cyan-500/5 px-4 py-3 text-sm font-bold text-cyan-200 hover:border-cyan-300/50">
                   تبديل بطارية MacBook Air وMacBook Pro في الكويت — السعر مع التركيب
                 </Link>
@@ -3526,7 +3569,7 @@ export default function ArabicCommercialPage() {
                   { title: 'متصل بالشاحن لكنه لا يشحن', text: 'قد يكون السبب من الشاحن أو الكابل أو منفذ DC/USB-C أو البطارية أو دائرة الشحن. تجنب تحريك القابس بالقوة، وأرسل صورة المنفذ والموديل عند طلب الفحص.', href: '/ar/laptop-charging-port-repair-kuwait', link: 'تفاصيل إصلاح مدخل الشحن' },
                   { title: 'الشاشة سوداء أو فيها خطوط', text: 'قد تكون المشكلة في الشاشة أو الكابل أو الإضاءة أو مسار العرض. اختبار شاشة خارجية متوافقة يساعد أحيانًا، لكنه لا يؤكد سبب العطل وحده.', href: '/ar/laptop-screen-repair-kuwait', link: 'فحص شاشة اللابتوب' },
                   { title: 'حرارة عالية أو مروحة مزعجة', text: 'قد تتداخل الأتربة وتدفق الهواء والمروحة والمشتت والتحميل البرمجي. ضع الجهاز على سطح صلب، وأوقف الاستخدام إذا ظهرت رائحة احتراق أو إطفاءات متكررة.', href: '/blog/ar/how-often-clean-laptop-replace-thermal-paste-kuwait', link: 'متى ننظف اللابتوب ونغيّر المعجون؟' },
-                  { title: 'البطارية تفرغ بسرعة أو تنتفخ', text: 'نفحص صحة البطارية وسلوك الشحن قبل طلب بديل. إذا لاحظت انتفاخًا أو ارتفاعًا في الهيكل، أوقف الاستخدام والشحن ولا تضغط على البطارية أو تحاول إخراجها بالقوة.', href: '/ar/battery-replacement-kuwait', link: 'فحص وتبديل البطارية' },
+                  { title: 'البطارية تفرغ بسرعة أو تنتفخ', text: 'نفحص صحة البطارية وسلوك الشحن قبل طلب بديل. إذا لاحظت انتفاخًا أو ارتفاعًا في الهيكل، أوقف الاستخدام والشحن ولا تضغط على البطارية أو تحاول إخراجها بالقوة.', href: '/ar/laptop-battery-replacement-kuwait', link: 'فحص وتبديل البطارية' },
                   { title: 'انسكب ماء أو قهوة على الجهاز', text: 'أوقف التشغيل وافصل الشاحن إذا كان ذلك آمنًا، ولا تعاود تشغيل الجهاز أو شحنه. لا تستخدم مجففًا ولا تضعه في الأرز؛ اذكر نوع السائل ووقت الحادث.', href: '/ar/laptop-liquid-damage-repair-kuwait', link: 'تقييم أضرار السوائل' }
                 ].map((item) => (
                   <article key={item.title} className="rounded-2xl border border-slate-800 bg-slate-950/55 p-5">
@@ -3853,7 +3896,7 @@ export default function ArabicCommercialPage() {
                     alt: 'بطارية MacBook منتفخة تحتاج إلى تعامل آمن وفحص مختص',
                     title: 'بطارية منتفخة أو ضعيفة',
                     description: 'التورم أو ارتفاع الهيكل قد يشير إلى انتفاخ البطارية. أوقف الاستخدام ولا تضغط على الجهاز أو تحاول فك البطارية بنفسك.',
-                    href: '/ar/battery-replacement-kuwait',
+                    href: '/ar/laptop-battery-replacement-kuwait',
                     link: 'تفاصيل خدمة البطارية',
                   },
                   {
@@ -4202,7 +4245,7 @@ export default function ArabicCommercialPage() {
           </section>
         )}
 
-        {slug === 'battery-replacement-kuwait' && (
+        {slug === 'laptop-battery-replacement-kuwait' && (
           <section className="mt-12 space-y-10 rounded-3xl border border-cyan-900/50 bg-slate-900/35 p-6 sm:p-8" aria-labelledby="battery-diagnosis">
             <div>
               <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">فحص قبل التبديل</p>
@@ -4394,8 +4437,8 @@ export default function ArabicCommercialPage() {
             {services.map((service) => service && (
               <Link key={service.id} to={arabicServicePathById[service.id] ?? `/${service.slug}`} className="group rounded-2xl border border-slate-800 bg-slate-900/45 p-6 hover:border-cyan-500/40">
                 <Wrench className="h-6 w-6 text-cyan-400" aria-hidden="true" />
-                <h3 className="mt-4 text-lg font-bold text-white group-hover:text-cyan-300">{(cfg.serviceCardCopy?.[service.id]?.title ?? ( slug === 'macbook-repair-kuwait' ? arabicMacbookServiceCopy[service.id]?.title : slug === 'laptop-screen-repair-kuwait' ? arabicScreenServiceCopy[service.id]?.title : slug === 'gaming-laptop-repair-kuwait' ? arabicGamingServiceCopy[service.id]?.title : slug === 'macbook-screen-replacement-kuwait' ? arabicMacbookScreenServiceCopy[service.id]?.title : slug === 'laptop-keyboard-replacement-kuwait' ? arabicKeyboardServiceCopy[service.id]?.title : slug === 'laptop-charging-port-repair-kuwait' ? arabicChargingServiceCopy[service.id]?.title : slug === 'battery-replacement-kuwait' ? arabicBatteryServiceCopy[service.id]?.title : undefined)) ?? arabicDefaultServiceCopy[service.id]?.title ?? service.title.replace(' Kuwait', '')}</h3>
-                <p className="mt-2 text-sm leading-6 text-slate-400">{(cfg.serviceCardCopy?.[service.id]?.description ?? ( slug === 'macbook-repair-kuwait' ? arabicMacbookServiceCopy[service.id]?.description : slug === 'laptop-screen-repair-kuwait' ? arabicScreenServiceCopy[service.id]?.description : slug === 'gaming-laptop-repair-kuwait' ? arabicGamingServiceCopy[service.id]?.description : slug === 'macbook-screen-replacement-kuwait' ? arabicMacbookScreenServiceCopy[service.id]?.description : slug === 'laptop-keyboard-replacement-kuwait' ? arabicKeyboardServiceCopy[service.id]?.description : slug === 'laptop-charging-port-repair-kuwait' ? arabicChargingServiceCopy[service.id]?.description : slug === 'battery-replacement-kuwait' ? arabicBatteryServiceCopy[service.id]?.description : undefined)) ?? arabicDefaultServiceCopy[service.id]?.description ?? service.shortDescription}</p>
+                <h3 className="mt-4 text-lg font-bold text-white group-hover:text-cyan-300">{(cfg.serviceCardCopy?.[service.id]?.title ?? ( slug === 'macbook-repair-kuwait' ? arabicMacbookServiceCopy[service.id]?.title : slug === 'laptop-screen-repair-kuwait' ? arabicScreenServiceCopy[service.id]?.title : slug === 'gaming-laptop-repair-kuwait' ? arabicGamingServiceCopy[service.id]?.title : slug === 'macbook-screen-replacement-kuwait' ? arabicMacbookScreenServiceCopy[service.id]?.title : slug === 'laptop-keyboard-replacement-kuwait' ? arabicKeyboardServiceCopy[service.id]?.title : slug === 'laptop-charging-port-repair-kuwait' ? arabicChargingServiceCopy[service.id]?.title : slug === 'laptop-battery-replacement-kuwait' ? arabicBatteryServiceCopy[service.id]?.title : undefined)) ?? arabicDefaultServiceCopy[service.id]?.title ?? service.title.replace(' Kuwait', '')}</h3>
+                <p className="mt-2 text-sm leading-6 text-slate-400">{(cfg.serviceCardCopy?.[service.id]?.description ?? ( slug === 'macbook-repair-kuwait' ? arabicMacbookServiceCopy[service.id]?.description : slug === 'laptop-screen-repair-kuwait' ? arabicScreenServiceCopy[service.id]?.description : slug === 'gaming-laptop-repair-kuwait' ? arabicGamingServiceCopy[service.id]?.description : slug === 'macbook-screen-replacement-kuwait' ? arabicMacbookScreenServiceCopy[service.id]?.description : slug === 'laptop-keyboard-replacement-kuwait' ? arabicKeyboardServiceCopy[service.id]?.description : slug === 'laptop-charging-port-repair-kuwait' ? arabicChargingServiceCopy[service.id]?.description : slug === 'laptop-battery-replacement-kuwait' ? arabicBatteryServiceCopy[service.id]?.description : undefined)) ?? arabicDefaultServiceCopy[service.id]?.description ?? service.shortDescription}</p>
               </Link>
             ))}
           </div>
@@ -4414,6 +4457,96 @@ export default function ArabicCommercialPage() {
               <article className="rounded-2xl border border-slate-800 bg-slate-950/40 p-5 sm:col-span-2"><h3 className="font-bold text-white">تصليح كمبيوتر الألعاب (Gaming PC) ولابتوب الألعاب</h3><p className="mt-2 text-sm leading-7 text-slate-400">نفحص ارتفاع الحرارة وهبوط الإطارات (FPS Drops) والشاشة السوداء وأعطال GPU وVRAM والطاقة والمراوح. يمكن استخدام مواد واجهة حرارية مثل Honeywell PTM7950 أو liquid metal فقط عندما تتوافق مع تصميم الجهاز؛ لا نعد بدرجات حرارة أو زيادة أداء ثابتة قبل القياس والاختبار.</p><div className="mt-4 flex flex-wrap gap-4"><Link to="/ar/gaming-pc-repair-kuwait" className="inline-flex font-bold text-cyan-300 hover:text-cyan-200">تصليح بي سي قيمنق <ArrowLeft className="mr-2 h-4 w-4" aria-hidden="true" /></Link><Link to="/ar/gaming-laptop-repair-kuwait" className="inline-flex font-bold text-cyan-300 hover:text-cyan-200">تصليح لابتوب قيمنق <ArrowLeft className="mr-2 h-4 w-4" aria-hidden="true" /></Link></div></article>
             </div>
           </section>
+        )}
+
+
+        {slug === 'laptop-battery-replacement-kuwait' && (
+          <div className="mt-12 space-y-7">
+            <section id="battery-swollen-safety" className="rounded-3xl border border-amber-600/50 bg-amber-950/20 p-6 sm:p-8" aria-labelledby="battery-swollen-safety-heading">
+              <div className="flex items-start gap-4">
+                <ShieldCheck className="mt-1 h-7 w-7 shrink-0 text-amber-300" aria-hidden="true" />
+                <div>
+                  <p className="text-xs font-black uppercase tracking-[0.14em] text-amber-300">السلامة أولًا</p>
+                  <h2 id="battery-swollen-safety-heading" className="mt-2 text-2xl font-black text-amber-100 sm:text-3xl">البطارية منتفخة أو الكيبورد / التاتش باد مرتفع؟ أوقف الاستخدام.</h2>
+                  <p className="mt-4 leading-8 text-amber-50/90">انتفاخ بطارية الليثيوم حالة تستدعي الحذر، وليس مجرد مشكلة شكلية. أوقف تشغيل اللابتوب والشحن، وافصل الشاحن إذا كان ذلك آمنًا. لا تضغط على الهيكل أو التاتش باد، ولا تثقب البطارية أو تحاول فك الغطاء أو نزعها بنفسك.</p>
+                  <p className="mt-3 leading-8 text-amber-50/90">تواصل مع KCROC أولًا للحصول على تعليمات التعامل وترتيب الاستلام المناسب. لا تضع الجهاز في شحنة أو ناقل عادي قبل الاتفاق على طريقة نقل آمنة.</p>
+                  <a href={laptopBatterySymptomLinks[0].href} target="_blank" rel="noreferrer" className="mt-5 inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-amber-300 px-5 py-3 font-extrabold text-amber-950 transition hover:brightness-95">
+                    <MessageCircle className="h-5 w-5" aria-hidden="true" /> اطلب تعليمات التعامل والاستلام الآمن
+                  </a>
+                </div>
+              </div>
+            </section>
+
+            <section id="battery-diagnostic-matrix" className="rounded-3xl border border-slate-800 bg-slate-900/45 p-6 sm:p-8" aria-labelledby="battery-diagnostic-matrix-heading">
+              <p className="text-xs font-black uppercase tracking-[0.14em] text-cyan-300">فحص قبل تبديل القطعة</p>
+              <h2 id="battery-diagnostic-matrix-heading" className="mt-2 text-2xl font-black text-white sm:text-3xl">هل الخلل من البطارية أو من الشاحن ودائرة الشحن؟</h2>
+              <p className="mt-3 max-w-4xl leading-8 text-slate-300">الأعراض قد تتشابه، لذلك لا نعتمد على علامة الشحن أو نسبة البطارية وحدها. نراجع البطارية والشاحن والمنفذ ومسار الطاقة وفق تصميم موديل اللابتوب قبل اقتراح شراء قطعة بديلة.</p>
+              <div className="mt-6 overflow-x-auto rounded-2xl border border-slate-800">
+                <table className="w-full min-w-[900px] border-collapse text-right text-sm">
+                  <caption className="sr-only">مقارنة أعراض بطارية اللابتوب وأسباب الشاحن أو دائرة الشحن وطريقة التحقق في مختبر KCROC</caption>
+                  <thead className="bg-slate-950 text-slate-200">
+                    <tr>
+                      <th scope="col" className="p-4 font-bold">العَرَض الظاهر</th>
+                      <th scope="col" className="p-4 font-bold">احتمال متعلق بالبطارية</th>
+                      <th scope="col" className="p-4 font-bold">احتمال متعلق بالشاحن أو اللوحة</th>
+                      <th scope="col" className="p-4 font-bold">كيف نتحقق؟</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-800 text-slate-300">
+                    <tr><th scope="row" className="p-4 align-top font-bold text-white">متصل بالشاحن ولا يشحن أو واقف على 0%</th><td className="p-4 align-top">تدهور خلايا البطارية أو خلل في قراءة حالتها.</td><td className="p-4 align-top">الشاحن أو الكابل أو منفذ DC / USB-C أو دائرة الشحن أو خط بيانات البطارية حسب الموديل.</td><td className="p-4 align-top">فحص توافق الشاحن والمنفذ وبيانات البطارية ومسار الشحن قبل طلب بديل.</td></tr>
+                    <tr><th scope="row" className="p-4 align-top font-bold text-white">الجهاز يعمل على الشاحن فقط ويطفئ عند فصله</th><td className="p-4 align-top">البطارية لا تحتفظ بطاقة كافية أو لا توصلها بصورة مستقرة.</td><td className="p-4 align-top">قد يكون الخلل في الموصل الداخلي أو مسار تفريغ البطارية على اللوحة.</td><td className="p-4 align-top">التحقق من خرج البطارية واتصالها وسلوك مسار الطاقة قبل تحديد القطعة.</td></tr>
+                    <tr><th scope="row" className="p-4 align-top font-bold text-white">النسبة تهبط فجأة أو الجهاز يطفي عند 20–40%</th><td className="p-4 align-top">انخفاض السعة المتاحة أو عدم استقرار الخلايا تحت الحمل.</td><td className="p-4 align-top">قد توجد قراءة غير دقيقة أو سحب طاقة غير طبيعي بحسب حالة الجهاز.</td><td className="p-4 align-top">مقارنة السعة التصميمية بالسعة الحالية ومراجعة سلوك النسبة تحت الاستخدام.</td></tr>
+                    <tr><th scope="row" className="p-4 align-top font-bold text-white">رسالة أن الشاحن غير معروف أو لا يتعرف عليه الجهاز</th><td className="p-4 align-top">البطارية وحدها ليست التفسير الوحيد لهذا التحذير.</td><td className="p-4 align-top">قد تكون المشكلة في تعريف الشاحن أو الكابل أو منفذ الشحن أو مسار الإشارة حسب الموديل.</td><td className="p-4 align-top">فحص الشاحن المتوافق والتوصيل وإشارة التعرف قبل الحكم على البطارية.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p className="mt-4 text-xs leading-6 text-slate-500">هذه احتمالات تشخيصية وليست حكمًا على قطعة بعينها. تختلف طريقة القياس والإشارات بين موديلات الشركات والأجيال المختلفة.</p>
+            </section>
+
+            <section id="battery-compatibility-guide" className="rounded-3xl border border-slate-800 bg-slate-900/45 p-6 sm:p-8" aria-labelledby="battery-compatibility-guide-heading">
+              <p className="text-xs font-black uppercase tracking-[0.14em] text-cyan-300">مطابقة الموديل ورقم القطعة</p>
+              <h2 id="battery-compatibility-guide-heading" className="mt-2 text-2xl font-black text-white sm:text-3xl">بطاريات HP وDell وLenovo وASUS وAcer وMSI وSurface</h2>
+              <p className="mt-3 max-w-4xl leading-8 text-slate-300">اسم الماركة أو سلسلة الجهاز لا يكفي لتحديد البطارية. حتى داخل عائلة واحدة قد تختلف القطعة والجهد والسعة والموصل حسب الجيل والتجميعة. نستخدم الجدول لتحديد معلومات البداية، ثم نطابق رقم القطعة الفعلي قبل تأكيد التوفر والسعر.</p>
+              <div className="mt-6 overflow-x-auto rounded-2xl border border-slate-800">
+                <table className="w-full min-w-[850px] border-collapse text-right text-sm">
+                  <caption className="sr-only">عائلات لابتوبات Windows الشائعة ومعلومات الموديل اللازمة لمطابقة البطارية</caption>
+                  <thead className="bg-slate-950 text-slate-200">
+                    <tr><th scope="col" className="p-4 font-bold">الماركة</th><th scope="col" className="p-4 font-bold">أمثلة على عائلات الأجهزة</th><th scope="col" className="p-4 font-bold">المعلومة التي ترسلها لنا</th><th scope="col" className="p-4 font-bold">ما نطابقه قبل الطلب</th></tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-800 text-slate-300">
+                    <tr><th scope="row" className="p-4 font-bold text-white">HP</th><td className="p-4">Pavilion · Envy · ProBook · EliteBook · OMEN · Victus</td><td className="p-4">رقم الموديل الكامل أو Product Number.</td><td className="p-4">رقم البطارية الفعلي والجهد والسعة وشكل الموصل.</td></tr>
+                    <tr><th scope="row" className="p-4 font-bold text-white">Dell</th><td className="p-4">Inspiron · Latitude · XPS · Vostro · Alienware</td><td className="p-4">الموديل الكامل أو Service Tag.</td><td className="p-4">Part Number والتوصيل والسعة والتوافق مع Service Tag.</td></tr>
+                    <tr><th scope="row" className="p-4 font-bold text-white">Lenovo</th><td className="p-4">ThinkPad · IdeaPad · Yoga · Legion</td><td className="p-4">الموديل الكامل أو Machine Type / Model (MTM).</td><td className="p-4">رقم القطعة ونوع الموصل والجهد والسعة حسب الجيل.</td></tr>
+                    <tr><th scope="row" className="p-4 font-bold text-white">ASUS</th><td className="p-4">VivoBook · ZenBook · TUF · ROG</td><td className="p-4">رقم الموديل الكامل الظاهر على الملصق.</td><td className="p-4">رقم البطارية وشكلها وموصلها ومواصفاتها.</td></tr>
+                    <tr><th scope="row" className="p-4 font-bold text-white">Acer</th><td className="p-4">Aspire · Swift · Nitro · Predator</td><td className="p-4">الموديل الكامل أو SNID إذا توفر.</td><td className="p-4">رقم القطعة والتوصيل والجهد والسعة.</td></tr>
+                    <tr><th scope="row" className="p-4 font-bold text-white">MSI</th><td className="p-4">Modern · Prestige · Katana · Raider · Stealth</td><td className="p-4">الموديل الكامل ورقم المنتج إن توفر.</td><td className="p-4">رقم البطارية والأبعاد والموصل ومواصفات الطاقة.</td></tr>
+                    <tr><th scope="row" className="p-4 font-bold text-white">Microsoft Surface</th><td className="p-4">Surface Laptop · Surface Pro · Surface Book</td><td className="p-4">اسم الطراز والجيل أو رقم الموديل إن توفر.</td><td className="p-4">التصميم الداخلي ورقم القطعة وطريقة الفك والتوافق.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p className="mt-4 text-sm leading-7 text-slate-400">لا نعتمد على قوائم Part Numbers عامة؛ رقم البطارية قد يختلف بين نسخ متشابهة بالاسم. أرسل صورة الملصق الخارجي أو Service Tag، ولا تفتح الجهاز للبحث عن الرقم الداخلي، خصوصًا إذا كان هناك انتفاخ.</p>
+            </section>
+
+            <section id="battery-installed-price" className="rounded-3xl border border-cyan-900/50 bg-slate-900/55 p-6 sm:p-8" aria-labelledby="battery-installed-price-heading">
+              <p className="text-xs font-black uppercase tracking-[0.14em] text-cyan-300">السعر قبل الموافقة</p>
+              <h2 id="battery-installed-price-heading" className="mt-2 text-2xl font-black text-white sm:text-3xl">كم تكلفة تبديل بطارية اللابتوب مع التركيب؟</h2>
+              <p className="mt-3 max-w-4xl leading-8 text-slate-300">ما نعطي سعرًا نهائيًا من اسم الماركة وحده. بعد مطابقة موديل الجهاز ورقم البطارية والتأكد من توفر القطعة، نوضح أجرة العمل وسعر البطارية والمجموع قبل البدء بأي عمل مدفوع.</p>
+              <div className="mt-6 overflow-hidden rounded-2xl border border-slate-800">
+                <table className="w-full border-collapse text-right text-sm">
+                  <caption className="sr-only">بنود تكلفة تبديل بطارية اللابتوب في الكويت لدى KCROC</caption>
+                  <tbody className="divide-y divide-slate-800 text-slate-300">
+                    <tr><th scope="row" className="w-1/3 bg-slate-950 p-4 font-bold text-white">الفحص الأولي</th><td className="p-4">مجاني وبدون التزام بالموافقة على الإصلاح.</td></tr>
+                    <tr><th scope="row" className="bg-slate-950 p-4 font-bold text-white">أجرة التركيب</th><td className="p-4">تبدأ من 8 د.ك، وهي أجرة عمل فقط ولا تشمل سعر البطارية.</td></tr>
+                    <tr><th scope="row" className="bg-slate-950 p-4 font-bold text-white">سعر البطارية</th><td className="p-4">يتحدد حسب رقم القطعة والموديل وفئة البطارية والتوفر.</td></tr>
+                    <tr><th scope="row" className="bg-slate-950 p-4 font-bold text-white">السعر الإجمالي</th><td className="p-4">نؤكده لك بعد مطابقة القطعة وقبل أي عمل مدفوع.</td></tr>
+                    <tr><th scope="row" className="bg-slate-950 p-4 font-bold text-white">الضمان</th><td className="p-4">30 يومًا على الإصلاحات المشمولة وضمن شروط الخدمة.</td></tr>
+                    <tr><th scope="row" className="bg-slate-950 p-4 font-bold text-white">الاستلام والتوصيل</th><td className="p-4">مجاني في مناطق الكويت؛ يتم تنسيق نقل البطارية المنتفخة بشكل منفصل بعد تعليمات السلامة.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p className="mt-4 text-xs leading-6 text-slate-500">لا يتم طلب قطعة أو تنفيذ عمل مدفوع قبل توضيح السعر النهائي والحصول على موافقتك. أي خدمة إضافية تُشرح وتُسعّر بشكل منفصل ولا تُضاف تلقائيًا.</p>
+            </section>
+          </div>
         )}
 
         <section className="mt-12 rounded-3xl border border-slate-800 bg-slate-900/40 p-6 sm:p-8" aria-labelledby="arabic-local">
