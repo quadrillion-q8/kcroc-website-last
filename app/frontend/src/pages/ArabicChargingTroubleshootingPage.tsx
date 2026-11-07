@@ -161,7 +161,7 @@ const labChecks = [
 const priceRows = [
   { route: 'فحص وتشخيص مبدئي', scope: 'تحديد ما إذا كان السبب من الشاحن أو المنفذ أو البطارية أو دائرة الطاقة.', price: 'مجاناً (0 د.ك)', href: '/ar/contact', label: 'التواصل مع KCROC' },
   { route: 'إصلاح أو تبديل مدخل الشحن', scope: 'عند ثبوت تلف DC Jack أو USB-C أو نقاط تثبيته ولحامه.', price: 'يبدأ من 20 د.ك', href: '/ar/laptop-charging-port-repair-kuwait', label: 'خدمة مدخل الشحن' },
-  { route: 'بطارية اللابتوب', scope: 'عند ثبوت تدهور البطارية وسلامة دائرة الشحن؛ أجرة العمل منفصلة عن سعر البطارية حسب الموديل والتوفر.', price: 'أجرة من 8 د.ك + البطارية', href: '/ar/battery-replacement-kuwait', label: 'تبديل بطارية اللابتوب' },
+  { route: 'بطارية اللابتوب', scope: 'عند ثبوت تدهور البطارية وسلامة دائرة الشحن؛ أجرة العمل منفصلة عن سعر البطارية حسب الموديل والتوفر.', price: 'أجرة من 8 د.ك + البطارية', href: '/ar/laptop-battery-replacement-kuwait', label: 'تبديل بطارية اللابتوب' },
   { route: 'بطارية MacBook', scope: 'لأجهزة MacBook Air وPro بعد التحقق من رقم الموديل وتوفر البطارية المناسبة.', price: 'أجرة من 8 د.ك + البطارية', href: '/ar/macbook-battery-replacement-kuwait', label: 'تبديل بطارية MacBook' },
   { route: 'إصلاح دائرة الشحن بالمذربورد', scope: 'عند تعطل متحكم PD أو آيسي الشحن أو بوابات MOSFET أو مسار اتصال البطارية.', price: 'يبدأ من 35 د.ك', href: '/ar/motherboard-repair-kuwait', label: 'تصليح المذربورد' },
 ];
@@ -594,7 +594,7 @@ export default function ArabicChargingTroubleshootingPage() {
               <MessageCircle className="h-5 w-5" aria-hidden="true" /> أرسل التفاصيل على واتساب
             </a>
             <Link to="/ar/laptop-charging-port-repair-kuwait" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-slate-700 px-6 py-3 font-bold text-cyan-200 hover:border-cyan-500/40">إصلاح مدخل الشحن <ArrowLeft className="h-4 w-4" aria-hidden="true" /></Link>
-            <Link to="/ar/battery-replacement-kuwait" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-slate-700 px-6 py-3 font-bold text-cyan-200 hover:border-cyan-500/40">فحص وتبديل البطارية <ArrowLeft className="h-4 w-4" aria-hidden="true" /></Link>
+            <Link to="/ar/laptop-battery-replacement-kuwait" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-slate-700 px-6 py-3 font-bold text-cyan-200 hover:border-cyan-500/40">فحص وتبديل البطارية <ArrowLeft className="h-4 w-4" aria-hidden="true" /></Link>
             <Link to="/ar/motherboard-repair-kuwait" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-slate-700 px-6 py-3 font-bold text-cyan-200 hover:border-cyan-500/40">إصلاح المذربورد <ArrowLeft className="h-4 w-4" aria-hidden="true" /></Link>
           </div>
         </section>
