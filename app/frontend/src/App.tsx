@@ -37,6 +37,7 @@ export const routes: RouteObject[] = [
           { path: 'ar/contact', lazy: async () => ({ Component: (await import('./pages/ArabicContactPage')).default }) },
           { path: 'ar/computer-repair-hawalli', lazy: async () => ({ Component: (await import('./pages/ArabicHawalliLocationPage')).default }) },
           { path: 'ar/laptop-plugged-in-not-charging', lazy: async () => ({ Component: (await import('./pages/ArabicChargingTroubleshootingPage')).default }) },
+          { path: 'ar/laptop-liquid-damage-repair-kuwait', lazy: async () => ({ Component: (await import('./pages/ArabicLiquidDamageRepairPage')).default }) },
           { path: 'ar/:slug', lazy: async () => ({ Component: (await import('./pages/ArabicCommercialPage')).default }) },
           { path: 'macbook-battery-replacement-kuwait', lazy: async () => ({ Component: (await import('./pages/MacBookBatteryReplacementPage')).default }) },
           { path: 'computer-repair-kuwait', lazy: async () => ({ Component: (await import('./pages/ComputerRepairKuwait')).default }) },
