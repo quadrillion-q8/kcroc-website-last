@@ -229,7 +229,7 @@ const ARABIC_SERVICE_COPY: Record<string, { title: string; description: string; 
   'gaming-laptop-repair-kuwait': { title: 'تصليح Gaming Laptop', description: 'تشخيص مشاكل الحرارة والطاقة والأداء والشاشة في أجهزة الألعاب المحمولة.', href: '/ar/gaming-laptop-repair-kuwait' },
   'laptop-charging-port-repair-kuwait': { title: 'إصلاح منفذ شحن اللابتوب', description: 'فحص الشاحن والمنفذ ومسار الطاقة لتحديد سبب عدم الشحن.', href: '/ar/laptop-charging-port-repair-kuwait' },
   'laptop-keyboard-replacement-kuwait': { title: 'تبديل كيبورد اللابتوب', description: 'تحديد العطل وموديل الكيبورد والتكلفة قبل تنفيذ الاستبدال.', href: '/ar/laptop-keyboard-replacement-kuwait' },
-  'laptop-liquid-damage-repair-kuwait': { title: 'إصلاح أضرار السوائل', description: 'فحص التآكل والدوائر المتأثرة وتقييم الجهاز قبل محاولة تشغيله مجددًا.', href: '/ar/laptop-liquid-damage-repair-kuwait' },
+  'laptop-liquid-damage-repair-kuwait': { title: 'تصليح اللابتوب بعد انسكاب الماي', description: 'انكب ماي أو قهوة؟ خلّ الجهاز مطفي وخلّنا نفحص الكيبورد والموصلات والمذربورد قبل لا تشغّله مرة ثانية.', href: '/ar/laptop-liquid-damage-repair-kuwait' },
 };
 
 const SERVICE_ICON_MAP: Record<string, React.ElementType> = {
