@@ -46,7 +46,7 @@ export default function Header() {
   const { trackConversion } = useAnalytics();
   
   const baseNavModel = getLocalizedNavigation(location.pathname);
-  const navModel = isGlobalEditorialArticle
+  const navModel = location.pathname === '/blog/why-is-my-laptop-so-slow'
     ? {
         ...baseNavModel,
         header: baseNavModel.header.filter((link) =>
