@@ -65,6 +65,11 @@
   ],
   "redirects": [
     {
+      "source": "/blog/why-is-my-laptop-so-slow-2026",
+      "destination": "/blog/why-is-my-laptop-so-slow",
+      "permanent": true
+    },
+    {
       "source": "/computer-repair-adailiya",
       "destination": "/location/adailiya",
       "permanent": true
