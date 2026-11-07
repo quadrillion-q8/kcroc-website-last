@@ -17,6 +17,13 @@ const ICON_MAP: Record<string, React.ElementType> = {
   'monitor': Monitor,
 };
 
+const KEYBOARD_QUICK_DISPATCH = [
+  { label: 'Liquid spilled on the keyboard', detail: 'Power-off safety first', message: 'Hi KCROC, liquid has spilled on my laptop keyboard. I have switched the laptop off and disconnected the charger where safe, and I will not power it on to test it. Brand and exact model: ____. Liquid and approximate time: ____. Kuwait area: ____. Please advise on safe free pickup and inspection of the keyboard and underlying board.' },
+  { label: 'Some keys are dead or repeat', detail: 'Key matrix / layout check', message: 'Hi KCROC, some laptop keys do not work or repeat characters. Brand and exact model / Service Tag: ____. Affected keys: ____. Does the issue persist with the correct input language: ____. Keyboard layout needed: Arabic-English / English / other ____. Kuwait area: ____. I can send photos. Please advise on diagnosis and total quote before parts are ordered.' },
+  { label: 'The entire keyboard is not responding', detail: 'Ribbon and board-side input check', message: 'Hi KCROC, my laptop keyboard is fully unresponsive. Brand and exact model: ____. Does the power button still work: ____. Does an external USB keyboard work: ____. Any recent liquid spill or repair: ____. Kuwait area: ____. Please check the keyboard, flex connector and input path before recommending a replacement.' },
+  { label: 'Backlight / RGB or MacBook keyboard issue', detail: 'Exact configuration matching', message: 'Hi KCROC, I need help with a laptop backlight / RGB keyboard or MacBook keyboard. Brand and exact model / MacBook A-number: ____. Issue: keys / backlight / layout / top-case: ____. Required layout: ____. Kuwait area: ____. Please verify compatible assembly and availability, labour and part cost, and timing before repair.' },
+] as const;
+
 const CHARGING_PORT_QUICK_DISPATCH = [
   {
     label: 'Loose port / charges only at an angle',
@@ -145,7 +152,10 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
   const defaultServiceHeading = isMotherboardService ? 'Laptop & Desktop Motherboard Repair in Kuwait' : entity.title;
   const isScreenService = entity.id === 'srv-screen';
   const isMacbookScreenService = entity.id === 'srv-macbook-screen';
-  const whatsappLink = buildWhatsAppLink(entity.id === 'srv-charging-port'
+  const isKeyboardService = entity.id === 'srv-keyboard';
+  const whatsappLink = buildWhatsAppLink(entity.id === 'srv-keyboard'
+    ? 'Hi KCROC, I need laptop keyboard diagnosis or replacement in Kuwait. Brand and exact model / Service Tag: ____. Symptoms: dead keys / repeated typing / full keyboard failure / liquid spill / backlight or RGB / wrong layout: ____. Required layout: Arabic-English / English / other ____. Backlight or RGB required: ____. Liquid spill history: ____. Kuwait area: ____. I can send a keyboard photo and model label. Please confirm the diagnostic findings, compatible part, labour plus part total, and timing before ordering or starting paid work.'
+    : entity.id === 'srv-charging-port'
     ? 'Hi KCROC, I need laptop charging-port repair in Kuwait. Brand and exact model: ____. Port type (DC barrel / rectangular Slim-Tip / USB-C / not sure): ____. Symptoms: ____. Kuwait area: ____. I can send photos of the port and charger label. Please advise on diagnosis and free pickup.'
     : isScreenService
       ? 'Hi KCROC, I need a laptop screen repair quote in Kuwait. Laptop brand/model: ____. Screen symptom: ____. Area in Kuwait: ____. I can send a photo if needed. Please confirm compatible panel availability and the total price including panel and labour.'
@@ -272,6 +282,16 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
             )}
           </div>
         </header>
+
+        {entity.id === 'srv-keyboard' && (
+          <section className="max-w-7xl mx-auto px-6 -mt-5 pb-8" aria-labelledby="keyboard-quick-dispatch-heading">
+            <div className="rounded-2xl border border-cyan-900/60 bg-slate-950/75 p-5 sm:p-7">
+              <div className="max-w-3xl"><p className="text-xs font-black uppercase tracking-[0.16em] text-cyan-300">Symptom-specific WhatsApp assessment</p><h2 id="keyboard-quick-dispatch-heading" className="mt-2 text-xl font-black text-white sm:text-2xl">What is happening with your laptop keyboard?</h2><p className="mt-2 text-sm leading-6 text-slate-400">Choose the closest symptom. WhatsApp opens with the useful model and fault questions already filled in; review and add your pickup area before sending.</p></div>
+              <div className="mt-5 grid gap-3 sm:grid-cols-2">{KEYBOARD_QUICK_DISPATCH.map((item) => <a key={item.label} href={buildWhatsAppLink(item.message, KCROC_GRAPH.business.telephone)} target="_blank" rel="noopener noreferrer" className="flex min-h-20 items-center justify-between gap-4 rounded-xl border border-slate-800 bg-slate-900/80 p-4 transition hover:border-cyan-400/60 hover:bg-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"><span><span className="block font-bold text-white">{item.label}</span><span className="mt-1 block text-xs text-cyan-300">{item.detail}</span></span><MessageCircle className="h-5 w-5 shrink-0 text-cyan-300" aria-hidden="true" /></a>)}</div>
+              <p className="mt-4 text-xs leading-5 text-slate-500">After a spill, leave the laptop switched off and disconnected. Do not power it on to test the keyboard; collection is arranged for inspection at our Hawalli workshop.</p>
+            </div>
+          </section>
+        )}
 
         {entity.id === 'srv-charging-port' && (
           <section className="max-w-7xl mx-auto px-6 -mt-5 pb-8" aria-labelledby="charging-port-quick-dispatch-heading">
@@ -462,6 +482,19 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
                 ))}
               </div>
             </div>
+          </section>
+        )}
+
+        {entity.keyboardDiagnosticMatrix && (
+          <section className="max-w-7xl mx-auto px-6 py-12 border-t border-slate-800/50 relative z-10" aria-labelledby="keyboard-diagnostic-matrix-heading">
+            <div className="mb-6 max-w-4xl"><h2 id="keyboard-diagnostic-matrix-heading" className="text-2xl font-black text-white sm:text-3xl">{entity.keyboardDiagnosticMatrix.heading}</h2><p className="mt-3 text-sm leading-7 text-slate-300">{entity.keyboardDiagnosticMatrix.intro}</p></div>
+            <div className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-950/50"><div className="overflow-x-auto"><table className="w-full min-w-[960px] border-collapse text-left text-sm"><caption className="sr-only">Possible laptop keyboard, ribbon connector and motherboard input fault paths and KCROC inspection actions.</caption><thead className="bg-slate-900 text-slate-100"><tr><th scope="col" className="px-4 py-4 font-bold">Observed symptom</th><th scope="col" className="px-4 py-4 font-bold">Possible keyboard fault</th><th scope="col" className="px-4 py-4 font-bold">Possible connector / board fault</th><th scope="col" className="px-4 py-4 font-bold">What the lab checks</th></tr></thead><tbody className="divide-y divide-slate-800 text-slate-300">{entity.keyboardDiagnosticMatrix.rows.map((row) => <tr key={row.symptom} className="align-top even:bg-slate-900/35"><th scope="row" className="px-4 py-4 font-bold text-white">{row.symptom}</th><td className="px-4 py-4 leading-7">{row.keyboardCause}</td><td className="px-4 py-4 leading-7">{row.motherboardCause}</td><td className="px-4 py-4 leading-7">{row.labAction}</td></tr>)}</tbody></table></div></div>
+          </section>
+        )}
+        {entity.keyboardMountingMatrix && (
+          <section className="max-w-7xl mx-auto px-6 py-12 border-t border-slate-800/50 relative z-10" aria-labelledby="keyboard-mounting-matrix-heading">
+            <div className="mb-6 max-w-4xl"><h2 id="keyboard-mounting-matrix-heading" className="text-2xl font-black text-white sm:text-3xl">{entity.keyboardMountingMatrix.heading}</h2><p className="mt-3 text-sm leading-7 text-slate-300">{entity.keyboardMountingMatrix.intro}</p></div>
+            <div className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-950/50"><div className="overflow-x-auto"><table className="w-full min-w-[820px] border-collapse text-left text-sm"><caption className="sr-only">Laptop keyboard mounting architectures, representative laptop families and compatibility checks.</caption><thead className="bg-slate-900 text-slate-100"><tr><th scope="col" className="px-4 py-4 font-bold">Mounting architecture</th><th scope="col" className="px-4 py-4 font-bold">Representative laptop families</th><th scope="col" className="px-4 py-4 font-bold">Compatibility and fitting checks</th></tr></thead><tbody className="divide-y divide-slate-800 text-slate-300">{entity.keyboardMountingMatrix.rows.map((row) => <tr key={row.architecture} className="align-top even:bg-slate-900/35"><th scope="row" className="px-4 py-4 font-bold text-white">{row.architecture}</th><td className="px-4 py-4 leading-7">{row.families}</td><td className="px-4 py-4 leading-7">{row.compatibilityChecks}</td></tr>)}</tbody></table></div></div>
           </section>
         )}
 
@@ -808,6 +841,10 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
             </div>
             <p className="mt-4 max-w-5xl text-xs leading-6 text-slate-400">{entity.pricingGuide.note}</p>
           </section>
+        )}
+
+        {isKeyboardService && (
+          <section className="max-w-7xl mx-auto px-6 pb-8 relative z-10" aria-labelledby="keyboard-thermal-option-heading"><div className="flex flex-col gap-4 rounded-2xl border border-slate-800 bg-slate-900/55 p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6"><div className="max-w-3xl"><p className="text-xs font-black uppercase tracking-[0.16em] text-cyan-300">Optional maintenance — separate service</p><h2 id="keyboard-thermal-option-heading" className="mt-2 text-lg font-black text-white">The laptop is already open. Does its cooling system also need attention?</h2><p className="mt-2 text-sm leading-6 text-slate-400">Where inspection shows that cooling maintenance is needed, ask about KCROC’s published Laptop Thermal Service price of 15–20 KWD. It is not automatically added to a keyboard repair and is only carried out after a separate quote and your approval.</p></div><Link to="/pricing#thermal" className="inline-flex min-h-11 shrink-0 items-center justify-center rounded-full border border-cyan-500/30 px-5 py-2.5 text-sm font-bold text-cyan-300 transition hover:bg-cyan-500/10">View thermal service pricing <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" /></Link></div></section>
         )}
 
         {entity.faqs && entity.faqs.length > 0 && (
