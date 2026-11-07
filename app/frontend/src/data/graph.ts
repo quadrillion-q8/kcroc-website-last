@@ -2164,7 +2164,7 @@ export const rawGraphData: RawGraphData = {
       relatedResourcePaths: [
         { label: 'Windows 11 100% Disk Usage: Causes & Solutions', path: '/blog/windows-11-100-disk-usage-causes-solutions' },
         { label: 'Why 8GB RAM Is No Longer Enough', path: '/blog/why-8gb-ram-is-no-longer-enough-for-windows-11' },
-        { label: 'Why Is My Laptop So Slow in 2026?', path: '/blog/why-is-my-laptop-so-slow-2026' },
+        { label: 'Why Is My Laptop So Slow in 2026?', path: '/blog/why-is-my-laptop-so-slow' },
         { label: 'SSD Not Detected in Windows 11', path: '/guides/ssd-not-detected-windows-11' },
         { label: 'Laptop Buying Guide 2026', path: '/blog/laptop-buying-guide-kuwait-2026' },
         { label: 'KCROC Repair Pricing', path: '/pricing' },
