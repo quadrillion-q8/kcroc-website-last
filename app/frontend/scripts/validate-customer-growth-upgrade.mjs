@@ -1534,6 +1534,9 @@ add('Kuwait City service-area postal codes flow through the shared SEO schema ge
 const hpStart = graph.indexOf("'brand-hp': {");
 const hpEnd = graph.indexOf("'brand-lenovo': {", hpStart + 1);
 const hpBrand = hpStart >= 0 && hpEnd > hpStart ? graph.slice(hpStart, hpEnd) : '';
+const hpFaqStart = hpBrand.indexOf('faqs: [');
+const hpFaqEnd = hpBrand.indexOf('],', hpFaqStart);
+const hpFaqBlock = hpFaqStart >= 0 && hpFaqEnd > hpFaqStart ? hpBrand.slice(hpFaqStart, hpFaqEnd) : '';
 add('HP brand page keeps the existing copy while adding four symptom-specific WhatsApp entry points', 
   hpBrand.includes("id: 'hp-no-power'") &&
   hpBrand.includes("id: 'hp-hinge'") &&
@@ -1562,8 +1565,8 @@ add('HP published price table matches existing pricing categories and keeps part
   pricingPage.includes("price: '20–35 KWD'") &&
   pricingPage.includes("price: '25–60 KWD'"));
 add('HP FAQs remain visible and are shared with the existing FAQPage schema generator',
-  (hpBrand.match(/\{ id: 'hp-/g) || []).length === 10 &&
-  hpBrand.includes("title: 'Is KCROC an official HP service center?'") &&
+  (hpFaqBlock.match(/\{ id: 'hp-/g) || []).length === 10 &&
+  hpFaqBlock.includes("title: 'Is KCROC an official HP service center?'") &&
   seoEngine.includes('brandFaqs.map(faq => ({ title: faq.title, answer: faq.answer }))') &&
   hpBrand.includes("schemaTypes: ['Brand', 'Service', 'FAQPage', 'BreadcrumbList']"));
 add('HP global mobile WhatsApp CTA requests the model, symptoms and collection area',
