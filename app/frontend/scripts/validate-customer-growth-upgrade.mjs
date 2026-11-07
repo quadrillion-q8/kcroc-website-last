@@ -48,7 +48,6 @@ const [app, graph, seoProjection, locale, pricingPage, sitemap, hero, reviews, f
 
 const vercelConfig = await readFile(path.resolve('vercel.json'), 'utf8');
 const seoEngine = await read('core/components/SEOEngine.tsx');
-const brandTemplate = await read('pages/templates/BrandTemplate.tsx');
 const locationTypeSchema = await read('types/knowledgeGraph.ts');
 const seoGenerator = await readFile(path.resolve('scripts/generate-seo-data.ts'), 'utf8');
 const arabicContact = await read('pages/ArabicContactPage.tsx');
