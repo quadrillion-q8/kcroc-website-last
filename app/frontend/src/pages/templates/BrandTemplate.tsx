@@ -341,7 +341,7 @@ const BrandTemplate: React.FC = () => {
           </section>
         )}
 
-        {/* Technical expertise */
+        {/* Technical expertise */}
         <section aria-labelledby="component-repair" className="mb-20 rounded-3xl border border-cyan-900/50 bg-cyan-950/20 p-7 md:p-10">
           <div className="grid gap-10 lg:grid-cols-[1fr_.8fr]">
             <div>
