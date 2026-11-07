@@ -517,7 +517,7 @@ export const rawGraphData: RawGraphData = {
     } as WebPageEntity,
 
     'page-ar-battery-replacement': {
-      id: 'page-ar-battery-replacement', slug: 'ar/battery-replacement-kuwait', entityType: 'WebPage', isActive: true,
+      id: 'page-ar-battery-replacement', slug: 'ar/laptop-battery-replacement-kuwait', entityType: 'WebPage', isActive: true,
       title: 'تبديل بطارية لابتوبات Windows في الكويت — HP وDell وLenovo',
       description: 'فحص وتبديل بطارية لابتوبات Windows في الكويت لموديلات HP وDell وLenovo وASUS وAcer وغيرها، مع فحص دائرة الشحن ومطابقة رقم القطعة. أجرة العمل من 8 د.ك + البطارية، واستلام مجاني وضمان 30 يومًا.',
       seo: {
