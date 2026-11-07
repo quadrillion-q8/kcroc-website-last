@@ -1279,83 +1279,361 @@ export const rawGraphData: RawGraphData = {
       slug: 'laptop-charging-port-repair-kuwait',
       entityType: 'Service',
       isActive: true,
-      title: 'Laptop Charging Port Repair Kuwait', primaryKeyword: "laptop charging port repair Kuwait", secondaryKeywords: ["laptop charging port replacement Kuwait","USB-C laptop charging repair","laptop DC jack repair"],
+      title: 'Laptop Charging Port Repair Kuwait',
+      primaryKeyword: 'laptop charging port repair Kuwait',
+      secondaryKeywords: [
+        'laptop charging port replacement Kuwait',
+        'USB-C laptop charging repair Kuwait',
+        'laptop DC jack repair Kuwait',
+        'laptop charger port loose',
+        'laptop only charges at an angle',
+        'broken USB-C charging port laptop'
+      ],
       iconKey: 'cpu',
-      shortDescription: 'DC jack and USB-C charging-port repair, connector replacement, and board-level power diagnostics for laptops across Kuwait.',
-      description: 'If your laptop only charges when the cable is held at an angle, the charging port feels loose, USB-C charging suddenly stopped, or the machine shows no response from a known-good adapter, the fault may be the connector or the power path behind it. KCROC tests the adapter, port, connector pins, charging circuit, and motherboard before replacing anything. When the board is repairable, we micro-solder the damaged connector or failed power component instead of defaulting to a full motherboard replacement.',
-      idealCustomer: 'Laptop owners dealing with intermittent charging, a loose or damaged DC jack, USB-C charging failure, or a machine that refuses to recognize a known-good charger.',
-      deviceTypes: ['Windows Laptops', 'USB-C Charging Laptops', 'Gaming Laptops', 'Business Ultrabooks', '2-in-1 / Convertible Laptops'],
+      shortDescription: 'Laptop DC jack, rectangular Slim-Tip and USB-C charging-port repair in Kuwait, with connector replacement, micro-soldering and board-level power diagnostics.',
+      description: 'If your laptop only charges when the cable is held at an angle, the DC jack or USB-C port feels loose, the connector is unusually hot, or the machine does not respond to a known-good compatible adapter, stop forcing the plug. At KCROC, we test the adapter and inspect the connector, mounting points, solder joints and charging path before recommending a replacement. Where the board and model allow it, we repair the connector or affected power component at the component level instead of defaulting to a full motherboard replacement. Repairs are handled at our Hawalli lab, with free pickup and return delivery arranged across Kuwait.',
+      idealCustomer: 'Laptop owners dealing with a loose or recessed DC jack, broken connector pin, intermittent charging, a damaged USB-C charging port, an adapter-identification warning, or a gaming laptop power connector that becomes unusually hot.',
+      deviceTypes: ['Windows Laptops', 'USB-C Power Delivery Laptops', 'Gaming Laptops', 'Business Ultrabooks', '2-in-1 / Convertible Laptops', 'MacBook Air & MacBook Pro'],
       repairLevel: 'component-level',
       estimatedTurnaround: 'Same Day / 24 Hours',
-            pricing: { startingFrom: 20, currency: 'KWD', quoteRequired: true, displayLabel: 'From 20 KWD — free diagnostic first' },
-      coreFeatures: ['DC Jack Replacement', 'USB-C Port Repair', 'Charging Connector Micro-Soldering', 'Charging IC Diagnostics', 'Power Rail Testing', 'Adapter & Cable Verification', 'Motherboard Trace Inspection', 'Post-Repair Charging Test', 'Free Pick & Drop', '30-Day Warranty'],
-      brands: ['Dell', 'HP', 'Lenovo', 'ASUS', 'Acer', 'MSI', 'Microsoft Surface'],
+      pricing: { startingFrom: 20, currency: 'KWD', quoteRequired: true, displayLabel: 'From 20 KWD — free initial diagnosis' },
+      pricingGuide: {
+        heading: 'Laptop Charging Port Repair Cost in Kuwait',
+        intro: 'These are guide prices for common repair paths, not a quote based on the symptom alone. We confirm the connector type, board condition and required parts first, then explain the fixed price and obtain your approval before paid repair work begins.',
+        note: 'Prices are indicative and depend on the exact laptop model, connector design, board damage and parts availability. Standard connector repairs are generally within the published 20–35 KWD charging-port range. Charging-circuit or controller work is a separate board-level repair and may start from 35 KWD. The initial diagnosis is free. Completed repairs carry the 30-day parts-and-labour warranty under KCROC service terms. Turnaround estimates are confirmed after assessment and are not guaranteed for every model.',
+        rows: [
+          {
+            category: 'Adapter, port and power-path diagnosis',
+            symptoms: 'Compatible charger verification, external connector inspection and initial checks to separate an adapter, port, battery or motherboard fault.',
+            startingPrice: 'Free (0 KWD)',
+            typicalTurnaround: 'Initial assessment; repair timing confirmed after diagnosis'
+          },
+          {
+            category: 'Cable-harness or standard DC jack replacement',
+            symptoms: 'A loose, recessed or broken barrel / rectangular connector where the harness or standard jack can be replaced without extensive board reconstruction.',
+            startingPrice: '20–25 KWD',
+            typicalTurnaround: 'Often same day or within 24 hours, subject to model and part availability'
+          },
+          {
+            category: 'Soldered USB-C port, gaming DC jack or pad repair',
+            symptoms: 'A board-soldered connector, damaged USB-C receptacle, high-wattage DC-in jack or repairable lifted mounting pad.',
+            startingPrice: '25–35 KWD',
+            typicalTurnaround: 'Often within 24 hours; pad or trace reconstruction may take 24–48 hours'
+          },
+          {
+            category: 'Charging circuit or USB-C Power Delivery controller repair',
+            symptoms: 'The connector is serviceable but diagnosis identifies a fault in the input protection, power-path MOSFETs, charging IC or model-specific USB-C PD controller.',
+            startingPrice: 'From 35 KWD',
+            typicalTurnaround: 'Allow 24–48 hours or longer when board-level diagnosis or parts are required'
+          }
+        ]
+      },
+      coreFeatures: [
+        'DC Barrel Jack & Cable-Harness Replacement',
+        'Rectangular Slim-Tip Connector Repair',
+        'USB-C Charging Port Replacement',
+        'Charging Connector Micro-Soldering',
+        'Lifted Copper Pad & Trace Repair Where Feasible',
+        'Charging IC and Input MOSFET Diagnostics',
+        'USB-C Power Delivery Checks on Supported Models',
+        'Adapter & Cable Verification',
+        'Post-Repair Charging and Stability Test',
+        'Free Pick & Drop',
+        '30-Day Warranty'
+      ],
+      brands: ['Dell', 'HP', 'Lenovo', 'ASUS', 'Acer', 'MSI', 'Microsoft Surface', 'Apple MacBook'],
       whyChooseUs: [
-        { title: 'Test the Power Path First', description: 'We separate charger, connector, charging IC, and motherboard faults before recommending a part.' },
-        { title: 'Micro-Soldering Where Appropriate', description: 'A damaged port does not automatically mean a motherboard replacement. Repairable connectors and board damage are handled at component level.' },
-        { title: 'Known-Good Adapter Verification', description: 'We test with a verified compatible power source so a bad charger is not mistaken for a laptop fault.' },
-        { title: 'No Guesswork Quotes', description: 'Diagnosis comes first and the repair quote is based on the confirmed failure, not the symptom alone.' }
+        {
+          title: 'Test the Adapter and Power Path First',
+          description: 'We verify a compatible charger and inspect the input connector and relevant charging path before recommending a part.'
+        },
+        {
+          title: 'Identify the Connector Design',
+          description: 'A cable-harness jack, soldered barrel connector and USB-C receptacle do not use the same replacement or rework method.'
+        },
+        {
+          title: 'Micro-Soldering Where Appropriate',
+          description: 'A damaged port does not automatically mean a motherboard replacement. We assess whether the connector, mounting pads or affected board components can be repaired.'
+        },
+        {
+          title: 'Approve the Quote Before Paid Work',
+          description: 'We explain the confirmed fault, repair scope and price before beginning paid work.'
+        }
       ],
       commonIssues: [
-        { id: 'charging-port-loose', title: 'Charging Port Feels Loose', severity: 'high', description: 'A loose DC jack or USB-C connector can create intermittent contact and may damage the connector pads if continued use flexes it.' },
-        { id: 'charges-angle', title: 'Laptop Charges Only at an Angle', severity: 'high', description: 'Often points to worn connector contacts, a cracked solder joint, or damaged port mounting rather than a bad battery.' },
-        { id: 'usb-c-no-charge', title: 'USB-C Charger Not Recognized', severity: 'high', description: 'The connector, cable, PD negotiation, charging IC, or motherboard power path may be involved; each is tested separately.' },
-        { id: 'no-charge-known-good', title: 'Known-Good Charger Still Does Not Charge', severity: 'critical', description: 'A verified adapter with no charging response warrants inspection of the port, input protection, charging circuit, and main power rails.' }
+        {
+          id: 'charging-port-loose',
+          title: 'Charging Port Feels Loose or Recessed',
+          severity: 'high',
+          description: 'A connector that moves inside the chassis can have worn contacts, broken housing or weakened mounting points. Repeated movement may worsen the damage.'
+        },
+        {
+          id: 'charges-angle',
+          title: 'Laptop Charges Only at an Angle',
+          severity: 'high',
+          description: 'Intermittent charging may come from worn port contacts, a damaged cable, a cracked solder joint or a connector that has shifted from its mounting.'
+        },
+        {
+          id: 'usb-c-no-charge',
+          title: 'USB-C Charger Is Not Recognized',
+          severity: 'high',
+          description: 'The cable, charger compatibility, USB-C connector, CC attach / Power Delivery negotiation or board-level charging path may be involved.'
+        },
+        {
+          id: 'adapter-id-warning',
+          title: 'Dell or HP Adapter Identification Warning',
+          severity: 'high',
+          description: 'An adapter warning can involve the charger, its model-specific identification contact, the laptop DC-in connector or the motherboard circuit that reads the adapter signal.'
+        },
+        {
+          id: 'hot-gaming-connector',
+          title: 'Gaming Laptop Charging Plug Gets Unusually Hot',
+          severity: 'critical',
+          description: 'Unusual heat, discoloration, smell or intermittent power at a high-load connector needs prompt inspection. Stop using the charger if the connector sparks, melts or smells burnt.'
+        }
       ],
       process: [
-        { step: 1, title: 'Free Pickup', description: 'We collect the laptop from your home or office anywhere in Kuwait.' },
-        { step: 2, title: 'Power & Port Diagnosis', description: 'We test the adapter, connector, charging negotiation, and board-level power path.' },
-        { step: 3, title: 'Repair Quote', description: 'You receive the confirmed fault and repair price before any paid work begins.' },
-        { step: 4, title: 'Port or Board Repair', description: 'The damaged connector, solder joints, or failed power component is repaired or replaced as appropriate.' },
-        { step: 5, title: 'Charging Stress Test', description: 'Charging stability, battery detection, and power delivery are tested before reassembly.' },
-        { step: 6, title: 'Return with Warranty', description: 'The repaired laptop is returned with KCROC\'s 30-day parts and labour warranty.' }
+        {
+          step: 1,
+          title: 'Free Pickup or Hawalli Walk-In',
+          description: 'Arrange free collection from your home or office across Kuwait, or visit the KCROC lab at Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19, Hawalli. Bring the charger when possible.'
+        },
+        {
+          step: 2,
+          title: 'Adapter and Port Diagnosis',
+          description: 'We verify a compatible adapter, inspect the port and its mounting, and check the relevant input and charging path for the exact laptop model.'
+        },
+        {
+          step: 3,
+          title: 'Clear Quote Before Paid Work',
+          description: 'We explain whether the fault is in the adapter, cable, connector, board pads or charging circuit and confirm the price before paid work begins.'
+        },
+        {
+          step: 4,
+          title: 'Connector or Board-Level Repair',
+          description: 'Where technically feasible, we replace the damaged jack or USB-C receptacle, rework the solder joints, restore repairable pads or address a confirmed power component fault.'
+        },
+        {
+          step: 5,
+          title: 'Charging and Stability Verification',
+          description: 'We check charging recognition, power delivery where supported, connector fit and charging stability before reassembly and return.'
+        },
+        {
+          step: 6,
+          title: 'Return with Warranty',
+          description: 'We arrange return delivery and provide KCROC’s 30-day parts-and-labour warranty for the completed repair under the service terms.'
+        }
       ],
       faqs: [
-        { id: 'charging-port-faq-1', title: 'Can you repair a broken laptop charging port?', answer: 'Yes. We inspect the connector and the board behind it. If the damage is repairable, we can replace the port or micro-solder the affected connection rather than automatically replacing the motherboard.' },
-        { id: 'charging-port-faq-2', title: 'Why does my laptop charge only when the cable is moved?', answer: 'A loose or worn connector, cracked solder joint, or damaged port mounting can cause intermittent contact. We test the port mechanically and electrically before quoting a repair.' },
-        { id: 'charging-port-faq-3', title: 'Do you repair USB-C charging ports?', answer: 'Yes. USB-C charging faults are diagnosed at the connector, power-delivery, and charging-circuit levels where appropriate.' },
-        { id: 'charging-port-faq-4', title: 'Is the charging port or motherboard damaged?', answer: 'It can be either. We test the charger, port, connector joints, input protection, charging circuit and relevant power rails so the quote reflects the confirmed fault.' },
-        { id: 'charging-port-faq-5', title: 'Can you repair USB-C charging on a laptop?', answer: 'Yes. We can diagnose the USB-C connector and charging path, including power-delivery and board-level faults where the model supports repair.' },
-        { id: 'charging-port-faq-6', title: 'Will charging-port repair affect my files?', answer: 'A connector-level repair does not normally affect your stored data. When board work is required, we work on the original board where practical rather than replacing it unnecessarily.' },
+        {
+          id: 'charging-port-faq-1',
+          title: 'Can you repair a broken laptop charging port without replacing the whole motherboard?',
+          answer: 'Often, yes. If the connector, solder joints or mounting pads are repairable, we can replace the DC jack or USB-C receptacle and restore the affected connections at component level. A full motherboard replacement is considered only when the original board is not technically repairable or the repair is not sensible for the device. We confirm the findings and quote before paid work.'
+        },
+        {
+          id: 'charging-port-faq-2',
+          title: 'Why does my laptop charge only when the cable is held at an angle?',
+          answer: 'This can happen when the port contacts are worn, the connector has shifted, the charger plug or cable is damaged, or the port solder joints have cracked. Stop forcing or taping the cable into position. Repeated movement can worsen the connector or board damage; unplug it if you notice heat, sparking or a burnt smell.'
+        },
+        {
+          id: 'charging-port-faq-3',
+          title: 'Do you repair soldered USB-C laptop charging ports?',
+          answer: 'Yes, on models where the connector and board are suitable for repair. USB-C receptacles have a compact contact layout that can carry power and data; the CC1 and CC2 configuration-channel contacts help manage connection orientation and Power Delivery negotiation. We inspect the receptacle and relevant power-delivery path, then quote for connector replacement or board-level work when appropriate.'
+        },
+        {
+          id: 'charging-port-faq-4',
+          title: 'How can I tell whether the charger, charging port, battery or motherboard is faulty?',
+          answer: 'The symptom alone is not enough to identify the failed part. We compare the laptop with a compatible known-good adapter, inspect the connector and cable, and test the relevant input and charging path. If the power input is healthy, we can investigate the battery and its communication path rather than replacing a working port.'
+        },
+        {
+          id: 'charging-port-faq-5',
+          title: 'My Dell or HP laptop says the AC adapter wattage or type cannot be determined. Is the port faulty?',
+          answer: 'Not always. Dell documents that an unrecognized adapter can involve the adapter itself, the DC-in port or the motherboard charging circuit. Some Dell and HP barrel adapters also use model-specific identification contacts. Bring the laptop and its charger so both can be checked together; the exact diagnostic path depends on the model.'
+        },
+        {
+          id: 'charging-port-faq-6',
+          title: 'How much does laptop charging port repair cost in Kuwait?',
+          answer: 'KCROC provides an initial diagnosis free of charge. Guide prices are 20–25 KWD for many standard DC-jack or harness repairs, 25–35 KWD for many soldered USB-C, gaming-jack or repairable pad jobs, and from 35 KWD for separate charging-circuit or controller repairs. The exact price depends on the laptop model, board condition and parts; we confirm it before paid work.'
+        },
+        {
+          id: 'charging-port-faq-7',
+          title: 'Will charging-port repair erase my files or require my Windows or Mac password?',
+          answer: 'A charging-port replacement is normally a hardware repair and does not require access to your Windows or macOS account. We avoid accessing personal files as part of this service. If diagnosis indicates storage, operating-system or data-related work is needed, we explain that separately and obtain your approval first.'
+        },
+        {
+          id: 'charging-port-faq-8',
+          title: 'How long does charging-port repair take, and can you collect my laptop?',
+          answer: 'Many standard connector repairs are completed the same day or within 24 hours after approval, subject to the exact part and model. More involved pad or trace work may take 24–48 hours or longer. Free pickup and return delivery can be arranged across all six Kuwait governorates; walk-in assessment is available at the KCROC lab in Hawalli, Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19.'
+        }
       ],
       relatedServiceIds: ['srv-battery', 'srv-motherboard', 'srv-laptop'],
       relatedProblemIds: ['problem-not-charging', 'problem-no-power'],
       relatedBrandIds: ['brand-dell', 'brand-hp', 'brand-lenovo', 'brand-asus'],
       relatedResourcePaths: [
-        { label: 'Laptop Plugged In but Not Charging', path: '/laptop-plugged-in-not-charging' },
-        { label: 'Laptop Repair Guide', path: '/laptop-repair-kuwait' },
+        { label: 'Laptop Battery Warning Signs', path: '/guides/laptop-battery-warning-signs' }
       ],
       technicalOverview: {
-        heading: 'What We Diagnose Behind a Charging Port',
+        heading: 'From the Charger to the Charging Circuit: What We Test',
         paragraphs: [
-          'A laptop that will not charge is not automatically a battery problem. The fault can sit in the DC jack or USB-C connector, solder joints, input protection, charging controller, cable negotiation, or the motherboard power path.',
-          'We start with a known-good compatible adapter and inspect the connector mechanically and electrically. Where board damage is present, relevant input and charging rails are measured before deciding whether a connector repair, component repair, or a larger repair is appropriate.'
+          'A laptop that will not charge is not automatically suffering from a bad battery or a damaged port. We first verify that the adapter and cable are compatible with the exact model, then inspect the connector, its contacts, mounting points and board-side solder joints.',
+          'If the connector is sound or has been repaired but charging still fails, diagnosis may extend to the input fuse and protection devices, reverse-blocking or input MOSFETs, the charging controller and relevant power rails. The components and test points vary by motherboard design.',
+          'On USB-C charging models, the checks can include the connector, cable and charger compatibility, CC1 / CC2 attach and orientation signalling, Power Delivery negotiation and the relevant VBUS power path. A USB-C-shaped port does not by itself mean every laptop port supports charging.',
+          'When the adapter and board input are stable, we can test the battery and its communication path separately. This helps avoid replacing a healthy charging port when the actual fault lies elsewhere.'
         ]
+      },
+      safetyAlert: {
+        heading: 'Do Not Wiggle, Tape or Force a Loose Charging Cable',
+        body: 'A loose connector or cracked solder joint can make electrical contact intermittent. Repeatedly moving the plug under load can increase local heating, worsen the connector or mounting damage, and in some cases contribute to arcing or a short. A damaged connector can therefore turn a straightforward port repair into a more extensive board repair.',
+        stopUseWhen: 'the port or plug becomes unusually hot, you see sparks, smell burnt plastic, hear buzzing, notice melting or discoloration, or the charger light switches off when connected.',
+        action: 'Disconnect the adapter if it is safe to do so and stop trying different cable angles. Do not tape the plug in place. Send the laptop model and a photo of the charger label to KCROC; bring the charger with the laptop so adapter and port can be checked together.'
       },
       repairDecision: {
-        heading: 'Charging Port Repair vs Motherboard Repair',
+        heading: 'Charging Port, Adapter or Motherboard: Choosing the Correct Repair',
         items: [
-          { condition: 'Loose or physically damaged connector', action: 'Inspect and replace or rework the charging port where the board allows it.' },
-          { condition: 'Cracked solder joints or lifted connector pads', action: 'Repair the connection and reinforce the affected mounting area where practical.' },
-          { condition: 'Port is healthy but the laptop still will not charge', action: 'Trace the charging circuit, input protection and relevant power rails before replacing parts.' },
-          { condition: 'Battery is the actual failed component', action: 'Redirect the repair to the battery service rather than replacing a healthy charging port.' }
+          {
+            condition: 'Adapter, cable or model-specific identification fault',
+            action: 'Verify the charger rating, cable condition and identification signal where the laptop uses one before replacing the laptop connector.'
+          },
+          {
+            condition: 'Loose or physically damaged connector',
+            action: 'Check whether the design uses a replaceable cable harness or a board-mounted jack, then replace or rework the correct assembly.'
+          },
+          {
+            condition: 'Cracked solder joints or damaged connector pads',
+            action: 'Assess the mounting points and copper pads under magnification; restore the connection where the board condition makes repair practical.'
+          },
+          {
+            condition: 'Port is healthy but the laptop still will not charge',
+            action: 'Trace the model-specific input protection, power-path and charging-controller circuits before recommending a board repair.'
+          },
+          {
+            condition: 'Battery is the actual failed component',
+            action: 'Redirect the repair to battery diagnosis or replacement rather than charging-port work.'
+          }
         ]
       },
-      inspectionChecklist: ['Test charger and cable', 'Inspect port mechanically', 'Check connector solder joints', 'Measure input and charging rails', 'Test USB-C power delivery where applicable', 'Confirm battery charging after repair'],
-      performanceOutcomes: { disclaimer: 'Outcomes depend on the confirmed fault and the exact laptop model.', items: [
-        { metric: 'Charging stability', outcome: 'Verified under repeated plug/unplug and load conditions.' },
-        { metric: 'Power-path confidence', outcome: 'Connector and charging circuit tested before the device is returned.' }
-      ] },
-      contentImages: [
-        { src: IMAGES.laptopHardware.laptopDcPowerJackConnectorReplacement.src, alt: IMAGES.laptopHardware.laptopDcPowerJackConnectorReplacement.alt, width: IMAGES.laptopHardware.laptopDcPowerJackConnectorReplacement.width, height: IMAGES.laptopHardware.laptopDcPowerJackConnectorReplacement.height, placement: 'commonIssues', caption: 'Laptop DC power jack and connector replacement during charging-port diagnosis.' },
-        { src: IMAGES.laptopHardware.laptopOpenRepairBench.src, alt: IMAGES.laptopHardware.laptopOpenRepairBench.alt, width: IMAGES.laptopHardware.laptopOpenRepairBench.width, height: IMAGES.laptopHardware.laptopOpenRepairBench.height, placement: 'coreFeatures', caption: 'An opened laptop on the repair bench for connector, charging-circuit and motherboard inspection.' },
-        { src: IMAGES.laptopHardware.laptopDcPowerJackConnectorReplacement.src, alt: IMAGES.laptopHardware.laptopDcPowerJackConnectorReplacement.alt, width: IMAGES.laptopHardware.laptopDcPowerJackConnectorReplacement.width, height: IMAGES.laptopHardware.laptopDcPowerJackConnectorReplacement.height, placement: 'process', caption: 'DC power jack replacement as part of a targeted laptop charging-port repair.' }
+      advancedTechnicalSection: {
+        heading: 'Brand-Specific Charging Port Faults We Assess',
+        intro: 'Connector and adapter designs vary across model families and motherboard revisions. These are common diagnostic patterns, not a claim that every laptop from a brand uses the same port or circuit.',
+        items: [
+          {
+            title: 'Dell — XPS, Inspiron, Latitude and Precision',
+            description: 'An “AC adapter wattage and type cannot be determined” warning can involve the charger, DC-in port or motherboard charging circuit. On compatible barrel-adapter models, we inspect the centre identification contact and the board-side signal path as well as the main power input.'
+          },
+          {
+            title: 'HP — Pavilion, Envy, Spectre and EliteBook',
+            description: 'Some HP barrel adapters use a centre smart-pin or identification contact, while other models use USB-C Power Delivery. We confirm the exact adapter and port design, then check the connector, identification path or USB-C negotiation as applicable.'
+          },
+          {
+            title: 'Lenovo — ThinkPad, IdeaPad, Yoga and Legion',
+            description: 'Rectangular Slim-Tip jacks and USB-C charging ports need different checks. We inspect the jack housing and contacts, port solder joints and, on supported USB-C models, the Power Delivery negotiation path.'
+          },
+          {
+            title: 'ASUS, MSI and Acer Gaming Laptops',
+            description: 'On higher-wattage gaming systems, a loose or damaged DC-in connector may show heat, discoloration, intermittent power or physical wear. We verify the correct adapter rating and inspect the jack, board mounting and input power path before quoting.'
+          },
+          {
+            title: 'Apple MacBook — USB-C and MagSafe',
+            description: 'The repair route varies by generation: the fault may be in the cable or port, a separate I/O assembly on supported models, or the logic-board charging and USB-C power-delivery circuitry. We identify the exact model and board before deciding whether a modular replacement or board-level repair is appropriate.'
+          },
+          {
+            title: 'Microsoft Surface',
+            description: 'USB-C and Surface Connect arrangements vary by model. We identify which connector is intended for charging, check compatible power delivery and inspect the device-side port or power-input path before recommending repair.'
+          }
+        ]
+      },
+      modelFaultMatrix: [
+        {
+          family: 'Cable-harness DC barrel jack',
+          models: 'Selected Dell Inspiron, Latitude and Vostro; HP Pavilion; Acer Aspire models',
+          diagnostics: 'The jack or internal harness can break, loosen or become pinched. We inspect the harness and motherboard-side socket, then replace the model-matched assembly when the board connector and pads are sound.'
+        },
+        {
+          family: 'Board-soldered barrel or rectangular Slim-Tip jack',
+          models: 'Selected ASUS VivoBook / ZenBook, Lenovo Slim-Tip, HP, MSI and other model families',
+          diagnostics: 'Repeated plug stress can loosen the connector, crack solder joints or damage mounting points. We remove the jack with board-appropriate rework, inspect the pads and anchors, then replace or repair the connection where feasible.'
+        },
+        {
+          family: 'USB-C charging / Thunderbolt receptacle',
+          models: 'Supported Dell XPS / Latitude, Lenovo ThinkPad, HP EliteBook / Spectre, ASUS, Surface and MacBook variants',
+          diagnostics: 'A damaged shell or tongue, worn contacts, lifted surface-mount pads or failed Power Delivery negotiation can interrupt charging. We inspect the receptacle and relevant CC / VBUS paths, replace the connector when suitable and verify model-supported charging.'
+        },
+        {
+          family: 'High-wattage gaming DC-in connector',
+          models: 'Selected ASUS ROG / TUF, Lenovo Legion, MSI, Acer Predator and Alienware systems',
+          diagnostics: 'Heat, discoloration, loose fit or damaged housing can indicate a connector or input-path problem. We verify adapter compatibility and inspect the jack, board mounting and power entry before choosing the repair.'
+        }
       ],
-      warranty: { duration: '30 Days', coverage: 'Parts and labour for the completed charging-port repair', noFixNoFee: true },
-      seo: { title: 'Laptop Charging Port Repair Kuwait | KCROC', description: 'Laptop DC jack and USB-C charging port repair in Kuwait. Board-level charging diagnostics, micro-soldering, free pickup and 30-day warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-charging-port-repair-kuwait', locale: 'en_KW', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/laptop-charging-port-repair-kuwait', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/laptop-charging-port-repair-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/laptop-charging-port-repair-kuwait' }, ogType: 'article', schemaTypes: ['Service', 'FAQPage'] },
+      inspectionChecklist: [
+        'Verify compatible charger, cable and adapter rating',
+        'Inspect the port housing, contacts and mechanical retention',
+        'Check connector solder joints and mounting pads',
+        'Measure the model-specific input and charging path',
+        'Check USB-C CC and Power Delivery operation where supported',
+        'Confirm stable charging and battery recognition after repair'
+      ],
+      performanceOutcomes: {
+        disclaimer: 'The result depends on the confirmed fault, exact laptop model, board condition and parts availability.',
+        items: [
+          {
+            metric: 'Charging stability',
+            outcome: 'The repaired connector and charging path are checked for stable operation before the laptop is returned.'
+          },
+          {
+            metric: 'Power-path confidence',
+            outcome: 'Adapter, connector and relevant charging circuitry are assessed before the repair scope is confirmed.'
+          }
+        ]
+      },
+      contentImages: [
+        {
+          src: IMAGES.laptopHardware.laptopDcPowerJackConnectorReplacement.src,
+          alt: IMAGES.laptopHardware.laptopDcPowerJackConnectorReplacement.alt,
+          width: IMAGES.laptopHardware.laptopDcPowerJackConnectorReplacement.width,
+          height: IMAGES.laptopHardware.laptopDcPowerJackConnectorReplacement.height,
+          placement: 'commonIssues',
+          caption: 'Laptop DC power jack and connector replacement during charging-port diagnosis.'
+        },
+        {
+          src: IMAGES.laptopHardware.laptopOpenRepairBench.src,
+          alt: IMAGES.laptopHardware.laptopOpenRepairBench.alt,
+          width: IMAGES.laptopHardware.laptopOpenRepairBench.width,
+          height: IMAGES.laptopHardware.laptopOpenRepairBench.height,
+          placement: 'coreFeatures',
+          caption: 'An opened laptop on the repair bench for connector, charging-circuit and motherboard inspection.'
+        },
+        {
+          src: IMAGES.laptopHardware.laptopDcPowerJackConnectorReplacement.src,
+          alt: IMAGES.laptopHardware.laptopDcPowerJackConnectorReplacement.alt,
+          width: IMAGES.laptopHardware.laptopDcPowerJackConnectorReplacement.width,
+          height: IMAGES.laptopHardware.laptopDcPowerJackConnectorReplacement.height,
+          placement: 'process',
+          caption: 'DC power jack replacement as part of a targeted laptop charging-port repair.'
+        }
+      ],
+      warranty: {
+        duration: '30 Days',
+        coverage: 'Parts and labour for the completed charging-port repair',
+        noFixNoFee: true
+      },
+      seo: {
+        title: 'Laptop Charging Port Repair Kuwait | DC Jack & USB-C Micro-Soldering | KCROC',
+        description: 'Loose DC jack or USB-C port? Laptop charging-port repair in Hawalli from 20 KWD, with free pickup across Kuwait, diagnosis before repair and a 30-day warranty.',
+        canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-charging-port-repair-kuwait',
+        locale: 'en_KW',
+        alternates: {
+          'en-KW': 'https://www.computerrepairkuwait.com/laptop-charging-port-repair-kuwait',
+          'ar-KW': 'https://www.computerrepairkuwait.com/ar/laptop-charging-port-repair-kuwait',
+          'x-default': 'https://www.computerrepairkuwait.com/laptop-charging-port-repair-kuwait'
+        },
+        ogType: 'article',
+        schemaTypes: ['Service', 'FAQPage'],
+        lastModified: '2026-11-07T00:00:00+03:00'
+      },
       navigationPriority: 55,
       isFeatured: false,
-      popular: false
+      popular: false,
+      relatedLocationIds: ['loc-hawalli', 'loc-salmiya', 'loc-kuwait-city', 'loc-farwaniya', 'loc-jahra', 'loc-ahmadi']
     } as ServiceEntity,
 
     'srv-hinge': {

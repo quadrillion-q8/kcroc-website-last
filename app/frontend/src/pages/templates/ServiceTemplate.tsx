@@ -17,6 +17,29 @@ const ICON_MAP: Record<string, React.ElementType> = {
   'monitor': Monitor,
 };
 
+const CHARGING_PORT_QUICK_DISPATCH = [
+  {
+    label: 'Loose port / charges only at an angle',
+    detail: 'Intermittent contact',
+    message: 'Hi KCROC, my laptop charging port feels loose or only charges when the cable is held at an angle. Laptop brand and exact model: ____. Port type if known: ____. Kuwait area: ____. I can send a photo of the port and charger label. Please advise on diagnosis and free pickup.',
+  },
+  {
+    label: 'USB-C port stopped charging',
+    detail: 'USB-C / Power Delivery',
+    message: 'Hi KCROC, my laptop USB-C port has stopped charging or the connector pins look damaged. Laptop brand and exact model: ____. Does the port still transfer data: ____. Kuwait area: ____. I can send photos. Please advise on diagnosis and free pickup.',
+  },
+  {
+    label: 'Dell / HP adapter not recognized',
+    detail: 'Adapter ID / smart-pin check',
+    message: 'Hi KCROC, my Dell or HP laptop does not recognize the AC adapter / shows an adapter wattage or type warning. Exact laptop model: ____. Charger wattage and model: ____. Kuwait area: ____. I can send a photo of the charger label. Please advise on testing the charger and DC-in port.',
+  },
+  {
+    label: 'Gaming laptop power plug gets hot',
+    detail: 'Heat / connector inspection',
+    message: 'Hi KCROC, my gaming laptop charging plug or DC-in port gets unusually hot or charging cuts out under load. Laptop brand and exact model: ____. Charger wattage: ____. Kuwait area: ____. I have stopped using it if there is heat or sparking. Please advise on safe pickup and diagnosis.',
+  },
+] as const;
+
 interface ServiceTemplateProps {
   entityId?: string;
 }
@@ -122,9 +145,11 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
   const defaultServiceHeading = isMotherboardService ? 'Laptop & Desktop Motherboard Repair in Kuwait' : entity.title;
   const isScreenService = entity.id === 'srv-screen';
   const isMacbookScreenService = entity.id === 'srv-macbook-screen';
-  const whatsappLink = buildWhatsAppLink(isScreenService
-    ? 'Hi KCROC, I need a laptop screen repair quote in Kuwait. Laptop brand/model: ____. Screen symptom: ____. Area in Kuwait: ____. I can send a photo if needed. Please confirm compatible panel availability and the total price including panel and labour.'
-    : isMacbookScreenService
+  const whatsappLink = buildWhatsAppLink(entity.id === 'srv-charging-port'
+    ? 'Hi KCROC, I need laptop charging-port repair in Kuwait. Brand and exact model: ____. Port type (DC barrel / rectangular Slim-Tip / USB-C / not sure): ____. Symptoms: ____. Kuwait area: ____. I can send photos of the port and charger label. Please advise on diagnosis and free pickup.'
+    : isScreenService
+      ? 'Hi KCROC, I need a laptop screen repair quote in Kuwait. Laptop brand/model: ____. Screen symptom: ____. Area in Kuwait: ____. I can send a photo if needed. Please confirm compatible panel availability and the total price including panel and labour.'
+      : isMacbookScreenService
       ? 'Hi KCROC, I need MacBook screen replacement in Kuwait. Exact MacBook model and generation: ____. Screen symptoms: ____. Area in Kuwait: ____. Please confirm compatible display availability, the total price including labour and display assembly, and the expected turnaround before repair.'
       : entity.id === 'srv-gaming-laptop'
         ? 'Hi KCROC, I need gaming-laptop repair in Kuwait. Brand and exact model: ____. Main symptom: ____. Kuwait area: ____. I can share photos or a short video if useful. Please advise on diagnosis, the expected turnaround and the quote before repair.'
@@ -148,11 +173,16 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
         <header className="max-w-7xl mx-auto px-6 bg-slate-900/30 backdrop-blur-md border border-slate-800/50 rounded-3xl p-8 mb-12 shadow-2xl">
           <div className={`grid gap-10 items-center ${heroImage ? 'lg:grid-cols-[1.15fr_1fr]' : ''}`}>
             <div>
+              {entity.id === 'srv-charging-port' && (
+                <p className="mb-4 inline-flex rounded-full border border-cyan-500/25 bg-cyan-500/10 px-3.5 py-2 text-xs font-black uppercase tracking-[0.12em] text-cyan-200">
+                  Component-Level Power &amp; Connector Lab · Hawalli, Kuwait
+                </p>
+              )}
               <div className="flex items-center space-x-4 mb-6">
                 <div className="w-16 h-16 bg-brand-dark border border-slate-800 rounded-2xl flex items-center justify-center shadow-inner">
                   <ServiceIcon className="w-8 h-8 text-cyan-400" />
                 </div>
-                <h1 className="text-3xl sm:text-4xl md:text-5xl leading-tight font-black text-white">{isScreenService ? 'Laptop Screen Repair & Replacement in Kuwait' : isLaptopService ? 'Laptop Repair Kuwait — Component-Level Diagnostics & Hardware Restoration' : entity.id === 'srv-gaming' ? 'Gaming PC Repair Kuwait — Chip-Level GPU, Motherboard & Cooling Lab' : defaultServiceHeading}</h1>
+                <h1 className="text-3xl sm:text-4xl md:text-5xl leading-tight font-black text-white">{entity.id === 'srv-charging-port' ? 'Laptop Charging Port Repair in Kuwait — DC Jack, USB-C & Board-Level Power Restoration' : isScreenService ? 'Laptop Screen Repair & Replacement in Kuwait' : isLaptopService ? 'Laptop Repair Kuwait — Component-Level Diagnostics & Hardware Restoration' : entity.id === 'srv-gaming' ? 'Gaming PC Repair Kuwait — Chip-Level GPU, Motherboard & Cooling Lab' : defaultServiceHeading}</h1>
               </div>
 
               <div className="max-w-3xl mb-8 space-y-3">
@@ -242,6 +272,39 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
             )}
           </div>
         </header>
+
+        {entity.id === 'srv-charging-port' && (
+          <section className="max-w-7xl mx-auto px-6 -mt-5 pb-8" aria-labelledby="charging-port-quick-dispatch-heading">
+            <div className="rounded-2xl border border-cyan-900/60 bg-slate-950/75 p-5 sm:p-7">
+              <div className="max-w-3xl">
+                <p className="text-xs font-black uppercase tracking-[0.16em] text-cyan-300">Symptom-specific WhatsApp assessment</p>
+                <h2 id="charging-port-quick-dispatch-heading" className="mt-2 text-xl font-black text-white sm:text-2xl">
+                  Select what is happening with your charging port
+                </h2>
+                <p className="mt-2 text-sm leading-6 text-slate-400">
+                  Each option opens WhatsApp with the symptom and model questions already filled in. Add your laptop model and pickup area before sending.
+                </p>
+              </div>
+              <div className="mt-5 grid gap-3 sm:grid-cols-2">
+                {CHARGING_PORT_QUICK_DISPATCH.map((item) => (
+                  <a
+                    key={item.label}
+                    href={buildWhatsAppLink(item.message, business.telephone)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex min-h-20 items-center justify-between gap-4 rounded-xl border border-slate-800 bg-slate-900/80 p-4 transition hover:border-cyan-400/60 hover:bg-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+                  >
+                    <span>
+                      <span className="block font-bold text-white">{item.label}</span>
+                      <span className="mt-1 block text-xs text-cyan-300">{item.detail}</span>
+                    </span>
+                    <MessageCircle className="h-5 w-5 shrink-0 text-cyan-300" aria-hidden="true" />
+                  </a>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
 
         {entity.id === 'srv-macbook' && (
           <section className="max-w-7xl mx-auto px-6 py-12 border-t border-slate-800/50 relative z-10" aria-labelledby="macbook-repair-options">
@@ -402,6 +465,24 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
           </section>
         )}
 
+        {entity.safetyAlert && (
+          <section className="max-w-7xl mx-auto px-6 py-8 border-t border-slate-800/50 relative z-10" role="note" aria-labelledby="service-safety-alert-heading">
+            <div className="rounded-2xl border border-amber-500/35 bg-amber-950/25 p-5 sm:p-7">
+              <div className="flex items-start gap-3">
+                <AlertTriangle className="mt-1 h-6 w-6 shrink-0 text-amber-300" aria-hidden="true" />
+                <div className="max-w-4xl">
+                  <h2 id="service-safety-alert-heading" className="text-xl font-black text-amber-100 sm:text-2xl">{entity.safetyAlert.heading}</h2>
+                  <p className="mt-3 text-sm leading-7 text-slate-200">{entity.safetyAlert.body}</p>
+                  <p className="mt-3 text-sm leading-7 text-amber-100">
+                    <strong>Stop using the device if:</strong> {entity.safetyAlert.stopUseWhen}
+                  </p>
+                  <p className="mt-3 text-sm leading-7 text-slate-300">{entity.safetyAlert.action}</p>
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
+
         {entity.repairDecision && entity.repairDecision.items.length > 0 && (
           <section className="max-w-7xl mx-auto px-6 py-12 border-t border-slate-800/50 relative z-10">
             <h2 className="text-2xl font-bold mb-4 text-white">{entity.repairDecision.heading}</h2>
@@ -481,25 +562,29 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
             {entity.modelFaultMatrix && entity.modelFaultMatrix.length > 0 && (
               <div className="mt-8" aria-labelledby="service-model-faults-heading">
                 <h3 id="service-model-faults-heading" className="text-xl sm:text-2xl font-black text-white mb-3">
-                  {entity.id === 'srv-macbook-screen' ? 'MacBook Model Numbers & Display Faults We Assess' : 'Model-Specific Gaming Laptop Faults We Assess'}
+                  {entity.id === 'srv-charging-port' ? 'Four Laptop Charging-Connector Architectures We Repair' : entity.id === 'srv-macbook-screen' ? 'MacBook Model Numbers & Display Faults We Assess' : 'Model-Specific Gaming Laptop Faults We Assess'}
                 </h3>
                 <p className="mb-5 max-w-5xl text-sm leading-7 text-slate-400">
-                  {entity.id === 'srv-macbook-screen'
+                  {entity.id === 'srv-charging-port'
+                    ? 'Connector construction determines the repair method. These are representative designs and device families, not a claim that every model uses the same port; we confirm the exact model and board revision first.'
+                    : entity.id === 'srv-macbook-screen'
                     ? 'These A-numbers are representative model references, not a promise that every symptom is a known defect. We confirm the exact model, year, identifier and display assembly before quoting.'
                     : 'These are examples of diagnostic paths—not claims that every model has a known defect. Hardware revisions vary within each family, so we verify the exact model and symptoms before identifying a fault or ordering parts.'}
                 </p>
                 <div className="overflow-x-auto rounded-2xl border border-slate-700/80 bg-slate-900/45">
                   <table className="w-full min-w-[820px] border-collapse text-left text-sm">
                     <caption className="sr-only">
-                      {entity.id === 'srv-macbook-screen'
+                      {entity.id === 'srv-charging-port'
+                        ? 'Charging connector architectures, example device families, and typical failure and repair approaches.'
+                        : entity.id === 'srv-macbook-screen'
                         ? 'MacBook families, example A-numbers, and model-dependent display checks.'
                         : 'Gaming laptop families, representative models, and model-dependent diagnostic checks.'}
                     </caption>
                     <thead className="bg-slate-800/90 text-slate-100">
                       <tr>
-                        <th scope="col" className="px-4 py-4 font-bold">{entity.id === 'srv-macbook-screen' ? 'MacBook model family' : 'Gaming laptop family'}</th>
-                        <th scope="col" className="px-4 py-4 font-bold">{entity.id === 'srv-macbook-screen' ? 'Example A-numbers' : 'Example models'}</th>
-                        <th scope="col" className="px-4 py-4 font-bold">{entity.id === 'srv-macbook-screen' ? 'Display symptoms and checks' : 'Fault paths we assess'}</th>
+                        <th scope="col" className="px-4 py-4 font-bold">{entity.id === 'srv-charging-port' ? 'Connector architecture' : entity.id === 'srv-macbook-screen' ? 'MacBook model family' : 'Gaming laptop family'}</th>
+                        <th scope="col" className="px-4 py-4 font-bold">{entity.id === 'srv-charging-port' ? 'Representative device families' : entity.id === 'srv-macbook-screen' ? 'Example A-numbers' : 'Example models'}</th>
+                        <th scope="col" className="px-4 py-4 font-bold">{entity.id === 'srv-charging-port' ? 'Typical failure and repair approach' : entity.id === 'srv-macbook-screen' ? 'Display symptoms and checks' : 'Fault paths we assess'}</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-slate-700/70">
@@ -645,7 +730,7 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
             className="max-w-7xl mx-auto px-6 py-12 border-t border-slate-800/50 relative z-10"
             aria-labelledby="repair-process-heading"
           >
-            <h2 id="repair-process-heading" className="text-2xl font-bold mb-8 text-white">Our Repair Process</h2>
+            <h2 id="repair-process-heading" className="text-2xl font-bold mb-8 text-white">{entity.id === 'srv-charging-port' ? 'How Our Laptop Charging-Port Repair Process Works' : 'Our Repair Process'}</h2>
             {' '}
             {getContentImage('process') && <ContentImage image={getContentImage('process')!} />}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -700,7 +785,7 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
             </div>
             <div className="overflow-x-auto rounded-2xl border border-slate-700/80 bg-slate-900/50">
               <table className="w-full min-w-[760px] border-collapse text-left text-sm">
-                <caption className="sr-only">Laptop repair category, common symptoms, published starting price and typical turnaround in Kuwait.</caption>
+                <caption className="sr-only">{entity.id === 'srv-charging-port' ? 'Laptop charging-port repair category, fault scope, guide price and typical turnaround in Kuwait.' : 'Laptop repair category, common symptoms, published starting price and typical turnaround in Kuwait.'}</caption>
                 <thead className="bg-slate-800/90 text-slate-100">
                   <tr>
                     <th scope="col" className="px-4 py-4 font-bold">Repair category</th>
@@ -859,7 +944,9 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
               <MapPin className="w-6 h-6 text-cyan-400" aria-hidden="true" /> Where We Handle This Repair
             </h2>
             <p className="text-sm text-slate-400 mb-7 max-w-3xl">
-              These are the Kuwait service areas most directly connected to this repair type. Pickup is arranged through KCROC rather than requiring a walk-in visit.
+{entity.id === 'srv-charging-port'
+                ? 'Walk-in assessment and component-level repair are handled at the KCROC laboratory in Hawalli: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19. Free pickup and return delivery can also be arranged across all six Kuwait governorates.'
+                : 'These are the Kuwait service areas most directly connected to this repair type. Pickup is arranged through KCROC rather than requiring a walk-in visit.'}
             </p>
             <nav aria-labelledby="repair-service-areas-heading">
               <ul role="list" className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">

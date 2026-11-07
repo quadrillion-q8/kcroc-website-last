@@ -258,6 +258,12 @@ export const ServiceSchema = RoutableEntitySchema.extend({
     heading: z.string(),
     paragraphs: z.array(z.string()),
   }).optional(),
+  safetyAlert: z.object({
+    heading: z.string(),
+    body: z.string(),
+    stopUseWhen: z.string(),
+    action: z.string(),
+  }).optional(),
   repairDecision: z.object({
     heading: z.string(),
     items: z.array(z.object({
