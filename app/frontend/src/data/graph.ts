@@ -1518,7 +1518,7 @@ export const rawGraphData: RawGraphData = {
         items: [
           {
             title: 'Dell — XPS, Inspiron, Latitude and Precision',
-            description: 'An “AC adapter wattage and type cannot be determined” warning can involve the charger, DC-in port or motherboard charging circuit. On compatible barrel-adapter models, we inspect the centre identification contact and the board-side signal path as well as the main power input.'
+            description: 'An “AC adapter wattage and type cannot be determined” warning can involve the charger, DC-in port or motherboard charging circuit. On compatible Dell barrel-adapter models, we inspect the centre identification contact (PS_ID / 1-Wire on supported designs) and its board-side signal path, alongside the main power input. Other brands and model families may use different adapter-identification arrangements.'
           },
           {
             title: 'HP — Pavilion, Envy, Spectre and EliteBook',
