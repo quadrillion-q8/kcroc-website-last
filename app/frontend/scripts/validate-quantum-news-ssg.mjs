@@ -19,8 +19,8 @@ try {
   );
 }
 
-const faqHeading = html.indexOf('Frequently asked questions');
-const sourcesHeading = html.indexOf('Official sources and editorial method', faqHeading);
+const faqHeading = html.indexOf('id="frequently-asked-questions"');
+const sourcesHeading = html.indexOf('id="official-sources"', faqHeading);
 assert.ok(faqHeading >= 0, 'Visible FAQ heading is missing from prerendered HTML');
 assert.ok(sourcesHeading > faqHeading, 'Expected sources section after the FAQ block');
 
