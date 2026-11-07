@@ -645,7 +645,10 @@ const CONFIG: Record<string, {
       { q: 'هل تصلحون كيبورد MacBook؟', a: 'نفحص موديل MacBook والجيل أولًا، لأن تصميم لوحة المفاتيح وطريقة تركيبها يختلفان بين الأجيال وقد تكون جزءًا من تجميعة أكبر. نوضح خيار الإصلاح أو التجميعة المطلوبة وسعرها قبل الموافقة.' },
       { q: 'الكيبورد يشتغل لكن الإضاءة الخلفية لا تعمل، هل أحتاج كيبورد جديد؟', a: 'ليس بالضرورة. يعتمد السبب على الموديل وقد يكون من إعدادات الإضاءة أو الاتصال أو وحدة الإضاءة نفسها. نتحقق من الوظائف المتوفرة في جهازك قبل التوصية بتبديل القطعة.' },
       { q: 'هل تبديل الكيبورد يمسح ملفاتي؟', a: 'تبديل لوحة المفاتيح وحده لا يمسح عادةً نظام التشغيل أو الملفات الشخصية. وإذا كشف الفحص أن هناك خطوة إضافية قد تؤثر على البيانات، نشرحها لك قبل المتابعة.' },
-      { q: 'هل عندكم كيبورد عربي وإنجليزي؟', a: 'نؤكد توفر التخطيط العربي/الإنجليزي المناسب حسب موديل الجهاز ورقم القطعة. لا نعد بتوفر كل تخطيط لكل موديل قبل التحقق من القطعة.' }
+      { q: 'هل عندكم كيبورد عربي وإنجليزي؟', a: 'نؤكد توفر التخطيط العربي/الإنجليزي المناسب حسب موديل الجهاز ورقم القطعة. لا نعد بتوفر كل تخطيط لكل موديل قبل التحقق من القطعة.' },
+      { q: 'ليش بعض الأزرار تظل ما تشتغل حتى بعد تركيب كيبورد بديل؟', a: 'ممكن يكون السبب مو من الكيبورد نفسه، بل من كيبل التوصيل أو قفل الموصل أو نقاط التوصيل على المذربورد أو دائرة إدخال خاصة بالموديل. نفحص التوصيلة ومسار الإدخال قبل اقتراح قطعة ثانية.' },
+      { q: 'تبدلون كيبورد RGB أو كيبورد بإضاءة خلفية؟', a: 'نفحص توفر التجميعة المتوافقة مع موديلك، ونطابق تخطيط الأزرار وعدد التوصيلات ونوع الإضاءة المدعوم. مو كل نسخة من نفس عائلة اللابتوب تستخدم نفس الكيبورد أو نظام الإضاءة.' },
+      { q: 'ليش تحتاجون رقم الموديل أو Service Tag؟', a: 'لأن الكيبورد يختلف حسب جيل الجهاز ورقم القطعة وتخطيط اللغة والإضاءة وطريقة التثبيت، حتى لو اسم الماركة أو العائلة واحد. رقم الموديل يساعدنا نتأكد من التوافق قبل طلب القطعة.' }
     ],
     englishPath: '/laptop-keyboard-replacement-kuwait',
     arabicLinks: [
@@ -1923,7 +1926,13 @@ export default function ArabicCommercialPage() {
 
   // Reuse the corresponding English service's existing KCROC photography.
   // These are real first-party assets already assigned in the service graph.
-  const servicePageImages = slug === 'desktop-pc-repair-kuwait'
+  const servicePageImages = slug === 'laptop-keyboard-replacement-kuwait'
+    ? [
+        { image: { src: '/images/gallery/laptop-keyboard-replacement-removed-keyboard-top-case-kuwait.webp', width: 800, height: 600 }, alt: 'إزالة لوحة مفاتيح اللابتوب وتجميعة الغطاء العلوي أثناء فحص التوصيلات داخل مختبر KCROC', caption: 'صورة من أعمال فحص لوحة المفاتيح والغطاء العلوي قبل تحديد هل المطلوب إصلاح التوصيل أو تبديل التجميعة.' },
+        { image: { src: '/images/gallery/replacement-laptop-keyboards-new-stock-kuwait.webp', width: 800, height: 600 }, alt: 'نماذج من كيبوردات لابتوب بديلة للتحقق من اختلاف الموديل والتخطيط', caption: 'تختلف قطع الكيبورد حسب الموديل وتخطيط اللغة والإضاءة؛ يتم التأكد من رقم القطعة قبل الطلب.' },
+        { image: { src: '/images/gallery/macbook-air-arabic-keyboard-display-test-kuwait.webp', width: 800, height: 600 }, alt: 'كيبورد MacBook Air بحروف عربية أثناء فحص العرض والاستجابة', caption: 'مثال على تخطيط عربي في كيبورد MacBook؛ التوافق يتحدد حسب الجيل ورقم الموديل.' }
+      ]
+    : slug === 'desktop-pc-repair-kuwait'
     ? [
         {
           image: IMAGES.laptopHardware.desktopPcTowerRepairKuwait,
@@ -2022,6 +2031,13 @@ export default function ArabicCommercialPage() {
       label: 'HP Battery Alert 601 أو تحذير بطارية',
       message: 'السلام عليكم KCROC، يظهر عندي HP Battery Alert 601 أو تحذير بطارية في Windows. الماركة والموديل أو Service Tag: ____. نص التحذير: ____. منطقتي: ____. أستطيع إرسال صورة خارجية للتحذير أو ملصق الموديل إذا كان ذلك آمنًا. أرجو تأكيد التشخيص وتوفر القطعة والسعر الشامل قبل أي عمل مدفوع.'
     }
+  ].map((item) => ({ ...item, href: buildWhatsAppLink(item.message) }));
+
+  const keyboardSymptomLinks = [
+    { label: 'انكب ماي أو قهوة على الكيبورد', message: 'السلام عليكم KCROC، انكب سائل على كيبورد اللابتوب. طفيت الجهاز وفصلت الشاحن إذا كان ذلك آمنًا، وما راح أشغله للتجربة. الماركة والموديل: ____. نوع السائل والوقت التقريبي: ____. منطقتي: ____. أرجو ترتيب الاستلام الآمن وفحص الكيبورد والموصلات والمذربورد قبل إعادة تشغيله.' },
+    { label: 'بعض الأزرار ما تشتغل أو تكرر الحروف', message: 'السلام عليكم KCROC، بعض أزرار اللابتوب ما تشتغل أو تكرر الحروف. الماركة والموديل أو Service Tag: ____. الأزرار المتأثرة: ____. هل تخطيط اللغة في Windows مضبوط؟ ____. التخطيط المطلوب عربي/إنجليزي أو إنجليزي: ____. منطقتي: ____. أقدر أرسل صورة للكيبورد. فضلاً افحصوا نمط الأزرار والتوصيلة قبل تحديد القطعة والسعر.' },
+    { label: 'الكيبورد كله متوقف عن العمل', message: 'السلام عليكم KCROC، كيبورد اللابتوب متوقف بالكامل. الماركة والموديل الدقيق: ____. هل زر التشغيل يعمل؟ ____. هل كيبورد USB خارجي يعمل؟ ____. هل صار انسكاب سائل أو صيانة سابقة؟ ____. منطقتي: ____. أرجو فحص الكيبورد والكيبل وموصل المذربورد قبل اقتراح التبديل.' },
+    { label: 'الإضاءة الخلفية أو كيبورد MacBook', message: 'السلام عليكم KCROC، أحتاج فحص كيبورد بإضاءة خلفية أو RGB أو كيبورد MacBook. الماركة والموديل أو رقم Axxxx: ____. المشكلة: الأزرار / الإضاءة / التخطيط / تجميعة Top-Case: ____. التخطيط المطلوب: ____. منطقتي: ____. فضلاً أكدوا توافق القطعة وتوفرها وأجرة العمل وسعر القطعة والمدة قبل الإصلاح.' }
   ].map((item) => ({ ...item, href: buildWhatsAppLink(item.message) }));
 
   const whatsappMessage = slug === 'macbook-screen-replacement-kuwait'
@@ -2962,6 +2978,12 @@ export default function ArabicCommercialPage() {
                   </div>
                   <p className="mt-3 text-xs leading-5 text-slate-500">لا تفتح الجهاز للبحث عن رقم البطارية. إذا كان هناك انتفاخ، أوقف الاستخدام والشحن واتصل بنا أولًا قبل ترتيب النقل.</p>
                 </div>
+              )}
+              {slug === 'laptop-keyboard-replacement-kuwait' && (
+                <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap"><a href={wa} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-400 px-6 py-3 font-black text-slate-950 transition hover:bg-cyan-300"><MessageCircle className="h-5 w-5" aria-hidden="true" /> أرسل موديل اللابتوب ومشكلة الكيبورد عبر واتساب</a><Link to="/ar/book" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-slate-700 bg-slate-950/60 px-6 py-3 font-bold text-white transition hover:border-cyan-500/40 hover:text-cyan-300"><Truck className="h-5 w-5" aria-hidden="true" /> اطلب استلامًا مجانيًا من منطقتك</Link></div>
+              )}
+              {slug === 'laptop-keyboard-replacement-kuwait' && (
+                <div id="keyboard-symptom-triage" className="mt-6 rounded-2xl border border-cyan-900/60 bg-slate-950/75 p-4 sm:p-5" role="group" aria-labelledby="keyboard-symptom-triage-heading"><p className="text-xs font-black uppercase tracking-[0.14em] text-cyan-300">تحديد العَرَض وبدء التشخيص</p><h2 id="keyboard-symptom-triage-heading" className="mt-2 text-lg font-black text-white">شنو مشكلة الكيبورد عندك؟</h2><p className="mt-2 text-sm leading-6 text-slate-400">اختَر أقرب وصف، وتفتح لك رسالة واتساب فيها الأسئلة الأولية عن الموديل والعطل. راجع الرسالة وأضف منطقتك قبل الإرسال.</p><div className="mt-4 grid gap-2 sm:grid-cols-2">{keyboardSymptomLinks.map((item, index) => <a key={item.label} href={item.href} target="_blank" rel="noreferrer" className={index === 0 ? 'flex min-h-14 items-center rounded-xl border border-amber-600/50 bg-amber-950/25 px-4 py-3 text-sm font-bold leading-6 text-amber-100 transition hover:border-amber-400/70' : 'flex min-h-14 items-center rounded-xl border border-slate-700 bg-slate-900/70 px-4 py-3 text-sm font-bold leading-6 text-slate-200 transition hover:border-cyan-500/60 hover:text-cyan-200'}>{item.label}</a>)}</div><p className="mt-3 text-xs leading-5 text-slate-500">إذا انكب سائل، خل الجهاز مطفي ولا تعاود تشغيله للتجربة، ولا تستخدم السشوار أو ترش منظفات على الأزرار.</p></div>
               )}
               {slug === 'macbook-battery-replacement-kuwait' && (
                 <div className="mt-5">
