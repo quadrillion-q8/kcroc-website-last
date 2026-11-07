@@ -66,7 +66,7 @@ const STANDALONE_REPAIR_PATHS: Record<string, { title: string; intro: string; li
       { href: '/laptop-screen-repair-kuwait', label: 'Laptop Screen Repair', description: 'For laptops that power on but remain on a black or failed internal display.' },
       { href: '/battery-replacement-kuwait', label: 'Battery Replacement', description: 'For confirmed battery wear, swelling, failed cells, or battery-related shutdown symptoms.' },
       { href: '/problems', label: 'Laptop Problems', description: 'Browse the broader laptop and computer problem hub when the startup symptom is still being classified.' },
-      { href: '/blog/why-is-my-laptop-so-slow-2026', label: "Why Is My Laptop So Slow in 2026?", description: 'Related troubleshooting for performance problems that can be confused with general startup or boot complaints.' },
+      { href: '/blog/why-is-my-laptop-so-slow', label: "Why Is My Laptop So Slow in 2026?", description: 'A measurement-led guide to memory pressure, storage latency, thermal limits and power behaviour.' },
       { href: '/laptop-overheating-kuwait', label: 'Laptop Overheating', description: 'For shutdowns or startup failures associated with excessive heat, thermal throttling, or cooling problems.' },
       { href: '/windows-wont-boot-kuwait', label: "Windows Won't Boot", description: 'Use this path when the laptop powers on and reaches the boot or Windows stage but cannot start the operating system.' },
       { href: '/gaming-pc-repair-kuwait', label: 'Gaming PC Repair', description: 'For related power, startup, GPU, or stability symptoms on gaming systems.' },
@@ -501,6 +501,119 @@ const FAQAccordionItem: React.FC<{ question: string; answer: string }> = ({ ques
   </details>
 );
 
+const GlobalLaptopDiagnosticScorecard: React.FC = () => {
+  const [symptom, setSymptom] = React.useState("memory");
+  const [evidence, setEvidence] = React.useState("unknown");
+
+  const symptomGuidance: Record<string, { title: string; summary: string; firstCheck: string }> = {
+    memory: {
+      title: "Memory pressure and paging",
+      summary: "A memory bottleneck is more likely when several apps are open, Available memory is low, pagefile activity rises and responsiveness improves after closing a heavy workload.",
+      firstCheck: "Task Manager → Performance → Memory: compare In use, Available and Committed. Then correlate with pagefile activity and hard faults."
+    },
+    storage: {
+      title: "Storage queue or drive health",
+      summary: "A full Active Time graph is only a starting clue. Separate high-throughput background work from long response times, queueing or storage-controller resets.",
+      firstCheck: "Resource Monitor → Disk: identify the process and compare throughput with response time. Check Event Viewer and SMART/NVMe health before stressing a suspect drive."
+    },
+    thermal: {
+      title: "Thermal or platform throttling",
+      summary: "A warm chassis or high fan speed alone does not prove thermal throttling. Look for a repeatable relationship between temperature, effective clock and the active limit-reason flags.",
+      firstCheck: "Log CPU package temperature, effective clocks, fan behaviour and thermal/power-limit flags during the same sustained workload."
+    },
+    power: {
+      title: "Power delivery or firmware limit",
+      summary: "A low CPU clock can be caused by a thermal limit, an external platform protection signal, firmware policy, battery condition or an unrecognised/undersized adapter.",
+      firstCheck: "Compare the correct OEM adapter with battery operation. Check adapter recognition, battery status, BIOS/EC messages and BD PROCHOT or power-limit flags. Do not disable protection signals."
+    },
+    software: {
+      title: "Application, driver or Windows workload",
+      summary: "When the slowdown is isolated to one app, the app's own processes, GPU assignment, extensions, drivers or background workload may explain it better than a hardware upgrade.",
+      firstCheck: "Reproduce the same task, inspect the application process and GPU engine, then compare with a clean boot or a new Windows user profile where appropriate."
+    }
+  };
+
+  const evidenceGuidance: Record<string, { label: string; meaning: string }> = {
+    unknown: {
+      label: "I have not measured it yet",
+      meaning: "Reproduce the slowdown first and record the measurements before changing settings or buying parts."
+    },
+    highCommit: {
+      label: "Committed is high and Available memory is low",
+      meaning: "This supports investigating memory pressure, but Committed is not the same as physical RAM in use. Check pagefile activity and hard faults before calling it paging."
+    },
+    diskLatency: {
+      label: "Disk Active Time stays high with long response times",
+      meaning: "Identify the process, transfer rate, queue and storage events. Repeated latency spikes at low throughput deserve more attention than a short update or scan."
+    },
+    fallingClock: {
+      label: "Effective CPU clock falls during the slowdown",
+      meaning: "Compare CPU temperature with thermal, electrical and platform limit flags. A low clock alone cannot identify which protection or power policy is active."
+    },
+    oneApp: {
+      label: "Only one application or game is slow",
+      meaning: "Inspect that app's CPU, RAM and GPU usage, graphics assignment, plug-ins and recent driver changes before treating the entire laptop as faulty."
+    }
+  };
+
+  const selected = symptomGuidance[symptom];
+  const selectedEvidence = evidenceGuidance[evidence];
+
+  return (
+    <section className="my-12 rounded-3xl border border-cyan-500/25 bg-slate-950/80 p-5 sm:p-7" aria-labelledby="global-diagnostic-scorecard">
+      <p className="text-xs font-black uppercase tracking-[0.16em] text-cyan-300">Interactive diagnostic tool</p>
+      <h2 id="global-diagnostic-scorecard" className="mt-2 text-2xl font-black text-white sm:text-3xl">
+        Global Laptop Diagnostic Scorecard
+      </h2>
+      <p className="mt-3 max-w-3xl text-sm leading-7 text-slate-300">
+        Choose the symptom and the strongest clue you have measured. The scorecard suggests the next measurement; it does not diagnose a failed component from a single number.
+      </p>
+      <div className="mt-6 grid gap-4 md:grid-cols-2">
+        <label className="block">
+          <span className="mb-2 block text-sm font-bold text-slate-200">What best describes the slowdown?</span>
+          <select
+            value={symptom}
+            onChange={(event) => setSymptom(event.target.value)}
+            className="min-h-12 w-full rounded-xl border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-white focus:border-cyan-400 focus:outline-none focus:ring-2 focus:ring-cyan-500/30"
+          >
+            <option value="memory">Freezes when switching between apps or tabs</option>
+            <option value="storage">Disk Active Time stays near 100%</option>
+            <option value="thermal">Fast when cold, slower after sustained work</option>
+            <option value="power">CPU clock stays unusually low, even under light load</option>
+            <option value="software">Only one app or game feels slow</option>
+          </select>
+        </label>
+        <label className="block">
+          <span className="mb-2 block text-sm font-bold text-slate-200">What have you measured?</span>
+          <select
+            value={evidence}
+            onChange={(event) => setEvidence(event.target.value)}
+            className="min-h-12 w-full rounded-xl border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-white focus:border-cyan-400 focus:outline-none focus:ring-2 focus:ring-cyan-500/30"
+          >
+            <option value="unknown">I have not measured it yet</option>
+            <option value="highCommit">High Committed value and low Available memory</option>
+            <option value="diskLatency">High disk activity with long response times</option>
+            <option value="fallingClock">Effective CPU clock falls during the slowdown</option>
+            <option value="oneApp">One app or game is the only slow workload</option>
+          </select>
+        </label>
+      </div>
+      <div className="mt-5 rounded-2xl border border-slate-800 bg-slate-900/65 p-5" role="status" aria-live="polite">
+        <h3 className="text-lg font-black text-white">{selected.title}</h3>
+        <p className="mt-2 text-sm leading-7 text-slate-300">{selected.summary}</p>
+        <p className="mt-4 text-xs font-black uppercase tracking-[0.12em] text-cyan-300">Recommended first check</p>
+        <p className="mt-1 text-sm leading-7 text-slate-300">{selected.firstCheck}</p>
+        <p className="mt-4 border-t border-slate-800 pt-4 text-sm leading-7 text-slate-400">
+          <strong className="text-slate-200">{selectedEvidence.label}:</strong> {selectedEvidence.meaning}
+        </p>
+      </div>
+      <p className="mt-4 text-xs leading-6 text-slate-500">
+        Safety note: stop using the laptop and disconnect its charger if you notice a burning smell, smoke, sparking, a swollen battery or unusual connector heat. Back up important data before extended testing if storage may be failing.
+      </p>
+    </section>
+  );
+};
+
 /* ═══════════════════════════════════════════════════════════════════
    RICH CONTENT BLOCK RENDERER
 ═══════════════════════════════════════════════════════════════════ */
@@ -848,27 +961,43 @@ export default function BlogPostTemplate() {
           "url": pageUrl,
           "name": post.title,
           "description": post.description || post.excerpt,
-          ...(post.slug === "why-8gb-ram-is-no-longer-enough-for-windows-11" ? { "inLanguage": "en" } : {}),
+          ...(["why-8gb-ram-is-no-longer-enough-for-windows-11", "why-is-my-laptop-so-slow"].includes(post.slug) ? { "inLanguage": "en" } : {}),
           "isPartOf": { "@id": `${business.websiteUrl}/#website` }
         },
         {
-          "@type": isNews ? "NewsArticle" : (post.slug === "gaming-pc-black-screen-no-display-kuwait" || post.slug === "why-8gb-ram-is-no-longer-enough-for-windows-11") ? "TechArticle" : isGuide ? "Article" : ["BlogPosting", "Article"],
+          "@type": isNews ? "NewsArticle" : (post.slug === "gaming-pc-black-screen-no-display-kuwait" || post.slug === "why-8gb-ram-is-no-longer-enough-for-windows-11" || post.slug === "why-is-my-laptop-so-slow") ? "TechArticle" : isGuide ? "Article" : ["BlogPosting", "Article"],
           "@id": `${pageUrl}#article`,
           "headline": post.title,
           "description": post.excerpt,
-          ...(post.slug === "why-8gb-ram-is-no-longer-enough-for-windows-11" ? {
+          ...(["why-8gb-ram-is-no-longer-enough-for-windows-11", "why-is-my-laptop-so-slow"].includes(post.slug) ? {
             "inLanguage": "en",
             "articleSection": post.category,
             "keywords": post.tags ?? [],
-            "isAccessibleForFree": true
+            "isAccessibleForFree": true,
+            ...(post.slug === "why-is-my-laptop-so-slow" ? {
+              "proficiencyLevel": "Beginner to Advanced",
+              "reviewedBy": { "@type": "Person", "@id": `${AUTHOR_URL}#person` }
+            } : {})
           } : {}),
           "image": toAbsoluteAssetUrl(post.discoverImage || post.image),
           "datePublished": post.date,
           "dateModified": getModifiedDate(post),
-          "author": post.author === "Imran Natiq" ? { "@type": "Person", "@id": `${AUTHOR_URL}#person`, "name": "Imran Natiq", "url": AUTHOR_URL, "jobTitle": "Hardware Repair Engineer", "worksFor": { "@type": "Organization", "name": business.legalName, "url": business.websiteUrl } } : { "@type": "Organization", "name": post.author },
+          "author": post.author === "Imran Natiq" ? {
+            "@type": "Person",
+            "@id": `${AUTHOR_URL}#person`,
+            "name": "Imran Natiq",
+            "url": AUTHOR_URL,
+            "jobTitle": "Hardware Repair Engineer",
+            "worksFor": {
+              "@type": "Organization",
+              "name": post.slug === "why-is-my-laptop-so-slow" ? "KCROC Hardware Engineering Lab" : business.legalName,
+              "url": business.websiteUrl
+            }
+          } : { "@type": "Organization", "name": post.author },
           "publisher": {
             "@type": "Organization",
-            "name": business.legalName,
+            "name": post.slug === "why-is-my-laptop-so-slow" ? "KCROC Hardware Engineering Lab" : business.legalName,
+            "url": business.websiteUrl,
             "logo": { "@type": "ImageObject", "url": `${business.websiteUrl}/logo.webp`, "width": 1024, "height": 1024 }
           },
           "mainEntityOfPage": { "@id": `${pageUrl}#webpage` }
@@ -911,10 +1040,10 @@ export default function BlogPostTemplate() {
   // All hooks have now run unconditionally on every render — safe to bail out.
   if (!post) return <Navigate to={isNews ? ROUTES.NEWS : isGuide ? ROUTES.GUIDES : ROUTES.BLOG} replace />;
 
-  // This editorial post targets an international Windows audience. Keep the
-  // shared site shell, but suppress Kuwait-specific conversion modules and
-  // locally targeted repair-path blocks inside this article.
-  const isGlobalEditorialArticle = post.slug === 'why-8gb-ram-is-no-longer-enough-for-windows-11';
+  // These informational articles use the global editorial shell: local booking,
+  // pricing, location and commercial repair blocks are deliberately separated.
+  const isGlobalEditorialArticle = post.slug === 'why-8gb-ram-is-no-longer-enough-for-windows-11' ||
+    post.slug === 'why-is-my-laptop-so-slow';
 
   const isGamingPerformanceGuide = [
     'gaming-pc-optimization-2026',
@@ -945,11 +1074,13 @@ export default function BlogPostTemplate() {
         {post.arabicSlug && <link rel="alternate" hrefLang="en-KW" href={pageUrl} />}
         {post.arabicSlug && <link rel="alternate" hrefLang="ar-KW" href={`${business.websiteUrl}${isNews ? '/news/' : '/blog/'}${post.arabicSlug}`} />}
         {post.arabicSlug && <link rel="alternate" hrefLang="x-default" href={pageUrl} />}
+        {post.slug === 'why-is-my-laptop-so-slow' && <link rel="alternate" hrefLang="en" href={pageUrl} />}
+        {post.slug === 'why-is-my-laptop-so-slow' && <link rel="alternate" hrefLang="x-default" href={pageUrl} />}
       <meta property="og:type" content="article" />
       <meta property="og:title" content={post.seoTitle || post.title} />
-      <meta property="og:description" content={post.description || post.excerpt} />
+      <meta property="og:description" content={post.slug === 'why-is-my-laptop-so-slow' ? post.seoDescription || post.description || post.excerpt : post.description || post.excerpt} />
       <meta property="og:url" content={pageUrl} />
-      <meta property="og:site_name" content={business.legalName} />
+      <meta property="og:site_name" content={post.slug === 'why-is-my-laptop-so-slow' ? 'KCROC Hardware Engineering Lab' : business.legalName} />
       {!isGlobalEditorialArticle && <meta property="og:locale" content="en_KW" />}
       <meta property="og:image" content={socialImage} />
       {discoverReady && <meta property="og:image:width" content="1200" />}
@@ -961,7 +1092,7 @@ export default function BlogPostTemplate() {
       <meta property="article:section" content={isNews ? `News — ${post.category}` : isGuide ? "Guides" : post.category} />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={post.seoTitle || post.title} />
-      <meta name="twitter:description" content={post.description || post.excerpt} />
+      <meta name="twitter:description" content={post.slug === 'why-is-my-laptop-so-slow' ? post.seoDescription || post.description || post.excerpt : post.description || post.excerpt} />
       <meta name="twitter:image" content={socialImage} />
       <meta name="twitter:image:alt" content={post.title} />
       </Head>
@@ -1068,10 +1199,10 @@ export default function BlogPostTemplate() {
                         Imran Natiq
                       </Link>
                       <p className="text-sm text-slate-400 mt-1 leading-relaxed">
-                        Hardware Repair Engineer at KCROC, focused on laptop thermal troubleshooting, hardware testing and component-level repair in Kuwait.
+                        {post.slug === 'why-is-my-laptop-so-slow' ? 'Hardware Repair Engineer and technical reviewer focused on laptop performance, memory, storage, thermal behaviour, power management and Windows diagnostics.' : 'Hardware Repair Engineer at KCROC, focused on laptop thermal troubleshooting, hardware testing and component-level repair in Kuwait.'}
                       </p>
                       <p className="text-xs text-slate-500 mt-2">
-                        Technical review: {post.technicalReviewDate || 'September 1, 2026'} · Hawalli, Kuwait
+                        Technical review: {post.slug === 'why-is-my-laptop-so-slow' ? post.technicalReviewDate || 'November 7, 2026' : `${post.technicalReviewDate || 'September 1, 2026'} · Hawalli, Kuwait`}
                       </p>
                     </div>
                   </div>
@@ -1107,13 +1238,13 @@ export default function BlogPostTemplate() {
                   <summary className="flex items-center gap-2 p-4 font-bold text-white cursor-pointer list-none">
                     <List size={16} className="text-cyan-400" aria-hidden="true" /> On This Page
                   </summary>
-                  <ol className="px-4 pb-4 space-y-2">
+                  <ul className="m-0 list-none px-4 pb-4 space-y-2">
                     {headings.map(h => (
                       <li key={h.id}>
                         <a href={`#${h.id}`} className="text-sm text-slate-400 hover:text-cyan-400">{h.text}</a>
                       </li>
                     ))}
-                  </ol>
+                  </ul>
                 </details>
               )}
 
@@ -1137,6 +1268,8 @@ export default function BlogPostTemplate() {
               ) : (
                 <p className="text-slate-400 italic">Content is currently being updated by our technicians. Please check back shortly.</p>
               )}
+
+              {post.slug === 'why-is-my-laptop-so-slow' && <GlobalLaptopDiagnosticScorecard />}
 
               {!isWindows26H2Guide && !isGlobalEditorialArticle && (
               <div className="bg-slate-900/50 backdrop-blur-md border border-slate-700/50 p-8 rounded-2xl my-12 text-center">
@@ -1277,7 +1410,7 @@ export default function BlogPostTemplate() {
                 <p className="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-slate-400 mb-4">
                   <List size={14} className="text-cyan-400" aria-hidden="true" /> On This Page
                 </p>
-                <ol className="space-y-2.5 text-sm">
+                <ul className="m-0 list-none space-y-2.5 p-0 text-sm">
                   {headings.map(h => (
                     <li key={h.id}>
                       <a
@@ -1288,7 +1421,7 @@ export default function BlogPostTemplate() {
                       </a>
                     </li>
                   ))}
-                </ol>
+                </ul>
               </nav>
             )}
 
