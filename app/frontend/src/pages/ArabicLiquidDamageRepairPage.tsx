@@ -2,7 +2,6 @@
 // Kuwaiti-Arabic emergency-first service page for laptop and MacBook liquid damage.
 // This page is distinct from the English spill troubleshooting guide and from keyboard-only repair intent.
 
-import React from 'react';
 import { Link } from 'react-router-dom';
 import {
   AlertTriangle,
@@ -474,7 +473,7 @@ export default function ArabicLiquidDamageRepairPage() {
             <p className="text-sm font-black tracking-wide text-cyan-400">Why It Can Fail Later</p>
             <h2 id="spill-delayed-failure-heading" className="mt-2 text-2xl font-black text-white sm:text-3xl">ليش اللابتوب ممكن يشتغل عقب الانسكاب وبعدين يخرب بعد يومين؟</h2>
             <p className="mt-3 max-w-4xl leading-8 text-slate-300">
-              بعض الأجهزة تظل شغالة لأن السائل ما سوّى قصر مباشر وقت الانسكاب. لكن ممكن تبقى رطوبة أو أملاح أو بقايا سكر تحت الكيبورد أو حول الموصلات والحواجز المعدنية. إذا ظلت الطاقة موجودة على بعض الدوائر، قد يصير تسريب تيار وتفاعلات كهروكيميائية (Electrochemical Corrosion) وتبدأ نقاط التوصيل أو المسارات تتأثر تدريجياً. عشان جذي، الجهاز اللي اشتغل مرة بعد البلل مو شرط يكون سليم.
+              بعض الأجهزة تظل شغالة لأن السائل ما سوّى قصر مباشر وقت الانسكاب. لكن ممكن تبقى رطوبة أو أملاح أو بقايا سكر تحت الكيبورد أو حول الموصلات والحواجز المعدنية. إذا بقت رطوبة أو أملاح بين نقاط عليها فرق جهد، ممكن يصير تسريب تيار وهجرة كهروكيميائية (Electrochemical Migration) وتآكل؛ وفي بعض الحالات توصف التفاعلات المرتبطة فيها بالتحلل الكهربائي (Electrolysis). ومع استمرار الطاقة، ممكن تتأثر نقاط التوصيل أو المسارات تدريجياً. عشان جذي، الجهاز اللي اشتغل مرة بعد البلل مو شرط يكون سليم.
             </p>
             <div className="mt-5 grid gap-4 md:grid-cols-2">
               <article className="rounded-2xl border border-slate-800 bg-slate-950/60 p-5">
