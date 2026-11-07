@@ -64,7 +64,7 @@ const PRICE_LINKS: Partial<Record<string, { href: string; label: string }>> = {
   'خدمة تبريد Gaming PC': { href: '/ar/gaming-pc-repair-kuwait', label: 'تفاصيل تصليح Gaming PC' },
   'ضبط أداء Gaming PC': { href: '/ar/gaming-pc-repair-kuwait', label: 'تفاصيل تصليح Gaming PC' },
   'تركيب RAM أو SSD': { href: '/ar/ssd-ram-upgrade-kuwait', label: 'تفاصيل ترقية SSD وRAM' },
-  'تبديل بطارية اللابتوب': { href: '/ar/battery-replacement-kuwait', label: 'تفاصيل تبديل البطارية' },
+  'تبديل بطارية اللابتوب': { href: '/ar/laptop-battery-replacement-kuwait', label: 'تفاصيل تبديل البطارية' },
   'تبديل كيبورد اللابتوب': { href: '/ar/laptop-keyboard-replacement-kuwait', label: 'تفاصيل تبديل الكيبورد' },
   'تبديل شاشة اللابتوب': { href: '/ar/laptop-screen-repair-kuwait', label: 'تفاصيل تبديل الشاشة' },
   'إصلاح المفصلات والهيكل': { href: '/ar/laptop-hinge-repair-kuwait', label: 'تفاصيل تصليح المفصلات والهيكل' },
@@ -78,7 +78,7 @@ const PRICE_LINKS: Partial<Record<string, { href: string; label: string }>> = {
 const PRICE_HIGHLIGHTS = [
   { label: 'الفحص الأولي', price: 'مجاني', note: 'تقييم أولي بدون التزام بالإصلاح', href: '/ar/computer-repair-kuwait' },
   { label: 'أجرة تبديل الشاشة', price: 'من 30 د.ك + الشاشة', note: 'سعر اللوحة يختلف حسب المواصفات والموديل', href: '/ar/laptop-screen-repair-kuwait' },
-  { label: 'أجرة تبديل البطارية', price: 'من 8 د.ك + البطارية', note: 'نتحقق من رقم الموديل وتوافق القطعة', href: '/ar/battery-replacement-kuwait' },
+  { label: 'أجرة تبديل البطارية', price: 'من 8 د.ك + البطارية', note: 'نتحقق من رقم الموديل وتوافق القطعة', href: '/ar/laptop-battery-replacement-kuwait' },
   { label: 'تركيب SSD أو RAM', price: 'من 5 د.ك', note: 'القطع ونقل البيانات منفصلة عند الحاجة', href: '/ar/ssd-ram-upgrade-kuwait' },
 ] as const;
 
