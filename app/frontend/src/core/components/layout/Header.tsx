@@ -220,7 +220,6 @@ export default function Header() {
 
             <div className="hidden min-w-0 flex-wrap items-center justify-end gap-1.5 xl:flex 2xl:gap-2.5">
               {!isGlobalSlowLaptopGuide && (
-              {!isGlobalSlowLaptopGuide && (
               <Link
                 to={languageSwitch.href}
                 lang={languageSwitch.targetLanguage === 'ar' ? 'ar' : 'en'}
@@ -269,6 +268,7 @@ export default function Header() {
             </div>
 
             <div className="flex shrink-0 items-center gap-1 xl:hidden">
+              {!isGlobalSlowLaptopGuide && (
               <Link
                 to={languageSwitch.href}
                 lang={languageSwitch.targetLanguage === 'ar' ? 'ar' : 'en'}
@@ -277,6 +277,7 @@ export default function Header() {
               >
                 {languageSwitch.targetLanguage === 'ar' ? 'عربي' : 'EN'}
               </Link>
+              )}
               <button
                 ref={searchToggleRef}
                 // 🚀 TOUCH TARGET FIX: p-2 + a 20px icon was a ~36px hit area,
