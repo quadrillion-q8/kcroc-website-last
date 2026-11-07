@@ -35,7 +35,7 @@ const ARABIC_PATHS: Record<string, string> = {
   '/macbook-screen-replacement-kuwait': '/ar/macbook-screen-replacement-kuwait',
   '/motherboard-repair-kuwait': '/ar/motherboard-repair-kuwait',
   '/laptop-screen-repair-kuwait': '/ar/laptop-screen-repair-kuwait',
-  '/battery-replacement-kuwait': '/ar/battery-replacement-kuwait',
+  '/battery-replacement-kuwait': '/ar/laptop-battery-replacement-kuwait',
   '/laptop-charging-port-repair-kuwait': '/ar/laptop-charging-port-repair-kuwait',
   '/laptop-keyboard-replacement-kuwait': '/ar/laptop-keyboard-replacement-kuwait',
   '/ssd-ram-upgrade-kuwait': '/ar/ssd-ram-upgrade-kuwait',
@@ -110,7 +110,7 @@ export function Footer() {
   const location = useLocation();
   const isArabicRoute = location.pathname === '/ar' || location.pathname.startsWith('/ar/') || location.pathname.startsWith('/blog/ar/') || location.pathname.startsWith('/guides/ar/');
   const isHawalliLandingPage = location.pathname.replace(/\/+$/, '') === '/location/hawalli';
-  const isWindowsBatteryPage = location.pathname === '/battery-replacement-kuwait' || location.pathname === '/ar/battery-replacement-kuwait';
+  const isWindowsBatteryPage = location.pathname === '/battery-replacement-kuwait' || location.pathname === '/ar/laptop-battery-replacement-kuwait';
   const isGlobalEditorialArticle = location.pathname === '/blog/why-is-my-laptop-so-slow';
   const localizedPath = (path: string) => isArabicRoute ? (ARABIC_PATHS[path] ?? path) : path;
   const serviceLabel = (path: string, label: string) => isArabicRoute ? (ARABIC_SERVICE_LABELS[path] ?? label.replace(' Kuwait', '')) : label.replace(' Kuwait', '');

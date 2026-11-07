@@ -587,7 +587,7 @@ const languagePairs = [
   ['/laptop-screen-repair-kuwait', '/ar/laptop-screen-repair-kuwait'],
   ['/macbook-repair-kuwait', '/ar/macbook-repair-kuwait'],
   ['/macbook-screen-replacement-kuwait', '/ar/macbook-screen-replacement-kuwait'],
-  ['/battery-replacement-kuwait', '/ar/battery-replacement-kuwait'],
+  ['/battery-replacement-kuwait', '/ar/laptop-battery-replacement-kuwait'],
   ['/ssd-ram-upgrade-kuwait', '/ar/ssd-ram-upgrade-kuwait'],
   ['/gaming-laptop-repair-kuwait', '/ar/gaming-laptop-repair-kuwait'],
   ['/laptop-charging-port-repair-kuwait', '/ar/laptop-charging-port-repair-kuwait'],
@@ -1220,7 +1220,7 @@ const arabicBatteryPageEnd = graph.indexOf("    'page-ar-ssd-ram-upgrade': {", a
 const arabicBatteryPageEntity = arabicBatteryPageStart >= 0 && arabicBatteryPageEnd > arabicBatteryPageStart
   ? graph.slice(arabicBatteryPageStart, arabicBatteryPageEnd)
   : '';
-const arabicBatteryConfigStart = arabicCommercial.indexOf("  'battery-replacement-kuwait': {");
+const arabicBatteryConfigStart = arabicCommercial.indexOf("  'laptop-battery-replacement-kuwait': {");
 const arabicBatteryConfigEnd = arabicCommercial.indexOf("\n  'macbook-battery-replacement-kuwait': {", arabicBatteryConfigStart + 1);
 const arabicBatteryConfig = arabicBatteryConfigStart >= 0 && arabicBatteryConfigEnd > arabicBatteryConfigStart
   ? arabicCommercial.slice(arabicBatteryConfigStart, arabicBatteryConfigEnd)
@@ -1259,7 +1259,7 @@ add('Arabic battery Service schema uses its first-party photos and the Hawalli w
 
 add('Arabic battery metadata declares Service and FAQPage schema with an Arabic breadcrumb and current date',
   arabicBatteryPageEntity.includes("schemaTypes: ['WebPage', 'BreadcrumbList', 'Service', 'FAQPage']") &&
-  arabicBatteryPageEntity.includes("lastModified: '2026-11-03T00:00:00+03:00'") &&
+  arabicBatteryPageEntity.includes("lastModified: '2026-11-07T00:00:00+03:00'") &&
   arabicBatteryPageEntity.includes("breadcrumbs: [{ name: 'الرئيسية', url: '/ar' }"));
 
 add('Arabic battery FAQs remain generated from visible copy and qualify timing and warranty',
@@ -1270,6 +1270,33 @@ add('Arabic battery FAQs remain generated from visible copy and qualify timing a
   arabicCommercial.includes('mainEntity: cfg.faq.map((item)'));
 
 
+
+
+add('Arabic Windows laptop battery page uses the dedicated Arabic route and reciprocal English equivalent',
+  arabicBatteryPageEntity.includes("slug: 'ar/laptop-battery-replacement-kuwait'") &&
+  arabicBatteryPageEntity.includes("canonicalUrl: 'https://www.computerrepairkuwait.com/ar/laptop-battery-replacement-kuwait'") &&
+  arabicBatteryPageEntity.includes("'en-KW': 'https://www.computerrepairkuwait.com/battery-replacement-kuwait'") &&
+  arabicCommercial.includes("englishPath: '/battery-replacement-kuwait'"));
+
+add('Arabic Windows battery page includes symptom-specific WhatsApp triage and swollen-battery safety guidance',
+  arabicCommercial.includes('id="battery-symptom-triage"') &&
+  arabicCommercial.includes('البطارية منتفخة أو الهيكل / التاتش باد مرتفع') &&
+  arabicCommercial.includes('متصل بالكهرباء ولا يشحن أو واقف على 0%') &&
+  arabicCommercial.includes('id="battery-swollen-safety"') &&
+  arabicCommercial.includes('لا تضع الجهاز في شحنة أو ناقل عادي قبل الاتفاق على طريقة نقل آمنة'));
+
+add('Arabic Windows battery page includes a diagnostic matrix, model compatibility guide and transparent installed-price table',
+  arabicCommercial.includes('id="battery-diagnostic-matrix"') &&
+  arabicCommercial.includes('id="battery-compatibility-guide"') &&
+  arabicCommercial.includes('id="battery-installed-price"') &&
+  arabicCommercial.includes('لا نعتمد على قوائم Part Numbers عامة') &&
+  arabicCommercial.includes('تبدأ من 8 د.ك، وهي أجرة عمل فقط ولا تشمل سعر البطارية'));
+
+add('Old Arabic Windows battery URL permanently redirects to the dedicated laptop URL',
+  JSON.parse(vercelConfig).redirects.some((item) =>
+    item.source === '/ar/battery-replacement-kuwait' &&
+    item.destination === '/ar/laptop-battery-replacement-kuwait' &&
+    item.permanent === true));
 
 const englishBatteryServiceStart = graph.indexOf("    'srv-battery': {");
 const englishBatteryRelatedResourcesStart = graph.indexOf("      relatedResourcePaths: [", englishBatteryServiceStart + 1);
@@ -1291,7 +1318,7 @@ add('English and Arabic general battery page copy excludes MacBook while retaini
   arabicBatteryConfig.includes("{ label: 'تبديل بطارية MacBook', path: '/ar/macbook-battery-replacement-kuwait' }"));
 
 const arabicRelatedGuidesStart = arabicCommercial.indexOf("const relatedGuides =");
-const arabicBatteryRelatedGuidesStart = arabicCommercial.indexOf(": slug === 'battery-replacement-kuwait'", arabicRelatedGuidesStart + 1);
+const arabicBatteryRelatedGuidesStart = arabicCommercial.indexOf(": slug === 'laptop-battery-replacement-kuwait'", arabicRelatedGuidesStart + 1);
 const arabicBatteryRelatedGuidesEnd = arabicCommercial.indexOf(": slug === 'laptop-repair-kuwait'", arabicBatteryRelatedGuidesStart + 1);
 const arabicBatteryRelatedGuides = arabicRelatedGuidesStart >= 0 && arabicBatteryRelatedGuidesStart > arabicRelatedGuidesStart && arabicBatteryRelatedGuidesEnd > arabicBatteryRelatedGuidesStart
   ? arabicCommercial.slice(arabicBatteryRelatedGuidesStart, arabicBatteryRelatedGuidesEnd)
@@ -1311,7 +1338,7 @@ add('English Windows battery page keeps related motherboard and repair-hub copy 
 
 add('Windows battery landing pages use laptop-only footer labels and route-specific footer descriptions',
   footer.includes("'/battery-replacement-kuwait': 'تبديل بطارية اللابتوب'") &&
-  footer.includes("const isWindowsBatteryPage = location.pathname === '/battery-replacement-kuwait' || location.pathname === '/ar/battery-replacement-kuwait';") &&
+  footer.includes("const isWindowsBatteryPage = location.pathname === '/battery-replacement-kuwait' || location.pathname === '/ar/laptop-battery-replacement-kuwait';") &&
   footer.includes('Professional repair for desktop PCs, Windows laptops and gaming PCs.') &&
   footer.includes('تصليح الكمبيوتر المكتبي ولابتوبات Windows وكمبيوتر الألعاب'));
 

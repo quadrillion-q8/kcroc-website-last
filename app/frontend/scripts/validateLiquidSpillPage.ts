@@ -88,7 +88,7 @@ const requiredArabicLiquidLinks = [
   '/ar/laptop-keyboard-replacement-kuwait',
   '/ar/laptop-plugged-in-not-charging',
   '/ar/macbook-repair-kuwait',
-  '/ar/battery-replacement-kuwait'
+  '/ar/laptop-battery-replacement-kuwait'
 ];
 const missingArabicLiquidLinks = requiredArabicLiquidLinks.filter((path) => !knownPaths.has(path) || !arabicLiquidPageSource.includes(path));
 const arabicLiquidImages = [

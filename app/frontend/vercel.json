@@ -277,6 +277,11 @@
       "permanent": true
     },
     {
+      "source": "/ar/battery-replacement-kuwait",
+      "destination": "/ar/laptop-battery-replacement-kuwait",
+      "permanent": true
+    },
+    {
       "source": "/battery-replacement",
       "destination": "/battery-replacement-kuwait",
       "permanent": true

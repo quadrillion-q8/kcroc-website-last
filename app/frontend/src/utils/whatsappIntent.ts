@@ -80,7 +80,7 @@ export const getPageWhatsAppLink = (pathname: string): string => {
       'laptop-screen-repair-kuwait': 'تبديل شاشة اللابتوب في الكويت',
       'macbook-repair-kuwait': 'تصليح MacBook في الكويت',
       'macbook-screen-replacement-kuwait': 'تبديل شاشة MacBook في الكويت',
-      'battery-replacement-kuwait': 'تبديل بطارية اللابتوب في الكويت',
+      'laptop-battery-replacement-kuwait': 'تبديل بطارية اللابتوب في الكويت',
       'ssd-ram-upgrade-kuwait': 'ترقية SSD وRAM في الكويت',
       'gaming-laptop-repair-kuwait': 'تصليح Gaming Laptop في الكويت',
       'computer-repair-hawalli': 'تصليح كمبيوتر حولي',

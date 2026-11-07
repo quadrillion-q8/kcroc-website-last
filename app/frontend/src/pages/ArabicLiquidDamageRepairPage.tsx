@@ -203,7 +203,7 @@ const RELATED_LINKS = [
     description: 'لفحص دوائر الطاقة وUSB-C واللوحة حسب جيل الجهاز.',
   },
   {
-    href: '/ar/battery-replacement-kuwait',
+    href: '/ar/laptop-battery-replacement-kuwait',
     title: 'فحص وتبديل بطارية اللابتوب',
     description: 'إذا تأثرت البطارية أو ظهرت عليها علامات انتفاخ أو خلل.',
   },
