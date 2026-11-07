@@ -460,7 +460,7 @@ const BrandTemplate: React.FC = () => {
           </section>
         )}
 
-        {/* Guides + evidence */
+        {/* Guides + evidence */}
         <section aria-labelledby="lenovo-resources" className="mb-20 grid gap-6 lg:grid-cols-2">
           {relatedResourcePaths.length > 0 && (
           <div className="rounded-3xl border border-slate-800 bg-slate-900/50 p-7">
