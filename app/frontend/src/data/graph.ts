@@ -1438,7 +1438,7 @@ export const rawGraphData: RawGraphData = {
         {
           id: 'charging-port-faq-3',
           title: 'Do you repair soldered USB-C laptop charging ports?',
-          answer: 'Yes, on models where the connector and board are suitable for repair. USB-C receptacles have a compact contact layout that can carry power and data; the CC1 and CC2 configuration-channel contacts help manage connection orientation and Power Delivery negotiation. We inspect the receptacle and relevant power-delivery path, then quote for connector replacement or board-level work when appropriate.'
+          answer: 'Yes, on models where the connector and board are suitable for repair. A standard USB-C receptacle has 24 contact positions, although the signals implemented and charging capabilities vary by device. The CC1 and CC2 configuration-channel contacts help manage connection orientation and Power Delivery negotiation. We inspect the receptacle and relevant power-delivery path, then quote for connector replacement or board-level work when appropriate.'
         },
         {
           id: 'charging-port-faq-4',
@@ -1518,7 +1518,7 @@ export const rawGraphData: RawGraphData = {
         items: [
           {
             title: 'Dell — XPS, Inspiron, Latitude and Precision',
-            description: 'An “AC adapter wattage and type cannot be determined” warning can involve the charger, DC-in port or motherboard charging circuit. On compatible barrel-adapter models, we inspect the centre identification contact and the board-side signal path as well as the main power input.'
+            description: 'An “AC adapter wattage and type cannot be determined” warning can involve the charger, DC-in port or motherboard charging circuit. On compatible Dell barrel-adapter models, we inspect the centre identification contact (PS_ID / 1-Wire on supported designs) and its board-side signal path, alongside the main power input. Other brands and model families may use different adapter-identification arrangements.'
           },
           {
             title: 'HP — Pavilion, Envy, Spectre and EliteBook',
@@ -1534,7 +1534,7 @@ export const rawGraphData: RawGraphData = {
           },
           {
             title: 'Apple MacBook — USB-C and MagSafe',
-            description: 'The repair route varies by generation: the fault may be in the cable or port, a separate I/O assembly on supported models, or the logic-board charging and USB-C power-delivery circuitry. We identify the exact model and board before deciding whether a modular replacement or board-level repair is appropriate.'
+            description: 'The repair route varies by generation: the fault may be in the cable or port, a separate I/O assembly on supported models, or the logic-board charging and USB-C power-delivery circuitry. Some board designs use controller families such as CD3215 or CD3217, but the relevant part depends on the exact model and logic-board revision. We identify the board before deciding whether a modular I/O replacement or board-level repair is appropriate.'
           },
           {
             title: 'Microsoft Surface',
@@ -1554,7 +1554,7 @@ export const rawGraphData: RawGraphData = {
           diagnostics: 'Repeated plug stress can loosen the connector, crack solder joints or damage mounting points. We remove the jack with board-appropriate rework, inspect the pads and anchors, then replace or repair the connection where feasible.'
         },
         {
-          family: 'USB-C charging / Thunderbolt receptacle',
+          family: '24-contact USB-C charging / Thunderbolt receptacle',
           models: 'Supported Dell XPS / Latitude, Lenovo ThinkPad, HP EliteBook / Spectre, ASUS, Surface and MacBook variants',
           diagnostics: 'A damaged shell or tongue, worn contacts, lifted surface-mount pads or failed Power Delivery negotiation can interrupt charging. We inspect the receptacle and relevant CC / VBUS paths, replace the connector when suitable and verify model-supported charging.'
         },
@@ -1633,7 +1633,7 @@ export const rawGraphData: RawGraphData = {
       navigationPriority: 55,
       isFeatured: false,
       popular: false,
-      relatedLocationIds: ['loc-hawalli', 'loc-salmiya', 'loc-kuwait-city', 'loc-farwaniya', 'loc-jahra', 'loc-ahmadi']
+      relatedLocationIds: ['loc-hawalli', 'loc-salmiya', 'loc-kuwait-city', 'loc-farwaniya', 'loc-jahra', 'loc-ahmadi', 'loc-mubarak-al-kabeer']
     } as ServiceEntity,
 
     'srv-hinge': {
