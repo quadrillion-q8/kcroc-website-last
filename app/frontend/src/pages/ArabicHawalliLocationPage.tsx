@@ -23,6 +23,7 @@ import SchemaMarkup from '../components/seo/SchemaMarkup';
 import MapComponent from '../components/MapComponent';
 import { useAnalytics } from '../core/analytics/AnalyticsProvider';
 import { IMAGES } from '../constants/images';
+import { buildWhatsAppLink } from '../utils/whatsappIntent';
 
 const BASE_URL = KCROC_GRAPH.business?.websiteUrl ?? 'https://www.computerrepairkuwait.com';
 const PAGE_URL = BASE_URL + '/ar/computer-repair-hawalli';
@@ -114,7 +115,37 @@ export default function ArabicHawalliLocationPage() {
   const openingHoursAr = business.schemaOpeningHours
     ? 'يوميًا من ' + formatArabicTime(business.schemaOpeningHours.opens) + ' إلى ' + formatArabicTime(business.schemaOpeningHours.closes)
     : 'يرجى التواصل معنا لتأكيد ساعات العمل';
-  const waLink = 'https://wa.me/' + phone + '?text=' + encodeURIComponent('السلام عليكم KCROC، أحتاج تصليح كمبيوتر أو لابتوب في حولي. أرجو ترتيب الفحص أو الاستلام.');
+  const waLink = buildWhatsAppLink('السلام عليكم KCROC، أحتاج تصليح كمبيوتر أو لابتوب في حولي. أرجو ترتيب الفحص أو الاستلام.');
+  const symptomIntents = [
+    {
+      id: 'no-power',
+      title: 'الجهاز ما يشتغل أو ما يشحن',
+      description: 'مشكلة تشغيل أو طاقة أو شحن؟ أرسل موديل جهازك والأعراض.',
+      message: 'السلام عليكم KCROC، جهازي ما يشتغل أو ما يشحن وأحتاج فحص. نوع الجهاز والموديل: ____. هل تظهر لمبة أو صوت عند الضغط على زر التشغيل؟ ____. هل جرّبت شاحنًا آخر؟ ____. منطقتي بالكويت: ____. فضلاً وضحوا لي طريقة الفحص والتكلفة قبل أي إصلاح مدفوع.',
+      icon: BatteryCharging,
+    },
+    {
+      id: 'liquid-spill',
+      title: 'انسكب سائل على الجهاز',
+      description: 'ماء أو قهوة أو سائل وصل للابتوب أو MacBook؟',
+      message: 'السلام عليكم KCROC، انسكب سائل على جهازي وأحتاج فحص آثار السوائل. نوع الجهاز والموديل: ____. نوع السائل: ____. متى صار الانسكاب؟ ____. هل الجهاز مطفأ حاليًا؟ ____. منطقتي بالكويت: ____. فضلاً وضحوا لي خطوات الاستلام والفحص قبل أي إصلاح.',
+      icon: Laptop,
+    },
+    {
+      id: 'gaming-heat',
+      title: 'حرارة عالية أو هبوط FPS',
+      description: 'فحص حرارة وتبريد ومراوح واستقرار جهاز الألعاب.',
+      message: 'السلام عليكم KCROC، أواجه حرارة عالية أو هبوط FPS في جهاز الألعاب وأحتاج فحص التبريد والأداء. نوع الجهاز والموديل: ____. المعالج وكرت الشاشة إن عُرفا: ____. متى تظهر المشكلة؟ ____. منطقتي بالكويت: ____. فضلاً وضحوا لي طريقة الفحص والتكلفة قبل أي إصلاح.',
+      icon: Gamepad2,
+    },
+    {
+      id: 'important-files',
+      title: 'عندي ملفات مهمة على الجهاز',
+      description: 'نبّهنا قبل الفحص حتى نناقش أي خطوة قد تؤثر على وحدة التخزين.',
+      message: 'السلام عليكم KCROC، جهازي فيه عطل هاردوير وعندي ملفات مهمة أحتاج الحفاظ على إمكانية الوصول إليها. نوع الجهاز والموديل: ____. الأعراض: ____. منطقتي بالكويت: ____. أرجو عدم عمل فورمات أو تنفيذ خطوة تؤثر على وحدة التخزين قبل شرحها لي وأخذ موافقتي.',
+      icon: Cpu,
+    },
+  ];
   const faqs = [
     {
       q: 'وين موقع مختبر KCROC في حولي؟',
@@ -147,6 +178,14 @@ export default function ArabicHawalliLocationPage() {
     {
       q: 'هل عندكم فرع خارج حولي؟',
       a: 'المختبر الفعلي في حولي. باقي المناطق نخدمها من خلال الاستلام والتوصيل، ويتم الإصلاح في المختبر ثم نرجع الجهاز بعد الفحص والاختبار.',
+    },
+    {
+      q: 'شنو أسوي إذا انسكب سائل على اللابتوب؟',
+      a: 'افصل الشاحن وأطف الجهاز إذا كان شغال، ولا تحاول تشغّله مرة ثانية قبل الفحص. أرسل لنا نوع الجهاز ووقت الانسكاب ومنطقتك، ونوضح لك خطوات الاستلام والفحص. نتيجة الإصلاح تعتمد على حالة الجهاز واللوحة بعد الفحص.',
+    },
+    {
+      q: 'هل تحتاج الصيانة فورمات أو فتح ملفاتي؟',
+      a: 'فحص الهاردوير ما يتطلب تصفح ملفاتك ولا نسوي فورمات كخطوة تلقائية. إذا احتاجت الحالة خطوة ممكن تأثر على وحدة التخزين أو النظام، نشرحها لك ونطلب موافقتك قبل التنفيذ.',
     },
   ];
 
@@ -313,6 +352,38 @@ export default function ArabicHawalliLocationPage() {
                 <div><h3 className="font-bold text-white">الاستلام والتوصيل</h3><p className="mt-1 text-sm leading-6 text-slate-400">مجاني من مناطق الكويت التي نخدمها، مع إصلاح الجهاز وفحصه داخل المختبر.</p></div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="hawalli-symptom-triage" className="border-b border-slate-800/70 bg-slate-900/30 px-4 py-8 sm:px-6 sm:py-10">
+        <div className="container mx-auto max-w-6xl">
+          <div className="mb-5 max-w-3xl">
+            <p className="text-sm font-black text-cyan-300">ابدأ من العَرَض</p>
+            <h2 id="hawalli-symptom-triage" className="mt-2 text-2xl font-black text-white sm:text-3xl">شنو المشكلة اللي تواجهك بجهازك؟</h2>
+            <p className="mt-2 text-sm leading-7 text-slate-400">اختر أقرب وصف للمشكلة، ويفتح لك واتساب برسالة جاهزة تساعدنا نفهم الحالة ونرتب الخطوة التالية. التشخيص النهائي يتم بعد فحص الجهاز.</p>
+          </div>
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {symptomIntents.map((intent) => {
+              const Icon = intent.icon;
+              return (
+                <a
+                  key={intent.id}
+                  href={buildWhatsAppLink(intent.message)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => track('whatsapp_click', 'hawalli_ar_symptom_' + intent.id, 'symptom_triage')}
+                  className="group flex min-h-[150px] flex-col rounded-2xl border border-slate-800 bg-slate-950/70 p-4 transition-colors hover:border-cyan-500/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+                >
+                  <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-300 transition-colors group-hover:bg-cyan-500/20">
+                    <Icon className="h-5 w-5" aria-hidden="true" />
+                  </span>
+                  <span className="mt-3 font-black leading-6 text-white">{intent.title}</span>
+                  <span className="mt-1 text-xs leading-6 text-slate-400">{intent.description}</span>
+                  <span className="mt-auto pt-3 text-xs font-black text-cyan-300">ابدأ المحادثة على واتساب ←</span>
+                </a>
+              );
+            })}
           </div>
         </div>
       </section>
