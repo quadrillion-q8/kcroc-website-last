@@ -1050,8 +1050,8 @@ export default function BlogPostTemplate() {
 
   // These informational articles use the global editorial shell: local booking,
   // pricing, location and commercial repair blocks are deliberately separated.
-  const isGlobalEditorialArticle = post.slug === 'why-8gb-ram-is-no-longer-enough-for-windows-11' ||
-    post.slug === 'why-is-my-laptop-so-slow';
+  const isGlobalEditorialArticle = post.isGlobalGuide === true ||
+    post.slug === 'why-8gb-ram-is-no-longer-enough-for-windows-11';
 
   const isGamingPerformanceGuide = [
     'gaming-pc-optimization-2026',
@@ -1194,7 +1194,7 @@ export default function BlogPostTemplate() {
                   <div className="flex items-start gap-4">
                     <img
                       src={AUTHOR_IMAGE_URL}
-                      alt="Imran Natiq — Hardware Repair Engineer at KCROC"
+                      alt={post.slug === 'why-is-my-laptop-so-slow' ? 'Imran Natiq — Hardware Repair Engineer' : 'Imran Natiq — Hardware Repair Engineer at KCROC'}
                       className="w-14 h-14 sm:w-16 sm:h-16 rounded-xl object-cover border border-slate-800 shrink-0"
                       loading="lazy"
                       decoding="async"
@@ -1436,7 +1436,7 @@ export default function BlogPostTemplate() {
             <div className="bg-slate-900/40 border border-slate-800 rounded-2xl p-5">
               <p className="text-xs font-black uppercase tracking-wider text-slate-400 mb-3">Author</p>
               <p className="font-bold text-white">{post.author}</p>
-              <p className="text-xs text-slate-500 mt-1">{isGlobalEditorialArticle ? 'KCROC Technical Editorial' : 'Kuwait Computer Repair On Call'}</p>
+              <p className="text-xs text-slate-500 mt-1">{post.slug === 'why-is-my-laptop-so-slow' ? 'KCROC Hardware Engineering Lab' : isGlobalEditorialArticle ? 'KCROC Technical Editorial' : 'Kuwait Computer Repair On Call'}</p>
             </div>
 
             {(isGlobalEditorialArticle ? relatedPosts : recentPosts).length > 0 && (
