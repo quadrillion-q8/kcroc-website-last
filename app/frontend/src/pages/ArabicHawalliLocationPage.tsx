@@ -49,7 +49,7 @@ const ARABIC_SERVICES: Record<string, { title: string; description: string; path
   'srv-battery': {
     title: 'تبديل بطارية اللابتوب',
     description: 'فحص البطارية والشحن ومطابقة البديل مع موديل جهازك.',
-    path: '/ar/battery-replacement-kuwait',
+    path: '/ar/laptop-battery-replacement-kuwait',
   },
   'srv-macbook': {
     title: 'تصليح MacBook',
