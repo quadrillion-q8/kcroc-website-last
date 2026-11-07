@@ -1559,10 +1559,10 @@ add('HP published price table matches existing pricing categories and keeps part
   hpBrand.includes("price: '8–15 KWD labour + battery'") &&
   hpBrand.includes("price: 'Labour from 30 KWD + panel'") &&
   brandTemplate.includes('priceGuide.map') &&
-  pricingPage.includes("price: '15–20 KWD'") &&
-  pricingPage.includes("price: '15–30 KWD'") &&
-  pricingPage.includes("price: '20–35 KWD'") &&
-  pricingPage.includes("price: '25–60 KWD'"));
+  englishPricing.includes("price: '15–20 KWD'") &&
+  englishPricing.includes("price: '15–30 KWD'") &&
+  englishPricing.includes("price: '20–35 KWD'") &&
+  englishPricing.includes("price: '25–60 KWD'"));
 add('HP FAQs remain visible and are shared with the existing FAQPage schema generator',
   (hpFaqBlock.match(/\{ id: 'hp-/g) || []).length === 10 &&
   hpFaqBlock.includes("title: 'Is KCROC an official HP service center?'") &&
