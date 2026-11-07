@@ -78,7 +78,7 @@ const shouldShowAnimatedBackground = (pathname: string): boolean => {
 
 export const RootLayout: React.FC = () => {
   const { pathname } = useLocation();
-  const isGlobalEditorialArticle = pathname === '/blog/why-8gb-ram-is-no-longer-enough-for-windows-11';
+  const isGlobalEditorialArticle = pathname === '/blog/why-8gb-ram-is-no-longer-enough-for-windows-11' || pathname === '/blog/why-is-my-laptop-so-slow';
   const isArabicRoute = pathname === '/ar' || pathname.startsWith('/ar/') || pathname.startsWith('/blog/ar/') || pathname.startsWith('/guides/ar/');
   const showAnimatedBackground = shouldShowAnimatedBackground(pathname);
   const [decorativeBackgroundReady, setDecorativeBackgroundReady] = useState(false);
