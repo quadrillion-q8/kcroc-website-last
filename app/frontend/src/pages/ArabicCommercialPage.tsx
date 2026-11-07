@@ -2544,16 +2544,24 @@ export default function ArabicCommercialPage() {
           addressCountry: business.addressCountry,
         },
       },
+      inLanguage: 'ar-KW',
+      alternateName: 'Laptop Keyboard Replacement Kuwait',
       offers: {
-        '@type': 'Offer',
-        name: 'أجرة تبديل كيبورد اللابتوب تبدأ من 10 د.ك + سعر القطعة',
-        description: 'أجرة العمل تبدأ من 10 د.ك. تُحسب لوحة المفاتيح أو التجميعة بشكل منفصل حسب الموديل والتخطيط وتوفر القطعة؛ السعر النهائي يؤكد قبل الإصلاح.',
+        '@type': 'AggregateOffer',
+        name: 'أجرة تبديل كيبورد اللابتوب: 10–20 د.ك + سعر القطعة',
+        description: 'أجرة العمل الإرشادية من 10 إلى 20 د.ك، وتُحسب لوحة المفاتيح أو تجميعة الـ Palmrest / Top-Case بشكل منفصل حسب الموديل والتخطيط والإضاءة وطريقة التثبيت. لا يتم طلب القطعة أو بدء العمل المدفوع قبل تأكيد السعر النهائي وموافقتك.',
         priceCurrency: 'KWD',
-        priceSpecification: {
-          '@type': 'PriceSpecification',
-          priceCurrency: 'KWD',
-          minPrice: 10,
-        },
+        lowPrice: 10,
+        highPrice: 20,
+      },
+      hasOfferCatalog: {
+        '@type': 'OfferCatalog',
+        name: 'خدمات فحص وتصليح كيبورد اللابتوب',
+        itemListElement: [
+          { '@type': 'Offer', name: 'فحص أولي للكيبورد والتوصيلات', price: '0.00', priceCurrency: 'KWD', description: 'فحص أولي مجاني قبل أي إصلاح مدفوع.' },
+          { '@type': 'Offer', name: 'أجرة تبديل كيبورد اللابتوب', priceCurrency: 'KWD', priceSpecification: { '@type': 'PriceSpecification', priceCurrency: 'KWD', minPrice: 10, maxPrice: 20 }, description: 'الأجرة لا تشمل سعر الكيبورد أو تجميعة الغطاء العلوي؛ يتم تأكيد سعر القطعة والتكلفة الإجمالية حسب الموديل.' },
+          { '@type': 'Offer', name: 'خدمة تنظيف وتبريد اللابتوب الاختيارية', priceCurrency: 'KWD', priceSpecification: { '@type': 'PriceSpecification', priceCurrency: 'KWD', minPrice: 15, maxPrice: 20 }, description: 'خدمة منفصلة غير مضمّنة تلقائيًا في تبديل الكيبورد، وتنفذ فقط بعد عرض سعر منفصل وموافقة العميل.' }
+        ]
       },
     }]
   } : slug === 'laptop-charging-port-repair-kuwait' ? {
