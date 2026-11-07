@@ -1238,15 +1238,42 @@ export const rawGraphData: RawGraphData = {
       relatedServiceIds: ['srv-keyboard', 'srv-laptop', 'srv-liquid-damage', 'srv-motherboard']
     } as WebPageEntity,
     'page-ar-liquid-damage-repair': {
-      id: 'page-ar-liquid-damage-repair', slug: 'ar/laptop-liquid-damage-repair-kuwait', entityType: 'WebPage', isActive: true,
-      title: 'تصليح لابتوب بعد انسكاب الماء والسوائل في الكويت', description: 'تصليح أضرار الماء والقهوة والسوائل للابتوب وMacBook في الكويت مع فحص التآكل واللوحة الأم وإصلاح المكونات عند الإمكان.',
-      seo: { title: 'تصليح لابتوب بعد انسكاب الماء الكويت | KCROC', description: 'تصليح أضرار الماء والقهوة والسوائل للابتوب وMacBook في الكويت. فحص التآكل واللوحة الأم، استلام مجاني وضمان 30 يومًا.', canonicalUrl: 'https://www.computerrepairkuwait.com/ar/laptop-liquid-damage-repair-kuwait', locale: 'ar_KW', alternates: { 'ar-KW': 'https://www.computerrepairkuwait.com/ar/laptop-liquid-damage-repair-kuwait', 'en-KW': 'https://www.computerrepairkuwait.com/laptop-liquid-damage-repair-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/laptop-liquid-damage-repair-kuwait' }, ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList', 'FAQPage', 'Service'], lastModified: '2026-10-05T00:00:00+03:00', breadcrumbs: [{ name: 'الرئيسية', url: '/' }, { name: 'تصليح أضرار السوائل', url: '/ar/laptop-liquid-damage-repair-kuwait' }] },
-      relatedServiceIds: ['srv-liquid-damage', 'srv-motherboard', 'srv-keyboard', 'srv-macbook']
+      id: 'page-ar-liquid-damage-repair',
+      slug: 'ar/laptop-liquid-damage-repair-kuwait',
+      entityType: 'WebPage',
+      isActive: true,
+      title: 'تصليح اللابتوب بعد انسكاب ماي أو قهوة في الكويت',
+      description: 'انكب ماي أو قهوة على اللابتوب أو MacBook؟ خلّه مطفي ولا تعيد تشغيله. فحص أضرار السوائل والتآكل وإصلاح المذربورد في مختبر KCROC بحولي، مع استلام مجاني وعرض سعر قبل الإصلاح.',
+      seo: {
+        title: 'تصليح لابتوب بعد انسكاب ماي أو قهوة بالكويت | KCROC',
+        description: 'انكب ماي أو قهوة على اللابتوب؟ خلّه مطفي ولا تشغّله للتجربة. نفحص آثار السوائل والكيبورد والمذربورد في مختبر حولي، مع استلام مجاني بالكويت وعرض سعر قبل الإصلاح.',
+        canonicalUrl: 'https://www.computerrepairkuwait.com/ar/laptop-liquid-damage-repair-kuwait',
+        ogImage: '/images/laptop-motherboard-diagnostic-bench-repair.webp',
+        ogImageAlt: 'لابتوب مفتوح على طاولة فحص KCROC وتظهر داخله اللوحة الأم والبطارية والمكونات',
+        ogImageWidth: 800,
+        ogImageHeight: 600,
+        locale: 'ar_KW',
+        alternates: {
+          'ar-KW': 'https://www.computerrepairkuwait.com/ar/laptop-liquid-damage-repair-kuwait',
+          'en-KW': 'https://www.computerrepairkuwait.com/laptop-liquid-damage-repair-kuwait',
+          'x-default': 'https://www.computerrepairkuwait.com/laptop-liquid-damage-repair-kuwait'
+        },
+        ogType: 'article',
+        schemaTypes: ['WebPage', 'BreadcrumbList'],
+        lastModified: '2026-11-07T00:00:00+03:00',
+        breadcrumbs: [
+          { name: 'الرئيسية', url: '/ar' },
+          { name: 'الخدمات', url: '/ar/services' },
+          { name: 'تصليح أضرار السوائل', url: '/ar/laptop-liquid-damage-repair-kuwait' }
+        ]
+      },
+      featuredImage: {
+        ogImage: '/images/laptop-motherboard-diagnostic-bench-repair.webp',
+        altText: 'لابتوب مفتوح على طاولة فحص KCROC وتظهر داخله اللوحة الأم والبطارية والمكونات'
+      },
+      relatedServiceIds: ['srv-liquid-damage', 'srv-motherboard', 'srv-keyboard', 'srv-macbook', 'srv-battery']
     } as WebPageEntity,
-
-    /* ═══════════════════════════════════════════════════════════════
-       SERVICES
-    ═══════════════════════════════════════════════════════════════ */
+    
     'srv-charging-port': {
       id: 'srv-charging-port',
       slug: 'laptop-charging-port-repair-kuwait',
