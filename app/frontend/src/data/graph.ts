@@ -128,7 +128,7 @@ export const rawGraphData: RawGraphData = {
         },
         ogType: 'website',
         schemaTypes: ['LocalBusiness', 'WebPage', 'FAQPage', 'BreadcrumbList'],
-        lastModified: '2026-11-07T00:00:00+03:00',
+        lastModified: '2026-11-03T00:00:00+03:00',
         breadcrumbs: [{ name: 'الرئيسية', url: '/ar' }]
       },
       featuredFAQIds: [
@@ -6585,7 +6585,7 @@ export const rawGraphData: RawGraphData = {
         { id: 'hp-data', title: 'Will HP laptop repair require formatting or accessing my files?', answer: 'Routine hardware diagnosis does not require browsing personal files, and formatting is not an automatic repair step. If a proposed step could affect storage or the operating system, we explain it and ask before proceeding. Data access cannot be guaranteed for every hardware fault.' }
       ],
       pricing: { startingFrom: 15, currency: 'KWD', quoteRequired: true, displayLabel: 'From 15 KWD — free diagnostic first' },
-      seo: { title: 'HP Laptop Service Center Kuwait (Independent) | From 15 KWD | KCROC', description: 'Independent HP laptop repair in Kuwait—not HP-authorized. Pavilion, EliteBook, ProBook, Envy, OMEN and Victus diagnosis. Selected repairs from 15 KWD where applicable, free pickup and a quote before work.', canonicalUrl: 'https://www.computerrepairkuwait.com/hp-laptop-repair-kuwait', ogType: 'article', schemaTypes: ['Brand', 'Service', 'FAQPage', 'BreadcrumbList'], lastModified: '2026-11-03T00:00:00+03:00' },
+      seo: { title: 'HP Laptop Service Center Kuwait (Independent) | From 15 KWD | KCROC', description: 'Independent HP laptop repair in Kuwait—not HP-authorized. Pavilion, EliteBook, ProBook, Envy, OMEN and Victus diagnosis. Selected repairs from 15 KWD where applicable, free pickup and a quote before work.', canonicalUrl: 'https://www.computerrepairkuwait.com/hp-laptop-repair-kuwait', ogType: 'article', schemaTypes: ['Brand', 'Service', 'FAQPage', 'BreadcrumbList'], lastModified: '2026-11-07T00:00:00+03:00' },
       navigationPriority: 80, popular: true 
     } as BrandEntity,
 
