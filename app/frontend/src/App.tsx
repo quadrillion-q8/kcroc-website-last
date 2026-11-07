@@ -102,6 +102,7 @@ export const routes: RouteObject[] = [
           // and only this one falls through to BlogPostTemplate.
           { path: 'guides/:slug', lazy: async () => ({ Component: (await import('./pages/BlogPostTemplate')).default }) },
           { path: 'blog/windows-11-background-services-audit', element: <Navigate to="/guides/windows-11-background-services-audit" replace /> },
+          { path: 'blog/why-is-my-laptop-so-slow-2026', element: <Navigate to="/blog/why-is-my-laptop-so-slow" replace /> },
           { path: 'blog/:slug', lazy: async () => ({ Component: (await import('./pages/BlogPostTemplate')).default }) },
           { path: 'news/:slug', lazy: async () => ({ Component: (await import('./pages/BlogPostTemplate')).default }) },
           // Keep explicit client fallbacks alongside the server-side 301s in vercel.json.

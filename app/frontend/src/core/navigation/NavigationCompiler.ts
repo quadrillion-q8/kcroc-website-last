@@ -222,7 +222,7 @@ export class NavigationCompiler {
 
     const bySlug = new Map<string, NavEntity>(NAV_GRAPH.blogEntries.map((entry) => [entry.slug, toContentNavEntity(entry)]));
     const featuredPaths = [
-      'blog/why-is-my-laptop-so-slow-2026',
+      'blog/why-is-my-laptop-so-slow',
       'blog/laptop-buying-guide-kuwait-2026',
       'blog/intel-core-ultra-vs-amd-ryzen-ai',
       'blog/laptop-temperatures-kuwait-safe-cpu-gpu-temperatures',
@@ -433,7 +433,7 @@ export class NavigationCompiler {
       'guides/dell-laptop-overheating',
     ].map(path => NAV_GRAPH.guideEntries.find(entry => entry.slug === path)).filter(Boolean).map(toContent);
     const blogFeatured = [
-      'blog/why-is-my-laptop-so-slow-2026',
+      'blog/why-is-my-laptop-so-slow',
       'blog/laptop-buying-guide-kuwait-2026',
     ].map(path => NAV_GRAPH.blogEntries.find(entry => entry.slug === path)).filter(Boolean).map(toContent);
     const featured = [...guideFeatured, ...blogFeatured].slice(0, 6);

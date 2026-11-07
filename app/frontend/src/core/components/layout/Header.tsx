@@ -41,11 +41,19 @@ export default function Header() {
   const mobileToggleRef = useRef<HTMLButtonElement>(null);
   
   const location = useLocation();
-  const isGlobalEditorialArticle = location.pathname === '/blog/why-8gb-ram-is-no-longer-enough-for-windows-11';
+  const isGlobalEditorialArticle = location.pathname === '/blog/why-8gb-ram-is-no-longer-enough-for-windows-11' || location.pathname === '/blog/why-is-my-laptop-so-slow';
   const isArabicRoute = location.pathname === '/ar' || location.pathname.startsWith('/ar/') || location.pathname.startsWith('/blog/ar/') || location.pathname.startsWith('/guides/ar/');
   const { trackConversion } = useAnalytics();
   
-  const navModel = getLocalizedNavigation(location.pathname);
+  const baseNavModel = getLocalizedNavigation(location.pathname);
+  const navModel = location.pathname === '/blog/why-is-my-laptop-so-slow'
+    ? {
+        ...baseNavModel,
+        header: baseNavModel.header.filter((link) =>
+          !['nav_services', 'nav_problems', 'nav_brands', 'nav_pricing', 'nav_locations'].includes(link.id)
+        ),
+      }
+    : baseNavModel;
   const languageSwitch = getLanguageSwitchPath(location.pathname);
   
   const phoneDigits = NAV_GRAPH.business!.telephone.replace(/\D/g, '');
