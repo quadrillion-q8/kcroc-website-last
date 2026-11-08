@@ -645,7 +645,10 @@ const CONFIG: Record<string, {
       { q: 'هل تصلحون كيبورد MacBook؟', a: 'نفحص موديل MacBook والجيل أولًا، لأن تصميم لوحة المفاتيح وطريقة تركيبها يختلفان بين الأجيال وقد تكون جزءًا من تجميعة أكبر. نوضح خيار الإصلاح أو التجميعة المطلوبة وسعرها قبل الموافقة.' },
       { q: 'الكيبورد يشتغل لكن الإضاءة الخلفية لا تعمل، هل أحتاج كيبورد جديد؟', a: 'ليس بالضرورة. يعتمد السبب على الموديل وقد يكون من إعدادات الإضاءة أو الاتصال أو وحدة الإضاءة نفسها. نتحقق من الوظائف المتوفرة في جهازك قبل التوصية بتبديل القطعة.' },
       { q: 'هل تبديل الكيبورد يمسح ملفاتي؟', a: 'تبديل لوحة المفاتيح وحده لا يمسح عادةً نظام التشغيل أو الملفات الشخصية. وإذا كشف الفحص أن هناك خطوة إضافية قد تؤثر على البيانات، نشرحها لك قبل المتابعة.' },
-      { q: 'هل عندكم كيبورد عربي وإنجليزي؟', a: 'نؤكد توفر التخطيط العربي/الإنجليزي المناسب حسب موديل الجهاز ورقم القطعة. لا نعد بتوفر كل تخطيط لكل موديل قبل التحقق من القطعة.' }
+      { q: 'هل عندكم كيبورد عربي وإنجليزي؟', a: 'نؤكد توفر التخطيط العربي/الإنجليزي المناسب حسب موديل الجهاز ورقم القطعة. لا نعد بتوفر كل تخطيط لكل موديل قبل التحقق من القطعة.' },
+      { q: 'ليش بعض الأزرار تظل ما تشتغل حتى بعد تركيب كيبورد بديل؟', a: 'ممكن يكون السبب مو من الكيبورد نفسه، بل من كيبل التوصيل أو قفل الموصل أو نقاط التوصيل على المذربورد أو دائرة إدخال خاصة بالموديل. نفحص التوصيلة ومسار الإدخال قبل اقتراح قطعة ثانية.' },
+      { q: 'تبدلون كيبورد RGB أو كيبورد بإضاءة خلفية؟', a: 'نفحص توفر التجميعة المتوافقة مع موديلك، ونطابق تخطيط الأزرار وعدد التوصيلات ونوع الإضاءة المدعوم. مو كل نسخة من نفس عائلة اللابتوب تستخدم نفس الكيبورد أو نظام الإضاءة.' },
+      { q: 'ليش تحتاجون رقم الموديل أو Service Tag؟', a: 'لأن الكيبورد يختلف حسب جيل الجهاز ورقم القطعة وتخطيط اللغة والإضاءة وطريقة التثبيت، حتى لو اسم الماركة أو العائلة واحد. رقم الموديل يساعدنا نتأكد من التوافق قبل طلب القطعة.' }
     ],
     englishPath: '/laptop-keyboard-replacement-kuwait',
     arabicLinks: [
@@ -1923,7 +1926,13 @@ export default function ArabicCommercialPage() {
 
   // Reuse the corresponding English service's existing KCROC photography.
   // These are real first-party assets already assigned in the service graph.
-  const servicePageImages = slug === 'desktop-pc-repair-kuwait'
+  const servicePageImages = slug === 'laptop-keyboard-replacement-kuwait'
+    ? [
+        { image: { src: '/images/gallery/laptop-keyboard-replacement-removed-keyboard-top-case-kuwait.webp', width: 800, height: 600 }, alt: 'إزالة لوحة مفاتيح اللابتوب وتجميعة الغطاء العلوي أثناء فحص التوصيلات داخل مختبر KCROC', caption: 'صورة من أعمال فحص لوحة المفاتيح والغطاء العلوي قبل تحديد هل المطلوب إصلاح التوصيل أو تبديل التجميعة.' },
+        { image: { src: '/images/gallery/replacement-laptop-keyboards-new-stock-kuwait.webp', width: 800, height: 600 }, alt: 'نماذج من كيبوردات لابتوب بديلة للتحقق من اختلاف الموديل والتخطيط', caption: 'تختلف قطع الكيبورد حسب الموديل وتخطيط اللغة والإضاءة؛ يتم التأكد من رقم القطعة قبل الطلب.' },
+        { image: { src: '/images/gallery/macbook-air-arabic-keyboard-display-test-kuwait.webp', width: 800, height: 600 }, alt: 'كيبورد MacBook Air بحروف عربية أثناء فحص العرض والاستجابة', caption: 'مثال على تخطيط عربي في كيبورد MacBook؛ التوافق يتحدد حسب الجيل ورقم الموديل.' }
+      ]
+    : slug === 'desktop-pc-repair-kuwait'
     ? [
         {
           image: IMAGES.laptopHardware.desktopPcTowerRepairKuwait,
@@ -2022,6 +2031,13 @@ export default function ArabicCommercialPage() {
       label: 'HP Battery Alert 601 أو تحذير بطارية',
       message: 'السلام عليكم KCROC، يظهر عندي HP Battery Alert 601 أو تحذير بطارية في Windows. الماركة والموديل أو Service Tag: ____. نص التحذير: ____. منطقتي: ____. أستطيع إرسال صورة خارجية للتحذير أو ملصق الموديل إذا كان ذلك آمنًا. أرجو تأكيد التشخيص وتوفر القطعة والسعر الشامل قبل أي عمل مدفوع.'
     }
+  ].map((item) => ({ ...item, href: buildWhatsAppLink(item.message) }));
+
+  const keyboardSymptomLinks = [
+    { label: 'انكب ماي أو قهوة على الكيبورد', message: 'السلام عليكم KCROC، انكب سائل على كيبورد اللابتوب. طفيت الجهاز وفصلت الشاحن إذا كان ذلك آمنًا، وما راح أشغله للتجربة. الماركة والموديل: ____. نوع السائل والوقت التقريبي: ____. منطقتي: ____. أرجو ترتيب الاستلام الآمن وفحص الكيبورد والموصلات والمذربورد قبل إعادة تشغيله.' },
+    { label: 'بعض الأزرار ما تشتغل أو تكرر الحروف', message: 'السلام عليكم KCROC، بعض أزرار اللابتوب ما تشتغل أو تكرر الحروف. الماركة والموديل أو Service Tag: ____. الأزرار المتأثرة: ____. هل تخطيط اللغة في Windows مضبوط؟ ____. التخطيط المطلوب عربي/إنجليزي أو إنجليزي: ____. منطقتي: ____. أقدر أرسل صورة للكيبورد. فضلاً افحصوا نمط الأزرار والتوصيلة قبل تحديد القطعة والسعر.' },
+    { label: 'الكيبورد كله متوقف عن العمل', message: 'السلام عليكم KCROC، كيبورد اللابتوب متوقف بالكامل. الماركة والموديل الدقيق: ____. هل زر التشغيل يعمل؟ ____. هل كيبورد USB خارجي يعمل؟ ____. هل صار انسكاب سائل أو صيانة سابقة؟ ____. منطقتي: ____. أرجو فحص الكيبورد والكيبل وموصل المذربورد قبل اقتراح التبديل.' },
+    { label: 'الإضاءة الخلفية أو كيبورد MacBook', message: 'السلام عليكم KCROC، أحتاج فحص كيبورد بإضاءة خلفية أو RGB أو كيبورد MacBook. الماركة والموديل أو رقم Axxxx: ____. المشكلة: الأزرار / الإضاءة / التخطيط / تجميعة Top-Case: ____. التخطيط المطلوب: ____. منطقتي: ____. فضلاً أكدوا توافق القطعة وتوفرها وأجرة العمل وسعر القطعة والمدة قبل الإصلاح.' }
   ].map((item) => ({ ...item, href: buildWhatsAppLink(item.message) }));
 
   const whatsappMessage = slug === 'macbook-screen-replacement-kuwait'
@@ -2528,16 +2544,24 @@ export default function ArabicCommercialPage() {
           addressCountry: business.addressCountry,
         },
       },
+      inLanguage: 'ar-KW',
+      alternateName: 'Laptop Keyboard Replacement Kuwait',
       offers: {
-        '@type': 'Offer',
-        name: 'أجرة تبديل كيبورد اللابتوب تبدأ من 10 د.ك + سعر القطعة',
-        description: 'أجرة العمل تبدأ من 10 د.ك. تُحسب لوحة المفاتيح أو التجميعة بشكل منفصل حسب الموديل والتخطيط وتوفر القطعة؛ السعر النهائي يؤكد قبل الإصلاح.',
+        '@type': 'AggregateOffer',
+        name: 'أجرة تبديل كيبورد اللابتوب: 10–20 د.ك + سعر القطعة',
+        description: 'أجرة العمل الإرشادية من 10 إلى 20 د.ك، وتُحسب لوحة المفاتيح أو تجميعة الـ Palmrest / Top-Case بشكل منفصل حسب الموديل والتخطيط والإضاءة وطريقة التثبيت. لا يتم طلب القطعة أو بدء العمل المدفوع قبل تأكيد السعر النهائي وموافقتك.',
         priceCurrency: 'KWD',
-        priceSpecification: {
-          '@type': 'PriceSpecification',
-          priceCurrency: 'KWD',
-          minPrice: 10,
-        },
+        lowPrice: 10,
+        highPrice: 20,
+      },
+      hasOfferCatalog: {
+        '@type': 'OfferCatalog',
+        name: 'خدمات فحص وتصليح كيبورد اللابتوب',
+        itemListElement: [
+          { '@type': 'Offer', name: 'فحص أولي للكيبورد والتوصيلات', price: '0.00', priceCurrency: 'KWD', description: 'فحص أولي مجاني قبل أي إصلاح مدفوع.' },
+          { '@type': 'Offer', name: 'أجرة تبديل كيبورد اللابتوب', priceCurrency: 'KWD', priceSpecification: { '@type': 'PriceSpecification', priceCurrency: 'KWD', minPrice: 10, maxPrice: 20 }, description: 'الأجرة لا تشمل سعر الكيبورد أو تجميعة الغطاء العلوي؛ يتم تأكيد سعر القطعة والتكلفة الإجمالية حسب الموديل.' },
+          { '@type': 'Offer', name: 'خدمة تنظيف وتبريد اللابتوب الاختيارية', priceCurrency: 'KWD', priceSpecification: { '@type': 'PriceSpecification', priceCurrency: 'KWD', minPrice: 15, maxPrice: 20 }, description: 'خدمة منفصلة غير مضمّنة تلقائيًا في تبديل الكيبورد، وتنفذ فقط بعد عرض سعر منفصل وموافقة العميل.' }
+        ]
       },
     }]
   } : slug === 'laptop-charging-port-repair-kuwait' ? {
@@ -2963,6 +2987,12 @@ export default function ArabicCommercialPage() {
                   <p className="mt-3 text-xs leading-5 text-slate-500">لا تفتح الجهاز للبحث عن رقم البطارية. إذا كان هناك انتفاخ، أوقف الاستخدام والشحن واتصل بنا أولًا قبل ترتيب النقل.</p>
                 </div>
               )}
+              {slug === 'laptop-keyboard-replacement-kuwait' && (
+                <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap"><a href={wa} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-400 px-6 py-3 font-black text-slate-950 transition hover:bg-cyan-300"><MessageCircle className="h-5 w-5" aria-hidden="true" /> أرسل موديل اللابتوب ومشكلة الكيبورد عبر واتساب</a><Link to="/ar/book" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-slate-700 bg-slate-950/60 px-6 py-3 font-bold text-white transition hover:border-cyan-500/40 hover:text-cyan-300"><Truck className="h-5 w-5" aria-hidden="true" /> اطلب استلامًا مجانيًا من منطقتك</Link></div>
+              )}
+              {slug === 'laptop-keyboard-replacement-kuwait' && (
+                <div id="keyboard-symptom-triage" className="mt-6 rounded-2xl border border-cyan-900/60 bg-slate-950/75 p-4 sm:p-5" role="group" aria-labelledby="keyboard-symptom-triage-heading"><p className="text-xs font-black uppercase tracking-[0.14em] text-cyan-300">تحديد العَرَض وبدء التشخيص</p><h2 id="keyboard-symptom-triage-heading" className="mt-2 text-lg font-black text-white">شنو مشكلة الكيبورد عندك؟</h2><p className="mt-2 text-sm leading-6 text-slate-400">اختَر أقرب وصف، وتفتح لك رسالة واتساب فيها الأسئلة الأولية عن الموديل والعطل. راجع الرسالة وأضف منطقتك قبل الإرسال.</p><div className="mt-4 grid gap-2 sm:grid-cols-2">{keyboardSymptomLinks.map((item, index) => <a key={item.label} href={item.href} target="_blank" rel="noreferrer" className={index === 0 ? 'flex min-h-14 items-center rounded-xl border border-amber-600/50 bg-amber-950/25 px-4 py-3 text-sm font-bold leading-6 text-amber-100 transition hover:border-amber-400/70' : 'flex min-h-14 items-center rounded-xl border border-slate-700 bg-slate-900/70 px-4 py-3 text-sm font-bold leading-6 text-slate-200 transition hover:border-cyan-500/60 hover:text-cyan-200'}>{item.label}</a>)}</div><p className="mt-3 text-xs leading-5 text-slate-500">إذا انكب سائل، خل الجهاز مطفي ولا تعاود تشغيله للتجربة، ولا تستخدم السشوار أو ترش منظفات على الأزرار.</p></div>
+              )}
               {slug === 'macbook-battery-replacement-kuwait' && (
                 <div className="mt-5">
                   <p className="mb-3 text-sm font-bold text-slate-300">اختر نوع الاستفسار لإرسال رسالة عربية جاهزة عبر واتساب:</p>
@@ -3234,13 +3264,39 @@ export default function ArabicCommercialPage() {
             <div className="mt-6 flex flex-col gap-3 rounded-2xl border border-cyan-500/25 bg-cyan-500/5 p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6">
               <div>
                 <p className="text-xs font-black uppercase tracking-[0.12em] text-cyan-300">سعر بداية الخدمة</p>
-                <p className="mt-2 text-xl font-black text-white sm:text-2xl">أجرة العمل من 10 د.ك + سعر الكيبورد</p>
+                <p className="mt-2 text-xl font-black text-white sm:text-2xl">أجرة العمل 10–20 د.ك + سعر الكيبورد</p>
                 <p className="mt-2 text-sm leading-7 text-slate-400">سعر القطعة يختلف حسب الموديل والتخطيط والإضاءة الخلفية. نؤكد توفر الكيبورد والسعر النهائي قبل الطلب أو التركيب.</p>
               </div>
               <Link to="/ar/pricing" className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full border border-slate-700 px-5 py-3 text-sm font-black text-cyan-300 transition hover:border-cyan-500/40 hover:text-cyan-200">
                 تفاصيل الأسعار <ArrowLeft className="h-4 w-4" aria-hidden="true" />
               </Link>
             </div>
+          )}
+          {slug === 'laptop-keyboard-replacement-kuwait' && (
+            <section className="mt-10 space-y-8" aria-label="دليل تشخيص وتبديل كيبورد اللابتوب">
+              <section className="rounded-3xl border border-cyan-500/20 bg-slate-900/45 p-6 sm:p-8" aria-labelledby="keyboard-diagnostic-matrix-ar">
+                <p className="text-xs font-black uppercase tracking-[0.16em] text-cyan-300">تشخيص قبل تبديل القطعة</p><h2 id="keyboard-diagnostic-matrix-ar" className="mt-2 text-2xl font-black text-white sm:text-3xl">العطل من الكيبورد نفسه أو من موصل المذربورد؟</h2><p className="mt-4 max-w-4xl leading-8 text-slate-300">العَرَض الواحد ممكن يكون له أكثر من سبب. الجدول يوضح احتمالات تساعد على فهم الفحص، مو تشخيص نهائي من وصف المشكلة فقط. نتحقق من موديل الجهاز ونمط الأزرار والكيبل والموصل قبل طلب كيبورد بديل.</p>
+                <div className="mt-6 overflow-hidden rounded-2xl border border-slate-800"><div className="overflow-x-auto"><table className="w-full min-w-[960px] border-collapse text-right text-sm"><caption className="sr-only">أعراض الكيبورد والأسباب المحتملة في لوحة المفاتيح أو الموصل والمذربورد وإجراء الفحص.</caption><thead className="bg-slate-950 text-slate-200"><tr><th scope="col" className="p-4 font-bold">العَرَض</th><th scope="col" className="p-4 font-bold">احتمال في الكيبورد</th><th scope="col" className="p-4 font-bold">احتمال في الموصل أو المذربورد</th><th scope="col" className="p-4 font-bold">شنو نفحص بالمختبر؟</th></tr></thead><tbody className="divide-y divide-slate-800 text-slate-300">
+                  <tr><th scope="row" className="p-4 align-top font-bold text-white">صف أو مجموعة أزرار ما تشتغل</th><td className="p-4 align-top leading-7">ممكن يكون قطع بمسار مصفوفة الكيبورد أو تلف بطبقات الغشاء الداخلي أو آثار رطوبة.</td><td className="p-4 align-top leading-7">ممكن يكون الكيبل مرتخي أو قفل الموصل أو نقاط التوصيل على المذربورد متضررة.</td><td className="p-4 align-top leading-7">نراجع نمط الأزرار ورقم الموديل والكيبل، ونفحص موصل FPC وحالته قبل تحديد الإصلاح.</td></tr>
+                  <tr><th scope="row" className="p-4 align-top font-bold text-white">الكيبورد كله ما يستجيب وزر التشغيل يشتغل</th><td className="p-4 align-top leading-7">قد يكون الكيبل الشريطي مفصول أو مقطوع أو تجميعة الكيبورد متضررة.</td><td className="p-4 align-top leading-7">قد يكون الخلل في الموصل أو مسار إدخال الكيبورد أو متحكم EC حسب تصميم الموديل.</td><td className="p-4 align-top leading-7">نفحص الاستجابة في بيئة مناسبة إذا كانت مدعومة، ونتحقق من الكيبل والموصل ومسار الإدخال قبل طلب قطعة.</td></tr>
+                  <tr><th scope="row" className="p-4 align-top font-bold text-white">الأزرار تكرر الحروف أو تكتب بروحها</th><td className="p-4 align-top leading-7">قد تكون بقايا سائل أو تلف بالغشاء أو آلية المفتاح أو جزء المقص (Scissor Mechanism).</td><td className="p-4 align-top leading-7">احتمال أقل أن تكون المشكلة من دائرة الإدخال إذا وصلت الملوثات إلى نقاط التوصيل.</td><td className="p-4 align-top leading-7">نفحص وجود تلوث وتلامس غير طبيعي ونختبر المصفوفة؛ مو كل تكرار للحروف يعني عطل بالنظام.</td></tr>
+                  <tr><th scope="row" className="p-4 align-top font-bold text-white">الأزرار تشتغل لكن الإضاءة الخلفية مطفية</th><td className="p-4 align-top leading-7">قد يكون السبب في طبقة الإضاءة أو كيبلها المنفصل أو عدم تطابق نسخة الكيبورد.</td><td className="p-4 align-top leading-7">قد تكون المشكلة من الموصل أو مسار التحكم أو مكوّن تغذية خاص بالموديل.</td><td className="p-4 align-top leading-7">نراجع إعدادات الإضاءة والنسخة المدعومة ثم نفحص كيبل الإضاءة ومسارها بحسب تصميم الجهاز.</td></tr>
+                  <tr><th scope="row" className="p-4 align-top font-bold text-white">الحروف تظهر بلغة أو ترتيب مختلف</th><td className="p-4 align-top leading-7">ممكن يكون تخطيط الكيبورد المطبوع مختلف عن تخطيط الإدخال المختار بالنظام.</td><td className="p-4 align-top leading-7">عطل المذربورد مو أول احتمال إذا الأزرار تسجل بشكل طبيعي لكن اللغة أو الترتيب مختلف.</td><td className="p-4 align-top leading-7">نتحقق أولًا من لغة الإدخال وتخطيط Arabic / English في Windows قبل اقتراح تبديل هاردوير.</td></tr>
+                </tbody></table></div></div>
+                <p className="mt-4 text-xs leading-6 text-slate-500">ملاحظة فنية: بعض الأجهزة تستخدم متحكم EC أو Super I/O لمسار الإدخال، لكن التصميم يختلف بين الموديلات. ما نحكم على الشريحة بأنها سبب العطل من دون قياسات وفحص.</p>
+              </section>
+              <section className="rounded-3xl border border-slate-800 bg-slate-900/45 p-6 sm:p-8" aria-labelledby="keyboard-mounting-matrix-ar">
+                <p className="text-xs font-black uppercase tracking-[0.16em] text-cyan-300">الهندسة وطريقة التثبيت</p><h2 id="keyboard-mounting-matrix-ar" className="mt-2 text-2xl font-black text-white sm:text-3xl">مو كل كيبورد لابتوب ينفك أو يتركب بنفس الطريقة</h2><p className="mt-4 max-w-4xl leading-8 text-slate-300">تصميم التثبيت يختلف حسب موديل اللابتوب وجيله. نطابق رقم القطعة والتخطيط والإضاءة ونراجع الكيابل والمكونات القريبة قبل اختيار طريقة الاستبدال؛ أسماء العائلات أدناه أمثلة وليست قاعدة تنطبق على كل إصدار.</p>
+                <div className="mt-6 overflow-hidden rounded-2xl border border-slate-800"><div className="overflow-x-auto"><table className="w-full min-w-[860px] border-collapse text-right text-sm"><caption className="sr-only">أنواع تثبيت كيبورد اللابتوب والعائلات الشائعة وفحوصات التوافق.</caption><thead className="bg-slate-950 text-slate-200"><tr><th scope="col" className="p-4 font-bold">طريقة التثبيت</th><th scope="col" className="p-4 font-bold">عائلات أمثلة</th><th scope="col" className="p-4 font-bold">شنو نطابق ونفحص؟</th></tr></thead><tbody className="divide-y divide-slate-800 text-slate-300">
+                  <tr><th scope="row" className="p-4 align-top font-bold text-white">كيبورد منفصل بمسامير أو إطار تثبيت</th><td className="p-4 align-top">بعض موديلات الأعمال واللابتوبات القديمة حسب الجيل.</td><td className="p-4 align-top leading-7">رقم القطعة واتجاه الكيبل والتخطيط العربي/الإنجليزي ووجود الإضاءة أو عدمها.</td></tr>
+                  <tr><th scope="row" className="p-4 align-top font-bold text-white">كيبورد مدمج داخل الـ Palmrest</th><td className="p-4 align-top">بعض HP Pavilion / Envy وDell Inspiron / Vostro وLenovo IdeaPad وASUS VivoBook وAcer Aspire.</td><td className="p-4 align-top leading-7">نتأكد هل يمكن تبديل الكيبورد وحده أو يلزم غطاء علوي كامل، ونحمي كيابل التاتش باد ومشابك الهيكل أثناء الفك والتركيب.</td></tr>
+                  <tr><th scope="row" className="p-4 align-top font-bold text-white">كيبورد مضيء أو RGB للألعاب</th><td className="p-4 align-top">بعض ASUS ROG / TUF وMSI وLenovo Legion وHP OMEN / Victus وAcer Nitro / Predator.</td><td className="p-4 align-top leading-7">مطابقة عدد التوصيلات والتخطيط ونظام الإضاءة المدعوم، ثم اختبار الأزرار والإضاءة بعد التركيب.</td></tr>
+                  <tr><th scope="row" className="p-4 align-top font-bold text-white">كيبورد MacBook أو تجميعة Top-Case</th><td className="p-4 align-top">MacBook Air وMacBook Pro بأجيال Butterfly وMagic Keyboard.</td><td className="p-4 align-top leading-7">مطابقة رقم Axxxx والجيل والتخطيط والتجميعة المتوافقة، مع حماية كيابل البطارية والتراك باد وTouch ID حسب الموديل.</td></tr>
+                </tbody></table></div></div>
+              </section>
+              <section className="rounded-2xl border border-amber-500/25 bg-amber-950/15 p-6" aria-labelledby="keyboard-spill-guidance-ar"><h2 id="keyboard-spill-guidance-ar" className="text-xl font-black text-amber-100">إذا انكب سائل على الكيبورد، شنو تسوي؟</h2><ul className="mt-4 space-y-3 text-sm leading-7 text-slate-300"><li>طف الجهاز وافصل الشاحن إذا كان ذلك آمنًا، ولا تعاود تشغيله عشان تجرب الأزرار.</li><li>لا تستخدم السشوار ولا ترش كحول أو منظفات مباشرة فوق الأزرار؛ ممكن تدفع السائل والرواسب لداخل الجهاز.</li><li>لا تحاول تشيل أغطية الأزرار بأداة حادة؛ مشابك Scissor Clips تختلف وسهل تنكسر.</li><li>خل الجهاز مطفي ورتب فحصه في المختبر قبل إعادة توصيل الطاقة.</li></ul></section>
+              <section className="rounded-2xl border border-cyan-500/20 bg-cyan-500/5 p-5 sm:p-6" aria-labelledby="keyboard-thermal-option-ar"><p className="text-xs font-black uppercase tracking-[0.14em] text-cyan-300">خدمة اختيارية منفصلة</p><h2 id="keyboard-thermal-option-ar" className="mt-2 text-xl font-black text-white">هل يحتاج نظام التبريد تنظيفًا بعد فتح اللابتوب؟</h2><p className="mt-3 leading-7 text-slate-300">إذا كشف الفحص أن المراوح أو المشتت تحتاج تنظيفًا وصيانة حرارية، خدمة تنظيف وتبريد اللابتوب المنشورة لدينا تتراوح بين 15 و20 د.ك. هذي خدمة منفصلة وليست إضافة تلقائية على سعر الكيبورد؛ ما ننفذها إلا بعد توضيح السعر وأخذ موافقتك.</p><Link to="/ar/pricing" className="mt-4 inline-flex min-h-11 items-center justify-center rounded-full border border-cyan-500/30 px-5 py-2.5 text-sm font-bold text-cyan-300 hover:bg-cyan-500/10">راجع أسعار خدمات التبريد</Link></section>
+            </section>
           )}
           {slug === 'macbook-screen-replacement-kuwait' && (
           <section className="mt-10 space-y-10" aria-label="دليل تبديل شاشة MacBook">

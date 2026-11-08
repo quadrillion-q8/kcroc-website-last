@@ -766,7 +766,7 @@ const gamingLaptopServiceEntity = graph.slice(graph.indexOf("'srv-gaming-laptop'
 const gamingLaptopSEOEngine = await read('core/components/SEOEngine.tsx');
 add('Gaming laptop page includes model-specific thermal/power guidance, transparent price anchors and service catalog schema', (gamingLaptopServiceEntity.match(/id: 'gaming-laptop-faq-\d+'/g) || []).length === 13 && gamingLaptopServiceEntity.includes('Honeywell PTM7950') && gamingLaptopServiceEntity.includes('15–20 KWD') && gamingLaptopServiceEntity.includes('25–60 KWD') && gamingLaptopServiceEntity.includes('modelFaultMatrix: [') && serviceTemplate.includes('entity.advancedTechnicalSection.items.map') && serviceTemplate.includes('entity.modelFaultMatrix.map') && gamingLaptopSEOEngine.includes('Gaming Laptop Diagnostic & Repair Services') && gamingLaptopSEOEngine.includes('"@type": "Country", "name": "Kuwait"'));
 
-add('Laptop and MacBook screen structured offers describe labour-only pricing and do not imply panel stock', screenSEOEngine.includes('The 30 KWD starting figure is labour only; the replacement panel is priced separately.') && screenSEOEngine.includes('The 30 KWD starting figure is replacement labour only; the compatible MacBook display assembly is priced separately.') && screenSEOEngine.includes("['laptop-screen-repair-kuwait', 'macbook-screen-replacement-kuwait'].includes(service.slug)"));
+add('Laptop and MacBook screen structured offers describe labour-only pricing and do not imply panel stock', screenSEOEngine.includes('The 30 KWD starting figure is labour only; the replacement panel is priced separately.') && screenSEOEngine.includes('The 30 KWD starting figure is replacement labour only; the compatible MacBook display assembly is priced separately.') && screenSEOEngine.includes("['laptop-screen-repair-kuwait', 'macbook-screen-replacement-kuwait', 'laptop-keyboard-replacement-kuwait'].includes(service.slug)"));
 add('Screen FAQ and process copy do not promise same-day return or unsupported device features', !screenService.includes('OEM-quality panel replacement') && !screenService.includes('same day in most cases') && !screenService.includes('A meaningful share') && !screenService.includes('fraction of the cost') && screenService.includes('The expected turnaround is confirmed with your quote.') && screenService.includes('where the model supports it'));
 add('Mobile screen CTA asks for a quote and has Arabic-specific copy', screenStickyCTA.includes("pathname.includes('screen') ? 'Get Screen Quote'") && screenStickyCTA.includes("'سعر تبديل الشاشة'"));
 const arabicScreenEntity = graph.slice(graph.indexOf("    'page-ar-laptop-screen-repair': {"), graph.indexOf("    'page-ar-hawalli-computer-repair': {"));
@@ -1106,7 +1106,30 @@ add('MacBook screen JSON-LD extends one Service entity with a linked OfferCatalo
   macbookScreenSeoSchemaSource.includes("service.id === 'srv-macbook-screen'") &&
   macbookScreenSeoSchemaSource.includes('"hasOfferCatalog"') &&
   macbookScreenSeoSchemaSource.includes('MacBook Display Repair and Replacement Services') &&
-  macbookScreenSeoSchemaSource.includes("['laptop-screen-repair-kuwait', 'macbook-screen-replacement-kuwait'].includes(service.slug)"));
+  macbookScreenSeoSchemaSource.includes("['laptop-screen-repair-kuwait', 'macbook-screen-replacement-kuwait', 'laptop-keyboard-replacement-kuwait'].includes(service.slug)"));
+const keyboardServiceStart = graph.indexOf("'srv-keyboard': {");
+const keyboardServiceEnd = graph.indexOf("'srv-macbook-screen': {", keyboardServiceStart + 1);
+const keyboardServiceBlock = keyboardServiceStart >= 0 && keyboardServiceEnd > keyboardServiceStart ? graph.slice(keyboardServiceStart, keyboardServiceEnd) : '';
+const keyboardArabicStart = arabicCommercial.indexOf("'laptop-keyboard-replacement-kuwait': {");
+const keyboardArabicEnd = arabicCommercial.indexOf("'laptop-liquid-damage-repair-kuwait': {", keyboardArabicStart + 1);
+const keyboardArabicConfig = keyboardArabicStart >= 0 && keyboardArabicEnd > keyboardArabicStart ? arabicCommercial.slice(keyboardArabicStart, keyboardArabicEnd) : '';
+add('English and Arabic keyboard pages include model-first diagnostics, published labour pricing and separate thermal scope',
+  keyboardServiceBlock.includes('pricingGuide') &&
+  keyboardServiceBlock.includes('10–20 KWD labour + keyboard') &&
+  keyboardServiceBlock.includes('keyboardDiagnosticMatrix') &&
+  keyboardServiceBlock.includes('keyboardMountingMatrix') &&
+  keyboardServiceBlock.includes('keyboard-faq-9') &&
+  serviceTemplate.includes('KEYBOARD_QUICK_DISPATCH') &&
+  serviceTemplate.includes('entity.keyboardDiagnosticMatrix') &&
+  serviceTemplate.includes('entity.keyboardMountingMatrix') &&
+  serviceTemplate.includes('15–20 KWD') &&
+  arabicCommercial.includes('keyboardSymptomLinks') &&
+  arabicCommercial.includes('keyboard-diagnostic-matrix-ar') &&
+  arabicCommercial.includes('keyboard-mounting-matrix-ar') &&
+  arabicCommercial.includes('أجرة العمل 10–20 د.ك + سعر الكيبورد') &&
+  arabicCommercial.includes('تتراوح بين 15 و20 د.ك') &&
+  arabicCommercial.includes('highPrice: 20'));
+
 add('MacBook screen page adds the Arabic service summary below its existing Arabic counterpart card',
   macbookScreenTemplateSource.includes("entity.id === 'srv-macbook-screen' && (") &&
   macbookScreenTemplateSource.includes('ملخص الخدمة بالعربي: مختبر KCROC في حولي') &&

@@ -1208,10 +1208,10 @@ export const rawGraphData: RawGraphData = {
     'page-ar-keyboard-replacement': {
       id: 'page-ar-keyboard-replacement', slug: 'ar/laptop-keyboard-replacement-kuwait', entityType: 'WebPage', isActive: true,
       title: 'تصليح وتبديل كيبورد اللابتوب في الكويت',
-      description: 'تصليح وتبديل كيبورد اللابتوب في الكويت، مشاكل الأزرار والكتابة المكررة وتخطيط عربي/إنجليزي وأضرار السوائل، مع استلام مجاني وضمان 30 يومًا.',
+      description: 'تصليح وتبديل كيبورد اللابتوب في الكويت لمشاكل الأزرار والكتابة المكررة وتخطيط عربي/إنجليزي والإضاءة وأضرار السوائل، مع استلام وتوصيل مجاني وضمان 30 يومًا على الإصلاح المشمول.',
       seo: {
-        title: 'تبديل كيبورد اللابتوب بالكويت | عربي وإنجليزي | KCROC',
-        description: 'كيبورد اللابتوب ما يشتغل أو يكرر الحروف؟ فحص وتبديل كيبورد Dell وHP وLenovo وASUS وMacBook بالكويت. أجرة من 10 د.ك + القطعة.',
+        title: 'تبديل كيبورد اللابتوب بالكويت | السعر عربي وإنجليزي | KCROC',
+        description: 'كيبورد اللابتوب ما يشتغل أو يكرر الحروف؟ فحص وتبديل كيبورد Dell وHP وLenovo وASUS وMacBook بالكويت. أجرة العمل 10–20 د.ك + سعر الكيبورد أو التجميعة، مع استلام مجاني.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/ar/laptop-keyboard-replacement-kuwait',
         ogImage: '/images/laptop-keyboard-top-case-assembly-removal.webp',
         ogImageAlt: 'فك تجميعة لوحة مفاتيح اللابتوب لفحص الكيبورد والتوصيلات قبل الاستبدال',
@@ -1225,7 +1225,7 @@ export const rawGraphData: RawGraphData = {
         },
         ogType: 'website',
         schemaTypes: ['WebPage', 'BreadcrumbList', 'FAQPage', 'Service', 'ImageObject'],
-        lastModified: '2026-10-21T00:00:00+03:00',
+        lastModified: '2026-11-07T00:00:00+03:00',
         breadcrumbs: [
           { name: 'الرئيسية', url: '/' },
           { name: 'تصليح وتبديل كيبورد اللابتوب', url: '/ar/laptop-keyboard-replacement-kuwait' }

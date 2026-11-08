@@ -363,6 +363,16 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
                 ]
               }
             } : {}),
+            ...(service.id === 'srv-keyboard' ? {
+              "alternateName": "تصليح وتبديل كيبورد اللابتوب في الكويت",
+              "serviceType": ["Laptop keyboard diagnosis and replacement", "Keyboard matrix and flex-connector inspection", "Arabic / English layout and backlight compatibility checks", "MacBook keyboard and top-case compatibility assessment"],
+              "inLanguage": "en-KW",
+              "availableChannel": { "@type": "ServiceChannel", "servicePhone": "+" + business.telephone, "serviceLocation": { "@type": "Place", "name": "KCROC repair workshop — Hawalli", "address": { "@type": "PostalAddress", "streetAddress": business.streetAddress, "addressLocality": business.addressLocality, "addressRegion": business.addressRegion, "addressCountry": business.addressCountry } } },
+              "hasOfferCatalog": { "@type": "OfferCatalog", "name": "Laptop Keyboard Diagnosis and Replacement", "itemListElement": [
+                { "@type": "Offer", "name": "Keyboard replacement labour", "priceCurrency": "KWD", "priceSpecification": { "@type": "PriceSpecification", "priceCurrency": "KWD", "minPrice": 10, "maxPrice": 20 }, "description": "Labour guide only. Keyboard, palmrest or top-case assembly cost is additional and is quoted after exact model, layout and mounting checks." },
+                { "@type": "Offer", "name": "Optional laptop thermal service", "priceCurrency": "KWD", "priceSpecification": { "@type": "PriceSpecification", "priceCurrency": "KWD", "minPrice": 15, "maxPrice": 20 }, "description": "Separate service only; not automatically bundled with keyboard repair and only performed after a separate quote and customer approval." }
+              ] }
+            } : {}),
             ...(service.id === 'srv-charging-port' ? {
               "alternateName": "تصليح مدخل شحن اللابتوب في الكويت",
               "serviceType": [
@@ -430,10 +440,12 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
                 ? "The 30 KWD starting figure is labour only; the replacement panel is priced separately. Final pricing depends on the exact laptop model and compatible part, and is confirmed before paid work begins."
                 : service.slug === 'macbook-screen-replacement-kuwait'
                   ? "The 30 KWD starting figure is replacement labour only; the compatible MacBook display assembly is priced separately. Final pricing depends on exact model, size and part availability and is confirmed before paid work begins."
-                  : undefined,
+                  : service.slug === 'laptop-keyboard-replacement-kuwait'
+                    ? "The published keyboard replacement guide is 10–20 KWD labour, with the compatible keyboard or larger assembly priced separately. The exact model, language layout, backlight specification and mounting design are checked before a final quote; no part is ordered and no paid work starts without approval."
+                    : undefined,
               "priceCurrency": service.pricing.currency,
               "price": service.pricing.startingFrom,
-              "availability": ['laptop-screen-repair-kuwait', 'macbook-screen-replacement-kuwait'].includes(service.slug) ? undefined : "https://schema.org/InStock",
+              "availability": ['laptop-screen-repair-kuwait', 'macbook-screen-replacement-kuwait', 'laptop-keyboard-replacement-kuwait'].includes(service.slug) ? undefined : "https://schema.org/InStock",
               "priceValidUntil": new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toISOString().split('T')[0]
             } : undefined
           });
