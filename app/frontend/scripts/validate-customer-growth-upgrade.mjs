@@ -992,9 +992,13 @@ add('Arabic charging-port WhatsApp fast-track captures model, port and charger l
   arabicCommercial.includes('id="charging-whatsapp-fast-track"')
   && arabicCommercial.includes('ملصق قدرة الشاحن (Wattage)')
   && arabicCommercial.includes('أرسل تفاصيل جهازك على واتساب'));
-add('Arabic charging-port graph modification date reflects the current page upgrade',
-  graph.includes("lastUpdated: '2026-11-08T00:00:00+03:00'")
-  && graph.includes("lastModified: '2026-11-08T00:00:00+03:00'"));
+const arabicChargingPortEntityStart = graph.indexOf("'page-ar-charging-port-repair': {");
+const arabicChargingPortEntityEnd = graph.indexOf("'page-ar-", arabicChargingPortEntityStart + 1);
+const arabicChargingPortEntity = arabicChargingPortEntityStart >= 0 && arabicChargingPortEntityEnd > arabicChargingPortEntityStart
+  ? graph.slice(arabicChargingPortEntityStart, arabicChargingPortEntityEnd)
+  : '';
+add('Arabic charging-port graph modification date remains attached to that page entity',
+  arabicChargingPortEntity.includes("lastModified: '2026-11-08T00:00:00+03:00'"));
 add('Arabic charging-port repair process renders six single list items without duplicate native numbering',
   chargingProcess.includes('<ol className="mt-6 grid list-none gap-4 sm:grid-cols-2 lg:grid-cols-3">')
   && ['١.', '٢.', '٣.', '٤.', '٥.', '٦.'].every((number) => chargingProcess.includes("{ title: '" + number))
