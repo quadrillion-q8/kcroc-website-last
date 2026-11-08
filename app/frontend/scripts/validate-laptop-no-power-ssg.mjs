@@ -42,7 +42,7 @@ for (const question of expectedQuestions) {
 const faqDetailsCount = (visibleFaq.match(/<details\b/gi) ?? []).length;
 assert.equal(faqDetailsCount, 10, 'Expected 10 native FAQ disclosures in static HTML, found ' + faqDetailsCount);
 assert.ok(
-  visibleFaq.includes('The fault may be in the charging port, battery, input protection/charging circuit or motherboard power rails'),
+  visibleFaq.includes('Start with the outlet and the correct charger'),
   'The first FAQ answer is missing from the static HTML',
 );
 assert.ok(
@@ -55,7 +55,7 @@ assert.ok(html.includes('"@type":"FAQPage"') || html.includes('"@type": "FAQPage
 assert.ok(html.includes('"reviewedBy"') || html.includes('reviewedBy'), 'Technical reviewer metadata is missing');
 assert.ok(html.includes('2026-11-08T21:00:00.000Z'), 'Kuwait-local review timestamp is missing from article metadata/schema');
 assert.ok(html.includes('November 9, 2026'), 'Kuwait-local technical review date is missing from the visible author panel');
-const faqSchemaQuestionCount = (html.match(/"@type":"Question"/g) ?? []).length;
+const faqSchemaQuestionCount = (html.match(/"@type"\s*:\s*"Question"/g) ?? []).length;
 assert.equal(faqSchemaQuestionCount, 10, 'FAQPage JSON-LD should contain the same 10 questions as the visible FAQ');
 
 for (const marker of [
