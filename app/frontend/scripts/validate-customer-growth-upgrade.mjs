@@ -1108,7 +1108,7 @@ add('Farwaniya FAQ answers remain visible and the FAQPage schema is derived from
   arabicCommercial.includes("slug === 'computer-repair-farwaniya' ? (") &&
   arabicCommercial.includes('<div key={item.q} className="p-6">') &&
   arabicCommercial.includes('<h3 className="font-bold text-white">{item.q}</h3>') &&
-  arabicCommercial.includes('<details key={item.q} className="p-6">') &&
+  arabicCommercial.includes('<details key={item.q} className="p-6"') &&
   arabicCommercial.includes("acceptedAnswer: { '@type': 'Answer', text: item.a }"));
 
 
