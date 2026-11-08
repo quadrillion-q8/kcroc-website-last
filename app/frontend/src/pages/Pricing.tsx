@@ -560,6 +560,17 @@ export default function Pricing() {
             <h2 id="pricing-heading" className="text-3xl font-black tracking-tight text-white sm:text-4xl">Laptop, MacBook, Gaming PC &amp; Motherboard Repair Price List (KWD)</h2>
             <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-slate-400 sm:text-base">Compare published guide prices, what each service covers and its typical turnaround. Your exact quote is confirmed after diagnosis and before paid work.</p>
           </div>
+
+          <nav aria-label="Pricing categories" className="mb-8 rounded-2xl border border-slate-800 bg-slate-900/35 p-4 sm:p-5">
+            <p className="mb-3 text-center text-xs font-black uppercase tracking-[0.15em] text-cyan-300">Jump to a price category</p>
+            <div className="flex flex-nowrap gap-2 overflow-x-auto pb-1 sm:flex-wrap sm:justify-center">
+              <a href="#pricing-diagnostics" className="inline-flex min-h-10 shrink-0 items-center rounded-full border border-slate-700 bg-slate-950/70 px-4 py-2 text-xs font-bold text-slate-200 transition-colors hover:border-cyan-500/50 hover:text-cyan-200">Diagnostics &amp; Firmware</a>
+              <a href="#pricing-thermal" className="inline-flex min-h-10 shrink-0 items-center rounded-full border border-slate-700 bg-slate-950/70 px-4 py-2 text-xs font-bold text-slate-200 transition-colors hover:border-cyan-500/50 hover:text-cyan-200">Cooling &amp; Upgrades</a>
+              <a href="#pricing-hardware" className="inline-flex min-h-10 shrink-0 items-center rounded-full border border-slate-700 bg-slate-950/70 px-4 py-2 text-xs font-bold text-slate-200 transition-colors hover:border-cyan-500/50 hover:text-cyan-200">Hardware Replacements</a>
+              <a href="#pricing-motherboard" className="inline-flex min-h-10 shrink-0 items-center rounded-full border border-slate-700 bg-slate-950/70 px-4 py-2 text-xs font-bold text-slate-200 transition-colors hover:border-cyan-500/50 hover:text-cyan-200">Motherboard &amp; Logic Board</a>
+            </div>
+          </nav>
+
           <div className="mb-8 space-y-5 rounded-3xl border border-slate-800 bg-slate-900/50 p-4 sm:p-6">
             <div><p className="mb-3 text-xs font-black uppercase tracking-[0.15em] text-cyan-300">Filter by device</p><div role="group" aria-label="Filter pricing by device" className="flex flex-wrap gap-2">
               {deviceFilters.map((filter) => <button key={filter.value} type="button" aria-pressed={deviceFilter===filter.value} onClick={() => setDeviceFilter(filter.value)} className={'min-h-10 rounded-full border px-3.5 py-2 text-xs font-bold transition-colors sm:text-sm '+(deviceFilter===filter.value?'border-cyan-400/60 bg-cyan-500/15 text-cyan-100':'border-slate-700 bg-slate-950/70 text-slate-300 hover:border-cyan-500/40 hover:text-cyan-200')}>{filter.label}</button>)}
@@ -576,7 +587,7 @@ export default function Pricing() {
           <div className="space-y-6">
             {pricingCategories.map((category) => {
               const Icon=category.icon;
-              return <Card key={category.title} id={'pricing-'+category.anchor} className={'scroll-mt-6 overflow-hidden border bg-slate-900/45 shadow-2xl backdrop-blur-xl '+(category.featured?'border-cyan-500/30 shadow-cyan-950/10':'border-slate-800')}>
+              return <Card key={category.title} id={`pricing-${category.anchor}`} className={'scroll-mt-6 overflow-hidden border bg-slate-900/45 shadow-2xl backdrop-blur-xl '+(category.featured?'border-cyan-500/30 shadow-cyan-950/10':'border-slate-800')}>
                 <CardHeader className="border-b border-slate-800/70 p-5 sm:p-6"><div className="flex items-start justify-between gap-4"><div className="flex items-start gap-3"><div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-slate-800 bg-brand-dark"><Icon className="h-5 w-5 text-cyan-400" aria-hidden="true" /></div><div><p className="mb-1 text-[10px] font-bold uppercase tracking-widest text-cyan-500">{category.eyebrow}</p><CardTitle className="text-lg font-black text-white sm:text-xl">{category.title}</CardTitle></div></div>{category.featured&&<Badge className="shrink-0 border border-cyan-500/20 bg-cyan-500/10 text-[9px] uppercase tracking-wider text-cyan-400">Specialist</Badge>}</div></CardHeader>
                 {category.featured&&<div className="grid gap-4 border-b border-cyan-500/15 bg-cyan-950/15 p-5 sm:grid-cols-2 sm:p-6">
                   <div className="rounded-2xl border border-slate-700/70 bg-slate-950/50 p-4"><p className="text-[10px] font-black uppercase tracking-[0.14em] text-slate-400">Whole-board replacement</p><h3 className="mt-2 text-base font-black text-white">Replace the complete assembly</h3><p className="mt-2 text-xs leading-6 text-slate-400">A full motherboard or logic-board assembly is a model-specific parts decision. Compatibility and part cost must be checked before it can be quoted.</p></div>
