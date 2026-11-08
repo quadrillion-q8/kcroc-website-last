@@ -20,7 +20,13 @@ for(const answer of ['diagnostics are free','fixed, no-obligation total quote','
 assert.equal((html.match(/"@type"\s*:\s*"Question"/g)||[]).length,8,'FAQPage schema must contain eight questions');
 const start=html.indexOf('id="price-list"'),end=html.indexOf('id="price-factors-heading"',start);
 assert.ok(start>=0&&end>start,'Price list bounds missing');
-assert.equal((html.slice(start,end).match(/https:\/\/wa\.me\/\d+\?text=/g)||[]).length,17,'Expected one prefilled WhatsApp link per price row');
+const menuHtml=html.slice(start,end);
+const pricingRows=[...menuHtml.matchAll(/<tr\b[^>]*data-pricing-row="true"[^>]*>[\s\S]*?<\/tr>/g)].map(([row])=>row);
+assert.equal(pricingRows.length,17,'Expected 17 rendered pricing rows inside the price list');
+for(const [index,row] of pricingRows.entries()){
+  const rowQuoteLinks=(row.match(/https:\/\/wa\.me\/\d+\?text=/g)||[]).length;
+  assert.equal(rowQuoteLinks,1,'Expected exactly one prefilled WhatsApp quote link inside pricing row '+(index+1));
+}
 assert.ok(html.includes('Whole-board replacement'),'Board replacement comparison missing');
 assert.ok(html.includes('We fix the board where repair is viable'),'Component repair positioning missing');
 assert.ok(html.includes('Free initial diagnosis'),'Customer-protection diagnostic promise missing');
