@@ -19,6 +19,7 @@ import { StandaloneRelatedLinks, RelatedLinkItem } from '@/components/content/St
 import { KuwaitLocalCTA } from '@/components/content/KuwaitLocalCTA';
 import { HeadTermCallout } from '@/components/content/HeadTermCallout';
 import GamingPcDebugLedSelector from '@/components/content/GamingPcDebugLedSelector';
+import NoPowerQuickTriage from '@/components/content/NoPowerQuickTriage';
 
 // Single source of truth for business identity — see graph.ts 'biz-kcroc'.
 // (Previously duplicated via constants/data.ts's BUSINESS_INFO.)
@@ -846,7 +847,14 @@ export default function BlogPostTemplate() {
   // Each memo below is now null-safe via `post?.` and the not-found bailout
   // happens after all hooks have run.
   const headings = useMemo(
-    () => (post?.richContent?.filter((b): b is Extract<ContentBlock, { type: 'h2' }> => b.type === 'h2') ?? []),
+    () => (post?.richContent
+      ?.filter((b): b is Extract<ContentBlock, { type: 'h2' }> => b.type === 'h2')
+      .map((heading) => ({
+        ...heading,
+        // The visual article heading retains its authored text. The ToC strips
+        // a leading number before applying native ordered-list numbering.
+        tocLabel: heading.text.replace(/^(?:First:\s*|\d+[.)]\s*)/i, ''),
+      })) ?? []),
     [post]
   );
 
@@ -977,7 +985,9 @@ export default function BlogPostTemplate() {
     }
   };
 
-  // ─── SEO SCHEMA: WebPage + BlogPosting/Article + optional FAQPage + Breadcrumb ───
+  const isNoPowerGuide = post?.slug === 'laptop-wont-turn-on';
+
+  // ─── SEO SCHEMA: WebPage + Article/TechArticle + optional FAQPage + Breadcrumb ───
   const SCHEMA_DATA = useMemo(() => {
     if (!post) return null;
     return {
@@ -989,11 +999,11 @@ export default function BlogPostTemplate() {
           "url": pageUrl,
           "name": post.title,
           "description": post.description || post.excerpt,
-          ...(["why-8gb-ram-is-no-longer-enough-for-windows-11", "why-is-my-laptop-so-slow"].includes(post.slug) ? { "inLanguage": "en" } : {}),
+          ...(["why-8gb-ram-is-no-longer-enough-for-windows-11", "why-is-my-laptop-so-slow"].includes(post.slug) || isNoPowerGuide ? { "inLanguage": "en-KW" } : {}),
           "isPartOf": { "@id": `${business.websiteUrl}/#website` }
         },
         {
-          "@type": isNews ? "NewsArticle" : (post.slug === "gaming-pc-black-screen-no-display-kuwait" || post.slug === "why-8gb-ram-is-no-longer-enough-for-windows-11" || post.slug === "why-is-my-laptop-so-slow") ? "TechArticle" : isGuide ? "Article" : ["BlogPosting", "Article"],
+          "@type": isNews ? "NewsArticle" : (isNoPowerGuide || post.slug === "gaming-pc-black-screen-no-display-kuwait" || post.slug === "why-8gb-ram-is-no-longer-enough-for-windows-11" || post.slug === "why-is-my-laptop-so-slow") ? "TechArticle" : isGuide ? "Article" : ["BlogPosting", "Article"],
           "@id": `${pageUrl}#article`,
           "headline": post.title,
           "description": post.excerpt,
@@ -1002,6 +1012,21 @@ export default function BlogPostTemplate() {
             "articleSection": post.category,
             "keywords": post.tags ?? [],
             "isAccessibleForFree": true
+          } : {}),
+          ...(isNoPowerGuide ? {
+            "inLanguage": "en-KW",
+            "articleSection": "Laptop Troubleshooting",
+            "keywords": post.tags ?? [],
+            "isAccessibleForFree": true,
+            "proficiencyLevel": "Beginner to Advanced",
+            "reviewedBy": { "@type": "Person", "@id": `${AUTHOR_URL}#person` },
+            "about": [
+              { "@type": "Thing", "name": "Laptop power troubleshooting" },
+              { "@type": "Thing", "name": "USB-C Power Delivery" },
+              { "@type": "Thing", "name": "OEM laptop reset and diagnostic codes" },
+              { "@type": "Thing", "name": "Motherboard power sequencing" },
+              { "@type": "Thing", "name": "Component-level laptop repair" }
+            ]
           } : {}),
           ...(post.slug === "ibm-quantum-system-two-nighthawk-r2-chicago" ? {
             "about": [
@@ -1091,7 +1116,7 @@ export default function BlogPostTemplate() {
         }] : [])
       ]
     };
-  }, [post, pageUrl, allFaqItems, isGuide, isNews]);
+  }, [post, pageUrl, allFaqItems, isGuide, isNews, isNoPowerGuide]);
 
   // All hooks have now run unconditionally on every render — safe to bail out.
   if (!post) return <Navigate to={isNews ? ROUTES.NEWS : isGuide ? ROUTES.GUIDES : ROUTES.BLOG} replace />;
@@ -1301,13 +1326,13 @@ export default function BlogPostTemplate() {
                   <summary className="flex items-center gap-2 p-4 font-bold text-white cursor-pointer list-none">
                     <List size={16} className="text-cyan-400" aria-hidden="true" /> On This Page
                   </summary>
-                  <ul className="m-0 list-none px-4 pb-4 space-y-2">
+                  <ol className="m-0 list-decimal pl-8 pr-4 pb-4 space-y-2">
                     {headings.map(h => (
                       <li key={h.id}>
-                        <a href={`#${h.id}`} className="text-sm text-slate-400 hover:text-cyan-400">{h.text}</a>
+                        <a href={`#${h.id}`} className="text-sm text-slate-400 hover:text-cyan-400">{h.tocLabel}</a>
                       </li>
                     ))}
-                  </ul>
+                  </ol>
                 </details>
               )}
 
@@ -1333,6 +1358,7 @@ export default function BlogPostTemplate() {
               )}
 
               {post.slug === 'why-is-my-laptop-so-slow' && <GlobalLaptopDiagnosticScorecard />}
+              {isNoPowerGuide && <NoPowerQuickTriage />}
 
               {!isWindows26H2Guide && !isGlobalEditorialArticle && (
               <div className="bg-slate-900/50 backdrop-blur-md border border-slate-700/50 p-8 rounded-2xl my-12 text-center">
@@ -1473,18 +1499,18 @@ export default function BlogPostTemplate() {
                 <p className="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-slate-400 mb-4">
                   <List size={14} className="text-cyan-400" aria-hidden="true" /> On This Page
                 </p>
-                <ul className="m-0 list-none space-y-2.5 p-0 text-sm">
+                <ol className="m-0 list-decimal space-y-2.5 pl-8 pr-0 text-sm">
                   {headings.map(h => (
                     <li key={h.id}>
                       <a
                         href={`#${h.id}`}
                         className={`block transition-colors ${activeHeadingId === h.id ? 'text-cyan-400 font-bold' : 'text-slate-400 hover:text-slate-200'}`}
                       >
-                        {h.text}
+                        {h.tocLabel}
                       </a>
                     </li>
                   ))}
-                </ul>
+                </ol>
               </nav>
             )}
 
