@@ -993,7 +993,7 @@ add('Arabic charging-port WhatsApp fast-track captures model, port and charger l
   && arabicCommercial.includes('ملصق قدرة الشاحن (Wattage)')
   && arabicCommercial.includes('أرسل تفاصيل جهازك على واتساب'));
 const arabicChargingPortEntityStart = graph.indexOf("'page-ar-charging-port-repair': {");
-const arabicChargingPortEntityEnd = graph.indexOf("'page-ar-", arabicChargingPortEntityStart + 1);
+const arabicChargingPortEntityEnd = graph.indexOf("\n    'page-", arabicChargingPortEntityStart + 1);
 const arabicChargingPortEntity = arabicChargingPortEntityStart >= 0 && arabicChargingPortEntityEnd > arabicChargingPortEntityStart
   ? graph.slice(arabicChargingPortEntityStart, arabicChargingPortEntityEnd)
   : '';
