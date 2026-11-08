@@ -123,6 +123,15 @@ export default function NoPowerQuickTriage() {
           </div>
         </fieldset>
 
+        <div className="rounded-xl border border-amber-500/30 bg-amber-500/5 p-4" role="note">
+          <div className="flex items-start gap-3">
+            <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0 text-amber-300" aria-hidden="true" />
+            <p className="text-sm leading-relaxed text-amber-100">
+              <strong>Stop applying power</strong> if there is liquid exposure, a swollen battery, a burning smell or visible sparks. Disconnect AC if safe, do not reconnect the charger or press Power, and arrange inspection.
+            </p>
+          </div>
+        </div>
+
         <div
           className={`rounded-xl border p-4 ${
             isSafetyStop
@@ -175,7 +184,6 @@ export default function NoPowerQuickTriage() {
             href={whatsappHref}
             target="_blank"
             rel="noopener noreferrer"
-            onClick={() => undefined}
             className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-cyan-400 px-5 py-3 text-sm font-black text-slate-950 transition-colors hover:bg-cyan-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
           >
             <MessageCircle className="h-4 w-4" aria-hidden="true" />
