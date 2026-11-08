@@ -54,6 +54,8 @@ assert.ok(html.includes('"@type":"TechArticle"') || html.includes('"@type": "Tec
 assert.ok(html.includes('"@type":"FAQPage"') || html.includes('"@type": "FAQPage"'), 'FAQPage JSON-LD is missing');
 assert.ok(html.includes('"reviewedBy"') || html.includes('reviewedBy'), 'Technical reviewer metadata is missing');
 assert.ok(html.includes('2026-11-09'), 'Technical review date is missing from rendered metadata/schema');
+const faqSchemaQuestionCount = (html.match(/"@type":"Question"/g) ?? []).length;
+assert.equal(faqSchemaQuestionCount, 10, 'FAQPage JSON-LD should contain the same 10 questions as the visible FAQ');
 
 for (const marker of [
   'id="charger-power-delivery"',
@@ -74,6 +76,7 @@ for (const sourceUrl of [
   'https://support.hp.com/nz-en/document/ish_3932413-2337994-16',
   'https://support.hp.com/mx-es/document/ish_1997719-1528356-16',
   'https://www.asus.com/support/faq/1050239/',
+  'https://download.lenovo.com/manual/thinkpad_p1_gen8_t1g_gen8/user_guide/en/Overview.html',
   'https://support.apple.com/en-gb/102623',
 ]) {
   assert.ok(html.includes(sourceUrl), 'Official OEM reference is missing: ' + sourceUrl);
