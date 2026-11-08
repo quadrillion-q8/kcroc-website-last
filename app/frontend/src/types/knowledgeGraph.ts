@@ -323,8 +323,34 @@ export const LocationSchema = RoutableEntitySchema.extend({
     price: z.string(),
     note: z.string(),
   })).optional(),
+  // Full semantic pricing table for high-intent service-area pages. Values are
+  // authored in KCROC_GRAPH and use the same published guide rates as Pricing.tsx.
+  localPricingTable: z.object({
+    heading: z.string(),
+    intro: z.string(),
+    note: z.string(),
+    rows: z.array(z.object({
+      service: z.string(),
+      startingPrice: z.string(),
+      typicalTurnaround: z.string(),
+      includes: z.string(),
+    })).min(1),
+  }).optional(),
+  // Symptom-to-diagnostic triage rows stay linked to existing Problem entities.
+  localProblemDiagnostics: z.array(z.object({
+    problemId: z.string(),
+    symptom: z.string(),
+    likelyCause: z.string(),
+    labCheck: z.string(),
+    startingRate: z.string(),
+  })).optional(),
+  localScopeNotice: z.object({
+    heading: z.string(),
+    body: z.string(),
+  }).optional(),
   localServiceCards: z.array(z.object({
     title: z.string(),
+    summary: z.string().optional(),
     problem: z.string(),
     expertise: z.string(),
     solution: z.string(),
