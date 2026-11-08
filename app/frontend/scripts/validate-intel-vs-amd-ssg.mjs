@@ -43,7 +43,7 @@ for (const question of expectedQuestions) {
   assert.ok(visibleFaq.includes(question), 'FAQ question is missing from static HTML: ' + question);
 }
 
-const faqDetailsCount = (visibleFaq.match(/<details\\b/gi) ?? []).length;
+const faqDetailsCount = (visibleFaq.match(/<details\b/gi) ?? []).length;
 assert.equal(faqDetailsCount, 12, 'Expected 12 native FAQ disclosures in static HTML, found ' + faqDetailsCount);
 
 for (const answerMarker of [
@@ -94,7 +94,7 @@ assert.ok(html.includes('"@type":"TechArticle"') || html.includes('"@type": "Tec
 assert.ok(html.includes('"@type":"FAQPage"') || html.includes('"@type": "FAQPage"'), 'FAQPage JSON-LD is missing');
 assert.ok(html.includes('"@type":"BreadcrumbList"') || html.includes('"@type": "BreadcrumbList"'), 'BreadcrumbList JSON-LD is missing');
 
-const schemaQuestionCount = (html.match(/"@type"\\s*:\\s*"Question"/g) ?? []).length;
+const schemaQuestionCount = (html.match(/"@type"\s*:\s*"Question"/g) ?? []).length;
 assert.equal(schemaQuestionCount, 12, 'FAQPage JSON-LD should contain exactly the same 12 questions as the visible FAQ');
 
 console.log('Intel vs AMD SSG validation passed: canonical, Kuwait-local review date, 12 static FAQ answers and schema questions, generation matrix, suffix decoder, engineering sections, processor records and official references are present.');
