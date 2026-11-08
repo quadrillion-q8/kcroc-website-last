@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import {
   Check,
   Truck,
-  Clock,
   Laptop,
   Cpu,
   Search,
@@ -20,7 +19,6 @@ import {
   BadgeCheck,
   CircleDollarSign,
   Eye,
-  LockKeyhole,
   Scale,
   MessageCircle,
   ClipboardCheck,
@@ -42,132 +40,47 @@ const business = KCROC_GRAPH.business!;
    PRICING DATA
 ───────────────────────────────────────────────────────────────────────────── */
 
-const pricingCategories = [
-  {
-    title: 'Diagnostics & System Setup',
-    anchor: 'diagnostics',
-    eyebrow: 'Start here',
-    icon: Search,
-    items: [
-      {
-        name: 'Diagnostic & Inspection',
-        price: 'FREE',
-        desc: 'Component-level trace & thermal imaging',
-        note: 'No-obligation initial assessment',
-      },
-      {
-        name: 'Windows OS Restoration',
-        price: '10–15 KWD',
-        desc: 'Clean Windows installation with drivers and essential updates',
-        note: 'A clean install can remove existing files and apps. Back up accessible files yourself before approving it.',
-      },
-      {
-        name: 'Virus & Malware Removal',
-        price: '10–20 KWD',
-        desc: 'Malware assessment, removal and security hardening',
-        note: 'Malware remediation only; this is not standalone data recovery or ransomware decryption.',
-        linkHref: '/virus-malware-removal-kuwait',
-        linkLabel: 'View malware symptoms and service scope',
-      },
-      {
-        name: 'BIOS / Firmware Recovery',
-        price: '20–40 KWD',
-        desc: 'Firmware diagnosis and SPI/EEPROM programmer recovery where appropriate',
-        linkHref: '/guides/bios-uefi-recovery-kuwait',
-        linkLabel: 'Read the BIOS/UEFI recovery guide',
-      },
-    ],
-  },
-  {
-    title: 'Thermal & Performance Tuning',
-    anchor: 'thermal',
-    eyebrow: 'Cooling & performance',
-    icon: Thermometer,
-    items: [
-      {
-        name: 'Laptop Thermal Service',
-        price: '15–20 KWD',
-        desc: 'Deep cleaning & premium thermal re-paste',
-      },
-      {
-        name: 'Gaming PC Thermal Service',
-        price: '20–30 KWD',
-        desc: 'Liquid metal / custom cooler maintenance',
-      },
-      {
-        name: 'Gaming PC Tuning',
-        price: '20–40 KWD',
-        desc: 'FPS optimization & BIOS configuration',
-      },
-      {
-        name: 'RAM / SSD Installation',
-        price: '5–10 KWD',
-        desc: 'Installation labor; data migration available',
-      },
-    ],
-  },
-  {
-    title: 'Hardware Replacements',
-    anchor: 'hardware',
-    eyebrow: 'Parts & physical repair',
-    icon: Laptop,
-    items: [
-      {
-        name: 'Battery Replacement',
-        price: '8–15 KWD labor + battery',
-        desc: 'Battery installation labor and safe handling; battery cost is separate.',
-      },
-      {
-        name: 'Keyboard Replacement',
-        price: '10–20 KWD labor + keyboard/assembly',
-        desc: 'Labor varies by keyboard and top-case design; component cost is separate.',
-      },
-      {
-        name: 'Laptop Screen Replacement',
-        price: 'Labor from 30 KWD + panel',
-        desc: 'Panel installation labor; the LCD, IPS, OLED or high-refresh panel is priced separately.',
-      },
-      {
-        name: 'Hinge / Chassis Reconstruction',
-        price: '15–30 KWD',
-        desc: 'Structural resin repair & tension tuning',
-      },
-    ],
-  },
-  {
-    title: 'Advanced Motherboard Repair',
-    anchor: 'motherboard',
-    eyebrow: 'Component-level repair',
-    icon: Cpu,
-    featured: true,
-    items: [
-      {
-        name: 'Charging Port Repair',
-        price: '20–35 KWD',
-        desc: 'DC jack micro-soldering & reinforcement',
-      },
-      {
-        name: 'Motherboard Component Repair',
-        price: '25–60 KWD',
-        desc: 'MOSFET, IC & power-rail fixes',
-      },
-      {
-        name: 'Advanced Motherboard Repair',
-        price: '50–90+ KWD',
-        desc: 'Complex BGA rework & chipset recovery',
-      },
-      {
-        name: 'Liquid-Damage Repair',
-        price: '35–90+ KWD',
-        desc: 'Ultrasonic cleaning & trace restoration',
-      },
-      {
-        name: 'MacBook Board-Level Repair',
-        price: '45–100+ KWD',
-        desc: 'Data-safe Apple Silicon & Intel repairs',
-      },
-    ],
-  },
+type DeviceType = 'windows-laptop' | 'macbook' | 'gaming' | 'desktop';
+type DeviceFilter = 'all' | DeviceType;
+type SymptomType = 'dead-no-power' | 'screen-damage' | 'overheating' | 'charging' | 'liquid-spill' | 'slow-upgrade';
+type SymptomFilter = 'all' | SymptomType;
+type PricingItem = { name:string; price:string; priceKind:string; priceNote?:string; scope:string; note?:string; turnaround:string; href:string; secondaryLink?:{label:string;href:string}; devices:DeviceType[]; symptoms:SymptomType[]; };
+type PricingCategory = { title:string; anchor:string; eyebrow:string; icon:React.ElementType; featured?:boolean; items:PricingItem[]; };
+const deviceFilters: {label:string;value:DeviceFilter}[] = [
+  {label:'All Devices',value:'all'},{label:'Windows Laptop',value:'windows-laptop'},
+  {label:'MacBook Air / Pro',value:'macbook'},{label:'Gaming PC / Laptop',value:'gaming'},{label:'Desktop Tower',value:'desktop'},
+];
+const symptomFilters: {label:string;value:SymptomFilter}[] = [
+  {label:'All Symptoms',value:'all'},{label:'Dead / No Power',value:'dead-no-power'},
+  {label:'Cracked / Flickering Screen',value:'screen-damage'},{label:'Overheating / Loud Fan',value:'overheating'},
+  {label:'Not Charging / Loose Port',value:'charging'},{label:'Liquid Spill',value:'liquid-spill'},{label:'Slow / Upgrade',value:'slow-upgrade'},
+];
+const pricingCategories: PricingCategory[] = [
+  { title:'Diagnostics, OS & Firmware Setup',anchor:'diagnostics',eyebrow:'Start with the fault',icon:Search,items:[
+    {name:'Diagnostic & Inspection',price:'FREE',priceKind:'INITIAL ASSESSMENT',scope:'No-obligation initial assessment of the reported fault, with component-level checks where relevant.',turnaround:'Confirmed after the device reaches our Hawalli lab and the initial assessment is complete.',href:'/computer-repair-kuwait',devices:['windows-laptop','macbook','gaming','desktop'],symptoms:['dead-no-power','screen-damage','overheating','charging','liquid-spill','slow-upgrade']},
+    {name:'Windows OS Restoration',price:'10–15 KWD',priceKind:'SERVICE RANGE',scope:'Clean Windows installation, official drivers and essential updates.',note:'A clean installation can remove existing files and applications. Back up accessible files before approving the work.',turnaround:'Confirmed after checking system condition and installation requirements.',href:'/computer-repair-kuwait',devices:['windows-laptop','gaming','desktop'],symptoms:['slow-upgrade']},
+    {name:'Virus & Malware Removal',price:'10–20 KWD',priceKind:'SERVICE RANGE',scope:'Malware assessment, removal and security hardening.',note:'Malware remediation only; not standalone data recovery or ransomware decryption.',turnaround:'Confirmed after malware assessment and scope check.',href:'/virus-malware-removal-kuwait',devices:['windows-laptop','gaming','desktop'],symptoms:['slow-upgrade']},
+    {name:'BIOS / Firmware Recovery',price:'20–40 KWD',priceKind:'SERVICE RANGE',scope:'Firmware diagnosis and SPI / EEPROM programmer recovery where appropriate.',turnaround:'Straightforward firmware reprogramming may be completed the same day after checks; board-level faults can take longer.',href:'/guides/bios-uefi-recovery-kuwait',devices:['windows-laptop','gaming','desktop'],symptoms:['dead-no-power']},
+  ]},
+  { title:'Cooling, Performance & Upgrades',anchor:'thermal',eyebrow:'Keep performance stable',icon:Thermometer,items:[
+    {name:'Laptop Thermal Service',price:'15–20 KWD',priceKind:'SERVICE RANGE',scope:'Internal dust removal, heatsink and fan-path cleaning, and thermal paste service as appropriate for the model.',turnaround:'Often same day; scheduling and diagnostic findings can change timing.',href:'/laptop-repair-kuwait',devices:['windows-laptop','macbook','gaming'],symptoms:['overheating']},
+    {name:'Gaming PC Thermal Service',price:'20–30 KWD',priceKind:'SERVICE RANGE',scope:'Thermal maintenance for complete desktop towers, including suitable cooler and airflow checks.',note:'Complete desktop systems only; standalone graphics cards are not accepted as repair jobs.',turnaround:'Typically 24–48 hours for complete gaming PC service; confirmed after inspection.',href:'/gaming-pc-repair-kuwait',devices:['gaming','desktop'],symptoms:['overheating']},
+    {name:'Gaming PC Tuning',price:'20–40 KWD',priceKind:'SERVICE RANGE',scope:'FPS stability checks, fan-curve tuning and supported BIOS / XMP / EXPO configuration.',turnaround:'Typically 24–48 hours for complete gaming PC service; confirmed after inspection.',href:'/gaming-pc-repair-kuwait',devices:['gaming','desktop'],symptoms:['overheating','slow-upgrade']},
+    {name:'RAM / SSD Installation',price:'5–10 KWD',priceKind:'INSTALLATION LABOUR',priceNote:'Compatible SSD / RAM parts are priced separately.',scope:'Installation labour and compatibility checks; migration is considered only on a healthy source drive.',turnaround:'Same Day / 24 Hours when a compatible part is available.',href:'/ssd-ram-upgrade-kuwait',devices:['windows-laptop','macbook','gaming','desktop'],symptoms:['slow-upgrade']},
+  ]},
+  { title:'Hardware Replacements & Physical Repair',anchor:'hardware',eyebrow:'Model-matched parts',icon:Laptop,items:[
+    {name:'Laptop Battery Replacement',price:'8–15 KWD',priceKind:'INSTALLATION LABOUR',priceNote:'Exact-model battery cost is quoted separately.',scope:'Battery and charging-path checks, safe removal and installation of the compatible battery.',turnaround:'Confirmed after exact model and battery availability are checked.',href:'/battery-replacement-kuwait',devices:['windows-laptop','gaming'],symptoms:['charging']},
+    {name:'Keyboard Replacement',price:'10–20 KWD',priceKind:'INSTALLATION LABOUR',priceNote:'Keyboard, palmrest or top-case assembly is priced separately.',scope:'Keyboard and input-fault diagnosis, followed by model-matched fitting where replacement is required.',turnaround:'Same day to 24 hours when the compatible part is available; timing is confirmed after model checks.',href:'/laptop-keyboard-replacement-kuwait',devices:['windows-laptop','macbook','gaming'],symptoms:['liquid-spill']},
+    {name:'Laptop & MacBook Screen Replacement',price:'From 30 KWD',priceKind:'INSTALLATION LABOUR',priceNote:'Laptop panel or MacBook display assembly is priced separately.',scope:'Panel, cable, connector and backlight diagnosis before a compatible display is quoted.',turnaround:'Same day only when the compatible panel or display assembly is in stock; otherwise confirmed after model checks.',href:'/laptop-screen-repair-kuwait',secondaryLink:{label:'MacBook screen replacement',href:'/macbook-screen-replacement-kuwait'},devices:['windows-laptop','macbook','gaming'],symptoms:['screen-damage']},
+    {name:'Hinge / Chassis Reconstruction',price:'15–30 KWD',priceKind:'SERVICE RANGE',scope:'Mounting-point reconstruction, structural reinforcement and hinge-tension checks where the chassis is repairable.',turnaround:'Same Day / 24 Hours; confirmed after inspection and parts checks.',href:'/laptop-hinge-repair-kuwait',devices:['windows-laptop','macbook','gaming'],symptoms:['screen-damage']},
+  ]},
+  { title:'Component-Level Motherboard & Logic Board Repair',anchor:'motherboard',eyebrow:'Specialist board work',icon:Cpu,featured:true,items:[
+    {name:'Charging Port Repair',price:'20–35 KWD',priceKind:'SERVICE RANGE',scope:'DC jack, USB-C or other supported connector diagnosis, replacement and micro-soldering where appropriate.',turnaround:'Same Day / 24 Hours for common connector work; deeper board-level charging faults may take longer.',href:'/laptop-charging-port-repair-kuwait',devices:['windows-laptop','macbook','gaming'],symptoms:['charging','dead-no-power']},
+    {name:'Motherboard Component Repair',price:'25–60 KWD',priceKind:'SERVICE RANGE',scope:'Diagnosis and targeted replacement of failed MOSFETs, power ICs, capacitors and related components where technically viable.',turnaround:'24–48 hours is typical for many component-level board repairs; complex faults or parts orders can take longer.',href:'/motherboard-repair-kuwait',devices:['windows-laptop','macbook','gaming','desktop'],symptoms:['dead-no-power','charging']},
+    {name:'Advanced Motherboard Repair',price:'50–90+ KWD',priceKind:'SERVICE RANGE',scope:'Advanced board diagnosis and suitable BGA / chipset-level rework; repairability depends on the board and confirmed fault.',turnaround:'Often 24–48 hours; complex board faults, testing or parts requirements can extend the estimate.',href:'/motherboard-repair-kuwait',devices:['windows-laptop','macbook','gaming','desktop'],symptoms:['dead-no-power','charging']},
+    {name:'Liquid-Damage Repair',price:'35–90+ KWD',priceKind:'SERVICE RANGE',scope:'Power isolation, corrosion assessment, board cleaning and component / trace repair where viable.',note:'Data access or preservation cannot be guaranteed after liquid exposure. Keep a spilled device switched off and unplugged.',turnaround:'24–72 hours is the published typical range; actual timing depends on damage and parts.',href:'/laptop-liquid-damage-repair-kuwait',devices:['windows-laptop','macbook','gaming'],symptoms:['liquid-spill','dead-no-power','charging']},
+    {name:'MacBook Board-Level Repair',price:'45–100+ KWD',priceKind:'SERVICE RANGE',scope:'MacBook Air and Pro logic-board diagnosis and component-level repair where the original board is technically repairable.',note:'Repairing the original logic board may help retain access to existing storage, but data access is not guaranteed and data recovery is not offered.',turnaround:'24–48 hours is typical for many MacBook repairs; complex faults or parts orders can take longer.',href:'/macbook-repair-kuwait',devices:['macbook'],symptoms:['dead-no-power','charging','liquid-spill']},
+  ]},
 ];
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -306,7 +219,8 @@ function TrustItem({
 ───────────────────────────────────────────────────────────────────────────── */
 
 export default function Pricing() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [deviceFilter, setDeviceFilter] = useState<DeviceFilter>('all');
+  const [symptomFilter, setSymptomFilter] = useState<SymptomFilter>('all');
 
   // Normalize the WhatsApp number at the page boundary so display formatting
   // applied to business.telephone anywhere else can never break these links.
@@ -639,186 +553,62 @@ export default function Pricing() {
           PRICE MENU
       ───────────────────────────────────────────────────────────────────── */}
 
-      <section
-        id="price-list"
-        aria-labelledby="pricing-heading"
-        className="px-4 pb-16 sm:px-6 sm:pb-24"
-      >
+      <section id="price-list" aria-labelledby="pricing-heading" className="px-4 pb-16 sm:px-6 sm:pb-24">
         <div className="mx-auto max-w-6xl">
           <div className="mb-8 text-center sm:mb-12">
-            <Badge className="mb-4 border border-cyan-500/20 bg-cyan-500/10 px-3 py-1.5 text-[10px] uppercase tracking-widest text-cyan-400">
-              Service pricing
-            </Badge>
-
-            <h2
-              id="pricing-heading"
-              className="text-3xl font-black tracking-tight text-white sm:text-4xl"
-            >
-              Computer Repair Prices in Kuwait
-            </h2>
-
-            <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-slate-400 sm:text-base">
-              Clear starting prices for common services. For your exact price,
-              send us your device model and symptoms.
-            </p>
+            <Badge className="mb-4 border border-cyan-500/20 bg-cyan-500/10 px-3 py-1.5 text-[10px] uppercase tracking-widest text-cyan-400">Service pricing</Badge>
+            <h2 id="pricing-heading" className="text-3xl font-black tracking-tight text-white sm:text-4xl">Laptop, MacBook, Gaming PC &amp; Motherboard Repair Price List (KWD)</h2>
+            <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-slate-400 sm:text-base">Compare published guide prices, what each service covers and its typical turnaround. Your exact quote is confirmed after diagnosis and before paid work.</p>
+          </div>
+          <div className="mb-8 space-y-5 rounded-3xl border border-slate-800 bg-slate-900/50 p-4 sm:p-6">
+            <div><p className="mb-3 text-xs font-black uppercase tracking-[0.15em] text-cyan-300">Filter by device</p><div role="group" aria-label="Filter pricing by device" className="flex flex-wrap gap-2">
+              {deviceFilters.map((filter) => <button key={filter.value} type="button" aria-pressed={deviceFilter===filter.value} onClick={() => setDeviceFilter(filter.value)} className={'min-h-10 rounded-full border px-3.5 py-2 text-xs font-bold transition-colors sm:text-sm '+(deviceFilter===filter.value?'border-cyan-400/60 bg-cyan-500/15 text-cyan-100':'border-slate-700 bg-slate-950/70 text-slate-300 hover:border-cyan-500/40 hover:text-cyan-200')}>{filter.label}</button>)}
+            </div></div>
+            <div><p className="mb-3 text-xs font-black uppercase tracking-[0.15em] text-cyan-300">Filter by symptom</p><div role="group" aria-label="Filter pricing by symptom" className="flex flex-wrap gap-2">
+              {symptomFilters.map((filter) => <button key={filter.value} type="button" aria-pressed={symptomFilter===filter.value} onClick={() => setSymptomFilter(filter.value)} className={'min-h-10 rounded-full border px-3.5 py-2 text-xs font-bold transition-colors sm:text-sm '+(symptomFilter===filter.value?'border-cyan-400/60 bg-cyan-500/15 text-cyan-100':'border-slate-700 bg-slate-950/70 text-slate-300 hover:border-cyan-500/40 hover:text-cyan-200')}>{filter.label}</button>)}
+            </div></div>
+            <div className="flex flex-wrap items-center justify-between gap-3 border-t border-slate-800 pt-4">
+              <p aria-live="polite" className="text-xs leading-5 text-slate-400">{deviceFilter==='all'&&symptomFilter==='all'?'All 17 published services are shown.':pricingCategories.reduce((count,cat)=>count+cat.items.filter((item)=>(deviceFilter==='all'||item.devices.includes(deviceFilter))&&(symptomFilter==='all'||item.symptoms.includes(symptomFilter))).length,0)+' matching services highlighted. All 17 rows remain in the page.'}</p>
+              {(deviceFilter!=='all'||symptomFilter!=='all')&&<button type="button" onClick={()=>{setDeviceFilter('all');setSymptomFilter('all');}} className="min-h-9 rounded-lg border border-slate-700 px-3 py-1.5 text-xs font-bold text-cyan-300">Clear filters</button>}
+            </div>
           </div>
 
-          <nav aria-label="Jump to repair price category" className="mb-7 rounded-2xl border border-slate-800 bg-slate-900/35 p-3 sm:p-4">
-            <p className="mb-3 px-1 text-xs font-bold uppercase tracking-[0.14em] text-slate-500">Jump to a price category</p>
-            <div className="flex flex-wrap gap-2">
-              <a href="#pricing-diagnostics" className="inline-flex min-h-10 items-center gap-2 rounded-xl border border-slate-700 bg-slate-950/70 px-3.5 py-2 text-xs font-bold text-slate-200 transition-colors hover:border-cyan-400/50 hover:bg-cyan-950/30 hover:text-cyan-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 sm:text-sm"><Search className="h-4 w-4 text-cyan-400" aria-hidden="true" /> Diagnostics &amp; setup <ArrowRight className="h-3.5 w-3.5 text-slate-500" aria-hidden="true" /></a>
-              <a href="#pricing-thermal" className="inline-flex min-h-10 items-center gap-2 rounded-xl border border-slate-700 bg-slate-950/70 px-3.5 py-2 text-xs font-bold text-slate-200 transition-colors hover:border-cyan-400/50 hover:bg-cyan-950/30 hover:text-cyan-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 sm:text-sm"><Thermometer className="h-4 w-4 text-cyan-400" aria-hidden="true" /> Cooling &amp; performance <ArrowRight className="h-3.5 w-3.5 text-slate-500" aria-hidden="true" /></a>
-              <a href="#pricing-hardware" className="inline-flex min-h-10 items-center gap-2 rounded-xl border border-slate-700 bg-slate-950/70 px-3.5 py-2 text-xs font-bold text-slate-200 transition-colors hover:border-cyan-400/50 hover:bg-cyan-950/30 hover:text-cyan-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 sm:text-sm"><Laptop className="h-4 w-4 text-cyan-400" aria-hidden="true" /> Hardware replacements <ArrowRight className="h-3.5 w-3.5 text-slate-500" aria-hidden="true" /></a>
-              <a href="#pricing-motherboard" className="inline-flex min-h-10 items-center gap-2 rounded-xl border border-slate-700 bg-slate-950/70 px-3.5 py-2 text-xs font-bold text-slate-200 transition-colors hover:border-cyan-400/50 hover:bg-cyan-950/30 hover:text-cyan-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 sm:text-sm"><Cpu className="h-4 w-4 text-cyan-400" aria-hidden="true" /> Motherboard repair <ArrowRight className="h-3.5 w-3.5 text-slate-500" aria-hidden="true" /></a>
-            </div>
-          </nav>
-
-          <div className="grid gap-5 md:grid-cols-2">
+          <div className="space-y-6">
             {pricingCategories.map((category) => {
-              const Icon = category.icon;
-
-              return (
-                <Card
-                  key={category.title}
-                  id={`pricing-${category.anchor}`}
-                  className={`scroll-mt-6 overflow-hidden border bg-slate-900/45 shadow-2xl backdrop-blur-xl ${
-                    category.featured
-                      ? 'border-cyan-500/30 shadow-cyan-950/10'
-                      : 'border-slate-800'
-                  }`}
-                >
-                  <CardHeader className="border-b border-slate-800/70 p-5 sm:p-6">
-                    <div className="flex items-start justify-between gap-4">
-                      <div className="flex items-start gap-3">
-                        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-slate-800 bg-brand-dark">
-                          <Icon
-                            className="h-5 w-5 text-cyan-400"
-                            aria-hidden="true"
-                          />
-                        </div>
-
-                        <div>
-                          <p className="mb-1 text-[10px] font-bold uppercase tracking-widest text-cyan-500">
-                            {category.eyebrow}
-                          </p>
-
-                          <CardTitle className="text-lg font-black text-white sm:text-xl">
-                            {category.title}
-                          </CardTitle>
-                        </div>
-                      </div>
-
-                      {category.featured && (
-                        <Badge className="shrink-0 border border-cyan-500/20 bg-cyan-500/10 text-[9px] uppercase tracking-wider text-cyan-400">
-                          Specialist
-                        </Badge>
-                      )}
-                    </div>
-                  </CardHeader>
-
-                  <CardContent className="p-0">
-                    <ul className="divide-y divide-slate-800/70">
-                      {category.items.map((item) => (
-                        <li
-                          key={item.name}
-                          className="flex items-start justify-between gap-4 p-5 transition-colors hover:bg-brand-dark/30 sm:p-6"
-                        >
-                          <div className="min-w-0 flex-1">
-                            <div className="flex items-start gap-2">
-                              <Check
-                                className="mt-0.5 h-4 w-4 shrink-0 text-emerald-400"
-                                aria-hidden="true"
-                              />
-
-                              <div>
-                                <div className="text-sm font-bold text-slate-100 sm:text-base">
-                                  {item.name}
-                                </div>
-
-                                <div className="mt-1 text-xs leading-5 text-slate-500 sm:text-sm">
-                                  {item.desc}
-                                </div>
-
-                                {item.note && (
-                                  <div className="mt-2 text-[10px] font-semibold normal-case leading-5 text-slate-400">
-                                    {item.note}
-                                  </div>
-                                )}
-                                {'linkHref' in item && item.linkHref && (
-                                  <Link to={item.linkHref} className="mt-2 inline-flex min-h-8 items-center text-xs font-bold text-cyan-300 underline-offset-4 hover:text-cyan-200 hover:underline">
-                                    {'linkLabel' in item ? item.linkLabel : 'View service details'} <ArrowRight className="ml-1 h-3.5 w-3.5" aria-hidden="true" />
-                                  </Link>
-                                )}
-                              </div>
-                            </div>
-                          </div>
-
-                          <div className="flex shrink-0 flex-col items-end gap-2">
-                            <div className="rounded-xl border border-cyan-500/15 bg-cyan-950/20 px-3 py-2 text-right">
-                              <div className="text-xs font-black text-cyan-400 sm:text-sm">
-                                {item.price}
-                              </div>
-                            </div>
-                            <a
-                              href={buildWhatsAppLink(`Hi KCROC, I'd like to ask about ${item.name}. I saw the listed price of ${item.price}. Can you confirm what you need to quote my exact repair?`)}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="inline-flex items-center gap-1 rounded-lg border border-emerald-500/20 bg-emerald-500/10 px-2.5 py-1.5 text-[10px] font-black text-emerald-300 transition-colors hover:border-emerald-400/40 hover:bg-emerald-500/15"
-                            >
-                              <MessageCircle className="h-3.5 w-3.5" aria-hidden="true" />
-                              Ask about this
-                            </a>
-                          </div>
-                        </li>
-                      ))}
-                    </ul>
-                  </CardContent>
-                </Card>
-              );
+              const Icon=category.icon;
+              return <Card key={category.title} id={'pricing-'+category.anchor} className={'scroll-mt-6 overflow-hidden border bg-slate-900/45 shadow-2xl backdrop-blur-xl '+(category.featured?'border-cyan-500/30 shadow-cyan-950/10':'border-slate-800')}>
+                <CardHeader className="border-b border-slate-800/70 p-5 sm:p-6"><div className="flex items-start justify-between gap-4"><div className="flex items-start gap-3"><div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-slate-800 bg-brand-dark"><Icon className="h-5 w-5 text-cyan-400" aria-hidden="true" /></div><div><p className="mb-1 text-[10px] font-bold uppercase tracking-widest text-cyan-500">{category.eyebrow}</p><CardTitle className="text-lg font-black text-white sm:text-xl">{category.title}</CardTitle></div></div>{category.featured&&<Badge className="shrink-0 border border-cyan-500/20 bg-cyan-500/10 text-[9px] uppercase tracking-wider text-cyan-400">Specialist</Badge>}</div></CardHeader>
+                {category.featured&&<div className="grid gap-4 border-b border-cyan-500/15 bg-cyan-950/15 p-5 sm:grid-cols-2 sm:p-6">
+                  <div className="rounded-2xl border border-slate-700/70 bg-slate-950/50 p-4"><p className="text-[10px] font-black uppercase tracking-[0.14em] text-slate-400">Whole-board replacement</p><h3 className="mt-2 text-base font-black text-white">Replace the complete assembly</h3><p className="mt-2 text-xs leading-6 text-slate-400">A full motherboard or logic-board assembly is a model-specific parts decision. Compatibility and part cost must be checked before it can be quoted.</p></div>
+                  <div className="rounded-2xl border border-cyan-500/25 bg-cyan-950/20 p-4"><p className="text-[10px] font-black uppercase tracking-[0.14em] text-cyan-300">KCROC component-level approach</p><h3 className="mt-2 text-base font-black text-white">We fix the board where repair is viable.</h3><p className="mt-2 text-xs leading-6 text-slate-300">We trace the fault and consider a targeted connector, MOSFET, power IC or other component repair before recommending a whole-board replacement.</p><p className="mt-3 text-xs font-bold leading-5 text-cyan-200">Published guide ranges: 25–60 KWD component repair · 50–90+ KWD advanced board work · 45–100+ KWD MacBook logic-board repair.</p></div>
+                  <p className="text-xs leading-5 text-slate-500 sm:col-span-2">Repairing the original board may help retain access to existing storage on some devices, but data access is not guaranteed. KCROC does not offer standalone data recovery.</p>
+                </div>}
+                <CardContent className="p-0">
+                  <table data-pricing-table={category.anchor} aria-label={category.title+' prices in Kuwaiti dinars'} className="block w-full text-left md:table">
+                    <caption className="sr-only">{category.title}: service, scope and notes, typical turnaround, price in KWD and direct quote action.</caption>
+                    <thead className="hidden bg-slate-950/70 text-[10px] uppercase tracking-[0.12em] text-slate-400 md:table-header-group"><tr><th scope="col" className="px-5 py-4 font-black">Service</th><th scope="col" className="px-5 py-4 font-black">Scope &amp; notes</th><th scope="col" className="px-5 py-4 font-black">Typical turnaround</th><th scope="col" className="px-5 py-4 font-black">Price (KWD)</th><th scope="col" className="px-5 py-4 text-right font-black">Action</th></tr></thead>
+                    <tbody className="block divide-y divide-slate-800/80 md:table-row-group">
+                      {category.items.map((item) => {
+                        const matches=(deviceFilter==='all'||item.devices.includes(deviceFilter))&&(symptomFilter==='all'||item.symptoms.includes(symptomFilter));
+                        const hasFilter=deviceFilter!=='all'||symptomFilter!=='all';
+                        const message='Hello KCROC, I am checking '+item.name+'. Published price: '+item.price+(item.priceNote?'; '+item.priceNote:'')+'. My device model is: ____. Symptoms: ____. Kuwait area: ____. Please confirm the expected turnaround and total quote before any paid work.';
+                        return <tr key={item.name} data-pricing-row="true" data-filter-match={matches?'true':'false'} className={'block border-b border-slate-800/80 p-4 transition-opacity last:border-b-0 md:table-row md:border-b-0 md:p-0 '+(hasFilter?(matches?'bg-cyan-950/10 opacity-100':'bg-slate-950/20 opacity-45'):'hover:bg-brand-dark/25')}>
+                          <td className="block py-2 align-top md:table-cell md:w-[22%] md:px-5 md:py-5"><span className="mb-1 block text-[10px] font-black uppercase tracking-wider text-slate-500 md:hidden">Service</span><div className="text-sm font-black leading-6 text-slate-100"><Link to={item.href} className="underline decoration-slate-700 underline-offset-4 transition-colors hover:text-cyan-300 hover:decoration-cyan-400">{item.name}</Link></div>{item.secondaryLink&&<Link to={item.secondaryLink.href} className="mt-2 inline-flex text-xs font-bold text-cyan-300 underline-offset-4 hover:text-cyan-200 hover:underline">{item.secondaryLink.label} <ArrowRight className="ml-1 h-3.5 w-3.5" aria-hidden="true" /></Link>}</td>
+                          <td className="block py-2 align-top md:table-cell md:px-5 md:py-5"><span className="mb-1 block text-[10px] font-black uppercase tracking-wider text-slate-500 md:hidden">Scope &amp; notes</span><p className="text-xs leading-6 text-slate-300">{item.scope}</p>{item.note&&<p className="mt-2 text-[11px] leading-5 text-amber-200/80">{item.note}</p>}</td>
+                          <td className="block py-2 align-top md:table-cell md:w-[18%] md:px-5 md:py-5"><span className="mb-1 block text-[10px] font-black uppercase tracking-wider text-slate-500 md:hidden">Typical turnaround</span><span className="inline-flex rounded-lg border border-slate-700 bg-slate-950/60 px-2.5 py-1.5 text-xs font-semibold leading-5 text-slate-300">{item.turnaround}</span></td>
+                          <td className="block py-2 align-top md:table-cell md:w-[16%] md:px-5 md:py-5"><span className="mb-1 block text-[10px] font-black uppercase tracking-wider text-slate-500 md:hidden">Price (KWD)</span><div className="flex flex-wrap items-center gap-2 md:items-start"><span className="rounded-xl border border-cyan-500/20 bg-cyan-500/10 px-3 py-2 text-sm font-black tabular-nums text-cyan-300">{item.price}</span><span className="text-[9px] font-black uppercase tracking-wider text-slate-500">{item.priceKind}</span></div>{item.priceNote&&<p className="mt-2 max-w-[15rem] text-[11px] leading-5 text-slate-400">{item.priceNote}</p>}</td>
+                          <td className="block py-2 align-top md:table-cell md:px-5 md:py-5 md:text-right"><span className="mb-1 block text-[10px] font-black uppercase tracking-wider text-slate-500 md:hidden">Get an exact quote</span><a href={buildWhatsAppLink(message)} target="_blank" rel="noopener noreferrer" aria-label={'Get exact quote for '+item.name+' on WhatsApp'} className="inline-flex min-h-10 items-center justify-center gap-1.5 rounded-xl border border-emerald-500/25 bg-emerald-500/10 px-3 py-2 text-xs font-black text-emerald-200 transition-colors hover:border-emerald-400/50 hover:bg-emerald-500/15"><MessageCircle className="h-4 w-4" aria-hidden="true" />Get Exact Quote</a></td>
+                        </tr>;
+                      })}
+                    </tbody>
+                  </table>
+                </CardContent>
+              </Card>;
             })}
           </div>
-
-          <div className="mt-8 rounded-2xl border border-slate-800 bg-slate-900/30 p-5 sm:p-6">
-            <div className="flex items-start gap-3">
-              <CircleDollarSign
-                className="mt-0.5 h-5 w-5 shrink-0 text-cyan-400"
-                aria-hidden="true"
-              />
-
-              <div>
-                <h3 className="text-sm font-black text-white">
-                  Why some prices include "+ Part"
-                </h3>
-
-                <p className="mt-2 text-xs leading-6 text-slate-500 sm:text-sm">
-                  Battery, keyboard and screen costs can vary substantially
-                  between models. Separating labor from the part allows us to
-                  quote the exact component required for your machine instead
-                  of hiding different part costs inside one generic price.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <Button
-              asChild
-              className="h-12 w-full rounded-xl bg-cyan-500 px-7 font-black text-slate-950 hover:bg-cyan-400 sm:w-auto"
-            >
-              <a href={whatsappUrl}>
-                <MessageCircle className="mr-2 h-5 w-5" aria-hidden="true" />
-                Get My Exact Quote
-              </a>
-            </Button>
-
-            <Link
-              to="/services"
-              className="inline-flex h-12 w-full items-center justify-center rounded-xl border border-slate-800 bg-slate-900/50 px-7 text-sm font-bold text-slate-300 transition-colors hover:border-cyan-500/40 hover:text-cyan-400 sm:w-auto"
-            >
-              Browse All Services
-              <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
-            </Link>
-          </div>
+          <div className="mt-8 rounded-2xl border border-slate-800 bg-slate-900/30 p-5 sm:p-6"><div className="flex items-start gap-3"><CircleDollarSign className="mt-0.5 h-5 w-5 shrink-0 text-cyan-400" aria-hidden="true" /><div><h3 className="text-sm font-black text-white">Why some prices show labour + part</h3><p className="mt-2 text-xs leading-6 text-slate-500 sm:text-sm">Screen, battery, keyboard and upgrade parts vary by model and grade. The published labour figure is not the component price; we confirm the compatible part and complete total before paid work begins.</p></div></div></div>
+          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row"><Button asChild className="h-12 w-full rounded-xl bg-cyan-500 px-7 font-black text-slate-950 hover:bg-cyan-400 sm:w-auto"><a href={whatsappUrl}><MessageCircle className="mr-2 h-5 w-5" aria-hidden="true" />Get My Exact Quote</a></Button><Link to="/services" className="inline-flex h-12 w-full items-center justify-center rounded-xl border border-slate-800 bg-slate-900/50 px-7 text-sm font-bold text-slate-300 transition-colors hover:border-cyan-500/40 hover:text-cyan-400 sm:w-auto">Browse All Services <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" /></Link></div>
+          <p className="mt-6 text-center text-xs leading-5 text-slate-500">Typical turnaround is an estimate after the device reaches our Hawalli lab. Confirmed timing depends on diagnosis, workload, compatible parts and the repair you approve.</p>
         </div>
       </section>
 
@@ -903,200 +693,17 @@ export default function Pricing() {
       </section>
 
       {/* ─────────────────────────────────────────────────────────────────────
-          REPAIR VS REPLACE
-      ───────────────────────────────────────────────────────────────────── */}
-
-      <section
-        aria-labelledby="repair-decision-heading"
-        className="px-4 py-16 sm:px-6 sm:py-24"
-      >
-        <div className="mx-auto max-w-6xl">
-          <div className="overflow-hidden rounded-3xl border border-slate-800 bg-slate-900/45 shadow-2xl">
-            <div className="grid lg:grid-cols-2">
-              <div className="p-6 sm:p-9 lg:p-12">
-                <Badge className="mb-4 border border-emerald-500/20 bg-emerald-500/10 px-3 py-1.5 text-[10px] uppercase tracking-widest text-emerald-400">
-                  Honest advice
-                </Badge>
-
-                <h2
-                  id="repair-decision-heading"
-                  className="text-3xl font-black tracking-tight text-white sm:text-4xl"
-                >
-                  Repair isn't always the answer.
-                </h2>
-
-                <p className="mt-5 text-sm leading-7 text-slate-400 sm:text-base">
-                  Our goal isn't to sell you the most expensive repair. It's
-                  to help you make a sensible decision about your device after
-                  the fault is understood.
-                </p>
-
-                <div className="mt-7 space-y-3">
-                  {[
-                    'We diagnose before recommending parts.',
-                    'You receive the quotation before repair begins.',
-                    'You can decline the repair after receiving the quote.',
-                    'If the device is beyond economical repair, our No Fix, No Fee policy applies.',
-                  ].map((point) => (
-                    <div key={point} className="flex items-start gap-3">
-                      <Check
-                        className="mt-0.5 h-5 w-5 shrink-0 text-emerald-400"
-                        aria-hidden="true"
-                      />
-
-                      <span className="text-sm leading-6 text-slate-300">
-                        {point}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="border-t border-slate-800 bg-brand-dark/50 p-6 sm:p-9 lg:border-l lg:border-t-0 lg:p-12">
-                <div className="flex h-full flex-col justify-center">
-                  <div className="flex items-center gap-3">
-                    <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-cyan-500/20 bg-cyan-500/10">
-                      <Scale
-                        className="h-5 w-5 text-cyan-400"
-                        aria-hidden="true"
-                      />
-                    </div>
-
-                    <div>
-                      <div className="text-xs font-bold uppercase tracking-widest text-cyan-500">
-                        Our principle
-                      </div>
-
-                      <div className="text-lg font-black text-white">
-                        Diagnose. Explain. Quote. Let you decide.
-                      </div>
-                    </div>
-                  </div>
-
-                  <p className="mt-6 text-sm leading-7 text-slate-500">
-                    A professional repair decision should be based on the
-                    actual fault and the economics of the device—not pressure,
-                    guesswork or an automatic recommendation to replace
-                    everything.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ─────────────────────────────────────────────────────────────────────
           CUSTOMER PROTECTION
       ───────────────────────────────────────────────────────────────────── */}
 
-      <section
-        aria-labelledby="customer-protection-heading"
-        className="px-4 pb-16 sm:px-6 sm:pb-24"
-      >
+      <section aria-labelledby="customer-protection-heading" className="px-4 py-16 sm:px-6 sm:py-20">
         <div className="mx-auto max-w-6xl">
-          <div className="mb-8 max-w-2xl">
-            <Badge className="mb-4 border border-blue-500/20 bg-blue-500/10 px-3 py-1.5 text-[10px] uppercase tracking-widest text-blue-400">
-              Before you approve
-            </Badge>
-
-            <h2
-              id="customer-protection-heading"
-              className="text-3xl font-black tracking-tight text-white sm:text-4xl"
-            >
-              What protects you as a customer?
-            </h2>
-          </div>
-
-          <div className="grid gap-5 md:grid-cols-3">
-            <div className="rounded-3xl border border-slate-800 bg-slate-900/40 p-6 sm:p-7">
-              <FileCheck2
-                className="h-7 w-7 text-cyan-400"
-                aria-hidden="true"
-              />
-
-              <h3 className="mt-5 text-lg font-black text-white">
-                Fixed quote before repair
-              </h3>
-
-              <p className="mt-3 text-sm leading-7 text-slate-500">
-                The repair price is confirmed before repair work begins, so
-                you can make an informed decision.
-              </p>
-            </div>
-
-            <div className="rounded-3xl border border-slate-800 bg-slate-900/40 p-6 sm:p-7">
-              <ShieldCheck
-                className="h-7 w-7 text-emerald-400"
-                aria-hidden="true"
-              />
-
-              <h3 className="mt-5 text-lg font-black text-white">
-                No Fix, No Fee
-              </h3>
-
-              <p className="mt-3 text-sm leading-7 text-slate-500">
-                If a device is catastrophically damaged and genuinely beyond
-                economical repair, the current policy states that you pay
-                nothing for the labor or diagnostic.
-              </p>
-            </div>
-
-            <div className="rounded-3xl border border-slate-800 bg-slate-900/40 p-6 sm:p-7">
-              <LockKeyhole
-                className="h-7 w-7 text-cyan-400"
-                aria-hidden="true"
-              />
-
-              <h3 className="mt-5 text-lg font-black text-white">
-                Data privacy matters
-              </h3>
-
-              <p className="mt-3 text-sm leading-7 text-slate-500">
-                Computer repair can involve highly personal information. Our
-                service is focused on the repair requested rather than
-                unnecessary access to personal files.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ─────────────────────────────────────────────────────────────────────
-          WARRANTY
-      ───────────────────────────────────────────────────────────────────── */}
-
-      <section
-        aria-labelledby="warranty-heading"
-        className="border-y border-slate-800/70 bg-cyan-950/[0.08] px-4 py-16 sm:px-6 sm:py-20"
-      >
-        <div className="mx-auto max-w-5xl">
-          <div className="flex flex-col items-start gap-6 sm:flex-row sm:items-center">
-            <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl border border-cyan-500/20 bg-cyan-500/10">
-              <BadgeCheck
-                className="h-8 w-8 text-cyan-400"
-                aria-hidden="true"
-              />
-            </div>
-
-            <div>
-              <Badge className="mb-3 border border-cyan-500/20 bg-cyan-500/10 text-[10px] uppercase tracking-widest text-cyan-400">
-                Repair warranty
-              </Badge>
-
-              <h2
-                id="warranty-heading"
-                className="text-2xl font-black text-white sm:text-3xl"
-              >
-                30-Day Repair Warranty
-              </h2>
-
-              <p className="mt-3 max-w-3xl text-sm leading-7 text-slate-400 sm:text-base">
-                Your repair is backed by the 30-day warranty currently stated
-                by KCROC. Warranty terms and coverage should be provided with
-                the completed repair documentation.
-              </p>
-            </div>
+          <div className="mb-8 max-w-3xl"><Badge className="mb-4 border border-cyan-500/20 bg-cyan-500/10 px-3 py-1.5 text-[10px] uppercase tracking-widest text-cyan-400">Customer protection</Badge><h2 id="customer-protection-heading" className="text-3xl font-black tracking-tight text-white sm:text-4xl">Four clear commitments before you approve a repair</h2><p className="mt-4 text-sm leading-7 text-slate-400 sm:text-base">We diagnose the actual fault, explain whether repair or replacement is sensible, and let you decide. Paid work starts only after you approve the quoted scope and total.</p></div>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="rounded-2xl border border-slate-800 bg-slate-900/45 p-5 sm:p-6"><Search className="h-6 w-6 text-cyan-400" aria-hidden="true" /><h3 className="mt-4 text-sm font-black text-white">Free initial diagnosis</h3><p className="mt-2 text-xs leading-6 text-slate-400">The initial diagnostic assessment is free and carries no obligation to proceed with a repair.</p></div>
+            <div className="rounded-2xl border border-slate-800 bg-slate-900/45 p-5 sm:p-6"><FileCheck2 className="h-6 w-6 text-cyan-400" aria-hidden="true" /><h3 className="mt-4 text-sm font-black text-white">Written quote before work</h3><p className="mt-2 text-xs leading-6 text-slate-400">We explain the fault, parts and labour, then confirm the price before paid repair work begins.</p></div>
+            <div className="rounded-2xl border border-slate-800 bg-slate-900/45 p-5 sm:p-6"><ShieldCheck className="h-6 w-6 text-emerald-400" aria-hidden="true" /><h3 className="mt-4 text-sm font-black text-white">No Fix, No Fee</h3><p className="mt-2 text-xs leading-6 text-slate-400">Where a device is catastrophically damaged and genuinely beyond economical repair under the stated policy, no labour or diagnostic fee is charged.</p></div>
+            <div className="rounded-2xl border border-slate-800 bg-slate-900/45 p-5 sm:p-6"><BadgeCheck className="h-6 w-6 text-cyan-400" aria-hidden="true" /><h3 className="mt-4 text-sm font-black text-white">30-day parts &amp; labour warranty</h3><p className="mt-2 text-xs leading-6 text-slate-400">Covered completed repairs carry the stated 30-day warranty on parts and workmanship, subject to confirmed repair terms.</p></div>
           </div>
         </div>
       </section>
@@ -1190,77 +797,14 @@ export default function Pricing() {
           FAQ
       ───────────────────────────────────────────────────────────────────── */}
 
-      <section
-        aria-labelledby="faq-heading"
-        className="border-t border-slate-800/70 px-4 py-16 sm:px-6 sm:py-24"
-      >
+      <section aria-labelledby="faq-heading" className="border-t border-slate-800/70 px-4 py-16 sm:px-6 sm:py-24">
         <div className="mx-auto max-w-4xl">
-          <div className="mb-8 text-center sm:mb-12">
-            <Badge className="mb-4 border border-emerald-500/20 bg-emerald-500/10 px-3 py-1.5 text-[10px] uppercase tracking-widest text-emerald-400">
-              Pricing questions
-            </Badge>
-
-            <h2
-              id="faq-heading"
-              className="text-3xl font-black tracking-tight text-white sm:text-4xl"
-            >
-              Pricing FAQs
-            </h2>
-
-            <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-slate-500">
-              Clear answers before you hand over your device.
-            </p>
-          </div>
-
+          <div className="mb-8 text-center sm:mb-12"><Badge className="mb-4 border border-emerald-500/20 bg-emerald-500/10 px-3 py-1.5 text-[10px] uppercase tracking-widest text-emerald-400">Pricing questions</Badge><h2 id="faq-heading" className="text-3xl font-black tracking-tight text-white sm:text-4xl">Pricing FAQs</h2><p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-slate-500">Clear answers before you hand over your device.</p></div>
           <div className="space-y-3">
-            {faqs.map((faq, i) => {
-              const isOpen = openIndex === i;
-
-              return (
-                <div
-                  key={faq.q}
-                  className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/30"
-                >
-                  <button
-                    type="button"
-                    aria-expanded={isOpen}
-                    aria-controls={`pricing-faq-${i}`}
-                    onClick={() =>
-                      setOpenIndex(isOpen ? null : i)
-                    }
-                    className="flex w-full items-center justify-between gap-5 p-5 text-left text-sm font-bold text-white transition-colors hover:text-cyan-400 sm:p-6"
-                  >
-                    <span>{faq.q}</span>
-
-                    <ChevronDown
-                      className={`h-5 w-5 shrink-0 transition-transform duration-300 ${
-                        isOpen
-                          ? 'rotate-180 text-cyan-400'
-                          : 'text-slate-600'
-                      }`}
-                      aria-hidden="true"
-                    />
-                  </button>
-
-                  <div
-                    id={`pricing-faq-${i}`}
-                    role="region"
-                    aria-hidden={!isOpen}
-                    className={`grid transition-all duration-300 ${
-                      isOpen
-                        ? 'grid-rows-[1fr] opacity-100'
-                        : 'grid-rows-[0fr] opacity-0'
-                    }`}
-                  >
-                    <div className="min-h-0 overflow-hidden">
-                      <p className="px-5 pb-5 text-sm leading-7 text-slate-400 sm:px-6 sm:pb-6">
-                        {faq.a}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
+            {faqs.map((faq) => <details key={faq.q} className="group overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/30">
+              <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-5 p-5 text-left text-sm font-bold text-white transition-colors hover:text-cyan-400 sm:p-6 [&::-webkit-details-marker]:hidden"><span>{faq.q}</span><ChevronDown className="h-5 w-5 shrink-0 text-slate-600 transition-transform duration-300 group-open:rotate-180 group-open:text-cyan-400" aria-hidden="true" /></summary>
+              <div className="border-t border-slate-800/70 px-5 pb-5 pt-4 sm:px-6 sm:pb-6"><p className="text-sm leading-7 text-slate-400">{faq.a}</p></div>
+            </details>)}
           </div>
         </div>
       </section>
