@@ -2075,7 +2075,7 @@ export const BLOG_POSTS: BlogPost[] = [
         'Connect a known-good external monitor or TV using a port that the laptop supports for video output. If an image appears externally, investigate the internal panel, display cable, backlight path or lid sensor; this does not by itself prove every GPU function is healthy.',
         'Try Caps Lock or Num Lock once and record whether the indicator responds. Keyboard-light behaviour is only one clue: it does not universally prove that POST completed or that Windows booted.',
         'On an LCD model, shine a flashlight obliquely across the screen in a dim room. A faint image can point toward an LCD backlight fault. This test does not apply to OLED panels and is not a substitute for display-circuit testing.',
-        'After a documented BIOS/RTC reset or firmware update, allow the model's documented first-start or memory-training process to finish before interrupting it. Timing varies by platform; there is no safe universal three-minute rule.'
+        "After a documented BIOS/RTC reset or firmware update, allow the model's documented first-start or memory-training process to finish before interrupting it. Timing varies by platform; there is no safe universal three-minute rule."
       ] },
       { type: 'callout', variant: 'info', title: 'Use more than one indicator', text: "Fan movement, a Caps Lock response, an LED pattern or an external-monitor result is evidence, not a complete diagnosis by itself. Combine the observations and compare them with the service information for the exact model." },
 
