@@ -853,7 +853,7 @@ export default function BlogPostTemplate() {
         ...heading,
         // The visual article heading retains its authored text. The ToC strips
         // a leading number before applying native ordered-list numbering.
-        tocLabel: heading.text.replace(/^\\d+[.)]\\s*/, ''),
+        tocLabel: heading.text.replace(/^\d+[.)]\s*/, ''),
       })) ?? []),
     [post]
   );
@@ -1116,7 +1116,7 @@ export default function BlogPostTemplate() {
         }] : [])
       ]
     };
-  }, [post, pageUrl, allFaqItems, isGuide, isNews]);
+  }, [post, pageUrl, allFaqItems, isGuide, isNews, isNoPowerGuide]);
 
   // All hooks have now run unconditionally on every render — safe to bail out.
   if (!post) return <Navigate to={isNews ? ROUTES.NEWS : isGuide ? ROUTES.GUIDES : ROUTES.BLOG} replace />;
