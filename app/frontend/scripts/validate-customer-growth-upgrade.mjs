@@ -962,6 +962,39 @@ add('Arabic charging-port FAQ keeps all eight question-answer pairs in source an
   && arabicCommercial.includes("inLanguage: 'ar-KW'")
   && arabicCommercial.includes("mainEntity: cfg.faq.map")
   && arabicCommercial.includes('<div className="px-6 pb-6 text-sm leading-8 text-slate-400">{item.a}</div>'));
+add('Arabic charging-port FAQ answers are expanded in the prerendered page while preserving all eight graph-backed answers',
+  chargingFaqCount === 8
+  && arabicCommercial.includes("open={slug === 'laptop-charging-port-repair-kuwait'}")
+  && arabicCommercial.includes("mainEntity: cfg.faq.map"));
+add('Arabic charging-port diagnostic matrix compares charger, connector and board-level fault paths',
+  arabicCommercial.includes('id="charging-port-component-matrix"')
+  && arabicCommercial.includes('احتمال الشاحن والكابل')
+  && arabicCommercial.includes('احتمال منفذ الشحن')
+  && arabicCommercial.includes('احتمال دائرة الشحن / المذربورد'));
+add('Arabic charging-port coverage explains connector architectures and model-dependent brand families',
+  arabicCommercial.includes('id="charging-port-architectures"')
+  && arabicCommercial.includes('DC Jack بكابل داخلي')
+  && arabicCommercial.includes('USB-C أو Thunderbolt')
+  && arabicCommercial.includes('MagSafe')
+  && arabicCommercial.includes('ThinkPad')
+  && arabicCommercial.includes('Legion')
+  && arabicCommercial.includes('ROG وTUF')
+  && arabicCommercial.includes('MSI')
+  && arabicCommercial.includes('Acer Predator'));
+add('Arabic charging-port price table matches current KCROC published repair ranges',
+  arabicCommercial.includes('id="charging-port-price-guide"')
+  && arabicCommercial.includes('20–25 د.ك')
+  && arabicCommercial.includes('25–35 د.ك')
+  && arabicCommercial.includes('من 35 د.ك')
+  && arabicCommercial.includes('مجانًا (0 د.ك)')
+  && arabicCommercial.includes('الموافقة قبل أي عمل مدفوع'));
+add('Arabic charging-port WhatsApp fast-track captures model, port and charger label, symptoms and Kuwait area',
+  arabicCommercial.includes('id="charging-whatsapp-fast-track"')
+  && arabicCommercial.includes('ملصق قدرة الشاحن (Wattage)')
+  && arabicCommercial.includes('أرسل تفاصيل جهازك على واتساب'));
+add('Arabic charging-port graph modification date reflects the current page upgrade',
+  graph.includes("lastUpdated: '2026-11-08T00:00:00+03:00'")
+  && graph.includes("lastModified: '2026-11-08T00:00:00+03:00'"));
 add('Arabic charging-port repair process renders six single list items without duplicate native numbering',
   chargingProcess.includes('<ol className="mt-6 grid list-none gap-4 sm:grid-cols-2 lg:grid-cols-3">')
   && ['١.', '٢.', '٣.', '٤.', '٥.', '٦.'].every((number) => chargingProcess.includes("{ title: '" + number))
