@@ -4633,20 +4633,299 @@ export const rawGraphData: RawGraphData = {
       navigationPriority: 90
     } as LocationEntity,
 
-    'loc-farwaniya': { id: 'loc-farwaniya', slug: 'farwaniya', entityType: 'Location', isActive: true, isPhysicalLocation: false, title: 'Farwaniya', description: 'Computer and laptop repair for Farwaniya, with a practical focus on power, charging, display, battery and motherboard faults and free pickup to KCROC\'s Hawalli workshop.', localIntro: 'For Farwaniya customers, the easiest path is usually pickup rather than driving to a shop. KCROC collects the device, performs the diagnosis in the Hawalli lab, explains the repair path and returns the device after testing. The Farwaniya service area includes Khaitan, Riggae, Ardiya and Jleeb Al-Shuyoukh.', localHighlights: [
-        { title: 'Pickup from Farwaniya, Khaitan and Riggae', description: 'Tell us your area and device symptom and we can arrange the collection through the Kuwait-wide pickup service.' },
-        { title: 'Power and charging diagnosis', description: 'For dead laptops, loose charging ports and no-charge symptoms, the power path is tested before a motherboard replacement is recommended.' },
-        { title: 'Screen, battery and motherboard work', description: 'The page connects Farwaniya customers directly to the relevant repair services instead of forcing them through a generic computer-repair page.' },
-        { title: 'Repair happens at the Hawalli lab', description: 'Farwaniya is a service area, not a walk-in branch. Devices are processed at the central KCROC repair lab and delivered back after testing.'
+    'loc-farwaniya': {
+      id: 'loc-farwaniya',
+      slug: 'farwaniya',
+      entityType: 'Location',
+      isActive: true,
+      isPhysicalLocation: false,
+      title: 'Farwaniya',
+      description: 'Computer, laptop, MacBook and motherboard repair for Farwaniya, Khaitan, Riggae, Ardiya and Jleeb Al-Shuyoukh. Free pickup to our Hawalli lab, free initial diagnostic and repair quotes from 15 KWD before paid work.',
+      heroBadge: 'Now Serving Farwaniya · Khaitan · Riggae · Ardiya · Jleeb Al-Shuyoukh',
+      heroHeadline: 'Computer Repair in Farwaniya, Kuwait',
+      localValueHeading: 'Computer & Laptop Repair for Farwaniya',
+      localServicesHeading: 'Computer Repair Services in Farwaniya',
+      localPickupHeading: 'Free Pickup From Farwaniya — Repaired in Hawalli',
+      localIntro: 'For Farwaniya customers, pickup is easier than driving across Kuwait to our Hawalli workshop. Tell us your device model and symptoms, and our courier can collect from your home or office. Each device is logged for workshop intake, diagnosed at our ESD-safe lab in Ibn Khaldoun Street, Al Mullah Complex, Basement Shop 19, and returned after approved repair and testing. The service area includes Farwaniya, Khaitan, Riggae, Ardiya, Jleeb Al-Shuyoukh, Abbasiya, Ishbiliya, Rehab, Rabiya, Omariya and Andalus.',
+      landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)',
+      coords: { lat: 29.2770, lng: 47.9590 },
+      serviceRadiusKm: 20,
+      serviceAreas: ['Farwaniya', 'Khaitan', 'Riggae', 'Ardiya', 'Jleeb Al-Shuyoukh', 'Abbasiya', 'Ishbiliya', 'Rehab', 'Rabiya', 'Omariya', 'Andalus'],
+      relatedServiceIds: ['srv-laptop', 'srv-motherboard', 'srv-screen', 'srv-battery', 'srv-charging-port', 'srv-gaming', 'srv-macbook', 'srv-liquid-damage'],
+      relatedProblemIds: ['problem-no-power', 'problem-not-charging', 'problem-black-screen', 'problem-cracked-screen', 'problem-slow', 'problem-overheating'],
+      relatedBrandIds: ['brand-dell', 'brand-hp', 'brand-lenovo', 'brand-asus', 'brand-acer', 'brand-msi'],
+      contentImage: {
+        src: IMAGES.services.motherboardRepair.src,
+        alt: IMAGES.services.motherboardRepair.alt,
+        width: IMAGES.services.motherboardRepair.width,
+        height: IMAGES.services.motherboardRepair.height,
+        caption: 'Component-level motherboard diagnosis and screen repair for Farwaniya customers.'
+      },
+      localHighlights: [
+        {
+          title: 'Free pickup from Farwaniya and nearby districts',
+          description: 'Arrange doorstep collection from Farwaniya, Khaitan, Riggae, Ardiya, Jleeb Al-Shuyoukh, Abbasiya, Ishbiliya, Rehab, Rabiya, Omariya and Andalus. Share your block, street and location pin so the courier can confirm the handover point.'
         },
-      ], localFaqs: [
-        { id: "faq-farwaniya-local-1", question: "Do you collect from Khaitan, Riggae, Ardiya and Jleeb Al-Shuyoukh?", answer: "Yes. Farwaniya, Khaitan, Riggae, Ardiya and Jleeb Al-Shuyoukh are covered by free pickup and delivery. Send your area and device symptoms on WhatsApp and we will arrange collection." },
-        { id: "faq-farwaniya-local-2", question: "My charger is plugged in but the laptop is not charging. Is it the charger, the port or the board?", answer: "Check for a charging light, try another outlet and, if you can, another compatible charger. If the cable needs to be held at an angle to charge, the port is likely loose. We test the adapter, the port and the power path on the bench before recommending a motherboard replacement." },
-        { id: "faq-farwaniya-local-3", question: "My laptop turns on but the screen stays black. What does that mean?", answer: "If the power light and fans come on but the display is black, shine a torch at the screen. A faint image points to the backlight, and an external monitor that works points to the panel or cable. If neither shows anything, the fault may be on the board. We diagnose before quoting, and you pay nothing if we cannot fix it." },
-        { id: "faq-farwaniya-local-4", question: "Should I send the charger with the laptop?", answer: "It helps to include the charger you normally use, because charging faults can involve the adapter as well as the laptop. Mention anything you noticed, such as a burning smell, a loose plug or the laptop only charging at certain angles." },
-        { id: "faq-farwaniya-local-5", question: "My battery drops from 30 percent to zero. Is it the battery or something else?", answer: "It can be a worn battery, but the charging circuit can also give the same symptom, so we check both. If the battery needs replacing, we explain the available options before you choose." },
-        { id: "faq-farwaniya-local-6", question: "Is there a branch in Farwaniya, and where is the repair done?", answer: "There is no walk-in branch in Farwaniya. Devices are repaired at our Hawalli lab (Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19), open daily from 10:00 AM to 10:00 PM. You can bring a device in yourself or have it collected for free, and repairs carry a 30-day warranty." },
-      ], landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)', coords: { lat: 29.2770, lng: 47.9590 }, serviceRadiusKm: 20, serviceAreas: ['Farwaniya', 'Khaitan', 'Riggae', 'Ardiya', 'Jleeb Al-Shuyoukh'], relatedServiceIds: ['srv-laptop', 'srv-charging-port', 'srv-screen', 'srv-battery', 'srv-motherboard'], relatedProblemIds: ['problem-no-power', 'problem-not-charging', 'problem-black-screen', 'problem-cracked-screen', 'problem-slow'], contentImage: { src: IMAGES.services.motherboardRepair.src, alt: IMAGES.services.motherboardRepair.alt, width: IMAGES.services.motherboardRepair.width, height: IMAGES.services.motherboardRepair.height, caption: 'Chip-level motherboard repair and screen replacement serving the Farwaniya governorate.' }, seo: { title: "Laptop & Computer Repair Farwaniya | Free Pickup | KCROC", description: "Laptop and PC repair in Farwaniya, Khaitan, Riggae, Ardiya and Jleeb Al-Shuyoukh. Free pickup to our Hawalli lab, quote before repair and 30-day warranty.", canonicalUrl: 'https://www.computerrepairkuwait.com/location/farwaniya', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/location/farwaniya', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/computer-repair-farwaniya', 'x-default': 'https://www.computerrepairkuwait.com/location/farwaniya' }, ogType: 'website', schemaTypes: ['LocalBusiness'], lastModified: '2026-10-24T00:00:00+03:00' }, navigationPriority: 80 } as LocationEntity,
+        {
+          title: 'Power and charging diagnosis before replacement',
+          description: 'For a laptop that will not turn on or charge, we check the compatible adapter, DC jack or USB-C input and the motherboard power path. Multimeter measurements, microscope inspection and boardview tracing help identify the relevant fault before a repair quote is issued.'
+        },
+        {
+          title: 'Screen, battery and motherboard faults checked separately',
+          description: 'A black or flickering display can come from the panel, eDP cable or backlight circuit. We check the display path before ordering a screen, and test battery condition alongside the charging circuit before recommending a battery replacement or board repair.'
+        },
+        {
+          title: 'Every repair is completed at the Hawalli lab',
+          description: 'Farwaniya is a pickup and delivery service area, not a walk-in branch. Board-level work takes place on grounded, ESD-safe workstations at KCROC’s central Hawalli workshop; your device is returned after the approved repair and post-repair checks.'
+        }
+      ],
+      localPricingTable: {
+        heading: 'Transparent Repair Pricing & Turnaround for Farwaniya',
+        intro: 'Farwaniya pickups are assessed at KCROC’s Hawalli lab. The initial hardware diagnostic and pickup/return delivery are free; you receive the repair findings and a fixed quote before any paid work begins.',
+        note: 'Published starting rates and service ranges are guide prices, not a diagnosis or final quote. The exact model, fault, repair scope, compatible part and availability determine the final amount and timing. No Fix, No Fee applies under KCROC’s published service terms.',
+        rows: [
+          {
+            service: 'Pickup, return delivery & initial hardware diagnostic',
+            startingPrice: 'FREE',
+            typicalTurnaround: 'Collection slot confirmed with you; diagnosis follows lab intake.',
+            includes: 'Doorstep collection from Farwaniya, initial hardware inspection and a quote before paid work.'
+          },
+          {
+            service: 'General laptop repair',
+            startingPrice: 'From 15 KWD',
+            typicalTurnaround: 'Often same day / 24 hours; confirmed after diagnosis.',
+            includes: 'Fault isolation for common hardware, thermal, hinge and repairable mechanical issues.'
+          },
+          {
+            service: 'Laptop battery replacement',
+            startingPrice: '8–15 KWD labour + battery',
+            typicalTurnaround: 'Confirmed after exact model and battery availability checks.',
+            includes: 'Battery condition and charging-path checks, compatible part verification and installation.'
+          },
+          {
+            service: 'Laptop keyboard replacement',
+            startingPrice: '10–20 KWD labour + keyboard / assembly',
+            typicalTurnaround: 'Same day to 24 hours when the compatible part is available.',
+            includes: 'Key-input and ribbon-connection diagnosis, followed by model-matched fitting where required.'
+          },
+          {
+            service: 'Laptop thermal service',
+            startingPrice: '15–20 KWD',
+            typicalTurnaround: 'Often same day; confirmed after inspection and scheduling.',
+            includes: 'Cooling-system inspection, suitable fan/heatsink cleaning and thermal-interface service.'
+          },
+          {
+            service: 'Laptop charging port repair',
+            startingPrice: '20–35 KWD',
+            typicalTurnaround: 'Same day / 24 hours for common connector work; deeper board faults take longer.',
+            includes: 'Supported DC jack or USB-C connector inspection, replacement and power-path checks.'
+          },
+          {
+            service: 'Motherboard component repair',
+            startingPrice: '25–60 KWD',
+            typicalTurnaround: '24–48 hours is typical; complex faults or parts orders can take longer.',
+            includes: 'Diagnosis and targeted repair of suitable failed MOSFETs, power ICs, capacitors or related components.'
+          },
+          {
+            service: 'Laptop & MacBook screen replacement',
+            startingPrice: 'From 30 KWD labour + panel / display assembly',
+            typicalTurnaround: 'Same day or within 24 hours only when the compatible part is in stock.',
+            includes: 'Panel, display cable and backlight checks before a compatible replacement is quoted.'
+          },
+          {
+            service: 'Laptop liquid-damage repair',
+            startingPrice: '35–90+ KWD',
+            typicalTurnaround: '24–72 hours is the published typical range; damage and parts can extend it.',
+            includes: 'Power isolation, corrosion assessment, board cleaning and component / trace repair where viable.'
+          },
+          {
+            service: 'MacBook board-level repair',
+            startingPrice: '45–100+ KWD',
+            typicalTurnaround: '24–48 hours is typical for many repairs; complex faults or parts orders can take longer.',
+            includes: 'MacBook Air / Pro logic-board diagnosis and component-level repair where the original board is repairable.'
+          }
+        ]
+      },
+      localServiceCards: [
+        {
+          title: 'Laptop Repair',
+          summary: 'Component-level laptop diagnostics, micro-soldering and hardware restoration, with free pickup, a clear quote before paid work and a 30-day warranty.',
+          problem: 'A laptop in Farwaniya may shut down, fail to boot, develop a broken hinge or throttle under load. The symptom alone does not identify the failed part.',
+          expertise: 'At the Hawalli lab, we inspect the relevant power, display, mechanical or cooling path. Microscope inspection, multimeter measurements, thermal imaging and boardview tracing are used where the fault calls for them.',
+          solution: 'We explain the fault and suitable repair options before paid work. Common laptop repair starts from 15 KWD; parts and complex board work are quoted separately.',
+          serviceIds: ['srv-laptop']
+        },
+        {
+          title: 'Motherboard Repair',
+          summary: 'Laptop and desktop motherboard diagnosis for no-power, charging and other repairable component-level faults.',
+          problem: 'A dead laptop or repeated shutdown does not automatically mean the whole motherboard needs replacing.',
+          expertise: 'We test the original board’s relevant power rails and inspect affected components. Where technically appropriate, we use component-level repair rather than defaulting to a complete board swap.',
+          solution: 'Published component-level motherboard repair is 25–60 KWD. The exact repair scope is confirmed after diagnosis and approved before paid work.',
+          serviceIds: ['srv-motherboard']
+        },
+        {
+          title: 'Laptop Screen Repair',
+          summary: 'Diagnosis for cracked, black, lined or flickering laptop displays, with model-matched panel replacement when needed.',
+          problem: 'A dark or flickering display can be caused by a failed panel, damaged eDP cable, lid sensor or motherboard backlight circuit.',
+          expertise: 'We check the display cable, connector and relevant backlight path before recommending a panel. A known-good display or external monitor can help isolate the fault.',
+          solution: 'Screen replacement labour starts from 30 KWD plus the compatible panel. Timing depends on the exact panel and local stock.',
+          serviceIds: ['srv-screen']
+        },
+        {
+          title: 'Laptop Battery Replacement',
+          summary: 'Windows laptop battery testing and model-matched replacement after the charging path is checked.',
+          problem: 'Fast battery drain, unexpected shutdowns or a laptop that dies when unplugged can involve worn cells or a charging-circuit fault.',
+          expertise: 'We check battery condition and charging behaviour, then confirm the exact battery part number, fit and availability before quoting.',
+          solution: 'Published installation labour is 8–15 KWD plus the battery. Stop using or charging a visibly swollen battery and arrange safe inspection.',
+          serviceIds: ['srv-battery']
+        },
+        {
+          title: 'Laptop Charging Port Repair',
+          summary: 'DC jack and supported USB-C charging-port diagnosis, connector repair and power-path checks.',
+          problem: 'A loose port, cable-angle sensitivity or intermittent charging can come from the adapter, connector, solder joints or charging circuit.',
+          expertise: 'We test the adapter, inspect the connector under magnification and check the relevant input and charging path before deciding whether connector or board-level work is appropriate.',
+          solution: 'Common charging-port repair is published at 20–35 KWD. Deeper charging-circuit work is assessed and quoted separately.',
+          serviceIds: ['srv-charging-port']
+        },
+        {
+          title: 'Gaming PC Repair',
+          summary: 'Repair and diagnostics for complete gaming desktop systems collected from homes and offices across Farwaniya.',
+          problem: 'A complete gaming tower may black-screen, fail to POST, restart under load or overheat because of a system-level power, motherboard, memory or cooling fault.',
+          expertise: 'We assess the complete desktop system, including power-supply stability, motherboard, memory, cooling and system behaviour under suitable tests. We do not accept standalone graphics cards.',
+          solution: 'The full tower is diagnosed at our Hawalli workshop and receives a repair quote before paid work. Collection and return delivery can be arranged for complete desktop systems.',
+          serviceIds: ['srv-gaming']
+        },
+        {
+          title: 'MacBook Repair & Logic-Board Diagnostics',
+          summary: 'MacBook Air and MacBook Pro repair for power, charging, display, battery, keyboard and liquid-spill symptoms.',
+          problem: 'A MacBook may show no power, USB-C / MagSafe charging trouble, a black display, battery issues or a liquid-related fault.',
+          expertise: 'We identify the exact model and inspect its charging path, display symptoms and logic-board condition. Component-level repair is considered only where the original board is technically repairable.',
+          solution: 'Published MacBook board-level repair is 45–100+ KWD. The final quote depends on the model and fault; data access or preservation cannot be guaranteed.',
+          serviceIds: ['srv-macbook']
+        },
+        {
+          title: 'Laptop Liquid-Damage & Corrosion Repair',
+          summary: 'Power isolation, corrosion assessment and board-level repair after water, coffee, tea or karak spills.',
+          problem: 'A spill can affect the keyboard, connectors or motherboard even after visible moisture has dried.',
+          expertise: 'We isolate power, assess the affected assemblies and corrosion, and clean the board using a method appropriate to its materials. Microscope inspection, trace repair and micro-soldering are considered where viable.',
+          solution: 'Published liquid-damage repair is 35–90+ KWD, with a typical 24–72 hour window. Keep a spilled device switched off and unplugged; data recovery is not offered and data access cannot be guaranteed.',
+          serviceIds: ['srv-liquid-damage']
+        }
+      ],
+      localProblemDiagnostics: [
+        {
+          problemId: 'problem-no-power',
+          symptom: 'Laptop will not turn on (no power)',
+          likelyCause: 'Possible adapter failure, input-protection damage, a shorted main power rail, failed MOSFET or power-management component.',
+          labCheck: 'We test the compatible adapter, measure relevant board rails and use current profiling, microscope inspection and thermal imaging where the fault pattern supports it.',
+          startingRate: 'Free initial diagnostic; suitable component-level motherboard repair is 25–60 KWD.'
+        },
+        {
+          problemId: 'problem-cracked-screen',
+          symptom: 'Laptop screen is cracked or shattered',
+          likelyCause: 'A fractured LCD / OLED panel, damaged hinge mount or pinched display cable can cause the visible damage or related display symptoms.',
+          labCheck: 'We confirm the exact panel specification and inspect the eDP cable, connector and backlight path before quoting a compatible panel.',
+          startingRate: 'Screen replacement labour from 30 KWD plus the compatible panel.'
+        },
+        {
+          problemId: 'problem-not-charging',
+          symptom: 'Laptop is plugged in but not charging',
+          likelyCause: 'Possible adapter-output fault, worn DC jack / USB-C connector, damaged solder joint, degraded battery or charging-circuit fault.',
+          labCheck: 'We test adapter output, inspect the port under magnification and measure the relevant input and charging path before recommending connector, battery or board work.',
+          startingRate: 'Charging port repair 20–35 KWD; battery labour 8–15 KWD plus battery.'
+        },
+        {
+          problemId: 'problem-black-screen',
+          symptom: 'Laptop powers on but the screen stays black',
+          likelyCause: 'Possible panel or eDP cable fault, backlight-circuit issue, RAM problem or BIOS / POST failure.',
+          labCheck: 'We compare internal display behaviour with an external monitor, then check the display path and relevant POST / memory symptoms.',
+          startingRate: 'Free initial diagnostic; the repair quote depends on the confirmed panel, cable or board fault.'
+        },
+        {
+          problemId: 'problem-overheating',
+          symptom: 'Laptop overheats, throttles or shuts down under load',
+          likelyCause: 'Dust-restricted heatsink fins, dried thermal-interface material, a worn fan or another cooling-system fault.',
+          labCheck: 'We inspect fan behaviour, airflow, heatsink condition and temperatures under a suitable workload before selecting model-appropriate cleaning or thermal service.',
+          startingRate: 'Laptop thermal service 15–20 KWD; additional parts are quoted separately.'
+        }
+      ],
+      localScopeNotice: {
+        heading: 'What KCROC Repairs — and What We Do Not Offer',
+        body: 'KCROC focuses on laptops, MacBooks, desktop PCs and complete gaming PC towers. We do not repair smartphones, tablets / iPads or printers; buy used equipment; accept standalone graphics cards removed from a computer; or provide specialist data-recovery / dead-drive file-rescue services. Our technicians follow hardware-only privacy procedures and do not browse customers’ personal files.'
+      },
+      localFaqs: [
+        {
+          id: 'faq-farwaniya-shop',
+          question: 'Do you have a repair shop in Farwaniya?',
+          answer: 'We do not operate a walk-in branch in Farwaniya. KCROC’s central ESD-safe repair lab is in Hawalli at Ibn Khaldoun Street, Al Mullah Complex, Basement Shop 19. We arrange free pickup from Farwaniya, complete approved repairs at the Hawalli workshop and return the device to your home or office.'
+        },
+        {
+          id: 'faq-farwaniya-pickup',
+          question: 'Do you offer laptop pickup from Farwaniya?',
+          answer: 'Yes. Free pickup and return delivery are available across Farwaniya. KCROC operates daily from 10:00 AM to 10:00 PM; send your area, location pin, device model and symptoms on WhatsApp at +965 55301913 so the team can confirm a collection slot. There is no deposit or minimum spend for the initial collection.'
+        },
+        {
+          id: 'faq-farwaniya-cost',
+          question: 'How much does laptop repair cost for Farwaniya customers?',
+          answer: 'The initial hardware diagnostic and pickup / return delivery are free. Laptop repair starts from 15 KWD; thermal service is 15–20 KWD; battery installation labour is 8–15 KWD plus the battery; keyboard labour is 10–20 KWD plus the keyboard or assembly; charging-port repair is 20–35 KWD; component-level motherboard repair is 25–60 KWD; screen labour starts from 30 KWD plus the panel; liquid-damage repair is 35–90+ KWD; and MacBook board-level repair is 45–100+ KWD. The exact quote depends on the model, fault, part and repair scope, and is approved before paid work.'
+        },
+        {
+          id: 'faq-farwaniya-turnaround',
+          question: 'How long does a repair take for Farwaniya customers?',
+          answer: 'Many common laptop repairs can be completed the same day or within 24 hours once the device reaches the Hawalli lab, provided the compatible part is available. Common charging-port work is typically same day / 24 hours; component-level motherboard work is commonly 24–48 hours; MacBook board-level work is typically 24–48 hours; and liquid-damage repair is typically 24–72 hours. We confirm the estimate after diagnosis and parts checks.'
+        },
+        {
+          id: 'faq-farwaniya-coverage',
+          question: 'Do you collect from Khaitan, Riggae, Ardiya and Jleeb Al-Shuyoukh?',
+          answer: 'Yes. Free pickup and return delivery can be arranged in Farwaniya, Khaitan, Riggae, Ardiya and Jleeb Al-Shuyoukh, as well as nearby areas including Abbasiya, Ishbiliya, Rehab, Rabiya, Omariya and Andalus. Send your block, street and location pin to confirm the collection point.'
+        },
+        {
+          id: 'faq-farwaniya-charging',
+          question: 'My charger is plugged in but the laptop is not charging. Is it the charger, the port or the board?',
+          answer: 'Any of the three can cause this symptom. An adapter may deliver unstable voltage, a loose DC jack or USB-C port may interrupt the connection, and a charging IC or protection component on the motherboard may prevent charging even when the connector looks normal. We test the adapter, inspect the port and check the board’s charging path before recommending a repair.'
+        },
+        {
+          id: 'faq-farwaniya-black-screen',
+          question: 'My laptop turns on but the screen stays black. What does that mean?',
+          answer: 'The cause may be a failed LCD / OLED panel, a loose or damaged eDP display cable, a backlight-circuit fault, or a RAM / BIOS POST issue. An external monitor test helps separate an internal display-path fault from a wider boot or board problem. We identify the likely cause before quoting a screen or board repair.'
+        },
+        {
+          id: 'faq-farwaniya-charger',
+          question: 'Should I send the charger with the laptop?',
+          answer: 'Yes, include the original charger whenever the issue involves no power, intermittent charging, battery drain or shutdowns under load. Testing the adapter with the laptop helps us check whether it is delivering the expected output or entering protection. For a purely physical repair such as a cracked screen or broken hinge, the charger is optional.'
+        },
+        {
+          id: 'faq-farwaniya-battery',
+          question: 'My battery drops from 30 percent to zero. Is it the battery or something else?',
+          answer: 'Degraded lithium-ion cells can lose voltage under load and cause a sudden drop from 30 percent to zero. Battery calibration or a motherboard current-sensing / charging fault can sometimes produce similar symptoms. We check battery condition and the charging path before confirming whether replacement is appropriate. Stop using or charging a visibly swollen battery.'
+        },
+        {
+          id: 'faq-farwaniya-lab',
+          question: 'Is there a branch in Farwaniya, and where is the repair done?',
+          answer: 'There is no walk-in branch in Farwaniya. Every collected device is repaired at KCROC’s central Hawalli laboratory: Ibn Khaldoun Street, Al Mullah Complex, Basement Shop 19, Hawalli, Kuwait. The device is checked after the approved repair and returned to Farwaniya free of charge, with a 30-day warranty on completed repairs and No Fix, No Fee under the published service terms.'
+        }
+      ],
+      seo: {
+        title: 'Computer & Laptop Repair Farwaniya | Free Pickup | KCROC',
+        description: 'Computer, laptop, MacBook & motherboard repair for Farwaniya, Khaitan, Riggae & Ardiya. Free pickup to our Hawalli lab, free diagnostic, from 15 KWD. Open 10–10.',
+        canonicalUrl: 'https://www.computerrepairkuwait.com/location/farwaniya',
+        locale: 'en_KW',
+        alternates: {
+          'en-KW': 'https://www.computerrepairkuwait.com/location/farwaniya',
+          'ar-KW': 'https://www.computerrepairkuwait.com/ar/computer-repair-farwaniya',
+          'x-default': 'https://www.computerrepairkuwait.com/location/farwaniya'
+        },
+        breadcrumbs: [
+          { name: 'Home', url: '/' },
+          { name: 'Service Areas', url: '/locations' },
+          { name: 'Computer Repair Farwaniya', url: '/location/farwaniya' }
+        ],
+        ogType: 'website',
+        schemaTypes: ['LocalBusiness', 'WebPage'],
+        lastModified: '2026-11-09T00:00:00+03:00'
+      },
+      navigationPriority: 80
+    } as LocationEntity,
 
     'loc-jahra': { id: 'loc-jahra', slug: 'jahra', entityType: 'Location', isActive: true, isPhysicalLocation: false, localIntro: "Jahra is further from our Hawalli lab than most service areas, which is exactly why pickup matters: you do not need to make the trip. We collect from Jahra, Saad Al Abdullah, Naeem, Qasr and Taima, repair the device in Hawalli and return it once it has passed testing. Overheating, thermal maintenance and motherboard diagnostics are the main focus here.", localHighlights: [
         { title: "Pickup from Jahra, Naeem, Qasr, Taima and Saad Al Abdullah", description: "Share your area and device on WhatsApp and we will arrange free collection and return." },
