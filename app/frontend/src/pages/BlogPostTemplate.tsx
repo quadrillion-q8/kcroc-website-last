@@ -853,7 +853,7 @@ export default function BlogPostTemplate() {
         ...heading,
         // The visual article heading retains its authored text. The ToC strips
         // a leading number before applying native ordered-list numbering.
-        tocLabel: heading.text.replace(/^\d+[.)]\s*/, ''),
+        tocLabel: heading.text.replace(/^(?:First:\s*|\d+[.)]\s*)/i, ''),
       })) ?? []),
     [post]
   );
