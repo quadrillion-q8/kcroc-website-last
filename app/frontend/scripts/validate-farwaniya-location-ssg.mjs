@@ -56,7 +56,7 @@ const triageEnd = html.indexOf('</table>', triageStart);
 assert.ok(triageStart >= 0 && triageEnd > triageStart, 'Symptom triage table is missing or incomplete');
 const triageHtml = html.slice(triageStart, triageEnd);
 assert.equal((triageHtml.match(/https:\/\/wa\.me\/96555301913\?text=/g) ?? []).length, 5, 'Each triage symptom must have one pre-filled WhatsApp dispatch link');
-assert.ok(triageHtml.includes('I am in Farwaniya'), 'Symptom WhatsApp message must carry the Farwaniya area intent');
+assert.ok(triageHtml.includes('I%20am%20in%20Farwaniya'), 'Symptom WhatsApp message must carry the Farwaniya area intent in its URL-encoded text');
 
 for (const marker of [
   'What KCROC Repairs',
