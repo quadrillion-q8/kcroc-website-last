@@ -130,13 +130,15 @@ export default function LocationDeepTemplate() {
   const phone = business.telephone; // read from KCROC_GRAPH, e.g. Kuwait mobile in international format
   const phoneDisplay = `+965 ${phone.slice(3, 7)} ${phone.slice(7)}`;
   const WA_LINK = `https://wa.me/${phone}?text=${encodeURIComponent(
-    `Hi KCROC, I am in ${location.title} and need a device repaired. Can we arrange a pickup?`
+    location.slug === 'farwaniya'
+      ? 'Hi KCROC, I need free pickup in Farwaniya. Device / model: ____. Issue: ____. Area / block: ____. Please confirm a collection slot.'
+      : `Hi KCROC, I am in ${location.title} and need a device repaired. Can we arrange a pickup?`
   )}`;
 
   // Most locations use shared commercial/logistics FAQs. Priority pages with
   // distinct service mixes use dedicated questions so local intent and booking
   // details are not diluted by generic copy.
-  const usesDedicatedLocationFaqs = ['abdullah-al-salem', 'shamiya', 'nuzha', 'adailiya', 'kuwait-city', 'salmiya', 'surra'].includes(location.slug) || location.slug === 'kaifan' || location.slug === 'mahboula';
+  const usesDedicatedLocationFaqs = ['abdullah-al-salem', 'shamiya', 'nuzha', 'adailiya', 'kuwait-city', 'salmiya', 'surra', 'farwaniya'].includes(location.slug) || location.slug === 'kaifan' || location.slug === 'mahboula';
   const isConciergeCollectionArea = ['shuwaikh-residential', 'abdullah-al-salem', 'kaifan', 'shamiya', 'nuzha', 'adailiya'].includes(location.slug);
   const sharedLocationFaqs: LocalFAQ[] = [
     {
@@ -424,6 +426,43 @@ export default function LocationDeepTemplate() {
               </Link>
             </section>
           )}
+          {location.localPricingTable && (
+            <section aria-labelledby="local-pricing-table-heading" className="mt-8 rounded-2xl border border-slate-800 bg-slate-900/45 p-4 sm:p-6">
+              <div className="mb-4">
+                <h3 id="local-pricing-table-heading" className="text-xl sm:text-2xl font-black text-white">
+                  {location.localPricingTable.heading}
+                </h3>
+                <p className="mt-2 text-sm leading-6 text-slate-300">{location.localPricingTable.intro}</p>
+              </div>
+              <div className="overflow-x-auto rounded-xl border border-slate-800">
+                <table className="w-full min-w-[900px] border-collapse text-left text-sm" data-farwaniya-pricing-table="true">
+                  <caption className="sr-only">KCROC published repair guide prices and typical turnaround for Farwaniya customers</caption>
+                  <thead className="bg-slate-800/80 text-xs uppercase tracking-wide text-slate-300">
+                    <tr>
+                      <th scope="col" className="px-4 py-3">Service</th>
+                      <th scope="col" className="px-4 py-3">Starting price / range</th>
+                      <th scope="col" className="px-4 py-3">Typical turnaround</th>
+                      <th scope="col" className="px-4 py-3">What is included</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-800">
+                    {location.localPricingTable.rows.map((row) => (
+                      <tr key={row.service} data-farwaniya-pricing-row="true" className="align-top">
+                        <th scope="row" className="px-4 py-4 font-semibold text-white">{row.service}</th>
+                        <td className="px-4 py-4 whitespace-nowrap font-black text-cyan-200">{row.startingPrice}</td>
+                        <td className="px-4 py-4 leading-6 text-slate-300">{row.typicalTurnaround}</td>
+                        <td className="px-4 py-4 leading-6 text-slate-400">{row.includes}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <p className="mt-4 text-xs leading-5 text-slate-400">{location.localPricingTable.note}</p>
+              <Link to="/pricing" className="mt-3 inline-flex min-h-10 items-center text-sm font-bold text-cyan-300 underline underline-offset-4 hover:text-cyan-200">
+                View full KCROC pricing
+              </Link>
+            </section>
+          )}
           {(location.localHighlights ?? []).length > 0 && (
             <div className="mt-8 grid gap-4 sm:grid-cols-2">
               {(location.localHighlights ?? []).map((item) => (
@@ -457,7 +496,10 @@ export default function LocationDeepTemplate() {
                     key={card.title}
                     className="rounded-2xl border border-slate-800 bg-slate-900/50 p-5 sm:p-6 flex flex-col"
                   >
-                    <h3 className="text-lg font-bold text-white mb-4">{card.title}</h3>
+                    <h3 className="text-lg font-bold text-white mb-3">{card.title}</h3>
+                    {card.summary && (
+                      <p className="mb-4 text-sm leading-6 text-slate-400">{card.summary}</p>
+                    )}
                     <div className="space-y-3 text-sm leading-6">
                       <p className="text-slate-300">
                         <span className="font-bold text-cyan-400">Problem: </span>{card.problem}
@@ -524,18 +566,68 @@ export default function LocationDeepTemplate() {
           <h2 className="text-2xl sm:text-3xl font-black mb-6 sm:mb-10 text-white tracking-tight">
             Common Computer &amp; Laptop Problems We Fix in {location.title}
           </h2>
-          <div className="scroll-row gap-3 -mx-4 px-4 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-3">
-            {problems.map((problem) => (
-              <Link
-                key={problem.id}
-                to={`/${problem.slug}`}
-                className="scroll-row-item w-[80%] sm:w-auto flex items-center gap-3 bg-slate-900/40 hover:bg-slate-900/70 border border-slate-800 hover:border-cyan-500/40 rounded-xl px-4 py-3.5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
-              >
-                <Wrench className="w-4 h-4 text-cyan-500 shrink-0" aria-hidden="true" />
-                <span className="text-sm text-slate-200 font-medium">{LOCATION_PROBLEM_LABEL_OVERRIDES[location.slug]?.[problem.id] ?? problem.title}</span>
-              </Link>
-            ))}
-          </div>
+          {location.localProblemDiagnostics?.length ? (
+            <div className="overflow-x-auto rounded-2xl border border-slate-800">
+              <table className="w-full min-w-[1040px] border-collapse text-left text-sm" data-farwaniya-triage-table="true">
+                <caption className="sr-only">Common Farwaniya laptop symptoms, possible hardware causes, lab checks and guide rates</caption>
+                <thead className="bg-slate-900/80 text-xs uppercase tracking-wide text-slate-300">
+                  <tr>
+                    <th scope="col" className="px-4 py-3">Symptom</th>
+                    <th scope="col" className="px-4 py-3">Likely hardware cause</th>
+                    <th scope="col" className="px-4 py-3">How our Hawalli lab checks it</th>
+                    <th scope="col" className="px-4 py-3">Guide rate</th>
+                    <th scope="col" className="px-4 py-3">Quick action</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-800">
+                  {location.localProblemDiagnostics.map((item) => {
+                    const linkedProblem = problems.find((problem) => problem.id === item.problemId);
+                    const symptomMessage = `Hi KCROC, I am in Farwaniya and need free pickup. Device / model: ____. Symptom: ${item.symptom}. Area / block: ____. Please arrange collection and advise the diagnostic next step.`;
+                    const symptomWhatsApp = `https://wa.me/${phone}?text=${encodeURIComponent(symptomMessage)}`;
+                    return (
+                      <tr key={item.problemId} data-farwaniya-triage-row="true" className="align-top">
+                        <th scope="row" className="px-4 py-4 font-semibold text-white">
+                          {item.symptom}
+                          {linkedProblem && (
+                            <Link to={`/${linkedProblem.slug}`} className="mt-2 block text-xs font-semibold text-cyan-300 underline underline-offset-4 hover:text-cyan-200">
+                              Troubleshooting guide
+                            </Link>
+                          )}
+                        </th>
+                        <td className="px-4 py-4 leading-6 text-slate-300">{item.likelyCause}</td>
+                        <td className="px-4 py-4 leading-6 text-slate-400">{item.labCheck}</td>
+                        <td className="px-4 py-4 leading-6 font-semibold text-cyan-200">{item.startingRate}</td>
+                        <td className="px-4 py-4">
+                          <a
+                            href={symptomWhatsApp}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={() => handleWhatsAppClick('symptom_triage')}
+                            className="inline-flex min-h-10 items-center justify-center rounded-lg bg-cyan-500 px-3 py-2 text-xs font-black text-slate-950 transition hover:bg-cyan-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300"
+                          >
+                            WhatsApp this symptom
+                          </a>
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          ) : (
+            <div className="scroll-row gap-3 -mx-4 px-4 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-3">
+              {problems.map((problem) => (
+                <Link
+                  key={problem.id}
+                  to={`/${problem.slug}`}
+                  className="scroll-row-item w-[80%] sm:w-auto flex items-center gap-3 bg-slate-900/40 hover:bg-slate-900/70 border border-slate-800 hover:border-cyan-500/40 rounded-xl px-4 py-3.5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+                >
+                  <Wrench className="w-4 h-4 text-cyan-500 shrink-0" aria-hidden="true" />
+                  <span className="text-sm text-slate-200 font-medium">{LOCATION_PROBLEM_LABEL_OVERRIDES[location.slug]?.[problem.id] ?? problem.title}</span>
+                </Link>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
@@ -800,6 +892,17 @@ export default function LocationDeepTemplate() {
           </div>
         </div>
       </section>
+
+      {location.localScopeNotice && (
+        <section aria-labelledby="local-scope-notice-heading" className="px-4 sm:px-6 pb-8">
+          <div className="container mx-auto max-w-6xl rounded-2xl border border-slate-700 bg-slate-900/45 p-5 sm:p-6">
+            <h2 id="local-scope-notice-heading" className="text-lg font-black text-white">
+              {location.localScopeNotice.heading}
+            </h2>
+            <p className="mt-2 max-w-5xl text-sm leading-6 text-slate-400">{location.localScopeNotice.body}</p>
+          </div>
+        </section>
+      )}
 
       {/* ─── REVIEWS / SOCIAL PROOF (only if a review exists for this location) ─── */}
       {localReview && reviews && (
