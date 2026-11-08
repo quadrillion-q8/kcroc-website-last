@@ -4907,7 +4907,7 @@ export const rawGraphData: RawGraphData = {
       ],
       seo: {
         title: 'Computer & Laptop Repair Farwaniya | Free Pickup | KCROC',
-        description: 'Computer, laptop, MacBook & motherboard repair for Farwaniya, Khaitan, Riggae & Ardiya. Free pickup to our Hawalli lab, free diagnostic, from 15 KWD. Open 10–10.',
+        description: 'Computer, laptop, MacBook & motherboard repair for Farwaniya, Khaitan, Riggae & Ardiya. Free pickup to Hawalli lab, free diagnostic, from 15 KWD. Open 10–10.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/location/farwaniya',
         locale: 'en_KW',
         alternates: {
