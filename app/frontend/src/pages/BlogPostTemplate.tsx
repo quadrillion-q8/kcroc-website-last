@@ -36,6 +36,18 @@ const getModifiedDate = (post: BlogPost) => {
   return Number.isNaN(parsed.getTime()) ? post.date : parsed.toISOString();
 };
 
+const getTechnicalReviewDateLabel = (post: BlogPost, fallback: string) => {
+  if (!post.technicalReviewDate) return fallback;
+  const parsed = new Date(post.technicalReviewDate);
+  if (Number.isNaN(parsed.getTime())) return post.technicalReviewDate;
+  return new Intl.DateTimeFormat('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    timeZone: 'Asia/Kuwait',
+  }).format(parsed);
+};
+
 
 const STANDALONE_REPAIR_PATHS: Record<string, { title: string; intro: string; links: RelatedLinkItem[] }> = {
   'windows-11-100-disk-usage-causes-solutions': {
@@ -1290,7 +1302,9 @@ export default function BlogPostTemplate() {
                         {post.slug === 'why-is-my-laptop-so-slow' ? 'Hardware Repair Engineer and technical reviewer focused on laptop performance, memory, storage, thermal behaviour, power management and Windows diagnostics.' : 'Hardware Repair Engineer at KCROC, focused on laptop thermal troubleshooting, hardware testing and component-level repair in Kuwait.'}
                       </p>
                       <p className="text-xs text-slate-500 mt-2">
-                        Technical review: {post.slug === 'why-is-my-laptop-so-slow' ? post.technicalReviewDate || 'November 7, 2026' : `${post.technicalReviewDate || 'September 1, 2026'} · Hawalli, Kuwait`}
+                        Technical review: {post.slug === 'why-is-my-laptop-so-slow'
+                          ? getTechnicalReviewDateLabel(post, 'November 7, 2026')
+                          : `${getTechnicalReviewDateLabel(post, 'September 1, 2026')} · Hawalli, Kuwait`}
                       </p>
                     </div>
                   </div>
