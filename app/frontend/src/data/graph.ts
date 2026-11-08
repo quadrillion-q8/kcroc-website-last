@@ -908,7 +908,7 @@ export const rawGraphData: RawGraphData = {
       title: 'Intel Core Ultra vs AMD Ryzen AI: Which Is Better?',
       description: 'Compare exact Intel Core Ultra and AMD Ryzen AI laptop processors in 2026, including CPU topology, integrated graphics, NPU capability, power limits, RAM configuration and Kuwait thermal considerations.',
       seo: {
-        title: 'Intel Core Ultra vs Ryzen AI (2026): Specs & Laptop Guide | KCROC',
+        title: 'Intel Core Ultra vs Ryzen AI: 2026 Laptop Guide | KCROC',
         description: 'Compare Intel Core Ultra and Ryzen AI laptop chips in 2026: CPU cores, Arc vs Radeon graphics, NPU TOPS, power limits, RAM and Kuwait thermals.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/blog/intel-core-ultra-vs-amd-ryzen-ai',
         ogImage: 'https://www.computerrepairkuwait.com/images/blog/intel-core-ultra-vs-amd-ryzen-ai-comparison.webp',
