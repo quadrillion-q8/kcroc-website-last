@@ -2170,7 +2170,7 @@ export const BLOG_POSTS: BlogPost[] = [
     date: "2026-09-27",
     author: "Imran Natiq",
     category: "Laptop Troubleshooting",
-    technicalReviewDate: "2026-11-09",
+    technicalReviewDate: "2026-11-09T00:00:00+03:00",
     readTime: "18-20 min read",
     tags: ["Laptop Won't Turn On", "Laptop No Power", "Laptop Troubleshooting", "Laptop Power Delivery", "OEM Blink Codes", "Motherboard Power Sequence", "Board-Level Diagnosis", "Computer Repair Kuwait"],
     seoTitle: "Laptop Won't Turn On? No Power & Black Screen Guide | KCROC",
