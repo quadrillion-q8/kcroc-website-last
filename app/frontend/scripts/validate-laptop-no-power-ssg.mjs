@@ -53,7 +53,8 @@ assert.ok(
 assert.ok(html.includes('"@type":"TechArticle"') || html.includes('"@type": "TechArticle"'), 'TechArticle JSON-LD is missing');
 assert.ok(html.includes('"@type":"FAQPage"') || html.includes('"@type": "FAQPage"'), 'FAQPage JSON-LD is missing');
 assert.ok(html.includes('"reviewedBy"') || html.includes('reviewedBy'), 'Technical reviewer metadata is missing');
-assert.ok(html.includes('2026-11-09'), 'Technical review date is missing from rendered metadata/schema');
+assert.ok(html.includes('2026-11-08T21:00:00.000Z'), 'Kuwait-local review timestamp is missing from article metadata/schema');
+assert.ok(html.includes('November 9, 2026'), 'Kuwait-local technical review date is missing from the visible author panel');
 const faqSchemaQuestionCount = (html.match(/"@type":"Question"/g) ?? []).length;
 assert.equal(faqSchemaQuestionCount, 10, 'FAQPage JSON-LD should contain the same 10 questions as the visible FAQ');
 
