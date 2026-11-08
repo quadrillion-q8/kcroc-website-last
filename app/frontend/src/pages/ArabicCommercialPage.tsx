@@ -2051,7 +2051,7 @@ export default function ArabicCommercialPage() {
       : slug === 'laptop-keyboard-replacement-kuwait'
       ? 'السلام عليكم KCROC، أحتاج تصليح أو تبديل كيبورد اللابتوب. الماركة والموديل الدقيق: ____. الأعراض: أزرار لا تعمل / كتابة مكررة / تخطيط لغة / إضاءة خلفية / سائل. التخطيط المطلوب: عربي وإنجليزي / إنجليزي / آخر. هل انسكب سائل؟ ____. منطقتي بالكويت: ____. أقدر أرسل صورة للكيبورد. فضلاً أكدوا توافق القطعة والسعر النهائي والمدة قبل الإصلاح.'
       : slug === 'laptop-charging-port-repair-kuwait'
-      ? 'السلام عليكم KCROC، أحتاج فحص مدخل شحن اللابتوب. الماركة والموديل الدقيق: ____. نوع المنفذ: DC Jack / USB-C / غير متأكد. الأعراض: ____. هل يشحن عند تحريك السلك؟ ____. منطقتي بالكويت: ____. أستطيع إرسال صورة للمنفذ والشاحن. فضلاً وضحوا التشخيص والسعر النهائي والمدة قبل الإصلاح.'
+      ? 'السلام عليكم KCROC، أحتاج فحص مدخل شحن اللابتوب. الماركة والموديل الدقيق: ____. نوع المنفذ: DC Jack / USB-C / غير متأكد. الأعراض: ____. هل يشحن عند تحريك السلك؟ ____. منطقتي بالكويت: ____. أستطيع إرسال صورة للمنفذ والشاحن وملصق قدرة الشاحن (Wattage). فضلاً وضحوا التشخيص والسعر النهائي والمدة قبل الإصلاح.'
       : slug === 'desktop-pc-repair-kuwait'
         ? 'السلام عليكم KCROC، أحتاج فحص وتصليح كمبيوتر مكتبي كامل (Tower) في الكويت. الماركة والموديل أو مواصفات التجميعة: ____. المشكلة: لا يعمل / يعمل من دون صورة / إغلاق أو إعادة تشغيل / حرارة / شاشة زرقاء / مشكلة تخزين أو RAM / أخرى: ____. هل كرت الشاشة مركب داخل الكمبيوتر الكامل؟ نعم / لا. منطقتي: ____. فضلاً نسقوا استلام الكمبيوتر الكامل، وأكدوا التشخيص والسعر والمدة قبل أي إصلاح مدفوع.'
         : slug === 'laptop-hinge-repair-kuwait'
@@ -4050,6 +4050,25 @@ export default function ArabicCommercialPage() {
 
         {slug === 'laptop-charging-port-repair-kuwait' && (
           <>
+
+            <section className="mb-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4" aria-label="مميزات فحص وإصلاح مدخل الشحن في KCROC">
+              <article className="rounded-2xl border border-cyan-500/20 bg-cyan-500/5 p-4">
+                <p className="font-black text-white">إصلاح على مستوى المكوّن</p>
+                <p className="mt-2 text-sm leading-7 text-slate-400">نفحص المنفذ ونقاط تثبيته ودائرة الطاقة، ونختار إصلاح القطعة بدل تبديل المذربورد كاملة عندما تسمح حالة اللوحة.</p>
+              </article>
+              <article className="rounded-2xl border border-slate-800 bg-slate-900/45 p-4">
+                <p className="font-black text-white">تشخيص قبل تبديل القطع</p>
+                <p className="mt-2 text-sm leading-7 text-slate-400">نختبر الشاحن والكابل والمنفذ ومسار الشحن حسب الموديل، ولا نعتبر العرض وحده دليلًا على تلف قطعة معينة.</p>
+              </article>
+              <article className="rounded-2xl border border-slate-800 bg-slate-900/45 p-4">
+                <p className="font-black text-white">مختبر KCROC في حولي</p>
+                <p className="mt-2 text-sm leading-7 text-slate-400">يتم الفحص والإصلاح في مختبرنا بشارع ابن خلدون، مجمع الملا، السرداب، محل 19.</p>
+              </article>
+              <article className="rounded-2xl border border-slate-800 bg-slate-900/45 p-4">
+                <p className="font-black text-white">استلام مجاني وضمان 30 يومًا</p>
+                <p className="mt-2 text-sm leading-7 text-slate-400">نرتب الاستلام والتوصيل داخل الكويت، ويشمل الضمان الإصلاحات المكتملة وفق شروط الخدمة.</p>
+              </article>
+            </section>
             <section className="mt-12 rounded-3xl border border-slate-800 bg-slate-900/40 p-6 sm:p-8" aria-labelledby="charging-port-diagnosis">
               <div className="grid items-start gap-7 lg:grid-cols-[0.9fr_1.1fr]">
                 <div>
@@ -4089,6 +4108,140 @@ export default function ArabicCommercialPage() {
               </div>
             </section>
 
+
+            <section className="mt-10 rounded-3xl border border-slate-800 bg-slate-900/40 p-6 sm:p-8" aria-labelledby="charging-port-component-matrix">
+              <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">مقارنة فنية قبل تحديد القطعة</p>
+              <h2 id="charging-port-component-matrix" className="mt-2 text-2xl font-black text-white sm:text-3xl">العطل من الشاحن أو المنفذ أو دائرة الشحن؟</h2>
+              <p className="mt-3 max-w-4xl leading-8 text-slate-400">الأعراض التالية تساعد على فهم مسارات الفحص، لكنها لا تكفي وحدها لتشخيص الجهاز عن بُعد. قد تتشابه أعراض الشاحن والمنفذ والمذربورد؛ لذلك نختبر كل جزء حسب تصميم الموديل قبل اقتراح الإصلاح.</p>
+              <div className="mt-6 overflow-hidden rounded-2xl border border-slate-800">
+                <div className="overflow-x-auto">
+                  <table className="w-full min-w-[980px] border-collapse text-right text-sm">
+                    <caption className="sr-only">مقارنة أعراض الشحن واحتمالات العطل في الشاحن أو المنفذ أو دائرة الشحن وإجراء الفحص.</caption>
+                    <thead className="bg-slate-950 text-slate-100">
+                      <tr>
+                        <th scope="col" className="p-4 font-black">العَرَض</th>
+                        <th scope="col" className="p-4 font-black">احتمال الشاحن والكابل</th>
+                        <th scope="col" className="p-4 font-black">احتمال منفذ الشحن</th>
+                        <th scope="col" className="p-4 font-black">احتمال دائرة الشحن / المذربورد</th>
+                        <th scope="col" className="p-4 font-black">اتجاه الفحص</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-800 text-slate-300">
+                      <tr className="align-top">
+                        <th scope="row" className="p-4 font-bold text-white">يشحن فقط عند تحريك السلك</th>
+                        <td className="p-4 leading-7">قطع داخلي في الكابل أو تلف رأس الشاحن أو عدم ثبات القابس.</td>
+                        <td className="p-4 leading-7">ارتخاء DC Jack أو تآكل نقاط التلامس أو تحرك جسم المنفذ.</td>
+                        <td className="p-4 leading-7">تشقق اللحام أو تضرر نقاط التثبيت النحاسية ومساراتها.</td>
+                        <td className="p-4 leading-7">اختبار شاحن متوافق ثم فحص المنفذ ونقاط اللحام تحت التكبير.</td>
+                      </tr>
+                      <tr className="align-top">
+                        <th scope="row" className="p-4 font-bold text-white">USB-C لا يتعرف على الشاحن</th>
+                        <td className="p-4 leading-7">قدرة غير كافية أو كابل لا يدعم USB Power Delivery المطلوب.</td>
+                        <td className="p-4 leading-7">تلف أو اعوجاج نقاط التلامس أو منفذ USB-C نفسه.</td>
+                        <td className="p-4 leading-7">خلل في تفاوض USB-PD أو دائرة الحماية ومسار إدخال الطاقة.</td>
+                        <td className="p-4 leading-7">التحقق من قدرة الشاحن والكابل ثم قياس استجابة المنفذ ومسار الطاقة.</td>
+                      </tr>
+                      <tr className="align-top">
+                        <th scope="row" className="p-4 font-bold text-white">لا تظهر لمبة الشحن أو الجهاز لا يستجيب</th>
+                        <td className="p-4 leading-7">مقبس كهرباء أو محول طاقة لا يخرج الجهد المناسب.</td>
+                        <td className="p-4 leading-7">كسر داخلي في DC Jack أو فصل كابل المدخل الداخلي.</td>
+                        <td className="p-4 leading-7">تفعيل حماية المدخل أو خلل في Fuse أو MOSFET أو مكوّن على مسار الطاقة.</td>
+                        <td className="p-4 leading-7">قياس خرج المحول ثم جهد الإدخال وتتبع مسار الطاقة حسب اللوحة.</td>
+                      </tr>
+                      <tr className="align-top">
+                        <th scope="row" className="p-4 font-bold text-white">الشاحن متصل ونسبة البطارية لا تزيد</th>
+                        <td className="p-4 leading-7">قدرة الشاحن أقل من المطلوب أو تعريفه غير صحيح.</td>
+                        <td className="p-4 leading-7">تلامس متقطع أو مقاومة مرتفعة في المنفذ أو التوصيلة.</td>
+                        <td className="p-4 leading-7">خلل في دائرة الشحن أو اتصال البطارية وبياناتها بحسب التصميم.</td>
+                        <td className="p-4 leading-7">فصل احتمالات الشاحن والمنفذ أولًا، ثم اختبار البطارية ومسار الشحن.</td>
+                      </tr>
+                      <tr className="align-top">
+                        <th scope="row" className="p-4 font-bold text-white">رسالة Unknown Adapter أو عدم معرفة قدرة الشاحن</th>
+                        <td className="p-4 leading-7">محول غير مطابق أو تلف في سلك / سنّ التعريف.</td>
+                        <td className="p-4 leading-7">تلف سنّ التعريف في بعض مقابس Dell وHP أو نقاطه الداخلية.</td>
+                        <td className="p-4 leading-7">خلل في مسار ID / Sense الذي يقرأ هوية المحول.</td>
+                        <td className="p-4 leading-7">تجربة محول مطابق وفحص إشارة التعريف؛ لا تعني الرسالة وحدها تلف المنفذ.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <p className="mt-3 text-xs leading-6 text-slate-500">هذه احتمالات تشخيصية وليست نتيجة مؤكدة. تختلف الدوائر ونقاط القياس حسب الماركة والموديل ورقم اللوحة.</p>
+            </section>
+
+            <section className="mt-10 rounded-3xl border border-slate-800 bg-slate-900/40 p-6 sm:p-8" aria-labelledby="charging-port-architectures">
+              <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">أنواع المداخل حسب تصميم الجهاز</p>
+              <h2 id="charging-port-architectures" className="mt-2 text-2xl font-black text-white sm:text-3xl">مو كل مدخل شحن يتصل بالمذربورد بالطريقة نفسها</h2>
+              <p className="mt-3 max-w-4xl leading-8 text-slate-400">نحدد طريقة الإصلاح من رقم الموديل وتصميم المنفذ واللوحة. أسماء السلاسل التالية أمثلة لأجهزة نتحقق من تصميمها، وليست تأكيدًا أن كل موديل منها يستخدم المنفذ نفسه.</p>
+              <div className="mt-6 grid gap-4 lg:grid-cols-2">
+                <article className="rounded-2xl border border-slate-800 bg-slate-950/55 p-5">
+                  <h3 className="font-black text-white">DC Jack بكابل داخلي (Harness / Flex Cable)</h3>
+                  <p className="mt-2 text-sm leading-7 text-slate-300">في بعض موديلات Dell Inspiron وVostro وHP Pavilion وProBook وAcer Aspire وASUS VivoBook يتصل المنفذ بكابل أو قطعة داخلية. نفحص الكابل ونقاط التوصيل قبل اعتماد الاستبدال.</p>
+                </article>
+                <article className="rounded-2xl border border-slate-800 bg-slate-950/55 p-5">
+                  <h3 className="font-black text-white">منفذ USB-C أو Thunderbolt ملحوم على اللوحة</h3>
+                  <p className="mt-2 text-sm leading-7 text-slate-300">توجد هذه البنية في بعض أجهزة MacBook Air وMacBook Pro وDell XPS وLatitude وHP Spectre وEnvy وLenovo ThinkPad وYoga. إذا كان المنفذ قابلًا للإصلاح، نفحص نقاط اللحام والمسارات ونستخدم اللحام الدقيق وفق حالة اللوحة.</p>
+                </article>
+                <article className="rounded-2xl border border-slate-800 bg-slate-950/55 p-5">
+                  <h3 className="font-black text-white">MagSafe في أجيال MacBook المدعومة</h3>
+                  <p className="mt-2 text-sm leading-7 text-slate-300">MagSafe تصميم مغناطيسي منفصل عن USB-C، ويختلف تنفيذه بين أجيال MacBook. نطابق الجيل ورقم الموديل قبل تحديد هل الفحص للموصل أو الكابل أو دائرة الطاقة المرتبطة به.</p>
+                </article>
+                <article className="rounded-2xl border border-slate-800 bg-slate-950/55 p-5">
+                  <h3 className="font-black text-white">Smart Pin وSlim-Tip ومداخل الطاقة للألعاب</h3>
+                  <p className="mt-2 text-sm leading-7 text-slate-300">بعض مقابس Dell وHP تستخدم سنّ تعريف، وتستخدم بعض أجهزة Lenovo موصل Slim-Tip المستطيل. كما نفحص مداخل الطاقة في سلاسل ASUS ROG وTUF وLenovo Legion وMSI وAcer Predator وNitro وHP Omen بحسب الموديل وقدرة الشاحن.</p>
+                </article>
+              </div>
+              <p className="mt-4 text-xs leading-6 text-slate-500">قد يختلف نوع المنفذ وطريقة تثبيته بين موديلات السلسلة الواحدة. أرسل رقم الموديل أو Service Tag حتى نتحقق من البنية والقطعة الصحيحة قبل التسعير.</p>
+            </section>
+
+            <section className="mt-10 rounded-3xl border border-cyan-500/20 bg-cyan-500/5 p-6 sm:p-8" aria-labelledby="charging-port-price-guide">
+              <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-300">شفافية الأسعار قبل الموافقة</p>
+              <h2 id="charging-port-price-guide" className="mt-2 text-2xl font-black text-white sm:text-3xl">كم تكلفة تصليح مدخل شحن اللابتوب في الكويت؟</h2>
+              <p className="mt-3 max-w-4xl leading-8 text-slate-300">يبدأ إصلاح مدخل الشحن من 20 د.ك. الأسعار التالية نطاقات إرشادية لمسارات الإصلاح المنشورة لدى KCROC، وليست عرضًا نهائيًا قبل فحص موديل الجهاز والمنفذ وحالة اللوحة وتوفر القطعة.</p>
+              <div className="mt-6 overflow-hidden rounded-2xl border border-slate-800">
+                <div className="overflow-x-auto">
+                  <table className="w-full min-w-[820px] border-collapse text-right text-sm">
+                    <caption className="sr-only">أسعار البداية الإرشادية لفحص وإصلاح أعطال مدخل الشحن في الكويت.</caption>
+                    <thead className="bg-slate-950 text-slate-100">
+                      <tr>
+                        <th scope="col" className="p-4 font-black">مسار الخدمة</th>
+                        <th scope="col" className="p-4 font-black">متى ينطبق؟</th>
+                        <th scope="col" className="p-4 font-black">السعر المنشور</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-800 text-slate-300">
+                      <tr className="align-top">
+                        <th scope="row" className="p-4 font-bold text-white">الفحص الأولي للشاحن والمنفذ ومسار الطاقة</th>
+                        <td className="p-4 leading-7">لتمييز مشكلة المحول والكابل والمنفذ والبطارية قبل اعتماد إصلاح مدفوع.</td>
+                        <td className="p-4 font-black text-cyan-200">مجانًا (0 د.ك)</td>
+                      </tr>
+                      <tr className="align-top">
+                        <th scope="row" className="p-4 font-bold text-white">DC Jack أو Harness قياسي</th>
+                        <td className="p-4 leading-7">استبدال مدخل أو كابل داخلي متوافق عندما لا يتطلب العمل ترميمًا واسعًا للوحة.</td>
+                        <td className="p-4 font-black text-cyan-200">20–25 د.ك</td>
+                      </tr>
+                      <tr className="align-top">
+                        <th scope="row" className="p-4 font-bold text-white">USB-C ملحوم أو مدخل Gaming أو ترميم نقاط التثبيت</th>
+                        <td className="p-4 leading-7">عند الحاجة إلى فك اللوحة وفحص المنفذ واللحام أو ترميم نقاط قابلة للإصلاح.</td>
+                        <td className="p-4 font-black text-cyan-200">25–35 د.ك</td>
+                      </tr>
+                      <tr className="align-top">
+                        <th scope="row" className="p-4 font-bold text-white">دائرة الشحن أو متحكم USB Power Delivery</th>
+                        <td className="p-4 leading-7">عندما يثبت الفحص أن العطل في مكوّن حماية أو مسار طاقة أو دائرة تحكم على المذربورد.</td>
+                        <td className="p-4 font-black text-cyan-200">من 35 د.ك</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <ul className="mt-5 grid gap-2 text-sm leading-7 text-slate-300 sm:grid-cols-2">
+                <li>يتغير السعر حسب رقم الموديل وطريقة تثبيت المنفذ ونوع القطعة المطابقة.</li>
+                <li>قد تؤثر نقاط التثبيت أو المسارات المتضررة وحالة دائرة الحماية في نطاق العمل.</li>
+                <li>يتأكد توفر القطعة المناسبة قبل اعتماد الطلب أو الاستبدال.</li>
+                <li>نوضح نتيجة الفحص والتكلفة النهائية ونحصل على موافقتك قبل أي عمل مدفوع.</li>
+              </ul>
+              <p className="mt-4 text-xs leading-6 text-slate-500">الأسعار إرشادية وقد تختلف بحسب الموديل والقطعة والضرر الفعلي. الفحص الأولي مجاني، ولا يبدأ الإصلاح المدفوع قبل موافقتك.</p>
+            </section>
             <section className="mt-10 rounded-3xl border border-slate-800 bg-slate-900/40 p-6 sm:p-8" aria-labelledby="charging-port-repair-process">
               <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">خطوات واضحة</p>
               <h2 id="charging-port-repair-process" className="mt-2 text-2xl font-black text-white sm:text-3xl">من الاستلام إلى اختبار الشحن</h2>
@@ -4129,6 +4282,32 @@ export default function ArabicCommercialPage() {
               <p className="mt-5 text-sm leading-7 text-slate-400">لا تواصل تحريك الكابل بحثًا عن زاوية شحن، ولا تفتح الجهاز وهو متصل بالكهرباء. أرسل موديل اللابتوب وصورة واضحة للمنفذ والشاحن على واتساب لتسريع تحديد الخطوة التالية.</p>
               <a href={wa} target="_blank" rel="noreferrer" className="mt-5 inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-500 px-6 py-3 font-black text-slate-950 transition hover:bg-cyan-400">
                 <MessageCircle className="h-5 w-5" aria-hidden="true" /> أرسل صورة المنفذ والشاحن
+              </a>
+            </section>
+
+            <section className="mt-10 rounded-3xl border border-cyan-500/25 bg-gradient-to-br from-cyan-500/10 via-slate-950/80 to-slate-950 p-6 sm:p-8" aria-labelledby="charging-whatsapp-fast-track">
+              <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-300">رسالة تشخيص سريعة عبر واتساب</p>
+              <h2 id="charging-whatsapp-fast-track" className="mt-2 text-2xl font-black text-white sm:text-3xl">أرسل 3 تفاصيل حتى نبدأ من المعلومة الصحيحة</h2>
+              <p className="mt-3 max-w-3xl leading-8 text-slate-300">جهّز هذه المعلومات قبل المراسلة؛ تساعدنا على مراجعة الموديل ونوع المنفذ وتحديد الخطوة التالية، لكنها لا تستبدل فحص الجهاز.</p>
+              <ol className="mt-5 grid gap-3 sm:grid-cols-3">
+                <li className="rounded-2xl border border-slate-800 bg-slate-950/60 p-4">
+                  <span className="text-xs font-black text-cyan-300">01</span>
+                  <h3 className="mt-2 font-black text-white">الماركة والموديل الدقيق</h3>
+                  <p className="mt-2 text-sm leading-7 text-slate-400">مثل Dell XPS 13 أو Lenovo ThinkPad أو MacBook؛ أرسل رقم الموديل أو Service Tag إن توفر.</p>
+                </li>
+                <li className="rounded-2xl border border-slate-800 bg-slate-950/60 p-4">
+                  <span className="text-xs font-black text-cyan-300">02</span>
+                  <h3 className="mt-2 font-black text-white">صور المنفذ والشاحن</h3>
+                  <p className="mt-2 text-sm leading-7 text-slate-400">صورة خارجية واضحة للمنفذ ورأس الشاحن وملصق القدرة بالواط (Wattage).</p>
+                </li>
+                <li className="rounded-2xl border border-slate-800 bg-slate-950/60 p-4">
+                  <span className="text-xs font-black text-cyan-300">03</span>
+                  <h3 className="mt-2 font-black text-white">العَرَض ومنطقتك</h3>
+                  <p className="mt-2 text-sm leading-7 text-slate-400">اذكر هل الشحن متقطع أو لا يبدأ أو تظهر رسالة خطأ، مع منطقتك في الكويت.</p>
+                </li>
+              </ol>
+              <a href={wa} target="_blank" rel="noreferrer" className="mt-6 inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-400 px-6 py-3 font-black text-slate-950 transition hover:bg-cyan-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-200">
+                <MessageCircle className="h-5 w-5" aria-hidden="true" /> أرسل تفاصيل جهازك على واتساب
               </a>
             </section>
           </>
@@ -4652,7 +4831,7 @@ export default function ArabicCommercialPage() {
                   <p className="mt-3 leading-7 text-slate-400">{item.a}</p>
                 </div>
               ) : (
-                <details key={item.q} className="p-6">
+                <details key={item.q} className="p-6" open={slug === 'laptop-charging-port-repair-kuwait'}>
                   <summary className="cursor-pointer font-bold text-white">{item.q}</summary>
                   <p className="mt-3 leading-7 text-slate-400">{item.a}</p>
                 </details>
