@@ -106,6 +106,9 @@ assert.ok(dlssHtml.includes('NewsArticle') && dlssHtml.includes('FAQPage'), 'New
 assert.ok((dlssHtml.match(/"@type"\s*:\s*"Question"/g) ?? []).length === 11, 'Expected eleven DLSS 5 FAQ questions in FAQPage JSON-LD');
 
 assert.ok(dlssHtml.includes('TechArticle') && dlssHtml.includes('reviewedBy'), 'DLSS 5 TechArticle reviewer schema is missing');
+assert.ok(dlssHtml.includes('"@type":"HowTo"'), 'DLSS 5 HowTo schema is missing');
+assert.equal((dlssHtml.match(/"@type":"HowToStep"/g) ?? []).length, 7, 'DLSS 5 HowTo schema must contain seven setup steps');
+assert.ok(dlssHtml.includes('Benchmark provenance and technical review'), 'Benchmark source provenance/editorial method note is missing');
 assert.ok(dlssHtml.includes('2026-11-09T18:00:00.000Z'), 'DLSS 5 dateModified is not synchronized to the November 9 technical review');
 assert.ok(dlssHtml.includes('November 9, 2026') && dlssHtml.includes('Hawalli, Kuwait'), 'Visible technical review byline does not show the November 9 Hawalli review');
 
@@ -150,5 +153,5 @@ for (const label of [
 assert.ok(!dlssHtml.includes('External source</a>'), 'A generic External source anchor remains in the DLSS 5 article');
 assert.ok(!/hreflang="ar-KW"/i.test(dlssHtml), 'Arabic hreflang points to a missing DLSS 5 translation route');
 
-console.log('✅ DLSS 5 news SSG validation passed: TechArticle/reviewer schema, synchronized November 9 review timestamp, eleven static FAQ answers, full RTX 5090 benchmark dataset, masking analysis, interactive explorer, accessible seven-step list, clean list DOM, citations, driver guidance, internal link and Discover metadata are present.');
+console.log('✅ DLSS 5 news SSG validation passed: TechArticle, HowTo and FAQPage schema; synchronized November 9 review timestamp; eleven FAQ answers; full RTX 5090 dataset; benchmark provenance; masking and output-resolution analysis; interactive explorer; accessible seven-step list; clean list DOM; citations, driver guidance and internal links are present.');
 
