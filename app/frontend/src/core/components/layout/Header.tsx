@@ -363,7 +363,7 @@ export default function Header() {
           cleanTel={cleanTel}
           phoneDisplay={phoneDisplay}
           triggerRef={mobileToggleRef}
-          hideConversionActions={hideConversionActions}
+          hideConversionActions={isGlobalTechnicalGuide}
         />
       )}
 
