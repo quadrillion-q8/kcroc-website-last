@@ -334,41 +334,51 @@ export const BLOG_POSTS: BlogPost[] = [
       "title": "Verified Hogwarts Legacy DLSS 5 performance: RTX 5090, November 5, 2026",
       "featureLabel": "Resolution and mode",
       "columns": [
-        "Average FPS — DLSS 5 off → on",
-        "1% percentile — DLSS 5 off → on",
-        "Measured change"
+        "Average FPS · DLSS 5 off",
+        "Average FPS · DLSS 5 on",
+        "1% low · DLSS 5 off",
+        "1% low · DLSS 5 on",
+        "Average / 1% low impact"
       ],
       "rows": [
         {
           "feature": "2560 × 1440 · DLSS Quality · MFG off",
           "values": [
-            "95.8 → 83.8 FPS",
-            "78.9 → 71.5 FPS",
-            "−12.5% average · −9.4% 1% low"
+            "95.8 FPS",
+            "83.8 FPS",
+            "78.9 FPS",
+            "71.5 FPS",
+            "−12.5% / −9.4%"
           ]
         },
         {
           "feature": "2560 × 1440 · DLSS Quality · 4× MFG",
           "values": [
-            "302.2 → 256.7 FPS",
-            "168.0 → 152.0 FPS",
-            "−15.1% average · −9.5% 1% low"
+            "302.2 FPS",
+            "256.7 FPS",
+            "168.0 FPS",
+            "152.0 FPS",
+            "−15.1% / −9.5%"
           ]
         },
         {
           "feature": "3840 × 2160 · DLSS Quality · MFG off",
           "values": [
-            "75.6 → 57.2 FPS",
-            "67.2 → 53.0 FPS",
-            "−24.3% average · −21.1% 1% low"
+            "75.6 FPS",
+            "57.2 FPS",
+            "67.2 FPS",
+            "53.0 FPS",
+            "−24.3% / −21.1%"
           ]
         },
         {
           "feature": "3840 × 2160 · DLSS Quality · 4× MFG",
           "values": [
-            "226.1 → 179.1 FPS",
-            "138.8 → 122.9 FPS",
-            "−20.8% average · −11.5% 1% low"
+            "226.1 FPS",
+            "179.1 FPS",
+            "138.8 FPS",
+            "122.9 FPS",
+            "−20.8% / −11.5%"
           ]
         }
       ]
@@ -642,7 +652,7 @@ export const BLOG_POSTS: BlogPost[] = [
     },
     {
       "type": "paragraph",
-      "text": "Kuwait readers with repeatable cooling, shutdown or display-stability symptoms can review KCROC's https://www.computerrepairkuwait.com/gaming-pc-repair-kuwait gaming-PC diagnostic service or https://www.computerrepairkuwait.com/gaming-laptop-cleaning-kuwait gaming-laptop cleaning service. KCROC operates its repair laboratory in Hawalli and offers free pickup and delivery across Kuwait. For an appointment, call +965 55301913. A driver update or a normal DLSS 5 frame-rate reduction does not automatically require a repair."
+      "text": "Kuwait readers with repeatable cooling, shutdown or display-stability symptoms can review KCROC's https://www.computerrepairkuwait.com/gaming-pc-repair-kuwait gaming-PC diagnostic service or https://www.computerrepairkuwait.com/gaming-laptop-cleaning-kuwait gaming-laptop cleaning service. KCROC operates its repair laboratory in Hawalli and offers free pickup and delivery across Kuwait. For an appointment, use the KCROC Contact page: https://www.computerrepairkuwait.com/contact. A driver update or a normal DLSS 5 frame-rate reduction does not automatically require a repair."
     },
     {
       "type": "h2",
@@ -735,6 +745,12 @@ export const BLOG_POSTS: BlogPost[] = [
     {
       "type": "paragraph",
       "text": "ComputerBase's RTX 5090 performance measurements for DLSS 5 in Hogwarts Legacy (German-language review): https://www.computerbase.de/artikel/grafikkarten/dlss-5-test-hogwarts-legacy.100187/seite-2"
+    },
+    {
+      "type": "callout",
+      "variant": "info",
+      "title": "Benchmark provenance and technical review",
+      "text": "The RTX 5090 FPS figures and Hogwarts Legacy visual observations in this article are attributed to ComputerBase's November 5, 2026 independent review; KCROC has not independently reproduced that benchmark. DLSS 5 feature behaviour, the Hogwarts Legacy patch requirements and NVIDIA's Driver 621.14 WHQL fix were cross-checked against NVIDIA and Warner Bros. / Portkey Games documentation. Written and technically reviewed by Imran Natiq at KCROC's Hawalli laboratory on November 9, 2026."
     }
   ],
   "image": "/images/discover/custom-gaming-pc-teardown-and-diagnostics-workbench-1200x675.webp",

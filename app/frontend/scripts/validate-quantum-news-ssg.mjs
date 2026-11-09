@@ -99,16 +99,50 @@ assert.ok(dlssHtml.includes('DLSS 5 vs DLSS 4.5: what each technology actually d
 assert.ok(dlssHtml.includes('Which GPUs support DLSS 5?'), 'GPU compatibility section is missing');
 assert.ok(dlssHtml.includes('Driver 621.14') && dlssHtml.includes('616.64'), 'Driver minimum/current-version distinction is missing');
 assert.ok(dlssHtml.includes('6979343'), 'Driver 621.14 video playback bug-fix reference is missing');
-assert.ok(dlssHtml.includes('13%') && dlssHtml.includes('23%'), 'Independent frame-rate measurements are missing');
+assert.ok(dlssHtml.includes('−12.5%') && dlssHtml.includes('−24.3%'), 'Exact ComputerBase average-FPS impacts are missing');
 assert.ok(dlssHtml.includes('Where Winds Meet') && dlssHtml.includes('November 23'), 'Where Winds Meet rollout date is missing');
 assert.ok(dlssHtml.includes('War Thunder') && dlssHtml.includes("Eagle's Shadow"), 'War Thunder rollout details are missing');
 assert.ok(dlssHtml.includes('NewsArticle') && dlssHtml.includes('FAQPage'), 'NewsArticle or FAQPage JSON-LD is missing');
-assert.ok((dlssHtml.match(/"@type"\s*:\s*"Question"/g) ?? []).length === 8, 'Expected eight DLSS 5 FAQ questions in FAQPage JSON-LD');
+assert.ok((dlssHtml.match(/"@type"\s*:\s*"Question"/g) ?? []).length === 11, 'Expected eleven DLSS 5 FAQ questions in FAQPage JSON-LD');
+
+assert.ok(dlssHtml.includes('TechArticle') && dlssHtml.includes('reviewedBy'), 'DLSS 5 TechArticle reviewer schema is missing');
+assert.ok(dlssHtml.includes('"@type":"HowTo"'), 'DLSS 5 HowTo schema is missing');
+assert.equal((dlssHtml.match(/"@type":"HowToStep"/g) ?? []).length, 7, 'DLSS 5 HowTo schema must contain seven setup steps');
+assert.ok(dlssHtml.includes('2026-11-09T18:00:00.000Z'), 'DLSS 5 dateModified is not synchronized to the November 9 technical review');
+assert.ok(dlssHtml.includes('November 9, 2026') && dlssHtml.includes('Hawalli, Kuwait'), 'Visible technical review byline does not show the November 9 Hawalli review');
+assert.ok(dlssHtml.includes('Benchmark provenance and technical review'), 'Benchmark source provenance/editorial method note is missing');
+
+for (const fps of [
+  '95.8', '83.8', '78.9', '71.5',
+  '302.2', '256.7', '168.0', '152.0',
+  '75.6', '57.2', '67.2', '53.0',
+  '226.1', '179.1', '138.8', '122.9',
+]) {
+  assert.ok(dlssHtml.includes(fps), `RTX 5090 benchmark value missing from prerendered article: ${fps}`);
+}
+
+assert.ok(dlssHtml.includes('Interactive benchmark explorer'), 'Interactive DLSS 5 benchmark explorer is missing from the initial HTML');
+assert.ok(dlssHtml.includes('1% low') && dlssHtml.includes('Average FPS'), 'Benchmark explorer does not expose both FPS metrics');
+assert.ok(dlssHtml.includes('Hogwarts Legacy: where the November 5 DLSS 5 integration applies'), 'Hogwarts Legacy masking comparison is missing');
+
+const setupListLabel = 'aria-label="Enable DLSS 5 in Hogwarts Legacy on a supported PC"';
+const setupListStart = dlssHtml.indexOf(setupListLabel);
+assert.ok(setupListStart >= 0, 'Semantic DLSS 5 setup list is missing');
+const setupListEnd = dlssHtml.indexOf('</ol>', setupListStart);
+assert.ok(setupListEnd > setupListStart, 'DLSS 5 setup list is not closed');
+const setupListElementStart = dlssHtml.lastIndexOf('<ol', setupListStart);
+assert.ok(setupListElementStart >= 0, 'Could not locate the opening DLSS 5 setup ordered-list element');
+const setupListHtml = dlssHtml.slice(setupListElementStart, setupListEnd);
+assert.ok(setupListHtml.includes('role="list"'), 'DLSS 5 setup ordered list is missing explicit list semantics');
+assert.equal((setupListHtml.match(/<li(?:\s|>)/g) ?? []).length, 7, 'DLSS 5 setup must prerender exactly seven list items');
+assert.equal((setupListHtml.match(/aria-hidden="true"/g) ?? []).length, 7, 'Each decorative DLSS 5 step marker must be hidden from assistive technology');
+assert.ok(!/<li\b[^>]*>\s*<\/li>/i.test(dlssHtml), 'An empty list item remains in the prerendered DLSS 5 page');
 assert.ok(dlssHtml.includes('max-image-preview:large'), 'Discover preview robots directive is missing');
 assert.ok(dlssHtml.includes('og:image:width') && dlssHtml.includes('content="1200"'), '1200px social image width metadata is missing');
 assert.ok(dlssHtml.includes('og:image:height') && dlssHtml.includes('content="675"'), '675px social image height metadata is missing');
 assert.ok(dlssHtml.includes('Gaming Technology'), 'Gaming Technology news category is missing');
 assert.ok(dlssHtml.includes('href="/gaming-pc-repair-kuwait"'), 'KCROC gaming PC/GPU internal link is missing');
+assert.ok(dlssHtml.includes('href="/contact"'), 'KCROC Contact internal link is missing');
 
 for (const label of [
   'NVIDIA — DLSS 5 rollout, October model and Hogwarts Legacy benchmarks',
@@ -116,11 +150,13 @@ for (const label of [
   'Portkey Games Support — DLSS 5 setup and requirements',
   'War Thunder — Eagle\'s Shadow DLSS 5 announcement',
   'ComputerBase — DLSS 5 performance testing in Hogwarts Legacy',
+  'NVIDIA Research — DLSS 5 3D-Guided Neural Rendering',
+  'TechSpot — Independent DLSS 5 performance testing',
 ]) {
   assert.ok(dlssHtml.includes(label), `Descriptive DLSS 5 source anchor missing: ${label}`);
 }
 assert.ok(!dlssHtml.includes('External source</a>'), 'A generic External source anchor remains in the DLSS 5 article');
 assert.ok(!/hreflang="ar-KW"/i.test(dlssHtml), 'Arabic hreflang points to a missing DLSS 5 translation route');
 
-console.log('✅ DLSS 5 news SSG validation passed: static article body, eight visible FAQ answers and FAQPage JSON-LD, citations, GPU compatibility, driver guidance, internal link and Discover metadata are present.');
+console.log('✅ DLSS 5 news SSG validation passed: TechArticle, HowTo and FAQPage schema; synchronized November 9 review timestamp; eleven FAQ answers; full RTX 5090 dataset; benchmark provenance; masking and output-resolution analysis; interactive explorer; accessible seven-step list; clean list DOM; citations, driver guidance and internal links are present.');
 

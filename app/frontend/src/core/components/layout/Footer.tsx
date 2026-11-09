@@ -107,6 +107,12 @@ const TRUST_ICON_MAP: Record<string, React.ElementType> = {
   Zap,
 };
 
+function isValidFooterLink<T extends { path?: string | null; label?: string | null }>(
+  link: T | null | undefined,
+): link is T {
+  return Boolean(link?.path?.trim() && link?.label?.trim());
+}
+
 export function Footer() {
   const location = useLocation();
   const isArabicRoute = location.pathname === '/ar' || location.pathname.startsWith('/ar/') || location.pathname.startsWith('/blog/ar/') || location.pathname.startsWith('/guides/ar/');
@@ -157,9 +163,12 @@ export function Footer() {
   const instagramAriaLabel = brandLabel + ' on Instagram';
   const googleAriaLabel = brandLabel + ' on Google';
 
-  const visibleServices = footerData.links.services.slice(0, 10);
-  const visibleAreas = footerData.links.areas.slice(0, 8);
-  const totalAreas = footerData.links.areas.length;
+  // Defensive filtering keeps malformed or empty generated navigation entries out of the DOM.
+  const visibleServices = footerData.links.services.slice(0, 10).filter(isValidFooterLink);
+  const areaLinks = footerData.links.areas.filter(isValidFooterLink);
+  const companyLinks = footerData.links.company.filter(isValidFooterLink);
+  const visibleAreas = areaLinks.slice(0, 8);
+  const totalAreas = areaLinks.length;
 
   const CollapsibleHeading = ({
     title,
@@ -351,7 +360,7 @@ export function Footer() {
               onToggle={() => setMobileCompanyOpen((value) => !value)}
             />
             <ul className={`${mobileCompanyOpen ? 'block' : 'hidden'} md:block space-y-3`}>
-              {footerData.links.company.map((link) => (
+              {companyLinks.map((link) => (
                 <li key={link.path}>
                   <Link to={localizedPath(link.path)} className="inline-flex min-h-12 items-center text-slate-400 hover:text-[#dfa86f] transition-colors text-sm">
                     {companyLabel(link.path, link.label)}
