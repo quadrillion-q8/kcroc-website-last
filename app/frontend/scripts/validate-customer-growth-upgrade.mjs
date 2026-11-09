@@ -217,7 +217,7 @@ add('English gaming-PC guides keep diagnostic content without local collection, 
   !/\bKuwait\b|\bHawalli\b|free pickup|No Fix, No Fee|KWD|KCROC's published service|GPU Repair Kuwait|wa\.me|tel:\+965/i.test([
     gamingPowerEditorialCopy, gamingNoDisplayEditorialCopy, gpuArtifactsEditorialCopy, gamingShutdownEditorialCopy
   ].join(' ')) &&
-  !gpuArtifactsEditorialCopy.includes('KCROC') &&
+  !/KCROC.{0,100}(?:GPU|VRAM|BGA|graphics-card|pickup|collection|repair service)/i.test(gpuArtifactsEditorialCopy) &&
   !gpuArtifactsEditorialCopy.includes('GPU Repair Kuwait'));
 
 add('BitLocker guide separates recovery-key education from local repair promotion',
