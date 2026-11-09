@@ -25,6 +25,9 @@ import NoPowerQuickTriage from '@/components/content/NoPowerQuickTriage';
 // (Previously duplicated via constants/data.ts's BUSINESS_INFO.)
 const business = KCROC_GRAPH.business!;
 
+// Keep company-specific privacy links out of global Windows/technical copy.
+const GLOBAL_EDITORIAL_AUTOLINK_EXCLUSIONS = ['page-privacy'];
+
 const toAbsoluteAssetUrl = (value: string) =>
   value.startsWith('http')
     ? value
@@ -675,7 +678,7 @@ const GlobalLaptopDiagnosticScorecard: React.FC = () => {
    RICH CONTENT BLOCK RENDERER
 ═══════════════════════════════════════════════════════════════════ */
 
-const RichBlock: React.FC<{ block: ContentBlock; headingRef?: (el: HTMLElement | null) => void; currentEntityId?: string }> = ({ block, headingRef, currentEntityId }) => {
+const RichBlock: React.FC<{ block: ContentBlock; headingRef?: (el: HTMLElement | null) => void; currentEntityId?: string; excludeEntityIds?: string[] }> = ({ block, headingRef, currentEntityId, excludeEntityIds }) => {
   switch (block.type) {
     case 'h2':
       return (
@@ -692,7 +695,7 @@ const RichBlock: React.FC<{ block: ContentBlock; headingRef?: (el: HTMLElement |
     case 'paragraph':
       return (
         <p className="text-slate-300 leading-relaxed mb-6">
-          {block.text.includes('https://') ? linkTechnicalSources(block.text) : <AutoLink text={block.text} currentEntityId={currentEntityId} />}
+          {block.text.includes('https://') ? linkTechnicalSources(block.text) : <AutoLink text={block.text} currentEntityId={currentEntityId} excludeEntityIds={excludeEntityIds} />}
         </p>
       );
     case 'list': {
@@ -712,7 +715,7 @@ const RichBlock: React.FC<{ block: ContentBlock; headingRef?: (el: HTMLElement |
           <div>
             <p className={`text-xs font-black uppercase tracking-wider mb-1.5 ${style.text}`}>{block.title || style.label}</p>
             <p className="text-slate-300 text-sm leading-relaxed">
-              {block.text.includes('https://') ? linkTechnicalSources(block.text) : <AutoLink text={block.text} currentEntityId={currentEntityId} />}
+              {block.text.includes('https://') ? linkTechnicalSources(block.text) : <AutoLink text={block.text} currentEntityId={currentEntityId} excludeEntityIds={excludeEntityIds} />}
             </p>
           </div>
         </div>
@@ -723,7 +726,7 @@ const RichBlock: React.FC<{ block: ContentBlock; headingRef?: (el: HTMLElement |
         <blockquote className="my-10 border-l-4 border-cyan-500 pl-6 py-2">
           <QuoteIcon className="w-6 h-6 text-cyan-500/50 mb-2" aria-hidden="true" />
           {/* Added AutoLink for consistency within Quotes */}
-          <p className="text-xl md:text-2xl text-white font-medium leading-relaxed italic"><AutoLink text={block.text} currentEntityId={currentEntityId} /></p>
+          <p className="text-xl md:text-2xl text-white font-medium leading-relaxed italic"><AutoLink text={block.text} currentEntityId={currentEntityId} excludeEntityIds={excludeEntityIds} /></p>
           {block.attribution && <cite className="block mt-3 text-sm text-slate-500 not-italic">— {block.attribution}</cite>}
         </blockquote>
       );
@@ -1419,13 +1422,14 @@ export default function BlogPostTemplate() {
                       block={block}
                       headingRef={block.type === 'h2' ? setHeadingRef(block.id) : undefined}
                       currentEntityId={currentGraphEntityId}
+                      excludeEntityIds={isGlobalEditorialArticle ? GLOBAL_EDITORIAL_AUTOLINK_EXCLUSIONS : undefined}
                     />
                   ))}
                 </div>
               ) : post.content?.length > 0 ? (
                 <div className="space-y-6">
                   {post.content.map((paragraph, index) => (
-                    <p key={index}><AutoLink text={paragraph} currentEntityId={currentGraphEntityId} /></p>
+                    <p key={index}><AutoLink text={paragraph} currentEntityId={currentGraphEntityId} excludeEntityIds={isGlobalEditorialArticle ? GLOBAL_EDITORIAL_AUTOLINK_EXCLUSIONS : undefined} /></p>
                   ))}
                 </div>
               ) : (
