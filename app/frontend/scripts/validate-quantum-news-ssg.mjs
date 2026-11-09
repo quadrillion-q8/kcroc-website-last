@@ -142,6 +142,7 @@ assert.ok(dlssHtml.includes('og:image:width') && dlssHtml.includes('content="120
 assert.ok(dlssHtml.includes('og:image:height') && dlssHtml.includes('content="675"'), '675px social image height metadata is missing');
 assert.ok(dlssHtml.includes('Gaming Technology'), 'Gaming Technology news category is missing');
 assert.ok(dlssHtml.includes('href="/gaming-pc-repair-kuwait"'), 'KCROC gaming PC/GPU internal link is missing');
+assert.ok(dlssHtml.includes('href="/contact"'), 'KCROC Contact internal link is missing');
 
 for (const label of [
   'NVIDIA — DLSS 5 rollout, October model and Hogwarts Legacy benchmarks',
