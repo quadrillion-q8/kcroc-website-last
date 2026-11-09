@@ -106,12 +106,12 @@ export default function GuidesIndex() {
       <div className="min-h-screen bg-transparent text-white pt-32 pb-24">
         <div className="max-w-7xl mx-auto px-6">
           <header className="mb-16 text-center lg:text-left">
-            <h1 className="text-4xl md:text-5xl font-black text-white mb-6">DIY & Repair Guides</h1>
+            <h1 className="text-4xl md:text-5xl font-black text-white mb-6">Technical Troubleshooting Guides</h1>
             <p className="text-xl text-slate-400 max-w-2xl">
-              Free, technician-written guides to help you understand a problem, perform safe checks,
-              and decide whether it is a DIY fix or a job for the lab. Each guide has a specific
-              purpose, so use the guide that matches your symptom rather than repeating the same
-              troubleshooting steps across several pages.
+              Explore practical, technician-written guidance for diagnosing Windows, laptop, desktop PC,
+              gaming and firmware problems. Each guide follows a focused troubleshooting path,
+              explains relevant risks and helps you verify the cause before changing settings
+              or replacing components.
             </p>
           </header>
 
