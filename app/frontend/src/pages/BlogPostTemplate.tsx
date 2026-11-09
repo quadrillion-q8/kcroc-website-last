@@ -1195,7 +1195,7 @@ export default function BlogPostTemplate() {
 
   // These informational articles use the global editorial shell: local booking,
   // pricing, location and commercial repair blocks are deliberately separated.
-  const isGlobalEditorialArticle = post.isGlobalGuide === true ||
+  const isGlobalEditorialArticle = isGuide || post.isGlobalGuide === true ||
     post.slug === 'why-8gb-ram-is-no-longer-enough-for-windows-11';
 
   const isGamingPerformanceGuide = [
