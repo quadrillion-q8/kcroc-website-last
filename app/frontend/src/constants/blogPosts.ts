@@ -7100,7 +7100,7 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         "type": "paragraph",
-        "text": "To look for a pattern, open Event Viewer → Windows Logs → System and review entries from storage-related sources such as disk, stornvme or the relevant controller driver around the time the drive disappeared. Event IDs 129 and 153 can indicate storage timeouts or retried I/O operations; Event ID 157 can indicate that a disk was unexpectedly removed. These are clues for correlation, not a diagnosis of a failed SSD."
+        "text": "To look for a pattern, open Event Viewer → Windows Logs → System and review entries from storage-related sources such as disk, stornvme or the relevant controller driver around the time the drive disappeared. Microsoft describes Event ID 129 as a reset request to a device, Event ID 153 as an I/O operation that was retried, and Event ID 157 as a disk that was surprise removed. These entries describe interruptions or retries in the storage path; correlate their timestamps with the symptoms because none of them alone proves that the SSD itself has failed."
       },
       {
         "type": "list",
@@ -7282,6 +7282,10 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         "type": "paragraph",
         "text": "Microsoft — Storage Spaces in Windows: https://support.microsoft.com/en-us/windows/experience/storage-filemanagement/storage-spaces-in-windows"
+      },
+      {
+        "type": "paragraph",
+        "text": "Microsoft Learn — Troubleshoot data corruption and disk errors (storage event descriptions): https://learn.microsoft.com/en-us/troubleshoot/windows-server/backup-and-storage/troubleshoot-data-corruption-and-disk-errors"
       },
       {
         "type": "paragraph",
