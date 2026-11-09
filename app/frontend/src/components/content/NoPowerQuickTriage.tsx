@@ -1,8 +1,5 @@
-import React, { useMemo, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { AlertTriangle, MessageCircle, Phone, ShieldCheck, Truck, Zap } from 'lucide-react';
-import { KCROC_GRAPH } from '../../data/graph';
-import { buildWhatsAppLink } from '../../utils/whatsappIntent';
+import React, { useState } from 'react';
+import { AlertTriangle, ShieldCheck, Zap } from 'lucide-react';
 
 type SymptomId =
   | 'no-response'
@@ -16,7 +13,7 @@ interface SymptomOption {
   label: string;
   detail: string;
   guidance: string;
-  message: string;
+  evidence: string[];
 }
 
 const SYMPTOMS: SymptomOption[] = [
@@ -24,58 +21,46 @@ const SYMPTOMS: SymptomOption[] = [
     id: 'no-response',
     label: 'No lights, no fan and no response',
     detail: 'The laptop appears completely dead, even with the charger connected.',
-    guidance: 'Check the wall socket and the correct, undamaged charger once. If there is still no response, the input path, battery or motherboard needs measured diagnosis.',
-    message: 'My laptop has no lights, no fan and no response, even when connected to its charger.'
+    guidance: 'Check the wall outlet and the correct, undamaged charger once. If there is still no response, the input path, battery or motherboard needs measured diagnosis.',
+    evidence: ['Charging LED behaviour', 'Adapter voltage and wattage label', 'Whether the laptop responds with a known-good compatible adapter']
   },
   {
     id: 'charge-light',
     label: 'Charging light is on, but Power does nothing',
     detail: 'The charger indicator responds, but the laptop will not start.',
     guidance: 'Record the exact model and any LED pattern. A power-button, embedded-controller, battery or platform wake-up fault may be involved; the indicator alone does not identify which one.',
-    message: 'My laptop charging light is on, but pressing Power does nothing.'
+    evidence: ['Power and charging LED patterns', 'Keyboard backlight or fan response', 'Any recent firmware update, reset or battery event']
   },
   {
     id: 'adapter-protection',
     label: 'Charger light turns off when connected',
     detail: 'The adapter indicator goes dark or its output appears to stop when plugged into the laptop.',
-    guidance: 'Disconnect the charger and do not keep reconnecting it. The adapter may be entering protection, or the adapter/lead or laptop input may be faulty.',
-    message: 'My charger indicator turns off or the adapter stops outputting when connected to the laptop.'
+    guidance: 'Disconnect the charger and do not keep reconnecting it. The adapter may be entering protection, or the adapter, cable or laptop input may be faulty.',
+    evidence: ['Whether the adapter LED is stable before connection', 'Any unusual heat, smell or visible connector damage', 'Whether the behaviour started after a spill or impact']
   },
   {
     id: 'black-screen',
     label: 'Lights or fans work, but the screen stays black',
     detail: 'The laptop shows startup activity but does not display an image.',
-    guidance: 'This is not necessarily a total no-power fault. Record the power/keyboard indicators and try a known-good external display only if the laptop and port support video output.',
-    message: 'My laptop lights or fans turn on, but the internal screen stays black.'
+    guidance: 'This is not necessarily a total no-power fault. Record the power and keyboard indicators; try a known-good external display only if the laptop and port support video output.',
+    evidence: ['Fan and keyboard activity', 'Caps Lock or diagnostic LED response', 'Whether an external display is supported and shows an image']
   },
   {
     id: 'stop-power',
     label: 'Liquid, swollen battery, burning smell or sparks',
     detail: 'There may be a safety hazard or active electrical damage.',
-    guidance: 'Disconnect AC power if it is safe to do so. Do not press Power, reconnect the charger, charge the device, bend or press a swollen battery, or attempt a reset. Arrange professional inspection.',
-    message: 'My laptop may have liquid damage, a swollen battery, a burning smell or sparking. I have stopped applying power and need safe inspection.'
+    guidance: 'Disconnect AC power if it is safe to do so. Do not press Power, reconnect the charger, charge the device, bend or press a swollen battery, or attempt a reset. Follow the manufacturer safety guidance and arrange qualified inspection.',
+    evidence: ['What happened immediately before the symptom', 'Visible liquid, case deformation or battery swelling', 'Any smell, smoke, sparks or abnormal heat']
   }
 ];
 
 export default function NoPowerQuickTriage() {
   const [selectedId, setSelectedId] = useState<SymptomId>('no-response');
-  const [brandModel, setBrandModel] = useState('');
-  const [area, setArea] = useState('');
+  const [deviceModel, setDeviceModel] = useState('');
+  const [observations, setObservations] = useState('');
 
-  const business = KCROC_GRAPH.business!;
   const selected = SYMPTOMS.find((item) => item.id === selectedId) ?? SYMPTOMS[0];
   const isSafetyStop = selected.id === 'stop-power';
-
-  const whatsappHref = useMemo(() => {
-    const message = [
-      'Hi KCROC, I need help with a laptop no-power or startup problem.',
-      `Symptom: ${selected.message}`,
-      brandModel.trim() ? `Brand and exact model: ${brandModel.trim()}` : 'Brand and exact model: I will confirm.',
-      area.trim() ? `Area in Kuwait: ${area.trim()}` : 'Area in Kuwait: I will confirm.',
-      'Please advise on safe next steps and free pickup/diagnosis. Please confirm any paid work and its quote before proceeding.'
-    ].join('\n');
-    return buildWhatsAppLink(message);
-  }, [selected, brandModel, area]);
 
   return (
     <section
@@ -85,13 +70,13 @@ export default function NoPowerQuickTriage() {
       <div className="border-b border-slate-800 bg-slate-900/80 px-5 py-4 sm:px-7">
         <div className="flex flex-wrap items-center gap-2 text-xs font-bold uppercase tracking-wider text-cyan-300">
           <Zap className="h-4 w-4" aria-hidden="true" />
-          KCROC no-power diagnostic desk · Hawalli lab
+          Diagnostic worksheet
         </div>
         <h3 id="no-power-triage-title" className="mt-2 text-xl font-black leading-tight text-white sm:text-2xl">
-          Still dead? Book a free component-level no-power diagnosis
+          No-Power Symptom Triage
         </h3>
         <p className="mt-2 max-w-3xl text-sm leading-relaxed text-slate-300">
-          Tell us what the laptop is doing and share its exact model. We will help identify the appropriate diagnostic route before any paid repair is approved.
+          Classify what the laptop actually does before repeating resets, replacing parts or assuming the motherboard has failed.
         </p>
       </div>
 
@@ -123,24 +108,7 @@ export default function NoPowerQuickTriage() {
           </div>
         </fieldset>
 
-        <div className="rounded-xl border border-amber-500/30 bg-amber-500/5 p-4" role="note">
-          <div className="flex items-start gap-3">
-            <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0 text-amber-300" aria-hidden="true" />
-            <p className="text-sm leading-relaxed text-amber-100">
-              <strong>Stop applying power</strong> if there is liquid exposure, a swollen battery, a burning smell or visible sparks. Disconnect AC if safe, do not reconnect the charger or press Power, and arrange inspection.
-            </p>
-          </div>
-        </div>
-
-        <div
-          className={`rounded-xl border p-4 ${
-            isSafetyStop
-              ? 'border-amber-500/40 bg-amber-500/10'
-              : 'border-cyan-500/25 bg-slate-900/80'
-          }`}
-          role={isSafetyStop ? 'alert' : 'status'}
-          aria-live="polite"
-        >
+        <div className={`rounded-xl border p-4 ${isSafetyStop ? 'border-amber-500/40 bg-amber-500/10' : 'border-cyan-500/25 bg-slate-900/80'}`} role={isSafetyStop ? 'alert' : 'status'} aria-live="polite">
           <div className="flex items-start gap-3">
             {isSafetyStop
               ? <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0 text-amber-300" aria-hidden="true" />
@@ -159,62 +127,42 @@ export default function NoPowerQuickTriage() {
             Laptop brand and exact model
             <input
               type="text"
-              value={brandModel}
-              onChange={(event) => setBrandModel(event.target.value)}
+              value={deviceModel}
+              onChange={(event) => setDeviceModel(event.target.value)}
               placeholder="e.g. Dell Latitude 5440, HP 15s, MacBook Air M2"
               className="mt-2 w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-3 text-sm text-white placeholder:text-slate-500 focus:border-cyan-400 focus:outline-none focus:ring-2 focus:ring-cyan-400/20"
               autoComplete="off"
             />
           </label>
           <label className="block text-sm font-semibold text-slate-200">
-            Your area in Kuwait
-            <input
-              type="text"
-              value={area}
-              onChange={(event) => setArea(event.target.value)}
-              placeholder="e.g. Salmiya, Hawalli, Farwaniya"
-              className="mt-2 w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-3 text-sm text-white placeholder:text-slate-500 focus:border-cyan-400 focus:outline-none focus:ring-2 focus:ring-cyan-400/20"
-              autoComplete="address-level2"
+            Other observations (optional)
+            <textarea
+              value={observations}
+              onChange={(event) => setObservations(event.target.value)}
+              placeholder="Record blink codes, beep patterns, recent updates or what changed before the failure."
+              rows={3}
+              className="mt-2 w-full resize-y rounded-lg border border-slate-700 bg-slate-900 px-3 py-3 text-sm text-white placeholder:text-slate-500 focus:border-cyan-400 focus:outline-none focus:ring-2 focus:ring-cyan-400/20"
             />
           </label>
         </div>
 
-        <div className="flex flex-wrap gap-3">
-          <a
-            href={whatsappHref}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-cyan-400 px-5 py-3 text-sm font-black text-slate-950 transition-colors hover:bg-cyan-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
-          >
-            <MessageCircle className="h-4 w-4" aria-hidden="true" />
-            Send symptoms on WhatsApp
-          </a>
-          <Link
-            to="/book"
-            className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg border border-slate-700 bg-slate-900 px-5 py-3 text-sm font-bold text-white transition-colors hover:border-cyan-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300"
-          >
-            <Truck className="h-4 w-4" aria-hidden="true" />
-            Book free pickup
-          </Link>
-          <a
-            href={`tel:+${business.telephone}`}
-            className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg border border-slate-700 bg-slate-900 px-5 py-3 text-sm font-bold text-white transition-colors hover:border-cyan-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300"
-          >
-            <Phone className="h-4 w-4" aria-hidden="true" />
-            Call the lab
-          </a>
+        <div className="rounded-xl border border-slate-800 bg-slate-900/70 p-4">
+          <p className="text-sm font-bold text-white">Evidence worth recording for this symptom</p>
+          <ul className="mt-3 grid gap-2 sm:grid-cols-2">
+            {selected.evidence.map((item) => (
+              <li key={item} className="flex gap-2 text-xs leading-relaxed text-slate-300">
+                <span className="text-cyan-300" aria-hidden="true">•</span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-4 border-t border-slate-800 pt-3 text-xs leading-relaxed text-slate-500">
+            Device: {deviceModel.trim() || 'Model not recorded'} · Observation: {observations.trim() || 'No additional note'}
+          </p>
         </div>
 
-        <div className="flex flex-wrap gap-x-5 gap-y-2 border-t border-slate-800 pt-4 text-xs font-semibold text-slate-400">
-          <span>Free pickup across Kuwait</span>
-          <span>No Fix, No Fee</span>
-          <span>30-day warranty on completed repairs</span>
-          <span>Quote before paid work</span>
-        </div>
         <p className="text-xs leading-relaxed text-slate-500">
-          {isSafetyStop
-            ? 'Do not use this form as a reason to reconnect a damaged or unsafe device. Keep it disconnected and describe the hazard in your message.'
-            : 'Selecting a symptom does not diagnose the fault. Final findings and any repair recommendation require inspection.'}
+          Selecting a symptom does not diagnose the fault. Use the manufacturer procedure for the exact model, and do not continue testing a device that shows signs of liquid, battery or electrical damage.
         </p>
       </div>
     </section>
