@@ -7285,11 +7285,11 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         "type": "paragraph",
-        "text": "Microsoft — What to do about a critical warning for a storage device: https://support.microsoft.com/en-us/windows/experience/storage-filemanagement/what-to-do-about-a-critical-warning-for-a-storage-device
+        "text": "Microsoft — What to do about a critical warning for a storage device: https://support.microsoft.com/en-us/windows/experience/storage-filemanagement/what-to-do-about-a-critical-warning-for-a-storage-device"
       },
       {
-        type: "paragraph",
-        text: "Intel — How to Enable Intel VMD Capable Platforms with the Intel RST Driver: https://www.intel.com/content/www/us/en/support/articles/000057787/memory-and-storage/intel-optane-memory.html""
+        "type": "paragraph",
+        "text": "Intel — How to Enable Intel VMD Capable Platforms with the Intel RST Driver: https://www.intel.com/content/www/us/en/support/articles/000057787/memory-and-storage/intel-optane-memory.html"
       },
       {
         "type": "paragraph",
