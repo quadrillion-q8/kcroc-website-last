@@ -683,13 +683,13 @@ export const rawGraphData: RawGraphData = {
       title: 'Windows 11 26H2 ISO Is Now Available — What PC Users Should Know Before Installing',
       description: 'Windows 11 26H2 ISO is now available. Learn the official download options, requirements, upgrade vs clean install paths, installation troubleshooting and post-install checks.',
       seo: {
-        title: 'Windows 11 26H2 ISO: Install, Upgrade & Fixes | KCROC',
-        description: 'Windows 11 26H2 ISO is now available. See official download options, requirements, upgrade vs clean install steps, and troubleshooting checks.',
+        title: 'Windows 11 26H2 ISO Download, Clean Install & Hardware Guide',
+        description: 'Official Windows 11 26H2 ISO guide by Imran Natiq. Learn enablement package vs clean install steps, SHA256 verification, setup error fixes, and hardware checks.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/news/windows-11-26h2-iso-released',
         ogImage: 'https://www.computerrepairkuwait.com/images/discover/windows-os-software-repair-and-installation-kuwait-1200x675.webp',
         ogType: 'article',
-        schemaTypes: ['WebPage'],
-        lastModified: '2026-09-30T00:00:00+03:00',
+        schemaTypes: ['WebPage', 'Person'],
+        lastModified: '2026-11-09T00:00:00+03:00',
         breadcrumbs: [{ name: 'Home', url: '/' }, { name: 'News', url: '/news' }, { name: 'Windows 11 26H2 ISO Is Now Available', url: '/news/windows-11-26h2-iso-released' }]
       },
       relatedServiceIds: ['srv-laptop', 'srv-ssd-ram', 'srv-motherboard', 'srv-gaming'],
