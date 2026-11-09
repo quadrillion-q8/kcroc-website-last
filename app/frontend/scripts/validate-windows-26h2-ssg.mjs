@@ -118,6 +118,23 @@ for (const route of [
   assert.ok(html.includes(route), 'Existing contextual internal route is missing: ' + route);
 }
 
+const relatedServicesStart = html.indexOf('id="graph-related-services"');
+assert.ok(relatedServicesStart >= 0, 'Graph-connected KCROC service-card section is missing');
+const relatedServicesEnd = html.indexOf('</section>', relatedServicesStart);
+assert.ok(relatedServicesEnd > relatedServicesStart, 'KCROC service-card section is not closed');
+const relatedServicesHtml = html.slice(relatedServicesStart, relatedServicesEnd);
+for (const serviceRoute of [
+  '/laptop-repair-kuwait',
+  '/ssd-ram-upgrade-kuwait',
+  '/motherboard-repair-kuwait',
+  '/gaming-pc-repair-kuwait',
+]) {
+  assert.ok(
+    relatedServicesHtml.includes(`href="${serviceRoute}"`),
+    'Graph-connected KCROC service card is missing: ' + serviceRoute,
+  );
+}
+
 assert.ok(
   html.includes('Windows 11 26H2 ISO Download, Clean Install &amp; Hardware Guide') ||
     html.includes('Windows 11 26H2 ISO Download, Clean Install & Hardware Guide'),
