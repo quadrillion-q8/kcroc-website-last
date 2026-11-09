@@ -50,8 +50,8 @@ const faqs = [
     a: 'If the laptop is otherwise reliable and a repair or upgrade is economical, repair may make sense. Replacement is usually the better long-term choice when the machine is incompatible with Windows 11, has multiple failing components, or no longer meets your performance needs.'
   },
   {
-    q: 'Can KCROC check whether my computer can upgrade to Windows 11?',
-    a: 'Yes. KCROC can assess Windows 11 compatibility, TPM and Secure Boot configuration, storage and RAM health, Windows Update problems, and whether repairing, upgrading, or replacing the computer is the more practical option.'
+    q: 'How can I check whether my computer can upgrade to Windows 11?',
+    a: 'Run Microsoft PC Health Check and review the compatibility result for the exact device. If the result points to TPM or Secure Boot, check the manufacturer documentation before changing firmware settings.'
   }
 ];
 
@@ -190,11 +190,11 @@ export default function Windows10EndOfSupportGuide() {
             <p>Use Windows Update or Microsoft’s PC Health Check app for a device-specific compatibility result. Do not assume TPM is missing simply because it is not enabled: on some systems TPM functionality exists in firmware under names such as Intel PTT or AMD fTPM.</p>
             <Figure
               src={IMAGES.laptopHardware.thinkpadLaptopInstallingWindows11.src}
-              alt="ThinkPad laptop installing Windows 11 during KCROC service"
+              alt="ThinkPad laptop installing Windows 11"
               caption="A Windows 11 compatibility result can depend on firmware settings as well as the CPU and other hardware."
             />
             <p>
-              See Microsoft’s current <a href={MS_WIN11} target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:underline">Windows 11 specifications <ExternalLink className="inline w-4 h-4" /></a>. If the upgrade is failing or Windows itself is unstable, see our <Link to="/windows-wont-boot-kuwait" className="text-cyan-400 hover:underline">Windows won’t boot repair guide</Link> or <Link to="/blue-screen-of-death-bsod-fix-kuwait" className="text-cyan-400 hover:underline">BSOD diagnostic page</Link>.
+              See Microsoft’s current <a href={MS_WIN11} target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:underline">Windows 11 specifications <ExternalLink className="inline w-4 h-4" /></a>. If the upgrade is failing or Windows itself is unstable, follow the <Link to="/guides/windows-troubleshooting-complete-guide" className="text-cyan-400 hover:underline">complete Windows troubleshooting guide</Link> and isolate the specific failure before attempting another installation.
             </p>
           </Section>
 
@@ -214,17 +214,17 @@ export default function Windows10EndOfSupportGuide() {
             </p>
             <Figure
               src={IMAGES.laptopHardware.dellLaptopWindowsUpdateRepairStack.src}
-              alt="Dell laptop Windows Update repair stack at KCROC"
+              alt="Dell laptop displaying Windows Update troubleshooting"
               caption="If ESU or Windows Update does not appear correctly, fix the update/licensing problem first instead of installing random optimizer tools."
             />
           </Section>
 
           <Section title="Option 3: Repair or upgrade the existing PC">
             <p>A Windows 11 compatibility failure does not automatically mean the hardware is worthless. An SSD, more RAM, a new battery, cooling service, or a repaired Windows installation can still make a machine useful—provided the processor and platform fit your longer-term needs.</p>
-            <p>For a very slow machine, see our <Link to="/laptop-running-very-slow" className="text-cyan-400 hover:underline">slow laptop / SSD upgrade guide</Link>. For broader hardware faults, our <Link to="/laptop-repair-kuwait" className="text-cyan-400 hover:underline">laptop repair service</Link> covers SSD, RAM, battery, thermal, charging, and Windows-related diagnostics.</p>
+            <p>For a very slow machine, see the <Link to="/blog/why-is-my-laptop-so-slow" className="text-cyan-400 hover:underline">measurement-led laptop performance guide</Link>. It explains how to distinguish memory pressure, storage latency, thermal throttling, power behaviour and background software before deciding what to change.</p>
             <Figure
               src={IMAGES.upgrades.miniPcCrucial.src}
-              alt="Mini PC DDR5 RAM and NVMe SSD upgrade at KCROC Kuwait"
+              alt="Mini PC with DDR5 memory and NVMe SSD upgrade components"
               caption="RAM and SSD upgrades can extend the useful life of suitable hardware, but they do not override Windows 11 CPU or firmware requirements."
             />
           </Section>
