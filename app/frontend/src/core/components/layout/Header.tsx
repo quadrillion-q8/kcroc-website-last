@@ -8,6 +8,7 @@ import { useAnalytics } from '../../analytics/AnalyticsProvider';
 import { Button } from '@/components/ui/button';
 import MobileMenu from './MobileMenu';
 import { getLanguageSwitchPath } from '../../../utils/locale';
+import { isEnglishTechnicalGuideRoute } from '../../../constants/routes';
 
 const DesktopMegaMenu = React.lazy(() => import('./DesktopMegaMenu'));
 const SearchBar = React.lazy(() => import('../SearchBar').then(m => ({ default: m.SearchBar })));
@@ -43,7 +44,7 @@ export default function Header() {
   const location = useLocation();
   const isGlobalEditorialArticle = location.pathname === '/blog/why-8gb-ram-is-no-longer-enough-for-windows-11' || location.pathname === '/blog/why-is-my-laptop-so-slow';
   const isGlobalSlowLaptopGuide = location.pathname === '/blog/why-is-my-laptop-so-slow';
-  const isGlobalTechnicalGuide = location.pathname === '/guides/bios-uefi-recovery-kuwait';
+  const isGlobalTechnicalGuide = isEnglishTechnicalGuideRoute(location.pathname);
   const hideConversionActions = isGlobalEditorialArticle || isGlobalTechnicalGuide;
   const isArabicRoute = location.pathname === '/ar' || location.pathname.startsWith('/ar/') || location.pathname.startsWith('/blog/ar/') || location.pathname.startsWith('/guides/ar/');
   const { trackConversion } = useAnalytics();
@@ -174,7 +175,7 @@ export default function Header() {
                   src="/logo-128.webp"
                   srcSet="/logo-128.webp 128w, /logo-256.webp 256w"
                   sizes="72px"
-                  alt={isGlobalSlowLaptopGuide ? "KCROC Hardware Engineering Lab" : "KCROC — Kuwait Computer Repair On Call"}
+                  alt={isGlobalSlowLaptopGuide || isGlobalTechnicalGuide ? "KCROC Hardware Engineering Lab" : "KCROC — Kuwait Computer Repair On Call"}
                   width="72"
                   height="72"
                   decoding="async"
@@ -363,7 +364,7 @@ export default function Header() {
           cleanTel={cleanTel}
           phoneDisplay={phoneDisplay}
           triggerRef={mobileToggleRef}
-          hideConversionActions={isGlobalTechnicalGuide}
+          hideConversionActions={hideConversionActions}
         />
       )}
 
