@@ -149,13 +149,6 @@ export const DellLaptopOverheatingPage = () => {
           <p className="text-sm sm:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed mb-8">
             Is your Dell Inspiron running loud, getting unusually hot, or shutting down under load? Learn the common causes, safe checks and model-specific diagnostic steps.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold px-8 shadow-lg shadow-cyan-500/20" asChild>
-              <a href={WA_LINK} target="_blank" rel="noopener noreferrer">
-                <MessageCircle className="w-5 h-5 mr-2" /> Book a Free Diagnostic
-              </a>
-            </Button>
-          </div>
         </div>
       </section>
 
