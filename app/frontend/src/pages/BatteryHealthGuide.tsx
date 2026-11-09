@@ -3,7 +3,7 @@ import React from 'react';
 import { Badge } from '@/components/ui/badge';
 import {
   Battery, BatteryWarning, Thermometer, AlertTriangle, CheckCircle2, XCircle,
-  Phone, MessageCircle, Zap, Clock, Gauge, RefreshCw, Shield,
+  Zap, Clock, Gauge, RefreshCw, Shield,
   Stethoscope, Wrench, HelpCircle, Moon, WifiOff, Terminal, Apple,
   ChevronRight, Sun, PowerOff, TrendingDown
 } from 'lucide-react';
