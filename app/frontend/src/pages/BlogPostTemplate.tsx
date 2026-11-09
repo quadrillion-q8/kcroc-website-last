@@ -1220,7 +1220,7 @@ export default function BlogPostTemplate() {
   return (
     <div className="w-full min-h-screen bg-transparent text-slate-200 pt-8 sm:pt-16 lg:pt-32 pb-8 sm:pb-16 lg:pb-24">
 
-      <Head>
+      <Head htmlAttributes={isGuide ? { lang: 'en' } : undefined}>
         <title>{post.seoTitle || `${post.title.length > 57 ? `${post.title.slice(0, 57)}…` : post.title} | KCROC`}</title>
         <meta name="description" content={post.seoDescription || (post.description || post.excerpt).slice(0, 155)} />
         <link rel="canonical" href={pageUrl} />
