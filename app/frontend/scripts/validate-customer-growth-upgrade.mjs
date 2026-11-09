@@ -63,12 +63,37 @@ const getTopLevelBlogPost = (id) => {
   const marker = `"id": "${id}"`;
   const start = blogPosts.indexOf(marker);
   if (start < 0) return '';
-  const objectStart = blogPosts.lastIndexOf('\\n  {', start);
-  const objectEnd = blogPosts.indexOf('\\n  },', start);
+  const objectStart = blogPosts.lastIndexOf('\n  {', start);
+  const objectEnd = blogPosts.indexOf('\n  },', start);
   return objectStart >= 0 && objectEnd > start ? blogPosts.slice(objectStart, objectEnd + 5) : '';
 };
 const windowsServicesGuideEntry = getTopLevelBlogPost('guide-windows-11-background-services-audit-2026');
 const windowsSettingsGuideEntry = getTopLevelBlogPost('guide-windows-11-settings-tweaks-2026');
+
+const getGuideContentBlock = (id) => {
+  const marker = '"id": "' + id + '"';
+  const start = blogPosts.indexOf(marker);
+  if (start < 0) return '';
+  const contentType = blogPosts.indexOf('"contentType": "guide"', start);
+  const end = [blogPosts.indexOf('\n  },', contentType), blogPosts.indexOf('\n},', contentType)]
+    .filter((index) => index >= 0)
+    .sort((a, b) => a - b)[0];
+  return contentType >= 0 && end > start ? blogPosts.slice(start, end) : '';
+};
+const gamingPowerGuideEntry = getGuideContentBlock('guide-gaming-pc-not-turning-on-kuwait');
+const gamingNoDisplayGuideEntry = getGuideContentBlock('guide-gaming-pc-black-screen-no-display-kuwait');
+const gpuArtifactsGuideEntry = getGuideContentBlock('guide-gaming-gpu-artifacts-repair-kuwait');
+const gamingShutdownGuideEntry = getGuideContentBlock('guide-gaming-pc-random-shutdown-kuwait');
+const bitlockerGuideEntry = getGuideContentBlock('guide-bitlocker-recovery-key-after-bios-update');
+
+const getGuideEditorialCopy = (entry) => entry
+  .replace(/^\s*"(?:id|slug|clusterParent|image|discoverImage)":.*$/gm, '')
+  .replace(/https?:\/\/\S+/g, '');
+const gamingPowerEditorialCopy = getGuideEditorialCopy(gamingPowerGuideEntry);
+const gamingNoDisplayEditorialCopy = getGuideEditorialCopy(gamingNoDisplayGuideEntry);
+const gpuArtifactsEditorialCopy = getGuideEditorialCopy(gpuArtifactsGuideEntry);
+const gamingShutdownEditorialCopy = getGuideEditorialCopy(gamingShutdownGuideEntry);
+const bitlockerEditorialCopy = getGuideEditorialCopy(bitlockerGuideEntry);
 const salmiyaConfigStart = arabicCommercial.indexOf("'computer-repair-salmiya': {");
 const salmiyaConfigEnd = arabicCommercial.indexOf("'computer-repair-farwaniya': {", salmiyaConfigStart + 1);
 const salmiyaConfig = salmiyaConfigStart >= 0 && salmiyaConfigEnd > salmiyaConfigStart
@@ -179,9 +204,27 @@ add('English Windows services/settings guides contain no Kuwait-local repair or 
   windowsServicesGuideEntry.includes('hot, dusty environments') &&
   windowsSettingsGuideEntry.includes("When Settings Changes Aren't Enough") &&
   windowsSettingsGuideEntry.includes('Review Windows Update history') &&
-  !/\\bKuwait\\b|\\bHawalli\\b|free pickup|No Fix, No Fee|Computer Repair Kuwait|wa\\.me|tel:\\+965/.test(windowsServicesGuideEntry) &&
-  !/\\bKuwait\\b|\\bHawalli\\b|free pickup|No Fix, No Fee|Computer Repair Kuwait|wa\\.me|tel:\\+965/.test(windowsSettingsGuideEntry) &&
+  !/\bKuwait\b|\bHawalli\b|free pickup|No Fix, No Fee|Computer Repair Kuwait|wa\.me|tel:\+965/.test(windowsServicesGuideEntry) &&
+  !/\bKuwait\b|\bHawalli\b|free pickup|No Fix, No Fee|Computer Repair Kuwait|wa\.me|tel:\+965/.test(windowsSettingsGuideEntry) &&
   graph.includes('An evidence-led review of Windows 11 settings for privacy, startup, battery life, gaming and security'));
+
+add('English gaming-PC guides keep diagnostic content without local collection, warranty or unsupported GPU-repair offers',
+  gamingPowerGuideEntry.includes('When controlled hardware diagnosis is needed') &&
+  gamingNoDisplayGuideEntry.includes('Environmental Factors: Heat, Dust & Safe Handling') &&
+  gamingNoDisplayGuideEntry.includes('What a useful no-display diagnosis should establish') &&
+  gpuArtifactsGuideEntry.includes('When specialist hardware assessment is warranted') &&
+  gamingShutdownGuideEntry.includes('When controlled hardware diagnosis is needed') &&
+  !/\bKuwait\b|\bHawalli\b|free pickup|No Fix, No Fee|KWD|KCROC's published service|GPU Repair Kuwait|wa\.me|tel:\+965/i.test([
+    gamingPowerEditorialCopy, gamingNoDisplayEditorialCopy, gpuArtifactsEditorialCopy, gamingShutdownEditorialCopy
+  ].join(' ')) &&
+  !/KCROC.{0,100}(?:GPU|VRAM|BGA|graphics-card|pickup|collection|repair service)/i.test(gpuArtifactsEditorialCopy) &&
+  !gpuArtifactsEditorialCopy.includes('GPU Repair Kuwait'));
+
+add('BitLocker guide separates recovery-key education from local repair promotion',
+  bitlockerGuideEntry.includes('When to stop firmware troubleshooting') &&
+  bitlockerGuideEntry.includes('A BitLocker recovery prompt itself does not prove that the BIOS update failed.') &&
+  !/\bKuwait\b|\bHawalli\b|free pickup|No Fix, No Fee|KCROC checks|wa\.me|tel:\+965/i.test(bitlockerEditorialCopy));
+
 add('BIOS/UEFI English guide removes Kuwait pricing and local-service anchors and includes the printable intake / hardware-escalation tools',
   !/\bKWD\b|\bKuwait\b|\+965|wa\.me|repair in Kuwait|motherboard-repair-kuwait|laptop-repair-kuwait|pricing#/.test(biosGuideEnSource) &&
   biosGuideEnSource.includes('Print / Save as PDF') &&
