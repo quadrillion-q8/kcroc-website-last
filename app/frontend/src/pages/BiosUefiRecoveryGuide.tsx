@@ -1012,7 +1012,7 @@ export default function BiosUefiRecoveryGuide() {
             <Button type="button" size="lg" variant="outline" className="border-slate-700 text-slate-200 hover:bg-slate-800 print:hidden" onClick={() => window.print()}>Print / Save as PDF</Button>
           </div>
           <div className="mt-6 grid gap-x-8 gap-y-5 sm:grid-cols-2">
-            {[
+            {([
               ['Device identity', ['Manufacturer and full model / product number', 'Motherboard ID and PCB revision (if known)', 'CPU/platform generation and discrete-GPU variant']],
               ['Firmware event', ['Previous BIOS/UEFI version and target version', 'Exact package filename and official source', 'Whether power was interrupted during erase/write or after completion']],
               ['Observed behavior', ['Time allowed for first boot / memory training', 'POST code, beep sequence and diagnostic LED pattern', 'Fan, display, keyboard and USB activity']],
