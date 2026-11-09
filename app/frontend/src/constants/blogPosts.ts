@@ -81,7 +81,16 @@ export interface FAQItem {
 
 export interface FAQBlock {
   type: 'faq';
+  /** Static mode renders every answer directly in the initial HTML; accordion remains the default. */
+  display?: 'accordion' | 'static';
   items: FAQItem[];
+}
+
+export interface CodeBlockData {
+  type: 'code';
+  language?: 'powershell' | 'text';
+  title?: string;
+  code: string;
 }
 
 export interface DebugLedSelectorBlock {
@@ -105,6 +114,7 @@ export type ContentBlock =
   | ComparisonTableBlock
   | TimelineBlock
   | FAQBlock
+  | CodeBlockData
   | ImageBlock
   | DebugLedSelectorBlock;
 
