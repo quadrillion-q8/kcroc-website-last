@@ -164,10 +164,9 @@ export function Footer() {
   const googleAriaLabel = brandLabel + ' on Google';
 
   // Defensive filtering keeps malformed or empty generated navigation entries out of the DOM.
-  const serviceLinks = footerData.links.services.filter(isValidFooterLink);
+  const visibleServices = footerData.links.services.slice(0, 10).filter(isValidFooterLink);
   const areaLinks = footerData.links.areas.filter(isValidFooterLink);
   const companyLinks = footerData.links.company.filter(isValidFooterLink);
-  const visibleServices = serviceLinks.slice(0, 10);
   const visibleAreas = areaLinks.slice(0, 8);
   const totalAreas = areaLinks.length;
 
