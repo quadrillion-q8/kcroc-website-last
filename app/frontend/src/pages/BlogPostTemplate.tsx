@@ -724,14 +724,18 @@ const RichBlock: React.FC<{ block: ContentBlock; headingRef?: (el: HTMLElement |
       );
     case 'comparisonTable':
       return (
-        <div className="my-10 overflow-x-auto rounded-2xl border border-slate-800">
-          <table className="w-full text-sm border-collapse min-w-[560px]">
-            <caption className="sr-only">{block.title || 'Comparison table'}</caption>
+        <div className="my-10 overflow-x-auto rounded-2xl border border-slate-700 bg-slate-950/40">
+          <table className="w-full min-w-[680px] text-sm border-collapse">
+            <caption className="caption-top border-b border-slate-700 px-4 py-3 text-left text-sm font-bold text-white">
+              {block.title || 'Comparison table'}
+            </caption>
             <thead>
-              <tr className="bg-slate-900/80">
-                <th scope="col" className="text-left p-4 text-slate-400 font-bold uppercase text-xs tracking-wide">{block.featureLabel || 'Feature'}</th>
+              <tr className="bg-slate-900/90">
+                <th scope="col" className="border-r border-slate-700 p-4 text-left align-top text-xs font-bold uppercase tracking-wide text-slate-300">
+                  {block.featureLabel || 'Feature'}
+                </th>
                 {block.columns.map((col, i) => (
-                  <th key={i} scope="col" className={`p-4 text-center font-black uppercase text-xs tracking-wide ${i === 1 ? 'text-cyan-400 bg-cyan-500/5' : 'text-slate-300'}`}>
+                  <th key={i} scope="col" className={`border-r border-slate-700 p-4 text-left align-top text-xs font-black uppercase tracking-wide ${i === 1 ? 'bg-cyan-500/10 text-cyan-300' : 'text-slate-300'}`}>
                     {col}
                   </th>
                 ))}
@@ -739,10 +743,12 @@ const RichBlock: React.FC<{ block: ContentBlock; headingRef?: (el: HTMLElement |
             </thead>
             <tbody>
               {block.rows.map((row, ri) => (
-                <tr key={ri} className="border-t border-slate-800/70">
-                  <th scope="row" className="p-4 text-left text-slate-300 font-semibold">{row.feature}</th>
+                <tr key={ri} className="border-b border-slate-700/80 even:bg-slate-900/30">
+                  <th scope="row" className="border-r border-slate-700 p-4 text-left align-top font-semibold leading-relaxed text-slate-200">
+                    {row.feature}
+                  </th>
                   {row.values.map((v, ci) => (
-                    <td key={ci} className={`p-4 text-center text-slate-400 ${ci === 1 ? 'bg-cyan-500/5 text-cyan-300 font-medium' : ''}`}>
+                    <td key={ci} className={`border-r border-slate-700 p-4 text-left align-top whitespace-normal leading-relaxed ${ci === 1 ? 'bg-cyan-500/5 text-cyan-200' : 'text-slate-300'}`}>
                       {v}
                     </td>
                   ))}
@@ -756,7 +762,7 @@ const RichBlock: React.FC<{ block: ContentBlock; headingRef?: (el: HTMLElement |
       return (
         <div className="my-10">
           {block.title && <h3 className="text-lg font-bold text-white mb-6">{block.title}</h3>}
-          <ol className="relative border-l border-slate-800 pl-6 space-y-6">
+          <ol aria-label={block.title || 'Installation steps'} className="relative m-0 list-none border-l border-slate-800 pl-6 space-y-6">
             {block.steps.map((step, i) => (
               <li key={i} className="relative">
                 {block.numbered ? (
@@ -773,8 +779,30 @@ const RichBlock: React.FC<{ block: ContentBlock; headingRef?: (el: HTMLElement |
       );
     case 'debugLedSelector':
       return <GamingPcDebugLedSelector />;
-    case 'faq':
+    case 'code':
       return (
+        <figure className="my-8 overflow-hidden rounded-2xl border border-slate-700 bg-slate-950">
+          {block.title && (
+            <figcaption className="border-b border-slate-700 px-5 py-3 text-sm font-bold text-white">
+              {block.title}
+            </figcaption>
+          )}
+          <pre className="overflow-x-auto p-5 text-sm leading-6 text-slate-200">
+            <code className={`language-${block.language || 'text'}`}>{block.code}</code>
+          </pre>
+        </figure>
+      );
+    case 'faq':
+      return block.display === 'static' ? (
+        <div className="my-10 space-y-5" aria-label="Frequently asked questions">
+          {block.items.map((item, i) => (
+            <section key={i} className="rounded-2xl border border-slate-800 bg-slate-900/40 p-5">
+              <h3 className="text-base font-bold leading-snug text-white">{item.question}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-slate-300">{item.answer}</p>
+            </section>
+          ))}
+        </div>
+      ) : (
         <div className="my-10 space-y-3" aria-label="Frequently asked questions">
           {block.items.map((item, i) => (
             <FAQAccordionItem key={i} question={item.question} answer={item.answer} />
@@ -1015,7 +1043,9 @@ export default function BlogPostTemplate() {
           "isPartOf": { "@id": `${business.websiteUrl}/#website` }
         },
         {
-          "@type": isNews ? "NewsArticle" : (isNoPowerGuide || post.slug === "gaming-pc-black-screen-no-display-kuwait" || post.slug === "why-8gb-ram-is-no-longer-enough-for-windows-11" || post.slug === "why-is-my-laptop-so-slow") ? "TechArticle" : isGuide ? "Article" : ["BlogPosting", "Article"],
+          "@type": post.slug === "windows-11-26h2-iso-released"
+            ? ["NewsArticle", "TechArticle"]
+            : isNews ? "NewsArticle" : (isNoPowerGuide || post.slug === "gaming-pc-black-screen-no-display-kuwait" || post.slug === "why-8gb-ram-is-no-longer-enough-for-windows-11" || post.slug === "why-is-my-laptop-so-slow") ? "TechArticle" : isGuide ? "Article" : ["BlogPosting", "Article"],
           "@id": `${pageUrl}#article`,
           "headline": post.title,
           "description": post.excerpt,
@@ -1024,6 +1054,16 @@ export default function BlogPostTemplate() {
             "articleSection": post.category,
             "keywords": post.tags ?? [],
             "isAccessibleForFree": true
+          } : {}),
+          ...(post.slug === "windows-11-26h2-iso-released" ? {
+            "proficiencyLevel": "Beginner to Advanced",
+            "reviewedBy": { "@id": `${AUTHOR_URL}#person` },
+            "about": [
+              { "@type": "Thing", "name": "Windows 11 version 26H2" },
+              { "@type": "Thing", "name": "Windows operating-system installation" },
+              { "@type": "Thing", "name": "UEFI and Intel VMD storage configuration" },
+              { "@type": "Thing", "name": "Computer hardware diagnostics" }
+            ]
           } : {}),
           ...(isNoPowerGuide ? {
             "inLanguage": "en-KW",
@@ -1075,24 +1115,28 @@ export default function BlogPostTemplate() {
           "image": toAbsoluteAssetUrl(post.discoverImage || post.image),
           "datePublished": post.date,
           "dateModified": getModifiedDate(post),
-          "author": post.author === "Imran Natiq" ? {
-            "@type": "Person",
-            "@id": `${AUTHOR_URL}#person`,
-            "name": "Imran Natiq",
-            "url": AUTHOR_URL,
-            "jobTitle": "Hardware Repair Engineer",
-            "worksFor": {
+          "author": post.slug === "windows-11-26h2-iso-released"
+            ? { "@id": `${AUTHOR_URL}#person` }
+            : post.author === "Imran Natiq" ? {
+              "@type": "Person",
+              "@id": `${AUTHOR_URL}#person`,
+              "name": "Imran Natiq",
+              "url": AUTHOR_URL,
+              "jobTitle": "Hardware Repair Engineer",
+              "worksFor": {
+                "@type": "Organization",
+                "name": post.slug === "why-is-my-laptop-so-slow" ? "KCROC Hardware Engineering Lab" : business.legalName,
+                "url": business.websiteUrl
+              }
+            } : { "@type": "Organization", "name": post.author },
+          "publisher": post.slug === "windows-11-26h2-iso-released"
+            ? { "@id": `${business.websiteUrl}/#business` }
+            : {
               "@type": "Organization",
               "name": post.slug === "why-is-my-laptop-so-slow" ? "KCROC Hardware Engineering Lab" : business.legalName,
-              "url": business.websiteUrl
-            }
-          } : { "@type": "Organization", "name": post.author },
-          "publisher": {
-            "@type": "Organization",
-            "name": post.slug === "why-is-my-laptop-so-slow" ? "KCROC Hardware Engineering Lab" : business.legalName,
-            "url": business.websiteUrl,
-            "logo": { "@type": "ImageObject", "url": `${business.websiteUrl}/logo.webp`, "width": 1024, "height": 1024 }
-          },
+              "url": business.websiteUrl,
+              "logo": { "@type": "ImageObject", "url": `${business.websiteUrl}/logo.webp`, "width": 1024, "height": 1024 }
+            },
           "mainEntityOfPage": { "@id": `${pageUrl}#webpage` }
         },
         ...(post.slug === "gaming-pc-black-screen-no-display-kuwait" ? [{
