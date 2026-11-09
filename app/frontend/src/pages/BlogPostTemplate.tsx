@@ -752,7 +752,12 @@ const RichBlock: React.FC<{ block: ContentBlock; headingRef?: (el: HTMLElement |
       );
     case 'comparisonTable':
       return (
-        <div className="my-10 overflow-x-auto rounded-2xl border border-slate-700 bg-slate-950/40">
+        <div
+          role="region"
+          aria-label={block.title ? `${block.title} table` : "Horizontally scrollable comparison table"}
+          tabIndex={0}
+          className="my-10 overflow-x-auto rounded-2xl border border-slate-700 bg-slate-950/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+        >
           <table className="w-full min-w-[680px] text-sm border-collapse">
             <caption className="caption-top border-b border-slate-700 px-4 py-3 text-left text-sm font-bold text-white">
               {block.title || 'Comparison table'}
@@ -1085,6 +1090,21 @@ export default function BlogPostTemplate() {
             "articleSection": post.category,
             "keywords": post.tags ?? [],
             "isAccessibleForFree": true
+          } : {}),
+          ...(post.slug === "ssd-not-detected-windows-11" ? {
+            "articleSection": post.category,
+            "keywords": post.tags ?? [],
+            "isAccessibleForFree": true,
+            "proficiencyLevel": "Beginner to Advanced",
+            "reviewedBy": { "@id": `${AUTHOR_URL}#person` },
+            "about": [
+              { "@type": "Thing", "name": "Solid-state drive" },
+              { "@type": "Thing", "name": "Windows 11 storage troubleshooting" },
+              { "@type": "Thing", "name": "NVM Express (NVMe)" },
+              { "@type": "Thing", "name": "M.2 SATA storage" },
+              { "@type": "Thing", "name": "Intel Volume Management Device (VMD)" },
+              { "@type": "Thing", "name": "Windows Disk Management" }
+            ]
           } : {}),
           ...(post.slug === "windows-11-26h2-iso-released" ? {
             "proficiencyLevel": "Beginner to Advanced",
