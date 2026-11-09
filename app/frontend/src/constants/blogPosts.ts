@@ -2534,8 +2534,8 @@ export const BLOG_POSTS: BlogPost[] = [
     id: "guide-laptop-wont-turn-on-2026",
     slug: "laptop-wont-turn-on",
     title: "Laptop Won't Turn On? Complete Troubleshooting Guide",
-    excerpt: "Laptop completely dead, showing no charging light, or refusing to start? Use this technician-led checklist to separate charger, battery, display, firmware and motherboard faults before paying for repair in Kuwait.",
-    description: "Laptop won't turn on? Follow a safe step-by-step diagnosis for no power, no charging light, black screen, battery, charger, USB-C and motherboard faults, with Kuwait-specific repair guidance from KCROC.",
+    excerpt: "Laptop completely dead, showing no charging light, or refusing to start? Use this technician-led checklist to separate charger, battery, display, firmware and motherboard faults before replacing parts.",
+    description: "Laptop won't turn on? Follow a safe step-by-step diagnosis for no power, no charging light, black screen, battery, charger, USB-C and motherboard faults across common laptop platforms.",
     content: [
       "A laptop that will not turn on can mean several very different things. Some machines are truly dead with no lights, no fan movement and no response at all. Others are receiving power but cannot complete startup or show an image.",
       "The safest way to troubleshoot is to identify which state you actually have before replacing parts. This guide walks through that process from the outside in, starting with checks that do not require opening the laptop."
@@ -2564,7 +2564,7 @@ export const BLOG_POSTS: BlogPost[] = [
       { type: 'h2', text: '2. Inspect the Charger Before Blaming the Laptop', id: 'inspect-charger' },
       { type: 'paragraph', text: "Look along the charger cable for crushed sections, cuts, exposed conductors, a bent connector, looseness near the brick, or a plug that only works when held at a certain angle. If the charger has an indicator LED, note whether the LED stays on when the charger is connected to the laptop." },
       { type: 'paragraph', text: "If a charger LED turns off immediately when connected to the laptop, that can be a useful diagnostic clue. Depending on the adapter design, it may indicate an overload or short on the laptop side, although the charger itself can also be faulty. Do not repeatedly reconnect it trying to force the laptop to start." },
-      { type: 'image', src: '/images/laptop-charger-power-adapter-inventory.webp', alt: 'Laptop power adapters and chargers used for troubleshooting no-power faults in Kuwait', caption: 'A known-good, correctly rated adapter is one of the fastest ways to separate an external power problem from a laptop-side fault.' },
+      { type: 'image', src: '/images/laptop-charger-power-adapter-inventory.webp', alt: 'Laptop power adapters and chargers used for troubleshooting no-power faults', caption: 'A known-good, correctly rated adapter is one of the fastest ways to separate an external power problem from a laptop-side fault.' },
       { type: 'callout', variant: 'tip', title: 'Use the correct rating', text: "For barrel-jack laptops, use an adapter with the correct connector and manufacturer-compatible voltage and wattage. For USB-C laptops, the charger and cable must support the power level and USB Power Delivery profile the laptop expects. A phone charger may fit physically but still be unable to start or charge a laptop." },
       { type: 'h3', text: 'Charger and USB-C Power Delivery: What Must Match', id: 'charger-power-delivery' },
       { type: 'paragraph', text: "A USB-C connector does not guarantee that every port, charger and cable can power every laptop. USB Power Delivery negotiates an operating profile between the adapter and device; the cable must also be rated for the current and power level being used. Barrel-jack models may additionally rely on connector dimensions, polarity or an adapter-identification contact. Check the exact model specification instead of choosing by connector shape alone." },
@@ -2579,7 +2579,7 @@ export const BLOG_POSTS: BlogPost[] = [
       { type: 'h2', text: '3. Check the Charging Port or USB-C Port', id: 'check-charging-port' },
       { type: 'paragraph', text: "Gently connect the charger and observe the port. The plug should not feel excessively loose, sink into the chassis, spark, or require pressure in a particular direction. A damaged DC jack can interrupt power even when the adapter is good." },
       { type: 'paragraph', text: "On USB-C models, try only another port that the manufacturer designates for charging. Not every USB-C port accepts charging input, and not every cable can carry laptop-level power." },
-      { type: 'image', src: '/images/laptop-dc-power-jack-connector-replacement-kuwait-1000.webp', alt: 'Laptop DC power jack connector replacement during no-power diagnosis in Kuwait', caption: 'A loose or damaged DC jack can create intermittent charging, no charging light, or a completely dead laptop.' },
+      { type: 'image', src: '/images/laptop-dc-power-jack-connector-replacement-kuwait-1000.webp', alt: 'Laptop DC power jack connector during no-power diagnosis', caption: 'A loose or damaged DC jack can create intermittent charging, no charging light, or a completely dead laptop.' },
 
       { type: 'h2', text: '4. Disconnect Accessories and Docking Devices', id: 'disconnect-accessories' },
       { type: 'paragraph', text: "Remove USB devices, external drives, memory-card readers, HDMI cables, docks, printers, Ethernet adapters and other accessories. Then connect only the charger and try the power button once." },
@@ -2666,7 +2666,7 @@ export const BLOG_POSTS: BlogPost[] = [
       ] },
       { type: 'callout', variant: 'warning', title: 'Board measurements are technician-only', text: "Do not open a laptop or connect a bench supply based on this overview. Board-level testing requires the correct schematic, voltage limits, current limits, ESD controls and battery-isolation procedure for that model." },
       { type: 'image', src: '/images/laptop-motherboard-diagnostic-bench-repair.webp', alt: 'Laptop motherboard on diagnostic bench for component-level no-power troubleshooting', caption: 'Component-level diagnosis traces the power path instead of replacing the entire motherboard by guesswork.' },
-      { type: 'paragraph', text: "Motherboard Repair Kuwait is the relevant service when the external power equipment, charging port and battery do not explain a genuine no-power condition. For broader faults where the final cause is not yet known, Laptop Repair Kuwait is the general diagnostic route." },
+      { type: 'paragraph', text: "If the external power equipment, charging port and battery do not explain a genuine no-power condition, the remaining fault may involve the motherboard input stage, power rails or embedded controller. Use measured evidence to identify the failed stage before deciding whether a component-level repair or board replacement is appropriate." },
 
       { type: 'h2', text: 'Common Causes of a Laptop That Will Not Turn On', id: 'common-causes' },
       { type: 'comparisonTable', title: 'Common no-start causes and the clues they leave', columns: ['Typical clue', 'Can you check it safely?', 'Likely next step'], rows: [
@@ -2680,9 +2680,9 @@ export const BLOG_POSTS: BlogPost[] = [
         { feature: 'Liquid or corrosion damage', values: ['Spill history, residue, intermittent power', 'Do not energize repeatedly', 'Disconnect power and inspect promptly'] }
       ] },
 
-      { type: 'h2', text: 'Kuwait-Specific Things Worth Checking', id: 'kuwait-specific' },
-      { type: 'paragraph', text: "In Kuwait, laptops often move between very hot cars or outdoor conditions and strongly air-conditioned rooms. Heat by itself does not prove a no-power fault, but high ambient temperatures can accelerate battery wear and expose marginal charging or cooling problems. Fine dust can also build up around ports and inside the chassis over time." },
-      { type: 'paragraph', text: "If a laptop was left in a hot vehicle, let it return to normal indoor temperature before charging or powering it. If there is visible condensation, moisture or a swollen battery, do not connect power until the machine is safe to inspect." },
+      { type: 'h2', text: 'Temperature, Moisture and Environmental Exposure', id: 'environmental-exposure' },
+      { type: 'paragraph', text: "Extreme temperature changes can affect laptop components and battery behaviour. After a device has been exposed to very hot or cold conditions, allow it to return gradually to the manufacturer's recommended operating range before charging or powering it. Temperature alone does not identify a no-power fault, so compare it with charging indicators, adapter behaviour and the exact startup symptom." },
+      { type: 'paragraph', text: "If there is visible condensation, moisture, liquid residue or a swollen battery, do not connect power. Disconnect accessories and follow the manufacturer's safety guidance before the device is inspected." },
 
       { type: 'h2', text: 'What Not to Do', id: 'what-not-to-do' },
       { type: 'paragraph', text: "Do not repeatedly wiggle a loose charging plug while the laptop is powered. Do not keep reconnecting a charger that sparks, becomes dangerously hot or immediately shuts its own indicator off. Do not puncture, press or bend a swollen battery. Do not apply heat to the motherboard or GPU as a DIY 'reflow' fix. And do not buy a replacement motherboard before the input power path has been measured." },
@@ -2691,7 +2691,7 @@ export const BLOG_POSTS: BlogPost[] = [
       { type: 'h2', text: 'When Is Professional Diagnosis Worth It?', id: 'when-to-seek-repair' },
       { type: 'paragraph', text: "Professional diagnosis makes sense when the correct charger and a known-good outlet produce no response, the charging connector is physically damaged, the charger repeatedly trips when connected, the laptop has liquid or corrosion history, the battery is swollen, or the machine shows inconsistent power behavior that basic external checks cannot explain." },
       { type: 'paragraph', text: "It is also worth diagnosing before replacing an expensive laptop. A dead machine can sometimes have a localized power-input or motherboard component fault rather than requiring an entire board or a new computer." },
-      { type: 'callout', variant: 'recommendation', title: 'KCROC in Kuwait', text: "If the external checks in this guide do not identify the cause, KCROC can test the charger, battery, charging input and motherboard power rails before recommending parts. The aim is to identify the failed stage first, then decide whether repair is technically and financially sensible." },
+      { type: 'callout', variant: 'expert', title: 'The diagnostic principle', text: "When basic external checks do not identify the cause, a qualified technician can test the charger, battery, charging input and motherboard power rails before recommending parts. The aim is to identify the failed stage first, then decide whether repair is technically and financially sensible." },
 
       { type: 'h2', text: 'Frequently Asked Questions', id: 'faq' },
       { type: 'faq', items: [
@@ -2704,7 +2704,7 @@ export const BLOG_POSTS: BlogPost[] = [
         { question: "Could BIOS corruption make a laptop look dead?", answer: "It can on some systems, although many firmware failures still produce lights, fan activity, blink codes or another sign of life. BIOS & UEFI Recovery Guide is the better next step when the failure followed a firmware update or the laptop shows firmware-recovery symptoms." },
         { question: "Is a laptop that won't turn on automatically a motherboard replacement?", answer: "No. The cause can be external power, a charger, charging jack, battery, cable, firmware or a localized board-level component. A diagnosis should identify the failed stage before an entire motherboard is replaced." },
         { question: "Are laptop reset steps and blink codes the same across every model from one brand?", answer: "No. A procedure or LED code can change between product families, generations and firmware versions from the same manufacturer. Use the exact laptop model or product number and its current support page or service manual. Do not copy a reset sequence or blink-code meaning from a different model." },
-        { question: "What details should I send KCROC before arranging a no-power pickup?", answer: "Send the exact brand and model, whether any charging or power lights appear, whether the fan or keyboard lights respond, and a short video of any repeating blink or beep pattern. Include the charger wattage label if available, any recent liquid or impact history, and your area in Kuwait. Do not reconnect a charger if the device smells burnt, sparks, becomes unusually hot or has a swollen battery." }
+        { question: "What information should I collect before a no-power diagnosis?", answer: "Record the exact brand and model, whether any charging or power lights appear, whether the fan or keyboard lights respond, and any repeating blink or beep pattern. Include the charger wattage label if available and note any recent liquid exposure, impact or firmware update. Do not reconnect a charger if the device smells burnt, sparks, becomes unusually hot or has a swollen battery." }
       ] },
 
       { type: 'h2', text: 'Bottom Line', id: 'bottom-line' },
@@ -2718,9 +2718,9 @@ export const BLOG_POSTS: BlogPost[] = [
     category: "Laptop Troubleshooting",
     technicalReviewDate: "2026-11-09T00:00:00+03:00",
     readTime: "18-20 min read",
-    tags: ["Laptop Won't Turn On", "Laptop No Power", "Laptop Troubleshooting", "Laptop Power Delivery", "OEM Blink Codes", "Motherboard Power Sequence", "Board-Level Diagnosis", "Computer Repair Kuwait"],
+    tags: ["Laptop Won't Turn On", "Laptop No Power", "Laptop Troubleshooting", "Laptop Power Delivery", "OEM Blink Codes", "Motherboard Power Sequence", "Board-Level Diagnosis"],
     seoTitle: "Laptop Won't Turn On? No Power & Black Screen Guide | KCROC",
-    seoDescription: "Laptop dead or black screen? Check the charger, USB-C power, battery and model-specific reset steps safely. Learn how technicians trace board faults. Free pickup in Kuwait.",
+    seoDescription: "Laptop dead or black screen? Check the charger, USB-C power, battery and model-specific reset steps safely. Learn how to distinguish external power faults from motherboard problems."
     contentType: "guide"
   },
   {
@@ -5858,7 +5858,7 @@ export const BLOG_POSTS: BlogPost[] = [
       ] },
       { type: "h2", text: "Thermals: The Hidden Performance Setting", id: "thermals" },
       { type: "paragraph", text: "Cooling is not merely a reliability issue. Temperature can change sustained clocks, power behavior and gaming performance. A PC that produces a strong five-minute benchmark but loses performance after heat builds has a different optimization problem from a PC that is consistently GPU-bound." },
-      { type: "paragraph", text: "For Kuwait gaming systems, ambient heat deserves particular attention. Compare cold-start performance with heat-soaked performance while logging temperature, clocks, fan behavior and FPS. If the decline follows temperature, airflow, fans, thermal interfaces or power limits may matter more than another Windows tweak." },
+      { type: "paragraph", text: "For gaming systems used in hot environments, ambient heat deserves particular attention. Compare cold-start performance with heat-soaked performance while logging temperature, clocks, fan behavior and FPS. If the decline follows temperature, airflow, fans, thermal interfaces or power limits may matter more than another Windows tweak." },
       { type: "h2", text: "G-SYNC, FreeSync, V-SYNC, FPS Caps and Reflex", id: "display-latency" },
       { type: "paragraph", text: "Display synchronization changes frame-presentation and latency behavior. NVIDIA documents Reflex as a technology that synchronizes rendering between CPU and GPU to reduce PC latency, and its system-latency guidance explains how G-SYNC, V-SYNC, frame limits and Reflex can be combined depending on the target experience: https://www.nvidia.com/en-us/geforce/technologies/reflex/ and https://www.nvidia.com/en-gb/geforce/guides/system-latency-optimization-guide/" },
       { type: "comparisonTable", title: "What each control is trying to solve", columns: ["Technology", "Primary purpose", "Do not confuse it with"], rows: [
@@ -5893,9 +5893,9 @@ export const BLOG_POSTS: BlogPost[] = [
       ] },
       { type: "h2", text: "When Optimization Turns Into Repair", id: "when-repair" },
       { type: "paragraph", text: "Optimization should stop when evidence points to failing or unstable hardware. Repeated crashes under GPU load, artifacts, abnormal temperatures, sudden shutdowns, storage errors, memory-test failures, unstable power behavior or performance that collapses as the machine heats up can require physical diagnosis." },
-      { type: "paragraph", text: "KCROC's Gaming PC & GPU Repair Kuwait service is the next branch when software tuning cannot explain the behavior: https://www.computerrepairkuwait.com/gaming-pc-repair-kuwait." },
-      { type: "h2", text: "Kuwait Gaming PC Optimization: Heat Changes the Test Environment", id: "kuwait" },
-      { type: "paragraph", text: "Kuwait's hot ambient conditions can reduce thermal headroom compared with a cooler test environment. For a gaming PC or laptop used heavily in Kuwait, compare performance at the beginning of a session with performance after sustained load. If temperatures rise while clocks or FPS fall, treat cooling as part of performance tuning rather than separate maintenance." },
+      { type: "paragraph", text: "When software tuning cannot explain persistent instability, artifacts, shutdowns or performance loss, the next step is a hardware assessment of the GPU, power delivery, memory and cooling system rather than more software tweaks." },
+      { type: "h2", text: "Ambient Temperature: Heat Changes the Test Environment", id: "ambient-temperature" },
+      { type: "paragraph", text: "High ambient temperature can reduce thermal headroom compared with a cooler test environment. For a gaming PC or laptop used in a warm room, compare performance at the beginning of a session with performance after sustained load. If temperatures rise while clocks or FPS fall, treat cooling as part of performance tuning rather than separate maintenance." },
       { type: "callout", variant: "recommendation", title: "The KCROC standard", text: "Diagnose first. Tune second. Repair only when the evidence points to hardware. The goal is repeatable gaming performance, not the largest possible list of tweaks." },
       { type: "h2", text: "Frequently Asked Questions", id: "faq" },
       { type: "faq", items: [
@@ -5927,7 +5927,7 @@ export const BLOG_POSTS: BlogPost[] = [
     category: "Gaming & Windows",
     readTime: "22-28 min read",
     isPillar: true,
-    tags: ["Gaming PC Optimization", "FPS Optimization", "1% Lows", "Frame Time", "Input Latency", "Resizable BAR", "Smart Access Memory", "XMP", "EXPO", "PBO", "Curve Optimizer", "GPU Undervolting", "Windows 11 Gaming", "Gaming PC Kuwait"],
+    tags: ["Gaming PC Optimization", "FPS Optimization", "1% Lows", "Frame Time", "Input Latency", "Resizable BAR", "Smart Access Memory", "XMP", "EXPO", "PBO", "Curve Optimizer", "GPU Undervolting", "Windows 11 Gaming"],
     seoTitle: "Gaming PC Optimization 2026: FPS, 1% Lows & Latency | KCROC",
     seoDescription: "Optimize a gaming PC scientifically in 2026: measure FPS and 1% lows, find CPU/GPU bottlenecks, tune RAM, ReBAR, thermals, VRR and latency without blindly applying tweaks.",
     contentType: "guide"
@@ -6008,7 +6008,7 @@ export const BLOG_POSTS: BlogPost[] = [
 
       { type: "h2", text: "8. Check for Thermal Throttling and Power Limits", id: "thermal-power" },
       { type: "paragraph", text: "A gaming laptop or compact Windows system can feel perfect for the first few minutes and become less consistent after sustained heat builds. Compare the beginning and later part of the same session. If CPU/GPU temperature rises while clock speeds or performance fall, the thermal path becomes a stronger suspect than Game Bar or a single Windows registry value." },
-      { type: "paragraph", text: "Inspect vents, fans, heatsinks and the system's physical condition. Kuwait's high ambient temperatures can reduce thermal headroom further, especially when dust or degraded thermal interfaces are already limiting cooling. For KCROC, this is an important local diagnostic branch because a gaming laptop that stutters only after it gets hot should be tested as a cooling problem before it is treated as a Windows-tweak problem." },
+      { type: "paragraph", text: "Inspect vents, fans, heatsinks and the system's physical condition. High ambient temperatures can reduce thermal headroom further, especially when dust or degraded thermal interfaces are already limiting cooling. A gaming laptop that stutters only after it gets hot should be tested as a cooling problem before it is treated as a Windows-tweak problem." },
       { type: "list", items: [
         "Fast when cold, slow when hot → investigate thermals first.",
         "Fan behavior changes abruptly with performance loss → investigate the cooling and power profile.",
@@ -6040,9 +6040,9 @@ export const BLOG_POSTS: BlogPost[] = [
       { type: "paragraph", text: "Persistent stutter can become a hardware diagnosis when it is accompanied by overheating, abnormal fan behavior, GPU artifacts, crashes under load, unstable clocks, storage errors, memory failures or power instability. A Windows registry tweak cannot repair a failing VRAM chip, blocked heatsink, weak fan, unstable motherboard power rail or damaged storage device." },
       { type: "paragraph", text: "For a gaming laptop or PC, the practical sequence is to prove the behavior, identify the subsystem, and then test the physical cause. That approach can prevent unnecessary Windows reinstalls and unnecessary part replacement." },
 
-      { type: "h2", text: "Kuwait-Specific Note: Heat Changes the Baseline", id: "kuwait" },
-      { type: "paragraph", text: "Ambient temperature is part of the test environment. A machine that behaves normally in a cool room can have less thermal margin in Kuwait's hotter months. The useful evidence is not a generic temperature number alone; it is the relationship between temperature, clock speed, fan behavior and performance during the same workload." },
-      { type: "callout", variant: "recommendation", title: "Still stuttering after software testing?", text: "If gaming performance drops as temperatures rise, the laptop or PC may need physical inspection rather than another Windows tweak. KCROC can test thermals, fans, heatsinks, storage, RAM, GPU/VRAM stability and motherboard power behavior before recommending a repair." },
+      { type: "h2", text: "Ambient Temperature and Thermal Headroom", id: "ambient-temperature" },
+      { type: "paragraph", text: "Ambient temperature is part of the test environment. A machine that behaves normally in a cool room can have less thermal margin in a warmer room. The useful evidence is not a generic temperature number alone; it is the relationship between temperature, clock speed, fan behaviour and performance during the same workload." },
+      { type: "callout", variant: "expert", title: "When software troubleshooting has reached its limit", text: "If gaming performance drops as temperatures rise, or the system shows crashes, artifacts, abnormal fan behaviour or power instability, collect temperature and clock logs and stop repeating software tweaks. Physical cooling, GPU, memory and power-path evidence should guide the next diagnostic step." },
       { type: "paragraph", text: "If the system is overheating or throttling, cooling service may matter more than another Windows optimization. If memory or storage is actually the bottleneck, an upgrade may be appropriate. The correct intervention follows the measured cause." },
 
       { type: "h2", text: "Frequently Asked Questions", id: "faq" },
@@ -6072,7 +6072,7 @@ export const BLOG_POSTS: BlogPost[] = [
     readTime: "16-20 min read",
     isPillar: true,
     clusterParent: "gaming-pc-optimization-2026",
-    tags: ["Windows 11 Gaming", "Gaming Stutter", "Frame Time", "Game Bar", "DPC Latency", "Shader Compilation", "Thermal Throttling", "Gaming PC Repair Kuwait"],
+    tags: ["Windows 11 Gaming", "Gaming Stutter", "Frame Time", "Game Bar", "DPC Latency", "Shader Compilation", "Thermal Throttling"],
     seoTitle: "Windows 11 Gaming Stutter & FPS Drops: Fix Guide 2026 | KCROC",
     seoDescription: "Gaming stuttering despite high FPS? Diagnose frame-time spikes, shaders, Game Bar, DPC latency, drivers, RAM, GPU limits and thermal throttling in Windows 11.",
     contentType: "guide"
@@ -6360,7 +6360,7 @@ export const BLOG_POSTS: BlogPost[] = [
     author: "Imran Natiq",
     category: "Windows Troubleshooting",
     readTime: "12-15 min read",
-    tags: ["Windows 11", "Wi-Fi", "Wi-Fi Disconnecting", "Network Troubleshooting", "Laptop Repair Kuwait"],
+    tags: ["Windows 11", "Wi-Fi", "Wi-Fi Disconnecting", "Network Troubleshooting", "Wireless Adapter", "Driver Troubleshooting"],
     seoTitle: "Windows 11 Wi-Fi Keeps Disconnecting: 10 Fixes & Diagnosis | KCROC",
     seoDescription: "Windows 11 Wi-Fi keeps disconnecting? Diagnose drivers, power management, signal, router, VPN, network reset and hardware causes.",
     contentType: "guide"
@@ -6687,7 +6687,7 @@ export const BLOG_POSTS: BlogPost[] = [
     ],
     richContent: [
       { type: "callout", variant: "info", title: "Quick answer", text: "Start with the exact symptom, decide which layer is failing (power, boot, Windows, drivers, apps or network), run the least destructive test, change one thing at a time, and confirm the fix under the same conditions. Use the triage table to jump straight to your problem." },
-      { type: "image", src: "/images/windows-os-software-repair-and-installation-kuwait.webp", alt: "Windows laptop being diagnosed and repaired by a technician in Kuwait", caption: "Good Windows troubleshooting starts by finding the failing layer, not by running a favorite repair command." },
+      { type: "image", src: "/images/windows-os-software-repair-and-installation-kuwait.webp", alt: "Windows laptop displaying troubleshooting and system diagnostics", caption: "Good Windows troubleshooting starts by finding the failing layer, not by running a favorite repair command." },
       { type: "h2", text: "Start Here: A Five-Minute Triage", id: "triage" },
       { type: "paragraph", text: "Windows problems often look alike, so begin with the exact symptom. Find yours in the table, run the first safe test, then follow the matching section. Every test in the second column is reversible and does not change your files." },
       { type: "comparisonTable", title: "Symptom-first triage: what to test first and which layer to suspect", columns: ["First safe test", "Layer to suspect"], rows: [
@@ -6987,7 +6987,7 @@ export const BLOG_POSTS: BlogPost[] = [
       { type: "h2", text: "When to Get Professional Help", id: "professional-help" },
       { type: "paragraph", text: "Escalate when the evidence points to hardware, when data is at risk, or when the same fault returns after sound software troubleshooting. Signs include clicking or disappearing drives, burning smells, swollen batteries, liquid damage, repeated shutdowns under load and no-power faults." },
       { type: "callout", variant: "warning", title: "Failing drive? Stop using it", text: "If a drive is making noise or keeps disappearing, stop using it and ask about data recovery before repair, because further use can reduce what can be recovered. Bring your troubleshooting log and your BitLocker recovery key if the drive is encrypted, and ask for a written diagnosis before agreeing to parts." },
-      { type: "callout", variant: "recommendation", title: "Need a Windows or hardware diagnosis in Kuwait?", text: "KCROC can test storage, memory, thermals, power and Windows itself to identify which layer is failing before any parts are replaced, with free pickup and delivery across Kuwait. Bring your troubleshooting log if you have one." },
+      { type: "callout", variant: "expert", title: "When to stop software troubleshooting", text: "If the same failure persists after controlled Windows, driver and configuration checks, and especially if symptoms appear before Windows loads, collect the error codes and diagnostic logs. Storage, memory, power and thermal evidence can help a qualified technician distinguish a software fault from a hardware failure." },
       { type: "h2", text: "Verify the Fix", id: "verify" },
       { type: "paragraph", text: "A fix is only confirmed when the original symptom no longer occurs under the same conditions. Repeat the action that triggered the problem, run the system under normal load for a while, and check that no new errors appear in Reliability Monitor or Event Viewer. Add what worked to your log so the next problem starts from evidence." },
       { type: "h2", text: "Sources and Further Reading", id: "sources" },
