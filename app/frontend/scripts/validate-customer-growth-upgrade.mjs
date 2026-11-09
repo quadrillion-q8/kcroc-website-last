@@ -71,7 +71,7 @@ const windowsServicesGuideEntry = getTopLevelBlogPost('guide-windows-11-backgrou
 const windowsSettingsGuideEntry = getTopLevelBlogPost('guide-windows-11-settings-tweaks-2026');
 
 const getGuideContentBlock = (id) => {
-  const marker = \`"id": "\${id}"\`;
+  const marker = '"id": "' + id + '"';
   const start = blogPosts.indexOf(marker);
   if (start < 0) return '';
   const contentType = blogPosts.indexOf('"contentType": "guide"', start);
