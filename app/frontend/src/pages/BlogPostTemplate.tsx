@@ -1055,16 +1055,17 @@ export default function BlogPostTemplate() {
           "url": pageUrl,
           "name": post.title,
           "description": post.description || post.excerpt,
-          ...(["why-8gb-ram-is-no-longer-enough-for-windows-11", "why-is-my-laptop-so-slow"].includes(post.slug) || isNoPowerGuide ? { "inLanguage": "en-KW" } : {}),
+          ...(isGuide ? { "inLanguage": "en" } : (["why-8gb-ram-is-no-longer-enough-for-windows-11", "why-is-my-laptop-so-slow"].includes(post.slug) || isNoPowerGuide ? { "inLanguage": "en-KW" } : {})),
           "isPartOf": { "@id": `${business.websiteUrl}/#website` }
         },
         {
           "@type": post.slug === "windows-11-26h2-iso-released"
             ? ["NewsArticle", "TechArticle"]
-            : isNews ? "NewsArticle" : (isNoPowerGuide || post.slug === "gaming-pc-black-screen-no-display-kuwait" || post.slug === "why-8gb-ram-is-no-longer-enough-for-windows-11" || post.slug === "why-is-my-laptop-so-slow") ? "TechArticle" : isGuide ? "Article" : ["BlogPosting", "Article"],
+            : isNews ? "NewsArticle" : (isNoPowerGuide || post.slug === "gaming-pc-black-screen-no-display-kuwait" || post.slug === "why-8gb-ram-is-no-longer-enough-for-windows-11" || post.slug === "why-is-my-laptop-so-slow") ? "TechArticle" : isGuide ? "TechArticle" : ["BlogPosting", "Article"],
           "@id": `${pageUrl}#article`,
           "headline": post.title,
           "description": post.excerpt,
+          ...(isGuide ? { "inLanguage": "en" } : {}),
           ...(isNews ? {
             "inLanguage": "en-KW",
             "articleSection": post.category,
@@ -1082,7 +1083,7 @@ export default function BlogPostTemplate() {
             ]
           } : {}),
           ...(isNoPowerGuide ? {
-            "inLanguage": "en-KW",
+            "inLanguage": "en",
             "articleSection": "Laptop Troubleshooting",
             "keywords": post.tags ?? [],
             "isAccessibleForFree": true,
@@ -1219,12 +1220,12 @@ export default function BlogPostTemplate() {
   return (
     <div className="w-full min-h-screen bg-transparent text-slate-200 pt-8 sm:pt-16 lg:pt-32 pb-8 sm:pb-16 lg:pb-24">
 
-      <Head>
+      <Head htmlAttributes={isGuide ? { lang: 'en' } : undefined}>
         <title>{post.seoTitle || `${post.title.length > 57 ? `${post.title.slice(0, 57)}…` : post.title} | KCROC`}</title>
         <meta name="description" content={post.seoDescription || (post.description || post.excerpt).slice(0, 155)} />
         <link rel="canonical" href={pageUrl} />
         <meta name="robots" content="index, follow, max-image-preview:large" />
-        {post.arabicSlug && <link rel="alternate" hrefLang="en-KW" href={pageUrl} />}
+        {post.arabicSlug && <link rel="alternate" hrefLang={isGuide ? "en" : "en-KW"} href={pageUrl} />}
         {post.arabicSlug && <link rel="alternate" hrefLang="ar-KW" href={`${business.websiteUrl}${isNews ? '/news/' : '/blog/'}${post.arabicSlug}`} />}
         {post.arabicSlug && <link rel="alternate" hrefLang="x-default" href={pageUrl} />}
         {post.slug === 'why-is-my-laptop-so-slow' && <link rel="alternate" hrefLang="en" href={pageUrl} />}
@@ -1233,7 +1234,7 @@ export default function BlogPostTemplate() {
       <meta property="og:title" content={post.seoTitle || post.title} />
       <meta property="og:description" content={post.slug === 'why-is-my-laptop-so-slow' ? post.seoDescription || post.description || post.excerpt : post.description || post.excerpt} />
       <meta property="og:url" content={pageUrl} />
-      <meta property="og:site_name" content={post.slug === 'why-is-my-laptop-so-slow' ? 'KCROC Hardware Engineering Lab' : business.legalName} />
+      <meta property="og:site_name" content={isGlobalEditorialArticle ? "KCROC Hardware Engineering Lab" : business.legalName} />
       {!isGlobalEditorialArticle && <meta property="og:locale" content="en_KW" />}
       <meta property="og:image" content={socialImage} />
       {discoverReady && <meta property="og:image:width" content="1200" />}
@@ -1346,7 +1347,7 @@ export default function BlogPostTemplate() {
                   <div className="flex items-start gap-4">
                     <img
                       src={AUTHOR_IMAGE_URL}
-                      alt={post.slug === 'why-is-my-laptop-so-slow' ? 'Imran Natiq — Hardware Repair Engineer' : 'Imran Natiq — Hardware Repair Engineer at KCROC'}
+                      alt={isGlobalEditorialArticle ? 'Imran Natiq — Hardware Repair Engineer' : 'Imran Natiq — Hardware Repair Engineer at KCROC'}
                       className="w-14 h-14 sm:w-16 sm:h-16 rounded-xl object-cover border border-slate-800 shrink-0"
                       loading="lazy"
                       decoding="async"
@@ -1359,10 +1360,10 @@ export default function BlogPostTemplate() {
                         Imran Natiq
                       </Link>
                       <p className="text-sm text-slate-400 mt-1 leading-relaxed">
-                        {post.slug === 'why-is-my-laptop-so-slow' ? 'Hardware Repair Engineer and technical reviewer focused on laptop performance, memory, storage, thermal behaviour, power management and Windows diagnostics.' : 'Hardware Repair Engineer at KCROC, focused on laptop thermal troubleshooting, hardware testing and component-level repair in Kuwait.'}
+                        {isGlobalEditorialArticle ? 'Hardware Repair Engineer and technical reviewer focused on computer hardware, software troubleshooting, performance, firmware and diagnostics.' : 'Hardware Repair Engineer at KCROC, focused on laptop thermal troubleshooting, hardware testing and component-level repair in Kuwait.'}
                       </p>
                       <p className="text-xs text-slate-500 mt-2">
-                        Technical review: {post.slug === 'why-is-my-laptop-so-slow'
+                        Technical review: {isGlobalEditorialArticle
                           ? getTechnicalReviewDateLabel(post, 'November 7, 2026')
                           : `${getTechnicalReviewDateLabel(post, 'September 1, 2026')} · Hawalli, Kuwait`}
                       </p>

@@ -642,7 +642,7 @@ export const rawGraphData: RawGraphData = {
 
     'page-brands': { id: 'page-brands', slug: 'brands', entityType: 'WebPage', isActive: true, title: 'Supported Laptop Brands', description: 'Laptop and computer brands repaired by KCROC in Kuwait.', seo: { title: 'Laptop Brands We Repair: Dell, HP, Lenovo & More | KCROC', description: 'Component-level laptop repair for Dell, HP, Lenovo, ASUS, Acer, MSI and other major brands across Kuwait.', canonicalUrl: 'https://www.computerrepairkuwait.com/brands', ogType: 'website', schemaTypes: ['CollectionPage', 'WebPage', 'BreadcrumbList'], breadcrumbs: [{ name: 'Home', url: '/' }, { name: 'Brands', url: '/brands' }] } } as WebPageEntity,
     'page-problems': { id: 'page-problems', slug: 'problems', entityType: 'WebPage', isActive: true, title: 'Common Computer Problems', description: 'Common laptop and computer problems diagnosed and repaired by KCROC in Kuwait.', seo: { title: 'Common Laptop & Computer Problems We Fix | KCROC Kuwait', description: 'Find causes, safe troubleshooting steps and repair options for common laptop and computer problems in Kuwait.', canonicalUrl: 'https://www.computerrepairkuwait.com/problems', ogType: 'website', schemaTypes: ['CollectionPage', 'WebPage', 'BreadcrumbList'], breadcrumbs: [{ name: 'Home', url: '/' }, { name: 'Problems', url: '/problems' }] } } as WebPageEntity,
-    'page-guides': { id: 'page-guides', slug: 'guides', entityType: 'WebPage', isActive: true, title: 'DIY & Repair Guides', description: 'Technician-written laptop and computer troubleshooting guides from KCROC Kuwait.', seo: { title: 'Laptop & Computer Repair Guides | KCROC Kuwait', description: 'Free technician-written guides for diagnosing laptop and computer problems, battery issues, overheating, BIOS recovery and more.', canonicalUrl: 'https://www.computerrepairkuwait.com/guides', ogType: 'website', schemaTypes: ['CollectionPage', 'WebPage', 'BreadcrumbList'], breadcrumbs: [{ name: 'Home', url: '/' }, { name: 'Guides', url: '/guides' }] } } as WebPageEntity,
+    'page-guides': { id: 'page-guides', slug: 'guides', entityType: 'WebPage', isActive: true, title: 'Technical Troubleshooting Guides', description: 'Technician-written guides for diagnosing Windows, laptop, desktop PC, gaming and firmware problems across major platforms.', seo: { title: 'Computer Troubleshooting & Technical Guides | KCROC', description: 'Explore practical technical guides for Windows troubleshooting, laptop hardware, gaming performance, battery health, overheating and BIOS/UEFI recovery.', canonicalUrl: 'https://www.computerrepairkuwait.com/guides', locale: 'en', ogType: 'website', schemaTypes: ['CollectionPage', 'WebPage', 'BreadcrumbList'], breadcrumbs: [{ name: 'Home', url: '/' }, { name: 'Technical Guides', url: '/guides' }] } } as WebPageEntity,
     'page-404': { id: 'page-404', slug: '404', entityType: 'WebPage', isActive: true, title: 'Page Not Found', description: 'The requested KCROC page could not be found.', seo: { title: 'Page Not Found | KCROC Kuwait', description: 'The requested page could not be found.', canonicalUrl: 'https://www.computerrepairkuwait.com/404', ogType: 'website', robots: 'noindex, follow, max-image-preview:none', schemaTypes: ['WebPage'] } } as WebPageEntity,
     'page-blog': { id: 'page-blog', slug: 'blog', entityType: 'WebPage', isActive: true, title: 'Tech Blog', description: 'Expert repair guides and tech insights.', seo: { title: 'KCROC Tech Blog | Computer Repair Guides Kuwait', description: 'Expert computer repair guides, laptop fixes, MacBook troubleshooting, and PC performance tips in Kuwait.', canonicalUrl: 'https://www.computerrepairkuwait.com/blog', ogImage: 'https://www.computerrepairkuwait.com/images/discover/laptop-repair-kuwait-1200x675.webp', ogType: 'website', schemaTypes: ['CollectionPage'] } } as WebPageEntity,
     'page-news': { id: 'page-news', slug: 'news', entityType: 'WebPage', isActive: true, title: 'KCROC Tech News', description: 'Current computer, Windows, hardware, gaming, Apple, cybersecurity and AI technology news explained with practical technician context.', seo: { title: 'KCROC Tech News | Windows, Hardware & Gaming News Kuwait', description: 'Latest computer, Windows, hardware, gaming, Apple, cybersecurity and AI technology news — explained by KCROC technicians for practical next steps.', canonicalUrl: 'https://www.computerrepairkuwait.com/news', ogType: 'website', schemaTypes: ['CollectionPage', 'WebPage', 'BreadcrumbList'], breadcrumbs: [{ name: 'Home', url: '/' }, { name: 'News', url: '/news' }], lastModified: '2026-10-03T00:00:00+03:00' } } as WebPageEntity,
@@ -838,7 +838,7 @@ export const rawGraphData: RawGraphData = {
     'page-privacy-policy': { id: 'page-privacy-policy', slug: 'privacy-policy', entityType: 'WebPage', isActive: true, title: 'Privacy Policy', description: 'KCROC Privacy Policy and Data Handling', seo: { title: 'Privacy Policy | KCROC Kuwait', description: 'Read the official Privacy Policy for Kuwait Computer Repair On Call. We are committed to protecting your data and personal information.', canonicalUrl: 'https://www.computerrepairkuwait.com/privacy-policy', ogType: 'website', schemaTypes: ['WebPage'] } } as WebPageEntity,
     'page-terms-of-service': { id: 'page-terms-of-service', slug: 'terms-of-service', entityType: 'WebPage', isActive: true, title: 'Terms of Service', description: 'KCROC Terms and Conditions of Service', seo: { title: 'Terms of Service | KCROC Kuwait', description: 'Read the official Terms of Service and conditions for computer repair, pick & drop, and warranties at Kuwait Computer Repair On Call.', canonicalUrl: 'https://www.computerrepairkuwait.com/terms-of-service', ogType: 'website', schemaTypes: ['WebPage'] } } as WebPageEntity,
     'page-author-imran': { id: 'page-author-imran', slug: 'author/imran', entityType: 'WebPage', isActive: true, title: 'Imran Natiq', description: 'Author bio page for Imran Natiq, Founder & Lead Technician at KCROC, referenced from the Person schema on blog articles he authored.', seo: { title: 'Imran Natiq — Hardware Repair Engineer at KCROC Kuwait', description: 'Imran Natiq is a hardware repair engineer and founder of KCROC in Hawalli, Kuwait, specializing in motherboard diagnostics and micro-soldering.', canonicalUrl: 'https://www.computerrepairkuwait.com/author/imran', ogType: 'profile', schemaTypes: ['ProfilePage', 'Person', 'BreadcrumbList'] } } as WebPageEntity,
-    'guide-battery': { id: 'guide-battery', slug: 'guides/laptop-battery-warning-signs', entityType: 'WebPage', isActive: true, title: 'Laptop Battery Warning Signs: 15+ Signs & Tests', description: 'A practical laptop battery authority guide covering 15+ warning signs, Windows 11 and Mac battery-health checks, swollen-battery safety, diagnosis, and replacement decisions.', seo: { title: 'Laptop Battery Problems: 15 Warning Signs & Tests | KCROC', description: 'Spot laptop battery failure with 15 warning signs, Windows and Mac health tests, swollen-battery safety advice, and replacement guidance.', canonicalUrl: 'https://www.computerrepairkuwait.com/guides/laptop-battery-warning-signs', ogImage: 'https://www.computerrepairkuwait.com/images/discover/swollen-macbook-battery-replacement-2-1200x675.webp', ogType: 'article', schemaTypes: ['Article', 'FAQPage', 'BreadcrumbList'], lastModified: '2026-11-06T00:00:00+03:00' },
+    'guide-battery': { id: 'guide-battery', slug: 'guides/laptop-battery-warning-signs', entityType: 'WebPage', isActive: true, title: 'Laptop Battery Warning Signs: 15+ Signs & Tests', description: 'A practical laptop battery authority guide covering 15+ warning signs, Windows 11 and Mac battery-health checks, swollen-battery safety, diagnosis, and replacement decisions.', seo: { title: 'Laptop Battery Problems: 15 Warning Signs & Tests | KCROC', description: 'Spot laptop battery failure with 15 warning signs, Windows and Mac health tests, swollen-battery safety advice, and replacement guidance.', canonicalUrl: 'https://www.computerrepairkuwait.com/guides/laptop-battery-warning-signs', locale: 'en', ogImage: 'https://www.computerrepairkuwait.com/images/discover/swollen-macbook-battery-replacement-2-1200x675.webp', ogType: 'article', schemaTypes: ['Article', 'FAQPage', 'BreadcrumbList'], lastModified: '2026-11-06T00:00:00+03:00' },
       featuredFAQIds: [
         'faq-battery-how-to-know',
         'faq-battery-check-windows',
@@ -1037,7 +1037,7 @@ export const rawGraphData: RawGraphData = {
       seo: {
         title: 'Dell Laptop Overheating | Causes & Fixes | KCROC',
         description: 'Is your Dell laptop overheating, shutting down, or running loud? Learn safe checks, thermal-throttling signs, cooling fixes, and when repair is needed in Kuwait.',
-        canonicalUrl: 'https://www.computerrepairkuwait.com/guides/dell-laptop-overheating',
+        canonicalUrl: 'https://www.computerrepairkuwait.com/guides/dell-laptop-overheating', locale: 'en',
         ogType: 'article',
         schemaTypes: ['WebPage', 'BreadcrumbList'],
         lastModified: '2026-09-27T00:00:00+03:00'
@@ -1063,7 +1063,7 @@ export const rawGraphData: RawGraphData = {
       seo: {
         title: 'High FPS but Stuttering? GameBarPresenceWriter.exe Fix | KCROC',
         description: 'Test whether GameBarPresenceWriter.exe is linked to gaming stutter. Run a quick isolation test, adjust Game Bar settings, and review registry risks.',
-        canonicalUrl: 'https://www.computerrepairkuwait.com/guides/gamebar-presence-writer-fix',
+        canonicalUrl: 'https://www.computerrepairkuwait.com/guides/gamebar-presence-writer-fix', locale: 'en',
         ogImage: 'https://www.computerrepairkuwait.com/images/discover/windows-11-laptop-multitasking-1200x675.webp',
         lastModified: '2026-11-01T00:00:00+03:00',
         ogType: 'article',
@@ -1090,7 +1090,7 @@ export const rawGraphData: RawGraphData = {
       seo: {
         title: 'Why Is My Laptop So Hot? Universal Overheating Guide | KCROC',
         description: 'Why is your laptop hot? Diagnose workload, airflow, dust, fan faults, thermal throttling and cooling problems across Windows, macOS, Linux and ChromeOS.',
-        canonicalUrl: 'https://www.computerrepairkuwait.com/guides/why-is-my-laptop-so-hot',
+        canonicalUrl: 'https://www.computerrepairkuwait.com/guides/why-is-my-laptop-so-hot', locale: 'en',
         ogImage: 'https://www.computerrepairkuwait.com/images/discover/laptop-fan-copper-heatpipe-closeup-1200x675.webp',
         lastModified: '2026-09-30T00:00:00+03:00',
         ogType: 'article',
@@ -1108,7 +1108,7 @@ export const rawGraphData: RawGraphData = {
       seo: {
         title: 'Windows 10 End of Support (2026): ESU, Upgrade or Replace? | KCROC',
         description: 'Windows 10 support ended in 2025. Learn how ESU works through October 2027 and whether to upgrade to Windows 11, repair, or replace your PC.',
-        canonicalUrl: 'https://www.computerrepairkuwait.com/guides/windows-10-end-of-support',
+        canonicalUrl: 'https://www.computerrepairkuwait.com/guides/windows-10-end-of-support', locale: 'en',
         ogImage: 'https://www.computerrepairkuwait.com/images/discover/windows-os-software-repair-and-installation-kuwait-1200x675.webp',
         lastModified: '2026-09-09T00:00:00+03:00',
         ogType: 'article',
@@ -1129,7 +1129,7 @@ export const rawGraphData: RawGraphData = {
       seo: {
         title: 'WHESVC Explained: Windows Health and Optimized Experiences | KCROC',
         description: 'What is WHESVC in Windows 11? Learn what Windows Health and Optimized Experiences does, how to check its status, CVE-2025-59241, and safer troubleshooting.',
-        canonicalUrl: 'https://www.computerrepairkuwait.com/guides/windows-11-background-services-audit',
+        canonicalUrl: 'https://www.computerrepairkuwait.com/guides/windows-11-background-services-audit', locale: 'en',
         ogType: 'article',
         schemaTypes: ['Article', 'BreadcrumbList']
       }
@@ -1145,7 +1145,7 @@ export const rawGraphData: RawGraphData = {
       seo: {
         title: '18 Windows 11 Settings to Change in 2026 | KCROC',
         description: 'Review 18 Windows 11 settings for privacy, startup, power, gaming and security. Practical technician guidance without unsafe “debloat” claims.',
-        canonicalUrl: 'https://www.computerrepairkuwait.com/guides/windows-11-settings-tweaks',
+        canonicalUrl: 'https://www.computerrepairkuwait.com/guides/windows-11-settings-tweaks', locale: 'en',
         ogType: 'article',
         schemaTypes: ['Article', 'BreadcrumbList', 'ImageObject']
       }

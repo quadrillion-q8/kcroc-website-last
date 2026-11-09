@@ -4,14 +4,12 @@ import { Link } from 'react-router-dom';
 import { StandaloneRelatedLinks } from '@/components/content/StandaloneRelatedLinks';
 import { Badge } from '@/components/ui/badge';
 import {
-  AlertTriangle, Check, CheckCircle2, ChevronRight, CircleHelp, Copy, Cpu, Gamepad2,
-  Gauge, HardDrive, MonitorCog, Network, Power, RotateCcw, ShieldAlert,
-  Terminal, Wrench, XCircle
+  Check, CheckCircle2, ChevronRight, CircleHelp, Copy, Gamepad2,
+  Gauge, MonitorCog, Power, RotateCcw, ShieldAlert, Terminal
 } from 'lucide-react';
 import { SEOEngine } from '../core/components/SEOEngine';
 import { KCROC_GRAPH } from '../data/graph';
 import StickyTOC from '@/components/blog/StickyTOC';
-import { IMAGES } from '../constants/images';
 import SchemaMarkup from '../components/seo/SchemaMarkup';
 
 const business = KCROC_GRAPH.business!;
@@ -523,7 +521,7 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\GameDVR" /v AllowGameDVR /t RE
           { href: '/guides/shader-compilation-stutter-windows', label: 'Shader Compilation Stutter', description: 'Use when hitches follow first-use effects, materials or game areas.' },
           { href: '/guides/dpc-latency-gaming-stutter', label: 'DPC Latency & Gaming Stutter', description: 'Advanced driver-timing branch for repeatable latency-sensitive hitches.' },
           { href: '/blog/gaming-pc-cooling', label: 'Gaming PC Cooling Guide', description: 'Check cooling, dust, fans, thermal interfaces, and sustained-load behavior before registry tweaks.' },
-          { href: '/laptop-overheating-kuwait', label: 'Laptop Overheating Problem', description: 'Useful when gaming performance falls as a laptop heats up.' },
+          { href: '/guides/why-is-my-laptop-so-hot', label: 'Laptop Overheating Guide', description: 'Useful when gaming performance falls as the system heats up and thermal headroom needs to be measured.' },
         ]}
       />
 
