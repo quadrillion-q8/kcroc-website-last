@@ -149,6 +149,7 @@ for (const label of [
   'Portkey Games Support — DLSS 5 setup and requirements',
   'War Thunder — Eagle\'s Shadow DLSS 5 announcement',
   'ComputerBase — DLSS 5 performance testing in Hogwarts Legacy',
+  'NVIDIA Research — DLSS 5 3D-Guided Neural Rendering',
 ]) {
   assert.ok(dlssHtml.includes(label), `Descriptive DLSS 5 source anchor missing: ${label}`);
 }
