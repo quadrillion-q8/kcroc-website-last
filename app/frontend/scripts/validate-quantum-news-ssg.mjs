@@ -103,7 +103,7 @@ assert.ok(dlssHtml.includes('13%') && dlssHtml.includes('23%'), 'Independent fra
 assert.ok(dlssHtml.includes('Where Winds Meet') && dlssHtml.includes('November 23'), 'Where Winds Meet rollout date is missing');
 assert.ok(dlssHtml.includes('War Thunder') && dlssHtml.includes("Eagle's Shadow"), 'War Thunder rollout details are missing');
 assert.ok(dlssHtml.includes('NewsArticle') && dlssHtml.includes('FAQPage'), 'NewsArticle or FAQPage JSON-LD is missing');
-assert.ok((dlssHtml.match(/"@type"\\s*:\\s*"Question"/g) ?? []).length === 8, 'Expected eight DLSS 5 FAQ questions in FAQPage JSON-LD');
+assert.ok((dlssHtml.match(/"@type"\s*:\s*"Question"/g) ?? []).length === 8, 'Expected eight DLSS 5 FAQ questions in FAQPage JSON-LD');
 assert.ok(dlssHtml.includes('max-image-preview:large'), 'Discover preview robots directive is missing');
 assert.ok(dlssHtml.includes('og:image:width') && dlssHtml.includes('content="1200"'), '1200px social image width metadata is missing');
 assert.ok(dlssHtml.includes('og:image:height') && dlssHtml.includes('content="675"'), '675px social image height metadata is missing');
