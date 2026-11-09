@@ -112,7 +112,7 @@ export function Footer() {
   const isHawalliLandingPage = location.pathname.replace(/\/+$/, '') === '/location/hawalli';
   const isWindowsBatteryPage = location.pathname === '/battery-replacement-kuwait' || location.pathname === '/ar/laptop-battery-replacement-kuwait';
   const isGlobalEditorialArticle = location.pathname === '/blog/why-is-my-laptop-so-slow';
-  const isGlobalTechnicalGuide = location.pathname === '/guides/bios-uefi-recovery-kuwait';
+  const isGlobalTechnicalGuide = isEnglishTechnicalGuideRoute(location.pathname);
   const localizedPath = (path: string) => isArabicRoute ? (ARABIC_PATHS[path] ?? path) : path;
   const serviceLabel = (path: string, label: string) => isArabicRoute ? (ARABIC_SERVICE_LABELS[path] ?? label.replace(' Kuwait', '')) : label.replace(' Kuwait', '');
   const companyLabel = (path: string, label: string) => isArabicRoute ? (ARABIC_COMPANY_LABELS[path] ?? label) : label;

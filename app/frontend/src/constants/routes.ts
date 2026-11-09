@@ -33,6 +33,10 @@ export const ROUTES = {
 export const getBlogRoute = (slug: string) => `/blog/${slug}`;
 export const getGuideRoute = (slug: string) => `/guides/${slug}`;
 
+/** English technical guides use a global editorial shell; Arabic guides retain Kuwait-local presentation. */
+export const isEnglishTechnicalGuideRoute = (pathname: string): boolean =>
+  pathname.startsWith('/guides/') && !pathname.startsWith('/guides/ar/');
+
 // Content posts can be rendered by the shared BlogPostTemplate while keeping
 // their public information architecture explicit and crawlable.
 export const getNewsRoute = (slug: string) => `/news/${slug}`;

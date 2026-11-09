@@ -8,6 +8,7 @@ import { ErrorBoundary } from '../ErrorBoundary';
 import { CookieConsentBanner } from '../CookieConsentBanner';
 import { StickyMobileCTA } from '../../../components/home/StickyMobileCTA';
 import { NAV_GRAPH } from '../../../data/navGraph.generated';
+import { isEnglishTechnicalGuideRoute } from '../../../constants/routes';
 
 // 🚀 CWV: AnimatedBackground is a pure SVG/CSS effect now (no particle
 // engine — an earlier tsParticles-based version was already replaced), but
@@ -79,7 +80,7 @@ const shouldShowAnimatedBackground = (pathname: string): boolean => {
 export const RootLayout: React.FC = () => {
   const { pathname } = useLocation();
   const isGlobalEditorialArticle = pathname === '/blog/why-8gb-ram-is-no-longer-enough-for-windows-11' || pathname === '/blog/why-is-my-laptop-so-slow';
-  const hideConversionActions = isGlobalEditorialArticle || pathname === '/guides/bios-uefi-recovery-kuwait';
+  const hideConversionActions = isGlobalEditorialArticle || isEnglishTechnicalGuideRoute(pathname);
   const isArabicRoute = pathname === '/ar' || pathname.startsWith('/ar/') || pathname.startsWith('/blog/ar/') || pathname.startsWith('/guides/ar/');
   const showAnimatedBackground = shouldShowAnimatedBackground(pathname);
   const [decorativeBackgroundReady, setDecorativeBackgroundReady] = useState(false);

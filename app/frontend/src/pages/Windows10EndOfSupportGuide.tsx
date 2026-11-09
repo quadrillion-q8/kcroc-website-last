@@ -8,7 +8,6 @@ import {
 import { SEOEngine } from '../core/components/SEOEngine';
 import SchemaMarkup from '../components/seo/SchemaMarkup';
 import { KCROC_GRAPH } from '../data/graph';
-import { KuwaitLocalCTA } from '@/components/content/KuwaitLocalCTA';
 import { IMAGES } from '../constants/images';
 
 const business = KCROC_GRAPH.business!;
@@ -124,7 +123,6 @@ const Figure = ({ src, alt, caption }: { src: string; alt: string; caption: stri
 );
 
 export default function Windows10EndOfSupportGuide() {
-  const whatsapp = `https://wa.me/${business.telephone}?text=${encodeURIComponent('I need help deciding whether to upgrade, repair, or replace my Windows 10 PC in Kuwait')}`;
 
   return (
     <>
@@ -153,11 +151,9 @@ export default function Windows10EndOfSupportGuide() {
             </p>
           </header>
 
-          <KuwaitLocalCTA topic="Windows 10 End of Support" placement="windows10_eos_guide" />
-
           <Figure
             src={IMAGES.services.windowsInstall.src}
-            alt="KCROC Windows operating system installation and repair service in Kuwait"
+            alt="Windows 10 and Windows 11 compatibility and upgrade assessment"
             caption="Windows support decisions should start with the condition of the actual PC—not only its operating-system version."
           />
 
@@ -235,7 +231,7 @@ export default function Windows10EndOfSupportGuide() {
 
           <Section title="Option 4: Replace the computer">
             <p>Replacement is often better when the PC cannot officially meet Windows 11 requirements, already has several failing components, or no longer delivers the performance and reliability you need for work.</p>
-            <p>Before buying a new machine, compare the repair cost with the remaining useful life of the existing system. Our <Link to="/blog/laptop-buying-guide-kuwait-2026" className="text-cyan-400 hover:underline">laptop buying guide for Kuwait</Link> can help you avoid buying hardware that is poorly matched to your workload.</p>
+            <p>Before buying a new machine, compare its expected useful life, repairability, support window and hardware requirements with the workloads you actually run.</p>
           </Section>
 
           <Section title="Option 5: Move suitable older hardware to Linux">
@@ -254,7 +250,7 @@ export default function Windows10EndOfSupportGuide() {
                 'Avoid “PC optimizer,” registry-cleaner, and random driver-updater tools promoted through search ads.'
               ].map(item => <li key={item} className="flex gap-3"><ShieldCheck className="w-5 h-5 text-cyan-400 shrink-0 mt-1" /> <span>{item}</span></li>)}
             </ul>
-            <p>If you suspect the computer is already infected, use our <Link to="/virus-malware-removal-kuwait" className="text-cyan-400 hover:underline">virus and malware removal page</Link> rather than stacking multiple cleanup utilities on top of each other.</p>
+            <p>If you suspect the computer is infected, use Microsoft Defender or a reputable security product and follow the vendor’s malware-removal guidance rather than stacking multiple cleanup utilities on top of each other.</p>
           </Section>
 
           <Section title="Upgrade, ESU, repair or replace? A practical decision rule">
@@ -284,14 +280,13 @@ export default function Windows10EndOfSupportGuide() {
             </div>
           </Section>
 
-          <section className="mt-12 rounded-3xl border border-cyan-500/30 bg-gradient-to-br from-slate-900 to-brand-dark p-7 md:p-10">
-            <h2 className="text-3xl font-black mb-4">Windows 10 upgrade and computer repair help in Kuwait</h2>
-            <p className="text-lg text-slate-300 leading-8 mb-6">
-              If you are unsure whether to upgrade, repair, or replace your PC, KCROC can check the actual hardware, Windows 11 compatibility, TPM/Secure Boot configuration, storage health, RAM, Windows Update, and the economics of repair before you spend money.
-            </p>
-            <div className="flex flex-wrap gap-3">
-              <a href={whatsapp} className="inline-flex items-center gap-2 rounded-xl bg-cyan-500 px-6 py-3 font-black text-slate-950 hover:bg-cyan-400">Ask KCROC on WhatsApp <ArrowRight className="w-5 h-5" /></a>
-              <Link to="/contact" className="inline-flex items-center gap-2 rounded-xl border border-slate-700 px-6 py-3 font-bold hover:border-cyan-500">Contact KCROC</Link>
+          <section className="mt-12 rounded-3xl border border-slate-800 bg-slate-900/60 p-7 md:p-10">
+            <h2 className="text-2xl font-black mb-4">Continue with the relevant technical guidance</h2>
+            <p className="text-slate-300 leading-7 mb-6">Use official Microsoft documentation for eligibility and enrollment, then follow a focused troubleshooting guide if the upgrade or current installation is failing.</p>
+            <div className="flex flex-wrap gap-4 text-sm">
+              <Link to="/guides/windows-troubleshooting-complete-guide" className="text-cyan-300 hover:text-cyan-200">Windows troubleshooting guide</Link>
+              <Link to="/guides/windows-11-update-problems" className="text-cyan-300 hover:text-cyan-200">Windows 11 update problems</Link>
+              <Link to="/guides/ssd-not-detected-windows-11" className="text-cyan-300 hover:text-cyan-200">SSD detection and storage checks</Link>
             </div>
           </section>
 
