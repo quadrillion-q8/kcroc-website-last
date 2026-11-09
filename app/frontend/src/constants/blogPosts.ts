@@ -97,6 +97,10 @@ export interface DebugLedSelectorBlock {
   type: 'debugLedSelector';
 }
 
+export interface BenchmarkExplorerBlock {
+  type: 'benchmarkExplorer';
+}
+
 export interface ImageBlock {
   type: 'image';
   src: string;
@@ -116,7 +120,8 @@ export type ContentBlock =
   | FAQBlock
   | CodeBlockData
   | ImageBlock
-  | DebugLedSelectorBlock;
+  | DebugLedSelectorBlock
+  | BenchmarkExplorerBlock;
 
 /* ═══════════════════════════════════════════════════════════════════
    BLOG POST
@@ -166,8 +171,8 @@ export const BLOG_POSTS: BlogPost[] = [
   "id": "news-nvidia-dlss-5-neural-rendering-explained-2026",
   "slug": "nvidia-dlss-5-neural-rendering-explained",
   "title": "NVIDIA DLSS 5 Explained: Why Neural Rendering Can Cost FPS",
-  "excerpt": "DLSS 5 adds AI-generated lighting and material detail, not free frames. We explain RTX 50 compatibility, real FPS overhead, Driver 621.14 and the November game rollout.",
-  "description": "A practical NVIDIA DLSS 5 guide covering 3D-Guided Neural Rendering, DLSS 5 vs DLSS 4.5, RTX 50 GPU support, independent FPS testing, Driver 621.14 and the Hogwarts Legacy, War Thunder and Where Winds Meet rollout.",
+  "excerpt": "DLSS 5 adds AI-generated lighting and material detail, not free frames. Explore verified RTX 5090 Hogwarts Legacy benchmarks, NPC masking, output-resolution overhead and RTX 50 compatibility.",
+  "description": "An engineering guide to NVIDIA DLSS 5 covering verified RTX 5090 average FPS and 1% lows, post-upscale neural rendering cost, Hogwarts Legacy masking, RTX 50 support, Driver 621.14 and the November 2026 game rollout.",
   "content": [
     "NVIDIA DLSS 5 is now available in the PC version of Hogwarts Legacy, but it is easy to misunderstand what the feature does. It is a 3D-Guided Neural Rendering layer for lighting and material detail—not an upscaler or a frame-generation mode.",
     "That distinction matters because DLSS 5 can reduce the game's underlying frame rate when enabled. Higher displayed FPS comes from pairing it with separate technologies such as DLSS Super Resolution and Multi Frame Generation. This guide separates the features, checks the supported hardware and explains the November 2026 rollout."
@@ -268,6 +273,51 @@ export const BLOG_POSTS: BlogPost[] = [
     },
     {
       "type": "h2",
+      "text": "What DLSS 5 actually changes on screen: Hogwarts Legacy's masking trade-off",
+      "id": "hogwarts-legacy-dlss-5-masking"
+    },
+    {
+      "type": "paragraph",
+      "text": "The November 5, 2026 PC patch is a useful real-world example of how developer-directed masking changes the final image. NVIDIA documents semantic AI masking that can recognize scene objects and hold back enhancement on characters while increasing environmental detail. ComputerBase's independent review of the shipped Hogwarts Legacy build reports a more specific split: character faces are not processed, NPC clothing still receives DLSS 5 treatment, and the playable main character is processed differently. The public patch notes do not publish Avalanche's individual mask assets or per-character configuration, so the observed result should not be mistaken for a universal rule for every DLSS 5 game. https://www.nvidia.com/en-us/geforce/news/hogwarts-legacy-war-thunder-dlss-5-3d-guided-neural-rendering/ https://www.computerbase.de/artikel/grafikkarten/dlss-5-test-hogwarts-legacy.100187/seite-2"
+    },
+    {
+      "type": "comparisonTable",
+      "title": "Hogwarts Legacy: where the November 5 DLSS 5 integration applies",
+      "featureLabel": "Scene element",
+      "columns": [
+        "Observed behaviour in ComputerBase's review",
+        "What players may notice"
+      ],
+      "rows": [
+        {
+          "feature": "Hogsmeade environments",
+          "values": [
+            "Neural rendering enhances environmental lighting, local contrast, shadows and some visible texture detail.",
+            "Weathered roofs, stone, foliage and other materials can look more defined; ComputerBase notes that the improvement varies by scene."
+          ]
+        },
+        {
+          "feature": "NPC faces and clothing",
+          "values": [
+            "ComputerBase reports that character faces are held out of the neural pass while NPC clothing still receives enhancement.",
+            "The face keeps its original authored appearance, while fabric and clothing response can look more detailed."
+          ]
+        },
+        {
+          "feature": "Playable main character",
+          "values": [
+            "The tested playable character receives broader DLSS 5 processing, including the face.",
+            "ComputerBase observed shinier hair and a more polished, photorealistic-looking face that can contrast with nearby NPCs."
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "The practical lesson is not that DLSS 5 always changes faces. It is that semantic and engine-level masking give developers control over which objects receive neural enhancement, and a studio's choices can differ between NPCs, the player avatar, environments and cutscenes. The shipped Hogwarts Legacy behaviour is a title-specific art-direction decision—not a performance setting users can independently configure."
+    },
+    {
+      "type": "h2",
       "text": "Does DLSS 5 increase FPS or cost FPS?",
       "id": "does-dlss-5-increase-fps"
     },
@@ -277,7 +327,58 @@ export const BLOG_POSTS: BlogPost[] = [
     },
     {
       "type": "paragraph",
-      "text": "In ComputerBase's November 5 Hogwarts Legacy test on an RTX 5090 with DLSS Super Resolution set to Quality, the publication measured about 13% fewer frames at 2560 × 1440 with DLSS 5 enabled, and about 23% fewer at 3840 × 2160 in its test scene. Those are results from one controlled review configuration—not a guaranteed result for every PC or every game. https://www.computerbase.de/artikel/grafikkarten/dlss-5-test-hogwarts-legacy.100187/seite-2"
+      "text": "ComputerBase's November 5, 2026 Hogwarts Legacy test used a GeForce RTX 5090 and Ryzen 9 7950X3D, DLSS Super Resolution Quality, maximum game settings and ray-tracing effects (reflections, shadows and ambient occlusion), with DLSS Ray Reconstruction set to DLSS 4.5 Preset F. The results below report both average FPS and the 1% percentile, with Neural Rendering off and on. At 2560 × 1440, ComputerBase identifies the system as CPU-limited because Unreal Engine 4 ray tracing creates substantial CPU load; at 3840 × 2160, the RTX 5090 becomes the limiting component. That CPU-versus-GPU distinction helps explain why the same neural-rendering pass appears to cost less at 1440p than at 4K. https://www.computerbase.de/artikel/grafikkarten/dlss-5-test-hogwarts-legacy.100187/seite-2"
+    },
+    {
+      "type": "comparisonTable",
+      "title": "Verified Hogwarts Legacy DLSS 5 performance: RTX 5090, November 5, 2026",
+      "featureLabel": "Resolution and mode",
+      "columns": [
+        "Average FPS — DLSS 5 off → on",
+        "1% percentile — DLSS 5 off → on",
+        "Measured change"
+      ],
+      "rows": [
+        {
+          "feature": "2560 × 1440 · DLSS Quality · MFG off",
+          "values": [
+            "95.8 → 83.8 FPS",
+            "78.9 → 71.5 FPS",
+            "−12.5% average · −9.4% 1% low"
+          ]
+        },
+        {
+          "feature": "2560 × 1440 · DLSS Quality · 4× MFG",
+          "values": [
+            "302.2 → 256.7 FPS",
+            "168.0 → 152.0 FPS",
+            "−15.1% average · −9.5% 1% low"
+          ]
+        },
+        {
+          "feature": "3840 × 2160 · DLSS Quality · MFG off",
+          "values": [
+            "75.6 → 57.2 FPS",
+            "67.2 → 53.0 FPS",
+            "−24.3% average · −21.1% 1% low"
+          ]
+        },
+        {
+          "feature": "3840 × 2160 · DLSS Quality · 4× MFG",
+          "values": [
+            "226.1 → 179.1 FPS",
+            "138.8 → 122.9 FPS",
+            "−20.8% average · −11.5% 1% low"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "benchmarkExplorer"
+    },
+    {
+      "type": "paragraph",
+      "text": "A second pipeline detail matters when choosing an upscaling preset: DLSS 5 is a final-stage neural-rendering pass that operates after the conventional frame has been upscaled to the output image. Independent testing of DLSS 5 describes its processing cost as tied primarily to output resolution rather than the lower internal render resolution. DLSS Super Resolution can reduce the conventional rasterisation and ray-tracing workload, but lowering its internal render resolution does not proportionally shrink the DLSS 5 neural pass; changing the final output resolution is the relevant pixel-count change. Treat this as a pipeline characteristic, not a promise of an identical fixed millisecond cost in every game or scene. https://research.nvidia.com/labs/adlr/DLSS5/ https://www.techspot.com/community/topics/testing-dlss-5s-real-performance-no-6x-frame-gen.298703/"
     },
     {
       "type": "paragraph",
@@ -459,8 +560,8 @@ export const BLOG_POSTS: BlogPost[] = [
         {
           "feature": "Where Winds Meet",
           "values": [
-            "Announced for November 23",
-            "NVIDIA's November 5 rollout announcement gives November 23 as the planned DLSS 5 date."
+            "Announced for November 23 (official date)",
+            "NVIDIA's November 5 announcement specifies November 23 but does not give a separate regional calendar date or local launch time. Check the game update in your region rather than assuming a November 24 Kuwait release."
           ]
         }
       ]
@@ -484,7 +585,64 @@ export const BLOG_POSTS: BlogPost[] = [
     },
     {
       "type": "paragraph",
-      "text": "For Kuwait gamers, a driver update or new graphics feature should not be treated as proof that a GPU is faulty. If a game continues to crash, show artifacts, lose display output or shut down under load after you have returned to known-stable settings, the issue may need a separate hardware diagnosis. See KCROC's https://www.computerrepairkuwait.com/gaming-pc-repair-kuwait service information for gaming PC and GPU diagnostics."
+      "text": "For Kuwait gamers, a driver update or new graphics feature should not be treated as proof that a GPU is faulty. If a game continues to crash, show artifacts, lose display output or shut down under load after you have returned to known-stable settings, the issue may need a separate hardware diagnosis. See KCROC's https://www.computerrepairkuwait.com/gaming-pc-repair-kuwait service information for gaming PC system diagnostics."
+    },
+    {
+      "type": "h2",
+      "text": "DLSS 5 troubleshooting: software behaviour vs hardware faults",
+      "id": "dlss-5-software-vs-hardware-diagnostics"
+    },
+    {
+      "type": "paragraph",
+      "text": "Use the symptom pattern—not the DLSS 5 toggle alone—to decide what to test next. A repeatable FPS reduction with Neural Rendering enabled is expected rendering overhead. A driver-specific video playback issue, sustained thermal throttling, display loss or a system shutdown needs a different diagnostic branch."
+    },
+    {
+      "type": "comparisonTable",
+      "title": "Software behaviour vs hardware fault: a practical diagnostic matrix",
+      "featureLabel": "Symptom",
+      "columns": [
+        "Likely interpretation",
+        "First safe checks",
+        "When KCROC in Hawalli may help"
+      ],
+      "rows": [
+        {
+          "feature": "Average FPS falls roughly 12%–24% when DLSS 5 is toggled on in the same scene",
+          "values": [
+            "Expected neural-rendering workload. The RTX 5090 results vary with resolution and whether Multi Frame Generation is enabled; this is not, by itself, evidence of a faulty GPU.",
+            "Compare the same camera position and settings with Neural Rendering off and on. In Hogwarts Legacy, Shift + Alt + B toggles the feature. Compare base FPS separately from generated-frame output.",
+            "No repair is indicated by this symptom alone. Keep Neural Rendering off when the visual improvement is not worth the measured frame-time cost."
+          ]
+        },
+        {
+          "feature": "Video playback freezes or black-screens after GeForce Game Ready Driver 621.01 on some RTX 50 Series / RTX Spark systems",
+          "values": [
+            "NVIDIA lists this as bug 6979343 and says it was fixed in GeForce Game Ready Driver 621.14 WHQL.",
+            "Install the corrected 621.14 WHQL release or a newer compatible driver, restart Windows and retest video playback. The Hogwarts Legacy feature minimum is separately listed as 616.64 or newer.",
+            "Contact a technician only if the symptom persists on a corrected driver or occurs independently of video playback under normal stock settings; do not assume the GPU needs repair."
+          ]
+        },
+        {
+          "feature": "FPS collapses after 10–15 minutes, with falling GPU clocks, fan saturation or temperature-limit flags",
+          "values": [
+            "Possible thermal or power-limit behaviour. A temperature reading alone does not prove a cooling fault; interpret core, hotspot and memory-junction values against the GPU or laptop manufacturer's limits.",
+            "Log GPU utilisation, power, clock speeds, fan behaviour and temperature sensors at stock settings. Compare a repeatable scene with Neural Rendering off and on, and check that vents are unobstructed.",
+            "KCROC can assess cooling and airflow symptoms through its gaming-laptop cleaning service, or perform broader gaming-PC system diagnostics. Free pickup and delivery are available across Kuwait."
+          ]
+        },
+        {
+          "feature": "Hard shutdown, display loss, fans suddenly ramping to maximum or artifacts that remain with DLSS 5 disabled",
+          "values": [
+            "Possible system-level hardware, power-delivery, display-path or motherboard fault. This pattern is not enough to identify a failed GPU component.",
+            "Return CPU and GPU tuning to stock, test a known-good display cable and monitor, check Windows reliability history, and stop using any visibly damaged power connector. Never reseat components while the system is powered.",
+            "Arrange KCROC gaming-PC diagnosis. The Hawalli lab can investigate system stability and component-level motherboard faults where measurements support that direction; this is not a promise of GPU board-level repair."
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Kuwait readers with repeatable cooling, shutdown or display-stability symptoms can review KCROC's https://www.computerrepairkuwait.com/gaming-pc-repair-kuwait gaming-PC diagnostic service or https://www.computerrepairkuwait.com/gaming-laptop-cleaning-kuwait gaming-laptop cleaning service. KCROC operates its repair laboratory in Hawalli and offers free pickup and delivery across Kuwait. For an appointment, call +965 55301913. A driver update or a normal DLSS 5 frame-rate reduction does not automatically require a repair."
     },
     {
       "type": "h2",
@@ -526,6 +684,18 @@ export const BLOG_POSTS: BlogPost[] = [
         {
           "question": "Can I use DLSS 5 and DLSS 4.5 features together?",
           "answer": "Yes, where the game supports them. DLSS 5 is the neural-rendering layer; Super Resolution, Multi Frame Generation, Reflex and Ray Reconstruction remain separate controls."
+        },
+        {
+          "question": "Why does the DLSS 5 FPS cost rise from 1440p to 4K in the RTX 5090 test?",
+          "answer": "ComputerBase identifies the 1440p test as CPU-limited because Unreal Engine 4 ray tracing puts substantial load on the Ryzen 9 7950X3D. At 4K, the RTX 5090 is the limiting component, so the neural-rendering cost is more visible. This explains that test; it is not a guaranteed result for every game or PC."
+        },
+        {
+          "question": "Does DLSS Super Resolution remove the DLSS 5 neural-rendering cost?",
+          "answer": "No. DLSS 5 runs as a final neural-rendering stage after upscaling. Super Resolution can reduce internal rasterisation and ray-tracing work, but the DLSS 5 pass is tied primarily to the final output resolution, so lowering the internal render resolution does not proportionally remove its cost."
+        },
+        {
+          "question": "Why can Hogwarts Legacy NPC faces look different from the player character with DLSS 5?",
+          "answer": "ComputerBase reports that the shipped November 5 build holds NPC faces out of the neural pass while still enhancing NPC clothing, whereas the playable main character is processed more fully. The review observed a glossier hair and face appearance on its tested player character. This is specific to Avalanche's game integration."
         }
       ]
     },
@@ -572,6 +742,7 @@ export const BLOG_POSTS: BlogPost[] = [
   "imageCaption": "KCROC workshop photo showing gaming-PC hardware under inspection. This is an illustrative hardware image, not an in-game DLSS 5 comparison.",
   "discoverImage": "/images/discover/custom-gaming-pc-teardown-and-diagnostics-workbench-1200x675.webp",
   "date": "2026-11-09T00:00:00+03:00",
+  "technicalReviewDate": "2026-11-09T21:00:00+03:00",
   "author": "Imran Natiq",
   "category": "Gaming Technology",
   "readTime": "10 min read",
@@ -592,8 +763,8 @@ export const BLOG_POSTS: BlogPost[] = [
     "War Thunder Eagle's Shadow",
     "Where Winds Meet DLSS 5"
   ],
-  "seoTitle": "NVIDIA DLSS 5 Explained: FPS Cost, GPU Support & Games",
-  "seoDescription": "NVIDIA DLSS 5 adds neural lighting and material detail, not free FPS. See RTX 50 support, real FPS testing, Driver 621.14 and the November game rollout.",
+  "seoTitle": "NVIDIA DLSS 5 Explained: RTX 5090 FPS Cost & Game Support",
+  "seoDescription": "Verified RTX 5090 Hogwarts Legacy DLSS 5 benchmarks with average FPS and 1% lows, output-resolution pipeline analysis, NPC masking, RTX 50 support and Driver 621.14.",
   "contentType": "news"
 },
   {
