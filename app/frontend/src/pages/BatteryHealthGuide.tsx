@@ -1,6 +1,5 @@
 // File: app/frontend/src/pages/BatteryHealthGuide.tsx
 import React from 'react';
-import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import {
   Battery, BatteryWarning, Thermometer, AlertTriangle, CheckCircle2, XCircle,
@@ -10,16 +9,10 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { StandaloneRelatedLinks } from '@/components/content/StandaloneRelatedLinks';
-import { HeadTermCallout } from '@/components/content/HeadTermCallout';
 import StickyTOC from '@/components/blog/StickyTOC';
 
-import { KCROC_GRAPH } from '../data/graph';
 import { SEOEngine } from '../core/components/SEOEngine';
 import { IMAGES } from '../constants/images';
-
-// Dynamic Business Data
-const business = KCROC_GRAPH.business!;
-const WA_LINK = `https://wa.me/${business.telephone}?text=${encodeURIComponent('I need a laptop battery replacement in Kuwait')}`;
 
 // Shared section wrapper styles keep every block visually consistent —
 // bordered container, divided rows — matching the rest of the page.
@@ -357,7 +350,7 @@ const fastDrainCauses = [
 ];
 
 const careTips = [
-  { title: 'Avoid Extreme Heat', description: "Heat accelerates lithium-ion degradation faster than almost anything else — especially relevant in Kuwait's climate.", icon: Thermometer },
+  { title: 'Avoid Extreme Heat', description: "High ambient temperatures accelerate lithium-ion ageing. Avoid leaving a laptop in a hot vehicle or direct sunlight, and keep its cooling vents unobstructed.", icon: Thermometer },
   { title: 'Use Manufacturer Charge Limits', description: 'Many laptops now offer built-in charge-limiting or "optimized charging" — prefer these over manual habits.', icon: Battery },
   { title: 'Use the Original or Certified Charger', description: 'Mismatched chargers can affect charging behavior and, over time, battery condition.', icon: Zap },
   { title: 'Avoid Routine Deep Discharge', description: "Regularly draining to 0% isn't a maintenance step — it adds stress with no health benefit for modern batteries.", icon: RefreshCw },
@@ -375,7 +368,7 @@ const decisionSteps = [
   },
   {
     question: 'Does it shut down unexpectedly while on battery?',
-    yes: { label: 'Get a battery/power diagnosis', tone: 'warn', to: WA_LINK, external: true }
+    yes: { label: 'Compare battery and power-path symptoms', tone: 'warn', to: '#battery-vs-charging' }
   },
   {
     question: 'Has runtime dramatically decreased?',
@@ -383,7 +376,7 @@ const decisionSteps = [
   },
   {
     question: 'Does the health report show severe wear?',
-    yes: { label: 'Replacement is likely appropriate', tone: 'action', to: '/battery-replacement-kuwait' }
+    yes: { label: 'Verify capacity loss against the design specification', tone: 'action', to: '#check-health' }
   },
   {
     question: 'Could the drain be explained by heavy software/workload?',
@@ -588,9 +581,9 @@ export default function BatteryHealthGuide() {
           </div>
           <div className="grid gap-4 md:grid-cols-3">
             {[
-              { title: 'Battery', text: 'Rapid drain, sharply reduced runtime, unexpected shutdowns, or a health report showing substantial wear can point toward battery degradation.', href: '/battery-replacement-kuwait', label: 'Battery replacement' },
-              { title: 'Charger or Port', text: 'No charging, intermittent charging, a loose connector, or a charger that works on another device can point toward the external power path.', href: '/laptop-plugged-in-not-charging', label: 'Not charging troubleshooting' },
-              { title: 'Charging Circuit / Board', text: 'If the correct charger and charging input are good but the laptop still will not charge or power correctly, board-level diagnosis may be needed.', href: '/laptop-charging-port-repair-kuwait', label: 'Charging-port repair' },
+              { title: 'Battery', text: 'Rapid drain, sharply reduced runtime, unexpected shutdowns, or a health report showing substantial wear can point toward battery degradation.', href: '#check-health', label: 'Review battery health checks' },
+              { title: 'Charger or Port', text: 'No charging, intermittent charging, a loose connector, or a charger that works on another device can point toward the external power path.', href: '#battery-vs-charging', label: 'Compare charging symptoms' },
+              { title: 'Charging Circuit / Board', text: 'If the correct charger and charging input are good but the laptop still will not charge or power correctly, a board-side fault may be involved.', href: '#battery-vs-charging', label: 'Review the power-path checks' },
             ].map((item) => (
               <article key={item.title} className="rounded-2xl border border-slate-800 bg-brand-dark/40 p-5">
                 <h3 className="text-lg font-bold text-white">{item.title}</h3>
@@ -943,14 +936,6 @@ upower -i /org/freedesktop/UPower/devices/battery_BAT0</code></pre>
               </div>
             ))}
           </div>
-          <div className="mt-5 flex flex-wrap gap-3">
-            <Link to="/macbook-repair-kuwait" className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-slate-700 px-4 py-2 text-sm font-semibold text-cyan-300 hover:border-cyan-500/40 hover:text-cyan-200">
-              MacBook repair in Kuwait <ChevronRight className="h-4 w-4" aria-hidden="true" />
-            </Link>
-            <Link to="/macbook-battery-replacement-kuwait" className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-slate-700 px-4 py-2 text-sm font-semibold text-cyan-300 hover:border-cyan-500/40 hover:text-cyan-200">
-              MacBook battery replacement <ChevronRight className="h-4 w-4" aria-hidden="true" />
-            </Link>
-          </div>
         </div>
       </section>
 
@@ -1114,13 +1099,6 @@ powercfg /requests</code></pre>
                 </li>
               ))}
             </ul>
-            <p className="mt-4 text-slate-400 text-xs sm:text-sm">
-              If the cause turns out to be a charging port, motherboard power circuit, or another hardware fault rather than the battery itself, our{' '}
-              <Link to="/laptop-repair-kuwait" className="text-cyan-300 hover:text-cyan-200 font-semibold underline underline-offset-2">
-                laptop repair service in Kuwait
-              </Link>{' '}
-              covers diagnosis and repair for those faults too — with the same free pickup and 30-day warranty.
-            </p>
           </div>
         </div>
       </section>
@@ -1162,20 +1140,20 @@ powercfg /requests</code></pre>
         </div>
       </section>
 
-      {/* ─── KUWAIT HEAT ─── */}
+      {/* ─── HEAT & BATTERY AGEING ─── */}
       <section className="py-8 sm:py-16 px-4 sm:px-6 bg-slate-900/30 border-t border-slate-900">
         <div className="container mx-auto max-w-4xl">
           <div className="flex items-center gap-3 mb-4">
             <div className="bg-orange-500/10 p-2 rounded-lg shrink-0">
               <Sun className="w-5 h-5 text-orange-400" aria-hidden="true" />
             </div>
-            <h2 className="text-xl sm:text-3xl font-bold text-white">Laptop Batteries in Kuwait&apos;s Heat</h2>
+            <h2 className="text-xl sm:text-3xl font-bold text-white">Heat, Storage and Battery Ageing</h2>
           </div>
           <p className="text-slate-300 text-xs sm:text-sm leading-relaxed mb-3">
-            High ambient temperatures put extra thermal stress on lithium-ion cells — particularly relevant locally, where laptops are often left in parked cars, used near direct sunlight, or run gaming workloads in poorly ventilated rooms. Heat is one of several factors that accelerate degradation, alongside cycle count and charging habits; Kuwait’s climate doesn’t on its own guarantee battery failure, but it does make good thermal habits worth taking seriously.
+            Elevated ambient temperature increases chemical ageing in lithium-ion cells. Repeated exposure to hot vehicles, direct sunlight, blocked vents or sustained high-load operation can add thermal stress, although temperature alone cannot confirm that a battery has failed.
           </p>
           <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
-            As a Kuwait-based repair shop, KCROC sees this pattern often enough that it’s worth calling out — avoiding car storage, direct sun, and dust buildup around vents goes a long way.
+            Store and use the laptop within the manufacturer's specified operating conditions, keep airflow unobstructed, and treat swelling, unusual localized heat or case deformation as a safety issue rather than a normal ageing symptom.
           </p>
         </div>
       </section>
@@ -1231,19 +1209,12 @@ powercfg /requests</code></pre>
         </div>
       </section>
 
-      <div className="container mx-auto max-w-4xl px-4 sm:px-6">
-        <HeadTermCallout lead="If your battery is draining fast, swelling or not holding charge," placement="BatteryHealthGuide" />
-      </div>
-
       <StandaloneRelatedLinks
-        title="Battery warning signs: what to do next"
-        intro="Use these related KCROC paths when battery symptoms overlap with charging, power, or broader laptop faults."
+        title="Related battery and laptop troubleshooting guides"
+        intro="Continue with the guide that matches the symptom. These resources focus on diagnosis and safe checks rather than local repair offers."
         links={[
-          { href: '/battery-replacement-kuwait', label: 'Laptop Battery Replacement Kuwait', description: 'Move from battery-health symptoms to professional testing and replacement.' },
-          { href: '/laptop-plugged-in-not-charging', label: 'Laptop Plugged in but Not Charging', description: 'Use this problem path when the battery issue may actually be charging or power related.' },
-          { href: '/laptop-charging-port-repair-kuwait', label: 'Laptop Charging Port Repair', description: 'For loose, damaged, intermittent, or non-charging DC and USB-C input ports.' },
-          { href: '/laptop-repair-kuwait', label: 'Laptop Repair Kuwait', description: 'Broader diagnosis when the fault may involve the charging circuit or motherboard.' },
-          { href: '/guides/laptop-wont-turn-on', label: "Laptop Won't Turn On Guide", description: 'Follow the no-power path when battery symptoms are accompanied by a dead or unresponsive laptop.' },
+          { href: '/guides/laptop-wont-turn-on', label: "Laptop Won't Turn On", description: 'Separate battery, charging, firmware, display and motherboard symptoms when a laptop will not start.' },
+          { href: '/guides/why-is-my-laptop-so-hot', label: 'Laptop Overheating', description: 'Understand thermal behaviour, airflow restrictions and temperature-related shutdowns.' },
         ]}
       />
 
@@ -1272,78 +1243,7 @@ powercfg /requests</code></pre>
         </div>
       </section>
 
-      {/* ─── FINAL CTA ─── */}
-      <section className="py-8 sm:py-20 px-4 sm:px-6 border-t border-slate-900">
-        <div className="container mx-auto max-w-2xl text-center">
-          <h2 className="text-2xl sm:text-4xl font-bold text-white mb-2 sm:mb-3">Need a New Battery in Kuwait?</h2>
-          <p className="text-slate-300 text-xs sm:text-base mb-6 sm:mb-8">
-            Not sure whether the battery is actually failing? We diagnose before we replace — genuine or high-grade compatible batteries with professional installation.
-          </p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-slate-800 border border-slate-800 rounded-2xl overflow-hidden mb-6 sm:mb-8">
-            <a
-              href={WA_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-4 sm:p-5 flex flex-col items-center gap-1.5 hover:bg-slate-900/60 transition-colors"
-            >
-              <Stethoscope className="w-5 h-5 text-cyan-400" aria-hidden="true" />
-              <span className="text-white font-semibold text-xs sm:text-sm">Run Diagnostic</span>
-              <span className="text-slate-500 text-[10px] sm:text-xs">Check battery health</span>
-            </a>
-            <Link
-              to="/battery-replacement-kuwait"
-              className="p-4 sm:p-5 flex flex-col items-center gap-1.5 hover:bg-slate-900/60 transition-colors"
-            >
-              <Battery className="w-5 h-5 text-emerald-400" aria-hidden="true" />
-              <span className="text-white font-semibold text-xs sm:text-sm">Find Replacement</span>
-              <span className="text-slate-500 text-[10px] sm:text-xs">Genuine or compatible</span>
-            </Link>
-            <Link
-              to="/contact"
-              className="p-4 sm:p-5 flex flex-col items-center gap-1.5 hover:bg-slate-900/60 transition-colors"
-            >
-              <MessageCircle className="w-5 h-5 text-orange-400" aria-hidden="true" />
-              <span className="text-white font-semibold text-xs sm:text-sm">Get Expert Help</span>
-              <span className="text-slate-500 text-[10px] sm:text-xs">Talk to support</span>
-            </Link>
-          </div>
-
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Button size="lg" asChild className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold w-full sm:w-auto">
-              <a
-                href={WA_LINK}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 mr-2" aria-hidden="true" />
-                WhatsApp Us
-              </a>
-            </Button>
-            <Button size="lg" variant="outline" asChild className="border-slate-700 text-slate-200 hover:bg-slate-800/60 w-full sm:w-auto">
-              <a href={`tel:+${business.telephone}`}>
-                <Phone className="w-4 h-4 sm:w-5 sm:h-5 mr-2" aria-hidden="true" />
-                Call: +{business.telephone}
-              </a>
-            </Button>
-          </div>
-
-          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 mt-6 sm:mt-8 text-xs sm:text-sm">
-            <Link to="/battery-replacement-kuwait" className="text-cyan-300 hover:text-cyan-200 inline-flex items-center gap-1.5 transition-colors">
-              Laptop Battery Replacement Kuwait
-            </Link>
-            <Link to="/laptop-repair-kuwait" className="text-slate-400 hover:text-cyan-400 inline-flex items-center gap-1.5 transition-colors">
-              Laptop Repair Kuwait
-            </Link>
-            <Link to="/near-me" className="text-slate-400 hover:text-cyan-400 inline-flex items-center gap-1.5 transition-colors">
-              Computer Repair Near Me
-            </Link>
-            <Link to="/services" className="text-slate-400 hover:text-cyan-400 inline-flex items-center gap-1.5 transition-colors">
-              View All Services
-            </Link>
-          </div>
-        </div>
-      </section>
     </div>
   );
 }      {/* ─── SYMPTOM \u2192 MEANING \u2192 ACTION TABLE ─── */}
