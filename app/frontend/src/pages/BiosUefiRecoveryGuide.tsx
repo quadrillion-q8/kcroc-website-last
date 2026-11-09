@@ -3,9 +3,9 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import {
-  AlertTriangle, ArrowRight, CheckCircle2, ChevronRight, Clock, Cpu,
+  AlertTriangle, ArrowRight, CheckCircle2, ChevronRight, Cpu,
   Database, FileWarning, GitBranch, HardDrive, HelpCircle, KeyRound,
-  Layers, Lock, Microscope, MessageCircle, Phone, ShieldCheck, Siren,
+  Layers, Lock, Microscope, ShieldCheck, Siren,
   Volume2, Wrench, Zap, XCircle
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -15,7 +15,6 @@ import { SEOEngine } from '../core/components/SEOEngine';
 import { IMAGES } from '../constants/images';
 import { StandaloneRelatedLinks } from '@/components/content/StandaloneRelatedLinks';
 
-// Dynamic Business Data
 const sectionBadge = 'px-3 sm:px-4 py-1.5 text-[10px] sm:text-sm mb-3 sm:mb-4';
 
 // ── STATIC CONTENT ──
@@ -68,7 +67,8 @@ const manufacturerNotes = [
   { brand: 'Lenovo', method: 'Platform-specific BIOS recovery or self-recovery, where provided', trigger: 'ThinkPad, IdeaPad and Legion behavior differs; there is no universal key sequence for every Lenovo family.', media: 'Use the package and recovery instructions for the exact Machine Type Model and board revision. File format and USB requirements vary.', caveat: 'Verify that the exact system supports the proposed recovery method before preparing media.', sourceUrl: 'https://pcsupport.lenovo.com/' },
   { brand: 'ASUS', method: 'CrashFree BIOS 3 or USB BIOS FlashBack on supported boards', trigger: 'CrashFree is model/board dependent. FlashBack requires the dedicated port and physical button on equipped boards.', media: 'Follow the board manual for USB format and port. Some FlashBack workflows use FAT16/32 media and BIOSRenamer to create the exact .CAP filename.', caveat: 'CrashFree and FlashBack are different mechanisms; do not assume CPU/RAM independence or identical filenames.', sourceUrl: 'https://www.asus.com/support/faq/1038568/' },
   { brand: 'Acer', method: 'Model-specific firmware recovery, if supported', trigger: 'Key combinations and crisis behavior vary by platform generation; verify the exact product service documentation.', media: 'Use only the official package for the complete model identifier and documented recovery-media layout.', caveat: 'Do not assume Fn + Esc, a particular .fd filename or a black-screen write sequence is universal.', sourceUrl: 'https://www.acer.com/support' },
-  { brand: 'MSI / Gigabyte', method: 'MSI Flash BIOS Button or Gigabyte Q-Flash Plus on equipped boards', trigger: 'Use the dedicated rear-I/O port and physical button only when the exact motherboard supports that feature.', media: 'MSI documents MSI.ROM on supported Flash BIOS Button models; Gigabyte documents gigabyte.bin on supported Q-Flash Plus boards. Check manual for USB format and port.', caveat: 'The filenames and methods are not interchangeable and are not valid for every board or every in-UEFI update.', sourceUrl: 'https://us.msi.com/support/technical_details/MB_Flash_BIOS_Button' },
+  { brand: 'MSI', method: 'Flash BIOS Button on equipped motherboards', trigger: 'Use the dedicated rear-I/O port and physical button only when the exact board supports this feature.', media: 'MSI documents MSI.ROM on supported Flash BIOS Button models. Check the exact manual for the required USB format and port.', caveat: 'Do not assume the button, filename or procedure exists on every MSI board.', sourceUrl: 'https://us.msi.com/support/technical_details/MB_Flash_BIOS_Button' },
+  { brand: 'Gigabyte', method: 'Q-Flash Plus on equipped motherboards', trigger: 'Use the dedicated port and Q-Flash Plus button only when the exact board supports the feature.', media: 'Gigabyte documents gigabyte.bin for supported Q-Flash Plus boards. Confirm the USB layout and filename in the exact board manual.', caveat: 'Q-Flash Plus is not the same as the regular in-UEFI Q-Flash utility and is not present on every board.', sourceUrl: 'https://www.gigabyte.com/FileUpload/Global/KeyFeature/3701/index.html' },
   { brand: 'Apple', method: 'Apple firmware Revive or Restore through DFU mode on supported Macs', trigger: 'A second Mac, suitable USB-C data cable and model-specific DFU port/sequence may be required.', media: 'Use Finder or Apple Configurator as directed by Apple. Attempt Revive first when appropriate; Restore erases the target Mac.', caveat: 'Apple Silicon and T2 Macs do not follow PC BIOS/UEFI crisis-USB or generic SPI recovery instructions.', sourceUrl: 'https://support.apple.com/en-ae/108900' },
 ];
 
@@ -1019,7 +1019,7 @@ export default function BiosUefiRecoveryGuide() {
               ['Security and storage', ['BitLocker/FileVault status and recovery-key availability', 'Secure Boot / TPM configuration before the event', 'VMD / RAID / AHCI setting before the event']],
               ['Board and power evidence', ['AC adapter and battery condition', 'Known liquid, impact, surge or thermal event', 'Power-rail / current-draw measurements already taken']],
               ['Data preservation', ['Original firmware package retained', 'Original SPI dump backed up where readable', 'Customer data and encryption credentials protected']]
-            ].map(([title, items]) => (
+            ] as [string, string[]][]).map(([title, items]) => (
               <div key={title}>
                 <h3 className="mb-2 border-b border-slate-800 pb-2 text-sm font-bold text-cyan-300 print:border-gray-400 print:text-black">{title}</h3>
                 <ul className="space-y-2">{items.map((item) => <li key={item} className="flex gap-2 text-xs leading-5 text-slate-300 print:text-black"><span aria-hidden="true" className="shrink-0 text-cyan-300 print:text-black">☐</span><span>{item}</span></li>)}</ul>
