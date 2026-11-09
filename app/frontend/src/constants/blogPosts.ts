@@ -7154,7 +7154,7 @@ export const BLOG_POSTS: BlogPost[] = [
     "date": "2026-10-01",
     "technicalReviewDate": "October 1, 2026",
     "author": "Imran Natiq",
-    "category": "Gaming PC Repair",
+    "category": "Gaming Hardware Troubleshooting",
     "readTime": "8-10 min read",
     "clusterParent": "gaming-pc-repair-kuwait",
     "tags": [
@@ -7162,7 +7162,7 @@ export const BLOG_POSTS: BlogPost[] = [
        
       "PC No Power",
       "PSU Failure",
-      "Gaming PC Repair"
+      "Gaming PC Troubleshooting"
     ],
     "seoTitle": "Gaming PC Won’t Turn On? PSU, Power & No-POST Troubleshooting | KCROC",
     "seoDescription": "Gaming PC won't turn on? Trace safe external power checks, PSU symptoms, motherboard power sequencing, GPU power and POST failures before replacing parts.",
@@ -7456,7 +7456,7 @@ export const BLOG_POSTS: BlogPost[] = [
   "date": "2026-10-01",
   "technicalReviewDate": "November 4, 2026",
   "author": "Imran Natiq",
-  "category": "Gaming PC Repair",
+  "category": "Gaming Hardware Troubleshooting",
   "readTime": "8–10 min read",
   "clusterParent": "gaming-pc-repair-kuwait",
   "tags": [
@@ -7591,7 +7591,7 @@ export const BLOG_POSTS: BlogPost[] = [
        
       "VRAM Failure",
       "Graphics Card Black Screen",
-      "Gaming PC Repair"
+      "Gaming Hardware Troubleshooting"
     ],
     "seoTitle": "GPU Artifacting, Flickering & Black Screens Under Load | Diagnostic Guide | KCROC",
     "seoDescription": "GPU artifacting, flickering or black screens under load? Separate driver, thermal, VRAM, power-delivery and display-path causes before replacing a graphics card.",
@@ -7715,7 +7715,7 @@ export const BLOG_POSTS: BlogPost[] = [
     "date": "2026-10-01",
     "technicalReviewDate": "October 1, 2026",
     "author": "Imran Natiq",
-    "category": "Gaming PC Repair",
+    "category": "Gaming Hardware Troubleshooting",
     "readTime": "8-10 min read",
     "clusterParent": "gaming-pc-repair-kuwait",
     "tags": [
