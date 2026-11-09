@@ -154,7 +154,7 @@ add('BIOS/UEFI guide keeps all 18 FAQ answers in rendered page markup and all 18
   biosGuideEnSource.includes('<p className="mt-3 pr-8 text-xs leading-6 text-slate-400 sm:text-sm">{item.a}</p>'));
 add('BIOS/UEFI English guide uses a global editorial header, footer and mobile layout without local conversion prompts',
   header.includes("const isGlobalTechnicalGuide = location.pathname === '/guides/bios-uefi-recovery-kuwait'") &&
-  header.includes('hideConversionActions={hideConversionActions}') &&
+  header.includes('hideConversionActions={isGlobalTechnicalGuide}') &&
   mobileMenu.includes('hideConversionActions?: boolean') &&
   mobileMenu.includes('{!hideConversionActions && (') &&
   rootLayout.includes("pathname === '/guides/bios-uefi-recovery-kuwait'") &&
