@@ -4,14 +4,12 @@ import { Link } from 'react-router-dom';
 import { StandaloneRelatedLinks } from '@/components/content/StandaloneRelatedLinks';
 import { Badge } from '@/components/ui/badge';
 import {
-  AlertTriangle, Check, CheckCircle2, ChevronRight, CircleHelp, Copy, Cpu, Gamepad2,
-  Gauge, HardDrive, MonitorCog, Network, Power, RotateCcw, ShieldAlert,
-  Terminal, Wrench, XCircle
+  Check, CheckCircle2, ChevronRight, CircleHelp, Copy, Gamepad2,
+  Gauge, MonitorCog, Power, RotateCcw, ShieldAlert, Terminal
 } from 'lucide-react';
 import { SEOEngine } from '../core/components/SEOEngine';
 import { KCROC_GRAPH } from '../data/graph';
 import StickyTOC from '@/components/blog/StickyTOC';
-import { IMAGES } from '../constants/images';
 import SchemaMarkup from '../components/seo/SchemaMarkup';
 
 const business = KCROC_GRAPH.business!;
