@@ -652,7 +652,7 @@ export const BLOG_POSTS: BlogPost[] = [
     },
     {
       "type": "paragraph",
-      "text": "Kuwait readers with repeatable cooling, shutdown or display-stability symptoms can review KCROC's https://www.computerrepairkuwait.com/gaming-pc-repair-kuwait gaming-PC diagnostic service or https://www.computerrepairkuwait.com/gaming-laptop-cleaning-kuwait gaming-laptop cleaning service. KCROC operates its repair laboratory in Hawalli and offers free pickup and delivery across Kuwait. For an appointment, call +965 55301913. A driver update or a normal DLSS 5 frame-rate reduction does not automatically require a repair."
+      "text": "Kuwait readers with repeatable cooling, shutdown or display-stability symptoms can review KCROC's https://www.computerrepairkuwait.com/gaming-pc-repair-kuwait gaming-PC diagnostic service or https://www.computerrepairkuwait.com/gaming-laptop-cleaning-kuwait gaming-laptop cleaning service. KCROC operates its repair laboratory in Hawalli and offers free pickup and delivery across Kuwait. For an appointment, use the KCROC Contact page: https://www.computerrepairkuwait.com/contact. A driver update or a normal DLSS 5 frame-rate reduction does not automatically require a repair."
     },
     {
       "type": "h2",
