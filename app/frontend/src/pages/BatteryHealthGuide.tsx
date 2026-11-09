@@ -448,7 +448,7 @@ const faq = [
   },
   {
     q: 'How long does laptop battery replacement take?',
-    a: 'Timing depends on the laptop model, the exact battery part, stock availability, and whether inspection finds additional damage. KCROC confirms a realistic estimate after checking the model and repair requirements; pickup and delivery are arranged after the agreed work and testing.'
+    a: 'Timing depends on the exact laptop model, battery construction, part availability and whether inspection finds additional damage. Use the model-specific service documentation and confirm the correct replacement part before beginning work.'
   }
 ];
 
@@ -901,11 +901,7 @@ upower -i /org/freedesktop/UPower/devices/battery_BAT0</code></pre>
           </div>
 
           <p className="text-slate-300 text-xs sm:text-sm leading-relaxed mt-6 text-center max-w-2xl mx-auto">
-            Contact KCROC at{' '}
-            <a href={`tel:+${business.telephone}`} className="text-red-300 font-bold hover:text-red-200 underline">
-              +{business.telephone}
-            </a>{' '}
-            for safe battery removal and replacement. A swollen battery can be dangerous and should always be handled by professionals.
+            A swollen lithium-ion battery can be dangerous. Stop using and charging the device, keep it away from heat and combustible materials, and follow the manufacturer's safety and service guidance. Do not puncture, compress or attempt amateur removal.
           </p>
         </div>
       </section>
