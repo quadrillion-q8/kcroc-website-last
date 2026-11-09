@@ -79,6 +79,7 @@ const shouldShowAnimatedBackground = (pathname: string): boolean => {
 export const RootLayout: React.FC = () => {
   const { pathname } = useLocation();
   const isGlobalEditorialArticle = pathname === '/blog/why-8gb-ram-is-no-longer-enough-for-windows-11' || pathname === '/blog/why-is-my-laptop-so-slow';
+  const hideConversionActions = isGlobalEditorialArticle || pathname === '/guides/bios-uefi-recovery-kuwait';
   const isArabicRoute = pathname === '/ar' || pathname.startsWith('/ar/') || pathname.startsWith('/blog/ar/') || pathname.startsWith('/guides/ar/');
   const showAnimatedBackground = shouldShowAnimatedBackground(pathname);
   const [decorativeBackgroundReady, setDecorativeBackgroundReady] = useState(false);
@@ -154,7 +155,7 @@ export const RootLayout: React.FC = () => {
               location pages, blog posts — has a reachable conversion path
               on mobile. Spacer below prevents it from permanently covering
               the start of the Footer. */}
-          {!isGlobalEditorialArticle && (
+          {!hideConversionActions && (
             <>
               <StickyMobileCTA />
               <div className="kcroc-mobile-cta-spacer md:hidden shrink-0" style={{ height: 'calc(5.25rem + env(safe-area-inset-bottom))' }} aria-hidden="true" />

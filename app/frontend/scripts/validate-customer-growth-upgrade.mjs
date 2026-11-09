@@ -127,21 +127,46 @@ const biosGuideArEntityStart = graph.indexOf("    'guide-bios-uefi-ar': {");
 const biosGuideArEntityEnd = graph.indexOf("    'guide-laptop-buying-ar': {", biosGuideArEntityStart + 1);
 const biosGuideEnEntity = graph.slice(biosGuideEnEntityStart, biosGuideEnEntityEnd);
 const biosGuideArEntity = graph.slice(biosGuideArEntityStart, biosGuideArEntityEnd);
-add('BIOS/UEFI guides use global English and Arabic language targeting while keeping Kuwait-only repair conversion details',
+const biosFaqArray = biosGuideEnSource.match(/const faq = \[([\s\S]*?)\n\];/);
+const biosFaqCount = biosFaqArray ? (biosFaqArray[1].match(/\{ q:/g) || []).length : 0;
+const biosFeaturedFaqBlock = biosGuideEnEntity.match(/featuredFAQIds: \[([\s\S]*?)\]/);
+const biosFeaturedFaqCount = biosFeaturedFaqBlock ? (biosFeaturedFaqBlock[1].match(/'faq-bios-[^']+'/g) || []).length : 0;
+add('BIOS/UEFI English guide is globally targeted, preserves its indexed URL and pairs with the Arabic guide',
   biosGuideEnEntity.includes("locale: 'en'") &&
   biosGuideEnEntity.includes("'en': 'https://www.computerrepairkuwait.com/guides/bios-uefi-recovery-kuwait'") &&
   biosGuideEnEntity.includes("'ar': 'https://www.computerrepairkuwait.com/guides/ar/bios-uefi-recovery-kuwait'") &&
+  biosGuideEnEntity.includes("'x-default': 'https://www.computerrepairkuwait.com/guides/bios-uefi-recovery-kuwait'") &&
   !biosGuideEnEntity.includes('en-KW') && !biosGuideEnEntity.includes('ar-KW') &&
+  biosGuideEnEntity.includes("schemaTypes: ['TechArticle', 'FAQPage', 'BreadcrumbList']") &&
   biosGuideArEntity.includes("locale: 'ar'") &&
   biosGuideArEntity.includes("'en': 'https://www.computerrepairkuwait.com/guides/bios-uefi-recovery-kuwait'") &&
   biosGuideArEntity.includes("'ar': 'https://www.computerrepairkuwait.com/guides/ar/bios-uefi-recovery-kuwait'") &&
-  !biosGuideArEntity.includes('في الكويت') &&
-  biosGuideEnSource.includes('hrefLang="ar"') && !biosGuideEnSource.includes('hrefLang="ar-KW"') &&
-  biosGuideArSource.includes("htmlAttributes={{ lang: 'ar', dir: 'rtl' }}") &&
-  biosGuideArSource.includes('hrefLang="en"') && biosGuideArSource.includes('hrefLang="ar"') &&
-  biosGuideArSource.includes("inLanguage: 'ar'") && !biosGuideArSource.includes("inLanguage: 'ar-KW'") &&
-  biosGuideArSource.includes('20–40 د.ك') &&
-  biosGuideArSource.includes('استلام وتوصيل مجاني داخل الكويت'));
+  biosGuideEnSource.includes('hrefLang="ar"') &&
+  biosGuideArSource.includes('hrefLang="en"') &&
+  biosGuideArSource.includes('hrefLang="ar"'));
+add('BIOS/UEFI guide keeps all 18 FAQ answers in rendered page markup and all 18 FAQ IDs in graph-backed schema',
+  biosFaqCount === 18 &&
+  biosFeaturedFaqCount === 18 &&
+  biosGuideEnEntity.includes("'faq-bios-bitlocker-after-success'") &&
+  biosGuideEnEntity.includes("'faq-bios-intake-before-technician'") &&
+  graph.includes("'faq-bios-bitlocker-after-success'") &&
+  graph.includes("'faq-bios-intake-before-technician'") &&
+  biosGuideEnSource.includes('<p className="mt-3 pr-8 text-xs leading-6 text-slate-400 sm:text-sm">{item.a}</p>'));
+add('BIOS/UEFI English guide uses a global editorial header, footer and mobile layout without local conversion prompts',
+  header.includes("const isGlobalTechnicalGuide = location.pathname === '/guides/bios-uefi-recovery-kuwait'") &&
+  header.includes('hideConversionActions={hideConversionActions}') &&
+  mobileMenu.includes('hideConversionActions?: boolean') &&
+  mobileMenu.includes('{!hideConversionActions && (') &&
+  rootLayout.includes("pathname === '/guides/bios-uefi-recovery-kuwait'") &&
+  footer.includes("const isGlobalTechnicalGuide = location.pathname === '/guides/bios-uefi-recovery-kuwait'") &&
+  footer.includes('if (isGlobalEditorialArticle || isGlobalTechnicalGuide)'));
+add('BIOS/UEFI English guide removes Kuwait pricing and local-service anchors and includes the printable intake / hardware-escalation tools',
+  !/\bKWD\b|\bKuwait\b|\+965|wa\.me|repair in Kuwait|motherboard-repair-kuwait|laptop-repair-kuwait|pricing#/.test(biosGuideEnSource) &&
+  biosGuideEnSource.includes('Print / Save as PDF') &&
+  biosGuideEnSource.includes('Official support guidance') &&
+  biosGuideEnSource.includes('id="hardware-escalation"') &&
+  biosGuideEnSource.includes('id="pre-recovery-checklist"'));
+
 
 add('Laptop repair page has intent-matched symptom links to existing guides and services',
   graph.includes("symptomLinks: [") &&

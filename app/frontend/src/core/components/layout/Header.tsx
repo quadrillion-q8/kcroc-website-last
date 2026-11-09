@@ -43,18 +43,27 @@ export default function Header() {
   const location = useLocation();
   const isGlobalEditorialArticle = location.pathname === '/blog/why-8gb-ram-is-no-longer-enough-for-windows-11' || location.pathname === '/blog/why-is-my-laptop-so-slow';
   const isGlobalSlowLaptopGuide = location.pathname === '/blog/why-is-my-laptop-so-slow';
+  const isGlobalTechnicalGuide = location.pathname === '/guides/bios-uefi-recovery-kuwait';
+  const hideConversionActions = isGlobalEditorialArticle || isGlobalTechnicalGuide;
   const isArabicRoute = location.pathname === '/ar' || location.pathname.startsWith('/ar/') || location.pathname.startsWith('/blog/ar/') || location.pathname.startsWith('/guides/ar/');
   const { trackConversion } = useAnalytics();
   
   const baseNavModel = getLocalizedNavigation(location.pathname);
-  const navModel = location.pathname === '/blog/why-is-my-laptop-so-slow'
+  const navModel = isGlobalTechnicalGuide
     ? {
         ...baseNavModel,
         header: baseNavModel.header.filter((link) =>
-          !['nav_services', 'nav_problems', 'nav_brands', 'nav_pricing', 'nav_locations'].includes(link.id)
+          ['nav_blog', 'nav_news', 'nav_guides', 'nav_about', 'nav_gallery'].includes(link.id)
         ),
       }
-    : baseNavModel;
+    : location.pathname === '/blog/why-is-my-laptop-so-slow'
+      ? {
+          ...baseNavModel,
+          header: baseNavModel.header.filter((link) =>
+            !['nav_services', 'nav_problems', 'nav_brands', 'nav_pricing', 'nav_locations'].includes(link.id)
+          ),
+        }
+      : baseNavModel;
   const languageSwitch = getLanguageSwitchPath(location.pathname);
   
   const phoneDigits = NAV_GRAPH.business!.telephone.replace(/\D/g, '');
@@ -242,7 +251,7 @@ export default function Header() {
               >
                 {searchOpen ? <X size={18} aria-hidden="true" /> : <Search size={18} aria-hidden="true" />}
               </button>
-              {!isGlobalEditorialArticle && (
+              {!hideConversionActions && (
                 <>
                 <a href={`tel:+${cleanTel}`} onClick={() => trackConversion('phone_call_click', { cta_name: 'header_phone', button_position: 'header' })} className="flex min-h-12 min-w-12 items-center justify-center gap-2 rounded-md text-sm font-medium text-slate-700 transition-colors hover:text-blue-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600">
                   <Phone size={15} className="text-blue-600" aria-hidden="true" />
@@ -354,6 +363,7 @@ export default function Header() {
           cleanTel={cleanTel}
           phoneDisplay={phoneDisplay}
           triggerRef={mobileToggleRef}
+          hideConversionActions={isGlobalTechnicalGuide}
         />
       )}
 

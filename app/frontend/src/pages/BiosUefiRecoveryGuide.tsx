@@ -3,23 +3,17 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import {
-  AlertTriangle, ArrowRight, CheckCircle2, ChevronRight, Clock, Cpu,
+  AlertTriangle, ArrowRight, CheckCircle2, ChevronRight, Cpu,
   Database, FileWarning, GitBranch, HardDrive, HelpCircle, KeyRound,
-  Layers, Lock, Microscope, MessageCircle, Phone, ShieldCheck, Siren,
+  Layers, Lock, Microscope, ShieldCheck, Siren,
   Volume2, Wrench, Zap, XCircle
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import StickyTOC from '@/components/blog/StickyTOC';
 
-import { KCROC_GRAPH } from '../data/graph';
 import { SEOEngine } from '../core/components/SEOEngine';
 import { IMAGES } from '../constants/images';
 import { StandaloneRelatedLinks } from '@/components/content/StandaloneRelatedLinks';
-import { HeadTermCallout } from '@/components/content/HeadTermCallout';
-
-// Dynamic Business Data
-const business = KCROC_GRAPH.business!;
-const WA_LINK = `https://wa.me/${business.telephone}?text=${encodeURIComponent('My laptop or PC won’t boot after a BIOS update in Kuwait')}`;
 
 const sectionBadge = 'px-3 sm:px-4 py-1.5 text-[10px] sm:text-sm mb-3 sm:mb-4';
 
@@ -68,13 +62,14 @@ const warningSigns = [
 ];
 
 const manufacturerNotes = [
-  { brand: 'Dell', text: 'Dell provides BIOS Recovery features on many systems, with the exact recovery source and supported procedure depending on the model and generation. Confirm the current Dell documentation for the exact service tag/model before using a recovery file.', link: '/dell-laptop-repair-kuwait', linkLabel: 'Dell repair in Kuwait' },
-  { brand: 'HP', text: "HP notebooks commonly provide BIOS recovery features, but the supported key sequence, file handling and recovery path vary by model. HP Sure Start platforms use a different protected recovery architecture, so do not assume a generic USB/key-combination procedure applies.", link: '/hp-laptop-repair-kuwait', linkLabel: 'HP repair in Kuwait' },
-  { brand: 'Lenovo', text: 'Recovery behavior differs meaningfully between ThinkPad, IdeaPad, Legion and other Lenovo families. Always confirm the exact procedure for the specific model on Lenovo’s official support pages.', link: '/lenovo-laptop-repair-kuwait', linkLabel: 'Lenovo repair in Kuwait' },
-  { brand: 'ASUS', text: 'ASUS boards generally use one of two mechanisms: CrashFree BIOS 3 (automatic recovery from a USB drive) or USB BIOS FlashBack on higher-end boards, which reflashes using standby power alone — no CPU or RAM required.', link: '/asus-laptop-repair-kuwait', linkLabel: 'ASUS repair in Kuwait' },
-  { brand: 'Acer', text: "Acer firmware recovery procedures vary by model and platform generation. Use the manufacturer's model-specific instructions rather than a generic key combination.", link: '/acer-laptop-repair-kuwait', linkLabel: 'Acer repair in Kuwait' },
-  { brand: 'MSI / Gigabyte', text: 'Some MSI and Gigabyte desktop boards provide redundant firmware or dedicated flashback/recovery features, but this is not universal. Confirm whether the exact board has Dual BIOS, Flash BIOS Button/Q-Flash Plus, or another recovery mechanism before relying on it.', link: '/msi-laptop-repair-kuwait', linkLabel: 'MSI repair in Kuwait' },
-  { brand: 'Apple', text: 'Apple Silicon and Intel Macs use a fundamentally different architecture — recovery relies on DFU mode with Finder on a second Mac. The exact key sequence varies by chip generation, so always confirm on Apple’s current support page.', link: '/macbook-repair-kuwait', linkLabel: 'MacBook repair in Kuwait' },
+  { brand: 'Dell', method: 'Dell BIOS Recovery / BIOS Auto-Recovery on supported systems', trigger: 'Ctrl + Esc is documented for many supported models; exact recovery path depends on the model.', media: 'Some supported USB workflows use FAT32 and may require BIOS_IMG.rcv. Rename only when Dell’s exact model instructions require it.', caveat: 'Confirm by full model or Service Tag and follow the documented AC/battery requirements.', sourceUrl: 'https://www.dell.com/support/kbdoc/en-us/000132453/how-to-recover-the-bios-on-a-dell-computer-or-tablet' },
+  { brand: 'HP', method: 'HP BIOS Recovery; HP Sure Start on selected business systems', trigger: 'Win + B, and on some documented models Win + V; follow exact product-number instructions.', media: 'Use the HP BIOS package and supported recovery-media creation workflow where available; no single filename is universal.', caveat: 'Sure Start uses protected automatic recovery. HP says manual key-combination and USB recovery methods are not supported on Sure Start systems.', sourceUrl: 'https://support.hp.com/ca-en/document/ish_3932413-2337994-16' },
+  { brand: 'Lenovo', method: 'Platform-specific BIOS recovery or self-recovery, where provided', trigger: 'ThinkPad, IdeaPad and Legion behavior differs; there is no universal key sequence for every Lenovo family.', media: 'Use the package and recovery instructions for the exact Machine Type Model and board revision. File format and USB requirements vary.', caveat: 'Verify that the exact system supports the proposed recovery method before preparing media.', sourceUrl: 'https://pcsupport.lenovo.com/' },
+  { brand: 'ASUS', method: 'CrashFree BIOS 3 or USB BIOS FlashBack on supported boards', trigger: 'CrashFree is model/board dependent. FlashBack requires the dedicated port and physical button on equipped boards.', media: 'Follow the board manual for USB format and port. Some FlashBack workflows use FAT16/32 media and BIOSRenamer to create the exact .CAP filename.', caveat: 'CrashFree and FlashBack are different mechanisms; do not assume CPU/RAM independence or identical filenames.', sourceUrl: 'https://www.asus.com/support/faq/1038568/' },
+  { brand: 'Acer', method: 'Model-specific firmware recovery, if supported', trigger: 'Key combinations and crisis behavior vary by platform generation; verify the exact product service documentation.', media: 'Use only the official package for the complete model identifier and documented recovery-media layout.', caveat: 'Do not assume Fn + Esc, a particular .fd filename or a black-screen write sequence is universal.', sourceUrl: 'https://www.acer.com/support' },
+  { brand: 'MSI', method: 'Flash BIOS Button on equipped motherboards', trigger: 'Use the dedicated rear-I/O port and physical button only when the exact board supports this feature.', media: 'MSI documents MSI.ROM on supported Flash BIOS Button models. Check the exact manual for the required USB format and port.', caveat: 'Do not assume the button, filename or procedure exists on every MSI board.', sourceUrl: 'https://us.msi.com/support/technical_details/MB_Flash_BIOS_Button' },
+  { brand: 'Gigabyte', method: 'Q-Flash Plus on equipped motherboards', trigger: 'Use the dedicated port and Q-Flash Plus button only when the exact board supports the feature.', media: 'Gigabyte documents gigabyte.bin for supported Q-Flash Plus boards. Confirm the USB layout and filename in the exact board manual.', caveat: 'Q-Flash Plus is not the same as the regular in-UEFI Q-Flash utility and is not present on every board.', sourceUrl: 'https://www.gigabyte.com/FileUpload/Global/KeyFeature/3701/index.html' },
+  { brand: 'Apple', method: 'Apple firmware Revive or Restore through DFU mode on supported Macs', trigger: 'A second Mac, suitable USB-C data cable and model-specific DFU port/sequence may be required.', media: 'Use Finder or Apple Configurator as directed by Apple. Attempt Revive first when appropriate; Restore erases the target Mac.', caveat: 'Apple Silicon and T2 Macs do not follow PC BIOS/UEFI crisis-USB or generic SPI recovery instructions.', sourceUrl: 'https://support.apple.com/en-ae/108900' },
 ];
 
 const recoveryLevels = [
@@ -138,17 +133,21 @@ const faq = [
 ];
 
 const toc = [
+  { id: 'symptom-matcher', label: 'Symptom Matcher' },
   { id: 'updates', label: 'Before You Flash' },
   { id: 'warning-signs', label: 'Warning Signs' },
   { id: 'firmware-vs-hardware', label: 'Firmware vs Hardware' },
-  { id: 'recovery-intake', label: 'Recovery Intake' },
-  { id: 'security-layer', label: 'BitLocker & TPM' },
-  { id: 'manufacturers', label: 'By Manufacturer' },
-  { id: 'spi-recovery', label: 'SPI Recovery' },
-  { id: 'faq', label: 'FAQ' },
+  { id: 'recovery-intake', label: 'Pre-Recovery Intake' },
+  { id: 'manufacturers', label: 'OEM Recovery Matrix' },
+  { id: 'spi-recovery', label: 'SPI Programming' },
+  { id: 'security-layer', label: 'TPM & BitLocker' },
+  { id: 'post-codes', label: 'POST Codes' },
+  { id: 'hardware-escalation', label: 'Hardware Escalation Gate' },
+  { id: 'pre-recovery-checklist', label: 'Printable Checklist' },
+  { id: 'faq', label: '18 FAQs' },
 ];
 
-const LAST_REVIEWED = 'October 5, 2026';
+const LAST_REVIEWED = 'November 9, 2026';
 
 export default function BiosUefiRecoveryGuide() {
   return (
@@ -181,10 +180,10 @@ export default function BiosUefiRecoveryGuide() {
               </p>
               <div className="mt-6 flex flex-col gap-3 sm:flex-row">
                 <Button size="lg" asChild className="w-full bg-cyan-500 px-6 py-6 font-bold text-slate-950 hover:bg-cyan-400 sm:w-auto">
-                  <a href={`tel:+${business.telephone}`}>Book a Diagnostic</a>
+                  <a href="#symptom-matcher">Jump to Diagnostic Matrix</a>
                 </Button>
                 <Button size="lg" variant="outline" asChild className="w-full border-slate-700 px-6 py-6 text-slate-200 hover:bg-slate-800 sm:w-auto">
-                  <a href={WA_LINK} target="_blank" rel="noopener noreferrer">WhatsApp a Technician</a>
+                  <a href="#manufacturers">OEM Recovery Table</a>
                 </Button>
               </div>
               <div className="mt-6 flex flex-wrap gap-2">
@@ -243,7 +242,7 @@ export default function BiosUefiRecoveryGuide() {
       </section>
 
       {/* ─── DECISION TREE ─── */}
-      <section id="decision-tree" className="scroll-mt-20 border-b border-slate-800/80 bg-slate-900/40 px-4 py-10 sm:px-6 sm:py-16">
+      <section id="symptom-matcher" className="scroll-mt-20 border-b border-slate-800/80 bg-slate-900/40 px-4 py-10 sm:px-6 sm:py-16">
         <div className="container mx-auto max-w-5xl">
           <div className="mb-7 max-w-3xl">
             <Badge className="mb-3 border-cyan-500/30 bg-cyan-500/10 text-cyan-300">Start here</Badge>
@@ -616,30 +615,33 @@ export default function BiosUefiRecoveryGuide() {
         </div>
       </section>
 
-      {/* ─── MANUFACTURERS ─── */}
+      {/* ─── OEM RECOVERY MATRIX ─── */}
       <section id="manufacturers" className="scroll-mt-20 py-8 sm:py-20 px-4 sm:px-6 border-t border-slate-900">
-        <div className="container mx-auto max-w-5xl">
-          <div className="text-center mb-8 sm:mb-12">
-            <Badge className={`bg-emerald-500/20 text-emerald-300 border-emerald-500/30 ${sectionBadge}`}>
-              Manufacturer Recovery
-            </Badge>
-            <h2 className="text-2xl sm:text-4xl font-bold text-white">Recovery Methods Differ by Manufacturer</h2>
-            <p className="text-slate-300 text-xs sm:text-base max-w-2xl mx-auto leading-relaxed mt-3">
-              General orientation only — every procedure is model/generation-dependent and OEMs revise them over time. Always confirm on the manufacturer's current support page before attempting recovery.
-            </p>
+        <div className="container mx-auto max-w-6xl">
+          <div className="mb-8 sm:mb-10">
+            <Badge className={`bg-emerald-500/20 text-emerald-300 border-emerald-500/30 ${sectionBadge}`}>OEM recovery reference</Badge>
+            <h2 className="text-2xl sm:text-4xl font-bold text-white">Built-In BIOS &amp; Firmware Recovery by Manufacturer</h2>
+            <p className="mt-3 max-w-3xl text-slate-300 text-xs sm:text-base leading-relaxed">This is an orientation table, not a substitute for the service manual. Recovery support, hotkeys, filenames, partition layout and power prerequisites vary by exact model and firmware generation. Confirm current OEM instructions before preparing recovery media.</p>
           </div>
-
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {manufacturerNotes.map((item) => (
-              <div key={item.brand} className="border border-slate-800 rounded-xl p-4 sm:p-5 bg-brand-dark/40">
-                <h3 className="text-white font-bold text-sm sm:text-base mb-2">{item.brand}</h3>
-                <p className="text-slate-400 text-xs sm:text-sm leading-relaxed mb-3">{item.text}</p>
-                <Link to={item.link} className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-cyan-300 hover:text-cyan-200">
-                  {item.linkLabel} <ChevronRight className="w-3.5 h-3.5" aria-hidden="true" />
-                </Link>
-              </div>
-            ))}
+          <div className="overflow-x-auto rounded-2xl border border-slate-800">
+            <table className="w-full min-w-[900px] border-collapse text-left">
+              <thead className="bg-slate-900/80 text-[11px] uppercase tracking-wider text-slate-400">
+                <tr><th scope="col" className="px-4 py-4">Platform</th><th scope="col" className="px-4 py-4">Recovery mechanism</th><th scope="col" className="px-4 py-4">Trigger / entry path</th><th scope="col" className="px-4 py-4">USB / package notes</th><th scope="col" className="px-4 py-4">Limitation</th></tr>
+              </thead>
+              <tbody className="divide-y divide-slate-800 text-xs sm:text-sm">
+                {manufacturerNotes.map((item) => (
+                  <tr key={item.brand} className="align-top even:bg-slate-900/20">
+                    <th scope="row" className="whitespace-nowrap px-4 py-4 font-bold text-white">{item.brand}</th>
+                    <td className="px-4 py-4 leading-6 text-slate-300">{item.method}</td>
+                    <td className="px-4 py-4 leading-6 text-slate-300">{item.trigger}</td>
+                    <td className="px-4 py-4 leading-6 text-slate-300">{item.media}</td>
+                    <td className="px-4 py-4 leading-6 text-slate-400"><p>{item.caveat}</p><a href={item.sourceUrl} target="_blank" rel="noopener noreferrer" className="mt-2 inline-flex items-center gap-1 font-semibold text-cyan-300 underline decoration-cyan-500/30 underline-offset-4 hover:text-cyan-200">Official support guidance <ArrowRight className="h-3 w-3" aria-hidden="true" /></a></td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
+          <p className="mt-4 text-xs leading-6 text-slate-500">USB format and filename are not universal standards. FAT32, MBR partitioning and a particular filename should be used only when the matching OEM or motherboard manual specifies them. A recovery file for a related model is not a safe substitute.</p>
         </div>
       </section>
 
@@ -908,88 +910,123 @@ export default function BiosUefiRecoveryGuide() {
 
 
 
-      <div className="container mx-auto max-w-4xl px-4 sm:px-6">
-        <HeadTermCallout lead="If your device still will not boot after a BIOS or UEFI update," placement="BiosUefiRecoveryGuide" />
-      </div>
+      
 
       <StandaloneRelatedLinks
-        title="BIOS recovery: related diagnostic paths"
-        intro="Firmware failures can resemble power, POST, Windows, or motherboard faults. Use the path that matches the actual symptom."
+        title="Related technical guides"
+        intro="Continue with the diagnostic topic that matches the stage where the system fails."
         links={[
-          { href: '/windows-wont-boot-kuwait', label: "Windows Won't Boot", description: 'Use this path when firmware setup works but Windows cannot complete startup.' },
-          { href: '/blue-screen-of-death-bsod-fix-kuwait', label: 'BSOD Diagnostic', description: 'Follow the Windows crash path when the system reaches Windows but repeatedly blue-screens.' },
-          { href: '/laptop-wont-turn-on', label: "Laptop Won't Turn On", description: 'Separate a true no-power condition from a firmware or POST failure.' },
-          { href: '/motherboard-repair-kuwait', label: 'Motherboard Repair Kuwait', description: 'For board-level diagnosis when recovery attempts do not explain the failure.' },
-          { href: '/guides/bitlocker-recovery-key-after-bios-update', label: 'BitLocker Recovery Key After a BIOS Update', description: 'Why the blue recovery screen appears after a firmware update, where to find the key and how to avoid it.' },
+          { href: '/guides/bitlocker-recovery-key-after-bios-update', label: 'BitLocker Recovery After a Firmware Update', description: 'Understand TPM measurements, recovery-key prompts and safe preparation before firmware changes.' },
+          { href: '/guides/why-is-my-laptop-so-hot', label: 'Thermal & Stability Diagnosis', description: 'Check thermal instability before attempting firmware maintenance or a long recovery procedure.' },
+          { href: '/guides/laptop-battery-warning-signs', label: 'Battery Health & Power Stability', description: 'Recognize battery and power-delivery issues that can interrupt a firmware update.' },
         ]}
       />
 
-      {/* ─── COST & TIME ─── */}
+      {/* ─── RECOVERY COMPLEXITY MATRIX ─── */}
       <section className="py-8 sm:py-16 px-4 sm:px-6 bg-slate-900/30 border-t border-slate-900">
-        <div className="container mx-auto max-w-4xl">
-          <h2 className="text-xl sm:text-3xl font-bold text-white mb-6 sm:mb-8">Cost &amp; Time Expectations</h2>
-          <div className="rounded-2xl border border-slate-800 bg-brand-dark/50 p-5 sm:p-6 flex gap-4">
-            <Clock className="mt-1 h-5 w-5 shrink-0 text-cyan-400" aria-hidden="true" />
-            <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
-              KCROC's published BIOS / Firmware Recovery price range is <strong className="text-white">20–40 KWD</strong>. The final quote depends on the exact model, board revision, firmware devices involved and diagnostic findings; the initial assessment is free, and no paid work begins before you approve the quote. A straightforward reprogramming job may be completed the same day, while cases involving board-level diagnosis, multiple firmware devices, EC firmware or an underlying hardware fault can take 24–48 hours or longer. See{' '}
-              <Link to="/pricing#pricing-diagnostics" className="text-cyan-300 underline hover:text-cyan-200">published pricing</Link>{' '}
-              for the full service list.
-            </p>
+        <div className="container mx-auto max-w-5xl">
+          <div className="mb-7 max-w-3xl">
+            <Badge className={`bg-cyan-500/20 text-cyan-300 border-cyan-500/30 ${sectionBadge}`}>Intervention scope</Badge>
+            <h2 className="text-xl sm:text-3xl font-bold text-white">Firmware Recovery Complexity &amp; Turnaround Factors</h2>
+            <p className="mt-3 text-slate-400 text-xs sm:text-sm leading-relaxed">There is no reliable worldwide price or fixed turnaround for firmware recovery. Platform access, chip package, board condition, firmware-region layout and verification requirements determine the actual scope.</p>
           </div>
+          <div className="grid gap-4 md:grid-cols-2">
+            {[
+              { tier: 'Tier 1 · OEM USB / FlashBack', scope: 'Model-supported recovery capsule or independent motherboard FlashBack controller.', tools: 'A second computer, verified OEM package and only the USB format/media specified by the manufacturer.', verify: 'Confirm the documented recovery indicator completes, then verify POST, firmware setup and normal boot.' },
+              { tier: 'Tier 2 · In-circuit SPI / EEPROM', scope: 'Read or program the firmware device while soldered to the board, only when bus and power conditions allow reliable access.', tools: 'Correct-voltage programmer, verified pinout, board isolation procedure and stable test connections.', verify: 'Take repeatable original reads, compare hashes, confirm the intended image and perform read-back verification.' },
+              { tier: 'Tier 3 · Chip removal / package-level work', scope: 'Off-board programming when in-circuit access is unreliable, the device is electrically damaged or package access prevents a sound connection.', tools: 'Controlled rework equipment, correct adapter/socket and package-specific handling for SOIC, WSON or other supported packages.', verify: 'Preserve the original dump and machine-specific data; validate chip identity, voltage, image layout, solder joints and POST after refitting.' },
+              { tier: 'Tier 4 · Board-level fault isolation', scope: 'Escalate beyond firmware when power sequencing, memory initialization or the security-controller path is not healthy.', tools: 'Current-limited bench supply, multimeter, oscilloscope, thermal inspection and model-appropriate board documentation.', verify: 'Check standby and sequenced rails, shorts, EC/Super I/O behavior, reset/clock conditions and memory/CPU/PCH evidence before another firmware write.' }
+            ].map((item) => (
+              <article key={item.tier} className="rounded-xl border border-slate-800 bg-brand-dark/50 p-5 sm:p-6">
+                <h3 className="text-white font-bold text-sm sm:text-base">{item.tier}</h3>
+                <p className="mt-2 text-slate-300 text-xs sm:text-sm leading-relaxed">{item.scope}</p>
+                <p className="mt-3 text-xs leading-6 text-slate-400"><strong className="text-cyan-300">Typical tools:</strong> {item.tools}</p>
+                <p className="mt-2 text-xs leading-6 text-slate-400"><strong className="text-emerald-300">Verification:</strong> {item.verify}</p>
+              </article>
+            ))}
+          </div>
+          <p className="mt-5 rounded-xl border border-amber-500/20 bg-amber-500/[0.04] p-4 text-xs leading-6 text-slate-300"><strong className="text-amber-300">Important:</strong> In-circuit programming is not automatically safe or reliable. A clip can produce unstable reads when another device drives the SPI bus or board circuitry loads the programmer. Confirm the chip datasheet and logic voltage (often 1.8 V or 3.3 V), isolate the relevant power path as required, and move to off-board programming when isolation cannot be verified. WSON removal and BGA rework are specialist operations, not default steps for every recovery.</p>
         </div>
       </section>
 
-      {/* ─── KUWAIT-SPECIFIC GUIDANCE ─── */}
+      {/* ─── ENVIRONMENTAL & ELECTRICAL PRECAUTIONS ─── */}
       <section className="py-8 sm:py-16 px-4 sm:px-6 border-t border-slate-900 bg-slate-900/20">
         <div className="container mx-auto max-w-4xl">
           <div className="mb-6 max-w-3xl">
-            <Badge className={`bg-orange-500/20 text-orange-300 border-orange-500/30 ${sectionBadge}`}>Kuwait Practical Guidance</Badge>
-            <h2 className="text-xl sm:text-3xl font-bold text-white">BIOS Update Precautions for Kuwait</h2>
-            <p className="mt-3 text-slate-400 text-xs sm:text-sm leading-relaxed">
-              The firmware itself is not “more fragile” because a computer is in Kuwait, but the conditions around the update still matter. A firmware write should be treated as a controlled operation, especially when the machine is exposed to unstable power, battery limitations or thermal stress.
-            </p>
+            <Badge className={`bg-orange-500/20 text-orange-300 border-orange-500/30 ${sectionBadge}`}>Before the firmware write</Badge>
+            <h2 className="text-xl sm:text-3xl font-bold text-white">Environmental &amp; Electrical Precautions Before Flashing Firmware</h2>
+            <p className="mt-3 text-slate-400 text-xs sm:text-sm leading-relaxed">Treat a firmware update as a controlled write operation. Remove avoidable power, thermal and configuration instability first; follow the exact OEM requirements rather than assuming one battery percentage or power arrangement applies to every device.</p>
           </div>
-          <div className="grid gap-3 sm:grid-cols-3">
+          <div className="grid gap-3 sm:grid-cols-2">
             {[
-              ['Stable power', 'Use reliable AC power and follow the manufacturer’s battery/charger requirements. Avoid starting a firmware update when power interruption is a realistic risk.'],
-              ['Thermal stability', 'Do not update a machine that is already shutting down from overheating or has a known cooling fault. Fix the stability problem first.'],
-              ['No unnecessary changes', 'Do not combine a firmware update with random BIOS settings, RAM swaps or multiple firmware files. Change one variable at a time so the failure remains diagnosable.'],
+              ['Stable AC and battery condition', 'Use the correct OEM adapter and a healthy, adequately charged battery where the manufacturer requires one. Avoid flashing through a loose connector, unstable power source or known battery fault. On desktops, a suitable UPS can reduce interruption risk; it does not replace a stable supply or correct procedure.'],
+              ['Thermal and VRM stability', 'Do not begin a firmware write while the system is overheating, shutting down under load or showing unstable power delivery. Resolve known cooling or VRM faults first; do not use a firmware update as a trial fix for hardware instability.'],
+              ['Memory at a known-stable setting', 'If the platform is unstable with XMP/EXPO or manual memory tuning, return memory to a supported baseline before updating. A crash during package preparation or firmware staging can interrupt the operation.'],
+              ['One change at a time', 'Do not combine a firmware update with a RAM/SSD swap, controller-mode change, overclock adjustment and OS reinstall. Record current settings and change only the variable needed for the update.']
             ].map(([title, text]) => (
-              <div key={title} className="rounded-xl border border-slate-800 bg-brand-dark/50 p-4 sm:p-5">
+              <article key={title} className="rounded-xl border border-slate-800 bg-brand-dark/50 p-4 sm:p-5">
                 <h3 className="text-white font-bold text-sm sm:text-base">{title}</h3>
                 <p className="mt-1.5 text-slate-400 text-xs sm:text-sm leading-relaxed">{text}</p>
-              </div>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ─── KUWAIT CTA ─── */}
-      <section className="py-8 sm:py-16 px-4 sm:px-6 border-t border-slate-900">
-        <div className="container mx-auto max-w-4xl">
-          <div className="rounded-2xl border border-slate-800 bg-brand-dark/50 p-6 sm:p-10">
-            <Badge className="mb-4 border-cyan-500/30 bg-cyan-500/10 text-cyan-300">BIOS &amp; Motherboard Recovery in Kuwait</Badge>
-            <h2 className="text-2xl sm:text-4xl font-bold text-white mb-3">Laptop or Motherboard Stopped Booting After a BIOS Update?</h2>
-            <p className="text-slate-300 text-xs sm:text-base leading-relaxed mb-6 max-w-2xl">
-              Don't keep trying random firmware files. KCROC can diagnose whether the failure is firmware-related or caused by a physical{' '}
-              <Link to="/motherboard-repair-kuwait" className="text-cyan-300 underline hover:text-cyan-200">motherboard</Link>{' '}
-              fault, then determine whether professional BIOS programming is appropriate.
-            </p>
-            <div className="flex flex-col gap-3 sm:flex-row">
-              <Button size="lg" asChild className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold w-full sm:w-auto">
-                <a href={`tel:+${business.telephone}`}>
-                  <Phone className="w-4 h-4 sm:w-5 sm:h-5 mr-2" aria-hidden="true" />
-                  Book a BIOS Diagnostic
-                </a>
-              </Button>
-              <Button size="lg" variant="outline" asChild className="border-slate-700 text-slate-200 hover:bg-slate-800/60 w-full sm:w-auto">
-                <a href={WA_LINK} target="_blank" rel="noopener noreferrer">
-                  <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 mr-2" aria-hidden="true" />
-                  WhatsApp a Technician
-                </a>
-              </Button>
-            </div>
+      {/* ─── HARDWARE ESCALATION GATE ─── */}
+      <section id="hardware-escalation" className="scroll-mt-20 py-8 sm:py-16 px-4 sm:px-6 border-t border-slate-900">
+        <div className="container mx-auto max-w-5xl">
+          <div className="mb-7 max-w-3xl">
+            <Badge className={`bg-indigo-500/20 text-indigo-300 border-indigo-500/30 ${sectionBadge}`}>Decision gate</Badge>
+            <h2 className="text-xl sm:text-3xl font-bold text-white">When to Move from USB Recovery to Hardware Diagnosis</h2>
+            <p className="mt-3 text-slate-400 text-xs sm:text-sm leading-relaxed">A failed USB attempt does not automatically mean the chip must be desoldered. Escalate in a controlled order so a firmware fault is not confused with a power, memory or controller fault.</p>
           </div>
+          <ol className="space-y-3">
+            {[
+              ['Confirm the recovery method is supported', 'Check the full model identifier, board revision, recovery feature, required key sequence, image source, filename, USB layout and power prerequisites against current OEM documentation.'],
+              ['Stop repeated attempts when the documented method fails', 'Do not rotate through donor files, similar-model packages or undocumented hotkeys. Record LED, beep, USB activity and the exact point where the procedure stopped.'],
+              ['Check whether the board can execute early initialization', 'Verify standby power and the documented power sequence; inspect for shorts, missing rails, failed RAM initialization, reset/clock problems or EC/Super I/O faults before treating the SPI image as the only suspect.'],
+              ['Preserve the original firmware before programming', 'Identify every relevant flash device, verify datasheet voltage and pinout, obtain repeatable original reads when possible, and protect DMI/SMBIOS, UUID, network identifiers and platform-specific data.'],
+              ['Choose in-circuit or off-board programming from evidence', 'Use in-circuit access only when the bus can be isolated and reads are stable. If bus contention, power loading, chip damage or package access prevents reliable work, use a suitable off-board adapter and controlled rework.'],
+              ['Reconstruct only what the platform requires', 'Do not assume every system needs a generic “clean ME” operation. Intel CSME, AMD PSP, EC and other regions are platform-specific; use a verified image and documented process for the exact board and firmware generation.'],
+              ['Verify beyond the first splash screen', 'Confirm POST, memory initialization, firmware setup, TPM/Secure Boot state, storage-controller mode, OS boot and stable operation. Keep the original dump and recovery notes with the repair record.']
+            ].map(([title, text], index) => (
+              <li key={title} className="flex gap-4 rounded-xl border border-slate-800 bg-brand-dark/50 p-4 sm:p-5">
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-indigo-500/15 text-sm font-bold text-indigo-300">{index + 1}</span>
+                <div><h3 className="text-white font-bold text-sm sm:text-base">{title}</h3><p className="mt-1.5 text-slate-400 text-xs sm:text-sm leading-relaxed">{text}</p></div>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      {/* ─── PRINTABLE PRE-RECOVERY CHECKLIST ─── */}
+      <section id="pre-recovery-checklist" className="scroll-mt-20 py-8 sm:py-16 px-4 sm:px-6 border-t border-slate-900 bg-slate-900/30">
+        <div className="mx-auto max-w-4xl rounded-2xl border border-slate-800 bg-brand-dark/60 p-5 sm:p-8 print:border-0 print:bg-white print:p-0 print:text-black">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+            <div>
+              <Badge className={`bg-cyan-500/20 text-cyan-300 border-cyan-500/30 ${sectionBadge} print:hidden`}>Keep with the device</Badge>
+              <h2 className="text-xl sm:text-3xl font-bold text-white print:text-black">Pre-Recovery Intake Checklist</h2>
+              <p className="mt-2 text-xs sm:text-sm leading-relaxed text-slate-400 print:text-gray-700">Record the facts before any recovery image is written or any flash device is removed.</p>
+            </div>
+            <Button type="button" size="lg" variant="outline" className="border-slate-700 text-slate-200 hover:bg-slate-800 print:hidden" onClick={() => window.print()}>Print / Save as PDF</Button>
+          </div>
+          <div className="mt-6 grid gap-x-8 gap-y-5 sm:grid-cols-2">
+            {([
+              ['Device identity', ['Manufacturer and full model / product number', 'Motherboard ID and PCB revision (if known)', 'CPU/platform generation and discrete-GPU variant']],
+              ['Firmware event', ['Previous BIOS/UEFI version and target version', 'Exact package filename and official source', 'Whether power was interrupted during erase/write or after completion']],
+              ['Observed behavior', ['Time allowed for first boot / memory training', 'POST code, beep sequence and diagnostic LED pattern', 'Fan, display, keyboard and USB activity']],
+              ['Security and storage', ['BitLocker/FileVault status and recovery-key availability', 'Secure Boot / TPM configuration before the event', 'VMD / RAID / AHCI setting before the event']],
+              ['Board and power evidence', ['AC adapter and battery condition', 'Known liquid, impact, surge or thermal event', 'Power-rail / current-draw measurements already taken']],
+              ['Data preservation', ['Original firmware package retained', 'Original SPI dump backed up where readable', 'Customer data and encryption credentials protected']]
+            ] as [string, string[]][]).map(([title, items]) => (
+              <div key={title}>
+                <h3 className="mb-2 border-b border-slate-800 pb-2 text-sm font-bold text-cyan-300 print:border-gray-400 print:text-black">{title}</h3>
+                <ul className="space-y-2">{items.map((item) => <li key={item} className="flex gap-2 text-xs leading-5 text-slate-300 print:text-black"><span aria-hidden="true" className="shrink-0 text-cyan-300 print:text-black">☐</span><span>{item}</span></li>)}</ul>
+              </div>
+            ))}
+          </div>
+          <p className="mt-6 border-t border-slate-800 pt-4 text-[11px] leading-5 text-slate-500 print:border-gray-400 print:text-gray-700">This checklist is a documentation aid, not a substitute for the manufacturer’s instructions or qualified electrical safety procedures.</p>
         </div>
       </section>
 
@@ -1018,63 +1055,13 @@ export default function BiosUefiRecoveryGuide() {
         </div>
       </section>
 
-      {/* ─── FINAL CTA ─── */}
-      <section className="py-8 sm:py-20 px-4 sm:px-6 border-t border-slate-900">
-        <div className="container mx-auto max-w-2xl text-center">
-          <h2 className="text-2xl sm:text-4xl font-bold text-white mb-2 sm:mb-3">Think Your BIOS Is Corrupted?</h2>
-          <p className="text-slate-300 text-xs sm:text-base mb-6 sm:mb-8">
-            Let a technician determine whether you're dealing with firmware corruption, memory training, power failure or another motherboard fault.
-          </p>
-
-          <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-slate-800 border border-slate-800 rounded-2xl overflow-hidden mb-6 sm:mb-8">
-            <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="p-4 sm:p-5 flex flex-col items-center gap-1.5 hover:bg-slate-900/60 transition-colors">
-              <Microscope className="w-5 h-5 text-cyan-400" aria-hidden="true" />
-              <span className="text-white font-semibold text-xs sm:text-sm">Run Diagnostic</span>
-              <span className="text-slate-500 text-[10px] sm:text-xs">Firmware vs hardware</span>
-            </a>
-            <Link to="/motherboard-repair-kuwait" className="p-4 sm:p-5 flex flex-col items-center gap-1.5 hover:bg-slate-900/60 transition-colors">
-              <Cpu className="w-5 h-5 text-emerald-400" aria-hidden="true" />
-              <span className="text-white font-semibold text-xs sm:text-sm">Motherboard Repair</span>
-              <span className="text-slate-500 text-[10px] sm:text-xs">Chip-level diagnostics</span>
-            </Link>
-            <Link to="/contact" className="p-4 sm:p-5 flex flex-col items-center gap-1.5 hover:bg-slate-900/60 transition-colors">
-              <MessageCircle className="w-5 h-5 text-orange-400" aria-hidden="true" />
-              <span className="text-white font-semibold text-xs sm:text-sm">Get Expert Help</span>
-              <span className="text-slate-500 text-[10px] sm:text-xs">Talk to support</span>
-            </Link>
-          </div>
-
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Button size="lg" asChild className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold w-full sm:w-auto">
-              <a href={WA_LINK} target="_blank" rel="noopener noreferrer">
-                <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 mr-2" aria-hidden="true" />
-                WhatsApp Us
-              </a>
-            </Button>
-            <Button size="lg" variant="outline" asChild className="border-slate-700 text-slate-200 hover:bg-slate-800/60 w-full sm:w-auto">
-              <a href={`tel:+${business.telephone}`}>
-                <Phone className="w-4 h-4 sm:w-5 sm:h-5 mr-2" aria-hidden="true" />
-                Call: +{business.telephone}
-              </a>
-            </Button>
-          </div>
-
-          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 mt-6 sm:mt-8 text-xs sm:text-sm">
-            <Link to="/guides/ar/bios-uefi-recovery-kuwait" hrefLang="ar" className="text-cyan-400 hover:text-cyan-300 inline-flex items-center gap-1.5 transition-colors">
-              اقرأ الدليل بالعربية
-            </Link>
-            <Link to="/motherboard-repair-kuwait" className="text-slate-400 hover:text-cyan-400 inline-flex items-center gap-1.5 transition-colors">
-              Motherboard Repair
-            </Link>
-            <Link to="/laptop-repair-kuwait" className="text-slate-400 hover:text-cyan-400 inline-flex items-center gap-1.5 transition-colors">
-              Laptop Repair
-            </Link>
-            <Link to="/gaming-pc-repair-kuwait" className="text-slate-400 hover:text-cyan-400 inline-flex items-center gap-1.5 transition-colors">
-              Gaming PC & GPU Repair
-            </Link>
-            <Link to="/services" className="text-slate-400 hover:text-cyan-400 inline-flex items-center gap-1.5 transition-colors">
-              View All Services
-            </Link>
+      {/* ─── EDITORIAL METHODOLOGY ─── */}
+      <section className="border-t border-slate-900 bg-brand-dark/60">
+        <div className="mx-auto max-w-4xl px-4 py-8 text-xs leading-6 text-slate-500 sm:px-6">
+          <p><strong className="text-slate-300">Recovery principle:</strong> identify the exact platform, preserve the original firmware, use the OEM-supported path first, and prove whether the failure is firmware or hardware before escalating to chip-level work.</p>
+          <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2">
+            <Link to="/guides" className="text-cyan-400 underline underline-offset-4 hover:text-cyan-300">More technical guides</Link>
+            <Link to="/guides/ar/bios-uefi-recovery-kuwait" hrefLang="ar" className="text-cyan-400 underline underline-offset-4 hover:text-cyan-300">Read the Arabic version</Link>
           </div>
         </div>
       </section>
@@ -1084,7 +1071,7 @@ export default function BiosUefiRecoveryGuide() {
         <div className="mx-auto max-w-4xl px-4 py-10 text-xs sm:text-sm text-slate-500 sm:px-6">
           <p>
             <strong className="text-slate-300">Last reviewed:</strong> {LAST_REVIEWED} by{' '}
-            <Link to="/author/imran" className="text-cyan-400 hover:text-cyan-300 underline">Imran Natiq</Link>, Hardware Repair Engineer, KCROC. Manufacturer-specific procedures (key combinations, file names, supported models) change over time — always confirm current steps on the manufacturer's own support page before attempting recovery.
+            <Link to="/author/imran" className="text-cyan-400 hover:text-cyan-300 underline">Imran Natiq</Link>, Hardware repair engineer. Manufacturer-specific procedures (key combinations, file names, supported models) change over time — always confirm current steps on the manufacturer's own support page before attempting recovery.
           </p>
         </div>
       </section>

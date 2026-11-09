@@ -75,10 +75,11 @@ interface MobileMenuProps {
   navModel: CompiledNavigationModel;
   cleanTel: string;
   phoneDisplay: string;
+  hideConversionActions?: boolean;
   triggerRef?: React.RefObject<HTMLButtonElement>;
 }
 
-export default function MobileMenu({ isOpen, onClose, mobileRef, navModel, cleanTel, phoneDisplay, triggerRef }: MobileMenuProps) {
+export default function MobileMenu({ isOpen, onClose, mobileRef, navModel, cleanTel, phoneDisplay, hideConversionActions = false, triggerRef }: MobileMenuProps) {
   const [openAccordion, setOpenAccordion] = useState<string | null>(null);
   const location = useLocation();
   const isArabicRoute = location.pathname === '/ar' || location.pathname.startsWith('/ar/') || location.pathname.startsWith('/blog/ar/') || location.pathname.startsWith('/guides/ar/');
@@ -189,6 +190,7 @@ export default function MobileMenu({ isOpen, onClose, mobileRef, navModel, clean
             </div>
           </div>
 
+          {!hideConversionActions && (
           <div className="mt-4 grid grid-cols-3 gap-2">
             <a
               href={`tel:+${cleanTel}`}
@@ -217,6 +219,7 @@ export default function MobileMenu({ isOpen, onClose, mobileRef, navModel, clean
               <span className="flex items-center justify-center gap-1.5"><CalendarCheck className="h-3.5 w-3.5" aria-hidden="true" /> {isArabicRoute ? "احجز" : "Book"}</span>
             </Link>
           </div>
+          )}
         </div>
 
         <div className="flex-1 overflow-y-auto overscroll-contain px-4 py-4 sm:px-5" style={{ WebkitOverflowScrolling: 'touch' }}>
@@ -353,6 +356,7 @@ export default function MobileMenu({ isOpen, onClose, mobileRef, navModel, clean
           </div>
         </div>
 
+        {!hideConversionActions && (
         <div className="shrink-0 border-t border-white/[0.08] bg-[#0b1012]/95 px-4 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-3 backdrop-blur-xl sm:px-5">
           <a
             href={mobileMenuWhatsAppLink}
@@ -368,6 +372,7 @@ export default function MobileMenu({ isOpen, onClose, mobileRef, navModel, clean
           </a>
           <p className="mt-2 text-center text-[10px] font-medium text-slate-600" dir={isArabicRoute ? "rtl" : undefined}>{phoneDisplay} · {isArabicRoute ? "استلام وتوصيل مجاني في الكويت" : "Free pickup & delivery across Kuwait"}</p>
         </div>
+        )}
       </div>
     </>
   );
