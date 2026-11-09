@@ -63,8 +63,8 @@ const getTopLevelBlogPost = (id) => {
   const marker = `"id": "${id}"`;
   const start = blogPosts.indexOf(marker);
   if (start < 0) return '';
-  const objectStart = blogPosts.lastIndexOf('\\n  {', start);
-  const objectEnd = blogPosts.indexOf('\\n  },', start);
+  const objectStart = blogPosts.lastIndexOf('\n  {', start);
+  const objectEnd = blogPosts.indexOf('\n  },', start);
   return objectStart >= 0 && objectEnd > start ? blogPosts.slice(objectStart, objectEnd + 5) : '';
 };
 const windowsServicesGuideEntry = getTopLevelBlogPost('guide-windows-11-background-services-audit-2026');
@@ -179,7 +179,7 @@ add('English Windows services/settings guides contain no Kuwait-local repair or 
   windowsServicesGuideEntry.includes('hot, dusty environments') &&
   windowsSettingsGuideEntry.includes("When Settings Changes Aren't Enough") &&
   windowsSettingsGuideEntry.includes('Review Windows Update history') &&
-  !/\\bKuwait\\b|\\bHawalli\\b|free pickup|No Fix, No Fee|Computer Repair Kuwait|wa\\.me|tel:\\+965/.test(windowsServicesGuideEntry) &&
+  !/\bKuwait\b|\bHawalli\b|free pickup|No Fix, No Fee|Computer Repair Kuwait|wa\.me|tel:\+965/.test(windowsServicesGuideEntry) &&
   !/\\bKuwait\\b|\\bHawalli\\b|free pickup|No Fix, No Fee|Computer Repair Kuwait|wa\\.me|tel:\\+965/.test(windowsSettingsGuideEntry) &&
   graph.includes('An evidence-led review of Windows 11 settings for privacy, startup, battery life, gaming and security'));
 add('BIOS/UEFI English guide removes Kuwait pricing and local-service anchors and includes the printable intake / hardware-escalation tools',
