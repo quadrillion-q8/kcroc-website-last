@@ -1141,7 +1141,7 @@ export const rawGraphData: RawGraphData = {
       entityType: 'WebPage',
       isActive: true,
       title: '18 Windows 11 Settings Worth Changing for Privacy, Speed & Better Control',
-      description: 'Review 18 Windows 11 settings for privacy, startup speed, battery life, gaming and security. Practical advice from KCROC computer technicians in Kuwait.',
+      description: 'An evidence-led review of Windows 11 settings for privacy, startup, battery life, gaming and security, with clear guidance on what each change does and its trade-offs.',
       seo: {
         title: '18 Windows 11 Settings to Change in 2026 | KCROC',
         description: 'Review 18 Windows 11 settings for privacy, startup, power, gaming and security. Practical technician guidance without unsafe “debloat” claims.',
