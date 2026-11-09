@@ -7,11 +7,9 @@ import {
 import { SEOEngine } from '../core/components/SEOEngine';
 import SchemaMarkup from '../components/seo/SchemaMarkup';
 import { KCROC_GRAPH } from '../data/graph';
-import { buildWhatsAppLink } from '../utils/whatsappIntent';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { StandaloneRelatedLinks } from '../components/content/StandaloneRelatedLinks';
 import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
 import { IMAGES } from '../constants/images';
 
 const GUIDE_PATH = '/guides/why-is-my-laptop-so-hot';
@@ -719,23 +717,13 @@ export default function LaptopOverheatingGuide() {
           <p className="mt-3 text-xs text-slate-500">Last reviewed September 30, 2026. Significant future technical changes should be reflected in the review date and structured data.</p>
         </section>
 
-        <section className="mt-16 rounded-2xl border border-cyan-500/20 bg-cyan-500/5 p-6 sm:p-8">
-          <h2 className="text-2xl font-semibold">Need a model-specific diagnosis?</h2>
+        <section className="mt-16 rounded-2xl border border-slate-800 bg-slate-900/60 p-6 sm:p-8">
+          <h2 className="text-2xl font-semibold">When a cooling fault needs hands-on inspection</h2>
           <p className="mt-3 max-w-3xl leading-7 text-slate-300">
-            If the universal checks point to a hardware cooling problem, the next step is to identify the
-            exact laptop model, reproduce the symptom, inspect the fan and heatsink, and test the cooling
-            path before replacing parts.
+            Stop stress-testing a device that repeatedly shuts down, smells of burning, has a swollen battery,
+            or makes grinding fan noises. Record the exact model, workload, observed temperatures, fan behavior
+            and shutdown pattern before consulting the manufacturer or a qualified repair professional.
           </p>
-          <div className="mt-6 flex flex-wrap gap-3">
-            <Button asChild className="bg-cyan-500 font-bold text-slate-950 hover:bg-cyan-400">
-              <a href={buildWhatsAppLink('Hi KCROC, my laptop is overheating and I need a diagnostic.')} target="_blank" rel="noopener noreferrer">
-                Book a KCROC diagnostic
-              </a>
-            </Button>
-            <Button asChild variant="outline" className="border-slate-600 text-white hover:bg-slate-800">
-              <Link to="/laptop-overheating-kuwait">Kuwait overheating service</Link>
-            </Button>
-          </div>
         </section>
 
         <StandaloneRelatedLinks
@@ -745,7 +733,6 @@ export default function LaptopOverheatingGuide() {
             { href: '/guides/dell-laptop-overheating', label: 'Dell laptop overheating guide', description: 'Model-family-specific troubleshooting and repair considerations for Dell laptops.' },
             { href: '/guides/laptop-battery-warning-signs', label: 'Laptop battery warning signs', description: 'Use this when heat is accompanied by swelling, charging changes or other battery symptoms.' },
             { href: '/guides/gamebar-presence-writer-fix', label: 'Windows gaming / Game Bar guide', description: 'Useful when heat and gaming stutter appear alongside Windows background activity.' },
-            { href: '/laptop-overheating-kuwait', label: 'Laptop overheating service in Kuwait', description: 'Local diagnostic and repair path for customers who need bench inspection.' },
           ]}
         />
 
