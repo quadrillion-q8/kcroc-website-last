@@ -20,6 +20,7 @@ import { KuwaitLocalCTA } from '@/components/content/KuwaitLocalCTA';
 import { HeadTermCallout } from '@/components/content/HeadTermCallout';
 import GamingPcDebugLedSelector from '@/components/content/GamingPcDebugLedSelector';
 import NoPowerQuickTriage from '@/components/content/NoPowerQuickTriage';
+import DLSS5BenchmarkExplorer from '@/components/content/DLSS5BenchmarkExplorer';
 
 // Single source of truth for business identity — see graph.ts 'biz-kcroc'.
 // (Previously duplicated via constants/data.ts's BUSINESS_INFO.)
@@ -702,7 +703,9 @@ const RichBlock: React.FC<{ block: ContentBlock; headingRef?: (el: HTMLElement |
       const ListTag = block.ordered ? 'ol' : 'ul';
       return (
         <ListTag className={`${block.ordered ? 'list-decimal' : 'list-disc'} pl-6 text-slate-300 leading-7 mb-7 space-y-2`}>
-          {block.items.map((item, i) => <li key={i}>{item}</li>)}
+          {block.items.filter((item) => typeof item === 'string' && item.trim().length > 0).map((item, i) => (
+            <li key={i}>{item}</li>
+          ))}
         </ListTag>
       );
     }
@@ -781,7 +784,7 @@ const RichBlock: React.FC<{ block: ContentBlock; headingRef?: (el: HTMLElement |
       return (
         <div className="my-10">
           {block.title && <h3 className="text-lg font-bold text-white mb-6">{block.title}</h3>}
-          <ol aria-label={block.title || 'Installation steps'} className="relative m-0 list-none border-l border-slate-800 pl-6 space-y-6">
+          <ol role="list" aria-label={block.title || 'Installation steps'} className="relative m-0 list-none border-l border-slate-800 pl-6 space-y-6">
             {block.steps.map((step, i) => (
               <li key={i} className="relative">
                 {block.numbered ? (
@@ -798,6 +801,8 @@ const RichBlock: React.FC<{ block: ContentBlock; headingRef?: (el: HTMLElement |
       );
     case 'debugLedSelector':
       return <GamingPcDebugLedSelector />;
+    case 'benchmarkExplorer':
+      return <DLSS5BenchmarkExplorer />;
     case 'code':
       return (
         <figure className="my-8 overflow-hidden rounded-2xl border border-slate-700 bg-slate-950">
@@ -1062,7 +1067,7 @@ export default function BlogPostTemplate() {
           "isPartOf": { "@id": `${business.websiteUrl}/#website` }
         },
         {
-          "@type": post.slug === "windows-11-26h2-iso-released"
+          "@type": ["windows-11-26h2-iso-released", "nvidia-dlss-5-neural-rendering-explained"].includes(post.slug)
             ? ["NewsArticle", "TechArticle"]
             : isNews ? "NewsArticle" : (isNoPowerGuide || post.slug === "gaming-pc-black-screen-no-display-kuwait" || post.slug === "why-8gb-ram-is-no-longer-enough-for-windows-11" || post.slug === "why-is-my-laptop-so-slow") ? "TechArticle" : isGuide ? "TechArticle" : ["BlogPosting", "Article"],
           "@id": `${pageUrl}#article`,
@@ -1098,6 +1103,21 @@ export default function BlogPostTemplate() {
               { "@type": "Thing", "name": "OEM laptop reset and diagnostic codes" },
               { "@type": "Thing", "name": "Motherboard power sequencing" },
               { "@type": "Thing", "name": "Component-level laptop repair" }
+            ]
+          } : {}),
+          ...(post.slug === "nvidia-dlss-5-neural-rendering-explained" ? {
+            "reviewedBy": {
+              "@type": "Person",
+              "@id": `${AUTHOR_URL}#person`,
+              "name": "Imran Natiq",
+              "jobTitle": "Hardware Repair Engineer"
+            },
+            "about": [
+              { "@type": "Thing", "name": "NVIDIA DLSS 5" },
+              { "@type": "Thing", "name": "3D-Guided Neural Rendering" },
+              { "@type": "Thing", "name": "GeForce RTX 50 Series" },
+              { "@type": "Thing", "name": "Hogwarts Legacy" },
+              { "@type": "Thing", "name": "GeForce Game Ready Driver 621.14" }
             ]
           } : {}),
           ...(post.slug === "ibm-quantum-system-two-nighthawk-r2-chicago" ? {
@@ -1149,7 +1169,7 @@ export default function BlogPostTemplate() {
                 "url": business.websiteUrl
               }
             } : { "@type": "Organization", "name": post.author },
-          "publisher": post.slug === "windows-11-26h2-iso-released"
+          "publisher": ["windows-11-26h2-iso-released", "nvidia-dlss-5-neural-rendering-explained"].includes(post.slug)
             ? { "@id": `${business.websiteUrl}/#business` }
             : {
               "@type": "Organization",
@@ -1170,6 +1190,21 @@ export default function BlogPostTemplate() {
             { "@type": "HowToStep", "position": 3, "name": "Allow memory training to complete", "text": "After a BIOS update, CMOS reset or memory-profile change, allow the manufacturer's documented memory-training process to finish before interrupting startup." },
             { "@type": "HowToStep", "position": 4, "name": "Inspect GPU seating and power safely", "text": "Shut down and disconnect AC power before checking GPU seating and power connectors. Stop using any visibly melted or heat-damaged connector." },
             { "@type": "HowToStep", "position": 5, "name": "Check firmware and boot-device status", "text": "Use only model-specific BIOS recovery instructions and check SSD detection and boot entries without formatting or reinstalling before considering data needs." }
+          ]
+        }] : []),
+        ...(post.slug === "nvidia-dlss-5-neural-rendering-explained" ? [{
+          "@type": "HowTo",
+          "@id": `${pageUrl}#howto`,
+          "name": "Enable DLSS 5 in Hogwarts Legacy on a supported PC",
+          "description": "Seven documented setup checks for enabling Neural Rendering on a supported RTX 50 Series PC in the patched Windows version of Hogwarts Legacy.",
+          "step": [
+            { "@type": "HowToStep", "position": 1, "name": "Confirm the GPU", "text": "Check Task Manager or NVIDIA System Information. Local DLSS 5 Neural Rendering requires a GeForce RTX 50 Series GPU." },
+            { "@type": "HowToStep", "position": 2, "name": "Install the November 5 game patch", "text": "Update Hogwarts Legacy through the PC launcher. The official patch notes state Neural Rendering is off by default." },
+            { "@type": "HowToStep", "position": 3, "name": "Update the graphics driver", "text": "Use a compatible GeForce Game Ready driver. Portkey Games lists version 616.64 or newer; 621.14 WHQL is the November 4, 2026 release." },
+            { "@type": "HowToStep", "position": 4, "name": "Open Display Settings", "text": "Open Game Settings, then Display Settings, and set Upscale Type to NVIDIA DLSS." },
+            { "@type": "HowToStep", "position": 5, "name": "Enable Neural Rendering", "text": "Turn Neural Rendering on. Portkey Games also documents Shift + Alt + B as a toggle when NVIDIA DLSS is selected." },
+            { "@type": "HowToStep", "position": 6, "name": "Configure the other DLSS features separately", "text": "Choose Super Resolution, Frame Generation or Multi Frame Generation, Reflex and Ray Reconstruction separately according to supported hardware and preference." },
+            { "@type": "HowToStep", "position": 7, "name": "Compare the same scene", "text": "Compare image quality and base FPS with Neural Rendering off and on. Turn it off again if its image-quality benefit does not justify the frame-time cost." }
           ]
         }] : []),
         {
@@ -1363,11 +1398,15 @@ export default function BlogPostTemplate() {
                         Imran Natiq
                       </Link>
                       <p className="text-sm text-slate-400 mt-1 leading-relaxed">
-                        {isGlobalEditorialArticle ? 'Hardware Repair Engineer and technical reviewer focused on computer hardware, software troubleshooting, performance, firmware and diagnostics.' : 'Hardware Repair Engineer at KCROC, focused on laptop thermal troubleshooting, hardware testing and component-level repair in Kuwait.'}
+                        {post.slug === 'nvidia-dlss-5-neural-rendering-explained'
+                          ? 'Hardware Repair Engineer at KCROC — focused on laptop thermal diagnostics, GPU load testing, and component-level motherboard repair at our ESD-safe laboratory in Hawalli, Kuwait.'
+                          : isGlobalEditorialArticle
+                            ? 'Hardware Repair Engineer and technical reviewer focused on computer hardware, software troubleshooting, performance, firmware and diagnostics.'
+                            : 'Hardware Repair Engineer at KCROC, focused on laptop thermal troubleshooting, hardware testing and component-level repair in Kuwait.'}
                       </p>
                       <p className="text-xs text-slate-500 mt-2">
                         Technical review: {isGlobalEditorialArticle
-                          ? getTechnicalReviewDateLabel(post, 'November 7, 2026')
+                          ? `${getTechnicalReviewDateLabel(post, 'November 7, 2026')}${post.slug === 'nvidia-dlss-5-neural-rendering-explained' ? ' · Hawalli, Kuwait' : ''}`
                           : `${getTechnicalReviewDateLabel(post, 'September 1, 2026')} · Hawalli, Kuwait`}
                       </p>
                     </div>
