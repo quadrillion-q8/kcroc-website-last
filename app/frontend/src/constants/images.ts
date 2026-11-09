@@ -4,7 +4,7 @@ export const IMAGES = {
   // --- GUIDES: BIOS/UEFI RECOVERY (sourced stock imagery, see images.ts comments for licenses) ---
   guides: {
     // Unsplash License \u2014 free for commercial use, no attribution required
-    biosHeroMotherboard: { src: "/images/guides/bios-recovery/bios-hero-motherboard.webp", alt: "Motherboard circuitry and firmware diagnostic bench in Kuwait", width: 1200, height: 630 },
+    biosHeroMotherboard: { src: "/images/guides/bios-recovery/bios-hero-motherboard.webp", alt: "Motherboard circuitry and firmware diagnostic bench", width: 1200, height: 630 },
     // Public Domain / CC0 (Wikimedia)
     legacyBiosScreen: { src: "/images/guides/bios-recovery/legacy-bios-screen.webp", alt: "Legacy 16-bit text-mode Award BIOS setup utility screen", width: 600, height: 400 },
     // CC BY-SA 3.0 \u2014 Photo: Tobias Maier (attribution required)
@@ -217,7 +217,7 @@ export const IMAGES = {
     asusMotherboardChipsetHeatsinkRepair: { src: "/images/asus-motherboard-chipset-heatsink-repair-kuwait-1000.webp", alt: "ASUS Motherboard Chipset Heatsink Repair Kuwait", width: 1000, height: 1000 },
     intelCpuPinsInspectionRepair: { src: "/images/intel-cpu-pins-inspection-repair-kuwait-1000.webp", alt: "Intel CPU Pins Inspection Repair Kuwait", width: 1000, height: 1000 },
     laptopMotherboardGpuChipLevelRepair: { src: "/images/laptop-motherboard-gpu-chip-level-repair-kuwait-1000.webp", alt: "Laptop Motherboard GPU Chip-Level Repair Kuwait", width: 1000, height: 1000 },
-    motherboardBiosFlashUpdateScreen: { src: "/images/motherboard-bios-flash-update-screen-kuwait-1000.webp", alt: "Motherboard BIOS Flash Update Screen Kuwait", width: 1000, height: 1000 },
+    motherboardBiosFlashUpdateScreen: { src: "/images/motherboard-bios-flash-update-screen-kuwait-1000.webp", alt: "Motherboard BIOS flash update screen", width: 1000, height: 1000 },
   },
 
   // --- HARDWARE MAINTENANCE ---
