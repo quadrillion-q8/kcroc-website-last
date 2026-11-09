@@ -5,7 +5,7 @@ import { StandaloneRelatedLinks } from '@/components/content/StandaloneRelatedLi
 import { Badge } from '@/components/ui/badge';
 import {
   Check, CheckCircle2, ChevronRight, CircleHelp, Copy, Gamepad2,
-  Gauge, MonitorCog, Power, RotateCcw, ShieldAlert, Terminal
+  Gauge, MonitorCog, Power, RotateCcw, ShieldAlert, Terminal, Thermometer
 } from 'lucide-react';
 import { SEOEngine } from '../core/components/SEOEngine';
 import { KCROC_GRAPH } from '../data/graph';
