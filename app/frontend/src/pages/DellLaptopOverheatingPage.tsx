@@ -5,28 +5,24 @@ import { Link } from 'react-router-dom';
 import { 
   AlertTriangle, CheckCircle2, XCircle, Thermometer, 
   HelpCircle, Wrench, ShieldAlert, Cpu, Fan, Wind, 
-  MessageCircle, Phone, MapPin, Shield, Laptop 
+  Shield, Laptop 
 } from 'lucide-react';
 
 import SchemaMarkup from '../components/seo/SchemaMarkup';
 import { KCROC_GRAPH } from '../data/graph';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
 import { StandaloneRelatedLinks } from '@/components/content/StandaloneRelatedLinks';
 
 export const DellLaptopOverheatingPage = () => {
   const business = KCROC_GRAPH.business!;
   const PAGE_URL = `${business.websiteUrl}/guides/dell-laptop-overheating`;
-  const PAGE_TITLE = 'Dell Laptop Overheating: Causes, Fixes & Repair | KCROC Kuwait';
-  const PAGE_DESCRIPTION = 'Is your Dell laptop overheating, shutting down, or running loud? Learn the common causes, safe fixes, thermal throttling signs, and when professional repair is needed in Kuwait.';
+  const PAGE_TITLE = 'Dell Laptop Overheating: Causes, Diagnostics & Safe Fixes | KCROC';
+  const PAGE_DESCRIPTION = 'Is your Dell laptop overheating, shutting down or running loud? Learn the common causes, safe checks, thermal-throttling signs and model-specific diagnostic considerations.';
   
-  const WA_LINK = `https://wa.me/${business.telephone}?text=${encodeURIComponent(
-    'Hi KCROC, my Dell laptop is overheating/shutting down and I need a diagnostic.'
-  )}`;
 
   const FAQS = [
-    { q: 'Why does my Dell laptop get so hot?', a: "Most commonly it's a combination of restricted airflow, dust buildup inside the cooling system, and CPU load. In Kuwait's climate, high ambient temperatures can add to the problem." },
+    { q: 'Why does my Dell laptop get so hot?', a: "Common causes include restricted airflow, dust buildup inside the cooling system, sustained CPU/GPU load, fan problems and model-specific cooling limitations. High ambient temperature can reduce thermal headroom in any environment." },
     { q: 'Why does my Dell laptop shut down when it gets hot?', a: 'A laptop may shut down automatically when temperatures become unsafe, as a protective measure. However, unexpected shutdowns can also have power, firmware, hardware, or other causes.' },
     { q: 'How do I stop my Dell laptop from overheating?', a: 'Start with the basics: use it on a hard, flat surface, keep the vents clear, and check Task Manager for processes using unusually high CPU. If temperatures stay high after that, the cooling system likely needs inspection.' },
     { q: 'Can dust cause a Dell laptop to overheat?', a: 'Yes. Dust restricts airflow through the heatsink and fan, which is one of the most common causes of overheating in laptops that have been used for a couple of years without internal cleaning.' },
@@ -39,7 +35,7 @@ export const DellLaptopOverheatingPage = () => {
     {
       '@context': 'https://schema.org',
       '@type': 'Article',
-      headline: 'Dell Laptop Overheating & Shutdown: Causes, Fixes & Repair Guide',
+      headline: 'Dell Laptop Overheating & Shutdown: Causes, Diagnostics & Safe Fixes',
       description: PAGE_DESCRIPTION,
       url: PAGE_URL,
       publisher: {
@@ -51,7 +47,7 @@ export const DellLaptopOverheatingPage = () => {
         '@type': 'Organization',
         name: business.legalName,
       },
-      inLanguage: 'en-KW',
+      inLanguage: 'en',
       mainEntityOfPage: { '@type': 'WebPage', '@id': PAGE_URL },
       articleSection: 'Laptop Repair Guides',
     },
@@ -151,7 +147,7 @@ export const DellLaptopOverheatingPage = () => {
             </span>
           </h1>
           <p className="text-sm sm:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed mb-8">
-            Is your Dell Inspiron running loud, burning hot, or randomly shutting off? Learn the common causes, safe DIY fixes, and when professional thermal repair is needed in Kuwait.
+            Is your Dell Inspiron running loud, getting unusually hot, or shutting down under load? Learn the common causes, safe checks and model-specific diagnostic steps.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold px-8 shadow-lg shadow-cyan-500/20" asChild>
@@ -217,7 +213,7 @@ export const DellLaptopOverheatingPage = () => {
                   "Restricted Airflow: Using the laptop on beds or blankets suffocates the intake.",
                   "Thermal-interface condition: Paste or pads can contribute to heat problems, but their condition should be assessed alongside airflow, fan operation and heatsink mounting.",
                   "Fan Problems: A worn or failing cooling fan stops moving enough air.",
-                  "High Ambient Temperature: Kuwait's summer heat reduces the available thermal headroom, so the same workload can produce higher temperatures than it would in a cooler room."
+                  "High Ambient Temperature: Elevated room temperature reduces available thermal headroom, so the same workload can produce higher temperatures than it would in a cooler environment."
                 ].map((cause, i) => (
                   <li key={i} className="flex items-start gap-3 text-slate-300 text-sm leading-relaxed">
                     <Wind className="w-4 h-4 text-cyan-400 flex-shrink-0 mt-1" />
@@ -334,47 +330,13 @@ export const DellLaptopOverheatingPage = () => {
           </section>
         </div>
 
-        {/* What KCROC Does */}
-        <section>
-          <div className="text-center mb-10">
-            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">Professional Thermal Repair Services</h2>
-            <p className="text-slate-400">How our Hawalli laboratory completely restores your laptop&apos;s cooling efficiency.</p>
-          </div>
-          <div className="grid sm:grid-cols-3 gap-6">
-            <Card className="bg-slate-900/40 border-slate-800">
-              <CardContent className="p-6 text-center">
-                <Thermometer className="w-8 h-8 text-cyan-400 mx-auto mb-4" />
-                <h3 className="text-lg font-bold text-white mb-2">Thermal Inspection</h3>
-                <p className="text-sm text-slate-400">We inspect temperature behavior, heatsink integrity, and component-level power draw to find the exact source of heat.</p>
-              </CardContent>
-            </Card>
-            <Card className="bg-slate-900/40 border-slate-800">
-              <CardContent className="p-6 text-center">
-                <Fan className="w-8 h-8 text-cyan-400 mx-auto mb-4" />
-                <h3 className="text-lg font-bold text-white mb-2">Fan Replacement</h3>
-                <p className="text-sm text-slate-400">We carefully extract the motherboard, test the fan bearing, and install an OEM-grade replacement if it is failing mechanically.</p>
-              </CardContent>
-            </Card>
-            <Card className="bg-slate-900/40 border-slate-800">
-              <CardContent className="p-6 text-center">
-                <Shield className="w-8 h-8 text-cyan-400 mx-auto mb-4" />
-                <h3 className="text-lg font-bold text-white mb-2">Deep Clean & Re-paste</h3>
-                <p className="text-sm text-slate-400">ESD-safe cleaning and thermal-interface service when testing shows that airflow or the thermal interface is contributing to the problem.</p>
-              </CardContent>
-            </Card>
-          </div>
-        </section>
-
-
         <StandaloneRelatedLinks
-          title="Dell overheating: related repair paths"
-          intro="If overheating is accompanied by shutdowns, board symptoms, or a model-specific repair need, continue through the most relevant KCROC destination."
+          title="Related technical troubleshooting guides"
+          intro="Use these guides to compare overlapping symptoms and choose the next diagnostic branch."
           links={[
-            { href: '/dell-laptop-repair-kuwait', label: 'Dell Laptop Repair Kuwait', description: 'Use the Dell brand hub for broader model-specific repair and diagnostics.' },
-            { href: '/laptop-overheating-kuwait', label: 'Laptop Overheating Problem', description: 'Move from this Dell-specific guide to the broader overheating diagnostic path.' },
-            { href: '/blog/laptop-temperatures-kuwait-safe-cpu-gpu-temperatures', label: 'Laptop Temperature Guide', description: 'Use this guide to interpret CPU/GPU readings and decide what temperature behavior needs investigation.' },
-            { href: '/gaming-laptop-cleaning-kuwait', label: 'Gaming Laptop Cleaning', description: 'Relevant when dust, airflow restriction, fan wear, or thermal maintenance is the underlying issue.' },
-            { href: '/motherboard-repair-kuwait', label: 'Motherboard Repair Kuwait', description: 'Use component-level diagnosis when thermal damage or a board fault remains after cooling checks.' },
+            { href: '/guides/why-is-my-laptop-so-hot', label: 'Universal Laptop Overheating Guide', description: 'Understand thermal limits, airflow, fan behaviour and safe temperature interpretation across laptop platforms.' },
+            { href: '/guides/laptop-battery-warning-signs', label: 'Laptop Battery Warning Signs', description: 'Check whether swelling, battery heat or charging behaviour is contributing to the symptoms.' },
+            { href: '/guides/gamebar-presence-writer-fix', label: 'Windows Gaming Stutter Guide', description: 'Investigate software, overlay and frame-time variables when overheating is not the only symptom.' },
           ]}
         />
 
@@ -398,33 +360,6 @@ export const DellLaptopOverheatingPage = () => {
           </div>
         </section>
 
-        {/* Bottom CTA */}
-        <section className="py-12">
-          <Card className="bg-gradient-to-br from-cyan-600/20 to-blue-600/20 border-cyan-500/30 backdrop-blur-sm">
-            <CardContent className="p-8 sm:p-12 text-center">
-              <h2 className="text-2xl sm:text-4xl font-bold text-white mb-4">Is your laptop shutting down right now?</h2>
-              <p className="text-slate-300 mb-8 max-w-2xl mx-auto">
-                Stop running it hot before it causes permanent motherboard damage. We offer free diagnostics and free pickup/delivery across all Kuwait governorates.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold px-8" asChild>
-                  <a href={WA_LINK} target="_blank" rel="noopener noreferrer">
-                    <MessageCircle className="w-5 h-5 mr-2" /> Book Free Pickup
-                  </a>
-                </Button>
-                <Button size="lg" variant="outline" className="border-slate-600 text-white hover:bg-slate-800 px-8" asChild>
-                  <a href={`tel:+${business.telephone}`}>
-                    <Phone className="w-5 h-5 mr-2" /> Call: +{business.telephone}
-                  </a>
-                </Button>
-              </div>
-              <div className="mt-8 flex justify-center gap-6 text-sm text-slate-400">
-                <span className="flex items-center gap-2"><MapPin className="w-4 h-4 text-cyan-400" /> Hawalli Lab</span>
-                <span className="flex items-center gap-2"><Shield className="w-4 h-4 text-cyan-400" /> 30-Day Warranty</span>
-              </div>
-            </CardContent>
-          </Card>
-        </section>
 
       </div>
     </div>
