@@ -1036,7 +1036,7 @@ export const rawGraphData: RawGraphData = {
       description: 'Step-by-step thermal troubleshooting for Dell laptops, including Inspiron, Latitude, Vostro, XPS, Precision, G Series, and Alienware families.',
       seo: {
         title: 'Dell Laptop Overheating | Causes & Fixes | KCROC',
-        description: 'Is your Dell laptop overheating, shutting down, or running loud? Learn safe checks, thermal-throttling signs, cooling fixes, and when repair is needed in Kuwait.',
+        description: 'Troubleshoot Dell laptop overheating, shutdowns and loud fans. Check airflow, fan behaviour and thermal throttling safely across Inspiron, Latitude, XPS and more.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/guides/dell-laptop-overheating', locale: 'en',
         ogType: 'article',
         schemaTypes: ['WebPage', 'BreadcrumbList'],
