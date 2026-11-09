@@ -7056,7 +7056,7 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         "type": "paragraph",
-        "text": "On some Intel systems, Intel Volume Management Device (VMD) or Intel Rapid Storage Technology (RST) controls the storage path. During Windows Setup, an NVMe drive managed by VMD may not appear until the correct, extracted storage-controller driver is loaded. Use the driver for the exact system model; do not assume that every Intel computer uses the same package."
+        "text": "On some Intel systems, Intel Volume Management Device (VMD) or Intel Rapid Storage Technology (RST) controls the storage path. During Windows Setup, an NVMe drive managed by VMD may not appear until the correct, extracted storage-controller driver is loaded. Depending on the platform and package, the extracted VMD folder may include a driver such as iaStorVD.inf and its associated files. The exact package, folder and compatible driver vary by system and driver generation, so use the package supplied for the exact laptop or motherboard model rather than selecting a similarly named file from another platform."
       },
       {
         "type": "callout",
@@ -7286,6 +7286,10 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         "type": "paragraph",
         "text": "Microsoft — What to do about a critical warning for a storage device: https://support.microsoft.com/en-us/windows/experience/storage-filemanagement/what-to-do-about-a-critical-warning-for-a-storage-device"
+      },
+      {
+        "type": "paragraph",
+        "text": "Intel — How to Enable Intel VMD Capable Platforms with the Intel RST Driver: https://www.intel.com/content/www/us/en/support/articles/000057787/memory-and-storage/intel-optane-memory.html"
       },
       {
         "type": "paragraph",
