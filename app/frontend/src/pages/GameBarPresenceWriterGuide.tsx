@@ -2,23 +2,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { StandaloneRelatedLinks } from '@/components/content/StandaloneRelatedLinks';
-import { HeadTermCallout } from '@/components/content/HeadTermCallout';
-import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import {
   AlertTriangle, Check, CheckCircle2, ChevronRight, CircleHelp, Copy, Cpu, Gamepad2,
   Gauge, HardDrive, MonitorCog, Network, Power, RotateCcw, ShieldAlert,
-  Terminal, Thermometer, Wrench, XCircle
+  Terminal, Wrench, XCircle
 } from 'lucide-react';
 import { SEOEngine } from '../core/components/SEOEngine';
 import { KCROC_GRAPH } from '../data/graph';
 import StickyTOC from '@/components/blog/StickyTOC';
 import { IMAGES } from '../constants/images';
 import SchemaMarkup from '../components/seo/SchemaMarkup';
-import { KuwaitLocalCTA } from '@/components/content/KuwaitLocalCTA';
 
 const business = KCROC_GRAPH.business!;
-const WA_LINK = `https://wa.me/${business.telephone}?text=${encodeURIComponent('I need gaming PC or laptop performance diagnostics in Kuwait. Please arrange free pickup and delivery.')}`;
 const PAGE_URL = `${business.websiteUrl}/guides/gamebar-presence-writer-fix`;
 const GUIDE_IMAGE_URL = '/images/blog/windows-11-laptop-multitasking.webp';
 const GUIDE_IMAGE_ALT = 'Windows 11 laptop multitasking and performance troubleshooting';
@@ -47,7 +43,6 @@ const toc = [
   { id: 'registry', label: 'Advanced Override' },
   { id: 'other-causes', label: 'Other Stutter Causes' },
   { id: 'cluster', label: 'Related Gaming Guides' },
-  { id: 'kuwait', label: 'KCROC Repair in Kuwait' },
   { id: 'faq', label: 'FAQ' },
 ];
 
@@ -223,14 +218,6 @@ export default function GameBarPresenceWriterGuide() {
               <p className="mt-5 max-w-2xl text-sm leading-7 text-slate-300 sm:text-lg">
                 High FPS does not rule out frame-time spikes. If brief freezes interrupt gameplay, GameBarPresenceWriter.exe is one component you can isolate without editing the registry. Run the quick process test and compare the same game scene before and after.
               </p>
-              <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-                <Button size="lg" asChild className="w-full bg-cyan-500 px-6 py-6 font-bold text-slate-950 hover:bg-cyan-400 sm:w-auto">
-                  <a href={WA_LINK} target="_blank" rel="noopener noreferrer">Book Free Gaming PC Pickup</a>
-                </Button>
-                <Button size="lg" variant="outline" asChild className="w-full border-slate-700 px-6 py-6 text-slate-200 hover:bg-slate-800 sm:w-auto">
-                  <a href={`tel:+${business.telephone}`}>Call KCROC: {business.telephone.slice(3)}</a>
-                </Button>
-              </div>
             </div>
 
             <div className="rounded-2xl border border-sky-500/30 bg-slate-950/90 p-5 shadow-2xl shadow-sky-950/30 sm:p-6">
@@ -310,12 +297,6 @@ export default function GameBarPresenceWriterGuide() {
       </section>
 
 
-
-      <section className="px-4 sm:px-6">
-        <div className="container mx-auto max-w-5xl">
-          <KuwaitLocalCTA topic="GameBarPresenceWriter.exe" placement="gamebar_guide" />
-        </div>
-      </section>
 
       <section className="border-b border-slate-800/80 px-4 py-8 sm:px-6 sm:py-10">
         <div className="container mx-auto max-w-5xl">
@@ -532,32 +513,6 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\GameDVR" /v AllowGameDVR /t RE
         </div>
       </section>
 
-      <section id="kuwait" className={`${sectionClass} bg-slate-900/40`}>
-        <div className="container mx-auto max-w-5xl">
-          <div className="grid gap-8 lg:grid-cols-[1fr_.8fr] lg:items-center">
-            <div>
-              <Badge className="mb-3 border-orange-500/30 bg-orange-500/10 text-orange-300"><Thermometer className="mr-2 h-4 w-4" /> Kuwait-specific reality</Badge>
-              <h2 className="text-2xl font-bold sm:text-4xl">A software tweak cannot beat thermal physics</h2>
-              <p className={`mt-4 ${proseClass}`}>
-                When Kuwait's summer ambient temperature climbs into the mid-40s°C or higher, a gaming PC, laptop, or Windows handheld starts with far less thermal headroom before it even loads a game — and that gap widens further when filters are dusty, heatsinks are clogged, fans are degraded, or thermal interfaces have aged. If performance degrades as the system heats up, prioritize cooling and hardware diagnostics over registry tweaking.
-              </p>
-              <div className="mt-5 flex flex-wrap gap-2 text-xs text-slate-400">
-                {['Ambient 45–50°C in summer', 'Thermal throttling', 'Dust buildup', 'Aged thermal paste', 'VRM instability', 'GPU memory errors', 'Power-limit behavior'].map((x) => <span key={x} className="rounded-full border border-slate-800 bg-brand-dark px-3 py-1.5">{x}</span>)}
-              </div>
-            </div>
-            <div className="rounded-2xl border border-orange-500/20 bg-orange-500/5 p-6">
-              <div className="flex items-center gap-3"><Cpu className="h-6 w-6 text-orange-400" /><h3 className="text-lg font-bold">When software is not enough</h3></div>
-              <p className="mt-3 text-sm leading-6 text-slate-300">Persistent stutter, crashes, artifacting, overheating, or unstable power behavior can require board-level diagnosis rather than another Windows tweak.</p>
-              <Link to="/gaming-pc-repair-kuwait" className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-orange-300 hover:text-orange-200">See KCROC gaming PC repair in Kuwait <ChevronRight className="h-4 w-4" /></Link>
-              <Link to="/laptop-repair-kuwait" className="mt-2 inline-flex items-center gap-2 text-sm font-semibold text-orange-300 hover:text-orange-200">See KCROC laptop repair in Kuwait <ChevronRight className="h-4 w-4" /></Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <div className="container mx-auto max-w-4xl px-4 sm:px-6">
-        <HeadTermCallout lead="If the stutter or high CPU use continues after these fixes," placement="GameBarPresenceWriterGuide" />
-      </div>
 
       <StandaloneRelatedLinks
         title="GameBar performance: related troubleshooting paths"
@@ -567,10 +522,8 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\GameDVR" /v AllowGameDVR /t RE
           { href: '/guides/windows-gaming-frame-time-stutter', label: 'High FPS but Gaming Stutter', description: 'Measure frame-time spikes instead of relying on average FPS alone.' },
           { href: '/guides/shader-compilation-stutter-windows', label: 'Shader Compilation Stutter', description: 'Use when hitches follow first-use effects, materials or game areas.' },
           { href: '/guides/dpc-latency-gaming-stutter', label: 'DPC Latency & Gaming Stutter', description: 'Advanced driver-timing branch for repeatable latency-sensitive hitches.' },
-          { href: '/gaming-pc-repair-kuwait', label: 'Gaming PC & GPU Repair Kuwait', description: 'For persistent stutter, crashes, artifacting, thermals, GPU, RAM, or power instability.' },
           { href: '/blog/gaming-pc-cooling', label: 'Gaming PC Cooling Guide', description: 'Check cooling, dust, fans, thermal interfaces, and sustained-load behavior before registry tweaks.' },
           { href: '/laptop-overheating-kuwait', label: 'Laptop Overheating Problem', description: 'Useful when gaming performance falls as a laptop heats up.' },
-          { href: '/windows-wont-boot-kuwait', label: "Windows Won't Boot", description: 'Use the Windows startup path when performance troubleshooting becomes a broader boot problem.' },
         ]}
       />
 
@@ -593,36 +546,6 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\GameDVR" /v AllowGameDVR /t RE
         </div>
       </section>
 
-      <section id="cta" className="px-4 py-12 sm:px-6 sm:py-20">
-        <div className="container mx-auto max-w-5xl overflow-hidden rounded-3xl border border-cyan-500/20 bg-gradient-to-br from-cyan-500/10 via-slate-900 to-violet-500/10 p-7 sm:p-10">
-          <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
-            <div>
-              <Badge className="border-cyan-500/30 bg-cyan-500/10 text-cyan-300">KCROC Gaming Diagnostics</Badge>
-              <h2 className="mt-4 text-2xl font-black sm:text-4xl">Still chasing the stutter after the Windows tweaks?</h2>
-              <p className="mt-4 max-w-2xl text-sm leading-7 text-slate-300 sm:text-base">KCROC diagnoses the full system: thermals, motherboard power delivery, GPU behavior, RAM, storage, drivers, and software. When the fault is on the board, we work at component level instead of simply replacing the entire machine.</p>
-              <p className="mt-4 text-sm font-semibold text-cyan-300">Free Pick &amp; Drop across Kuwait • {business.streetAddress} • {business.telephone.slice(3)}</p>
-            </div>
-            <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
-              <Button size="lg" asChild className="bg-cyan-500 px-7 py-6 font-bold text-slate-950 hover:bg-cyan-400"><a href={`tel:+${business.telephone}`}>Call {business.telephone.slice(3)}</a></Button>
-              <Button size="lg" variant="outline" asChild className="border-slate-700 px-7 py-6 text-slate-200 hover:bg-slate-800"><a href={WA_LINK} target="_blank" rel="noopener noreferrer">WhatsApp KCROC</a></Button>
-            </div>
-          </div>
-          <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-slate-800 pt-6 text-xs sm:text-sm">
-            <Link to="/gaming-pc-repair-kuwait" className="text-cyan-300 hover:text-cyan-200 inline-flex items-center gap-1.5 transition-colors">
-              Gaming PC Repair Kuwait
-            </Link>
-            <Link to="/motherboard-repair-kuwait" className="text-slate-400 hover:text-cyan-400 inline-flex items-center gap-1.5 transition-colors">
-              Motherboard Repair Kuwait
-            </Link>
-            <Link to="/near-me" className="text-slate-400 hover:text-cyan-400 inline-flex items-center gap-1.5 transition-colors">
-              Computer Repair Near Me
-            </Link>
-            <Link to="/services" className="text-slate-400 hover:text-cyan-400 inline-flex items-center gap-1.5 transition-colors">
-              View All Services
-            </Link>
-          </div>
-        </div>
-      </section>
 
       {/* ─── LAST REVIEWED / AUTHOR (E-E-A-T signal) ─── */}
       <section className="border-t border-slate-900 bg-brand-dark/60">
