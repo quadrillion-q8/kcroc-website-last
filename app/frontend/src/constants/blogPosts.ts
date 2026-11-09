@@ -5520,8 +5520,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "Startup Optimization",
       "Battery Life",
       "Gaming Performance",
-      "Windows Security",
-      "Computer Repair Kuwait"
+      "Windows Security"
     ],
     "seoTitle": "18 Windows 11 Tweaks for Better Privacy & Performance",
     "contentType": "guide",
