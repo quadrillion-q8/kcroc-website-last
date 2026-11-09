@@ -64,7 +64,7 @@ assert.equal(
   'FAQPage JSON-LD should contain the same 20 FAQ questions',
 );
 assert.ok(html.includes('"@type":"FAQPage"') || html.includes('"@type": "FAQPage"'), 'FAQPage JSON-LD is missing');
-assert.ok(html.includes('"@type":"TechArticle"') || html.includes('"@type": "TechArticle"'), 'TechArticle JSON-LD is missing');
+assert.ok(html.includes('"TechArticle"') && html.includes('"NewsArticle"'), 'NewsArticle/TechArticle JSON-LD types are missing');
 assert.ok(html.includes('reviewedBy'), 'Technical reviewer reference is missing from JSON-LD');
 assert.ok(
   html.includes('https://www.computerrepairkuwait.com/#business'),
