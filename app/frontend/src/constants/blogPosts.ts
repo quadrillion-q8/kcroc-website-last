@@ -7299,7 +7299,7 @@ export const BLOG_POSTS: BlogPost[] = [
     "image": "/images/lexar-nvme-ssd-upgrade-pc-repair-kuwait-1000.webp",
     "discoverImage": "/images/discover/lexar-nvme-ssd-upgrade-pc-repair-kuwait-1000-1200x675.webp",
     "date": "2026-09-29",
-    "technicalReviewDate": "November 10, 2026",
+    "technicalReviewDate": "2026-11-10T02:00:00+03:00",
     "author": "Imran Natiq",
     "category": "Storage & Upgrades",
     "readTime": "14-16 min read",
