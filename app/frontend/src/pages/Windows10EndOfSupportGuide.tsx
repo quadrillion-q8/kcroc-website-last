@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {
-  ArrowRight, CheckCircle2, CircleHelp, ExternalLink, HardDrive,
+  CheckCircle2, CircleHelp, ExternalLink, HardDrive,
   Laptop, ShieldCheck, TriangleAlert, Wrench
 } from 'lucide-react';
 import { SEOEngine } from '../core/components/SEOEngine';
@@ -81,6 +81,7 @@ const structuredData = {
         `${business.websiteUrl}${IMAGES.laptopHardware.thinkpadLaptopInstallingWindows11.src}`
       ],
       articleSection: 'Guides',
+      inLanguage: 'en',
       dateModified: DATE_MODIFIED,
       about: [
         { '@type': 'SoftwareApplication', name: 'Microsoft Windows 10', applicationCategory: 'OperatingSystem' },
