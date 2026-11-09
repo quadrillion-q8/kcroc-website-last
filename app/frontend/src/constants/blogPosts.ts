@@ -6696,82 +6696,626 @@ export const BLOG_POSTS: BlogPost[] = [
   },
 
   {
-    id: "guide-ssd-not-detected-windows-11",
-    slug: "ssd-not-detected-windows-11",
-    title: "SSD Not Detected in Windows 11: Complete Diagnosis & Fix Guide",
-    excerpt: "An SSD that does not appear in Windows can be a simple drive-letter issue, an uninitialized new disk, a disabled controller, an incompatibility, or a failing drive. Learn which checks are safe before touching data.",
-    description: "SSD not detected in Windows 11? Check BIOS/UEFI, Disk Management, drive letters, controllers, compatibility and hardware health without risking your data.",
-    content: [
-      "'SSD not detected' can mean several different things. A new SSD may simply need initialization and a volume, while an existing SSD that suddenly disappears can indicate a connection, controller, firmware or hardware fault.",
-      "The most important rule is to avoid initializing, formatting or deleting partitions on a drive that contains data you need. First determine whether the SSD is visible in BIOS/UEFI and whether Windows sees it in Disk Management."
+    "id": "guide-ssd-not-detected-windows-11",
+    "slug": "ssd-not-detected-windows-11",
+    "title": "SSD Not Detected in Windows 11: Complete Diagnosis & Fix Guide",
+    "excerpt": "An SSD missing from Windows 11 may have a missing drive letter, an unconfigured blank disk, a storage-controller issue, an incompatible M.2 interface or a hardware fault. Follow the safest checks before changing a drive that contains files.",
+    "description": "Diagnose an SSD that is not detected in Windows 11. Check BIOS/UEFI, NVMe and SATA M.2 compatibility, Disk Management, Intel VMD, Storage Spaces and warning signs without risking existing data.",
+    "content": [
+      "An SSD can disappear at several different points: motherboard firmware, the Windows storage controller, Disk Management or File Explorer. Those situations have different causes and different safe next steps.",
+      "Start by identifying where the drive disappears. Do not initialize, format or delete partitions on an SSD that may contain files you need."
     ],
-    richContent: [
-      { type: "paragraph", text: "The safest way to troubleshoot an SSD that Windows 11 cannot see is to work from firmware to Windows and from non-destructive checks to deeper hardware testing. Microsoft documents Disk Management as the built-in place to initialize new disks, create volumes, change drive letters and manage partitions. But those operations are not appropriate on every missing drive—especially one that already contains important data." },
-      { type: "image", src: "/images/lexar-nvme-ssd-upgrade-pc-repair-kuwait-1000.webp", alt: "NVMe SSD during laptop and PC storage upgrade work", caption: "First establish whether the SSD is visible to firmware, Windows Disk Management or neither. That distinction changes the entire diagnosis." },
-      { type: "callout", variant: "warning", title: "Data-safety rule", text: "Do not initialize, format, delete partitions or run destructive repair steps on a drive with important data until you know what is on it and whether recovery may be required." },
-      { type: "h2", text: "Step 1: Decide Which Kind of 'Not Detected' You Have", id: "classify" },
-      { type: "comparisonTable", title: "Where does the SSD disappear?", columns: ["What you see", "Most likely path", "What to do next"], rows: [
-        { feature: "SSD appears in BIOS/UEFI but not File Explorer", values: ["Windows storage configuration", "Open Disk Management and inspect the disk/volume"] },
-        { feature: "SSD appears in Disk Management as unallocated", values: ["New/blank drive or missing partition", "Only create a volume if the drive is known to be blank"] },
-        { feature: "SSD appears without a drive letter", values: ["Volume is present but not mounted with a letter", "Assess the volume, then assign a letter if appropriate"] },
-        { feature: "SSD is absent from BIOS/UEFI and Windows", values: ["Connection, compatibility, firmware or hardware", "Check slot, power, seating and hardware behavior"] }
-      ] },
-      { type: "h2", text: "Step 2: Check BIOS/UEFI Before Windows", id: "bios" },
-      { type: "paragraph", text: "Restart the computer and enter its BIOS/UEFI storage information. The exact menu name varies by manufacturer. The key question is whether the motherboard firmware sees the SSD at all. If it is missing there, Windows cannot be expected to detect it, so do not spend an hour changing drive letters or running Windows repair commands." },
-      { type: "h2", text: "Step 3: Check Physical Installation and Compatibility", id: "physical" },
-      { type: "paragraph", text: "For a removable M.2 or 2.5-inch SSD, power off the system and verify that the drive is seated correctly. On M.2 systems, confirm that the slot supports the type of device installed; some systems differentiate between NVMe PCIe storage and SATA M.2 devices. In desktops, also verify the required power/data connection for SATA drives. Never probe powered hardware with the system running." },
-      { type: "h2", text: "Step 4: Open Disk Management", id: "disk-management" },
-      { type: "paragraph", text: "In Windows 11, right-click Start and open Disk Management, or press Windows + R and run diskmgmt.msc. Check whether the SSD is listed, whether it is Online or Offline, whether it has partitions, and whether the volume has a drive letter. Do not assume a disk without a letter is defective." },
-      { type: "h2", text: "Step 5: Understand Unallocated, Offline and Unknown States", id: "disk-states" },
-      { type: "paragraph", text: "A brand-new blank SSD can legitimately appear as unallocated and need initialization and a volume before it is usable in File Explorer. An existing data disk appearing as unallocated is a completely different situation. Offline or unknown states can also point toward configuration, connectivity or storage-controller problems. Always identify whether the disk is new or contains existing data before taking action." },
-      { type: "h2", text: "Step 6: Check Device Manager", id: "device-manager" },
-      { type: "paragraph", text: "If the SSD or storage controller is behaving abnormally, inspect Device Manager for storage controllers and disk devices with warning icons. Driver or controller issues can prevent Windows from presenting the device correctly even when the hardware itself is visible to firmware." },
-      { type: "h2", text: "Step 7: Check for Firmware and Windows Updates", id: "updates" },
-      { type: "paragraph", text: "Storage compatibility can depend on motherboard firmware, controller drivers and Windows updates. Apply normal Windows updates when the system is otherwise stable. For a newly installed SSD on a laptop or motherboard with known firmware compatibility requirements, use the manufacturer's current firmware and documentation rather than generic driver utilities." },
-      { type: "h2", text: "Step 8: If the SSD Suddenly Disappeared, Treat It Differently", id: "sudden-disappearance" },
-      { type: "paragraph", text: "A drive that worked yesterday and vanishes today deserves more caution than a new empty SSD. Unexpected disappearance can be caused by a loose connection, controller failure, firmware problems, overheating, power instability or a failing drive. If valuable data is involved, minimize writes and avoid repeated formatting or initialization attempts." },
-      { type: "h2", text: "Step 9: Test the SSD in Another Compatible System", id: "another-system" },
-      { type: "paragraph", text: "A second compatible computer or a known-good adapter can help separate a drive fault from a motherboard slot, controller or cable problem. The test must use compatible hardware; not every enclosure or adapter supports every M.2 type. If the drive works elsewhere, investigate the original system's slot, controller, firmware or power path." },
-      { type: "h2", text: "What Not to Do", id: "avoid" },
-      { type: "list", items: [
-        "Do not initialize a disk containing important data just because Windows asks you to.",
-        "Do not format an existing partition to make File Explorer show the drive.",
-        "Do not repeatedly reseat hardware while the system is powered.",
-        "Do not install multiple storage-driver packages from random websites.",
-        "Do not assume that a missing drive letter means the SSD itself has failed."
-      ] },
-      { type: "h2", text: "When an SSD May Actually Be Failing", id: "failure-signs" },
-      { type: "list", items: [
-        "The SSD disappears intermittently from BIOS/UEFI.",
-        "The drive works briefly and then drops under load.",
-        "Windows logs repeated storage/controller errors.",
-        "The same drive fails across known-good compatible systems.",
-        "The system reports SMART or health warnings, read/write errors or corruption.",
-        "A previously healthy drive suddenly becomes inaccessible with no software explanation."
-      ] },
-      { type: "callout", variant: "recommendation", title: "Data first, repair second", text: "When an SSD contains important files and suddenly disappears, preservation takes priority over 'making Windows see it.' Stop destructive changes and move to professional storage diagnosis or recovery assessment." },
-      { type: "h2", text: "Frequently Asked Questions", id: "faq" },
-      { type: "faq", items: [
-        { question: "Why is my new SSD not showing in File Explorer?", answer: "A new SSD may not have a partition or drive letter yet. Check Disk Management. If the disk is truly blank, initialization and volume creation may be appropriate; if it contains data, do not initialize or format it without diagnosis." },
-        { question: "Why is my SSD visible in BIOS but not Windows?", answer: "That usually shifts the diagnosis toward Windows storage configuration, a volume/drive-letter issue, a storage-controller driver or Windows-side problem rather than a completely dead drive. Disk Management and Device Manager are the next checks." },
-        { question: "Why did my SSD suddenly disappear?", answer: "Possible causes include a loose connection, controller or firmware problem, overheating, power instability, or drive failure. A sudden disappearance on a data-bearing SSD should be handled cautiously to protect the data." },
-        { question: "Can I initialize an SSD that contains files?", answer: "Do not do that casually. Initialization changes disk metadata and can make recovery harder. First determine whether the disk is genuinely new and blank or is an existing data disk." },
-        { question: "When should I replace the SSD?", answer: "Replacement makes sense when testing shows the drive is failing, unreliable or no longer meets the system's needs. The diagnosis should distinguish a bad SSD from a bad slot, controller, cable, enclosure or Windows configuration." }
-      ] },
-      { type: "h2", text: "The Bottom Line", id: "bottom-line" },
-      { type: "paragraph", text: "Start with BIOS/UEFI, then Disk Management, then Device Manager and compatibility. Treat a brand-new blank SSD differently from an existing drive full of data. The safest troubleshooting path is the one that proves where the SSD disappears without destroying the information you are trying to recover." }
+    "richContent": [
+      {
+        "type": "paragraph",
+        "text": "The safest way to diagnose an SSD that is missing in Windows 11 is to work from firmware to Windows, and from non-destructive checks to hardware isolation. A drive that is new and blank is not the same as a drive that suddenly disappeared after months of use."
+      },
+      {
+        "type": "image",
+        "src": "/images/lexar-nvme-ssd-upgrade-pc-repair-kuwait-1000.webp",
+        "alt": "NVMe SSD shown during a computer storage upgrade",
+        "caption": "First establish whether the SSD is visible to BIOS/UEFI, Windows Disk Management or neither. That distinction determines the next diagnostic step."
+      },
+      {
+        "type": "callout",
+        "variant": "warning",
+        "title": "Data-safety rule — read before proceeding",
+        "text": "Do not initialize, format, delete partitions, convert GPT/MBR or run disk-cleaning commands on a drive that may contain important files. If Windows calls a previously used disk Unknown, Not Initialized, Unallocated or RAW, cancel any format or initialization prompt and establish why the disk has changed state first."
+      },
+      {
+        "type": "h2",
+        "text": "60-Second Quick Answer: Where Does the SSD Disappear?",
+        "id": "quick-answer"
+      },
+      {
+        "type": "paragraph",
+        "text": "Check the SSD in BIOS/UEFI first, then open Disk Management (diskmgmt.msc). Use the two results together; neither File Explorer nor a single Device Manager entry tells the whole story."
+      },
+      {
+        "type": "comparisonTable",
+        "title": "SSD detection: symptom-to-action triage",
+        "featureLabel": "What you see",
+        "columns": [
+          "BIOS / UEFI",
+          "Disk Management",
+          "Safest next check"
+        ],
+        "rows": [
+          {
+            "feature": "SSD is missing only from File Explorer",
+            "values": [
+              "Usually detected",
+              "Healthy volume, no drive letter; or a new blank disk",
+              "Inspect the volume state. Assign a letter only to an existing, healthy data volume. Create a volume only when the SSD is confirmed blank."
+            ]
+          },
+          {
+            "feature": "SSD appears in firmware but not in Disk Management",
+            "values": [
+              "Detected or managed by a storage controller",
+              "Not listed as a normal disk",
+              "Inspect Device Manager, the storage-controller driver and Storage Spaces before changing BIOS settings."
+            ]
+          },
+          {
+            "feature": "A previously used SSD now shows Unknown, Not Initialized, Unallocated or RAW",
+            "values": [
+              "May be detected, intermittent or show an abnormal capacity",
+              "Unexpected metadata or file-system state",
+              "Cancel initialization and formatting. Minimize further writes and investigate the connection, controller and drive health."
+            ]
+          },
+          {
+            "feature": "SSD is absent from firmware and Windows",
+            "values": [
+              "Not detected in the expected storage menu",
+              "Not listed",
+              "Power down and verify the exact M.2/SATA interface, seating, cable, slot configuration and hardware condition."
+            ]
+          }
+        ]
+      },
+      {
+        "type": "callout",
+        "variant": "info",
+        "title": "The most important distinction",
+        "text": "If the SSD is brand-new and definitely blank, preparing it in Disk Management may be normal. If it previously contained files or suddenly stopped appearing, do not treat it as a blank disk."
+      },
+      {
+        "type": "h2",
+        "text": "How We Diagnose an SSD Detection Problem",
+        "id": "methodology"
+      },
+      {
+        "type": "paragraph",
+        "text": "This guide follows a four-layer troubleshooting sequence. It is designed to narrow down where detection fails before recommending a setting change, driver update or component replacement."
+      },
+      {
+        "type": "list",
+        "ordered": true,
+        "items": [
+          "Physical and interface compatibility: confirm the SSD type, connector, slot support, seating, cabling and any shared motherboard resources.",
+          "BIOS/UEFI enumeration: establish whether firmware detects the drive directly or through an Intel VMD, RAID or other storage-controller menu.",
+          "Windows storage stack: inspect Disk Management, Device Manager, the appropriate controller driver and any Storage Spaces pool.",
+          "Volume and data state: distinguish a new unallocated disk from an existing data disk with a missing letter, offline status, RAW file system or unreadable partition information."
+        ]
+      },
+      {
+        "type": "callout",
+        "variant": "tip",
+        "title": "Safe-first diagnostic order",
+        "text": "Start with read-only checks and the computer or motherboard manual. Change one setting at a time, record the original value and stop before any operation that could overwrite partition or file-system metadata."
+      },
+      {
+        "type": "h2",
+        "text": "Step 1: Identify Exactly Where the SSD Is Missing",
+        "id": "classify"
+      },
+      {
+        "type": "paragraph",
+        "text": "Before changing anything, compare three views: the firmware storage screen, Windows Disk Management and File Explorer. Record the SSD model and approximate capacity where it is visible. If a drive appears under a controller menu rather than a general storage list, note that too."
+      },
+      {
+        "type": "comparisonTable",
+        "title": "The first three places to check",
+        "featureLabel": "Observation",
+        "columns": [
+          "What it tells you",
+          "What it does not prove"
+        ],
+        "rows": [
+          {
+            "feature": "BIOS/UEFI lists the SSD model and capacity",
+            "values": [
+              "The firmware/controller can enumerate the device at that moment.",
+              "It does not prove the file system is healthy or that the drive is reliable under load."
+            ]
+          },
+          {
+            "feature": "Disk Management lists a disk and its volumes",
+            "values": [
+              "Windows has exposed a disk or volume to its storage-management layer.",
+              "It does not mean every partition should be initialized, formatted or assigned a letter."
+            ]
+          },
+          {
+            "feature": "File Explorer shows a drive letter",
+            "values": [
+              "Windows has mounted an accessible volume for normal browsing.",
+              "It does not provide a full SSD health assessment."
+            ]
+          }
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Step 2: Check BIOS/UEFI Before Troubleshooting Windows",
+        "id": "bios"
+      },
+      {
+        "type": "paragraph",
+        "text": "Restart the computer and open its firmware setup using the key shown by the manufacturer. Common keys include F2, Del, Esc or F10, but the correct key and menu names vary by model. Look under Storage, NVMe Configuration, System Information, Intel Rapid Storage Technology or a similarly named controller page."
+      },
+      {
+        "type": "list",
+        "items": [
+          "Confirm whether the expected SSD model or capacity is listed.",
+          "Check whether the relevant M.2 slot or SATA controller is enabled, if the firmware exposes that option.",
+          "Look for Intel VMD or RAID-managed storage menus on systems that use those controllers.",
+          "Consult the exact laptop or motherboard manual. Some firmware screens do not show every drive in the same summary page."
+        ]
+      },
+      {
+        "type": "callout",
+        "variant": "warning",
+        "title": "Do not switch storage mode as a first test",
+        "text": "Changing from RAID/VMD to AHCI, or disabling VMD, can stop an existing Windows installation from booting and may trigger a BitLocker recovery prompt. Do not change the controller mode unless you understand the installed operating system's storage configuration and have the required recovery key."
+      },
+      {
+        "type": "h2",
+        "text": "Step 3: Verify Physical Installation and M.2 Compatibility",
+        "id": "physical"
+      },
+      {
+        "type": "paragraph",
+        "text": "M.2 describes a physical card and connector format; it does not by itself tell you whether the SSD uses SATA or PCIe/NVMe. A slot may support NVMe only, SATA only or both. The SSD and the exact slot must support the same interface."
+      },
+      {
+        "type": "comparisonTable",
+        "title": "M.2 and SATA compatibility checks",
+        "featureLabel": "Hardware check",
+        "columns": [
+          "Possible mismatch or fault",
+          "How to verify safely"
+        ],
+        "rows": [
+          {
+            "feature": "M.2 SATA versus M.2 NVMe",
+            "values": [
+              "The drive fits physically but the slot does not support its storage protocol.",
+              "Check the laptop or motherboard specification for the exact socket. Do not infer protocol support from the connector notch alone."
+            ]
+          },
+          {
+            "feature": "Shared M.2, SATA or PCIe resources",
+            "values": [
+              "Installing a second M.2 drive may disable or reduce access to particular SATA ports or PCIe slots on some boards.",
+              "Read the board's lane-sharing table and move a SATA cable only to a port documented as available."
+            ]
+          },
+          {
+            "feature": "Drive not fully seated or not secured correctly",
+            "values": [
+              "The system may not establish a reliable connection, or the drive may be under mechanical stress.",
+              "Shut down, unplug AC power and follow the model-specific service manual. Insert the module evenly and use the correct standoff and screw."
+            ]
+          },
+          {
+            "feature": "2.5-inch SATA data or power connection",
+            "values": [
+              "A loose cable, unsuitable port or power connection can make the drive disappear.",
+              "With the system powered off, inspect both connectors and test with a known-good compatible cable or port."
+            ]
+          }
+        ]
+      },
+      {
+        "type": "callout",
+        "variant": "warning",
+        "title": "Power down before touching internal storage",
+        "text": "Shut the computer down fully, disconnect AC power and follow the manufacturer's battery-disconnection procedure where applicable. Do not reseat, probe or remove an internal M.2 or SATA drive while the system is powered or in standby."
+      },
+      {
+        "type": "h2",
+        "text": "Step 4: Inspect Windows 11 Disk Management",
+        "id": "disk-management"
+      },
+      {
+        "type": "paragraph",
+        "text": "Right-click Start and select Disk Management, or press Windows + R, enter diskmgmt.msc and press Enter. Find the disk by its reported capacity and model where available. Check its disk status, partitions, file system and drive-letter assignment before selecting any action."
+      },
+      {
+        "type": "list",
+        "items": [
+          "Disk status: Online, Offline, Unknown or Not Initialized.",
+          "Partition layout: existing partitions, Unallocated space or an unfamiliar partition type.",
+          "File system: NTFS, exFAT, RAW or a file system Windows does not recognise.",
+          "Drive letter: whether an accessible data volume has a letter assigned."
+        ]
+      },
+      {
+        "type": "callout",
+        "variant": "tip",
+        "title": "A missing drive letter is not the same as a missing SSD",
+        "text": "If Disk Management shows a healthy, recognised data volume without a drive letter, the issue may be mounting rather than hardware detection. Confirm that it is an ordinary data partition—not an EFI, recovery or other protected system partition—before assigning a letter."
+      },
+      {
+        "type": "h2",
+        "text": "Step 5: Understand Unallocated, Offline, RAW and Not Initialized States",
+        "id": "disk-states"
+      },
+      {
+        "type": "comparisonTable",
+        "title": "Disk Management states and the safe response",
+        "featureLabel": "Disk state",
+        "columns": [
+          "If the SSD is new and blank",
+          "If the SSD already contains data"
+        ],
+        "rows": [
+          {
+            "feature": "Not Initialized / Unallocated",
+            "values": [
+              "After confirming the disk is the correct new drive and contains no data, initialize it—normally as GPT on a modern UEFI system—then create and format a volume.",
+              "Stop. Do not initialize, create a new volume or format. Verify the connection and investigate why the existing partition layout is no longer visible."
+            ]
+          },
+          {
+            "feature": "Healthy partition with no drive letter",
+            "values": [
+              "Assign a letter if the volume is an ordinary data partition and is ready to use.",
+              "Usually a non-formatting mount-point change is appropriate only after confirming the partition is the expected data volume and is healthy."
+            ]
+          },
+          {
+            "feature": "Offline",
+            "values": [
+              "Check why Windows marked the disk Offline before bringing it Online.",
+              "Do not force it Online without understanding the disk's role, duplicate identifiers, SAN policy or storage-pool configuration."
+            ]
+          },
+          {
+            "feature": "RAW",
+            "values": [
+              "Format only when the disk is confirmed blank and you intentionally want to prepare it.",
+              "Do not format. Windows cannot currently recognise the file system; preserve the current state and diagnose before writing to it."
+            ]
+          },
+          {
+            "feature": "Unknown capacity or unexpectedly tiny capacity",
+            "values": [
+              "Recheck the product specification, enclosure and connection before assuming the drive is defective.",
+              "Stop repeated initialization and write attempts. Check the drive in a known-good compatible setup only when doing so is safe for the data."
+            ]
+          }
+        ]
+      },
+      {
+        "type": "callout",
+        "variant": "warning",
+        "title": "Stop when a used drive changes to RAW or Unallocated",
+        "text": "Those labels do not establish that the SSD is empty. A previously used drive can show these states when its partition or file-system information cannot be read. Do not use Initialize, Format, New Simple Volume, diskpart clean or similar write operations to make the warning disappear."
+      },
+      {
+        "type": "h2",
+        "text": "Step 6: Check Device Manager, Storage Controllers and Storage Spaces",
+        "id": "device-manager"
+      },
+      {
+        "type": "paragraph",
+        "text": "If firmware detects the SSD but Disk Management does not, inspect the Windows device and controller layers. Open Device Manager and expand Disk drives and Storage controllers. Look for warning icons, missing devices or controller names that match the platform's storage configuration."
+      },
+      {
+        "type": "comparisonTable",
+        "title": "Device Manager clues and cautious next steps",
+        "featureLabel": "What you see",
+        "columns": [
+          "Possible explanation",
+          "What to check next"
+        ],
+        "rows": [
+          {
+            "feature": "Storage or RAID controller has Code 28",
+            "values": [
+              "Windows may not have the required driver for the controller.",
+              "Identify the exact laptop or motherboard model and install the storage driver supplied for that model."
+            ]
+          },
+          {
+            "feature": "Storage controller has Code 10",
+            "values": [
+              "The device or driver could not start. This code is not, by itself, proof that the SSD has failed.",
+              "Record the device name and error details; check OEM driver and firmware guidance before changing controller settings."
+            ]
+          },
+          {
+            "feature": "SSD appears in Device Manager but not as a normal Disk Management disk",
+            "values": [
+              "The drive may be behind a storage controller, have a driver issue or be managed by another storage layer.",
+              "Check the controller driver, firmware configuration and Storage Spaces before attempting disk initialization."
+            ]
+          },
+          {
+            "feature": "The SSD belongs to a Windows Storage Spaces pool",
+            "values": [
+              "Windows manages the physical disk as part of a pool rather than as an ordinary standalone volume.",
+              "Open Settings → System → Storage → Advanced storage settings → Storage Spaces and inspect the pool. Do not remove a pool member just to make it appear in File Explorer."
+            ]
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "On some Intel systems, Intel Volume Management Device (VMD) or Intel Rapid Storage Technology (RST) controls the storage path. During Windows Setup, an NVMe drive managed by VMD may not appear until the correct, extracted storage-controller driver is loaded. Use the driver for the exact system model; do not assume that every Intel computer uses the same package."
+      },
+      {
+        "type": "callout",
+        "variant": "warning",
+        "title": "Intel VMD and Windows Setup",
+        "text": "When Windows Setup cannot see an NVMe SSD on a VMD-managed system, use the laptop or motherboard manufacturer's supported Intel RST/VMD driver and the Load driver option. Disabling VMD is not a universal fix and may disrupt an existing Windows installation."
+      },
+      {
+        "type": "h2",
+        "text": "Step 7: Check OEM Drivers, BIOS and SSD Firmware Carefully",
+        "id": "updates"
+      },
+      {
+        "type": "paragraph",
+        "text": "Storage detection depends on the SSD, motherboard firmware, controller and operating-system driver working together. Update only the component for which the manufacturer documents a relevant compatibility or stability fix."
+      },
+      {
+        "type": "list",
+        "items": [
+          "Install the correct chipset or storage-controller driver from the laptop or motherboard manufacturer's support page.",
+          "Check the BIOS/UEFI release notes for a storage, PCIe or compatibility fix that applies to the exact model.",
+          "Use the SSD manufacturer's official management utility to review supported health information and firmware updates when the drive is detected reliably.",
+          "Back up important files before any SSD firmware update. Keep the computer on stable power and follow the vendor's instructions exactly.",
+          "Avoid generic driver-updater applications and firmware files intended for a different model or hardware revision."
+        ]
+      },
+      {
+        "type": "callout",
+        "variant": "tip",
+        "title": "Do not update firmware just because it is available",
+        "text": "A BIOS or SSD firmware update is not a routine first step for every missing drive. Confirm that the release applies to the exact model and symptom, protect important data and make sure the system is stable before updating."
+      },
+      {
+        "type": "h2",
+        "text": "Step 8: Treat a Previously Working SSD That Suddenly Disappears Differently",
+        "id": "sudden-disappearance"
+      },
+      {
+        "type": "paragraph",
+        "text": "A drive that worked normally and then disappears needs a more cautious approach than a new blank SSD. Possible causes include a loose connection, controller or firmware instability, temperature, power delivery, a host-slot fault or an SSD that is beginning to fail. A single symptom cannot identify which component is responsible."
+      },
+      {
+        "type": "paragraph",
+        "text": "To look for a pattern, open Event Viewer → Windows Logs → System and review entries from storage-related sources such as disk, stornvme or the relevant controller driver around the time the drive disappeared. Event IDs 129 and 153 can indicate storage timeouts or retried I/O operations; Event ID 157 can indicate that a disk was unexpectedly removed. These are clues for correlation, not a diagnosis of a failed SSD."
+      },
+      {
+        "type": "list",
+        "items": [
+          "If the drive is still stable and readable, prioritise copying the most important files before running optional tests.",
+          "If it repeatedly disconnects, reports read errors or becomes unusually slow, stop unnecessary scans and write operations.",
+          "Do not run chkdsk /f, chkdsk /r, a secure erase, a format or a firmware update as an experiment on a drive containing irreplaceable files.",
+          "If the data is critical and the SSD is unstable or no longer consistently detected, power it down and seek advice from a qualified data-recovery specialist rather than repeatedly reconnecting it."
+        ]
+      },
+      {
+        "type": "callout",
+        "variant": "warning",
+        "title": "Data preservation takes priority",
+        "text": "Repeated power cycles, write-heavy scans and repair utilities can make an already unstable storage device harder to assess. When important files are involved, avoid changing the drive's contents before the cause is understood."
+      },
+      {
+        "type": "h2",
+        "text": "Step 9: Isolate the SSD from the Computer's Slot or Controller",
+        "id": "another-system"
+      },
+      {
+        "type": "paragraph",
+        "text": "A second known-good computer or a compatible external enclosure can help determine whether the problem follows the SSD or stays with the original computer. Confirm the enclosure supports the SSD's actual interface: an M.2 SATA enclosure is not interchangeable with an NVMe enclosure, and not every USB adapter supports both."
+      },
+      {
+        "type": "comparisonTable",
+        "title": "Interpreting a cross-test",
+        "featureLabel": "Test result",
+        "columns": [
+          "What it suggests",
+          "What to verify before concluding"
+        ],
+        "rows": [
+          {
+            "feature": "SSD is detected in a second compatible system",
+            "values": [
+              "The original system's slot, controller, firmware, lane configuration or connection deserves closer inspection.",
+              "A successful detection test does not prove the SSD is fully healthy under sustained use."
+            ]
+          },
+          {
+            "feature": "SSD is not detected in two known-good compatible systems",
+            "values": [
+              "The SSD itself, the adapter or the test configuration may be faulty.",
+              "Verify interface compatibility, enclosure power and the adapter with another known-good drive before condemning the SSD."
+            ]
+          },
+          {
+            "feature": "Drive appears intermittently or drops under load",
+            "values": [
+              "Connection, thermal, power, controller or SSD instability may be involved.",
+              "Check temperature, seating, power and health evidence; do not assume one cause from the timing alone."
+            ]
+          }
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Signs That Point Toward an SSD Fault or a Host-System Fault",
+        "id": "failure-signs"
+      },
+      {
+        "type": "comparisonTable",
+        "title": "SSD versus host-system diagnostic evidence",
+        "featureLabel": "Observed pattern",
+        "columns": [
+          "Possible direction",
+          "Next safe investigation"
+        ],
+        "rows": [
+          {
+            "feature": "SSD fails to enumerate across more than one known-good compatible setup",
+            "values": [
+              "An SSD-side fault becomes more likely, although the adapter and test setup must also be ruled out.",
+              "Stop repeated power-up attempts when data is important; preserve the current state and seek specialist assessment."
+            ]
+          },
+          {
+            "feature": "SSD works in a compatible second system but not in the original computer",
+            "values": [
+              "The original slot, controller, BIOS configuration, shared lanes, cable or motherboard may be involved.",
+              "Check the original system's manual, known-good components and controller configuration."
+            ]
+          },
+          {
+            "feature": "Storage timeout or surprise-removal events occur near each disappearance",
+            "values": [
+              "Windows is recording a storage-path interruption or delay.",
+              "Correlate the timestamps with temperature, workload, cable/slot condition, driver and firmware information."
+            ]
+          },
+          {
+            "feature": "SSD reports an abnormal capacity or becomes consistently unreadable",
+            "values": [
+              "The controller, firmware, connection or NAND may not be reporting the drive normally.",
+              "Do not infer a specific ROM mode from capacity alone. Stop destructive steps and obtain model-specific assessment."
+            ]
+          }
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "What Not to Do When Windows Cannot Detect an SSD",
+        "id": "avoid"
+      },
+      {
+        "type": "list",
+        "items": [
+          "Do not initialize a previously used SSD simply because Windows displays an Initialize Disk prompt.",
+          "Do not format a RAW partition or create a new volume over space that previously contained files.",
+          "Do not run diskpart clean, secure erase or other destructive commands unless you intentionally intend to erase the correct disk.",
+          "Do not switch AHCI, RAID or Intel VMD settings without understanding how the current Windows installation was configured.",
+          "Do not reseat an internal drive while the computer is powered or in standby.",
+          "Do not install storage drivers from random download sites or use generic driver-updater utilities.",
+          "Do not treat one Event Viewer warning, one capacity reading or one successful enclosure test as definitive proof of drive health."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Frequently Asked Questions",
+        "id": "faq"
+      },
+      {
+        "type": "faq",
+        "items": [
+          {
+            "question": "Why does my new SSD appear in BIOS but not in File Explorer?",
+            "answer": "A new SSD may be detected by firmware but not yet have a partition, file system or drive letter. Open Disk Management and confirm that it is the correct, brand-new blank disk. Only then should you initialize it—normally as GPT on a modern UEFI system—and create a volume."
+          },
+          {
+            "question": "Why is my SSD visible in BIOS but missing from Disk Management?",
+            "answer": "The next checks are the storage-controller driver, Intel VMD or RAID configuration, Device Manager and Storage Spaces. Firmware visibility does not guarantee that Windows exposes the SSD as a normal standalone disk."
+          },
+          {
+            "question": "Why can Windows Setup not see my NVMe SSD?",
+            "answer": "On some systems, the SSD is managed by Intel VMD or another RAID/storage controller for which Windows Setup does not have the required driver. Download the correct storage driver for the exact laptop or motherboard, extract it to installation media and use Load driver during Setup. Do not disable VMD without checking the consequences for an existing Windows installation."
+          },
+          {
+            "question": "Can I initialize an SSD that already contains files?",
+            "answer": "Do not initialize it as a troubleshooting experiment. Initialization changes disk partition metadata and can make access or recovery harder when an existing partition layout is unreadable. Cancel the prompt and investigate the connection, controller and disk state first."
+          },
+          {
+            "question": "Will assigning a drive letter erase the files on my SSD?",
+            "answer": "Assigning a letter to an existing, healthy and recognised data volume is a mount-point change, not a format. First confirm that the selected partition is the intended data volume; do not assign letters to EFI, recovery or other protected system partitions."
+          },
+          {
+            "question": "Does an M.2 SSD that physically fits the slot have to be compatible?",
+            "answer": "No. M.2 is a form factor, while SATA and PCIe/NVMe are different storage interfaces. Check the exact laptop or motherboard specification for the supported protocol and any shared-slot restrictions."
+          },
+          {
+            "question": "Do Event ID 129 or 153 mean that my SSD is failing?",
+            "answer": "No. They can indicate storage timeouts or retried I/O operations, but the cause may be the SSD, controller, driver, connection, power or another part of the storage path. Correlate the events with the symptoms and other tests."
+          },
+          {
+            "question": "Does detecting my SSD in a USB enclosure prove that it is healthy?",
+            "answer": "No. It shows that the drive was detected in that particular compatible enclosure and setup. It does not prove sustained performance, file-system integrity or long-term reliability. Use the result to narrow the original computer's slot or controller path, then assess drive health separately."
+          }
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "The Bottom Line",
+        "id": "bottom-line"
+      },
+      {
+        "type": "paragraph",
+        "text": "Work from BIOS/UEFI to physical compatibility, then Disk Management, Device Manager and a carefully chosen cross-test. Treat a brand-new blank SSD differently from a previously used drive. When important data may be at risk, stop before initialization, formatting or write-heavy repair attempts; the goal is to identify where detection fails without making the original problem worse."
+      },
+      {
+        "type": "h2",
+        "text": "Official Technical References",
+        "id": "official-references"
+      },
+      {
+        "type": "paragraph",
+        "text": "Microsoft — Disk Management in Windows: https://support.microsoft.com/en-gb/windows/experience/storage-filemanagement/disk-management-in-windows"
+      },
+      {
+        "type": "paragraph",
+        "text": "Microsoft — Storage Spaces in Windows: https://support.microsoft.com/en-us/windows/experience/storage-filemanagement/storage-spaces-in-windows"
+      },
+      {
+        "type": "paragraph",
+        "text": "Microsoft — What to do about a critical warning for a storage device: https://support.microsoft.com/en-us/windows/experience/storage-filemanagement/what-to-do-about-a-critical-warning-for-a-storage-device"
+      },
+      {
+        "type": "paragraph",
+        "text": "Dell Support — Intel VMD and missing drives during Windows installation (specific Dell platform guidance): https://www.dell.com/support/kbdoc/en-us/000188116/intel-11th-generation-processors-no-drives-can-be-found-during-windows-10-installation"
+      },
+      {
+        "type": "paragraph",
+        "text": "Related KCROC guide — BIOS and UEFI recovery: https://www.computerrepairkuwait.com/guides/bios-uefi-recovery-kuwait"
+      }
     ],
-    image: "/images/lexar-nvme-ssd-upgrade-pc-repair-kuwait-1000.webp",
-    discoverImage: "/images/discover/lexar-nvme-ssd-upgrade-pc-repair-kuwait-1000-1200x675.webp",
-    date: "2026-09-29",
-    technicalReviewDate: "September 29, 2026",
-    author: "Imran Natiq",
-    category: "Storage & Upgrades",
-    readTime: "12-15 min read",
-    tags: ["Windows 11", "SSD Not Detected", "NVMe SSD", "SSD Upgrade", "Data Recovery"],
-    seoTitle: "SSD Not Detected in Windows 11: Complete Fix & Diagnosis | KCROC",
-    seoDescription: "SSD not detected in Windows 11? Check BIOS, Disk Management, drive letters, controllers, compatibility and hardware safely before formatting.",
-    contentType: "guide"
+    "image": "/images/lexar-nvme-ssd-upgrade-pc-repair-kuwait-1000.webp",
+    "discoverImage": "/images/discover/lexar-nvme-ssd-upgrade-pc-repair-kuwait-1000-1200x675.webp",
+    "date": "2026-09-29",
+    "technicalReviewDate": "November 10, 2026",
+    "author": "Imran Natiq",
+    "category": "Storage & Upgrades",
+    "readTime": "14-16 min read",
+    "tags": [
+      "Windows 11",
+      "SSD Troubleshooting",
+      "SSD Not Detected",
+      "NVMe",
+      "SATA M.2",
+      "Intel VMD",
+      "Disk Management",
+      "Storage Controllers"
+    ],
+    "seoTitle": "SSD Not Detected in Windows 11: Safe Diagnosis & Fix Guide",
+    "seoDescription": "SSD not detected in Windows 11? Check UEFI, M.2 compatibility, Disk Management, Intel VMD and storage-controller clues without risking existing files.",
+    "contentType": "guide"
   },
 
   {
