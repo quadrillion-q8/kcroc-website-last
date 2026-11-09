@@ -114,7 +114,7 @@ add('High-impression page snippets stay concise in the canonical graph source',
   has(graph, "description: 'Laptop and computer repair in Kuwait from 15 KWD. Free pickup and delivery, a quote before work, and a 30-day warranty on completed repairs.'") &&
   has(graph, "description: 'Spot laptop battery failure with 15 warning signs, Windows and Mac health tests, swollen-battery safety advice, and replacement guidance.'") &&
   has(graph, "description: 'High FPS but uneven gameplay? Test whether GameBarPresenceWriter.exe is related, review Xbox Game Bar capture settings, and understand safe registry rollback.'") &&
-  has(graph, 'description: "PC won’t boot after a BIOS/UEFI update? Learn to distinguish firmware corruption from RAM, power or motherboard faults and review safe recovery options."') &&
+  has(graph, 'description: "Diagnose failed BIOS and UEFI updates, black screens and no-POST faults. Compare OEM recovery methods, SPI programming, TPM and BitLocker risks."') &&
   has(graph, "title: 'Intel Core Ultra vs Ryzen AI: 2026 Laptop Guide | KCROC'"));
 add('English and Arabic pricing language switch is reciprocal', locale.includes("'/pricing': '/ar/pricing'") && locale.includes("'/ar/pricing': '/pricing'"));
 const [biosGuideEnSource, biosGuideArSource] = await Promise.all([
@@ -154,7 +154,7 @@ add('BIOS/UEFI guide keeps all 18 FAQ answers in rendered page markup and all 18
   biosGuideEnSource.includes('<p className="mt-3 pr-8 text-xs leading-6 text-slate-400 sm:text-sm">{item.a}</p>'));
 add('BIOS/UEFI English guide uses a global editorial header, footer and mobile layout without local conversion prompts',
   header.includes("const isGlobalTechnicalGuide = location.pathname === '/guides/bios-uefi-recovery-kuwait'") &&
-  header.includes('hideConversionActions={hideConversionActions}') &&
+  header.includes('hideConversionActions={isGlobalTechnicalGuide}') &&
   mobileMenu.includes('hideConversionActions?: boolean') &&
   mobileMenu.includes('{!hideConversionActions && (') &&
   rootLayout.includes("pathname === '/guides/bios-uefi-recovery-kuwait'") &&
