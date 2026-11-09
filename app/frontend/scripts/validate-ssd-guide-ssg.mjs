@@ -82,7 +82,7 @@ if (existsSync(sitemapPath)) {
   const sitemap = readFileSync(sitemapPath, 'utf8');
   const routeEntry = sitemap.match(/<url>[\s\S]*?<loc>https:\/\/www\.computerrepairkuwait\.com\/guides\/ssd-not-detected-windows-11<\/loc>[\s\S]*?<\/url>/);
   assert.ok(routeEntry, 'The generated sitemap must retain the existing SSD guide URL.');
-  assert.ok(routeEntry[0].includes('<lastmod>2026-11-10'), 'Generated sitemap lastmod should follow the technical review date.');
+  assert.ok(routeEntry[0].includes('<lastmod>2026-11-09T23:00:00.000Z'), 'Generated sitemap lastmod should represent the November 10 Kuwait review date without a future UTC timestamp.');
 } else {
   throw new Error('SSD guide SSG validation failed: generated dist/sitemap.xml is missing.');
 }
