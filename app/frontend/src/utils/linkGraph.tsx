@@ -6,13 +6,14 @@ import { KCROC_GRAPH } from '../data/graph';
 interface AutoLinkProps {
   text: string;
   currentEntityId?: string; // Pass this to prevent the page from linking to itself
+  excludeEntityIds?: string[]; // Context-specific links that should not be auto-inserted
 }
 
 /**
  * AI-Ready Semantic Internal Linking Engine
  * Automatically scans text and wraps Knowledge Graph entities in SEO-optimized React Router Links.
  */
-export const AutoLink: React.FC<AutoLinkProps> = ({ text, currentEntityId }) => {
+export const AutoLink: React.FC<AutoLinkProps> = ({ text, currentEntityId, excludeEntityIds }) => {
   
   // Memoize the term dictionary so we only build this massive array once per render cycle
   const sortedTerms = useMemo(() => {
@@ -27,6 +28,7 @@ export const AutoLink: React.FC<AutoLinkProps> = ({ text, currentEntityId }) => 
       // 1. Skip inactive entities or the current page (No self-linking)
       if (!entity.isActive) return;
       if (currentEntityId && entity.id === currentEntityId) return;
+      if (excludeEntityIds?.includes(entity.id)) return;
 
       // 🚀 FIX: Safely skip utility entities (USPs, Badges, Stats) that don't have SEO blocks
       if (!entity.seo || !entity.seo.canonicalUrl) return;
@@ -58,7 +60,7 @@ export const AutoLink: React.FC<AutoLinkProps> = ({ text, currentEntityId }) => 
 
     // 3. Sort by length descending (Match "MacBook Motherboard" before "MacBook")
     return terms.sort((a, b) => b.phrase.length - a.phrase.length);
-  }, [currentEntityId]);
+  }, [currentEntityId, excludeEntityIds]);
 
   const renderLinkedText = () => {
     let parts: React.ReactNode[] = [text];
