@@ -346,6 +346,22 @@ const INTERNAL_LINK_LABELS: Record<string, string> = {
 };
 
 const TECHNICAL_SOURCE_LABELS: Record<string, string> = {
+  "https://www.nvidia.com/en-us/geforce/news/hogwarts-legacy-war-thunder-dlss-5-3d-guided-neural-rendering/":
+    "NVIDIA — DLSS 5 rollout, October model and Hogwarts Legacy benchmarks",
+  "https://www.nvidia.com/en-us/drivers/details/284062/":
+    "NVIDIA — GeForce Game Ready Driver 621.14 WHQL release",
+  "https://steamcommunity.com/app/990080/announcements/":
+    "Hogwarts Legacy — PC patch notes, November 5, 2026",
+  "https://portkeygamessupport.wbgames.com/hc/en-us/articles/56349775286419-Enabling-NVIDIA-DLSS-5-Neural-Rendering-in-Hogwarts-Legacy-PC-Steam-EGS-or-Windows-PC":
+    "Portkey Games Support — DLSS 5 setup and requirements",
+  "https://support.nba2k.com/hc/en-us/articles/55077998389267-NBA-2K27-NVIDIA-DLSS-5":
+    "NBA 2K Support — DLSS 5 launch and compatibility details",
+  "https://warthunder.com/en/news/10306-development-nvidia-dlss-5-is-coming-to-war-thunder-en":
+    "War Thunder — Eagle's Shadow DLSS 5 announcement",
+  "https://developer.nvidia.com/blog/nvidia-dlss-4-5-delivers-super-resolution-upgrades-and-new-dynamic-multi-frame-generation":
+    "NVIDIA Developer — DLSS 4.5 Super Resolution and Multi Frame Generation",
+  "https://www.computerbase.de/artikel/grafikkarten/dlss-5-test-hogwarts-legacy.100187/seite-2":
+    "ComputerBase — DLSS 5 performance testing in Hogwarts Legacy",
   'https://support.microsoft.com/en-us/windows/experience/compatibility/windows-11-system-requirements':
     'Microsoft Support — Windows 11 system requirements',
   'https://support.microsoft.com/en-us/windows/experience/compatibility/all-about-computer-memory':

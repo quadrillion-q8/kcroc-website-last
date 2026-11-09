@@ -162,6 +162,440 @@ export interface BlogPost {
 }
 
 export const BLOG_POSTS: BlogPost[] = [
+{
+  "id": "news-nvidia-dlss-5-neural-rendering-explained-2026",
+  "slug": "nvidia-dlss-5-neural-rendering-explained",
+  "title": "NVIDIA DLSS 5 Explained: Why Neural Rendering Can Cost FPS",
+  "excerpt": "DLSS 5 adds AI-generated lighting and material detail, not free frames. We explain RTX 50 compatibility, real FPS overhead, Driver 621.14 and the November game rollout.",
+  "description": "A practical NVIDIA DLSS 5 guide covering 3D-Guided Neural Rendering, DLSS 5 vs DLSS 4.5, RTX 50 GPU support, independent FPS testing, Driver 621.14 and the Hogwarts Legacy, War Thunder and Where Winds Meet rollout.",
+  "content": [
+    "NVIDIA DLSS 5 is now available in the PC version of Hogwarts Legacy, but it is easy to misunderstand what the feature does. It is a 3D-Guided Neural Rendering layer for lighting and material detail—not an upscaler or a frame-generation mode.",
+    "That distinction matters because DLSS 5 can reduce the game's underlying frame rate when enabled. Higher displayed FPS comes from pairing it with separate technologies such as DLSS Super Resolution and Multi Frame Generation. This guide separates the features, checks the supported hardware and explains the November 2026 rollout."
+  ],
+  "richContent": [
+    {
+      "type": "paragraph",
+      "text": "NVIDIA's DLSS 5 rollout moved from its first game integration in NBA 2K27 on September 3, 2026, to Hogwarts Legacy's November 5 PC patch. The next announced integrations are War Thunder, through the Eagle's Shadow major update in mid-November, and Where Winds Meet on November 23. The important point for PC owners is that DLSS 5 changes how a frame is rendered; it is not itself the technology that creates extra frames. https://www.nvidia.com/en-us/geforce/news/hogwarts-legacy-war-thunder-dlss-5-3d-guided-neural-rendering/ https://support.nba2k.com/hc/en-us/articles/55077998389267-NBA-2K27-NVIDIA-DLSS-5"
+    },
+    {
+      "type": "callout",
+      "variant": "expert",
+      "title": "The one-line explanation",
+      "text": "DLSS 5 is an image-quality feature. Super Resolution and Multi Frame Generation are separate performance features. They can be enabled together, but their jobs—and their FPS effects—are different."
+    },
+    {
+      "type": "h2",
+      "text": "DLSS 5 vs DLSS 4.5: what each technology actually does",
+      "id": "dlss-5-vs-dlss-45"
+    },
+    {
+      "type": "paragraph",
+      "text": "The DLSS name covers several technologies. DLSS 5 adds a neural-rendering pass near the end of the graphics pipeline. DLSS Super Resolution reconstructs a higher-resolution image from a lower-resolution render, while Frame Generation creates additional displayed frames. Ray Reconstruction replaces selected hand-tuned ray-tracing denoisers with an AI reconstruction model. These features can work together; DLSS 5 does not replace them."
+    },
+    {
+      "type": "comparisonTable",
+      "title": "DLSS 5 and the other DLSS features are not interchangeable",
+      "featureLabel": "Technology",
+      "columns": [
+        "Main job",
+        "Direct FPS effect",
+        "What to remember"
+      ],
+      "rows": [
+        {
+          "feature": "DLSS 5 — 3D-Guided Neural Rendering",
+          "values": [
+            "Adds neural lighting, shading and material detail to the rendered scene",
+            "Adds rendering work; can lower the base frame rate",
+            "A visual-fidelity layer, not an upscaler or frame generator"
+          ]
+        },
+        {
+          "feature": "DLSS Super Resolution (including DLSS 4.5 updates)",
+          "values": [
+            "Reconstructs a higher-resolution image from a lower-resolution render",
+            "Can improve performance by reducing the internal rendering resolution",
+            "Image reconstruction/upscaling; a separate setting from Neural Rendering"
+          ]
+        },
+        {
+          "feature": "DLSS Frame Generation / Multi Frame Generation",
+          "values": [
+            "Creates additional frames between traditionally rendered frames",
+            "Raises displayed frame rate; latency and base FPS still matter",
+            "Multi Frame Generation and its 6X mode depend on supported RTX 50 hardware"
+          ]
+        },
+        {
+          "feature": "DLSS Ray Reconstruction",
+          "values": [
+            "Reconstructs ray-traced lighting and effects from sampled data",
+            "Can change performance depending on the game and ray-tracing workload",
+            "Complements ray tracing; it is not the same process as DLSS 5"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "NVIDIA's DLSS 4.5 announcement specifically describes an upgraded Super Resolution transformer model and Dynamic Multi Frame Generation improvements. It is therefore more accurate to describe DLSS 5 as a separate neural-rendering layer that can be combined with supported DLSS features, rather than calling DLSS 5 an FPS upgrade or treating every DLSS feature as one switch. https://developer.nvidia.com/blog/nvidia-dlss-4-5-delivers-super-resolution-upgrades-and-new-dynamic-multi-frame-generation"
+    },
+    {
+      "type": "h2",
+      "text": "How 3D-Guided Neural Rendering works",
+      "id": "how-3d-guided-neural-rendering-works"
+    },
+    {
+      "type": "paragraph",
+      "text": "The game engine first produces its normal rendered frame, including the developer's geometry, textures and lighting information. DLSS 5 uses frame colour and motion data as inputs, then applies a neural model as a later rendering stage to enhance details such as contact shadows, ambient occlusion, subsurface scattering, reflections and material response. NVIDIA describes the rendered frame as the foundation that anchors the result to the game's existing scene."
+    },
+    {
+      "type": "paragraph",
+      "text": "This is different from asking a general-purpose image generator to invent an entire scene from a text prompt. DLSS 5 is designed to work inside a known 3D scene and to keep the underlying geometry and artist-authored content as its reference. That design intent is not a guarantee that every scene will look perfect or that artifacts can never occur; visual results still depend on the game integration, the selected model and developer tuning."
+    },
+    {
+      "type": "list",
+      "items": [
+        "Model selection: developers can choose different neural models for different games or scene types.",
+        "Structure Intensity: controls the strength of high-frequency detail such as ambient occlusion, reflections and subsurface scattering.",
+        "Tone Intensity: gives artists control over broader lighting and colour response.",
+        "Semantic and engine-level masks: allow selected characters, objects or asset groups to receive different treatment from the surrounding environment."
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "For players, the integration is usually presented as a simple Neural Rendering on/off control. The detailed model choices and intensity controls are part of the developer's integration, not a universal percentage slider that every game exposes."
+    },
+    {
+      "type": "h2",
+      "text": "Does DLSS 5 increase FPS or cost FPS?",
+      "id": "does-dlss-5-increase-fps"
+    },
+    {
+      "type": "paragraph",
+      "text": "DLSS 5 does not create extra frames. It adds neural-rendering work to improve image appearance, so the base frame rate can fall when Neural Rendering is switched on. The size of that cost depends on the GPU, resolution, scene, game implementation and the other graphics features enabled."
+    },
+    {
+      "type": "paragraph",
+      "text": "In ComputerBase's November 5 Hogwarts Legacy test on an RTX 5090 with DLSS Super Resolution set to Quality, the publication measured about 13% fewer frames at 2560 × 1440 with DLSS 5 enabled, and about 23% fewer at 3840 × 2160 in its test scene. Those are results from one controlled review configuration—not a guaranteed result for every PC or every game. https://www.computerbase.de/artikel/grafikkarten/dlss-5-test-hogwarts-legacy.100187/seite-2"
+    },
+    {
+      "type": "paragraph",
+      "text": "NVIDIA separately advertises up to 300 FPS at 4K on an RTX 5090 and up to 370 FPS at 1440p for Hogwarts Legacy with its combined configuration: DLSS 5 Neural Rendering, ray tracing, Ray Reconstruction, NVIDIA Reflex and 6X Multi Frame Generation. Those headline numbers describe the complete stack, not DLSS 5 by itself. Generated frames can raise the displayed FPS counter, but they should not be confused with the game's independently rendered base frame rate or a direct measure of input latency. https://www.nvidia.com/en-us/geforce/news/hogwarts-legacy-war-thunder-dlss-5-3d-guided-neural-rendering/"
+    },
+    {
+      "type": "callout",
+      "variant": "warning",
+      "title": "Do not read the 300 FPS headline as a DLSS 5 benchmark",
+      "text": "The advertised result combines several technologies. To judge the cost of DLSS 5, compare the same game scene, resolution and settings with Neural Rendering off and on while keeping the other options unchanged."
+    },
+    {
+      "type": "h2",
+      "text": "Which GPUs support DLSS 5?",
+      "id": "dlss-5-supported-gpus"
+    },
+    {
+      "type": "paragraph",
+      "text": "At the November 2026 rollout, local DLSS 5 support is limited to GeForce RTX 50 Series graphics cards and laptops. NVIDIA also lists RTX Spark systems and GeForce NOW Ultimate cloud gaming. That means an RTX 5090, 5080, 5070 or 5060 Ti belongs to the supported desktop generation, but the presence of an RTX 40 Series or RTX 30 Series GPU does not unlock local DLSS 5 Neural Rendering."
+    },
+    {
+      "type": "comparisonTable",
+      "title": "DLSS 5 compatibility at launch",
+      "featureLabel": "Platform",
+      "columns": [
+        "DLSS 5 status",
+        "What it means"
+      ],
+      "rows": [
+        {
+          "feature": "GeForce RTX 50 Series desktop",
+          "values": [
+            "Supported",
+            "Local Neural Rendering is available in compatible games after the game update and driver requirements are met."
+          ]
+        },
+        {
+          "feature": "GeForce RTX 50 Series laptop",
+          "values": [
+            "Supported",
+            "The notebook GPU must be a supported RTX 50 Series model; laptop OEM driver guidance may still apply."
+          ]
+        },
+        {
+          "feature": "NVIDIA RTX Spark systems",
+          "values": [
+            "Supported",
+            "NVIDIA and the Hogwarts Legacy PC patch include RTX Spark support."
+          ]
+        },
+        {
+          "feature": "GeForce NOW Ultimate",
+          "values": [
+            "Supported on compatible cloud rigs",
+            "The game runs on supported RTX 5080-class cloud hardware; this does not add DLSS 5 to the user's local older GPU."
+          ]
+        },
+        {
+          "feature": "GeForce RTX 40 / 30 Series and older",
+          "values": [
+            "Not supported locally at launch",
+            "Continue using the DLSS features supported by the game and GPU. An RTX 4090 or RTX 4070 does not gain local DLSS 5 by installing a newer driver."
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "This is a hardware-generation restriction, not simply a driver-version problem. If the Neural Rendering switch is missing on an RTX 4090 or RTX 4070, installing Driver 621.14 will not turn that GPU into a supported RTX 50 Series device. GeForce NOW Ultimate is a separate cloud option where the game and service support the feature. https://www.nvidia.com/en-us/geforce/news/hogwarts-legacy-war-thunder-dlss-5-3d-guided-neural-rendering/"
+    },
+    {
+      "type": "h2",
+      "text": "Hogwarts Legacy: Driver 621.14 and setup steps",
+      "id": "driver-621-14-setup"
+    },
+    {
+      "type": "paragraph",
+      "text": "NVIDIA released GeForce Game Ready Driver 621.14 WHQL on November 4, 2026 for Windows 10 and Windows 11. It includes the Hogwarts Legacy and War Thunder DLSS 5 rollout support. It also lists a fix for bug 6979343: video playback could freeze or show a black screen on some GeForce RTX 50 Series GPUs and RTX Spark systems after installing Driver 621.01. https://www.nvidia.com/en-us/drivers/details/284062/"
+    },
+    {
+      "type": "callout",
+      "variant": "info",
+      "title": "Minimum driver vs current recommended driver",
+      "text": "Warner Bros. Games' Hogwarts Legacy support page lists GeForce Game Ready Driver 616.64 or newer as the feature requirement. Driver 621.14 is the current November 4 WHQL release at this article's publication date; it is the sensible current update, but it is not the game's stated minimum version. https://portkeygamessupport.wbgames.com/hc/en-us/articles/56349775286419-Enabling-NVIDIA-DLSS-5-Neural-Rendering-in-Hogwarts-Legacy-PC-Steam-EGS-or-Windows-PC"
+    },
+    {
+      "type": "timeline",
+      "title": "Enable DLSS 5 in Hogwarts Legacy on a supported PC",
+      "numbered": true,
+      "steps": [
+        {
+          "label": "Confirm the GPU",
+          "note": "Check Task Manager → Performance → GPU or NVIDIA System Information. Local Neural Rendering requires an RTX 50 Series GPU; RTX 40/30 cards are not supported locally at launch."
+        },
+        {
+          "label": "Install the November 5 game patch",
+          "note": "Update Hogwarts Legacy through Steam, Epic Games Store or the Windows PC version. The official patch notes say Neural Rendering is off by default."
+        },
+        {
+          "label": "Update the graphics driver",
+          "note": "Install GeForce Game Ready Driver 621.14 WHQL or a newer compatible release from NVIDIA. The stated Hogwarts Legacy minimum is 616.64 or newer."
+        },
+        {
+          "label": "Open the graphics settings",
+          "note": "Enter Game Settings → Display Settings and set Upscale Type to NVIDIA DLSS."
+        },
+        {
+          "label": "Turn on Neural Rendering",
+          "note": "Toggle Neural Rendering to ON. When Upscale Type is NVIDIA DLSS, the Portkey Games support page also documents Shift + Alt + B as a keyboard shortcut."
+        },
+        {
+          "label": "Choose the other DLSS options separately",
+          "note": "Test Super Resolution, Frame Generation or Multi Frame Generation, NVIDIA Reflex and Ray Reconstruction according to your GPU, latency preference and ray-tracing settings."
+        },
+        {
+          "label": "Compare the same scene",
+          "note": "Check image quality and base FPS with Neural Rendering off and on. If performance drops too far, turn Neural Rendering off; it is optional."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "The official November 5 Hogwarts Legacy patch notes and Portkey Games' setup guide document the default-off switch, supported GPU generation, settings path and keyboard shortcut. Use those game-specific instructions rather than assuming every DLSS title exposes the same menu labels. https://steamcommunity.com/app/990080/announcements/ https://portkeygamessupport.wbgames.com/hc/en-us/articles/56349775286419-Enabling-NVIDIA-DLSS-5-Neural-Rendering-in-Hogwarts-Legacy-PC-Steam-EGS-or-Windows-PC"
+    },
+    {
+      "type": "h2",
+      "text": "Why the DLSS 5 option may be missing",
+      "id": "dlss-5-option-missing"
+    },
+    {
+      "type": "list",
+      "items": [
+        "The GPU is an RTX 40 Series, RTX 30 Series or older model. A newer driver does not remove the local hardware restriction.",
+        "The game has not received the DLSS 5 update. The Neural Rendering switch is added by each game's integration.",
+        "The game's Upscale Type is not set to NVIDIA DLSS. In Hogwarts Legacy, this is part of the documented setup path.",
+        "The graphics driver is older than the game's stated minimum. For Hogwarts Legacy, the support page says 616.64 or newer; 621.14 is the November 4 WHQL release.",
+        "The game has not been restarted after an update, or the feature has been disabled in the current graphics settings."
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "If an RTX 50 Series system still cannot enable the feature after the game patch and a compatible driver are installed, first verify the exact GPU model, game build and settings. Test with Neural Rendering disabled if the game becomes unstable. Do not use unofficial driver packages or firmware modifications to force an unsupported GPU into the feature."
+    },
+    {
+      "type": "h2",
+      "text": "The November 2026 DLSS 5 game rollout",
+      "id": "dlss-5-game-rollout"
+    },
+    {
+      "type": "comparisonTable",
+      "title": "Confirmed DLSS 5 game milestones",
+      "featureLabel": "Game",
+      "columns": [
+        "Status on November 9, 2026",
+        "What is confirmed"
+      ],
+      "rows": [
+        {
+          "feature": "NBA 2K27",
+          "values": [
+            "Available since September 3",
+            "The first public DLSS 5 game integration; its support page confirms RTX 50 Series requirements."
+          ]
+        },
+        {
+          "feature": "Hogwarts Legacy",
+          "values": [
+            "Available since November 5",
+            "PC patch adds the Neural Rendering toggle; it is off by default."
+          ]
+        },
+        {
+          "feature": "War Thunder — Eagle's Shadow",
+          "values": [
+            "Announced for mid-November",
+            "Gaijin's development announcement confirms DLSS 5 is planned for the Eagle's Shadow major update; no exact date is stated there."
+          ]
+        },
+        {
+          "feature": "Where Winds Meet",
+          "values": [
+            "Announced for November 23",
+            "NVIDIA's November 5 rollout announcement gives November 23 as the planned DLSS 5 date."
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "NVIDIA says the October 2026 Neural Rendering model is 2× faster than the previous version, uses 20% less VRAM at 4K and has a 24% smaller model footprint of roughly 118 million parameters. These are NVIDIA's model-level comparisons, not a promise that every game, scene or PC will show exactly 20% lower memory use. https://www.nvidia.com/en-us/geforce/news/hogwarts-legacy-war-thunder-dlss-5-3d-guided-neural-rendering/"
+    },
+    {
+      "type": "paragraph",
+      "text": "War Thunder's developer announcement names Eagle's Shadow as the update that will add DLSS 5. NVIDIA's schedule puts Where Winds Meet on November 23. Because live-service dates and patches can move, check the game launcher and official announcement before planning around a specific rollout time. https://warthunder.com/en/news/10306-development-nvidia-dlss-5-is-coming-to-war-thunder-en https://www.nvidia.com/en-us/geforce/news/hogwarts-legacy-war-thunder-dlss-5-3d-guided-neural-rendering/"
+    },
+    {
+      "type": "h2",
+      "text": "Should you enable DLSS 5?",
+      "id": "should-you-enable-dlss-5"
+    },
+    {
+      "type": "paragraph",
+      "text": "Try it when you have supported hardware and want to judge the lighting, material and shadow changes in a compatible game. Keep it off when the performance cost outweighs the visual improvement for your monitor or frame-rate target. Since it is optional, the best setting is the one that looks better to you while preserving the responsiveness you want."
+    },
+    {
+      "type": "paragraph",
+      "text": "For Kuwait gamers, a driver update or new graphics feature should not be treated as proof that a GPU is faulty. If a game continues to crash, show artifacts, lose display output or shut down under load after you have returned to known-stable settings, the issue may need a separate hardware diagnosis. See KCROC's https://www.computerrepairkuwait.com/gaming-pc-repair-kuwait service information for gaming PC and GPU diagnostics."
+    },
+    {
+      "type": "h2",
+      "text": "Frequently asked questions about NVIDIA DLSS 5",
+      "id": "frequently-asked-questions"
+    },
+    {
+      "type": "faq",
+      "display": "static",
+      "items": [
+        {
+          "question": "Is NVIDIA DLSS 5 an upscaler?",
+          "answer": "No. DLSS 5 is 3D-Guided Neural Rendering. It adds neural lighting, shading and material detail to the rendered scene. DLSS Super Resolution is the separate upscaling technology."
+        },
+        {
+          "question": "Does DLSS 5 increase FPS?",
+          "answer": "Not by itself. Neural Rendering adds processing work and can lower the game's base FPS. Super Resolution and Frame Generation or Multi Frame Generation are separate features that can improve performance or raise displayed FPS."
+        },
+        {
+          "question": "Does DLSS 5 work on an RTX 4090 or RTX 4070?",
+          "answer": "Not locally at the November 2026 launch. Local DLSS 5 support is limited to GeForce RTX 50 Series GPUs and laptops. GeForce NOW Ultimate is a separate cloud option where supported."
+        },
+        {
+          "question": "Which driver does Hogwarts Legacy need for DLSS 5?",
+          "answer": "The Portkey Games support page lists GeForce Game Ready Driver 616.64 or newer. Driver 621.14 WHQL was released on November 4, 2026 and is the current driver covered in this guide."
+        },
+        {
+          "question": "How do I turn on DLSS 5 in Hogwarts Legacy?",
+          "answer": "Install the November 5 PC patch, open Game Settings → Display Settings, set Upscale Type to NVIDIA DLSS, then turn Neural Rendering ON. Shift + Alt + B is also documented as a toggle shortcut when NVIDIA DLSS is selected."
+        },
+        {
+          "question": "Which games support DLSS 5 in November 2026?",
+          "answer": "NBA 2K27 launched with DLSS 5 in September, and Hogwarts Legacy added it on November 5. NVIDIA has announced War Thunder for mid-November and Where Winds Meet for November 23."
+        },
+        {
+          "question": "Does the 20% lower VRAM figure apply to every game?",
+          "answer": "No. NVIDIA describes a 20% reduction in 4K VRAM use for its updated October model compared with the previous model. It is not a guaranteed 20% reduction in every title, scene or system."
+        },
+        {
+          "question": "Can I use DLSS 5 and DLSS 4.5 features together?",
+          "answer": "Yes, where the game supports them. DLSS 5 is the neural-rendering layer; Super Resolution, Multi Frame Generation, Reflex and Ray Reconstruction remain separate controls."
+        }
+      ]
+    },
+    {
+      "type": "h2",
+      "text": "Official sources and performance testing",
+      "id": "official-sources"
+    },
+    {
+      "type": "paragraph",
+      "text": "NVIDIA's November 5 rollout announcement, model-performance notes and Hogwarts Legacy configuration: https://www.nvidia.com/en-us/geforce/news/hogwarts-legacy-war-thunder-dlss-5-3d-guided-neural-rendering/"
+    },
+    {
+      "type": "paragraph",
+      "text": "NVIDIA GeForce Game Ready Driver 621.14 WHQL release page and fixed-bug notes: https://www.nvidia.com/en-us/drivers/details/284062/"
+    },
+    {
+      "type": "paragraph",
+      "text": "Hogwarts Legacy PC patch notes for November 5, 2026: https://steamcommunity.com/app/990080/announcements/"
+    },
+    {
+      "type": "paragraph",
+      "text": "Warner Bros. / Portkey Games setup guide, hardware requirement and keyboard shortcut: https://portkeygamessupport.wbgames.com/hc/en-us/articles/56349775286419-Enabling-NVIDIA-DLSS-5-Neural-Rendering-in-Hogwarts-Legacy-PC-Steam-EGS-or-Windows-PC"
+    },
+    {
+      "type": "paragraph",
+      "text": "NBA 2K27 support article confirming the September 3 DLSS 5 debut and RTX 50 Series requirement: https://support.nba2k.com/hc/en-us/articles/55077998389267-NBA-2K27-NVIDIA-DLSS-5"
+    },
+    {
+      "type": "paragraph",
+      "text": "Gaijin Entertainment's development announcement for DLSS 5 in War Thunder's Eagle's Shadow update: https://warthunder.com/en/news/10306-development-nvidia-dlss-5-is-coming-to-war-thunder-en"
+    },
+    {
+      "type": "paragraph",
+      "text": "NVIDIA Developer article describing DLSS 4.5 Super Resolution and Dynamic Multi Frame Generation: https://developer.nvidia.com/blog/nvidia-dlss-4-5-delivers-super-resolution-upgrades-and-new-dynamic-multi-frame-generation"
+    },
+    {
+      "type": "paragraph",
+      "text": "ComputerBase's RTX 5090 performance measurements for DLSS 5 in Hogwarts Legacy (German-language review): https://www.computerbase.de/artikel/grafikkarten/dlss-5-test-hogwarts-legacy.100187/seite-2"
+    }
+  ],
+  "image": "/images/discover/custom-gaming-pc-teardown-and-diagnostics-workbench-1200x675.webp",
+  "imageAlt": "Gaming PC hardware being inspected on a technician's workbench at the KCROC workshop; illustrative hardware photo, not a DLSS 5 game screenshot.",
+  "imageCaption": "KCROC workshop photo showing gaming-PC hardware under inspection. This is an illustrative hardware image, not an in-game DLSS 5 comparison.",
+  "discoverImage": "/images/discover/custom-gaming-pc-teardown-and-diagnostics-workbench-1200x675.webp",
+  "date": "2026-11-09T00:00:00+03:00",
+  "author": "Imran Natiq",
+  "category": "Gaming Technology",
+  "readTime": "10 min read",
+  "isGlobalGuide": true,
+  "relatedPostSlugs": [
+    "gaming-pc-optimization-2026",
+    "windows-gaming-performance-stutter-fix"
+  ],
+  "tags": [
+    "NVIDIA DLSS 5",
+    "3D-Guided Neural Rendering",
+    "DLSS 5 vs DLSS 4.5",
+    "DLSS 5 FPS cost",
+    "DLSS 5 supported GPUs",
+    "RTX 50 Series",
+    "GeForce Game Ready Driver 621.14",
+    "Hogwarts Legacy DLSS 5",
+    "War Thunder Eagle's Shadow",
+    "Where Winds Meet DLSS 5"
+  ],
+  "seoTitle": "NVIDIA DLSS 5 Explained: FPS Cost, GPU Support & Games",
+  "seoDescription": "NVIDIA DLSS 5 adds neural lighting and material detail, not free FPS. See RTX 50 support, real FPS testing, Driver 621.14 and the November game rollout.",
+  "contentType": "news"
+},
   {
     "id": "news-ibm-quantum-system-two-nighthawk-r2-chicago-2026",
     "slug": "ibm-quantum-system-two-nighthawk-r2-chicago",
