@@ -46,6 +46,7 @@ const [app, graph, seoProjection, locale, pricingPage, sitemap, hero, reviews, f
   read('pages/MacBookBatteryReplacementPage.tsx'),
 ]);
 
+const guideRouteRules = await read('constants/routes.ts');
 const vercelConfig = await readFile(path.resolve('vercel.json'), 'utf8');
 const seoEngine = await read('core/components/SEOEngine.tsx');
 const locationTypeSchema = await read('types/knowledgeGraph.ts');
@@ -152,13 +153,14 @@ add('BIOS/UEFI guide keeps all 18 FAQ answers in rendered page markup and all 18
   graph.includes("'faq-bios-bitlocker-after-success'") &&
   graph.includes("'faq-bios-intake-before-technician'") &&
   biosGuideEnSource.includes('<p className="mt-3 pr-8 text-xs leading-6 text-slate-400 sm:text-sm">{item.a}</p>'));
-add('BIOS/UEFI English guide uses a global editorial header, footer and mobile layout without local conversion prompts',
-  header.includes("const isGlobalTechnicalGuide = location.pathname === '/guides/bios-uefi-recovery-kuwait'") &&
-  header.includes('hideConversionActions={isGlobalTechnicalGuide}') &&
+add('English technical guides use a shared global editorial shell while Arabic guide routes remain excluded',
+  guideRouteRules.includes("pathname === '/guides' || (pathname.startsWith('/guides/') && !pathname.startsWith('/guides/ar/'))") &&
+  header.includes('const isGlobalTechnicalGuide = isEnglishTechnicalGuideRoute(location.pathname)') &&
+  header.includes('hideConversionActions={hideConversionActions}') &&
   mobileMenu.includes('hideConversionActions?: boolean') &&
   mobileMenu.includes('{!hideConversionActions && (') &&
-  rootLayout.includes("pathname === '/guides/bios-uefi-recovery-kuwait'") &&
-  footer.includes("const isGlobalTechnicalGuide = location.pathname === '/guides/bios-uefi-recovery-kuwait'") &&
+  rootLayout.includes('isEnglishTechnicalGuideRoute(pathname)') &&
+  footer.includes('const isGlobalTechnicalGuide = isEnglishTechnicalGuideRoute(location.pathname)') &&
   footer.includes('if (isGlobalEditorialArticle || isGlobalTechnicalGuide)'));
 add('BIOS/UEFI English guide removes Kuwait pricing and local-service anchors and includes the printable intake / hardware-escalation tools',
   !/\bKWD\b|\bKuwait\b|\+965|wa\.me|repair in Kuwait|motherboard-repair-kuwait|laptop-repair-kuwait|pricing#/.test(biosGuideEnSource) &&
