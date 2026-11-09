@@ -32,7 +32,7 @@ const expectedQuestions = [
   'Could BIOS corruption make a laptop look dead?',
   "Is a laptop that won't turn on automatically a motherboard replacement?",
   'Are laptop reset steps and blink codes the same across every model from one brand?',
-  'What details should I send KCROC before arranging a no-power pickup?',
+  'What information should I collect before a no-power diagnosis?',
 ];
 
 for (const question of expectedQuestions) {
@@ -83,15 +83,17 @@ for (const sourceUrl of [
   assert.ok(html.includes(sourceUrl), 'Official OEM reference is missing: ' + sourceUrl);
 }
 
-const triageHeading = html.indexOf('Still dead? Book a free component-level no-power diagnosis');
-const legacyCta = html.indexOf('Is Your Laptop Running Slow?');
-assert.ok(triageHeading >= 0, 'Contextual no-power triage is missing from static HTML');
-assert.ok(legacyCta > triageHeading, 'The existing general CTA should remain after the new no-power triage block');
-assert.ok(/https:\/\/wa\.me\/\d+/i.test(html), 'The prerendered no-power triage WhatsApp link is missing');
-assert.ok(html.includes('Book free pickup'), 'Free-pickup booking link is missing from triage');
+assert.ok(html.includes('id="no-power-triage-title"'), 'Global no-power symptom triage worksheet is missing from static HTML');
+assert.ok(html.includes('No-Power Symptom Triage'), 'The diagnostic worksheet heading is missing');
+assert.ok(html.includes('Other observations (optional)'), 'The global worksheet should let readers record model-specific symptoms and observations');
+assert.ok(html.includes('Evidence worth recording for this symptom'), 'The selected symptom should surface relevant diagnostic evidence');
 assert.ok(html.includes('Stop applying power'), 'The safety warning should be visible in the initial static HTML');
+assert.ok(!/https:\/\/wa\.me\/\d+/i.test(html), 'Global no-power guide must not contain a Kuwait WhatsApp lead CTA');
+assert.ok(!/href="tel:\+/i.test(html), 'Global no-power guide must not contain a local call CTA');
+assert.ok(!html.includes('Book free pickup'), 'Global no-power guide must not contain a Kuwait pickup CTA');
+assert.ok(!html.includes('Area in Kuwait'), 'Global no-power guide must not request a Kuwait collection area');
 
 const numberedToCCount = (html.match(/class="m-0 list-decimal/g) ?? []).length;
 assert.equal(numberedToCCount, 2, 'Both mobile and desktop tables of contents should use ordered lists');
 
-console.log('Laptop no-power SSG validation passed: canonical URL, 10 visible FAQ answers, TechArticle/FAQPage schema, OEM source links, board-level guidance, ordered ToC and contextual triage are present in prerendered HTML.');
+console.log('Laptop no-power SSG validation passed: canonical URL, 10 visible FAQ answers, TechArticle/FAQPage schema, OEM source links, board-level guidance, ordered ToC and global symptom-triage worksheet are present without local sales CTAs.');
