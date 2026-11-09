@@ -59,6 +59,23 @@ const [blogPosts, blogPostTemplate, macbookWhatsappIntent, brandsIndex] = await 
   read('pages/BrandsIndex.tsx'),
 ]);
 
+const [batteryHealthGuideSource, dellOverheatingGuideSource, gameBarGuideSource, windows10EndOfSupportGuideSource] = await Promise.all([
+  read('pages/BatteryHealthGuide.tsx'),
+  read('pages/DellLaptopOverheatingPage.tsx'),
+  read('pages/GameBarPresenceWriterGuide.tsx'),
+  read('pages/Windows10EndOfSupportGuide.tsx'),
+]);
+
+const getGraphEntity = (id) => {
+  const start = graph.indexOf("'" + id + "': {");
+  if (start < 0) return '';
+  const next = graph.indexOf("\n    '", start + 1);
+  return graph.slice(start, next < 0 ? graph.length : next);
+};
+const extractEntityDescriptions = (entity) =>
+  [...entity.matchAll(/description:\s*'([^']*)'/g)].map((match) => match[1]);
+const globalGuideSalesSignals = /\bKWD\b|\bKuwait\b|\bHawalli\b|\+965|wa\.me|tel:\+965|free pickup|free pick-up|pickup and delivery|no fix,\s*no fee|30[- ]day\s+(?:repair\s+)?warranty|\/book\b|\/locations?\b/i;
+
 const getTopLevelBlogPost = (id) => {
   const marker = `"id": "${id}"`;
   const start = blogPosts.indexOf(marker);
@@ -198,8 +215,12 @@ add('English technical guides use a shared global editorial shell while Arabic g
   mobileMenu.includes('hideConversionActions?: boolean') &&
   mobileMenu.includes('{!hideConversionActions && (') &&
   rootLayout.includes('isEnglishTechnicalGuideRoute(pathname)') &&
+  rootLayout.includes('{!hideConversionActions && (') &&
+  header.includes("['nav_blog', 'nav_news', 'nav_guides', 'nav_about', 'nav_gallery'].includes(link.id)") &&
   footer.includes('const isGlobalTechnicalGuide = isEnglishTechnicalGuideRoute(location.pathname)') &&
   footer.includes('if (isGlobalEditorialArticle || isGlobalTechnicalGuide)') &&
+  footer.includes('KCROC Hardware Engineering Lab') &&
+  footer.includes('Technical Guides') &&
   blogPostTemplate.includes("GLOBAL_EDITORIAL_AUTOLINK_EXCLUSIONS = ['page-privacy']") &&
   blogPostTemplate.includes('excludeEntityIds={isGlobalEditorialArticle ? GLOBAL_EDITORIAL_AUTOLINK_EXCLUSIONS : undefined}') &&
   semanticAutoLinker.includes('excludeEntityIds?.includes(entity.id)'));
@@ -236,6 +257,29 @@ add('BIOS/UEFI English guide removes Kuwait pricing and local-service anchors an
   biosGuideEnSource.includes('Official support guidance') &&
   biosGuideEnSource.includes('id="hardware-escalation"') &&
   biosGuideEnSource.includes('id="pre-recovery-checklist"'));
+
+const globalGuideTargets = [
+  { route: 'guides/laptop-battery-warning-signs', id: 'guide-battery', page: batteryHealthGuideSource },
+  { route: 'guides/dell-laptop-overheating', id: 'guide-dell-laptop-overheating', page: dellOverheatingGuideSource },
+  { route: 'guides/gamebar-presence-writer-fix', id: 'guide-gamebar-presence-writer', page: gameBarGuideSource },
+  { route: 'guides/windows-10-end-of-support', id: 'guide-windows-10-eos', page: windows10EndOfSupportGuideSource },
+];
+add('Battery, Dell overheating, GameBar and Windows 10 guides keep global copy, stable URLs, KCROC authorship and article/FAQ/breadcrumb schema',
+  globalGuideTargets.every(({ route, id, page }) => {
+    const entity = getGraphEntity(id);
+    const descriptions = extractEntityDescriptions(entity);
+    const schemaSource = entity + '\n' + page;
+    return app.includes("path: '" + route + "'") &&
+      entity.includes("canonicalUrl: 'https://www.computerrepairkuwait.com/" + route + "'") &&
+      entity.includes("locale: 'en'") &&
+      descriptions.length >= 2 &&
+      descriptions.every((description) => !globalGuideSalesSignals.test(description)) &&
+      !globalGuideSalesSignals.test(page) &&
+      schemaSource.includes('KCROC') &&
+      /TechArticle|Article/.test(schemaSource) &&
+      schemaSource.includes('FAQPage') &&
+      schemaSource.includes('BreadcrumbList');
+  }));
 
 
 add('Laptop repair page has intent-matched symptom links to existing guides and services',
