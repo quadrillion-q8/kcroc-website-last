@@ -347,6 +347,8 @@ const INTERNAL_LINK_LABELS: Record<string, string> = {
     'Gaming PC & GPU Repair Kuwait',
   'https://www.computerrepairkuwait.com/gaming-laptop-cleaning-kuwait':
     'Gaming Laptop Cleaning & Thermal Service',
+  'https://www.computerrepairkuwait.com/contact':
+    'Contact KCROC',
 };
 
 const TECHNICAL_SOURCE_LABELS: Record<string, string> = {
