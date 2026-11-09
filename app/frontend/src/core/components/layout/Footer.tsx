@@ -22,6 +22,7 @@ import {
 // ~190KB knowledge graph. NAV_GRAPH is a generated slim projection of
 // graph.ts (see scripts/generate-nav-data.ts) kept in sync automatically.
 import { NAV_GRAPH } from '../../../data/navGraph.generated';
+import { isEnglishTechnicalGuideRoute } from '../../../constants/routes';
 import { openConsentPreferences } from '../../privacy/consent';
 
 const ARABIC_PATHS: Record<string, string> = {
