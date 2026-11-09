@@ -75,3 +75,52 @@ assert.ok(!html.includes('External source</a>'), 'A generic External source anch
 assert.ok(!/hreflang="ar-KW"/i.test(html), 'Arabic hreflang points to a missing translation route');
 
 console.log('✅ Quantum news SSG validation passed: comparison table, six visible FAQ answers, NewsArticle/FAQPage schema, descriptive citations, internal service links and Discover metadata are present in prerendered HTML.');
+
+// DLSS 5 Gaming Technology news: verify the complete article is present in initial SSG HTML.
+const dlssArticlePath = path.join(
+  process.cwd(),
+  'dist',
+  'news',
+  'nvidia-dlss-5-neural-rendering-explained.html',
+);
+
+let dlssHtml;
+try {
+  dlssHtml = readFileSync(dlssArticlePath, 'utf8');
+} catch {
+  throw new Error(
+    'DLSS 5 news SSG validation failed: expected prerendered page at ' +
+      dlssArticlePath,
+  );
+}
+
+assert.ok(dlssHtml.includes('NVIDIA DLSS 5 Explained: Why Neural Rendering Can Cost FPS'), 'DLSS 5 headline is missing from prerendered HTML');
+assert.ok(dlssHtml.includes('DLSS 5 vs DLSS 4.5: what each technology actually does'), 'DLSS 5 vs DLSS 4.5 section is missing');
+assert.ok(dlssHtml.includes('Which GPUs support DLSS 5?'), 'GPU compatibility section is missing');
+assert.ok(dlssHtml.includes('Driver 621.14') && dlssHtml.includes('616.64'), 'Driver minimum/current-version distinction is missing');
+assert.ok(dlssHtml.includes('6979343'), 'Driver 621.14 video playback bug-fix reference is missing');
+assert.ok(dlssHtml.includes('13%') && dlssHtml.includes('23%'), 'Independent frame-rate measurements are missing');
+assert.ok(dlssHtml.includes('Where Winds Meet') && dlssHtml.includes('November 23'), 'Where Winds Meet rollout date is missing');
+assert.ok(dlssHtml.includes('War Thunder') && dlssHtml.includes("Eagle's Shadow"), 'War Thunder rollout details are missing');
+assert.ok(dlssHtml.includes('NewsArticle') && dlssHtml.includes('FAQPage'), 'NewsArticle or FAQPage JSON-LD is missing');
+assert.ok((dlssHtml.match(/"@type"\\s*:\\s*"Question"/g) ?? []).length === 8, 'Expected eight DLSS 5 FAQ questions in FAQPage JSON-LD');
+assert.ok(dlssHtml.includes('max-image-preview:large'), 'Discover preview robots directive is missing');
+assert.ok(dlssHtml.includes('og:image:width') && dlssHtml.includes('content="1200"'), '1200px social image width metadata is missing');
+assert.ok(dlssHtml.includes('og:image:height') && dlssHtml.includes('content="675"'), '675px social image height metadata is missing');
+assert.ok(dlssHtml.includes('Gaming Technology'), 'Gaming Technology news category is missing');
+assert.ok(dlssHtml.includes('href="/gaming-pc-repair-kuwait"'), 'KCROC gaming PC/GPU internal link is missing');
+
+for (const label of [
+  'NVIDIA — DLSS 5 rollout, October model and Hogwarts Legacy benchmarks',
+  'NVIDIA — GeForce Game Ready Driver 621.14 WHQL release',
+  'Portkey Games Support — DLSS 5 setup and requirements',
+  'War Thunder — Eagle\'s Shadow DLSS 5 announcement',
+  'ComputerBase — DLSS 5 performance testing in Hogwarts Legacy',
+]) {
+  assert.ok(dlssHtml.includes(label), `Descriptive DLSS 5 source anchor missing: ${label}`);
+}
+assert.ok(!dlssHtml.includes('External source</a>'), 'A generic External source anchor remains in the DLSS 5 article');
+assert.ok(!/hreflang="ar-KW"/i.test(dlssHtml), 'Arabic hreflang points to a missing DLSS 5 translation route');
+
+console.log('✅ DLSS 5 news SSG validation passed: static article body, eight visible FAQ answers and FAQPage JSON-LD, citations, GPU compatibility, driver guidance, internal link and Discover metadata are present.');
+
