@@ -503,12 +503,12 @@ export default function BatteryHealthGuide() {
                 Learn 15+ warning signs of a failing laptop battery, check battery health on Windows 11 or MacBook, and tell the difference between battery wear, software drain, charger faults, and charging-circuit problems.
               </p>
               <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-                <Button size="lg" asChild className="w-full bg-cyan-500 px-6 py-6 font-bold text-slate-950 hover:bg-cyan-400 sm:w-auto">
-                  <a href="#quick-answer">Start With the Quick Check</a>
-                </Button>
-                <Button size="lg" variant="outline" asChild className="w-full border-slate-700 px-6 py-6 text-slate-200 hover:bg-slate-800 sm:w-auto">
-                  <a href="#check-health">Check Battery Health</a>
-                </Button>
+                <a href="#quick-answer" className="inline-flex min-h-12 w-full items-center justify-center rounded-xl bg-cyan-500 px-6 py-3 font-bold text-slate-950 transition-colors hover:bg-cyan-400 sm:w-auto">
+                  Start With the Quick Check
+                </a>
+                <a href="#check-health" className="inline-flex min-h-12 w-full items-center justify-center rounded-xl border border-slate-700 px-6 py-3 font-bold text-slate-200 transition-colors hover:bg-slate-800 sm:w-auto">
+                  Check Battery Health
+                </a>
               </div>
               <div className="mt-6 flex flex-wrap gap-2">
                 {toc.map((item) => (
