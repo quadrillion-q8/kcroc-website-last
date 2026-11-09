@@ -984,6 +984,12 @@ export const BLOG_POSTS: BlogPost[] = [
         "text": "A simple verification command is: Get-FileHash C:\\Users\\YourName\\Downloads\\Windows11.iso. Compare the resulting SHA256 hash with the corresponding value published by Microsoft for the ISO you selected."
       },
       {
+        "type": "code",
+        "language": "powershell",
+        "title": "Verify the ISO and check the current Windows image",
+        "code": "# 1. Calculate the SHA-256 hash of the downloaded Windows 11 26H2 ISO\n$iso = Join-Path $env:USERPROFILE \"Downloads\\Win11_26H2_English_x64.iso\"\nGet-FileHash -Path $iso -Algorithm SHA256\n\n# 2. In an elevated Terminal, repair the current Windows image before an in-place update\nDISM.exe /Online /Cleanup-Image /RestoreHealth\nsfc /scannow"
+      },
+      {
         "type": "callout",
         "variant": "warning",
         "title": "Do not use random Windows ISOs",
@@ -1185,42 +1191,42 @@ export const BLOG_POSTS: BlogPost[] = [
             "feature": "ISO will not boot",
             "values": [
               "USB/UEFI/media problem",
-              "Recreate media, verify ISO, boot mode and USB port"
+              "Recreate media, compare the official SHA-256 checksum, confirm UEFI boot rather than CSM/Legacy, and test a direct USB port."
             ]
           },
           {
             "feature": "SSD is not detected",
             "values": [
               "Storage controller, firmware, drive or compatibility",
-              "UEFI storage detection, drive health, controller mode and connection"
+              "Confirm the SSD appears in UEFI, identify Intel VMD/RAID mode, load the exact OEM IRST/VMD driver if required, and check M.2 seating and drive health."
             ]
           },
           {
             "feature": "TPM error",
             "values": [
               "Firmware state or unsupported hardware",
-              "TPM 2.0 presence/state and UEFI configuration"
+              "Use tpm.msc and check TPM 2.0, Intel PTT or AMD fTPM in UEFI Security settings."
             ]
           },
           {
             "feature": "Secure Boot error",
             "values": [
               "UEFI configuration",
-              "UEFI mode, Secure Boot capability and boot configuration"
+              "Use native UEFI mode with CSM/Legacy disabled, confirm Secure Boot state, and check GPT partitioning; validate with mbr2gpt before any conversion."
             ]
           },
           {
             "feature": "Installation freezes or stays stuck",
             "values": [
               "USB, storage, RAM, thermal or power issue",
-              "Media integrity, RAM stability, storage health and temperatures"
+              "Test verified media and a second USB drive; run a RAM test, review SSD/NVMe health and log CPU/GPU temperatures under load."
             ]
           },
           {
             "feature": "BSOD during installation",
             "values": [
               "Hardware, firmware, driver or memory",
-              "RAM, SSD, firmware and hardware stability"
+              "Record the BSOD stop code, test RAM and SSD, update OEM chipset/firmware drivers where appropriate, and review WHEA events."
             ]
           },
           {
@@ -1254,6 +1260,52 @@ export const BLOG_POSTS: BlogPost[] = [
         ]
       },
       {
+        "type": "comparisonTable",
+        "title": "Common Windows 11 26H2 Setup and Update Error Codes",
+        "featureLabel": "Setup error code",
+        "columns": [
+          "Likely meaning",
+          "Technician first checks"
+        ],
+        "rows": [
+          {
+            "feature": "0xC1900101",
+            "values": [
+              "Setup rolled back, commonly after a driver or restart-phase failure",
+              "Disconnect unnecessary USB devices and docks, review Setup/Panther logs, update OEM chipset/storage/BIOS components as appropriate, and test RAM/SSD if repeated."
+            ]
+          },
+          {
+            "feature": "0x80070070",
+            "values": [
+              "Insufficient available disk space for the selected setup/update operation",
+              "Free space on C: before an in-place update and check the exact volume named by Setup; do not resize EFI or recovery partitions without a specific diagnosis and backup."
+            ]
+          },
+          {
+            "feature": "0xC1900200 / 0xC1900202",
+            "values": [
+              "Compatibility or minimum-requirements evaluation failed",
+              "Confirm the exact CPU model, TPM 2.0, UEFI/Secure Boot capability and the current Microsoft compatibility status for the device."
+            ]
+          },
+          {
+            "feature": "0x80070002 / 0x80070003",
+            "values": [
+              "A required file or path could not be found",
+              "Check the source/media, review Setup logs, repair the running Windows image with DISM/SFC when appropriate, and recreate installation media from Microsoft."
+            ]
+          },
+          {
+            "feature": "0x8007025D / 0x80070570",
+            "values": [
+              "Setup could not reliably read or expand installation data; media, memory or storage I/O may be involved",
+              "Recheck the ISO hash, try a different known-good USB drive/port, and test RAM and SSD health if the same failure repeats."
+            ]
+          }
+        ]
+      },
+      {
         "type": "h3",
         "text": "When the SSD Is Not Detected",
         "id": "ssd-not-detected"
@@ -1261,6 +1313,10 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         "type": "paragraph",
         "text": "Do not format or repeatedly restart setup before confirming whether the storage device is visible in UEFI. A missing SSD at the installer stage can point toward a firmware storage setting, controller/driver issue, physical connection problem, incompatible module or a failing drive. KCROC already has a dedicated diagnostic guide for this symptom: https://www.computerrepairkuwait.com/guides/ssd-not-detected-windows-11"
+      },
+      {
+        "type": "paragraph",
+        "text": "On Intel platforms that use VMD, Windows Setup may need the laptop manufacturer's extracted Intel Rapid Storage Technology (IRST/VMD) F6 driver loaded through Load driver before the NVMe disk appears. Use the package for the exact laptop model and Windows architecture. Do not casually switch VMD, RAID or AHCI mode on an existing Windows installation: the OS may stop booting, and BitLocker may request its recovery key. Confirm the current mode and secure the key before changing firmware settings."
       },
       {
         "type": "h3",
@@ -1517,31 +1573,31 @@ export const BLOG_POSTS: BlogPost[] = [
         "steps": [
           {
             "label": "Check eligibility",
-            "note": "Confirm Windows version, CPU architecture, TPM 2.0, UEFI/Secure Boot capability and other requirements."
+            "note": "Run winver, confirm x64 vs Arm64 in Settings > System > About, check TPM 2.0 with tpm.msc, verify UEFI/Secure Boot capability, and aim for 25–35 GB free on C: before an in-place update."
           },
           {
             "label": "Check the machine's health",
-            "note": "Look for storage errors, unstable memory, overheating, battery/power faults and existing boot problems."
+            "note": "Review SSD/NVMe health and Windows storage errors, test RAM stability, check CPU/GPU temperatures and throttling under load, and confirm the battery and OEM AC adapter are stable."
           },
           {
-            "label": "Back up",
-            "note": "Protect files, recovery keys and license information before making major changes."
+            "label": "Back up and secure keys",
+            "note": "Copy irreplaceable files to an independent drive, open a few files to verify the backup, record software licences, and confirm you can retrieve the 48-digit BitLocker recovery key."
           },
           {
             "label": "Choose the least disruptive path",
-            "note": "Use Windows Update for an eligible healthy system; choose official installation media when a clean install is actually required."
+            "note": "Use Windows Update and the enablement package on an eligible, healthy 24H2/25H2 PC; use verified official ISO media only when a clean install, new SSD deployment or supported repair workflow requires it."
           },
           {
-            "label": "Install without interrupting it",
-            "note": "Keep reliable power connected and do not force a shutdown during active installation/restart stages."
+            "label": "Install without interrupting power",
+            "note": "Connect the correct OEM AC adapter, remove unnecessary USB docks and hubs, and do not force a shutdown while Windows Setup is actively copying files or restarting."
           },
           {
             "label": "Validate the whole machine",
-            "note": "Check Windows Update, drivers, storage, thermals, networking, audio, input devices, activation and recovery."
+            "note": "Check Windows Update, OEM chipset/GPU/storage drivers, Device Manager, SSD health, idle and load temperatures, Wi-Fi, audio, input devices, activation and recovery options."
           },
           {
             "label": "Diagnose symptoms instead of blaming the version",
-            "note": "If a problem persists, branch into software, driver, firmware, thermal or hardware testing based on evidence."
+            "note": "If freezes, missing drives or blue screens persist with verified media, stop repeating the installation and test firmware, VMD/IRST configuration, RAM, SSD, cooling, power and motherboard stability."
           }
         ]
       },
@@ -1552,6 +1608,7 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         "type": "faq",
+        "display": "static",
         "items": [
           {
             "question": "Is Windows 11 26H2 officially available?",
@@ -1600,6 +1657,38 @@ export const BLOG_POSTS: BlogPost[] = [
           {
             "question": "Where should I report or track Windows 11 26H2 problems?",
             "answer": "Use Microsoft's Windows release-health information and the relevant support/update-history pages for current known issues, safeguards, mitigations and resolutions."
+          },
+          {
+            "question": "What is the difference between the Windows 11 26H2 enablement package and the full ISO?",
+            "answer": "On eligible PCs already running Windows 11 24H2 or 25H2, Windows Update uses a small enablement package to activate features already staged by servicing updates; the September 22, 2026 prerequisite is KB5124010 Preview or a later cumulative update. The full Windows 11 26H2 ISO is multi-gigabyte installation media for clean installs, offline workflows, virtual machines or rebuilding a Windows installation."
+          },
+          {
+            "question": "Will installing the Windows 11 26H2 ISO delete my files?",
+            "answer": "It depends on how you start Setup. Mounting the ISO from a running, compatible Windows installation and launching setup.exe normally offers an in-place upgrade choice such as Keep personal files and apps. Booting from a USB for a Custom/Clean Install can format or replace the target partition and erase its contents. Verify an independent backup before using bootable media."
+          },
+          {
+            "question": "Why does my NVMe SSD disappear during Windows 11 26H2 clean-install setup?",
+            "answer": "First check whether the SSD is detected in UEFI. On some Intel laptops, VMD or RAID storage mode means Windows Setup needs the exact OEM Intel Rapid Storage Technology (IRST/VMD) driver loaded from USB before the NVMe drive appears. If the drive is also missing in UEFI, investigate firmware, M.2 seating, compatibility and SSD health. Do not change VMD/AHCI mode on an existing encrypted Windows installation without the BitLocker key and a verified backup."
+          },
+          {
+            "question": "Why does Windows 11 26H2 ask for a BitLocker recovery key after a BIOS update?",
+            "answer": "BitLocker uses TPM measurements of the startup environment. A BIOS/UEFI update, Secure Boot change, boot-configuration change or storage-controller-mode change can alter those measurements and trigger the 48-digit recovery prompt. Confirm that you can retrieve the recovery key before changing firmware or storage settings."
+          },
+          {
+            "question": "Can I use the standard Windows 11 26H2 x64 ISO on a Snapdragon X Elite or other Arm laptop?",
+            "answer": "No. An x64 installer is not the correct boot media for an Arm64 processor. Download the dedicated Windows 11 Arm64 image from Microsoft's official download route and check the laptop maker's model-specific chipset, storage and other drivers before a clean install."
+          },
+          {
+            "question": "How much free disk space should I have before installing Windows 11 26H2?",
+            "answer": "Microsoft's 64 GB figure is the minimum total storage-device capacity, not a recommended amount of free space. For an in-place feature update or repair install, KCROC recommends aiming for about 25–35 GB free on C: as a practical working buffer; the actual requirement varies with the device, update path and rollback files. A clean install has different target-drive requirements."
+          },
+          {
+            "question": "What does error 0xC1900101 mean during a Windows 11 26H2 upgrade?",
+            "answer": "0xC1900101 is a setup rollback family commonly associated with driver incompatibility or a failure during a restart phase. Disconnect unnecessary docks and USB devices, review Setup/Panther logs, update the OEM BIOS/chipset and storage drivers where appropriate, and test RAM and SSD stability if the failure repeats. The code alone does not prove that a component is physically faulty."
+          },
+          {
+            "question": "Should I bring my laptop for diagnosis if Windows 11 26H2 setup keeps freezing?",
+            "answer": "Repeated freezes or blue screens after checking the official ISO checksum and testing a known-good USB drive can point to unstable RAM, an unhealthy NVMe SSD, overheating, firmware or motherboard power faults. Stop repeating the same install attempt and test the machine first. KCROC diagnoses hardware at its Hawalli workshop and offers free pickup and delivery across Kuwait."
           }
         ]
       },
@@ -1632,13 +1721,13 @@ export const BLOG_POSTS: BlogPost[] = [
         "type": "callout",
         "variant": "info",
         "title": "Article status",
-        "text": "This KCROC News article was prepared for September 30, 2026. Windows release details, rollout status and known issues can change after publication, so the official Microsoft release-health and update-history pages should be checked again whenever you perform a major installation."
+        "text": "This KCROC News article was originally prepared for September 30, 2026 and technically reviewed on November 9, 2026. Windows release details, rollout status and known issues can change, so check Microsoft's official release-health and update-history pages before a major installation."
       }
     ],
     "image": "/images/windows-os-software-repair-and-installation-kuwait.webp",
     "discoverImage": "/images/discover/windows-os-software-repair-and-installation-kuwait-1200x675.webp",
     "date": "2026-09-30",
-    "technicalReviewDate": "September 30, 2026",
+    "technicalReviewDate": "November 9, 2026",
     "author": "Imran Natiq",
     "category": "Windows & Microsoft",
     "readTime": "18–22 min read",
@@ -1649,10 +1738,23 @@ export const BLOG_POSTS: BlogPost[] = [
       "Windows Update",
       "Windows Installation",
       "Clean Install",
-      "Windows Troubleshooting"
+      "Windows Troubleshooting",
+      "Windows 11 26H2 Clean Install",
+      "Windows 11 Enablement Package",
+      "Windows Setup Error Codes",
+      "0xC1900101",
+      "0x80070070",
+      "Intel VMD",
+      "NVMe SSD Not Detected",
+      "BitLocker Recovery Key",
+      "Arm64 ISO",
+      "SHA256 Verification",
+      "DISM",
+      "SFC",
+      "mbr2gpt"
     ],
-    "seoTitle": "Windows 11 26H2 ISO: Install, Upgrade & Fixes | KCROC",
-    "seoDescription": "Windows 11 26H2 ISO is now available. See official download options, requirements, upgrade vs clean install steps, and troubleshooting checks.",
+    "seoTitle": "Windows 11 26H2 ISO Download, Clean Install & Hardware Guide",
+    "seoDescription": "Official Windows 11 26H2 ISO guide by Imran Natiq. Learn enablement package vs clean install steps, SHA256 verification, setup error fixes, and hardware checks.",
     "contentType": "news"
   },
 
