@@ -401,7 +401,7 @@ add('Requested Abdullah Al-Salem URL redirects to the existing canonical locatio
   ));
 
 add('Abdullah Al-Salem page replaces generic location FAQs with its six area-specific questions',
-  locations.includes("['abdullah-al-salem', 'shamiya', 'nuzha', 'adailiya', 'kuwait-city', 'salmiya', 'surra'].includes(location.slug)") &&
+  locations.includes("['abdullah-al-salem', 'shamiya', 'nuzha', 'adailiya', 'kuwait-city', 'salmiya', 'surra', 'farwaniya'].includes(location.slug)") &&
   locations.includes('usesDedicatedLocationFaqs ? [] : sharedLocationFaqs') &&
   abdullahEntity.includes('faq-abdullah-al-salem-6') &&
   abdullahEntity.includes('Can you diagnose random freezing'));
@@ -441,7 +441,7 @@ add('Requested Shamiya URL redirects to the existing canonical location page',
   ));
 
 add('Shamiya page uses six dedicated local FAQs without the shared shop/pickup/cost/turnaround block',
-  locations.includes("['abdullah-al-salem', 'shamiya', 'nuzha', 'adailiya', 'kuwait-city', 'salmiya', 'surra'].includes(location.slug)") &&
+  locations.includes("['abdullah-al-salem', 'shamiya', 'nuzha', 'adailiya', 'kuwait-city', 'salmiya', 'surra', 'farwaniya'].includes(location.slug)") &&
   locations.includes('usesDedicatedLocationFaqs ? [] : sharedLocationFaqs') &&
   shamiyaEntity.includes('faq-shamiya-6') &&
   shamiyaEntity.includes('black screen') &&
@@ -483,7 +483,7 @@ add('Requested Nuzha URL redirects to the existing canonical location page',
   ));
 
 add('Nuzha page uses six dedicated thermal/power/privacy FAQs instead of the shared location FAQ block',
-  locations.includes("['abdullah-al-salem', 'shamiya', 'nuzha', 'adailiya', 'kuwait-city', 'salmiya', 'surra'].includes(location.slug)") &&
+  locations.includes("['abdullah-al-salem', 'shamiya', 'nuzha', 'adailiya', 'kuwait-city', 'salmiya', 'surra', 'farwaniya'].includes(location.slug)") &&
   locations.includes('usesDedicatedLocationFaqs ? [] : sharedLocationFaqs') &&
   nuzhaEntity.includes('faq-nuzha-6') &&
   nuzhaEntity.includes('gets hot, runs loud fans and shuts down') &&
@@ -537,7 +537,7 @@ add('Requested Adailiya URL redirects to the existing canonical dual-suburb page
   ));
 
 add('Adailiya page uses nine dedicated dual-suburb hardware and privacy FAQs',
-  locations.includes("['abdullah-al-salem', 'shamiya', 'nuzha', 'adailiya', 'kuwait-city', 'salmiya', 'surra'].includes(location.slug)") &&
+  locations.includes("['abdullah-al-salem', 'shamiya', 'nuzha', 'adailiya', 'kuwait-city', 'salmiya', 'surra', 'farwaniya'].includes(location.slug)") &&
   locations.includes('usesDedicatedLocationFaqs ? [] : sharedLocationFaqs') &&
   adailiyaEntity.includes('faq-adailiya-9') &&
   adailiyaEntity.includes('dead motherboard and a laptop that turns on with a black screen') &&
@@ -731,12 +731,25 @@ add('Arabic routes localize the visible desktop header, pickup CTA, and skip lin
 add('Arabic routes localize mobile navigation, sticky contact CTA and footer links/address', mobileMenu.includes('راسل فنيًا عبر واتساب') && mobileMenu.includes('dir={isArabicRoute ? "rtl" : undefined}') && stickyMobileCTA.includes('سعر تبديل شاشة ماك بوك') && stickyMobileCTA.includes('اتصل بـ KCROC') && footer.includes('تبديل شاشة ماك بوك') && footer.includes('شارع ابن خلدون، مجمع الملا، السرداب، محل 19، حولي، الكويت') && footer.includes('عرض جميع الخدمات') && footer.includes("'/gaming-pc-repair-kuwait': '/ar/gaming-pc-repair-kuwait'"));
 
 add('Arabic Farwaniya service-area structured data points to the Hawalli workshop, not a fake branch', arabicCommercial.includes("const farwaniyaServiceSchema = slug === 'computer-repair-farwaniya'") && arabicCommercial.includes("name: 'KCROC repair workshop — Hawalli'") && arabicCommercial.includes("name: 'Al Farwaniyah Governorate, Kuwait'") && graph.includes('title: "تصليح كمبيوتر الفروانية | فحص مجاني واستلام | KCROC"'));
-add('Farwaniya service-area metadata is synchronized and does not imply a local walk-in branch',
-  has(graph, "title: 'Laptop & Computer Repair Farwaniya | Free Pickup | KCROC'")
-  && graph.includes("Laptop and PC repair in Farwaniya, Khaitan, Riggae, Ardiya and Jleeb Al-Shuyoukh. Free pickup to our Hawalli lab, quote before repair and 30-day warranty.")
-  && graph.includes("'loc-farwaniya': { id: 'loc-farwaniya'")
+add('Farwaniya metadata, pickup-only entity and existing Arabic alternate stay synchronized',
+  has(graph, "title: 'Computer & Laptop Repair Farwaniya | Free Pickup | KCROC'")
+  && graph.includes('Computer, laptop, MacBook & motherboard repair for Farwaniya, Khaitan, Riggae & Ardiya.')
+  && graph.includes("'loc-farwaniya': {")
   && graph.includes("isPhysicalLocation: false")
-  && seoProjection.includes("Laptop & Computer Repair Farwaniya | Free Pickup | KCROC"));
+  && graph.includes("'ar-KW': 'https://www.computerrepairkuwait.com/ar/computer-repair-farwaniya'")
+  && seoProjection.includes("Computer & Laptop Repair Farwaniya | Free Pickup | KCROC")
+  && !graph.includes('/ar/location/farwaniya'));
+
+add('Farwaniya money-page conversion modules stay graph-backed and within approved scope',
+  graph.includes("heading: 'Transparent Repair Pricing & Turnaround for Farwaniya'")
+  && graph.includes("localProblemDiagnostics: [")
+  && graph.includes("localServiceCards: [")
+  && graph.includes("localScopeNotice: {")
+  && graph.includes("45–100+ KWD")
+  && graph.includes("35–90+ KWD")
+  && graph.includes("specialist data-recovery / dead-drive file-rescue services")
+  && graph.includes("localFaqs: [")
+  && graph.includes("faq-farwaniya-lab"));
 
 add('Arabic Gaming PC metadata defines full-desktop scope and dedicated Open Graph artwork', graph.includes("title: 'تصليح Gaming PC في الكويت | فحص GPU ضمن الكمبيوتر الكامل | KCROC'") && graph.includes('لا نستقبل كروت شاشة منفصلة') && graph.includes("ogImage: '/images/custom-gaming-pc-teardown-and-diagnostics-workbench.webp'") && graph.includes("lastModified: '2026-11-01T00:00:00+03:00'") && seoProjection.includes("تصليح Gaming PC في الكويت | فحص GPU ضمن الكمبيوتر الكامل | KCROC") && seoProjection.includes("/images/custom-gaming-pc-teardown-and-diagnostics-workbench.webp"));
 add('Arabic Gaming PC page adds a diagnostic decision guide, first-party thermal/BIOS images and safe advice', arabicCommercial.includes('id="gaming-diagnostic-guide"') && arabicCommercial.includes('GAMING_AR_DIAGNOSTIC_PATHS.map') && arabicCommercial.includes('gamingPcThermalThrottlingKuwait') && arabicCommercial.includes('asusRogUefiBiosUtilityTemperatureMonitor') && arabicCommercial.includes('لا تفتح مزوّد الطاقة من الداخل') && arabicCommercial.includes('لا ترسل كلمات المرور أو رموز الدخول'));

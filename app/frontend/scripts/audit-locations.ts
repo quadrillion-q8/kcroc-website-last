@@ -23,8 +23,12 @@ const TIER_B = new Set([
   'abu-halifa', // added on GSC evidence (77 impressions, same band as Fintas/Jabriya)
 ]);
 
-// Must mirror LocationDeepTemplate.tsx: the shared FAQ block rendered on every
-// service-area page (4 universal questions: shop, pickup, cost, turnaround).
+// Must mirror LocationDeepTemplate.tsx: these pages render location-specific
+// FAQs in place of the four shared service-area questions.
+const DEDICATED_FAQ_SLUGS = new Set([
+  'abdullah-al-salem', 'shamiya', 'nuzha', 'adailiya', 'kuwait-city',
+  'salmiya', 'surra', 'farwaniya', 'kaifan', 'mahboula',
+]);
 const GENERIC_FAQ_COUNT = 4;
 
 // Arabic pages wired up in LocationDeepTemplate.tsx (ARABIC_LOCATION_PAGES) —
@@ -208,10 +212,11 @@ function audit(): Row[] {
         : demand === 'unknown' ? 'Check GSC before rewriting or consolidating (301)' : 'Rewrite — GSC shows demand';
     }
 
+    const genericFaqCount = isPhysical || DEDICATED_FAQ_SLUGS.has(l.slug) ? 0 : GENERIC_FAQ_COUNT;
     rows.push({
       slug: l.slug, title: l.title, tier, score, evidencePts, factors, weakest, priority, action,
-      introSim: maxSim, localFaqs: nLocalFaq, genericFaqs: isPhysical ? 0 : GENERIC_FAQ_COUNT,
-      localFaqShare: isPhysical ? 1 : nLocalFaq / Math.max(1, nLocalFaq + GENERIC_FAQ_COUNT),
+      introSim: maxSim, localFaqs: nLocalFaq, genericFaqs: genericFaqCount,
+      localFaqShare: isPhysical ? 1 : nLocalFaq / Math.max(1, nLocalFaq + genericFaqCount),
       inbound, hasCase, hasReview, hasArabic, gsc: g,
     });
   }
