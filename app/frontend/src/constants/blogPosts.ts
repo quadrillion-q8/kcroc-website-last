@@ -2720,7 +2720,7 @@ export const BLOG_POSTS: BlogPost[] = [
     readTime: "18-20 min read",
     tags: ["Laptop Won't Turn On", "Laptop No Power", "Laptop Troubleshooting", "Laptop Power Delivery", "OEM Blink Codes", "Motherboard Power Sequence", "Board-Level Diagnosis"],
     seoTitle: "Laptop Won't Turn On? No Power & Black Screen Guide | KCROC",
-    seoDescription: "Laptop dead or black screen? Check the charger, USB-C power, battery and model-specific reset steps safely. Learn how to distinguish external power faults from motherboard problems."
+    seoDescription: "Laptop dead or black screen? Check the charger, USB-C power, battery and model-specific reset steps safely. Learn how to distinguish external power faults from motherboard problems.",
     contentType: "guide"
   },
   {
