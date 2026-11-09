@@ -700,7 +700,9 @@ const RichBlock: React.FC<{ block: ContentBlock; headingRef?: (el: HTMLElement |
       const ListTag = block.ordered ? 'ol' : 'ul';
       return (
         <ListTag className={`${block.ordered ? 'list-decimal' : 'list-disc'} pl-6 text-slate-300 leading-7 mb-7 space-y-2`}>
-          {block.items.map((item, i) => <li key={i}>{item}</li>)}
+          {block.items.filter((item) => typeof item === 'string' && item.trim().length > 0).map((item, i) => (
+            <li key={i}>{item}</li>
+          ))}
         </ListTag>
       );
     }
