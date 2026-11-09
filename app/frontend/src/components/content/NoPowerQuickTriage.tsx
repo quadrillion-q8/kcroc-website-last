@@ -81,6 +81,15 @@ export default function NoPowerQuickTriage() {
       </div>
 
       <div className="space-y-5 p-5 sm:p-7">
+        <div className="rounded-xl border border-amber-500/30 bg-amber-500/5 p-4" role="note">
+          <div className="flex items-start gap-3">
+            <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0 text-amber-300" aria-hidden="true" />
+            <p className="text-sm leading-relaxed text-amber-100">
+              <strong>Stop applying power</strong> if there is liquid exposure, a swollen battery, a burning smell or visible sparks. Disconnect AC if safe, do not reconnect the charger or press Power, and follow the manufacturer's safety guidance.
+            </p>
+          </div>
+        </div>
+
         <fieldset>
           <legend className="mb-3 text-sm font-bold text-white">
             What happens when you connect the charger and press Power?
