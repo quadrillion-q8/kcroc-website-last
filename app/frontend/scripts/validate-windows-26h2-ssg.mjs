@@ -46,18 +46,18 @@ for (const question of addedQuestions) {
   );
 }
 
-const visibleQuestionCount = (visibleFaq.match(/<h3\\b/gi) ?? []).length;
+const visibleQuestionCount = (visibleFaq.match(/<h3\b/gi) ?? []).length;
 assert.equal(
   visibleQuestionCount,
   20,
   'Expected 20 visible FAQ question headings in static HTML; found ' + visibleQuestionCount,
 );
 assert.ok(
-  !/<details\\b/i.test(visibleFaq),
+  !/<details\b/i.test(visibleFaq),
   'The 26H2 FAQ should be statically visible, not hidden in disclosure elements',
 );
 
-const faqSchemaQuestionCount = (html.match(/"@type"\\s*:\\s*"Question"/g) ?? []).length;
+const faqSchemaQuestionCount = (html.match(/"@type"\s*:\s*"Question"/g) ?? []).length;
 assert.equal(
   faqSchemaQuestionCount,
   20,
@@ -74,14 +74,14 @@ assert.ok(
 const decisionStart = html.indexOf('id="decision-tree"');
 assert.ok(decisionStart >= 0, 'Seven-step installation decision tree is missing');
 const decisionTree = html.slice(decisionStart, faqStart);
-const stepCount = (decisionTree.match(/<li\\b/gi) ?? []).length;
+const stepCount = (decisionTree.match(/<li\b/gi) ?? []).length;
 assert.equal(stepCount, 7, 'Expected exactly seven semantic decision-tree steps; found ' + stepCount);
 assert.ok(
   /<ol[^>]*list-none/i.test(decisionTree),
   'Decision tree should suppress default markers so custom step badges do not duplicate numbering',
 );
 
-assert.ok((html.match(/<table[\\s>]/gi) ?? []).length >= 5, 'Expected the four existing comparison tables plus the setup error-code matrix');
+assert.ok((html.match(/<table[\s>]/gi) ?? []).length >= 5, 'Expected the four existing comparison tables plus the setup error-code matrix');
 assert.ok(html.includes('Common Windows 11 26H2 Setup and Update Error Codes'), 'Setup error-code matrix caption is missing');
 for (const code of [
   '0xC1900101',
