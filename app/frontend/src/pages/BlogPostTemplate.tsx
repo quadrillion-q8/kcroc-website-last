@@ -1065,6 +1065,7 @@ export default function BlogPostTemplate() {
           "@id": `${pageUrl}#article`,
           "headline": post.title,
           "description": post.excerpt,
+          ...(isGuide ? { "inLanguage": "en" } : {}),
           ...(isNews ? {
             "inLanguage": "en-KW",
             "articleSection": post.category,
