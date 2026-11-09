@@ -364,6 +364,8 @@ const TECHNICAL_SOURCE_LABELS: Record<string, string> = {
     "War Thunder — Eagle's Shadow DLSS 5 announcement",
   "https://developer.nvidia.com/blog/nvidia-dlss-4-5-delivers-super-resolution-upgrades-and-new-dynamic-multi-frame-generation":
     "NVIDIA Developer — DLSS 4.5 Super Resolution and Multi Frame Generation",
+  "https://research.nvidia.com/labs/adlr/DLSS5/":
+    "NVIDIA Research — DLSS 5 3D-Guided Neural Rendering",
   "https://www.computerbase.de/artikel/grafikkarten/dlss-5-test-hogwarts-legacy.100187/seite-2":
     "ComputerBase — DLSS 5 performance testing in Hogwarts Legacy",
   'https://support.microsoft.com/en-us/windows/experience/compatibility/windows-11-system-requirements':
