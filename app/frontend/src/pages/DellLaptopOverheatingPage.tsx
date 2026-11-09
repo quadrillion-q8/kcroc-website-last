@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { 
   AlertTriangle, CheckCircle2, XCircle, Thermometer, 
   HelpCircle, Wrench, ShieldAlert, Cpu, Fan, Wind, 
-  Shield, Laptop 
+  Laptop 
 } from 'lucide-react';
 
 import SchemaMarkup from '../components/seo/SchemaMarkup';
