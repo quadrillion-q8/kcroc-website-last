@@ -99,7 +99,7 @@ assert.ok(dlssHtml.includes('DLSS 5 vs DLSS 4.5: what each technology actually d
 assert.ok(dlssHtml.includes('Which GPUs support DLSS 5?'), 'GPU compatibility section is missing');
 assert.ok(dlssHtml.includes('Driver 621.14') && dlssHtml.includes('616.64'), 'Driver minimum/current-version distinction is missing');
 assert.ok(dlssHtml.includes('6979343'), 'Driver 621.14 video playback bug-fix reference is missing');
-assert.ok(dlssHtml.includes('13%') && dlssHtml.includes('23%'), 'Independent frame-rate measurements are missing');
+assert.ok(dlssHtml.includes('−12.5%') && dlssHtml.includes('−24.3%'), 'Exact ComputerBase average-FPS impacts are missing');
 assert.ok(dlssHtml.includes('Where Winds Meet') && dlssHtml.includes('November 23'), 'Where Winds Meet rollout date is missing');
 assert.ok(dlssHtml.includes('War Thunder') && dlssHtml.includes("Eagle's Shadow"), 'War Thunder rollout details are missing');
 assert.ok(dlssHtml.includes('NewsArticle') && dlssHtml.includes('FAQPage'), 'NewsArticle or FAQPage JSON-LD is missing');
