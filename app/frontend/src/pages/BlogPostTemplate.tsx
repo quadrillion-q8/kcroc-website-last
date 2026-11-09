@@ -20,6 +20,7 @@ import { KuwaitLocalCTA } from '@/components/content/KuwaitLocalCTA';
 import { HeadTermCallout } from '@/components/content/HeadTermCallout';
 import GamingPcDebugLedSelector from '@/components/content/GamingPcDebugLedSelector';
 import NoPowerQuickTriage from '@/components/content/NoPowerQuickTriage';
+import DLSS5BenchmarkExplorer from '@/components/content/DLSS5BenchmarkExplorer';
 
 // Single source of truth for business identity — see graph.ts 'biz-kcroc'.
 // (Previously duplicated via constants/data.ts's BUSINESS_INFO.)
@@ -778,7 +779,7 @@ const RichBlock: React.FC<{ block: ContentBlock; headingRef?: (el: HTMLElement |
       return (
         <div className="my-10">
           {block.title && <h3 className="text-lg font-bold text-white mb-6">{block.title}</h3>}
-          <ol aria-label={block.title || 'Installation steps'} className="relative m-0 list-none border-l border-slate-800 pl-6 space-y-6">
+          <ol role="list" aria-label={block.title || 'Installation steps'} className="relative m-0 list-none border-l border-slate-800 pl-6 space-y-6">
             {block.steps.map((step, i) => (
               <li key={i} className="relative">
                 {block.numbered ? (
@@ -795,6 +796,8 @@ const RichBlock: React.FC<{ block: ContentBlock; headingRef?: (el: HTMLElement |
       );
     case 'debugLedSelector':
       return <GamingPcDebugLedSelector />;
+    case 'benchmarkExplorer':
+      return <DLSS5BenchmarkExplorer />;
     case 'code':
       return (
         <figure className="my-8 overflow-hidden rounded-2xl border border-slate-700 bg-slate-950">
@@ -1059,7 +1062,7 @@ export default function BlogPostTemplate() {
           "isPartOf": { "@id": `${business.websiteUrl}/#website` }
         },
         {
-          "@type": post.slug === "windows-11-26h2-iso-released"
+          "@type": ["windows-11-26h2-iso-released", "nvidia-dlss-5-neural-rendering-explained"].includes(post.slug)
             ? ["NewsArticle", "TechArticle"]
             : isNews ? "NewsArticle" : (isNoPowerGuide || post.slug === "gaming-pc-black-screen-no-display-kuwait" || post.slug === "why-8gb-ram-is-no-longer-enough-for-windows-11" || post.slug === "why-is-my-laptop-so-slow") ? "TechArticle" : isGuide ? "TechArticle" : ["BlogPosting", "Article"],
           "@id": `${pageUrl}#article`,
@@ -1095,6 +1098,21 @@ export default function BlogPostTemplate() {
               { "@type": "Thing", "name": "OEM laptop reset and diagnostic codes" },
               { "@type": "Thing", "name": "Motherboard power sequencing" },
               { "@type": "Thing", "name": "Component-level laptop repair" }
+            ]
+          } : {}),
+          ...(post.slug === "nvidia-dlss-5-neural-rendering-explained" ? {
+            "reviewedBy": {
+              "@type": "Person",
+              "@id": `${AUTHOR_URL}#person`,
+              "name": "Imran Natiq",
+              "jobTitle": "Hardware Repair Engineer"
+            },
+            "about": [
+              { "@type": "Thing", "name": "NVIDIA DLSS 5" },
+              { "@type": "Thing", "name": "3D-Guided Neural Rendering" },
+              { "@type": "Thing", "name": "GeForce RTX 50 Series" },
+              { "@type": "Thing", "name": "Hogwarts Legacy" },
+              { "@type": "Thing", "name": "GeForce Game Ready Driver 621.14" }
             ]
           } : {}),
           ...(post.slug === "ibm-quantum-system-two-nighthawk-r2-chicago" ? {
@@ -1364,7 +1382,7 @@ export default function BlogPostTemplate() {
                       </p>
                       <p className="text-xs text-slate-500 mt-2">
                         Technical review: {isGlobalEditorialArticle
-                          ? getTechnicalReviewDateLabel(post, 'November 7, 2026')
+                          ? `${getTechnicalReviewDateLabel(post, 'November 7, 2026')}${post.slug === 'nvidia-dlss-5-neural-rendering-explained' ? ' · Hawalli, Kuwait' : ''}`
                           : `${getTechnicalReviewDateLabel(post, 'September 1, 2026')} · Hawalli, Kuwait`}
                       </p>
                     </div>
