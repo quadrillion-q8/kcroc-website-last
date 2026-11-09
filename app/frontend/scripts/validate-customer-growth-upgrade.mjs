@@ -58,6 +58,17 @@ const [blogPosts, blogPostTemplate, macbookWhatsappIntent, brandsIndex] = await 
   read('utils/whatsappIntent.ts'),
   read('pages/BrandsIndex.tsx'),
 ]);
+
+const getTopLevelBlogPost = (id) => {
+  const marker = `"id": "${id}"`;
+  const start = blogPosts.indexOf(marker);
+  if (start < 0) return '';
+  const objectStart = blogPosts.lastIndexOf('\\n  {', start);
+  const objectEnd = blogPosts.indexOf('\\n  },', start);
+  return objectStart >= 0 && objectEnd > start ? blogPosts.slice(objectStart, objectEnd + 5) : '';
+};
+const windowsServicesGuideEntry = getTopLevelBlogPost('guide-windows-11-background-services-audit-2026');
+const windowsSettingsGuideEntry = getTopLevelBlogPost('guide-windows-11-settings-tweaks-2026');
 const salmiyaConfigStart = arabicCommercial.indexOf("'computer-repair-salmiya': {");
 const salmiyaConfigEnd = arabicCommercial.indexOf("'computer-repair-farwaniya': {", salmiyaConfigStart + 1);
 const salmiyaConfig = salmiyaConfigStart >= 0 && salmiyaConfigEnd > salmiyaConfigStart
@@ -162,6 +173,15 @@ add('English technical guides use a shared global editorial shell while Arabic g
   rootLayout.includes('isEnglishTechnicalGuideRoute(pathname)') &&
   footer.includes('const isGlobalTechnicalGuide = isEnglishTechnicalGuideRoute(location.pathname)') &&
   footer.includes('if (isGlobalEditorialArticle || isGlobalTechnicalGuide)'));
+
+add('English Windows services/settings guides contain no Kuwait-local repair or pickup promotion',
+  windowsServicesGuideEntry.includes('The same evidence-first principle applies to Windows troubleshooting generally: measure first, change second.') &&
+  windowsServicesGuideEntry.includes('hot, dusty environments') &&
+  windowsSettingsGuideEntry.includes("When Settings Changes Aren't Enough") &&
+  windowsSettingsGuideEntry.includes('Review Windows Update history') &&
+  !/\\bKuwait\\b|\\bHawalli\\b|free pickup|No Fix, No Fee|Computer Repair Kuwait|wa\\.me|tel:\\+965/.test(windowsServicesGuideEntry) &&
+  !/\\bKuwait\\b|\\bHawalli\\b|free pickup|No Fix, No Fee|Computer Repair Kuwait|wa\\.me|tel:\\+965/.test(windowsSettingsGuideEntry) &&
+  graph.includes('An evidence-led review of Windows 11 settings for privacy, startup, battery life, gaming and security'));
 add('BIOS/UEFI English guide removes Kuwait pricing and local-service anchors and includes the printable intake / hardware-escalation tools',
   !/\bKWD\b|\bKuwait\b|\+965|wa\.me|repair in Kuwait|motherboard-repair-kuwait|laptop-repair-kuwait|pricing#/.test(biosGuideEnSource) &&
   biosGuideEnSource.includes('Print / Save as PDF') &&
