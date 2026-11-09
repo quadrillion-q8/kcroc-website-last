@@ -94,6 +94,8 @@ const gamingNoDisplayEditorialCopy = getGuideEditorialCopy(gamingNoDisplayGuideE
 const gpuArtifactsEditorialCopy = getGuideEditorialCopy(gpuArtifactsGuideEntry);
 const gamingShutdownEditorialCopy = getGuideEditorialCopy(gamingShutdownGuideEntry);
 const bitlockerEditorialCopy = getGuideEditorialCopy(bitlockerGuideEntry);
+const semanticAutoLinker = await read('utils/linkGraph.tsx');
+
 const salmiyaConfigStart = arabicCommercial.indexOf("'computer-repair-salmiya': {");
 const salmiyaConfigEnd = arabicCommercial.indexOf("'computer-repair-farwaniya': {", salmiyaConfigStart + 1);
 const salmiyaConfig = salmiyaConfigStart >= 0 && salmiyaConfigEnd > salmiyaConfigStart
@@ -197,7 +199,10 @@ add('English technical guides use a shared global editorial shell while Arabic g
   mobileMenu.includes('{!hideConversionActions && (') &&
   rootLayout.includes('isEnglishTechnicalGuideRoute(pathname)') &&
   footer.includes('const isGlobalTechnicalGuide = isEnglishTechnicalGuideRoute(location.pathname)') &&
-  footer.includes('if (isGlobalEditorialArticle || isGlobalTechnicalGuide)'));
+  footer.includes('if (isGlobalEditorialArticle || isGlobalTechnicalGuide)') &&
+  blogPostTemplate.includes("GLOBAL_EDITORIAL_AUTOLINK_EXCLUSIONS = ['page-privacy']") &&
+  blogPostTemplate.includes('excludeEntityIds={isGlobalEditorialArticle ? GLOBAL_EDITORIAL_AUTOLINK_EXCLUSIONS : undefined}') &&
+  semanticAutoLinker.includes('excludeEntityIds?.includes(entity.id)'));
 
 add('English Windows services/settings guides contain no Kuwait-local repair or pickup promotion',
   windowsServicesGuideEntry.includes('The same evidence-first principle applies to Windows troubleshooting generally: measure first, change second.') &&
