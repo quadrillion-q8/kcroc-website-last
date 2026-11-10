@@ -478,6 +478,18 @@ const TECHNICAL_SOURCE_LABELS: Record<string, string> = {
     'State of Illinois — $500 million investment in the Illinois Quantum and Microelectronics Park',
   'https://epa.illinois.gov/topics/community-relations/sites/iqmp.html':
     'Illinois EPA — Illinois Quantum and Microelectronics Park site information',
+  'https://support.microsoft.com/en-gb/windows/experience/storage-filemanagement/disk-management-in-windows':
+    'Microsoft Support — Disk Management in Windows',
+  'https://support.microsoft.com/en-us/windows/experience/storage-filemanagement/storage-spaces-in-windows':
+    'Microsoft Support — Storage Spaces in Windows',
+  'https://learn.microsoft.com/en-us/troubleshoot/windows-server/backup-and-storage/troubleshoot-data-corruption-and-disk-errors':
+    'Microsoft Learn — Troubleshoot data corruption and disk errors (Event IDs 129, 153 and 157)',
+  'https://support.microsoft.com/en-us/windows/experience/storage-filemanagement/what-to-do-about-a-critical-warning-for-a-storage-device':
+    'Microsoft Support — What to do about a critical warning for a storage device',
+  'https://www.intel.com/content/www/us/en/support/articles/000057787/memory-and-storage/intel-optane-memory.html':
+    'Intel Support — Intel VMD platforms and Intel RST driver guide',
+  'https://www.dell.com/support/kbdoc/en-us/000188116/intel-11th-generation-processors-no-drives-can-be-found-during-windows-10-installation':
+    'Dell Support — Intel VMD and missing drives during Windows installation',
 };
 
 const getTechnicalSourceLabel = (url: string) => TECHNICAL_SOURCE_LABELS[url] ?? 'External source';
@@ -1334,8 +1346,91 @@ export default function BlogPostTemplate() {
       </nav>
 
       <div className="max-w-6xl mx-auto px-6 grid lg:grid-cols-[1fr_280px] gap-12">
+        {/* ═══ SIDEBAR (desktop only) ═══ */}
+        <aside className="hidden lg:order-last lg:block">
+          <div className="sticky top-28 space-y-6">
+            {headings.length > 0 && (
+              <nav aria-label="Table of contents" className="bg-slate-900/40 border border-slate-800 rounded-2xl p-5">
+                <p className="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-slate-400 mb-4">
+                  <List size={14} className="text-cyan-400" aria-hidden="true" /> On This Page
+                </p>
+                <ol className="m-0 list-decimal space-y-2.5 pl-8 pr-0 text-sm">
+                  {headings.map(h => (
+                    <li key={h.id}>
+                      <a
+                        href={`#${h.id}`}
+                        className={`block transition-colors ${activeHeadingId === h.id ? 'text-cyan-400 font-bold' : 'text-slate-400 hover:text-slate-200'}`}
+                      >
+                        {h.tocLabel}
+                      </a>
+                    </li>
+                  ))}
+                </ol>
+              </nav>
+            )}
+
+            <div className="bg-slate-900/40 border border-slate-800 rounded-2xl p-5">
+              <p className="text-xs font-black uppercase tracking-wider text-slate-400 mb-3">Author</p>
+              <p className="font-bold text-white">{post.author}</p>
+              <p className="text-xs text-slate-500 mt-1">{post.slug === 'why-is-my-laptop-so-slow' ? 'KCROC Hardware Engineering Lab' : isGlobalEditorialArticle ? 'KCROC Technical Editorial' : 'Kuwait Computer Repair On Call'}</p>
+            </div>
+
+            {(isGlobalEditorialArticle ? relatedPosts : recentPosts).length > 0 && (
+              <div className="bg-slate-900/40 border border-slate-800 rounded-2xl p-5">
+                <p className="text-xs font-black uppercase tracking-wider text-slate-400 mb-4">{isGlobalEditorialArticle ? 'Related Guides' : 'Recent Articles'}</p>
+                <ul className="space-y-3">
+                  {(isGlobalEditorialArticle ? relatedPosts : recentPosts).map(r => (
+                    <li key={r.slug}>
+                      <Link to={contentRoute(r)} className="text-sm text-slate-300 hover:text-cyan-400 leading-snug line-clamp-2">
+                        {r.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            <div className="bg-slate-900/40 border border-slate-800 rounded-2xl p-5">
+              <p className="text-xs font-black uppercase tracking-wider text-slate-400 mb-3">Categories</p>
+              <ul className="flex flex-wrap gap-2">
+                {categories.map(([cat, count]) => (
+                  <li key={cat} className="text-xs bg-slate-800/60 text-slate-300 px-2.5 py-1 rounded-full">
+                    {cat} <span className="text-slate-500">({count})</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {!isWindows26H2Guide && !isGlobalEditorialArticle && (
+            <div className="bg-cyan-500/10 border border-cyan-500/30 rounded-2xl p-5 text-center">
+              <p className="font-black text-white mb-1">Free Diagnosis</p>
+              <p className="text-xs text-slate-400 mb-4">Not sure what's wrong? We'll check for free.</p>
+              <a
+                href={waLink}
+                onClick={() => trackLead('Blog_Sidebar_WhatsApp')}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-black font-black py-2.5 rounded-xl mb-2 transition-colors"
+              >
+                <MessageCircle size={16} aria-hidden="true" /> WhatsApp Us
+              </a>
+              {/* Added conditional handling for the phone number */}
+              {business.telephone && (
+                <a
+                  href={`tel:+${business.telephone}`}
+                  onClick={() => trackLead('Blog_Sidebar_Call')}
+                  className="flex items-center justify-center gap-2 border border-slate-700 hover:border-cyan-500/40 text-white font-bold py-2.5 rounded-xl transition-colors"
+                >
+                  <Phone size={16} aria-hidden="true" /> Call Now
+                </a>
+              )}
+            </div>
+            )}
+          </div>
+        </aside>
+
         {/* ═══ MAIN COLUMN ═══ */}
-        <div>
+        <div className="lg:order-first">
           <article className="max-w-4xl" ref={articleRef}>
             <header className="mb-12">
               <Link to={isNews ? ROUTES.NEWS : isGuide ? ROUTES.GUIDES : ROUTES.BLOG} className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors mb-8 font-medium">
@@ -1635,88 +1730,7 @@ export default function BlogPostTemplate() {
           )}
         </div>
 
-        {/* ═══ SIDEBAR (desktop only) ═══ */}
-        <aside className="hidden lg:block">
-          <div className="sticky top-28 space-y-6">
-            {headings.length > 0 && (
-              <nav aria-label="Table of contents" className="bg-slate-900/40 border border-slate-800 rounded-2xl p-5">
-                <p className="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-slate-400 mb-4">
-                  <List size={14} className="text-cyan-400" aria-hidden="true" /> On This Page
-                </p>
-                <ol className="m-0 list-decimal space-y-2.5 pl-8 pr-0 text-sm">
-                  {headings.map(h => (
-                    <li key={h.id}>
-                      <a
-                        href={`#${h.id}`}
-                        className={`block transition-colors ${activeHeadingId === h.id ? 'text-cyan-400 font-bold' : 'text-slate-400 hover:text-slate-200'}`}
-                      >
-                        {h.tocLabel}
-                      </a>
-                    </li>
-                  ))}
-                </ol>
-              </nav>
-            )}
 
-            <div className="bg-slate-900/40 border border-slate-800 rounded-2xl p-5">
-              <p className="text-xs font-black uppercase tracking-wider text-slate-400 mb-3">Author</p>
-              <p className="font-bold text-white">{post.author}</p>
-              <p className="text-xs text-slate-500 mt-1">{post.slug === 'why-is-my-laptop-so-slow' ? 'KCROC Hardware Engineering Lab' : isGlobalEditorialArticle ? 'KCROC Technical Editorial' : 'Kuwait Computer Repair On Call'}</p>
-            </div>
-
-            {(isGlobalEditorialArticle ? relatedPosts : recentPosts).length > 0 && (
-              <div className="bg-slate-900/40 border border-slate-800 rounded-2xl p-5">
-                <p className="text-xs font-black uppercase tracking-wider text-slate-400 mb-4">{isGlobalEditorialArticle ? 'Related Guides' : 'Recent Articles'}</p>
-                <ul className="space-y-3">
-                  {(isGlobalEditorialArticle ? relatedPosts : recentPosts).map(r => (
-                    <li key={r.slug}>
-                      <Link to={contentRoute(r)} className="text-sm text-slate-300 hover:text-cyan-400 leading-snug line-clamp-2">
-                        {r.title}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-
-            <div className="bg-slate-900/40 border border-slate-800 rounded-2xl p-5">
-              <p className="text-xs font-black uppercase tracking-wider text-slate-400 mb-3">Categories</p>
-              <ul className="flex flex-wrap gap-2">
-                {categories.map(([cat, count]) => (
-                  <li key={cat} className="text-xs bg-slate-800/60 text-slate-300 px-2.5 py-1 rounded-full">
-                    {cat} <span className="text-slate-500">({count})</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {!isWindows26H2Guide && !isGlobalEditorialArticle && (
-            <div className="bg-cyan-500/10 border border-cyan-500/30 rounded-2xl p-5 text-center">
-              <p className="font-black text-white mb-1">Free Diagnosis</p>
-              <p className="text-xs text-slate-400 mb-4">Not sure what's wrong? We'll check for free.</p>
-              <a
-                href={waLink}
-                onClick={() => trackLead('Blog_Sidebar_WhatsApp')}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-black font-black py-2.5 rounded-xl mb-2 transition-colors"
-              >
-                <MessageCircle size={16} aria-hidden="true" /> WhatsApp Us
-              </a>
-              {/* Added conditional handling for the phone number */}
-              {business.telephone && (
-                <a
-                  href={`tel:+${business.telephone}`}
-                  onClick={() => trackLead('Blog_Sidebar_Call')}
-                  className="flex items-center justify-center gap-2 border border-slate-700 hover:border-cyan-500/40 text-white font-bold py-2.5 rounded-xl transition-colors"
-                >
-                  <Phone size={16} aria-hidden="true" /> Call Now
-                </a>
-              )}
-            </div>
-            )}
-          </div>
-        </aside>
       </div>
 
       {/* Back to top */}
