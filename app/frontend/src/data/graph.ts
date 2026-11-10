@@ -1048,7 +1048,7 @@ export const rawGraphData: RawGraphData = {
     } as WebPageEntity,
 
     // 🚀 NEW: GameBarPresenceWriter.exe diagnostic guide. schemaTypes is
-    // 'Article' only (no 'FAQPage') — this page's FAQPage + BreadcrumbList
+    // 'WebPage' only (page-specific article/FAQ/breadcrumb schema is rendered by SchemaMarkup) — this page's FAQPage + BreadcrumbList
     // schema is rendered directly in the page itself via SchemaMarkup, not
     // through this entity, since SEOEngine's WebPage->FAQPage branch falls
     // back to every site-wide FAQ when there's no featuredFAQIds set (see
@@ -1058,11 +1058,11 @@ export const rawGraphData: RawGraphData = {
       slug: 'guides/gamebar-presence-writer-fix',
       entityType: 'WebPage',
       isActive: true,
-      title: 'GameBarPresenceWriter.exe: Safe Testing, Game Bar Settings and Gaming Stutter'
-      description: 'A measurement-first Windows guide to testing GameBarPresenceWriter.exe, comparing frame-time, reviewing Xbox Game Bar capture settings, and understanding Game DVR policy scope and registry risks.'
+      title: 'GameBarPresenceWriter.exe: Safe Testing, Game Bar Settings and Gaming Stutter',
+      description: 'A measurement-first Windows guide to testing GameBarPresenceWriter.exe, comparing frame-time, reviewing Xbox Game Bar capture settings, and understanding Game DVR policy scope and registry risks.',
       seo: {
-        title: 'GameBarPresenceWriter.exe: Test Gaming Stutter Safely | KCROC'
-        description: 'Test GameBarPresenceWriter.exe with a repeatable frame-time comparison. Review Xbox Game Bar capture settings, Game DVR policy scope, and safe registry rollback.'
+        title: 'GameBarPresenceWriter.exe: Test Gaming Stutter Safely | KCROC',
+        description: 'Test GameBarPresenceWriter.exe with a repeatable frame-time comparison. Review Xbox Game Bar capture settings, Game DVR policy scope, and safe registry rollback.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/guides/gamebar-presence-writer-fix', locale: 'en',
         ogImage: 'https://www.computerrepairkuwait.com/images/discover/windows-11-laptop-multitasking-1200x675.webp',
         lastModified: '2026-11-10T02:00:00+03:00',
