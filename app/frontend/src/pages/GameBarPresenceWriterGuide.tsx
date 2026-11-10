@@ -53,8 +53,6 @@ const toc = [
   { id: 'faq', label: 'FAQ' },
 ];
 
-const symptoms];
-
 const symptoms = [
   { symptom: 'High FPS but uneven motion', likely: 'Frame-time spikes, overlays, DPC/driver activity, shader compilation, or CPU scheduling.', check: 'Watch frame-time, not only the FPS counter.' },
   { symptom: 'Stutter starts when Game Bar opens', likely: 'Game Bar/capture/overlay activity is a plausible contributor.', check: 'Reproduce with Game Bar disabled and compare the same scene.' },
@@ -146,7 +144,7 @@ const STRUCTURED_DATA = {
       "@type": "HowTo",
       "@id": `${PAGE_URL}#howto`,
       "name": "How to test GameBarPresenceWriter.exe and troubleshoot gaming stutter",
-      "description": "A cautious four-tier sequence that starts with a reversible process test and escalates only when measurements justify it.",
+      "description": "A nine-step diagnostic workflow that starts with repeatable measurement, uses a reversible process test, and escalates only when the evidence justifies it.",
       "step": [
         { "@type": "HowToStep", "position": 1, "name": "Choose a repeatable game scene", "text": "Use the same save, location, camera movement, display mode, frame cap, graphics settings and background applications for each comparison.", "url": `${PAGE_URL}#methodology` },
         { "@type": "HowToStep", "position": 2, "name": "Record a baseline", "text": "Record frame-time behavior alongside average FPS, CPU and GPU load, temperatures and clock speeds before changing anything.", "url": `${PAGE_URL}#methodology` },
@@ -157,7 +155,6 @@ const STRUCTURED_DATA = {
         { "@type": "HowToStep", "position": 7, "name": "Separate user settings from device policy", "text": "Inspect current-user capture values and distinguish them from the device-scoped AllowGameDVR policy before changing configuration.", "url": `${PAGE_URL}#controls` },
         { "@type": "HowToStep", "position": 8, "name": "Check policy applicability", "text": "Microsoft documents AllowGameDVR policy enforcement only on Windows 10 desktop. Do not apply it as a universal Windows 11 performance tweak.", "url": `${PAGE_URL}#game-dvr-registry` },
         { "@type": "HowToStep", "position": 9, "name": "Leave the undocumented protected override to experts", "text": "The ActivatableClassId ActivationType workaround is not documented by Microsoft as a supported disable method. Most users should leave it untouched and preserve a rollback path.", "url": `${PAGE_URL}#registry` }
-      ]
       ]
     },
     {
@@ -410,7 +407,7 @@ export default function GameBarPresenceWriterGuide() {
             </tbody>
           </AccessibleTable>
 
-          <div className="mt-6 grid gap-4 sm:grid-cols-3">          <div className="mt-6 grid gap-4 sm:grid-cols-3">
+          <div className="mt-6 grid gap-4 sm:grid-cols-3">
             {[
               ['Frame-time', 'Look for spikes and uneven delivery, not only average FPS.', Gauge],
               ['Temperatures', 'Log CPU/GPU temperatures and clock speeds during the same test.', Thermometer],
@@ -542,7 +539,6 @@ export default function GameBarPresenceWriterGuide() {
             <Link to="/guides/windows-11-settings-tweaks" className="font-semibold text-cyan-300 hover:text-cyan-200">18 Windows 11 Settings Worth Changing</Link>{' '}
             and return here only if you need a deeper Game DVR configuration test.
           </p>
-        </div>
           <div className="mt-8 rounded-2xl border border-violet-500/20 bg-violet-500/5 p-5 sm:p-6">
             <h3 className="flex items-center gap-2 font-bold text-white"><Terminal className="h-5 w-5 text-violet-400" /> Read-only check: inspect existing values</h3>
             <p className="mt-2 text-sm leading-6 text-slate-300">These commands query current configuration; they do not write registry values. A value may be absent on a particular Windows build.</p>
@@ -551,6 +547,7 @@ export default function GameBarPresenceWriterGuide() {
             </div>
             <p className="mt-3 text-xs leading-5 text-slate-400">Save the output if you need to compare it later. Do not create a missing device-policy key to imitate a setting shown in a forum post.</p>
           </div>
+        </div>
       </section>
 
       <section id="registry" className={`${sectionClass} bg-slate-900/40`}>
@@ -621,7 +618,7 @@ export default function GameBarPresenceWriterGuide() {
               ))}
             </tbody>
           </AccessibleTable>
-          <p className="mt-6 max-w-3xl text-sm leading-6 text-slate-400">          <p className="mt-6 max-w-3xl text-sm leading-6 text-slate-400">
+          <p className="mt-6 max-w-3xl text-sm leading-6 text-slate-400">
             If thermal throttling is the real story, our{' '}
             <Link to="/blog/gaming-pc-cooling" className="font-semibold text-cyan-300 hover:text-cyan-200">gaming PC cooling guide</Link>{' '}
             covers dust buildup, fan wear, and heatsink service before you reach for another software tweak.
@@ -696,7 +693,7 @@ export default function GameBarPresenceWriterGuide() {
                 <h3 className="font-bold leading-6 text-white">{faq.q}</h3>
                 <p className="mt-3 text-sm leading-7 text-slate-400">
                   {faq.q === 'Does GameBarPresenceWriter.exe definitely cause gaming stutter?'
-                    ? <>No. Its presence in Task Manager does not prove that it causes stutter. Use the <a href="#10-second-test" className="font-semibold text-cyan-300 underline underline-offset-4 hover:text-cyan-200">process-isolation test above in Step 1</a> and compare the same scene more than once. Frame-time spikes can also come from drivers, overlays, shader compilation, CPU/GPU limits, thermal throttling, storage, or other background activity.</>
+                    ? <>No. Its presence in Task Manager does not prove that it causes stutter. Use the <a href="#10-second-test" className="font-semibold text-cyan-300 underline underline-offset-4 hover:text-cyan-200">process-isolation test above in Step 5</a> and compare the same scene more than once. Frame-time spikes can also come from drivers, overlays, shader compilation, CPU/GPU limits, thermal throttling, storage, or other background activity.</>
                     : faq.a}
                 </p>
               </article>
