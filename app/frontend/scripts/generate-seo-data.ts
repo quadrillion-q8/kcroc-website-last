@@ -16,7 +16,7 @@ const routableEntities = (KCROC_GRAPH.routableEntities ?? []).map((e: any) => {
     case 'Business':
       return { ...b, legalName: e.legalName, logoUrl: e.logoUrl, telephone: e.telephone, email: e.email, websiteUrl: e.websiteUrl, priceRange: e.priceRange, addressRegion: e.addressRegion, schemaOpeningHours: e.schemaOpeningHours, socialLinks: e.socialLinks };
     case 'Service':
-      return { ...b, description: e.description, pricing: e.pricing, faqs: e.faqs };
+      return { ...b, description: e.description, pricing: e.pricing, commercialAnswers: e.commercialAnswers, faqs: e.faqs };
     case 'Brand':
       return { ...b, brandName: e.brandName, officialWebsite: e.officialWebsite, pricing: e.pricing, commonIssues: e.commonIssues ?? [], faqs: e.faqs };
     case 'Problem':

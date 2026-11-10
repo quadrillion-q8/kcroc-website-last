@@ -64,6 +64,24 @@ check((problem.seo.schemaTypes ?? []).includes('HowTo'), 'Declare HowTo schema f
 check(!unsafeClaims.some((pattern) => pattern.test(JSON.stringify(problem))), 'Remove fixed corrosion timelines, universal data guarantees and unsupported board-swap savings claims.');
 
 
+const liquidDamageService = KCROC_GRAPH.services.find((item) => item.id === 'srv-liquid-damage');
+const projectedLiquidDamageService = SEO_GRAPH.routableEntities.find((item) => item.id === 'srv-liquid-damage') as {
+  id: string;
+  pricing?: { startingFrom?: number; currency?: string };
+  commercialAnswers?: Array<{ question: string; answer: string }>;
+  faqs?: Array<{ title: string; answer: string }>;
+} | undefined;
+const serviceTemplateSource = readFileSync(new URL('../src/pages/templates/ServiceTemplate.tsx', import.meta.url), 'utf8');
+check(Boolean(liquidDamageService && liquidDamageService.slug === 'laptop-liquid-damage-repair-kuwait'), 'English liquid-damage money page must remain registered as the existing service URL.');
+check((liquidDamageService?.commercialAnswers?.length ?? 0) === 4, 'English liquid-damage page must keep four visible Before you book answers.');
+check((liquidDamageService?.faqs?.length ?? 0) === 6, 'English liquid-damage page must keep six visible customer FAQs.');
+check((liquidDamageService?.pricingGuide?.rows?.length ?? 0) === 3, 'English liquid-damage page must publish its three repair-scope pricing tiers.');
+check((liquidDamageService?.pricing?.startingFrom ?? 0) === 35 && liquidDamageService?.pricing?.currency === 'KWD', 'English liquid-damage offer must keep the published 35 KWD starting price.');
+check((liquidDamageService?.seo?.schemaTypes ?? []).includes('Service') && (liquidDamageService?.seo?.schemaTypes ?? []).includes('FAQPage'), 'English liquid-damage page must declare Service and FAQPage schema.');
+check(Boolean(projectedLiquidDamageService?.commercialAnswers?.length === 4 && projectedLiquidDamageService?.faqs?.length === 6), 'SEO projection must preserve all ten commercial Q&A entries for prerendering and FAQ schema.');
+check(serviceTemplateSource.includes("entity.id === 'srv-liquid-damage'") && serviceTemplateSource.includes('exact laptop model, what spilled'), 'Liquid-damage service must provide a model / spill / power-state WhatsApp intake prompt.');
+check(serviceTemplateSource.includes('entity.pricingGuide.rows.map') && serviceTemplateSource.includes('entity.faqs.map'), 'Liquid-damage pricing and answered FAQs must be rendered by the shared service template.');
+
 const arabicLiquidPageSource = readFileSync(new URL('../src/pages/ArabicLiquidDamageRepairPage.tsx', import.meta.url), 'utf8');
 const appSource = readFileSync(new URL('../src/App.tsx', import.meta.url), 'utf8');
 const arabicLiquidPage = KCROC_GRAPH.routableEntities.find((item) => item.id === 'page-ar-liquid-damage-repair') as {

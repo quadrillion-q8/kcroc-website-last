@@ -153,7 +153,9 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
   const isScreenService = entity.id === 'srv-screen';
   const isMacbookScreenService = entity.id === 'srv-macbook-screen';
   const isKeyboardService = entity.id === 'srv-keyboard';
-  const whatsappLink = buildWhatsAppLink(entity.id === 'srv-keyboard'
+  const whatsappLink = buildWhatsAppLink(entity.id === 'srv-liquid-damage'
+    ? 'Hi KCROC, I need laptop or MacBook liquid-damage inspection in Kuwait. Exact brand and model: ____. What spilled (water / coffee / karak / juice / other): ____. Approximate time of spill: ____. Was the laptop powered on or switched on again afterward: ____. Current symptom: ____. Kuwait pickup area: ____. The device is switched off and unplugged. Please advise on free pickup and the next inspection step.'
+    : entity.id === 'srv-keyboard'
     ? 'Hi KCROC, I need laptop keyboard diagnosis or replacement in Kuwait. Brand and exact model / Service Tag: ____. Symptoms: dead keys / repeated typing / full keyboard failure / liquid spill / backlight or RGB / wrong layout: ____. Required layout: Arabic-English / English / other ____. Backlight or RGB required: ____. Liquid spill history: ____. Kuwait area: ____. I can send a keyboard photo and model label. Please confirm the diagnostic findings, compatible part, labour plus part total, and timing before ordering or starting paid work.'
     : entity.id === 'srv-charging-port'
     ? 'Hi KCROC, I need laptop charging-port repair in Kuwait. Brand and exact model: ____. Port type (DC barrel / rectangular Slim-Tip / USB-C / not sure): ____. Symptoms: ____. Kuwait area: ____. I can send photos of the port and charger label. Please advise on diagnosis and free pickup.'
@@ -192,7 +194,7 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
                 <div className="w-16 h-16 bg-brand-dark border border-slate-800 rounded-2xl flex items-center justify-center shadow-inner">
                   <ServiceIcon className="w-8 h-8 text-cyan-400" />
                 </div>
-                <h1 className="text-3xl sm:text-4xl md:text-5xl leading-tight font-black text-white">{entity.id === 'srv-charging-port' ? 'Laptop Charging Port Repair in Kuwait — DC Jack, USB-C & Board-Level Power Restoration' : isScreenService ? 'Laptop Screen Repair & Replacement in Kuwait' : isLaptopService ? 'Laptop Repair Kuwait — Component-Level Diagnostics & Hardware Restoration' : entity.id === 'srv-gaming' ? 'Gaming PC Repair Kuwait — Chip-Level GPU, Motherboard & Cooling Lab' : defaultServiceHeading}</h1>
+                <h1 className="text-3xl sm:text-4xl md:text-5xl leading-tight font-black text-white">{entity.id === 'srv-liquid-damage' ? 'Laptop Liquid Damage Repair in Kuwait' : entity.id === 'srv-charging-port' ? 'Laptop Charging Port Repair in Kuwait — DC Jack, USB-C & Board-Level Power Restoration' : isScreenService ? 'Laptop Screen Repair & Replacement in Kuwait' : isLaptopService ? 'Laptop Repair Kuwait — Component-Level Diagnostics & Hardware Restoration' : entity.id === 'srv-gaming' ? 'Gaming PC Repair Kuwait — Chip-Level GPU, Motherboard & Cooling Lab' : defaultServiceHeading}</h1>
               </div>
 
               <div className="max-w-3xl mb-8 space-y-3">
@@ -217,6 +219,11 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
                   <ArrowRight className="h-5 w-5" aria-hidden="true" /> Book Free Pickup
                 </Link>
               </div>
+              {entity.id === 'srv-liquid-damage' && (
+                <p className="mb-6 max-w-3xl text-xs leading-6 text-slate-400">
+                  Fastest WhatsApp triage: send your exact laptop model, what spilled, when it happened and whether the device was powered on afterward. Keep it switched off and unplugged; do not test it.
+                </p>
+              )}
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 max-w-4xl">
                 <div className="bg-brand-dark/80 px-4 py-3 rounded-xl border border-slate-800 flex items-center gap-3">

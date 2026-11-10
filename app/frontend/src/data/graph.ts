@@ -2261,91 +2261,320 @@ export const rawGraphData: RawGraphData = {
     } as ServiceEntity,
 
     'srv-liquid-damage': {
-      id: 'srv-liquid-damage', slug: 'laptop-liquid-damage-repair-kuwait', entityType: 'Service', isActive: true,
-      title: 'Laptop Liquid Damage Repair Kuwait', primaryKeyword: "laptop liquid damage repair Kuwait", secondaryKeywords: ["water damaged laptop repair","MacBook liquid damage repair Kuwait","laptop motherboard corrosion repair"], iconKey: 'cpu',
-      shortDescription: 'We fix the board. We do not just swap it — liquid damage is assessed for component-level repair wherever technically viable.',
-      description: 'Water, coffee, karak, juice and other spills can affect laptop keyboards, connectors and motherboard circuits, even after visible moisture has dried. At KCROC\'s Hawalli repair lab, we isolate power, inspect the affected areas, assess corrosion and clean contamination using a method suited to the board. Where testing identifies a repairable fault, we work at component level and use micro-soldering where required rather than automatically recommending a full motherboard replacement. Free initial diagnosis, a quote before paid work, free pickup across Kuwait and a 30-day warranty on completed repair work.',
-      idealCustomer: 'Laptop and MacBook owners dealing with a recent or earlier spill, sticky or unresponsive keys, charging trouble, a black screen, or a device that stopped working after liquid exposure.',
+      id: 'srv-liquid-damage',
+      slug: 'laptop-liquid-damage-repair-kuwait',
+      entityType: 'Service',
+      isActive: true,
+      title: 'Laptop Liquid Damage Repair Kuwait',
+      primaryKeyword: 'laptop liquid damage repair Kuwait',
+      secondaryKeywords: [
+        'water damaged laptop repair',
+        'MacBook liquid damage repair Kuwait',
+        'laptop motherboard corrosion repair',
+        'karak spill laptop repair',
+        'coffee spilled on laptop repair'
+      ],
+      iconKey: 'cpu',
+      shortDescription: 'We fix the board where repair is viable. We do not automatically replace the whole motherboard.',
+      description: 'Water, coffee, karak, sweetened drinks and other spills can affect a laptop keyboard, connectors, charging path or motherboard—even when the outside looks dry. KCROC inspects liquid-damaged laptops and MacBooks at our Hawalli workshop, isolates power, identifies the affected areas and selects a cleaning method appropriate to the board. Where the fault and board condition allow, we repair the original electronics at component level. Initial diagnosis is free, paid work starts only after you approve the quote, and free pickup and return can be arranged across Kuwait. Completed repairs carry a 30-day warranty on the covered work.',
+      idealCustomer: 'Laptop, MacBook and gaming-laptop owners whose device has had a water, coffee, karak, juice or other liquid spill, or now has sticky keys, charging trouble, a black screen, random shutdowns or no power after exposure.',
       commercialAnswers: [
-        { question: 'What does the 35 KWD starting price mean?', answer: '35 KWD is the published starting price, not a fixed total for every spill. KCROC\'s pricing guide lists liquid-damage repair at 35–90+ KWD. The final quote depends on the device, affected area, corrosion and repair required. Initial diagnostics are free, and we provide the quote for approval before paid repair work begins.' },
-        { question: 'Will you replace the whole motherboard?', answer: 'Not automatically. We inspect the original board and consider component-level repair or micro-soldering where the fault and board condition make it technically viable. If the damage is too extensive, we explain the findings and available repair options before paid work.' },
-        { question: 'Will my files and data be guaranteed?', answer: 'No. Data access depends on the device design and the extent of damage to the board and storage. We prioritise a repair path that retains the original hardware where practical, but cannot guarantee data access or preservation. Keep a spilled laptop switched off; do not power it on to try to make a backup.' },
-        { question: 'How long does liquid-damage repair take?', answer: 'The published typical turnaround is 24–72 hours. The actual time depends on the damage found, repair complexity and any required parts. We confirm the expected timing after inspection.' },
+        {
+          question: 'What does the 35 KWD starting price include?',
+          answer: '35 KWD is the published starting price for a limited liquid-damage repair; it is not a fixed total for every spill. The current overall guide range is 35–90+ KWD. The scope depends on where the liquid entered, the residue and corrosion found, and whether cleaning or component-level repair is required. Initial diagnosis is 0 KWD, any replacement part is quoted separately, and you approve the full price before paid work starts.'
+        },
+        {
+          question: 'Will KCROC replace the entire motherboard?',
+          answer: 'Not automatically. We inspect the original board and check whether the affected connector, power circuit, component or trace can be repaired. Component-level work is considered only when the board condition makes it technically reasonable. If a repair is not viable or a replacement is more sensible, we explain the findings and options before you decide.'
+        },
+        {
+          question: 'Can you guarantee my files will be preserved?',
+          answer: 'No repair shop can promise data access before the extent and location of the damage are known. We avoid unnecessary storage access and may prioritise repairing the original board where practical, but liquid damage can affect storage power or the logic board itself. Keep the device switched off; do not reconnect power to try to make a backup.'
+        },
+        {
+          question: 'How long does liquid-damage repair take?',
+          answer: 'The published typical turnaround is 24–72 hours after the device reaches the workshop. Severe corrosion, multi-layer board faults, model-specific testing or parts availability can extend the time. We confirm a realistic estimate after inspection.'
+        }
       ],
       deviceTypes: ['Windows Laptops', 'MacBook Air', 'MacBook Pro', 'Gaming Laptops', 'Business Laptops'],
-      repairLevel: 'component-level', estimatedTurnaround: '24-72 Hours',
-            pricing: { startingFrom: 35, currency: 'KWD', quoteRequired: true, displayLabel: 'From 35 KWD' },
-      coreFeatures: ['Immediate Power Isolation', 'Liquid Damage Inspection', 'Corrosion Mapping', 'Board Cleaning', 'Connector Inspection', 'Component-Level Diagnostics', 'Micro-Soldering Where Required', 'Post-Repair Stress Testing', 'Free Pick & Drop', '30-Day Warranty'],
+      repairLevel: 'component-level',
+      estimatedTurnaround: '24–72 Hours',
+      pricing: { startingFrom: 35, currency: 'KWD', quoteRequired: true, displayLabel: 'From 35 KWD · diagnosis free' },
+      pricingGuide: {
+        heading: 'Liquid-Damage Repair Pricing & Scope',
+        intro: 'A keyboard or connector spill is not the same job as a contaminated motherboard or a shorted power circuit. These guide tiers explain what usually separates the published 35 KWD starting point from more involved board work. The technician confirms the actual scope after inspection.',
+        rows: [
+          {
+            category: 'Tier 1 — Early contamination & peripheral path',
+            symptoms: 'Liquid reached the keyboard area, trackpad, connector or flex path, with no confirmed motherboard power-rail fault.',
+            startingPrice: 'From 35 KWD',
+            typicalTurnaround: 'Confirmed after inspection; parts and replacement assemblies are quoted separately.'
+          },
+          {
+            category: 'Tier 2 — Bare-board decontamination',
+            symptoms: 'Residue or surface oxidation is found on the motherboard and the board can be safely stripped and prepared for the selected cleaning process.',
+            startingPrice: '45–65 KWD',
+            typicalTurnaround: 'Typically within the published 24–72-hour window; board condition and testing can extend it.'
+          },
+          {
+            category: 'Tier 3 — Component-level repair & trace work',
+            symptoms: 'Testing identifies a repairable shorted component, damaged connector pad, corroded trace or affected power / charging circuit.',
+            startingPrice: '60–90+ KWD',
+            typicalTurnaround: 'Depends on board-level fault tracing, repair complexity and any required components.'
+          }
+        ],
+        note: 'Initial diagnosis is 0 KWD. The tiers are guide ranges, not automatic charges or guaranteed outcomes; the repair categories can overlap when a device needs more than one procedure. Any replacement keyboard, trackpad, cable or board is priced separately. You receive the findings and a clear total quote before paid work. If no viable repair is undertaken, the No Fix, No Fee policy applies under the terms confirmed at booking.'
+      },
+      coreFeatures: [
+        'Main input and standby power-rail fault tracing',
+        'USB-C Power Delivery and DC-in charging-path inspection',
+        'Display backlight circuit and eDP connector diagnosis',
+        'Keyboard matrix, trackpad and flex-cable path inspection',
+        'Bare-board cleaning when board preparation and materials allow',
+        'SMD micro-soldering and corroded pad / trace repair where viable'
+      ],
       brands: ['Dell', 'HP', 'Lenovo', 'ASUS', 'Acer', 'MSI', 'MacBook'],
       whyChooseUs: [
-        { title: 'Power-Off First', description: 'We isolate the power sources before inspecting the affected board, connectors and keyboard path.' },
-        { title: 'Corrosion Assessment', description: 'We inspect the affected areas for residue, corrosion and damaged traces or components; a dry exterior does not prove the inside is clean.' },
-        { title: 'Original Board Where Viable', description: 'We assess whether the original motherboard can be repaired at component level rather than automatically defaulting to a full board replacement.' },
-        { title: 'Clear Quote Before Paid Work', description: 'We explain the inspection findings and provide a repair quote for your approval before carrying out paid work.' }
+        {
+          title: 'Workshop inspection, not surface drying',
+          description: 'A dry-looking case does not show what reached the keyboard layers, connectors or motherboard. We inspect the affected internal assemblies before recommending a repair.'
+        },
+        {
+          title: 'Original-board repair considered first',
+          description: 'Where technically viable, we trace the affected circuit and assess targeted component repair instead of assuming a complete motherboard replacement is necessary.'
+        },
+        {
+          title: 'Cleaning matched to the board',
+          description: 'We choose the cleaning method after identifying the board materials, shields and components. Ultrasonic cleaning is not applied indiscriminately to a complete assembled laptop.'
+        },
+        {
+          title: 'Written approval before paid work',
+          description: 'Initial diagnosis is free. We explain what was found, separate labour from any replacement parts and wait for your approval before paid repair work begins.'
+        }
       ],
       commonIssues: [
-        { id: 'spill-no-power', title: 'Laptop Died After a Spill', severity: 'critical', description: 'Power should be isolated immediately. The board is then inspected for shorts, corrosion and damaged power components.' },
-        { id: 'spill-keyboard', title: 'Keyboard Stopped Working After Liquid', severity: 'high', description: 'The keyboard and the electronics underneath it are checked because liquid can travel beyond the visible spill area.' },
-        { id: 'liquid-black-screen', title: 'Laptop Powers On but Screen Is Black', severity: 'critical', description: 'Liquid can affect display power, backlight circuits, connectors or the motherboard even when fans still spin.' },
-        { id: 'corrosion-later', title: 'Laptop Failed Days After a Spill', severity: 'high', description: 'Delayed corrosion can turn a minor-looking spill into an intermittent or complete hardware failure.' }
+        {
+          id: 'spill-no-power',
+          title: 'Laptop Died After a Spill',
+          severity: 'critical',
+          description: 'The device may have a short or damaged component on an input or standby power path. We isolate power and test the affected board before attempting another start.'
+        },
+        {
+          id: 'spill-keyboard',
+          title: 'Keyboard or Trackpad Stopped Working',
+          severity: 'high',
+          description: 'Liquid can affect the keyboard membrane, trackpad, flex cable or the board-side connector. The affected path is inspected before a replacement assembly is recommended.'
+        },
+        {
+          id: 'liquid-black-screen',
+          title: 'Fans Run but the Display Is Black',
+          severity: 'critical',
+          description: 'The display cable, eDP connector, backlight circuit or another board fault may be involved. A black screen after a spill needs diagnosis rather than repeated power tests.'
+        },
+        {
+          id: 'corrosion-later',
+          title: 'Laptop Fails After It Seemed Dry',
+          severity: 'high',
+          description: 'Liquid residue can remain under components or around connectors after surface moisture evaporates. Delayed corrosion or an intermittent connection may then cause a later failure.'
+        }
       ],
       process: [
-        { step: 1, title: 'Free Pickup Across Kuwait', description: 'We arrange collection from your home or office. Keep the laptop switched off and disconnected from its charger while it awaits pickup.' },
-        { step: 2, title: 'Power Isolation & Inspection', description: 'Our technician isolates the battery and external power before opening the device and checking the affected areas.' },
-        { step: 3, title: 'Corrosion & Circuit Assessment', description: 'We inspect the board, connectors and relevant power circuits to understand where liquid or residue has affected the device.' },
-        { step: 4, title: 'Board Cleaning', description: 'The cleaning method is selected for the board and components. Ultrasonic cleaning is used only when the bare-board condition and preparation make it appropriate.' },
-        { step: 5, title: 'Component-Level Repair & Testing', description: 'Where the fault is repairable, affected components, traces or connectors are addressed at board level; the functions affected by the spill are then tested.' },
-        { step: 6, title: 'Return with 30-Day Warranty', description: 'After the completed repair passes its functional checks, we arrange return delivery with a 30-day warranty on the covered repair work.' }
+        {
+          step: 1,
+          title: 'Free Kuwait-Wide Pickup',
+          description: 'We arrange collection from your home or office and record the laptop model, liquid type and reported symptoms. Keep the device switched off and unplugged.'
+        },
+        {
+          step: 2,
+          title: 'Safe Teardown & Power Isolation',
+          description: 'At the Hawalli workshop, the technician disconnects external power and isolates the internal battery before opening and documenting the affected assemblies.'
+        },
+        {
+          step: 3,
+          title: 'Residue & Circuit Mapping',
+          description: 'The keyboard, flex cables, ports, shields and motherboard are inspected. Model-appropriate measurements help identify affected power rails and components.'
+        },
+        {
+          step: 4,
+          title: 'Targeted Board Preparation & Cleaning',
+          description: 'The board is stripped and prepared as required. The cleaning chemistry and process are selected for the board materials; ultrasonic cleaning is used only when appropriate.'
+        },
+        {
+          step: 5,
+          title: 'Approved Component-Level Repair',
+          description: 'After you approve the quote, repairable connectors, components, pads or traces are addressed. If the original board is not repairable, we explain the alternatives instead of promising recovery.'
+        },
+        {
+          step: 6,
+          title: 'Functional & Stability Checks',
+          description: 'We test functions affected by the spill—such as charging, keyboard, trackpad, display and ports—and check stability before arranging return with the 30-day warranty on covered work.'
+        }
       ],
       faqs: [
-        { id: 'liquid-faq-1', title: 'Can a laptop be repaired after a coffee or karak spill?', answer: 'Often yes. The outcome depends on where the liquid entered, how long it remained inside and whether corrosion or component damage has occurred. We inspect the affected areas before recommending a repair.' },
-        { id: 'liquid-faq-2', title: 'Do you repair liquid-damaged MacBooks?', answer: 'Yes. We inspect the logic board and affected circuits and consider component-level repair where the device condition makes it technically viable.' },
-        { id: 'liquid-faq-3', title: 'What happens if the motherboard cannot be repaired?', answer: 'We explain the inspection findings before any paid repair work is approved. KCROC\'s No Fix, No Fee policy applies according to the terms confirmed when you book.' },
-        { id: 'liquid-faq-4', title: 'Do you offer free pickup for liquid-damaged laptops?', answer: 'Yes. Free pickup and delivery can be arranged across Kuwait. Keep the laptop switched off and unplugged while waiting for collection.' },
-        { id: 'liquid-faq-5', title: 'What do you test before returning the laptop?', answer: 'We check functions affected by the spill, which may include charging, display, keyboard, storage and thermals, according to the device and repair performed.' },
-        { id: 'liquid-faq-6', title: 'Why can a laptop fail days after a spill?', answer: 'Liquid residue and corrosion can continue affecting connectors, traces and components after visible moisture has disappeared. A device that appears dry is not necessarily safe to power on.' },
+        {
+          id: 'liquid-faq-1',
+          title: 'Can a laptop be repaired after a coffee or karak spill?',
+          answer: 'Yes, many laptops can be repaired, but the result depends on where the drink travelled and whether the board or components were damaged. Coffee, karak and sweetened drinks can leave sticky residue that does not disappear when the outside dries. We inspect the keyboard path, connectors and motherboard, then select an appropriate cleaning or repair method. Keep the laptop switched off and do not test it.'
+        },
+        {
+          id: 'liquid-faq-2',
+          title: 'Do you repair liquid-damaged MacBooks?',
+          answer: 'Yes. We inspect MacBook Air and MacBook Pro assemblies, including the logic board, USB-C or MagSafe charging path where fitted, display and keyboard / trackpad connections. If the affected circuit is repairable, component-level work may be considered. On many Apple-silicon models the storage is integrated with the logic-board assembly, so retaining the original board can matter; neither repair nor data access is guaranteed.'
+        },
+        {
+          id: 'liquid-faq-3',
+          title: 'What happens if the motherboard cannot be repaired?',
+          answer: 'We explain the board findings and whether a replacement is technically and economically sensible. We do not carry out a board replacement without your approval. Initial diagnosis is free, and the No Fix, No Fee policy applies according to the terms confirmed when you book.'
+        },
+        {
+          id: 'liquid-faq-4',
+          title: 'Do you offer free pickup for liquid-damaged laptops?',
+          answer: 'Yes. Free pickup and return can be arranged across Kuwait’s six governorates, including Hawalli, As Salimiyah, Kuwait City, Farwaniya, Jahra and Ahmadi. Message KCROC with your area and device model; keep the laptop switched off and disconnected from its charger while collection is arranged.'
+        },
+        {
+          id: 'liquid-faq-5',
+          title: 'What do you test before returning the laptop?',
+          answer: 'We test the functions related to the reported spill and completed repair. Depending on the model, this can include charging and battery operation, keyboard keys, trackpad, display and backlight, USB / USB-C ports, audio, wireless connectivity and thermal stability. The exact test set depends on the device and repair performed.'
+        },
+        {
+          id: 'liquid-faq-6',
+          title: 'Why can a laptop fail days after a spill?',
+          answer: 'Visible moisture can evaporate while residue remains around pins, beneath shields or in other internal areas. That residue can contribute to corrosion or an intermittent electrical path, so symptoms may appear later. A laptop that looks dry is not necessarily safe to power on; arrange an internal inspection instead of testing it repeatedly.'
+        }
       ],
-      relatedServiceIds: ['srv-motherboard', 'srv-keyboard', 'srv-macbook'],
+      relatedServiceIds: ['srv-motherboard', 'srv-keyboard', 'srv-macbook', 'srv-charging-port'],
       relatedProblemIds: ['problem-liquid-spill', 'problem-no-power', 'problem-black-screen'],
       relatedBrandIds: ['brand-dell', 'brand-hp', 'brand-lenovo', 'brand-msi'],
       relatedLocationIds: ['loc-hawalli', 'loc-salmiya', 'loc-kuwait-city', 'loc-farwaniya', 'loc-jahra', 'loc-ahmadi'],
       relatedResourcePaths: [
-        { label: 'Laptop Repair Guide', path: '/laptop-repair-kuwait' },
-        { label: 'MacBook Repair', path: '/macbook-repair-kuwait' },
+        { label: 'Laptop Spill Emergency Steps', path: '/spilled-water-on-laptop' },
+        { label: 'Motherboard Component-Level Repair', path: '/motherboard-repair-kuwait' },
+        { label: 'MacBook Repair & Logic-Board Diagnostics', path: '/macbook-repair-kuwait' }
       ],
       technicalOverview: {
-        heading: 'What Happens Inside a Liquid-Damaged Laptop',
+        heading: 'Why the Liquid and Laptop Design Change the Repair',
         paragraphs: [
-          'A spill can leave residue beneath keyboard layers, around ribbon connectors and on motherboard circuits. This is why a laptop that looks dry — or appears to start once — may still need inspection before it is powered again. The affected area depends on the liquid, its entry point, how long it remained inside and whether the laptop was powered.',
-          'KCROC isolates power, inspects the affected areas and maps contamination before choosing a cleaning method suited to the board. Ultrasonic cleaning is used only when the board has been stripped and prepared appropriately. If testing identifies a repairable fault, component-level repair or micro-soldering may be considered. Repairability and data access depend on the actual damage and cannot be guaranteed before inspection.'
+          'Water, karak, coffee, juice and soft drinks do not leave the same residue. Water can carry dissolved minerals and contamination; sweetened or dairy-based drinks may leave sticky deposits around keyboard membranes, connectors and components. Drying the exterior does not remove material trapped inside the chassis, and applying heat or repeatedly powering the laptop can make diagnosis harder or worsen electrical damage.',
+          'Laptop power architecture also differs by model. Some Windows designs use a nominal 19-volt adapter input and separate standby rails; Apple boards use their own power-rail naming and sequencing, including PPBUS_G3H on applicable models. A technician must use the correct schematic or boardview and measurement references for the exact board rather than treating one voltage or signal as universal.',
+          'MacBook Air and MacBook Pro generations vary. Many Apple-silicon configurations integrate storage with the logic-board assembly, so keeping the original board may be important when data access is a concern. We do not promise data preservation: the condition of the board, storage and security architecture determines what remains accessible.',
+          'Gaming and high-performance Windows laptops can combine high-current CPU / GPU power stages with compact keyboard, display and charging connectors. A spill may affect the keyboard path, charging circuitry or the display / backlight connection. We trace the reported symptoms and test the relevant circuit; we do not assume that fans, RGB lighting or a black screen identifies one specific failed component.'
+        ]
+      },
+      advancedTechnicalSection: {
+        heading: 'Circuits and Components We Inspect',
+        intro: 'Liquid-damage work is guided by the fault found on the specific model. These are diagnostic areas we can inspect; not every laptop contains the same controller or rail, and not every damaged board is repairable.',
+        items: [
+          {
+            title: 'Input, standby and main power paths',
+            description: 'Check the adapter input, protection components, standby supplies and model-specific main rails for shorts, missing voltage or abnormal current draw.'
+          },
+          {
+            title: 'USB-C, Power Delivery and DC-in',
+            description: 'Inspect supported USB-C PD controllers, DC-in connectors, charging ICs and nearby protection components. Controller families and board layouts vary by laptop generation.'
+          },
+          {
+            title: 'Display, eDP and backlight path',
+            description: 'Check the display connector, cable path, backlight supply and related protection components when a spill is followed by a black or unstable screen.'
+          },
+          {
+            title: 'Keyboard, trackpad and flex connections',
+            description: 'Inspect keyboard matrix connections, trackpad flexes, connector pins and board-side input circuitry for contamination or damage.'
+          },
+          {
+            title: 'Board decontamination',
+            description: 'Remove shields and components as needed, then use a board-safe cleaning method suited to the PCB, coatings and attached components. Bare-board ultrasonic cleaning is conditional, not a blanket step.'
+          },
+          {
+            title: 'SMD components, pads and copper traces',
+            description: 'Where viable, trace and repair a shorted surface-mount component, corroded pad or damaged trace under suitable magnification. The technician confirms board repairability before proceeding.'
+          }
         ]
       },
       repairDecision: {
-        heading: 'Liquid Damage: What To Do Before Pickup',
+        heading: 'What To Do Immediately After a Laptop Spill',
         items: [
-          { condition: 'Laptop is still powered on', action: 'Shut it down immediately and disconnect the charger. Do not keep testing it.' },
-          { condition: 'Liquid reached the keyboard or ports', action: 'Do not reconnect power just because the outside appears dry; internal contamination may remain.' },
-          { condition: 'Laptop appears dead after a spill', action: 'Arrange inspection rather than repeatedly pressing the power button, which can worsen a short.' },
-          { condition: 'Device failed days after the spill', action: 'Request a corrosion-focused inspection because delayed failures can occur after the original incident.' }
+          {
+            condition: '1. Switch it off',
+            action: 'Shut the laptop down as soon as it is safe to do so. Do not press the power button again to check whether it works.'
+          },
+          {
+            condition: '2. Disconnect power',
+            action: 'Unplug the charger and disconnect accessories. Do not reconnect power or try to charge it.'
+          },
+          {
+            condition: '3. Keep heat and liquids away',
+            action: 'Do not use a hair dryer, oven, rice or contact cleaner through the keyboard. Do not shake the device to move liquid around.'
+          },
+          {
+            condition: '4. Arrange an internal inspection',
+            action: 'Tell us the laptop model, what spilled and whether it was powered on afterward. Follow the linked emergency guide while arranging free pickup.'
+          }
         ]
       },
-      inspectionChecklist: ['Confirm liquid type and affected area', 'Isolate battery and external power', 'Inspect board and connectors', 'Map corrosion and contamination', 'Test affected power rails', 'Verify all repaired functions under load'],
+      inspectionChecklist: [
+        'Record the exact model, liquid type, approximate spill time and power state',
+        'Confirm battery / external-power isolation before electrical testing',
+        'Inspect keyboard layers, flex cables, ports and accessible shields',
+        'Check exposed pins, pads and nearby components under magnification',
+        'Measure affected rails and check for shorts using model-specific references',
+        'Verify the functions related to the spill and completed repair'
+      ],
       contentImages: [
         {
           src: IMAGES.laptopHardware.laptopMotherboardDiagnosticBenchRepair.src,
-          alt: IMAGES.laptopHardware.laptopMotherboardDiagnosticBenchRepair.alt,
+          alt: 'Laptop motherboard on a KCROC diagnostic bench for liquid-damage inspection in Hawalli',
           width: IMAGES.laptopHardware.laptopMotherboardDiagnosticBenchRepair.width,
           height: IMAGES.laptopHardware.laptopMotherboardDiagnosticBenchRepair.height,
           placement: 'hero',
-          caption: 'A KCROC motherboard diagnostic bench image. The inspection findings determine whether board cleaning or component-level repair is appropriate.'
+          caption: 'A first-party KCROC motherboard diagnostic-bench photo. It illustrates the workshop inspection setting, not a claimed before-and-after corrosion result.'
         },
-        { src: IMAGES.laptopHardware.laptopOpenRepairBench.src, alt: IMAGES.laptopHardware.laptopOpenRepairBench.alt, width: IMAGES.laptopHardware.laptopOpenRepairBench.width, height: IMAGES.laptopHardware.laptopOpenRepairBench.height, placement: 'commonIssues', caption: 'An opened laptop prepared for internal hardware inspection.' },
-        { src: IMAGES.laptopHardware.dellTeardown.src, alt: IMAGES.laptopHardware.dellTeardown.alt, width: IMAGES.laptopHardware.dellTeardown.width, height: IMAGES.laptopHardware.dellTeardown.height, placement: 'coreFeatures', caption: 'Internal laptop hardware exposed for motherboard and connector inspection.' },
-        { src: IMAGES.laptopHardware.dellRepair.src, alt: IMAGES.laptopHardware.dellRepair.alt, width: IMAGES.laptopHardware.dellRepair.width, height: IMAGES.laptopHardware.dellRepair.height, placement: 'process', caption: 'Component-level board repair following fault isolation.' }
+        {
+          src: IMAGES.laptopHardware.laptopOpenRepairBench.src,
+          alt: 'Laptop opened for internal keyboard, connector and motherboard inspection',
+          width: IMAGES.laptopHardware.laptopOpenRepairBench.width,
+          height: IMAGES.laptopHardware.laptopOpenRepairBench.height,
+          placement: 'commonIssues',
+          caption: 'Internal inspection is needed because liquid can travel beyond the visible spill area.'
+        },
+        {
+          src: IMAGES.laptopHardware.dellTeardown.src,
+          alt: 'Laptop internal components exposed for board and connector inspection',
+          width: IMAGES.laptopHardware.dellTeardown.width,
+          height: IMAGES.laptopHardware.dellTeardown.height,
+          placement: 'coreFeatures',
+          caption: 'A laptop teardown view used to identify affected internal assemblies.'
+        },
+        {
+          src: IMAGES.laptopHardware.dellRepair.src,
+          alt: 'Laptop chassis opened for hardware repair at the workshop',
+          width: IMAGES.laptopHardware.dellRepair.width,
+          height: IMAGES.laptopHardware.dellRepair.height,
+          placement: 'process',
+          caption: 'A workshop hardware-repair photo; it is not presented as microscope proof of a liquid-damage repair.'
+        }
       ],
-      warranty: { duration: '30 Days', coverage: 'Parts and labour for components repaired or replaced during the liquid-damage service', noFixNoFee: true },
-      seo: { title: 'Laptop Liquid Damage Repair Kuwait | KCROC', description: 'Laptop and MacBook liquid damage repair in Kuwait from 35 KWD. Free diagnosis and pickup, corrosion assessment, board cleaning and micro-soldering where required. Quote before paid work.', canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-liquid-damage-repair-kuwait', locale: 'en_KW', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/laptop-liquid-damage-repair-kuwait', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/laptop-liquid-damage-repair-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/laptop-liquid-damage-repair-kuwait' }, ogType: 'article', schemaTypes: ['Service', 'FAQPage'], lastModified: '2026-11-04T00:00:00+03:00' },
-      navigationPriority: 51, isFeatured: false, popular: false
+      warranty: {
+        duration: '30 Days',
+        coverage: 'Parts and labour for components repaired or replaced during the liquid-damage service',
+        noFixNoFee: true
+      },
+      seo: {
+        title: 'Laptop Liquid Damage Repair Kuwait | From 35 KWD | KCROC',
+        description: 'Laptop and MacBook liquid-damage repair in Kuwait from 35 KWD. Free diagnosis and pickup, board cleaning and component-level repair at our Hawalli lab. Quote before work.',
+        canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-liquid-damage-repair-kuwait',
+        locale: 'en_KW',
+        alternates: {
+          'en-KW': 'https://www.computerrepairkuwait.com/laptop-liquid-damage-repair-kuwait',
+          'ar-KW': 'https://www.computerrepairkuwait.com/ar/laptop-liquid-damage-repair-kuwait',
+          'x-default': 'https://www.computerrepairkuwait.com/laptop-liquid-damage-repair-kuwait'
+        },
+        ogType: 'article',
+        schemaTypes: ['Service', 'FAQPage'],
+        lastModified: '2026-11-11T00:00:00+03:00'
+      },
+      navigationPriority: 51,
+      isFeatured: false,
+      popular: false
     } as ServiceEntity,
 
     'srv-macbook': { 
