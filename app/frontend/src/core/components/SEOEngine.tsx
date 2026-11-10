@@ -291,8 +291,61 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
             "@id": `${fullCanonicalUrl}#service`,
             "name": service.title,
             "description": service.description,
+            ...(service.id === 'srv-liquid-damage' ? {
+              "serviceType": "Laptop and MacBook liquid-damage inspection, board decontamination and component-level repair where technically viable",
+              "inLanguage": "en-KW",
+              "availableChannel": {
+                "@type": "ServiceChannel",
+                "servicePhone": "+" + business.telephone,
+                "serviceLocation": {
+                  "@type": "Place",
+                  "name": "KCROC repair laboratory — Hawalli",
+                  "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19",
+                    "addressLocality": "Hawalli",
+                    "addressRegion": "Hawalli Governorate",
+                    "addressCountry": "KW"
+                  }
+                }
+              },
+              "hasOfferCatalog": {
+                "@type": "OfferCatalog",
+                "name": "Laptop Liquid-Damage Inspection and Repair Guide Prices",
+                "itemListElement": [
+                  {
+                    "@type": "Offer",
+                    "name": "Initial diagnosis",
+                    "price": "0.00",
+                    "priceCurrency": "KWD",
+                    "description": "Free initial inspection before any paid repair is approved."
+                  },
+                  {
+                    "@type": "Offer",
+                    "name": "Tier 1 — Early contamination and peripheral path",
+                    "price": "35.00",
+                    "priceCurrency": "KWD",
+                    "description": "Published starting price. Replacement keyboard, trackpad, flex or other parts are quoted separately."
+                  },
+                  {
+                    "@type": "Offer",
+                    "name": "Tier 2 — Bare-board decontamination",
+                    "priceSpecification": { "@type": "PriceSpecification", "priceCurrency": "KWD", "minPrice": 45, "maxPrice": 65 },
+                    "priceCurrency": "KWD",
+                    "description": "Guide range for motherboard removal, preparation and appropriate board-level cleaning."
+                  },
+                  {
+                    "@type": "Offer",
+                    "name": "Tier 3 — Component-level repair and trace work",
+                    "priceSpecification": { "@type": "PriceSpecification", "priceCurrency": "KWD", "minPrice": 60 },
+                    "priceCurrency": "KWD",
+                    "description": "Guide range starts at 60 KWD; complex work can exceed 90 KWD after inspection and approval."
+                  }
+                ]
+              }
+            } : {}),
             "provider": { "@id": `${business.websiteUrl}/#business` },
-            "areaServed": service.id === 'srv-gaming-laptop' || service.id === 'srv-macbook-screen' || service.id === 'srv-charging-port'
+            "areaServed": service.id === 'srv-gaming-laptop' || service.id === 'srv-macbook-screen' || service.id === 'srv-charging-port' || service.id === 'srv-liquid-damage'
               ? [
                   { "@type": "Country", "name": "Kuwait" },
                   ...(primaryLocation?.serviceAreas ?? []).map(area => ({ "@type": "City", "name": area }))
@@ -433,7 +486,13 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
                 ]
               }
             } : {}),
-            "offers": service.pricing ? {
+            "offers": service.slug === 'laptop-liquid-damage-repair-kuwait' ? {
+              "@type": "AggregateOffer",
+              "priceCurrency": "KWD",
+              "lowPrice": 35,
+              "offerCount": 3,
+              "description": "Published guide pricing: from 35 KWD for limited contamination work, 45–65 KWD for bare-board decontamination, and 60–90+ KWD for component-level repair. Initial diagnosis is free; final price is confirmed after inspection and customer approval."
+            } : service.pricing ? {
               "@type": "Offer",
               "name": service.pricing.displayLabel ?? `From ${service.pricing.startingFrom} ${service.pricing.currency}`,
               "description": service.slug === 'laptop-screen-repair-kuwait'
@@ -526,10 +585,16 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
           // 🚀 NEW: Service-level FAQs (e.g. srv-gaming) — only produces schema
           // when the entity actually has a faqs array populated; services
           // without one (most, currently) fall through with questions === [].
-          const serviceFaqs = (entity as ServiceEntity).faqs;
-          if (serviceFaqs && serviceFaqs.length > 0) {
-            questions = serviceFaqs.map(faq => ({ title: faq.title, answer: faq.answer }));
-          }
+          const serviceEntity = entity as ServiceEntity;
+          const commercialAnswers = (serviceEntity.commercialAnswers ?? []).map(item => ({
+            title: item.question,
+            answer: item.answer
+          }));
+          const serviceFaqs = (serviceEntity.faqs ?? []).map(faq => ({
+            title: faq.title,
+            answer: faq.answer
+          }));
+          questions = [...commercialAnswers, ...serviceFaqs];
         } else if (entity.entityType === 'Brand') {
           const brandFaqs = (entity as BrandEntity).faqs;
           if (brandFaqs && brandFaqs.length > 0) {

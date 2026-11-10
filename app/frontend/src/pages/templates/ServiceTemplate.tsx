@@ -153,7 +153,9 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
   const isScreenService = entity.id === 'srv-screen';
   const isMacbookScreenService = entity.id === 'srv-macbook-screen';
   const isKeyboardService = entity.id === 'srv-keyboard';
-  const whatsappLink = buildWhatsAppLink(entity.id === 'srv-keyboard'
+  const whatsappLink = buildWhatsAppLink(entity.id === 'srv-liquid-damage'
+    ? 'Hi KCROC, I need laptop or MacBook liquid-damage inspection in Kuwait. Exact brand and model: ____. What spilled (water / coffee / karak / juice / other): ____. Approximate time of spill: ____. Was the laptop powered on or switched on again afterward: ____. Current symptom: ____. Kuwait pickup area: ____. The device is switched off and unplugged. Please advise on free pickup and the next inspection step.'
+    : entity.id === 'srv-keyboard'
     ? 'Hi KCROC, I need laptop keyboard diagnosis or replacement in Kuwait. Brand and exact model / Service Tag: ____. Symptoms: dead keys / repeated typing / full keyboard failure / liquid spill / backlight or RGB / wrong layout: ____. Required layout: Arabic-English / English / other ____. Backlight or RGB required: ____. Liquid spill history: ____. Kuwait area: ____. I can send a keyboard photo and model label. Please confirm the diagnostic findings, compatible part, labour plus part total, and timing before ordering or starting paid work.'
     : entity.id === 'srv-charging-port'
     ? 'Hi KCROC, I need laptop charging-port repair in Kuwait. Brand and exact model: ____. Port type (DC barrel / rectangular Slim-Tip / USB-C / not sure): ____. Symptoms: ____. Kuwait area: ____. I can send photos of the port and charger label. Please advise on diagnosis and free pickup.'
@@ -192,7 +194,7 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
                 <div className="w-16 h-16 bg-brand-dark border border-slate-800 rounded-2xl flex items-center justify-center shadow-inner">
                   <ServiceIcon className="w-8 h-8 text-cyan-400" />
                 </div>
-                <h1 className="text-3xl sm:text-4xl md:text-5xl leading-tight font-black text-white">{entity.id === 'srv-charging-port' ? 'Laptop Charging Port Repair in Kuwait — DC Jack, USB-C & Board-Level Power Restoration' : isScreenService ? 'Laptop Screen Repair & Replacement in Kuwait' : isLaptopService ? 'Laptop Repair Kuwait — Component-Level Diagnostics & Hardware Restoration' : entity.id === 'srv-gaming' ? 'Gaming PC Repair Kuwait — Chip-Level GPU, Motherboard & Cooling Lab' : defaultServiceHeading}</h1>
+                <h1 className="text-3xl sm:text-4xl md:text-5xl leading-tight font-black text-white">{entity.id === 'srv-liquid-damage' ? 'Laptop Liquid Damage Repair in Kuwait' : entity.id === 'srv-charging-port' ? 'Laptop Charging Port Repair in Kuwait — DC Jack, USB-C & Board-Level Power Restoration' : isScreenService ? 'Laptop Screen Repair & Replacement in Kuwait' : isLaptopService ? 'Laptop Repair Kuwait — Component-Level Diagnostics & Hardware Restoration' : entity.id === 'srv-gaming' ? 'Gaming PC Repair Kuwait — Chip-Level GPU, Motherboard & Cooling Lab' : defaultServiceHeading}</h1>
               </div>
 
               <div className="max-w-3xl mb-8 space-y-3">
@@ -217,6 +219,11 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
                   <ArrowRight className="h-5 w-5" aria-hidden="true" /> Book Free Pickup
                 </Link>
               </div>
+              {entity.id === 'srv-liquid-damage' && (
+                <p className="mb-6 max-w-3xl text-xs leading-6 text-slate-400">
+                  Fastest WhatsApp triage: send your exact laptop model, what spilled, when it happened and whether the device was powered on afterward. Keep it switched off and unplugged; do not test it.
+                </p>
+              )}
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 max-w-4xl">
                 <div className="bg-brand-dark/80 px-4 py-3 rounded-xl border border-slate-800 flex items-center gap-3">
@@ -423,6 +430,40 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
                 </article>
               ))}
             </div>
+          </section>
+        )}
+
+        {entity.pricingGuide && entity.pricingGuide.rows.length > 0 && (
+          <section className="max-w-7xl mx-auto px-6 py-12 border-t border-slate-800/50 relative z-10" aria-labelledby="laptop-repair-pricing-heading">
+            <div className="mb-7 max-w-4xl">
+              <p className="mb-2 text-xs font-black uppercase tracking-[0.18em] text-cyan-400">Transparent guide prices</p>
+              <h2 id="laptop-repair-pricing-heading" className="text-2xl font-black text-white sm:text-3xl">{entity.pricingGuide.heading}</h2>
+              <p className="mt-3 text-sm leading-6 text-slate-300">{entity.pricingGuide.intro}</p>
+            </div>
+            <div className="overflow-x-auto rounded-2xl border border-slate-700/80 bg-slate-900/50">
+              <table className="w-full min-w-[760px] border-collapse text-left text-sm">
+                <caption className="sr-only">{entity.id === 'srv-liquid-damage' ? 'Laptop and MacBook liquid-damage repair tiers, scope, guide price and typical timing in Kuwait.' : entity.id === 'srv-charging-port' ? 'Laptop charging-port repair category, fault scope, guide price and typical turnaround in Kuwait.' : 'Laptop repair category, common symptoms, published starting price and typical turnaround in Kuwait.'}</caption>
+                <thead className="bg-slate-800/90 text-slate-100">
+                  <tr>
+                    <th scope="col" className="px-4 py-4 font-bold">Repair category</th>
+                    <th scope="col" className="px-4 py-4 font-bold">Symptoms covered</th>
+                    <th scope="col" className="px-4 py-4 font-bold">Guide price (KWD)</th>
+                    <th scope="col" className="px-4 py-4 font-bold">Typical timing</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-700/70">
+                  {entity.pricingGuide.rows.map((row) => (
+                    <tr key={row.category} className="align-top even:bg-slate-950/30">
+                      <th scope="row" className="px-4 py-4 font-semibold text-white">{row.category}</th>
+                      <td className="px-4 py-4 leading-6 text-slate-300">{row.symptoms}</td>
+                      <td className="px-4 py-4 font-bold text-cyan-200">{row.startingPrice}</td>
+                      <td className="px-4 py-4 leading-6 text-slate-300">{row.typicalTurnaround}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="mt-4 max-w-5xl text-xs leading-6 text-slate-400">{entity.pricingGuide.note}</p>
           </section>
         )}
 
@@ -809,39 +850,7 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
           </section>
         )}
 
-        {entity.pricingGuide && entity.pricingGuide.rows.length > 0 && (
-          <section className="max-w-7xl mx-auto px-6 py-12 border-t border-slate-800/50 relative z-10" aria-labelledby="laptop-repair-pricing-heading">
-            <div className="mb-7 max-w-4xl">
-              <p className="mb-2 text-xs font-black uppercase tracking-[0.18em] text-cyan-400">Transparent guide prices</p>
-              <h2 id="laptop-repair-pricing-heading" className="text-2xl font-black text-white sm:text-3xl">{entity.pricingGuide.heading}</h2>
-              <p className="mt-3 text-sm leading-6 text-slate-300">{entity.pricingGuide.intro}</p>
-            </div>
-            <div className="overflow-x-auto rounded-2xl border border-slate-700/80 bg-slate-900/50">
-              <table className="w-full min-w-[760px] border-collapse text-left text-sm">
-                <caption className="sr-only">{entity.id === 'srv-charging-port' ? 'Laptop charging-port repair category, fault scope, guide price and typical turnaround in Kuwait.' : 'Laptop repair category, common symptoms, published starting price and typical turnaround in Kuwait.'}</caption>
-                <thead className="bg-slate-800/90 text-slate-100">
-                  <tr>
-                    <th scope="col" className="px-4 py-4 font-bold">Repair category</th>
-                    <th scope="col" className="px-4 py-4 font-bold">Symptoms covered</th>
-                    <th scope="col" className="px-4 py-4 font-bold">Guide price (KWD)</th>
-                    <th scope="col" className="px-4 py-4 font-bold">Typical timing</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-slate-700/70">
-                  {entity.pricingGuide.rows.map((row) => (
-                    <tr key={row.category} className="align-top even:bg-slate-950/30">
-                      <th scope="row" className="px-4 py-4 font-semibold text-white">{row.category}</th>
-                      <td className="px-4 py-4 leading-6 text-slate-300">{row.symptoms}</td>
-                      <td className="px-4 py-4 font-bold text-cyan-200">{row.startingPrice}</td>
-                      <td className="px-4 py-4 leading-6 text-slate-300">{row.typicalTurnaround}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-            <p className="mt-4 max-w-5xl text-xs leading-6 text-slate-400">{entity.pricingGuide.note}</p>
-          </section>
-        )}
+
 
         {isKeyboardService && (
           <section className="max-w-7xl mx-auto px-6 pb-8 relative z-10" aria-labelledby="keyboard-thermal-option-heading"><div className="flex flex-col gap-4 rounded-2xl border border-slate-800 bg-slate-900/55 p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6"><div className="max-w-3xl"><p className="text-xs font-black uppercase tracking-[0.16em] text-cyan-300">Optional maintenance — separate service</p><h2 id="keyboard-thermal-option-heading" className="mt-2 text-lg font-black text-white">The laptop is already open. Does its cooling system also need attention?</h2><p className="mt-2 text-sm leading-6 text-slate-400">Where inspection shows that cooling maintenance is needed, ask about KCROC’s published Laptop Thermal Service price of 15–20 KWD. It is not automatically added to a keyboard repair and is only carried out after a separate quote and your approval.</p></div><Link to="/pricing#thermal" className="inline-flex min-h-11 shrink-0 items-center justify-center rounded-full border border-cyan-500/30 px-5 py-2.5 text-sm font-bold text-cyan-300 transition hover:bg-cyan-500/10">View thermal service pricing <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" /></Link></div></section>
@@ -852,8 +861,8 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
             <h2 id="service-faqs-heading" className="text-2xl font-bold mb-8 text-white text-center">Frequently Asked Questions</h2>
             <div className="space-y-3">
               {entity.faqs.map((faq) => (
-                isMacbookScreenService ? (
-                  <article key={faq.id} className="rounded-2xl border border-slate-800 bg-slate-900/50 p-5">
+                isMacbookScreenService || entity.id === 'srv-liquid-damage' ? (
+                  <article key={faq.id} data-service-faq={entity.id === 'srv-liquid-damage' ? 'true' : undefined} className="rounded-2xl border border-slate-800 bg-slate-900/50 p-5">
                     <h3 className="text-white font-semibold">{faq.title}</h3>
                     <p id={`faq-answer-${entity.id}-${faq.id}`} className="mt-3 text-sm leading-relaxed text-slate-300">
                       {faq.answer}
