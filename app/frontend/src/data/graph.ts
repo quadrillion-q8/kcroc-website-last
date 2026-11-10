@@ -1059,7 +1059,7 @@ export const rawGraphData: RawGraphData = {
       entityType: 'WebPage',
       isActive: true,
       title: 'GameBarPresenceWriter.exe: Safe Testing, Game Bar Settings and Gaming Stutter',
-      description: 'A measurement-first Windows guide to testing GameBarPresenceWriter.exe, comparing frame-time, reviewing Xbox Game Bar capture settings, and understanding Game DVR policy scope and registry risks.',
+      description: 'Test GameBarPresenceWriter.exe with a repeatable frame-time comparison; review Game Bar settings, Game DVR policy scope and registry risks.',
       seo: {
         title: 'GameBarPresenceWriter.exe: Test Gaming Stutter Safely | KCROC',
         description: 'Test GameBarPresenceWriter.exe with a repeatable frame-time comparison. Review Xbox Game Bar capture settings, Game DVR policy scope, and safe registry rollback.',
