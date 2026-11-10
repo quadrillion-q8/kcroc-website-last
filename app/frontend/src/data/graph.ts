@@ -1058,14 +1058,14 @@ export const rawGraphData: RawGraphData = {
       slug: 'guides/gamebar-presence-writer-fix',
       entityType: 'WebPage',
       isActive: true,
-      title: 'High FPS but Gaming Stutter? How to Test GameBarPresenceWriter.exe',
-      description: 'High FPS but uneven gameplay? Test whether GameBarPresenceWriter.exe is related, review Xbox Game Bar capture settings, and understand safe registry rollback.',
+      title: 'GameBarPresenceWriter.exe: Safe Testing, Game Bar Settings and Gaming Stutter'
+      description: 'A measurement-first Windows guide to testing GameBarPresenceWriter.exe, comparing frame-time, reviewing Xbox Game Bar capture settings, and understanding Game DVR policy scope and registry risks.'
       seo: {
-        title: 'High FPS but Stuttering? GameBarPresenceWriter.exe Fix | KCROC',
-        description: 'Test whether GameBarPresenceWriter.exe is linked to gaming stutter. Run a quick isolation test, adjust Game Bar settings, and review registry risks.',
+        title: 'GameBarPresenceWriter.exe: Test Gaming Stutter Safely | KCROC'
+        description: 'Test GameBarPresenceWriter.exe with a repeatable frame-time comparison. Review Xbox Game Bar capture settings, Game DVR policy scope, and safe registry rollback.'
         canonicalUrl: 'https://www.computerrepairkuwait.com/guides/gamebar-presence-writer-fix', locale: 'en',
         ogImage: 'https://www.computerrepairkuwait.com/images/discover/windows-11-laptop-multitasking-1200x675.webp',
-        lastModified: '2026-11-01T00:00:00+03:00',
+        lastModified: '2026-11-10T02:00:00+03:00',
         ogType: 'article',
         // Deliberately just 'WebPage' — this page hand-rolls its own
         // TechArticle/Person/HowTo/FAQPage/BreadcrumbList via SchemaMarkup
