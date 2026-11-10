@@ -33,7 +33,7 @@ const faqQuestions = [
   'Should I set ActivationType to 0 to disable Presence Writer?',
 ];
 for (const q of faqQuestions) assert.ok(html.includes(q), 'GameBar FAQ missing from initial HTML: ' + q);
-assert.equal((html.match(/"@type"\\s*:\\s*"Question"/g) ?? []).length, faqQuestions.length, 'FAQ schema must match the fourteen rendered questions.');
+assert.equal((html.match(/"@type"\s*:\s*"Question"/g) ?? []).length, faqQuestions.length, 'FAQ schema must match the fourteen rendered questions.');
 
 for (const type of ['TechArticle', 'HowTo', 'BreadcrumbList', 'FAQPage']) {
   assert.ok(html.includes('"@type":"' + type + '"') || html.includes('"@type": "' + type + '"'), 'Missing ' + type + ' structured data.');
@@ -41,7 +41,7 @@ for (const type of ['TechArticle', 'HowTo', 'BreadcrumbList', 'FAQPage']) {
 assert.ok(html.includes('"datePublished":"2026-08-23"') || html.includes('"datePublished": "2026-08-23"'), 'Published date missing from TechArticle.');
 assert.ok(html.includes('"dateModified":"2026-11-10"') || html.includes('"dateModified": "2026-11-10"'), 'Review date missing from TechArticle.');
 
-const tables = (html.match(/<table[\\s>]/gi) ?? []).length;
+const tables = (html.match(/<table[\s>]/gi) ?? []).length;
 assert.ok(tables >= 7, 'Expected at least seven semantic tables; found ' + tables);
 assert.ok((html.match(/role="region"/g) ?? []).length >= 7, 'Expected at least seven labelled table regions.');
 assert.ok((html.match(/tabindex="0"/g) ?? []).length >= 7, 'Expected at least seven focusable table regions.');
@@ -57,7 +57,7 @@ for (const [label, url] of sources) {
   assert.ok(html.includes(url), 'Missing source URL: ' + url);
   const index = html.indexOf(url), start = html.lastIndexOf('<a ', index), end = html.indexOf('</a>', index);
   assert.ok(start >= 0 && end > index, 'Missing source anchor: ' + url);
-  const anchor = html.slice(start, end + 4).replace(/<[^>]+>/g, ' ').replace(/\\s+/g, ' ').trim();
+  const anchor = html.slice(start, end + 4).replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
   assert.ok(anchor.includes(label), 'Source anchor lacks descriptive title: ' + label);
 }
 assert.ok(!html.includes('External source'), 'Generic source link label remains in output.');
