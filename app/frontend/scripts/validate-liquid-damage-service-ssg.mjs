@@ -18,7 +18,7 @@ assert.ok(html.includes('60–90+ KWD'), 'Tier 3 pricing range is missing.');
 assert.ok(html.includes('Initial diagnosis is 0 KWD'), 'Free initial diagnostic rule is missing.');
 assert.ok(html.includes('No Fix, No Fee'), 'No Fix, No Fee policy is missing.');
 assert.ok(html.includes('id="service-faqs-heading"'), 'Visible FAQ section is missing.');
-assert.equal((html.match(/<details\b/gi) ?? []).length >= 6, true, 'Expected six native visible FAQ disclosures.');
+assert.equal((html.match(/data-service-faq="true"/g) ?? []).length, 6, 'Expected six non-collapsible FAQ articles with inline answers in the static HTML.');
 for (const question of [
   'Can a laptop be repaired after a coffee or karak spill?',
   'Do you repair liquid-damaged MacBooks?',

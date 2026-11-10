@@ -2429,7 +2429,7 @@ export const rawGraphData: RawGraphData = {
         {
           id: 'liquid-faq-4',
           title: 'Do you offer free pickup for liquid-damaged laptops?',
-          answer: 'Yes. Free pickup and return can be arranged across Kuwait’s six governorates, including Hawalli, As Salimiyah, Kuwait City, Farwaniya, Jahra and Ahmadi. Message KCROC with your area and device model; keep the laptop switched off and disconnected from its charger while collection is arranged.'
+          answer: 'Yes. Free pickup and return can be arranged across Kuwait, including Hawalli, Salmiya, Kuwait City, Farwaniya, Jahra, Ahmadi, Fahaheel and Mangaf. Message KCROC with your area and device model; keep the laptop switched off and disconnected from its charger while collection is arranged.'
         },
         {
           id: 'liquid-faq-5',
