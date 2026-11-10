@@ -53,12 +53,15 @@ const sources = [
   ['Microsoft Support — Use Xbox Game Bar to record your screen', 'https://support.microsoft.com/en-us/accessibility/windows/use-a-screen-reader-to-record-your-screen-with-xbox-game-bar'],
   ['Intel GameTechDev — PresentMon project and frame-time metrics', 'https://github.com/GameTechDev/PresentMon'],
 ];
+const referencesHeading = html.indexOf('Official Technical References');
+assert.ok(referencesHeading >= 0, 'Official technical references section is missing.');
+const referencesHtml = html.slice(referencesHeading);
 for (const [label, url] of sources) {
-  assert.ok(html.includes(url), 'Missing source URL: ' + url);
-  const index = html.indexOf(url), start = html.lastIndexOf('<a ', index), end = html.indexOf('</a>', index);
-  assert.ok(start >= 0 && end > index, 'Missing source anchor: ' + url);
-  const anchor = html.slice(start, end + 4).replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
-  assert.ok(anchor.includes(label), 'Source anchor lacks descriptive title: ' + label);
+  assert.ok(referencesHtml.includes(url), 'Missing source URL in the references section: ' + url);
+  const index = referencesHtml.indexOf(url), start = referencesHtml.lastIndexOf('<a ', index), end = referencesHtml.indexOf('</a>', index);
+  assert.ok(start >= 0 && end > index, 'Missing source anchor in the references section: ' + url);
+  const anchor = referencesHtml.slice(start, end + 4).replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+  assert.ok(anchor.includes(label), 'Source anchor lacks descriptive text in the references section: ' + label);
 }
 assert.ok(!html.includes('External source'), 'Generic source link label remains in output.');
 
