@@ -337,7 +337,7 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
                   {
                     "@type": "Offer",
                     "name": "Tier 3 — Component-level repair and trace work",
-                    "priceSpecification": { "@type": "PriceSpecification", "priceCurrency": "KWD", "minPrice": 60, "maxPrice": 90 },
+                    "priceSpecification": { "@type": "PriceSpecification", "priceCurrency": "KWD", "minPrice": 60 },
                     "priceCurrency": "KWD",
                     "description": "Guide range starts at 60 KWD; complex work can exceed 90 KWD after inspection and approval."
                   }

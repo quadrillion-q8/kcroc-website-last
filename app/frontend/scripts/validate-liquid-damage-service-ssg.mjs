@@ -30,7 +30,7 @@ for (const question of [
 for (const answerMarker of [
   'sticky residue that does not disappear when the outside dries',
   'Initial diagnosis is free',
-  'data access and preservation are never guaranteed',
+  'neither repair nor data access is guaranteed',
 ]) assert.ok(html.toLowerCase().includes(answerMarker.toLowerCase()), 'FAQ / commercial answer marker missing: ' + answerMarker);
 
 assert.ok(html.includes('"@type":"Service"') || html.includes('"@type": "Service"'), 'Service JSON-LD is missing.');
