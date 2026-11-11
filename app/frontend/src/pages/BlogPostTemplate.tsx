@@ -26,6 +26,22 @@ import DLSS5BenchmarkExplorer from '@/components/content/DLSS5BenchmarkExplorer'
 // (Previously duplicated via constants/data.ts's BUSINESS_INFO.)
 const business = KCROC_GRAPH.business!;
 
+// Standalone guide pages are not BLOG_POSTS records. Add a lightweight card
+// record so editorial cluster links can point to the dedicated React route.
+const GAMEBAR_PRESENCE_WRITER_GUIDE_CARD: BlogPost = {
+  id: 'guide-gamebar-presence-writer',
+  slug: 'gamebar-presence-writer-fix',
+  title: 'GameBarPresenceWriter.exe: Test Gaming Stutter Safely',
+  excerpt: 'A measured, reversible Game Bar process-isolation test with frame-time comparison, safe settings checks and registry-risk guidance.',
+  content: [],
+  image: '/images/blog/windows-11-laptop-multitasking.webp',
+  date: '2026-11-11',
+  author: 'Imran Natiq',
+  category: 'Gaming & Windows',
+  readTime: '10–12 min read',
+  contentType: 'guide',
+};
+
 // Keep company-specific privacy links out of global Windows/technical copy.
 const GLOBAL_EDITORIAL_AUTOLINK_EXCLUSIONS = ['page-privacy'];
 
@@ -423,13 +439,42 @@ const TECHNICAL_SOURCE_LABELS: Record<string, string> = {
   'https://learn.microsoft.com/en-us/windows/client-management/mdm/policy-csp-applicationmanagement':
     'Microsoft Learn — AllowGameDVR policy',
   'https://learn.microsoft.com/en-us/windows/hardware/drivers/kernel/introduction-to-dpc-objects':
-    'Microsoft Learn — Introduction to DPC objects',
+    'Microsoft Learn — Introduction to DPCs',
   'https://learn.microsoft.com/en-us/windows-hardware/drivers/devtest/example-15--measuring-dpc-isr-time':
     'Microsoft Learn — Measuring DPC/ISR time',
   'https://learn.microsoft.com/en-us/samples/microsoft/directx-graphics-samples/d3d12-pipeline-state-cache-sample-win32/':
     'Microsoft Learn — Direct3D 12 pipeline-state cache sample',
   'https://support.microsoft.com/en-us/windows/hardware/display-graphics/optimizations-for-windowed-games-in-windows-11':
-    'Microsoft — Optimizations for windowed games in Windows 11',
+    'Microsoft Support — Optimizations for windowed games, flip model, Auto HDR and VRR',
+  'https://github.com/GameTechDev/PresentMon':
+    'Intel GameTechDev — PresentMon frame-time capture tool',
+  'https://github.com/GameTechDev/PresentMon/blob/main/README-ConsoleApplication.md':
+    'Intel GameTechDev — PresentMon CSV metrics and frame-time fields',
+  'https://github.com/CXWorld/CapFrameX':
+    'CapFrameX — PresentMon capture, frame-time charts and comparison tool',
+  'https://www.msi.com/support/technical_details/VGA_MSI_Utility_AfterBurner':
+    'MSI — Afterburner hardware monitoring and RTSS setup',
+  'https://www.msi.com/blog/msi-afterburner-on-screen-display':
+    'MSI — Afterburner framerate graph and on-screen display guide',
+  'https://developer.nvidia.com/rtx/streamline/get-started':
+    'NVIDIA Developer — DLSS Frame Generation requirements, including HAGS',
+  'https://learn.microsoft.com/en-us/windows/security/hardware-security/enable-virtualization-based-protection-of-code-integrity':
+    'Microsoft Learn — Memory Integrity (HVCI) and Virtualization-Based Security',
+  'https://learn.microsoft.com/en-us/windows/wsl/faq':
+    'Microsoft Learn — Virtual Machine Platform and WSL 2 requirements',
+  'https://learn.microsoft.com/en-us/windows/win32/api/dxgi1_4/ns-dxgi1_4-dxgi_query_video_memory_info':
+    'Microsoft Learn — DXGI video-memory budget and CurrentUsage',
+  'https://www.intel.com/content/www/us/en/support/articles/000005597/processors.html':
+    'Intel — Processor Tjunction temperature and thermal protection limits',
+  'https://www.intel.com/content/www/us/en/support/articles/000088048/processors.html':
+    'Intel — Thermal throttling and processor clock reduction',
+  'https://www.hwinfo.com/download/':
+    'HWiNFO — Hardware monitoring and sensor logging',
+  'https://nvidia.custhelp.com/app/answers/detail/a_id/5157/~/what-is-multi-plane-overlay-%28mpo%29-in-windows-11':
+    'NVIDIA Support — Multi-Plane Overlay (MPO) in Windows 11',
+  'https://www.tomshardware.com/peripherals/gaming-mice/do-you-need-a-mouse-with-an-8k-polling-rate':
+    'Tom’s Hardware — 8,000 Hz mouse polling rate and CPU trade-offs',
+
   'https://www.nvidia.com/en-gb/geforce/news/geforce-rtx-30-series-resizable-bar-support/':
     'NVIDIA — Resizable BAR',
   'https://www.amd.com/en/products/processors/chipsets/am5.html':
@@ -776,9 +821,6 @@ const RichBlock: React.FC<{ block: ContentBlock; headingRef?: (el: HTMLElement |
             </caption>
             <thead>
               <tr className="bg-slate-900/90">
-                <th scope="col" className="border-r border-slate-700 p-4 text-left align-top text-xs font-bold uppercase tracking-wide text-slate-300">
-                  {block.featureLabel || 'Feature'}
-                </th>
                 {block.columns.map((col, i) => (
                   <th key={i} scope="col" className={`border-r border-slate-700 p-4 text-left align-top text-xs font-black uppercase tracking-wide ${i === 1 ? 'bg-cyan-500/10 text-cyan-300' : 'text-slate-300'}`}>
                     {col}
@@ -839,10 +881,18 @@ const RichBlock: React.FC<{ block: ContentBlock; headingRef?: (el: HTMLElement |
           </pre>
         </figure>
       );
-    case 'faq':
+    case 'faq': {
+      const faqItems = Array.isArray(block.items)
+        ? block.items.filter((item) => Boolean(
+            item &&
+            typeof item.question === 'string' && item.question.trim() &&
+            typeof item.answer === 'string' && item.answer.trim()
+          ))
+        : [];
+      if (faqItems.length === 0) return null;
       return block.display === 'static' ? (
         <div className="my-10 space-y-5" aria-label="Frequently asked questions">
-          {block.items.map((item, i) => (
+          {faqItems.map((item, i) => (
             <section key={i} className="rounded-2xl border border-slate-800 bg-slate-900/40 p-5">
               <h3 className="text-base font-bold leading-snug text-white">{item.question}</h3>
               <p className="mt-3 text-sm leading-relaxed text-slate-300">{item.answer}</p>
@@ -851,11 +901,12 @@ const RichBlock: React.FC<{ block: ContentBlock; headingRef?: (el: HTMLElement |
         </div>
       ) : (
         <div className="my-10 space-y-3" aria-label="Frequently asked questions">
-          {block.items.map((item, i) => (
+          {faqItems.map((item, i) => (
             <FAQAccordionItem key={i} question={item.question} answer={item.answer} />
           ))}
         </div>
       );
+    }
     case 'image':
       return (
         <figure className="my-10">
@@ -992,17 +1043,27 @@ export default function BlogPostTemplate() {
   );
   
   const allFaqItems = useMemo(
-    () => faqBlocks.flatMap(block => block.items),
+    () => faqBlocks.flatMap(block => Array.isArray(block.items)
+      ? block.items.filter((item) => Boolean(
+          item &&
+          typeof item.question === 'string' && item.question.trim() &&
+          typeof item.answer === 'string' && item.answer.trim()
+        ))
+      : []),
     [faqBlocks]
   );
 
   const relatedPosts = useMemo(() => {
     if (!post) return [];
     if (post.relatedPostSlugs?.length) {
-      const postsBySlug = new Map(BLOG_POSTS.map((item) => [item.slug, item] as const));
+      const postsBySlug = new Map(
+        [...BLOG_POSTS, GAMEBAR_PRESENCE_WRITER_GUIDE_CARD].map((item) => [item.slug, item] as const)
+      );
       return post.relatedPostSlugs
         .map((relatedSlug) => postsBySlug.get(relatedSlug))
-        .filter((item): item is BlogPost => Boolean(item && !item.redirectTo));
+        .filter((item): item is BlogPost => Boolean(
+          item && !item.redirectTo && typeof item.title === 'string' && item.title.trim()
+        ));
     }
     if (post.isPillar) {
       return BLOG_POSTS.filter(p => p.clusterParent === post.slug).slice(0, 5);
