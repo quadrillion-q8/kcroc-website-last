@@ -6263,7 +6263,7 @@ export const BLOG_POSTS: BlogPost[] = [
         { question: "Can HAGS, V-Sync or VRR fix gaming stutter?", answer: "They affect scheduling or frame presentation, not every underlying cause. HAGS is required for NVIDIA DLSS Frame Generation, so do not turn it off when using that feature. VRR, Auto HDR and windowed-game optimizations can interact with borderless presentation; change one setting at a time and restart the game." },
         { question: "Should I reinstall Windows to fix gaming stutter?", answer: "Not as a first step. A reinstall can leave the real cause untouched when the problem is thermal throttling, a driver issue, shader compilation, storage or memory pressure, GPU/VRAM instability, or another hardware fault. Measure the symptom and test the likely branch first." },
         { question: "When should I bring a gaming PC or laptop for diagnosis?", answer: "Professional diagnosis makes sense when stutter is persistent across controlled tests, accompanied by crashes, artifacts, overheating, abnormal power behavior, storage errors or unexplained whole-system freezes." }
-      ] }
+      ] },
 
       { type: "h2", text: "Bottom Line", id: "bottom-line" },
       { type: "paragraph", text: "The most useful gaming optimization is often better diagnosis. Start with frame-time behavior, then separate Game Bar and other overlays, CPU/GPU limits, memory and storage pressure, driver latency, shader compilation, Windows graphics settings and thermal behavior. Use A/B testing and roll back changes that do not prove the hypothesis." },
