@@ -43,7 +43,9 @@ for (const price of ['FREE', 'From 8 KWD', 'From 10 KWD', 'From 15 KWD', 'From 2
   assert.ok(html.includes(price), 'Missing visible Mishref price anchor: ' + price);
 }
 
-assert.ok((html.match(/data-location-problem-link="true"/g) ?? []).length >= 12, 'Mishref should expose at least twelve symptom/problem links');
+const mishrefProblemLinkCount = (html.match(/data-location-problem-link="true"/g) ?? []).length;
+console.log('Mishref prerendered problem-link count:', mishrefProblemLinkCount);
+assert.ok(mishrefProblemLinkCount >= 12, `Mishref should expose at least twelve symptom/problem links; found ${mishrefProblemLinkCount}`);
 assert.ok((html.match(/data-location-brand-link="true"/g) ?? []).length >= 6, 'Mishref should expose six linked laptop brands including Acer');
 for (const href of [
   '/location/hawalli',
