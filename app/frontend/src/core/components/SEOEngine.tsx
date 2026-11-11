@@ -586,10 +586,12 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
           // when the entity actually has a faqs array populated; services
           // without one (most, currently) fall through with questions === [].
           const serviceEntity = entity as ServiceEntity;
-          const commercialAnswers = (serviceEntity.commercialAnswers ?? []).map(item => ({
-            title: item.question,
-            answer: item.answer
-          }));
+          const commercialAnswers = serviceEntity.id === 'srv-liquid-damage'
+            ? (serviceEntity.commercialAnswers ?? []).map(item => ({
+                title: item.question,
+                answer: item.answer
+              }))
+            : [];
           const serviceFaqs = (serviceEntity.faqs ?? []).map(faq => ({
             title: faq.title,
             answer: faq.answer
