@@ -14,6 +14,8 @@ for (const heading of [
   'Xbox Game Bar, per-user settings and device policy are different layers',
   'AllowGameDVR policy applicability by Windows environment',
   'Official Technical References',
+  'Capture an apples-to-apples baseline',
+  'Verify the executable and its signer',
 ]) assert.ok(html.includes(heading), 'GameBar guide prerendered heading missing: ' + heading);
 
 const faqQuestions = [
@@ -39,7 +41,36 @@ for (const type of ['TechArticle', 'HowTo', 'BreadcrumbList', 'FAQPage']) {
   assert.ok(html.includes('"@type":"' + type + '"') || html.includes('"@type": "' + type + '"'), 'Missing ' + type + ' structured data.');
 }
 assert.ok(html.includes('"datePublished":"2026-08-23"') || html.includes('"datePublished": "2026-08-23"'), 'Published date missing from TechArticle.');
-assert.ok(html.includes('"dateModified":"2026-11-10"') || html.includes('"dateModified": "2026-11-10"'), 'Review date missing from TechArticle.');
+assert.ok(html.includes('"dateModified":"2026-11-11"') || html.includes('"dateModified": "2026-11-11"'), 'Review date missing from TechArticle.');
+
+const relatedStart = html.indexOf('<section id="cluster"');
+const referencesStart = html.indexOf('<section id="official-references"', relatedStart);
+assert.ok(relatedStart >= 0 && referencesStart > relatedStart, 'Unified related-guide grid is missing.');
+const relatedHtml = html.slice(relatedStart, referencesStart);
+const relatedPaths = [
+  '/guides/windows-gaming-performance-stutter-fix',
+  '/guides/windows-gaming-frame-time-stutter',
+  '/guides/shader-compilation-stutter-windows',
+  '/guides/dpc-latency-gaming-stutter',
+  '/blog/gaming-pc-cooling',
+  '/guides/why-is-my-laptop-so-hot',
+];
+for (const relatedPath of relatedPaths) {
+  const occurrences = relatedHtml.split('href="' + relatedPath + '"').length - 1;
+  assert.equal(occurrences, 1, 'Related path must appear exactly once: ' + relatedPath);
+}
+assert.ok(!html.includes('GameBar performance: related troubleshooting paths'), 'Duplicate standalone related-links grid remains.');
+for (const evidence of [
+  'Continue with Steps 6–7',
+  '60–120-second',
+  'MsBetweenDisplayChange',
+  'MsBetweenPresents',
+  '20–35 ms',
+  'Get-AuthenticodeSignature',
+  'WHESVC (service name whesvc, Windows Health and Optimized Experiences)',
+]) {
+  assert.ok(html.includes(evidence), 'Missing GameBar evidence/verification copy: ' + evidence);
+}
 
 const tables = (html.match(/<table[\s>]/gi) ?? []).length;
 assert.ok(tables >= 7, 'Expected at least seven semantic tables; found ' + tables);
@@ -79,6 +110,6 @@ const pos = sitemap.indexOf(loc);
 assert.ok(pos >= 0, 'Original GameBar guide URL missing from sitemap.');
 const urlStart = sitemap.lastIndexOf('<url>', pos), urlEnd = sitemap.indexOf('</url>', pos);
 const urlEntry = sitemap.slice(urlStart, urlEnd + 6);
-assert.ok(urlEntry.includes('<lastmod>2026-11-09T23:00:00.000Z'), 'Sitemap review date must reflect November 10 in Kuwait time without a future UTC date.');
+assert.ok(urlEntry.includes('<lastmod>2026-11-10T23:00:00.000Z'), 'Sitemap review date must reflect November 10 in Kuwait time without a future UTC date.');
 
-console.log('GameBar guide SSG validation passed: nine-step workflow, seven accessible tables, fourteen FAQ answers and schema, official sources, global editorial scope and fresh sitemap metadata.');
+console.log('GameBar guide SSG validation passed: nine-step workflow, seven accessible tables, fourteen FAQ answers and schema, six unique related paths, frame-time evidence, signer guidance, official sources, global editorial scope and fresh sitemap metadata.');
