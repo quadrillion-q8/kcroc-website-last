@@ -1290,6 +1290,7 @@ add('MacBook screen FAQ questions remain unchanged, are rendered inline, and use
   (macbookScreenTemplateSource.includes('isMacbookScreenService ? (') || macbookScreenTemplateSource.includes("isMacbookScreenService || entity.id === 'srv-liquid-damage' ? (")) &&
   macbookScreenTemplateSource.includes('<h3 className="text-white font-semibold">{faq.title}</h3>') &&
   macbookScreenSeoSchemaSource.includes("if (type === 'FAQPage')") &&
+  macbookScreenSeoSchemaSource.includes("const commercialAnswers = serviceEntity.id === 'srv-liquid-damage'") &&
   macbookScreenServiceBlock.includes("schemaTypes: ['Service', 'FAQPage']"));
 add('MacBook screen JSON-LD extends one Service entity with a linked OfferCatalog and does not imply display stock',
   macbookScreenSeoSchemaSource.includes("service.id === 'srv-macbook-screen'") &&
