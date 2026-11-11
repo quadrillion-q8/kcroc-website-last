@@ -821,6 +821,11 @@ const RichBlock: React.FC<{ block: ContentBlock; headingRef?: (el: HTMLElement |
             </caption>
             <thead>
               <tr className="bg-slate-900/90">
+                {block.rows.length > 0 && block.rows.every((row) => row.values.length === block.columns.length) && (
+                  <th scope="col" className="border-r border-slate-700 p-4 text-left align-top text-xs font-bold uppercase tracking-wide text-slate-300">
+                    {block.featureLabel || 'Feature'}
+                  </th>
+                )}
                 {block.columns.map((col, i) => (
                   <th key={i} scope="col" className={`border-r border-slate-700 p-4 text-left align-top text-xs font-black uppercase tracking-wide ${i === 1 ? 'bg-cyan-500/10 text-cyan-300' : 'text-slate-300'}`}>
                     {col}
