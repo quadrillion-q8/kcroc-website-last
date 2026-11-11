@@ -1816,6 +1816,47 @@ add('HP global mobile WhatsApp CTA requests the model, symptoms and collection a
   macbookWhatsappIntent.includes('Exact HP model / product number') &&
   macbookWhatsappIntent.includes('Please advise on the diagnosis and confirm the total quote'));
 
+
+const mishrefStart = graph.indexOf("'loc-mishref': {");
+const mishrefEnd = graph.indexOf("} as LocationEntity", mishrefStart);
+const mishrefEntity = mishrefStart >= 0 && mishrefEnd > mishrefStart
+  ? graph.slice(mishrefStart, mishrefEnd)
+  : '';
+add('Mishref remains a pickup-only service area with no local storefront address or branch coordinates',
+  mishrefEntity.includes('isPhysicalLocation: false') &&
+  mishrefEntity.includes("serviceAreas: ['Mishref', 'West Mishref', 'Mubarak Al-Abdullah']") &&
+  mishrefEntity.includes('Mobile pickup and delivery area: Mishref, West Mishref and Mubarak Al-Abdullah') &&
+  !mishrefEntity.includes('coords:') &&
+  mishrefEntity.includes('central Hawalli lab') &&
+  mishrefEntity.includes('does not offer standalone data recovery'));
+add('Mishref service cards cover all fifteen active services in three named groups',
+  ['srv-motherboard', 'srv-liquid-damage', 'srv-charging-port', 'srv-desktop-pc', 'srv-macbook', 'srv-macbook-screen', 'srv-gaming', 'srv-gaming-laptop', 'srv-gaming-laptop-cleaning', 'srv-laptop', 'srv-screen', 'srv-battery', 'srv-ssd-ram', 'srv-keyboard', 'srv-hinge'].every((id) => mishrefEntity.includes(id)) &&
+  ['Board-Level & Micro-Soldering', 'MacBook & Gaming Systems', 'Screens, Batteries & Upgrades'].every((category) => mishrefEntity.includes(category)) &&
+  (mishrefEntity.match(/category: '/g) || []).length === 15 &&
+  locations.includes('data-location-service-card="true"') &&
+  locations.includes('data-location-service-group={card.category}'));
+add('Mishref visible pricing has six accurate starting anchors and follows the service grid',
+  mishrefEntity.includes("localPricingHeading: 'Transparent Repair Pricing for Mishref Customers'") &&
+  mishrefEntity.includes("localPricingAnchorsPlacement: 'after-services'") &&
+  ['FREE', 'From 8 KWD', 'From 10 KWD', 'From 15 KWD', 'From 25 KWD', 'From 30 KWD', '45–100+ KWD'].every((price) => mishrefEntity.includes(price)) &&
+  locations.includes("location.localPricingAnchorsPlacement === 'after-services'") &&
+  locations.includes('data-local-pricing-anchor="true"'));
+add('Mishref problems, brands and nearby links use active graph entities',
+  ['problem-no-power', 'problem-overheating', 'problem-black-screen', 'problem-liquid-spill', 'problem-not-charging', 'problem-keyboard-fail', 'problem-hinge-break', 'problem-cracked-screen', 'problem-windows-wont-boot', 'problem-bsod', 'problem-freezing-crashing', 'problem-slow'].every((id) => mishrefEntity.includes(id)) &&
+  ['brand-dell', 'brand-hp', 'brand-lenovo', 'brand-asus', 'brand-acer', 'brand-msi'].every((id) => mishrefEntity.includes(id)) &&
+  ['loc-hawalli', 'loc-salmiya', 'loc-sabah-al-salem', 'loc-rumaithiya', 'loc-surra'].every((id) => mishrefEntity.includes(id)));
+add('Mishref review cards are attributed to the verified central Hawalli lab, never to Mishref customers',
+  mishrefEntity.includes("reviewAttribution: 'central-hawalli-lab'") &&
+  locations.includes('Google Reviews for Our Central Hawalli Repair Lab') &&
+  locations.includes('data-central-lab-review="true"') &&
+  locations.includes('isReviewPublishable(review)'));
+add('Mishref dispatch and walk-in copy name the central workshop and use clean phone formatting',
+  locations.includes('location.serviceAreas.join') &&
+  locations.includes('to="/location/hawalli"') &&
+  locations.includes("const phoneDisplay = '+965 ' + phone.slice(3);") &&
+  locations.includes('data-location-problem-link="true"') &&
+  locations.includes('data-location-brand-link="true"'));
+
 for (const check of checks) console.log(`${check.pass ? '✅' : '❌'} ${check.name}${!check.pass && check.detail ? ` — ${check.detail}` : ''}`);
 const failed = checks.filter((check) => !check.pass);
 if (failed.length) process.exit(1);
