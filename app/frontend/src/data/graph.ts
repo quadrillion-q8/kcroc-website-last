@@ -1065,7 +1065,7 @@ export const rawGraphData: RawGraphData = {
         description: 'Test GameBarPresenceWriter.exe with a repeatable frame-time comparison. Review Xbox Game Bar capture settings, Game DVR policy scope, and safe registry rollback.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/guides/gamebar-presence-writer-fix', locale: 'en',
         ogImage: 'https://www.computerrepairkuwait.com/images/discover/windows-11-laptop-multitasking-1200x675.webp',
-        lastModified: '2026-11-09T23:00:00.000Z',
+        lastModified: '2026-11-10T23:00:00.000Z',
         ogType: 'article',
         // Deliberately just 'WebPage' — this page hand-rolls its own
         // TechArticle/Person/HowTo/FAQPage/BreadcrumbList via SchemaMarkup
