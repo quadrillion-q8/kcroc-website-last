@@ -8623,10 +8623,20 @@ const LOCATION_RELATIONSHIPS: Record<string, {
     relatedLocationIds: ['loc-qortuba', 'loc-adailiya', 'loc-surra', 'loc-mishref'],
   },
   mishref: {
-    relatedServiceIds: ['srv-laptop', 'srv-macbook', 'srv-motherboard', 'srv-gaming', 'srv-gaming-laptop-cleaning'],
-    relatedProblemIds: ['problem-overheating', 'problem-no-power', 'problem-not-charging', 'problem-black-screen', 'problem-freezing-crashing'],
-    relatedBrandIds: ['brand-dell', 'brand-hp', 'brand-lenovo', 'brand-asus', 'brand-msi'],
-    relatedLocationIds: ['loc-yarmouk', 'loc-qortuba', 'loc-surra'],
+    relatedServiceIds: [
+      'srv-motherboard', 'srv-liquid-damage', 'srv-charging-port', 'srv-desktop-pc',
+      'srv-macbook', 'srv-macbook-screen', 'srv-gaming', 'srv-gaming-laptop',
+      'srv-gaming-laptop-cleaning', 'srv-laptop', 'srv-screen', 'srv-battery',
+      'srv-ssd-ram', 'srv-keyboard', 'srv-hinge'
+    ],
+    relatedProblemIds: [
+      'problem-no-power', 'problem-overheating', 'problem-black-screen',
+      'problem-liquid-spill', 'problem-not-charging', 'problem-keyboard-fail',
+      'problem-hinge-break', 'problem-cracked-screen', 'problem-windows-wont-boot',
+      'problem-bsod', 'problem-freezing-crashing', 'problem-slow'
+    ],
+    relatedBrandIds: ['brand-dell', 'brand-hp', 'brand-lenovo', 'brand-asus', 'brand-acer', 'brand-msi'],
+    relatedLocationIds: ['loc-hawalli', 'loc-salmiya', 'loc-sabah-al-salem', 'loc-rumaithiya', 'loc-surra'],
   },
 };const rawEntities = Object.values(rawGraphData.entities);
 const rawCaseStudies = rawEntities.filter((e): e is CaseStudyEntity => e.entityType === 'CaseStudy' && e.isActive);

@@ -1842,10 +1842,17 @@ add('Mishref visible pricing has six accurate starting anchors and follows the s
   ['FREE', 'From 8 KWD', 'From 10 KWD', 'From 15 KWD', 'From 25 KWD', 'From 30 KWD', '45–100+ KWD'].every((price) => mishrefEntity.includes(price)) &&
   locations.includes("location.localPricingAnchorsPlacement === 'after-services'") &&
   locations.includes('data-local-pricing-anchor="true"'));
-add('Mishref problems, brands and nearby links use active graph entities',
-  ['problem-no-power', 'problem-overheating', 'problem-black-screen', 'problem-liquid-spill', 'problem-not-charging', 'problem-keyboard-fail', 'problem-hinge-break', 'problem-cracked-screen', 'problem-windows-wont-boot', 'problem-bsod', 'problem-freezing-crashing', 'problem-slow'].every((id) => mishrefEntity.includes(id)) &&
-  ['brand-dell', 'brand-hp', 'brand-lenovo', 'brand-asus', 'brand-acer', 'brand-msi'].every((id) => mishrefEntity.includes(id)) &&
-  ['loc-hawalli', 'loc-salmiya', 'loc-sabah-al-salem', 'loc-rumaithiya', 'loc-surra'].every((id) => mishrefEntity.includes(id)));
+const locationRelationshipsStart = graph.indexOf('const LOCATION_RELATIONSHIPS');
+const mishrefRelationshipStart = graph.indexOf('mishref: {', locationRelationshipsStart);
+const mishrefRelationshipEnd = graph.indexOf('\n  },', mishrefRelationshipStart);
+const mishrefRelationship = mishrefRelationshipStart >= 0 && mishrefRelationshipEnd > mishrefRelationshipStart
+  ? graph.slice(mishrefRelationshipStart, mishrefRelationshipEnd)
+  : '';
+add('Mishref problems, brands and nearby links use the authoritative relationship map',
+  ['problem-no-power', 'problem-overheating', 'problem-black-screen', 'problem-liquid-spill', 'problem-not-charging', 'problem-keyboard-fail', 'problem-hinge-break', 'problem-cracked-screen', 'problem-windows-wont-boot', 'problem-bsod', 'problem-freezing-crashing', 'problem-slow'].every((id) => mishrefRelationship.includes(id)) &&
+  ['brand-dell', 'brand-hp', 'brand-lenovo', 'brand-asus', 'brand-acer', 'brand-msi'].every((id) => mishrefRelationship.includes(id)) &&
+  ['loc-hawalli', 'loc-salmiya', 'loc-sabah-al-salem', 'loc-rumaithiya', 'loc-surra'].every((id) => mishrefRelationship.includes(id)) &&
+  ['srv-motherboard', 'srv-liquid-damage', 'srv-charging-port', 'srv-desktop-pc', 'srv-macbook', 'srv-macbook-screen', 'srv-gaming', 'srv-gaming-laptop', 'srv-gaming-laptop-cleaning', 'srv-laptop', 'srv-screen', 'srv-battery', 'srv-ssd-ram', 'srv-keyboard', 'srv-hinge'].every((id) => mishrefRelationship.includes(id)));
 add('Mishref review cards are attributed to the verified central Hawalli lab, never to Mishref customers',
   mishrefEntity.includes("reviewAttribution: 'central-hawalli-lab'") &&
   locations.includes('Google Reviews for Our Central Hawalli Repair Lab') &&
