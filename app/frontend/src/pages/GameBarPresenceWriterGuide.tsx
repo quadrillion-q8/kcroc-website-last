@@ -319,6 +319,9 @@ export default function GameBarPresenceWriterGuide() {
               <p className={`mt-4 ${proseClass}`}>
                 <a href={MS_DOCS_URL} target="_blank" rel="noopener noreferrer" className="font-semibold text-cyan-300 underline decoration-cyan-500/40 underline-offset-4 hover:text-cyan-200">Microsoft's developer documentation</a> describes Presence Writer as a component notified when a game's foreground-presence state changes. Its default implementation can update Xbox Live presence when the Xbox app is installed, the user is signed in, and the relevant presence option is enabled. The documentation describes that contract; it does not say that the process itself causes stutter or consumes a fixed amount of CPU, GPU or network bandwidth.
               </p>
+              <p className='mt-3 text-sm leading-7 text-slate-300 sm:text-base'>
+                Microsoft specifies an out-of-process COM implementation and documents <code>GotFocus</code>, <code>LostFocus</code> and <code>AppClose</code> notifications. Game launch and focus transitions such as Alt+Tab are sensible moments to compare a frame-time trace. A presence update, network wait, or overlap with game initialization and overlay hooks could coincide with a hitch on some systems, but Microsoft documents the callbacks—not a frame-time penalty—so these remain hypotheses to test rather than established causes.
+              </p>
             </div>
             <Callout title="Important distinction">
               Seeing this process in Task Manager does not prove that it is causing stutter or that your CPU, GPU, or network is the bottleneck. Use the repeatable process-isolation test next, then measure before changing settings.
@@ -346,15 +349,28 @@ export default function GameBarPresenceWriterGuide() {
             <tbody className="divide-y divide-slate-800">
               <tr><th scope="row" className="px-4 py-4 text-left font-bold text-white">1</th><td className="px-4 py-4 text-slate-300">Choose a repeatable game scene and save point.</td><td className="px-4 py-4 text-slate-400">A different map or changed game settings can invalidate the comparison.</td></tr>
               <tr><th scope="row" className="px-4 py-4 text-left font-bold text-white">2</th><td className="px-4 py-4 text-slate-300">Keep resolution, display mode, frame cap and background applications constant.</td><td className="px-4 py-4 text-slate-400">Change one variable at a time so you can interpret the result.</td></tr>
-              <tr><th scope="row" className="px-4 py-4 text-left font-bold text-white">3</th><td className="px-4 py-4 text-slate-300">Record frame-time behavior, average FPS, CPU/GPU load, temperatures and clocks.</td><td className="px-4 py-4 text-slate-400">Average FPS alone can hide short frame-time spikes.</td></tr>
-              <tr><th scope="row" className="px-4 py-4 text-left font-bold text-white">4</th><td className="px-4 py-4 text-slate-300">Confirm the executable name and location in Task Manager before targeting it.</td><td className="px-4 py-4 text-slate-400">Do not assume a similarly named file in an unexpected location is the Windows component.</td></tr>
+              <tr><th scope="row" className="px-4 py-4 text-left font-bold text-white">3</th><td className="px-4 py-4 text-slate-300">Capture a 60–120-second baseline with frame-time, average FPS, CPU/GPU load, temperatures and clocks.</td><td className="px-4 py-4 text-slate-400">Repeat the same run; compare frame-time percentiles as well as average FPS.</td></tr>
+              <tr><th scope="row" className="px-4 py-4 text-left font-bold text-white">4</th><td className="px-4 py-4 text-slate-300">Confirm the process name, System32 path and Microsoft Authenticode signature.</td><td className="px-4 py-4 text-slate-400">Stop if the file is elsewhere, missing or not validly signed by Microsoft Windows.</td></tr>
               <tr><th scope="row" className="px-4 py-4 text-left font-bold text-white">5</th><td className="px-4 py-4 text-slate-300">Run the current-process isolation test below.</td><td className="px-4 py-4 text-slate-400">This is reversible and avoids a registry edit.</td></tr>
-              <tr><th scope="row" className="px-4 py-4 text-left font-bold text-white">6</th><td className="px-4 py-4 text-slate-300">Repeat the same scene more than once and compare the frame-time trace.</td><td className="px-4 py-4 text-slate-400">A single smoother run may be ordinary variation.</td></tr>
+              <tr><th scope="row" className="px-4 py-4 text-left font-bold text-white">6</th><td className="px-4 py-4 text-slate-300">Repeat matched captures and compare 1%/0.1% lows or 99th/99.9th-percentile frame durations.</td><td className="px-4 py-4 text-slate-400">Repeated captures help separate a real change from run-to-run variation.</td></tr>
               <tr><th scope="row" className="px-4 py-4 text-left font-bold text-white">7</th><td className="px-4 py-4 text-slate-300">Test the Game Bar toggle and background-capture option separately.</td><td className="px-4 py-4 text-slate-400">This identifies whether the broader capture path matters.</td></tr>
               <tr><th scope="row" className="px-4 py-4 text-left font-bold text-white">8</th><td className="px-4 py-4 text-slate-300">Check Windows version and policy management before inspecting AllowGameDVR.</td><td className="px-4 py-4 text-slate-400">Device policy is not a universal Windows 11 switch.</td></tr>
               <tr><th scope="row" className="px-4 py-4 text-left font-bold text-white">9</th><td className="px-4 py-4 text-slate-300">Leave the protected ActivationType override to qualified experts.</td><td className="px-4 py-4 text-slate-400">Microsoft does not document this community workaround as a supported disable method.</td></tr>
             </tbody>
           </AccessibleTable>
+          <div className='mt-6 grid gap-4 lg:grid-cols-2'>
+            <Callout title='Capture an apples-to-apples baseline'>
+              <p>Use PresentMon to record the same 60–120-second game sequence at least twice before and twice after the process-isolation test. Keep the save point, route, camera movement, resolution, display mode, frame cap and background applications unchanged.</p>
+              <p className='mt-2'>Compare 1% and 0.1% low FPS, or the 99th and 99.9th percentile frame durations. Use <code>MsBetweenDisplayChange</code> when available to assess displayed-frame pacing, and inspect <code>MsBetweenPresents</code> alongside it for application present cadence.</p>
+              <p className='mt-2'>Repeated spikes around 20–35 ms or higher are worth investigating when surrounding frames are much shorter and the same spikes shrink or disappear in matched post-test captures. This is a comparison cue, not a universal pass/fail threshold.</p>
+            </Callout>
+            <Callout title='Verify the executable and its signer' danger>
+              <p>Expected location: <code>%windir%\System32\GameBarPresenceWriter.exe</code> (commonly <code>C:\Windows\System32\GameBarPresenceWriter.exe</code>).</p>
+              <p className='mt-2'>Run this in PowerShell before targeting the process:</p>
+              <CodeBlock>{'Get-AuthenticodeSignature "$env:windir\\System32\\GameBarPresenceWriter.exe" | Format-List Status,SignerCertificate'}</CodeBlock>
+              <p className='mt-2'>Expected result: <code>Status</code> is <code>Valid</code> and the signer identifies Microsoft Windows / Microsoft Corporation. If the file is missing, resolves elsewhere, or has an invalid or non-Microsoft signature, do not run <code>taskkill</code> against it or change its registry configuration; investigate the file first.</p>
+            </Callout>
+          </div>
         </div>
       </section>
 
