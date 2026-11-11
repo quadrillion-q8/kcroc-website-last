@@ -49,9 +49,6 @@ assert.equal(abItems.length, 5, 'A/B testing workflow must have exactly five lis
 for (const label of ['Baseline', 'One change', 'Repeat', 'Compare', 'Rollback']) {
   assert.ok(abOrderedList[0].includes(label), 'A/B test list step is missing: ' + label);
 }
-const sidebarRoutes = [...sidebarHtml.matchAll(/href="([^"]+)"/g)].map((match) => match[1]);
-assert.equal(sidebarRoutes.length, 4, 'Sidebar should contain exactly four related-guide links.');
-assert.equal(sidebarRoutes[1], '/guides/gamebar-presence-writer-fix', 'GameBar guide should be the second sidebar item.');
 assert.ok(!/<li\b[^>]*>\s*<\/li>/.test(abOrderedList[0]), 'A/B test contains an empty list item.');
 
 // Comparison-table headers must have exactly the same number of columns as the body rows.
@@ -106,6 +103,9 @@ assert.ok(relatedHeading >= 0, 'Sidebar Related Guides block is missing.');
 const sidebarEnd = html.indexOf('</ul>', relatedHeading);
 assert.ok(sidebarEnd > relatedHeading, 'Sidebar Related Guides list is missing.');
 const sidebarHtml = html.slice(relatedHeading, sidebarEnd + 5);
+const sidebarRoutes = [...sidebarHtml.matchAll(/href="([^"]+)"/g)].map((match) => match[1]);
+assert.equal(sidebarRoutes.length, 4, 'Sidebar should contain exactly four related-guide links.');
+assert.equal(sidebarRoutes[1], '/guides/gamebar-presence-writer-fix', 'GameBar guide should be the second sidebar item.');
 for (const route of [
   '/guides/windows-gaming-frame-time-stutter',
   '/guides/gamebar-presence-writer-fix',
