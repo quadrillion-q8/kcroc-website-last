@@ -438,7 +438,7 @@ const TECHNICAL_SOURCE_LABELS: Record<string, string> = {
     'Microsoft Learn — Windows 11 settings reference',
   'https://learn.microsoft.com/en-us/windows/client-management/mdm/policy-csp-applicationmanagement':
     'Microsoft Learn — AllowGameDVR policy',
-  'https://learn.microsoft.com/en-us/windows/hardware/drivers/kernel/introduction-to-dpc-objects':
+  'https://learn.microsoft.com/en-us/windows-hardware/drivers/kernel/introduction-to-dpcs':
     'Microsoft Learn — Introduction to DPCs',
   'https://learn.microsoft.com/en-us/windows-hardware/drivers/devtest/example-15--measuring-dpc-isr-time':
     'Microsoft Learn — Measuring DPC/ISR time',
