@@ -1080,6 +1080,13 @@ export default function BlogPostTemplate() {
     return [];
   }, [post]);
 
+  const relatedArticleCards = useMemo(() => {
+    if (post?.slug !== 'windows-gaming-performance-stutter-fix') return relatedPosts;
+    const gameBarCard = relatedPosts.find((item) => item.slug === 'gamebar-presence-writer-fix');
+    if (!gameBarCard) return relatedPosts;
+    return [...relatedPosts.filter((item) => item.slug !== 'gamebar-presence-writer-fix'), gameBarCard];
+  }, [post, relatedPosts]);
+
   const recentPosts = useMemo(
     () => post ? BLOG_POSTS.filter(p => !p.redirectTo && p.slug !== post.slug).sort((a, b) => +new Date(b.date) - +new Date(a.date)).slice(0, 4) : [],
     [post]
@@ -1775,13 +1782,13 @@ export default function BlogPostTemplate() {
             </section>
           )}
 
-          {relatedPosts.length > 0 && (
+          {relatedArticleCards.length > 0 && (
             <section className="max-w-4xl mt-16 border-t border-slate-800/50 pt-12">
               <h3 className="text-2xl font-black text-white mb-8 flex items-center gap-2">
                 <Network className="text-cyan-400" aria-hidden="true" /> Related Articles
               </h3>
               <div className="grid md:grid-cols-2 gap-6">
-                {relatedPosts.map(r => (
+                {relatedArticleCards.map(r => (
                   <Link key={r.slug} to={contentRoute(r)} className="bg-slate-900/30 p-6 rounded-2xl border border-slate-800 hover:border-cyan-500/50 transition-all hover:-translate-y-1 group flex flex-col h-full motion-reduce:hover:translate-y-0">
                     <div className="flex items-center justify-between mb-3">
                       <span className="text-xs font-bold text-cyan-400 uppercase tracking-wider">{r.category}</span>
