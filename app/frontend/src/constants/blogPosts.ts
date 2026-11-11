@@ -6134,8 +6134,11 @@ export const BLOG_POSTS: BlogPost[] = [
       ] },
       { type: "paragraph", text: "Those answers quickly separate several common branches. One-game-only problems often point toward the game engine, shaders, settings or a driver profile. Stutter that grows as the laptop gets hotter points toward thermal or power behavior. A hitch that appears when an overlay opens is worth testing as an overlay variable. A whole-system pause that affects the desktop as well as the game suggests a broader Windows, storage, memory, driver or hardware problem." },
 
-      { type: "h2", text: "1. Measure Frame-Time, Not Only Average FPS", id: "measure-frame-time" },
+      { type: "h2", text: "Measure Frame-Time, Not Only Average FPS", id: "measure-frame-time" },
       { type: "paragraph", text: "At 60 FPS, one ideal frame takes about 16.7 ms. At 120 FPS it is about 8.3 ms, and at 144 FPS about 6.9 ms. The important idea is consistency: if most frames arrive near the expected interval but a few frames suddenly take much longer, you can feel those spikes as hitching. A headline FPS value does not reveal that pattern by itself." },
+      { type: "paragraph", text: "For a repeatable baseline, capture the same 60–120-second game sequence at least twice before and twice after a test. Intel PresentMon records per-frame timing and CPU/GPU/display telemetry. CapFrameX uses PresentMon to capture and compare frametime distributions and sensor data. MSI Afterburner with RivaTuner Statistics Server (RTSS) can provide a live overlay; in Afterburner’s Monitoring settings, select Framerate and set its OSD display to text plus graph. Keep the capture tool, overlay, game route, frame cap and background applications consistent." },
+      { type: "paragraph", text: "Compare average FPS with 1% low and 0.1% low FPS, then inspect the frame-time trace and its 99th/99.9th-percentile durations. These low-percentile FPS summaries describe the slower tail of the capture, not a guaranteed minimum; their exact calculation can vary between tools, and 0.1% lows are especially sensitive to a small number of outliers. Compare captures made with the same tool and settings rather than mixing results from different utilities." },
+      { type: "paragraph", text: "PresentMon’s MsBetweenPresents is the interval between successive application Present calls. MsBetweenDisplayChange is a separate display-pacing measure describing how long the previous frame remained displayed before the next displayed frame changed. They are not interchangeable—particularly when frame generation, dropped presents or display composition are involved. Use both when available, and be explicit about whether you are measuring application cadence or frames actually shown on screen." },
       { type: "comparisonTable", title: "FPS versus ideal frame-time", columns: ["Target FPS", "Ideal frame-time", "Why a spike matters"], rows: [
         { feature: "60 FPS", values: ["16.7 ms", "A 50–100 ms frame can create a clearly visible hitch"] },
         { feature: "120 FPS", values: ["8.3 ms", "One much longer frame can break an otherwise fast cadence"] },
@@ -6150,13 +6153,13 @@ export const BLOG_POSTS: BlogPost[] = [
         { feature: "Hitch occurs when overlay appears", values: ["Overlay or capture interaction is plausible", "Disable one overlay and repeat the same test"] }
       ] },
 
-      { type: "h2", text: "2. Test Game Bar and Other Overlays as Variables", id: "game-bar-overlays" },
+      { type: "h2", text: "Test Game Bar and Other Overlays as Variables", id: "game-bar-overlays" },
       { type: "paragraph", text: "Xbox Game Bar is only one overlay. Steam, Discord, NVIDIA, AMD, MSI utilities, capture software and motherboard utilities can all add their own hooks or background activity. That means disabling Game Bar does not prove that all overlays are disabled, and seeing GameBarPresenceWriter.exe does not prove it caused the stutter." },
       { type: "paragraph", text: "Microsoft documents Game Bar and related Windows gaming settings, including Game Bar shortcuts and Game DVR-related controls. https://learn.microsoft.com/en-us/windows/apps/develop/settings/settings-windows-11" },
       { type: "paragraph", text: "For recording and broadcasting, Microsoft documents the AllowGameDVR policy and its 0/1 behavior. https://learn.microsoft.com/en-us/windows/client-management/mdm/policy-csp-applicationmanagement" },
       { type: "callout", variant: "warning", title: "Do not stack overlay changes", text: "Disable or change one overlay at a time. If you turn off Game Bar, Steam Overlay, Discord, GPU recording, RGB utilities and several Windows services at once, you lose the ability to identify which change actually mattered." },
 
-      { type: "h2", text: "3. Check Whether the GPU Is Actually the Bottleneck", id: "gpu-bottleneck" },
+      { type: "h2", text: "Check Whether the GPU Is Actually the Bottleneck", id: "gpu-bottleneck" },
       { type: "paragraph", text: "If GPU utilization is consistently near its practical limit while the game is running normally, a lower FPS result may simply mean the workload is GPU-bound. That is not the same as stutter. A GPU-bound game can be smooth. The useful test is to compare the symptom at a different resolution or graphics preset while watching whether frame-time consistency changes." },
       { type: "list", items: [
         "Reproduce the same scene and note the approximate GPU utilization and clock behavior.",
@@ -6165,25 +6168,26 @@ export const BLOG_POSTS: BlogPost[] = [
         "If crashes or visual artifacts appear, stop treating the issue as a simple performance setting and investigate GPU, VRAM, power and thermal stability."
       ] },
 
-      { type: "h2", text: "4. Check CPU Pressure, Background Work and Memory", id: "cpu-memory" },
+      { type: "h2", text: "Check CPU Pressure, Background Work and Memory", id: "cpu-memory" },
       { type: "paragraph", text: "A game can stutter when a CPU thread becomes the limiting factor even though total CPU utilization does not look close to 100%. Modern games can be sensitive to one or a few busy threads, while other cores remain underused. Background applications can also compete for CPU time, memory bandwidth and storage I/O." },
       { type: "paragraph", text: "If memory usage stays very high during the same stutter, check whether closing a heavy background application changes the symptom. If the disk becomes busy at exactly the same time, investigate paging, shader-cache activity, updates or another I/O-heavy process rather than assuming the storage drive is failing." },
       { type: "paragraph", text: "Microsoft's general Windows performance guidance recommends identifying which resource is actually under pressure instead of applying generic optimizers. https://support.microsoft.com/en-us/windows/experience/performance-optimization/tips-to-improve-pc-performance-in-windows" },
+      { type: "callout", variant: "tip", title: "Camera-pan hitches? Test the mouse polling rate", text: "If the hitch happens mainly while turning the camera with a 4,000 Hz or 8,000 Hz mouse, temporarily lower its polling rate to 1,000 Hz and repeat the same camera-pan route. Compare frame-time and per-core CPU activity. Very high report rates can increase input-processing work on some mouse, driver, game-engine and CPU combinations; this is a targeted A/B test, not proof that high polling is inherently faulty. Restore the original rate if the trace does not improve or input feel becomes worse." },
 
-      { type: "h2", text: "5. Investigate DPC/ISR Driver Activity When Hitches Look Like Latency Spikes", id: "dpc-isr" },
+      { type: "h2", text: "Investigate DPC/ISR Driver Activity When Hitches Look Like Latency Spikes", id: "dpc-isr" },
       { type: "paragraph", text: "Windows device drivers handle hardware interrupts and can defer some work to Deferred Procedure Calls (DPCs). Microsoft explains that DPCs are used to postpone interrupt-related processing after an interrupt service routine returns. https://learn.microsoft.com/en-us/windows-hardware/drivers/kernel/introduction-to-dpc-objects" },
       { type: "paragraph", text: "When troubleshooting severe, repeatable latency spikes, kernel tracing can measure DPC and ISR execution time. Microsoft's technical example explains how DPC/ISR tracing can be used to analyze driver behavior and shows how the report identifies DPC and ISR utilization. https://learn.microsoft.com/en-us/windows-hardware/drivers/devtest/example-15--measuring-dpc-isr-time" },
       { type: "callout", variant: "expert", title: "Advanced path", text: "DPC/ISR analysis is an advanced diagnostic branch. Do not conclude that a driver is defective just because a latency tool names it. Correlate the timing spike with the actual gaming hitch and check whether a controlled driver or device change alters the symptom." },
 
-      { type: "h2", text: "6. Check for Shader Compilation Stutter", id: "shader-stutter" },
+      { type: "h2", text: "Check for Shader Compilation Stutter", id: "shader-stutter" },
       { type: "paragraph", text: "Some games compile shaders or pipeline states during loading or gameplay. Microsoft documents a Direct3D 12 pipeline-state cache sample specifically because caching compiled pipeline state can avoid expensive shader compilation on later runs and can reduce rendering glitches associated with driver shader compilation. https://learn.microsoft.com/en-us/samples/microsoft/directx-graphics-samples/d3d12-pipeline-state-cache-sample-win32/" },
       { type: "paragraph", text: "Shader-related hitches often have a recognizable pattern: a game is smooth after an initial period, or particular locations, effects or materials trigger a short hitch the first time they appear. A driver update can also change shader caches or cause some content to compile again. Do not automatically delete every shader cache as a generic fix; first determine whether the hitch pattern is consistent with shader compilation." },
 
-      { type: "h2", text: "7. Check Windows Graphics Settings Before Registry Tweaks", id: "windows-graphics" },
+      { type: "h2", text: "Check Windows Graphics Settings Before Registry Tweaks", id: "windows-graphics" },
       { type: "paragraph", text: "Windows 11 exposes per-app graphics preferences and an Optimizations for windowed games setting. Microsoft says this feature applies to compatible DirectX 10 and DirectX 11 games in windowed and borderless-windowed modes and can reduce frame latency on supported configurations. https://support.microsoft.com/en-us/windows/hardware/display-graphics/optimizations-for-windowed-games-in-windows-11" },
       { type: "paragraph", text: "Treat such settings as controlled experiments, not universal FPS boosts. Change the setting for one affected game, restart the game, and compare the same scenario. A configuration that helps one title can be neutral or unhelpful for another." },
 
-      { type: "h2", text: "8. Check for Thermal Throttling and Power Limits", id: "thermal-power" },
+      { type: "h2", text: "Check for Thermal Throttling and Power Limits", id: "thermal-power" },
       { type: "paragraph", text: "A gaming laptop or compact Windows system can feel perfect for the first few minutes and become less consistent after sustained heat builds. Compare the beginning and later part of the same session. If CPU/GPU temperature rises while clock speeds or performance fall, the thermal path becomes a stronger suspect than Game Bar or a single Windows registry value." },
       { type: "paragraph", text: "Inspect vents, fans, heatsinks and the system's physical condition. High ambient temperatures can reduce thermal headroom further, especially when dust or degraded thermal interfaces are already limiting cooling. A gaming laptop that stutters only after it gets hot should be tested as a cooling problem before it is treated as a Windows-tweak problem." },
       { type: "list", items: [
@@ -6193,7 +6197,7 @@ export const BLOG_POSTS: BlogPost[] = [
         "The symptom is unchanged by temperature → return to software, driver, frame-time or game-specific branches."
       ] },
 
-      { type: "h2", text: "9. Use A/B Testing Instead of a Giant “Optimization” Checklist", id: "ab-testing" },
+      { type: "h2", text: "Use A/B Testing Instead of a Giant “Optimization” Checklist", id: "ab-testing" },
       { type: "timeline", title: "A controlled gaming-stutter test", steps: [
         { label: "Baseline", note: "Record the game, scene, settings, approximate FPS and when the hitch occurs." },
         { label: "One change", note: "Change only one setting or disable one background component." },
