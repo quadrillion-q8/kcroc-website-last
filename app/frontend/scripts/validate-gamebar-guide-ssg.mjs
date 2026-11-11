@@ -60,6 +60,7 @@ for (const relatedPath of relatedPaths) {
   assert.equal(occurrences, 1, 'Related path must appear exactly once: ' + relatedPath);
 }
 assert.ok(!html.includes('GameBar performance: related troubleshooting paths'), 'Duplicate standalone related-links grid remains.');
+assert.ok(!html.includes('Continue to Step 2'), 'Stale backwards Step 2 reference remains.');
 for (const evidence of [
   'Continue with Steps 6–7',
   '60–120-second',
@@ -67,6 +68,10 @@ for (const evidence of [
   'MsBetweenPresents',
   '20–35 ms',
   'Get-AuthenticodeSignature',
+  'System32',
+  'Status',
+  'Valid',
+  'Microsoft Corporation',
   'WHESVC (service name whesvc, Windows Health and Optimized Experiences)',
 ]) {
   assert.ok(html.includes(evidence), 'Missing GameBar evidence/verification copy: ' + evidence);
@@ -110,6 +115,6 @@ const pos = sitemap.indexOf(loc);
 assert.ok(pos >= 0, 'Original GameBar guide URL missing from sitemap.');
 const urlStart = sitemap.lastIndexOf('<url>', pos), urlEnd = sitemap.indexOf('</url>', pos);
 const urlEntry = sitemap.slice(urlStart, urlEnd + 6);
-assert.ok(urlEntry.includes('<lastmod>2026-11-10T23:00:00.000Z'), 'Sitemap review date must reflect November 10 in Kuwait time without a future UTC date.');
+assert.ok(urlEntry.includes('<lastmod>2026-11-10T23:00:00.000Z'), 'Sitemap review date must reflect November 11 in Kuwait time without a future UTC date.');
 
 console.log('GameBar guide SSG validation passed: nine-step workflow, seven accessible tables, fourteen FAQ answers and schema, six unique related paths, frame-time evidence, signer guidance, official sources, global editorial scope and fresh sitemap metadata.');
