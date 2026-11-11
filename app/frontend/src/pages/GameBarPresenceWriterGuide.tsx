@@ -1,7 +1,6 @@
 // File: app/frontend/src/pages/GameBarPresenceWriterGuide.tsx
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { StandaloneRelatedLinks } from '@/components/content/StandaloneRelatedLinks';
 import { Badge } from '@/components/ui/badge';
 import {
   Check, CheckCircle2, ChevronRight, CircleHelp, Copy, Gamepad2,
@@ -34,7 +33,7 @@ const MS_GAMEBAR_SUPPORT_URL = 'https://support.microsoft.com/en-us/accessibilit
 const PRESENTMON_URL = 'https://github.com/GameTechDev/PresentMon';
 
 const PUBLISHED_DATE = 'August 23, 2026';
-const LAST_REVIEWED = 'November 10, 2026';
+const LAST_REVIEWED = 'November 11, 2026';
 
 const toc = [
   { id: 'quick-answer', label: '60-Second Answer' },
@@ -49,7 +48,6 @@ const toc = [
   { id: 'registry', label: 'Advanced Override' },
   { id: 'other-causes', label: 'Other Stutter Causes' },
   { id: 'cluster', label: 'Related Gaming Guides' },
-  { id: 'official-references', label: 'Official References' },
   { id: 'faq', label: 'FAQ' },
 ];
 
@@ -138,7 +136,7 @@ const STRUCTURED_DATA = {
       "keywords": ["GameBarPresenceWriter.exe", "Xbox Game Bar", "Windows Game DVR", "Windows 11 gaming stutter", "frame-time analysis", "AllowGameDVR policy", "PresentMon"],
       "proficiencyLevel": "Intermediate",
       "datePublished": "2026-08-23",
-      "dateModified": "2026-11-10"
+      "dateModified": "2026-11-11"
     },
     {
       "@type": "HowTo",
@@ -148,7 +146,7 @@ const STRUCTURED_DATA = {
       "step": [
         { "@type": "HowToStep", "position": 1, "name": "Choose a repeatable game scene", "text": "Use the same save, location, camera movement, display mode, frame cap, graphics settings and background applications for each comparison.", "url": `${PAGE_URL}#methodology` },
         { "@type": "HowToStep", "position": 2, "name": "Record a baseline", "text": "Record frame-time behavior alongside average FPS, CPU and GPU load, temperatures and clock speeds before changing anything.", "url": `${PAGE_URL}#methodology` },
-        { "@type": "HowToStep", "position": 3, "name": "Confirm the process identity", "text": "Check the process name and executable location in Task Manager. Do not assume a similarly named executable in an unexpected location is the Windows component.", "url": `${PAGE_URL}#methodology` },
+        { "@type": "HowToStep", "position": 3, "name": "Confirm the process identity", "text": "Confirm the executable resolves under the Windows System32 directory and has a valid Microsoft Windows Authenticode signature before targeting it.", "url": `${PAGE_URL}#methodology` },
         { "@type": "HowToStep", "position": 4, "name": "End only the current process instance", "text": "Run taskkill /f /im GameBarPresenceWriter.exe for a reversible, current-session isolation test.", "url": `${PAGE_URL}#10-second-test` },
         { "@type": "HowToStep", "position": 5, "name": "Repeat and interpret the comparison", "text": "Repeat the same scene and compare the frame-time pattern. Treat a single improvement as a clue, not proof of causation.", "url": `${PAGE_URL}#test-results` },
         { "@type": "HowToStep", "position": 6, "name": "Test Xbox Game Bar settings", "text": "Turn off only Game Bar features and capture options you do not use, one change at a time, then retest the same workload.", "url": `${PAGE_URL}#safe-method` },
@@ -246,7 +244,7 @@ export default function GameBarPresenceWriterGuide() {
                 Windows Gaming Performance & Frame-Time Diagnostics
               </Badge>
               <h1 className="max-w-4xl text-3xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">
-                GameBarPresenceWriter.exe:
+                GameBarPresenceWriter.exe:{' '}
                 <span className="block bg-gradient-to-r from-cyan-400 to-violet-400 bg-clip-text text-transparent">
                   Test Gaming Stutter Safely
                 </span>
@@ -373,7 +371,7 @@ export default function GameBarPresenceWriterGuide() {
           </div>
           <div className="mt-6 grid gap-4 sm:grid-cols-3">
             {[
-              ['Repeatable improvement', 'If the same scene becomes consistently smoother, Presence Writer or related Game Bar activity may be contributing. Continue to Step 2 and verify after a restart.', CheckCircle2],
+              ['Repeatable improvement', 'If the same scene becomes consistently smoother, Presence Writer or related Game Bar activity may be contributing. Continue with Steps 6–7: repeat the matched scene, then test Xbox Game Bar and background-capture settings one at a time. Recheck after any restart needed to apply a persistent setting.', CheckCircle2],
               ['No measurable change', 'The process is less likely to be the main cause. Do not continue into registry changes just because the executable appears in Task Manager.', CircleHelp],
               ['The process returns', 'Taskkill ends only the current instance. Windows may start it again when activation conditions occur; this command is a test, not a permanent disable.', RotateCcw],
             ].map(([title, text, Icon]) => { const I = Icon as React.ElementType; return <div key={title as string} className="rounded-2xl border border-slate-800 bg-brand-dark p-5"><I className="h-5 w-5 text-cyan-400" /><h3 className="mt-3 font-bold text-white">{title as string}</h3><p className="mt-2 text-sm leading-6 text-slate-400">{text as string}</p></div>; })}
@@ -420,7 +418,7 @@ export default function GameBarPresenceWriterGuide() {
           <p className="mt-6 max-w-3xl text-sm leading-6 text-slate-400">
             Not sure which background processes are worth auditing first? See our{' '}
             <Link to="/guides/windows-11-background-services-audit" className="font-semibold text-cyan-300 hover:text-cyan-200">Windows 11 Background Services Audit</Link>{' '}
-            for an evidence-first look at WHESVC, DiagTrack, SysMain and MapsBroker.
+            for an evidence-first look at WHESVC (service name whesvc, Windows Health and Optimized Experiences), DiagTrack, SysMain and MapsBroker.
           </p>
         </div>
       </section>
