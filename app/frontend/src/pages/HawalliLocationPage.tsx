@@ -16,7 +16,7 @@
 // (the generic sitewide FAQ doesn't cover Hawalli-specific phrasing like
 // "can I bring my laptop to the Hawalli location") — each answer is
 // checked against KCROC_GRAPH facts, not invented independently of them.
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import {
   MapPin, Truck, Shield, ShieldCheck, Zap, Cpu, Wrench, Laptop, Apple,
@@ -124,7 +124,6 @@ const HAWALLI_WORKFLOW_STEPS = [
 
 export default function HawalliLocationPage() {
   const { trackConversion } = useAnalytics();
-  const [openFaqId, setOpenFaqId] = useState<string | null>(null);
 
   const location = KCROC_GRAPH.locations.find((l) => l.id === 'loc-hawalli');
   const business = KCROC_GRAPH.business;
@@ -159,17 +158,20 @@ export default function HawalliLocationPage() {
   const WA_LINK = `https://wa.me/${phone}?text=${encodeURIComponent(
     'Hi KCROC, I am in Hawalli and need a device repaired. Can we arrange a pickup?'
   )}`;
+  const HANDOVER_WA_LINK = `https://wa.me/${phone}?text=${encodeURIComponent(
+    'Hi KCROC, I am planning a walk-in at your Hawalli lab. Can you guide me to Basement Shop 19 or confirm whether a quick curbside handover is available?'
+  )}`;
 
   const localFaqs: LocalFAQ[] = [
     {
       id: 'faq-hawalli-service',
       question: 'Do you provide walk-in and pickup computer repair in Hawalli?',
-      answer: `Yes. Hawalli is home to KCROC's physical repair lab at Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19. You can visit during our daily opening hours of 10:00 AM to 10:00 PM, or arrange free pickup from your home or office in Hawalli. Free pickup and delivery is also available across Kuwait.`,
+      answer: `Yes. You can hand your laptop, MacBook or desktop PC directly to our team at the Hawalli workshop during ${business.openingHours}. Prefer not to visit? Free pickup and return delivery are available from your home or office in Hawalli and across Kuwait.`,
     },
     {
       id: 'faq-hawalli-address',
       question: 'Where is KCROC located in Hawalli?',
-      answer: `Our physical repair lab is at ${location.landmark}, Hawalli, Kuwait. We are inside Al Mullah Complex at basement level, Shop 19. ${business.openingHours}. Call or WhatsApp if you need help finding the entrance.`,
+      answer: `Our physical repair lab is at ${location.landmark}, Hawalli, Kuwait. The workshop is at basement level, Shop 19. Use the basement-level shop access; call or WhatsApp ${phoneDisplay} before arrival if you need help finding the entrance. If stopping nearby is difficult, message us first to ask whether a quick curbside handover can be arranged. Curbside handover is subject to team confirmation.`,
     },
     {
       id: 'faq-hawalli-visit',
@@ -189,17 +191,17 @@ export default function HawalliLocationPage() {
     {
       id: 'faq-hawalli-macbook',
       question: 'Do you repair MacBooks in Hawalli?',
-      answer: `Yes, MacBook repair — including motherboard and liquid damage recovery — is one of our core services at the Hawalli lab. See our full MacBook repair service for details.`,
+      answer: `Yes. We assess MacBook Air and Pro faults including charging and USB-C issues, liquid damage, screen, battery and keyboard problems, plus logic-board diagnosis and component-level repair where the original board is technically repairable. Selected MacBook work is published from 25 KWD; MacBook logic-board repair is a separate 45–100+ KWD guide range. The exact quote depends on the model, fault and parts.`,
     },
     {
       id: 'faq-hawalli-gaming',
       question: 'Do you repair gaming laptops and gaming PCs?',
-      answer: `Yes. Our Hawalli lab handles gaming PC and GPU repair as well as gaming laptop cleaning and thermal repaste for systems running hot or underperforming.`,
+      answer: `Yes. We diagnose gaming desktops and laptops with overheating, loud fans, thermal throttling, unstable power, black screens and other hardware symptoms. The repair recommendation follows the confirmed fault and the system's condition.`,
     },
     {
       id: 'faq-hawalli-motherboard',
       question: 'Can you repair a laptop motherboard?',
-      answer: `Yes. Component-level motherboard repair is a specialty at KCROC — we trace and replace the specific failed chip on the board rather than automatically swapping the entire motherboard where that's technically possible.`,
+      answer: `Yes, where the fault is technically repairable. We trace the affected power, charging or other board circuit and consider a targeted component or connector repair before recommending a complete motherboard replacement.`,
     },
     {
       id: 'faq-hawalli-parts',
@@ -209,7 +211,7 @@ export default function HawalliLocationPage() {
     {
       id: 'faq-hawalli-cost',
       question: 'How much does laptop repair cost in Hawalli?',
-      answer: `The initial diagnostic is free. Published starting labor rates include battery replacement from 8 KWD, keyboard replacement from 10 KWD, and laptop screen replacement labor from 30 KWD. The battery, keyboard or screen panel is charged separately where applicable, and the final total depends on the model and fault. We confirm the quote before paid work begins. See /pricing for current ranges.`,
+      answer: `The initial diagnostic is free. Common laptop repairs start from 15 KWD. Component-level motherboard repair is published from 25 KWD, with a 25–60 KWD guide range. Selected MacBook work starts from 25 KWD, while MacBook logic-board repair is separately listed at 45–100+ KWD. Battery labour starts from 8 KWD, keyboard labour from 10 KWD and screen labour from 30 KWD; compatible parts and panels are extra. The final quote depends on the model and fault, and you approve it before paid work begins. See /pricing for the full guide.`,
     },
     {
       id: 'faq-hawalli-turnaround',
@@ -337,11 +339,11 @@ export default function HawalliLocationPage() {
                 </a>
               </div>
               <p className="text-xs sm:text-sm text-slate-400 font-medium">
-                Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19 · Open daily 10 AM to 10 PM · No Fix, No Fee · 30-day warranty
+                {location.landmark} · {business.openingHours} · No Fix, No Fee · 30-day warranty
               </p>
               <p className="mt-3 text-sm text-slate-400">
-                Have a general question about contacting the team or arranging a visit?
-                <Link to="/contact" className="ml-1 font-bold text-cyan-300 transition-colors hover:text-cyan-200">Contact KCROC</Link>.
+                Have a general question about contacting the team or arranging a visit?{' '}
+                <Link to="/contact" className="font-bold text-cyan-300 transition-colors hover:text-cyan-200">Contact KCROC</Link>.
               </p>
             </div>
 
@@ -431,11 +433,6 @@ export default function HawalliLocationPage() {
             reported fault, not browse your personal files; for supported Windows devices, you can
             also ask about keeping a removable NVMe or SATA drive with you before handover.
           </p>
-          <p className="mt-4 text-sm leading-relaxed text-slate-400">
-            <strong className="text-slate-200">Need help finding us?</strong> We are inside Al Mullah
-            Complex on Ibn Khaldoun Street, at basement level, Shop 19. Call or WhatsApp KCROC before
-            your visit for directions or to arrange collection.
-          </p>
         </div>
       </section>
 
@@ -514,30 +511,40 @@ export default function HawalliLocationPage() {
                 <CheckCircle2 className="h-4 w-4" aria-hidden="true" />
               </Link>
             </div>
-            <div className="mt-5 grid grid-cols-2 gap-3 lg:grid-cols-4">
-              <div className="rounded-xl border border-slate-700/70 bg-slate-950/40 p-4">
+            <div className="mt-5 grid grid-cols-2 gap-3 lg:grid-cols-3">
+              <div data-hawalli-pricing-card="true" data-hawalli-price="diagnostic" className="rounded-xl border border-slate-700/70 bg-slate-950/40 p-4">
                 <p className="text-xs font-semibold text-slate-400">Initial diagnostic</p>
                 <p className="mt-1 text-xl font-black text-white">FREE</p>
-                <p className="mt-1 text-xs leading-relaxed text-slate-500">No-obligation assessment</p>
+                <p className="mt-1 text-xs leading-relaxed text-slate-500">No-obligation bench assessment</p>
               </div>
-              <div className="rounded-xl border border-slate-700/70 bg-slate-950/40 p-4">
+              <div data-hawalli-pricing-card="true" data-hawalli-price="motherboard" className="rounded-xl border border-slate-700/70 bg-slate-950/40 p-4">
+                <p className="text-xs font-semibold text-slate-400">Motherboard repair</p>
+                <p className="mt-1 text-xl font-black text-white">From 25 KWD</p>
+                <p className="mt-1 text-xs leading-relaxed text-slate-500">Component-repair guide range: 25–60 KWD</p>
+              </div>
+              <div data-hawalli-pricing-card="true" data-hawalli-price="macbook" className="rounded-xl border border-slate-700/70 bg-slate-950/40 p-4">
+                <p className="text-xs font-semibold text-slate-400">Selected MacBook work</p>
+                <p className="mt-1 text-xl font-black text-white">From 25 KWD</p>
+                <p className="mt-1 text-xs leading-relaxed text-slate-500">MacBook logic-board repair is 45–100+ KWD</p>
+              </div>
+              <div data-hawalli-pricing-card="true" data-hawalli-price="battery" className="rounded-xl border border-slate-700/70 bg-slate-950/40 p-4">
                 <p className="text-xs font-semibold text-slate-400">Battery labor</p>
                 <p className="mt-1 text-xl font-black text-white">From 8 KWD</p>
                 <p className="mt-1 text-xs leading-relaxed text-slate-500">Battery cost is separate</p>
               </div>
-              <div className="rounded-xl border border-slate-700/70 bg-slate-950/40 p-4">
+              <div data-hawalli-pricing-card="true" data-hawalli-price="keyboard" className="rounded-xl border border-slate-700/70 bg-slate-950/40 p-4">
                 <p className="text-xs font-semibold text-slate-400">Keyboard labor</p>
                 <p className="mt-1 text-xl font-black text-white">From 10 KWD</p>
                 <p className="mt-1 text-xs leading-relaxed text-slate-500">Keyboard/assembly cost is separate</p>
               </div>
-              <div className="rounded-xl border border-slate-700/70 bg-slate-950/40 p-4">
+              <div data-hawalli-pricing-card="true" data-hawalli-price="screen" className="rounded-xl border border-slate-700/70 bg-slate-950/40 p-4">
                 <p className="text-xs font-semibold text-slate-400">Screen labor</p>
                 <p className="mt-1 text-xl font-black text-white">From 30 KWD</p>
                 <p className="mt-1 text-xs leading-relaxed text-slate-500">Display panel cost is separate</p>
               </div>
             </div>
             <p className="mt-4 text-xs leading-relaxed text-slate-500">
-              These are starting labor rates, not guaranteed totals. Device model, part grade and fault complexity affect the final price. See the pricing page for published ranges and the complete repair list.
+              These are guide starting points, not guaranteed totals. The 25 KWD MacBook figure applies to selected work, not logic-board repair; MacBook logic-board work is listed separately at 45–100+ KWD. Device model, part grade and fault complexity affect the final quote. See the pricing page for full ranges and parts guidance.
             </p>
           </div>
         </div>
@@ -676,17 +683,24 @@ export default function HawalliLocationPage() {
                     {location.landmark}<br />Hawalli, Kuwait
                   </p>
                   <p className="mt-2 max-w-md text-sm leading-relaxed text-slate-400">
-                    <span className="font-semibold text-slate-300">Finding the lab: walk-in drop-off and directions.</span>{' '}
-                    Our repair lab is inside Al Mullah Complex at basement level, Shop 19. This is the workshop where devices are assessed and repaired.
-                    If you need help locating the basement entrance from Ibn Khaldoun Street,{' '}
-                    <a
-                      href={`tel:+${phone}`}
-                      onClick={() => handleCallClick('location_access_note')}
-                      className="font-semibold text-cyan-300 underline decoration-cyan-500/40 underline-offset-4 hover:text-cyan-200"
-                    >
-                      call {phoneDisplay}
-                    </a>.
+                    <span className="font-semibold text-slate-300">Walk-in directions.</span>{' '}
+                    Find Al Mullah Complex on Ibn Khaldoun Street, use the basement-level shop access and go to Shop 19. If the entrance is difficult to identify, WhatsApp us before you arrive for directions.
                   </p>
+                  <div data-hawalli-curbside-handover="true" className="mt-3 rounded-xl border border-cyan-500/15 bg-cyan-950/15 p-3">
+                    <p className="text-sm leading-relaxed text-slate-400">
+                      <span className="font-semibold text-slate-200">Need a quick handover?</span>{' '}
+                      If stopping nearby is difficult, message us before arriving to ask whether a curbside handover can be arranged. This is subject to team confirmation; it is not an automatic drop-off service.
+                    </p>
+                    <a
+                      href={HANDOVER_WA_LINK}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => handleWhatsAppClick('curbside_handover')}
+                      className="mt-3 inline-flex min-h-10 items-center font-semibold text-cyan-300 underline decoration-cyan-500/40 underline-offset-4 hover:text-cyan-200"
+                    >
+                      Ask about curbside handover
+                    </a>
+                  </div>
                 </div>
               </div>
               <div className="flex items-start gap-4">
@@ -868,49 +882,37 @@ export default function HawalliLocationPage() {
           <h2 className="text-2xl sm:text-3xl font-black mb-6 sm:mb-10 text-white text-center tracking-tight">
             Frequently Asked Questions
           </h2>
-          <div className="space-y-2.5">
-            {localFaqs.map((faq) => {
-              const isOpen = openFaqId === faq.id;
-              return (
-                <div key={faq.id} className="bg-slate-900/50 border border-slate-800 rounded-2xl overflow-hidden">
-                  <button
-                    type="button"
-                    id={`${faq.id}-trigger`}
-                    aria-expanded={isOpen}
-                    aria-controls={`${faq.id}-panel`}
-                    onClick={() => {
-                      const nextOpen = isOpen ? null : faq.id;
-                      setOpenFaqId(nextOpen);
-                      if (nextOpen) {
-                        trackConversion('faq_expand', {
-                          cta_name: 'hawalli_faq',
-                          button_position: 'faq_section',
-                          entity_id: location.id,
-                          entity_type: 'Location',
-                          entity_slug: location.slug,
-                        });
-                      }
-                    }}
-                    className="w-full flex items-center justify-between gap-3 text-left px-5 sm:px-6 py-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 rounded-2xl"
-                  >
-                    <span className="text-white font-semibold text-sm sm:text-base">{faq.question}</span>
-                    <ChevronDown
-                      aria-hidden="true"
-                      className={`w-4 h-4 text-slate-500 shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
-                    />
-                  </button>
-                  <div
-                    id={`${faq.id}-panel`}
-                    role="region"
-                    aria-labelledby={`${faq.id}-trigger`}
-                    hidden={!isOpen}
-                    className="text-slate-400 text-sm leading-relaxed px-5 sm:px-6 pb-4"
-                  >
-                    {faq.answer}
-                  </div>
-                </div>
-              );
-            })}
+          <div className="space-y-2.5" data-hawalli-faq-list="true">
+            {localFaqs.map((faq) => (
+              <details
+                key={faq.id}
+                open
+                data-hawalli-faq-item="true"
+                onToggle={(event) => {
+                  if (event.currentTarget.open) {
+                    trackConversion('faq_expand', {
+                      cta_name: 'hawalli_faq',
+                      button_position: 'faq_section',
+                      entity_id: location.id,
+                      entity_type: 'Location',
+                      entity_slug: location.slug,
+                    });
+                  }
+                }}
+                className="group bg-slate-900/50 border border-slate-800 rounded-2xl overflow-hidden"
+              >
+                <summary className="flex w-full cursor-pointer list-none items-center justify-between gap-3 px-5 py-4 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 sm:px-6 marker:content-none">
+                  <span className="text-white font-semibold text-sm sm:text-base">{faq.question}</span>
+                  <ChevronDown
+                    aria-hidden="true"
+                    className="w-4 h-4 text-slate-500 shrink-0 transition-transform duration-200 group-open:rotate-180"
+                  />
+                </summary>
+                <p data-hawalli-faq-answer="true" className="text-slate-400 text-sm leading-relaxed px-5 sm:px-6 pb-4">
+                  {faq.answer}
+                </p>
+              </details>
+            ))}
           </div>
         </div>
       </section>
