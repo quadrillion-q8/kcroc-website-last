@@ -415,7 +415,8 @@ add('Salmiya has a three-step liquid-spill protocol and four published pricing a
   locationTypeSchema.includes('localEmergencyProtocol: z.object({') &&
   locationTypeSchema.includes('localPricingAnchors: z.array(z.object({') &&
   locations.includes('location.localEmergencyProtocol.steps.map') &&
-  locations.includes('location.localPricingAnchors.map'));
+  locations.includes('(location.localPricingAnchors ?? []).map') &&
+  locations.includes('renderLocalPricingAnchors'));
 add('Salmiya keeps all seven existing canonical service cards and adds verified block-level coastal postal references',
   ['srv-laptop', 'srv-macbook', 'srv-liquid-damage', 'srv-motherboard', 'srv-screen', 'srv-gaming', 'srv-gaming-laptop-cleaning'].every((id) => salmiyaEntity.includes(id)) &&
   ['20000', '20001', '20012', '25000', '25001', '25010', '25600', '25601', '25612'].every((code) => salmiyaEntity.includes(code)) &&
