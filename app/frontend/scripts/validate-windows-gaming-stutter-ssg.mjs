@@ -49,6 +49,9 @@ assert.equal(abItems.length, 5, 'A/B testing workflow must have exactly five lis
 for (const label of ['Baseline', 'One change', 'Repeat', 'Compare', 'Rollback']) {
   assert.ok(abOrderedList[0].includes(label), 'A/B test list step is missing: ' + label);
 }
+const sidebarRoutes = [...sidebarHtml.matchAll(/href="([^"]+)"/g)].map((match) => match[1]);
+assert.equal(sidebarRoutes.length, 4, 'Sidebar should contain exactly four related-guide links.');
+assert.equal(sidebarRoutes[1], '/guides/gamebar-presence-writer-fix', 'GameBar guide should be the second sidebar item.');
 assert.ok(!/<li\b[^>]*>\s*<\/li>/.test(abOrderedList[0]), 'A/B test contains an empty list item.');
 
 // Comparison-table headers must have exactly the same number of columns as the body rows.
@@ -120,6 +123,9 @@ const relatedArticlesEnd = html.indexOf('</section>', relatedArticlesStart);
 const relatedCardsHtml = html.slice(relatedArticlesStart, relatedArticlesEnd);
 assert.ok(relatedCardsHtml.includes('href="/guides/gamebar-presence-writer-fix"'), 'GameBar guide is missing from the bottom Related Articles cards.');
 assert.ok(relatedCardsHtml.includes('GameBarPresenceWriter.exe: Test Gaming Stutter Safely'), 'Bottom GameBar card has empty or missing anchor text.');
+const bottomRelatedRoutes = [...relatedCardsHtml.matchAll(/href="([^"]+)"/g)].map((match) => match[1]);
+assert.equal(bottomRelatedRoutes.length, 4, 'Bottom Related Articles should contain four cards.');
+assert.equal(bottomRelatedRoutes[3], '/guides/gamebar-presence-writer-fix', 'GameBar should be the fourth bottom Related Articles card.');
 
 // 2026 Windows 11 technical depth and named tools must remain in the initial HTML.
 for (const term of [
