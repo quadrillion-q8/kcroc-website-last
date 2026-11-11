@@ -1287,9 +1287,10 @@ add('MacBook screen replacement has model-specific Intel/M1-M5 A-number coverage
   macbookScreenServiceBlock.includes('advancedTechnicalSection'));
 add('MacBook screen FAQ questions remain unchanged, are rendered inline, and use the same expanded answers for FAQPage schema',
   ['How much does MacBook screen replacement cost in Kuwait?', 'Do you replace MacBook Air and MacBook Pro screens?', 'Can a black or flickering MacBook screen be a cable problem?', 'Can you replace a MacBook screen the same day?', 'Will you access my files during screen replacement?', 'Do you offer free pickup and delivery across Kuwait?', 'What warranty applies to MacBook screen replacement?'].every((question) => macbookScreenServiceBlock.includes(`title: '${question}'`)) &&
-  macbookScreenTemplateSource.includes('isMacbookScreenService ? (') &&
+  (macbookScreenTemplateSource.includes('isMacbookScreenService ? (') || macbookScreenTemplateSource.includes("isMacbookScreenService || entity.id === 'srv-liquid-damage' ? (")) &&
   macbookScreenTemplateSource.includes('<h3 className="text-white font-semibold">{faq.title}</h3>') &&
   macbookScreenSeoSchemaSource.includes("if (type === 'FAQPage')") &&
+  macbookScreenSeoSchemaSource.includes("const commercialAnswers = serviceEntity.id === 'srv-liquid-damage'") &&
   macbookScreenServiceBlock.includes("schemaTypes: ['Service', 'FAQPage']"));
 add('MacBook screen JSON-LD extends one Service entity with a linked OfferCatalog and does not imply display stock',
   macbookScreenSeoSchemaSource.includes("service.id === 'srv-macbook-screen'") &&
