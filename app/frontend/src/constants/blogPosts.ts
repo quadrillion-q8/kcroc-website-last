@@ -6210,12 +6210,12 @@ export const BLOG_POSTS: BlogPost[] = [
       ] },
 
       { type: "h2", text: "Use A/B Testing Instead of a Giant “Optimization” Checklist", id: "ab-testing" },
-      { type: "timeline", title: "A controlled gaming-stutter test", steps: [
-        { label: "Baseline", note: "Record the game, scene, settings, approximate FPS and when the hitch occurs." },
-        { label: "One change", note: "Change only one setting or disable one background component." },
-        { label: "Repeat", note: "Run the same scene for the same amount of time." },
-        { label: "Compare", note: "Look for a repeatable difference in the hitch pattern, not a one-off feeling." },
-        { label: "Rollback", note: "Restore the original setting when the test does not support the hypothesis." }
+      { type: "list", ordered: true, items: [
+        "Baseline — Record the game, scene, settings, approximate FPS and when the hitch occurs.",
+        "One change — Change only one setting or disable one background component.",
+        "Repeat — Run the same scene for the same amount of time.",
+        "Compare — Look for a repeatable difference in the hitch pattern, not a one-off feeling.",
+        "Rollback — Restore the original setting when the test does not support the hypothesis."
       ] },
       { type: "paragraph", text: "This method is slower than copying a 30-tweak optimization list, but it produces information you can use. It also keeps future troubleshooting cleaner because you know which configuration actually changed." },
 
@@ -6238,19 +6238,31 @@ export const BLOG_POSTS: BlogPost[] = [
       { type: "callout", variant: "expert", title: "When software troubleshooting has reached its limit", text: "If gaming performance drops as temperatures rise, or the system shows crashes, artifacts, abnormal fan behaviour or power instability, collect temperature and clock logs and stop repeating software tweaks. Physical cooling, GPU, memory and power-path evidence should guide the next diagnostic step." },
       { type: "paragraph", text: "If the system is overheating or throttling, cooling service may matter more than another Windows optimization. If memory or storage is actually the bottleneck, an upgrade may be appropriate. The correct intervention follows the measured cause." },
 
+      { type: "h2", text: "Measurement Tools and Windows 11 Technical References", id: "technical-references" },
+      { type: "paragraph", text: "Intel PresentMon — frame metrics and CSV field definitions: https://github.com/GameTechDev/PresentMon https://github.com/GameTechDev/PresentMon/blob/main/README-ConsoleApplication.md" },
+      { type: "paragraph", text: "CapFrameX — PresentMon-based capture, comparison, frametime graphs and percentiles: https://github.com/CXWorld/CapFrameX" },
+      { type: "paragraph", text: "MSI Afterburner — monitoring and RTSS on-screen display setup: https://www.msi.com/support/technical_details/VGA_MSI_Utility_AfterBurner https://www.msi.com/blog/msi-afterburner-on-screen-display" },
+      { type: "paragraph", text: "NVIDIA Streamline — DLSS Frame Generation requirements, including HAGS: https://developer.nvidia.com/rtx/streamline/get-started" },
+      { type: "paragraph", text: "Microsoft Support — Optimizations for windowed games, flip model, Auto HDR and VRR: https://support.microsoft.com/en-us/windows/hardware/display-graphics/optimizations-for-windowed-games-in-windows-11" },
+      { type: "paragraph", text: "Microsoft Learn — Memory Integrity, HVCI and Virtualization-Based Security: https://learn.microsoft.com/en-us/windows/security/hardware-security/enable-virtualization-based-protection-of-code-integrity" },
+      { type: "paragraph", text: "Microsoft Learn — Virtual Machine Platform and WSL 2 requirements: https://learn.microsoft.com/en-us/windows/wsl/faq" },
+      { type: "paragraph", text: "Microsoft Learn — DXGI video-memory budget and CurrentUsage: https://learn.microsoft.com/en-us/windows/win32/api/dxgi1_4/ns-dxgi1_4-dxgi_query_video_memory_info" },
+      { type: "paragraph", text: "Intel — processor Tjunction limits and thermal throttling: https://www.intel.com/content/www/us/en/support/articles/000005597/processors.html https://www.intel.com/content/www/us/en/support/articles/000088048/processors.html" },
+      { type: "paragraph", text: "NVIDIA Support — Multi-Plane Overlay (MPO) in Windows 11: https://nvidia.custhelp.com/app/answers/detail/a_id/5157/~/what-is-multi-plane-overlay-%28mpo%29-in-windows-11" },
+      { type: "paragraph", text: "Tom's Hardware — polling-rate trade-offs and the CPU cost of 4,000/8,000 Hz mice: https://www.tomshardware.com/peripherals/gaming-mice/do-you-need-a-mouse-with-an-8k-polling-rate" },
       { type: "h2", text: "Frequently Asked Questions", id: "faq" },
-      { type: "faq", items: [
+      { type: "faq", display: "static", items: [
         { question: "Why does my game stutter when FPS is high?", answer: "Average FPS does not show how evenly frames arrive. A few slow frames can create visible hitching even when the average FPS is high. Check frame-time behavior and reproduce the same scene before changing settings." },
-        { question: "Does GameBarPresenceWriter.exe cause gaming stutter?", answer: "It can be tested as a variable, but seeing the process does not prove it is the cause. Stutter can come from CPU/GPU limits, overlays, drivers, shader compilation, storage, memory, thermals or hardware instability." },
-        { question: "Should I disable every Windows service to stop stutter?", answer: "No. Broad service disabling makes diagnosis harder and can create unrelated Windows problems. Change one variable at a time and keep a rollback path." },
-        { question: "Why does stutter get worse after the laptop heats up?", answer: "That pattern is consistent with thermal or power behavior and deserves a temperature and clock-speed comparison. Dust, fans, thermal interfaces and high ambient temperature can reduce thermal headroom." },
-        { question: "Can DPC latency cause gaming problems?", answer: "Driver interrupt and DPC activity can contribute to latency in some workloads. Severe cases should be correlated with the actual symptom using appropriate tracing or diagnostics rather than assuming any single driver is guilty." },
+        { question: "Does GameBarPresenceWriter.exe cause gaming stutter?", answer: "It can be tested as a variable, but seeing the process does not prove it is the cause. Stutter can come from CPU/GPU limits, overlays, drivers, shader compilation, storage, memory, thermals or hardware instability. See the dedicated GameBarPresenceWriter guide for its reversible process-isolation test." },
+        { question: "Should I disable Memory Integrity, VBS or Windows services to improve gaming?", answer: "Do not disable security features or broad groups of services as routine optimizations. Memory Integrity (HVCI) is a VBS security control that protects kernel code integrity. Keep it enabled by default, especially on managed or security-sensitive systems; only compare it temporarily on a personally owned test system when measured evidence points to it, and restore protection immediately." },
+        { question: "Why does stutter get worse after the laptop heats up?", answer: "That pattern is consistent with thermal or power behavior and deserves a temperature, throttle-flag and clock-speed comparison. Dust, fans, thermal interfaces and high ambient temperature can reduce thermal headroom." },
+        { question: "Can DPC latency or a high-polling-rate mouse cause gaming problems?", answer: "Driver interrupt and DPC activity can contribute to latency in some workloads. If hitches occur mainly while panning the camera with a 4,000 or 8,000 Hz mouse, compare the same movement at 1,000 Hz and watch per-core CPU load and frame-time. Treat that as an A/B test, not a universal diagnosis." },
         { question: "Can shader compilation cause a hitch?", answer: "Yes. Some games compile shaders or pipeline states during loading or gameplay. A hitch that repeats when a particular effect or area appears can be a clue, especially after a driver or game change." },
         { question: "Should I delete the shader cache?", answer: "Not as a universal first step. Cache behavior is part of the rendering pipeline, and deleting it can simply force compilation again. First determine whether the stutter pattern actually points toward shader compilation." },
-        { question: "Can V-Sync or VRR fix gaming stutter?", answer: "They can change how frames are presented and may improve perceived smoothness in some configurations, but they do not automatically remove the underlying cause of a long frame. Diagnose the frame-time problem before treating display settings as the root fix." },
+        { question: "Can HAGS, V-Sync or VRR fix gaming stutter?", answer: "They affect scheduling or frame presentation, not every underlying cause. HAGS is required for NVIDIA DLSS Frame Generation, so do not turn it off when using that feature. VRR, Auto HDR and windowed-game optimizations can interact with borderless presentation; change one setting at a time and restart the game." },
         { question: "Should I reinstall Windows to fix gaming stutter?", answer: "Not as a first step. A reinstall can leave the real cause untouched when the problem is thermal throttling, a driver issue, shader compilation, storage or memory pressure, GPU/VRAM instability, or another hardware fault. Measure the symptom and test the likely branch first." },
         { question: "When should I bring a gaming PC or laptop for diagnosis?", answer: "Professional diagnosis makes sense when stutter is persistent across controlled tests, accompanied by crashes, artifacts, overheating, abnormal power behavior, storage errors or unexplained whole-system freezes." }
-      ] },
+      ] }
 
       { type: "h2", text: "Bottom Line", id: "bottom-line" },
       { type: "paragraph", text: "The most useful gaming optimization is often better diagnosis. Start with frame-time behavior, then separate Game Bar and other overlays, CPU/GPU limits, memory and storage pressure, driver latency, shader compilation, Windows graphics settings and thermal behavior. Use A/B testing and roll back changes that do not prove the hypothesis." },
@@ -6259,13 +6271,14 @@ export const BLOG_POSTS: BlogPost[] = [
     image: "/images/gaming-laptop-dual-fan-motherboard-diagnostics.webp",
     discoverImage: "/images/discover/gaming-laptop-dual-fan-motherboard-diagnostics-1200x675.webp",
     date: "2026-09-29",
-    technicalReviewDate: "September 29, 2026",
+    technicalReviewDate: "November 11, 2026",
     author: "Imran Natiq",
     category: "Gaming & Windows",
     readTime: "16-20 min read",
     isPillar: true,
     clusterParent: "gaming-pc-optimization-2026",
-    tags: ["Windows 11 Gaming", "Gaming Stutter", "Frame Time", "Game Bar", "DPC Latency", "Shader Compilation", "Thermal Throttling"],
+    relatedPostSlugs: ["windows-gaming-frame-time-stutter", "gamebar-presence-writer-fix", "shader-compilation-stutter-windows", "dpc-latency-gaming-stutter"],
+    tags: ["Windows 11 Gaming", "Gaming Stutter", "Frame Time", "Game Bar", "DPC Latency", "Shader Compilation", "Thermal Throttling", "HAGS", "VRR", "VBS", "HVCI"],
     seoTitle: "Windows 11 Gaming Stutter & FPS Drops: Fix Guide 2026 | KCROC",
     seoDescription: "Gaming stuttering despite high FPS? Diagnose frame-time spikes, shaders, Game Bar, DPC latency, drivers, RAM, GPU limits and thermal throttling in Windows 11.",
     contentType: "guide"
