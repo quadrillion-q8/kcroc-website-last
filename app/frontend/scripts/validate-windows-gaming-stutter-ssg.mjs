@@ -41,6 +41,7 @@ assert.equal(schemaQuestionCount, 10, 'FAQPage schema must contain the same ten 
 
 // Section 9 must be five real ordered-list items, not separate title/description rows.
 const abTestHtml = sectionBetween('id="ab-testing"', 'id="not-game-bar"');
+assert.ok(abTestHtml.includes('A controlled gaming-stutter test'), 'The Section 9 subsection heading is missing.');
 const abOrderedList = abTestHtml.match(/<ol\b[^>]*>[\s\S]*?<\/ol>/);
 assert.ok(abOrderedList, 'Controlled A/B test ordered list is missing.');
 const abItems = abOrderedList[0].match(/<li\b[^>]*>[\s\S]*?<\/li>/g) ?? [];
@@ -71,6 +72,10 @@ for (const [caption, expectedColumns] of expectedTables) {
   assert.equal(bodyColumns, expectedColumns, caption + ': first body row has a different column count.');
   assert.ok(!thead.includes('Feature'), caption + ': phantom Feature header remains.');
 }
+
+const dpcHtml = sectionBetween('id="dpc-isr"', 'id="shader-stutter"');
+assert.ok(dpcHtml.includes('Microsoft Learn — Introduction to DPCs'), 'DPC introduction source label is missing or generic.');
+assert.ok(!dpcHtml.includes('External source'), 'DPC section still contains the generic External source label.');
 
 // The ToC supplies numbering; body headings must not start again at 1–9.
 for (const headingId of [
@@ -142,6 +147,7 @@ for (const term of [
   'Budget',
   'HWiNFO64',
   'PROCHOT',
+  'Measurement Tools and Windows 11 Technical References',
 ]) {
   assert.ok(html.includes(term), 'Missing prerendered technical topic: ' + term);
 }
