@@ -6210,6 +6210,7 @@ export const BLOG_POSTS: BlogPost[] = [
       ] },
 
       { type: "h2", text: "Use A/B Testing Instead of a Giant “Optimization” Checklist", id: "ab-testing" },
+      { type: "h3", text: "A controlled gaming-stutter test" },
       { type: "list", ordered: true, items: [
         "Baseline — Record the game, scene, settings, approximate FPS and when the hitch occurs.",
         "One change — Change only one setting or disable one background component.",
