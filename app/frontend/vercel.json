@@ -65,6 +65,21 @@
   ],
   "redirects": [
     {
+      "source": "/blog/windows-11-settings-tweaks",
+      "destination": "/guides/windows-11-settings-tweaks",
+      "permanent": true
+    },
+    {
+      "source": "/guides/windows-11-100-disk-usage-causes-solutions",
+      "destination": "/blog/windows-11-100-disk-usage-causes-solutions",
+      "permanent": true
+    },
+    {
+      "source": "/laptop-ssd-ram-upgrade-kuwait",
+      "destination": "/ssd-ram-upgrade-kuwait",
+      "permanent": true
+    },
+    {
       "source": "/blog/why-is-my-laptop-so-slow-2026",
       "destination": "/blog/why-is-my-laptop-so-slow",
       "permanent": true

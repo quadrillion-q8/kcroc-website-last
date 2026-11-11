@@ -100,6 +100,10 @@ export const routes: RouteObject[] = [
           // segments (guides/dell-laptop-overheating, etc., registered
           // above) higher than this dynamic one, so those routes still win
           // and only this one falls through to BlogPostTemplate.
+          // Keep these legacy URL aliases aligned with the permanent server redirects in vercel.json.
+          { path: 'blog/windows-11-settings-tweaks', element: <Navigate to="/guides/windows-11-settings-tweaks" replace /> },
+          { path: 'guides/windows-11-100-disk-usage-causes-solutions', element: <Navigate to="/blog/windows-11-100-disk-usage-causes-solutions" replace /> },
+          { path: 'laptop-ssd-ram-upgrade-kuwait', element: <Navigate to="/ssd-ram-upgrade-kuwait" replace /> },
           { path: 'guides/:slug', lazy: async () => ({ Component: (await import('./pages/BlogPostTemplate')).default }) },
           { path: 'blog/windows-11-background-services-audit', element: <Navigate to="/guides/windows-11-background-services-audit" replace /> },
           { path: 'blog/why-is-my-laptop-so-slow-2026', element: <Navigate to="/blog/why-is-my-laptop-so-slow" replace /> },
