@@ -14,24 +14,24 @@ const canonicalUrl = 'https://www.computerrepairkuwait.com/location/hawalli';
 
 assert.ok(html.includes(canonicalUrl), 'Existing Hawalli canonical URL is missing');
 assert.ok(html.includes('Computer Repair in') && html.includes('Hawalli, Kuwait'), 'Hawalli page heading is missing');
-assert.equal((html.match(/<h1\\b/g) ?? []).length, 1, 'Hawalli page must retain exactly one H1');
+assert.equal((html.match(/<h1\b/g) ?? []).length, 1, 'Hawalli page must retain exactly one H1');
 assert.ok(html.includes('Open daily 10:00 AM'), 'Graph-driven daily opening hours are missing');
-assert.ok(html.includes('"Friday"') && html.includes('"opens":"10:00"') && html.includes('"closes":"22:00"'), 'Friday 10:00–22:00 opening-hours schema is missing');
+assert.ok(html.includes('"Friday"') && /"opens"\s*:\s*"10:00"/.test(html) && /"closes"\s*:\s*"22:00"/.test(html), 'Friday 10:00–22:00 opening-hours schema is missing');
 
 const faqListStart = html.indexOf('data-hawalli-faq-list="true"');
 assert.ok(faqListStart >= 0, 'Hawalli visible FAQ list marker is missing');
-const faqDetails = html.match(/<details\\b[^>]*data-hawalli-faq-item="true"[^>]*>/g) ?? [];
+const faqDetails = html.match(/<details\b[^>]*data-hawalli-faq-item="true"[^>]*>/g) ?? [];
 assert.equal(faqDetails.length, 12, 'Expected exactly twelve Hawalli FAQ details elements');
-const openFaqDetails = html.match(/<details\\b(?=[^>]*\\bopen(?:=\\"\\")?)(?=[^>]*data-hawalli-faq-item="true")[^>]*>/g) ?? [];
+const openFaqDetails = faqDetails.filter((tag) => /\bopen(?:=""|="true")?(?=\s|>)/.test(tag));
 assert.equal(openFaqDetails.length, 12, 'All twelve Hawalli FAQ answers must be open and visible in the prerendered HTML');
 
-const faqAnswers = [...html.matchAll(/<p\\b[^>]*data-hawalli-faq-answer="true"[^>]*>([\\s\\S]*?)<\\/p>/g)];
+const faqAnswers = [...html.matchAll(/<p\b[^>]*data-hawalli-faq-answer="true"[^>]*>([\s\S]*?)<\/p>/g)];
 assert.equal(faqAnswers.length, 12, 'Each Hawalli FAQ must prerender one answer paragraph');
 for (const [, answerHtml] of faqAnswers) {
   const answerText = answerHtml.replace(/<[^>]+>/g, '').trim();
   assert.ok(answerText.length > 40, 'A prerendered Hawalli FAQ answer is empty or incomplete');
 }
-assert.equal((html.match(/"@type"\\s*:\\s*"Question"/g) ?? []).length, 12, 'FAQPage JSON-LD must contain the same twelve questions');
+assert.equal((html.match(/"@type"\s*:\s*"Question"/g) ?? []).length, 12, 'FAQPage JSON-LD must contain the same twelve questions');
 
 const priceCards = html.match(/data-hawalli-pricing-card="true"/g) ?? [];
 assert.equal(priceCards.length, 6, 'Expected six visible Hawalli lab pricing cards');

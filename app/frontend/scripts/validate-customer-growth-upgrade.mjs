@@ -981,17 +981,20 @@ add('Hawalli service tiers contain all 15 existing services exactly once and ret
 add('Hawalli hero, phone display, and walk-in access copy remain consistent',
   graph.includes("We fix the board. We don't just swap it.") &&
   hawalli.includes("phone.startsWith('965') ? `+965 ${phone.slice(3)}`") &&
-  hawalli.includes('Finding the lab:') &&
-  hawalli.includes('basement entrance from Ibn Khaldoun Street') &&
+  hawalli.includes('Walk-in directions.') &&
+  hawalli.includes('basement-level shop access') &&
+  hawalli.includes('curbside handover') &&
   hawalli.includes('Laptop motherboard & MacBook logic board repair') &&
   header.includes('phoneDigits.slice(3)') &&
   footer.includes("business.telephone.replace(/^965/, '')"));
 add('Hawalli problem labels improve readability without changing problem URL targets',
   hawalli.includes("'problem-overheating': 'Laptop Overheating & Loud Fan'") &&
   hawalli.includes('to={`/${problem.slug}`}'));
-add('Hawalli FAQ answers stay in initial static HTML and FAQPage schema alongside the LocalBusiness entity',
+add('Hawalli FAQ answers stay visible in initial static HTML and match FAQPage schema alongside the LocalBusiness entity',
   ((hawalli.match(/id: 'faq-hawalli-/g) || []).length === 12) &&
-  hawalli.includes('hidden={!isOpen}') &&
+  hawalli.includes('data-hawalli-faq-list="true"') &&
+  hawalli.includes('data-hawalli-faq-item="true"') &&
+  hawalli.includes('data-hawalli-faq-answer="true"') &&
   hawalli.includes('{faq.answer}') &&
   hawalli.includes("acceptedAnswer: { '@type': 'Answer', text: faq.answer }") &&
   hawalli.includes('<SEOEngine entityId={location.id} />') &&
