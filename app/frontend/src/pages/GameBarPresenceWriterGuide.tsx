@@ -640,47 +640,35 @@ export default function GameBarPresenceWriterGuide() {
         </div>
       </section>
 
-      <section id="cluster" className={`${sectionClass} bg-slate-950/40`}>
-        <div className="container mx-auto max-w-5xl">
-          <Badge className="mb-3 border-cyan-500/30 bg-cyan-500/10 text-cyan-300">Windows gaming performance cluster</Badge>
-          <h2 className="text-2xl font-bold sm:text-4xl">When Game Bar is only one piece of the stutter</h2>
-          <p className={`mt-4 max-w-3xl ${proseClass}`}>
-            This guide is the Game Bar-specific branch. When the measurements point somewhere else, use the matching KCROC technical guide instead of continuing to change Game Bar or registry settings.
+      <section id='cluster' className='border-b border-slate-800/80 bg-slate-950/40 px-4 py-10 sm:px-6 sm:py-16'>
+        <div className='container mx-auto max-w-5xl'>
+          <Badge className='mb-3 border-cyan-500/30 bg-cyan-500/10 text-cyan-300'>Windows gaming performance cluster</Badge>
+          <h2 className='text-2xl font-bold sm:text-4xl'>When Game Bar is only one piece of the stutter</h2>
+          <p className='mt-4 max-w-3xl text-sm leading-7 text-slate-300 sm:text-base'>
+            Use the measurements to choose the next branch. These six guides cover software, driver and thermal causes without repeating the same links in a second grid.
           </p>
-          <div className="mt-7 grid gap-4 md:grid-cols-2">
+          <div className='mt-7 grid gap-4 md:grid-cols-2 xl:grid-cols-3'>
             {[
-              { href: '/guides/windows-gaming-performance-stutter-fix', title: 'Windows Gaming Stutter in 2026', text: 'The main decision tree for frame-time, overlays, drivers, shaders, thermals and hardware.' },
-              { href: '/guides/windows-gaming-frame-time-stutter', title: 'Gaming Stutter With High FPS', text: 'Learn why a high average FPS can still hide long frame-time spikes.' },
-              { href: '/guides/shader-compilation-stutter-windows', title: 'Shader Compilation Stutter', text: 'Check first-use shader and pipeline compilation before deleting caches or blaming the GPU.' },
-              { href: '/guides/dpc-latency-gaming-stutter', title: 'DPC Latency & Gaming Stutter', text: 'Advanced driver-timing diagnosis for repeatable latency-sensitive hitches.' },
+              { href: '/guides/windows-gaming-performance-stutter-fix', title: 'Windows Gaming Stutter in 2026', text: 'Start with the broad decision tree for frame-time, overlays, shaders, drivers and thermals.' },
+              { href: '/guides/windows-gaming-frame-time-stutter', title: 'Gaming Stutter With High FPS', text: 'Trace uneven frame pacing when average FPS looks healthy.' },
+              { href: '/guides/shader-compilation-stutter-windows', title: 'Shader Compilation Stutter', text: 'Check first-use shader and pipeline compilation before resetting caches.' },
+              { href: '/guides/dpc-latency-gaming-stutter', title: 'DPC Latency & Gaming Stutter', text: 'Investigate driver-timing problems when the hitch pattern points to DPC/ISR activity.' },
+              { href: '/blog/gaming-pc-cooling', title: 'Gaming PC Cooling Guide', text: 'Check dust, fans, thermal interfaces and sustained-load temperatures when performance degrades over time.' },
+              { href: '/guides/why-is-my-laptop-so-hot', title: 'Laptop Overheating Guide', text: 'Measure laptop temperatures, clocks and thermal throttling when gaming performance falls as the system heats up.' },
             ].map((item) => (
-              <Link key={item.href} to={item.href} className="group rounded-2xl border border-slate-800 bg-brand-dark p-5 transition hover:border-cyan-500/40 hover:bg-slate-900">
-                <div className="flex items-start justify-between gap-4">
+              <Link key={item.href} to={item.href} className='group rounded-2xl border border-slate-800 bg-brand-dark p-5 transition hover:border-cyan-500/40 hover:bg-slate-900'>
+                <div className='flex items-start justify-between gap-4'>
                   <div>
-                    <h3 className="font-bold text-white group-hover:text-cyan-300">{item.title}</h3>
-                    <p className="mt-2 text-sm leading-6 text-slate-400">{item.text}</p>
+                    <h3 className='font-bold text-white group-hover:text-cyan-300'>{item.title}</h3>
+                    <p className='mt-2 text-sm leading-6 text-slate-400'>{item.text}</p>
                   </div>
-                  <ChevronRight className="mt-0.5 h-5 w-5 shrink-0 text-cyan-400" />
+                  <ChevronRight className='mt-0.5 h-5 w-5 shrink-0 text-cyan-400' />
                 </div>
               </Link>
             ))}
           </div>
         </div>
       </section>
-
-
-      <StandaloneRelatedLinks
-        title="GameBar performance: related troubleshooting paths"
-        intro="If the executable is not the real bottleneck, move from software symptoms to the relevant gaming hardware or Windows diagnostic path."
-        links={[
-          { href: '/guides/windows-gaming-performance-stutter-fix', label: 'Windows Gaming Stutter Guide', description: 'The broader technical decision tree for frame-time, overlays, shaders, drivers and thermals.' },
-          { href: '/guides/windows-gaming-frame-time-stutter', label: 'High FPS but Gaming Stutter', description: 'Measure frame-time spikes instead of relying on average FPS alone.' },
-          { href: '/guides/shader-compilation-stutter-windows', label: 'Shader Compilation Stutter', description: 'Use when hitches follow first-use effects, materials or game areas.' },
-          { href: '/guides/dpc-latency-gaming-stutter', label: 'DPC Latency & Gaming Stutter', description: 'Advanced driver-timing branch for repeatable latency-sensitive hitches.' },
-          { href: '/blog/gaming-pc-cooling', label: 'Gaming PC Cooling Guide', description: 'Check cooling, dust, fans, thermal interfaces, and sustained-load behavior before registry tweaks.' },
-          { href: '/guides/why-is-my-laptop-so-hot', label: 'Laptop Overheating Guide', description: 'Useful when gaming performance falls as the system heats up and thermal headroom needs to be measured.' },
-        ]}
-      />
 
       <section id="official-references" className={sectionClass}>
         <div className="container mx-auto max-w-5xl">
