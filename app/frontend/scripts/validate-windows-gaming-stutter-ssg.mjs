@@ -58,16 +58,25 @@ const expectedTables = [
   ['Pattern-based diagnosis', 2],
 ];
 for (const [caption, expectedColumns] of expectedTables) {
-  const captionIndex = html.indexOf(caption);
-  assert.ok(captionIndex >= 0, 'Comparison table missing: ' + caption);
-  const tableStart = html.lastIndexOf('<table', captionIndex);
-  const tableEnd = html.indexOf('</table>', captionIndex);
-  assert.ok(tableStart >= 0 && tableEnd > captionIndex, 'Could not isolate table: ' + caption);
-  const tableHtml = html.slice(tableStart, tableEnd + '</table>'.length);
-  const thead = tableHtml.match(/<thead\b[^>]*>([\s\S]*?)<\/thead>/)?.[1] ?? '';
-  const firstBodyRow = tableHtml.match(/<tbody\b[^>]*>[\s\S]*?<tr\b[^>]*>([\s\S]*?)<\/tr>/)?.[1] ?? '';
-  const headerColumns = (thead.match(/<th\b[^>]*scope="col"/g) ?? []).length;
-  const bodyColumns = (firstBodyRow.match(/<(?:th|td)\b/g) ?? []).length;
+  let tableHtml = '';
+  let searchFrom = 0;
+  while (searchFrom < html.length) {
+    const tableStart = html.indexOf('<table', searchFrom);
+    if (tableStart < 0) break;
+    const tableEnd = html.indexOf('</table>', tableStart);
+    if (tableEnd < 0) break;
+    const candidate = html.slice(tableStart, tableEnd + '</table>'.length);
+    if (candidate.includes(caption)) {
+      tableHtml = candidate;
+      break;
+    }
+    searchFrom = tableEnd + '</table>'.length;
+  }
+  assert.ok(tableHtml, 'Could not find a rendered table containing caption: ' + caption);
+  const thead = tableHtml.match(/<thead\\b[^>]*>([\\s\\S]*?)<\\/thead>/)?.[1] ?? '';
+  const firstBodyRow = tableHtml.match(/<tbody\\b[^>]*>[\\s\\S]*?<tr\\b[^>]*>([\\s\\S]*?)<\\/tr>/)?.[1] ?? '';
+  const headerColumns = (thead.match(/<th\\b[^>]*scope="col"/g) ?? []).length;
+  const bodyColumns = (firstBodyRow.match(/<(?:th|td)\\b/g) ?? []).length;
   assert.equal(headerColumns, expectedColumns, caption + ': wrong number of column headers.');
   assert.equal(bodyColumns, expectedColumns, caption + ': first body row has a different column count.');
   assert.ok(!thead.includes('Feature'), caption + ': phantom Feature header remains.');
