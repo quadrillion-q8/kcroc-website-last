@@ -101,6 +101,22 @@ export const routes: RouteObject[] = [
           // above) higher than this dynamic one, so those routes still win
           // and only this one falls through to BlogPostTemplate.
           // Keep these legacy URL aliases aligned with the permanent server redirects in vercel.json.
+          { path: 'computer-repair-in-sabahalsalem', element: <Navigate to="/location/sabah-al-salem" replace /> },
+          { path: 'computer-repair-in-abuhalifa', element: <Navigate to="/location/abu-halifa" replace /> },
+          { path: 'ai/slow-laptop-fix-kuwait', element: <Navigate to="/laptop-running-very-slow" replace /> },
+          { path: 'blog/stop-laptop-overheating', element: <Navigate to="/guides/why-is-my-laptop-so-hot" replace /> },
+          { path: 'how-to-protect-laptop-screen', element: <Navigate to="/blog/how-to-protect-laptop-screen" replace /> },
+          { path: 'computer-repair-in-riqqa', element: <Navigate to="/location/ahmadi" replace /> },
+          { path: 'computer-repair-in-jleeb', element: <Navigate to="/location/farwaniya" replace /> },
+          { path: 'locations/computer-repair-hawalli', element: <Navigate to="/location/hawalli" replace /> },
+          { path: 'services/laptop-repair', element: <Navigate to="/laptop-repair-kuwait" replace /> },
+          { path: 'services/motherboard-repair', element: <Navigate to="/motherboard-repair-kuwait" replace /> },
+          { path: 'terms-and-conditions', element: <Navigate to="/terms-of-service" replace /> },
+          { path: 'location', element: <Navigate to="/locations" replace /> },
+          { path: 'ar/gallery', element: <Navigate to="/gallery" replace /> },
+          { path: 'data-security', element: <Navigate to="/privacy-security-kuwait" replace /> },
+          { path: 'computer-repair-in-mubarakalkabeer', element: <Navigate to="/location/mubarak-al-kabeer" replace /> },
+          { path: 'virus-removal-kuwait', element: <Navigate to="/virus-malware-removal-kuwait" replace /> },
           { path: 'blog/windows-11-settings-tweaks', element: <Navigate to="/guides/windows-11-settings-tweaks" replace /> },
           { path: 'guides/windows-11-100-disk-usage-causes-solutions', element: <Navigate to="/blog/windows-11-100-disk-usage-causes-solutions" replace /> },
           { path: 'laptop-ssd-ram-upgrade-kuwait', element: <Navigate to="/ssd-ram-upgrade-kuwait" replace /> },

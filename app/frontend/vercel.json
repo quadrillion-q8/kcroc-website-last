@@ -65,6 +65,86 @@
   ],
   "redirects": [
     {
+      "source": "/computer-repair-in-sabahalsalem",
+      "destination": "/location/sabah-al-salem",
+      "permanent": true
+    },
+    {
+      "source": "/computer-repair-in-abuhalifa",
+      "destination": "/location/abu-halifa",
+      "permanent": true
+    },
+    {
+      "source": "/ai/slow-laptop-fix-kuwait",
+      "destination": "/laptop-running-very-slow",
+      "permanent": true
+    },
+    {
+      "source": "/blog/stop-laptop-overheating",
+      "destination": "/guides/why-is-my-laptop-so-hot",
+      "permanent": true
+    },
+    {
+      "source": "/how-to-protect-laptop-screen",
+      "destination": "/blog/how-to-protect-laptop-screen",
+      "permanent": true
+    },
+    {
+      "source": "/computer-repair-in-riqqa",
+      "destination": "/location/ahmadi",
+      "permanent": true
+    },
+    {
+      "source": "/computer-repair-in-jleeb",
+      "destination": "/location/farwaniya",
+      "permanent": true
+    },
+    {
+      "source": "/locations/computer-repair-hawalli",
+      "destination": "/location/hawalli",
+      "permanent": true
+    },
+    {
+      "source": "/services/laptop-repair",
+      "destination": "/laptop-repair-kuwait",
+      "permanent": true
+    },
+    {
+      "source": "/services/motherboard-repair",
+      "destination": "/motherboard-repair-kuwait",
+      "permanent": true
+    },
+    {
+      "source": "/terms-and-conditions",
+      "destination": "/terms-of-service",
+      "permanent": true
+    },
+    {
+      "source": "/location",
+      "destination": "/locations",
+      "permanent": true
+    },
+    {
+      "source": "/ar/gallery",
+      "destination": "/gallery",
+      "permanent": true
+    },
+    {
+      "source": "/data-security",
+      "destination": "/privacy-security-kuwait",
+      "permanent": true
+    },
+    {
+      "source": "/computer-repair-in-mubarakalkabeer",
+      "destination": "/location/mubarak-al-kabeer",
+      "permanent": true
+    },
+    {
+      "source": "/virus-removal-kuwait",
+      "destination": "/virus-malware-removal-kuwait",
+      "permanent": true
+    },
+    {
       "source": "/blog/windows-11-settings-tweaks",
       "destination": "/guides/windows-11-settings-tweaks",
       "permanent": true
