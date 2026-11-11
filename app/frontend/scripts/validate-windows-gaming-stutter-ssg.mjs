@@ -73,10 +73,10 @@ for (const [caption, expectedColumns] of expectedTables) {
     searchFrom = tableEnd + '</table>'.length;
   }
   assert.ok(tableHtml, 'Could not find a rendered table containing caption: ' + caption);
-  const thead = tableHtml.match(/<thead\\b[^>]*>([\\s\\S]*?)<\\/thead>/)?.[1] ?? '';
-  const firstBodyRow = tableHtml.match(/<tbody\\b[^>]*>[\\s\\S]*?<tr\\b[^>]*>([\\s\\S]*?)<\\/tr>/)?.[1] ?? '';
-  const headerColumns = (thead.match(/<th\\b[^>]*scope="col"/g) ?? []).length;
-  const bodyColumns = (firstBodyRow.match(/<(?:th|td)\\b/g) ?? []).length;
+  const thead = tableHtml.match(/<thead\b[^>]*>([\s\S]*?)<\/thead>/)?.[1] ?? '';
+  const firstBodyRow = tableHtml.match(/<tbody\b[^>]*>[\s\S]*?<tr\b[^>]*>([\s\S]*?)<\/tr>/)?.[1] ?? '';
+  const headerColumns = (thead.match(/<th\b[^>]*scope="col"/g) ?? []).length;
+  const bodyColumns = (firstBodyRow.match(/<(?:th|td)\b/g) ?? []).length;
   assert.equal(headerColumns, expectedColumns, caption + ': wrong number of column headers.');
   assert.equal(bodyColumns, expectedColumns, caption + ': first body row has a different column count.');
   assert.ok(!thead.includes('Feature'), caption + ': phantom Feature header remains.');
