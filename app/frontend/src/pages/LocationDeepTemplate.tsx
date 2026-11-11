@@ -97,6 +97,9 @@ export default function LocationDeepTemplate() {
   const process = KCROC_GRAPH.processes?.find((p) => p.id === 'proc-standard');
   const reviews = KCROC_GRAPH.reviews;
   const localReview = reviews?.items.find((r) => r.location === location.title && isReviewPublishable(r));
+  const centralLabReviews = location.reviewAttribution === 'central-hawalli-lab'
+    ? (reviews?.items ?? []).filter((review) => review.location === 'Hawalli' && isReviewPublishable(review)).slice(0, 3)
+    : [];
   const trustBadges = KCROC_GRAPH.trustBadges;
   const noFixNoFee = KCROC_GRAPH.usps?.find((u) => u.id === 'usp-nofix');
   const componentRepairUsp = KCROC_GRAPH.usps?.find((u) => u.id === 'usp-component');
@@ -128,12 +131,13 @@ export default function LocationDeepTemplate() {
     : otherLocations.slice(0, 5);
 
   const phone = business.telephone; // read from KCROC_GRAPH, e.g. Kuwait mobile in international format
-  const phoneDisplay = `+965 ${phone.slice(3, 7)} ${phone.slice(7)}`;
-  const WA_LINK = `https://wa.me/${phone}?text=${encodeURIComponent(
-    location.slug === 'farwaniya'
+  const phoneDisplay = '+965 ' + phone.slice(3);
+  const whatsappMessage = location.slug === 'mishref'
+    ? 'Hi KCROC, I need free pickup in Mishref / West Mishref / Mubarak Al-Abdullah. Device / model: ____. Issue: ____. Block / street / building: ____. I can share my WhatsApp location pin. Please confirm a collection window.'
+    : location.slug === 'farwaniya'
       ? 'Hi KCROC, I need free pickup in Farwaniya. Device / model: ____. Issue: ____. Area / block: ____. Please confirm a collection slot.'
-      : `Hi KCROC, I am in ${location.title} and need a device repaired. Can we arrange a pickup?`
-  )}`;
+      : 'Hi KCROC, I am in ' + location.title + ' and need a device repaired. Can we arrange a pickup?';
+  const WA_LINK = 'https://wa.me/' + phone + '?text=' + encodeURIComponent(whatsappMessage);
 
   // Most locations use shared commercial/logistics FAQs. Priority pages with
   // distinct service mixes use dedicated questions so local intent and booking
@@ -158,18 +162,60 @@ export default function LocationDeepTemplate() {
     {
       id: `faq-${location.slug}-cost`,
       question: `How much does laptop repair cost for ${location.title} customers?`,
-      answer: `Diagnostics are free. Common laptop repairs start from 15 KWD, screen-replacement labor from 30 KWD plus the panel, and component-level motherboard repair from 25 KWD. The final price depends on the device, fault and parts. You receive the confirmed quote before paid work begins, and under our No Fix, No Fee policy you pay nothing if we cannot fix it.`,
+      answer: location.slug === 'mishref'
+        ? 'The initial diagnostic and pickup/return delivery are free. Selected common laptop and desktop repairs start from 15 KWD; battery labour starts from 8 KWD plus the battery, keyboard labour from 10 KWD plus the part, and screen labour from 30 KWD plus the panel. Component-level motherboard repair is published from 25 KWD (25–60 KWD guide range). Selected MacBook work starts from 25 KWD, but MacBook logic-board repair is separately listed at 45–100+ KWD. We confirm the exact quote before paid work begins.'
+        : `Diagnostics are free. Common laptop repairs start from 15 KWD, screen-replacement labor from 30 KWD plus the panel, and component-level motherboard repair from 25 KWD. The final price depends on the device, fault and parts. You receive the confirmed quote before paid work begins, and under our No Fix, No Fee policy you pay nothing if we cannot fix it.`,
     },
     {
       id: `faq-${location.slug}-turnaround`,
       question: `How long does a repair take for ${location.title} customers?`,
-      answer: `Many repairs are completed within 24-48 hours of us receiving the device, same-day service is possible for some screen and battery jobs when the part is in stock, and component-level motherboard work typically takes 24-72 hours. We confirm a realistic estimate after diagnosis, because parts availability and the exact fault decide the timing.`,
+      answer: location.slug === 'mishref'
+        ? 'Turnaround depends on the fault, diagnostic findings, parts availability and workload at the Hawalli lab. We confirm a realistic repair estimate after the device is collected and assessed; collection timing is also confirmed with the team before dispatch.'
+        : `Many repairs are completed within 24-48 hours of us receiving the device, same-day service is possible for some screen and battery jobs when the part is in stock, and component-level motherboard work typically takes 24-72 hours. We confirm a realistic estimate after diagnosis, because parts availability and the exact fault decide the timing.`,
     },
   ];
   const localFaqs: LocalFAQ[] = [
     ...(usesDedicatedLocationFaqs ? [] : sharedLocationFaqs),
     ...(location.localFaqs ?? []),
   ];
+
+
+  const renderLocalPricingAnchors = (className: string) => (
+    <section
+      aria-labelledby="location-local-pricing-anchors"
+      data-location-pricing-section="true"
+      className={className}
+    >
+      <div className="container mx-auto max-w-6xl">
+        <h3 id="location-local-pricing-anchors" className="text-lg font-black text-white">
+          {location.localPricingHeading || 'Published repair price anchors'}
+        </h3>
+        <p className="mt-1 text-sm text-slate-400">
+          Starting rates and ranges are indicative; the final quote depends on the device and diagnosis.
+        </p>
+        <div className="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+          {(location.localPricingAnchors ?? []).map((item) => (
+            <article
+              key={item.label}
+              data-local-pricing-anchor="true"
+              className="rounded-xl border border-slate-800 bg-slate-900/50 p-4"
+            >
+              <h4 className="text-sm font-semibold text-slate-300">{item.label}</h4>
+              <p className="mt-1 text-xl font-black text-cyan-300">{item.price}</p>
+              <p className="mt-2 text-xs leading-5 text-slate-400">{item.note}</p>
+            </article>
+          ))}
+        </div>
+        <Link
+          to="/pricing"
+          className="mt-3 inline-flex min-h-10 items-center text-sm font-bold text-cyan-300 underline underline-offset-4 hover:text-cyan-200"
+        >
+          View full KCROC pricing
+        </Link>
+      </div>
+    </section>
+  );
+
 
   // BreadcrumbList is intentionally omitted here — SEOEngine already generates
   // it for this Location entity. Duplicating it produced two JSON-LD scripts
@@ -256,6 +302,17 @@ export default function LocationDeepTemplate() {
               <p className="text-sm sm:text-lg text-slate-300 leading-relaxed">
                 {location.description}
               </p>
+              {location.slug === 'mishref' && (
+                <p className="text-sm leading-relaxed text-slate-400">
+                  Prefer to hand over your device in person?{' '}
+                  <Link
+                    to="/location/hawalli"
+                    className="font-semibold text-cyan-300 underline decoration-cyan-500/40 underline-offset-4 hover:text-cyan-200"
+                  >
+                    Visit our central Hawalli Repair Lab at Al Mullah Complex, Basement Shop 19
+                  </Link>.
+                </p>
+              )}
 
               <div className="flex flex-col sm:flex-row gap-3 pt-2">
                 <Button size="lg" className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black px-8 w-full sm:w-auto shadow-[0_0_20px_rgba(6,182,212,0.3)]" asChild>
@@ -401,31 +458,9 @@ export default function LocationDeepTemplate() {
               </a>
             </section>
           )}
-          {(location.localPricingAnchors ?? []).length > 0 && (
-            <section aria-labelledby="local-pricing-anchors" className="mt-7">
-              <h3 id="local-pricing-anchors" className="text-lg font-black text-white">
-                Published repair price anchors
-              </h3>
-              <p className="mt-1 text-sm text-slate-400">
-                Starting rates and ranges are indicative; the final quote depends on the device and diagnosis.
-              </p>
-              <div className="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
-                {location.localPricingAnchors.map((item) => (
-                  <article key={item.label} className="rounded-xl border border-slate-800 bg-slate-900/50 p-4">
-                    <h4 className="text-sm font-semibold text-slate-300">{item.label}</h4>
-                    <p className="mt-1 text-xl font-black text-cyan-300">{item.price}</p>
-                    <p className="mt-2 text-xs leading-5 text-slate-400">{item.note}</p>
-                  </article>
-                ))}
-              </div>
-              <Link
-                to="/pricing"
-                className="mt-3 inline-flex min-h-10 items-center text-sm font-bold text-cyan-300 underline underline-offset-4 hover:text-cyan-200"
-              >
-                View full KCROC pricing
-              </Link>
-            </section>
-          )}
+          {(location.localPricingAnchors ?? []).length > 0 &&
+            location.localPricingAnchorsPlacement !== 'after-services' &&
+            renderLocalPricingAnchors('mt-7')}
           {location.localPricingTable && (
             <section aria-labelledby="local-pricing-table-heading" className="mt-8 rounded-2xl border border-slate-800 bg-slate-900/45 p-4 sm:p-6">
               <div className="mb-4">
@@ -484,7 +519,8 @@ export default function LocationDeepTemplate() {
           </h2>
           {location.localServiceCards?.length ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {location.localServiceCards.map((card) => {
+              {location.localServiceCards.map((card, index) => {
+                const previousCategory = location.localServiceCards?.[index - 1]?.category;
                 const linkedServices = card.serviceIds.flatMap((serviceId) => {
                   const linked = KCROC_GRAPH.services.find(
                     (service) => service.id === serviceId && service.isActive
@@ -492,40 +528,51 @@ export default function LocationDeepTemplate() {
                   return linked ? [linked] : [];
                 });
                 return (
-                  <article
-                    key={card.title}
-                    className="rounded-2xl border border-slate-800 bg-slate-900/50 p-5 sm:p-6 flex flex-col"
-                  >
-                    <h3 className="text-lg font-bold text-white mb-3">{card.title}</h3>
-                    {card.summary && (
-                      <p className="mb-4 text-sm leading-6 text-slate-400">{card.summary}</p>
-                    )}
-                    <div className="space-y-3 text-sm leading-6">
-                      <p className="text-slate-300">
-                        <span className="font-bold text-cyan-400">Problem: </span>{card.problem}
-                      </p>
-                      <p className="text-slate-300">
-                        <span className="font-bold text-cyan-400">Diagnostic expertise: </span>{card.expertise}
-                      </p>
-                      <p className="text-slate-300">
-                        <span className="font-bold text-cyan-400">What to expect: </span>{card.solution}
-                      </p>
-                    </div>
-                    {linkedServices.length > 0 && (
-                      <div className="mt-5 pt-4 border-t border-slate-800 flex flex-wrap gap-2">
-                        {linkedServices.map((service) => (
-                          <Link
-                            key={service.id}
-                            to={'/' + service.slug}
-                            className="inline-flex items-center gap-1.5 text-xs font-bold text-cyan-400 hover:text-cyan-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 rounded"
-                          >
-                            {service.title.replace(' Kuwait', '')}
-                            <CheckCircle2 className="w-3 h-3" aria-hidden="true" />
-                          </Link>
-                        ))}
+                  <React.Fragment key={card.title}>
+                    {card.category && card.category !== previousCategory && (
+                      <div
+                        data-location-service-group={card.category}
+                        className="sm:col-span-2 border-b border-slate-800 pb-2 pt-2"
+                      >
+                        <h3 className="text-lg font-black text-cyan-200">{card.category}</h3>
                       </div>
                     )}
-                  </article>
+                    <article
+                      data-location-service-card="true"
+                      data-service-category={card.category ?? 'uncategorized'}
+                      className="rounded-2xl border border-slate-800 bg-slate-900/50 p-5 sm:p-6 flex flex-col"
+                    >
+                      <h3 className="text-lg font-bold text-white mb-3">{card.title}</h3>
+                      {card.summary && (
+                        <p className="mb-4 text-sm leading-6 text-slate-400">{card.summary}</p>
+                      )}
+                      <div className="space-y-3 text-sm leading-6">
+                        <p className="text-slate-300">
+                          <span className="font-bold text-cyan-400">Problem: </span>{card.problem}
+                        </p>
+                        <p className="text-slate-300">
+                          <span className="font-bold text-cyan-400">Diagnostic expertise: </span>{card.expertise}
+                        </p>
+                        <p className="text-slate-300">
+                          <span className="font-bold text-cyan-400">What to expect: </span>{card.solution}
+                        </p>
+                      </div>
+                      {linkedServices.length > 0 && (
+                        <div className="mt-5 pt-4 border-t border-slate-800 flex flex-wrap gap-2">
+                          {linkedServices.map((service) => (
+                            <Link
+                              key={service.id}
+                              to={'/' + service.slug}
+                              className="inline-flex items-center gap-1.5 text-xs font-bold text-cyan-400 hover:text-cyan-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 rounded"
+                            >
+                              {service.title.replace(' Kuwait', '')}
+                              <CheckCircle2 className="w-3 h-3" aria-hidden="true" />
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                    </article>
+                  </React.Fragment>
                 );
               })}
             </div>
@@ -559,6 +606,10 @@ export default function LocationDeepTemplate() {
           )}
         </div>
       </section>
+
+      {location.localPricingAnchorsPlacement === 'after-services' &&
+        (location.localPricingAnchors ?? []).length > 0 &&
+        renderLocalPricingAnchors('py-8 sm:py-10 px-4 sm:px-6 border-t border-slate-800/50')}
 
       {/* ─── PROBLEMS WE FIX ─── */}
       <section className="py-8 sm:py-14 px-4 sm:px-6 border-t border-slate-800/50">
@@ -620,6 +671,7 @@ export default function LocationDeepTemplate() {
                 <Link
                   key={problem.id}
                   to={`/${problem.slug}`}
+                  data-location-problem-link="true"
                   className="scroll-row-item w-[80%] sm:w-auto flex items-center gap-3 bg-slate-900/40 hover:bg-slate-900/70 border border-slate-800 hover:border-cyan-500/40 rounded-xl px-4 py-3.5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
                 >
                   <Wrench className="w-4 h-4 text-cyan-500 shrink-0" aria-hidden="true" />
@@ -642,6 +694,7 @@ export default function LocationDeepTemplate() {
               <Link
                 key={brand.id}
                 to={`/${brand.slug}`}
+                data-location-brand-link="true"
                 className="text-center bg-slate-900/50 hover:bg-slate-900/80 border border-slate-800 hover:border-cyan-500/40 rounded-xl px-3 py-4 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
               >
                 <span className="text-sm font-bold text-white">{brand.brandName}</span>
@@ -749,7 +802,9 @@ export default function LocationDeepTemplate() {
                     {location.slug === 'mahboula' ? (
                       <>Book free collection from Mahboula and nearby coastal districts, then receive the repaired and tested device back at your door. Your device is processed at our Hawalli laboratory: {location.landmark.replace(/^Mobile Dispatch Area\s*\([^:]*:\s*/, '').replace(/\)\s*$/, '')}.</>
                     ) : (
-                      <>We don't have a walk-in branch in {location.title}. Devices are collected free of charge and repaired at our lab: {location.landmark.replace(/^Mobile Dispatch Area\s*\([^:]*:\s*/, '').replace(/\)\s*$/, '')}.</>
+                      <>
+                        KCROC does not operate a walk-in storefront in {location.title}. We arrange free collection from {location.serviceAreas.join(', ')} and return the repaired device after testing. All physical diagnosis and repair take place at our central Hawalli lab: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19. Share your block, street or building details and WhatsApp location pin so the team can confirm the collection point and window.
+                      </>
                     )}
                   </p>
                 </div>
@@ -923,6 +978,56 @@ export default function LocationDeepTemplate() {
                 — {localReview.name}, {localReview.location} · {localReview.device}
               </footer>
             </blockquote>
+          </div>
+        </section>
+      )}
+
+      {!localReview && location.reviewAttribution === 'central-hawalli-lab' && centralLabReviews.length > 0 && reviews && (
+        <section
+          data-central-lab-reviews="true"
+          className="py-8 sm:py-14 px-4 sm:px-6 bg-slate-900/20 border-t border-slate-800/50"
+        >
+          <div className="container mx-auto max-w-5xl">
+            <div className="mb-7 text-center">
+              <div className="mb-2 flex items-center justify-center gap-2">
+                <Star className="h-5 w-5 fill-cyan-400 text-cyan-400" aria-hidden="true" />
+                <span className="text-xl font-black text-white">{reviews.aggregateRating.ratingValue}</span>
+                <span className="text-sm text-slate-500">Google rating</span>
+              </div>
+              <h2 className="text-2xl sm:text-3xl font-black text-white">
+                Google Reviews for Our Central Hawalli Repair Lab
+              </h2>
+              <p className="mx-auto mt-2 max-w-3xl text-sm leading-6 text-slate-400">
+                These verified reviews describe the Hawalli workshop that handles Mishref pickups; they are not presented as testimonials from Mishref customers.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+              {centralLabReviews.map((review) => (
+                <blockquote
+                  key={review.name + review.time}
+                  data-central-lab-review="true"
+                  className="flex flex-col rounded-2xl border border-slate-800 bg-slate-900/50 p-5"
+                >
+                  <p className="flex-1 text-sm leading-relaxed text-slate-200">
+                    &ldquo;{review.text}&rdquo;
+                  </p>
+                  <footer className="mt-5 text-sm text-slate-400">
+                    <span className="font-semibold text-white">{review.name}</span>
+                    <span className="mt-1 block">{review.location} · {review.device} · {review.time}</span>
+                    {review.sourceUrl && (
+                      <a
+                        href={review.sourceUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-2 inline-flex min-h-10 items-center text-cyan-300 underline underline-offset-4 hover:text-cyan-200"
+                      >
+                        Read on Google
+                      </a>
+                    )}
+                  </footer>
+                </blockquote>
+              ))}
+            </div>
           </div>
         </section>
       )}
