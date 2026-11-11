@@ -323,6 +323,9 @@ export const LocationSchema = RoutableEntitySchema.extend({
     price: z.string(),
     note: z.string(),
   })).optional(),
+  localPricingHeading: z.string().optional(),
+  localPricingAnchorsPlacement: z.enum(['intro', 'after-services']).optional(),
+  reviewAttribution: z.enum(['central-hawalli-lab']).optional(),
   // Full semantic pricing table for high-intent service-area pages. Values are
   // authored in KCROC_GRAPH and use the same published guide rates as Pricing.tsx.
   localPricingTable: z.object({
@@ -349,6 +352,11 @@ export const LocationSchema = RoutableEntitySchema.extend({
     body: z.string(),
   }).optional(),
   localServiceCards: z.array(z.object({
+    category: z.enum([
+      'Board-Level & Micro-Soldering',
+      'MacBook & Gaming Systems',
+      'Screens, Batteries & Upgrades',
+    ]).optional(),
     title: z.string(),
     summary: z.string().optional(),
     problem: z.string(),
