@@ -744,6 +744,13 @@ export default function LocationDeepTemplate() {
                   );
                   return linked ? [linked] : [];
                 });
+                const cityPricePill = card.serviceIds.includes('srv-screen')
+                  ? 'From 30 KWD + Panel'
+                  : card.serviceIds.includes('srv-motherboard')
+                    ? 'From 25 KWD'
+                    : card.serviceIds.includes('srv-macbook')
+                      ? 'From 45 KWD'
+                      : 'Free Diagnosis';
                 return (
                   <React.Fragment key={card.title}>
                     {card.category && card.category !== previousCategory && (
@@ -759,19 +766,26 @@ export default function LocationDeepTemplate() {
                       data-service-category={card.category ?? 'uncategorized'}
                       className="rounded-2xl border border-slate-800 bg-slate-900/50 p-5 sm:p-6 flex flex-col"
                     >
-                      <h3 className="text-lg font-bold text-white mb-3">{card.title}</h3>
+                      <div className="mb-3 flex flex-wrap items-start justify-between gap-3">
+                        <h3 className="text-lg font-bold text-white">{card.title}</h3>
+                        {isKuwaitCityPage && (
+                          <span className="inline-flex shrink-0 rounded-full border border-cyan-400/25 bg-cyan-400/[0.08] px-3 py-1 font-mono text-xs font-bold text-cyan-200">
+                            {cityPricePill}
+                          </span>
+                        )}
+                      </div>
                       {card.summary && (
                         <p className="mb-4 text-sm leading-6 text-slate-400">{card.summary}</p>
                       )}
                       <div className="space-y-3 text-sm leading-6">
                         <p className="text-slate-300">
-                          <span className="font-bold text-cyan-400">Problem: </span>{card.problem}
+                          <span className={'font-bold ' + (isKuwaitCityPage ? 'text-amber-300' : 'text-cyan-400')}>Problem: </span>{card.problem}
                         </p>
                         <p className="text-slate-300">
-                          <span className="font-bold text-cyan-400">Diagnostic expertise: </span>{card.expertise}
+                          <span className={'font-bold ' + (isKuwaitCityPage ? 'text-cyan-300' : 'text-cyan-400')}>Diagnostic expertise: </span>{card.expertise}
                         </p>
                         <p className="text-slate-300">
-                          <span className="font-bold text-cyan-400">What to expect: </span>{card.solution}
+                          <span className={'font-bold ' + (isKuwaitCityPage ? 'text-emerald-300' : 'text-cyan-400')}>What to expect: </span>{card.solution}
                         </p>
                       </div>
                       {linkedServices.length > 0 && (
@@ -823,6 +837,57 @@ export default function LocationDeepTemplate() {
           )}
         </div>
       </section>
+
+      {isKuwaitCityPage && (
+        <section
+          aria-labelledby="kuwait-city-repair-economics-heading"
+          data-repair-economics-matrix="true"
+          className="border-t border-slate-800/50 bg-slate-950/75 px-4 py-8 sm:px-6 sm:py-12"
+        >
+          <div className="container mx-auto max-w-6xl">
+            <div className="mb-5 max-w-3xl">
+              <span className="font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-cyan-300">COST / RISK / WORKFLOW</span>
+              <h2 id="kuwait-city-repair-economics-heading" className="mt-2 text-2xl font-black text-white sm:text-3xl">Executive Repair Economics Matrix</h2>
+              <p className="mt-2 text-sm leading-6 text-slate-400">Compare the complete repair path—not only the headline price—before approving work.</p>
+            </div>
+            <div className="overflow-x-auto rounded-2xl border border-slate-800">
+              <table className="w-full min-w-[760px] border-collapse text-left text-sm">
+                <caption className="sr-only">Repair approach, logistics, storage handling and quote clarity for Kuwait City computer repairs</caption>
+                <thead className="bg-slate-900 text-xs uppercase tracking-wide text-slate-300">
+                  <tr>
+                    <th scope="col" className="w-[19%] px-4 py-4">Decision factor</th>
+                    <th scope="col" className="w-[38%] px-4 py-4">Questions to ask before choosing a repair option</th>
+                    <th scope="col" className="px-4 py-4 text-cyan-200">KCROC component-level lab · Hawalli Shop 19</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-800">
+                  <tr className="align-top">
+                    <th scope="row" className="px-4 py-4 font-bold text-white">Repair approach</th>
+                    <td className="px-4 py-4 leading-6 text-slate-400">Is the recommendation a component-level repair, or a complete motherboard / assembly replacement? What fault evidence supports it?</td>
+                    <td className="px-4 py-4 leading-6 text-slate-200">We trace the affected hardware path and assess component-level repair where the board is technically suitable.</td>
+                  </tr>
+                  <tr className="align-top">
+                    <th scope="row" className="px-4 py-4 font-bold text-white">Kuwait City logistics</th>
+                    <td className="px-4 py-4 leading-6 text-slate-400">Who arranges collection and return, and are those costs included in the quote?</td>
+                    <td className="px-4 py-4 leading-6 text-slate-200">Free office, agreed reception or residential pickup and return delivery across the stated service area.</td>
+                  </tr>
+                  <tr className="align-top">
+                    <th scope="row" className="px-4 py-4 font-bold text-white">Storage &amp; privacy</th>
+                    <td className="px-4 py-4 leading-6 text-slate-400">Can a removable NVMe / SATA drive be retained, and how are customer files handled during diagnosis?</td>
+                    <td className="px-4 py-4 leading-6 text-slate-200">Hardware-only diagnostics. Removable drive retention can be requested for supported Windows models; confirm the exact model and keep a separate backup.</td>
+                  </tr>
+                  <tr className="align-top">
+                    <th scope="row" className="px-4 py-4 font-bold text-white">Price &amp; approval</th>
+                    <td className="px-4 py-4 leading-6 text-slate-400">Does the quote separate labour, parts and any additional fees, and can you approve it before paid work begins?</td>
+                    <td className="px-4 py-4 leading-6 text-slate-200">Initial diagnostics and pickup / return are free. Motherboard repair starts from 25 KWD, screen labour from 30 KWD plus panel, and MacBook board repair from 45 KWD. Quote confirmed before paid work.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p className="mt-3 text-xs leading-5 text-slate-500">Starting prices are indicative. The final quote depends on the exact model, fault, board condition and compatible-part availability.</p>
+          </div>
+        </section>
+      )}
 
       {location.localPricingAnchorsPlacement === 'after-services' &&
         (location.localPricingAnchors ?? []).length > 0 &&
@@ -891,6 +956,9 @@ export default function LocationDeepTemplate() {
                   data-location-problem-link="true"
                   className="scroll-row-item w-[80%] sm:w-auto flex items-center gap-3 bg-slate-900/40 hover:bg-slate-900/70 border border-slate-800 hover:border-cyan-500/40 rounded-xl px-4 py-3.5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
                 >
+                  {isKuwaitCityPage && (
+                    <span className="h-2 w-2 shrink-0 rounded-full bg-cyan-400 shadow-[0_0_10px_rgba(34,211,238,0.55)] motion-safe:animate-pulse" aria-hidden="true" />
+                  )}
                   <Wrench className="w-4 h-4 text-cyan-500 shrink-0" aria-hidden="true" />
                   <span className="text-sm text-slate-200 font-medium">{LOCATION_PROBLEM_LABEL_OVERRIDES[location.slug]?.[problem.id] ?? problem.title}</span>
                 </Link>
@@ -914,14 +982,22 @@ export default function LocationDeepTemplate() {
                 data-location-brand-link="true"
                 className="text-center bg-slate-900/50 hover:bg-slate-900/80 border border-slate-800 hover:border-cyan-500/40 rounded-xl px-3 py-4 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
               >
-                <span className="text-sm font-bold text-white">{brand.brandName}</span>
+                <span className="block text-sm font-bold text-white">{brand.brandName}</span>
+                {isKuwaitCityPage && KUWAIT_CITY_BRAND_FAMILIES[brand.brandName.toLowerCase()] && (
+                  <span className="mt-1 block font-mono text-[10px] text-slate-500">
+                    {KUWAIT_CITY_BRAND_FAMILIES[brand.brandName.toLowerCase()]}
+                  </span>
+                )}
               </Link>
             ))}
             <Link
               to="/macbook-repair-kuwait"
               className="text-center bg-slate-900/50 hover:bg-slate-900/80 border border-slate-800 hover:border-cyan-500/40 rounded-xl px-3 py-4 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
             >
-              <span className="text-sm font-bold text-white">Apple</span>
+              <span className="block text-sm font-bold text-white">Apple</span>
+              {isKuwaitCityPage && (
+                <span className="mt-1 block font-mono text-[10px] text-slate-500">MacBook Air / Pro</span>
+              )}
             </Link>
           </div>
         </div>
@@ -948,11 +1024,16 @@ export default function LocationDeepTemplate() {
             </Link>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
-            {WORKSHOP_GALLERY_IMAGES.map((img) => (
+            {WORKSHOP_GALLERY_IMAGES.map((img, index) => (
               <div
                 key={img.src}
                 className="group relative rounded-xl overflow-hidden border border-slate-800 aspect-[4/3]"
               >
+                {isKuwaitCityPage && (
+                  <span className="absolute left-2 top-2 z-10 rounded-md border border-cyan-300/25 bg-slate-950/85 px-2 py-1 font-mono text-[9px] font-bold tracking-[0.12em] text-cyan-200 backdrop-blur">
+                    {KUWAIT_CITY_GALLERY_TAGS[index]}
+                  </span>
+                )}
                 <img
                   src={img.src}
                   alt={img.alt}
@@ -984,6 +1065,19 @@ export default function LocationDeepTemplate() {
             <h2 className="text-2xl sm:text-3xl font-black mb-6 sm:mb-10 text-white tracking-tight">
               How Computer Repair Works in {location.title}
             </h2>
+            {isKuwaitCityPage && (
+              <div
+                aria-label="Collection and repair flow: Kuwait City pickup, Hawalli Shop 19, and return delivery"
+                className="mb-6 grid gap-3 rounded-xl border border-cyan-400/15 bg-slate-950/70 p-4 sm:grid-cols-[1fr_auto_1fr_auto_1fr] sm:items-center"
+              >
+                <span className="font-mono text-[10px] font-bold tracking-[0.12em] text-cyan-200">01 / KUWAIT CITY COLLECTION</span>
+                <span className="hidden h-px w-10 bg-gradient-to-r from-cyan-400/80 to-cyan-400/20 sm:block" aria-hidden="true" />
+                <span className="font-mono text-[10px] font-bold tracking-[0.12em] text-cyan-200">02 / HAWALLI SHOP 19</span>
+                <span className="hidden h-px w-10 bg-gradient-to-r from-cyan-400/80 to-cyan-400/20 sm:block" aria-hidden="true" />
+                <span className="font-mono text-[10px] font-bold tracking-[0.12em] text-cyan-200">03 / RETURN DELIVERY</span>
+                <div className="col-span-full h-px origin-left bg-gradient-to-r from-cyan-400/80 via-cyan-300/35 to-transparent motion-safe:animate-pulse sm:hidden" aria-hidden="true" />
+              </div>
+            )}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
               {process.steps.map((step) => (
                 <div key={step.step} className="bg-slate-900/50 backdrop-blur-sm p-6 rounded-2xl border border-slate-800">
