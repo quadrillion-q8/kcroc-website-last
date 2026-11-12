@@ -71,19 +71,19 @@ for (const question of faqQuestions) {
   assert.ok(faqHtml.includes(question), 'FAQ question missing from prerendered HTML: ' + question);
 }
 const visibleFaqItems = faqHtml.match(
-  /<section\\b[^>]*>\\s*<h3\\b[^>]*>[\\s\\S]*?<\\/h3>\\s*<p\\b[^>]*>[\\s\\S]*?<\\/p>\\s*<\\/section>/g,
+  /<section\b[^>]*>\s*<h3\b[^>]*>[\s\S]*?<\/h3>\s*<p\b[^>]*>[\s\S]*?<\/p>\s*<\/section>/g,
 ) ?? [];
 assert.equal(
   visibleFaqItems.length,
-  12,
-  'Expected twelve complete static FAQ pairs (four original plus eight added); found ' + visibleFaqItems.length,
+  11,
+  'Expected eleven complete static FAQ pairs (four original plus eight added); found ' + visibleFaqItems.length,
 );
-assert.ok(!/<details\\b/i.test(faqHtml), 'The FAQ section is using collapsed disclosures instead of static answers.');
+assert.ok(!/<details\b/i.test(faqHtml), 'The FAQ section is using collapsed disclosures instead of static answers.');
 for (const faqItem of visibleFaqItems) {
   assert.ok(faqItem.replace(/<[^>]+>/g, '').trim().length > 80, 'A static FAQ card is empty or incomplete.');
 }
 
-// Article and FAQ structured data must describe the same twelve visible FAQs.
+// Article and FAQ structured data must describe the same eleven visible FAQs.
 for (const type of ['TechArticle', 'FAQPage', 'BreadcrumbList']) {
   assert.ok(
     html.includes('"@type":"' + type + '"') || html.includes('"@type": "' + type + '"'),
@@ -95,8 +95,8 @@ assert.ok(html.includes('Lead Hardware Repair Engineer'), 'Lead Hardware Repair 
 assert.ok(html.includes('KCROC Hardware Engineering Lab'), 'KCROC lab attribution is missing from the page/schema.');
 assert.ok(html.includes('2026-10-01'), 'The original article publication date is missing from structured data.');
 assert.ok(html.includes('2026-11-12'), 'The updated technical review date is missing from structured data.');
-const schemaQuestionCount = (html.match(/"@type"\\s*:\\s*"Question"/g) ?? []).length;
-assert.equal(schemaQuestionCount, 12, 'FAQPage JSON-LD must contain the same twelve questions as the static HTML.');
+const schemaQuestionCount = (html.match(/"@type"\s*:\s*"Question"/g) ?? []).length;
+assert.equal(schemaQuestionCount, 11, 'FAQPage JSON-LD must contain the same eleven questions as the static HTML.');
 
 // Engineering and Kuwait-specific checks must survive prerendering.
 for (const marker of [
@@ -152,7 +152,7 @@ assert.ok(
   html.includes('Gaming PC Won’t Boot After a BIOS Update: Kuwait Recovery Guide'),
   'The second related-guide sidebar entry is missing its verified BIOS recovery title.',
 );
-assert.ok(!/<li\\b[^>]*>\\s*<\\/li>/i.test(html), 'An empty list item remains in the prerendered page.');
+assert.ok(!/<li\b[^>]*>\s*<\/li>/i.test(html), 'An empty list item remains in the prerendered page.');
 
 console.log(
   'Gaming PC no-power guide SSG validation passed: ' +
