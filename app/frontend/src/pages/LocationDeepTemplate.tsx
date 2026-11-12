@@ -37,6 +37,32 @@ import { isReviewPublishable } from '../utils/publicationEligibility';
 
 const BASE_URL = KCROC_GRAPH.business!.websiteUrl;
 
+const KUWAIT_CITY_PROTOCOL_LABELS = [
+  'PROTOCOL 01 // TOWER HANDOVER',
+  'PROTOCOL 02 // SLA TIMING',
+  'PROTOCOL 03 // NVME RETENTION',
+  'PROTOCOL 04 // POSTAL ZONES',
+  'PROTOCOL 05 // HAWALLI LAB',
+] as const;
+
+const KUWAIT_CITY_POSTAL_PRIORITY = new Set(['Sharq', 'Qibla / Jibla', 'Mirqab', 'Dasman', 'Bneid Al-Gar', 'Safat']);
+
+const KUWAIT_CITY_BRAND_FAMILIES: Record<string, string> = {
+  dell: 'Latitude / XPS',
+  lenovo: 'ThinkPad / Yoga',
+  hp: 'EliteBook / ProBook',
+  asus: 'ROG / TUF',
+  acer: 'TravelMate / Aspire',
+  msi: 'Modern / Gaming',
+};
+
+const KUWAIT_CITY_GALLERY_TAGS = [
+  'WORKSHOP INTERIOR',
+  'TECHNICIAN DIAGNOSTICS',
+  'BOARD-LEVEL WORKBENCH',
+  'PARTS INVENTORY',
+] as const;
+
 // Service areas that have a dedicated Arabic page (hreflang-linked in graph.ts).
 const ARABIC_LOCATION_PAGES: Record<string, string> = {
   salmiya: '/ar/computer-repair-salmiya',
@@ -81,6 +107,15 @@ const WORKSHOP_GALLERY_IMAGES = [
 export default function LocationDeepTemplate() {
   const { slug } = useParams<{ slug: string }>();
   const { trackConversion } = useAnalytics();
+  const isKuwaitCityPage = slug === 'kuwait-city';
+  const [towerHandover, setTowerHandover] = useState({
+    district: 'Sharq',
+    building: '',
+    floor: '',
+    contact: '',
+    model: '',
+    fault: '',
+  });
   const [openFaqId, setOpenFaqId] = useState<string | null>(null);
 
   const location = KCROC_GRAPH.locations.find((l) => l.slug === slug && l.isActive !== false);
@@ -107,6 +142,12 @@ export default function LocationDeepTemplate() {
   const logisticsUsp = KCROC_GRAPH.usps?.find((u) => u.id === 'usp-logistics');
   const otherLocations = KCROC_GRAPH.locations.filter((l) => l.id !== location.id && l.isActive !== false);
   const nearbyAreas = location.serviceAreas.filter((a) => a !== location.title);
+  const postalZoneOptions = (location.additionalAreaPostalCodes ?? [])
+    .filter((area) => KUWAIT_CITY_POSTAL_PRIORITY.has(area.name));
+  const selectedPostalCode = postalZoneOptions.find((area) => area.name === towerHandover.district)?.postalCode ?? '';
+  const updateTowerHandover = (field: keyof typeof towerHandover, value: string) => {
+    setTowerHandover((current) => ({ ...current, [field]: value }));
+  };
 
   // Phase 4: location topology now lives in KCROC_GRAPH so the UI and graph
   // validator operate on the same service/problem/brand/location relationships.
@@ -138,6 +179,17 @@ export default function LocationDeepTemplate() {
       ? 'Hi KCROC, I need free pickup in Farwaniya. Device / model: ____. Issue: ____. Area / block: ____. Please confirm a collection slot.'
       : 'Hi KCROC, I am in ' + location.title + ' and need a device repaired. Can we arrange a pickup?';
   const WA_LINK = 'https://wa.me/' + phone + '?text=' + encodeURIComponent(whatsappMessage);
+  const towerHandoverMessage = [
+    'Hi KCROC, I would like to arrange a free Kuwait City office pickup.',
+    '- District & postal code: ' + towerHandover.district + (selectedPostalCode ? ' (' + selectedPostalCode + ')' : ''),
+    '- District / street / block: ' + (towerHandover.building || '____'),
+    '- Tower / building & floor / suite: ' + (towerHandover.floor || '____'),
+    '- Reception / IT contact: ' + (towerHandover.contact || '____'),
+    '- Laptop model: ' + (towerHandover.model || '____'),
+    '- Fault / symptoms: ' + (towerHandover.fault || '____'),
+    'I can share the WhatsApp location pin. Please confirm an agreed handover point and collection window.',
+  ].join('\n');
+  const towerHandoverWaLink = 'https://wa.me/' + phone + '?text=' + encodeURIComponent(towerHandoverMessage);
 
   // Most locations use shared commercial/logistics FAQs. Priority pages with
   // distinct service mixes use dedicated questions so local intent and booking
