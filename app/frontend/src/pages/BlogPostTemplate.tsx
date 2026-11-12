@@ -11,6 +11,7 @@ import {
 import { ROUTES, getBlogRoute, getContentRoute } from '../constants/routes';
 import { BLOG_POSTS, BlogPost, ContentBlock } from '../constants/blogPosts';
 import { KCROC_GRAPH } from '../data/graph';
+import { KCROC_POLICY } from '../constants/businessPolicy';
 import { AutoLink } from '../utils/linkGraph';
 import { getIntentWhatsAppLink } from '../utils/whatsappIntent';
 import { trackLead } from '../utils/analytics';
@@ -25,6 +26,19 @@ import DLSS5BenchmarkExplorer from '@/components/content/DLSS5BenchmarkExplorer'
 // Single source of truth for business identity — see graph.ts 'biz-kcroc'.
 // (Previously duplicated via constants/data.ts's BUSINESS_INFO.)
 const business = KCROC_GRAPH.business!;
+
+// Resolve business contact and policy tokens at render time so article copy
+// remains aligned with KCROC_GRAPH / KCROC_POLICY and the constants guardrail.
+const resolveKCROCContentTokens = (value: string) => {
+  const digits = business.telephone.replace(/\\D/g, '');
+  const phoneDisplay = digits.startsWith('965')
+    ? `+965 ${digits.slice(3, 7)} ${digits.slice(7)}`
+    : `+${digits}`;
+  return value
+    .replaceAll('{{KCROC_PHONE_DISPLAY}}', phoneDisplay)
+    .replaceAll('{{KCROC_PHONE_CLEAN}}', digits)
+    .replaceAll('{{KCROC_WARRANTY_DURATION}}', `${KCROC_POLICY.warranty.durationDays}-day`);
+};
 
 // Standalone guide pages are not BLOG_POSTS records. Add a lightweight card
 // record so editorial cluster links can point to the dedicated React route.
@@ -774,7 +788,7 @@ const RichBlock: React.FC<{ block: ContentBlock; headingRef?: (el: HTMLElement |
     case 'paragraph':
       return (
         <p className="text-slate-300 leading-relaxed mb-6">
-          {block.text.includes('https://') ? linkTechnicalSources(block.text) : <AutoLink text={block.text} currentEntityId={currentEntityId} excludeEntityIds={excludeEntityIds} />}
+          {resolveKCROCContentTokens(block.text).includes('https://') ? linkTechnicalSources(resolveKCROCContentTokens(block.text)) : <AutoLink text={resolveKCROCContentTokens(block.text)} currentEntityId={currentEntityId} excludeEntityIds={excludeEntityIds} />}
         </p>
       );
     case 'list': {
@@ -796,7 +810,7 @@ const RichBlock: React.FC<{ block: ContentBlock; headingRef?: (el: HTMLElement |
           <div>
             <p className={`text-xs font-black uppercase tracking-wider mb-1.5 ${style.text}`}>{block.title || style.label}</p>
             <p className="text-slate-300 text-sm leading-relaxed">
-              {block.text.includes('https://') ? linkTechnicalSources(block.text) : <AutoLink text={block.text} currentEntityId={currentEntityId} excludeEntityIds={excludeEntityIds} />}
+              {resolveKCROCContentTokens(block.text).includes('https://') ? linkTechnicalSources(resolveKCROCContentTokens(block.text)) : <AutoLink text={resolveKCROCContentTokens(block.text)} currentEntityId={currentEntityId} excludeEntityIds={excludeEntityIds} />}
             </p>
           </div>
         </div>
@@ -914,8 +928,8 @@ const RichBlock: React.FC<{ block: ContentBlock; headingRef?: (el: HTMLElement |
         <div className="my-10 space-y-5" aria-label="Frequently asked questions">
           {faqItems.map((item, i) => (
             <section key={i} className="rounded-2xl border border-slate-800 bg-slate-900/40 p-5">
-              <h3 className="text-base font-bold leading-snug text-white">{item.question}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-slate-300">{item.answer}</p>
+              <h3 className="text-base font-bold leading-snug text-white">{resolveKCROCContentTokens(item.question)}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-slate-300">{resolveKCROCContentTokens(item.answer)}</p>
             </section>
           ))}
         </div>
@@ -1368,8 +1382,8 @@ export default function BlogPostTemplate() {
           "@id": `${pageUrl}#faq`,
           "mainEntity": allFaqItems.map(item => ({
             "@type": "Question",
-            "name": item.question,
-            "acceptedAnswer": { "@type": "Answer", "text": item.answer }
+            "name": resolveKCROCContentTokens(item.question),
+            "acceptedAnswer": { "@type": "Answer", "text": resolveKCROCContentTokens(item.answer) }
           }))
         }] : [])
       ]
