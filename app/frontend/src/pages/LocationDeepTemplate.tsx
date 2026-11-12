@@ -232,6 +232,50 @@ export default function LocationDeepTemplate() {
   ];
 
 
+  const renderLocalHighlightCard = (
+    item: NonNullable<typeof location.localHighlights>[number],
+    index: number,
+  ) => {
+    const citySpan = isKuwaitCityPage && (index === 0 || index === 4)
+      ? 'xl:col-span-6'
+      : isKuwaitCityPage
+        ? 'xl:col-span-2'
+        : '';
+
+    return (
+      <article
+        key={item.title}
+        data-capital-protocol-card={isKuwaitCityPage ? String(index + 1) : undefined}
+        className={'rounded-2xl border border-slate-800 bg-slate-900/45 p-5 ' + citySpan + (isKuwaitCityPage ? ' group relative overflow-hidden shadow-[0_12px_40px_rgba(2,8,23,0.28)]' : '')}
+      >
+        {isKuwaitCityPage && (
+          <div className="mb-3 inline-flex rounded-md border border-cyan-400/20 bg-cyan-400/[0.07] px-2.5 py-1 font-mono text-[10px] font-bold tracking-[0.12em] text-cyan-300">
+            {KUWAIT_CITY_PROTOCOL_LABELS[index]}
+          </div>
+        )}
+        <h3 className="font-bold text-white">{item.title}</h3>
+        <p className="mt-2 text-sm leading-6 text-slate-400">{item.description}</p>
+        {isKuwaitCityPage && index === 3 && postalZoneOptions.length > 0 && (
+          <div className="mt-4 flex flex-wrap gap-2" aria-label="Kuwait City pickup postal zones">
+            {postalZoneOptions.map((zone) => (
+              <button
+                key={zone.name}
+                type="button"
+                onClick={() => updateTowerHandover('district', zone.name)}
+                aria-pressed={towerHandover.district === zone.name}
+                className={'inline-flex min-h-9 items-center rounded-full border px-3 py-1.5 font-mono text-xs font-bold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300 ' + (towerHandover.district === zone.name
+                  ? 'border-cyan-300 bg-cyan-300 text-slate-950'
+                  : 'border-slate-700 bg-slate-950/60 text-slate-200 hover:border-cyan-400/60 hover:text-cyan-200')}
+              >
+                {zone.postalCode} {zone.name}
+              </button>
+            ))}
+          </div>
+        )}
+      </article>
+    );
+  };
+
   const renderLocalPricingAnchors = (className: string) => (
     <section
       aria-labelledby="location-local-pricing-anchors"
@@ -338,8 +382,18 @@ export default function LocationDeepTemplate() {
       </nav>
 
       {/* ─── HERO ─── */}
-      <section className="relative pt-6 sm:pt-12 pb-10 sm:pb-20 px-4 sm:px-6 overflow-hidden">
-        <div className="container mx-auto max-w-6xl">
+      <section className={'relative pt-6 sm:pt-12 pb-10 sm:pb-20 px-4 sm:px-6 overflow-hidden' + (isKuwaitCityPage ? ' bg-slate-950' : '')}>
+        {isKuwaitCityPage && (
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 opacity-70"
+            style={{
+              backgroundImage: 'linear-gradient(rgba(34,211,238,0.045) 1px, transparent 1px), linear-gradient(90deg, rgba(34,211,238,0.045) 1px, transparent 1px)',
+              backgroundSize: '36px 36px',
+            }}
+          />
+        )}
+        <div className="container relative z-10 mx-auto max-w-6xl">
           <div className="grid lg:grid-cols-[1.15fr_1fr] gap-8 lg:gap-12 items-center">
             <div className="max-w-2xl space-y-5">
               <Badge className="bg-cyan-500/10 text-cyan-400 border-cyan-500/30 px-3 py-1.5 text-xs font-bold uppercase tracking-widest">
@@ -412,7 +466,7 @@ export default function LocationDeepTemplate() {
           </div>
 
           {/* ─── HERO LOCAL TRUST PANEL ─── */}
-          <div className="mt-8 sm:mt-12 bg-slate-900/40 backdrop-blur-md border border-slate-800 rounded-2xl p-5 sm:p-6">
+          <div data-kuwait-city-proof-ribbon={isKuwaitCityPage ? 'true' : undefined} className={'mt-8 sm:mt-12 bg-slate-900/40 backdrop-blur-md border rounded-2xl p-5 sm:p-6' + (isKuwaitCityPage ? ' border-cyan-400/20 shadow-[0_18px_60px_rgba(8,47,73,0.24)]' : ' border-slate-800')}>
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
               <div>
                 <h2 className="text-white font-bold text-lg">KCROC — Serving {location.title}</h2>
