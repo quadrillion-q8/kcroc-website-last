@@ -144,7 +144,7 @@ export default function LocationDeepTemplate() {
   const nearbyAreas = location.serviceAreas.filter((a) => a !== location.title);
   const postalZoneOptions = (location.additionalAreaPostalCodes ?? [])
     .filter((area) => KUWAIT_CITY_POSTAL_PRIORITY.has(area.name));
-  const selectedPostalCode = postalZoneOptions.find((area) => area.name === towerHandover.district)?.postalCode ?? '';
+  const selectedPostalCode = towerHandover.district === 'Al-Sawaber' ? '15300' : postalZoneOptions.find((area) => area.name === towerHandover.district)?.postalCode ?? '';
   const updateTowerHandover = (field: keyof typeof towerHandover, value: string) => {
     setTowerHandover((current) => ({ ...current, [field]: value }));
   };
@@ -1071,9 +1071,9 @@ export default function LocationDeepTemplate() {
                 className="mb-6 grid gap-3 rounded-xl border border-cyan-400/15 bg-slate-950/70 p-4 sm:grid-cols-[1fr_auto_1fr_auto_1fr] sm:items-center"
               >
                 <span className="font-mono text-[10px] font-bold tracking-[0.12em] text-cyan-200">01 / KUWAIT CITY COLLECTION</span>
-                <span className="hidden h-px w-10 bg-gradient-to-r from-cyan-400/80 to-cyan-400/20 sm:block" aria-hidden="true" />
+                <span className="hidden h-px w-10 bg-gradient-to-r from-cyan-400/80 to-cyan-400/20 motion-safe:animate-pulse sm:block" aria-hidden="true" />
                 <span className="font-mono text-[10px] font-bold tracking-[0.12em] text-cyan-200">02 / HAWALLI SHOP 19</span>
-                <span className="hidden h-px w-10 bg-gradient-to-r from-cyan-400/80 to-cyan-400/20 sm:block" aria-hidden="true" />
+                <span className="hidden h-px w-10 bg-gradient-to-r from-cyan-400/80 to-cyan-400/20 motion-safe:animate-pulse sm:block" aria-hidden="true" />
                 <span className="font-mono text-[10px] font-bold tracking-[0.12em] text-cyan-200">03 / RETURN DELIVERY</span>
                 <div className="col-span-full h-px origin-left bg-gradient-to-r from-cyan-400/80 via-cyan-300/35 to-transparent motion-safe:animate-pulse sm:hidden" aria-hidden="true" />
               </div>
