@@ -6772,30 +6772,107 @@ export const rawGraphData: RawGraphData = {
    {id:"faq-yarmouk-4",question:"Is there a repair workshop in Yarmouk?",answer:"No. Yarmouk is covered by pickup and delivery; devices are repaired at the Hawalli lab at Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19."},
    {id:"faq-yarmouk-5",question:"Will I receive a quote before work starts?",answer:"Yes. We share the diagnosis and price before paid work begins. Completed repairs carry a 30-day warranty."}
   ],
-  landmark:'Mobile Dispatch Area (Devices collected in Yarmouk and repaired at the Hawalli lab)',serviceRadiusKm:13,
+  landmark:'Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19',serviceRadiusKm:13,
   serviceAreas:['Yarmouk','Qortuba','Adailiya','Surra'],relatedServiceIds:['srv-laptop','srv-gaming','srv-gaming-laptop-cleaning','srv-macbook','srv-motherboard'],
   relatedProblemIds:['problem-overheating','problem-no-power','problem-black-screen','problem-freezing-crashing'],relatedLocationIds:['loc-qortuba','loc-adailiya','loc-surra','loc-mishref'],
   contentImage:{src:IMAGES.gaming.gamingLaptopFan.src,alt:IMAGES.gaming.gamingLaptopFan.alt,width:IMAGES.gaming.gamingLaptopFan.width,height:IMAGES.gaming.gamingLaptopFan.height,caption:'Gaming laptop cooling inspection performed at KCROC’s Hawalli lab.'},
   seo:{title:"Computer Repair Yarmouk | Laptop & Gaming PC Pickup | KCROC",description:"Laptop, MacBook and gaming PC repair for Yarmouk. Free collection and return delivery from KCROC’s Hawalli repair lab.",canonicalUrl:'https://www.computerrepairkuwait.com/location/yarmouk',ogType:'website',schemaTypes:['LocalBusiness'],lastModified:'2026-11-05T00:00:00+03:00'},navigationPriority:84
  } as LocationEntity,
 
- 'loc-qortuba': {id:'loc-qortuba',slug:'qortuba',entityType:'Location',isActive:true,isPhysicalLocation:false,
-  title:'Qortuba',description:'Computer, laptop and MacBook repair for Qortuba, with free pickup and delivery to KCROC’s Hawalli workshop.',
-  localIntro:"For Qortuba customers, KCROC provides free pickup and return delivery with all technical work completed at the Hawalli lab. We diagnose laptops, MacBooks and desktop PCs for no-power, charging, display, battery, overheating and motherboard issues. Gaming laptops and computers can also be checked for cooling and stability faults. The technician explains the diagnosis and recommended repair before any paid work begins, so the decision is based on the actual fault rather than guesswork.",
-  localHighlights:[{title:'Pickup in Qortuba',description:'Share your block or location pin and we will arrange free collection from your home or office.'},{title:'Laptop and MacBook hardware repair',description:'Screen, battery, charging and motherboard problems are diagnosed before parts are recommended.'},{title:'Gaming system diagnostics',description:'We check overheating, shutdowns and hardware instability on supported gaming computers.'},{title:'Central Hawalli repair lab',description:'Qortuba devices are repaired at the Hawalli workshop and returned after testing.'}],
-  localFaqs:[
-   {id:"faq-qortuba-1",question:"Can KCROC collect a laptop from Qortuba?",answer:"Yes. Free pickup and return delivery are available for Qortuba. Send the block or map pin along with the device model and fault."},
-   {id:"faq-qortuba-2",question:"Do you repair MacBooks with liquid or charging damage?",answer:"We inspect liquid-damage and charging symptoms at the lab and attempt component-level repair where technically possible. The repair path depends on the board condition."},
-   {id:"faq-qortuba-3",question:"Can you repair a gaming PC that restarts under load?",answer:"Yes. We check cooling, power delivery and hardware stability to identify whether overheating or a failing component is causing the restart."},
-   {id:"faq-qortuba-4",question:"Does KCROC have a shop in Qortuba?",answer:"No. Qortuba is a pickup area. Devices are diagnosed and repaired at our Hawalli lab at Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19."},
-   {id:"faq-qortuba-5",question:"How will I know the price?",answer:"We share the diagnosis and quote before any paid work begins. If KCROC cannot fix the device, No Fix, No Fee means there is no repair charge."}
-  ],
-  landmark:'Mobile Dispatch Area (Devices collected in Qortuba and repaired at the Hawalli lab)',serviceRadiusKm:12,
-  serviceAreas:['Qortuba','Adailiya','Yarmouk','Surra'],relatedServiceIds:['srv-laptop','srv-macbook','srv-gaming','srv-motherboard','srv-screen'],
-  relatedProblemIds:['problem-no-power','problem-overheating','problem-black-screen','problem-not-charging','problem-freezing-crashing'],relatedLocationIds:['loc-adailiya','loc-yarmouk','loc-surra','loc-mishref'],
-  contentImage:{src:IMAGES.gaming.gamingOverheating.src,alt:IMAGES.gaming.gamingOverheating.alt,width:IMAGES.gaming.gamingOverheating.width,height:IMAGES.gaming.gamingOverheating.height,caption:'PC cooling and hardware diagnosis carried out at KCROC’s Hawalli workshop.'},
-  seo:{title:"Computer Repair Qortuba | Free Pickup | KCROC",description:"Laptop, MacBook and gaming PC repair for Qortuba. Free pickup and delivery; diagnosis and repairs at KCROC’s Hawalli lab.",canonicalUrl:'https://www.computerrepairkuwait.com/location/qortuba',ogType:'website',schemaTypes:['LocalBusiness'],lastModified:'2026-11-05T00:00:00+03:00'},navigationPriority:83
- } as LocationEntity,
+ 'loc-qortuba': {
+    id: 'loc-qortuba', slug: 'qortuba', entityType: 'Location',
+    isActive: true, isPhysicalLocation: false, title: 'Qortuba',
+    heroBadge: 'Serving Qortuba (Blocks 1–5)',
+    heroHeadline: 'Computer Repair in Qortuba, Kuwait',
+    localValueHeading: 'Computer & Laptop Repair for Qortuba (Qurtuba)',
+    localServicesHeading: 'Laptop, MacBook, Desktop & Gaming Repair Services for Qortuba',
+    description: "Laptop, MacBook, desktop and gaming-system hardware repair for Qortuba (Qurtuba), Kuwait. Free pickup and return delivery across Blocks 1–5; diagnostics and repairs take place at KCROC's Hawalli workshop.",
+    localIntro: "For residents and home offices across Qortuba (Blocks 1–5), KCROC provides free door-to-door pickup and return delivery. Laptops, MacBooks, desktop PCs and complete gaming systems are taken to our ESD-safe Hawalli workshop at Al Mullah Complex, Basement Shop 19, Ibn Khaldoun St. We diagnose no-power, liquid-spill, charging, display, battery, keyboard, hinge, storage, memory and thermal faults. Technicians trace the reported hardware fault at component level where suitable, then explain the diagnosis and quote before paid work. Routine hardware checks do not involve browsing personal files; owners of supported Windows devices can ask about retaining a removable NVMe or SATA drive before collection.",
+    localHighlights: [
+      { title: 'Free pickup across Qortuba Blocks 1–5', description: 'Share your block, street, building and WhatsApp location pin. The team confirms the handover point and collection window before dispatch.' },
+      { title: 'One central Hawalli workshop', description: 'Qortuba is a pickup-and-delivery area, not a storefront. All physical diagnostics, component-level work and approved repairs take place at Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19.' },
+      { title: 'Fifteen linked repair services', description: 'The catalogue covers motherboard and liquid-damage work, charging ports, desktop PCs, MacBooks, gaming systems, screens, batteries, keyboards, hinges, SSDs and RAM.' },
+      { title: 'Quote before paid work', description: 'We explain the fault and repair options before work begins, then test the approved repair before free return delivery.' }
+    ],
+    localFaqs: [
+      { id: 'faq-qortuba-1', question: 'Do you have a walk-in repair shop in Qortuba, or how does pickup work?', answer: 'KCROC does not operate a walk-in storefront inside Qortuba. Qortuba (Qurtuba) is a free pickup-and-delivery area covering Blocks 1–5. Our courier collects from your home or office, and diagnostics and repairs are completed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19. You can also hand over the device at that Hawalli lab.' },
+      { id: 'faq-qortuba-2', question: 'How do I arrange free laptop or PC pickup from Qortuba?', answer: 'WhatsApp your block number or location pin, device model and fault to +965 55301913, or use Book Free Pickup. We confirm the handover point and collection window, log the device for workshop intake and return it after the approved repair and testing.' },
+      { id: 'faq-qortuba-3', question: 'How much does laptop, MacBook or computer repair cost for Qortuba customers?', answer: 'Initial hardware diagnosis and pickup/return delivery are free. Published guide rates include SSD/RAM installation labour from 5 KWD, battery labour from 8 KWD plus the battery, keyboard labour from 10 KWD plus the part, selected laptop and desktop repairs from 15 KWD, laptop thermal service at 15–20 KWD, hinge/chassis repair at 15–30 KWD, charging-port repair at 20–35 KWD, component-level motherboard repair at 25–60 KWD, liquid-damage repair at 35–90+ KWD, screen labour from 30 KWD plus the panel, and MacBook logic-board repair at 45–100+ KWD. Parts are separate where stated; we confirm the complete quote before paid work.' },
+      { id: 'faq-qortuba-4', question: 'How long does a repair take after collection from Qortuba?', answer: 'Timing starts after the device reaches the Hawalli lab and the fault is assessed. Many standard replacements and thermal services take around 24–48 hours when a compatible part is available. Component-level motherboard and liquid-damage work commonly needs 24–72 hours or longer for diagnosis, repair and stability testing. We confirm a realistic estimate after inspection.' },
+      { id: 'faq-qortuba-5', question: 'Can you repair MacBooks with liquid spills, USB-C charging faults or board problems?', answer: 'Yes. We assess supported MacBook Air and MacBook Pro models for liquid exposure, USB-C charging, no-power, display, battery and logic-board faults. Where the original board is technically repairable, we consider targeted component-level work before recommending a full assembly replacement. MacBook logic-board repair has its own published price range, and data access or preservation is not guaranteed.' },
+      { id: 'faq-qortuba-6', question: 'Can you fix a gaming PC or gaming laptop that overheats, restarts or shows a black screen?', answer: 'Yes. We diagnose complete gaming PCs and gaming laptops for cooling, fan, power-delivery, memory, storage, display and stability faults, then test the system under a suitable workload. Desktop collection and diagnosis are for the complete PC; KCROC does not accept standalone graphics cards or offer custom gaming-PC builds.' },
+      { id: 'faq-qortuba-7', question: 'Will technicians browse my personal files, and can I keep my SSD?', answer: 'Routine hardware diagnosis focuses on the reported fault; technicians do not browse personal documents or photos. For supported Windows laptops and desktops with a removable NVMe or SATA drive, ask about retaining it before collection. Tests requiring the operating system or storage cannot be completed while the drive is removed, and no data-recovery or data-preservation result is guaranteed.' },
+      { id: 'faq-qortuba-8', question: 'What happens if my device cannot be repaired, and what warranty applies?', answer: 'Under KCROC’s No Fix, No Fee policy, when bench diagnosis finds that a device is not economically or technically repairable under the service terms, there is no repair or initial diagnostic charge and pickup/return remains free. Completed hardware repairs carry a 30-day parts and labour warranty, subject to the confirmed repair terms.' }
+    ],
+    landmark: 'Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19',
+    serviceRadiusKm: 12,
+    serviceAreas: ['Qortuba', 'Adailiya', 'Yarmouk', 'Surra'],
+    serviceTypes: ['Laptop and desktop hardware repair', 'MacBook and logic-board diagnostics', 'Complete gaming PC and gaming laptop diagnostics', 'Component-level motherboard and liquid-damage repair', 'Screen, battery, charging, keyboard, hinge and SSD/RAM services'],
+    localPricingHeading: 'Transparent Repair Pricing for Qortuba Customers',
+    localPricingAnchorsPlacement: 'after-services',
+    localPricingAnchors: [
+      { label: 'Pickup, return delivery & initial diagnostic', price: 'FREE', note: 'Free collection across Qortuba Blocks 1–5 and a no-obligation initial hardware diagnostic at the Hawalli lab.' },
+      { label: 'Laptop battery replacement labour', price: 'From 8 KWD', note: 'Published labour range is 8–15 KWD. The compatible battery is priced separately after the exact model is checked.' },
+      { label: 'Laptop keyboard replacement labour', price: 'From 10 KWD', note: 'Published labour range is 10–20 KWD. The compatible keyboard or larger assembly is priced separately.' },
+      { label: 'Selected laptop, desktop, hinge & thermal services', price: 'From 15 KWD', note: 'Selected laptop and desktop repairs start from 15 KWD; hinge/chassis work is 15–30 KWD and laptop thermal service is 15–20 KWD.' },
+      { label: 'Component-level motherboard repair', price: 'From 25 KWD', note: 'The published component-repair range is 25–60 KWD. Advanced board work, liquid damage and MacBook logic-board repairs have separate ranges.' },
+      { label: 'Laptop screen replacement labour', price: 'From 30 KWD', note: 'Labour only. The compatible laptop panel or MacBook display assembly is priced separately after exact-model verification.' }
+    ],
+    localServiceCards: [
+      { category: 'Board-Level & Micro-Soldering', title: 'Laptop & Desktop Motherboard Repair', summary: 'Component-level power, charging and board diagnosis at the Hawalli lab.', problem: 'A laptop or desktop has no power, shuts down, fails to charge or shows a likely board fault.', expertise: 'We inspect the input path, measure power rails and assess connectors and board components.', solution: 'Where technically viable, we quote targeted component repair before recommending complete-board replacement.', serviceIds: ['srv-motherboard'] },
+      { category: 'Board-Level & Micro-Soldering', title: 'Laptop Liquid-Damage & Corrosion Repair', summary: 'Hardware assessment after a liquid spill.', problem: 'A spill is followed by power loss, keyboard faults, charging problems or corrosion.', expertise: 'We assess affected assemblies, connectors and board circuits to determine viable cleaning and repair.', solution: 'Keep the device switched off and unplugged. We quote after inspection; standalone data recovery is not offered.', serviceIds: ['srv-liquid-damage'] },
+      { category: 'Board-Level & Micro-Soldering', title: 'USB-C & Laptop Charging-Port Repair', summary: 'DC-in, USB-C and charging-path diagnostics.', problem: 'A laptop charges intermittently, only at a cable angle or fails to recognise a compatible charger.', expertise: 'We test the adapter and port, inspect connector condition and check the charging circuit.', solution: 'We confirm the repair recommendation and quote before work, then test stable charging.', serviceIds: ['srv-charging-port'] },
+      { category: 'Board-Level & Micro-Soldering', title: 'Desktop PC & Workstation Repair', summary: 'Hardware diagnosis for desktop towers and office PCs.', problem: 'A desktop will not start, has no display, overheats or becomes unstable under load.', expertise: 'The lab checks the PSU, motherboard, memory, storage, cooling and display path.', solution: 'We collect the complete tower, quote after diagnosis and test the repaired system before return.', serviceIds: ['srv-desktop-pc'] },
+      { category: 'MacBook & Gaming Systems', title: 'MacBook Air & MacBook Pro Hardware Repair', summary: 'Model-specific Intel and Apple silicon diagnostics.', problem: 'A MacBook has charging, USB-C, power, keyboard, display, battery or logic-board symptoms.', expertise: 'We assess the model and test relevant power, charging and logic-board circuits.', solution: 'The repair route and quote depend on model and fault; logic-board work has a separate published range.', serviceIds: ['srv-macbook'] },
+      { category: 'MacBook & Gaming Systems', title: 'MacBook Screen Replacement', summary: 'MacBook Air and Pro display diagnosis.', problem: 'A MacBook screen is cracked, flickers, shows lines or remains black.', expertise: 'We check the display assembly, cable and connectors and verify the exact model.', solution: 'The assembly is priced separately from labour; we confirm the full quote before fitting.', serviceIds: ['srv-macbook-screen'] },
+      { category: 'MacBook & Gaming Systems', title: 'Gaming PC Hardware & Stability Repair', summary: 'Fault-led checks for complete gaming desktops.', problem: 'A gaming PC has black screens, shutdowns, crashes, overheating or unstable performance.', expertise: 'We assess installed hardware, PSU, motherboard, memory, storage, cooling and display path.', solution: 'We diagnose complete systems only; custom PC builds and standalone graphics-card repair are not offered.', serviceIds: ['srv-gaming'] },
+      { category: 'MacBook & Gaming Systems', title: 'Gaming Laptop Repair', summary: 'Hardware and thermal-fault diagnosis.', problem: 'A gaming laptop overheats, loses charging, shuts down or has a black display.', expertise: 'We inspect cooling, fans, charging, display and related motherboard circuits.', solution: 'We quote before repair and verify the affected functions and stability before return.', serviceIds: ['srv-gaming-laptop'] },
+      { category: 'MacBook & Gaming Systems', title: 'Gaming Laptop Cleaning & Thermal Service', summary: 'Internal dust cleaning and model-appropriate thermal maintenance.', problem: 'A gaming laptop runs hot, has loud fans or throttles under sustained load.', expertise: 'We inspect airflow, fans, heatsink contact and thermal-interface condition.', solution: 'We perform suitable cleaning and thermal service, then check temperatures and fan behaviour.', serviceIds: ['srv-gaming-laptop-cleaning'] },
+      { category: 'Screens, Batteries & Upgrades', title: 'General Laptop Hardware Repair', summary: 'Everyday laptop fault diagnosis across supported brands.', problem: 'A laptop will not start, freezes or develops display, charging, keyboard or cooling faults.', expertise: 'We distinguish software, replaceable-part and board-level causes before recommending work.', solution: 'You receive the findings and quote before paid repair; approved work is tested at the Hawalli lab.', serviceIds: ['srv-laptop'] },
+      { category: 'Screens, Batteries & Upgrades', title: 'Laptop Screen Replacement', summary: 'Panel, cable and display diagnosis.', problem: 'A laptop screen is cracked, flickers, shows lines or stays black.', expertise: 'We inspect the panel, display cable, connector and backlight path.', solution: 'Labour starts from 30 KWD plus the compatible panel; we confirm part availability first.', serviceIds: ['srv-screen'] },
+      { category: 'Screens, Batteries & Upgrades', title: 'Laptop Battery Testing & Replacement', summary: 'Battery and charging-path checks.', problem: 'A laptop battery drains quickly, shuts down unexpectedly or will not hold charge.', expertise: 'We assess battery health and the charging path, then match the replacement to the exact model.', solution: 'Installation labour starts from 8 KWD plus the battery; the installed total is confirmed before work.', serviceIds: ['srv-battery'] },
+      { category: 'Screens, Batteries & Upgrades', title: 'SSD & RAM Upgrade', summary: 'Compatibility-led storage and memory upgrades.', problem: 'A laptop or desktop is slow, short of memory or still uses ageing storage.', expertise: 'We check supported SSD interface, memory generation, slots and storage health.', solution: 'Installation labour starts from 5 KWD; compatible parts are separate and tested before return.', serviceIds: ['srv-ssd-ram'] },
+      { category: 'Screens, Batteries & Upgrades', title: 'Laptop Keyboard Replacement', summary: 'Keyboard and input-fault assessment.', problem: 'Keys stop responding, repeat, stick or fail after a spill.', expertise: 'We test the keyboard connection and verify the compatible layout and assembly.', solution: 'Labour starts from 10 KWD; the keyboard or larger assembly is quoted separately.', serviceIds: ['srv-keyboard'] },
+      { category: 'Screens, Batteries & Upgrades', title: 'Laptop Hinge & Chassis Repair', summary: 'Structural repair of damaged hinges and mounting points.', problem: 'A hinge is stiff, detached or pulls the bezel or chassis apart.', expertise: 'We inspect hinge tension, mounting points, bezel and cable routing.', solution: 'We confirm whether reconstruction or replacement is practical and quote before repair.', serviceIds: ['srv-hinge'] }
+    ],
+    localScopeNotice: {
+      heading: 'Qortuba is a free pickup and delivery area, not a walk-in branch',
+      body: 'KCROC does not operate a storefront or repair counter in Qortuba. Free collection is arranged across Blocks 1–5. All physical diagnostics, micro-soldering and repairs take place at the central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19. You may also visit that Hawalli workshop directly.'
+    },
+    relatedServiceIds: [
+      'srv-motherboard', 'srv-liquid-damage', 'srv-charging-port', 'srv-desktop-pc',
+      'srv-macbook', 'srv-macbook-screen', 'srv-gaming', 'srv-gaming-laptop',
+      'srv-gaming-laptop-cleaning', 'srv-laptop', 'srv-screen', 'srv-battery',
+      'srv-ssd-ram', 'srv-keyboard', 'srv-hinge'
+    ],
+    relatedProblemIds: [
+      'problem-no-power', 'problem-overheating', 'problem-black-screen',
+      'problem-liquid-spill', 'problem-not-charging', 'problem-keyboard-fail',
+      'problem-hinge-break', 'problem-cracked-screen', 'problem-windows-wont-boot',
+      'problem-bsod', 'problem-freezing-crashing', 'problem-slow'
+    ],
+    relatedBrandIds: ['brand-dell', 'brand-hp', 'brand-lenovo', 'brand-asus', 'brand-acer', 'brand-msi'],
+    relatedLocationIds: ['loc-hawalli', 'loc-kaifan', 'loc-adailiya', 'loc-yarmouk', 'loc-surra'],
+    contentImage: {
+      src: IMAGES.gaming.gamingOverheating.src,
+      alt: IMAGES.gaming.gamingOverheating.alt,
+      width: IMAGES.gaming.gamingOverheating.width,
+      height: IMAGES.gaming.gamingOverheating.height,
+      caption: 'PC cooling and hardware diagnosis carried out at KCROC’s Hawalli workshop.'
+    },
+    seo: {
+      title: 'Computer Repair Qortuba (Qurtuba) | Free Pickup | KCROC',
+      description: 'Computer, laptop, MacBook and gaming PC repair for Qortuba (Blocks 1–5) with free pickup and delivery to KCROC’s Hawalli micro-soldering lab. No Fix, No Fee.',
+      canonicalUrl: 'https://www.computerrepairkuwait.com/location/qortuba',
+      alternates: {
+        'en-KW': 'https://www.computerrepairkuwait.com/location/qortuba',
+        'x-default': 'https://www.computerrepairkuwait.com/location/qortuba'
+      },
+      ogType: 'website', schemaTypes: ['LocalBusiness'],
+      lastModified: '2026-11-12T00:00:00+03:00'
+    },
+    navigationPriority: 83
+  } as LocationEntity,
 
  'loc-mishref': {
       id: 'loc-mishref',

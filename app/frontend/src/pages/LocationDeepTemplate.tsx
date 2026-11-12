@@ -142,7 +142,7 @@ export default function LocationDeepTemplate() {
   // Most locations use shared commercial/logistics FAQs. Priority pages with
   // distinct service mixes use dedicated questions so local intent and booking
   // details are not diluted by generic copy.
-  const usesDedicatedLocationFaqs = ['abdullah-al-salem', 'shamiya', 'nuzha', 'adailiya', 'kuwait-city', 'salmiya', 'surra', 'farwaniya'].includes(location.slug) || location.slug === 'kaifan' || location.slug === 'mahboula';
+  const usesDedicatedLocationFaqs = ['abdullah-al-salem', 'shamiya', 'nuzha', 'adailiya', 'kuwait-city', 'salmiya', 'surra', 'farwaniya', 'qortuba'].includes(location.slug) || location.slug === 'kaifan' || location.slug === 'mahboula';
   const isConciergeCollectionArea = ['shuwaikh-residential', 'abdullah-al-salem', 'kaifan', 'shamiya', 'nuzha', 'adailiya'].includes(location.slug);
   const sharedLocationFaqs: LocalFAQ[] = [
     {
@@ -302,7 +302,7 @@ export default function LocationDeepTemplate() {
               <p className="text-sm sm:text-lg text-slate-300 leading-relaxed">
                 {location.description}
               </p>
-              {location.slug === 'mishref' && (
+              {['mishref', 'qortuba'].includes(location.slug) && (
                 <p className="text-sm leading-relaxed text-slate-400">
                   Prefer to hand over your device in person?{' '}
                   <Link
