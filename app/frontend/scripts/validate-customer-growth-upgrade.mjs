@@ -234,14 +234,19 @@ add('English Windows services/settings guides contain no Kuwait-local repair or 
   !/\bKuwait\b|\bHawalli\b|free pickup|No Fix, No Fee|Computer Repair Kuwait|wa\.me|tel:\+965/.test(windowsSettingsGuideEntry) &&
   graph.includes('An evidence-led review of Windows 11 settings for privacy, startup, battery life, gaming and security'));
 
-add('English gaming-PC guides keep diagnostic content without local collection, warranty or unsupported GPU-repair offers',
+// The no-power article is intentionally a Kuwait-local service-intent guide.
+// Its local workshop, quote, pickup and warranty details are independently
+// guarded by validate-gaming-pc-no-power-ssg.mjs after prerendering. The other
+// three English gaming-PC articles remain global troubleshooting guides and
+// must not acquire KCROC-local commercial copy.
+add('Global English gaming-PC guides stay free of local sales copy; the Kuwait no-power guide has dedicated local SSG guardrails',
   gamingPowerGuideEntry.includes('When controlled hardware diagnosis is needed') &&
   gamingNoDisplayGuideEntry.includes('Environmental Factors: Heat, Dust & Safe Handling') &&
   gamingNoDisplayGuideEntry.includes('What a useful no-display diagnosis should establish') &&
   gpuArtifactsGuideEntry.includes('When specialist hardware assessment is warranted') &&
   gamingShutdownGuideEntry.includes('When controlled hardware diagnosis is needed') &&
-  !/\bKuwait\b|\bHawalli\b|free pickup|No Fix, No Fee|KWD|KCROC's published service|GPU Repair Kuwait|wa\.me|tel:\+965/i.test([
-    gamingPowerEditorialCopy, gamingNoDisplayEditorialCopy, gpuArtifactsEditorialCopy, gamingShutdownEditorialCopy
+  !/\\bKuwait\\b|\\bHawalli\\b|free pickup|No Fix, No Fee|KWD|KCROC's published service|GPU Repair Kuwait|wa\\.me|tel:\\+965/i.test([
+    gamingNoDisplayEditorialCopy, gpuArtifactsEditorialCopy, gamingShutdownEditorialCopy
   ].join(' ')) &&
   !/KCROC.{0,100}(?:GPU|VRAM|BGA|graphics-card|pickup|collection|repair service)/i.test(gpuArtifactsEditorialCopy) &&
   !gpuArtifactsEditorialCopy.includes('GPU Repair Kuwait'));
