@@ -144,7 +144,7 @@ export default function LocationDeepTemplate() {
   const nearbyAreas = location.serviceAreas.filter((a) => a !== location.title);
   const postalZoneOptions = (location.additionalAreaPostalCodes ?? [])
     .filter((area) => KUWAIT_CITY_POSTAL_PRIORITY.has(area.name));
-  const selectedPostalCode = postalZoneOptions.find((area) => area.name === towerHandover.district)?.postalCode ?? '';
+  const selectedPostalCode = towerHandover.district === 'Al-Sawaber' ? '15300' : postalZoneOptions.find((area) => area.name === towerHandover.district)?.postalCode ?? '';
   const updateTowerHandover = (field: keyof typeof towerHandover, value: string) => {
     setTowerHandover((current) => ({ ...current, [field]: value }));
   };
@@ -231,6 +231,50 @@ export default function LocationDeepTemplate() {
     ...(location.localFaqs ?? []),
   ];
 
+
+  const renderLocalHighlightCard = (
+    item: NonNullable<typeof location.localHighlights>[number],
+    index: number,
+  ) => {
+    const citySpan = isKuwaitCityPage && (index === 0 || index === 4)
+      ? 'xl:col-span-6'
+      : isKuwaitCityPage
+        ? 'xl:col-span-2'
+        : '';
+
+    return (
+      <article
+        key={item.title}
+        data-capital-protocol-card={isKuwaitCityPage ? String(index + 1) : undefined}
+        className={'rounded-2xl border border-slate-800 bg-slate-900/45 p-5 ' + citySpan + (isKuwaitCityPage ? ' group relative overflow-hidden shadow-[0_12px_40px_rgba(2,8,23,0.28)]' : '')}
+      >
+        {isKuwaitCityPage && (
+          <div className="mb-3 inline-flex rounded-md border border-cyan-400/20 bg-cyan-400/[0.07] px-2.5 py-1 font-mono text-[10px] font-bold tracking-[0.12em] text-cyan-300">
+            {KUWAIT_CITY_PROTOCOL_LABELS[index]}
+          </div>
+        )}
+        <h3 className="font-bold text-white">{item.title}</h3>
+        <p className="mt-2 text-sm leading-6 text-slate-400">{item.description}</p>
+        {isKuwaitCityPage && index === 3 && postalZoneOptions.length > 0 && (
+          <div className="mt-4 flex flex-wrap gap-2" aria-label="Kuwait City pickup postal zones">
+            {postalZoneOptions.map((zone) => (
+              <button
+                key={zone.name}
+                type="button"
+                onClick={() => updateTowerHandover('district', zone.name)}
+                aria-pressed={towerHandover.district === zone.name}
+                className={'inline-flex min-h-9 items-center rounded-full border px-3 py-1.5 font-mono text-xs font-bold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300 ' + (towerHandover.district === zone.name
+                  ? 'border-cyan-300 bg-cyan-300 text-slate-950'
+                  : 'border-slate-700 bg-slate-950/60 text-slate-200 hover:border-cyan-400/60 hover:text-cyan-200')}
+              >
+                {zone.postalCode} {zone.name}
+              </button>
+            ))}
+          </div>
+        )}
+      </article>
+    );
+  };
 
   const renderLocalPricingAnchors = (className: string) => (
     <section
@@ -338,8 +382,18 @@ export default function LocationDeepTemplate() {
       </nav>
 
       {/* ─── HERO ─── */}
-      <section className="relative pt-6 sm:pt-12 pb-10 sm:pb-20 px-4 sm:px-6 overflow-hidden">
-        <div className="container mx-auto max-w-6xl">
+      <section className={'relative pt-6 sm:pt-12 pb-10 sm:pb-20 px-4 sm:px-6 overflow-hidden' + (isKuwaitCityPage ? ' bg-slate-950' : '')}>
+        {isKuwaitCityPage && (
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 opacity-70"
+            style={{
+              backgroundImage: 'linear-gradient(rgba(34,211,238,0.045) 1px, transparent 1px), linear-gradient(90deg, rgba(34,211,238,0.045) 1px, transparent 1px)',
+              backgroundSize: '36px 36px',
+            }}
+          />
+        )}
+        <div className="container relative z-10 mx-auto max-w-6xl">
           <div className="grid lg:grid-cols-[1.15fr_1fr] gap-8 lg:gap-12 items-center">
             <div className="max-w-2xl space-y-5">
               <Badge className="bg-cyan-500/10 text-cyan-400 border-cyan-500/30 px-3 py-1.5 text-xs font-bold uppercase tracking-widest">
@@ -412,7 +466,7 @@ export default function LocationDeepTemplate() {
           </div>
 
           {/* ─── HERO LOCAL TRUST PANEL ─── */}
-          <div className="mt-8 sm:mt-12 bg-slate-900/40 backdrop-blur-md border border-slate-800 rounded-2xl p-5 sm:p-6">
+          <div data-kuwait-city-proof-ribbon={isKuwaitCityPage ? 'true' : undefined} className={'mt-8 sm:mt-12 bg-slate-900/40 backdrop-blur-md border rounded-2xl p-5 sm:p-6' + (isKuwaitCityPage ? ' border-cyan-400/20 shadow-[0_18px_60px_rgba(8,47,73,0.24)]' : ' border-slate-800')}>
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
               <div>
                 <h2 className="text-white font-bold text-lg">KCROC — Serving {location.title}</h2>
@@ -551,14 +605,125 @@ export default function LocationDeepTemplate() {
             </section>
           )}
           {(location.localHighlights ?? []).length > 0 && (
-            <div className="mt-8 grid gap-4 sm:grid-cols-2">
-              {(location.localHighlights ?? []).map((item) => (
-                <article key={item.title} className="rounded-2xl border border-slate-800 bg-slate-900/45 p-5">
-                  <h3 className="font-bold text-white">{item.title}</h3>
-                  <p className="mt-2 text-sm leading-6 text-slate-400">{item.description}</p>
-                </article>
-              ))}
-            </div>
+            isKuwaitCityPage ? (
+              <>
+                <div className="mt-8 grid gap-4 xl:grid-cols-6">
+                  {(location.localHighlights ?? []).slice(0, 1).map((item, index) => renderLocalHighlightCard(item, index))}
+                </div>
+
+                <section
+                  aria-labelledby="kuwait-city-tower-handover-heading"
+                  data-tower-handover-generator="true"
+                  className="mt-5 rounded-2xl border border-cyan-400/25 bg-slate-950/90 p-5 shadow-[0_18px_55px_rgba(8,47,73,0.22)] sm:p-6"
+                >
+                  <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+                    <div className="max-w-xl">
+                      <span className="inline-flex rounded-md bg-cyan-400/10 px-2.5 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.14em] text-cyan-300">
+                        Sharq · Qibla · Mirqab · Dasman · Bneid Al-Gar
+                      </span>
+                      <h3 id="kuwait-city-tower-handover-heading" className="mt-2 text-lg font-black text-white">
+                        1-Tap Tower &amp; Reception Handover
+                      </h3>
+                      <p className="mt-1 text-sm leading-6 text-slate-400">
+                        Prepare the collection details before sending your office pickup request.
+                      </p>
+                    </div>
+                    <span className="inline-flex shrink-0 items-center gap-2 rounded-full border border-slate-700 bg-slate-900 px-3 py-1.5 text-xs font-semibold text-slate-300">
+                      <span className="h-2 w-2 rounded-full bg-cyan-400 motion-safe:animate-pulse" aria-hidden="true" />
+                      HANDOVER DETAILS
+                    </span>
+                  </div>
+
+                  <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                    <label className="block text-xs font-semibold text-slate-300">
+                      District
+                      <select
+                        value={towerHandover.district}
+                        onChange={(event) => updateTowerHandover('district', event.target.value)}
+                        className="mt-1.5 min-h-11 w-full rounded-lg border border-slate-700 bg-slate-900 px-3 text-sm text-white outline-none transition focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20"
+                      >
+                        {postalZoneOptions.map((zone) => (
+                          <option key={zone.name} value={zone.name}>{zone.name} ({zone.postalCode})</option>
+                        ))}
+                        <option value="Al-Sawaber">Al-Sawaber (15300)</option>
+                      </select>
+                    </label>
+                    <label className="block text-xs font-semibold text-slate-300">
+                      Street / block / building
+                      <input
+                        value={towerHandover.building}
+                        onChange={(event) => updateTowerHandover('building', event.target.value)}
+                        placeholder="Building name, street or block"
+                        className="mt-1.5 min-h-11 w-full rounded-lg border border-slate-700 bg-slate-900 px-3 text-sm text-white placeholder:text-slate-500 outline-none transition focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20"
+                      />
+                    </label>
+                    <label className="block text-xs font-semibold text-slate-300">
+                      Tower / floor / suite
+                      <input
+                        value={towerHandover.floor}
+                        onChange={(event) => updateTowerHandover('floor', event.target.value)}
+                        placeholder="Tower, floor or suite"
+                        className="mt-1.5 min-h-11 w-full rounded-lg border border-slate-700 bg-slate-900 px-3 text-sm text-white placeholder:text-slate-500 outline-none transition focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20"
+                      />
+                    </label>
+                    <label className="block text-xs font-semibold text-slate-300">
+                      Reception / IT contact
+                      <input
+                        value={towerHandover.contact}
+                        onChange={(event) => updateTowerHandover('contact', event.target.value)}
+                        placeholder="Contact person or extension"
+                        className="mt-1.5 min-h-11 w-full rounded-lg border border-slate-700 bg-slate-900 px-3 text-sm text-white placeholder:text-slate-500 outline-none transition focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20"
+                      />
+                    </label>
+                    <label className="block text-xs font-semibold text-slate-300">
+                      Device / laptop model
+                      <input
+                        value={towerHandover.model}
+                        onChange={(event) => updateTowerHandover('model', event.target.value)}
+                        placeholder="Brand and exact model"
+                        className="mt-1.5 min-h-11 w-full rounded-lg border border-slate-700 bg-slate-900 px-3 text-sm text-white placeholder:text-slate-500 outline-none transition focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20"
+                      />
+                    </label>
+                    <label className="block text-xs font-semibold text-slate-300">
+                      Fault / symptoms
+                      <input
+                        value={towerHandover.fault}
+                        onChange={(event) => updateTowerHandover('fault', event.target.value)}
+                        placeholder="No power, screen, charging..."
+                        className="mt-1.5 min-h-11 w-full rounded-lg border border-slate-700 bg-slate-900 px-3 text-sm text-white placeholder:text-slate-500 outline-none transition focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20"
+                      />
+                    </label>
+                  </div>
+
+                  <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                    <a
+                      href={towerHandoverWaLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => handleWhatsAppClick('tower_handover_generator')}
+                      className="inline-flex min-h-11 items-center justify-center rounded-lg bg-cyan-400 px-4 py-2.5 text-sm font-black text-slate-950 transition hover:bg-cyan-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-200"
+                    >
+                      WhatsApp Tower Pickup Details
+                    </a>
+                    <a
+                      href={'tel:+' + phone}
+                      onClick={() => handleCallClick('tower_handover_generator')}
+                      className="inline-flex min-h-11 items-center justify-center rounded-lg border border-slate-700 bg-slate-900 px-4 py-2.5 text-sm font-semibold text-slate-100 transition hover:border-cyan-400/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300"
+                    >
+                      Call Dispatch: {phoneDisplay}
+                    </a>
+                  </div>
+                </section>
+
+                <div className="mt-5 grid gap-4 sm:grid-cols-2 xl:grid-cols-6">
+                  {(location.localHighlights ?? []).slice(1).map((item, index) => renderLocalHighlightCard(item, index + 1))}
+                </div>
+              </>
+            ) : (
+              <div className="mt-8 grid gap-4 sm:grid-cols-2">
+                {(location.localHighlights ?? []).map((item, index) => renderLocalHighlightCard(item, index))}
+              </div>
+            )
           )}
         </div>
       </section>
@@ -579,6 +744,13 @@ export default function LocationDeepTemplate() {
                   );
                   return linked ? [linked] : [];
                 });
+                const cityPricePill = card.serviceIds.includes('srv-screen')
+                  ? 'From 30 KWD + Panel'
+                  : card.serviceIds.includes('srv-motherboard')
+                    ? 'From 25 KWD'
+                    : card.serviceIds.includes('srv-macbook')
+                      ? 'From 45 KWD'
+                      : 'Free Diagnosis';
                 return (
                   <React.Fragment key={card.title}>
                     {card.category && card.category !== previousCategory && (
@@ -594,19 +766,26 @@ export default function LocationDeepTemplate() {
                       data-service-category={card.category ?? 'uncategorized'}
                       className="rounded-2xl border border-slate-800 bg-slate-900/50 p-5 sm:p-6 flex flex-col"
                     >
-                      <h3 className="text-lg font-bold text-white mb-3">{card.title}</h3>
+                      <div className="mb-3 flex flex-wrap items-start justify-between gap-3">
+                        <h3 className="text-lg font-bold text-white">{card.title}</h3>
+                        {isKuwaitCityPage && (
+                          <span className="inline-flex shrink-0 rounded-full border border-cyan-400/25 bg-cyan-400/[0.08] px-3 py-1 font-mono text-xs font-bold text-cyan-200">
+                            {cityPricePill}
+                          </span>
+                        )}
+                      </div>
                       {card.summary && (
                         <p className="mb-4 text-sm leading-6 text-slate-400">{card.summary}</p>
                       )}
                       <div className="space-y-3 text-sm leading-6">
                         <p className="text-slate-300">
-                          <span className="font-bold text-cyan-400">Problem: </span>{card.problem}
+                          <span className={'font-bold ' + (isKuwaitCityPage ? 'text-amber-300' : 'text-cyan-400')}>Problem: </span>{card.problem}
                         </p>
                         <p className="text-slate-300">
-                          <span className="font-bold text-cyan-400">Diagnostic expertise: </span>{card.expertise}
+                          <span className={'font-bold ' + (isKuwaitCityPage ? 'text-cyan-300' : 'text-cyan-400')}>Diagnostic expertise: </span>{card.expertise}
                         </p>
                         <p className="text-slate-300">
-                          <span className="font-bold text-cyan-400">What to expect: </span>{card.solution}
+                          <span className={'font-bold ' + (isKuwaitCityPage ? 'text-emerald-300' : 'text-cyan-400')}>What to expect: </span>{card.solution}
                         </p>
                       </div>
                       {linkedServices.length > 0 && (
@@ -658,6 +837,57 @@ export default function LocationDeepTemplate() {
           )}
         </div>
       </section>
+
+      {isKuwaitCityPage && (
+        <section
+          aria-labelledby="kuwait-city-repair-economics-heading"
+          data-repair-economics-matrix="true"
+          className="border-t border-slate-800/50 bg-slate-950/75 px-4 py-8 sm:px-6 sm:py-12"
+        >
+          <div className="container mx-auto max-w-6xl">
+            <div className="mb-5 max-w-3xl">
+              <span className="font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-cyan-300">COST / RISK / WORKFLOW</span>
+              <h2 id="kuwait-city-repair-economics-heading" className="mt-2 text-2xl font-black text-white sm:text-3xl">Executive Repair Economics Matrix</h2>
+              <p className="mt-2 text-sm leading-6 text-slate-400">Compare the complete repair path—not only the headline price—before approving work.</p>
+            </div>
+            <div className="overflow-x-auto rounded-2xl border border-slate-800">
+              <table className="w-full min-w-[760px] border-collapse text-left text-sm">
+                <caption className="sr-only">Repair approach, logistics, storage handling and quote clarity for Kuwait City computer repairs</caption>
+                <thead className="bg-slate-900 text-xs uppercase tracking-wide text-slate-300">
+                  <tr>
+                    <th scope="col" className="w-[19%] px-4 py-4">Decision factor</th>
+                    <th scope="col" className="w-[38%] px-4 py-4">Questions to ask before choosing a repair option</th>
+                    <th scope="col" className="px-4 py-4 text-cyan-200">KCROC component-level lab · Hawalli Shop 19</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-800">
+                  <tr className="align-top">
+                    <th scope="row" className="px-4 py-4 font-bold text-white">Repair approach</th>
+                    <td className="px-4 py-4 leading-6 text-slate-400">Is the recommendation a component-level repair, or a complete motherboard / assembly replacement? What fault evidence supports it?</td>
+                    <td className="px-4 py-4 leading-6 text-slate-200">We trace the affected hardware path and assess component-level repair where the board is technically suitable.</td>
+                  </tr>
+                  <tr className="align-top">
+                    <th scope="row" className="px-4 py-4 font-bold text-white">Kuwait City logistics</th>
+                    <td className="px-4 py-4 leading-6 text-slate-400">Who arranges collection and return, and are those costs included in the quote?</td>
+                    <td className="px-4 py-4 leading-6 text-slate-200">Free office, agreed reception or residential pickup and return delivery across the stated service area.</td>
+                  </tr>
+                  <tr className="align-top">
+                    <th scope="row" className="px-4 py-4 font-bold text-white">Storage &amp; privacy</th>
+                    <td className="px-4 py-4 leading-6 text-slate-400">Can a removable NVMe / SATA drive be retained, and how are customer files handled during diagnosis?</td>
+                    <td className="px-4 py-4 leading-6 text-slate-200">Hardware-only diagnostics. Removable drive retention can be requested for supported Windows models; confirm the exact model and keep a separate backup.</td>
+                  </tr>
+                  <tr className="align-top">
+                    <th scope="row" className="px-4 py-4 font-bold text-white">Price &amp; approval</th>
+                    <td className="px-4 py-4 leading-6 text-slate-400">Does the quote separate labour, parts and any additional fees, and can you approve it before paid work begins?</td>
+                    <td className="px-4 py-4 leading-6 text-slate-200">Initial diagnostics and pickup / return are free. Motherboard repair starts from 25 KWD, screen labour from 30 KWD plus panel, and MacBook board repair from 45 KWD. Quote confirmed before paid work.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p className="mt-3 text-xs leading-5 text-slate-500">Starting prices are indicative. The final quote depends on the exact model, fault, board condition and compatible-part availability.</p>
+          </div>
+        </section>
+      )}
 
       {location.localPricingAnchorsPlacement === 'after-services' &&
         (location.localPricingAnchors ?? []).length > 0 &&
@@ -726,6 +956,9 @@ export default function LocationDeepTemplate() {
                   data-location-problem-link="true"
                   className="scroll-row-item w-[80%] sm:w-auto flex items-center gap-3 bg-slate-900/40 hover:bg-slate-900/70 border border-slate-800 hover:border-cyan-500/40 rounded-xl px-4 py-3.5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
                 >
+                  {isKuwaitCityPage && (
+                    <span className="h-2 w-2 shrink-0 rounded-full bg-cyan-400 shadow-[0_0_10px_rgba(34,211,238,0.55)] motion-safe:animate-pulse" aria-hidden="true" />
+                  )}
                   <Wrench className="w-4 h-4 text-cyan-500 shrink-0" aria-hidden="true" />
                   <span className="text-sm text-slate-200 font-medium">{LOCATION_PROBLEM_LABEL_OVERRIDES[location.slug]?.[problem.id] ?? problem.title}</span>
                 </Link>
@@ -749,14 +982,22 @@ export default function LocationDeepTemplate() {
                 data-location-brand-link="true"
                 className="text-center bg-slate-900/50 hover:bg-slate-900/80 border border-slate-800 hover:border-cyan-500/40 rounded-xl px-3 py-4 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
               >
-                <span className="text-sm font-bold text-white">{brand.brandName}</span>
+                <span className="block text-sm font-bold text-white">{brand.brandName}</span>
+                {isKuwaitCityPage && KUWAIT_CITY_BRAND_FAMILIES[brand.brandName.toLowerCase()] && (
+                  <span className="mt-1 block font-mono text-[10px] text-slate-500">
+                    {KUWAIT_CITY_BRAND_FAMILIES[brand.brandName.toLowerCase()]}
+                  </span>
+                )}
               </Link>
             ))}
             <Link
               to="/macbook-repair-kuwait"
               className="text-center bg-slate-900/50 hover:bg-slate-900/80 border border-slate-800 hover:border-cyan-500/40 rounded-xl px-3 py-4 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
             >
-              <span className="text-sm font-bold text-white">Apple</span>
+              <span className="block text-sm font-bold text-white">Apple</span>
+              {isKuwaitCityPage && (
+                <span className="mt-1 block font-mono text-[10px] text-slate-500">MacBook Air / Pro</span>
+              )}
             </Link>
           </div>
         </div>
@@ -783,11 +1024,16 @@ export default function LocationDeepTemplate() {
             </Link>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
-            {WORKSHOP_GALLERY_IMAGES.map((img) => (
+            {WORKSHOP_GALLERY_IMAGES.map((img, index) => (
               <div
                 key={img.src}
                 className="group relative rounded-xl overflow-hidden border border-slate-800 aspect-[4/3]"
               >
+                {isKuwaitCityPage && (
+                  <span className="absolute left-2 top-2 z-10 rounded-md border border-cyan-300/25 bg-slate-950/85 px-2 py-1 font-mono text-[9px] font-bold tracking-[0.12em] text-cyan-200 backdrop-blur">
+                    {KUWAIT_CITY_GALLERY_TAGS[index]}
+                  </span>
+                )}
                 <img
                   src={img.src}
                   alt={img.alt}
@@ -819,6 +1065,19 @@ export default function LocationDeepTemplate() {
             <h2 className="text-2xl sm:text-3xl font-black mb-6 sm:mb-10 text-white tracking-tight">
               How Computer Repair Works in {location.title}
             </h2>
+            {isKuwaitCityPage && (
+              <div
+                aria-label="Collection and repair flow: Kuwait City pickup, Hawalli Shop 19, and return delivery"
+                className="mb-6 grid gap-3 rounded-xl border border-cyan-400/15 bg-slate-950/70 p-4 sm:grid-cols-[1fr_auto_1fr_auto_1fr] sm:items-center"
+              >
+                <span className="font-mono text-[10px] font-bold tracking-[0.12em] text-cyan-200">01 / KUWAIT CITY COLLECTION</span>
+                <span className="hidden h-px w-10 bg-gradient-to-r from-cyan-400/80 to-cyan-400/20 motion-safe:animate-pulse sm:block" aria-hidden="true" />
+                <span className="font-mono text-[10px] font-bold tracking-[0.12em] text-cyan-200">02 / HAWALLI SHOP 19</span>
+                <span className="hidden h-px w-10 bg-gradient-to-r from-cyan-400/80 to-cyan-400/20 motion-safe:animate-pulse sm:block" aria-hidden="true" />
+                <span className="font-mono text-[10px] font-bold tracking-[0.12em] text-cyan-200">03 / RETURN DELIVERY</span>
+                <div className="col-span-full h-px origin-left bg-gradient-to-r from-cyan-400/80 via-cyan-300/35 to-transparent motion-safe:animate-pulse sm:hidden" aria-hidden="true" />
+              </div>
+            )}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
               {process.steps.map((step) => (
                 <div key={step.step} className="bg-slate-900/50 backdrop-blur-sm p-6 rounded-2xl border border-slate-800">
@@ -1091,7 +1350,27 @@ export default function LocationDeepTemplate() {
             Frequently Asked Questions
           </h2>
           <div className="space-y-2.5">
-            {localFaqs.map((faq) => {
+            {localFaqs.map((faq, index) => {
+              if (isKuwaitCityPage) {
+                return (
+                  <details
+                    key={faq.id}
+                    id={faq.id}
+                    open={index < 3}
+                    data-kuwait-city-faq="true"
+                    className="group overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/50 open:border-cyan-400/25"
+                  >
+                    <summary className="flex cursor-pointer list-none items-center justify-between gap-3 px-5 py-4 text-left marker:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-cyan-400 sm:px-6 [&::-webkit-details-marker]:hidden">
+                      <span className="text-sm font-semibold text-white sm:text-base">{faq.question}</span>
+                      <ChevronDown aria-hidden="true" className="h-4 w-4 shrink-0 text-slate-500 transition-transform duration-200 group-open:rotate-180" />
+                    </summary>
+                    <div className="px-5 pb-4 text-sm leading-relaxed text-slate-400 sm:px-6">
+                      {faq.answer}
+                    </div>
+                  </details>
+                );
+              }
+
               const isOpen = openFaqId === faq.id;
               return (
                 <div key={faq.id} className="bg-slate-900/50 border border-slate-800 rounded-2xl overflow-hidden">
@@ -1121,7 +1400,7 @@ export default function LocationDeepTemplate() {
                       className={`w-4 h-4 text-slate-500 shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
                     />
                   </button>
-                  {/* Keep answers in the prerendered DOM; `hidden` controls only visual expansion.
+                  {/* Keep answers in the prerendered DOM; hidden controls only visual expansion.
                       FAQPage JSON-LD above is generated from the same localFaqs array. */}
                   <div
                     id={`${faq.id}-panel`}
