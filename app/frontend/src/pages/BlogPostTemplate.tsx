@@ -46,7 +46,7 @@ const GAMEBAR_PRESENCE_WRITER_GUIDE_CARD: BlogPost = {
 const BIOS_UEFI_RECOVERY_GUIDE_CARD: BlogPost = {
   id: 'guide-bios-uefi',
   slug: 'bios-uefi-recovery-kuwait',
-  title: 'BIOS / UEFI Recovery Guide',
+  title: 'Gaming PC Won’t Boot After a BIOS Update: Kuwait Recovery Guide',
   excerpt: 'Diagnose failed BIOS and UEFI updates, black screens and no-POST firmware faults using model-specific recovery methods.',
   content: [],
   image: '/images/custom-gaming-pc-teardown-and-diagnostics-workbench.webp',
