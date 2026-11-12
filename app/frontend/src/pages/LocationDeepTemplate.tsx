@@ -605,14 +605,125 @@ export default function LocationDeepTemplate() {
             </section>
           )}
           {(location.localHighlights ?? []).length > 0 && (
-            <div className="mt-8 grid gap-4 sm:grid-cols-2">
-              {(location.localHighlights ?? []).map((item) => (
-                <article key={item.title} className="rounded-2xl border border-slate-800 bg-slate-900/45 p-5">
-                  <h3 className="font-bold text-white">{item.title}</h3>
-                  <p className="mt-2 text-sm leading-6 text-slate-400">{item.description}</p>
-                </article>
-              ))}
-            </div>
+            isKuwaitCityPage ? (
+              <>
+                <div className="mt-8 grid gap-4 xl:grid-cols-6">
+                  {(location.localHighlights ?? []).slice(0, 1).map((item, index) => renderLocalHighlightCard(item, index))}
+                </div>
+
+                <section
+                  aria-labelledby="kuwait-city-tower-handover-heading"
+                  data-tower-handover-generator="true"
+                  className="mt-5 rounded-2xl border border-cyan-400/25 bg-slate-950/90 p-5 shadow-[0_18px_55px_rgba(8,47,73,0.22)] sm:p-6"
+                >
+                  <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+                    <div className="max-w-xl">
+                      <span className="inline-flex rounded-md bg-cyan-400/10 px-2.5 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.14em] text-cyan-300">
+                        Sharq · Qibla · Mirqab · Dasman · Bneid Al-Gar
+                      </span>
+                      <h3 id="kuwait-city-tower-handover-heading" className="mt-2 text-lg font-black text-white">
+                        1-Tap Tower &amp; Reception Handover
+                      </h3>
+                      <p className="mt-1 text-sm leading-6 text-slate-400">
+                        Prepare the collection details before sending your office pickup request.
+                      </p>
+                    </div>
+                    <span className="inline-flex shrink-0 items-center gap-2 rounded-full border border-slate-700 bg-slate-900 px-3 py-1.5 text-xs font-semibold text-slate-300">
+                      <span className="h-2 w-2 rounded-full bg-cyan-400 motion-safe:animate-pulse" aria-hidden="true" />
+                      HANDOVER DETAILS
+                    </span>
+                  </div>
+
+                  <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                    <label className="block text-xs font-semibold text-slate-300">
+                      District
+                      <select
+                        value={towerHandover.district}
+                        onChange={(event) => updateTowerHandover('district', event.target.value)}
+                        className="mt-1.5 min-h-11 w-full rounded-lg border border-slate-700 bg-slate-900 px-3 text-sm text-white outline-none transition focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20"
+                      >
+                        {postalZoneOptions.map((zone) => (
+                          <option key={zone.name} value={zone.name}>{zone.name} ({zone.postalCode})</option>
+                        ))}
+                        <option value="Al-Sawaber">Al-Sawaber (15300)</option>
+                      </select>
+                    </label>
+                    <label className="block text-xs font-semibold text-slate-300">
+                      Street / block / building
+                      <input
+                        value={towerHandover.building}
+                        onChange={(event) => updateTowerHandover('building', event.target.value)}
+                        placeholder="Building name, street or block"
+                        className="mt-1.5 min-h-11 w-full rounded-lg border border-slate-700 bg-slate-900 px-3 text-sm text-white placeholder:text-slate-500 outline-none transition focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20"
+                      />
+                    </label>
+                    <label className="block text-xs font-semibold text-slate-300">
+                      Tower / floor / suite
+                      <input
+                        value={towerHandover.floor}
+                        onChange={(event) => updateTowerHandover('floor', event.target.value)}
+                        placeholder="Tower, floor or suite"
+                        className="mt-1.5 min-h-11 w-full rounded-lg border border-slate-700 bg-slate-900 px-3 text-sm text-white placeholder:text-slate-500 outline-none transition focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20"
+                      />
+                    </label>
+                    <label className="block text-xs font-semibold text-slate-300">
+                      Reception / IT contact
+                      <input
+                        value={towerHandover.contact}
+                        onChange={(event) => updateTowerHandover('contact', event.target.value)}
+                        placeholder="Contact person or extension"
+                        className="mt-1.5 min-h-11 w-full rounded-lg border border-slate-700 bg-slate-900 px-3 text-sm text-white placeholder:text-slate-500 outline-none transition focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20"
+                      />
+                    </label>
+                    <label className="block text-xs font-semibold text-slate-300">
+                      Device / laptop model
+                      <input
+                        value={towerHandover.model}
+                        onChange={(event) => updateTowerHandover('model', event.target.value)}
+                        placeholder="Brand and exact model"
+                        className="mt-1.5 min-h-11 w-full rounded-lg border border-slate-700 bg-slate-900 px-3 text-sm text-white placeholder:text-slate-500 outline-none transition focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20"
+                      />
+                    </label>
+                    <label className="block text-xs font-semibold text-slate-300">
+                      Fault / symptoms
+                      <input
+                        value={towerHandover.fault}
+                        onChange={(event) => updateTowerHandover('fault', event.target.value)}
+                        placeholder="No power, screen, charging..."
+                        className="mt-1.5 min-h-11 w-full rounded-lg border border-slate-700 bg-slate-900 px-3 text-sm text-white placeholder:text-slate-500 outline-none transition focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20"
+                      />
+                    </label>
+                  </div>
+
+                  <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                    <a
+                      href={towerHandoverWaLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => handleWhatsAppClick('tower_handover_generator')}
+                      className="inline-flex min-h-11 items-center justify-center rounded-lg bg-cyan-400 px-4 py-2.5 text-sm font-black text-slate-950 transition hover:bg-cyan-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-200"
+                    >
+                      WhatsApp Tower Pickup Details
+                    </a>
+                    <a
+                      href={'tel:+' + phone}
+                      onClick={() => handleCallClick('tower_handover_generator')}
+                      className="inline-flex min-h-11 items-center justify-center rounded-lg border border-slate-700 bg-slate-900 px-4 py-2.5 text-sm font-semibold text-slate-100 transition hover:border-cyan-400/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300"
+                    >
+                      Call Dispatch: {phoneDisplay}
+                    </a>
+                  </div>
+                </section>
+
+                <div className="mt-5 grid gap-4 sm:grid-cols-2 xl:grid-cols-6">
+                  {(location.localHighlights ?? []).slice(1).map((item, index) => renderLocalHighlightCard(item, index + 1))}
+                </div>
+              </>
+            ) : (
+              <div className="mt-8 grid gap-4 sm:grid-cols-2">
+                {(location.localHighlights ?? []).map((item, index) => renderLocalHighlightCard(item, index))}
+              </div>
+            )
           )}
         </div>
       </section>
