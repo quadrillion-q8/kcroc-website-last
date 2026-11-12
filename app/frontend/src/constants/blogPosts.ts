@@ -7791,7 +7791,7 @@ export const BLOG_POSTS: BlogPost[] = [
     "slug": "gaming-pc-not-turning-on-kuwait",
     "title": "Gaming PC Won’t Turn On? Power, PSU & Motherboard Troubleshooting",
     "excerpt": "A gaming PC that is completely dead, powers on for a second, or starts only intermittently can have a PSU, motherboard, short-circuit, front-panel, GPU or power-delivery problem.",
-    "description": "Diagnose a gaming PC that shows no power, starts briefly or fails to POST. Follow safe checks for PSU, motherboard, front-panel, GPU power and firmware before replacing parts.",
+    "description": "Gaming PC dead, clicking off after 1 second, or fans spinning with no POST? Follow Imran Natiq’s PSU, ATX power rail and motherboard diagnostic guide, with free pickup across Kuwait.",
     "content": [
       "A gaming PC that suddenly becomes completely dead is one of the highest-intent repair problems because the symptom appears simple while the underlying fault can be anywhere along the power path.",
       "A full-size gaming tower contains several power, cooling and expansion components, so the symptom needs to be classified before any part is removed or replaced."
@@ -7825,6 +7825,56 @@ export const BLOG_POSTS: BlogPost[] = [
         ]
       },
       {
+        "type": "paragraph",
+        "text": "Before pulling cables or ordering a replacement power supply, match the desktop's exact physical behavior to the power-delivery stage where startup is failing. The table is a triage aid, not proof that one component is defective."
+      },
+      {
+        "type": "comparisonTable",
+        "title": "Gaming PC power symptoms and the electrical stage to investigate",
+        "featureLabel": "Symptom pattern",
+        "columns": [
+          "What may be happening electrically",
+          "Common suspects and safe first action"
+        ],
+        "rows": [
+          {
+            "feature": "Completely dead — no LEDs, fans or click",
+            "values": [
+              "AC may not be reaching the PSU, or the PSU may not be providing +5VSB standby power to the motherboard.",
+              "Check the wall outlet, fused Type G plug, power cord and PSU rear switch. A failed standby circuit, front-panel switch or shorted standby rail is also possible."
+            ]
+          },
+          {
+            "feature": "Fans or RGB twitch for about one second, then stop",
+            "values": [
+              "The PSU may begin enabling its main rails and then shut down because a protection threshold is reached. The twitch alone does not prove which control signal or component failed.",
+              "A PSU fault, motherboard VRM/DrMOS short, GPU/PCIe power fault or incompatible modular cable may be involved. Stop repeated power attempts and arrange controlled isolation."
+            ]
+          },
+          {
+            "feature": "Fans and RGB stay on, but there is no POST or display",
+            "values": [
+              "Some main power is present, but CPU, memory, graphics or firmware initialization may not have completed.",
+              "Record CPU/DRAM/VGA/BOOT indicators and the exact board model. Check the display path and allow documented memory training to finish."
+            ]
+          },
+          {
+            "feature": "The PC reaches BIOS but Windows does not load",
+            "values": [
+              "The system has progressed through power-up and POST; the failure is more likely at boot-device handoff or operating-system startup.",
+              "Check whether the NVMe/SSD appears in BIOS and whether the expected UEFI boot entry exists. Do not format or reinstall before checking storage health."
+            ]
+          },
+          {
+            "feature": "Startup is intermittent or works after unplugging",
+            "values": [
+              "A marginal PSU, protection state, unstable connection, standby-rail fault or contamination-related leakage may be temperature- or time-dependent.",
+              "Record how long the PC was unplugged and any recent changes. Do not treat a CMOS battery as the default explanation for total loss of power."
+            ]
+          }
+        ]
+      },
+      {
         "type": "h2",
         "text": "Safe checks you can do before repair",
         "id": "safe-checks"
@@ -7841,6 +7891,27 @@ export const BLOG_POSTS: BlogPost[] = [
         ]
       },
       {
+        "type": "h3",
+        "text": "Kuwait-specific checks for Type G mains and power accessories",
+        "id": "kuwait-power-checks"
+      },
+      {
+        "type": "paragraph",
+        "text": "Kuwait's mains supply is commonly specified at 240V / 50Hz, and the familiar three-pin Type G plug is a fused BS 1363 design. With the PC unplugged from the wall, inspect the plug and cable for damage and check the fuse rating printed on the fuse against the PSU, cord and equipment instructions. Do not assume every PC cord must use a 13A fuse, and never fit a higher-rated fuse simply because the PC has a high-wattage PSU. If a correctly rated fuse blows again, stop testing and have the cord, PSU and outlet checked."
+      },
+      {
+        "type": "paragraph",
+        "text": "Bypass a suspect UPS or extension strip only when the wall outlet and equipment appear safe. Some UPS models separate battery-backed outlets from surge-only outlets; a weak battery, overload, failed relay or damaged strip can interrupt power. A single controlled test from a known-good, properly rated wall outlet can help isolate the accessory. Do not continue if the outlet is loose, hot, discoloured, sparking or smells burnt."
+      },
+      {
+        "type": "paragraph",
+        "text": "A damaged USB headset, RGB controller, front-panel USB socket or bent header pin can short a USB power rail or standby-powered circuitry. Shut the PC down, switch off the PSU, disconnect AC power, and remove external USB accessories before one safe retest. Internal headers should only be inspected with AC disconnected and by someone comfortable working inside a desktop."
+      },
+      {
+        "type": "paragraph",
+        "text": "For RTX 40- and 50-series systems, inspect the 12VHPWR / 12V-2x6 connector and any 8-pin PCIe plugs only with the PC shut down and AC disconnected. The 16-pin plug should be fully seated with no visible gap; follow the GPU and PSU manufacturer's cable-clearance and bend guidance, avoid side-loading the connector, and stop using any plug that is discoloured, softened or melted. Never force a connector or substitute an unapproved adapter."
+      },
+      {
         "type": "h2",
         "text": "What can cause a gaming PC to be completely dead?",
         "id": "causes"
@@ -7848,6 +7919,27 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         "type": "paragraph",
         "text": "Common branches include PSU failure, a motherboard power fault, a short circuit, a damaged front-panel connection, GPU or PCIe power problems, or firmware issues. A dead-looking machine can therefore require very different repairs depending on where power stops progressing."
+      },
+      {
+        "type": "h3",
+        "text": "The four-stage ATX startup handshake",
+        "id": "atx-startup-handshake"
+      },
+      {
+        "type": "list",
+        "ordered": true,
+        "items": [
+          "Stage 1 — +5VSB standby: When AC is present and the PSU's rear switch is on, the PSU provides +5VSB even while the main DC rails are disabled. The motherboard uses this standby supply for power-control and wake functions. If +5VSB is absent or a standby-powered circuit is shorted, the board may show no standby LED or response.",
+          "Stage 2 — Front-panel trigger: The case power button is normally a momentary switch across the motherboard's PWR_SW header. Pressing it signals the board's power-management logic; a loose plug or failed switch can mimic a dead motherboard. The switch does not carry the PC's main operating current.",
+          "Stage 3 — PS_ON# assertion: After the motherboard's power-control logic accepts the request and platform conditions permit startup, it pulls the active-low PS_ON# control line toward ground. The PSU then enables the main +12V, +5V and +3.3V outputs. The exact intermediate sequencing depends on the platform and PSU design.",
+          "Stage 4 — PWR_OK: The PSU asserts PWR_OK only after the main rails reach their required operating conditions and the supply can signal that power is good. Traditional ATX design guidance specifies a PWR_OK delay in the 100–500 ms range; a short, overload or unstable rail can prevent PWR_OK from being asserted or cause it to be withdrawn."
+        ]
+      },
+      {
+        "type": "callout",
+        "variant": "info",
+        "title": "What these signals can—and cannot—tell you",
+        "text": "A +5VSB, PS_ON# or PWR_OK measurement is useful only when taken at the correct connector and interpreted against the PSU and motherboard design. Connector pin numbering, platform sequencing and protection behaviour matter. Do not probe a live PSU or open its enclosure; internal capacitors can retain hazardous voltage."
       },
       {
         "type": "h2",
@@ -7859,6 +7951,33 @@ export const BLOG_POSTS: BlogPost[] = [
         "text": "A PSU failure can produce total silence, intermittent startup, or shutdown under load. A proper diagnosis should test the system under controlled conditions rather than assuming the PSU is bad from one symptom."
       },
       {
+        "type": "h3",
+        "text": "Why the paperclip test is not enough",
+        "id": "paperclip-test-limitations"
+      },
+      {
+        "type": "paragraph",
+        "text": "The paperclip test merely requests startup by connecting the PSU's active-low PS_ON# control to ground. A fan spinning with little or no load does not establish that the PSU can hold +12V under a GPU transient, maintain regulation, or assert PWR_OK within specification. Fan-stop designs may not spin their fan at all during a valid low-load test. A proper assessment uses a suitable PSU tester, controlled electronic load or a known-good replacement PSU with its own compatible cables."
+      },
+      {
+        "type": "h3",
+        "text": "SCP, OCP and OPP protection can latch",
+        "id": "psu-protection-latching"
+      },
+      {
+        "type": "paragraph",
+        "text": "Short-Circuit Protection (SCP) responds to an output short; Over-Current Protection (OCP) limits current on a monitored rail; and Over-Power Protection (OPP) responds when total output power exceeds the PSU's protection threshold. A PSU may shut down and require the fault to be removed and AC or PS_ON# to be cycled before it will restart. A click or shutdown is a protective response—not proof that the PSU itself is the failed part."
+      },
+      {
+        "type": "h3",
+        "text": "Never mix modular PSU cables",
+        "id": "modular-psu-cable-warning"
+      },
+      {
+        "type": "paragraph",
+        "text": "The PSU-side pinout of modular cables is not universal. A cable that physically fits another brand or PSU series can route voltage to the wrong pin and damage storage drives, the motherboard or other hardware. Use only the cable set supplied for the exact PSU model, or a replacement explicitly listed as compatible by that PSU manufacturer. CPU EPS and PCIe GPU cables are not interchangeable."
+      },
+      {
         "type": "h2",
         "text": "When the motherboard is the problem",
         "id": "motherboard"
@@ -7868,6 +7987,27 @@ export const BLOG_POSTS: BlogPost[] = [
         "text": "If input power is present but the board does not generate the expected power rails or startup sequence, the fault may be on the motherboard itself. Component-level diagnosis can identify a localized power-stage or control problem when the board is technically repairable."
       },
       {
+        "type": "h3",
+        "text": "Common component-level motherboard faults we diagnose in Kuwait",
+        "id": "motherboard-fault-paths"
+      },
+      {
+        "type": "paragraph",
+        "text": "CPU / SOC VRM DrMOS or Smart Power Stage (SPS) faults: Gaming motherboards convert the PSU's 12V input into tightly controlled, high-current CPU and SoC supply rails. A failed high-side or low-side MOSFET inside a DrMOS/SPS package, or a shorted output capacitor, can pull a rail down and trigger PSU protection. A board-level diagnosis checks the input and output rails, resistance to ground and the affected phase before deciding whether a component repair is viable."
+      },
+      {
+        "type": "paragraph",
+        "text": "Super I/O and standby power-sequencing faults: If +5VSB reaches the board but the power button does not lead to a valid startup request, the fault may sit in the standby regulator, Super I/O controller, chipset power logic, damaged trace or a required platform signal. Signals such as RSMRST# and SLP_S3# are platform-specific diagnostic clues; they must be checked against the board schematic or service documentation rather than assumed from a generic pinout."
+      },
+      {
+        "type": "paragraph",
+        "text": "Kuwait dust and humidity: Fine dust can collect around VRM heatsinks, fan headers, Super I/O circuitry and connector areas. Dust alone is not automatically conductive, but moisture, salts, smoke residue, liquid contamination or cooler seepage can make surface contamination more electrically significant and promote leakage or corrosion. Intermittent faults need inspection for residue, oxidation and damaged solder mask—not an assumption that ordinary dust has shorted the board."
+      },
+      {
+        "type": "paragraph",
+        "text": "BIOS / UEFI SPI flash faults: Corrupted firmware, an interrupted update or a damaged SPI flash device can stop a board from completing initialization. First use the motherboard maker's documented BIOS FlashBack or recovery procedure where supported. External SPI programming is a controlled board-repair step when firmware recovery is appropriate; it does not fix a separate shorted VRM or failed standby supply."
+      },
+      {
         "type": "h2",
         "text": "When it is actually a no-display problem",
         "id": "no-display"
@@ -7875,6 +8015,27 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         "type": "paragraph",
         "text": "If fans, RGB and pumps operate but the monitor remains blank, stop treating the machine as a total no-power failure. The next branch includes GPU seating and power, display path, RAM training, BIOS and board-level faults."
+      },
+      {
+        "type": "h3",
+        "text": "Read the motherboard's POST indicators before replacing parts",
+        "id": "post-diagnostic-indicators"
+      },
+      {
+        "type": "paragraph",
+        "text": "Many gaming boards expose CPU, DRAM, VGA and BOOT status LEDs, a two-digit POST code or a manufacturer-specific display. Record which indicator remains lit and consult the manual for the exact board revision: labels and LED colours are not universal, and a BOOT light does not by itself prove that the GPU is defective."
+      },
+      {
+        "type": "paragraph",
+        "text": "DDR4 and DDR5 systems may retrain memory after a BIOS update, CMOS reset, memory change or XMP/EXPO adjustment. During training, the screen can remain blank and a DRAM indicator may stay on for a period that varies by platform, firmware and memory configuration. Allow the manufacturer's documented training interval to finish before interrupting startup; if the indicator remains stuck, shut down and disconnect AC before carrying out model-specific memory checks."
+      },
+      {
+        "type": "paragraph",
+        "text": "Check the display cable at the graphics card rather than assuming the motherboard HDMI or DisplayPort output is active. Many Intel F/KF processors and some AMD processor models lack integrated graphics. For 12VHPWR / 12V-2x6 or 8-pin PCIe checks, power down and disconnect AC first; do not reseat or unplug a GPU power connector while standby power is present."
+      },
+      {
+        "type": "paragraph",
+        "text": "If the PC's fans and RGB stay on but the monitor remains black, continue to our dedicated guide: https://www.computerrepairkuwait.com/guides/gaming-pc-black-screen-no-display-kuwait — Gaming PC Black Screen / No Display After Boot: Kuwait Repair Guide. For a confirmed component or system fault, see https://www.computerrepairkuwait.com/gaming-pc-repair-kuwait — Gaming PC Repair Kuwait, or https://www.computerrepairkuwait.com/motherboard-repair-kuwait — Motherboard Repair Kuwait."
       },
       {
         "type": "callout",
@@ -7890,6 +8051,83 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         "type": "paragraph",
         "text": "Persistent no-power or no-POST faults may require controlled testing of the PSU, motherboard power sequence, GPU power path and short-circuit conditions. Never open or probe a PSU; internal capacitors can retain hazardous voltage after disconnection."
+      },
+      {
+        "type": "h3",
+        "text": "How KCROC diagnoses and repairs dead gaming PCs in Kuwait",
+        "id": "kcroc-gaming-pc-diagnostic-process"
+      },
+      {
+        "type": "paragraph",
+        "text": "When safe external checks show that the outlet and power cord are working, repeated trial-and-error at home can put healthy components at risk—especially when a shorted motherboard power stage or GPU power path is causing the PSU to shut down. KCROC performs gaming desktop diagnostics and board-level repair at its grounded, ESD-safe laboratory in Hawalli: Ibn Khaldoun Street, Al Mullah Complex, Basement Shop 19. The workshop is the repair location; customers can arrange collection rather than expecting an at-home bench repair."
+      },
+      {
+        "type": "list",
+        "items": [
+          "Controlled PSU and rail assessment: check PSU behaviour and, where appropriate, inspect the motherboard's 24-pin ATX, CPU EPS and PCIe power paths with suitable test equipment before applying power.",
+          "Short isolation and component inspection: use resistance checks, microscope inspection and thermal imaging where appropriate to identify a failed MOSFET/DrMOS stage, capacitor, fuse, connector or control component.",
+          "Repair decision and approval: explain the confirmed fault and provide the repair quote before paid work begins. Not every board is technically or economically repairable.",
+          "Post-repair verification: repeat startup checks and run representative stability/load tests appropriate to the repaired system before arranging its return."
+        ]
+      },
+      {
+        "type": "h3",
+        "text": "Complete gaming desktop systems only",
+        "id": "complete-gaming-desktop-policy"
+      },
+      {
+        "type": "paragraph",
+        "text": "KCROC diagnoses GPU power-delivery faults, shorted components and 12VHPWR / 12V-2x6 connector problems only when the graphics card is installed in a complete gaming desktop system. This allows the PSU, modular cables, motherboard PCIe slot, cooling and system stability to be assessed together. KCROC does not accept loose standalone graphics cards, does not offer custom PC building, and does not sell standalone data-recovery services."
+      },
+      {
+        "type": "comparisonTable",
+        "title": "KCROC gaming desktop diagnostic and repair terms",
+        "featureLabel": "Service term",
+        "columns": [
+          "What applies"
+        ],
+        "rows": [
+          {
+            "feature": "Initial hardware diagnostic",
+            "values": [
+              "FREE initial diagnostic to identify the reported fault and prepare a quote; no paid repair starts without your approval."
+            ]
+          },
+          {
+            "feature": "Published repair starting point",
+            "values": [
+              "Gaming PC and motherboard repair from 25 KWD. Final price depends on the confirmed fault, parts and repair scope."
+            ]
+          },
+          {
+            "feature": "Typical turnaround",
+            "values": [
+              "24–48 hours is a typical target for many gaming desktop diagnostics and component-level board repairs; complex faults, parts or extended testing can take longer."
+            ]
+          },
+          {
+            "feature": "Repair protection",
+            "values": [
+              "No Fix, No Fee policy and a 30-day parts-and-labour warranty on completed repairs, subject to the stated repair terms."
+            ]
+          },
+          {
+            "feature": "Kuwait-wide logistics",
+            "values": [
+              "Free pickup and delivery for complete desktop towers across the six governorates: Capital, Hawalli, Farwaniya, Ahmadi, Jahra and Mubarak Al-Kabeer. All bench work remains at the Hawalli lab."
+            ]
+          }
+        ]
+      },
+      {
+        "type": "callout",
+        "variant": "expert",
+        "title": "Need a bench diagnosis?",
+        "text": "Call or WhatsApp KCROC at +965 55301913 with the symptom—for example, “no LEDs at all” or “clicks once and shuts off.” You can also review the Gaming PC Repair Kuwait service page. Send the symptom and PC model first; never send passwords or account sign-in codes."
+      },
+      {
+        "type": "paragraph",
+        "text": "Service details and booking: https://www.computerrepairkuwait.com/gaming-pc-repair-kuwait — Gaming PC Repair Kuwait · https://www.computerrepairkuwait.com/motherboard-repair-kuwait — Motherboard Repair Kuwait · https://wa.me/96555301913 — WhatsApp +965 55301913."
       },
       {
         "type": "h2",
@@ -7914,28 +8152,69 @@ export const BLOG_POSTS: BlogPost[] = [
           {
             "question": "What should I send when asking for a diagnosis?",
             "answer": "Send the PC model or build, what happened immediately before the failure, what lights or fans do now, and a short video of the startup attempt when practical."
+          },
+          {
+            "question": "Can a gaming PC be repaired if it has no power at all?",
+            "answer": "Yes, many no-power faults are repairable, but the cause must be isolated first. A failed PSU, blown correctly rated plug fuse, faulty front-panel switch, missing +5VSB standby supply or a shorted motherboard component can produce similar symptoms. A completely dead PC does not automatically mean the CPU or entire motherboard must be replaced."
+          },
+          {
+            "question": "Should I buy a new PSU first if my gaming PC will not turn on?",
+            "answer": "Not before testing. A new PSU may show the same protection shutdown if the motherboard or GPU has a short on a power rail. Check the outlet, cord and external accessories first; persistent trips need controlled PSU and system diagnosis rather than speculative part purchases."
+          },
+          {
+            "question": "Why does my gaming PC click once, flash its RGB or fans, and turn right back off?",
+            "answer": "A short twitch can occur when the PSU begins enabling its main outputs and then enters protection, but the symptom alone cannot identify the failed component or confirm the exact ATX signal sequence. A PSU fault, shorted CPU VRM/DrMOS stage, GPU power-path issue or incompatible modular cable are possible causes. Stop repeated power attempts."
+          },
+          {
+            "question": "Can I test the PC by unplugging the graphics card or its power cable?",
+            "answer": "Only with the PC shut down and AC power disconnected, and only if you know the correct procedure for the hardware. Never unplug or reconnect internal power cables while the PSU is connected to mains, and do not assume the motherboard display output will work unless the exact CPU supports integrated graphics. When unsure, leave internal isolation to a technician."
+          },
+          {
+            "question": "Could a dead CMOS battery stop a gaming PC from turning on?",
+            "answer": "A weak CR2032 battery more commonly causes the clock, date and firmware settings to reset; it is not the usual explanation for a completely dead desktop with no standby signs. Replace it only when the symptoms and voltage check support that diagnosis, and do not treat it as a substitute for checking +5VSB and the power path."
+          },
+          {
+            "question": "Do you repair a standalone graphics card if it is causing the short circuit?",
+            "answer": "No. KCROC diagnoses GPU power-delivery faults and 12VHPWR / 12V-2x6 connector issues only as part of a complete gaming desktop system, so the PSU, cables, PCIe slot and cooling can be checked together. Loose standalone graphics cards are not accepted."
+          },
+          {
+            "question": "Will a motherboard or PSU repair erase games and files on my SSD?",
+            "answer": "A PSU or motherboard repair does not normally erase an SSD because it does not require formatting the drive. However, no repairer can guarantee files if the SSD itself was damaged by an electrical event or already has a fault. KCROC does not provide standalone data-recovery services; tell the technician if the drive contains important files before approving work."
+          },
+          {
+            "question": "How does free pickup and delivery work for a heavy gaming PC in Kuwait?",
+            "answer": "Arrange collection by WhatsApp or phone at +965 55301913. KCROC collects complete desktop towers across Kuwait, performs the initial diagnostic at its Hawalli lab (Ibn Khaldoun Street, Al Mullah Complex, Basement Shop 19), shares the repair quote for approval, then returns the system after appropriate testing. Pickup and delivery are free across all six governorates."
           }
-        ]
+        ],
+        "display": "static"
       }
     ],
     "image": "/images/custom-gaming-pc-teardown-and-diagnostics-workbench.webp",
     "discoverImage": "/images/discover/custom-gaming-pc-teardown-and-diagnostics-workbench-1200x675.webp",
     "date": "2026-10-01",
-    "technicalReviewDate": "October 1, 2026",
+    "technicalReviewDate": "November 12, 2026",
     "author": "Imran Natiq",
     "category": "Gaming Hardware Troubleshooting",
-    "readTime": "8-10 min read",
+    "readTime": "10–12 min read",
     "clusterParent": "gaming-pc-repair-kuwait",
     "tags": [
       "Gaming PC Won't Turn On",
-       
       "PC No Power",
       "PSU Failure",
-      "Gaming PC Troubleshooting"
+      "Gaming PC Troubleshooting",
+      "ATX Power Sequencing",
+      "PSU Short-Circuit Protection",
+      "Motherboard VRM Diagnostics",
+      "Kuwait Gaming PC Repair"
     ],
-    "seoTitle": "Gaming PC Won’t Turn On? PSU, Power & No-POST Troubleshooting | KCROC",
-    "seoDescription": "Gaming PC won't turn on? Trace safe external power checks, PSU symptoms, motherboard power sequencing, GPU power and POST failures before replacing parts.",
-    "contentType": "guide"
+    "seoTitle": "Gaming PC Won’t Turn On? Power, PSU & Motherboard Troubleshooting in Kuwait | KCROC",
+    "seoDescription": "Gaming PC dead, clicking off after 1 second, or fans spinning with no POST? Follow Imran Natiq’s PSU, ATX power rail, and motherboard diagnostic guide—plus free pickup across Kuwait.",
+    "contentType": "guide",
+    "relatedPostSlugs": [
+      "gaming-pc-black-screen-no-display-kuwait",
+      "bios-uefi-recovery-kuwait",
+      "gaming-pc-random-shutdown-kuwait"
+    ]
   },
 
 {

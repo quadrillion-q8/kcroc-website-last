@@ -42,6 +42,21 @@ const GAMEBAR_PRESENCE_WRITER_GUIDE_CARD: BlogPost = {
   contentType: 'guide',
 };
 
+// Standalone BIOS/UEFI recovery guide card for related-guide navigation.
+const BIOS_UEFI_RECOVERY_GUIDE_CARD: BlogPost = {
+  id: 'guide-bios-uefi',
+  slug: 'bios-uefi-recovery-kuwait',
+  title: 'BIOS / UEFI Recovery Guide',
+  excerpt: 'Diagnose failed BIOS and UEFI updates, black screens and no-POST firmware faults using model-specific recovery methods.',
+  content: [],
+  image: '/images/custom-gaming-pc-teardown-and-diagnostics-workbench.webp',
+  date: '2026-11-09',
+  author: 'Imran Natiq',
+  category: 'BIOS & Firmware',
+  readTime: '18–22 min read',
+  contentType: 'guide',
+};
+
 // Keep company-specific privacy links out of global Windows/technical copy.
 const GLOBAL_EDITORIAL_AUTOLINK_EXCLUSIONS = ['page-privacy'];
 
@@ -1062,7 +1077,7 @@ export default function BlogPostTemplate() {
     if (!post) return [];
     if (post.relatedPostSlugs?.length) {
       const postsBySlug = new Map(
-        [...BLOG_POSTS, GAMEBAR_PRESENCE_WRITER_GUIDE_CARD].map((item) => [item.slug, item] as const)
+        [...BLOG_POSTS, GAMEBAR_PRESENCE_WRITER_GUIDE_CARD, BIOS_UEFI_RECOVERY_GUIDE_CARD].map((item) => [item.slug, item] as const)
       );
       return post.relatedPostSlugs
         .map((relatedSlug) => postsBySlug.get(relatedSlug))
@@ -1163,7 +1178,7 @@ export default function BlogPostTemplate() {
           "isPartOf": { "@id": `${business.websiteUrl}/#website` }
         },
         {
-          "@type": ["windows-11-26h2-iso-released", "nvidia-dlss-5-neural-rendering-explained"].includes(post.slug)
+          "@type": ["windows-11-26h2-iso-released", "nvidia-dlss-5-neural-rendering-explained", "gaming-pc-not-turning-on-kuwait"].includes(post.slug)
             ? ["NewsArticle", "TechArticle"]
             : isNews ? "NewsArticle" : (isNoPowerGuide || post.slug === "gaming-pc-black-screen-no-display-kuwait" || post.slug === "why-8gb-ram-is-no-longer-enough-for-windows-11" || post.slug === "why-is-my-laptop-so-slow") ? "TechArticle" : isGuide ? "TechArticle" : ["BlogPosting", "Article"],
           "@id": `${pageUrl}#article`,
@@ -1199,6 +1214,25 @@ export default function BlogPostTemplate() {
               { "@type": "Thing", "name": "Windows operating-system installation" },
               { "@type": "Thing", "name": "UEFI and Intel VMD storage configuration" },
               { "@type": "Thing", "name": "Computer hardware diagnostics" }
+            ]
+          } : {}),
+          ...(post.slug === "gaming-pc-not-turning-on-kuwait" ? {
+            "inLanguage": "en-KW",
+            "articleSection": "Gaming Hardware Troubleshooting",
+            "keywords": post.tags ?? [],
+            "isAccessibleForFree": true,
+            "proficiencyLevel": "Beginner to Advanced",
+            "reviewedBy": {
+              "@type": "Person",
+              "@id": `${AUTHOR_URL}#person`,
+              "name": "Imran Natiq",
+              "jobTitle": "Lead Hardware Repair Engineer"
+            },
+            "about": [
+              { "@type": "Thing", "name": "Gaming PC power supply troubleshooting" },
+              { "@type": "Thing", "name": "ATX motherboard power sequencing and PWR_OK" },
+              { "@type": "Thing", "name": "Motherboard VRM, DrMOS and SPS diagnostics" },
+              { "@type": "Thing", "name": "Gaming PC repair in Kuwait" }
             ]
           } : {}),
           ...(isNoPowerGuide ? {
@@ -1273,12 +1307,14 @@ export default function BlogPostTemplate() {
               "@id": `${AUTHOR_URL}#person`,
               "name": "Imran Natiq",
               "url": AUTHOR_URL,
-              "jobTitle": "Hardware Repair Engineer",
-              "worksFor": {
-                "@type": "Organization",
-                "name": post.slug === "why-is-my-laptop-so-slow" ? "KCROC Hardware Engineering Lab" : business.legalName,
-                "url": business.websiteUrl
-              }
+              "jobTitle": post.slug === "gaming-pc-not-turning-on-kuwait" ? "Lead Hardware Repair Engineer" : "Hardware Repair Engineer",
+              "worksFor": post.slug === "gaming-pc-not-turning-on-kuwait"
+                ? { "@id": `${business.websiteUrl}/#business` }
+                : {
+                    "@type": "Organization",
+                    "name": post.slug === "why-is-my-laptop-so-slow" ? "KCROC Hardware Engineering Lab" : business.legalName,
+                    "url": business.websiteUrl
+                  }
             } : { "@type": "Organization", "name": post.author },
           "publisher": ["windows-11-26h2-iso-released", "nvidia-dlss-5-neural-rendering-explained"].includes(post.slug)
             ? { "@id": `${business.websiteUrl}/#business` }
@@ -1445,7 +1481,7 @@ export default function BlogPostTemplate() {
             <div className="bg-slate-900/40 border border-slate-800 rounded-2xl p-5">
               <p className="text-xs font-black uppercase tracking-wider text-slate-400 mb-3">Author</p>
               <p className="font-bold text-white">{post.author}</p>
-              <p className="text-xs text-slate-500 mt-1">{post.slug === 'why-is-my-laptop-so-slow' ? 'KCROC Hardware Engineering Lab' : isGlobalEditorialArticle ? 'KCROC Technical Editorial' : 'Kuwait Computer Repair On Call'}</p>
+              <p className="text-xs text-slate-500 mt-1">{post.slug === 'why-is-my-laptop-so-slow' || post.slug === 'gaming-pc-not-turning-on-kuwait' ? 'KCROC Hardware Engineering Lab · Hawalli, Kuwait' : isGlobalEditorialArticle ? 'KCROC Technical Editorial' : 'Kuwait Computer Repair On Call'}</p>
             </div>
 
             {(isGlobalEditorialArticle ? relatedPosts : recentPosts).length > 0 && (
@@ -1592,15 +1628,17 @@ export default function BlogPostTemplate() {
                         Imran Natiq
                       </Link>
                       <p className="text-sm text-slate-400 mt-1 leading-relaxed">
-                        {post.slug === 'nvidia-dlss-5-neural-rendering-explained'
-                          ? 'Hardware Repair Engineer at KCROC — focused on laptop thermal diagnostics, GPU load testing, and component-level motherboard repair at our ESD-safe laboratory in Hawalli, Kuwait.'
-                          : isGlobalEditorialArticle
-                            ? 'Hardware Repair Engineer and technical reviewer focused on computer hardware, software troubleshooting, performance, firmware and diagnostics.'
-                            : 'Hardware Repair Engineer at KCROC, focused on laptop thermal troubleshooting, hardware testing and component-level repair in Kuwait.'}
+                        {post.slug === 'gaming-pc-not-turning-on-kuwait'
+                          ? 'Lead Hardware Repair Engineer at Kuwait Computer Repair On Call (KCROC), Hawalli — focused on component-level motherboard diagnostics, ATX power-sequence analysis, firmware recovery and gaming desktop stability.'
+                          : post.slug === 'nvidia-dlss-5-neural-rendering-explained'
+                            ? 'Hardware Repair Engineer at KCROC — focused on laptop thermal diagnostics, GPU load testing, and component-level motherboard repair at our ESD-safe laboratory in Hawalli, Kuwait.'
+                            : isGlobalEditorialArticle
+                              ? 'Hardware Repair Engineer and technical reviewer focused on computer hardware, software troubleshooting, performance, firmware and diagnostics.'
+                              : 'Hardware Repair Engineer at KCROC, focused on laptop thermal troubleshooting, hardware testing and component-level repair in Kuwait.'}
                       </p>
                       <p className="text-xs text-slate-500 mt-2">
                         Technical review: {isGlobalEditorialArticle
-                          ? `${getTechnicalReviewDateLabel(post, 'November 7, 2026')}${post.slug === 'nvidia-dlss-5-neural-rendering-explained' ? ' · Hawalli, Kuwait' : ''}`
+                          ? `${getTechnicalReviewDateLabel(post, 'November 7, 2026')}${post.slug === 'gaming-pc-not-turning-on-kuwait' ? ' · KCROC Hardware Engineering Lab, Hawalli, Kuwait' : post.slug === 'nvidia-dlss-5-neural-rendering-explained' ? ' · Hawalli, Kuwait' : ''}`
                           : `${getTechnicalReviewDateLabel(post, 'September 1, 2026')} · Hawalli, Kuwait`}
                       </p>
                     </div>
