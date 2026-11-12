@@ -1,4 +1,8 @@
 // File: app/frontend/src/constants/blogPosts.ts
+import { KCROC_GRAPH } from '../data/graph';
+
+const businessPhone = KCROC_GRAPH.business!.telephone;
+const businessPhoneDisplay = `+${businessPhone.slice(0, 3)} ${businessPhone.slice(3)}`;
 
 /* ═══════════════════════════════════════════════════════════════════
    RICH CONTENT BLOCK SYSTEM
@@ -8123,11 +8127,11 @@ export const BLOG_POSTS: BlogPost[] = [
         "type": "callout",
         "variant": "expert",
         "title": "Need a bench diagnosis?",
-        "text": "Call or WhatsApp KCROC at +965 55301913 with the symptom—for example, “no LEDs at all” or “clicks once and shuts off.” You can also review the Gaming PC Repair Kuwait service page. Send the symptom and PC model first; never send passwords or account sign-in codes."
+        "text": `Call or WhatsApp KCROC at ${businessPhoneDisplay} with the symptom—for example, “no LEDs at all” or “clicks once and shuts off.” You can also review the Gaming PC Repair Kuwait service page. Send the symptom and PC model first; never send passwords or account sign-in codes.`
       },
       {
         "type": "paragraph",
-        "text": "Service details and booking: https://www.computerrepairkuwait.com/gaming-pc-repair-kuwait — Gaming PC Repair Kuwait · https://www.computerrepairkuwait.com/motherboard-repair-kuwait — Motherboard Repair Kuwait · https://wa.me/96555301913 — WhatsApp +965 55301913."
+        "text": `Service details and booking: https://www.computerrepairkuwait.com/gaming-pc-repair-kuwait — Gaming PC Repair Kuwait · https://www.computerrepairkuwait.com/motherboard-repair-kuwait — Motherboard Repair Kuwait · https://wa.me/${businessPhone} — WhatsApp ${businessPhoneDisplay}.`
       },
       {
         "type": "h2",
@@ -8179,7 +8183,7 @@ export const BLOG_POSTS: BlogPost[] = [
           },
           {
             "question": "How does free pickup and delivery work for a heavy gaming PC in Kuwait?",
-            "answer": "Arrange collection by WhatsApp or phone at +965 55301913. KCROC collects complete desktop towers across Kuwait, performs the initial diagnostic at its Hawalli lab (Ibn Khaldoun Street, Al Mullah Complex, Basement Shop 19), shares the repair quote for approval, then returns the system after appropriate testing. Pickup and delivery are free across all six governorates."
+            "answer": `Arrange collection by WhatsApp or phone at ${businessPhoneDisplay}. KCROC collects complete desktop towers across Kuwait, performs the initial diagnostic at its Hawalli lab (Ibn Khaldoun Street, Al Mullah Complex, Basement Shop 19), shares the repair quote for approval, then returns the system after appropriate testing. Pickup and delivery are free across all six governorates.`
           }
         ],
         "display": "static"
