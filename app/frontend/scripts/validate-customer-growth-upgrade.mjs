@@ -245,7 +245,7 @@ add('Global English gaming-PC guides stay free of local sales copy; the Kuwait n
   gamingNoDisplayGuideEntry.includes('What a useful no-display diagnosis should establish') &&
   gpuArtifactsGuideEntry.includes('When specialist hardware assessment is warranted') &&
   gamingShutdownGuideEntry.includes('When controlled hardware diagnosis is needed') &&
-  !/\\bKuwait\\b|\\bHawalli\\b|free pickup|No Fix, No Fee|KWD|KCROC's published service|GPU Repair Kuwait|wa\\.me|tel:\\+965/i.test([
+  !/\bKuwait\b|\bHawalli\b|free pickup|No Fix, No Fee|KWD|KCROC's published service|GPU Repair Kuwait|wa\.me|tel:\+965/i.test([
     gamingNoDisplayEditorialCopy, gpuArtifactsEditorialCopy, gamingShutdownEditorialCopy
   ].join(' ')) &&
   !/KCROC.{0,100}(?:GPU|VRAM|BGA|graphics-card|pickup|collection|repair service)/i.test(gpuArtifactsEditorialCopy) &&
