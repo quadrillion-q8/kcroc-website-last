@@ -118,6 +118,9 @@ const BrandTemplate: React.FC = () => {
               <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-300 md:text-xl">
                 {brand.description}
               </p>
+              <p className="mt-3 max-w-3xl text-sm leading-7 text-cyan-100/75">
+                KCROC is an independent repair provider, not an official {brand.brandName} service centre. We can assess out-of-warranty devices and customers choosing independent repair; check the manufacturer&apos;s warranty terms before proceeding if coverage may still apply.
+              </p>
 
               <div className="mt-8 flex flex-wrap gap-3 text-sm font-semibold">
                 {['Free diagnosis first', 'Free Kuwait-wide pickup & delivery', 'No Fix, No Fee', '30-day warranty'].map((item) => (
