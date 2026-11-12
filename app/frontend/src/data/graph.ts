@@ -8650,10 +8650,20 @@ const LOCATION_RELATIONSHIPS: Record<string, {
   mahboula: { relatedServiceIds: ['srv-laptop', 'srv-macbook', 'srv-gaming', 'srv-gaming-laptop-cleaning'], relatedProblemIds: ['problem-overheating', 'problem-black-screen', 'problem-freezing-crashing', 'problem-no-power', 'problem-liquid-spill', 'problem-cracked-screen', 'problem-not-charging'], relatedBrandIds: ['brand-asus', 'brand-msi', 'brand-dell', 'brand-lenovo'], relatedLocationIds: ['loc-mangaf', 'loc-abu-halifa', 'loc-fahaheel', 'loc-ahmadi'] },
   qurain: { relatedServiceIds: ['srv-laptop','srv-macbook','srv-motherboard','srv-screen'], relatedProblemIds: ['problem-no-power','problem-not-charging','problem-black-screen','problem-liquid-spill'], relatedBrandIds: ['brand-dell','brand-lenovo','brand-hp','brand-asus'], relatedLocationIds: ['loc-mubarak-al-kabeer','loc-sabah-al-salem'] },
   qortuba: {
-    relatedServiceIds: ['srv-laptop', 'srv-macbook', 'srv-gaming', 'srv-motherboard', 'srv-screen'],
-    relatedProblemIds: ['problem-no-power', 'problem-overheating', 'problem-black-screen', 'problem-not-charging', 'problem-freezing-crashing'],
-    relatedBrandIds: ['brand-dell', 'brand-lenovo', 'brand-hp', 'brand-asus'],
-    relatedLocationIds: ['loc-adailiya', 'loc-yarmouk', 'loc-surra', 'loc-mishref'],
+    relatedServiceIds: [
+      'srv-motherboard', 'srv-liquid-damage', 'srv-charging-port', 'srv-desktop-pc',
+      'srv-macbook', 'srv-macbook-screen', 'srv-gaming', 'srv-gaming-laptop',
+      'srv-gaming-laptop-cleaning', 'srv-laptop', 'srv-screen', 'srv-battery',
+      'srv-ssd-ram', 'srv-keyboard', 'srv-hinge'
+    ],
+    relatedProblemIds: [
+      'problem-no-power', 'problem-overheating', 'problem-black-screen',
+      'problem-liquid-spill', 'problem-not-charging', 'problem-keyboard-fail',
+      'problem-hinge-break', 'problem-cracked-screen', 'problem-windows-wont-boot',
+      'problem-bsod', 'problem-freezing-crashing', 'problem-slow'
+    ],
+    relatedBrandIds: ['brand-dell', 'brand-hp', 'brand-lenovo', 'brand-asus', 'brand-acer', 'brand-msi'],
+    relatedLocationIds: ['loc-hawalli', 'loc-kaifan', 'loc-adailiya', 'loc-yarmouk', 'loc-surra'],
   },
   rawda: { relatedServiceIds: ['srv-laptop','srv-macbook','srv-screen','srv-battery'], relatedProblemIds: ['problem-black-screen','problem-no-power','problem-not-charging','problem-liquid-spill'], relatedBrandIds: ['brand-dell','brand-hp','brand-lenovo','brand-asus'], relatedLocationIds: ['loc-surra','loc-hawalli'] },
   messila: { relatedServiceIds: ['srv-laptop','srv-macbook','srv-gaming','srv-motherboard'], relatedProblemIds: ['problem-overheating','problem-no-power','problem-not-charging','problem-liquid-spill'], relatedBrandIds: ['brand-asus','brand-msi','brand-dell','brand-lenovo'], relatedLocationIds: ['loc-fahaheel','loc-mubarak-al-kabeer'] },
