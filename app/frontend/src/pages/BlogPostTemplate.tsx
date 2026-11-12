@@ -46,7 +46,7 @@ const GAMEBAR_PRESENCE_WRITER_GUIDE_CARD: BlogPost = {
 const BIOS_UEFI_RECOVERY_GUIDE_CARD: BlogPost = {
   id: 'guide-bios-uefi',
   slug: 'bios-uefi-recovery-kuwait',
-  title: 'BIOS / UEFI Recovery Guide',
+  title: 'Gaming PC Won’t Boot After a BIOS Update: Kuwait Recovery Guide',
   excerpt: 'Diagnose failed BIOS and UEFI updates, black screens and no-POST firmware faults using model-specific recovery methods.',
   content: [],
   image: '/images/custom-gaming-pc-teardown-and-diagnostics-workbench.webp',
@@ -1178,7 +1178,7 @@ export default function BlogPostTemplate() {
           "isPartOf": { "@id": `${business.websiteUrl}/#website` }
         },
         {
-          "@type": ["windows-11-26h2-iso-released", "nvidia-dlss-5-neural-rendering-explained", "gaming-pc-not-turning-on-kuwait"].includes(post.slug)
+          "@type": ["windows-11-26h2-iso-released", "nvidia-dlss-5-neural-rendering-explained"].includes(post.slug)
             ? ["NewsArticle", "TechArticle"]
             : isNews ? "NewsArticle" : (isNoPowerGuide || post.slug === "gaming-pc-black-screen-no-display-kuwait" || post.slug === "why-8gb-ram-is-no-longer-enough-for-windows-11" || post.slug === "why-is-my-laptop-so-slow") ? "TechArticle" : isGuide ? "TechArticle" : ["BlogPosting", "Article"],
           "@id": `${pageUrl}#article`,
@@ -1316,7 +1316,7 @@ export default function BlogPostTemplate() {
                     "url": business.websiteUrl
                   }
             } : { "@type": "Organization", "name": post.author },
-          "publisher": ["windows-11-26h2-iso-released", "nvidia-dlss-5-neural-rendering-explained"].includes(post.slug)
+          "publisher": ["windows-11-26h2-iso-released", "nvidia-dlss-5-neural-rendering-explained", "gaming-pc-not-turning-on-kuwait"].includes(post.slug)
             ? { "@id": `${business.websiteUrl}/#business` }
             : {
               "@type": "Organization",

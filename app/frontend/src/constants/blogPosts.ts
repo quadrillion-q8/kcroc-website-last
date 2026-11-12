@@ -8139,7 +8139,7 @@ export const BLOG_POSTS: BlogPost[] = [
         "items": [
           {
             "question": "Can a gaming PC be repaired if it has no power at all?",
-            "answer": "Sometimes. Repairability depends on the failure. The useful first step is to separate PSU/input power from motherboard, GPU, short-circuit and firmware faults."
+            "answer": "Sometimes. Repairability depends on the failure. The useful first step is to separate PSU/input power from motherboard, GPU, short-circuit and firmware faults. A failed PSU, blown correctly rated plug fuse, faulty front-panel switch, missing +5VSB standby supply or a shorted motherboard component can produce similar symptoms. A completely dead PC does not automatically mean the CPU or entire motherboard must be replaced."
           },
           {
             "question": "Should I replace the PSU first?",
@@ -8152,10 +8152,6 @@ export const BLOG_POSTS: BlogPost[] = [
           {
             "question": "What should I send when asking for a diagnosis?",
             "answer": "Send the PC model or build, what happened immediately before the failure, what lights or fans do now, and a short video of the startup attempt when practical."
-          },
-          {
-            "question": "Can a gaming PC be repaired if it has no power at all?",
-            "answer": "Yes, many no-power faults are repairable, but the cause must be isolated first. A failed PSU, blown correctly rated plug fuse, faulty front-panel switch, missing +5VSB standby supply or a shorted motherboard component can produce similar symptoms. A completely dead PC does not automatically mean the CPU or entire motherboard must be replaced."
           },
           {
             "question": "Should I buy a new PSU first if my gaming PC will not turn on?",
@@ -8195,7 +8191,7 @@ export const BLOG_POSTS: BlogPost[] = [
     "technicalReviewDate": "November 12, 2026",
     "author": "Imran Natiq",
     "category": "Gaming Hardware Troubleshooting",
-    "readTime": "10–12 min read",
+    "readTime": "15–18 min read",
     "clusterParent": "gaming-pc-repair-kuwait",
     "tags": [
       "Gaming PC Won't Turn On",
