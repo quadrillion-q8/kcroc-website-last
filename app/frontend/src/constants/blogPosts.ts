@@ -8195,7 +8195,7 @@ export const BLOG_POSTS: BlogPost[] = [
     "technicalReviewDate": "November 12, 2026",
     "author": "Imran Natiq",
     "category": "Gaming Hardware Troubleshooting",
-    "readTime": "10–12 min read",
+    "readTime": "15–18 min read",
     "clusterParent": "gaming-pc-repair-kuwait",
     "tags": [
       "Gaming PC Won't Turn On",
