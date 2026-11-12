@@ -1350,7 +1350,27 @@ export default function LocationDeepTemplate() {
             Frequently Asked Questions
           </h2>
           <div className="space-y-2.5">
-            {localFaqs.map((faq) => {
+            {localFaqs.map((faq, index) => {
+              if (isKuwaitCityPage) {
+                return (
+                  <details
+                    key={faq.id}
+                    id={faq.id}
+                    open={index < 3}
+                    data-kuwait-city-faq="true"
+                    className="group overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/50 open:border-cyan-400/25"
+                  >
+                    <summary className="flex cursor-pointer list-none items-center justify-between gap-3 px-5 py-4 text-left marker:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-cyan-400 sm:px-6 [&::-webkit-details-marker]:hidden">
+                      <span className="text-sm font-semibold text-white sm:text-base">{faq.question}</span>
+                      <ChevronDown aria-hidden="true" className="h-4 w-4 shrink-0 text-slate-500 transition-transform duration-200 group-open:rotate-180" />
+                    </summary>
+                    <div className="px-5 pb-4 text-sm leading-relaxed text-slate-400 sm:px-6">
+                      {faq.answer}
+                    </div>
+                  </details>
+                );
+              }
+
               const isOpen = openFaqId === faq.id;
               return (
                 <div key={faq.id} className="bg-slate-900/50 border border-slate-800 rounded-2xl overflow-hidden">
@@ -1380,7 +1400,7 @@ export default function LocationDeepTemplate() {
                       className={`w-4 h-4 text-slate-500 shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
                     />
                   </button>
-                  {/* Keep answers in the prerendered DOM; `hidden` controls only visual expansion.
+                  {/* Keep answers in the prerendered DOM; hidden controls only visual expansion.
                       FAQPage JSON-LD above is generated from the same localFaqs array. */}
                   <div
                     id={`${faq.id}-panel`}
