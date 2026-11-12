@@ -167,7 +167,7 @@ add('Arabic pricing page exists and has a native Arabic H1', pricingPage.include
 add('Arabic pricing SEO entity and canonical URL are present', graph.includes("id: 'page-ar-pricing'") && graph.includes(`canonicalUrl: '${url}'`));
 add('Generated SEO projection contains the Arabic page', seoProjection.includes('"id": "page-ar-pricing"') && seoProjection.includes(`"canonicalUrl": "${url}"`));
 add('High-impression page snippets stay concise in the canonical graph source',
-  has(graph, "description: 'Laptop and computer repair in Kuwait from 15 KWD. Free pickup and delivery, a quote before work, and a 30-day warranty on completed repairs.'") &&
+  has(graph, "description: 'Computer and laptop repair at KCROC’s Hawalli component-level lab, with free Kuwait-wide pickup, a quote before paid work and a 30-day repair warranty.'") &&
   has(graph, "description: 'Spot laptop battery failure with 15 warning signs, Windows and Mac health tests, swollen-battery safety advice, and replacement guidance.'") &&
   has(graph, "description: 'Test GameBarPresenceWriter.exe with a repeatable frame-time comparison; review Game Bar settings, Game DVR policy scope and registry risks.'") &&
   has(graph, 'description: "Diagnose failed BIOS and UEFI updates, black screens and no-POST faults. Compare OEM recovery methods, SPI programming, TPM and BitLocker risks."') &&
@@ -827,7 +827,7 @@ add('HP laptop-repair snippet identifies an independent provider and a qualified
 add('Homepage metadata positions KCROC as the Hawalli repair lab while the dedicated computer page keeps the commercial hub title',
   graph.includes("title: 'Kuwait Computer Repair Lab | Free Pickup & Delivery | KCROC'") &&
   seoProjection.includes('"title": "Kuwait Computer Repair Lab | Free Pickup & Delivery | KCROC"') &&
-  seoProjection.includes('KCROC is a component-level computer repair lab in Hawalli, Kuwait') &&
+  seoProjection.includes('Computer and laptop repair at KCROC’s Hawalli component-level lab') &&
   graph.includes("title: 'Computer Repair Kuwait | PC, Laptop & MacBook | KCROC'"));
 add('Arabic homepage metadata keeps broad repair intent and states Hawalli lab, free pickup and 30-day warranty',
   graph.includes('تصليح الكمبيوتر واللابتوب في الكويت من مختبر KCROC بحولي، مع فحص أولي مجاني واستلام وتوصيل مجاني') &&
