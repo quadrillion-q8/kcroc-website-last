@@ -541,7 +541,7 @@ add('Requested Abdullah Al-Salem URL redirects to the existing canonical locatio
   ));
 
 add('Abdullah Al-Salem page replaces generic location FAQs with its six area-specific questions',
-  locations.includes("['abdullah-al-salem', 'shamiya', 'nuzha', 'adailiya', 'kuwait-city', 'salmiya', 'surra', 'farwaniya'].includes(location.slug)") &&
+  locations.includes("['abdullah-al-salem', 'shamiya', 'nuzha', 'adailiya', 'kuwait-city', 'salmiya', 'surra', 'farwaniya', 'qortuba'].includes(location.slug)") &&
   locations.includes('usesDedicatedLocationFaqs ? [] : sharedLocationFaqs') &&
   abdullahEntity.includes('faq-abdullah-al-salem-6') &&
   abdullahEntity.includes('Can you diagnose random freezing'));
@@ -581,7 +581,7 @@ add('Requested Shamiya URL redirects to the existing canonical location page',
   ));
 
 add('Shamiya page uses six dedicated local FAQs without the shared shop/pickup/cost/turnaround block',
-  locations.includes("['abdullah-al-salem', 'shamiya', 'nuzha', 'adailiya', 'kuwait-city', 'salmiya', 'surra', 'farwaniya'].includes(location.slug)") &&
+  locations.includes("['abdullah-al-salem', 'shamiya', 'nuzha', 'adailiya', 'kuwait-city', 'salmiya', 'surra', 'farwaniya', 'qortuba'].includes(location.slug)") &&
   locations.includes('usesDedicatedLocationFaqs ? [] : sharedLocationFaqs') &&
   shamiyaEntity.includes('faq-shamiya-6') &&
   shamiyaEntity.includes('black screen') &&
@@ -623,7 +623,7 @@ add('Requested Nuzha URL redirects to the existing canonical location page',
   ));
 
 add('Nuzha page uses six dedicated thermal/power/privacy FAQs instead of the shared location FAQ block',
-  locations.includes("['abdullah-al-salem', 'shamiya', 'nuzha', 'adailiya', 'kuwait-city', 'salmiya', 'surra', 'farwaniya'].includes(location.slug)") &&
+  locations.includes("['abdullah-al-salem', 'shamiya', 'nuzha', 'adailiya', 'kuwait-city', 'salmiya', 'surra', 'farwaniya', 'qortuba'].includes(location.slug)") &&
   locations.includes('usesDedicatedLocationFaqs ? [] : sharedLocationFaqs') &&
   nuzhaEntity.includes('faq-nuzha-6') &&
   nuzhaEntity.includes('gets hot, runs loud fans and shuts down') &&
@@ -677,7 +677,7 @@ add('Requested Adailiya URL redirects to the existing canonical dual-suburb page
   ));
 
 add('Adailiya page uses nine dedicated dual-suburb hardware and privacy FAQs',
-  locations.includes("['abdullah-al-salem', 'shamiya', 'nuzha', 'adailiya', 'kuwait-city', 'salmiya', 'surra', 'farwaniya'].includes(location.slug)") &&
+  locations.includes("['abdullah-al-salem', 'shamiya', 'nuzha', 'adailiya', 'kuwait-city', 'salmiya', 'surra', 'farwaniya', 'qortuba'].includes(location.slug)") &&
   locations.includes('usesDedicatedLocationFaqs ? [] : sharedLocationFaqs') &&
   adailiyaEntity.includes('faq-adailiya-9') &&
   adailiyaEntity.includes('dead motherboard and a laptop that turns on with a black screen') &&
