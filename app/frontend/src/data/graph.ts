@@ -10,7 +10,7 @@ import { IMAGES } from '../constants/images.js';
 export const rawGraphData: RawGraphData = {
   metadata: {
     version: '3.8.5',
-    lastUpdated: '2026-11-09T00:00:00+03:00',
+    lastUpdated: '2026-11-13T00:00:00+03:00',
     environment: 'production'
   },
 
@@ -78,7 +78,7 @@ export const rawGraphData: RawGraphData = {
     'page-home': {
       id: 'page-home', slug: '', entityType: 'WebPage', isActive: true,
       title: 'Home', description: 'KCROC Homepage — Component-level computer repair in Kuwait',
-      seo: { title: 'Laptop & Computer Repair Kuwait | From 15 KWD | KCROC', description: 'Laptop and computer repair in Kuwait from 15 KWD. Free pickup and delivery, a quote before work, and a 30-day warranty on completed repairs.', canonicalUrl: 'https://www.computerrepairkuwait.com/', locale: 'en_KW', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/', 'ar-KW': 'https://www.computerrepairkuwait.com/ar', 'x-default': 'https://www.computerrepairkuwait.com/' }, ogType: 'website', schemaTypes: ['LocalBusiness', 'WebSite', 'WebPage'], lastModified: '2026-10-13T00:00:00+03:00' },
+      seo: { title: 'Kuwait Computer Repair Lab | Free Pickup & Delivery | KCROC', description: 'KCROC is a component-level computer repair lab in Hawalli, Kuwait. Laptop, desktop PC, MacBook and gaming PC diagnostics, free pickup across Kuwait, a quote before paid work and a 30-day warranty on completed repairs.', canonicalUrl: 'https://www.computerrepairkuwait.com/', locale: 'en_KW', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/', 'ar-KW': 'https://www.computerrepairkuwait.com/ar', 'x-default': 'https://www.computerrepairkuwait.com/' }, ogType: 'website', schemaTypes: ['LocalBusiness', 'WebSite', 'WebPage'], lastModified: '2026-11-13T00:00:00+03:00' },
       hero: { headline: 'Expert Laptop & Computer Repair in Kuwait.', subheadline: 'We Fix the Board. We Don\'t Just Swap It.', description: 'We diagnose and repair failed components at board level — restoring devices that most repair shops in Kuwait would simply declare beyond repair.', primaryCTA: { text: 'WhatsApp a Technician', route: 'https://wa.me/96555301913' }, secondaryCTA: { text: 'View All Services', route: '/services' } },
       featuredFAQIds: [
         'faq-pick-and-drop', 
@@ -115,10 +115,10 @@ export const rawGraphData: RawGraphData = {
     'page-ar-home': {
       id: 'page-ar-home', slug: 'ar', entityType: 'WebPage', isActive: true,
       title: 'تصليح وصيانة الكمبيوتر واللابتوب في الكويت | مختبر KCROC حولي',
-      description: 'تصليح وصيانة الكمبيوتر واللابتوب في الكويت، مع فحص أولي مجاني واستلام وتوصيل مجاني من المنزل أو المكتب. نصلح الأعطال في مختبر KCROC بحولي ونوضح التكلفة قبل بدء العمل.',
+      description: 'تصليح الكمبيوتر واللابتوب في الكويت من مختبر KCROC بحولي، مع فحص أولي مجاني واستلام وتوصيل مجاني من المنزل أو المكتب وعرض سعر قبل الإصلاح وضمان 30 يومًا على الإصلاح المكتمل.',
       seo: {
         title: 'تصليح وصيانة الكمبيوتر واللابتوب في الكويت | KCROC',
-        description: 'تصليح وصيانة الكمبيوتر واللابتوب في الكويت، مع فحص أولي مجاني واستلام وتوصيل مجاني من المنزل أو المكتب. نصلح الأعطال في مختبر KCROC بحولي ونوضح التكلفة قبل بدء العمل.',
+        description: 'تصليح الكمبيوتر واللابتوب في الكويت من مختبر KCROC بحولي، مع فحص أولي مجاني واستلام وتوصيل مجاني من المنزل أو المكتب وعرض سعر قبل الإصلاح وضمان 30 يومًا على الإصلاح المكتمل.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/ar',
         locale: 'ar_KW',
         alternates: {
@@ -128,7 +128,7 @@ export const rawGraphData: RawGraphData = {
         },
         ogType: 'website',
         schemaTypes: ['LocalBusiness', 'WebPage', 'FAQPage', 'BreadcrumbList'],
-        lastModified: '2026-11-03T00:00:00+03:00',
+        lastModified: '2026-11-13T00:00:00+03:00',
         breadcrumbs: [{ name: 'الرئيسية', url: '/ar' }]
       },
       featuredFAQIds: [
@@ -270,7 +270,7 @@ export const rawGraphData: RawGraphData = {
       description: 'خدمة فني كمبيوتر في الكويت للابتوب والكمبيوتر المكتبي وأجهزة ماك بوك وأجهزة الألعاب، مع فحص أولي مجاني واستلام وتوصيل من المنزل أو المكتب وإصلاح في مختبر KCROC بحولي.',
       seo: {
         title: 'فني كمبيوتر في الكويت | فحص واستلام مجاني | KCROC',
-        description: 'تحتاج فني كمبيوتر في الكويت؟ ننسق استلام الجهاز مجانًا من المنزل أو المكتب، ونفحصه في مختبر حولي ونوضح التكلفة قبل العمل. يشمل ذلك فحصًا أوليًا مجانيًا وضمان 30 يومًا على الإصلاح المكتمل.',
+        description: 'تحتاج فني كمبيوتر في الكويت؟ استلام مجاني من المنزل أو المكتب وفحص أولي في مختبر حولي. بعض الإصلاحات تبدأ من 15 د.ك حسب الموديل والعطل، مع عرض سعر قبل العمل وضمان 30 يومًا.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/ar/computer-repair-kuwait',
         locale: 'ar_KW',
         alternates: {
@@ -279,7 +279,7 @@ export const rawGraphData: RawGraphData = {
           'x-default': 'https://www.computerrepairkuwait.com/computer-repair-kuwait'
         },
         ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList', 'FAQPage', 'Service'],
-        lastModified: '2026-11-03T00:00:00+03:00',
+        lastModified: '2026-11-13T00:00:00+03:00',
         breadcrumbs: [{ name: 'الرئيسية', url: '/' }, { name: 'تصليح كمبيوتر في الكويت', url: '/ar/computer-repair-kuwait' }]
       },
       relatedServiceIds: ['srv-laptop', 'srv-motherboard', 'srv-gaming', 'srv-macbook', 'srv-screen']
@@ -291,7 +291,7 @@ export const rawGraphData: RawGraphData = {
       description: 'تصليح لابتوب في الكويت لأعطال عدم التشغيل والشاشة السوداء والبطارية والشحن والحرارة والمفصلات واللوحة الأم. فحص أولي مجاني، عرض سعر قبل الإصلاح، استلام وتوصيل داخل الكويت وضمان 30 يومًا.',
       seo: {
         title: 'تصليح لابتوب في الكويت | شاشة وشحن وبطارية | KCROC',
-        description: 'تصليح لابتوب في الكويت لمشاكل الشاشة والبطارية والشحن والحرارة وعدم التشغيل. فحص أولي مجاني، عرض سعر قبل الإصلاح، استلام وتوصيل وضمان 30 يومًا.',
+        description: 'تصليح لابتوب في الكويت لمشاكل الشاشة والبطارية والشحن والحرارة وعدم التشغيل. بعض الإصلاحات تبدأ من 15 د.ك حسب الموديل والعطل، مع فحص أولي مجاني واستلام وتوصيل مجاني وضمان 30 يومًا.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/ar/laptop-repair-kuwait',
         locale: 'ar_KW',
         alternates: { 'ar-KW': 'https://www.computerrepairkuwait.com/ar/laptop-repair-kuwait', 'en-KW': 'https://www.computerrepairkuwait.com/laptop-repair-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/laptop-repair-kuwait' },
@@ -301,7 +301,7 @@ export const rawGraphData: RawGraphData = {
         ogImageWidth: 1200,
         ogImageHeight: 630,
         schemaTypes: ['WebPage', 'BreadcrumbList'],
-        lastModified: '2026-10-21T00:00:00+03:00',
+        lastModified: '2026-11-13T00:00:00+03:00',
         breadcrumbs: [{ name: 'الرئيسية', url: '/' }, { name: 'تصليح لابتوب في الكويت', url: '/ar/laptop-repair-kuwait' }]
       },
       relatedServiceIds: ['srv-laptop', 'srv-motherboard', 'srv-screen', 'srv-battery', 'srv-charging-port', 'srv-keyboard', 'srv-liquid-damage', 'srv-ssd-ram', 'srv-gaming-laptop']
@@ -381,10 +381,10 @@ export const rawGraphData: RawGraphData = {
       id: 'page-ar-hawalli-computer-repair', slug: 'ar/computer-repair-hawalli', entityType: 'WebPage', isActive: true,
       title: 'تصليح كمبيوتر حولي | فني لابتوب وموقع المختبر',
       description: 'تصليح كمبيوتر ولابتوب في حولي من مختبر KCROC الفعلي في مجمع الملا. زيارة مباشرة أو استلام وتوصيل مجاني، مع تشخيص واضح وضمان 30 يومًا.',
-      seo: { title: "تصليح كمبيوتر حولي | فني كمبيوتر ولابتوب | KCROC", description: "تحتاج فني كمبيوتر في حولي؟ زر مختبر KCROC في مجمع الملا، شارع ابن خلدون، محل 19، أو اطلب الاستلام والتوصيل مجانًا. تشخيص واضح وضمان 30 يومًا.",
+      seo: { title: "تصليح كمبيوتر حولي | فني كمبيوتر ولابتوب | KCROC", description: "تحتاج فني كمبيوتر في حولي؟ زر مختبر KCROC في مجمع الملا، شارع ابن خلدون، السرداب، محل 19، يوميًا من 10 صباحًا إلى 10 مساءً، أو اطلب الاستلام والتوصيل مجانًا. ضمان 30 يومًا على الإصلاح المكتمل.",
         canonicalUrl: 'https://www.computerrepairkuwait.com/ar/computer-repair-hawalli',
         locale: 'ar_KW', alternates: { 'ar-KW': 'https://www.computerrepairkuwait.com/ar/computer-repair-hawalli', 'en-KW': 'https://www.computerrepairkuwait.com/location/hawalli', 'x-default': 'https://www.computerrepairkuwait.com/location/hawalli' },
-        ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList'], lastModified: '2026-10-27T00:00:00+03:00',
+        ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList'], lastModified: '2026-11-13T00:00:00+03:00',
         breadcrumbs: [{ name: 'الرئيسية', url: '/' }, { name: 'تصليح كمبيوتر حولي', url: '/ar/computer-repair-hawalli' }]
       },
       relatedServiceIds: ['srv-laptop', 'srv-motherboard', 'srv-screen', 'srv-battery', 'srv-macbook', 'srv-gaming', 'srv-gaming-laptop']
@@ -7225,7 +7225,7 @@ export const rawGraphData: RawGraphData = {
         { id: 'dell-authorized', title: 'Is KCROC an official Dell service center?', answer: 'No. KCROC is an independent computer-repair provider in Kuwait, not an official Dell-authorized service center. We diagnose and repair Dell hardware independently and explain the repair path before work begins.' }
       ],
       pricing: { startingFrom: 15, currency: 'KWD', quoteRequired: true, displayLabel: 'From 15 KWD — free diagnostic first' },
-      seo: { title: 'Dell Laptop Service Center Kuwait (Independent) | From 15 KWD | KCROC', description: 'Independent Dell laptop repair in Kuwait—not Dell-authorized. Inspiron, Latitude, XPS and Alienware diagnosis. Selected repairs from 15 KWD where applicable, free pickup and a quote before work.', canonicalUrl: 'https://www.computerrepairkuwait.com/dell-laptop-repair-kuwait', ogType: 'article', schemaTypes: ['Brand', 'Service', 'FAQPage', 'BreadcrumbList'], lastModified: '2026-11-03T00:00:00+03:00' },
+      seo: { title: 'Dell Laptop Repair Kuwait | Independent Lab | KCROC', description: 'Independent Dell laptop repair in Kuwait—not Dell-authorized. Inspiron, Latitude, XPS and Alienware diagnosis. Selected repairs from 15 KWD where applicable, free pickup and a quote before work.', canonicalUrl: 'https://www.computerrepairkuwait.com/dell-laptop-repair-kuwait', ogType: 'article', schemaTypes: ['Brand', 'Service', 'FAQPage', 'BreadcrumbList'], lastModified: '2026-11-13T00:00:00+03:00' },
       navigationPriority: 90, popular: true 
     } as BrandEntity,
 
@@ -7299,7 +7299,7 @@ export const rawGraphData: RawGraphData = {
         { id: 'hp-data', title: 'Will HP laptop repair require formatting or accessing my files?', answer: 'Routine hardware diagnosis does not require browsing personal files, and formatting is not an automatic repair step. If a proposed step could affect storage or the operating system, we explain it and ask before proceeding. Data access cannot be guaranteed for every hardware fault.' }
       ],
       pricing: { startingFrom: 15, currency: 'KWD', quoteRequired: true, displayLabel: 'From 15 KWD — free diagnostic first' },
-      seo: { title: 'HP Laptop Service Center Kuwait (Independent) | From 15 KWD | KCROC', description: 'Independent HP laptop repair in Kuwait—not HP-authorized. Pavilion, EliteBook, ProBook, Envy, OMEN and Victus diagnosis. Selected repairs from 15 KWD where applicable, free pickup and a quote before work.', canonicalUrl: 'https://www.computerrepairkuwait.com/hp-laptop-repair-kuwait', ogType: 'article', schemaTypes: ['Brand', 'Service', 'FAQPage', 'BreadcrumbList'], lastModified: '2026-11-07T00:00:00+03:00' },
+      seo: { title: 'HP Laptop Repair Kuwait | Independent Lab | KCROC', description: 'Independent HP laptop repair in Kuwait—not HP-authorized. Pavilion, EliteBook, ProBook, Envy, OMEN and Victus diagnosis. Selected repairs from 15 KWD where applicable, free pickup and a quote before work.', canonicalUrl: 'https://www.computerrepairkuwait.com/hp-laptop-repair-kuwait', ogType: 'article', schemaTypes: ['Brand', 'Service', 'FAQPage', 'BreadcrumbList'], lastModified: '2026-11-13T00:00:00+03:00' },
       navigationPriority: 80, popular: true 
     } as BrandEntity,
 
@@ -7413,12 +7413,12 @@ export const rawGraphData: RawGraphData = {
       ],
       pricing: { startingFrom: 15, currency: 'KWD', quoteRequired: true, displayLabel: 'From 15 KWD — free diagnostic first' },
       seo: {
-        title: 'Lenovo Laptop Service Center Kuwait (Independent) | From 15 KWD | KCROC',
+        title: 'Lenovo Laptop Repair Kuwait | Independent Lab | KCROC',
         description: 'Independent Lenovo laptop repair in Kuwait—not Lenovo-authorized. ThinkPad, Legion, IdeaPad, Yoga and LOQ diagnosis. Selected repairs from 15 KWD where applicable, free diagnosis, pickup and a quote before work.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/lenovo-laptop-repair-kuwait',
         ogType: 'website',
         schemaTypes: ['Brand', 'Service', 'FAQPage', 'BreadcrumbList'],
-        lastModified: '2026-11-03T00:00:00+03:00',
+        lastModified: '2026-11-13T00:00:00+03:00',
         breadcrumbs: [
           { name: 'Home', url: '/' },
           { name: 'Brands', url: '/brands' },
