@@ -120,8 +120,9 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
     return images.find((img) => img.placement === placement);
   };
 
-  const heroImage = getContentImage('hero') ??
-    entity.contentImages?.find((img) => img.placement === 'coreFeatures');
+  const heroImage = getContentImage('hero')
+    ?? getContentImage('commonIssues')
+    ?? entity.contentImages?.find((img) => img.placement === 'coreFeatures');
 
   const ContentImage = ({ image }: { image: NonNullable<typeof entity.contentImages>[number] }) => (
     <Link
