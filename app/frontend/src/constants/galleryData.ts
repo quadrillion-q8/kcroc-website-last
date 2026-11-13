@@ -53,6 +53,22 @@ const GALLERY_EXCLUDED_SRCS = new Set([
 ]);
 
 /**
+ * Photos that depict equipment or work outside KCROC's current service scope,
+ * or images that imply custom PC builds, are excluded from the public gallery.
+ * The source assets stay in the repository because some may still be useful
+ * for internal reference or tightly scoped editorial content.
+ */
+const GALLERY_EXCLUDED_SRC_PATTERNS = [
+  /(?:wi-?fi|wireless|ethernet|cat6|printer|scanner)/i,
+  /(?:custom-gaming-pc-build|custom-gaming-pc-case-build|custom-water-cooled-gaming-pc-build|custom-pc-build|custom-pc-sleeved-cables|custom-pc-aio-liquid-cooler-installation|asus-rog-gaming-pc-rgb-case-build|retail-display)/i,
+  /graphics-card-disassembled/i,
+];
+
+const isGallerySourceAllowed = (src: string) =>
+  !GALLERY_EXCLUDED_SRCS.has(src) &&
+  !GALLERY_EXCLUDED_SRC_PATTERNS.some((pattern) => pattern.test(src));
+
+/**
  * Newest photos first: the batch in galleryPhotos.ts (with thumbnails),
  * mapped into the same shape as the older registry-driven items.
  */
@@ -67,7 +83,7 @@ const NEW_GALLERY_ITEMS: GalleryItem[] = GALLERY_PHOTOS.map((p) => ({
     thumbWidth: p.thumbWidth,
     thumbHeight: p.thumbHeight,
   },
-}));
+})).filter((item) => isGallerySourceAllowed(item.image.src));
 
 /**
  * Dynamically maps your new categorized IMAGES constant into the Gallery grid.
@@ -112,6 +128,6 @@ const REGISTRY_GALLERY_ITEMS: GalleryItem[] = [
   }))
 ]
   .filter(item => item.image.src !== "/logo.webp") // Prevent logo from appearing in the gallery grid
-  .filter(item => !GALLERY_EXCLUDED_SRCS.has(item.image.src));
+  .filter(item => isGallerySourceAllowed(item.image.src));
 
 export const GALLERY_ITEMS: GalleryItem[] = [...NEW_GALLERY_ITEMS, ...REGISTRY_GALLERY_ITEMS];
