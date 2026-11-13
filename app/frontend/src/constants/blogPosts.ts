@@ -757,7 +757,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "text": "The RTX 5090 FPS figures and Hogwarts Legacy visual observations in this article are attributed to ComputerBase's November 5, 2026 independent review; KCROC has not independently reproduced that benchmark. DLSS 5 feature behaviour, the Hogwarts Legacy patch requirements and NVIDIA's Driver 621.14 WHQL fix were cross-checked against NVIDIA and Warner Bros. / Portkey Games documentation. Written and technically reviewed by Imran Natiq at KCROC's Hawalli laboratory on November 9, 2026."
     }
   ],
-  "image": "/images/discover/custom-gaming-pc-teardown-and-diagnostics-workbench-1200x675.webp",
+  "image": "/images/geforce-rtx-gpu-gaming-pc-rgb-fans.webp",
   "imageAlt": "Gaming PC hardware being inspected on a technician's workbench at the KCROC workshop; illustrative hardware photo, not a DLSS 5 game screenshot.",
   "imageCaption": "KCROC workshop photo showing gaming-PC hardware under inspection. This is an illustrative hardware image, not an in-game DLSS 5 comparison.",
   "discoverImage": "/images/discover/custom-gaming-pc-teardown-and-diagnostics-workbench-1200x675.webp",
@@ -3383,7 +3383,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "By utilizing precision micro-soldering and thermal imaging, modern ESD-safe labs can isolate the exact failing chip on the motherboard. This component-level approach not only saves the original data but usually costs a fraction of a factory board swap.",
       "If your laptop feels sluggish, the first step isn't buying a new one. A thorough ultrasonic cleaning, application of high-grade liquid metal or phase-change thermal paste, and a fast NVMe SSD upgrade can make a five-year-old laptop perform better than new."
     ],
-    image: "/images/blog/laptop-dust-cleaning-overheating-kuwait.webp",
+    "image": "/images/laptop-repair-kuwait.webp",
     discoverImage: "/images/discover/laptop-dust-cleaning-overheating-kuwait-1200x675.webp",
     date: "2026-06-15",
     author: "KCROC Engineering Team",
@@ -3718,7 +3718,7 @@ export const BLOG_POSTS: BlogPost[] = [
       { type: 'paragraph', text: "Windows 11 isn't automatically a bad choice, and it isn't the villain in every slow-laptop story either. For most modern PCs, it's simply the current version of Windows, doing what Windows has always done. But the frustration driving people to search for alternatives is real: hardware requirements that exclude capable machines, a cloud-first setup experience, AI features nobody asked to have inside Notepad, and update behavior that's only recently starting to improve." },
       { type: 'paragraph', text: "The right move depends on your hardware, your software needs, your privacy preferences, and your budget — not on which side of the online debate sounds more convincing. And the answer isn't always \"buy a new computer.\" Often it's \"diagnose the one you have.\" If your Windows 11 PC is slow, unstable, overheating, or refusing to update properly, a proper hardware diagnostic — the kind we run before any Laptop Repair Kuwait or Motherboard Repair Kuwait job — usually finds the real cause faster than a full OS switch or a new machine would." }
     ],
-    image: "/images/dell-laptop-windows-update-repair-stack.webp",
+    "image": "/images/desktop-pc-tower-repair-kuwait.webp",
     discoverImage: "/images/discover/dell-laptop-windows-update-repair-stack-1200x675.webp",
     date: "2026-08-16",
     author: "Imran",
@@ -6338,7 +6338,7 @@ export const BLOG_POSTS: BlogPost[] = [
       { type: "h2", text: "Bottom Line", id: "bottom-line" },
       { type: "paragraph", text: "When a game feels stuttery at high FPS, frame-time gives you a better diagnostic starting point than the FPS headline alone. Reproduce the hitch, look for a repeatable spike pattern, and then test overlays, game settings, drivers, shaders, thermals and hardware in a controlled order." }
     ],
-    image: "/images/blog/windows-11-laptop-multitasking.webp",
+    "image": "/images/geforce-rtx-gaming-pc-rgb-lighting.webp",
     discoverImage: "/images/discover/windows-11-laptop-multitasking-1200x675.webp",
     date: "2026-09-29",
     technicalReviewDate: "September 29, 2026",
@@ -6407,7 +6407,7 @@ export const BLOG_POSTS: BlogPost[] = [
       { type: "h2", text: "Bottom Line", id: "bottom-line" },
       { type: "paragraph", text: "Shader compilation can create real, short-lived game hitches, but the pattern matters. Look for first-use triggers, repeatability and improvement on subsequent passes. Do not confuse a normal compilation event with a failing GPU, and do not turn cache deletion into a generic optimization routine." }
     ],
-    image: "/images/gaming-pc-rgb-installing-windows-11.webp",
+    "image": "/images/desktop-pc-tower-repair-kuwait.webp",
     discoverImage: "/images/discover/gaming-pc-rgb-installing-windows-11-1200x675.webp",
     date: "2026-09-29",
     technicalReviewDate: "September 29, 2026",
@@ -6645,7 +6645,7 @@ export const BLOG_POSTS: BlogPost[] = [
       { type: "h2", text: "The Bottom Line", id: "bottom-line" },
       { type: "paragraph", text: "The phrase 'connected to Wi-Fi but no internet' describes several different failures. Compare another device, test another network, inspect the gateway and DNS path, remove VPN/proxy variables, and only then use deeper Windows resets. The goal is not to reset everything; it is to prove which layer stopped working." }
     ],
-    image: "/images/laptop-wifi-network-card.webp",
+    "image": "/images/blog/windows-11-laptop-multitasking.webp",
     discoverImage: "/images/discover/laptop-wifi-network-card-1200x675.webp",
     date: "2026-09-29",
     technicalReviewDate: "September 29, 2026",
@@ -7777,7 +7777,7 @@ export const BLOG_POSTS: BlogPost[] = [
       { type: "h2", text: "The Bottom Line", id: "bottom-line" },
       { type: "paragraph", text: "Find the failing layer first, run the least destructive test, change one thing at a time and verify under the same conditions. When the evidence points to storage, memory, thermals or power, stop reinstalling Windows and get the hardware tested." }
     ],
-    image: "/images/windows-os-software-repair-and-installation-kuwait.webp",
+    "image": "/images/desktop-pc-tower-repair-kuwait.webp",
     discoverImage: "/images/discover/windows-os-software-repair-and-installation-kuwait-1200x675.webp",
     date: "2026-10-06",
     technicalReviewDate: "October 6, 2026",
@@ -8626,7 +8626,7 @@ export const BLOG_POSTS: BlogPost[] = [
         ]
       }
     ],
-    "image": "/images/zotac-gaming-graphics-card-gpu-upgrade.webp",
+    "image": "/images/blog/gaming-pc-thermal-throttling-kuwait.webp",
     "discoverImage": "/images/discover/custom-gaming-pc-teardown-and-diagnostics-workbench-1200x675.webp",
     "date": "2026-10-01",
     "technicalReviewDate": "October 1, 2026",
