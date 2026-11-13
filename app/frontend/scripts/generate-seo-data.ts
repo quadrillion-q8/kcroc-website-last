@@ -16,9 +16,9 @@ const routableEntities = (KCROC_GRAPH.routableEntities ?? []).map((e: any) => {
     case 'Business':
       return { ...b, legalName: e.legalName, logoUrl: e.logoUrl, telephone: e.telephone, email: e.email, websiteUrl: e.websiteUrl, priceRange: e.priceRange, addressRegion: e.addressRegion, schemaOpeningHours: e.schemaOpeningHours, socialLinks: e.socialLinks };
     case 'Service':
-      return { ...b, description: e.description, pricing: e.pricing, commercialAnswers: e.commercialAnswers, faqs: e.faqs };
+      return { ...b, description: e.description, pricing: e.pricing, commercialAnswers: e.commercialAnswers, faqs: e.faqs, contentImages: e.contentImages ?? [], featuredImage: e.featuredImage };
     case 'Brand':
-      return { ...b, brandName: e.brandName, officialWebsite: e.officialWebsite, pricing: e.pricing, commonIssues: e.commonIssues ?? [], faqs: e.faqs };
+      return { ...b, brandName: e.brandName, officialWebsite: e.officialWebsite, pricing: e.pricing, commonIssues: e.commonIssues ?? [], faqs: e.faqs, contentImages: e.contentImages ?? [], featuredImage: e.featuredImage };
     case 'Problem':
       return { ...b, description: e.description, intro: e.intro, symptom: e.symptom, causes: e.causes ?? [], diagnosticSteps: e.diagnosticSteps ?? [], decisionTree: e.decisionTree ?? [], technicianMethod: e.technicianMethod ?? [], safetyNotes: e.safetyNotes ?? [], kuwaitContext: e.kuwaitContext ?? [], expertNotes: e.expertNotes ?? [], technicalReferences: e.technicalReferences ?? [], relatedResourcePaths: e.relatedResourcePaths ?? [], relatedServiceIds: e.relatedServiceIds ?? [], relatedBrandIds: e.relatedBrandIds ?? [], relatedGuideSlug: e.relatedGuideSlug, coveredBrands: e.coveredBrands ?? [], faqs: e.faqs ?? [], solution: e.solution, doNotDo: e.doNotDo, urgency: e.urgency, emergencySteps: e.emergencySteps ?? [], emergencyCaution: e.emergencyCaution, liquidRiskMatrix: e.liquidRiskMatrix ?? [], contentImages: e.contentImages ?? [], primaryKeyword: e.primaryKeyword, secondaryKeywords: e.secondaryKeywords ?? [], featuredImage: e.featuredImage };
     case 'FAQ':
@@ -34,10 +34,12 @@ const routableEntities = (KCROC_GRAPH.routableEntities ?? []).map((e: any) => {
         areaPostalCode: e.areaPostalCode,
         areaPostalRegion: e.areaPostalRegion,
         additionalAreaPostalCodes: e.additionalAreaPostalCodes ?? [],
-        serviceTypes: e.serviceTypes ?? []
+        serviceTypes: e.serviceTypes ?? [],
+        contentImage: e.contentImage,
+        featuredImage: e.featuredImage
       };
     case 'WebPage':
-      return { ...b, description: e.description, featuredFAQIds: e.featuredFAQIds ?? [], articleSection: e.articleSection, authorUrl: e.authorUrl, reviewerUrl: e.reviewerUrl, proficiencyLevel: e.proficiencyLevel, about: e.about ?? [], keywords: e.keywords ?? [], datePublished: e.datePublished, dateModified: e.dateModified };
+      return { ...b, description: e.description, featuredFAQIds: e.featuredFAQIds ?? [], articleSection: e.articleSection, authorUrl: e.authorUrl, reviewerUrl: e.reviewerUrl, proficiencyLevel: e.proficiencyLevel, about: e.about ?? [], keywords: e.keywords ?? [], datePublished: e.datePublished, dateModified: e.dateModified, featuredImage: e.featuredImage, contentImages: e.contentImages ?? [] };
     default:
       return b;
   }
