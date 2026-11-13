@@ -838,7 +838,7 @@ export const rawGraphData: RawGraphData = {
     'page-privacy-policy': { id: 'page-privacy-policy', slug: 'privacy-policy', entityType: 'WebPage', isActive: true, title: 'Privacy Policy', description: 'KCROC Privacy Policy and Data Handling', seo: { title: 'Privacy Policy | KCROC Kuwait', description: 'Read the official Privacy Policy for Kuwait Computer Repair On Call. We are committed to protecting your data and personal information.', canonicalUrl: 'https://www.computerrepairkuwait.com/privacy-policy', ogType: 'website', schemaTypes: ['WebPage'] } } as WebPageEntity,
     'page-terms-of-service': { id: 'page-terms-of-service', slug: 'terms-of-service', entityType: 'WebPage', isActive: true, title: 'Terms of Service', description: 'KCROC Terms and Conditions of Service', seo: { title: 'Terms of Service | KCROC Kuwait', description: 'Read the official Terms of Service and conditions for computer repair, pick & drop, and warranties at Kuwait Computer Repair On Call.', canonicalUrl: 'https://www.computerrepairkuwait.com/terms-of-service', ogType: 'website', schemaTypes: ['WebPage'] } } as WebPageEntity,
     'page-author-imran': { id: 'page-author-imran', slug: 'author/imran', entityType: 'WebPage', isActive: true, title: 'Imran Natiq', description: 'Author bio page for Imran Natiq, Founder & Lead Technician at KCROC, referenced from the Person schema on blog articles he authored.', seo: { title: 'Imran Natiq — Hardware Repair Engineer at KCROC Kuwait', description: 'Imran Natiq is a hardware repair engineer and founder of KCROC in Hawalli, Kuwait, specializing in motherboard diagnostics and micro-soldering.', canonicalUrl: 'https://www.computerrepairkuwait.com/author/imran', ogType: 'profile', schemaTypes: ['ProfilePage', 'Person', 'BreadcrumbList'] } } as WebPageEntity,
-    'guide-battery': { id: 'guide-battery', slug: 'guides/laptop-battery-warning-signs', entityType: 'WebPage', isActive: true, title: 'Laptop Battery Warning Signs: 15+ Signs & Tests', description: 'A practical laptop battery authority guide covering 15+ warning signs, Windows 11 and Mac battery-health checks, swollen-battery safety, diagnosis, and replacement decisions.', seo: { title: 'Laptop Battery Problems: 15 Warning Signs & Tests | KCROC', description: 'Spot laptop battery failure with 15 warning signs, Windows and Mac health tests, swollen-battery safety advice, and replacement guidance.', canonicalUrl: 'https://www.computerrepairkuwait.com/guides/laptop-battery-warning-signs', locale: 'en', ogImage: 'https://www.computerrepairkuwait.com/images/discover/swollen-macbook-battery-replacement-2-1200x675.webp', ogType: 'article', schemaTypes: ['Article', 'FAQPage', 'BreadcrumbList'], lastModified: '2026-11-06T00:00:00+03:00' },
+    'guide-battery': { id: 'guide-battery', slug: 'guides/laptop-battery-warning-signs', entityType: 'WebPage', isActive: true, title: 'Laptop Battery Warning Signs: 15+ Signs & Tests', description: 'A practical laptop battery authority guide covering 15+ warning signs, Windows 11 and Mac battery-health checks, swollen-battery safety, diagnosis, and replacement decisions.', seo: { title: 'Laptop Battery Problems: 15 Warning Signs & Tests | KCROC', description: 'Spot laptop battery failure with 15 warning signs, Windows and Mac health tests, swollen-battery safety advice, and replacement guidance.', canonicalUrl: 'https://www.computerrepairkuwait.com/guides/laptop-battery-warning-signs', locale: 'en', ogImage: '/images/laptop-bottom-chassis-battery-ram-open.webp', ogType: 'article', schemaTypes: ['Article', 'FAQPage', 'BreadcrumbList'], lastModified: '2026-11-06T00:00:00+03:00' },
       featuredFAQIds: [
         'faq-battery-how-to-know',
         'faq-battery-check-windows',
@@ -1194,8 +1194,8 @@ export const rawGraphData: RawGraphData = {
         title: 'اللابتوب متصل بالشاحن ولا يشحن؟ التشخيص والحل في الكويت | KCROC',
         description: 'هل يظهر اللابتوب أو MacBook متصل بالشاحن ولا يشحن أو ثابت على 0%؟ دليل تشخيص آمن للتفريق بين عطل الشاحن، البطارية، المنفذ ودائرة الشحن مع فحص مجاني واستلام بالكويت.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/ar/laptop-plugged-in-not-charging',
-        ogImage: '/images/gallery/dell-vostro-laptop-motherboard-removed-fan-heatsink-chip-level-repair.webp',
-        ogImageAlt: 'لوحة أم للابتوب Dell Vostro بعد فكها على طاولة الفحص في مختبر صيانة KCROC',
+        ogImage: '/images/laptop-dc-power-jack-connector-replacement-kuwait-1000.webp',
+        ogImageAlt: 'فحص واستبدال منفذ شحن اللابتوب DC Jack في مختبر KCROC',
         ogImageWidth: 1400,
         ogImageHeight: 1400,
         locale: 'ar_KW',
@@ -1214,8 +1214,8 @@ export const rawGraphData: RawGraphData = {
         ]
       },
       featuredImage: {
-        ogImage: '/images/gallery/dell-vostro-laptop-motherboard-removed-fan-heatsink-chip-level-repair.webp',
-        altText: 'لوحة أم للابتوب Dell Vostro بعد فكها على طاولة الفحص في مختبر صيانة KCROC'
+        ogImage: '/images/laptop-dc-power-jack-connector-replacement-kuwait-1000.webp',
+        altText: 'منفذ شحن اللابتوب DC Jack أثناء الفحص والإصلاح في مختبر KCROC'
       },
       relatedServiceIds: ['srv-battery', 'srv-charging-port', 'srv-motherboard', 'srv-laptop'],
       authorName: 'KCROC Engineering Team',
@@ -1604,30 +1604,9 @@ export const rawGraphData: RawGraphData = {
         ]
       },
       contentImages: [
-        {
-          src: IMAGES.laptopHardware.laptopDcPowerJackConnectorReplacement.src,
-          alt: IMAGES.laptopHardware.laptopDcPowerJackConnectorReplacement.alt,
-          width: IMAGES.laptopHardware.laptopDcPowerJackConnectorReplacement.width,
-          height: IMAGES.laptopHardware.laptopDcPowerJackConnectorReplacement.height,
-          placement: 'commonIssues',
-          caption: 'Laptop DC power jack and connector replacement during charging-port diagnosis.'
-        },
-        {
-          src: IMAGES.laptopHardware.laptopOpenRepairBench.src,
-          alt: IMAGES.laptopHardware.laptopOpenRepairBench.alt,
-          width: IMAGES.laptopHardware.laptopOpenRepairBench.width,
-          height: IMAGES.laptopHardware.laptopOpenRepairBench.height,
-          placement: 'coreFeatures',
-          caption: 'An opened laptop on the repair bench for connector, charging-circuit and motherboard inspection.'
-        },
-        {
-          src: IMAGES.laptopHardware.laptopDcPowerJackConnectorReplacement.src,
-          alt: IMAGES.laptopHardware.laptopDcPowerJackConnectorReplacement.alt,
-          width: IMAGES.laptopHardware.laptopDcPowerJackConnectorReplacement.width,
-          height: IMAGES.laptopHardware.laptopDcPowerJackConnectorReplacement.height,
-          placement: 'process',
-          caption: 'DC power jack replacement as part of a targeted laptop charging-port repair.'
-        }
+        { src: IMAGES.laptopHardware.laptopDcPowerJackConnectorReplacement.src, alt: IMAGES.laptopHardware.laptopDcPowerJackConnectorReplacement.alt, width: IMAGES.laptopHardware.laptopDcPowerJackConnectorReplacement.width, height: IMAGES.laptopHardware.laptopDcPowerJackConnectorReplacement.height, placement: 'hero', caption: 'Close view of the laptop DC charging connector used for port inspection and replacement.' },
+        { src: IMAGES.laptopHardware.chargerInventory.src, alt: IMAGES.laptopHardware.chargerInventory.alt, width: IMAGES.laptopHardware.chargerInventory.width, height: IMAGES.laptopHardware.chargerInventory.height, placement: 'commonIssues', caption: 'Checking a compatible charger and connector type before recommending a charging-port repair.' },
+        { src: IMAGES.laptopHardware.laptopOpenRepairBench.src, alt: IMAGES.laptopHardware.laptopOpenRepairBench.alt, width: IMAGES.laptopHardware.laptopOpenRepairBench.width, height: IMAGES.laptopHardware.laptopOpenRepairBench.height, placement: 'process', caption: 'Laptop opened on the repair bench for power-input and charging-path diagnosis.' }
       ],
       warranty: {
         duration: '30 Days',
@@ -1723,9 +1702,9 @@ export const rawGraphData: RawGraphData = {
       },
       inspectionChecklist: ['Measure hinge resistance', 'Inspect mounting points', 'Check bezel and lid', 'Inspect display cable routing', 'Check screen for pressure damage', 'Test repeated open/close movement'],
       contentImages: [
-        { src: IMAGES.laptopHardware.brokenHinge.src, alt: IMAGES.laptopHardware.brokenHinge.alt, width: IMAGES.laptopHardware.brokenHinge.width, height: IMAGES.laptopHardware.brokenHinge.height, placement: 'commonIssues', caption: 'Broken hinge mounts and cracked plastic chassis damage before structural repair.' },
-        { src: IMAGES.laptopHardware.screenBezel.src, alt: IMAGES.laptopHardware.screenBezel.alt, width: IMAGES.laptopHardware.screenBezel.width, height: IMAGES.laptopHardware.screenBezel.height, placement: 'coreFeatures', caption: 'Screen bezel and hinge work during chassis reconstruction and alignment.' },
-        { src: IMAGES.services.laptopRepair.src, alt: IMAGES.services.laptopRepair.alt, width: IMAGES.services.laptopRepair.width, height: IMAGES.services.laptopRepair.height, placement: 'process', caption: 'Laptop opened for inspection of the chassis, display cable routing and surrounding hardware.' }
+        { src: IMAGES.laptopHardware.brokenHinge.src, alt: IMAGES.laptopHardware.brokenHinge.alt, width: IMAGES.laptopHardware.brokenHinge.width, height: IMAGES.laptopHardware.brokenHinge.height, placement: 'hero', caption: 'Broken hinge mounts and cracked chassis plastic before structural repair.' },
+        { src: IMAGES.laptopHardware.screenBezel.src, alt: IMAGES.laptopHardware.screenBezel.alt, width: IMAGES.laptopHardware.screenBezel.width, height: IMAGES.laptopHardware.screenBezel.height, placement: 'commonIssues', caption: 'Inspecting the screen bezel and hinge alignment around the display assembly.' },
+        { src: IMAGES.laptopHardware.laptopLidBackCoverPanelReplacement.src, alt: IMAGES.laptopHardware.laptopLidBackCoverPanelReplacement.alt, width: IMAGES.laptopHardware.laptopLidBackCoverPanelReplacement.width, height: IMAGES.laptopHardware.laptopLidBackCoverPanelReplacement.height, placement: 'process', caption: 'Lid and back-cover components assessed during hinge and chassis reconstruction.' }
       ],
       warranty: { duration: '30 Days', coverage: 'Parts and labour for the completed hinge/chassis repair', noFixNoFee: true },
       seo: { title: 'Laptop Hinge Repair Kuwait | Chassis Fix | KCROC', description: 'Broken or stiff laptop hinge repair in Kuwait. Chassis reinforcement, hinge replacement and display-cable inspection with free pickup and 30-day warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-hinge-repair-kuwait', locale: 'en_KW', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/laptop-hinge-repair-kuwait', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/laptop-hinge-repair-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/laptop-hinge-repair-kuwait' }, ogType: 'article', schemaTypes: ['Service', 'FAQPage'], lastModified: '2026-11-02T00:00:00+03:00' },
@@ -2254,10 +2233,10 @@ export const rawGraphData: RawGraphData = {
         { metric: 'Storage space', outcome: 'A larger SSD, with your Windows cloned across, gives you room for files and updates without a fresh install.' }
       ] },
       contentImages: [
-        { src: '/images/gallery/laptop-ram-ssd-wifi-card-spare-parts-inventory-kuwait.webp', alt: 'Spare RAM modules, SSDs and Wi-Fi cards in stock at the KCROC repair shop in Kuwait for laptop upgrades', width: 1200, height: 1200, placement: 'hero', caption: 'RAM, SSD and Wi-Fi card stock on the KCROC bench for laptop upgrades in Kuwait.' },
-        { src: IMAGES.upgrades.ssdM2Install.src, alt: IMAGES.upgrades.ssdM2Install.alt, width: IMAGES.upgrades.ssdM2Install.width, height: IMAGES.upgrades.ssdM2Install.height, placement: 'commonIssues', caption: 'Installing an M.2 NVMe SSD as part of a laptop performance upgrade.' },
-        { src: IMAGES.upgrades.acerLaptopMotherboardRamHeatsink.src, alt: IMAGES.upgrades.acerLaptopMotherboardRamHeatsink.alt, width: IMAGES.upgrades.acerLaptopMotherboardRamHeatsink.width, height: IMAGES.upgrades.acerLaptopMotherboardRamHeatsink.height, placement: 'coreFeatures', caption: 'Laptop motherboard with accessible RAM and storage components inspected for upgrade compatibility.' },
-        { src: IMAGES.upgrades.ssdMicron.src, alt: IMAGES.upgrades.ssdMicron.alt, width: IMAGES.upgrades.ssdMicron.width, height: IMAGES.upgrades.ssdMicron.height, placement: 'process', caption: 'M.2 NVMe storage selected and installed after compatibility checks.' }
+        { src: IMAGES.upgrades.ssdM2Install.src, alt: IMAGES.upgrades.ssdM2Install.alt, width: IMAGES.upgrades.ssdM2Install.width, height: IMAGES.upgrades.ssdM2Install.height, placement: 'hero', caption: 'M.2 NVMe SSD installation after checking the laptop model and storage compatibility.' },
+        { src: IMAGES.upgrades.laptopRamSticksComparisonUpgrade.src, alt: IMAGES.upgrades.laptopRamSticksComparisonUpgrade.alt, width: IMAGES.upgrades.laptopRamSticksComparisonUpgrade.width, height: IMAGES.upgrades.laptopRamSticksComparisonUpgrade.height, placement: 'commonIssues', caption: 'Comparing laptop RAM modules before selecting a compatible memory upgrade.' },
+        { src: IMAGES.upgrades.laptopMotherboardDualM2SsdSlots.src, alt: IMAGES.upgrades.laptopMotherboardDualM2SsdSlots.alt, width: IMAGES.upgrades.laptopMotherboardDualM2SsdSlots.width, height: IMAGES.upgrades.laptopMotherboardDualM2SsdSlots.height, placement: 'coreFeatures', caption: 'Checking available M.2 storage slots and the laptop board layout.' },
+        { src: IMAGES.upgrades.ssdMicron.src, alt: IMAGES.upgrades.ssdMicron.alt, width: IMAGES.upgrades.ssdMicron.width, height: IMAGES.upgrades.ssdMicron.height, placement: 'process', caption: 'Selecting and installing a model-compatible M.2 NVMe storage drive.' }
       ],
       warranty: { duration: '30 Days', coverage: 'Parts and labour for the completed SSD/RAM installation', noFixNoFee: true },
       seo: { title: 'Laptop SSD & RAM Upgrade Kuwait | Free Pickup | KCROC', description: 'Laptop SSD, NVMe and RAM upgrades in Kuwait. We check compatibility, clone Windows and test the result. Labour from 5 KWD + part. Free pickup and delivery.', canonicalUrl: 'https://www.computerrepairkuwait.com/ssd-ram-upgrade-kuwait', locale: 'en_KW', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/ssd-ram-upgrade-kuwait', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/ssd-ram-upgrade-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/ssd-ram-upgrade-kuwait' }, ogType: 'article', schemaTypes: ['Service', 'FAQPage'], lastModified: '2026-10-29T00:00:00+03:00' },
@@ -2854,30 +2833,9 @@ export const rawGraphData: RawGraphData = {
       },
       warranty: { duration: '30 Days', coverage: 'All parts and labor.', noFixNoFee: true }, 
       contentImages: [
-        {
-          src: IMAGES.macbook.diagnostics.src,
-          alt: IMAGES.macbook.diagnostics.alt,
-          width: IMAGES.macbook.diagnostics.width,
-          height: IMAGES.macbook.diagnostics.height,
-          placement: 'commonIssues',
-          caption: 'MacBook Air and Pro diagnosis in Kuwait: isolate the power, charging or logic-board fault before choosing a repair.'
-        },
-        {
-          src: IMAGES.macbook.logicBoard.src,
-          alt: IMAGES.macbook.logicBoard.alt,
-          width: IMAGES.macbook.logicBoard.width,
-          height: IMAGES.macbook.logicBoard.height,
-          placement: 'coreFeatures',
-          caption: 'Component-level MacBook logic-board inspection and micro-soldering where the original board is technically repairable.'
-        },
-        {
-          src: IMAGES.macbook.swollenBattery1.src,
-          alt: IMAGES.macbook.swollenBattery1.alt,
-          width: IMAGES.macbook.swollenBattery1.width,
-          height: IMAGES.macbook.swollenBattery1.height,
-          placement: 'process',
-          caption: 'MacBook battery safety inspection: a swollen battery requires careful handling and should not be pressed or charged.'
-        }
+        { src: IMAGES.macbook.diagnostics.src, alt: IMAGES.macbook.diagnostics.alt, width: IMAGES.macbook.diagnostics.width, height: IMAGES.macbook.diagnostics.height, placement: 'hero', caption: 'Opened MacBook inspected at the KCROC repair bench before model-specific diagnosis.' },
+        { src: IMAGES.macbook.logicBoard.src, alt: IMAGES.macbook.logicBoard.alt, width: IMAGES.macbook.logicBoard.width, height: IMAGES.macbook.logicBoard.height, placement: 'coreFeatures', caption: 'MacBook logic-board and cooling hardware inspected during component-level repair.' },
+        { src: IMAGES.macbook.swollenBattery1.src, alt: IMAGES.macbook.swollenBattery1.alt, width: IMAGES.macbook.swollenBattery1.width, height: IMAGES.macbook.swollenBattery1.height, placement: 'process', caption: 'Battery condition checked as one part of a wider MacBook hardware assessment.' }
       ],
       seo: { 
         title: 'MacBook Repair Kuwait | Air, Pro, Charging & Board | KCROC', 
@@ -3140,46 +3098,10 @@ export const rawGraphData: RawGraphData = {
       ],
       warranty: { duration: '30 Days', coverage: 'All parts and labor.', noFixNoFee: true }, 
       contentImages: [
-        {
-          src: IMAGES.services.laptopRepair.src,
-          alt: IMAGES.services.laptopRepair.alt,
-          width: IMAGES.services.laptopRepair.width,
-          height: IMAGES.services.laptopRepair.height,
-          placement: 'commonIssues',
-          caption: 'A representative laptop repair setup for diagnosing hardware, display, power, cooling and Windows faults.'
-        },
-        {
-          src: IMAGES.laptopHardware.dellRepair.src,
-          alt: IMAGES.laptopHardware.dellRepair.alt,
-          width: IMAGES.laptopHardware.dellRepair.width,
-          height: IMAGES.laptopHardware.dellRepair.height,
-          placement: 'coreFeatures',
-          caption: 'A Dell laptop chassis opened for hardware repair — a typical starting point for hinge, DC jack, and motherboard faults.'
-        },
-        {
-          src: IMAGES.laptopHardware.hpLaptopMotherboardRepairOpen.src,
-          alt: IMAGES.laptopHardware.hpLaptopMotherboardRepairOpen.alt,
-          width: IMAGES.laptopHardware.hpLaptopMotherboardRepairOpen.width,
-          height: IMAGES.laptopHardware.hpLaptopMotherboardRepairOpen.height,
-          placement: 'coreFeatures',
-          caption: 'HP laptop opened for motherboard and internal hardware diagnosis.'
-        },
-        {
-          src: IMAGES.laptopHardware.laptopOpenRepairBench.src,
-          alt: IMAGES.laptopHardware.laptopOpenRepairBench.alt,
-          width: IMAGES.laptopHardware.laptopOpenRepairBench.width,
-          height: IMAGES.laptopHardware.laptopOpenRepairBench.height,
-          placement: 'process',
-          caption: 'Laptop opened on the repair bench during diagnostic and reassembly work.'
-        },
-        {
-          src: '/images/lenovo-laptop-battery-fan-heatsink-open.webp',
-          alt: 'Lenovo laptop opened for battery, fan and heatsink inspection',
-          width: 1000,
-          height: 1000,
-          placement: 'process',
-          caption: 'Lenovo internal hardware inspection covering battery, cooling and motherboard access.'
-        }
+        { src: IMAGES.services.laptopRepair.src, alt: IMAGES.services.laptopRepair.alt, width: IMAGES.services.laptopRepair.width, height: IMAGES.services.laptopRepair.height, placement: 'hero', caption: 'General laptop repair and diagnosis at the KCROC workshop in Kuwait.' },
+        { src: IMAGES.laptopHardware.dellRepair.src, alt: IMAGES.laptopHardware.dellRepair.alt, width: IMAGES.laptopHardware.dellRepair.width, height: IMAGES.laptopHardware.dellRepair.height, placement: 'commonIssues', caption: 'Laptop internal hardware inspected before choosing a repair path.' },
+        { src: IMAGES.laptopHardware.hpLaptopMotherboardRepairOpen.src, alt: IMAGES.laptopHardware.hpLaptopMotherboardRepairOpen.alt, width: IMAGES.laptopHardware.hpLaptopMotherboardRepairOpen.width, height: IMAGES.laptopHardware.hpLaptopMotherboardRepairOpen.height, placement: 'coreFeatures', caption: 'Motherboard and internal components checked during hardware diagnosis.' },
+        { src: IMAGES.laptopHardware.laptopOpenRepairBench.src, alt: IMAGES.laptopHardware.laptopOpenRepairBench.alt, width: IMAGES.laptopHardware.laptopOpenRepairBench.width, height: IMAGES.laptopHardware.laptopOpenRepairBench.height, placement: 'process', caption: 'Laptop opened on the repair bench for inspection and testing.' }
       ],
       seo: { 
         title: 'Laptop Repair Kuwait | Board-Level Lab & Free Pickup | KCROC', 
@@ -3502,10 +3424,10 @@ export const rawGraphData: RawGraphData = {
         { id: 'faq-gaming-burnt-connector', title: 'The GPU power connector in my gaming desktop is burnt or melted. What should I do?', answer: 'Switch the complete PC off, disconnect it from power if safe, and do not keep retrying. A damaged 12VHPWR or 12V-2x6 connection can involve the GPU installed in the system, its cable and the PSU side. KCROC can inspect these parts as part of a complete gaming desktop assessment. We do not accept an individual graphics card as a standalone repair job.' }
       ],
             contentImages: [
-        { src: IMAGES.gaming.waterCooled.src, alt: 'Custom water-cooled gaming PC with liquid-cooling loop and RGB fans on the KCROC bench in Kuwait', width: IMAGES.gaming.waterCooled.width, height: IMAGES.gaming.waterCooled.height, placement: 'hero', caption: 'Custom water-cooled gaming PC build — liquid-cooled loops are part of the gaming PC repair and diagnosis we handle in Kuwait.' },
-        { src: IMAGES.gaming.rgbLighting.src, alt: IMAGES.gaming.rgbLighting.alt, width: IMAGES.gaming.rgbLighting.width, height: IMAGES.gaming.rgbLighting.height, placement: 'commonIssues', caption: 'A high-performance custom gaming PC representative of the systems we diagnose and repair.' },
-        { src: IMAGES.gaming.diagnostics.src, alt: IMAGES.gaming.diagnostics.alt, width: IMAGES.gaming.diagnostics.width, height: IMAGES.gaming.diagnostics.height, placement: 'coreFeatures', caption: 'Gaming PC teardown and diagnostics at the workbench to isolate hardware faults.' },
-        { src: IMAGES.gaming.zotacCard.src, alt: IMAGES.gaming.zotacCard.alt, width: IMAGES.gaming.zotacCard.width, height: IMAGES.gaming.zotacCard.height, placement: 'process', caption: 'GPU handling and component inspection during gaming PC diagnosis and repair.' }
+        { src: IMAGES.laptopHardware.desktopPcTowerRepairKuwait.src, alt: 'Desktop PC tower on the KCROC repair bench for complete-system hardware diagnosis', width: IMAGES.laptopHardware.desktopPcTowerRepairKuwait.width, height: IMAGES.laptopHardware.desktopPcTowerRepairKuwait.height, placement: 'hero', caption: 'Complete desktop tower on the repair bench; gaming systems are assessed as whole PCs rather than built to order.' },
+        { src: IMAGES.gaming.gamingPcThermalThrottlingKuwait.src, alt: IMAGES.gaming.gamingPcThermalThrottlingKuwait.alt, width: IMAGES.gaming.gamingPcThermalThrottlingKuwait.width, height: IMAGES.gaming.gamingPcThermalThrottlingKuwait.height, placement: 'commonIssues', caption: 'Investigating thermal throttling and performance loss under sustained gaming workloads.' },
+        { src: IMAGES.gaming.gamingMotherboardCpuSocketPcieSlots.src, alt: IMAGES.gaming.gamingMotherboardCpuSocketPcieSlots.alt, width: IMAGES.gaming.gamingMotherboardCpuSocketPcieSlots.width, height: IMAGES.gaming.gamingMotherboardCpuSocketPcieSlots.height, placement: 'coreFeatures', caption: 'Inspecting the gaming desktop motherboard and installed component interfaces during diagnosis.' },
+        { src: IMAGES.gaming.gamingMotherboardRamInstalledCloseup.src, alt: IMAGES.gaming.gamingMotherboardRamInstalledCloseup.alt, width: IMAGES.gaming.gamingMotherboardRamInstalledCloseup.width, height: IMAGES.gaming.gamingMotherboardRamInstalledCloseup.height, placement: 'process', caption: 'Memory and motherboard connections checked as part of complete-system stability testing.' }
       ],
       warranty: { 
         duration: '30 Days', 
@@ -3686,30 +3608,9 @@ export const rawGraphData: RawGraphData = {
         noFixNoFee: true
       },
       contentImages: [
-        {
-          src: IMAGES.gaming.gamingOverheating.src,
-          alt: IMAGES.gaming.gamingOverheating.alt,
-          width: IMAGES.gaming.gamingOverheating.width,
-          height: IMAGES.gaming.gamingOverheating.height,
-          placement: 'commonIssues',
-          caption: 'A gaming laptop showing signs of overheating — hot chassis, loud fans and thermal throttling under load.'
-        },
-        {
-          src: IMAGES.laptopHardware.dustyMotherboard.src,
-          alt: IMAGES.laptopHardware.dustyMotherboard.alt,
-          width: IMAGES.laptopHardware.dustyMotherboard.width,
-          height: IMAGES.laptopHardware.dustyMotherboard.height,
-          placement: 'coreFeatures',
-          caption: 'Dust built up around the fan and WiFi card, restricting airflow through the cooling system.'
-        },
-        {
-          src: IMAGES.laptopHardware.copperHeatsink3.src,
-          alt: IMAGES.laptopHardware.copperHeatsink3.alt,
-          width: IMAGES.laptopHardware.copperHeatsink3.width,
-          height: IMAGES.laptopHardware.copperHeatsink3.height,
-          placement: 'process',
-          caption: 'A copper heatsink with dried, degraded thermal paste — a common cause of reduced heat transfer.'
-        }
+        { src: IMAGES.gaming.gamingOverheating.src, alt: IMAGES.gaming.gamingOverheating.alt, width: IMAGES.gaming.gamingOverheating.width, height: IMAGES.gaming.gamingOverheating.height, placement: 'hero', caption: 'Gaming laptop overheating symptoms assessed before internal cleaning and thermal service.' },
+        { src: IMAGES.laptopHardware.dustyMotherboard.src, alt: IMAGES.laptopHardware.dustyMotherboard.alt, width: IMAGES.laptopHardware.dustyMotherboard.width, height: IMAGES.laptopHardware.dustyMotherboard.height, placement: 'commonIssues', caption: 'Dust buildup around laptop fans and motherboard components during internal inspection.' },
+        { src: IMAGES.laptopHardware.copperHeatsink3.src, alt: IMAGES.laptopHardware.copperHeatsink3.alt, width: IMAGES.laptopHardware.copperHeatsink3.width, height: IMAGES.laptopHardware.copperHeatsink3.height, placement: 'process', caption: 'Copper heatsink and old thermal-interface condition checked during cooling maintenance.' }
       ],
       seo: {
         title: 'Gaming Laptop Cleaning & Thermal Repaste Kuwait | KCROC',
@@ -3954,30 +3855,9 @@ export const rawGraphData: RawGraphData = {
 
       warranty: { duration: '30 Days', coverage: 'All parts and labor.', noFixNoFee: true }, 
       contentImages: [
-        {
-          src: IMAGES.laptopHardware.laptopMotherboardDiagnosticBenchRepair.src,
-          alt: IMAGES.laptopHardware.laptopMotherboardDiagnosticBenchRepair.alt,
-          width: IMAGES.laptopHardware.laptopMotherboardDiagnosticBenchRepair.width,
-          height: IMAGES.laptopHardware.laptopMotherboardDiagnosticBenchRepair.height,
-          placement: 'commonIssues',
-          caption: 'A motherboard under diagnostic testing on the bench to trace a failed power rail before any part is replaced.'
-        },
-        {
-          src: IMAGES.motherboard.breadboarding.src,
-          alt: IMAGES.motherboard.breadboarding.alt,
-          width: IMAGES.motherboard.breadboarding.width,
-          height: IMAGES.motherboard.breadboarding.height,
-          placement: 'coreFeatures',
-          caption: 'Breadboarding a motherboard outside its case to isolate a fault at the component level.'
-        },
-        {
-          src: IMAGES.motherboard.gigabyteAorus.src,
-          alt: IMAGES.motherboard.gigabyteAorus.alt,
-          width: IMAGES.motherboard.gigabyteAorus.width,
-          height: IMAGES.motherboard.gigabyteAorus.height,
-          placement: 'process',
-          caption: 'Inspecting thermal paste and chip contacts as part of the board-level repair process.'
-        }
+        { src: IMAGES.laptopHardware.laptopMotherboardDiagnosticBenchRepair.src, alt: IMAGES.laptopHardware.laptopMotherboardDiagnosticBenchRepair.alt, width: IMAGES.laptopHardware.laptopMotherboardDiagnosticBenchRepair.width, height: IMAGES.laptopHardware.laptopMotherboardDiagnosticBenchRepair.height, placement: 'hero', caption: 'Laptop motherboard assessed on the KCROC diagnostic bench before component-level repair.' },
+        { src: IMAGES.motherboard.breadboarding.src, alt: IMAGES.motherboard.breadboarding.alt, width: IMAGES.motherboard.breadboarding.width, height: IMAGES.motherboard.breadboarding.height, placement: 'coreFeatures', caption: 'Motherboard testing setup used to isolate board-level power and startup faults.' },
+        { src: IMAGES.motherboard.gigabyteAorus.src, alt: IMAGES.motherboard.gigabyteAorus.alt, width: IMAGES.motherboard.gigabyteAorus.width, height: IMAGES.motherboard.gigabyteAorus.height, placement: 'process', caption: 'Motherboard components and board condition inspected before recommending repair or replacement.' }
       ],
       seo: { 
         title: 'Laptop Motherboard Repair Kuwait | MacBook Logic Board | KCROC', 
@@ -4405,30 +4285,9 @@ export const rawGraphData: RawGraphData = {
 
       warranty: { duration: '30 Days', coverage: 'Battery and labor.', noFixNoFee: true }, 
       contentImages: [
-        {
-          src: IMAGES.laptopHardware.hpBattery2.src,
-          alt: IMAGES.laptopHardware.hpBattery2.alt,
-          width: IMAGES.laptopHardware.hpBattery2.width,
-          height: IMAGES.laptopHardware.hpBattery2.height,
-          placement: 'commonIssues',
-          caption: 'A mainstream laptop battery replacement example used during battery-health and power diagnosis.'
-        },
-        {
-          src: IMAGES.upgrades.laptopBottomChassisBatteryRamOpen.src,
-          alt: 'Windows laptop base opened for model-specific battery inspection and replacement',
-          width: IMAGES.upgrades.laptopBottomChassisBatteryRamOpen.width,
-          height: IMAGES.upgrades.laptopBottomChassisBatteryRamOpen.height,
-          placement: 'coreFeatures',
-          caption: 'A laptop opened for internal battery and connector inspection before a model-matched replacement.'
-        },
-        {
-          src: IMAGES.laptopHardware.hpBattery2.src,
-          alt: IMAGES.laptopHardware.hpBattery2.alt,
-          width: IMAGES.laptopHardware.hpBattery2.width,
-          height: IMAGES.laptopHardware.hpBattery2.height,
-          placement: 'process',
-          caption: 'Installing and calibrating a replacement battery as the final step before post-repair stress testing.'
-        }
+        { src: IMAGES.laptopHardware.hpBattery2.src, alt: 'HP laptop battery being inspected as an example of model-specific laptop battery replacement', width: IMAGES.laptopHardware.hpBattery2.width, height: IMAGES.laptopHardware.hpBattery2.height, placement: 'hero', caption: 'Example of an HP battery replacement; the correct replacement is matched to each laptop model.' },
+        { src: IMAGES.upgrades.laptopBottomChassisBatteryRamOpen.src, alt: 'Laptop internal battery compartment opened for battery inspection and model-matched replacement', width: IMAGES.upgrades.laptopBottomChassisBatteryRamOpen.width, height: IMAGES.upgrades.laptopBottomChassisBatteryRamOpen.height, placement: 'commonIssues', caption: 'Laptop base opened to inspect battery condition, connector and compatible replacement fit.' },
+        { src: IMAGES.laptopHardware.laptopBatteryMotherboardOpenRepair.src, alt: IMAGES.laptopHardware.laptopBatteryMotherboardOpenRepair.alt, width: IMAGES.laptopHardware.laptopBatteryMotherboardOpenRepair.width, height: IMAGES.laptopHardware.laptopBatteryMotherboardOpenRepair.height, placement: 'process', caption: 'Battery connection and surrounding motherboard area inspected before the completed repair is tested.' }
       ],
       seo: { 
         title: 'Laptop Battery Replacement Kuwait | Labour from 8 KWD + Battery | KCROC', 
@@ -5234,7 +5093,11 @@ export const rawGraphData: RawGraphData = {
         { id: "faq-ahmadi-local-4", question: "My PC turns on but nothing appears on the monitor. What can I try first?", answer: "Check that the monitor cable is plugged into the graphics card and not the motherboard port, then try another cable or display. If there is still no picture, send us the details, including any beeps or lights. We diagnose before quoting." },
         { id: "faq-ahmadi-local-5", question: "My MacBook will not start or has no display. Can you diagnose it?", answer: "Yes. We trace MacBook power and display faults at component level where that is technically possible, and explain the diagnosis and repair path before any paid work." },
         { id: "faq-ahmadi-local-6", question: "Where do you repair devices collected from Ahmadi?", answer: "At our Hawalli lab (Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19), open daily from 10:00 AM to 10:00 PM. Ahmadi is a service area, not a branch, and repairs carry a 30-day warranty." },
-      ], title: 'Ahmadi', description: 'Premium gaming PC repair and Apple MacBook diagnostics serving Ahmadi and southern Kuwait.', landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)', coords: { lat: 29.0833, lng: 48.0833 }, serviceRadiusKm: 30, serviceAreas: ['Ahmadi', 'Fahaheel', 'Mangaf', 'Mahboula', 'Sabahiya'], relatedServiceIds: ['srv-gaming', 'srv-macbook', 'srv-laptop', 'srv-motherboard'], relatedProblemIds: ['problem-overheating', 'problem-freezing-crashing', 'problem-no-power', 'problem-black-screen'], contentImage: { src: IMAGES.gaming.rgbLighting.src, alt: IMAGES.gaming.rgbLighting.alt, width: IMAGES.gaming.rgbLighting.width, height: IMAGES.gaming.rgbLighting.height, caption: 'Gaming PC and Apple MacBook diagnostics serving Ahmadi and southern Kuwait.' }, seo: { title: "Computer Repair Ahmadi | Free Pickup | KCROC", description: "Laptop, MacBook and gaming PC repair for Ahmadi, Fahaheel, Mangaf and Mahboula. Free pickup and repair at our Hawalli lab.", canonicalUrl: 'https://www.computerrepairkuwait.com/location/ahmadi', ogType: 'website', schemaTypes: ['LocalBusiness'], lastModified: '2026-09-27T00:00:00+03:00' }, navigationPriority: 60 } as LocationEntity,
+      ], title: 'Ahmadi', description: 'Premium gaming PC repair and Apple MacBook diagnostics serving Ahmadi and southern Kuwait.', landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)', coords: { lat: 29.0833, lng: 48.0833 }, serviceRadiusKm: 30, serviceAreas: ['Ahmadi', 'Fahaheel', 'Mangaf', 'Mahboula', 'Sabahiya'], relatedServiceIds: ['srv-gaming', 'srv-macbook', 'srv-laptop', 'srv-motherboard'], relatedProblemIds: ['problem-overheating', 'problem-freezing-crashing', 'problem-no-power', 'problem-black-screen'], contentImage: {
+      ...IMAGES.laptopHardware.desktopPcTowerRepairKuwait,
+      alt: 'Desktop PC tower inspected for repair at the KCROC workshop',
+      caption: 'Complete desktop PC diagnosis and repair for Ahmadi customers; all bench work is completed at the Hawalli lab.'
+    }, seo: { title: "Computer Repair Ahmadi | Free Pickup | KCROC", description: "Laptop, MacBook and gaming PC repair for Ahmadi, Fahaheel, Mangaf and Mahboula. Free pickup and repair at our Hawalli lab.", canonicalUrl: 'https://www.computerrepairkuwait.com/location/ahmadi', ogType: 'website', schemaTypes: ['LocalBusiness'], lastModified: '2026-09-27T00:00:00+03:00' }, navigationPriority: 60 } as LocationEntity,
 
     // 🚀 NEW: Fahaheel, Mangaf, and Abu Halifa were previously only mentioned
     // as text inside Hawalli's and Ahmadi's `serviceAreas` arrays — they had
@@ -5269,7 +5132,11 @@ export const rawGraphData: RawGraphData = {
         { id: "faq-mangaf-local-4", question: "My laptop was exposed to liquid. How quickly should I act?", answer: "As soon as possible. Switch it off, unplug it and message us before trying to power it on. Liquid damage gets worse over time, and early cleaning and board-level repair gives the best chance of saving it." },
         { id: "faq-mangaf-local-5", question: "Can you repair the motherboard of a MacBook or gaming laptop?", answer: "Yes, on many models. MacBooks and gaming laptops are among the devices we repair at component level. Whether it is possible depends on the fault, which we confirm after diagnosis." },
         { id: "faq-mangaf-local-6", question: "Do you collect from Abu Halifa and Ahmadi as well as Mangaf?", answer: "Yes. Mangaf, Fahaheel, Abu Halifa and Ahmadi are covered by free pickup and delivery. Message your area on WhatsApp to arrange collection." },
-      ], title: 'Mangaf', description: 'Component-level laptop, MacBook, and motherboard repair for Mangaf residents and the wider Ahmadi workforce community, collected and delivered free of charge.', landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)', coords: { lat: 29.0975, lng: 48.1197 }, serviceRadiusKm: 20, serviceAreas: ['Mangaf', 'Fahaheel', 'Abu Halifa', 'Ahmadi'], relatedServiceIds: ['srv-laptop', 'srv-macbook', 'srv-liquid-damage', 'srv-motherboard'], relatedProblemIds: ['problem-liquid-spill', 'problem-no-power', 'problem-not-charging', 'problem-overheating'], contentImage: { src: IMAGES.gaming.waterCooled.src, alt: IMAGES.gaming.waterCooled.alt, width: IMAGES.gaming.waterCooled.width, height: IMAGES.gaming.waterCooled.height, caption: 'Custom water-cooled gaming PC build serviced for the Mangaf community.' }, seo: { title: "Computer Repair Mangaf | Free Pickup | KCROC", description: "Laptop, MacBook and motherboard repair for Mangaf and nearby Fahaheel, Abu Halifa and Ahmadi, with free pickup to our Hawalli lab.", canonicalUrl: 'https://www.computerrepairkuwait.com/location/mangaf', ogType: 'website', schemaTypes: ['LocalBusiness'] }, navigationPriority: 50 } as LocationEntity,
+      ], title: 'Mangaf', description: 'Component-level laptop, MacBook, and motherboard repair for Mangaf residents and the wider Ahmadi workforce community, collected and delivered free of charge.', landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)', coords: { lat: 29.0975, lng: 48.1197 }, serviceRadiusKm: 20, serviceAreas: ['Mangaf', 'Fahaheel', 'Abu Halifa', 'Ahmadi'], relatedServiceIds: ['srv-laptop', 'srv-macbook', 'srv-liquid-damage', 'srv-motherboard'], relatedProblemIds: ['problem-liquid-spill', 'problem-no-power', 'problem-not-charging', 'problem-overheating'], contentImage: {
+      ...IMAGES.gaming.gamingPcThermalThrottlingKuwait,
+      alt: 'Gaming desktop PC checked for heat-related performance problems',
+      caption: 'Gaming PC thermal and stability diagnosis for Mangaf customers; repairs are completed at KCROC’s Hawalli lab.'
+    }, seo: { title: "Computer Repair Mangaf | Free Pickup | KCROC", description: "Laptop, MacBook and motherboard repair for Mangaf and nearby Fahaheel, Abu Halifa and Ahmadi, with free pickup to our Hawalli lab.", canonicalUrl: 'https://www.computerrepairkuwait.com/location/mangaf', ogType: 'website', schemaTypes: ['LocalBusiness'] }, navigationPriority: 50 } as LocationEntity,
 
     'loc-abu-halifa': { id: 'loc-abu-halifa', slug: 'abu-halifa', entityType: 'Location', isActive: true, isPhysicalLocation: false, localIntro: "Abu Halifa is served by free pickup from villas and residential compounds, so there is no need to travel to Hawalli. We collect, diagnose and repair at our lab, then return the device after testing. The service zone includes Mangaf, Fahaheel and Fintas.", localHighlights: [
         { title: "Pickup from Abu Halifa villas and compounds", description: "Share your area and a map pin on WhatsApp and we will arrange free collection." },
@@ -5317,7 +5184,11 @@ export const rawGraphData: RawGraphData = {
         { id: "faq-mubarak-al-kabeer-local-4", question: "Can you replace a battery that is built into the laptop?", answer: "In most cases, yes. Many thin laptops and MacBooks have internal batteries that need the case opened. Availability depends on the model, so send the exact model name on WhatsApp and we will confirm whether a suitable battery is available before you commit." },
         { id: "faq-mubarak-al-kabeer-local-5", question: "My motherboard has failed. Do I need a new laptop?", answer: "Not necessarily. We trace the fault to the failed component and repair it where that is technically possible, instead of automatically swapping the whole board. Diagnostics are free, and you pay nothing if we cannot fix it." },
         { id: "faq-mubarak-al-kabeer-local-6", question: "How can I get an idea of the cost without bringing the laptop in?", answer: "Send the model, the symptoms and a photo of any error on WhatsApp for a first opinion. A firm quote is confirmed after diagnosis and before any paid work, and repairs carry a 30-day warranty. Screen-replacement labor starts from 30 KWD plus the panel; component-level motherboard repair starts from 25 KWD." },
-      ], title: 'Mubarak Al-Kabeer', description: 'Component-level laptop and motherboard repair for residents across Mubarak Al-Kabeer Governorate, from Adan to Qurain, collected and delivered free of charge to KCROC\'s Hawalli lab.', landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)', coords: { lat: 29.2436, lng: 48.0783 }, serviceRadiusKm: 25, serviceAreas: ['Mubarak Al-Kabeer', 'Adan', 'Qurain', 'Sabah Al-Salem', 'Qusour'], relatedServiceIds: ['srv-laptop', 'srv-motherboard', 'srv-ssd-ram', 'srv-battery'], relatedProblemIds: ['problem-slow', 'problem-no-power', 'problem-not-charging', 'problem-windows-wont-boot'], contentImage: { src: IMAGES.gaming.deepcoolAio.src, alt: IMAGES.gaming.deepcoolAio.alt, width: IMAGES.gaming.deepcoolAio.width, height: IMAGES.gaming.deepcoolAio.height, caption: 'Custom-built PC repair and liquid-cooler servicing for Mubarak Al-Kabeer Governorate.' }, seo: { title: "Computer Repair Mubarak Al-Kabeer | Free Pickup | KCROC", description: "Laptop and motherboard repair across Mubarak Al-Kabeer, Adan, Qurain and Sabah Al-Salem, with free pickup to our Hawalli lab.", canonicalUrl: 'https://www.computerrepairkuwait.com/location/mubarak-al-kabeer', ogType: 'website', schemaTypes: ['LocalBusiness'] }, navigationPriority: 35 } as LocationEntity,
+      ], title: 'Mubarak Al-Kabeer', description: 'Component-level laptop and motherboard repair for residents across Mubarak Al-Kabeer Governorate, from Adan to Qurain, collected and delivered free of charge to KCROC\'s Hawalli lab.', landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)', coords: { lat: 29.2436, lng: 48.0783 }, serviceRadiusKm: 25, serviceAreas: ['Mubarak Al-Kabeer', 'Adan', 'Qurain', 'Sabah Al-Salem', 'Qusour'], relatedServiceIds: ['srv-laptop', 'srv-motherboard', 'srv-ssd-ram', 'srv-battery'], relatedProblemIds: ['problem-slow', 'problem-no-power', 'problem-not-charging', 'problem-windows-wont-boot'], contentImage: {
+      ...IMAGES.gaming.gamingMotherboardCpuSocketPcieSlots,
+      alt: 'Gaming desktop motherboard inspected during hardware diagnosis',
+      caption: 'Gaming desktop motherboard and component diagnostics for Mubarak Al-Kabeer customers; all bench work is completed at the Hawalli lab.'
+    }, seo: { title: "Computer Repair Mubarak Al-Kabeer | Free Pickup | KCROC", description: "Laptop and motherboard repair across Mubarak Al-Kabeer, Adan, Qurain and Sabah Al-Salem, with free pickup to our Hawalli lab.", canonicalUrl: 'https://www.computerrepairkuwait.com/location/mubarak-al-kabeer', ogType: 'website', schemaTypes: ['LocalBusiness'] }, navigationPriority: 35 } as LocationEntity,
 
     'loc-fintas': { id: 'loc-fintas', slug: 'fintas', entityType: 'Location', isActive: false, isPhysicalLocation: false, localIntro: "Fintas and the surrounding coastal communities are served by free pickup, so a repair does not mean a drive to Hawalli. We collect, diagnose and repair at our lab, then return the device after testing. Gaming PCs, overheating and liquid damage are the focus of this page.", localHighlights: [
         { title: "Pickup from Fintas, Abu Halifa, Mangaf and Fahaheel", description: "Message us your area on WhatsApp and we will arrange free collection." },
@@ -5858,11 +5729,9 @@ export const rawGraphData: RawGraphData = {
       relatedBrandIds: ['brand-asus', 'brand-msi', 'brand-dell', 'brand-lenovo'],
       relatedLocationIds: ['loc-mangaf', 'loc-abu-halifa', 'loc-fahaheel', 'loc-ahmadi'],
       contentImage: {
-        src: IMAGES.gaming.waterCooled.src,
-        alt: IMAGES.gaming.waterCooled.alt,
-        width: IMAGES.gaming.waterCooled.width,
-        height: IMAGES.gaming.waterCooled.height,
-        caption: 'Gaming desktop cooling and repair work for Mahboula and southern Kuwait, handled at KCROC’s Hawalli lab.'
+        ...IMAGES.laptopHardware.desktopPcTowerRepairKuwait,
+        alt: 'Desktop PC tower on the repair bench for hardware diagnosis',
+        caption: 'Complete desktop PC diagnosis and repair for Mahboula customers; devices are collected and returned after testing at the Hawalli lab.'
       },
       seo: {
         title: 'Computer, Gaming PC & MacBook Repair Mahboula | KCROC',
@@ -7208,7 +7077,10 @@ export const rawGraphData: RawGraphData = {
       relatedProblemIds: ['problem-hinge-break', 'problem-overheating', 'problem-not-charging', 'problem-black-screen'],
       relatedLocationIds: ['loc-hawalli', 'loc-salmiya', 'loc-kuwait-city', 'loc-farwaniya', 'loc-jahra', 'loc-ahmadi'],
       relatedResourcePaths: [{ label: 'Dell laptop overheating guide', path: '/guides/dell-laptop-overheating' }],
-      contentImages: [{ src: IMAGES.laptopHardware.dellTeardown.src, alt: IMAGES.laptopHardware.dellTeardown.alt, width: IMAGES.laptopHardware.dellTeardown.width, height: IMAGES.laptopHardware.dellTeardown.height, caption: 'Dell laptop internal hardware opened for repair and diagnosis.' }],
+      contentImages: [
+        { src: IMAGES.laptopHardware.dellTeardown.src, alt: IMAGES.laptopHardware.dellTeardown.alt, width: IMAGES.laptopHardware.dellTeardown.width, height: IMAGES.laptopHardware.dellTeardown.height, caption: 'Dell laptop internal hardware opened for repair and diagnosis.' },
+        { src: IMAGES.laptopHardware.dellLaptopScreenRepairCompleted.src, alt: IMAGES.laptopHardware.dellLaptopScreenRepairCompleted.alt, width: IMAGES.laptopHardware.dellLaptopScreenRepairCompleted.width, height: IMAGES.laptopHardware.dellLaptopScreenRepairCompleted.height, caption: 'Completed Dell laptop display repair after confirming the panel and cable fault.' }
+      ],
       familyGroups: [
         { name: 'Inspiron & Vostro', description: 'Everyday and business Dell laptops with frequent hinge, charging, battery and thermal repair needs.', models: ['Inspiron 14', 'Inspiron 15', 'Vostro'], repairFocus: ['Hinge/chassis', 'DC jack', 'Battery', 'Cooling'] },
         { name: 'Latitude', description: 'Business systems where reliable power, USB-C charging, keyboard and board diagnosis matter.', models: ['Latitude 5xxx', 'Latitude 7xxx'], repairFocus: ['Charging', 'Power rails', 'Keyboard', 'Motherboard'] },
@@ -7485,7 +7357,10 @@ export const rawGraphData: RawGraphData = {
       relatedServiceIds: ['srv-gaming', 'srv-laptop', 'srv-gaming-laptop-cleaning', 'srv-charging-port', 'srv-hinge', 'srv-motherboard'],
       relatedProblemIds: ['problem-not-charging', 'problem-overheating', 'problem-hinge-break'],
       relatedLocationIds: ['loc-hawalli', 'loc-salmiya', 'loc-kuwait-city', 'loc-farwaniya', 'loc-jahra', 'loc-ahmadi'],
-      contentImages: [{ src: IMAGES.upgrades.acerLaptopMotherboardRamHeatsink.src, alt: IMAGES.upgrades.acerLaptopMotherboardRamHeatsink.alt, width: IMAGES.upgrades.acerLaptopMotherboardRamHeatsink.width, height: IMAGES.upgrades.acerLaptopMotherboardRamHeatsink.height, caption: 'Acer laptop internal motherboard, RAM and cooling hardware inspected for repair.' }],
+      contentImages: [
+        { src: IMAGES.upgrades.acerLaptopMotherboardRamHeatsink.src, alt: IMAGES.upgrades.acerLaptopMotherboardRamHeatsink.alt, width: IMAGES.upgrades.acerLaptopMotherboardRamHeatsink.width, height: IMAGES.upgrades.acerLaptopMotherboardRamHeatsink.height, caption: 'Acer laptop internal motherboard, RAM and cooling hardware inspected for repair.' },
+        { src: IMAGES.laptopHardware.acerLaptopChargerLiteonAdapter.src, alt: IMAGES.laptopHardware.acerLaptopChargerLiteonAdapter.alt, width: IMAGES.laptopHardware.acerLaptopChargerLiteonAdapter.width, height: IMAGES.laptopHardware.acerLaptopChargerLiteonAdapter.height, caption: 'Acer adapter checked as part of model-specific laptop charging diagnosis.' }
+      ],
       familyGroups: [
         { name: 'Aspire & Swift', description: 'Everyday Acer systems where charging, hinge, battery, display and cooling issues are common repair paths.', models: ['Aspire 3', 'Aspire 5', 'Swift 3'], repairFocus: ['Charging', 'Hinge', 'Battery', 'Display'] },
         { name: 'Nitro & Predator', description: 'Gaming Acer systems that need thermal, GPU, power and cooling checks under sustained load.', models: ['Nitro 5', 'Predator Helios 300'], repairFocus: ['Thermals', 'GPU', 'Cooling', 'Motherboard'] }
@@ -8427,7 +8302,14 @@ export const rawGraphData: RawGraphData = {
       urgency: 'high',
       relatedServiceIds: ['srv-screen', 'srv-laptop'],
       contentImages: [
-        { src: IMAGES.laptopHardware.dellLaptopCorruptedScreenGpuFailure.src, alt: IMAGES.laptopHardware.dellLaptopCorruptedScreenGpuFailure.alt, width: IMAGES.laptopHardware.dellLaptopCorruptedScreenGpuFailure.width, height: IMAGES.laptopHardware.dellLaptopCorruptedScreenGpuFailure.height, placement: 'causes', caption: 'A cracked panel showing display bleed — we confirm on an external monitor that the board itself is unaffected.' },
+        {
+        src: IMAGES.laptopHardware.laptopScreenAssemblyDisassemblyRepair.src,
+        alt: IMAGES.laptopHardware.laptopScreenAssemblyDisassemblyRepair.alt,
+        width: IMAGES.laptopHardware.laptopScreenAssemblyDisassemblyRepair.width,
+        height: IMAGES.laptopHardware.laptopScreenAssemblyDisassemblyRepair.height,
+        placement: 'causes',
+        caption: 'A laptop screen assembly being opened for display diagnosis; the exact panel and cable fault are confirmed before quoting.'
+      },
         { src: IMAGES.laptopHardware.laptopLcdPanelReplacementPart.src, alt: IMAGES.laptopHardware.laptopLcdPanelReplacementPart.alt, width: IMAGES.laptopHardware.laptopLcdPanelReplacementPart.width, height: IMAGES.laptopHardware.laptopLcdPanelReplacementPart.height, placement: 'solution', caption: 'A replacement panel example; the compatible specification and availability are checked against the exact laptop model before quoting.' },
       ],
       seo: { title: 'Cracked Laptop Screen in Kuwait? Diagnosis & Repair | KCROC', description: 'Cracked or shattered laptop screen after a drop? Learn what to avoid and how we check the panel, cable and hinge before confirming model-compatible repair options. Free pickup in Kuwait.', canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-screen-cracked-kuwait', ogType: 'article', schemaTypes: ['Article', 'FAQPage'], lastModified: '2026-11-03T00:00:00+03:00' },
