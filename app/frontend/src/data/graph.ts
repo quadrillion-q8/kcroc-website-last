@@ -3503,12 +3503,12 @@ export const rawGraphData: RawGraphData = {
       ],
             contentImages: [
         {
-          src: IMAGES.gaming.diagnostics.src,
-          alt: 'Gaming PC opened on the KCROC workbench for desktop fault diagnosis',
-          width: IMAGES.gaming.diagnostics.width,
-          height: IMAGES.gaming.diagnostics.height,
+          src: '/images/gallery/acer-predator-orion-9000-gaming-pc-repair-kuwait.webp',
+          alt: 'Acer Predator Orion 9000 gaming PC repair in Kuwait',
+          width: 1400,
+          height: 1400,
           placement: 'hero',
-          caption: 'A complete gaming desktop opened on the KCROC bench for diagnosis of cooling, power, display and stability faults.'
+          caption: 'A real Acer Predator Orion 9000 gaming desktop repair from the KCROC repair gallery.'
         },
         {
           src: IMAGES.gaming.gamingPcThermalThrottlingKuwait.src,
