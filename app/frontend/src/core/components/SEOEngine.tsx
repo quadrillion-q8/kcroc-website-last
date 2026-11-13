@@ -968,10 +968,33 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
   const isArticleLike = /\/(blog|guides|news)\//i.test(canonicalUrl)
     || (ogType || '').toLowerCase() === 'article'
     || (schemaTypes || []).some((type: string) => ['Article', 'BlogPosting', 'TechArticle'].includes(type));
-  const contextualFallback = isArticleLike
+  const pageFallbacks: Array<[RegExp, string]> = [
+    [/\\/about(?:\\/|$)/, '/images/kcroc-computer-repair-technician-team.webp'],
+    [/\\/contact(?:\\/|$)/, '/images/kcroc-al-mullah-complex-hawalli-exterior.webp'],
+    [/\\/gallery(?:\\/|$)/, '/images/gallery/laptop-motherboard-smd-ic-chip-in-hand-kuwait.webp'],
+    [/\\/brands?(?:\\/|$)/, '/images/kcroc-computer-repair-technician-team.webp'],
+    [/\\/(?:book|booking)(?:\\/|$)/, '/images/kcroc-lead-technician-laptop-repair-workbench.webp'],
+    [/\\/faq(?:\\/|$)/, '/images/kcroc-pc-doctor-windows-repair-services.webp'],
+    [/\\/(?:locations?|near-me)(?:\\/|$)/, '/images/kcroc-pc-doctor-windows-repair-services.webp'],
+    [/\\/news(?:\\/|$)/, '/images/kcroc-pc-doctor-windows-repair-services.webp'],
+    [/\\/problems?(?:\\/|$)/, '/images/motherboard-repair-kuwait.webp'],
+    [/\\/services?(?:\\/|$)/, '/images/discover/laptop-repair-kuwait-1200x675.webp'],
+    [/\\/pricing(?:\\/|$)/, '/images/laptop-repair-kuwait.webp'],
+    [/\\/ar\\/desktop-pc-repair-kuwait/, '/images/desktop-pc-tower-repair-kuwait.webp'],
+    [/\\/ar\\/gaming-laptop-cleaning-kuwait/, '/images/gaming-laptop-overheating-repair.webp'],
+    [/\\/ar\\/laptop-hinge-repair-kuwait/, '/images/broken-laptop-hinge-plastic-chassis-damage.webp'],
+    [/\\/ar\\/motherboard-repair-kuwait/, '/images/motherboard-repair-kuwait.webp'],
+    [/\\/ar\\/ssd-ram-upgrade-kuwait/, '/images/m2-nvme-ssd-motherboard-installation.webp'],
+    [/\\/ar\\/computer-repair-hawalli/, '/images/kcroc-al-mullah-complex-hawalli-exterior.webp'],
+    [/\\/ar\\/computer-repair-(?:jahra|kuwait-city|salmiya)/, '/images/kcroc-pc-doctor-windows-repair-services.webp'],
+    [/\\/privacy-security-kuwait/, '/images/kcroc-lead-technician-laptop-repair-workbench.webp'],
+    [/\\/ar(?:\\/|$)/, '/images/kcroc-pc-doctor-windows-repair-services.webp'],
+  ];
+  const pageFallback = pageFallbacks.find(([pattern]) => pattern.test(imagePath))?.[1];
+  const contextualFallback = pageFallback || (isArticleLike
     ? (discoverFallbacks.find(([pattern]) => pattern.test(imagePath))?.[1]
       || '/images/discover/laptop-repair-kuwait-1200x675.webp')
-    : undefined;
+    : undefined);
   const rawOgImage =
     ogImage
     || entity.featuredImage?.ogImage
