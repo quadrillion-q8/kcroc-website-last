@@ -1,7 +1,7 @@
 // File: app/frontend/scripts/validateResponsiveImages.ts
-// Ensures homepage service-card responsive image derivatives stay synchronized
-// with the Entity-First Knowledge Graph. The derivatives are committed assets;
-// this check prevents a future graph mutation from shipping a broken srcset.
+// Ensures homepage service-card images stay synchronized with the
+// Entity-First Knowledge Graph. The card renders the original WebP directly;
+// this check prevents graph edits from referencing missing public assets.
 import fs from 'node:fs';
 import path from 'node:path';
 import { KCROC_GRAPH } from '../src/data/graph.js';
@@ -14,9 +14,13 @@ const required = new Set<string>([
 ]);
 
 for (const service of KCROC_GRAPH.services) {
-  const source = service.contentImages?.[0]?.src;
+  const cardImage = service.contentImages?.find((image) => image.placement === 'hero')
+    ?? service.contentImages?.find((image) => image.placement === 'commonIssues')
+    ?? service.contentImages?.find((image) => image.placement === 'coreFeatures')
+    ?? service.contentImages?.[0];
+  const source = cardImage?.src;
   if (!source || !source.endsWith('.webp')) continue;
-  required.add(source.replace(/\.webp$/, '.w480.webp'));
+  required.add(source);
 }
 
 const missing = [...required].filter((publicPath) => {
@@ -30,4 +34,4 @@ if (missing.length) {
   process.exit(1);
 }
 
-console.log(`✅ Responsive image validation passed (${required.size} assets).`);
+console.log(`✅ Service-card image source validation passed (${required.size} assets).`);
