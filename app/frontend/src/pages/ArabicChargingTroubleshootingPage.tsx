@@ -167,14 +167,14 @@ const priceRows = [
 ];
 
 const pageUrl = business.websiteUrl + '/ar/laptop-plugged-in-not-charging';
-const pageImage = business.websiteUrl + '/images/gallery/dell-vostro-laptop-motherboard-removed-fan-heatsink-chip-level-repair.webp';
+const pageImage = business.websiteUrl + '/images/gallery/silver-laptop-charger-on-car-seat-pickup-delivery-kuwait.webp';
 
 const chargingPhotos = {
   hero: {
-    src: '/images/gallery/dell-vostro-laptop-motherboard-removed-fan-heatsink-chip-level-repair.webp',
-    mobileSrc: '/images/gallery/dell-vostro-laptop-motherboard-removed-fan-heatsink-chip-level-repair.w640.webp',
-    alt: 'لوحة أم للابتوب Dell Vostro بعد فكها على طاولة الفحص في مختبر صيانة KCROC',
-    caption: 'صورة فعلية للوحة أم لابتوب بعد الفك على طاولة الفحص؛ نتحقق من مسار الطاقة وفق تصميم الجهاز ورقم اللوحة.',
+    src: '/images/gallery/silver-laptop-charger-on-car-seat-pickup-delivery-kuwait.webp',
+    mobileSrc: '/images/gallery/silver-laptop-charger-on-car-seat-pickup-delivery-kuwait.w640.webp',
+    alt: 'لابتوب مع شاحنه أثناء تجهيز الجهاز للفحص في الكويت',
+    caption: 'الشاحن جزء أساسي من التشخيص؛ نفحص خرجه وتوافقه قبل الحكم على منفذ الشحن أو البطارية أو دائرة الطاقة.',
     width: 1400,
     height: 1400,
   },
