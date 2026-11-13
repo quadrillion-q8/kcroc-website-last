@@ -2254,8 +2254,8 @@ export const rawGraphData: RawGraphData = {
         { metric: 'Storage space', outcome: 'A larger SSD, with your Windows cloned across, gives you room for files and updates without a fresh install.' }
       ] },
       contentImages: [
-        { src: '/images/gallery/laptop-ram-ssd-wifi-card-spare-parts-inventory-kuwait.webp', alt: 'Spare RAM modules, SSDs and Wi-Fi cards in stock at the KCROC repair shop in Kuwait for laptop upgrades', width: 1200, height: 1200, placement: 'hero', caption: 'RAM, SSD and Wi-Fi card stock on the KCROC bench for laptop upgrades in Kuwait.' },
-        { src: IMAGES.upgrades.ssdM2Install.src, alt: IMAGES.upgrades.ssdM2Install.alt, width: IMAGES.upgrades.ssdM2Install.width, height: IMAGES.upgrades.ssdM2Install.height, placement: 'commonIssues', caption: 'Installing an M.2 NVMe SSD as part of a laptop performance upgrade.' },
+        { src: IMAGES.upgrades.ssdM2Install.src, alt: 'M.2 NVMe SSD installed in a laptop during a storage upgrade', width: IMAGES.upgrades.ssdM2Install.width, height: IMAGES.upgrades.ssdM2Install.height, placement: 'hero', caption: 'A compatible M.2 NVMe SSD installed in a laptop after interface, length and capacity checks.' },
+        { src: '/images/gallery/laptop-ram-ssd-wifi-card-spare-parts-inventory-kuwait.webp', alt: 'Laptop RAM and SSD modules from KCROC upgrade-parts inventory', width: 1200, height: 1200, placement: 'commonIssues', caption: 'RAM and SSD part categories used to plan a compatible upgrade; the exact module and capacity are checked against the laptop.' },
         { src: IMAGES.upgrades.acerLaptopMotherboardRamHeatsink.src, alt: IMAGES.upgrades.acerLaptopMotherboardRamHeatsink.alt, width: IMAGES.upgrades.acerLaptopMotherboardRamHeatsink.width, height: IMAGES.upgrades.acerLaptopMotherboardRamHeatsink.height, placement: 'coreFeatures', caption: 'Laptop motherboard with accessible RAM and storage components inspected for upgrade compatibility.' },
         { src: IMAGES.upgrades.ssdMicron.src, alt: IMAGES.upgrades.ssdMicron.alt, width: IMAGES.upgrades.ssdMicron.width, height: IMAGES.upgrades.ssdMicron.height, placement: 'process', caption: 'M.2 NVMe storage selected and installed after compatibility checks.' }
       ],
@@ -3502,10 +3502,30 @@ export const rawGraphData: RawGraphData = {
         { id: 'faq-gaming-burnt-connector', title: 'The GPU power connector in my gaming desktop is burnt or melted. What should I do?', answer: 'Switch the complete PC off, disconnect it from power if safe, and do not keep retrying. A damaged 12VHPWR or 12V-2x6 connection can involve the GPU installed in the system, its cable and the PSU side. KCROC can inspect these parts as part of a complete gaming desktop assessment. We do not accept an individual graphics card as a standalone repair job.' }
       ],
             contentImages: [
-        { src: IMAGES.gaming.waterCooled.src, alt: 'Custom water-cooled gaming PC with liquid-cooling loop and RGB fans on the KCROC bench in Kuwait', width: IMAGES.gaming.waterCooled.width, height: IMAGES.gaming.waterCooled.height, placement: 'hero', caption: 'Custom water-cooled gaming PC build — liquid-cooled loops are part of the gaming PC repair and diagnosis we handle in Kuwait.' },
-        { src: IMAGES.gaming.rgbLighting.src, alt: IMAGES.gaming.rgbLighting.alt, width: IMAGES.gaming.rgbLighting.width, height: IMAGES.gaming.rgbLighting.height, placement: 'commonIssues', caption: 'A high-performance custom gaming PC representative of the systems we diagnose and repair.' },
-        { src: IMAGES.gaming.diagnostics.src, alt: IMAGES.gaming.diagnostics.alt, width: IMAGES.gaming.diagnostics.width, height: IMAGES.gaming.diagnostics.height, placement: 'coreFeatures', caption: 'Gaming PC teardown and diagnostics at the workbench to isolate hardware faults.' },
-        { src: IMAGES.gaming.zotacCard.src, alt: IMAGES.gaming.zotacCard.alt, width: IMAGES.gaming.zotacCard.width, height: IMAGES.gaming.zotacCard.height, placement: 'process', caption: 'GPU handling and component inspection during gaming PC diagnosis and repair.' }
+        {
+          src: IMAGES.gaming.diagnostics.src,
+          alt: 'Gaming PC opened on the KCROC workbench for desktop fault diagnosis',
+          width: IMAGES.gaming.diagnostics.width,
+          height: IMAGES.gaming.diagnostics.height,
+          placement: 'hero',
+          caption: 'A complete gaming desktop opened on the KCROC bench for diagnosis of cooling, power, display and stability faults.'
+        },
+        {
+          src: IMAGES.gaming.gamingPcThermalThrottlingKuwait.src,
+          alt: IMAGES.gaming.gamingPcThermalThrottlingKuwait.alt,
+          width: IMAGES.gaming.gamingPcThermalThrottlingKuwait.width,
+          height: IMAGES.gaming.gamingPcThermalThrottlingKuwait.height,
+          placement: 'commonIssues',
+          caption: 'Thermal-performance evidence from a gaming desktop under load, assessed before selecting a cooling or hardware repair.'
+        },
+        {
+          src: IMAGES.gaming.asusRogFan.src,
+          alt: IMAGES.gaming.asusRogFan.alt,
+          width: IMAGES.gaming.asusRogFan.width,
+          height: IMAGES.gaming.asusRogFan.height,
+          placement: 'process',
+          caption: 'A cooling component is inspected as part of the complete gaming desktop diagnosis and repair.'
+        }
       ],
       warranty: { 
         duration: '30 Days', 
@@ -4418,7 +4438,7 @@ export const rawGraphData: RawGraphData = {
           alt: 'Windows laptop base opened for model-specific battery inspection and replacement',
           width: IMAGES.upgrades.laptopBottomChassisBatteryRamOpen.width,
           height: IMAGES.upgrades.laptopBottomChassisBatteryRamOpen.height,
-          placement: 'coreFeatures',
+          placement: 'hero',
           caption: 'A laptop opened for internal battery and connector inspection before a model-matched replacement.'
         },
         {
